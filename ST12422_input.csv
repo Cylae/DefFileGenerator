@@ -1,0 +1,119 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action
+Digital Inputs,DigitalInputs,Input,30001,U16,1,0,,4
+Inst Curr Str_1,InstCurrStr1,Input,30002,U16,0.001,0,A,4
+Inst Curr Str_2,InstCurrStr2,Input,30003,U16,0.001,0,A,4
+Inst Curr Str_3,InstCurrStr3,Input,30004,U16,0.001,0,A,4
+Inst Curr Str_4,InstCurrStr4,Input,30005,U16,0.001,0,A,4
+Inst Curr Str_5,InstCurrStr5,Input,30006,U16,0.001,0,A,4
+Inst Curr Str_6,InstCurrStr6,Input,30007,U16,0.001,0,A,4
+Inst Curr Str_7,InstCurrStr7,Input,30008,U16,0.001,0,A,4
+Inst Curr Str_8,InstCurrStr8,Input,30009,U16,0.001,0,A,4
+Inst Curr Str_9,InstCurrStr9,Input,30010,U16,0.001,0,A,4
+Inst Curr Str_10,InstCurrStr10,Input,30011,U16,0.001,0,A,4
+Inst Curr Str_11,InstCurrStr11,Input,30012,U16,0.001,0,A,4
+Inst Curr Str_12,InstCurrStr12,Input,30013,U16,0.001,0,A,4
+Inst Curr Str_13,InstCurrStr13,Input,30014,U16,0.001,0,A,4
+Inst Curr Str_14,InstCurrStr14,Input,30015,U16,0.001,0,A,4
+Inst Curr Str_15,InstCurrStr15,Input,30016,U16,0.001,0,A,4
+Inst Curr Str_16,InstCurrStr16,Input,30017,U16,0.001,0,A,4
+Inst Curr Str_17,InstCurrStr17,Input,30018,U16,0.001,0,A,4
+Inst Curr Str_18,InstCurrStr18,Input,30019,U16,0.001,0,A,4
+Inst Curr Str_19,InstCurrStr19,Input,30020,U16,0.001,0,A,4
+Inst Curr Str_20,InstCurrStr20,Input,30021,U16,0.001,0,A,4
+Inst Curr Str_21,InstCurrStr21,Input,30022,U16,0.001,0,A,4
+Inst Curr Str_22,InstCurrStr22,Input,30023,U16,0.001,0,A,4
+Inst Curr Str_23,InstCurrStr23,Input,30024,U16,0.001,0,A,4
+Inst Curr Str_24,InstCurrStr24,Input,30025,U16,0.001,0,A,4
+Inst V_1,InstV1,Input,30040,U16,0.1,0,V,4
+Aux 1,Aux1,Input,30042,U16,0.01,0,V,4
+Aux 2,Aux2,Input,30043,U16,0.02,0,mA,4
+Inst T_1,InstT1,Input,30044,U16,1,0,°C,4
+Inst T_2,InstT2,Input,30045,U16,0.1,0,°C,4
+Inst T_3,InstT3,Input,30046,U16,0.1,0,°C,4
+Sum Currents,SumCurrents,Input,30047,U16,0.001,0,A,4
+Power,Power,Input,30048,U16,1,0,W,4
+RMS Curr Str_1,RMSCurrStr1,Input,30052,U16,0.001,0,A,4
+RMS Curr Str_2,RMSCurrStr2,Input,30053,U16,0.001,0,A,4
+RMS Curr Str_3,RMSCurrStr3,Input,30054,U16,0.001,0,A,4
+RMS Curr Str_4,RMSCurrStr4,Input,30055,U16,0.001,0,A,4
+RMS Curr Str_5,RMSCurrStr5,Input,30056,U16,0.001,0,A,4
+RMS Curr Str_6,RMSCurrStr6,Input,30057,U16,0.001,0,A,4
+RMS Curr Str_7,RMSCurrStr7,Input,30058,U16,0.001,0,A,4
+RMS Curr Str_8,RMSCurrStr8,Input,30059,U16,0.001,0,A,4
+RMS Curr Str_9,RMSCurrStr9,Input,30060,U16,0.001,0,A,4
+RMS Curr Str_10,RMSCurrStr10,Input,30061,U16,0.001,0,A,4
+RMS Curr Str_11,RMSCurrStr11,Input,30062,U16,0.001,0,A,4
+RMS Curr Str_12,RMSCurrStr12,Input,30063,U16,0.001,0,A,4
+RMS Curr Str_13,RMSCurrStr13,Input,30064,U16,0.001,0,A,4
+RMS Curr Str_14,RMSCurrStr14,Input,30065,U16,0.001,0,A,4
+RMS Curr Str_15,RMSCurrStr15,Input,30066,U16,0.001,0,A,4
+RMS Curr Str_16,RMSCurrStr16,Input,30067,U16,0.001,0,A,4
+RMS Curr Str_17,RMSCurrStr17,Input,30068,U16,0.001,0,A,4
+RMS Curr Str_18,RMSCurrStr18,Input,30069,U16,0.001,0,A,4
+RMS Curr Str_19,RMSCurrStr19,Input,30070,U16,0.001,0,A,4
+RMS Curr Str_20,RMSCurrStr20,Input,30071,U16,0.001,0,A,4
+RMS Curr Str_21,RMSCurrStr21,Input,30072,U16,0.001,0,A,4
+RMS Curr Str_22,RMSCurrStr22,Input,30073,U16,0.001,0,A,4
+RMS Curr Str_23,RMSCurrStr23,Input,30074,U16,0.001,0,A,4
+RMS Curr Str_24,RMSCurrStr24,Input,30075,U16,0.001,0,A,4
+Offset Curr Str_1,OffsetCurrStr1,Holding,40002,U16,1,0,,4
+Offset Curr Str_2,OffsetCurrStr2,Holding,40003,U16,1,0,,4
+Offset Curr Str_3,OffsetCurrStr3,Holding,40004,U16,1,0,,4
+Offset Curr Str_4,OffsetCurrStr4,Holding,40005,U16,1,0,,4
+Offset Curr Str_5,OffsetCurrStr5,Holding,40006,U16,1,0,,4
+Offset Curr Str_6,OffsetCurrStr6,Holding,40007,U16,1,0,,4
+Offset Curr Str_7,OffsetCurrStr7,Holding,40008,U16,1,0,,4
+Offset Curr Str_8,OffsetCurrStr8,Holding,40009,U16,1,0,,4
+Offset Curr Str_9,OffsetCurrStr9,Holding,40010,U16,1,0,,4
+Offset Curr Str_10,OffsetCurrStr10,Holding,40011,U16,1,0,,4
+Offset Curr Str_11,OffsetCurrStr11,Holding,40012,U16,1,0,,4
+Offset Curr Str_12,OffsetCurrStr12,Holding,40013,U16,1,0,,4
+Offset Curr Str_13,OffsetCurrStr13,Holding,40014,U16,1,0,,4
+Offset Curr Str_14,OffsetCurrStr14,Holding,40015,U16,1,0,,4
+Offset Curr Str_15,OffsetCurrStr15,Holding,40016,U16,1,0,,4
+Offset Curr Str_16,OffsetCurrStr16,Holding,40017,U16,1,0,,4
+Offset Curr Str_17,OffsetCurrStr17,Holding,40018,U16,1,0,,4
+Offset Curr Str_18,OffsetCurrStr18,Holding,40019,U16,1,0,,4
+Offset Curr Str_19,OffsetCurrStr19,Holding,40020,U16,1,0,,4
+Offset Curr Str_20,OffsetCurrStr20,Holding,40021,U16,1,0,,4
+Offset Curr Str_21,OffsetCurrStr21,Holding,40022,U16,1,0,,4
+Offset Curr Str_22,OffsetCurrStr22,Holding,40023,U16,1,0,,4
+Offset Curr Str_23,OffsetCurrStr23,Holding,40024,U16,1,0,,4
+Offset Curr Str_24,OffsetCurrStr24,Holding,40025,U16,1,0,,4
+Offset V_1,OffsetV1,Holding,40040,U16,1,0,,4
+Offset Aux_1,OffsetAux1,Holding,40042,U16,1,0,,4
+Offset Aux_2,OffsetAux2,Holding,40043,U16,1,0,,4
+Offset T_1,OffsetT1,Holding,40044,U16,1,0,,4
+Offset T_2,OffsetT2,Holding,40045,U16,1,0,,4
+Offset T_3,OffsetT3,Holding,40046,U16,1,0,,4
+Gain Curr Str_1,GainCurrStr1,Holding,40052,U16,1,0,,4
+Gain Curr Str_2,GainCurrStr2,Holding,40053,U16,1,0,,4
+Gain Curr Str_3,GainCurrStr3,Holding,40054,U16,1,0,,4
+Gain Curr Str_4,GainCurrStr4,Holding,40055,U16,1,0,,4
+Gain Curr Str_5,GainCurrStr5,Holding,40056,U16,1,0,,4
+Gain Curr Str_6,GainCurrStr6,Holding,40057,U16,1,0,,4
+Gain Curr Str_7,GainCurrStr7,Holding,40058,U16,1,0,,4
+Gain Curr Str_8,GainCurrStr8,Holding,40059,U16,1,0,,4
+Gain Curr Str_9,GainCurrStr9,Holding,40060,U16,1,0,,4
+Gain Curr Str_10,GainCurrStr10,Holding,40061,U16,1,0,,4
+Gain Curr Str_11,GainCurrStr11,Holding,40062,U16,1,0,,4
+Gain Curr Str_12,GainCurrStr12,Holding,40063,U16,1,0,,4
+Gain Curr Str_13,GainCurrStr13,Holding,40064,U16,1,0,,4
+Gain Curr Str_14,GainCurrStr14,Holding,40065,U16,1,0,,4
+Gain Curr Str_15,GainCurrStr15,Holding,40066,U16,1,0,,4
+Gain Curr Str_16,GainCurrStr16,Holding,40067,U16,1,0,,4
+Gain Curr Str_17,GainCurrStr17,Holding,40068,U16,1,0,,4
+Gain Curr Str_18,GainCurrStr18,Holding,40069,U16,1,0,,4
+Gain Curr Str_19,GainCurrStr19,Holding,40070,U16,1,0,,4
+Gain Curr Str_20,GainCurrStr20,Holding,40071,U16,1,0,,4
+Gain Curr Str_21,GainCurrStr21,Holding,40072,U16,1,0,,4
+Gain Curr Str_22,GainCurrStr22,Holding,40073,U16,1,0,,4
+Gain Curr Str_23,GainCurrStr23,Holding,40074,U16,1,0,,4
+Gain Curr Str_24,GainCurrStr24,Holding,40075,U16,1,0,,4
+Gain Check 40076,GainCheck40076,Holding,40076,U16,1,0,,4
+Gain V_1,GainV1,Holding,40090,U16,1,0,,4
+Gain Aux_1,GainAux1,Holding,40092,U16,1,0,,4
+Gain Aux_2,GainAux2,Holding,40093,U16,1,0,,4
+Gain T_1,GainT1,Holding,40094,U16,1,0,,4
+Gain T_2,GainT2,Holding,40095,U16,1,0,,4
+Gain T_3,GainT3,Holding,40096,U16,1,0,,4
