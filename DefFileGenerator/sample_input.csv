@@ -1,0 +1,5 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action
+Model Name,DisplayModel,Holding Register,30000_30,STRING,1.0,0.0,,4
+Rated capacity,,3,37758,U32,1.0,0.0,Wh,1
+Grid frequency,,4,32000,U16,0.1,0.0,Hz,1
+Test Coil,,Coil,1,U16,1,0,,1

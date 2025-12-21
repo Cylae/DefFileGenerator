@@ -1,0 +1,323 @@
+modbusRTU;Inverter;HUAWEI;V4;;;;;;;
+1;3;30000_30;STRING;;Model Name  ;DisplayModel;1.000000;0.000000;;4
+2;3;30015_20;STRING;;SN  ;DisplaySerialNumber;1.000000;0.000000;;4
+3;3;30025_20;STRING;;PN ;;1.000000;0.000000;;4
+4;3;30070;U16;;Model ID  ;;1.000000;0.000000;;4
+5;3;30071;U16;;String Number ;;1.000000;0.000000;;4
+6;3;30072;U16;;MPPT Number  ;;1.000000;0.000000;;4
+7;3;30073;U32;;Rated power (Pn);NominalPower;0.001000;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);;0.001000;0.000000;kW;4
+9;3;30077;U32;;Maximum apparent power (Smax);;0.001000;0.000000;kVA;4
+10;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);;0.001000;0.000000;kVar;4
+11;3;30081;I32;;Maximum reactive power (Qmax, absorbed from the power grid);;0.001000;0.000000;kVar;4
+12;3;32000;U16;;State 1;;1.000000;0.000000;;9
+13;3;32002;U16;;State 2;;1.000000;0.000000;;9
+14;3;32003;U32;;State 3 ;;1.000000;0.000000;;9
+15;3;32008;U16;;Alarm 1;;1.000000;0.000000;;9
+16;3;32009;U16;;Alarm 2;;1.000000;0.000000;;9
+17;3;32010;U16;;Alarm 3;;1.000000;0.000000;;9
+18;3;32016;I16;;Volt inverter_entry 1;;0.100000;0.000000;V;4
+19;3;32017;I16;;Current inverter_entry 1;;0.010000;0.000000;A;4
+20;3;32018;I16;;Volt inverter_entry 2;;0.100000;0.000000;V;4
+21;3;32019;I16;;Current inverter_entry 2;;0.010000;0.000000;A;4
+22;3;32020;I16;;Volt inverter_entry 3;;0.100000;0.000000;V;4
+23;3;32021;I16;;Current inverter_entry 3;;0.010000;0.000000;A;4
+24;3;32022;I16;;Volt inverter_entry 4;;0.100000;0.000000;V;4
+25;3;32023;I16;;Current inverter_entry 4;;0.010000;0.000000;A;4
+26;3;32024;I16;;Volt inverter_entry 5;;0.100000;0.000000;V;4
+27;3;32025;I16;;Current inverter_entry 5;;0.010000;0.000000;A;4
+28;3;32026;I16;;Volt inverter_entry 6;;0.100000;0.000000;V;4
+29;3;32027;I16;;Current inverter_entry 6;;0.010000;0.000000;A;4
+30;3;32028;I16;;Volt inverter_entry 7;;0.100000;0.000000;V;4
+31;3;32029;I16;;Current inverter_entry 7;;0.010000;0.000000;A;4
+32;3;32030;I16;;Volt inverter_entry 8;;0.100000;0.000000;V;4
+33;3;32031;I16;;Current inverter_entry 8;;0.010000;0.000000;A;4
+34;3;32032;I16;;Volt inverter_entry 9;;0.100000;0.000000;V;4
+35;3;32033;I16;;Current inverter_entry 9;;0.010000;0.000000;A;4
+36;3;32034;I16;;Volt inverter_entry 10;;0.100000;0.000000;V;4
+37;3;32035;I16;;Current inverter_entry 10;;0.010000;0.000000;A;4
+38;3;32036;I16;;Volt inverter_entry 11;;0.100000;0.000000;V;4
+39;3;32037;I16;;Current inverter_entry 11;;0.010000;0.000000;A;4
+40;3;32038;I16;;Volt inverter_entry 12;;0.100000;0.000000;V;4
+41;3;32039;I16;;Current inverter_entry 12;;0.010000;0.000000;A;4
+42;3;32040;I16;;Volt inverter_entry 13;;0.100000;0.000000;V;4
+43;3;32041;I16;;Current inverter_entry 13;;0.010000;0.000000;A;4
+44;3;32042;I16;;Volt inverter_entry 14;;0.100000;0.000000;V;4
+45;3;32043;I16;;Current inverter_entry 14;;0.010000;0.000000;A;4
+46;3;32044;I16;;Volt inverter_entry 15;;0.100000;0.000000;V;4
+47;3;32045;I16;;Current inverter_entry 15;;0.010000;0.000000;A;4
+48;3;32046;I16;;Volt inverter_entry 16;;0.100000;0.000000;V;4
+49;3;32047;I16;;Current inverter_entry 16;;0.010000;0.000000;A;4
+50;3;32048;I16;;Volt inverter_entry 17;;0.100000;0.000000;V;4
+51;3;32049;I16;;Current inverter_entry 17;;0.010000;0.000000;A;4
+52;3;32050;I16;;Volt inverter_entry 18;;0.100000;0.000000;V;4
+53;3;32051;I16;;Current inverter_entry 18;;0.010000;0.000000;A;4
+54;3;32052;I16;;Volt inverter_entry 19;;0.100000;0.000000;V;4
+55;3;32053;I16;;Current inverter_entry 19;;0.010000;0.000000;A;4
+56;3;32054;I16;;Volt inverter_entry 20;;0.100000;0.000000;V;4
+57;3;32055;I16;;Current inverter_entry 20;;0.010000;0.000000;A;4
+58;3;32056;I16;;Volt inverter_entry 21;;0.100000;0.000000;V;4
+59;3;32057;I16;;Current inverter_entry 21;;0.010000;0.000000;A;4
+60;3;32058;I16;;Volt inverter_entry 22;;0.100000;0.000000;V;4
+61;3;32059;I16;;Current inverter_entry 22;;0.010000;0.000000;A;4
+62;3;32060;I16;;Volt inverter_entry 23;;0.100000;0.000000;V;4
+63;3;32061;I16;;Current inverter_entry 23;;0.010000;0.000000;A;4
+64;3;32062;I16;;Volt inverter_entry 24;;0.100000;0.000000;V;4
+65;3;32063;I16;;Current inverter_entry 24;;0.010000;0.000000;A;4
+66;3;32064;I32;;Power IN;;0.001000;0.000000;kW;4
+67;3;32066;U16;;Volt L1 to 2_Uab;;0.100000;0.000000;V;4
+68;3;32067;U16;;Volt L2 to 3_Ubc;;0.100000;0.000000;V;4
+69;3;32068;U16;;Volt L3 to 1_Uca;;0.100000;0.000000;V;4
+70;3;32069;U16;;Volt 1_Ua;;0.100000;0.000000;V;4
+71;3;32070;U16;;Volt 2_Ub;;0.100000;0.000000;V;4
+72;3;32071;U16;;Volt 3_Uc;;0.100000;0.000000;V;4
+73;3;32072;I32;;Current1_Ia;;0.001000;0.000000;A;4
+74;3;32074;I32;;Current2_Ib;;0.001000;0.000000;A;4
+75;3;32076;I32;;Current3_Ic;;0.001000;0.000000;A;4
+76;3;32078;I32;;Active power peak of current day;;0.001000;0.000000;kW;4
+77;3;32080;I32;;Active power;RealPower;1.000000;0.000000;W;4
+78;3;32082;I32;;Reactive_power;;1.000000;0.000000;Var;4
+79;3;32084;I16;;Power factor ;;0.001000;0.000000;;4
+80;3;32085;U16;;Frequency;;0.010000;0.000000;Hz;4
+81;3;32086;U16;;Inverter efficiency;;0.010000;0.000000;% ;4
+82;3;32087;I16;;Cabinet temperature;;0.100000;0.000000;°C;4
+83;3;32088;U16;;Insulation resistance;;0.001000;0.000000;M/Ohm;4
+84;3;32089;U16;;Device status;;1.000000;0.000000;;9
+85;3;32090;U16;;Fault code ;;1.000000;0.000000;;4
+86;3;32091;U32;;Startup time  ;;1.000000;0.000000;s;4
+87;3;32093;U32;;Shutdown time  ;;1.000000;0.000000;s;4
+88;3;32106;U32;;Energy_total;EnergyTotal;0.010000;0.000000;kWh;4
+89;3;32114;U32;;Energy yield of current day;EnergyDay;0.010000;0.000000;kWh;4
+90;3;32116;U32;;Energy yield of the month;;0.010000;0.000000;kWh;4
+91;3;32118;U32;;Energy yield of the year;;0.010000;0.000000;kWh;4
+92;3;35300;U16;;[Active] Adjusment mode;;1.000000;0.000000;;4
+93;3;35301;U32;;[Active] Adjusment value;;1.000000;0.000000;;4
+94;3;35303;U16;;[Active] Adjusment command;;1.000000;0.000000;;4
+95;3;35304;U16;;[Reactive] Adjustment mode;;1.000000;0.000000;;4
+96;3;35305;U32;;[Reactive] Adjustment value;;1.000000;0.000000;;4
+97;3;35307;U16;;[Reactive] Adjustment command;;1.000000;0.000000;;4
+98;3;37113;I32;;[Power meter collection] Active power;;1.000000;0.000000;W;4
+99;3;37200;U16;;[Optimizer] Total number of optimizers;;1.000000;0.000000;;4
+100;3;37201;U16;;[Optimizer] Number of online optimizers;;1.000000;0.000000;;4
+101;3;37202;U16;;[Optimizer] Feature data;;1.000000;0.000000;;4
+102;3;40000;U32;;System Time ;;1.000000;0.000000;s;4
+103;3;40037;U16;;[Power grid scheduling] Q-U characteristic curve mode;;1.000000;0.000000;;4
+104;3;40038;U16;;[Power grid scheduling] Q-U dispatch trigger power (%);;1.000000;0.000000;%;4
+105;3;40120;U16;;Active power derating;;0.100000;0.000000;kW;4
+106;3;40122;I16;;Reactive power compensation (PF);;0.001000;0.000000;;4
+107;3;40123;I16;;Reactive power compensation(Q/S);;0.001000;0.000000;;4
+108;3;40125;U16;;Power_limitation_pct;cmdPwrPercent;0.100000;0.000000;%;4
+109;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);;1.000000;0.000000;W;4
+110;3;40129;I32;;[Power grid scheduling] Reactive power compensatio n at night (kVar);;0.001000;0.000000;kVar;4
+111;3;40133;U16;;Number of points_1;;1.000000;0.000000;;4
+112;3;40134;U16;;P/Pn value at point 1;;0.100000;0.000000;%;4
+113;3;40135;I16;;cosphi value at point 1;;0.001000;0.000000;;4
+114;3;40136;U16;;P/Pn value at point 2;;0.100000;0.000000;%;4
+115;3;40137;I16;;cosphi value at point 2;;0.001000;0.000000;;4
+116;3;40138;U16;;P/Pn value at point 3;;0.100000;0.000000;%;4
+117;3;40139;I16;;cosphi value at point 3;;0.001000;0.000000;;4
+118;3;40140;U16;;P/Pn value at point 4;;0.100000;0.000000;%;4
+119;3;40141;I16;;cosphi value at point 4;;0.001000;0.000000;;4
+120;3;40142;U16;;P/Pn value at point 5;;0.100000;0.000000;%;4
+121;3;40143;I16;;cosphi value at point 5;;0.001000;0.000000;;4
+122;3;40144;U16;;P/Pn value at point 6;;0.100000;0.000000;%;4
+123;3;40145;I16;;cosphi value at point 6;;0.001000;0.000000;;4
+124;3;40146;U16;;P/Pn value at point 7;;0.100000;0.000000;%;4
+125;3;40147;I16;;cosphi value at point 7;;0.001000;0.000000;;4
+126;3;40148;U16;;P/Pn value at point 8;;0.100000;0.000000;%;4
+127;3;40149;I16;;cosphi value at point 8;;0.001000;0.000000;;4
+128;3;40150;U16;;P/Pn value at point 9;;0.100000;0.000000;%;4
+129;3;40151;I16;;cosphi value at point 9;;0.001000;0.000000;;4
+130;3;40152;U16;;P/Pn value at point 10;;0.100000;0.000000;%;4
+131;3;40153;I16;;cosphi value at point 10;;0.001000;0.000000;;4
+132;3;40154;U16;;Number of points_2;;1.000000;0.000000;;4
+133;3;40155;U16;;U/Un value at point 1_1;;0.100000;0.000000;%;4
+134;3;40156;I16;;Q/S value at point 1;;0.001000;0.000000;;4
+135;3;40157;U16;;U/Un value at point 2_1;;0.100000;0.000000;%;4
+136;3;40158;I16;;Q/S value at point 2;;0.001000;0.000000;;4
+137;3;40159;U16;;U/Un value at point 3_1;;0.100000;0.000000;%;4
+138;3;40160;I16;;Q/S value at point 3;;0.001000;0.000000;;4
+139;3;40161;U16;;U/Un value at point 4_1;;0.100000;0.000000;%;4
+140;3;40162;I16;;Q/S value at point 4;;0.001000;0.000000;;4
+141;3;40163;U16;;U/Un value at point 5_1;;0.100000;0.000000;%;4
+142;3;40164;I16;;Q/S value at point 5;;0.001000;0.000000;;4
+143;3;40165;U16;;U/Un value at point 6_1;;0.100000;0.000000;%;4
+144;3;40166;I16;;Q/S value at point 6;;0.001000;0.000000;;4
+145;3;40167;U16;;U/Un value at point 7_1;;0.100000;0.000000;%;4
+146;3;40168;I16;;Q/S value at point 7;;0.001000;0.000000;;4
+147;3;40169;U16;;U/Un value at point 8_1;;0.100000;0.000000;%;4
+148;3;40170;I16;;Q/S value at point 8;;0.001000;0.000000;;4
+149;3;40171;U16;;U/Un value at point 9_1;;0.100000;0.000000;%;4
+150;3;40172;I16;;Q/S value at point 9;;0.001000;0.000000;;4
+151;3;40173;U16;;U/Un value at point 10_1;;0.100000;0.000000;%;4
+152;3;40174;I16;;Q/S value at point 10;;0.001000;0.000000;;4
+153;3;40175;U16;;Number of points_3;;1.000000;0.000000;;4
+154;3;40176;U16;;U/Un value at point 1;;0.100000;0.000000;%;4
+155;3;40177;I16;;PF value at point 1;;0.001000;0.000000;;4
+156;3;40178;U16;;U/Un value at point 2;;0.100000;0.000000;%;4
+157;3;40179;I16;;PF value at point 2;;0.001000;0.000000;;4
+158;3;40180;U16;;U/Un value at point 3;;0.100000;0.000000;%;4
+159;3;40181;I16;;PF value at point 3;;0.001000;0.000000;;4
+160;3;40182;U16;;U/Un value at point 4;;0.100000;0.000000;%;4
+161;3;40183;I16;;PF value at point 4;;0.001000;0.000000;;4
+162;3;40184;U16;;U/Un value at point 5;;0.100000;0.000000;%;4
+163;3;40185;I16;;PF value at point 5;;0.001000;0.000000;;4
+164;3;40186;U16;;U/Un value at point 6;;0.100000;0.000000;%;4
+165;3;40187;I16;;PF value at point 6;;0.001000;0.000000;;4
+166;3;40188;U16;;U/Un value at point 7;;0.100000;0.000000;%;4
+167;3;40189;I16;;PF value at point 7;;0.001000;0.000000;;4
+168;3;40190;U16;;U/Un value at point 8;;0.100000;0.000000;%;4
+169;3;40191;I16;;PF value at point 8;;0.001000;0.000000;;4
+170;3;40192;U16;;U/Un value at point 9;;0.100000;0.000000;%;4
+171;3;40193;I16;;PF value at point 9;;0.001000;0.000000;;4
+172;3;40194;U16;;U/Un value at point 10;;0.100000;0.000000;%;4
+173;3;40195;I16;;PF value at point 10;;0.001000;0.000000;;4
+174;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;;1.000000;0.000000;s;4
+175;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;;1.000000;0.000000;%;4
+176;3;40200;U16;;Power On  ;cmdOn;1.000000;0.000000;;4
+177;3;40201;U16;;Power Off  ;cmdOff;1.000000;0.000000;;4
+178;3;42000;U16;;Grid code;;0.001000;0.000000;;4
+179;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001000;0.000000;%/s;4
+180;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001000;0.000000;;4
+181;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;;1.000000;0.000000;s;4
+182;3;43006;I16;;Time Zone;;1.000000;0.000000;min;4
+183;3;37000;U16;;[Energy storage unit 1] Running status;;1.000000;0.000000;;1
+184;3;37001;I32;;[Energy storage unit 1] Charge and discharge power;;1.000000;0.000000;W;1
+185;3;37003;U16;;[Energy storage unit 1] Bus voltage;;1.000000;0.000000;V;1
+186;3;37004;U16;;[Energy storage unit 1] Battery SOC;;1.000000;0.000000;%;1
+187;3;37006;U16;;[Energy storage unit 1] Working mode;;1.000000;0.000000;;1
+188;3;37007;U32;;[Energy storage unit 1] Rated charge power;;1.000000;0.000000;W;1
+189;3;37009;U32;;[Energy storage unit 1] Rated discharge power;;1.000000;0.000000;;1
+190;3;37014;U16;;[Energy storage unit 1] Fault ID;;1.000000;0.000000;;1
+191;3;37015;U32;;[Energy storage unit 1] Currentday charge capacity;;1.000000;0.000000;kWh;1
+192;3;37017;U32;;[Energy storage unit 1] Currentday discharge capacity;;0.100000;0.000000;kWh;1
+193;3;37021;I16;;[Energy storage unit 1] Bus current;;0.100000;0.000000;A;1
+194;3;37022;I16;;[Energy storage unit 1] battery temperature;;0.100000;0.000000;Deg. Celsius;1
+195;3;37025;U16;;[Energy storage unit 1] Remaining charge/ discharge time;;1.000000;0.000000;min/s;1
+196;3;37026_20;STRING;;[Energy storage unit 1] DCDCversion;;1.000000;0.000000;;1
+197;3;37036_20;STRING;;[Energy storage unit 1] BMSversion;;1.000000;0.000000;;1
+198;3;37046;U32;;[Energy storage]Maximum charge power;;1.000000;0.000000;W;1
+199;3;37048;U32;;[Energy storage] Maximum discharge power;;1.000000;0.000000;W;1
+200;3;37052_20;STRING;;[Energy storage unit 1] SN;;1.000000;0.000000;;1
+201;3;37066;U32;;[Energy storage unit 1] Total charge;;0.001000;0.000000;kWh;1
+202;3;37068;U32;;[Energy storage unit 1] Total discharge;;0.001000;0.000000;kWh;1
+203;3;37738;U16;;[Energy storage unit 2] Battery SOC;;0.100000;0.000000;%;1
+204;3;37741;U16;;[Energy storage unit 2] Running status;;1.000000;0.000000;;1
+205;3;37743;I32;;[Energy storage unit 2] Charge and discharge power;;1.000000;0.000000;W;1
+206;3;37746;U32;;[Energy storage unit 2] Currentday charge capacity;;1.000000;0.000000;kWh;1
+207;3;37748;U32;;[Energy storage unit 2] Currentday discharge capacity;;0.100000;0.000000;kWh;1
+208;3;37750;U16;;[Energy storage unit 2] Bus voltage;;0.100000;0.000000;V;1
+209;3;37751;I16;;[Energy storage unit 2] Bus current;;0.100000;0.000000;A;1
+210;3;37752;I16;;[Energy storage unit 2] Battery temperature;;0.100000;0.000000;Deg. Celsius;1
+211;3;37753;U32;;[Energy storage unit 2] Total charge;;0.010000;0.000000;kWh;1
+212;3;37755;U32;;[Energy storage unit 2] Total discharge;;0.010000;0.000000;kWh;1
+213;3;37758;U32;;[Energy storage]Rated capacity;;1.000000;0.000000;Wh;1
+214;3;37760;U16;;[Energy storage]SOC;;0.100000;0.000000;%;1
+215;3;37762;U16;;[Energy storage]Running status;;1.000000;0.000000;;1
+216;3;37763;U16;;[Energy storage]Bus voltage;;1.000000;0.000000;V;1
+217;3;37764;I16;;[Energy storage]Bus current;;0.100000;0.000000;A;1
+218;3;37765;I32;;[Energy storage]Charge/ Discharge power;;1.000000;0.000000;W;1
+219;3;37780;U32;;[Energy storage]Total charge;;0.010000;0.000000;kWh;1
+220;3;37782;U32;;[Energy storage]Total discharge;;0.010000;0.000000;kWh;1
+221;3;37784;U32;;[Energy storage] Current-day charge capacity;;0.010000;0.000000;kWh;1
+222;3;37786;U32;;[Energy storage] Current-day discharge capacity;;0.010000;0.000000;kWh;1
+223;3;37799_30;STRING;;[Energy storage unit 2] software version;;1.000000;0.000000;;1
+224;3;37814_30;STRING;;[Energy storage unit 1] software version;;1.000000;0.000000;;1
+225;3;38200_20;STRING;;[Energy storage unit 1] [Battery pack1]SN;;1.000000;0.000000;;1
+226;3;38210_30;STRING;;[Energy storage unit 1] [Battery pack1]Firmware version;;1.000000;0.000000;;1
+227;3;38228;U16;;[Energy storage unit 1] [Battery pack1]Working status;;1.000000;0.000000;;1
+228;3;38229;U16;;[Energy storage unit 1] [Battery pack1]SOC;;0.100000;0.000000;%;1
+229;3;38233;I32;;[Energy storage unit 1] [Battery pack1]Charge/Discharge power;;0.001000;0.000000;kW;1
+230;3;38235;U16;;[Energy storage unit 1] [Battery pack1]Voltage;;0.100000;0.000000;V;1
+231;3;38236;I16;;[Energy storage unit 1] [Battery pack1]Current;;0.100000;0.000000;A;1
+232;3;38238;U32;;[Energy storage unit 1] [Battery pack1]Total charge;;0.010000;0.000000;kWh;1
+233;3;38240;U32;;[Energy storage unit 1] [Battery pack1]Total discharge;;0.010000;0.000000;kWh;1
+234;3;38242_20;STRING;;[Energy storage unit 1] [Battery pack2]SN;;1.000000;0.000000;;1
+235;3;38252_30;STRING;;[Energy storage unit 1] [Battery pack2]Firmware version;;1.000000;0.000000;;1
+236;3;38270;U16;;[Energy storage unit 1] [Battery pack2]Working status;;1.000000;0.000000;;1
+237;3;38271;U16;;[Energy storage unit 1] [Battery pack2]SOC;;1.000000;0.000000;%;1
+238;3;38275;I32;;[Energy storage unit 1] [Battery pack2]Charge/Discharge power;;0.001000;0.000000;kW;1
+239;3;38277;U16;;[Energy storage unit 1] [Battery pack2]Voltage;;1.000000;0.000000;;1
+240;3;38278;I16;;[Energy storage unit 1] [Battery pack2]Current;;0.100000;0.000000;A;1
+241;3;38280;U32;;[Energy storage unit 1] [Battery pack2]Total charge;;0.010000;0.000000;kWh;1
+242;3;38282;U32;;[Energy storage unit 1] [Battery pack2]Total discharge;;0.010000;0.000000;kWh;1
+243;3;38284_20;STRING;;[Energy storage unit 1] [Battery pack3]SN;;1.000000;0.000000;;1
+244;3;38294_30;STRING;;[Energy storage unit 1] [Battery pack3]Firmware version;;1.000000;0.000000;;1
+245;3;38312;U16;;[Energy storage unit 1] [Battery pack3]Working status;;1.000000;0.000000;;1
+246;3;38313;U16;;[Energy storage unit 1] [Battery pack3]SOC;;1.000000;0.000000;%;1
+247;3;38317;I32;;[Energy storage unit 1] [Battery pack3]Charge/Discharge power;;0.001000;0.000000;kW;1
+248;3;38319;U16;;[Energy storage unit 1] [Battery pack3]Voltage;;0.100000;0.000000;V;1
+249;3;38320;I16;;[Energy storage unit 1] [Battery pack3]Current;;0.100000;0.000000;A;1
+250;3;38322;U32;;[Energy storage unit 1] [Battery pack3]Total charge;;0.100000;0.000000;kWh;1
+251;3;38324;U32;;[Energy storage unit 1] [Battery pack3]Total discharge;;0.010000;0.000000;kWh;1
+252;3;38326_20;STRING;;[Energy storage unit 2] [Battery pack1]SN;;0.100000;0.000000;;1
+253;3;38336_30;STRING;;[Energy storage unit 2] [Battery pack1]Firmware version;;1.000000;0.000000;;1
+254;3;38354;U16;;[Energy storage unit 2] [Battery pack1]Working status;;1.000000;0.000000;;1
+255;3;38355;U16;;[Energy storage unit 2] [Battery pack1]SOC;;0.100000;0.000000;%;1
+256;3;38359;I32;;[Energy storage unit 2] [Battery pack1]Charge/Discharge power;;0.001000;0.000000;kW;1
+257;3;38361;U16;;[Energy storage unit 2] [Battery pack1]Voltage;;0.100000;0.000000;V;1
+258;3;38362;I16;;[Energy storage unit 2] [Battery pack1]Current;;0.100000;0.000000;A;1
+259;3;38364;U32;;[Energy storage unit 2] [Battery pack1]Total charge;;0.010000;0.000000;kWh;1
+260;3;38366;U32;;[Energy storage unit 2] [Battery pack1]Total discharge;;0.010000;0.000000;kWh;1
+261;3;38368_20;STRING;;[Energy storage unit 2] [Battery pack2]SN;;0.100000;0.000000;;1
+262;3;38378_30;STRING;;[Energy storage unit 2] [Battery pack2]Firmware version;;1.000000;0.000000;;1
+263;3;38396;U16;;[Energy storage unit 2] [Battery pack2]Working status;;1.000000;0.000000;;1
+264;3;38397;U16;;[Energy storage unit 2] [Battery pack2]SOC;;1.000000;0.000000;%;1
+265;3;38401;I32;;[Energy storage unit 2] [Battery pack2]Charge/Discharge power;;0.001000;0.000000;kW;1
+266;3;38403;U16;;[Energy storage unit 2] [Battery pack2]Voltage;;1.000000;0.000000;V;1
+267;3;38404;I16;;[Energy storage unit 2] [Battery pack2]Current;;0.100000;0.000000;A;1
+268;3;38406;U32;;[Energy storage unit 2] [Battery pack2]Total charge;;0.010000;0.000000;kWh;1
+269;3;38408;U32;;[Energy storage unit 2] [Battery pack2]Total discharge;;0.010000;0.000000;kWh;1
+270;3;38410_20;STRING;;[Energy storage unit 2] [Battery pack3]SN;;1.000000;0.000000;;1
+271;3;38420_30;STRING;;[Energy storage unit 2] [Battery pack3]Firmware version;;1.000000;0.000000;;1
+272;3;38438;U16;;[Energy storage unit 2] [Battery pack3]Working status;;1.000000;0.000000;;1
+273;3;38439;U16;;[Energy storage unit 2] [Battery pack3]SOC;;0.100000;0.000000;%;1
+274;3;38443;I32;;[Energy storage unit 2] [Battery pack3]Charge/Discharge power;;0.001000;0.000000;kW;1
+275;3;38445;U16;;[Energy storage unit 2] [Battery pack3]Voltage;;0.100000;0.000000;V;1
+276;3;38446;I16;;[Energy storage unit 2] [Battery pack3]Current;;0.100000;0.000000;A;1
+277;3;38448;U32;;[Energy storage unit 2] [Battery pack3]Total charge;;0.010000;0.000000;kWh;1
+278;3;38450;U32;;[Energy storage unit 2] [Battery pack3]Total discharge;;0.010000;0.000000;Deg. Celsius;1
+279;3;38452;I16;;[Energy storage unit 1] [Battery pack1]Maximum temperature;;0.100000;0.000000;Deg. Celsius;1
+280;3;38453;I16;;[Energy storage unit 1] [Battery pack1]Minimum temperature;;0.100000;0.000000;Deg. Celsius;1
+281;3;38454;I16;;[Energy storage unit 1] [Battery pack2]Maximum temperature;;0.100000;0.000000;Deg. Celsius;1
+282;3;38455;I16;;[Energy storage unit 1] [Battery pack2]Minimum temperature;;0.100000;0.000000;Deg. Celsius;1
+283;3;38456;I16;;[Energy storage unit 1] [Battery pack3]Maximum temperature;;0.100000;0.000000;Deg. Celsius;1
+284;3;38457;I16;;[Energy storage unit 1] [Battery pack3]Minimum temperature;;0.100000;0.000000;Deg. Celsius;1
+285;3;38458;I16;;[Energy storage unit 2] [Battery pack1]Maximum temperature;;0.100000;0.000000;Deg. Celsius;1
+286;3;38459;I16;;[Energy storage unit 2] [Battery pack1]Minimum temperature;;0.100000;0.000000;Deg. Celsius;1
+287;3;38460;I16;;[Energy storage unit 2] [Battery pack2]Maximum temperature;;0.100000;0.000000;Deg. Celsius;1
+288;3;38461;I16;;[Energy storage unit 2] [Battery pack2]Minimum temperature;;0.100000;0.000000;Deg. Celsius;1
+289;3;38462;I16;;[Energy storage unit 2] [Battery pack3]Maximum temperature;;0.100000;0.000000;Deg. Celsius;1
+290;3;38463;I16;;[Energy storage unit 2] [Battery pack3]Minimum temperature;;0.100000;0.000000;Deg. Celsius;1
+291;3;47000;U16;;[Energy storage unit 1] Product mode;;1.000000;0.000000;;1
+292;3;47075;U32;;[Energy storage]Maximum charging power;;1.000000;0.000000;W;1
+293;3;47077;U32;;[Energy storage]Maximum discharging power;;1.000000;0.000000;W;1
+294;3;47081;U16;;[Energy storage]Charging cutoff capacity;;0.100000;0.000000;%;1
+295;3;47082;U16;;[Energy storage] Discharge cutoff capacity;;0.100000;0.000000;%;1
+296;3;47083;U16;;[Energy storage]Forced charging and discharging period;;1.000000;0.000000;min/s;1
+297;3;47086;U16;;[Energy storage]Working mode settings;;1.000000;0.000000;;1
+298;3;47087;U16;;[Energy storage] Charge from grid Function;;1.000000;0.000000;;1
+299;3;47088;U16;;[Energy storage] Grid charge cutoff SOC;;1.000000;0.000000;%;1
+300;3;47089;U16;;[Energy storage unit 2] Product model;;1.000000;0.000000;;1
+301;3;47100;U16;;[Energy storage] Forcible charge/ discharge;;1.000000;0.000000;;1
+302;3;47102;U16;;[Energy storage] Backup power SOC;;0.100000;0.000000;%;1
+303;3;47107;U16;;[Energy storage unit 1] No.;;1.000000;0.000000;;1
+304;3;47108;U16;;[Energy storage unit 2] No.;;1.000000;0.000000;;1
+305;3;47242;U32;;[Energy storage] Power of charge from grid;;0.001000;0.000000;;1
+306;3;47244;U32;;[Energy storage]Maximum power of charge from grid;;0.001000;0.000000;;1
+307;3;47246;U16;;[Energy storage]Forcible charge/ discharge setting mode;;0.001000;0.000000;;1
+308;3;47247;U32;;[Energy storage] Forcible charge power;;0.001000;0.000000;kW;1
+309;3;47249;U32;;[Energy storage] Forcible discharge power;;1.000000;0.000000;kW;1
+310;3;47299;U16;;[Energy storage] Excess PV energy use in TOU;;1.000000;0.000000;;1
+311;3;47415;U16;;Active power control mode;;1.000000;0.000000;;1
+312;3;47416;I32;;Maximum Feed Grid Power (kW);;0.001000;0.000000;kW;1
+313;3;47418;I16;;Maximum Feed Grid Power (%);;0.100000;0.000000;%;1
+314;3;47590;U32;;[Dongle] [Plant]maximum charge from-grid power;;0.001000;0.000000;kW;1
+315;3;47604;U16;;[Backup]Switch to Off-grid;;1.000000;0.000000;V;1
+316;3;47605;U16;;[Backup] Voltage in independent operation;;1.000000;0.000000;;1
+317;3;47750;U16;;[Energy storage unit 1] [Battery pack1]No.;;1.000000;0.000000;;1
+318;3;47751;U16;;[Energy storage unit 1] [Battery pack2]No.;;1.000000;0.000000;;1
+319;3;47752;U16;;[Energy storage unit 1] [Battery pack3]No.;;1.000000;0.000000;;1
+320;3;47753;U16;;[Energy storage unit 2] [Battery pack1]No.;;1.000000;0.000000;;1
+321;3;47754;U16;;[Energy storage unit 2] [Battery pack2]No.;;1.000000;0.000000;;1
+322;3;47755;U16;;[Energy storage unit 2] [Battery pack3]No.;;1.000000;0.000000;;1
