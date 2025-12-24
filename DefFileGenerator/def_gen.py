@@ -13,7 +13,7 @@ def generate_template(output_file):
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action']
     rows = [
         ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4'],
-        ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'String', '', '', '', '4'],
+        ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'STRING', '', '', '', '4'],
         ['Bit Variable', 'bit_tag', 'Holding Register', '30020_0_1', 'Bits', '', '', '', '4']
     ]
 
@@ -34,27 +34,31 @@ def generate_template(output_file):
         logging.error(f"Error generating template: {e}")
 
 def validate_type(dtype):
-    """Validates the data type."""
+    """Validates the data type (case-insensitive)."""
+    dtype_upper = dtype.upper()
+
     # Base types
-    base_types = ['String', 'Bits', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
-    if dtype in base_types:
+    base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
+    if dtype_upper in base_types:
         return True
 
     # Integer types with optional suffixes
     # U8, U16, U32, U64, I8, I16, I32, I64
     # Suffixes: _W, _B, _WB
     # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype):
+    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype_upper):
         return True
 
     return False
 
 def validate_address(address, dtype):
     """Validates the address format based on type."""
-    if dtype == 'String':
+    dtype_upper = dtype.upper()
+
+    if dtype_upper == 'STRING':
         # Expect Address_Length (e.g., 30000_30)
         return re.match(r'^\d+_\d+$', address) is not None
-    elif dtype == 'Bits':
+    elif dtype_upper == 'BITS':
         # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
         return re.match(r'^\d+_\d+_\d+$', address) is not None
     else:
@@ -106,18 +110,28 @@ def main():
         with open(args.input_file, mode='r', encoding='utf-8-sig') as csvfile:
             reader = csv.DictReader(csvfile)
 
-            # Normalize headers to remove whitespace
+            # Normalize headers to remove whitespace and handle case
             if reader.fieldnames:
-                reader.fieldnames = [name.strip() for name in reader.fieldnames]
+                # Map common variations of headers
+                header_map = {h.strip().lower(): h for h in reader.fieldnames}
+
+                # Check for required columns by checking lower case keys
+                required_columns_lower = ['name', 'registertype', 'address', 'type']
+                missing_columns = [col for col in required_columns_lower if col not in header_map]
+
+                if missing_columns:
+                    logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)} (checked case-insensitive)")
+                    sys.exit(1)
+
+                # Helper to get value from row safely
+                def get_val(row, col_name_lower):
+                    actual_col = header_map.get(col_name_lower)
+                    if actual_col:
+                        return row.get(actual_col, '').strip()
+                    return ''
+
             else:
                 logging.error("Input CSV is empty or missing headers.")
-                sys.exit(1)
-
-            # Check for required columns
-            required_columns = ['Name', 'RegisterType', 'Address', 'Type']
-            missing_columns = [col for col in required_columns if col not in reader.fieldnames]
-            if missing_columns:
-                logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)}")
                 sys.exit(1)
 
             # Prepare output header row
@@ -140,16 +154,16 @@ def main():
                 if not any(row.values()):
                     continue
 
-                # Extract values
-                name = row.get('Name', '').strip()
-                tag = row.get('Tag', '').strip()
-                reg_type_str = row.get('RegisterType', '').strip()
-                address = row.get('Address', '').strip()
-                dtype = row.get('Type', '').strip()
-                factor = row.get('Factor', '').strip()
-                offset = row.get('Offset', '').strip()
-                unit = row.get('Unit', '').strip()
-                action = row.get('Action', '').strip()
+                # Extract values using case-insensitive header mapping
+                name = get_val(row, 'name')
+                tag = get_val(row, 'tag')
+                reg_type_str = get_val(row, 'registertype')
+                address = get_val(row, 'address')
+                dtype = get_val(row, 'type')
+                factor = get_val(row, 'factor')
+                offset = get_val(row, 'offset')
+                unit = get_val(row, 'unit')
+                action = get_val(row, 'action')
 
                 if not name and not address:
                     logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -179,8 +193,8 @@ def main():
                 # Info2: Address (supports Address_Length format)
                 info2 = address
 
-                # Info3: Type
-                info3 = dtype
+                # Info3: Type - Normalize to Upper Case for consistency with Huawei example
+                info3 = dtype.upper()
 
                 # Info4: Empty
                 info4 = ''

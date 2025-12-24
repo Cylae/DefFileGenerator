@@ -1,0 +1,12 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action
+"Voltage L1",Vol_L1,Holding Register,30001,U16,0.1,0,V,4
+"Serial Number",SN,Holding Register,30010_10,STRING,1,0,,4
+"Status Bits",Status,Input Register,30020_0_8,BITS,1,0,,4
+"Temperature",Temp,holding register,30030,i16,0.1,0,C,4
+"Energy",Energy_Total,3,30040,u32,0.001,0,kWh,2
+"Mixed Case Type",Mixed,Holding Register,30050,StRiNg,1,0,,4
+"Explicit Type 3",Type3,3,30060,U16,1,0,V,4
+"Default Action",DefAct,Holding Register,30070,U16,1,0,V,
+"Action 9",Alarm,Holding Register,30080,U16,1,0,,9
+"Invalid Type",Invalid,Holding Register,30090,INVALID,1,0,,4
+"Invalid Address",BadAddr,Holding Register,30000_A,U16,1,0,,4
