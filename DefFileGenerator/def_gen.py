@@ -36,8 +36,8 @@ def generate_template(output_file):
 def validate_type(dtype):
     """Validates the data type."""
     # Base types
-    base_types = ['String', 'Bits', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
-    if dtype in base_types:
+    base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
+    if dtype.upper() in base_types:
         return True
 
     # Integer types with optional suffixes
@@ -51,10 +51,11 @@ def validate_type(dtype):
 
 def validate_address(address, dtype):
     """Validates the address format based on type."""
-    if dtype == 'String':
+    dtype_upper = dtype.upper()
+    if dtype_upper == 'STRING':
         # Expect Address_Length (e.g., 30000_30)
         return re.match(r'^\d+_\d+$', address) is not None
-    elif dtype == 'Bits':
+    elif dtype_upper == 'BITS':
         # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
         return re.match(r'^\d+_\d+_\d+$', address) is not None
     else:
