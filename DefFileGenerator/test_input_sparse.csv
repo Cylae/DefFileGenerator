@@ -2,3 +2,4 @@ Name;Tag;RegisterType;Address;Type;Factor;Offset;Unit;Action
 Model Name;DisplayModel;Holding;30000_30;STRING;1;0;;4
 State 1;;Holding;32000;U16;1;0;;9
 Volt inverter_entry 1;;Holding;32016;I16;0.1;0;V;4
+Empty Factor Offset;;Holding;40000;U16;;;;4

@@ -1,0 +1,4 @@
+modbusRTU;Inverter;HUAWEI;V4;;;;;;;
+1;3;30000_30;STRING;;Model Name;DisplayModel;1.000000;0.000000;;4
+2;3;32000;U16;;State 1;;1.000000;0.000000;;9
+3;3;32016;I16;;Volt inverter_entry 1;;0.100000;0.000000;V;4
