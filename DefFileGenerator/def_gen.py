@@ -35,16 +35,16 @@ def generate_template(output_file):
 
 def validate_type(dtype):
     """Validates the data type."""
-    # Base types
-    base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
-    if dtype.upper() in base_types:
+    # Base types without suffixes
+    base_types_no_suffix = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC']
+    if dtype.upper() in base_types_no_suffix:
         return True
 
-    # Integer types with optional suffixes
-    # U8, U16, U32, U64, I8, I16, I32, I64
+    # Types that allow suffixes
+    # U8-U64, I8-I64, F32, F64
     # Suffixes: _W, _B, _WB
-    # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype):
+    # Regex: ^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$
+    if re.match(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', dtype, re.IGNORECASE):
         return True
 
     return False
@@ -59,7 +59,8 @@ def validate_address(address, dtype):
         # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
         return re.match(r'^\d+_\d+_\d+$', address) is not None
     else:
-        # Expect integer address
+        # Expect integer address for other types
+        # IP, IPV6, MAC are just start address
         return re.match(r'^\d+$', address) is not None
 
 def main():
@@ -90,36 +91,52 @@ def main():
         'coil': '1',
         'discrete input': '2',
         'holding register': '3',
-        'input register': '4'
+        'input register': '4',
+        'coils': '1',
+        'discrete inputs': '2',
+        'holding registers': '3',
+        'input registers': '4'
     }
 
     # Allowed Action codes
     allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
     try:
-        # Open output file or stdout
-        if args.output:
-            outfile = open(args.output, 'w', newline='', encoding='utf-8')
-        else:
-            outfile = sys.stdout
+        # Determine delimiter using Sniffer
+        with open(args.input_file, mode='r', encoding='utf-8-sig') as f:
+            sample = f.read(2048)
+            try:
+                # Try to sniff with preferred delimiters
+                dialect = csv.Sniffer().sniff(sample, delimiters=';,')
+                delimiter = dialect.delimiter
+            except csv.Error:
+                # Fallback to comma if sniffing fails
+                logging.warning("Could not determine delimiter. Defaulting to semicolon.")
+                delimiter = ';'
+            f.seek(0)
 
-        # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
-        with open(args.input_file, mode='r', encoding='utf-8-sig') as csvfile:
-            reader = csv.DictReader(csvfile)
+            # Use DictReader with inferred delimiter
+            reader = csv.DictReader(f, delimiter=delimiter)
 
-            # Normalize headers to remove whitespace
+            # Normalize headers to remove whitespace and handle case-insensitivity
             if reader.fieldnames:
-                reader.fieldnames = [name.strip() for name in reader.fieldnames]
+                # Create a map of normalized headers to actual headers
+                header_map = {h.strip().lower(): h for h in reader.fieldnames}
+                # Check for required columns (case-insensitive)
+                required_columns_lower = ['name', 'registertype', 'address', 'type']
+                missing_columns = [col for col in required_columns_lower if col not in header_map]
+                if missing_columns:
+                    logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)}")
+                    sys.exit(1)
             else:
                 logging.error("Input CSV is empty or missing headers.")
                 sys.exit(1)
 
-            # Check for required columns
-            required_columns = ['Name', 'RegisterType', 'Address', 'Type']
-            missing_columns = [col for col in required_columns if col not in reader.fieldnames]
-            if missing_columns:
-                logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)}")
-                sys.exit(1)
+            # Open output file or stdout
+            if args.output:
+                outfile = open(args.output, 'w', newline='', encoding='utf-8')
+            else:
+                outfile = sys.stdout
 
             # Prepare output header row
             # Protocol;Category;Manufacturer;Model;ForcedWriteCode;;;;;;
@@ -137,23 +154,42 @@ def main():
 
             index = 1
             for line_num, row in enumerate(reader, start=2): # Start at 2 because header is 1
-                # Skip empty rows (if any)
-                if not any(row.values()):
+                # Check for comments or empty rows
+                # If using Sniffer, comments starting with # might be read as data if inside quotes or strict CSV
+                # But here we iterate DictReader.
+                # If a line starts with # in the file, DictReader might process it oddly if it doesn't match columns.
+                # However, for robustness, we can check if the 'name' (or first column) starts with #
+
+                # Get values using the header map to ensure we get the right column regardless of case
+                def get_val(key):
+                    actual_key = header_map.get(key.lower())
+                    if actual_key:
+                        return row.get(actual_key, '').strip()
+                    return ''
+
+                name = get_val('Name')
+
+                # Skip comments (lines starting with # in the Name column, or just empty)
+                if not name and not any(row.values()):
+                    continue
+                if name.startswith('#'):
                     continue
 
-                # Extract values
-                name = row.get('Name', '').strip()
-                tag = row.get('Tag', '').strip()
-                reg_type_str = row.get('RegisterType', '').strip()
-                address = row.get('Address', '').strip()
-                dtype = row.get('Type', '').strip()
-                factor = row.get('Factor', '').strip()
-                offset = row.get('Offset', '').strip()
-                unit = row.get('Unit', '').strip()
-                action = row.get('Action', '').strip()
+                tag = get_val('Tag')
+                reg_type_str = get_val('RegisterType')
+                address = get_val('Address')
+                dtype = get_val('Type')
+                factor = get_val('Factor')
+                offset = get_val('Offset')
+                unit = get_val('Unit')
+                action = get_val('Action')
 
-                if not name and not address:
-                    logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
+                if not name:
+                    logging.warning(f"Line {line_num}: Skipping row with missing Name.")
+                    continue
+
+                if not address:
+                    logging.warning(f"Line {line_num}: Skipping row with missing Address.")
                     continue
 
                 # Validation: Type
@@ -177,11 +213,11 @@ def main():
                     else:
                         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
 
-                # Info2: Address (supports Address_Length format)
+                # Info2: Address
                 info2 = address
 
-                # Info3: Type
-                info3 = dtype
+                # Info3: Type (Normalize to uppercase)
+                info3 = dtype.upper()
 
                 # Info4: Empty
                 info4 = ''
