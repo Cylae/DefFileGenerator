@@ -4,6 +4,7 @@ import csv
 import sys
 import logging
 import re
+import math
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -62,10 +63,138 @@ def validate_address(address, dtype):
         # Expect integer address
         return re.match(r'^\d+$', address) is not None
 
+def calculate_registers(address_str, dtype):
+    """
+    Calculates the start address and number of registers consumed.
+    Returns (start_address, num_registers).
+    """
+    dtype_upper = dtype.upper()
+    start_addr = 0
+    num_regs = 0
+
+    if dtype_upper == 'STRING':
+        # Format: Address_Length
+        match = re.match(r'^(\d+)_(\d+)$', address_str)
+        if match:
+            start_addr = int(match.group(1))
+            length = int(match.group(2))
+            # 1 register = 2 bytes
+            num_regs = math.ceil(length / 2)
+    elif dtype_upper == 'BITS':
+        # Format: Address_StartBit_NbBits
+        match = re.match(r'^(\d+)_(\d+)_(\d+)$', address_str)
+        if match:
+            start_addr = int(match.group(1))
+            num_regs = 0 # Bits are within a register, handled specially in overlap check
+    elif dtype_upper == 'IP':
+        start_addr = int(address_str)
+        num_regs = 2
+    elif dtype_upper == 'IPV6':
+        start_addr = int(address_str)
+        num_regs = 8
+    elif dtype_upper == 'MAC':
+        start_addr = int(address_str)
+        num_regs = 3
+    else:
+        # Standard numeric types
+        match = re.match(r'^[UI](8|16|32|64)', dtype_upper)
+        if match:
+            bits = int(match.group(1))
+            num_regs = max(1, bits // 16)
+        elif dtype_upper in ['F32']:
+            num_regs = 2
+        elif dtype_upper in ['F64']:
+            num_regs = 4
+
+        # Parse simple address
+        if re.match(r'^\d+$', address_str):
+            start_addr = int(address_str)
+
+    return start_addr, num_regs
+
+def validate_uniqueness(rows):
+    """Checks for duplicate Names and Tags."""
+    names = {}
+    tags = {}
+
+    for i, row in enumerate(rows):
+        name = row['Name']
+        tag = row['Tag']
+
+        if name:
+            if name in names:
+                logging.warning(f"Duplicate Name '{name}' found in lines {names[name]} and {i + 1}.")
+            names[name] = i + 1
+
+        if tag:
+            if tag in tags:
+                logging.warning(f"Duplicate Tag '{tag}' found in lines {tags[tag]} and {i + 1}.")
+            tags[tag] = i + 1
+
+def check_overlaps(rows):
+    """Checks for address overlaps within the same RegisterType (Info1)."""
+    # map: Info1 -> { address: [ (line_num, type, name) ] }
+    register_maps = {}
+
+    for i, row in enumerate(rows):
+        info1 = row['Info1']
+        info2 = row['Info2'] # Address string
+        dtype = row['Info3']
+        name = row['Name']
+        line_num = i + 1 # Approximate line number (index + 1)
+
+        if info1 not in register_maps:
+            register_maps[info1] = {}
+
+        start_addr, num_regs = calculate_registers(info2, dtype)
+
+        # If num_regs is 0 (BITS), we treat it as checking the base address
+        # but we need to handle it carefully.
+        # BITS usually share the same register.
+        # Check logic:
+        # If address X is used by BITS, it can be used by other BITS.
+        # If address X is used by BITS, it should NOT be used by U16/U32 etc.
+        # If address X is used by U16, it should NOT be used by other types (overlap).
+
+        target_indices = []
+        if num_regs == 0 and dtype.upper() == 'BITS':
+             target_indices = [start_addr]
+        elif num_regs > 0:
+             target_indices = range(start_addr, start_addr + num_regs)
+        else:
+             # Should not happen if validation passed, but just in case
+             continue
+
+        for addr in target_indices:
+            if addr not in register_maps[info1]:
+                register_maps[info1][addr] = []
+
+            # Check for conflict with existing entries
+            for entry in register_maps[info1][addr]:
+                existing_line, existing_type, existing_name = entry
+
+                # Conflict logic:
+                # If both are BITS, it is allowed (same register, different bits) - Warning if exact same?
+                # If one is BITS and other is not, WARN.
+                # If neither is BITS, WARN (direct overlap).
+
+                is_bits = (dtype.upper() == 'BITS')
+                existing_is_bits = (existing_type.upper() == 'BITS')
+
+                if is_bits and existing_is_bits:
+                    # Both BITS, allowed.
+                    pass
+                else:
+                    logging.warning(f"Address Overlap detected at Address {addr} (Info1={info1}): "
+                                    f"'{name}' (Line {line_num}, Type {dtype}) conflicts with "
+                                    f"'{existing_name}' (Line {existing_line}, Type {existing_type}).")
+
+            register_maps[info1][addr].append((line_num, dtype, name))
+
 def main():
     parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
     parser.add_argument('input_file', nargs='?', help='Path to the simplified CSV input file.')
-    parser.add_argument('-o', '--output', help='Path to the output CSV file. Defaults to stdout.')
+    parser.add_argument('-o', '--output', help='Path to the output CSV file.')
     parser.add_argument('--protocol', default='modbusRTU', help='Protocol name (default: modbusRTU).')
     parser.add_argument('--category', default='Inverter', help='Device category (default: Inverter).')
     parser.add_argument('--manufacturer', help='Manufacturer name.')
@@ -121,19 +250,8 @@ def main():
                 logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)}")
                 sys.exit(1)
 
-            # Prepare output header row
-            # Protocol;Category;Manufacturer;Model;ForcedWriteCode;;;;;;
-            header_row = [
-                args.protocol,
-                args.category,
-                args.manufacturer,
-                args.model,
-                args.forced_write,
-                '', '', '', '', '', '' # Fill to 11 columns to match data row structure
-            ]
-
-            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-            writer.writerow(header_row)
+            # Process all rows first
+            processed_rows = []
 
             index = 1
             for line_num, row in enumerate(reader, start=2): # Start at 2 because header is 1
@@ -213,23 +331,57 @@ def main():
                     logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
                     action = '1'
 
-                # Construct data row
-                data_row = [
-                    str(index),
-                    info1,
-                    info2,
-                    info3,
-                    info4,
-                    name,
-                    tag,
-                    coef_a,
-                    coef_b,
-                    unit,
-                    action
-                ]
-
-                writer.writerow(data_row)
+                # Store processed row
+                row_data = {
+                    'Index': str(index),
+                    'Info1': info1,
+                    'Info2': info2,
+                    'Info3': info3,
+                    'Info4': info4,
+                    'Name': name,
+                    'Tag': tag,
+                    'CoefA': coef_a,
+                    'CoefB': coef_b,
+                    'Unit': unit,
+                    'Action': action
+                }
+                processed_rows.append(row_data)
                 index += 1
+
+            # Run robustness checks
+            validate_uniqueness(processed_rows)
+            check_overlaps(processed_rows)
+
+            # Write output
+            # Prepare output header row
+            # Protocol;Category;Manufacturer;Model;ForcedWriteCode;;;;;;
+            header_row = [
+                args.protocol,
+                args.category,
+                args.manufacturer,
+                args.model,
+                args.forced_write,
+                '', '', '', '', '', '' # Fill to 11 columns to match data row structure
+            ]
+
+            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
+            writer.writerow(header_row)
+
+            for row in processed_rows:
+                data_row = [
+                    row['Index'],
+                    row['Info1'],
+                    row['Info2'],
+                    row['Info3'],
+                    row['Info4'],
+                    row['Name'],
+                    row['Tag'],
+                    row['CoefA'],
+                    row['CoefB'],
+                    row['Unit'],
+                    row['Action']
+                ]
+                writer.writerow(data_row)
 
         if args.output:
             outfile.close()
