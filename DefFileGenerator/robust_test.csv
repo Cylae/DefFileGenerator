@@ -1,0 +1,9 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action
+Var 1,Tag1,Holding Register,30000,U16,1,0,,4
+Var 2,Tag2,Holding Register,30000,U16,1,0,,4
+Var 3,Tag1,Holding Register,30002,U16,1,0,,4
+Var 4,Tag4,Holding Register,30004,STR10,1,0,,4
+Var 5,Tag5,Holding Register,30004,U16,1,0,,4
+Var 6,Tag6,Holding Register,30020_0_1,BITS,1,0,,4
+Var 7,Tag7,Holding Register,30020_1_1,BITS,1,0,,4
+Var 8,Tag8,Holding Register,30020,U16,1,0,,4
