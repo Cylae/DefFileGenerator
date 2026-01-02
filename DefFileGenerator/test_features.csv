@@ -1,0 +1,10 @@
+Name;Tag;RegisterType;Address;Type;Factor;Offset;Unit;Action;ScaleFactor
+Model Name;DisplayModel;Holding Register;30000;STR30;1;0;;4;
+Serial Number;DisplaySerialNumber;Holding Register;30015;STR20;1;0;;4;
+Rated Power;NominalPower;Holding Register;30073;U32;0.001;0;kW;4;
+Max Active Power;;Holding Register;30075;U32;0.001;0;kW;4;
+Overlap Test;;Holding Register;30076;U16;1;0;;4;
+Scaled Variable;;Holding Register;40000;I16;1;0;V;4;SF_Var
+Scale Factor Var;SF_Var;Holding Register;40001;I16;1;0;;4;
+Bit Field 1;;Holding Register;32000_0_1;BITS;1;0;;4;
+Bit Field 2;;Holding Register;32000_1_1;BITS;1;0;;4;

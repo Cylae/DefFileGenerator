@@ -4,17 +4,19 @@ import csv
 import sys
 import logging
 import re
+import math
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def generate_template(output_file):
     """Generates a template CSV input file."""
-    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action']
+    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
     rows = [
-        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4'],
-        ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'String', '', '', '', '4'],
-        ['Bit Variable', 'bit_tag', 'Holding Register', '30020_0_1', 'Bits', '', '', '', '4']
+        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', ''],
+        ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'String', '', '', '', '4', ''],
+        ['Bit Variable', 'bit_tag', 'Holding Register', '30020_0_1', 'Bits', '', '', '', '4', ''],
+        ['Scaled Variable', 'scaled_tag', 'Holding Register', '30030', 'I16', '1', '0', 'V', '4', 'ScaleFactorVar']
     ]
 
     try:
@@ -35,16 +37,21 @@ def generate_template(output_file):
 
 def validate_type(dtype):
     """Validates the data type."""
+    dtype_upper = dtype.upper()
     # Base types
     base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
-    if dtype.upper() in base_types:
+    if dtype_upper in base_types:
+        return True
+
+    # STR<n> type
+    if re.match(r'^STR\d+$', dtype_upper):
         return True
 
     # Integer types with optional suffixes
     # U8, U16, U32, U64, I8, I16, I32, I64
     # Suffixes: _W, _B, _WB
     # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype):
+    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype_upper):
         return True
 
     return False
@@ -52,8 +59,10 @@ def validate_type(dtype):
 def validate_address(address, dtype):
     """Validates the address format based on type."""
     dtype_upper = dtype.upper()
-    if dtype_upper == 'STRING':
-        # Expect Address_Length (e.g., 30000_30)
+    if dtype_upper == 'STRING' or re.match(r'^STR\d+$', dtype_upper):
+        # Expect Address_Length (e.g., 30000_30) OR just Address if Type is STR<n>
+        if re.match(r'^STR\d+$', dtype_upper) and re.match(r'^\d+$', address):
+             return True
         return re.match(r'^\d+_\d+$', address) is not None
     elif dtype_upper == 'BITS':
         # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
@@ -61,6 +70,50 @@ def validate_address(address, dtype):
     else:
         # Expect integer address
         return re.match(r'^\d+$', address) is not None
+
+def get_register_count(dtype, address):
+    """Calculates the number of registers used by a type."""
+    dtype_upper = dtype.upper()
+
+    if dtype_upper == 'BITS':
+        return 1
+
+    # Check STR<n> first
+    str_match = re.match(r'^STR(\d+)$', dtype_upper)
+    if str_match:
+        length = int(str_match.group(1))
+        return math.ceil(length / 2)
+
+    if dtype_upper == 'STRING':
+        # Length is in address: Addr_Length
+        try:
+            length = int(address.split('_')[1])
+            return math.ceil(length / 2)
+        except IndexError:
+            return 0 # Should be caught by validation
+
+    if dtype_upper in ['U16', 'I16']:
+        return 1
+    if dtype_upper in ['U32', 'I32', 'F32', 'IP']:
+        return 2
+    if dtype_upper in ['U64', 'I64', 'F64']:
+        return 4
+    if dtype_upper == 'MAC':
+        return 3
+    if dtype_upper == 'IPV6':
+        return 8
+
+    # Handle suffixed types
+    if re.match(r'^[UI]16', dtype_upper): return 1
+    if re.match(r'^[UI]32', dtype_upper): return 2
+    if re.match(r'^[UI]64', dtype_upper): return 4
+
+    # U8/I8 usually map to bytes within a register, but we reserve the whole register to avoid overlap issues unless handled specifically
+    # However, Modbus usually addresses 16-bit registers.
+    # If the user specifies byte access (e.g. 30000_1 for U8), it still effectively uses register 30000.
+    if re.match(r'^[UI]8', dtype_upper): return 1
+
+    return 1 # Default fallback
 
 def main():
     parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
@@ -96,6 +149,9 @@ def main():
     # Allowed Action codes
     allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    # Track used registers for overlap detection: list of (start, end, type, line_num)
+    used_ranges = []
+
     try:
         # Open output file or stdout
         if args.output:
@@ -105,7 +161,19 @@ def main():
 
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
         with open(args.input_file, mode='r', encoding='utf-8-sig') as csvfile:
-            reader = csv.DictReader(csvfile)
+            # Detect delimiter
+            try:
+                # Read a snippet to detect dialect
+                sample = csvfile.read(2048)
+                csvfile.seek(0)
+                dialect = csv.Sniffer().sniff(sample)
+                delimiter = dialect.delimiter
+            except csv.Error:
+                # Fallback to comma if detection fails
+                csvfile.seek(0)
+                delimiter = ','
+
+            reader = csv.DictReader(csvfile, delimiter=delimiter)
 
             # Normalize headers to remove whitespace
             if reader.fieldnames:
@@ -151,6 +219,7 @@ def main():
                 offset = row.get('Offset', '').strip()
                 unit = row.get('Unit', '').strip()
                 action = row.get('Action', '').strip()
+                scale_factor = row.get('ScaleFactor', '').strip()
 
                 if not name and not address:
                     logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -165,6 +234,44 @@ def main():
                 if not validate_address(address, dtype):
                     logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                     continue
+
+                # Handle STR<n>
+                str_match = re.match(r'^STR(\d+)$', dtype.upper())
+                if str_match:
+                    length = str_match.group(1)
+                    dtype = 'STRING'
+                    # Update address if it doesn't have length
+                    if '_' not in address:
+                        address = f"{address}_{length}"
+
+                # Address Overlap Detection
+                # Extract base address
+                try:
+                    if '_' in address:
+                        base_addr = int(address.split('_')[0])
+                    else:
+                        base_addr = int(address)
+
+                    reg_count = get_register_count(dtype, address)
+                    if reg_count > 0:
+                        start_addr = base_addr
+                        end_addr = base_addr + reg_count - 1
+
+                        # Check against used ranges
+                        for u_start, u_end, u_type, u_line in used_ranges:
+                            # Check overlap: (StartA <= EndB) and (EndA >= StartB)
+                            if (start_addr <= u_end) and (end_addr >= u_start):
+                                # If both are BITS, overlap is allowed on the same register
+                                if dtype.upper() == 'BITS' and u_type == 'BITS' and start_addr == u_start:
+                                    continue
+                                else:
+                                    logging.warning(f"Line {line_num}: Address overlap detected! {name} ({start_addr}-{end_addr}) overlaps with previous entry at line {u_line} ({u_start}-{u_end}).")
+
+                        used_ranges.append((start_addr, end_addr, dtype.upper(), line_num))
+
+                except ValueError:
+                    # Address parsing failed, skipping overlap check (validation should have caught it)
+                    pass
 
                 # Map RegisterType to Info1
                 info1 = '3' # Default to Holding Register
@@ -183,8 +290,8 @@ def main():
                 # Info3: Type
                 info3 = dtype
 
-                # Info4: Empty
-                info4 = ''
+                # Info4: ScaleFactor
+                info4 = scale_factor
 
                 # CoefA from Factor
                 if not factor:
