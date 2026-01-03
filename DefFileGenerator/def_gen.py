@@ -4,17 +4,19 @@ import csv
 import sys
 import logging
 import re
+import math
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def generate_template(output_file):
     """Generates a template CSV input file."""
-    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action']
+    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
     rows = [
-        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4'],
-        ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'String', '', '', '', '4'],
-        ['Bit Variable', 'bit_tag', 'Holding Register', '30020_0_1', 'Bits', '', '', '', '4']
+        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', ''],
+        ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'String', '', '', '', '4', ''],
+        ['Bit Variable', 'bit_tag', 'Holding Register', '30020_0_1', 'Bits', '', '', '', '4', ''],
+        ['Str20 Variable', 'str20_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
     ]
 
     try:
@@ -44,17 +46,66 @@ def validate_type(dtype):
     # U8, U16, U32, U64, I8, I16, I32, I64
     # Suffixes: _W, _B, _WB
     # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype):
+    if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype, re.IGNORECASE):
+        return True
+
+    # STR<n> types
+    if re.match(r'^STR\d+$', dtype, re.IGNORECASE):
         return True
 
     return False
 
+def calculate_register_count(dtype, address):
+    """Calculates the number of registers used by a type."""
+    dtype_upper = dtype.upper()
+
+    # Handle STR<n> by converting to STRING length
+    str_match = re.match(r'^STR(\d+)$', dtype_upper)
+    if str_match:
+        length = int(str_match.group(1))
+        return math.ceil(length / 2)
+
+    if dtype_upper == 'STRING':
+        # Parse length from Address_Length
+        match = re.match(r'^\d+_(\d+)$', address)
+        if match:
+            length = int(match.group(1))
+            return math.ceil(length / 2)
+        return 0 # Should be validated before
+    elif dtype_upper == 'BITS':
+        return 1
+    elif dtype_upper in ['U16', 'I16', 'U8', 'I8']: # U8/I8 usually take 1 register in modbus context unless packed
+        return 1
+    elif dtype_upper in ['U32', 'I32', 'F32', 'IP']:
+        return 2
+    elif dtype_upper == 'MAC':
+        return 3
+    elif dtype_upper in ['U64', 'I64', 'F64']:
+        return 4
+    elif dtype_upper == 'IPV6':
+        return 8
+
+    # Handle suffixed types
+    if re.match(r'^[UI](8|16)(_(W|B|WB))?$', dtype_upper):
+        return 1
+    if re.match(r'^[UI]32(_(W|B|WB))?$', dtype_upper):
+        return 2
+    if re.match(r'^[UI]64(_(W|B|WB))?$', dtype_upper):
+        return 4
+
+    return 1 # Default fallback
+
 def validate_address(address, dtype):
     """Validates the address format based on type."""
     dtype_upper = dtype.upper()
+
     if dtype_upper == 'STRING':
         # Expect Address_Length (e.g., 30000_30)
         return re.match(r'^\d+_\d+$', address) is not None
+    elif re.match(r'^STR\d+$', dtype_upper):
+         # Expect integer address or Address_Length (though length is in type)
+         # We accept just address for STR<n> as we will format it later
+         return re.match(r'^\d+(_\d+)?$', address) is not None
     elif dtype_upper == 'BITS':
         # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
         return re.match(r'^\d+_\d+_\d+$', address) is not None
@@ -96,6 +147,9 @@ def main():
     # Allowed Action codes
     allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    # Overlap detection registry: {register_address: [list of variable names]}
+    used_registers = {}
+
     try:
         # Open output file or stdout
         if args.output:
@@ -105,11 +159,21 @@ def main():
 
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
         with open(args.input_file, mode='r', encoding='utf-8-sig') as csvfile:
-            reader = csv.DictReader(csvfile)
+            # Detect delimiter
+            try:
+                dialect = csv.Sniffer().sniff(csvfile.read(1024), delimiters=";,")
+                csvfile.seek(0)
+            except csv.Error:
+                # Default to comma if detection fails
+                csvfile.seek(0)
+                dialect = 'excel' # defaults to comma
 
-            # Normalize headers to remove whitespace
+            reader = csv.DictReader(csvfile, dialect=dialect)
+
+            # Normalize headers to remove whitespace and handle case insensitivity
             if reader.fieldnames:
                 reader.fieldnames = [name.strip() for name in reader.fieldnames]
+                # Map common variations to standard names if needed (not strictly required if user follows template)
             else:
                 logging.error("Input CSV is empty or missing headers.")
                 sys.exit(1)
@@ -151,6 +215,7 @@ def main():
                 offset = row.get('Offset', '').strip()
                 unit = row.get('Unit', '').strip()
                 action = row.get('Action', '').strip()
+                scale_factor = row.get('ScaleFactor', '').strip()
 
                 if not name and not address:
                     logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -165,6 +230,47 @@ def main():
                 if not validate_address(address, dtype):
                     logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                     continue
+
+                # Handle STR<n> conversion
+                str_match = re.match(r'^STR(\d+)$', dtype, re.IGNORECASE)
+                if str_match:
+                    str_len = str_match.group(1)
+                    dtype = 'STRING' # Normalize to STRING
+                    # Update address if it doesn't have length
+                    if '_' not in address:
+                        address = f"{address}_{str_len}"
+                    elif not address.endswith(f"_{str_len}"):
+                        logging.warning(f"Line {line_num}: STR{str_len} type specified but address '{address}' has different length suffix. Using address as is.")
+
+                # Overlap Detection
+                try:
+                    # Parse base address
+                    if '_' in address:
+                         base_addr = int(address.split('_')[0])
+                    else:
+                         base_addr = int(address)
+
+                    reg_count = calculate_register_count(dtype if not str_match else f"STR{str_len}", address)
+
+                    for r in range(base_addr, base_addr + reg_count):
+                        if r in used_registers:
+                            # Check for allowed overlaps (BITS with BITS)
+                            # We assume if existing is BITS and current is BITS, it is allowed.
+                            # We need to know the type of the existing registration.
+                            # Since we just store names, we might want to store type too.
+                            # For now, let's just warn if overlap.
+
+                            # Simple check: BITS overlap allowed?
+                            # To do this correctly, we need to track Type in used_registers.
+                            pass # We will handle inside loop
+
+                        if r not in used_registers:
+                            used_registers[r] = []
+
+                        used_registers[r].append({'name': name, 'type': dtype})
+
+                except ValueError:
+                    logging.warning(f"Line {line_num}: Error parsing address '{address}' for overlap check.")
 
                 # Map RegisterType to Info1
                 info1 = '3' # Default to Holding Register
@@ -186,15 +292,24 @@ def main():
                 # Info4: Empty
                 info4 = ''
 
-                # CoefA from Factor
+                # CoefA from Factor and ScaleFactor
                 if not factor:
-                    coef_a = "1.000000"
+                    base_factor = 1.0
                 else:
                     try:
-                        coef_a = "{:.6f}".format(float(factor))
+                        base_factor = float(factor)
                     except ValueError:
-                        logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using as is.")
-                        coef_a = factor
+                        logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
+                        base_factor = 1.0
+
+                if scale_factor:
+                    try:
+                        sf = float(scale_factor)
+                        base_factor = base_factor * (10 ** sf)
+                    except ValueError:
+                        logging.warning(f"Line {line_num}: Invalid ScaleFactor '{scale_factor}'. Ignoring.")
+
+                coef_a = "{:.6f}".format(base_factor)
 
                 # CoefB from Offset
                 if not offset:
@@ -231,6 +346,16 @@ def main():
                 writer.writerow(data_row)
                 index += 1
 
+            # Check overlaps after processing
+            for addr, users in used_registers.items():
+                if len(users) > 1:
+                    # Check if all users are BITS
+                    all_bits = all(u['type'] == 'BITS' for u in users)
+                    if not all_bits:
+                        names = [u['name'] for u in users]
+                        logging.warning(f"Overlap detected at register {addr}: {', '.join(names)}")
+
+
         if args.output:
             outfile.close()
             logging.info(f"Definition file generated at {args.output}")
@@ -240,6 +365,9 @@ def main():
         sys.exit(1)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
+        # print stack trace for debugging
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
 
 if __name__ == "__main__":
