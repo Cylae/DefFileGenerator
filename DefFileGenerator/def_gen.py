@@ -47,6 +47,10 @@ def validate_type(dtype):
     if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype):
         return True
 
+    # STR<n> support (e.g., STR20)
+    if re.match(r'^STR\d+$', dtype):
+        return True
+
     return False
 
 def validate_address(address, dtype):
@@ -61,6 +65,43 @@ def validate_address(address, dtype):
     else:
         # Expect integer address
         return re.match(r'^\d+$', address) is not None
+
+def get_register_size(dtype, address_str):
+    """Calculates the number of registers used by a type."""
+    dtype_upper = dtype.upper()
+
+    if dtype_upper == 'BITS':
+        return 1 # Bits are packed in registers, checking overlap is complex but base is 1 reg
+    elif dtype_upper == 'STRING':
+        # Address format: Start_Length
+        try:
+            _, length = address_str.split('_')
+            length = int(length)
+            return (length + 1) // 2 # 2 chars per register? Or 1?
+            # Standard Modbus string usually 2 chars per register (16-bit).
+            # ceil(length / 2)
+            return (length + 1) // 2
+        except ValueError:
+            return 1 # Fallback
+    elif dtype_upper in ['U8', 'I8', 'U16', 'I16']:
+        return 1
+    elif dtype_upper in ['U32', 'I32', 'F32', 'IP']:
+        return 2
+    elif dtype_upper in ['U64', 'I64', 'F64']:
+        return 4
+    elif dtype_upper == 'MAC':
+        return 3 # 6 bytes
+    elif dtype_upper == 'IPV6':
+        return 8 # 16 bytes
+
+    # Default fallback
+    return 1
+
+def parse_address_start(address, dtype):
+    """Extracts the start register address."""
+    if '_' in address:
+        return int(address.split('_')[0])
+    return int(address)
 
 def main():
     parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
@@ -96,6 +137,12 @@ def main():
     # Allowed Action codes
     allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    # Global tracking for validation
+    used_names = set()
+    used_tags = set()
+    # address_map maps register address to list of (variable_name, type)
+    address_map = {}
+
     try:
         # Open output file or stdout
         if args.output:
@@ -104,8 +151,21 @@ def main():
             outfile = sys.stdout
 
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
-        with open(args.input_file, mode='r', encoding='utf-8-sig') as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(args.input_file, mode='r', encoding='utf-8-sig', newline='') as csvfile:
+            # Sniff dialect
+            try:
+                sample = csvfile.read(1024)
+                csvfile.seek(0)
+                dialect = csv.Sniffer().sniff(sample)
+                # Ensure delimiters are reasonable (comma or semicolon)
+                if dialect.delimiter not in [',', ';']:
+                     dialect.delimiter = ','
+            except csv.Error:
+                # Fallback to comma if sniffing fails
+                csvfile.seek(0)
+                dialect = 'excel'
+
+            reader = csv.DictReader(csvfile, dialect=dialect)
 
             # Normalize headers to remove whitespace
             if reader.fieldnames:
@@ -148,6 +208,7 @@ def main():
                 address = row.get('Address', '').strip()
                 dtype = row.get('Type', '').strip()
                 factor = row.get('Factor', '').strip()
+                scale_factor = row.get('ScaleFactor', '').strip()
                 offset = row.get('Offset', '').strip()
                 unit = row.get('Unit', '').strip()
                 action = row.get('Action', '').strip()
@@ -160,6 +221,16 @@ def main():
                 if not validate_type(dtype):
                     logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
                     continue
+
+                # Handle STR<n> -> STRING conversion and address update
+                dtype_upper = dtype.upper()
+                str_match = re.match(r'^STR(\d+)$', dtype_upper)
+                if str_match:
+                    length = str_match.group(1)
+                    dtype = 'STRING'
+                    # Update address to Address_Length if not already present
+                    if '_' not in address:
+                        address = f"{address}_{length}"
 
                 # Validation: Address format based on Type
                 if not validate_address(address, dtype):
@@ -186,15 +257,24 @@ def main():
                 # Info4: Empty
                 info4 = ''
 
-                # CoefA from Factor
+                # CoefA from Factor and ScaleFactor
                 if not factor:
-                    coef_a = "1.000000"
+                    f_val = 1.0
                 else:
                     try:
-                        coef_a = "{:.6f}".format(float(factor))
+                        f_val = float(factor)
                     except ValueError:
-                        logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using as is.")
-                        coef_a = factor
+                        logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
+                        f_val = 1.0
+
+                if scale_factor:
+                    try:
+                        sf_val = float(scale_factor)
+                        f_val = f_val * (10 ** sf_val)
+                    except ValueError:
+                         logging.warning(f"Line {line_num}: Invalid ScaleFactor '{scale_factor}'. Ignoring.")
+
+                coef_a = "{:.6f}".format(f_val)
 
                 # CoefB from Offset
                 if not offset:
@@ -227,6 +307,44 @@ def main():
                     unit,
                     action
                 ]
+
+                # Global Validation Checks
+
+                # Duplicate Name
+                if name in used_names:
+                    logging.warning(f"Line {line_num}: Duplicate Name '{name}'.")
+                else:
+                    used_names.add(name)
+
+                # Duplicate Tag
+                if tag:
+                    if tag in used_tags:
+                        logging.warning(f"Line {line_num}: Duplicate Tag '{tag}'.")
+                    else:
+                        used_tags.add(tag)
+
+                # Address Overlap
+                try:
+                    start_addr = parse_address_start(address, dtype)
+                    reg_count = get_register_size(dtype, address)
+
+                    for i in range(reg_count):
+                        curr_addr = start_addr + i
+                        if curr_addr in address_map:
+                            # Check overlap validity
+                            existing_vars = address_map[curr_addr]
+                            for existing_name, existing_type in existing_vars:
+                                if existing_type.upper() == 'BITS' and dtype.upper() == 'BITS':
+                                    continue # BITS overlap is allowed
+                                else:
+                                    logging.warning(f"Line {line_num}: Address overlap detected at {curr_addr}. Variable '{name}' overlaps with '{existing_name}'.")
+
+                            address_map[curr_addr].append((name, dtype))
+                        else:
+                            address_map[curr_addr] = [(name, dtype)]
+
+                except ValueError:
+                    logging.warning(f"Line {line_num}: Could not parse address for overlap check.")
 
                 writer.writerow(data_row)
                 index += 1
