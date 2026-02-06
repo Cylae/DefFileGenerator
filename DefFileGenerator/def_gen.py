@@ -6,8 +6,85 @@ import logging
 import re
 import math
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+            except ValueError:
+                logging.warning(f"Line {line_num}: Could not calculate register range for address '{address}'.")
+
+            # Map RegisterType to Info1
+            info1 = '3' # Default to Holding Register
+            if reg_type_str:
+                lower_type = reg_type_str.lower()
+                if lower_type in self.register_type_map:
+                    info1 = self.register_type_map[lower_type]
+                elif reg_type_str in ['1', '2', '3', '4']:
+                    info1 = reg_type_str
+                else:
+                    logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
+
+            # Info2: Address
+            info2 = address
+
+            # Info3: Type
+            info3 = dtype.upper() # Ensure uppercase in output
+
+            # Info4: Empty
+            info4 = ''
+
+            # CoefA from Factor and ScaleFactor
+            if not factor:
+                val_factor = 1.0
+            else:
+                try:
+                    val_factor = float(factor)
+                except ValueError:
+                    logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
+                    val_factor = 1.0
+
+            if not scale_factor_str:
+                val_scale = 0
+            else:
+                try:
+                    val_scale = int(float(scale_factor_str))
+                except ValueError:
+                     logging.warning(f"Line {line_num}: Invalid ScaleFactor '{scale_factor_str}'. Using 0.")
+                     val_scale = 0
+
+            final_coef_a_val = val_factor * (10 ** val_scale)
+            coef_a = "{:.6f}".format(final_coef_a_val)
+
+            # CoefB from Offset
+            if not offset:
+                coef_b = "0.000000"
+            else:
+                try:
+                    coef_b = "{:.6f}".format(float(offset))
+                except ValueError:
+                    logging.warning(f"Line {line_num}: Invalid Offset '{offset}'. Using as is.")
+                    coef_b = offset
+
+            # Action
+            if not action:
+                action = '1' # Default per spec
+            elif action not in self.allowed_actions:
+                logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
+                action = '1'
+
+            # Construct processed row
+            processed_row = {
+                'Info1': info1,
+                'Info2': info2,
+                'Info3': info3,
+                'Info4': info4,
+                'Name': name,
+                'Tag': tag,
+                'CoefA': coef_a,
+                'CoefB': coef_b,
+                'Unit': unit,
+                'Action': action
+            }
+
+            processed_rows.append(processed_row)
+
+        return processed_rows
 
 def generate_template(output_file):
     """Generates a template CSV input file."""
@@ -98,6 +175,9 @@ def get_register_count(dtype, address):
     return 1 # Default
 
 def main():
+    # Configure logging
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
     parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
     parser.add_argument('input_file', nargs='?', help='Path to the simplified CSV input file.')
     parser.add_argument('-o', '--output', help='Path to the output CSV file. Defaults to stdout.')
@@ -164,7 +244,14 @@ def main():
             # Check for required columns
             # ScaleFactor is optional
             required_columns = ['Name', 'RegisterType', 'Address', 'Type']
-            missing_columns = [col for col in required_columns if col not in reader.fieldnames]
+            # We need to map actual headers to required ones to check existence?
+            # Or just assume standard names. The original code did strict check on normalized or raw headers.
+            # Let's trust the DictReader fieldnames for the check.
+            # We need to account for potential case differences in the check too.
+
+            header_map = {h.lower(): h for h in reader.fieldnames}
+            missing_columns = [col for col in required_columns if col.lower() not in header_map]
+
             if missing_columns:
                 logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)}")
                 sys.exit(1)
