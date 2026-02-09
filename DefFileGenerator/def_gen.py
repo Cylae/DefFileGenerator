@@ -81,7 +81,9 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        used_addresses = [] # List of tuples: (start_addr, end_addr, line_num, name, type)
+        # Tracks used addresses per register type (Info1)
+        # Dictionary of Info1 -> list of tuples (start_addr, end_addr, line_num, name, type)
+        used_addresses_by_type = {}
 
         for line_num, row in enumerate(rows, start=2):
             # Skip empty rows
@@ -151,6 +153,17 @@ class Generator:
                 else:
                     seen_tags[tag] = line_num
 
+            # Map RegisterType to Info1
+            info1 = '3' # Default to Holding Register
+            if reg_type_str:
+                lower_type = reg_type_str.lower()
+                if lower_type in self.register_type_map:
+                    info1 = self.register_type_map[lower_type]
+                elif reg_type_str in ['1', '2', '3', '4']:
+                    info1 = reg_type_str
+                else:
+                    logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
+
             # Address Overlap Calculation
             try:
                 # Parse start address
@@ -162,10 +175,13 @@ class Generator:
 
                 current_range = (start_addr, end_addr, line_num, name, dtype.upper())
 
-                # Check overlap against used_addresses
+                if info1 not in used_addresses_by_type:
+                    used_addresses_by_type[info1] = []
+
+                # Check overlap against used_addresses for this register type
                 is_bits = (dtype.upper() == 'BITS')
 
-                for used_start, used_end, used_line, used_name, used_type in used_addresses:
+                for used_start, used_end, used_line, used_name, used_type in used_addresses_by_type[info1]:
                     # Check if ranges overlap
                     if max(start_addr, used_start) <= min(end_addr, used_end):
                         # Overlap detected
@@ -173,23 +189,12 @@ class Generator:
                         is_overlap_allowed = is_bits and (used_type == 'BITS')
 
                         if not is_overlap_allowed:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}).")
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}) in register type {info1}.")
 
-                used_addresses.append(current_range)
+                used_addresses_by_type[info1].append(current_range)
 
             except ValueError:
                 logging.warning(f"Line {line_num}: Could not calculate register range for address '{address}'.")
-
-            # Map RegisterType to Info1
-            info1 = '3' # Default to Holding Register
-            if reg_type_str:
-                lower_type = reg_type_str.lower()
-                if lower_type in self.register_type_map:
-                    info1 = self.register_type_map[lower_type]
-                elif reg_type_str in ['1', '2', '3', '4']:
-                    info1 = reg_type_str
-                else:
-                    logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
 
             # Info2: Address
             info2 = address
