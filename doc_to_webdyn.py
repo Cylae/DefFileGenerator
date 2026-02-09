@@ -3,11 +3,21 @@ import argparse
 import sys
 import os
 import logging
-import pandas as pd
-import pdfplumber
 import re
 import csv
 from DefFileGenerator.def_gen import Generator
+
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
+try:
+    import pdfplumber
+    HAS_PDFPLUMBER = True
+except ImportError:
+    HAS_PDFPLUMBER = False
 
 COLUMN_MAPPING = {
     'Address': ['register', 'address', 'addr', 'offset', 'reg'],
@@ -41,6 +51,11 @@ def find_column(df_columns, target_key):
     return None
 
 def normalize_address(addr):
+    if not HAS_PANDAS:
+        # Fallback if pandas is not available
+        if addr is None: return ''
+        return str(addr).strip()
+
     if addr is None or pd.isna(addr):
         return ''
     addr_str = str(addr).strip()
@@ -61,7 +76,9 @@ def normalize_address(addr):
     return addr_str
 
 def normalize_type(dtype):
-    if dtype is None or pd.isna(dtype):
+    is_na = pd.isna(dtype) if HAS_PANDAS else (dtype is None)
+
+    if dtype is None or is_na:
         return 'U16'
     dtype_str = str(dtype).lower().strip()
     for key, val in TYPE_MAPPING.items():
@@ -72,7 +89,9 @@ def normalize_type(dtype):
     return dtype_str.upper() if dtype_str else 'U16'
 
 def generate_tag(name):
-    if name is None or pd.isna(name):
+    is_na = pd.isna(name) if HAS_PANDAS else (name is None)
+
+    if name is None or is_na:
         return ""
     tag = str(name).lower()
     # Replace non-alphanumeric with underscore
@@ -92,6 +111,10 @@ def main():
     parser.add_argument('-v', '--verbose', action='store_true', help='Show detailed processing information')
 
     args = parser.parse_args()
+
+    if not HAS_PANDAS:
+        logging.error("pandas is not installed. This tool requires pandas to function.")
+        sys.exit(1)
 
     # Configure logging
     log_level = logging.DEBUG if args.verbose else logging.INFO
@@ -279,6 +302,10 @@ def load_xml(filepath):
             return []
 
 def load_pdf(filepath):
+    if not HAS_PDFPLUMBER:
+        logging.error("pdfplumber is not installed. PDF extraction is unavailable.")
+        return []
+
     dfs = []
     try:
         with pdfplumber.open(filepath) as pdf:

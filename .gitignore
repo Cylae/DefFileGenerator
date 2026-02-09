@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.env
+venv/
+test_output.csv
+test_output_doc.csv
+test_registers.xlsx
+test_registers.pdf
+test_mapping.json

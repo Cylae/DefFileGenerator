@@ -6,8 +6,18 @@ import logging
 import os
 import re
 import sys
-import openpyxl
-import pdfplumber
+
+try:
+    import openpyxl
+    HAS_OPENPYXL = True
+except ImportError:
+    HAS_OPENPYXL = False
+
+try:
+    import pdfplumber
+    HAS_PDFPLUMBER = True
+except ImportError:
+    HAS_PDFPLUMBER = False
 
 class Extractor:
     def __init__(self, mapping=None):
@@ -68,6 +78,10 @@ class Extractor:
 
     def extract_from_excel(self, filepath, sheet_name=None):
         logging.info(f"Extracting from Excel: {filepath}")
+        if not HAS_OPENPYXL:
+            logging.error("openpyxl is not installed. Excel extraction is unavailable.")
+            return []
+
         wb = openpyxl.load_workbook(filepath, data_only=True)
         if sheet_name:
             if sheet_name not in wb.sheetnames:
@@ -94,6 +108,10 @@ class Extractor:
 
     def extract_from_pdf(self, filepath, pages=None):
         logging.info(f"Extracting from PDF: {filepath}")
+        if not HAS_PDFPLUMBER:
+            logging.error("pdfplumber is not installed. PDF extraction is unavailable.")
+            return []
+
         data = []
         with pdfplumber.open(filepath) as pdf:
             if pages is None:

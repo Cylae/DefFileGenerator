@@ -6,6 +6,16 @@ import logging
 import re
 import math
 
+# Pre-compiled regex patterns for optimization
+RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
+RE_TYPE_STR_CONV = re.compile(r'^STR\d+$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^\d+_\d+$')
+RE_ADDR_BITS = re.compile(r'^\d+_\d+_\d+$')
+RE_ADDR_INT = re.compile(r'^\d+$')
+RE_COUNT_16_8 = re.compile(r'^[UI](16|8)(_(W|B|WB))?$', re.IGNORECASE)
+RE_COUNT_32 = re.compile(r'^[UI]32(_(W|B|WB))?$', re.IGNORECASE)
+RE_COUNT_64 = re.compile(r'^[UI]64(_(W|B|WB))?$', re.IGNORECASE)
+
 class Generator:
     def __init__(self):
         # RegisterType mapping to Info1
@@ -27,14 +37,11 @@ class Generator:
             return True
 
         # Integer types with optional suffixes
-        # U8, U16, U32, U64, I8, I16, I32, I64
-        # Suffixes: _W, _B, _WB
-        # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-        if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype_upper):
+        if RE_TYPE_INT.match(dtype_upper):
             return True
 
         # STR<n> syntax (e.g., STR20)
-        if re.match(r'^STR\d+$', dtype_upper):
+        if RE_TYPE_STR_CONV.match(dtype_upper):
             return True
 
         return False
@@ -45,23 +52,23 @@ class Generator:
 
         if dtype_upper == 'STRING':
             # Expect Address_Length (e.g., 30000_30)
-            return re.match(r'^\d+_\d+$', address) is not None
+            return RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
             # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
-            return re.match(r'^\d+_\d+_\d+$', address) is not None
+            return RE_ADDR_BITS.match(address) is not None
         else:
             # Expect integer address
-            return re.match(r'^\d+$', address) is not None
+            return RE_ADDR_INT.match(address) is not None
 
     def get_register_count(self, dtype, address):
         """Calculates the number of registers used by the type."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper in ['U16', 'I16', 'BITS'] or re.match(r'^[UI]16(_(W|B|WB))?$', dtype_upper) or re.match(r'^[UI]8(_(W|B|WB))?$', dtype_upper):
+        if dtype_upper in ['U16', 'I16', 'BITS'] or RE_COUNT_16_8.match(dtype_upper):
             return 1
-        elif dtype_upper in ['U32', 'I32', 'F32', 'IP'] or re.match(r'^[UI]32(_(W|B|WB))?$', dtype_upper):
+        elif dtype_upper in ['U32', 'I32', 'F32', 'IP'] or RE_COUNT_32.match(dtype_upper):
             return 2
-        elif dtype_upper in ['U64', 'I64', 'F64'] or re.match(r'^[UI]64(_(W|B|WB))?$', dtype_upper):
+        elif dtype_upper in ['U64', 'I64', 'F64'] or RE_COUNT_64.match(dtype_upper):
             return 4
         elif dtype_upper == 'MAC':
             return 3
@@ -121,7 +128,7 @@ class Generator:
 
             # Handle STR<n> conversion
             dtype_upper = dtype.upper()
-            if re.match(r'^STR\d+$', dtype_upper):
+            if RE_TYPE_STR_CONV.match(dtype_upper):
                 try:
                     length = int(dtype_upper[3:])
                     dtype = 'STRING'
