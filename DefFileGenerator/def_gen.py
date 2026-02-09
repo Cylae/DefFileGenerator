@@ -283,37 +283,26 @@ def generate_template(output_file):
     except Exception as e:
         logging.error(f"Error generating template: {e}")
 
-def main():
-    # Configure logging
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+def run_generator(input_file, output=None, manufacturer=None, model=None,
+                 protocol='modbusRTU', category='Inverter', forced_write='',
+                 template=False):
+    if template:
+        generate_template(output)
+        return
 
-    parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
-    parser.add_argument('input_file', nargs='?', help='Path to the simplified CSV input file.')
-    parser.add_argument('-o', '--output', help='Path to the output CSV file. Defaults to stdout.')
-    parser.add_argument('--protocol', default='modbusRTU', help='Protocol name (default: modbusRTU).')
-    parser.add_argument('--category', default='Inverter', help='Device category (default: Inverter).')
-    parser.add_argument('--manufacturer', help='Manufacturer name.')
-    parser.add_argument('--model', help='Model name.')
-    parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
-    parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    if not input_file:
+        logging.error("input_file is required")
+        return
 
-    args = parser.parse_args()
-
-    if args.template:
-        generate_template(args.output)
-        sys.exit(0)
-
-    if not args.input_file:
-        parser.error("the following arguments are required: input_file")
-
-    if not args.manufacturer or not args.model:
-         parser.error("the following arguments are required: --manufacturer, --model")
+    if not manufacturer or not model:
+         logging.error("--manufacturer and --model are required")
+         return
 
     generator = Generator()
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
-        with open(args.input_file, mode='r', encoding='utf-8-sig') as csvfile:
+        with open(input_file, mode='r', encoding='utf-8-sig') as csvfile:
             # Detect delimiter
             try:
                 dialect = csv.Sniffer().sniff(csvfile.read(1024), delimiters=";,")
@@ -331,7 +320,7 @@ def main():
                 reader.fieldnames = [name.strip() for name in reader.fieldnames]
             else:
                 logging.error("Input CSV is empty or missing headers.")
-                sys.exit(1)
+                return
 
             # Check for required columns
             required_columns = ['Name', 'RegisterType', 'Address', 'Type']
@@ -340,23 +329,23 @@ def main():
 
             if missing_columns:
                 logging.error(f"Missing required columns in input CSV: {', '.join(missing_columns)}")
-                sys.exit(1)
+                return
 
             processed_rows = generator.process_rows(reader)
 
         # Write Output
-        if args.output:
-            outfile = open(args.output, 'w', newline='', encoding='utf-8')
+        if output:
+            outfile = open(output, 'w', newline='', encoding='utf-8')
         else:
             outfile = sys.stdout
 
         # Prepare output header row
         header_row = [
-            args.protocol,
-            args.category,
-            args.manufacturer,
-            args.model,
-            args.forced_write,
+            protocol,
+            category,
+            manufacturer,
+            model,
+            forced_write,
             '', '', '', '', '', ''
         ]
 
@@ -379,16 +368,40 @@ def main():
             ]
             writer.writerow(data_row)
 
-        if args.output:
+        if output:
             outfile.close()
-            logging.info(f"Definition file generated at {args.output}")
+            logging.info(f"Definition file generated at {output}")
 
     except FileNotFoundError:
-        logging.error(f"File '{args.input_file}' not found.")
-        sys.exit(1)
+        logging.error(f"File '{input_file}' not found.")
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
-        sys.exit(1)
+
+def main():
+    # Configure logging
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
+    parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
+    parser.add_argument('input_file', nargs='?', help='Path to the simplified CSV input file.')
+    parser.add_argument('-o', '--output', help='Path to the output CSV file. Defaults to stdout.')
+    parser.add_argument('--protocol', default='modbusRTU', help='Protocol name (default: modbusRTU).')
+    parser.add_argument('--category', default='Inverter', help='Device category (default: Inverter).')
+    parser.add_argument('--manufacturer', help='Manufacturer name.')
+    parser.add_argument('--model', help='Model name.')
+    parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
+    parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+
+    args = parser.parse_args()
+    run_generator(
+        input_file=args.input_file,
+        output=args.output,
+        manufacturer=args.manufacturer,
+        model=args.model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        template=args.template
+    )
 
 if __name__ == "__main__":
     main()
