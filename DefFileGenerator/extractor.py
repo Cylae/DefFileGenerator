@@ -64,6 +64,13 @@ class Extractor:
                 return str(int(addr_str[:-1], 16))
             except ValueError:
                 return addr_str
+
+        # Handle composite address formats (e.g., 30001_10 or 30001_0_1)
+        if '_' in addr_str:
+            parts = addr_str.split('_')
+            if all(p.isdigit() for p in parts):
+                return addr_str
+
         return addr_str
 
     def extract_from_excel(self, filepath, sheet_name=None):
@@ -137,13 +144,19 @@ class Extractor:
                     new_row[target] = row[source]
 
             # Fuzzy match for standard columns if not explicitly mapped
-            standard_cols = ['Name', 'Address', 'Type', 'Unit', 'RegisterType', 'Tag']
+            # Priority order: RegisterType > Address > Name > Type > Unit > Tag
+            standard_cols = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Tag']
+            used_src_cols = set(self.mapping.values())
+
             for col in standard_cols:
                 if col not in new_row:
                     # Try to find a match in row keys
                     for k in row.keys():
+                        if k in used_src_cols:
+                            continue
                         if k.lower() == col.lower() or col.lower() in k.lower():
                             new_row[col] = row[k]
+                            used_src_cols.add(k)
                             break
 
             # Clean Address

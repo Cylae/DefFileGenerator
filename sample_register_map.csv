@@ -1,0 +1,6 @@
+Register,Parameter Name,Type,Unit,Scale,Access
+40001,AC Power,uint16,W,1,R
+40002,DC Voltage,uint16,V,0.1,R
+40003,Temperature,int16,°C,0.1,R
+40004,Total Energy,uint32,kWh,0.01,R
+0x0010,Status,uint16,,1,R

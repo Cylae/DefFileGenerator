@@ -10,6 +10,7 @@ import csv
 from DefFileGenerator.def_gen import Generator
 
 COLUMN_MAPPING = {
+    'RegisterType': ['register type', 'reg type', 'info1'],
     'Address': ['register', 'address', 'addr', 'offset', 'reg'],
     'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
     'Type': ['type', 'data type', 'format', 'datatype'],
@@ -49,6 +50,13 @@ def normalize_address(addr):
             return str(int(addr_str, 16))
         except ValueError:
             pass
+
+    # Handle composite address formats (e.g., 30001_10 or 30001_0_1)
+    if '_' in addr_str:
+        parts = addr_str.split('_')
+        if all(p.isdigit() for p in parts):
+            return addr_str
+
     # Handle formats like 40,001
     if ',' in addr_str and '.' not in addr_str:
         addr_str = addr_str.replace(',', '')
@@ -127,12 +135,24 @@ def main():
         # Clean column names
         df.columns = [str(c).strip() for c in df.columns]
 
-        # Identify columns
+        # Identify columns with priority and prevent double-mapping
         col_map = {}
-        for key in COLUMN_MAPPING:
-            found = find_column(df.columns, key)
-            if found:
-                col_map[key] = found
+        used_cols = set()
+
+        # Priority order: RegisterType > Address > Name > Type > Unit > Scale
+        for key in ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Scale']:
+            for col in df.columns:
+                if col in used_cols:
+                    continue
+
+                col_lower = str(col).lower()
+                for pattern in COLUMN_MAPPING[key]:
+                    if pattern in col_lower:
+                        col_map[key] = col
+                        used_cols.add(col)
+                        break
+                if key in col_map:
+                    break
 
         if 'Address' not in col_map and 'Name' not in col_map:
              logging.debug("Skipping table as neither Address nor Name columns found.")
@@ -177,7 +197,7 @@ def main():
             extracted_row = {
                 'Name': name,
                 'Tag': tag,
-                'RegisterType': 'Holding Register',
+                'RegisterType': row.get(col_map.get('RegisterType')) if 'RegisterType' in col_map else 'Holding Register',
                 'Address': addr,
                 'Type': normalize_type(dtype_raw),
                 'Factor': scale if scale and scale != 'nan' else '1',
