@@ -7,16 +7,28 @@ class TestGenerator(unittest.TestCase):
         self.generator = Generator()
 
     def test_validate_type_valid(self):
-        valid_types = ['U16', 'I32', 'F32', 'STRING', 'BITS', 'IP', 'MAC', 'STR10', 'U16_W', 'I32_WB']
+        valid_types = [
+            'U16', 'I32', 'F32', 'STRING', 'BITS', 'IP', 'MAC', 'STR10', 'U16_W', 'I32_WB',
+            'U8', 'I8', 'U64', 'I64', 'F64', 'IPV6', 'U16_B', 'U32_W', 'I64_WB'
+        ]
         for t in valid_types:
             with self.subTest(type=t):
                 self.assertTrue(self.generator.validate_type(t))
 
     def test_validate_type_invalid(self):
-        invalid_types = ['UNKNOWN', 'U1', 'I128', 'STR', 'BITS_2']
+        invalid_types = [
+            'UNKNOWN', 'U1', 'I128', 'STR', 'BITS_2',
+            'F32_W', 'F64_WB', 'STRING_W', 'U17', 'I31'
+        ]
         for t in invalid_types:
             with self.subTest(type=t):
                 self.assertFalse(self.generator.validate_type(t))
+
+    def test_validate_type_case_insensitivity(self):
+        case_variants = ['u16', 'String', 'str20', 'i32_wb', 'ipv6', 'Mac']
+        for t in case_variants:
+            with self.subTest(type=t):
+                self.assertTrue(self.generator.validate_type(t))
 
     def test_validate_address_valid(self):
         self.assertTrue(self.generator.validate_address('30001', 'U16'))
