@@ -6,14 +6,31 @@ import logging
 import re
 import math
 
+# Pre-compiled regex patterns for performance and clarity
+RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
+RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^(\d+|0x[0-9a-fA-F]+|[0-9a-fA-F]+[hH])_(\d+)$')
+RE_ADDR_BITS = re.compile(r'^(\d+|0x[0-9a-fA-F]+|[0-9a-fA-F]+[hH])_(\d+)_(\d+)$')
+RE_ADDR_INT = re.compile(r'^(\d+|0x[0-9a-fA-F]+|[0-9a-fA-F]+[hH])$')
+
+RE_COUNT_16_8 = re.compile(r'^[UI](8|16)(_(W|B|WB))?$', re.IGNORECASE)
+RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
+RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
+
 class Generator:
     def __init__(self):
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
+            'coils': '1',
             'discrete input': '2',
+            'discrete inputs': '2',
             'holding register': '3',
-            'input register': '4'
+            'holding registers': '3',
+            'input register': '4',
+            'input registers': '4',
+            'holding': '3',
+            'input': '4'
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
@@ -26,15 +43,10 @@ class Generator:
         if dtype_upper in base_types:
             return True
 
-        # Integer types with optional suffixes
-        # U8, U16, U32, U64, I8, I16, I32, I64
-        # Suffixes: _W, _B, _WB
-        # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-        if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype_upper):
+        if RE_TYPE_INT.match(dtype_upper):
             return True
 
-        # STR<n> syntax (e.g., STR20)
-        if re.match(r'^STR\d+$', dtype_upper):
+        if RE_TYPE_STR_CONV.match(dtype_upper):
             return True
 
         return False
@@ -44,44 +56,60 @@ class Generator:
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            # Expect Address_Length (e.g., 30000_30)
-            return re.match(r'^\d+_\d+$', address) is not None
+            return RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
-            return re.match(r'^\d+_\d+_\d+$', address) is not None
+            return RE_ADDR_BITS.match(address) is not None
         else:
-            # Expect integer address
-            return re.match(r'^\d+$', address) is not None
+            return RE_ADDR_INT.match(address) is not None
+
+    def parse_address_value(self, addr_str):
+        """Parses address string (including hex) to integer."""
+        if addr_str.lower().startswith('0x'):
+            return int(addr_str, 16)
+        if addr_str.lower().endswith('h'):
+            return int(addr_str[:-1], 16)
+        return int(addr_str)
 
     def get_register_count(self, dtype, address):
         """Calculates the number of registers used by the type."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper in ['U16', 'I16', 'BITS'] or re.match(r'^[UI]16(_(W|B|WB))?$', dtype_upper) or re.match(r'^[UI]8(_(W|B|WB))?$', dtype_upper):
+        if dtype_upper == 'BITS' or RE_COUNT_16_8.match(dtype_upper):
             return 1
-        elif dtype_upper in ['U32', 'I32', 'F32', 'IP'] or re.match(r'^[UI]32(_(W|B|WB))?$', dtype_upper):
+        elif RE_COUNT_32.match(dtype_upper):
             return 2
-        elif dtype_upper in ['U64', 'I64', 'F64'] or re.match(r'^[UI]64(_(W|B|WB))?$', dtype_upper):
+        elif RE_COUNT_64.match(dtype_upper):
             return 4
         elif dtype_upper == 'MAC':
             return 3
         elif dtype_upper == 'IPV6':
             return 8
         elif dtype_upper == 'STRING':
-            # Parse length from address: Address_Length
-            try:
-                length = int(address.split('_')[1])
-                return math.ceil(length / 2)
-            except (IndexError, ValueError):
-                return 0
-        return 1 # Default
+            match = RE_ADDR_STRING.match(address)
+            if match:
+                try:
+                    length = int(match.group(2))
+                    return math.ceil(length / 2)
+                except (ValueError, IndexError):
+                    return 0
+        return 1
+
+    def generate_tag(self, name):
+        """Generates a tag from a name."""
+        if not name:
+            return "var"
+        tag = name.lower()
+        # Replace non-alphanumeric with underscore
+        tag = re.sub(r'[^a-z0-9]+', '_', tag)
+        return tag.strip('_')
 
     def process_rows(self, rows):
         """Processes simplified CSV rows into WebdynSunPM format."""
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        used_addresses = [] # List of tuples: (start_addr, end_addr, line_num, name, type)
+        # Scoped by Info1: {info1: [(start, end, line, name, type)]}
+        used_addresses_by_type = {}
 
         for line_num, row in enumerate(rows, start=2):
             # Skip empty rows
@@ -121,9 +149,10 @@ class Generator:
 
             # Handle STR<n> conversion
             dtype_upper = dtype.upper()
-            if re.match(r'^STR\d+$', dtype_upper):
+            str_conv_match = RE_TYPE_STR_CONV.match(dtype_upper)
+            if str_conv_match:
                 try:
-                    length = int(dtype_upper[3:])
+                    length = int(str_conv_match.group(1))
                     dtype = 'STRING'
                     # Update address to Address_Length if not already formatted
                     if '_' not in address:
@@ -137,49 +166,6 @@ class Generator:
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
 
-            # Global Check: Duplicate Name
-            if name:
-                if name in seen_names:
-                    logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
-                else:
-                    seen_names[name] = line_num
-
-            # Global Check: Duplicate Tag
-            if tag:
-                if tag in seen_tags:
-                    logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
-                else:
-                    seen_tags[tag] = line_num
-
-            # Address Overlap Calculation
-            try:
-                # Parse start address
-                parts = address.split('_')
-                start_addr = int(parts[0])
-
-                reg_count = self.get_register_count(dtype, address)
-                end_addr = start_addr + reg_count - 1
-
-                current_range = (start_addr, end_addr, line_num, name, dtype.upper())
-
-                # Check overlap against used_addresses
-                is_bits = (dtype.upper() == 'BITS')
-
-                for used_start, used_end, used_line, used_name, used_type in used_addresses:
-                    # Check if ranges overlap
-                    if max(start_addr, used_start) <= min(end_addr, used_end):
-                        # Overlap detected
-                        # Allowed only if both are BITS and same start address
-                        is_overlap_allowed = is_bits and (used_type == 'BITS')
-
-                        if not is_overlap_allowed:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}).")
-
-                used_addresses.append(current_range)
-
-            except ValueError:
-                logging.warning(f"Line {line_num}: Could not calculate register range for address '{address}'.")
-
             # Map RegisterType to Info1
             info1 = '3' # Default to Holding Register
             if reg_type_str:
@@ -191,8 +177,71 @@ class Generator:
                 else:
                     logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
 
-            # Info2: Address
-            info2 = address
+            # Global Check: Duplicate Name
+            if name:
+                if name in seen_names:
+                    logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
+                else:
+                    seen_names[name] = line_num
+
+            # Auto-generate Tag if missing
+            if not tag and name:
+                tag = self.generate_tag(name)
+
+            # Global Check: Duplicate Tag
+            if tag:
+                base_tag = tag
+                counter = 1
+                while tag in seen_tags:
+                    tag = f"{base_tag}_{counter}"
+                    counter += 1
+                seen_tags[tag] = line_num
+
+            # Address Overlap Calculation (Scoped by info1)
+            try:
+                # Parse start address
+                if '_' in address:
+                    start_addr_str = address.split('_')[0]
+                else:
+                    start_addr_str = address
+
+                start_addr = self.parse_address_value(start_addr_str)
+
+                reg_count = self.get_register_count(dtype, address)
+                end_addr = start_addr + reg_count - 1
+
+                current_range = (start_addr, end_addr, line_num, name, dtype.upper())
+
+                if info1 not in used_addresses_by_type:
+                    used_addresses_by_type[info1] = []
+
+                is_bits = (dtype.upper() == 'BITS')
+
+                for used_start, used_end, used_line, used_name, used_type in used_addresses_by_type[info1]:
+                    # Check if ranges overlap
+                    if max(start_addr, used_start) <= min(end_addr, used_end):
+                        # Overlap detected
+                        # Allowed only if both are BITS and same start address
+                        is_overlap_allowed = is_bits and (used_type == 'BITS') and (start_addr == used_start)
+
+                        if not is_overlap_allowed:
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Info1: {info1}, Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}).")
+
+                used_addresses_by_type[info1].append(current_range)
+
+            except ValueError:
+                logging.warning(f"Line {line_num}: Could not calculate register range for address '{address}'.")
+
+            # Info2: Address (normalize if Hex)
+            try:
+                if '_' in address:
+                    parts = address.split('_')
+                    norm_addr = str(self.parse_address_value(parts[0]))
+                    info2 = "_".join([norm_addr] + parts[1:])
+                else:
+                    info2 = str(self.parse_address_value(address))
+            except ValueError:
+                info2 = address
 
             # Info3: Type
             info3 = dtype.upper() # Ensure uppercase in output
@@ -264,7 +313,8 @@ def generate_template(output_file):
         ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
         ['String Variable', 'string_tag', 'Holding Register', '30010_10', 'String', '', '', '', '4', ''],
         ['Bit Variable', 'bit_tag', 'Holding Register', '30020_0_1', 'Bits', '', '', '', '4', ''],
-        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', ''],
+        ['Hex Address', 'hex_tag', 'Holding Register', '0x0010', 'U16', '1', '0', '', '4', '']
     ]
 
     try:

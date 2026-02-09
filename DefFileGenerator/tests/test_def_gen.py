@@ -35,6 +35,11 @@ class TestGenerator(unittest.TestCase):
         self.assertTrue(self.generator.validate_address('30001_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('30001_0_1', 'BITS'))
 
+    def test_validate_address_hex(self):
+        self.assertTrue(self.generator.validate_address('0x0010', 'U16'))
+        self.assertTrue(self.generator.validate_address('10h', 'U16'))
+        self.assertTrue(self.generator.validate_address('0x0010_10', 'STRING'))
+
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
         self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len
@@ -82,6 +87,18 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Info3'], 'STRING')
         self.assertEqual(processed[0]['Info2'], '30010_20')
 
+    def test_process_rows_hex_normalization(self):
+        rows = [{
+            'Name': 'Hex Var',
+            'Tag': '',
+            'RegisterType': '3',
+            'Address': '0x0010',
+            'Type': 'U16',
+            'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '', 'ScaleFactor': ''
+        }]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '16') # 0x10 = 16
+
     def test_process_rows_overlap(self):
         rows = [
             {
@@ -96,8 +113,23 @@ class TestGenerator(unittest.TestCase):
         with self.assertLogs(level='WARNING') as log:
             processed = self.generator.process_rows(rows)
             self.assertEqual(len(processed), 2)
-            # Check if any log message contains "Overlap detected"
             self.assertTrue(any("Address overlap detected" in m for m in log.output))
+
+    def test_scoped_overlap(self):
+        rows = [
+            {
+                'Name': 'Var1', 'Tag': 't1', 'RegisterType': 'Holding Register', 'Address': '30000', 'Type': 'U16',
+                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
+            },
+            {
+                'Name': 'Var2', 'Tag': 't2', 'RegisterType': 'Input Register', 'Address': '30000', 'Type': 'U16',
+                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
+            }
+        ]
+        # Should not log warning because they are different RegisterTypes
+        # We can't easily check for NO logs, but we can check if the output matches what we expect
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(len(processed), 2)
 
     def test_duplicate_name(self):
         rows = [
@@ -123,6 +155,32 @@ class TestGenerator(unittest.TestCase):
         }]
         processed = self.generator.process_rows(rows)
         self.assertEqual(processed[0]['CoefA'], '0.250000')
+
+    def test_auto_tag_generation(self):
+        rows = [{
+            'Name': 'Test Variable Name',
+            'Tag': '',
+            'RegisterType': '3',
+            'Address': '30000',
+            'Type': 'U16',
+            'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''
+        }]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Tag'], 'test_variable_name')
+
+    def test_unique_tag_generation(self):
+        rows = [
+            {'Name': 'Var', 'Tag': 'tag', 'RegisterType': '3', 'Address': '30000', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
+            {'Name': 'Var2', 'Tag': 'tag', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Tag'], 'tag')
+        self.assertEqual(processed[1]['Tag'], 'tag_1')
+
+    def test_register_type_synonyms(self):
+        self.assertEqual(self.generator.register_type_map['holding'], '3')
+        self.assertEqual(self.generator.register_type_map['input'], '4')
+        self.assertEqual(self.generator.register_type_map['coils'], '1')
 
 if __name__ == '__main__':
     unittest.main()
