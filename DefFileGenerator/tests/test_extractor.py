@@ -57,11 +57,6 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
 
-    def test_parse_address(self):
-        self.assertEqual(self.extractor.parse_address("0x0001"), "1")
-        self.assertEqual(self.extractor.parse_address("1234H"), "4660")
-        self.assertEqual(self.extractor.parse_address("30001"), "30001")
-
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
         self.assertEqual(len(data), 3)

@@ -8,6 +8,7 @@ import re
 import sys
 import openpyxl
 import pdfplumber
+from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     def __init__(self, mapping=None):
@@ -48,23 +49,6 @@ class Extractor:
             return f"{prefix}{bits}"
 
         return t.upper()
-
-    def parse_address(self, addr):
-        if not addr:
-            return ""
-        addr_str = str(addr).strip()
-        # Handle Hex: 0x1234 or 1234H
-        if addr_str.lower().startswith('0x'):
-            try:
-                return str(int(addr_str, 16))
-            except ValueError:
-                return addr_str
-        if addr_str.lower().endswith('h'):
-            try:
-                return str(int(addr_str[:-1], 16))
-            except ValueError:
-                return addr_str
-        return addr_str
 
     def extract_from_excel(self, filepath, sheet_name=None):
         logging.info(f"Extracting from Excel: {filepath}")
@@ -153,6 +137,7 @@ class Extractor:
                         assigned_keys.add(k)
                         break
 
+        generator = Generator()
         for row in raw_data:
             new_row = {}
             for target, source in standard_cols_mapping.items():
@@ -164,9 +149,15 @@ class Extractor:
                 if k not in assigned_keys and k not in new_row:
                     new_row[k] = v
 
-            # Clean Address
-            if 'Address' in new_row:
-                new_row['Address'] = self.parse_address(new_row['Address'])
+            # Clean Address using Generator's logic
+            if 'Address' in new_row and new_row['Address']:
+                addr = str(new_row['Address']).strip()
+                if '_' in addr:
+                    parts = addr.split('_')
+                    norm_parts = [generator.normalize_address_val(p) for p in parts]
+                    new_row['Address'] = '_'.join(norm_parts)
+                else:
+                    new_row['Address'] = generator.normalize_address_val(addr)
 
             # Clean Type
             if 'Type' in new_row:
@@ -176,12 +167,8 @@ class Extractor:
             if 'Name' not in new_row or not new_row['Name']:
                 continue # Skip rows without a name
 
-            if 'Tag' not in new_row or not new_row['Tag']:
-                # Generate tag from name
-                name = str(new_row['Name'])
-                tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
-                new_row['Tag'] = tag
-
+            # Tag and RegisterType will be handled by Generator if missing,
+            # but we can set default RegisterType here for the simplified CSV.
             if 'RegisterType' not in new_row:
                 new_row['RegisterType'] = 'Holding Register'
 

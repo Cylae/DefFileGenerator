@@ -1,10 +1,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
-venv/
 .env
-
-# Artifacts
+venv/
+.venv
 test_output.csv
 test_csv_output.csv
 test_excel_output.csv
+test_registers.xlsx
+test_registers.pdf
+test_mapping.json
