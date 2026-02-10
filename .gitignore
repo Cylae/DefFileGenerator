@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Artifacts
+test_output.csv
+test_csv_output.csv
+test_excel_output.csv
