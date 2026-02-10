@@ -1,0 +1,4 @@
+Register,Name,Data Type,Unit,Scale,Access
+40001,AC Power,uint16,W,1,R
+40002,DC Voltage,uint16,V,0.1,R
+40003,Temperature,int16,°C,0.1,R
