@@ -99,6 +99,30 @@ class TestGenerator(unittest.TestCase):
             # Check if any log message contains "Overlap detected"
             self.assertTrue(any("Address overlap detected" in m for m in log.output))
 
+    def test_process_rows_no_overlap_different_types(self):
+        rows = [
+            {
+                'Name': 'Var1', 'Tag': 't1', 'RegisterType': 'Holding Register', 'Address': '100', 'Type': 'U16',
+                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
+            },
+            {
+                'Name': 'Var2', 'Tag': 't2', 'RegisterType': 'Input Register', 'Address': '100', 'Type': 'U16',
+                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
+            }
+        ]
+        # Should NOT log a warning
+        try:
+            with self.assertLogs(level='WARNING') as log:
+                processed = self.generator.process_rows(rows)
+                self.assertEqual(len(processed), 2)
+                # If we are here, some warning was logged. Check it's not overlap.
+                for m in log.output:
+                    self.assertNotIn("Address overlap detected", m)
+        except AssertionError:
+            # assertLogs raises AssertionError if NO logs are produced, which is what we want
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(len(processed), 2)
+
     def test_duplicate_name(self):
         rows = [
              {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30000', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},

@@ -129,22 +129,40 @@ class Extractor:
         # Mapping: target_col -> source_col
         # Default target cols: Name, Tag, RegisterType, Address, Type, Factor, Offset, Unit, Action, ScaleFactor
 
+        # Identify standard columns once to avoid repeated fuzzy matching
+        first_row = raw_data[0] if raw_data else {}
+        standard_cols_mapping = {}
+        assigned_keys = set()
+
+        # Explicitly mapped columns from config
+        for target, source in self.mapping.items():
+            if source in first_row:
+                standard_cols_mapping[target] = source
+                assigned_keys.add(source)
+
+        # Fuzzy match for standard columns if not explicitly mapped
+        # Priority order to avoid misidentification (e.g. RegisterType as Type)
+        standard_cols = ['RegisterType', 'Name', 'Address', 'Type', 'Unit', 'Tag']
+        for target in standard_cols:
+            if target not in standard_cols_mapping:
+                for k in first_row.keys():
+                    if k in assigned_keys:
+                        continue
+                    if k.lower() == target.lower() or target.lower() in k.lower():
+                        standard_cols_mapping[target] = k
+                        assigned_keys.add(k)
+                        break
+
         for row in raw_data:
             new_row = {}
-            # Apply mapping from config
-            for target, source in self.mapping.items():
+            for target, source in standard_cols_mapping.items():
                 if source in row:
                     new_row[target] = row[source]
 
-            # Fuzzy match for standard columns if not explicitly mapped
-            standard_cols = ['Name', 'Address', 'Type', 'Unit', 'RegisterType', 'Tag']
-            for col in standard_cols:
-                if col not in new_row:
-                    # Try to find a match in row keys
-                    for k in row.keys():
-                        if k.lower() == col.lower() or col.lower() in k.lower():
-                            new_row[col] = row[k]
-                            break
+            # Fill in other columns that might not be in standard_cols but are in row
+            for k, v in row.items():
+                if k not in assigned_keys and k not in new_row:
+                    new_row[k] = v
 
             # Clean Address
             if 'Address' in new_row:

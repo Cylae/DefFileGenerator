@@ -10,11 +10,13 @@ import csv
 from DefFileGenerator.def_gen import Generator
 
 COLUMN_MAPPING = {
-    'Address': ['register', 'address', 'addr', 'offset', 'reg'],
+    'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+    'Address': ['address', 'addr', 'offset', 'register', 'reg'],
     'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
-    'Type': ['type', 'data type', 'format', 'datatype'],
+    'Type': ['data type', 'datatype', 'type', 'format'],
     'Unit': ['unit', 'units'],
-    'Scale': ['scale', 'factor', 'multiplier', 'ratio']
+    'Scale': ['scale', 'factor', 'multiplier', 'ratio'],
+    'Action': ['action']
 }
 
 TYPE_MAPPING = {
@@ -52,6 +54,10 @@ def normalize_address(addr):
     # Handle formats like 40,001
     if ',' in addr_str and '.' not in addr_str:
         addr_str = addr_str.replace(',', '')
+
+    # Support Address_Length and Address_Start_Bit formats (e.g. 30001_10 or 30001_0_1)
+    if re.match(r'^\d+(_\d+)+$', addr_str):
+        return addr_str
 
     # Try to extract the first number found (to handle things like "40001 (Holding)")
     match = re.search(r'(\d+)', addr_str)
@@ -129,10 +135,24 @@ def main():
 
         # Identify columns
         col_map = {}
-        for key in COLUMN_MAPPING:
-            found = find_column(df.columns, key)
-            if found:
-                col_map[key] = found
+        assigned_cols = set()
+
+        # Priority order for detection to avoid misidentification (e.g. RegisterType as Type)
+        detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Scale', 'Action']
+        for key in detection_order:
+            if key not in COLUMN_MAPPING:
+                continue
+            for col in df.columns:
+                if col in assigned_cols:
+                    continue
+                col_lower = str(col).lower()
+                for pattern in COLUMN_MAPPING[key]:
+                    if pattern in col_lower:
+                        col_map[key] = col
+                        assigned_cols.add(col)
+                        break
+                if key in col_map:
+                    break
 
         if 'Address' not in col_map and 'Name' not in col_map:
              logging.debug("Skipping table as neither Address nor Name columns found.")
@@ -164,6 +184,8 @@ def main():
             dtype_raw = row.get(col_map.get('Type')) if 'Type' in col_map else 'U16'
             unit_raw = row.get(col_map.get('Unit')) if 'Unit' in col_map else ''
             scale_raw = row.get(col_map.get('Scale')) if 'Scale' in col_map else '1'
+            reg_type_raw = row.get(col_map.get('RegisterType')) if 'RegisterType' in col_map else 'Holding Register'
+            action_raw = row.get(col_map.get('Action')) if 'Action' in col_map else '1'
 
             # Clean scale (sometimes it's "1/10" or "0.1")
             scale = str(scale_raw)
@@ -177,13 +199,13 @@ def main():
             extracted_row = {
                 'Name': name,
                 'Tag': tag,
-                'RegisterType': 'Holding Register',
+                'RegisterType': str(reg_type_raw) if not pd.isna(reg_type_raw) else 'Holding Register',
                 'Address': addr,
                 'Type': normalize_type(dtype_raw),
                 'Factor': scale if scale and scale != 'nan' else '1',
                 'Offset': '0',
                 'Unit': str(unit_raw) if not pd.isna(unit_raw) and str(unit_raw) != 'nan' else '',
-                'Action': '4'
+                'Action': str(action_raw) if not pd.isna(action_raw) and str(action_raw) != 'nan' else '1'
             }
             all_extracted_rows.append(extracted_row)
 
