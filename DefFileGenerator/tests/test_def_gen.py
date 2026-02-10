@@ -32,8 +32,17 @@ class TestGenerator(unittest.TestCase):
 
     def test_validate_address_valid(self):
         self.assertTrue(self.generator.validate_address('30001', 'U16'))
+        self.assertTrue(self.generator.validate_address('0x7531', 'U16'))
+        self.assertTrue(self.generator.validate_address('7531h', 'U16'))
         self.assertTrue(self.generator.validate_address('30001_10', 'STRING'))
+        self.assertTrue(self.generator.validate_address('0x7531_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('30001_0_1', 'BITS'))
+        self.assertTrue(self.generator.validate_address('0x7531_0_1', 'BITS'))
+
+    def test_normalize_address_val(self):
+        self.assertEqual(self.generator.normalize_address_val('0x10'), '16')
+        self.assertEqual(self.generator.normalize_address_val('10h'), '16')
+        self.assertEqual(self.generator.normalize_address_val('10'), '10')
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
@@ -147,6 +156,26 @@ class TestGenerator(unittest.TestCase):
         }]
         processed = self.generator.process_rows(rows)
         self.assertEqual(processed[0]['CoefA'], '0.250000')
+
+    def test_automatic_tag_generation(self):
+        rows = [
+            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
+            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Tag'], 'test_variable')
+        self.assertEqual(processed[1]['Tag'], 'test_variable_1')
+
+    def test_action_normalization(self):
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Action': 'R', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
+            {'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Action': 'RW', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
+            {'Name': 'Var3', 'Tag': 't3', 'RegisterType': '3', 'Address': '102', 'Type': 'U16', 'Action': 'write', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Action'], '4') # R -> 4
+        self.assertEqual(processed[1]['Action'], '1') # RW -> 1
+        self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
 if __name__ == '__main__':
     unittest.main()

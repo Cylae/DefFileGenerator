@@ -6,14 +6,27 @@ import logging
 import re
 import math
 
+# Pre-compiled regex patterns for optimization
+RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
+RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
+RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
+RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
+
 class Generator:
     def __init__(self):
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
+            'coils': '1',
             'discrete input': '2',
             'holding register': '3',
-            'input register': '4'
+            'holding': '3',
+            'input register': '4',
+            'input': '4'
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
@@ -27,41 +40,55 @@ class Generator:
             return True
 
         # Integer types with optional suffixes
-        # U8, U16, U32, U64, I8, I16, I32, I64
-        # Suffixes: _W, _B, _WB
-        # Regex: ^[UI](8|16|32|64)(_(W|B|WB))?$
-        if re.match(r'^[UI](8|16|32|64)(_(W|B|WB))?$', dtype_upper):
+        if RE_TYPE_INT.match(dtype_upper):
             return True
 
         # STR<n> syntax (e.g., STR20)
-        if re.match(r'^STR\d+$', dtype_upper):
+        if RE_TYPE_STR_CONV.match(dtype_upper):
             return True
 
         return False
+
+    def normalize_address_val(self, addr_part):
+        """Converts a single address part (possibly hex) to decimal string."""
+        addr_part = str(addr_part).strip()
+        if not addr_part:
+            return ""
+        if addr_part.lower().startswith('0x'):
+            try:
+                return str(int(addr_part, 16))
+            except ValueError:
+                return addr_part
+        elif addr_part.lower().endswith('h'):
+            try:
+                return str(int(addr_part[:-1], 16))
+            except ValueError:
+                return addr_part
+        return addr_part
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            # Expect Address_Length (e.g., 30000_30)
-            return re.match(r'^\d+_\d+$', address) is not None
+            # Expect Address_Length (e.g., 30000_30 or 0x10_30)
+            return RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            # Expect Address_StartBit_NbBits (e.g., 30000_0_1)
-            return re.match(r'^\d+_\d+_\d+$', address) is not None
+            # Expect Address_StartBit_NbBits (e.g., 30000_0_1 or 0x10_0_1)
+            return RE_ADDR_BITS.match(address) is not None
         else:
-            # Expect integer address
-            return re.match(r'^\d+$', address) is not None
+            # Expect integer address (dec or hex)
+            return RE_ADDR_INT.match(address) is not None
 
     def get_register_count(self, dtype, address):
         """Calculates the number of registers used by the type."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper in ['U16', 'I16', 'BITS'] or re.match(r'^[UI]16(_(W|B|WB))?$', dtype_upper) or re.match(r'^[UI]8(_(W|B|WB))?$', dtype_upper):
+        if RE_COUNT_16_8.match(dtype_upper):
             return 1
-        elif dtype_upper in ['U32', 'I32', 'F32', 'IP'] or re.match(r'^[UI]32(_(W|B|WB))?$', dtype_upper):
+        elif RE_COUNT_32.match(dtype_upper):
             return 2
-        elif dtype_upper in ['U64', 'I64', 'F64'] or re.match(r'^[UI]64(_(W|B|WB))?$', dtype_upper):
+        elif RE_COUNT_64.match(dtype_upper):
             return 4
         elif dtype_upper == 'MAC':
             return 3
@@ -70,7 +97,8 @@ class Generator:
         elif dtype_upper == 'STRING':
             # Parse length from address: Address_Length
             try:
-                length = int(address.split('_')[1])
+                parts = address.split('_')
+                length = int(parts[1])
                 return math.ceil(length / 2)
             except (IndexError, ValueError):
                 return 0
@@ -123,9 +151,10 @@ class Generator:
 
             # Handle STR<n> conversion
             dtype_upper = dtype.upper()
-            if re.match(r'^STR\d+$', dtype_upper):
+            match_str = RE_TYPE_STR_CONV.match(dtype_upper)
+            if match_str:
                 try:
-                    length = int(dtype_upper[3:])
+                    length = int(match_str.group(1))
                     dtype = 'STRING'
                     # Update address to Address_Length if not already formatted
                     if '_' not in address:
@@ -134,10 +163,16 @@ class Generator:
                     logging.warning(f"Line {line_num}: Invalid STR format '{dtype_upper}'. Skipping row.")
                     continue
 
-            # Validation: Address format based on Type
+            # Validation: Address format based on Type (checks hex/dec and composite)
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
+
+            # Normalize Address (convert any hex parts to decimal)
+            if address:
+                addr_parts = address.split('_')
+                norm_parts = [self.normalize_address_val(p) for p in addr_parts]
+                address = '_'.join(norm_parts)
 
             # Global Check: Duplicate Name
             if name:
@@ -146,7 +181,17 @@ class Generator:
                 else:
                     seen_names[name] = line_num
 
-            # Global Check: Duplicate Tag
+            # Automatic Tag generation and Global Check
+            if not tag and name:
+                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
+                if not base_tag:
+                    base_tag = "var"
+                tag = base_tag
+                counter = 1
+                while tag in seen_tags:
+                    tag = f"{base_tag}_{counter}"
+                    counter += 1
+
             if tag:
                 if tag in seen_tags:
                     logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
@@ -237,12 +282,18 @@ class Generator:
                     logging.warning(f"Line {line_num}: Invalid Offset '{offset}'. Using as is.")
                     coef_b = offset
 
-            # Action
+            # Action normalization
             if not action:
                 action = '1' # Default per spec
-            elif action not in self.allowed_actions:
-                logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                action = '1'
+            else:
+                act_upper = action.upper()
+                if act_upper in ['R', 'READ']:
+                    action = '4'
+                elif act_upper in ['RW', 'W', 'WRITE']:
+                    action = '1'
+                elif action not in self.allowed_actions:
+                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
+                    action = '1'
 
             # Construct processed row
             processed_row = {
