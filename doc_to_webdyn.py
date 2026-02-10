@@ -16,7 +16,7 @@ COLUMN_MAPPING = {
     'Type': ['data type', 'datatype', 'type', 'format'],
     'Unit': ['unit', 'units'],
     'Scale': ['scale', 'factor', 'multiplier', 'ratio'],
-    'Action': ['action']
+    'Action': ['action', 'access']
 }
 
 TYPE_MAPPING = {
@@ -58,6 +58,16 @@ def normalize_address(addr):
         return match.group(1)
 
     return addr_str
+
+def normalize_action(action):
+    if action is None or pd.isna(action):
+        return '1'
+    a = str(action).upper().strip()
+    if a == 'R':
+        return '4'
+    if a == 'RW' or a == 'W':
+        return '1'
+    return a
 
 def normalize_type(dtype):
     if dtype is None or pd.isna(dtype):
@@ -161,6 +171,8 @@ def main():
             reg_type_raw = row.get(col_map.get('RegisterType')) if 'RegisterType' in col_map else 'Holding Register'
             action_raw = row.get(col_map.get('Action')) if 'Action' in col_map else '1'
 
+            action = normalize_action(action_raw)
+
             # Clean scale (sometimes it's "1/10" or "0.1")
             scale = str(scale_raw)
             if '/' in scale:
@@ -179,7 +191,7 @@ def main():
                 'Factor': scale if scale and scale != 'nan' else '1',
                 'Offset': '0',
                 'Unit': str(unit_raw) if not pd.isna(unit_raw) and str(unit_raw) != 'nan' else '',
-                'Action': str(action_raw) if not pd.isna(action_raw) and str(action_raw) != 'nan' else '1'
+                'Action': action
             }
             all_extracted_rows.append(extracted_row)
 

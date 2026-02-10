@@ -48,6 +48,7 @@ The tool searches for columns matching these patterns (case-insensitive):
 | **Type** | type, data type, format, datatype |
 | **Unit** | unit, units |
 | **Scale** | scale, factor, multiplier, ratio |
+| **Action** | action, access |
 
 ### Data Type Mapping
 
