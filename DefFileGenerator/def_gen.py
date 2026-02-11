@@ -9,9 +9,9 @@ import math
 # Pre-compiled regex patterns for optimization
 RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
-RE_ADDR_STRING = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
-RE_ADDR_BITS = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h|[0-9A-F]*[A-F][0-9A-F]*)_(\d+)$', re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h|[0-9A-F]*[A-F][0-9A-F]*)_(\d+)_(\d+)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h|[0-9A-F]*[A-F][0-9A-F]*)$', re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
@@ -54,14 +54,21 @@ class Generator:
         addr_part = str(addr_part).strip()
         if not addr_part:
             return ""
-        if addr_part.lower().startswith('0x'):
+        addr_lower = addr_part.lower()
+        if addr_lower.startswith('0x'):
             try:
                 return str(int(addr_part, 16))
             except ValueError:
                 return addr_part
-        elif addr_part.lower().endswith('h'):
+        elif addr_lower.endswith('h'):
             try:
                 return str(int(addr_part[:-1], 16))
+            except ValueError:
+                return addr_part
+        # If it contains letters A-F and only hex digits, treat it as hex
+        elif any(c in 'abcdef' for c in addr_lower) and all(c in '0123456789abcdef' for c in addr_lower):
+            try:
+                return str(int(addr_part, 16))
             except ValueError:
                 return addr_part
         return addr_part

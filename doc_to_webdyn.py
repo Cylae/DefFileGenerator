@@ -52,8 +52,13 @@ def normalize_address(addr):
 
     # Support Address_Length and Address_Start_Bit formats (e.g. 30001_10 or 30001_0_1)
     # or simple dec/hex addresses.
-    # Try to extract the first number or hex string found
-    match = re.search(r'(0x[0-9A-Fa-f]+|\d+(_\d+)*)', addr_str)
+    # Try to extract the first number or hex string found, avoiding truncation of hex addresses.
+    # We look for:
+    # 1. 0x-prefixed hex
+    # 2. h-suffixed hex
+    # 3. Hex strings that contain at least one digit (to avoid matching plain words like "AC" as hex),
+    #    potentially with underscores for composite addresses.
+    match = re.search(r'\b(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h|[0-9A-Fa-f]*\d[0-9A-Fa-f]*(_[0-9A-Fa-f]+)*)\b', addr_str, re.IGNORECASE)
     if match:
         return match.group(1)
 

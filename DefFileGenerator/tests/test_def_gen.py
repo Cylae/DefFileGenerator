@@ -47,7 +47,7 @@ class TestGenerator(unittest.TestCase):
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
         self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len
-        self.assertFalse(self.generator.validate_address('abc', 'U16'))
+        self.assertFalse(self.generator.validate_address('xyz', 'U16'))
 
     def test_get_register_count(self):
         self.assertEqual(self.generator.get_register_count('U16', '30000'), 1)
