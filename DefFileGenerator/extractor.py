@@ -13,42 +13,20 @@ from DefFileGenerator.def_gen import Generator
 class Extractor:
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        # Default mapping for data types
-        self.type_mapping = {
-            'uint16': 'U16',
-            'int16': 'I16',
-            'uint32': 'U32',
-            'int32': 'I32',
-            'float32': 'F32',
-            'float': 'F32',
-            'u16': 'U16',
-            'i16': 'I16',
-            'u32': 'U32',
-            'i32': 'I32',
-            'f32': 'F32',
-            'string': 'STRING',
-            'bits': 'BITS'
+        self.generator = Generator()
+        self.column_patterns = {
+            'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+            'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+            'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
+            'Type': ['data type', 'datatype', 'type', 'format'],
+            'Unit': ['unit', 'units'],
+            'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
+            'Action': ['action', 'access']
         }
 
     def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip()
-        # Remove common extra words and spaces
-        t_str = t_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-
-        # Check for patterns like Uint16, Int32, uint16, int32
-        match = re.match(r'^(u|i|uint|int)(\d+)$', t_str)
-        if match:
-            raw_prefix = match.group(1).lower()
-            prefix = 'U' if raw_prefix.startswith('u') else 'I'
-            bits = match.group(2)
-            return f"{prefix}{bits}"
-
-        return t.upper()
+        """Uses centralized Generator logic for type normalization."""
+        return self.generator.normalize_type(t)
 
     def extract_from_excel(self, filepath, sheet_name=None):
         logging.info(f"Extracting from Excel: {filepath}")
@@ -110,69 +88,90 @@ class Extractor:
 
     def map_and_clean(self, raw_data):
         mapped_data = []
-        # Mapping: target_col -> source_col
-        # Default target cols: Name, Tag, RegisterType, Address, Type, Factor, Offset, Unit, Action, ScaleFactor
+        if not raw_data:
+            return []
 
-        # Identify standard columns once to avoid repeated fuzzy matching
-        first_row = raw_data[0] if raw_data else {}
+        # Identify standard columns once
+        first_row = raw_data[0]
         standard_cols_mapping = {}
-        assigned_keys = set()
+        assigned_src_cols = set()
 
-        # Explicitly mapped columns from config
+        # 1. Explicitly mapped columns from config
         for target, source in self.mapping.items():
             if source in first_row:
                 standard_cols_mapping[target] = source
-                assigned_keys.add(source)
+                assigned_src_cols.add(source)
 
-        # Fuzzy match for standard columns if not explicitly mapped
-        # Priority order to avoid misidentification (e.g. RegisterType as Type)
-        standard_cols = ['RegisterType', 'Name', 'Address', 'Type', 'Unit', 'Tag']
-        for target in standard_cols:
-            if target not in standard_cols_mapping:
-                for k in first_row.keys():
-                    if k in assigned_keys:
-                        continue
-                    if k.lower() == target.lower() or target.lower() in k.lower():
-                        standard_cols_mapping[target] = k
-                        assigned_keys.add(k)
-                        break
+        # 2. Heuristic match for standard columns if not explicitly mapped
+        # Priority order to avoid misidentification
+        targets = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Factor', 'Action', 'Tag']
+        for target in targets:
+            if target in standard_cols_mapping:
+                continue
 
-        generator = Generator()
+            patterns = self.column_patterns.get(target, [target.lower()])
+            for src_col in first_row.keys():
+                if src_col in assigned_src_cols:
+                    continue
+
+                src_col_lower = str(src_col).lower()
+                if any(p in src_col_lower for p in patterns):
+                    standard_cols_mapping[target] = src_col
+                    assigned_src_cols.add(src_col)
+                    break
+
         for row in raw_data:
             new_row = {}
+            # Apply identified mappings
             for target, source in standard_cols_mapping.items():
-                if source in row:
-                    new_row[target] = row[source]
+                val = row.get(source)
+                if val is not None:
+                    new_row[target] = val
 
-            # Fill in other columns that might not be in standard_cols but are in row
+            # Fill in any remaining columns
             for k, v in row.items():
-                if k not in assigned_keys and k not in new_row:
+                if k not in assigned_src_cols and k not in new_row:
                     new_row[k] = v
 
-            # Clean Address using Generator's logic
-            if 'Address' in new_row and new_row['Address']:
+            # Normalization
+            # 1. Address
+            if 'Address' in new_row and new_row['Address'] is not None:
                 addr = str(new_row['Address']).strip()
                 if '_' in addr:
                     parts = addr.split('_')
-                    norm_parts = [generator.normalize_address_val(p) for p in parts]
+                    norm_parts = [self.generator.normalize_address_val(p) for p in parts]
                     new_row['Address'] = '_'.join(norm_parts)
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    new_row['Address'] = self.generator.normalize_address_val(addr)
 
-            # Clean Type
+            # 2. Type
             if 'Type' in new_row:
                 new_row['Type'] = self.normalize_type(new_row['Type'])
 
-            # Ensure mandatory fields for def_gen
-            if 'Name' not in new_row or not new_row['Name']:
-                continue # Skip rows without a name
+            # 3. Action
+            if 'Action' in new_row:
+                new_row['Action'] = self.generator.normalize_action(new_row['Action'])
 
-            # Tag and RegisterType will be handled by Generator if missing,
-            # but we can set default RegisterType here for the simplified CSV.
-            if 'RegisterType' not in new_row:
+            # 4. Factor (handle fractions like 1/10)
+            if 'Factor' in new_row and new_row['Factor'] is not None:
+                factor_str = str(new_row['Factor']).strip()
+                if '/' in factor_str:
+                    try:
+                        p1, p2 = factor_str.split('/')
+                        new_row['Factor'] = str(float(p1) / float(p2))
+                    except (ValueError, ZeroDivisionError):
+                        pass
+
+            # Skip rows without Name and Address
+            if not new_row.get('Name') and not new_row.get('Address'):
+                continue
+
+            # Ensure RegisterType has a default if missing
+            if 'RegisterType' not in new_row or not new_row['RegisterType']:
                 new_row['RegisterType'] = 'Holding Register'
 
             mapped_data.append(new_row)
+
         return mapped_data
 
 def main():

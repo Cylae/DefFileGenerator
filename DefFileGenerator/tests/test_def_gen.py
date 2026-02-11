@@ -8,7 +8,7 @@ class TestGenerator(unittest.TestCase):
 
     def test_validate_type_valid(self):
         valid_types = [
-            'U16', 'I32', 'F32', 'STRING', 'BITS', 'IP', 'MAC', 'STR10', 'U16_W', 'I32_WB',
+            'U16', 'I32', 'F32', 'STRING', 'BITS', 'IP', 'MAC', 'U16_W', 'I32_WB',
             'U8', 'I8', 'U64', 'I64', 'F64', 'IPV6', 'U16_B', 'U32_W', 'I64_WB'
         ]
         for t in valid_types:
@@ -25,7 +25,7 @@ class TestGenerator(unittest.TestCase):
                 self.assertFalse(self.generator.validate_type(t))
 
     def test_validate_type_case_insensitivity(self):
-        case_variants = ['u16', 'String', 'str20', 'i32_wb', 'ipv6', 'Mac']
+        case_variants = ['u16', 'String', 'i32_wb', 'ipv6', 'Mac']
         for t in case_variants:
             with self.subTest(type=t):
                 self.assertTrue(self.generator.validate_type(t))
@@ -43,6 +43,8 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('0x10'), '16')
         self.assertEqual(self.generator.normalize_address_val('10h'), '16')
         self.assertEqual(self.generator.normalize_address_val('10'), '10')
+        self.assertEqual(self.generator.normalize_address_val('40,001'), '40001')
+        self.assertEqual(self.generator.normalize_address_val('9C40'), '40000') # Raw hex with letters
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
@@ -170,12 +172,45 @@ class TestGenerator(unittest.TestCase):
         rows = [
             {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Action': 'R', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
             {'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Action': 'RW', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
-            {'Name': 'Var3', 'Tag': 't3', 'RegisterType': '3', 'Address': '102', 'Type': 'U16', 'Action': 'write', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''}
+            {'Name': 'Var3', 'Tag': 't3', 'RegisterType': '3', 'Address': '102', 'Type': 'U16', 'Action': 'write', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
+            {'Name': 'Var4', 'Tag': 't4', 'RegisterType': '3', 'Address': '103', 'Type': 'U16', 'Action': 'READ', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''}
         ]
         processed = self.generator.process_rows(rows)
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+        self.assertEqual(processed[3]['Action'], '4') # READ -> 4
+
+    def test_type_alias_normalization(self):
+        rows = [
+            {'Name': 'Var1', 'Address': '100', 'Type': 'UINT16'},
+            {'Name': 'Var2', 'Address': '101', 'Type': 'float32'},
+            {'Name': 'Var3', 'Address': '103', 'Type': 'DOUBLE'},
+            {'Name': 'Var4', 'Address': '104', 'Type': 'STR20'}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info3'], 'U16')
+        self.assertEqual(processed[1]['Info3'], 'F32')
+        self.assertEqual(processed[2]['Info3'], 'F64')
+        self.assertEqual(processed[3]['Info3'], 'STRING')
+        self.assertEqual(processed[3]['Info2'], '104_20') # STR20 should expand address
+
+    def test_missing_name_handling(self):
+        rows = [
+            {'Name': '', 'Address': '30005', 'Type': 'U16'}
+        ]
+        with self.assertLogs(level='INFO') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(len(processed), 1)
+            self.assertEqual(processed[0]['Name'], 'Register 30005')
+            self.assertTrue(any("Missing Name" in m for m in log.output))
+
+    def test_coef_a_precision(self):
+        rows = [
+            {'Name': 'Small Coef', 'Address': '100', 'Type': 'U16', 'Factor': '0.0000001', 'ScaleFactor': '0'}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['CoefA'], '0.0000001')
 
 if __name__ == '__main__':
     unittest.main()

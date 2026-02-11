@@ -28,11 +28,53 @@ class Generator:
             'input register': '4',
             'input': '4'
         }
+        # Data type aliases mapping to standard Webdyn types
+        self.type_aliases = {
+            'UINT8': 'U8',
+            'INT8': 'I8',
+            'UINT16': 'U16',
+            'INT16': 'I16',
+            'UINT32': 'U32',
+            'INT32': 'I32',
+            'UINT64': 'U64',
+            'INT64': 'I64',
+            'FLOAT': 'F32',
+            'FLOAT32': 'F32',
+            'DOUBLE': 'F64',
+            'FLOAT64': 'F64'
+        }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    def normalize_type(self, dtype):
+        """Normalizes the data type to Webdyn standard or supported convenience types."""
+        if not dtype:
+            return 'U16'
+
+        # Pre-process common words and spaces
+        dtype_str = str(dtype).lower().strip()
+        dtype_str = dtype_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
+        dtype_upper = dtype_str.upper()
+
+        # Check aliases
+        if dtype_upper in self.type_aliases:
+            return self.type_aliases[dtype_upper]
+
+        # Check for patterns like uint16, int32 etc.
+        match_int = re.match(r'^(U|I|UINT|INT)(\d+)$', dtype_upper)
+        if match_int:
+            prefix = 'U' if match_int.group(1).startswith('U') else 'I'
+            bits = match_int.group(2)
+            return f"{prefix}{bits}"
+
+        # Handle STR<n> - Preserve it as it's a valid convenience type for input
+        if RE_TYPE_STR_CONV.match(dtype_upper):
+            return dtype_upper
+
+        return dtype_upper
+
     def validate_type(self, dtype):
-        """Validates the data type."""
+        """Validates the data type (accepts Webdyn types and STR<n>)."""
         dtype_upper = dtype.upper()
         # Base types
         base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC', 'F32', 'F64']
@@ -43,17 +85,40 @@ class Generator:
         if RE_TYPE_INT.match(dtype_upper):
             return True
 
-        # STR<n> syntax (e.g., STR20)
+        # STR<n> convenience type
         if RE_TYPE_STR_CONV.match(dtype_upper):
             return True
 
         return False
 
+    def normalize_action(self, action):
+        """Normalizes action code from synonyms."""
+        if not action:
+            return '1' # Default per spec
+
+        act_str = str(action).upper().strip()
+        if act_str in ['R', 'READ']:
+            return '4'
+        elif act_str in ['RW', 'W', 'WRITE']:
+            return '1'
+        elif act_str in self.allowed_actions:
+            return act_str
+
+        return '1' # Default fallback
+
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
+        if addr_part is None:
+            return ""
         addr_part = str(addr_part).strip()
         if not addr_part:
             return ""
+
+        # Remove commas (sometimes found in documentation like 40,001)
+        if ',' in addr_part and '.' not in addr_part:
+            addr_part = addr_part.replace(',', '')
+
+        # Hex detection: 0x prefix, h suffix, or contains A-F and no other non-digit chars
         if addr_part.lower().startswith('0x'):
             try:
                 return str(int(addr_part, 16))
@@ -64,6 +129,12 @@ class Generator:
                 return str(int(addr_part[:-1], 16))
             except ValueError:
                 return addr_part
+        elif any(c in 'ABCDEFabcdef' for c in addr_part) and all(c in '0123456789ABCDEFabcdef' for c in addr_part):
+            try:
+                return str(int(addr_part, 16))
+            except ValueError:
+                return addr_part
+
         return addr_part
 
     def validate_address(self, address, dtype):
@@ -140,28 +211,34 @@ class Generator:
             action = get_val('Action')
             scale_factor_str = get_val('ScaleFactor')
 
-            if not name and not address:
-                logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
-                continue
+            if not name:
+                if address:
+                    name = f"Register {address}"
+                    logging.info(f"Line {line_num}: Missing Name, using 'Register {address}'")
+                else:
+                    logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
+                    continue
+
+            # Normalization: Type
+            original_dtype = dtype
+            dtype = self.normalize_type(dtype)
 
             # Validation: Type
             if not self.validate_type(dtype):
-                logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
+                logging.warning(f"Line {line_num}: Invalid Type '{original_dtype}'. Skipping row.")
                 continue
 
-            # Handle STR<n> conversion
-            dtype_upper = dtype.upper()
-            match_str = RE_TYPE_STR_CONV.match(dtype_upper)
+            # Handle STR<n> conversion and address update
+            match_str = RE_TYPE_STR_CONV.match(dtype.upper())
             if match_str:
                 try:
                     length = int(match_str.group(1))
-                    dtype = 'STRING'
+                    dtype = 'STRING' # Convert to standard Webdyn type
                     # Update address to Address_Length if not already formatted
-                    if '_' not in address:
+                    if address and '_' not in str(address):
                         address = f"{address}_{length}"
                 except ValueError:
-                    logging.warning(f"Line {line_num}: Invalid STR format '{dtype_upper}'. Skipping row.")
-                    continue
+                    pass
 
             # Validation: Address format based on Type (checks hex/dec and composite)
             if not self.validate_address(address, dtype):
@@ -270,7 +347,11 @@ class Generator:
                      val_scale = 0
 
             final_coef_a_val = val_factor * (10 ** val_scale)
-            coef_a = "{:.6f}".format(final_coef_a_val)
+            # Use g formatting to avoid loss of precision on very small numbers but maintain readability
+            if 0 < abs(final_coef_a_val) < 0.000001:
+                coef_a = "{:.10f}".format(final_coef_a_val).rstrip('0').rstrip('.')
+            else:
+                coef_a = "{:.6f}".format(final_coef_a_val)
 
             # CoefB from Offset
             if not offset:
@@ -283,17 +364,7 @@ class Generator:
                     coef_b = offset
 
             # Action normalization
-            if not action:
-                action = '1' # Default per spec
-            else:
-                act_upper = action.upper()
-                if act_upper in ['R', 'READ']:
-                    action = '4'
-                elif act_upper in ['RW', 'W', 'WRITE']:
-                    action = '1'
-                elif action not in self.allowed_actions:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(action)
 
             # Construct processed row
             processed_row = {
