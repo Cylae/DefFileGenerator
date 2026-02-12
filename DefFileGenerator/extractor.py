@@ -6,8 +6,17 @@ import logging
 import os
 import re
 import sys
-import openpyxl
-import pdfplumber
+try:
+    import openpyxl
+    HAS_OPENPYXL = True
+except ImportError:
+    HAS_OPENPYXL = False
+
+try:
+    import pdfplumber
+    HAS_PDFPLUMBER = True
+except ImportError:
+    HAS_PDFPLUMBER = False
 from DefFileGenerator.def_gen import Generator
 
 class Extractor:
@@ -51,6 +60,9 @@ class Extractor:
         return t.upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
+        if not HAS_OPENPYXL:
+            logging.error("openpyxl is required for Excel extraction.")
+            return []
         logging.info(f"Extracting from Excel: {filepath}")
         wb = openpyxl.load_workbook(filepath, data_only=True)
         if sheet_name:
@@ -77,6 +89,9 @@ class Extractor:
         return data
 
     def extract_from_pdf(self, filepath, pages=None):
+        if not HAS_PDFPLUMBER:
+            logging.error("pdfplumber is required for PDF extraction.")
+            return []
         logging.info(f"Extracting from PDF: {filepath}")
         data = []
         with pdfplumber.open(filepath) as pdf:
