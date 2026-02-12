@@ -9,9 +9,9 @@ import math
 # Pre-compiled regex patterns for optimization
 RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
-RE_ADDR_STRING = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
-RE_ADDR_BITS = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^(\d+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
@@ -51,7 +51,7 @@ class Generator:
 
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
-        addr_part = str(addr_part).strip()
+        addr_part = str(addr_part).strip().replace(',', '')
         if not addr_part:
             return ""
         if addr_part.lower().startswith('0x'):
@@ -62,6 +62,12 @@ class Generator:
         elif addr_part.lower().endswith('h'):
             try:
                 return str(int(addr_part[:-1], 16))
+            except ValueError:
+                return addr_part
+        # If it contains A-F, it's likely hex
+        if any(c in addr_part.upper() for c in 'ABCDEF'):
+            try:
+                return str(int(addr_part, 16))
             except ValueError:
                 return addr_part
         return addr_part
@@ -163,16 +169,16 @@ class Generator:
                     logging.warning(f"Line {line_num}: Invalid STR format '{dtype_upper}'. Skipping row.")
                     continue
 
-            # Validation: Address format based on Type (checks hex/dec and composite)
-            if not self.validate_address(address, dtype):
-                logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
-                continue
-
-            # Normalize Address (convert any hex parts to decimal)
+            # Normalize Address (convert any hex parts to decimal and remove commas)
             if address:
                 addr_parts = address.split('_')
                 norm_parts = [self.normalize_address_val(p) for p in addr_parts]
                 address = '_'.join(norm_parts)
+
+            # Validation: Address format based on Type (checks hex/dec and composite)
+            if not self.validate_address(address, dtype):
+                logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
+                continue
 
             # Global Check: Duplicate Name
             if name:
@@ -251,47 +257,41 @@ class Generator:
             info4 = ''
 
             # CoefA from Factor and ScaleFactor
-            if not factor:
+            try:
+                val_factor = float(factor) if factor and str(factor).strip() else 1.0
+            except ValueError:
+                logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
                 val_factor = 1.0
-            else:
-                try:
-                    val_factor = float(factor)
-                except ValueError:
-                    logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
-                    val_factor = 1.0
 
-            if not scale_factor_str:
-                val_scale = 0
-            else:
-                try:
-                    val_scale = int(float(scale_factor_str))
-                except ValueError:
-                     logging.warning(f"Line {line_num}: Invalid ScaleFactor '{scale_factor_str}'. Using 0.")
-                     val_scale = 0
+            try:
+                val_scale = int(float(scale_factor_str)) if scale_factor_str and str(scale_factor_str).strip() else 0
+            except ValueError:
+                 logging.warning(f"Line {line_num}: Invalid ScaleFactor '{scale_factor_str}'. Using 0.")
+                 val_scale = 0
 
             final_coef_a_val = val_factor * (10 ** val_scale)
             coef_a = "{:.6f}".format(final_coef_a_val)
 
             # CoefB from Offset
-            if not offset:
+            try:
+                val_offset = float(offset) if offset and str(offset).strip() else 0.0
+                coef_b = "{:.6f}".format(val_offset)
+            except ValueError:
+                logging.warning(f"Line {line_num}: Invalid Offset '{offset}'. Defaulting to 0.000000.")
                 coef_b = "0.000000"
-            else:
-                try:
-                    coef_b = "{:.6f}".format(float(offset))
-                except ValueError:
-                    logging.warning(f"Line {line_num}: Invalid Offset '{offset}'. Using as is.")
-                    coef_b = offset
 
             # Action normalization
-            if not action:
+            if not action or not str(action).strip():
                 action = '1' # Default per spec
             else:
-                act_upper = action.upper()
-                if act_upper in ['R', 'READ']:
+                act_str = str(action).strip().upper()
+                if act_str in ['R', 'READ', '4']:
                     action = '4'
-                elif act_upper in ['RW', 'W', 'WRITE']:
+                elif act_str in ['RW', 'W', 'WRITE', '1']:
                     action = '1'
-                elif action not in self.allowed_actions:
+                elif act_str in self.allowed_actions:
+                    action = act_str
+                else:
                     logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
                     action = '1'
 

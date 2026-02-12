@@ -34,20 +34,25 @@ class TestGenerator(unittest.TestCase):
         self.assertTrue(self.generator.validate_address('30001', 'U16'))
         self.assertTrue(self.generator.validate_address('0x7531', 'U16'))
         self.assertTrue(self.generator.validate_address('7531h', 'U16'))
+        self.assertTrue(self.generator.validate_address('A0', 'U16'))
         self.assertTrue(self.generator.validate_address('30001_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('0x7531_10', 'STRING'))
+        self.assertTrue(self.generator.validate_address('A0_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('30001_0_1', 'BITS'))
         self.assertTrue(self.generator.validate_address('0x7531_0_1', 'BITS'))
+        self.assertTrue(self.generator.validate_address('A0_0_1', 'BITS'))
 
     def test_normalize_address_val(self):
         self.assertEqual(self.generator.normalize_address_val('0x10'), '16')
         self.assertEqual(self.generator.normalize_address_val('10h'), '16')
         self.assertEqual(self.generator.normalize_address_val('10'), '10')
+        self.assertEqual(self.generator.normalize_address_val('A0'), '160')
+        self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
         self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len
-        self.assertFalse(self.generator.validate_address('abc', 'U16'))
+        self.assertFalse(self.generator.validate_address('xyz', 'U16')) # Not hex
 
     def test_get_register_count(self):
         self.assertEqual(self.generator.get_register_count('U16', '30000'), 1)
