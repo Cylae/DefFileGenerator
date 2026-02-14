@@ -182,5 +182,30 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_comprehensive_normalization(self):
+        # Type normalization
+        self.assertEqual(self.generator.normalize_type("uint16"), "U16")
+        self.assertEqual(self.generator.normalize_type("Float32"), "F32")
+        self.assertEqual(self.generator.normalize_type("16-bit Unsigned (ignore)"), "U16")
+
+        # Action normalization
+        self.assertEqual(self.generator.normalize_action("RO"), "4")
+        self.assertEqual(self.generator.normalize_action("Read-only"), "4")
+        self.assertEqual(self.generator.normalize_action("Read/Write"), "1")
+
+        # Address normalization
+        self.assertEqual(self.generator.normalize_address_val(" 0x10 "), "16")
+        self.assertEqual(self.generator.normalize_address_val("1,000"), "1000")
+
+    def test_address_offset(self):
+        gen_with_offset = Generator(address_offset=1)
+        rows = [{'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '40001', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}]
+        processed = gen_with_offset.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '40000')
+
+        gen_with_large_offset = Generator(address_offset=40001)
+        processed = gen_with_large_offset.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '0')
+
 if __name__ == '__main__':
     unittest.main()
