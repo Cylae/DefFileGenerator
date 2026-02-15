@@ -182,5 +182,20 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        generator = Generator(address_offset=1)
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '40001', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+        ]
+        processed = generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '40000')
+
+        # Test hex with offset
+        rows = [
+            {'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '0x10', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+        ]
+        processed = generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '15') # 16 - 1 = 15
+
 if __name__ == '__main__':
     unittest.main()
