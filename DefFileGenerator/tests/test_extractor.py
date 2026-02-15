@@ -11,6 +11,8 @@ class TestExtractor(unittest.TestCase):
         self.extractor = Extractor()
         self.excel_file = "test_registers.xlsx"
         self.pdf_file = "test_registers.pdf"
+        self.xml_file = "test_registers.xml"
+        self.csv_file = "test_registers.csv"
         self.mapping_file = "test_mapping.json"
 
         # Create dummy Excel
@@ -47,7 +49,7 @@ class TestExtractor(unittest.TestCase):
         doc.build(elements)
 
     def tearDown(self):
-        for f in [self.excel_file, self.pdf_file, self.mapping_file]:
+        for f in [self.excel_file, self.pdf_file, self.xml_file, self.csv_file, self.mapping_file]:
             if os.path.exists(f):
                 os.remove(f)
 
@@ -83,6 +85,28 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
+
+    def test_extract_from_xml(self):
+        with open(self.xml_file, 'w') as f:
+            f.write("""<registers>
+                <row><Address>5000</Address><Name>XML_Reg</Name><Type>uint32</Type></row>
+            </registers>""")
+        data = self.extractor.extract_from_xml(self.xml_file)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(str(data[0]["Address"]), "5000")
+
+        mapped = self.extractor.map_and_clean(data)
+        self.assertEqual(mapped[0]["Type"], "U32")
+
+    def test_extract_from_csv(self):
+        with open(self.csv_file, 'w') as f:
+            f.write("Address;Name;Type\n6000;CSV_Reg;float\n")
+        data = self.extractor.extract_from_csv(self.csv_file)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(str(data[0]["Address"]), "6000")
+
+        mapped = self.extractor.map_and_clean(data)
+        self.assertEqual(mapped[0]["Type"], "F32")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar

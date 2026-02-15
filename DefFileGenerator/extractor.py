@@ -17,47 +17,57 @@ try:
     HAS_PDFPLUMBER = True
 except ImportError:
     HAS_PDFPLUMBER = False
+
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
 from DefFileGenerator.def_gen import Generator
 
 class Extractor:
+    COLUMN_MAPPING = {
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
+        'Type': ['data type', 'datatype', 'type', 'format'],
+        'Unit': ['unit', 'units'],
+        'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
+        'ScaleFactor': ['scalefactor', 'scale factor'],
+        'Action': ['action', 'access'],
+        'Tag': ['tag']
+    }
+
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        # Default mapping for data types
-        self.type_mapping = {
-            'uint16': 'U16',
-            'int16': 'I16',
-            'uint32': 'U32',
-            'int32': 'I32',
-            'float32': 'F32',
-            'float': 'F32',
-            'u16': 'U16',
-            'i16': 'I16',
-            'u32': 'U32',
-            'i32': 'I32',
-            'f32': 'F32',
-            'string': 'STRING',
-            'bits': 'BITS'
-        }
+        self._generator = Generator()
 
     def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip()
-        # Remove common extra words and spaces
-        t_str = t_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
+        return self._generator.normalize_type(t)
 
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-
-        # Check for patterns like Uint16, Int32, uint16, int32
-        match = re.match(r'^(u|i|uint|int)(\d+)$', t_str)
-        if match:
-            raw_prefix = match.group(1).lower()
-            prefix = 'U' if raw_prefix.startswith('u') else 'I'
-            bits = match.group(2)
-            return f"{prefix}{bits}"
-
-        return t.upper()
+    def extract_from_csv(self, filepath):
+        logging.info(f"Extracting from CSV: {filepath}")
+        if HAS_PANDAS:
+            for delimiter in [',', ';', '\t']:
+                try:
+                    df = pd.read_csv(filepath, sep=delimiter, encoding='utf-8-sig')
+                    if len(df.columns) > 1:
+                        return df.to_dict(orient='records')
+                except Exception:
+                    continue
+        else:
+            # Fallback to standard csv module
+            for delimiter in [',', ';', '\t']:
+                 try:
+                     with open(filepath, 'r', encoding='utf-8-sig') as f:
+                         reader = csv.DictReader(f, delimiter=delimiter)
+                         rows = list(reader)
+                         if rows and len(reader.fieldnames) > 1:
+                             return rows
+                 except Exception:
+                     continue
+        return []
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -87,6 +97,25 @@ class Extractor:
                     row_data[headers[i]] = cell.value
             data.append(row_data)
         return data
+
+    def extract_from_xml(self, filepath):
+        if not HAS_PANDAS:
+            logging.error("pandas and lxml are required for XML extraction.")
+            return []
+        logging.info(f"Extracting from XML: {filepath}")
+        try:
+            # Try with default parser (usually lxml if installed)
+            df = pd.read_xml(filepath)
+            return df.to_dict(orient='records')
+        except Exception as e:
+            logging.debug(f"Default XML parser failed, trying etree: {e}")
+            try:
+                # Fallback to etree which is in the standard library
+                df = pd.read_xml(filepath, parser='etree')
+                return df.to_dict(orient='records')
+            except Exception as e2:
+                logging.error(f"Error loading XML file: {e2}")
+                return []
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
@@ -141,18 +170,21 @@ class Extractor:
 
         # Fuzzy match for standard columns if not explicitly mapped
         # Priority order to avoid misidentification (e.g. RegisterType as Type)
-        standard_cols = ['RegisterType', 'Name', 'Address', 'Type', 'Unit', 'Tag']
-        for target in standard_cols:
-            if target not in standard_cols_mapping:
-                for k in first_row.keys():
-                    if k in assigned_keys:
-                        continue
-                    if k.lower() == target.lower() or target.lower() in k.lower():
-                        standard_cols_mapping[target] = k
-                        assigned_keys.add(k)
-                        break
+        detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Factor', 'ScaleFactor', 'Action', 'Tag']
+        for target in detection_order:
+            if target in standard_cols_mapping:
+                continue
 
-        generator = Generator()
+            patterns = self.COLUMN_MAPPING.get(target, [])
+            for k in first_row.keys():
+                if k in assigned_keys:
+                    continue
+                k_lower = k.lower()
+                if any(p in k_lower for p in patterns):
+                    standard_cols_mapping[target] = k
+                    assigned_keys.add(k)
+                    break
+
         for row in raw_data:
             new_row = {}
             for target, source in standard_cols_mapping.items():
@@ -169,10 +201,10 @@ class Extractor:
                 addr = str(new_row['Address']).strip()
                 if '_' in addr:
                     parts = addr.split('_')
-                    norm_parts = [generator.normalize_address_val(p) for p in parts]
+                    norm_parts = [self._generator.normalize_address_val(p) for p in parts]
                     new_row['Address'] = '_'.join(norm_parts)
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    new_row['Address'] = self._generator.normalize_address_val(addr)
 
             # Clean Type
             if 'Type' in new_row:

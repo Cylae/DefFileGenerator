@@ -1,0 +1,3 @@
+modbusRTU;Inverter;TestMfg;XMLModel;;;;;;;
+1;3;40001;U16;;Test Register XML;test_register_xml;1.000000;0.000000;V;1
+2;3;40002;I32;;Another XML Reg;another_xml_reg;1.000000;0.000000;A;1

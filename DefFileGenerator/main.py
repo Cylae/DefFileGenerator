@@ -26,6 +26,8 @@ def extract_command(args):
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         return
@@ -73,6 +75,8 @@ def run_command(args):
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         return

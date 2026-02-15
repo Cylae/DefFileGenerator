@@ -18,6 +18,30 @@ RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
     def __init__(self):
+        # Default mapping for data types
+        self.type_mapping = {
+            'uint16': 'U16',
+            'int16': 'I16',
+            'uint32': 'U32',
+            'int32': 'I32',
+            'uint64': 'U64',
+            'int64': 'I64',
+            'float32': 'F32',
+            'float': 'F32',
+            'u16': 'U16',
+            'i16': 'I16',
+            'u32': 'U32',
+            'i32': 'I32',
+            'f32': 'F32',
+            'double': 'F64',
+            'f64': 'F64',
+            'float64': 'F64',
+            'string': 'STRING',
+            'bits': 'BITS',
+            'ip': 'IP',
+            'ipv6': 'IPV6',
+            'mac': 'MAC'
+        }
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -48,6 +72,36 @@ class Generator:
             return True
 
         return False
+
+    def normalize_type(self, dtype):
+        """Normalizes manufacturer data types to Webdyn-supported types."""
+        if not dtype:
+            return 'U16'
+
+        t_str = str(dtype).lower().strip()
+        # Remove parenthetical info like "uint16 (0-65535)" -> "uint16"
+        t_str = re.sub(r'\(.*\)', '', t_str).strip()
+        # Remove common extra words, spaces, hyphens
+        t_str = t_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '').replace('-', '')
+
+        if t_str in self.type_mapping:
+            return self.type_mapping[t_str]
+
+        # Check for patterns like Uint16, Int32, uint16, int32
+        match = re.match(r'^(u|i|uint|int)(\d+)$', t_str)
+        if match:
+            raw_prefix = match.group(1).lower()
+            prefix = 'U' if raw_prefix.startswith('u') else 'I'
+            bits = match.group(2)
+            return f"{prefix}{bits}"
+
+        # Handle STR<n> syntax (e.g., STR20)
+        if RE_TYPE_STR_CONV.match(t_str):
+            return t_str.upper()
+
+        # Clean up remaining common characters and return upper
+        t_str = re.sub(r'[^a-z0-9_]+', '', t_str)
+        return t_str.upper() if t_str else 'U16'
 
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
@@ -258,8 +312,12 @@ class Generator:
 
             # CoefA from Factor and ScaleFactor
             try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-            except ValueError:
+                if factor and '/' in str(factor):
+                    parts = str(factor).split('/')
+                    val_factor = float(parts[0]) / float(parts[1])
+                else:
+                    val_factor = float(factor) if factor and str(factor).strip() else 1.0
+            except (ValueError, ZeroDivisionError, IndexError):
                 logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
                 val_factor = 1.0
 

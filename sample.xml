@@ -1,0 +1,14 @@
+<registers>
+    <row>
+        <Address>40001</Address>
+        <Name>Test Register XML</Name>
+        <Type>uint16</Type>
+        <Unit>V</Unit>
+    </row>
+    <row>
+        <Address>40002</Address>
+        <Name>Another XML Reg</Name>
+        <Type>int32</Type>
+        <Unit>A</Unit>
+    </row>
+</registers>
