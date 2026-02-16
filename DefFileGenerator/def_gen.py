@@ -258,8 +258,12 @@ class Generator:
 
             # CoefA from Factor and ScaleFactor
             try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-            except ValueError:
+                if factor and '/' in str(factor):
+                    parts = str(factor).split('/')
+                    val_factor = float(parts[0]) / float(parts[1])
+                else:
+                    val_factor = float(factor) if factor and str(factor).strip() else 1.0
+            except (ValueError, ZeroDivisionError):
                 logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
                 val_factor = 1.0
 
