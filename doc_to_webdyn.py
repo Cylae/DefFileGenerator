@@ -114,6 +114,7 @@ def main():
     parser.add_argument('--protocol', default='modbusRTU', help='Protocol name (default: modbusRTU)')
     parser.add_argument('--category', default='Inverter', help='Device category (default: Inverter)')
     parser.add_argument('--sheet', help='Excel sheet name (processes all if not specified)')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from input addresses.')
     parser.add_argument('-v', '--verbose', action='store_true', help='Show detailed processing information')
 
     args = parser.parse_args()
@@ -227,7 +228,7 @@ def main():
     logging.info(f"Successfully extracted {len(all_extracted_rows)} registers.")
 
     # Use DefFileGenerator logic to process and validate
-    generator = Generator()
+    generator = Generator(address_offset=args.address_offset)
     processed_rows = generator.process_rows(all_extracted_rows)
 
     # Determine output filename
