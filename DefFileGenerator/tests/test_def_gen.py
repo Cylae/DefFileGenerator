@@ -182,5 +182,22 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [{'Name': 'Var1', 'Address': '30001', 'Type': 'U16'}]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '30000')
+
+    def test_address_offset_composite(self):
+        self.generator.address_offset = 1
+        rows = [{'Name': 'VarStr', 'Address': '30001_10', 'Type': 'STRING'}]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '30000_10')
+
+    def test_fractional_factor(self):
+        rows = [{'Name': 'Var1', 'Address': '100', 'Type': 'U16', 'Factor': '1/10'}]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['CoefA'], '0.100000')
+
 if __name__ == '__main__':
     unittest.main()
