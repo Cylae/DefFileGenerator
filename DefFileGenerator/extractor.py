@@ -20,44 +20,29 @@ except ImportError:
 from DefFileGenerator.def_gen import Generator
 
 class Extractor:
+    COLUMN_MAPPING = {
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
+        'Type': ['data type', 'datatype', 'type', 'format'],
+        'Unit': ['unit', 'units'],
+        'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
+        'ScaleFactor': ['scalefactor'],
+        'Tag': ['tag'],
+        'Action': ['action', 'access']
+    }
+
+    TYPE_MAPPING = {
+        'uint16': 'U16', 'int16': 'I16',
+        'uint32': 'U32', 'int32': 'I32',
+        'uint64': 'U64', 'int64': 'I64',
+        'float': 'F32', 'f32': 'F32', 'float32': 'F32',
+        'double': 'F64', 'f64': 'F64', 'float64': 'F64',
+        'string': 'STRING', 'bits': 'BITS'
+    }
+
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        # Default mapping for data types
-        self.type_mapping = {
-            'uint16': 'U16',
-            'int16': 'I16',
-            'uint32': 'U32',
-            'int32': 'I32',
-            'float32': 'F32',
-            'float': 'F32',
-            'u16': 'U16',
-            'i16': 'I16',
-            'u32': 'U32',
-            'i32': 'I32',
-            'f32': 'F32',
-            'string': 'STRING',
-            'bits': 'BITS'
-        }
-
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip()
-        # Remove common extra words and spaces
-        t_str = t_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-
-        # Check for patterns like Uint16, Int32, uint16, int32
-        match = re.match(r'^(u|i|uint|int)(\d+)$', t_str)
-        if match:
-            raw_prefix = match.group(1).lower()
-            prefix = 'U' if raw_prefix.startswith('u') else 'I'
-            bits = match.group(2)
-            return f"{prefix}{bits}"
-
-        return t.upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -94,34 +79,66 @@ class Extractor:
             return []
         logging.info(f"Extracting from PDF: {filepath}")
         data = []
-        with pdfplumber.open(filepath) as pdf:
-            if pages is None:
-                target_pages = pdf.pages
-            else:
-                target_pages = []
-                # Simple page selection logic
-                if isinstance(pages, int):
-                    target_pages = [pdf.pages[pages-1]]
-                elif isinstance(pages, list):
-                    target_pages = [pdf.pages[i-1] for i in pages]
+        try:
+            with pdfplumber.open(filepath) as pdf:
+                if pages is None:
+                    target_pages = pdf.pages
+                else:
+                    target_pages = []
+                    # Simple page selection logic
+                    if isinstance(pages, int):
+                        target_pages = [pdf.pages[pages-1]]
+                    elif isinstance(pages, list):
+                        target_pages = [pdf.pages[i-1] for i in pages]
 
-            for page in target_pages:
-                tables = page.extract_tables()
-                for table in tables:
-                    if not table or len(table) < 2:
-                        continue
+                for page in target_pages:
+                    tables = page.extract_tables()
+                    for table in tables:
+                        if not table or len(table) < 2:
+                            continue
 
-                    # Clean headers: remove newlines
-                    headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        # Clean headers: remove newlines
+                        headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
 
-                    for row in table[1:]:
-                        row_data = {}
-                        for i, cell in enumerate(row):
-                            if i < len(headers):
-                                val = str(cell).replace('\n', ' ').strip() if cell else ""
-                                row_data[headers[i]] = val
-                        data.append(row_data)
+                        for row in table[1:]:
+                            row_data = {}
+                            for i, cell in enumerate(row):
+                                if i < len(headers):
+                                    val = str(cell).replace('\n', ' ').strip() if cell else ""
+                                    row_data[headers[i]] = val
+                            data.append(row_data)
+        except Exception as e:
+            logging.error(f"Error extracting from PDF {filepath}: {e}")
         return data
+
+    def extract_from_csv(self, filepath):
+        logging.info(f"Extracting from CSV: {filepath}")
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                # Detect delimiter
+                content = f.read(2048)
+                f.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(content, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
+                    dialect.delimiter = ',' if ',' in content else ';'
+
+                reader = csv.DictReader(f, dialect=dialect)
+                return [row for row in reader]
+        except Exception as e:
+            logging.error(f"Error extracting from CSV {filepath}: {e}")
+            return []
+
+    def extract_from_xml(self, filepath):
+        import pandas as pd
+        logging.info(f"Extracting from XML: {filepath}")
+        try:
+            df = pd.read_xml(filepath)
+            return df.to_dict(orient='records')
+        except Exception as e:
+            logging.error(f"Error extracting from XML {filepath}: {e}")
+            return []
 
     def map_and_clean(self, raw_data):
         mapped_data = []
@@ -141,13 +158,15 @@ class Extractor:
 
         # Fuzzy match for standard columns if not explicitly mapped
         # Priority order to avoid misidentification (e.g. RegisterType as Type)
-        standard_cols = ['RegisterType', 'Name', 'Address', 'Type', 'Unit', 'Tag']
-        for target in standard_cols:
+        detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Factor', 'ScaleFactor', 'Tag', 'Action']
+        for target in detection_order:
             if target not in standard_cols_mapping:
+                patterns = self.COLUMN_MAPPING.get(target, [])
                 for k in first_row.keys():
                     if k in assigned_keys:
                         continue
-                    if k.lower() == target.lower() or target.lower() in k.lower():
+                    k_lower = k.lower()
+                    if k_lower == target.lower() or any(p in k_lower for p in patterns):
                         standard_cols_mapping[target] = k
                         assigned_keys.add(k)
                         break
@@ -167,6 +186,8 @@ class Extractor:
             # Clean Address using Generator's logic
             if 'Address' in new_row and new_row['Address']:
                 addr = str(new_row['Address']).strip()
+                # Remove commas
+                addr = addr.replace(',', '')
                 if '_' in addr:
                     parts = addr.split('_')
                     norm_parts = [generator.normalize_address_val(p) for p in parts]
@@ -176,7 +197,7 @@ class Extractor:
 
             # Clean Type
             if 'Type' in new_row:
-                new_row['Type'] = self.normalize_type(new_row['Type'])
+                new_row['Type'] = generator.normalize_type(new_row['Type'])
 
             # Ensure mandatory fields for def_gen
             if 'Name' not in new_row or not new_row['Name']:
@@ -223,6 +244,10 @@ def main():
         if args.pages:
             pages = [int(p.strip()) for p in args.pages.split(',')]
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported file extension: {ext}")
         sys.exit(1)

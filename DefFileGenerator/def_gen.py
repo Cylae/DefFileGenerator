@@ -17,7 +17,8 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
+        self.address_offset = address_offset
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -30,6 +31,62 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+    def normalize_type(self, dtype):
+        """Centralized logic for normalizing data types."""
+        if not dtype:
+            return 'U16'
+        # Basic cleaning
+        t_str = str(dtype).lower().strip()
+        # Remove parenthetical info (e.g. "uint16 (0-65535)")
+        t_str = re.sub(r'\(.*?\)', '', t_str).strip()
+        # Remove non-alphanumeric separators except underscore
+        t_str = re.sub(r'[^a-z0-9_]+', '', t_str)
+        # Remove common extra words
+        t_str = t_str.replace('unsigned', 'u').replace('signed', 'i')
+
+        type_mapping = {
+            'uint16': 'U16', 'int16': 'I16',
+            'uint32': 'U32', 'int32': 'I32',
+            'uint64': 'U64', 'int64': 'I64',
+            'u16': 'U16', 'i16': 'I16',
+            'u32': 'U32', 'i32': 'I32',
+            'u64': 'U64', 'i64': 'I64',
+            'f32': 'F32', 'f64': 'F64',
+            'float32': 'F32', 'float64': 'F64',
+            'float': 'F32', 'double': 'F64',
+            'string': 'STRING', 'bits': 'BITS',
+            'ip': 'IP', 'ipv6': 'IPV6', 'mac': 'MAC'
+        }
+
+        if t_str in type_mapping:
+            return type_mapping[t_str]
+
+        # Check for patterns like u16, i32, uint16
+        match = re.match(r'^(u|i|uint|int)(\d+)(_(w|b|wb))?$', t_str)
+        if match:
+            raw_prefix = match.group(1)
+            prefix = 'U' if raw_prefix.startswith('u') else 'I'
+            bits = match.group(2)
+            suffix = match.group(3).upper() if match.group(3) else ''
+            return f"{prefix}{bits}{suffix}"
+
+        return dtype.upper()
+
+    def normalize_action(self, action):
+        """Centralized logic for normalizing Action codes."""
+        if not action or not str(action).strip():
+            return '1'
+        act_str = str(action).strip().upper()
+        if act_str in ['R', 'READ', '4']:
+            return '4'
+        elif act_str in ['RW', 'W', 'WRITE', '1']:
+            return '1'
+        elif act_str in self.allowed_actions:
+            return act_str
+        else:
+            logging.warning(f"Invalid Action '{action}'. Defaulting to '1'.")
+            return '1'
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -150,6 +207,9 @@ class Generator:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
+            # Normalize Type
+            dtype = self.normalize_type(dtype)
+
             # Validation: Type
             if not self.validate_type(dtype):
                 logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
@@ -215,11 +275,21 @@ class Generator:
                 else:
                     logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
 
-            # Address Overlap Calculation
+            # Address Offset and Overlap Calculation
             try:
                 # Parse start address
                 parts = address.split('_')
                 start_addr = int(parts[0])
+
+                # Apply address offset
+                if self.address_offset:
+                    raw_start_addr = start_addr
+                    start_addr -= self.address_offset
+                    if start_addr < 0:
+                        logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+                    # Update address parts
+                    parts[0] = str(start_addr)
+                    address = '_'.join(parts)
 
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
@@ -258,8 +328,12 @@ class Generator:
 
             # CoefA from Factor and ScaleFactor
             try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-            except ValueError:
+                if factor and '/' in str(factor):
+                    parts = str(factor).split('/')
+                    val_factor = float(parts[0]) / float(parts[1])
+                else:
+                    val_factor = float(factor) if factor and str(factor).strip() else 1.0
+            except (ValueError, ZeroDivisionError):
                 logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
                 val_factor = 1.0
 
@@ -281,19 +355,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            if not action or not str(action).strip():
-                action = '1' # Default per spec
-            else:
-                act_str = str(action).strip().upper()
-                if act_str in ['R', 'READ', '4']:
-                    action = '4'
-                elif act_str in ['RW', 'W', 'WRITE', '1']:
-                    action = '1'
-                elif act_str in self.allowed_actions:
-                    action = act_str
-                else:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(action)
 
             # Construct processed row
             processed_row = {
@@ -341,7 +403,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,7 +416,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
@@ -446,6 +508,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Address offset to subtract from register addresses.')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +519,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
