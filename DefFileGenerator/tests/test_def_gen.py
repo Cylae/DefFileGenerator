@@ -182,5 +182,27 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [
+            {'Name': 'Var1', 'Address': '30001', 'Type': 'U16'},
+            {'Name': 'Var2', 'Address': '0x0002', 'Type': 'U16'},
+            {'Name': 'Var3', 'Address': '30005_10', 'Type': 'STRING'},
+            {'Name': 'Var4', 'Address': '30010_0_1', 'Type': 'BITS'}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '30000')
+        self.assertEqual(processed[1]['Info2'], '1') # 0x0002 = 2, 2 - 1 = 1
+        self.assertEqual(processed[2]['Info2'], '30004_10')
+        self.assertEqual(processed[3]['Info2'], '30009_0_1')
+
+    def test_negative_address_offset_warning(self):
+        self.generator.address_offset = 100
+        rows = [{'Name': 'Var1', 'Address': '10', 'Type': 'U16'}]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-90')
+            self.assertTrue(any("results in negative address -90" in m for m in log.output))
+
 if __name__ == '__main__':
     unittest.main()
