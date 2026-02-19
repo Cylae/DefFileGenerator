@@ -17,7 +17,8 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
+        self.address_offset = address_offset
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -30,6 +31,45 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+    def normalize_type(self, dtype):
+        """Centralized type normalization."""
+        if not dtype:
+            return 'U16'
+        dtype_str = str(dtype).lower().strip()
+        # Remove common extra words and spaces
+        dtype_str = dtype_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
+
+        # Common synonyms mapping
+        type_synonyms = {
+            'uint16': 'U16', 'int16': 'I16',
+            'uint32': 'U32', 'int32': 'I32',
+            'uint64': 'U64', 'int64': 'I64',
+            'float': 'F32', 'f32': 'F32', 'float32': 'F32',
+            'double': 'F64', 'f64': 'F64', 'float64': 'F64',
+            'string': 'STRING', 'bits': 'BITS', 'ip': 'IP', 'ipv6': 'IPV6', 'mac': 'MAC'
+        }
+        if dtype_str in type_synonyms:
+            return type_synonyms[dtype_str]
+
+        # Clean up common characters like () or space and check for STR<n>
+        dtype_str = re.sub(r'\([^)]*\)', '', dtype_str) # Remove parenthetical info
+        dtype_str = re.sub(r'[^a-z0-9_]+', '', dtype_str)
+        return dtype_str.upper() if dtype_str else 'U16'
+
+    def normalize_action(self, action):
+        """Centralized action normalization."""
+        if not action or not str(action).strip():
+            return '1' # Default per spec
+
+        act_str = str(action).strip().upper()
+        if act_str in ['R', 'READ', '4']:
+            return '4'
+        if act_str in ['RW', 'W', 'WRITE', '1']:
+            return '1'
+        if act_str in self.allowed_actions:
+            return act_str
+        return '1' # Default fallback
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -51,9 +91,37 @@ class Generator:
 
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
-        addr_part = str(addr_part).strip().replace(',', '')
-        if not addr_part:
+        if addr_part is None:
             return ""
+        addr_str = str(addr_part).strip()
+        # Handle formats like 40,001
+        if ',' in addr_str and '.' not in addr_str:
+            addr_str = addr_str.replace(',', '')
+
+        # Try to extract the address from a potentially messy string
+        # 1. Look for explicit hex (0x... or ...h)
+        match = re.search(r'(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h)', addr_str, re.IGNORECASE)
+        if match:
+            addr_part = match.group(1)
+        else:
+            # 2. Try to find the first "word" that is a valid hex or decimal number
+            # We split by common delimiters in messy PDF tables
+            parts = re.split(r'[ \t\r\n:|]+', addr_str)
+            for part in parts:
+                part = part.strip()
+                if not part: continue
+                # A valid hex/dec part should consist of 0-9A-F
+                if all(c in '0123456789ABCDEFabcdef' for c in part):
+                    addr_part = part
+                    break
+            else:
+                # 3. Fallback to extracting the first sequence of digits
+                match = re.search(r'(\d+)', addr_str)
+                if match:
+                    addr_part = match.group(1)
+                else:
+                    addr_part = addr_str
+
         if addr_part.lower().startswith('0x'):
             try:
                 return str(int(addr_part, 16))
@@ -150,6 +218,9 @@ class Generator:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
+            # Normalize Type
+            dtype = self.normalize_type(dtype)
+
             # Validation: Type
             if not self.validate_type(dtype):
                 logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
@@ -169,7 +240,7 @@ class Generator:
                     logging.warning(f"Line {line_num}: Invalid STR format '{dtype_upper}'. Skipping row.")
                     continue
 
-            # Normalize Address (convert any hex parts to decimal and remove commas)
+            # Normalize Address (convert any hex parts to decimal and remove commas/spaces)
             if address:
                 addr_parts = address.split('_')
                 norm_parts = [self.normalize_address_val(p) for p in addr_parts]
@@ -179,6 +250,19 @@ class Generator:
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
+
+            # Apply address offset
+            if address and self.address_offset != 0:
+                try:
+                    addr_parts = address.split('_')
+                    raw_start_addr = int(addr_parts[0])
+                    start_addr = raw_start_addr - self.address_offset
+                    if start_addr < 0:
+                        logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+                    addr_parts[0] = str(start_addr)
+                    address = '_'.join(addr_parts)
+                except ValueError:
+                    pass
 
             # Global Check: Duplicate Name
             if name:
@@ -258,8 +342,12 @@ class Generator:
 
             # CoefA from Factor and ScaleFactor
             try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-            except ValueError:
+                if factor and '/' in str(factor):
+                    parts = str(factor).split('/')
+                    val_factor = float(parts[0]) / float(parts[1])
+                else:
+                    val_factor = float(factor) if factor and str(factor).strip() else 1.0
+            except (ValueError, ZeroDivisionError):
                 logging.warning(f"Line {line_num}: Invalid Factor '{factor}'. Using 1.0.")
                 val_factor = 1.0
 
@@ -281,19 +369,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            if not action or not str(action).strip():
-                action = '1' # Default per spec
-            else:
-                act_str = str(action).strip().upper()
-                if act_str in ['R', 'READ', '4']:
-                    action = '4'
-                elif act_str in ['RW', 'W', 'WRITE', '1']:
-                    action = '1'
-                elif act_str in self.allowed_actions:
-                    action = act_str
-                else:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(action)
 
             # Construct processed row
             processed_row = {
@@ -341,7 +417,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 address_offset=0, template=False):
     if template:
         generate_template(output)
         return
@@ -354,7 +430,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
@@ -445,6 +521,7 @@ def main():
     parser.add_argument('--manufacturer', help='Manufacturer name.')
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from input addresses.')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
 
     args = parser.parse_args()
@@ -456,6 +533,7 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
+        address_offset=args.address_offset,
         template=args.template
     )
 
