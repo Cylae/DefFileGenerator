@@ -1,0 +1,39 @@
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.44
+   Compiling unicode-ident v1.0.24
+   Compiling memchr v2.8.0
+   Compiling utf8parse v0.2.2
+   Compiling serde_core v1.0.228
+   Compiling anstyle-parse v0.2.7
+   Compiling anstyle v1.0.13
+   Compiling anstyle-query v1.1.5
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling colorchoice v1.0.4
+   Compiling aho-corasick v1.1.4
+   Compiling anstream v0.6.21
+   Compiling syn v2.0.116
+   Compiling serde v1.0.228
+   Compiling heck v0.5.0
+   Compiling clap_lex v1.0.0
+   Compiling regex-syntax v0.8.9
+   Compiling strsim v0.11.1
+   Compiling csv-core v0.1.13
+   Compiling regex-automata v0.4.14
+   Compiling clap_builder v4.5.59
+   Compiling ryu v1.0.23
+   Compiling itoa v1.0.17
+   Compiling serde_derive v1.0.228
+   Compiling clap_derive v4.5.55
+   Compiling clap v4.5.59
+   Compiling regex v1.12.3
+   Compiling csv v1.4.0
+   Compiling rust_generator v0.1.0 (/app/rust_generator)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.56s
+     Running unittests src/main.rs (target/debug/deps/rust_generator-dbc3cb3dcc6eb387)
+
+running 3 tests
+test tests::test_normalize_address_val ... ok
+test tests::test_normalize_type ... ok
+test tests::test_address_offset ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
