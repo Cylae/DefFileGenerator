@@ -50,6 +50,9 @@ You can also run the generator script directly if you already have a correctly f
 python3 DefFileGenerator/def_gen.py <input_file> --manufacturer <Manufacturer> --model <Model> [options]
 ```
 
+**Options:**
+*   `--address-offset <n>`: (Optional) Integer offset to subtract from all register addresses.
+
 ### Examples
 
 **End-to-end extraction and generation:**
@@ -61,6 +64,26 @@ python3 DefFileGenerator/main.py run manual.pdf --manufacturer "MyCompany" --mod
 ```bash
 python3 DefFileGenerator/def_gen.py --template -o template.csv
 ```
+
+---
+
+## Rust Generator
+
+For improved resource efficiency and stability, a Rust implementation of the generator is available in the `rust_generator/` directory. It maintains full parity with the Python implementation.
+
+### Usage
+
+```bash
+cd rust_generator
+cargo run -- <input_csv> --manufacturer <MFG> --model <MODEL> [options]
+```
+
+### Options
+- `-o`, `--output <file>`: Output path (defaults to stdout).
+- `--protocol <name>`: Protocol name (default: `modbusRTU`).
+- `--category <name>`: Device category (default: `Inverter`).
+- `--forced-write <val>`: Forced write code.
+- `--address-offset <n>`: Integer offset to subtract from all input addresses.
 
 ## Input CSV Format
 

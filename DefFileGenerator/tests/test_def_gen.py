@@ -182,5 +182,29 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '99')
+
+    def test_negative_address_warning(self):
+        self.generator.address_offset = 100
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '50', 'Type': 'U16', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'}
+        ]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-50')
+            self.assertTrue(any("results in negative address -50" in m for m in log.output))
+
+    def test_hex_address_normalization(self):
+        self.assertEqual(self.generator.normalize_address_val('0x10'), '16')
+        self.assertEqual(self.generator.normalize_address_val('10h'), '16')
+        self.assertEqual(self.generator.normalize_address_val('-0x10'), '-16')
+        self.assertEqual(self.generator.normalize_address_val('-10h'), '-16')
+
 if __name__ == '__main__':
     unittest.main()
