@@ -182,5 +182,44 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [{
+            'Name': 'Test Var',
+            'Address': '30001',
+            'Type': 'U16'
+        }]
+        processed = self.generator.process_rows(rows)
+        # 30001 - 1 = 30000
+        self.assertEqual(processed[0]['Info2'], '30000')
+
+    def test_address_offset_negative_warning(self):
+        self.generator.address_offset = 100
+        rows = [{
+            'Name': 'Test Var',
+            'Address': '10',
+            'Type': 'U16'
+        }]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-90')
+            self.assertTrue(any("results in negative address" in m for m in log.output))
+
+    def test_normalize_address_messy(self):
+        # Messy strings
+        self.assertEqual(self.generator.normalize_address_val('Register 30001 (0x7531)'), '30001')
+        self.assertEqual(self.generator.normalize_address_val('Addr: 100h'), '256')
+        self.assertEqual(self.generator.normalize_address_val('Just some words 42'), '42')
+
+    def test_factor_fractions(self):
+        rows = [{
+            'Name': 'Fraction Var',
+            'Address': '30000',
+            'Type': 'U16',
+            'Factor': '1/10'
+        }]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['CoefA'], '0.100000')
+
 if __name__ == '__main__':
     unittest.main()
