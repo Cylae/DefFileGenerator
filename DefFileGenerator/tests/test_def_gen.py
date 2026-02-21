@@ -35,12 +35,15 @@ class TestGenerator(unittest.TestCase):
         self.assertTrue(self.generator.validate_address('0x7531', 'U16'))
         self.assertTrue(self.generator.validate_address('7531h', 'U16'))
         self.assertTrue(self.generator.validate_address('A0', 'U16'))
+        self.assertTrue(self.generator.validate_address('-1', 'U16'))
         self.assertTrue(self.generator.validate_address('30001_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('0x7531_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('A0_10', 'STRING'))
+        self.assertTrue(self.generator.validate_address('-10_10', 'STRING'))
         self.assertTrue(self.generator.validate_address('30001_0_1', 'BITS'))
         self.assertTrue(self.generator.validate_address('0x7531_0_1', 'BITS'))
         self.assertTrue(self.generator.validate_address('A0_0_1', 'BITS'))
+        self.assertTrue(self.generator.validate_address('-1_0_1', 'BITS'))
 
     def test_normalize_address_val(self):
         self.assertEqual(self.generator.normalize_address_val('0x10'), '16')
@@ -48,6 +51,10 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('10'), '10')
         self.assertEqual(self.generator.normalize_address_val('A0'), '160')
         self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
+        # Test messy strings with word boundaries
+        self.assertEqual(self.generator.normalize_address_val('Reg: 0x10'), '16')
+        self.assertEqual(self.generator.normalize_address_val('Address 100 is here'), '100')
+        self.assertEqual(self.generator.normalize_address_val('Hex A0'), '160')
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
@@ -161,6 +168,58 @@ class TestGenerator(unittest.TestCase):
         }]
         processed = self.generator.process_rows(rows)
         self.assertEqual(processed[0]['CoefA'], '0.250000')
+
+    def test_fraction_factor(self):
+        rows = [{
+            'Name': 'Fraction Var',
+            'Tag': 'frac_tag',
+            'RegisterType': '3',
+            'Address': '30000',
+            'Type': 'U16',
+            'Factor': '1/100',
+            'Offset': '0',
+            'Unit': '',
+            'Action': '',
+            'ScaleFactor': '0'
+        }]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['CoefA'], '0.010000')
+
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [{
+            'Name': 'Offset Var',
+            'Tag': 'off_tag',
+            'RegisterType': '3',
+            'Address': '30001',
+            'Type': 'U16',
+            'Factor': '1',
+            'Offset': '0',
+            'Unit': '',
+            'Action': '',
+            'ScaleFactor': '0'
+        }]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '30000')
+
+    def test_negative_address_warning(self):
+        self.generator.address_offset = 100
+        rows = [{
+            'Name': 'Negative Var',
+            'Tag': 'neg_tag',
+            'RegisterType': '3',
+            'Address': '50',
+            'Type': 'U16',
+            'Factor': '1',
+            'Offset': '0',
+            'Unit': '',
+            'Action': '',
+            'ScaleFactor': '0'
+        }]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-50')
+            self.assertTrue(any("results in negative address -50" in m for m in log.output))
 
     def test_automatic_tag_generation(self):
         rows = [
