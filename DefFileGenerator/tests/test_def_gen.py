@@ -48,6 +48,8 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('10'), '10')
         self.assertEqual(self.generator.normalize_address_val('A0'), '160')
         self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
+        self.assertEqual(self.generator.normalize_address_val('Reg 100'), '100')
+        self.assertEqual(self.generator.normalize_address_val('Address: 0x20'), '32')
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
@@ -170,6 +172,25 @@ class TestGenerator(unittest.TestCase):
         processed = self.generator.process_rows(rows)
         self.assertEqual(processed[0]['Tag'], 'test_variable')
         self.assertEqual(processed[1]['Tag'], 'test_variable_1')
+
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [{'Name': 'Test', 'Tag': 't', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'}]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '100')
+
+    def test_negative_address_warning(self):
+        self.generator.address_offset = 100
+        rows = [{'Name': 'Test', 'Tag': 't', 'RegisterType': '3', 'Address': '50', 'Type': 'U16', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'}]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-50')
+            self.assertTrue(any("results in negative address -50" in m for m in log.output))
+
+    def test_fractional_factor(self):
+        rows = [{'Name': 'Test', 'Tag': 't', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Factor': '1/10', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'}]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['CoefA'], '0.100000')
 
     def test_action_normalization(self):
         rows = [
