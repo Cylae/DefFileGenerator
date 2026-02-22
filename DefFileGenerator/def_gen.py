@@ -17,7 +17,8 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
+        self.address_offset = address_offset
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -250,6 +251,21 @@ class Generator:
             # Info2: Address
             info2 = address
 
+            # Apply address offset
+            if self.address_offset != 0:
+                try:
+                    # Handle Address_Length and Address_StartBit_NbBits
+                    addr_parts = address.split('_')
+                    raw_start_addr = int(addr_parts[0])
+                    start_addr = raw_start_addr - self.address_offset
+                    if start_addr < 0:
+                        logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+
+                    addr_parts[0] = str(start_addr)
+                    info2 = '_'.join(addr_parts)
+                except (ValueError, IndexError):
+                    pass
+
             # Info3: Type
             info3 = dtype.upper() # Ensure uppercase in output
 
@@ -341,7 +357,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,7 +370,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
@@ -445,6 +461,7 @@ def main():
     parser.add_argument('--manufacturer', help='Manufacturer name.')
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
+    parser.add_argument('--address-offset', type=int, default=0, help='Offset to subtract from register addresses.')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
 
     args = parser.parse_args()
@@ -456,7 +473,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
