@@ -182,5 +182,41 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        # Create generator with offset 1
+        self.generator.address_offset = 1
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
+            {'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '30002_10', 'Type': 'STRING', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '30000') # 30001 - 1
+        self.assertEqual(processed[1]['Info2'], '30001_10') # 30002 - 1 = 30001
+
+    def test_negative_address_warning(self):
+        self.generator.address_offset = 100
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '50', 'Type': 'U16', 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+        ]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-50')
+            self.assertTrue(any("results in negative address -50" in m for m in log.output))
+
+    def test_fractional_factor(self):
+        rows = [
+            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Factor': '1/10', 'Offset': '0', 'Unit': '', 'Action': '', 'ScaleFactor': '0'},
+            {'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Factor': '1/100', 'Offset': '0', 'Unit': '', 'Action': '', 'ScaleFactor': '1'}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['CoefA'], '0.100000') # 1/10 = 0.1
+        self.assertEqual(processed[1]['CoefA'], '0.100000') # (1/100) * 10^1 = 0.1
+
+    def test_normalize_type_synonyms(self):
+        self.assertEqual(self.generator.normalize_type('uint16'), 'U16')
+        self.assertEqual(self.generator.normalize_type('unsigned int 32'), 'U32')
+        self.assertEqual(self.generator.normalize_type('float32'), 'F32')
+        self.assertEqual(self.generator.normalize_type('Double'), 'F64')
+
 if __name__ == '__main__':
     unittest.main()
