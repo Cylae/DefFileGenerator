@@ -13,7 +13,7 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install pandas openpyxl pdfplumber lxml xlrd
 ```
 
 ## Basic Usage
@@ -47,11 +47,12 @@ python doc_to_webdyn.py registers.csv \
 ### Step 1: The tool looks for register information in your file
 
 It searches for columns with names like:
-- **Address**: register, address, addr, offset
-- **Name**: name, description, parameter
-- **Type**: type, data type, format
+- **Address**: register, address, addr, offset, reg
+- **Name**: name, description, parameter, variable, signal
+- **Type**: type, data type, format, datatype
 - **Unit**: unit, units
-- **Scale**: scale, factor, multiplier
+- **Scale**: scale, factor, multiplier, ratio
+- **Action**: action, access
 - etc.
 
 ### Step 2: It converts the data
@@ -149,6 +150,7 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages LIST` - PDF pages to process (e.g., --pages 1,2,5)
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files

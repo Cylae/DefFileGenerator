@@ -58,7 +58,10 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        data_list = self.extractor.extract_from_excel(self.excel_file)
+        # Should be a list of tables (one per sheet)
+        self.assertEqual(len(data_list), 1)
+        data = data_list[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
@@ -79,7 +82,10 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[2]["Type"], "F32")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        data_list = self.extractor.extract_from_pdf(self.pdf_file)
+        # Should be a list of tables
+        self.assertEqual(len(data_list), 1)
+        data = data_list[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
