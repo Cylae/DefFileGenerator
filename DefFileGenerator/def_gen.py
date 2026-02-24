@@ -9,15 +9,16 @@ import math
 # Pre-compiled regex patterns for optimization
 RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
-RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
-RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+# Support optional leading negative sign for addresses
+RE_ADDR_STRING = re.compile(r'^-?([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r'^-?([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^-?([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -30,6 +31,27 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+        self.address_offset = address_offset
+
+    def normalize_type(self, dtype):
+        """Standardizes data type names."""
+        if not dtype:
+            return 'U16'
+        t = str(dtype).lower().strip()
+        t = t.replace('unsigned', 'u').replace('signed', 'i').replace(' ', '')
+        # Synonyms
+        if 'uint16' in t: return 'U16'
+        if 'int16' in t: return 'I16'
+        if 'uint32' in t: return 'U32'
+        if 'int32' in t: return 'I32'
+        if 'uint64' in t: return 'U64'
+        if 'int64' in t: return 'I64'
+        if 'float32' in t or t == 'float': return 'F32'
+        if 'float64' in t or t == 'double': return 'F64'
+
+        # Regex-based cleaning for common patterns
+        t = re.sub(r'[^a-z0-9_]+', '', t)
+        return t.upper()
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -54,23 +76,31 @@ class Generator:
         addr_part = str(addr_part).strip().replace(',', '')
         if not addr_part:
             return ""
-        if addr_part.lower().startswith('0x'):
+
+        # Handle negative sign
+        is_negative = addr_part.startswith('-')
+        val_str = addr_part[1:] if is_negative else addr_part
+
+        res = val_str
+        if val_str.lower().startswith('0x'):
             try:
-                return str(int(addr_part, 16))
+                res = str(int(val_str, 16))
             except ValueError:
-                return addr_part
-        elif addr_part.lower().endswith('h'):
+                pass
+        elif val_str.lower().endswith('h'):
             try:
-                return str(int(addr_part[:-1], 16))
+                res = str(int(val_str[:-1], 16))
             except ValueError:
-                return addr_part
-        # If it contains A-F, it's likely hex
-        if any(c in addr_part.upper() for c in 'ABCDEF'):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-        return addr_part
+                pass
+        elif any(c in val_str.upper() for c in 'ABCDEF'):
+            # Use word boundaries to check if it's a hex word
+            if re.match(r'^[0-9A-F]+$', val_str.upper()):
+                try:
+                    res = str(int(val_str, 16))
+                except ValueError:
+                    pass
+
+        return f"-{res}" if is_negative and res else res
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -109,6 +139,19 @@ class Generator:
             except (IndexError, ValueError):
                 return 0
         return 1 # Default
+
+    def normalize_action(self, action):
+        """Normalizes action values to Webdyn codes."""
+        if not action or not str(action).strip():
+            return '1' # Default per spec
+        act_str = str(action).strip().upper()
+        if act_str in ['R', 'READ', '4']:
+            return '4'
+        if act_str in ['RW', 'W', 'WRITE', '1']:
+            return '1'
+        if act_str in self.allowed_actions:
+            return act_str
+        return '1'
 
     def process_rows(self, rows):
         """Processes simplified CSV rows into WebdynSunPM format."""
@@ -150,7 +193,8 @@ class Generator:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
-            # Validation: Type
+            # Normalize and validate Type
+            dtype = self.normalize_type(dtype)
             if not self.validate_type(dtype):
                 logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
                 continue
@@ -173,6 +217,18 @@ class Generator:
             if address:
                 addr_parts = address.split('_')
                 norm_parts = [self.normalize_address_val(p) for p in addr_parts]
+
+                # Apply address_offset to the first part (the base address)
+                if norm_parts and self.address_offset != 0:
+                    try:
+                        raw_start_addr = int(norm_parts[0])
+                        start_addr = raw_start_addr - self.address_offset
+                        if start_addr < 0:
+                            logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+                        norm_parts[0] = str(start_addr)
+                    except ValueError:
+                        pass
+
                 address = '_'.join(norm_parts)
 
             # Validation: Address format based on Type (checks hex/dec and composite)
@@ -281,19 +337,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            if not action or not str(action).strip():
-                action = '1' # Default per spec
-            else:
-                act_str = str(action).strip().upper()
-                if act_str in ['R', 'READ', '4']:
-                    action = '4'
-                elif act_str in ['RW', 'W', 'WRITE', '1']:
-                    action = '1'
-                elif act_str in self.allowed_actions:
-                    action = act_str
-                else:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(action)
 
             # Construct processed row
             processed_row = {
@@ -341,7 +385,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,7 +398,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
@@ -446,6 +490,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from register addresses.')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +501,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
