@@ -58,12 +58,15 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
-        raw_data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
+        raw_data = tables # map_and_clean now handles list of tables
         # Custom mapping
         self.extractor.mapping = {
             "Address": "Reg Addr",
@@ -79,7 +82,9 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[2]["Type"], "F32")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        tables = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
