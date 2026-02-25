@@ -48,6 +48,11 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('10'), '10')
         self.assertEqual(self.generator.normalize_address_val('A0'), '160')
         self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
+        # Robustness tests
+        self.assertEqual(self.generator.normalize_address_val('Addr: 0x10'), '16')
+        self.assertEqual(self.generator.normalize_address_val('Offset 100h'), '256')
+        self.assertEqual(self.generator.normalize_address_val('Reg 1234'), '1234')
+        self.assertEqual(self.generator.normalize_address_val('40,001'), '40001')
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int

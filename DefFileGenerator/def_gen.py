@@ -17,7 +17,8 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
+        self.address_offset = address_offset
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -51,25 +52,38 @@ class Generator:
 
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
+        if addr_part is None:
+            return ""
         addr_part = str(addr_part).strip().replace(',', '')
         if not addr_part:
             return ""
-        if addr_part.lower().startswith('0x'):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-        elif addr_part.lower().endswith('h'):
-            try:
-                return str(int(addr_part[:-1], 16))
-            except ValueError:
-                return addr_part
-        # If it contains A-F, it's likely hex
-        if any(c in addr_part.upper() for c in 'ABCDEF'):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
+
+        # Prioritize explicit hex (0x... or ...h)
+        hex_match = re.search(r'\b(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h)\b', addr_part, re.IGNORECASE)
+        if hex_match:
+            candidate = hex_match.group(1).lower()
+            if candidate.startswith('0x'):
+                try:
+                    return str(int(candidate, 16))
+                except ValueError:
+                    pass
+            elif candidate.endswith('h'):
+                try:
+                    return str(int(candidate[:-1], 16))
+                except ValueError:
+                    pass
+
+        # Fallback to word boundary search for hex or decimal
+        match = re.search(r'\b([0-9A-Fa-f]+)\b', addr_part)
+        if match:
+            candidate = match.group(1)
+            if any(c in candidate.upper() for c in 'ABCDEF'):
+                try:
+                    return str(int(candidate, 16))
+                except ValueError:
+                    return candidate
+            return candidate
+
         return addr_part
 
     def validate_address(self, address, dtype):
@@ -215,11 +229,19 @@ class Generator:
                 else:
                     logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to Holding Register (3).")
 
-            # Address Overlap Calculation
+            # Address Overlap Calculation and Offset Application
             try:
                 # Parse start address
                 parts = address.split('_')
-                start_addr = int(parts[0])
+                raw_start_addr = int(parts[0])
+                start_addr = raw_start_addr - self.address_offset
+
+                if start_addr < 0:
+                    logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+
+                # Update address string with offset applied
+                parts[0] = str(start_addr)
+                address = '_'.join(parts)
 
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
@@ -341,7 +363,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,7 +376,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
@@ -446,6 +468,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from all register addresses.')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +479,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
