@@ -56,7 +56,8 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
 
 def run_command(args):
@@ -94,7 +95,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=args.address_offset
         )
     finally:
         if os.path.exists(temp_csv):
@@ -112,6 +114,7 @@ def main():
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
+    parser_extract.add_argument('--address-offset', type=int, default=0, help='Value to subtract from register addresses.')
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
@@ -122,6 +125,7 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0, help='Value to subtract from register addresses.')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -135,6 +139,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0, help='Value to subtract from register addresses.')
 
     args = parser.parse_args()
 

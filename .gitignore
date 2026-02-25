@@ -10,3 +10,5 @@ test_excel_output.csv
 test_registers.xlsx
 test_registers.pdf
 test_mapping.json
+target/
+rust_generator/target/
