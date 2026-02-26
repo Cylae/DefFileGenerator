@@ -21,11 +21,16 @@ def extract_command(args):
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+    raw_data = []
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm', '.xls']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         return
@@ -68,11 +73,16 @@ def run_command(args):
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+    raw_data = []
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm', '.xls']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         return

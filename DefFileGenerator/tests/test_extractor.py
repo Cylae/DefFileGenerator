@@ -59,8 +59,9 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        self.assertEqual(len(data), 1) # One sheet
+        self.assertEqual(len(data[0]), 3) # 3 rows
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -80,9 +81,42 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        self.assertEqual(len(data), 1) # One table
+        self.assertEqual(len(data[0]), 2) # 2 rows
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
+
+    def test_extract_from_csv(self):
+        csv_file = "test_extract.csv"
+        with open(csv_file, 'w', encoding='utf-8') as f:
+            f.write("Address;Name;Type\n100;Var1;U16\n101;Var2;U16")
+
+        try:
+            data = self.extractor.extract_from_csv(csv_file)
+            self.assertEqual(len(data), 1)
+            self.assertEqual(len(data[0]), 2)
+            self.assertEqual(data[0][0]["Address"], "100")
+        finally:
+            if os.path.exists(csv_file):
+                os.remove(csv_file)
+
+    def test_extract_from_xml(self):
+        xml_file = "test_extract.xml"
+        import pandas as pd
+        df = pd.DataFrame([
+            {"Address": "200", "Name": "X", "Type": "U16"},
+            {"Address": "201", "Name": "Y", "Type": "U16"}
+        ])
+        df.to_xml(xml_file, index=False)
+
+        try:
+            data = self.extractor.extract_from_xml(xml_file)
+            self.assertEqual(len(data), 1)
+            self.assertEqual(len(data[0]), 2)
+            self.assertEqual(data[0][0]["Address"], 200) # read_xml might return int
+        finally:
+            if os.path.exists(xml_file):
+                os.remove(xml_file)
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
@@ -93,6 +127,18 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_multi_table_mapping(self):
+        # Two tables with different headers
+        raw_data = [
+            [{"Addr": "100", "Name": "V1"}],
+            [{"Register": "200", "Description": "V2"}]
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(len(mapped), 2)
+        self.assertEqual(mapped[0]["Address"], "100")
+        self.assertEqual(mapped[1]["Address"], "200")
+        self.assertEqual(mapped[1]["Name"], "V2")
 
 if __name__ == "__main__":
     unittest.main()
