@@ -59,8 +59,10 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        # Should be a list containing one table (list of rows)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(len(data[0]), 3)
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -80,9 +82,11 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        # Should be a list containing one table
+        self.assertEqual(len(data), 1)
+        self.assertEqual(len(data[0]), 2)
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
@@ -93,6 +97,49 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_extract_from_csv(self):
+        csv_file = "test_registers.csv"
+        with open(csv_file, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f, delimiter=';')
+            writer.writerow(["Address", "Name", "Type"])
+            writer.writerow(["2000", "CSV_Var", "U16"])
+
+        try:
+            data = self.extractor.extract_from_csv(csv_file)
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0][0]["Name"], "CSV_Var")
+
+            mapped = self.extractor.map_and_clean(data)
+            self.assertEqual(mapped[0]["Name"], "CSV_Var")
+            self.assertEqual(mapped[0]["Address"], "2000")
+        finally:
+            if os.path.exists(csv_file):
+                os.remove(csv_file)
+
+    def test_extract_from_xml(self):
+        xml_file = "test_registers.xml"
+        with open(xml_file, 'w', encoding='utf-8') as f:
+            f.write("""<root>
+    <row>
+        <Address>3000</Address>
+        <Name>XML_Var</Name>
+        <Type>U32</Type>
+    </row>
+</root>""")
+
+        try:
+            data = self.extractor.extract_from_xml(xml_file)
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0][0]["Name"], "XML_Var")
+
+            mapped = self.extractor.map_and_clean(data)
+            self.assertEqual(mapped[0]["Name"], "XML_Var")
+            self.assertEqual(mapped[0]["Address"], "3000")
+            self.assertEqual(mapped[0]["Type"], "U32")
+        finally:
+            if os.path.exists(xml_file):
+                os.remove(xml_file)
 
 if __name__ == "__main__":
     unittest.main()
