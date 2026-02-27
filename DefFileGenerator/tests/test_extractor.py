@@ -58,19 +58,21 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
-        raw_data = self.extractor.extract_from_excel(self.excel_file)
+        raw_tables = self.extractor.extract_from_excel(self.excel_file)
         # Custom mapping
         self.extractor.mapping = {
             "Address": "Reg Addr",
             "Name": "Description",
             "Type": "Data Type"
         }
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = self.extractor.map_and_clean(raw_tables)
         self.assertEqual(len(mapped), 3)
         self.assertEqual(mapped[0]["Address"], "1")
         self.assertEqual(mapped[0]["Name"], "Voltage")
@@ -79,20 +81,55 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[2]["Type"], "F32")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        tables = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
-        raw_data = [
+        raw_tables = [[
             {"Register Address": "0x10", "Variable Name": "Test", "Data Type": "Uint16"}
-        ]
-        mapped = self.extractor.map_and_clean(raw_data)
+        ]]
+        mapped = self.extractor.map_and_clean(raw_tables)
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_extract_from_csv(self):
+        csv_file = "test_registers.csv"
+        with open(csv_file, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f, delimiter=';')
+            writer.writerow(["Name", "Address", "Type"])
+            writer.writerow(["Test1", "100", "U16"])
+
+        try:
+            tables = self.extractor.extract_from_csv(csv_file)
+            self.assertEqual(len(tables), 1)
+            self.assertEqual(len(tables[0]), 1)
+            self.assertEqual(tables[0][0]["Name"], "Test1")
+        finally:
+            if os.path.exists(csv_file):
+                os.remove(csv_file)
+
+    def test_extract_from_xml(self):
+        xml_file = "test_registers.xml"
+        content = """<root>
+            <row><Name>TestXML</Name><Address>200</Address><Type>U16</Type></row>
+        </root>"""
+        with open(xml_file, 'w') as f:
+            f.write(content)
+
+        try:
+            tables = self.extractor.extract_from_xml(xml_file)
+            self.assertEqual(len(tables), 1)
+            self.assertEqual(len(tables[0]), 1)
+            self.assertEqual(tables[0][0]["Name"], "TestXML")
+        finally:
+            if os.path.exists(xml_file):
+                os.remove(xml_file)
 
 if __name__ == "__main__":
     unittest.main()
