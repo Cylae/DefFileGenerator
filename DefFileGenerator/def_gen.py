@@ -5,19 +5,20 @@ import sys
 import logging
 import re
 import math
+from DefFileGenerator.security_utils import ensure_safe_path
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
 RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
 RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^-?([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE) # Support negative for offset calculation
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -30,6 +31,7 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+        self.address_offset = address_offset
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -54,23 +56,30 @@ class Generator:
         addr_part = str(addr_part).strip().replace(',', '')
         if not addr_part:
             return ""
+
+        # Handle leading negative sign
+        prefix = ""
+        if addr_part.startswith('-'):
+            prefix = "-"
+            addr_part = addr_part[1:]
+
         if addr_part.lower().startswith('0x'):
             try:
-                return str(int(addr_part, 16))
+                return prefix + str(int(addr_part, 16))
             except ValueError:
-                return addr_part
+                return prefix + addr_part
         elif addr_part.lower().endswith('h'):
             try:
-                return str(int(addr_part[:-1], 16))
+                return prefix + str(int(addr_part[:-1], 16))
             except ValueError:
-                return addr_part
+                return prefix + addr_part
         # If it contains A-F, it's likely hex
         if any(c in addr_part.upper() for c in 'ABCDEF'):
             try:
-                return str(int(addr_part, 16))
+                return prefix + str(int(addr_part, 16))
             except ValueError:
-                return addr_part
-        return addr_part
+                return prefix + addr_part
+        return prefix + addr_part
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -116,7 +125,6 @@ class Generator:
         seen_names = {}
         seen_tags = {}
         # Tracks used addresses per register type (Info1)
-        # Dictionary of Info1 -> list of tuples (start_addr, end_addr, line_num, name, type)
         used_addresses_by_type = {}
 
         for line_num, row in enumerate(rows, start=2):
@@ -175,10 +183,23 @@ class Generator:
                 norm_parts = [self.normalize_address_val(p) for p in addr_parts]
                 address = '_'.join(norm_parts)
 
-            # Validation: Address format based on Type (checks hex/dec and composite)
+            # Validation: Address format based on Type
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
+
+            # Apply address offset
+            if address:
+                parts = address.split('_')
+                try:
+                    raw_start_addr = int(parts[0])
+                    start_addr = raw_start_addr - self.address_offset
+                    if start_addr < 0:
+                        logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+                    parts[0] = str(start_addr)
+                    address = '_'.join(parts)
+                except ValueError:
+                    pass
 
             # Global Check: Duplicate Name
             if name:
@@ -217,10 +238,8 @@ class Generator:
 
             # Address Overlap Calculation
             try:
-                # Parse start address
                 parts = address.split('_')
                 start_addr = int(parts[0])
-
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
 
@@ -229,31 +248,18 @@ class Generator:
                 if info1 not in used_addresses_by_type:
                     used_addresses_by_type[info1] = []
 
-                # Check overlap against used_addresses for this register type
                 is_bits = (dtype.upper() == 'BITS')
-
                 for used_start, used_end, used_line, used_name, used_type in used_addresses_by_type[info1]:
-                    # Check if ranges overlap
                     if max(start_addr, used_start) <= min(end_addr, used_end):
-                        # Overlap detected
-                        # Allowed only if both are BITS and same start address
                         is_overlap_allowed = is_bits and (used_type == 'BITS')
-
                         if not is_overlap_allowed:
                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}) in register type {info1}.")
-
                 used_addresses_by_type[info1].append(current_range)
-
             except ValueError:
                 logging.warning(f"Line {line_num}: Could not calculate register range for address '{address}'.")
 
-            # Info2: Address
             info2 = address
-
-            # Info3: Type
-            info3 = dtype.upper() # Ensure uppercase in output
-
-            # Info4: Empty
+            info3 = dtype.upper()
             info4 = ''
 
             # CoefA from Factor and ScaleFactor
@@ -295,7 +301,6 @@ class Generator:
                     logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
                     action = '1'
 
-            # Construct processed row
             processed_row = {
                 'Info1': info1,
                 'Info2': info2,
@@ -308,7 +313,6 @@ class Generator:
                 'Unit': unit,
                 'Action': action
             }
-
             processed_rows.append(processed_row)
 
         return processed_rows
@@ -325,23 +329,22 @@ def generate_template(output_file):
 
     try:
         if output_file:
-            f = open(output_file, 'w', newline='', encoding='utf-8')
-        else:
-            f = sys.stdout
-
-        writer = csv.writer(f)
-        writer.writerow(headers)
-        writer.writerows(rows)
-
-        if output_file:
-            f.close()
+            safe_output = ensure_safe_path(output_file)
+            with open(safe_output, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(headers)
+                writer.writerows(rows)
             logging.info(f"Template generated at {output_file}")
+        else:
+            writer = csv.writer(sys.stdout)
+            writer.writerow(headers)
+            writer.writerows(rows)
     except Exception as e:
         logging.error(f"Error generating template: {e}")
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,31 +357,27 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
-        # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
-        with open(input_file, mode='r', encoding='utf-8-sig') as csvfile:
+        safe_input = ensure_safe_path(input_file)
+        with open(safe_input, mode='r', encoding='utf-8-sig') as csvfile:
             # Detect delimiter
             try:
                 dialect = csv.Sniffer().sniff(csvfile.read(1024), delimiters=";,")
                 csvfile.seek(0)
             except csv.Error:
-                # Fallback to comma if detection fails
                 csvfile.seek(0)
                 dialect = csv.excel
                 dialect.delimiter = ','
 
             reader = csv.DictReader(csvfile, dialect=dialect)
-
-            # Normalize headers
             if reader.fieldnames:
                 reader.fieldnames = [name.strip() for name in reader.fieldnames]
             else:
                 logging.error("Input CSV is empty or missing headers.")
                 return
 
-            # Check for required columns
             required_columns = ['Name', 'RegisterType', 'Address', 'Type']
             header_map = {h.lower(): h for h in reader.fieldnames}
             missing_columns = [col for col in required_columns if col.lower() not in header_map]
@@ -389,13 +388,6 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
 
             processed_rows = generator.process_rows(reader)
 
-        # Write Output
-        if output:
-            outfile = open(output, 'w', newline='', encoding='utf-8')
-        else:
-            outfile = sys.stdout
-
-        # Prepare output header row
         header_row = [
             protocol,
             category,
@@ -405,28 +397,33 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
             '', '', '', '', '', ''
         ]
 
-        writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-        writer.writerow(header_row)
+        def write_output(outfile):
+            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
+            writer.writerow(header_row)
 
-        for index, row in enumerate(processed_rows, start=1):
-            data_row = [
-                str(index),
-                row['Info1'],
-                row['Info2'],
-                row['Info3'],
-                row['Info4'],
-                row['Name'],
-                row['Tag'],
-                row['CoefA'],
-                row['CoefB'],
-                row['Unit'],
-                row['Action']
-            ]
-            writer.writerow(data_row)
+            for index, row in enumerate(processed_rows, start=1):
+                data_row = [
+                    str(index),
+                    row['Info1'],
+                    row['Info2'],
+                    row['Info3'],
+                    row['Info4'],
+                    row['Name'],
+                    row['Tag'],
+                    row['CoefA'],
+                    row['CoefB'],
+                    row['Unit'],
+                    row['Action']
+                ]
+                writer.writerow(data_row)
 
         if output:
-            outfile.close()
+            safe_output = ensure_safe_path(output)
+            with open(safe_output, 'w', newline='', encoding='utf-8') as outfile:
+                write_output(outfile)
             logging.info(f"Definition file generated at {output}")
+        else:
+            write_output(sys.stdout)
 
     except FileNotFoundError:
         logging.error(f"File '{input_file}' not found.")
@@ -434,7 +431,6 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
         logging.error(f"An unexpected error occurred: {e}")
 
 def main():
-    # Configure logging
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
     parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file from simplified CSV.')
@@ -446,6 +442,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from register addresses.')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +453,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
