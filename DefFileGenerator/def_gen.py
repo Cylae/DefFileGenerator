@@ -9,15 +9,16 @@ import math
 # Pre-compiled regex patterns for optimization
 RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
-RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
-RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^(-?[0-9A-F]+|-?0x[0-9A-F]+|-?[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r'^(-?[0-9A-F]+|-?0x[0-9A-F]+|-?[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^(-?[0-9A-F]+|-?0x[0-9A-F]+|-?[0-9A-F]+h)$', re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
+        self.address_offset = address_offset
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -51,26 +52,47 @@ class Generator:
 
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
-        addr_part = str(addr_part).strip().replace(',', '')
-        if not addr_part:
+        if addr_part is None:
             return ""
-        if addr_part.lower().startswith('0x'):
+        s = str(addr_part).strip().replace(',', '')
+        if not s:
+            return ""
+
+        # Prioritize explicit Hex (0x... or ...h)
+        hex_match = re.search(r'(-?0x[0-9A-F]+|-?[0-9A-F]+h)', s, re.IGNORECASE)
+        if hex_match:
+            hex_val = hex_match.group(1).lower()
             try:
-                return str(int(addr_part, 16))
+                if hex_val.endswith('h'):
+                    is_neg = hex_val.startswith('-')
+                    clean_hex = hex_val[1:-1] if is_neg else hex_val[:-1]
+                    val = int(clean_hex, 16)
+                    return str(-val if is_neg else val)
+                elif '0x' in hex_val:
+                    is_neg = hex_val.startswith('-')
+                    # handle both -0x and 0x- (though -0x is standard)
+                    clean_hex = hex_val.replace('0x', '').replace('-', '')
+                    val = int(clean_hex, 16)
+                    return str(-val if is_neg else val)
             except ValueError:
-                return addr_part
-        elif addr_part.lower().endswith('h'):
-            try:
-                return str(int(addr_part[:-1], 16))
-            except ValueError:
-                return addr_part
-        # If it contains A-F, it's likely hex
-        if any(c in addr_part.upper() for c in 'ABCDEF'):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-        return addr_part
+                pass
+
+        # Fallback to word boundaries for decimal or implicit hex
+        # Matches decimal or hex-like words
+        words = re.findall(r'\b-?[0-9A-F]+\b', s, re.IGNORECASE)
+        if words:
+            # Take the first candidate
+            word = words[0]
+            # If it contains A-F, treat as hex, otherwise decimal
+            if any(c in word.upper() for c in 'ABCDEF'):
+                try:
+                    return str(int(word, 16))
+                except ValueError:
+                    return word
+            else:
+                return word
+
+        return s
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -219,7 +241,16 @@ class Generator:
             try:
                 # Parse start address
                 parts = address.split('_')
-                start_addr = int(parts[0])
+                raw_start_addr = int(parts[0])
+
+                # Apply offset
+                start_addr = raw_start_addr - self.address_offset
+                if start_addr < 0:
+                    logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+
+                # Update Info2 with offset-applied address
+                parts[0] = str(start_addr)
+                address = '_'.join(parts)
 
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
@@ -341,7 +372,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,7 +385,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
@@ -446,6 +477,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from all register addresses.')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +488,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":

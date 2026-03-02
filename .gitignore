@@ -4,6 +4,8 @@ __pycache__/
 .env
 venv/
 .venv
+rust_generator/target/
+**/target/
 test_output.csv
 test_csv_output.csv
 test_excel_output.csv
