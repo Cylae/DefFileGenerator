@@ -17,6 +17,21 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
+    TYPE_MAPPING = {
+        'uint16': 'U16',
+        'int16': 'I16',
+        'uint32': 'U32',
+        'int32': 'I32',
+        'uint64': 'U64',
+        'int64': 'I64',
+        'float': 'F32',
+        'f32': 'F32',
+        'float32': 'F32',
+        'double': 'F64',
+        'f64': 'F64',
+        'float64': 'F64',
+    }
+
     def __init__(self):
         # RegisterType mapping to Info1
         self.register_type_map = {
@@ -30,6 +45,40 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+    def normalize_type(self, dtype):
+        """Normalizes manufacturer-specific data types to Webdyn types."""
+        if not dtype:
+            return 'U16'
+        dtype_str = str(dtype).lower().strip()
+        for key, val in self.TYPE_MAPPING.items():
+            if key in dtype_str:
+                return val
+
+        # STR<n> is a special case that we preserve for now so it passes validate_type
+        if RE_TYPE_STR_CONV.match(dtype_str):
+            return dtype_str.upper()
+
+        # Clean up common characters like () or space
+        dtype_str = re.sub(r'[^a-z0-9_]+', '', dtype_str)
+        # Handle unsigned/signed prefixes
+        dtype_str = dtype_str.replace('unsignedint', 'u').replace('signedint', 'i')
+        dtype_str = dtype_str.replace('unsigned', 'u').replace('signed', 'i')
+
+        return dtype_str.upper() if dtype_str else 'U16'
+
+    def normalize_action(self, action):
+        """Normalizes action codes."""
+        if not action:
+            return '1'
+        a = str(action).upper().strip()
+        if a in ['R', 'READ', '4']:
+            return '4'
+        if a in ['RW', 'W', 'WRITE', 'WRITEONLY', '1']:
+            return '1'
+        if a in self.allowed_actions:
+            return a
+        return '1'
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -150,7 +199,8 @@ class Generator:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
-            # Validation: Type
+            # Normalize and Validate: Type
+            dtype = self.normalize_type(dtype)
             if not self.validate_type(dtype):
                 logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
                 continue
@@ -281,19 +331,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            if not action or not str(action).strip():
-                action = '1' # Default per spec
-            else:
-                act_str = str(action).strip().upper()
-                if act_str in ['R', 'READ', '4']:
-                    action = '4'
-                elif act_str in ['RW', 'W', 'WRITE', '1']:
-                    action = '1'
-                elif act_str in self.allowed_actions:
-                    action = act_str
-                else:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(action)
 
             # Construct processed row
             processed_row = {

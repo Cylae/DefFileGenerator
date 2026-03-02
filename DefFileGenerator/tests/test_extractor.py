@@ -11,6 +11,8 @@ class TestExtractor(unittest.TestCase):
         self.extractor = Extractor()
         self.excel_file = "test_registers.xlsx"
         self.pdf_file = "test_registers.pdf"
+        self.csv_file = "test_registers.csv"
+        self.xml_file = "test_registers.xml"
         self.mapping_file = "test_mapping.json"
 
         # Create dummy Excel
@@ -47,18 +49,22 @@ class TestExtractor(unittest.TestCase):
         doc.build(elements)
 
     def tearDown(self):
-        for f in [self.excel_file, self.pdf_file, self.mapping_file]:
+        for f in [self.excel_file, self.pdf_file, self.csv_file, self.xml_file, self.mapping_file]:
             if os.path.exists(f):
                 os.remove(f)
 
     def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
+        from DefFileGenerator.def_gen import Generator
+        gen = Generator()
+        self.assertEqual(gen.normalize_type("Uint16"), "U16")
+        self.assertEqual(gen.normalize_type("Int32"), "I32")
+        self.assertEqual(gen.normalize_type("Float32"), "F32")
+        self.assertEqual(gen.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
@@ -74,15 +80,56 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(len(mapped), 3)
         self.assertEqual(mapped[0]["Address"], "1")
         self.assertEqual(mapped[0]["Name"], "Voltage")
-        self.assertEqual(mapped[0]["Type"], "U16")
-        self.assertEqual(mapped[1]["Type"], "I32")
-        self.assertEqual(mapped[2]["Type"], "F32")
+        # Generator.process_rows handles normalization, map_and_clean leaves it as is
+        self.assertEqual(mapped[0]["Type"], "Uint16")
+        self.assertEqual(mapped[1]["Type"], "Int32")
+        self.assertEqual(mapped[2]["Type"], "Float32")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        tables = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
+
+    def test_extract_from_csv(self):
+        with open(self.csv_file, 'w', encoding='utf-8') as f:
+            f.write("Address;Name;Type\n")
+            f.write("2000;Voltage;U16\n")
+            f.write("2001;Current;U16\n")
+
+        tables = self.extractor.extract_from_csv(self.csv_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
+        self.assertEqual(len(data), 2)
+        self.assertEqual(data[0]["Address"], "2000")
+        self.assertEqual(data[0]["Name"], "Voltage")
+
+    def test_extract_from_xml(self):
+        xml_content = """<?xml version='1.0' encoding='utf-8'?>
+        <root>
+          <register>
+            <Address>3000</Address>
+            <Name>Power</Name>
+            <Type>U32</Type>
+          </register>
+          <register>
+            <Address>3002</Address>
+            <Name>Energy</Name>
+            <Type>U32</Type>
+          </register>
+        </root>
+        """
+        with open(self.xml_file, 'w', encoding='utf-8') as f:
+            f.write(xml_content)
+
+        tables = self.extractor.extract_from_xml(self.xml_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
+        self.assertEqual(len(data), 2)
+        self.assertEqual(str(data[0]["Address"]), "3000")
+        self.assertEqual(data[0]["Name"], "Power")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
@@ -92,7 +139,7 @@ class TestExtractor(unittest.TestCase):
         mapped = self.extractor.map_and_clean(raw_data)
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
-        self.assertEqual(mapped[0]["Type"], "U16")
+        self.assertEqual(mapped[0]["Type"], "Uint16")
 
 if __name__ == "__main__":
     unittest.main()
