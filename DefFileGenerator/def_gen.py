@@ -11,13 +11,15 @@ RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
 RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
 RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^(-?[0-9A-F]+|-?0x[0-9A-F]+|-?[0-9A-F]+h)$', re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
+RE_HEX_DEC = re.compile(r'\b(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h|[0-9A-Fa-f-]+)\b')
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
+        self.address_offset = address_offset
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -30,6 +32,69 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+        # Type synonyms for normalization - ordered by specificity (longer first)
+        self.type_synonyms = [
+            ('unsignedint', 'u'),
+            ('signedint', 'i'),
+            ('unsigned', 'u'),
+            ('signed', 'i'),
+            ('uint64', 'U64'),
+            ('int64', 'I64'),
+            ('uint32', 'U32'),
+            ('int32', 'I32'),
+            ('uint16', 'U16'),
+            ('int16', 'I16'),
+            ('uint8', 'U8'),
+            ('int8', 'I8'),
+            ('float64', 'F64'),
+            ('float32', 'F32'),
+            ('float', 'F32'),
+            ('double', 'F64'),
+            ('string', 'STRING'),
+            ('bits', 'BITS'),
+            ('boolean', 'BITS'),
+            ('bool', 'BITS')
+        ]
+
+    def normalize_type(self, dtype):
+        """Normalizes various data type synonyms into standard format."""
+        if not dtype:
+            return "U16"
+
+        t_str = str(dtype).lower().strip()
+        # Remove spaces and underscores for internal mapping
+        t_str = t_str.replace(' ', '').replace('_', '')
+
+        # Specific synonyms
+        for syn, target in self.type_synonyms:
+            if syn in t_str:
+                t_str = t_str.replace(syn, target.lower())
+
+        # Clean up remaining non-alphanumeric (except maybe STR<n>)
+        t_str = re.sub(r'[^a-z0-9]+', '', t_str)
+
+        # Pattern match for u16, i32 etc
+        match = re.match(r'^(u|i)(\d+)$', t_str)
+        if match:
+            return f"{match.group(1).upper()}{match.group(2)}"
+
+        return t_str.upper() if t_str else "U16"
+
+    def normalize_action(self, action):
+        """Normalizes action synonyms to Webdyn codes."""
+        if not action or not str(action).strip():
+            return '1'
+
+        act_str = str(action).strip().upper()
+        if act_str in ['R', 'READ', '4']:
+            return '4'
+        if act_str in ['RW', 'W', 'WRITE', '1']:
+            return '1'
+        if act_str in self.allowed_actions:
+            return act_str
+
+        return '1'
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -54,23 +119,31 @@ class Generator:
         addr_part = str(addr_part).strip().replace(',', '')
         if not addr_part:
             return ""
-        if addr_part.lower().startswith('0x'):
+
+        # Use regex to find the candidate hex or dec word
+        match = RE_HEX_DEC.search(addr_part)
+        if not match:
+            return addr_part
+
+        val_str = match.group(1)
+
+        if val_str.lower().startswith('0x'):
             try:
-                return str(int(addr_part, 16))
+                return str(int(val_str, 16))
             except ValueError:
-                return addr_part
-        elif addr_part.lower().endswith('h'):
+                return val_str
+        elif val_str.lower().endswith('h'):
             try:
-                return str(int(addr_part[:-1], 16))
+                return str(int(val_str[:-1], 16))
             except ValueError:
-                return addr_part
+                return val_str
         # If it contains A-F, it's likely hex
-        if any(c in addr_part.upper() for c in 'ABCDEF'):
+        if any(c in val_str.upper() for c in 'ABCDEF'):
             try:
-                return str(int(addr_part, 16))
+                return str(int(val_str, 16))
             except ValueError:
-                return addr_part
-        return addr_part
+                return val_str
+        return val_str
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -139,20 +212,23 @@ class Generator:
             tag = get_val('Tag')
             reg_type_str = get_val('RegisterType')
             address = get_val('Address')
-            dtype = get_val('Type')
+            dtype_raw = get_val('Type')
             factor = get_val('Factor')
             offset = get_val('Offset')
             unit = get_val('Unit')
-            action = get_val('Action')
+            action_raw = get_val('Action')
             scale_factor_str = get_val('ScaleFactor')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
+            # Normalize Type
+            dtype = self.normalize_type(dtype_raw)
+
             # Validation: Type
             if not self.validate_type(dtype):
-                logging.warning(f"Line {line_num}: Invalid Type '{dtype}'. Skipping row.")
+                logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
                 continue
 
             # Handle STR<n> conversion
@@ -173,6 +249,17 @@ class Generator:
             if address:
                 addr_parts = address.split('_')
                 norm_parts = [self.normalize_address_val(p) for p in addr_parts]
+
+                # Apply address offset to the base address
+                try:
+                    raw_start_addr = int(norm_parts[0])
+                    start_addr = raw_start_addr - self.address_offset
+                    if start_addr < 0:
+                        logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+                    norm_parts[0] = str(start_addr)
+                except ValueError:
+                    pass
+
                 address = '_'.join(norm_parts)
 
             # Validation: Address format based on Type (checks hex/dec and composite)
@@ -219,12 +306,12 @@ class Generator:
             try:
                 # Parse start address
                 parts = address.split('_')
-                start_addr = int(parts[0])
+                current_start_addr = int(parts[0])
 
                 reg_count = self.get_register_count(dtype, address)
-                end_addr = start_addr + reg_count - 1
+                current_end_addr = current_start_addr + reg_count - 1
 
-                current_range = (start_addr, end_addr, line_num, name, dtype.upper())
+                current_range = (current_start_addr, current_end_addr, line_num, name, dtype.upper())
 
                 if info1 not in used_addresses_by_type:
                     used_addresses_by_type[info1] = []
@@ -234,13 +321,13 @@ class Generator:
 
                 for used_start, used_end, used_line, used_name, used_type in used_addresses_by_type[info1]:
                     # Check if ranges overlap
-                    if max(start_addr, used_start) <= min(end_addr, used_end):
+                    if max(current_start_addr, used_start) <= min(current_end_addr, used_end):
                         # Overlap detected
                         # Allowed only if both are BITS and same start address
                         is_overlap_allowed = is_bits and (used_type == 'BITS')
 
                         if not is_overlap_allowed:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}) in register type {info1}.")
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {current_start_addr}-{current_end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}) in register type {info1}.")
 
                 used_addresses_by_type[info1].append(current_range)
 
@@ -281,19 +368,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            if not action or not str(action).strip():
-                action = '1' # Default per spec
-            else:
-                act_str = str(action).strip().upper()
-                if act_str in ['R', 'READ', '4']:
-                    action = '4'
-                elif act_str in ['RW', 'W', 'WRITE', '1']:
-                    action = '1'
-                elif act_str in self.allowed_actions:
-                    action = act_str
-                else:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(action_raw)
 
             # Construct processed row
             processed_row = {
@@ -325,23 +400,21 @@ def generate_template(output_file):
 
     try:
         if output_file:
-            f = open(output_file, 'w', newline='', encoding='utf-8')
-        else:
-            f = sys.stdout
-
-        writer = csv.writer(f)
-        writer.writerow(headers)
-        writer.writerows(rows)
-
-        if output_file:
-            f.close()
+            with open(output_file, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(headers)
+                writer.writerows(rows)
             logging.info(f"Template generated at {output_file}")
+        else:
+            writer = csv.writer(sys.stdout)
+            writer.writerow(headers)
+            writer.writerows(rows)
     except Exception as e:
         logging.error(f"Error generating template: {e}")
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,14 +427,27 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
         with open(input_file, mode='r', encoding='utf-8-sig') as csvfile:
+            # Robust encoding detection: check for UTF-16 BOM
+            csvfile.seek(0)
+            initial_bytes = csvfile.read(2)
+            csvfile.seek(0)
+
+            # If it looks like UTF-16, we might need a different reader,
+            # but usually it's UTF-8 with BOM or plain UTF-8.
+
             # Detect delimiter
             try:
-                dialect = csv.Sniffer().sniff(csvfile.read(1024), delimiters=";,")
+                content_sample = csvfile.read(4096)
+                csvfile.seek(0)
+                if not content_sample:
+                    logging.error("Input CSV is empty.")
+                    return
+                dialect = csv.Sniffer().sniff(content_sample, delimiters=";,")
                 csvfile.seek(0)
             except csv.Error:
                 # Fallback to comma if detection fails
@@ -405,6 +491,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
             '', '', '', '', '', ''
         ]
 
+        # Ensure \n line terminator for parity
         writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
         writer.writerow(header_row)
 
@@ -446,6 +533,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Value to subtract from input addresses (default: 0).')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +544,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
