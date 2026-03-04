@@ -2,10 +2,23 @@ import unittest
 import os
 import csv
 import json
-from openpyxl import Workbook
-from reportlab.pdfgen import canvas
+try:
+    from openpyxl import Workbook
+    HAS_OPENPYXL = True
+except ImportError:
+    HAS_OPENPYXL = False
+
+try:
+    from reportlab.pdfgen import canvas
+    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+    from reportlab.lib.pagesizes import letter
+    HAS_REPORTLAB = True
+except ImportError:
+    HAS_REPORTLAB = False
+
 from DefFileGenerator.extractor import Extractor
 
+@unittest.skipUnless(HAS_OPENPYXL and HAS_REPORTLAB, "openpyxl and reportlab required for these tests")
 class TestExtractor(unittest.TestCase):
     def setUp(self):
         self.extractor = Extractor()
@@ -24,15 +37,6 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
-        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-        from reportlab.lib.pagesizes import letter
-
         doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
         data = [
             ["Address", "Name", "Type"],
@@ -51,48 +55,46 @@ class TestExtractor(unittest.TestCase):
             if os.path.exists(f):
                 os.remove(f)
 
-    def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
-
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
-        raw_data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
         # Custom mapping
         self.extractor.mapping = {
             "Address": "Reg Addr",
             "Name": "Description",
             "Type": "Data Type"
         }
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = self.extractor.map_and_clean(tables)
         self.assertEqual(len(mapped), 3)
         self.assertEqual(mapped[0]["Address"], "1")
         self.assertEqual(mapped[0]["Name"], "Voltage")
-        self.assertEqual(mapped[0]["Type"], "U16")
-        self.assertEqual(mapped[1]["Type"], "I32")
-        self.assertEqual(mapped[2]["Type"], "F32")
+        # Type is NOT normalized in map_and_clean as per new requirement
+        self.assertEqual(mapped[0]["Type"], "Uint16")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        tables = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
-        raw_data = [
+        raw_tables = [[
             {"Register Address": "0x10", "Variable Name": "Test", "Data Type": "Uint16"}
-        ]
-        mapped = self.extractor.map_and_clean(raw_data)
+        ]]
+        mapped = self.extractor.map_and_clean(raw_tables)
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
-        self.assertEqual(mapped[0]["Type"], "U16")
+        # Type normalization is deferred to Generator
+        self.assertEqual(mapped[0]["Type"], "Uint16")
 
 if __name__ == "__main__":
     unittest.main()

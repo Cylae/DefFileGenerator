@@ -26,6 +26,10 @@ def extract_command(args):
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         return
@@ -56,7 +60,8 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
 
 def run_command(args):
@@ -73,6 +78,10 @@ def run_command(args):
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         return
@@ -94,7 +103,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=args.address_offset
         )
     finally:
         if os.path.exists(temp_csv):
@@ -106,8 +116,8 @@ def main():
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
-    parser_extract = subparsers.add_parser('extract', help='Extract registers from PDF/Excel')
-    parser_extract.add_argument('input_file', help='Source file (PDF/Excel)')
+    parser_extract = subparsers.add_parser('extract', help='Extract registers from various formats')
+    parser_extract.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
     parser_extract.add_argument('-o', '--output', help='Output CSV')
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
@@ -122,10 +132,11 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel)')
+    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer', required=True)
     parser_run.add_argument('--model', required=True)
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
@@ -135,6 +146,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
 
