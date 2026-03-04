@@ -182,5 +182,24 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        self.generator.address_offset = 1
+        rows = [{'Name': 'Var1', 'RegisterType': '3', 'Address': '101', 'Type': 'U16'}]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Info2'], '100')
+
+    def test_negative_address_warning(self):
+        self.generator.address_offset = 100
+        rows = [{'Name': 'Var1', 'RegisterType': '3', 'Address': '50', 'Type': 'U16'}]
+        with self.assertLogs(level='WARNING') as log:
+            self.generator.process_rows(rows)
+            self.assertTrue(any("results in negative address -50" in m for m in log.output))
+
+    def test_normalize_type_synonyms(self):
+        self.assertEqual(self.generator.normalize_type("unsigned int 16"), "U16")
+        self.assertEqual(self.generator.normalize_type("signedint32"), "I32")
+        self.assertEqual(self.generator.normalize_type("float32"), "F32")
+        self.assertEqual(self.generator.normalize_type("uint16_w"), "U16_W")
+
 if __name__ == '__main__':
     unittest.main()
