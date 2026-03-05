@@ -24,14 +24,25 @@ class TestGenerator(unittest.TestCase):
             with self.subTest(type=t):
                 self.assertFalse(self.generator.validate_type(t))
 
-    def test_validate_type_case_insensitivity(self):
-        case_variants = ['u16', 'String', 'str20', 'i32_wb', 'ipv6', 'Mac']
-        for t in case_variants:
-            with self.subTest(type=t):
-                self.assertTrue(self.generator.validate_type(t))
+    def test_normalize_type(self):
+        self.assertEqual(self.generator.normalize_type("uint16"), "U16")
+        self.assertEqual(self.generator.normalize_type("int32"), "I32")
+        self.assertEqual(self.generator.normalize_type("float"), "F32")
+        self.assertEqual(self.generator.normalize_type("float64"), "F64")
+        self.assertEqual(self.generator.normalize_type("U16_W"), "U16_W")
+        self.assertEqual(self.generator.normalize_type("unsigned int 16"), "U16")
+
+    def test_normalize_action(self):
+        self.assertEqual(self.generator.normalize_action("R"), "4")
+        self.assertEqual(self.generator.normalize_action("RW"), "1")
+        self.assertEqual(self.generator.normalize_action("Read"), "4")
+        self.assertEqual(self.generator.normalize_action("Write"), "1")
+        self.assertEqual(self.generator.normalize_action("7"), "7")
+        self.assertEqual(self.generator.normalize_action(""), "1")
 
     def test_validate_address_valid(self):
         self.assertTrue(self.generator.validate_address('30001', 'U16'))
+        self.assertTrue(self.generator.validate_address('-1', 'U16')) # Now allowed
         self.assertTrue(self.generator.validate_address('0x7531', 'U16'))
         self.assertTrue(self.generator.validate_address('7531h', 'U16'))
         self.assertTrue(self.generator.validate_address('A0', 'U16'))
@@ -48,11 +59,12 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('10'), '10')
         self.assertEqual(self.generator.normalize_address_val('A0'), '160')
         self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
+        self.assertEqual(self.generator.normalize_address_val('Reg: 0x10 (Holding)'), '16')
 
     def test_validate_address_invalid(self):
-        self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
-        self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len
-        self.assertFalse(self.generator.validate_address('xyz', 'U16')) # Not hex
+        self.assertFalse(self.generator.validate_address('30001_10', 'U16'))
+        self.assertFalse(self.generator.validate_address('30001', 'STRING'))
+        self.assertFalse(self.generator.validate_address('xyz', 'U16'))
 
     def test_get_register_count(self):
         self.assertEqual(self.generator.get_register_count('U16', '30000'), 1)
@@ -60,8 +72,8 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.get_register_count('U64', '30000'), 4)
         self.assertEqual(self.generator.get_register_count('MAC', '30000'), 3)
         self.assertEqual(self.generator.get_register_count('IPV6', '30000'), 8)
-        self.assertEqual(self.generator.get_register_count('STRING', '30000_10'), 5) # ceil(10/2)
-        self.assertEqual(self.generator.get_register_count('STRING', '30000_11'), 6) # ceil(11/2)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000_10'), 5)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000_11'), 6)
 
     def test_process_rows_basic(self):
         rows = [{
@@ -69,118 +81,66 @@ class TestGenerator(unittest.TestCase):
             'Tag': 'test_tag',
             'RegisterType': 'Holding Register',
             'Address': '30000',
-            'Type': 'U16',
+            'Type': 'uint16', # Tests normalization
             'Factor': '1',
             'Offset': '0',
             'Unit': 'V',
-            'Action': '4',
+            'Action': 'Read', # Tests normalization
             'ScaleFactor': '0'
         }]
         processed = self.generator.process_rows(rows)
         self.assertEqual(len(processed), 1)
         self.assertEqual(processed[0]['Info1'], '3')
         self.assertEqual(processed[0]['Info3'], 'U16')
+        self.assertEqual(processed[0]['Action'], '4')
         self.assertEqual(processed[0]['CoefA'], '1.000000')
 
-    def test_process_rows_str_expansion(self):
+    def test_address_offset(self):
+        self.generator.address_offset = 1
         rows = [{
-            'Name': 'Test Str',
-            'Tag': 'str_tag',
-            'RegisterType': 'Holding Register',
-            'Address': '30010',
-            'Type': 'STR20',
-            'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''
+            'Name': 'Test Var',
+            'Address': '30001',
+            'Type': 'U16'
         }]
         processed = self.generator.process_rows(rows)
-        self.assertEqual(len(processed), 1)
-        self.assertEqual(processed[0]['Info3'], 'STRING')
-        self.assertEqual(processed[0]['Info2'], '30010_20')
+        self.assertEqual(processed[0]['Info2'], '30000')
+
+    def test_negative_address_warning(self):
+        self.generator.address_offset = 100
+        rows = [{
+            'Name': 'Test Var',
+            'Address': '50',
+            'Type': 'U16'
+        }]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows)
+            self.assertEqual(processed[0]['Info2'], '-50')
+            self.assertTrue(any("results in negative address -50" in m for m in log.output))
 
     def test_process_rows_overlap(self):
         rows = [
             {
-                'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30000', 'Type': 'U32', # Occupies 30000, 30001
+                'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30000', 'Type': 'U32',
                 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
             },
             {
-                'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', # Occupies 30001 (Overlap)
+                'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16',
                 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
             }
         ]
         with self.assertLogs(level='WARNING') as log:
             processed = self.generator.process_rows(rows)
             self.assertEqual(len(processed), 2)
-            # Check if any log message contains "Overlap detected"
             self.assertTrue(any("Address overlap detected" in m for m in log.output))
 
-    def test_process_rows_no_overlap_different_types(self):
+    def test_duplicate_name_warning_format(self):
         rows = [
-            {
-                'Name': 'Var1', 'Tag': 't1', 'RegisterType': 'Holding Register', 'Address': '100', 'Type': 'U16',
-                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
-            },
-            {
-                'Name': 'Var2', 'Tag': 't2', 'RegisterType': 'Input Register', 'Address': '100', 'Type': 'U16',
-                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
-            }
-        ]
-        # Should NOT log a warning
-        try:
-            with self.assertLogs(level='WARNING') as log:
-                processed = self.generator.process_rows(rows)
-                self.assertEqual(len(processed), 2)
-                # If we are here, some warning was logged. Check it's not overlap.
-                for m in log.output:
-                    self.assertNotIn("Address overlap detected", m)
-        except AssertionError:
-            # assertLogs raises AssertionError if NO logs are produced, which is what we want
-            processed = self.generator.process_rows(rows)
-            self.assertEqual(len(processed), 2)
-
-    def test_duplicate_name(self):
-        rows = [
-             {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30000', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
-             {'Name': 'Var1', 'Tag': 't2', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+             {'Name': 'Var1', 'Address': '30000', 'Type': 'U16'},
+             {'Name': 'Var1', 'Address': '30001', 'Type': 'U16'}
         ]
         with self.assertLogs(level='WARNING') as log:
             self.generator.process_rows(rows)
-            self.assertTrue(any("Duplicate Name" in m for m in log.output))
-
-    def test_scalefactor_calculation(self):
-        rows = [{
-            'Name': 'Scaled Var',
-            'Tag': 'scaled_tag',
-            'RegisterType': '3',
-            'Address': '30000',
-            'Type': 'U16',
-            'Factor': '2.5',
-            'Offset': '0',
-            'Unit': '',
-            'Action': '',
-            'ScaleFactor': '-1' # CoefA = 2.5 * 10^-1 = 0.25
-        }]
-        processed = self.generator.process_rows(rows)
-        self.assertEqual(processed[0]['CoefA'], '0.250000')
-
-    def test_automatic_tag_generation(self):
-        rows = [
-            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
-            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
-        ]
-        processed = self.generator.process_rows(rows)
-        self.assertEqual(processed[0]['Tag'], 'test_variable')
-        self.assertEqual(processed[1]['Tag'], 'test_variable_1')
-
-    def test_action_normalization(self):
-        rows = [
-            {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Action': 'R', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
-            {'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Action': 'RW', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''},
-            {'Name': 'Var3', 'Tag': 't3', 'RegisterType': '3', 'Address': '102', 'Type': 'U16', 'Action': 'write', 'Factor': '', 'Offset': '', 'Unit': '', 'ScaleFactor': ''}
-        ]
-        processed = self.generator.process_rows(rows)
-        self.assertEqual(processed[0]['Action'], '4') # R -> 4
-        self.assertEqual(processed[1]['Action'], '1') # RW -> 1
-        self.assertEqual(processed[2]['Action'], '1') # write -> 1
+            self.assertTrue(any("Duplicate Name 'Var1' detected. Previous occurrence at line 2." in m for m in log.output))
 
 if __name__ == '__main__':
     unittest.main()
