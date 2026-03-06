@@ -60,12 +60,11 @@ class MockDF:
             yield i, row
 
 def find_column(df_columns, target_key):
-    for col in df_columns:
-        col_lower = str(col).lower()
-        for pattern in COLUMN_MAPPING[target_key]:
-            if pattern in col_lower:
-                return col
-    return None
+    return next(
+        (col for col in df_columns
+         if any(pattern in str(col).lower() for pattern in COLUMN_MAPPING[target_key])),
+        None
+    )
 
 def normalize_address(addr):
     if is_na(addr):
