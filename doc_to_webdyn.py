@@ -19,6 +19,14 @@ try:
 except ImportError:
     HAS_PDFPLUMBER = False
 
+try:
+    import defusedxml.ElementTree as defused_ET
+    HAS_DEFUSEDXML = True
+except ImportError:
+    HAS_DEFUSEDXML = False
+
+import io
+
 from DefFileGenerator.def_gen import Generator
 
 COLUMN_MAPPING = {
@@ -315,19 +323,35 @@ def load_xml(filepath):
     if not HAS_PANDAS:
         logging.error("pandas and lxml are required for XML processing. Please install them.")
         return []
+    if not HAS_DEFUSEDXML:
+        logging.error("defusedxml is required for secure XML processing. Please install it.")
+        return []
     try:
-        # Try with default parser (usually lxml if installed)
-        df = pd.read_xml(filepath)
-        return [df]
-    except Exception as e:
-        logging.debug(f"Default XML parser failed, trying etree: {e}")
+        # Load and validate securely using defusedxml to prevent XXE vulnerabilities
+        tree = defused_ET.parse(filepath)
+
+        # Write sanitized XML to an in-memory buffer
+        buf = io.BytesIO()
+        tree.write(buf, encoding='utf-8')
+        buf.seek(0)
+
         try:
-            # Fallback to etree which is in the standard library
-            df = pd.read_xml(filepath, parser='etree')
+            # Try with default parser (usually lxml if installed)
+            df = pd.read_xml(buf)
             return [df]
-        except Exception as e2:
-            logging.error(f"Error loading XML file: {e2}")
-            return []
+        except Exception as e:
+            logging.debug(f"Default XML parser failed, trying etree: {e}")
+            try:
+                # Fallback to etree which is in the standard library
+                buf.seek(0)
+                df = pd.read_xml(buf, parser='etree')
+                return [df]
+            except Exception as e2:
+                logging.error(f"Error loading XML file: {e2}")
+                return []
+    except Exception as e:
+        logging.error(f"Error loading XML file (possible XXE attack blocked or malformed XML): {e}")
+        return []
 
 def load_pdf(filepath):
     if not HAS_PDFPLUMBER:
