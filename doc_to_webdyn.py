@@ -21,6 +21,8 @@ except ImportError:
 
 from DefFileGenerator.def_gen import Generator
 
+RE_ADDR_EXTRACT = re.compile(r'(0x[0-9A-Fa-f]+|\d+(_\d+)*)')
+
 COLUMN_MAPPING = {
     'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
     'Address': ['address', 'addr', 'offset', 'register', 'reg'],
@@ -78,7 +80,7 @@ def normalize_address(addr):
     # Support Address_Length and Address_Start_Bit formats (e.g. 30001_10 or 30001_0_1)
     # or simple dec/hex addresses.
     # Try to extract the first number or hex string found
-    match = re.search(r'(0x[0-9A-Fa-f]+|\d+(_\d+)*)', addr_str)
+    match = RE_ADDR_EXTRACT.search(addr_str)
     if match:
         return match.group(1)
 
