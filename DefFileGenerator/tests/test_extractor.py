@@ -94,5 +94,23 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    def test_map_and_clean_empty_input(self):
+        mapped = self.extractor.map_and_clean([])
+        self.assertEqual(mapped, [])
+
+    def test_map_and_clean_missing_name(self):
+        raw_data = [
+            {"Address": "0x10", "Type": "Uint16"}
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped, [])
+
+    def test_map_and_clean_empty_name(self):
+        raw_data = [
+            {"Address": "0x10", "Name": "", "Type": "Uint16"}
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped, [])
+
 if __name__ == "__main__":
     unittest.main()
