@@ -240,34 +240,7 @@ def main():
     # Write Output in WebdynSunPM format
     try:
         with open(output_file, 'w', newline='', encoding='utf-8') as outfile:
-            # Prepare output header row
-            header_row = [
-                args.protocol,
-                args.category,
-                args.manufacturer,
-                args.model,
-                '', # ForcedWriteCode
-                '', '', '', '', '', ''
-            ]
-
-            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-            writer.writerow(header_row)
-
-            for index, row in enumerate(processed_rows, start=1):
-                data_row = [
-                    str(index),
-                    row['Info1'],
-                    row['Info2'],
-                    row['Info3'],
-                    row['Info4'],
-                    row['Name'],
-                    row['Tag'],
-                    row['CoefA'],
-                    row['CoefB'],
-                    row['Unit'],
-                    row['Action']
-                ]
-                writer.writerow(data_row)
+            Generator.write_output_csv(outfile, processed_rows, args.protocol, args.category, args.manufacturer, args.model, '')
 
         logging.info(f"Definition file successfully generated at {output_file}")
     except Exception as e:

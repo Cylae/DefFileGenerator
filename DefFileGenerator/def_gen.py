@@ -313,6 +313,38 @@ class Generator:
 
         return processed_rows
 
+    @staticmethod
+    def write_output_csv(outfile, processed_rows, protocol, category, manufacturer, model, forced_write=''):
+        """Writes the processed rows to a CSV file in WebdynSunPM format."""
+        # Prepare output header row
+        header_row = [
+            protocol,
+            category,
+            manufacturer,
+            model,
+            forced_write,
+            '', '', '', '', '', ''
+        ]
+
+        writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
+        writer.writerow(header_row)
+
+        for index, row in enumerate(processed_rows, start=1):
+            data_row = [
+                str(index),
+                row['Info1'],
+                row['Info2'],
+                row['Info3'],
+                row['Info4'],
+                row['Name'],
+                row['Tag'],
+                row['CoefA'],
+                row['CoefB'],
+                row['Unit'],
+                row['Action']
+            ]
+            writer.writerow(data_row)
+
 def generate_template(output_file):
     """Generates a template CSV input file."""
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -395,34 +427,7 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
         else:
             outfile = sys.stdout
 
-        # Prepare output header row
-        header_row = [
-            protocol,
-            category,
-            manufacturer,
-            model,
-            forced_write,
-            '', '', '', '', '', ''
-        ]
-
-        writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-        writer.writerow(header_row)
-
-        for index, row in enumerate(processed_rows, start=1):
-            data_row = [
-                str(index),
-                row['Info1'],
-                row['Info2'],
-                row['Info3'],
-                row['Info4'],
-                row['Name'],
-                row['Tag'],
-                row['CoefA'],
-                row['CoefB'],
-                row['Unit'],
-                row['Action']
-            ]
-            writer.writerow(data_row)
+        Generator.write_output_csv(outfile, processed_rows, protocol, category, manufacturer, model, forced_write)
 
         if output:
             outfile.close()
