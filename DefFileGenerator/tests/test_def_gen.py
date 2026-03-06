@@ -1,6 +1,12 @@
 import unittest
 import logging
-from DefFileGenerator.def_gen import Generator
+import tempfile
+import os
+import sys
+import io
+import csv
+from unittest.mock import patch
+from DefFileGenerator.def_gen import Generator, generate_template
 
 class TestGenerator(unittest.TestCase):
     def setUp(self):
@@ -181,6 +187,41 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+
+class TestGenerateTemplate(unittest.TestCase):
+    def test_generate_template_to_file(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_file = os.path.join(temp_dir, 'template.csv')
+            with self.assertLogs(level='INFO') as log:
+                generate_template(temp_file)
+
+            self.assertTrue(any("Template generated at" in m for m in log.output))
+            self.assertTrue(os.path.exists(temp_file))
+
+            with open(temp_file, 'r', newline='', encoding='utf-8') as f:
+                reader = csv.reader(f)
+                rows = list(reader)
+
+            self.assertEqual(len(rows), 5) # 1 header + 4 data rows
+            self.assertEqual(rows[0], ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'])
+            self.assertEqual(rows[1], ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'])
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_generate_template_to_stdout(self, mock_stdout):
+        # Temporarily disable logging output to stdout if it interferes,
+        # but generate_template doesn't log to stdout by default unless configured.
+        generate_template(None)
+        output = mock_stdout.getvalue()
+
+        # Verify that expected headers and some data are in the output
+        self.assertIn("Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action,ScaleFactor", output)
+        self.assertIn("Example Variable,example_tag,Holding Register,30001,U16,1,0,V,4,0", output)
+
+    @patch('builtins.open', side_effect=Exception('Test Error'))
+    def test_generate_template_exception(self, mock_open):
+        with self.assertLogs(level='ERROR') as log:
+            generate_template('dummy.csv')
+        self.assertTrue(any("Error generating template: Test Error" in m for m in log.output))
 
 if __name__ == '__main__':
     unittest.main()
