@@ -17,47 +17,18 @@ try:
     HAS_PDFPLUMBER = True
 except ImportError:
     HAS_PDFPLUMBER = False
+
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
 from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        # Default mapping for data types
-        self.type_mapping = {
-            'uint16': 'U16',
-            'int16': 'I16',
-            'uint32': 'U32',
-            'int32': 'I32',
-            'float32': 'F32',
-            'float': 'F32',
-            'u16': 'U16',
-            'i16': 'I16',
-            'u32': 'U32',
-            'i32': 'I32',
-            'f32': 'F32',
-            'string': 'STRING',
-            'bits': 'BITS'
-        }
-
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip()
-        # Remove common extra words and spaces
-        t_str = t_str.replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-
-        # Check for patterns like Uint16, Int32, uint16, int32
-        match = re.match(r'^(u|i|uint|int)(\d+)$', t_str)
-        if match:
-            raw_prefix = match.group(1).lower()
-            prefix = 'U' if raw_prefix.startswith('u') else 'I'
-            bits = match.group(2)
-            return f"{prefix}{bits}"
-
-        return t.upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -65,45 +36,45 @@ class Extractor:
             return []
         logging.info(f"Extracting from Excel: {filepath}")
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        if sheet_name:
-            if sheet_name not in wb.sheetnames:
-                logging.error(f"Sheet '{sheet_name}' not found in {filepath}")
-                return []
-            ws = wb[sheet_name]
-        else:
-            ws = wb.active
 
-        data = []
-        rows = list(ws.rows)
-        if not rows:
-            return []
+        all_tables = []
+        target_sheets = [sheet_name] if sheet_name else wb.sheetnames
 
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+        for name in target_sheets:
+            if name not in wb.sheetnames:
+                logging.warning(f"Sheet '{name}' not found.")
+                continue
+            ws = wb[name]
+            table_data = []
+            rows = list(ws.rows)
+            if not rows:
+                continue
 
-        for row_idx, row in enumerate(rows[1:], start=2):
-            row_data = {}
-            for i, cell in enumerate(row):
-                if i < len(headers):
-                    row_data[headers[i]] = cell.value
-            data.append(row_data)
-        return data
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            for row in rows[1:]:
+                row_data = {}
+                for i, cell in enumerate(row):
+                    if i < len(headers):
+                        row_data[headers[i]] = cell.value
+                table_data.append(row_data)
+            if table_data:
+                all_tables.append(table_data)
+        return all_tables
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
         logging.info(f"Extracting from PDF: {filepath}")
-        data = []
+        all_tables = []
         with pdfplumber.open(filepath) as pdf:
             if pages is None:
                 target_pages = pdf.pages
             else:
                 target_pages = []
-                # Simple page selection logic
-                if isinstance(pages, int):
-                    target_pages = [pdf.pages[pages-1]]
-                elif isinstance(pages, list):
-                    target_pages = [pdf.pages[i-1] for i in pages]
+                for p in pages:
+                    if 1 <= p <= len(pdf.pages):
+                        target_pages.append(pdf.pages[p-1])
 
             for page in target_pages:
                 tables = page.extract_tables()
@@ -111,83 +82,196 @@ class Extractor:
                     if not table or len(table) < 2:
                         continue
 
-                    # Clean headers: remove newlines
                     headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
-
+                    table_data = []
                     for row in table[1:]:
                         row_data = {}
                         for i, cell in enumerate(row):
                             if i < len(headers):
                                 val = str(cell).replace('\n', ' ').strip() if cell else ""
                                 row_data[headers[i]] = val
-                        data.append(row_data)
-        return data
+                        table_data.append(row_data)
+                    if table_data:
+                        all_tables.append(table_data)
+        return all_tables
+
+    def extract_from_csv(self, filepath):
+        logging.info(f"Extracting from CSV: {filepath}")
+        all_tables = []
+        # Manual delimiter detection
+        delimiters = [',', ';', '\t']
+        best_dialect = None
+
+        try:
+            # Detect encoding (UTF-16 vs UTF-8)
+            encoding = 'utf-8-sig'
+            try:
+                with open(filepath, 'rb') as f:
+                    header = f.read(2)
+                    if header in (b'\xff\xfe', b'\xfe\xff'):
+                        encoding = 'utf-16'
+            except Exception:
+                pass
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                sample = f.read(2048)
+                if not sample:
+                    return []
+                f.seek(0)
+                try:
+                    best_dialect = csv.Sniffer().sniff(sample, delimiters=";,")
+                except csv.Error:
+                    # Fallback to manual check
+                    max_cols = 0
+                    for d in delimiters:
+                        f.seek(0)
+                        reader = csv.reader(f, delimiter=d)
+                        try:
+                            first_row = next(reader)
+                            if len(first_row) > max_cols:
+                                max_cols = len(first_row)
+                                best_dialect = csv.excel
+                                best_dialect.delimiter = d
+                        except StopIteration:
+                            continue
+
+            if not best_dialect:
+                return []
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                reader = csv.DictReader(f, dialect=best_dialect)
+                table_data = list(reader)
+                if table_data:
+                    all_tables.append(table_data)
+        except Exception as e:
+            logging.error(f"Error extracting from CSV: {e}")
+
+        return all_tables
+
+    def extract_from_xml(self, filepath):
+        if not HAS_PANDAS:
+            logging.error("pandas is required for XML extraction.")
+            return []
+        logging.info(f"Extracting from XML: {filepath}")
+        all_tables = []
+        try:
+            df = pd.read_xml(filepath)
+            table_data = df.to_dict(orient='records')
+            if table_data:
+                all_tables.append(table_data)
+        except Exception as e:
+            logging.debug(f"Default XML parser failed, trying etree: {e}")
+            try:
+                df = pd.read_xml(filepath, parser='etree')
+                table_data = df.to_dict(orient='records')
+                if table_data:
+                    all_tables.append(table_data)
+            except Exception as e2:
+                logging.error(f"Error extracting from XML: {e2}")
+        return all_tables
+
+    # Static column mapping for priority detection
+    COLUMN_MAPPING = {
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
+        'Type': ['data type', 'datatype', 'type', 'format'],
+        'Unit': ['unit', 'units'],
+        'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
+        'ScaleFactor': ['scalefactor'],
+        'Tag': ['tag'],
+        'Action': ['action', 'access']
+    }
 
     def map_and_clean(self, raw_data):
+        """Processes multiple tables and normalizes the data."""
+        # Handle both single table (list of dicts) and multiple tables (list of list of dicts)
+        if raw_data and isinstance(raw_data[0], dict):
+            tables = [raw_data]
+        else:
+            tables = raw_data
+
         mapped_data = []
-        # Mapping: target_col -> source_col
-        # Default target cols: Name, Tag, RegisterType, Address, Type, Factor, Offset, Unit, Action, ScaleFactor
+        generator = Generator()
 
-        # Identify standard columns once to avoid repeated fuzzy matching
-        first_row = raw_data[0] if raw_data else {}
-        standard_cols_mapping = {}
-        assigned_keys = set()
+        for table in tables:
+            if not table:
+                continue
 
-        # Explicitly mapped columns from config
-        for target, source in self.mapping.items():
-            if source in first_row:
-                standard_cols_mapping[target] = source
-                assigned_keys.add(source)
+            # Identify columns for THIS table
+            first_row = table[0]
+            standard_cols_mapping = {}
+            used_src_cols = set()
 
-        # Fuzzy match for standard columns if not explicitly mapped
-        # Priority order to avoid misidentification (e.g. RegisterType as Type)
-        standard_cols = ['RegisterType', 'Name', 'Address', 'Type', 'Unit', 'Tag']
-        for target in standard_cols:
-            if target not in standard_cols_mapping:
-                for k in first_row.keys():
-                    if k in assigned_keys:
+            # 1. Explicit mapping
+            for target, source in self.mapping.items():
+                if source in first_row:
+                    standard_cols_mapping[target] = source
+                    used_src_cols.add(source)
+
+            # 2. Priority-based heuristic mapping
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Factor', 'ScaleFactor', 'Tag', 'Action']
+            for target in detection_order:
+                if target in standard_cols_mapping:
+                    continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for src_col in first_row.keys():
+                    if src_col in used_src_cols:
                         continue
-                    if k.lower() == target.lower() or target.lower() in k.lower():
-                        standard_cols_mapping[target] = k
-                        assigned_keys.add(k)
+                    src_lower = str(src_col).lower()
+                    if any(p in src_lower for p in patterns):
+                        standard_cols_mapping[target] = src_col
+                        used_src_cols.add(src_col)
                         break
 
-        generator = Generator()
-        for row in raw_data:
-            new_row = {}
-            for target, source in standard_cols_mapping.items():
-                if source in row:
-                    new_row[target] = row[source]
+            # Process rows in table
+            for row in table:
+                new_row = {}
+                for target, source in standard_cols_mapping.items():
+                    new_row[target] = row.get(source)
 
-            # Fill in other columns that might not be in standard_cols but are in row
-            for k, v in row.items():
-                if k not in assigned_keys and k not in new_row:
-                    new_row[k] = v
+                # Include unmapped columns
+                for k, v in row.items():
+                    if k not in used_src_cols:
+                        new_row[k] = v
 
-            # Clean Address using Generator's logic
-            if 'Address' in new_row and new_row['Address']:
-                addr = str(new_row['Address']).strip()
-                if '_' in addr:
-                    parts = addr.split('_')
-                    norm_parts = [generator.normalize_address_val(p) for p in parts]
-                    new_row['Address'] = '_'.join(norm_parts)
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                # Skip if no Name or Address
+                if not new_row.get('Name') and not new_row.get('Address'):
+                    continue
 
-            # Clean Type
-            if 'Type' in new_row:
-                new_row['Type'] = self.normalize_type(new_row['Type'])
+                # Normalize Address
+                if new_row.get('Address'):
+                    addr = str(new_row['Address']).strip()
+                    if '_' in addr:
+                        parts = addr.split('_')
+                        # Support Address_Length and Address_Start_Bit
+                        norm_parts = [generator.normalize_address_val(p) for p in parts]
+                        new_row['Address'] = '_'.join(norm_parts)
+                    else:
+                        new_row['Address'] = generator.normalize_address_val(addr)
 
-            # Ensure mandatory fields for def_gen
-            if 'Name' not in new_row or not new_row['Name']:
-                continue # Skip rows without a name
+                # Normalize Type and Action via Generator
+                if 'Type' in new_row:
+                    new_row['Type'] = generator.normalize_type(new_row['Type'])
+                if 'Action' in new_row:
+                    new_row['Action'] = generator.normalize_action(new_row['Action'])
 
-            # Tag and RegisterType will be handled by Generator if missing,
-            # but we can set default RegisterType here for the simplified CSV.
-            if 'RegisterType' not in new_row:
-                new_row['RegisterType'] = 'Holding Register'
+                # Handle Factor fractions
+                if 'Factor' in new_row:
+                    val = str(new_row['Factor'])
+                    if '/' in val:
+                        try:
+                            parts = val.split('/')
+                            new_row['Factor'] = str(float(parts[0]) / float(parts[1]))
+                        except (ValueError, ZeroDivisionError):
+                            pass
 
-            mapped_data.append(new_row)
+                # Defaults
+                if not new_row.get('RegisterType'):
+                    new_row['RegisterType'] = 'Holding Register'
+
+                mapped_data.append(new_row)
+
         return mapped_data
 
 def main():
@@ -223,6 +307,10 @@ def main():
         if args.pages:
             pages = [int(p.strip()) for p in args.pages.split(',')]
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported file extension: {ext}")
         sys.exit(1)
