@@ -94,6 +94,8 @@ def normalize_action(action):
         return '1'
     return a
 
+_CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
 def normalize_type(dtype):
     if is_na(dtype):
         return 'U16'
@@ -102,7 +104,7 @@ def normalize_type(dtype):
         if key in dtype_str:
             return val
     # Clean up common characters like () or space
-    dtype_str = re.sub(r'[^a-z0-9_]+', '', dtype_str)
+    dtype_str = _CLEAN_TYPE_RE.sub('', dtype_str)
     return dtype_str.upper() if dtype_str else 'U16'
 
 def main():
