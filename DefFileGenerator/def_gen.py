@@ -9,15 +9,15 @@ import math
 # Pre-compiled regex patterns for optimization
 RE_TYPE_INT = re.compile(r'^[UI](8|16|32|64)(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
-RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)$', re.IGNORECASE)
-RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)_(\d+)_(\d+)$', re.IGNORECASE)
-RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r'^([0-9A-F-]+|0x[0-9A-F-]+|[0-9A-F-]+h)_(\d+)$', re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r'^([0-9A-F-]+|0x[0-9A-F-]+|[0-9A-F-]+h)_(\d+)_(\d+)$', re.IGNORECASE)
+RE_ADDR_INT = re.compile(r'^-?([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h)$', re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64)$', re.IGNORECASE)
 
 class Generator:
-    def __init__(self):
+    def __init__(self, address_offset=0):
         # RegisterType mapping to Info1
         self.register_type_map = {
             'coil': '1',
@@ -30,6 +30,61 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+        self.address_offset = address_offset
+
+    def normalize_type(self, dtype):
+        """Standardizes data type synonyms."""
+        if not dtype:
+            return 'U16'
+
+        # Initial cleaning: preserve alphanumeric, underscores, and case-insensitive
+        # but normalize common terms
+        t = str(dtype).lower().strip()
+        t = t.replace('unsigned ', 'u').replace('signed ', 'i')
+        t = t.replace('uint', 'u').replace('int', 'i')
+        t = t.replace(' ', '') # Remove all spaces
+
+        # Specific mappings ordered by specificity
+        if 'float64' in t or 'double' in t:
+            return 'F64'
+        if 'float32' in t or 'float' in t:
+            return 'F32'
+
+        # Regex-based standardized mapping for U/I types
+        # Match u16, ui16, i32, etc. and preserve suffixes
+        match = re.match(r'^([ui]+)(\d+)(_.*)?$', t)
+        if match:
+            prefix = 'U' if 'u' in match.group(1) else 'I'
+            bits = match.group(2)
+            suffix = match.group(3).upper() if match.group(3) else ''
+            return f"{prefix}{bits}{suffix}"
+
+        # Fallback to general cleaning while preserving case for BITS, STRING etc if they matched standard
+        t_clean = re.sub(r'[^a-z0-9_]+', '', str(dtype).lower())
+        if t_clean == 'string': return 'STRING'
+        if t_clean == 'bits': return 'BITS'
+        if t_clean == 'ip': return 'IP'
+        if t_clean == 'ipv6': return 'IPV6'
+        if t_clean == 'mac': return 'MAC'
+
+        # Check for STR<n>
+        if RE_TYPE_STR_CONV.match(dtype):
+            return dtype.upper()
+
+        return dtype.upper()
+
+    def normalize_action(self, action):
+        """Standardizes action codes."""
+        if not action or not str(action).strip():
+            return '1'
+        a = str(action).upper().strip()
+        if a in ['R', 'READ', '4']:
+            return '4'
+        if a in ['RW', 'W', 'WRITE', '1']:
+            return '1'
+        if a in self.allowed_actions:
+            return a
+        return '1'
 
     def validate_type(self, dtype):
         """Validates the data type."""
@@ -49,28 +104,56 @@ class Generator:
 
         return False
 
-    def normalize_address_val(self, addr_part):
+    def normalize_address_val(self, addr_val):
         """Converts a single address part (possibly hex) to decimal string."""
-        addr_part = str(addr_part).strip().replace(',', '')
-        if not addr_part:
+        addr_val = str(addr_val).strip().replace(',', '')
+        if not addr_val:
             return ""
-        if addr_part.lower().startswith('0x'):
+
+        # 1. Explicit hex formats
+        if addr_val.lower().startswith('0x'):
+            try: return str(int(addr_val, 16))
+            except ValueError: pass
+        if addr_val.lower().endswith('h'):
+            try: return str(int(addr_val[:-1], 16))
+            except ValueError: pass
+
+        # 2. Extract potential number/hex
+        # Use lookbehind/lookahead to match candidate words that are not parts of other words
+        # (avoiding single hex letters in words like 'Reg')
+        pattern = r'(?<![0-9A-Za-z])(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h|-?\d+|[0-9A-Fa-f]+)(?![0-9A-Za-z])'
+        match = re.search(pattern, addr_val)
+        if match:
+            val = match.group(1)
+            # Re-check explicit hex in case it was found inside messy string
+            if val.lower().startswith('0x'):
+                try: return str(int(val, 16))
+                except ValueError: pass
+            if val.lower().endswith('h'):
+                try: return str(int(val[:-1], 16))
+                except ValueError: pass
+
+            # If it's a decimal number
+            if re.match(r'^-?\d+$', val):
+                return str(int(val))
+
+            # If it's hex (contains A-F)
+            if any(c in val.upper() for c in 'ABCDEF'):
+                try: return str(int(val, 16))
+                except ValueError: pass
+
+            # Fallback for plain decimal if no A-F but didn't match \d+ (shouldn't happen with above regex)
             try:
-                return str(int(addr_part, 16))
+                return str(int(val))
             except ValueError:
-                return addr_part
-        elif addr_part.lower().endswith('h'):
-            try:
-                return str(int(addr_part[:-1], 16))
-            except ValueError:
-                return addr_part
-        # If it contains A-F, it's likely hex
-        if any(c in addr_part.upper() for c in 'ABCDEF'):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-        return addr_part
+                pass
+
+        # 3. Final fallback: whole string if it's just alphanumeric hex
+        if re.match(r'^[0-9A-Fa-f]+$', addr_val):
+             try: return str(int(addr_val, 16))
+             except ValueError: pass
+
+        return addr_val
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -83,7 +166,7 @@ class Generator:
             # Expect Address_StartBit_NbBits (e.g., 30000_0_1 or 0x10_0_1)
             return RE_ADDR_BITS.match(address) is not None
         else:
-            # Expect integer address (dec or hex)
+            # Expect integer address (dec or hex, possibly negative)
             return RE_ADDR_INT.match(address) is not None
 
     def get_register_count(self, dtype, address):
@@ -139,16 +222,19 @@ class Generator:
             tag = get_val('Tag')
             reg_type_str = get_val('RegisterType')
             address = get_val('Address')
-            dtype = get_val('Type')
+            raw_dtype = get_val('Type')
             factor = get_val('Factor')
             offset = get_val('Offset')
             unit = get_val('Unit')
-            action = get_val('Action')
+            raw_action = get_val('Action')
             scale_factor_str = get_val('ScaleFactor')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
+
+            # Normalize Type before validation
+            dtype = self.normalize_type(raw_dtype)
 
             # Validation: Type
             if not self.validate_type(dtype):
@@ -179,6 +265,19 @@ class Generator:
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
+
+            # Apply address offset
+            if address:
+                try:
+                    parts = address.split('_')
+                    raw_start_addr = int(parts[0])
+                    start_addr = raw_start_addr - self.address_offset
+                    if start_addr < 0:
+                        logging.warning(f"Line {line_num}: Address {raw_start_addr} with offset {self.address_offset} results in negative address {start_addr}")
+                    parts[0] = str(start_addr)
+                    address = '_'.join(parts)
+                except ValueError:
+                    pass
 
             # Global Check: Duplicate Name
             if name:
@@ -281,19 +380,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            if not action or not str(action).strip():
-                action = '1' # Default per spec
-            else:
-                act_str = str(action).strip().upper()
-                if act_str in ['R', 'READ', '4']:
-                    action = '4'
-                elif act_str in ['RW', 'W', 'WRITE', '1']:
-                    action = '1'
-                elif act_str in self.allowed_actions:
-                    action = act_str
-                else:
-                    logging.warning(f"Line {line_num}: Invalid Action '{action}'. Defaulting to '1'.")
-                    action = '1'
+            action = self.normalize_action(raw_action)
 
             # Construct processed row
             processed_row = {
@@ -341,7 +428,7 @@ def generate_template(output_file):
 
 def run_generator(input_file, output=None, manufacturer=None, model=None,
                  protocol='modbusRTU', category='Inverter', forced_write='',
-                 template=False):
+                 template=False, address_offset=0):
     if template:
         generate_template(output)
         return
@@ -354,15 +441,16 @@ def run_generator(input_file, output=None, manufacturer=None, model=None,
          logging.error("--manufacturer and --model are required")
          return
 
-    generator = Generator()
+    generator = Generator(address_offset=address_offset)
 
     try:
         # Use utf-8-sig to handle potential BOM from Excel-saved CSVs
         with open(input_file, mode='r', encoding='utf-8-sig') as csvfile:
             # Detect delimiter
             try:
-                dialect = csv.Sniffer().sniff(csvfile.read(1024), delimiters=";,")
+                content = csvfile.read(1024)
                 csvfile.seek(0)
+                dialect = csv.Sniffer().sniff(content, delimiters=";,")
             except csv.Error:
                 # Fallback to comma if detection fails
                 csvfile.seek(0)
@@ -446,6 +534,7 @@ def main():
     parser.add_argument('--model', help='Model name.')
     parser.add_argument('--forced-write', default='', help='Forced write code (default: empty).')
     parser.add_argument('--template', action='store_true', help='Generate a template input CSV file.')
+    parser.add_argument('--address-offset', type=int, default=0, help='Subtract this value from all addresses.')
 
     args = parser.parse_args()
     run_generator(
@@ -456,7 +545,8 @@ def main():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        template=args.template
+        template=args.template,
+        address_offset=args.address_offset
     )
 
 if __name__ == "__main__":
