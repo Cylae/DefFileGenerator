@@ -20,6 +20,8 @@ except ImportError:
 from DefFileGenerator.def_gen import Generator
 
 class Extractor:
+    TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$')
+
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
         # Default mapping for data types
@@ -50,7 +52,7 @@ class Extractor:
             return self.type_mapping[t_str]
 
         # Check for patterns like Uint16, Int32, uint16, int32
-        match = re.match(r'^(u|i|uint|int)(\d+)$', t_str)
+        match = self.TYPE_PATTERN.match(t_str)
         if match:
             raw_prefix = match.group(1).lower()
             prefix = 'U' if raw_prefix.startswith('u') else 'I'
