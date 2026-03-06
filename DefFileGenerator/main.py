@@ -12,7 +12,7 @@ from DefFileGenerator.def_gen import run_generator
 def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
-def extract_command(args):
+def _perform_extraction(args):
     mapping = {}
     if args.mapping:
         with open(args.mapping, 'r') as f:
@@ -28,9 +28,14 @@ def extract_command(args):
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     else:
         logging.error(f"Unsupported extension: {ext}")
-        return
+        return None
 
-    mapped_data = extractor.map_and_clean(raw_data)
+    return extractor.map_and_clean(raw_data)
+
+def extract_command(args):
+    mapped_data = _perform_extraction(args)
+    if mapped_data is None:
+        return
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -60,24 +65,9 @@ def generate_command(args):
     )
 
 def run_command(args):
-    mapping = {}
-    if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
-
-    extractor = Extractor(mapping)
-    ext = os.path.splitext(args.input_file)[1].lower()
-
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
-        raw_data = extractor.extract_from_pdf(args.input_file, pages)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
+    mapped_data = _perform_extraction(args)
+    if mapped_data is None:
         return
-
-    mapped_data = extractor.map_and_clean(raw_data)
 
     with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
         temp_csv = tf.name
