@@ -52,10 +52,34 @@ class TestExtractor(unittest.TestCase):
                 os.remove(f)
 
     def test_normalize_type(self):
+        # Basic expected conversions
         self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
         self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
         self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
+
+        # Empty/Falsy inputs should default to 'U16'
+        self.assertEqual(self.extractor.normalize_type(None), "U16")
+        self.assertEqual(self.extractor.normalize_type(""), "U16")
+        self.assertEqual(self.extractor.normalize_type(0), "U16")
+
+        # Explicitly mapped types
+        self.assertEqual(self.extractor.normalize_type("string"), "STRING")
+        self.assertEqual(self.extractor.normalize_type("bits"), "BITS")
+        self.assertEqual(self.extractor.normalize_type("float"), "F32")
+
+        # Regex prefix matches
+        self.assertEqual(self.extractor.normalize_type("i16"), "I16")
+        self.assertEqual(self.extractor.normalize_type("uint64"), "U64")
+        self.assertEqual(self.extractor.normalize_type("int8"), "I8")
+        self.assertEqual(self.extractor.normalize_type("u32"), "U32")
+
+        # Fallback for unmapped/unmatched types (upper cased)
+        self.assertEqual(self.extractor.normalize_type("unknown"), "UNKNOWN")
+        self.assertEqual(self.extractor.normalize_type("STR20"), "STR20")
+
+        # Numeric/Non-string inputs that are not falsy
+        self.assertEqual(self.extractor.normalize_type(16), "16")
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)

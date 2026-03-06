@@ -57,7 +57,7 @@ class Extractor:
             bits = match.group(2)
             return f"{prefix}{bits}"
 
-        return t.upper()
+        return str(t).upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
