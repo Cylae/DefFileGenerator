@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import run_generator
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 
 def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -49,15 +49,16 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
-    run_generator(
-        input_file=args.input_file,
-        output=args.output,
+    config = GeneratorConfig(
         manufacturer=args.manufacturer,
         model=args.model,
+        output=args.output,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
+    run_generator(config, input_file=args.input_file)
 
 def run_command(args):
     mapping = {}
@@ -87,15 +88,16 @@ def run_command(args):
         writer.writerows(mapped_data)
 
     try:
-        run_generator(
-            input_file=temp_csv,
-            output=args.output,
+        config = GeneratorConfig(
             manufacturer=args.manufacturer,
             model=args.model,
+            output=args.output,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=args.address_offset
         )
+        run_generator(config, input_file=temp_csv)
     finally:
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
@@ -122,6 +124,7 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -135,6 +138,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
 
