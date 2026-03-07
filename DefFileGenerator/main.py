@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import run_generator
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 
 def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -49,7 +49,7 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
-    run_generator(
+    config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
         manufacturer=args.manufacturer,
@@ -58,6 +58,7 @@ def generate_command(args):
         category=args.category,
         forced_write=args.forced_write
     )
+    run_generator(config)
 
 def run_command(args):
     mapping = {}
@@ -87,7 +88,7 @@ def run_command(args):
         writer.writerows(mapped_data)
 
     try:
-        run_generator(
+        config = GeneratorConfig(
             input_file=temp_csv,
             output=args.output,
             manufacturer=args.manufacturer,
@@ -96,6 +97,7 @@ def run_command(args):
             category=args.category,
             forced_write=args.forced_write
         )
+        run_generator(config)
     finally:
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
