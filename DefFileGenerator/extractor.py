@@ -17,9 +17,36 @@ try:
     HAS_PDFPLUMBER = True
 except ImportError:
     HAS_PDFPLUMBER = False
+
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
+try:
+    from defusedxml import ElementTree as ET
+    HAS_DEFUSEDXML = True
+except ImportError:
+    HAS_DEFUSEDXML = False
+
+import io
 from DefFileGenerator.def_gen import Generator
 
 class Extractor:
+    COLUMN_MAPPING = {
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
+        'Type': ['data type', 'datatype', 'type', 'format'],
+        'Unit': ['unit', 'units'],
+        'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
+        'Action': ['action', 'access'],
+        'Tag': ['tag'],
+        'Offset': ['offset_val'],
+        'ScaleFactor': ['scalefactor']
+    }
+
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
         # Default mapping for data types
@@ -88,6 +115,55 @@ class Extractor:
             data.append(row_data)
         return data
 
+    def extract_from_csv(self, filepath):
+        logging.info(f"Extracting from CSV: {filepath}")
+        data = []
+        # Detect encoding and delimiter
+        encoding = 'utf-8-sig'
+        try:
+            with open(filepath, 'rb') as f:
+                header = f.read(2048)
+                if b'\xff\xfe' in header or b'\xfe\xff' in header:
+                    encoding = 'utf-16'
+        except Exception:
+            pass
+
+        for delimiter in [',', ';', '\t']:
+            try:
+                with open(filepath, 'r', encoding=encoding) as f:
+                    reader = csv.DictReader(f, delimiter=delimiter)
+                    rows = list(reader)
+                    if rows and len(reader.fieldnames) > 1:
+                        # Clean fieldnames
+                        reader.fieldnames = [fn.strip() for fn in reader.fieldnames]
+                        # Re-read with cleaned fieldnames if necessary or just use the rows
+                        data = rows
+                        break
+            except Exception:
+                continue
+        return data
+
+    def extract_from_xml(self, filepath):
+        if not HAS_PANDAS:
+            logging.error("pandas is required for XML extraction.")
+            return []
+        if not HAS_DEFUSEDXML:
+            logging.error("defusedxml is required for secure XML parsing. Aborting.")
+            return []
+
+        logging.info(f"Extracting from XML: {filepath}")
+        try:
+            with open(filepath, 'rb') as f:
+                xml_data = f.read()
+            # Validate with defusedxml
+            ET.fromstring(xml_data)
+            # Use pandas to read
+            df = pd.read_xml(io.BytesIO(xml_data))
+            return df.to_dict(orient='records')
+        except Exception as e:
+            logging.error(f"Error loading XML file: {e}")
+            return []
+
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
@@ -141,15 +217,19 @@ class Extractor:
 
         # Fuzzy match for standard columns if not explicitly mapped
         # Priority order to avoid misidentification (e.g. RegisterType as Type)
-        standard_cols = ['RegisterType', 'Name', 'Address', 'Type', 'Unit', 'Tag']
-        for target in standard_cols:
+        detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Factor', 'Action', 'Tag']
+        for target in detection_order:
             if target not in standard_cols_mapping:
                 for k in first_row.keys():
                     if k in assigned_keys:
                         continue
-                    if k.lower() == target.lower() or target.lower() in k.lower():
-                        standard_cols_mapping[target] = k
-                        assigned_keys.add(k)
+                    k_lower = k.lower()
+                    for pattern in self.COLUMN_MAPPING.get(target, []):
+                        if pattern in k_lower:
+                            standard_cols_mapping[target] = k
+                            assigned_keys.add(k)
+                            break
+                    if target in standard_cols_mapping:
                         break
 
         generator = Generator()
@@ -167,12 +247,27 @@ class Extractor:
             # Clean Address using Generator's logic
             if 'Address' in new_row and new_row['Address']:
                 addr = str(new_row['Address']).strip()
+                # Support Address_Length and Address_Start_Bit formats (e.g. 30001_10 or 30001_0_1)
+                match = re.search(r'(0x[0-9A-Fa-f]+|\d+)(_(\d+))+', addr)
+                if match:
+                    addr = match.group(0)
+
                 if '_' in addr:
                     parts = addr.split('_')
                     norm_parts = [generator.normalize_address_val(p) for p in parts]
                     new_row['Address'] = '_'.join(norm_parts)
                 else:
                     new_row['Address'] = generator.normalize_address_val(addr)
+
+            # Clean Factor (fraction parsing)
+            if 'Factor' in new_row and new_row['Factor']:
+                factor = str(new_row['Factor']).strip()
+                if '/' in factor:
+                    try:
+                        parts = factor.split('/')
+                        new_row['Factor'] = str(float(parts[0]) / float(parts[1]))
+                    except (ValueError, ZeroDivisionError):
+                        pass
 
             # Clean Type
             if 'Type' in new_row:

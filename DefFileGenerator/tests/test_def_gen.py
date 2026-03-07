@@ -32,6 +32,7 @@ class TestGenerator(unittest.TestCase):
 
     def test_validate_address_valid(self):
         self.assertTrue(self.generator.validate_address('30001', 'U16'))
+        self.assertTrue(self.generator.validate_address('-1', 'U16'))
         self.assertTrue(self.generator.validate_address('0x7531', 'U16'))
         self.assertTrue(self.generator.validate_address('7531h', 'U16'))
         self.assertTrue(self.generator.validate_address('A0', 'U16'))
@@ -81,6 +82,32 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Info1'], '3')
         self.assertEqual(processed[0]['Info3'], 'U16')
         self.assertEqual(processed[0]['CoefA'], '1.000000')
+
+    def test_process_rows_address_offset(self):
+        rows = [{
+            'Name': 'Offset Var',
+            'Tag': 'offset_tag',
+            'RegisterType': 'Holding Register',
+            'Address': '100',
+            'Type': 'U16',
+            'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
+        }]
+        processed = self.generator.process_rows(rows, address_offset=50)
+        self.assertEqual(processed[0]['Info2'], '150')
+
+    def test_process_rows_negative_offset(self):
+        rows = [{
+            'Name': 'Neg Offset Var',
+            'Tag': 'neg_offset_tag',
+            'RegisterType': 'Holding Register',
+            'Address': '100',
+            'Type': 'U16',
+            'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
+        }]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows, address_offset=-150)
+            self.assertEqual(processed[0]['Info2'], '-50')
+            self.assertTrue(any("becomes -50" in m for m in log.output))
 
     def test_process_rows_str_expansion(self):
         rows = [{
