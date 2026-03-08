@@ -7,12 +7,12 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import run_generator
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
-def extract_command(args):
+def _perform_extraction(args):
     mapping = {}
     if args.mapping:
         with open(args.mapping, 'r') as f:
@@ -26,11 +26,20 @@ def extract_command(args):
     elif ext == '.pdf':
         pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw_data = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
-        return
+        return []
 
-    mapped_data = extractor.map_and_clean(raw_data)
+    return extractor.map_and_clean(raw_data)
+
+def extract_command(args):
+    mapped_data = _perform_extraction(args)
+    if not mapped_data:
+        return
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -49,7 +58,7 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
-    run_generator(
+    config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
         manufacturer=args.manufacturer,
@@ -58,26 +67,12 @@ def generate_command(args):
         category=args.category,
         forced_write=args.forced_write
     )
+    run_generator(config)
 
 def run_command(args):
-    mapping = {}
-    if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
-
-    extractor = Extractor(mapping)
-    ext = os.path.splitext(args.input_file)[1].lower()
-
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
-        raw_data = extractor.extract_from_pdf(args.input_file, pages)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
+    mapped_data = _perform_extraction(args)
+    if not mapped_data:
         return
-
-    mapped_data = extractor.map_and_clean(raw_data)
 
     with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
         temp_csv = tf.name
@@ -87,7 +82,7 @@ def run_command(args):
         writer.writerows(mapped_data)
 
     try:
-        run_generator(
+        config = GeneratorConfig(
             input_file=temp_csv,
             output=args.output,
             manufacturer=args.manufacturer,
@@ -96,6 +91,7 @@ def run_command(args):
             category=args.category,
             forced_write=args.forced_write
         )
+        run_generator(config)
     finally:
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
@@ -106,8 +102,8 @@ def main():
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
-    parser_extract = subparsers.add_parser('extract', help='Extract registers from PDF/Excel')
-    parser_extract.add_argument('input_file', help='Source file (PDF/Excel)')
+    parser_extract = subparsers.add_parser('extract', help='Extract registers from documentation')
+    parser_extract.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
     parser_extract.add_argument('-o', '--output', help='Output CSV')
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
@@ -125,7 +121,7 @@ def main():
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel)')
+    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer', required=True)
     parser_run.add_argument('--model', required=True)
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
