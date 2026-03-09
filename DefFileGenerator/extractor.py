@@ -38,7 +38,7 @@ class Extractor:
     COLUMN_MAPPING = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
-        'Name': ['name', 'description', 'parameter', 'variable', 'signal'],
+        'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
         'Tag': ['tag'],
@@ -88,14 +88,23 @@ class Extractor:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
         data = []
-        with pdfplumber.open(filepath) as pdf:
-            target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-            for page in target_pages:
-                for table in page.extract_tables():
-                    if not table or len(table) < 2: continue
-                    headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
-                    for row in table[1:]:
-                        data.append({headers[i]: (str(cell).replace('\n', ' ').strip() if cell else "") for i, cell in enumerate(row) if i < len(headers)})
+        try:
+            with pdfplumber.open(filepath) as pdf:
+                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                for page in target_pages:
+                    tables = page.extract_tables()
+                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
+                    for table in tables:
+                        if not table or len(table) < 2: continue
+                        headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        for row in table[1:]:
+                            row_dict = {}
+                            for i, cell in enumerate(row):
+                                if i < len(headers):
+                                    row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
+                            data.append(row_dict)
+        except Exception as e:
+            logging.error(f"Error extracting from PDF {filepath}: {e}")
         return data
 
     def extract_from_csv(self, filepath):
@@ -142,7 +151,7 @@ class Extractor:
     def map_and_clean(self, tables):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
-        if tables and isinstance(tables[0], dict):
+        if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
