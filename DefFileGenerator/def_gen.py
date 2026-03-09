@@ -46,6 +46,20 @@ class Generator:
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    def normalize_action(self, action):
+        """Standardizes Modbus action codes (R/READ/4 -> 4, RW/W/WRITE/1 -> 1, others -> 1)."""
+        act_str = str(action).strip().upper()
+        if not act_str:
+            return '1'
+        elif act_str in ['R', 'READ', '4']:
+            return '4'
+        elif act_str in ['RW', 'W', 'WRITE', '1']:
+            return '1'
+        elif act_str in self.allowed_actions:
+            return act_str
+        else:
+            return '1'
+
     def normalize_type(self, dtype):
         """Standardizes common type synonyms while preserving suffixes."""
         if not dtype:
@@ -176,7 +190,7 @@ class Generator:
         seen_names = {}
         seen_tags = {}
         # Tracks used addresses per register type (Info1)
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        used_addresses_by_type = {} # Info1 -> {address: (line_num, name, type, start_addr)}
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -270,16 +284,20 @@ class Generator:
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
 
-                if info1 not in address_usage:
-                    address_usage[info1] = []
+                if info1 not in used_addresses_by_type:
+                    used_addresses_by_type[info1] = {}
 
                 is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
+                for addr_to_check in range(start_addr, end_addr + 1):
+                    if addr_to_check in used_addresses_by_type[info1]:
+                        u_line, u_name, u_type, u_start = used_addresses_by_type[info1][addr_to_check]
                         if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+                            u_end = u_start + self.get_register_count(u_type, str(u_start)) - 1
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+                            break # Warn once per variable
 
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+                for addr_to_add in range(start_addr, end_addr + 1):
+                    used_addresses_by_type[info1][addr_to_add] = (line_num, name, dtype.upper(), start_addr)
             except (ValueError, IndexError):
                 pass
 
@@ -297,17 +315,7 @@ class Generator:
                 coef_b = "0.000000"
 
             # Action normalization
-            act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '1'
-            elif act_str in ['R', 'READ', '4']:
-                norm_action = '4'
-            elif act_str in ['RW', 'W', 'WRITE', '1']:
-                norm_action = '1'
-            elif act_str in self.allowed_actions:
-                norm_action = act_str
-            else:
-                norm_action = '1'
+            norm_action = self.normalize_action(action)
 
             processed_rows.append({
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
