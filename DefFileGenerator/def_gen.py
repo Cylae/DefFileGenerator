@@ -116,7 +116,7 @@ class Generator:
         seen_names = {}
         seen_tags = {}
         # Tracks used addresses per register type (Info1)
-        # Dictionary of Info1 -> list of tuples (start_addr, end_addr, line_num, name, type)
+        # Dictionary of Info1 -> dict of address -> (line_num, name, type)
         used_addresses_by_type = {}
 
         for line_num, row in enumerate(rows, start=2):
@@ -224,25 +224,31 @@ class Generator:
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
 
-                current_range = (start_addr, end_addr, line_num, name, dtype.upper())
-
                 if info1 not in used_addresses_by_type:
-                    used_addresses_by_type[info1] = []
+                    used_addresses_by_type[info1] = {}
 
-                # Check overlap against used_addresses for this register type
-                is_bits = (dtype.upper() == 'BITS')
+                dtype_upper_str = dtype.upper()
+                is_bits = (dtype_upper_str == 'BITS')
 
-                for used_start, used_end, used_line, used_name, used_type in used_addresses_by_type[info1]:
-                    # Check if ranges overlap
-                    if max(start_addr, used_start) <= min(end_addr, used_end):
-                        # Overlap detected
-                        # Allowed only if both are BITS and same start address
+                # O(1) overlap check per register using dictionary lookup
+                overlap_found = False
+                for addr_idx in range(start_addr, end_addr + 1):
+                    if addr_idx in used_addresses_by_type[info1]:
+                        used_line, used_name, used_type = used_addresses_by_type[info1][addr_idx]
                         is_overlap_allowed = is_bits and (used_type == 'BITS')
 
                         if not is_overlap_allowed:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}, Addr: {used_start}-{used_end}) in register type {info1}.")
+                            if not overlap_found: # Warn only once per range
+                                logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (Addr: {start_addr}-{end_addr}). Overlaps with '{used_name}' (Line {used_line}) at address {addr_idx} in register type {info1}.")
+                                overlap_found = True
 
-                used_addresses_by_type[info1].append(current_range)
+                # Add to used addresses
+                for addr_idx in range(start_addr, end_addr + 1):
+                    if is_bits:
+                        # Allow multiple BITS to share the same base address without overwriting completely
+                        # Or if we just want to suppress errors, we just insert.
+                        pass
+                    used_addresses_by_type[info1][addr_idx] = (line_num, name, dtype_upper_str)
 
             except ValueError:
                 logging.warning(f"Line {line_num}: Could not calculate register range for address '{address}'.")
