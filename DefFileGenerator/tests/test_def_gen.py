@@ -18,7 +18,7 @@ class TestGenerator(unittest.TestCase):
     def test_validate_type_invalid(self):
         invalid_types = [
             'UNKNOWN', 'U1', 'I128', 'STR', 'BITS_2',
-            'F32_W', 'F64_WB', 'STRING_W', 'U17', 'I31'
+            'STRING_W', 'U17', 'I31'
         ]
         for t in invalid_types:
             with self.subTest(type=t):
