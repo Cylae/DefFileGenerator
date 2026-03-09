@@ -18,6 +18,7 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+RE_TAG_CLEAN = re.compile(r'[^a-z0-9_]')
 
 @dataclass
 class GeneratorConfig:
@@ -73,6 +74,8 @@ class Generator:
             (r'signed integer 8|signed int 8|int8', 'I8'),
             (r'float64|double', 'F64'),
             (r'float32|float', 'F32'),
+            (r'unsigned integer|unsigned int', 'U16'),
+            (r'signed integer|signed int', 'I16'),
         ]
 
         for pattern, replacement in synonyms:
@@ -109,30 +112,34 @@ class Generator:
         if not addr_part:
             return ""
 
-        # Support hex with 0x prefix or h suffix
-        if addr_part.lower().startswith('0x'):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-        elif addr_part.lower().endswith('h'):
-            try:
-                return str(int(addr_part[:-1], 16))
-            except ValueError:
-                return addr_part
+        # Use robust regex to identify candidate address parts
+        match = re.search(r'(?<![0-9A-Za-z])(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h|-?\d+|[0-9A-Fa-f]+)(?![0-9A-Za-z])', addr_part)
+        if match:
+            candidate = match.group(1)
+            # Support hex with 0x prefix or h suffix
+            if candidate.lower().startswith('0x'):
+                try:
+                    return str(int(candidate, 16))
+                except ValueError:
+                    return candidate
+            elif candidate.lower().endswith('h'):
+                try:
+                    return str(int(candidate[:-1], 16))
+                except ValueError:
+                    return candidate
 
-        # Handle decimal (including negative)
-        try:
-            return str(int(addr_part))
-        except ValueError:
-            pass
-
-        # If it's a raw hex word (e.g. "A0")
-        if re.match(r'^[0-9A-Fa-f]+$', addr_part):
+            # Handle decimal (including negative)
             try:
-                return str(int(addr_part, 16))
+                return str(int(candidate))
             except ValueError:
-                return addr_part
+                pass
+
+            # If it's a raw hex word (e.g. "A0")
+            if re.match(r'^[0-9A-Fa-f]+$', candidate):
+                try:
+                    return str(int(candidate, 16))
+                except ValueError:
+                    return candidate
 
         return addr_part
 
@@ -176,7 +183,8 @@ class Generator:
         seen_names = {}
         seen_tags = {}
         # Tracks used addresses per register type (Info1)
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        # used_addresses_by_type: Info1 -> { address -> (line, name, type) }
+        used_addresses_by_type = {}
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -242,7 +250,7 @@ class Generator:
                     seen_names[name] = line_num
 
             if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
+                base_tag = RE_TAG_CLEAN.sub('', name.lower().replace(' ', '_'))
                 tag = base_tag if base_tag else "var"
                 counter = 1
                 while tag in seen_tags:
@@ -270,16 +278,23 @@ class Generator:
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
 
-                if info1 not in address_usage:
-                    address_usage[info1] = []
+                if info1 not in used_addresses_by_type:
+                    used_addresses_by_type[info1] = {}
 
                 is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+                warned_lines = set()
+                for addr_idx in range(start_addr, end_addr + 1):
+                    if addr_idx in used_addresses_by_type[info1]:
+                        u_line, u_name, u_type = used_addresses_by_type[info1][addr_idx]
+                        if u_line not in warned_lines:
+                            if not (is_bits and u_type == 'BITS' and start_addr == addr_idx):
+                                logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}).")
+                                warned_lines.add(u_line)
 
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+                for addr_idx in range(start_addr, end_addr + 1):
+                    # We store the latest one. For BITS, multiple can share, but we only need one to detect overlap with non-BITS.
+                    if addr_idx not in used_addresses_by_type[info1] or not is_bits:
+                        used_addresses_by_type[info1][addr_idx] = (line_num, name, dtype.upper())
             except (ValueError, IndexError):
                 pass
 

@@ -1,5 +1,6 @@
 import unittest
 import logging
+import time
 from DefFileGenerator.def_gen import Generator
 
 class TestGenerator(unittest.TestCase):
@@ -181,6 +182,26 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+
+    def test_performance_overlap_detection(self):
+        """Verify O(N) performance of overlap detection by processing 5000 registers."""
+        num_rows = 5000
+        rows = []
+        for i in range(num_rows):
+            rows.append({
+                'Name': f'Var{i}', 'Tag': f't{i}', 'RegisterType': '3',
+                'Address': str(10000 + i), 'Type': 'U16',
+                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
+            })
+
+        start_time = time.time()
+        processed = self.generator.process_rows(rows)
+        duration = time.time() - start_time
+
+        self.assertEqual(len(processed), num_rows)
+        # On a modern machine, 5000 rows should take much less than 1 second with O(N)
+        logging.info(f"Processed {num_rows} rows in {duration:.4f} seconds.")
+        self.assertLess(duration, 1.0, f"Performance issue: {num_rows} rows took {duration:.4f}s")
 
 if __name__ == '__main__':
     unittest.main()
