@@ -44,7 +44,9 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count'],
+        'StartBit': ['start bit', 'startbit', 'bit offset', 'bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -170,7 +172,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,15 +187,26 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
+                # Normalize Type (Delegate to Generator for robust synonyms)
+                new_row['Type'] = generator.normalize_type(new_row.get('Type', 'U16'))
+
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
+
+                # Support Address_Length and Address_StartBit_Length patterns
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
                 if '_' in addr:
                     new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
-
-                # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                    base_addr = generator.normalize_address_val(addr)
+                    if new_row['Type'] == 'BITS' and start_bit and length:
+                         new_row['Address'] = f"{base_addr}_{start_bit}_{length}"
+                    elif new_row['Type'] == 'STRING' and length:
+                         new_row['Address'] = f"{base_addr}_{length}"
+                    else:
+                         new_row['Address'] = base_addr
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))

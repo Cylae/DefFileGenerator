@@ -94,5 +94,20 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    def test_combined_address_length_startbit(self):
+        # Test combining Address and Length for STRING
+        raw_data = [
+            {"Address": "100", "Name": "StrVar", "Type": "STRING", "Length": "10"}
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0]["Address"], "100_10")
+
+        # Test combining Address, StartBit and Length for BITS
+        raw_data = [
+            {"Address": "200", "Name": "BitVar", "Type": "BITS", "StartBit": "0", "Length": "1"}
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0]["Address"], "200_0_1")
+
 if __name__ == "__main__":
     unittest.main()

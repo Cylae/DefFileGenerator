@@ -182,5 +182,31 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_address_offset(self):
+        rows = [
+            {'Name': 'Var1', 'Address': '100', 'Type': 'U16', 'RegisterType': '3'},
+            {'Name': 'Var2', 'Address': '0x10', 'Type': 'U16', 'RegisterType': '3'} # 16 decimal
+        ]
+        # Test with offset 50
+        processed = self.generator.process_rows(rows, address_offset=50)
+        self.assertEqual(processed[0]['Info2'], '150')
+        self.assertEqual(processed[1]['Info2'], '66')
+
+    def test_negative_address_offset_warning(self):
+        rows = [{'Name': 'Var1', 'Address': '10', 'Type': 'U16', 'RegisterType': '3'}]
+        with self.assertLogs(level='WARNING') as log:
+            processed = self.generator.process_rows(rows, address_offset=-20)
+            self.assertEqual(processed[0]['Info2'], '-10')
+            self.assertTrue(any("results in negative address" in m for m in log.output))
+
+    def test_forced_write_output(self):
+        import io
+        processed = [{'Info1': '3', 'Info2': '100', 'Info3': 'U16', 'Info4': '', 'Name': 'V1', 'Tag': 'v1', 'CoefA': '1.0', 'CoefB': '0.0', 'Unit': 'V', 'Action': '4'}]
+        output = io.StringIO()
+        self.generator.write_output_csv(output, processed, 'Mfg', 'Model', forced_write='1')
+        lines = output.getvalue().splitlines()
+        header = lines[0].split(';')
+        self.assertEqual(header[4], '1')
+
 if __name__ == '__main__':
     unittest.main()

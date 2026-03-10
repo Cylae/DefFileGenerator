@@ -175,8 +175,9 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        # Tracks used addresses per register type (Info1)
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        # Tracks used addresses per register type (Info1) to ensure O(1) overlap check
+        # Info1 -> address -> (line, name, type)
+        address_usage = {}
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -271,15 +272,23 @@ class Generator:
                 end_addr = start_addr + reg_count - 1
 
                 if info1 not in address_usage:
-                    address_usage[info1] = []
+                    address_usage[info1] = {}
 
                 is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
 
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+                # Check for overlap at each address point
+                for addr_point in range(start_addr, end_addr + 1):
+                    if addr_point in address_usage[info1]:
+                        u_line, u_name, u_type = address_usage[info1][addr_point]
+                        # Special exception for BITS sharing the same address
+                        if not (is_bits and u_type == 'BITS' and start_addr == addr_point):
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at address {addr_point}. Overlaps with '{u_name}' (Line {u_line}).")
+                            break # Only warn once per register
+
+                # Register all addresses as used
+                for addr_point in range(start_addr, end_addr + 1):
+                    if addr_point not in address_usage[info1]:
+                        address_usage[info1][addr_point] = (line_num, name, dtype.upper())
             except (ValueError, IndexError):
                 pass
 
