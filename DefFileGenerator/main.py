@@ -13,10 +13,9 @@ def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def _perform_extraction(args):
-    mapping = {}
-    if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+    mapping = Extractor.load_mapping(args.mapping)
+    if mapping is None:
+        return []
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
@@ -65,7 +64,8 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
@@ -89,7 +89,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=args.address_offset
         )
         run_generator(config)
     finally:
@@ -118,6 +119,7 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -131,6 +133,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
 

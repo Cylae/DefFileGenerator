@@ -321,9 +321,9 @@ class Generator:
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
-            if isinstance(output, str):
+            if isinstance(output, str) and output:
                 outfile = open(output, 'w', newline='', encoding='utf-8')
-            elif output is None:
+            elif not output:
                 outfile = sys.stdout
             else:
                 outfile = output

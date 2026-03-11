@@ -49,6 +49,18 @@ class Extractor:
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
+    @staticmethod
+    def load_mapping(mapping_path):
+        """Helper to load mapping JSON file."""
+        if not mapping_path:
+            return {}
+        try:
+            with open(mapping_path, 'r') as f:
+                return json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping file {mapping_path}: {e}")
+            return None
+
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
         self.type_mapping = {
