@@ -74,20 +74,25 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+        sheets = [sheet_name] if sheet_name else wb.sheetnames
+        all_data = []
+        for name in sheets:
+            ws = wb[name]
+            data = []
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            for row in rows[1:]:
+                data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            if data:
+                all_data.append(data)
+        return all_data
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
@@ -97,15 +102,18 @@ class Extractor:
                     for table in tables:
                         if not table or len(table) < 2: continue
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        table_data = []
                         for row in table[1:]:
                             row_dict = {}
                             for i, cell in enumerate(row):
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                            data.append(row_dict)
+                            table_data.append(row_dict)
+                        if table_data:
+                            all_tables.append(table_data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return all_tables
 
     def extract_from_csv(self, filepath):
         try:
@@ -120,7 +128,8 @@ class Extractor:
                     if d in snippet:
                         delimiter = d; break
                 reader = csv.DictReader(f, delimiter=delimiter)
-                return list(reader)
+                data = list(reader)
+                return [data] if data else []
         except Exception as e:
             logging.error(f"Error extracting from CSV: {e}")
             return []
@@ -143,7 +152,8 @@ class Extractor:
             # but we can validate it first or use a safer approach.
             ET.fromstring(content) # This will raise an error if it contains entities/threats
             df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+            data = df.to_dict(orient='records')
+            return [data] if data else []
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
