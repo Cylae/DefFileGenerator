@@ -44,7 +44,9 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count'],
+        'StartBit': ['startbit', 'bit', 'start bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -170,7 +172,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,12 +187,22 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Normalize Address and handle complex address construction
                 addr = str(new_row.get('Address', '')).strip()
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    addr_val = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    addr_val = generator.normalize_address_val(addr)
+
+                if addr_val and length:
+                    addr_val = f"{addr_val}_{generator.normalize_address_val(length)}"
+                    if start_bit:
+                        addr_val = f"{addr_val}_{generator.normalize_address_val(start_bit)}"
+
+                new_row['Address'] = addr_val
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
@@ -224,7 +236,7 @@ def main():
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, [int(p) for p in args.pages.split(',')] if args.pages else None)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
