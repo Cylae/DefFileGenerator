@@ -44,7 +44,9 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count'],
+        'StartBit': ['startbit', 'bit', 'start bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -170,7 +172,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,8 +187,17 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Normalize Address and handle Length/StartBit components
                 addr = str(new_row.get('Address', '')).strip()
+                length = str(new_row.get('Length', '')).strip() if new_row.get('Length') else ""
+                start_bit = str(new_row.get('StartBit', '')).strip() if new_row.get('StartBit') else ""
+
+                if addr and '_' not in addr:
+                    if length and start_bit:
+                        addr = f"{addr}_{length}_{start_bit}"
+                    elif length:
+                        addr = f"{addr}_{length}"
+
                 if '_' in addr:
                     new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
                 else:

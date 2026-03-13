@@ -94,5 +94,19 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    def test_complex_address_extraction(self):
+        # Test combining Address, Length, and StartBit
+        raw_data = [
+            {"Address": "40001", "Name": "ComplexVar", "Length": "10", "StartBit": "0"}
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0]["Address"], "40001_10_0")
+
+        raw_data_2 = [
+            {"Address": "30050", "Name": "String", "Len": "20"}
+        ]
+        mapped_2 = self.extractor.map_and_clean(raw_data_2)
+        self.assertEqual(mapped_2[0]["Address"], "30050_20")
+
 if __name__ == "__main__":
     unittest.main()
