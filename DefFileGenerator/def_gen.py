@@ -46,6 +46,23 @@ class Generator:
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    def generate_template(self, output_file):
+        """Generates a sample definition CSV template."""
+        headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+        rows = [
+            ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
+            ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+        ]
+        try:
+            f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(rows)
+            if output_file and isinstance(output_file, str):
+                f.close()
+        except Exception as e:
+            logging.error(f"Error generating template: {e}")
+
     def normalize_type(self, dtype):
         """Standardizes common type synonyms while preserving suffixes."""
         if not dtype:
