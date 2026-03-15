@@ -1,0 +1,3 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action,ScaleFactor
+Example Variable,example_tag,Holding Register,30001,U16,1,0,V,4,0
+Convenience String,str_tag,Holding Register,30030,STR20,,,,4,
