@@ -44,13 +44,16 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size'],
+        'StartBit': ['start bit', 'bit offset', 'startbit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -135,13 +138,7 @@ class Extractor:
         try:
             with open(filepath, 'rb') as f:
                 content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
+            ET.fromstring(content) # Security check
             df = pd.read_xml(io.BytesIO(content), parser='etree')
             return df.to_dict(orient='records')
         except Exception as e:
@@ -150,12 +147,10 @@ class Extractor:
 
     def map_and_clean(self, tables):
         if not tables: return []
-        # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -163,14 +158,12 @@ class Extractor:
             col_map = {}
             used_src_cols = set()
 
-            # 1. Explicit mapping
             for target, source in self.mapping.items():
                 if source in first_row:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Length', 'StartBit', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,17 +178,23 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
 
-                # Normalize Type
+                if length and '_' not in addr:
+                    if start_bit:
+                        addr = f"{addr}_{length}_{start_bit}"
+                    else:
+                        addr = f"{addr}_{length}"
+
+                if '_' in addr:
+                    new_row['Address'] = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
+                else:
+                    new_row['Address'] = self.generator.normalize_address_val(addr)
+
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
 
-                # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
                 if '/' in factor:
                     try:
@@ -224,8 +223,10 @@ def main():
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
+    pages = [int(p) for p in args.pages.split(',')] if args.pages else None
+
     if ext in ['.xlsx', '.xlsm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, [int(p) for p in args.pages.split(',')] if args.pages else None)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
