@@ -38,6 +38,8 @@ class Extractor:
     COLUMN_MAPPING = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'Length': ['length', 'len', 'size', 'count'],
+        'StartBit': ['startbit', 'bit', 'start bit'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -51,6 +53,7 @@ class Extractor:
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -73,8 +76,20 @@ class Extractor:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return []
+
+        ext = os.path.splitext(filepath)[1].lower()
+        if ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+             logging.warning(f"Unsupported Excel extension: {ext}. Attempting to load anyway.")
+
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
+        if sheet_name:
+            if sheet_name not in wb.sheetnames:
+                logging.error(f"Sheet '{sheet_name}' not found in {filepath}. Available sheets: {wb.sheetnames}")
+                return []
+            ws = wb[sheet_name]
+        else:
+            ws = wb.active
+
         data = []
         rows = list(ws.rows)
         if not rows: return []
@@ -87,25 +102,37 @@ class Extractor:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
-                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                # Handle pages argument (can be None, int, or list of ints)
+                if pages is None:
+                    target_pages = pdf.pages
+                elif isinstance(pages, int):
+                    target_pages = [pdf.pages[pages-1]] if 0 < pages <= len(pdf.pages) else []
+                elif isinstance(pages, list):
+                    target_pages = [pdf.pages[i-1] for i in pages if 0 < i <= len(pdf.pages)]
+                else:
+                    target_pages = []
+
                 for page in target_pages:
                     tables = page.extract_tables()
                     logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                     for table in tables:
                         if not table or len(table) < 2: continue
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        table_data = []
                         for row in table[1:]:
                             row_dict = {}
                             for i, cell in enumerate(row):
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                            data.append(row_dict)
+                            table_data.append(row_dict)
+                        if table_data:
+                            all_tables.append(table_data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return all_tables
 
     def extract_from_csv(self, filepath):
         try:
@@ -155,7 +182,6 @@ class Extractor:
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -170,7 +196,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Length', 'StartBit', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,15 +211,25 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Complex Address logic (Address_Length_StartBit)
                 addr = str(new_row.get('Address', '')).strip()
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    parts = addr.split('_')
+                    norm_addr = '_'.join(self.generator.normalize_address_val(p) for p in parts)
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    norm_addr = self.generator.normalize_address_val(addr)
+                    if length:
+                        norm_addr += f"_{self.generator.normalize_address_val(length)}"
+                        if start_bit:
+                            norm_addr += f"_{self.generator.normalize_address_val(start_bit)}"
+
+                new_row['Address'] = norm_addr
 
                 # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                new_row['Type'] = self.generator.normalize_type(new_row.get('Type', 'U16'))
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
