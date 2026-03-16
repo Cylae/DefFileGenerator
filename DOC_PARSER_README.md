@@ -33,6 +33,11 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol`: Protocol name (default: `modbusRTU`).
 - `--category`: Device category (default: `Inverter`).
 - `--sheet`: Specific Excel sheet name to process (processes all if omitted).
+- `--mapping`: JSON file to map manufacturer columns.
+- `--pages`: Comma-separated list of PDF pages (e.g., "1,2,5").
+- `--address-offset`: Shift all register addresses by this value.
+- `--forced-write`: Forced write value for the definition header.
+- `--template`: Generate a sample input CSV template.
 - `-v`, `--verbose`: Show detailed processing information.
 
 ## How It Works
