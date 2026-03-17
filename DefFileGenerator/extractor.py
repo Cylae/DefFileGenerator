@@ -47,27 +47,12 @@ class Extractor:
         'ScaleFactor': ['scalefactor']
     }
 
-    TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
-
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        self.type_mapping = {
-            'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
-            'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
-            'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
-        }
+        self.generator = Generator()
 
     def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
+        return self.generator.normalize_type(t)
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -155,7 +140,6 @@ class Extractor:
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -188,9 +172,9 @@ class Extractor:
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    new_row['Address'] = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    new_row['Address'] = self.generator.normalize_address_val(addr)
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))

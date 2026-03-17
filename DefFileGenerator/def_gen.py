@@ -136,6 +136,20 @@ class Generator:
 
         return addr_part
 
+    def apply_address_offset(self, address, offset, line_num=None, name=None):
+        """Applies an integer offset to the base Modbus address."""
+        if not address or offset == 0:
+            return address
+        parts = str(address).split('_')
+        try:
+            base_addr = int(parts[0]) + offset
+            if base_addr < 0 and line_num is not None:
+                logging.warning(f"Line {line_num}: Address offset {offset} results in negative address {base_addr} for '{name}'.")
+            parts[0] = str(base_addr)
+            return '_'.join(parts)
+        except (ValueError, IndexError):
+            return address
+
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
@@ -217,19 +231,8 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
+                address = '_'.join(self.normalize_address_val(p) for p in address.split('_'))
+                address = self.apply_address_offset(address, address_offset, line_num, name)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -317,6 +320,23 @@ class Generator:
         return processed_rows
 
     @staticmethod
+    def generate_template(output_file):
+        headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+        rows = [
+            ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
+            ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+        ]
+        try:
+            f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(rows)
+            if output_file:
+                f.close()
+        except Exception as e:
+            logging.error(f"Error generating template: {e}")
+
+    @staticmethod
     def write_output_csv(output, processed_rows, manufacturer, model,
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
@@ -344,25 +364,9 @@ class Generator:
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
 
-def generate_template(output_file):
-    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    rows = [
-        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
-        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
-    ]
-    try:
-        f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
-        writer = csv.writer(f)
-        writer.writerow(headers)
-        writer.writerows(rows)
-        if output_file:
-            f.close()
-    except Exception as e:
-        logging.error(f"Error generating template: {e}")
-
 def run_generator(config: GeneratorConfig):
     if config.template:
-        generate_template(config.output)
+        Generator.generate_template(config.output)
         return
 
     if not config.input_file or not config.manufacturer or not config.model:
