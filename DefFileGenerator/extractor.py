@@ -51,23 +51,7 @@ class Extractor:
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        self.type_mapping = {
-            'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
-            'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
-            'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
-        }
-
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
+        self.generator = Generator()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -148,14 +132,13 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -185,15 +168,22 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
+                # Normalize Type FIRST so address normalization knows if it's STRING/BITS
+                raw_type = new_row.get('Type', 'U16')
+                norm_type = self.generator.normalize_type(raw_type)
+                new_row['Type'] = norm_type
+
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    norm_addr = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    norm_addr = self.generator.normalize_address_val(addr)
 
-                # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                # Apply address offset
+                if address_offset != 0:
+                    norm_addr = self.generator.apply_address_offset(norm_addr, address_offset)
+                new_row['Address'] = norm_addr
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))

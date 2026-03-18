@@ -52,10 +52,10 @@ class TestExtractor(unittest.TestCase):
                 os.remove(f)
 
     def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
+        self.assertEqual(self.extractor.generator.normalize_type("Uint16"), "U16")
+        self.assertEqual(self.extractor.generator.normalize_type("Int32"), "I32")
+        self.assertEqual(self.extractor.generator.normalize_type("Float32"), "F32")
+        self.assertEqual(self.extractor.generator.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
@@ -93,6 +93,14 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_address_offset_compound(self):
+        raw_data = [
+            {"Address": "30001_20", "Name": "StringParam", "Type": "STRING"}
+        ]
+        # Offset by 10
+        mapped = self.extractor.map_and_clean(raw_data, address_offset=10)
+        self.assertEqual(mapped[0]["Address"], "30011_20")
 
 if __name__ == "__main__":
     unittest.main()
