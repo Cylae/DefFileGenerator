@@ -9,22 +9,25 @@ import tempfile
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
-def setup_logging():
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+def setup_logging(verbose=False):
+    logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
+    if hasattr(args, 'mapping') and args.mapping:
         with open(args.mapping, 'r') as f:
             mapping = json.load(f)
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
+    sheet = args.sheet if hasattr(args, 'sheet') else None
+    pages_str = args.pages if hasattr(args, 'pages') else None
+    pages = [int(p.strip()) for p in pages_str.split(',')] if pages_str else None
+
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        raw_data = extractor.extract_from_excel(args.input_file, sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -65,7 +68,8 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
@@ -89,7 +93,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=args.address_offset
         )
         run_generator(config)
     finally:
@@ -97,8 +102,10 @@ def run_command(args):
             os.remove(temp_csv)
 
 def main():
-    setup_logging()
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
+    parser.add_argument('--address-offset', type=int, default=0, help='Global address offset')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
+
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
@@ -133,6 +140,7 @@ def main():
     parser_run.add_argument('--forced-write', default='')
 
     args = parser.parse_args()
+    setup_logging(args.verbose)
 
     if args.command == 'extract':
         extract_command(args)
