@@ -44,13 +44,16 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size'],
+        'StartBit': ['start bit', 'startbit', 'bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -127,7 +130,7 @@ class Extractor:
 
     def extract_from_xml(self, filepath):
         if not HAS_DEFUSEDXML:
-            logging.error("defusedxml is required for secure XML parsing.")
+            logging.error("defusedxml is required for secure XML parsing. Aborting extraction to prevent XXE.")
             return []
         if not HAS_PANDAS:
             logging.error("pandas is required for XML processing.")
@@ -136,11 +139,6 @@ class Extractor:
             with open(filepath, 'rb') as f:
                 content = f.read()
             # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
             ET.fromstring(content) # This will raise an error if it contains entities/threats
             df = pd.read_xml(io.BytesIO(content), parser='etree')
             return df.to_dict(orient='records')
@@ -155,7 +153,6 @@ class Extractor:
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -170,7 +167,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Offset', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,15 +182,25 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Complex address extraction (Address + Length + StartBit)
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
 
-                # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                if addr:
+                    if '_' in addr:
+                        new_row['Address'] = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
+                    else:
+                        norm_addr = self.generator.normalize_address_val(addr)
+                        if length and start_bit:
+                            new_row['Address'] = f"{norm_addr}_{length}_{start_bit}"
+                        elif length:
+                            new_row['Address'] = f"{norm_addr}_{length}"
+                        else:
+                            new_row['Address'] = norm_addr
+
+                # Delegate normalization to Generator
+                new_row['Type'] = self.generator.normalize_type(new_row.get('Type', 'U16'))
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))

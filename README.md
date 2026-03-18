@@ -23,9 +23,23 @@ Install all dependencies:
 pip install pdfplumber openpyxl pandas lxml defusedxml reportlab
 ```
 
+## Core Tools
+
+### 1. `doc_to_webdyn.py` (End-to-End Wrapper)
+The easiest way to generate a definition file directly from manufacturer documentation.
+
+```bash
+python3 doc_to_webdyn.py <input_file> --manufacturer <MFG> --model <MODEL> [options]
+```
+*   `--address-offset <int>`: Shift all addresses (default 0).
+*   `--forced-write <val>`: Set Webdyn forced write value.
+*   `--mapping <json>`: Custom column mapping.
+*   `--pages <list>`: Specific PDF pages.
+*   `--template`: Generate a sample input CSV.
+
 ## Unified CLI Usage
 
-The primary entry point is `DefFileGenerator/main.py`.
+The primary entry point for granular control is `DefFileGenerator/main.py`.
 
 ### 1. Extract registers from documentation
 Extract tables from PDF, Excel, CSV, or XML into a simplified CSV format.
@@ -44,6 +58,7 @@ Convert a simplified CSV into a WebdynSunPM definition file.
 python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
 *   `--address-offset <int>`: Shift addresses (default 0).
+*   `--forced-write <val>`: Set Webdyn forced write value.
 
 ### 3. End-to-End Run
 Extract and generate the definition file in a single step.
@@ -51,6 +66,8 @@ Extract and generate the definition file in a single step.
 ```bash
 python3 DefFileGenerator/main.py run <source_file> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
+*   `--address-offset <int>`: Shift addresses (default 0).
+*   `--forced-write <val>`: Set Webdyn forced write value.
 
 ---
 

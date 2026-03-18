@@ -5,17 +5,21 @@ This tool automatically extracts Modbus register information from manufacturer d
 ## Features
 
 - **Automated Extraction**: Finds register tables in PDF, Excel, CSV, and XML files.
-- **Heuristic Mapping**: Automatically identifies columns like Address, Name, Type, Unit, and Scale using common naming conventions.
+- **Heuristic Mapping**: Automatically identifies columns like Address, Name, Type, Unit, Scale, and Offset using common naming conventions.
+- **Advanced Address Extraction**: Supports combining Address, Length, and StartBit columns.
 - **Data Normalization**:
   - Converts hex addresses (e.g., `0x9C40`) to decimal.
   - Maps manufacturer-specific data types (e.g., `uint16`, `float32`) to Webdyn types (`U16`, `F32`).
+  - Supports `STR<n>` convenience types (e.g., `STR20`).
   - Generates unique tags from register names.
 - **Scaling Support**: Handles scaling factors and multipliers.
+- **Global Offset**: Easily shift all register addresses using `--address-offset`.
+- **Secure XML**: XXE-protected XML parsing via `defusedxml`.
 
 ## Installation
 
 ```bash
-pip install pandas openpyxl pdfplumber lxml
+pip install pandas openpyxl pdfplumber lxml defusedxml reportlab
 ```
 
 ## Usage
@@ -27,12 +31,17 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 ### Arguments
 
 - `INPUT_FILE`: Path to the manufacturer documentation (PDF, XLSX, XLS, CSV, XML).
-- `--manufacturer`: Manufacturer name (Required).
-- `--model`: Model name (Required).
+- `--manufacturer`: Manufacturer name (Required unless `--template` is used).
+- `--model`: Model name (Required unless `--template` is used).
 - `-o`, `--output`: Output filename (default: `mfg_model_definition.csv`).
 - `--protocol`: Protocol name (default: `modbusRTU`).
 - `--category`: Device category (default: `Inverter`).
 - `--sheet`: Specific Excel sheet name to process (processes all if omitted).
+- `--pages`: Comma-separated list of PDF pages (e.g., 1,2,5).
+- `--mapping`: Path to a JSON file for custom column mapping.
+- `--address-offset`: Global integer offset to apply to all register addresses.
+- `--forced-write`: Value to set for Webdyn forced write.
+- `--template`: Generate a sample input CSV template.
 - `-v`, `--verbose`: Show detailed processing information.
 
 ## How It Works
