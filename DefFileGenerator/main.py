@@ -34,7 +34,7 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    return extractor.map_and_clean(raw_data, args.address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -65,11 +65,13 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
+    # Apply offset only once during extraction for the run command
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         return
@@ -89,7 +91,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0 # Already applied in _perform_extraction
         )
         run_generator(config)
     finally:
@@ -97,8 +100,9 @@ def run_command(args):
             os.remove(temp_csv)
 
 def main():
-    setup_logging()
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
+    parser.add_argument('--address-offset', type=int, default=0, help='Global address offset.')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging.')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
@@ -133,6 +137,9 @@ def main():
     parser_run.add_argument('--forced-write', default='')
 
     args = parser.parse_args()
+
+    log_level = logging.DEBUG if args.verbose else logging.INFO
+    logging.basicConfig(level=log_level, format='%(levelname)s: %(message)s', force=True)
 
     if args.command == 'extract':
         extract_command(args)

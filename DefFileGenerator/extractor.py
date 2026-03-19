@@ -38,6 +38,8 @@ class Extractor:
     COLUMN_MAPPING = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'Length': ['length', 'len', 'size', 'count'],
+        'StartBit': ['startbit', 'start bit', 'bit offset'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -51,6 +53,7 @@ class Extractor:
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -73,6 +76,11 @@ class Extractor:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return []
+        # Support for all excel-like extensions
+        ext = os.path.splitext(filepath)[1].lower()
+        if ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+             logging.warning(f"Unexpected Excel extension: {ext}")
+
         wb = openpyxl.load_workbook(filepath, data_only=True)
         ws = wb[sheet_name] if sheet_name else wb.active
         data = []
@@ -148,14 +156,13 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -170,7 +177,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Length', 'StartBit', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,12 +192,25 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Normalize Address - Combine Address, Length, StartBit if present
                 addr = str(new_row.get('Address', '')).strip()
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    addr = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    addr = self.generator.normalize_address_val(addr)
+
+                if length:
+                    addr = f"{addr}_{self.generator.normalize_address_val(length)}"
+                    if start_bit:
+                        addr = f"{addr}_{self.generator.normalize_address_val(start_bit)}"
+
+                if address_offset != 0:
+                    addr = self.generator.apply_address_offset(addr, address_offset)
+
+                new_row['Address'] = addr
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))

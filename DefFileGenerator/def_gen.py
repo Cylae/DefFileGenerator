@@ -18,6 +18,7 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+RE_TAG_CLEAN = re.compile(r'[^a-zA-Z0-9]')
 
 @dataclass
 class GeneratorConfig:
@@ -45,6 +46,18 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+    def apply_address_offset(self, address, offset):
+        """Applies offset to the base register address."""
+        if not address or offset == 0:
+            return address
+        parts = str(address).split('_')
+        try:
+            base = int(self.normalize_address_val(parts[0]))
+            parts[0] = str(base + offset)
+            return '_'.join(parts)
+        except (ValueError, IndexError):
+            return address
 
     def normalize_type(self, dtype):
         """Standardizes common type synonyms while preserving suffixes."""
@@ -217,19 +230,9 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
+                address = self.apply_address_offset(address, address_offset)
+                if address.startswith('-'):
+                    logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {address.split('_')[0]} for '{name}'.")
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -317,6 +320,23 @@ class Generator:
         return processed_rows
 
     @staticmethod
+    def generate_template(output_file):
+        headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+        rows = [
+            ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
+            ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+        ]
+        try:
+            f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(rows)
+            if output_file:
+                f.close()
+        except Exception as e:
+            logging.error(f"Error generating template: {e}")
+
+    @staticmethod
     def write_output_csv(output, processed_rows, manufacturer, model,
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
@@ -344,25 +364,9 @@ class Generator:
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
 
-def generate_template(output_file):
-    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    rows = [
-        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
-        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
-    ]
-    try:
-        f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
-        writer = csv.writer(f)
-        writer.writerow(headers)
-        writer.writerows(rows)
-        if output_file:
-            f.close()
-    except Exception as e:
-        logging.error(f"Error generating template: {e}")
-
 def run_generator(config: GeneratorConfig):
     if config.template:
-        generate_template(config.output)
+        Generator.generate_template(config.output)
         return
 
     if not config.input_file or not config.manufacturer or not config.model:
