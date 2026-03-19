@@ -51,28 +51,15 @@ class Extractor:
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        self.type_mapping = {
-            'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
-            'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
-            'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
-        }
-
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
+        self.generator = Generator()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return []
+        ext = os.path.splitext(filepath)[1].lower()
+        if ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+             logging.warning(f"File extension {ext} may not be supported by openpyxl.")
         wb = openpyxl.load_workbook(filepath, data_only=True)
         ws = wb[sheet_name] if sheet_name else wb.active
         data = []
@@ -87,7 +74,7 @@ class Extractor:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
@@ -97,15 +84,17 @@ class Extractor:
                     for table in tables:
                         if not table or len(table) < 2: continue
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        table_data = []
                         for row in table[1:]:
                             row_dict = {}
                             for i, cell in enumerate(row):
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                            data.append(row_dict)
+                            table_data.append(row_dict)
+                        all_tables.append(table_data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return all_tables
 
     def extract_from_csv(self, filepath):
         try:
@@ -155,7 +144,6 @@ class Extractor:
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -188,12 +176,12 @@ class Extractor:
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    new_row['Address'] = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    new_row['Address'] = self.generator.normalize_address_val(addr)
 
                 # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                new_row['Type'] = self.generator.normalize_type(new_row.get('Type', 'U16'))
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))

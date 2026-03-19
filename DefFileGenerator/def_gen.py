@@ -71,13 +71,17 @@ class Generator:
             (r'signed integer 16|signed int 16|int16', 'I16'),
             (r'unsigned integer 8|unsigned int 8|uint8', 'U8'),
             (r'signed integer 8|signed int 8|int8', 'I8'),
-            (r'float64|double', 'F64'),
-            (r'float32|float', 'F32'),
+            (r'float64|double|f64', 'F64'),
+            (r'float32|float|f32', 'F32'),
         ]
 
         for pattern, replacement in synonyms:
             if re.search(pattern, t):
                 return f"{replacement}{suffix}"
+
+        # Preservation of convenience types like STR<n>
+        if RE_TYPE_STR_CONV.match(t):
+            return t.upper()
 
         t = _CLEAN_TYPE_RE.sub('', t)
         return t.upper() if t else 'U16'
@@ -146,6 +150,37 @@ class Generator:
             return RE_ADDR_BITS.match(address) is not None
         else:
             return RE_ADDR_INT.match(address) is not None
+
+    def apply_address_offset(self, address, offset):
+        """Applies offset to the base address, handling compound formats."""
+        if not offset or not address:
+            return address
+        parts = address.split('_')
+        try:
+            base_addr = int(self.normalize_address_val(parts[0]))
+            new_base = base_addr + offset
+            parts[0] = str(new_base)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(parts)
+
+    def _check_address_overlap(self, start_addr, reg_count, info1, address_usage, name, line_num, dtype):
+        """Optimized O(1) overlap check using a dictionary-based lookup."""
+        end_addr = start_addr + reg_count - 1
+        is_bits = (dtype.upper() == 'BITS')
+
+        if info1 not in address_usage:
+            address_usage[info1] = {}
+
+        for addr in range(start_addr, end_addr + 1):
+            if addr in address_usage[info1]:
+                u_line, u_name, u_type = address_usage[info1][addr]
+                # BITS can share the same address if they are all BITS
+                if not (is_bits and u_type == 'BITS'):
+                    logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (address {addr}). Overlaps with '{u_name}' from line {u_line}.")
+
+            # Record the usage
+            address_usage[info1][addr] = (line_num, name, dtype.upper())
 
     def get_register_count(self, dtype, address):
         """Calculates the number of registers used by the type."""
@@ -217,19 +252,13 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
+                address = self.apply_address_offset(address, address_offset)
+                # Warning for negative address
                 try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
+                    if int(address.split('_')[0]) < 0:
+                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address for '{name}'.")
                 except (ValueError, IndexError):
                     pass
-
-                address = '_'.join(norm_parts)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -268,18 +297,7 @@ class Generator:
             try:
                 start_addr = int(address.split('_')[0])
                 reg_count = self.get_register_count(dtype, address)
-                end_addr = start_addr + reg_count - 1
-
-                if info1 not in address_usage:
-                    address_usage[info1] = []
-
-                is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
-
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+                self._check_address_overlap(start_addr, reg_count, info1, address_usage, name, line_num, dtype)
             except (ValueError, IndexError):
                 pass
 
@@ -321,9 +339,9 @@ class Generator:
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
-            if isinstance(output, str):
+            if isinstance(output, str) and output.strip():
                 outfile = open(output, 'w', newline='', encoding='utf-8')
-            elif output is None:
+            elif not output:
                 outfile = sys.stdout
             else:
                 outfile = output
