@@ -170,6 +170,18 @@ class Generator:
                 return 0
         return 1
 
+    def apply_address_offset(self, address, offset):
+        """Applies an integer offset to the base register address."""
+        if not address:
+            return address
+        parts = address.split('_')
+        try:
+            base_addr = int(self.normalize_address_val(parts[0])) + offset
+            parts[0] = str(base_addr)
+            return '_'.join(parts)
+        except (ValueError, IndexError):
+            return address
+
     def process_rows(self, rows, address_offset=0):
         """Processes simplified CSV rows into WebdynSunPM format."""
         processed_rows = []
@@ -217,19 +229,13 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
+                address = self.apply_address_offset(address, address_offset)
                 try:
-                    base_addr = int(norm_parts[0]) + address_offset
+                    base_addr = int(address.split('_')[0])
                     if base_addr < 0:
                         logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
                 except (ValueError, IndexError):
                     pass
-
-                address = '_'.join(norm_parts)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -403,8 +409,11 @@ def main():
     parser.add_argument('--forced-write', default='')
     parser.add_argument('--template', action='store_true')
     parser.add_argument('--address-offset', type=int, default=0)
+    parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
     config = GeneratorConfig(
         input_file=args.input_file, output=args.output,
         manufacturer=args.manufacturer, model=args.model,

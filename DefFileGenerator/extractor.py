@@ -148,7 +148,7 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
@@ -185,12 +185,9 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Normalize Address and apply offset
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                new_row['Address'] = generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
@@ -213,9 +210,17 @@ class Extractor:
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     parser = argparse.ArgumentParser(description='Extract register information.')
-    parser.add_argument('input_file'); parser.add_argument('-o', '--output')
-    parser.add_argument('--mapping'); parser.add_argument('--sheet'); parser.add_argument('--pages')
+    parser.add_argument('input_file')
+    parser.add_argument('-o', '--output')
+    parser.add_argument('--mapping')
+    parser.add_argument('--sheet')
+    parser.add_argument('--pages')
+    parser.add_argument('--address-offset', type=int, default=0)
+    parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
+
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
 
     mapping = {}
     if args.mapping:
@@ -230,7 +235,7 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)

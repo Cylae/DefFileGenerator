@@ -14,7 +14,7 @@ def setup_logging():
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
+    if hasattr(args, 'mapping') and args.mapping:
         with open(args.mapping, 'r') as f:
             mapping = json.load(f)
 
@@ -22,9 +22,11 @@ def _perform_extraction(args):
     ext = os.path.splitext(args.input_file)[1].lower()
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        sheet = args.sheet if hasattr(args, 'sheet') else None
+        raw_data = extractor.extract_from_excel(args.input_file, sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages_arg = args.pages if hasattr(args, 'pages') else None
+        pages = [int(p.strip()) for p in pages_arg.split(',')] if pages_arg else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -34,7 +36,8 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    address_offset = args.address_offset if hasattr(args, 'address_offset') else 0
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -65,16 +68,19 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
+    # To prevent double-offsetting, we apply the offset during extraction
+    # and pass 0 to the generator.
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         return
 
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8', newline='') as tf:
         temp_csv = tf.name
         fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
         writer = csv.DictWriter(tf, fieldnames=fieldnames, extrasaction='ignore')
@@ -89,7 +95,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0 # Offset already applied during extraction
         )
         run_generator(config)
     finally:
@@ -108,6 +115,8 @@ def main():
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
+    parser_extract.add_argument('--address-offset', type=int, default=0)
+    parser_extract.add_argument('-v', '--verbose', action='store_true')
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
@@ -118,6 +127,8 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
+    parser_generate.add_argument('-v', '--verbose', action='store_true')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -131,8 +142,13 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
+    parser_run.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
+
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
 
     if args.command == 'extract':
         extract_command(args)
