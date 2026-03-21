@@ -24,12 +24,6 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
         from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
         from reportlab.lib.pagesizes import letter
 
@@ -58,7 +52,9 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        all_tables = self.extractor.extract_from_excel(self.excel_file)
+        self.assertEqual(len(all_tables), 1)
+        data = all_tables[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
@@ -79,7 +75,9 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[2]["Type"], "F32")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        all_tables = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertEqual(len(all_tables), 1)
+        data = all_tables[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")

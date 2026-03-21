@@ -9,22 +9,25 @@ import tempfile
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
-def setup_logging():
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+def setup_logging(verbose=False):
+    logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+    if hasattr(args, 'mapping') and args.mapping:
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping JSON: {e}")
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        raw_data = extractor.extract_from_excel(args.input_file, args.sheet if hasattr(args, 'sheet') else None)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = [int(p.strip()) for p in args.pages.split(',')] if hasattr(args, 'pages') and args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -65,40 +68,34 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
+    # Pass the address_offset to the extractor to apply it during extraction.
+    # The map_and_clean method currently doesn't take address_offset,
+    # but Generator.process_rows does.
+    # To maintain consistency with doc_to_webdyn.py and avoid double offsetting,
+    # we'll perform extraction, then pass the offset to the generator's process_rows.
+
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         return
 
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
-        temp_csv = tf.name
-        fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-        writer = csv.DictWriter(tf, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(mapped_data)
+    # Use Generator directly to handle the offset during processing
+    generator = Generator()
+    processed_rows = generator.process_rows(mapped_data, address_offset=args.address_offset)
 
-    try:
-        config = GeneratorConfig(
-            input_file=temp_csv,
-            output=args.output,
-            manufacturer=args.manufacturer,
-            model=args.model,
-            protocol=args.protocol,
-            category=args.category,
-            forced_write=args.forced_write
-        )
-        run_generator(config)
-    finally:
-        if os.path.exists(temp_csv):
-            os.remove(temp_csv)
+    generator.write_output_csv(
+        args.output, processed_rows, args.manufacturer, args.model,
+        args.protocol, args.category, args.forced_write
+    )
 
 def main():
-    setup_logging()
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
@@ -118,6 +115,7 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -131,8 +129,10 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
+    setup_logging(args.verbose)
 
     if args.command == 'extract':
         extract_command(args)
