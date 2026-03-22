@@ -1,0 +1,4 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action,ScaleFactor
+Model Name,DisplayModel,Holding Register,30010_30,STRING,1,0,,4,
+Rated power (Pn),NominalPower,Holding Register,30083,U32,0.001,0,kW,4,
+[Energy storage unit 1] Running status,,3,37010,U16,1,0,,1,
