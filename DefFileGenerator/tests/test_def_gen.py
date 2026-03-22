@@ -49,6 +49,14 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('A0'), '160')
         self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
 
+    def test_apply_address_offset(self):
+        self.assertEqual(self.generator.apply_address_offset('30001', 10), '30011')
+        self.assertEqual(self.generator.apply_address_offset('0x7531', 10), '30011')
+        self.assertEqual(self.generator.apply_address_offset('30001_20', 10), '30011_20')
+        self.assertEqual(self.generator.apply_address_offset('30001_0_1', 10), '30011_0_1')
+        self.assertEqual(self.generator.apply_address_offset('30001', -1), '30000')
+        self.assertEqual(self.generator.apply_address_offset('30001', 0), '30001')
+
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
         self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len

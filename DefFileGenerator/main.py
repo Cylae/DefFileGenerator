@@ -12,7 +12,7 @@ from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
-def _perform_extraction(args):
+def _perform_extraction(args, address_offset=0):
     mapping = {}
     if args.mapping:
         with open(args.mapping, 'r') as f:
@@ -34,10 +34,10 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
+    mapped_data = _perform_extraction(args, args.address_offset)
     if not mapped_data:
         return
 
@@ -65,12 +65,14 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
+    # Pass address_offset to _perform_extraction
+    mapped_data = _perform_extraction(args, args.address_offset)
     if not mapped_data:
         return
 
@@ -89,7 +91,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0 # Offset already applied during extraction
         )
         run_generator(config)
     finally:
@@ -108,6 +111,7 @@ def main():
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
+    parser_extract.add_argument('--address-offset', type=int, default=0)
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
@@ -118,6 +122,7 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -131,6 +136,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
 
