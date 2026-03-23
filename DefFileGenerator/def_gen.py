@@ -17,6 +17,9 @@ RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
+RE_TAG_CLEAN = re.compile(r'[^a-zA-Z0-9_]', re.IGNORECASE)
+RE_ADDR_VAL = re.compile(r'(?<![0-9A-Za-z])(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h|-?\d+|[0-9A-Fa-f]+)(?![0-9A-Za-z])', re.IGNORECASE)
+
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
 @dataclass
@@ -109,32 +112,33 @@ class Generator:
         if not addr_part:
             return ""
 
-        # Support hex with 0x prefix or h suffix
-        if addr_part.lower().startswith('0x'):
+        match = RE_ADDR_VAL.fullmatch(addr_part)
+        if not match:
+            return addr_part
+
+        val = match.group(1)
+        if val.lower().startswith('0x'):
             try:
-                return str(int(addr_part, 16))
+                return str(int(val, 16))
             except ValueError:
                 return addr_part
-        elif addr_part.lower().endswith('h'):
+        elif val.lower().endswith('h'):
             try:
-                return str(int(addr_part[:-1], 16))
+                return str(int(val[:-1], 16))
             except ValueError:
                 return addr_part
 
         # Handle decimal (including negative)
         try:
-            return str(int(addr_part))
+            return str(int(val))
         except ValueError:
             pass
 
         # If it's a raw hex word (e.g. "A0")
-        if re.match(r'^[0-9A-Fa-f]+$', addr_part):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-
-        return addr_part
+        try:
+            return str(int(val, 16))
+        except ValueError:
+            return addr_part
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -146,6 +150,20 @@ class Generator:
             return RE_ADDR_BITS.match(address) is not None
         else:
             return RE_ADDR_INT.match(address) is not None
+
+    def apply_address_offset(self, address, offset):
+        """Applies an offset to the base address, supporting compound addresses."""
+        if not address:
+            return ""
+        parts = address.split('_')
+        try:
+            # Normalize the base address part to decimal first
+            base_addr_str = self.normalize_address_val(parts[0])
+            base_addr = int(base_addr_str) + offset
+            parts[0] = str(base_addr)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(parts)
 
     def get_register_count(self, dtype, address):
         """Calculates the number of registers used by the type."""
@@ -217,19 +235,13 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
+                address = self.apply_address_offset(address, address_offset)
                 try:
-                    base_addr = int(norm_parts[0]) + address_offset
+                    base_addr = int(address.split('_')[0])
                     if base_addr < 0:
                         logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
                 except (ValueError, IndexError):
                     pass
-
-                address = '_'.join(norm_parts)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -242,7 +254,10 @@ class Generator:
                     seen_names[name] = line_num
 
             if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
+                # Replace non-alphanumeric with underscores
+                base_tag = RE_TAG_CLEAN.sub('_', name.lower())
+                # Replace multiple underscores with a single one and strip them from ends
+                base_tag = re.sub(r'_+', '_', base_tag).strip('_')
                 tag = base_tag if base_tag else "var"
                 counter = 1
                 while tag in seen_tags:

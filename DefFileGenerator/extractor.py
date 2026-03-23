@@ -36,7 +36,7 @@ from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'modbus function'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
@@ -44,30 +44,22 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size'],
+        'StartBit': ['startbit', 'bit offset', 'bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
             'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
         }
 
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -148,14 +140,13 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -170,7 +161,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,15 +176,21 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Build compound address if Length or StartBit are present
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
+                if length and start_bit:
+                    addr = f"{addr}_{start_bit}_{length}"
+                elif length:
+                    addr = f"{addr}_{length}"
+
+                # Normalize Address and apply offset
+                new_row['Address'] = self.generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                new_row['Type'] = self.generator.normalize_type(new_row.get('Type', 'U16'))
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
@@ -224,7 +221,7 @@ def main():
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, [int(p) for p in args.pages.split(',')] if args.pages else None)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)

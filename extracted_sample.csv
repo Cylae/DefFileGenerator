@@ -1,0 +1,4 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action,ScaleFactor
+PV1 Voltage,,Holding Register,30001,U16,0.1,,V,,
+PV1 Current,,Holding Register,30002,U16,0.01,,A,,
+Grid Frequency,,Holding Register,30003,U16,0.01,,Hz,,
