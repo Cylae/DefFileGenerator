@@ -136,6 +136,19 @@ class Generator:
 
         return addr_part
 
+    def apply_address_offset(self, address, offset):
+        """Applies an offset to the base address and normalizes all parts to decimal."""
+        if not address:
+            return ""
+        parts = str(address).split('_')
+        norm_parts = [self.normalize_address_val(p) for p in parts]
+        try:
+            base_addr = int(norm_parts[0]) + offset
+            norm_parts[0] = str(base_addr)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(norm_parts)
+
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
@@ -217,19 +230,13 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
+                address = self.apply_address_offset(address, address_offset)
                 try:
-                    base_addr = int(norm_parts[0]) + address_offset
+                    base_addr = int(address.split('_')[0])
                     if base_addr < 0:
                         logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
                 except (ValueError, IndexError):
                     pass
-
-                address = '_'.join(norm_parts)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
