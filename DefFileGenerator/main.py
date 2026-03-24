@@ -14,34 +14,41 @@ def setup_logging():
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+    if hasattr(args, 'mapping') and args.mapping:
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping JSON: {e}")
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
-        raw_data = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv':
-        raw_data = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml':
-        raw_data = extractor.extract_from_xml(args.input_file)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
+    try:
+        if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+            raw_data = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
+        elif ext == '.pdf':
+            pages = [int(p.strip()) for p in args.pages.split(',')] if hasattr(args, 'pages') and args.pages else None
+            raw_data = extractor.extract_from_pdf(args.input_file, pages)
+        elif ext == '.csv':
+            raw_data = extractor.extract_from_csv(args.input_file)
+        elif ext == '.xml':
+            raw_data = extractor.extract_from_xml(args.input_file)
+        else:
+            logging.error(f"Unsupported extension: {ext}")
+            return []
+    except Exception as e:
+        logging.error(f"Error reading source file: {e}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    return extractor.map_and_clean(raw_data, getattr(args, 'address_offset', 0))
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         return
 
-    output = args.output if args.output else sys.stdout
+    output = args.output if (hasattr(args, 'output') and args.output) else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
     if isinstance(output, str):
@@ -74,7 +81,7 @@ def run_command(args):
     if not mapped_data:
         return
 
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8', newline='') as tf:
         temp_csv = tf.name
         fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
         writer = csv.DictWriter(tf, fieldnames=fieldnames, extrasaction='ignore')
@@ -82,6 +89,7 @@ def run_command(args):
         writer.writerows(mapped_data)
 
     try:
+        # Pass 0 offset to generator because it was already applied in extraction
         config = GeneratorConfig(
             input_file=temp_csv,
             output=args.output,
@@ -89,7 +97,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0
         )
         run_generator(config)
     finally:
@@ -108,6 +117,7 @@ def main():
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
+    parser_extract.add_argument('--address-offset', type=int, default=0)
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
@@ -128,6 +138,7 @@ def main():
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
     parser_run.add_argument('--pages', help='PDF pages')
+    parser_run.add_argument('--address-offset', type=int, default=0)
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')

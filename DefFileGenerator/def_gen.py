@@ -17,6 +17,11 @@ RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
+# Sanitizes strings by replacing non-alphanumeric with underscores and stripping
+RE_TAG_CLEAN = re.compile(r'[^a-zA-Z0-9]+')
+# Strictly validates hex, decimal, or negative integer words
+RE_ADDR_VAL = re.compile(r'(?<![0-9A-Za-z])(0x[0-9A-Fa-f]+|[0-9A-Fa-f]+h|-?\d+|[0-9A-Fa-f]+)(?![0-9A-Za-z])', re.IGNORECASE)
+
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
 @dataclass
@@ -106,8 +111,8 @@ class Generator:
         # Remove thousands separators if they exist
         addr_part = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', addr_part)
 
-        if not addr_part:
-            return ""
+        if not addr_part or not RE_ADDR_VAL.fullmatch(addr_part):
+            return addr_part
 
         # Support hex with 0x prefix or h suffix
         if addr_part.lower().startswith('0x'):
@@ -128,13 +133,10 @@ class Generator:
             pass
 
         # If it's a raw hex word (e.g. "A0")
-        if re.match(r'^[0-9A-Fa-f]+$', addr_part):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-
-        return addr_part
+        try:
+            return str(int(addr_part, 16))
+        except ValueError:
+            return addr_part
 
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
@@ -146,6 +148,19 @@ class Generator:
             return RE_ADDR_BITS.match(address) is not None
         else:
             return RE_ADDR_INT.match(address) is not None
+
+    def apply_address_offset(self, address, offset):
+        """Applies an offset to a simple or compound address string."""
+        if not address:
+            return ""
+        parts = str(address).split('_')
+        # Always normalize the base address to decimal
+        try:
+            base_addr = int(self.normalize_address_val(parts[0])) + offset
+            parts[0] = str(base_addr)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(parts)
 
     def get_register_count(self, dtype, address):
         """Calculates the number of registers used by the type."""
@@ -170,6 +185,133 @@ class Generator:
                 return 0
         return 1
 
+    def _get_val(self, row, key):
+        """Helper to get value from row dict with case-insensitive key."""
+        # Use pre-calculated lowercase/stripped keys for optimization
+        lkey = key.lower().strip()
+        for k, v in row.items():
+            if k.lower().strip() == lkey:
+                return str(v).strip() if v is not None else ''
+        return ''
+
+    def _normalize_type_and_address(self, row, line_num, address_offset):
+        """Modular helper for type and address normalization."""
+        dtype_raw = self._get_val(row, 'Type')
+        address = self._get_val(row, 'Address')
+        name = self._get_val(row, 'Name')
+
+        dtype = self.normalize_type(dtype_raw)
+        if not self.validate_type(dtype):
+            logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
+            return None, None, None
+
+        # Handle STR<n> conversion
+        match_str = RE_TYPE_STR_CONV.match(dtype)
+        if match_str:
+            length = int(match_str.group(1))
+            dtype = 'STRING'
+            if '_' not in address:
+                address = f"{address}_{length}"
+
+        if address:
+            # First normalization of all parts
+            parts = address.split('_')
+            norm_parts = [self.normalize_address_val(p) for p in parts]
+            address = '_'.join(norm_parts)
+
+            # Apply address offset
+            if address_offset != 0:
+                address = self.apply_address_offset(address, address_offset)
+                # Re-check for negative address for logging
+                try:
+                    if int(address.split('_')[0]) < 0:
+                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {address.split('_')[0]} for '{name}'.")
+                except (ValueError, IndexError):
+                    pass
+
+        if not self.validate_address(address, dtype):
+            logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
+            return None, None, None
+
+        return dtype, address, name
+
+    def _process_name_and_tag(self, name, tag, line_num, seen_names, seen_tags):
+        """Modular helper for Name and Tag validation/generation."""
+        if name:
+            if name in seen_names:
+                logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
+            else:
+                seen_names[name] = line_num
+
+        if not tag and name:
+            base_tag = RE_TAG_CLEAN.sub('_', name.lower().replace(' ', '_')).strip('_')
+            tag = base_tag if base_tag else "var"
+            counter = 1
+            while tag in seen_tags:
+                tag = f"{base_tag}_{counter}"
+                counter += 1
+
+        if tag:
+            if tag in seen_tags:
+                logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
+            else:
+                seen_tags[tag] = line_num
+        return tag
+
+    def _determine_info1(self, row, line_num):
+        """Determines Info1 (Register Type) for a row."""
+        reg_type_str = self._get_val(row, 'RegisterType')
+        info1 = '3'
+        if reg_type_str:
+            lt = reg_type_str.lower()
+            if lt in self.register_type_map:
+                info1 = self.register_type_map[lt]
+            elif reg_type_str in ['1', '2', '3', '4']:
+                info1 = reg_type_str
+            else:
+                logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+        return info1
+
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
+        """Performs O(1) dictionary-based overlap check."""
+        try:
+            start_addr = int(address.split('_')[0])
+            reg_count = self.get_register_count(dtype, address)
+            end_addr = start_addr + reg_count - 1
+
+            if info1 not in address_usage:
+                address_usage[info1] = []
+
+            is_bits = (dtype.upper() == 'BITS')
+            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
+                if max(start_addr, u_start) <= min(end_addr, u_end):
+                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
+                         logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+
+            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+        except (ValueError, IndexError):
+            pass
+
+    def _calculate_coefficients(self, row):
+        """Calculates CoefA and CoefB."""
+        factor = self._get_val(row, 'Factor')
+        offset = self._get_val(row, 'Offset')
+        scale_factor_str = self._get_val(row, 'ScaleFactor')
+
+        try:
+            val_factor = float(factor) if factor and str(factor).strip() else 1.0
+            val_scale = int(float(scale_factor_str)) if scale_factor_str and str(scale_factor_str).strip() else 0
+            coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
+        except ValueError:
+            coef_a = "1.000000"
+
+        try:
+            val_offset = float(offset) if offset and str(offset).strip() else 0.0
+            coef_b = "{:.6f}".format(val_offset)
+        except ValueError:
+            coef_b = "0.000000"
+        return coef_a, coef_b
+
     def process_rows(self, rows, address_offset=0):
         """Processes simplified CSV rows into WebdynSunPM format."""
         processed_rows = []
@@ -182,121 +324,21 @@ class Generator:
             if not any(v for v in row.values() if v):
                 continue
 
-            def get_val(key):
-                for k, v in row.items():
-                    if k.lower().strip() == key.lower():
-                        return str(v).strip() if v is not None else ''
-                return ''
-
-            name = get_val('Name')
-            tag = get_val('Tag')
-            reg_type_str = get_val('RegisterType')
-            address = get_val('Address')
-            dtype_raw = get_val('Type')
-            factor = get_val('Factor')
-            offset = get_val('Offset')
-            unit = get_val('Unit')
-            action = get_val('Action')
-            scale_factor_str = get_val('ScaleFactor')
+            dtype, address, name = self._normalize_type_and_address(row, line_num, address_offset)
+            if dtype is None:
+                continue
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
-            dtype = self.normalize_type(dtype_raw)
-            if not self.validate_type(dtype):
-                logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
-                continue
-
-            # Handle STR<n> conversion
-            match_str = RE_TYPE_STR_CONV.match(dtype)
-            if match_str:
-                length = int(match_str.group(1))
-                dtype = 'STRING'
-                if '_' not in address:
-                    address = f"{address}_{length}"
-
-            if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
-
-            if not self.validate_address(address, dtype):
-                logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
-                continue
-
-            if name:
-                if name in seen_names:
-                    logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
-                else:
-                    seen_names[name] = line_num
-
-            if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
-                tag = base_tag if base_tag else "var"
-                counter = 1
-                while tag in seen_tags:
-                    tag = f"{base_tag}_{counter}"
-                    counter += 1
-
-            if tag:
-                if tag in seen_tags:
-                    logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
-                else:
-                    seen_tags[tag] = line_num
-
-            info1 = '3'
-            if reg_type_str:
-                lt = reg_type_str.lower()
-                if lt in self.register_type_map:
-                    info1 = self.register_type_map[lt]
-                elif reg_type_str in ['1', '2', '3', '4']:
-                    info1 = reg_type_str
-                else:
-                    logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
-
-            try:
-                start_addr = int(address.split('_')[0])
-                reg_count = self.get_register_count(dtype, address)
-                end_addr = start_addr + reg_count - 1
-
-                if info1 not in address_usage:
-                    address_usage[info1] = []
-
-                is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
-
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
-            except (ValueError, IndexError):
-                pass
-
-            try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-                val_scale = int(float(scale_factor_str)) if scale_factor_str and str(scale_factor_str).strip() else 0
-                coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
-            except ValueError:
-                coef_a = "1.000000"
-
-            try:
-                val_offset = float(offset) if offset and str(offset).strip() else 0.0
-                coef_b = "{:.6f}".format(val_offset)
-            except ValueError:
-                coef_b = "0.000000"
+            tag = self._process_name_and_tag(name, self._get_val(row, 'Tag'), line_num, seen_names, seen_tags)
+            info1 = self._determine_info1(row, line_num)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            coef_a, coef_b = self._calculate_coefficients(row)
 
             # Action normalization
+            action = self._get_val(row, 'Action')
             act_str = str(action).strip().upper()
             if not act_str:
                 norm_action = '1'
@@ -312,7 +354,7 @@ class Generator:
             processed_rows.append({
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
                 'Name': name, 'Tag': tag, 'CoefA': coef_a, 'CoefB': coef_b,
-                'Unit': unit, 'Action': norm_action
+                'Unit': self._get_val(row, 'Unit'), 'Action': norm_action
             })
         return processed_rows
 
@@ -321,10 +363,10 @@ class Generator:
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
-            if isinstance(output, str):
-                outfile = open(output, 'w', newline='', encoding='utf-8')
-            elif output is None:
+            if output is None or (isinstance(output, str) and not output):
                 outfile = sys.stdout
+            elif isinstance(output, str):
+                outfile = open(output, 'w', newline='', encoding='utf-8')
             else:
                 outfile = output
 
@@ -338,7 +380,7 @@ class Generator:
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
 
-            if isinstance(output, str):
+            if isinstance(output, str) and output:
                 outfile.close()
                 logging.info(f"Definition file generated at {output}")
         except Exception as e:
@@ -371,15 +413,19 @@ def run_generator(config: GeneratorConfig):
 
     generator = Generator()
     try:
+        # Robust encoding detection
         with open(config.input_file, mode='rb') as f:
-            content = f.read()
-            encoding = 'utf-16' if content.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+            content_start = f.read(4)
+            if content_start.startswith((b'\xff\xfe', b'\xfe\xff')):
+                encoding = 'utf-16'
+            else:
+                encoding = 'utf-8-sig'
 
         with open(config.input_file, mode='r', encoding=encoding) as csvfile:
-            content = csvfile.read(2048)
+            snippet = csvfile.read(4096)
             csvfile.seek(0)
             try:
-                dialect = csv.Sniffer().sniff(content, delimiters=";,")
+                dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
             except csv.Error:
                 dialect = csv.excel
 
