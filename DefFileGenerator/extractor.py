@@ -36,8 +36,9 @@ from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
-        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'modbus function'],
+        'Address': ['address', 'addr', 'register', 'reg'],
+        'Offset': ['offset'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -51,6 +52,7 @@ class Extractor:
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -74,28 +76,32 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+        sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        tables = []
+        for ws in sheets:
+            data = []
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            for row in rows[1:]:
+                data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            if data: tables.append(data)
+        return tables
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        tables_data = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
                 for page in target_pages:
-                    tables = page.extract_tables()
-                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
-                    for table in tables:
+                    extracted = page.extract_tables()
+                    logging.debug(f"Found {len(extracted)} tables on page {page.page_number}")
+                    for table in extracted:
                         if not table or len(table) < 2: continue
+                        data = []
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
                         for row in table[1:]:
                             row_dict = {}
@@ -103,9 +109,10 @@ class Extractor:
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
                             data.append(row_dict)
+                        if data: tables_data.append(data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return tables_data
 
     def extract_from_csv(self, filepath):
         try:
@@ -135,27 +142,24 @@ class Extractor:
         try:
             with open(filepath, 'rb') as f:
                 content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
+            # Use defusedxml to parse safely
             ET.fromstring(content) # This will raise an error if it contains entities/threats
+
+            # Since pandas.read_xml uses standard ET, we pass it the safe BytesIO
+            # and rely on our pre-validation with defusedxml above.
             df = pd.read_xml(io.BytesIO(content), parser='etree')
             return df.to_dict(orient='records')
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -170,7 +174,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Offset', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -181,16 +185,44 @@ class Extractor:
                         used_src_cols.add(src_col)
                         break
 
+            # Detection for Length/StartBit to support compound addresses
+            len_col = None
+            bit_col = None
+            for src_col in first_row.keys():
+                if src_col in used_src_cols: continue
+                sc_low = str(src_col).lower()
+                if 'length' in sc_low or 'len' == sc_low:
+                    len_col = src_col
+                elif 'start bit' in sc_low or 'startbit' in sc_low:
+                    bit_col = src_col
+
             for row in table:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
-                if not new_row.get('Name') and not new_row.get('Address'): continue
+                if not new_row.get('Name') and not new_row.get('Address') and not new_row.get('Offset'):
+                    continue
 
-                # Normalize Address
-                addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                # Address handling
+                addr = str(new_row.get('Address') or new_row.get('Offset') or '').strip()
+                if addr:
+                    if '_' in addr:
+                        addr = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
+                    else:
+                        addr = self.generator.normalize_address_val(addr)
+
+                    # Complex address combination (Address_Length or Address_Length_StartBit)
+                    if len_col and row.get(len_col):
+                        length = str(row.get(len_col)).strip()
+                        if length:
+                            addr = f"{addr}_{length}"
+                            if bit_col and row.get(bit_col):
+                                start_bit = str(row.get(bit_col)).strip()
+                                if start_bit:
+                                    addr = f"{addr}_{start_bit}"
+
+                    if address_offset != 0:
+                        addr = self.generator.apply_address_offset(addr, address_offset)
+
+                new_row['Address'] = addr
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
