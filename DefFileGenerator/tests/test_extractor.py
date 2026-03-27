@@ -59,8 +59,9 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        self.assertEqual(len(data), 1) # One sheet
+        self.assertEqual(len(data[0]), 3) # Three rows
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -80,15 +81,16 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        self.assertEqual(len(data), 1) # One table detected
+        self.assertEqual(len(data[0]), 2) # Two rows
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
-        raw_data = [
+        raw_data = [[
             {"Register Address": "0x10", "Variable Name": "Test", "Data Type": "Uint16"}
-        ]
+        ]]
         mapped = self.extractor.map_and_clean(raw_data)
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
