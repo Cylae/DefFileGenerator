@@ -51,61 +51,55 @@ class Extractor:
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        self.type_mapping = {
-            'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
-            'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
-            'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
-        }
+        self.generator = Generator()
 
     def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
+        return self.generator.normalize_type(t)
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+        sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        tables = []
+        for ws in sheets:
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            sheet_data = []
+            for row in rows[1:]:
+                sheet_data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            if sheet_data:
+                tables.append(sheet_data)
+        return tables
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        tables_data = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
                 for page in target_pages:
-                    tables = page.extract_tables()
-                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
-                    for table in tables:
+                    pdf_tables = page.extract_tables()
+                    logging.debug(f"Found {len(pdf_tables)} tables on page {page.page_number}")
+                    for table in pdf_tables:
                         if not table or len(table) < 2: continue
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        table_data = []
                         for row in table[1:]:
                             row_dict = {}
                             for i, cell in enumerate(row):
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                            data.append(row_dict)
+                            table_data.append(row_dict)
+                        if table_data:
+                            tables_data.append(table_data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return tables_data
 
     def extract_from_csv(self, filepath):
         try:
@@ -148,14 +142,13 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -185,12 +178,10 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Apply Address Offset
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                if addr:
+                    new_row['Address'] = self.generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
