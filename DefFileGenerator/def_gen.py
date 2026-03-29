@@ -16,6 +16,7 @@ RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$', re.IGNOR
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
+RE_TAG_CLEAN = re.compile(r'[^a-z0-9_]+')
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
@@ -170,131 +171,188 @@ class Generator:
                 return 0
         return 1
 
+    def apply_address_offset(self, address, offset):
+        """Applies offset to base address while preserving compound format."""
+        if not address: return address
+        parts = address.split('_')
+        try:
+            # Always normalize base address to decimal
+            base_addr = int(self.normalize_address_val(parts[0])) + offset
+            parts[0] = str(base_addr)
+            return '_'.join(parts)
+        except (ValueError, IndexError):
+            return address
+
+    def _get_val(self, row, key):
+        """Helper to get stripped string value from row dict with case-insensitive key."""
+        key_lower = key.lower()
+        for k, v in row.items():
+            if k.lower().strip() == key_lower:
+                return str(v).strip() if v is not None else ''
+        return ''
+
+    def _normalize_type_and_address(self, row, line_num, address_offset):
+        """Normalizes type and address, handles STR<n> and offsets."""
+        dtype_raw = self._get_val(row, 'Type')
+        address_raw = self._get_val(row, 'Address')
+        name = self._get_val(row, 'Name')
+
+        dtype = self.normalize_type(dtype_raw)
+        if not self.validate_type(dtype):
+            logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
+            return None, None
+
+        # Handle STR<n> conversion
+        match_str = RE_TYPE_STR_CONV.match(dtype)
+        if match_str:
+            length = int(match_str.group(1))
+            dtype = 'STRING'
+            if '_' not in address_raw:
+                address_raw = f"{address_raw}_{length}"
+
+        address = self.apply_address_offset(address_raw, address_offset)
+
+        if not self.validate_address(address, dtype):
+            logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
+            return None, None
+
+        return dtype, address
+
+    def _process_name_and_tag(self, row, line_num, seen_names, seen_tags):
+        """Processes name and generates unique tag."""
+        name = self._get_val(row, 'Name')
+        tag = self._get_val(row, 'Tag')
+
+        if name:
+            if name in seen_names:
+                logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
+            else:
+                seen_names[name] = line_num
+
+        if not tag and name:
+            # Improved tag generation
+            base_tag = RE_TAG_CLEAN.sub('_', name.lower().replace(' ', '_'))
+            base_tag = re.sub(r'_{2,}', '_', base_tag).strip('_')
+            tag = base_tag if base_tag else "var"
+            counter = 1
+            while tag in seen_tags:
+                tag = f"{base_tag}_{counter}"
+                counter += 1
+
+        if tag:
+            if tag in seen_tags:
+                logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
+            else:
+                seen_tags[tag] = line_num
+
+        return name, tag
+
+    def _determine_info1(self, row, line_num):
+        """Maps RegisterType to Info1."""
+        reg_type_str = self._get_val(row, 'RegisterType')
+        if not reg_type_str:
+            return '3' # Default Holding Register
+
+        lt = reg_type_str.lower()
+        if lt in self.register_type_map:
+            return self.register_type_map[lt]
+        elif reg_type_str in ['1', '2', '3', '4']:
+            return reg_type_str
+
+        logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+        return '3'
+
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
+        """Optimized O(1) overlap detection using dictionary map."""
+        try:
+            start_addr = int(address.split('_')[0])
+            reg_count = self.get_register_count(dtype, address)
+            end_addr = start_addr + reg_count - 1
+
+            if info1 not in address_usage:
+                address_usage[info1] = {}
+
+            is_bits = (dtype.upper() == 'BITS')
+
+            # Check every register in the range
+            for addr in range(start_addr, end_addr + 1):
+                if addr in address_usage[info1]:
+                    u_line, u_name, u_type = address_usage[info1][addr]
+                    # BITS on same address is allowed
+                    if not (is_bits and u_type == 'BITS' and start_addr == addr):
+                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, Type {u_type}).")
+                        break # Only warn once per row
+
+            # Record usage
+            for addr in range(start_addr, end_addr + 1):
+                # Prioritize non-BITS for overlap detection
+                if addr not in address_usage[info1] or not is_bits:
+                    address_usage[info1][addr] = (line_num, name, dtype.upper())
+
+        except (ValueError, IndexError):
+            pass
+
+    def _parse_numeric(self, val_str):
+        """Robust numeric parsing for fractions and comma decimals."""
+        if not val_str:
+            return 0.0
+        # Normalize comma decimals
+        val_str = str(val_str).replace(',', '.')
+        # Handle fractions
+        if '/' in val_str:
+            try:
+                parts = val_str.split('/')
+                return float(parts[0]) / float(parts[1])
+            except (ValueError, ZeroDivisionError, IndexError):
+                return 1.0
+        try:
+            return float(val_str)
+        except ValueError:
+            return 0.0
+
+    def _calculate_coefficients(self, row):
+        """Calculates CoefA and CoefB."""
+        factor_str = self._get_val(row, 'Factor')
+        offset_str = self._get_val(row, 'Offset')
+        scale_factor_str = self._get_val(row, 'ScaleFactor')
+
+        val_factor = self._parse_numeric(factor_str) if factor_str else 1.0
+        val_scale = int(self._parse_numeric(scale_factor_str)) if scale_factor_str else 0
+        coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
+
+        val_offset = self._parse_numeric(offset_str) if offset_str else 0.0
+        coef_b = "{:.6f}".format(val_offset)
+
+        return coef_a, coef_b
+
     def process_rows(self, rows, address_offset=0):
         """Processes simplified CSV rows into WebdynSunPM format."""
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        # Tracks used addresses per register type (Info1)
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> {addr -> (line, name, type)}
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
                 continue
 
-            def get_val(key):
-                for k, v in row.items():
-                    if k.lower().strip() == key.lower():
-                        return str(v).strip() if v is not None else ''
-                return ''
-
-            name = get_val('Name')
-            tag = get_val('Tag')
-            reg_type_str = get_val('RegisterType')
-            address = get_val('Address')
-            dtype_raw = get_val('Type')
-            factor = get_val('Factor')
-            offset = get_val('Offset')
-            unit = get_val('Unit')
-            action = get_val('Action')
-            scale_factor_str = get_val('ScaleFactor')
-
-            if not name and not address:
+            name = self._get_val(row, 'Name')
+            address_raw = self._get_val(row, 'Address')
+            if not name and not address_raw:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
-            dtype = self.normalize_type(dtype_raw)
-            if not self.validate_type(dtype):
-                logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
+            dtype, address = self._normalize_type_and_address(row, line_num, address_offset)
+            if not dtype or not address:
                 continue
 
-            # Handle STR<n> conversion
-            match_str = RE_TYPE_STR_CONV.match(dtype)
-            if match_str:
-                length = int(match_str.group(1))
-                dtype = 'STRING'
-                if '_' not in address:
-                    address = f"{address}_{length}"
+            name, tag = self._process_name_and_tag(row, line_num, seen_names, seen_tags)
+            info1 = self._determine_info1(row, line_num)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            coef_a, coef_b = self._calculate_coefficients(row)
 
-            if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
-
-            if not self.validate_address(address, dtype):
-                logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
-                continue
-
-            if name:
-                if name in seen_names:
-                    logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
-                else:
-                    seen_names[name] = line_num
-
-            if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
-                tag = base_tag if base_tag else "var"
-                counter = 1
-                while tag in seen_tags:
-                    tag = f"{base_tag}_{counter}"
-                    counter += 1
-
-            if tag:
-                if tag in seen_tags:
-                    logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
-                else:
-                    seen_tags[tag] = line_num
-
-            info1 = '3'
-            if reg_type_str:
-                lt = reg_type_str.lower()
-                if lt in self.register_type_map:
-                    info1 = self.register_type_map[lt]
-                elif reg_type_str in ['1', '2', '3', '4']:
-                    info1 = reg_type_str
-                else:
-                    logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
-
-            try:
-                start_addr = int(address.split('_')[0])
-                reg_count = self.get_register_count(dtype, address)
-                end_addr = start_addr + reg_count - 1
-
-                if info1 not in address_usage:
-                    address_usage[info1] = []
-
-                is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
-
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
-            except (ValueError, IndexError):
-                pass
-
-            try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-                val_scale = int(float(scale_factor_str)) if scale_factor_str and str(scale_factor_str).strip() else 0
-                coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
-            except ValueError:
-                coef_a = "1.000000"
-
-            try:
-                val_offset = float(offset) if offset and str(offset).strip() else 0.0
-                coef_b = "{:.6f}".format(val_offset)
-            except ValueError:
-                coef_b = "0.000000"
+            unit = self._get_val(row, 'Unit')
+            action = self._get_val(row, 'Action')
 
             # Action normalization
             act_str = str(action).strip().upper()
@@ -322,27 +380,26 @@ class Generator:
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
             if isinstance(output, str):
-                outfile = open(output, 'w', newline='', encoding='utf-8')
-            elif output is None:
-                outfile = sys.stdout
-            else:
-                outfile = output
-
-            header_row = [protocol, category, manufacturer, model, forced_write, '', '', '', '', '', '']
-            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-            writer.writerow(header_row)
-
-            for index, row in enumerate(processed_rows, start=1):
-                writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
-                    row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
-                ])
-
-            if isinstance(output, str):
-                outfile.close()
+                with open(output, 'w', newline='', encoding='utf-8') as outfile:
+                    Generator._write_rows(outfile, processed_rows, manufacturer, model, protocol, category, forced_write)
                 logging.info(f"Definition file generated at {output}")
+            else:
+                outfile = output if output is not None and output != "" else sys.stdout
+                Generator._write_rows(outfile, processed_rows, manufacturer, model, protocol, category, forced_write)
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
+
+    @staticmethod
+    def _write_rows(outfile, processed_rows, manufacturer, model, protocol, category, forced_write):
+        header_row = [protocol, category, manufacturer, model, forced_write, '', '', '', '', '', '']
+        writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
+        writer.writerow(header_row)
+
+        for index, row in enumerate(processed_rows, start=1):
+            writer.writerow([
+                str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
+            ])
 
 def generate_template(output_file):
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -351,12 +408,15 @@ def generate_template(output_file):
         ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
     ]
     try:
-        f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
-        writer = csv.writer(f)
-        writer.writerow(headers)
-        writer.writerows(rows)
         if output_file:
-            f.close()
+            with open(output_file, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(headers)
+                writer.writerows(rows)
+        else:
+            writer = csv.writer(sys.stdout)
+            writer.writerow(headers)
+            writer.writerows(rows)
     except Exception as e:
         logging.error(f"Error generating template: {e}")
 
