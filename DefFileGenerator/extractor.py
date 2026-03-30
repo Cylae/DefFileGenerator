@@ -36,7 +36,7 @@ from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'modbus function'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
@@ -44,7 +44,10 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Offset': ['coefb', 'bias'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -56,6 +59,7 @@ class Extractor:
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
             'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
         }
+        self.generator = Generator()
 
     def normalize_type(self, t):
         if not t:
@@ -74,20 +78,24 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+        sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        all_tables = []
+        for ws in sheets:
+            data = []
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            for row in rows[1:]:
+                data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            if data:
+                all_tables.append(data)
+        return all_tables
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
@@ -96,6 +104,7 @@ class Extractor:
                     logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                     for table in tables:
                         if not table or len(table) < 2: continue
+                        data = []
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
                         for row in table[1:]:
                             row_dict = {}
@@ -103,9 +112,11 @@ class Extractor:
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
                             data.append(row_dict)
+                        if data:
+                            all_tables.append(data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return all_tables
 
     def extract_from_csv(self, filepath):
         try:
@@ -120,7 +131,7 @@ class Extractor:
                     if d in snippet:
                         delimiter = d; break
                 reader = csv.DictReader(f, delimiter=delimiter)
-                return list(reader)
+                return [list(reader)]
         except Exception as e:
             logging.error(f"Error extracting from CSV: {e}")
             return []
@@ -135,27 +146,21 @@ class Extractor:
         try:
             with open(filepath, 'rb') as f:
                 content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
+            ET.fromstring(content) # XXE Protection
             df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+            return [df.to_dict(orient='records')]
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0, args=None):
         if not tables: return []
-        # Support single table (list of dicts) or list of tables
-        if isinstance(tables, list) and tables and isinstance(tables[0], dict):
+
+        # If passed a direct list of rows, wrap it
+        if tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
@@ -170,7 +175,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -185,15 +190,22 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Address building logic: Address_StartBit_Length or Address_Length
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
+                if length and start_bit:
+                    addr = f"{addr}_{start_bit}_{length}"
+                elif length:
+                    addr = f"{addr}_{length}"
+
+                # Normalize and Apply Offset
+                if addr:
+                    new_row['Address'] = self.generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                new_row['Type'] = self.generator.normalize_type(new_row.get('Type', 'U16'))
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
@@ -215,22 +227,28 @@ def main():
     parser = argparse.ArgumentParser(description='Extract register information.')
     parser.add_argument('input_file'); parser.add_argument('-o', '--output')
     parser.add_argument('--mapping'); parser.add_argument('--sheet'); parser.add_argument('--pages')
+    parser.add_argument('--address-offset', type=int, default=0)
     args = parser.parse_args()
 
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f: mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f: mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping JSON: {e}")
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, [int(p) for p in args.pages.split(',')] if args.pages else None)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf':
+        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw)
+    mapped = extractor.map_and_clean(raw, address_offset=args.address_offset, args=args)
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)
