@@ -46,6 +46,39 @@ class Generator:
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    def apply_address_offset(self, address, offset):
+        """Applies offset to a normalized address (simple or compound)."""
+        if not offset:
+            # Still normalize the base address to decimal if it's not already
+            if '_' in address:
+                parts = address.split('_')
+                return '_'.join(self.normalize_address_val(p) for p in parts)
+            return self.normalize_address_val(address)
+
+        parts = address.split('_')
+        try:
+            base_addr = int(self.normalize_address_val(parts[0]))
+            parts[0] = str(base_addr + offset)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(parts)
+
+    def _parse_numeric(self, val):
+        """Handles European formats (comma), fractions, and standard floats."""
+        if val is None: return 0.0
+        s = str(val).strip().replace(',', '.')
+        if not s: return 0.0
+        if '/' in s:
+            try:
+                parts = s.split('/')
+                return float(parts[0]) / float(parts[1])
+            except (ValueError, ZeroDivisionError):
+                return 1.0
+        try:
+            return float(s)
+        except ValueError:
+            return 0.0
+
     def normalize_type(self, dtype):
         """Standardizes common type synonyms while preserving suffixes."""
         if not dtype:
@@ -170,149 +203,122 @@ class Generator:
                 return 0
         return 1
 
-    def process_rows(self, rows, address_offset=0):
-        """Processes simplified CSV rows into WebdynSunPM format."""
-        processed_rows = []
-        seen_names = {}
-        seen_tags = {}
-        # Tracks used addresses per register type (Info1)
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+    def _get_val(self, row, key):
+        key_lower = key.lower()
+        for k, v in row.items():
+            if k.lower().strip() == key_lower:
+                return str(v).strip() if v is not None else ''
+        return ''
 
-        for line_num, row in enumerate(rows, start=2):
-            if not any(v for v in row.values() if v):
-                continue
+    def _normalize_type_and_address(self, row, line_num, address_offset):
+        dtype_raw = self._get_val(row, 'Type')
+        address = self._get_val(row, 'Address')
+        name = self._get_val(row, 'Name')
 
-            def get_val(key):
-                for k, v in row.items():
-                    if k.lower().strip() == key.lower():
-                        return str(v).strip() if v is not None else ''
-                return ''
+        dtype = self.normalize_type(dtype_raw)
+        if not self.validate_type(dtype):
+            logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
+            return None, None
 
-            name = get_val('Name')
-            tag = get_val('Tag')
-            reg_type_str = get_val('RegisterType')
-            address = get_val('Address')
-            dtype_raw = get_val('Type')
-            factor = get_val('Factor')
-            offset = get_val('Offset')
-            unit = get_val('Unit')
-            action = get_val('Action')
-            scale_factor_str = get_val('ScaleFactor')
+        match_str = RE_TYPE_STR_CONV.match(dtype)
+        if match_str:
+            length = int(match_str.group(1))
+            dtype = 'STRING'
+            if '_' not in address: address = f"{address}_{length}"
 
-            if not name and not address:
-                logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
-                continue
-
-            dtype = self.normalize_type(dtype_raw)
-            if not self.validate_type(dtype):
-                logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
-                continue
-
-            # Handle STR<n> conversion
-            match_str = RE_TYPE_STR_CONV.match(dtype)
-            if match_str:
-                length = int(match_str.group(1))
-                dtype = 'STRING'
-                if '_' not in address:
-                    address = f"{address}_{length}"
-
-            if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
-
+        if address:
+            address = self.apply_address_offset(address, address_offset)
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
-                continue
+                return None, None
+        return dtype, address
 
-            if name:
-                if name in seen_names:
-                    logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
-                else:
-                    seen_names[name] = line_num
+    def _process_name_and_tag(self, row, line_num, seen_names, seen_tags):
+        name = self._get_val(row, 'Name')
+        tag = self._get_val(row, 'Tag')
+        if name:
+            if name in seen_names:
+                logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous occurrence at line {seen_names[name]}.")
+            else: seen_names[name] = line_num
 
-            if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
-                tag = base_tag if base_tag else "var"
-                counter = 1
-                while tag in seen_tags:
-                    tag = f"{base_tag}_{counter}"
-                    counter += 1
+        if not tag and name:
+            base_tag = re.sub(r'_{2,}', '_', re.sub(r'[^a-z0-9_]', '_', name.lower())).strip('_')
+            tag = base_tag if base_tag else "var"
+            counter = 1
+            while tag in seen_tags:
+                tag = f"{base_tag}_{counter}"; counter += 1
 
-            if tag:
-                if tag in seen_tags:
-                    logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
-                else:
-                    seen_tags[tag] = line_num
+        if tag:
+            if tag in seen_tags:
+                logging.warning(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous occurrence at line {seen_tags[tag]}.")
+            else: seen_tags[tag] = line_num
+        return name, tag
 
-            info1 = '3'
-            if reg_type_str:
-                lt = reg_type_str.lower()
-                if lt in self.register_type_map:
-                    info1 = self.register_type_map[lt]
-                elif reg_type_str in ['1', '2', '3', '4']:
-                    info1 = reg_type_str
-                else:
-                    logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+    def _determine_info1(self, row, line_num):
+        reg_type_str = self._get_val(row, 'RegisterType')
+        info1 = '3'
+        if reg_type_str:
+            lt = reg_type_str.lower()
+            if lt in self.register_type_map: info1 = self.register_type_map[lt]
+            elif reg_type_str in ['1', '2', '3', '4']: info1 = reg_type_str
+            else: logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+        return info1
 
-            try:
-                start_addr = int(address.split('_')[0])
-                reg_count = self.get_register_count(dtype, address)
-                end_addr = start_addr + reg_count - 1
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
+        try:
+            start_addr = int(address.split('_')[0])
+            reg_count = self.get_register_count(dtype, address)
+            end_addr = start_addr + reg_count - 1
+            if info1 not in address_usage: address_usage[info1] = {}
+            is_bits = (dtype.upper() == 'BITS')
 
-                if info1 not in address_usage:
-                    address_usage[info1] = []
+            for addr in range(start_addr, end_addr + 1):
+                if addr in address_usage[info1]:
+                    u_line, u_name, u_type = address_usage[info1][addr]
+                    if not (is_bits and u_type == 'BITS' and start_addr == addr):
+                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {addr}. Overlaps with '{u_name}' (Line {u_line}).")
+                if not is_bits or addr not in address_usage[info1]:
+                    address_usage[info1][addr] = (line_num, name, dtype.upper())
+        except (ValueError, IndexError): pass
 
-                is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+    def _calculate_coefficients(self, row):
+        factor = self._get_val(row, 'Factor')
+        offset = self._get_val(row, 'Offset')
+        scale_factor_str = self._get_val(row, 'ScaleFactor')
+        val_factor = self._parse_numeric(factor) if factor else 1.0
+        val_scale = int(float(scale_factor_str)) if scale_factor_str else 0
+        coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
+        coef_b = "{:.6f}".format(self._parse_numeric(offset))
+        return coef_a, coef_b
 
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
-            except (ValueError, IndexError):
-                pass
+    def process_rows(self, rows, address_offset=0):
+        processed_rows = []
+        seen_names, seen_tags, address_usage = {}, {}, {}
+        for line_num, row in enumerate(rows, start=2):
+            if not any(v for v in row.values() if v): continue
+            name = self._get_val(row, 'Name')
+            address_raw = self._get_val(row, 'Address')
+            if not name and not address_raw:
+                logging.warning(f"Line {line_num}: Skipping row with missing Name and Address."); continue
 
-            try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-                val_scale = int(float(scale_factor_str)) if scale_factor_str and str(scale_factor_str).strip() else 0
-                coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
-            except ValueError:
-                coef_a = "1.000000"
+            dtype, address = self._normalize_type_and_address(row, line_num, address_offset)
+            if not dtype: continue
+            name, tag = self._process_name_and_tag(row, line_num, seen_names, seen_tags)
+            info1 = self._determine_info1(row, line_num)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            coef_a, coef_b = self._calculate_coefficients(row)
 
-            try:
-                val_offset = float(offset) if offset and str(offset).strip() else 0.0
-                coef_b = "{:.6f}".format(val_offset)
-            except ValueError:
-                coef_b = "0.000000"
-
-            # Action normalization
-            act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '1'
-            elif act_str in ['R', 'READ', '4']:
-                norm_action = '4'
-            elif act_str in ['RW', 'W', 'WRITE', '1']:
-                norm_action = '1'
-            elif act_str in self.allowed_actions:
-                norm_action = act_str
-            else:
-                norm_action = '1'
+            action = self._get_val(row, 'Action').upper()
+            if not action: norm_action = '1'
+            elif action in ['R', 'READ', '4']: norm_action = '4'
+            elif action in ['RW', 'W', 'WRITE', '1']: norm_action = '1'
+            elif action in self.allowed_actions: norm_action = action
+            else: norm_action = '1'
 
             processed_rows.append({
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
                 'Name': name, 'Tag': tag, 'CoefA': coef_a, 'CoefB': coef_b,
-                'Unit': unit, 'Action': norm_action
+                'Unit': self._get_val(row, 'Unit'), 'Action': norm_action
             })
         return processed_rows
 
