@@ -36,7 +36,7 @@ from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'modbus function'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
@@ -44,13 +44,17 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'Offset': ['offset', 'bias'],
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -74,14 +78,20 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+
+        all_tables = []
+        sheets_to_process = [wb[sheet_name]] if sheet_name else wb.worksheets
+
+        for ws in sheets_to_process:
+            data = []
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            for row in rows[1:]:
+                data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            if data:
+                all_tables.append(data)
+        return all_tables
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
@@ -148,19 +158,19 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
+        # Determine column mapping from the first non-empty table
+        col_map = {}
         for table in tables:
             if not table: continue
             first_row = table[0]
-            col_map = {}
             used_src_cols = set()
 
             # 1. Explicit mapping
@@ -170,7 +180,7 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -180,17 +190,24 @@ class Extractor:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
+            if col_map: break
 
+        for table in tables:
             for row in table:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Normalize Address and apply offset
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
+                if length and start_bit:
+                    addr = f"{addr}_{start_bit}_{length}"
+                elif length:
+                    addr = f"{addr}_{length}"
+
+                new_row['Address'] = self.generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))

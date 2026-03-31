@@ -59,8 +59,10 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        # It now returns a list of tables
+        self.assertEqual(len(data), 1)
+        self.assertEqual(len(data[0]), 3)
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)

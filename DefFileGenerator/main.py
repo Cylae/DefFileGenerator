@@ -7,24 +7,34 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, generate_template
 
 def setup_logging():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+    if hasattr(args, 'mapping') and args.mapping:
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error loading mapping JSON: {e}")
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
+    sheet = getattr(args, 'sheet', None)
+    pages = None
+    if hasattr(args, 'pages') and args.pages:
+        try:
+            pages = [int(p.strip()) for p in args.pages.split(',')]
+        except ValueError:
+            logging.error(f"Invalid --pages argument: {args.pages}. Must be comma-separated integers.")
+
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        raw_data = extractor.extract_from_excel(args.input_file, sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -34,9 +44,14 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    offset = getattr(args, 'address_offset', 0)
+    return extractor.map_and_clean(raw_data, address_offset=offset)
 
 def extract_command(args):
+    if not args.input_file:
+        logging.error("input_file is required for extraction.")
+        return
+
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         return
@@ -58,6 +73,11 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
+    is_template = getattr(args, 'template', False)
+    if not is_template and (not args.input_file or not args.manufacturer or not args.model):
+        logging.error("input_file, manufacturer, and model are required for generation.")
+        return
+
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -65,11 +85,22 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        template=is_template,
+        address_offset=getattr(args, 'address_offset', 0)
     )
     run_generator(config)
 
 def run_command(args):
+    is_template = getattr(args, 'template', False)
+    if is_template:
+        generate_template(args.output)
+        return
+
+    if not args.input_file or not args.manufacturer or not args.model:
+        logging.error("input_file, manufacturer, and model are required for run.")
+        return
+
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         return
@@ -89,7 +120,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0  # Passed via extraction
         )
         run_generator(config)
     finally:
@@ -108,22 +140,25 @@ def main():
     parser_extract.add_argument('--mapping', help='Mapping JSON')
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
+    parser_extract.add_argument('--address-offset', type=int, default=0)
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
+    parser_generate.add_argument('--template', action='store_true')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=True)
-    parser_run.add_argument('--model', required=True)
+    parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
+    parser_run.add_argument('--manufacturer')
+    parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -131,6 +166,8 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
+    parser_run.add_argument('--template', action='store_true')
 
     args = parser.parse_args()
 
