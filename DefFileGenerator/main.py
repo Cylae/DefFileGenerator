@@ -14,7 +14,7 @@ def setup_logging():
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
+    if hasattr(args, 'mapping') and args.mapping:
         with open(args.mapping, 'r') as f:
             mapping = json.load(f)
 
@@ -22,9 +22,11 @@ def _perform_extraction(args):
     ext = os.path.splitext(args.input_file)[1].lower()
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        sheet = args.sheet if hasattr(args, 'sheet') else None
+        raw_data = extractor.extract_from_excel(args.input_file, sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages_arg = args.pages if hasattr(args, 'pages') else None
+        pages = [int(p.strip()) for p in pages_arg.split(',')] if pages_arg else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -34,7 +36,8 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    offset = args.address_offset if hasattr(args, 'address_offset') else 0
+    return extractor.map_and_clean(raw_data, address_offset=offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -65,7 +68,9 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        template=args.template,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
@@ -89,7 +94,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0 # Offset already applied in _perform_extraction
         )
         run_generator(config)
     finally:
@@ -111,13 +117,15 @@ def main():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer', required=False)
+    parser_generate.add_argument('--model', required=False)
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--template', action='store_true')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -131,6 +139,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
 

@@ -16,6 +16,7 @@ RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$', re.IGNOR
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
+RE_TAG_CLEAN = re.compile(r'[^a-z0-9_]', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
@@ -32,6 +33,30 @@ class GeneratorConfig:
     address_offset: int = 0
 
 class Generator:
+    def apply_address_offset(self, address, offset):
+        """Applies an offset to a Modbus address, supporting complex types."""
+        if not address:
+            return ""
+        parts = str(address).split('_')
+        # Normalize each part to decimal
+        norm_parts = [self.normalize_address_val(p) for p in parts]
+        try:
+            # Apply offset to the first part (base address)
+            base_addr = int(norm_parts[0]) + offset
+            norm_parts[0] = str(base_addr)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(norm_parts)
+
+    def _get_val(self, row, key, preprocessed_row=None):
+        """Helper to get a value from a row dictionary, with optional pre-processing."""
+        if preprocessed_row is not None:
+            return preprocessed_row.get(key.lower(), '')
+        for k, v in row.items():
+            if k.lower().strip() == key.lower():
+                return str(v).strip() if v is not None else ''
+        return ''
+
     def __init__(self):
         # RegisterType mapping to Info1
         self.register_type_map = {
@@ -182,22 +207,19 @@ class Generator:
             if not any(v for v in row.values() if v):
                 continue
 
-            def get_val(key):
-                for k, v in row.items():
-                    if k.lower().strip() == key.lower():
-                        return str(v).strip() if v is not None else ''
-                return ''
+            # Pre-calculate lowercase keys for optimization
+            p_row = {str(k).lower().strip(): str(v).strip() if v is not None else '' for k, v in row.items()}
 
-            name = get_val('Name')
-            tag = get_val('Tag')
-            reg_type_str = get_val('RegisterType')
-            address = get_val('Address')
-            dtype_raw = get_val('Type')
-            factor = get_val('Factor')
-            offset = get_val('Offset')
-            unit = get_val('Unit')
-            action = get_val('Action')
-            scale_factor_str = get_val('ScaleFactor')
+            name = self._get_val(row, 'Name', p_row)
+            tag = self._get_val(row, 'Tag', p_row)
+            reg_type_str = self._get_val(row, 'RegisterType', p_row)
+            address = self._get_val(row, 'Address', p_row)
+            dtype_raw = self._get_val(row, 'Type', p_row)
+            factor = self._get_val(row, 'Factor', p_row)
+            offset = self._get_val(row, 'Offset', p_row)
+            unit = self._get_val(row, 'Unit', p_row)
+            action = self._get_val(row, 'Action', p_row)
+            scale_factor_str = self._get_val(row, 'ScaleFactor', p_row)
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -217,19 +239,7 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
+                address = self.apply_address_offset(address, address_offset)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -242,7 +252,8 @@ class Generator:
                     seen_names[name] = line_num
 
             if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
+                base_tag = RE_TAG_CLEAN.sub('_', name.lower().replace(' ', '_'))
+                base_tag = re.sub(r'_{2,}', '_', base_tag).strip('_')
                 tag = base_tag if base_tag else "var"
                 counter = 1
                 while tag in seen_tags:
