@@ -1,0 +1,4 @@
+modbusRTU;Inverter;MFG;MOD;;;;;;;
+1;3;40006;U16;;AC Power;ac_power;1.000000;0.000000;W;4
+2;3;40007;U16;;DC Voltage;dc_voltage;0.100000;0.000000;V;4
+3;3;40008;I16;;Temperature;temperature;0.100000;0.000000;°C;4

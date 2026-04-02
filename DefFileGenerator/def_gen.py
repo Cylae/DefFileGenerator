@@ -136,6 +136,19 @@ class Generator:
 
         return addr_part
 
+    def apply_address_offset(self, address, offset):
+        """Applies an offset to the base address and normalizes all parts to decimal."""
+        if not address:
+            return ""
+        parts = str(address).split('_')
+        norm_parts = [self.normalize_address_val(p) for p in parts]
+        try:
+            base_addr = int(norm_parts[0]) + offset
+            norm_parts[0] = str(base_addr)
+        except (ValueError, IndexError):
+            pass
+        return '_'.join(norm_parts)
+
     def validate_address(self, address, dtype):
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
@@ -170,6 +183,31 @@ class Generator:
                 return 0
         return 1
 
+    def _check_address_overlap(self, address_usage, info1, start_addr, end_addr, line_num, name, dtype):
+        """Checks for address overlap and updates usage map."""
+        if info1 not in address_usage:
+            address_usage[info1] = []
+
+        dtype_upper = dtype.upper()
+        is_bits = (dtype_upper == 'BITS')
+
+        for i, (u_start, u_end, u_line, u_name, u_type) in enumerate(address_usage[info1]):
+            if max(start_addr, u_start) <= min(end_addr, u_end):
+                if not (is_bits and u_type == 'BITS' and start_addr == u_start):
+                    logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+                    if not is_bits and u_type == 'BITS':
+                        address_usage[info1][i] = (start_addr, end_addr, line_num, name, dtype_upper)
+                        return
+
+        address_usage[info1].append((start_addr, end_addr, line_num, name, dtype_upper))
+
+    def _get_val(self, row, key):
+        """Helper to get a value from a row dictionary case-insensitively."""
+        for k, v in row.items():
+            if k.lower().strip() == key.lower():
+                return str(v).strip() if v is not None else ''
+        return ''
+
     def process_rows(self, rows, address_offset=0):
         """Processes simplified CSV rows into WebdynSunPM format."""
         processed_rows = []
@@ -182,22 +220,16 @@ class Generator:
             if not any(v for v in row.values() if v):
                 continue
 
-            def get_val(key):
-                for k, v in row.items():
-                    if k.lower().strip() == key.lower():
-                        return str(v).strip() if v is not None else ''
-                return ''
-
-            name = get_val('Name')
-            tag = get_val('Tag')
-            reg_type_str = get_val('RegisterType')
-            address = get_val('Address')
-            dtype_raw = get_val('Type')
-            factor = get_val('Factor')
-            offset = get_val('Offset')
-            unit = get_val('Unit')
-            action = get_val('Action')
-            scale_factor_str = get_val('ScaleFactor')
+            name = self._get_val(row, 'Name')
+            tag = self._get_val(row, 'Tag')
+            reg_type_str = self._get_val(row, 'RegisterType')
+            address = self._get_val(row, 'Address')
+            dtype_raw = self._get_val(row, 'Type')
+            factor = self._get_val(row, 'Factor')
+            offset = self._get_val(row, 'Offset')
+            unit = self._get_val(row, 'Unit')
+            action = self._get_val(row, 'Action')
+            scale_factor_str = self._get_val(row, 'ScaleFactor')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -217,19 +249,13 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
+                address = self.apply_address_offset(address, address_offset)
                 try:
-                    base_addr = int(norm_parts[0]) + address_offset
+                    base_addr = int(address.split('_')[0])
                     if base_addr < 0:
                         logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
                 except (ValueError, IndexError):
                     pass
-
-                address = '_'.join(norm_parts)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -243,6 +269,7 @@ class Generator:
 
             if not tag and name:
                 base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
+                base_tag = re.sub(r'_{2,}', '_', base_tag).strip('_')
                 tag = base_tag if base_tag else "var"
                 counter = 1
                 while tag in seen_tags:
@@ -269,17 +296,7 @@ class Generator:
                 start_addr = int(address.split('_')[0])
                 reg_count = self.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
-
-                if info1 not in address_usage:
-                    address_usage[info1] = []
-
-                is_bits = (dtype.upper() == 'BITS')
-                for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                    if max(start_addr, u_start) <= min(end_addr, u_end):
-                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
-
-                address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+                self._check_address_overlap(address_usage, info1, start_addr, end_addr, line_num, name, dtype)
             except (ValueError, IndexError):
                 pass
 
@@ -321,9 +338,9 @@ class Generator:
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
-            if isinstance(output, str):
+            if isinstance(output, str) and output:
                 outfile = open(output, 'w', newline='', encoding='utf-8')
-            elif output is None:
+            elif not output:
                 outfile = sys.stdout
             else:
                 outfile = output
