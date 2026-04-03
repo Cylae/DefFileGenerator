@@ -3,7 +3,6 @@ import os
 import csv
 import json
 from openpyxl import Workbook
-from reportlab.pdfgen import canvas
 from DefFileGenerator.extractor import Extractor
 
 class TestExtractor(unittest.TestCase):
@@ -24,27 +23,23 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
-        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-        from reportlab.lib.pagesizes import letter
-
-        doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
-        data = [
-            ["Address", "Name", "Type"],
-            ["1000", "Temp", "U16"],
-            ["1001", "Humid", "U16"]
-        ]
-        t = Table(data)
-        t.setStyle(TableStyle([
-            ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
-        ]))
-        elements = [t]
-        doc.build(elements)
+        try:
+            from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+            from reportlab.lib.pagesizes import letter
+            doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
+            data = [
+                ["Address", "Name", "Type"],
+                ["1000", "Temp", "U16"],
+                ["1001", "Humid", "U16"]
+            ]
+            t = Table(data)
+            t.setStyle(TableStyle([
+                ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
+            ]))
+            elements = [t]
+            doc.build(elements)
+        except ImportError:
+            pass
 
     def tearDown(self):
         for f in [self.excel_file, self.pdf_file, self.mapping_file]:
@@ -59,8 +54,9 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        self.assertEqual(len(data), 1) # One sheet (one table)
+        self.assertEqual(len(data[0]), 3) # Three rows
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -79,16 +75,19 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[2]["Type"], "F32")
 
     def test_extract_from_pdf(self):
+        if not os.path.exists(self.pdf_file):
+            self.skipTest("reportlab not available to create PDF")
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        self.assertEqual(len(data), 1) # One table
+        self.assertEqual(len(data[0]), 2) # Two rows
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
-        raw_data = [
+        raw_data = [[
             {"Register Address": "0x10", "Variable Name": "Test", "Data Type": "Uint16"}
-        ]
+        ]]
         mapped = self.extractor.map_and_clean(raw_data)
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
