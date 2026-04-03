@@ -16,6 +16,7 @@ RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$', re.IGNOR
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
+RE_TAG_CLEAN = re.compile(r'[^a-z0-9_]')
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
@@ -242,7 +243,9 @@ class Generator:
                     seen_names[name] = line_num
 
             if not tag and name:
-                base_tag = re.sub(r'[^a-z0-9_]', '', name.lower().replace(' ', '_'))
+                # Clean tag and remove multiple underscores
+                base_tag = RE_TAG_CLEAN.sub('', name.lower().replace(' ', '_'))
+                base_tag = re.sub(r'_{2,}', '_', base_tag).strip('_')
                 tag = base_tag if base_tag else "var"
                 counter = 1
                 while tag in seen_tags:
