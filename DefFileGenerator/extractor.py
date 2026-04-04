@@ -36,21 +36,25 @@ from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
-        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'modbus function'],
+        'Address': ['address', 'addr', 'register', 'reg'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Offset': ['offset', 'coefb', 'bias'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
+        self.generator = Generator()
         self.type_mapping = {
             'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
@@ -148,61 +152,74 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
-            first_row = table[0]
+
+            # Heuristic: Scan first few rows to find best column headers
             col_map = {}
             used_src_cols = set()
+            src_cols = []
+            if len(table) > 0:
+                src_cols = list(table[0].keys())
 
             # 1. Explicit mapping
             for target, source in self.mapping.items():
-                if source in first_row:
+                if source in src_cols:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            # 2. Priority fuzzy matching across first 5 rows
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Offset', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in first_row.keys():
-                    if src_col in used_src_cols: continue
-                    if any(p in str(src_col).lower() for p in patterns):
-                        col_map[target] = src_col
-                        used_src_cols.add(src_col)
-                        break
+
+                found = False
+                for row_idx in range(min(5, len(table))):
+                    for src_col in table[row_idx].keys():
+                        if src_col in used_src_cols: continue
+                        val = str(src_col).lower()
+                        if any(p in val for p in patterns):
+                            col_map[target] = src_col
+                            used_src_cols.add(src_col)
+                            found = True
+                            break
+                    if found: break
 
             for row in table:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
-                if not new_row.get('Name') and not new_row.get('Address'): continue
+                if not new_row.get('Name') and not new_row.get('Address'):
+                    continue
 
-                # Normalize Address
+                # Handle composite address components (Length, StartBit)
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
+                if '_' not in addr:
+                    if length and start_bit:
+                        addr = f"{addr}_{start_bit}_{length}"
+                    elif length:
+                        addr = f"{addr}_{length}"
+
+                # Normalize and apply offset
+                new_row['Address'] = self.generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
 
-                # Normalize Factor (fractions like 1/10)
-                factor = str(new_row.get('Factor', '1'))
-                if '/' in factor:
-                    try:
-                        p = factor.split('/')
-                        new_row['Factor'] = str(float(p[0]) / float(p[1]))
-                    except (ValueError, ZeroDivisionError):
-                        new_row['Factor'] = '1'
+                # Normalize Factor (delegate to generator's robust parser)
+                factor_val = new_row.get('Factor')
+                if factor_val:
+                    new_row['Factor'] = str(self.generator._parse_numeric(factor_val))
 
                 if 'RegisterType' not in new_row:
                     new_row['RegisterType'] = 'Holding Register'
@@ -213,28 +230,43 @@ class Extractor:
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     parser = argparse.ArgumentParser(description='Extract register information.')
-    parser.add_argument('input_file'); parser.add_argument('-o', '--output')
-    parser.add_argument('--mapping'); parser.add_argument('--sheet'); parser.add_argument('--pages')
+    parser.add_argument('input_file')
+    parser.add_argument('-o', '--output')
+    parser.add_argument('--mapping')
+    parser.add_argument('--sheet')
+    parser.add_argument('--pages')
+    parser.add_argument('--address-offset', type=int, default=0)
     args = parser.parse_args()
 
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f: mapping = json.load(f)
+        with open(args.mapping, 'r') as f:
+            mapping = json.load(f)
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, [int(p) for p in args.pages.split(',')] if args.pages else None)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
+    if ext in ['.xlsx', '.xlsm']:
+        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf':
+        pages = [int(p) for p in args.pages.split(',')] if args.pages else None
+        raw = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw = extractor.extract_from_xml(args.input_file)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
-    writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
-    writer.writeheader(); writer.writerows(mapped)
-    if args.output: out.close()
+    fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+    writer = csv.DictWriter(out, fieldnames=fieldnames, extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped)
+    if args.output:
+        out.close()
 
 if __name__ == "__main__":
     main()
