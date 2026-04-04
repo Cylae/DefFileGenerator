@@ -21,6 +21,8 @@ def _perform_extraction(args):
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
+    offset = getattr(args, 'address_offset', 0)
+
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
@@ -34,7 +36,7 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         return []
 
-    return extractor.map_and_clean(raw_data)
+    return extractor.map_and_clean(raw_data, address_offset=offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -65,12 +67,13 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
+    mapped_data = _perform_extraction(args) # Offset applied here
     if not mapped_data:
         return
 
@@ -89,7 +92,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0 # Already applied
         )
         run_generator(config)
     finally:
@@ -99,6 +103,9 @@ def run_command(args):
 def main():
     setup_logging()
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
+    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('--address-offset', type=int, default=0)
+
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
@@ -133,6 +140,8 @@ def main():
     parser_run.add_argument('--forced-write', default='')
 
     args = parser.parse_args()
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
 
     if args.command == 'extract':
         extract_command(args)

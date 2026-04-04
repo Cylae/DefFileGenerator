@@ -24,12 +24,6 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
         from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
         from reportlab.lib.pagesizes import letter
 
@@ -59,8 +53,9 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        self.assertEqual(len(data), 1) # One sheet (one table)
+        self.assertEqual(len(data[0]), 3) # Three rows
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -80,9 +75,10 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        self.assertEqual(len(data), 1) # One table
+        self.assertEqual(len(data[0]), 2) # Two rows
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
@@ -93,6 +89,15 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_complex_address_construction(self):
+        raw_data = [[
+            {"Address": "3000", "Name": "BitField", "StartBit": "0", "Length": "1"},
+            {"Address": "4000", "Name": "StringField", "Length": "10"}
+        ]]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0]["Address"], "3000_0_1")
+        self.assertEqual(mapped[1]["Address"], "4000_10")
 
 if __name__ == "__main__":
     unittest.main()
