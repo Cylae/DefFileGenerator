@@ -13,7 +13,7 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install pandas openpyxl pdfplumber lxml defusedxml
 ```
 
 ## Basic Usage
@@ -149,6 +149,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - Comma-separated list of PDF pages to process (e.g., "1,2,5")
+- `--mapping JSON` - Path to a JSON file for custom column mapping
+- `--address-offset OFFSET` - Numeric value to shift all register addresses
+- `--forced-write STR` - String to include in the definition file header for forced writes
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
@@ -194,6 +198,7 @@ python doc_to_webdyn.py sample_inverter_registers.xlsx \
 **Solution:**
 - Check if addresses are in the right column
 - The tool handles hex (0x9C40) and decimal (40001) automatically
+- Use `--address-offset` if you need to shift all addresses
 
 ### Problem: Missing units or scaling
 
@@ -210,7 +215,7 @@ After running the tool, you get a WebdynSunPM definition file that includes:
 ✅ Modbus register types (holding register, input register, etc.)
 ✅ Normalized addresses
 ✅ Correct data types (U16, I32, F32, etc.)
-✅ Auto-generated unique tags
+✅ Auto-generated unique tags (collapsed underscores and stripped)
 ✅ Scaling coefficients (CoefA, CoefB)
 ✅ Units
 ✅ Action codes
