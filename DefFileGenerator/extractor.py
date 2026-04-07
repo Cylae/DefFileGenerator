@@ -36,7 +36,7 @@ from DefFileGenerator.def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'modbus function'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
@@ -44,7 +44,8 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'Offset': ['offset', 'bias', 'coefficient b'],
+        'ScaleFactor': ['scalefactor', 'scale factor']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -56,6 +57,7 @@ class Extractor:
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
             'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
         }
+        self.generator = Generator()
 
     def normalize_type(self, t):
         if not t:
@@ -135,12 +137,6 @@ class Extractor:
         try:
             with open(filepath, 'rb') as f:
                 content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
             ET.fromstring(content) # This will raise an error if it contains entities/threats
             df = pd.read_xml(io.BytesIO(content), parser='etree')
             return df.to_dict(orient='records')
@@ -148,38 +144,57 @@ class Extractor:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
-    def map_and_clean(self, tables):
+    def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
         # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
         final_data = []
-        generator = Generator()
 
         for table in tables:
             if not table: continue
-            first_row = table[0]
             col_map = {}
             used_src_cols = set()
 
+            # Identify target columns by scanning the first 5 rows
+            src_cols = list(table[0].keys())
+            detection_order = [
+                'RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag',
+                'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit'
+            ]
+
             # 1. Explicit mapping
             for target, source in self.mapping.items():
-                if source in first_row:
+                if source in src_cols:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            # 2. Priority fuzzy matching with 5-row lookahead
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in first_row.keys():
+                if target == 'Length': patterns = ['length', 'len', 'size', 'count', 'quantity']
+                if target == 'StartBit': patterns = ['startbit', 'bit offset', 'bit']
+
+                found = False
+                for src_col in src_cols:
                     if src_col in used_src_cols: continue
+                    # Check first 5 rows to ensure we don't miss columns that are empty in row 0
+                    match_found = False
                     if any(p in str(src_col).lower() for p in patterns):
+                        match_found = True
+                    else:
+                        for row in table[:5]:
+                            val = row.get(src_col)
+                            if val is not None and any(p in str(val).lower() for p in patterns):
+                                match_found = True; break
+
+                    if match_found:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
-                        break
+                        found = True; break
+                if found: continue
 
             for row in table:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
@@ -187,10 +202,22 @@ class Extractor:
 
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                length = str(new_row.get('Length', '')).strip()
+                start_bit = str(new_row.get('StartBit', '')).strip()
+
+                if addr:
+                    if '_' in addr:
+                        addr = '_'.join(self.generator.normalize_address_val(p) for p in addr.split('_'))
+                    else:
+                        addr = self.generator.normalize_address_val(addr)
+
+                    # Build complex address if Length/StartBit present
+                    if length and start_bit:
+                         addr = f"{addr}_{self.generator.normalize_address_val(start_bit)}_{self.generator.normalize_address_val(length)}"
+                    elif length:
+                         addr = f"{addr}_{self.generator.normalize_address_val(length)}"
+
+                    new_row['Address'] = self.generator.apply_address_offset(addr, address_offset)
 
                 # Normalize Type
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
@@ -215,6 +242,7 @@ def main():
     parser = argparse.ArgumentParser(description='Extract register information.')
     parser.add_argument('input_file'); parser.add_argument('-o', '--output')
     parser.add_argument('--mapping'); parser.add_argument('--sheet'); parser.add_argument('--pages')
+    parser.add_argument('--address-offset', type=int, default=0)
     args = parser.parse_args()
 
     mapping = {}
@@ -230,7 +258,7 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)
