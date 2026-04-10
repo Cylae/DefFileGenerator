@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<root>
+  <row>
+    <Name>&xxe;</Name>
+    <Address>100</Address>
+    <Type>U16</Type>
+  </row>
+</root>
