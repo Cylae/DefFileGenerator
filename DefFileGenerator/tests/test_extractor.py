@@ -5,10 +5,12 @@ import json
 from openpyxl import Workbook
 from reportlab.pdfgen import canvas
 from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.def_gen import Generator
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
         self.extractor = Extractor()
+        self.generator = Generator()
         self.excel_file = "test_registers.xlsx"
         self.pdf_file = "test_registers.pdf"
         self.mapping_file = "test_mapping.json"
@@ -24,12 +26,6 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
         from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
         from reportlab.lib.pagesizes import letter
 
@@ -52,15 +48,16 @@ class TestExtractor(unittest.TestCase):
                 os.remove(f)
 
     def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
+        self.assertEqual(self.generator.normalize_type("Uint16"), "U16")
+        self.assertEqual(self.generator.normalize_type("Int32"), "I32")
+        self.assertEqual(self.generator.normalize_type("Float32"), "F32")
+        self.assertEqual(self.generator.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        self.assertEqual(len(data), 1) # One sheet
+        self.assertEqual(len(data[0]), 3) # Three rows
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -80,9 +77,10 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        self.assertEqual(len(data), 1) # One table
+        self.assertEqual(len(data[0]), 2) # Two rows
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar

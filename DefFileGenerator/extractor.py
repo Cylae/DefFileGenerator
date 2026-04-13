@@ -21,18 +21,15 @@ except ImportError:
     HAS_PDFPLUMBER = False
 
 try:
-    import pandas as pd
-    HAS_PANDAS = True
-except ImportError:
-    HAS_PANDAS = False
-
-try:
     from defusedxml import ElementTree as ET
     HAS_DEFUSEDXML = True
 except ImportError:
     HAS_DEFUSEDXML = False
 
-from DefFileGenerator.def_gen import Generator
+try:
+    from DefFileGenerator.def_gen import Generator
+except ImportError:
+    from def_gen import Generator
 
 class Extractor:
     COLUMN_MAPPING = {
@@ -44,50 +41,38 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'Offset': ['offset', 'bias', 'coefficient b'],
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit', 'start']
     }
-
-    TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        self.type_mapping = {
-            'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
-            'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
-            'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
-        }
-
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+        results = []
+        sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        for ws in sheets:
+            data = []
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            for row in rows[1:]:
+                data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            if data:
+                results.append(data)
+        return results
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        results = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
@@ -97,15 +82,18 @@ class Extractor:
                     for table in tables:
                         if not table or len(table) < 2: continue
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        data = []
                         for row in table[1:]:
                             row_dict = {}
                             for i, cell in enumerate(row):
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
                             data.append(row_dict)
+                        if data:
+                            results.append(data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return results
 
     def extract_from_csv(self, filepath):
         try:
@@ -120,7 +108,7 @@ class Extractor:
                     if d in snippet:
                         delimiter = d; break
                 reader = csv.DictReader(f, delimiter=delimiter)
-                return list(reader)
+                return [list(reader)]
         except Exception as e:
             logging.error(f"Error extracting from CSV: {e}")
             return []
@@ -129,28 +117,28 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return []
-        if not HAS_PANDAS:
-            logging.error("pandas is required for XML processing.")
-            return []
         try:
             with open(filepath, 'rb') as f:
-                content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
-            df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+                tree = ET.parse(f)
+            root = tree.getroot()
+
+            # Simple heuristic: find all elements that have children but no text
+            # and treat them as rows if they have the same tag.
+            # More robustly, look for elements with children.
+            data = []
+            for child in root:
+                row = {}
+                for subchild in child:
+                    row[subchild.tag] = subchild.text
+                if row:
+                    data.append(row)
+            return [data] if data else []
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
 
     def map_and_clean(self, tables):
         if not tables: return []
-        # Support single table (list of dicts) or list of tables
         if isinstance(tables, list) and tables and isinstance(tables[0], dict):
             tables = [tables]
 
@@ -159,22 +147,38 @@ class Extractor:
 
         for table in tables:
             if not table: continue
-            first_row = table[0]
+
+            # Heuristic: Scan first 5 rows for column names
+            all_keys = set()
+            for row in table[:5]:
+                all_keys.update(row.keys())
+
             col_map = {}
             used_src_cols = set()
 
             # 1. Explicit mapping
             for target, source in self.mapping.items():
-                if source in first_row:
+                if source in all_keys:
                     col_map[target] = source
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in first_row.keys():
+                # Look for exact match first
+                found = False
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    if str(src_col).lower() in patterns:
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        found = True
+                        break
+                if found: continue
+                # Then fuzzy
+                for src_col in all_keys:
                     if src_col in used_src_cols: continue
                     if any(p in str(src_col).lower() for p in patterns):
                         col_map[target] = src_col
@@ -187,13 +191,32 @@ class Extractor:
 
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                length = str(new_row.get('Length', '')).strip() if new_row.get('Length') is not None else ""
+                start_bit = str(new_row.get('StartBit', '')).strip() if new_row.get('StartBit') is not None else ""
+
+                # Special case for BITS
+                dtype_raw = new_row.get('Type', 'U16')
+                dtype = generator.normalize_type(dtype_raw)
+
+                if dtype == 'BITS' and start_bit and not length:
+                    length = '1'
+
+                if start_bit and length:
+                    # Address_StartBit_Length
+                    base_addr = generator.normalize_address_val(addr.split('_')[0])
+                    new_row['Address'] = f"{base_addr}_{start_bit}_{length}"
+                elif length and dtype == 'STRING':
+                    # Address_Length
+                    base_addr = generator.normalize_address_val(addr.split('_')[0])
+                    new_row['Address'] = f"{base_addr}_{length}"
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    if '_' in addr:
+                        new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    else:
+                        new_row['Address'] = generator.normalize_address_val(addr)
 
                 # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                new_row['Type'] = dtype
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
