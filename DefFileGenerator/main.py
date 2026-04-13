@@ -9,16 +9,25 @@ import tempfile
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
-def setup_logging():
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+def setup_logging(verbose=False):
+    logging.basicConfig(
+        level=logging.DEBUG if verbose else logging.INFO,
+        format='%(levelname)s: %(message)s',
+        force=True
+    )
 
 def _perform_extraction(args):
+    if not hasattr(args, 'input_file') or not args.input_file:
+        logging.error("input_file is required for extraction.")
+        return []
+
     mapping = {}
-    if args.mapping:
+    if hasattr(args, 'mapping') and args.mapping:
         with open(args.mapping, 'r') as f:
             mapping = json.load(f)
 
-    extractor = Extractor(mapping)
+    address_offset = getattr(args, 'address_offset', 0)
+    extractor = Extractor(mapping, address_offset=address_offset)
     ext = os.path.splitext(args.input_file)[1].lower()
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
@@ -65,7 +74,9 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        template=getattr(args, 'template', False),
+        address_offset=args.address_offset
     )
     run_generator(config)
 
@@ -89,7 +100,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=0 # Offset already applied in extraction
         )
         run_generator(config)
     finally:
@@ -97,8 +109,9 @@ def run_command(args):
             os.remove(temp_csv)
 
 def main():
-    setup_logging()
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
+    parser.add_argument('--address-offset', type=int, default=0, help='Global address offset')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
@@ -111,13 +124,14 @@ def main():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer', help='Manufacturer name')
+    parser_generate.add_argument('--model', help='Model name')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -133,10 +147,13 @@ def main():
     parser_run.add_argument('--forced-write', default='')
 
     args = parser.parse_args()
+    setup_logging(args.verbose)
 
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
+        if not args.template and (not args.manufacturer or not args.model):
+            parser_generate.error("--manufacturer and --model are required unless --template is used.")
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
