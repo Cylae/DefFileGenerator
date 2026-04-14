@@ -5,6 +5,7 @@ import json
 from openpyxl import Workbook
 from reportlab.pdfgen import canvas
 from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.def_gen import Generator
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
@@ -24,12 +25,6 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
         from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
         from reportlab.lib.pagesizes import letter
 
@@ -52,13 +47,17 @@ class TestExtractor(unittest.TestCase):
                 os.remove(f)
 
     def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
+        # normalize_type moved to Generator
+        self.assertEqual(Generator.normalize_type("Uint16"), "U16")
+        self.assertEqual(Generator.normalize_type("Int32"), "I32")
+        self.assertEqual(Generator.normalize_type("Float32"), "F32")
+        self.assertEqual(Generator.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        data_nested = self.extractor.extract_from_excel(self.excel_file)
+        # It returns list of tables (one per sheet)
+        self.assertEqual(len(data_nested), 1)
+        data = data_nested[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
@@ -79,7 +78,9 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[2]["Type"], "F32")
 
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        data_nested = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertEqual(len(data_nested), 1)
+        data = data_nested[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
