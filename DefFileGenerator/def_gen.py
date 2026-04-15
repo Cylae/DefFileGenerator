@@ -100,6 +100,27 @@ class Generator:
 
         return False
 
+    def apply_address_offset(self, address, offset, line_num=None):
+        """Applies an offset to the base register address."""
+        if not address:
+            return address
+
+        parts = address.split('_')
+        norm_parts = [self.normalize_address_val(p) for p in parts]
+
+        try:
+            base_addr = int(norm_parts[0]) + offset
+            if base_addr < 0:
+                msg = f"Address offset {offset} results in negative address {base_addr}"
+                if line_num:
+                    msg = f"Line {line_num}: {msg}"
+                logging.warning(msg)
+            norm_parts[0] = str(base_addr)
+        except (ValueError, IndexError):
+            pass
+
+        return '_'.join(norm_parts)
+
     def normalize_address_val(self, addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
         addr_part = str(addr_part).strip()
@@ -217,19 +238,7 @@ class Generator:
                     address = f"{address}_{length}"
 
             if address:
-                parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
-
-                # Apply address offset to the base address
-                try:
-                    base_addr = int(norm_parts[0]) + address_offset
-                    if base_addr < 0:
-                        logging.warning(f"Line {line_num}: Address offset {address_offset} results in negative address {base_addr} for '{name}'.")
-                    norm_parts[0] = str(base_addr)
-                except (ValueError, IndexError):
-                    pass
-
-                address = '_'.join(norm_parts)
+                address = self.apply_address_offset(address, address_offset, line_num)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
