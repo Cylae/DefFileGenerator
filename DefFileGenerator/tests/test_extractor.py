@@ -2,9 +2,7 @@ import unittest
 import os
 import csv
 import json
-from openpyxl import Workbook
-from reportlab.pdfgen import canvas
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, HAS_OPENPYXL, HAS_PDFPLUMBER, HAS_DEFUSEDXML
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
@@ -12,44 +10,51 @@ class TestExtractor(unittest.TestCase):
         self.excel_file = "test_registers.xlsx"
         self.pdf_file = "test_registers.pdf"
         self.mapping_file = "test_mapping.json"
+        self.xml_file = "test_registers.xml"
 
         # Create dummy Excel
-        wb = Workbook()
-        ws = wb.active
-        ws.title = "Registers"
-        ws.append(["Reg Addr", "Description", "Data Type", "Unit"])
-        ws.append(["0x0001", "Voltage", "Uint16", "V"])
-        ws.append(["0x0002", "Current", "Int32", "A"])
-        ws.append(["40001", "Power", "Float32", "W"])
-        wb.save(self.excel_file)
+        if HAS_OPENPYXL:
+            from openpyxl import Workbook
+            wb = Workbook()
+            ws = wb.active
+            ws.title = "Registers"
+            ws.append(["Reg Addr", "Description", "Data Type", "Unit"])
+            ws.append(["0x0001", "Voltage", "Uint16", "V"])
+            ws.append(["0x0002", "Current", "Int32", "A"])
+            ws.append(["40001", "Power", "Float32", "W"])
+            wb.save(self.excel_file)
 
         # Create dummy PDF
-        c = canvas.Canvas(self.pdf_file)
-        c.drawString(100, 800, "Register Map")
-        # Simple table-like text (Note: pdfplumber works best with actual PDF tables,
-        # but reportlab can create them if we use Table objects. For simplicity,
-        # I'll just use the Excel one as primary and a simple PDF if I can)
-        # Actually, creating a real table in PDF with reportlab is better for pdfplumber
-        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-        from reportlab.lib.pagesizes import letter
+        if HAS_PDFPLUMBER:
+            try:
+                from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+                from reportlab.lib.pagesizes import letter
+                doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
+                data = [
+                    ["Address", "Name", "Type"],
+                    ["1000", "Temp", "U16"],
+                    ["1001", "Humid", "U16"]
+                ]
+                t = Table(data)
+                t.setStyle(TableStyle([
+                    ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
+                ]))
+                elements = [t]
+                doc.build(elements)
+            except ImportError:
+                pass
 
-        doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
-        data = [
-            ["Address", "Name", "Type"],
-            ["1000", "Temp", "U16"],
-            ["1001", "Humid", "U16"]
-        ]
-        t = Table(data)
-        t.setStyle(TableStyle([
-            ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
-        ]))
-        elements = [t]
-        doc.build(elements)
+        # Create dummy XML
+        with open(self.xml_file, 'w') as f:
+            f.write('<root><row><Address>5000</Address><Name>XML_Var</Name><Type>U16</Type></row></root>')
 
     def tearDown(self):
-        for f in [self.excel_file, self.pdf_file, self.mapping_file]:
+        for f in [self.excel_file, self.pdf_file, self.mapping_file, self.xml_file]:
             if os.path.exists(f):
-                os.remove(f)
+                try:
+                    os.remove(f)
+                except:
+                    pass
 
     def test_normalize_type(self):
         self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
@@ -57,11 +62,15 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
         self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
 
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_extract_from_excel(self):
-        data = self.extractor.extract_from_excel(self.excel_file)
+        tables = self.extractor.extract_from_excel(self.excel_file)
+        self.assertEqual(len(tables), 1)
+        data = tables[0]
         self.assertEqual(len(data), 3)
         self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
 
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
         # Custom mapping
@@ -78,11 +87,23 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[1]["Type"], "I32")
         self.assertEqual(mapped[2]["Type"], "F32")
 
+    @unittest.skipUnless(HAS_PDFPLUMBER, "pdfplumber not installed")
     def test_extract_from_pdf(self):
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        if not os.path.exists(self.pdf_file):
+             self.skipTest("PDF file was not created (reportlab missing?)")
+        tables = self.extractor.extract_from_pdf(self.pdf_file)
+        self.assertTrue(len(tables) >= 1)
+        data = tables[0]
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0]["Address"], "1000")
         self.assertEqual(data[0]["Name"], "Temp")
+
+    @unittest.skipUnless(HAS_DEFUSEDXML, "defusedxml not installed")
+    def test_extract_from_xml(self):
+        tables = self.extractor.extract_from_xml(self.xml_file)
+        self.assertEqual(len(tables), 1)
+        self.assertEqual(tables[0][0]["Address"], "5000")
+        self.assertEqual(tables[0][0]["Name"], "XML_Var")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
