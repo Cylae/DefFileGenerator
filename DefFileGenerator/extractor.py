@@ -21,12 +21,6 @@ except ImportError:
     HAS_PDFPLUMBER = False
 
 try:
-    import pandas as pd
-    HAS_PANDAS = True
-except ImportError:
-    HAS_PANDAS = False
-
-try:
     from defusedxml import ElementTree as ET
     HAS_DEFUSEDXML = True
 except ImportError:
@@ -43,69 +37,61 @@ class Extractor:
         'Unit': ['unit', 'units'],
         'Tag': ['tag'],
         'Action': ['action', 'access'],
-        'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'Factor': ['scale', 'factor', 'multiplier', 'ratio', 'coefficient a'],
+        'Offset': ['offset', 'bias', 'coefficient b'],
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit', 'start']
     }
-
-    TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
 
     def __init__(self, mapping=None):
         self.mapping = mapping or {}
-        self.type_mapping = {
-            'uint16': 'U16', 'int16': 'I16', 'uint32': 'U32', 'int32': 'I32',
-            'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
-            'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
-        }
 
     def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
+        # Delegating to Generator for consistency
+        return Generator.normalize_type(t)
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         wb = openpyxl.load_workbook(filepath, data_only=True)
-        ws = wb[sheet_name] if sheet_name else wb.active
-        data = []
-        rows = list(ws.rows)
-        if not rows: return []
-        headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
-        for row in rows[1:]:
-            data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
-        return data
+        sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        all_data = []
+        for ws in sheets:
+            rows = list(ws.rows)
+            if not rows: continue
+            headers = [str(cell.value).strip() if cell.value is not None else "" for cell in rows[0]]
+            sheet_data = []
+            for row in rows[1:]:
+                sheet_data.append({headers[i]: cell.value for i, cell in enumerate(row) if i < len(headers)})
+            all_data.append(sheet_data)
+        return all_data
 
     def extract_from_pdf(self, filepath, pages=None):
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return []
-        data = []
+        all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
                 target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
                 for page in target_pages:
                     tables = page.extract_tables()
-                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                     for table in tables:
                         if not table or len(table) < 2: continue
                         headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                        table_data = []
                         for row in table[1:]:
                             row_dict = {}
                             for i, cell in enumerate(row):
                                 if i < len(headers):
                                     row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                            data.append(row_dict)
+                            table_data.append(row_dict)
+                        all_tables.append(table_data)
         except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
-        return data
+        return all_tables
 
     def extract_from_csv(self, filepath):
         try:
@@ -120,7 +106,7 @@ class Extractor:
                     if d in snippet:
                         delimiter = d; break
                 reader = csv.DictReader(f, delimiter=delimiter)
-                return list(reader)
+                return [list(reader)]
         except Exception as e:
             logging.error(f"Error extracting from CSV: {e}")
             return []
@@ -129,21 +115,21 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return []
-        if not HAS_PANDAS:
-            logging.error("pandas is required for XML processing.")
-            return []
         try:
             with open(filepath, 'rb') as f:
-                content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
-            df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+                tree = ET.parse(f)
+            root = tree.getroot()
+            # Heuristic: find all elements that have children but no text, as potential rows
+            # Or just flat list of all elements that have children.
+            # Common pattern: <root><row><col1>..</col1>..</row></root>
+            data = []
+            for child in root:
+                if len(child) > 0:
+                    row = {}
+                    for subchild in child:
+                        row[subchild.tag] = subchild.text
+                    data.append(row)
+            return [data] if data else []
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
@@ -159,24 +145,31 @@ class Extractor:
 
         for table in tables:
             if not table: continue
-            first_row = table[0]
+
+            # Heuristic detection from first 5 rows
+            col_candidates = {}
+            for row in table[:5]:
+                for k in row.keys():
+                    col_candidates[k] = col_candidates.get(k, 0) + 1
+
+            headers = list(col_candidates.keys())
             col_map = {}
             used_src_cols = set()
 
             # 1. Explicit mapping
             for target, source in self.mapping.items():
-                if source in first_row:
+                if source in headers:
                     col_map[target] = source
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in first_row.keys():
+                for src_col in headers:
                     if src_col in used_src_cols: continue
-                    if any(p in str(src_col).lower() for p in patterns):
+                    if any(p == str(src_col).lower() or (len(p) > 3 and p in str(src_col).lower()) for p in patterns):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
@@ -187,24 +180,32 @@ class Extractor:
 
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                l_val = str(new_row.get('Length', '')).strip() if new_row.get('Length') is not None else ''
+                s_val = str(new_row.get('StartBit', '')).strip() if new_row.get('StartBit') is not None else ''
 
-                # Normalize Type
+                # Compound address construction
+                if '_' in addr:
+                    parts = addr.split('_')
+                    base_addr = generator.normalize_address_val(parts[0])
+                    new_row['Address'] = '_'.join([base_addr] + parts[1:])
+                else:
+                    base_addr = generator.normalize_address_val(addr)
+                    dtype = self.normalize_type(new_row.get('Type', ''))
+                    if dtype == 'BITS' and s_val:
+                        if not l_val: l_val = '1'
+                        new_row['Address'] = f"{base_addr}_{s_val}_{l_val}"
+                    elif l_val and (dtype == 'STRING' or Generator.RE_TYPE_STR_CONV.match(dtype)):
+                        new_row['Address'] = f"{base_addr}_{l_val}"
+                    else:
+                        new_row['Address'] = base_addr
+
                 new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
 
-                # Normalize Factor (fractions like 1/10)
-                factor = str(new_row.get('Factor', '1'))
-                if '/' in factor:
-                    try:
-                        p = factor.split('/')
-                        new_row['Factor'] = str(float(p[0]) / float(p[1]))
-                    except (ValueError, ZeroDivisionError):
-                        new_row['Factor'] = '1'
+                # Factors/Offsets cleanup
+                for field in ['Factor', 'Offset', 'ScaleFactor']:
+                    if new_row.get(field) is None: new_row[field] = ''
 
-                if 'RegisterType' not in new_row:
+                if 'RegisterType' not in new_row or not new_row['RegisterType']:
                     new_row['RegisterType'] = 'Holding Register'
 
                 final_data.append(new_row)
@@ -215,6 +216,7 @@ def main():
     parser = argparse.ArgumentParser(description='Extract register information.')
     parser.add_argument('input_file'); parser.add_argument('-o', '--output')
     parser.add_argument('--mapping'); parser.add_argument('--sheet'); parser.add_argument('--pages')
+    parser.add_argument('--address-offset', type=int, default=0)
     args = parser.parse_args()
 
     mapping = {}
@@ -231,6 +233,13 @@ def main():
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
     mapped = extractor.map_and_clean(raw)
+
+    # Apply offset if needed
+    if args.address_offset != 0:
+        gen = Generator()
+        for row in mapped:
+            row['Address'] = gen.apply_address_offset(row['Address'], args.address_offset)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)
