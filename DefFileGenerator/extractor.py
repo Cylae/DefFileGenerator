@@ -21,12 +21,6 @@ except ImportError:
     HAS_PDFPLUMBER = False
 
 try:
-    import pandas as pd
-    HAS_PANDAS = True
-except ImportError:
-    HAS_PANDAS = False
-
-try:
     from defusedxml import ElementTree as ET
     HAS_DEFUSEDXML = True
 except ImportError:
@@ -44,7 +38,10 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'Offset': ['offset', 'bias', 'coefficient b'],
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit', 'start']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -129,21 +126,18 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return []
-        if not HAS_PANDAS:
-            logging.error("pandas is required for XML processing.")
-            return []
         try:
             with open(filepath, 'rb') as f:
-                content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
-            df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+                tree = ET.parse(f)
+            root = tree.getroot()
+            data = []
+            for child in root:
+                row = {}
+                for subchild in child:
+                    row[subchild.tag] = subchild.text
+                if row:
+                    data.append(row)
+            return data
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
@@ -159,22 +153,28 @@ class Extractor:
 
         for table in tables:
             if not table: continue
-            first_row = table[0]
+
+            # Use the first 5 rows to detect columns
+            detection_rows = table[:5]
+            all_src_cols = set()
+            for r in detection_rows:
+                all_src_cols.update(r.keys())
+
             col_map = {}
             used_src_cols = set()
 
             # 1. Explicit mapping
             for target, source in self.mapping.items():
-                if source in first_row:
+                if source in all_src_cols:
                     col_map[target] = source
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in first_row.keys():
+                for src_col in all_src_cols:
                     if src_col in used_src_cols: continue
                     if any(p in str(src_col).lower() for p in patterns):
                         col_map[target] = src_col
@@ -185,15 +185,26 @@ class Extractor:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
-                # Normalize Address
+                # Compound Address Logic (Address_StartBit_Length or Address_Length)
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                start_bit = str(new_row.get('StartBit', '')).strip()
+                length = str(new_row.get('Length', '')).strip()
 
-                # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                dtype = self.normalize_type(new_row.get('Type', 'U16'))
+
+                if '_' in addr:
+                    parts = addr.split('_')
+                    norm_addr = '_'.join(generator.normalize_address_val(p) for p in parts)
+                else:
+                    norm_addr = generator.normalize_address_val(addr)
+                    if dtype == 'BITS' and start_bit:
+                        if not length: length = '1'
+                        norm_addr = f"{norm_addr}_{start_bit}_{length}"
+                    elif dtype == 'STRING' and length and '_' not in norm_addr:
+                        norm_addr = f"{norm_addr}_{length}"
+
+                new_row['Address'] = norm_addr
+                new_row['Type'] = dtype
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
