@@ -52,10 +52,11 @@ class TestExtractor(unittest.TestCase):
                 os.remove(f)
 
     def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
+        from DefFileGenerator.def_gen import Generator
+        self.assertEqual(Generator.normalize_type("Uint16"), "U16")
+        self.assertEqual(Generator.normalize_type("Int32"), "I32")
+        self.assertEqual(Generator.normalize_type("Float32"), "F32")
+        self.assertEqual(Generator.normalize_type("unsigned int 16"), "U16")
 
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
