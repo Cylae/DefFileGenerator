@@ -33,6 +33,7 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol`: Protocol name (default: `modbusRTU`).
 - `--category`: Device category (default: `Inverter`).
 - `--sheet`: Specific Excel sheet name to process (processes all if omitted).
+- `--address-offset`: Shift all register addresses by this value (default: 0).
 - `-v`, `--verbose`: Show detailed processing information.
 
 ## How It Works
