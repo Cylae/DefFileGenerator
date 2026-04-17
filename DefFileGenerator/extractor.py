@@ -44,7 +44,9 @@ class Extractor:
         'Tag': ['tag'],
         'Action': ['action', 'access'],
         'Factor': ['scale', 'factor', 'multiplier', 'ratio'],
-        'ScaleFactor': ['scalefactor']
+        'ScaleFactor': ['scalefactor'],
+        'Length': ['length', 'len', 'size', 'count', 'quantity'],
+        'StartBit': ['startbit', 'bit offset', 'bit', 'start']
     }
 
     TYPE_PATTERN = re.compile(r'^(u|i|uint|int)(\d+)$', re.IGNORECASE)
@@ -57,17 +59,6 @@ class Extractor:
             'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
         }
 
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -129,21 +120,20 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return []
-        if not HAS_PANDAS:
-            logging.error("pandas is required for XML processing.")
-            return []
         try:
             with open(filepath, 'rb') as f:
-                content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
-            df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+                tree = ET.parse(f)
+            root = tree.getroot()
+
+            # Simple conversion of XML nodes to list of dicts
+            data = []
+            for child in root:
+                row = {}
+                for subchild in child:
+                    row[subchild.tag] = subchild.text
+                if row:
+                    data.append(row)
+            return data
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
@@ -159,41 +149,60 @@ class Extractor:
 
         for table in tables:
             if not table: continue
-            first_row = table[0]
+
+            # Robust column detection: scan first 5 rows
             col_map = {}
             used_src_cols = set()
+            all_src_cols = set()
+            for row in table[:5]:
+                all_src_cols.update(row.keys())
 
             # 1. Explicit mapping
             for target, source in self.mapping.items():
-                if source in first_row:
+                if any(source in row for row in table[:5]):
                     col_map[target] = source
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor']
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in first_row.keys():
+
+                found = False
+                for src_col in all_src_cols:
                     if src_col in used_src_cols: continue
                     if any(p in str(src_col).lower() for p in patterns):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
+                        found = True
                         break
+                if found: continue
 
             for row in table:
                 new_row = {target: row.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): continue
 
+                # Normalize Type
+                new_row['Type'] = Generator.normalize_type(new_row.get('Type', 'U16'))
+
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
-                if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
-                else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                start_bit = str(new_row.get('StartBit', '')).strip()
+                length = str(new_row.get('Length', '')).strip()
 
-                # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                if '_' in addr:
+                    parts = addr.split('_')
+                    new_row['Address'] = '_'.join(Generator.normalize_address_val(p) for p in parts)
+                else:
+                    base_addr = Generator.normalize_address_val(addr)
+                    if new_row['Type'] == 'BITS' and start_bit:
+                        if not length: length = '1'
+                        new_row['Address'] = f"{base_addr}_{Generator.normalize_address_val(start_bit)}_{Generator.normalize_address_val(length)}"
+                    elif length and new_row['Type'] == 'STRING':
+                        new_row['Address'] = f"{base_addr}_{Generator.normalize_address_val(length)}"
+                    else:
+                        new_row['Address'] = base_addr
 
                 # Normalize Factor (fractions like 1/10)
                 factor = str(new_row.get('Factor', '1'))
