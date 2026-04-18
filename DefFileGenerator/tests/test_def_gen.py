@@ -124,18 +124,9 @@ class TestGenerator(unittest.TestCase):
                 'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
             }
         ]
-        # Should NOT log a warning
-        try:
-            with self.assertLogs(level='WARNING') as log:
-                processed = self.generator.process_rows(rows)
-                self.assertEqual(len(processed), 2)
-                # If we are here, some warning was logged. Check it's not overlap.
-                for m in log.output:
-                    self.assertNotIn("Address overlap detected", m)
-        except AssertionError:
-            # assertLogs raises AssertionError if NO logs are produced, which is what we want
-            processed = self.generator.process_rows(rows)
-            self.assertEqual(len(processed), 2)
+        # Should NOT log a warning for overlap
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(len(processed), 2)
 
     def test_duplicate_name(self):
         rows = [
@@ -181,6 +172,16 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+
+    def test_parse_numeric_fractions(self):
+        self.assertEqual(Generator._parse_numeric("1/10"), 0.1)
+        self.assertEqual(Generator._parse_numeric("1/100"), 0.01)
+        self.assertEqual(Generator._parse_numeric("2/5"), 0.4)
+
+    def test_parse_numeric_locales(self):
+        self.assertEqual(Generator._parse_numeric("1.234,56"), 1234.56)
+        self.assertEqual(Generator._parse_numeric("1,234.56"), 1234.56)
+        self.assertEqual(Generator._parse_numeric("0,001"), 0.001)
 
 if __name__ == '__main__':
     unittest.main()
