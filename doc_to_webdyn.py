@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
     parser.add_argument('--sheet', help='Excel sheet name')
+    parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -36,7 +37,7 @@ def main():
     if not mapped: logging.error("No registers extracted."); sys.exit(1)
 
     generator = Generator()
-    processed = generator.process_rows(mapped)
+    processed = generator.process_rows(mapped, address_offset=args.address_offset)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
     generator.write_output_csv(output_file, processed, args.manufacturer, args.model, args.protocol, args.category)

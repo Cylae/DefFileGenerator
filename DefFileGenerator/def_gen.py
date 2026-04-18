@@ -46,7 +46,8 @@ class Generator:
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
-    def normalize_type(self, dtype):
+    @staticmethod
+    def normalize_type(dtype):
         """Standardizes common type synonyms while preserving suffixes."""
         if not dtype:
             return 'U16'
@@ -82,7 +83,8 @@ class Generator:
         t = _CLEAN_TYPE_RE.sub('', t)
         return t.upper() if t else 'U16'
 
-    def validate_type(self, dtype):
+    @staticmethod
+    def validate_type(dtype):
         """Validates the data type."""
         dtype_upper = dtype.upper()
         # Base types
@@ -100,7 +102,39 @@ class Generator:
 
         return False
 
-    def normalize_address_val(self, addr_part):
+    @staticmethod
+    def _parse_numeric(val, default=0.0):
+        """Robustly parses numeric values from strings."""
+        if val is None or str(val).strip() == '':
+            return default
+        s = str(val).strip()
+
+        # Handle fractions
+        if '/' in s:
+            try:
+                parts = s.split('/')
+                return float(parts[0]) / float(parts[1])
+            except (ValueError, ZeroDivisionError, IndexError):
+                return default
+
+        # Locale/Separator handling
+        # Heuristic: if it matches ^[1-9]\d{0,2}(,\d{3})+$ it's thousands separators
+        if re.match(r'^[1-9]\d{0,2}(,\d{3})+$', s) or ',' in s and '.' in s and s.find(',') < s.find('.'):
+            s = s.replace(',', '')
+        elif ',' in s and '.' not in s:
+            # Check if comma is decimal separator (e.g. 0,001)
+            if re.match(r'^\d+,\d+$', s):
+                s = s.replace(',', '.')
+            else:
+                s = s.replace(',', '')
+
+        try:
+            return float(s)
+        except ValueError:
+            return default
+
+    @staticmethod
+    def normalize_address_val(addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
         addr_part = str(addr_part).strip()
         # Remove thousands separators if they exist
@@ -136,7 +170,8 @@ class Generator:
 
         return addr_part
 
-    def validate_address(self, address, dtype):
+    @staticmethod
+    def validate_address(address, dtype):
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
@@ -147,7 +182,8 @@ class Generator:
         else:
             return RE_ADDR_INT.match(address) is not None
 
-    def get_register_count(self, dtype, address):
+    @staticmethod
+    def get_register_count(dtype, address):
         """Calculates the number of registers used by the type."""
         dtype_upper = dtype.upper()
 
@@ -203,8 +239,8 @@ class Generator:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
 
-            dtype = self.normalize_type(dtype_raw)
-            if not self.validate_type(dtype):
+            dtype = Generator.normalize_type(dtype_raw)
+            if not Generator.validate_type(dtype):
                 logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping row.")
                 continue
 
@@ -218,7 +254,7 @@ class Generator:
 
             if address:
                 parts = address.split('_')
-                norm_parts = [self.normalize_address_val(p) for p in parts]
+                norm_parts = [Generator.normalize_address_val(p) for p in parts]
 
                 # Apply address offset to the base address
                 try:
@@ -231,7 +267,7 @@ class Generator:
 
                 address = '_'.join(norm_parts)
 
-            if not self.validate_address(address, dtype):
+            if not Generator.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
 
@@ -267,7 +303,7 @@ class Generator:
 
             try:
                 start_addr = int(address.split('_')[0])
-                reg_count = self.get_register_count(dtype, address)
+                reg_count = Generator.get_register_count(dtype, address)
                 end_addr = start_addr + reg_count - 1
 
                 if info1 not in address_usage:
@@ -283,18 +319,12 @@ class Generator:
             except (ValueError, IndexError):
                 pass
 
-            try:
-                val_factor = float(factor) if factor and str(factor).strip() else 1.0
-                val_scale = int(float(scale_factor_str)) if scale_factor_str and str(scale_factor_str).strip() else 0
-                coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
-            except ValueError:
-                coef_a = "1.000000"
+            val_factor = Generator._parse_numeric(factor, 1.0)
+            val_scale = int(Generator._parse_numeric(scale_factor_str, 0))
+            coef_a = "{:.6f}".format(val_factor * (10 ** val_scale))
 
-            try:
-                val_offset = float(offset) if offset and str(offset).strip() else 0.0
-                coef_b = "{:.6f}".format(val_offset)
-            except ValueError:
-                coef_b = "0.000000"
+            val_offset = Generator._parse_numeric(offset, 0.0)
+            coef_b = "{:.6f}".format(val_offset)
 
             # Action normalization
             act_str = str(action).strip().upper()

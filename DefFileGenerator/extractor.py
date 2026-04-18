@@ -20,11 +20,6 @@ try:
 except ImportError:
     HAS_PDFPLUMBER = False
 
-try:
-    import pandas as pd
-    HAS_PANDAS = True
-except ImportError:
-    HAS_PANDAS = False
 
 try:
     from defusedxml import ElementTree as ET
@@ -56,18 +51,6 @@ class Extractor:
             'float32': 'F32', 'float': 'F32', 'u16': 'U16', 'i16': 'I16',
             'u32': 'U32', 'i32': 'I32', 'f32': 'F32', 'string': 'STRING', 'bits': 'BITS'
         }
-
-    def normalize_type(self, t):
-        if not t:
-            return 'U16'
-        t_str = str(t).lower().strip().replace('unsigned ', 'u').replace('signed ', 'i').replace(' ', '')
-        if t_str in self.type_mapping:
-            return self.type_mapping[t_str]
-        match = self.TYPE_PATTERN.match(t_str)
-        if match:
-            prefix = 'U' if match.group(1).lower().startswith('u') else 'I'
-            return f"{prefix}{match.group(2)}"
-        return str(t).upper()
 
     def extract_from_excel(self, filepath, sheet_name=None):
         if not HAS_OPENPYXL:
@@ -129,21 +112,19 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return []
-        if not HAS_PANDAS:
-            logging.error("pandas is required for XML processing.")
-            return []
         try:
             with open(filepath, 'rb') as f:
                 content = f.read()
-            # Use defusedxml to parse safely, then pass to pandas via BytesIO
-            # Note: pandas.read_xml with parser='etree' uses the standard library's xml.etree.ElementTree
-            # To be truly secure, we should parse with defusedxml and then potentially convert or
-            # at least ensure we are not using an insecure parser.
-            # Pandas read_xml doesn't directly support defusedxml as a parser engine,
-            # but we can validate it first or use a safer approach.
-            ET.fromstring(content) # This will raise an error if it contains entities/threats
-            df = pd.read_xml(io.BytesIO(content), parser='etree')
-            return df.to_dict(orient='records')
+            # Use defusedxml to parse safely and convert to list of dicts directly
+            root = ET.fromstring(content)
+            data = []
+            for child in root:
+                row = {}
+                for element in child:
+                    row[element.tag] = element.text
+                if row:
+                    data.append(row)
+            return data
         except Exception as e:
             logging.error(f"Error extracting from XML: {e}")
             return []
@@ -188,21 +169,15 @@ class Extractor:
                 # Normalize Address
                 addr = str(new_row.get('Address', '')).strip()
                 if '_' in addr:
-                    new_row['Address'] = '_'.join(generator.normalize_address_val(p) for p in addr.split('_'))
+                    new_row['Address'] = '_'.join(Generator.normalize_address_val(p) for p in addr.split('_'))
                 else:
-                    new_row['Address'] = generator.normalize_address_val(addr)
+                    new_row['Address'] = Generator.normalize_address_val(addr)
 
                 # Normalize Type
-                new_row['Type'] = self.normalize_type(new_row.get('Type', 'U16'))
+                new_row['Type'] = Generator.normalize_type(new_row.get('Type', 'U16'))
 
                 # Normalize Factor (fractions like 1/10)
-                factor = str(new_row.get('Factor', '1'))
-                if '/' in factor:
-                    try:
-                        p = factor.split('/')
-                        new_row['Factor'] = str(float(p[0]) / float(p[1]))
-                    except (ValueError, ZeroDivisionError):
-                        new_row['Factor'] = '1'
+                new_row['Factor'] = str(Generator._parse_numeric(new_row.get('Factor'), 1.0))
 
                 if 'RegisterType' not in new_row:
                     new_row['RegisterType'] = 'Holding Register'
