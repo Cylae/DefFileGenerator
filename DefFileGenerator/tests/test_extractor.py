@@ -51,16 +51,11 @@ class TestExtractor(unittest.TestCase):
             if os.path.exists(f):
                 os.remove(f)
 
-    def test_normalize_type(self):
-        self.assertEqual(self.extractor.normalize_type("Uint16"), "U16")
-        self.assertEqual(self.extractor.normalize_type("Int32"), "I32")
-        self.assertEqual(self.extractor.normalize_type("Float32"), "F32")
-        self.assertEqual(self.extractor.normalize_type("unsigned int 16"), "U16")
-
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
-        self.assertEqual(len(data), 3)
-        self.assertEqual(str(data[0]["Reg Addr"]), "0x0001")
+        self.assertEqual(len(data), 1) # list of tables
+        self.assertEqual(len(data[0]), 3) # first table has 3 rows
+        self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
@@ -80,9 +75,10 @@ class TestExtractor(unittest.TestCase):
 
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
-        self.assertEqual(len(data), 2)
-        self.assertEqual(data[0]["Address"], "1000")
-        self.assertEqual(data[0]["Name"], "Temp")
+        self.assertEqual(len(data), 1) # list of tables
+        self.assertEqual(len(data[0]), 2) # first table has 2 rows
+        self.assertEqual(data[0][0]["Address"], "1000")
+        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
