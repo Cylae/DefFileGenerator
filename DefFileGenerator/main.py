@@ -6,13 +6,26 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+# Use absolute imports when possible
+try:
+    from DefFileGenerator.extractor import Extractor
+    from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+except ImportError:
+    from extractor import Extractor
+    from def_gen import Generator, run_generator, GeneratorConfig
 
-def setup_logging():
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+def setup_logging(verbose=False):
+    logging.basicConfig(
+        level=logging.DEBUG if verbose else logging.INFO,
+        format='%(levelname)s: %(message)s',
+        force=True
+    )
 
 def _perform_extraction(args):
+    if not args.input_file:
+        logging.error("input_file is required for extraction.")
+        return []
+
     mapping = {}
     if args.mapping:
         with open(args.mapping, 'r') as f:
@@ -65,13 +78,15 @@ def generate_command(args):
         model=args.model,
         protocol=args.protocol,
         category=args.category,
-        forced_write=args.forced_write
+        forced_write=args.forced_write,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
     if not mapped_data:
+        logging.error("No registers extracted.")
         return
 
     with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
@@ -89,7 +104,8 @@ def run_command(args):
             model=args.model,
             protocol=args.protocol,
             category=args.category,
-            forced_write=args.forced_write
+            forced_write=args.forced_write,
+            address_offset=args.address_offset
         )
         run_generator(config)
     finally:
@@ -97,8 +113,12 @@ def run_command(args):
             os.remove(temp_csv)
 
 def main():
-    setup_logging()
+    # Pre-parse for verbose flag to setup logging early
+    verbose = '-v' in sys.argv or '--verbose' in sys.argv
+    setup_logging(verbose)
+
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
 
     # Extract
@@ -118,6 +138,7 @@ def main():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -131,6 +152,7 @@ def main():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
 
