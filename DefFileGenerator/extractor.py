@@ -183,14 +183,30 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+            # 2. Multi-pass priority matching
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'ScaleFactor', 'Factor', 'Offset', 'Length', 'StartBit']
+
+            # Pass 1: Exact or Normalized match (case-insensitive, no spaces/underscores)
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
                 for src_col in all_keys:
                     if src_col in used_src_cols: continue
-                    if any(p in str(src_col).lower() for p in patterns):
+                    src_low = str(src_col).lower()
+                    src_norm = re.sub(r'[^a-z0-9]', '', src_low)
+                    if any(p == src_low or p == src_norm for p in patterns):
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            # Pass 2: Fuzzy (substring) matching
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    src_low = str(src_col).lower()
+                    if any(p in src_low for p in patterns):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
