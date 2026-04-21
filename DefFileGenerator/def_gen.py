@@ -205,8 +205,8 @@ class Generator:
             else: # 1.234,56
                 s = s.replace('.', '').replace(',', '.')
         elif ',' in s:
-            # Only comma. Match ^\d{1,3}(,\d{3})+$ as thousands
-            if re.match(r'^-?\d{1,3}(,\d{3})+$', s):
+            # Only comma. Match ^[1-9]\d{0,2}(,\d{3})+$ as thousands
+            if re.match(r'^-?[1-9]\d{0,2}(,\d{3})+$', s):
                 s = s.replace(',', '')
             else:
                 s = s.replace(',', '.')
@@ -289,16 +289,24 @@ class Generator:
             end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {}
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+            overlaps = set()
+            for addr in range(start_addr, end_addr + 1):
+                if addr in address_usage[info1]:
+                    for u_line, u_name, u_type, u_start, u_end in address_usage[info1][addr]:
+                        # Allow multiple BITS on exactly the same base address
+                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
+                            overlaps.add((u_line, u_name, u_start, u_end))
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for u_line, u_name, u_start, u_end in sorted(overlaps):
+                logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+
+            for addr in range(start_addr, end_addr + 1):
+                if addr not in address_usage[info1]:
+                    address_usage[info1][addr] = []
+                address_usage[info1][addr].append((line_num, name, dtype.upper(), start_addr, end_addr))
         except (ValueError, IndexError):
             pass
 
@@ -396,27 +404,31 @@ class Generator:
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
             if isinstance(output, str):
-                outfile = open(output, 'w', newline='', encoding='utf-8')
-            elif output is None:
-                outfile = sys.stdout
-            else:
-                outfile = output
-
-            header_row = [protocol, category, manufacturer, model, forced_write, '', '', '', '', '', '']
-            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-            writer.writerow(header_row)
-
-            for index, row in enumerate(processed_rows, start=1):
-                writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
-                    row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
-                ])
-
-            if isinstance(output, str):
-                outfile.close()
+                with open(output, 'w', newline='', encoding='utf-8') as outfile:
+                    Generator._write_to_handle(outfile, processed_rows, manufacturer, model,
+                                             protocol, category, forced_write)
                 logging.info(f"Definition file generated at {output}")
+            elif output is None:
+                Generator._write_to_handle(sys.stdout, processed_rows, manufacturer, model,
+                                         protocol, category, forced_write)
+            else:
+                Generator._write_to_handle(output, processed_rows, manufacturer, model,
+                                         protocol, category, forced_write)
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
+
+    @staticmethod
+    def _write_to_handle(handle, processed_rows, manufacturer, model,
+                        protocol, category, forced_write):
+        header_row = [protocol, category, manufacturer, model, forced_write, '', '', '', '', '', '']
+        writer = csv.writer(handle, delimiter=';', lineterminator='\n')
+        writer.writerow(header_row)
+
+        for index, row in enumerate(processed_rows, start=1):
+            writer.writerow([
+                str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
+            ])
 
 def generate_template(output_file):
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
