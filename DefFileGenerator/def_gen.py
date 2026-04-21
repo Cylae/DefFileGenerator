@@ -289,16 +289,26 @@ class Generator:
             end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {} # addr -> list of (line, name, type, start, end)
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+            overlapping_seen = set()
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for a in range(start_addr, end_addr + 1):
+                if a in address_usage[info1]:
+                    for u_line, u_name, u_type, u_start, u_end in address_usage[info1][a]:
+                        if (u_line, u_name) in overlapping_seen:
+                            continue
+                        # Allow multiple BITS on exactly the same base address
+                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+                            overlapping_seen.add((u_line, u_name))
+
+            # Record usage for all addresses in range
+            for a in range(start_addr, end_addr + 1):
+                if a not in address_usage[info1]:
+                    address_usage[info1][a] = []
+                address_usage[info1][a].append((line_num, name, dtype.upper(), start_addr, end_addr))
         except (ValueError, IndexError):
             pass
 
@@ -322,7 +332,7 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> dict of addr -> list of (line, name, type, start, end)
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
