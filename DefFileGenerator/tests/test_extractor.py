@@ -91,5 +91,19 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    def test_exact_vs_fuzzy_mapping(self):
+        # "Scale Factor" should map to ScaleFactor, not Factor (fuzzy "Scale")
+        raw_data = [[{"Name": "Var", "Address": "1", "Scale Factor": "2"}]]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0].get('ScaleFactor'), '2')
+        self.assertIsNone(mapped[0].get('Factor'))
+
+    def test_address_vs_offset_mapping(self):
+        # "Address" and "Offset" should be distinct
+        raw_data = [[{"Address": "100", "Offset": "0.5", "Name": "Var"}]]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0].get('Address'), '100')
+        self.assertEqual(mapped[0].get('Offset'), '0.5')
+
 if __name__ == "__main__":
     unittest.main()
