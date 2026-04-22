@@ -205,8 +205,9 @@ class Generator:
             else: # 1.234,56
                 s = s.replace('.', '').replace(',', '.')
         elif ',' in s:
-            # Only comma. Match ^\d{1,3}(,\d{3})+$ as thousands
-            if re.match(r'^-?\d{1,3}(,\d{3})+$', s):
+            # Only comma. Match ^[1-9]\d{0,2}(,\d{3})+$ as thousands (e.g. 1,234)
+            # This avoids misidentifying European decimals like 0,001
+            if re.match(r'^-?[1-9]\d{0,2}(,\d{3})+$', s):
                 s = s.replace(',', '')
             else:
                 s = s.replace(',', '.')
@@ -286,19 +287,21 @@ class Generator:
         try:
             start_addr = int(address.split('_')[0])
             reg_count = self.get_register_count(dtype, address)
-            end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {} # addr -> list of (line, name, type)
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
-
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for i in range(reg_count):
+                curr_addr = start_addr + i
+                if curr_addr in address_usage[info1]:
+                    for u_line, u_name, u_type in address_usage[info1][curr_addr]:
+                        # Allow multiple BITS on exactly the same base address
+                        if not (is_bits and u_type == 'BITS' and i == 0):
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (address {curr_addr}). Overlaps with '{u_name}' (Line {u_line}).")
+                    address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
+                else:
+                    address_usage[info1][curr_addr] = [(line_num, name, dtype.upper())]
         except (ValueError, IndexError):
             pass
 
@@ -322,7 +325,7 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> dict of addr -> list of (line, name, type)
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
