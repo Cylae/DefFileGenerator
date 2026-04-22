@@ -289,16 +289,24 @@ class Generator:
             end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {} # addr -> list of (line, name, type, start, end)
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+            warned_lines = set()
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for addr in range(start_addr, end_addr + 1):
+                if addr in address_usage[info1]:
+                    for u_line, u_name, u_type, u_start, u_end in address_usage[info1][addr]:
+                        if u_line in warned_lines:
+                            continue
+                        # Allow multiple BITS on exactly the same base address
+                        if not (is_bits and u_type == 'BITS' and start_addr == u_start):
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+                            warned_lines.add(u_line)
+
+                if addr not in address_usage[info1]:
+                    address_usage[info1][addr] = []
+                address_usage[info1][addr].append((line_num, name, dtype.upper(), start_addr, end_addr))
         except (ValueError, IndexError):
             pass
 
