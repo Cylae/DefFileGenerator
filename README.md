@@ -16,11 +16,12 @@ This toolset allows for extracting Modbus register information from manufacturer
 ## Requirements
 
 *   Python 3.x
-*   Dependencies: `pdfplumber`, `openpyxl`, `pandas`, `lxml`, `defusedxml`, `reportlab`
+*   Dependencies: `pdfplumber`, `openpyxl`, `lxml`, `defusedxml`, `reportlab`
+*   Note: `pandas` is NOT required for core functionality, only for stress test generation.
 
-Install all dependencies:
+Install dependencies:
 ```bash
-pip install pdfplumber openpyxl pandas lxml defusedxml reportlab
+pip install pdfplumber openpyxl lxml defusedxml reportlab
 ```
 
 ## Unified CLI Usage
