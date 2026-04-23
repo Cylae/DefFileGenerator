@@ -2,46 +2,84 @@ import unittest
 import os
 import csv
 import json
-from openpyxl import Workbook
-from reportlab.pdfgen import canvas
 from DefFileGenerator.extractor import Extractor
+
+try:
+    from openpyxl import Workbook
+    HAS_OPENPYXL = True
+except ImportError:
+    HAS_OPENPYXL = False
+
+try:
+    from defusedxml import ElementTree as ET
+    HAS_DEFUSEDXML = True
+except ImportError:
+    HAS_DEFUSEDXML = False
+
+try:
+    from reportlab.pdfgen import canvas
+    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+    from reportlab.lib.pagesizes import letter
+    HAS_REPORTLAB = True
+except ImportError:
+    HAS_REPORTLAB = False
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
         self.extractor = Extractor()
         self.excel_file = "test_registers.xlsx"
         self.pdf_file = "test_registers.pdf"
+        self.xml_file = "test_registers.xml"
         self.mapping_file = "test_mapping.json"
 
-        # Create dummy Excel
-        wb = Workbook()
-        ws = wb.active
-        ws.title = "Registers"
-        ws.append(["Reg Addr", "Description", "Data Type", "Unit"])
-        ws.append(["0x0001", "Voltage", "Uint16", "V"])
-        ws.append(["0x0002", "Current", "Int32", "A"])
-        ws.append(["40001", "Power", "Float32", "W"])
-        wb.save(self.excel_file)
+        if HAS_OPENPYXL:
+            # Create dummy Excel
+            wb = Workbook()
+            ws = wb.active
+            ws.title = "Registers"
+            ws.append(["Reg Addr", "Description", "Data Type", "Unit"])
+            ws.append(["0x0001", "Voltage", "Uint16", "V"])
+            ws.append(["0x0002", "Current", "Int32", "A"])
+            ws.append(["40001", "Power", "Float32", "W"])
+            wb.save(self.excel_file)
 
-        # Create dummy PDF
-        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-        from reportlab.lib.pagesizes import letter
+        if HAS_REPORTLAB:
+            # Create dummy PDF
+            doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
+            data = [
+                ["Address", "Name", "Type"],
+                ["1000", "Temp", "U16"],
+                ["1001", "Humid", "U16"]
+            ]
+            t = Table(data)
+            t.setStyle(TableStyle([
+                ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
+            ]))
+            elements = [t]
+            doc.build(elements)
 
-        doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
-        data = [
-            ["Address", "Name", "Type"],
-            ["1000", "Temp", "U16"],
-            ["1001", "Humid", "U16"]
-        ]
-        t = Table(data)
-        t.setStyle(TableStyle([
-            ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
-        ]))
-        elements = [t]
-        doc.build(elements)
+        # Create dummy XML
+        xml_content = """<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <register>
+        <name>Voltage</name>
+        <address>40001</address>
+        <type>U16</type>
+        <unit>V</unit>
+    </register>
+    <register>
+        <name>Current</name>
+        <address>40002</address>
+        <type>I16</type>
+        <unit>A</unit>
+    </register>
+</root>
+"""
+        with open(self.xml_file, "w") as f:
+            f.write(xml_content)
 
     def tearDown(self):
-        for f in [self.excel_file, self.pdf_file, self.mapping_file]:
+        for f in [self.excel_file, self.pdf_file, self.xml_file, self.mapping_file]:
             if os.path.exists(f):
                 os.remove(f)
 
@@ -52,12 +90,14 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(Extractor.normalize_type("Float32"), "F32")
         self.assertEqual(Extractor.normalize_type("unsigned int 16"), "U16")
 
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_extract_from_excel(self):
         data = self.extractor.extract_from_excel(self.excel_file)
         self.assertEqual(len(data), 1) # One sheet = one table
         self.assertEqual(len(data[0]), 3) # 3 data rows
         self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_map_and_clean_excel(self):
         raw_data = self.extractor.extract_from_excel(self.excel_file)
         # Custom mapping
@@ -74,12 +114,31 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[1]["Type"], "I32")
         self.assertEqual(mapped[2]["Type"], "F32")
 
+    @unittest.skipUnless(HAS_REPORTLAB, "reportlab not installed")
     def test_extract_from_pdf(self):
         data = self.extractor.extract_from_pdf(self.pdf_file)
         self.assertEqual(len(data), 1) # One table found
         self.assertEqual(len(data[0]), 2) # 2 data rows
         self.assertEqual(data[0][0]["Address"], "1000")
         self.assertEqual(data[0][0]["Name"], "Temp")
+
+    @unittest.skipUnless(HAS_DEFUSEDXML, "defusedxml not installed")
+    def test_extract_from_xml(self):
+        data = self.extractor.extract_from_xml(self.xml_file)
+        self.assertTrue(len(data) >= 1)
+        self.assertTrue(len(data[0]) >= 2)
+        # XML extraction by Extractor returns list of rows where each row has at least 2 children
+        # The first element in data is the list of registers
+        registers = data[0]
+        # Check if we have our registers. Depending on how root.iter() works, it might pick up 'root' too if it has enough children.
+        # But our registers have 4 children each.
+        found_voltage = False
+        for reg in registers:
+            if reg.get('name') == 'Voltage':
+                self.assertEqual(reg.get('address'), '40001')
+                self.assertEqual(reg.get('type'), 'U16')
+                found_voltage = True
+        self.assertTrue(found_voltage)
 
     def test_fuzzy_mapping(self):
         # Even without explicit mapping, it should find Name, Address, Type if headers are similar
