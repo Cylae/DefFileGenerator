@@ -91,5 +91,19 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    def test_multi_pass_mapping_priority(self):
+        # Pass 1 (Normalized match) should take priority over Pass 2 (Fuzzy match)
+        # For example, "Tag" should match "tag" exactly, even if "Tag Description" is present and could match fuzzy.
+        raw_data = [
+            [{
+                "Tag Description": "fuzzy_desc",
+                "Tag": "exact_tag",
+                "Address": "100",
+                "Name": "Var1"
+            }]
+        ]
+        mapped = self.extractor.map_and_clean(raw_data)
+        self.assertEqual(mapped[0]["Tag"], "exact_tag")
+
 if __name__ == "__main__":
     unittest.main()

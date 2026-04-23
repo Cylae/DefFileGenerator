@@ -188,7 +188,10 @@ class Generator:
         """Robust numeric parsing for scale factors and offsets."""
         if val is None or str(val).strip() == '':
             return default
-        s = str(val).strip()
+        s = str(val).strip().lower()
+
+        # Remove "x" prefix or suffix (e.g., "x0.1" or "10x")
+        s = s.replace('x', '')
 
         # Handle fractions
         if '/' in s:
@@ -374,10 +377,12 @@ class Generator:
             act_str = str(action).strip().upper()
             if not act_str:
                 norm_action = '1'
-            elif act_str in ['R', 'READ', '4']:
+            elif act_str in ['R', 'RO', 'READ', 'READ-ONLY', '4']:
                 norm_action = '4'
-            elif act_str in ['RW', 'W', 'WRITE', '1']:
+            elif act_str in ['RW', 'W', 'R/W', 'WRITE', 'READ/WRITE', '1']:
                 norm_action = '1'
+            elif act_str in ['WO', 'WRITE-ONLY', '6']:
+                norm_action = '6'
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:

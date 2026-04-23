@@ -182,5 +182,28 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_extended_action_normalization(self):
+        rows = [
+            {'Name': 'V1', 'Address': '100', 'Type': 'U16', 'Action': 'RO'},
+            {'Name': 'V2', 'Address': '101', 'Type': 'U16', 'Action': 'Read-Only'},
+            {'Name': 'V3', 'Address': '102', 'Type': 'U16', 'Action': 'R/W'},
+            {'Name': 'V4', 'Address': '103', 'Type': 'U16', 'Action': 'Read/Write'},
+            {'Name': 'V5', 'Address': '104', 'Type': 'U16', 'Action': 'WO'},
+            {'Name': 'V6', 'Address': '105', 'Type': 'U16', 'Action': 'Write-Only'}
+        ]
+        processed = self.generator.process_rows(rows)
+        self.assertEqual(processed[0]['Action'], '4')
+        self.assertEqual(processed[1]['Action'], '4')
+        self.assertEqual(processed[2]['Action'], '1')
+        self.assertEqual(processed[3]['Action'], '1')
+        self.assertEqual(processed[4]['Action'], '6')
+        self.assertEqual(processed[5]['Action'], '6')
+
+    def test_parse_numeric_x_prefix_suffix(self):
+        self.assertEqual(self.generator._parse_numeric('x0.1'), 0.1)
+        self.assertEqual(self.generator._parse_numeric('10x'), 10.0)
+        self.assertEqual(self.generator._parse_numeric('x 0.5'), 0.5)
+        self.assertEqual(self.generator._parse_numeric('100 x'), 100.0)
+
 if __name__ == '__main__':
     unittest.main()
