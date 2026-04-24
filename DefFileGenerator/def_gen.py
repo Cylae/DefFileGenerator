@@ -190,6 +190,9 @@ class Generator:
             return default
         s = str(val).strip()
 
+        # Strip 'x' multipliers (e.g., 'x0.1', '10x')
+        s = s.lower().replace('x', '')
+
         # Handle fractions
         if '/' in s:
             try:
