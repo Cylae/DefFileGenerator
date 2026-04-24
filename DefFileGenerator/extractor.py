@@ -184,7 +184,22 @@ class Extractor:
                     used_src_cols.add(source)
 
             # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+            # Move ScaleFactor before Factor to prevent misidentification
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'ScaleFactor', 'Factor', 'Offset', 'Length', 'StartBit']
+
+            # Pass 1: Exact or Normalized Match
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    src_norm = str(src_col).lower().replace(' ', '').replace('_', '')
+                    if any(src_norm == p.replace(' ', '').replace('_', '') for p in patterns):
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            # Pass 2: Fuzzy Substring Match
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
