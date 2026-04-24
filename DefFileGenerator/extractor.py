@@ -183,8 +183,26 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+            # 2. Multi-pass matching logic
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'ScaleFactor', 'Factor', 'Offset', 'Length', 'StartBit']
+
+            def normalize_col(c):
+                return re.sub(r'[^a-z0-9]', '', str(c).lower())
+
+            # Pass 1: Exact or Normalized match (high confidence)
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    src_norm = normalize_col(src_col)
+                    if any(src_norm == normalize_col(p) for p in patterns):
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        logging.debug(f"Matched '{src_col}' to '{target}' via Pass 1 (Normalized)")
+                        break
+
+            # Pass 2: Substring match (fuzzy fallback)
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -193,6 +211,7 @@ class Extractor:
                     if any(p in str(src_col).lower() for p in patterns):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
+                        logging.debug(f"Matched '{src_col}' to '{target}' via Pass 2 (Substring)")
                         break
 
             for row in table:
@@ -211,10 +230,14 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                if dtype == 'BITS':
+                    if sbit != '':
+                        if slen == '': slen = '1'
+                        base_addr = addr.split('_')[0]
+                        addr = f"{base_addr}_{sbit}_{slen}"
+                    elif '_' not in addr and addr:
+                        # Default to first bit if not specified
+                        addr = f"{addr}_0_1"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)

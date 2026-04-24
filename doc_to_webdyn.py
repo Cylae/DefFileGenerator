@@ -9,7 +9,16 @@ from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator
 
 def main():
-    parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        if logging.getLogger().isEnabledFor(logging.DEBUG):
+            logging.exception(e)
+        sys.exit(1)
+
+def _run_cli():
+    parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser - Extracts Modbus registers and generates definitions.')
     parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', required=True)
     parser.add_argument('--model', required=True)
