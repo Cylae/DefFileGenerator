@@ -27,10 +27,19 @@ def _perform_extraction(args):
 
     address_offset = getattr(args, 'address_offset', 0)
 
+    if args.pages and ext != '.pdf':
+        logging.warning(f"--pages is only applicable for PDF files. Ignoring for {ext} file.")
+
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = None
+        if args.pages:
+            try:
+                pages = [int(p.strip()) for p in args.pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                return []
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
