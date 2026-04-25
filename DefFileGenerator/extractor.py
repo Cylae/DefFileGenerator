@@ -156,7 +156,7 @@ class Extractor:
             return [unique_data] if unique_data else []
         except Exception as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
-            return []
+            raise
 
     def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
@@ -170,9 +170,14 @@ class Extractor:
         for table in tables:
             if not table: continue
 
-            all_keys = set()
-            for row in table[:5]:
-                all_keys.update(row.keys())
+            # Robust key collection from first 10 rows
+            keys_set = set()
+            for row in table[:10]:
+                keys_set.update(row.keys())
+            all_keys = list(keys_set)
+
+            # Normalize keys for matching: lowercase, no spaces, no underscores
+            norm_keys = {re.sub(r'[\s_]+', '', str(k).lower()): k for k in all_keys}
 
             col_map = {}
             used_src_cols = set()
@@ -183,16 +188,31 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+            # 2. Multi-pass Priority Matching
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'ScaleFactor', 'Factor', 'Offset', 'Length', 'StartBit']
+
+            # Pass 1: Exact or Normalized Match
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in all_keys:
-                    if src_col in used_src_cols: continue
-                    if any(p in str(src_col).lower() for p in patterns):
-                        col_map[target] = src_col
-                        used_src_cols.add(src_col)
+                norm_patterns = [re.sub(r'[\s_]+', '', p.lower()) for p in patterns]
+
+                for nk, original_k in norm_keys.items():
+                    if original_k in used_src_cols: continue
+                    if nk in norm_patterns:
+                        col_map[target] = original_k
+                        used_src_cols.add(original_k)
+                        break
+
+            # Pass 2: Fuzzy Substring Match
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for original_k in all_keys:
+                    if original_k in used_src_cols: continue
+                    if any(p in str(original_k).lower() for p in patterns):
+                        col_map[target] = original_k
+                        used_src_cols.add(original_k)
                         break
 
             for row in table:
@@ -206,15 +226,32 @@ class Extractor:
                 slen = str(slen).strip() if slen is not None else ''
 
                 # Normalize Type
-                dtype = self.normalize_type(new_row.get('Type', 'U16'))
+                dtype_val = new_row.get('Type', 'U16')
+                dtype = self.normalize_type(dtype_val)
                 new_row['Type'] = dtype
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                # Remove thousands separators (commas)
+                addr = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', addr)
+
+                if dtype == 'BITS':
+                    # Ensure BITS has a compound address format Addr_StartBit_Length
+                    addr_parts = addr.split('_')
+                    base_addr = addr_parts[0]
+
+                    final_sbit = sbit
+                    final_slen = slen
+
+                    if len(addr_parts) >= 2:
+                        final_sbit = addr_parts[1]
+                    if len(addr_parts) >= 3:
+                        final_slen = addr_parts[2]
+
+                    if final_sbit == '': final_sbit = '0'
+                    if final_slen == '': final_slen = '1'
+
+                    addr = f"{base_addr}_{final_sbit}_{final_slen}"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
