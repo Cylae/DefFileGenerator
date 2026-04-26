@@ -8,7 +8,7 @@ import json
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', required=True)
@@ -21,10 +21,16 @@ def main():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
+    parser.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+
+    if args.template:
+        from DefFileGenerator.def_gen import generate_template
+        generate_template(args.output)
+        return
 
     ext = os.path.splitext(args.input_file)[1].lower()
 
@@ -66,6 +72,15 @@ def main():
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
     generator.write_output_csv(output_file, processed, args.manufacturer, args.model, args.protocol, args.category, args.forced_write)
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        if '--verbose' in sys.argv or '-v' in sys.argv:
+            logging.exception(e)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

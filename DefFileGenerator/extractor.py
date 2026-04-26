@@ -21,9 +21,11 @@ except ImportError:
     HAS_PDFPLUMBER = False
 
 try:
+    import defusedxml
     from defusedxml import ElementTree as ET
     HAS_DEFUSEDXML = True
 except ImportError:
+    defusedxml = None
     HAS_DEFUSEDXML = False
 
 try:
@@ -155,6 +157,9 @@ class Extractor:
 
             return [unique_data] if unique_data else []
         except Exception as e:
+            # Allow security exceptions to propagate for robust testing
+            if HAS_DEFUSEDXML and isinstance(e, (defusedxml.EntitiesForbidden, defusedxml.ExternalReferenceForbidden, defusedxml.DTDForbidden)):
+                raise
             logging.error(f"Error extracting from XML {filepath}: {e}")
             return []
 
@@ -211,10 +216,14 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                if dtype == 'BITS':
+                    if sbit != '':
+                        if slen == '': slen = '1'
+                        base_addr = addr.split('_')[0]
+                        addr = f"{base_addr}_{sbit}_{slen}"
+                    elif '_' not in addr:
+                        # Default to StartBit 0 and Length 1 if not already a compound address
+                        addr = f"{addr}_0_1"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
