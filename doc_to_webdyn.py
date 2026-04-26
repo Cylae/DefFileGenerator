@@ -8,7 +8,7 @@ import json
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', required=True)
@@ -66,6 +66,15 @@ def main():
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
     generator.write_output_csv(output_file, processed, args.manufacturer, args.model, args.protocol, args.category, args.forced_write)
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        if '--verbose' in sys.argv or '-v' in sys.argv:
+            logging.exception(e)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
