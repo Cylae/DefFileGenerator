@@ -131,32 +131,30 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return []
-        try:
-            with open(filepath, 'rb') as f:
-                tree = ET.parse(f)
-                root = tree.getroot()
 
-            data = []
-            for elem in root.iter():
-                row = {}
-                for child in elem:
-                    if len(child) == 0 and child.text:
-                        row[child.tag] = child.text.strip()
-                if len(row) >= 2:
-                    data.append(row)
+        # We allow exceptions (like EntitiesForbidden) to propagate for better security testing
+        with open(filepath, 'rb') as f:
+            tree = ET.parse(f)
+            root = tree.getroot()
 
-            unique_data = []
-            seen = set()
-            for d in data:
-                js = json.dumps(d, sort_keys=True)
-                if js not in seen:
-                    unique_data.append(d)
-                    seen.add(js)
+        data = []
+        for elem in root.iter():
+            row = {}
+            for child in elem:
+                if len(child) == 0 and child.text:
+                    row[child.tag] = child.text.strip()
+            if len(row) >= 2:
+                data.append(row)
 
-            return [unique_data] if unique_data else []
-        except Exception as e:
-            logging.error(f"Error extracting from XML {filepath}: {e}")
-            return []
+        unique_data = []
+        seen = set()
+        for d in data:
+            js = json.dumps(d, sort_keys=True)
+            if js not in seen:
+                unique_data.append(d)
+                seen.add(js)
+
+        return [unique_data] if unique_data else []
 
     def map_and_clean(self, tables, address_offset=0):
         if not tables: return []
@@ -171,7 +169,7 @@ class Extractor:
             if not table: continue
 
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]:
                 all_keys.update(row.keys())
 
             col_map = {}
@@ -183,8 +181,22 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
+            # 2. Priority multi-pass matching
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+
+            # Pass 1: Exact or Normalized match
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [])
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    src_norm = str(src_col).strip().lower()
+                    if src_norm == target.lower() or src_norm in [p.lower() for p in patterns]:
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            # Pass 2: Fuzzy (substring) match
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
