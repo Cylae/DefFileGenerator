@@ -171,7 +171,7 @@ class Extractor:
             if not table: continue
 
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]:
                 all_keys.update(row.keys())
 
             col_map = {}
