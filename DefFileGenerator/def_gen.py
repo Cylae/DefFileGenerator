@@ -281,24 +281,31 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
-        """Checks for address overlaps, allowing multiple BITS at same address."""
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage, warned_lines):
+        """Checks for address overlaps using $O(1)$ dictionary lookups."""
         try:
             start_addr = int(address.split('_')[0])
             reg_count = self.get_register_count(dtype, address)
-            end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {}
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for offset in range(reg_count):
+                curr_addr = start_addr + offset
+                if curr_addr in address_usage[info1]:
+                    for u_line, u_name, u_type in address_usage[info1][curr_addr]:
+                        # Allow multiple BITS on exactly the same base address
+                        if not (is_bits and u_type == 'BITS' and offset == 0):
+                            pair = tuple(sorted((line_num, u_line)))
+                            if pair not in warned_lines:
+                                logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (starts at {start_addr}). Overlaps with '{u_name}' (Line {u_line}).")
+                                warned_lines.add(pair)
+
+                if curr_addr not in address_usage[info1]:
+                    address_usage[info1][curr_addr] = []
+                address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
 
@@ -322,7 +329,8 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> {address: [(line, name, type)]}
+        warned_lines = set()
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -366,7 +374,7 @@ class Generator:
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
 
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
