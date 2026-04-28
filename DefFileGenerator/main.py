@@ -104,7 +104,7 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -146,6 +146,9 @@ def main():
     args = parser.parse_args()
     setup_logging(args.verbose)
 
+    if args.pages and os.path.splitext(args.input_file)[1].lower() != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
@@ -154,6 +157,16 @@ def main():
         run_command(args)
     else:
         parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        if logging.getLogger().getEffectiveLevel() == logging.DEBUG:
+            import traceback
+            traceback.print_exc()
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

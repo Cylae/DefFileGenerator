@@ -8,7 +8,7 @@ import json
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', required=True)
@@ -16,11 +16,12 @@ def main():
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
-    parser.add_argument('--sheet', help='Excel sheet name')
-    parser.add_argument('--pages', help='PDF pages (comma-separated integers)')
-    parser.add_argument('--mapping', help='JSON mapping file')
-    parser.add_argument('--address-offset', type=int, default=0)
-    parser.add_argument('--forced-write', default='')
+    parser_generate = parser.add_argument_group('Extraction Options')
+    parser_generate.add_argument('--sheet', help='Excel sheet name')
+    parser_generate.add_argument('--pages', help='PDF pages (comma-separated integers)')
+    parser_generate.add_argument('--mapping', help='JSON mapping file')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
+    parser_generate.add_argument('--forced-write', default='')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -66,6 +67,16 @@ def main():
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
     generator.write_output_csv(output_file, processed, args.manufacturer, args.model, args.protocol, args.category, args.forced_write)
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        if logging.getLogger().getEffectiveLevel() == logging.DEBUG:
+            import traceback
+            traceback.print_exc()
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
