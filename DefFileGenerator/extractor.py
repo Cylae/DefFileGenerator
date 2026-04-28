@@ -211,7 +211,12 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
+                # Remove thousands separators from address strings
+                addr = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', addr)
+
+                if dtype == 'BITS':
+                    # Default StartBit and Length if missing
+                    if sbit == '': sbit = '0'
                     if slen == '': slen = '1'
                     base_addr = addr.split('_')[0]
                     addr = f"{base_addr}_{sbit}_{slen}"

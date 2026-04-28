@@ -176,14 +176,6 @@ class Generator:
         return 1
 
     @staticmethod
-    def _get_val(row, key):
-        """Helper to get value from row case-insensitively."""
-        for k, v in row.items():
-            if k.lower().strip() == key.lower():
-                return str(v).strip() if v is not None else ''
-        return ''
-
-    @staticmethod
     def _parse_numeric(val, default=0.0):
         """Robust numeric parsing for scale factors and offsets."""
         if val is None or str(val).strip() == '':
@@ -281,24 +273,32 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
-        """Checks for address overlaps, allowing multiple BITS at same address."""
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage, warned_lines):
+        """Checks for address overlaps using a dictionary-based lookup (O(N) avg)."""
         try:
             start_addr = int(address.split('_')[0])
             reg_count = self.get_register_count(dtype, address)
             end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {}
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for addr in range(start_addr, end_addr + 1):
+                if addr in address_usage[info1]:
+                    for u_line, u_name, u_type in address_usage[info1][addr]:
+                        # Allow multiple BITS on exactly the same base address
+                        if not (is_bits and u_type == 'BITS' and start_addr == addr):
+                            # Prevent duplicate warnings for the same overlapping register pair
+                            warn_key = tuple(sorted([line_num, u_line]))
+                            if warn_key not in warned_lines:
+                                logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (address {addr}). Overlaps with '{u_name}' (Line {u_line}).")
+                                warned_lines.add(warn_key)
+
+                if addr not in address_usage[info1]:
+                    address_usage[info1][addr] = []
+                address_usage[info1][addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
 
@@ -322,22 +322,30 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> dict of addr -> list of (line, name, type)
+        warned_lines = set()
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
                 continue
 
-            name = self._get_val(row, 'Name')
-            tag = self._get_val(row, 'Tag')
-            reg_type_str = self._get_val(row, 'RegisterType')
-            address = self._get_val(row, 'Address')
-            dtype_raw = self._get_val(row, 'Type')
-            factor = self._get_val(row, 'Factor')
-            offset = self._get_val(row, 'Offset')
-            unit = self._get_val(row, 'Unit')
-            action = self._get_val(row, 'Action')
-            scale_factor_str = self._get_val(row, 'ScaleFactor')
+            # Normalize keys once per row for efficiency
+            norm_row = {str(k).lower().strip(): v for k, v in row.items()}
+
+            def get_norm_val(key):
+                val = norm_row.get(key.lower())
+                return str(val).strip() if val is not None else ''
+
+            name = get_norm_val('Name')
+            tag = get_norm_val('Tag')
+            reg_type_str = get_norm_val('RegisterType')
+            address = get_norm_val('Address')
+            dtype_raw = get_norm_val('Type')
+            factor = get_norm_val('Factor')
+            offset = get_norm_val('Offset')
+            unit = get_norm_val('Unit')
+            action = get_norm_val('Action')
+            scale_factor_str = get_norm_val('ScaleFactor')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -366,7 +374,7 @@ class Generator:
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
 
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
@@ -394,6 +402,7 @@ class Generator:
     def write_output_csv(output, processed_rows, manufacturer, model,
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
+        outfile = None
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -413,10 +422,12 @@ class Generator:
                 ])
 
             if isinstance(output, str):
-                outfile.close()
                 logging.info(f"Definition file generated at {output}")
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
+        finally:
+            if outfile and isinstance(output, str):
+                outfile.close()
 
 def generate_template(output_file):
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -424,18 +435,21 @@ def generate_template(output_file):
         ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
         ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
     ]
+    outfile = None
     try:
         if output_file:
-            with open(output_file, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
-                writer.writerow(headers)
-                writer.writerows(rows)
+            outfile = open(output_file, 'w', newline='', encoding='utf-8')
         else:
-            writer = csv.writer(sys.stdout)
-            writer.writerow(headers)
-            writer.writerows(rows)
+            outfile = sys.stdout
+
+        writer = csv.writer(outfile)
+        writer.writerow(headers)
+        writer.writerows(rows)
     except Exception as e:
         logging.error(f"Error generating template: {e}")
+    finally:
+        if outfile and output_file:
+            outfile.close()
 
 def run_generator(config: GeneratorConfig):
     if config.template:
