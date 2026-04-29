@@ -170,8 +170,9 @@ class Extractor:
         for table in tables:
             if not table: continue
 
+            # Scan first 10 rows for all possible keys
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]:
                 all_keys.update(row.keys())
 
             col_map = {}
@@ -211,10 +212,12 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                if dtype == 'BITS':
+                    # If it's BITS and bit info is missing from address, use detected columns
+                    if '_' not in addr:
+                        if sbit == '': sbit = '0'
+                        if slen == '': slen = '1'
+                        addr = f"{addr}_{sbit}_{slen}"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
