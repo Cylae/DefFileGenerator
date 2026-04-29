@@ -170,21 +170,34 @@ class Extractor:
         for table in tables:
             if not table: continue
 
+            # Robust key collection from more rows
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]:
                 all_keys.update(row.keys())
 
             col_map = {}
             used_src_cols = set()
 
-            # 1. Explicit mapping
+            # 1. Explicit mapping (highest priority)
             for target, source in self.mapping.items():
                 if source in all_keys:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
+            # 2. Two-pass matching (normalized then fuzzy)
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+
+            # Pass A: Exact or normalized match
+            for target in detection_order:
+                if target in col_map: continue
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    if str(src_col).strip().lower() == target.lower():
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            # Pass B: Fuzzy matching
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -211,10 +224,16 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                if dtype == 'BITS':
+                    # If bit info is missing from address but present in columns, construct it
+                    if '_' not in addr and (sbit != '' or slen != ''):
+                        if sbit == '': sbit = '0'
+                        if slen == '': slen = '1'
+                        base_addr = addr.split('_')[0]
+                        addr = f"{base_addr}_{sbit}_{slen}"
+                    elif '_' not in addr:
+                        # Ensure BITS always has bit parts for internal consistency
+                        addr = f"{addr}_0_1"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
