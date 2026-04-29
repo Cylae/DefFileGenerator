@@ -176,14 +176,6 @@ class Generator:
         return 1
 
     @staticmethod
-    def _get_val(row, key):
-        """Helper to get value from row case-insensitively."""
-        for k, v in row.items():
-            if k.lower().strip() == key.lower():
-                return str(v).strip() if v is not None else ''
-        return ''
-
-    @staticmethod
     def _parse_numeric(val, default=0.0):
         """Robust numeric parsing for scale factors and offsets."""
         if val is None or str(val).strip() == '':
@@ -281,24 +273,33 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
-        """Checks for address overlaps, allowing multiple BITS at same address."""
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage, warned_lines):
+        """Checks for address overlaps using O(1) dictionary lookup."""
         try:
             start_addr = int(address.split('_')[0])
             reg_count = self.get_register_count(dtype, address)
-            end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {}
 
             is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+            for offset in range(reg_count):
+                current_addr = start_addr + offset
+                if current_addr in address_usage[info1]:
+                    for u_line, u_name, u_type in address_usage[info1][current_addr]:
+                        # Allow multiple BITS on exactly the same base address
+                        if is_bits and u_type == 'BITS' and current_addr == start_addr:
+                            continue
+
+                        warning_pair = tuple(sorted((line_num, u_line)))
+                        if warning_pair not in warned_lines:
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}). Overlaps with '{u_name}' (Line {u_line}).")
+                            warned_lines.add(warning_pair)
+                else:
+                    address_usage[info1][current_addr] = []
+
+                address_usage[info1][current_addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
 
@@ -322,22 +323,26 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> addr -> list of (line, name, type)
+        warned_lines = set()
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
                 continue
 
-            name = self._get_val(row, 'Name')
-            tag = self._get_val(row, 'Tag')
-            reg_type_str = self._get_val(row, 'RegisterType')
-            address = self._get_val(row, 'Address')
-            dtype_raw = self._get_val(row, 'Type')
-            factor = self._get_val(row, 'Factor')
-            offset = self._get_val(row, 'Offset')
-            unit = self._get_val(row, 'Unit')
-            action = self._get_val(row, 'Action')
-            scale_factor_str = self._get_val(row, 'ScaleFactor')
+            # Normalize row once per iteration
+            norm_row = {str(k).lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
+
+            name = norm_row.get('name', '')
+            tag = norm_row.get('tag', '')
+            reg_type_str = norm_row.get('registertype', '')
+            address = norm_row.get('address', '')
+            dtype_raw = norm_row.get('type', '')
+            factor = norm_row.get('factor', '')
+            offset = norm_row.get('offset', '')
+            unit = norm_row.get('unit', '')
+            action = norm_row.get('action', '')
+            scale_factor_str = norm_row.get('scalefactor', '')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -366,7 +371,7 @@ class Generator:
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
 
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
@@ -374,10 +379,12 @@ class Generator:
             act_str = str(action).strip().upper()
             if not act_str:
                 norm_action = '1'
-            elif act_str in ['R', 'READ', '4']:
+            elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', '4']:
                 norm_action = '4'
-            elif act_str in ['RW', 'W', 'WRITE', '1']:
+            elif act_str in ['RW', 'READ/WRITE', 'W', 'WRITE', '1']:
                 norm_action = '1'
+            elif act_str in ['WO', 'WRITE-ONLY', '6']:
+                norm_action = '6'
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
@@ -395,8 +402,11 @@ class Generator:
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
+            outfile = None
+            should_close = False
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
+                should_close = True
             elif output is None:
                 outfile = sys.stdout
             else:
@@ -412,11 +422,13 @@ class Generator:
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
 
-            if isinstance(output, str):
+            if should_close:
                 outfile.close()
                 logging.info(f"Definition file generated at {output}")
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
+            if 'outfile' in locals() and should_close and outfile:
+                outfile.close()
 
 def generate_template(output_file):
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']

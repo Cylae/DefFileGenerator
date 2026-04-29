@@ -104,7 +104,7 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -154,6 +154,13 @@ def main():
         run_command(args)
     else:
         parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
