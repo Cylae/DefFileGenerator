@@ -24,6 +24,7 @@ try:
     from defusedxml import ElementTree as ET
     HAS_DEFUSEDXML = True
 except ImportError:
+    ET = None
     HAS_DEFUSEDXML = False
 
 try:
@@ -211,10 +212,18 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                if dtype == 'BITS':
+                    # Default StartBit and Length if not provided in address or via columns
+                    parts = addr.split('_')
+                    if len(parts) == 1:
+                        if sbit == '': sbit = '0'
+                        if slen == '': slen = '1'
+                        addr = f"{parts[0]}_{sbit}_{slen}"
+                    elif len(parts) == 2:
+                        # Only base and startbit (or base and length)?
+                        # Project standard says Addr_StartBit_Length
+                        if slen == '': slen = '1'
+                        addr = f"{parts[0]}_{parts[1]}_{slen}"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
