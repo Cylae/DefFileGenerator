@@ -15,7 +15,7 @@ This tool automatically extracts Modbus register information from manufacturer d
 ## Installation
 
 ```bash
-pip install pandas openpyxl pdfplumber lxml
+pip install pdfplumber openpyxl pandas lxml defusedxml reportlab
 ```
 
 ## Usage
@@ -33,6 +33,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol`: Protocol name (default: `modbusRTU`).
 - `--category`: Device category (default: `Inverter`).
 - `--sheet`: Specific Excel sheet name to process (processes all if omitted).
+- `--pages`: Comma-separated list of PDF pages to process.
+- `--mapping`: JSON file mapping internal targets to source column names.
+- `--address-offset`: Integer value to add to all extracted register addresses.
+- `--forced-write`: Optional string for the 'forced_write' field in the header.
 - `-v`, `--verbose`: Show detailed processing information.
 
 ## How It Works
@@ -65,7 +69,7 @@ Common types are automatically mapped:
 
 ### Normalization Logic
 
-- **Addresses**: Removes commas, extracts numbers, and converts hex to decimal.
+- **Addresses**: Removes commas, extracts numbers, and converts hex to decimal. Supports `--address-offset`.
 - **Tags**: Lowercases and replaces non-alphanumeric characters with underscores. Ensures uniqueness by adding numeric suffixes if necessary.
 - **Scaling**: If a scale column is found, it is used as `CoefA`. Supports fractions like `1/10`.
 
