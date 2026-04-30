@@ -394,6 +394,7 @@ class Generator:
     def write_output_csv(output, processed_rows, manufacturer, model,
                         protocol='modbusRTU', category='Inverter', forced_write=''):
         """Centralized method to write the WebdynSunPM CSV format."""
+        outfile = None
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -413,10 +414,12 @@ class Generator:
                 ])
 
             if isinstance(output, str):
-                outfile.close()
                 logging.info(f"Definition file generated at {output}")
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
+        finally:
+            if outfile and isinstance(output, str):
+                outfile.close()
 
 def generate_template(output_file):
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']

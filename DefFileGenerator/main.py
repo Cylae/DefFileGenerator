@@ -19,8 +19,12 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping file: {e}")
+            return []
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
@@ -28,13 +32,25 @@ def _perform_extraction(args):
     address_offset = getattr(args, 'address_offset', 0)
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        if getattr(args, 'pages', None):
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        raw_data = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = None
+        if getattr(args, 'pages', None):
+            try:
+                pages = [int(p.strip()) for p in args.pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                return []
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
+        if getattr(args, 'pages', None):
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
         raw_data = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml':
+        if getattr(args, 'pages', None):
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
         raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
@@ -104,6 +120,21 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
+def _run_cli(args):
+    setup_logging(args.verbose)
+
+    if args.command == 'extract':
+        extract_command(args)
+    elif args.command == 'generate':
+        generate_command(args)
+    elif args.command == 'run':
+        run_command(args)
+    else:
+        # This part shouldn't really be reached if argparse is working correctly
+        # but good for safety.
+        print("No command specified.")
+        sys.exit(1)
+
 def main():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -144,16 +175,17 @@ def main():
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     args = parser.parse_args()
-    setup_logging(args.verbose)
-
-    if args.command == 'extract':
-        extract_command(args)
-    elif args.command == 'generate':
-        generate_command(args)
-    elif args.command == 'run':
-        run_command(args)
-    else:
+    if not args.command:
         parser.print_help()
+        sys.exit(0)
+
+    try:
+        _run_cli(args)
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        if args.verbose:
+            logging.exception(e)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
