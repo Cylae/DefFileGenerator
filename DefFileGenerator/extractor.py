@@ -209,8 +209,15 @@ class Extractor:
                 dtype = self.normalize_type(new_row.get('Type', 'U16'))
                 new_row['Type'] = dtype
 
-                # Address normalization/construction
-                addr = str(new_row.get('Address', '')).strip()
+                # Address normalization/construction (ensure thousands separator removal)
+                addr_raw = str(new_row.get('Address', '')).strip()
+                addr_parts = addr_raw.split('_')
+                clean_parts = []
+                for p in addr_parts:
+                    p_clean = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', p.strip())
+                    clean_parts.append(p_clean)
+                addr = '_'.join(clean_parts)
+
                 if dtype == 'BITS' and sbit != '':
                     if slen == '': slen = '1'
                     base_addr = addr.split('_')[0]
