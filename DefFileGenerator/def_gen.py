@@ -176,14 +176,6 @@ class Generator:
         return 1
 
     @staticmethod
-    def _get_val(row, key):
-        """Helper to get value from row case-insensitively."""
-        for k, v in row.items():
-            if k.lower().strip() == key.lower():
-                return str(v).strip() if v is not None else ''
-        return ''
-
-    @staticmethod
     def _parse_numeric(val, default=0.0):
         """Robust numeric parsing for scale factors and offsets."""
         if val is None or str(val).strip() == '':
@@ -281,24 +273,31 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage):
+    def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage, warned_lines):
         """Checks for address overlaps, allowing multiple BITS at same address."""
         try:
-            start_addr = int(address.split('_')[0])
+            parts = address.split('_')
+            start_addr = int(parts[0])
             reg_count = self.get_register_count(dtype, address)
-            end_addr = start_addr + reg_count - 1
+            is_bits = (dtype.upper() == 'BITS')
 
             if info1 not in address_usage:
-                address_usage[info1] = []
+                address_usage[info1] = {}
 
-            is_bits = (dtype.upper() == 'BITS')
-            for u_start, u_end, u_line, u_name, u_type in address_usage[info1]:
-                if max(start_addr, u_start) <= min(end_addr, u_end):
-                    # Allow multiple BITS on exactly the same base address
-                    if not (is_bits and u_type == 'BITS' and start_addr == u_start):
-                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{end_addr}). Overlaps with '{u_name}' (Line {u_line}, {u_start}-{u_end}).")
+            for offset in range(reg_count):
+                addr = start_addr + offset
+                if addr in address_usage[info1]:
+                    for u_line, u_name, u_type in address_usage[info1][addr]:
+                        # Allow multiple BITS on exactly the same base address (base address only)
+                        if not (is_bits and u_type == 'BITS' and offset == 0):
+                            warn_key = tuple(sorted((line_num, u_line)))
+                            if warn_key not in warned_lines:
+                                logging.warning(f"Line {line_num}: Address overlap detected for '{name}' ({start_addr}-{start_addr+reg_count-1}). Overlaps with '{u_name}' (Line {u_line}).")
+                                warned_lines.add(warn_key)
 
-            address_usage[info1].append((start_addr, end_addr, line_num, name, dtype.upper()))
+                if addr not in address_usage[info1]:
+                    address_usage[info1][addr] = []
+                address_usage[info1][addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
 
@@ -322,22 +321,25 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> list of (start, end, line, name, type)
+        address_usage = {} # Info1 -> addr -> list of (line, name, type)
+        warned_lines = set()
 
-        for line_num, row in enumerate(rows, start=2):
-            if not any(v for v in row.values() if v):
+        for line_num, raw_row in enumerate(rows, start=2):
+            # Normalize row keys once per iteration for efficiency
+            row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in raw_row.items()}
+            if not any(row.values()):
                 continue
 
-            name = self._get_val(row, 'Name')
-            tag = self._get_val(row, 'Tag')
-            reg_type_str = self._get_val(row, 'RegisterType')
-            address = self._get_val(row, 'Address')
-            dtype_raw = self._get_val(row, 'Type')
-            factor = self._get_val(row, 'Factor')
-            offset = self._get_val(row, 'Offset')
-            unit = self._get_val(row, 'Unit')
-            action = self._get_val(row, 'Action')
-            scale_factor_str = self._get_val(row, 'ScaleFactor')
+            name = row.get('name', '')
+            tag = row.get('tag', '')
+            reg_type_str = row.get('registertype', '')
+            address = row.get('address', '')
+            dtype_raw = row.get('type', '')
+            factor = row.get('factor', '')
+            offset = row.get('offset', '')
+            unit = row.get('unit', '')
+            action = row.get('action', '')
+            scale_factor_str = row.get('scalefactor', '')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
@@ -366,7 +368,7 @@ class Generator:
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
 
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
