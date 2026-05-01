@@ -19,8 +19,12 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping file: {e}")
+            sys.exit(1)
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
@@ -30,7 +34,13 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = None
+        if args.pages:
+            try:
+                pages = [int(p.strip()) for p in args.pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -104,6 +114,19 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
+def _run_cli(args):
+    setup_logging(args.verbose)
+
+    if args.command == 'extract':
+        extract_command(args)
+    elif args.command == 'generate':
+        generate_command(args)
+    elif args.command == 'run':
+        run_command(args)
+    else:
+        return False
+    return True
+
 def main():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -144,16 +167,15 @@ def main():
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     args = parser.parse_args()
-    setup_logging(args.verbose)
 
-    if args.command == 'extract':
-        extract_command(args)
-    elif args.command == 'generate':
-        generate_command(args)
-    elif args.command == 'run':
-        run_command(args)
-    else:
-        parser.print_help()
+    try:
+        if not _run_cli(args):
+            parser.print_help()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        if args.verbose:
+            logging.exception(e)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

@@ -135,7 +135,15 @@ class Extractor:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
                 root = tree.getroot()
+        except Exception as e:
+            # Let defusedxml security exceptions propagate
+            import defusedxml
+            if isinstance(e, (defusedxml.EntitiesForbidden, defusedxml.DTDForbidden, defusedxml.ExternalReferenceForbidden)):
+                raise
+            logging.error(f"Error extracting from XML {filepath}: {e}")
+            return []
 
+        try:
             data = []
             for elem in root.iter():
                 row = {}
@@ -211,10 +219,14 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
-                    if slen == '': slen = '1'
-                    base_addr = addr.split('_')[0]
-                    addr = f"{base_addr}_{sbit}_{slen}"
+                if dtype == 'BITS':
+                    if sbit != '':
+                        if slen == '': slen = '1'
+                        base_addr = addr.split('_')[0]
+                        addr = f"{base_addr}_{sbit}_{slen}"
+                    elif '_' not in addr:
+                        # Simple address for BITS, default to bit 0, length 1
+                        addr = f"{addr}_0_1"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
