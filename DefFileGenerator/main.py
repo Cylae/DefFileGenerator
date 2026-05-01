@@ -19,8 +19,12 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except (json.JSONDecodeError, IOError) as e:
+            logging.error(f"Error reading mapping file: {e}")
+            return []
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
@@ -30,7 +34,14 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        if args.pages:
+            try:
+                pages = [int(p.strip()) for p in args.pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                return []
+        else:
+            pages = None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -39,6 +50,9 @@ def _perform_extraction(args):
     else:
         logging.error(f"Unsupported extension: {ext}")
         return []
+
+    if args.pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     return extractor.map_and_clean(raw_data, address_offset)
 
@@ -104,7 +118,7 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -154,6 +168,17 @@ def main():
         run_command(args)
     else:
         parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except KeyboardInterrupt:
+        sys.exit(130)
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        if logging.getLogger().isEnabledFor(logging.DEBUG):
+            logging.exception(e)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
