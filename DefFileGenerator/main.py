@@ -19,8 +19,12 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error reading mapping file: {e}")
+            sys.exit(1)
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
@@ -104,7 +108,7 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -146,6 +150,19 @@ def main():
     args = parser.parse_args()
     setup_logging(args.verbose)
 
+    # Validate --pages
+    pages_arg = getattr(args, 'pages', None)
+    if pages_arg:
+        ext = os.path.splitext(args.input_file)[1].lower()
+        if ext != '.pdf':
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        else:
+            try:
+                [int(p.strip()) for p in pages_arg.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
+
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
@@ -154,6 +171,13 @@ def main():
         run_command(args)
     else:
         parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
