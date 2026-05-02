@@ -6,8 +6,12 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+try:
+    from DefFileGenerator.extractor import Extractor
+    from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+except ImportError:
+    logging.error("Failed to import core modules. Ensure the package is in PYTHONPATH.")
+    sys.exit(1)
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -19,8 +23,12 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error loading mapping file: {e}")
+            sys.exit(1)
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
@@ -30,7 +38,13 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = None
+        if args.pages:
+            try:
+                pages = [int(p.strip()) for p in args.pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -104,7 +118,7 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -146,6 +160,9 @@ def main():
     args = parser.parse_args()
     setup_logging(args.verbose)
 
+    if getattr(args, 'pages', None) and os.path.splitext(args.input_file)[1].lower() != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
@@ -154,6 +171,15 @@ def main():
         run_command(args)
     else:
         parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        if logging.getLogger().isEnabledFor(logging.DEBUG):
+            logging.exception(e)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

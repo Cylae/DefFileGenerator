@@ -25,6 +25,7 @@ try:
     HAS_DEFUSEDXML = True
 except ImportError:
     HAS_DEFUSEDXML = False
+    ET = None
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -154,6 +155,9 @@ class Extractor:
                     seen.add(js)
 
             return [unique_data] if unique_data else []
+        except (ET.EntitiesForbidden, ET.DTDForbidden, ET.ExternalReferenceForbidden) as e:
+            logging.error(f"Security error parsing XML {filepath}: {e}")
+            raise
         except Exception as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
             return []
@@ -171,7 +175,7 @@ class Extractor:
             if not table: continue
 
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]:
                 all_keys.update(row.keys())
 
             col_map = {}
