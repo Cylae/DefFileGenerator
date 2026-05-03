@@ -20,10 +20,14 @@ try:
 except ImportError:
     HAS_PDFPLUMBER = False
 
+SECURITY_EXCEPTIONS = ()
 try:
     from defusedxml import ElementTree as ET
+    from defusedxml.common import EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden
     HAS_DEFUSEDXML = True
+    SECURITY_EXCEPTIONS = (EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden)
 except ImportError:
+    ET = None
     HAS_DEFUSEDXML = False
 
 try:
@@ -154,6 +158,9 @@ class Extractor:
                     seen.add(js)
 
             return [unique_data] if unique_data else []
+        except SECURITY_EXCEPTIONS as e:
+            logging.error(f"Security violation in XML {filepath}: {e}")
+            raise
         except Exception as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
             return []
@@ -171,7 +178,7 @@ class Extractor:
             if not table: continue
 
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]: # Increased to first 10 rows
                 all_keys.update(row.keys())
 
             col_map = {}
@@ -183,8 +190,20 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
+            # 2. Priority multi-pass matching
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+
+            # Pass A: Exact or normalized match
+            for target in detection_order:
+                if target in col_map: continue
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    if str(src_col).lower().strip() == target.lower():
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            # Pass B: Fuzzy matching
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -211,10 +230,15 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
+                # Explicit thousands separator removal
+                addr = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', addr)
+
                 if dtype == 'BITS' and sbit != '':
                     if slen == '': slen = '1'
                     base_addr = addr.split('_')[0]
                     addr = f"{base_addr}_{sbit}_{slen}"
+                elif dtype == 'STRING' and slen != '' and '_' not in addr:
+                    addr = f"{addr}_{slen}"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
