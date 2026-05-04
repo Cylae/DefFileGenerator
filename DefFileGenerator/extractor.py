@@ -118,12 +118,16 @@ class Extractor:
                 content = f.read()
                 encoding = 'utf-16' if content.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
             with open(filepath, 'r', encoding=encoding) as f:
-                snippet = f.read(1024)
+                snippet = f.read(2048)
                 f.seek(0)
-                delimiter = ','
-                for d in [',', ';', '\t']:
-                    if d in snippet:
-                        delimiter = d; break
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                    delimiter = dialect.delimiter
+                except csv.Error:
+                    delimiter = ','
+                    for d in [',', ';', '\t']:
+                        if d in snippet:
+                            delimiter = d; break
                 reader = csv.DictReader(f, delimiter=delimiter)
                 return [list(reader)]
         except Exception as e:
