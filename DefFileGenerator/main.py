@@ -19,18 +19,26 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
-            mapping = json.load(f)
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except Exception as e:
+            logging.error(f"Error loading mapping file: {e}")
+            return []
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
     address_offset = getattr(args, 'address_offset', 0)
+    pages_arg = getattr(args, 'pages', None)
+
+    if pages_arg and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = [int(p.strip()) for p in pages_arg.split(',')] if pages_arg else None
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -104,7 +112,7 @@ def run_command(args):
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
 
-def main():
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -144,6 +152,10 @@ def main():
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     args = parser.parse_args()
+    if not args.command:
+        parser.print_help()
+        return
+
     setup_logging(args.verbose)
 
     if args.command == 'extract':
@@ -152,8 +164,13 @@ def main():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
-    else:
-        parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
