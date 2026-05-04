@@ -22,9 +22,12 @@ except ImportError:
 
 try:
     from defusedxml import ElementTree as ET
+    from defusedxml.common import EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden
     HAS_DEFUSEDXML = True
+    SECURITY_EXCEPTIONS = (EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden)
 except ImportError:
     HAS_DEFUSEDXML = False
+    SECURITY_EXCEPTIONS = ()
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -154,6 +157,8 @@ class Extractor:
                     seen.add(js)
 
             return [unique_data] if unique_data else []
+        except SECURITY_EXCEPTIONS:
+            raise
         except Exception as e:
             # Re-raise security-related exceptions from defusedxml if they occur
             if 'EntitiesForbidden' in str(type(e)) or 'DTDForbidden' in str(type(e)) or 'ExternalReferenceForbidden' in str(type(e)):

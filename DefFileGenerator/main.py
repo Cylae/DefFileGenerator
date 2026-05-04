@@ -27,14 +27,27 @@ def _perform_extraction(args):
             sys.exit(1)
 
     extractor = Extractor(mapping)
-    ext = os.path.splitext(args.input_file)[1].lower()
+    if not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
 
+    ext = os.path.splitext(args.input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
+    pages_arg = getattr(args, 'pages', None)
+
+    if pages_arg and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = [int(p.strip()) for p in args.pages.split(',')] if args.pages else None
+        pages = None
+        if getattr(args, 'pages', None):
+            try:
+                pages = [int(p.strip()) for p in args.pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -148,6 +161,10 @@ def _run_cli():
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     args = parser.parse_args()
+    if not args.command:
+        parser.print_help()
+        return
+
     setup_logging(args.verbose)
 
     # Validate --pages
@@ -169,8 +186,22 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
-    else:
-        parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
+
+def main():
+    try:
+        _run_cli()
+    except KeyboardInterrupt:
+        sys.exit(130)
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
 
 def main():
     try:
