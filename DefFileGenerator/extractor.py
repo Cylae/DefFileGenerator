@@ -22,9 +22,12 @@ except ImportError:
 
 try:
     from defusedxml import ElementTree as ET
+    from defusedxml.common import EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden
     HAS_DEFUSEDXML = True
+    SECURITY_EXCEPTIONS = (EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden)
 except ImportError:
     HAS_DEFUSEDXML = False
+    SECURITY_EXCEPTIONS = ()
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -154,6 +157,8 @@ class Extractor:
                     seen.add(js)
 
             return [unique_data] if unique_data else []
+        except SECURITY_EXCEPTIONS:
+            raise
         except Exception as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
             return []
@@ -171,7 +176,7 @@ class Extractor:
             if not table: continue
 
             all_keys = set()
-            for row in table[:5]:
+            for row in table[:10]:
                 all_keys.update(row.keys())
 
             col_map = {}
@@ -215,6 +220,10 @@ class Extractor:
                     if slen == '': slen = '1'
                     base_addr = addr.split('_')[0]
                     addr = f"{base_addr}_{sbit}_{slen}"
+                elif dtype == 'STRING' and slen != '':
+                    base_addr = addr.split('_')[0]
+                    if '_' not in addr:
+                        addr = f"{base_addr}_{slen}"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)

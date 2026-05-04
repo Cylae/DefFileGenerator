@@ -4,7 +4,7 @@ import csv
 import json
 from openpyxl import Workbook
 from reportlab.pdfgen import canvas
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, HAS_OPENPYXL, HAS_PDFPLUMBER
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
@@ -24,10 +24,13 @@ class TestExtractor(unittest.TestCase):
         wb.save(self.excel_file)
 
         # Create dummy PDF
-        from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-        from reportlab.lib.pagesizes import letter
+        try:
+            from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+            from reportlab.lib.pagesizes import letter
 
-        doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
+            doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
+        except ImportError:
+            return
         data = [
             ["Address", "Name", "Type"],
             ["1000", "Temp", "U16"],
@@ -52,13 +55,17 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(Extractor.normalize_type("Float32"), "F32")
         self.assertEqual(Extractor.normalize_type("unsigned int 16"), "U16")
 
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_extract_from_excel(self):
+        if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
         data = self.extractor.extract_from_excel(self.excel_file)
         self.assertEqual(len(data), 1) # One sheet = one table
         self.assertEqual(len(data[0]), 3) # 3 data rows
         self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_map_and_clean_excel(self):
+        if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
         raw_data = self.extractor.extract_from_excel(self.excel_file)
         # Custom mapping
         self.extractor.mapping = {
@@ -74,7 +81,9 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[1]["Type"], "I32")
         self.assertEqual(mapped[2]["Type"], "F32")
 
+    @unittest.skipUnless(HAS_PDFPLUMBER, "pdfplumber not installed")
     def test_extract_from_pdf(self):
+        if not os.path.exists(self.pdf_file): self.skipTest("PDF file not created")
         data = self.extractor.extract_from_pdf(self.pdf_file)
         self.assertEqual(len(data), 1) # One table found
         self.assertEqual(len(data[0]), 2) # 2 data rows
