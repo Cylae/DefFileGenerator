@@ -33,6 +33,10 @@ def _perform_extraction(args):
 
     ext = os.path.splitext(args.input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
+    pages_arg = getattr(args, 'pages', None)
+
+    if pages_arg and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
@@ -157,6 +161,10 @@ def _run_cli():
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     args = parser.parse_args()
+    if not args.command:
+        parser.print_help()
+        return
+
     setup_logging(args.verbose)
 
     if args.command == 'extract':
@@ -165,8 +173,13 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
-    else:
-        parser.print_help()
+
+def main():
+    try:
+        _run_cli()
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
 
 def main():
     try:

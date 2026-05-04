@@ -176,12 +176,10 @@ class Generator:
         return 1
 
     @staticmethod
-    def _get_val(row, key):
-        """Helper to get value from row case-insensitively."""
-        for k, v in row.items():
-            if k.lower().strip() == key.lower():
-                return str(v).strip() if v is not None else ''
-        return ''
+    def _get_val(normalized_row, key):
+        """Helper to get value from a pre-normalized row (keys lower and stripped)."""
+        v = normalized_row.get(key.lower())
+        return str(v).strip() if v is not None else ''
 
     @staticmethod
     def _parse_numeric(val, default=0.0):

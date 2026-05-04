@@ -188,8 +188,22 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            # 2. Priority fuzzy matching
+            # 2. Multi-pass matching
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+
+            # Pass 1: Exact or simple normalized match
+            for target in detection_order:
+                if target in col_map: continue
+                target_norm = target.lower()
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    src_norm = str(src_col).lower().replace(' ', '').replace('_', '')
+                    if src_norm == target_norm:
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            # Pass 2: Fuzzy pattern matching
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -216,7 +230,16 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '':
+
+                # Robust address parts normalization to prevent corruption
+                if addr:
+                    parts = addr.split('_')
+                    if Generator:
+                        parts = [Generator.normalize_address_val(p) for p in parts]
+                    addr = '_'.join(parts)
+
+                # Defaulting for BITS and STRING
+                if dtype == 'BITS' and sbit != '' and '_' not in addr:
                     if slen == '': slen = '1'
                     base_addr = addr.split('_')[0]
                     addr = f"{base_addr}_{sbit}_{slen}"

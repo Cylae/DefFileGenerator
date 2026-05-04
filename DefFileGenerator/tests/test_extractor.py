@@ -14,14 +14,15 @@ class TestExtractor(unittest.TestCase):
         self.mapping_file = "test_mapping.json"
 
         # Create dummy Excel
-        wb = Workbook()
-        ws = wb.active
-        ws.title = "Registers"
-        ws.append(["Reg Addr", "Description", "Data Type", "Unit"])
-        ws.append(["0x0001", "Voltage", "Uint16", "V"])
-        ws.append(["0x0002", "Current", "Int32", "A"])
-        ws.append(["40001", "Power", "Float32", "W"])
-        wb.save(self.excel_file)
+        if HAS_OPENPYXL:
+            wb = Workbook()
+            ws = wb.active
+            ws.title = "Registers"
+            ws.append(["Reg Addr", "Description", "Data Type", "Unit"])
+            ws.append(["0x0001", "Voltage", "Uint16", "V"])
+            ws.append(["0x0002", "Current", "Int32", "A"])
+            ws.append(["40001", "Power", "Float32", "W"])
+            wb.save(self.excel_file)
 
         # Create dummy PDF
         try:
