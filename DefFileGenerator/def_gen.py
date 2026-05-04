@@ -280,29 +280,28 @@ class Generator:
         return '3'
 
     def _check_address_overlap(self, info1, address, dtype, name, line_num, address_usage, warned_lines):
-        """Checks for address overlaps in O(N) using a dictionary lookup."""
+        """Checks for address overlaps using O(N) dictionary lookup."""
         try:
             start_addr = int(address.split('_')[0])
             reg_count = self.get_register_count(dtype, address)
-            is_bits = (dtype.upper() == 'BITS')
 
             if info1 not in address_usage:
                 address_usage[info1] = {}
 
-            for offset in range(reg_count):
-                curr_addr = start_addr + offset
+            is_bits = (dtype.upper() == 'BITS')
+            for i in range(reg_count):
+                curr_addr = start_addr + i
                 if curr_addr in address_usage[info1]:
                     for u_line, u_name, u_type in address_usage[info1][curr_addr]:
                         # Allow multiple BITS on exactly the same base address
-                        if is_bits and u_type == 'BITS' and offset == 0 and curr_addr == start_addr:
+                        if is_bits and u_type == 'BITS' and curr_addr == start_addr:
                             continue
 
-                        overlap_key = tuple(sorted((line_num, u_line)))
-                        if overlap_key not in warned_lines:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' (at {curr_addr}). Overlaps with '{u_name}' (Line {u_line}).")
-                            warned_lines.add(overlap_key)
-
-                if curr_addr not in address_usage[info1]:
+                        warn_key = tuple(sorted((line_num, u_line)))
+                        if warn_key not in warned_lines:
+                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {curr_addr}. Overlaps with '{u_name}' (Line {u_line}).")
+                            warned_lines.add(warn_key)
+                else:
                     address_usage[info1][curr_addr] = []
                 address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
@@ -328,7 +327,7 @@ class Generator:
         processed_rows = []
         seen_names = {}
         seen_tags = {}
-        address_usage = {} # Info1 -> addr -> list of (line, name, type)
+        address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
         warned_lines = set()
 
         for line_num, row in enumerate(rows, start=2):

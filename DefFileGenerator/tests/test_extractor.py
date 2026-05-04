@@ -2,9 +2,22 @@ import unittest
 import os
 import csv
 import json
-from openpyxl import Workbook
-from reportlab.pdfgen import canvas
-from DefFileGenerator.extractor import Extractor, HAS_OPENPYXL, HAS_PDFPLUMBER
+
+try:
+    from openpyxl import Workbook
+    HAS_OPENPYXL = True
+except ImportError:
+    HAS_OPENPYXL = False
+
+try:
+    from reportlab.pdfgen import canvas
+    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+    from reportlab.lib.pagesizes import letter
+    HAS_REPORTLAB = True
+except ImportError:
+    HAS_REPORTLAB = False
+
+from DefFileGenerator.extractor import Extractor
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
@@ -25,24 +38,19 @@ class TestExtractor(unittest.TestCase):
             wb.save(self.excel_file)
 
         # Create dummy PDF
-        try:
-            from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
-            from reportlab.lib.pagesizes import letter
-
+        if HAS_REPORTLAB:
             doc = SimpleDocTemplate(self.pdf_file, pagesize=letter)
-        except ImportError:
-            return
-        data = [
-            ["Address", "Name", "Type"],
-            ["1000", "Temp", "U16"],
-            ["1001", "Humid", "U16"]
-        ]
-        t = Table(data)
-        t.setStyle(TableStyle([
-            ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
-        ]))
-        elements = [t]
-        doc.build(elements)
+            data = [
+                ["Address", "Name", "Type"],
+                ["1000", "Temp", "U16"],
+                ["1001", "Humid", "U16"]
+            ]
+            t = Table(data)
+            t.setStyle(TableStyle([
+                ('GRID', (0, 0), (-1, -1), 1, (0, 0, 0)),
+            ]))
+            elements = [t]
+            doc.build(elements)
 
     def tearDown(self):
         for f in [self.excel_file, self.pdf_file, self.mapping_file]:
@@ -82,7 +90,7 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[1]["Type"], "I32")
         self.assertEqual(mapped[2]["Type"], "F32")
 
-    @unittest.skipUnless(HAS_PDFPLUMBER, "pdfplumber not installed")
+    @unittest.skipUnless(HAS_REPORTLAB, "reportlab not installed")
     def test_extract_from_pdf(self):
         if not os.path.exists(self.pdf_file): self.skipTest("PDF file not created")
         data = self.extractor.extract_from_pdf(self.pdf_file)

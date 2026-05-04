@@ -167,6 +167,19 @@ def _run_cli():
 
     setup_logging(args.verbose)
 
+    # Validate --pages
+    pages_arg = getattr(args, 'pages', None)
+    if pages_arg:
+        ext = os.path.splitext(args.input_file)[1].lower()
+        if ext != '.pdf':
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        else:
+            try:
+                [int(p.strip()) for p in pages_arg.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
+
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
@@ -186,6 +199,13 @@ def main():
         _run_cli()
     except KeyboardInterrupt:
         sys.exit(130)
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
+
+def main():
+    try:
+        _run_cli()
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
