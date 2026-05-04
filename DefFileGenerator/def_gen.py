@@ -176,12 +176,10 @@ class Generator:
         return 1
 
     @staticmethod
-    def _get_val(row, key):
-        """Helper to get value from row case-insensitively."""
-        for k, v in row.items():
-            if k.lower().strip() == key.lower():
-                return str(v).strip() if v is not None else ''
-        return ''
+    def _get_val(normalized_row, key):
+        """Helper to get value from a pre-normalized row (keys lower and stripped)."""
+        v = normalized_row.get(key.lower())
+        return str(v).strip() if v is not None else ''
 
     @staticmethod
     def _parse_numeric(val, default=0.0):
@@ -328,16 +326,19 @@ class Generator:
             if not any(v for v in row.values() if v):
                 continue
 
-            name = self._get_val(row, 'Name')
-            tag = self._get_val(row, 'Tag')
-            reg_type_str = self._get_val(row, 'RegisterType')
-            address = self._get_val(row, 'Address')
-            dtype_raw = self._get_val(row, 'Type')
-            factor = self._get_val(row, 'Factor')
-            offset = self._get_val(row, 'Offset')
-            unit = self._get_val(row, 'Unit')
-            action = self._get_val(row, 'Action')
-            scale_factor_str = self._get_val(row, 'ScaleFactor')
+            # Pre-normalize row keys once per row for performance
+            norm_row = {str(k).lower().strip(): v for k, v in row.items()}
+
+            name = self._get_val(norm_row, 'Name')
+            tag = self._get_val(norm_row, 'Tag')
+            reg_type_str = self._get_val(norm_row, 'RegisterType')
+            address = self._get_val(norm_row, 'Address')
+            dtype_raw = self._get_val(norm_row, 'Type')
+            factor = self._get_val(norm_row, 'Factor')
+            offset = self._get_val(norm_row, 'Offset')
+            unit = self._get_val(norm_row, 'Unit')
+            action = self._get_val(norm_row, 'Action')
+            scale_factor_str = self._get_val(norm_row, 'ScaleFactor')
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
