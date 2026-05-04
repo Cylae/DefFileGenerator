@@ -74,6 +74,8 @@ def _run_cli():
 def main():
     try:
         _run_cli()
+    except KeyboardInterrupt:
+        sys.exit(130)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
