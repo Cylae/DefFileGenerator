@@ -26,6 +26,10 @@ def _run_cli():
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
+    if not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
+
     ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
@@ -70,6 +74,8 @@ def _run_cli():
 def main():
     try:
         _run_cli()
+    except KeyboardInterrupt:
+        sys.exit(130)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)

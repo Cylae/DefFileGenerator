@@ -22,11 +22,9 @@ except ImportError:
 
 try:
     from defusedxml import ElementTree as ET
-    from defusedxml.EntitiesForbidden import EntitiesForbidden
-    from defusedxml.DTDForbidden import DTDForbidden
-    from defusedxml.ExternalReferenceForbidden import ExternalReferenceForbidden
-    SECURITY_EXCEPTIONS = (EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden)
+    from defusedxml.common import EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden
     HAS_DEFUSEDXML = True
+    SECURITY_EXCEPTIONS = (EntitiesForbidden, DTDForbidden, ExternalReferenceForbidden)
 except ImportError:
     HAS_DEFUSEDXML = False
     SECURITY_EXCEPTIONS = ()
@@ -243,9 +241,12 @@ class Extractor:
                 # Defaulting for BITS and STRING
                 if dtype == 'BITS' and sbit != '' and '_' not in addr:
                     if slen == '': slen = '1'
-                    addr = f"{addr}_{sbit}_{slen}"
-                elif (dtype == 'STRING' or dtype.startswith('STR')) and slen != '' and '_' not in addr:
-                    addr = f"{addr}_{slen}"
+                    base_addr = addr.split('_')[0]
+                    addr = f"{base_addr}_{sbit}_{slen}"
+                elif dtype == 'STRING' and slen != '':
+                    base_addr = addr.split('_')[0]
+                    if '_' not in addr:
+                        addr = f"{base_addr}_{slen}"
 
                 if generator:
                     new_row['Address'] = generator.apply_address_offset(addr, address_offset)
