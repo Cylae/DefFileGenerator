@@ -176,12 +176,6 @@ class Generator:
         return 1
 
     @staticmethod
-    def _get_val(normalized_row, key):
-        """Helper to get value from a pre-normalized row (keys lower and stripped)."""
-        v = normalized_row.get(key.lower())
-        return str(v).strip() if v is not None else ''
-
-    @staticmethod
     def _parse_numeric(val, default=0.0):
         """Robust numeric parsing for scale factors and offsets."""
         if val is None or str(val).strip() == '':
@@ -214,13 +208,14 @@ class Generator:
         except ValueError:
             return default
 
-    def apply_address_offset(self, address, offset, line_num=None, name=None):
+    @staticmethod
+    def apply_address_offset(address, offset, line_num=None, name=None):
         """Applies an integer offset to a register address (simple or compound)."""
         if not address:
             return ""
         parts = address.split('_')
         # Normalize each part individually
-        norm_parts = [self.normalize_address_val(p) for p in parts]
+        norm_parts = [Generator.normalize_address_val(p) for p in parts]
 
         try:
             base_addr = int(norm_parts[0]) + offset
@@ -366,7 +361,7 @@ class Generator:
                     address = f"{address}_{length}"
 
             # Apply address offset and normalize
-            address = self.apply_address_offset(address, address_offset, line_num, name)
+            address = Generator.apply_address_offset(address, address_offset, line_num, name)
 
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
@@ -446,31 +441,42 @@ def generate_template(output_file):
     except Exception as e:
         logging.error(f"Error generating template: {e}")
 
-def run_generator(config: GeneratorConfig):
+def run_generator(config: GeneratorConfig, input_data=None):
     if config.template:
         generate_template(config.output)
         return
 
-    if not config.input_file or not config.manufacturer or not config.model:
-        logging.error("input_file, manufacturer, and model are required.")
+    if input_data is None:
+        if not config.input_file:
+            logging.error("input_file or input_data is required.")
+            return
+        if not os.path.exists(config.input_file):
+            logging.error(f"Input file not found: {config.input_file}")
+            return
+
+    if not config.manufacturer or not config.model:
+        logging.error("manufacturer and model are required.")
         return
 
     generator = Generator()
     try:
-        with open(config.input_file, mode='rb') as f:
-            content = f.read()
-            encoding = 'utf-16' if content.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+        if input_data is not None:
+            processed_rows = generator.process_rows(input_data, config.address_offset)
+        else:
+            with open(config.input_file, mode='rb') as f:
+                content = f.read()
+                encoding = 'utf-16' if content.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-        with open(config.input_file, mode='r', encoding=encoding) as csvfile:
-            content = csvfile.read(2048)
-            csvfile.seek(0)
-            try:
-                dialect = csv.Sniffer().sniff(content, delimiters=";,")
-            except csv.Error:
-                dialect = csv.excel
+            with open(config.input_file, mode='r', encoding=encoding) as csvfile:
+                content = csvfile.read(2048)
+                csvfile.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(content, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
 
-            reader = csv.DictReader(csvfile, dialect=dialect)
-            processed_rows = generator.process_rows(reader, config.address_offset)
+                reader = csv.DictReader(csvfile, dialect=dialect)
+                processed_rows = generator.process_rows(reader, config.address_offset)
 
         generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                    config.protocol, config.category, config.forced_write)

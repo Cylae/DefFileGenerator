@@ -6,7 +6,7 @@ import logging
 import re
 import json
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
@@ -65,11 +65,19 @@ def _run_cli():
     mapped = extractor.map_and_clean(raw, args.address_offset)
     if not mapped: logging.error("No registers extracted."); sys.exit(1)
 
-    generator = Generator()
-    processed = generator.process_rows(mapped)
-
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
-    generator.write_output_csv(output_file, processed, args.manufacturer, args.model, args.protocol, args.category, args.forced_write)
+
+    config = GeneratorConfig(
+        input_file=args.input_file,
+        output=output_file,
+        manufacturer=args.manufacturer,
+        model=args.model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        address_offset=0 # Already applied during extraction
+    )
+    run_generator(config, input_data=mapped)
 
 def main():
     try:

@@ -177,7 +177,6 @@ class Extractor:
             tables = [tables]
 
         final_data = []
-        generator = Generator() if Generator else None
 
         for table in tables:
             if not table: continue
@@ -243,8 +242,8 @@ class Extractor:
                 elif (dtype == 'STRING' or dtype.startswith('STR')) and slen != '' and '_' not in addr:
                     addr = f"{addr}_{slen}"
 
-                if generator:
-                    new_row['Address'] = generator.apply_address_offset(addr, address_offset)
+                if Generator:
+                    new_row['Address'] = Generator.apply_address_offset(addr, address_offset)
                 else:
                     new_row['Address'] = addr
 
