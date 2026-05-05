@@ -2,6 +2,7 @@
 import argparse
 import csv
 import sys
+import os
 import logging
 import re
 import math
@@ -214,13 +215,14 @@ class Generator:
         except ValueError:
             return default
 
-    def apply_address_offset(self, address, offset, line_num=None, name=None):
+    @staticmethod
+    def apply_address_offset(address, offset, line_num=None, name=None):
         """Applies an integer offset to a register address (simple or compound)."""
         if not address:
             return ""
         parts = address.split('_')
         # Normalize each part individually
-        norm_parts = [self.normalize_address_val(p) for p in parts]
+        norm_parts = [Generator.normalize_address_val(p) for p in parts]
 
         try:
             base_addr = int(norm_parts[0]) + offset
@@ -449,14 +451,18 @@ def generate_template(output_file):
 def run_generator(config: GeneratorConfig):
     if config.template:
         generate_template(config.output)
-        return
+        return True
 
     if not config.input_file or not config.manufacturer or not config.model:
         logging.error("input_file, manufacturer, and model are required.")
-        return
+        return False
 
     generator = Generator()
     try:
+        if not os.path.exists(config.input_file):
+            logging.error(f"Input file not found: {config.input_file}")
+            return False
+
         with open(config.input_file, mode='rb') as f:
             content = f.read()
             encoding = 'utf-16' if content.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
@@ -472,10 +478,16 @@ def run_generator(config: GeneratorConfig):
             reader = csv.DictReader(csvfile, dialect=dialect)
             processed_rows = generator.process_rows(reader, config.address_offset)
 
+        if not processed_rows:
+            logging.error("No valid registers to process.")
+            return False
+
         generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                    config.protocol, config.category, config.forced_write)
+        return True
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        logging.error(f"An error occurred during generation: {e}")
+        return False
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')

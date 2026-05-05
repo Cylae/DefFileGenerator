@@ -70,7 +70,14 @@ class Extractor:
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True)
             all_tables = []
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            if sheet_name:
+                if sheet_name not in wb.sheetnames:
+                    logging.warning(f"Sheet '{sheet_name}' not found in {filepath}. Available sheets: {wb.sheetnames}")
+                    return []
+                sheets = [wb[sheet_name]]
+            else:
+                sheets = wb.worksheets
+
             for ws in sheets:
                 data = []
                 rows = list(ws.rows)
@@ -92,7 +99,18 @@ class Extractor:
         all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
-                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                num_pages = len(pdf.pages)
+                if pages is None:
+                    target_pages = pdf.pages
+                else:
+                    target_pages = []
+                    page_list = pages if isinstance(pages, list) else [pages]
+                    for i in page_list:
+                        if 1 <= i <= num_pages:
+                            target_pages.append(pdf.pages[i-1])
+                        else:
+                            logging.warning(f"Page {i} is out of range for PDF {filepath} (total pages: {num_pages}). Skipping.")
+
                 for page in target_pages:
                     tables = page.extract_tables()
                     logging.debug(f"Found {len(tables)} tables on page {page.page_number}")

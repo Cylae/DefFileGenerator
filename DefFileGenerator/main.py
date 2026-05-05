@@ -41,13 +41,7 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = None
-        if getattr(args, 'pages', None):
-            try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
+        pages = getattr(args, 'pages', None)
         raw_data = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
@@ -62,7 +56,8 @@ def _perform_extraction(args):
 def extract_command(args):
     mapped_data = _perform_extraction(args)
     if not mapped_data:
-        return
+        logging.error("No registers were successfully extracted.")
+        sys.exit(1)
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -91,12 +86,14 @@ def generate_command(args):
         forced_write=args.forced_write,
         address_offset=args.address_offset
     )
-    run_generator(config)
+    if not run_generator(config):
+        sys.exit(1)
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
     if not mapped_data:
-        return
+        logging.error("No registers were successfully extracted.")
+        sys.exit(1)
 
     with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
         temp_csv = tf.name
@@ -116,7 +113,9 @@ def run_command(args):
             forced_write=args.forced_write,
             address_offset=0 # Already applied during extraction in run mode
         )
-        run_generator(config)
+        if not run_generator(config):
+            logging.error("Generation failed.")
+            sys.exit(1)
     finally:
         if os.path.exists(temp_csv):
             os.remove(temp_csv)
@@ -167,15 +166,16 @@ def _run_cli():
 
     setup_logging(args.verbose)
 
-    # Validate --pages
+    # Validate and parse --pages
     pages_arg = getattr(args, 'pages', None)
     if pages_arg:
         ext = os.path.splitext(args.input_file)[1].lower()
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
+            args.pages = None
         else:
             try:
-                [int(p.strip()) for p in pages_arg.split(',')]
+                args.pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
