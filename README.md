@@ -16,11 +16,17 @@ This toolset allows for extracting Modbus register information from manufacturer
 ## Requirements
 
 *   Python 3.x
-*   Dependencies: `pdfplumber`, `openpyxl`, `pandas`, `lxml`, `defusedxml`, `reportlab`
+*   **Core Dependencies** (Required for extraction and generation):
+    *   `pdfplumber` (PDF support)
+    *   `openpyxl` (Excel support)
+    *   `defusedxml` & `lxml` (Secure XML support)
+*   **Dev/Test Dependencies** (Required for running tests and stress batteries):
+    *   `reportlab` (Generating test PDF files)
+    *   `pandas` (Stress test data generation)
 
-Install all dependencies:
+Install core dependencies:
 ```bash
-pip install pdfplumber openpyxl pandas lxml defusedxml reportlab
+pip install pdfplumber openpyxl defusedxml lxml
 ```
 
 ## Unified CLI Usage
@@ -36,6 +42,7 @@ python3 DefFileGenerator/main.py extract <source_file> -o <output_csv> [options]
 *   `--mapping <json_file>`: (Optional) JSON file to map manufacturer columns.
 *   `--sheet <name>`: (Excel only) Specific sheet name.
 *   `--pages <list>`: (PDF only) Comma-separated list of pages.
+*   `--address-offset <int>`: Shift addresses (default 0).
 
 ### 2. Generate definition from CSV
 Convert a simplified CSV into a WebdynSunPM definition file.

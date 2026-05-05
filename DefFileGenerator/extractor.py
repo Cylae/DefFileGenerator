@@ -92,7 +92,24 @@ class Extractor:
         all_tables = []
         try:
             with pdfplumber.open(filepath) as pdf:
-                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                total_pages = len(pdf.pages)
+                if pages is None:
+                    target_pages = pdf.pages
+                else:
+                    page_list = pages if isinstance(pages, list) else [pages]
+                    valid_indices = []
+                    for p in page_list:
+                        if 1 <= p <= total_pages:
+                            valid_indices.append(p - 1)
+                        else:
+                            logging.warning(f"Page {p} is out of range (Total pages: {total_pages}). Skipping.")
+
+                    if not valid_indices:
+                        logging.error(f"No valid pages selected for extraction (Requested: {page_list}, Total: {total_pages}).")
+                        return []
+
+                    target_pages = [pdf.pages[i] for i in valid_indices]
+
                 for page in target_pages:
                     tables = page.extract_tables()
                     logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
