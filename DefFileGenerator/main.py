@@ -98,28 +98,17 @@ def run_command(args):
     if not mapped_data:
         return
 
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False, encoding='utf-8') as tf:
-        temp_csv = tf.name
-        fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-        writer = csv.DictWriter(tf, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(mapped_data)
-
-    try:
-        config = GeneratorConfig(
-            input_file=temp_csv,
-            output=args.output,
-            manufacturer=args.manufacturer,
-            model=args.model,
-            protocol=args.protocol,
-            category=args.category,
-            forced_write=args.forced_write,
-            address_offset=0 # Already applied during extraction in run mode
-        )
-        run_generator(config)
-    finally:
-        if os.path.exists(temp_csv):
-            os.remove(temp_csv)
+    config = GeneratorConfig(
+        input_file=args.input_file,
+        output=args.output,
+        manufacturer=args.manufacturer,
+        model=args.model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        address_offset=0 # Already applied during extraction in run mode
+    )
+    run_generator(config, input_data=mapped_data)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
