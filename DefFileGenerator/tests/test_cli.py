@@ -214,7 +214,8 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.xlsx", "--sheet", "Sheet1"]
         with open("dummy.xlsx", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit):
+                main()
         os.remove("dummy.xlsx")
 
     def test_def_file_gen_main_pdf(self):
@@ -222,7 +223,8 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.pdf", "--pages", "1"]
         with open("dummy.pdf", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit):
+                main()
         os.remove("dummy.pdf")
 
     def test_def_file_gen_main_xml(self):
@@ -230,7 +232,8 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.xml"]
         with open("dummy.xml", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit):
+                main()
         os.remove("dummy.xml")
 
     def test_doc_to_webdyn_excel(self):
@@ -275,7 +278,8 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.pdf", "--pages", "1, 2, 3"]
         with open("dummy.pdf", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit):
+                main()
         os.remove("dummy.pdf")
 
     def test_main_pages_ignored(self):
