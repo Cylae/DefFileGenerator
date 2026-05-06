@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import os
 from dataclasses import dataclass
 
 # Pre-compiled regex patterns for optimization
