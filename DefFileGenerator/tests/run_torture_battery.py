@@ -26,7 +26,7 @@ def run_torture_battery():
 
     extractor = Extractor()
     raw = extractor.extract_from_csv(csv_path)
-    mapped = extractor.map_and_clean(raw)
+    mapped = list(extractor.map_and_clean(raw))
 
     print(f"Mapped {len(mapped)} rows from ambiguous columns")
     for row in mapped:
