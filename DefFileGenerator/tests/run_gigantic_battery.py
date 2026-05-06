@@ -35,7 +35,7 @@ def run_gigantic_battery():
     if os.path.exists('stress_test_data/stress.xlsx'):
         start = time.time()
         raw = extractor.extract_from_excel('stress_test_data/stress.xlsx')
-        mapped = extractor.map_and_clean(raw)
+        mapped = list(extractor.map_and_clean(raw))
         results['excel_extraction_5000_rows'] = time.time() - start
         results['excel_mapped_count'] = len(mapped)
 
@@ -43,7 +43,7 @@ def run_gigantic_battery():
     if os.path.exists('stress_test_data/stress.xml'):
         start = time.time()
         raw = extractor.extract_from_xml('stress_test_data/stress.xml')
-        mapped = extractor.map_and_clean(raw)
+        mapped = list(extractor.map_and_clean(raw))
         results['xml_extraction_5000_rows'] = time.time() - start
         results['xml_mapped_count'] = len(mapped)
 
@@ -51,7 +51,7 @@ def run_gigantic_battery():
     if os.path.exists('stress_test_data/stress.pdf'):
         start = time.time()
         raw = extractor.extract_from_pdf('stress_test_data/stress.pdf')
-        mapped = extractor.map_and_clean(raw)
+        mapped = list(extractor.map_and_clean(raw))
         results['pdf_extraction_100_rows'] = time.time() - start
         results['pdf_mapped_count'] = len(mapped)
 

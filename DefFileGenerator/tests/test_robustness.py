@@ -15,29 +15,29 @@ class TestRobustness(unittest.TestCase):
 
         # Let's try something that IS an exact normalized match
         raw_data = [[{"Register Type": "Holding", "addr": "100", "name": "Var1"}]]
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         # 'Register Type' -> norm 'registertype' == target_norm 'registertype'
         self.assertEqual(mapped[0]["RegisterType"], "Holding")
 
     def test_bits_address_defaulting(self):
         raw_data = [[{"Name": "BitVar", "Address": "100", "Type": "BITS", "StartBit": "5", "Length": "1"}]]
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "100_5_1")
 
     def test_string_address_defaulting(self):
         raw_data = [[{"Name": "StrVar", "Address": "200", "Type": "STR20", "Length": "20"}]]
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "200_20")
 
     def test_address_normalization_no_corruption(self):
         # Hex address with underscore
         raw_data = [[{"Name": "HexVar", "Address": "0x10_2", "Type": "STRING"}]]
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "16_2")
 
     def test_thousands_separator_normalization(self):
         raw_data = [[{"Name": "Var", "Address": "1,000", "Type": "U16"}]]
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "1000")
 
 if __name__ == "__main__":

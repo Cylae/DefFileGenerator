@@ -62,7 +62,7 @@ def _run_cli():
 
     if not raw: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw, args.address_offset)
+    mapped = list(extractor.map_and_clean(raw, args.address_offset))
     if not mapped: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"

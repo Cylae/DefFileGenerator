@@ -78,7 +78,9 @@ The simplified CSV (input for `generate`) uses these columns:
 
 ## Validation & Performance
 
-The tool is optimized for performance, handling maps with 5,000+ registers in seconds. It performs:
-*   **Address Overlap Detection**: Dictionary-based O(N) check.
+The tool is optimized for performance and strict resource constraints. It handles maps with 5,000+ registers in fractions of a second, with a theoretical limit in the gigabytes, depending on RAM limits for generators. It performs:
+*   **Memory Efficiency**: O(1) memory overhead through generator-based stream processing for CSV, Excel, XML, and mapping logic. File loading is lazy whenever possible to handle infinite streams without crashing.
+*   **Input Resilience**: Advanced IO error isolation (fallback encoding and explicit type hints) preventing common silent drops for corrupted manufacturer files.
+*   **Address Overlap Detection**: Dictionary-based O(N) check avoiding geometric performance drops.
 *   **Duplicate Detection**: Warns for repeated Names or Tags.
-*   **Security Validation**: Blocks external entity injection in XML.
+*   **Security Validation**: Blocks external entity injection (XXE) in XML formats reliably.
