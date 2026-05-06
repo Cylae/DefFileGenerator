@@ -47,7 +47,7 @@ class TestActionSynonyms(unittest.TestCase):
                 'Type': 'U16',
                 'Action': input_action
             }]
-            processed = self.generator.process_rows(rows)
+            processed = list(self.generator.process_rows(rows))
             with self.subTest(input_action=input_action):
                 self.assertEqual(processed[0]['Action'], expected)
 
