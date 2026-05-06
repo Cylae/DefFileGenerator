@@ -418,9 +418,7 @@ class Generator:
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
-            if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
-        except Exception as e:
+        except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
@@ -466,26 +464,29 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
     try:
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
+            generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+                                       config.protocol, config.category, config.forced_write)
         else:
             with open(config.input_file, mode='rb') as f:
-                content = f.read()
-                encoding = 'utf-16' if content.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
             with open(config.input_file, mode='r', encoding=encoding) as csvfile:
-                content = csvfile.read(2048)
+                snippet = csvfile.read(2048)
                 csvfile.seek(0)
                 try:
-                    dialect = csv.Sniffer().sniff(content, delimiters=";,")
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
                 except csv.Error:
                     dialect = csv.excel
 
                 reader = csv.DictReader(csvfile, dialect=dialect)
                 processed_rows = generator.process_rows(reader, config.address_offset)
 
-        generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
-                                   config.protocol, config.category, config.forced_write)
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
+                # Consume the generator while the input file is still open
+                generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+                                           config.protocol, config.category, config.forced_write)
+    except (OSError, csv.Error, ValueError) as e:
+        logging.error(f"An error occurred during generation: {e}")
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
