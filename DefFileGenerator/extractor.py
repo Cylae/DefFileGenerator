@@ -108,7 +108,18 @@ class Extractor:
             return
         try:
             with pdfplumber.open(filepath) as pdf:
-                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                total_pages = len(pdf.pages)
+                if pages is None:
+                    target_pages = pdf.pages
+                else:
+                    target_page_indices = pages if isinstance(pages, list) else [pages]
+                    target_pages = []
+                    for p in target_page_indices:
+                        if 1 <= p <= total_pages:
+                            target_pages.append(pdf.pages[p-1])
+                        else:
+                            logging.warning(f"Page {p} is out of range for PDF {filepath} (Total pages: {total_pages}). Skipping.")
+
                 for page in target_pages:
                     tables = page.extract_tables()
                     logging.debug(f"Found {len(tables)} tables on page {page.page_number}")

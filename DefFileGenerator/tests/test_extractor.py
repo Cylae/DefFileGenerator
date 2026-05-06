@@ -93,7 +93,8 @@ class TestExtractor(unittest.TestCase):
     @unittest.skipUnless(HAS_REPORTLAB, "reportlab not installed")
     def test_extract_from_pdf(self):
         if not os.path.exists(self.pdf_file): self.skipTest("PDF file not created")
-        data = self.extractor.extract_from_pdf(self.pdf_file)
+        # extract_from_pdf returns Iterator[Iterator[Dict]]
+        data = [list(table) for table in self.extractor.extract_from_pdf(self.pdf_file)]
         self.assertEqual(len(data), 1) # One table found
         self.assertEqual(len(data[0]), 2) # 2 data rows
         self.assertEqual(data[0][0]["Address"], "1000")
