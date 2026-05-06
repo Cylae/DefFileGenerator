@@ -68,7 +68,7 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return []
         try:
-            wb = openpyxl.load_workbook(filepath, data_only=True)
+            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
             all_tables = []
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
             for ws in sheets:

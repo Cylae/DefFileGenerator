@@ -417,14 +417,10 @@ class Generator:
                 ])
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
-            if isinstance(output, str):
+                outfile.close()
                 logging.info(f"Definition file generated at {output}")
         except Exception as e:
             logging.error(f"Error writing output CSV: {e}")
-        finally:
-            if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
-                outfile.close()
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']

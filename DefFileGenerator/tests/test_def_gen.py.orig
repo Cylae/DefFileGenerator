@@ -143,7 +143,7 @@ class TestGenerator(unittest.TestCase):
              {'Name': 'Var1', 'Tag': 't2', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
         ]
         with self.assertLogs(level='WARNING') as log:
-            list(self.generator.process_rows(rows))
+            self.generator.process_rows(rows)
             self.assertTrue(any("Duplicate Name" in m for m in log.output))
 
     def test_scalefactor_calculation(self):
