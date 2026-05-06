@@ -72,7 +72,6 @@ class Extractor:
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            all_tables = []
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
@@ -97,7 +96,7 @@ class Extractor:
 
         except OSError as e:
             logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-        except Exception as e:
+        except (ValueError, TypeError, KeyError) as e:
             logging.error(f"Error extracting from Excel {filepath}: {e}")
         finally:
             if wb:
@@ -135,7 +134,7 @@ class Extractor:
 
         except OSError as e:
             logging.error(f"File IO Error extracting from PDF {filepath}: {e}")
-        except Exception as e:
+        except (ValueError, TypeError, IndexError) as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
@@ -170,7 +169,7 @@ class Extractor:
                 logging.error(f"CSV Parsing Error in {filepath}: {e}")
             except UnicodeError as e:
                 logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
-            except Exception as e:
+            except (ValueError, TypeError) as e:
                 logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
         # Yield a single table that contains all rows
@@ -205,10 +204,7 @@ class Extractor:
             raise
         except OSError as e:
             logging.error(f"File IO Error extracting from XML {filepath}: {e}")
-        except Exception as e:
-            # Re-raise security-related exceptions from defusedxml if they occur
-            if 'EntitiesForbidden' in str(type(e)) or 'DTDForbidden' in str(type(e)) or 'ExternalReferenceForbidden' in str(type(e)):
-                raise
+        except (ValueError, TypeError) as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
