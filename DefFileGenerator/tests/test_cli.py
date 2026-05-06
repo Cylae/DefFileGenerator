@@ -60,7 +60,7 @@ class TestCliEntryPoints(unittest.TestCase):
 
     def test_doc_to_webdyn_main_exception(self):
         from doc_to_webdyn import main
-        with patch('doc_to_webdyn._run_cli', side_effect=Exception("Mock Exception")):
+        with patch('doc_to_webdyn._run_cli', side_effect=ValueError("Mock Exception")):
             with self.assertLogs(level='ERROR') as log:
                 with self.assertRaises(SystemExit) as cm:
                     main()
@@ -129,7 +129,7 @@ class TestCliEntryPoints(unittest.TestCase):
 
     def test_def_file_gen_main_exception(self):
         from DefFileGenerator.main import main
-        with patch('DefFileGenerator.main._run_cli', side_effect=Exception("Mock")):
+        with patch('DefFileGenerator.main._run_cli', side_effect=ValueError("Mock")):
             with self.assertLogs(level='ERROR') as log:
                 with self.assertRaises(SystemExit) as cm:
                     main()

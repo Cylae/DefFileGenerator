@@ -440,7 +440,7 @@ def generate_template(output_file: Optional[str]) -> None:
             writer = csv.writer(sys.stdout)
             writer.writerow(headers)
             writer.writerows(rows)
-    except Exception as e:
+    except OSError as e:
         logging.error(f"Error generating template: {e}")
 
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
