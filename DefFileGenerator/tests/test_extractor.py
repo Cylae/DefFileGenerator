@@ -67,7 +67,7 @@ class TestExtractor(unittest.TestCase):
     @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_extract_from_excel(self):
         if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
-        data = self.extractor.extract_from_excel(self.excel_file)
+        data = [list(table) for table in self.extractor.extract_from_excel(self.excel_file)]
         self.assertEqual(len(data), 1) # One sheet = one table
         self.assertEqual(len(data[0]), 3) # 3 data rows
         self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
@@ -82,7 +82,7 @@ class TestExtractor(unittest.TestCase):
             "Name": "Description",
             "Type": "Data Type"
         }
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(len(mapped), 3)
         self.assertEqual(mapped[0]["Address"], "1")
         self.assertEqual(mapped[0]["Name"], "Voltage")
@@ -104,7 +104,7 @@ class TestExtractor(unittest.TestCase):
         raw_data = [
             [{"Register Address": "0x10", "Variable Name": "Test", "Data Type": "Uint16"}]
         ]
-        mapped = self.extractor.map_and_clean(raw_data)
+        mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
