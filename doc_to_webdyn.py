@@ -5,6 +5,7 @@ import os
 import logging
 import re
 import json
+import csv
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
@@ -37,7 +38,7 @@ def _run_cli():
         try:
             with open(args.mapping, 'r') as f:
                 mapping = json.load(f)
-        except Exception as e:
+        except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
             sys.exit(1)
 
@@ -84,7 +85,9 @@ def main():
         _run_cli()
     except KeyboardInterrupt:
         sys.exit(130)
-    except Exception as e:
+    except SystemExit:
+        raise
+    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
 

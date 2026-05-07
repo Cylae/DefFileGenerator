@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import io
+import zipfile
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
 
 try:
@@ -18,8 +19,15 @@ except ImportError:
 try:
     import pdfplumber
     HAS_PDFPLUMBER = True
+    try:
+        from pdfminer.pdfparser import PDFSyntaxError
+        from pdfplumber.utils.exceptions import PdfminerException
+        PDF_ERRORS = (PDFSyntaxError, PdfminerException)
+    except ImportError:
+        PDF_ERRORS = ()
 except ImportError:
     HAS_PDFPLUMBER = False
+    PDF_ERRORS = ()
 
 try:
     from defusedxml import ElementTree as ET
@@ -29,6 +37,12 @@ try:
 except ImportError:
     HAS_DEFUSEDXML = False
     SECURITY_EXCEPTIONS = ()
+
+try:
+    import xml.etree.ElementTree as ET_STD
+    XML_PARSE_ERRORS = (ET_STD.ParseError,)
+except ImportError:
+    XML_PARSE_ERRORS = ()
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -94,7 +108,7 @@ class Extractor:
                 # If there are no data rows, it simply yields nothing when iterated.
                 yield sheet_generator()
 
-        except OSError as e:
+        except (OSError, zipfile.BadZipFile) as e:
             logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
         except (ValueError, TypeError, KeyError) as e:
             logging.error(f"Error extracting from Excel {filepath}: {e}")
@@ -106,36 +120,40 @@ class Extractor:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return
-        try:
-            with pdfplumber.open(filepath) as pdf:
-                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                for page in target_pages:
-                    tables = page.extract_tables()
-                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
-                    for table in tables:
-                        if not table or len(table) < 2: continue
 
-                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
-                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
-                            for row in current_table[1:]:
-                                row_dict = {}
-                                for i, cell in enumerate(row):
-                                    if i < len(headers):
-                                        row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                                if any(row_dict.values()):
-                                    yield row_dict
+        def pdf_tables_generator():
+            try:
+                with pdfplumber.open(filepath) as pdf:
+                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    for page in target_pages:
+                        tables = page.extract_tables()
+                        logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
+                        for table in tables:
+                            if not table or len(table) < 2: continue
 
-                        # Since we must keep pdfplumber context open while iterating,
-                        # and pdfplumber pages/tables are held in memory anyway,
-                        # yielding generators is safe but the entire PDF is open.
-                        # A better approach: evaluate the generator immediately if we're yielding it,
-                        # but here we're conforming to `Iterator[Iterator[Dict]]`
-                        yield table_generator(table)
+                            def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
+                                headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
+                                for row in current_table[1:]:
+                                    row_dict = {}
+                                    for i, cell in enumerate(row):
+                                        if i < len(headers):
+                                            row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
+                                    if any(row_dict.values()):
+                                        yield row_dict
 
-        except OSError as e:
-            logging.error(f"File IO Error extracting from PDF {filepath}: {e}")
-        except (ValueError, TypeError, IndexError) as e:
-            logging.error(f"Error extracting from PDF {filepath}: {e}")
+                            # Since we must keep pdfplumber context open while iterating,
+                            # and pdfplumber pages/tables are held in memory anyway,
+                            # yielding generators is safe but the entire PDF is open.
+                            # A better approach: evaluate the generator immediately if we're yielding it,
+                            # but here we're conforming to `Iterator[Iterator[Dict]]`
+                            yield table_generator(table)
+
+            except (OSError,) + PDF_ERRORS as e:
+                logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
+            except (ValueError, TypeError, IndexError) as e:
+                logging.error(f"Error extracting from PDF {filepath}: {e}")
+
+        return pdf_tables_generator()
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
@@ -202,8 +220,8 @@ class Extractor:
 
         except SECURITY_EXCEPTIONS:
             raise
-        except OSError as e:
-            logging.error(f"File IO Error extracting from XML {filepath}: {e}")
+        except (OSError,) + XML_PARSE_ERRORS as e:
+            logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
         except (ValueError, TypeError) as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
