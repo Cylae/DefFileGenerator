@@ -55,14 +55,15 @@ def _perform_extraction(args):
         raw_data = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
-        return []
+        sys.exit(1)
 
     return list(extractor.map_and_clean(raw_data, address_offset))
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
     if not mapped_data:
-        return
+        logging.error("No registers extracted.")
+        sys.exit(1)
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -96,7 +97,8 @@ def generate_command(args):
 def run_command(args):
     mapped_data = _perform_extraction(args)
     if not mapped_data:
-        return
+        logging.error("No registers extracted.")
+        sys.exit(1)
 
     config = GeneratorConfig(
         input_file=args.input_file,
