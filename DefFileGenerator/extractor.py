@@ -81,12 +81,18 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            if sheet_name:
+                if sheet_name not in wb.sheetnames:
+                    logging.warning(f"Sheet '{sheet_name}' not found in {filepath}. Skipping.")
+                    return
+                sheets = [wb[sheet_name]]
+            else:
+                sheets = wb.worksheets
 
             for ws in sheets:
                 def sheet_generator() -> Iterator[Dict[str, Any]]:
@@ -119,41 +125,47 @@ class Extractor:
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
-        def pdf_tables_generator():
-            try:
-                with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
-                        tables = page.extract_tables()
-                        logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
-                        for table in tables:
-                            if not table or len(table) < 2: continue
+        try:
+            with pdfplumber.open(filepath) as pdf:
+                if pages is None:
+                    target_pages = pdf.pages
+                else:
+                    target_pages = []
+                    requested_pages = pages if isinstance(pages, list) else [pages]
+                    total_pages = len(pdf.pages)
+                    for p in requested_pages:
+                        if 1 <= p <= total_pages:
+                            target_pages.append(pdf.pages[p-1])
+                        else:
+                            logging.warning(f"Page {p} is out of range for PDF {filepath} (Total pages: {total_pages}). Skipping.")
 
-                            def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
-                                headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
-                                for row in current_table[1:]:
-                                    row_dict = {}
-                                    for i, cell in enumerate(row):
-                                        if i < len(headers):
-                                            row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                                    if any(row_dict.values()):
-                                        yield row_dict
+                for page in target_pages:
+                    tables = page.extract_tables()
+                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
+                    for table in tables:
+                        if not table or len(table) < 2: continue
 
-                            # Since we must keep pdfplumber context open while iterating,
-                            # and pdfplumber pages/tables are held in memory anyway,
-                            # yielding generators is safe but the entire PDF is open.
-                            # A better approach: evaluate the generator immediately if we're yielding it,
-                            # but here we're conforming to `Iterator[Iterator[Dict]]`
-                            yield table_generator(table)
+                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
+                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
+                            for row in current_table[1:]:
+                                row_dict = {}
+                                for i, cell in enumerate(row):
+                                    if i < len(headers):
+                                        row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
+                                if any(row_dict.values()):
+                                    yield row_dict
 
-            except (OSError,) + PDF_ERRORS as e:
-                logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-            except (ValueError, TypeError, IndexError) as e:
-                logging.error(f"Error extracting from PDF {filepath}: {e}")
+                        # Yielding generators is safe as long as the PDF object is alive.
+                        # Since we are inside the 'with' block, the PDF object is alive
+                        # for as long as this generator is being iterated.
+                        yield table_generator(table)
 
-        return pdf_tables_generator()
+        except (OSError,) + PDF_ERRORS as e:
+            logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
+        except (ValueError, TypeError, IndexError) as e:
+            logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
@@ -196,7 +208,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
