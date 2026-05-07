@@ -169,7 +169,9 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "test.txt"]
         with open("test.txt", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main() # It returns [] and doesn't exit immediately in _perform_extraction, simply returns
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 1)
         os.remove("test.txt")
 
     def test_doc_to_webdyn_pages_invalid_pdf(self):
@@ -214,7 +216,9 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.xlsx", "--sheet", "Sheet1"]
         with open("dummy.xlsx", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 1)
         os.remove("dummy.xlsx")
 
     def test_def_file_gen_main_pdf(self):
@@ -222,7 +226,9 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.pdf", "--pages", "1"]
         with open("dummy.pdf", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 1)
         os.remove("dummy.pdf")
 
     def test_def_file_gen_main_xml(self):
@@ -230,7 +236,9 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.xml"]
         with open("dummy.xml", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 1)
         os.remove("dummy.xml")
 
     def test_doc_to_webdyn_excel(self):
@@ -275,7 +283,9 @@ class TestCliEntryPoints(unittest.TestCase):
         test_args = ["main.py", "extract", "dummy.pdf", "--pages", "1, 2, 3"]
         with open("dummy.pdf", "w") as f: f.write("Dummy")
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 1)
         os.remove("dummy.pdf")
 
     def test_main_pages_ignored(self):
@@ -352,7 +362,9 @@ class TestCliEntryPoints(unittest.TestCase):
         with open(empty_csv, 'w') as f: f.write("")
         test_args = ["main.py", "run", empty_csv, "--manufacturer", "Test", "--model", "Test"]
         with patch.object(sys, 'argv', test_args):
-            main()
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 1)
         os.remove(empty_csv)
 
     def test_def_file_gen_main_extract_bad_mapping_open(self):
