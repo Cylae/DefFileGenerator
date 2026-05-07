@@ -61,7 +61,14 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    if raw is None:
+        logging.error("Extraction failed. Check if required dependencies (pdfplumber, openpyxl, etc.) are installed.")
+        sys.exit(1)
+
+    raw = list(raw)
+    if not raw:
+        logging.error("No data tables found in the input file.")
+        sys.exit(1)
 
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
     if not mapped: logging.error("No registers extracted."); sys.exit(1)

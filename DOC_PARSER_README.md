@@ -17,7 +17,7 @@ This tool automatically extracts Modbus register information from manufacturer d
 ```bash
 pip install openpyxl pdfplumber lxml defusedxml reportlab
 ```
-*(Note: `pandas` is not required for core execution, only for stress testing).*
+*(Note: `pandas` is not required for core execution, only for stress testing and performance batteries).*
 
 ## Usage
 

@@ -13,7 +13,7 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install openpyxl pdfplumber defusedxml reportlab lxml
 ```
 
 ## Basic Usage
@@ -40,6 +40,14 @@ python doc_to_webdyn.py registers.csv \
     --manufacturer "Fronius" \
     --model "Symo-5.0" \
     -o fronius_definition.csv
+```
+
+### From XML Export
+```bash
+python doc_to_webdyn.py device_export.xml \
+    --manufacturer "Sungrow" \
+    --model "SG110CX" \
+    -o sungrow_definition.csv
 ```
 
 ## How It Works
