@@ -35,7 +35,7 @@ class TestActionSynonyms(unittest.TestCase):
             ('8', '8'),
             ('9', '9'),
 
-            # Default/Fallback -> 1
+            # Default/Fallback -> Depend on RegisterType
             ('', '1'),
             ('UNKNOWN', '1'),
         ]
