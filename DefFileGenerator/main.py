@@ -128,20 +128,21 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer', help='Manufacturer name')
+    parser_generate.add_argument('--model', help='Model name')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV file')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=True)
-    parser_run.add_argument('--model', required=True)
+    parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
+    parser_run.add_argument('--manufacturer', help='Manufacturer name')
+    parser_run.add_argument('--model', help='Model name')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -150,6 +151,7 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV file')
 
     args = parser.parse_args()
     if not args.command:
@@ -170,6 +172,17 @@ def _run_cli():
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
+
+    if args.command in ['generate', 'run'] and args.template:
+        config = GeneratorConfig(template=True, output=args.output)
+        run_generator(config)
+        return
+
+    if args.command in ['generate', 'run']:
+        if not args.input_file:
+            parser.error(f"the following arguments are required: input_file (or --template) for command '{args.command}'")
+        if not args.manufacturer or not args.model:
+            parser.error(f"the following arguments are required: --manufacturer, --model (unless --template is used) for command '{args.command}'")
 
     if args.command == 'extract':
         extract_command(args)
