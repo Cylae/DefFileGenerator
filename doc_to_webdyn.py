@@ -61,6 +61,7 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
+    raw = list(raw)
     if not raw: logging.error("No data extracted."); sys.exit(1)
 
     mapped = list(extractor.map_and_clean(raw, args.address_offset))

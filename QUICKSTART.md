@@ -13,8 +13,10 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install openpyxl pdfplumber reportlab defusedxml lxml
 ```
+
+*(Note: `pandas` is an optional dependency used specifically for stress test generation and performance batteries).*
 
 ## Basic Usage
 

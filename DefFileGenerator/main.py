@@ -57,6 +57,10 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
+    raw_data = list(raw_data)
+    if not raw_data:
+        return []
+
     return list(extractor.map_and_clean(raw_data, address_offset))
 
 def extract_command(args):
