@@ -65,6 +65,18 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(Extractor.normalize_type("unsigned int 16"), "U16")
 
     @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
+    def test_extract_from_excel_invalid_sheet(self):
+        if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
+        data = list(self.extractor.extract_from_excel(self.excel_file, sheet_name="Nonexistent"))
+        self.assertEqual(len(data), 0)
+
+    @unittest.skipUnless(HAS_REPORTLAB, "reportlab not installed")
+    def test_extract_from_pdf_invalid_page(self):
+        if not os.path.exists(self.pdf_file): self.skipTest("PDF file not created")
+        data = list(self.extractor.extract_from_pdf(self.pdf_file, pages=[99]))
+        self.assertEqual(len(data), 0)
+
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_extract_from_excel(self):
         if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
         data = [list(table) for table in self.extractor.extract_from_excel(self.excel_file)]

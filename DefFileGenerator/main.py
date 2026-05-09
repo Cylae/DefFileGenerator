@@ -57,7 +57,13 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    # Evaluate the outer generator to a list to check for content
+    # While maintaining O(1) memory for the inner row generators
+    raw_list = list(raw_data)
+    if not raw_list:
+        return []
+
+    return list(extractor.map_and_clean(raw_list, address_offset))
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
