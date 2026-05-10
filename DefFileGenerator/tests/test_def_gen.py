@@ -1,5 +1,6 @@
 import unittest
 import logging
+import os
 from DefFileGenerator.def_gen import Generator
 
 class TestGenerator(unittest.TestCase):
@@ -181,6 +182,48 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+
+    def test_apply_address_offset_negative(self):
+        with self.assertLogs(level='WARNING') as log:
+            res = Generator.apply_address_offset("10", -20, name="NegativeVar")
+            self.assertEqual(res, "-10")
+            self.assertTrue(any("results in negative address" in m for m in log.output))
+
+    def test_parse_numeric_fractions(self):
+        self.assertEqual(Generator._parse_numeric("1/10"), 0.1)
+        self.assertEqual(Generator._parse_numeric("22/7"), 22/7)
+        self.assertEqual(Generator._parse_numeric("invalid"), 0.0)
+
+    def test_parse_numeric_locale(self):
+        self.assertEqual(Generator._parse_numeric("1,234.56"), 1234.56)
+        self.assertEqual(Generator._parse_numeric("1.234,56"), 1234.56)
+        self.assertEqual(Generator._parse_numeric("1234,56"), 1234.56)
+
+    def test_generate_template(self):
+        from DefFileGenerator.def_gen import generate_template
+        temp_file = "template_test.csv"
+        try:
+            generate_template(temp_file)
+            self.assertTrue(os.path.exists(temp_file))
+            with open(temp_file, 'r') as f:
+                content = f.read()
+                self.assertIn("Example Variable", content)
+        finally:
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
+
+    def test_generate_template_stdout(self):
+        from DefFileGenerator.def_gen import generate_template
+        import io
+        import sys
+        captured_output = io.StringIO()
+        old_stdout = sys.stdout
+        sys.stdout = captured_output
+        try:
+            generate_template(None)
+            self.assertIn("Example Variable", captured_output.getvalue())
+        finally:
+            sys.stdout = old_stdout
 
 if __name__ == '__main__':
     unittest.main()

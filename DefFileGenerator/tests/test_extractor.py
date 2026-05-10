@@ -109,5 +109,39 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    def test_extract_from_csv(self):
+        csv_file = "test_extract.csv"
+        with open(csv_file, "w") as f:
+            f.write("Address,Name,Type\n100,CSVVar,U16\n")
+
+        try:
+            data = [list(table) for table in self.extractor.extract_from_csv(csv_file)]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0][0]["Name"], "CSVVar")
+        finally:
+            if os.path.exists(csv_file):
+                os.remove(csv_file)
+
+    def test_extract_from_xml(self):
+        xml_file = "test_extract.xml"
+        with open(xml_file, "w") as f:
+            f.write("<root><row><Address>100</Address><Name>XMLVar</Name><Type>U16</Type></row></root>")
+
+        try:
+            data = [list(table) for table in self.extractor.extract_from_xml(xml_file)]
+            self.assertEqual(len(data), 1)
+            self.assertEqual(data[0][0]["Name"], "XMLVar")
+        finally:
+            if os.path.exists(xml_file):
+                os.remove(xml_file)
+
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
+    def test_extract_from_excel_missing_sheet(self):
+        if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
+        with self.assertLogs(level='WARNING') as log:
+            data = list(self.extractor.extract_from_excel(self.excel_file, sheet_name="NonExistent"))
+            self.assertEqual(len(data), 0)
+            self.assertTrue(any("not found" in m for m in log.output))
+
 if __name__ == "__main__":
     unittest.main()
