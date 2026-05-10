@@ -378,7 +378,8 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on Info1: 2,4 -> 4 (RO); 1,3 -> 1 (RW)
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +399,8 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +418,15 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            summary = ", ".join([f"{count} {type_names[tid]}" for tid, count in counts.items() if count > 0])
+            if summary:
+                logging.info(f"Summary: Processed {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
