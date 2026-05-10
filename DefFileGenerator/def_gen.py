@@ -146,12 +146,28 @@ class Generator:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
+        match = None
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation for simple addresses
+        if dtype_upper not in ['STRING', 'BITS'] and RE_ADDR_INT.match(address):
+            try:
+                # Use normalize_address_val to handle hex/dec before range check
+                addr_val = int(Generator.normalize_address_val(address))
+                if not (0 <= addr_val <= 65535):
+                    logging.warning(f"Address {addr_val} is out of standard Modbus range (0-65535).")
+            except ValueError:
+                pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:

@@ -40,5 +40,20 @@ class TestRobustness(unittest.TestCase):
         mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "1000")
 
+    def test_new_column_synonyms(self):
+        # 'type of register' -> RegisterType
+        # 'modbus address' -> Address
+        raw_data = [[{"Name": "Var", "modbus address": "200", "type of register": "Input"}]]
+        mapped = list(self.extractor.map_and_clean(raw_data))
+        self.assertEqual(mapped[0]["Address"], "200")
+        self.assertEqual(mapped[0]["RegisterType"], "Input")
+
+    def test_out_of_range_address_warning(self):
+        from DefFileGenerator.def_gen import Generator
+        gen = Generator()
+        with self.assertLogs(level='WARNING') as cm:
+            gen.validate_address("70000", "U16")
+            self.assertTrue(any("out of standard Modbus range" in output for output in cm.output))
+
 if __name__ == "__main__":
     unittest.main()
