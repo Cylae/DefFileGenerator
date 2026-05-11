@@ -378,7 +378,13 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on Info1 (Register Type)
+                # 2: Discrete Input, 4: Input Register are Read-Only (4)
+                # 1: Coil, 3: Holding Register are Read/Write (1)
+                if info1 in ['2', '4']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +416,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row['Info1']
+                if info1 in counts:
+                    counts[info1] += 1
+
+            summary_parts = [f"{counts[k]} {type_names[k]}" for k in ['1', '2', '3', '4'] if counts[k] > 0]
+            if summary_parts:
+                logging.info(f"Processed: {', '.join(summary_parts)}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
