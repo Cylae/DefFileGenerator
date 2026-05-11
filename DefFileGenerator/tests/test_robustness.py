@@ -40,5 +40,18 @@ class TestRobustness(unittest.TestCase):
         mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "1000")
 
+    def test_empty_extraction(self):
+        # Empty list of tables
+        mapped = list(self.extractor.map_and_clean([]))
+        self.assertEqual(len(mapped), 0)
+
+        # List with empty table
+        mapped = list(self.extractor.map_and_clean([[]]))
+        self.assertEqual(len(mapped), 0)
+
+        # Table with empty rows
+        mapped = list(self.extractor.map_and_clean([[{}, {}]]))
+        self.assertEqual(len(mapped), 0)
+
 if __name__ == "__main__":
     unittest.main()
