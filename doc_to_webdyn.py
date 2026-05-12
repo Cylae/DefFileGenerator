@@ -6,6 +6,7 @@ import logging
 import re
 import json
 import csv
+import itertools
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
@@ -63,8 +64,14 @@ def _run_cli():
 
     if not raw: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped_gen = extractor.map_and_clean(raw, args.address_offset)
+
+    # Peek to check if empty
+    try:
+        first = next(mapped_gen)
+        mapped = itertools.chain([first], mapped_gen)
+    except StopIteration:
+        logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
