@@ -57,11 +57,16 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
+
+import itertools
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    try:
+        first = next(mapped_data)
+        mapped_data = itertools.chain([first], mapped_data)
+    except StopIteration:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -96,7 +101,10 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    try:
+        first = next(mapped_data)
+        mapped_data = itertools.chain([first], mapped_data)
+    except StopIteration:
         logging.error("No registers extracted.")
         sys.exit(1)
 

@@ -55,8 +55,8 @@ except ImportError:
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
-        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'type of register'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg', 'modbus address'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -124,7 +124,17 @@ class Extractor:
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        target_pages = []
+                        page_list = pages if isinstance(pages, list) else [pages]
+                        for p_num in page_list:
+                            if 1 <= p_num <= len(pdf.pages):
+                                target_pages.append(pdf.pages[p_num - 1])
+                            else:
+                                logging.warning(f"PDF Page {p_num} is out of range (1-{len(pdf.pages)}). Skipping.")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -362,7 +372,15 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+    import itertools
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    try:
+        first = next(mapped)
+        mapped = itertools.chain([first], mapped)
+    except StopIteration:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)
