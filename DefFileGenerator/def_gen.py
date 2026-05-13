@@ -146,12 +146,25 @@ class Generator:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
+        is_valid = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid = RE_ADDR_INT.match(address) is not None
+
+        if is_valid:
+            # Range validation for simple addresses (0-65535)
+            try:
+                parts = address.split('_')
+                base_addr = int(Generator.normalize_address_val(parts[0]))
+                if base_addr < 0 or base_addr > 65535:
+                    logging.warning(f"Address {base_addr} is outside the standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+
+        return is_valid
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +391,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on Info1
+                if info1 in ['2', '4']:  # Discrete Inputs or Input Registers
+                    norm_action = '4'
+                else:  # Coils or Holding Registers (default)
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +427,18 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            total = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
+                total += 1
+
+            summary = f"Processed {total} registers: {counts['1']} Coils, {counts['2']} Discrete Inputs, {counts['3']} Holding Registers, {counts['4']} Input Registers"
+            logging.info(summary)
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
