@@ -13,7 +13,7 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install openpyxl pdfplumber reportlab defusedxml lxml
 ```
 
 ## Basic Usage
@@ -149,6 +149,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - PDF pages (comma-separated integers, e.g., "1,2,5")
+- `--mapping JSON` - Custom mapping file
+- `--address-offset OFFSET` - Shift addresses by OFFSET
+- `--forced-write VAL` - Add forced write value to header
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files

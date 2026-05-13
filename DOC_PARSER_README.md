@@ -19,6 +19,9 @@ pip install openpyxl pdfplumber lxml defusedxml reportlab
 ```
 *(Note: `pandas` is not required for core execution, only for stress testing).*
 
+## Memory Efficiency
+The tool is designed for O(1) memory complexity, utilizing Python generators to process files of any size without loading the entire dataset into RAM.
+
 ## Usage
 
 ```bash
@@ -34,6 +37,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol`: Protocol name (default: `modbusRTU`).
 - `--category`: Device category (default: `Inverter`).
 - `--sheet`: Specific Excel sheet name to process (processes all if omitted).
+- `--pages`: PDF pages (comma-separated integers).
+- `--mapping`: Custom JSON mapping file.
+- `--address-offset`: Integer offset to shift all addresses.
+- `--forced-write`: Forced write value for the definition header.
 - `-v`, `--verbose`: Show detailed processing information.
 
 ## How It Works

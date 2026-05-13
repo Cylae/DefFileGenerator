@@ -6,6 +6,7 @@ import logging
 import re
 import json
 import csv
+import itertools
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
@@ -61,10 +62,19 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    # Use peeking iterator to check for data without loading everything
+    try:
+        first_table = next(raw)
+        raw = itertools.chain([first_table], raw)
+    except StopIteration:
+        logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    try:
+        first_reg = next(mapped)
+        mapped = itertools.chain([first_reg], mapped)
+    except StopIteration:
+        logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 

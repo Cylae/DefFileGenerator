@@ -377,16 +377,20 @@ class Generator:
 
             # Action normalization
             act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '1'
-            elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
+            if act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
                 norm_action = '1'
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = '1'
+                # Default based on Register Type (Info1)
+                # 4: Read Only for Input Registers (4) and Discrete Inputs (2)
+                # 1: Read/Write for Holding Registers (3) and Coils (1)
+                if info1 in ['2', '4']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
 
             yield {
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
@@ -410,11 +414,19 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            summary = {'1': 0, '2': 0, '3': 0, '4': 0}
+            total = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                summary[row['Info1']] = summary.get(row['Info1'], 0) + 1
+                total += 1
+
+            logging.info(f"Processed {total} registers: "
+                         f"{summary['1']} Coils, {summary['2']} Discrete Inputs, "
+                         f"{summary['3']} Holding Registers, {summary['4']} Input Registers.")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")

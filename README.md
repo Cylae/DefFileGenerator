@@ -12,6 +12,7 @@ This toolset allows for extracting Modbus register information from manufacturer
     *   Optimized overlap detection for large-scale register maps.
 *   **Comprehensive Type Support**: Standardizes synonyms and supports endianness suffixes (e.g., `_B`, `_W`, `_WB`).
 *   **Unified CLI**: Single entry point for extraction, generation, or end-to-end runs.
+*   **Memory Efficiency**: O(1) memory overhead through generator-based stream processing.
 
 ## Requirements
 
