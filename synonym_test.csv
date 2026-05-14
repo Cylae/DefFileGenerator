@@ -1,0 +1,2 @@
+Name,modbus address,type of register,Type
+Test Var,100,Holding Register,U16

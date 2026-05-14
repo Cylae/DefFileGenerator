@@ -1,0 +1,2 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action,ScaleFactor
+Test Var,,Holding Register,100,U16,,,,,
