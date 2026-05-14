@@ -364,6 +364,15 @@ class Generator:
             # Apply address offset and normalize
             address = Generator.apply_address_offset(address, address_offset, line_num, name)
 
+            # Range validation for simple Modbus addresses (0-65535)
+            if RE_ADDR_INT.match(address):
+                try:
+                    val = int(address)
+                    if not (0 <= val <= 65535):
+                        logging.warning(f"Line {line_num}: Address {val} is outside standard Modbus range (0-65535).")
+                except ValueError:
+                    pass
+
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
@@ -378,7 +387,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on register type
+                if info1 in ['2', '4']:  # Discrete Input or Input Register
+                    norm_action = '4'    # Read Only
+                else:                    # Coil or Holding Register (1 or 3)
+                    norm_action = '1'    # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +423,17 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
+                info1 = row.get('Info1', '3')
+                if info1 in counts:
+                    counts[info1] += 1
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+
+            logging.info(f"Processed registers: Coils: {counts['1']}, Discrete Inputs: {counts['2']}, Holding Registers: {counts['3']}, Input Registers: {counts['4']}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")

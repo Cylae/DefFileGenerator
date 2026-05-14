@@ -13,7 +13,7 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install openpyxl pdfplumber reportlab defusedxml lxml
 ```
 
 ## Basic Usage
@@ -131,6 +131,17 @@ python doc_to_webdyn.py exported_registers.csv \
     --manufacturer "ABB" \
     --model "PVS-5.0-TL" \
     -o abb_definition.csv
+```
+
+### Example 4: XML Register Map
+
+If the manufacturer provides an XML file:
+
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "Sunsynk" \
+    --model "5kW-Hybrid" \
+    -o sunsynk_definition.csv
 ```
 
 ## Command-Line Options
