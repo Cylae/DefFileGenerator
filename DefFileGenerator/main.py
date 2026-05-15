@@ -6,6 +6,7 @@ import logging
 import csv
 import json
 import tempfile
+import itertools
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
@@ -57,13 +58,17 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    try:
+        first = next(mapped_data)
+    except StopIteration:
         logging.error("No registers extracted.")
         sys.exit(1)
+
+    mapped_data = itertools.chain([first], mapped_data)
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -96,9 +101,13 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    try:
+        first = next(mapped_data)
+    except StopIteration:
         logging.error("No registers extracted.")
         sys.exit(1)
+
+    mapped_data = itertools.chain([first], mapped_data)
 
     config = GeneratorConfig(
         input_file=args.input_file,
