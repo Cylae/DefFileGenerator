@@ -143,15 +143,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            valid_format = RE_ADDR_INT.match(address) is not None
+
+        if not valid_format:
+            return False
+
+        # Range validation (0-65535) for the base address
+        try:
+            base_addr = int(address.split('_')[0])
+            if not (0 <= base_addr <= 65535):
+                logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,18 +389,22 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '1'
-            elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
+            if act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
                 norm_action = '1'
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = '1'
+                # Default based on Register Type
+                # Info1: '1'=Coils, '2'=Discrete Inputs, '3'=Holding Registers, '4'=Input Registers
+                if info1 in ['2', '4']:
+                    norm_action = '4' # Read Only
+                else:
+                    norm_action = '1' # Read/Write
+
 
             yield {
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
@@ -398,6 +416,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_labels = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +436,16 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1')
+                if info1 in counts:
+                    counts[info1] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_labels[k]}: {counts[k]}" for k in sorted(counts.keys()) if counts[k] > 0])
+                if summary:
+                    logging.info(f"Processed: {summary}")
+
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
