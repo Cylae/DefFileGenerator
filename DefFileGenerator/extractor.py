@@ -81,11 +81,14 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+            if sheet_name and sheet_name not in wb.sheetnames:
+                logging.warning(f"Sheet '{sheet_name}' not found in {filepath}")
+                return iter([])
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
@@ -119,12 +122,22 @@ class Extractor:
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        target_pages = []
+                        page_nums = pages if isinstance(pages, list) else [pages]
+                        for p_num in page_nums:
+                            if 1 <= p_num <= len(pdf.pages):
+                                target_pages.append(pdf.pages[p_num-1])
+                            else:
+                                logging.warning(f"Page {p_num} is out of range for {filepath} (Total pages: {len(pdf.pages)})")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -196,7 +209,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
@@ -362,7 +375,16 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+    # Peeking iterator to check for empty extraction
+    import itertools
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    try:
+        first = next(mapped)
+        mapped = itertools.chain([first], mapped)
+    except StopIteration:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)

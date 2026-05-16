@@ -151,7 +151,16 @@ class Generator:
         elif dtype_upper == 'BITS':
             return RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            if not RE_ADDR_INT.match(address):
+                return False
+            # Range validation for simple addresses
+            try:
+                addr_val = int(Generator.normalize_address_val(address))
+                if not (0 <= addr_val <= 65535):
+                    logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535)")
+            except ValueError:
+                pass
+            return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +387,10 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4'
+                else: # Coil, Holding Register (1, 3)
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +422,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row['Info1']
+                if info1 in counts:
+                    counts[info1] += 1
+
+            summary = ", ".join([f"{type_names[k]}: {counts[k]}" for k in sorted(counts.keys()) if counts[k] > 0])
+            if summary:
+                logging.info(f"Registers processed: {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
