@@ -209,7 +209,10 @@ class TestCliEntryPoints(unittest.TestCase):
         from DefFileGenerator.main import main
         test_args = ["main.py"]
         with patch.object(sys, 'argv', test_args):
-            main() # Just prints help and returns
+            captured_output = io.StringIO()
+            with patch('sys.stdout', captured_output):
+                main() # Just prints help and returns
+            self.assertIn("Sub-commands", captured_output.getvalue())
 
     def test_def_file_gen_main_excel(self):
         from DefFileGenerator.main import main
