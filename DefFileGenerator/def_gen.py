@@ -410,11 +410,23 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
+            count = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1', '3')
+                if info1 in type_counts:
+                    type_counts[info1] += 1
+                count += 1
+
+            if count > 0:
+                summary = ", ".join([f"{type_names[k]}: {v}" for k, v in type_counts.items() if v > 0])
+                logging.info(f"Successfully processed {count} registers ({summary}).")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
