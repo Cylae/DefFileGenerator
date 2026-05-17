@@ -5,7 +5,7 @@ import sys
 import logging
 import re
 import math
-from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
+from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable, cast
 import os
 from dataclasses import dataclass
 
@@ -23,10 +23,10 @@ _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
 @dataclass
 class GeneratorConfig:
-    input_file: str = None
-    output: str = None
-    manufacturer: str = None
-    model: str = None
+    input_file: Optional[str] = None
+    output: Optional[str] = None
+    manufacturer: Optional[str] = None
+    model: Optional[str] = None
     protocol: str = 'modbusRTU'
     category: str = 'Inverter'
     forced_write: str = ''
@@ -143,15 +143,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Simple range validation for simple Modbus addresses (0-65535)
+        if dtype_upper not in ['STRING', 'BITS']:
+            try:
+                addr_val = int(Generator.normalize_address_val(address))
+                if not (0 <= addr_val <= 65535):
+                    logging.warning(f"Address {addr_val} is outside the standard Modbus range (0-65535).")
+            except ValueError:
+                pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -294,7 +308,7 @@ class Generator:
                         if is_bits and u_type == 'BITS' and curr_addr == start_addr:
                             continue
 
-                        warn_key = tuple(sorted((line_num, u_line)))
+                        warn_key = cast(Tuple[int, int], tuple(sorted((line_num, u_line))))
                         if warn_key not in warned_lines:
                             logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {curr_addr}. Overlaps with '{u_name}' (Line {u_line}).")
                             warned_lines.add(warn_key)
@@ -321,10 +335,10 @@ class Generator:
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
-        seen_names = {}
-        seen_tags = {}
-        address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
-        warned_lines = set()
+        seen_names: Dict[str, int] = {}
+        seen_tags: Dict[str, int] = {}
+        address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]] = {} # Info1 -> dict of address -> list of (line, name, type)
+        warned_lines: Set[Tuple[int, int]] = set()
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -378,7 +392,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent default based on RegisterType
+                if info1 in ['4', '2']: # Input Register or Discrete Input
+                    norm_action = '4'
+                else: # Holding Register or Coil
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +416,10 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        stats = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
+        outfile: Any = None
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +437,16 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1')
+                if info1 in stats:
+                    stats[info1] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            summary = ", ".join([f"{count} {type_names[tid]}" for tid, count in stats.items() if count > 0])
+            if summary:
+                logging.info(f"Processed: {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
@@ -456,6 +485,10 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
             logging.error(f"Input file not found: {config.input_file}")
             return
 
+    # Check if we have an input file to open if input_data is None
+    if input_data is None and config.input_file is None:
+         return
+
     if not config.manufacturer or not config.model:
         logging.error("manufacturer and model are required.")
         return
@@ -466,7 +499,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
             processed_rows = generator.process_rows(input_data, config.address_offset)
             generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                        config.protocol, config.category, config.forced_write)
-        else:
+        elif config.input_file is not None:
             with open(config.input_file, mode='rb') as f:
                 header_bytes = f.read(4)
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'

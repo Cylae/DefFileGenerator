@@ -8,7 +8,7 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Set
 
 try:
     import openpyxl
@@ -49,14 +49,14 @@ try:
 except ImportError:
     # Support local import if running from within the directory
     try:
-        from def_gen import Generator
+        from def_gen import Generator # type: ignore
     except ImportError:
-        Generator = None
+        Generator = None # type: ignore
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
-        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'type of register'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg', 'modbus address'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -74,19 +74,25 @@ class Extractor:
 
     @staticmethod
     def normalize_type(t: Any) -> str:
-        if Generator:
+        if Generator is not None:
             return Generator.normalize_type(t)
         return str(t).upper() if t else 'U16'
 
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            if sheet_name:
+                if sheet_name not in wb.sheetnames:
+                    logging.warning(f"Sheet '{sheet_name}' not found in {filepath}. Skipping.")
+                    return iter([])
+                sheets = [wb[sheet_name]]
+            else:
+                sheets = wb.worksheets
 
             for ws in sheets:
                 def sheet_generator() -> Iterator[Dict[str, Any]]:
@@ -119,12 +125,23 @@ class Extractor:
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    total_pages = len(pdf.pages)
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        page_nums = pages if isinstance(pages, list) else [pages]
+                        target_pages = []
+                        for p_num in page_nums:
+                            if 1 <= p_num <= total_pages:
+                                target_pages.append(pdf.pages[p_num - 1])
+                            else:
+                                logging.warning(f"Page number {p_num} is out of range (1-{total_pages}). Skipping.")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -196,7 +213,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
@@ -245,7 +262,7 @@ class Extractor:
             if not buffer:
                 continue
 
-            all_keys = set()
+            all_keys: Set[str] = set()
             for row in buffer:
                 all_keys.update(row.keys())
 
@@ -289,8 +306,10 @@ class Extractor:
                 if not new_row.get('Name') and not new_row.get('Address'): return None
 
                 # Extract StartBit and Length
-                sbit = r.get(col_map.get('StartBit'))
-                slen = r.get(col_map.get('Length'))
+                sbit_col = col_map.get('StartBit')
+                slen_col = col_map.get('Length')
+                sbit = r.get(sbit_col) if sbit_col else None
+                slen = r.get(slen_col) if slen_col else None
                 sbit = str(sbit).strip() if sbit is not None else ''
                 slen = str(slen).strip() if slen is not None else ''
 
@@ -306,14 +325,14 @@ class Extractor:
                 elif (dtype == 'STRING' or dtype.startswith('STR')) and slen != '' and '_' not in addr:
                     addr = f"{addr}_{slen}"
 
-                if Generator:
+                if Generator is not None:
                     new_row['Address'] = Generator.apply_address_offset(addr, address_offset)
                 else:
                     new_row['Address'] = addr
 
                 # Factor
                 if new_row.get('Factor') is not None:
-                    if Generator:
+                    if Generator is not None:
                         new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
 
                 if 'RegisterType' not in new_row or not new_row['RegisterType']:

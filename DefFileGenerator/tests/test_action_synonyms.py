@@ -35,7 +35,7 @@ class TestActionSynonyms(unittest.TestCase):
             ('8', '8'),
             ('9', '9'),
 
-            # Default/Fallback -> 1
+            # Default/Fallback
             ('', '1'),
             ('UNKNOWN', '1'),
         ]
@@ -45,11 +45,37 @@ class TestActionSynonyms(unittest.TestCase):
                 'Name': 'TestVar',
                 'Address': '100',
                 'Type': 'U16',
-                'Action': input_action
+                'Action': input_action,
+                'RegisterType': 'Holding Register'
             }]
             processed = list(self.generator.process_rows(rows))
             with self.subTest(input_action=input_action):
                 self.assertEqual(processed[0]['Action'], expected)
+
+    def test_action_defaulting_by_type(self):
+        """Verify intelligent 'Action' defaulting based on RegisterType."""
+        test_cases = [
+            ('Input Register', '4'),
+            ('Discrete Input', '4'),
+            ('Holding Register', '1'),
+            ('Coil', '1'),
+            ('4', '4'), # Info1 direct
+            ('2', '4'), # Info1 direct
+            ('3', '1'), # Info1 direct
+            ('1', '1'), # Info1 direct
+        ]
+
+        for reg_type, expected_action in test_cases:
+            rows = [{
+                'Name': 'TestVar',
+                'Address': '100',
+                'Type': 'U16',
+                'Action': '',
+                'RegisterType': reg_type
+            }]
+            processed = list(self.generator.process_rows(rows))
+            with self.subTest(reg_type=reg_type):
+                self.assertEqual(processed[0]['Action'], expected_action, f"Failed for {reg_type}")
 
 if __name__ == '__main__':
     unittest.main()

@@ -90,7 +90,8 @@ def generate_command(args):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=args.address_offset
+        address_offset=args.address_offset,
+        template=args.template
     )
     run_generator(config)
 
@@ -128,14 +129,15 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -174,6 +176,9 @@ def _run_cli():
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
+        if not args.template and (not args.manufacturer or not args.model or not args.input_file):
+            logging.error("Manufacturer, Model, and Input File are required unless using --template.")
+            sys.exit(1)
         generate_command(args)
     elif args.command == 'run':
         run_command(args)

@@ -31,6 +31,10 @@ def _run_cli():
         logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
+    if not args.manufacturer or not args.model:
+        logging.error("Manufacturer and Model are required.")
+        sys.exit(1)
+
     ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
