@@ -378,7 +378,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on RegisterType if unspecified
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4'
+                else: # Coil, Holding Register (defaulting to RW)
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +414,17 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1')
+                if info1 in counts:
+                    counts[info1] += 1
+
+            logging.info(f"Summary: Coils: {counts['1']}, Discrete Inputs: {counts['2']}, Holding Registers: {counts['3']}, Input Registers: {counts['4']}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
