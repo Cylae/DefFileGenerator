@@ -142,16 +142,34 @@ class Generator:
         return addr_part
 
     @staticmethod
-    def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+    def validate_address(address: str, dtype: str, line_num: Optional[int] = None) -> bool:
+        """Validates the address format based on type and range (0-65535)."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        try:
+            # Check range for the base address part
+            base_addr_str = Generator.normalize_address_val(match.group(1))
+            base_addr = int(base_addr_str)
+            if not (0 <= base_addr <= 65535):
+                msg = f"Address {base_addr} is outside standard Modbus range (0-65535)."
+                if line_num:
+                    logging.warning(f"Line {line_num}: {msg}")
+                else:
+                    logging.warning(msg)
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -364,7 +382,7 @@ class Generator:
             # Apply address offset and normalize
             address = Generator.apply_address_offset(address, address_offset, line_num, name)
 
-            if not self.validate_address(address, dtype):
+            if not self.validate_address(address, dtype, line_num):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping row.")
                 continue
 
@@ -378,7 +396,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on Info1
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4' # Read Only
+                else: # Coil, Holding Register
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +420,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        summary = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -411,13 +436,21 @@ class Generator:
             writer.writerow(header_row)
 
             for index, row in enumerate(processed_rows, start=1):
+                info1 = row['Info1']
+                if info1 in summary:
+                    summary[info1] += 1
                 writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                    str(index), info1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            # Log summary
+            summary_parts = [f"{type_names[k]}: {v}" for k, v in summary.items() if v > 0]
+            if summary_parts:
+                logging.info("Processed registers: " + ", ".join(summary_parts))
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:

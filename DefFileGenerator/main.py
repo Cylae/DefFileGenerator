@@ -6,6 +6,7 @@ import logging
 import csv
 import json
 import tempfile
+import itertools
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
@@ -57,11 +58,15 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+
+    try:
+        first_row = next(mapped_gen)
+        mapped_data = itertools.chain([first_row], mapped_gen)
+    except StopIteration:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -90,13 +95,18 @@ def generate_command(args):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
+        template=getattr(args, 'template', False),
         address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+
+    try:
+        first_row = next(mapped_gen)
+        mapped_data = itertools.chain([first_row], mapped_gen)
+    except StopIteration:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -128,14 +138,15 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template input CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -174,8 +185,14 @@ def _run_cli():
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
+        if not args.template and (not args.manufacturer or not args.model):
+            logging.error("manufacturer and model are required when not using --template.")
+            sys.exit(1)
         generate_command(args)
     elif args.command == 'run':
+        if not args.manufacturer or not args.model:
+            logging.error("manufacturer and model are required.")
+            sys.exit(1)
         run_command(args)
 
 def main():

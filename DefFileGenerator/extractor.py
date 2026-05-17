@@ -8,6 +8,7 @@ import re
 import sys
 import io
 import zipfile
+import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
 
 try:
@@ -124,7 +125,17 @@ class Extractor:
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        page_nums = pages if isinstance(pages, list) else [pages]
+                        target_pages = []
+                        for p_num in page_nums:
+                            if 1 <= p_num <= len(pdf.pages):
+                                target_pages.append(pdf.pages[p_num-1])
+                            else:
+                                logging.warning(f"Page {p_num} is out of range for PDF {filepath} (1-{len(pdf.pages)}). Skipping.")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -362,10 +373,20 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+    mapped_gen = extractor.map_and_clean(raw, args.address_offset)
+
+    # Peeking iterator pattern to detect empty results without loading into memory
+    try:
+        first_row = next(mapped_gen)
+        mapped = itertools.chain([first_row], mapped_gen)
+    except StopIteration:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
-    writer.writeheader(); writer.writerows(mapped)
+    writer.writeheader()
+    writer.writerows(mapped)
     if args.output: out.close()
 
 if __name__ == "__main__":
