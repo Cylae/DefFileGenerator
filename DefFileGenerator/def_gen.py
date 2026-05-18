@@ -410,14 +410,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            labels = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
+                info1 = row.get('Info1', '3')
+                if info1 in counts:
+                    counts[info1] += 1
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{labels[k]}: {counts[k]}" for k in sorted(counts.keys()) if counts[k] > 0])
+                logging.info(f"Definition file generated at {output} ({summary or 'No registers'})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
