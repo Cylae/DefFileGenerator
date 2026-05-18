@@ -7,8 +7,22 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """
+    Peeks at the first element of an iterable without consuming it.
+    Returns (first_element, restored_iterator).
+    If the iterable is empty, first_element is None and the iterator is empty.
+    """
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return None, iter([])
+    return first, itertools.chain([first], it)
 
 try:
     import openpyxl
@@ -362,7 +376,12 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+    mapped_gen = extractor.map_and_clean(raw, args.address_offset)
+    first, mapped = peek_generator(mapped_gen)
+    if not first:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)

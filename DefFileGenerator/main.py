@@ -6,7 +6,7 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -57,11 +57,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+    first, mapped_data = peek_generator(mapped_gen)
+    if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -95,8 +96,9 @@ def generate_command(args):
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+    first, mapped_data = peek_generator(mapped_gen)
+    if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
 
