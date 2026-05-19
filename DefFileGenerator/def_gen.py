@@ -151,7 +151,15 @@ class Generator:
         elif dtype_upper == 'BITS':
             return RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            if RE_ADDR_INT.match(address):
+                try:
+                    val = int(address)
+                    if not (0 <= val <= 65535):
+                        logging.warning(f"Address {val} is outside standard Modbus range (0-65535).")
+                except ValueError:
+                    pass
+                return True
+            return False
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +386,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on Register Type
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4' # Read Only
+                else:
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +410,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        stats = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -410,11 +425,19 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            count = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in stats:
+                    stats[row['Info1']] += 1
+                count += 1
+
+            if count > 0:
+                summary = ", ".join([f"{type_names[k]}: {v}" for k, v in stats.items() if v > 0])
+                logging.info(f"Processed {count} registers: {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
