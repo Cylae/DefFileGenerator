@@ -109,5 +109,18 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
 
+    @unittest.skipUnless(HAS_REPORTLAB, "reportlab not installed")
+    def test_extract_from_pdf_out_of_range(self):
+        if not os.path.exists(self.pdf_file): self.skipTest("PDF file not created")
+        # Request page 99 which doesn't exist (dummy PDF has 1 page)
+        data = list(self.extractor.extract_from_pdf(self.pdf_file, pages=[1, 99]))
+        self.assertEqual(len(data), 1) # Only one page (page 1) should yield a table
+
+    @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
+    def test_extract_from_excel_missing_sheet(self):
+        if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
+        data = list(self.extractor.extract_from_excel(self.excel_file, sheet_name="NonExistent"))
+        self.assertEqual(len(data), 0)
+
 if __name__ == "__main__":
     unittest.main()

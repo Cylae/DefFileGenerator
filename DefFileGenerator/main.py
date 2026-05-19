@@ -6,7 +6,8 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from typing import Iterator, Dict, Any
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -16,7 +17,7 @@ def setup_logging(verbose=False):
         force=True
     )
 
-def _perform_extraction(args):
+def _perform_extraction(args) -> Iterator[Dict[str, Any]]:
     mapping = {}
     if args.mapping:
         try:
@@ -57,11 +58,15 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    raw_ext = _perform_extraction(args)
+    # Check if we got any tables at all if possible?
+    # Actually _perform_extraction returns map_and_clean which is the register generator.
+
+    first, mapped_data = peek_generator(raw_ext)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -95,8 +100,10 @@ def generate_command(args):
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    raw_ext = _perform_extraction(args)
+
+    first, mapped_data = peek_generator(raw_ext)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
