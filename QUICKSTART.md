@@ -171,6 +171,14 @@ python doc_to_webdyn.py sample_inverter_registers.xlsx \
     -o test_excel_output.csv
 ```
 
+### 3. XML Sample
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "TestMfg" \
+    --model "TEST-3000" \
+    -o test_xml_output.csv
+```
+
 ## Troubleshooting
 
 ### Problem: No registers extracted
