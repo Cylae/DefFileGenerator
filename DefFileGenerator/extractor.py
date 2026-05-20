@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -71,6 +72,15 @@ class Extractor:
 
     def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
+
+    @staticmethod
+    def peek_generator(gen: Iterator[Any]) -> Tuple[bool, Iterator[Any]]:
+        """Checks if a generator is non-empty without consuming it."""
+        try:
+            first = next(gen)
+            return True, itertools.chain([first], gen)
+        except StopIteration:
+            return False, iter([])
 
     @staticmethod
     def normalize_type(t: Any) -> str:
@@ -230,13 +240,13 @@ class Extractor:
             return
 
         for table in tables:
-            if not table: continue
-
             # Since table could be a generator, we need to extract the first few rows
             # to determine column mapping, then process the rest.
             iterator = iter(table)
             buffer = []
             try:
+                # We need a small sample to detect columns, but we must keep it O(1)
+                # 50 rows is a reasonable constant.
                 for _ in range(50):
                     buffer.append(next(iterator))
             except StopIteration:
@@ -362,7 +372,13 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+    has_data, raw = extractor.peek_generator(raw)
+    if not has_data: logging.error("No data extracted."); sys.exit(1)
+
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    has_regs, mapped = extractor.peek_generator(mapped)
+    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader(); writer.writerows(mapped)

@@ -12,8 +12,11 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 ## Installation
 
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Install core dependencies
+pip install openpyxl pdfplumber defusedxml lxml reportlab
+
+# Install optional dependencies for testing and performance batteries
+pip install pandas coverage
 ```
 
 ## Basic Usage
@@ -149,6 +152,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - Comma-separated list of PDF pages to process (e.g., "1,2,5")
+- `--mapping JSON` - Path to a JSON file for custom column mapping
+- `--address-offset N` - Integer offset to shift all register addresses
+- `--forced-write VAL` - Value for the forced write field in the header
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
