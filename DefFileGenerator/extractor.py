@@ -7,8 +7,9 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -53,6 +54,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
+def peek_generator(generator: Iterator[Any]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if a generator is empty without consuming it using itertools.chain."""
+    try:
+        first = next(generator)
+        return True, itertools.chain([first], generator)
+    except StopIteration:
+        return False, iter([])
+
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
@@ -81,12 +90,18 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            if sheet_name:
+                if sheet_name not in wb.sheetnames:
+                    logging.warning(f"Sheet '{sheet_name}' not found in {filepath}.")
+                    return iter([])
+                sheets = [wb[sheet_name]]
+            else:
+                sheets = wb.worksheets
 
             for ws in sheets:
                 def sheet_generator() -> Iterator[Dict[str, Any]]:
@@ -119,13 +134,25 @@ class Extractor:
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
-        def pdf_tables_generator():
+        def pdf_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
+                    num_pages = len(pdf.pages)
+                    page_indices = []
+                    if pages is None:
+                        page_indices = list(range(num_pages))
+                    else:
+                        requested = pages if isinstance(pages, list) else [pages]
+                        for p in requested:
+                            if 1 <= p <= num_pages:
+                                page_indices.append(p - 1)
+                            else:
+                                logging.warning(f"Page {p} is out of range for PDF {filepath} (1-{num_pages}). Skipping.")
+
+                    for idx in page_indices:
+                        page = pdf.pages[idx]
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                         for table in tables:
@@ -144,8 +171,6 @@ class Extractor:
                             # Since we must keep pdfplumber context open while iterating,
                             # and pdfplumber pages/tables are held in memory anyway,
                             # yielding generators is safe but the entire PDF is open.
-                            # A better approach: evaluate the generator immediately if we're yielding it,
-                            # but here we're conforming to `Iterator[Iterator[Dict]]`
                             yield table_generator(table)
 
             except (OSError,) + PDF_ERRORS as e:
@@ -153,7 +178,7 @@ class Extractor:
             except (ValueError, TypeError, IndexError) as e:
                 logging.error(f"Error extracting from PDF {filepath}: {e}")
 
-        return pdf_tables_generator()
+        return pdf_generator()
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
@@ -196,34 +221,38 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
-        try:
-            with open(filepath, 'rb') as f:
-                tree = ET.parse(f)
-                root = tree.getroot()
+            return iter([])
 
-            def xml_generator() -> Iterator[Dict[str, Any]]:
-                seen = set()
-                for elem in root.iter():
-                    row = {}
-                    for child in elem:
-                        if len(child) == 0 and child.text:
-                            row[child.tag] = child.text.strip()
-                    if len(row) >= 2:
-                        js = json.dumps(row, sort_keys=True)
-                        if js not in seen:
-                            seen.add(js)
-                            yield row
+        def xml_outer_generator():
+            try:
+                with open(filepath, 'rb') as f:
+                    tree = ET.parse(f)
+                    root = tree.getroot()
 
-            # Return as a single table
-            yield xml_generator()
+                def xml_generator() -> Iterator[Dict[str, Any]]:
+                    seen = set()
+                    for elem in root.iter():
+                        row = {}
+                        for child in elem:
+                            if len(child) == 0 and child.text:
+                                row[child.tag] = child.text.strip()
+                        if len(row) >= 2:
+                            js = json.dumps(row, sort_keys=True)
+                            if js not in seen:
+                                seen.add(js)
+                                yield row
 
-        except SECURITY_EXCEPTIONS:
-            raise
-        except (OSError,) + XML_PARSE_ERRORS as e:
-            logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
-        except (ValueError, TypeError) as e:
-            logging.error(f"Error extracting from XML {filepath}: {e}")
+                # Return as a single table
+                yield xml_generator()
+
+            except SECURITY_EXCEPTIONS:
+                raise
+            except (OSError,) + XML_PARSE_ERRORS as e:
+                logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+            except (ValueError, TypeError) as e:
+                logging.error(f"Error extracting from XML {filepath}: {e}")
+
+        return xml_outer_generator()
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
@@ -300,11 +329,14 @@ class Extractor:
 
                 # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
-                if dtype == 'BITS' and sbit != '' and '_' not in addr:
-                    if slen == '': slen = '1'
-                    addr = f"{addr}_{sbit}_{slen}"
-                elif (dtype == 'STRING' or dtype.startswith('STR')) and slen != '' and '_' not in addr:
-                    addr = f"{addr}_{slen}"
+                # If StartBit or Length were missing from Address string but present in columns, use them.
+                if dtype == 'BITS' and '_' not in addr:
+                    sbit_val = sbit if sbit != '' else '0'
+                    slen_val = slen if slen != '' else '1'
+                    addr = f"{addr}_{sbit_val}_{slen_val}"
+                elif (dtype == 'STRING' or dtype.startswith('STR')) and '_' not in addr:
+                    if slen != '':
+                        addr = f"{addr}_{slen}"
 
                 if Generator:
                     new_row['Address'] = Generator.apply_address_offset(addr, address_offset)
