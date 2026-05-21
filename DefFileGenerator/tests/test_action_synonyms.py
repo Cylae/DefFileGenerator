@@ -35,7 +35,7 @@ class TestActionSynonyms(unittest.TestCase):
             ('8', '8'),
             ('9', '9'),
 
-            # Default/Fallback -> 1
+            # Default/Fallback -> 1 (Defaults to 1 for Holding Registers)
             ('', '1'),
             ('UNKNOWN', '1'),
         ]
@@ -50,6 +50,29 @@ class TestActionSynonyms(unittest.TestCase):
             processed = list(self.generator.process_rows(rows))
             with self.subTest(input_action=input_action):
                 self.assertEqual(processed[0]['Action'], expected)
+
+    def test_intelligent_action_defaulting(self):
+        # Test that Input Register defaults to Action 4 (Read Only)
+        rows = [{
+            'Name': 'TestInput',
+            'Address': '30001',
+            'RegisterType': 'Input Register',
+            'Type': 'U16',
+            'Action': ''
+        }]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '4')
+
+        # Test that Holding Register defaults to Action 1 (Read/Write)
+        rows = [{
+            'Name': 'TestHolding',
+            'Address': '40001',
+            'RegisterType': 'Holding Register',
+            'Type': 'U16',
+            'Action': ''
+        }]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1')
 
 if __name__ == '__main__':
     unittest.main()
