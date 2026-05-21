@@ -11,9 +11,14 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ## Installation
 
+### Core Dependencies (Required for basic execution)
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install openpyxl pdfplumber defusedxml lxml reportlab
+```
+
+### Optional Dependencies (Required for stress testing and performance)
+```bash
+pip install pandas coverage
 ```
 
 ## Basic Usage
@@ -42,24 +47,32 @@ python doc_to_webdyn.py registers.csv \
     -o fronius_definition.csv
 ```
 
+### From XML File
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "Generic" \
+    --model "Model-X" \
+    -o generic_definition.csv
+```
+
 ## How It Works
 
 ### Step 1: The tool looks for register information in your file
 
 It searches for columns with names like:
-- **Address**: register, address, addr, offset
-- **Name**: name, description, parameter
-- **Type**: type, data type, format
+- **Address**: register, address, addr, offset, reg
+- **Name**: name, description, parameter, variable, signal
+- **Type**: type, data type, format, datatype
 - **Unit**: unit, units
-- **Scale**: scale, factor, multiplier
-- etc.
+- **Scale**: scale, factor, multiplier, ratio
+- **Action**: action, access
 
 ### Step 2: It converts the data
 
-- Normalizes addresses (handles hex like 0x9C40 or decimal like 40001)
-- Converts data types (uint16 → U16, int32 → I32, float → F32, etc.)
-- Generates unique tags from register names
-- Calculates scaling coefficients
+- **Normalization**: Handles hex addresses (e.g., `0x9C40`) and decimal automatically.
+- **Type Mapping**: Converts `uint16` -> `U16`, `float32` -> `F32`, etc.
+- **Tag Generation**: Creates unique alphanumeric tags from register names.
+- **Coefficients**: Calculates `CoefA` and `CoefB` using factors and scale factors.
 
 ### Step 3: Creates WebdynSunPM definition file
 
@@ -149,27 +162,11 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages LIST` - Comma-separated list of PDF pages to process
+- `--mapping FILE` - JSON mapping file for custom column detection
+- `--address-offset VAL` - Integer value to add to all addresses
+- `--forced-write VAL` - Value for the forced-write column in the header
 - `-v, --verbose` - Show detailed processing information
-
-## Testing with Sample Files
-
-Two sample files are included for testing:
-
-### 1. CSV Sample
-```bash
-python doc_to_webdyn.py sample_register_map.csv \
-    --manufacturer "TestMfg" \
-    --model "TEST-1000" \
-    -o test_csv_output.csv
-```
-
-### 2. Excel Sample
-```bash
-python doc_to_webdyn.py sample_inverter_registers.xlsx \
-    --manufacturer "TestMfg" \
-    --model "TEST-2000" \
-    -o test_excel_output.csv
-```
 
 ## Troubleshooting
 
@@ -194,28 +191,7 @@ python doc_to_webdyn.py sample_inverter_registers.xlsx \
 **Solution:**
 - Check if addresses are in the right column
 - The tool handles hex (0x9C40) and decimal (40001) automatically
-
-### Problem: Missing units or scaling
-
-**Solution:**
-- These are optional - defaults will be used if missing
-- Add "Unit", "Scale", or "Factor" columns for better accuracy
-
-## What You Get
-
-After running the tool, you get a WebdynSunPM definition file that includes:
-
-✅ Properly formatted header with protocol, category, manufacturer, model
-✅ Indexed register entries
-✅ Modbus register types (holding register, input register, etc.)
-✅ Normalized addresses
-✅ Correct data types (U16, I32, F32, etc.)
-✅ Auto-generated unique tags
-✅ Scaling coefficients (CoefA, CoefB)
-✅ Units
-✅ Action codes
-
-**This file is ready to use with WebdynSunPM!**
+- Use `--address-offset` if addresses are shifted.
 
 ## Tips for Best Results
 
@@ -224,19 +200,6 @@ After running the tool, you get a WebdynSunPM definition file that includes:
 3. **Use verbose mode** - Add `-v` to see what's being detected
 4. **Review output** - Always check the generated file
 5. **Keep originals** - Save your source documentation for reference
-
-## Need Help?
-
-Run with verbose mode to see detailed processing:
-```bash
-python doc_to_webdyn.py yourfile.pdf --manufacturer "X" --model "Y" -v
-```
-
-Check the full README (DOC_PARSER_README.md) for:
-- Complete column name recognition list
-- Full data type mapping table
-- Advanced usage examples
-- Known limitations
 
 ---
 

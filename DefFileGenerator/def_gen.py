@@ -143,15 +143,25 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        is_valid = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid = RE_ADDR_INT.match(address) is not None
+
+        if is_valid:
+            try:
+                base_addr = int(address.split('_')[0])
+                if not (0 <= base_addr <= 65535):
+                    logging.warning(f"Address {base_addr} is out of standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+        return is_valid
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +388,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on register type
+                if info1 in ['2', '4']: # Discrete Inputs, Input Registers
+                    norm_action = '4' # Read Only
+                else: # Coils, Holding Registers
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,14 +424,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1')
+                if info1 in counts:
+                    counts[info1] += 1
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_names[k]}: {v}" for k, v in counts.items() if v > 0])
+                logging.info(f"Definition file generated at {output}. Summary: {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
@@ -488,8 +509,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
     except (OSError, csv.Error, ValueError) as e:
         logging.error(f"An error occurred during generation: {e}")
 
-def main():
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+def _run_cli():
     parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file.')
     parser.add_argument('input_file', nargs='?', help='Input simplified CSV.')
     parser.add_argument('-o', '--output', help='Output CSV.')
@@ -510,6 +530,18 @@ def main():
         address_offset=args.address_offset
     )
     run_generator(config)
+
+def main():
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+    try:
+        _run_cli()
+    except KeyboardInterrupt:
+        sys.exit(130)
+    except SystemExit:
+        raise
+    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
+        logging.error(f"An unexpected error occurred: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

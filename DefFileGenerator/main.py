@@ -6,7 +6,7 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -57,29 +57,37 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_regs, mapped_data = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    if isinstance(output, str):
-        f = open(output, 'w', newline='', encoding='utf-8')
-    else:
-        f = output
+    f = None
+    try:
+        if isinstance(output, str):
+            f = open(output, 'w', newline='', encoding='utf-8')
+        else:
+            f = output
 
-    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-    writer.writeheader()
-    writer.writerows(mapped_data)
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+        writer.writeheader()
+        writer.writerows(mapped_data)
 
-    if isinstance(output, str):
-        f.close()
-        logging.info(f"Extraction complete. Saved to {args.output}")
+        if isinstance(output, str):
+            logging.info(f"Extraction complete. Saved to {args.output}")
+    except (OSError, csv.Error) as e:
+        logging.error(f"Error writing output: {e}")
+        sys.exit(1)
+    finally:
+        if isinstance(output, str) and f:
+            f.close()
 
 def generate_command(args):
     config = GeneratorConfig(
@@ -96,7 +104,8 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_regs, mapped_data = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
