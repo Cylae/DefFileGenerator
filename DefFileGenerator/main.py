@@ -6,7 +6,7 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -16,7 +16,7 @@ def setup_logging(verbose=False):
         force=True
     )
 
-def _perform_extraction(args):
+def _perform_extraction(args, return_mapped=True):
     mapping = {}
     if args.mapping:
         try:
@@ -57,14 +57,24 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    exists, raw_data = peek_generator(raw_data)
+    if not exists:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
-def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    if not return_mapped:
+        return raw_data
+
+    mapped = extractor.map_and_clean(raw_data, address_offset)
+    exists, mapped = peek_generator(mapped)
+    if not exists:
         logging.error("No registers extracted.")
         sys.exit(1)
 
+    return mapped
+
+def extract_command(args):
+    mapped_data = _perform_extraction(args)
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -96,9 +106,6 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
 
     config = GeneratorConfig(
         input_file=args.input_file,

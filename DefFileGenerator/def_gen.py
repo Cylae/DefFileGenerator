@@ -23,10 +23,10 @@ _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
 @dataclass
 class GeneratorConfig:
-    input_file: str = None
-    output: str = None
-    manufacturer: str = None
-    model: str = None
+    input_file: Optional[str] = None
+    output: Optional[str] = None
+    manufacturer: Optional[str] = None
+    model: Optional[str] = None
     protocol: str = 'modbusRTU'
     category: str = 'Inverter'
     forced_write: str = ''
@@ -143,15 +143,25 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if is_valid_format:
+            try:
+                base_addr = int(address.split('_')[0])
+                if not (0 <= base_addr <= 65535):
+                    logging.warning(f"Address {base_addr} is outside the standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+        return is_valid_format
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,10 +385,11 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on register type: 4 (Read Only) for Input Registers/Discrete Inputs
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -386,7 +397,7 @@ class Generator:
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = '1'
+                norm_action = '4' if info1 in ['2', '4'] else '1'
 
             yield {
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
@@ -397,7 +408,7 @@ class Generator:
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
-        """Centralized method to write the WebdynSunPM CSV format."""
+        """Centralized method to write the WebdynSunPM CSV format with summary logging."""
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -410,11 +421,19 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
+
+            summary = ", ".join([f"{count} {type_names[k]}" for k, count in counts.items() if count > 0])
+            if summary:
+                logging.info(f"Processed {summary}.")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
