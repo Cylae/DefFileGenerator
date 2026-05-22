@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -73,6 +74,18 @@ class Extractor:
         self.mapping = mapping or {}
 
     @staticmethod
+    def peek_generator(gen: Iterator[Any]) -> Tuple[bool, Iterator[Any]]:
+        """
+        Checks if a generator is empty without consuming it.
+        Returns (is_not_empty, new_generator).
+        """
+        try:
+            first = next(gen)
+        except StopIteration:
+            return False, iter([])
+        return True, itertools.chain([first], gen)
+
+    @staticmethod
     def normalize_type(t: Any) -> str:
         if Generator:
             return Generator.normalize_type(t)
@@ -81,7 +94,7 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
@@ -119,12 +132,22 @@ class Extractor:
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        page_indices = pages if isinstance(pages, list) else [pages]
+                        target_pages = []
+                        for p in page_indices:
+                            if 1 <= p <= len(pdf.pages):
+                                target_pages.append(pdf.pages[p-1])
+                            else:
+                                logging.warning(f"Page {p} is out of range for PDF {filepath} (1-{len(pdf.pages)}). Skipping.")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -196,7 +219,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
@@ -362,10 +385,17 @@ def main():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    ok, mapped = Extractor.peek_generator(mapped)
+    if not ok:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
-    writer.writeheader(); writer.writerows(mapped)
+    writer.writeheader()
+    for row in mapped:
+        writer.writerow(row)
     if args.output: out.close()
 
 if __name__ == "__main__":
