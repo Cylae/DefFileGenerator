@@ -6,6 +6,7 @@ import logging
 import csv
 import json
 import tempfile
+from typing import Tuple, Iterator, Dict, Any
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
@@ -16,7 +17,7 @@ def setup_logging(verbose=False):
         force=True
     )
 
-def _perform_extraction(args):
+def _perform_extraction(args) -> Tuple[Extractor, Iterator[Dict[str, Any]]]:
     mapping = {}
     if args.mapping:
         try:
@@ -57,13 +58,21 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    has_raw, raw_data = extractor.peek_generator(raw_data)
+    if not has_raw:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
-def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_data = extractor.map_and_clean(raw_data, address_offset)
+    has_mapped, mapped_data = extractor.peek_generator(mapped_data)
+    if not has_mapped:
         logging.error("No registers extracted.")
         sys.exit(1)
+
+    return extractor, mapped_data
+
+def extract_command(args):
+    _, mapped_data = _perform_extraction(args)
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -95,10 +104,7 @@ def generate_command(args):
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
+    _, mapped_data = _perform_extraction(args)
 
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -178,7 +184,7 @@ def _run_cli():
     elif args.command == 'run':
         run_command(args)
 
-def main():
+def main() -> None:
     try:
         _run_cli()
     except KeyboardInterrupt:

@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -54,6 +55,19 @@ except ImportError:
         Generator = None
 
 class Extractor:
+    @staticmethod
+    def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+        """
+        Checks if an iterable is empty without fully consuming it.
+        Returns a tuple: (is_not_empty, restored_iterator)
+        """
+        it = iter(iterable)
+        try:
+            first = next(it)
+        except StopIteration:
+            return False, iter([])
+        return True, itertools.chain([first], it)
+
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
         'Address': ['address', 'addr', 'offset', 'register', 'reg'],
@@ -81,45 +95,44 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
-        wb = None
-        try:
-            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        def excel_generator():
+            wb = None
+            try:
+                wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
-            for ws in sheets:
-                def sheet_generator() -> Iterator[Dict[str, Any]]:
-                    rows = ws.iter_rows(values_only=True)
-                    try:
-                        header_row = next(rows)
-                    except StopIteration:
-                        return
+                for ws in sheets:
+                    def sheet_generator() -> Iterator[Dict[str, Any]]:
+                        rows = ws.iter_rows(values_only=True)
+                        try:
+                            header_row = next(rows)
+                        except StopIteration:
+                            return
 
-                    headers = [str(h).strip() if h is not None else "" for h in header_row]
+                        headers = [str(h).strip() if h is not None else "" for h in header_row]
 
-                    for row in rows:
-                        # Only yield if row has actual data (not all None/empty)
-                        if any(cell is not None and str(cell).strip() for cell in row):
-                            yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+                        for row in rows:
+                            if any(cell is not None and str(cell).strip() for cell in row):
+                                yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                # We yield a generator for each sheet. We check if it has rows by creating it.
-                # To see if it's empty, we would need to peek, but let's yield it.
-                # If there are no data rows, it simply yields nothing when iterated.
-                yield sheet_generator()
+                    yield sheet_generator()
 
-        except (OSError, zipfile.BadZipFile) as e:
-            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-        except (ValueError, TypeError, KeyError) as e:
-            logging.error(f"Error extracting from Excel {filepath}: {e}")
-        finally:
-            if wb:
-                wb.close()
+            except (OSError, zipfile.BadZipFile) as e:
+                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+            except (ValueError, TypeError, KeyError) as e:
+                logging.error(f"Error extracting from Excel {filepath}: {e}")
+            finally:
+                if wb:
+                    wb.close()
+
+        return excel_generator()
 
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
@@ -141,11 +154,6 @@ class Extractor:
                                     if any(row_dict.values()):
                                         yield row_dict
 
-                            # Since we must keep pdfplumber context open while iterating,
-                            # and pdfplumber pages/tables are held in memory anyway,
-                            # yielding generators is safe but the entire PDF is open.
-                            # A better approach: evaluate the generator immediately if we're yielding it,
-                            # but here we're conforming to `Iterator[Iterator[Dict]]`
                             yield table_generator(table)
 
             except (OSError,) + PDF_ERRORS as e:
@@ -190,40 +198,42 @@ class Extractor:
             except (ValueError, TypeError) as e:
                 logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
-        # Yield a single table that contains all rows
         yield csv_table_generator()
 
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
-        try:
-            with open(filepath, 'rb') as f:
-                tree = ET.parse(f)
-                root = tree.getroot()
+            return iter([])
 
-            def xml_generator() -> Iterator[Dict[str, Any]]:
-                seen = set()
-                for elem in root.iter():
-                    row = {}
-                    for child in elem:
-                        if len(child) == 0 and child.text:
-                            row[child.tag] = child.text.strip()
-                    if len(row) >= 2:
-                        js = json.dumps(row, sort_keys=True)
-                        if js not in seen:
-                            seen.add(js)
-                            yield row
+        def xml_outer_generator():
+            try:
+                with open(filepath, 'rb') as f:
+                    tree = ET.parse(f)
+                    root = tree.getroot()
 
-            # Return as a single table
-            yield xml_generator()
+                def xml_generator() -> Iterator[Dict[str, Any]]:
+                    seen = set()
+                    for elem in root.iter():
+                        row = {}
+                        for child in elem:
+                            if len(child) == 0 and child.text:
+                                row[child.tag] = child.text.strip()
+                        if len(row) >= 2:
+                            js = json.dumps(row, sort_keys=True)
+                            if js not in seen:
+                                seen.add(js)
+                                yield row
 
-        except SECURITY_EXCEPTIONS:
-            raise
-        except (OSError,) + XML_PARSE_ERRORS as e:
-            logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
-        except (ValueError, TypeError) as e:
-            logging.error(f"Error extracting from XML {filepath}: {e}")
+                yield xml_generator()
+
+            except SECURITY_EXCEPTIONS:
+                raise
+            except (OSError,) + XML_PARSE_ERRORS as e:
+                logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+            except (ValueError, TypeError) as e:
+                logging.error(f"Error extracting from XML {filepath}: {e}")
+
+        return xml_outer_generator()
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
@@ -232,8 +242,6 @@ class Extractor:
         for table in tables:
             if not table: continue
 
-            # Since table could be a generator, we need to extract the first few rows
-            # to determine column mapping, then process the rest.
             iterator = iter(table)
             buffer = []
             try:
@@ -288,17 +296,14 @@ class Extractor:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): return None
 
-                # Extract StartBit and Length
                 sbit = r.get(col_map.get('StartBit'))
                 slen = r.get(col_map.get('Length'))
                 sbit = str(sbit).strip() if sbit is not None else ''
                 slen = str(slen).strip() if slen is not None else ''
 
-                # Normalize Type
                 dtype = self.normalize_type(new_row.get('Type', 'U16'))
                 new_row['Type'] = dtype
 
-                # Address normalization/construction
                 addr = str(new_row.get('Address', '')).strip()
                 if dtype == 'BITS' and sbit != '' and '_' not in addr:
                     if slen == '': slen = '1'
@@ -311,7 +316,6 @@ class Extractor:
                 else:
                     new_row['Address'] = addr
 
-                # Factor
                 if new_row.get('Factor') is not None:
                     if Generator:
                         new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
@@ -321,13 +325,11 @@ class Extractor:
 
                 return new_row
 
-            # Process buffer first
             for row in buffer:
                 processed = process_row(row)
                 if processed:
                     yield processed
 
-            # Process remaining iterator
             for row in iterator:
                 processed = process_row(row)
                 if processed:
