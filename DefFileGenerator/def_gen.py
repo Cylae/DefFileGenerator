@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -47,6 +48,19 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+    @staticmethod
+    def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+        """
+        Check if a generator is empty without consuming it.
+        Returns (is_empty, original_iterator).
+        """
+        it = iter(iterable)
+        try:
+            first = next(it)
+        except StopIteration:
+            return True, iter([])
+        return False, itertools.chain([first], it)
 
     @staticmethod
     def normalize_type(dtype):
@@ -378,7 +392,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on RegisterType (Info1)
+                if info1 in ['2', '4']: # Discrete Input or Input Register
+                    norm_action = '4' # Read Only
+                else:
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -396,8 +414,12 @@ class Generator:
 
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
-                        protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
-        """Centralized method to write the WebdynSunPM CSV format."""
+                        protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> int:
+        """Centralized method to write the WebdynSunPM CSV format. Returns register count."""
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+        total_registers = 0
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,11 +437,20 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
+                total_registers = index
+
+            summary_parts = [f"{counts[k]} {type_names[k]}" for k in sorted(counts.keys()) if counts[k] > 0]
+            if summary_parts:
+                logging.info(f"Processed: {', '.join(summary_parts)}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+            return total_registers
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
+            return 0
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
@@ -443,28 +474,28 @@ def generate_template(output_file: Optional[str]) -> None:
     except OSError as e:
         logging.error(f"Error generating template: {e}")
 
-def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
+def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> int:
     if config.template:
         generate_template(config.output)
-        return
+        return 1
 
     if input_data is None:
         if not config.input_file:
             logging.error("input_file or input_data is required.")
-            return
+            return 0
         if not os.path.exists(config.input_file):
             logging.error(f"Input file not found: {config.input_file}")
-            return
+            return 0
 
     if not config.manufacturer or not config.model:
         logging.error("manufacturer and model are required.")
-        return
+        return 0
 
     generator = Generator()
     try:
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
-            generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+            return generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                        config.protocol, config.category, config.forced_write)
         else:
             with open(config.input_file, mode='rb') as f:
@@ -483,10 +514,11 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                 processed_rows = generator.process_rows(reader, config.address_offset)
 
                 # Consume the generator while the input file is still open
-                generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+                return generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                            config.protocol, config.category, config.forced_write)
     except (OSError, csv.Error, ValueError) as e:
         logging.error(f"An error occurred during generation: {e}")
+        return 0
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
