@@ -57,14 +57,21 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    success, raw_data = extractor.peek_generator(raw_data)
+    if not success:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
-def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_data = extractor.map_and_clean(raw_data, address_offset)
+    success, mapped_data = Generator.peek_generator(mapped_data)
+    if not success:
         logging.error("No registers extracted.")
         sys.exit(1)
 
+    return mapped_data
+
+def extract_command(args):
+    mapped_data = _perform_extraction(args)
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -96,10 +103,6 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
-
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -128,20 +131,21 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=True)
-    parser_run.add_argument('--model', required=True)
+    parser_run.add_argument('--manufacturer')
+    parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -171,10 +175,27 @@ def _run_cli():
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
+    if args.command == 'generate' and args.template:
+        pass # template mode handled in run_generator
+    elif args.command in ['generate', 'run']:
+        if not args.manufacturer or not args.model:
+            parser.error(f"the following arguments are required: --manufacturer, --model (unless --template is used with 'generate')")
+
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
-        generate_command(args)
+        config = GeneratorConfig(
+            input_file=args.input_file,
+            output=args.output,
+            manufacturer=args.manufacturer,
+            model=args.model,
+            protocol=args.protocol,
+            category=args.category,
+            forced_write=args.forced_write,
+            template=args.template,
+            address_offset=args.address_offset
+        )
+        run_generator(config)
     elif args.command == 'run':
         run_command(args)
 

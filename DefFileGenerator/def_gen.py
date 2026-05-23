@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -47,6 +48,16 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+        self.stats = {'Coils': 0, 'Discrete Inputs': 0, 'Holding Registers': 0, 'Input Registers': 0}
+
+    @staticmethod
+    def peek_generator(iterable: Iterator[Any]) -> Tuple[bool, Iterator[Any]]:
+        """Checks if a generator is empty without consuming it."""
+        try:
+            first = next(iterable)
+        except StopIteration:
+            return False, iter([])
+        return True, itertools.chain([first], iterable)
 
     @staticmethod
     def normalize_type(dtype):
@@ -151,7 +162,16 @@ class Generator:
         elif dtype_upper == 'BITS':
             return RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+            if match:
+                try:
+                    val = int(Generator.normalize_address_val(address))
+                    if not (0 <= val <= 65535):
+                        logging.warning(f"Address {val} is outside standard Modbus range (0-65535).")
+                except ValueError:
+                    pass
+                return True
+            return False
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,10 +395,14 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on register type
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4' # Read Only
+                else: # Coil, Holding Register
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -394,8 +418,7 @@ class Generator:
                 'Unit': unit, 'Action': norm_action
             }
 
-    @staticmethod
-    def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
+    def write_output_csv(self, output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
@@ -415,9 +438,18 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                # Track stats
+                i1 = row['Info1']
+                if i1 == '1': self.stats['Coils'] += 1
+                elif i1 == '2': self.stats['Discrete Inputs'] += 1
+                elif i1 == '3': self.stats['Holding Registers'] += 1
+                elif i1 == '4': self.stats['Input Registers'] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                stat_msg = ", ".join([f"{k}: {v}" for k, v in self.stats.items() if v > 0])
+                if stat_msg:
+                    logging.info(f"Registers processed: {stat_msg}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
