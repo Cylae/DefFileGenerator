@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import csv
+import itertools
 import sys
 import logging
 import re
@@ -20,6 +21,17 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable is empty without fully consuming it. Handles None and non-iterators."""
+    if iterable is None:
+        return False, iter([])
+    iterator = iter(iterable)
+    try:
+        first = next(iterator)
+        return True, itertools.chain([first], iterator)
+    except StopIteration:
+        return False, iter([])
 
 @dataclass
 class GeneratorConfig:

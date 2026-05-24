@@ -8,7 +8,7 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -45,13 +45,22 @@ except ImportError:
     XML_PARSE_ERRORS = ()
 
 try:
-    from DefFileGenerator.def_gen import Generator
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
     # Support local import if running from within the directory
     try:
-        from def_gen import Generator
+        from def_gen import Generator, peek_generator
     except ImportError:
         Generator = None
+        def peek_generator(iterable):
+            if iterable is None: return False, iter([])
+            it = iter(iterable)
+            try:
+                first = next(it)
+                import itertools
+                return True, itertools.chain([first], it)
+            except StopIteration:
+                return False, iter([])
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
