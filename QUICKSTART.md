@@ -12,8 +12,11 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 ## Installation
 
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Install core execution dependencies
+pip install openpyxl pdfplumber defusedxml lxml reportlab
+
+# Optional: Install dependencies for testing and performance benchmarking
+pip install pandas coverage
 ```
 
 ## Basic Usage
@@ -40,6 +43,14 @@ python doc_to_webdyn.py registers.csv \
     --manufacturer "Fronius" \
     --model "Symo-5.0" \
     -o fronius_definition.csv
+```
+
+### From XML File
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "Schneider" \
+    --model "iEM3000" \
+    -o schneider_definition.csv
 ```
 
 ## How It Works
@@ -122,7 +133,36 @@ python doc_to_webdyn.py Inverter_Registers.xlsx \
     -o sma_definition.csv
 ```
 
-### Example 3: CSV Export from Manufacturer Tool
+### Example 3: XML Register Map
+
+If you have an XML file with register definitions:
+
+```xml
+<registers>
+    <register>
+        <Address>30001</Address>
+        <Name>Active Power</Name>
+        <Type>U16</Type>
+        <Unit>W</Unit>
+    </register>
+    <register>
+        <Address>30002</Address>
+        <Name>Voltage</Name>
+        <Type>U16</Type>
+        <Unit>V</Unit>
+    </register>
+</registers>
+```
+
+Run:
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "Schneider" \
+    --model "iEM3000" \
+    -o schneider_definition.csv
+```
+
+### Example 4: CSV Export from Manufacturer Tool
 
 If you exported a CSV from the manufacturer's software:
 
@@ -149,6 +189,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages LIST` - PDF pages (comma-separated integers, e.g., "1,2,5")
+- `--mapping FILE` - JSON mapping file for custom column detection
+- `--address-offset INT` - Shift all addresses by this value (default: 0)
+- `--forced-write VAL` - Value for the 'Forced Write' field in the header
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
