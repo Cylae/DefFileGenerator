@@ -51,5 +51,28 @@ class TestActionSynonyms(unittest.TestCase):
             with self.subTest(input_action=input_action):
                 self.assertEqual(processed[0]['Action'], expected)
 
+    def test_action_defaulting_by_register_type(self):
+        """Verify that missing actions default correctly based on register type."""
+        test_cases = [
+            # ('RegisterType', expected_default_action)
+            ('Holding Register', '1'),
+            ('Input Register', '4'),
+            ('Coil', '1'),
+            ('Discrete Input', '4'),
+            ('', '1'), # Defaults to Holding Register (Info1='3'), so Action='1'
+        ]
+
+        for reg_type, expected_action in test_cases:
+            rows = [{
+                'Name': 'TestVar',
+                'Address': '100',
+                'Type': 'U16',
+                'RegisterType': reg_type,
+                'Action': ''
+            }]
+            processed = list(self.generator.process_rows(rows))
+            with self.subTest(reg_type=reg_type):
+                self.assertEqual(processed[0]['Action'], expected_action)
+
 if __name__ == '__main__':
     unittest.main()
