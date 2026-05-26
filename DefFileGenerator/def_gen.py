@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterable[Any]]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (is_not_empty, new_iterable).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -145,13 +160,26 @@ class Generator:
     def validate_address(address: str, dtype: str) -> bool:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
-
+        match = None
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        base_addr_raw = match.group(1)
+        base_addr = Generator.normalize_address_val(base_addr_raw)
+        try:
+            val = int(base_addr)
+            if not (0 <= val <= 65535):
+                logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535).")
+        except ValueError:
+            pass
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +406,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on register type
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4'
+                else: # Coil, Holding Register
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +430,8 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        summary = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +449,17 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1', '3')
+                if info1 in summary:
+                    summary[info1] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            summary_str = ", ".join([f"{type_names[k]}: {v}" for k, v in summary.items() if v > 0])
+            if summary_str:
+                logging.info(f"Processed registers: {summary_str}")
+
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
