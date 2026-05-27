@@ -12,8 +12,11 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 ## Installation
 
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Install required core dependencies
+pip install openpyxl pdfplumber defusedxml lxml reportlab
+
+# Install optional dependencies for testing and performance benchmarking
+pip install pandas coverage
 ```
 
 ## Basic Usage
@@ -133,6 +136,17 @@ python doc_to_webdyn.py exported_registers.csv \
     -o abb_definition.csv
 ```
 
+### Example 4: XML Register Map
+
+If the manufacturer provides an XML-based register map:
+
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "Victron" \
+    --model "MultiPlus-II" \
+    -o victron_definition.csv
+```
+
 ## Command-Line Options
 
 ```bash
@@ -149,6 +163,11 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - PDF pages to process (comma-separated integers, e.g., "1,2,5")
+- `--address-offset OFFSET` - Shift all register addresses by this value (default: 0)
+- `--mapping FILE` - Custom JSON mapping file for column names
+- `--forced-write VAL` - Value for the forced write field in header
+- `--template` - Generate a sample CSV template
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
