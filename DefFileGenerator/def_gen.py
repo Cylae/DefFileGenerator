@@ -5,9 +5,21 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[Optional[Iterator], bool]:
+    """Peeks at an iterable to see if it's empty without fully consuming it."""
+    if iterable is None:
+        return None, False
+    try:
+        iterator = iter(iterable)
+        first_item = next(iterator)
+        return itertools.chain([first_item], iterator), True
+    except StopIteration:
+        return iter([]), False
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -146,12 +158,22 @@ class Generator:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if is_valid_format:
+            try:
+                base_addr = int(address.split('_')[0])
+                if not (0 <= base_addr <= 65535):
+                    logging.warning(f"Address {base_addr} is outside the standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+        return is_valid_format
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -325,6 +347,7 @@ class Generator:
         seen_tags = {}
         address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
         warned_lines = set()
+        self.stats = {'1': 0, '2': 0, '3': 0, '4': 0}
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -378,7 +401,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting
+                if info1 in ['2', '4']: # Discrete Inputs or Input Registers
+                    norm_action = '4'
+                else: # Coils or Holding Registers
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -388,6 +415,7 @@ class Generator:
             else:
                 norm_action = '1'
 
+            self.stats[info1] += 1
             yield {
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
                 'Name': name, 'Tag': tag, 'CoefA': coef_a, 'CoefB': coef_b,
@@ -410,11 +438,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            count = 0
+            stats = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                stats[row['Info1']] += 1
+                count = index
+
+            if count > 0:
+                summary = f"Processed {count} registers: "
+                summary += f"Coils: {stats['1']}, Discrete Inputs: {stats['2']}, "
+                summary += f"Holding Registers: {stats['3']}, Input Registers: {stats['4']}"
+                logging.info(summary)
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
