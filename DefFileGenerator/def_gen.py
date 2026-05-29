@@ -7,6 +7,7 @@ import re
 import math
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
+import itertools
 from dataclasses import dataclass
 
 # Pre-compiled regex patterns for optimization
@@ -20,6 +21,17 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable is non-empty without fully consuming it."""
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +155,28 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if not is_valid_format:
+            return False
+
+        try:
+            base_addr = int(address.split('_')[0])
+            if not (0 <= base_addr <= 65535):
+                logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -279,18 +304,32 @@ class Generator:
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
-            start_addr = int(address.split('_')[0])
+            addr_parts = address.split('_')
+            start_addr = int(addr_parts[0])
             reg_count = self.get_register_count(dtype, address)
 
             if info1 not in address_usage:
                 address_usage[info1] = {}
 
-            is_bits = (dtype.upper() == 'BITS')
+            dtype_upper = dtype.upper()
+            is_bits = (dtype_upper == 'BITS')
+
+            # For BITS, we might have multiple definitions on the same address
+            # if they target different bit offsets.
+            bit_offset = None
+            if is_bits and len(addr_parts) >= 2:
+                try:
+                    bit_offset = int(addr_parts[1])
+                except ValueError:
+                    pass
+
             for i in range(reg_count):
                 curr_addr = start_addr + i
                 if curr_addr in address_usage[info1]:
                     for u_line, u_name, u_type in address_usage[info1][curr_addr]:
                         # Allow multiple BITS on exactly the same base address
+                        # but only if they are both BITS.
+                        # We could also check bit_offset overlap but that's more complex.
                         if is_bits and u_type == 'BITS' and curr_addr == start_addr:
                             continue
 
@@ -300,7 +339,7 @@ class Generator:
                             warned_lines.add(warn_key)
                 else:
                     address_usage[info1][curr_addr] = []
-                address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
+                address_usage[info1][curr_addr].append((line_num, name, dtype_upper))
         except (ValueError, IndexError):
             pass
 
@@ -330,7 +369,7 @@ class Generator:
             if not any(v for v in row.values() if v):
                 continue
 
-            # Normalize row once
+            # Normalize row keys and values once per iteration
             norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
 
             name = norm_row.get('name', '')
@@ -375,10 +414,15 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Intelligent Action defaulting based on register type if not provided
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default to '4' (Read Only) for Input Registers and Discrete Inputs
+                # Default to '1' (Read/Write) for Holding Registers and Coils
+                if info1 in ['2', '4']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +454,20 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            labels = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in type_counts:
+                    type_counts[row['Info1']] += 1
+
+            summary = ", ".join([f"{type_counts[k]} {labels[k]}" for k in sorted(type_counts.keys()) if type_counts[k] > 0])
+            if summary:
+                logging.info(f"Processed: {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
