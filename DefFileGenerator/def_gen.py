@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,17 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Optional[Iterable]]:
+    """Checks if an iterable is empty without consuming it using itertools.chain."""
+    if iterable is None:
+        return False, None
+    try:
+        it = iter(iterable)
+        first = next(it)
+        return True, itertools.chain([first], it)
+    except StopIteration:
+        return False, iter([])
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +155,25 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        is_valid = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid = RE_ADDR_INT.match(address) is not None
+
+        if is_valid:
+            try:
+                base_addr = int(address.split('_')[0])
+                if not (0 <= base_addr <= 65535):
+                    logging.warning(f"Address {base_addr} is out of standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+        return is_valid
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -327,6 +349,8 @@ class Generator:
         warned_lines = set()
 
         for line_num, row in enumerate(rows, start=2):
+            # Normalize row keys once
+            row = {str(k).lower().strip(): v for k, v in row.items()}
             if not any(v for v in row.values() if v):
                 continue
 
@@ -378,7 +402,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent default based on Info1
+                if info1 in ['2', '4']: # Input Register or Discrete Input
+                    norm_action = '4'
+                else: # Holding Register or Coil
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +438,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row['Info1']
+                if info1 in counts:
+                    counts[info1] += 1
+
+            if any(counts.values()):
+                summary = ", ".join([f"{type_names[k]}: {v}" for k, v in counts.items() if v > 0])
+                logging.info(f"Processed registers: {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")

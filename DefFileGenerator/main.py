@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -41,14 +41,7 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = None
-        if getattr(args, 'pages', None):
-            try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
-        raw_data = extractor.extract_from_pdf(args.input_file, pages)
+        raw_data = extractor.extract_from_pdf(args.input_file, pages_arg)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml':
@@ -57,11 +50,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -96,7 +90,8 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -128,10 +123,11 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
+    parser_generate.add_argument('--template', action='store_true', help='Generate template')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
@@ -140,8 +136,8 @@ def _run_cli():
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=True)
-    parser_run.add_argument('--model', required=True)
+    parser_run.add_argument('--manufacturer')
+    parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -157,6 +153,13 @@ def _run_cli():
         return
 
     setup_logging(args.verbose)
+
+    # Manual validation for manufacturer/model
+    is_template = getattr(args, 'template', False)
+    if not is_template and args.command in ['generate', 'run']:
+        if not args.manufacturer or not args.model:
+            logging.error("manufacturer and model are required.")
+            sys.exit(1)
 
     # Validate --pages
     pages_arg = getattr(args, 'pages', None)
@@ -174,7 +177,11 @@ def _run_cli():
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
-        generate_command(args)
+        if is_template:
+            config = GeneratorConfig(output=args.output, template=True)
+            run_generator(config)
+        else:
+            generate_command(args)
     elif args.command == 'run':
         run_command(args)
 
