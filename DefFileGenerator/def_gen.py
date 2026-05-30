@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -21,12 +22,24 @@ RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECAS
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
+def peek_generator(iterable: Any) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable is non-empty without consuming it.
+    Returns (has_data, iterator)."""
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
+
 @dataclass
 class GeneratorConfig:
-    input_file: str = None
-    output: str = None
-    manufacturer: str = None
-    model: str = None
+    input_file: Optional[str] = None
+    output: Optional[str] = None
+    manufacturer: Optional[str] = None
+    model: Optional[str] = None
     protocol: str = 'modbusRTU'
     category: str = 'Inverter'
     forced_write: str = ''
@@ -143,15 +156,25 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            valid_format = RE_ADDR_INT.match(address) is not None
+
+        if valid_format:
+            try:
+                base_addr = int(address.split('_')[0])
+                if not (0 <= base_addr <= 65535):
+                    logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+        return valid_format
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,18 +398,20 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '1'
-            elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
+            if act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
                 norm_action = '1'
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = '1'
+                # Intelligent default based on register type
+                if info1 in ['2', '4']: # Discrete Input or Input Register
+                    norm_action = '4'
+                else: # Coil or Holding Register
+                    norm_action = '1'
 
             yield {
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
@@ -398,6 +423,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        stats = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +443,13 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                stats[row['Info1']] = stats.get(row['Info1'], 0) + 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_names.get(k, k)}: {v}" for k, v in stats.items() if v > 0])
+                if summary:
+                    logging.info(f"Summary: {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:

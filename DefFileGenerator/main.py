@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -57,11 +57,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_registers, mapped_it = peek_generator(mapped_data)
+    if not has_registers:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -75,7 +76,7 @@ def extract_command(args):
 
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
-    writer.writerows(mapped_data)
+    writer.writerows(mapped_it)
 
     if isinstance(output, str):
         f.close()
@@ -96,7 +97,8 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_registers, mapped_it = peek_generator(mapped_data)
+    if not has_registers:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -110,7 +112,7 @@ def run_command(args):
         forced_write=args.forced_write,
         address_offset=0 # Already applied during extraction in run mode
     )
-    run_generator(config, input_data=mapped_data)
+    run_generator(config, input_data=mapped_it)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
