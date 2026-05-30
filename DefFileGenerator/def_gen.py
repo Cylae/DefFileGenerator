@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (is_empty, restored_iterator).
+    """
+    if iterable is None:
+        return True, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return True, iter([])
+    return False, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -410,11 +425,20 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            stats = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1')
+                if info1 in stats:
+                    stats[info1] += 1
+
+            summary = f"Processed {sum(stats.values())} registers: "
+            summary += f"{stats['1']} Coils, {stats['2']} Discrete Inputs, "
+            summary += f"{stats['3']} Holding Registers, {stats['4']} Input Registers."
+            logging.info(summary)
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
@@ -485,7 +509,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                 # Consume the generator while the input file is still open
                 generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                            config.protocol, config.category, config.forced_write)
-    except (OSError, csv.Error, ValueError) as e:
+    except (OSError, csv.Error, ValueError, TypeError, KeyError) as e:
         logging.error(f"An error occurred during generation: {e}")
 
 def main():
