@@ -5,9 +5,21 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[Any, Iterator]:
+    """Peeks at the first element of an iterable to check if it's empty without consuming it."""
+    if iterable is None:
+        return None, iter([])
+    try:
+        it = iter(iterable)
+        first = next(it)
+        return first, itertools.chain([first], it)
+    except StopIteration:
+        return None, iter([])
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -454,6 +466,12 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
             return
         if not os.path.exists(config.input_file):
             logging.error(f"Input file not found: {config.input_file}")
+            return
+    else:
+        # For O(1) we peek to see if data is empty but don't materialize
+        first, input_data = peek_generator(input_data)
+        if first is None:
+            logging.error("No registers extracted.")
             return
 
     if not config.manufacturer or not config.model:

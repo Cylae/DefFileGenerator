@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -17,6 +17,7 @@ def setup_logging(verbose=False):
     )
 
 def _perform_extraction(args):
+    """Returns a generator of mapped and cleaned data."""
     mapping = {}
     if args.mapping:
         try:
@@ -57,11 +58,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    first, mapped_data = peek_generator(mapped_data)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -96,7 +98,9 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    # run_generator handles peeking but for CLI we might want explicit exit 1
+    first, mapped_data = peek_generator(mapped_data)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
