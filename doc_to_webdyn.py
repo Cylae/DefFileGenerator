@@ -7,13 +7,13 @@ import re
 import json
 import csv
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator, peek_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer', required=True)
-    parser.add_argument('--model', required=True)
+    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('--manufacturer')
+    parser.add_argument('--model')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -22,10 +22,29 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
+    parser.add_argument('--template', action='store_true')
+    parser.add_argument('--validate', action='store_true', help='Validate an existing definition file')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+
+    if args.template:
+        config = GeneratorConfig(output=args.output, template=True)
+        run_generator(config)
+        return
+
+    if not args.input_file:
+        parser.error("the following arguments are required: input_file")
+
+    if args.validate:
+        generator = Generator()
+        if not generator.validate_csv(args.input_file):
+            sys.exit(1)
+        return
+
+    if not args.manufacturer or not args.model:
+        parser.error("the following arguments are required: --manufacturer, --model")
 
     if not os.path.exists(args.input_file):
         logging.error(f"Input file not found: {args.input_file}")
@@ -61,10 +80,12 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    is_empty, raw = peek_generator(raw)
+    if is_empty: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    is_empty, mapped = peek_generator(mapped)
+    if is_empty: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 

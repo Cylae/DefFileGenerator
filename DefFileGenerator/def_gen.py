@@ -5,9 +5,21 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Any) -> Tuple[bool, Iterable[Any]]:
+    """Checks if an iterable is empty without consuming it, returning (is_empty, original_iterable)."""
+    if iterable is None:
+        return True, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return True, iter([])
+    return False, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -378,7 +390,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on register type
+                if info1 in ['2', '4']: # Discrete Input or Input Register
+                    norm_action = '4' # Read Only
+                else:
+                    norm_action = '1' # Read/Write for Holding/Coil
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -393,6 +409,77 @@ class Generator:
                 'Name': name, 'Tag': tag, 'CoefA': coef_a, 'CoefB': coef_b,
                 'Unit': unit, 'Action': norm_action
             }
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        seen_tags = {}
+        seen_names = {}
+        address_usage = {}
+        warned_lines = set()
+        errors = 0
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                # Skip header row
+                try:
+                    next(reader)
+                except StopIteration:
+                    logging.error("File is empty.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or all(not cell.strip() for cell in row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has fewer than 11 columns. Skipping.")
+                        continue
+
+                    # Structure: Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip().upper()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+                    action = row[10].strip() if len(row) > 10 else ""
+
+                    if not self.validate_type(dtype):
+                        logging.error(f"Line {line_num}: Invalid Type '{dtype}'")
+                        errors += 1
+
+                    if not self.validate_address(address, dtype):
+                        logging.error(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'")
+                        errors += 1
+
+                    if action and action not in self.allowed_actions:
+                        logging.error(f"Line {line_num}: Invalid Action '{action}'")
+                        errors += 1
+
+                    # Reuse existing overlap detection (it logs warnings)
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                    if name in seen_names:
+                        logging.warning(f"Line {line_num}: Duplicate Name '{name}' (previously at line {seen_names[name]})")
+                    seen_names[name] = line_num
+
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})")
+                        errors += 1
+                    seen_tags[tag] = line_num
+
+            if errors > 0:
+                logging.error(f"Validation failed with {errors} errors.")
+                return False
+
+            logging.info("Validation successful.")
+            return True
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
 
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
@@ -410,11 +497,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            stats = {'1': 0, '2': 0, '3': 0, '4': 0}
+            count = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                stats[row['Info1']] = stats.get(row['Info1'], 0) + 1
+                count = index
+
+            if count > 0:
+                summary = f"Processed {count} registers: "
+                summary += f"Coils: {stats['1']}, Discrete Inputs: {stats['2']}, "
+                summary += f"Holding Registers: {stats['3']}, Input Registers: {stats['4']}"
+                logging.info(summary)
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
