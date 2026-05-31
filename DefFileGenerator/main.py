@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -57,13 +57,24 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    # Use peek_generator to check if any data was extracted
+    first_table, raw_data = peek_generator(raw_data)
+    if first_table is None:
+        logging.error("No data extracted.")
+        sys.exit(1)
+
+    mapped = extractor.map_and_clean(raw_data, address_offset)
+
+    # Use peek_generator to check if any registers were mapped
+    first_reg, mapped = peek_generator(mapped)
+    if first_reg is None:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
+    return mapped
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
 
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -90,15 +101,13 @@ def generate_command(args):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=args.address_offset
+        address_offset=args.address_offset,
+        template=getattr(args, 'template', False)
     )
     run_generator(config)
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
 
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -128,7 +137,7 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
     parser_generate.add_argument('--manufacturer', required=True)
     parser_generate.add_argument('--model', required=True)
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
@@ -136,6 +145,7 @@ def _run_cli():
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -174,6 +184,12 @@ def _run_cli():
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
+        if args.template:
+            generate_command(args)
+            return
+        if not args.input_file:
+            logging.error("input_file is required for generate unless --template is used.")
+            sys.exit(1)
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
