@@ -7,13 +7,12 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.INFO,
-        format='%(levelname)s: %(message)s',
-        force=True
+        format='%(levelname)s: %(message)s'
     )
 
 def _perform_extraction(args):
@@ -57,11 +56,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+    has_data, mapped_data = peek_generator(mapped_gen)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -95,8 +95,9 @@ def generate_command(args):
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+    has_data, mapped_data = peek_generator(mapped_gen)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -111,6 +112,11 @@ def run_command(args):
         address_offset=0 # Already applied during extraction in run mode
     )
     run_generator(config, input_data=mapped_data)
+
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -151,6 +157,10 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -177,6 +187,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:
