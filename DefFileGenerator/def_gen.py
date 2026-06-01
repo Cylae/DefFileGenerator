@@ -5,9 +5,23 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterable[Any]]:
+    """ Checks if an iterable is empty without fully consuming it.
+    Returns (is_not_empty, restored_iterable).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -146,12 +160,24 @@ class Generator:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
+        is_valid = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid = RE_ADDR_INT.match(address) is not None
+
+        if is_valid:
+            try:
+                base_addr_str = address.split('_')[0]
+                norm_addr = int(Generator.normalize_address_val(base_addr_str))
+                if not (0 <= norm_addr <= 65535):
+                    logging.warning(f"Address {norm_addr} is outside standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+
+        return is_valid
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -319,6 +345,58 @@ class Generator:
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, mode='r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                # Skip header
+                try:
+                    next(reader)
+                except StopIteration:
+                    logging.error(f"File is empty: {filepath}")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row):
+                            logging.warning(f"Line {line_num}: Invalid row format (expected 11 columns).")
+                        continue
+
+                    index, info1, info2, info3, info4, name, tag, coefa, coefb, unit, action = row[:11]
+
+                    # Duplicate Tag detection (Fatal)
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' detected. Previous at line {seen_tags[tag]}.")
+                        valid = False
+                    seen_tags[tag] = line_num
+
+                    # Overlap detection
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+                    # Address range check
+                    self.validate_address(info2, info3)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
+
+        if valid:
+            logging.info(f"Validation successful for {filepath}")
+        else:
+            logging.error(f"Validation failed for {filepath}")
+
+        return valid
+
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
         seen_names = {}
@@ -378,7 +456,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on Info1 (Register Type)
+                if info1 in ['2', '4']: # Discrete Input, Input Register
+                    norm_action = '4' # Read Only
+                else: # Coil, Holding Register
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +492,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            stats = {'1': 0, '2': 0, '3': 0, '4': 0}
+            labels = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
+                info1 = row['Info1']
+                if info1 in stats:
+                    stats[info1] += 1
                 writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                    str(index), info1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+
+            summary = ", ".join([f"{labels[k]}: {v}" for k, v in stats.items() if v > 0])
+            if summary:
+                logging.info(f"Processed registers - {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
