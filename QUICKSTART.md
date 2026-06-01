@@ -12,8 +12,11 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 ## Installation
 
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Install core dependencies for execution
+pip install openpyxl pdfplumber reportlab defusedxml lxml
+
+# (Optional) Install dependencies for testing and performance benchmarking
+pip install pandas coverage
 ```
 
 ## Basic Usage
@@ -40,6 +43,14 @@ python doc_to_webdyn.py registers.csv \
     --manufacturer "Fronius" \
     --model "Symo-5.0" \
     -o fronius_definition.csv
+```
+
+### From XML File
+```bash
+python doc_to_webdyn.py registers.xml \
+    --manufacturer "Delta" \
+    --model "M30A" \
+    -o delta_definition.csv
 ```
 
 ## How It Works
@@ -149,6 +160,11 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - PDF pages to process (e.g., "1,2,5-7")
+- `--mapping JSON` - Path to a JSON column mapping file
+- `--address-offset OFFSET` - Shift all addresses by an integer value
+- `--template` - Generate a sample CSV template (no input file needed)
+- `--forced-write VAL` - Value for the 5th column in the header
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files

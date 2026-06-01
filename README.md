@@ -43,9 +43,15 @@ Convert a simplified CSV into a WebdynSunPM definition file.
 ```bash
 python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
-*   `--address-offset <int>`: Shift addresses (default 0).
 
-### 3. End-to-End Run
+### 3. Validate existing definition
+Check an existing definition file for errors like duplicate tags or overlapping addresses.
+
+```bash
+python3 DefFileGenerator/main.py validate <definition_csv>
+```
+
+### 4. End-to-End Run
 Extract and generate the definition file in a single step.
 
 ```bash

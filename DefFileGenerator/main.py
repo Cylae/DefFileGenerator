@@ -6,8 +6,9 @@ import logging
 import csv
 import json
 import tempfile
+from typing import Dict, Any, Iterator
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -16,9 +17,9 @@ def setup_logging(verbose=False):
         force=True
     )
 
-def _perform_extraction(args):
+def _perform_extraction(args) -> Iterator[Dict[str, Any]]:
     mapping = {}
-    if args.mapping:
+    if getattr(args, 'mapping', None):
         try:
             with open(args.mapping, 'r') as f:
                 mapping = json.load(f)
@@ -57,14 +58,21 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    has_data, raw_data = peek_generator(raw_data)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
-def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = extractor.map_and_clean(raw_data, address_offset)
+    has_regs, mapped_gen = peek_generator(mapped_gen)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
+    return mapped_gen
+
+def extract_command(args):
+    mapped_data = _perform_extraction(args)
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -81,6 +89,10 @@ def extract_command(args):
         f.close()
         logging.info(f"Extraction complete. Saved to {args.output}")
 
+def validate_command(args):
+    if not Generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def generate_command(args):
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -96,10 +108,6 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
-
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -136,6 +144,10 @@ def _run_cli():
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -175,6 +187,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 
