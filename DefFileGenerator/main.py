@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -57,11 +57,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_regs, mapped_data = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -82,6 +83,19 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
+    if getattr(args, 'template', False):
+        config = GeneratorConfig(output=args.output, template=True)
+        run_generator(config)
+        return
+
+    if not args.input_file:
+        logging.error("the following arguments are required: input_file")
+        sys.exit(1)
+
+    if not args.manufacturer or not args.model:
+        logging.error("--manufacturer and --model are required.")
+        sys.exit(1)
+
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -96,7 +110,8 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_regs, mapped_data = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -111,6 +126,10 @@ def run_command(args):
         address_offset=0 # Already applied during extraction in run mode
     )
     run_generator(config, input_data=mapped_data)
+
+def validate_command(args):
+    if not Generator.validate_csv(args.input_file):
+        sys.exit(1)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -128,9 +147,10 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
@@ -150,6 +170,10 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
+    parser_validate.add_argument('input_file', help='Definition file to validate')
 
     args = parser.parse_args()
     if not args.command:
@@ -177,6 +201,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:

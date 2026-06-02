@@ -5,9 +5,21 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Any) -> Tuple[bool, Iterable[Any]]:
+    """Checks if an iterable is non-empty without consuming it (O(1))."""
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -143,15 +155,28 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535)."""
         dtype_upper = dtype.upper()
 
+        match = None
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        try:
+            base_addr = int(address.split('_')[0])
+            if not (0 <= base_addr <= 65535):
+                logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,10 +400,14 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on register type
+                if info1 in ['2', '4']: # Discrete Input or Input Register
+                    norm_action = '4' # Read Only
+                else:
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -423,6 +452,64 @@ class Generator:
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
+
+    @staticmethod
+    def validate_csv(filepath: str) -> bool:
+        """Validates an existing Webdyn definition file for errors."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+        gen = Generator()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                try:
+                    header = next(reader)
+                    if len(header) < 4:
+                        logging.error("Invalid Webdyn definition header.")
+                        success = False
+                except StopIteration:
+                    logging.error("Empty file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        continue
+
+                    idx, info1, addr, dtype, info4, name, tag, coefa, coefb, unit, action = row[:11]
+
+                    # Duplicate Tag Check (Fatal)
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (already seen at line {seen_tags[tag]})")
+                        success = False
+                    seen_tags[tag] = line_num
+
+                    # Address Overlap Check
+                    gen._check_address_overlap(info1, addr, dtype, name, line_num, address_usage, warned_lines)
+
+                    # Range check for address
+                    try:
+                        base_addr = int(addr.split('_')[0])
+                        if not (0 <= base_addr <= 65535):
+                            logging.warning(f"Line {line_num}: Address {base_addr} is outside standard Modbus range (0-65535).")
+                    except (ValueError, IndexError):
+                        pass
+
+            if success:
+                logging.info(f"Validation successful for {filepath}")
+            else:
+                logging.error(f"Validation failed for {filepath}")
+            return success
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
