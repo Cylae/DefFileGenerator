@@ -7,7 +7,7 @@ import re
 import json
 import csv
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator, peek_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
@@ -61,10 +61,12 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    first_table, raw = peek_generator(raw)
+    if first_table is None: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped_data = extractor.map_and_clean(raw, args.address_offset)
+    first_reg, mapped_data = peek_generator(mapped_data)
+    if first_reg is None: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
@@ -78,7 +80,7 @@ def _run_cli():
         forced_write=args.forced_write,
         address_offset=0 # Already applied during extraction
     )
-    run_generator(config, input_data=mapped)
+    run_generator(config, input_data=mapped_data)
 
 def main():
     try:

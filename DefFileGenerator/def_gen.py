@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Any) -> Tuple[Optional[Any], Iterator[Any]]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (first_element, original_iterable_as_generator).
+    """
+    if iterable is None:
+        return None, iter([])
+    try:
+        it = iter(iterable)
+        first = next(it)
+    except (StopIteration, TypeError):
+        return None, iter([])
+    return first, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -44,6 +59,13 @@ class Generator:
             'holding': '3',
             'input register': '4',
             'input': '4'
+        }
+        # Info1 to Register Name for logging
+        self.info1_name_map = {
+            '1': 'Coils',
+            '2': 'Discrete Inputs',
+            '3': 'Holding Registers',
+            '4': 'Input Registers'
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
@@ -285,6 +307,7 @@ class Generator:
             if info1 not in address_usage:
                 address_usage[info1] = {}
 
+            reg_type_name = self.info1_name_map.get(info1, f"Type {info1}")
             is_bits = (dtype.upper() == 'BITS')
             for i in range(reg_count):
                 curr_addr = start_addr + i
@@ -296,7 +319,7 @@ class Generator:
 
                         warn_key = tuple(sorted((line_num, u_line)))
                         if warn_key not in warned_lines:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {curr_addr}. Overlaps with '{u_name}' (Line {u_line}).")
+                            logging.warning(f"Line {line_num}: Address overlap detected in {reg_type_name} for '{name}' at {curr_addr}. Overlaps with '{u_name}' (Line {u_line}).")
                             warned_lines.add(warn_key)
                 else:
                     address_usage[info1][curr_addr] = []
@@ -318,6 +341,54 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file for errors."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File not found {filepath}")
+            return False
+
+        success = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error(f"Validation failed: {filepath} is empty.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        continue
+
+                    idx, info1, addr, dtype, info4, name, tag, coefa, coefb, unit, action = row[:11]
+
+                    # 1. Tag uniqueness (Fatal)
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (already seen at line {seen_tags[tag]})")
+                        success = False
+                    seen_tags[tag] = line_num
+
+                    # 2. Address Overlap
+                    self._check_address_overlap(info1, addr, dtype, name, line_num, address_usage, warned_lines)
+
+                    # 3. Address Range
+                    try:
+                        base_addr = int(addr.split('_')[0])
+                        if not (0 <= base_addr <= 65535):
+                            logging.warning(f"Line {line_num}: Address {base_addr} out of standard Modbus range (0-65535)")
+                    except (ValueError, IndexError):
+                        pass
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading {filepath} for validation: {e}")
+            return False
+
+        return success
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
@@ -378,7 +449,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on register type
+                if info1 in ['2', '4']: # Discrete Input or Input Register
+                    norm_action = '4' # Read Only
+                else: # Coil or Holding Register
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,14 +485,20 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            # Keep track of counts for logging
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{Generator().info1_name_map[k]}: {v}" for k, v in counts.items() if v > 0])
+                logging.info(f"Definition file generated at {output}. Summary: {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
