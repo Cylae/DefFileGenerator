@@ -95,6 +95,32 @@ class TestCliEntryPoints(unittest.TestCase):
             main()
             self.assertTrue(os.path.exists("test_out.csv"))
 
+    def test_def_file_gen_main_validate(self):
+        from DefFileGenerator.main import main
+        # Generate a valid file first
+        def_file = "test_validate.csv"
+        gen_args = ["main.py", "generate", self.csv_file, "--manufacturer", "Test", "--model", "Test", "-o", def_file]
+        with patch.object(sys, 'argv', gen_args):
+            main()
+
+        # Now validate it
+        val_args = ["main.py", "validate", def_file]
+        with patch.object(sys, 'argv', val_args):
+            main() # Should not raise
+
+        if os.path.exists(def_file):
+            os.remove(def_file)
+
+    def test_doc_to_webdyn_template(self):
+        from doc_to_webdyn import main
+        template_file = "test_template.csv"
+        test_args = ["doc_to_webdyn.py", "--template", "-o", template_file, "--model", "dummy"] # model required by argparse but ignored by template logic
+        with patch.object(sys, 'argv', test_args):
+            main()
+            self.assertTrue(os.path.exists(template_file))
+        if os.path.exists(template_file):
+            os.remove(template_file)
+
     def test_doc_to_webdyn_pages(self):
         from doc_to_webdyn import main
         test_args = ["doc_to_webdyn.py", self.csv_file, "--manufacturer", "Test", "--model", "Test", "--pages", "1,2"]
