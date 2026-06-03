@@ -149,6 +149,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - PDF pages (e.g., "1,2,5")
+- `--mapping MAPPING` - JSON mapping file
+- `--address-offset OFFSET` - Shift addresses by an integer
+- `--forced-write VAL` - Force a value in the header
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files

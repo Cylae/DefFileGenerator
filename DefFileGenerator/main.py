@@ -7,13 +7,12 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.INFO,
-        format='%(levelname)s: %(message)s',
-        force=True
+        format='%(levelname)s: %(message)s'
     )
 
 def _perform_extraction(args):
@@ -57,11 +56,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_data_gen = _perform_extraction(args)
+    first, mapped_data = peek_generator(mapped_data_gen)
+    if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -94,9 +94,18 @@ def generate_command(args):
     )
     run_generator(config)
 
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful for {args.input_file}")
+    else:
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_data_gen = _perform_extraction(args)
+    first, mapped_data = peek_generator(mapped_data_gen)
+    if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -116,6 +125,10 @@ def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     # Extract
     parser_extract = subparsers.add_parser('extract', help='Extract registers from documentation')
@@ -175,6 +188,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 

@@ -7,11 +7,11 @@ import re
 import json
 import csv
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator, peek_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', required=True)
     parser.add_argument('--model', required=True)
     parser.add_argument('-o', '--output', help='Output filename')
@@ -25,7 +25,21 @@ def _run_cli():
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
-    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s')
+
+    # Standalone template generation
+    if not args.input_file:
+        config = GeneratorConfig(
+            output=args.output,
+            manufacturer=args.manufacturer,
+            model=args.model,
+            protocol=args.protocol,
+            category=args.category,
+            forced_write=args.forced_write,
+            template=True
+        )
+        run_generator(config)
+        return
 
     if not os.path.exists(args.input_file):
         logging.error(f"Input file not found: {args.input_file}")
@@ -61,10 +75,12 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    first_raw, raw = peek_generator(raw)
+    if not first_raw: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped_data_gen = extractor.map_and_clean(raw, args.address_offset)
+    first_mapped, mapped_data = peek_generator(mapped_data_gen)
+    if not first_mapped: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
@@ -78,7 +94,7 @@ def _run_cli():
         forced_write=args.forced_write,
         address_offset=0 # Already applied during extraction
     )
-    run_generator(config, input_data=mapped)
+    run_generator(config, input_data=mapped_data)
 
 def main():
     try:
