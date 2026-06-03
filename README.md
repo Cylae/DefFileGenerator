@@ -52,6 +52,13 @@ Extract and generate the definition file in a single step.
 python3 DefFileGenerator/main.py run <source_file> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
 
+### 4. Validate definition file
+Check an existing WebdynSunPM definition file for errors (duplicate tags, address overlaps).
+
+```bash
+python3 DefFileGenerator/main.py validate <definition_csv>
+```
+
 ---
 
 ## Input CSV Format

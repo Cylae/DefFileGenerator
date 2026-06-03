@@ -5,9 +5,30 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+    """
+    Checks if an iterable is empty without fully consuming it.
+    Returns (is_not_empty, iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+
+    try:
+        it = iter(iterable)
+    except TypeError:
+        return False, iter([])
+
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+
+    return True, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -47,6 +68,66 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+
+    def validate_csv(self, filepath: str) -> bool:
+        """
+        Validates an existing Webdyn definition file for errors.
+        Detects duplicate tags (fatal) and address overlaps (warning).
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            # We use binary mode to check encoding then re-open
+            with open(filepath, 'rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error(f"Empty file: {filepath}")
+                    return False
+
+                seen_tags = {}
+                address_usage = {}
+                warned_lines = set()
+                errors = 0
+
+                for line_num, row in enumerate(reader, start=2):
+                    if len(row) < 11:
+                        if not any(row): continue
+                        logging.warning(f"Line {line_num}: Malformed row (less than 11 columns).")
+                        continue
+
+                    # Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Map, Action
+                    info1 = row[1]
+                    address = row[2]
+                    dtype = row[3]
+                    name = row[5]
+                    tag = row[6]
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' detected. First seen at line {seen_tags[tag]}.")
+                            errors += 1
+                        else:
+                            seen_tags[tag] = line_num
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                if errors > 0:
+                    logging.error(f"Validation failed with {errors} error(s).")
+                    return False
+
+                logging.info(f"Validation successful for {filepath}.")
+                return True
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during validation: {e}")
+            return False
 
     @staticmethod
     def normalize_type(dtype):
@@ -143,8 +224,18 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range (0-65535)."""
         dtype_upper = dtype.upper()
+
+        parts = address.split('_')
+        try:
+            # Use base 0 to auto-detect hex (0x) or decimal
+            base_addr_str = Generator.normalize_address_val(parts[0])
+            base_addr = int(base_addr_str)
+            if base_addr < 0 or base_addr > 65535:
+                logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
 
         if dtype_upper == 'STRING':
             return RE_ADDR_STRING.match(address) is not None
@@ -279,7 +370,8 @@ class Generator:
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
-            start_addr = int(address.split('_')[0])
+            start_addr_str = self.normalize_address_val(address.split('_')[0])
+            start_addr = int(start_addr_str)
             reg_count = self.get_register_count(dtype, address)
 
             if info1 not in address_usage:
@@ -410,14 +502,24 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            info1_name_map = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            summary = ", ".join([f"{info1_name_map[k]}: {v}" for k, v in counts.items() if v > 0])
+            if summary:
+                logging.info(f"Summary: {summary}")
+
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:

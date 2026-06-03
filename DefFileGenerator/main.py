@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -41,14 +41,7 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = None
-        if getattr(args, 'pages', None):
-            try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
-        raw_data = extractor.extract_from_pdf(args.input_file, pages)
+        raw_data = extractor.extract_from_pdf(args.input_file, pages_arg)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml':
@@ -57,11 +50,17 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    has_data, raw_data_peeker = peek_generator(raw_data)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
+
+    return extractor.map_and_clean(raw_data_peeker, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_regs, mapped_data_peeker = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -75,7 +74,7 @@ def extract_command(args):
 
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
-    writer.writerows(mapped_data)
+    writer.writerows(mapped_data_peeker)
 
     if isinstance(output, str):
         f.close()
@@ -94,9 +93,15 @@ def generate_command(args):
     )
     run_generator(config)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_regs, mapped_data_peeker = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -110,7 +115,7 @@ def run_command(args):
         forced_write=args.forced_write,
         address_offset=0 # Already applied during extraction in run mode
     )
-    run_generator(config, input_data=mapped_data)
+    run_generator(config, input_data=mapped_data_peeker)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -125,6 +130,10 @@ def _run_cli():
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
     parser_extract.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition file')
+    parser_validate.add_argument('input_file', help='Webdyn CSV to validate')
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
@@ -175,6 +184,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 

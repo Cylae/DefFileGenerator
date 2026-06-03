@@ -150,6 +150,13 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
 - `-v, --verbose` - Show detailed processing information
+- `--template` - Generate a sample template CSV
+
+### Advanced: Validating Definition Files
+If you already have a definition file and want to check it for errors:
+```bash
+python DefFileGenerator/main.py validate your_definition.csv
+```
 
 ## Testing with Sample Files
 
