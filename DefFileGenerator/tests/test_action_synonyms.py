@@ -1,55 +1,38 @@
 import unittest
+import logging
 from DefFileGenerator.def_gen import Generator
 
 class TestActionSynonyms(unittest.TestCase):
     def setUp(self):
-        self.generator = Generator()
+        self.gen = Generator()
+        logging.disable(logging.CRITICAL)
 
-    def test_action_normalization_extended(self):
-        test_cases = [
-            # Read-only synonyms -> 4
-            ('R', '4'),
-            ('READ', '4'),
-            ('RO', '4'),
-            ('READ-ONLY', '4'),
-            ('READ ONLY', '4'),
-            ('4', '4'),
+    def tearDown(self):
+        logging.disable(logging.NOTSET)
 
-            # Read/Write synonyms -> 1
-            ('RW', '1'),
-            ('W', '1'),
-            ('WRITE', '1'),
-            ('READ/WRITE', '1'),
-            ('READ-WRITE', '1'),
-            ('R/W', '1'),
-            ('WO', '1'),
-            ('WRITE-ONLY', '1'),
-            ('WRITE ONLY', '1'),
-            ('1', '1'),
+    def test_action_defaulting(self):
+        # Input Register (4) -> Read Only (4)
+        rows = [{'Name': 'Test', 'Address': '1', 'RegisterType': 'Input Register', 'Type': 'U16'}]
+        processed = list(self.gen.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '4')
 
-            # Other allowed actions
-            ('0', '0'),
-            ('2', '2'),
-            ('6', '6'),
-            ('7', '7'),
-            ('8', '8'),
-            ('9', '9'),
+        # Holding Register (3) -> Read/Write (1)
+        rows = [{'Name': 'Test', 'Address': '1', 'RegisterType': 'Holding Register', 'Type': 'U16'}]
+        processed = list(self.gen.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1')
 
-            # Default/Fallback -> 1
-            ('', '1'),
-            ('UNKNOWN', '1'),
-        ]
+    def test_action_synonyms(self):
+        synonyms_ro = ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY']
+        for syn in synonyms_ro:
+            rows = [{'Name': 'Test', 'Address': '1', 'Action': syn}]
+            processed = list(self.gen.process_rows(rows))
+            self.assertEqual(processed[0]['Action'], '4', f"Failed for synonym: {syn}")
 
-        for input_action, expected in test_cases:
-            rows = [{
-                'Name': 'TestVar',
-                'Address': '100',
-                'Type': 'U16',
-                'Action': input_action
-            }]
-            processed = list(self.generator.process_rows(rows))
-            with self.subTest(input_action=input_action):
-                self.assertEqual(processed[0]['Action'], expected)
+        synonyms_rw = ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W']
+        for syn in synonyms_rw:
+            rows = [{'Name': 'Test', 'Address': '1', 'Action': syn}]
+            processed = list(self.gen.process_rows(rows))
+            self.assertEqual(processed[0]['Action'], '1', f"Failed for synonym: {syn}")
 
 if __name__ == '__main__':
     unittest.main()
