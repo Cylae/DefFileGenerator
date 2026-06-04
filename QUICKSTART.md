@@ -136,10 +136,10 @@ python doc_to_webdyn.py exported_registers.csv \
 ## Command-Line Options
 
 ```bash
-python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
+python doc_to_webdyn.py [INPUT_FILE] --manufacturer MFG --model MODEL [OPTIONS]
 ```
 
-### Required Arguments
+### Required Arguments (unless --template is used)
 - `INPUT_FILE` - Your PDF, Excel, CSV, or XML file
 - `--manufacturer MFG` - Manufacturer name (e.g., "Huawei")
 - `--model MODEL` - Model name (e.g., "SUN2000-5KTL")
@@ -149,7 +149,25 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - PDF pages to extract (e.g., "1,2,5")
+- `--address-offset OFFSET` - Shift all addresses by this amount
+- `--mapping JSON` - Custom column mapping file
+- `--template` - Generate a sample input CSV template
 - `-v, --verbose` - Show detailed processing information
+
+## Advanced Usage: Unified CLI
+
+The `DefFileGenerator/main.py` script provides a unified interface with sub-commands:
+
+- `extract`: Just extract data from documentation to a simplified CSV.
+- `generate`: Generate a Webdyn definition from a simplified CSV.
+- `validate`: Validate an existing Webdyn definition file for errors.
+- `run`: Perform both extraction and generation in one step.
+
+Example: Validate a file
+```bash
+python3 DefFileGenerator/main.py validate my_definition.csv
+```
 
 ## Testing with Sample Files
 
