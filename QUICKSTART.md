@@ -136,20 +136,25 @@ python doc_to_webdyn.py exported_registers.csv \
 ## Command-Line Options
 
 ```bash
-python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
+python doc_to_webdyn.py [INPUT_FILE] --manufacturer MFG --model MODEL [OPTIONS]
 ```
 
-### Required Arguments
-- `INPUT_FILE` - Your PDF, Excel, CSV, or XML file
-- `--manufacturer MFG` - Manufacturer name (e.g., "Huawei")
-- `--model MODEL` - Model name (e.g., "SUN2000-5KTL")
+### Arguments
+- `INPUT_FILE` - Your PDF, Excel, CSV, or XML file (Required unless using `--template`).
+- `--manufacturer MFG` - Manufacturer name (e.g., "Huawei").
+- `--model MODEL` - Model name (e.g., "SUN2000-5KTL").
 
-### Optional Arguments
-- `-o OUTPUT` - Output filename (default: auto-generated)
-- `--protocol PROTO` - Protocol name (default: modbusRTU)
-- `--category CAT` - Device category (default: Inverter)
-- `--sheet NAME` - Excel sheet name (processes all if not specified)
-- `-v, --verbose` - Show detailed processing information
+### Options
+- `-o OUTPUT` - Output filename (default: auto-generated).
+- `--protocol PROTO` - Protocol name (default: modbusRTU).
+- `--category CAT` - Device category (default: Inverter).
+- `--sheet NAME` - Excel sheet name (processes all if not specified).
+- `--pages LIST` - Comma-separated list of PDF pages to process.
+- `--mapping FILE` - JSON file for custom column mapping.
+- `--address-offset VAL` - Shift all addresses by an integer value.
+- `--forced-write VAL` - Value for the Webdyn header's 'forced write' field.
+- `--template` - Generate a sample CSV mapping file and exit.
+- `-v, --verbose` - Show detailed processing information.
 
 ## Testing with Sample Files
 

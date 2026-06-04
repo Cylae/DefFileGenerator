@@ -45,18 +45,27 @@ except ImportError:
     XML_PARSE_ERRORS = ()
 
 try:
-    from DefFileGenerator.def_gen import Generator
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
     # Support local import if running from within the directory
     try:
-        from def_gen import Generator
+        from def_gen import Generator, peek_generator
     except ImportError:
         Generator = None
+        import itertools
+        def peek_generator(iterable):
+            if iterable is None: return False, iter([])
+            iterator = iter(iterable)
+            try:
+                first = next(iterator)
+            except StopIteration:
+                return False, iter([])
+            return True, itertools.chain([first], iterator)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
-        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'type of register'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg', 'modbus address'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -81,12 +90,18 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            if sheet_name:
+                if sheet_name not in wb.sheetnames:
+                    logging.warning(f"Sheet '{sheet_name}' not found in {filepath}.")
+                    return iter([])
+                sheets = [wb[sheet_name]]
+            else:
+                sheets = wb.worksheets
 
             for ws in sheets:
                 def sheet_generator() -> Iterator[Dict[str, Any]]:
@@ -116,15 +131,39 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[str, int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
+
+        # Normalize pages input
+        target_pages_indices = []
+        if pages is None:
+            target_pages_indices = None
+        elif isinstance(pages, str):
+            try:
+                target_pages_indices = [int(p.strip()) for p in pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                return iter([])
+        elif isinstance(pages, int):
+            target_pages_indices = [pages]
+        else:
+            target_pages_indices = pages
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if target_pages_indices is None:
+                        target_pages = pdf.pages
+                    else:
+                        target_pages = []
+                        for i in target_pages_indices:
+                            if 1 <= i <= len(pdf.pages):
+                                target_pages.append(pdf.pages[i-1])
+                            else:
+                                logging.warning(f"Page {i} is out of range for PDF {filepath} (1-{len(pdf.pages)}). Skipping.")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -196,7 +235,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
