@@ -5,9 +5,26 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable is empty without fully consuming it.
+    Returns (has_data, new_iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+
+    return True, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -143,15 +160,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        # Format validation
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid = RE_ADDR_INT.match(address) is not None
+
+        if not is_valid:
+            return False
+
+        # Range validation (0-65535)
+        try:
+            addr_val = int(Generator.normalize_address_val(address.split('_')[0]), 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -394,6 +425,47 @@ class Generator:
                 'Unit': unit, 'Action': norm_action
             }
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error("Invalid Webdyn definition header.")
+                    return False
+
+                seen_tags = {}
+                address_usage = {}
+                warned_lines = set()
+                errors = 0
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11: continue
+                    idx, info1, addr, dtype, info4, name, tag, coefa, coefb, unit, action = row[:11]
+
+                    # Check Tag Duplicates
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Previous at {seen_tags[tag]}.")
+                        errors += 1
+                    else:
+                        seen_tags[tag] = line_num
+
+                    # Check Address Overlaps
+                    self._check_address_overlap(info1, addr, dtype, name, line_num, address_usage, warned_lines)
+
+                # Overlap warnings are logged by _check_address_overlap.
+                # In validation mode, we consider duplicate tags as fatal.
+                return errors == 0
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
@@ -410,14 +482,20 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            summary = {"1": 0, "2": 0, "3": 0, "4": 0}
+            count = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                summary[row['Info1']] = summary.get(row['Info1'], 0) + 1
+                count += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            logging.info(f"Processed {count} registers: Coils={summary['1']}, Discrete={summary['2']}, Holding={summary['3']}, Input={summary['4']}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
