@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,17 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterable[Any]]:
+    """Checks if an iterable is empty without consuming it using itertools.chain."""
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -47,6 +59,7 @@ class Generator:
         }
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+        self._stats = {"1": 0, "2": 0, "3": 0, "4": 0}
 
     @staticmethod
     def normalize_type(dtype):
@@ -143,15 +156,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535)."""
         dtype_upper = dtype.upper()
+        match = None
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation for Modbus address (0-65535)
+        try:
+            addr_val = int(Generator.normalize_address_val(match.group(1)))
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -276,11 +303,12 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
+    @staticmethod
+    def _check_address_overlap(info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
-            start_addr = int(address.split('_')[0])
-            reg_count = self.get_register_count(dtype, address)
+            start_addr = int(Generator.normalize_address_val(address.split('_')[0]))
+            reg_count = Generator.get_register_count(dtype, address)
 
             if info1 not in address_usage:
                 address_usage[info1] = {}
@@ -325,6 +353,7 @@ class Generator:
         seen_tags = {}
         address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
         warned_lines = set()
+        self._stats = {"1": 0, "2": 0, "3": 0, "4": 0}
 
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
@@ -370,6 +399,7 @@ class Generator:
 
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
+            if info1 in self._stats: self._stats[info1] += 1
 
             self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
@@ -394,8 +424,7 @@ class Generator:
                 'Unit': unit, 'Action': norm_action
             }
 
-    @staticmethod
-    def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
+    def write_output_csv(self, output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
@@ -418,11 +447,55 @@ class Generator:
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                logging.info(f"Summary: Coils: {self._stats['1']}, Discrete: {self._stats['2']}, Holding: {self._stats['3']}, Input: {self._stats['4']}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
+                if len(header) < 4:
+                    logging.error("Invalid header format.")
+                    return False
+
+                for row_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11: continue
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    if tag in seen_tags:
+                        logging.error(f"Line {row_num}: FATAL - Duplicate Tag '{tag}'.")
+                        success = False
+                    seen_tags[tag] = row_num
+
+                    self._check_address_overlap(info1, info2, info3, name, row_num, address_usage, warned_lines)
+
+                    # Range validation
+                    try:
+                        addr_val = int(Generator.normalize_address_val(info2.split('_')[0]))
+                        if not (0 <= addr_val <= 65535):
+                            logging.warning(f"Line {row_num}: Address {addr_val} out of standard range.")
+                    except (ValueError, IndexError):
+                        pass
+
+            return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating file: {e}")
+            return False
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
@@ -463,7 +536,12 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
     generator = Generator()
     try:
         if input_data is not None:
-            processed_rows = generator.process_rows(input_data, config.address_offset)
+            has_data, peeked_data = peek_generator(input_data)
+            if not has_data:
+                logging.error("No registers to process.")
+                return
+
+            processed_rows = generator.process_rows(peeked_data, config.address_offset)
             generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                        config.protocol, config.category, config.forced_write)
         else:
