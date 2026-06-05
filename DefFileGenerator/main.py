@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -18,9 +18,10 @@ def setup_logging(verbose=False):
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
+    mapping_arg = getattr(args, 'mapping', None)
+    if mapping_arg:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(mapping_arg, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -41,14 +42,7 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        pages = None
-        if getattr(args, 'pages', None):
-            try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
-        raw_data = extractor.extract_from_pdf(args.input_file, pages)
+        raw_data = extractor.extract_from_pdf(args.input_file, pages_arg)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml':
@@ -57,14 +51,21 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    has_data, raw_data = peek_generator(raw_data)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
-def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_data = extractor.map_and_clean(raw_data, address_offset)
+    has_regs, mapped_data = peek_generator(mapped_data)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
+    return mapped_data
+
+def extract_command(args):
+    mapped_data = _perform_extraction(args)
     output = args.output if args.output else sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -94,12 +95,16 @@ def generate_command(args):
     )
     run_generator(config)
 
-def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful for {args.input_file}")
+    else:
+        logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
 
+def run_command(args):
+    mapped_data = _perform_extraction(args)
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -116,6 +121,10 @@ def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition file')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
     # Extract
     parser_extract = subparsers.add_parser('extract', help='Extract registers from documentation')
@@ -175,6 +184,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 

@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -21,12 +22,23 @@ RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECAS
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterable[Any]]:
+    """Checks if an iterable is non-empty without consuming it entirely."""
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
+
 @dataclass
 class GeneratorConfig:
-    input_file: str = None
-    output: str = None
-    manufacturer: str = None
-    model: str = None
+    input_file: Optional[str] = None
+    output: Optional[str] = None
+    manufacturer: Optional[str] = None
+    model: Optional[str] = None
     protocol: str = 'modbusRTU'
     category: str = 'Inverter'
     forced_write: str = ''
@@ -143,15 +155,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if not is_valid_format:
+            return False
+
+        # Modbus range validation
+        try:
+            addr_val = int(Generator.normalize_address_val(address.split('_')[0]))
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -276,11 +302,12 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
+    @staticmethod
+    def _check_address_overlap(info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
             start_addr = int(address.split('_')[0])
-            reg_count = self.get_register_count(dtype, address)
+            reg_count = Generator.get_register_count(dtype, address)
 
             if info1 not in address_usage:
                 address_usage[info1] = {}
@@ -318,6 +345,61 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        seen_tags = set()
+        address_usage = {} # Info1 -> dict of address -> list of (line, name)
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error(f"Invalid Webdyn definition header in {filepath}")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        continue
+
+                    # Webdyn format: Index, Info1, Info2 (Address), Info3 (Type), Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Duplicate Tag Check
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Fatal - Duplicate Tag '{tag}' detected.")
+                            success = False
+                        seen_tags.add(tag)
+
+                    # Address Overlap Check
+                    if info1 in ['1', '2', '3', '4'] and address:
+                        Generator._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                        # Range Check
+                        try:
+                            addr_val = int(Generator.normalize_address_val(address.split('_')[0]))
+                            if not (0 <= addr_val <= 65535):
+                                logging.warning(f"Line {line_num}: Address {addr_val} is outside standard Modbus range (0-65535).")
+                        except (ValueError, IndexError):
+                            pass
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading definition file {filepath}: {e}")
+            return False
+
+        return success
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
@@ -371,7 +453,7 @@ class Generator:
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
 
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+            Generator._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
