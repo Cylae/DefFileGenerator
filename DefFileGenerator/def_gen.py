@@ -5,9 +5,24 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+    """
+    Checks if a generator/iterable is empty without consuming it.
+    Returns (has_data, iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -143,15 +158,32 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        # Basic format validation
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation (0-65535) for the base address
+        try:
+            base_addr_str = match.group(1)
+            # Normalize to decimal for integer conversion
+            base_addr_dec = Generator.normalize_address_val(base_addr_str)
+            base_val = int(base_addr_dec)
+            if not (0 <= base_val <= 65535):
+                logging.warning(f"Address {base_val} is out of standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -276,11 +308,14 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
+    @staticmethod
+    def _check_address_overlap(info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
-            start_addr = int(address.split('_')[0])
-            reg_count = self.get_register_count(dtype, address)
+            # Normalize to decimal before integer conversion
+            base_addr_dec = Generator.normalize_address_val(address.split('_')[0])
+            start_addr = int(base_addr_dec)
+            reg_count = Generator.get_register_count(dtype, address)
 
             if info1 not in address_usage:
                 address_usage[info1] = {}
@@ -303,6 +338,58 @@ class Generator:
                 address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation target not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for row in reader:
+                    if len(row) < 11:
+                        continue
+
+                    line_num = int(row[0]) + 1 # row[0] is index, header is 1
+                    info1 = row[1]
+                    address = row[2]
+                    dtype = row[3]
+                    name = row[5]
+                    tag = row[6]
+
+                    # Duplicate tag detection (Fatal in validation)
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: FATAL - Duplicate Tag '{tag}' detected. First seen at Line {seen_tags[tag]}.")
+                        is_valid = False
+                    else:
+                        seen_tags[tag] = line_num
+
+                    # Address overlap detection
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                    # Range validation
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address format or range: {address}")
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during validation: {e}")
+            return False
+
+        if is_valid:
+            logging.info(f"Validation successful for {filepath}")
+        return is_valid
 
     @staticmethod
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
@@ -398,6 +485,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        summary = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_names = {'1': 'Coils', '2': 'Discrete Inputs', '3': 'Holding Registers', '4': 'Input Registers'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +505,14 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                summary[row['Info1']] = summary.get(row['Info1'], 0) + 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                logging.info("Summary of registers processed:")
+                for k, v in summary.items():
+                    if v > 0:
+                        logging.info(f"  - {type_names.get(k, k)}: {v}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
@@ -463,7 +558,12 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
     generator = Generator()
     try:
         if input_data is not None:
-            processed_rows = generator.process_rows(input_data, config.address_offset)
+            # Check if input_data is empty
+            has_data, it = peek_generator(input_data)
+            if not has_data:
+                logging.error("No registers extracted.")
+                return
+            processed_rows = generator.process_rows(it, config.address_offset)
             generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                        config.protocol, config.category, config.forced_write)
         else:
@@ -480,7 +580,13 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                     dialect = csv.excel
 
                 reader = csv.DictReader(csvfile, dialect=dialect)
-                processed_rows = generator.process_rows(reader, config.address_offset)
+                # Check if reader is empty
+                has_data, it = peek_generator(reader)
+                if not has_data:
+                    logging.error("No data found in input CSV.")
+                    return
+
+                processed_rows = generator.process_rows(it, config.address_offset)
 
                 # Consume the generator while the input file is still open
                 generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
