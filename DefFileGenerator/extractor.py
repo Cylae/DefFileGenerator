@@ -45,18 +45,27 @@ except ImportError:
     XML_PARSE_ERRORS = ()
 
 try:
-    from DefFileGenerator.def_gen import Generator
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
     # Support local import if running from within the directory
     try:
-        from def_gen import Generator
+        from def_gen import Generator, peek_generator
     except ImportError:
         Generator = None
+        def peek_generator(iterable):
+            if iterable is None: return False, iter([])
+            iterator = iter(iterable)
+            try:
+                first_item = next(iterator)
+                import itertools
+                return True, itertools.chain([first_item], iterator)
+            except StopIteration:
+                return False, iter([])
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
-        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
-        'Address': ['address', 'addr', 'offset', 'register', 'reg'],
+        'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype', 'type of register'],
+        'Address': ['address', 'addr', 'offset', 'register', 'reg', 'modbus address'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
         'Type': ['data type', 'datatype', 'type', 'format'],
         'Unit': ['unit', 'units'],
@@ -81,7 +90,7 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
@@ -116,16 +125,43 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
+                    total_pages = len(pdf.pages)
+
+                    target_page_indices = []
+                    if pages is None:
+                        target_page_indices = list(range(total_pages))
+                    else:
+                        plist = []
+                        if isinstance(pages, str):
+                            try:
+                                plist = [int(p.strip()) for p in pages.split(',')]
+                            except ValueError:
+                                logging.error(f"Invalid format for pages: {pages}")
+                                return
+                        elif isinstance(pages, int):
+                            plist = [pages]
+                        else:
+                            plist = pages
+
+                        for p in plist:
+                            if 1 <= p <= total_pages:
+                                target_page_indices.append(p - 1)
+                            else:
+                                logging.warning(f"Page {p} out of range (Total pages: {total_pages}). Skipping.")
+
+                    if not target_page_indices:
+                        return
+
+                    for idx in target_page_indices:
+                        page = pdf.pages[idx]
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                         for table in tables:
@@ -196,7 +232,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
@@ -206,9 +242,12 @@ class Extractor:
                 seen = set()
                 for elem in root.iter():
                     row = {}
+                    # Enhanced heuristic: collect child tags that have text but no sub-elements
                     for child in elem:
-                        if len(child) == 0 and child.text:
-                            row[child.tag] = child.text.strip()
+                        if len(child) == 0 and child.text is not None:
+                            text = child.text.strip()
+                            if text:
+                                row[child.tag] = text
                     if len(row) >= 2:
                         js = json.dumps(row, sort_keys=True)
                         if js not in seen:

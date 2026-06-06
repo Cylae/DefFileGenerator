@@ -344,6 +344,30 @@ class TestCliEntryPoints(unittest.TestCase):
             self.assertEqual(cm.exception.code, 1)
         os.rmdir("dummy_dir")
 
+    def test_doc_to_webdyn_template(self):
+        from doc_to_webdyn import main
+        test_args = ["doc_to_webdyn.py", "--template", "-o", "template.csv"]
+        with patch.object(sys, 'argv', test_args):
+            main()
+            self.assertTrue(os.path.exists("template.csv"))
+            os.remove("template.csv")
+
+    def test_def_file_gen_main_validate_success(self):
+        from DefFileGenerator.main import main
+        # Create a valid definition file
+        def_file = "test_def.csv"
+        with open(def_file, 'w', newline='', encoding='utf-8') as f:
+            f.write("modbusRTU;Inverter;Mfg;Model;;;;;;;\n")
+            f.write("1;3;100;U16;;Var1;tag1;1.0;0.0;V;4\n")
+
+        test_args = ["main.py", "validate", def_file]
+        with patch.object(sys, 'argv', test_args):
+            with self.assertLogs(level='INFO') as log:
+                main()
+                # Use a broader check on log.output
+                self.assertTrue(any("Validation successful" in m for m in log.output))
+        os.remove(def_file)
+
     def test_def_file_gen_main_extract_stdout(self):
         from DefFileGenerator.main import main
         test_args = ["main.py", "extract", self.csv_file]

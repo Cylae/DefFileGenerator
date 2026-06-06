@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,23 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if a generator or iterable is non-empty without consuming it.
+    Uses itertools.chain to prepend the peeked element back to the stream.
+    Returns (has_data, restored_iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+
+    iterator = iter(iterable)
+    try:
+        first_item = next(iterator)
+    except StopIteration:
+        return False, iter([])
+
+    return True, itertools.chain([first_item], iterator)
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +161,27 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535)."""
         dtype_upper = dtype.upper()
 
+        pattern_match = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            pattern_match = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            pattern_match = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            pattern_match = RE_ADDR_INT.match(address) is not None
+
+        if pattern_match:
+            base_addr_str = Generator.normalize_address_val(address.split('_')[0])
+            try:
+                base_addr_int = int(base_addr_str)
+                if base_addr_int < 0 or base_addr_int > 65535:
+                    logging.warning(f"Address {base_addr_int} is out of standard Modbus range (0-65535).")
+            except ValueError:
+                pass
+
+        return pattern_match
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -394,6 +424,67 @@ class Generator:
                 'Unit': unit, 'Action': norm_action
             }
 
+    def validate_csv(self, filepath: str) -> bool:
+        """
+        Validates an existing WebdynSunPM definition file.
+        Checks for:
+        - Duplicate tags (Fatal)
+        - Address overlaps (Warning)
+        - Register type range checks (Warning)
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {} # Info1 -> dict of address -> list of (line, name)
+        warned_lines = set()
+
+        try:
+            with open(filepath, mode='r', encoding='utf-8-sig') as csvfile:
+                reader = csv.reader(csvfile, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if len(row) < 11:
+                        continue
+
+                    # Webdyn format: Index; Info1; Info2; Info3; Info4; Name; Tag; CoefA; CoefB; Unit; Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Duplicate Tag Check
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Already used at line {seen_tags[tag]}.")
+                            valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # Address Overlap Check
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                    # Range check
+                    base_addr_str = Generator.normalize_address_val(address.split('_')[0])
+                    try:
+                        base_addr_int = int(base_addr_str)
+                        if base_addr_int < 0 or base_addr_int > 65535:
+                            logging.warning(f"Line {line_num}: Address {base_addr_int} is out of standard Modbus range (0-65535).")
+                    except ValueError:
+                        pass
+
+            return valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
+
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
@@ -410,11 +501,17 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
+                info1 = row['Info1']
+                if info1 in counts:
+                    counts[info1] += 1
                 writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                    str(index), info1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+
+            logging.info(f"Summary: {counts['1']} Coils, {counts['2']} Discrete Inputs, {counts['3']} Holding Registers, {counts['4']} Input Registers processed.")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")

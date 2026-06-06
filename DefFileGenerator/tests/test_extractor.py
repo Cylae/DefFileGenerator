@@ -17,6 +17,7 @@ try:
 except ImportError:
     HAS_REPORTLAB = False
 
+import unittest.mock
 from DefFileGenerator.extractor import Extractor
 
 class TestExtractor(unittest.TestCase):
@@ -108,6 +109,26 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_pdf_page_validation(self):
+        # Mock pdfplumber to test page range validation
+        mock_pdfplumber = unittest.mock.MagicMock()
+        with unittest.mock.patch.dict('sys.modules', {'pdfplumber': mock_pdfplumber}):
+            mock_pdf = unittest.mock.MagicMock()
+            mock_pdf.pages = [unittest.mock.MagicMock()] * 10
+            mock_pdfplumber.open.return_value.__enter__.return_value = mock_pdf
+
+            # Use patch to set HAS_PDFPLUMBER and pdfplumber in the module
+            with unittest.mock.patch('DefFileGenerator.extractor.HAS_PDFPLUMBER', True), \
+                 unittest.mock.patch('DefFileGenerator.extractor.pdfplumber', mock_pdfplumber, create=True):
+                extractor = Extractor()
+                # Valid pages
+                list(extractor.extract_from_pdf("dummy.pdf", pages="1,3,5"))
+
+                # Out of range pages
+                with self.assertLogs(level='WARNING') as cm:
+                    list(extractor.extract_from_pdf("dummy.pdf", pages="1,15"))
+                    self.assertTrue(any("Page 15 out of range" in msg for msg in cm.output))
 
 if __name__ == "__main__":
     unittest.main()
