@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+    """
+    Checks if an iterable is empty without fully consuming it.
+    Returns (has_data, iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +158,31 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        pattern_match = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            pattern_match = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            pattern_match = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            pattern_match = RE_ADDR_INT.match(address) is not None
+
+        if not pattern_match:
+            return False
+
+        # Range validation (0-65535)
+        try:
+            parts = address.split('_')
+            base_addr_str = Generator.normalize_address_val(parts[0])
+            base_addr = int(base_addr_str)
+            if base_addr < 0 or base_addr > 65535:
+                logging.warning(f"Address {base_addr} is outside the standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -279,7 +310,9 @@ class Generator:
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
-            start_addr = int(address.split('_')[0])
+            # Normalization before integer conversion
+            base_addr_str = Generator.normalize_address_val(address.split('_')[0])
+            start_addr = int(base_addr_str)
             reg_count = self.get_register_count(dtype, address)
 
             if info1 not in address_usage:
@@ -303,6 +336,74 @@ class Generator:
                 address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
+
+    @staticmethod
+    def validate_csv(filepath: str) -> bool:
+        """
+        Validates an existing Webdyn definition CSV file.
+        Checks for duplicate tags, address overlaps, and basic format.
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File not found {filepath}")
+            return False
+
+        seen_tags = {}
+        address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
+        warned_lines = set()
+        is_valid = True
+
+        generator = Generator()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Validation failed: Empty file")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        continue
+
+                    # Webdyn format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    # Indices: 0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Tag uniqueness
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # Address range and format validation
+                    if address and dtype:
+                        if not Generator.validate_address(address, dtype):
+                            is_valid = False
+
+                    # Address overlap check
+                    if info1 and address and dtype:
+                        generator._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            # If any overlaps were found (which are logged as warnings by _check_address_overlap),
+            # for strict validation we might want to consider them errors.
+            # But the requirement said "log a warning if the normalized address value falls outside this standard range"
+            # and "duplicate tag detection (which is a fatal error)".
+            # Let's check warned_lines.
+            if warned_lines:
+                # Based on the memory, address overlaps are warnings, but duplicate tags are fatal.
+                pass
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during validation: {e}")
+            return False
 
     @staticmethod
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
@@ -378,7 +479,10 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                if info1 in ['2', '4']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
