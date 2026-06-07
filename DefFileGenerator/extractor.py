@@ -45,13 +45,22 @@ except ImportError:
     XML_PARSE_ERRORS = ()
 
 try:
-    from DefFileGenerator.def_gen import Generator
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
     # Support local import if running from within the directory
     try:
-        from def_gen import Generator
+        from def_gen import Generator, peek_generator
     except ImportError:
         Generator = None
+        def peek_generator(iterable):
+            import itertools
+            if iterable is None: return False, iter([])
+            iterator = iter(iterable)
+            try:
+                first = next(iterator)
+            except StopIteration:
+                return False, iter([])
+            return True, itertools.chain([first], iterator)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -81,7 +90,7 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
@@ -116,16 +125,35 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, str, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
+                    # Robust page argument handling
+                    if pages is None:
+                        target_indices = range(len(pdf.pages))
+                    else:
+                        try:
+                            if isinstance(pages, str):
+                                target_indices = [int(p.strip()) - 1 for p in pages.split(',') if p.strip()]
+                            elif isinstance(pages, int):
+                                target_indices = [pages - 1]
+                            else: # list
+                                target_indices = [int(p) - 1 for p in pages]
+                        except ValueError:
+                            logging.error(f"Invalid pages argument: {pages}")
+                            return
+
+                    for i in target_indices:
+                        if i < 0 or i >= len(pdf.pages):
+                            logging.warning(f"Page {i+1} is out of range (PDF has {len(pdf.pages)} pages). Skipping.")
+                            continue
+
+                        page = pdf.pages[i]
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                         for table in tables:
@@ -156,6 +184,10 @@ class Extractor:
         return pdf_tables_generator()
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
+        if not os.path.exists(filepath):
+            logging.error(f"Input file not found: {filepath}")
+            return iter([])
+
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
             try:
                 with open(filepath, 'rb') as f:
@@ -196,7 +228,10 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
+        if not os.path.exists(filepath):
+            logging.error(f"Input file not found: {filepath}")
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)

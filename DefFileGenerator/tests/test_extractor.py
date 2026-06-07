@@ -17,6 +17,7 @@ try:
 except ImportError:
     HAS_REPORTLAB = False
 
+from unittest.mock import patch, MagicMock
 from DefFileGenerator.extractor import Extractor
 
 class TestExtractor(unittest.TestCase):
@@ -108,6 +109,47 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "16")
         self.assertEqual(mapped[0]["Name"], "Test")
         self.assertEqual(mapped[0]["Type"], "U16")
+
+    def test_extract_from_pdf_robust_pages(self):
+        from DefFileGenerator.extractor import HAS_PDFPLUMBER
+        if not HAS_PDFPLUMBER:
+            self.skipTest("pdfplumber not installed")
+
+        with patch('pdfplumber.open') as mock_open:
+            mock_pdf = MagicMock()
+        mock_pdf.pages = [MagicMock(), MagicMock(), MagicMock()]
+        for i, p in enumerate(mock_pdf.pages):
+            p.page_number = i + 1
+            p.extract_tables.return_value = [[["Address", "Name"], ["100", "Var" + str(i+1)]]]
+        mock_open.return_value.__enter__.return_value = mock_pdf
+
+        # Test comma-separated string
+        data = list(self.extractor.extract_from_pdf("dummy.pdf", pages="1,3"))
+        results = [list(table) for table in data]
+        self.assertEqual(len(results), 2)
+        self.assertEqual(results[0][0]["Name"], "Var1")
+        self.assertEqual(results[1][0]["Name"], "Var3")
+
+        # Test integer
+        data = list(self.extractor.extract_from_pdf("dummy.pdf", pages=2))
+        results = [list(table) for table in data]
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0][0]["Name"], "Var2")
+
+        # Test list
+        data = list(self.extractor.extract_from_pdf("dummy.pdf", pages=[1, 2]))
+        results = [list(table) for table in data]
+        self.assertEqual(len(results), 2)
+        self.assertEqual(results[0][0]["Name"], "Var1")
+        self.assertEqual(results[1][0]["Name"], "Var2")
+
+        # Test out of range
+        with self.assertLogs(level='WARNING') as cm:
+            data = list(self.extractor.extract_from_pdf("dummy.pdf", pages="1,5"))
+            results = [list(table) for table in data]
+            self.assertEqual(len(results), 1)
+            self.assertEqual(results[0][0]["Name"], "Var1")
+            self.assertTrue(any("Page 5 is out of range" in msg for msg in cm.output))
 
 if __name__ == "__main__":
     unittest.main()
