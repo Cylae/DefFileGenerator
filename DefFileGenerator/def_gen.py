@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (has_data, iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, it
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +158,26 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
+        # Format validation
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            if not RE_ADDR_STRING.match(address): return False
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            if not RE_ADDR_BITS.match(address): return False
         else:
-            return RE_ADDR_INT.match(address) is not None
+            if not RE_ADDR_INT.match(address): return False
+
+        # Modbus Range validation (0-65535)
+        try:
+            addr_val = int(Generator.normalize_address_val(address.split('_')[0]))
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+        except ValueError:
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -276,11 +302,14 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
+    @staticmethod
+    def _check_address_overlap(info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
-            start_addr = int(address.split('_')[0])
-            reg_count = self.get_register_count(dtype, address)
+            # Normalize before conversion to ensure collision detection works regardless of input format (hex/dec)
+            norm_addr_str = Generator.normalize_address_val(address.split('_')[0])
+            start_addr = int(norm_addr_str)
+            reg_count = Generator.get_register_count(dtype, address)
 
             if info1 not in address_usage:
                 address_usage[info1] = {}
@@ -303,6 +332,57 @@ class Generator:
                 address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
         except (ValueError, IndexError):
             pass
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags: Dict[str, int] = {}
+        address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]] = {}
+        warned_lines: Set[Tuple[int, int]] = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                try:
+                    header = next(reader)
+                    if not header or len(header) < 4:
+                        logging.warning(f"File {filepath} has invalid header.")
+                except StopIteration:
+                    return False
+
+                for row_idx, row in enumerate(reader, start=2):
+                    if not row: continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {row_idx}: Row has fewer than 11 columns. Skipping.")
+                        continue
+
+                    # Webdyn format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    # 1. Tag Uniqueness (Fatal error for Webdyn)
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {row_idx}: Duplicate Tag '{tag}' detected. Fatal error. Previous occurrence at line {seen_tags[tag]}.")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = row_idx
+
+                    # 2. Address Validation
+                    if not self.validate_address(info2, info3):
+                        logging.error(f"Line {row_idx}: Invalid Address '{info2}' for Type '{info3}'.")
+                        is_valid = False
+
+                    # 3. Overlap detection
+                    self._check_address_overlap(info1, info2, info3, name, row_idx, address_usage, warned_lines)
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating file {filepath}: {e}")
+            return False
 
     @staticmethod
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
@@ -371,7 +451,7 @@ class Generator:
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
 
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+            Generator._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 

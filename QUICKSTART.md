@@ -12,8 +12,11 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 ## Installation
 
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Install core dependencies
+pip install openpyxl pdfplumber lxml defusedxml reportlab
+
+# Install optional dependencies (for stress testing)
+pip install pandas
 ```
 
 ## Basic Usage
@@ -149,6 +152,11 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages LIST` - PDF pages to process (comma-separated integers, e.g., "1,2,5")
+- `--mapping FILE` - JSON mapping file for custom column detection
+- `--address-offset NUM` - Integer to add to all addresses (e.g., "-1" for 0-indexed documents)
+- `--forced-write STR` - Webdyn forced write configuration
+- `--template` - Generate a sample Webdyn definition template
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
@@ -194,6 +202,7 @@ python doc_to_webdyn.py sample_inverter_registers.xlsx \
 **Solution:**
 - Check if addresses are in the right column
 - The tool handles hex (0x9C40) and decimal (40001) automatically
+- Use `--address-offset` if the documentation uses a different base index
 
 ### Problem: Missing units or scaling
 
@@ -237,7 +246,4 @@ Check the full README (DOC_PARSER_README.md) for:
 - Full data type mapping table
 - Advanced usage examples
 - Known limitations
-
----
-
-**You're ready to go! Just point the tool at your manufacturer documentation and it will do the rest.**
+- Unified CLI (`DefFileGenerator/main.py`) for extraction, generation, and validation.
