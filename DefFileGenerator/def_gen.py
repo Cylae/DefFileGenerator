@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable[Any]]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable or generator is empty without consuming it.
+    Returns (has_data, restored_iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +158,31 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535)."""
         dtype_upper = dtype.upper()
 
+        match = None
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation (0-65535)
+        try:
+            base_addr_str = address.split('_')[0]
+            norm_addr = Generator.normalize_address_val(base_addr_str)
+            addr_int = int(norm_addr)
+            if addr_int < 0 or addr_int > 65535:
+                logging.warning(f"Address {addr_int} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -319,6 +350,77 @@ class Generator:
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file (CSV)."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error("Invalid definition file: missing or incomplete header.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row):
+                            logging.warning(f"Line {line_num}: Row has insufficient columns ({len(row)}/11). Skipping.")
+                        continue
+
+                    # Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # 1. Basic Type/Address Validation
+                    if not self.validate_type(dtype):
+                        logging.error(f"Line {line_num}: Invalid data type '{dtype}'.")
+                        valid = False
+                    if not self.validate_address(address, dtype):
+                        logging.error(f"Line {line_num}: Invalid address format '{address}' for type '{dtype}'.")
+                        valid = False
+
+                    # 2. Tag Uniqueness (Fatal error for Webdyn)
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' detected (Previous line: {seen_tags[tag]}).")
+                            valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # 3. Address Overlap Detection
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                    # 4. Range Validation for Normalized Addresses
+                    base_addr_str = address.split('_')[0]
+                    norm_addr = self.normalize_address_val(base_addr_str)
+                    try:
+                        addr_int = int(norm_addr)
+                        if addr_int < 0 or addr_int > 65535:
+                            logging.warning(f"Line {line_num}: Address {addr_int} is outside standard Modbus range (0-65535).")
+                    except ValueError:
+                        pass
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
+
+        # Consider address overlaps as fatal errors for validation
+        if warned_lines:
+            valid = False
+
+        return valid
+
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
         seen_names = {}
@@ -444,9 +546,12 @@ def generate_template(output_file: Optional[str]) -> None:
         logging.error(f"Error generating template: {e}")
 
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
-    if config.template:
+    if getattr(config, 'template', False):
         generate_template(config.output)
         return
+
+    mfg = config.manufacturer or 'Manufacturer'
+    model = config.model or 'Model'
 
     if input_data is None:
         if not config.input_file:
@@ -456,15 +561,11 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
             logging.error(f"Input file not found: {config.input_file}")
             return
 
-    if not config.manufacturer or not config.model:
-        logging.error("manufacturer and model are required.")
-        return
-
     generator = Generator()
     try:
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
-            generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+            generator.write_output_csv(config.output, processed_rows, mfg, model,
                                        config.protocol, config.category, config.forced_write)
         else:
             with open(config.input_file, mode='rb') as f:
@@ -483,7 +584,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                 processed_rows = generator.process_rows(reader, config.address_offset)
 
                 # Consume the generator while the input file is still open
-                generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+                generator.write_output_csv(config.output, processed_rows, mfg, model,
                                            config.protocol, config.category, config.forced_write)
     except (OSError, csv.Error, ValueError) as e:
         logging.error(f"An error occurred during generation: {e}")
