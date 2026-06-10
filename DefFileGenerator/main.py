@@ -7,7 +7,10 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
+
+# Error handling tuples
+TOP_LEVEL_ERRORS = (OSError, ValueError, TypeError, KeyError, csv.Error)
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -57,11 +60,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -90,13 +94,23 @@ def generate_command(args):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
+        template=getattr(args, 'template', False),
         address_offset=args.address_offset
     )
     run_generator(config)
 
+def validate_command(args):
+    gen = Generator()
+    if gen.validate_csv(args.input_file):
+        logging.info("Validation successful.")
+    else:
+        logging.error("Validation failed.")
+        sys.exit(1)
+
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -128,14 +142,19 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer', help='Manufacturer name')
+    parser_generate.add_argument('--model', help='Model name')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -174,7 +193,13 @@ def _run_cli():
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'generate':
+        # Positional args with nargs='?' aren't required, so we manually check
+        if not args.template:
+            if not args.manufacturer or not args.model or not args.input_file:
+                parser_generate.error("the following arguments are required: input_file, --manufacturer, --model")
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 
@@ -185,7 +210,7 @@ def main():
         sys.exit(130)
     except SystemExit:
         raise
-    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
+    except TOP_LEVEL_ERRORS as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
