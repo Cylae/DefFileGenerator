@@ -11,9 +11,16 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ## Installation
 
+### Core Dependencies
+Required for basic extraction and generation:
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+pip install openpyxl pdfplumber defusedxml lxml
+```
+
+### Optional Dependencies
+Required for stress testing, performance benchmarking, and advanced PDF generation:
+```bash
+pip install pandas reportlab
 ```
 
 ## Basic Usage
@@ -149,6 +156,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages PAGES` - PDF pages to process (comma-separated integers, e.g., "1,2,5")
+- `--mapping MAPPING` - Path to JSON mapping file for custom column detection
+- `--address-offset OFFSET` - Shift all register addresses by this value (default: 0)
+- `--forced-write FORCED` - Value for the 'Forced Write' field in the header
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
