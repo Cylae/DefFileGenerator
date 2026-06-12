@@ -6,8 +6,9 @@ import logging
 import csv
 import json
 import tempfile
+from typing import Dict, Any, Iterator
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -16,7 +17,7 @@ def setup_logging(verbose=False):
         force=True
     )
 
-def _perform_extraction(args):
+def _perform_extraction(args) -> Iterator[Dict[str, Any]]:
     mapping = {}
     if args.mapping:
         try:
@@ -57,11 +58,12 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -81,6 +83,14 @@ def extract_command(args):
         f.close()
         logging.info(f"Extraction complete. Saved to {args.output}")
 
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"File {args.input_file} is VALID.")
+    else:
+        logging.error(f"File {args.input_file} is INVALID.")
+        sys.exit(1)
+
 def generate_command(args):
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -96,7 +106,8 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -116,6 +127,10 @@ def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition CSV')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
     # Extract
     parser_extract = subparsers.add_parser('extract', help='Extract registers from documentation')
@@ -175,6 +190,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 

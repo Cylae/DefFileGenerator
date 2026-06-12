@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,19 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Any) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable is empty without consuming it.
+    Returns (has_data, original_iterator_reconstituted).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -318,6 +332,67 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        logging.warning(f"Line {line_num}: Skipping invalid row (insufficient columns).")
+                        continue
+
+                    # Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip().upper()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Tag uniqueness
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Already used at line {seen_tags[tag]}.")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # Address validation
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address format '{address}' for type '{dtype}'.")
+                        is_valid = False
+
+                    # Address range check (standard Modbus 0-65535)
+                    try:
+                        base_addr_str = address.split('_')[0]
+                        base_addr = int(Generator.normalize_address_val(base_addr_str))
+                        if base_addr < 0 or base_addr > 65535:
+                            logging.warning(f"Line {line_num}: Address {base_addr} is out of standard Modbus range (0-65535).")
+                    except (ValueError, IndexError):
+                        pass
+
+                    # Overlap detection
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
