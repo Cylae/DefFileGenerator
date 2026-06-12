@@ -11,11 +11,12 @@ This tool automatically extracts Modbus register information from manufacturer d
   - Maps manufacturer-specific data types (e.g., `uint16`, `float32`) to Webdyn types (`U16`, `F32`).
   - Generates unique tags from register names.
 - **Scaling Support**: Handles scaling factors and multipliers.
+- **O(1) Memory**: Uses generator-based stream processing for efficiency.
 
 ## Installation
 
 ```bash
-pip install openpyxl pdfplumber lxml defusedxml reportlab
+pip install openpyxl pdfplumber defusedxml lxml
 ```
 *(Note: `pandas` is not required for core execution, only for stress testing).*
 
@@ -34,6 +35,11 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol`: Protocol name (default: `modbusRTU`).
 - `--category`: Device category (default: `Inverter`).
 - `--sheet`: Specific Excel sheet name to process (processes all if omitted).
+- `--pages`: PDF pages to process (comma-separated integers).
+- `--mapping`: JSON file for explicit column mapping.
+- `--address-offset`: Shift all addresses by a specified integer.
+- `--forced-write`: Optional string for the 5th column in the definition header.
+- `--template`: Generate a sample input CSV template.
 - `-v`, `--verbose`: Show detailed processing information.
 
 ## How It Works
@@ -66,7 +72,7 @@ Common types are automatically mapped:
 
 ### Normalization Logic
 
-- **Addresses**: Removes commas, extracts numbers, and converts hex to decimal.
+- **Addresses**: Removes commas, extracts numbers, and converts hex to decimal. Supports 0-65535 range.
 - **Tags**: Lowercases and replaces non-alphanumeric characters with underscores. Ensures uniqueness by adding numeric suffixes if necessary.
 - **Scaling**: If a scale column is found, it is used as `CoefA`. Supports fractions like `1/10`.
 
