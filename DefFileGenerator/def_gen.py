@@ -5,9 +5,24 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterable]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (has_data, original_iterable).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
@@ -143,15 +158,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535)."""
         dtype_upper = dtype.upper()
+        is_valid_format = False
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if not is_valid_format:
+            return False
+
+        # Range validation
+        try:
+            addr_val = int(Generator.normalize_address_val(address.split('_')[0]))
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -318,6 +347,62 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row):
+                            logging.warning(f"Line {line_num}: Row has insufficient columns ({len(row)}/11). Skipping.")
+                        continue
+
+                    # Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    if not self.validate_address(address, dtype):
+                        logging.error(f"Line {line_num}: Invalid address '{address}' for type '{dtype}'.")
+                        is_valid = False
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate tag '{tag}'. Previously seen at line {seen_tags[tag]}.")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            if warned_lines:
+                # address_overlap uses logging.warning, but for validate_csv we might want it to be an error
+                # however, standard seems to be warning. Let's keep it as is.
+                pass
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading definition file: {e}")
+            return False
+
+        return is_valid
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
