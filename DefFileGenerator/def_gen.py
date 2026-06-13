@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,26 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Any) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (has_data, iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+
+    try:
+        iterator = iter(iterable)
+    except TypeError:
+        return False, iter([])
+
+    try:
+        first = next(iterator)
+    except StopIteration:
+        return False, iter([])
+
+    return True, itertools.chain([first], iterator)
 
 @dataclass
 class GeneratorConfig:
@@ -143,15 +164,31 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and Modbus range."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation (0-65535)
+        try:
+            base_addr_str = match.group(1)
+            norm_addr = Generator.normalize_address_val(base_addr_str)
+            val = int(norm_addr)
+            if not (0 <= val <= 65535):
+                logging.warning(f"Address {val} is out of standard Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            return False
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -410,11 +447,24 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
+                info1 = str(row.get('Info1', '3'))
+                if info1 in counts:
+                    counts[info1] += 1
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+
+            summary = []
+            if counts['1']: summary.append(f"Coils: {counts['1']}")
+            if counts['2']: summary.append(f"Discrete Inputs: {counts['2']}")
+            if counts['3']: summary.append(f"Holding Registers: {counts['3']}")
+            if counts['4']: summary.append(f"Input Registers: {counts['4']}")
+
+            if summary:
+                logging.info("Extraction summary: " + ", ".join(summary))
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
@@ -423,6 +473,50 @@ class Generator:
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (expected at least 11, got {len(row)}). Skipping.")
+                        continue
+
+                    # row format: [Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action]
+                    _, info1, info2, info3, _, name, tag, _, _, _, _ = row[:11]
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Already seen at line {seen_tags[tag]}.")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    if not self.validate_address(info2, info3):
+                        is_valid = False
+
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
