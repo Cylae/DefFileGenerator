@@ -45,13 +45,20 @@ except ImportError:
     XML_PARSE_ERRORS = ()
 
 try:
-    from DefFileGenerator.def_gen import Generator
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
     # Support local import if running from within the directory
     try:
-        from def_gen import Generator
+        from def_gen import Generator, peek_generator
     except ImportError:
         Generator = None
+        import itertools
+        def peek_generator(iterable):
+            if iterable is None: return False, iter([])
+            it = iter(iterable)
+            try: first = next(it)
+            except StopIteration: return False, iter([])
+            return True, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -81,16 +88,20 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+            if sheet_name and sheet_name not in wb.sheetnames:
+                logging.error(f"Sheet '{sheet_name}' not found in {filepath}")
+                return iter([])
+
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
-                def sheet_generator() -> Iterator[Dict[str, Any]]:
-                    rows = ws.iter_rows(values_only=True)
+                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                    rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
                     except StopIteration:
@@ -99,13 +110,9 @@ class Extractor:
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
 
                     for row in rows:
-                        # Only yield if row has actual data (not all None/empty)
                         if any(cell is not None and str(cell).strip() for cell in row):
                             yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                # We yield a generator for each sheet. We check if it has rows by creating it.
-                # To see if it's empty, we would need to peek, but let's yield it.
-                # If there are no data rows, it simply yields nothing when iterated.
                 yield sheet_generator()
 
         except (OSError, zipfile.BadZipFile) as e:
@@ -116,16 +123,38 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
+
+        # Handle pages as string or list of strings
+        if isinstance(pages, str):
+            try:
+                pages = [int(p.strip()) for p in pages.split(',')]
+            except ValueError:
+                logging.error("Invalid format for pages. Expected comma-separated integers.")
+                return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
+                    pdf_len = len(pdf.pages)
+                    page_list = []
+                    if pages is None:
+                        page_list = pdf.pages
+                    else:
+                        for p in (pages if isinstance(pages, list) else [pages]):
+                            try:
+                                p_int = int(p)
+                                if 1 <= p_int <= pdf_len:
+                                    page_list.append(pdf.pages[p_int - 1])
+                                else:
+                                    logging.warning(f"Page {p_int} out of range (1-{pdf_len}). Skipping.")
+                            except (ValueError, TypeError):
+                                logging.warning(f"Invalid page reference: {p}. Skipping.")
+
+                    for page in page_list:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                         for table in tables:
@@ -196,7 +225,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
