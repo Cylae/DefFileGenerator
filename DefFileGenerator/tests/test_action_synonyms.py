@@ -35,7 +35,7 @@ class TestActionSynonyms(unittest.TestCase):
             ('8', '8'),
             ('9', '9'),
 
-            # Default/Fallback -> 1
+            # Default/Fallback -> 1 (since default RegisterType is Holding)
             ('', '1'),
             ('UNKNOWN', '1'),
         ]
@@ -45,11 +45,35 @@ class TestActionSynonyms(unittest.TestCase):
                 'Name': 'TestVar',
                 'Address': '100',
                 'Type': 'U16',
-                'Action': input_action
+                'Action': input_action,
+                'RegisterType': 'Holding Register'
             }]
             processed = list(self.generator.process_rows(rows))
             with self.subTest(input_action=input_action):
                 self.assertEqual(processed[0]['Action'], expected)
+
+    def test_action_defaulting_by_register_type(self):
+        # Input Register should default to Read-Only (4)
+        rows = [{
+            'Name': 'TestInput',
+            'Address': '200',
+            'Type': 'U16',
+            'Action': '',
+            'RegisterType': 'Input Register'
+        }]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '4')
+
+        # Holding Register should default to Read/Write (1)
+        rows = [{
+            'Name': 'TestHolding',
+            'Address': '300',
+            'Type': 'U16',
+            'Action': '',
+            'RegisterType': 'Holding Register'
+        }]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1')
 
 if __name__ == '__main__':
     unittest.main()

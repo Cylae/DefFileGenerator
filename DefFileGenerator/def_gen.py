@@ -146,12 +146,24 @@ class Generator:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if is_valid_format:
+            # Modbus range check (0-65535)
+            try:
+                addr_val = int(Generator.normalize_address_val(address.split('_')[0]))
+                if addr_val < 0 or addr_val > 65535:
+                    logging.warning(f"Address {addr_val} is outside the standard Modbus range (0-65535).")
+            except (ValueError, IndexError):
+                pass
+
+        return is_valid_format
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -319,6 +331,61 @@ class Generator:
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition CSV."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File not found {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
+                if len(header) < 11:
+                    logging.error(f"Invalid Webdyn format: Header must have at least 11 columns.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or all(not c.strip() for c in row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has fewer than 11 columns. Skipping.")
+                        continue
+
+                    # Column mapping for Webdyn:
+                    # 0:Index, 1:Info1, 2:Info2, 3:Info3, 4:Info4, 5:Name, 6:Tag, 7:CoefA, 8:CoefB, 9:Unit, 10:Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal).")
+                            is_valid = False
+                        seen_tags[tag] = line_num
+
+                    if not Generator.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address format '{address}' for type '{dtype}'.")
+                        is_valid = False
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            if warned_lines:
+                # Overlaps are warnings but may affect validity depending on strictness
+                pass
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
+
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
         seen_names = {}
@@ -378,7 +445,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on RegisterType if action is empty
+                if info1 == '4' or info1 == '2': # Input Register or Discrete Input
+                    norm_action = '4' # Read Only
+                else:
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
