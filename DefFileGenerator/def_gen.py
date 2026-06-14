@@ -143,15 +143,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range based on type."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation (0-65535) for Modbus addresses
+        try:
+            addr_str = match.group(1)
+            addr_val = int(Generator.normalize_address_val(addr_str))
+            if addr_val < 0 or addr_val > 65535:
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -395,6 +409,52 @@ class Generator:
             }
 
     @staticmethod
+    def validate_csv(filepath: str) -> bool:
+        """
+        Validates an existing Webdyn definition file.
+        Checks for duplicates, overlaps, and basic formatting.
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+        gen = Generator()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
+                if len(header) < 4:
+                    logging.error("Invalid definition file header.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row): logging.warning(f"Line {line_num}: Row has insufficient columns.")
+                        continue
+
+                    idx, info1, info2, info3, info4, name, tag, coef_a, coef_b, unit, action = row[:11]
+
+                    if not gen.validate_address(info2, info3):
+                        is_valid = False
+
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Fatal - Duplicate Tag '{tag}' (Previously at line {seen_tags[tag]}).")
+                        is_valid = False
+                    seen_tags[tag] = line_num
+
+                    gen._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
+
+    @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
@@ -410,14 +470,17 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                logging.info(f"Summary: Coils={counts['1']}, Discrete={counts['2']}, Holding={counts['3']}, Input={counts['4']}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
