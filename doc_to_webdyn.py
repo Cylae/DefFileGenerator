@@ -6,7 +6,7 @@ import logging
 import re
 import json
 import csv
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
@@ -44,16 +44,9 @@ def _run_cli():
 
     extractor = Extractor(mapping)
 
-    pages = None
-    if args.pages:
-        if ext != '.pdf':
-            logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        else:
-            try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
+    pages = getattr(args, 'pages', None)
+    if pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
@@ -61,10 +54,12 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    has_data, raw_it = peek_generator(raw)
+    if not has_data: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped_data = extractor.map_and_clean(raw_it, args.address_offset)
+    has_regs, mapped_it = peek_generator(mapped_data)
+    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
@@ -76,9 +71,9 @@ def _run_cli():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0 # Already applied during extraction
+        address_offset=0
     )
-    run_generator(config, input_data=mapped)
+    run_generator(config, input_data=mapped_it)
 
 def main():
     try:
