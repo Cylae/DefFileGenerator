@@ -143,15 +143,32 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535)."""
         dtype_upper = dtype.upper()
 
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if not is_valid_format:
+            return False
+
+        # Range check for the base address
+        try:
+            base_addr_str = address.split('_')[0]
+            norm_addr = Generator.normalize_address_val(base_addr_str)
+            addr_val = int(norm_addr, 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} out of standard Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            return False
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -319,6 +336,69 @@ class Generator:
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
+    def validate_csv(self, filepath: str) -> bool:
+        """
+        Validates an existing Webdyn definition file.
+        Checks for duplicate tags, address overlaps, and valid types/addresses.
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"File not found for validation: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                # Skip header row
+                try:
+                    next(reader)
+                except StopIteration:
+                    return True
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row):
+                            logging.warning(f"Line {line_num}: Row has fewer than 11 columns. Skipping.")
+                        continue
+
+                    # Webdyn CSV columns: Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip().upper()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Tag validation (Fatal error)
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (already seen at line {seen_tags[tag]})")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # Type validation
+                    if not self.validate_type(dtype):
+                        logging.warning(f"Line {line_num}: Invalid data type '{dtype}'")
+                        is_valid = False
+
+                    # Address validation
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address '{address}' for type '{dtype}'")
+                        is_valid = False
+
+                    # Overlap detection
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            # Overlap in Webdyn files is a warning, but we check if we found other fatal errors
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file during validation: {e}")
+            return False
+
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
         seen_names = {}
@@ -378,7 +458,8 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting: Input/Discrete are RO ('4'), others RW ('1')
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +479,7 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +497,13 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+
+            logging.info(f"Summary: Coils: {counts['1']}, Discrete: {counts['2']}, Holding: {counts['3']}, Input: {counts['4']}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:

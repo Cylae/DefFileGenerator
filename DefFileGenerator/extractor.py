@@ -8,7 +8,20 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Peeks at the first element of an iterable to check if it's empty.
+    Returns (has_data, original_iterable).
+    """
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 try:
     import openpyxl
@@ -81,7 +94,7 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
@@ -116,16 +129,42 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
+
+        # Normalize pages to a list of integers
+        target_page_indices = []
+        if pages is not None:
+            if isinstance(pages, (int, str)):
+                p_list = str(pages).split(',')
+            elif isinstance(pages, list):
+                p_list = pages
+            else:
+                p_list = []
+
+            for p in p_list:
+                try:
+                    target_page_indices.append(int(p))
+                except (ValueError, TypeError):
+                    continue
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
+                    num_pages = len(pdf.pages)
+                    if not target_page_indices:
+                        pages_to_process = pdf.pages
+                    else:
+                        pages_to_process = []
+                        for p_num in target_page_indices:
+                            if 1 <= p_num <= num_pages:
+                                pages_to_process.append(pdf.pages[p_num - 1])
+                            else:
+                                logging.warning(f"Page {p_num} out of range (1-{num_pages}). Skipping.")
+
+                    for page in pages_to_process:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
                         for table in tables:
@@ -196,7 +235,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
