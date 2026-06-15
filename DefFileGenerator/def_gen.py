@@ -143,15 +143,31 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range (0-65535)."""
         dtype_upper = dtype.upper()
+        match = None
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        try:
+            # Check range of the base address
+            addr_val = int(Generator.normalize_address_val(match.group(1)))
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+                # We return True because some manufacturers use extended ranges,
+                # but we log a warning. For strict validation, return False here.
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -394,6 +410,74 @@ class Generator:
                 'Unit': unit, 'Action': norm_action
             }
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file for common errors."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation Error: File not found {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error(f"Validation Error: {filepath} is empty.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or all(not cell.strip() for cell in row):
+                        continue
+
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (found {len(row)}, expected 11). Skipping.")
+                        continue
+
+                    # Webdyn format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1 = row[1].strip() # RegisterType code
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+                    action = row[10].strip()
+
+                    # 1. Validate Tag uniqueness
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Previous at line {seen_tags[tag]}).")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # 2. Validate RegisterType code
+                    if info1 not in ['1', '2', '3', '4']:
+                        logging.warning(f"Line {line_num}: Invalid RegisterType code '{info1}'. Expected 1, 2, 3, or 4.")
+
+                    # 3. Validate Address format and range
+                    if not self.validate_address(address, dtype):
+                        logging.error(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'.")
+                        is_valid = False
+
+                    # 4. Check for overlaps
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+                    # 5. Validate Action code
+                    if action not in self.allowed_actions:
+                        logging.warning(f"Line {line_num}: Non-standard Action code '{action}'.")
+
+            if warned_lines:
+                is_valid = False # Overlaps are fatal errors for logical integrity
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Validation Error processing {filepath}: {e}")
+            return False
+
+        return is_valid
+
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
@@ -410,14 +494,22 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            total = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
+                total += 1
 
+            summary = f"Generated {total} registers: Coils={counts['1']}, Discrete={counts['2']}, Holding={counts['3']}, Input={counts['4']}"
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
+                logging.info(summary)
+            else:
+                logging.debug(summary)
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
