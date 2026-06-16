@@ -143,15 +143,29 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and Modbus range."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        try:
+            val_str = Generator.normalize_address_val(match.group(1))
+            val = int(val_str)
+            if not (0 <= val <= 65535):
+                logging.warning(f"Address {val} is out of Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -319,6 +333,58 @@ class Generator:
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error("Invalid definition file header.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row: continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns ({len(row)}/11). Skipping.")
+                        continue
+
+                    # Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                    info1, address, dtype, name, tag, action = row[1], row[2], row[3], row[5], row[6], row[10]
+
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Previous: line {seen_tags[tag]}.")
+                        valid = False
+                    seen_tags[tag] = line_num
+
+                    if not self.validate_type(dtype):
+                        logging.warning(f"Line {line_num}: Invalid Type '{dtype}'.")
+                        valid = False
+
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid Address '{address}'.")
+                        valid = False
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+                    if action not in self.allowed_actions:
+                        logging.warning(f"Line {line_num}: Invalid Action '{action}'.")
+                        valid = False
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
+        return valid
+
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
         seen_names = {}
@@ -378,7 +444,8 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on RegisterType
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
