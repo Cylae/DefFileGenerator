@@ -69,13 +69,13 @@ def _run_cli():
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
     config = GeneratorConfig(
-        input_file=args.input_file,
+        input_file=getattr(args, 'input_file', None),
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
+        manufacturer=getattr(args, 'manufacturer', None),
+        model=getattr(args, 'model', None),
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
         address_offset=0 # Already applied during extraction
     )
     run_generator(config, input_data=mapped)

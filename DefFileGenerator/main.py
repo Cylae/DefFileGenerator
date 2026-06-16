@@ -83,16 +83,23 @@ def extract_command(args):
 
 def generate_command(args):
     config = GeneratorConfig(
-        input_file=args.input_file,
-        output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=args.address_offset
+        input_file=getattr(args, 'input_file', None),
+        output=getattr(args, 'output', None),
+        manufacturer=getattr(args, 'manufacturer', None),
+        model=getattr(args, 'model', None),
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=getattr(args, 'address_offset', 0)
     )
     run_generator(config)
+
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
@@ -137,6 +144,10 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
+    parser_validate.add_argument('input_file', help='Definition file to validate')
+
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
@@ -175,6 +186,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
 
