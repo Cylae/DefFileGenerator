@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -53,6 +54,15 @@ except ImportError:
     except ImportError:
         Generator = None
 
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Peeks at the first element of a generator without consuming it entirely."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return None, iter([])
+    return first, itertools.chain([first], it)
+
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
@@ -86,11 +96,17 @@ class Extractor:
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            if sheet_name:
+                if sheet_name not in wb.sheetnames:
+                    logging.error(f"Sheet '{sheet_name}' not found in {filepath}")
+                    return
+                sheets = [wb[sheet_name]]
+            else:
+                sheets = wb.worksheets
 
             for ws in sheets:
-                def sheet_generator() -> Iterator[Dict[str, Any]]:
-                    rows = ws.iter_rows(values_only=True)
+                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                    rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
                     except StopIteration:
@@ -99,13 +115,9 @@ class Extractor:
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
 
                     for row in rows:
-                        # Only yield if row has actual data (not all None/empty)
                         if any(cell is not None and str(cell).strip() for cell in row):
                             yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                # We yield a generator for each sheet. We check if it has rows by creating it.
-                # To see if it's empty, we would need to peek, but let's yield it.
-                # If there are no data rows, it simply yields nothing when iterated.
                 yield sheet_generator()
 
         except (OSError, zipfile.BadZipFile) as e:
@@ -116,15 +128,29 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        page_list = pages if isinstance(pages, list) else [pages]
+                        target_pages = []
+                        for p in page_list:
+                            try:
+                                p_idx = int(p) - 1
+                                if 0 <= p_idx < len(pdf.pages):
+                                    target_pages.append(pdf.pages[p_idx])
+                                else:
+                                    logging.warning(f"Page number {p} out of range (1-{len(pdf.pages)}).")
+                            except ValueError:
+                                logging.warning(f"Invalid page number format: {p}")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -141,11 +167,6 @@ class Extractor:
                                     if any(row_dict.values()):
                                         yield row_dict
 
-                            # Since we must keep pdfplumber context open while iterating,
-                            # and pdfplumber pages/tables are held in memory anyway,
-                            # yielding generators is safe but the entire PDF is open.
-                            # A better approach: evaluate the generator immediately if we're yielding it,
-                            # but here we're conforming to `Iterator[Iterator[Dict]]`
                             yield table_generator(table)
 
             except (OSError,) + PDF_ERRORS as e:
@@ -225,7 +246,7 @@ class Extractor:
         except (ValueError, TypeError) as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
-    def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
             return
 

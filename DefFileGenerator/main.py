@@ -6,7 +6,7 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -18,7 +18,7 @@ def setup_logging(verbose=False):
 
 def _perform_extraction(args):
     mapping = {}
-    if args.mapping:
+    if getattr(args, 'mapping', None):
         try:
             with open(args.mapping, 'r') as f:
                 mapping = json.load(f)
@@ -27,7 +27,7 @@ def _perform_extraction(args):
             sys.exit(1)
 
     extractor = Extractor(mapping)
-    if not os.path.exists(args.input_file):
+    if not args.input_file or not os.path.exists(args.input_file):
         logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
@@ -39,12 +39,13 @@ def _perform_extraction(args):
         logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(args.input_file, args.sheet)
+        raw_data = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
     elif ext == '.pdf':
         pages = None
-        if getattr(args, 'pages', None):
+        pages_arg = getattr(args, 'pages', None)
+        if pages_arg:
             try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
@@ -60,8 +61,9 @@ def _perform_extraction(args):
     return list(extractor.map_and_clean(raw_data, address_offset))
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    raw_mapped = _perform_extraction(args)
+    first, mapped_data = peek_generator(raw_mapped)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -81,6 +83,11 @@ def extract_command(args):
         f.close()
         logging.info(f"Extraction complete. Saved to {args.output}")
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def generate_command(args):
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -90,13 +97,20 @@ def generate_command(args):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=args.address_offset
+        address_offset=args.address_offset,
+        template=getattr(args, 'template', False)
     )
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    if getattr(args, 'template', False):
+        config = GeneratorConfig(output=args.output, template=True)
+        run_generator(config)
+        return
+
+    raw_mapped = _perform_extraction(args)
+    first, mapped_data = peek_generator(raw_mapped)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -126,9 +140,13 @@ def _run_cli():
     parser_extract.add_argument('--pages', help='PDF pages')
     parser_extract.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
+
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
     parser_generate.add_argument('--manufacturer', required=True)
     parser_generate.add_argument('--model', required=True)
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
@@ -136,10 +154,11 @@ def _run_cli():
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
+    parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer', required=True)
     parser_run.add_argument('--model', required=True)
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
@@ -150,6 +169,7 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--template', action='store_true')
 
     args = parser.parse_args()
     if not args.command:
@@ -177,6 +197,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:
