@@ -8,7 +8,21 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Peeks at the first element of an iterable without consuming it."""
+    iterator = iter(iterable)
+    try:
+        first = next(iterator)
+    except StopIteration:
+        return None, iter([])
+
+    def generator():
+        yield first
+        yield from iterator
+
+    return first, generator()
 
 try:
     import openpyxl
@@ -116,7 +130,7 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return
@@ -124,7 +138,22 @@ class Extractor:
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    num_pages = len(pdf.pages)
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        target_indices = pages if isinstance(pages, list) else [pages]
+                        target_pages = []
+                        for i in target_indices:
+                            try:
+                                idx = int(i) - 1
+                                if 0 <= idx < num_pages:
+                                    target_pages.append(pdf.pages[idx])
+                                else:
+                                    logging.warning(f"Page {i} out of range (1-{num_pages}). Skipping.")
+                            except (ValueError, TypeError):
+                                logging.warning(f"Invalid page reference '{i}'. Skipping.")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -225,8 +254,8 @@ class Extractor:
         except (ValueError, TypeError) as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
-    def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+        if tables is None:
             return
 
         for table in tables:

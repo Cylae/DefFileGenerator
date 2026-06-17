@@ -276,6 +276,74 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
+    def validate_csv(self, file_path: str) -> bool:
+        """Validates an existing Webdyn definition file for common errors."""
+        if not os.path.exists(file_path):
+            logging.error(f"File not found: {file_path}")
+            return False
+
+        valid = True
+        seen_tags = set()
+        address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
+        warned_lines = set()
+
+        try:
+            with open(file_path, mode='rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(file_path, mode='r', encoding=encoding) as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if header is None:
+                    logging.error(f"File {file_path} is empty.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has fewer than 11 columns. Skipping.")
+                        continue
+
+                    info1 = row[1].strip()
+                    address_raw = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Duplicate Tag Check (Fatal)
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' detected.")
+                            valid = False
+                        seen_tags.add(tag)
+
+                    # Address Validation
+                    parts = address_raw.split('_')
+                    norm_parts = [Generator.normalize_address_val(p) for p in parts]
+                    address = '_'.join(norm_parts)
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'.")
+                        valid = False
+                    else:
+                        # Range Check (0-65535)
+                        try:
+                            addr_val = int(address.split('_')[0])
+                            if not (0 <= addr_val <= 65535):
+                                logging.warning(f"Line {line_num}: Address {addr_val} is outside standard Modbus range (0-65535).")
+                        except (ValueError, IndexError):
+                            pass
+
+                        # Overlap Check
+                        self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
+
+        return valid
+
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
@@ -398,6 +466,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +486,13 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row.get('Info1')
+                if info1 in counts:
+                    counts[info1] += 1
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in counts.items() if v > 0])
+                logging.info(f"Definition file generated at {output} ({summary})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
