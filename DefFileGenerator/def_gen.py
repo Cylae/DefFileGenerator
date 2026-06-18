@@ -143,15 +143,89 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+        # Handle compound addresses by normalizing parts individually
+        parts = str(address).split('_')
+        norm_parts = [Generator.normalize_address_val(p) for p in parts]
+        norm_address = '_'.join(norm_parts)
+
+        # STR<n> is a valid synonym for STRING that should be accepted here too
+        is_string_type = (dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper))
+
+        match = None
+        if is_string_type:
+            match = RE_ADDR_STRING.match(norm_address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(norm_address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(norm_address)
+
+        if not match:
+            return False
+
+        # Range validation (0-65535) for the base address
+        try:
+            base_addr_str = match.group(1)
+            addr_val = int(base_addr_str, 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} out of standard Modbus range (0-65535)")
+                return False
+        except (ValueError, IndexError):
+            return False
+
+        return True
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found for validation: {filepath}")
+            return False
+
+        status = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (expected 11).")
+                        continue
+
+                    # 1:Index, 2:Info1, 3:Info2, 4:Info3, 5:Info4, 6:Name, 7:Tag, 8:CoefA, 9:CoefB, 10:Unit, 11:Action
+                    info1 = row[1]
+                    address = row[2]
+                    dtype = row[3]
+                    name = row[5]
+                    tag = row[6]
+
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'.")
+                        status = False
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' detected (Fatal). Previous at line {seen_tags[tag]}.")
+                            status = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading file for validation: {e}")
+            return False
+
+        return status
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +452,10 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on Info1 (Register Type)
+                # 2: Discrete Input, 4: Input Register -> Read Only (4)
+                # 1: Coil, 3: Holding Register -> Read/Write (1)
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -386,7 +463,7 @@ class Generator:
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = '1'
+                norm_action = '4' if info1 in ['2', '4'] else '1'
 
             yield {
                 'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
@@ -400,7 +477,7 @@ class Generator:
         """Centralized method to write the WebdynSunPM CSV format."""
         try:
             if isinstance(output, str):
-                outfile = open(output, 'w', newline='', encoding='utf-8')
+                outfile = open(output, 'w', newline='', encoding='utf-8-sig')
             elif output is None:
                 outfile = sys.stdout
             else:
@@ -410,11 +487,21 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                info1 = row['Info1']
+                if info1 in counts:
+                    counts[info1] += 1
+
+            summary = ", ".join([f"{type_labels[k]}: {counts[k]}" for k in sorted(counts.keys()) if counts[k] > 0])
+            if summary:
+                logging.info(f"Registers summary: {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
