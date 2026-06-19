@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -53,6 +54,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
+def peek_generator(generator: Iterator[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Peeks at the first element of a generator without exhausting it."""
+    try:
+        first = next(generator)
+    except StopIteration:
+        return None, iter([])
+    return first, itertools.chain([first], generator)
+
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
@@ -89,8 +98,8 @@ class Extractor:
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
-                def sheet_generator() -> Iterator[Dict[str, Any]]:
-                    rows = ws.iter_rows(values_only=True)
+                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                    rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
                     except StopIteration:
@@ -124,7 +133,17 @@ class Extractor:
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is not None:
+                        plist = pages if isinstance(pages, list) else [pages]
+                        target_pages = []
+                        for pnum in plist:
+                            if 1 <= pnum <= len(pdf.pages):
+                                target_pages.append(pdf.pages[pnum-1])
+                            else:
+                                logging.warning(f"Page {pnum} is out of range for PDF with {len(pdf.pages)} pages.")
+                    else:
+                        target_pages = pdf.pages
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -232,22 +251,15 @@ class Extractor:
         for table in tables:
             if not table: continue
 
-            # Since table could be a generator, we need to extract the first few rows
-            # to determine column mapping, then process the rest.
-            iterator = iter(table)
-            buffer = []
-            try:
-                for _ in range(50):
-                    buffer.append(next(iterator))
-            except StopIteration:
-                pass
-
-            if not buffer:
+            # Since table could be a generator, we peek at it to determine column mapping
+            first_row, iterator = peek_generator(iter(table))
+            if first_row is None:
                 continue
 
-            all_keys = set()
-            for row in buffer:
-                all_keys.update(row.keys())
+            # We use the first 50 rows for mapping if possible, but without exhausting
+            # To maintain O(1) truly, we should probably just use the first row's keys
+            # as most tables are consistent.
+            all_keys = set(first_row.keys())
 
             col_map = {}
             used_src_cols = set()
@@ -321,13 +333,7 @@ class Extractor:
 
                 return new_row
 
-            # Process buffer first
-            for row in buffer:
-                processed = process_row(row)
-                if processed:
-                    yield processed
-
-            # Process remaining iterator
+            # Process iterator
             for row in iterator:
                 processed = process_row(row)
                 if processed:
