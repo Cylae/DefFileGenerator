@@ -6,7 +6,8 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from typing import Dict, Any, Iterator, Tuple, Union, Optional
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -27,7 +28,7 @@ def _perform_extraction(args):
             sys.exit(1)
 
     extractor = Extractor(mapping)
-    if not os.path.exists(args.input_file):
+    if not args.input_file or not os.path.exists(args.input_file):
         logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
@@ -57,11 +58,18 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    first, raw_peeker = peek_generator(raw_data)
+    if first is None:
+        logging.error("No data extracted.")
+        sys.exit(1)
+
+    # Note: map_and_clean returns a generator.
+    return extractor.map_and_clean(raw_peeker, address_offset)
 
 def extract_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    mapped_gen = _perform_extraction(args)
+    first, peeker = peek_generator(mapped_gen)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -75,42 +83,54 @@ def extract_command(args):
 
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
-    writer.writerows(mapped_data)
+    writer.writerows(peeker)
 
     if isinstance(output, str):
         f.close()
         logging.info(f"Extraction complete. Saved to {args.output}")
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def generate_command(args):
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=args.manufacturer or 'Manufacturer',
+        model=args.model or 'Model',
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
+        template=args.template,
         address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
-    mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    if args.template:
+        generate_command(args)
+        return
+
+    mapped_gen = _perform_extraction(args)
+    first, peeker = peek_generator(mapped_gen)
+    if first is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=args.manufacturer or 'Manufacturer',
+        model=args.model or 'Model',
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
+        template=args.template,
         address_offset=0 # Already applied during extraction in run mode
     )
-    run_generator(config, input_data=mapped_data)
+    run_generator(config, input_data=peeker)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -128,10 +148,11 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
@@ -139,10 +160,11 @@ def _run_cli():
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=True)
-    parser_run.add_argument('--model', required=True)
+    parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
+    parser_run.add_argument('--manufacturer')
+    parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
+    parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
     parser_run.add_argument('--pages', help='PDF pages')
@@ -150,6 +172,10 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
     if not args.command:
@@ -160,7 +186,7 @@ def _run_cli():
 
     # Validate --pages
     pages_arg = getattr(args, 'pages', None)
-    if pages_arg:
+    if pages_arg and getattr(args, 'input_file', None):
         ext = os.path.splitext(args.input_file)[1].lower()
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
@@ -177,6 +203,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:
