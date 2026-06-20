@@ -104,6 +104,54 @@ class Generator:
 
         return False
 
+    def validate_csv(self, file_path: str) -> bool:
+        """Validates an existing Webdyn definition CSV file."""
+        if not os.path.exists(file_path):
+            logging.error(f"Validation target not found: {file_path}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(file_path, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                # Skip header
+                try:
+                    next(reader)
+                except StopIteration:
+                    return True
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has fewer than 11 columns. Skipping.")
+                        continue
+
+                    # row format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Fatal - Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})")
+                            valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    if not self.validate_address(info2, info3):
+                        valid = False
+
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during file validation: {e}")
+            return False
+
+        return valid
+
     @staticmethod
     def normalize_address_val(addr_part):
         """Converts a single address part (possibly hex) to decimal string."""
@@ -143,15 +191,30 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and Modbus range based on type."""
         dtype_upper = dtype.upper()
+        match = None
 
-        if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+        if dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper):
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Modbus address range check (0-65535)
+        try:
+            addr_val = int(Generator.normalize_address_val(match.group(1)), 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,10 +438,13 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on Info1
+                # 4: Input, 2: Discrete -> 4 (Read Only)
+                # 3: Holding, 1: Coils -> 1 (Read/Write)
+                norm_action = '4' if info1 in ['4', '2'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +464,9 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -411,10 +480,15 @@ class Generator:
             writer.writerow(header_row)
 
             for index, row in enumerate(processed_rows, start=1):
+                type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+
+            summary = ", ".join([f"{count} {type_labels.get(t, t)}" for t, count in type_counts.items() if count > 0])
+            if summary:
+                logging.info(f"Generated {summary} registers.")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")

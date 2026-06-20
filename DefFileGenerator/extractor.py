@@ -7,8 +7,9 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -53,6 +54,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
+def peek_generator(gen: Iterator[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Peeks at the first element of a generator without exhausting it."""
+    try:
+        first = next(gen)
+    except StopIteration:
+        return None, iter([])
+    return first, itertools.chain([first], gen)
+
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
@@ -89,8 +98,8 @@ class Extractor:
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
-                def sheet_generator() -> Iterator[Dict[str, Any]]:
-                    rows = ws.iter_rows(values_only=True)
+                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                    rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
                     except StopIteration:
@@ -103,9 +112,7 @@ class Extractor:
                         if any(cell is not None and str(cell).strip() for cell in row):
                             yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                # We yield a generator for each sheet. We check if it has rows by creating it.
-                # To see if it's empty, we would need to peek, but let's yield it.
-                # If there are no data rows, it simply yields nothing when iterated.
+                # We yield a generator for each sheet.
                 yield sheet_generator()
 
         except (OSError, zipfile.BadZipFile) as e:
@@ -124,7 +131,17 @@ class Extractor:
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    if pages is None:
+                        target_pages = pdf.pages
+                    else:
+                        target_pages = []
+                        page_list = pages if isinstance(pages, list) else [pages]
+                        for p_num in page_list:
+                            if 1 <= p_num <= len(pdf.pages):
+                                target_pages.append(pdf.pages[p_num-1])
+                            else:
+                                logging.warning(f"Page {p_num} is out of range for PDF {filepath} (1-{len(pdf.pages)}).")
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -225,11 +242,12 @@ class Extractor:
         except (ValueError, TypeError) as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
-    def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+        if tables is None:
             return
 
         for table in tables:
+            if table is None: continue
             if not table: continue
 
             # Since table could be a generator, we need to extract the first few rows
