@@ -6,7 +6,7 @@ import logging
 import re
 import json
 import csv
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
@@ -34,9 +34,10 @@ def _run_cli():
     ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
-    if args.mapping:
+    mapping_arg = getattr(args, 'mapping', None)
+    if mapping_arg:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(mapping_arg, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -45,26 +46,29 @@ def _run_cli():
     extractor = Extractor(mapping)
 
     pages = None
-    if args.pages:
+    pages_arg = getattr(args, 'pages', None)
+    if pages_arg:
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
         else:
             try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    first_raw, raw_peeking = peek_generator(raw)
+    if first_raw is None: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped_gen = extractor.map_and_clean(raw_peeking, args.address_offset)
+    first_mapped, mapped = peek_generator(mapped_gen)
+    if first_mapped is None: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
