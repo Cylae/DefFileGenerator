@@ -6,14 +6,14 @@ import logging
 import re
 import json
 import csv
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer', required=True)
-    parser.add_argument('--model', required=True)
+    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('--manufacturer')
+    parser.add_argument('--model')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -22,16 +22,21 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
+    parser.add_argument('--template', action='store_true', help='Generate template')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
-    if not os.path.exists(args.input_file):
-        logging.error(f"Input file not found: {args.input_file}")
-        sys.exit(1)
+    if not args.template:
+        if not args.input_file:
+            logging.error("input_file is required unless --template is used.")
+            sys.exit(1)
+        if not os.path.exists(args.input_file):
+            logging.error(f"Input file not found: {args.input_file}")
+            sys.exit(1)
 
-    ext = os.path.splitext(args.input_file)[1].lower()
+    ext = os.path.splitext(args.input_file)[1].lower() if args.input_file else ""
 
     mapping = {}
     if args.mapping:
@@ -55,28 +60,35 @@ def _run_cli():
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
+    if args.template:
+        mapped = iter([])
+    else:
+        if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+        elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
+        elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
+        elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
+        else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+        if not raw: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+        mapped_gen = extractor.map_and_clean(raw, args.address_offset)
+        first, mapped = peek_generator(mapped_gen)
+        if first is None: logging.error("No registers extracted."); sys.exit(1)
 
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
+    manufacturer = args.manufacturer if args.manufacturer else "Manufacturer"
+    model = args.model if args.model else "Model"
+    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=manufacturer,
+        model=model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0 # Already applied during extraction
+        address_offset=0, # Already applied during extraction
+        template=args.template
     )
     run_generator(config, input_data=mapped)
 
