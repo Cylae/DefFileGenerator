@@ -7,7 +7,7 @@ import csv
 import json
 import tempfile
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, generate_template
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -57,11 +57,14 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return extractor.map_and_clean(raw_data, address_offset)
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    from DefFileGenerator.extractor import peek_generator
+    first_reg, mapped_data = peek_generator(mapped_data)
+
+    if first_reg is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -82,6 +85,9 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
+    if getattr(args, 'template', False):
+        generate_template(args.output)
+        return
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -95,8 +101,15 @@ def generate_command(args):
     run_generator(config)
 
 def run_command(args):
+    if getattr(args, 'template', False):
+        generate_template(args.output)
+        return
+
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    from DefFileGenerator.extractor import peek_generator
+    first_reg, mapped_data = peek_generator(mapped_data)
+
+    if first_reg is None:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -128,20 +141,21 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('--manufacturer', required=False, default='Manufacturer')
+    parser_generate.add_argument('--model', required=False, default='Model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=True)
-    parser_run.add_argument('--model', required=True)
+    parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
+    parser_run.add_argument('--manufacturer', required=False, default='Manufacturer')
+    parser_run.add_argument('--model', required=False, default='Model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -150,6 +164,11 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
     if not args.command:
@@ -177,6 +196,10 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        generator = Generator()
+        if not generator.validate_csv(args.input_file):
+            sys.exit(1)
 
 def main():
     try:

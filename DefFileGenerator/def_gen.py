@@ -143,15 +143,30 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and Modbus range."""
         dtype_upper = dtype.upper()
 
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Modbus range validation (0-65535)
+        try:
+            base_addr_str = Generator.normalize_address_val(match.group(1))
+            base_addr = int(base_addr_str)
+            if base_addr < 0 or base_addr > 65535:
+                logging.warning(f"Address {base_addr} is out of standard Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            return False
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -318,6 +333,61 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation Error: File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, mode='rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, mode='r', encoding=encoding) as f:
+                reader = csv.reader(f, delimiter=';')
+                try:
+                    header = next(reader)
+                except StopIteration:
+                    logging.error(f"Validation Error: {filepath} is empty.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (expected 11). Skipping.")
+                        continue
+
+                    # Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    if not tag:
+                        logging.error(f"Line {line_num}: Missing Tag.")
+                        valid = False
+                    elif tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Previously at line {seen_tags[tag]}.")
+                        valid = False
+                    else:
+                        seen_tags[tag] = line_num
+
+                    if not self.validate_address(info2, info3):
+                        logging.error(f"Line {line_num}: Invalid Address '{info2}' for Type '{info3}'.")
+                        valid = False
+                    else:
+                        self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Validation Error processing {filepath}: {e}")
+            return False
+
+        return valid
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""

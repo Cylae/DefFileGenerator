@@ -12,8 +12,11 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 ## Installation
 
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Install core dependencies
+pip install openpyxl pdfplumber defusedxml lxml
+
+# Optional: Install for stress testing and PDF generation in tests
+pip install pandas reportlab
 ```
 
 ## Basic Usage
@@ -47,19 +50,19 @@ python doc_to_webdyn.py registers.csv \
 ### Step 1: The tool looks for register information in your file
 
 It searches for columns with names like:
-- **Address**: register, address, addr, offset
-- **Name**: name, description, parameter
-- **Type**: type, data type, format
+- **Address**: register, address, addr, offset, reg
+- **Name**: name, description, parameter, variable, signal
+- **Type**: type, data type, format, datatype
 - **Unit**: unit, units
-- **Scale**: scale, factor, multiplier
-- etc.
+- **Scale**: scale, factor, multiplier, ratio
+- **Action**: action, access
 
 ### Step 2: It converts the data
 
-- Normalizes addresses (handles hex like 0x9C40 or decimal like 40001)
+- Normalizes addresses (handles hex like 0x9C40, decimal like 40001, and suffixes like h)
 - Converts data types (uint16 → U16, int32 → I32, float → F32, etc.)
 - Generates unique tags from register names
-- Calculates scaling coefficients
+- Calculates scaling coefficients (CoefA, CoefB)
 
 ### Step 3: Creates WebdynSunPM definition file
 
@@ -149,6 +152,10 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages LIST` - PDF pages (comma-separated integers, e.g., "1,2,5")
+- `--mapping FILE` - JSON mapping file for custom columns
+- `--address-offset INT` - Offset to add to all addresses (default: 0)
+- `--forced-write STR` - Forced write configuration
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
@@ -217,27 +224,5 @@ After running the tool, you get a WebdynSunPM definition file that includes:
 
 **This file is ready to use with WebdynSunPM!**
 
-## Tips for Best Results
-
-1. **Start with clean documentation** - Well-formatted source files work best
-2. **Test first** - Try with sample files to understand the output
-3. **Use verbose mode** - Add `-v` to see what's being detected
-4. **Review output** - Always check the generated file
-5. **Keep originals** - Save your source documentation for reference
-
 ## Need Help?
-
-Run with verbose mode to see detailed processing:
-```bash
-python doc_to_webdyn.py yourfile.pdf --manufacturer "X" --model "Y" -v
-```
-
-Check the full README (DOC_PARSER_README.md) for:
-- Complete column name recognition list
-- Full data type mapping table
-- Advanced usage examples
-- Known limitations
-
----
-
-**You're ready to go! Just point the tool at your manufacturer documentation and it will do the rest.**
+Check the full README (`README.md`) for advanced usage and `DOC_PARSER_README.md` for technical details.

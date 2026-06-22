@@ -1,0 +1,3 @@
+modbusRTU;Inverter;Test;Test;;;;;;;
+1;3;40001;U16;;Var1;tag1;1.0;0.0;W;4
+2;3;40001;U16;;Var2;tag2;1.0;0.0;W;4

@@ -61,10 +61,13 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    from DefFileGenerator.extractor import peek_generator
+    first_table, raw = peek_generator(raw)
+    if first_table is None: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    first_reg, mapped = peek_generator(mapped)
+    if first_reg is None: logging.error("No registers extracted."); sys.exit(1)
 
     output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
 
