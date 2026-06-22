@@ -27,16 +27,18 @@ def _run_cli():
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
-    if not os.path.exists(args.input_file):
-        logging.error(f"Input file not found: {args.input_file}")
+    input_file = getattr(args, 'input_file', None)
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
-    ext = os.path.splitext(args.input_file)[1].lower()
+    ext = os.path.splitext(input_file)[1].lower()
 
+    mapping_file = getattr(args, 'mapping', None)
     mapping = {}
-    if args.mapping:
+    if mapping_file:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(mapping_file, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -44,21 +46,23 @@ def _run_cli():
 
     extractor = Extractor(mapping)
 
+    pages_arg = getattr(args, 'pages', None)
+    sheet_arg = getattr(args, 'sheet', None)
     pages = None
-    if args.pages:
+    if pages_arg:
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
         else:
             try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
+    elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
+    elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
     if not raw: logging.error("No data extracted."); sys.exit(1)
@@ -66,13 +70,15 @@ def _run_cli():
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
     if not mapped: logging.error("No registers extracted."); sys.exit(1)
 
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
+    mfg = getattr(args, 'manufacturer', 'Manufacturer')
+    model = getattr(args, 'model', 'Model')
+    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', mfg).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
 
     config = GeneratorConfig(
-        input_file=args.input_file,
+        input_file=input_file,
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=mfg,
+        model=model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
