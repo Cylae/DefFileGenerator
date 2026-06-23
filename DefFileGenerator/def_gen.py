@@ -146,7 +146,17 @@ class Generator:
         """Validates the address format based on type."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper == 'STRING':
+        # Modbus address range validation (0-65535)
+        try:
+            base_addr_str = address.split('_')[0]
+            val = int(Generator.normalize_address_val(base_addr_str))
+            if not (0 <= val <= 65535):
+                logging.warning(f"Address {val} is outside standard Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            pass
+
+        if dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper):
             return RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
             return RE_ADDR_BITS.match(address) is not None
@@ -276,6 +286,59 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row):
+                            logging.warning(f"Line {line_num}: Invalid row format (expected at least 11 columns).")
+                        continue
+
+                    # Header/Meta mapping from process_rows:
+                    # 0:Index, 1:Info1, 2:Info2, 3:Info3, 4:Info4, 5:Name, 6:Tag, 7:CoefA, 8:CoefB, 9:Unit, 10:Action
+                    info1 = row[1]
+                    address = row[2]
+                    dtype = row[3]
+                    name = row[5]
+                    tag = row[6]
+
+                    if not tag:
+                        logging.error(f"Line {line_num}: Missing Tag.")
+                        valid = False
+                    elif tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Previously at line {seen_tags[tag]}.")
+                        valid = False
+                    else:
+                        seen_tags[tag] = line_num
+
+                    if not self.validate_address(address, dtype):
+                        logging.error(f"Line {line_num}: Invalid Address '{address}' for type '{dtype}'.")
+                        valid = False
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            return valid
+        except Exception as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         """Checks for address overlaps using O(N) dictionary lookup."""
         try:
@@ -378,7 +441,11 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on register type
+                if info1 in ['2', '4']: # Discrete Input or Input Register
+                    norm_action = '4' # Read Only
+                else: # Coils or Holding Registers
+                    norm_action = '1' # Read/Write
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +477,20 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in type_counts:
+                    type_counts[row['Info1']] += 1
+
+            summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
+            if summary:
+                logging.info(f"Register Summary -> {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
