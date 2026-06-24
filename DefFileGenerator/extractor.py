@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -43,6 +44,20 @@ try:
     XML_PARSE_ERRORS = (ET_STD.ParseError,)
 except ImportError:
     XML_PARSE_ERRORS = ()
+
+def peek_generator(generator: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable is empty without exhausting it.
+    Returns (is_not_empty, original_iterable_or_reconstructed_iterator).
+    """
+    if generator is None:
+        return False, iter([])
+    try:
+        iterator = iter(generator)
+        first = next(iterator)
+        return True, itertools.chain([first], iterator)
+    except StopIteration:
+        return False, iter([])
 
 try:
     from DefFileGenerator.def_gen import Generator

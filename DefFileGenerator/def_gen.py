@@ -143,15 +143,28 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and Modbus range (0-65535)."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+        if dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper):
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation for the base address part
+        try:
+            addr_val = int(Generator.normalize_address_val(match.group(1)), 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is out of standard Modbus range (0-65535).")
+                return False
+            return True
+        except (ValueError, IndexError):
+            return False
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,10 +388,12 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization with intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on RegisterType: Input (4) and Discrete (2) default to '4' (RO)
+                # Holding (3) and Coils (1) default to '1' (RW)
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +413,8 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,14 +432,74 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
+                logging.info(f"Definition file generated at {output} ({summary})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                try:
+                    header = next(reader)
+                except StopIteration:
+                    logging.error("Empty definition file.")
+                    return False
+
+                if len(header) < 4:
+                    logging.error("Invalid definition file header.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row:
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row too short. Skipping.")
+                        continue
+
+                    # row format: Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    # Validate Tag
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal).")
+                        valid = False
+                    seen_tags[tag] = line_num
+
+                    # Validate Address and Type
+                    if not self.validate_type(info3):
+                        logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
+                        valid = False
+
+                    if not self.validate_address(info2, info3):
+                        logging.warning(f"Line {line_num}: Invalid Address '{info2}' for Type '{info3}'.")
+                        valid = False
+
+                    # Check Overlap
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading definition file: {e}")
+            return False
+
+        return valid
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']

@@ -6,7 +6,7 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -61,7 +61,8 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    ok, mapped_data = peek_generator(mapped_data)
+    if not ok:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -96,7 +97,8 @@ def generate_command(args):
 
 def run_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
+    ok, mapped_data = peek_generator(mapped_data)
+    if not ok:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -111,6 +113,11 @@ def run_command(args):
         address_offset=0 # Already applied during extraction in run mode
     )
     run_generator(config, input_data=mapped_data)
+
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -136,6 +143,10 @@ def _run_cli():
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -177,6 +188,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:
