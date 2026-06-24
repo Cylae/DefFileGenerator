@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -52,6 +53,15 @@ except ImportError:
         from def_gen import Generator
     except ImportError:
         Generator = None
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Checks if an iterable is empty by peeking at the first element."""
+    iterator = iter(iterable)
+    try:
+        first = next(iterator)
+    except StopIteration:
+        return None, iter([])
+    return first, itertools.chain([first], iterator)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {

@@ -6,14 +6,15 @@ import logging
 import re
 import json
 import csv
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer', required=True)
-    parser.add_argument('--model', required=True)
+    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('--manufacturer', help='Manufacturer name')
+    parser.add_argument('--model', help='Model name')
+    parser.add_argument('--template', action='store_true', help='Generate a template definition')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -27,11 +28,34 @@ def _run_cli():
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
+    if args.template:
+        config = GeneratorConfig(
+            output=args.output,
+            manufacturer=args.manufacturer,
+            model=args.model,
+            protocol=args.protocol,
+            category=args.category,
+            forced_write=args.forced_write,
+            template=True
+        )
+        run_generator(config)
+        return
+
+    if not args.input_file:
+        logging.error("input_file is required unless --template is used.")
+        sys.exit(1)
+
     if not os.path.exists(args.input_file):
         logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
     ext = os.path.splitext(args.input_file)[1].lower()
+
+    # Warn about mismatched options
+    if args.pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     mapping = {}
     if args.mapping:
@@ -63,16 +87,22 @@ def _run_cli():
 
     if not raw: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
 
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
+    first, mapped = peek_generator(mapped)
+    if first is None:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
+    m_name = args.manufacturer or "Manufacturer"
+    m_model = args.model or "Model"
+    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=m_name,
+        model=m_model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
