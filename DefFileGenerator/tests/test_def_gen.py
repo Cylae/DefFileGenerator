@@ -182,5 +182,24 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_generate_template_modes(self):
+        import os
+        from DefFileGenerator.def_gen import generate_template
+        # Test input mode
+        out_input = "template_input.csv"
+        generate_template(out_input, mode='input')
+        with open(out_input, 'r') as f:
+            content = f.read()
+            self.assertIn("Name,Tag,RegisterType", content)
+        os.remove(out_input)
+
+        # Test definition mode
+        out_def = "template_def.csv"
+        generate_template(out_def, mode='definition')
+        with open(out_def, 'r') as f:
+            content = f.read()
+            self.assertIn("modbusRTU;Inverter", content)
+        os.remove(out_def)
+
 if __name__ == '__main__':
     unittest.main()
