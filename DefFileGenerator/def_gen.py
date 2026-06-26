@@ -31,6 +31,7 @@ class GeneratorConfig:
     category: str = 'Inverter'
     forced_write: str = ''
     template: bool = False
+    template_mode: str = 'input'  # 'input' or 'definition'
     address_offset: int = 0
 
 class Generator:
@@ -143,15 +144,72 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and range."""
         dtype_upper = dtype.upper()
+        is_string = (dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper))
 
-        if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+        if is_string:
+            match = RE_ADDR_STRING.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        try:
+            # Extract base address and validate range 0-65535
+            base_addr_str = match.group(1)
+            norm_addr = Generator.normalize_address_val(base_addr_str)
+            addr_val = int(norm_addr)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is out of standard Modbus range (0-65535)")
+                return False
+            return True
+        except (ValueError, IndexError):
+            return False
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Performs deep validation of a generated definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File not found {filepath}")
+            return False
+
+        success = True
+        try:
+            with open(filepath, mode='r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                # Header check
+                try:
+                    header = next(reader)
+                    if len(header) < 4:
+                        logging.error("Invalid definition file: Header too short")
+                        return False
+                except StopIteration:
+                    logging.error("Invalid definition file: Empty file")
+                    return False
+
+                # Data rows check
+                for line_num, row in enumerate(reader, start=2):
+                    if not row: continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row too short (expected 11 columns, got {len(row)})")
+                        continue
+
+                    # Validate address and type
+                    info1 = row[1]
+                    address = row[2]
+                    dtype = row[3]
+
+                    if not self.validate_address(address, dtype):
+                        logging.error(f"Line {line_num}: Invalid address '{address}' for type '{dtype}'")
+                        success = False
+
+                return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during CSV validation: {e}")
+            return False
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +436,10 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on RegisterType (info1)
+                # Input (4) and Discrete (2) -> RO (4)
+                # Holding (3) and Coils (1) -> RW (1)
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,11 +471,19 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
+                info1 = row['Info1']
+                counts[info1] = counts.get(info1, 0) + 1
                 writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                    str(index), info1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+
+            type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+            summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
+            if summary:
+                logging.info(f"Register summary: {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
@@ -424,12 +493,22 @@ class Generator:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
 
-def generate_template(output_file: Optional[str]) -> None:
-    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    rows = [
-        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
-        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
-    ]
+def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
+    if mode == 'definition':
+        # Webdyn definition format
+        headers = ["Index", "Info1", "Info2", "Info3", "Info4", "Name", "Tag", "CoefA", "CoefB", "Unit", "Action"]
+        rows = [
+            ["1", "3", "30001", "U16", "", "Example Holding", "ex_holding", "1.000000", "0.000000", "V", "4"],
+            ["2", "4", "40001", "U16", "", "Example Input", "ex_input", "0.100000", "0.000000", "A", "4"]
+        ]
+    else:
+        # Simplified input format
+        headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+        rows = [
+            ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
+            ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+        ]
+
     try:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
@@ -445,7 +524,7 @@ def generate_template(output_file: Optional[str]) -> None:
 
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
     if config.template:
-        generate_template(config.output)
+        generate_template(config.output, config.template_mode)
         return
 
     if input_data is None:
