@@ -31,6 +31,7 @@ class GeneratorConfig:
     category: str = 'Inverter'
     forced_write: str = ''
     template: bool = False
+    template_mode: str = 'input'  # 'input' or 'definition'
     address_offset: int = 0
 
 class Generator:
@@ -143,15 +144,32 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and Modbus range (0-65535)."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+        # Check format first
+        if dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper):
+            if not RE_ADDR_STRING.match(address):
+                return False
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            if not RE_ADDR_BITS.match(address):
+                return False
         else:
-            return RE_ADDR_INT.match(address) is not None
+            if not RE_ADDR_INT.match(address):
+                return False
+
+        # Range validation (0-65535)
+        try:
+            # For compound addresses, only validate the base address part
+            base_addr_str = address.split('_')[0]
+            norm_addr = Generator.normalize_address_val(base_addr_str)
+            addr_val = int(norm_addr, 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Address {addr_val} is out of standard Modbus range (0-65535).")
+                return False
+            return True
+        except (ValueError, IndexError):
+            return False
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -375,10 +393,15 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on register type: Input (4) and Discrete (2) default to Read-Only (4)
+                # Holding (3) and Coils (1) default to Read/Write (1)
+                if info1 in ['4', '2']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +421,8 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+        counts = {'1': 0, '2': 0, '3': 0, '4': 0}
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,6 +440,11 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
+
+            summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
+            if summary:
+                logging.info(f"Register Summary -> {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file generated at {output}")
@@ -424,28 +454,74 @@ class Generator:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
 
-def generate_template(output_file: Optional[str]) -> None:
-    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    rows = [
-        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
-        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
-    ]
+    @staticmethod
+    def validate_csv(filepath: str) -> bool:
+        """Validates a Webdyn definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File {filepath} not found.")
+            return False
+
+        success = True
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
+                if len(header) < 4:
+                    logging.error("Validation failed: Invalid header format (insufficient columns).")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or all(not cell.strip() for cell in row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (expected 11, got {len(row)}). skipping.")
+                        continue
+
+                    # Column mapping: 1:Info1 (Type), 2:Info2 (Address), 3:Info3 (DataType)
+                    info1, address, info3 = row[1], row[2], row[3]
+                    if not Generator.validate_address(address, info3):
+                        logging.warning(f"Line {line_num}: Invalid address '{address}' for type '{info3}'.")
+                        success = False
+
+            return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
+def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
+    if mode == 'definition':
+        # Sample Webdyn Definition CSV (semicolon delimited)
+        header = ['modbusRTU', 'Inverter', 'Manufacturer', 'Model', '', '', '', '', '', '', '']
+        rows = [
+            ['1', '3', '30001', 'U16', '', 'Example Variable', 'example_tag', '1.000000', '0.000000', 'V', '4'],
+            ['2', '3', '30030_20', 'STRING', '', 'Convenience String', 'str_tag', '1.000000', '0.000000', '', '4']
+        ]
+        delimiter = ';'
+    else:
+        # Sample Simplified Input CSV (comma delimited)
+        header = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+        rows = [
+            ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
+            ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+        ]
+        delimiter = ','
+
     try:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
-                writer.writerow(headers)
+                writer = csv.writer(f, delimiter=delimiter)
+                writer.writerow(header)
                 writer.writerows(rows)
         else:
-            writer = csv.writer(sys.stdout)
-            writer.writerow(headers)
+            writer = csv.writer(sys.stdout, delimiter=delimiter)
+            writer.writerow(header)
             writer.writerows(rows)
     except OSError as e:
         logging.error(f"Error generating template: {e}")
 
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
     if config.template:
-        generate_template(config.output)
+        generate_template(config.output, config.template_mode)
         return
 
     if input_data is None:
