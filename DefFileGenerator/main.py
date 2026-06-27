@@ -2,6 +2,11 @@
 import argparse
 import sys
 import os
+
+# Allow direct execution
+if __name__ == '__main__':
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import logging
 import csv
 import json
@@ -82,19 +87,41 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
+    template_mode = 'input'
+    if getattr(args, 'template', False):
+        # Determine template mode based on input_file argument if provided
+        if getattr(args, 'input_file', None) == 'definition':
+            template_mode = 'definition'
+
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=args.address_offset
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=getattr(args, 'address_offset', 0),
+        template=getattr(args, 'template', False),
+        template_mode=template_mode
     )
     run_generator(config)
 
 def run_command(args):
+    if getattr(args, 'template', False):
+        config = GeneratorConfig(
+            output=args.output,
+            manufacturer=args.manufacturer,
+            model=args.model,
+            protocol=args.protocol,
+            category=args.category,
+            forced_write=args.forced_write,
+            template=True,
+            template_mode='definition'
+        )
+        run_generator(config)
+        return
+
     mapped_data = _perform_extraction(args)
     if not mapped_data:
         logging.error("No registers extracted.")
@@ -112,6 +139,11 @@ def run_command(args):
     )
     run_generator(config, input_data=mapped_data)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -128,18 +160,19 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=True)
-    parser_generate.add_argument('--model', required=True)
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV or template type')
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
-    parser_run.add_argument('input_file', help='Source file (PDF/Excel/CSV/XML)')
+    parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer', required=True)
     parser_run.add_argument('--model', required=True)
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
@@ -150,6 +183,11 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--template', action='store_true')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
     if not args.command:
@@ -177,6 +215,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:
