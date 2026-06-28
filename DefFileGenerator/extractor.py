@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -52,6 +53,17 @@ except ImportError:
         from def_gen import Generator
     except ImportError:
         Generator = None
+
+def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+    """Checks if an iterable is empty without exhausting it. Returns (has_data, iterator)."""
+    if iterable is None:
+        return False, iter([])
+    try:
+        it = iter(iterable)
+        first = next(it)
+        return True, itertools.chain([first], it)
+    except StopIteration:
+        return False, iter([])
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -226,15 +238,19 @@ class Extractor:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
+        if tables is None:
             return
 
         for table in tables:
-            if not table: continue
+            if table is None:
+                continue
 
             # Since table could be a generator, we need to extract the first few rows
             # to determine column mapping, then process the rest.
-            iterator = iter(table)
+            has_data, iterator = peek_generator(table)
+            if not has_data:
+                continue
+
             buffer = []
             try:
                 for _ in range(50):

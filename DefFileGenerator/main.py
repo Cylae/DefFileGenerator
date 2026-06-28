@@ -6,7 +6,7 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -57,7 +57,11 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    has_data, raw_data_it = peek_generator(raw_data)
+    if not has_data:
+        return []
+
+    return list(extractor.map_and_clean(raw_data_it, address_offset))
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -112,6 +116,14 @@ def run_command(args):
     )
     run_generator(config, input_data=mapped_data)
 
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful: {args.input_file}")
+    else:
+        logging.error(f"Validation failed: {args.input_file}")
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -151,6 +163,10 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
+    parser_validate.add_argument('input_file', help='Definition file to validate')
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -177,6 +193,8 @@ def _run_cli():
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
 
 def main():
     try:
