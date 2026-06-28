@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -43,6 +44,15 @@ try:
     XML_PARSE_ERRORS = (ET_STD.ParseError,)
 except ImportError:
     XML_PARSE_ERRORS = ()
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
+    """ Checks if an iterable is empty without exhausting it. Returns (is_not_empty, restored_iterable). """
+    try:
+        it = iter(iterable)
+        first = next(it)
+        return True, itertools.chain([first], it)
+    except StopIteration:
+        return False, iter([])
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -81,7 +91,7 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
@@ -89,8 +99,8 @@ class Extractor:
             sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
-                def sheet_generator() -> Iterator[Dict[str, Any]]:
-                    rows = ws.iter_rows(values_only=True)
+                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                    rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
                     except StopIteration:
@@ -116,15 +126,23 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                    parsed_pages = pages
+                    if isinstance(pages, str):
+                        try:
+                            parsed_pages = [int(p.strip()) for p in pages.split(',')]
+                        except ValueError:
+                            logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                            return
+
+                    target_pages = pdf.pages if parsed_pages is None else [pdf.pages[i-1] for i in (parsed_pages if isinstance(parsed_pages, list) else [parsed_pages])]
                     for page in target_pages:
                         tables = page.extract_tables()
                         logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
@@ -196,7 +214,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
@@ -226,7 +244,7 @@ class Extractor:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
+        if tables is None:
             return
 
         for table in tables:

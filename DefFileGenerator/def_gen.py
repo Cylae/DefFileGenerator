@@ -143,15 +143,68 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535) based on type."""
         dtype_upper = dtype.upper()
 
+        # Support STR<n> as STRING for validation purposes
+        if RE_TYPE_STR_CONV.match(dtype_upper):
+            dtype_upper = 'STRING'
+
+        is_valid_format = False
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(address) is not None
         else:
-            return RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(address) is not None
+
+        if not is_valid_format:
+            return False
+
+        # Range validation (0-65535)
+        try:
+            addr_part = address.split('_')[0]
+            norm_val = Generator.normalize_address_val(addr_part)
+            val = int(norm_val, 0)
+            if val < 0 or val > 65535:
+                logging.warning(f"Address {val} is outside the standard Modbus range (0-65535).")
+                return False
+        except (ValueError, IndexError):
+            return False
+
+        return True
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates a WebdynSunPM definition file for correct formatting and range constraints."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error("Invalid WebdynSunPM header.")
+                    return False
+
+                success = True
+                for line_num, row in enumerate(reader, start=2):
+                    if not row: continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has fewer than 11 columns.")
+                        success = False
+                        continue
+
+                    addr = row[2]
+                    dtype = row[3]
+                    if not self.validate_address(addr, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address/type combination '{addr}' ['{dtype}'].")
+                        success = False
+                return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -378,7 +431,10 @@ class Generator:
             # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Intelligent defaulting based on Info1 (Register Type)
+                # Input (4) and Discrete (2) default to Read Only (4)
+                # Holding (3) and Coils (1) default to Read/Write (1)
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -410,14 +466,20 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            stats = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+
             for index, row in enumerate(processed_rows, start=1):
+                i1 = row['Info1']
+                if i1 in stats: stats[i1] += 1
                 writer.writerow([
-                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                    str(index), i1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{count} {type_labels[k]}" for k, count in stats.items() if count > 0])
+                logging.info(f"Definition file generated at {output} ({summary or '0 registers'})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
