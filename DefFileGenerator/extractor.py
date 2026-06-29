@@ -8,7 +8,8 @@ import re
 import sys
 import io
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+import itertools
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
     import openpyxl
@@ -43,6 +44,15 @@ try:
     XML_PARSE_ERRORS = (ET_STD.ParseError,)
 except ImportError:
     XML_PARSE_ERRORS = ()
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable is empty without exhausting it."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -226,7 +236,7 @@ class Extractor:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
+        if tables is None:
             return
 
         for table in tables:
