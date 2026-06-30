@@ -40,6 +40,7 @@ class Generator:
             'coil': '1',
             'coils': '1',
             'discrete input': '2',
+            'discrete': '2',
             'holding register': '3',
             'holding': '3',
             'input register': '4',
@@ -63,6 +64,11 @@ class Generator:
             suffix = '_B'
         elif any(x in t for x in ['_w', 'word']):
             suffix = '_W'
+
+        # Handle "string 20" -> "STR20"
+        str_match = re.search(r'string\s*(\d+)', t)
+        if str_match:
+            return f"STR{str_match.group(1)}{suffix}"
 
         # Mapping ordered by specificity (longer strings first)
         synonyms = [
@@ -143,15 +149,36 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535) based on type."""
         dtype_upper = dtype.upper()
 
+        match = None
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
+        elif RE_TYPE_STR_CONV.match(dtype_upper):
+            match = RE_ADDR_STRING.match(address)
+            if not match:
+                # STR<n> might be just an integer if expanded later (e.g. STR20)
+                match = RE_ADDR_INT.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation 0-65535
+        try:
+            base_addr_str = match.group(1) if match.groups() else address
+            base_addr = int(Generator.normalize_address_val(base_addr_str))
+            if not (0 <= base_addr <= 65535):
+                logging.warning(f"Address {base_addr} is outside standard Modbus range (0-65535)")
+                return False
+        except (ValueError, IndexError):
+            pass
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -215,7 +242,8 @@ class Generator:
         """Applies an integer offset to a register address (simple or compound)."""
         if not address:
             return ""
-        parts = address.split('_')
+        # Split by underscore but ensure we handle compound addresses correctly
+        parts = str(address).split('_')
         # Normalize each part individually
         norm_parts = [Generator.normalize_address_val(p) for p in parts]
 
@@ -375,10 +403,14 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on register type: Input (4) and Discrete (2) default to Read Only (4)
+                if info1 in ['2', '4']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -397,7 +429,7 @@ class Generator:
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
-        """Centralized method to write the WebdynSunPM CSV format."""
+        """Centralized method to write the WebdynSunPM CSV format with summary logging."""
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -410,19 +442,80 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+            last_index = 0
+
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
+                last_index = index
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in counts.items() if v > 0])
+                logging.info(f"Definition file generated at {output}. Total registers: {last_index} ({summary})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates a WebdynSunPM definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            with open(filepath, mode='rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, mode='r', encoding=encoding) as csvfile:
+                snippet = csvfile.read(2048)
+                csvfile.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
+
+                reader = csv.reader(csvfile, dialect=dialect)
+                header = next(reader)
+                if not header or len(header) < 4:
+                    logging.error("Invalid definition file header.")
+                    return False
+
+                success = True
+                seen_tags = {}
+                address_usage = {}
+                warned_lines = set()
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        continue
+
+                    # Row format: Index; Info1; Info2; Info3; Info4; Name; Tag; CoefA; CoefB; Unit; Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    if not self.validate_type(info3):
+                        logging.warning(f"Line {line_num}: Invalid Type '{info3}'")
+                        success = False
+
+                    if not self.validate_address(info2, info3):
+                        logging.warning(f"Line {line_num}: Invalid Address '{info2}' for Type '{info3}'")
+                        success = False
+
+                    self._process_name_and_tag(name, tag, line_num, {}, seen_tags)
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+                return success
+        except Exception as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
