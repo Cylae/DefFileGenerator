@@ -6,7 +6,7 @@ import logging
 import re
 import json
 import csv
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
@@ -61,7 +61,8 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    is_not_empty, raw = peek_generator(raw)
+    if not is_not_empty: logging.error("No data extracted."); sys.exit(1)
 
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
     if not mapped: logging.error("No registers extracted."); sys.exit(1)

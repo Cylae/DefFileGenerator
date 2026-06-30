@@ -64,6 +64,11 @@ class Generator:
         elif any(x in t for x in ['_w', 'word']):
             suffix = '_W'
 
+        # Handle 'string <n>' to 'STR<n>' conversion
+        str_match = re.search(r'string\s*(\d+)', t)
+        if str_match:
+            return f"STR{str_match.group(1)}{suffix}"
+
         # Mapping ordered by specificity (longer strings first)
         synonyms = [
             (r'unsigned integer 64|unsigned int 64|uint64', 'U64'),
@@ -143,15 +148,92 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format and range (0-65535) based on type."""
         dtype_upper = dtype.upper()
-
+        match = None
         if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+            match = RE_ADDR_STRING.match(address)
+        elif RE_TYPE_STR_CONV.match(dtype_upper):
+            match = RE_ADDR_STRING.match(address)
+            if not match:
+                # STR<n> might just have a simple address during validation if not yet expanded
+                match = RE_ADDR_INT.match(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
+            if not match:
+                match = RE_ADDR_INT.match(address)
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+
+        if not match:
+            return False
+
+        # Range validation (0-65535)
+        try:
+            addr_val_str = Generator.normalize_address_val(match.group(1))
+            addr_val = int(addr_val_str, 0)
+            if not (0 <= addr_val <= 65535):
+                logging.warning(f"Modbus address {addr_val} is out of standard range (0-65535)")
+                return False
+        except (ValueError, IndexError):
+            return False
+
+        return True
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Performs comprehensive validation of a definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        try:
+            with open(filepath, 'rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                # Determine if it's a Webdyn definition file (lineterminator=; and first row has protocol)
+                snippet = f.read(1024)
+                f.seek(0)
+
+                is_webdyn = ';' in snippet and any(p in snippet for p in ['modbusRTU', 'modbusTCP'])
+
+                if is_webdyn:
+                    reader = csv.reader(f, delimiter=';')
+                    next(reader) # Skip global header
+                    for line_num, row in enumerate(reader, start=2):
+                        if not row or len(row) < 11: continue
+                        # Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                        dtype = row[3]
+                        addr = row[2]
+                        name = row[5]
+                        if not self.validate_type(dtype):
+                            logging.error(f"Line {line_num}: Invalid type '{dtype}' for '{name}'")
+                            success = False
+                        if not self.validate_address(addr, dtype):
+                            logging.error(f"Line {line_num}: Invalid address '{addr}' for '{name}'")
+                            success = False
+                else:
+                    # Assume simplified CSV with headers
+                    f.seek(0)
+                    reader = csv.DictReader(f)
+                    for line_num, row in enumerate(reader, start=2):
+                        dtype = row.get('Type', '')
+                        addr = row.get('Address', '')
+                        name = row.get('Name', '')
+                        if not dtype or not addr: continue
+                        if not self.validate_type(dtype):
+                            logging.error(f"Line {line_num}: Invalid type '{dtype}' for '{name}'")
+                            success = False
+                        if not self.validate_address(addr, dtype):
+                            logging.error(f"Line {line_num}: Invalid address '{addr}' for '{name}'")
+                            success = False
+        except Exception as e:
+            logging.error(f"Validation error: {e}")
+            return False
+
+        return success
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -215,8 +297,9 @@ class Generator:
         """Applies an integer offset to a register address (simple or compound)."""
         if not address:
             return ""
-        parts = address.split('_')
-        # Normalize each part individually
+
+        # Split compound address, apply offset only to the first part (base address)
+        parts = str(address).split('_')
         norm_parts = [Generator.normalize_address_val(p) for p in parts]
 
         try:
@@ -375,10 +458,11 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization with intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on register type: Input/Discrete -> RO(4), Holding/Coils -> RW(1)
+                norm_action = '4' if info1 in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +482,10 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        last_index = 0
+        type_counts = {}
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -415,9 +503,13 @@ class Generator:
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                last_index = index
+                info1 = row['Info1']
+                type_counts[info1] = type_counts.get(info1, 0) + 1
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{count} {type_labels.get(t, t)}" for t, count in sorted(type_counts.items())])
+                logging.info(f"Definition file generated at {output} ({last_index} registers: {summary})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
