@@ -10,8 +10,10 @@ This toolset allows for extracting Modbus register information from manufacturer
     *   Supports Decimal, Hex (0x prefix or h suffix), and Negative addresses.
     *   `address_offset`: Shift all register addresses by a specified value.
     *   Optimized overlap detection for large-scale register maps.
+    *   **Range Validation**: Ensures addresses are within Modbus standard (0-65535).
 *   **Comprehensive Type Support**: Standardizes synonyms and supports endianness suffixes (e.g., `_B`, `_W`, `_WB`).
-*   **Unified CLI**: Single entry point for extraction, generation, or end-to-end runs.
+*   **Intelligent Defaults**: Automatically assigns action codes (Read/Write) based on register types.
+*   **Unified CLI**: Single entry point for extraction, generation, validation, or end-to-end runs.
 
 ## Requirements
 
@@ -44,6 +46,7 @@ Convert a simplified CSV into a WebdynSunPM definition file.
 python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
 *   `--address-offset <int>`: Shift addresses (default 0).
+*   `--template`: Generate a sample input CSV template.
 
 ### 3. End-to-End Run
 Extract and generate the definition file in a single step.
@@ -51,6 +54,40 @@ Extract and generate the definition file in a single step.
 ```bash
 python3 DefFileGenerator/main.py run <source_file> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
+
+### 4. Validate Definition
+Validate a generated WebdynSunPM definition file for correct formatting and address ranges.
+
+```bash
+python3 DefFileGenerator/main.py validate <definition_csv>
+```
+
+---
+
+## Quick Start Guide
+
+### From PDF Documentation
+```bash
+python3 DefFileGenerator/main.py run datasheet.pdf --manufacturer "Huawei" --model "SUN2000" -o def.csv
+```
+
+### From Excel Register Map
+```bash
+python3 DefFileGenerator/main.py run map.xlsx --manufacturer "SolarEdge" --model "SE5000" -o def.csv
+```
+
+## Column Recognition (Heuristics)
+
+The tool automatically identifies columns using these patterns:
+
+| Target | Patterns |
+| :--- | :--- |
+| **Address** | register, address, addr, offset, reg |
+| **Name** | name, description, parameter, variable, signal |
+| **Type** | type, data type, format, datatype |
+| **Unit** | unit, units |
+| **Scale** | scale, factor, multiplier, ratio |
+| **Action** | action, access |
 
 ---
 

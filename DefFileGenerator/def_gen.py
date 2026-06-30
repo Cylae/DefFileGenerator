@@ -40,6 +40,9 @@ class Generator:
             'coil': '1',
             'coils': '1',
             'discrete input': '2',
+            'discrete': '2',
+            'discrete register': '2',
+            'discrete registers': '2',
             'holding register': '3',
             'holding': '3',
             'input register': '4',
@@ -63,6 +66,11 @@ class Generator:
             suffix = '_B'
         elif any(x in t for x in ['_w', 'word']):
             suffix = '_W'
+
+        # Special handling for "string 20" -> "STR20"
+        m_str = re.match(r'string\s*(\d+)', t)
+        if m_str:
+            return f"STR{m_str.group(1)}{suffix}"
 
         # Mapping ordered by specificity (longer strings first)
         synonyms = [
@@ -143,15 +151,35 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format based on type."""
+        """Validates the address format based on type and Modbus range."""
         dtype_upper = dtype.upper()
 
-        if dtype_upper == 'STRING':
-            return RE_ADDR_STRING.match(address) is not None
+        if dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper):
+            match = RE_ADDR_STRING.match(address)
+            if match:
+                addr_val = Generator.normalize_address_val(match.group(1))
+            else:
+                match = RE_ADDR_INT.match(address)
+                if not match: return False
+                addr_val = Generator.normalize_address_val(address)
         elif dtype_upper == 'BITS':
-            return RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
+            if not match: return False
+            addr_val = Generator.normalize_address_val(match.group(1))
         else:
-            return RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+            if not match: return False
+            addr_val = Generator.normalize_address_val(address)
+
+        try:
+            val = int(addr_val, 0)
+            if not (0 <= val <= 65535):
+                logging.warning(f"Modbus address {val} out of range (0-65535)")
+                return False
+        except ValueError:
+            return False
+
+        return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
@@ -262,18 +290,21 @@ class Generator:
 
         return tag
 
-    def _determine_info1(self, reg_type_str: str, line_num: int) -> str:
+    def _determine_info1(self, reg_type_str: str, line_num: int = 0) -> str:
         """Maps RegisterType string to Webdyn Info1 code."""
-        if not reg_type_str:
+        if reg_type_str is None:
             return '3'
 
-        lt = reg_type_str.lower()
+        lt = str(reg_type_str).lower().strip()
+        if not lt:
+            return '3'
         if lt in self.register_type_map:
             return self.register_type_map[lt]
-        elif reg_type_str in ['1', '2', '3', '4']:
-            return reg_type_str
+        elif str(reg_type_str).strip() in ['1', '2', '3', '4']:
+            return str(reg_type_str).strip()
 
-        logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+        if line_num:
+            logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
@@ -318,6 +349,43 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Comprehensive file validation."""
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File not found {filepath}")
+            return False
+        try:
+            with open(filepath, 'rb') as f:
+                header = f.read(4)
+                encoding = 'utf-16' if header.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                snippet = f.read(4096)
+                f.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
+                reader = csv.DictReader(f, dialect=dialect)
+                if not reader.fieldnames or 'Address' not in [fn.capitalize() for fn in reader.fieldnames]:
+                    logging.error("Validation failed: Missing 'Address' column.")
+                    return False
+
+                success = True
+                for line_num, row in enumerate(reader, start=2):
+                    norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
+                    addr = norm_row.get('address', '')
+                    dtype_raw = norm_row.get('type', 'U16')
+                    dtype = self.normalize_type(dtype_raw)
+
+                    if not self.validate_address(addr, dtype):
+                        logging.error(f"Line {line_num}: Invalid address or range '{addr}' for type {dtype}")
+                        success = False
+                return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Validation error: {e}")
+            return False
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
@@ -375,10 +443,13 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = '1'
+                # Default based on Register Type
+                # Input (4) and Discrete (2) default to 4 (Read Only)
+                # Holding (3) and Coils (1) default to 1 (Read/Write)
+                norm_action = '4' if str(info1) in ['2', '4'] else '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
@@ -398,6 +469,8 @@ class Generator:
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        last_index = 0
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
         try:
             if isinstance(output, str):
                 outfile = open(output, 'w', newline='', encoding='utf-8')
@@ -410,14 +483,19 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {}
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
+                last_index = index
+                info1 = row.get('Info1', '3')
+                counts[info1] = counts.get(info1, 0) + 1
 
             if isinstance(output, str):
-                logging.info(f"Definition file generated at {output}")
+                summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in sorted(counts.items())])
+                logging.info(f"Definition file generated at {output} ({last_index} registers) - {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
