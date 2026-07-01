@@ -7,8 +7,18 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
-from typing import Dict, List, Any, Iterator, Optional, Iterable, Union
+from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable has data without exhausting it."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 try:
     import openpyxl
@@ -81,7 +91,7 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return
+            return iter([])
 
         wb = None
         try:
@@ -119,7 +129,7 @@ class Extractor:
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return
+            return iter([])
 
         def pdf_tables_generator():
             try:
@@ -141,12 +151,8 @@ class Extractor:
                                     if any(row_dict.values()):
                                         yield row_dict
 
-                            # Since we must keep pdfplumber context open while iterating,
-                            # and pdfplumber pages/tables are held in memory anyway,
-                            # yielding generators is safe but the entire PDF is open.
-                            # A better approach: evaluate the generator immediately if we're yielding it,
-                            # but here we're conforming to `Iterator[Iterator[Dict]]`
-                            yield table_generator(table)
+                            # Evaluate to list to ensure data is extracted before context closes
+                            yield list(table_generator(table))
 
             except (OSError,) + PDF_ERRORS as e:
                 logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
@@ -196,7 +202,7 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return
+            return iter([])
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
@@ -227,7 +233,7 @@ class Extractor:
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
-            return
+            return iter([])
 
         for table in tables:
             if not table: continue
