@@ -9,16 +9,8 @@ import sys
 import io
 import itertools
 import zipfile
+import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
-
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
-    """Checks if an iterable is empty without exhausting it."""
-    iterator = iter(iterable)
-    try:
-        first = next(iterator)
-    except StopIteration:
-        return False, iter([])
-    return True, itertools.chain([first], iterator)
 
 try:
     import openpyxl
@@ -72,16 +64,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
-def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
-    """Checks if an iterable is empty without exhausting it. Returns (has_data, iterator)."""
-    if iterable is None:
-        return False, iter([])
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
+    """Checks if an iterable is empty without exhausting it."""
+    it = iter(iterable)
     try:
-        it = iter(iterable)
         first = next(it)
-        return True, itertools.chain([first], it)
     except StopIteration:
-        return False, iter([])
+        return True, []
+    return False, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -119,13 +109,13 @@ class Extractor:
                 wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
                 sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
-                for ws in sheets:
-                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
-                        rows = ws_obj.iter_rows(values_only=True)
-                        try:
-                            header_row = next(rows)
-                        except StopIteration:
-                            return
+            for ws in sheets:
+                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                    rows = ws_obj.iter_rows(values_only=True)
+                    try:
+                        header_row = next(rows)
+                    except StopIteration:
+                        return
 
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
 
@@ -134,8 +124,8 @@ class Extractor:
                             if any(cell is not None and str(cell).strip() for cell in row):
                                 yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                    # We yield a generator for each sheet.
-                    yield sheet_generator()
+                # We yield a generator for each sheet.
+                yield sheet_generator()
 
             except (OSError, zipfile.BadZipFile) as e:
                 logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
@@ -144,8 +134,6 @@ class Extractor:
             finally:
                 if wb:
                     wb.close()
-
-        return excel_sheets_generator()
 
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
@@ -159,20 +147,21 @@ class Extractor:
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        page_list = pages
                         if isinstance(pages, str):
-                            page_list = [p.strip() for p in pages.split(',')]
-                        elif not isinstance(pages, list):
-                            page_list = [pages]
+                            page_indices = [p.strip() for p in pages.split(',')]
+                        elif isinstance(pages, list):
+                            page_indices = pages
+                        else:
+                            page_indices = [pages]
 
                         target_pages = []
-                        for p in page_list:
+                        for p in page_indices:
                             try:
                                 idx = int(p) - 1
                                 if 0 <= idx < len(pdf.pages):
                                     target_pages.append(pdf.pages[idx])
                                 else:
-                                    logging.warning(f"Page {p} out of range (1-{len(pdf.pages)}). Skipping.")
+                                    logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)}). Skipping.")
                             except (ValueError, TypeError):
                                 logging.warning(f"Invalid page reference: {p}. Skipping.")
 
@@ -268,10 +257,6 @@ class Extractor:
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if tables is None:
-            return
-
-        has_any, tables = peek_generator(tables)
-        if not has_any:
             return
 
         for table in tables:
