@@ -988,6 +988,67 @@ class Generator:
             logging.error(f"Error validating CSV {filepath}: {e}")
             return False
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Deep validation of an existing WebdynSunPM definition file."""
+        self.valid = True
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', newline='', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error(f"Invalid Webdyn definition header in {filepath}")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has insufficient columns ({len(row)}/11). Skipping.")
+                        continue
+
+                    # Index; Info1; Info2; Info3; Info4; Name; Tag; CoefA; CoefB; Unit; Action
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Tag validation
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal error). Previous at line {seen_tags[tag]}.")
+                            self.valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # Address validation
+                    norm_addr = Generator.normalize_address_val(address.split('_')[0])
+                    try:
+                        addr_val = int(norm_addr)
+                        if addr_val < 0 or addr_val > 65535:
+                            logging.warning(f"Line {line_num}: Address {addr_val} is out of standard Modbus range (0-65535).")
+                    except ValueError:
+                        pass
+
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address format '{address}' for type '{dtype}'.")
+                        self.valid = False
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            return self.valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
@@ -1156,6 +1217,7 @@ def generate_template(output_file: Optional[str]) -> None:
         logging.error(f"Error generating template: {e}")
 
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
+    generator = Generator()
     if config.template:
         mode = config.template_mode
         if input_data is not None:
@@ -1177,7 +1239,6 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
     manufacturer = config.manufacturer or 'Manufacturer'
     model = config.model or 'Model'
 
-    generator = Generator()
     try:
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)

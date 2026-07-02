@@ -350,6 +350,10 @@ def _run_cli():
     parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
     parser_validate.add_argument('input_file', help='WebdynSunPM definition file')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
+
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
