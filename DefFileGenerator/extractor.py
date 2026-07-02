@@ -9,7 +9,6 @@ import sys
 import io
 import itertools
 import zipfile
-import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
@@ -46,14 +45,7 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """Checks if an iterable is empty without exhausting it."""
-    it = iter(iterable)
-    try:
-        first = next(it)
-    except StopIteration:
-        return False, iter([])
-    return True, itertools.chain([first], it)
+import itertools
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -64,14 +56,17 @@ except ImportError:
     except ImportError:
         Generator = None
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
     """Checks if an iterable is empty without exhausting it."""
+    if isinstance(iterable, (list, tuple, set)):
+        return bool(iterable), iter(iterable)
+
     it = iter(iterable)
     try:
         first = next(it)
+        return True, itertools.chain([first], it)
     except StopIteration:
-        return True, []
-    return False, itertools.chain([first], it)
+        return False, iter([])
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -144,26 +139,16 @@ class Extractor:
         if isinstance(pages, str):
             try:
                 with pdfplumber.open(filepath) as pdf:
+                    target_pages = []
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        if isinstance(pages, str):
-                            page_indices = [p.strip() for p in pages.split(',')]
-                        elif isinstance(pages, list):
-                            page_indices = pages
-                        else:
-                            page_indices = [pages]
-
-                        target_pages = []
-                        for p in page_indices:
-                            try:
-                                idx = int(p) - 1
-                                if 0 <= idx < len(pdf.pages):
-                                    target_pages.append(pdf.pages[idx])
-                                else:
-                                    logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)}). Skipping.")
-                            except (ValueError, TypeError):
-                                logging.warning(f"Invalid page reference: {p}. Skipping.")
+                        page_nums = pages if isinstance(pages, list) else [pages]
+                        for p in page_nums:
+                            if 1 <= p <= len(pdf.pages):
+                                target_pages.append(pdf.pages[p-1])
+                            else:
+                                logging.warning(f"Page {p} is out of range for {filepath}")
 
                     for page in target_pages:
                         tables = page.extract_tables()
@@ -179,6 +164,7 @@ class Extractor:
                                             row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
                                     if any(row_dict.values()):
                                         yield row_dict
+
                             yield table_generator(table)
             except (OSError,) + PDF_ERRORS as e:
                 logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
@@ -223,6 +209,10 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return iter([])
+        try:
+            with open(filepath, 'rb') as f:
+                tree = ET.parse(f)
+                root = tree.getroot()
 
         def xml_tables_generator():
             try:
@@ -256,8 +246,8 @@ class Extractor:
         return xml_tables_generator()
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if tables is None:
-            return
+        if not tables:
+            return iter([])
 
         for table in tables:
             has_rows, table = peek_generator(table)
