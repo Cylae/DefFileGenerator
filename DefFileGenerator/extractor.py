@@ -9,7 +9,6 @@ import sys
 import io
 import itertools
 import zipfile
-import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
@@ -57,17 +56,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """
-    Checks if an iterable is empty without exhausting it.
-    Returns (is_not_empty, iterator).
-    """
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterable[Any]]:
+    """Peeks at the first element of an iterable without exhausting it."""
     it = iter(iterable)
     try:
         first = next(it)
     except StopIteration:
-        return False, iter([])
-    return True, itertools.chain([first], it)
+        return None, iter([])
+    return first, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -87,6 +83,7 @@ class Extractor:
 
     def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
+
 
     @staticmethod
     def normalize_type(t: Any) -> str:

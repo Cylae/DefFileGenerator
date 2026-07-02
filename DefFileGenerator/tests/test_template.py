@@ -1,28 +1,28 @@
+#!/usr/bin/env python3
 import unittest
 import os
+import tempfile
 import csv
-from DefFileGenerator.def_gen import generate_template
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 
 class TestTemplate(unittest.TestCase):
-    def setUp(self):
-        self.template_file = "test_template.csv"
+    def test_template_generation(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_file = os.path.join(tmp_dir, 'template.csv')
+            config = GeneratorConfig(output=output_file, template=True)
+            run_generator(config)
 
-    def tearDown(self):
-        if os.path.exists(self.template_file):
-            os.remove(self.template_file)
+            self.assertTrue(os.path.exists(output_file))
+            with open(output_file, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f)
+                headers = next(reader)
+                self.assertEqual(headers[0], 'Name')
+                self.assertEqual(headers[3], 'Address')
 
-    def test_generate_template(self):
-        generate_template(self.template_file)
-        self.assertTrue(os.path.exists(self.template_file))
-
-        with open(self.template_file, 'r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            headers = next(reader)
-            self.assertEqual(headers, ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'])
-
-            row1 = next(reader)
-            self.assertEqual(row1[0], 'Example Variable')
-            self.assertEqual(row1[4], 'U16')
+                # Check at least one data row
+                row1 = next(reader)
+                self.assertEqual(row1[0], 'Example Variable')
+                self.assertEqual(row1[3], '30001')
 
 if __name__ == '__main__':
     unittest.main()

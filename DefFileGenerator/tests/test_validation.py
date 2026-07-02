@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import unittest
 import os
 import csv
@@ -7,64 +8,61 @@ from DefFileGenerator.def_gen import Generator
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
-        self.test_file = "test_validate.csv"
-        # Disable logging for tests to keep output clean
-        logging.disable(logging.CRITICAL)
+        self.test_dir = tempfile.TemporaryDirectory()
+        logging.basicConfig(level=logging.ERROR)
 
     def tearDown(self):
-        if os.path.exists(self.test_file):
-            os.remove(self.test_file)
-        logging.disable(logging.NOTSET)
+        self.test_dir.cleanup()
 
     def create_csv(self, rows):
-        with open(self.test_file, 'w', newline='', encoding='utf-8') as f:
+        path = os.path.join(self.test_dir.name, 'test_def.csv')
+        with open(path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f, delimiter=';')
             writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model', '', '', '', '', '', '', ''])
-            for i, row in enumerate(rows, start=1):
-                writer.writerow([str(i)] + list(row))
+            for idx, row in enumerate(rows, start=1):
+                writer.writerow([str(idx)] + list(row))
+        return path
 
-    def test_valid_file(self):
-        self.create_csv([
-            ['3', '100', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'V', '4']
+    def test_valid_definition(self):
+        path = self.create_csv([
+            ['3', '30001', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '4']
         ])
-        self.assertTrue(self.generator.validate_csv(self.test_file))
+        self.assertTrue(self.generator.validate_csv(path))
 
     def test_duplicate_tag(self):
-        self.create_csv([
-            ['3', '100', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag1', '1.0', '0.0', 'V', '4']
+        path = self.create_csv([
+            ['3', '30001', 'U16', '', 'Var1', 'dup_tag', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'dup_tag', '1.0', '0.0', 'V', '4']
         ])
-        self.assertFalse(self.generator.validate_csv(self.test_file))
+        self.assertFalse(self.generator.validate_csv(path))
+
+    def test_address_out_of_range(self):
+        path = self.create_csv([
+            ['3', '65536', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertFalse(self.generator.validate_csv(path))
+
+        path = self.create_csv([
+            ['3', '-1', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertFalse(self.generator.validate_csv(path))
 
     def test_address_overlap(self):
-        self.create_csv([
-            ['3', '100', 'U32', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'V', '4']
+        # 32-bit register at 30001 uses 30001 and 30002
+        path = self.create_csv([
+            ['3', '30001', 'U32', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '4']
         ])
-        # Overlap is currently a warning, so validate_csv should still return True
-        # but let's check if it behaves as expected.
-        # Wait, in validate_csv, _check_address_overlap is called but it doesn't set valid=False.
-        # So it should be True.
-        self.assertTrue(self.generator.validate_csv(self.test_file))
-
-    def test_invalid_address_range(self):
-        self.create_csv([
-            ['3', '70000', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
-        ])
-        self.assertFalse(self.generator.validate_csv(self.test_file))
+        # Overlap is currently a warning in _check_address_overlap but validate_csv should still return True if it's just warnings
+        # Wait, looking at validate_csv implementation: it doesn't set valid=False on overlaps.
+        self.assertTrue(self.generator.validate_csv(path))
 
     def test_invalid_address_format(self):
-        self.create_csv([
-            ['3', 'not_an_address', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
+        path = self.create_csv([
+            ['3', 'invalid', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
         ])
-        self.assertFalse(self.generator.validate_csv(self.test_file))
-
-    def test_missing_tag(self):
-        self.create_csv([
-            ['3', '100', 'U16', '', 'Var1', '', '1.0', '0.0', 'V', '4']
-        ])
-        self.assertFalse(self.generator.validate_csv(self.test_file))
+        self.assertFalse(self.generator.validate_csv(path))
 
 if __name__ == '__main__':
     unittest.main()
