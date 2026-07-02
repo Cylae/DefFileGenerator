@@ -49,12 +49,12 @@ def _perform_extraction(args):
     pages_arg = getattr(args, 'pages', None)
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(input_file, args.sheet)
+        raw_data = extractor.extract_from_excel(input_file, sheet)
     elif ext == '.pdf':
         pages = None
-        if getattr(args, 'pages', None):
+        if pages_arg:
             try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
@@ -82,12 +82,12 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    first_row, mapped_data = peek_generator(mapped_data)
-    if not first_row:
+    first, mapped_data = peek_generator(mapped_data)
+    if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
 
-    output = getattr(args, 'output', None)
+    output = getattr(args, 'output', None) or sys.stdout
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
     if output:
@@ -118,15 +118,15 @@ def generate_command(args):
         args.input_file = None
 
     config = GeneratorConfig(
-        input_file=input_file,
-        output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=args.address_offset,
-        template=args.template
+        input_file=getattr(args, 'input_file', None),
+        output=getattr(args, 'output', None),
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=getattr(args, 'address_offset', 0),
+        template=getattr(args, 'template', False)
     )
     run_generator(config)
 
@@ -136,16 +136,14 @@ def validate_command(args):
         sys.exit(1)
 
 def run_command(args):
-    if args.template:
-        config = GeneratorConfig(output=args.output, template=True)
-        run_generator(config)
-        return
-
-    mapped_data = _perform_extraction(args)
-    first_row, mapped_data = peek_generator(mapped_data)
-    if not first_row:
-        logging.error("No registers extracted.")
-        sys.exit(1)
+    template = getattr(args, 'template', False)
+    mapped_data = None
+    if not template:
+        mapped_data = _perform_extraction(args)
+        first, mapped_data = peek_generator(mapped_data)
+        if not first:
+            logging.error("No registers extracted.")
+            sys.exit(1)
 
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
@@ -226,6 +224,10 @@ def _run_cli():
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
     parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
     # Run (Extract + Generate)
