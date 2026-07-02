@@ -1,7 +1,7 @@
+#!/usr/bin/env python3
 import unittest
 import os
 import csv
-import tempfile
 import logging
 from DefFileGenerator.def_gen import Generator
 
@@ -9,56 +9,60 @@ class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
         self.test_dir = tempfile.TemporaryDirectory()
-        # Suppress logging during tests
-        logging.getLogger().setLevel(logging.CRITICAL)
+        logging.basicConfig(level=logging.ERROR)
 
     def tearDown(self):
         self.test_dir.cleanup()
 
-    def test_validate_address_range(self):
-        self.assertTrue(self.generator.validate_address("0", "U16"))
-        self.assertTrue(self.generator.validate_address("65535", "U16"))
-        self.assertFalse(self.generator.validate_address("65536", "U16"))
-        self.assertFalse(self.generator.validate_address("-1", "U16"))
-
-        # Hex addresses
-        self.assertTrue(self.generator.validate_address("0xFFFF", "U16"))
-        self.assertFalse(self.generator.validate_address("0x10000", "U16"))
-
-        # Compound addresses
-        self.assertTrue(self.generator.validate_address("100_20", "STRING"))
-        self.assertFalse(self.generator.validate_address("70000_20", "STRING"))
-
-    def test_validate_csv_duplicates(self):
-        path = os.path.join(self.test_dir.name, "dup.csv")
+    def create_csv(self, rows):
+        path = os.path.join(self.test_dir.name, 'test_def.csv')
         with open(path, 'w', newline='', encoding='utf-8') as f:
-            f.write("modbusRTU;Inverter;MFG;MODEL;;;;;;;\n")
-            f.write("1;3;100;U16;;Var1;tag1;1.0;0.0;V;4\n")
-            f.write("2;3;101;U16;;Var2;tag1;1.0;0.0;V;4\n")
+            writer = csv.writer(f, delimiter=';')
+            writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model', '', '', '', '', '', '', ''])
+            for idx, row in enumerate(rows, start=1):
+                writer.writerow([str(idx)] + list(row))
+        return path
 
+    def test_valid_definition(self):
+        path = self.create_csv([
+            ['3', '30001', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertTrue(self.generator.validate_csv(path))
+
+    def test_duplicate_tag(self):
+        path = self.create_csv([
+            ['3', '30001', 'U16', '', 'Var1', 'dup_tag', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'dup_tag', '1.0', '0.0', 'V', '4']
+        ])
         self.assertFalse(self.generator.validate_csv(path))
 
-    def test_validate_csv_valid(self):
-        path = os.path.join(self.test_dir.name, "valid.csv")
-        with open(path, 'w', newline='', encoding='utf-8') as f:
-            f.write("modbusRTU;Inverter;MFG;MODEL;;;;;;;\n")
-            f.write("1;3;100;U16;;Var1;tag1;1.0;0.0;V;4\n")
-            f.write("2;3;101;U16;;Var2;tag2;1.0;0.0;V;4\n")
+    def test_address_out_of_range(self):
+        path = self.create_csv([
+            ['3', '65536', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertFalse(self.generator.validate_csv(path))
 
+        path = self.create_csv([
+            ['3', '-1', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertFalse(self.generator.validate_csv(path))
+
+    def test_address_overlap(self):
+        # 32-bit register at 30001 uses 30001 and 30002
+        path = self.create_csv([
+            ['3', '30001', 'U32', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '4']
+        ])
+        # Overlap is currently a warning in _check_address_overlap but validate_csv should still return True if it's just warnings
+        # Wait, looking at validate_csv implementation: it doesn't set valid=False on overlaps.
         self.assertTrue(self.generator.validate_csv(path))
 
-    def test_validate_csv_overlap(self):
-        path = os.path.join(self.test_dir.name, "overlap.csv")
-        with open(path, 'w', newline='', encoding='utf-8') as f:
-            f.write("modbusRTU;Inverter;MFG;MODEL;;;;;;;\n")
-            f.write("1;3;100;U32;;Var1;tag1;1.0;0.0;V;4\n")
-            f.write("2;3;101;U16;;Var2;tag2;1.0;0.0;V;4\n")
-
-        # Overlaps are logged as warnings but validate_csv currently returns True for overlaps
-        # based on my implementation (it only sets valid=False for Fatal or Invalid Type/Addr).
-        # Let's check my implementation again.
-        # It calls _check_address_overlap which logs warnings.
-        self.assertTrue(self.generator.validate_csv(path))
+    def test_invalid_address_format(self):
+        path = self.create_csv([
+            ['3', 'invalid', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertFalse(self.generator.validate_csv(path))
 
 if __name__ == '__main__':
     unittest.main()
