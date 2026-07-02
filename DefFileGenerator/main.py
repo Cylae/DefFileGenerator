@@ -212,6 +212,13 @@ def validate_command(args):
     if not Generator.validate_csv(args.input_file):
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -287,6 +294,10 @@ def _run_cli():
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition file')
     parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
