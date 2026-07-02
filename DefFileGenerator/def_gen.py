@@ -93,6 +93,8 @@ class Generator:
     @staticmethod
     def validate_type(dtype: str) -> bool:
         """Validates the data type."""
+        if not dtype:
+            return False
         dtype_upper = dtype.upper()
         # Base types
         base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC']
@@ -345,6 +347,69 @@ class Generator:
 
         return tag
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Performs comprehensive validation of the input CSV."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        seen_names = {}
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, mode='rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, mode='r', encoding=encoding) as csvfile:
+                snippet = csvfile.read(2048)
+                csvfile.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
+
+                reader = csv.DictReader(csvfile, dialect=dialect)
+                for line_num, row in enumerate(reader, start=2):
+                    if not any(v for v in row.values() if v):
+                        continue
+
+                    norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
+                    name = norm_row.get('name', '')
+                    tag = norm_row.get('tag', '')
+                    reg_type_str = norm_row.get('registertype', '')
+                    address = norm_row.get('address', '')
+                    dtype_raw = norm_row.get('type', '')
+
+                    if not name and not address:
+                        logging.warning(f"Line {line_num}: Missing Name and Address.")
+                        success = False
+                        continue
+
+                    dtype = self.normalize_type(dtype_raw)
+                    if not self.validate_type(dtype):
+                        logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}').")
+                        success = False
+                        continue
+
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'.")
+                        success = False
+                        continue
+
+                    self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
+                    info1 = self._determine_info1(reg_type_str, line_num)
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during validation: {e}")
+            return False
+
+        return success
+
     def _determine_info1(self, reg_type_str: str, line_num: int) -> str:
         """Maps RegisterType string to Webdyn Info1 code."""
         if not reg_type_str:
@@ -388,6 +453,16 @@ class Generator:
             pass
 
     @staticmethod
+    def sanitize_csv_field(field: Any) -> str:
+        """Sanitizes a field to prevent CSV Formula Injection."""
+        if field is None:
+            return ""
+        s = str(field)
+        if s and s[0] in ('=', '+', '-', '@', '\t', '\r'):
+            return "'" + s
+        return s
+
+    @staticmethod
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
         """Calculates CoefA and CoefB based on input values."""
         factor = Generator._parse_numeric(factor_str, default=1.0)
@@ -401,6 +476,65 @@ class Generator:
         coef_a = "{:.6f}".format(factor * (10 ** scale_val))
         coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates the input CSV for formatting and constraints."""
+        success = True
+        seen_names = {}
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, mode='r', encoding=encoding) as csvfile:
+                snippet = csvfile.read(2048)
+                csvfile.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
+                reader = csv.DictReader(csvfile, dialect=dialect)
+
+                for line_num, row in enumerate(reader, start=2):
+                    norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
+                    name = norm_row.get('name', '')
+                    tag = norm_row.get('tag', '')
+                    address = norm_row.get('address', '')
+                    dtype_raw = norm_row.get('type', '')
+                    reg_type_str = norm_row.get('registertype', '')
+
+                    if not name and not address:
+                        continue
+
+                    dtype = self.normalize_type(dtype_raw)
+                    if not self.validate_type(dtype):
+                        logging.error(f"Line {line_num}: Invalid data type '{dtype_raw}'")
+                        success = False
+                        continue
+
+                    # Handle compound addresses for validation
+                    addr_parts = address.split('_')
+                    norm_addr_parts = [self.normalize_address_val(p) for p in addr_parts]
+                    norm_address = '_'.join(norm_addr_parts)
+
+                    if not self.validate_address(norm_address, dtype):
+                        logging.error(f"Line {line_num}: Invalid address '{address}' for type '{dtype}'")
+                        success = False
+
+                    # Check for duplicates/overlaps
+                    self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
+                    info1 = self._determine_info1(reg_type_str, line_num)
+                    self._check_address_overlap(info1, norm_address, dtype, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Validation Error: {e}")
+            return False
+
+        return success
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
@@ -494,10 +628,18 @@ class Generator:
             else:
                 outfile = output
 
-            header_row = [protocol, category, manufacturer, model, forced_write, '', '', '', '', '', '']
+            header_row = [
+                Generator.sanitize_csv_field(protocol),
+                Generator.sanitize_csv_field(category),
+                Generator.sanitize_csv_field(manufacturer),
+                Generator.sanitize_csv_field(model),
+                Generator.sanitize_csv_field(forced_write),
+                '', '', '', '', '', ''
+            ]
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
+            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
                     str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
@@ -516,12 +658,68 @@ class Generator:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates a simplified input CSV or definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            with open(filepath, 'rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                snippet = f.read(2048)
+                f.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                except csv.Error:
+                    dialect = csv.excel
+
+                reader = csv.DictReader(f, dialect=dialect)
+                rows = list(reader)
+
+                # If it's a definition file (first row is header)
+                if rows and 'modbusRTU' in str(rows[0]):
+                    # Re-read without DictReader if it's a raw definition
+                    f.seek(0)
+                    reader = csv.reader(f, delimiter=';')
+                    next(reader) # Header
+                    valid = True
+                    seen_names = {}
+                    seen_tags = {}
+                    address_usage = {}
+                    warned_lines = set()
+                    for i, row in enumerate(reader, start=2):
+                        if len(row) < 11: continue
+                        info1, address, dtype, name, tag = row[1], row[2], row[3], row[5], row[6]
+                        if not self.validate_address(address, dtype):
+                            logging.warning(f"Line {i}: Invalid address {address}")
+                            valid = False
+                        self._check_address_overlap(info1, address, dtype, name, i, address_usage, warned_lines)
+                    return valid and len(warned_lines) == 0
+
+                # Normal simplified CSV validation
+                valid = True
+                # Wrap in a list to allow multiple passes if needed, but here we just process
+                for i, row in enumerate(self.process_rows(rows), start=2):
+                    pass
+                return True # process_rows already logs warnings
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Validation error: {e}")
+            return False
+
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    rows = [
+    raw_rows = [
         ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
         ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
     ]
+
+    rows = [[Generator.sanitize_csv_field(cell) for cell in row] for row in raw_rows]
+    headers = [Generator.sanitize_csv_field(h) for h in headers]
     try:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
