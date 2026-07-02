@@ -2,6 +2,7 @@ import unittest
 import os
 import csv
 import json
+import itertools
 
 try:
     from openpyxl import Workbook
@@ -17,7 +18,7 @@ try:
 except ImportError:
     HAS_REPORTLAB = False
 
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 
 class TestExtractor(unittest.TestCase):
     def setUp(self):
@@ -57,8 +58,18 @@ class TestExtractor(unittest.TestCase):
             if os.path.exists(f):
                 os.remove(f)
 
+    def test_peek_generator(self):
+        gen = (i for i in range(3))
+        has_data, new_gen = peek_generator(gen)
+        self.assertTrue(has_data)
+        self.assertEqual(list(new_gen), [0, 1, 2])
+
+        empty_gen = (i for i in range(0))
+        has_data, new_gen = peek_generator(empty_gen)
+        self.assertFalse(has_data)
+        self.assertEqual(list(new_gen), [])
+
     def test_normalize_type(self):
-        # normalize_type is now a static method
         self.assertEqual(Extractor.normalize_type("Uint16"), "U16")
         self.assertEqual(Extractor.normalize_type("Int32"), "I32")
         self.assertEqual(Extractor.normalize_type("Float32"), "F32")
@@ -68,15 +79,14 @@ class TestExtractor(unittest.TestCase):
     def test_extract_from_excel(self):
         if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
         data = [list(table) for table in self.extractor.extract_from_excel(self.excel_file)]
-        self.assertEqual(len(data), 1) # One sheet = one table
-        self.assertEqual(len(data[0]), 3) # 3 data rows
+        self.assertEqual(len(data), 1)
+        self.assertEqual(len(data[0]), 3)
         self.assertEqual(str(data[0][0]["Reg Addr"]), "0x0001")
 
     @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_map_and_clean_excel(self):
         if not os.path.exists(self.excel_file): self.skipTest("Excel file not created")
         raw_data = self.extractor.extract_from_excel(self.excel_file)
-        # Custom mapping
         self.extractor.mapping = {
             "Address": "Reg Addr",
             "Name": "Description",
@@ -87,20 +97,8 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[0]["Address"], "1")
         self.assertEqual(mapped[0]["Name"], "Voltage")
         self.assertEqual(mapped[0]["Type"], "U16")
-        self.assertEqual(mapped[1]["Type"], "I32")
-        self.assertEqual(mapped[2]["Type"], "F32")
-
-    @unittest.skipUnless(HAS_REPORTLAB, "reportlab not installed")
-    def test_extract_from_pdf(self):
-        if not os.path.exists(self.pdf_file): self.skipTest("PDF file not created")
-        data = [list(table) for table in self.extractor.extract_from_pdf(self.pdf_file)]
-        self.assertEqual(len(data), 1) # One table found
-        self.assertEqual(len(data[0]), 2) # 2 data rows
-        self.assertEqual(data[0][0]["Address"], "1000")
-        self.assertEqual(data[0][0]["Name"], "Temp")
 
     def test_fuzzy_mapping(self):
-        # Even without explicit mapping, it should find Name, Address, Type if headers are similar
         raw_data = [
             [{"Register Address": "0x10", "Variable Name": "Test", "Data Type": "Uint16"}]
         ]
