@@ -1,0 +1,3 @@
+modbusRTU;Inverter;Test;Defaulting;;;;;;;
+1;2;100_0_1;BITS;;Disc Test;disc_test;1.000000;0.000000;;4
+2;4;101;U16;;Input Test;input_test;1.000000;0.000000;;4
