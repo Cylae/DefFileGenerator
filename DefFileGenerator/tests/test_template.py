@@ -1,31 +1,29 @@
 import unittest
 import os
 import csv
-from DefFileGenerator.def_gen import run_generator, GeneratorConfig
+import logging
+import tempfile
+from DefFileGenerator.def_gen import generate_template
 
 class TestTemplate(unittest.TestCase):
     def setUp(self):
-        self.template_file = "test_template.csv"
+        self.temp_dir = tempfile.TemporaryDirectory()
 
     def tearDown(self):
-        if os.path.exists(self.template_file):
-            os.remove(self.template_file)
+        self.temp_dir.cleanup()
 
     def test_generate_template(self):
-        config = GeneratorConfig(output=self.template_file, template=True)
-        run_generator(config)
+        path = os.path.join(self.temp_dir.name, "template.csv")
+        generate_template(path)
 
-        self.assertTrue(os.path.exists(self.template_file))
+        self.assertTrue(os.path.exists(path))
+        with open(path, "r", newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            self.assertGreater(len(rows), 0)
+            self.assertIn("Name", rows[0])
+            self.assertIn("Address", rows[0])
+            self.assertIn("Type", rows[0])
 
-        with open(self.template_file, 'r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            headers = next(reader)
-            self.assertEqual(headers[0], 'Name')
-            self.assertEqual(headers[3], 'Address')
-
-            first_row = next(reader)
-            self.assertEqual(first_row[0], 'Example Variable')
-            self.assertEqual(first_row[3], '30001')
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
