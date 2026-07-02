@@ -5,6 +5,7 @@ import sys
 import logging
 import re
 import math
+import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
@@ -20,6 +21,20 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+    """
+    Checks if an iterable is non-empty without fully consuming it.
+    Returns (has_data, original_iterator).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 @dataclass
 class GeneratorConfig:
@@ -785,6 +800,61 @@ class Generator:
             return is_valid
         except (OSError, csv.Error) as e:
             logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
+
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file (CSV)."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found for validation: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error(f"Invalid Webdyn header in {filepath}")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row): continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns. Skipping.")
+                        continue
+
+                    # Index (0), Info1 (1), Info2 (2), Info3 (3), Info4 (4), Name (5), Tag (6), CoefA (7), CoefB (8), Unit (9), Action (10)
+                    info1, addr, dtype, tag, name = row[1], row[2], row[3], row[6], row[5]
+
+                    # 1. Tag uniqueness (Fatal)
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Fatal - Duplicate Tag '{tag}'. Already seen at line {seen_tags[tag]}.")
+                        valid = False
+                    seen_tags[tag] = line_num
+
+                    # 2. Address Range (0-65535)
+                    norm_addr = self.normalize_address_val(addr.split('_')[0])
+                    try:
+                        addr_int = int(norm_addr, 0)
+                        if addr_int < 0 or addr_int > 65535:
+                            logging.warning(f"Line {line_num}: Address {addr_int} is out of standard Modbus range (0-65535).")
+                    except ValueError:
+                        logging.error(f"Line {line_num}: Invalid address format '{addr}'.")
+                        valid = False
+
+                    # 3. Address Overlap
+                    self._check_address_overlap(info1, addr, dtype, name, line_num, address_usage, warned_lines)
+
+            # Overlap warnings in _check_address_overlap do not necessarily invalidate,
+            # but duplicate tags do.
+            return valid
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during validation: {e}")
             return False
 
     @staticmethod

@@ -60,10 +60,10 @@ def peek_generator(generator: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
         return False, iter([])
 
 try:
-    from DefFileGenerator.def_gen import Generator
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
     try:
-        from def_gen import Generator
+        from def_gen import Generator, peek_generator
     except ImportError:
         try:
             import def_gen
@@ -166,6 +166,22 @@ class Extractor:
 
         def pdf_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
             try:
+                # Normalize pages to list of ints
+                target_page_indices = None
+                if pages:
+                    if isinstance(pages, int):
+                        target_page_indices = [pages - 1]
+                    elif isinstance(pages, str):
+                        try:
+                            target_page_indices = [int(p.strip()) - 1 for p in pages.split(',')]
+                        except ValueError:
+                            pass
+                    elif isinstance(pages, list):
+                        try:
+                            target_page_indices = [int(p) - 1 for p in pages if str(p).strip().isdigit()]
+                        except ValueError:
+                            pass
+
                 with pdfplumber.open(filepath) as pdf:
                     if pages is None:
                         target_pages = pdf.pages

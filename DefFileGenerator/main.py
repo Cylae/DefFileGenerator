@@ -14,7 +14,7 @@ import tempfile
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -297,6 +297,10 @@ def _run_cli():
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
     parser_validate.add_argument('input_file', help='Definition CSV to validate')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a Webdyn definition file')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV to validate')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
