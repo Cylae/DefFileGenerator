@@ -1,0 +1,3 @@
+Name,RegisterType,Address,Type
+InputVar,Input Register,100,U16
+HoldingVar,Holding Register,101,U16

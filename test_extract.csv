@@ -1,0 +1,4 @@
+Name,Tag,RegisterType,Address,Type,Factor,Offset,Unit,Action,ScaleFactor
+AC Power,,Holding Register,40001,U16,1.0,,W,R,
+DC Voltage,,Holding Register,40002,U16,0.1,,V,R,
+Temperature,,Holding Register,40003,I16,0.1,,°C,R,
