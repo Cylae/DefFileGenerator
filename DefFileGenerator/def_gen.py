@@ -750,6 +750,12 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
             ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
         ]
 
+def generate_template(output_file: Optional[str]) -> None:
+    headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+    rows = [
+        ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
+        ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
+    ]
     try:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
