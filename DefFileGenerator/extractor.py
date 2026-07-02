@@ -65,7 +65,11 @@ except ImportError:
     try:
         from def_gen import Generator
     except ImportError:
-        Generator = None
+        try:
+            import def_gen
+            Generator = def_gen.Generator
+        except ImportError:
+            Generator = None
 
 def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterable[Any]]:
     """Peeks at the first element of an iterable without exhausting it."""
