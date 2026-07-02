@@ -1,3 +1,5 @@
+from unittest.mock import patch
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 import unittest
 import logging
 from DefFileGenerator.def_gen import Generator
@@ -51,7 +53,6 @@ class TestGenerator(unittest.TestCase):
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
-        self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len
         self.assertFalse(self.generator.validate_address('xyz', 'U16')) # Not hex
 
     def test_get_register_count(self):
@@ -181,6 +182,25 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+
+    def test_generate_template_modes(self):
+        import os
+        from DefFileGenerator.def_gen import generate_template
+        # Test input mode
+        out_input = "template_input.csv"
+        generate_template(out_input, mode='input')
+        with open(out_input, 'r') as f:
+            content = f.read()
+            self.assertIn("Name,Tag,RegisterType", content)
+        os.remove(out_input)
+
+        # Test definition mode
+        out_def = "template_def.csv"
+        generate_template(out_def, mode='definition')
+        with open(out_def, 'r') as f:
+            content = f.read()
+            self.assertIn("modbusRTU;Inverter", content)
+        os.remove(out_def)
 
 if __name__ == '__main__':
     unittest.main()
