@@ -1,0 +1,3 @@
+Name,Address,Type,RegisterType
+Disc Test,100_0_1,BITS,discrete
+Input Test,101,U16,input
