@@ -10,9 +10,9 @@ from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer')
-    parser.add_argument('--model')
+    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('--manufacturer', default='Manufacturer')
+    parser.add_argument('--model', default='Model')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -52,10 +52,10 @@ def _run_cli():
     ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
-    mapping_path = getattr(args, 'mapping', None)
-    if mapping_path:
+    mapping_arg = getattr(args, 'mapping', None)
+    if mapping_arg:
         try:
-            with open(mapping_path, 'r') as f:
+            with open(mapping_arg, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -75,29 +75,31 @@ def _run_cli():
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, sheet_arg)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    has_data, raw = peek_generator(raw)
-    if not has_data: logging.error("No data extracted."); sys.exit(1)
+    is_empty, raw = peek_generator(raw)
+    if is_empty: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    first_row, mapped = peek_generator(mapped)
+    if not first_row: logging.error("No registers extracted."); sys.exit(1)
 
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
+    manufacturer = getattr(args, 'manufacturer', 'Manufacturer')
+    model = getattr(args, 'model', 'Model')
+    output_file = getattr(args, 'output', None) or f"{re.sub(r'[^a-zA-Z0-9]', '_', manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
+        manufacturer=manufacturer,
+        model=model,
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
         address_offset=0 # Already applied during extraction
     )
     run_generator(config, input_data=mapped)
