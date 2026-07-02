@@ -85,6 +85,7 @@ class Extractor:
     def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
 
+
     @staticmethod
     def normalize_type(t: Any) -> str:
         if Generator:
