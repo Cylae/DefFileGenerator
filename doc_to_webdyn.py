@@ -87,10 +87,12 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    is_empty, raw = peek_generator(raw)
-    if is_empty: logging.error("No data extracted."); sys.exit(1)
+    has_data, raw_peeked = peek_generator(raw)
+    if not has_data: logging.error("No data extracted."); sys.exit(1)
 
     mapped = extractor.map_and_clean(raw, args.address_offset)
+    first_row, mapped = peek_generator(mapped)
+    if not first_row: logging.error("No registers extracted."); sys.exit(1)
 
     first, mapped = peek_generator(mapped)
     if first is None:
