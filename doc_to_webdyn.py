@@ -4,7 +4,6 @@ import sys
 import os
 import logging
 import re
-import json
 import csv
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
@@ -23,6 +22,7 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
+    parser.add_argument('--template', action='store_true', help='Generate template CSV')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -58,9 +58,10 @@ def _run_cli():
         logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     mapping = {}
-    if args.mapping:
+    mapping_arg = getattr(args, 'mapping', None)
+    if mapping_arg:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(mapping_arg, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -69,23 +70,25 @@ def _run_cli():
     extractor = Extractor(mapping)
 
     pages = None
-    if args.pages:
+    pages_arg = getattr(args, 'pages', None)
+    if pages_arg:
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
         else:
             try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    is_empty, raw = peek_generator(raw)
+    if is_empty: logging.error("No data extracted."); sys.exit(1)
 
     mapped = extractor.map_and_clean(raw, args.address_offset)
 
@@ -117,7 +120,7 @@ def main():
         sys.exit(130)
     except SystemExit:
         raise
-    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
+    except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
