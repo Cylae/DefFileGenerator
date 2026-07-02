@@ -111,6 +111,12 @@ def validate_command(args):
     if not generator.validate_csv(args.input_file):
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
+
 def generate_command(args):
     template = getattr(args, 'template', False)
     # If using template with generate command, the input_file argument might actually be the word 'definition'
@@ -236,6 +242,10 @@ def _run_cli():
     parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
     parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate an existing definition file')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
+
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
@@ -286,6 +296,8 @@ def _run_cli():
 
     if args.command == 'extract':
         extract_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'generate':
         generate_command(args)
     elif args.command == 'validate':
