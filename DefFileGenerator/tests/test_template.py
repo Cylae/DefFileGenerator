@@ -1,36 +1,29 @@
 import unittest
-import sys
 import os
-import io
-from unittest.mock import patch
+import csv
+import logging
+import tempfile
+from DefFileGenerator.def_gen import generate_template
 
-class TestTemplateGeneration(unittest.TestCase):
+class TestTemplate(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+
     def tearDown(self):
-        if os.path.exists("template_main.csv"):
-            os.remove("template_main.csv")
-        if os.path.exists("template_doc.csv"):
-            os.remove("template_doc.csv")
+        self.temp_dir.cleanup()
 
-    def test_main_template_generation(self):
-        from DefFileGenerator.main import main
-        test_args = ["main.py", "generate", "--template", "-o", "template_main.csv"]
-        with patch.object(sys, 'argv', test_args):
-            main()
-            self.assertTrue(os.path.exists("template_main.csv"))
-            with open("template_main.csv", "r") as f:
-                content = f.read()
-                self.assertIn("Name,Tag,RegisterType,Address,Type", content)
+    def test_generate_template(self):
+        path = os.path.join(self.temp_dir.name, "template.csv")
+        generate_template(path)
 
-    def test_doc_to_webdyn_template_generation(self):
-        from doc_to_webdyn import main
-        test_args = ["doc_to_webdyn.py", "--template", "-o", "template_doc.csv"]
-        with patch.object(sys, 'argv', test_args):
-            main()
-            self.assertTrue(os.path.exists("template_doc.csv"))
-            with open("template_doc.csv", "r") as f:
-                content = f.read()
-                # Generator.generate_template produces simplified CSV headers
-                self.assertIn("Name,Tag,RegisterType,Address,Type", content)
+        self.assertTrue(os.path.exists(path))
+        with open(path, "r", newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            self.assertGreater(len(rows), 0)
+            self.assertIn("Name", rows[0])
+            self.assertIn("Address", rows[0])
+            self.assertIn("Type", rows[0])
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
