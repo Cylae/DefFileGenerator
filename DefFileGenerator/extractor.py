@@ -7,9 +7,18 @@ import os
 import re
 import sys
 import io
-import zipfile
 import itertools
+import zipfile
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable has data without exhausting it."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 try:
     import openpyxl
@@ -152,8 +161,8 @@ class Extractor:
                                 if any(row_dict.values()):
                                     table_rows.append(row_dict)
 
-                            if table_rows:
-                                yield iter(table_rows)
+                            # Evaluate to list to ensure data is extracted before context closes
+                            yield list(table_generator(table))
 
             except (OSError,) + PDF_ERRORS as e:
                 logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
@@ -234,7 +243,7 @@ class Extractor:
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
-            return
+            return iter([])
 
         for table in tables:
             if not table: continue
