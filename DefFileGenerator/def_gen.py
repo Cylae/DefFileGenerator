@@ -480,139 +480,60 @@ class Generator:
             logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def validate_csv(self, filepath: str) -> bool:
-        """Validates an existing WebdynSunPM definition file."""
-        if not os.path.exists(filepath):
-            logging.error(f"File not found: {filepath}")
-            return False
-
-        valid = True
-        seen_tags = {}
-        address_usage = {}
-        warned_lines = set()
-
-        try:
-            with open(filepath, 'r', encoding='utf-8-sig') as f:
-                reader = csv.reader(f, delimiter=';')
-                header = next(reader, None)
-                if not header:
-                    logging.error("Empty file.")
-                    return False
-
-                for line_num, row in enumerate(reader, start=2):
-                    if not row or len(row) < 11:
-                        if any(row):
-                            logging.warning(f"Line {line_num}: Invalid row format (expected at least 11 columns).")
-                        continue
-
-                    # Header/Meta mapping from process_rows:
-                    # 0:Index, 1:Info1, 2:Info2, 3:Info3, 4:Info4, 5:Name, 6:Tag, 7:CoefA, 8:CoefB, 9:Unit, 10:Action
-                    info1 = row[1]
-                    address = row[2]
-                    dtype = row[3]
-                    name = row[5]
-                    tag = row[6]
-
-                    if not tag:
-                        logging.error(f"Line {line_num}: Missing Tag.")
-                        valid = False
-                    elif tag in seen_tags:
-                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Previously at line {seen_tags[tag]}.")
-                        valid = False
-                    else:
-                        seen_tags[tag] = line_num
-
-                    if not self.validate_address(address, dtype):
-                        logging.error(f"Line {line_num}: Invalid Address '{address}' for type '{dtype}'.")
-                        valid = False
-
-                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
-
-            return valid
-        except Exception as e:
-            logging.error(f"Error validating CSV: {e}")
-            return False
-
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
+    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[str, Any]], warned_lines: Set[Tuple[int, int]]) -> None:
+        """Checks for address overlaps using O(log N) binary search on intervals."""
         try:
             addr_part = address.split('_')[0]
             start_addr = int(Generator.normalize_address_val(addr_part))
             reg_count = self.get_register_count(dtype, address)
-            if info1 not in address_usage: address_usage[info1] = {}
+            end_addr = start_addr + reg_count - 1
+
+            if info1 not in address_usage:
+                address_usage[info1] = {'intervals': [], 'max_len': 0}
+
+            usage = address_usage[info1]
+            intervals = usage['intervals']
+            max_len = usage['max_len']
+
             is_bits = (dtype.upper() == 'BITS')
-            for i in range(reg_count):
-                curr_addr = start_addr + i
-                if curr_addr in address_usage[info1]:
-                    for u_line, u_name, u_type in address_usage[info1][curr_addr]:
-                        if is_bits and u_type == 'BITS' and curr_addr == start_addr: continue
-                        warn_key = tuple(sorted((line_num, u_line)))
-                        if warn_key not in warned_lines:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {curr_addr}. Overlaps with '{u_name}' (Line {u_line}).")
-                            warned_lines.add(warn_key)
-                else: address_usage[info1][curr_addr] = []
-                address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
-        except (ValueError, IndexError): pass
 
-    def validate_csv(self, filepath: str) -> bool:
-        """Validates an existing Webdyn definition CSV file."""
-        if not os.path.exists(filepath):
-            logging.error(f"File not found: {filepath}")
-            return False
+            import bisect
+            idx = bisect.bisect_left(intervals, (start_addr, -1, -1, '', ''))
 
-        valid = True
-        seen_tags = {}
-        address_usage = {}
-        warned_lines = set()
-
-        try:
-            with open(filepath, mode='rb') as f:
-                header_bytes = f.read(4)
-                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
-
-            with open(filepath, mode='r', encoding=encoding) as csvfile:
-                reader = csv.reader(csvfile, delimiter=';')
-                try:
-                    header = next(reader)
-                except StopIteration:
-                    logging.error(f"Empty file: {filepath}")
-                    return False
-
-                if len(header) < 4:
-                    logging.error(f"Invalid Webdyn header in {filepath}")
-                    return False
-
-                for line_num, row in enumerate(reader, start=2):
-                    if not row or not any(row):
+            # Check to the right
+            for j in range(idx, len(intervals)):
+                u_start, u_end, u_line, u_name, u_type = intervals[j]
+                if u_start > end_addr:
+                    break
+                if max(start_addr, u_start) <= min(end_addr, u_end):
+                    if is_bits and u_type == 'BITS' and start_addr == u_start:
                         continue
-                    if len(row) < 11:
-                        logging.warning(f"Line {line_num}: Insufficient columns (expected 11, got {len(row)}). Skipping.")
+                    warn_key = tuple(sorted((line_num, u_line)))
+                    if warn_key not in warned_lines:
+                        overlap_start = max(start_addr, u_start)
+                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {overlap_start}. Overlaps with '{u_name}' (Line {u_line}).")
+                        warned_lines.add(warn_key)
+
+            # Check to the left
+            for j in range(idx - 1, -1, -1):
+                u_start, u_end, u_line, u_name, u_type = intervals[j]
+                if start_addr - u_start > max_len:
+                    break
+                if max(start_addr, u_start) <= min(end_addr, u_end):
+                    if is_bits and u_type == 'BITS' and start_addr == u_start:
                         continue
+                    warn_key = tuple(sorted((line_num, u_line)))
+                    if warn_key not in warned_lines:
+                        overlap_start = max(start_addr, u_start)
+                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {overlap_start}. Overlaps with '{u_name}' (Line {u_line}).")
+                        warned_lines.add(warn_key)
 
-                    info1, info2, info3 = row[1].strip(), row[2].strip(), row[3].strip()
-                    name, tag = row[5].strip(), row[6].strip()
+            bisect.insort(intervals, (start_addr, end_addr, line_num, name, dtype.upper()))
+            if reg_count > max_len:
+                usage['max_len'] = reg_count
 
-                    # Compound address handling and validation
-                    addr_parts = info2.split('_')
-                    norm_addr = '_'.join([Generator.normalize_address_val(p) for p in addr_parts])
-
-                    if not self.validate_address(norm_addr, info3):
-                        valid = False
-
-                    if tag:
-                        if tag in seen_tags:
-                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Previous occurrence at line {seen_tags[tag]}.")
-                            valid = False
-                        else:
-                            seen_tags[tag] = line_num
-
-                    self._check_address_overlap(info1, norm_addr, info3, name, line_num, address_usage, warned_lines)
-
-                    if info1 not in ['1', '2', '3', '4']:
-                        logging.warning(f"Line {line_num}: Invalid RegisterType code '{info1}'")
-        except (OSError, csv.Error) as e:
-            logging.error(f"Error reading {filepath} for validation: {e}")
-            return False
-        return valid
+        except (ValueError, IndexError):
+            pass
 
     @staticmethod
     def validate_csv(filepath: str) -> bool:
