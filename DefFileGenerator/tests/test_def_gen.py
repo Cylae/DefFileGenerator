@@ -182,5 +182,20 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_sanitize_csv_field(self):
+        # Normal fields should be unchanged
+        self.assertEqual(self.generator.sanitize_csv_field('TestName'), 'TestName')
+        self.assertEqual(self.generator.sanitize_csv_field('123'), '123')
+        self.assertEqual(self.generator.sanitize_csv_field(''), '')
+        self.assertEqual(self.generator.sanitize_csv_field(None), '')
+
+        # Vulnerable fields should be escaped
+        self.assertEqual(self.generator.sanitize_csv_field('=cmd()'), "'=cmd()")
+        self.assertEqual(self.generator.sanitize_csv_field('+A1+B1'), "'+A1+B1")
+        self.assertEqual(self.generator.sanitize_csv_field('-1'), "'-1")
+        self.assertEqual(self.generator.sanitize_csv_field('@SUM(A1:A10)'), "'@SUM(A1:A10)")
+        self.assertEqual(self.generator.sanitize_csv_field('\tTabbed'), "'\tTabbed")
+        self.assertEqual(self.generator.sanitize_csv_field('\rReturn'), "'\rReturn")
+
 if __name__ == '__main__':
     unittest.main()

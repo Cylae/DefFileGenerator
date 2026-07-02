@@ -384,6 +384,16 @@ class Generator:
             pass
 
     @staticmethod
+    def sanitize_csv_field(field: Any) -> str:
+        """Sanitizes a field to prevent CSV Formula Injection."""
+        if field is None:
+            return ""
+        s = str(field)
+        if s and s[0] in ('=', '+', '-', '@', '\t', '\r'):
+            return "'" + s
+        return s
+
+    @staticmethod
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
         """Calculates CoefA and CoefB based on input values."""
         factor = Generator._parse_numeric(factor_str, default=1.0)
@@ -488,7 +498,14 @@ class Generator:
             else:
                 outfile = output
 
-            header_row = [protocol, category, manufacturer, model, forced_write, '', '', '', '', '', '']
+            header_row = [
+                Generator.sanitize_csv_field(protocol),
+                Generator.sanitize_csv_field(category),
+                Generator.sanitize_csv_field(manufacturer),
+                Generator.sanitize_csv_field(model),
+                Generator.sanitize_csv_field(forced_write),
+                '', '', '', '', '', ''
+            ]
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
@@ -515,10 +532,13 @@ class Generator:
 
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    rows = [
+    raw_rows = [
         ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
         ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
     ]
+
+    rows = [[Generator.sanitize_csv_field(cell) for cell in row] for row in raw_rows]
+    headers = [Generator.sanitize_csv_field(h) for h in headers]
     try:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
