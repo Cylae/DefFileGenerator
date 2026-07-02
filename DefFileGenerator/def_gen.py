@@ -873,6 +873,71 @@ class Generator:
             logging.error(f"Error during validation: {e}")
             return False
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            # Handle potential encoding issues
+            with open(filepath, 'rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                reader = csv.reader(f, delimiter=';')
+                try:
+                    header = next(reader)
+                except StopIteration:
+                    logging.error("Definition file is empty.")
+                    return False
+
+                if len(header) < 4:
+                    logging.error("Invalid Webdyn definition header.")
+                    return False
+
+                logging.info(f"Validating definition: {header[2]} - {header[3]}")
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row): continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (found {len(row)}, expected 11). Skipping.")
+                        continue
+
+                    # index, info1, info2, info3, info4, name, tag, coefA, coefB, unit, action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    # Tag uniqueness (FATAL for Webdyn)
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (already used at line {seen_tags[tag]}).")
+                        is_valid = False
+                    else:
+                        seen_tags[tag] = line_num
+
+                    # Type validation
+                    if not self.validate_type(info3):
+                        logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
+
+                    # Address validation
+                    if not self.validate_address(info2, info3):
+                        logging.error(f"Line {line_num}: Invalid Address format '{info2}' for type '{info3}'.")
+                        is_valid = False
+
+                    # Address overlap check
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error reading {filepath}: {e}")
+            return False
+
+        return is_valid
+
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
