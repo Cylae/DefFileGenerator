@@ -122,6 +122,11 @@ def validate_command(args):
     if not generator.validate_csv(args.input_file):
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def generate_command(args):
     template = getattr(args, 'template', False)
     # If using template with generate command, the input_file argument might actually be the word 'definition'
@@ -241,6 +246,10 @@ def _run_cli():
     parser_extract.add_argument('--sheet', help='Excel sheet')
     parser_extract.add_argument('--pages', help='PDF pages')
     parser_extract.add_argument('--address-offset', type=int, default=0, help='Address offset')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
