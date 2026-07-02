@@ -983,7 +983,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
 
                 generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                            config.protocol, config.category, config.forced_write)
-    except (OSError, csv.Error, ValueError) as e:
+    except (OSError, csv.Error, ValueError, TypeError, KeyError) as e:
         logging.error(f"An error occurred during generation: {e}")
 
 def main():

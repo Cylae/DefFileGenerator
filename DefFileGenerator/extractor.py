@@ -121,6 +121,9 @@ class Extractor:
                         header_row = next(rows)
                     except StopIteration:
                         return
+                    sheets = [wb[sheet_name]]
+                else:
+                    sheets = wb.worksheets
 
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
 
@@ -168,7 +171,8 @@ class Extractor:
                     for page in target_pages:
                         tables = page.extract_tables()
                         for table in tables:
-                            if not table or len(table) < 2: continue
+                            if not table or len(table) < 2:
+                                continue
 
                             def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
                                 headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
@@ -177,7 +181,7 @@ class Extractor:
                                     for i, cell in enumerate(row):
                                         if i < len(headers):
                                             row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                                    if any(row_dict.values()):
+                                    if any(v.strip() for v in row_dict.values() if v):
                                         yield row_dict
 
                             yield table_generator(table)
