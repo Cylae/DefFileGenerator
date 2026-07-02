@@ -62,7 +62,6 @@ def peek_generator(generator: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
 try:
     from DefFileGenerator.def_gen import Generator
 except ImportError:
-    # Support local import if running from within the directory
     try:
         from def_gen import Generator
     except ImportError:
@@ -292,8 +291,7 @@ class Extractor:
             except StopIteration:
                 pass
 
-            if not buffer:
-                continue
+            if not buffer: continue
 
             all_keys = set()
             for row in buffer:
@@ -362,8 +360,7 @@ class Extractor:
 
             for row in buffer:
                 processed = process_row(row)
-                if processed:
-                    yield processed
+                if processed: yield processed
 
             for row in iterator:
                 processed = process_row(row)
