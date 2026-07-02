@@ -21,18 +21,22 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
-    parser.add_argument('--template', action='store_true', help='Generate template CSV')
+    parser.add_argument('--template', action='store_true')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
-    input_file = getattr(args, 'input_file', None)
-    if not input_file or not os.path.exists(input_file):
-        logging.error(f"Input file not found: {input_file}")
+    if getattr(args, 'template', False):
+        config = GeneratorConfig(output=args.output, template=True)
+        run_generator(config)
+        return
+
+    if not args.input_file or not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
-    ext = os.path.splitext(input_file)[1].lower()
+    ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
     mapping_path = getattr(args, 'mapping', None)
@@ -69,8 +73,8 @@ def _run_cli():
     if not has_data: logging.error("No data extracted."); sys.exit(1)
 
     mapped = extractor.map_and_clean(raw, args.address_offset)
-    first_row, mapped = peek_generator(mapped)
-    if not first_row: logging.error("No registers extracted."); sys.exit(1)
+    first, mapped = peek_generator(mapped)
+    if not first: logging.error("No registers extracted."); sys.exit(1)
 
     manufacturer = getattr(args, 'manufacturer', 'Manufacturer')
     model = getattr(args, 'model', 'Model')
