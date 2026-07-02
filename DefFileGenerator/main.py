@@ -16,6 +16,11 @@ def setup_logging(verbose=False):
     )
 
 def _perform_extraction(args):
+    input_file = getattr(args, 'input_file', None)
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
+        sys.exit(1)
+
     mapping = {}
     mapping_path = getattr(args, 'mapping', None)
     if mapping_path:
@@ -34,10 +39,6 @@ def _perform_extraction(args):
 
     ext = os.path.splitext(input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
-    pages_arg = getattr(args, 'pages', None)
-
-    if pages_arg and ext != '.pdf':
-        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, getattr(args, 'sheet', None))
@@ -79,6 +80,14 @@ def extract_command(args):
         f.close()
         logging.info(f"Extraction complete. Saved to {output}")
 
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful: {args.input_file}")
+    else:
+        logging.error(f"Validation failed: {args.input_file}")
+        sys.exit(1)
+
 def generate_command(args):
     if not getattr(args, 'template', False):
         if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
@@ -97,6 +106,17 @@ def generate_command(args):
         template=getattr(args, 'template', False)
     )
     run_generator(config)
+
+def validate_command(args):
+    if not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info("Validation successful.")
+    else:
+        logging.error("Validation failed.")
+        sys.exit(1)
 
 def run_command(args):
     if getattr(args, 'template', False):
@@ -158,6 +178,7 @@ def _run_cli():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_generate.add_argument('--template', action='store_true', help='Generate template CSV')
 
@@ -173,6 +194,7 @@ def _run_cli():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_run.add_argument('--template', action='store_true', help='Generate template CSV')
 

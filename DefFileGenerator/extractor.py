@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
 import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
@@ -128,7 +129,8 @@ class Extractor:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
 
-        def pdf_tables_generator():
+        # Handle pages as comma-separated string
+        if isinstance(pages, str):
             try:
                 with pdfplumber.open(filepath) as pdf:
                     target_page_indices = []
@@ -163,7 +165,10 @@ class Extractor:
             except (ValueError, TypeError, IndexError) as e:
                 logging.error(f"Error extracting from PDF {filepath}: {e}")
 
-        return pdf_tables_generator()
+        except (OSError,) + PDF_ERRORS as e:
+            logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
+        except (ValueError, TypeError, IndexError) as e:
+            logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
@@ -222,7 +227,7 @@ class Extractor:
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
-            return
+            return iter([])
 
         for table in tables:
             if not table: continue
