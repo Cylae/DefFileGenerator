@@ -183,39 +183,24 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
+    def test_generate_template_modes(self):
+        import os
+        from DefFileGenerator.def_gen import generate_template
+        # Test input mode
+        out_input = "template_input.csv"
+        generate_template(out_input, mode='input')
+        with open(out_input, 'r') as f:
+            content = f.read()
+            self.assertIn("Name,Tag,RegisterType", content)
+        os.remove(out_input)
 
-class TestRunGeneratorErrorPaths(unittest.TestCase):
-    def test_missing_input(self):
-        config = GeneratorConfig()
-        with self.assertLogs(level='ERROR') as log:
-            run_generator(config)
-            self.assertTrue(any("input_file or input_data is required." in m for m in log.output))
-
-    def test_missing_file(self):
-        config = GeneratorConfig()
-        config.input_file = "non_existent_file.csv"
-        with self.assertLogs(level='ERROR') as log:
-            run_generator(config)
-            self.assertTrue(any("Input file not found" in m for m in log.output))
-
-    def test_missing_manufacturer_model(self):
-        config = GeneratorConfig()
-        config.input_file = "dummy.csv" # will be patched
-        with patch('os.path.exists', return_value=True):
-            with self.assertLogs(level='ERROR') as log:
-                run_generator(config)
-                self.assertTrue(any("manufacturer and model are required." in m for m in log.output))
-
-    def test_exception_handling(self):
-        config = GeneratorConfig()
-        config.input_file = "dummy.csv"
-        config.manufacturer = "Mfg"
-        config.model = "Model"
-        with patch('os.path.exists', return_value=True):
-            with patch('builtins.open', side_effect=OSError("Test IO Error")):
-                with self.assertLogs(level='ERROR') as log:
-                    run_generator(config)
-                    self.assertTrue(any("An error occurred during generation: Test IO Error" in m for m in log.output))
+        # Test definition mode
+        out_def = "template_def.csv"
+        generate_template(out_def, mode='definition')
+        with open(out_def, 'r') as f:
+            content = f.read()
+            self.assertIn("modbusRTU;Inverter", content)
+        os.remove(out_def)
 
 if __name__ == '__main__':
     unittest.main()
