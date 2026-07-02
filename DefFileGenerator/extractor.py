@@ -46,6 +46,15 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable is empty without exhausting it."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
+
 try:
     from DefFileGenerator.def_gen import Generator
 except ImportError:
@@ -226,8 +235,8 @@ class Extractor:
             return iter([])
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
-            return iter([])
+        if tables is None:
+            return
 
         for table in tables:
             if not table: continue

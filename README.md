@@ -4,16 +4,16 @@ This toolset allows for automatically extracting Modbus register information fro
 
 ## Quick Start
 
-*   **Robust Extraction**: Heuristic-based column detection for manufacturer documents.
+*   **Robust Extraction**: Heuristic-based column detection for manufacturer documents (PDF, Excel, CSV, XML).
 *   **Secure XML Processing**: XXE-protected XML parsing via `defusedxml`.
 *   **Advanced Address Logic**:
     *   Supports Decimal, Hex (0x prefix or h suffix), and Negative addresses.
     *   `address_offset`: Shift all register addresses by a specified value.
     *   Optimized overlap detection for large-scale register maps.
-    *   **Strict Range Validation**: Ensures Modbus addresses are within 0-65535.
+    *   Modbus range validation (0-65535).
 *   **Comprehensive Type Support**: Standardizes synonyms and supports endianness suffixes (e.g., `_B`, `_W`, `_WB`).
-*   **Unified CLI**: Single entry point for extraction, generation, or end-to-end runs.
-*   **Intelligent Action Defaulting**: Automatically assigns Read Only (4) for Input/Discrete registers and Read/Write (1) for Holding/Coils.
+*   **Intelligent Defaulting**: Automatically sets register actions based on type (Read Only for Input/Discrete, Read/Write for Holding/Coils).
+*   **Unified CLI**: Single entry point for extraction, generation, validation, or end-to-end runs.
 
 ## Requirements
 
@@ -26,7 +26,13 @@ Install all dependencies:
 pip install pandas openpyxl pdfplumber lxml defusedxml reportlab
 ```
 
-### 2. Basic Usage (End-to-End)
+## Unified CLI Usage
+
+The primary entry point is `DefFileGenerator/main.py`. Use `PYTHONPATH=. python3 DefFileGenerator/main.py` if running from the root.
+
+### 1. Extract registers from documentation
+Extract tables from PDF, Excel, CSV, or XML into a simplified CSV format.
+
 ```bash
 python3 DefFileGenerator/main.py extract <source_file> -o <output_csv> [options]
 ```
@@ -50,11 +56,11 @@ Extract and generate the definition file in a single step.
 python3 DefFileGenerator/main.py run <source_file> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
 
-### 4. Validate Definition File
-Check a generated WebdynSunPM CSV for formatting and Modbus range constraints.
+### 4. Validate simplified CSV
+Validate a simplified CSV for structural and Modbus constraints.
 
 ```bash
-python3 DefFileGenerator/main.py validate <definition_file>
+python3 DefFileGenerator/main.py validate <input_csv>
 ```
 
 ---
@@ -183,7 +189,7 @@ The simplified CSV uses these columns:
 | `Factor` | Multiplier factor (supports fractions like `1/10`). |
 | `Offset` | Offset value (default 0). |
 | `Unit` | Unit of measurement. |
-| `Action` | Action code (1=RW, 4=RO, etc. Defaults based on type). |
+| `Action` | Access code (1 for R/W, 4 for R). |
 | `ScaleFactor` | Power of 10 scaling ($CoefA = Factor \times 10^{ScaleFactor}$). |
 
 ---
@@ -214,8 +220,11 @@ The tool searches for columns matching these patterns (case-insensitive):
 
 ## Validation & Performance
 
-The tool is optimized for performance and strict resource constraints. It performs:
+The tool is optimized for performance and strict resource constraints.
 *   **Memory Efficiency**: O(1) memory overhead through generator-based stream processing.
-*   **Input Resilience**: Advanced IO error isolation (fallback encoding and explicit type hints).
-*   **Address Overlap Detection**: Dictionary-based O(N) check avoiding geometric performance drops.
-*   **Security Validation**: Blocks external entity injection (XXE) in XML formats reliably.
+*   **Address Overlap Detection**: Dictionary-based O(N) check.
+*   **Modbus Range Validation**: Ensures addresses are within 0-65535.
+*   **Intelligent Action Defaulting**:
+    *   Input Register (4) / Discrete Input (2) → **Read Only (4)**
+    *   Holding Register (3) / Coil (1) → **Read/Write (1)**
+*   **Security**: XXE protection for XML parsing.
