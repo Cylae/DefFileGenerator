@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import unittest
 import os
+import csv
 import logging
 import csv
 from DefFileGenerator.def_gen import Generator
