@@ -145,6 +145,13 @@ def validate_command(args):
         logging.error(f"File {args.input_file} is INVALID.")
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        logging.error("Validation failed.")
+        sys.exit(1)
+    logging.info("Validation successful.")
+
 def generate_command(args):
     template = getattr(args, 'template', False)
     # If using template with generate command, the input_file argument might actually be the word 'definition'
