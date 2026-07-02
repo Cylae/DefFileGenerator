@@ -57,14 +57,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """Checks if an iterable is empty without exhausting it."""
-    iterator = iter(iterable)
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterable[Any]]:
+    """Peeks at the first element of an iterable without exhausting it."""
+    it = iter(iterable)
     try:
-        first = next(iterator)
-        return True, itertools.chain([first], iterator)
+        first = next(it)
     except StopIteration:
-        return False, iter([])
+        return None, iter([])
+    return first, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
