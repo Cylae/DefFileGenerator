@@ -891,6 +891,10 @@ class Generator:
             if summary_str:
                 logging.info(f"Register Summary: {summary_str}")
 
+            summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
+            if summary:
+                logging.info(f"Registers summary: {summary}")
+
             if isinstance(output, str):
                 summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
                 logging.info(f"Definition file generated at {output}. Summary: {summary}")
