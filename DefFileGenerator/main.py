@@ -93,10 +93,7 @@ def extract_command(args):
 
 def validate_command(args):
     generator = Generator()
-    if generator.validate_csv(args.input_file):
-        logging.info(f"Validation successful: {args.input_file}")
-    else:
-        logging.error(f"Validation failed: {args.input_file}")
+    if not generator.validate_csv(args.input_file):
         sys.exit(1)
 
 def generate_command(args):

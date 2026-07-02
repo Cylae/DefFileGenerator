@@ -340,81 +340,21 @@ class Generator:
 
         return tag
 
-    def validate_csv(self, filepath: str) -> bool:
-        """Performs comprehensive validation of the input CSV."""
-        if not os.path.exists(filepath):
-            logging.error(f"File not found: {filepath}")
-            return False
-
-        success = True
-        seen_names = {}
-        seen_tags = {}
-        address_usage = {}
-        warned_lines = set()
-
-        try:
-            with open(filepath, mode='rb') as f:
-                header_bytes = f.read(4)
-                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
-
-            with open(filepath, mode='r', encoding=encoding) as csvfile:
-                snippet = csvfile.read(2048)
-                csvfile.seek(0)
-                try:
-                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                except csv.Error:
-                    dialect = csv.excel
-
-                reader = csv.DictReader(csvfile, dialect=dialect)
-                for line_num, row in enumerate(reader, start=2):
-                    if not any(v for v in row.values() if v):
-                        continue
-
-                    norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
-                    name = norm_row.get('name', '')
-                    tag = norm_row.get('tag', '')
-                    reg_type_str = norm_row.get('registertype', '')
-                    address = norm_row.get('address', '')
-                    dtype_raw = norm_row.get('type', '')
-
-                    if not name and not address:
-                        logging.warning(f"Line {line_num}: Missing Name and Address.")
-                        success = False
-                        continue
-
-                    dtype = self.normalize_type(dtype_raw)
-                    if not self.validate_type(dtype):
-                        logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}').")
-                        success = False
-                        continue
-
-                    if not self.validate_address(address, dtype):
-                        logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'.")
-                        success = False
-                        continue
-
-                    self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
-                    info1 = self._determine_info1(reg_type_str, line_num)
-                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
-
-        except (OSError, csv.Error) as e:
-            logging.error(f"Error during validation: {e}")
-            return False
-
-        return success
-
-    def _determine_info1(self, reg_type_str: str, line_num: int) -> str:
+    def _determine_info1(self, reg_type_str: str, line_num: int = 0) -> str:
         """Maps RegisterType string to Webdyn Info1 code."""
-        if not reg_type_str:
+        if reg_type_str is None:
             return '3'
 
-        lt = reg_type_str.lower()
+        lt = str(reg_type_str).lower().strip()
+        if not lt:
+            return '3'
         if lt in self.register_type_map:
             return self.register_type_map[lt]
-        elif reg_type_str in ['1', '2', '3', '4']:
-            return reg_type_str
+        elif str(reg_type_str).strip() in ['1', '2', '3', '4']:
+            return str(reg_type_str).strip()
 
-        logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+        if line_num:
+            logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
@@ -549,8 +489,8 @@ class Generator:
 
         try:
             with open(filepath, 'rb') as f:
-                header_bytes = f.read(4)
-                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+                header = f.read(4)
+                encoding = 'utf-16' if header.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
             with open(filepath, mode='r', encoding=encoding) as f:
                 reader = csv.reader(f, delimiter=';')
@@ -560,6 +500,7 @@ class Generator:
                 except StopIteration:
                     return False
 
+                success = True
                 for line_num, row in enumerate(reader, start=2):
                     if not row or len(row) < 11:
                         if any(row):
@@ -646,7 +587,7 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization with intelligent defaulting
+            # Action normalization and intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
                 # Default based on Info1: Input (4) and Discrete (2) are RO

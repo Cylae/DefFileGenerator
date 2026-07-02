@@ -2,7 +2,6 @@
 import unittest
 import os
 import csv
-import tempfile
 import logging
 from DefFileGenerator.def_gen import Generator
 
