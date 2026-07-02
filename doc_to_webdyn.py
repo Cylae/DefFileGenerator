@@ -4,7 +4,6 @@ import sys
 import os
 import logging
 import re
-import json
 import csv
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
@@ -12,8 +11,8 @@ from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer', required=True)
-    parser.add_argument('--model', required=True)
+    parser.add_argument('--manufacturer', default='Manufacturer')
+    parser.add_argument('--model', default='Model')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -22,6 +21,7 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
+    parser.add_argument('--template', action='store_true', help='Generate template CSV')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -72,16 +72,18 @@ def _run_cli():
     has_mapped, mapped = peek_generator(mapped)
     if not has_mapped: logging.error("No registers extracted."); sys.exit(1)
 
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
+    manufacturer = getattr(args, 'manufacturer', 'Manufacturer')
+    model = getattr(args, 'model', 'Model')
+    output_file = getattr(args, 'output', None) or f"{re.sub(r'[^a-zA-Z0-9]', '_', manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=input_file,
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
+        manufacturer=manufacturer,
+        model=model,
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
         address_offset=0 # Already applied during extraction
     )
     run_generator(config, input_data=mapped)
@@ -93,7 +95,7 @@ def main():
         sys.exit(130)
     except SystemExit:
         raise
-    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
+    except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
