@@ -262,9 +262,9 @@ def _run_cli():
 
     # Validate --pages
     pages_arg = getattr(args, 'pages', None)
-    input_file_arg = getattr(args, 'input_file', None)
-    if pages_arg and input_file_arg:
-        ext = os.path.splitext(input_file_arg)[1].lower()
+    input_file = getattr(args, 'input_file', None)
+    if pages_arg and input_file:
+        ext = os.path.splitext(input_file)[1].lower()
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
         else:

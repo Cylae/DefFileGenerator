@@ -39,10 +39,10 @@ def _run_cli():
     ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
-    mapping_arg = getattr(args, 'mapping', None)
-    if mapping_arg:
+    mapping_path = getattr(args, 'mapping', None)
+    if mapping_path:
         try:
-            with open(mapping_arg, 'r') as f:
+            with open(mapping_path, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -62,10 +62,11 @@ def _run_cli():
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
+    sheet_arg = getattr(args, 'sheet', None)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
+    elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
+    elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
@@ -80,7 +81,7 @@ def _run_cli():
     output_file = getattr(args, 'output', None) or f"{re.sub(r'[^a-zA-Z0-9]', '_', manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
 
     config = GeneratorConfig(
-        input_file=args.input_file,
+        input_file=input_file,
         output=output_file,
         manufacturer=manufacturer,
         model=model,
