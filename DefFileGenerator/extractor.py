@@ -63,6 +63,15 @@ except ImportError:
     except ImportError:
         Generator = None
 
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """Checks if an iterable has at least one item without fully exhausting it."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
+
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
@@ -141,15 +150,16 @@ class Extractor:
                         for table in tables:
                             if not table or len(table) < 2: continue
 
-                            def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
-                                headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
-                                for row in current_table[1:]:
-                                    row_dict = {}
-                                    for i, cell in enumerate(row):
-                                        if i < len(headers):
-                                            row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                                    if any(row_dict.values()):
-                                        yield row_dict
+                            # Evaluate the generator immediately inside the context manager
+                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
+                            table_rows = []
+                            for row in table[1:]:
+                                row_dict = {}
+                                for i, cell in enumerate(row):
+                                    if i < len(headers):
+                                        row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
+                                if any(row_dict.values()):
+                                    table_rows.append(row_dict)
 
                             # Evaluate to list to ensure data is extracted before context closes
                             yield list(table_generator(table))

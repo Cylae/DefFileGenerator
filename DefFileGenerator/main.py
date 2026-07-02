@@ -87,6 +87,11 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {args.output}")
 
 def generate_command(args):
+    if not args.template:
+        if not args.manufacturer or not args.model:
+            logging.error("--manufacturer and --model are required when not using --template.")
+            sys.exit(1)
+
     config = GeneratorConfig(
         input_file=args.input_file,
         output=args.output,
@@ -134,6 +139,13 @@ def run_command(args):
     )
     run_generator(config, input_data=mapped_data)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -159,6 +171,7 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -174,6 +187,11 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate simplified CSV')
+    parser_validate.add_argument('input_file', help='Input CSV to validate')
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate a simplified CSV')
