@@ -615,6 +615,74 @@ class Generator:
         return valid
 
     @staticmethod
+    def validate_csv(filepath: str) -> bool:
+        """
+        Validates an existing Webdyn definition CSV file.
+        Checks for duplicate tags, address overlaps, and basic format.
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"Validation failed: File not found {filepath}")
+            return False
+
+        seen_tags = {}
+        address_usage = {} # Info1 -> dict of address -> list of (line, name, type)
+        warned_lines = set()
+        is_valid = True
+
+        generator = Generator()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Validation failed: Empty file")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        continue
+
+                    # Webdyn format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    # Indices: 0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10
+                    info1 = row[1].strip()
+                    address = row[2].strip()
+                    dtype = row[3].strip()
+                    name = row[5].strip()
+                    tag = row[6].strip()
+
+                    # Tag uniqueness
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    # Address range and format validation
+                    if address and dtype:
+                        if not Generator.validate_address(address, dtype):
+                            is_valid = False
+
+                    # Address overlap check
+                    if info1 and address and dtype:
+                        generator._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            # If any overlaps were found (which are logged as warnings by _check_address_overlap),
+            # for strict validation we might want to consider them errors.
+            # But the requirement said "log a warning if the normalized address value falls outside this standard range"
+            # and "duplicate tag detection (which is a fatal error)".
+            # Let's check warned_lines.
+            if warned_lines:
+                # Based on the memory, address overlaps are warnings, but duplicate tags are fatal.
+                pass
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error during validation: {e}")
+            return False
+
+    @staticmethod
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
         factor = Generator._parse_numeric(factor_str, default=1.0)
         offset = Generator._parse_numeric(offset_str, default=0.0)
