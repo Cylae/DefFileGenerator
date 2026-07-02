@@ -10,6 +10,20 @@ from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Itera
 import os
 from dataclasses import dataclass
 
+def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterable]:
+    """
+    Checks if an iterable is empty without consuming it.
+    Returns (has_data, original_iterable).
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
+
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
 RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
