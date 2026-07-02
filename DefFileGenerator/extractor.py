@@ -80,6 +80,18 @@ def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterable[Any
         return None, iter([])
     return first, itertools.chain([first], it)
 
+def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+    """
+    Checks if an iterable has at least one element without consuming it.
+    Returns (has_data, new_iterator)
+    """
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
+
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],

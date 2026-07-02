@@ -332,6 +332,7 @@ def _run_cli():
     parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
+
     if not args.command:
         parser.print_help()
         return

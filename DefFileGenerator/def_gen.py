@@ -742,6 +742,52 @@ class Generator:
         return valid
 
     @staticmethod
+    def validate_csv(filepath: str) -> bool:
+        """
+        Validates an existing Webdyn definition file.
+        Checks for duplicates, overlaps, and basic formatting.
+        """
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+        gen = Generator()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
+                if len(header) < 4:
+                    logging.error("Invalid definition file header.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or len(row) < 11:
+                        if any(row): logging.warning(f"Line {line_num}: Row has insufficient columns.")
+                        continue
+
+                    idx, info1, info2, info3, info4, name, tag, coef_a, coef_b, unit, action = row[:11]
+
+                    if not gen.validate_address(info2, info3):
+                        is_valid = False
+
+                    if tag in seen_tags:
+                        logging.error(f"Line {line_num}: Fatal - Duplicate Tag '{tag}' (Previously at line {seen_tags[tag]}).")
+                        is_valid = False
+                    seen_tags[tag] = line_num
+
+                    gen._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
+
+    @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
