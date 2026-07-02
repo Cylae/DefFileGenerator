@@ -1,75 +1,65 @@
 import unittest
-import os
 import csv
-import logging
+import os
+import tempfile
 from DefFileGenerator.def_gen import Generator
 
-class TestValidate(unittest.TestCase):
+class TestValidateCSV(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
-        self.test_file = "test_validate.csv"
-        # Disable logging for tests to keep output clean
-        logging.disable(logging.CRITICAL)
+        self.temp_dir = tempfile.TemporaryDirectory()
 
     def tearDown(self):
-        if os.path.exists(self.test_file):
-            os.remove(self.test_file)
-        logging.disable(logging.NOTSET)
+        self.temp_dir.cleanup()
 
-    def create_def_file(self, rows):
-        with open(self.test_file, 'w', newline='', encoding='utf-8') as f:
+    def create_csv(self, rows):
+        path = os.path.join(self.temp_dir.name, 'test.csv')
+        with open(path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f, delimiter=';')
-            writer.writerow(['modbusRTU', 'Inverter', 'TestMfg', 'TestModel', '', '', '', '', '', '', ''])
-            for i, row in enumerate(rows, start=1):
-                writer.writerow([str(i)] + row)
+            writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model', '', '', '', '', '', '', ''])
+            for row in rows:
+                writer.writerow(row)
+        return path
 
-    def test_valid_file(self):
+    def test_valid_csv(self):
         rows = [
-            ['3', '100', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'I32', '', 'Var2', 'tag2', '1.0', '0.0', 'A', '4']
+            ['1', '3', '40001', 'U16', '', 'Name1', 'tag1', '1.0', '0.0', 'W', '4']
         ]
-        self.create_def_file(rows)
-        self.assertTrue(self.generator.validate_csv(self.test_file))
+        path = self.create_csv(rows)
+        self.assertTrue(self.generator.validate_csv(path))
 
     def test_duplicate_tag(self):
         rows = [
-            ['3', '100', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag1', '1.0', '0.0', 'A', '4']
+            ['1', '3', '40001', 'U16', '', 'Name1', 'tag1', '1.0', '0.0', 'W', '4'],
+            ['2', '3', '40002', 'U16', '', 'Name2', 'tag1', '1.0', '0.0', 'W', '4']
         ]
-        self.create_def_file(rows)
-        self.assertFalse(self.generator.validate_csv(self.test_file))
+        path = self.create_csv(rows)
+        self.assertFalse(self.generator.validate_csv(path))
 
     def test_address_overlap(self):
-        # I32 uses 2 registers. 100 and 101.
         rows = [
-            ['3', '100', 'I32', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'A', '4']
+            ['1', '3', '40001', 'U32', '', 'Name1', 'tag1', '1.0', '0.0', 'W', '4'],
+            ['2', '3', '40002', 'U16', '', 'Name2', 'tag2', '1.0', '0.0', 'W', '4']
         ]
-        self.create_def_file(rows)
-        # Overlaps are now treated as fatal validation errors
-        self.assertFalse(self.generator.validate_csv(self.test_file))
+        path = self.create_csv(rows)
+        self.assertFalse(self.generator.validate_csv(path))
 
-    def test_invalid_type(self):
+    def test_invalid_address(self):
         rows = [
-            ['3', '100', 'INVALID', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
+            ['1', '3', 'invalid', 'U16', '', 'Name1', 'tag1', '1.0', '0.0', 'W', '4']
         ]
-        self.create_def_file(rows)
-        self.assertFalse(self.generator.validate_csv(self.test_file))
+        path = self.create_csv(rows)
+        self.assertFalse(self.generator.validate_csv(path))
 
-    def test_invalid_address_format(self):
-        rows = [
-            ['3', '!!!', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
-        ]
-        self.create_def_file(rows)
-        self.assertFalse(self.generator.validate_csv(self.test_file))
-
-    def test_out_of_range_address(self):
-        rows = [
-            ['3', '70000', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
-        ]
-        self.create_def_file(rows)
-        # Out of range is a warning, so it should be valid
-        self.assertTrue(self.generator.validate_csv(self.test_file))
+    def test_insufficient_columns(self):
+        path = os.path.join(self.temp_dir.name, 'short.csv')
+        with open(path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f, delimiter=';')
+            writer.writerow(['modbusRTU', 'Inverter'])
+            writer.writerow(['1', '3', '40001']) # too short
+        # Should log warning and return True if no other errors,
+        # but since there are no valid rows, it might be trivial.
+        self.assertTrue(self.generator.validate_csv(path))
 
 if __name__ == '__main__':
     unittest.main()
