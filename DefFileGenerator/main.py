@@ -17,10 +17,20 @@ def setup_logging(verbose=False):
     )
 
 def _perform_extraction(args):
+    template_flag = getattr(args, 'template', False)
+    if template_flag:
+        return []
+
+    input_file = getattr(args, 'input_file', None)
+    if not input_file:
+        logging.error("Input file is required.")
+        sys.exit(1)
+
     mapping = {}
-    if args.mapping:
+    mapping_path = getattr(args, 'mapping', None)
+    if mapping_path:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(mapping_path, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -34,10 +44,6 @@ def _perform_extraction(args):
 
     ext = os.path.splitext(input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
-    pages_arg = getattr(args, 'pages', None)
-
-    if pages_arg and ext != '.pdf':
-        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, getattr(args, 'sheet', None))
@@ -60,25 +66,38 @@ def extract_command(args):
         logging.error("No registers extracted.")
         sys.exit(1)
 
-    output = args.output if args.output else sys.stdout
+    output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    if isinstance(output, str):
+    if output:
         f = open(output, 'w', newline='', encoding='utf-8')
     else:
-        f = output
+        f = sys.stdout
 
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
     writer.writerows(mapped_data)
 
-    if isinstance(output, str):
+    if output:
         f.close()
-        logging.info(f"Extraction complete. Saved to {args.output}")
+        logging.info(f"Extraction complete. Saved to {output}")
+
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful: {args.input_file}")
+    else:
+        logging.error(f"Validation failed: {args.input_file}")
+        sys.exit(1)
 
 def generate_command(args):
+    template_flag = getattr(args, 'template', False)
+    if not template_flag and not getattr(args, 'input_file', None):
+        logging.error("input_file is required unless --template is used.")
+        sys.exit(1)
+
     config = GeneratorConfig(
-        input_file=args.input_file,
+        input_file=getattr(args, 'input_file', None),
         output=args.output,
         manufacturer=args.manufacturer,
         model=args.model,
@@ -89,6 +108,13 @@ def generate_command(args):
         address_offset=args.address_offset
     )
     run_generator(config)
+
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
 
 def run_command(args):
     if getattr(args, 'template', False):
@@ -103,16 +129,30 @@ def run_command(args):
         sys.exit(1)
 
     config = GeneratorConfig(
-        input_file=args.input_file,
+        input_file=getattr(args, 'input_file', None),
         output=args.output,
         manufacturer=args.manufacturer,
         model=args.model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0 # Already applied during extraction in run mode
+        address_offset=0, # Already applied during extraction in run mode
+        template=template_flag
     )
-    run_generator(config, input_data=mapped_data)
+    run_generator(config, input_data=mapped_data if not template_flag else None)
+
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful: {args.input_file}")
+    else:
+        logging.error(f"Validation failed: {args.input_file}")
+        sys.exit(1)
 
 def validate_command(args):
     gen = Generator()
@@ -147,6 +187,7 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -162,6 +203,15 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a simplified CSV')
+    parser_validate.add_argument('input_file', help='CSV file to validate')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
+    parser_validate.add_argument('input_file', help='Definition file to validate')
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate WebdynSunPM definition file')
@@ -173,19 +223,6 @@ def _run_cli():
         return
 
     setup_logging(args.verbose)
-
-    # Validate --pages
-    pages_arg = getattr(args, 'pages', None)
-    if pages_arg:
-        ext = os.path.splitext(args.input_file)[1].lower()
-        if ext != '.pdf':
-            logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        else:
-            try:
-                [int(p.strip()) for p in pages_arg.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
 
     if args.command == 'extract':
         extract_command(args)
@@ -203,7 +240,7 @@ def main():
         sys.exit(130)
     except SystemExit:
         raise
-    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
+    except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
