@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
 import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
@@ -127,44 +128,47 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
 
-        def pdf_tables_generator():
+        # Handle pages as comma-separated string
+        if isinstance(pages, str):
             try:
-                with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
-                        tables = page.extract_tables()
-                        logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
-                        for table in tables:
-                            if not table or len(table) < 2: continue
+                pages = [int(p.strip()) for p in pages.split(',') if p.strip()]
+            except ValueError:
+                logging.error(f"Invalid format for pages: {pages}")
+                pages = None
 
-                            def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
-                                headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
-                                for row in current_table[1:]:
-                                    row_dict = {}
-                                    for i, cell in enumerate(row):
-                                        if i < len(headers):
-                                            row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
-                                    if any(row_dict.values()):
-                                        yield row_dict
+        try:
+            with pdfplumber.open(filepath) as pdf:
+                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                for page in target_pages:
+                    tables = page.extract_tables()
+                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
+                    for table in tables:
+                        if not table or len(table) < 2: continue
 
-                            # Since we must keep pdfplumber context open while iterating,
-                            # and pdfplumber pages/tables are held in memory anyway,
-                            # yielding generators is safe but the entire PDF is open.
-                            # A better approach: evaluate the generator immediately if we're yielding it,
-                            # but here we're conforming to `Iterator[Iterator[Dict]]`
-                            yield table_generator(table)
+                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
+                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
+                            for row in current_table[1:]:
+                                row_dict = {}
+                                for i, cell in enumerate(row):
+                                    if i < len(headers):
+                                        row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
+                                if any(row_dict.values()):
+                                    yield row_dict
 
-            except (OSError,) + PDF_ERRORS as e:
-                logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-            except (ValueError, TypeError, IndexError) as e:
-                logging.error(f"Error extracting from PDF {filepath}: {e}")
+                        # To ensure the PDF context stays open while iterating, we evaluate the generator
+                        # but keep the structure consistent. Since pdfplumber's extract_tables returns
+                        # data that is already in memory, we can convert it to a list of dicts.
+                        yield list(table_generator(table))
 
-        return pdf_tables_generator()
+        except (OSError,) + PDF_ERRORS as e:
+            logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
+        except (ValueError, TypeError, IndexError) as e:
+            logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:

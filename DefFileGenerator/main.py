@@ -22,7 +22,7 @@ def _perform_extraction(args):
         return []
 
     mapping = {}
-    if args.mapping:
+    if getattr(args, 'mapping', None):
         try:
             with open(args.mapping, 'r') as f:
                 mapping = json.load(f)
@@ -37,10 +37,6 @@ def _perform_extraction(args):
 
     ext = os.path.splitext(input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
-    pages_arg = getattr(args, 'pages', None)
-
-    if pages_arg and ext != '.pdf':
-        logging.warning("--pages is only applicable for PDF files. Ignoring.")
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, args.sheet)
@@ -113,6 +109,17 @@ def generate_command(args):
     )
     run_generator(config)
 
+def validate_command(args):
+    if not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info("Validation successful.")
+    else:
+        logging.error("Validation failed.")
+        sys.exit(1)
+
 def run_command(args):
     is_template = getattr(args, 'template', False)
     if is_template:
@@ -139,6 +146,13 @@ def run_command(args):
         address_offset=0 # Already applied during extraction in run mode
     )
     run_generator(config, input_data=mapped_data)
+
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -167,6 +181,7 @@ def _run_cli():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
+    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_generate.add_argument('--template', action='store_true')
 
@@ -182,6 +197,7 @@ def _run_cli():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
+    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_run.add_argument('--template', action='store_true')
 
@@ -204,6 +220,14 @@ def _run_cli():
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
+
+    if args.command in ['generate', 'run'] and not args.template:
+        if not args.manufacturer or not args.model:
+            logging.error("--manufacturer and --model are required.")
+            sys.exit(1)
+        if not args.input_file:
+            logging.error("input_file is required when not using --template.")
+            sys.exit(1)
 
     if args.command == 'extract':
         extract_command(args)

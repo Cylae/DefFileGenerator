@@ -1,3 +1,5 @@
+from unittest.mock import patch
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 import unittest
 import logging
 from DefFileGenerator.def_gen import Generator
@@ -180,6 +182,40 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Action'], '4') # R -> 4
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
+
+
+class TestRunGeneratorErrorPaths(unittest.TestCase):
+    def test_missing_input(self):
+        config = GeneratorConfig()
+        with self.assertLogs(level='ERROR') as log:
+            run_generator(config)
+            self.assertTrue(any("input_file or input_data is required." in m for m in log.output))
+
+    def test_missing_file(self):
+        config = GeneratorConfig()
+        config.input_file = "non_existent_file.csv"
+        with self.assertLogs(level='ERROR') as log:
+            run_generator(config)
+            self.assertTrue(any("Input file not found" in m for m in log.output))
+
+    def test_missing_manufacturer_model(self):
+        config = GeneratorConfig()
+        config.input_file = "dummy.csv" # will be patched
+        with patch('os.path.exists', return_value=True):
+            with self.assertLogs(level='ERROR') as log:
+                run_generator(config)
+                self.assertTrue(any("manufacturer and model are required." in m for m in log.output))
+
+    def test_exception_handling(self):
+        config = GeneratorConfig()
+        config.input_file = "dummy.csv"
+        config.manufacturer = "Mfg"
+        config.model = "Model"
+        with patch('os.path.exists', return_value=True):
+            with patch('builtins.open', side_effect=OSError("Test IO Error")):
+                with self.assertLogs(level='ERROR') as log:
+                    run_generator(config)
+                    self.assertTrue(any("An error occurred during generation: Test IO Error" in m for m in log.output))
 
 if __name__ == '__main__':
     unittest.main()
