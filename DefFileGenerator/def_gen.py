@@ -228,10 +228,7 @@ class Generator:
             if not (0 <= base_addr <= 65535):
                 logging.warning(f"Address {base_addr} is out of Modbus range (0-65535)")
                 return False
-        except (ValueError, IndexError):
-            return False
-
-        return True
+        return is_valid
 
     def validate_csv(self, filepath: str) -> bool:
         """Performs comprehensive validation of a definition CSV file."""

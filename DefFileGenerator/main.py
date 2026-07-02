@@ -217,7 +217,7 @@ def _run_cli():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
-    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_generate.add_argument('--template', action='store_true', help='Generate CSV template')
 
@@ -241,7 +241,7 @@ def _run_cli():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
-    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
+    parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_run.add_argument('--template', action='store_true', help='Generate definition template')
 
