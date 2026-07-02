@@ -104,7 +104,7 @@ def _run_cli():
         address_offset=0, # Already applied during extraction
         template=args.template
     )
-    run_generator(config, input_data=mapped)
+    run_generator(config, input_data=mapped_peeker)
 
 def main():
     try:

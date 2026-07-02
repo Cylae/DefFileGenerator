@@ -117,6 +117,11 @@ def validate_command(args):
         sys.exit(1)
     logging.info(f"Validation successful for {args.input_file}")
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def generate_command(args):
     template = getattr(args, 'template', False)
     # If using template with generate command, the input_file argument might actually be the word 'definition'
@@ -231,6 +236,7 @@ def _run_cli():
     parser_generate.add_argument('--manufacturer')
     parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
@@ -260,6 +266,7 @@ def _run_cli():
     parser_run.add_argument('--manufacturer')
     parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
+    parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
     parser_run.add_argument('--pages', help='PDF pages')
@@ -273,6 +280,10 @@ def _run_cli():
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
     parser_validate.add_argument('input_file', help='WebdynSunPM definition CSV')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
