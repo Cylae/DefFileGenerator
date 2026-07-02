@@ -9,7 +9,6 @@ import sys
 import io
 import itertools
 import zipfile
-import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
@@ -84,6 +83,7 @@ class Extractor:
 
     def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
+
 
     @staticmethod
     def normalize_type(t: Any) -> str:
