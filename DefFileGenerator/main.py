@@ -203,6 +203,10 @@ def validate_command(args):
     if not Generator().validate_csv(args.input_file):
         sys.exit(1)
 
+def validate_command(args):
+    if not Generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')

@@ -37,7 +37,7 @@ def _run_cli():
         logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
-    ext = os.path.splitext(args.input_file)[1].lower()
+    ext = os.path.splitext(args.input_file)[1].lower() if args.input_file else ""
 
     # Warn about mismatched options
     if args.pages and ext != '.pdf':
@@ -101,7 +101,8 @@ def _run_cli():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0 # Already applied during extraction
+        address_offset=0, # Already applied during extraction
+        template=args.template
     )
     run_generator(config, input_data=mapped)
 
