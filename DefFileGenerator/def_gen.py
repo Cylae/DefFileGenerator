@@ -276,31 +276,57 @@ class Generator:
         logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
-        """Checks for address overlaps using O(N) dictionary lookup."""
+    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[str, Any]], warned_lines: Set[Tuple[int, int]]) -> None:
+        """Checks for address overlaps using O(log N) binary search on intervals."""
         try:
             start_addr = int(address.split('_')[0])
             reg_count = self.get_register_count(dtype, address)
+            end_addr = start_addr + reg_count - 1
 
             if info1 not in address_usage:
-                address_usage[info1] = {}
+                address_usage[info1] = {'intervals': [], 'max_len': 0}
+
+            usage = address_usage[info1]
+            intervals = usage['intervals']
+            max_len = usage['max_len']
 
             is_bits = (dtype.upper() == 'BITS')
-            for i in range(reg_count):
-                curr_addr = start_addr + i
-                if curr_addr in address_usage[info1]:
-                    for u_line, u_name, u_type in address_usage[info1][curr_addr]:
-                        # Allow multiple BITS on exactly the same base address
-                        if is_bits and u_type == 'BITS' and curr_addr == start_addr:
-                            continue
 
-                        warn_key = tuple(sorted((line_num, u_line)))
-                        if warn_key not in warned_lines:
-                            logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {curr_addr}. Overlaps with '{u_name}' (Line {u_line}).")
-                            warned_lines.add(warn_key)
-                else:
-                    address_usage[info1][curr_addr] = []
-                address_usage[info1][curr_addr].append((line_num, name, dtype.upper()))
+            import bisect
+            idx = bisect.bisect_left(intervals, (start_addr, -1, -1, '', ''))
+
+            # Check to the right
+            for j in range(idx, len(intervals)):
+                u_start, u_end, u_line, u_name, u_type = intervals[j]
+                if u_start > end_addr:
+                    break
+                if max(start_addr, u_start) <= min(end_addr, u_end):
+                    if is_bits and u_type == 'BITS' and start_addr == u_start:
+                        continue
+                    warn_key = tuple(sorted((line_num, u_line)))
+                    if warn_key not in warned_lines:
+                        overlap_start = max(start_addr, u_start)
+                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {overlap_start}. Overlaps with '{u_name}' (Line {u_line}).")
+                        warned_lines.add(warn_key)
+
+            # Check to the left
+            for j in range(idx - 1, -1, -1):
+                u_start, u_end, u_line, u_name, u_type = intervals[j]
+                if start_addr - u_start > max_len:
+                    break
+                if max(start_addr, u_start) <= min(end_addr, u_end):
+                    if is_bits and u_type == 'BITS' and start_addr == u_start:
+                        continue
+                    warn_key = tuple(sorted((line_num, u_line)))
+                    if warn_key not in warned_lines:
+                        overlap_start = max(start_addr, u_start)
+                        logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {overlap_start}. Overlaps with '{u_name}' (Line {u_line}).")
+                        warned_lines.add(warn_key)
+
+            bisect.insort(intervals, (start_addr, end_addr, line_num, name, dtype.upper()))
+            if reg_count > max_len:
+                usage['max_len'] = reg_count
+
         except (ValueError, IndexError):
             pass
 
