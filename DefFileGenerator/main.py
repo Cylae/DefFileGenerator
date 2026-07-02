@@ -339,6 +339,10 @@ def _run_cli():
     parser_validate = subparsers.add_parser('validate', help='Validate an existing definition CSV')
     parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
+    parser_validate.add_argument('input_file', help='WebdynSunPM definition file')
+
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
@@ -410,6 +414,15 @@ def _run_cli():
             if not args.manufacturer or not args.model:
                 logging.error("--manufacturer and --model are required.")
                 sys.exit(1)
+
+    # Manual validation for required arguments unless --template is used
+    if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
+        if not args.manufacturer or not args.model:
+            logging.error(f"The following arguments are required for {args.command}: --manufacturer, --model")
+            sys.exit(1)
+        if args.command == 'generate' and not args.input_file:
+             logging.error("input_file is required for generate command unless --template is used")
+             sys.exit(1)
 
     if args.command == 'extract':
         extract_command(args)

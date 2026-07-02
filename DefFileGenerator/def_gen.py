@@ -1163,6 +1163,9 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
         generate_template(config.output, mode=mode)
         return
 
+    mfg = config.manufacturer or 'Manufacturer'
+    model = config.model or 'Model'
+
     if input_data is None:
         if not config.input_file:
             logging.error("input_file or input_data is required.")
