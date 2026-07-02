@@ -1,0 +1,5 @@
+Signal Name,Register Offset,Data Format,Measurement Unit,Ratio
+V_L1,0x7530,float32 swap,V,0.1
+Status,30001,BITS,READ,
+Serial,30002,STR50,4,
+Freq,"30,050",unsigned int 32 big endian,0.01,Hz
