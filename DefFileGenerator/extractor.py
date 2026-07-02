@@ -9,17 +9,16 @@ import sys
 import io
 import itertools
 import zipfile
-import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
-    """Checks if an iterable is empty without fully consuming it."""
+    """Checks if an iterable is empty without exhausting it."""
+    iterator = iter(iterable)
     try:
-        iterator = iter(iterable)
         first = next(iterator)
-        return True, itertools.chain([first], iterator)
     except StopIteration:
-        return False, []
+        return False, iter([])
+    return True, itertools.chain([first], iterator)
 
 try:
     import openpyxl
@@ -114,37 +113,41 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return iter([])
 
-        try:
-            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        def excel_sheets_generator():
+            wb = None
+            try:
+                wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
-            def gen_all_sheets():
-                try:
-                    for ws in sheets:
-                        def sheet_generator() -> Iterator[Dict[str, Any]]:
-                            rows = ws.iter_rows(values_only=True)
-                            try:
-                                header_row = next(rows)
-                            except StopIteration:
-                                return
+                for ws in sheets:
+                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                        rows = ws_obj.iter_rows(values_only=True)
+                        try:
+                            header_row = next(rows)
+                        except StopIteration:
+                            return
 
-                            headers = [str(h).strip() if h is not None else "" for h in header_row]
+                        headers = [str(h).strip() if h is not None else "" for h in header_row]
 
-                            for row in rows:
-                                if any(cell is not None and str(cell).strip() for cell in row):
-                                    yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-                        yield sheet_generator()
-                finally:
+                        for row in rows:
+                            # Only yield if row has actual data (not all None/empty)
+                            if any(cell is not None and str(cell).strip() for cell in row):
+                                yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+
+                    # We yield a generator for each sheet.
+                    yield sheet_generator()
+
+            except (OSError, zipfile.BadZipFile) as e:
+                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+            except (ValueError, TypeError, KeyError) as e:
+                logging.error(f"Error extracting from Excel {filepath}: {e}")
+            finally:
+                if wb:
                     wb.close()
-            return gen_all_sheets()
 
-        except (OSError, zipfile.BadZipFile) as e:
-            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-        except (ValueError, TypeError, KeyError) as e:
-            logging.error(f"Error extracting from Excel {filepath}: {e}")
-        return iter([])
+        return excel_sheets_generator()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
@@ -153,19 +156,27 @@ class Extractor:
         if isinstance(pages, str):
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_page_indices = []
                     if pages is None:
-                        target_page_indices = range(len(pdf.pages))
-                    elif isinstance(pages, int):
-                        target_page_indices = [pages - 1]
-                    elif isinstance(pages, list):
-                        target_page_indices = [int(p) - 1 for p in pages]
-                    elif isinstance(pages, str):
-                        target_page_indices = [int(p.strip()) - 1 for p in pages.split(',')]
+                        target_pages = pdf.pages
+                    else:
+                        page_list = pages
+                        if isinstance(pages, str):
+                            page_list = [p.strip() for p in pages.split(',')]
+                        elif not isinstance(pages, list):
+                            page_list = [pages]
 
-                    for idx in target_page_indices:
-                        if idx < 0 or idx >= len(pdf.pages): continue
-                        page = pdf.pages[idx]
+                        target_pages = []
+                        for p in page_list:
+                            try:
+                                idx = int(p) - 1
+                                if 0 <= idx < len(pdf.pages):
+                                    target_pages.append(pdf.pages[idx])
+                                else:
+                                    logging.warning(f"Page {p} out of range (1-{len(pdf.pages)}). Skipping.")
+                            except (ValueError, TypeError):
+                                logging.warning(f"Invalid page reference: {p}. Skipping.")
+
+                    for page in target_pages:
                         tables = page.extract_tables()
                         for table in tables:
                             if not table or len(table) < 2: continue
@@ -223,34 +234,49 @@ class Extractor:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return iter([])
-        try:
-            with open(filepath, 'rb') as f:
-                tree = ET.parse(f)
-                root = tree.getroot()
 
-            def xml_generator() -> Iterator[Dict[str, Any]]:
-                seen = set()
-                for elem in root.iter():
-                    row = {}
-                    for child in elem:
-                        if len(child) == 0 and child.text:
-                            row[child.tag] = child.text.strip()
-                    if len(row) >= 2:
-                        js = json.dumps(row, sort_keys=True)
-                        if js not in seen:
-                            seen.add(js)
-                            yield row
-            yield xml_generator()
-        except Exception as e:
-            logging.error(f"Error extracting from XML {filepath}: {e}")
-            return iter([])
+        def xml_tables_generator():
+            try:
+                with open(filepath, 'rb') as f:
+                    tree = ET.parse(f)
+                    root = tree.getroot()
+
+                def xml_generator() -> Iterator[Dict[str, Any]]:
+                    seen = set()
+                    for elem in root.iter():
+                        row = {}
+                        for child in elem:
+                            if len(child) == 0 and child.text:
+                                row[child.tag] = child.text.strip()
+                        if len(row) >= 2:
+                            js = json.dumps(row, sort_keys=True)
+                            if js not in seen:
+                                seen.add(js)
+                                yield row
+
+                # Return as a single table
+                yield xml_generator()
+
+            except SECURITY_EXCEPTIONS:
+                raise
+            except (OSError,) + XML_PARSE_ERRORS as e:
+                logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+            except (ValueError, TypeError) as e:
+                logging.error(f"Error extracting from XML {filepath}: {e}")
+
+        return xml_tables_generator()
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if tables is None:
             return
 
+        has_any, tables = peek_generator(tables)
+        if not has_any:
+            return
+
         for table in tables:
-            if table is None:
+            has_rows, table = peek_generator(table)
+            if not has_rows:
                 continue
 
             # Since table could be a generator, we need to extract the first few rows

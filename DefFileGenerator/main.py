@@ -2,6 +2,11 @@
 import argparse
 import sys
 import os
+
+# Allow direct execution
+if __name__ == '__main__':
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import logging
 import csv
 import json
@@ -101,21 +106,23 @@ def validate_command(args):
         sys.exit(1)
 
 def generate_command(args):
-    template_flag = getattr(args, 'template', False)
-    if not template_flag and not getattr(args, 'input_file', None):
-        logging.error("input_file is required unless --template is used.")
-        sys.exit(1)
+    template_mode = 'input'
+    if getattr(args, 'template', False):
+        # Determine template mode based on input_file argument if provided
+        if getattr(args, 'input_file', None) == 'definition':
+            template_mode = 'definition'
 
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
         output=args.output,
         manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
         model=getattr(args, 'model', 'Model'),
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=args.address_offset,
-        template=getattr(args, 'template', False)
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=getattr(args, 'address_offset', 0),
+        template=getattr(args, 'template', False),
+        template_mode=template_mode
     )
     run_generator(config)
 
@@ -130,7 +137,13 @@ def run_command(args):
     if getattr(args, 'template', False):
         config = GeneratorConfig(
             output=args.output,
-            template=True
+            manufacturer=args.manufacturer,
+            model=args.model,
+            protocol=args.protocol,
+            category=args.category,
+            forced_write=args.forced_write,
+            template=True,
+            template_mode='definition'
         )
         run_generator(config)
         return
@@ -174,6 +187,11 @@ def validate_command(args):
         logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if not generator.validate_csv(args.input_file):
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -190,7 +208,7 @@ def _run_cli():
 
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
-    parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
+    parser_generate.add_argument('input_file', nargs='?', help='Input CSV or template type')
     parser_generate.add_argument('--manufacturer')
     parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
@@ -199,13 +217,13 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_generate.add_argument('--template', action='store_true', help='Generate template')
+    parser_generate.add_argument('--template', action='store_true')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer')
-    parser_run.add_argument('--model')
+    parser_run.add_argument('--manufacturer', required=True)
+    parser_run.add_argument('--model', required=True)
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -215,10 +233,10 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_run.add_argument('--template', action='store_true', help='Generate template')
+    parser_run.add_argument('--template', action='store_true')
 
     # Validate
-    parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
+    parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
     parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
