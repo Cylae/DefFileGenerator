@@ -9,6 +9,7 @@ import sys
 import io
 import itertools
 import zipfile
+import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
@@ -58,13 +59,10 @@ except ImportError:
 
 def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
     """Checks if an iterable is empty without exhausting it."""
-    if isinstance(iterable, (list, tuple, set)):
-        return bool(iterable), iter(iterable)
-
-    it = iter(iterable)
+    iterator = iter(iterable)
     try:
-        first = next(it)
-        return True, itertools.chain([first], it)
+        first = next(iterator)
+        return True, itertools.chain([first], iterator)
     except StopIteration:
         return False, iter([])
 
@@ -119,7 +117,6 @@ class Extractor:
                             if any(cell is not None and str(cell).strip() for cell in row):
                                 yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                # We yield a generator for each sheet.
                 yield sheet_generator()
 
             except (OSError, zipfile.BadZipFile) as e:
@@ -135,8 +132,7 @@ class Extractor:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
 
-        # Handle pages as comma-separated string
-        if isinstance(pages, str):
+        def pdf_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
             try:
                 with pdfplumber.open(filepath) as pdf:
                     target_pages = []

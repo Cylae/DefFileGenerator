@@ -52,9 +52,10 @@ def _run_cli():
     ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
-    if args.mapping:
+    mapping_arg = getattr(args, 'mapping', None)
+    if mapping_arg:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(mapping_arg, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -62,9 +63,17 @@ def _run_cli():
 
     extractor = Extractor(mapping)
 
-    pages = getattr(args, 'pages', None)
-    if pages and ext != '.pdf':
-        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+    pages = None
+    pages_arg = getattr(args, 'pages', None)
+    if pages_arg:
+        if ext != '.pdf':
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        else:
+            try:
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, getattr(args, 'sheet', None))
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
@@ -75,20 +84,22 @@ def _run_cli():
     is_empty, raw = peek_generator(raw)
     if is_empty: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw, args.address_offset)
-    is_empty_mapped, mapped = peek_generator(mapped)
-    if is_empty_mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, getattr(args, 'address_offset', 0))
+    exists, mapped = peek_generator(mapped)
+    if not exists: logging.error("No registers extracted."); sys.exit(1)
 
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', args.manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', args.model).lower()}_definition.csv"
+    manufacturer = getattr(args, 'manufacturer', 'Manufacturer')
+    model = getattr(args, 'model', 'Model')
+    output_file = getattr(args, 'output', None) or f"{re.sub(r'[^a-zA-Z0-9]', '_', manufacturer).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
         output=output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
+        manufacturer=manufacturer,
+        model=model,
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
         address_offset=0 # Already applied during extraction
     )
     run_generator(config, input_data=mapped)
