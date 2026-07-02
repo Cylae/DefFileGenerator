@@ -9,16 +9,8 @@ import sys
 import io
 import itertools
 import zipfile
+import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
-
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """Checks if an iterable has data without exhausting it."""
-    it = iter(iterable)
-    try:
-        first = next(it)
-    except StopIteration:
-        return False, iter([])
-    return True, itertools.chain([first], it)
 
 try:
     import openpyxl
@@ -63,14 +55,14 @@ except ImportError:
     except ImportError:
         Generator = None
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """Checks if an iterable has at least one item without fully exhausting it."""
-    it = iter(iterable)
+def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+    """Checks if an iterable has data without exhausting it."""
     try:
-        first = next(it)
+        iterator = iter(iterable)
+        first = next(iterator)
+        return True, itertools.chain([first], iterator)
     except StopIteration:
         return False, iter([])
-    return True, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: Dict[str, List[str]] = {
@@ -100,7 +92,8 @@ class Extractor:
     def extract_from_excel(self, filepath: str, sheet_name: Optional[str] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
-            return iter([])
+            yield from []
+            return
 
         wb = None
         try:
@@ -135,41 +128,48 @@ class Extractor:
             if wb:
                 wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int]]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
-            return iter([])
+            yield from []
+            return
 
-        def pdf_tables_generator():
+        # Handle pages as comma-separated string
+        if isinstance(pages, str):
             try:
-                with pdfplumber.open(filepath) as pdf:
-                    target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
-                    for page in target_pages:
-                        tables = page.extract_tables()
-                        logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
-                        for table in tables:
-                            if not table or len(table) < 2: continue
+                pages = [int(p.strip()) for p in pages.split(',') if p.strip()]
+            except ValueError:
+                logging.error(f"Invalid format for pages: {pages}")
+                pages = None
 
-                            # Evaluate the generator immediately inside the context manager
-                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in table[0]]
-                            table_rows = []
-                            for row in table[1:]:
+        try:
+            with pdfplumber.open(filepath) as pdf:
+                target_pages = pdf.pages if pages is None else [pdf.pages[i-1] for i in (pages if isinstance(pages, list) else [pages])]
+                for page in target_pages:
+                    tables = page.extract_tables()
+                    logging.debug(f"Found {len(tables)} tables on page {page.page_number}")
+                    for table in tables:
+                        if not table or len(table) < 2: continue
+
+                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
+                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
+                            for row in current_table[1:]:
                                 row_dict = {}
                                 for i, cell in enumerate(row):
                                     if i < len(headers):
                                         row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
                                 if any(row_dict.values()):
-                                    table_rows.append(row_dict)
+                                    yield row_dict
 
-                            # Evaluate to list to ensure data is extracted before context closes
-                            yield list(table_generator(table))
+                        # To ensure the PDF context stays open while iterating, we evaluate the generator
+                        # but keep the structure consistent. Since pdfplumber's extract_tables returns
+                        # data that is already in memory, we can convert it to a list of dicts.
+                        yield list(table_generator(table))
 
-            except (OSError,) + PDF_ERRORS as e:
-                logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-            except (ValueError, TypeError, IndexError) as e:
-                logging.error(f"Error extracting from PDF {filepath}: {e}")
-
-        return pdf_tables_generator()
+        except (OSError,) + PDF_ERRORS as e:
+            logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
+        except (ValueError, TypeError, IndexError) as e:
+            logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
@@ -212,7 +212,8 @@ class Extractor:
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
-            return iter([])
+            yield from []
+            return
         try:
             with open(filepath, 'rb') as f:
                 tree = ET.parse(f)
