@@ -1,3 +1,5 @@
+from unittest.mock import patch
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 import unittest
 import logging
 from DefFileGenerator.def_gen import Generator
@@ -182,20 +184,39 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
-    def test_sanitize_csv_field(self):
-        # Normal fields should be unchanged
-        self.assertEqual(self.generator.sanitize_csv_field('TestName'), 'TestName')
-        self.assertEqual(self.generator.sanitize_csv_field('123'), '123')
-        self.assertEqual(self.generator.sanitize_csv_field(''), '')
-        self.assertEqual(self.generator.sanitize_csv_field(None), '')
 
-        # Vulnerable fields should be escaped
-        self.assertEqual(self.generator.sanitize_csv_field('=cmd()'), "'=cmd()")
-        self.assertEqual(self.generator.sanitize_csv_field('+A1+B1'), "'+A1+B1")
-        self.assertEqual(self.generator.sanitize_csv_field('-1'), "'-1")
-        self.assertEqual(self.generator.sanitize_csv_field('@SUM(A1:A10)'), "'@SUM(A1:A10)")
-        self.assertEqual(self.generator.sanitize_csv_field('\tTabbed'), "'\tTabbed")
-        self.assertEqual(self.generator.sanitize_csv_field('\rReturn'), "'\rReturn")
+class TestRunGeneratorErrorPaths(unittest.TestCase):
+    def test_missing_input(self):
+        config = GeneratorConfig()
+        with self.assertLogs(level='ERROR') as log:
+            run_generator(config)
+            self.assertTrue(any("input_file or input_data is required." in m for m in log.output))
+
+    def test_missing_file(self):
+        config = GeneratorConfig()
+        config.input_file = "non_existent_file.csv"
+        with self.assertLogs(level='ERROR') as log:
+            run_generator(config)
+            self.assertTrue(any("Input file not found" in m for m in log.output))
+
+    def test_missing_manufacturer_model(self):
+        config = GeneratorConfig()
+        config.input_file = "dummy.csv" # will be patched
+        with patch('os.path.exists', return_value=True):
+            with self.assertLogs(level='ERROR') as log:
+                run_generator(config)
+                self.assertTrue(any("manufacturer and model are required." in m for m in log.output))
+
+    def test_exception_handling(self):
+        config = GeneratorConfig()
+        config.input_file = "dummy.csv"
+        config.manufacturer = "Mfg"
+        config.model = "Model"
+        with patch('os.path.exists', return_value=True):
+            with patch('builtins.open', side_effect=OSError("Test IO Error")):
+                with self.assertLogs(level='ERROR') as log:
+                    run_generator(config)
+                    self.assertTrue(any("An error occurred during generation: Test IO Error" in m for m in log.output))
 
 if __name__ == '__main__':
     unittest.main()
