@@ -10,7 +10,10 @@ import logging
 import csv
 import json
 import tempfile
-from DefFileGenerator.extractor import Extractor, peek_generator
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
@@ -37,10 +40,7 @@ def _perform_extraction(args):
 
     extractor = Extractor(mapping)
     input_file = getattr(args, 'input_file', None)
-    if not input_file:
-        return []
-
-    if not os.path.exists(input_file):
+    if not input_file or not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
@@ -49,12 +49,12 @@ def _perform_extraction(args):
     pages_arg = getattr(args, 'pages', None)
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(input_file, getattr(args, 'sheet', None))
+        raw_data = extractor.extract_from_excel(input_file, args.sheet)
     elif ext == '.pdf':
         pages = None
-        if pages_arg:
+        if getattr(args, 'pages', None):
             try:
-                pages = [int(p.strip()) for p in pages_arg.split(',')]
+                pages = [int(p.strip()) for p in args.pages.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
@@ -82,8 +82,8 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    exists, mapped_data = peek_generator(mapped_data)
-    if not exists:
+    first_row, mapped_data = peek_generator(mapped_data)
+    if not first_row:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -105,10 +105,7 @@ def extract_command(args):
 
 def validate_command(args):
     generator = Generator()
-    if generator.validate_csv(args.input_file):
-        logging.info(f"Validation successful: {args.input_file}")
-    else:
-        logging.error(f"Validation failed: {args.input_file}")
+    if not generator.validate_csv(args.input_file):
         sys.exit(1)
 
 def generate_command(args):
@@ -123,14 +120,13 @@ def generate_command(args):
     config = GeneratorConfig(
         input_file=input_file,
         output=args.output,
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
-        protocol=getattr(args, 'protocol', 'modbusRTU'),
-        category=getattr(args, 'category', 'Inverter'),
-        forced_write=getattr(args, 'forced_write', ''),
-        address_offset=getattr(args, 'address_offset', 0),
-        template=template,
-        template_mode=template_mode
+        manufacturer=args.manufacturer,
+        model=args.model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        address_offset=args.address_offset,
+        template=args.template
     )
     run_generator(config)
 
@@ -140,13 +136,14 @@ def validate_command(args):
         sys.exit(1)
 
 def run_command(args):
-    if getattr(args, 'template', False):
-        generate_command(args)
+    if args.template:
+        config = GeneratorConfig(output=args.output, template=True)
+        run_generator(config)
         return
 
     mapped_data = _perform_extraction(args)
-    exists, mapped_data = peek_generator(mapped_data)
-    if not exists:
+    first_row, mapped_data = peek_generator(mapped_data)
+    if not first_row:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -225,7 +222,11 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_generate.add_argument('--template', action='store_true')
+    parser_generate.add_argument('--template', action='store_true', help='Generate CSV template')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -241,11 +242,7 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_run.add_argument('--template', action='store_true')
-
-    # Validate
-    parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
-    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
+    parser_run.add_argument('--template', action='store_true', help='Generate definition template')
 
     args = parser.parse_args()
     if not args.command:
@@ -272,6 +269,8 @@ def _run_cli():
         extract_command(args)
     elif args.command == 'generate':
         generate_command(args)
+    elif args.command == 'validate':
+        validate_command(args)
     elif args.command == 'run':
         run_command(args)
     elif args.command == 'validate':

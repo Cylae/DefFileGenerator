@@ -84,11 +84,9 @@ def _run_cli():
     has_data, raw_peeked = peek_generator(raw)
     if not has_data: logging.error("No data extracted."); sys.exit(1)
 
-    mapped_gen = extractor.map_and_clean(raw_peeked, args.address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped_gen)
-    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
-
-    mapped = list(mapped_peeked)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    first_row, mapped = peek_generator(mapped)
+    if not first_row: logging.error("No registers extracted."); sys.exit(1)
 
     manufacturer = getattr(args, 'manufacturer', 'Manufacturer')
     model = getattr(args, 'model', 'Model')
