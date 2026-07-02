@@ -9,7 +9,6 @@ import sys
 import io
 import itertools
 import zipfile
-import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
 try:
@@ -85,6 +84,7 @@ class Extractor:
     def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
 
+
     @staticmethod
     def normalize_type(t: Any) -> str:
         if Generator:
@@ -135,16 +135,21 @@ class Extractor:
         def pdf_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
             try:
                 with pdfplumber.open(filepath) as pdf:
-                    target_pages = []
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        page_nums = pages if isinstance(pages, list) else [pages]
-                        for p in page_nums:
-                            if 1 <= p <= len(pdf.pages):
-                                target_pages.append(pdf.pages[p-1])
-                            else:
-                                logging.warning(f"Page {p} is out of range for {filepath}")
+                        page_list = []
+                        requested = pages if isinstance(pages, list) else [pages]
+                        for p in requested:
+                            try:
+                                idx = int(p) - 1
+                                if 0 <= idx < len(pdf.pages):
+                                    page_list.append(pdf.pages[idx])
+                                else:
+                                    logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)})")
+                            except (ValueError, TypeError):
+                                logging.warning(f"Invalid page reference: {p}")
+                        target_pages = page_list
 
                     for page in target_pages:
                         tables = page.extract_tables()
@@ -241,7 +246,7 @@ class Extractor:
 
         return xml_tables_generator()
 
-    def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
             return iter([])
 
@@ -331,6 +336,15 @@ class Extractor:
             for row in iterator:
                 processed = process_row(row)
                 if processed: yield processed
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Peeks at the first element of an iterable without consuming it."""
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return None, iter([])
+    return first, itertools.chain([first], it)
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
