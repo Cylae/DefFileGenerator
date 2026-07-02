@@ -151,7 +151,7 @@ modbusRTU;Inverter;Huawei;SUN2000-5KTL;;;;;;;
 
 If you manually create the input CSV for the `generate` command, use these columns:
 
-| Column | Description |
+| Target | Patterns |
 | :--- | :--- |
 | `Name` | Variable name (Required). |
 | `Tag` | Unique tag (auto-generated if empty). |
