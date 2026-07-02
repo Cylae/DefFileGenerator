@@ -216,11 +216,9 @@ class Generator:
             if not RE_ADDR_STRING.match(address):
                 return False
         elif dtype_upper == 'BITS':
-            if not RE_ADDR_BITS.match(address):
-                return False
+            match = RE_ADDR_BITS.match(address)
         else:
-            if not RE_ADDR_INT.match(address):
-                return False
+            match = RE_ADDR_INT.match(address)
 
         # Check address range (0-65535)
         try:
@@ -536,6 +534,8 @@ class Generator:
             logging.error(f"Error during CSV validation: {e}")
             return False
 
+        return valid
+
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         """Processes simplified CSV rows into WebdynSunPM format."""
         seen_names = {}
@@ -592,7 +592,7 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization and intelligent defaulting
+            # Action normalization with intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
                 # Default based on Info1: Input (4) and Discrete (2) are RO
@@ -647,18 +647,14 @@ class Generator:
                     str(index), info1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
-                counts[row['Info1']] = counts.get(row['Info1'], 0) + 1
-
-            summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
-            if summary:
-                logging.info(f"Register Summary -> {summary}")
+                type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1
 
             summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
             if summary:
                 logging.info(f"Generated {index} registers ({summary})")
 
             if isinstance(output, str):
-                summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
+                summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
                 logging.info(f"Definition file generated at {output}. Summary: {summary}")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
@@ -666,52 +662,17 @@ class Generator:
             if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
                 outfile.close()
 
-    @staticmethod
-    def validate_csv(filepath: str) -> bool:
-        """Validates a Webdyn definition CSV file."""
-        if not os.path.exists(filepath):
-            logging.error(f"Validation failed: File {filepath} not found.")
-            return False
-
-        success = True
-        try:
-            with open(filepath, 'r', encoding='utf-8-sig') as f:
-                reader = csv.reader(f, delimiter=';')
-                header = next(reader)
-                if len(header) < 4:
-                    logging.error("Validation failed: Invalid header format (insufficient columns).")
-                    return False
-
-                for line_num, row in enumerate(reader, start=2):
-                    if not row or all(not cell.strip() for cell in row):
-                        continue
-                    if len(row) < 11:
-                        logging.warning(f"Line {line_num}: Insufficient columns (expected 11, got {len(row)}). skipping.")
-                        continue
-
-                    # Column mapping: 1:Info1 (Type), 2:Info2 (Address), 3:Info3 (DataType)
-                    info1, address, info3 = row[1], row[2], row[3]
-                    if not Generator.validate_address(address, info3):
-                        logging.warning(f"Line {line_num}: Invalid address '{address}' for type '{info3}'.")
-                        success = False
-
-            return success
-        except (OSError, csv.Error) as e:
-            logging.error(f"Error validating CSV: {e}")
-            return False
-
 def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
     if mode == 'definition':
-        # Sample Webdyn Definition CSV (semicolon delimited)
-        header = ['modbusRTU', 'Inverter', 'Manufacturer', 'Model', '', '', '', '', '', '', '']
+        headers = ['#Index', 'Info1', 'Info2', 'Info3', 'Info4', 'Name', 'Tag', 'CoefA', 'CoefB', 'Unit', 'Action']
         rows = [
-            ['1', '3', '30001', 'U16', '', 'Example Variable', 'example_tag', '1.000000', '0.000000', 'V', '4'],
-            ['2', '3', '30030_20', 'STRING', '', 'Convenience String', 'str_tag', '1.000000', '0.000000', '', '4']
+            ['modbusRTU', 'Inverter', 'SampleManufacturer', 'SampleModel', '', '', '', '', '', '', ''],
+            ['1', '3', '40001', 'U16', '', 'Active Power', 'active_power', '1.000000', '0.000000', 'W', '4'],
+            ['2', '3', '40002', 'U16', '', 'Voltage', 'voltage', '0.100000', '0.000000', 'V', '4']
         ]
         delimiter = ';'
     else:
-        # Sample Simplified Input CSV (comma delimited)
-        header = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
+        headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
         rows = [
             ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
             ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
@@ -722,11 +683,13 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f, delimiter=delimiter)
-                writer.writerow(header)
+                if mode != 'definition':
+                    writer.writerow(headers)
                 writer.writerows(rows)
         else:
             writer = csv.writer(sys.stdout, delimiter=delimiter)
-            writer.writerow(header)
+            if mode != 'definition':
+                writer.writerow(headers)
             writer.writerows(rows)
     except OSError as e:
         logging.error(f"Error generating template: {e}")
