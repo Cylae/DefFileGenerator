@@ -4,7 +4,23 @@ This toolset allows for automatically extracting Modbus register information fro
 
 ## Quick Start
 
-### 1. Installation
+*   **Robust Extraction**: Heuristic-based column detection for manufacturer documents.
+*   **Secure XML Processing**: XXE-protected XML parsing via `defusedxml`.
+*   **Advanced Address Logic**:
+    *   Supports Decimal, Hex (0x prefix or h suffix), and Negative addresses.
+    *   `address_offset`: Shift all register addresses by a specified value.
+    *   Optimized overlap detection for large-scale register maps.
+    *   **Strict Range Validation**: Ensures Modbus addresses are within 0-65535.
+*   **Comprehensive Type Support**: Standardizes synonyms and supports endianness suffixes (e.g., `_B`, `_W`, `_WB`).
+*   **Unified CLI**: Single entry point for extraction, generation, or end-to-end runs.
+*   **Intelligent Action Defaulting**: Automatically assigns Read Only (4) for Input/Discrete registers and Read/Write (1) for Holding/Coils.
+
+## Requirements
+
+*   Python 3.x
+*   Dependencies: `pdfplumber`, `openpyxl`, `pandas`, `lxml`, `defusedxml`, `reportlab`
+
+Install all dependencies:
 ```bash
 # Install core and optional dependencies
 pip install pandas openpyxl pdfplumber lxml defusedxml reportlab
@@ -12,7 +28,33 @@ pip install pandas openpyxl pdfplumber lxml defusedxml reportlab
 
 ### 2. Basic Usage (End-to-End)
 ```bash
-python3 DefFileGenerator/main.py run datasheet.pdf --manufacturer "Huawei" --model "SUN2000" -o definition.csv
+python3 DefFileGenerator/main.py extract <source_file> -o <output_csv> [options]
+```
+*   `--mapping <json_file>`: (Optional) JSON file to map manufacturer columns.
+*   `--sheet <name>`: (Excel only) Specific sheet name.
+*   `--pages <list>`: (PDF only) Comma-separated list of pages.
+
+### 2. Generate definition from CSV
+Convert a simplified CSV into a WebdynSunPM definition file.
+
+```bash
+python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
+```
+*   `--address-offset <int>`: Shift addresses (default 0).
+*   `--template`: Generate a sample simplified CSV template.
+
+### 3. End-to-End Run
+Extract and generate the definition file in a single step.
+
+```bash
+python3 DefFileGenerator/main.py run <source_file> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
+```
+
+### 4. Validate Definition File
+Check a generated WebdynSunPM CSV for formatting and Modbus range constraints.
+
+```bash
+python3 DefFileGenerator/main.py validate <definition_file>
 ```
 
 ---
@@ -157,9 +199,23 @@ The tool automatically identifies columns like:
 - **Unit**: unit, units
 - **Scale**: scale, factor, multiplier
 
+## Column Recognition Patterns
+
+The tool searches for columns matching these patterns (case-insensitive):
+
+| Target | Patterns |
+| :--- | :--- |
+| **Address** | register, address, addr, offset, reg |
+| **Name** | name, description, parameter, variable, signal |
+| **Type** | type, data type, format, datatype |
+| **Unit** | unit, units |
+| **Scale** | scale, factor, multiplier, ratio |
+| **Action** | action, access |
+
 ## Validation & Performance
 
-The tool is optimized for performance and strict resource constraints:
+The tool is optimized for performance and strict resource constraints. It performs:
 *   **Memory Efficiency**: O(1) memory overhead through generator-based stream processing.
-*   **Address Overlap Detection**: Dictionary-based O(N) check.
-*   **Security**: XXE protection for XML.
+*   **Input Resilience**: Advanced IO error isolation (fallback encoding and explicit type hints).
+*   **Address Overlap Detection**: Dictionary-based O(N) check avoiding geometric performance drops.
+*   **Security Validation**: Blocks external entity injection (XXE) in XML formats reliably.
