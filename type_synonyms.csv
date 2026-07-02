@@ -1,0 +1,5 @@
+Name,Address,Type,RegisterType
+U64 Test,100,uint64,Holding
+I32 Test,104,int32,Holding
+F32 Test,106,float,Holding
+STR Test,108,string 20,Holding
