@@ -1,6 +1,6 @@
-# DefFileGenerator
+# DefFileGenerator & WebdynSunPM Documentation Parser
 
-This toolset allows for extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
+This toolset allows for automatically extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
 
 ## Quick Start Guide
 
@@ -63,7 +63,7 @@ python doc_to_webdyn.py registers.csv \
 
 ## Unified CLI Usage
 
-The primary entry point is `DefFileGenerator/main.py`.
+The primary entry point is `DefFileGenerator/main.py`. Use `PYTHONPATH=. python3 DefFileGenerator/main.py` if running from the root.
 
 ### 1. Extract registers from documentation
 Extract tables from PDF, Excel, CSV, or XML into a simplified CSV format.
@@ -82,6 +82,7 @@ Convert a simplified CSV into a WebdynSunPM definition file.
 python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
 *   `--address-offset <int>`: Shift addresses (default 0).
+*   `--template`: Generate a sample simplified CSV template.
 
 ### 3. End-to-End Run
 Extract and generate the definition file in a single step.
