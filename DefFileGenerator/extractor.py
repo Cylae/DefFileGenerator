@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import io
+import itertools
 import zipfile
 import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
@@ -243,7 +244,7 @@ class Extractor:
 
     def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
-            return
+            return iter([])
 
         for table in tables:
             if not table: continue

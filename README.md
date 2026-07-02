@@ -1,12 +1,13 @@
-# DefFileGenerator
+# DefFileGenerator & WebdynSunPM Documentation Parser
 
-This toolset allows for extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
+This toolset allows for automatically extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
 
 ## Quick Start
 
 ### 1. Installation
 ```bash
-pip install pdfplumber openpyxl pandas lxml defusedxml reportlab
+# Install core and optional dependencies
+pip install pandas openpyxl pdfplumber lxml defusedxml reportlab
 ```
 
 ### 2. Basic Usage (End-to-End)
@@ -31,16 +32,44 @@ python3 DefFileGenerator/main.py run datasheet.pdf --manufacturer "Huawei" --mod
 
 ## Unified CLI Usage
 
-The primary entry point is `DefFileGenerator/main.py`.
+#### From PDF Documentation
+```bash
+python doc_to_webdyn.py manufacturer_datasheet.pdf \
+    --manufacturer "Huawei" \
+    --model "SUN2000-5KTL" \
+    -o huawei_definition.csv
+```
+
+#### From Excel Register Map
+```bash
+python doc_to_webdyn.py register_map.xlsx \
+    --manufacturer "SolarEdge" \
+    --model "SE5000H" \
+    -o solaredge_definition.csv
+```
+
+#### From CSV File
+```bash
+python doc_to_webdyn.py registers.csv \
+    --manufacturer "Fronius" \
+    --model "Symo-5.0" \
+    -o fronius_definition.csv
+```
+
+---
+
+## Unified CLI (Advanced Usage)
+
+The primary entry point for granular control is `DefFileGenerator/main.py`.
 
 ### 1. Extract registers from documentation
 Extract tables from PDF, Excel, CSV, or XML into a simplified CSV format.
 ```bash
 python3 DefFileGenerator/main.py extract <source_file> -o <output_csv> [options]
 ```
-*   `--mapping <json_file>`: (Optional) JSON file to map manufacturer columns.
-*   `--sheet <name>`: (Excel only) Specific sheet name.
-*   `--pages <list>`: (PDF only) Comma-separated list of pages.
+*   `--mapping <json_file>`: JSON file to map manufacturer columns.
+*   `--sheet <name>`: (Excel only) Specific sheet name to process.
+*   `--pages <list>`: (PDF only) Comma-separated list of pages (e.g., "1,2,5").
 
 ### 2. Generate definition from CSV
 Convert a simplified CSV into a WebdynSunPM definition file.
@@ -65,7 +94,42 @@ python3 DefFileGenerator/main.py validate <definition_csv>
 
 ## Input CSV Format (Simplified)
 
-The simplified CSV (input for `generate`) uses these columns:
+### Column Recognition
+The tool automatically identifies columns matching these patterns (case-insensitive):
+
+| Target | Patterns |
+| :--- | :--- |
+| **Address** | register, address, addr, offset, reg |
+| **Name** | name, description, parameter, variable, signal, signal name |
+| **Type** | type, data type, format, datatype |
+| **Unit** | unit, units |
+| **Scale** | scale, factor, multiplier, ratio |
+| **Action** | action, access |
+
+### Data Type Mapping
+Standard manufacturer types are mapped to WebdynSunPM types:
+
+| Manufacturer Type | Webdyn Type |
+| :--- | :--- |
+| uint16, u16 | U16 |
+| int16, i16 | I16 |
+| uint32, u32 | U32 |
+| int32, i32 | I32 |
+| float, f32, float32 | F32 |
+| double, f64, float64 | F64 |
+| string, str | STR<n> |
+
+### Features & Security
+*   **Address Logic**: Supports Decimal, Hex (0x prefix), and Negative addresses.
+*   **Overlap Detection**: Dictionary-based O(N) check for register collisions.
+*   **Security**: XXE-protected XML parsing via `defusedxml`.
+*   **Memory Efficiency**: O(1) memory overhead using generator-based stream processing.
+
+---
+
+## Input CSV Format (for `generate`)
+
+The simplified CSV uses these columns:
 
 | Column | Description |
 | :--- | :--- |
@@ -80,11 +144,9 @@ The simplified CSV (input for `generate`) uses these columns:
 | `Action` | Action code (1=RW, 4=RO, etc. Defaults based on type). |
 | `ScaleFactor` | Power of 10 scaling ($CoefA = Factor \times 10^{ScaleFactor}$). |
 
-### Supported Types
+---
 
-*   **Numeric**: `U8-U64`, `I8-I64`, `F32`, `F64` (supports `_W`, `_B`, `_WB` suffixes).
-*   **Convenience**: `STR<n>` (e.g., `STR20` for a 20-character string).
-*   **Special**: `BITS`, `IP`, `IPV6`, `MAC`.
+## Troubleshooting
 
 ## Column Recognition (Heuristics)
 
