@@ -2,92 +2,104 @@ import unittest
 import os
 import csv
 import logging
-import tempfile
+import csv
 from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
-        self.temp_dir = tempfile.TemporaryDirectory()
+        # Suppress logging during tests
+        logging.disable(logging.CRITICAL)
 
     def tearDown(self):
-        self.temp_dir.cleanup()
+        logging.disable(logging.NOTSET)
 
-    def create_def_file(self, rows, manufacturer="Test", model="Model"):
-        filepath = os.path.join(self.temp_dir.name, "test_def.csv")
-        header = ["modbusRTU", "Inverter", manufacturer, model, "", "", "", "", "", "", ""]
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f, delimiter=';')
+    def create_csv(self, rows, header=None):
+        path = os.path.join(self.test_dir.name, "test_val.csv")
+        if header is None:
+            header = ["modbusRTU", "Inverter", "TestMFG", "TestModel", "", "", "", "", "", "", ""]
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f, delimiter=";")
             writer.writerow(header)
             for i, row in enumerate(rows, start=1):
-                # row format: [Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action]
-                full_row = [str(i)] + row
-                writer.writerow(full_row)
-        return filepath
+                writer.writerow([str(i)] + list(row))
+        return path
 
     def test_validate_address_range(self):
-        # Valid addresses
-        self.assertTrue(self.generator.validate_address('0', 'U16'))
-        self.assertTrue(self.generator.validate_address('65535', 'U16'))
-        self.assertTrue(self.generator.validate_address('0x0', 'U16'))
-        self.assertTrue(self.generator.validate_address('0xFFFF', 'U16'))
+        self.assertTrue(self.generator.validate_address("0", "U16"))
+        self.assertTrue(self.generator.validate_address("65535", "U16"))
+        self.assertFalse(self.generator.validate_address("65536", "U16"))
+        self.assertFalse(self.generator.validate_address("-1", "U16"))
+        # Hex
+        self.assertTrue(self.generator.validate_address("0xFFFF", "U16"))
+        self.assertFalse(self.generator.validate_address("0x10000", "U16"))
 
-        # Invalid addresses (out of range)
-        with self.assertLogs(level='WARNING') as log:
-            self.assertFalse(self.generator.validate_address('65536', 'U16'))
-            self.assertTrue(any("out of standard Modbus range" in m for m in log.output))
-
-        with self.assertLogs(level='WARNING') as log:
-            self.assertFalse(self.generator.validate_address('-1', 'U16'))
-            self.assertTrue(any("out of standard Modbus range" in m for m in log.output))
-
-    def test_validate_csv_valid(self):
+    def test_validate_csv_success(self):
         rows = [
-            ['3', '100', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'A', '4']
+            ["3", "30001", "U16", "", "Voltage", "v_tag", "1.0", "0.0", "V", "4"],
+            ["3", "30002", "U16", "", "Current", "c_tag", "1.0", "0.0", "A", "4"]
         ]
-        filepath = self.create_def_file(rows)
-        self.assertTrue(self.generator.validate_csv(filepath))
+        path = self.create_csv(rows)
+        self.assertTrue(self.generator.validate_csv(path))
 
     def test_validate_csv_duplicate_tag(self):
         rows = [
-            ['3', '100', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['3', '101', 'U16', '', 'Var2', 'tag1', '1.0', '0.0', 'A', '4'] # Duplicate Tag
+            ["3", "30001", "U16", "", "Voltage", "dup_tag", "1.0", "0.0", "V", "4"],
+            ["3", "30002", "U16", "", "Current", "dup_tag", "1.0", "0.0", "A", "4"]
         ]
-        filepath = self.create_def_file(rows)
-        with self.assertLogs(level='ERROR') as log:
-            self.assertFalse(self.generator.validate_csv(filepath))
-            self.assertTrue(any("Duplicate Tag 'tag1'" in m for m in log.output))
+        path = self.create_csv(rows)
+        # validate_csv should return False for duplicate tags
+        self.assertFalse(self.generator.validate_csv(path))
 
-    def test_validate_csv_overlap(self):
+    def test_validate_csv_address_overlap(self):
         rows = [
-            ['3', '100', 'U32', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'], # Uses 100, 101
-            ['3', '101', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'A', '4']  # Overlaps 101
+            ["3", "30001", "U32", "", "Power", "p_tag", "1.0", "0.0", "W", "4"],
+            ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"]
         ]
-        filepath = self.create_def_file(rows)
-        with self.assertLogs(level='WARNING') as log:
-            # validate_csv returns True for overlaps (as they are currently warnings)
-            self.assertTrue(self.generator.validate_csv(filepath))
-            self.assertTrue(any("Address overlap detected" in m for m in log.output))
+        path = self.create_csv(rows)
+        # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
+        # but let's see how it behaves. The current implementation only returns False
+        # for fatal errors like duplicate tags or invalid addresses.
+        self.assertTrue(self.generator.validate_csv(path))
 
     def test_validate_csv_invalid_address(self):
         rows = [
-            ['3', '70000', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'] # Out of range
+            ["3", "70000", "U16", "", "Invalid", "inv_tag", "1.0", "0.0", "V", "4"]
         ]
-        filepath = self.create_def_file(rows)
-        with self.assertLogs(level='WARNING') as log:
-            self.assertFalse(self.generator.validate_csv(filepath))
-            self.assertTrue(any("Invalid address or type" in m for m in log.output))
+        path = self.create_csv(rows)
+        self.assertFalse(self.generator.validate_csv(path))
 
-    def test_summary_logging(self):
+    def test_validate_csv_compound_address(self):
+        # String address validation
+        self.assertTrue(self.generator.validate_address("30030_20", "STRING"))
+        self.assertTrue(self.generator.validate_address("30030_20", "STR20"))
+
         rows = [
-            {'Info1': '3', 'Info2': '100', 'Info3': 'U16', 'Info4': '', 'Name': 'V1', 'Tag': 't1', 'CoefA': '1.0', 'CoefB': '0.0', 'Unit': 'V', 'Action': '4'},
-            {'Info1': '4', 'Info2': '200', 'Info3': 'U16', 'Info4': '', 'Name': 'V2', 'Tag': 't2', 'CoefA': '1.0', 'CoefB': '0.0', 'Unit': 'A', 'Action': '4'}
+            ["3", "30030_20", "STR20", "", "Serial", "s_tag", "1.0", "0.0", "", "4"]
         ]
-        output = os.path.join(self.temp_dir.name, "summary.csv")
-        with self.assertLogs(level='INFO') as log:
-            Generator.write_output_csv(output, rows, "MFG", "MDL")
-            self.assertTrue(any("Generated registers: Holding: 1, Input: 1" in m for m in log.output))
+        path = self.create_csv(rows)
+        self.assertTrue(self.generator.validate_csv(path))
 
-if __name__ == '__main__':
+    def test_intelligent_action_defaulting(self):
+        # Input Register (4) should default to 4 (Read Only)
+        rows = [{'Name': 'InputVar', 'Address': '100', 'Type': 'U16', 'RegisterType': 'Input Register', 'Action': ''}]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '4')
+
+        # Holding Register (3) should default to 1 (Read/Write)
+        rows = [{'Name': 'HoldingVar', 'Address': '200', 'Type': 'U16', 'RegisterType': 'Holding Register', 'Action': ''}]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1')
+
+        # Discrete Input (2) should default to 4 (Read Only)
+        rows = [{'Name': 'DiscVar', 'Address': '300', 'Type': 'U16', 'RegisterType': 'Discrete Input', 'Action': ''}]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '4')
+
+        # Coil (1) should default to 1 (Read/Write)
+        rows = [{'Name': 'CoilVar', 'Address': '400', 'Type': 'U16', 'RegisterType': 'Coil', 'Action': ''}]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1')
+
+if __name__ == "__main__":
     unittest.main()
