@@ -855,7 +855,7 @@ class Generator:
         type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
         try:
             if isinstance(output, str):
-                outfile = open(output, 'w', newline='', encoding='utf-8')
+                outfile = open(output, 'w', newline='', encoding='utf-8-sig')
             elif output is None:
                 outfile = sys.stdout
             else:
