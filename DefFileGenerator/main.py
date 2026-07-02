@@ -100,7 +100,7 @@ def extract_command(args):
 
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
-    writer.writerows(mapped_data)
+    writer.writerows(mapped_iterator)
 
     if output:
         f.close()
@@ -273,6 +273,10 @@ def _run_cli():
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
     parser_validate.add_argument('input_file', help='WebdynSunPM definition CSV')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition CSV')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
     if not args.command:
