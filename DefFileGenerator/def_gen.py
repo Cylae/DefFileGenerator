@@ -938,6 +938,56 @@ class Generator:
 
         return is_valid
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                # Skip header row
+                try:
+                    next(reader)
+                except StopIteration:
+                    logging.error(f"{filepath} is empty.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row: continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (expected 11, found {len(row)}).")
+                        continue
+
+                    info1, address, dtype, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Fatal - Duplicate Tag '{tag}' detected.")
+                            valid = False
+                        seen_tags[tag] = line_num
+
+                    if not self.validate_type(dtype):
+                        logging.warning(f"Line {line_num}: Invalid Type '{dtype}'.")
+                        valid = False
+
+                    if not self.validate_address(address, dtype):
+                        logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'.")
+                        valid = False
+
+                    self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
+            return valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
+
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
