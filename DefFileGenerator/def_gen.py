@@ -31,7 +31,7 @@ class GeneratorConfig:
     category: str = 'Inverter'
     forced_write: str = ''
     template: bool = False
-    template_mode: str = 'input'  # 'input' or 'definition'
+    template_mode: str = 'input'
     address_offset: int = 0
     template_mode: str = 'input'
 
@@ -154,9 +154,7 @@ class Generator:
     @staticmethod
     def validate_type(dtype: str) -> bool:
         """Validates the data type."""
-        if not dtype:
-            return False
-        dtype_upper = dtype.upper()
+        dtype_upper = str(dtype).upper()
         # Base types
         base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC']
         if dtype_upper in base_types:
@@ -745,14 +743,12 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
             ['1', '3', '40001', 'U16', '', 'Active Power', 'active_power', '1.000000', '0.000000', 'W', '4'],
             ['2', '3', '40002', 'U16', '', 'Voltage', 'voltage', '0.100000', '0.000000', 'V', '4']
         ]
-        delimiter = ';'
     else:
         headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
         rows = [
             ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
             ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
         ]
-        delimiter = ','
 
     try:
         if output_file:

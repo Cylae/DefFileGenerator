@@ -117,6 +117,7 @@ class Extractor:
                             if any(cell is not None and str(cell).strip() for cell in row):
                                 yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
+                # We yield a generator for each sheet.
                 yield sheet_generator()
 
             except (OSError, zipfile.BadZipFile) as e:

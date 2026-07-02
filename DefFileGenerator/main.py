@@ -32,7 +32,7 @@ def _perform_extraction(args):
     mapping_path = getattr(args, 'mapping', None)
     if mapping_path:
         try:
-            with open(mapping_path, 'r') as f:
+            with open(mapping_file, 'r') as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -189,6 +189,10 @@ def validate_command(args):
     if not generator.validate_csv(args.input_file):
         sys.exit(1)
     logging.info(f"Validation successful for {args.input_file}")
+
+def validate_command(args):
+    if not Generator().validate_csv(args.input_file):
+        sys.exit(1)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
