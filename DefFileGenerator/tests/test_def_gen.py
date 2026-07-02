@@ -1,3 +1,5 @@
+from unittest.mock import patch
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 import unittest
 import logging
 from DefFileGenerator.def_gen import Generator
