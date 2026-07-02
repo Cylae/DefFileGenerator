@@ -144,6 +144,10 @@ class Generator:
                     return f"{res}{suffix}"
                 return f"{replacement}{suffix}"
 
+        # Handle STR<n> explicitly if it comes in as raw type
+        if t.startswith('str') and t[3:].isdigit():
+            return t.upper()
+
         t = _CLEAN_TYPE_RE.sub('', t)
         return t.upper() if t else 'U16'
 
@@ -192,7 +196,7 @@ class Generator:
 
         # Handle decimal (including negative)
         try:
-            return str(int(addr_part))
+            return str(int(addr_part, 0))
         except ValueError:
             pass
 
@@ -379,9 +383,8 @@ class Generator:
         """Applies an integer offset to a register address (simple or compound)."""
         if not address:
             return ""
-        # Split by underscore but ensure we handle compound addresses correctly
         parts = str(address).split('_')
-        # Normalize each part individually
+        # Normalize each part individually to avoid int() consuming underscores
         norm_parts = [Generator.normalize_address_val(p) for p in parts]
 
         try:
@@ -805,7 +808,6 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                 reader = csv.DictReader(csvfile, dialect=dialect)
                 processed_rows = generator.process_rows(reader, config.address_offset)
 
-                # Consume the generator while the input file is still open
                 generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
                                            config.protocol, config.category, config.forced_write)
     except (OSError, csv.Error, ValueError) as e:
@@ -822,6 +824,7 @@ def main():
     parser.add_argument('--category', default='Inverter')
     parser.add_argument('--forced-write', default='')
     parser.add_argument('--template', action='store_true')
+    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser.add_argument('--address-offset', type=int, default=0)
 
     args = parser.parse_args()
@@ -830,6 +833,7 @@ def main():
         manufacturer=args.manufacturer, model=args.model,
         protocol=args.protocol, category=args.category,
         forced_write=args.forced_write, template=args.template,
+        template_mode=args.template_mode,
         address_offset=args.address_offset
     )
     run_generator(config)
