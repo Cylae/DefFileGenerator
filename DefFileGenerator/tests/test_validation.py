@@ -1,7 +1,7 @@
+#!/usr/bin/env python3
 import unittest
 import os
 import csv
-import tempfile
 import logging
 from DefFileGenerator.def_gen import Generator
 
@@ -14,56 +14,54 @@ class TestValidation(unittest.TestCase):
     def tearDown(self):
         self.test_dir.cleanup()
 
-    def create_def_file(self, rows):
-        path = os.path.join(self.test_dir.name, "test_def.csv")
+    def create_csv(self, rows):
+        path = os.path.join(self.test_dir.name, 'test_def.csv')
         with open(path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f, delimiter=';')
-            writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Test', '', '', '', '', '', '', ''])
-            for row in rows:
-                writer.writerow(row)
+            writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model', '', '', '', '', '', '', ''])
+            for idx, row in enumerate(rows, start=1):
+                writer.writerow([str(idx)] + list(row))
         return path
 
-    def test_valid_file(self):
-        rows = [
-            ['1', '3', '40001', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['2', '3', '40002', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'V', '4']
-        ]
-        path = self.create_def_file(rows)
+    def test_valid_definition(self):
+        path = self.create_csv([
+            ['3', '30001', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '4']
+        ])
         self.assertTrue(self.generator.validate_csv(path))
 
     def test_duplicate_tag(self):
-        rows = [
-            ['1', '3', '40001', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['2', '3', '40002', 'U16', '', 'Var2', 'tag1', '1.0', '0.0', 'V', '4']
-        ]
-        path = self.create_def_file(rows)
-        # Duplicate tag is fatal
+        path = self.create_csv([
+            ['3', '30001', 'U16', '', 'Var1', 'dup_tag', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'dup_tag', '1.0', '0.0', 'V', '4']
+        ])
         self.assertFalse(self.generator.validate_csv(path))
 
-    def test_out_of_range_address(self):
-        rows = [
-            ['1', '3', '70000', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
-        ]
-        path = self.create_def_file(rows)
+    def test_address_out_of_range(self):
+        path = self.create_csv([
+            ['3', '65536', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
+        self.assertFalse(self.generator.validate_csv(path))
+
+        path = self.create_csv([
+            ['3', '-1', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
         self.assertFalse(self.generator.validate_csv(path))
 
     def test_address_overlap(self):
-        rows = [
-            ['1', '3', '40001', 'U32', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4'],
-            ['2', '3', '40002', 'U16', '', 'Var2', 'tag2', '1.0', '0.0', 'V', '4']
-        ]
-        path = self.create_def_file(rows)
-        # Overlap is a warning in Generator, but let's see if validate_csv still returns True or False
-        # Currently _check_address_overlap logs warning. validate_csv only sets is_valid = False for fatal errors like tag or invalid address format/range.
-        # Wait, let's check validate_csv again.
-        # It doesn't set is_valid = False for overlaps.
+        # 32-bit register at 30001 uses 30001 and 30002
+        path = self.create_csv([
+            ['3', '30001', 'U32', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4'],
+            ['3', '30002', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '4']
+        ])
+        # Overlap is currently a warning in _check_address_overlap but validate_csv should still return True if it's just warnings
+        # Wait, looking at validate_csv implementation: it doesn't set valid=False on overlaps.
         self.assertTrue(self.generator.validate_csv(path))
 
     def test_invalid_address_format(self):
-        rows = [
-            ['1', '3', 'invalid', 'U16', '', 'Var1', 'tag1', '1.0', '0.0', 'V', '4']
-        ]
-        path = self.create_def_file(rows)
+        path = self.create_csv([
+            ['3', 'invalid', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '4']
+        ])
         self.assertFalse(self.generator.validate_csv(path))
 
 if __name__ == '__main__':
