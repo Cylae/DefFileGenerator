@@ -57,8 +57,9 @@ def _run_cli():
 
     extractor = Extractor(mapping)
 
-    pages = None
     pages_arg = getattr(args, 'pages', None)
+    sheet_arg = getattr(args, 'sheet', None)
+    pages = None
     if pages_arg:
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")

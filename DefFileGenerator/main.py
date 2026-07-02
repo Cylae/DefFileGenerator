@@ -40,7 +40,10 @@ def _perform_extraction(args):
 
     extractor = Extractor(mapping)
     input_file = getattr(args, 'input_file', None)
-    if not input_file or not os.path.exists(input_file):
+    if not input_file:
+        logging.error("Input file is required for extraction.")
+        sys.exit(1)
+    if not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
@@ -223,11 +226,11 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_generate.add_argument('--template', action='store_true', help='Generate CSV template')
+    parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
 
     # Validate
-    parser_validate = subparsers.add_parser('validate', help='Validate existing definition file')
-    parser_validate.add_argument('input_file', help='Webdyn definition CSV')
+    parser_validate = subparsers.add_parser('validate', help='Validate Webdyn definition file')
+    parser_validate.add_argument('input_file', help='Webdyn definition CSV to validate')
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate existing definition CSV')
@@ -247,7 +250,7 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_run.add_argument('--template', action='store_true', help='Generate definition template')
+    parser_run.add_argument('--template', action='store_true', help='Generate sample template')
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
