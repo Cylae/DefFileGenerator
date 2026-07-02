@@ -396,6 +396,13 @@ def _run_cli():
         if ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
             logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
+    # Manual validation for required manufacturer/model unless it's a template
+    if args.command in ['generate', 'run']:
+        if not getattr(args, 'template', False):
+            if not args.manufacturer or not args.model:
+                logging.error("--manufacturer and --model are required.")
+                sys.exit(1)
+
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'validate':

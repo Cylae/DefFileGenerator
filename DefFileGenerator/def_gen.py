@@ -8,6 +8,7 @@ import math
 import itertools
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
+import itertools
 from dataclasses import dataclass
 
 def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterable]:
