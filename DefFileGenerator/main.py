@@ -50,6 +50,7 @@ def _perform_extraction(args):
     ext = os.path.splitext(input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
     pages_arg = getattr(args, 'pages', None)
+    sheet_arg = getattr(args, 'sheet', None)
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, sheet)
