@@ -43,6 +43,19 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val('A0'), '160')
         self.assertEqual(self.generator.normalize_address_val('1,234'), '1234')
 
+    def test_validate_address_invalid(self):
+        self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
+        self.assertFalse(self.generator.validate_address('xyz', 'U16')) # Not hex
+
+    def test_get_register_count(self):
+        self.assertEqual(self.generator.get_register_count('U16', '30000'), 1)
+        self.assertEqual(self.generator.get_register_count('U32', '30000'), 2)
+        self.assertEqual(self.generator.get_register_count('U64', '30000'), 4)
+        self.assertEqual(self.generator.get_register_count('MAC', '30000'), 3)
+        self.assertEqual(self.generator.get_register_count('IPV6', '30000'), 8)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000_10'), 5) # ceil(10/2)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000_11'), 6) # ceil(11/2)
+
     def test_process_rows_basic(self):
         rows = [{
             'Name': 'Test Var',
