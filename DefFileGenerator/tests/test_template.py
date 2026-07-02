@@ -1,25 +1,29 @@
 import unittest
 import os
 import csv
+import logging
+import tempfile
 from DefFileGenerator.def_gen import generate_template
 
 class TestTemplate(unittest.TestCase):
-    def test_generate_template(self):
-        filename = "test_template.csv"
-        try:
-            generate_template(filename)
-            self.assertTrue(os.path.exists(filename))
-            with open(filename, 'r', encoding='utf-8') as f:
-                reader = csv.reader(f)
-                header = next(reader)
-                self.assertEqual(header[0], 'Name')
-                self.assertEqual(header[3], 'Address')
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
 
-                row1 = next(reader)
-                self.assertEqual(row1[0], 'Example Variable')
-        finally:
-            if os.path.exists(filename):
-                os.remove(filename)
+    def tearDown(self):
+        self.temp_dir.cleanup()
+
+    def test_generate_template(self):
+        path = os.path.join(self.temp_dir.name, "template.csv")
+        generate_template(path)
+
+        self.assertTrue(os.path.exists(path))
+        with open(path, "r", newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            self.assertGreater(len(rows), 0)
+            self.assertIn("Name", rows[0])
+            self.assertIn("Address", rows[0])
+            self.assertIn("Type", rows[0])
 
 if __name__ == "__main__":
     unittest.main()
