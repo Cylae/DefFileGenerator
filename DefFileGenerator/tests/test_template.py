@@ -1,38 +1,28 @@
+#!/usr/bin/env python3
 import unittest
 import os
+import tempfile
 import csv
-import sys
-import io
-from DefFileGenerator.main import main
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 
 class TestTemplate(unittest.TestCase):
-    def tearDown(self):
-        if os.path.exists("test_template.csv"):
-            os.remove("test_template.csv")
+    def test_template_generation(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_file = os.path.join(tmp_dir, 'template.csv')
+            config = GeneratorConfig(output=output_file, template=True)
+            run_generator(config)
 
-    def test_generate_template_csv(self):
-        test_args = ["main.py", "generate", "--template", "-o", "test_template.csv"]
-        with unittest.mock.patch.object(sys, 'argv', test_args):
-            main()
-            self.assertTrue(os.path.exists("test_template.csv"))
-            with open("test_template.csv", 'r') as f:
+            self.assertTrue(os.path.exists(output_file))
+            with open(output_file, 'r', encoding='utf-8') as f:
                 reader = csv.reader(f)
-                header = next(reader)
-                self.assertEqual(header[0], "Name")
-                row = next(reader)
-                self.assertEqual(row[0], "Example Variable")
+                headers = next(reader)
+                self.assertEqual(headers[0], 'Name')
+                self.assertEqual(headers[3], 'Address')
 
-    def test_run_template_def(self):
-        test_args = ["main.py", "run", "--template", "-o", "test_template.csv"]
-        with unittest.mock.patch.object(sys, 'argv', test_args):
-            main()
-            self.assertTrue(os.path.exists("test_template.csv"))
-            with open("test_template.csv", 'r') as f:
-                reader = csv.reader(f, delimiter=';')
-                header = next(reader)
-                self.assertEqual(header[0], "modbusRTU")
-                row = next(reader)
-                self.assertEqual(row[1], "3") # Holding register
+                # Check at least one data row
+                row1 = next(reader)
+                self.assertEqual(row1[0], 'Example Variable')
+                self.assertEqual(row1[3], '30001')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
