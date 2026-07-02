@@ -160,29 +160,27 @@ class Generator:
         dtype_upper = dtype.upper()
 
         # Handle STR<n> synonyms
-        is_str_n = RE_TYPE_STR_CONV.match(dtype_upper)
-        if is_str_n:
+        if RE_TYPE_STR_CONV.match(dtype_upper):
             dtype_upper = 'STRING'
 
+        is_valid = False
         if dtype_upper == 'STRING':
-            if not RE_ADDR_STRING.match(address):
-                # If it's STR<n>, it's allowed to be a simple INT address (will be expanded)
-                if not (is_str_n and RE_ADDR_INT.match(address)):
-                    return False
+            is_valid = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
-            if not RE_ADDR_BITS.match(address):
-                return False
+            is_valid = RE_ADDR_BITS.match(address) is not None
         else:
-            if not RE_ADDR_INT.match(address):
-                return False
+            is_valid = RE_ADDR_INT.match(address) is not None
 
-        # Range validation for base address
+        if not is_valid:
+            return False
+
+        # Range validation (0-65535) for Modbus
         try:
-            base_addr_str = address.split('_')[0]
-            norm_addr = Generator.normalize_address_val(base_addr_str)
-            addr_val = int(norm_addr)
+            # We split by underscore to get the base address part
+            base_part = address.split('_')[0]
+            addr_val = int(Generator.normalize_address_val(base_part), 0)
             if not (0 <= addr_val <= 65535):
-                logging.warning(f"Address {addr_val} is out of standard Modbus range (0-65535).")
+                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
                 return False
         except (ValueError, IndexError):
             return False
@@ -404,6 +402,72 @@ class Generator:
         except (ValueError, IndexError):
             pass
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates a WebdynSunPM definition file for correct formatting and ranges."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        seen_names = {}
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(row):
+                        continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row too short ({len(row)} columns, expected 11).")
+                        success = False
+                        continue
+
+                    # row format: index, info1, info2, info3, info4, name, tag, coef_a, coef_b, unit, action
+                    _, info1, info2, info3, _, name, tag, _, _, _, action = row[:11]
+
+                    if info1 not in ['1', '2', '3', '4']:
+                        logging.warning(f"Line {line_num}: Invalid Info1 (RegisterType) '{info1}'.")
+                        success = False
+
+                    dtype = info3.upper()
+                    if not self.validate_type(dtype):
+                        logging.warning(f"Line {line_num}: Invalid Info3 (Type) '{info3}'.")
+                        success = False
+
+                    if not self.validate_address(info2, dtype):
+                        success = False
+
+                    self._check_address_overlap(info1, info2, dtype, name, line_num, address_usage, warned_lines)
+
+                    if name in seen_names:
+                        logging.warning(f"Line {line_num}: Duplicate Name '{name}'. Previously at line {seen_names[name]}.")
+                    seen_names[name] = line_num
+
+                    if tag in seen_tags:
+                        logging.warning(f"Line {line_num}: Duplicate Tag '{tag}'. Previously at line {seen_tags[tag]}.")
+                    seen_tags[tag] = line_num
+
+                    if action not in self.allowed_actions:
+                        logging.warning(f"Line {line_num}: Invalid Action '{action}'.")
+                        success = False
+
+            if warned_lines:
+                success = False
+
+        except Exception as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
+        return success
+
     @staticmethod
     def sanitize_csv_field(field: Any) -> str:
         """Sanitizes a field to prevent CSV Formula Injection."""
@@ -547,14 +611,13 @@ class Generator:
 
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization and intelligent defaulting
+            # Action normalization with intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
-                # Intelligent defaulting based on Info1 (Register Type)
-                if info1 in ['2', '4']: # Discrete Input or Input Register
-                    norm_action = '4' # Read Only
-                else: # Holding or Coils
-                    norm_action = '1' # Read/Write
+                if info1 in ['2', '4']:
+                    norm_action = '4'
+                else:
+                    norm_action = '1'
             elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
                 norm_action = '4'
             elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:

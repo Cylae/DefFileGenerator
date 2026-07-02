@@ -65,9 +65,11 @@ except ImportError:
         Generator = None
 
 def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
-    """Peeks at the first element of an iterable to see if it's empty."""
-    it = iter(iterable)
+    """Checks if an iterable is empty without exhausting it. Returns (has_data, iterator)."""
+    if iterable is None:
+        return False, iter([])
     try:
+        it = iter(iterable)
         first = next(it)
         return True, itertools.chain([first], it)
     except StopIteration:
@@ -239,8 +241,15 @@ class Extractor:
             return
 
         for table in tables:
-            if not table: continue
-            iterator = iter(table)
+            if table is None:
+                continue
+
+            # Since table could be a generator, we need to extract the first few rows
+            # to determine column mapping, then process the rest.
+            has_data, iterator = peek_generator(table)
+            if not has_data:
+                continue
+
             buffer = []
             try:
                 for _ in range(50):

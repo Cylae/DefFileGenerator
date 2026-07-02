@@ -63,11 +63,11 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    has_data, raw_data = peek_generator(raw_data)
+    has_data, raw_data_it = peek_generator(raw_data)
     if not has_data:
         return []
 
-    return list(extractor.map_and_clean(raw_data, address_offset))
+    return list(extractor.map_and_clean(raw_data_it, address_offset))
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -150,6 +150,14 @@ def validate_command(args):
     if not generator.validate_csv(args.input_file):
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful: {args.input_file}")
+    else:
+        logging.error(f"Validation failed: {args.input_file}")
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -196,6 +204,10 @@ def _run_cli():
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate a simplified CSV')
     parser_validate.add_argument('input_file', help='CSV file to validate')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
+    parser_validate.add_argument('input_file', help='Definition file to validate')
 
     args = parser.parse_args()
     if not args.command:

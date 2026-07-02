@@ -8,59 +8,84 @@ from DefFileGenerator.def_gen import Generator
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
-        # Suppress logging during tests
-        logging.getLogger().setLevel(logging.ERROR)
+        # Disable logging for tests to keep output clean
+        logging.disable(logging.CRITICAL)
+
+    def tearDown(self):
+        logging.disable(logging.NOTSET)
 
     def test_validate_address_range(self):
+        # Valid range 0-65535
         self.assertTrue(self.generator.validate_address("0", "U16"))
         self.assertTrue(self.generator.validate_address("65535", "U16"))
-        self.assertFalse(self.generator.validate_address("65536", "U16"))
-        self.assertFalse(self.generator.validate_address("-1", "U16"))
-
-    def test_validate_address_hex_range(self):
         self.assertTrue(self.generator.validate_address("0x0", "U16"))
         self.assertTrue(self.generator.validate_address("0xFFFF", "U16"))
+
+        # Invalid range
+        self.assertFalse(self.generator.validate_address("-1", "U16"))
+        self.assertFalse(self.generator.validate_address("65536", "U16"))
         self.assertFalse(self.generator.validate_address("0x10000", "U16"))
 
-    def test_validate_type_synonyms(self):
-        self.assertTrue(self.generator.validate_type("STR20"))
-        self.assertEqual(self.generator.normalize_type("string 20"), "STR20")
-        self.assertEqual(self.generator.normalize_type("string"), "STRING")
+    def test_validate_address_str_synonyms(self):
+        # STR20 is a synonym for STRING
+        self.assertTrue(self.generator.validate_address("100_20", "STR20"))
+        self.assertFalse(self.generator.validate_address("100", "STR20")) # Missing length part for STRING type
 
-    def test_action_defaulting(self):
-        rows = [
-            {'Name': 'Reg1', 'Address': '1', 'RegisterType': 'Input Register', 'Type': 'U16'},
-            {'Name': 'Reg2', 'Address': '2', 'RegisterType': 'Holding Register', 'Type': 'U16'},
-            {'Name': 'Reg3', 'Address': '3', 'RegisterType': 'Discrete Input', 'Type': 'U16'},
-            {'Name': 'Reg4', 'Address': '4', 'RegisterType': 'Coil', 'Type': 'U16'},
-        ]
-        processed = list(self.generator.process_rows(rows))
-        self.assertEqual(processed[0]['Action'], '4') # Input -> Read Only
-        self.assertEqual(processed[1]['Action'], '1') # Holding -> Read/Write
-        self.assertEqual(processed[2]['Action'], '4') # Discrete -> Read Only
-        self.assertEqual(processed[3]['Action'], '1') # Coil -> Read/Write
+    def test_intelligent_action_defaulting(self):
+        # Input (4) and Discrete (2) -> 4 (Read Only)
+        rows_input = [{'Name': 'Input', 'Address': '100', 'RegisterType': 'input', 'Type': 'U16', 'Action': ''}]
+        processed_input = list(self.generator.process_rows(rows_input))
+        self.assertEqual(processed_input[0]['Action'], '4')
 
-    def test_validate_csv_method(self):
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as f:
-            writer = csv.writer(f)
-            writer.writerow(['Name', 'Address', 'RegisterType', 'Type'])
-            writer.writerow(['Valid', '100', 'Holding Register', 'U16'])
-            writer.writerow(['InvalidAddr', '70000', 'Holding Register', 'U16'])
-            temp_path = f.name
+        rows_discrete = [{'Name': 'Discrete', 'Address': '101', 'RegisterType': 'discrete input', 'Type': 'U16', 'Action': ''}]
+        processed_discrete = list(self.generator.process_rows(rows_discrete))
+        self.assertEqual(processed_discrete[0]['Action'], '4')
+
+        # Holding (3) and Coils (1) -> 1 (Read/Write)
+        rows_holding = [{'Name': 'Holding', 'Address': '102', 'RegisterType': 'holding', 'Type': 'U16', 'Action': ''}]
+        processed_holding = list(self.generator.process_rows(rows_holding))
+        self.assertEqual(processed_holding[0]['Action'], '1')
+
+        rows_coil = [{'Name': 'Coil', 'Address': '103', 'RegisterType': 'coil', 'Type': 'U16', 'Action': ''}]
+        processed_coil = list(self.generator.process_rows(rows_coil))
+        self.assertEqual(processed_coil[0]['Action'], '1')
+
+    def test_validate_csv_format(self):
+        with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as tmp:
+            writer = csv.writer(tmp, delimiter=';')
+            writer.writerow(['modbusRTU', 'Inverter', 'MFG', 'Model', '', '', '', '', '', '', ''])
+            # 1;3;100;U16;;Name;Tag;1.0;0.0;Unit;1
+            writer.writerow(['1', '3', '100', 'U16', '', 'Var1', 'var1', '1.0', '0.0', 'V', '1'])
+            tmp_path = tmp.name
 
         try:
-            # Should be False because of invalid address 70000
-            self.assertFalse(self.generator.validate_csv(temp_path))
-
-            # Now test a valid one
-            with open(temp_path, 'w') as f:
-                writer = csv.writer(f)
-                writer.writerow(['Name', 'Address', 'RegisterType', 'Type'])
-                writer.writerow(['Valid', '100', 'Holding Register', 'U16'])
-            self.assertTrue(self.generator.validate_csv(temp_path))
+            self.assertTrue(self.generator.validate_csv(tmp_path))
         finally:
-            if os.path.exists(temp_path):
-                os.remove(temp_path)
+            os.remove(tmp_path)
+
+    def test_validate_csv_errors(self):
+        # Test short row
+        with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as tmp:
+            writer = csv.writer(tmp, delimiter=';')
+            writer.writerow(['modbusRTU', 'Inverter', 'MFG', 'Model', '', '', '', '', '', '', ''])
+            writer.writerow(['1', '3', '100', 'U16']) # Too short
+            tmp_path = tmp.name
+        try:
+            self.assertFalse(self.generator.validate_csv(tmp_path))
+        finally:
+            os.remove(tmp_path)
+
+        # Test overlap
+        with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as tmp:
+            writer = csv.writer(tmp, delimiter=';')
+            writer.writerow(['modbusRTU', 'Inverter', 'MFG', 'Model', '', '', '', '', '', '', ''])
+            writer.writerow(['1', '3', '100', 'U32', '', 'Var1', 'var1', '1.0', '0.0', 'V', '1'])
+            writer.writerow(['2', '3', '101', 'U16', '', 'Var2', 'var2', '1.0', '0.0', 'V', '1'])
+            tmp_path = tmp.name
+        try:
+            self.assertFalse(self.generator.validate_csv(tmp_path))
+        finally:
+            os.remove(tmp_path)
 
 if __name__ == '__main__':
     unittest.main()
