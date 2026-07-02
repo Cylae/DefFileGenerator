@@ -187,7 +187,6 @@ def validate_command(args):
 def validate_command(args):
     generator = Generator()
     if not generator.validate_csv(args.input_file):
-        logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
     logging.info(f"Validation successful for {args.input_file}")
 
@@ -245,6 +244,10 @@ def _run_cli():
     parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_run.add_argument('--template', action='store_true', help='Generate definition template')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
+    parser_validate.add_argument('input_file', help='WebdynSunPM definition CSV')
 
     args = parser.parse_args()
     if not args.command:

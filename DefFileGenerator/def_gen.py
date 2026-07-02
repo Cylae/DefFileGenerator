@@ -233,6 +233,61 @@ class Generator:
 
         return True
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Performs comprehensive validation of a definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        success = True
+        try:
+            with open(filepath, 'rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, 'r', encoding=encoding) as f:
+                # Determine if it's a Webdyn definition file (lineterminator=; and first row has protocol)
+                snippet = f.read(1024)
+                f.seek(0)
+
+                is_webdyn = ';' in snippet and any(p in snippet for p in ['modbusRTU', 'modbusTCP'])
+
+                if is_webdyn:
+                    reader = csv.reader(f, delimiter=';')
+                    next(reader) # Skip global header
+                    for line_num, row in enumerate(reader, start=2):
+                        if not row or len(row) < 11: continue
+                        # Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action
+                        dtype = row[3]
+                        addr = row[2]
+                        name = row[5]
+                        if not self.validate_type(dtype):
+                            logging.error(f"Line {line_num}: Invalid type '{dtype}' for '{name}'")
+                            success = False
+                        if not self.validate_address(addr, dtype):
+                            logging.error(f"Line {line_num}: Invalid address '{addr}' for '{name}'")
+                            success = False
+                else:
+                    # Assume simplified CSV with headers
+                    f.seek(0)
+                    reader = csv.DictReader(f)
+                    for line_num, row in enumerate(reader, start=2):
+                        dtype = row.get('Type', '')
+                        addr = row.get('Address', '')
+                        name = row.get('Name', '')
+                        if not dtype or not addr: continue
+                        if not self.validate_type(dtype):
+                            logging.error(f"Line {line_num}: Invalid type '{dtype}' for '{name}'")
+                            success = False
+                        if not self.validate_address(addr, dtype):
+                            logging.error(f"Line {line_num}: Invalid address '{addr}' for '{name}'")
+                            success = False
+        except Exception as e:
+            logging.error(f"Validation error: {e}")
+            return False
+
+        return success
+
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
         """Calculates the number of registers used by the type."""
