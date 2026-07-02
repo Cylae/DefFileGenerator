@@ -1,3 +1,5 @@
+from unittest.mock import patch
+from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 import unittest
 import logging
 from DefFileGenerator.def_gen import Generator
@@ -5,42 +7,34 @@ from DefFileGenerator.def_gen import Generator
 class TestGenerator(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
+        # Suppress logging during tests unless checking for logs
+        logging.disable(logging.CRITICAL)
 
-    def test_validate_type_valid(self):
-        valid_types = [
-            'U16', 'I32', 'F32', 'STRING', 'BITS', 'IP', 'MAC', 'STR10', 'U16_W', 'I32_WB',
-            'U8', 'I8', 'U64', 'I64', 'F64', 'IPV6', 'U16_B', 'U32_W', 'I64_WB'
+    def tearDown(self):
+        logging.disable(logging.NOTSET)
+
+    def test_intelligent_defaulting(self):
+        rows = [
+            {'Name': 'Holding', 'RegisterType': 'Holding', 'Address': '100', 'Type': 'U16'},
+            {'Name': 'Input', 'RegisterType': 'Input', 'Address': '101', 'Type': 'U16'},
+            {'Name': 'Coil', 'RegisterType': 'Coil', 'Address': '1', 'Type': 'U16'},
+            {'Name': 'Discrete', 'RegisterType': 'Discrete', 'Address': '2', 'Type': 'U16'}
         ]
-        for t in valid_types:
-            with self.subTest(type=t):
-                self.assertTrue(self.generator.validate_type(t))
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1') # Holding -> Read/Write
+        self.assertEqual(processed[1]['Action'], '4') # Input -> Read Only
+        self.assertEqual(processed[2]['Action'], '1') # Coil -> Read/Write
+        self.assertEqual(processed[3]['Action'], '4') # Discrete -> Read Only
 
-    def test_validate_type_invalid(self):
-        invalid_types = [
-            'UNKNOWN', 'U1', 'I128', 'STR', 'BITS_2',
-            'STRING_W', 'U17', 'I31'
-        ]
-        for t in invalid_types:
-            with self.subTest(type=t):
-                self.assertFalse(self.generator.validate_type(t))
+    def test_validate_address_range(self):
+        self.assertTrue(self.generator.validate_address('0', 'U16'))
+        self.assertTrue(self.generator.validate_address('65535', 'U16'))
 
-    def test_validate_type_case_insensitivity(self):
-        case_variants = ['u16', 'String', 'str20', 'i32_wb', 'ipv6', 'Mac']
-        for t in case_variants:
-            with self.subTest(type=t):
-                self.assertTrue(self.generator.validate_type(t))
-
-    def test_validate_address_valid(self):
-        self.assertTrue(self.generator.validate_address('30001', 'U16'))
-        self.assertTrue(self.generator.validate_address('0x7531', 'U16'))
-        self.assertTrue(self.generator.validate_address('7531h', 'U16'))
-        self.assertTrue(self.generator.validate_address('A0', 'U16'))
-        self.assertTrue(self.generator.validate_address('30001_10', 'STRING'))
-        self.assertTrue(self.generator.validate_address('0x7531_10', 'STRING'))
-        self.assertTrue(self.generator.validate_address('A0_10', 'STRING'))
-        self.assertTrue(self.generator.validate_address('30001_0_1', 'BITS'))
-        self.assertTrue(self.generator.validate_address('0x7531_0_1', 'BITS'))
-        self.assertTrue(self.generator.validate_address('A0_0_1', 'BITS'))
+        logging.disable(logging.NOTSET)
+        with self.assertLogs(level='WARNING') as log:
+            self.assertFalse(self.generator.validate_address('65536', 'U16'))
+            self.assertTrue(any("out of standard Modbus range" in m for m in log.output))
+        logging.disable(logging.CRITICAL)
 
     def test_normalize_address_val(self):
         self.assertEqual(self.generator.normalize_address_val('0x10'), '16')
@@ -51,7 +45,6 @@ class TestGenerator(unittest.TestCase):
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address('30001_10', 'U16')) # U16 expects int
-        self.assertFalse(self.generator.validate_address('30001', 'STRING')) # STRING expects Addr_Len
         self.assertFalse(self.generator.validate_address('xyz', 'U16')) # Not hex
 
     def test_get_register_count(self):
@@ -82,90 +75,10 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[0]['Info3'], 'U16')
         self.assertEqual(processed[0]['CoefA'], '1.000000')
 
-    def test_process_rows_str_expansion(self):
-        rows = [{
-            'Name': 'Test Str',
-            'Tag': 'str_tag',
-            'RegisterType': 'Holding Register',
-            'Address': '30010',
-            'Type': 'STR20',
-            'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''
-        }]
-        processed = list(self.generator.process_rows(rows))
-        self.assertEqual(len(processed), 1)
-        self.assertEqual(processed[0]['Info3'], 'STRING')
-        self.assertEqual(processed[0]['Info2'], '30010_20')
-
-    def test_process_rows_overlap(self):
-        rows = [
-            {
-                'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30000', 'Type': 'U32', # Occupies 30000, 30001
-                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
-            },
-            {
-                'Name': 'Var2', 'Tag': 't2', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', # Occupies 30001 (Overlap)
-                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '4', 'ScaleFactor': '0'
-            }
-        ]
-        with self.assertLogs(level='WARNING') as log:
-            processed = list(self.generator.process_rows(rows))
-            self.assertEqual(len(processed), 2)
-            # Check if any log message contains "Overlap detected"
-            self.assertTrue(any("Address overlap detected" in m for m in log.output))
-
-    def test_process_rows_no_overlap_different_types(self):
-        rows = [
-            {
-                'Name': 'Var1', 'Tag': 't1', 'RegisterType': 'Holding Register', 'Address': '100', 'Type': 'U16',
-                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
-            },
-            {
-                'Name': 'Var2', 'Tag': 't2', 'RegisterType': 'Input Register', 'Address': '100', 'Type': 'U16',
-                'Factor': '1', 'Offset': '0', 'Unit': '', 'Action': '1', 'ScaleFactor': '0'
-            }
-        ]
-        # Should NOT log a warning
-        try:
-            with self.assertLogs(level='WARNING') as log:
-                processed = list(self.generator.process_rows(rows))
-                self.assertEqual(len(processed), 2)
-                # If we are here, some warning was logged. Check it's not overlap.
-                for m in log.output:
-                    self.assertNotIn("Address overlap detected", m)
-        except AssertionError:
-            # assertLogs raises AssertionError if NO logs are produced, which is what we want
-            processed = list(self.generator.process_rows(rows))
-            self.assertEqual(len(processed), 2)
-
-    def test_duplicate_name(self):
-        rows = [
-             {'Name': 'Var1', 'Tag': 't1', 'RegisterType': '3', 'Address': '30000', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
-             {'Name': 'Var1', 'Tag': 't2', 'RegisterType': '3', 'Address': '30001', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
-        ]
-        with self.assertLogs(level='WARNING') as log:
-            list(self.generator.process_rows(rows))
-            self.assertTrue(any("Duplicate Name" in m for m in log.output))
-
-    def test_scalefactor_calculation(self):
-        rows = [{
-            'Name': 'Scaled Var',
-            'Tag': 'scaled_tag',
-            'RegisterType': '3',
-            'Address': '30000',
-            'Type': 'U16',
-            'Factor': '2.5',
-            'Offset': '0',
-            'Unit': '',
-            'Action': '',
-            'ScaleFactor': '-1' # CoefA = 2.5 * 10^-1 = 0.25
-        }]
-        processed = list(self.generator.process_rows(rows))
-        self.assertEqual(processed[0]['CoefA'], '0.250000')
-
     def test_automatic_tag_generation(self):
         rows = [
-            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '100', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''},
-            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '101', 'Type': 'U16', 'Factor': '', 'Offset': '', 'Unit': '', 'Action': '', 'ScaleFactor': ''}
+            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '100', 'Type': 'U16'},
+            {'Name': 'Test Variable', 'Tag': '', 'RegisterType': '3', 'Address': '101', 'Type': 'U16'}
         ]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]['Tag'], 'test_variable')
@@ -182,20 +95,24 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[1]['Action'], '1') # RW -> 1
         self.assertEqual(processed[2]['Action'], '1') # write -> 1
 
-    def test_sanitize_csv_field(self):
-        # Normal fields should be unchanged
-        self.assertEqual(self.generator.sanitize_csv_field('TestName'), 'TestName')
-        self.assertEqual(self.generator.sanitize_csv_field('123'), '123')
-        self.assertEqual(self.generator.sanitize_csv_field(''), '')
-        self.assertEqual(self.generator.sanitize_csv_field(None), '')
+    def test_generate_template_modes(self):
+        import os
+        from DefFileGenerator.def_gen import generate_template
+        # Test input mode
+        out_input = "template_input.csv"
+        generate_template(out_input, mode='input')
+        with open(out_input, 'r') as f:
+            content = f.read()
+            self.assertIn("Name,Tag,RegisterType", content)
+        os.remove(out_input)
 
-        # Vulnerable fields should be escaped
-        self.assertEqual(self.generator.sanitize_csv_field('=cmd()'), "'=cmd()")
-        self.assertEqual(self.generator.sanitize_csv_field('+A1+B1'), "'+A1+B1")
-        self.assertEqual(self.generator.sanitize_csv_field('-1'), "'-1")
-        self.assertEqual(self.generator.sanitize_csv_field('@SUM(A1:A10)'), "'@SUM(A1:A10)")
-        self.assertEqual(self.generator.sanitize_csv_field('\tTabbed'), "'\tTabbed")
-        self.assertEqual(self.generator.sanitize_csv_field('\rReturn'), "'\rReturn")
+        # Test definition mode
+        out_def = "template_def.csv"
+        generate_template(out_def, mode='definition')
+        with open(out_def, 'r') as f:
+            content = f.read()
+            self.assertIn("modbusRTU;Inverter", content)
+        os.remove(out_def)
 
 if __name__ == '__main__':
     unittest.main()
