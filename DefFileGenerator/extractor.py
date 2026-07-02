@@ -139,17 +139,18 @@ class Extractor:
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        target_pages = []
-                        page_list = pages if isinstance(pages, list) else [pages]
-                        for p in page_list:
+                        page_list = []
+                        requested = pages if isinstance(pages, list) else [pages]
+                        for p in requested:
                             try:
                                 idx = int(p) - 1
                                 if 0 <= idx < len(pdf.pages):
-                                    target_pages.append(pdf.pages[idx])
+                                    page_list.append(pdf.pages[idx])
                                 else:
-                                    logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)}). Skipping.")
-                            except ValueError:
-                                logging.warning(f"Invalid page number: {p}. Skipping.")
+                                    logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)})")
+                            except (ValueError, TypeError):
+                                logging.warning(f"Invalid page reference: {p}")
+                        target_pages = page_list
 
                     for page in target_pages:
                         tables = page.extract_tables()
@@ -204,6 +205,15 @@ class Extractor:
             except Exception as e:
                 logging.error(f"Error extracting from CSV {filepath}: {e}")
 
+            except OSError as e:
+                logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
+            except csv.Error as e:
+                logging.error(f"CSV Parsing Error in {filepath}: {e}")
+            except UnicodeError as e:
+                logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
+            except (ValueError, TypeError) as e:
+                logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
+
         yield csv_table_generator()
 
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
@@ -246,7 +256,7 @@ class Extractor:
 
         return xml_tables_generator()
 
-    def map_and_clean(self, tables: Iterable[Iterable[Dict[str, Any]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
             return iter([])
 
@@ -255,12 +265,7 @@ class Extractor:
             if not has_rows:
                 continue
 
-            # Since table could be a generator, we need to extract the first few rows
-            # to determine column mapping, then process the rest.
-            has_data, iterator = peek_generator(table)
-            if not has_data:
-                continue
-
+            iterator = iter(table)
             buffer = []
             try:
                 for _ in range(50):
@@ -277,12 +282,14 @@ class Extractor:
 
             col_map = {}
             used_src_cols = set()
+
             for target, source in self.mapping.items():
                 if source in all_keys:
                     col_map[target] = source
                     used_src_cols.add(source)
 
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
@@ -307,12 +314,15 @@ class Extractor:
             def process_row(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): return None
+
                 sbit = r.get(col_map.get('StartBit'))
                 slen = r.get(col_map.get('Length'))
                 sbit = str(sbit).strip() if sbit is not None else ''
                 slen = str(slen).strip() if slen is not None else ''
+
                 dtype = self.normalize_type(new_row.get('Type', 'U16'))
                 new_row['Type'] = dtype
+
                 addr = str(new_row.get('Address', '')).strip()
                 if dtype == 'BITS' and sbit != '' and '_' not in addr:
                     if slen == '': slen = '1'
@@ -323,6 +333,7 @@ class Extractor:
                     new_row['Address'] = Generator.apply_address_offset(addr, address_offset)
                 else:
                     new_row['Address'] = addr
+
                 if new_row.get('Factor') is not None:
                     if Generator:
                         new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
@@ -332,19 +343,21 @@ class Extractor:
 
             for row in buffer:
                 processed = process_row(row)
-                if processed: yield processed
+                if processed:
+                    yield processed
+
             for row in iterator:
                 processed = process_row(row)
                 if processed: yield processed
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
-    """Checks if an iterable is empty without exhausting it."""
+def peek_generator(iterable: Iterable[Any]) -> Tuple[Optional[Any], Iterator[Any]]:
+    """Peeks at the first element of an iterable without consuming it."""
     it = iter(iterable)
     try:
         first = next(it)
     except StopIteration:
-        return False, []
-    return True, itertools.chain([first], it)
+        return None, iter([])
+    return first, itertools.chain([first], it)
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
