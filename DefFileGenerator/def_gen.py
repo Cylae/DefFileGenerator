@@ -171,7 +171,7 @@ class Generator:
         return False
 
     @staticmethod
-    def normalize_address_val(addr_part):
+    def normalize_address_val(addr_part: Any) -> str:
         """Converts a single address part (possibly hex) to decimal string."""
         addr_part = str(addr_part).strip()
         # Remove thousands separators if they exist

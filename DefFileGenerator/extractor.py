@@ -170,7 +170,7 @@ class Extractor:
                             yield table_generator(table)
             except (OSError,) + PDF_ERRORS as e:
                 logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-            except (ValueError, TypeError, IndexError) as e:
+            except (ValueError, TypeError) as e:
                 logging.error(f"Error extracting from PDF {filepath}: {e}")
 
         except (OSError,) + PDF_ERRORS as e:

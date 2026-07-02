@@ -26,7 +26,7 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     input_file = getattr(args, 'input_file', None)
     if not input_file:
-        return None
+        return []
 
     mapping = {}
     mapping_path = getattr(args, 'mapping', None)
