@@ -534,7 +534,8 @@ class Generator:
 
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[int, List[Tuple[int, str, str]]]], warned_lines: Set[Tuple[int, int]]) -> None:
         try:
-            start_addr = int(address.split('_')[0])
+            addr_part = address.split('_')[0]
+            start_addr = int(Generator.normalize_address_val(addr_part))
             reg_count = self.get_register_count(dtype, address)
             if info1 not in address_usage: address_usage[info1] = {}
             is_bits = (dtype.upper() == 'BITS')
