@@ -49,6 +49,55 @@ class Generator:
         # Allowed Action codes
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates a WebdynSunPM definition CSV file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            with open(filepath, mode='rb') as f:
+                header_bytes = f.read(4)
+                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+            with open(filepath, mode='r', encoding=encoding) as csvfile:
+                reader = csv.reader(csvfile, delimiter=';')
+                try:
+                    header = next(reader)
+                except StopIteration:
+                    logging.error(f"File {filepath} is empty.")
+                    return False
+
+                if len(header) < 4:
+                    logging.error(f"Invalid header in {filepath}. Expected at least 4 columns (Protocol, Category, Mfg, Model).")
+                    return False
+
+                success = True
+                for line_num, row in enumerate(reader, start=2):
+                    if not row or not any(str(c).strip() for c in row):
+                        continue
+                    if len(row) < 11:
+                        logging.error(f"Line {line_num}: Invalid row length. Expected 11 columns, got {len(row)}.")
+                        success = False
+                        continue
+
+                    # row[1] is Info1 (RegisterType), row[2] is Info2 (Address), row[3] is Info3 (Type)
+                    info1, address, dtype = row[1], row[2], row[3]
+
+                    if not self.validate_type(dtype):
+                        logging.error(f"Line {line_num}: Invalid Type '{dtype}'.")
+                        success = False
+
+                    # For validation, we use the same logic as generation
+                    if not self.validate_address(address, dtype):
+                        # validate_address already logs warnings if range is invalid
+                        success = False
+
+                return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV {filepath}: {e}")
+            return False
+
     @staticmethod
     def normalize_type(dtype):
         """Standardizes common type synonyms while preserving suffixes."""
@@ -156,33 +205,33 @@ class Generator:
 
     @staticmethod
     def validate_address(address: str, dtype: str) -> bool:
-        """Validates the address format and Modbus range (0-65535)."""
+        """Validates the address format based on type and ensures it is within Modbus range."""
         dtype_upper = dtype.upper()
 
-        # Handle STR<n> synonyms
-        if RE_TYPE_STR_CONV.match(dtype_upper):
-            dtype_upper = 'STRING'
+        # Recognize STR<n> as STRING synonym
+        is_string = (dtype_upper == 'STRING' or RE_TYPE_STR_CONV.match(dtype_upper))
 
-        is_valid = False
-        if dtype_upper == 'STRING':
-            is_valid = RE_ADDR_STRING.match(address) is not None
+        if is_string:
+            match = RE_ADDR_STRING.match(address)
+            if not match: return False
+            addr_val = match.group(1)
         elif dtype_upper == 'BITS':
-            is_valid = RE_ADDR_BITS.match(address) is not None
+            match = RE_ADDR_BITS.match(address)
+            if not match: return False
+            addr_val = match.group(1)
         else:
-            is_valid = RE_ADDR_INT.match(address) is not None
+            match = RE_ADDR_INT.match(address)
+            if not match: return False
+            addr_val = match.group(1)
 
-        if not is_valid:
-            return False
-
-        # Range validation (0-65535) for Modbus
+        # Range validation (0-65535)
         try:
-            # We split by underscore to get the base address part
-            base_part = address.split('_')[0]
-            addr_val = int(Generator.normalize_address_val(base_part), 0)
-            if not (0 <= addr_val <= 65535):
-                logging.warning(f"Address {addr_val} is outside standard Modbus range (0-65535).")
+            norm_addr = Generator.normalize_address_val(addr_val)
+            val = int(norm_addr, 0)
+            if not (0 <= val <= 65535):
+                logging.warning(f"Address {val} is outside standard Modbus range (0-65535).")
                 return False
-        except (ValueError, IndexError):
+        except (ValueError, TypeError):
             return False
 
         return True
@@ -614,6 +663,8 @@ class Generator:
             # Action normalization with intelligent defaulting
             act_str = str(action).strip().upper()
             if not act_str:
+                # Intelligent defaulting: Input (4) and Discrete (2) default to 4 (Read Only)
+                # Holding (3) and Coils (1) default to 1 (Read/Write)
                 if info1 in ['2', '4']:
                     norm_action = '4'
                 else:
@@ -663,7 +714,6 @@ class Generator:
             counts = {'1': 0, '2': 0, '3': 0, '4': 0}
             type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
 
-            last_index = 0
             for index, row in enumerate(processed_rows, start=1):
                 info1 = row.get('Info1', '3')
                 counts[info1] = counts.get(info1, 0) + 1
@@ -671,10 +721,12 @@ class Generator:
                     str(index), info1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
-                last_index = index
+                if row['Info1'] in counts:
+                    counts[row['Info1']] += 1
 
-            summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in counts.items() if v > 0])
-            logging.info(f"Generated {last_index} registers. ({summary})")
+            summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in counts.items() if v > 0])
+            if summary:
+                logging.info(f"Register Summary - {summary}")
 
             if isinstance(output, str):
                 logging.info(f"Definition file saved to {output}")

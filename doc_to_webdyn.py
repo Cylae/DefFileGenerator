@@ -10,9 +10,9 @@ from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer')
-    parser.add_argument('--model')
+    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('--manufacturer', default='Manufacturer')
+    parser.add_argument('--model', default='Model')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')

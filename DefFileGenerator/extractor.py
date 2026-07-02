@@ -12,6 +12,15 @@ import zipfile
 import itertools
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
 
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterable[Any]]:
+    """Checks if an iterable is empty without fully consuming it."""
+    try:
+        iterator = iter(iterable)
+        first = next(iterator)
+        return True, itertools.chain([first], iterator)
+    except StopIteration:
+        return False, []
+
 try:
     import openpyxl
     HAS_OPENPYXL = True

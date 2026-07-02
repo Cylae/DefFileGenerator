@@ -44,13 +44,14 @@ def _perform_extraction(args):
     ext = os.path.splitext(input_file)[1].lower()
     address_offset = getattr(args, 'address_offset', 0)
 
+    sheet = getattr(args, 'sheet', None)
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw_data = extractor.extract_from_excel(input_file, args.sheet)
+        raw_data = extractor.extract_from_excel(args.input_file, sheet)
     elif ext == '.pdf':
         pages = None
-        if getattr(args, 'pages', None):
+        if pages_arg:
             try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
@@ -63,11 +64,11 @@ def _perform_extraction(args):
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    has_data, raw_data_it = peek_generator(raw_data)
+    has_data, raw_data = peek_generator(raw_data)
     if not has_data:
         return []
 
-    return list(extractor.map_and_clean(raw_data_it, address_offset))
+    return list(extractor.map_and_clean(raw_data, address_offset))
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -108,13 +109,13 @@ def generate_command(args):
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
         output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
         address_offset=args.address_offset,
-        template=template_flag
+        template=getattr(args, 'template', False)
     )
     run_generator(config)
 
@@ -126,7 +127,14 @@ def validate_command(args):
     logging.info(f"Validation successful for {args.input_file}")
 
 def run_command(args):
-    template_flag = getattr(args, 'template', False)
+    if getattr(args, 'template', False):
+        config = GeneratorConfig(
+            output=args.output,
+            template=True
+        )
+        run_generator(config)
+        return
+
     mapped_data = _perform_extraction(args)
     if not template_flag and not mapped_data:
         logging.error("No registers extracted.")
@@ -135,8 +143,8 @@ def run_command(args):
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
         output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
@@ -158,6 +166,14 @@ def validate_command(args):
         logging.error(f"Validation failed: {args.input_file}")
         sys.exit(1)
 
+def validate_command(args):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful for {args.input_file}")
+    else:
+        logging.error(f"Validation failed for {args.input_file}")
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -175,21 +191,21 @@ def _run_cli():
     # Generate
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
     parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
-    parser_generate.add_argument('--manufacturer', required=False)
-    parser_generate.add_argument('--model', required=False)
+    parser_generate.add_argument('--manufacturer')
+    parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
+    parser_generate.add_argument('--template', action='store_true', help='Generate template')
 
     # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
-    parser_run.add_argument('--manufacturer', required=False)
-    parser_run.add_argument('--model', required=False)
+    parser_run.add_argument('--manufacturer')
+    parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -199,15 +215,11 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
-
-    # Validate
-    parser_validate = subparsers.add_parser('validate', help='Validate a simplified CSV')
-    parser_validate.add_argument('input_file', help='CSV file to validate')
+    parser_run.add_argument('--template', action='store_true', help='Generate template')
 
     # Validate
     parser_validate = subparsers.add_parser('validate', help='Validate a definition file')
-    parser_validate.add_argument('input_file', help='Definition file to validate')
+    parser_validate.add_argument('input_file', help='Definition CSV to validate')
 
     args = parser.parse_args()
     if not args.command:
