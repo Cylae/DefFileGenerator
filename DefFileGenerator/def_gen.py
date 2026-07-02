@@ -285,6 +285,38 @@ class Generator:
 
         return success
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates a WebdynSunPM definition file for correct formatting and range constraints."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        try:
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header or len(header) < 4:
+                    logging.error("Invalid WebdynSunPM header.")
+                    return False
+
+                success = True
+                for line_num, row in enumerate(reader, start=2):
+                    if not row: continue
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Row has fewer than 11 columns.")
+                        success = False
+                        continue
+
+                    addr = row[2]
+                    dtype = row[3]
+                    if not self.validate_address(addr, dtype):
+                        logging.warning(f"Line {line_num}: Invalid address/type combination '{addr}' ['{dtype}'].")
+                        success = False
+                return success
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
         """Calculates the number of registers used by the type."""
@@ -674,13 +706,13 @@ class Generator:
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
-            counts = {'1': 0, '2': 0, '3': 0, '4': 0}
+            stats = {'1': 0, '2': 0, '3': 0, '4': 0}
             type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
 
             for index, row in enumerate(processed_rows, start=1):
                 type_summary[row['Info1']] = type_summary.get(row['Info1'], 0) + 1
                 writer.writerow([
-                    str(index), info1, row['Info2'], row['Info3'], row['Info4'],
+                    str(index), i1, row['Info2'], row['Info3'], row['Info4'],
                     row['Name'], row['Tag'], row['CoefA'], row['CoefB'], row['Unit'], row['Action']
                 ])
                 type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1

@@ -21,31 +21,18 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
-    parser.add_argument('--template', action='store_true', help='Generate template CSV')
+    parser.add_argument('--template', action='store_true')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
-    if args.template:
-        config = GeneratorConfig(
-            output=args.output,
-            manufacturer=args.manufacturer,
-            model=args.model,
-            template=True
-        )
+    if getattr(args, 'template', False):
+        config = GeneratorConfig(output=args.output, template=True)
         run_generator(config)
         return
 
-    if not args.input_file:
-        logging.error("input_file is required when not using --template.")
-        sys.exit(1)
-
-    if not args.manufacturer or not args.model:
-        logging.error("--manufacturer and --model are required.")
-        sys.exit(1)
-
-    if not os.path.exists(args.input_file):
+    if not args.input_file or not os.path.exists(args.input_file):
         logging.error(f"Input file not found: {args.input_file}")
         sys.exit(1)
 
