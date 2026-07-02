@@ -154,7 +154,7 @@ def run_command(args):
         category=args.category,
         forced_write=args.forced_write,
         address_offset=0, # Already applied during extraction in run mode
-        template=template_flag
+        template=template
     )
     run_generator(config, input_data=mapped_data if not template_flag else None)
 
@@ -273,6 +273,13 @@ def _run_cli():
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
+
+    # Warn about sheet if not Excel
+    sheet_arg = getattr(args, 'sheet', None)
+    if sheet_arg and input_file:
+        ext = os.path.splitext(input_file)[1].lower()
+        if ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+            logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     if args.command == 'extract':
         extract_command(args)

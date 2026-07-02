@@ -52,52 +52,59 @@ class Generator:
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
     def validate_csv(self, filepath: str) -> bool:
-        """Validates a WebdynSunPM definition CSV file."""
+        """Validates an existing WebdynSunPM definition file."""
         if not os.path.exists(filepath):
             logging.error(f"File not found: {filepath}")
             return False
 
+        valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
         try:
-            with open(filepath, mode='rb') as f:
-                header_bytes = f.read(4)
-                encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
-
-            with open(filepath, mode='r', encoding=encoding) as csvfile:
-                reader = csv.reader(csvfile, delimiter=';')
-                try:
-                    header = next(reader)
-                except StopIteration:
-                    logging.error(f"File {filepath} is empty.")
-                    return False
-
+            with open(filepath, 'r', encoding='utf-8-sig') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader)
                 if len(header) < 4:
-                    logging.error(f"Invalid header in {filepath}. Expected at least 4 columns (Protocol, Category, Mfg, Model).")
+                    logging.error("Invalid header in definition file.")
                     return False
 
-                success = True
                 for line_num, row in enumerate(reader, start=2):
-                    if not row or not any(str(c).strip() for c in row):
-                        continue
+                    if not row or not any(row): continue
                     if len(row) < 11:
-                        logging.error(f"Line {line_num}: Invalid row length. Expected 11 columns, got {len(row)}.")
-                        success = False
+                        logging.warning(f"Line {line_num}: Insufficient columns. Skipping.")
                         continue
 
-                    # row[1] is Info1 (RegisterType), row[2] is Info2 (Address), row[3] is Info3 (Type)
-                    info1, address, dtype = row[1], row[2], row[3]
+                    # row format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
 
-                    if not self.validate_type(dtype):
-                        logging.error(f"Line {line_num}: Invalid Type '{dtype}'.")
-                        success = False
+                    # Validate Tag uniqueness
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (Previously at line {seen_tags[tag]}).")
+                            valid = False
+                        else:
+                            seen_tags[tag] = line_num
 
-                    # For validation, we use the same logic as generation
-                    if not self.validate_address(address, dtype):
-                        # validate_address already logs warnings if range is invalid
-                        success = False
+                    # Validate Type
+                    if not self.validate_type(info3):
+                        logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
+                        valid = False
 
-                return success
+                    # Validate Address
+                    if not self.validate_address(info2, info3):
+                        logging.warning(f"Line {line_num}: Invalid Address '{info2}' for Type '{info3}'.")
+                        valid = False
+                    else:
+                        self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+            # If address overlaps are warnings, we don't necessarily set valid=False,
+            # but duplicate tags ARE fatal errors in Webdyn.
+            return valid
+
         except (OSError, csv.Error) as e:
-            logging.error(f"Error validating CSV {filepath}: {e}")
+            logging.error(f"Error reading definition file: {e}")
             return False
 
     @staticmethod
@@ -846,15 +853,14 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
             logging.error(f"Input file not found: {config.input_file}")
             return
 
-    if not config.manufacturer or not config.model:
-        logging.error("manufacturer and model are required.")
-        return
+    manufacturer = config.manufacturer or 'Manufacturer'
+    model = config.model or 'Model'
 
     generator = Generator()
     try:
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
-            generator.write_output_csv(config.output, processed_rows, config.manufacturer, config.model,
+            generator.write_output_csv(config.output, processed_rows, manufacturer, model,
                                        config.protocol, config.category, config.forced_write)
         else:
             with open(config.input_file, mode='rb') as f:
