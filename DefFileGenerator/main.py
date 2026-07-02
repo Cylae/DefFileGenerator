@@ -24,7 +24,10 @@ def setup_logging(verbose=False):
     )
 
 def _perform_extraction(args):
-    mapping_file = getattr(args, 'mapping', None)
+    input_file = getattr(args, 'input_file', None)
+    if not input_file:
+        return []
+
     mapping = {}
     mapping_path = getattr(args, 'mapping', None)
     if mapping_path:
@@ -154,7 +157,7 @@ def run_command(args):
         category=args.category,
         forced_write=args.forced_write,
         address_offset=0, # Already applied during extraction in run mode
-        template=False
+        template=template
     )
     run_generator(config, input_data=mapped_data if not template_flag else None)
 
@@ -187,9 +190,12 @@ def validate_command(args):
 def validate_command(args):
     generator = Generator()
     if not generator.validate_csv(args.input_file):
-        logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
     logging.info(f"Validation successful for {args.input_file}")
+
+def validate_command(args):
+    if not Generator().validate_csv(args.input_file):
+        sys.exit(1)
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
@@ -218,7 +224,7 @@ def _run_cli():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
-    parser_generate.add_argument('--template', action='store_true', help='Generate a template CSV')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
 
@@ -242,9 +248,13 @@ def _run_cli():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
-    parser_run.add_argument('--template', action='store_true', help='Generate a template CSV')
+    parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
     parser_run.add_argument('--template', action='store_true', help='Generate sample template')
+
+    # Validate
+    parser_validate = subparsers.add_parser('validate', help='Validate definition CSV')
+    parser_validate.add_argument('input_file', help='WebdynSunPM definition CSV')
 
     args = parser.parse_args()
     if not args.command:
@@ -255,9 +265,9 @@ def _run_cli():
 
     # Validate --pages
     pages_arg = getattr(args, 'pages', None)
-    input_file_arg = getattr(args, 'input_file', None)
-    if pages_arg and input_file_arg:
-        ext = os.path.splitext(input_file_arg)[1].lower()
+    input_file = getattr(args, 'input_file', None)
+    if pages_arg and input_file:
+        ext = os.path.splitext(input_file)[1].lower()
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
         else:
@@ -266,6 +276,13 @@ def _run_cli():
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
+
+    # Warn about sheet if not Excel
+    sheet_arg = getattr(args, 'sheet', None)
+    if sheet_arg and input_file:
+        ext = os.path.splitext(input_file)[1].lower()
+        if ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+            logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     if args.command == 'extract':
         extract_command(args)
