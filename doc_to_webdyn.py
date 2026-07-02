@@ -4,16 +4,15 @@ import sys
 import os
 import logging
 import re
-import json
 import csv
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer', required=True)
-    parser.add_argument('--model', required=True)
+    parser.add_argument('--manufacturer', default='Manufacturer')
+    parser.add_argument('--model', default='Model')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -22,6 +21,7 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
+    parser.add_argument('--template', action='store_true', help='Generate template CSV')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -65,10 +65,12 @@ def _run_cli():
     elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
     else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if not raw: logging.error("No data extracted."); sys.exit(1)
+    is_empty, raw = peek_generator(raw)
+    if is_empty: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = list(extractor.map_and_clean(raw, args.address_offset))
-    if not mapped: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    first_row, mapped = peek_generator(mapped)
+    if not first_row: logging.error("No registers extracted."); sys.exit(1)
 
     mfg = getattr(args, 'manufacturer', 'Manufacturer')
     model = getattr(args, 'model', 'Model')
@@ -93,7 +95,7 @@ def main():
         sys.exit(130)
     except SystemExit:
         raise
-    except (OSError, ValueError, TypeError, KeyError, csv.Error) as e:
+    except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
