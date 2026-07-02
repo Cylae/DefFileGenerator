@@ -52,6 +52,7 @@ def _perform_extraction(args):
     pages_arg = getattr(args, 'pages', None)
     sheet_arg = getattr(args, 'sheet', None)
 
+    sheet_arg = getattr(args, 'sheet', None)
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, sheet)
     elif ext == '.pdf':
@@ -238,6 +239,14 @@ def validate_command(args):
     if not generator.validate_csv(args.input_file):
         sys.exit(1)
 
+def validate_command(args):
+    gen = Generator()
+    if gen.validate_csv(args.input_file):
+        logging.info(f"Validation successful: {args.input_file}")
+    else:
+        logging.error(f"Validation failed: {args.input_file}")
+        sys.exit(1)
+
 def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
@@ -343,19 +352,22 @@ def _run_cli():
 
     setup_logging(args.verbose)
 
-    # Validate --pages
+    # Manual validation for manufacturer/model unless template
+    if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
+        if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
+            logging.error("--manufacturer and --model are required.")
+            sys.exit(1)
+        if not getattr(args, 'input_file', None):
+            logging.error("input_file is required.")
+            sys.exit(1)
+
+    # Validate --pages if input_file exists
     pages_arg = getattr(args, 'pages', None)
     input_file = getattr(args, 'input_file', None)
     if pages_arg and input_file:
         ext = os.path.splitext(input_file)[1].lower()
         if ext != '.pdf':
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        else:
-            try:
-                [int(p.strip()) for p in pages_arg.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
 
     # Warn about sheet if not Excel
     sheet_arg = getattr(args, 'sheet', None)
