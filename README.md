@@ -1,62 +1,116 @@
-# DefFileGenerator
+# DefFileGenerator & WebdynSunPM Documentation Parser
 
-This toolset allows for extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
+This toolset allows for automatically extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
 
-## Key Features
+## Quick Start Guide
 
-*   **Robust Extraction**: Heuristic-based column detection for manufacturer documents.
-*   **Secure XML Processing**: XXE-protected XML parsing via `defusedxml`.
-*   **Advanced Address Logic**:
-    *   Supports Decimal, Hex (0x prefix or h suffix), and Negative addresses.
-    *   `address_offset`: Shift all register addresses by a specified value.
-    *   Optimized overlap detection for large-scale register maps.
-*   **Comprehensive Type Support**: Standardizes synonyms and supports endianness suffixes (e.g., `_B`, `_W`, `_WB`).
-*   **Unified CLI**: Single entry point for extraction, generation, or end-to-end runs.
+### What This Tool Does
+Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will:
+1. **Find** the register tables using heuristic-based column detection.
+2. **Extract** addresses, names, data types, units, and scaling factors.
+3. **Generate** a properly formatted WebdynSunPM definition file.
 
-## Requirements
-
-*   Python 3.x
-*   Dependencies: `pdfplumber`, `openpyxl`, `pandas`, `lxml`, `defusedxml`, `reportlab`
-
-Install all dependencies:
+### Installation
 ```bash
-pip install pdfplumber openpyxl pandas lxml defusedxml reportlab
+# Install core and optional dependencies
+pip install pandas openpyxl pdfplumber lxml defusedxml reportlab
 ```
 
-## Unified CLI Usage
+### Basic Usage
+The `doc_to_webdyn.py` script provides a simple interface for most users.
 
-The primary entry point is `DefFileGenerator/main.py`.
+#### From PDF Documentation
+```bash
+python doc_to_webdyn.py manufacturer_datasheet.pdf \
+    --manufacturer "Huawei" \
+    --model "SUN2000-5KTL" \
+    -o huawei_definition.csv
+```
+
+#### From Excel Register Map
+```bash
+python doc_to_webdyn.py register_map.xlsx \
+    --manufacturer "SolarEdge" \
+    --model "SE5000H" \
+    -o solaredge_definition.csv
+```
+
+#### From CSV File
+```bash
+python doc_to_webdyn.py registers.csv \
+    --manufacturer "Fronius" \
+    --model "Symo-5.0" \
+    -o fronius_definition.csv
+```
+
+---
+
+## Unified CLI (Advanced Usage)
+
+The primary entry point for granular control is `DefFileGenerator/main.py`.
 
 ### 1. Extract registers from documentation
-Extract tables from PDF, Excel, CSV, or XML into a simplified CSV format.
-
+Extract tables from source files into a simplified internal CSV format.
 ```bash
 python3 DefFileGenerator/main.py extract <source_file> -o <output_csv> [options]
 ```
-*   `--mapping <json_file>`: (Optional) JSON file to map manufacturer columns.
-*   `--sheet <name>`: (Excel only) Specific sheet name.
-*   `--pages <list>`: (PDF only) Comma-separated list of pages.
+*   `--mapping <json_file>`: JSON file to map manufacturer columns.
+*   `--sheet <name>`: (Excel only) Specific sheet name to process.
+*   `--pages <list>`: (PDF only) Comma-separated list of pages (e.g., "1,2,5").
 
 ### 2. Generate definition from CSV
-Convert a simplified CSV into a WebdynSunPM definition file.
-
+Convert a simplified CSV (manually created or extracted) into a WebdynSunPM definition file.
 ```bash
 python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
-*   `--address-offset <int>`: Shift addresses (default 0).
+*   `--address-offset <int>`: Shift all addresses by a specific value.
 
 ### 3. End-to-End Run
-Extract and generate the definition file in a single step.
-
+Perform extraction and generation in a single command.
 ```bash
 python3 DefFileGenerator/main.py run <source_file> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
 ```
 
 ---
 
-## Input CSV Format
+## Technical Specifications
 
-The simplified CSV (input for `generate`) uses these columns:
+### Column Recognition
+The tool automatically identifies columns matching these patterns (case-insensitive):
+
+| Target | Patterns |
+| :--- | :--- |
+| **Address** | register, address, addr, offset, reg |
+| **Name** | name, description, parameter, variable, signal, signal name |
+| **Type** | type, data type, format, datatype |
+| **Unit** | unit, units |
+| **Scale** | scale, factor, multiplier, ratio |
+| **Action** | action, access |
+
+### Data Type Mapping
+Standard manufacturer types are mapped to WebdynSunPM types:
+
+| Manufacturer Type | Webdyn Type |
+| :--- | :--- |
+| uint16, u16 | U16 |
+| int16, i16 | I16 |
+| uint32, u32 | U32 |
+| int32, i32 | I32 |
+| float, f32, float32 | F32 |
+| double, f64, float64 | F64 |
+| string, str | STR<n> |
+
+### Features & Security
+*   **Address Logic**: Supports Decimal, Hex (0x prefix), and Negative addresses.
+*   **Overlap Detection**: Dictionary-based O(N) check for register collisions.
+*   **Security**: XXE-protected XML parsing via `defusedxml`.
+*   **Memory Efficiency**: O(1) memory overhead using generator-based stream processing.
+
+---
+
+## Input CSV Format (for `generate`)
+
+The simplified CSV uses these columns:
 
 | Column | Description |
 | :--- | :--- |
@@ -70,17 +124,20 @@ The simplified CSV (input for `generate`) uses these columns:
 | `Unit` | Unit of measurement. |
 | `ScaleFactor` | Power of 10 scaling ($CoefA = Factor \times 10^{ScaleFactor}$). |
 
-### Supported Types
+---
 
-*   **Numeric**: `U8-U64`, `I8-I64`, `F32`, `F64` (supports `_W`, `_B`, `_WB` suffixes).
-*   **Convenience**: `STR<n>` (e.g., `STR20` for a 20-character string).
-*   **Special**: `BITS`, `IP`, `IPV6`, `MAC`.
+## Troubleshooting
 
-## Validation & Performance
+*   **No registers extracted**:
+    1. Check if your file has clearly labeled columns.
+    2. Run with `-v` (verbose) to see detection logs.
+    3. Ensure PDF tables are text-based (not scanned images).
+*   **Wrong data types**: Add a "Type" or "Data Type" column to your source file for explicit mapping.
+*   **Incorrect addresses**: Verify the "Address" column. The tool handles 0x hex and decimal automatically.
 
-The tool is optimized for performance and strict resource constraints. It handles maps with 5,000+ registers in fractions of a second, with a theoretical limit in the gigabytes, depending on RAM limits for generators. It performs:
-*   **Memory Efficiency**: O(1) memory overhead through generator-based stream processing for CSV, Excel, XML, and mapping logic. File loading is lazy whenever possible to handle infinite streams without crashing.
-*   **Input Resilience**: Advanced IO error isolation (fallback encoding and explicit type hints) preventing common silent drops for corrupted manufacturer files.
-*   **Address Overlap Detection**: Dictionary-based O(N) check avoiding geometric performance drops.
-*   **Duplicate Detection**: Warns for repeated Names or Tags.
-*   **Security Validation**: Blocks external entity injection (XXE) in XML formats reliably.
+## Verification
+
+Run the full test suite to ensure everything is working correctly:
+```bash
+PYTHONPATH=. python3 -m unittest discover DefFileGenerator/tests
+```
