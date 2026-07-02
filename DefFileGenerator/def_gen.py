@@ -895,6 +895,7 @@ class Generator:
             if summary:
                 logging.info(f"Registers summary: {summary}")
 
+            summary = f"Generated {total} registers: Coils={counts['1']}, Discrete={counts['2']}, Holding={counts['3']}, Input={counts['4']}"
             if isinstance(output, str):
                 summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
                 logging.info(f"Definition file generated at {output}. Summary: {summary}")

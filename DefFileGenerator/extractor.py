@@ -196,24 +196,25 @@ class Extractor:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
-        def csv_table_generator() -> Iterator[Dict[str, Any]]:
-            try:
-                with open(filepath, 'rb') as f:
-                    header_bytes = f.read(4)
-                    encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+        def csv_tables_generator():
+            def csv_table_generator() -> Iterator[Dict[str, Any]]:
+                try:
+                    with open(filepath, 'rb') as f:
+                        header_bytes = f.read(4)
+                        encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-                with open(filepath, 'r', encoding=encoding) as f:
-                    snippet = f.read(2048)
-                    f.seek(0)
-                    try:
-                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                        delimiter = dialect.delimiter
-                    except csv.Error:
-                        delimiter = ','
-                        for d in [',', ';', '\t']:
-                            if d in snippet:
-                                delimiter = d
-                                break
+                    with open(filepath, 'r', encoding=encoding) as f:
+                        snippet = f.read(2048)
+                        f.seek(0)
+                        try:
+                            dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                            delimiter = dialect.delimiter
+                        except csv.Error:
+                            delimiter = ','
+                            for d in [',', ';', '\t']:
+                                if d in snippet:
+                                    delimiter = d
+                                    break
 
                     reader = csv.DictReader(f, delimiter=delimiter)
                     for row in reader:
@@ -222,14 +223,14 @@ class Extractor:
             except Exception as e:
                 logging.error(f"Error extracting from CSV {filepath}: {e}")
 
-            except OSError as e:
-                logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
-            except csv.Error as e:
-                logging.error(f"CSV Parsing Error in {filepath}: {e}")
-            except UnicodeError as e:
-                logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
-            except (ValueError, TypeError) as e:
-                logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
+                except OSError as e:
+                    logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
+                except csv.Error as e:
+                    logging.error(f"CSV Parsing Error in {filepath}: {e}")
+                except UnicodeError as e:
+                    logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
+                except (ValueError, TypeError) as e:
+                    logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
         yield csv_table_generator()
 
