@@ -381,6 +381,9 @@ def _run_cli():
     elif args.command == 'validate':
         validate_command(args)
     elif args.command == 'generate':
+        if not args.template and not args.input_file:
+            logging.error("input_file is required unless --template is used.")
+            sys.exit(1)
         generate_command(args)
     elif args.command == 'validate':
         validate_command(args)

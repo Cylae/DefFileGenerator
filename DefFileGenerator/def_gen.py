@@ -962,6 +962,50 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
             ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
         ]
 
+    def validate_csv(self, filepath: str) -> bool:
+        """Validates an existing Webdyn definition file."""
+        if not os.path.exists(filepath):
+            logging.error(f"File not found: {filepath}")
+            return False
+
+        is_valid = True
+        seen_tags = {}
+        address_usage = {}
+        warned_lines = set()
+
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f, delimiter=';')
+                header = next(reader, None)
+                if not header:
+                    logging.error("Empty definition file.")
+                    return False
+
+                for line_num, row in enumerate(reader, start=2):
+                    if len(row) < 11:
+                        logging.warning(f"Line {line_num}: Insufficient columns (expected at least 11, got {len(row)}). Skipping.")
+                        continue
+
+                    # row format: [Index, Info1, Info2, Info3, Info4, Name, Tag, CoefA, CoefB, Unit, Action]
+                    _, info1, info2, info3, _, name, tag, _, _, _, _ = row[:11]
+
+                    if tag:
+                        if tag in seen_tags:
+                            logging.error(f"Line {line_num}: Duplicate Tag '{tag}' (Fatal). Already seen at line {seen_tags[tag]}.")
+                            is_valid = False
+                        else:
+                            seen_tags[tag] = line_num
+
+                    if not self.validate_address(info2, info3):
+                        is_valid = False
+
+                    self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
+
+            return is_valid
+        except (OSError, csv.Error) as e:
+            logging.error(f"Error validating CSV: {e}")
+            return False
+
 def generate_template(output_file: Optional[str]) -> None:
     headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
     rows = [['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'], ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']]
