@@ -5,6 +5,7 @@ import os
 import logging
 import re
 import csv
+import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
@@ -22,7 +23,6 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
-    parser.add_argument('--template', action='store_true')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -33,11 +33,12 @@ def _run_cli():
         run_generator(config)
         return
 
-    if not args.input_file or not os.path.exists(args.input_file):
-        logging.error(f"Input file not found: {args.input_file}")
+    input_file = getattr(args, 'input_file', None)
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
-    ext = os.path.splitext(args.input_file)[1].lower() if args.input_file else ""
+    ext = os.path.splitext(input_file)[1].lower()
 
     # Warn about mismatched options
     if args.pages and ext != '.pdf':
@@ -70,7 +71,6 @@ def _run_cli():
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
@@ -80,14 +80,9 @@ def _run_cli():
     has_data, raw_peeked = peek_generator(raw)
     if not has_data: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw, args.address_offset)
-    first, mapped = peek_generator(mapped)
-    if not first: logging.error("No registers extracted."); sys.exit(1)
-
-    first, mapped = peek_generator(mapped)
-    if first is None:
-        logging.error("No registers extracted.")
-        sys.exit(1)
+    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
+    has_regs, mapped_peeked = peek_generator(mapped)
+    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -104,7 +99,7 @@ def _run_cli():
         address_offset=0, # Already applied during extraction
         template=args.template
     )
-    run_generator(config, input_data=mapped_peeker)
+    run_generator(config, input_data=mapped_peeked)
 
 def main():
     try:
@@ -114,7 +109,7 @@ def main():
     except SystemExit:
         raise
     except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
+        logging.exception(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
