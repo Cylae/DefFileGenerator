@@ -42,7 +42,7 @@ class TestValidateCSV(unittest.TestCase):
             ['2', '3', '40002', 'U16', '', 'Name2', 'tag2', '1.0', '0.0', 'W', '4']
         ]
         path = self.create_csv(rows)
-        self.assertFalse(self.generator.validate_csv(path))
+        self.assertFalse(self.generator.validate_csv(path, strict_overlap=True))
 
     def test_invalid_address(self):
         rows = [

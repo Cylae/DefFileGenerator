@@ -2,16 +2,18 @@ import unittest
 import os
 import csv
 import logging
-import csv
+import tempfile
 from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
+        self.test_dir = tempfile.TemporaryDirectory()
         # Suppress logging during tests
         logging.disable(logging.CRITICAL)
 
     def tearDown(self):
+        self.test_dir.cleanup()
         logging.disable(logging.NOTSET)
 
     def create_csv(self, rows, header=None):
