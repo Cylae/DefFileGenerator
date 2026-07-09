@@ -2,15 +2,18 @@ import unittest
 import csv
 import os
 import tempfile
+import logging
 from DefFileGenerator.def_gen import Generator
 
 class TestValidateCSV(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
         self.temp_dir = tempfile.TemporaryDirectory()
+        logging.disable(logging.CRITICAL)
 
     def tearDown(self):
         self.temp_dir.cleanup()
+        logging.disable(logging.NOTSET)
 
     def create_csv(self, rows):
         path = os.path.join(self.temp_dir.name, 'test.csv')
@@ -55,10 +58,11 @@ class TestValidateCSV(unittest.TestCase):
         path = os.path.join(self.temp_dir.name, 'short.csv')
         with open(path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f, delimiter=';')
-            writer.writerow(['modbusRTU', 'Inverter'])
+            writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model'])
             writer.writerow(['1', '3', '40001']) # too short
-        # Should log warning and return True if no other errors,
-        # but since there are no valid rows, it might be trivial.
+        # Current validate_csv returns True for rows with < 11 columns (it logs a warning and skips)
+        # but if there are NO valid rows, it might return True or False depending on implementation.
+        # Actually, in my version it returns True if no FATAL errors found.
         self.assertTrue(self.generator.validate_csv(path))
 
 if __name__ == '__main__':
