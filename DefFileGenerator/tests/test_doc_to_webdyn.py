@@ -21,7 +21,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_success(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', self.csv_file, '--manufacturer',
+        test_args = ['doc_to_webdyn.py', 'run', self.csv_file, '--manufacturer',
             'Test Mfg', '--model', 'Test Model']
         with patch.object(sys, 'argv', test_args):
             captured_output = io.StringIO()
@@ -34,7 +34,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_missing_file(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'nonexistent.csv', '--manufacturer',
+        test_args = ['doc_to_webdyn.py', 'run', 'nonexistent.csv', '--manufacturer',
             'Test', '--model', 'Test']
         with patch.object(sys, 'argv', test_args):
             with self.assertRaises(SystemExit) as cm:
@@ -43,7 +43,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_bad_mapping(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', self.csv_file, '--manufacturer',
+        test_args = ['doc_to_webdyn.py', 'run', self.csv_file, '--manufacturer',
             'Test', '--model', 'Test', '--mapping', 'nonexistent.json']
         with patch.object(sys, 'argv', test_args):
             with self.assertRaises(SystemExit) as cm:
@@ -55,7 +55,7 @@ class TestDocToWebdyn(unittest.TestCase):
         empty_csv = 'test_empty.csv'
         with open(empty_csv, 'w') as f:
             f.write('')
-        test_args = ['doc_to_webdyn.py', empty_csv, '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', empty_csv, '--manufacturer', 'Test',
             '--model', 'Test']
         with patch.object(sys, 'argv', test_args):
             with self.assertRaises(SystemExit) as cm:
@@ -65,7 +65,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_main_exception(self):
         from doc_to_webdyn import main
-        with patch('doc_to_webdyn._run_cli', side_effect=ValueError(
+        with patch('DefFileGenerator.main._run_cli', side_effect=ValueError(
             'Mock Exception')):
             with self.assertLogs(level='ERROR') as log:
                 with self.assertRaises(SystemExit) as cm:
@@ -76,14 +76,14 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_main_interrupt(self):
         from doc_to_webdyn import main
-        with patch('doc_to_webdyn._run_cli', side_effect=KeyboardInterrupt()):
+        with patch('DefFileGenerator.main._run_cli', side_effect=KeyboardInterrupt()):
             with self.assertRaises(SystemExit) as cm:
                 main()
             self.assertEqual(cm.exception.code, 130)
 
     def test_doc_to_webdyn_pages(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', self.csv_file, '--manufacturer',
+        test_args = ['doc_to_webdyn.py', 'run', self.csv_file, '--manufacturer',
             'Test', '--model', 'Test', '--pages', '1,2']
         with patch.object(sys, 'argv', test_args):
             main()
@@ -96,7 +96,7 @@ class TestDocToWebdyn(unittest.TestCase):
         bad_csv = 'test_cli_empty_mapped.csv'
         with open(bad_csv, 'w') as f:
             f.write('Random1,Random2\n100,200\n')
-        test_args = ['doc_to_webdyn.py', bad_csv, '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', bad_csv, '--manufacturer', 'Test',
             '--model', 'Test']
         with patch.object(sys, 'argv', test_args):
             with self.assertRaises(SystemExit) as cm:
@@ -106,7 +106,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_pages_invalid_pdf(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'dummy.pdf', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'dummy.pdf', '--manufacturer', 'Test',
             '--model', 'Test', '--pages', 'invalid']
         with open('dummy.pdf', 'w') as f:
             f.write('dummy')
@@ -118,7 +118,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_unsupported_ext(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'test.txt', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'test.txt', '--manufacturer', 'Test',
             '--model', 'Test']
         with open('test.txt', 'w') as f:
             f.write('dummy')
@@ -133,7 +133,7 @@ class TestDocToWebdyn(unittest.TestCase):
         mapping_file = 'valid_mapping.json'
         with open(mapping_file, 'w') as f:
             json.dump({'Address': 'Address'}, f)
-        test_args = ['doc_to_webdyn.py', self.csv_file, '--manufacturer',
+        test_args = ['doc_to_webdyn.py', 'run', self.csv_file, '--manufacturer',
             'Test', '--model', 'Test', '--mapping', mapping_file]
         with patch.object(sys, 'argv', test_args):
             main()
@@ -143,7 +143,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_excel(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'dummy.xlsx', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'dummy.xlsx', '--manufacturer', 'Test',
             '--model', 'Test']
         with open('dummy.xlsx', 'w') as f:
             f.write('Dummy')
@@ -154,7 +154,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_pdf(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'dummy.pdf', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'dummy.pdf', '--manufacturer', 'Test',
             '--model', 'Test', '--pages', '1']
         with open('dummy.pdf', 'w') as f:
             f.write('Dummy')
@@ -165,7 +165,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_xml(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'dummy.xml', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'dummy.xml', '--manufacturer', 'Test',
             '--model', 'Test']
         with open('dummy.xml', 'w') as f:
             f.write('Dummy')
@@ -176,7 +176,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_pages_parsing(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'dummy.pdf', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'dummy.pdf', '--manufacturer', 'Test',
             '--model', 'Test', '--pages', '1, 2, 3']
         with open('dummy.pdf', 'w') as f:
             f.write('Dummy')
@@ -188,7 +188,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_pages_parsing_error(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', 'dummy.pdf', '--manufacturer', 'Test',
+        test_args = ['doc_to_webdyn.py', 'run', 'dummy.pdf', '--manufacturer', 'Test',
             '--model', 'Test', '--pages', 'a,b']
         with open('dummy.pdf', 'w') as f:
             f.write('Dummy')
@@ -200,9 +200,10 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_doc_to_webdyn_bad_mapping_open(self):
         from doc_to_webdyn import main
-        test_args = ['doc_to_webdyn.py', self.csv_file, '--manufacturer',
+        test_args = ['doc_to_webdyn.py', 'run', self.csv_file, '--manufacturer',
             'Test', '--model', 'Test', '--mapping', 'dummy_dir']
-        os.mkdir('dummy_dir')
+        if not os.path.exists('dummy_dir'):
+            os.mkdir('dummy_dir')
         with patch.object(sys, 'argv', test_args):
             with self.assertRaises(SystemExit) as cm:
                 main()
@@ -212,7 +213,7 @@ class TestDocToWebdyn(unittest.TestCase):
 
     def test_module_execution(self):
         import runpy
-        test_args = ['doc_to_webdyn.py', self.csv_file, '--manufacturer', 'Test Mfg', '--model', 'Test Model']
+        test_args = ['doc_to_webdyn.py', 'run', self.csv_file, '--manufacturer', 'Test Mfg', '--model', 'Test Model']
         with patch.object(sys, 'argv', test_args):
             captured_output = io.StringIO()
             sys.stdout = captured_output
