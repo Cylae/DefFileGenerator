@@ -27,7 +27,7 @@ class TestCliEntryPoints(unittest.TestCase):
 
     def test_doc_to_webdyn_success(self):
         from doc_to_webdyn import main
-        test_args = ["doc_to_webdyn.py", self.csv_file, "--manufacturer", "Test Mfg", "--model", "Test Model"]
+        test_args = ["doc_to_webdyn.py", "run", self.csv_file, "--manufacturer", "Test Mfg", "--model", "Test Model"]
         with patch.object(sys, 'argv', test_args):
             main()
             self.assertTrue(os.path.exists("test_mfg_test_model_definition.csv"))
