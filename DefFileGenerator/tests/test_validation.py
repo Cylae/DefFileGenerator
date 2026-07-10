@@ -2,16 +2,18 @@ import unittest
 import os
 import csv
 import logging
-import csv
+import tempfile
 from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
+        self.test_dir = tempfile.TemporaryDirectory()
         # Suppress logging during tests
         logging.disable(logging.CRITICAL)
 
     def tearDown(self):
+        self.test_dir.cleanup()
         logging.disable(logging.NOTSET)
 
     def create_csv(self, rows, header=None):
@@ -57,10 +59,8 @@ class TestValidation(unittest.TestCase):
             ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"]
         ]
         path = self.create_csv(rows)
-        # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
-        # but let's see how it behaves. The current implementation only returns False
-        # for fatal errors like duplicate tags or invalid addresses.
-        self.assertTrue(self.generator.validate_csv(path))
+        # Overlap (30001 is 2 regs: 30001, 30002) is fatal by default in my consolidated def_gen
+        self.assertFalse(self.generator.validate_csv(path))
 
     def test_validate_csv_invalid_address(self):
         rows = [
@@ -82,22 +82,22 @@ class TestValidation(unittest.TestCase):
 
     def test_intelligent_action_defaulting(self):
         # Input Register (4) should default to 4 (Read Only)
-        rows = [{'Name': 'InputVar', 'Address': '100', 'Type': 'U16', 'RegisterType': 'Input Register', 'Action': ''}]
+        rows = [{'name': 'InputVar', 'address': '100', 'type': 'U16', 'registertype': 'Input Register', 'action': ''}]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]['Action'], '4')
 
         # Holding Register (3) should default to 1 (Read/Write)
-        rows = [{'Name': 'HoldingVar', 'Address': '200', 'Type': 'U16', 'RegisterType': 'Holding Register', 'Action': ''}]
+        rows = [{'name': 'HoldingVar', 'address': '200', 'type': 'U16', 'registertype': 'Holding Register', 'action': ''}]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]['Action'], '1')
 
         # Discrete Input (2) should default to 4 (Read Only)
-        rows = [{'Name': 'DiscVar', 'Address': '300', 'Type': 'U16', 'RegisterType': 'Discrete Input', 'Action': ''}]
+        rows = [{'name': 'DiscVar', 'address': '300', 'type': 'U16', 'registertype': 'Discrete Input', 'action': ''}]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]['Action'], '4')
 
         # Coil (1) should default to 1 (Read/Write)
-        rows = [{'Name': 'CoilVar', 'Address': '400', 'Type': 'U16', 'RegisterType': 'Coil', 'Action': ''}]
+        rows = [{'name': 'CoilVar', 'address': '400', 'type': 'U16', 'registertype': 'Coil', 'action': ''}]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]['Action'], '1')
 
