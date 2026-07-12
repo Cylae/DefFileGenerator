@@ -7,6 +7,7 @@ import re
 import math
 import itertools
 import os
+import bisect
 from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 from dataclasses import dataclass
 
@@ -26,7 +27,7 @@ def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
 
 # Pre-compiled regex patterns for optimization
 RE_TYPE_NUMERIC = re.compile(r'^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$', re.IGNORECASE)
-RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)$', re.IGNORECASE)
+RE_TYPE_STR_CONV = re.compile(r'^STR(\d+)(_(W|B|WB))?$', re.IGNORECASE)
 RE_ADDR_STRING = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)$', re.IGNORECASE)
 RE_ADDR_BITS = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)_(\d+)$', re.IGNORECASE)
 RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$', re.IGNORECASE)
@@ -100,7 +101,7 @@ class Generator:
                 return f"{replacement}{suffix}"
 
         # Handle STR<n> explicitly if it comes in as raw type
-        if t.startswith('str') and t[3:].isdigit():
+        if t.startswith('str') and (t[3:].isdigit() or '_' in t[3:]):
             return t.upper()
 
         t = _CLEAN_TYPE_RE.sub('', t)
@@ -112,14 +113,14 @@ class Generator:
         dtype_upper = str(dtype).upper()
         # Base types
         base_types = ['STRING', 'BITS', 'IP', 'IPV6', 'MAC']
-        if dtype_upper in base_types:
+        if any(dtype_upper.startswith(bt) for bt in base_types):
             return True
 
         # Numeric types (Int/Float) with optional suffixes
         if RE_TYPE_NUMERIC.match(dtype_upper):
             return True
 
-        # STR<n> syntax (e.g., STR20)
+        # STR<n> syntax (e.g., STR20, STR20_B)
         if RE_TYPE_STR_CONV.match(dtype_upper):
             return True
 
@@ -160,7 +161,7 @@ class Generator:
             dtype_upper = 'STRING'
 
         is_valid_format = False
-        if dtype_upper == 'STRING':
+        if dtype_upper.startswith('STRING'):
             is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == 'BITS':
             is_valid_format = RE_ADDR_BITS.match(address) is not None
@@ -186,14 +187,19 @@ class Generator:
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
         dtype_upper = dtype.upper()
+        if RE_TYPE_STR_CONV.match(dtype_upper):
+            dtype_upper = 'STRING'
+
         if RE_COUNT_16_8.match(dtype_upper): return 1
         elif RE_COUNT_32.match(dtype_upper): return 2
         elif RE_COUNT_64.match(dtype_upper): return 4
         elif dtype_upper == 'MAC': return 3
         elif dtype_upper == 'IPV6': return 8
-        elif dtype_upper == 'STRING':
-            try: return math.ceil(int(address.split('_')[1]) / 2)
-            except (IndexError, ValueError): return 0
+        elif dtype_upper.startswith('STRING'):
+            try:
+                return math.ceil(int(address.split('_')[1]) / 2)
+            except (IndexError, ValueError):
+                return 1
         return 1
 
     @staticmethod
@@ -286,7 +292,6 @@ class Generator:
             is_bits = (dtype.upper() == 'BITS')
             overlap_detected = False
 
-            import bisect
             idx = bisect.bisect_left(intervals, (start_addr, -1, -1, '', ''))
 
             # Check to the right
@@ -379,14 +384,13 @@ class Generator:
                         # Validate Type
                         if not self.validate_type(info3):
                             logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
-                            # We keep valid=True for warnings unless it's fatal
 
                         # Validate Address
                         if not self.validate_address(info2, info3):
                             valid = False
                         else:
                             if self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines):
-                                # Overlap is fatal error according to memory reconcile
+                                # Overlap is fatal error according to requirements
                                 valid = False
                 else:
                     f.seek(0)
@@ -432,10 +436,15 @@ class Generator:
             if not self.validate_type(dtype):
                 logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping.")
                 continue
+
+            # STR<n> extraction and address extension
             match_str = RE_TYPE_STR_CONV.match(dtype)
             if match_str:
-                dtype = 'STRING'
-                if '_' not in address: address = f"{address}_{match_str.group(1)}"
+                suffix = match_str.group(2) or ''
+                dtype = f"STRING{suffix}"
+                if '_' not in address:
+                    address = f"{address}_{match_str.group(1)}"
+
             address = Generator.apply_address_offset(address, address_offset, line_num, name)
             if not self.validate_address(address, dtype):
                 logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping.")
@@ -544,18 +553,11 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
         if output_file:
             with open(output_file, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f, delimiter=delimiter)
-                if mode != 'definition':
-                    writer.writerow(headers)
-                else:
-                    # In definition mode, headers is the first row of Webdyn, but often we want to include the comment header
-                    writer.writerow(headers)
+                writer.writerow(headers)
                 writer.writerows(rows)
         else:
             writer = csv.writer(sys.stdout, delimiter=delimiter)
-            if mode != 'definition':
-                writer.writerow(headers)
-            else:
-                writer.writerow(headers)
+            writer.writerow(headers)
             writer.writerows(rows)
     except OSError as e:
         logging.error(f"Error generating template: {e}")

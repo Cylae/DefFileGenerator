@@ -109,6 +109,9 @@ def _run_cli(args_list=None):
 
 def main(args=None):
     try:
+        # For backward compatibility with tests that patch sys.argv
+        if args is None:
+            args = sys.argv[1:]
         _run_cli(args)
     except KeyboardInterrupt:
         sys.exit(130)
