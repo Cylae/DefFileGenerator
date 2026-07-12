@@ -4,7 +4,7 @@ import sys
 import os
 import logging
 import re
-import csv
+import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
@@ -22,7 +22,6 @@ def _run_cli():
     parser.add_argument('--mapping', help='JSON mapping file')
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
-    parser.add_argument('--template', action='store_true')
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args()
@@ -61,31 +60,30 @@ def _run_cli():
     sheet_arg = getattr(args, 'sheet', None)
     pages = None
     if pages_arg:
-        if ext != '.pdf':
-            logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        else:
+        if ext == '.pdf':
             try:
                 pages = [int(p.strip()) for p in pages_arg.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
+    input_file = args.input_file
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
-    if not has_data: logging.error("No data extracted."); sys.exit(1)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw, args.address_offset)
-    first, mapped = peek_generator(mapped)
-    if not first: logging.error("No registers extracted."); sys.exit(1)
-
-    first, mapped = peek_generator(mapped)
-    if first is None:
+    mapped_gen = extractor.map_and_clean(raw_peeked, args.address_offset)
+    has_regs, mapped = peek_generator(mapped_gen)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -104,7 +102,7 @@ def _run_cli():
         address_offset=0, # Already applied during extraction
         template=args.template
     )
-    run_generator(config, input_data=mapped_peeker)
+    run_generator(config, input_data=mapped)
 
 def main():
     try:
