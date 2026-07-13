@@ -2,7 +2,7 @@ import unittest
 import os
 import csv
 import logging
-import csv
+import tempfile
 from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
@@ -10,9 +10,11 @@ class TestValidation(unittest.TestCase):
         self.generator = Generator()
         # Suppress logging during tests
         logging.disable(logging.CRITICAL)
+        self.test_dir = tempfile.TemporaryDirectory()
 
     def tearDown(self):
         logging.disable(logging.NOTSET)
+        self.test_dir.cleanup()
 
     def create_csv(self, rows, header=None):
         path = os.path.join(self.test_dir.name, "test_val.csv")
@@ -57,10 +59,8 @@ class TestValidation(unittest.TestCase):
             ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"]
         ]
         path = self.create_csv(rows)
-        # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
-        # but let's see how it behaves. The current implementation only returns False
-        # for fatal errors like duplicate tags or invalid addresses.
-        self.assertTrue(self.generator.validate_csv(path))
+        # Overlap (30001 is 2 regs: 30001, 30002) is fatal by default in my new implementation
+        self.assertFalse(self.generator.validate_csv(path))
 
     def test_validate_csv_invalid_address(self):
         rows = [
