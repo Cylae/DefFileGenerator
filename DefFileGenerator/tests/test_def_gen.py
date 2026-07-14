@@ -33,7 +33,7 @@ class TestGenerator(unittest.TestCase):
         logging.disable(logging.NOTSET)
         with self.assertLogs(level='WARNING') as log:
             self.assertFalse(self.generator.validate_address('65536', 'U16'))
-            self.assertTrue(any("out of standard Modbus range" in m for m in log.output))
+            self.assertTrue(any("out of Modbus range" in m for m in log.output))
         logging.disable(logging.CRITICAL)
 
     def test_normalize_address_val(self):
