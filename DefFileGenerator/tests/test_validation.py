@@ -2,16 +2,18 @@ import unittest
 import os
 import csv
 import logging
-import csv
+import tempfile
 from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
+        self.test_dir = tempfile.TemporaryDirectory()
         # Suppress logging during tests
         logging.disable(logging.CRITICAL)
 
     def tearDown(self):
+        self.test_dir.cleanup()
         logging.disable(logging.NOTSET)
 
     def create_csv(self, rows, header=None):
@@ -28,11 +30,11 @@ class TestValidation(unittest.TestCase):
     def test_validate_address_range(self):
         self.assertTrue(self.generator.validate_address("0", "U16"))
         self.assertTrue(self.generator.validate_address("65535", "U16"))
-        self.assertFalse(self.generator.validate_address("65536", "U16"))
-        self.assertFalse(self.generator.validate_address("-1", "U16"))
+        self.assertFalse(self.generator.validate_address("65536", "U16", strict=True))
+        self.assertFalse(self.generator.validate_address("-1", "U16", strict=True))
         # Hex
         self.assertTrue(self.generator.validate_address("0xFFFF", "U16"))
-        self.assertFalse(self.generator.validate_address("0x10000", "U16"))
+        self.assertFalse(self.generator.validate_address("0x10000", "U16", strict=True))
 
     def test_validate_csv_success(self):
         rows = [
@@ -67,7 +69,7 @@ class TestValidation(unittest.TestCase):
             ["3", "70000", "U16", "", "Invalid", "inv_tag", "1.0", "0.0", "V", "4"]
         ]
         path = self.create_csv(rows)
-        self.assertFalse(self.generator.validate_csv(path))
+        self.assertFalse(self.generator.validate_csv(path, strict=True))
 
     def test_validate_csv_compound_address(self):
         # String address validation
