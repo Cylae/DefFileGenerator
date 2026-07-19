@@ -2,16 +2,18 @@ import unittest
 import os
 import csv
 import logging
-import csv
+import tempfile
 from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
+        self.test_dir = tempfile.TemporaryDirectory()
         # Suppress logging during tests
         logging.disable(logging.CRITICAL)
 
     def tearDown(self):
+        self.test_dir.cleanup()
         logging.disable(logging.NOTSET)
 
     def create_csv(self, rows, header=None):
@@ -60,7 +62,7 @@ class TestValidation(unittest.TestCase):
         # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
         # but let's see how it behaves. The current implementation only returns False
         # for fatal errors like duplicate tags or invalid addresses.
-        self.assertTrue(self.generator.validate_csv(path))
+        self.assertTrue(self.generator.validate_csv(path, strict=False))
 
     def test_validate_csv_invalid_address(self):
         rows = [
@@ -100,6 +102,17 @@ class TestValidation(unittest.TestCase):
         rows = [{'Name': 'CoilVar', 'Address': '400', 'Type': 'U16', 'RegisterType': 'Coil', 'Action': ''}]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]['Action'], '1')
+
+    def test_sanitize_csv_field_numeric_exclusion(self):
+        # Basic formula triggers should still be prepended with an apostrophe
+        self.assertEqual(self.generator.sanitize_csv_field("=1+1"), "'=1+1")
+        self.assertEqual(self.generator.sanitize_csv_field("@SUM"), "'@SUM")
+
+        # Valid numbers (positive, negative, float, int) should NOT be prepended
+        self.assertEqual(self.generator.sanitize_csv_field("-10"), "-10")
+        self.assertEqual(self.generator.sanitize_csv_field("-10.5"), "-10.5")
+        self.assertEqual(self.generator.sanitize_csv_field("+10"), "+10")
+        self.assertEqual(self.generator.sanitize_csv_field("1.23e-4"), "1.23e-4")
 
 if __name__ == "__main__":
     unittest.main()
