@@ -114,5 +114,19 @@ class TestGenerator(unittest.TestCase):
             self.assertIn("modbusRTU;Inverter", content)
         os.remove(out_def)
 
+    def test_sanitize_csv_field(self):
+        # Numeric values should be preserved without prepended apostrophe
+        self.assertEqual(self.generator.sanitize_csv_field("-40.0"), "-40.0")
+        self.assertEqual(self.generator.sanitize_csv_field("+1.23"), "+1.23")
+        self.assertEqual(self.generator.sanitize_csv_field("-100"), "-100")
+        self.assertEqual(self.generator.sanitize_csv_field("123"), "123")
+        self.assertEqual(self.generator.sanitize_csv_field(None), "")
+
+        # Formulas and injection attempts should have apostrophe prepended
+        self.assertEqual(self.generator.sanitize_csv_field("=SUM(A1:A5)"), "'=SUM(A1:A5)")
+        self.assertEqual(self.generator.sanitize_csv_field("+1+1"), "'+1+1")
+        self.assertEqual(self.generator.sanitize_csv_field("-some_var"), "'-some_var")
+        self.assertEqual(self.generator.sanitize_csv_field("@SUM"), "'@SUM")
+
 if __name__ == '__main__':
     unittest.main()
