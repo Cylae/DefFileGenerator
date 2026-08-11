@@ -299,13 +299,15 @@ class Extractor:
 
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
 
+            src_col_clean = {k: str(k).lower().strip() for k in all_keys}
+            src_col_lower = {k: str(k).lower() for k in all_keys}
+
             for target in detection_order:
                 if target in col_map: continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
                 for src_col in all_keys:
                     if src_col in used_src_cols: continue
-                    s_low = str(src_col).lower().strip()
-                    if s_low in patterns:
+                    if src_col_clean[src_col] in patterns:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
@@ -315,7 +317,7 @@ class Extractor:
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
                 for src_col in all_keys:
                     if src_col in used_src_cols: continue
-                    if any(p in str(src_col).lower() for p in patterns):
+                    if any(p in src_col_lower[src_col] for p in patterns):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
