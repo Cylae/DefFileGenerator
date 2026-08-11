@@ -13,6 +13,42 @@ class TestGenerator(unittest.TestCase):
     def tearDown(self):
         logging.disable(logging.NOTSET)
 
+    def test_parse_numeric(self):
+        # Empty/None inputs
+        self.assertEqual(self.generator._parse_numeric(None), 0.0)
+        self.assertEqual(self.generator._parse_numeric(''), 0.0)
+        self.assertEqual(self.generator._parse_numeric('  '), 0.0)
+        self.assertEqual(self.generator._parse_numeric(None, default=1.5), 1.5)
+
+        # Simple integers and floats
+        self.assertEqual(self.generator._parse_numeric('42'), 42.0)
+        self.assertEqual(self.generator._parse_numeric('-42'), -42.0)
+        self.assertEqual(self.generator._parse_numeric('3.14'), 3.14)
+        self.assertEqual(self.generator._parse_numeric('-3.14'), -3.14)
+
+        # Fractions
+        self.assertEqual(self.generator._parse_numeric('1/2'), 0.5)
+        self.assertEqual(self.generator._parse_numeric('-1/2'), -0.5)
+        self.assertEqual(self.generator._parse_numeric('1/0', default=9.9), 9.9) # Zero division
+        self.assertEqual(self.generator._parse_numeric('a/b', default=9.9), 9.9) # ValueError
+        self.assertEqual(self.generator._parse_numeric('1/', default=9.9), 9.9) # ValueError
+
+        # US/Euro formatting
+        # Comma before decimal -> US (1,234.56 -> 1234.56)
+        self.assertEqual(self.generator._parse_numeric('1,234.56'), 1234.56)
+        # Decimal before comma -> Euro (1.234,56 -> 1234.56)
+        self.assertEqual(self.generator._parse_numeric('1.234,56'), 1234.56)
+
+        # Only comma
+        # Matches ^-?\d{1,3}(,\d{3})+$ -> thousand separator (1,234 -> 1234)
+        self.assertEqual(self.generator._parse_numeric('1,234'), 1234.0)
+        self.assertEqual(self.generator._parse_numeric('-1,234'), -1234.0)
+        # Doesn't match -> decimal comma (12,34 -> 12.34)
+        self.assertEqual(self.generator._parse_numeric('12,34'), 12.34)
+
+        # Invalid strings
+        self.assertEqual(self.generator._parse_numeric('abc', default=-1.0), -1.0)
+
     def test_intelligent_defaulting(self):
         rows = [
             {'Name': 'Holding', 'RegisterType': 'Holding', 'Address': '100', 'Type': 'U16'},
