@@ -13,6 +13,20 @@ class TestGenerator(unittest.TestCase):
     def tearDown(self):
         logging.disable(logging.NOTSET)
 
+    def test_calculate_coefficients(self):
+        # Valid integer strings
+        self.assertEqual(self.generator._calculate_coefficients("2", "3", "4"), ("20000.000000", "3.000000"))
+        # Valid float strings
+        self.assertEqual(self.generator._calculate_coefficients("1.5", "2.5", "3.0"), ("1500.000000", "2.500000"))
+        # Null and empty inputs
+        self.assertEqual(self.generator._calculate_coefficients("", None, ""), ("1.000000", "0.000000"))
+        # Invalid inputs falling back to defaults
+        self.assertEqual(self.generator._calculate_coefficients("abc", "def", "ghi"), ("1.000000", "0.000000"))
+        # Fractions
+        self.assertEqual(self.generator._calculate_coefficients("1/10", "1/2", "2"), ("10.000000", "0.500000"))
+        # Negative scale factor
+        self.assertEqual(self.generator._calculate_coefficients("1.0", "0.0", "-2"), ("0.010000", "0.000000"))
+
     def test_intelligent_defaulting(self):
         rows = [
             {'Name': 'Holding', 'RegisterType': 'Holding', 'Address': '100', 'Type': 'U16'},
