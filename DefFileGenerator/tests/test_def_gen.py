@@ -56,6 +56,43 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.get_register_count('STRING', '30000_10'), 5) # ceil(10/2)
         self.assertEqual(self.generator.get_register_count('STRING', '30000_11'), 6) # ceil(11/2)
 
+
+    def test_apply_address_offset(self):
+        # Empty input
+        self.assertEqual(Generator.apply_address_offset("", 10), "")
+        self.assertEqual(Generator.apply_address_offset(None, 10), "")
+
+        # Simple address
+        self.assertEqual(Generator.apply_address_offset("30000", 10), "30010")
+
+        # Compound address
+        self.assertEqual(Generator.apply_address_offset("40000_20", -5), "39995_20")
+
+        # Hex addresses (normalized internally to decimal before offset)
+        self.assertEqual(Generator.apply_address_offset("0x10", 5), "21")  # 16 + 5 = 21
+        self.assertEqual(Generator.apply_address_offset("0x10_20", 5), "21_20")
+
+        # Value Error handling (caught silently)
+        self.assertEqual(Generator.apply_address_offset("invalid", 10), "invalid")
+        self.assertEqual(Generator.apply_address_offset("invalid_20", 10), "invalid_20")
+
+        # Negative address warning (with log assertions)
+        logging.disable(logging.NOTSET)
+
+        with self.assertLogs(level='WARNING') as log1:
+            res1 = Generator.apply_address_offset("10", -15)
+            self.assertEqual(res1, "-5")
+            self.assertTrue(any("Address offset -15 results in negative address -5" in m for m in log1.output))
+            self.assertFalse(any("for '" in m for m in log1.output))
+            self.assertFalse(any("Line" in m for m in log1.output))
+
+        with self.assertLogs(level='WARNING') as log2:
+            res2 = Generator.apply_address_offset("10", -15, line_num=42, name="TestReg")
+            self.assertEqual(res2, "-5")
+            self.assertTrue(any("Line 42: Address offset -15 results in negative address -5 for 'TestReg'" in m for m in log2.output))
+
+        logging.disable(logging.CRITICAL)
+
     def test_process_rows_basic(self):
         rows = [{
             'Name': 'Test Var',
