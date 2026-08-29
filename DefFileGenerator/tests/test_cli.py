@@ -22,8 +22,17 @@ class TestCliEntryPoints(unittest.TestCase):
             os.remove("test_mfg_test_model_definition.csv")
         if os.path.exists("test_out.csv"):
             os.remove("test_out.csv")
+        if os.path.exists("test_gen_out.csv"):
+            os.remove("test_gen_out.csv")
         import logging
         logging.disable(logging.NOTSET)
+
+    def test_generate_webdyn_def_success(self):
+        from generate_webdyn_def import main
+        test_args = ["generate_webdyn_def.py", self.csv_file, "test_gen_out.csv", "--manufacturer", "TestMfg", "--model", "TestModel"]
+        with patch.object(sys, 'argv', test_args):
+            main()
+            self.assertTrue(os.path.exists("test_gen_out.csv"))
 
     def test_doc_to_webdyn_success(self):
         from doc_to_webdyn import main
