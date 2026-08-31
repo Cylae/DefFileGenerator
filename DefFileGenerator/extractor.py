@@ -235,12 +235,14 @@ class Extractor:
             return iter([])
 
         def xml_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            try:
-                with open(filepath, 'rb') as f:
-                    tree = ET.parse(f)
-                    root = tree.getroot()
-
-                def xml_generator() -> Iterator[Dict[str, Any]]:
+            def xml_generator() -> Iterator[Dict[str, Any]]:
+                try:
+                    f = open(filepath, 'rb')
+                    try:
+                        tree = ET.parse(f)
+                        root = tree.getroot()
+                    finally:
+                        f.close()
                     seen = set()
                     for elem in root.iter():
                         row = {}
@@ -252,17 +254,16 @@ class Extractor:
                             if js not in seen:
                                 seen.add(js)
                                 yield row
+                except SECURITY_EXCEPTIONS as e:
+                    logging.error(f"Security error parsing XML {filepath}: {e}")
+                    raise
+                except (OSError,) + XML_PARSE_ERRORS as e:
+                    logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+                except (ValueError, TypeError) as e:
+                    logging.error(f"Error extracting from XML {filepath}: {e}")
 
-                # Return as a single table
-                yield xml_generator()
-
-            except SECURITY_EXCEPTIONS as e:
-                logging.error(f"Security error parsing XML {filepath}: {e}")
-                raise
-            except (OSError,) + XML_PARSE_ERRORS as e:
-                logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
-            except (ValueError, TypeError) as e:
-                logging.error(f"Error extracting from XML {filepath}: {e}")
+            # Return as a single table
+            yield xml_generator()
 
         return xml_tables_generator()
 
