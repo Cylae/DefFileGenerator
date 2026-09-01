@@ -235,5 +235,23 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.get_register_count('STRING', '30000'), 0)
         self.assertEqual(self.generator.get_register_count('U64', '1'), 4)
 
+    def test_write_output_csv_forced_write(self):
+        """forced_write parameter overrides Info1 column in the output CSV."""
+        import os
+        import tempfile
+        fd, target = tempfile.mkstemp(suffix='.csv')
+        os.close(fd)
+        try:
+            rows = [{'Info1': '4', 'Info2': '30001', 'Info3': 'U16', 'Info4': '',
+                     'Name': 'Voltage', 'Tag': 'voltage',
+                     'CoefA': '1.000000', 'CoefB': '0.000000', 'Unit': 'V', 'Action': '4'}]
+            Generator.write_output_csv(target, iter(rows), 'Mfg', 'Model', forced_write='3')
+            with open(target, encoding='utf-8-sig') as f:
+                content = f.read()
+            self.assertIn('modbusRTU;Inverter;Mfg;Model;3', content)
+            self.assertIn('1;3;30001;U16;;Voltage;voltage', content)
+        finally:
+            os.unlink(target)
+
 if __name__ == '__main__':
     unittest.main()
