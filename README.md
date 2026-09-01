@@ -1,164 +1,177 @@
 # WebdynSunPM DefFileGenerator & Documentation Parser
 
-This toolset allows for extracting Modbus register information from manufacturer documentation (PDF, Excel, CSV, or XML) and automatically generating WebdynSunPM definition files (CSV format). It handles address formatting, type validation, overlap detection, coefficient calculation, and address offsets.
+A python toolset and library for extracting Modbus register maps from manufacturer documentation (PDF, Excel, CSV, or XML) and generating validated, properly formatted WebdynSunPM definition CSV files.
 
-## Key Features
-
-*   **Robust Extraction**: Heuristic-based column detection for manufacturer documents (finds Address, Name, Type, Unit, Scale, etc.).
-*   **Secure XML Processing**: XXE-protected XML parsing via `defusedxml`.
-*   **Advanced Address Logic**:
-    *   Supports Decimal, Hex (0x prefix or h suffix), and Negative addresses.
-    *   `address_offset`: Shift all register addresses by a specified value.
-    *   Optimized overlap detection for large-scale register maps.
-*   **Comprehensive Type Support**: Standardizes synonyms and supports endianness suffixes (e.g., `_B`, `_W`, `_WB`). Automatically maps types (e.g., `uint16` -> `U16`, `float` -> `F32`).
-*   **Unified CLI**: Single entry point for extraction, generation, or end-to-end runs.
-*   **High Performance**: O(1) memory overhead through generator-based stream processing, allowing handling of 5,000+ registers seamlessly.
+It manages complex register transformations including hex/decimal address normalization, data type standardizations with endianness flags, automated tag generation, scaling factor / offset calculation, register address overlap detection, and CSV formula injection protection.
 
 ---
 
-## 🚀 A-Z Quick Start Guide
+## Key Features
 
-### 1. Installation
+*   **Multi-Format Documentation Parser**: Extract register maps dynamically from PDF datasheets, Excel workbooks (all sheets or specific sheets), CSV files, or structured XML documents.
+*   **Security & Safety**:
+    *   XXE-protected XML parsing using `defusedxml`.
+    *   CSV injection protection via `sanitize_csv_field` which escapes formula triggers (`=`, `@`, `+`, `-`) while preserving signed numbers (e.g. `-10.5`).
+*   **Advanced Modbus Address Handling**:
+    *   Supports Decimal, Hexadecimal (`0x` prefix or `h` suffix), negative addresses, and compound string/bit formats (`address_startbit_length`).
+    *   Apply custom integer `address_offset` to shift all extracted register addresses.
+    *   High-performance O(log N) binary search interval lookup for detecting register address overlaps across coil, discrete, holding, and input registers.
+*   **Comprehensive Data Type Normalization**:
+    *   Automatic type mapping (e.g., `uint16` -> `U16`, `float` -> `F32`, `int32` -> `I32`).
+    *   Supports endianness suffixes (`_B`, `_W`, `_WB`).
+    *   String register support (`STR<n>` or `STRING`) and bitfield definitions (`BITS`).
+*   **High Performance & Streaming**: Low $O(1)$ memory footprint using generator-based row streaming pipelines capable of processing thousands of registers efficiently.
+*   **Unified CLI & Programmatic API**: Use via simple python module calls or command-line interfaces (`main.py`, `doc_to_webdyn.py`, `generate_webdyn_def.py`).
 
-First, install the required dependencies:
+---
+
+## 🚀 Installation & Requirements
+
+### Installation
 
 ```bash
 pip install pdfplumber openpyxl defusedxml lxml
 ```
-*(Optional: `pandas` for stress testing, `reportlab` for PDF generation in tests)*
 
-### 2. Basic End-to-End Usage
+*(Optional dependencies: `pytest` for testing, `pandas` and `reportlab` for benchmark/stress test suites).*
 
-The primary entry point is `DefFileGenerator/main.py`. The simplest way to use the tool is the `run` command, which extracts from documentation and generates the final definition file in one go.
+---
 
-```bash
-python3 DefFileGenerator/main.py run INPUT_FILE --manufacturer "MFG" --model "MODEL" -o output.csv
+## 💻 Usage & Entry Points
+
+### 1. Programmatic API (`generate_webdyn_def.py`)
+
+Integrate WebdynSunPM generation directly into Python applications using `generate_webdyn_definition`:
+
+```python
+from generate_webdyn_def import generate_webdyn_definition
+
+success = generate_webdyn_definition(
+    input_file="solar_inverter_map.xlsx",
+    output_file="webdyn_definition.csv",
+    manufacturer="Huawei",
+    model="SUN2000-50KTL",
+    protocol="modbusRTU",      # default: modbusRTU
+    category="Inverter",        # default: Inverter
+    address_offset=0,           # optional address shift
+    strict_validation=True      # fail on address overlaps or format errors
+)
+
+if success:
+    print("Definition file successfully generated and validated!")
 ```
 
-**Examples with Real Files:**
-
-**From PDF Documentation:**
+Run built-in programmatic demo:
 ```bash
-python3 DefFileGenerator/main.py run manufacturer_datasheet.pdf \
-    --manufacturer "Huawei" \
-    --model "SUN2000-5KTL" \
-    -o huawei_definition.csv
+python3 generate_webdyn_def.py
 ```
 
-**From Excel Register Map:**
+---
+
+### 2. Multi-Command CLI (`DefFileGenerator/main.py`)
+
+The primary CLI provides four distinct sub-commands (`run`, `extract`, `generate`, `validate`).
+
+#### End-to-End Extraction & Generation (`run`)
+Extract registers from any documentation file and output a validated WebdynSunPM definition CSV in a single command:
+
 ```bash
-# Process all sheets
-python3 DefFileGenerator/main.py run register_map.xlsx \
+python3 DefFileGenerator/main.py run input_doc.pdf \
     --manufacturer "SolarEdge" \
-    --model "SE5000H" \
+    --model "SE10K" \
     -o solaredge_definition.csv
+```
 
-# Process specific sheet
-python3 DefFileGenerator/main.py run register_map.xlsx \
-    --sheet "Holding Registers" \
+#### Extract Registers to Intermediate CSV (`extract`)
+```bash
+python3 DefFileGenerator/main.py extract datasheet.xlsx --sheet "Holding Registers" -o intermediate_registers.csv
+```
+
+#### Generate Definition from Intermediate CSV (`generate`)
+```bash
+python3 DefFileGenerator/main.py generate intermediate_registers.csv \
     --manufacturer "SMA" \
     --model "STP-5000TL" \
     -o sma_definition.csv
 ```
 
-**From CSV Export:**
+#### Validate Definition CSV (`validate`)
 ```bash
-python3 DefFileGenerator/main.py run registers.csv \
+python3 DefFileGenerator/main.py validate webdyn_definition.csv
+```
+
+---
+
+### 3. Single-Step CLI (`doc_to_webdyn.py`)
+
+A simplified command-line interface for direct conversion:
+
+```bash
+python3 doc_to_webdyn.py input_file.pdf \
     --manufacturer "Fronius" \
     --model "Symo-5.0" \
     -o fronius_definition.csv
 ```
 
-### 3. Step-by-Step CLI Commands
+---
 
-The CLI also allows splitting the process into extraction and generation:
+## 🔍 Extraction Heuristics & Mapping
 
-#### Step 3A: Extract registers from documentation
-Extract tables into a simplified intermediate CSV format.
+The extractor automatically detects columns using exact header matching and heuristic substring search across common naming conventions:
 
-```bash
-python3 DefFileGenerator/main.py extract <source_file> -o <output_csv> [options]
-```
-*   `--mapping <json_file>`: (Optional) JSON file to explicitly map manufacturer columns.
-*   `--sheet <name>`: (Excel only) Specific sheet name to process.
-*   `--pages <list>`: (PDF only) Comma-separated list of pages to parse (e.g. `1,2,5`).
-*   `--address-offset <int>`: Shift all addresses by a specified integer.
-
-#### Step 3B: Generate definition from intermediate CSV
-Convert the simplified intermediate CSV into a WebdynSunPM definition file.
-
-```bash
-python3 DefFileGenerator/main.py generate <input_csv> --manufacturer <Name> --model <Model> -o <output_def_csv> [options]
-```
-*   `--protocol <PROTO>`: Protocol name (default: `modbusRTU`).
-*   `--category <CAT>`: Device category (default: `Inverter`).
-
-### 4. How It Works (Extraction Heuristics)
-
-The tool searches for columns matching these patterns (case-insensitive):
-
-| Target | Patterns |
+| Internal Field | Detected Header Patterns |
 | :--- | :--- |
-| **Address** | register, address, addr, offset, reg |
-| **Name** | name, description, parameter, variable, signal |
-| **Type** | type, data type, format, datatype |
-| **Unit** | unit, units |
-| **Scale** | scale, factor, multiplier, ratio |
-| **Action** | action, access |
+| **Address** | `address`, `addr`, `offset`, `register`, `reg` |
+| **Name** | `name`, `description`, `parameter`, `variable`, `signal`, `signal name` |
+| **Type** | `data type`, `datatype`, `type`, `format` |
+| **Unit** | `unit`, `units` |
+| **Action** | `action`, `access` |
+| **Factor** | `scale`, `factor`, `multiplier`, `ratio` |
+| **Offset** | `offset`, `bias`, `coefficient b` |
+| **ScaleFactor** | `scalefactor`, `scale factor` |
+| **Length** | `length`, `len`, `size`, `count`, `quantity` |
+| **StartBit** | `startbit`, `bit offset`, `bit`, `start` |
 
-**Data Type Mapping:**
-Common types are automatically mapped:
-* `uint16`, `u16` -> `U16`
-* `int16`, `i16` -> `I16`
-* `uint32`, `u32` -> `U32`
-* `float`, `f32`, `float32` -> `F32`
+### Column Mapping Customization
 
-**Normalization Logic:**
-* **Addresses**: Removes commas, extracts numbers, and converts hex (e.g., `0x9C40`) to decimal.
-* **Tags**: Lowercases and replaces non-alphanumeric characters with underscores. Ensures uniqueness.
-* **Scaling**: If a scale column is found, it is used as `CoefA`. Supports fractions like `1/10`.
+You can provide a custom JSON mapping file to override header auto-detection:
 
-### 5. Expected Output Format
-
-The output is a properly formatted WebdynSunPM definition CSV:
-
-```csv
-modbusRTU;Inverter;Huawei;SUN2000-5KTL;;;;;;;
-1;3;40001;U16;;Active Power;active_power;1.000000;0.000000;W;4
-2;3;40002;U16;;Voltage;voltage;0.100000;0.000000;V;4
-...
+```json
+{
+  "Address": "Modbus_Addr",
+  "Name": "Signal_Description",
+  "Type": "Format_Code",
+  "Unit": "Engineering_Unit"
+}
 ```
 
-### 6. Troubleshooting
-
-* **Problem: No registers extracted**
-  * Check if your file has clearly labeled columns (e.g., "Address", "Name", "Type").
-  * Run with `-v` (verbose) to see detailed processing information:
-    ```bash
-    python3 DefFileGenerator/main.py run yourfile.pdf --manufacturer "X" --model "Y" -v
-    ```
-  * Make sure tables in PDF are text-based (not scanned images).
-* **Problem: Wrong data types**
-  * Add a "Type" or "Data Type" column to your source file if missing. The tool guesses where possible.
-* **Problem: Incorrect addresses**
-  * Check if addresses are in the correctly matched column. The tool handles hex and decimal automatically.
-* **Problem: Missing units or scaling**
-  * These are optional, but if they exist, ensure the column headers contain "Unit", "Scale", or "Factor".
+Pass the mapping file via CLI: `--mapping custom_mapping.json`.
 
 ---
 
-## Input CSV Format (Intermediate Format)
+## 📊 Expected WebdynSunPM Output CSV Format
 
-If you manually create the input CSV for the `generate` command, use these columns:
+The output definition CSV conforms strictly to the WebdynSunPM header and row layout:
 
-| Target | Patterns |
-| :--- | :--- |
-| `Name` | Variable name (Required). |
-| `Tag` | Unique tag (auto-generated if empty). |
-| `RegisterType` | e.g., `Holding Register`, `Input Register`. |
-| `Address` | Register address (Dec, Hex like `0x10`, or `Addr_Len` for strings). |
-| `Type` | Data type (e.g., `U16`, `F32_WB`, `STR20`). |
-| `Factor` | Multiplier factor (supports fractions like `1/10`). |
-| `Offset` | Offset value (default 0). |
-| `Unit` | Unit of measurement. |
-| `ScaleFactor` | Power of 10 scaling ($CoefA = Factor \times 10^{{ScaleFactor}}$). |
+```csv
+modbusRTU;Inverter;Huawei;SUN2000-50KTL;;;;;;;
+1;3;40001;U16;;Active Power;active_power;1.000000;0.000000;W;4
+2;3;40002;U16;;Grid Voltage;grid_voltage;0.100000;0.000000;V;4
+```
+
+---
+
+## 🧪 Testing
+
+Run the full unit test suite using Python's standard `unittest` framework:
+
+```bash
+PYTHONPATH=. python3 -m unittest discover -s DefFileGenerator/tests
+```
+
+Run specialized stress and torture test batteries:
+```bash
+PYTHONPATH=. python3 DefFileGenerator/tests/run_torture_battery.py
+PYTHONPATH=. python3 DefFileGenerator/tests/stress_test_gen.py
+PYTHONPATH=. python3 DefFileGenerator/tests/run_gigantic_battery.py
+```

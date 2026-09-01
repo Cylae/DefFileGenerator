@@ -113,6 +113,10 @@ def generate_webdyn_definition(
         return False
 
 def main():
+    """
+    Main entry point for command-line execution and automated demo execution.
+    Runs an interactive demo if fewer than 4 arguments are supplied.
+    """
     setup_logging()
 
     # We can run a demo if no arguments are passed, or print usage

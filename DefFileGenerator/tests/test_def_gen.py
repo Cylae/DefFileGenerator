@@ -114,5 +114,15 @@ class TestGenerator(unittest.TestCase):
             self.assertIn("modbusRTU;Inverter", content)
         os.remove(out_def)
 
+    def test_sanitize_csv_field(self):
+        self.assertEqual(self.generator.sanitize_csv_field(None), "")
+        self.assertEqual(self.generator.sanitize_csv_field("Normal Text"), "Normal Text")
+        self.assertEqual(self.generator.sanitize_csv_field("=1+1"), "'=1+1")
+        self.assertEqual(self.generator.sanitize_csv_field("+cmd"), "'+cmd")
+        self.assertEqual(self.generator.sanitize_csv_field("@SUM"), "'@SUM")
+        self.assertEqual(self.generator.sanitize_csv_field("-10.5"), "-10.5")
+        self.assertEqual(self.generator.sanitize_csv_field("+25"), "+25")
+        self.assertEqual(self.generator.sanitize_csv_field("-text"), "'-text")
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+Single-Step Documentation to WebdynSunPM Converter Interface.
+
+Parses manufacturer register documentation (PDF, Excel, CSV, XML) and generates a
+validated WebdynSunPM definition CSV file in a single step.
+"""
+
 import argparse
 import sys
 import os
@@ -10,6 +17,12 @@ from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli(argv=None):
+    """
+    Parses CLI arguments and executes single-step extraction and generation.
+
+    Args:
+        argv: Optional list of command-line argument strings for programmatical testing.
+    """
     if argv is None:
         argv = sys.argv[1:]
     else:
