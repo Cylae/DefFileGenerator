@@ -123,6 +123,13 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.sanitize_csv_field("-10.5"), "-10.5")
         self.assertEqual(self.generator.sanitize_csv_field("+25"), "+25")
         self.assertEqual(self.generator.sanitize_csv_field("-text"), "'-text")
+        # Padded CSV injection test cases
+        self.assertEqual(self.generator.sanitize_csv_field("   =1+1"), "'   =1+1")
+        self.assertEqual(self.generator.sanitize_csv_field("  @SUM"), "'  @SUM")
+        self.assertEqual(self.generator.sanitize_csv_field("\t+cmd"), "'\t+cmd")
+        self.assertEqual(self.generator.sanitize_csv_field("   -text"), "'   -text")
+        self.assertEqual(self.generator.sanitize_csv_field("   -10.5"), "   -10.5")
+        self.assertEqual(self.generator.sanitize_csv_field("  +25"), "  +25")
 
 if __name__ == '__main__':
     unittest.main()
