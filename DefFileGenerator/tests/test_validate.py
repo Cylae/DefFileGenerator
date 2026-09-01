@@ -61,5 +61,16 @@ class TestValidateCSV(unittest.TestCase):
         # but since there are no valid rows, it might be trivial.
         self.assertTrue(self.generator.validate_csv(path))
 
+    def test_validate_csv_nonexistent_file(self):
+        path = os.path.join(self.temp_dir.name, 'nonexistent.csv')
+        self.assertFalse(self.generator.validate_csv(path))
+
+    def test_validate_csv_oserror_on_directory(self):
+        # Passing a directory path to validate_csv after existence check to trigger OSError during open
+        # We can mock os.path.exists to return True for the directory path so it attempts open()
+        dir_path = self.temp_dir.name
+        with unittest.mock.patch('os.path.exists', return_value=True):
+            self.assertFalse(self.generator.validate_csv(dir_path))
+
 if __name__ == '__main__':
     unittest.main()
