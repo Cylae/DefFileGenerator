@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+WebdynSunPM Definition File Generator Core Module.
+
+Provides register normalization, address range and overlap validation,
+coefficient calculation, data type parsing, and WebdynSunPM CSV definition generation.
+"""
+
 import argparse
 import csv
 import sys
@@ -13,7 +20,13 @@ from dataclasses import dataclass
 def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
     """
     Checks if an iterable is non-empty without fully consuming it.
-    Returns (has_data, original_iterator).
+
+    Args:
+        iterable: An optional iterable object to inspect.
+
+    Returns:
+        Tuple[bool, Iterator]: A tuple containing a boolean flag indicating if data exists,
+                               and an iterator yielding the full sequence without loss.
     """
     if iterable is None:
         return False, iter([])
@@ -38,6 +51,7 @@ _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
 @dataclass
 class GeneratorConfig:
+    """Configuration settings for WebdynSunPM definition file generation."""
     input_file: Optional[str] = None
     output: Optional[str] = None
     manufacturer: Optional[str] = None
@@ -50,6 +64,7 @@ class GeneratorConfig:
     address_offset: int = 0
 
 class Generator:
+    """Core generator class for processing Modbus register maps and building definition CSVs."""
     def __init__(self) -> None:
         self.register_type_map = {
             'coil': '1',
@@ -70,7 +85,11 @@ class Generator:
             return ""
         s = str(val)
         if s and s[0] in ('=', '+', '-', '@'):
-            return "'" + s
+            try:
+                float(s)
+                return s
+            except ValueError:
+                return "'" + s
         return s
 
     @staticmethod

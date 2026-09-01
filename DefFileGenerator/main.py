@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+Primary Command Line Interface for WebdynSunPM Definition Tool.
+
+Provides sub-commands (`run`, `extract`, `generate`, `validate`) to extract registers
+from documentation files, convert them into WebdynSunPM format, and validate output files.
+"""
+
 import argparse
 import sys
 import os
