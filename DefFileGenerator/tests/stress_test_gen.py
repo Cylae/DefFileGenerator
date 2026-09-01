@@ -1,14 +1,10 @@
 import csv
 import random
 import os
-import json
-import io
-from DefFileGenerator.def_gen import Generator
-from DefFileGenerator.extractor import Extractor
 
 try:
     import pandas as pd
-    from openpyxl import Workbook
+    from openpyxl import Workbook  # noqa: F401
     from reportlab.lib.pagesizes import letter
     from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
     HAS_LIBS = True

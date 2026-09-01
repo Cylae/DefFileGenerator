@@ -1,8 +1,6 @@
 import unittest
 import sys
 import os
-import io
-import json
 import csv
 from unittest.mock import patch
 

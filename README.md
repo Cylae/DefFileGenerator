@@ -11,7 +11,7 @@ It manages complex register transformations including hex/decimal address normal
 *   **Multi-Format Documentation Parser**: Extract register maps dynamically from PDF datasheets, Excel workbooks (all sheets or specific sheets), CSV files, or structured XML documents.
 *   **Security & Safety**:
     *   XXE-protected XML parsing using `defusedxml`.
-    *   CSV injection protection via `sanitize_csv_field` which escapes formula triggers (`=`, `@`, `+`, `-`) while preserving signed numbers (e.g. `-10.5`).
+    *   CSV injection protection via `sanitize_csv_field`. Escaping is decided on the first *significant* character, so whitespace-prefixed payloads (`\t=1+1`, NBSP), full-width punctuation (`＝`, `＋`, `－`, `＠`) and the DDE pipe (`|`) cannot slip through. Finite signed numbers (`-10.5`, `+25`, `1.5e3`) are preserved verbatim, while `-inf`, `+nan` and `-1_000` are escaped.
 *   **Advanced Modbus Address Handling**:
     *   Supports Decimal, Hexadecimal (`0x` prefix or `h` suffix), negative addresses, and compound string/bit formats (`address_startbit_length`).
     *   Apply custom integer `address_offset` to shift all extracted register addresses.
@@ -21,6 +21,9 @@ It manages complex register transformations including hex/decimal address normal
     *   Supports endianness suffixes (`_B`, `_W`, `_WB`).
     *   String register support (`STR<n>` or `STRING`) and bitfield definitions (`BITS`).
 *   **High Performance & Streaming**: Low $O(1)$ memory footprint using generator-based row streaming pipelines capable of processing thousands of registers efficiently.
+*   **Deterministic Output**: Identical input always yields a byte-identical definition file, independent of `PYTHONHASHSEED`.
+*   **Atomic Writes**: Output is staged in a temporary file and moved into place, so an interrupted run can never truncate an existing production definition.
+*   **Post-Generation Self-Check**: `run` validates the file it just produced and reports overlaps before the definition reaches a device (disable with `--no-validate`).
 *   **Unified CLI & Programmatic API**: Use via simple python module calls or command-line interfaces (`main.py`, `doc_to_webdyn.py`, `generate_webdyn_def.py`).
 
 ---
@@ -72,23 +75,39 @@ python3 generate_webdyn_def.py
 
 The primary CLI provides four distinct sub-commands (`run`, `extract`, `generate`, `validate`).
 
-#### End-to-End Extraction & Generation (`run`)
-Extract registers from any documentation file and output a validated WebdynSunPM definition CSV in a single command:
+#### Global Options
 
-```bash
+Verbosity flags work before or after the sub-command.
+
+| Flag | Effect |
+|--|--|
+| `-v`, `--verbose` | Debug-level logging |
+| `-q`, `--quiet` | Warnings and errors only |
+| `--version` | Print the tool version |
+| `--force` | Overwrite an existing output file (otherwise the run aborts) |
+
+Exit codes: `0` success, `1` error, `2` bad usage, `130` interrupted.
+
+#### End-to-End Extraction & Generation (`run`)
+
+```
 python3 DefFileGenerator/main.py run input_doc.pdf \
     --manufacturer "SolarEdge" \
     --model "SE10K" \
     -o solaredge_definition.csv
 ```
 
+The generated file is validated automatically; pass `--no-validate` to skip that pass. If the destination already exists the run aborts rather than overwriting it — add `--force` to replace it.
+
 #### Extract Registers to Intermediate CSV (`extract`)
-```bash
+
+```
 python3 DefFileGenerator/main.py extract datasheet.xlsx --sheet "Holding Registers" -o intermediate_registers.csv
 ```
 
 #### Generate Definition from Intermediate CSV (`generate`)
-```bash
+
+```
 python3 DefFileGenerator/main.py generate intermediate_registers.csv \
     --manufacturer "SMA" \
     --model "STP-5000TL" \
@@ -96,11 +115,12 @@ python3 DefFileGenerator/main.py generate intermediate_registers.csv \
 ```
 
 #### Validate Definition CSV (`validate`)
-```bash
+
+```
 python3 DefFileGenerator/main.py validate webdyn_definition.csv
 ```
 
----
+Add `--lenient` to report register address overlaps as warnings instead of failing.
 
 ### 3. Single-Step CLI (`doc_to_webdyn.py`)
 
@@ -149,6 +169,19 @@ Pass the mapping file via CLI: `--mapping custom_mapping.json`.
 
 ---
 
+## ⚙️ Supported Action Codes
+
+| Code | Meaning |
+|--|--|
+| `0` | Disabled |
+| `1` | Read/write |
+| `2` | Write-only |
+| `4` | Read-only |
+| `6`–`9` | Vendor-specific behaviours |
+| `10` | **Constant** — a statically declared value not polled over Modbus (firmware 5.2.02+) |
+
+Textual access hints are normalised automatically: `R`, `RO`, `read only` map to `4`; `RW`, `W`, `R/W`, `write only` map to `1`. Unrecognised codes fall back to the register class default (read-only for discrete and input registers, read/write otherwise).
+
 ## 📊 Expected WebdynSunPM Output CSV Format
 
 The output definition CSV conforms strictly to the WebdynSunPM header and row layout:
@@ -167,6 +200,15 @@ Run the full unit test suite using Python's standard `unittest` framework:
 
 ```bash
 PYTHONPATH=. python3 -m unittest discover -s DefFileGenerator/tests
+```
+
+The suite covers formula-injection payloads, atomic-write failure recovery, action-code parity, hash-seed determinism, and CLI ergonomics.
+
+Static analysis:
+
+```
+python3 -m ruff check . --select=E9,F63,F7,F82
+python3 -m ruff check DefFileGenerator/ --select F,B,E9
 ```
 
 Run specialized stress and torture test batteries:
