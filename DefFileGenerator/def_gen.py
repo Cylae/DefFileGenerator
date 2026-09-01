@@ -48,6 +48,22 @@ RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORE
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+_RE_STRING_DIGITS = re.compile(r'string\s*(\d+)')
+
+TYPE_SYNONYMS = (
+    (re.compile(r'unsigned integer 64|unsigned int 64|uint64'), 'U64'),
+    (re.compile(r'signed integer 64|signed int 64|int64'), 'I64'),
+    (re.compile(r'unsigned integer 32|unsigned int 32|uint32'), 'U32'),
+    (re.compile(r'signed integer 32|signed int 32|int32'), 'I32'),
+    (re.compile(r'unsigned integer 16|unsigned int 16|uint16'), 'U16'),
+    (re.compile(r'signed integer 16|signed int 16|int16'), 'I16'),
+    (re.compile(r'unsigned integer 8|unsigned int 8|uint8'), 'U8'),
+    (re.compile(r'signed integer 8|signed int 8|int8'), 'I8'),
+    (re.compile(r'float64|double'), 'F64'),
+    (re.compile(r'float32|float'), 'F32'),
+    (re.compile(r'string\s*(\d+)'), r'STR\1'),
+    (re.compile(r'string'), 'STRING'),
+)
 
 @dataclass
 class GeneratorConfig:
@@ -102,29 +118,14 @@ class Generator:
         elif any(x in t for x in ['_w', 'word']): suffix = '_W'
 
         # Handle "string 20" -> "STR20"
-        str_match = re.search(r'string\s*(\d+)', t)
+        str_match = _RE_STRING_DIGITS.search(t)
         if str_match:
             return f"STR{str_match.group(1)}{suffix}"
 
-        # Mapping ordered by specificity (longer strings first)
-        synonyms = [
-            (r'unsigned integer 64|unsigned int 64|uint64', 'U64'),
-            (r'signed integer 64|signed int 64|int64', 'I64'),
-            (r'unsigned integer 32|unsigned int 32|uint32', 'U32'),
-            (r'signed integer 32|signed int 32|int32', 'I32'),
-            (r'unsigned integer 16|unsigned int 16|uint16', 'U16'),
-            (r'signed integer 16|signed int 16|int16', 'I16'),
-            (r'unsigned integer 8|unsigned int 8|uint8', 'U8'),
-            (r'signed integer 8|signed int 8|int8', 'I8'),
-            (r'float64|double', 'F64'),
-            (r'float32|float', 'F32'),
-            (r'string\s*(\d+)', r'STR\1'),
-            (r'string', 'STRING'),
-        ]
-        for pattern, replacement in synonyms:
-            if re.search(pattern, t):
+        for pattern, replacement in TYPE_SYNONYMS:
+            if pattern.search(t):
                 if r'\1' in replacement:
-                    res = re.sub(pattern, replacement, t).upper()
+                    res = pattern.sub(replacement, t).upper()
                     return f"{res}{suffix}"
                 return f"{replacement}{suffix}"
 
