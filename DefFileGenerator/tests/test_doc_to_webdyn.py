@@ -74,6 +74,17 @@ class TestDocToWebdyn(unittest.TestCase):
                 self.assertTrue(any('An unexpected error occurred' in m for m in
                     log.output))
 
+    def test_doc_to_webdyn_unexpected_exception(self):
+        from doc_to_webdyn import main
+        with patch('doc_to_webdyn._run_cli', side_effect=RuntimeError(
+            'Unexpected failure')):
+            with self.assertLogs(level='ERROR') as log:
+                with self.assertRaises(SystemExit) as cm:
+                    main()
+                self.assertEqual(cm.exception.code, 1)
+                self.assertTrue(any('An unexpected error occurred: Unexpected failure' in m for m in
+                    log.output))
+
     def test_doc_to_webdyn_main_interrupt(self):
         from doc_to_webdyn import main
         with patch('doc_to_webdyn._run_cli', side_effect=KeyboardInterrupt()):
