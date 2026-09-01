@@ -115,5 +115,14 @@ class TestCliEntryPoints(unittest.TestCase):
         with patch.object(sys, 'argv', test_args):
             main()
 
+    def test_def_file_gen_main_run_empty_extraction(self):
+        from DefFileGenerator.main import main
+        test_args = ["main.py", "run", self.csv_file, "--manufacturer", "Test", "--model", "Test"]
+        with patch("DefFileGenerator.main._perform_extraction", return_value=[]):
+            with patch.object(sys, 'argv', test_args):
+                with self.assertRaises(SystemExit) as cm:
+                    main()
+                self.assertEqual(cm.exception.code, 1)
+
 if __name__ == "__main__":
     unittest.main()
