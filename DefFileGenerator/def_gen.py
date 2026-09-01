@@ -480,6 +480,35 @@ class Generator:
             return False
 
     @staticmethod
+    def _format_header_row(protocol: str, category: str, manufacturer: str, model: str, forced_write: str = '') -> List[str]:
+        """Constructs and sanitizes the header row for WebdynSunPM CSV format."""
+        return [
+            Generator.sanitize_csv_field(protocol),
+            Generator.sanitize_csv_field(category),
+            Generator.sanitize_csv_field(manufacturer),
+            Generator.sanitize_csv_field(model),
+            Generator.sanitize_csv_field(forced_write),
+            '', '', '', '', '', ''
+        ]
+
+    @staticmethod
+    def _format_data_row(index: int, row: Dict[str, Any]) -> List[str]:
+        """Formats and sanitizes a single register data row for WebdynSunPM CSV format."""
+        return [
+            str(index),
+            Generator.sanitize_csv_field(row['Info1']),
+            Generator.sanitize_csv_field(row['Info2']),
+            Generator.sanitize_csv_field(row['Info3']),
+            Generator.sanitize_csv_field(row['Info4']),
+            Generator.sanitize_csv_field(row['Name']),
+            Generator.sanitize_csv_field(row['Tag']),
+            Generator.sanitize_csv_field(row['CoefA']),
+            Generator.sanitize_csv_field(row['CoefB']),
+            Generator.sanitize_csv_field(row['Unit']),
+            Generator.sanitize_csv_field(row['Action'])
+        ]
+
+    @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
@@ -494,32 +523,14 @@ class Generator:
             else:
                 outfile = output
 
-            header_row = [
-                Generator.sanitize_csv_field(protocol),
-                Generator.sanitize_csv_field(category),
-                Generator.sanitize_csv_field(manufacturer),
-                Generator.sanitize_csv_field(model),
-                Generator.sanitize_csv_field(forced_write),
-                '', '', '', '', '', ''
-            ]
+            header_row = Generator._format_header_row(protocol, category, manufacturer, model, forced_write)
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
             total = 0
             for index, row in enumerate(processed_rows, start=1):
-                writer.writerow([
-                    str(index),
-                    Generator.sanitize_csv_field(row['Info1']),
-                    Generator.sanitize_csv_field(row['Info2']),
-                    Generator.sanitize_csv_field(row['Info3']),
-                    Generator.sanitize_csv_field(row['Info4']),
-                    Generator.sanitize_csv_field(row['Name']),
-                    Generator.sanitize_csv_field(row['Tag']),
-                    Generator.sanitize_csv_field(row['CoefA']),
-                    Generator.sanitize_csv_field(row['CoefB']),
-                    Generator.sanitize_csv_field(row['Unit']),
-                    Generator.sanitize_csv_field(row['Action'])
-                ])
+                data_row = Generator._format_data_row(index, row)
+                writer.writerow(data_row)
                 type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1
                 total += 1
 

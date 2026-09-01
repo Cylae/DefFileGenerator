@@ -124,5 +124,48 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.sanitize_csv_field("+25"), "+25")
         self.assertEqual(self.generator.sanitize_csv_field("-text"), "'-text")
 
+    def test_format_header_row(self):
+        header = Generator._format_header_row('modbusRTU', 'Inverter', 'ACME', 'ModelX', 'forced')
+        expected = ['modbusRTU', 'Inverter', 'ACME', 'ModelX', 'forced', '', '', '', '', '', '']
+        self.assertEqual(header, expected)
+
+    def test_format_data_row(self):
+        row = {
+            'Info1': '3',
+            'Info2': '40001',
+            'Info3': 'U16',
+            'Info4': '',
+            'Name': 'Voltage',
+            'Tag': 'voltage',
+            'CoefA': '1.000000',
+            'CoefB': '0.000000',
+            'Unit': 'V',
+            'Action': '4'
+        }
+        data_row = Generator._format_data_row(1, row)
+        expected = ['1', '3', '40001', 'U16', '', 'Voltage', 'voltage', '1.000000', '0.000000', 'V', '4']
+        self.assertEqual(data_row, expected)
+
+    def test_write_output_csv_io(self):
+        import io
+        buf = io.StringIO()
+        rows = [{
+            'Info1': '3',
+            'Info2': '40001',
+            'Info3': 'U16',
+            'Info4': '',
+            'Name': 'Active Power',
+            'Tag': 'active_power',
+            'CoefA': '1.000000',
+            'CoefB': '0.000000',
+            'Unit': 'W',
+            'Action': '4'
+        }]
+        Generator.write_output_csv(buf, rows, 'ACME', 'ModelX')
+        output = buf.getvalue()
+        lines = output.strip().split('\n')
+        self.assertEqual(lines[0], 'modbusRTU;Inverter;ACME;ModelX;;;;;;;')
+        self.assertEqual(lines[1], '1;3;40001;U16;;Active Power;active_power;1.000000;0.000000;W;4')
+
 if __name__ == '__main__':
     unittest.main()
