@@ -1,17 +1,14 @@
 import unittest
 import os
-import csv
-import json
-import itertools
 
 try:
-    from openpyxl import Workbook
+    from openpyxl import Workbook  # noqa: F401
     HAS_OPENPYXL = True
 except ImportError:
     HAS_OPENPYXL = False
 
 try:
-    from reportlab.pdfgen import canvas
+    from reportlab.pdfgen import canvas  # noqa: F401
     from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
     from reportlab.lib.pagesizes import letter
     HAS_REPORTLAB = True

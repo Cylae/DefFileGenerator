@@ -1,5 +1,3 @@
-from unittest.mock import patch
-from DefFileGenerator.def_gen import run_generator, GeneratorConfig
 import unittest
 import logging
 from DefFileGenerator.def_gen import Generator
@@ -123,6 +121,119 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.sanitize_csv_field("-10.5"), "-10.5")
         self.assertEqual(self.generator.sanitize_csv_field("+25"), "+25")
         self.assertEqual(self.generator.sanitize_csv_field("-text"), "'-text")
+
+    def test_sanitize_csv_field_whitespace_prefixed_payloads(self):
+        """Leading whitespace stripped by spreadsheet clients must not bypass escaping."""
+        for payload in ("\t=1+1", "\r=1+1", "\n=1+1", " =HYPERLINK(\"x\")",
+                        "\u00a0=1+1", "\x0b=1+1", "\x0c=1+1"):
+            with self.subTest(payload=payload):
+                self.assertEqual(self.generator.sanitize_csv_field(payload), "'" + payload)
+
+    def test_sanitize_csv_field_fullwidth_and_pipe_triggers(self):
+        """Full-width triggers and DDE pipe payloads are escaped."""
+        for payload in ("\uff1d1+1", "\uff0bSUM", "\uff0d1", "\uff20SUM", "|dde"):
+            with self.subTest(payload=payload):
+                self.assertEqual(self.generator.sanitize_csv_field(payload), "'" + payload)
+
+    def test_sanitize_csv_field_preserves_finite_numbers(self):
+        """Genuine signed numbers stay verbatim; non-finite literals do not."""
+        for value in ("-10.5", "+25", "-5", "1.5e3", "-1.5E-3", "40001", "+.5"):
+            with self.subTest(value=value):
+                self.assertEqual(self.generator.sanitize_csv_field(value), value)
+        for value in ("-inf", "+nan", "-Infinity", "-1_000", " -10.5"):
+            with self.subTest(value=value):
+                self.assertEqual(self.generator.sanitize_csv_field(value), "'" + value)
+
+    def test_action_code_10_constant_preserved(self):
+        """FW 5.2.02 'Constant' variables use action code 10 and must survive."""
+        rows = [{'Name': 'Rated Power', 'Tag': 'rated_power', 'RegisterType': '3',
+                 'Address': '1', 'Type': 'U32', 'Action': '10'}]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '10')
+
+    def test_unknown_action_still_falls_back(self):
+        """An unrecognised action code keeps the register-class default."""
+        rows = [
+            {'Name': 'A', 'Tag': 'a', 'RegisterType': '3', 'Address': '10', 'Type': 'U16', 'Action': '99'},
+            {'Name': 'B', 'Tag': 'b', 'RegisterType': '4', 'Address': '20', 'Type': 'U16', 'Action': 'bogus'},
+        ]
+        processed = list(self.generator.process_rows(rows))
+        self.assertEqual(processed[0]['Action'], '1')
+        self.assertEqual(processed[1]['Action'], '4')
+
+    def test_normalize_type_precedence_is_stable(self):
+        """Specificity ordering of the synonym table must not regress."""
+        cases = {
+            'floatdouble': 'F64', 'double': 'F64', 'float': 'F32',
+            'uint16': 'U16', 'signed integer 64': 'I64',
+            'string 20': 'STR20', 'string': 'STRING',
+            'uint32_wb': 'U32_WB', 'float 32 swap': 'F32_WB',
+            'int8': 'I8', '': 'U16',
+        }
+        for raw, expected in cases.items():
+            with self.subTest(raw=raw):
+                self.assertEqual(self.generator.normalize_type(raw), expected)
+
+    def test_normalize_address_leading_zero_contract(self):
+        """Leading-zero tokens keep their legacy hex interpretation."""
+        self.assertEqual(self.generator.normalize_address_val('0021'), '33')
+        self.assertEqual(self.generator.normalize_address_val('012'), '18')
+        self.assertEqual(self.generator.normalize_address_val('21'), '21')
+        self.assertEqual(self.generator.normalize_address_val('-09'), '-09')
+
+    def test_write_output_csv_is_atomic_on_failure(self):
+        """A mid-stream error must not clobber an existing definition file."""
+        import glob
+        import os
+        import tempfile
+        fd, target = tempfile.mkstemp(suffix='.csv')
+        os.close(fd)
+        try:
+            with open(target, 'w', encoding='utf-8') as f:
+                f.write('EXISTING PRODUCTION DEFINITION\n')
+
+            def exploding_rows():
+                yield {'Info1': '3', 'Info2': '1', 'Info3': 'U16', 'Info4': '',
+                       'Name': 'a', 'Tag': 'a', 'CoefA': '1.000000',
+                       'CoefB': '0.000000', 'Unit': 'V', 'Action': '4'}
+                raise RuntimeError('simulated extractor failure')
+
+            with self.assertRaises(RuntimeError):
+                Generator.write_output_csv(target, exploding_rows(), 'M', 'X')
+
+            with open(target, encoding='utf-8') as f:
+                self.assertEqual(f.read().strip(), 'EXISTING PRODUCTION DEFINITION')
+            directory = os.path.dirname(target)
+            self.assertEqual(glob.glob(os.path.join(directory, '.webdyn-*')), [])
+        finally:
+            os.unlink(target)
+
+    def test_write_output_csv_replaces_on_success(self):
+        """The happy path still fully replaces the target file."""
+        import os
+        import tempfile
+        fd, target = tempfile.mkstemp(suffix='.csv')
+        os.close(fd)
+        try:
+            rows = [{'Info1': '3', 'Info2': '40001', 'Info3': 'U16', 'Info4': '',
+                     'Name': 'Active Power', 'Tag': 'active_power',
+                     'CoefA': '1.000000', 'CoefB': '0.000000', 'Unit': 'W', 'Action': '4'}]
+            Generator.write_output_csv(target, iter(rows), 'Huawei', 'SUN2000')
+            with open(target, encoding='utf-8-sig') as f:
+                content = f.read()
+            self.assertIn('modbusRTU;Inverter;Huawei;SUN2000', content)
+            self.assertIn('1;3;40001;U16;;Active Power;active_power', content)
+        finally:
+            os.unlink(target)
+
+    def test_get_register_count_cache_consistency(self):
+        """Memoised width lookup agrees with per-call STRING sizing."""
+        self.assertEqual(self.generator.get_register_count('U16', '1'), 1)
+        self.assertEqual(self.generator.get_register_count('U16', '2'), 1)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000_10'), 5)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000_20'), 10)
+        self.assertEqual(self.generator.get_register_count('STRING', '30000'), 0)
+        self.assertEqual(self.generator.get_register_count('U64', '1'), 4)
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,9 +11,7 @@ import csv
 import json
 import logging
 import os
-import re
 import sys
-import io
 import itertools
 import zipfile
 from typing import Dict, List, Any, Iterator, Optional, Iterable, Union, Tuple
@@ -100,6 +98,13 @@ class Extractor:
         'Length': ['length', 'len', 'size', 'count', 'quantity'],
         'StartBit': ['startbit', 'bit offset', 'bit', 'start']
     }
+
+    # Detection is ordered most-specific-first so that greedy substring matches
+    # (e.g. 'offset' for both Address and Offset) resolve deterministically.
+    DETECTION_ORDER = (
+        'RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action',
+        'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit',
+    )
 
     def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
@@ -293,9 +298,15 @@ class Extractor:
 
             if not buffer: continue
 
-            all_keys = set()
-            for row in buffer:
-                all_keys.update(row.keys())
+            # Insertion-ordered, de-duplicated column list. A plain set was
+            # used here previously, and because str hashing is randomised per
+            # interpreter (PYTHONHASHSEED), detection could bind a different
+            # source column between runs whenever two targets share a pattern
+            # (e.g. 'offset' matches both Address and Offset). That made the
+            # generated definition non-reproducible; ordering fixes it.
+            all_keys = list(dict.fromkeys(
+                key for row in buffer for key in row.keys()
+            ))
 
             col_map = {}
             used_src_cols = set()
@@ -305,30 +316,30 @@ class Extractor:
                     col_map[target] = source
                     used_src_cols.add(source)
 
-            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
+            # Lower-case each source column exactly once instead of once per
+            # (target, pattern) probe: this is O(K) rather than O(K * T * P).
+            lowered = {src: str(src).lower().strip() for src in all_keys}
 
-            for target in detection_order:
-                if target in col_map: continue
-                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in all_keys:
-                    if src_col in used_src_cols: continue
-                    s_low = str(src_col).lower().strip()
-                    if s_low in patterns:
-                        col_map[target] = src_col
-                        used_src_cols.add(src_col)
-                        break
+            # Pass 1: exact header match. Pass 2: substring heuristic.
+            for exact_pass in (True, False):
+                for target in self.DETECTION_ORDER:
+                    if target in col_map:
+                        continue
+                    patterns = self.COLUMN_MAPPING.get(target, (target.lower(),))
+                    for src_col in all_keys:
+                        if src_col in used_src_cols:
+                            continue
+                        s_low = lowered[src_col]
+                        matched = (
+                            s_low in patterns if exact_pass
+                            else any(pat in s_low for pat in patterns)
+                        )
+                        if matched:
+                            col_map[target] = src_col
+                            used_src_cols.add(src_col)
+                            break
 
-            for target in detection_order:
-                if target in col_map: continue
-                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                for src_col in all_keys:
-                    if src_col in used_src_cols: continue
-                    if any(p in str(src_col).lower() for p in patterns):
-                        col_map[target] = src_col
-                        used_src_cols.add(src_col)
-                        break
-
-            def process_row(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+            def process_row(r: Dict[str, Any], col_map: Dict[str, Any] = col_map) -> Optional[Dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): return None
 
@@ -358,13 +369,10 @@ class Extractor:
                     new_row['RegisterType'] = 'Holding Register'
                 return new_row
 
-            for row in buffer:
+            for row in itertools.chain(buffer, iterator):
                 processed = process_row(row)
-                if processed: yield processed
-
-            for row in iterator:
-                processed = process_row(row)
-                if processed: yield processed
+                if processed is not None:
+                    yield processed
 
 
 def main():

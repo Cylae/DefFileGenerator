@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "def-file-generator"
-version = "0.1.0"
+version = "0.2.1"
 description = "Extract Modbus register maps and generate WebdynSunPM definition CSV files."
 readme = "README.md"
 requires-python = ">=3.9"

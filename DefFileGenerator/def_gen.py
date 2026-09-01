@@ -7,13 +7,16 @@ coefficient calculation, data type parsing, and WebdynSunPM CSV definition gener
 """
 
 import argparse
+import bisect
 import csv
 import sys
+import tempfile
 import logging
 import re
 import math
 import itertools
-from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
+from functools import lru_cache
+from typing import Dict, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
 
@@ -49,6 +52,61 @@ RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECAS
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
+# --- CSV / formula-injection hardening -------------------------------------
+# A spreadsheet strips leading whitespace before deciding whether a cell is a
+# formula, and normalises full-width punctuation to ASCII. Guarding only the
+# raw first byte is therefore bypassable (cf. OWASP WSTG, CVE-2021-41270).
+_CSV_LEADING_WHITESPACE = " \t\r\n\x0b\x0c\u00a0"
+_CSV_FORMULA_TRIGGERS = frozenset(
+    "=+-@|\t\r\n\x0b\x0c\u00a0\uff1d\uff0b\uff0d\uff20"
+)
+_RE_SIGNED_NUMBER = re.compile(r'^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$')
+
+# --- Type normalisation fast paths -----------------------------------------
+_RE_TYPE_STRING_N = re.compile(r'string\s*(\d+)')
+
+# Synonym table ordered by specificity. The first pattern that matches anywhere
+# in the token wins, so "floatdouble" must resolve to F64 via the float64|double
+# rule before the float32|float rule is considered. Patterns are precompiled
+# once here instead of re-resolved from re's internal cache on every call.
+_TYPE_SYNONYMS = tuple(
+    (re.compile(pattern), code)
+    for pattern, code in (
+        (r'unsigned integer 64|unsigned int 64|uint64', 'U64'),
+        (r'signed integer 64|signed int 64|int64', 'I64'),
+        (r'unsigned integer 32|unsigned int 32|uint32', 'U32'),
+        (r'signed integer 32|signed int 32|int32', 'I32'),
+        (r'unsigned integer 16|unsigned int 16|uint16', 'U16'),
+        (r'signed integer 16|signed int 16|int16', 'I16'),
+        (r'unsigned integer 8|unsigned int 8|uint8', 'U8'),
+        (r'signed integer 8|signed int 8|int8', 'I8'),
+        (r'float64|double', 'F64'),
+        (r'float32|float', 'F32'),
+        (r'string\s*(\d+)', None),
+        (r'string', 'STRING'),
+    )
+)
+
+_SUFFIX_WB = ('_wb', 'swap', 'big endian')
+_SUFFIX_B = ('_b', 'big')
+_SUFFIX_W = ('_w', 'word')
+
+# Leading-zero decimals ("0021") are deliberately NOT fast-pathed: int(x, 0)
+# rejects them, and the legacy contract falls through to hex interpretation.
+_RE_PLAIN_DECIMAL = re.compile(r'^-?(0|[1-9]\d*)$')
+_RE_HEX_WORD = re.compile(r'^[0-9A-Fa-f]+$')
+_RE_THOUSANDS = re.compile(r'(?<=\d),(?=\d{3}(?!\d))')
+
+_TYPE_CACHE_SIZE = 4096
+
+_ACTION_READ = frozenset(('R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4'))
+_ACTION_WRITE = frozenset(
+    ('RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W',
+     'WO', 'WRITE-ONLY', 'WRITE ONLY', '1')
+)
+_READONLY_INFO1 = frozenset(('2', '4'))
+_NUMERIC_INFO1 = frozenset(('1', '2', '3', '4'))
+
 @dataclass
 class GeneratorConfig:
     """Configuration settings for WebdynSunPM definition file generation."""
@@ -76,64 +134,90 @@ class Generator:
             'input register': '4',
             'input': '4'
         }
-        self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
+        # Action codes accepted by WebdynSunPM. '10' designates a 'Constant'
+        # variable, introduced in firmware 5.2.02: a value not read from the
+        # device over Modbus but declared statically in the definition file.
+        self.allowed_actions = frozenset(
+            ('0', '1', '2', '4', '6', '7', '8', '9', '10')
+        )
 
     @staticmethod
     def sanitize_csv_field(val: Any) -> str:
-        """Precludes CSV injection by prepending an apostrophe if needed."""
+        """
+        Precludes CSV/formula injection by prepending an apostrophe when needed.
+
+        A spreadsheet client evaluates a cell as a formula when its first
+        *significant* character is a trigger. Leading whitespace (space, tab,
+        CR, LF, VT, FF, NBSP) is stripped by the client before that test, and
+        full-width Unicode punctuation is normalised to ASCII, so both classes
+        of prefix are treated as triggers here. The DDE pipe is included per
+        OWASP guidance.
+
+        Genuine finite signed numbers (``-10.5``, ``+25``, ``1.5e3``) are
+        preserved verbatim so negative coefficients and signed Modbus
+        addresses stay usable downstream. Non-finite literals (``-inf``,
+        ``+nan``) and underscore-grouped forms (``-1_000``) are escaped: they
+        are accepted by ``float()`` but are not valid definition payloads.
+        """
         if val is None:
             return ""
         s = str(val)
-        if s and s[0] in ('=', '+', '-', '@'):
+        if not s:
+            return s
+        stripped = s.lstrip(_CSV_LEADING_WHITESPACE)
+        if s[0] not in _CSV_FORMULA_TRIGGERS and stripped[:1] not in _CSV_FORMULA_TRIGGERS:
+            return s
+        if s == stripped and _RE_SIGNED_NUMBER.match(s):
             try:
-                float(s)
-                return s
+                if math.isfinite(float(s)):
+                    return s
             except ValueError:
-                return "'" + s
-        return s
+                pass
+        return "'" + s
 
     @staticmethod
-    def normalize_type(dtype):
-        if not dtype: return 'U16'
-        t = str(dtype).lower().strip()
+    @lru_cache(maxsize=_TYPE_CACHE_SIZE)
+    def _normalize_type_cached(t: str) -> str:
+        """Pure, memoised core of :meth:`normalize_type` keyed on the lowered token."""
         suffix = ''
-        if any(x in t for x in ['_wb', 'swap', 'big endian']): suffix = '_WB'
-        elif any(x in t for x in ['_b', 'big']): suffix = '_B'
-        elif any(x in t for x in ['_w', 'word']): suffix = '_W'
+        if any(x in t for x in _SUFFIX_WB):
+            suffix = '_WB'
+        elif any(x in t for x in _SUFFIX_B):
+            suffix = '_B'
+        elif any(x in t for x in _SUFFIX_W):
+            suffix = '_W'
 
-        # Handle "string 20" -> "STR20"
-        str_match = re.search(r'string\s*(\d+)', t)
+        str_match = _RE_TYPE_STRING_N.search(t)
         if str_match:
             return f"STR{str_match.group(1)}{suffix}"
 
-        # Mapping ordered by specificity (longer strings first)
-        synonyms = [
-            (r'unsigned integer 64|unsigned int 64|uint64', 'U64'),
-            (r'signed integer 64|signed int 64|int64', 'I64'),
-            (r'unsigned integer 32|unsigned int 32|uint32', 'U32'),
-            (r'signed integer 32|signed int 32|int32', 'I32'),
-            (r'unsigned integer 16|unsigned int 16|uint16', 'U16'),
-            (r'signed integer 16|signed int 16|int16', 'I16'),
-            (r'unsigned integer 8|unsigned int 8|uint8', 'U8'),
-            (r'signed integer 8|signed int 8|int8', 'I8'),
-            (r'float64|double', 'F64'),
-            (r'float32|float', 'F32'),
-            (r'string\s*(\d+)', r'STR\1'),
-            (r'string', 'STRING'),
-        ]
-        for pattern, replacement in synonyms:
-            if re.search(pattern, t):
-                if r'\1' in replacement:
-                    res = re.sub(pattern, replacement, t).upper()
-                    return f"{res}{suffix}"
-                return f"{replacement}{suffix}"
+        for pattern, code in _TYPE_SYNONYMS:
+            m = pattern.search(t)
+            if m is None:
+                continue
+            if code is None:
+                return f"STR{m.group(1)}{suffix}"
+            return f"{code}{suffix}"
 
-        # Handle STR<n> explicitly if it comes in as raw type
         if t.startswith('str') and t[3:].isdigit():
             return t.upper()
 
-        t = _CLEAN_TYPE_RE.sub('', t)
-        return t.upper() if t else 'U16'
+        cleaned = _CLEAN_TYPE_RE.sub('', t)
+        return cleaned.upper() if cleaned else 'U16'
+
+    @staticmethod
+    def normalize_type(dtype: Any) -> str:
+        """
+        Normalises a free-form data type token to its WebdynSunPM code.
+
+        Recognises vendor spellings (``unsigned int 32``, ``float64``),
+        endianness hints (``_wb``, ``swap``, ``big endian``, ``word``) and
+        sized strings (``string 20`` -> ``STR20``). Results are memoised
+        because register maps reuse very few distinct tokens across many rows.
+        """
+        if not dtype:
+            return 'U16'
+        return Generator._normalize_type_cached(str(dtype).lower().strip())
 
     @staticmethod
     def validate_type(dtype: str) -> bool:
@@ -155,31 +239,47 @@ class Generator:
         return False
 
     @staticmethod
-    def normalize_address_val(addr_part: Any) -> str:
-        """Converts a single address part (possibly hex) to decimal string."""
-        addr_part = str(addr_part).strip()
-        addr_part = re.sub(r'(?<=\d),(?=\d{3}(?!\d))', '', addr_part)
-        if not addr_part: return ""
-        if addr_part.lower().startswith('0x'):
-            try: return str(int(addr_part, 16))
-            except ValueError: return addr_part
-        elif addr_part.lower().endswith('h'):
+    @lru_cache(maxsize=_TYPE_CACHE_SIZE)
+    def _normalize_address_cached(addr_part: str) -> str:
+        """Pure, memoised core of :meth:`normalize_address_val`."""
+        if ',' in addr_part:
+            addr_part = _RE_THOUSANDS.sub('', addr_part)
+        if not addr_part:
+            return ""
+        if _RE_PLAIN_DECIMAL.match(addr_part):
+            return str(int(addr_part))
+        low = addr_part.lower()
+        if low.startswith('0x'):
+            try:
+                return str(int(addr_part, 16))
+            except ValueError:
+                return addr_part
+        if low.endswith('h'):
             try:
                 return str(int(addr_part[:-1], 16))
             except ValueError:
                 return addr_part
-
-        # Handle decimal (including negative)
         try:
             return str(int(addr_part, 0))
         except ValueError:
             pass
-
-        # If it's a raw hex word (e.g. "A0")
-        if re.match(r'^[0-9A-Fa-f]+$', addr_part):
-            try: return str(int(addr_part, 16))
-            except ValueError: return addr_part
+        if _RE_HEX_WORD.match(addr_part):
+            try:
+                return str(int(addr_part, 16))
+            except ValueError:
+                return addr_part
         return addr_part
+
+    @staticmethod
+    def normalize_address_val(addr_part: Any) -> str:
+        """
+        Converts one address component to its canonical decimal string.
+
+        Accepts decimal, ``0x``-prefixed hex, ``h``-suffixed hex, bare hex
+        words, negative values, and thousands-separated digits. Unparseable
+        input is returned unchanged so the caller's validator can reject it.
+        """
+        return Generator._normalize_address_cached(str(addr_part).strip())
 
     @staticmethod
     def validate_address(address: str, dtype: str, strict: bool = True) -> bool:
@@ -213,17 +313,39 @@ class Generator:
         return True
 
     @staticmethod
-    def get_register_count(dtype: str, address: str) -> int:
-        dtype_upper = dtype.upper()
-        if RE_COUNT_16_8.match(dtype_upper): return 1
-        elif RE_COUNT_32.match(dtype_upper): return 2
-        elif RE_COUNT_64.match(dtype_upper): return 4
-        elif dtype_upper == 'MAC': return 3
-        elif dtype_upper == 'IPV6': return 8
-        elif dtype_upper == 'STRING':
-            try: return math.ceil(int(address.split('_')[1]) / 2)
-            except (IndexError, ValueError): return 0
+    @lru_cache(maxsize=_TYPE_CACHE_SIZE)
+    def _register_count_for_type(dtype_upper: str) -> Optional[int]:
+        """Memoised width lookup for non-STRING types; ``None`` means STRING."""
+        if RE_COUNT_16_8.match(dtype_upper):
+            return 1
+        if RE_COUNT_32.match(dtype_upper):
+            return 2
+        if RE_COUNT_64.match(dtype_upper):
+            return 4
+        if dtype_upper == 'MAC':
+            return 3
+        if dtype_upper == 'IPV6':
+            return 8
+        if dtype_upper == 'STRING':
+            return None
         return 1
+
+    @staticmethod
+    def get_register_count(dtype: str, address: str) -> int:
+        """
+        Returns how many 16-bit Modbus registers a value of ``dtype`` occupies.
+
+        STRING widths depend on the compound address suffix (``<addr>_<len>``)
+        and are computed per call; all other widths are memoised on the type.
+        """
+        dtype_upper = dtype.upper()
+        count = Generator._register_count_for_type(dtype_upper)
+        if count is not None:
+            return count
+        try:
+            return math.ceil(int(address.split('_')[1]) / 2)
+        except (IndexError, ValueError):
+            return 0
 
     @staticmethod
     def _parse_numeric(val: Any, default: float = 0.0) -> float:
@@ -290,7 +412,7 @@ class Generator:
             return '3'
         if lt in self.register_type_map:
             return self.register_type_map[lt]
-        elif str(reg_type_str).strip() in ['1', '2', '3', '4']:
+        elif str(reg_type_str).strip() in _NUMERIC_INFO1:
             return str(reg_type_str).strip()
 
         if line_num:
@@ -314,7 +436,6 @@ class Generator:
 
             is_bits = (dtype.upper() == 'BITS')
 
-            import bisect
             idx = bisect.bisect_left(intervals, (start_addr, -1, -1, '', ''))
 
             # Check to the right
@@ -365,7 +486,8 @@ class Generator:
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         seen_names, seen_tags, address_usage, warned_lines = {}, {}, {}, set()
         for line_num, row in enumerate(rows, start=2):
-            if not any(v for v in row.values() if v): continue
+            if not any(row.values()):
+                continue
             norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
             name, tag, reg_type_str, address = norm_row.get('name', ''), norm_row.get('tag', ''), norm_row.get('registertype', ''), norm_row.get('address', '')
             dtype_raw, factor, offset, unit = norm_row.get('type', ''), norm_row.get('factor', ''), norm_row.get('offset', ''), norm_row.get('unit', '')
@@ -391,18 +513,16 @@ class Generator:
             self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization with intelligent defaulting
-            act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '4' if info1 in ['2', '4'] else '1'
-            elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
+            # Action normalisation with intelligent defaulting.
+            act_str = action.upper()
+            if act_str in _ACTION_READ:
                 norm_action = '4'
-            elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
+            elif act_str in _ACTION_WRITE:
                 norm_action = '1'
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = '4' if info1 in ['2', '4'] else '1'
+                norm_action = '4' if info1 in _READONLY_INFO1 else '1'
 
             yield {
                 'Info1': info1,
@@ -482,55 +602,67 @@ class Generator:
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
-        """Centralized method to write the WebdynSunPM CSV format."""
+        """
+        Writes the WebdynSunPM definition CSV.
+
+        When ``output`` is a path the file is written atomically: content goes
+        to a temporary file on the same filesystem and is then moved into
+        place, so a crash or a mid-stream error can never leave a truncated
+        CSV where a valid production definition used to be. Streams and
+        ``None`` (stdout) are written directly.
+        """
         type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
         type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
-        outfile = None
-        try:
-            if isinstance(output, str):
-                outfile = open(output, 'w', newline='', encoding='utf-8-sig')
-            elif output is None:
-                outfile = sys.stdout
-            else:
-                outfile = output
+        sanitize = Generator.sanitize_csv_field
 
-            header_row = [
-                Generator.sanitize_csv_field(protocol),
-                Generator.sanitize_csv_field(category),
-                Generator.sanitize_csv_field(manufacturer),
-                Generator.sanitize_csv_field(model),
-                Generator.sanitize_csv_field(forced_write),
-                '', '', '', '', '', ''
-            ]
-            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-            writer.writerow(header_row)
-
-            total = 0
+        def _emit(handle: Any) -> int:
+            writer = csv.writer(handle, delimiter=';', lineterminator='\n')
+            writer.writerow([
+                sanitize(protocol), sanitize(category), sanitize(manufacturer),
+                sanitize(model), sanitize(forced_write), '', '', '', '', '', ''
+            ])
+            written = 0
             for index, row in enumerate(processed_rows, start=1):
                 writer.writerow([
-                    str(index),
-                    Generator.sanitize_csv_field(row['Info1']),
-                    Generator.sanitize_csv_field(row['Info2']),
-                    Generator.sanitize_csv_field(row['Info3']),
-                    Generator.sanitize_csv_field(row['Info4']),
-                    Generator.sanitize_csv_field(row['Name']),
-                    Generator.sanitize_csv_field(row['Tag']),
-                    Generator.sanitize_csv_field(row['CoefA']),
-                    Generator.sanitize_csv_field(row['CoefB']),
-                    Generator.sanitize_csv_field(row['Unit']),
-                    Generator.sanitize_csv_field(row['Action'])
+                    str(index), sanitize(row['Info1']), sanitize(row['Info2']),
+                    sanitize(row['Info3']), sanitize(row['Info4']), sanitize(row['Name']),
+                    sanitize(row['Tag']), sanitize(row['CoefA']), sanitize(row['CoefB']),
+                    sanitize(row['Unit']), sanitize(row['Action']),
                 ])
-                type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1
-                total += 1
+                info1 = row['Info1']
+                type_counts[info1] = type_counts.get(info1, 0) + 1
+                written += 1
+            return written
 
-            summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
+        total = 0
+        try:
+            if isinstance(output, str):
+                directory = os.path.dirname(os.path.abspath(output)) or '.'
+                tmp_fd, tmp_path = tempfile.mkstemp(
+                    dir=directory, prefix='.webdyn-', suffix='.csv.tmp'
+                )
+                try:
+                    with os.fdopen(tmp_fd, 'w', newline='', encoding='utf-8-sig') as tmp:
+                        total = _emit(tmp)
+                    os.replace(tmp_path, output)
+                except BaseException:
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError:
+                        pass
+                    raise
+            elif output is None:
+                total = _emit(sys.stdout)
+            else:
+                total = _emit(output)
+
+            summary = ", ".join(
+                f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0
+            )
             if summary:
                 logging.info(f"Generated {total} registers ({summary})")
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
-        finally:
-            if isinstance(output, str) and outfile is not None:
-                outfile.close()
 
 def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
     if mode == 'definition':

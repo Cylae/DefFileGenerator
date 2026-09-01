@@ -1,7 +1,6 @@
 import time
 import logging
 import os
-import subprocess
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor
 

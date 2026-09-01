@@ -1,8 +1,7 @@
 import csv
 import os
-import json
 import logging
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor
 
 def run_torture_battery():
