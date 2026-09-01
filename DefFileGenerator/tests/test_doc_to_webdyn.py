@@ -192,11 +192,16 @@ class TestDocToWebdyn(unittest.TestCase):
             '--model', 'Test', '--pages', 'a,b']
         with open('dummy.pdf', 'w') as f:
             f.write('Dummy')
-        with patch.object(sys, 'argv', test_args):
-            with self.assertRaises(SystemExit) as cm:
-                main()
-            self.assertEqual(cm.exception.code, 1)
-        os.remove('dummy.pdf')
+        try:
+            with patch.object(sys, 'argv', test_args):
+                with patch('logging.error') as mock_log_error:
+                    with self.assertRaises(SystemExit) as cm:
+                        main()
+                    self.assertEqual(cm.exception.code, 1)
+                    mock_log_error.assert_called_with("Invalid format for --pages. Expected comma-separated integers.")
+        finally:
+            if os.path.exists('dummy.pdf'):
+                os.remove('dummy.pdf')
 
     def test_doc_to_webdyn_bad_mapping_open(self):
         from doc_to_webdyn import main
