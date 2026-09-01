@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+"""
+Modbus Register Extractor Module.
+
+Provides format-agnostic extraction of register tables from Excel, PDF, CSV, and XML files,
+applying two-pass heuristic column mapping, address offset adjustments, and lazy generator streaming.
+"""
+
 import argparse
 import csv
 import json
