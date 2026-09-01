@@ -124,5 +124,29 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.sanitize_csv_field("+25"), "+25")
         self.assertEqual(self.generator.sanitize_csv_field("-text"), "'-text")
 
+    def test_write_output_csv_os_error_on_open(self):
+        logging.disable(logging.NOTSET)
+        with patch("builtins.open", side_effect=OSError("Permission denied")):
+            with self.assertLogs(level='ERROR') as log:
+                Generator.write_output_csv("invalid_path.csv", [], "Mfg", "Model")
+                self.assertTrue(any("Error writing output CSV: Permission denied" in m for m in log.output))
+
+    def test_write_output_csv_error_during_write_and_cleanup(self):
+        import csv
+        from unittest.mock import MagicMock
+        file_obj = MagicMock()
+
+        logging.disable(logging.NOTSET)
+        with patch("builtins.open", return_value=file_obj):
+            with patch("csv.writer") as mock_writer_cls:
+                mock_writer = MagicMock()
+                mock_writer.writerow.side_effect = csv.Error("CSV write error")
+                mock_writer_cls.return_value = mock_writer
+
+                with self.assertLogs(level='ERROR') as log:
+                    Generator.write_output_csv("dummy.csv", [], "Mfg", "Model")
+                    self.assertTrue(any("Error writing output CSV: CSV write error" in m for m in log.output))
+                file_obj.close.assert_called_once()
+
 if __name__ == '__main__':
     unittest.main()
