@@ -1,13 +1,32 @@
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
-.env
+*.pyo
+*.pyd
+.venv/
 venv/
-.venv
-test_output.csv
-test_csv_output.csv
-test_excel_output.csv
-test_registers.xlsx
-test_registers.pdf
-test_mapping.json
+.env
+
+# Test, coverage and tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
+coverage.xml
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Generated files and stress-test outputs
+stress_test_data/output*.csv
+stress_test_data/*.log
+benchmarks/results/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
