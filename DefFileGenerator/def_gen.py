@@ -623,13 +623,13 @@ class Generator:
             ])
             written = 0
             for index, row in enumerate(processed_rows, start=1):
+                info1 = forced_write if forced_write else row['Info1']
                 writer.writerow([
-                    str(index), sanitize(row['Info1']), sanitize(row['Info2']),
+                    str(index), sanitize(info1), sanitize(row['Info2']),
                     sanitize(row['Info3']), sanitize(row['Info4']), sanitize(row['Name']),
                     sanitize(row['Tag']), sanitize(row['CoefA']), sanitize(row['CoefB']),
                     sanitize(row['Unit']), sanitize(row['Action']),
                 ])
-                info1 = row['Info1']
                 type_counts[info1] = type_counts.get(info1, 0) + 1
                 written += 1
             return written
