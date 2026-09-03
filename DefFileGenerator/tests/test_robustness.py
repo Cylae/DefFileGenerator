@@ -1,5 +1,7 @@
 import unittest
+
 from DefFileGenerator.extractor import Extractor
+
 
 class TestRobustness(unittest.TestCase):
     def setUp(self):
@@ -20,7 +22,9 @@ class TestRobustness(unittest.TestCase):
         self.assertEqual(mapped[0]["RegisterType"], "Holding")
 
     def test_bits_address_defaulting(self):
-        raw_data = [[{"Name": "BitVar", "Address": "100", "Type": "BITS", "StartBit": "5", "Length": "1"}]]
+        raw_data = [
+            [{"Name": "BitVar", "Address": "100", "Type": "BITS", "StartBit": "5", "Length": "1"}]
+        ]
         mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "100_5_1")
 
@@ -39,6 +43,7 @@ class TestRobustness(unittest.TestCase):
         raw_data = [[{"Name": "Var", "Address": "1,000", "Type": "U16"}]]
         mapped = list(self.extractor.map_and_clean(raw_data))
         self.assertEqual(mapped[0]["Address"], "1000")
+
 
 if __name__ == "__main__":
     unittest.main()

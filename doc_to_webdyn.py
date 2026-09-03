@@ -7,14 +7,15 @@ validated WebdynSunPM definition CSV file in a single step.
 """
 
 import argparse
-import sys
-import os
-import logging
-import re
-import csv
 import json
+import logging
+import os
+import re
+import sys
+
+from DefFileGenerator.def_gen import GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+
 
 def _run_cli(argv=None):
     """
@@ -27,28 +28,39 @@ def _run_cli(argv=None):
         argv = sys.argv[1:]
     else:
         # Strip script name if present as first element
-        if argv and (argv[0].endswith('main.py') or argv[0].endswith('doc_to_webdyn.py') or argv[0] == 'main.py' or argv[0] == 'doc_to_webdyn.py'):
+        if argv and (
+            argv[0].endswith("main.py")
+            or argv[0].endswith("doc_to_webdyn.py")
+            or argv[0] == "main.py"
+            or argv[0] == "doc_to_webdyn.py"
+        ):
             argv = argv[1:]
 
-    parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('--manufacturer', help='Manufacturer name')
-    parser.add_argument('--model', help='Model name')
-    parser.add_argument('--template', action='store_true', help='Generate a template definition')
-    parser.add_argument('-o', '--output', help='Output filename')
-    parser.add_argument('--protocol', default='modbusRTU')
-    parser.add_argument('--category', default='Inverter')
-    parser.add_argument('--sheet', help='Excel sheet name')
-    parser.add_argument('--pages', help='PDF pages (comma-separated integers)')
-    parser.add_argument('--mapping', help='JSON mapping file')
-    parser.add_argument('--address-offset', type=int, default=0)
-    parser.add_argument('--forced-write', default='')
-    parser.add_argument('-v', '--verbose', action='store_true')
+    parser = argparse.ArgumentParser(description="WebdynSunPM Documentation Parser")
+    parser.add_argument(
+        "input_file", nargs="?", help="Path to documentation (PDF, Excel, CSV, XML)"
+    )
+    parser.add_argument("--manufacturer", help="Manufacturer name")
+    parser.add_argument("--model", help="Model name")
+    parser.add_argument("--template", action="store_true", help="Generate a template definition")
+    parser.add_argument("-o", "--output", help="Output filename")
+    parser.add_argument("--protocol", default="modbusRTU")
+    parser.add_argument("--category", default="Inverter")
+    parser.add_argument("--sheet", help="Excel sheet name")
+    parser.add_argument("--pages", help="PDF pages (comma-separated integers)")
+    parser.add_argument("--mapping", help="JSON mapping file")
+    parser.add_argument("--address-offset", type=int, default=0)
+    parser.add_argument("--forced-write", default="")
+    parser.add_argument("-v", "--verbose", action="store_true")
 
     args = parser.parse_args(argv)
-    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format="%(levelname)s: %(message)s",
+        force=True,
+    )
 
-    if getattr(args, 'template', False):
+    if getattr(args, "template", False):
         config = GeneratorConfig(output=args.output, template=True)
         run_generator(config)
         return
@@ -60,16 +72,16 @@ def _run_cli(argv=None):
     ext = os.path.splitext(args.input_file)[1].lower() if args.input_file else ""
 
     # Warn about mismatched options
-    if args.pages and ext != '.pdf':
+    if args.pages and ext != ".pdf":
         logging.warning("--pages is only applicable for PDF files. Ignoring.")
-    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+    if args.sheet and ext not in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
         logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     mapping = {}
-    mapping_path = getattr(args, 'mapping', None)
+    mapping_path = getattr(args, "mapping", None)
     if mapping_path:
         try:
-            with open(mapping_path, 'r') as f:
+            with open(mapping_path) as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -77,22 +89,22 @@ def _run_cli(argv=None):
 
     extractor = Extractor(mapping)
 
-    pages = getattr(args, 'pages', None)
-    if pages and ext == '.pdf':
+    pages = getattr(args, "pages", None)
+    if pages and ext == ".pdf":
         try:
-            pages = [int(p.strip()) for p in pages.split(',')]
+            pages = [int(p.strip()) for p in pages.split(",")]
         except ValueError:
             logging.error("Invalid format for --pages. Expected comma-separated integers.")
             sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+    sheet_arg = getattr(args, "sheet", None)
+    if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
         raw = extractor.extract_from_excel(args.input_file, sheet_arg)
-    elif ext == '.pdf':
+    elif ext == ".pdf":
         raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv':
+    elif ext == ".csv":
         raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml':
+    elif ext == ".xml":
         raw = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
@@ -113,7 +125,9 @@ def _run_cli(argv=None):
     m_model = args.model or "Model"
     output_file = args.output
     if not output_file:
-        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+        clean_mfg = re.sub(r"[^a-zA-Z0-9]", "_", m_name).lower()
+        clean_mod = re.sub(r"[^a-zA-Z0-9]", "_", m_model).lower()
+        output_file = f"{clean_mfg}_{clean_mod}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -123,10 +137,11 @@ def _run_cli(argv=None):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction
-        template=args.template
+        address_offset=0,  # Already applied during extraction
+        template=args.template,
     )
     run_generator(config, input_data=mapped_peeker)
+
 
 def main(args=None):
     try:
@@ -138,6 +153,7 @@ def main(args=None):
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

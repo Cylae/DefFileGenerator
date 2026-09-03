@@ -1,10 +1,12 @@
-import unittest
+import csv
+import json
 import os
 import sys
-import json
-import csv
+import unittest
 from unittest.mock import patch
+
 from DefFileGenerator.main import main
+
 
 class TestDefFileGeneratorIntegration(unittest.TestCase):
     def setUp(self):
@@ -18,11 +20,7 @@ class TestDefFileGeneratorIntegration(unittest.TestCase):
             f.write("RegAddr,VarName,RegType\n40001,Power,U32\n40003,Energy,U64\n")
 
         # Create mapping file
-        mapping = {
-            "Address": "RegAddr",
-            "Name": "VarName",
-            "Type": "RegType"
-        }
+        mapping = {"Address": "RegAddr", "Name": "VarName", "Type": "RegType"}
         with open(self.mapping_file, "w", encoding="utf-8") as f:
             json.dump(mapping, f)
 
@@ -33,14 +31,22 @@ class TestDefFileGeneratorIntegration(unittest.TestCase):
 
     def test_end_to_end_extract_and_generate(self):
         # 1. Extract
-        test_args_extract = ["main.py", "extract", self.dummy_input, "--mapping", self.mapping_file, "-o", self.output_extract]
-        with patch.object(sys, 'argv', test_args_extract):
+        test_args_extract = [
+            "main.py",
+            "extract",
+            self.dummy_input,
+            "--mapping",
+            self.mapping_file,
+            "-o",
+            self.output_extract,
+        ]
+        with patch.object(sys, "argv", test_args_extract):
             main()
 
         self.assertTrue(os.path.exists(self.output_extract))
 
         # Verify extracted content
-        with open(self.output_extract, "r", encoding="utf-8") as f:
+        with open(self.output_extract, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             rows = list(reader)
             self.assertEqual(len(rows), 2)
@@ -49,15 +55,25 @@ class TestDefFileGeneratorIntegration(unittest.TestCase):
             self.assertEqual(rows[0]["Type"], "U32")
 
         # 2. Generate
-        test_args_generate = ["main.py", "generate", self.output_extract, "--manufacturer", "TestMfg", "--model", "TestModel", "-o", self.output_final]
-        with patch.object(sys, 'argv', test_args_generate):
+        test_args_generate = [
+            "main.py",
+            "generate",
+            self.output_extract,
+            "--manufacturer",
+            "TestMfg",
+            "--model",
+            "TestModel",
+            "-o",
+            self.output_final,
+        ]
+        with patch.object(sys, "argv", test_args_generate):
             main()
 
         self.assertTrue(os.path.exists(self.output_final))
 
         # Verify generated Webdyn definition content
-        with open(self.output_final, "r", encoding="utf-8") as f:
-            reader = csv.reader(f, delimiter=';')
+        with open(self.output_final, encoding="utf-8") as f:
+            reader = csv.reader(f, delimiter=";")
             rows = list(reader)
             self.assertTrue(len(rows) > 1)
             # Header row
@@ -69,21 +85,28 @@ class TestDefFileGeneratorIntegration(unittest.TestCase):
     def test_end_to_end_run(self):
         # 1. Run (Extract + Generate)
         test_args_run = [
-            "main.py", "run", self.dummy_input,
-            "--mapping", self.mapping_file,
-            "--manufacturer", "RunMfg",
-            "--model", "RunModel",
-            "--address-offset", "10",
-            "-o", self.output_final
+            "main.py",
+            "run",
+            self.dummy_input,
+            "--mapping",
+            self.mapping_file,
+            "--manufacturer",
+            "RunMfg",
+            "--model",
+            "RunModel",
+            "--address-offset",
+            "10",
+            "-o",
+            self.output_final,
         ]
-        with patch.object(sys, 'argv', test_args_run):
+        with patch.object(sys, "argv", test_args_run):
             main()
 
         self.assertTrue(os.path.exists(self.output_final))
 
         # Verify output Webdyn definition content has correct data and address offset
-        with open(self.output_final, "r", encoding="utf-8") as f:
-            reader = csv.reader(f, delimiter=';')
+        with open(self.output_final, encoding="utf-8") as f:
+            reader = csv.reader(f, delimiter=";")
             rows = list(reader)
             self.assertTrue(len(rows) > 1)
             # Header
@@ -98,5 +121,6 @@ class TestDefFileGeneratorIntegration(unittest.TestCase):
             # 40001 (mapped address) + 10 = 40011
             self.assertEqual(rows[1][2], "40011")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

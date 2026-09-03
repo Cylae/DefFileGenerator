@@ -1,8 +1,10 @@
-import unittest
-import os
 import csv
+import os
 import tempfile
+import unittest
+
 from DefFileGenerator.def_gen import generate_template
+
 
 class TestTemplate(unittest.TestCase):
     def setUp(self):
@@ -16,13 +18,14 @@ class TestTemplate(unittest.TestCase):
         generate_template(path)
 
         self.assertTrue(os.path.exists(path))
-        with open(path, "r", newline="", encoding="utf-8") as f:
+        with open(path, newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             rows = list(reader)
             self.assertGreater(len(rows), 0)
             self.assertIn("Name", rows[0])
             self.assertIn("Address", rows[0])
             self.assertIn("Type", rows[0])
+
 
 if __name__ == "__main__":
     unittest.main()
