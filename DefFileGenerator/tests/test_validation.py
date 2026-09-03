@@ -1,9 +1,11 @@
-import unittest
-import os
 import csv
 import logging
+import os
 import tempfile
+import unittest
+
 from DefFileGenerator.def_gen import Generator
+
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
@@ -39,7 +41,7 @@ class TestValidation(unittest.TestCase):
     def test_validate_csv_success(self):
         rows = [
             ["3", "30001", "U16", "", "Voltage", "v_tag", "1.0", "0.0", "V", "4"],
-            ["3", "30002", "U16", "", "Current", "c_tag", "1.0", "0.0", "A", "4"]
+            ["3", "30002", "U16", "", "Current", "c_tag", "1.0", "0.0", "A", "4"],
         ]
         path = self.create_csv(rows)
         self.assertTrue(self.generator.validate_csv(path))
@@ -47,7 +49,7 @@ class TestValidation(unittest.TestCase):
     def test_validate_csv_duplicate_tag(self):
         rows = [
             ["3", "30001", "U16", "", "Voltage", "dup_tag", "1.0", "0.0", "V", "4"],
-            ["3", "30002", "U16", "", "Current", "dup_tag", "1.0", "0.0", "A", "4"]
+            ["3", "30002", "U16", "", "Current", "dup_tag", "1.0", "0.0", "A", "4"],
         ]
         path = self.create_csv(rows)
         # validate_csv should return False for duplicate tags
@@ -56,7 +58,7 @@ class TestValidation(unittest.TestCase):
     def test_validate_csv_address_overlap(self):
         rows = [
             ["3", "30001", "U32", "", "Power", "p_tag", "1.0", "0.0", "W", "4"],
-            ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"]
+            ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"],
         ]
         path = self.create_csv(rows)
         # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
@@ -65,9 +67,7 @@ class TestValidation(unittest.TestCase):
         self.assertTrue(self.generator.validate_csv(path, strict=False))
 
     def test_validate_csv_invalid_address(self):
-        rows = [
-            ["3", "70000", "U16", "", "Invalid", "inv_tag", "1.0", "0.0", "V", "4"]
-        ]
+        rows = [["3", "70000", "U16", "", "Invalid", "inv_tag", "1.0", "0.0", "V", "4"]]
         path = self.create_csv(rows)
         self.assertFalse(self.generator.validate_csv(path))
 
@@ -76,32 +76,63 @@ class TestValidation(unittest.TestCase):
         self.assertTrue(self.generator.validate_address("30030_20", "STRING"))
         self.assertTrue(self.generator.validate_address("30030_20", "STR20"))
 
-        rows = [
-            ["3", "30030_20", "STR20", "", "Serial", "s_tag", "1.0", "0.0", "", "4"]
-        ]
+        rows = [["3", "30030_20", "STR20", "", "Serial", "s_tag", "1.0", "0.0", "", "4"]]
         path = self.create_csv(rows)
         self.assertTrue(self.generator.validate_csv(path))
 
     def test_intelligent_action_defaulting(self):
         # Input Register (4) should default to 4 (Read Only)
-        rows = [{'Name': 'InputVar', 'Address': '100', 'Type': 'U16', 'RegisterType': 'Input Register', 'Action': ''}]
+        rows = [
+            {
+                "Name": "InputVar",
+                "Address": "100",
+                "Type": "U16",
+                "RegisterType": "Input Register",
+                "Action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
-        self.assertEqual(processed[0]['Action'], '4')
+        self.assertEqual(processed[0]["Action"], "4")
 
         # Holding Register (3) should default to 1 (Read/Write)
-        rows = [{'Name': 'HoldingVar', 'Address': '200', 'Type': 'U16', 'RegisterType': 'Holding Register', 'Action': ''}]
+        rows = [
+            {
+                "Name": "HoldingVar",
+                "Address": "200",
+                "Type": "U16",
+                "RegisterType": "Holding Register",
+                "Action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
-        self.assertEqual(processed[0]['Action'], '1')
+        self.assertEqual(processed[0]["Action"], "1")
 
         # Discrete Input (2) should default to 4 (Read Only)
-        rows = [{'Name': 'DiscVar', 'Address': '300', 'Type': 'U16', 'RegisterType': 'Discrete Input', 'Action': ''}]
+        rows = [
+            {
+                "Name": "DiscVar",
+                "Address": "300",
+                "Type": "U16",
+                "RegisterType": "Discrete Input",
+                "Action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
-        self.assertEqual(processed[0]['Action'], '4')
+        self.assertEqual(processed[0]["Action"], "4")
 
         # Coil (1) should default to 1 (Read/Write)
-        rows = [{'Name': 'CoilVar', 'Address': '400', 'Type': 'U16', 'RegisterType': 'Coil', 'Action': ''}]
+        rows = [
+            {
+                "Name": "CoilVar",
+                "Address": "400",
+                "Type": "U16",
+                "RegisterType": "Coil",
+                "Action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
-        self.assertEqual(processed[0]['Action'], '1')
+        self.assertEqual(processed[0]["Action"], "1")
+
 
 if __name__ == "__main__":
     unittest.main()

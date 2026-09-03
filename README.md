@@ -54,10 +54,10 @@ success = generate_webdyn_definition(
     output_file="webdyn_definition.csv",
     manufacturer="Huawei",
     model="SUN2000-50KTL",
-    protocol="modbusRTU",      # default: modbusRTU
-    category="Inverter",        # default: Inverter
-    address_offset=0,           # optional address shift
-    strict_validation=True      # fail on address overlaps or format errors
+    protocol="modbusRTU",  # default: modbusRTU
+    category="Inverter",  # default: Inverter
+    address_offset=0,  # optional address shift
+    strict_validation=True,  # fail on address overlaps or format errors
 )
 
 if success:
