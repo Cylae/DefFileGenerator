@@ -1,11 +1,46 @@
 import importlib.metadata
 import os
 import shutil
+import site
 import subprocess
 import sys
 import unittest
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+
+def _locate_script(name: str) -> str | None:
+    """Find a console script by name across all relevant script directories."""
+    # 1. Try PATH first (works in venvs and properly installed envs).
+    found = shutil.which(name)
+    if found:
+        return found
+
+    candidates = []
+
+    # 2. System Python scripts dir (same level as sys.executable).
+    candidates.append(os.path.dirname(sys.executable))
+
+    # 3. User-base scripts dir (pip install --user on Windows puts scripts here).
+    try:
+        user_base = site.getuserbase()
+        # Windows: <userbase>\PythonXY\Scripts
+        ver = f"Python{sys.version_info.major}{sys.version_info.minor}"
+        candidates.append(os.path.join(user_base, ver, "Scripts"))
+        # Unix: <userbase>/bin
+        candidates.append(os.path.join(user_base, "bin"))
+    except AttributeError:
+        pass
+
+    for scripts_dir in candidates:
+        for candidate in (
+            os.path.join(scripts_dir, f"{name}.exe"),
+            os.path.join(scripts_dir, name),
+        ):
+            if os.path.exists(candidate):
+                return candidate
+
+    return None
 
 
 class TestPackagingAndEntrypoints(unittest.TestCase):
@@ -45,17 +80,7 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
         self.assertIn("run", res.stdout)
 
     def test_deffilegen_executable_in_environment(self):
-        exe_path = shutil.which("deffilegen")
-        if not exe_path:
-            # Check virtualenv scripts path directly
-            scripts_dir = os.path.dirname(sys.executable)
-            possible = os.path.join(scripts_dir, "deffilegen.exe")
-            if os.path.exists(possible):
-                exe_path = possible
-            else:
-                possible_unix = os.path.join(scripts_dir, "deffilegen")
-                if os.path.exists(possible_unix):
-                    exe_path = possible_unix
+        exe_path = _locate_script("deffilegen")
 
         self.assertIsNotNone(
             exe_path,

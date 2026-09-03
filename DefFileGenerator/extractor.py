@@ -139,41 +139,41 @@ class Extractor:
             return iter([])
 
         def excel_sheets_generator() -> Iterator[Iterator[dict[str, Any]]]:
-            wb = None
+            # Eagerly read all sheet data while the workbook is open,
+            # because read_only=True worksheets cannot be iterated after close().
+            all_sheet_data: list[list[dict[str, Any]]] = []
             try:
                 wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
-
-                for ws in sheets:
-
-                    def sheet_generator(ws_obj=ws) -> Iterator[dict[str, Any]]:
-                        rows = ws_obj.iter_rows(values_only=True)
+                try:
+                    sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+                    for ws in sheets:
+                        sheet_rows: list[dict[str, Any]] = []
+                        rows = ws.iter_rows(values_only=True)
                         try:
                             header_row = next(rows)
                         except StopIteration:
-                            return
-
+                            all_sheet_data.append(sheet_rows)
+                            continue
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
-
                         for row in rows:
-                            # Only yield if row has actual data (not all None/empty)
                             if any(cell is not None and str(cell).strip() for cell in row):
-                                yield {
-                                    headers[i]: cell
-                                    for i, cell in enumerate(row)
-                                    if i < len(headers)
-                                }
-
-                    # We yield a generator for each sheet.
-                    yield sheet_generator()
-
+                                sheet_rows.append(
+                                    {
+                                        headers[i]: cell
+                                        for i, cell in enumerate(row)
+                                        if i < len(headers)
+                                    }
+                                )
+                        all_sheet_data.append(sheet_rows)
+                except (ValueError, TypeError, KeyError) as e:
+                    logging.error(f"Error extracting from Excel {filepath}: {e}")
+                finally:
+                    wb.close()
             except (OSError, zipfile.BadZipFile) as e:
                 logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-            except (ValueError, TypeError, KeyError) as e:
-                logging.error(f"Error extracting from Excel {filepath}: {e}")
-            finally:
-                if wb:
-                    wb.close()
+
+            for sheet_rows in all_sheet_data:
+                yield iter(sheet_rows)
 
         return excel_sheets_generator()
 
