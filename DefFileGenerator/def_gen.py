@@ -52,6 +52,22 @@ SYNONYMS_COMPILED = [
 ]
 
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
+_RE_STRING_DIGITS = re.compile(r'string\s*(\d+)')
+
+TYPE_SYNONYMS = (
+    (re.compile(r'unsigned integer 64|unsigned int 64|uint64'), 'U64'),
+    (re.compile(r'signed integer 64|signed int 64|int64'), 'I64'),
+    (re.compile(r'unsigned integer 32|unsigned int 32|uint32'), 'U32'),
+    (re.compile(r'signed integer 32|signed int 32|int32'), 'I32'),
+    (re.compile(r'unsigned integer 16|unsigned int 16|uint16'), 'U16'),
+    (re.compile(r'signed integer 16|signed int 16|int16'), 'I16'),
+    (re.compile(r'unsigned integer 8|unsigned int 8|uint8'), 'U8'),
+    (re.compile(r'signed integer 8|signed int 8|int8'), 'I8'),
+    (re.compile(r'float64|double'), 'F64'),
+    (re.compile(r'float32|float'), 'F32'),
+    (re.compile(r'string\s*(\d+)'), r'STR\1'),
+    (re.compile(r'string'), 'STRING'),
+)
 
 @dataclass
 class GeneratorConfig:
@@ -109,12 +125,11 @@ class Generator:
             suffix = '_W'
 
         # Handle "string 20" -> "STR20"
-        str_match = RE_NORM_STRING.search(t)
+        str_match = _RE_STRING_DIGITS.search(t)
         if str_match:
             return f"STR{str_match.group(1)}{suffix}"
 
-        # Mapping ordered by specificity (longer strings first)
-        for pattern, replacement in SYNONYMS_COMPILED:
+        for pattern, replacement in TYPE_SYNONYMS:
             if pattern.search(t):
                 if r'\1' in replacement:
                     res = pattern.sub(replacement, t).upper()
