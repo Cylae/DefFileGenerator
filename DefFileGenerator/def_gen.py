@@ -73,6 +73,11 @@ class Generator:
             return ""
         s = str(val)
         if s and s[0] in ('=', '+', '-', '@'):
+            try:
+                float(s)
+                return s
+            except ValueError:
+                pass
             return "'" + s
         return s
 
