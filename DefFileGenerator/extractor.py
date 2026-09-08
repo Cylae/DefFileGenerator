@@ -58,19 +58,9 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """
-    Checks if an iterable is non-empty without fully consuming it.
-    Returns (has_data, original_iterator).
-    """
-    if iterable is None:
-        return False, iter([])
-    try:
-        iterator = iter(iterable)
-        first = next(iterator)
-        return True, itertools.chain([first], iterator)
-    except StopIteration:
-        return False, iter([])
+# Secure Import for Generator and peek_generator with clean fallbacks
+Generator = None
+peek_generator = None
 
 try:
     from DefFileGenerator.def_gen import Generator
@@ -78,17 +68,28 @@ except ImportError:
     try:
         from def_gen import Generator
     except ImportError:
-        Generator = None
+        try:
+            import def_gen
+            Generator = def_gen.Generator
+            peek_generator = def_gen.peek_generator
+        except ImportError:
+            pass
 
-try:
-    from DefFileGenerator.def_gen import Generator, peek_generator as peek_gen_def
-    peek_generator = peek_gen_def
-except ImportError:
-    try:
-        from def_gen import Generator, peek_generator as peek_gen_def
-        peek_generator = peek_gen_def
-    except ImportError:
-        Generator = None
+if peek_generator is None:
+    def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+        """
+        Checks if an iterable is non-empty without fully consuming it.
+        Returns (has_data, original_iterator).
+        """
+        if iterable is None:
+            return False, iter([])
+        it = iter(iterable)
+        try:
+            first = next(it)
+        except StopIteration:
+            return False, iter([])
+        return True, itertools.chain([first], it)
+
 
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
@@ -122,17 +123,19 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return
 
-        def sheet_generator(sname: str) -> Iterator[dict[str, Any]]:
+        def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+            wb = None
             try:
                 wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                if sheet_name:
-                    if sheet_name in wb.sheetnames:
-                        sheets = [wb[sheet_name]]
-                    else:
-                        logging.error(f"Sheet {sheet_name} not found in {filepath}")
-                        return
-                else:
-                    sheets = wb.worksheets
+                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+
+                for ws in sheets:
+                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                        rows = ws_obj.iter_rows(values_only=True)
+                        try:
+                            header_row = next(rows)
+                        except StopIteration:
+                            return
 
                 for ws in sheets:
                     def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
@@ -148,6 +151,7 @@ class Extractor:
                             if any(cell is not None and str(cell).strip() for cell in row):
                                 yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
+                    # We yield a generator for each sheet.
                     yield sheet_generator()
 
             except (OSError, zipfile.BadZipFile) as e:
@@ -182,6 +186,8 @@ class Extractor:
 
         return excel_sheets_generator()
 
+        return excel_sheets_generator()
+
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
@@ -194,7 +200,9 @@ class Extractor:
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        requested = pages if isinstance(pages, list) else [p.strip() for p in str(pages).split(',')]
+                        requested = pages if isinstance(pages, list) else [pages]
+                        if isinstance(pages, str):
+                            requested = [p.strip() for p in pages.split(',')]
                         for p in requested:
                             try:
                                 idx = int(p) - 1
@@ -211,7 +219,7 @@ class Extractor:
                             if not table or len(table) < 2:
                                 continue
 
-                            def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
+                            def table_generator(current_table=table) -> Iterator[Dict[str, Any]]:
                                 headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
                                 for row in current_table[1:]:
                                     row_dict = {}
@@ -221,20 +229,21 @@ class Extractor:
                                     if any(v.strip() for v in row_dict.values() if v):
                                         yield row_dict
 
-                            yield table_generator(table)
+                            yield table_generator()
             except (OSError,) + PDF_ERRORS as e:
                 logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-            except Exception as e:
+            except (ValueError, TypeError, IndexError) as e:
                 logging.error(f"Error extracting from PDF {filepath}: {e}")
 
         return pdf_tables_generator()
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
-        def csv_table_generator() -> Iterator[Dict[str, Any]]:
-            try:
-                with open(filepath, 'rb') as f:
-                    header_bytes = f.read(4)
-                    encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+        def csv_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+            def csv_table_generator() -> Iterator[Dict[str, Any]]:
+                try:
+                    with open(filepath, 'rb') as f:
+                        header_bytes = f.read(4)
+                        encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
                 with open(filepath, 'r', encoding=encoding) as f:
                     snippet = f.read(2048)
@@ -253,8 +262,14 @@ class Extractor:
                         for row in reader:
                             if any(val.strip() for val in row.values() if val is not None):
                                 yield dict(row)
-                except Exception as e:
-                    logging.error(f"Error extracting from CSV {filepath}: {e}")
+                except OSError as e:
+                    logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
+                except csv.Error as e:
+                    logging.error(f"CSV Parsing Error in {filepath}: {e}")
+                except UnicodeError as e:
+                    logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
+                except (ValueError, TypeError) as e:
+                    logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
             yield csv_table_generator()
 
@@ -265,7 +280,7 @@ class Extractor:
             logging.error("defusedxml is required for secure XML parsing.")
             return iter([])
 
-        def xml_generator() -> Iterator[Dict[str, Any]]:
+        def xml_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
             try:
                 with open(filepath, 'rb') as f:
                     tree = ET.parse(f)
@@ -286,8 +301,9 @@ class Extractor:
 
                 yield xml_generator()
 
-            except SECURITY_EXCEPTIONS:
-                logging.error(f"Security error parsing XML {filepath}")
+            except SECURITY_EXCEPTIONS as e:
+                logging.error(f"Security error parsing XML {filepath}: {e}")
+                raise
             except (OSError,) + XML_PARSE_ERRORS as e:
                 logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
             except Exception as e:
@@ -373,6 +389,7 @@ class Extractor:
                 processed = process_row(row)
                 if processed: yield processed
 
+
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     parser = argparse.ArgumentParser(description='Extract register information.')
@@ -386,37 +403,30 @@ def main():
 
     mapping = {}
     if args.mapping:
-        try:
-            with open(args.mapping, 'r') as f: mapping = json.load(f)
-        except Exception as e:
-            logging.error(f"Error reading mapping file: {e}")
-            sys.exit(1)
-
+        with open(args.mapping, 'r') as f:
+            mapping = json.load(f)
     extractor = Extractor(mapping)
-    input_file = args.input_file
-    if not input_file or not os.path.exists(input_file):
-        logging.error(f"Input file not found: {input_file}")
-        sys.exit(1)
-
-    ext = os.path.splitext(input_file)[1].lower()
+    ext = os.path.splitext(args.input_file)[1].lower()
+    pages = args.pages
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(input_file, args.sheet)
+        raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(input_file, args.pages)
+        raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
-        raw = extractor.extract_from_csv(input_file)
+        raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml':
-        raw = extractor.extract_from_xml(input_file)
+        raw = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
-
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
 
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
     writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
     writer.writeheader()
     writer.writerows(mapped)
-    if args.output: out.close()
+    if args.output:
+        out.close()
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()

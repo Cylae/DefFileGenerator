@@ -17,6 +17,13 @@ from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli(argv=None):
+    if argv is None:
+        argv = sys.argv[1:]
+    else:
+        # Strip script name if present as first element
+        if argv and (argv[0].endswith('main.py') or argv[0].endswith('doc_to_webdyn.py') or argv[0] == 'main.py' or argv[0] == 'doc_to_webdyn.py'):
+            argv = argv[1:]
+
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
@@ -76,10 +83,19 @@ def _run_cli(argv=None):
 
     extractor = Extractor(mapping)
 
+    pages = getattr(args, 'pages', None)
+    if pages and ext == '.pdf':
+        try:
+            pages = [int(p.strip()) for p in pages.split(',')]
+        except ValueError:
+            logging.error("Invalid format for --pages. Expected comma-separated integers.")
+            sys.exit(1)
+
+    sheet_arg = getattr(args, 'sheet', None)
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+        raw = extractor.extract_from_excel(args.input_file, sheet_arg)
     elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(args.input_file, args.pages)
+        raw = extractor.extract_from_pdf(args.input_file, pages)
     elif ext == '.csv':
         raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml':
@@ -94,20 +110,16 @@ def _run_cli(argv=None):
         sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped)
-    if not has_regs:
+    first, mapped_peeker = peek_generator(mapped)
+    if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
-
-    if args.output:
-        output_file = args.output
-    else:
-        safe_mfg = re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()
-        safe_model = re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()
-        output_file = f"{safe_mfg}_{safe_model}_definition.csv"
+    output_file = args.output
+    if not output_file:
+        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
