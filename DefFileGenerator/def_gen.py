@@ -233,7 +233,21 @@ class Generator:
     @staticmethod
     def apply_address_offset(address: Any, offset: int, line_num: Optional[int] = None, name: Optional[str] = None) -> str:
         if not address: return ""
-        parts = str(address).split('_')
+        addr_str = str(address)
+        if '_' not in addr_str:
+            norm_base = Generator.normalize_address_val(addr_str)
+            try:
+                base_addr = int(norm_base) + offset
+                if base_addr < 0:
+                    msg = f"Address offset {offset} results in negative address {base_addr}"
+                    if name: msg += f" for '{name}'"
+                    if line_num: logging.warning(f"Line {line_num}: {msg}")
+                    else: logging.warning(msg)
+                return str(base_addr)
+            except ValueError:
+                return norm_base
+
+        parts = addr_str.split('_')
         norm_parts = [Generator.normalize_address_val(p) for p in parts]
         try:
             base_addr = int(norm_parts[0]) + offset
