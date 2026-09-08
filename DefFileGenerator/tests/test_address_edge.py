@@ -87,6 +87,95 @@ class TestNormalizeAddressValExtended(unittest.TestCase):
         # strip -> empty -> returns ""
         self.assertEqual(self._norm("   "), "")
 
+    # bare 0x / 0X / h / H and malformed hex strings
+    def test_0x_bare_returns_unchanged(self):
+        self.assertEqual(self._norm("0x"), "0x")
+        self.assertEqual(self._norm("0X"), "0X")
+
+    def test_0x_negative_returns_unchanged(self):
+        self.assertEqual(self._norm("0x-10"), "0x-10")
+
+    def test_0x_with_trailing_invalid_chars(self):
+        self.assertEqual(self._norm("0x123Z"), "0x123Z")
+
+    def test_h_bare_returns_unchanged(self):
+        self.assertEqual(self._norm("h"), "h")
+        self.assertEqual(self._norm("H"), "H")
+
+    def test_h_negative_parsed_as_hex(self):
+        # "-10h" -> int("-10", 16) -> -16
+        self.assertEqual(self._norm("-10h"), "-16")
+
+    def test_h_with_invalid_chars(self):
+        self.assertEqual(self._norm("123Gh"), "123Gh")
+
+    # non-string type inputs
+    def test_integer_input(self):
+        self.assertEqual(self._norm(40001), "40001")
+        self.assertEqual(self._norm(0), "0")
+        self.assertEqual(self._norm(-5), "-5")
+
+    def test_float_input(self):
+        self.assertEqual(self._norm(100.5), "100.5")
+
+    def test_boolean_input(self):
+        self.assertEqual(self._norm(True), "True")
+        self.assertEqual(self._norm(False), "False")
+
+    def test_none_input(self):
+        self.assertEqual(self._norm(None), "None")
+
+    # alternative base prefixes (octal, binary)
+    def test_octal_prefix(self):
+        self.assertEqual(self._norm("0o10"), "8")
+        self.assertEqual(self._norm("0O20"), "16")
+
+    def test_octal_invalid(self):
+        self.assertEqual(self._norm("0o8"), "0o8")
+
+    def test_binary_prefix(self):
+        self.assertEqual(self._norm("0b1010"), "10")
+        self.assertEqual(self._norm("0B1100"), "12")
+
+    def test_binary_invalid_parsed_as_bare_hex(self):
+        # "0b102" is invalid binary, but all chars (0, b, 1, 0, 2) match bare hex regex -> int("0b102", 16) = 45314
+        self.assertEqual(self._norm("0b102"), "45314")
+
+    # thousands separators
+    def test_multiple_thousands_commas(self):
+        self.assertEqual(self._norm("1,000,000"), "1000000")
+
+    def test_misplaced_comma_unmodified(self):
+        self.assertEqual(self._norm("12,34"), "12,34")
+        self.assertEqual(self._norm("1,2"), "1,2")
+        self.assertEqual(self._norm("10,0000"), "10,0000")
+
+    # bare hex words with mixed case & zero padding
+    def test_bare_hex_mixed_case(self):
+        self.assertEqual(self._norm("deadBEEF"), "3735928559")
+        self.assertEqual(self._norm("abc"), "2748")
+
+    def test_bare_hex_zero_padded(self):
+        self.assertEqual(self._norm("000A"), "10")
+
+    # plus prefixed
+    def test_plus_prefixed_decimal(self):
+        self.assertEqual(self._norm("+100"), "100")
+
+    def test_plus_prefixed_hex(self):
+        self.assertEqual(self._norm("+0x10"), "16")
+
+    # arbitrary unparseable inputs
+    def test_unparseable_strings(self):
+        self.assertEqual(self._norm("INVALID_ADDR"), "INVALID_ADDR")
+        self.assertEqual(self._norm("!@#$%^&*()"), "!@#$%^&*()")
+        self.assertEqual(self._norm("10.20.30"), "10.20.30")
+        self.assertEqual(self._norm("40001_XYZ"), "40001_XYZ")
+
+    def test_python_underscore_digit_separator(self):
+        # "40001_10" is parsed as integer 4000110 by Python int(s, 0)
+        self.assertEqual(self._norm("40001_10"), "4000110")
+
 
 class TestValidateAddressExtended(unittest.TestCase):
     """validate_address for all compound and special types."""
