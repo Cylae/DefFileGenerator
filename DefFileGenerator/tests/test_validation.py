@@ -62,9 +62,10 @@ class TestValidation(unittest.TestCase):
             ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"],
         ]
         path = self.create_csv(rows)
-        # Overlap (30001 is 2 regs: 30001, 30002) is treated as a fatal error
-        # to ensure data integrity in WebdynSunPM definition files.
-        self.assertFalse(self.generator.validate_csv(path))
+        # Overlap (30001 is 2 regs: 30001, 30002) is a warning by default,
+        # but in strict mode it returns False.
+        self.assertFalse(self.generator.validate_csv(path, strict=True))
+        self.assertTrue(self.generator.validate_csv(path, strict=False))
 
     def test_validate_csv_invalid_address(self):
         rows = [["3", "70000", "U16", "", "Invalid", "inv_tag", "1.0", "0.0", "V", "4"]]

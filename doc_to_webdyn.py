@@ -11,16 +11,18 @@ import json
 import logging
 import os
 import re
-from DefFileGenerator.main import setup_logging, _perform_extraction
+import csv
+import json
+from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
-def _run_cli(args_list=None):
+def _run_cli(argv=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
     parser.add_argument('--model', help='Model name')
-    parser.add_argument('--template', action='store_true', help='Generate a template')
-    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input')
+    parser.add_argument('--template', action='store_true', help='Generate a template definition')
+    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input', help='Template mode')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -31,14 +33,18 @@ def _run_cli(args_list=None):
     parser.add_argument('--forced-write', default='')
     parser.add_argument('-v', '--verbose', action='store_true')
 
-    args = parser.parse_args()
-    setup_logging(args.verbose)
+    args = parser.parse_args(argv)
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
     if args.template:
         config = GeneratorConfig(
             output=args.output,
             template=True,
-            template_mode=args.template_mode
+            template_mode=args.template_mode,
+            protocol=args.protocol,
+            category=args.category,
+            manufacturer=args.manufacturer,
+            model=args.model
         )
         run_generator(config)
         return
@@ -47,7 +53,51 @@ def _run_cli(args_list=None):
         logging.error("input_file is required.")
         sys.exit(1)
 
-    mapped_data = _perform_extraction(args)
+    if not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
+
+    ext = os.path.splitext(args.input_file)[1].lower()
+
+    # Warn about mismatched options
+    if args.pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        logging.warning("--sheet is only applicable for Excel files. Ignoring.")
+
+    mapping = {}
+    if args.mapping:
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except (OSError, ValueError) as e:
+            logging.error(f"Error reading mapping file: {e}")
+            sys.exit(1)
+
+    extractor = Extractor(mapping)
+
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf':
+        raw = extractor.extract_from_pdf(args.input_file, args.pages)
+    elif ext == '.csv':
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw = extractor.extract_from_xml(args.input_file)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
+
+    has_data, raw_peeked = peek_generator(raw)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
+
+    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
+    has_regs, mapped_peeked = peek_generator(mapped)
+    if not has_regs:
+        logging.error("No registers extracted.")
+        sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -69,10 +119,7 @@ def _run_cli(args_list=None):
         forced_write=args.forced_write,
         address_offset=0 # Already applied during extraction
     )
-    run_generator(config, input_data=mapped_data)
-
-def setup_logging(verbose):
-    logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+    run_generator(config, input_data=mapped_peeked)
 
 def main(args=None):
     try:
