@@ -1,5 +1,6 @@
 import logging
 import unittest
+from unittest.mock import patch
 
 from DefFileGenerator.def_gen import Generator
 

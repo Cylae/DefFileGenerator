@@ -136,6 +136,7 @@ def main():
             model="DemoModel"
         )
         sys.exit(0 if success else 1)
+        return
 
     input_file = sys.argv[1]
     output_file = sys.argv[2]
