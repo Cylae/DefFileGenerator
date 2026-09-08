@@ -210,7 +210,6 @@ class TestWriteOutputCsv(unittest.TestCase):
     def test_writes_to_stdout_when_none(self):
         buf = io.StringIO()
         captured = []
-        import sys
         old = sys.stdout
         sys.stdout = buf
         try:

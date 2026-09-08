@@ -1,7 +1,6 @@
 """Batch 1: Deep tests for Extractor.
 """
 
-import csv
 import logging
 import os
 import tempfile

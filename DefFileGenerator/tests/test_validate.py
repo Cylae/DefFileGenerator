@@ -1,9 +1,10 @@
+import csv
+import logging
+import os
+import tempfile
 import unittest
 import unittest.mock
-import os
-import csv
-import tempfile
-import logging
+
 from DefFileGenerator.def_gen import Generator
 
 
@@ -88,7 +89,7 @@ class TestValidateCSV(unittest.TestCase):
 
     def test_validate_csv_empty_file(self):
         path = os.path.join(self.temp_dir.name, 'empty.csv')
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, 'w', encoding='utf-8'):
             pass
         self.assertFalse(self.generator.validate_csv(path))
 
