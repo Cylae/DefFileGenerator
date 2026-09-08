@@ -60,6 +60,7 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
+# Try to import Generator and peek_generator from def_gen
 try:
     from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
@@ -67,13 +68,14 @@ except ImportError:
         from def_gen import Generator, peek_generator  # type: ignore[import-not-found, no-redef]
     except ImportError:
         Generator = None
-        def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+        def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+            """Fallback peek_generator if def_gen is not available."""
             it = iter(iterable)
             try:
                 first = next(it)
+                return True, itertools.chain([first], it)
             except StopIteration:
                 return False, iter([])
-            return True, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
@@ -110,18 +112,19 @@ class Extractor:
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name and sheet_name in wb.sheetnames else wb.worksheets
+            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
 
             for ws in sheets:
                 def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
                     rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
+                        if not header_row:
+                            return
                     except StopIteration:
                         return
 
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
-
                     for row in rows:
                         if any(cell is not None and str(cell).strip() for cell in row):
                             yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
@@ -130,7 +133,7 @@ class Extractor:
 
         except (OSError, zipfile.BadZipFile) as e:
             logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-        except Exception as e:
+        except (ValueError, TypeError, KeyError) as e:
             logging.error(f"Error extracting from Excel {filepath}: {e}")
         finally:
             if wb:
@@ -149,7 +152,10 @@ class Extractor:
                 else:
                     requested = pages if isinstance(pages, list) else [pages]
                     if isinstance(pages, str):
-                        requested = [p.strip() for p in pages.split(',')]
+                        try:
+                            requested = [p.strip() for p in pages.split(',')]
+                        except Exception:
+                            requested = [pages]
 
                     for p in requested:
                         try:
@@ -208,14 +214,12 @@ class Extractor:
                     for row in reader:
                         if any(val.strip() for val in row.values() if val is not None):
                             yield dict(row)
-            except (OSError, csv.Error, UnicodeError) as e:
+            except (OSError, csv.Error, UnicodeError, ValueError, TypeError) as e:
                 logging.error(f"Error extracting from CSV {filepath}: {e}")
             except Exception as e:
                 logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
-        return csv_tables_generator()
-
-        return csv_tables_generator()
+        yield csv_table_generator()
 
         return csv_tables_generator()
 
@@ -230,38 +234,33 @@ class Extractor:
             logging.error("defusedxml is required for secure XML parsing.")
             return
 
-        try:
-            def xml_generator() -> Iterator[Dict[str, Any]]:
-                try:
-                    with open(filepath, 'rb') as f:
-                        tree = ET.parse(f)
-                        root = tree.getroot()
+        def xml_generator() -> Iterator[Dict[str, Any]]:
+            try:
+                with open(filepath, 'rb') as f:
+                    tree = ET.parse(f)
+                    root = tree.getroot()
 
-                    seen = set()
-                    for elem in root.iter():
-                        row = {}
-                        for child in elem:
-                            if len(child) == 0 and child.text:
-                                row[child.tag] = child.text.strip()
-                        if len(row) >= 2:
-                            js = json.dumps(row, sort_keys=True)
-                            if js not in seen:
-                                seen.add(js)
-                                yield row
-                except SECURITY_EXCEPTIONS:
-                    raise
-                except (OSError,) + XML_PARSE_ERRORS as e:
-                    logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
-                except Exception as e:
-                    logging.error(f"Error extracting from XML {filepath}: {e}")
+                seen = set()
+                for elem in root.iter():
+                    row = {}
+                    for child in elem:
+                        if len(child) == 0 and child.text:
+                            row[child.tag] = child.text.strip()
+                    if len(row) >= 2:
+                        js = json.dumps(row, sort_keys=True)
+                        if js not in seen:
+                            seen.add(js)
+                            yield row
+            except SECURITY_EXCEPTIONS as e:
+                logging.error(f"Security error parsing XML {filepath}: {e}")
+            except (OSError,) + XML_PARSE_ERRORS as e:
+                logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+            except (ValueError, TypeError) as e:
+                logging.error(f"Error extracting from XML {filepath}: {e}")
 
-            yield xml_generator()
-        except Exception as e:
-            logging.error(f"Error initializing XML extraction for {filepath}: {e}")
+        yield xml_generator()
 
-    def map_and_clean(
-        self, tables: Optional[Iterable[Iterable[dict[str, Any]]]], address_offset: int = 0
-    ) -> Iterator[dict[str, Any]]:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         if not tables:
             return
 
@@ -301,29 +300,30 @@ class Extractor:
             # (target, pattern) probe: this is O(K) rather than O(K * T * P).
             lowered = {src: str(src).lower().strip() for src in all_keys}
 
-            # Pass 1: exact header match. Pass 2: substring heuristic.
-            for exact_pass in (True, False):
-                for target in self.DETECTION_ORDER:
-                    if target in col_map:
-                        continue
-                    patterns = self.COLUMN_MAPPING.get(target, (target.lower(),))
-                    for src_col in all_keys:
-                        if src_col in used_src_cols:
-                            continue
-                        s_low = lowered[src_col]
-                        matched = (
-                            s_low in patterns
-                            if exact_pass
-                            else any(pat in s_low for pat in patterns)
-                        )
-                        if matched:
-                            col_map[target] = src_col
-                            used_src_cols.add(src_col)
-                            break
+            # Exact matches first
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    s_low = str(src_col).lower().strip()
+                    if s_low in patterns:
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
 
-            def process_row(
-                r: dict[str, Any], col_map: dict[str, Any] = col_map
-            ) -> Optional[dict[str, Any]]:
+            # Substring matches second
+            for target in detection_order:
+                if target in col_map: continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                for src_col in all_keys:
+                    if src_col in used_src_cols: continue
+                    if any(p in str(src_col).lower() for p in patterns):
+                        col_map[target] = src_col
+                        used_src_cols.add(src_col)
+                        break
+
+            def process_row(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get("Name") and not new_row.get("Address"):
                     return None
@@ -382,30 +382,35 @@ def main():
     parser.add_argument('--pages')
     parser.add_argument('--address-offset', type=int, default=0)
     args = parser.parse_args()
+
     mapping = {}
     if args.mapping:
-        try:
-            with open(args.mapping, 'r') as f: mapping = json.load(f)
-        except Exception as e:
-            logging.error(f"Error reading mapping file {args.mapping}: {e}")
+        with open(args.mapping, 'r') as f:
+            mapping = json.load(f)
+
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
-    pages = args.pages
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    if raw:
-        mapped = list(extractor.map_and_clean(raw, args.address_offset))
-        out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
-        writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
-        writer.writeheader(); writer.writerows(mapped)
-        if args.output: out.close()
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf':
+        raw = extractor.extract_from_pdf(args.input_file, args.pages)
+    elif ext == '.csv':
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw = extractor.extract_from_xml(args.input_file)
     else:
-        logging.error("Failed to extract data.")
+        logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
+
+    mapped = list(extractor.map_and_clean(raw, args.address_offset))
+
+    out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
+    writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped)
+    if args.output:
+        out.close()
 
 if __name__ == "__main__":
     main()
