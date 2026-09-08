@@ -67,39 +67,13 @@ except ImportError:
         from def_gen import Generator, peek_generator  # type: ignore[import-not-found, no-redef]
     except ImportError:
         Generator = None
-        peek_generator = None
-
-if peek_generator is None:
-
-    def peek_generator(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
-        """Checks if an iterable is non-empty without fully consuming it.
-
-        Returns (has_data, original_iterator).
-        """
-        if iterable is None:
-            return False, iter([])
-        it = iter(iterable)
-        try:
-            import def_gen
-            Generator = def_gen.Generator
-            def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
-                if iterable is None: return False, iter([])
-                it = iter(iterable)
-                try:
-                    first = next(it)
-                    return True, itertools.chain([first], it)
-                except StopIteration:
-                    return False, iter([])
-        except ImportError:
-            Generator = None
-            def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
-                if iterable is None: return False, iter([])
-                it = iter(iterable)
-                try:
-                    first = next(it)
-                    return True, itertools.chain([first], it)
-                except StopIteration:
-                    return False, iter([])
+        def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+            it = iter(iterable)
+            try:
+                first = next(it)
+            except StopIteration:
+                return False, iter([])
+            return True, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
@@ -136,7 +110,7 @@ class Extractor:
         wb = None
         try:
             wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            sheets = [wb[sheet_name]] if sheet_name and sheet_name in wb.sheetnames else wb.worksheets
 
             for ws in sheets:
                 def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
@@ -145,10 +119,13 @@ class Extractor:
                         header_row = next(rows)
                     except StopIteration:
                         return
+
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
+
                     for row in rows:
                         if any(cell is not None and str(cell).strip() for cell in row):
                             yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+
                 yield sheet_generator()
 
         except (OSError, zipfile.BadZipFile) as e:
@@ -172,10 +149,7 @@ class Extractor:
                 else:
                     requested = pages if isinstance(pages, list) else [pages]
                     if isinstance(pages, str):
-                        try:
-                            requested = [int(p.strip()) for p in pages.split(',')]
-                        except ValueError:
-                            requested = []
+                        requested = [p.strip() for p in pages.split(',')]
 
                     for p in requested:
                         try:
@@ -193,7 +167,7 @@ class Extractor:
                         if not table or len(table) < 2:
                             continue
 
-                        def table_generator(current_table=table) -> Iterator[Dict[str, Any]]:
+                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
                             headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
                             for row in current_table[1:]:
                                 row_dict = {}
@@ -202,8 +176,8 @@ class Extractor:
                                         row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
                                 if any(v.strip() for v in row_dict.values() if v):
                                     yield row_dict
-                        yield table_generator()
 
+                        yield table_generator(table)
         except (OSError,) + PDF_ERRORS as e:
             logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
         except Exception as e:
@@ -223,7 +197,11 @@ class Extractor:
                         dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
                         delimiter = dialect.delimiter
                     except csv.Error:
-                        delimiter = ';' if ';' in snippet else ','
+                        delimiter = ','
+                        for d in [',', ';', '\t']:
+                            if d in snippet:
+                                delimiter = d
+                                break
 
                     f.seek(0)
                     reader = csv.DictReader(f, delimiter=delimiter)
@@ -234,8 +212,6 @@ class Extractor:
                 logging.error(f"Error extracting from CSV {filepath}: {e}")
             except Exception as e:
                 logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
-
-            yield csv_table_generator()
 
         return csv_tables_generator()
 
@@ -254,11 +230,13 @@ class Extractor:
             logging.error("defusedxml is required for secure XML parsing.")
             return
 
-        def xml_generator() -> Iterator[Dict[str, Any]]:
-            try:
-                with open(filepath, 'rb') as f:
-                    tree = ET.parse(f)
-                    root = tree.getroot()
+        try:
+            def xml_generator() -> Iterator[Dict[str, Any]]:
+                try:
+                    with open(filepath, 'rb') as f:
+                        tree = ET.parse(f)
+                        root = tree.getroot()
+
                     seen = set()
                     for elem in root.iter():
                         row = {}
@@ -270,14 +248,16 @@ class Extractor:
                             if js not in seen:
                                 seen.add(js)
                                 yield row
-            except SECURITY_EXCEPTIONS:
-                logging.error(f"Security error parsing XML {filepath}")
-            except (OSError,) + XML_PARSE_ERRORS as e:
-                logging.error(f"Error extracting from XML {filepath}: {e}")
-            except Exception as e:
-                logging.error(f"Unexpected error extracting from XML {filepath}: {e}")
+                except SECURITY_EXCEPTIONS:
+                    raise
+                except (OSError,) + XML_PARSE_ERRORS as e:
+                    logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+                except Exception as e:
+                    logging.error(f"Error extracting from XML {filepath}: {e}")
 
-        yield xml_generator()
+            yield xml_generator()
+        except Exception as e:
+            logging.error(f"Error initializing XML extraction for {filepath}: {e}")
 
     def map_and_clean(
         self, tables: Optional[Iterable[Iterable[dict[str, Any]]]], address_offset: int = 0
@@ -286,11 +266,11 @@ class Extractor:
             return
 
         for table in tables:
-            has_rows, table = peek_generator(table)
+            has_rows, table_iter = peek_generator(table)
             if not has_rows:
                 continue
 
-            iterator = iter(table)
+            iterator = iter(table_iter)
             buffer = []
             try:
                 for _ in range(50):
@@ -375,11 +355,12 @@ class Extractor:
                 else:
                     new_row["Address"] = addr
 
-                if new_row.get("Factor") is not None:
-                    if Generator is not None:
-                        new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
-                if "RegisterType" not in new_row or not new_row["RegisterType"]:
-                    new_row["RegisterType"] = "Holding Register"
+                if new_row.get('Factor') is not None:
+                    if Generator:
+                        new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
+
+                if 'RegisterType' not in new_row or not new_row['RegisterType']:
+                    new_row['RegisterType'] = 'Holding Register'
                 return new_row
 
             for row in itertools.chain(buffer, iterator):
@@ -423,7 +404,7 @@ def main():
         writer.writeheader(); writer.writerows(mapped)
         if args.output: out.close()
     else:
-        logging.error("No data extracted.")
+        logging.error("Failed to extract data.")
         sys.exit(1)
 
 if __name__ == "__main__":

@@ -16,7 +16,10 @@ import json
 # Ensure the parent directory is in sys.path to allow direct execution
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, peek_generator, run_generator
+import logging
+import csv
+import json
+
 from DefFileGenerator.extractor import Extractor
 
 try:
@@ -52,7 +55,7 @@ def _guard_output(args):
 
 
 def _perform_extraction(args):
-    input_file = getattr(args, "input_file", None)
+    input_file = getattr(args, 'input_file', None)
     if not input_file:
         logging.error("Input file is required for extraction.")
         sys.exit(1)
@@ -117,35 +120,38 @@ def extract_command(args):
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    f = open(output, 'w', newline='', encoding='utf-8') if output else sys.stdout
-    try:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(mapped_data)
-        if output:
-            logging.info(f"Extraction complete. Saved to {output}")
-    finally:
-        if output:
-            f.close()
+    if output:
+        f = open(output, 'w', newline='', encoding='utf-8')
+    else:
+        f = sys.stdout
+
+    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped_data)
+
+    if output:
+        f.close()
+        logging.info(f"Extraction complete. Saved to {output}")
 
 def validate_command(args):
     generator = Generator()
-    if not generator.validate_csv(args.input_file):
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful for {args.input_file}")
+    else:
         logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
-    logging.info(f"Validation successful for {args.input_file}")
 
 def generate_command(args):
     template = getattr(args, 'template', False)
+    input_file = getattr(args, 'input_file', None)
     template_mode = getattr(args, 'template_mode', 'input')
 
-    # If using template with generate command, the input_file argument might actually be the word 'definition'
-    if template and args.input_file == 'definition':
+    if template and input_file == 'definition':
         template_mode = 'definition'
-        args.input_file = None
+        input_file = None
 
     config = GeneratorConfig(
-        input_file=getattr(args, 'input_file', None),
+        input_file=input_file,
         output=getattr(args, 'output', None),
         manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
         model=getattr(args, 'model', 'Model'),
@@ -159,20 +165,20 @@ def generate_command(args):
     run_generator(config)
 
 def run_command(args):
-    template = getattr(args, "template", False)
+    template = getattr(args, 'template', False)
     mapped_data = None
     if not template:
         mapped_data = _perform_extraction(args)
 
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
-        output=args.output,
+        output=getattr(args, 'output', None),
         manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
         model=getattr(args, 'model', 'Model'),
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=0, # Already applied during extraction in run mode
         template=template,
         template_mode=getattr(args, 'template_mode', 'input')
     )
@@ -233,12 +239,20 @@ def _run_cli():
 
     logging.info(f"Definition written to {output_file}")
 
-    # Validation for generate/run
+    # Validation of common arguments
+    input_file = getattr(args, 'input_file', None)
+    if input_file:
+        ext = os.path.splitext(input_file)[1].lower()
+        if getattr(args, 'pages', None) and ext != '.pdf':
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        if getattr(args, 'sheet', None) and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+            logging.warning("--sheet is only applicable for Excel files. Ignoring.")
+
     if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
         if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
             logging.error("--manufacturer and --model are required.")
             sys.exit(1)
-        if not getattr(args, 'input_file', None):
+        if not input_file:
             logging.error("input_file is required.")
             sys.exit(1)
 
