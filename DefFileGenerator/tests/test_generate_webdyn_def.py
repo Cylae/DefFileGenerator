@@ -4,6 +4,7 @@ import os
 import io
 import json
 import logging
+import tempfile
 from unittest.mock import patch
 
 class TestGenerateWebdynDef(unittest.TestCase):
@@ -12,8 +13,9 @@ class TestGenerateWebdynDef(unittest.TestCase):
         self.old_log_level = logging.getLogger().getEffectiveLevel()
         logging.disable(logging.CRITICAL)
 
-        self.input_csv = "test_gen_wrapper_input.csv"
-        self.output_csv = "test_gen_wrapper_output.csv"
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.input_csv = os.path.join(self.temp_dir.name, "test_gen_wrapper_input.csv")
+        self.output_csv = os.path.join(self.temp_dir.name, "test_gen_wrapper_output.csv")
 
         with open(self.input_csv, 'w', encoding='utf-8') as f:
             f.write("Register,Name,Data Type,Unit,Scale,Access\n")
@@ -23,11 +25,7 @@ class TestGenerateWebdynDef(unittest.TestCase):
     def tearDown(self):
         # Restore logging level
         logging.disable(self.old_log_level)
-
-        # Cleanup temporary files
-        for path in [self.input_csv, self.output_csv, "sample_register_map.csv", "sample_output_definition.csv", "test_out_offset.csv"]:
-            if os.path.exists(path):
-                os.remove(path)
+        self.temp_dir.cleanup()
 
     def test_generate_webdyn_definition_success(self):
         from generate_webdyn_def import generate_webdyn_definition
@@ -60,80 +58,69 @@ class TestGenerateWebdynDef(unittest.TestCase):
 
     def test_generate_webdyn_definition_unsupported_format(self):
         from generate_webdyn_def import generate_webdyn_definition
-        bad_format_file = "test_bad_ext.txt"
+        bad_format_file = os.path.join(self.temp_dir.name, "test_bad_ext.txt")
         with open(bad_format_file, 'w') as f:
             f.write("some data")
 
-        try:
-            success = generate_webdyn_definition(
-                input_file=bad_format_file,
-                output_file=self.output_csv,
-                manufacturer="TestMfg",
-                model="TestModel"
-            )
-            self.assertFalse(success)
-        finally:
-            if os.path.exists(bad_format_file):
-                os.remove(bad_format_file)
+        success = generate_webdyn_definition(
+            input_file=bad_format_file,
+            output_file=self.output_csv,
+            manufacturer="TestMfg",
+            model="TestModel"
+        )
+        self.assertFalse(success)
 
     def test_generate_webdyn_definition_empty_input(self):
         from generate_webdyn_def import generate_webdyn_definition
-        empty_file = "test_empty_input.csv"
+        empty_file = os.path.join(self.temp_dir.name, "test_empty_input.csv")
         with open(empty_file, 'w') as f:
             f.write("")
 
-        try:
-            success = generate_webdyn_definition(
-                input_file=empty_file,
-                output_file=self.output_csv,
-                manufacturer="TestMfg",
-                model="TestModel"
-            )
-            self.assertFalse(success)
-        finally:
-            if os.path.exists(empty_file):
-                os.remove(empty_file)
+        success = generate_webdyn_definition(
+            input_file=empty_file,
+            output_file=self.output_csv,
+            manufacturer="TestMfg",
+            model="TestModel"
+        )
+        self.assertFalse(success)
 
     def test_generate_webdyn_definition_address_offset(self):
         from generate_webdyn_def import generate_webdyn_definition
+        offset_out = os.path.join(self.temp_dir.name, "test_out_offset.csv")
         success = generate_webdyn_definition(
             input_file=self.input_csv,
-            output_file="test_out_offset.csv",
+            output_file=offset_out,
             manufacturer="TestMfg",
             model="TestModel",
             address_offset=10
         )
         self.assertTrue(success)
-        self.assertTrue(os.path.exists("test_out_offset.csv"))
+        self.assertTrue(os.path.exists(offset_out))
 
         # Verify that addresses are shifted (30001 -> 30011, 30002 -> 30012)
-        with open("test_out_offset.csv", 'r', encoding='utf-8-sig') as f:
+        with open(offset_out, 'r', encoding='utf-8-sig') as f:
             lines = f.readlines()
         self.assertTrue(any(";30011;" in line for line in lines))
         self.assertTrue(any(";30012;" in line for line in lines))
 
     def test_generate_webdyn_definition_validation_fail_strict(self):
         # Create an input with overlapping addresses to cause validation failure in strict mode
-        overlap_csv = "test_overlap.csv"
+        overlap_csv = os.path.join(self.temp_dir.name, "test_overlap.csv")
         with open(overlap_csv, 'w', encoding='utf-8') as f:
             f.write("Register,Name,Data Type\n")
             f.write("40001,ActivePower,uint16\n")
             f.write("40001,ReactivePower,uint16\n")
 
         from generate_webdyn_def import generate_webdyn_definition
-        try:
-            success = generate_webdyn_definition(
-                input_file=overlap_csv,
-                output_file=self.output_csv,
-                manufacturer="TestMfg",
-                model="TestModel",
-                strict_validation=True
-            )
-            # Should fail due to address overlap
-            self.assertFalse(success)
-        finally:
-            if os.path.exists(overlap_csv):
-                os.remove(overlap_csv)
+        success = generate_webdyn_definition(
+            input_file=overlap_csv,
+            output_file=self.output_csv,
+            manufacturer="TestMfg",
+            model="TestModel",
+            strict_validation=True
+        )
+        # Should fail due to address overlap
+        self.assertFalse(success)
 
     def test_main_demo_mode(self):
         # When fewer than 5 arguments are provided, main should run the demo mode
