@@ -356,82 +356,33 @@ class Generator:
             return False
 
     @staticmethod
-    def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
-        factor = Generator._parse_numeric(factor_str, default=1.0)
-        offset = Generator._parse_numeric(offset_str, default=0.0)
-        try: scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
-        except ValueError: scale_val = 0
-        coef_a = "{:.6f}".format(factor * (10 ** scale_val))
-        coef_b = "{:.6f}".format(offset)
-        return coef_a, coef_b
-
-    def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        seen_names, seen_tags, address_usage, warned_lines = {}, {}, {}, set()
-        for line_num, row in enumerate(rows, start=2):
-            if not any(v for v in row.values() if v): continue
-            norm_row = {k.lower().strip(): (str(v).strip() if v is not None else '') for k, v in row.items()}
-            name = norm_row.get('name', '')
-            tag = norm_row.get('tag', '')
-            reg_type_str = norm_row.get('registertype', '')
-            address = norm_row.get('address', '')
-            dtype_raw = norm_row.get('type', '')
-            factor = norm_row.get('factor', '')
-            offset = norm_row.get('offset', '')
-            unit = norm_row.get('unit', '')
-            action = norm_row.get('action', '')
-            scale_factor_str = norm_row.get('scalefactor', '')
-
-            if not name and not address: continue
-            dtype = self.normalize_type(dtype_raw)
-            if not self.validate_type(dtype):
-                logging.warning(f"Line {line_num}: Invalid Type '{dtype_raw}'. Skipping.")
-                continue
-
-            # STR<n> extraction and address extension
-            match_str = RE_TYPE_STR_CONV.match(dtype)
-            if match_str:
-                suffix = match_str.group(2) or ''
-                dtype = f"STRING{suffix}"
-                if '_' not in address:
-                    address = f"{address}_{match_str.group(1)}"
-
-            address = Generator.apply_address_offset(address, address_offset, line_num, name)
-            if not self.validate_address(address, dtype):
-                logging.warning(f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping.")
-                continue
-
-            info1 = self._determine_info1(reg_type_str, line_num)
-            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
-
-            tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
-
-            fa = Generator._parse_numeric(factor, 1.0)
-            off = Generator._parse_numeric(offset, 0.0)
-            try: sf = int(float(scale_factor_str)) if scale_factor_str else 0
-            except ValueError: sf = 0
-            coef_a = "{:.6f}".format(fa * (10 ** sf))
-            coef_b = "{:.6f}".format(off)
-
-            act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = '4' if info1 in ['2', '4'] else '1'
-            elif act_str in ['R', 'READ', 'RO', 'READ-ONLY', 'READ ONLY', '4']:
-                norm_action = '4'
-            elif act_str in ['RW', 'W', 'WRITE', 'READ/WRITE', 'READ-WRITE', 'R/W', 'WO', 'WRITE-ONLY', 'WRITE ONLY', '1']:
-                norm_action = '1'
-            elif act_str in self.allowed_actions:
-                norm_action = act_str
-            else:
-                norm_action = '4' if info1 in ['2', '4'] else '1'
-
-            yield {'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '', 'Name': name, 'Tag': tag, 'CoefA': coef_a, 'CoefB': coef_b, 'Unit': unit, 'Action': norm_action}
+    def _format_header_row(protocol: str, category: str, manufacturer: str, model: str, forced_write: str = '') -> List[str]:
+        """Constructs and sanitizes the header row for WebdynSunPM CSV format."""
+        return [
+            Generator.sanitize_csv_field(protocol),
+            Generator.sanitize_csv_field(category),
+            Generator.sanitize_csv_field(manufacturer),
+            Generator.sanitize_csv_field(model),
+            Generator.sanitize_csv_field(forced_write),
+            '', '', '', '', '', ''
+        ]
 
     @staticmethod
-    def sanitize_csv_field(val: Any) -> str:
-        s = str(val)
-        if s.startswith(('=', '+', '-', '@')):
-            return "'" + s
-        return s
+    def _format_data_row(index: int, row: Dict[str, Any]) -> List[str]:
+        """Formats and sanitizes a single register data row for WebdynSunPM CSV format."""
+        return [
+            str(index),
+            Generator.sanitize_csv_field(row['Info1']),
+            Generator.sanitize_csv_field(row['Info2']),
+            Generator.sanitize_csv_field(row['Info3']),
+            Generator.sanitize_csv_field(row['Info4']),
+            Generator.sanitize_csv_field(row['Name']),
+            Generator.sanitize_csv_field(row['Tag']),
+            Generator.sanitize_csv_field(row['CoefA']),
+            Generator.sanitize_csv_field(row['CoefB']),
+            Generator.sanitize_csv_field(row['Unit']),
+            Generator.sanitize_csv_field(row['Action'])
+        ]
 
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
@@ -445,35 +396,16 @@ class Generator:
             elif output is None: outfile = sys.stdout
             else: outfile = output
 
-            writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
-            writer.writerow([
-                Generator.sanitize_csv_field(protocol),
-                Generator.sanitize_csv_field(category),
-                Generator.sanitize_csv_field(manufacturer),
-                Generator.sanitize_csv_field(model),
-                Generator.sanitize_csv_field(forced_write),
-                '', '', '', '', '', ''
-            ]
+            header_row = Generator._format_header_row(protocol, category, manufacturer, model, forced_write)
             writer = csv.writer(outfile, delimiter=';', lineterminator='\n')
             writer.writerow(header_row)
 
             last_index = 0
             for index, row in enumerate(processed_rows, start=1):
+                data_row = Generator._format_data_row(index, row)
+                writer.writerow(data_row)
                 type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1
-                writer.writerow([
-                    str(index),
-                    row['Info1'],
-                    row['Info2'],
-                    row['Info3'],
-                    row['Info4'],
-                    Generator.sanitize_csv_field(row['Name']),
-                    Generator.sanitize_csv_field(row['Tag']),
-                    row['CoefA'],
-                    row['CoefB'],
-                    Generator.sanitize_csv_field(row['Unit']),
-                    row['Action']
-                ])
-                last_index = index
+                total += 1
 
             summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in type_counts.items() if v > 0])
             if summary:
