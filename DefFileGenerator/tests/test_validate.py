@@ -43,8 +43,7 @@ class TestValidateCSV(unittest.TestCase):
             ["2", "3", "40002", "U16", "", "Name2", "tag2", "1.0", "0.0", "W", "4"],
         ]
         path = self.create_csv(rows)
-        # Address overlaps are treated as warnings, not fatal errors
-        self.assertTrue(self.generator.validate_csv(path))
+        self.assertFalse(self.generator.validate_csv(path, strict=True))
 
     def test_invalid_address(self):
         rows = [["1", "3", "invalid", "U16", "", "Name1", "tag1", "1.0", "0.0", "W", "4"]]
@@ -57,9 +56,7 @@ class TestValidateCSV(unittest.TestCase):
             writer = csv.writer(f, delimiter=';')
             writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model'])
             writer.writerow(['1', '3', '40001']) # too short
-        # Current validate_csv returns True for rows with < 11 columns (it logs a warning and skips)
-        # but if there are NO valid rows, it might return True or False depending on implementation.
-        # Actually, in my version it returns True if no FATAL errors found.
+        # Should log warning and return True if no other errors
         self.assertTrue(self.generator.validate_csv(path))
 
 

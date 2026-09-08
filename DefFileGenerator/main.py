@@ -13,9 +13,6 @@ import logging
 import csv
 import json
 
-# Ensure the parent directory is in sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
@@ -29,7 +26,10 @@ def setup_logging(verbose=False):
 
 def _perform_extraction(args):
     input_file = getattr(args, 'input_file', None)
-    if not input_file or not os.path.exists(input_file):
+    if not input_file:
+        logging.error("Input file is required for extraction.")
+        sys.exit(1)
+    if not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
@@ -76,61 +76,66 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
+
     output = getattr(args, 'output', None)
+    fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
     if output:
         f = open(output, 'w', newline='', encoding='utf-8')
     else:
         f = sys.stdout
 
-    fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-    writer.writeheader()
-    for row in mapped_data:
-        writer.writerow(row)
+    try:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+        writer.writeheader()
+        for row in mapped_data:
+            writer.writerow(row)
 
-    if output:
-        f.close()
-        logging.info(f"Extraction complete. Saved to {output}")
+        if output:
+            logging.info(f"Extraction complete. Saved to {output}")
+    finally:
+        if output:
+            f.close()
 
 def validate_command(args):
-    generator = Generator()
-    if generator.validate_csv(args.input_file):
-        logging.info(f"Validation successful: {args.input_file}")
+    gen = Generator()
+    if gen.validate_csv(args.input_file):
+        logging.info(f"Validation successful for {args.input_file}")
     else:
-        logging.error(f"Validation failed: {args.input_file}")
+        logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
 
 def generate_command(args):
     config = GeneratorConfig(
-        input_file=args.input_file,
-        output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=args.address_offset,
-        template=args.template,
+        input_file=getattr(args, 'input_file', None),
+        output=getattr(args, 'output', None),
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=getattr(args, 'address_offset', 0),
+        template=getattr(args, 'template', False),
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config)
 
 def run_command(args):
+    template = getattr(args, 'template', False)
     mapped_data = None
-    if not args.template:
+    if not template:
         mapped_data = _perform_extraction(args)
 
     config = GeneratorConfig(
-        input_file=args.input_file,
+        input_file=getattr(args, 'input_file', None),
         output=args.output,
         manufacturer=args.manufacturer,
         model=args.model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Applied during extraction
-        template=args.template,
+        address_offset=0, # Already applied during extraction in run mode
+        template=template,
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
@@ -159,20 +164,20 @@ def _run_cli():
     parser_generate.add_argument('--manufacturer')
     parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
-    parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run
+    # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer')
     parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
-    parser_run.add_argument('--template', action='store_true', help='Generate sample template')
+    parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')

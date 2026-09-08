@@ -18,19 +18,12 @@ from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli(argv=None):
-    if argv is None:
-        argv = sys.argv[1:]
-    else:
-        # Strip script name if present as first element
-        if argv and (argv[0].endswith('main.py') or argv[0].endswith('doc_to_webdyn.py') or argv[0] == 'main.py' or argv[0] == 'doc_to_webdyn.py'):
-            argv = argv[1:]
-
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
     parser.add_argument('--model', help='Model name')
     parser.add_argument('--template', action='store_true', help='Generate a template definition')
-    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input', help='Template mode')
+    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -54,6 +47,10 @@ def _run_cli(argv=None):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
+    if not args.manufacturer or not args.model:
+        logging.error("--manufacturer and --model are required.")
+        sys.exit(1)
+
     ext = os.path.splitext(args.input_file)[1].lower()
 
     # Warn about mismatched options
@@ -73,10 +70,14 @@ def _run_cli(argv=None):
 
     extractor = Extractor(mapping)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, args.pages)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf':
+        raw = extractor.extract_from_pdf(args.input_file, args.pages)
+    elif ext == '.csv':
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw = extractor.extract_from_xml(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
@@ -92,11 +93,9 @@ def _run_cli(argv=None):
         logging.error("No registers extracted.")
         sys.exit(1)
 
-    m_name = args.manufacturer or "Manufacturer"
-    m_model = args.model or "Model"
-    output_file = args.output
-    if not output_file:
-        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+    m_name = args.manufacturer
+    m_model = args.model
+    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -106,8 +105,8 @@ def _run_cli(argv=None):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0,  # Already applied during extraction
-        template=args.template
+        address_offset=0, # Already applied during extraction
+        template=False
     )
     run_generator(config, input_data=mapped_peeked)
 
