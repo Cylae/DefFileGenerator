@@ -138,7 +138,7 @@ class TestNormalizeAddressValExtended(unittest.TestCase):
         self.assertEqual(self._norm("0B1100"), "12")
 
     def test_binary_invalid_parsed_as_bare_hex(self):
-        # "0b102" is invalid binary, but all chars (0, b, 1, 0, 2) match bare hex regex -> int("0b102", 16) = 45314
+        # "0b102" is invalid binary, but all chars match bare hex regex -> int("0b102", 16) = 45314
         self.assertEqual(self._norm("0b102"), "45314")
 
     # thousands separators
