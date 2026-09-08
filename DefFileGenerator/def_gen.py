@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 import argparse
 import csv
-import itertools
-import logging
-import math
-import os
-import re
 import sys
-from collections.abc import Iterable, Iterator
+import logging
+import re
+import math
+import itertools
+import os
 from dataclasses import dataclass
-from typing import Any, Dict, Optional, Set, Tuple, Union
-
+from typing import Any, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union
 
 def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
     """
@@ -342,8 +340,8 @@ class Generator:
         offset = Generator._parse_numeric(offset_str, default=0.0)
         try: scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
         except ValueError: scale_val = 0
-        coef_a = f"{factor * (10 ** scale_val):.6f}"
-        coef_b = f"{offset:.6f}"
+        coef_a = "{:.6f}".format(factor * (10 ** scale_val))
+        coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
@@ -420,7 +418,7 @@ class Generator:
                 header_bytes = f.read(4)
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-            with open(filepath, encoding=encoding) as f:
+            with open(filepath, 'r', encoding=encoding) as f:
                 reader = csv.reader(f, delimiter=';')
                 header = next(reader, None)
                 if not header or len(header) < 2 or not any(header):
@@ -586,7 +584,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                 header_bytes = f.read(4)
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-            with open(config.input_file, encoding=encoding) as csvfile:
+            with open(config.input_file, mode='r', encoding=encoding) as csvfile:
                 snippet = csvfile.read(2048)
                 csvfile.seek(0)
                 try:

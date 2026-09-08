@@ -1,8 +1,9 @@
 """Batch 3: def_gen.py edge-case tests."""
 
 import logging
-import os
+import math
 import tempfile
+import os
 import unittest
 
 from DefFileGenerator.def_gen import (

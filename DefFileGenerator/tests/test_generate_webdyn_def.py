@@ -1,9 +1,10 @@
-import logging
-import os
-import sys
 import unittest
+import sys
+import os
+import io
+import json
+import logging
 from unittest.mock import patch
-
 
 class TestGenerateWebdynDef(unittest.TestCase):
     def setUp(self):
@@ -40,7 +41,7 @@ class TestGenerateWebdynDef(unittest.TestCase):
         self.assertTrue(os.path.exists(self.output_csv))
 
         # Check content of the generated file
-        with open(self.output_csv, encoding='utf-8-sig') as f:
+        with open(self.output_csv, 'r', encoding='utf-8-sig') as f:
             lines = f.readlines()
         self.assertTrue(len(lines) >= 3)
         self.assertTrue("TestMfg" in lines[0])
@@ -106,7 +107,7 @@ class TestGenerateWebdynDef(unittest.TestCase):
         self.assertTrue(os.path.exists("test_out_offset.csv"))
 
         # Verify that addresses are shifted (30001 -> 30011, 30002 -> 30012)
-        with open("test_out_offset.csv", encoding='utf-8-sig') as f:
+        with open("test_out_offset.csv", 'r', encoding='utf-8-sig') as f:
             lines = f.readlines()
         self.assertTrue(any(";30011;" in line for line in lines))
         self.assertTrue(any(";30012;" in line for line in lines))
@@ -172,7 +173,7 @@ class TestGenerateWebdynDef(unittest.TestCase):
                 self.assertTrue(os.path.exists(self.output_csv))
 
                 # Check category in header row
-                with open(self.output_csv, encoding='utf-8-sig') as f:
+                with open(self.output_csv, 'r', encoding='utf-8-sig') as f:
                     header = f.readline()
                 self.assertTrue(";Sensor;" in header)
 
