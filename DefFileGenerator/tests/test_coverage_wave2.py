@@ -758,3 +758,74 @@ class TestSanitizeCsvField(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ===========================================================================
+# Targeted coverage additions for def_gen, extractor, and main CLI
+# ===========================================================================
+
+
+class TestAdditionalCoverageWave2(unittest.TestCase):
+    """Targeted tests for def_gen main entrypoint, run_generator errors, and extractor error handling."""
+
+    def setUp(self):
+        self.tmpdir = tempfile.TemporaryDirectory()
+
+    def tearDown(self):
+        self.tmpdir.cleanup()
+
+    def test_run_generator_handles_os_error(self):
+        config = GeneratorConfig(
+            input_file="invalid.csv",
+            output="/invalid/path/out.csv",
+            manufacturer="M",
+            model="X",
+        )
+        rows = [{"Name": "V", "Address": "100", "Type": "U16"}]
+        with patch("logging.error") as mock_err:
+            run_generator(config, input_data=iter(rows))
+            mock_err.assert_called()
+
+    def test_def_gen_main_normal(self):
+        inp = os.path.join(self.tmpdir.name, "in.csv")
+        out = os.path.join(self.tmpdir.name, "out.csv")
+        with open(inp, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=["Name", "Address", "Type"])
+            writer.writeheader()
+            writer.writerow({"Name": "V1", "Address": "100", "Type": "U16"})
+        with patch.object(
+            sys,
+            "argv",
+            ["def_gen.py", inp, "-o", out, "--manufacturer", "ACME", "--model", "M1"],
+        ):
+            from DefFileGenerator.def_gen import main as def_gen_main
+
+            def_gen_main()
+        self.assertTrue(os.path.exists(out))
+
+    def test_def_gen_main_template(self):
+        out = os.path.join(self.tmpdir.name, "tmpl.csv")
+        with patch.object(sys, "argv", ["def_gen.py", "-o", out, "--template"]):
+            from DefFileGenerator.def_gen import main as def_gen_main
+
+            def_gen_main()
+        self.assertTrue(os.path.exists(out))
+
+    def test_extractor_pdf_invalid_pages_logs_error(self):
+        ext = Extractor()
+        with patch("logging.error") as mock_err:
+            res = list(ext.extract_from_pdf("dummy.pdf", pages="invalid"))
+            self.assertEqual(res, [])
+            mock_err.assert_called()
+
+    def test_cli_main_generate_subcommand(self):
+        from DefFileGenerator.main import main as cli_main
+
+        inp = os.path.join(self.tmpdir.name, "in.csv")
+        out = os.path.join(self.tmpdir.name, "out.csv")
+        with open(inp, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=["Name", "Address", "Type"])
+            writer.writeheader()
+            writer.writerow({"Name": "V1", "Address": "100", "Type": "U16"})
+        cli_main(["generate", inp, "-o", out, "--manufacturer", "ACME", "--model", "M1", "--force"])
+        self.assertTrue(os.path.exists(out))
