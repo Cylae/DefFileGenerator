@@ -1,9 +1,6 @@
 import csv
 import logging
-import os
 import tempfile
-import unittest
-
 from DefFileGenerator.def_gen import Generator
 
 
