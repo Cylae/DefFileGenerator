@@ -160,7 +160,6 @@ class Generator:
                 return False
         except (ValueError, IndexError):
             return False
-
         return True
 
     @staticmethod
@@ -232,17 +231,22 @@ class Generator:
         return tag
 
     def _determine_info1(self, reg_type_str: str, line_num: int = 0) -> str:
-        if reg_type_str is None: return '3'
+        """Maps RegisterType string to Webdyn Info1 code."""
+        if reg_type_str is None:
+            return '3'
         lt = str(reg_type_str).lower().strip()
-        if not lt: return '3'
-        if lt in self.register_type_map: return self.register_type_map[lt]
-        elif str(reg_type_str).strip() in ['1', '2', '3', '4']: return str(reg_type_str).strip()
-        if line_num: logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
+        if not lt:
+            return '3'
+        if lt in self.register_type_map:
+            return self.register_type_map[lt]
+        elif lt in ['1', '2', '3', '4']:
+            return lt
+        if line_num:
+            logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
     def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[str, Any]], warned_lines: Set[Tuple[int, int]]) -> bool:
-        """Checks for address overlaps using O(log N) binary search on intervals."""
-        overlap_found = False
+        """Checks for address overlaps using O(log N) binary search on intervals. Returns True if overlap detected."""
         try:
             addr_part = address.split('_')[0]
             start_addr = int(self.normalize_address_val(addr_part))
@@ -268,7 +272,7 @@ class Generator:
                 if max(start_addr, u_start) <= min(end_addr, u_end):
                     if is_bits and u_type == 'BITS' and start_addr == u_start:
                         continue
-                    overlap_found = True
+                    overlap_detected = True
                     warn_key = tuple(sorted((line_num, u_line)))
                     if warn_key not in warned_lines:
                         logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {max(start_addr, u_start)}. Overlaps with '{u_name}' (Line {u_line}).")
@@ -280,39 +284,21 @@ class Generator:
                 if max(start_addr, u_start) <= min(end_addr, u_end):
                     if is_bits and u_type == 'BITS' and start_addr == u_start:
                         continue
-                    overlap_found = True
+                    overlap_detected = True
                     warn_key = tuple(sorted((line_num, u_line)))
                     if warn_key not in warned_lines:
                         logging.warning(f"Line {line_num}: Address overlap detected for '{name}' at {max(start_addr, u_start)}. Overlaps with '{u_name}' (Line {u_line}).")
                         warned_lines.add(warn_key)
 
             bisect.insort(intervals, (start_addr, end_addr, line_num, name, dtype.upper()))
-            if reg_count > max_len: usage['max_len'] = reg_count
+            if reg_count > max_len:
+                usage['max_len'] = reg_count
             return overlap_detected
         except (ValueError, IndexError):
-            pass
-        return overlap_found
+            return False
 
-    @staticmethod
-    def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
-        factor = Generator._parse_numeric(factor_str, default=1.0)
-        offset = Generator._parse_numeric(offset_str, default=0.0)
-        try: scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
-        except (ValueError, TypeError): scale_val = 0
-        coef_a = "{:.6f}".format(factor * (10 ** scale_val))
-        coef_b = "{:.6f}".format(offset)
-        return coef_a, coef_b
-
-    @staticmethod
-    def sanitize_csv_field(field: Any) -> str:
-        """Escapes CSV fields to prevent formula injection."""
-        s = str(field)
-        if s.startswith(('=', '+', '-', '@', '\t', '\r')):
-            return "'" + s
-        return s
-
-    def validate_csv(self, filepath: str, strict_overlap: bool = False) -> bool:
-        """Deep validation of an existing WebdynSunPM definition file."""
+    def validate_csv(self, filepath: str) -> bool:
+        """Robustly validates an existing WebdynSunPM definition file."""
         if not os.path.exists(filepath):
             logging.error(f"File not found: {filepath}")
             return False
@@ -328,54 +314,69 @@ class Generator:
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
             with open(filepath, 'r', encoding=encoding) as f:
-                reader = csv.reader(f, delimiter=';')
+                snippet = f.read(2048)
+                f.seek(0)
+                try:
+                    dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                    delimiter = dialect.delimiter
+                except csv.Error:
+                    delimiter = ';' if ';' in snippet else ','
+
+                reader = csv.reader(f, delimiter=delimiter)
                 header = next(reader, None)
                 if not header:
-                    return True
-                if len(header) < 4:
-                    logging.warning(f"Invalid Webdyn definition header in {filepath}")
-                    return True
+                    return True # Empty but technically valid as a starting point
+
+                # Webdyn files have protocol in first column of first row
+                is_webdyn = header[0] in ['modbusRTU', 'modbusTCP']
+                if is_webdyn and len(header) < 2:
+                    logging.error("Invalid Webdyn definition header.")
+                    return False
 
                 for line_num, row in enumerate(reader, start=2):
-                    if not row or not any(row) or row[0].startswith('#'):
-                        continue
+                    if not row or not any(row): continue
                     if len(row) < 11:
-                        logging.warning(f"Line {line_num}: Row has insufficient columns ({len(row)}/11). Skipping.")
-                        if not any(row):
-                            continue
-                        # If we want insufficient columns to be "valid" but warned:
-                        # but we still need to avoid IndexErrors below.
+                        logging.warning(f"Line {line_num}: Insufficient columns (found {len(row)}/11). Skipping.")
                         continue
 
-                    # Index; Info1; Info2; Info3; Info4; Name; Tag; CoefA; CoefB; Unit; Action
-                    info1 = row[1].strip()
-                    address = row[2].strip()
-                    dtype = row[3].strip()
-                    name = row[5].strip()
-                    tag = row[6].strip()
+                    # row format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
 
-                    # Tag validation (Fatal)
+                    # Validate Tag uniqueness (Fatal)
                     if tag:
                         if tag in seen_tags:
                             logging.error(f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (Previously at line {seen_tags[tag]}).")
-                            is_valid = False
+                            valid = False
                         else:
                             seen_tags[tag] = line_num
 
-                    # Address validation
-                    if not self.validate_address(address, dtype):
-                        # validate_address already logs out of range warning
-                        is_valid = False
+                    # Validate Type
+                    if not self.validate_type(info3):
+                        logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
+                        valid = False
 
-                    # Address overlap check
-                    if self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines):
-                        if strict_overlap:
-                            is_valid = False
+                    # Validate Address
+                    if not self.validate_address(info2, info3):
+                        logging.warning(f"Line {line_num}: Invalid Address '{info2}' for Type '{info3}'.")
+                        valid = False
+                    else:
+                        if self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines):
+                            # In WebdynSunPM, address overlaps should be fatal errors to ensure data integrity
+                            valid = False
 
-            return is_valid
+            return valid
+
         except (OSError, csv.Error) as e:
-            logging.error(f"Error validating CSV: {e}")
+            logging.error(f"Error reading definition file: {e}")
             return False
+
+    @staticmethod
+    def sanitize_csv_field(field: Any) -> str:
+        if field is None: return ""
+        s = str(field)
+        if s and s[0] in ('=', '+', '-', '@'):
+            return "'" + s
+        return s
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
         seen_names, seen_tags, address_usage, warned_lines = {}, {}, {}, set()
@@ -395,8 +396,7 @@ class Generator:
             match_str = RE_TYPE_STR_CONV.match(dtype)
             if match_str:
                 dtype = 'STRING'
-                if '_' not in address:
-                    address = f"{address}_{match_str.group(1)}"
+                if '_' not in address: address = f"{address}_{match_str.group(1)}"
 
             address = Generator.apply_address_offset(address, address_offset, line_num, name)
             if not self.validate_address(address, dtype_internal):
@@ -405,9 +405,11 @@ class Generator:
 
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
-            self._check_address_overlap(info1, address, dtype_internal, name, line_num, address_usage, warned_lines)
+            self._check_address_overlap(info1, address, dtype, name, line_num, address_usage, warned_lines)
+
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
+            # Action normalization
             act_str = str(action).strip().upper()
             if not act_str:
                 norm_action = '4' if info1 in ['2', '4'] else '1'
@@ -421,22 +423,28 @@ class Generator:
                 norm_action = '4' if info1 in ['2', '4'] else '1'
 
             yield {
-                'Info1': info1,
-                'Info2': address,
-                'Info3': dtype.upper(),
-                'Info4': '',
-                'Name': name,
-                'Tag': tag,
-                'CoefA': coef_a,
-                'CoefB': coef_b,
-                'Unit': unit,
-                'Action': norm_action
+                'Info1': info1, 'Info2': address, 'Info3': dtype.upper(), 'Info4': '',
+                'Name': name, 'Tag': tag, 'CoefA': coef_a, 'CoefB': coef_b, 'Unit': unit, 'Action': norm_action
             }
+
+    @staticmethod
+    def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
+        factor = Generator._parse_numeric(factor_str, default=1.0)
+        offset = Generator._parse_numeric(offset_str, default=0.0)
+        try: scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
+        except ValueError: scale_val = 0
+        coef_a = "{:.6f}".format(factor * (10 ** scale_val))
+        coef_b = "{:.6f}".format(offset)
+        return coef_a, coef_b
 
     @staticmethod
     def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        type_summary = {'1': 0, '2': 0, '3': 0, '4': 0}
+        type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+        outfile = None
+        last_index = 0
         try:
             if isinstance(output, str): outfile = open(output, 'w', newline='', encoding='utf-8-sig')
             elif output is None: outfile = sys.stdout
@@ -454,39 +462,26 @@ class Generator:
             ]
             writer.writerow(header_row)
 
-            type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
-            type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
-            last_index = 0
-
-            last_index = 0
             for index, row in enumerate(processed_rows, start=1):
-                i1 = row['Info1']
-                type_counts[i1] = type_counts.get(i1, 0) + 1
+                last_index = index
+                type_summary[row['Info1']] = type_summary.get(row['Info1'], 0) + 1
                 writer.writerow([
-                    str(index),
-                    i1,
-                    row['Info2'],
-                    row['Info3'],
-                    row['Info4'],
-                    row['Name'],
-                    row['Tag'],
-                    row['CoefA'],
-                    row['CoefB'],
-                    row['Unit'],
+                    str(index), row['Info1'], row['Info2'], row['Info3'], row['Info4'],
+                    Generator.sanitize_csv_field(row['Name']),
+                    Generator.sanitize_csv_field(row['Tag']),
+                    row['CoefA'], row['CoefB'],
+                    Generator.sanitize_csv_field(row['Unit']),
                     row['Action']
                 ])
-                last_index = index
 
-            summary = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in type_counts.items() if v > 0])
-            if summary:
-                logging.info(f"Generated {last_index} registers ({summary})")
-            elif last_index == 0:
-                logging.info("No registers were generated.")
+            summary_str = ", ".join([f"{type_labels.get(k, k)}: {v}" for k, v in type_summary.items() if v > 0])
+            if summary_str:
+                logging.info(f"Generated {last_index} registers ({summary_str})")
 
         except (OSError, csv.Error) as e:
             logging.error(f"Error writing output CSV: {e}")
         finally:
-            if isinstance(output, str) and 'outfile' in locals() and not outfile.closed:
+            if isinstance(output, str) and outfile and not outfile.closed:
                 outfile.close()
 
 def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
@@ -509,19 +504,14 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
         delimiter = ','
 
     try:
-        if output_file:
-            with open(output_file, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f, delimiter=delimiter)
-                if mode != 'definition':
-                    writer.writerow(headers)
-                else:
-                    # In definition mode, we actually want the headers to be part of the file
-                    writer.writerow(headers)
-                writer.writerows(rows)
-        else:
-            writer = csv.writer(sys.stdout, delimiter=delimiter)
+        f = open(output_file, 'w', newline='', encoding='utf-8') if output_file else sys.stdout
+        writer = csv.writer(f, delimiter=delimiter)
+        if mode == 'definition':
             writer.writerow(headers)
-            writer.writerows(rows)
+        else:
+            writer.writerow(headers)
+        writer.writerows(rows)
+        if output_file: f.close()
     except OSError as e:
         logging.error(f"Error generating template: {e}")
     finally:
@@ -530,7 +520,9 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
     generator = Generator()
     if config.template:
-        generate_template(config.output, mode=config.template_mode)
+        mode = config.template_mode
+        if input_data is not None: mode = 'definition'
+        generate_template(config.output, mode=mode)
         return
 
     mfg = config.manufacturer or 'Manufacturer'
@@ -548,7 +540,6 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
             if not os.path.exists(config.input_file):
                 logging.error(f"Input file not found: {config.input_file}")
                 return
-
             with open(config.input_file, mode='rb') as f:
                 header_bytes = f.read(4)
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
@@ -563,19 +554,18 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
 
                 reader = csv.DictReader(csvfile, dialect=dialect)
                 processed_rows = generator.process_rows(reader, config.address_offset)
-
                 generator.write_output_csv(config.output, processed_rows, mfg, model,
                                            config.protocol, config.category, config.forced_write)
     except (OSError, csv.Error, ValueError, TypeError, KeyError) as e:
         logging.error(f"An error occurred during generation: {e}")
 
 def main():
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
-    parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
-    parser.add_argument('input_file', nargs='?', help='Input CSV')
-    parser.add_argument('-o', '--output', help='Output CSV')
-    parser.add_argument('--manufacturer')
-    parser.add_argument('--model')
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s', force=True)
+    parser = argparse.ArgumentParser(description='Generate WebdynSunPM Modbus definition file.')
+    parser.add_argument('input_file', nargs='?', help='Input simplified CSV.')
+    parser.add_argument('-o', '--output', help='Output CSV.')
+    parser.add_argument('--manufacturer', help='Manufacturer name.')
+    parser.add_argument('--model', help='Model name.')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
     parser.add_argument('--forced-write', default='')

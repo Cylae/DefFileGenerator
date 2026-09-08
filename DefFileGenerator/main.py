@@ -83,7 +83,6 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -92,32 +91,23 @@ def extract_command(args):
     else:
         f = sys.stdout
 
-    try:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(mapped_data)
-        if output:
-            logging.info(f"Extraction complete. Saved to {output}")
-    finally:
-        if output:
-            f.close()
+    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped_data)
+
+    if output:
+        f.close()
+        logging.info(f"Extraction complete. Saved to {output}")
 
 def validate_command(args):
     generator = Generator()
-    # For CLI validation, we default to strict_overlap=False as it's just a warning in Webdyn
-    if not generator.validate_csv(args.input_file, strict_overlap=False):
+    if generator.validate_csv(args.input_file):
+        logging.info(f"Validation successful for {args.input_file}")
+    else:
         logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
-    logging.info(f"Validation successful for {args.input_file}")
 
 def generate_command(args):
-    template = getattr(args, 'template', False)
-    template_mode = getattr(args, 'template_mode', 'input')
-
-    if template and args.input_file == 'definition':
-        template_mode = 'definition'
-        args.input_file = None
-
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
         output=output,
@@ -127,8 +117,8 @@ def generate_command(args):
         category=getattr(args, 'category', 'Inverter'),
         forced_write=getattr(args, 'forced_write', ''),
         address_offset=getattr(args, 'address_offset', 0),
-        template=template,
-        template_mode=template_mode
+        template=getattr(args, 'template', False),
+        template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config)
 
@@ -151,7 +141,7 @@ def run_command(args):
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli():
+def _run_cli(args_list=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -189,7 +179,7 @@ def _run_cli():
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
     parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
-    parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
@@ -210,7 +200,7 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    args = parser.parse_args()
+    args = parser.parse_args(args_list)
 
     if not args.command:
         parser.print_help()
