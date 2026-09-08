@@ -73,8 +73,13 @@ class Generator:
         if val is None:
             return ""
         s = str(val)
-        if s and s[0] in ('=', '+', '-', '@'):
-            return "'" + s
+        stripped = s.lstrip()
+        if stripped and stripped[0] in ('=', '+', '-', '@'):
+            try:
+                float(stripped)
+                return s
+            except ValueError:
+                return "'" + s
         return s
 
     @staticmethod
