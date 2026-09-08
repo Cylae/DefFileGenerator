@@ -77,14 +77,15 @@ def _run_cli():
 
     extractor = Extractor(mapping)
     pages = None
-    if args.pages and ext == '.pdf':
-        try:
-            pages = [int(p.strip()) for p in args.pages.split(',')]
-        except ValueError:
-            logging.error("Invalid format for --pages. Expected comma-separated integers.")
-            sys.exit(1)
+    if pages_arg:
+        if ext == '.pdf':
+            try:
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, args.sheet)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
@@ -93,13 +94,11 @@ def _run_cli():
         sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
-    if not has_data:
-        logging.error("No data extracted.")
-        sys.exit(1)
+    if not has_data: logging.error("No data extracted."); sys.exit(1)
 
-    mapped_gen = extractor.map_and_clean(raw_peeked, args.address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped_gen)
-    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
+    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
+    first, mapped_peeked = peek_generator(mapped)
+    if not first: logging.error("No registers extracted."); sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -113,8 +112,7 @@ def _run_cli():
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction
-        template=False
+        address_offset=0 # Already applied during extraction
     )
     run_generator(config, input_data=mapped_peeked)
 

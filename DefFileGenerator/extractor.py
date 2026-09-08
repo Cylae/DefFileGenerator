@@ -61,6 +61,7 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
+# Move peek_generator to def_gen.py and import it here to avoid duplication
 try:
     from DefFileGenerator.def_gen import Generator
 except ImportError:
@@ -68,7 +69,9 @@ except ImportError:
         from def_gen import Generator
     except ImportError:
         Generator = None
-        def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+        def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+            if iterable is None:
+                return False, iter([])
             it = iter(iterable)
             try:
                 first = next(it)
@@ -118,21 +121,25 @@ class Extractor:
                     rows = ws_obj.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
-                        if not header_row: return
-                        headers = [str(h).strip() if h is not None else "" for h in header_row]
-                        for row in rows:
-                            if any(cell is not None and str(cell).strip() for cell in row):
-                                yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
                     except StopIteration:
-                        pass
+                        return
 
-                yield sheet_generator(ws)
+                    headers = [str(h).strip() if h is not None else "" for h in header_row]
+                    for row in rows:
+                        if any(cell is not None and str(cell).strip() for cell in row):
+                            yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+
+                yield sheet_generator()
+
+        except (OSError, zipfile.BadZipFile) as e:
+            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
         except Exception as e:
             logging.error(f"Error extracting from Excel {filepath}: {e}")
         finally:
-            if wb: wb.close()
+            if wb:
+                wb.close()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[int], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return
@@ -143,34 +150,39 @@ class Extractor:
                 if pages is None:
                     target_pages = pdf.pages
                 else:
-                    requested = []
-                    if isinstance(pages, int): requested = [pages]
-                    elif isinstance(pages, str): requested = pages.split(',')
-                    elif isinstance(pages, list): requested = pages
+                    requested = pages if isinstance(pages, list) else [pages]
+                    if isinstance(pages, str):
+                        requested = [p.strip() for p in pages.split(',')]
 
                     for p in requested:
                         try:
                             idx = int(p) - 1
                             if 0 <= idx < len(pdf.pages):
                                 target_pages.append(pdf.pages[idx])
+                            else:
+                                logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)})")
                         except (ValueError, TypeError):
-                            pass
+                            logging.warning(f"Invalid page reference: {p}")
 
                 for page in target_pages:
                     tables = page.extract_tables()
                     for table in tables:
-                        if not table or len(table) < 2: continue
+                        if not table or len(table) < 2:
+                            continue
 
-                        def table_generator(current_table) -> Iterator[Dict[str, Any]]:
+                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
                             headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
                             for row in current_table[1:]:
-                                row_dict = {headers[i]: (str(cell).replace('\n', ' ').strip() if cell else "")
-                                           for i, cell in enumerate(row) if i < len(headers)}
-                                if any(v.strip() for v in row_dict.values()):
+                                row_dict = {}
+                                for i, cell in enumerate(row):
+                                    if i < len(headers):
+                                        row_dict[headers[i]] = str(cell).replace('\n', ' ').strip() if cell else ""
+                                if any(v.strip() for v in row_dict.values() if v):
                                     yield row_dict
 
-                        yield table_generator(table)
-        except Exception as e:
+                        # Important: exhaust table into a list because context manager will close
+                        yield iter(list(table_generator(table)))
+        except (OSError,) + PDF_ERRORS as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
@@ -179,11 +191,22 @@ class Extractor:
                 with open(filepath, 'rb') as f:
                     header_bytes = f.read(4)
                     encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
                 with open(filepath, 'r', encoding=encoding) as f:
-                    snippet = f.read(2048); f.seek(0)
-                    try: dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                    except csv.Error: dialect = csv.excel
-                    reader = csv.DictReader(f, dialect=dialect)
+                    snippet = f.read(2048)
+                    f.seek(0)
+                    try:
+                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                        delimiter = dialect.delimiter
+                    except csv.Error:
+                        delimiter = ','
+                        for d in [',', ';', '\t']:
+                            if d in snippet:
+                                delimiter = d
+                                break
+
+                    f.seek(0)
+                    reader = csv.DictReader(f, delimiter=delimiter)
                     for row in reader:
                         if any(v.strip() for v in row.values() if v is not None and hasattr(v, 'strip')):
                             yield dict(row)
@@ -202,20 +225,26 @@ class Extractor:
                 tree = ET.parse(f)
                 root = tree.getroot()
 
-                def xml_generator() -> Iterator[Dict[str, Any]]:
-                    seen = set()
-                    for elem in root.iter():
-                        row = {child.tag: child.text.strip() for child in elem if len(child) == 0 and child.text}
-                        if len(row) >= 2:
-                            js = json.dumps(row, sort_keys=True)
-                            if js not in seen:
-                                seen.add(js); yield row
-                yield xml_generator()
+            def xml_generator() -> Iterator[Dict[str, Any]]:
+                seen = set()
+                for elem in root.iter():
+                    row = {}
+                    for child in elem:
+                        if len(child) == 0 and child.text:
+                            row[child.tag] = child.text.strip()
+                    if len(row) >= 2:
+                        js = json.dumps(row, sort_keys=True)
+                        if js not in seen:
+                            seen.add(js)
+                            yield row
+            yield xml_generator()
         except Exception as e:
             logging.error(f"Error extracting from XML {filepath}: {e}")
 
     def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables: return
+        if not tables:
+            return
+
         for table in tables:
             has_rows, table = peek_generator(table)
             if not has_rows: continue
@@ -262,31 +291,31 @@ class Extractor:
                 dtype = self.normalize_type(new_row.get('Type', 'U16'))
                 new_row['Type'] = dtype
                 addr = str(new_row.get('Address', '')).strip()
-
-                sbit = str(r.get(col_map.get('StartBit'), '')).strip()
-                slen = str(r.get(col_map.get('Length'), '')).strip()
-
                 if dtype == 'BITS' and sbit != '' and '_' not in addr:
-                    if slen == '':
-                        slen = '1'
+                    if slen == '': slen = '1'
                     addr = f"{addr}_{sbit}_{slen}"
-                elif dtype == 'STRING' and slen != '' and '_' not in addr:
+                elif (dtype == 'STRING' or dtype.startswith('STR')) and slen != '' and '_' not in addr:
                     addr = f"{addr}_{slen}"
 
-                if Generator: new_row['Address'] = Generator.apply_address_offset(addr, address_offset)
-                else: new_row['Address'] = addr
+                if Generator:
+                    new_row['Address'] = Generator.apply_address_offset(addr, address_offset)
+                else:
+                    new_row['Address'] = addr
 
-                if new_row.get('Factor') is not None and Generator:
-                    new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
-                if not new_row.get('RegisterType'): new_row['RegisterType'] = 'Holding Register'
+                if new_row.get('Factor') is not None:
+                    if Generator:
+                        new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
+
+                if 'RegisterType' not in new_row or not new_row['RegisterType']:
+                    new_row['RegisterType'] = 'Holding Register'
                 return new_row
 
             for row in buffer:
                 p = process_row(row)
                 if p: yield p
             for row in iterator:
-                p = process_row(row)
-                if p: yield p
+                processed = process_row(row)
+                if processed: yield processed
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -305,7 +334,7 @@ def main():
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
-    raw = None
+
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, args.pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)

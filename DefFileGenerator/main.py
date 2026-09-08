@@ -13,9 +13,6 @@ import logging
 import csv
 import json
 
-# Ensure the parent directory is in sys.path to allow direct execution
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
@@ -55,7 +52,7 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf':
-        raw_data = extractor.extract_from_pdf(input_file, pages)
+        raw_data = extractor.extract_from_pdf(input_file, pages_arg)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(input_file)
     elif ext == '.xml':
@@ -79,19 +76,26 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
+    has_data, mapped_data = peek_generator(mapped_data)
+    if not has_data:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    f = open(output, 'w', newline='', encoding='utf-8') if output else sys.stdout
-    try:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(mapped_data)
-        if output:
-            logging.info(f"Extraction complete. Saved to {output}")
-    finally:
-        if output:
-            f.close()
+    if output:
+        f = open(output, 'w', newline='', encoding='utf-8')
+    else:
+        f = sys.stdout
+
+    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped_data)
+
+    if output:
+        f.close()
+        logging.info(f"Extraction complete. Saved to {output}")
 
 def validate_command(args):
     generator = Generator()
@@ -129,13 +133,13 @@ def run_command(args):
         protocol=getattr(args, 'protocol', 'modbusRTU'),
         category=getattr(args, 'category', 'Inverter'),
         forced_write=getattr(args, 'forced_write', ''),
-        address_offset=0, # Already applied during extraction
+        address_offset=0, # Offset already applied during extraction
         template=getattr(args, 'template', False),
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli(argv=None):
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -173,28 +177,28 @@ def _run_cli(argv=None):
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
     parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
+    parser_generate.add_argument('--template', action='store_true', help='Generate template')
+    parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
-    parser_generate.add_argument('--template', action='store_true')
-    parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run
+    # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
+    parser_run.add_argument('--template', action='store_true', help='Generate template')
+    parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
     parser_run.add_argument('--pages', help='PDF pages')
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
-    parser_run.add_argument('--template', action='store_true')
-    parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    args = parser.parse_args(argv)
+    args = parser.parse_args()
 
     if not args.command:
         parser.print_help()
