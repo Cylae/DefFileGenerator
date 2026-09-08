@@ -6,6 +6,8 @@ from DefFileGenerator.def_gen import Generator
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
+        import tempfile
+        self.test_dir = tempfile.TemporaryDirectory()
         self.generator = Generator()
         self.test_dir = tempfile.TemporaryDirectory()
         # Suppress logging during tests
