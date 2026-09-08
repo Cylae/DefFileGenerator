@@ -12,7 +12,6 @@ import os
 import logging
 import csv
 import json
-
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
@@ -76,11 +75,6 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    has_data, mapped_data = peek_generator(mapped_data)
-    if not has_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
-
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -99,11 +93,10 @@ def extract_command(args):
 
 def validate_command(args):
     generator = Generator()
-    if generator.validate_csv(args.input_file):
-        logging.info(f"Validation successful for {args.input_file}")
-    else:
+    if not generator.validate_csv(args.input_file):
         logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
+    logging.info(f"Validation successful for {args.input_file}")
 
 def generate_command(args):
     config = GeneratorConfig(
@@ -130,12 +123,11 @@ def run_command(args):
         output=getattr(args, 'output', None),
         manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
         model=getattr(args, 'model', 'Model'),
-        protocol=getattr(args, 'protocol', 'modbusRTU'),
-        category=getattr(args, 'category', 'Inverter'),
-        forced_write=getattr(args, 'forced_write', ''),
-        address_offset=0, # Offset already applied during extraction
-        template=getattr(args, 'template', False),
-        template_mode=getattr(args, 'template_mode', 'input')
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        address_offset=0,
+        template=template
     )
     run_generator(config, input_data=mapped_data)
 
@@ -177,7 +169,7 @@ def _run_cli():
     parser_generate = subparsers.add_parser('generate', help='Generate definition from CSV')
     parser_generate.add_argument('input_file', nargs='?', help='Input CSV')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
-    parser_generate.add_argument('--template', action='store_true', help='Generate template')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
