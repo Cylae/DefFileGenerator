@@ -11,6 +11,7 @@ import json
 import logging
 import os
 import re
+import csv
 import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
@@ -39,11 +40,11 @@ def _run_cli(args_list=None):
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
     if getattr(args, 'template', False):
-        config = GeneratorConfig(output=args.output, template=True, template_mode=args.template_mode)
+        config = GeneratorConfig(output=args.output, template=True, template_mode='definition')
         run_generator(config)
         return
 
-    input_file = getattr(args, 'input_file', None)
+    input_file = args.input_file
     if not input_file or not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
@@ -67,31 +68,30 @@ def _run_cli(args_list=None):
 
     extractor = Extractor(mapping)
 
-    pages = args.pages
-    sheet = args.sheet
+    pages_arg = getattr(args, 'pages', None)
+    sheet_arg = getattr(args, 'sheet', None)
+    pages = None
+    if pages_arg and ext == '.pdf':
+        try:
+            pages = [int(p.strip()) for p in pages_arg.split(',')]
+        except ValueError:
+            logging.error("Invalid format for --pages. Expected comma-separated integers.")
+            sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(input_file, sheet)
-    elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(input_file, pages)
-    elif ext == '.csv':
-        raw = extractor.extract_from_csv(input_file)
-    elif ext == '.xml':
-        raw = extractor.extract_from_xml(input_file)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
-        sys.exit(1)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
+    elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
+    elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
+    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
     if not has_data:
         logging.error("No data extracted.")
         sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped)
-    if not has_regs:
-        logging.error("No registers extracted.")
-        sys.exit(1)
+    mapped_gen = extractor.map_and_clean(raw_peeked, args.address_offset)
+    has_regs, mapped_peeker = peek_generator(mapped_gen)
+    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -109,7 +109,8 @@ def _run_cli(args_list=None):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0 # Already applied during extraction
+        address_offset=0, # Already applied during extraction
+        template=False
     )
     run_generator(config, input_data=mapped_peeked)
 
