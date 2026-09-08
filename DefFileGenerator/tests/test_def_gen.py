@@ -83,27 +83,35 @@ class TestGenerator(unittest.TestCase):
 
 
     def test_apply_address_offset(self):
-        # Empty input
+        # Empty / falsy input
         self.assertEqual(Generator.apply_address_offset("", 10), "")
         self.assertEqual(Generator.apply_address_offset(None, 10), "")
+        self.assertEqual(Generator.apply_address_offset(0, 10), "")
+
+        # Integer / non-string inputs
+        self.assertEqual(Generator.apply_address_offset(30000, 10), "30010")
 
         # Simple address
         self.assertEqual(Generator.apply_address_offset("30000", 10), "30010")
 
         # Compound address
         self.assertEqual(Generator.apply_address_offset("40000_20", -5), "39995_20")
+        self.assertEqual(Generator.apply_address_offset("100_10_5", 2), "102_10_5")
 
         # Hex addresses (normalized internally to decimal before offset)
         self.assertEqual(Generator.apply_address_offset("0x10", 5), "21")  # 16 + 5 = 21
         self.assertEqual(Generator.apply_address_offset("0x10_20", 5), "21_20")
+        self.assertEqual(Generator.apply_address_offset("10h_5", 10), "26_5")  # 16 + 10 = 26
 
-        # Value Error handling (caught silently)
+        # Value Error / non-convertible handling (caught silently and passed through)
         self.assertEqual(Generator.apply_address_offset("invalid", 10), "invalid")
         self.assertEqual(Generator.apply_address_offset("invalid_20", 10), "invalid_20")
+        self.assertEqual(Generator.apply_address_offset("0xG_10", 5), "0xG_10")
 
-        # Negative address warning (with log assertions)
+        # Negative address warning (testing all logging formatting paths)
         logging.disable(logging.NOTSET)
 
+        # Path 1: neither line_num nor name provided
         with self.assertLogs(level='WARNING') as log1:
             res1 = Generator.apply_address_offset("10", -15)
             self.assertEqual(res1, "-5")
@@ -111,10 +119,25 @@ class TestGenerator(unittest.TestCase):
             self.assertFalse(any("for '" in m for m in log1.output))
             self.assertFalse(any("Line" in m for m in log1.output))
 
+        # Path 2: both line_num and name provided
         with self.assertLogs(level='WARNING') as log2:
             res2 = Generator.apply_address_offset("10", -15, line_num=42, name="TestReg")
             self.assertEqual(res2, "-5")
             self.assertTrue(any("Line 42: Address offset -15 results in negative address -5 for 'TestReg'" in m for m in log2.output))
+
+        # Path 3: name provided without line_num
+        with self.assertLogs(level='WARNING') as log3:
+            res3 = Generator.apply_address_offset("10", -15, name="OnlyName")
+            self.assertEqual(res3, "-5")
+            self.assertTrue(any("Address offset -15 results in negative address -5 for 'OnlyName'" in m for m in log3.output))
+            self.assertFalse(any("Line" in m for m in log3.output))
+
+        # Path 4: line_num provided without name
+        with self.assertLogs(level='WARNING') as log4:
+            res4 = Generator.apply_address_offset("10", -15, line_num=99)
+            self.assertEqual(res4, "-5")
+            self.assertTrue(any("Line 99: Address offset -15 results in negative address -5" in m for m in log4.output))
+            self.assertFalse(any("for '" in m for m in log4.output))
 
         logging.disable(logging.CRITICAL)
 
