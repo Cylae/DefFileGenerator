@@ -15,11 +15,18 @@ def _run_cli(argv=None):
         argv = sys.argv[1:]
     else:
         # Strip script name if present as first element
-        if argv and (argv[0].endswith('main.py') or argv[0].endswith('doc_to_webdyn.py') or argv[0] == 'main.py' or argv[0] == 'doc_to_webdyn.py'):
+        if argv and (
+            argv[0].endswith('main.py')
+            or argv[0].endswith('doc_to_webdyn.py')
+            or argv[0] == 'main.py'
+            or argv[0] == 'doc_to_webdyn.py'
+        ):
             argv = argv[1:]
 
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument(
+        'input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)'
+    )
     parser.add_argument('--manufacturer', help='Manufacturer name')
     parser.add_argument('--model', help='Model name')
     parser.add_argument('--template', action='store_true', help='Generate a template definition')
@@ -34,7 +41,11 @@ def _run_cli(argv=None):
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args(argv)
-    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format='%(levelname)s: %(message)s',
+        force=True,
+    )
 
     if args.template:
         config = GeneratorConfig(output=args.output, template=True)
@@ -99,7 +110,9 @@ def _run_cli(argv=None):
     m_model = args.model or "Model"
     output_file = args.output
     if not output_file:
-        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+        m_name_clean = re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()
+        m_model_clean = re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()
+        output_file = f"{m_name_clean}_{m_model_clean}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,

@@ -17,8 +17,8 @@ import sys
 # Ensure parent directory is in sys.path to support direct and packaged executions
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, peek_generator, run_generator
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 ALLOWED_EXTENSIONS = {'.pdf', '.xlsx', '.xlsm', '.xltx', '.xltm', '.csv', '.xml'}
 
@@ -55,7 +55,7 @@ def _perform_extraction(args):
     mapping_path = getattr(args, 'mapping', None)
     if mapping_path:
         try:
-            with open(mapping_path, 'r') as f:
+            with open(mapping_path) as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")

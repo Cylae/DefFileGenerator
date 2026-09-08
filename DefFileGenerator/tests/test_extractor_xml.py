@@ -218,6 +218,7 @@ class TestExtractorNopdfplumber(unittest.TestCase):
     def test_no_pdfplumber_logs_error_returns_empty(self):
         import sys
         from unittest.mock import patch
+
         from DefFileGenerator.extractor import Extractor
         ex = Extractor()
         logging.disable(logging.NOTSET)

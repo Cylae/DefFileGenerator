@@ -4,11 +4,13 @@ Robust programmatic execution script to generate and validate WebdynSunPM defini
 using the DefFileGenerator package.
 """
 
+import logging
 import os
 import sys
-import logging
-from DefFileGenerator.extractor import Extractor, peek_generator
+
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.extractor import Extractor, peek_generator
+
 
 def setup_logging():
     logging.basicConfig(
