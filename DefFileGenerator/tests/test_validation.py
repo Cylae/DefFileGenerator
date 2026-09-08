@@ -3,12 +3,12 @@ import logging
 import os
 import tempfile
 import unittest
+
 from DefFileGenerator.def_gen import Generator
 
 
 class TestValidation(unittest.TestCase):
     def setUp(self):
-        import tempfile
         self.test_dir = tempfile.TemporaryDirectory()
         self.generator = Generator()
         self.test_dir = tempfile.TemporaryDirectory()
@@ -85,25 +85,56 @@ class TestValidation(unittest.TestCase):
 
     def test_intelligent_action_defaulting(self):
         # Input Register (4) should default to 4 (Read Only)
-        rows = [{'name': 'InputVar', 'address': '100', 'type': 'U16', 'registertype': 'Input Register', 'action': ''}]
+        rows = [
+            {
+                "name": "InputVar",
+                "address": "100",
+                "type": "U16",
+                "registertype": "Input Register",
+                "action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]["Action"], "4")
 
         # Holding Register (3) should default to 1 (Read/Write)
-        rows = [{'name': 'HoldingVar', 'address': '200', 'type': 'U16', 'registertype': 'Holding Register', 'action': ''}]
+        rows = [
+            {
+                "name": "HoldingVar",
+                "address": "200",
+                "type": "U16",
+                "registertype": "Holding Register",
+                "action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]["Action"], "1")
 
         # Discrete Input (2) should default to 4 (Read Only)
-        rows = [{'name': 'DiscVar', 'address': '300', 'type': 'U16', 'registertype': 'Discrete Input', 'action': ''}]
+        rows = [
+            {
+                "name": "DiscVar",
+                "address": "300",
+                "type": "U16",
+                "registertype": "Discrete Input",
+                "action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]["Action"], "4")
 
         # Coil (1) should default to 1 (Read/Write)
-        rows = [{'name': 'CoilVar', 'address': '400', 'type': 'U16', 'registertype': 'Coil', 'action': ''}]
+        rows = [
+            {
+                "name": "CoilVar",
+                "address": "400",
+                "type": "U16",
+                "registertype": "Coil",
+                "action": "",
+            }
+        ]
         processed = list(self.generator.process_rows(rows))
         self.assertEqual(processed[0]["Action"], "1")
-
 
     def test_sanitize_csv_field_numeric_exclusion(self):
         # Basic formula triggers should still be prepended with an apostrophe
@@ -115,6 +146,7 @@ class TestValidation(unittest.TestCase):
         self.assertEqual(self.generator.sanitize_csv_field("-10.5"), "-10.5")
         self.assertEqual(self.generator.sanitize_csv_field("+10"), "+10")
         self.assertEqual(self.generator.sanitize_csv_field("1.23e-4"), "1.23e-4")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -129,29 +129,42 @@ class TestExtractor(unittest.TestCase):
         # We test the internal `process_row` by passing edge-case rows through `map_and_clean`
         # Extractor.map_and_clean expects an iterable of iterables (tables)
         # We will create one table with various rows that trigger edge cases.
-        raw_data = [[
-            # 1. Missing Name and Address -> Skipped
-            {"Data Type": "U16"},
-
-            # 2. Missing Type -> Defaults to U16, missing RegisterType -> Holding Register
-            {"Address": "100", "Name": "Default Type Test"},
-
-            # 3. BITS type with StartBit and Length
-            {"Address": "101", "Name": "Bits Test 1", "Type": "BITS", "StartBit": "2", "Length": "4"},
-
-            # 4. BITS type with StartBit only
-            {"Address": "102", "Name": "Bits Test 2", "Type": "BITS", "StartBit": "3"},
-
-            # 5. STRING type with Length
-            {"Address": "103", "Name": "String Test", "Type": "STRING", "Length": "10"},
-
-            # 6. Pre-existing underscore in Address -> No suffix appended
-            {"Address": "104_1_2", "Name": "Underscore Bits Test", "Type": "BITS", "StartBit": "3", "Length": "4"},
-            {"Address": "105_10", "Name": "Underscore String Test", "Type": "STRING", "Length": "20"},
-
-            # 7. Factor normalization
-            {"Address": "106", "Name": "Factor Test", "Factor": "0.5"}
-        ]]
+        raw_data = [
+            [
+                # 1. Missing Name and Address -> Skipped
+                {"Data Type": "U16"},
+                # 2. Missing Type -> Defaults to U16, missing RegisterType -> Holding Register
+                {"Address": "100", "Name": "Default Type Test"},
+                # 3. BITS type with StartBit and Length
+                {
+                    "Address": "101",
+                    "Name": "Bits Test 1",
+                    "Type": "BITS",
+                    "StartBit": "2",
+                    "Length": "4",
+                },
+                # 4. BITS type with StartBit only
+                {"Address": "102", "Name": "Bits Test 2", "Type": "BITS", "StartBit": "3"},
+                # 5. STRING type with Length
+                {"Address": "103", "Name": "String Test", "Type": "STRING", "Length": "10"},
+                # 6. Pre-existing underscore in Address -> No suffix appended
+                {
+                    "Address": "104_1_2",
+                    "Name": "Underscore Bits Test",
+                    "Type": "BITS",
+                    "StartBit": "3",
+                    "Length": "4",
+                },
+                {
+                    "Address": "105_10",
+                    "Name": "Underscore String Test",
+                    "Type": "STRING",
+                    "Length": "20",
+                },
+                # 7. Factor normalization
+                {"Address": "106", "Name": "Factor Test", "Factor": "0.5"},
+            ]
+        ]
 
         # We need to set up Extractor mapping so it finds the columns properly
         # Or rely on standard column detection which is already good enough for Address, Name, Type, StartBit, Length, Factor
@@ -188,6 +201,7 @@ class TestExtractor(unittest.TestCase):
         # 7. Factor normalization -> 0.5 is parsed as float then string
         self.assertEqual(mapped[6]["Address"], "106")
         self.assertEqual(mapped[6]["Factor"], "0.5")
+
 
 if __name__ == "__main__":
     unittest.main()

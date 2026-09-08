@@ -102,6 +102,7 @@ class TestExtractorXml(unittest.TestCase):
 
     def setUp(self):
         from DefFileGenerator.extractor import Extractor
+
         self.ex = Extractor()
         self.tmpdir = tempfile.TemporaryDirectory()
         logging.disable(logging.CRITICAL)
@@ -195,6 +196,7 @@ class TestExtractorXml(unittest.TestCase):
     def test_xml_xxe_security_blocked(self):
         """XXE attack vectors must be refused (defusedxml raises security exception)."""
         from DefFileGenerator.extractor import SECURITY_EXCEPTIONS
+
         if not SECURITY_EXCEPTIONS:
             self.skipTest("defusedxml not available or no security exceptions defined")
         xxe = """<?xml version="1.0"?>
@@ -218,11 +220,16 @@ class TestExtractorNopdfplumber(unittest.TestCase):
     def test_no_pdfplumber_logs_error_returns_empty(self):
         import sys
         from unittest.mock import patch
+
         from DefFileGenerator.extractor import Extractor
+
         ex = Extractor()
         logging.disable(logging.NOTSET)
-        with patch.object(sys.modules.get("DefFileGenerator.extractor", None) or type(None),
-                          "__name__", "DefFileGenerator.extractor"):
+        with patch.object(
+            sys.modules.get("DefFileGenerator.extractor", None) or type(None),
+            "__name__",
+            "DefFileGenerator.extractor",
+        ):
             with patch("DefFileGenerator.extractor.HAS_PDFPLUMBER", False):
                 result = list(ex.extract_from_pdf("dummy.pdf"))
         self.assertEqual(result, [])

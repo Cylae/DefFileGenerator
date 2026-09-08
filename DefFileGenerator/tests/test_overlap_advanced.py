@@ -39,10 +39,10 @@ class TestOverlapDetection(unittest.TestCase):
             {"Name": "Q", "Tag": "q", "Address": "101", "Type": "U16"},
         ]
         with self.assertLogs(level="WARNING") as cm:
-            result = self._process(rows)
+            res = self._process(rows)
         self.assertTrue(any("overlap" in m.lower() for m in cm.output))
         # Both rows are still emitted
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(res), 2)
 
     def test_bits_same_base_address_no_overlap(self):
         """Multiple BITS registers at the same base address do NOT overlap."""
@@ -70,7 +70,7 @@ class TestOverlapDetection(unittest.TestCase):
             {"Name": "SmallVal", "Tag": "sv", "Address": "102", "Type": "U16"},
         ]
         with self.assertLogs(level="WARNING") as cm:
-            result = self._process(rows)
+            self._process(rows)
         self.assertTrue(any("overlap" in m.lower() for m in cm.output))
 
     def test_mac_type_occupies_three_registers(self):
@@ -191,9 +191,16 @@ class TestWriteOutputCsv(unittest.TestCase):
     def _rows(self, n=1):
         return [
             {
-                "Info1": "3", "Info2": str(100 + i), "Info3": "U16",
-                "Info4": "", "Name": f"Var{i}", "Tag": f"var{i}",
-                "CoefA": "1.000000", "CoefB": "0.000000", "Unit": "V", "Action": "4",
+                "Info1": "3",
+                "Info2": str(100 + i),
+                "Info3": "U16",
+                "Info4": "",
+                "Name": f"Var{i}",
+                "Tag": f"var{i}",
+                "CoefA": "1.000000",
+                "CoefB": "0.000000",
+                "Unit": "V",
+                "Action": "4",
             }
             for i in range(n)
         ]
@@ -209,8 +216,6 @@ class TestWriteOutputCsv(unittest.TestCase):
 
     def test_writes_to_stdout_when_none(self):
         buf = io.StringIO()
-        captured = []
-        import sys
         old = sys.stdout
         sys.stdout = buf
         try:
@@ -229,10 +234,30 @@ class TestWriteOutputCsv(unittest.TestCase):
 
     def test_type_counts_logged_per_info1(self):
         rows = [
-            {"Info1": "3", "Info2": "1", "Info3": "U16", "Info4": "",
-             "Name": "H", "Tag": "h", "CoefA": "1.0", "CoefB": "0.0", "Unit": "", "Action": "4"},
-            {"Info1": "4", "Info2": "2", "Info3": "U16", "Info4": "",
-             "Name": "I", "Tag": "i", "CoefA": "1.0", "CoefB": "0.0", "Unit": "", "Action": "4"},
+            {
+                "Info1": "3",
+                "Info2": "1",
+                "Info3": "U16",
+                "Info4": "",
+                "Name": "H",
+                "Tag": "h",
+                "CoefA": "1.0",
+                "CoefB": "0.0",
+                "Unit": "",
+                "Action": "4",
+            },
+            {
+                "Info1": "4",
+                "Info2": "2",
+                "Info3": "U16",
+                "Info4": "",
+                "Name": "I",
+                "Tag": "i",
+                "CoefA": "1.0",
+                "CoefB": "0.0",
+                "Unit": "",
+                "Action": "4",
+            },
         ]
         out = os.path.join(self.tmpdir.name, "count.csv")
         # Should not raise
@@ -240,8 +265,9 @@ class TestWriteOutputCsv(unittest.TestCase):
 
     def test_custom_protocol_and_category(self):
         out = os.path.join(self.tmpdir.name, "custom.csv")
-        Generator.write_output_csv(out, iter(self._rows(1)), "M", "X",
-                                   protocol="modbustcp", category="Battery")
+        Generator.write_output_csv(
+            out, iter(self._rows(1)), "M", "X", protocol="modbustcp", category="Battery"
+        )
         with open(out, encoding="utf-8-sig") as f:
             first_line = f.readline()
         self.assertIn("modbustcp", first_line)

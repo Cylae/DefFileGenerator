@@ -1,9 +1,8 @@
 """Batch 3: def_gen.py edge-case tests."""
 
 import logging
-import math
-import tempfile
 import os
+import tempfile
 import unittest
 
 from DefFileGenerator.def_gen import (
@@ -151,7 +150,6 @@ class TestNormalizeTypeExtended(unittest.TestCase):
 
 
 class TestValidateTypeExtended(unittest.TestCase):
-
     def test_ip_valid(self):
         self.assertTrue(Generator.validate_type("IP"))
 
@@ -190,7 +188,6 @@ class TestValidateTypeExtended(unittest.TestCase):
 
 
 class TestProcessRowsEdgeCases(unittest.TestCase):
-
     def setUp(self):
         self.g = Generator()
         logging.disable(logging.CRITICAL)
@@ -236,8 +233,16 @@ class TestProcessRowsEdgeCases(unittest.TestCase):
         self.assertEqual(result[0]["Info2"], "150")
 
     def test_coef_a_and_b_defaults_when_empty(self):
-        rows = [{"Name": "V", "Address": "100", "Type": "U16",
-                 "Factor": "", "Offset": "", "ScaleFactor": ""}]
+        rows = [
+            {
+                "Name": "V",
+                "Address": "100",
+                "Type": "U16",
+                "Factor": "",
+                "Offset": "",
+                "ScaleFactor": "",
+            }
+        ]
         result = list(self.g.process_rows(rows))
         self.assertEqual(result[0]["CoefA"], "1.000000")
         self.assertEqual(result[0]["CoefB"], "0.000000")
@@ -255,7 +260,6 @@ class TestProcessRowsEdgeCases(unittest.TestCase):
 
 
 class TestDetermineInfo1Extended(unittest.TestCase):
-
     def setUp(self):
         self.g = Generator()
 
@@ -278,7 +282,6 @@ class TestDetermineInfo1Extended(unittest.TestCase):
 
 
 class TestGenerateTemplate(unittest.TestCase):
-
     def setUp(self):
         self.tmpdir = tempfile.TemporaryDirectory()
 
@@ -303,6 +306,7 @@ class TestGenerateTemplate(unittest.TestCase):
     def test_stdout_mode_no_crash(self):
         import io
         from unittest.mock import patch
+
         buf = io.StringIO()
         with patch("sys.stdout", buf):
             generate_template(None, mode="input")
@@ -310,7 +314,6 @@ class TestGenerateTemplate(unittest.TestCase):
 
 
 class TestRunGenerator(unittest.TestCase):
-
     def setUp(self):
         self.tmpdir = tempfile.TemporaryDirectory()
         logging.disable(logging.CRITICAL)
@@ -329,8 +332,10 @@ class TestRunGenerator(unittest.TestCase):
         src = self._csv()
         out = os.path.join(self.tmpdir.name, "out.csv")
         config = GeneratorConfig(
-            input_file=src, output=out,
-            manufacturer="ACME", model="X1",
+            input_file=src,
+            output=out,
+            manufacturer="ACME",
+            model="X1",
         )
         run_generator(config)
         self.assertTrue(os.path.exists(out))
@@ -354,9 +359,7 @@ class TestRunGenerator(unittest.TestCase):
         run_generator(config)
 
     def test_run_generator_nonexistent_file_logs_error(self):
-        config = GeneratorConfig(
-            input_file="/no/such.csv", manufacturer="M", model="X"
-        )
+        config = GeneratorConfig(input_file="/no/such.csv", manufacturer="M", model="X")
         run_generator(config)
 
     def test_run_generator_semicolon_delimited_input(self):
@@ -370,7 +373,6 @@ class TestRunGenerator(unittest.TestCase):
 
 
 class TestPeekGenerator(unittest.TestCase):
-
     def test_non_empty(self):
         has, it = peek_generator([1, 2, 3])
         self.assertTrue(has)

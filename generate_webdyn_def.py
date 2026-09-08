@@ -4,18 +4,17 @@ Robust programmatic execution script to generate and validate WebdynSunPM defini
 using the DefFileGenerator package.
 """
 
+import logging
 import os
 import sys
-import logging
-from DefFileGenerator.extractor import Extractor, peek_generator
+
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.extractor import Extractor, peek_generator
+
 
 def setup_logging():
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(levelname)s: %(message)s',
-        force=True
-    )
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s", force=True)
+
 
 def generate_webdyn_definition(
     input_file: str,
@@ -25,7 +24,7 @@ def generate_webdyn_definition(
     protocol: str = "modbusRTU",
     category: str = "Inverter",
     address_offset: int = 0,
-    strict_validation: bool = True
+    strict_validation: bool = True,
 ) -> bool:
     """
     Extracts registers from a manufacturer documentation file (PDF, Excel, CSV, or XML)
@@ -53,13 +52,13 @@ def generate_webdyn_definition(
 
     logging.info(f"Step 1: Extracting raw register data from: {input_file}")
     try:
-        if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
             raw_data = extractor.extract_from_excel(input_file)
-        elif ext == '.pdf':
+        elif ext == ".pdf":
             raw_data = extractor.extract_from_pdf(input_file)
-        elif ext == '.csv':
+        elif ext == ".csv":
             raw_data = extractor.extract_from_csv(input_file)
-        elif ext == '.xml':
+        elif ext == ".xml":
             raw_data = extractor.extract_from_xml(input_file)
         else:
             logging.error(f"Unsupported file format: {ext}")
@@ -88,7 +87,7 @@ def generate_webdyn_definition(
         model=model,
         protocol=protocol,
         category=category,
-        address_offset=0  # Already applied during extraction mapping
+        address_offset=0,  # Already applied during extraction mapping
     )
 
     try:
@@ -102,11 +101,14 @@ def generate_webdyn_definition(
     is_valid = generator.validate_csv(output_file, strict=strict_validation)
 
     if is_valid:
-        logging.info(f"Success! Definition file successfully generated and validated at '{output_file}'")
+        logging.info(
+            f"Success! Definition file successfully generated and validated at '{output_file}'"
+        )
         return True
     else:
         logging.error("Validation failed! The generated file contains critical errors or overlaps.")
         return False
+
 
 def main():
     setup_logging()
@@ -114,7 +116,9 @@ def main():
     # We can run a demo if no arguments are passed, or print usage
     if len(sys.argv) < 5:
         print("Usage:")
-        print("  python3 generate_webdyn_def.py <input_file> <output_file> <manufacturer> <model> [options]")
+        print(
+            "  python3 generate_webdyn_def.py <input_file> <output_file> <manufacturer> <model> [options]"
+        )
         print("\nDemo execution using sample registers:")
 
         sample_in = "sample_register_map.csv"
@@ -122,7 +126,7 @@ def main():
 
         # Create a sample register CSV if not present, to run the demo
         if not os.path.exists(sample_in):
-            with open(sample_in, 'w', encoding='utf-8') as f:
+            with open(sample_in, "w", encoding="utf-8") as f:
                 f.write("Register,Name,Data Type,Unit,Scale,Access\n")
                 f.write("40001,AC Power,uint16,W,1,R\n")
                 f.write("40002,DC Voltage,uint16,V,0.1,R\n")
@@ -130,10 +134,7 @@ def main():
 
         logging.info("Running demo generation...")
         success = generate_webdyn_definition(
-            input_file=sample_in,
-            output_file=sample_out,
-            manufacturer="DemoMfg",
-            model="DemoModel"
+            input_file=sample_in, output_file=sample_out, manufacturer="DemoMfg", model="DemoModel"
         )
         sys.exit(0 if success else 1)
         return
@@ -153,9 +154,10 @@ def main():
         manufacturer=manufacturer,
         model=model,
         protocol=protocol,
-        category=category
+        category=category,
     )
     sys.exit(0 if success else 1)
+
 
 if __name__ == "__main__":
     main()

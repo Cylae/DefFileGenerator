@@ -41,9 +41,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from DefFileGenerator.def_gen import GeneratorConfig, Generator, run_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor
-
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -52,12 +51,15 @@ REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def _make_def_csv(rows, header=None):
     """Return a valid semicolon-delimited WebdynSunPM definition CSV as a string."""
     lines = []
-    hdr = header if header is not None else [
-        "modbusRTU", "Inverter", "TestMfr", "TestModel", "", "", "", "", "", "", ""
-    ]
+    hdr = (
+        header
+        if header is not None
+        else ["modbusRTU", "Inverter", "TestMfr", "TestModel", "", "", "", "", "", "", ""]
+    )
     lines.append(";".join(str(x) for x in hdr))
     for row in rows:
         lines.append(";".join(str(x) for x in row))
@@ -67,6 +69,7 @@ def _make_def_csv(rows, header=None):
 # ===========================================================================
 # _parse_numeric edge cases
 # ===========================================================================
+
 
 class TestParseNumeric(unittest.TestCase):
     def _pn(self, val, default=0.0):
@@ -124,6 +127,7 @@ class TestParseNumeric(unittest.TestCase):
 # apply_address_offset
 # ===========================================================================
 
+
 class TestApplyAddressOffset(unittest.TestCase):
     def test_empty_address_returns_empty(self):
         result = Generator.apply_address_offset("", 10)
@@ -167,6 +171,7 @@ class TestApplyAddressOffset(unittest.TestCase):
 # _calculate_coefficients
 # ===========================================================================
 
+
 class TestCalculateCoefficients(unittest.TestCase):
     def test_simple_factor_offset(self):
         a, b = Generator._calculate_coefficients("2.0", "0.5", "")
@@ -199,6 +204,7 @@ class TestCalculateCoefficients(unittest.TestCase):
 # validate_csv extended paths
 # ===========================================================================
 
+
 class TestValidateCsvExtended(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
@@ -229,36 +235,44 @@ class TestValidateCsvExtended(unittest.TestCase):
         self.assertFalse(result)
 
     def test_strict_overlap_fails(self):
-        content = _make_def_csv([
-            ["1", "3", "40001", "U32", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
-            ["2", "3", "40002", "U16", "", "Var2", "tag2", "1.0", "0.0", "W", "4"],
-        ])
+        content = _make_def_csv(
+            [
+                ["1", "3", "40001", "U32", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
+                ["2", "3", "40002", "U16", "", "Var2", "tag2", "1.0", "0.0", "W", "4"],
+            ]
+        )
         path = self._write("overlap.csv", content)
         logging.disable(logging.NOTSET)
         result = self.generator.validate_csv(path, strict=True)
         self.assertFalse(result)
 
     def test_lenient_overlap_passes(self):
-        content = _make_def_csv([
-            ["1", "3", "40001", "U32", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
-            ["2", "3", "40002", "U16", "", "Var2", "tag2", "1.0", "0.0", "W", "4"],
-        ])
+        content = _make_def_csv(
+            [
+                ["1", "3", "40001", "U32", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
+                ["2", "3", "40002", "U16", "", "Var2", "tag2", "1.0", "0.0", "W", "4"],
+            ]
+        )
         path = self._write("overlap_lenient.csv", content)
         result = self.generator.validate_csv(path, strict=False)
         self.assertTrue(result)
 
     def test_valid_file_passes(self):
-        content = _make_def_csv([
-            ["1", "3", "40001", "U16", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
-        ])
+        content = _make_def_csv(
+            [
+                ["1", "3", "40001", "U16", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
+            ]
+        )
         path = self._write("valid.csv", content)
         result = self.generator.validate_csv(path)
         self.assertTrue(result)
 
     def test_invalid_type_fails(self):
-        content = _make_def_csv([
-            ["1", "3", "40001", "BADTYPE", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
-        ])
+        content = _make_def_csv(
+            [
+                ["1", "3", "40001", "BADTYPE", "", "Var1", "tag1", "1.0", "0.0", "W", "4"],
+            ]
+        )
         path = self._write("bad_type.csv", content)
         logging.disable(logging.NOTSET)
         result = self.generator.validate_csv(path)
@@ -269,6 +283,7 @@ class TestValidateCsvExtended(unittest.TestCase):
 # write_output_csv: stdout and file-object paths
 # ===========================================================================
 
+
 class TestWriteOutputCsv(unittest.TestCase):
     def setUp(self):
         self.generator = Generator()
@@ -278,12 +293,22 @@ class TestWriteOutputCsv(unittest.TestCase):
         logging.disable(logging.NOTSET)
 
     def _rows(self):
-        return iter([{
-            "Name": "TestVar", "Tag": "test_var",
-            "RegisterType": "Holding Register", "Address": "100",
-            "Type": "U16", "Factor": "1", "Offset": "0",
-            "Unit": "V", "Action": "4", "ScaleFactor": "0",
-        }])
+        return iter(
+            [
+                {
+                    "Name": "TestVar",
+                    "Tag": "test_var",
+                    "RegisterType": "Holding Register",
+                    "Address": "100",
+                    "Type": "U16",
+                    "Factor": "1",
+                    "Offset": "0",
+                    "Unit": "V",
+                    "Action": "4",
+                    "ScaleFactor": "0",
+                }
+            ]
+        )
 
     def test_output_none_writes_to_stdout(self):
         rows = list(self.generator.process_rows(self._rows()))
@@ -319,6 +344,7 @@ class TestWriteOutputCsv(unittest.TestCase):
 # run_generator paths
 # ===========================================================================
 
+
 class TestRunGenerator(unittest.TestCase):
     def setUp(self):
         self.tmpdir = tempfile.TemporaryDirectory()
@@ -331,9 +357,12 @@ class TestRunGenerator(unittest.TestCase):
     def test_template_with_input_data_uses_definition_mode(self):
         out = os.path.join(self.tmpdir.name, "tmpl.csv")
         config = GeneratorConfig(
-            input_file=None, output=out,
-            manufacturer=None, model=None,
-            template=True, template_mode="input",
+            input_file=None,
+            output=out,
+            manufacturer=None,
+            model=None,
+            template=True,
+            template_mode="input",
         )
         input_data = iter([{"dummy": "row"}])
         run_generator(config, input_data=input_data)
@@ -343,8 +372,10 @@ class TestRunGenerator(unittest.TestCase):
 
     def test_no_input_file_logs_error(self):
         config = GeneratorConfig(
-            input_file=None, output=None,
-            manufacturer="X", model="Y",
+            input_file=None,
+            output=None,
+            manufacturer="X",
+            model="Y",
             template=False,
         )
         logging.disable(logging.NOTSET)
@@ -353,8 +384,10 @@ class TestRunGenerator(unittest.TestCase):
 
     def test_nonexistent_input_file_logs_error(self):
         config = GeneratorConfig(
-            input_file="/no/such/file.csv", output=None,
-            manufacturer="X", model="Y",
+            input_file="/no/such/file.csv",
+            output=None,
+            manufacturer="X",
+            model="Y",
             template=False,
         )
         logging.disable(logging.NOTSET)
@@ -364,14 +397,26 @@ class TestRunGenerator(unittest.TestCase):
     def test_run_with_input_data_succeeds(self):
         out = os.path.join(self.tmpdir.name, "out.csv")
         config = GeneratorConfig(
-            input_file=None, output=out,
-            manufacturer="ACME", model="X100",
+            input_file=None,
+            output=out,
+            manufacturer="ACME",
+            model="X100",
             template=False,
         )
-        input_data = [{"Name": "Var", "Address": "100", "Type": "U16",
-                       "Factor": "1", "Offset": "0", "Unit": "V",
-                       "Action": "4", "RegisterType": "Holding Register",
-                       "Tag": "", "ScaleFactor": ""}]
+        input_data = [
+            {
+                "Name": "Var",
+                "Address": "100",
+                "Type": "U16",
+                "Factor": "1",
+                "Offset": "0",
+                "Unit": "V",
+                "Action": "4",
+                "RegisterType": "Holding Register",
+                "Tag": "",
+                "ScaleFactor": "",
+            }
+        ]
         run_generator(config, input_data=iter(input_data))
         self.assertTrue(os.path.exists(out))
 
@@ -379,18 +424,41 @@ class TestRunGenerator(unittest.TestCase):
         csv_path = os.path.join(self.tmpdir.name, "input.csv")
         out = os.path.join(self.tmpdir.name, "out.csv")
         with open(csv_path, "w", encoding="utf-8", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=["Name", "Address", "Type",
-                                                    "Factor", "Offset", "Unit",
-                                                    "Action", "RegisterType",
-                                                    "Tag", "ScaleFactor"])
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "Name",
+                    "Address",
+                    "Type",
+                    "Factor",
+                    "Offset",
+                    "Unit",
+                    "Action",
+                    "RegisterType",
+                    "Tag",
+                    "ScaleFactor",
+                ],
+            )
             writer.writeheader()
-            writer.writerow({"Name": "Var1", "Address": "100", "Type": "U16",
-                             "Factor": "1", "Offset": "0", "Unit": "V",
-                             "Action": "4", "RegisterType": "Holding Register",
-                             "Tag": "", "ScaleFactor": ""})
+            writer.writerow(
+                {
+                    "Name": "Var1",
+                    "Address": "100",
+                    "Type": "U16",
+                    "Factor": "1",
+                    "Offset": "0",
+                    "Unit": "V",
+                    "Action": "4",
+                    "RegisterType": "Holding Register",
+                    "Tag": "",
+                    "ScaleFactor": "",
+                }
+            )
         config = GeneratorConfig(
-            input_file=csv_path, output=out,
-            manufacturer="ACME", model="X100",
+            input_file=csv_path,
+            output=out,
+            manufacturer="ACME",
+            model="X100",
             template=False,
         )
         run_generator(config)
@@ -400,6 +468,7 @@ class TestRunGenerator(unittest.TestCase):
 # ===========================================================================
 # Extractor: CSV extraction edge cases
 # ===========================================================================
+
 
 class TestExtractorCsv(unittest.TestCase):
     def setUp(self):
@@ -449,6 +518,7 @@ class TestExtractorCsv(unittest.TestCase):
 # Extractor: XML extraction
 # ===========================================================================
 
+
 class TestExtractorXml(unittest.TestCase):
     def setUp(self):
         self.extractor = Extractor()
@@ -468,10 +538,10 @@ class TestExtractorXml(unittest.TestCase):
     def test_valid_xml_extraction(self):
         xml = (
             '<?xml version="1.0"?>\n<registers>\n'
-            '  <register><Address>1000</Address><Name>Temperature</Name>'
-            '<Type>U16</Type></register>\n'
-            '  <register><Address>1001</Address><Name>Humidity</Name>'
-            '<Type>U16</Type></register>\n</registers>'
+            "  <register><Address>1000</Address><Name>Temperature</Name>"
+            "<Type>U16</Type></register>\n"
+            "  <register><Address>1001</Address><Name>Humidity</Name>"
+            "<Type>U16</Type></register>\n</registers>"
         )
         path = self._write("regs.xml", xml)
         tables = self.extractor.extract_from_xml(path)
@@ -490,6 +560,7 @@ class TestExtractorXml(unittest.TestCase):
 # ===========================================================================
 # Extractor: custom mapping and edge cases
 # ===========================================================================
+
 
 class TestExtractorCustomMapping(unittest.TestCase):
     def test_custom_mapping_overrides_defaults(self):
@@ -516,6 +587,7 @@ class TestExtractorCustomMapping(unittest.TestCase):
 # main.py: --pages and --sheet warning on wrong file types
 # ===========================================================================
 
+
 class TestMainWarnings(unittest.TestCase):
     def setUp(self):
         self.tmpdir = tempfile.TemporaryDirectory()
@@ -534,10 +606,25 @@ class TestMainWarnings(unittest.TestCase):
         out = os.path.join(self.tmpdir.name, "out.csv")
         env = dict(os.environ, PYTHONPATH=REPO_ROOT)
         result = subprocess.run(
-            [sys.executable, "-m", "DefFileGenerator.main",
-             "run", src, "--manufacturer", "M", "--model", "X",
-             "-o", out, "--pages", "1,2"],
-            capture_output=True, text=True, env=env, cwd=REPO_ROOT,
+            [
+                sys.executable,
+                "-m",
+                "DefFileGenerator.main",
+                "run",
+                src,
+                "--manufacturer",
+                "M",
+                "--model",
+                "X",
+                "-o",
+                out,
+                "--pages",
+                "1,2",
+            ],
+            capture_output=True,
+            text=True,
+            env=env,
+            cwd=REPO_ROOT,
         )
         self.assertIn("pages", result.stderr.lower())
 
@@ -546,10 +633,25 @@ class TestMainWarnings(unittest.TestCase):
         out = os.path.join(self.tmpdir.name, "out.csv")
         env = dict(os.environ, PYTHONPATH=REPO_ROOT)
         result = subprocess.run(
-            [sys.executable, "-m", "DefFileGenerator.main",
-             "run", src, "--manufacturer", "M", "--model", "X",
-             "-o", out, "--sheet", "Sheet1"],
-            capture_output=True, text=True, env=env, cwd=REPO_ROOT,
+            [
+                sys.executable,
+                "-m",
+                "DefFileGenerator.main",
+                "run",
+                src,
+                "--manufacturer",
+                "M",
+                "--model",
+                "X",
+                "-o",
+                out,
+                "--sheet",
+                "Sheet1",
+            ],
+            capture_output=True,
+            text=True,
+            env=env,
+            cwd=REPO_ROOT,
         )
         self.assertIn("sheet", result.stderr.lower())
 
@@ -557,6 +659,7 @@ class TestMainWarnings(unittest.TestCase):
 # ===========================================================================
 # validate command via main()
 # ===========================================================================
+
 
 class TestValidateCommand(unittest.TestCase):
     def setUp(self):
@@ -569,31 +672,38 @@ class TestValidateCommand(unittest.TestCase):
 
     def _valid_csv(self):
         path = os.path.join(self.tmpdir.name, "valid.csv")
-        content = _make_def_csv([
-            ["1", "3", "40001", "U16", "", "Var1", "tag1", "1.0", "0.0", "V", "4"],
-        ])
+        content = _make_def_csv(
+            [
+                ["1", "3", "40001", "U16", "", "Var1", "tag1", "1.0", "0.0", "V", "4"],
+            ]
+        )
         with open(path, "w", encoding="utf-8") as f:
             f.write(content)
         return path
 
     def test_validate_valid_file_exits_0(self):
         from DefFileGenerator.main import main
+
         path = self._valid_csv()
         main(["validate", path])  # Should not raise
 
     def test_validate_nonexistent_file_exits_1(self):
         from DefFileGenerator.main import main
+
         with self.assertRaises(SystemExit) as cm:
             main(["validate", "/no/such/def.csv"])
         self.assertEqual(cm.exception.code, 1)
 
     def test_validate_bad_file_exits_1(self):
         from DefFileGenerator.main import main
+
         path = os.path.join(self.tmpdir.name, "bad.csv")
-        content = _make_def_csv([
-            ["1", "3", "40001", "U16", "", "Var1", "dup_tag", "1.0", "0.0", "V", "4"],
-            ["2", "3", "40003", "U16", "", "Var2", "dup_tag", "1.0", "0.0", "V", "4"],
-        ])
+        content = _make_def_csv(
+            [
+                ["1", "3", "40001", "U16", "", "Var1", "dup_tag", "1.0", "0.0", "V", "4"],
+                ["2", "3", "40003", "U16", "", "Var2", "dup_tag", "1.0", "0.0", "V", "4"],
+            ]
+        )
         with open(path, "w", encoding="utf-8") as f:
             f.write(content)
         logging.disable(logging.NOTSET)
@@ -605,6 +715,7 @@ class TestValidateCommand(unittest.TestCase):
 # ===========================================================================
 # sanitize_csv_field security
 # ===========================================================================
+
 
 class TestSanitizeCsvField(unittest.TestCase):
     """Verify CSV formula-injection sanitization hardening."""
