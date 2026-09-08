@@ -84,7 +84,7 @@ def _perform_extraction(args):
         logger.error("No registers extracted.")
         sys.exit(1)
 
-    return list(mapped_data)
+    return mapped_peeked
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
@@ -95,6 +95,7 @@ def extract_command(args):
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
     writer.writerows(mapped_data)
+
     if output:
         f.close()
         logging.info(f"Extraction complete. Saved to {output}")
@@ -109,36 +110,35 @@ def validate_command(args):
 
 def generate_command(args):
     config = GeneratorConfig(
-        input_file=input_file,
-        output=getattr(args, 'output', None),
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
-        protocol=getattr(args, 'protocol', 'modbusRTU'),
-        category=getattr(args, 'category', 'Inverter'),
-        forced_write=getattr(args, 'forced_write', ''),
-        address_offset=getattr(args, 'address_offset', 0),
-        template=getattr(args, 'template', False),
-        template_mode=getattr(args, 'template_mode', 'input')
+        input_file=args.input_file,
+        output=args.output,
+        manufacturer=args.manufacturer,
+        model=args.model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        template=args.template,
+        template_mode=args.template_mode,
+        address_offset=args.address_offset
     )
     run_generator(config)
 
 def run_command(args):
-    template = getattr(args, 'template', False)
     mapped_data = None
-    if not template:
+    if not args.template:
         mapped_data = _perform_extraction(args)
 
     config = GeneratorConfig(
-        input_file=getattr(args, 'input_file', None),
-        output=getattr(args, 'output', None),
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
+        input_file=args.input_file,
+        output=args.output,
+        manufacturer=args.manufacturer,
+        model=args.model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction
-        template=template,
-        template_mode=getattr(args, 'template_mode', 'input')
+        template=args.template,
+        template_mode=args.template_mode,
+        address_offset=0 # Already applied during extraction
     )
     run_generator(config, input_data=mapped_data)
 
@@ -166,20 +166,20 @@ def _run_cli():
     parser_generate.add_argument('--manufacturer')
     parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
-    parser_generate.add_argument('--template', action='store_true')
+    parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
     parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run
+    # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer')
     parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
-    parser_run.add_argument('--template', action='store_true')
+    parser_run.add_argument('--template', action='store_true', help='Generate sample template')
     parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -196,11 +196,12 @@ def _run_cli():
 
     setup_logging(args.verbose)
 
-    if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
-        if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
+    # Validation of required arguments
+    if args.command in ['generate', 'run'] and not args.template:
+        if not args.manufacturer or not args.model:
             logging.error("--manufacturer and --model are required.")
             sys.exit(1)
-        if not getattr(args, 'input_file', None):
+        if not args.input_file:
             logging.error("input_file is required.")
             sys.exit(1)
 
