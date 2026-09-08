@@ -36,7 +36,7 @@ def _run_cli(args_list=None):
     setup_logging(args.verbose)
 
     if args.template:
-        config = GeneratorConfig(output=args.output, template=True)
+        config = GeneratorConfig(output=args.output, template=True, template_mode=args.template_mode)
         run_generator(config)
         return
 
@@ -47,37 +47,39 @@ def _run_cli(args_list=None):
 
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    # Warn about mismatched options
-    if args.pages and ext != '.pdf':
-        logging.warning("--pages is only applicable for PDF files. Ignoring.")
-    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        logging.warning("--sheet is only applicable for Excel files. Ignoring.")
-
     mapping = {}
     if args.mapping:
+        if not os.path.exists(args.mapping):
+            logging.error(f"Mapping file not found: {args.mapping}")
+            sys.exit(1)
         try:
             with open(args.mapping, 'r') as f:
                 mapping = json.load(f)
-        except (OSError, ValueError) as e:
+        except Exception as e:
             logging.error(f"Error reading mapping file: {e}")
             sys.exit(1)
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    if ext in ['.xlsx', '.xlsm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, args.pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
     if not has_data:
-        logging.error("No data extracted."); sys.exit(1)
+        logging.error("No data extracted.")
+        sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
     has_regs, mapped_peeked = peek_generator(mapped)
-    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
+    if not has_regs:
+        logging.error("No registers extracted.")
+        sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -97,8 +99,7 @@ def _run_cli(args_list=None):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction
-        template=False
+        address_offset=0 # Offset already applied in map_and_clean
     )
     run_generator(config, input_data=mapped_peeked)
 
@@ -110,8 +111,6 @@ def main(args=None):
         _run_cli(args)
     except KeyboardInterrupt:
         sys.exit(130)
-    except SystemExit:
-        raise
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         # traceback.print_exc() # For deep debugging
