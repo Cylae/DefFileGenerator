@@ -1,4 +1,5 @@
 import unittest
+import unittest.mock
 import os
 import csv
 import tempfile
@@ -84,6 +85,12 @@ class TestValidateCSV(unittest.TestCase):
         dir_path = self.temp_dir.name
         with unittest.mock.patch('os.path.exists', return_value=True):
             self.assertFalse(self.generator.validate_csv(dir_path))
+
+    def test_validate_csv_empty_file(self):
+        path = os.path.join(self.temp_dir.name, 'empty.csv')
+        with open(path, 'w', encoding='utf-8') as f:
+            pass
+        self.assertFalse(self.generator.validate_csv(path))
 
 if __name__ == '__main__':
     unittest.main()
