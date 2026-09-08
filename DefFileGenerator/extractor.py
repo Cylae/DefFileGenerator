@@ -17,7 +17,7 @@ import sys
 import itertools
 import zipfile
 from collections.abc import Iterable, Iterator
-from typing import Any, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 # Named logger
 logger = logging.getLogger('DefFileGenerator.extractor')
@@ -50,7 +50,9 @@ except ImportError:
 SECURITY_EXCEPTIONS: tuple[type[Exception], ...]
 try:
     from defusedxml import ElementTree as ET
+    from defusedxml.common import DefusedXmlException, DTDForbidden, EntitiesForbidden, ExternalReferenceForbidden
     HAS_DEFUSEDXML = True
+    SECURITY_EXCEPTIONS = (DefusedXmlException, DTDForbidden, EntitiesForbidden, ExternalReferenceForbidden)
 except ImportError:
     HAS_DEFUSEDXML = False
     SECURITY_EXCEPTIONS = (Exception,)
@@ -125,36 +127,41 @@ class Extractor:
             return iter([])
 
         def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            wb = None
+            if not os.path.exists(filepath):
+                def missing_file_gen():
+                    logging.error(f"Excel file not found: {filepath}")
+                    yield from ()
+                yield missing_file_gen()
+                return
+
             try:
                 wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+            except (OSError, zipfile.BadZipFile, Exception) as e:
+                def io_err_gen():
+                    logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+                    yield from ()
+                yield io_err_gen()
+                return
 
-                for ws in sheets:
-                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
-                        rows = ws_obj.iter_rows(values_only=True)
-                        try:
-                            header_row = next(rows)
-                        except StopIteration:
-                            return
+            sheet_names = [sheet_name] if sheet_name else wb.sheetnames
 
-                        headers = [str(h).strip() if h is not None else "" for h in header_row]
+            for sname in sheet_names:
+                def sheet_generator(name=sname) -> Iterator[Dict[str, Any]]:
+                    if name not in wb.sheetnames:
+                        logging.error(f"Sheet '{name}' not found in {filepath}")
+                        return
+                    ws = wb[name]
+                    rows = ws.iter_rows(values_only=True)
+                    try:
+                        header_row = next(rows)
+                    except StopIteration:
+                        return
+                    headers = [str(h).strip() if h is not None else "" for h in header_row]
+                    for row in rows:
+                        if any(cell is not None and str(cell).strip() for cell in row):
+                            yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                        for row in rows:
-                            # Only yield if row has actual data (not all None/empty)
-                            if any(cell is not None and str(cell).strip() for cell in row):
-                                yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-
-                    # We yield a generator for each sheet.
-                    yield sheet_generator()
-
-            except (OSError, zipfile.BadZipFile) as e:
-                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-            except (ValueError, TypeError, KeyError) as e:
-                logging.error(f"Error extracting from Excel {filepath}: {e}")
-            finally:
-                if wb:
-                    wb.close()
+                yield sheet_generator()
 
         return excel_sheets_generator()
 
@@ -251,12 +258,19 @@ class Extractor:
             return iter([])
 
         def xml_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            try:
-                with open(filepath, 'rb') as f:
-                    tree = ET.parse(f)
-                    root = tree.getroot()
+            if not os.path.exists(filepath):
+                def missing_xml_gen():
+                    logging.error(f"XML file not found: {filepath}")
+                    yield from ()
+                yield missing_xml_gen()
+                return
 
-                def xml_generator() -> Iterator[Dict[str, Any]]:
+            def xml_generator() -> Iterator[Dict[str, Any]]:
+                try:
+                    with open(filepath, 'rb') as f:
+                        tree = ET.parse(f)
+                        root = tree.getroot()
+
                     seen = set()
                     for elem in root.iter():
                         row = {}
@@ -268,17 +282,15 @@ class Extractor:
                             if js not in seen:
                                 seen.add(js)
                                 yield row
+                except SECURITY_EXCEPTIONS as e:
+                    logging.error(f"Security error parsing XML {filepath}: {e}")
+                    raise
+                except (OSError,) + XML_PARSE_ERRORS as e:
+                    logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
+                except (ValueError, TypeError) as e:
+                    logging.error(f"Error extracting from XML {filepath}: {e}")
 
-                # Return as a single table
-                yield xml_generator()
-
-            except SECURITY_EXCEPTIONS as e:
-                logging.error(f"Security error parsing XML {filepath}: {e}")
-                raise
-            except (OSError,) + XML_PARSE_ERRORS as e:
-                logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
-            except (ValueError, TypeError) as e:
-                logging.error(f"Error extracting from XML {filepath}: {e}")
+            yield xml_generator()
 
         return xml_tables_generator()
 

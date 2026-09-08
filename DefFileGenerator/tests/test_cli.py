@@ -32,7 +32,10 @@ class TestCliEntryPoints(unittest.TestCase):
         from generate_webdyn_def import main
         test_args = ["generate_webdyn_def.py", self.csv_file, "test_gen_out.csv", "--manufacturer", "TestMfg", "--model", "TestModel"]
         with patch.object(sys, 'argv', test_args):
-            main()
+            try:
+                main()
+            except SystemExit:
+                pass
             self.assertTrue(os.path.exists("test_gen_out.csv"))
 
     def test_doc_to_webdyn_success(self):

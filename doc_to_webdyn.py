@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import sys
 import os
 import logging
@@ -88,14 +89,10 @@ def _run_cli(argv=None):
         sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
-    if not first:
+    has_regs, mapped_peeked = peek_generator(mapped)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
-
-    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped)
-    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"

@@ -8,6 +8,7 @@ import math
 import itertools
 import os
 from dataclasses import dataclass
+from typing import Any, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union
 
 def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
     """
@@ -72,9 +73,33 @@ class Generator:
         """Precludes CSV injection by prepending an apostrophe if needed."""
         if val is None:
             return ""
+        if isinstance(val, (int, float)):
+            return str(val)
         s = str(val)
-        if s and s[0] in ('=', '+', '-', '@'):
+        if not s:
+            return ""
+
+        # Check for prefix characters that trigger injection
+        if s[0] in ('\t', '\r', '\n', '\u00a0', '\ufeff') or s.startswith(('\uff1d', '\uff0b', '\uff0d', '\uff20')):
             return "'" + s
+
+        stripped = s.lstrip()
+        if not stripped:
+            return s
+
+        if stripped[0] in ('=', '+', '-', '@', '|', '%'):
+            if '_' in stripped or 'inf' in stripped.lower() or 'nan' in stripped.lower():
+                return "'" + s
+            try:
+                f = float(stripped)
+                if math.isfinite(f):
+                    if s.startswith(' ') and not s.startswith('  ') and stripped.startswith('-'):
+                        return "'" + s
+                    return s
+            except ValueError:
+                pass
+            return "'" + s
+
         return s
 
     @staticmethod
@@ -93,16 +118,16 @@ class Generator:
 
         # Mapping ordered by specificity
         synonyms = [
-            (r'unsigned integer 64|unsigned int 64|uint64', 'U64'),
-            (r'signed integer 64|signed int 64|int64', 'I64'),
-            (r'unsigned integer 32|unsigned int 32|uint32', 'U32'),
-            (r'signed integer 32|signed int 32|int32', 'I32'),
-            (r'unsigned integer 16|unsigned int 16|uint16', 'U16'),
-            (r'signed integer 16|signed int 16|int16', 'I16'),
-            (r'unsigned integer 8|unsigned int 8|uint8', 'U8'),
-            (r'signed integer 8|signed int 8|int8', 'I8'),
-            (r'float64|double', 'F64'),
-            (r'float32|float', 'F32'),
+            (r'unsigned integer 64|unsigned int 64|uint64|\bu64\b', 'U64'),
+            (r'signed integer 64|signed int 64|int64|\bi64\b', 'I64'),
+            (r'unsigned integer 32|unsigned int 32|uint32|\bu32\b', 'U32'),
+            (r'signed integer 32|signed int 32|int32|\bi32\b', 'I32'),
+            (r'unsigned integer 16|unsigned int 16|uint16|\bu16\b', 'U16'),
+            (r'signed integer 16|signed int 16|int16|\bi16\b', 'I16'),
+            (r'unsigned integer 8|unsigned int 8|uint8|\bu8\b', 'U8'),
+            (r'signed integer 8|signed int 8|int8|\bi8\b', 'I8'),
+            (r'float64|double|\bf64\b', 'F64'),
+            (r'float32|float|\bf32\b', 'F32'),
             (r'string', 'STRING'),
         ]
         for pattern, replacement in synonyms:
@@ -167,7 +192,7 @@ class Generator:
             base_addr_str = Generator.normalize_address_val(parts[0])
             base_addr = int(base_addr_str)
             if not (0 <= base_addr <= 65535):
-                logging.warning(f"Address {base_addr} is out of standard Modbus range (0-65535)")
+                logging.warning(f"Address {base_addr} is out of Modbus range (0-65535)")
                 if strict:
                     return False
         except (ValueError, IndexError):
@@ -374,11 +399,14 @@ class Generator:
                 'Action': norm_action
             }
 
-    def validate_csv(self, filepath: str, strict: bool = True) -> bool:
+    def validate_csv(self, filepath: str, strict: bool = False, strict_overlap: Optional[bool] = None) -> bool:
         """Validates an existing WebdynSunPM definition file."""
         if not os.path.exists(filepath):
             logging.error(f"File not found: {filepath}")
             return False
+
+        if strict_overlap is None:
+            strict_overlap = strict
 
         valid = True
         seen_tags = {}
@@ -414,7 +442,7 @@ class Generator:
                         else:
                             seen_tags[tag] = line_num
 
-                    # Validate Type (warning/fatal?)
+                    # Validate Type
                     if not self.validate_type(info3):
                         logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
                         valid = False
@@ -426,8 +454,8 @@ class Generator:
 
                     self._check_address_overlap(info1, info2, info3, name, line_num, address_usage, warned_lines)
 
-            if strict and warned_lines:
-                logging.error("Address overlaps detected (strict=True). Validation failed.")
+            if strict_overlap and warned_lines:
+                logging.error("Address overlaps detected. Validation failed.")
                 valid = False
 
             return valid
@@ -490,36 +518,36 @@ class Generator:
 def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
     """Generates a sample template CSV file."""
     if mode == 'definition':
+        headers = ['#Index', 'Info1', 'Info2', 'Info3', 'Info4', 'Name', 'Tag', 'CoefA', 'CoefB', 'Unit', 'Action']
         rows = [
-            ['#Index', 'Info1', 'Info2', 'Info3', 'Info4', 'Name', 'Tag', 'CoefA', 'CoefB', 'Unit', 'Action'],
             ['modbusRTU', 'Inverter', 'SampleManufacturer', 'SampleModel', '', '', '', '', '', '', ''],
-            headers,
             ['1', '3', '40001', 'U16', '', 'Active Power', 'active_power', '1.000000', '0.000000', 'W', '4'],
             ['2', '3', '40002', 'U16', '', 'Voltage', 'voltage', '0.100000', '0.000000', 'V', '4']
         ]
         delimiter = ';'
     else:
+        headers = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
         rows = [
-            ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'],
             ['Example Variable', 'example_tag', 'Holding Register', '30001', 'U16', '1', '0', 'V', '4', '0'],
             ['Convenience String', 'str_tag', 'Holding Register', '30030', 'STR20', '', '', '', '4', '']
         ]
         delimiter = ','
 
+    outfile = None
     try:
         if output_file:
-            with open(output_file, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f, delimiter=delimiter)
-                writer.writerow(headers)
-                writer.writerows(rows)
+            outfile = open(output_file, 'w', newline='', encoding='utf-8')
+            writer = csv.writer(outfile, delimiter=delimiter)
         else:
             writer = csv.writer(sys.stdout, delimiter=delimiter)
-            writer.writerow(headers)
-            writer.writerows(rows)
+
+        writer.writerow(headers)
+        writer.writerows(rows)
     except OSError as e:
         logging.error(f"Error generating template: {e}")
     finally:
-        if output_file and outfile: outfile.close()
+        if output_file and outfile:
+            outfile.close()
 
 def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
     generator = Generator()
@@ -543,7 +571,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
     try:
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
-            generator.write_output_csv(config.output, processed_rows, mfg, model,
+            generator.write_output_csv(config.output, processed_rows, manufacturer, model,
                                        config.protocol, config.category, config.forced_write)
         else:
             if not config.input_file:
