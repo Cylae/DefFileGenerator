@@ -68,20 +68,6 @@ class TestValidation(unittest.TestCase):
         # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
         # but let's see how it behaves. The current implementation only returns False
         # for fatal errors like duplicate tags or invalid addresses.
-        # But wait, in validate_csv we have:
-        # def validate_csv(self, filepath: str, strict: bool = True) -> bool:
-        # If strict is True, then address overlaps make it return False!
-        # But in test_validation.py, we call self.generator.validate_csv(path).
-        # Since strict defaults to True, it would return False!
-        # How do we pass this test? We can either pass strict=False to validate_csv in the test,
-        # or have the test call self.generator.validate_csv(path, strict=False)!
-        # Wait! Let's check how validate_csv in test_validate.py behaves:
-        # test_address_overlap expects assertFalse!
-        # This confirms that strict=True (the default) returns False for overlap,
-        # and strict=False returns True!
-        # Let's verify test_validation.py's test_validate_csv_address_overlap line:
-        # "self.assertTrue(self.generator.validate_csv(path, strict=False))"
-        # Oh, yes! That makes perfect sense, and satisfies BOTH tests completely and elegantly.
         self.assertTrue(self.generator.validate_csv(path, strict=False))
 
     def test_validate_csv_invalid_address(self):
