@@ -14,18 +14,28 @@ class TestGenerator(unittest.TestCase):
         logging.disable(logging.NOTSET)
 
     def test_calculate_coefficients(self):
-        # Valid integer strings
-        self.assertEqual(self.generator._calculate_coefficients("2", "3", "4"), ("20000.000000", "3.000000"))
-        # Valid float strings
-        self.assertEqual(self.generator._calculate_coefficients("1.5", "2.5", "3.0"), ("1500.000000", "2.500000"))
-        # Null and empty inputs
-        self.assertEqual(self.generator._calculate_coefficients("", None, ""), ("1.000000", "0.000000"))
-        # Invalid inputs falling back to defaults
-        self.assertEqual(self.generator._calculate_coefficients("abc", "def", "ghi"), ("1.000000", "0.000000"))
-        # Fractions
-        self.assertEqual(self.generator._calculate_coefficients("1/10", "1/2", "2"), ("10.000000", "0.500000"))
-        # Negative scale factor
-        self.assertEqual(self.generator._calculate_coefficients("1.0", "0.0", "-2"), ("0.010000", "0.000000"))
+        # Default conditions
+        self.assertEqual(self.generator._calculate_coefficients('', '', ''), ('1.000000', '0.000000'))
+        self.assertEqual(self.generator._calculate_coefficients(None, None, None), ('1.000000', '0.000000'))
+
+        # Valid standard inputs
+        self.assertEqual(self.generator._calculate_coefficients('2', '10', '0'), ('2.000000', '10.000000'))
+
+        # With scale factor
+        self.assertEqual(self.generator._calculate_coefficients('1', '0', '2'), ('100.000000', '0.000000'))
+        self.assertEqual(self.generator._calculate_coefficients('1.5', '0', '1'), ('15.000000', '0.000000'))
+        self.assertEqual(self.generator._calculate_coefficients('1', '5', '-1'), ('0.100000', '5.000000'))
+
+        # With scale factor formatted as float string
+        self.assertEqual(self.generator._calculate_coefficients('2', '0', '2.0'), ('200.000000', '0.000000'))
+        self.assertEqual(self.generator._calculate_coefficients('2', '0', '-2.0'), ('0.020000', '0.000000'))
+
+        # Invalid scale factors fallback to 0
+        self.assertEqual(self.generator._calculate_coefficients('2', '1', 'invalid'), ('2.000000', '1.000000'))
+
+        # Precision/Format up to 6 decimal places
+        self.assertEqual(self.generator._calculate_coefficients('0.1234567', '0.9876543', '0'), ('0.123457', '0.987654'))
+        self.assertEqual(self.generator._calculate_coefficients('1', '0', '-3'), ('0.001000', '0.000000'))
 
     def test_intelligent_defaulting(self):
         rows = [
