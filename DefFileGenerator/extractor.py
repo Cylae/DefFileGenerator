@@ -114,25 +114,46 @@ class Extractor:
             logging.error("openpyxl is required for Excel extraction.")
             return
 
-        wb = None
-        try:
-            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            if sheet_name:
-                if sheet_name in wb.sheetnames:
-                    sheets = [wb[sheet_name]]
-                else:
-                    logging.warning(f"Sheet '{sheet_name}' not found. Using all sheets.")
-                    sheets = wb.worksheets
-            else:
-                sheets = wb.worksheets
-
-            for ws in sheets:
-                def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
-                    rows = ws_obj.iter_rows(values_only=True)
+        def sheet_generator(sname: str) -> Iterator[dict[str, Any]]:
+            try:
+                wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                try:
+                    ws = wb[sname]
+                    rows = ws.iter_rows(values_only=True)
                     try:
                         header_row = next(rows)
                     except StopIteration:
                         return
+                    headers = [str(h).strip() if h is not None else "" for h in header_row]
+                    for row in rows:
+                        if any(cell is not None and str(cell).strip() for cell in row):
+                            yield {
+                                headers[i]: cell
+                                for i, cell in enumerate(row)
+                                if i < len(headers)
+                            }
+                except (ValueError, TypeError, KeyError) as e:
+                    logging.error(f"Error extracting from Excel {filepath}: {e}")
+                finally:
+                    wb.close()
+            except (OSError, zipfile.BadZipFile) as e:
+                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+
+        def excel_sheets_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            if sheet_name:
+                yield sheet_generator(sheet_name)
+            else:
+                try:
+                    wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                    sheet_names = list(wb.sheetnames)
+                    wb.close()
+                    for sname in sheet_names:
+                        yield sheet_generator(sname)
+                except (OSError, zipfile.BadZipFile, KeyError, ValueError, TypeError) as exc:
+                    def error_generator(err=exc) -> Iterator[dict[str, Any]]:
+                        logging.error(f"File IO Error extracting from Excel {filepath}: {err}")
+                        yield from ()
+                    yield error_generator()
 
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
                     for row in rows:
