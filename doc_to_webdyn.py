@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 import argparse
-import sys
-import os
-import logging
-import re
 import json
+import logging
+import os
+import re
+import sys
+
+from DefFileGenerator.def_gen import GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+
 
 def _run_cli(argv=None):
     if argv is None:
@@ -53,7 +55,7 @@ def _run_cli(argv=None):
     mapping = {}
     if args.mapping:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(args.mapping) as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
