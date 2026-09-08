@@ -58,10 +58,6 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
-# Secure Import for Generator and peek_generator with clean fallbacks
-Generator = None
-peek_generator = None
-
 try:
     from DefFileGenerator.def_gen import Generator
 except ImportError:
@@ -75,20 +71,20 @@ except ImportError:
         except ImportError:
             pass
 
-if peek_generator is None:
-    def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
-        """
-        Checks if an iterable is non-empty without fully consuming it.
-        Returns (has_data, original_iterator).
-        """
-        if iterable is None:
-            return False, iter([])
-        it = iter(iterable)
-        try:
-            first = next(it)
-        except StopIteration:
-            return False, iter([])
-        return True, itertools.chain([first], it)
+
+def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
+    """
+    Checks if an iterable has at least one element without consuming it.
+    Returns (has_data, new_iterator)
+    """
+    if iterable is None:
+        return False, iter([])
+    it = iter(iterable)
+    try:
+        first = next(it)
+    except StopIteration:
+        return False, iter([])
+    return True, itertools.chain([first], it)
 
 
 class Extractor:
@@ -134,144 +130,37 @@ class Extractor:
             logging.error(f"Error loading Excel {filepath}: {e}")
             return iter([])
 
-        def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            wb = None
+        wb = None
+        try:
+            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+            sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+        except (OSError, zipfile.BadZipFile) as e:
+            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+            return iter([])
+        except Exception as e:
+            logging.error(f"Error loading Excel {filepath}: {e}")
+            return iter([])
+
+        def sheet_generator(ws_obj):
             try:
-                wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
-
-                for ws in sheets:
-                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
-                        rows = ws_obj.iter_rows(values_only=True)
-                        try:
-                            header_row = next(rows)
-                        except StopIteration:
-                            return
-
-                        headers = [str(h).strip() if h is not None else "" for h in header_row]
-
-                        for row in rows:
-                            # Only yield if row has actual data (not all None/empty)
-                            if any(cell is not None and str(cell).strip() for cell in row):
-                                yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-                    except (OSError, zipfile.BadZipFile) as e:
-                        logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-                    except (ValueError, TypeError, KeyError) as e:
-                        logging.error(f"Error extracting from Excel {filepath}: {e}")
-                    finally:
-                        if wb is not None:
-                            wb.close()
-
-                    # We yield a generator for each sheet.
-                    yield sheet_generator()
-
-                if sheet_names is None:
-                    def error_sheet_generator() -> Iterator[dict[str, Any]]:
-                        try:
-                            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                            wb.close()
-                        except (OSError, zipfile.BadZipFile) as e:
-                            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-                        except (ValueError, TypeError, KeyError) as e:
-                            logging.error(f"Error extracting from Excel {filepath}: {e}")
-                        return iter([])
-                        yield
-
-                    yield error_sheet_generator()
+                rows = ws_obj.iter_rows(values_only=True)
+                header_row = next(rows, None)
+                if not header_row:
                     return
+                headers = [str(h).strip() if h is not None else "" for h in header_row]
+                for row in rows:
+                    if any(cell is not None and str(cell).strip() for cell in row):
+                        yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+            except Exception as e:
+                logging.error(f"Error reading rows from sheet {ws_obj.title}: {e}")
 
-                for sname in sheet_names:
-                    def make_sheet_gen(s_name=sname):
-                        def sheet_generator() -> Iterator[dict[str, Any]]:
-                            wb_inner = None
-                            try:
-                                wb_inner = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                                ws = wb_inner[s_name]
-                                rows = ws.iter_rows(values_only=True)
-                                try:
-                                    header_row = next(rows)
-                                except StopIteration:
-                                    return
-                                headers = [str(h).strip() if h is not None else "" for h in header_row]
-                                for row in rows:
-                                    if any(cell is not None and str(cell).strip() for cell in row):
-                                        yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-                            except (OSError, zipfile.BadZipFile) as e:
-                                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-                            except (ValueError, TypeError, KeyError) as e:
-                                logging.error(f"Error extracting from Excel {filepath}: {e}")
-                            finally:
-                                if wb_inner is not None:
-                                    wb_inner.close()
-                        return sheet_generator()
-
-                    yield make_sheet_gen()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
-
-        return excel_sheets_generator()
+        def excel_sheets_generator():
+            try:
+                for ws in sheets:
+                    yield sheet_generator(ws)
+            finally:
+                if wb:
+                    wb.close()
 
         return excel_sheets_generator()
 
@@ -287,10 +176,15 @@ class Extractor:
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        requested = pages if isinstance(pages, list) else [pages]
-                        if isinstance(pages, str):
-                            requested = [p.strip() for p in pages.split(',')]
-                        for p in requested:
+                        page_list = []
+                        requested = [pages] if isinstance(pages, (int, str)) else list(pages)
+                        actual_pages = []
+                        for item in requested:
+                            if isinstance(item, str) and ',' in item:
+                                actual_pages.extend(item.split(','))
+                            else:
+                                actual_pages.append(item)
+                        for p in actual_pages:
                             try:
                                 idx = int(p) - 1
                                 if 0 <= idx < len(pdf.pages):
@@ -319,44 +213,43 @@ class Extractor:
                             yield table_generator()
             except (OSError,) + PDF_ERRORS as e:
                 logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-            except (ValueError, TypeError, IndexError) as e:
+            except Exception as e:
                 logging.error(f"Error extracting from PDF {filepath}: {e}")
 
         return pdf_tables_generator()
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
-        def csv_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            def csv_table_generator() -> Iterator[Dict[str, Any]]:
-                try:
-                    with open(filepath, 'rb') as f:
-                        header_bytes = f.read(4)
-                        encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+        def csv_table_generator() -> Iterator[Dict[str, Any]]:
+            try:
+                with open(filepath, 'rb') as f:
+                    header_bytes = f.read(4)
+                    encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-                    with open(filepath, 'r', encoding=encoding) as f:
-                        snippet = f.read(2048)
-                        f.seek(0)
-                        try:
-                            dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                            delimiter = dialect.delimiter
-                        except csv.Error:
-                            delimiter = ','
-                            for d in [',', ';', '\t']:
-                                if d in snippet:
-                                    delimiter = d
-                                    break
+                with open(filepath, 'r', encoding=encoding) as f:
+                    snippet = f.read(2048)
+                    f.seek(0)
+                    try:
+                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                        delimiter = dialect.delimiter
+                    except csv.Error:
+                        delimiter = ','
+                        for d in [',', ';', '\t']:
+                            if d in snippet:
+                                delimiter = d
+                                break
 
-                        reader = csv.DictReader(f, delimiter=delimiter)
-                        for row in reader:
-                            if any(val.strip() for val in row.values() if val is not None):
-                                yield dict(row)
-                except OSError as e:
-                    logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
-                except csv.Error as e:
-                    logging.error(f"CSV Parsing Error in {filepath}: {e}")
-                except UnicodeError as e:
-                    logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
-                except (ValueError, TypeError) as e:
-                    logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
+                    reader = csv.DictReader(f, delimiter=delimiter)
+                    for row in reader:
+                        if any(val.strip() for val in row.values() if val is not None):
+                            yield dict(row)
+            except OSError as e:
+                logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
+            except csv.Error as e:
+                logging.error(f"CSV Parsing Error in {filepath}: {e}")
+            except UnicodeError as e:
+                logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
+            except Exception as e:
+                logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
             yield csv_table_generator()
 
@@ -389,7 +282,7 @@ class Extractor:
                 yield xml_generator()
 
             except SECURITY_EXCEPTIONS as e:
-                logging.error(f"Security error parsing XML {filepath}: {e}")
+                logging.error(f"XML Security Exception: {e}")
                 raise
             except (OSError,) + XML_PARSE_ERRORS as e:
                 logging.error(f"File IO Error or Parsing Error extracting from XML {filepath}: {e}")
@@ -542,6 +435,7 @@ def main():
     writer.writerows(mapped)
     if args.output:
         out.close()
+
 
 if __name__ == "__main__":
     main()

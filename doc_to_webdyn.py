@@ -16,14 +16,8 @@ import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
-def _run_cli(argv=None):
-    if argv is None:
-        argv = sys.argv[1:]
-    else:
-        # Strip script name if present as first element
-        if argv and (argv[0].endswith('main.py') or argv[0].endswith('doc_to_webdyn.py') or argv[0] == 'main.py' or argv[0] == 'doc_to_webdyn.py'):
-            argv = argv[1:]
 
+def _run_cli(argv=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
@@ -39,6 +33,13 @@ def _run_cli(argv=None):
     parser.add_argument('--address-offset', type=int, default=0)
     parser.add_argument('--forced-write', default='')
     parser.add_argument('-v', '--verbose', action='store_true')
+
+    if argv is None:
+        argv = sys.argv[1:]
+
+    # Strip script name if present
+    if argv and argv[0].endswith('doc_to_webdyn.py'):
+        argv = argv[1:]
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
@@ -79,13 +80,17 @@ def _run_cli(argv=None):
 
     extractor = Extractor(mapping)
 
-    pages = getattr(args, 'pages', None)
-    if pages and ext == '.pdf':
-        try:
-            pages = [int(p.strip()) for p in pages.split(',')]
-        except ValueError:
-            logging.error("Invalid format for --pages. Expected comma-separated integers.")
-            sys.exit(1)
+    pages_arg = getattr(args, 'pages', None)
+    pages = None
+    if pages_arg:
+        if ext != '.pdf':
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        else:
+            try:
+                pages = [int(p.strip()) for p in pages_arg.split(',')]
+            except ValueError:
+                logging.error("Invalid format for --pages. Expected comma-separated integers.")
+                sys.exit(1)
 
     sheet_arg = getattr(args, 'sheet', None)
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
@@ -102,11 +107,11 @@ def _run_cli(argv=None):
 
     has_data, raw_peeked = peek_generator(raw)
     if not has_data:
-        logging.error("No data extracted.")
+        logging.error("No registers extracted.")
         sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
+    first, mapped = peek_generator(mapped)
     if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
@@ -130,9 +135,10 @@ def _run_cli(argv=None):
     )
     run_generator(config, input_data=mapped)
 
-def main(args=None):
+
+def main(argv=None):
     try:
-        _run_cli(args)
+        _run_cli(argv)
     except KeyboardInterrupt:
         sys.exit(130)
     except Exception as e:
