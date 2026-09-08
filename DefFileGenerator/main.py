@@ -12,9 +12,13 @@ import os
 import logging
 import csv
 import json
+import re
 
-from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
+# Ensure the parent directory is in sys.path to allow direct execution
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -76,7 +80,6 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -85,21 +88,17 @@ def extract_command(args):
     else:
         f = sys.stdout
 
-    try:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        for row in mapped_data:
-            writer.writerow(row)
+    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped_data)
 
-        if output:
-            logging.info(f"Extraction complete. Saved to {output}")
-    finally:
-        if output:
-            f.close()
+    if output:
+        f.close()
+        logging.info(f"Extraction complete. Saved to {output}")
 
 def validate_command(args):
-    gen = Generator()
-    if gen.validate_csv(args.input_file):
+    generator = Generator()
+    if generator.validate_csv(args.input_file):
         logging.info(f"Validation successful for {args.input_file}")
     else:
         logging.error(f"Validation failed for {args.input_file}")
@@ -126,21 +125,30 @@ def run_command(args):
     if not template:
         mapped_data = _perform_extraction(args)
 
+    output = args.output
+    if not output and not template:
+        # Default output name logic from memory
+        mfg = getattr(args, 'manufacturer', 'mfg') or 'mfg'
+        model = getattr(args, 'model', 'model') or 'model'
+        m_safe = re.sub(r'[^a-zA-Z0-9]', '_', mfg).lower()
+        mod_safe = re.sub(r'[^a-zA-Z0-9]', '_', model).lower()
+        output = f"{m_safe}_{mod_safe}_definition.csv"
+
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
-        output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
+        output=output,
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction in run mode
+        address_offset=0, # Already applied during extraction
         template=template,
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli():
+def _run_cli(args_list=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -164,38 +172,39 @@ def _run_cli():
     parser_generate.add_argument('--manufacturer')
     parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
-    parser_generate.add_argument('--template', action='store_true')
-    parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
-    parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_generate.add_argument('--address-offset', type=int, default=0)
+    parser_generate.add_argument('--template', action='store_true')
+    parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
 
-    # Run (Extract + Generate)
+    # Run
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer')
     parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
-    parser_run.add_argument('--template', action='store_true')
-    parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
     parser_run.add_argument('--pages', help='PDF pages')
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
-    parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
+    parser_run.add_argument('--address-offset', type=int, default=0)
+    parser_run.add_argument('--template', action='store_true')
+    parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
 
-    args = parser.parse_args()
+    args = parser.parse_args(args_list) if args_list is not None else parser.parse_args()
+
     if not args.command:
         parser.print_help()
         sys.exit(0)
 
     setup_logging(args.verbose)
 
-    if args.command in ['generate', 'run'] and not args.template:
-        if not args.manufacturer or not args.model:
+    if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
+        if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
             logging.error("--manufacturer and --model are required.")
             sys.exit(1)
         if not args.input_file:
