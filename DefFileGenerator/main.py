@@ -41,10 +41,7 @@ def _add_common_args(parser, include_input=True):
 
 def _perform_extraction(args):
     input_file = getattr(args, 'input_file', None)
-    if not input_file:
-        logging.error("Input file is required for extraction.")
-        sys.exit(1)
-    if not os.path.exists(input_file):
+    if not input_file or not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
@@ -60,11 +57,14 @@ def _perform_extraction(args):
 
     extractor = Extractor(mapping)
     ext = os.path.splitext(input_file)[1].lower()
+    address_offset = getattr(args, 'address_offset', 0)
+    pages = getattr(args, 'pages', None)
+    sheet = getattr(args, 'sheet', None)
 
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf':
-        raw_data = extractor.extract_from_pdf(input_file, pages_arg)
+        raw_data = extractor.extract_from_pdf(input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(input_file)
     elif ext == '.xml':
@@ -91,17 +91,13 @@ def extract_command(args):
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    try:
-        f = open(output, 'w', newline='', encoding='utf-8') if output else sys.stdout
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-        writer.writeheader()
-        writer.writerows(mapped_data)
-        if output:
-            f.close()
-            logging.info(f"Extraction complete. Saved to {output}")
-    except OSError as e:
-        logging.error(f"Error writing extraction output: {e}")
-        sys.exit(1)
+    f = open(output, 'w', newline='', encoding='utf-8') if output else sys.stdout
+    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(mapped_data)
+    if output:
+        f.close()
+        logging.info(f"Extraction complete. Saved to {output}")
 
 def validate_command(args):
     generator = Generator()
@@ -112,9 +108,6 @@ def validate_command(args):
         sys.exit(1)
 
 def generate_command(args):
-    template = getattr(args, 'template', False)
-    input_file = getattr(args, 'input_file', None)
-
     config = GeneratorConfig(
         input_file=input_file,
         output=getattr(args, 'output', None),
@@ -124,7 +117,7 @@ def generate_command(args):
         category=getattr(args, 'category', 'Inverter'),
         forced_write=getattr(args, 'forced_write', ''),
         address_offset=getattr(args, 'address_offset', 0),
-        template=template,
+        template=getattr(args, 'template', False),
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config)
@@ -149,7 +142,7 @@ def run_command(args):
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli(args_list=None):
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -180,7 +173,7 @@ def _run_cli(args_list=None):
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run (Extract + Generate)
+    # Run
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer')
@@ -196,15 +189,13 @@ def _run_cli(args_list=None):
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    args = parser.parse_args(args_list)
-
+    args = parser.parse_args()
     if not args.command:
         parser.print_help()
         return
 
     setup_logging(args.verbose)
 
-    # Validation for required manufacturer/model unless template
     if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
         if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
             logging.error("--manufacturer and --model are required.")
