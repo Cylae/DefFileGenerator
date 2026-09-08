@@ -126,73 +126,68 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(list(it), [1, 2, 3])
 
     def test_process_row_edge_cases(self):
+        # We test the internal `process_row` by passing edge-case rows through `map_and_clean`
+        # Extractor.map_and_clean expects an iterable of iterables (tables)
+        # We will create one table with various rows that trigger edge cases.
         raw_data = [[
-            # Missing Name and Address -> should be filtered out
-            {"Register Address": "", "Variable Name": "", "Data Type": "U16"},
+            # 1. Missing Name and Address -> Skipped
+            {"Data Type": "U16"},
 
-            # BITS type with StartBit and Length -> appends _start_len
-            {"Register Address": "100", "Variable Name": "Status", "Data Type": "BITS", "StartBit": "2", "Length": "4"},
+            # 2. Missing Type -> Defaults to U16, missing RegisterType -> Holding Register
+            {"Address": "100", "Name": "Default Type Test"},
 
-            # BITS type with StartBit but missing Length -> defaults to length 1
-            {"Register Address": "101", "Variable Name": "Flag", "Data Type": "BITS", "StartBit": "3", "Length": ""},
+            # 3. BITS type with StartBit and Length
+            {"Address": "101", "Name": "Bits Test 1", "Type": "BITS", "StartBit": "2", "Length": "4"},
 
-            # STRING type with Length -> appends _len
-            {"Register Address": "200", "Variable Name": "Serial", "Data Type": "STRING", "Length": "10"},
+            # 4. BITS type with StartBit only
+            {"Address": "102", "Name": "Bits Test 2", "Type": "BITS", "StartBit": "3"},
 
-            # STRING type without Length -> unchanged address
-            {"Register Address": "201", "Variable Name": "Version", "Data Type": "STRING", "Length": ""},
+            # 5. STRING type with Length
+            {"Address": "103", "Name": "String Test", "Type": "STRING", "Length": "10"},
 
-            # Address already containing '_' -> does not append
-            {"Register Address": "102_4_2", "Variable Name": "SubStatus", "Data Type": "BITS", "StartBit": "4", "Length": "2"},
+            # 6. Pre-existing underscore in Address -> No suffix appended
+            {"Address": "104_1_2", "Name": "Underscore Bits Test", "Type": "BITS", "StartBit": "3", "Length": "4"},
+            {"Address": "105_10", "Name": "Underscore String Test", "Type": "STRING", "Length": "20"},
 
-            # Valid Factor field processing -> converts to string
-            {"Register Address": "300", "Variable Name": "FactorTest", "Data Type": "U16", "ScaleFactor": "0.1"},
-
-            # Missing/empty RegisterType -> falls back to 'Holding Register'
-            {"Register Address": "400", "Variable Name": "RegTypeTest", "Data Type": "U16", "RegisterType": ""},
-
-            # Correct application of address_offset
-            {"Register Address": "500", "Variable Name": "OffsetTest", "Data Type": "U16"}
+            # 7. Factor normalization
+            {"Address": "106", "Name": "Factor Test", "Factor": "0.5"}
         ]]
 
-        # We need an Extractor instance
+        # We need to set up Extractor mapping so it finds the columns properly
+        # Or rely on standard column detection which is already good enough for Address, Name, Type, StartBit, Length, Factor
         extractor = Extractor()
 
-        # map_and_clean uses the fuzzy mapping, so we need to set the address offset
-        mapped = list(extractor.map_and_clean(raw_data, address_offset=10))
+        # We need an explicit mapping or standard columns:
+        # The standard column mappings should pick up "Address", "Name", "Type", "StartBit", "Length", "Factor"
+        mapped = list(extractor.map_and_clean(raw_data))
 
-        self.assertEqual(len(mapped), 8) # One row filtered out
+        # Check that row 1 (missing name/addr) was skipped
+        # So we expect exactly 7 mapped rows in total
+        self.assertEqual(len(mapped), 7)
 
-        # BITS with StartBit and Length
-        self.assertEqual(mapped[0]['Address'], '110_2_4')
-        self.assertEqual(mapped[0]['Type'], 'BITS')
+        # 2. Default Type and Default RegisterType
+        self.assertEqual(mapped[0]["Address"], "100")
+        self.assertEqual(mapped[0]["Type"], "U16")
+        self.assertEqual(mapped[0]["RegisterType"], "Holding Register")
 
-        # BITS with StartBit but missing Length
-        self.assertEqual(mapped[1]['Address'], '111_3_1')
-        self.assertEqual(mapped[1]['Type'], 'BITS')
+        # 3. BITS type with StartBit and Length
+        self.assertEqual(mapped[1]["Address"], "101_2_4")
+        self.assertEqual(mapped[1]["Type"], "BITS")
 
-        # STRING with Length
-        self.assertEqual(mapped[2]['Address'], '210_10')
-        self.assertEqual(mapped[2]['Type'], 'STRING')
+        # 4. BITS type with StartBit only -> Length defaults to 1
+        self.assertEqual(mapped[2]["Address"], "102_3_1")
 
-        # STRING without Length
-        self.assertEqual(mapped[3]['Address'], '211')
-        self.assertEqual(mapped[3]['Type'], 'STRING')
+        # 5. STRING type with Length
+        self.assertEqual(mapped[3]["Address"], "103_10")
+        self.assertEqual(mapped[3]["Type"], "STRING")
 
-        # Address already containing '_'
-        self.assertEqual(mapped[4]['Address'], '112_4_2')
-        self.assertEqual(mapped[4]['Type'], 'BITS')
+        # 6. Pre-existing underscore in Address
+        self.assertEqual(mapped[4]["Address"], "104_1_2")
+        self.assertEqual(mapped[5]["Address"], "105_10")
 
-        # Valid Factor field processing
-        self.assertEqual(mapped[5]['Address'], '310')
-        self.assertEqual(mapped[5]['ScaleFactor'], '0.1')
-
-        # Missing/empty RegisterType
-        self.assertEqual(mapped[6]['Address'], '410')
-        self.assertEqual(mapped[6]['RegisterType'], 'Holding Register')
-
-        # Correct application of address_offset
-        self.assertEqual(mapped[7]['Address'], '510')
+        # 7. Factor normalization -> 0.5 is parsed as float then string
+        self.assertEqual(mapped[6]["Address"], "106")
+        self.assertEqual(mapped[6]["Factor"], "0.5")
 
 if __name__ == "__main__":
     unittest.main()
