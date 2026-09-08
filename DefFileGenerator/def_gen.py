@@ -83,6 +83,12 @@ class Generator:
             if re.search(pattern, t):
                 return f"{replacement}{suffix}"
 
+        # Numeric types (Int/Float) with optional suffixes
+        num_match = re.search(r'\b([ui](?:8|16|32|64)|f(?:32|64))\b', t)
+        if num_match:
+            return f"{num_match.group(1).upper()}{suffix}"
+
+        # Handle STR<n> explicitly if it comes in as raw type
         if t.startswith('str') and t[3:].isdigit():
             return t.upper()
 

@@ -74,6 +74,9 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(Extractor.normalize_type("Int32"), "I32")
         self.assertEqual(Extractor.normalize_type("Float32"), "F32")
         self.assertEqual(Extractor.normalize_type("unsigned int 16"), "U16")
+        self.assertEqual(Extractor.normalize_type("U32 swap"), "U32_WB")
+        self.assertEqual(Extractor.normalize_type("I16_B"), "I16_B")
+        self.assertEqual(Extractor.normalize_type("F64 big endian"), "F64_WB")
 
     @unittest.skipUnless(HAS_OPENPYXL, "openpyxl not installed")
     def test_extract_from_excel(self):
