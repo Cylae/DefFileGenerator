@@ -12,6 +12,7 @@ import os
 import logging
 import csv
 import json
+import re
 
 # Ensure the parent directory is in sys.path to allow direct execution
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -26,6 +27,10 @@ def setup_logging(verbose=False):
         force=True
     )
 
+def _get_default_output(manufacturer, model):
+    m = re.sub(r'[^a-zA-Z0-9]', '_', manufacturer).lower()
+    md = re.sub(r'[^a-zA-Z0-9]', '_', model).lower()
+    return f"{m}_{md}_definition.csv"
 
 def _perform_extraction(args):
     input_file = getattr(args, 'input_file', None)
@@ -42,7 +47,7 @@ def _perform_extraction(args):
         try:
             with open(mapping_path, 'r') as f:
                 mapping = json.load(f)
-        except Exception as e:
+        except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
             sys.exit(1)
 
@@ -52,10 +57,10 @@ def _perform_extraction(args):
     pages = getattr(args, 'pages', None)
     sheet = getattr(args, 'sheet', None)
 
-    if ext in ['.xlsx', '.xlsm']:
-        raw_data = extractor.extract_from_excel(input_file, sheet)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        raw_data = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf':
-        raw_data = extractor.extract_from_pdf(input_file, pages)
+        raw_data = extractor.extract_from_pdf(input_file, pages_arg)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(input_file)
     elif ext == '.xml':
@@ -82,18 +87,15 @@ def extract_command(args):
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    if output:
-        f = open(output, 'w', newline='', encoding='utf-8')
-    else:
-        f = sys.stdout
-
-    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-    writer.writeheader()
-    writer.writerows(mapped_data)
-
-    if output:
-        f.close()
-        logging.info(f"Extraction complete. Saved to {output}")
+    f = open(output, 'w', newline='', encoding='utf-8') if output else sys.stdout
+    try:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+        writer.writeheader()
+        writer.writerows(mapped_data)
+        if output:
+            logging.info(f"Extraction complete. Saved to {output}")
+    finally:
+        if output: f.close()
 
 def validate_command(args):
     generator = Generator()
@@ -104,11 +106,17 @@ def validate_command(args):
         sys.exit(1)
 
 def generate_command(args):
+    mfg = getattr(args, 'manufacturer', 'Manufacturer')
+    model = getattr(args, 'model', 'Model')
+    output = getattr(args, 'output', None)
+    if not output and not getattr(args, 'template', False):
+        output = _get_default_output(mfg, model)
+
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
-        output=getattr(args, 'output', None),
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
+        output=output,
+        manufacturer=mfg,
+        model=model,
         protocol=getattr(args, 'protocol', 'modbusRTU'),
         category=getattr(args, 'category', 'Inverter'),
         forced_write=getattr(args, 'forced_write', ''),
@@ -123,20 +131,27 @@ def run_command(args):
     if not args.template:
         mapped_data = _perform_extraction(args)
 
+    mfg = getattr(args, 'manufacturer', 'Manufacturer')
+    model = getattr(args, 'model', 'Model')
+    output = getattr(args, 'output', None)
+    if not output and not template:
+        output = _get_default_output(mfg, model)
+
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
-        output=getattr(args, 'output', None),
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
+        output=output,
+        manufacturer=mfg,
+        model=model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Offset already applied in extraction
-        template=args.template
+        address_offset=0, # Already applied during extraction
+        template=template,
+        template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli():
+def _run_cli(args_list=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -185,7 +200,7 @@ def _run_cli():
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
-    parser_run.add_argument('--template', action='store_true', help='Generate sample template')
+    parser_run.add_argument('--template', action='store_true')
     parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
@@ -195,15 +210,16 @@ def _run_cli():
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    args = parser.parse_args()
+    args = parser.parse_args(args_list)
+
     if not args.command:
         parser.print_help()
         sys.exit(1)
 
     setup_logging(args.verbose)
 
-    if args.command in ['generate', 'run'] and not args.template:
-        if not args.manufacturer or not args.model:
+    if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
+        if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
             logging.error("--manufacturer and --model are required.")
             sys.exit(1)
         if not args.input_file:
