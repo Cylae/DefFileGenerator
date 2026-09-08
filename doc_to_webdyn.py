@@ -4,7 +4,6 @@ import sys
 import os
 import logging
 import re
-import csv
 import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
