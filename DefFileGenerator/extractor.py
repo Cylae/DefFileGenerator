@@ -269,14 +269,16 @@ class Extractor:
 
                     seen = set()
                     for elem in root.iter():
+                        if len(elem) < 2:
+                            continue
                         row = {}
                         for child in elem:
                             if len(child) == 0 and child.text:
                                 row[child.tag] = child.text.strip()
                         if len(row) >= 2:
-                            js = json.dumps(row, sort_keys=True)
-                            if js not in seen:
-                                seen.add(js)
+                            row_key = tuple(sorted(row.items()))
+                            if row_key not in seen:
+                                seen.add(row_key)
                                 yield row
                 except SECURITY_EXCEPTIONS as e:
                     logging.error(f"Security error parsing XML {filepath}: {e}")
