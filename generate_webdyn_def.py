@@ -7,6 +7,10 @@ using the DefFileGenerator package.
 import os
 import sys
 import logging
+
+# Ensure parent directory is in sys.path to support direct and packaged executions
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
@@ -136,6 +140,7 @@ def main():
             model="DemoModel"
         )
         sys.exit(0 if success else 1)
+        return
 
     input_file = sys.argv[1]
     output_file = sys.argv[2]
