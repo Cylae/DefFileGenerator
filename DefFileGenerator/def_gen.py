@@ -402,7 +402,7 @@ class Generator:
                 usage["max_len"] = reg_count
             return overlap_detected
         except (ValueError, IndexError):
-            pass
+            return False
 
     @staticmethod
     def _calculate_coefficients(
@@ -421,7 +421,10 @@ class Generator:
     def process_rows(
         self, rows: Iterable[dict[str, Any]], address_offset: int = 0
     ) -> Iterator[dict[str, Any]]:
-        seen_names, seen_tags, address_usage, warned_lines = {}, {}, {}, set()
+        seen_names: dict[str, int] = {}
+        seen_tags: dict[str, int] = {}
+        address_usage: dict[str, dict[str, Any]] = {}
+        warned_lines: set[tuple[int, int]] = set()
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
                 continue
@@ -518,9 +521,9 @@ class Generator:
             strict_overlap = strict
 
         valid = True
-        seen_tags = {}
-        address_usage = {}
-        warned_lines = set()
+        seen_tags: dict[str, int] = {}
+        address_usage: dict[str, dict[str, Any]] = {}
+        warned_lines: set[tuple[int, int]] = set()
 
         try:
             with open(filepath, "rb") as f:
@@ -595,7 +598,7 @@ class Generator:
         """Centralized method to write the WebdynSunPM CSV format."""
         type_counts = {"1": 0, "2": 0, "3": 0, "4": 0}
         type_labels = {"1": "Coils", "2": "Discrete", "3": "Holding", "4": "Input"}
-        outfile = None
+        outfile: Any = None
         try:
             if isinstance(output, str):
                 outfile = open(output, "w", newline="", encoding="utf-8-sig")

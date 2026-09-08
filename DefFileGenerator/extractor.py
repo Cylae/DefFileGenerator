@@ -28,7 +28,7 @@ try:
 except ImportError:
     HAS_OPENPYXL = False
 
-PDF_ERRORS: tuple[type[Exception], ...]
+PDF_ERRORS: tuple[type[BaseException], ...]
 try:
     import pdfplumber
 
@@ -44,7 +44,7 @@ except ImportError:
     HAS_PDFPLUMBER = False
     PDF_ERRORS = (Exception,)
 
-SECURITY_EXCEPTIONS: tuple[type[Exception], ...]
+SECURITY_EXCEPTIONS: tuple[type[BaseException], ...]
 try:
     from defusedxml import ElementTree as ET
     from defusedxml.common import (
@@ -65,34 +65,39 @@ except ImportError:
     HAS_DEFUSEDXML = False
     SECURITY_EXCEPTIONS = (Exception,)
 
+XML_PARSE_ERRORS: tuple[type[BaseException], ...]
 try:
     import xml.etree.ElementTree as ET_STD
 
     XML_PARSE_ERRORS = (ET_STD.ParseError,)
 except ImportError:
-    XML_PARSE_ERRORS = ()
+    XML_PARSE_ERRORS = (Exception,)
 
-# Import Generator and peek_generator with clean fallbacks
-Generator = None
-peek_generator = None
-
+Generator: Any = None
+peek_generator: Any = None
 try:
-    from DefFileGenerator.def_gen import Generator, peek_generator
+    from DefFileGenerator.def_gen import Generator as _Gen
+    from DefFileGenerator.def_gen import peek_generator as _PeekGen
+
+    Generator = _Gen
+    peek_generator = _PeekGen
 except ImportError:
     try:
-        from def_gen import Generator, peek_generator
-    except ImportError:
-        try:
-            import def_gen
+        from def_gen import (  # type: ignore[import-not-found, no-redef]
+            Generator as _GenFallback,
+        )
+        from def_gen import (
+            peek_generator as _PeekGenFallback,
+        )
 
-            Generator = def_gen.Generator
-            peek_generator = def_gen.peek_generator
-        except ImportError:
-            pass
+        Generator = _GenFallback
+        peek_generator = _PeekGenFallback
+    except ImportError:
+        pass
 
 if peek_generator is None:
 
-    def peek_generator(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
+    def _peek_generator_impl(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
         """
         Checks if an iterable is non-empty without fully consuming it.
         Returns (has_data, original_iterator).
@@ -105,6 +110,8 @@ if peek_generator is None:
         except StopIteration:
             return False, iter([])
         return True, itertools.chain([first], it)
+
+    peek_generator = _peek_generator_impl
 
 
 class Extractor:
@@ -128,7 +135,7 @@ class Extractor:
 
     @staticmethod
     def normalize_type(t: Any) -> str:
-        if Generator:
+        if Generator is not None:
             return Generator.normalize_type(t)
         return str(t).upper() if t else "U16"
 
@@ -236,7 +243,7 @@ class Extractor:
                                         yield row_dict
 
                             yield table_generator()
-            except (OSError,) + PDF_ERRORS as e:
+            except (OSError, *PDF_ERRORS) as e:  # type: ignore[misc]
                 logging.error(
                     f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}"
                 )
@@ -322,7 +329,7 @@ class Extractor:
                 except SECURITY_EXCEPTIONS as e:
                     logging.error(f"Security error parsing XML {filepath}: {e}")
                     raise
-                except (OSError,) + XML_PARSE_ERRORS as e:
+                except (OSError, *XML_PARSE_ERRORS) as e:  # type: ignore[misc]
                     logging.error(
                         f"File IO Error or Parsing Error extracting from XML {filepath}: {e}"
                     )
@@ -440,13 +447,13 @@ class Extractor:
                 ):
                     addr = f"{addr}_{slen}"
 
-                if Generator:
+                if Generator is not None:
                     new_row["Address"] = Generator.apply_address_offset(addr, address_offset)
                 else:
                     new_row["Address"] = addr
 
                 if new_row.get("Factor") is not None:
-                    if Generator:
+                    if Generator is not None:
                         new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
 
                 if not new_row.get("RegisterType"):
