@@ -58,21 +58,7 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
-def peek_generator(iterable: Iterable[Any]) -> Tuple[bool, Iterator[Any]]:
-    """
-    Checks if an iterable is empty without exhausting it.
-    Returns (is_not_empty, original_iterable_or_reconstructed_iterator).
-    """
-    if iterable is None:
-        return False, iter([])
-    try:
-        iterator = iter(iterable)
-        first = next(iterator)
-        return True, itertools.chain([first], iterator)
-    except StopIteration:
-        return False, iter([])
-
-# Attempt to import Generator for normalization
+# Import peek_generator and Generator from def_gen
 try:
     from DefFileGenerator.def_gen import Generator
 except ImportError:
@@ -80,6 +66,13 @@ except ImportError:
         from def_gen import Generator
     except ImportError:
         Generator = None
+        def peek_generator(iterable: Iterable) -> Tuple[bool, Iterator]:
+            it = iter(iterable)
+            try:
+                first = next(it)
+            except StopIteration:
+                return False, iter([])
+            return True, itertools.chain([first], it)
 
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
@@ -132,6 +125,7 @@ class Extractor:
                             yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
                 yield sheet_generator()
+
         except (OSError, zipfile.BadZipFile) as e:
             logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
         except Exception as e:
@@ -151,20 +145,19 @@ class Extractor:
                 if pages is None:
                     target_pages = pdf.pages
                 else:
-                    requested = pages if isinstance(pages, list) else [pages]
+                    page_refs = pages if isinstance(pages, list) else [pages]
                     if isinstance(pages, str):
                         try:
-                            requested = [int(p.strip()) for p in pages.split(',')]
+                            page_refs = [int(p.strip()) for p in pages.split(',')]
                         except ValueError:
-                            requested = []
-
-                    for p in requested:
+                            pass
+                    for p in page_refs:
                         try:
                             idx = int(p) - 1
                             if 0 <= idx < len(pdf.pages):
                                 target_pages.append(pdf.pages[idx])
                             else:
-                                logging.warning(f"Page {p} is out of range (1-{len(pdf.pages)})")
+                                logging.warning(f"Page {p} out of range (1-{len(pdf.pages)})")
                         except (ValueError, TypeError):
                             logging.warning(f"Invalid page reference: {p}")
 
@@ -173,6 +166,15 @@ class Extractor:
                     for table in tables:
                         if not table or len(table) < 2:
                             continue
+
+                        def table_generator(current_table: List[List[Any]]) -> Iterator[Dict[str, Any]]:
+                            headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
+                            for row in current_table[1:]:
+                                row_dict = {headers[i]: str(cell).replace('\n', ' ').strip() if cell else "" for i, cell in enumerate(row) if i < len(headers)}
+                                if any(v.strip() for v in row_dict.values()):
+                                    yield row_dict
+
+                        yield table_generator(table)
 
                         def table_generator(current_table=table) -> Iterator[Dict[str, Any]]:
                             headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
@@ -185,9 +187,9 @@ class Extractor:
                                     yield row_dict
                         yield table_generator()
         except (OSError,) + PDF_ERRORS as e:
-            logging.error(f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}")
-        except Exception as e:
             logging.error(f"Error extracting from PDF {filepath}: {e}")
+        except Exception as e:
+            logging.error(f"Unexpected error extracting from PDF {filepath}: {e}")
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         def csv_table_generator() -> Iterator[Dict[str, Any]]:
@@ -195,6 +197,14 @@ class Extractor:
                 with open(filepath, 'rb') as f:
                     header_bytes = f.read(4)
                     encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
+
+                with open(filepath, 'r', encoding=encoding) as f:
+                    snippet = f.read(2048); f.seek(0)
+                    try:
+                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                        delimiter = dialect.delimiter
+                    except csv.Error:
+                        delimiter = ';' if ';' in snippet else ','
 
                 with open(filepath, 'r', encoding=encoding) as f:
                     snippet = f.read(2048)
@@ -217,9 +227,7 @@ class Extractor:
             except Exception as e:
                 logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
-            yield csv_table_generator()
-
-        return csv_tables_generator()
+        yield csv_table_generator()
 
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
@@ -227,83 +235,57 @@ class Extractor:
             return
 
         try:
+            with open(filepath, 'rb') as f:
+                tree = ET.parse(f)
+                root = tree.getroot()
+
             def xml_generator() -> Iterator[Dict[str, Any]]:
-                try:
-                    with open(filepath, 'rb') as f:
-                        tree = ET.parse(f)
-                        root = tree.getroot()
-                    seen = set()
-                    for elem in root.iter():
-                        row = {}
-                        for child in elem:
-                            if len(child) == 0 and child.text:
-                                row[child.tag] = child.text.strip()
-                        if len(row) >= 2:
-                            js = json.dumps(row, sort_keys=True)
-                            if js not in seen:
-                                seen.add(js)
-                                yield row
-                except SECURITY_EXCEPTIONS as e:
-                    logging.error(f"Security error parsing XML {filepath}: {e}")
-                except (OSError,) + XML_PARSE_ERRORS as e:
-                    logging.error(f"Error parsing XML {filepath}: {e}")
-                except Exception as e:
-                    logging.error(f"Unexpected error parsing XML {filepath}: {e}")
+                seen = set()
+                for elem in root.iter():
+                    row = {child.tag: child.text.strip() for child in elem if len(child) == 0 and child.text}
+                    if len(row) >= 2:
+                        js = json.dumps(row, sort_keys=True)
+                        if js not in seen:
+                            seen.add(js); yield row
 
             yield xml_generator()
+        except SECURITY_EXCEPTIONS:
+            raise
+        except (OSError,) + XML_PARSE_ERRORS as e:
+            logging.error(f"Error extracting from XML {filepath}: {e}")
         except Exception as e:
-            logging.error(f"Error setting up XML extraction for {filepath}: {e}")
+            logging.error(f"Unexpected error extracting from XML {filepath}: {e}")
 
     def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables:
-            return
-
-    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
-        if not tables: return iter([])
+        if not tables: return
         for table in tables:
-            has_rows, table_iter = peek_generator(table)
-            if not has_rows:
-                continue
-
-            iterator = iter(table_iter)
+            has_rows, table = peek_generator(table)
+            if not has_rows: continue
+            iterator = iter(table)
             buffer = []
             iterator = iter(table_iter)
             try:
-                for _ in range(50):
-                    buffer.append(next(iterator))
-            except StopIteration:
-                pass
-
-            if not buffer:
-                continue
+                for _ in range(50): buffer.append(next(iterator))
+            except StopIteration: pass
+            if not buffer: continue
 
             all_keys = set()
             for row in buffer: all_keys.update(row.keys())
+
             col_map = {}
             used_src_cols = set()
-
-            # 1. Use explicit mapping
             for target, source in self.mapping.items():
-                if source in all_keys:
-                    col_map[target] = source
-                    used_src_cols.add(source)
+                if source in all_keys: col_map[target] = source; used_src_cols.add(source)
 
-            detection_order = [
-                'RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action',
-                'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit'
-            ]
-
-            # 2. Exact match patterns
+            detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
             for target in detection_order:
                 if target in col_map:
                     continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
                 for src_col in all_keys:
                     if src_col in used_src_cols: continue
-                    if str(src_col).lower().strip() in patterns:
-                        col_map[target] = src_col
-                        used_src_cols.add(src_col)
-                        break
+                    s_low = str(src_col).lower().strip()
+                    if s_low in patterns: col_map[target] = src_col; used_src_cols.add(src_col); break
 
             # 3. Substring match patterns
             for target in detection_order:
@@ -311,28 +293,15 @@ class Extractor:
                     continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
                 for src_col in all_keys:
-                    if src_col in used_src_cols:
-                        continue
-                    if any(p in str(src_col).lower() for p in patterns):
-                        col_map[target] = src_col
-                        used_src_cols.add(src_col)
-                        break
+                    if src_col in used_src_cols: continue
+                    if any(p in str(src_col).lower() for p in patterns): col_map[target] = src_col; used_src_cols.add(src_col); break
 
             def process_row(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
-                if not new_row.get('Name') and not new_row.get('Address'):
-                    return None
-
+                if not new_row.get('Name') and not new_row.get('Address'): return None
                 sbit = str(r.get(col_map.get('StartBit'), '')).strip()
                 slen = str(r.get(col_map.get('Length'), '')).strip()
-
                 dtype = self.normalize_type(new_row.get('Type', 'U16'))
-
-                # Normalizing STR<n> to STRING
-                if dtype.startswith('STR') and dtype[3:].isdigit():
-                    if slen == '':
-                        slen = dtype[3:]
-                    dtype = 'STRING'
                 new_row['Type'] = dtype
                 addr = str(new_row.get('Address', '')).strip()
                 if dtype == 'BITS' and sbit != '' and '_' not in addr:
@@ -347,22 +316,17 @@ class Extractor:
                 else:
                     new_row['Address'] = addr
 
-                if new_row.get('Factor') is not None:
-                    if Generator:
-                        new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
-
-                if not new_row.get('RegisterType'):
-                    new_row['RegisterType'] = 'Holding Register'
-
+                if new_row.get('Factor') is not None and Generator:
+                    new_row['Factor'] = str(Generator._parse_numeric(new_row['Factor'], 1.0))
+                if not new_row.get('RegisterType'): new_row['RegisterType'] = 'Holding Register'
                 return new_row
-            for row in itertools.chain(buffer, iterator):
-                processed = process_row(row)
-                if processed:
-                    yield processed
 
+            for row in buffer:
+                p = process_row(row)
+                if p: yield p
             for row in iterator:
-                processed = process_row(row)
-                if processed: yield processed
+                p = process_row(row)
+                if p: yield p
 
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -377,40 +341,18 @@ def main():
 
     mapping = {}
     if args.mapping:
-        try:
-            with open(args.mapping, 'r') as f:
-                mapping = json.load(f)
-        except Exception as e:
-            logging.error(f"Error reading mapping file: {e}")
-            sys.exit(1)
-
+        with open(args.mapping, 'r') as f: mapping = json.load(f)
     extractor = Extractor(mapping)
-    input_file = args.input_file
-    if not os.path.exists(input_file):
-        logging.error(f"Input file not found: {input_file}")
-        sys.exit(1)
-
-    ext = os.path.splitext(input_file)[1].lower()
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(input_file, args.sheet)
-    elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(input_file, args.pages)
-    elif ext == '.csv':
-        raw = extractor.extract_from_csv(input_file)
-    elif ext == '.xml':
-        raw = extractor.extract_from_xml(input_file)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
-        sys.exit(1)
-
+    ext = os.path.splitext(args.input_file)[1].lower()
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, args.pages)
+    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
+    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
-
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
-    fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
-    writer = csv.DictWriter(out, fieldnames=fieldnames, extrasaction='ignore')
-    writer.writeheader()
-    writer.writerows(mapped)
-    if args.output:
-        out.close()
+    writer = csv.DictWriter(out, fieldnames=['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor'], extrasaction='ignore')
+    writer.writeheader(); writer.writerows(mapped)
+    if args.output: out.close()
 
 if __name__ == "__main__": main()
