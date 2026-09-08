@@ -7,7 +7,7 @@ import re
 import csv
 import json
 from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import GeneratorConfig, run_generator
 
 def _run_cli(argv=None):
     if argv is None:
