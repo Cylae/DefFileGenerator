@@ -11,13 +11,27 @@ import json
 import logging
 import os
 import re
-from DefFileGenerator.main import main as cli_main
+import csv
+import json
+from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli():
-    # This is a helper for unit tests that expect this attribute
-    args = sys.argv[1:]
-    if not args or args[0] not in ['extract', 'generate', 'run', 'validate']:
-        args = ['run'] + args
+    parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
+    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('--manufacturer', help='Manufacturer name')
+    parser.add_argument('--model', help='Model name')
+    parser.add_argument('--template', action='store_true', help='Generate a template definition')
+    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input', help='Template mode')
+    parser.add_argument('-o', '--output', help='Output filename')
+    parser.add_argument('--protocol', default='modbusRTU')
+    parser.add_argument('--category', default='Inverter')
+    parser.add_argument('--sheet', help='Excel sheet name')
+    parser.add_argument('--pages', help='PDF pages (comma-separated integers)')
+    parser.add_argument('--mapping', help='JSON mapping file')
+    parser.add_argument('--address-offset', type=int, default=0)
+    parser.add_argument('--forced-write', default='')
+    parser.add_argument('-v', '--verbose', action='store_true')
 
     # Handle the default output filename logic that tests might expect
     # if -o is not provided and it's a run/generate command
@@ -30,12 +44,78 @@ def _run_cli():
             elif arg == '--model' and i+1 < len(args):
                 model = args[i+1]
 
-        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', mfg).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', model).lower()}_definition.csv"
-        args.extend(['-o', output_file])
+    if args.template:
+        config = GeneratorConfig(
+            output=args.output,
+            template=True,
+            template_mode=args.template_mode
+        )
+        run_generator(config)
+        return
 
     cli_main(args)
 
-def main(args=None):
+    input_file = args.input_file
+    ext = os.path.splitext(input_file)[1].lower()
+
+    # Warn about mismatched options
+    if args.pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        logging.warning("--sheet is only applicable for Excel files. Ignoring.")
+
+    mapping = {}
+    if args.mapping:
+        try:
+            with open(args.mapping, 'r') as f:
+                mapping = json.load(f)
+        except (OSError, ValueError) as e:
+            logging.error(f"Error reading mapping file: {e}")
+            sys.exit(1)
+
+    extractor = Extractor(mapping)
+
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        raw = extractor.extract_from_excel(input_file, args.sheet)
+    elif ext == '.pdf':
+        raw = extractor.extract_from_pdf(input_file, args.pages)
+    elif ext == '.csv':
+        raw = extractor.extract_from_csv(input_file)
+    elif ext == '.xml':
+        raw = extractor.extract_from_xml(input_file)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
+
+    has_data, raw_peeked = peek_generator(raw)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
+
+    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
+    first, mapped_peeker = peek_generator(mapped)
+    if not first:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
+    m_name = args.manufacturer or "Manufacturer"
+    m_model = args.model or "Model"
+    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+
+    config = GeneratorConfig(
+        input_file=input_file,
+        output=output_file,
+        manufacturer=m_name,
+        model=m_model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        address_offset=0, # Already applied during extraction
+        template=False
+    )
+    run_generator(config, input_data=mapped_peeker)
+
+def main():
     try:
         if args is not None:
             # If args are passed programmatically, we need to mock sys.argv for _run_cli
