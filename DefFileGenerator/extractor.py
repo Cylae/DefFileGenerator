@@ -44,7 +44,12 @@ except ImportError:
 SECURITY_EXCEPTIONS: tuple[type[Exception], ...]
 try:
     from defusedxml import ElementTree as ET
-    from defusedxml.common import DefusedXmlException, DTDForbidden, EntitiesForbidden, ExternalReferenceForbidden
+    from defusedxml.common import (
+        DefusedXmlException,
+        DTDForbidden,
+        EntitiesForbidden,
+        ExternalReferenceForbidden,
+    )
     HAS_DEFUSEDXML = True
     SECURITY_EXCEPTIONS = (DefusedXmlException, DTDForbidden, EntitiesForbidden, ExternalReferenceForbidden)
 except ImportError:
@@ -218,7 +223,7 @@ class Extractor:
                         header_bytes = f.read(4)
                         encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-                    with open(filepath, 'r', encoding=encoding) as f:
+                    with open(filepath, encoding=encoding) as f:
                         snippet = f.read(2048)
                         f.seek(0)
                         try:
@@ -395,7 +400,7 @@ def main():
 
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
+        with open(args.mapping) as f:
             mapping = json.load(f)
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()

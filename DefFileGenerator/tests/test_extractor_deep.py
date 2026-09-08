@@ -1,7 +1,6 @@
 """Batch 1: Deep tests for Extractor.
 """
 
-import csv
 import logging
 import os
 import tempfile
@@ -94,7 +93,16 @@ class TestExtractorColumnMapping(unittest.TestCase):
         self.assertEqual(result[0]["RegisterType"], "Holding Register")
 
     def test_explicit_register_type_preserved(self):
-        raw = [[{"Name": "Var", "Address": "100", "Type": "U16", "Register Type": "Input Register"}]]
+        raw = [
+            [
+                {
+                    "Name": "Var",
+                    "Address": "100",
+                    "Type": "U16",
+                    "Register Type": "Input Register",
+                }
+            ]
+        ]
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(result[0]["RegisterType"], "Input Register")
 

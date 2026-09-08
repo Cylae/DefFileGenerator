@@ -39,10 +39,10 @@ class TestOverlapDetection(unittest.TestCase):
             {"Name": "Q", "Tag": "q", "Address": "101", "Type": "U16"},
         ]
         with self.assertLogs(level="WARNING") as cm:
-            result = self._process(rows)
+            res = self._process(rows)
         self.assertTrue(any("overlap" in m.lower() for m in cm.output))
         # Both rows are still emitted
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(res), 2)
 
     def test_bits_same_base_address_no_overlap(self):
         """Multiple BITS registers at the same base address do NOT overlap."""
@@ -70,7 +70,7 @@ class TestOverlapDetection(unittest.TestCase):
             {"Name": "SmallVal", "Tag": "sv", "Address": "102", "Type": "U16"},
         ]
         with self.assertLogs(level="WARNING") as cm:
-            result = self._process(rows)
+            self._process(rows)
         self.assertTrue(any("overlap" in m.lower() for m in cm.output))
 
     def test_mac_type_occupies_three_registers(self):
@@ -209,8 +209,6 @@ class TestWriteOutputCsv(unittest.TestCase):
 
     def test_writes_to_stdout_when_none(self):
         buf = io.StringIO()
-        captured = []
-        import sys
         old = sys.stdout
         sys.stdout = buf
         try:
