@@ -134,18 +134,20 @@ class Extractor:
             logging.error(f"Error loading Excel {filepath}: {e}")
             return iter([])
 
-        def excel_sheets_generator() -> Iterator[Iterator[dict[str, Any]]]:
-            if sheet_name:
-                def sheet_generator() -> Iterator[dict[str, Any]]:
-                    wb = None
-                    try:
-                        wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                        ws = wb[sheet_name]
-                        rows = ws.iter_rows(values_only=True)
+        def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+            wb = None
+            try:
+                wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+
+                for ws in sheets:
+                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                        rows = ws_obj.iter_rows(values_only=True)
                         try:
                             header_row = next(rows)
                         except StopIteration:
                             return
+
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
 
                         for row in rows:
@@ -160,18 +162,8 @@ class Extractor:
                         if wb is not None:
                             wb.close()
 
-                yield sheet_generator()
-            else:
-                sheet_names = None
-                wb_outer = None
-                try:
-                    wb_outer = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                    sheet_names = wb_outer.sheetnames
-                except (OSError, zipfile.BadZipFile, ValueError, TypeError, KeyError):
-                    pass
-                finally:
-                    if wb_outer is not None:
-                        wb_outer.close()
+                    # We yield a generator for each sheet.
+                    yield sheet_generator()
 
                 if sheet_names is None:
                     def error_sheet_generator() -> Iterator[dict[str, Any]]:
@@ -214,6 +206,8 @@ class Extractor:
                         return sheet_generator()
 
                     yield make_sheet_gen()
+
+        return excel_sheets_generator()
 
         return excel_sheets_generator()
 
