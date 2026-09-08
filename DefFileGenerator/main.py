@@ -113,6 +113,10 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
+    if not mapped_data:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -157,6 +161,9 @@ def run_command(args):
     mapped_data = None
     if not template:
         mapped_data = _perform_extraction(args)
+        if not mapped_data:
+            logging.error("No registers extracted.")
+            sys.exit(1)
 
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
@@ -171,7 +178,7 @@ def run_command(args):
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli():
+def _run_cli(args_list=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -195,12 +202,12 @@ def _run_cli():
     parser_generate.add_argument('--manufacturer')
     parser_generate.add_argument('--model')
     parser_generate.add_argument('-o', '--output', help='Output definition CSV')
+    parser_generate.add_argument('--template', action='store_true')
+    parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
-    parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
 
     # Run
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
@@ -215,9 +222,8 @@ def _run_cli():
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
-    parser_run.add_argument('--template', action='store_true', help='Generate sample template')
 
-    args = parser.parse_args()
+    args = parser.parse_args(args_list)
 
     if not args.command:
         parser.print_help()
@@ -225,16 +231,6 @@ def _run_cli():
 
     logging.info(f"Definition written to {output_file}")
 
-    # Validation of common arguments
-    input_file = getattr(args, 'input_file', None)
-    if input_file:
-        ext = os.path.splitext(input_file)[1].lower()
-        if getattr(args, 'pages', None) and ext != '.pdf':
-            logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        if getattr(args, 'sheet', None) and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-            logging.warning("--sheet is only applicable for Excel files. Ignoring.")
-
-    # Validation for manufacturer/model unless template
     if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
         if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
             logging.error("--manufacturer and --model are required.")
