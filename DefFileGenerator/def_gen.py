@@ -488,10 +488,9 @@ class Generator:
 
             total = 0
             for index, row in enumerate(processed_rows, start=1):
-                info1_val = forced_write if forced_write else row['Info1']
                 writer.writerow([
                     str(index),
-                    Generator.sanitize_csv_field(info1_val),
+                    Generator.sanitize_csv_field(row['Info1']),
                     Generator.sanitize_csv_field(row['Info2']),
                     Generator.sanitize_csv_field(row['Info3']),
                     Generator.sanitize_csv_field(row['Info4']),
@@ -502,7 +501,7 @@ class Generator:
                     Generator.sanitize_csv_field(row['Unit']),
                     Generator.sanitize_csv_field(row['Action'])
                 ])
-                type_counts[info1_val] = type_counts.get(info1_val, 0) + 1
+                type_counts[row['Info1']] = type_counts.get(row['Info1'], 0) + 1
                 total += 1
 
             summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
