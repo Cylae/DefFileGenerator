@@ -30,7 +30,7 @@ def _run_cli(argv=None):
     parser.add_argument('--manufacturer', help='Manufacturer name')
     parser.add_argument('--model', help='Model name')
     parser.add_argument('--template', action='store_true', help='Generate a template definition')
-    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input')
+    parser.add_argument('--template-mode', choices=['input', 'definition'], default='input', help='Template mode')
     parser.add_argument('-o', '--output', help='Output filename')
     parser.add_argument('--protocol', default='modbusRTU')
     parser.add_argument('--category', default='Inverter')
@@ -44,7 +44,7 @@ def _run_cli(argv=None):
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
-    if getattr(args, 'template', False):
+    if args.template:
         config = GeneratorConfig(output=args.output, template=True, template_mode=args.template_mode)
         run_generator(config)
         return
@@ -73,32 +73,24 @@ def _run_cli(argv=None):
 
     extractor = Extractor(mapping)
 
-    pages = None
-    pages_arg = getattr(args, 'pages', None)
-    if pages_arg and ext == '.pdf':
-        try:
-            pages = [int(p.strip()) for p in pages_arg.split(',')]
-        except ValueError:
-            logging.error("Invalid format for --pages. Expected comma-separated integers.")
-            sys.exit(1)
-
-    sheet_arg = getattr(args, 'sheet', None)
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, sheet_arg)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, args.pages)
     elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
     elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
-    if not has_data: logging.error("No data extracted."); sys.exit(1)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
     has_regs, mapped_peeked = peek_generator(mapped)
-    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
-
-    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped)
-    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
+    if not has_regs:
+        logging.error("No registers extracted.")
+        sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -127,7 +119,9 @@ def main(args=None):
     except SystemExit as e:
         sys.exit(e.code)
     except Exception as e:
-        logging.exception(f"An unexpected error occurred: {e}")
+        logging.error(f"An unexpected error occurred: {e}")
+        import traceback
+        logging.debug(traceback.format_exc())
         sys.exit(1)
 
 

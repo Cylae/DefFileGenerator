@@ -13,11 +13,11 @@ import logging
 import csv
 import json
 
-# Ensure the parent directory is in sys.path to allow direct execution
+# Ensure the parent directory is in sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
+from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -29,10 +29,7 @@ def setup_logging(verbose=False):
 
 def _perform_extraction(args):
     input_file = getattr(args, 'input_file', None)
-    if not input_file:
-        logging.error("Input file is required for extraction.")
-        sys.exit(1)
-    if not os.path.exists(input_file):
+    if not input_file or not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
@@ -64,38 +61,33 @@ def _perform_extraction(args):
         logger.error(f"Unsupported extension: {ext}")
         sys.exit(1)
 
-    has_data, raw_data = peek_generator(raw_data)
+    has_data, raw_peeked = peek_generator(raw_data)
     if not has_data:
-        logging.error("No registers extracted.")
+        logging.error("No data extracted.")
         sys.exit(1)
 
-    mapped_gen = extractor.map_and_clean(raw_data, address_offset)
-    has_regs, mapped_data = peek_generator(mapped_gen)
+    mapped_gen = extractor.map_and_clean(raw_peeked, address_offset)
+    has_regs, mapped_peeked = peek_generator(mapped_gen)
     if not has_regs:
-        logger.error("No registers extracted.")
+        logging.error("No registers extracted.")
         sys.exit(1)
 
     return mapped_peeked
 
-
-
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
-
     output = getattr(args, 'output', None)
-    fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
     if output:
         f = open(output, 'w', newline='', encoding='utf-8')
     else:
         f = sys.stdout
 
+    fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
     writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
     writer.writeheader()
-    writer.writerows(mapped_data)
+    for row in mapped_data:
+        writer.writerow(row)
 
     if output:
         f.close()
@@ -104,45 +96,41 @@ def extract_command(args):
 def validate_command(args):
     generator = Generator()
     if generator.validate_csv(args.input_file):
-        logging.info(f"Validation successful for {args.input_file}")
+        logging.info(f"Validation successful: {args.input_file}")
     else:
-        logging.error(f"Validation failed for {args.input_file}")
+        logging.error(f"Validation failed: {args.input_file}")
         sys.exit(1)
 
 def generate_command(args):
     config = GeneratorConfig(
-        input_file=input_file,
-        output=getattr(args, 'output', None),
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
-        protocol=getattr(args, 'protocol', 'modbusRTU'),
-        category=getattr(args, 'category', 'Inverter'),
-        forced_write=getattr(args, 'forced_write', ''),
-        address_offset=getattr(args, 'address_offset', 0),
-        template=getattr(args, 'template', False),
+        input_file=args.input_file,
+        output=args.output,
+        manufacturer=args.manufacturer,
+        model=args.model,
+        protocol=args.protocol,
+        category=args.category,
+        forced_write=args.forced_write,
+        address_offset=args.address_offset,
+        template=args.template,
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config)
 
 def run_command(args):
-    template = getattr(args, 'template', False)
     mapped_data = None
-    if not template:
+    if not args.template:
         mapped_data = _perform_extraction(args)
-        if not mapped_data:
-            logging.error("No registers extracted.")
-            sys.exit(1)
 
     config = GeneratorConfig(
-        input_file=getattr(args, 'input_file', None),
+        input_file=args.input_file,
         output=args.output,
-        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
-        model=getattr(args, 'model', 'Model'),
+        manufacturer=args.manufacturer,
+        model=args.model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction in run mode
-        template=template,
+        address_offset=0, # Applied during extraction
+        template=args.template,
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
@@ -178,7 +166,7 @@ def _run_cli():
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run (Extract + Generate)
+    # Run
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer')
@@ -195,39 +183,25 @@ def _run_cli():
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
     args = parser.parse_args()
-
     if not args.command:
         parser.print_help()
         sys.exit(0)
 
     setup_logging(args.verbose)
 
-    # Manual validation for manufacturer/model unless template
-    if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
-        if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
+    if args.command in ['generate', 'run'] and not args.template:
+        if not args.manufacturer or not args.model:
             logging.error("--manufacturer and --model are required.")
             sys.exit(1)
-        if not getattr(args, 'input_file', None):
+        if not args.input_file:
             logging.error("input_file is required.")
             sys.exit(1)
-
-    # Validate --pages and --sheet if input_file exists
-    input_file = getattr(args, 'input_file', None)
-    if input_file:
-        ext = os.path.splitext(input_file)[1].lower()
-        if getattr(args, 'pages', None) and ext != '.pdf':
-            logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        if getattr(args, 'sheet', None) and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-            logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'validate':
         validate_command(args)
     elif args.command == 'generate':
-        if not getattr(args, 'template', False) and not args.input_file:
-            logging.error("input_file is required unless --template is used.")
-            sys.exit(1)
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
@@ -237,10 +211,10 @@ def main(args=None):
         _run_cli(args)
     except KeyboardInterrupt:
         sys.exit(130)
-    except SystemExit as e:
-        sys.exit(e.code)
     except Exception as e:
-        logging.exception(f"An unexpected error occurred: {e}")
+        logging.error(f"An unexpected error occurred: {e}")
+        import traceback
+        logging.debug(traceback.format_exc())
         sys.exit(1)
 
 
