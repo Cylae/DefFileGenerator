@@ -1,9 +1,8 @@
 """Batch 3: def_gen.py edge-case tests."""
 
 import logging
-import math
-import tempfile
 import os
+import tempfile
 import unittest
 
 from DefFileGenerator.def_gen import (
@@ -189,13 +188,23 @@ class TestValidateTypeExtended(unittest.TestCase):
         self.assertFalse(Generator.validate_type("123"))
 
     def test_unknown_types_invalid(self):
-        for invalid_t in ["UNKNOWN", "INVALID_TYPE", "BOOLEAN", "FLOAT", "DOUBLE", "INT", "UINT"]:
-            self.assertFalse(Generator.validate_type(invalid_t), f"Expected {invalid_t} to be invalid")
+        invalid_types = ["UNKNOWN", "INVALID_TYPE", "BOOLEAN", "FLOAT", "DOUBLE", "INT", "UINT"]
+        for invalid_t in invalid_types:
+            self.assertFalse(
+                Generator.validate_type(invalid_t),
+                f"Expected {invalid_t} to be invalid",
+            )
 
     def test_malformed_and_partial_type_strings_invalid(self):
-        invalid_types = ["STR", "STR_ABC", "STR-10", "U16_INVALID", "U32_XYZ", "F32_EXTRA", "U16_", "I32_X"]
+        invalid_types = [
+            "STR", "STR_ABC", "STR-10", "U16_INVALID",
+            "U32_XYZ", "F32_EXTRA", "U16_", "I32_X",
+        ]
         for t in invalid_types:
-            self.assertFalse(Generator.validate_type(t), f"Expected {t} to be invalid")
+            self.assertFalse(
+                Generator.validate_type(t),
+                f"Expected {t} to be invalid",
+            )
 
     def test_empty_and_non_string_inputs_invalid(self):
         self.assertFalse(Generator.validate_type(""))
@@ -205,9 +214,15 @@ class TestValidateTypeExtended(unittest.TestCase):
         self.assertFalse(Generator.validate_type(3.14))
 
     def test_case_insensitive_valid_types(self):
-        valid_lowercased = ["string", "u16_wb", "f32", "str20", "ip", "mac", "bits", "ipv6", "i32_b"]
+        valid_lowercased = [
+            "string", "u16_wb", "f32", "str20",
+            "ip", "mac", "bits", "ipv6", "i32_b",
+        ]
         for t in valid_lowercased:
-            self.assertTrue(Generator.validate_type(t), f"Expected {t} to be valid")
+            self.assertTrue(
+                Generator.validate_type(t),
+                f"Expected {t} to be valid",
+            )
 
 
 class TestProcessRowsEdgeCases(unittest.TestCase):
