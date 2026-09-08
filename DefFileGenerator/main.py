@@ -30,19 +30,8 @@ def setup_logging(verbose=False):
 def _perform_extraction(args):
     input_file = getattr(args, 'input_file', None)
     if not input_file:
-        return []
-
-    mapping = {}
-    mapping_path = getattr(args, 'mapping', None)
-    if mapping_path:
-        try:
-            with open(mapping_path, 'r') as f:
-                mapping = json.load(f)
-        except (OSError, ValueError) as e:
-            logging.error(f"Error reading mapping file: {e}")
-            sys.exit(1)
-
-    extractor = Extractor(mapping)
+        logging.error("Input file is required for extraction.")
+        sys.exit(1)
     if not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
@@ -66,7 +55,7 @@ def _perform_extraction(args):
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw_data = extractor.extract_from_excel(input_file, sheet_arg)
     elif ext == '.pdf':
-        raw_data = extractor.extract_from_pdf(input_file, pages_arg)
+        raw_data = extractor.extract_from_pdf(input_file, pages)
     elif ext == '.csv':
         raw_data = extractor.extract_from_csv(input_file)
     elif ext == '.xml':
@@ -90,25 +79,19 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
-    if not mapped_data:
-        logging.error("No registers extracted.")
-        sys.exit(1)
-
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
-    if output:
-        f = open(output, 'w', newline='', encoding='utf-8')
-    else:
-        f = sys.stdout
-
-    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-    writer.writeheader()
-    writer.writerows(mapped_data)
-
-    if output:
-        f.close()
-        logging.info(f"Extraction complete. Saved to {output}")
+    f = open(output, 'w', newline='', encoding='utf-8') if output else sys.stdout
+    try:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+        writer.writeheader()
+        writer.writerows(mapped_data)
+        if output:
+            logging.info(f"Extraction complete. Saved to {output}")
+    finally:
+        if output:
+            f.close()
 
 def validate_command(args):
     generator = Generator()
@@ -119,7 +102,6 @@ def validate_command(args):
         sys.exit(1)
 
 def generate_command(args):
-    template = getattr(args, 'template', False)
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
         output=getattr(args, 'output', None),
@@ -129,35 +111,31 @@ def generate_command(args):
         category=getattr(args, 'category', 'Inverter'),
         forced_write=getattr(args, 'forced_write', ''),
         address_offset=getattr(args, 'address_offset', 0),
-        template=template,
+        template=getattr(args, 'template', False),
         template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config)
 
 def run_command(args):
     mapped_data = None
-    if not template:
-        # In 'run' mode, we apply address_offset during extraction.
-        # So we pass it to _perform_extraction.
+    if not getattr(args, 'template', False):
         mapped_data = _perform_extraction(args)
-        if not mapped_data:
-            logging.error("No registers extracted.")
-            sys.exit(1)
 
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
-        output=args.output,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=0,
-        template=template
+        output=getattr(args, 'output', None),
+        manufacturer=getattr(args, 'manufacturer', 'Manufacturer'),
+        model=getattr(args, 'model', 'Model'),
+        protocol=getattr(args, 'protocol', 'modbusRTU'),
+        category=getattr(args, 'category', 'Inverter'),
+        forced_write=getattr(args, 'forced_write', ''),
+        address_offset=0, # Already applied during extraction
+        template=getattr(args, 'template', False),
+        template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli():
+def _run_cli(argv=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -198,11 +176,11 @@ def _run_cli():
     parser_generate.add_argument('--protocol', default='modbusRTU')
     parser_generate.add_argument('--category', default='Inverter')
     parser_generate.add_argument('--forced-write', default='')
-    parser_generate.add_argument('--template', action='store_true', help='Generate sample template')
+    parser_generate.add_argument('--template', action='store_true')
     parser_generate.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run (Extract + Generate)
+    # Run
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
@@ -212,10 +190,12 @@ def _run_cli():
     parser_run.add_argument('--protocol', default='modbusRTU')
     parser_run.add_argument('--category', default='Inverter')
     parser_run.add_argument('--forced-write', default='')
-    parser_run.add_argument('--template', action='store_true', help='Generate sample template')
+    parser_run.add_argument('--template', action='store_true')
+    parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+
     if not args.command:
         parser.print_help()
         sys.exit(1)
