@@ -122,22 +122,8 @@ class Extractor:
         "StartBit": ["startbit", "bit offset", "bit", "start"],
     }
 
-    # Detection is ordered most-specific-first so that greedy substring matches
-    # (e.g. 'offset' for both Address and Offset) resolve deterministically.
-    DETECTION_ORDER = (
-        "RegisterType",
-        "Address",
-        "Name",
-        "Type",
-        "Unit",
-        "Action",
-        "Tag",
-        "Factor",
-        "Offset",
-        "ScaleFactor",
-        "Length",
-        "StartBit",
-    )
+    def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
+        self.mapping = mapping or {}
 
     @staticmethod
     def normalize_type(t: Any) -> str:
@@ -176,6 +162,8 @@ class Extractor:
 
             except (OSError, zipfile.BadZipFile) as e:
                 logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+
+        return excel_sheets_generator()
 
         return excel_sheets_generator()
 
@@ -271,6 +259,8 @@ class Extractor:
                     logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
             yield csv_table_generator()
+
+        return csv_tables_generator()
 
         return csv_tables_generator()
 

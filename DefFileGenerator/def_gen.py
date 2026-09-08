@@ -1,21 +1,14 @@
 #!/usr/bin/env python3
-"""
-WebdynSunPM Definition File Generator Core Module.
-
-Provides register normalization, address range and overlap validation,
-coefficient calculation, data type parsing, and WebdynSunPM CSV definition generation.
-"""
-
 import argparse
-import bisect
 import csv
-import itertools
+import sys
 import logging
+import re
 import math
+import itertools
+from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
-from functools import lru_cache
-from typing import Any, Optional, Union
 
 def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
     """
@@ -279,32 +272,6 @@ class Generator:
         except ValueError: return default
 
     @staticmethod
-    def _parse_numeric(val: Any, default: float = 0.0) -> float:
-        if val is None or str(val).strip() == "":
-            return default
-        s = str(val).strip()
-        if "/" in s:
-            try:
-                parts = s.split("/")
-                return float(parts[0]) / float(parts[1])
-            except (ValueError, ZeroDivisionError, IndexError):
-                return default
-        if "," in s and "." in s:
-            if s.find(",") < s.find("."):
-                s = s.replace(",", "")
-            else:
-                s = s.replace(".", "").replace(",", ".")
-        elif "," in s:
-            if re.match(r"^-?\d{1,3}(,\d{3})+$", s):
-                s = s.replace(",", "")
-            else:
-                s = s.replace(",", ".")
-        try:
-            return float(s)
-        except ValueError:
-            return default
-
-    @staticmethod
     def apply_address_offset(
         address: Any, offset: int, line_num: Optional[int] = None, name: Optional[str] = None
     ) -> str:
@@ -457,12 +424,10 @@ class Generator:
     def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
         factor = Generator._parse_numeric(factor_str, default=1.0)
         offset = Generator._parse_numeric(offset_str, default=0.0)
-        try:
-            scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
-        except ValueError:
-            scale_val = 0
-        coef_a = f"{factor * (10**scale_val):.6f}"
-        coef_b = f"{offset:.6f}"
+        try: scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
+        except ValueError: scale_val = 0
+        coef_a = "{:.6f}".format(factor * (10 ** scale_val))
+        coef_b = "{:.6f}".format(offset)
         return coef_a, coef_b
 
     def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
@@ -671,20 +636,13 @@ class Generator:
             if isinstance(output, str) and outfile is not None:
                 outfile.close()
 
-def generate_template(output_file: Optional[str], mode: str = "input") -> None:
-    if mode == "definition":
-        headers = [
-            "#Index",
-            "Info1",
-            "Info2",
-            "Info3",
-            "Info4",
-            "Name",
-            "Tag",
-            "CoefA",
-            "CoefB",
-            "Unit",
-            "Action",
+def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
+    if mode == 'definition':
+        headers = ['#Index', 'Info1', 'Info2', 'Info3', 'Info4', 'Name', 'Tag', 'CoefA', 'CoefB', 'Unit', 'Action']
+        rows = [
+            ['modbusRTU', 'Inverter', 'SampleManufacturer', 'SampleModel', '', '', '', '', '', '', ''],
+            ['1', '3', '40001', 'U16', '', 'Active Power', 'active_power', '1.000000', '0.000000', 'W', '4'],
+            ['2', '3', '40002', 'U16', '', 'Voltage', 'voltage', '0.100000', '0.000000', 'V', '4']
         ]
         delimiter = ';'
     else:
