@@ -16,9 +16,8 @@ import json
 # Ensure the parent directory is in sys.path to allow direct execution
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig
-
+from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.def_gen import Generator, run_generator, GeneratorConfig, peek_generator
 
 def setup_logging(verbose=False):
     logging.basicConfig(
@@ -82,6 +81,10 @@ def _perform_extraction(args):
 
 def extract_command(args):
     mapped_data = _perform_extraction(args)
+    if not mapped_data:
+        logging.error("No registers extracted.")
+        sys.exit(1)
+
     output = getattr(args, 'output', None)
     fieldnames = ['Name', 'Tag', 'RegisterType', 'Address', 'Type', 'Factor', 'Offset', 'Unit', 'Action', 'ScaleFactor']
 
@@ -101,20 +104,12 @@ def extract_command(args):
 def validate_command(args):
     generator = Generator()
     if generator.validate_csv(args.input_file):
-        logging.info(f"Validation successful: {args.input_file}")
+        logging.info(f"Validation successful for {args.input_file}")
     else:
-        logging.error(f"Validation failed: {args.input_file}")
+        logging.error(f"Validation failed for {args.input_file}")
         sys.exit(1)
 
 def generate_command(args):
-    template = getattr(args, 'template', False)
-    template_mode = getattr(args, 'template_mode', 'input')
-
-    input_file = getattr(args, 'input_file', None)
-    if template and input_file == 'definition':
-        template_mode = 'definition'
-        input_file = None
-
     config = GeneratorConfig(
         input_file=input_file,
         output=getattr(args, 'output', None),
@@ -124,8 +119,8 @@ def generate_command(args):
         category=getattr(args, 'category', 'Inverter'),
         forced_write=getattr(args, 'forced_write', ''),
         address_offset=getattr(args, 'address_offset', 0),
-        template=template,
-        template_mode=template_mode
+        template=getattr(args, 'template', False),
+        template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config)
 
@@ -134,6 +129,9 @@ def run_command(args):
     mapped_data = None
     if not template:
         mapped_data = _perform_extraction(args)
+        if not mapped_data:
+            logging.error("No registers extracted.")
+            sys.exit(1)
 
     config = GeneratorConfig(
         input_file=getattr(args, 'input_file', None),
@@ -204,20 +202,32 @@ def _run_cli():
 
     setup_logging(args.verbose)
 
-    # Manual validation for required arguments unless --template is used
+    # Manual validation for manufacturer/model unless template
     if args.command in ['generate', 'run'] and not getattr(args, 'template', False):
         if not getattr(args, 'manufacturer', None) or not getattr(args, 'model', None):
-            logging.error(f"--manufacturer and --model are required for {args.command}.")
+            logging.error("--manufacturer and --model are required.")
             sys.exit(1)
         if not getattr(args, 'input_file', None):
-             logging.error(f"input_file is required for {args.command}.")
-             sys.exit(1)
+            logging.error("input_file is required.")
+            sys.exit(1)
+
+    # Validate --pages and --sheet if input_file exists
+    input_file = getattr(args, 'input_file', None)
+    if input_file:
+        ext = os.path.splitext(input_file)[1].lower()
+        if getattr(args, 'pages', None) and ext != '.pdf':
+            logging.warning("--pages is only applicable for PDF files. Ignoring.")
+        if getattr(args, 'sheet', None) and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+            logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     if args.command == 'extract':
         extract_command(args)
     elif args.command == 'validate':
         validate_command(args)
     elif args.command == 'generate':
+        if not getattr(args, 'template', False) and not args.input_file:
+            logging.error("input_file is required unless --template is used.")
+            sys.exit(1)
         generate_command(args)
     elif args.command == 'run':
         run_command(args)
