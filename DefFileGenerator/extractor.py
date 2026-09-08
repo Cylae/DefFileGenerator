@@ -226,6 +226,8 @@ class Extractor:
 
         return excel_sheets_generator()
 
+        return excel_sheets_generator()
+
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
