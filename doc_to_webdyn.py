@@ -11,6 +11,7 @@ import json
 import logging
 import os
 import re
+import json
 import csv
 import json
 from DefFileGenerator.extractor import Extractor, peek_generator
@@ -87,7 +88,6 @@ def _run_cli(argv=None):
             logging.error("Invalid format for --pages. Expected comma-separated integers.")
             sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw = extractor.extract_from_excel(args.input_file, sheet_arg)
     elif ext == '.pdf':
@@ -106,7 +106,7 @@ def _run_cli(argv=None):
         sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
+    first, mapped = peek_generator(mapped)
     if not first:
         logging.error("No registers extracted.")
         sys.exit(1)
@@ -135,6 +135,8 @@ def main(args=None):
         _run_cli(args)
     except KeyboardInterrupt:
         sys.exit(130)
+    except SystemExit as e:
+        sys.exit(e.code)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
         # traceback.print_exc() # For deep debugging

@@ -75,22 +75,6 @@ except ImportError:
         except ImportError:
             pass
 
-if peek_generator is None:
-    def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
-        """
-        Checks if an iterable is non-empty without fully consuming it.
-        Returns (has_data, original_iterator).
-        """
-        if iterable is None:
-            return False, iter([])
-        it = iter(iterable)
-        try:
-            first = next(it)
-        except StopIteration:
-            return False, iter([])
-        return True, itertools.chain([first], it)
-
-
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
         "RegisterType": ["register type", "reg type", "modbus type", "registertype"],
@@ -147,15 +131,12 @@ class Extractor:
                             header_row = next(rows)
                         except StopIteration:
                             return
-
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
 
                         for row in rows:
-                            # Only yield if row has actual data (not all None/empty)
                             if any(cell is not None and str(cell).strip() for cell in row):
                                 yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
 
-                    # We yield a generator for each sheet.
                     yield sheet_generator()
 
             except (OSError, zipfile.BadZipFile) as e:
@@ -192,6 +173,8 @@ class Extractor:
 
         return excel_sheets_generator()
 
+        return excel_sheets_generator()
+
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
@@ -204,9 +187,17 @@ class Extractor:
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        requested = pages if isinstance(pages, list) else [pages]
-                        if isinstance(pages, str):
-                            requested = [p.strip() for p in pages.split(',')]
+                        requested = []
+                        if isinstance(pages, int):
+                            requested = [pages]
+                        elif isinstance(pages, str):
+                            try:
+                                requested = [int(p.strip()) for p in pages.split(',')]
+                            except ValueError:
+                                pass
+                        elif isinstance(pages, list):
+                            requested = pages
+
                         for p in requested:
                             try:
                                 idx = int(p) - 1
@@ -351,6 +342,7 @@ class Extractor:
 
             detection_order = ['RegisterType', 'Address', 'Name', 'Type', 'Unit', 'Action', 'Tag', 'Factor', 'Offset', 'ScaleFactor', 'Length', 'StartBit']
 
+            # Exact match column detection
             for target in detection_order:
                 if target in col_map:
                     continue
@@ -364,6 +356,7 @@ class Extractor:
                         used_src_cols.add(src_col)
                         break
 
+            # Heuristic substring column detection fallback
             for target in detection_order:
                 if target in col_map:
                     continue
@@ -388,6 +381,12 @@ class Extractor:
                 slen = str(r.get(col_map.get('Length', ''))).strip() if col_map.get('Length') else ''
 
                 dtype = self.normalize_type(new_row.get('Type', 'U16'))
+
+                # Normalizing STR<n> to STRING
+                if dtype.startswith('STR') and dtype[3:].isdigit():
+                    if slen == '':
+                        slen = dtype[3:]
+                    dtype = 'STRING'
                 new_row['Type'] = dtype
 
                 addr = str(new_row.get('Address', '')).strip()
@@ -395,7 +394,7 @@ class Extractor:
                     if slen == '':
                         slen = '1'
                     addr = f"{addr}_{sbit}_{slen}"
-                elif (dtype == 'STRING' or dtype.startswith('STR')) and slen != '' and '_' not in addr:
+                elif dtype == 'STRING' and slen != '' and '_' not in addr:
                     addr = f"{addr}_{slen}"
 
                 if Generator:
@@ -421,7 +420,6 @@ class Extractor:
                 if processed:
                     yield processed
 
-
 def main():
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     parser = argparse.ArgumentParser(description='Extract register information.')
@@ -437,9 +435,11 @@ def main():
     if args.mapping:
         with open(args.mapping, 'r') as f:
             mapping = json.load(f)
+
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
     pages = args.pages
+
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
         raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == '.pdf':
@@ -451,6 +451,7 @@ def main():
     else:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
+
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
 
     out = open(args.output, 'w', newline='', encoding='utf-8') if args.output else sys.stdout
