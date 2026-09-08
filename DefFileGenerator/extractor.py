@@ -14,20 +14,15 @@ import json
 import logging
 import os
 import sys
-import itertools
 import zipfile
 from collections.abc import Iterable, Iterator
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-# Named logger
-logger = logging.getLogger('DefFileGenerator.extractor')
-
-# Setup logger for this module
+# Named logger for this module
 logger = logging.getLogger('DefFileGenerator.extractor')
 
 try:
     import openpyxl
-
     HAS_OPENPYXL = True
 except ImportError:
     HAS_OPENPYXL = False
@@ -35,7 +30,6 @@ except ImportError:
 PDF_ERRORS: tuple[type[Exception], ...]
 try:
     import pdfplumber
-
     HAS_PDFPLUMBER = True
     try:
         from pdfminer.pdfparser import PDFSyntaxError
@@ -63,7 +57,7 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = ()
 
-# Secure Import for Generator and peek_generator with clean fallbacks
+# Import Generator and peek_generator with clean fallbacks
 Generator = None
 peek_generator = None
 
@@ -117,11 +111,13 @@ class Extractor:
 
     @staticmethod
     def normalize_type(t: Any) -> str:
-        return Generator.normalize_type(t)
+        if Generator:
+            return Generator.normalize_type(t)
+        return str(t).upper() if t else 'U16'
 
     def extract_from_excel(
         self, filepath: str, sheet_name: Optional[str] = None
-    ) -> Iterator[Iterator[dict[str, Any]]]:
+    ) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return iter([])
@@ -357,11 +353,10 @@ class Extractor:
                 if not new_row.get('Name') and not new_row.get('Address'): return None
                 sbit = str(r.get(col_map.get('StartBit', ''), '')).strip()
                 slen = str(r.get(col_map.get('Length', ''), '')).strip()
-                dtype = Generator.normalize_type(new_row.get('Type', 'U16'))
+                raw_type = new_row.get('Type', 'U16')
+                dtype = Generator.normalize_type(raw_type) if Generator else str(raw_type).upper()
                 new_row['Type'] = dtype
                 addr = str(new_row.get('Address', '')).strip()
-                sbit = str(r.get(col_map.get('StartBit', ''), '')).strip()
-                slen = str(r.get(col_map.get('Length', ''), '')).strip()
 
                 if dtype == 'BITS' and sbit != '' and '_' not in addr:
                     if slen == '': slen = '1'
@@ -383,10 +378,6 @@ class Extractor:
                 return new_row
 
             for row in itertools.chain(buffer, iterator):
-                processed = process_row(row)
-                if processed: yield processed
-
-            for row in iterator:
                 processed = process_row(row)
                 if processed: yield processed
 
