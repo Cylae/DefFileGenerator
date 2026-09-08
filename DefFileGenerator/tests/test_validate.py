@@ -1,9 +1,8 @@
-import csv
-import logging
-import os
-import tempfile
 import unittest
-
+import os
+import csv
+import tempfile
+import logging
 from DefFileGenerator.def_gen import Generator
 
 

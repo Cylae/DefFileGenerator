@@ -70,7 +70,7 @@ class TestOverlapDetection(unittest.TestCase):
             {"Name": "SmallVal", "Tag": "sv", "Address": "102", "Type": "U16"},
         ]
         with self.assertLogs(level="WARNING") as cm:
-            self._process(rows)
+            result = self._process(rows)
         self.assertTrue(any("overlap" in m.lower() for m in cm.output))
 
     def test_mac_type_occupies_three_registers(self):
@@ -209,6 +209,8 @@ class TestWriteOutputCsv(unittest.TestCase):
 
     def test_writes_to_stdout_when_none(self):
         buf = io.StringIO()
+        captured = []
+        import sys
         old = sys.stdout
         sys.stdout = buf
         try:
