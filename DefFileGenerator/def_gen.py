@@ -6,6 +6,8 @@ import logging
 import re
 import math
 import itertools
+import functools
+from typing import Dict, List, Optional, Any, Union, Tuple, Set, Iterator, Iterable
 import os
 from dataclasses import dataclass
 
@@ -32,6 +34,23 @@ RE_ADDR_INT = re.compile(r'^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$', re.IGNOR
 RE_COUNT_16_8 = re.compile(r'^([UI](16|8)(_(W|B|WB))?|BITS)$', re.IGNORECASE)
 RE_COUNT_32 = re.compile(r'^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$', re.IGNORECASE)
 RE_COUNT_64 = re.compile(r'^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$', re.IGNORECASE)
+
+RE_NORM_STRING = re.compile(r'string\s*(\d+)', re.IGNORECASE)
+SYNONYMS_COMPILED = [
+    (re.compile(r'unsigned integer 64|unsigned int 64|uint64', re.IGNORECASE), 'U64'),
+    (re.compile(r'signed integer 64|signed int 64|int64', re.IGNORECASE), 'I64'),
+    (re.compile(r'unsigned integer 32|unsigned int 32|uint32', re.IGNORECASE), 'U32'),
+    (re.compile(r'signed integer 32|signed int 32|int32', re.IGNORECASE), 'I32'),
+    (re.compile(r'unsigned integer 16|unsigned int 16|uint16', re.IGNORECASE), 'U16'),
+    (re.compile(r'signed integer 16|signed int 16|int16', re.IGNORECASE), 'I16'),
+    (re.compile(r'unsigned integer 8|unsigned int 8|uint8', re.IGNORECASE), 'U8'),
+    (re.compile(r'signed integer 8|signed int 8|int8', re.IGNORECASE), 'I8'),
+    (re.compile(r'float64|double', re.IGNORECASE), 'F64'),
+    (re.compile(r'float32|float', re.IGNORECASE), 'F32'),
+    (re.compile(r'string\s*(\d+)', re.IGNORECASE), r'STR\1'),
+    (re.compile(r'string', re.IGNORECASE), 'STRING'),
+]
+
 _CLEAN_TYPE_RE = re.compile(r'[^a-z0-9_]+')
 
 @dataclass
@@ -77,7 +96,8 @@ class Generator:
         return s
 
     @staticmethod
-    def normalize_type(dtype: Any) -> str:
+    @functools.lru_cache(maxsize=1024)
+    def normalize_type(dtype):
         if not dtype: return 'U16'
         t = str(dtype).lower().strip()
         suffix = ''
@@ -88,22 +108,17 @@ class Generator:
         elif any(x in t for x in ['_w', 'word']):
             suffix = '_W'
 
-        # Mapping ordered by specificity
-        synonyms = [
-            (r'unsigned integer 64|unsigned int 64|uint64', 'U64'),
-            (r'signed integer 64|signed int 64|int64', 'I64'),
-            (r'unsigned integer 32|unsigned int 32|uint32', 'U32'),
-            (r'signed integer 32|signed int 32|int32', 'I32'),
-            (r'unsigned integer 16|unsigned int 16|uint16', 'U16'),
-            (r'signed integer 16|signed int 16|int16', 'I16'),
-            (r'unsigned integer 8|unsigned int 8|uint8', 'U8'),
-            (r'signed integer 8|signed int 8|int8', 'I8'),
-            (r'float64|double', 'F64'),
-            (r'float32|float', 'F32'),
-            (r'string', 'STRING'),
-        ]
-        for pattern, replacement in synonyms:
-            if re.search(pattern, t):
+        # Handle "string 20" -> "STR20"
+        str_match = RE_NORM_STRING.search(t)
+        if str_match:
+            return f"STR{str_match.group(1)}{suffix}"
+
+        # Mapping ordered by specificity (longer strings first)
+        for pattern, replacement in SYNONYMS_COMPILED:
+            if pattern.search(t):
+                if r'\1' in replacement:
+                    res = pattern.sub(replacement, t).upper()
+                    return f"{res}{suffix}"
                 return f"{replacement}{suffix}"
 
         if t.startswith('str') and t[3:].isdigit():
