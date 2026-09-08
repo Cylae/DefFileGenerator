@@ -13,8 +13,8 @@ import os
 import re
 import csv
 import json
-from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator, peek_generator
+from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli(args_list=None):
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
@@ -80,28 +80,19 @@ def _run_cli(args_list=None):
             logging.error("Invalid format for --pages.")
             sys.exit(1)
 
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(input_file, args.sheet)
-    elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(input_file, pages)
-    elif ext == '.csv':
-        raw = extractor.extract_from_csv(input_file)
-    elif ext == '.xml':
-        raw = extractor.extract_from_xml(input_file)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
-        sys.exit(1)
+    sheet_arg = getattr(args, 'sheet', None)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, sheet_arg)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
+    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
-    has_data, raw_peeked = peek_generator(raw)
-    if not has_data:
-        logging.error("No data extracted.")
-        sys.exit(1)
+    has_data, raw = peek_generator(raw)
+    if not has_data: logging.error("No data extracted."); sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeked = peek_generator(mapped)
-    if not first:
-        logging.error("No registers extracted.")
-        sys.exit(1)
+    mapped = extractor.map_and_clean(raw, args.address_offset)
+    has_registers, mapped = peek_generator(mapped)
+    if not has_registers: logging.error("No registers extracted."); sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -122,9 +113,9 @@ def _run_cli(args_list=None):
         category=args.category,
         forced_write=args.forced_write,
         address_offset=0, # Already applied during extraction
-        template=False
+        template=getattr(args, 'template', False)
     )
-    run_generator(config, input_data=mapped_peeked)
+    run_generator(config, input_data=mapped)
 
 def setup_logging(verbose):
     logging.basicConfig(level=logging.DEBUG if verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
