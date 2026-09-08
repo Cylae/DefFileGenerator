@@ -44,7 +44,7 @@ def _run_cli():
             elif arg == '--model' and i+1 < len(args):
                 model = args[i+1]
 
-    if args.template:
+    if getattr(args, 'template', False):
         config = GeneratorConfig(
             output=args.output,
             template=True,
@@ -53,9 +53,11 @@ def _run_cli():
         run_generator(config)
         return
 
-    cli_main(args)
-
     input_file = args.input_file
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
+        sys.exit(1)
+
     ext = os.path.splitext(input_file)[1].lower()
 
     # Warn about mismatched options
@@ -92,9 +94,9 @@ def _run_cli():
         logging.error("No data extracted.")
         sys.exit(1)
 
-    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
-    if not first:
+    mapped_gen = extractor.map_and_clean(raw_peeked, args.address_offset)
+    has_regs, mapped = peek_generator(mapped_gen)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
@@ -113,7 +115,7 @@ def _run_cli():
         address_offset=0, # Already applied during extraction
         template=False
     )
-    run_generator(config, input_data=mapped_peeker)
+    run_generator(config, input_data=mapped)
 
 def main():
     try:
