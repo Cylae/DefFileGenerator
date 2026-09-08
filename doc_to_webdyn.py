@@ -16,7 +16,10 @@ import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
-def _run_cli():
+def _run_cli(argv=None):
+    if argv is None:
+        argv = sys.argv[1:]
+
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
@@ -32,8 +35,8 @@ def _run_cli():
     parser.add_argument('--forced-write', default='')
     parser.add_argument('-v', '--verbose', action='store_true')
 
-    commands = ['validate', 'extract', 'generate', 'run']
-    has_command = any(arg in commands for arg in args)
+    args = parser.parse_args(argv)
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
 
     if not has_command and not ('-h' in args or '--help' in args):
         # We need to be careful. If the user passed arguments that look like they
@@ -42,11 +45,15 @@ def _run_cli():
         # Let's see what's in args.
         args = ['run'] + args
 
-    # Special case for tests that expect files to be generated in current dir
-    # with specific names if -o is not provided.
-    run_cli(args)
+    if not args.input_file:
+        logging.error("Input file is required.")
+        sys.exit(1)
 
-    ext = os.path.splitext(args.input_file)[1].lower() if args.input_file else ""
+    if not os.path.exists(args.input_file):
+        logging.error(f"Input file not found: {args.input_file}")
+        sys.exit(1)
+
+    ext = os.path.splitext(args.input_file)[1].lower()
 
     mapping = {}
     mapping_path = getattr(args, 'mapping', None)
@@ -60,35 +67,45 @@ def _run_cli():
 
     extractor = Extractor(mapping)
 
-    pages_arg = getattr(args, 'pages', None)
     pages = None
-    if pages_arg:
-        if ext != '.pdf':
-            logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        else:
+    if args.pages:
+        if ext == '.pdf':
             try:
-                pages = [int(p.strip()) for p in pages_arg.split(',')]
+                pages = [int(p.strip()) for p in args.pages.split(',')]
             except ValueError:
                 logging.error("Invalid format for --pages. Expected comma-separated integers.")
                 sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(args.input_file, sheet_arg)
-    elif ext == '.pdf': raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv': raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml': raw = extractor.extract_from_xml(args.input_file)
-    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+    elif ext == '.pdf':
+        raw = extractor.extract_from_pdf(args.input_file, pages)
+    elif ext == '.csv':
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext == '.xml':
+        raw = extractor.extract_from_xml(args.input_file)
+    else:
+        logging.error(f"Unsupported extension: {ext}")
+        sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
-    if not has_data: logging.error("No data extracted."); sys.exit(1)
+    if not has_data:
+        logging.error("No data extracted.")
+        sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeked = peek_generator(mapped)
-    if not first: logging.error("No registers extracted."); sys.exit(1)
+    first, mapped_peeker = peek_generator(mapped)
+    if not first:
+        logging.error("No registers extracted.")
+        sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
-    output_file = args.output or f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+    output_file = args.output
+    if not output_file:
+        mfg_clean = re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()
+        model_clean = re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()
+        output_file = f"{mfg_clean}_{model_clean}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -103,7 +120,7 @@ def _run_cli():
     )
     run_generator(config, input_data=mapped_peeked)
 
-def main():
+def main(args=None):
     try:
         _run_cli(args)
     except KeyboardInterrupt:
