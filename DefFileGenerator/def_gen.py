@@ -231,7 +231,9 @@ class Generator:
         except ValueError: return default
 
     @staticmethod
-    def apply_address_offset(address: Any, offset: int, line_num: Optional[int] = None, name: Optional[str] = None) -> str:
+    def apply_address_offset(
+        address: Any, offset: int, line_num: Optional[int] = None, name: Optional[str] = None
+    ) -> str:
         if not address: return ""
         addr_str = str(address)
         if '_' not in addr_str:
