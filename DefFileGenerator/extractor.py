@@ -134,67 +134,86 @@ class Extractor:
             logging.error(f"Error loading Excel {filepath}: {e}")
             return iter([])
 
-        def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            wb = None
-            try:
-                rows = ws_obj.iter_rows(values_only=True)
-                header_row = next(rows, None)
-                if not header_row:
-                    return
-                headers = [str(h).strip() if h is not None else "" for h in header_row]
-                for row in rows:
-                    if any(cell is not None and str(cell).strip() for cell in row):
-                        yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-            except Exception as e:
-                logging.error(f"Error reading rows from sheet {ws_obj.title}: {e}")
-
-                for ws in sheets:
-                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
-                        rows = ws_obj.iter_rows(values_only=True)
+        def excel_sheets_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            if sheet_name:
+                def sheet_generator() -> Iterator[dict[str, Any]]:
+                    wb = None
+                    try:
+                        wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                        ws = wb[sheet_name]
+                        rows = ws.iter_rows(values_only=True)
                         try:
                             header_row = next(rows)
                         except StopIteration:
                             return
-
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
 
                         for row in rows:
                             # Only yield if row has actual data (not all None/empty)
                             if any(cell is not None and str(cell).strip() for cell in row):
                                 yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
-
-                    # We yield a generator for each sheet.
-                    yield sheet_generator()
-
-            except (OSError, zipfile.BadZipFile) as e:
-                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-            except (ValueError, TypeError, KeyError) as e:
-                logging.error(f"Error extracting from Excel {filepath}: {e}")
-            finally:
-                if wb:
-                    wb.close()
-                    for sname in sheet_names:
-                        yield sheet_generator(sname)
-                except (OSError, zipfile.BadZipFile, KeyError, ValueError, TypeError) as exc:
-                    def error_generator(err=exc) -> Iterator[dict[str, Any]]:
-                        logging.error(f"File IO Error extracting from Excel {filepath}: {err}")
-                        yield from ()
-                    yield error_generator()
-
-                    headers = [str(h).strip() if h is not None else "" for h in header_row]
-                    for row in rows:
-                        if any(cell is not None and str(cell).strip() for cell in row):
-                            yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+                    except (OSError, zipfile.BadZipFile) as e:
+                        logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+                    except (ValueError, TypeError, KeyError) as e:
+                        logging.error(f"Error extracting from Excel {filepath}: {e}")
+                    finally:
+                        if wb is not None:
+                            wb.close()
 
                 yield sheet_generator()
+            else:
+                sheet_names = None
+                wb_outer = None
+                try:
+                    wb_outer = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                    sheet_names = wb_outer.sheetnames
+                except (OSError, zipfile.BadZipFile, ValueError, TypeError, KeyError):
+                    pass
+                finally:
+                    if wb_outer is not None:
+                        wb_outer.close()
 
-        except (OSError, zipfile.BadZipFile) as e:
-            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
-        except Exception as e:
-            logging.error(f"Error extracting from Excel {filepath}: {e}")
-        finally:
-            if wb:
-                wb.close()
+                if sheet_names is None:
+                    def error_sheet_generator() -> Iterator[dict[str, Any]]:
+                        try:
+                            wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                            wb.close()
+                        except (OSError, zipfile.BadZipFile) as e:
+                            logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+                        except (ValueError, TypeError, KeyError) as e:
+                            logging.error(f"Error extracting from Excel {filepath}: {e}")
+                        return iter([])
+                        yield
+
+                    yield error_sheet_generator()
+                    return
+
+                for sname in sheet_names:
+                    def make_sheet_gen(s_name=sname):
+                        def sheet_generator() -> Iterator[dict[str, Any]]:
+                            wb_inner = None
+                            try:
+                                wb_inner = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                                ws = wb_inner[s_name]
+                                rows = ws.iter_rows(values_only=True)
+                                try:
+                                    header_row = next(rows)
+                                except StopIteration:
+                                    return
+                                headers = [str(h).strip() if h is not None else "" for h in header_row]
+                                for row in rows:
+                                    if any(cell is not None and str(cell).strip() for cell in row):
+                                        yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+                            except (OSError, zipfile.BadZipFile) as e:
+                                logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+                            except (ValueError, TypeError, KeyError) as e:
+                                logging.error(f"Error extracting from Excel {filepath}: {e}")
+                            finally:
+                                if wb_inner is not None:
+                                    wb_inner.close()
+                        return sheet_generator()
+
+                    yield make_sheet_gen()
 
         return excel_sheets_generator()
 
