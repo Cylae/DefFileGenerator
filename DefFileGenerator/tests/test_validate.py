@@ -43,7 +43,8 @@ class TestValidateCSV(unittest.TestCase):
             ["2", "3", "40002", "U16", "", "Name2", "tag2", "1.0", "0.0", "W", "4"],
         ]
         path = self.create_csv(rows)
-        self.assertFalse(self.generator.validate_csv(path, strict=True))
+        # Reconciling with Generator implementation: overlaps are fatal errors
+        self.assertFalse(self.generator.validate_csv(path))
 
     def test_invalid_address(self):
         rows = [["1", "3", "invalid", "U16", "", "Name1", "tag1", "1.0", "0.0", "W", "4"]]
@@ -56,7 +57,7 @@ class TestValidateCSV(unittest.TestCase):
             writer = csv.writer(f, delimiter=';')
             writer.writerow(['modbusRTU', 'Inverter', 'Test', 'Model'])
             writer.writerow(['1', '3', '40001']) # too short
-        # Should log warning and return True if no other errors
+        # Generator implementation skips these rows but returns True if nothing else failed
         self.assertTrue(self.generator.validate_csv(path))
 
 
