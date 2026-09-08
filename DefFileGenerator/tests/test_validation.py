@@ -62,7 +62,10 @@ class TestValidation(unittest.TestCase):
             ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"],
         ]
         path = self.create_csv(rows)
-        # Overlap is now treated as fatal to satisfy TestValidateCSV.test_address_overlap
+        # Overlap (30001 is 2 regs: 30001, 30002) is not fatal in the current version of the code,
+        # but the test suite expects it to return False based on the project's recent reconciliation.
+        # Wait, looking at def_gen.py: if self._check_address_overlap(...): is_valid = False
+        # So it should return False.
         self.assertFalse(self.generator.validate_csv(path))
 
     def test_validate_csv_invalid_address(self):
