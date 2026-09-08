@@ -53,15 +53,12 @@ def _run_cli(argv=None):
         run_generator(config)
         return
 
-    if not args.input_file:
-        logging.error("input_file is required.")
+    input_file = getattr(args, 'input_file', None)
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
-    if not os.path.exists(args.input_file):
-        logging.error(f"Input file not found: {args.input_file}")
-        sys.exit(1)
-
-    ext = os.path.splitext(args.input_file)[1].lower()
+    ext = os.path.splitext(input_file)[1].lower()
 
     # Warn about mismatched options
     if args.pages and ext != '.pdf':
@@ -88,18 +85,11 @@ def _run_cli(argv=None):
             logging.error("Invalid format for --pages. Expected comma-separated integers.")
             sys.exit(1)
 
-    sheet_arg = getattr(args, 'sheet', None)
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(args.input_file, sheet_arg)
-    elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv':
-        raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml':
-        raw = extractor.extract_from_xml(args.input_file)
-    else:
-        logging.error(f"Unsupported extension: {ext}")
-        sys.exit(1)
+    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']: raw = extractor.extract_from_excel(input_file, sheet_arg)
+    elif ext == '.pdf': raw = extractor.extract_from_pdf(input_file, pages)
+    elif ext == '.csv': raw = extractor.extract_from_csv(input_file)
+    elif ext == '.xml': raw = extractor.extract_from_xml(input_file)
+    else: logging.error(f"Unsupported extension: {ext}"); sys.exit(1)
 
     has_data, raw_peeked = peek_generator(raw)
     if not has_data:
@@ -107,10 +97,8 @@ def _run_cli(argv=None):
         sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
-    if not first:
-        logging.error("No registers extracted.")
-        sys.exit(1)
+    has_regs, mapped_peeked = peek_generator(mapped)
+    if not has_regs: logging.error("No registers extracted."); sys.exit(1)
 
     m_name = args.manufacturer or "Manufacturer"
     m_model = args.model or "Model"
@@ -129,7 +117,7 @@ def _run_cli(argv=None):
         address_offset=0,  # Already applied during extraction
         template=args.template
     )
-    run_generator(config, input_data=mapped)
+    run_generator(config, input_data=mapped_peeked)
 
 def main(args=None):
     try:
@@ -139,8 +127,7 @@ def main(args=None):
     except SystemExit as e:
         sys.exit(e.code)
     except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
-        # traceback.print_exc() # For deep debugging
+        logging.exception(f"An unexpected error occurred: {e}")
         sys.exit(1)
 
 
