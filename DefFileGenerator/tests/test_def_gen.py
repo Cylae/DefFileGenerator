@@ -13,41 +13,19 @@ class TestGenerator(unittest.TestCase):
     def tearDown(self):
         logging.disable(logging.NOTSET)
 
-    def test_parse_numeric(self):
-        # Empty/None inputs
-        self.assertEqual(self.generator._parse_numeric(None), 0.0)
-        self.assertEqual(self.generator._parse_numeric(''), 0.0)
-        self.assertEqual(self.generator._parse_numeric('  '), 0.0)
-        self.assertEqual(self.generator._parse_numeric(None, default=1.5), 1.5)
-
-        # Simple integers and floats
-        self.assertEqual(self.generator._parse_numeric('42'), 42.0)
-        self.assertEqual(self.generator._parse_numeric('-42'), -42.0)
-        self.assertEqual(self.generator._parse_numeric('3.14'), 3.14)
-        self.assertEqual(self.generator._parse_numeric('-3.14'), -3.14)
-
+    def test_calculate_coefficients(self):
+        # Valid integer strings
+        self.assertEqual(self.generator._calculate_coefficients("2", "3", "4"), ("20000.000000", "3.000000"))
+        # Valid float strings
+        self.assertEqual(self.generator._calculate_coefficients("1.5", "2.5", "3.0"), ("1500.000000", "2.500000"))
+        # Null and empty inputs
+        self.assertEqual(self.generator._calculate_coefficients("", None, ""), ("1.000000", "0.000000"))
+        # Invalid inputs falling back to defaults
+        self.assertEqual(self.generator._calculate_coefficients("abc", "def", "ghi"), ("1.000000", "0.000000"))
         # Fractions
-        self.assertEqual(self.generator._parse_numeric('1/2'), 0.5)
-        self.assertEqual(self.generator._parse_numeric('-1/2'), -0.5)
-        self.assertEqual(self.generator._parse_numeric('1/0', default=9.9), 9.9) # Zero division
-        self.assertEqual(self.generator._parse_numeric('a/b', default=9.9), 9.9) # ValueError
-        self.assertEqual(self.generator._parse_numeric('1/', default=9.9), 9.9) # ValueError
-
-        # US/Euro formatting
-        # Comma before decimal -> US (1,234.56 -> 1234.56)
-        self.assertEqual(self.generator._parse_numeric('1,234.56'), 1234.56)
-        # Decimal before comma -> Euro (1.234,56 -> 1234.56)
-        self.assertEqual(self.generator._parse_numeric('1.234,56'), 1234.56)
-
-        # Only comma
-        # Matches ^-?\d{1,3}(,\d{3})+$ -> thousand separator (1,234 -> 1234)
-        self.assertEqual(self.generator._parse_numeric('1,234'), 1234.0)
-        self.assertEqual(self.generator._parse_numeric('-1,234'), -1234.0)
-        # Doesn't match -> decimal comma (12,34 -> 12.34)
-        self.assertEqual(self.generator._parse_numeric('12,34'), 12.34)
-
-        # Invalid strings
-        self.assertEqual(self.generator._parse_numeric('abc', default=-1.0), -1.0)
+        self.assertEqual(self.generator._calculate_coefficients("1/10", "1/2", "2"), ("10.000000", "0.500000"))
+        # Negative scale factor
+        self.assertEqual(self.generator._calculate_coefficients("1.0", "0.0", "-2"), ("0.010000", "0.000000"))
 
     def test_intelligent_defaulting(self):
         rows = [
