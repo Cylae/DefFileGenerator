@@ -123,10 +123,17 @@ class TestCliErgonomics(unittest.TestCase):
         self.assertNotIn("Post-generation validation", result.stderr)
 
     def test_validate_lenient_downgrades_overlaps(self):
-        overlapping = os.path.join(REPO_ROOT, "bad_def.csv")
-        if not os.path.exists(overlapping):
-            self.skipTest("bad_def.csv fixture unavailable")
-        self.assertEqual(run_cli("validate", overlapping, "--lenient").returncode, 0)
+        # Dynamically create an overlapping CSV file in temp directory for testing lenient mode
+        with tempfile.NamedTemporaryFile("w", delete=False, suffix=".csv", encoding="utf-8") as f:
+            f.write("modbusRTU;Inverter;Test;Model;;;;;;;\n")
+            f.write("1;3;40001;U32;;Name1;tag1;1.0;0.0;W;4\n")
+            f.write("2;3;40002;U16;;Name2;tag2;1.0;0.0;W;4\n")
+            overlapping = f.name
+        try:
+            self.assertEqual(run_cli("validate", overlapping, "--lenient").returncode, 0)
+        finally:
+            if os.path.exists(overlapping):
+                os.unlink(overlapping)
 
     def test_validate_missing_file_is_reported(self):
         result = run_cli("validate", "/nonexistent/def.csv")
