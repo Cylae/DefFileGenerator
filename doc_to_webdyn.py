@@ -11,15 +11,11 @@ import json
 import logging
 import os
 import re
-import csv
 import json
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 def _run_cli(argv=None):
-    if argv is None:
-        argv = sys.argv[1:]
-
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
     parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
@@ -45,15 +41,18 @@ def _run_cli(argv=None):
         # Let's see what's in args.
         args = ['run'] + args
 
-    if not args.input_file:
-        logging.error("Input file is required.")
+    input_file = args.input_file
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
 
-    if not os.path.exists(args.input_file):
-        logging.error(f"Input file not found: {args.input_file}")
-        sys.exit(1)
+    ext = os.path.splitext(input_file)[1].lower()
 
-    ext = os.path.splitext(args.input_file)[1].lower()
+    # Warn about mismatched options
+    if args.pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     mapping = {}
     mapping_path = getattr(args, 'mapping', None)
@@ -67,23 +66,14 @@ def _run_cli(argv=None):
 
     extractor = Extractor(mapping)
 
-    pages = None
-    if args.pages:
-        if ext == '.pdf':
-            try:
-                pages = [int(p.strip()) for p in args.pages.split(',')]
-            except ValueError:
-                logging.error("Invalid format for --pages. Expected comma-separated integers.")
-                sys.exit(1)
-
     if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(args.input_file, args.sheet)
+        raw = extractor.extract_from_excel(input_file, args.sheet)
     elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(args.input_file, pages)
+        raw = extractor.extract_from_pdf(input_file, args.pages)
     elif ext == '.csv':
-        raw = extractor.extract_from_csv(args.input_file)
+        raw = extractor.extract_from_csv(input_file)
     elif ext == '.xml':
-        raw = extractor.extract_from_xml(args.input_file)
+        raw = extractor.extract_from_xml(input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
@@ -94,8 +84,8 @@ def _run_cli(argv=None):
         sys.exit(1)
 
     mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
-    if not first:
+    has_regs, mapped_peeked = peek_generator(mapped)
+    if not has_regs:
         logging.error("No registers extracted.")
         sys.exit(1)
 
