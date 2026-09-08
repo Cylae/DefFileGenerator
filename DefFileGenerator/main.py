@@ -134,8 +134,8 @@ def extract_command(args):
         logging.info(f"Extraction complete. Saved to {output}")
 
 def validate_command(args):
-    generator = Generator()
-    if generator.validate_csv(args.input_file):
+    gen = Generator()
+    if gen.validate_csv(args.input_file):
         logging.info(f"Validation successful for {args.input_file}")
     else:
         logging.error(f"Validation failed for {args.input_file}")
@@ -173,12 +173,13 @@ def run_command(args):
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0, # Already applied during extraction
-        template=template
+        address_offset=0, # Already applied during extraction in run mode
+        template=template,
+        template_mode=getattr(args, 'template_mode', 'input')
     )
     run_generator(config, input_data=mapped_data)
 
-def _run_cli(args_list=None):
+def _run_cli():
     parser = argparse.ArgumentParser(description='WebdynSunPM Definition Tool')
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     subparsers = parser.add_subparsers(dest='command', help='Sub-commands')
@@ -209,12 +210,14 @@ def _run_cli(args_list=None):
     parser_generate.add_argument('--forced-write', default='')
     parser_generate.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    # Run
+    # Run (Extract + Generate)
     parser_run = subparsers.add_parser('run', help='Extract and Generate in one step')
     parser_run.add_argument('input_file', nargs='?', help='Source file (PDF/Excel/CSV/XML)')
     parser_run.add_argument('--manufacturer')
     parser_run.add_argument('--model')
     parser_run.add_argument('-o', '--output', help='Output definition CSV')
+    parser_run.add_argument('--template', action='store_true')
+    parser_run.add_argument('--template-mode', choices=['input', 'definition'], default='input')
     parser_run.add_argument('--mapping', help='Mapping JSON')
     parser_run.add_argument('--sheet', help='Excel sheet')
     parser_run.add_argument('--pages', help='PDF pages')
@@ -223,8 +226,7 @@ def _run_cli(args_list=None):
     parser_run.add_argument('--forced-write', default='')
     parser_run.add_argument('--address-offset', type=int, default=0, help='Address offset')
 
-    args = parser.parse_args(args_list)
-
+    args = parser.parse_args()
     if not args.command:
         parser.print_help()
         return
