@@ -62,9 +62,7 @@ class TestValidation(unittest.TestCase):
             ["3", "30002", "U16", "", "Freq", "f_tag", "1.0", "0.0", "Hz", "4"],
         ]
         path = self.create_csv(rows)
-        # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity
-        # but let's see how it behaves. The current implementation only returns False
-        # for fatal errors like duplicate tags or invalid addresses.
+        # Overlap (30001 is 2 regs: 30001, 30002) is a warning, not fatal for validity when strict=False
         self.assertTrue(self.generator.validate_csv(path, strict=False))
 
     def test_validate_csv_invalid_address(self):
