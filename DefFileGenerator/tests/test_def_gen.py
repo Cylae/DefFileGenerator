@@ -16,27 +16,50 @@ class TestGenerator(unittest.TestCase):
 
     def test_calculate_coefficients(self):
         # Default conditions
-        self.assertEqual(self.generator._calculate_coefficients('', '', ''), ('1.000000', '0.000000'))
-        self.assertEqual(self.generator._calculate_coefficients(None, None, None), ('1.000000', '0.000000'))
+        self.assertEqual(
+            self.generator._calculate_coefficients("", "", ""), ("1.000000", "0.000000")
+        )
+        self.assertEqual(
+            self.generator._calculate_coefficients(None, None, None), ("1.000000", "0.000000")
+        )
 
         # Valid standard inputs
-        self.assertEqual(self.generator._calculate_coefficients('2', '10', '0'), ('2.000000', '10.000000'))
+        self.assertEqual(
+            self.generator._calculate_coefficients("2", "10", "0"), ("2.000000", "10.000000")
+        )
 
         # With scale factor
-        self.assertEqual(self.generator._calculate_coefficients('1', '0', '2'), ('100.000000', '0.000000'))
-        self.assertEqual(self.generator._calculate_coefficients('1.5', '0', '1'), ('15.000000', '0.000000'))
-        self.assertEqual(self.generator._calculate_coefficients('1', '5', '-1'), ('0.100000', '5.000000'))
+        self.assertEqual(
+            self.generator._calculate_coefficients("1", "0", "2"), ("100.000000", "0.000000")
+        )
+        self.assertEqual(
+            self.generator._calculate_coefficients("1.5", "0", "1"), ("15.000000", "0.000000")
+        )
+        self.assertEqual(
+            self.generator._calculate_coefficients("1", "5", "-1"), ("0.100000", "5.000000")
+        )
 
         # With scale factor formatted as float string
-        self.assertEqual(self.generator._calculate_coefficients('2', '0', '2.0'), ('200.000000', '0.000000'))
-        self.assertEqual(self.generator._calculate_coefficients('2', '0', '-2.0'), ('0.020000', '0.000000'))
+        self.assertEqual(
+            self.generator._calculate_coefficients("2", "0", "2.0"), ("200.000000", "0.000000")
+        )
+        self.assertEqual(
+            self.generator._calculate_coefficients("2", "0", "-2.0"), ("0.020000", "0.000000")
+        )
 
         # Invalid scale factors fallback to 0
-        self.assertEqual(self.generator._calculate_coefficients('2', '1', 'invalid'), ('2.000000', '1.000000'))
+        self.assertEqual(
+            self.generator._calculate_coefficients("2", "1", "invalid"), ("2.000000", "1.000000")
+        )
 
         # Precision/Format up to 6 decimal places
-        self.assertEqual(self.generator._calculate_coefficients('0.1234567', '0.9876543', '0'), ('0.123457', '0.987654'))
-        self.assertEqual(self.generator._calculate_coefficients('1', '0', '-3'), ('0.001000', '0.000000'))
+        self.assertEqual(
+            self.generator._calculate_coefficients("0.1234567", "0.9876543", "0"),
+            ("0.123457", "0.987654"),
+        )
+        self.assertEqual(
+            self.generator._calculate_coefficients("1", "0", "-3"), ("0.001000", "0.000000")
+        )
 
     def test_intelligent_defaulting(self):
         rows = [
@@ -56,8 +79,8 @@ class TestGenerator(unittest.TestCase):
         self.assertTrue(self.generator.validate_address("65535", "U16"))
 
         logging.disable(logging.NOTSET)
-        with self.assertLogs(level='WARNING') as log:
-            self.assertFalse(self.generator.validate_address('65536', 'U16'))
+        with self.assertLogs(level="WARNING") as log:
+            self.assertFalse(self.generator.validate_address("65536", "U16"))
             self.assertTrue(any("out of Modbus range" in m for m in log.output))
         logging.disable(logging.CRITICAL)
 
@@ -81,7 +104,6 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.get_register_count("STRING", "30000_10"), 5)  # ceil(10/2)
         self.assertEqual(self.generator.get_register_count("STRING", "30000_11"), 6)  # ceil(11/2)
 
-
     def test_apply_address_offset(self):
         # Empty input
         self.assertEqual(Generator.apply_address_offset("", 10), "")
@@ -104,17 +126,24 @@ class TestGenerator(unittest.TestCase):
         # Negative address warning (with log assertions)
         logging.disable(logging.NOTSET)
 
-        with self.assertLogs(level='WARNING') as log1:
+        with self.assertLogs(level="WARNING") as log1:
             res1 = Generator.apply_address_offset("10", -15)
             self.assertEqual(res1, "-5")
-            self.assertTrue(any("Address offset -15 results in negative address -5" in m for m in log1.output))
+            self.assertTrue(
+                any("Address offset -15 results in negative address -5" in m for m in log1.output)
+            )
             self.assertFalse(any("for '" in m for m in log1.output))
             self.assertFalse(any("Line" in m for m in log1.output))
 
-        with self.assertLogs(level='WARNING') as log2:
+        with self.assertLogs(level="WARNING") as log2:
             res2 = Generator.apply_address_offset("10", -15, line_num=42, name="TestReg")
             self.assertEqual(res2, "-5")
-            self.assertTrue(any("Line 42: Address offset -15 results in negative address -5 for 'TestReg'" in m for m in log2.output))
+            self.assertTrue(
+                any(
+                    "Line 42: Address offset -15 results in negative address -5 for 'TestReg'" in m
+                    for m in log2.output
+                )
+            )
 
         logging.disable(logging.CRITICAL)
 
@@ -252,13 +281,16 @@ class TestGenerator(unittest.TestCase):
     def test_write_output_csv_os_error_on_open(self):
         logging.disable(logging.NOTSET)
         with patch("builtins.open", side_effect=OSError("Permission denied")):
-            with self.assertLogs(level='ERROR') as log:
+            with self.assertLogs(level="ERROR") as log:
                 Generator.write_output_csv("invalid_path.csv", [], "Mfg", "Model")
-                self.assertTrue(any("Error writing output CSV: Permission denied" in m for m in log.output))
+                self.assertTrue(
+                    any("Error writing output CSV: Permission denied" in m for m in log.output)
+                )
 
     def test_write_output_csv_error_during_write_and_cleanup(self):
         import csv
         from unittest.mock import MagicMock
+
         file_obj = MagicMock()
 
         logging.disable(logging.NOTSET)
@@ -268,10 +300,13 @@ class TestGenerator(unittest.TestCase):
                 mock_writer.writerow.side_effect = csv.Error("CSV write error")
                 mock_writer_cls.return_value = mock_writer
 
-                with self.assertLogs(level='ERROR') as log:
+                with self.assertLogs(level="ERROR") as log:
                     Generator.write_output_csv("dummy.csv", [], "Mfg", "Model")
-                    self.assertTrue(any("Error writing output CSV: CSV write error" in m for m in log.output))
+                    self.assertTrue(
+                        any("Error writing output CSV: CSV write error" in m for m in log.output)
+                    )
                 file_obj.close.assert_called_once()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

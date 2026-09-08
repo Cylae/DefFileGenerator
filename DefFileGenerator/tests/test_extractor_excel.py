@@ -2,7 +2,6 @@
 
 import logging
 import os
-import sys
 import tempfile
 import unittest
 
@@ -11,7 +10,8 @@ class TestExtractorExcel(unittest.TestCase):
     """Tests for extract_from_excel using real xlsx files via openpyxl."""
 
     def setUp(self):
-        from DefFileGenerator.extractor import Extractor, HAS_OPENPYXL
+        from DefFileGenerator.extractor import HAS_OPENPYXL, Extractor
+
         if not HAS_OPENPYXL:
             self.skipTest("openpyxl not available")
         self.ex = Extractor()
@@ -24,6 +24,7 @@ class TestExtractorExcel(unittest.TestCase):
 
     def _make_excel(self, sheets, filename="test.xlsx"):
         import openpyxl
+
         wb = openpyxl.Workbook()
         wb.remove(wb.active)  # remove default sheet
         for sheet_name, rows in sheets.items():
@@ -35,20 +36,26 @@ class TestExtractorExcel(unittest.TestCase):
         return p
 
     def test_simple_excel_single_sheet(self):
-        p = self._make_excel({"Sheet1": [
-            ["Name", "Address", "Type"],
-            ["Voltage", "100", "U16"],
-        ]})
+        p = self._make_excel(
+            {
+                "Sheet1": [
+                    ["Name", "Address", "Type"],
+                    ["Voltage", "100", "U16"],
+                ]
+            }
+        )
         tables = list(self.ex.extract_from_excel(p))
         rows = list(tables[0])
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["Name"], "Voltage")
 
     def test_excel_multiple_sheets_yields_multiple_tables(self):
-        p = self._make_excel({
-            "Sheet1": [["Name", "Address", "Type"], ["V1", "100", "U16"]],
-            "Sheet2": [["Name", "Address", "Type"], ["V2", "200", "U32"]],
-        })
+        p = self._make_excel(
+            {
+                "Sheet1": [["Name", "Address", "Type"], ["V1", "100", "U16"]],
+                "Sheet2": [["Name", "Address", "Type"], ["V2", "200", "U32"]],
+            }
+        )
         tables = list(self.ex.extract_from_excel(p))
         self.assertEqual(len(tables), 2)
         rows1 = list(tables[0])
@@ -57,10 +64,12 @@ class TestExtractorExcel(unittest.TestCase):
         self.assertEqual(rows2[0]["Name"], "V2")
 
     def test_excel_specific_sheet_by_name(self):
-        p = self._make_excel({
-            "Sheet1": [["Name", "Address", "Type"], ["V1", "100", "U16"]],
-            "RegisterData": [["Name", "Address", "Type"], ["V2", "200", "U16"]],
-        })
+        p = self._make_excel(
+            {
+                "Sheet1": [["Name", "Address", "Type"], ["V1", "100", "U16"]],
+                "RegisterData": [["Name", "Address", "Type"], ["V2", "200", "U16"]],
+            }
+        )
         tables = list(self.ex.extract_from_excel(p, sheet_name="RegisterData"))
         rows = list(tables[0])
         self.assertEqual(len(rows), 1)
@@ -95,21 +104,29 @@ class TestExtractorExcel(unittest.TestCase):
         self.assertEqual(rows, [])
 
     def test_excel_skips_fully_blank_rows(self):
-        p = self._make_excel({"Data": [
-            ["Name", "Address", "Type"],
-            ["V1", "100", "U16"],
-            [None, None, None],   # blank row
-            ["V2", "200", "U16"],
-        ]})
+        p = self._make_excel(
+            {
+                "Data": [
+                    ["Name", "Address", "Type"],
+                    ["V1", "100", "U16"],
+                    [None, None, None],  # blank row
+                    ["V2", "200", "U16"],
+                ]
+            }
+        )
         tables = list(self.ex.extract_from_excel(p))
         rows = list(tables[0])
         self.assertEqual(len(rows), 2)
 
     def test_excel_and_map_end_to_end(self):
-        p = self._make_excel({"Data": [
-            ["Name", "Address", "Type"],
-            ["GridV", "100", "U16"],
-        ]})
+        p = self._make_excel(
+            {
+                "Data": [
+                    ["Name", "Address", "Type"],
+                    ["GridV", "100", "U16"],
+                ]
+            }
+        )
         raw = self.ex.extract_from_excel(p)
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(len(result), 1)
@@ -117,6 +134,7 @@ class TestExtractorExcel(unittest.TestCase):
 
     def test_excel_not_openpyxl_logs_error(self):
         from unittest.mock import patch
+
         logging.disable(logging.NOTSET)
         with patch("DefFileGenerator.extractor.HAS_OPENPYXL", False):
             tables = list(self.ex.extract_from_excel("dummy.xlsx"))
@@ -147,11 +165,13 @@ class TestExtractorModuleCli(unittest.TestCase):
     def test_extractor_cli_csv_to_stdout(self):
         import io
         from unittest.mock import patch
+
         src = self._csv()
         with patch("sys.argv", ["extractor", src]):
             captured = io.StringIO()
             with patch("sys.stdout", captured):
                 from DefFileGenerator.extractor import main
+
                 main()
         self.assertIn("Name", captured.getvalue())
 
@@ -159,8 +179,10 @@ class TestExtractorModuleCli(unittest.TestCase):
         src = self._csv()
         out = os.path.join(self.tmpdir.name, "out.csv")
         from unittest.mock import patch
+
         with patch("sys.argv", ["extractor", src, "-o", out]):
             from DefFileGenerator.extractor import main
+
             main()
         self.assertTrue(os.path.exists(out))
 
@@ -169,9 +191,11 @@ class TestExtractorModuleCli(unittest.TestCase):
         with open(p, "w") as f:
             f.write("dummy")
         from unittest.mock import patch
+
         with patch("sys.argv", ["extractor", p]):
             with self.assertRaises(SystemExit) as cm:
                 from DefFileGenerator.extractor import main
+
                 main()
         self.assertEqual(cm.exception.code, 1)
 
@@ -183,10 +207,12 @@ class TestExtractorModuleCli(unittest.TestCase):
         src = self._xml(xml_content)
         import io
         from unittest.mock import patch
+
         with patch("sys.argv", ["extractor", src]):
             captured = io.StringIO()
             with patch("sys.stdout", captured):
                 from DefFileGenerator.extractor import main
+
                 main()
         self.assertIn("Name", captured.getvalue())
 
@@ -194,8 +220,10 @@ class TestExtractorModuleCli(unittest.TestCase):
         src = self._csv("Name,Address,Type\nVar1,100,U16\n")
         out = os.path.join(self.tmpdir.name, "out.csv")
         from unittest.mock import patch
+
         with patch("sys.argv", ["extractor", src, "-o", out, "--address-offset", "10"]):
             from DefFileGenerator.extractor import main
+
             main()
         with open(out) as f:
             content = f.read()

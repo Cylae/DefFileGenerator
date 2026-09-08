@@ -155,7 +155,6 @@ class TestValidateAddressExtended(unittest.TestCase):
 
 
 class TestGetRegisterCountEdge(unittest.TestCase):
-
     def test_f32_count(self):
         self.assertEqual(Generator.get_register_count("F32", "100"), 2)
 

@@ -1,8 +1,9 @@
-import unittest
-import os
 import csv
-import tempfile
 import logging
+import os
+import tempfile
+import unittest
+
 from DefFileGenerator.def_gen import Generator
 
 
@@ -27,8 +28,8 @@ class TestValidateCSV(unittest.TestCase):
 
     def test_valid_csv(self):
         rows = [
-            ['1', '3', '40001', 'U16', '', 'Name1', 'tag1', '1.0', '0.0', 'W', '4'],
-            ['2', '3', '40002', 'U16', '', 'Name2', 'tag2', '1.0', '0.0', 'W', '4']
+            ["1", "3", "40001", "U16", "", "Name1", "tag1", "1.0", "0.0", "W", "4"],
+            ["2", "3", "40002", "U16", "", "Name2", "tag2", "1.0", "0.0", "W", "4"],
         ]
         path = self.create_csv(rows)
         self.assertTrue(self.generator.validate_csv(path))
@@ -58,32 +59,33 @@ class TestValidateCSV(unittest.TestCase):
         self.assertFalse(self.generator.validate_csv(path))
 
     def test_insufficient_columns(self):
-        path = os.path.join(self.temp_dir.name, 'short.csv')
-        with open(path, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f, delimiter=';')
-            writer.writerow(['modbusRTU', 'Inverter', 'MFG', 'MODEL'])
-            writer.writerow(['1', '3', '40001']) # too short
+        path = os.path.join(self.temp_dir.name, "short.csv")
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f, delimiter=";")
+            writer.writerow(["modbusRTU", "Inverter", "MFG", "MODEL"])
+            writer.writerow(["1", "3", "40001"])  # too short
         # We want this to return True because it skips the invalid row but is still "valid" as a file?
         # Actually, the test fails with False is not True, so it's currently returning False.
         # Let's see if we should change the generator or the test.
         # If it has NO valid rows, maybe it should be false?
         # Let's try adding a valid row and see.
-        with open(path, 'a', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f, delimiter=';')
-            writer.writerow(['2', '3', '40002', 'U16', '', 'Name2', 'tag2', '1.0', '0.0', 'V', '4'])
+        with open(path, "a", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f, delimiter=";")
+            writer.writerow(["2", "3", "40002", "U16", "", "Name2", "tag2", "1.0", "0.0", "V", "4"])
 
         self.assertTrue(self.generator.validate_csv(path))
 
     def test_validate_csv_nonexistent_file(self):
-        path = os.path.join(self.temp_dir.name, 'nonexistent.csv')
+        path = os.path.join(self.temp_dir.name, "nonexistent.csv")
         self.assertFalse(self.generator.validate_csv(path))
 
     def test_validate_csv_oserror_on_directory(self):
         # Passing a directory path to validate_csv after existence check to trigger OSError during open
         # We can mock os.path.exists to return True for the directory path so it attempts open()
         dir_path = self.temp_dir.name
-        with unittest.mock.patch('os.path.exists', return_value=True):
+        with unittest.mock.patch("os.path.exists", return_value=True):
             self.assertFalse(self.generator.validate_csv(dir_path))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

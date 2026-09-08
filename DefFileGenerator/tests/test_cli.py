@@ -30,8 +30,17 @@ class TestCliEntryPoints(unittest.TestCase):
 
     def test_generate_webdyn_def_success(self):
         from generate_webdyn_def import main
-        test_args = ["generate_webdyn_def.py", self.csv_file, "test_gen_out.csv", "--manufacturer", "TestMfg", "--model", "TestModel"]
-        with patch.object(sys, 'argv', test_args):
+
+        test_args = [
+            "generate_webdyn_def.py",
+            self.csv_file,
+            "test_gen_out.csv",
+            "--manufacturer",
+            "TestMfg",
+            "--model",
+            "TestModel",
+        ]
+        with patch.object(sys, "argv", test_args):
             try:
                 main()
             except SystemExit:
@@ -176,12 +185,14 @@ class TestCliEntryPoints(unittest.TestCase):
 
     def test_def_file_gen_main_run_empty_extraction(self):
         from DefFileGenerator.main import main
+
         test_args = ["main.py", "run", self.csv_file, "--manufacturer", "Test", "--model", "Test"]
         with patch("DefFileGenerator.main._perform_extraction", return_value=[]):
-            with patch.object(sys, 'argv', test_args):
+            with patch.object(sys, "argv", test_args):
                 with self.assertRaises(SystemExit) as cm:
                     main()
                 self.assertEqual(cm.exception.code, 1)
+
 
 if __name__ == "__main__":
     unittest.main()

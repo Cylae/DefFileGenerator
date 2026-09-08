@@ -1,7 +1,5 @@
-"""Batch 1: Deep tests for Extractor.
-"""
+"""Batch 1: Deep tests for Extractor."""
 
-import csv
 import logging
 import os
 import tempfile
@@ -9,9 +7,9 @@ import unittest
 
 
 class TestExtractorColumnMapping(unittest.TestCase):
-
     def setUp(self):
         from DefFileGenerator.extractor import Extractor
+
         self.ex = Extractor()
         logging.disable(logging.CRITICAL)
 
@@ -94,42 +92,80 @@ class TestExtractorColumnMapping(unittest.TestCase):
         self.assertEqual(result[0]["RegisterType"], "Holding Register")
 
     def test_explicit_register_type_preserved(self):
-        raw = [[{"Name": "Var", "Address": "100", "Type": "U16", "Register Type": "Input Register"}]]
+        raw = [
+            [
+                {
+                    "Name": "Var",
+                    "Address": "100",
+                    "Type": "U16",
+                    "Register Type": "Input Register",
+                }
+            ]
+        ]
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(result[0]["RegisterType"], "Input Register")
 
     def test_bits_address_with_start_and_length(self):
-        raw = [[{
-            "Name": "BitFlag", "Address": "100", "Type": "BITS",
-            "StartBit": "3", "Length": "2",
-        }]]
+        raw = [
+            [
+                {
+                    "Name": "BitFlag",
+                    "Address": "100",
+                    "Type": "BITS",
+                    "StartBit": "3",
+                    "Length": "2",
+                }
+            ]
+        ]
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(result[0]["Address"], "100_3_2")
 
     def test_bits_address_default_length_is_one(self):
-        raw = [[{
-            "Name": "BitFlag", "Address": "100", "Type": "BITS", "StartBit": "7",
-        }]]
+        raw = [
+            [
+                {
+                    "Name": "BitFlag",
+                    "Address": "100",
+                    "Type": "BITS",
+                    "StartBit": "7",
+                }
+            ]
+        ]
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(result[0]["Address"], "100_7_1")
 
     def test_bits_address_already_has_underscore_not_altered(self):
-        raw = [[{
-            "Name": "BitFlag", "Address": "100_7_1", "Type": "BITS",
-            "StartBit": "7", "Length": "2",
-        }]]
+        raw = [
+            [
+                {
+                    "Name": "BitFlag",
+                    "Address": "100_7_1",
+                    "Type": "BITS",
+                    "StartBit": "7",
+                    "Length": "2",
+                }
+            ]
+        ]
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(result[0]["Address"], "100_7_1")
 
     def test_string_address_with_length_appended(self):
-        raw = [[{
-            "Name": "SerialNo", "Address": "200", "Type": "STRING", "Length": "20",
-        }]]
+        raw = [
+            [
+                {
+                    "Name": "SerialNo",
+                    "Address": "200",
+                    "Type": "STRING",
+                    "Length": "20",
+                }
+            ]
+        ]
         result = list(self.ex.map_and_clean(raw))
         self.assertEqual(result[0]["Address"], "200_20")
 
     def test_explicit_mapping_overrides_auto(self):
         from DefFileGenerator.extractor import Extractor
+
         ex = Extractor(mapping={"Name": "VariableName", "Address": "RegAddr"})
         raw = [[{"VariableName": "Grid Voltage", "RegAddr": "1234", "datatype": "U16"}]]
         result = list(ex.map_and_clean(raw))
@@ -146,18 +182,17 @@ class TestExtractorColumnMapping(unittest.TestCase):
         self.assertIn("V2", names)
 
     def test_empty_table_followed_by_data_table(self):
-        result = list(self.ex.map_and_clean([
-            iter([]),
-            iter([{"Name": "X", "Address": "5", "Type": "U16"}])
-        ]))
+        result = list(
+            self.ex.map_and_clean([iter([]), iter([{"Name": "X", "Address": "5", "Type": "U16"}])])
+        )
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["Name"], "X")
 
 
 class TestExtractorCsvExtraction(unittest.TestCase):
-
     def setUp(self):
         from DefFileGenerator.extractor import Extractor
+
         self.ex = Extractor()
         self.tmpdir = tempfile.TemporaryDirectory()
         logging.disable(logging.CRITICAL)
@@ -228,9 +263,9 @@ class TestExtractorCsvExtraction(unittest.TestCase):
 
 
 class TestExtractorNormalizeType(unittest.TestCase):
-
     def test_normalize_type_via_extractor(self):
         from DefFileGenerator.extractor import Extractor
+
         ex = Extractor()
         self.assertEqual(ex.normalize_type("float32"), "F32")
         self.assertEqual(ex.normalize_type("uint16"), "U16")
