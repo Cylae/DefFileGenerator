@@ -13,7 +13,7 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 
 ```bash
 # Install required dependencies
-pip install openpyxl pdfplumber defusedxml
+pip install pandas openpyxl pdfplumber
 ```
 
 ## Basic Usage

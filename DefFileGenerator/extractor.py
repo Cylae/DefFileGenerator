@@ -91,7 +91,6 @@ if peek_generator is None:
         return True, itertools.chain([first], it)
 
 
-
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
         "RegisterType": ["register type", "reg type", "modbus type", "registertype"],
@@ -207,6 +206,8 @@ class Extractor:
 
         return excel_sheets_generator()
 
+        return excel_sheets_generator()
+
     def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
@@ -264,18 +265,18 @@ class Extractor:
                         header_bytes = f.read(4)
                         encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-                with open(filepath, 'r', encoding=encoding) as f:
-                    snippet = f.read(2048)
-                    f.seek(0)
-                    try:
-                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                        delimiter = dialect.delimiter
-                    except csv.Error:
-                        delimiter = ','
-                        for d in [',', ';', '\t']:
-                            if d in snippet:
-                                delimiter = d
-                                break
+                    with open(filepath, 'r', encoding=encoding) as f:
+                        snippet = f.read(2048)
+                        f.seek(0)
+                        try:
+                            dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                            delimiter = dialect.delimiter
+                        except csv.Error:
+                            delimiter = ','
+                            for d in [',', ';', '\t']:
+                                if d in snippet:
+                                    delimiter = d
+                                    break
 
                         reader = csv.DictReader(f, delimiter=delimiter)
                         for row in reader:
