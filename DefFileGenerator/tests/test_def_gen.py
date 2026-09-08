@@ -72,6 +72,62 @@ class TestGenerator(unittest.TestCase):
         self.assertFalse(self.generator.validate_address("30001_10", "U16"))  # U16 expects int
         self.assertFalse(self.generator.validate_address("xyz", "U16"))  # Not hex
 
+    def test_validate_type_error_paths(self):
+        # Base valid types check sanity
+        self.assertTrue(Generator.validate_type("STRING"))
+        self.assertTrue(Generator.validate_type("BITS"))
+        self.assertTrue(Generator.validate_type("IP"))
+        self.assertTrue(Generator.validate_type("IPV6"))
+        self.assertTrue(Generator.validate_type("MAC"))
+        self.assertTrue(Generator.validate_type("U16"))
+        self.assertTrue(Generator.validate_type("I32_WB"))
+        self.assertTrue(Generator.validate_type("STR20"))
+
+        # Rejection of empty/falsy/non-string inputs
+        self.assertFalse(Generator.validate_type(None))
+        self.assertFalse(Generator.validate_type(""))
+        self.assertFalse(Generator.validate_type([]))
+        self.assertFalse(Generator.validate_type({}))
+        self.assertFalse(Generator.validate_type(123))
+        self.assertFalse(Generator.validate_type(False))
+
+        # Rejection of unsupported or near-miss base types
+        self.assertFalse(Generator.validate_type("IPV4"))
+        self.assertFalse(Generator.validate_type("BIT"))
+        self.assertFalse(Generator.validate_type("MACADDRESS"))
+        self.assertFalse(Generator.validate_type("STRINGS"))
+        self.assertFalse(Generator.validate_type("BOOLEAN"))
+        self.assertFalse(Generator.validate_type("FLOAT"))
+
+        # Rejection of invalid numeric bit-width types
+        self.assertFalse(Generator.validate_type("U128"))
+        self.assertFalse(Generator.validate_type("I7"))
+        self.assertFalse(Generator.validate_type("F16"))
+        self.assertFalse(Generator.validate_type("F128"))
+        self.assertFalse(Generator.validate_type("UI16"))
+        self.assertFalse(Generator.validate_type("INT16"))
+        self.assertFalse(Generator.validate_type("UINT32"))
+
+        # Rejection of invalid byte/word suffixes
+        self.assertFalse(Generator.validate_type("U16_X"))
+        self.assertFalse(Generator.validate_type("I32_BW"))
+        self.assertFalse(Generator.validate_type("U16_"))
+        self.assertFalse(Generator.validate_type("U16_WB_W"))
+        self.assertFalse(Generator.validate_type("F32_SWAP"))
+
+        # Rejection of malformed sized strings
+        self.assertFalse(Generator.validate_type("STR"))
+        self.assertFalse(Generator.validate_type("STRABC"))
+        self.assertFalse(Generator.validate_type("STR-10"))
+        self.assertFalse(Generator.validate_type("STRING20"))
+        self.assertFalse(Generator.validate_type("STR 20"))
+        self.assertFalse(Generator.validate_type("STRING_20"))
+
+        # Rejection of types with whitespace/padding
+        self.assertFalse(Generator.validate_type(" U16"))
+        self.assertFalse(Generator.validate_type("BITS "))
+        self.assertFalse(Generator.validate_type("U16_WB "))
+
     def test_get_register_count(self):
         self.assertEqual(self.generator.get_register_count("U16", "30000"), 1)
         self.assertEqual(self.generator.get_register_count("U32", "30000"), 2)
