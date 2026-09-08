@@ -1,23 +1,30 @@
 #!/usr/bin/env python3
 import argparse
-import sys
-import os
-import logging
-import re
 import json
-from DefFileGenerator.extractor import Extractor, peek_generator
+import logging
+import os
+import re
+import sys
+
 from DefFileGenerator.def_gen import GeneratorConfig, run_generator
+from DefFileGenerator.extractor import Extractor, peek_generator
+
 
 def _run_cli(argv=None):
     if argv is None:
         argv = sys.argv[1:]
     else:
         # Strip script name if present as first element
-        if argv and (argv[0].endswith('main.py') or argv[0].endswith('doc_to_webdyn.py') or argv[0] == 'main.py' or argv[0] == 'doc_to_webdyn.py'):
+        if argv and (
+            argv[0].endswith('main.py')
+            or argv[0].endswith('doc_to_webdyn.py')
+            or argv[0] == 'main.py'
+            or argv[0] == 'doc_to_webdyn.py'
+        ):
             argv = argv[1:]
 
     parser = argparse.ArgumentParser(description='WebdynSunPM Documentation Parser')
-    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF, Excel, CSV, XML)')
+    parser.add_argument('input_file', nargs='?', help='Path to documentation (PDF/Excel/CSV/XML)')
     parser.add_argument('--manufacturer', help='Manufacturer name')
     parser.add_argument('--model', help='Model name')
     parser.add_argument('--template', action='store_true', help='Generate a template definition')
@@ -32,7 +39,11 @@ def _run_cli(argv=None):
     parser.add_argument('-v', '--verbose', action='store_true')
 
     args = parser.parse_args(argv)
-    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(levelname)s: %(message)s', force=True)
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format='%(levelname)s: %(message)s',
+        force=True,
+    )
 
     if args.template:
         config = GeneratorConfig(output=args.output, template=True)
@@ -53,7 +64,7 @@ def _run_cli(argv=None):
     mapping = {}
     if args.mapping:
         try:
-            with open(args.mapping, 'r') as f:
+            with open(args.mapping) as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")
@@ -97,7 +108,9 @@ def _run_cli(argv=None):
     m_model = args.model or "Model"
     output_file = args.output
     if not output_file:
-        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+        clean_mfg = re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()
+        clean_model = re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()
+        output_file = f"{clean_mfg}_{clean_model}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
