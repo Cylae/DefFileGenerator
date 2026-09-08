@@ -1,158 +1,166 @@
 #!/usr/bin/env python3
 """
-generate_webdyn_def.py
-
-A robust programmatic wrapper and command-line demonstration tool for
-end-to-end extraction, generation, and validation of WebdynSunPM definition files.
-Uses the Extractor and Generator classes from the DefFileGenerator package.
+Robust programmatic execution script to generate and validate WebdynSunPM definition files (.csv)
+using the DefFileGenerator package.
 """
 
-import argparse
-import sys
 import os
+import sys
 import logging
-import re
-import csv
-import json
+
+# Ensure parent directory is in sys.path to support direct and packaged executions
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 from DefFileGenerator.extractor import Extractor, peek_generator
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
-def _run_cli(argv=None):
-    if argv is None:
-        argv = sys.argv[1:]
-
-    parser = argparse.ArgumentParser(
-        description='Generate and Validate WebdynSunPM Definition File (.csv) from Manufacturer Documentation'
-    )
-    # Positional Arguments
-    parser.add_argument('input_file', help='Path to documentation (PDF, Excel, CSV, XML)')
-    parser.add_argument('output_file', help='Path to output WebdynSunPM definition CSV file')
-
-    # Required Named Arguments
-    parser.add_argument('--manufacturer', required=True, help='Manufacturer name')
-    parser.add_argument('--model', required=True, help='Model name')
-
-    # Optional Named Arguments
-    parser.add_argument('--protocol', default='modbusRTU', help='Protocol name (default: modbusRTU)')
-    parser.add_argument('--category', default='Inverter', help='Device category (default: Inverter)')
-    parser.add_argument('--address-offset', type=int, default=0, help='Address offset to apply to registers (default: 0)')
-    parser.add_argument('--sheet', help='Excel sheet name to process')
-    parser.add_argument('--pages', help='PDF pages (comma-separated integers)')
-    parser.add_argument('--mapping', help='JSON mapping file to customize column headers')
-    parser.add_argument('--forced-write', default='', help='Force specific register write options')
-    parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose/debug logging')
-
-    args = parser.parse_args(argv)
-
-    # Configure logging
+def setup_logging():
     logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
+        level=logging.INFO,
         format='%(levelname)s: %(message)s',
         force=True
     )
 
-    logging.info(f"Starting end-to-end generation process...")
-    logging.info(f"Input: {args.input_file}")
-    logging.info(f"Output: {args.output_file}")
-    logging.info(f"Manufacturer: {args.manufacturer} | Model: {args.model}")
+def generate_webdyn_definition(
+    input_file: str,
+    output_file: str,
+    manufacturer: str,
+    model: str,
+    protocol: str = "modbusRTU",
+    category: str = "Inverter",
+    address_offset: int = 0,
+    strict_validation: bool = True
+) -> bool:
+    """
+    Extracts registers from a manufacturer documentation file (PDF, Excel, CSV, or XML)
+    and generates a validated WebdynSunPM definition CSV file.
 
-    if not os.path.exists(args.input_file):
-        logging.error(f"Input file not found: {args.input_file}")
-        sys.exit(1)
+    Args:
+        input_file: Path to the input documentation map
+        output_file: Path to save the generated WebdynSunPM definition CSV
+        manufacturer: Manufacturer name (e.g., "Huawei")
+        model: Model name (e.g., "SUN2000")
+        protocol: Protocol string (default "modbusRTU")
+        category: Category string (default "Inverter")
+        address_offset: Value to shift all register addresses by (default 0)
+        strict_validation: Whether to fail on warnings like address overlaps (default True)
 
-    ext = os.path.splitext(args.input_file)[1].lower()
+    Returns:
+        bool: True if generation and validation succeeded, False otherwise
+    """
+    if not os.path.exists(input_file):
+        logging.error(f"Input file not found: {input_file}")
+        return False
 
-    # Log warnings about options that don't match input file type
-    if args.pages and ext != '.pdf':
-        logging.warning("--pages option is only applicable for PDF files. Ignoring.")
-    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        logging.warning("--sheet option is only applicable for Excel files. Ignoring.")
+    ext = os.path.splitext(input_file)[1].lower()
+    extractor = Extractor()
 
-    # Load custom mapping if provided
-    mapping = {}
-    if args.mapping:
-        try:
-            with open(args.mapping, 'r', encoding='utf-8') as f:
-                mapping = json.load(f)
-            logging.info(f"Loaded custom mapping from {args.mapping}")
-        except (OSError, ValueError) as e:
-            logging.error(f"Error reading mapping file: {e}")
-            sys.exit(1)
+    logging.info(f"Step 1: Extracting raw register data from: {input_file}")
+    try:
+        if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+            raw_data = extractor.extract_from_excel(input_file)
+        elif ext == '.pdf':
+            raw_data = extractor.extract_from_pdf(input_file)
+        elif ext == '.csv':
+            raw_data = extractor.extract_from_csv(input_file)
+        elif ext == '.xml':
+            raw_data = extractor.extract_from_xml(input_file)
+        else:
+            logging.error(f"Unsupported file format: {ext}")
+            return False
+    except Exception as e:
+        logging.error(f"Failed to extract registers due to error: {e}")
+        return False
 
-    extractor = Extractor(mapping)
-
-    pages = None
-    if args.pages and ext == '.pdf':
-        try:
-            pages = [int(p.strip()) for p in args.pages.split(',')]
-        except ValueError:
-            logging.error("Invalid format for --pages. Expected comma-separated integers.")
-            sys.exit(1)
-
-    # Perform extraction based on file extension
-    logging.info("Extracting data from documentation...")
-    if ext in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
-        raw = extractor.extract_from_excel(args.input_file, args.sheet)
-    elif ext == '.pdf':
-        raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == '.csv':
-        raw = extractor.extract_from_csv(args.input_file)
-    elif ext == '.xml':
-        raw = extractor.extract_from_xml(args.input_file)
-    else:
-        logging.error(f"Unsupported file extension: {ext}")
-        sys.exit(1)
-
-    has_data, raw_peeked = peek_generator(raw)
+    has_data, raw_data_peeked = peek_generator(raw_data)
     if not has_data:
-        logging.error("No data extracted from the input document.")
-        sys.exit(1)
+        logging.error("No register data could be extracted from the file.")
+        return False
 
-    # Map columns to internal fields and apply address offsets
-    logging.info("Mapping and cleaning registers...")
-    mapped = extractor.map_and_clean(raw_peeked, args.address_offset)
-    first, mapped_peeker = peek_generator(mapped)
-    if not first:
-        logging.error("No valid registers could be extracted or mapped.")
-        sys.exit(1)
+    logging.info("Step 2: Cleaning and mapping fields (addresses, types, tags)...")
+    mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
+    has_regs, mapped_peeked = peek_generator(mapped_gen)
+    if not has_regs:
+        logging.error("No valid registers mapped after cleaning step.")
+        return False
 
-    # Prepare configuration for definition file generation
+    logging.info(f"Step 3: Writing WebdynSunPM definition file to: {output_file}")
     config = GeneratorConfig(
-        input_file=args.input_file,
-        output=args.output_file,
-        manufacturer=args.manufacturer,
-        model=args.model,
-        protocol=args.protocol,
-        category=args.category,
-        forced_write=args.forced_write,
-        address_offset=0,  # Offset already applied during map_and_clean
-        template=False
+        input_file=input_file,
+        output=output_file,
+        manufacturer=manufacturer,
+        model=model,
+        protocol=protocol,
+        category=category,
+        address_offset=0  # Already applied during extraction mapping
     )
 
-    # Generate definition file
-    logging.info("Generating WebdynSunPM definition CSV...")
-    run_generator(config, input_data=mapped_peeker)
-
-    # Post-generation validation
-    logging.info("Performing post-generation validation on the output CSV...")
-    generator = Generator()
-    is_valid = generator.validate_csv(args.output_file, strict=True)
-    if is_valid:
-        logging.info("Validation successful: The generated definition file is fully compliant!")
-    else:
-        logging.error("Validation failed: The generated definition file contains errors.")
-        sys.exit(1)
-
-def main(args=None):
     try:
-        _run_cli(args)
-    except KeyboardInterrupt:
-        sys.exit(130)
-    except SystemExit:
-        raise
+        run_generator(config, input_data=mapped_peeked)
     except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
-        sys.exit(1)
+        logging.error(f"Error during WebdynSunPM file generation: {e}")
+        return False
+
+    logging.info("Step 4: Validating the generated definition file...")
+    generator = Generator()
+    is_valid = generator.validate_csv(output_file, strict=strict_validation)
+
+    if is_valid:
+        logging.info(f"Success! Definition file successfully generated and validated at '{output_file}'")
+        return True
+    else:
+        logging.error("Validation failed! The generated file contains critical errors or overlaps.")
+        return False
+
+def main():
+    setup_logging()
+
+    # We can run a demo if no arguments are passed, or print usage
+    if len(sys.argv) < 5:
+        print("Usage:")
+        print("  python3 generate_webdyn_def.py <input_file> <output_file> <manufacturer> <model> [options]")
+        print("\nDemo execution using sample registers:")
+
+        sample_in = "sample_register_map.csv"
+        sample_out = "sample_output_definition.csv"
+
+        # Create a sample register CSV if not present, to run the demo
+        if not os.path.exists(sample_in):
+            with open(sample_in, 'w', encoding='utf-8') as f:
+                f.write("Register,Name,Data Type,Unit,Scale,Access\n")
+                f.write("40001,AC Power,uint16,W,1,R\n")
+                f.write("40002,DC Voltage,uint16,V,0.1,R\n")
+                f.write("40003,Temperature,int16,°C,0.1,R\n")
+
+        logging.info("Running demo generation...")
+        success = generate_webdyn_definition(
+            input_file=sample_in,
+            output_file=sample_out,
+            manufacturer="DemoMfg",
+            model="DemoModel"
+        )
+        sys.exit(0 if success else 1)
+        return
+
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
+    manufacturer = sys.argv[3]
+    model = sys.argv[4]
+
+    # Optional arguments
+    protocol = sys.argv[5] if len(sys.argv) > 5 else "modbusRTU"
+    category = sys.argv[6] if len(sys.argv) > 6 else "Inverter"
+
+    success = generate_webdyn_definition(
+        input_file=input_file,
+        output_file=output_file,
+        manufacturer=manufacturer,
+        model=model,
+        protocol=protocol,
+        category=category
+    )
+    sys.exit(0 if success else 1)
+    return
 
 if __name__ == "__main__":
     main()
