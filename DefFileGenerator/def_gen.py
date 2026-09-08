@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 import argparse
 import csv
-import sys
-import logging
-import re
-import math
 import itertools
+import logging
+import math
 import os
+import re
+import sys
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from typing import Any, Dict, Iterable, Iterator, List, Optional, Set, Tuple, Union
+from typing import Any, Optional, Union
 
-def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+
+def peek_generator(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
     """
     Checks if an iterable is non-empty without fully consuming it.
     Returns (has_data, original_iterator).
@@ -58,13 +60,10 @@ class Generator:
             'discrete register': '2',
             'discrete registers': '2',
             'discrete': '2',
-            'discrete registers': '2',
-            'discrete register': '2',
             'holding register': '3',
             'holding': '3',
             'input register': '4',
-            'input': '4',
-            'discrete registers': '2'
+            'input': '4'
         }
         self.allowed_actions = ['0', '1', '2', '4', '6', '7', '8', '9']
 
@@ -246,7 +245,7 @@ class Generator:
         except (ValueError, IndexError): pass
         return '_'.join(norm_parts)
 
-    def _process_name_and_tag(self, name: str, tag: str, line_num: int, seen_names: Dict[str, int], seen_tags: Dict[str, int]) -> str:
+    def _process_name_and_tag(self, name: str, tag: str, line_num: int, seen_names: dict[str, int], seen_tags: dict[str, int]) -> str:
         if name:
             if name in seen_names: logging.warning(f"Line {line_num}: Duplicate Name '{name}' detected. Previous at line {seen_names[name]}.")
             else: seen_names[name] = line_num
@@ -282,7 +281,7 @@ class Generator:
             logging.warning(f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3.")
         return '3'
 
-    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: Dict[str, Dict[str, Any]], warned_lines: Set[Tuple[int, int]]) -> bool:
+    def _check_address_overlap(self, info1: str, address: str, dtype: str, name: str, line_num: int, address_usage: dict[str, dict[str, Any]], warned_lines: set[tuple[int, int]]) -> bool:
         """Checks for address overlaps using O(log N) binary search on intervals. Returns True if overlap detected."""
         try:
             addr_part = address.split('_')[0]
@@ -335,16 +334,16 @@ class Generator:
             pass
 
     @staticmethod
-    def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> Tuple[str, str]:
+    def _calculate_coefficients(factor_str: Any, offset_str: Any, scale_factor_str: Any) -> tuple[str, str]:
         factor = Generator._parse_numeric(factor_str, default=1.0)
         offset = Generator._parse_numeric(offset_str, default=0.0)
         try: scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
         except ValueError: scale_val = 0
-        coef_a = "{:.6f}".format(factor * (10 ** scale_val))
-        coef_b = "{:.6f}".format(offset)
+        coef_a = f"{factor * (10 ** scale_val):.6f}"
+        coef_b = f"{offset:.6f}"
         return coef_a, coef_b
 
-    def process_rows(self, rows: Iterable[Dict[str, Any]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+    def process_rows(self, rows: Iterable[dict[str, Any]], address_offset: int = 0) -> Iterator[dict[str, Any]]:
         seen_names, seen_tags, address_usage, warned_lines = {}, {}, {}, set()
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v): continue
@@ -418,7 +417,7 @@ class Generator:
                 header_bytes = f.read(4)
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-            with open(filepath, 'r', encoding=encoding) as f:
+            with open(filepath, encoding=encoding) as f:
                 reader = csv.reader(f, delimiter=';')
                 header = next(reader, None)
                 if not header or len(header) < 2 or not any(header):
@@ -465,7 +464,7 @@ class Generator:
             return False
 
     @staticmethod
-    def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[Dict[str, Any]], manufacturer: str, model: str,
+    def write_output_csv(output: Union[str, Any, None], processed_rows: Iterable[dict[str, Any]], manufacturer: str, model: str,
                         protocol: str = 'modbusRTU', category: str = 'Inverter', forced_write: str = '') -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
         type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
@@ -549,7 +548,7 @@ def generate_template(output_file: Optional[str], mode: str = 'input') -> None:
         if output_file and outfile:
             outfile.close()
 
-def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[str, Any]]] = None) -> None:
+def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[dict[str, Any]]] = None) -> None:
     generator = Generator()
     if config.template:
         mode = config.template_mode
@@ -584,7 +583,7 @@ def run_generator(config: GeneratorConfig, input_data: Optional[Iterable[Dict[st
                 header_bytes = f.read(4)
                 encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-            with open(config.input_file, mode='r', encoding=encoding) as csvfile:
+            with open(config.input_file, encoding=encoding) as csvfile:
                 snippet = csvfile.read(2048)
                 csvfile.seek(0)
                 try:

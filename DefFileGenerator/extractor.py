@@ -16,7 +16,7 @@ import os
 import sys
 import zipfile
 from collections.abc import Iterable, Iterator
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Optional, Union
 
 # Named logger for this module
 logger = logging.getLogger('DefFileGenerator.extractor')
@@ -44,7 +44,12 @@ except ImportError:
 SECURITY_EXCEPTIONS: tuple[type[Exception], ...]
 try:
     from defusedxml import ElementTree as ET
-    from defusedxml.common import DefusedXmlException, DTDForbidden, EntitiesForbidden, ExternalReferenceForbidden
+    from defusedxml.common import (
+        DefusedXmlException,
+        DTDForbidden,
+        EntitiesForbidden,
+        ExternalReferenceForbidden,
+    )
     HAS_DEFUSEDXML = True
     SECURITY_EXCEPTIONS = (DefusedXmlException, DTDForbidden, EntitiesForbidden, ExternalReferenceForbidden)
 except ImportError:
@@ -75,7 +80,7 @@ except ImportError:
             pass
 
 if peek_generator is None:
-    def peek_generator(iterable: Optional[Iterable]) -> Tuple[bool, Iterator]:
+    def peek_generator(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
         """
         Checks if an iterable is non-empty without fully consuming it.
         Returns (has_data, original_iterator).
@@ -91,7 +96,7 @@ if peek_generator is None:
 
 
 class Extractor:
-    COLUMN_MAPPING: Dict[str, List[str]] = {
+    COLUMN_MAPPING: dict[str, list[str]] = {
         'RegisterType': ['register type', 'reg type', 'modbus type', 'registertype'],
         'Address': ['address', 'addr', 'register', 'reg', 'index'],
         'Name': ['name', 'description', 'parameter', 'variable', 'signal', 'signal name'],
@@ -106,7 +111,7 @@ class Extractor:
         'StartBit': ['startbit', 'bit offset', 'bit', 'start']
     }
 
-    def __init__(self, mapping: Optional[Dict[str, str]] = None) -> None:
+    def __init__(self, mapping: Optional[dict[str, str]] = None) -> None:
         self.mapping = mapping or {}
 
     @staticmethod
@@ -117,12 +122,12 @@ class Extractor:
 
     def extract_from_excel(
         self, filepath: str, sheet_name: Optional[str] = None
-    ) -> Iterator[Iterator[Dict[str, Any]]]:
+    ) -> Iterator[Iterator[dict[str, Any]]]:
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return iter([])
 
-        def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+        def excel_sheets_generator() -> Iterator[Iterator[dict[str, Any]]]:
             if not os.path.exists(filepath):
                 def missing_file_gen():
                     logging.error(f"Excel file not found: {filepath}")
@@ -132,9 +137,9 @@ class Extractor:
 
             try:
                 wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-            except (OSError, zipfile.BadZipFile, Exception) as e:
-                def io_err_gen():
-                    logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+            except (OSError, zipfile.BadZipFile, Exception) as exc:
+                def io_err_gen(err=exc):
+                    logging.error(f"File IO Error extracting from Excel {filepath}: {err}")
                     yield from ()
                 yield io_err_gen()
                 return
@@ -142,7 +147,7 @@ class Extractor:
             sheet_names = [sheet_name] if sheet_name else wb.sheetnames
 
             for sname in sheet_names:
-                def sheet_generator(name=sname) -> Iterator[Dict[str, Any]]:
+                def sheet_generator(name=sname) -> Iterator[dict[str, Any]]:
                     if name not in wb.sheetnames:
                         logging.error(f"Sheet '{name}' not found in {filepath}")
                         return
@@ -161,12 +166,12 @@ class Extractor:
 
         return excel_sheets_generator()
 
-    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, List[Union[int, str]], str]] = None) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_pdf(self, filepath: str, pages: Optional[Union[int, list[Union[int, str]], str]] = None) -> Iterator[Iterator[dict[str, Any]]]:
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
 
-        def pdf_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+        def pdf_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
             try:
                 with pdfplumber.open(filepath) as pdf:
                     target_pages = []
@@ -192,7 +197,7 @@ class Extractor:
                             if not table or len(table) < 2:
                                 continue
 
-                            def table_generator(current_table=table) -> Iterator[Dict[str, Any]]:
+                            def table_generator(current_table=table) -> Iterator[dict[str, Any]]:
                                 headers = [str(c).replace('\n', ' ').strip() if c else "" for c in current_table[0]]
                                 for row in current_table[1:]:
                                     row_dict = {}
@@ -210,15 +215,15 @@ class Extractor:
 
         return pdf_tables_generator()
 
-    def extract_from_csv(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
-        def csv_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
-            def csv_table_generator() -> Iterator[Dict[str, Any]]:
+    def extract_from_csv(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        def csv_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            def csv_table_generator() -> Iterator[dict[str, Any]]:
                 try:
                     with open(filepath, 'rb') as f:
                         header_bytes = f.read(4)
                         encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-                    with open(filepath, 'r', encoding=encoding) as f:
+                    with open(filepath, encoding=encoding) as f:
                         snippet = f.read(2048)
                         f.seek(0)
                         try:
@@ -248,12 +253,12 @@ class Extractor:
 
         return csv_tables_generator()
 
-    def extract_from_xml(self, filepath: str) -> Iterator[Iterator[Dict[str, Any]]]:
+    def extract_from_xml(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return iter([])
 
-        def xml_tables_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+        def xml_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
             if not os.path.exists(filepath):
                 def missing_xml_gen():
                     logging.error(f"XML file not found: {filepath}")
@@ -261,7 +266,7 @@ class Extractor:
                 yield missing_xml_gen()
                 return
 
-            def xml_generator() -> Iterator[Dict[str, Any]]:
+            def xml_generator() -> Iterator[dict[str, Any]]:
                 try:
                     with open(filepath, 'rb') as f:
                         tree = ET.parse(f)
@@ -290,7 +295,7 @@ class Extractor:
 
         return xml_tables_generator()
 
-    def map_and_clean(self, tables: Optional[Iterable[Iterable[Dict[str, Any]]]], address_offset: int = 0) -> Iterator[Dict[str, Any]]:
+    def map_and_clean(self, tables: Optional[Iterable[Iterable[dict[str, Any]]]], address_offset: int = 0) -> Iterator[dict[str, Any]]:
         if not tables:
             return
 
@@ -348,7 +353,7 @@ class Extractor:
                         used_src_cols.add(src_col)
                         break
 
-            def process_row(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+            def process_row(r: dict[str, Any]) -> Optional[dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get('Name') and not new_row.get('Address'): return None
                 sbit = str(r.get(col_map.get('StartBit', ''), '')).strip()
@@ -395,7 +400,7 @@ def main():
 
     mapping = {}
     if args.mapping:
-        with open(args.mapping, 'r') as f:
+        with open(args.mapping) as f:
             mapping = json.load(f)
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()

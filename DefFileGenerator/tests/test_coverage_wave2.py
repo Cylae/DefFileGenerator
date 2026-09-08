@@ -41,9 +41,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from DefFileGenerator.def_gen import GeneratorConfig, Generator, run_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor
-
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 

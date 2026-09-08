@@ -2,7 +2,6 @@
 
 import logging
 import os
-import sys
 import tempfile
 import unittest
 
@@ -11,7 +10,7 @@ class TestExtractorExcel(unittest.TestCase):
     """Tests for extract_from_excel using real xlsx files via openpyxl."""
 
     def setUp(self):
-        from DefFileGenerator.extractor import Extractor, HAS_OPENPYXL
+        from DefFileGenerator.extractor import HAS_OPENPYXL, Extractor
         if not HAS_OPENPYXL:
             self.skipTest("openpyxl not available")
         self.ex = Extractor()
