@@ -134,28 +134,30 @@ class Extractor:
             logging.error(f"Error loading Excel {filepath}: {e}")
             return iter([])
 
-        def sheet_generator(s_name: Optional[str]) -> Iterator[dict[str, Any]]:
+        def excel_sheets_generator() -> Iterator[Iterator[Dict[str, Any]]]:
+            wb = None
             try:
                 wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
-                try:
-                    ws = wb[s_name] if s_name else wb.active
-                    rows = ws.iter_rows(values_only=True)
-                    try:
-                        header_row = next(rows)
-                    except StopIteration:
-                        return
-                    headers = [str(h).strip() if h is not None else "" for h in header_row]
-                    for row in rows:
-                        if any(cell is not None and str(cell).strip() for cell in row):
-                            yield {
-                                headers[i]: cell
-                                for i, cell in enumerate(row)
-                                if i < len(headers)
-                            }
-                except (ValueError, TypeError, KeyError) as e:
-                    logging.error(f"Error extracting from Excel {filepath}: {e}")
-                finally:
-                    wb.close()
+                sheets = [wb[sheet_name]] if sheet_name else wb.worksheets
+
+                for ws in sheets:
+                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
+                        rows = ws_obj.iter_rows(values_only=True)
+                        try:
+                            header_row = next(rows)
+                        except StopIteration:
+                            return
+
+                        headers = [str(h).strip() if h is not None else "" for h in header_row]
+
+                        for row in rows:
+                            # Only yield if row has actual data (not all None/empty)
+                            if any(cell is not None and str(cell).strip() for cell in row):
+                                yield {headers[i]: cell for i, cell in enumerate(row) if i < len(headers)}
+
+                    # We yield a generator for each sheet.
+                    yield sheet_generator()
+
             except (OSError, zipfile.BadZipFile) as e:
                 logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
 
@@ -173,6 +175,8 @@ class Extractor:
                         yield sheet_generator(name)
                 except (OSError, zipfile.BadZipFile, ValueError, TypeError, KeyError):
                     yield sheet_generator(None)
+
+        return excel_sheets_generator()
 
         return excel_sheets_generator()
 
