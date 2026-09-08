@@ -137,14 +137,6 @@ class Extractor:
                         except StopIteration:
                             return
 
-                for ws in sheets:
-                    def sheet_generator(ws_obj=ws) -> Iterator[Dict[str, Any]]:
-                        rows = ws_obj.iter_rows(values_only=True)
-                        try:
-                            header_row = next(rows)
-                        except StopIteration:
-                            return
-
                         headers = [str(h).strip() if h is not None else "" for h in header_row]
 
                         for row in rows:
@@ -183,6 +175,8 @@ class Extractor:
         finally:
             if wb:
                 wb.close()
+
+        return excel_sheets_generator()
 
         return excel_sheets_generator()
 
@@ -245,18 +239,18 @@ class Extractor:
                         header_bytes = f.read(4)
                         encoding = 'utf-16' if header_bytes.startswith((b'\xff\xfe', b'\xfe\xff')) else 'utf-8-sig'
 
-                with open(filepath, 'r', encoding=encoding) as f:
-                    snippet = f.read(2048)
-                    f.seek(0)
-                    try:
-                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                        delimiter = dialect.delimiter
-                    except csv.Error:
-                        delimiter = ','
-                        for d in [';', '\t']:
-                            if d in snippet:
-                                delimiter = d
-                                break
+                    with open(filepath, 'r', encoding=encoding) as f:
+                        snippet = f.read(2048)
+                        f.seek(0)
+                        try:
+                            dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
+                            delimiter = dialect.delimiter
+                        except csv.Error:
+                            delimiter = ','
+                            for d in [',', ';', '\t']:
+                                if d in snippet:
+                                    delimiter = d
+                                    break
 
                         reader = csv.DictReader(f, delimiter=delimiter)
                         for row in reader:
