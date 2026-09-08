@@ -171,32 +171,14 @@ class TestCliEntryPoints(unittest.TestCase):
         with patch.object(sys, "argv", test_args):
             main()
 
-    def test_run_missing_manufacturer_or_model(self):
-        from DefFileGenerator.main import main, run_command
-        import argparse
-        # Test CLI invocation missing manufacturer/model for run command
-        test_args = ["main.py", "run", self.csv_file]
-        with patch.object(sys, 'argv', test_args):
-            with self.assertRaises(SystemExit) as cm:
-                main()
-            self.assertEqual(cm.exception.code, 1)
-
-        # Test direct run_command invocation with missing manufacturer/model
-        args = argparse.Namespace(
-            template=False,
-            input_file=self.csv_file,
-            manufacturer=None,
-            model=None,
-            output=None,
-            protocol='modbusRTU',
-            category='Inverter',
-            forced_write='',
-            address_offset=0,
-            template_mode='input'
-        )
-        with self.assertRaises(SystemExit) as cm:
-            run_command(args)
-        self.assertEqual(cm.exception.code, 1)
+    def test_def_file_gen_main_run_empty_extraction(self):
+        from DefFileGenerator.main import main
+        test_args = ["main.py", "run", self.csv_file, "--manufacturer", "Test", "--model", "Test"]
+        with patch("DefFileGenerator.main._perform_extraction", return_value=[]):
+            with patch.object(sys, 'argv', test_args):
+                with self.assertRaises(SystemExit) as cm:
+                    main()
+                self.assertEqual(cm.exception.code, 1)
 
 if __name__ == "__main__":
     unittest.main()
