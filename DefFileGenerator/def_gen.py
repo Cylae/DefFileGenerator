@@ -415,6 +415,27 @@ class Generator:
         """Centralized method to write the WebdynSunPM CSV format."""
         type_counts = {'1': 0, '2': 0, '3': 0, '4': 0}
         type_labels = {'1': 'Coils', '2': 'Discrete', '3': 'Holding', '4': 'Input'}
+        sanitize = Generator.sanitize_csv_field
+
+        def _emit(handle: Any) -> int:
+            writer = csv.writer(handle, delimiter=';', lineterminator='\n')
+            writer.writerow([
+                sanitize(protocol), sanitize(category), sanitize(manufacturer),
+                sanitize(model), sanitize(forced_write), '', '', '', '', '', ''
+            ])
+            written = 0
+            for index, row in enumerate(processed_rows, start=1):
+                info1 = forced_write if forced_write else row['Info1']
+                writer.writerow([
+                    str(index), sanitize(info1), sanitize(row['Info2']),
+                    sanitize(row['Info3']), sanitize(row['Info4']), sanitize(row['Name']),
+                    sanitize(row['Tag']), sanitize(row['CoefA']), sanitize(row['CoefB']),
+                    sanitize(row['Unit']), sanitize(row['Action']),
+                ])
+                type_counts[info1] = type_counts.get(info1, 0) + 1
+                written += 1
+            return written
+
         total = 0
         try:
             if isinstance(output, str): outfile = open(output, 'w', newline='', encoding='utf-8-sig')
