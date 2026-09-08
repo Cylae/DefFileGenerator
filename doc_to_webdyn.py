@@ -36,11 +36,7 @@ def _run_cli(args_list=None):
     setup_logging(args.verbose)
 
     if args.template:
-        config = GeneratorConfig(
-            output=args.output,
-            template=True,
-            template_mode=args.template_mode
-        )
+        config = GeneratorConfig(output=args.output, template=True)
         run_generator(config)
         return
 
@@ -48,6 +44,14 @@ def _run_cli(args_list=None):
     if not input_file or not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         sys.exit(1)
+
+    ext = os.path.splitext(args.input_file)[1].lower()
+
+    # Warn about mismatched options
+    if args.pages and ext != '.pdf':
+        logging.warning("--pages is only applicable for PDF files. Ignoring.")
+    if args.sheet and ext not in ['.xlsx', '.xlsm', '.xltx', '.xltm']:
+        logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     mapping = {}
     if args.mapping:
@@ -86,13 +90,15 @@ def _run_cli(args_list=None):
         output_file = f"{m_name_clean}_{m_model_clean}_definition.csv"
 
     config = GeneratorConfig(
+        input_file=args.input_file,
         output=output_file,
         manufacturer=m_name,
         model=m_model,
         protocol=args.protocol,
         category=args.category,
         forced_write=args.forced_write,
-        address_offset=0 # Already applied during extraction
+        address_offset=0, # Already applied during extraction
+        template=False
     )
     run_generator(config, input_data=mapped_peeked)
 
@@ -108,6 +114,7 @@ def main(args=None):
         raise
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
+        # traceback.print_exc() # For deep debugging
         sys.exit(1)
 
 

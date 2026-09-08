@@ -42,7 +42,7 @@ class TestValidateCSV(unittest.TestCase):
             ["2", "3", "40002", "U16", "", "Name2", "tag2", "1.0", "0.0", "W", "4"],
         ]
         path = self.create_csv(rows)
-        # Overlaps are warnings, not fatal errors
+        # Overlap is a warning, not fatal
         self.assertTrue(self.generator.validate_csv(path))
 
     def test_invalid_address(self):
@@ -56,8 +56,7 @@ class TestValidateCSV(unittest.TestCase):
             writer = csv.writer(f, delimiter=';')
             writer.writerow(['modbusRTU', 'Inverter', 'MFG', 'MODEL'])
             writer.writerow(['1', '3', '40001']) # too short
-        # Should log warning and return True if no other errors,
-        # but since there are no valid rows, it might be trivial.
+        # Should log warning and return True if no other errors
         self.assertTrue(self.generator.validate_csv(path))
 
 
