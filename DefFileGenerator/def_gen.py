@@ -68,16 +68,12 @@ class Generator:
 
     @staticmethod
     def sanitize_csv_field(val: Any) -> str:
-        """Precludes CSV injection by prepending an apostrophe if needed, excluding valid numeric values."""
+        """Precludes CSV injection by prepending an apostrophe if needed."""
         if val is None:
             return ""
-        s = str(val).strip()
+        s = str(val)
         if s and s[0] in ('=', '+', '-', '@'):
-            try:
-                float(s)
-                return s
-            except ValueError:
-                return "'" + s
+            return "'" + s
         return s
 
     @staticmethod
