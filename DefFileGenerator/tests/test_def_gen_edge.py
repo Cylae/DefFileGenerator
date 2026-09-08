@@ -188,7 +188,15 @@ class TestValidateTypeExtended(unittest.TestCase):
         self.assertFalse(Generator.validate_type("123"))
 
     def test_unknown_types_invalid(self):
-        invalid_types = ["UNKNOWN", "INVALID_TYPE", "BOOLEAN", "FLOAT", "DOUBLE", "INT", "UINT"]
+        invalid_types = [
+            "UNKNOWN",
+            "INVALID_TYPE",
+            "BOOLEAN",
+            "FLOAT",
+            "DOUBLE",
+            "INT",
+            "UINT",
+        ]
         for invalid_t in invalid_types:
             self.assertFalse(
                 Generator.validate_type(invalid_t),
@@ -197,8 +205,14 @@ class TestValidateTypeExtended(unittest.TestCase):
 
     def test_malformed_and_partial_type_strings_invalid(self):
         invalid_types = [
-            "STR", "STR_ABC", "STR-10", "U16_INVALID",
-            "U32_XYZ", "F32_EXTRA", "U16_", "I32_X",
+            "STR",
+            "STR_ABC",
+            "STR-10",
+            "U16_INVALID",
+            "U32_XYZ",
+            "F32_EXTRA",
+            "U16_",
+            "I32_X",
         ]
         for t in invalid_types:
             self.assertFalse(
@@ -215,8 +229,15 @@ class TestValidateTypeExtended(unittest.TestCase):
 
     def test_case_insensitive_valid_types(self):
         valid_lowercased = [
-            "string", "u16_wb", "f32", "str20",
-            "ip", "mac", "bits", "ipv6", "i32_b",
+            "string",
+            "u16_wb",
+            "f32",
+            "str20",
+            "ip",
+            "mac",
+            "bits",
+            "ipv6",
+            "i32_b",
         ]
         for t in valid_lowercased:
             self.assertTrue(
