@@ -34,6 +34,7 @@ include = ["DefFileGenerator*"]
 
 [tool.pytest.ini_options]
 testpaths = ["DefFileGenerator/tests"]
+pythonpath = ["."]
 addopts = "-ra"
 
 [tool.ruff]
