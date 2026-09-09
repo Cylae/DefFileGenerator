@@ -1,4 +1,5 @@
 import logging
+import os
 import unittest
 from unittest.mock import patch
 
@@ -310,3 +311,34 @@ class TestGenerator(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestGeneratorUncoveredEdgeCases(unittest.TestCase):
+    def test_validate_csv_nonexistent_file(self):
+        generator = Generator()
+        logging.disable(logging.NOTSET)
+        with self.assertLogs(level="ERROR") as log:
+            res = generator.validate_csv("nonexistent_def_file.csv")
+            self.assertFalse(res)
+            self.assertTrue(
+                any("File not found: nonexistent_def_file.csv" in m for m in log.output)
+            )
+        logging.disable(logging.CRITICAL)
+
+    def test_validate_csv_malformed_lines(self):
+        import tempfile
+
+        generator = Generator()
+        with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".csv") as f:
+            f.write("modbusRTU;Inverter\n")
+            f.write("1;3;100;U16;1;Name;tag1;1.000000;0.000000;V;4\n")
+            temp_path = f.name
+
+        try:
+            logging.disable(logging.NOTSET)
+            res = generator.validate_csv(temp_path, strict=True)
+            self.assertTrue(res)
+        finally:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+            logging.disable(logging.CRITICAL)
