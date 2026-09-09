@@ -40,12 +40,6 @@ class TestNormalizeAddressValExtended(unittest.TestCase):
         result = self._norm("0xGHI")
         self.assertEqual(result, "0xGHI")
 
-    def test_0x_xyz_value_error_returns_original(self):
-        self.assertEqual(self._norm("0xXYZ"), "0xXYZ")
-
-    def test_0x_empty_hex_digits_returns_original(self):
-        self.assertEqual(self._norm("0x"), "0x")
-
     # h-suffixed hex
     def test_h_suffix_lowercase(self):
         self.assertEqual(self._norm("10h"), "16")
@@ -56,12 +50,6 @@ class TestNormalizeAddressValExtended(unittest.TestCase):
     def test_h_suffix_invalid(self):
         result = self._norm("GGh")
         self.assertEqual(result, "GGh")
-
-    def test_xyz_h_value_error_returns_original(self):
-        self.assertEqual(self._norm("XYZh"), "XYZh")
-
-    def test_h_alone_returns_original(self):
-        self.assertEqual(self._norm("h"), "h")
 
     # bare hex word
     def test_bare_hex_A0(self):

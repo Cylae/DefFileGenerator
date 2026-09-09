@@ -41,12 +41,12 @@ _CLEAN_TYPE_RE = re.compile(r"[^a-z0-9_]+")
 
 
 @dataclass
-class RegisterEntry:
-    info1: str
-    address: str
-    dtype: str
-    name: str
-    line_num: int = 0
+class CSVHeaderConfig:
+    manufacturer: str = ""
+    model: str = ""
+    protocol: str = "modbusRTU"
+    category: str = "Inverter"
+    forced_write: str = ""
 
 
 @dataclass
@@ -299,9 +299,9 @@ class Generator:
         name: str,
         tag: str,
         line_num: int,
-        seen_trackers: tuple[dict[str, int], dict[str, int]],
+        seen_names: dict[str, int],
+        seen_tags: dict[str, int],
     ) -> str:
-        seen_names, seen_tags = seen_trackers
         if name:
             if name in seen_names:
                 logging.warning(
@@ -347,18 +347,16 @@ class Generator:
 
     def _check_address_overlap(
         self,
-        entry: RegisterEntry,
+        info1: str,
+        address: str,
+        dtype: str,
+        name: str,
+        line_num: int,
         address_usage: dict[str, dict[str, Any]],
         warned_lines: set[tuple[int, int]],
     ) -> bool:
         """Checks for address overlaps using O(log N) binary search on intervals. Returns True if overlap detected."""
         try:
-            info1 = entry.info1
-            address = entry.address
-            dtype = entry.dtype
-            name = entry.name
-            line_num = entry.line_num
-
             addr_part = address.split("_")[0]
             start_addr = int(self.normalize_address_val(addr_part))
             reg_count = self.get_register_count(dtype, address)
@@ -476,10 +474,10 @@ class Generator:
                     f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping."
                 )
                 continue
-            tag = self._process_name_and_tag(name, tag, line_num, (seen_names, seen_tags))
+            tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
             self._check_address_overlap(
-                RegisterEntry(info1, address, dtype, name, line_num), address_usage, warned_lines
+                info1, address, dtype, name, line_num, address_usage, warned_lines
             )
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
@@ -583,9 +581,7 @@ class Generator:
                         valid = False
 
                     self._check_address_overlap(
-                        RegisterEntry(info1, info2, info3, name, line_num),
-                        address_usage,
-                        warned_lines,
+                        info1, info2, info3, name, line_num, address_usage, warned_lines
                     )
 
             if strict_overlap and warned_lines:
@@ -602,13 +598,35 @@ class Generator:
     def write_output_csv(
         output: Union[str, Any, None],
         processed_rows: Iterable[dict[str, Any]],
-        manufacturer: str,
-        model: str,
-        protocol: str = "modbusRTU",
-        category: str = "Inverter",
-        forced_write: str = "",
+        config: Union[CSVHeaderConfig, GeneratorConfig, str, None] = None,
+        *args: Any,
+        **kwargs: Any,
     ) -> None:
         """Centralized method to write the WebdynSunPM CSV format."""
+        if isinstance(config, (CSVHeaderConfig, GeneratorConfig)):
+            mfg_val = getattr(config, "manufacturer", "") or ""
+            model_val = getattr(config, "model", "") or ""
+            protocol_val = getattr(config, "protocol", "modbusRTU") or "modbusRTU"
+            category_val = getattr(config, "category", "Inverter") or "Inverter"
+            forced_write_val = getattr(config, "forced_write", "") or ""
+        elif isinstance(config, str):
+            mfg_val = config
+            model_val = str(args[0]) if args else str(kwargs.get("model", ""))
+            protocol_val = (
+                str(args[1]) if len(args) > 1 else str(kwargs.get("protocol", "modbusRTU"))
+            ) or "modbusRTU"
+            category_val = (
+                str(args[2]) if len(args) > 2 else str(kwargs.get("category", "Inverter"))
+            ) or "Inverter"
+            forced_write_val = (
+                str(args[3]) if len(args) > 3 else str(kwargs.get("forced_write", ""))
+            ) or ""
+        else:
+            mfg_val = str(kwargs.get("manufacturer", "")) or ""
+            model_val = str(kwargs.get("model", "")) or ""
+            protocol_val = str(kwargs.get("protocol", "modbusRTU")) or "modbusRTU"
+            category_val = str(kwargs.get("category", "Inverter")) or "Inverter"
+            forced_write_val = str(kwargs.get("forced_write", "")) or ""
         type_counts = {"1": 0, "2": 0, "3": 0, "4": 0}
         type_labels = {"1": "Coils", "2": "Discrete", "3": "Holding", "4": "Input"}
         outfile: Any = None
@@ -623,11 +641,11 @@ class Generator:
             writer = csv.writer(outfile, delimiter=";", lineterminator="\n")
 
             header_row = [
-                Generator.sanitize_csv_field(protocol),
-                Generator.sanitize_csv_field(category),
-                Generator.sanitize_csv_field(manufacturer),
-                Generator.sanitize_csv_field(model),
-                Generator.sanitize_csv_field(forced_write),
+                Generator.sanitize_csv_field(protocol_val),
+                Generator.sanitize_csv_field(category_val),
+                Generator.sanitize_csv_field(mfg_val),
+                Generator.sanitize_csv_field(model_val),
+                Generator.sanitize_csv_field(forced_write_val),
                 "",
                 "",
                 "",
@@ -794,16 +812,19 @@ def run_generator(
             return
 
     try:
+        hdr_cfg = CSVHeaderConfig(
+            manufacturer=manufacturer,
+            model=model,
+            protocol=config.protocol,
+            category=config.category,
+            forced_write=config.forced_write,
+        )
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
             generator.write_output_csv(
                 config.output,
                 processed_rows,
-                manufacturer,
-                model,
-                config.protocol,
-                config.category,
-                config.forced_write,
+                hdr_cfg,
             )
         else:
             if not config.input_file:
@@ -831,11 +852,7 @@ def run_generator(
                 generator.write_output_csv(
                     config.output,
                     processed_rows,
-                    manufacturer,
-                    model,
-                    config.protocol,
-                    config.category,
-                    config.forced_write,
+                    hdr_cfg,
                 )
     except (OSError, csv.Error, ValueError, TypeError, KeyError) as e:
         logging.error(f"An error occurred during generation: {e}")
