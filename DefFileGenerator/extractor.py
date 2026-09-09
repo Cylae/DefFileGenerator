@@ -360,7 +360,9 @@ class Extractor:
             if not buffer:
                 continue
 
-            all_keys = set().union(*buffer)
+            all_keys = set()
+            for row in buffer:
+                all_keys.update(row.keys())
 
             col_map = {}
             used_src_cols = set()

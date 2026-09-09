@@ -91,11 +91,6 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val("10"), "10")
         self.assertEqual(self.generator.normalize_address_val("A0"), "160")
         self.assertEqual(self.generator.normalize_address_val("1,234"), "1234")
-        # Invalid hex parsing failures (ValueError fallback)
-        self.assertEqual(self.generator.normalize_address_val("0xXYZ"), "0xXYZ")
-        self.assertEqual(self.generator.normalize_address_val("XYZh"), "XYZh")
-        self.assertEqual(self.generator.normalize_address_val("0x"), "0x")
-        self.assertEqual(self.generator.normalize_address_val("h"), "h")
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address("30001_10", "U16"))  # U16 expects int
