@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import csv
+import functools
 import itertools
 import logging
 import math
@@ -119,6 +120,7 @@ class Generator:
         return s
 
     @staticmethod
+    @functools.lru_cache(maxsize=2048)
     def normalize_type(dtype: Any) -> str:
         if not dtype:
             return "U16"
@@ -186,7 +188,12 @@ class Generator:
 
     @staticmethod
     def normalize_address_val(addr_part: Any) -> str:
-        addr_part = str(addr_part).strip()
+        if isinstance(addr_part, int):
+            return str(addr_part)
+        s = str(addr_part).strip()
+        if s.isdigit() and (not s.startswith("0") or s == "0"):
+            return s
+        addr_part = s
         addr_part = re.sub(r"(?<=\d),(?=\d{3}(?!\d))", "", addr_part)
         if not addr_part:
             return ""
@@ -293,6 +300,12 @@ class Generator:
     ) -> str:
         if not address:
             return ""
+        if offset == 0 and isinstance(address, (int, str)):
+            s_addr = str(address).strip()
+            if "_" not in s_addr:
+                norm = Generator.normalize_address_val(s_addr)
+                if norm.isdigit():
+                    return norm
         parts = str(address).split("_")
         norm_parts = [Generator.normalize_address_val(p) for p in parts]
         try:
