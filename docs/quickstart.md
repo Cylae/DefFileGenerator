@@ -1,49 +1,51 @@
-# Démarrage rapide
+# Quick Start Guide
 
 ## Installation
 
+To install the package in editable mode:
+
 ```bash
-python -m venv .venv
-# PowerShell
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
 pip install -e .
 ```
 
-Pour contribuer ou exécuter les contrôles qualité :
+To install development and quality assurance dependencies:
 
 ```bash
 pip install -e ".[dev]"
 ```
 
-## Conversion directe
+## Direct File Conversion
 
-Transformez un document de registres en définition WebdynSunPM :
+Transform a manufacturer register documentation file into a WebdynSunPM definition CSV:
 
 ```bash
-python doc_to_webdyn.py register_map.xlsx `
-  --manufacturer "Webdyn" `
-  --model "DeviceModel" `
+python doc_to_webdyn.py register_map.xlsx \
+  --manufacturer "Webdyn" \
+  --model "DeviceModel" \
   -o definition.csv
 ```
 
-## Workflow contrôlable
+## Multi-Step Workflow CLI
 
-Utilisez la CLI principale pour séparer extraction, génération et validation :
+Use the main command-line interface (`deffilegen`) to separate register extraction, generation, and validation steps:
 
 ```bash
-python DefFileGenerator/main.py extract register_map.xlsx -o registers.csv
-python DefFileGenerator/main.py generate registers.csv --manufacturer "Webdyn" --model "DeviceModel" -o definition.csv
-python DefFileGenerator/main.py validate definition.csv
+# 1. Extract registers to an intermediate CSV
+deffilegen extract register_map.xlsx -o registers.csv
+
+# 2. Generate the WebdynSunPM definition file
+deffilegen generate registers.csv --manufacturer "Webdyn" --model "DeviceModel" -o definition.csv
+
+# 3. Validate the definition file
+deffilegen validate definition.csv
 ```
 
-Exécutez `python DefFileGenerator/main.py --help` et `python DefFileGenerator/main.py <commande> --help` pour les paramètres disponibles.
+Run `deffilegen --help` or `deffilegen <subcommand> --help` to inspect all available arguments.
 
-## Vérifier avant livraison
+## Quality Checks Before Delivery
 
 ```bash
-python -m pytest
+pytest
 ruff check .
+mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py
 ```
-
-Les données de stress et leurs sorties ne font pas partie de ce cycle rapide : elles doivent être générées localement ou dans un job CI dédié.
