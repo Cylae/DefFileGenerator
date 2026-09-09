@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.def_gen import CSVHeaderConfig, Generator
 
 
 class TestOverlapDetection(unittest.TestCase):
@@ -180,6 +180,23 @@ class TestValidateCsvAdvanced(unittest.TestCase):
 
 
 class TestWriteOutputCsv(unittest.TestCase):
+    def test_writes_with_csv_header_config(self):
+        out = os.path.join(self.tmpdir.name, "hdr_cfg.csv")
+        cfg = CSVHeaderConfig(
+            manufacturer="CustomMfg",
+            model="CustomModel",
+            protocol="modbusTCP",
+            category="Battery",
+            forced_write="1",
+        )
+        Generator.write_output_csv(out, iter(self._rows(1)), cfg)
+        with open(out, encoding="utf-8-sig") as f:
+            first_line = f.readline()
+        self.assertIn("modbusTCP", first_line)
+        self.assertIn("Battery", first_line)
+        self.assertIn("CustomMfg", first_line)
+        self.assertIn("CustomModel", first_line)
+
     """write_output_csv correctness beyond the atomicity tests."""
 
     def setUp(self):
