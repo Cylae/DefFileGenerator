@@ -205,3 +205,41 @@ class TestExtractor(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestExtractorUncoveredEdgeCases(unittest.TestCase):
+    def test_extract_excel_missing_dependency(self):
+        extractor = Extractor()
+        import DefFileGenerator.extractor as ext_mod
+
+        old_val = ext_mod.HAS_OPENPYXL
+        try:
+            ext_mod.HAS_OPENPYXL = False
+            tables = list(extractor.extract_from_excel("dummy.xlsx"))
+            self.assertEqual(len(tables), 0)
+        finally:
+            ext_mod.HAS_OPENPYXL = old_val
+
+    def test_extract_pdf_missing_dependency(self):
+        extractor = Extractor()
+        import DefFileGenerator.extractor as ext_mod
+
+        old_val = ext_mod.HAS_PDFPLUMBER
+        try:
+            ext_mod.HAS_PDFPLUMBER = False
+            tables = list(extractor.extract_from_pdf("dummy.pdf"))
+            self.assertEqual(len(tables), 0)
+        finally:
+            ext_mod.HAS_PDFPLUMBER = old_val
+
+    def test_extract_xml_missing_dependency(self):
+        extractor = Extractor()
+        import DefFileGenerator.extractor as ext_mod
+
+        old_val = ext_mod.HAS_DEFUSEDXML
+        try:
+            ext_mod.HAS_DEFUSEDXML = False
+            tables = list(extractor.extract_from_xml("dummy.xml"))
+            self.assertEqual(len(tables), 0)
+        finally:
+            ext_mod.HAS_DEFUSEDXML = old_val
