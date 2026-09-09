@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebdynSunPM Definition Generator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <h1>WebdynSunPM <span>DefGen</span></h1>
+        </div>
+        <div class="header-badge">v0.2.1 Core API</div>
+    </header>
+
+    <main class="container">
+        <section class="card upload-card">
+            <h2>1. Upload Register Map</h2>
+            <p class="subtitle">Supports PDF datasheets, Excel workbooks (.xlsx), CSV maps, or XML files.</p>
+
+            <div class="drop-zone" id="dropZone">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <p>Drag & drop your datasheet or <label for="fileInput" class="browse-link">browse</label></p>
+                <span class="file-types">Supported: .pdf, .xlsx, .xlsm, .csv, .xml</span>
+                <input type="file" id="fileInput" accept=".pdf,.xlsx,.xlsm,.xltx,.xltm,.csv,.xml" hidden>
+            </div>
+            <div id="fileDetails" class="file-details hidden">
+                <span id="fileName">file.pdf</span>
+                <button id="removeFileBtn" class="btn-text">&times; Remove</button>
+            </div>
+        </section>
+
+        <section class="card config-card">
+            <h2>2. Generator Metadata Configuration</h2>
+            <form id="convertForm" class="config-grid">
+                <div class="form-group">
+                    <label for="mfgInput">Manufacturer Name *</label>
+                    <input type="text" id="mfgInput" placeholder="e.g. Huawei" value="Huawei" required>
+                </div>
+                <div class="form-group">
+                    <label for="modelInput">Device Model *</label>
+                    <input type="text" id="modelInput" placeholder="e.g. SUN2000-50KTL" value="SUN2000" required>
+                </div>
+                <div class="form-group">
+                    <label for="protocolSelect">Modbus Protocol</label>
+                    <select id="protocolSelect">
+                        <option value="modbusRTU" selected>modbusRTU</option>
+                        <option value="modbusTCP">modbusTCP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="categorySelect">Category</label>
+                    <select id="categorySelect">
+                        <option value="Inverter" selected>Inverter</option>
+                        <option value="Meter">Meter</option>
+                        <option value="Sensor">Sensor</option>
+                        <option value="Battery">Battery</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="offsetInput">Address Offset Shift</label>
+                    <input type="number" id="offsetInput" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="forcedWriteInput">Forced Write Type (Optional)</label>
+                    <input type="text" id="forcedWriteInput" placeholder="e.g. 3">
+                </div>
+            </form>
+            <div class="action-bar">
+                <button id="convertBtn" class="btn btn-primary" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    Extract & Generate Definition
+                </button>
+            </div>
+        </section>
+
+        <section id="resultsSection" class="card results-card hidden">
+            <div class="results-header">
+                <div>
+                    <h2>3. Generated WebdynSunPM Definition</h2>
+                    <span id="registerBadge" class="badge">0 registers</span>
+                    <span id="validBadge" class="badge badge-success">Valid</span>
+                </div>
+                <button id="downloadBtn" class="btn btn-success">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Definition CSV
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="previewTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Tag</th>
+                            <th>Reg Type</th>
+                            <th>Address</th>
+                            <th>Type</th>
+                            <th>Factor</th>
+                            <th>Offset</th>
+                            <th>Unit</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="previewBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
