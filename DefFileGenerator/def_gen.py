@@ -89,6 +89,9 @@ class Generator:
         s = str(val)
         if not s:
             return ""
+        s = "".join(ch for ch in s if ord(ch) in (9, 10, 13) or (ord(ch) >= 32 and ord(ch) != 127))
+        if not s:
+            return ""
 
         # Check for prefix characters that trigger injection
         if s[0] in ("\t", "\r", "\n", "\u00a0", "\ufeff") or s.startswith(
