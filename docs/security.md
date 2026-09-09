@@ -1,29 +1,29 @@
-# Sécurité et intégrité des exports
+# Export Security & Integrity
 
-## Injection CSV
+## CSV Injection Mitigation
 
-Une cellule CSV ouverte dans un tableur peut être interprétée comme formule lorsque son premier caractère significatif est un déclencheur. Le tableur retire les espaces de tête (espace, tabulation, CR, LF, NBSP) *avant* d'évaluer la cellule, et normalise les variantes Unicode pleine chasse : un contrôle limité au premier octet brut est donc contournable.
+A CSV cell opened in spreadsheet software (e.g. Microsoft Excel or LibreOffice Calc) can be executed as an active formula if its first significant character is a formula trigger. Spreadsheet software strips leading whitespace characters (`space`, `tab`, `CR`, `LF`, `NBSP`) *before* evaluating the formula, and normalizes fullwidth Unicode operators. A sanitization check restricted to raw ASCII first characters can therefore be bypassed.
 
-Jeu de déclencheurs traité par `sanitize_csv_field` :
+The trigger set handled by `Generator.sanitize_csv_field`:
 
-| Catégorie | Caractères |
+| Category | Characters |
 |--|--|
-| ASCII | `=` `+` `-` `@` `\|` |
-| Espaces de tête | `0x20` `0x09` (tab) `0x0D` (CR) `0x0A` (LF) `0x0B` `0x0C` `U+00A0` (NBSP) |
-| Pleine chasse | `＝` `＋` `－` `＠` |
+| ASCII Triggers | `=` `+` `-` `@` `\|` `%` |
+| Leading Whitespace | `0x20` `0x09` (tab) `0x0D` (CR) `0x0A` (LF) `0x0B` `0x0C` `U+00A0` (NBSP) |
+| Fullwidth Variants | `＝` (`\uff1d`) `＋` (`\uff0b`) `－` (`\uff0d`) `＠` (`\uff20`) |
 
-Toute valeur dont le premier caractère significatif appartient à ce jeu est préfixée d'une apostrophe (recommandation OWASP). Les nombres signés finis (`-10.5`, `+25`, `1.5e3`) conservent leur signe afin de préserver leur sens métier ; les littéraux non finis (`-inf`, `+nan`) et les formes non numériques (` -10.5`, `-1_000`) sont échappés.
+Any string value whose first non-whitespace character belongs to this trigger set has a single apostrophe (`'`) prepended in accordance with OWASP recommendations. Finite signed numbers (`-10.5`, `+25`, `1.5e3`) preserve their sign to retain numerical semantics; non-finite literals (`-inf`, `+nan`) and non-numeric string representations (` -10.5`, `-1_000`) are escaped.
 
-Traitez toute documentation fournisseur comme donnée non fiable. Vérifiez les fichiers produits avant import dans un équipement ou une chaîne de configuration.
+Treat all vendor documentation as untrusted input data. Always validate generated definition CSV files prior to uploading them to field gateways or production devices.
 
-## XML
+## XML Entity & XXE Protection
 
-Les parseurs XML doivent rester protégés contre les entités externes (XXE). Utilisez les parseurs sûrs configurés par le projet et n’introduisez pas de parseur XML standard non durci. Le fichier `xxe.xml` est une fixture de régression : son traitement doit échouer sans lecture de ressource externe.
+XML parsers must remain protected against XML External Entity (XXE) attacks and billion-laughs expansion bombs. The extractor module strictly enforces `defusedxml.ElementTree` parsing (`DTDForbidden`, `EntitiesForbidden`, `ExternalReferenceForbidden`). Standard `xml.etree.ElementTree` without `defusedxml` protections is never used for untrusted files.
 
-## Écriture de fichiers
+## Atomic File Writing
 
-Les futurs changements de génération doivent écrire vers un fichier temporaire dans le même volume puis remplacer la cible de façon atomique. Ne laissez jamais un CSV partiellement généré remplacer un fichier de production valide.
+Generated definition files are written to a temporary staging file on the same filesystem volume before being atomically renamed into place. An interrupted or failing run will never corrupt or truncate an existing production definition file.
 
-## Secrets
+## Secret Management
 
-Aucun mot de passe, jeton, export client ou donnée sensible ne doit être ajouté aux fixtures. Utilisez des valeurs synthétiques et effectuez une analyse de secrets avant chaque publication.
+No credentials, API tokens, customer exports, or sensitive site data must be stored in test fixtures. Synthetic dummy values are used throughout test suites.
