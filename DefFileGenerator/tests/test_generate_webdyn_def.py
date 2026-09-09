@@ -216,3 +216,30 @@ class TestGenerateWebdynDef(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    def test_generate_webdyn_definition_with_config_dataclass(self):
+        from generate_webdyn_def import WebdynDefConfig, generate_webdyn_definition
+
+        cfg = WebdynDefConfig(
+            input_file=self.input_csv,
+            output_file=self.output_csv,
+            manufacturer="DataclassMfg",
+            model="DataclassModel",
+            protocol="modbusTCP",
+            category="Inverter",
+        )
+        success = generate_webdyn_definition(cfg)
+        self.assertTrue(success)
+        self.assertTrue(os.path.exists(self.output_csv))
+
+        with open(self.output_csv, encoding="utf-8-sig") as f:
+            lines = f.readlines()
+        self.assertTrue("DataclassMfg" in lines[0])
+        self.assertTrue("DataclassModel" in lines[0])
+
+    def test_generate_webdyn_definition_missing_required_args(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Missing output_file, manufacturer, model
+        success = generate_webdyn_definition(self.input_csv)
+        self.assertFalse(success)
