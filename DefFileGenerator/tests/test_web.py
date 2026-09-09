@@ -1,22 +1,14 @@
 import io
 import unittest
 
-HAS_WEB = False
-try:
-    from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient
 
-    from web.app import app
-
-    HAS_WEB = True
-except ImportError:
-    HAS_WEB = False
+from web.app import app
 
 
-@unittest.skipUnless(HAS_WEB, "fastapi and web dependencies required for web tests")
 class TestWebBackend(unittest.TestCase):
     def setUp(self):
-        if HAS_WEB:
-            self.client = TestClient(app)
+        self.client = TestClient(app)
 
     def test_health_check_endpoint(self):
         response = self.client.get("/api/health")
