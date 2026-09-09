@@ -1,30 +1,44 @@
-# Développement
+# Developer Guidelines & Engineering Practices
 
-## Installation
+## Environment Setup
 
 ```bash
 pip install -e ".[dev]"
 ```
 
-## Commandes de contrôle
+## Quality Assurance Commands
 
 ```bash
+# Code linting
 ruff check .
-python -m pytest
-python -m pytest --cov=DefFileGenerator --cov-report=term-missing
+
+# Code formatting check
+ruff format --check .
+
+# Static type checking
+mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py
+
+# Full test suite execution
+pytest
+
+# Test coverage reporting
+pytest --cov=DefFileGenerator --cov-report=term-missing
 ```
 
-## Stratégie de tests
+## Testing Strategy
 
-- Les tests unitaires doivent être déterministes, petits et sans dépendance réseau.
-- Les tests d’intégration couvrent le chemin extraction → génération → validation.
-- Chaque correction de bug ajoute une fixture minimale et un test de non-régression.
-- Les tests de charge et les batteries torture ne sont pas exécutés pour chaque pull request. Ils génèrent leurs résultats hors de Git.
+- **Unit Tests**: Must be deterministic, fast, isolated, and require zero network access.
+- **Integration Tests**: Verify the end-to-end pipeline: extraction → field mapping → generation → overlap validation.
+- **Regression Protection**: Every bug fix must include a minimal reproducing test case in `DefFileGenerator/tests/`.
+- **Stress & Battery Tests**: Large-scale benchmark datasets (e.g. 5,000+ registers) are generated on demand via `DefFileGenerator/tests/stress_test_gen.py` and evaluated via `run_gigantic_battery.py`.
 
-## Règles de contribution
+## Contribution Rules
 
-Une pull request doit viser un sujet unique, inclure les tests adaptés et ne pas ajouter d’artefact généré. Préférez les itérateurs pour les grandes entrées, mais ne retournez pas un générateur dépendant d’un fichier déjà fermé. Conservez l’API CLI rétrocompatible ou documentez explicitement toute rupture.
+1. **Single Responsibility**: Pull requests should address one clear feature or fix.
+2. **Backward Compatibility**: Preserve existing CLI arguments, public Python APIs (`GeneratorConfig`, `generate_webdyn_definition`), and Webdyn CSV output structures.
+3. **Resource Efficiency**: Use lazy generator pipelines (`yield`) for processing row iterables to keep memory usage $O(1)$. Never return a generator bound to an already closed file resource.
+4. **Clean Codebase**: Maintain clean, fully typed Python 3.10+ code with zero `ruff` or `mypy` warnings.
 
-## Performance
+## Performance Metrics
 
-Mesurez avant et après une optimisation. Les métriques utiles sont le temps total, le débit de registres, la mémoire maximale et la taille de sortie. Les benchmarks doivent publier un résumé chiffré, pas des fichiers de sortie massifs.
+Always measure execution times before and after making structural changes. Critical benchmarks include total execution time, row streaming throughput, peak memory usage, and type normalization latency.
