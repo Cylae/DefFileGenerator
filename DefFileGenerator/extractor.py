@@ -123,7 +123,9 @@ class Extractor:
         "Unit": ["unit", "units"],
         "Tag": ["tag"],
         "Action": ["action", "access"],
+        "ReadWrite": ["read/write", "read/ write", "read write", "r/w"],
         "Factor": ["scale", "factor", "multiplier", "ratio"],
+        "Gain": ["gain"],
         "Offset": ["offset", "bias", "coefficient b"],
         "ScaleFactor": ["scalefactor", "scale factor"],
         "Length": ["length", "len", "size", "count", "quantity"],
@@ -378,8 +380,10 @@ class Extractor:
                 "Type",
                 "Unit",
                 "Action",
+                "ReadWrite",
                 "Tag",
                 "Factor",
+                "Gain",
                 "Offset",
                 "ScaleFactor",
                 "Length",
@@ -425,7 +429,14 @@ class Extractor:
                         used_src_cols.add(src_col)
                         break
 
-            def process_row(r: dict[str, Any], col_map=col_map) -> Optional[dict[str, Any]]:
+            length_src = str(col_map.get("Length", "")).lower()
+            length_is_register_quantity = any(p in length_src for p in ("quantity", "count", "qty"))
+
+            def process_row(
+                r: dict[str, Any],
+                col_map=col_map,
+                length_is_register_quantity=length_is_register_quantity,
+            ) -> Optional[dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if not new_row.get("Name") and not new_row.get("Address"):
                     return None
@@ -436,15 +447,18 @@ class Extractor:
                 new_row["Type"] = dtype
                 addr = str(new_row.get("Address", "")).strip()
 
+                is_string_type = dtype == "STRING" or dtype.startswith("STR")
+                if is_string_type and slen.isdigit() and length_is_register_quantity:
+                    # Manufacturer tables commonly express string fields as a register
+                    # ("word") quantity (1 register = 2 bytes), but the WebdynSunPM
+                    # definition format's STRING address suffix is a byte length.
+                    slen = str(int(slen) * 2)
+
                 if dtype == "BITS" and sbit != "" and "_" not in addr:
                     if slen == "":
                         slen = "1"
                     addr = f"{addr}_{sbit}_{slen}"
-                elif (
-                    (dtype == "STRING" or dtype.startswith("STR"))
-                    and slen != ""
-                    and "_" not in addr
-                ):
+                elif is_string_type and slen != "" and "_" not in addr:
                     addr = f"{addr}_{slen}"
 
                 if Generator is not None:
@@ -452,9 +466,28 @@ class Extractor:
                 else:
                     new_row["Address"] = addr
 
+                # A dedicated "Gain" column (Huawei-style documentation) expresses a
+                # divisor applied to the raw register value, whereas the definition
+                # format's Factor/CoefA is a multiplier. Only use it when no direct
+                # Factor/multiplier column was already detected.
+                if not new_row.get("Factor"):
+                    gain_str = str(new_row.get("Gain", "")).strip()
+                    if gain_str and Generator is not None:
+                        gain_val = Generator._parse_numeric(gain_str, default=0.0)
+                        if gain_val:
+                            new_row["Factor"] = str(1.0 / gain_val)
+
                 if new_row.get("Factor") is not None:
                     if Generator is not None:
                         new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
+
+                # Fall back to a dedicated Read/Write column when no Action column
+                # was detected, so e.g. Huawei's "Read/ Write" header (RO/RW) still
+                # drives the generated Action code instead of silently defaulting.
+                if not new_row.get("Action"):
+                    rw_str = str(new_row.get("ReadWrite", "")).strip()
+                    if rw_str:
+                        new_row["Action"] = rw_str
 
                 if not new_row.get("RegisterType"):
                     new_row["RegisterType"] = "Holding Register"

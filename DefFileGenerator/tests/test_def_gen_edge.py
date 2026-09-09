@@ -148,6 +148,25 @@ class TestNormalizeTypeExtended(unittest.TestCase):
     def test_float32_word_suffix(self):
         self.assertEqual(Generator.normalize_type("float32 word"), "F32_W")
 
+    def test_bare_str_maps_to_string(self):
+        # Some manufacturer documentation (e.g. Huawei) uses a bare "STR" type
+        # code with the actual length supplied via a separate column, rather
+        # than "STRING" or a digit-suffixed "STR<n>".
+        self.assertEqual(Generator.normalize_type("STR"), "STRING")
+        self.assertEqual(Generator.normalize_type("str"), "STRING")
+
+    def test_bitfield16_maps_to_u16(self):
+        # A full-register status/alarm bitmask is transported as a plain
+        # unsigned integer of matching width, not the discrete "BITS" type.
+        self.assertEqual(Generator.normalize_type("Bitfield16"), "U16")
+        self.assertEqual(Generator.normalize_type("bitfield32"), "U32")
+        self.assertEqual(Generator.normalize_type("BITFIELD8"), "U8")
+
+    def test_bitfield16_split_across_pdf_linewrap(self):
+        # A table cell PDF-wrapped as "Bitfield1" + "6" collapses to
+        # "bitfield1 6" once newlines are turned into spaces.
+        self.assertEqual(Generator.normalize_type("Bitfield1 6"), "U16")
+
 
 class TestValidateTypeExtended(unittest.TestCase):
     def test_ip_valid(self):

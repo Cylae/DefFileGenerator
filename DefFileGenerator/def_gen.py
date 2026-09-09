@@ -133,6 +133,19 @@ class Generator:
         if str_match:
             return f"STR{str_match.group(1)}{suffix}"
 
+        # Manufacturer tables (e.g. Huawei) often use a bare "STR" type code with
+        # the actual character/byte length given in a separate Length/Quantity
+        # column rather than embedded in the type itself.
+        if t == "str":
+            return "STRING"
+
+        # A full-register status/alarm bitmask ("Bitfield16", "Bitfield1 6" once a
+        # PDF line-wrap has been collapsed, "Bitfield32", ...) is transported as a
+        # plain unsigned integer of matching width, not the discrete "BITS" type.
+        bitfield_match = re.match(r"^bitfield(8|16|32|64)$", t.replace(" ", ""))
+        if bitfield_match:
+            return f"U{bitfield_match.group(1)}{suffix}"
+
         # Mapping ordered by specificity
         synonyms = [
             (r"unsigned integer 64|unsigned int 64|uint64|\bu64\b", "U64"),

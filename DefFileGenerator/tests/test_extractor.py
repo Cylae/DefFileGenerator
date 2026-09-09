@@ -202,6 +202,61 @@ class TestExtractor(unittest.TestCase):
         self.assertEqual(mapped[6]["Address"], "106")
         self.assertEqual(mapped[6]["Factor"], "0.5")
 
+    def test_gain_column_is_inverted_into_factor(self):
+        # Manufacturer tables (Huawei-style) express a divisor "Gain" rather than
+        # a direct multiplier. Factor (CoefA) must be its reciprocal.
+        raw_data = [
+            [
+                {"Address": "30073", "Name": "Rated power (Pn)", "Type": "U32", "Gain": "1000"},
+            ]
+        ]
+        mapped = list(self.extractor.map_and_clean(raw_data))
+        self.assertEqual(len(mapped), 1)
+        self.assertAlmostEqual(float(mapped[0]["Factor"]), 0.001)
+
+    def test_explicit_factor_column_takes_precedence_over_gain(self):
+        raw_data = [
+            [
+                {"Address": "1", "Name": "Test", "Type": "U16", "Factor": "2", "Gain": "1000"},
+            ]
+        ]
+        mapped = list(self.extractor.map_and_clean(raw_data))
+        self.assertEqual(float(mapped[0]["Factor"]), 2.0)
+
+    def test_read_write_column_maps_to_action(self):
+        raw_data = [
+            [
+                {"Address": "30070", "Name": "Model ID", "Type": "U16", "Read/ Write": "RO"},
+                {"Address": "47100", "Name": "Setting", "Type": "U16", "Read/ Write": "RW"},
+            ]
+        ]
+        mapped = list(self.extractor.map_and_clean(raw_data))
+        self.assertEqual(mapped[0]["Action"], "RO")
+        self.assertEqual(mapped[1]["Action"], "RW")
+
+    def test_string_quantity_column_is_doubled_to_byte_length(self):
+        # A "Quantity" header expresses a register (16-bit word) count; the
+        # WebdynSunPM STRING address suffix must be a byte length (2x).
+        raw_data = [
+            [
+                {"Address": "30000", "Name": "Model", "Type": "STR", "Quantity": "15"},
+            ]
+        ]
+        mapped = list(self.extractor.map_and_clean(raw_data))
+        self.assertEqual(mapped[0]["Address"], "30000_30")
+        self.assertEqual(mapped[0]["Type"], "STRING")
+
+    def test_length_column_is_not_doubled(self):
+        # A plain "Length" header is already assumed to be a byte length and
+        # must NOT be doubled (distinct from "Quantity"/"Count").
+        raw_data = [
+            [
+                {"Address": "103", "Name": "String Test", "Type": "STRING", "Length": "10"},
+            ]
+        ]
+        mapped = list(self.extractor.map_and_clean(raw_data))
+        self.assertEqual(mapped[0]["Address"], "103_10")
+
 
 if __name__ == "__main__":
     unittest.main()
