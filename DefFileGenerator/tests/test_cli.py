@@ -196,3 +196,48 @@ class TestCliEntryPoints(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestCliEdgeCases(unittest.TestCase):
+    def test_main_no_subcommand(self):
+        from DefFileGenerator.main import main
+
+        test_args = ["main.py"]
+        with patch.object(sys, "argv", test_args):
+            with self.assertRaises(SystemExit) as cm:
+                main()
+            self.assertEqual(cm.exception.code, 2)
+
+    def test_main_keyboard_interrupt(self):
+        from DefFileGenerator.main import main
+
+        with patch("DefFileGenerator.main._run_cli", side_effect=KeyboardInterrupt):
+            with self.assertRaises(SystemExit) as cm:
+                main([])
+            self.assertEqual(cm.exception.code, 130)
+
+    def test_main_unexpected_exception(self):
+        import logging
+
+        from DefFileGenerator.main import main
+
+        logging.disable(logging.NOTSET)
+        with patch("DefFileGenerator.main._run_cli", side_effect=RuntimeError("Unexpected error")):
+            with self.assertLogs(level="ERROR") as log:
+                with self.assertRaises(SystemExit) as cm:
+                    main([])
+                self.assertEqual(cm.exception.code, 1)
+                self.assertTrue(any("Unexpected error" in m for m in log.output))
+        logging.disable(logging.CRITICAL)
+
+    def test_main_sheet_ignored_for_non_excel(self):
+        from DefFileGenerator.main import main
+
+        test_args = ["main.py", "extract", "test.csv", "--sheet", "Sheet1"]
+        with patch("DefFileGenerator.main.extract_command"):
+            with patch.object(sys, "argv", test_args):
+                with patch("logging.warning") as mock_warn:
+                    main()
+                    mock_warn.assert_called_once_with(
+                        "--sheet is only applicable for Excel files. Ignoring."
+                    )
