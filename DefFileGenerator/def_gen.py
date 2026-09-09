@@ -290,9 +290,9 @@ class Generator:
         name: str,
         tag: str,
         line_num: int,
-        seen_names: dict[str, int],
-        seen_tags: dict[str, int],
+        seen_trackers: tuple[dict[str, int], dict[str, int]],
     ) -> str:
+        seen_names, seen_tags = seen_trackers
         if name:
             if name in seen_names:
                 logging.warning(
@@ -465,7 +465,7 @@ class Generator:
                     f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping."
                 )
                 continue
-            tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
+            tag = self._process_name_and_tag(name, tag, line_num, (seen_names, seen_tags))
             info1 = self._determine_info1(reg_type_str, line_num)
             self._check_address_overlap(
                 info1, address, dtype, name, line_num, address_usage, warned_lines
