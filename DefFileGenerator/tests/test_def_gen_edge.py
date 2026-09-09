@@ -52,6 +52,13 @@ class TestParseNumeric(unittest.TestCase):
     def test_non_numeric_returns_default(self):
         self.assertEqual(self._parse("abc", default=-1.0), -1.0)
 
+    def test_parse_numeric_value_error_returns_default(self):
+        """ValueError during float conversion returns default value."""
+        self.assertEqual(Generator._parse_numeric("abc"), 0.0)
+        self.assertEqual(Generator._parse_numeric("abc", default=-1.0), -1.0)
+        self.assertEqual(Generator._parse_numeric("1.2.3", default=5.0), 5.0)
+        self.assertEqual(Generator._parse_numeric("abc/def", default=10.0), 10.0)
+
     def test_integer(self):
         self.assertEqual(self._parse("42"), 42.0)
 
