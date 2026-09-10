@@ -22,6 +22,7 @@ web = [
   "fastapi>=0.110",
   "uvicorn>=0.28",
   "python-multipart>=0.0.9",
+  "httpx>=0.27",
 ]
 dev = [
   "pytest>=8",
@@ -63,6 +64,10 @@ module = [
   "pdfminer.*",
   "reportlab.*",
   "pandas.*",
+  "fastapi.*",
+  "starlette.*",
+  "uvicorn.*",
+  "httpx.*",
 ]
 ignore_missing_imports = true
 
