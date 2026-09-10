@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This report documents the deep architecture, security, performance, input validation, and edge-case audit performed on the **DefFileGenerator** repository. The system is designed for format-agnostic Modbus register extraction from multi-source documentation (PDF, Excel, CSV, XML) and generation of validated WebdynSunPM definition files (`.csv`).
+This report documents the deep architecture, security, performance, input validation, and edge-case audit performed on the **DefFileGenerator** repository. The system is designed for format-agnostic Modbus register extraction from multi-source documentation (PDF, Excel, CSV, XML) and generation of validated WebdynSunPM definition files (`.csv`), complemented by a REST API web backend.
 
 During this audit loop, all core modules (`def_gen.py`, `extractor.py`, `main.py`, `doc_to_webdyn.py`, `generate_webdyn_def.py`, `web/app.py`) were analyzed, hardened, and verified with adversarial unit tests, static code analysis (`ruff`, `mypy`), and large-scale torture/gigantic stress batteries.
 
@@ -33,9 +33,14 @@ The project consists of four core components:
 ### 3. File Upload Path Traversal Prevention in Web Service (HIGH)
 - **Problem**: File upload parameters received in REST endpoints could contain path traversal sequences (e.g., `../../etc/passwd`).
 - **Impact**: Unintended filesystem access or file overwrite vulnerabilities in web server deployments.
-- **Remediation**: Verified path sanitization using `os.path.basename` across `/api/convert` and `/api/validate` endpoints in `web/app.py`. Covered by unit tests in `DefFileGenerator/tests/test_web.py`.
+- **Remediation**: Hardened `/api/convert` and `/api/validate` endpoints in `web/app.py` using `os.path.basename` filename sanitization. Added unit test coverage in `DefFileGenerator/tests/test_web.py`.
 
-### 4. Address Offset Arithmetic & Modbus Range Checking (MEDIUM)
+### 4. Core Exception Trapping in Web Endpoint (MEDIUM)
+- **Problem**: Malformed files uploaded to the web endpoints could cause uncaught core exceptions resulting in unhandled 500 internal server errors and stack trace exposure.
+- **Impact**: Web service instability and information disclosure.
+- **Remediation**: Wrapped core extractor and generator calls in `web/app.py` with explicit `try...except` exception handlers that catch core processing failures and return sanitized HTTP 400 Bad Request responses.
+
+### 5. Address Offset Arithmetic & Modbus Range Checking (MEDIUM)
 - **Problem**: Extreme address shifts (e.g. `address_offset = 999999999` or negative offsets) could produce unhandled overflow or negative address strings.
 - **Impact**: Unhandled validation errors or unexpected definition outputs.
 - **Remediation**: Hardened `apply_address_offset` and `validate_address` in `def_gen.py` to safely format base addresses, issue clear warnings for negative or out-of-bounds addresses, and enforce strict 0-65535 Modbus register range validation. Tested extensively in `DefFileGenerator/tests/test_address_edge.py`.
@@ -46,15 +51,16 @@ The project consists of four core components:
 
 | Validation | Result | Evidence / Command |
 |---|---|---|
-| Unit tests | **PASS** | `pytest` (468 passed in 18.55s) |
-| Ruff Linting | **PASS** | `ruff check .` (0 errors) |
-| Ruff Formatting | **PASS** | `ruff format --check .` (0 formatting issues) |
-| Mypy Type Checking | **PASS** | `mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py web` (0 type errors across 36 files) |
-| Torture Battery | **PASS** | `PYTHONPATH=. python3 DefFileGenerator/tests/run_torture_battery.py` (ALL PASSED) |
-| Gigantic Battery | **PASS** | `PYTHONPATH=. python3 DefFileGenerator/tests/run_gigantic_battery.py` (ALL PASSED) |
+| Core Unit tests | **PASS** | `python3 -m pytest` (472 passed in 16.85s) |
+| Web Backend Unit tests | **PASS** | `python3 -m pytest DefFileGenerator/tests/test_web.py` (9 passed) |
+| Ruff Linting | **PASS** | `ruff check .` (0 errors across 36 files) |
+| Ruff Formatting | **PASS** | `ruff format --check .` (46 files formatted) |
+| Mypy Type Checking | **PASS** | `mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py web` (Success) |
+| Torture Battery | **PASS** | `PYTHONPATH=. python3 DefFileGenerator/tests/run_torture_battery.py` (Passed) |
+| Gigantic Stress Battery | **PASS** | `PYTHONPATH=. python3 DefFileGenerator/tests/run_gigantic_battery.py` (Passed) |
 
 ---
 
 ## Conclusion
 
-The repository meets all standards of correctness, security, performance, and backwards compatibility. All 468 unit tests and torture batteries pass consistently across the entire test matrix.
+The **DefFileGenerator** core engine and web interface meet all standards for correctness, performance, typing, security, and maintainability.

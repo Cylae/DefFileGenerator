@@ -6,6 +6,7 @@ Provides REST API endpoints for converting register documentation files
 and validating definition files, completely decoupled from the core generator.
 """
 
+import logging
 import os
 import sys
 import tempfile
@@ -21,6 +22,8 @@ from fastapi.staticfiles import StaticFiles  # noqa: E402
 
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator  # noqa: E402
 from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
+
+logger = logging.getLogger("DefFileGenerator.web")
 
 app = FastAPI(
     title="WebdynSunPM Definition Generator API",
@@ -56,7 +59,12 @@ async def convert_file(
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
-    ext = os.path.splitext(file.filename)[1].lower()
+    # Sanitize filename to prevent path traversal attack
+    safe_filename = os.path.basename(file.filename)
+    if not safe_filename:
+        raise HTTPException(status_code=400, detail="Invalid filename provided.")
+
+    ext = os.path.splitext(safe_filename)[1].lower()
     allowed_exts = {".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"}
     if ext not in allowed_exts:
         raise HTTPException(
@@ -65,7 +73,7 @@ async def convert_file(
         )
 
     with tempfile.TemporaryDirectory() as temp_dir:
-        input_path = os.path.join(temp_dir, file.filename)
+        input_path = os.path.join(temp_dir, safe_filename)
         output_path = os.path.join(temp_dir, "generated_definition.csv")
 
         # Save uploaded bytes to temp file
@@ -86,47 +94,60 @@ async def convert_file(
             else:
                 raise HTTPException(status_code=400, detail="Unsupported file format.")
         except Exception as e:
+            logger.error("Extraction error for %s: %s", safe_filename, e)
             raise HTTPException(
                 status_code=400, detail=f"Failed to extract registers from file: {e}"
             ) from e
 
-        has_data, raw_data_peeked = peek_generator(raw_data)
-        if not has_data:
-            raise HTTPException(
-                status_code=400, detail="No readable register tables found in uploaded file."
+        try:
+            has_data, raw_data_peeked = peek_generator(raw_data)
+            if not has_data:
+                raise HTTPException(
+                    status_code=400, detail="No readable register tables found in uploaded file."
+                )
+
+            mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
+            has_regs, mapped_peeked = peek_generator(mapped_gen)
+            if not has_regs:
+                raise HTTPException(
+                    status_code=400, detail="No valid registers mapped after field cleaning step."
+                )
+
+            # Collect preview rows (up to 500)
+            preview_rows = []
+            full_mapped = list(mapped_peeked)
+            for r in full_mapped[:500]:
+                preview_rows.append(r)
+
+            config = GeneratorConfig(
+                input_file=input_path,
+                output=output_path,
+                manufacturer=manufacturer,
+                model=model,
+                protocol=protocol,
+                category=category,
+                forced_write=forced_write,
+                address_offset=0,
             )
 
-        mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
-        has_regs, mapped_peeked = peek_generator(mapped_gen)
-        if not has_regs:
+            run_generator(config, input_data=full_mapped)
+        except HTTPException:
+            raise
+        except Exception as e:
+            logger.error("Core engine processing failed for %s: %s", safe_filename, e)
             raise HTTPException(
-                status_code=400, detail="No valid registers mapped after field cleaning step."
-            )
-
-        # Collect preview rows (up to 500)
-        preview_rows = []
-        full_mapped = list(mapped_peeked)
-        for r in full_mapped[:500]:
-            preview_rows.append(r)
-
-        config = GeneratorConfig(
-            input_file=input_path,
-            output=output_path,
-            manufacturer=manufacturer,
-            model=model,
-            protocol=protocol,
-            category=category,
-            forced_write=forced_write,
-            address_offset=0,
-        )
-
-        run_generator(config, input_data=full_mapped)
+                status_code=400, detail=f"Core generator processing failed: {e}"
+            ) from e
 
         if not os.path.exists(output_path):
             raise HTTPException(status_code=500, detail="Failed to generate output CSV definition.")
 
         generator = Generator()
-        is_valid = generator.validate_csv(output_path, strict=False)
+        try:
+            is_valid = generator.validate_csv(output_path, strict=False)
+        except Exception as e:
+            logger.warning("Validation check encountered error on generated CSV: %s", e)
+            is_valid = False
 
         # Read generated CSV content
         with open(output_path, encoding="utf-8-sig") as f:
@@ -158,15 +179,27 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
+    # Sanitize filename to prevent path traversal attack
+    safe_filename = os.path.basename(file.filename)
+    if not safe_filename:
+        raise HTTPException(status_code=400, detail="Invalid filename provided.")
+
     with tempfile.TemporaryDirectory() as temp_dir:
-        input_path = os.path.join(temp_dir, file.filename)
+        input_path = os.path.join(temp_dir, safe_filename)
         contents = await file.read()
         with open(input_path, "wb") as f:
             f.write(contents)
 
         generator = Generator()
-        is_valid = generator.validate_csv(input_path, strict=True)
-        return JSONResponse(content={"filename": file.filename, "valid": is_valid})
+        try:
+            is_valid = generator.validate_csv(input_path, strict=True)
+        except Exception as e:
+            logger.error("Validation error for %s: %s", safe_filename, e)
+            raise HTTPException(
+                status_code=400, detail=f"Failed to validate definition CSV: {e}"
+            ) from e
+
+        return JSONResponse(content={"filename": safe_filename, "valid": is_valid})
 
 
 # Serve static web frontend assets
