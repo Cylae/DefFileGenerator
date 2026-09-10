@@ -7,9 +7,23 @@ using the DefFileGenerator package.
 import logging
 import os
 import sys
+from dataclasses import dataclass
+from typing import Optional, Union
 
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
+
+
+@dataclass
+class WebdynDefConfig:
+    input_file: str
+    output_file: str
+    manufacturer: str
+    model: str
+    protocol: str = "modbusRTU"
+    category: str = "Inverter"
+    address_offset: int = 0
+    strict_validation: bool = True
 
 
 def setup_logging():
@@ -17,10 +31,10 @@ def setup_logging():
 
 
 def generate_webdyn_definition(
-    input_file: str,
-    output_file: str,
-    manufacturer: str,
-    model: str,
+    input_file: Union[str, WebdynDefConfig],
+    output_file: Optional[str] = None,
+    manufacturer: Optional[str] = None,
+    model: Optional[str] = None,
     protocol: str = "modbusRTU",
     category: str = "Inverter",
     address_offset: int = 0,
@@ -31,7 +45,7 @@ def generate_webdyn_definition(
     and generates a validated WebdynSunPM definition CSV file.
 
     Args:
-        input_file: Path to the input documentation map
+        input_file: Path to the input documentation map OR a WebdynDefConfig instance
         output_file: Path to save the generated WebdynSunPM definition CSV
         manufacturer: Manufacturer name (e.g., "Huawei")
         model: Model name (e.g., "SUN2000")
@@ -43,23 +57,43 @@ def generate_webdyn_definition(
     Returns:
         bool: True if generation and validation succeeded, False otherwise
     """
-    if not os.path.exists(input_file):
-        logging.error(f"Input file not found: {input_file}")
+    if isinstance(input_file, WebdynDefConfig):
+        cfg = input_file
+        input_file_str = cfg.input_file
+        output_file_str = cfg.output_file
+        mfg = cfg.manufacturer
+        mdl = cfg.model
+        proto = cfg.protocol
+        cat = cfg.category
+        offset = cfg.address_offset
+        strict = cfg.strict_validation
+    else:
+        input_file_str = str(input_file)
+        output_file_str = str(output_file) if output_file is not None else ""
+        mfg = str(manufacturer) if manufacturer is not None else ""
+        mdl = str(model) if model is not None else ""
+        proto = protocol
+        cat = category
+        offset = address_offset
+        strict = strict_validation
+
+    if not os.path.exists(input_file_str):
+        logging.error(f"Input file not found: {input_file_str}")
         return False
 
-    ext = os.path.splitext(input_file)[1].lower()
+    ext = os.path.splitext(input_file_str)[1].lower()
     extractor = Extractor()
 
-    logging.info(f"Step 1: Extracting raw register data from: {input_file}")
+    logging.info(f"Step 1: Extracting raw register data from: {input_file_str}")
     try:
         if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
-            raw_data = extractor.extract_from_excel(input_file)
+            raw_data = extractor.extract_from_excel(input_file_str)
         elif ext == ".pdf":
-            raw_data = extractor.extract_from_pdf(input_file)
+            raw_data = extractor.extract_from_pdf(input_file_str)
         elif ext == ".csv":
-            raw_data = extractor.extract_from_csv(input_file)
+            raw_data = extractor.extract_from_csv(input_file_str)
         elif ext == ".xml":
-            raw_data = extractor.extract_from_xml(input_file)
+            raw_data = extractor.extract_from_xml(input_file_str)
         else:
             logging.error(f"Unsupported file format: {ext}")
             return False
@@ -73,20 +107,20 @@ def generate_webdyn_definition(
         return False
 
     logging.info("Step 2: Cleaning and mapping fields (addresses, types, tags)...")
-    mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
+    mapped_gen = extractor.map_and_clean(raw_data_peeked, offset)
     has_regs, mapped_peeked = peek_generator(mapped_gen)
     if not has_regs:
         logging.error("No valid registers mapped after cleaning step.")
         return False
 
-    logging.info(f"Step 3: Writing WebdynSunPM definition file to: {output_file}")
+    logging.info(f"Step 3: Writing WebdynSunPM definition file to: {output_file_str}")
     config = GeneratorConfig(
-        input_file=input_file,
-        output=output_file,
-        manufacturer=manufacturer,
-        model=model,
-        protocol=protocol,
-        category=category,
+        input_file=input_file_str,
+        output=output_file_str,
+        manufacturer=mfg,
+        model=mdl,
+        protocol=proto,
+        category=cat,
         address_offset=0,  # Already applied during extraction mapping
     )
 
@@ -98,11 +132,11 @@ def generate_webdyn_definition(
 
     logging.info("Step 4: Validating the generated definition file...")
     generator = Generator()
-    is_valid = generator.validate_csv(output_file, strict=strict_validation)
+    is_valid = generator.validate_csv(output_file_str, strict=strict)
 
     if is_valid:
         logging.info(
-            f"Success! Definition file successfully generated and validated at '{output_file}'"
+            f"Success! Definition file successfully generated and validated at '{output_file_str}'"
         )
         return True
     else:
@@ -112,6 +146,14 @@ def generate_webdyn_definition(
 
 def main():
     setup_logging()
+
+    if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+        print("Usage:")
+        print(
+            "  python3 generate_webdyn_def.py <input_file> <output_file> <manufacturer> <model> [protocol] [category]"
+        )
+        print("  python3 generate_webdyn_def.py (runs demo mode if no arguments provided)")
+        sys.exit(0)
 
     # We can run a demo if no arguments are passed, or print usage
     if len(sys.argv) < 5:

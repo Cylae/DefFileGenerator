@@ -197,6 +197,23 @@ class TestGenerateWebdynDef(unittest.TestCase):
                     header = f.readline()
                 self.assertTrue(";Sensor;" in header)
 
+    def test_generate_webdyn_definition_config_dataclass(self):
+        from generate_webdyn_def import WebdynDefConfig, generate_webdyn_definition
+
+        cfg = WebdynDefConfig(
+            input_file=self.input_csv,
+            output_file=self.output_csv,
+            manufacturer="DataclassMfg",
+            model="DataclassModel",
+        )
+        success = generate_webdyn_definition(cfg)
+        self.assertTrue(success)
+        self.assertTrue(os.path.exists(self.output_csv))
+        with open(self.output_csv, encoding="utf-8-sig") as f:
+            header = f.readline()
+        self.assertTrue("DataclassMfg" in header)
+        self.assertTrue("DataclassModel" in header)
+
     def test_module_execution(self):
         import runpy
 

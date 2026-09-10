@@ -56,7 +56,8 @@ async def convert_file(
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
-    ext = os.path.splitext(file.filename)[1].lower()
+    safe_filename = os.path.basename(file.filename)
+    ext = os.path.splitext(safe_filename)[1].lower()
     allowed_exts = {".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"}
     if ext not in allowed_exts:
         raise HTTPException(
@@ -65,7 +66,7 @@ async def convert_file(
         )
 
     with tempfile.TemporaryDirectory() as temp_dir:
-        input_path = os.path.join(temp_dir, file.filename)
+        input_path = os.path.join(temp_dir, safe_filename)
         output_path = os.path.join(temp_dir, "generated_definition.csv")
 
         # Save uploaded bytes to temp file
@@ -158,15 +159,16 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
+    safe_filename = os.path.basename(file.filename)
     with tempfile.TemporaryDirectory() as temp_dir:
-        input_path = os.path.join(temp_dir, file.filename)
+        input_path = os.path.join(temp_dir, safe_filename)
         contents = await file.read()
         with open(input_path, "wb") as f:
             f.write(contents)
 
         generator = Generator()
         is_valid = generator.validate_csv(input_path, strict=True)
-        return JSONResponse(content={"filename": file.filename, "valid": is_valid})
+        return JSONResponse(content={"filename": safe_filename, "valid": is_valid})
 
 
 # Serve static web frontend assets

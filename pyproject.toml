@@ -63,8 +63,10 @@ module = [
   "pdfminer.*",
   "reportlab.*",
   "pandas.*",
+  "numpy.*",
 ]
 ignore_missing_imports = true
+follow_imports = "skip"
 
 [tool.coverage.run]
 source = ["DefFileGenerator"]
