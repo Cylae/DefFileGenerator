@@ -61,7 +61,7 @@ async def convert_file(
     if ext not in allowed_exts:
         raise HTTPException(
             status_code=400,
-            detail=f"Unsupported file format '{ext}'. Allowed: PDF, Excel, CSV, XML.",
+            detail=f"Unsupported file format '{ext}'. Allowed: PDF, Excel, CSV, XML, JSON, HTML, TSV, TXT, MD.",
         )
 
     with tempfile.TemporaryDirectory() as temp_dir:

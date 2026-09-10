@@ -46,7 +46,7 @@ def _perform_extraction(args):
     ext = os.path.splitext(input_file)[1].lower()
     if ext not in ALLOWED_EXTENSIONS:
         logging.error(
-            f"Unsupported file type: {ext}. Supported formats are: .pdf, .xlsx, .xlsm, .xltx, .xltm, .csv, .xml"
+            f"Unsupported file type: {ext}. Supported formats are: .pdf, .xlsx, .xlsm, .xltx, .xltm, .csv, .xml, .json, .html, .htm, .tsv, .txt, .md, .dat, .log"
         )
         sys.exit(1)
 
@@ -69,13 +69,19 @@ def _perform_extraction(args):
         raw_data = extractor.extract_from_excel(input_file, sheet)
     elif ext == ".pdf":
         raw_data = extractor.extract_from_pdf(input_file, pages)
-    elif ext == ".csv":
-        raw_data = extractor.extract_from_csv(input_file)
     elif ext == ".xml":
         raw_data = extractor.extract_from_xml(input_file)
-    else:
+    elif ext == ".json":
+        raw_data = extractor.extract_from_json(input_file)
+    elif ext in [".html", ".htm"]:
+        raw_data = extractor.extract_from_html(input_file)
+    elif ext in [".csv", ".tsv", ".txt", ".md", ".dat", ".log"]:
+        raw_data = extractor.extract_from_csv(input_file)
+    elif ext in [".docx", ".exe", ".dll", ".zip", ".tar", ".gz", ".bin"]:
         logging.error(f"Unsupported file type: {ext}")
         sys.exit(1)
+    else:
+        raw_data = extractor.extract_auto(input_file)
 
     has_data, raw_peeked = peek_generator(raw_data)
     if not has_data:

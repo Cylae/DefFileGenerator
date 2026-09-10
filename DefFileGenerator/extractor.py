@@ -16,6 +16,7 @@ import os
 import sys
 import zipfile
 from collections.abc import Iterable, Iterator
+from html.parser import HTMLParser
 from typing import Any, Optional, Union
 
 # Named logger for this module
@@ -342,6 +343,184 @@ class Extractor:
 
         return xml_tables_generator()
 
+    def extract_from_json(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        def json_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            if not os.path.exists(filepath):
+
+                def missing_json_gen():
+                    logging.error(f"JSON file not found: {filepath}")
+                    yield from ()
+
+                yield missing_json_gen()
+                return
+
+            def json_generator() -> Iterator[dict[str, Any]]:
+                try:
+                    with open(filepath, encoding="utf-8-sig") as f:
+                        data = json.load(f)
+
+                    candidates = []
+                    if isinstance(data, list):
+                        candidates.append(data)
+                    elif isinstance(data, dict):
+                        candidates.append([data])
+
+                        def find_arrays(obj):
+                            if isinstance(obj, dict):
+                                for v in obj.values():
+                                    if isinstance(v, list):
+                                        candidates.append(v)
+                                    elif isinstance(v, dict):
+                                        find_arrays(v)
+                            elif isinstance(obj, list):
+                                for item in obj:
+                                    if isinstance(item, dict):
+                                        find_arrays(item)
+
+                        find_arrays(data)
+
+                    for cand in candidates:
+                        rows = [
+                            item for item in cand if isinstance(item, dict) and any(item.values())
+                        ]
+                        if rows:
+                            for r in rows:
+                                yield {str(k): str(v) for k, v in r.items() if v is not None}
+                except (OSError, json.JSONDecodeError, ValueError, TypeError) as e:
+                    logging.error(f"Error extracting from JSON {filepath}: {e}")
+
+            yield json_generator()
+
+        return json_tables_generator()
+
+    def extract_from_html(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        class HTMLTableExtractor(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.tables = []
+                self.current_table = []
+                self.current_row = []
+                self.current_cell = []
+                self.in_cell = False
+
+            def handle_starttag(self, tag, attrs):
+                t = tag.lower()
+                if t == "table":
+                    self.current_table = []
+                elif t == "tr":
+                    self.current_row = []
+                elif t in ("td", "th"):
+                    self.in_cell = True
+                    self.current_cell = []
+
+            def handle_endtag(self, tag):
+                t = tag.lower()
+                if t in ("td", "th"):
+                    self.in_cell = False
+                    cell_text = " ".join("".join(self.current_cell).split())
+                    self.current_row.append(cell_text)
+                elif t == "tr":
+                    if any(c for c in self.current_row):
+                        self.current_table.append(self.current_row)
+                elif t == "table":
+                    if len(self.current_table) >= 2:
+                        self.tables.append(self.current_table)
+
+            def handle_data(self, data):
+                if self.in_cell:
+                    self.current_cell.append(data)
+
+        def html_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            if not os.path.exists(filepath):
+
+                def missing_html_gen():
+                    logging.error(f"HTML file not found: {filepath}")
+                    yield from ()
+
+                yield missing_html_gen()
+                return
+
+            try:
+                with open(filepath, encoding="utf-8-sig", errors="ignore") as f:
+                    content = f.read()
+
+                parser = HTMLTableExtractor()
+                parser.feed(content)
+
+                for table in parser.tables:
+                    if len(table) < 2:
+                        continue
+                    headers = [str(c).strip() for c in table[0]]
+
+                    def table_gen(
+                        current_table=table, current_headers=headers
+                    ) -> Iterator[dict[str, Any]]:
+                        for row in current_table[1:]:
+                            row_dict = {}
+                            for i, cell in enumerate(row):
+                                if i < len(current_headers):
+                                    row_dict[current_headers[i]] = cell
+                            if any(v.strip() for v in row_dict.values() if v):
+                                yield row_dict
+
+                    yield table_gen()
+            except Exception as e:
+                logging.error(f"Error extracting from HTML {filepath}: {e}")
+
+        return html_tables_generator()
+
+    def extract_auto(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        """Automatically sniff file format and attempt extraction across Excel, PDF, JSON, XML, HTML, and CSV/text."""
+        if not os.path.exists(filepath):
+
+            def missing_file_gen():
+                logging.error(f"File not found: {filepath}")
+                yield from ()
+
+            return iter([missing_file_gen()])
+
+        ext = os.path.splitext(filepath)[1].lower()
+        if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
+            return self.extract_from_excel(filepath)
+        elif ext == ".pdf":
+            return self.extract_from_pdf(filepath)
+        elif ext == ".xml":
+            return self.extract_from_xml(filepath)
+        elif ext == ".json":
+            return self.extract_from_json(filepath)
+        elif ext in [".html", ".htm"]:
+            return self.extract_from_html(filepath)
+        elif ext in [".csv", ".tsv", ".txt", ".md", ".dat", ".log"]:
+            return self.extract_from_csv(filepath)
+
+        # Sniff content for unknown extension
+        try:
+            with open(filepath, "rb") as f:
+                header = f.read(1024)
+        except Exception:
+            header = b""
+
+        if header.startswith(b"PK"):
+            return self.extract_from_excel(filepath)
+        elif header.startswith(b"%PDF"):
+            return self.extract_from_pdf(filepath)
+
+        header_str = header.decode("utf-8", errors="ignore").strip().lower()
+        if header_str.startswith("{") or header_str.startswith("["):
+            return self.extract_from_json(filepath)
+        if (
+            "<html" in header_str
+            or "<table" in header_str
+            or "<body" in header_str
+            or "<!doctype html" in header_str
+        ):
+            return self.extract_from_html(filepath)
+        if header_str.startswith("<") or "<xml" in header_str:
+            return self.extract_from_xml(filepath)
+
+        # Fall back to CSV/text parsing
+        return self.extract_from_csv(filepath)
+
     def map_and_clean(
         self, tables: Optional[Iterable[Iterable[dict[str, Any]]]], address_offset: int = 0
     ) -> Iterator[dict[str, Any]]:
@@ -519,13 +698,19 @@ def main():
         raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == ".pdf":
         raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == ".csv":
-        raw = extractor.extract_from_csv(args.input_file)
     elif ext == ".xml":
         raw = extractor.extract_from_xml(args.input_file)
-    else:
+    elif ext == ".json":
+        raw = extractor.extract_from_json(args.input_file)
+    elif ext in [".html", ".htm"]:
+        raw = extractor.extract_from_html(args.input_file)
+    elif ext in [".csv", ".tsv", ".txt", ".md", ".dat", ".log"]:
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext in [".docx", ".exe", ".dll", ".zip", ".tar", ".gz", ".bin"]:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
+    else:
+        raw = extractor.extract_auto(args.input_file)
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
 
     out = open(args.output, "w", newline="", encoding="utf-8") if args.output else sys.stdout

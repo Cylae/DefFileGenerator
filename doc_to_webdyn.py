@@ -87,13 +87,19 @@ def _run_cli(argv=None):
         raw = extractor.extract_from_excel(args.input_file, sheet_arg)
     elif ext == ".pdf":
         raw = extractor.extract_from_pdf(args.input_file, pages)
-    elif ext == ".csv":
-        raw = extractor.extract_from_csv(args.input_file)
     elif ext == ".xml":
         raw = extractor.extract_from_xml(args.input_file)
-    else:
+    elif ext == ".json":
+        raw = extractor.extract_from_json(args.input_file)
+    elif ext in [".html", ".htm"]:
+        raw = extractor.extract_from_html(args.input_file)
+    elif ext in [".csv", ".tsv", ".txt", ".md", ".dat", ".log"]:
+        raw = extractor.extract_from_csv(args.input_file)
+    elif ext in [".docx", ".exe", ".dll", ".zip", ".tar", ".gz", ".bin"]:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
+    else:
+        raw = extractor.extract_auto(args.input_file)
 
     has_data, raw_peeked = peek_generator(raw)
     if not has_data:
