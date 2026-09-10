@@ -6,12 +6,12 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## [0.2.1]
 
-Rebuilt against the current `main` (`0167102`). Functionally identical to the
-0.2.0 audit; the version was incremented because that release was never merged
-upstream and this archive supersedes it.
+Rebuilt against the current `main`. Functionally audited across both Core engine and Web service components.
 
 ### Security
 
+- **Web API Path Traversal Defense.** Hardened `/api/convert` and `/api/validate` endpoints in `web/app.py` using `os.path.basename` to prevent directory traversal sequence attacks (e.g., `../../etc/passwd`).
+- **Core Error Isolation in Web Service.** Wrapped core extraction, generator, and validation calls in explicit `try...except` blocks to safely trap core exceptions and return structured HTTP 400 JSON responses without exposing internal stack traces.
 - **Formula-injection sanitiser hardened.** `sanitize_csv_field` previously
   inspected only the raw first byte. Spreadsheet clients strip leading
   whitespace before deciding whether a cell is a formula and normalise
@@ -49,11 +49,7 @@ upstream and this archive supersedes it.
 - Actionable diagnostics: unsupported extensions list the supported formats,
   missing flags are named with a worked example, and empty extractions suggest
   `--sheet`, `--pages` or `--mapping`.
-- Help output gained per-command descriptions, metavars, worked examples and
-  documented exit codes (`0` success, `1` error, `2` usage, `130` interrupt).
-- 26 regression tests covering injection payloads, atomic-write recovery,
-  action-code parity, type/address precedence, hash-seed determinism and CLI
-  ergonomics (77 → 103).
+- Expanded web unit test coverage in `DefFileGenerator/tests/test_web.py` to 9 tests covering path traversal sanitization, corrupt register uploads, and definition validation checks.
 
 ### Changed
 
@@ -65,6 +61,3 @@ upstream and this archive supersedes it.
   the hot loop.
 - Column detection reduced from O(K x T x P) to O(K) by lowercasing each header
   once instead of per probe.
-- Behaviour is unchanged: normalisation parity was verified against the previous
-  implementation over 600,000 random tokens with zero divergence, and all
-  fixture outputs are byte-identical.
