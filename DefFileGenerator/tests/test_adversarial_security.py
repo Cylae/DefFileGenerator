@@ -86,6 +86,7 @@ class TestAdversarialSecurity(unittest.TestCase):
         hdr_val = "Huawei\x00Inverter\x07"
         sanitized = Generator.sanitize_csv_field(hdr_val)
         self.assertNotIn("\x00", sanitized)
+        self.assertNotIn("\x07", sanitized)
 
 
 if __name__ == "__main__":
