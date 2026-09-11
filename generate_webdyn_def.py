@@ -7,9 +7,23 @@ using the DefFileGenerator package.
 import logging
 import os
 import sys
+from dataclasses import dataclass
+from typing import Optional, Union
 
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
+
+
+@dataclass
+class WebdynDefConfig:
+    input_file: str
+    output_file: str
+    manufacturer: str
+    model: str
+    protocol: str = "modbusRTU"
+    category: str = "Inverter"
+    address_offset: int = 0
+    strict_validation: bool = True
 
 
 def setup_logging():
@@ -17,10 +31,10 @@ def setup_logging():
 
 
 def generate_webdyn_definition(
-    input_file: str,
-    output_file: str,
-    manufacturer: str,
-    model: str,
+    input_file: Union[str, WebdynDefConfig],
+    output_file: Optional[str] = None,
+    manufacturer: Optional[str] = None,
+    model: Optional[str] = None,
     protocol: str = "modbusRTU",
     category: str = "Inverter",
     address_offset: int = 0,
@@ -31,7 +45,7 @@ def generate_webdyn_definition(
     and generates a validated WebdynSunPM definition CSV file.
 
     Args:
-        input_file: Path to the input documentation map
+        input_file: Path or WebdynDefConfig object
         output_file: Path to save the generated WebdynSunPM definition CSV
         manufacturer: Manufacturer name (e.g., "Huawei")
         model: Model name (e.g., "SUN2000")
@@ -43,6 +57,22 @@ def generate_webdyn_definition(
     Returns:
         bool: True if generation and validation succeeded, False otherwise
     """
+    if isinstance(input_file, WebdynDefConfig):
+        cfg = input_file
+        input_file = cfg.input_file
+        output_file = cfg.output_file
+        manufacturer = cfg.manufacturer
+        model = cfg.model
+        protocol = cfg.protocol
+        category = cfg.category
+        address_offset = cfg.address_offset
+        strict_validation = cfg.strict_validation
+    elif output_file is None or manufacturer is None or model is None:
+        logging.error(
+            "output_file, manufacturer, and model parameters are required when not using WebdynDefConfig."
+        )
+        return False
+
     if not os.path.exists(input_file):
         logging.error(f"Input file not found: {input_file}")
         return False
