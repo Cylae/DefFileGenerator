@@ -117,6 +117,7 @@ class TestApplyAddressOffset(unittest.TestCase):
     def test_non_numeric_address_offset(self):
         self.assertEqual(Generator.apply_address_offset("INVALID_ADDR", 5), "INVALID_ADDR")
 
+
 class TestSanitizeCsvFieldEdge(unittest.TestCase):
     """sanitize_csv_field handles security and numeric edge cases."""
 
