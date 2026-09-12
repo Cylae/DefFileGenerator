@@ -274,5 +274,33 @@ class TestExtractorNormalizeType(unittest.TestCase):
         self.assertEqual(ex.normalize_type("string 10"), "STR10")
 
 
+class TestExtractorErrorHandlingEdgeCases(unittest.TestCase):
+    def setUp(self):
+        from DefFileGenerator.extractor import Extractor
+
+        self.ex = Extractor()
+        logging.disable(logging.CRITICAL)
+
+    def tearDown(self):
+        logging.disable(logging.NOTSET)
+
+    def test_excel_missing_file_generator(self):
+        gen = self.ex.extract_from_excel("/nonexistent/file.xlsx")
+        sheet_gen = next(iter(gen))
+        rows = list(sheet_gen)
+        self.assertEqual(rows, [])
+
+    def test_xml_missing_file_generator(self):
+        gen = self.ex.extract_from_xml("/nonexistent/file.xml")
+        xml_gen = next(iter(gen))
+        rows = list(xml_gen)
+        self.assertEqual(rows, [])
+
+    def test_pdf_invalid_page_reference(self):
+        # Passing an invalid page reference like "abc"
+        gen = self.ex.extract_from_pdf("/nonexistent/file.pdf", pages="abc")
+        self.assertEqual(list(gen), [])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -114,6 +114,25 @@ class TestApplyAddressOffset(unittest.TestCase):
     def test_none_address(self):
         self.assertEqual(Generator.apply_address_offset(None, 10), "")
 
+    def test_non_numeric_address_offset(self):
+        self.assertEqual(Generator.apply_address_offset("INVALID_ADDR", 5), "INVALID_ADDR")
+
+
+class TestSanitizeCsvFieldEdge(unittest.TestCase):
+    """sanitize_csv_field handles security and numeric edge cases."""
+
+    def test_sanitize_leading_space_negative_number(self):
+        res = Generator.sanitize_csv_field(" -123")
+        self.assertEqual(res, "' -123")
+
+    def test_sanitize_valid_negative_number(self):
+        res = Generator.sanitize_csv_field("-123.45")
+        self.assertEqual(res, "-123.45")
+
+    def test_sanitize_control_characters_only(self):
+        res = Generator.sanitize_csv_field("\x01\x02\x03")
+        self.assertEqual(res, "")
+
 
 class TestNormalizeTypeExtended(unittest.TestCase):
     """normalize_type edge cases beyond the precedence test."""
