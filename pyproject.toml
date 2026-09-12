@@ -67,7 +67,6 @@ module = [
   "fastapi.*",
   "starlette.*",
   "uvicorn.*",
-  "httpx.*",
 ]
 ignore_missing_imports = true
 
