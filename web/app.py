@@ -25,6 +25,9 @@ from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
 
 logger = logging.getLogger("DefFileGenerator.web")
 
+MAX_UPLOAD_BYTES = 10 * 1024 * 1024
+UPLOAD_CHUNK_BYTES = 1024 * 1024
+
 app = FastAPI(
     title="WebdynSunPM Definition Generator API",
     description="REST API for parsing Modbus register documentation and generating validated WebdynSunPM definition files.",
@@ -34,10 +37,30 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+async def _save_upload(file: UploadFile, destination: str) -> None:
+    """Persist an upload in bounded chunks and reject oversized payloads."""
+    total = 0
+    try:
+        with open(destination, "wb") as output:
+            while True:
+                chunk = await file.read(UPLOAD_CHUNK_BYTES)
+                if not chunk:
+                    break
+                total += len(chunk)
+                if total > MAX_UPLOAD_BYTES:
+                    raise HTTPException(
+                        status_code=413,
+                        detail=f"Uploaded file exceeds the {MAX_UPLOAD_BYTES // (1024 * 1024)} MiB limit.",
+                    )
+                output.write(chunk)
+    finally:
+        await file.close()
 
 
 @app.get("/api/health")
@@ -76,10 +99,7 @@ async def convert_file(
         input_path = os.path.join(temp_dir, safe_filename)
         output_path = os.path.join(temp_dir, "generated_definition.csv")
 
-        # Save uploaded bytes to temp file
-        contents = await file.read()
-        with open(input_path, "wb") as f:
-            f.write(contents)
+        await _save_upload(file, input_path)
 
         extractor = Extractor()
         try:
@@ -93,11 +113,14 @@ async def convert_file(
                 raw_data = extractor.extract_from_xml(input_path)
             else:
                 raise HTTPException(status_code=400, detail="Unsupported file format.")
-        except Exception as e:
-            logger.error("Extraction error for %s: %s", safe_filename, e)
+        except HTTPException:
+            raise
+        except Exception:
+            logger.exception("Extraction error for %s", safe_filename)
             raise HTTPException(
-                status_code=400, detail=f"Failed to extract registers from file: {e}"
-            ) from e
+                status_code=400,
+                detail="Failed to extract registers from uploaded file.",
+            ) from None
 
         try:
             has_data, raw_data_peeked = peek_generator(raw_data)
@@ -113,11 +136,8 @@ async def convert_file(
                     status_code=400, detail="No valid registers mapped after field cleaning step."
                 )
 
-            # Collect preview rows (up to 500)
-            preview_rows = []
             full_mapped = list(mapped_peeked)
-            for r in full_mapped[:500]:
-                preview_rows.append(r)
+            preview_rows = full_mapped[:500]
 
             config = GeneratorConfig(
                 input_file=input_path,
@@ -133,11 +153,12 @@ async def convert_file(
             run_generator(config, input_data=full_mapped)
         except HTTPException:
             raise
-        except Exception as e:
-            logger.error("Core engine processing failed for %s: %s", safe_filename, e)
+        except Exception:
+            logger.exception("Core engine processing failed for %s", safe_filename)
             raise HTTPException(
-                status_code=400, detail=f"Core generator processing failed: {e}"
-            ) from e
+                status_code=400,
+                detail="Core generator processing failed for uploaded file.",
+            ) from None
 
         if not os.path.exists(output_path):
             raise HTTPException(status_code=500, detail="Failed to generate output CSV definition.")
@@ -145,11 +166,10 @@ async def convert_file(
         generator = Generator()
         try:
             is_valid = generator.validate_csv(output_path, strict=False)
-        except Exception as e:
-            logger.warning("Validation check encountered error on generated CSV: %s", e)
+        except Exception:
+            logger.exception("Validation check encountered an error on generated CSV")
             is_valid = False
 
-        # Read generated CSV content
         with open(output_path, encoding="utf-8-sig") as f:
             csv_content = f.read()
 
@@ -179,25 +199,23 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
-    # Sanitize filename to prevent path traversal attack
     safe_filename = os.path.basename(file.filename)
     if not safe_filename:
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 
     with tempfile.TemporaryDirectory() as temp_dir:
         input_path = os.path.join(temp_dir, safe_filename)
-        contents = await file.read()
-        with open(input_path, "wb") as f:
-            f.write(contents)
+        await _save_upload(file, input_path)
 
         generator = Generator()
         try:
             is_valid = generator.validate_csv(input_path, strict=True)
-        except Exception as e:
-            logger.error("Validation error for %s: %s", safe_filename, e)
+        except Exception:
+            logger.exception("Validation error for %s", safe_filename)
             raise HTTPException(
-                status_code=400, detail=f"Failed to validate definition CSV: {e}"
-            ) from e
+                status_code=400,
+                detail="Failed to validate uploaded definition CSV.",
+            ) from None
 
         return JSONResponse(content={"filename": safe_filename, "valid": is_valid})
 
