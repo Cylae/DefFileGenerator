@@ -32,8 +32,12 @@ class TestBitfieldIntegrity(unittest.TestCase):
             with open(path, "w", newline="", encoding="utf-8") as handle:
                 writer = csv.writer(handle, delimiter=";")
                 writer.writerow(["modbusRTU", "Inverter", "M", "X", "", "", "", "", "", "", ""])
-                writer.writerow(["1", "3", "100_0_4", "BITS", "", "Low nibble", "low", "1", "0", "", "4"])
-                writer.writerow(["2", "3", "100_2_4", "BITS", "", "Overlap", "overlap", "1", "0", "", "4"])
+                writer.writerow(
+                    ["1", "3", "100_0_4", "BITS", "", "Low nibble", "low", "1", "0", "", "4"]
+                )
+                writer.writerow(
+                    ["2", "3", "100_2_4", "BITS", "", "Overlap", "overlap", "1", "0", "", "4"]
+                )
 
             self.assertFalse(Generator().validate_csv(path, strict=True))
 
@@ -43,8 +47,12 @@ class TestBitfieldIntegrity(unittest.TestCase):
             with open(path, "w", newline="", encoding="utf-8") as handle:
                 writer = csv.writer(handle, delimiter=";")
                 writer.writerow(["modbusRTU", "Inverter", "M", "X", "", "", "", "", "", "", ""])
-                writer.writerow(["1", "3", "100_0_4", "BITS", "", "Low nibble", "low", "1", "0", "", "4"])
-                writer.writerow(["2", "3", "100_4_4", "BITS", "", "High nibble", "high", "1", "0", "", "4"])
+                writer.writerow(
+                    ["1", "3", "100_0_4", "BITS", "", "Low nibble", "low", "1", "0", "", "4"]
+                )
+                writer.writerow(
+                    ["2", "3", "100_4_4", "BITS", "", "High nibble", "high", "1", "0", "", "4"]
+                )
 
             self.assertTrue(Generator().validate_csv(path, strict=True))
 
