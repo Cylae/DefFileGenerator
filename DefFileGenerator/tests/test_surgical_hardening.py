@@ -8,8 +8,8 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from DefFileGenerator.def_gen import Generator
 import web.app as web_app_module
+from DefFileGenerator.def_gen import Generator
 
 
 class TestPackagingContract(unittest.TestCase):
