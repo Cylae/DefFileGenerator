@@ -46,7 +46,7 @@ testpaths = ["DefFileGenerator/tests"]
 addopts = "-ra"
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py39"
 line-length = 100
 
 [tool.ruff.lint]
