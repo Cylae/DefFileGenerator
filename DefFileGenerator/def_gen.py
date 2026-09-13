@@ -148,7 +148,10 @@ class Generator:
         # A full-register status/alarm bitmask ("Bitfield16", "Bitfield1 6" once a
         # PDF line-wrap has been collapsed, "Bitfield32", ...) is transported as a
         # plain unsigned integer of matching width, not the discrete "BITS" type.
-        bitfield_match = re.match(r"^bitfield(8|16|32|64)$", t.replace(" ", ""))
+        clean_bitfield_t = re.sub(r"_(wb|b|w)$|\b(swap|big endian|big|word)\b", "", t).replace(
+            " ", ""
+        )
+        bitfield_match = re.match(r"^bitfield(8|16|32|64)$", clean_bitfield_t)
         if bitfield_match:
             return f"U{bitfield_match.group(1)}{suffix}"
 
