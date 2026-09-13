@@ -16,7 +16,7 @@ concurrency:
 jobs:
   auto-merge:
     name: Enable automatic merge for validated Jules PRs
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.head_repository.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - name: Find PR associated with the successful CI run
@@ -24,6 +24,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
@@ -32,26 +33,29 @@ jobs:
           prs="$(gh api \
             -H 'Accept: application/vnd.github+json' \
             "/repos/${REPO}/commits/${HEAD_SHA}/pulls" \
-            --jq '.[] | select(.base.ref == "main") | [.number, .draft, .body] | @tsv')"
+            --jq '.[] | select(.base.ref == "main") | [.number, .draft, (.body // ""), .head.repo.full_name, .user.login] | @tsv')"
 
           if [[ -z "$prs" ]]; then
             echo "No main-targeting PR found for CI commit ${HEAD_SHA}."
             exit 0
           fi
 
-          while IFS=$'\t' read -r number draft body; do
+          while IFS=$'\t' read -r number draft body head_repo author; do
             [[ "$draft" == "false" ]] || continue
+            [[ "$head_repo" == "$REPO" ]] || continue
+            [[ "$author" == "$OWNER" ]] || continue
 
-            # Jules currently identifies its automatically-created PRs with this text.
-            # The workflow never checks out or executes code from the PR branch.
+            # Defense in depth: only same-repository PRs authored by the repository
+            # owner can qualify, and Jules' explicit marker must still be present.
+            # The privileged workflow never checks out or executes PR branch code.
             if grep -Fq 'PR created automatically by Jules' <<< "$body"; then
               echo "pr_number=${number}" >> "$GITHUB_OUTPUT"
-              echo "Found Jules PR #${number}."
+              echo "Found trusted Jules PR #${number}."
               exit 0
             fi
           done <<< "$prs"
 
-          echo "No qualifying Jules PR found."
+          echo "No qualifying trusted Jules PR found."
 
       - name: Enable GitHub auto-merge
         if: ${{ steps.pr.outputs.pr_number != '' }}
