@@ -8,6 +8,7 @@ import math
 import os
 import re
 import sys
+import tempfile
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from typing import Any, Optional, Union
@@ -244,6 +245,15 @@ class Generator:
                 logging.warning(f"Address {base_addr} is out of Modbus range (0-65535)")
                 if strict:
                     return False
+
+            if dtype_upper == "BITS":
+                start_bit = int(parts[1])
+                bit_length = int(parts[2])
+                if bit_length <= 0 or start_bit < 0 or start_bit + bit_length > 16:
+                    logging.warning(
+                        f"BITS address '{address}' must describe a non-empty slice inside bits 0-15"
+                    )
+                    return False
         except (ValueError, IndexError):
             return False
         return True
@@ -374,6 +384,17 @@ class Generator:
             )
         return "3"
 
+    @staticmethod
+    def _bit_slice(address: str, dtype: str) -> tuple[int, int] | None:
+        if dtype.upper() != "BITS":
+            return None
+        try:
+            _, start, length = address.split("_")
+            bit_start = int(start)
+            return bit_start, bit_start + int(length) - 1
+        except (ValueError, IndexError):
+            return None
+
     def _check_address_overlap(
         self,
         info1: str,
@@ -399,18 +420,27 @@ class Generator:
             max_len = usage["max_len"]
 
             is_bits = dtype.upper() == "BITS"
+            current_bits = self._bit_slice(address, dtype)
             overlap_detected = False
 
             import bisect
 
-            idx = bisect.bisect_left(intervals, (start_addr, -1, -1, "", ""))
+            idx = bisect.bisect_left(intervals, (start_addr, -1, -1, "", "", -1, -1))
+
+            def slices_overlap(u_type: str, u_start: int, u_bit_start: int, u_bit_end: int) -> bool:
+                if not (is_bits and u_type == "BITS" and start_addr == u_start):
+                    return True
+                if current_bits is None or u_bit_start < 0 or u_bit_end < 0:
+                    return True
+                bit_start, bit_end = current_bits
+                return max(bit_start, u_bit_start) <= min(bit_end, u_bit_end)
 
             for j in range(idx, len(intervals)):
-                u_start, u_end, u_line, u_name, u_type = intervals[j]
+                u_start, u_end, u_line, u_name, u_type, u_bit_start, u_bit_end = intervals[j]
                 if u_start > end_addr:
                     break
                 if max(start_addr, u_start) <= min(end_addr, u_end):
-                    if is_bits and u_type == "BITS" and start_addr == u_start:
+                    if not slices_overlap(u_type, u_start, u_bit_start, u_bit_end):
                         continue
                     overlap_detected = True
                     warn_key = tuple(sorted((line_num, u_line)))
@@ -421,11 +451,11 @@ class Generator:
                         warned_lines.add(warn_key)
 
             for j in range(idx - 1, -1, -1):
-                u_start, u_end, u_line, u_name, u_type = intervals[j]
+                u_start, u_end, u_line, u_name, u_type, u_bit_start, u_bit_end = intervals[j]
                 if start_addr - u_start > max_len:
                     break
                 if max(start_addr, u_start) <= min(end_addr, u_end):
-                    if is_bits and u_type == "BITS" and start_addr == u_start:
+                    if not slices_overlap(u_type, u_start, u_bit_start, u_bit_end):
                         continue
                     overlap_detected = True
                     warn_key = tuple(sorted((line_num, u_line)))
@@ -435,7 +465,11 @@ class Generator:
                         )
                         warned_lines.add(warn_key)
 
-            bisect.insort(intervals, (start_addr, end_addr, line_num, name, dtype.upper()))
+            bit_start, bit_end = current_bits if current_bits is not None else (-1, -1)
+            bisect.insort(
+                intervals,
+                (start_addr, end_addr, line_num, name, dtype.upper(), bit_start, bit_end),
+            )
             if reg_count > max_len:
                 usage["max_len"] = reg_count
             return overlap_detected
@@ -631,7 +665,7 @@ class Generator:
         *args: Any,
         **kwargs: Any,
     ) -> None:
-        """Centralized method to write the WebdynSunPM CSV format."""
+        """Centralized method to write the WebdynSunPM CSV format atomically for paths."""
         if isinstance(config, (CSVHeaderConfig, GeneratorConfig)):
             mfg_val = getattr(config, "manufacturer", "") or ""
             model_val = getattr(config, "model", "") or ""
@@ -659,9 +693,17 @@ class Generator:
         type_counts = {"1": 0, "2": 0, "3": 0, "4": 0}
         type_labels = {"1": "Coils", "2": "Discrete", "3": "Holding", "4": "Input"}
         outfile: Any = None
+        temp_path: Optional[str] = None
         try:
             if isinstance(output, str):
-                outfile = open(output, "w", newline="", encoding="utf-8-sig")
+                target_path = os.path.abspath(output)
+                target_dir = os.path.dirname(target_path)
+                fd, temp_path = tempfile.mkstemp(
+                    prefix=f".{os.path.basename(target_path)}.",
+                    suffix=".tmp",
+                    dir=target_dir,
+                )
+                outfile = os.fdopen(fd, "w", newline="", encoding="utf-8-sig")
             elif output is None:
                 outfile = sys.stdout
             else:
@@ -704,6 +746,14 @@ class Generator:
                 type_counts[row["Info1"]] = type_counts.get(row["Info1"], 0) + 1
                 total += 1
 
+            if isinstance(output, str):
+                outfile.flush()
+                os.fsync(outfile.fileno())
+                outfile.close()
+                outfile = None
+                os.replace(temp_path, os.path.abspath(output))
+                temp_path = None
+
             summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
             if summary:
                 logging.info(f"Generated {total} registers ({summary})")
@@ -712,6 +762,11 @@ class Generator:
         finally:
             if isinstance(output, str) and outfile is not None:
                 outfile.close()
+            if temp_path is not None:
+                try:
+                    os.unlink(temp_path)
+                except FileNotFoundError:
+                    pass
 
 
 def generate_template(output_file: Optional[str], mode: str = "input") -> None:
