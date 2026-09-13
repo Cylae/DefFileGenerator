@@ -751,6 +751,7 @@ class Generator:
                 os.fsync(outfile.fileno())
                 outfile.close()
                 outfile = None
+                assert temp_path is not None
                 os.replace(temp_path, os.path.abspath(output))
                 temp_path = None
 
