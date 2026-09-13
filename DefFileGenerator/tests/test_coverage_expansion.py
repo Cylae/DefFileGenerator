@@ -330,5 +330,44 @@ class TestMainCliCoverage(unittest.TestCase):
             self.assertEqual(cm.exception.code, 1)
 
 
+class TestAdversarialAndEdgeCaseExpansion(unittest.TestCase):
+    def setUp(self):
+        logging.disable(logging.CRITICAL)
+
+    def tearDown(self):
+        logging.disable(logging.NOTSET)
+
+    def test_apply_address_offset_negative_offset_and_hex(self):
+        from DefFileGenerator.def_gen import Generator
+
+        # Address offset resulting in negative address
+        res = Generator.apply_address_offset("0x05", -10, line_num=10, name="NegTest")
+        self.assertEqual(res, "-5")
+
+        # Compound bitfield address with negative offset
+        res = Generator.apply_address_offset("100_0_8", -20)
+        self.assertEqual(res, "80_0_8")
+
+    def test_normalize_type_unhandled_synonyms_and_edge_types(self):
+        from DefFileGenerator.def_gen import Generator
+
+        self.assertEqual(Generator.normalize_type("str"), "STRING")
+        self.assertEqual(Generator.normalize_type("bitfield16"), "U16")
+        self.assertEqual(Generator.normalize_type("bitfield32 swap"), "U32_WB")
+        self.assertEqual(Generator.normalize_type("unknown_custom_type"), "UNKNOWN_CUSTOM_TYPE")
+
+    def test_validate_address_bits_boundary_conditions(self):
+        from DefFileGenerator.def_gen import Generator
+
+        # Valid bitfield within 0-15
+        self.assertTrue(Generator.validate_address("1000_0_16", "BITS"))
+        self.assertTrue(Generator.validate_address("1000_15_1", "BITS"))
+
+        # Invalid bitfield exceeding 16 bits limit
+        self.assertFalse(Generator.validate_address("1000_0_17", "BITS"))
+        self.assertFalse(Generator.validate_address("1000_8_9", "BITS"))
+        self.assertFalse(Generator.validate_address("1000_0_0", "BITS"))
+
+
 if __name__ == "__main__":
     unittest.main()
