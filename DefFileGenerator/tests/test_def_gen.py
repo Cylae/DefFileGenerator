@@ -1,7 +1,9 @@
+import csv
 import logging
 import os
+import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from DefFileGenerator.def_gen import Generator
 
@@ -235,8 +237,6 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(processed[2]["Action"], "1")  # write -> 1
 
     def test_generate_template_modes(self):
-        import os
-
         from DefFileGenerator.def_gen import generate_template
 
         # Test input mode
@@ -281,7 +281,9 @@ class TestGenerator(unittest.TestCase):
 
     def test_write_output_csv_os_error_on_open(self):
         logging.disable(logging.NOTSET)
-        with patch("builtins.open", side_effect=OSError("Permission denied")):
+        with patch(
+            "DefFileGenerator.def_gen.tempfile.mkstemp", side_effect=OSError("Permission denied")
+        ):
             with self.assertLogs(level="ERROR") as log:
                 Generator.write_output_csv("invalid_path.csv", [], "Mfg", "Model")
                 self.assertTrue(
@@ -289,24 +291,22 @@ class TestGenerator(unittest.TestCase):
                 )
 
     def test_write_output_csv_error_during_write_and_cleanup(self):
-        import csv
-        from unittest.mock import MagicMock
-
-        file_obj = MagicMock()
-
         logging.disable(logging.NOTSET)
-        with patch("builtins.open", return_value=file_obj):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_path = os.path.join(tmpdir, "dummy.csv")
             with patch("csv.writer") as mock_writer_cls:
                 mock_writer = MagicMock()
                 mock_writer.writerow.side_effect = csv.Error("CSV write error")
                 mock_writer_cls.return_value = mock_writer
 
                 with self.assertLogs(level="ERROR") as log:
-                    Generator.write_output_csv("dummy.csv", [], "Mfg", "Model")
+                    Generator.write_output_csv(output_path, [], "Mfg", "Model")
                     self.assertTrue(
                         any("Error writing output CSV: CSV write error" in m for m in log.output)
                     )
-                file_obj.close.assert_called_once()
+
+            self.assertFalse(os.path.exists(output_path))
+            self.assertEqual(os.listdir(tmpdir), [])
 
 
 if __name__ == "__main__":
@@ -326,8 +326,6 @@ class TestGeneratorUncoveredEdgeCases(unittest.TestCase):
         logging.disable(logging.CRITICAL)
 
     def test_validate_csv_malformed_lines(self):
-        import tempfile
-
         generator = Generator()
         with tempfile.NamedTemporaryFile("w+", delete=False, suffix=".csv") as f:
             f.write("modbusRTU;Inverter\n")

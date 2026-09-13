@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DefFileGenerator — Technical Booklet</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;background:#e9eef5;font-family:Inter,Arial,sans-serif;color:#102033}
+  .page{width:794px;height:1123px;margin:24px auto;background:#f8fafc;position:relative;overflow:hidden;padding:72px 68px;page-break-after:always}
+  .dark{background:#0c1728;color:#f7fbff}.ink{color:#102033}.muted{color:#617087}.dark .muted{color:#9fb0c5}
+  .eyebrow{font-size:14px;letter-spacing:2.2px;text-transform:uppercase;font-weight:800;color:#4f7cff;margin-bottom:22px}
+  h1{font-size:56px;line-height:.98;margin:0 0 26px;letter-spacing:-2.5px} h2{font-size:38px;line-height:1.05;margin:0 0 24px;letter-spacing:-1.5px}
+  h3{font-size:19px;margin:0 0 8px}.lead{font-size:23px;line-height:1.45;max-width:610px}.body{font-size:16px;line-height:1.6}
+  .accent{color:#5f86ff}.lime{color:#6de4b4}.rule{height:1px;background:#dce4ee;margin:28px 0}.dark .rule{background:#23344c}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{background:#fff;border:1px solid #dfe7f0;border-radius:18px;padding:22px}.dark .card{background:#13233a;border-color:#263b57}
+  .pill{display:inline-block;border:1px solid #cfd9e7;border-radius:99px;padding:7px 12px;margin:4px 5px 4px 0;font-size:13px;font-weight:700}.dark .pill{border-color:#35506f}
+  .metric{font-size:38px;font-weight:850;letter-spacing:-1px}.caption{font-size:13px;color:#718096;line-height:1.4}.dark .caption{color:#9fb0c5}
+  .flow{display:flex;align-items:center;gap:8px;margin:30px 0}.node{flex:1;padding:18px 12px;border-radius:14px;text-align:center;background:#fff;border:1px solid #dfe7f0;font-weight:800}.dark .node{background:#13233a;border-color:#263b57}.arrow{font-size:24px;color:#5f86ff}
+  .code{background:#091321;color:#dcecff;border-radius:16px;padding:18px 20px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;line-height:1.6;white-space:pre-wrap}
+  .check{display:flex;gap:12px;margin:13px 0}.dot{width:11px;height:11px;border-radius:50%;background:#6de4b4;margin-top:7px;flex:0 0 auto}
+  .risk{border-left:4px solid #ffb454;padding:14px 18px;background:#fff8eb;border-radius:0 12px 12px 0;color:#3d2d13}.dark .risk{background:#2a251d;color:#ffe1a8}
+  .footer{position:absolute;left:68px;right:68px;bottom:40px;display:flex;justify-content:space-between;font-size:12px;color:#8190a5}.dark .footer{color:#7186a2}
+  .orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.8}.orb.a{width:360px;height:360px;right:-120px;top:-80px;background:radial-gradient(circle at 30% 30%,#6de4b4,#4169ff 65%,transparent 66%)}
+  .orb.b{width:300px;height:300px;left:-130px;bottom:-110px;background:radial-gradient(circle at 60% 40%,#5f86ff,#253d69 65%,transparent 66%)}
+  .kicker{font-size:14px;font-weight:800;color:#6de4b4;letter-spacing:.8px}.bigline{font-size:29px;line-height:1.25;font-weight:800;letter-spacing:-.7px}
+  .mini{font-size:12px;line-height:1.5}.stack{display:grid;gap:12px}.bar{height:8px;border-radius:99px;background:#dfe6ef;overflow:hidden}.bar span{display:block;height:100%;background:#5f86ff}
+  table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid #dfe7f0}th{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#718096}
+</style>
+</head>
+<body>
+
+<section class="page dark" data-document-role="page" data-label="Cover">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="eyebrow">Technical product booklet · 2026 audit edition</div>
+  <h1>DefFile<br><span class="accent">Generator</span></h1>
+  <p class="lead">From heterogeneous Modbus documentation to clean, validated WebdynSunPM definition files.</p>
+  <div style="margin-top:70px;max-width:560px">
+    <div class="kicker">PDF · EXCEL · CSV · XML</div>
+    <div class="bigline" style="margin-top:10px">Extract. Normalize. Validate. Generate.</div>
+    <p class="body muted">A Python library, CLI and FastAPI interface engineered for repeatable register-map conversion, defensive parsing and field-ready CSV output.</p>
+  </div>
+  <div class="footer"><span>Cylae / DefFileGenerator</span><span>01</span></div>
+</section>
+
+<section class="page" data-document-role="page" data-label="Mission">
+  <div class="eyebrow">01 · Mission</div>
+  <h2>One pipeline for messy manufacturer documentation.</h2>
+  <p class="lead ink">Register maps are rarely standardized. DefFileGenerator turns inconsistent source documents into a deterministic WebdynSunPM definition workflow.</p>
+  <div class="flow">
+    <div class="node">Source<br><span class="caption">PDF / XLSX / CSV / XML</span></div><div class="arrow">→</div>
+    <div class="node">Extract<br><span class="caption">tables + rows</span></div><div class="arrow">→</div>
+    <div class="node">Map<br><span class="caption">heuristics</span></div>
+  </div>
+  <div class="flow" style="margin-top:8px">
+    <div class="node">Normalize<br><span class="caption">types + addresses</span></div><div class="arrow">→</div>
+    <div class="node">Validate<br><span class="caption">range + overlap</span></div><div class="arrow">→</div>
+    <div class="node">Generate<br><span class="caption">Webdyn CSV</span></div>
+  </div>
+  <div class="grid2" style="margin-top:38px">
+    <div class="card"><h3>Format-agnostic input</h3><p class="body muted">Vendor column names are mapped through exact, synonym and partial matching tiers.</p></div>
+    <div class="card"><h3>Deterministic output</h3><p class="body muted">Addresses, data types, coefficients, tags and action codes are normalized before export.</p></div>
+    <div class="card"><h3>CLI + API</h3><p class="body muted">Use the command line for automation or the FastAPI interface for browser-based conversion.</p></div>
+    <div class="card"><h3>Validation first</h3><p class="body muted">Generated definitions can be checked for malformed types, ranges, tags and address collisions.</p></div>
+  </div>
+  <div class="footer"><span>Product overview</span><span>02</span></div>
+</section>
+
+<section class="page dark" data-document-role="page" data-label="Architecture">
+  <div class="eyebrow">02 · Architecture</div>
+  <h2>A small core with explicit boundaries.</h2>
+  <div class="stack" style="margin-top:34px">
+    <div class="card"><div class="kicker">EXTRACTOR</div><h3>Document ingestion</h3><p class="body muted">pdfplumber · openpyxl · csv.Sniffer · defusedxml. Lazy iterators keep the pipeline composable and reduce unnecessary materialization.</p></div>
+    <div class="card"><div class="kicker">MAPPER</div><h3>Column inference & cleanup</h3><p class="body muted">Samples source rows, resolves vendor header synonyms, applies address offsets and converts manufacturer-specific type notation.</p></div>
+    <div class="card"><div class="kicker">GENERATOR</div><h3>Webdyn semantic model</h3><p class="body muted">Computes Info fields, tags, coefficients, register widths, action codes and output rows.</p></div>
+    <div class="card"><div class="kicker">VALIDATOR</div><h3>Integrity gates</h3><p class="body muted">Checks Modbus bounds, type validity, tag uniqueness and interval / bit-slice overlap before deployment.</p></div>
+  </div>
+  <div style="margin-top:25px">
+    <span class="pill">Generator-based</span><span class="pill">Typed</span><span class="pill">Tested</span><span class="pill">No hidden schema</span>
+  </div>
+  <div class="footer"><span>Architecture</span><span>03</span></div>
+</section>
+
+<section class="page" data-document-role="page" data-label="Modbus semantics">
+  <div class="eyebrow">03 · Modbus semantics</div>
+  <h2>Correctness lives in the details.</h2>
+  <div class="grid2">
+    <div class="card"><div class="metric">0–65535</div><div class="caption">validated Modbus base-address range</div></div>
+    <div class="card"><div class="metric">16 bits</div><div class="caption">bounded bit-slice model for BITS values</div></div>
+  </div>
+  <div class="rule"></div>
+  <h3>Compound address notation</h3>
+  <table>
+    <tr><th>Semantic type</th><th>Notation</th><th>Example</th></tr>
+    <tr><td>Scalar register</td><td>address</td><td><b>40001</b></td></tr>
+    <tr><td>String</td><td>address_length</td><td><b>30030_20</b></td></tr>
+    <tr><td>Bit slice</td><td>address_startbit_length</td><td><b>30001_8_4</b></td></tr>
+  </table>
+  <div class="grid2" style="margin-top:32px">
+    <div class="card"><h3 class="lime">✓ Disjoint</h3><p class="body"><b>100_0_4</b><br><b>100_4_4</b></p><p class="caption">Two independent 4-bit slices on the same register.</p></div>
+    <div class="card"><h3 style="color:#dd554f">✕ Overlap</h3><p class="body"><b>100_0_4</b><br><b>100_2_4</b></p><p class="caption">The second slice intersects bits already used by the first.</p></div>
+  </div>
+  <div class="risk" style="margin-top:32px"><b>Hardening change:</b> strict validation now checks bit-level overlap instead of treating every BITS field sharing a base register as automatically independent.</div>
+  <div class="footer"><span>Register integrity</span><span>04</span></div>
+</section>
+
+<section class="page dark" data-document-role="page" data-label="Security">
+  <div class="eyebrow">04 · Security</div>
+  <h2>Defensive by construction.</h2>
+  <div class="grid2" style="margin-top:30px">
+    <div class="card"><h3>CSV injection</h3><p class="body muted">Formula-triggering values and Unicode variants are escaped before spreadsheet consumption.</p></div>
+    <div class="card"><h3>XXE protection</h3><p class="body muted">Untrusted XML is parsed through defusedxml; DTD and external entity attacks are rejected.</p></div>
+    <div class="card"><h3>Atomic output</h3><p class="body muted">Definitions are staged, fsynced and atomically replaced so a failed write cannot truncate the existing production file.</p></div>
+    <div class="card"><h3>Bounded uploads</h3><p class="body muted">The web API streams request bodies in chunks and enforces a 10 MiB upload ceiling.</p></div>
+    <div class="card"><h3>Error privacy</h3><p class="body muted">Internal exception details stay in server logs instead of leaking filesystem paths or parser internals to clients.</p></div>
+    <div class="card"><h3>Automation trust</h3><p class="body muted">Privileged auto-merge only accepts owner-authored, same-repository PRs after successful CI.</p></div>
+  </div>
+  <p class="body muted" style="margin-top:34px">The web CORS policy remains public for non-credentialed access. Credentials are explicitly disabled while wildcard origins are in use.</p>
+  <div class="footer"><span>Security model</span><span>05</span></div>
+</section>
+
+<section class="page" data-document-role="page" data-label="Quality gates">
+  <div class="eyebrow">05 · Quality gates</div>
+  <h2>CI checks what users actually receive.</h2>
+  <div class="grid3" style="margin-top:26px">
+    <div class="card"><div class="metric">3</div><div class="caption">Python runtimes<br>3.10 · 3.11 · 3.12</div></div>
+    <div class="card"><div class="metric">500+</div><div class="caption">unit / integration tests in the established suite</div></div>
+    <div class="card"><div class="metric">1 wheel</div><div class="caption">built and inspected for runtime web assets</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="check"><span class="dot"></span><div><b>Ruff</b><div class="caption">linting and formatting consistency</div></div></div>
+  <div class="check"><span class="dot"></span><div><b>mypy</b><div class="caption">core package and FastAPI backend type checking</div></div></div>
+  <div class="check"><span class="dot"></span><div><b>Bandit</b><div class="caption">security scan covers core and web surfaces</div></div></div>
+  <div class="check"><span class="dot"></span><div><b>pytest + branch coverage</b><div class="caption">behavioral regression suite, including web endpoints</div></div></div>
+  <div class="check"><span class="dot"></span><div><b>Wheel integrity</b><div class="caption">CI confirms `web/app.py` and static UI assets are actually shipped</div></div></div>
+  <div class="card" style="margin-top:35px;background:#eef3ff;border-color:#cbd8ff"><h3>Metadata tells the truth</h3><p class="body muted">The package now declares Python ≥ 3.10, matching syntax already used by the repository and the tested CI floor.</p></div>
+  <div class="footer"><span>Quality & packaging</span><span>06</span></div>
+</section>
+
+<section class="page dark" data-document-role="page" data-label="Quick start">
+  <div class="eyebrow">06 · Quick start</div>
+  <h2>From documentation to definition in one command.</h2>
+  <p class="body muted">Install the project, run a conversion, then validate the generated definition before deployment.</p>
+  <div class="code" style="margin-top:32px"># install core + web interface
+python -m pip install -e ".[web]"
+
+# full conversion
+deffilegen run datasheet.pdf \
+  --manufacturer "Huawei" \
+  --model "SUN2000" \
+  -o huawei_sun2000.csv
+
+# strict validation
+deffilegen validate huawei_sun2000.csv
+
+# web UI / REST API
+uvicorn web.app:app --host 127.0.0.1 --port 8000</div>
+  <div class="grid2" style="margin-top:30px">
+    <div class="card"><h3>Extract only</h3><p class="mini muted">deffilegen extract register-map.xlsx --sheet Registers -o normalized.csv</p></div>
+    <div class="card"><h3>Generate only</h3><p class="mini muted">deffilegen generate normalized.csv --manufacturer SMA --model STP5000 -o sma.csv</p></div>
+  </div>
+  <div class="footer"><span>Getting started</span><span>07</span></div>
+</section>
+
+<section class="page" data-document-role="page" data-label="Closing">
+  <div class="eyebrow">07 · Engineering outcome</div>
+  <h1 style="font-size:50px">Less manual mapping.<br><span class="accent">More confidence.</span></h1>
+  <p class="lead ink">DefFileGenerator concentrates the fragile parts of register-map conversion into explicit, testable rules.</p>
+  <div class="rule"></div>
+  <div class="grid2">
+    <div><div class="kicker" style="color:#4f7cff">INPUT</div><p class="body">Heterogeneous vendor files, imperfect headers, mixed encodings and device-specific notation.</p></div>
+    <div><div class="kicker" style="color:#4f7cff">OUTPUT</div><p class="body">Normalized, validated WebdynSunPM definitions with defensive file handling and reproducible CI gates.</p></div>
+  </div>
+  <div class="card" style="margin-top:55px">
+    <h3>Repository</h3>
+    <p class="body"><b>github.com/Cylae/DefFileGenerator</b></p>
+    <p class="caption">This booklet is generated from versioned project documentation so visual communication and source code evolve together.</p>
+  </div>
+  <div style="position:absolute;bottom:120px;left:68px" class="bigline">Build definitions.<br>Validate assumptions.<br><span class="accent">Ship with evidence.</span></div>
+  <div class="footer"><span>DefFileGenerator · 2026</span><span>08</span></div>
+</section>
+
+</body>
+</html>

@@ -1,87 +1,118 @@
 # WebdynSunPM DefFileGenerator & Documentation Parser
 
-A production-grade Python library and CLI toolset for extracting Modbus register maps from heterogeneous manufacturer documentation formats (**PDF, Excel, CSV, XML**) and generating validated, standardized **WebdynSunPM definition CSV files**.
+A production-grade Python library, CLI, and optional FastAPI interface for extracting Modbus register maps from heterogeneous manufacturer documentation (**PDF, Excel, CSV, XML**) and generating validated **WebdynSunPM definition CSV files**.
 
----
-
-## 🏗️ System Architecture & Workflow
-
-The system is designed around a decoupled, generator-based streaming pipeline:
+## Architecture
 
 ```text
-[ Document Source ] (PDF / Excel / CSV / XML)
-         │
-         ▼
-[ Extractor Pipeline ] ──► (Lazy Row Generators & Two-Pass Heuristic Mapping)
-         │
-         ▼
-[ Generator Core ]     ──► (Address Normalization, Type Conversion, Offset Shift)
-         │
-         ▼
-[ Validation Layer ]   ──► (O(log N) Bisect Overlap Check, Tag Uniqueness, Range Check)
-         │
-         ▼
-[ Output Writer ]      ──► (CSV Injection Sanitization, Webdyn Header & Line Formatting)
+[ PDF / Excel / CSV / XML ]
+            │
+            ▼
+[ Extractor ]
+  format-specific readers
+  + lazy row generators
+            │
+            ▼
+[ Mapper / Cleaner ]
+  exact → synonym → partial
+  column resolution
+            │
+            ▼
+[ Generator Core ]
+  types · addresses · tags
+  coefficients · actions
+            │
+            ▼
+[ Validation Layer ]
+  range · tag uniqueness
+  register + bit overlap
+            │
+            ▼
+[ Atomic CSV Writer ]
+  sanitization · fsync
+  atomic replace
 ```
 
-### 1. Extractor Layer (`DefFileGenerator/extractor.py`)
-- **PDF Extraction**: Employs `pdfplumber` to extract structured visual tables page-by-page. Handles newline collapsing, merged cell whitespace normalization, and selective page range parsing.
-- **Excel Parsing**: Uses `openpyxl` in `read_only=True` mode with `data_only=True` to stream cell values without evaluating formula trees or consuming memory for unused formatting.
-- **CSV Parsing**: Uses `csv.Sniffer` to detect delimiters (`,`, `;`, `\t`) and character encodings (`utf-8-sig`, `utf-16` BOM), handling multi-dialect inputs.
-- **XML Parsing**: Uses `defusedxml.ElementTree` to parse hierarchical register maps while enforcing strict protections against DTDs, XXE attacks, and entity expansion bombs.
+### Extraction
 
-### 2. Two-Pass Heuristic Column Mapping
-The extractor dynamically identifies target metadata fields (`Address`, `Name`, `Type`, `Unit`, `Action`, `Factor`, `Gain`, `Offset`, `ScaleFactor`, `Length`, `StartBit`) from varied manufacturer headers using a three-tier algorithm:
-1. **Target-Name Exact Match**: Case-insensitive exact name matching.
-2. **Synonym Pattern Matching**: Matching against pre-compiled synonym dictionaries (e.g., `reg type`, `modbus type` -> `RegisterType`).
-3. **Substring Partial Matching**: Fallback fuzzy match for complex headers (e.g. `Register Start Address` -> `Address`).
+- **PDF** — `pdfplumber` table extraction with page selection and newline cleanup.
+- **Excel** — `openpyxl` in `read_only=True`, `data_only=True` mode.
+- **CSV** — BOM-aware decoding plus delimiter detection.
+- **XML** — `defusedxml.ElementTree`, rejecting DTD/entity based attacks.
 
-### 3. Modbus Address Normalization & Overlap Detection
-- **Address Formatting**: Converts hex strings (`0x1000`, `1000h`), negative hex/decimal values, and compound register formats (`address_startbit_length` for bitfields; `address_bytes` for strings).
-- **O(log N) Interval Bisect Lookup**: Overlap verification uses `bisect.bisect_left` on sorted interval lists `(start_addr, end_addr)`. Registers of width 1 (U16/I16/Coil), 2 (U32/I32/F32/IP), 4 (U64/I64/F64), 3 (MAC), or 8 (IPV6) are checked in logarithmic time against previously mapped registers, allowing real-time validation of large scale files (5000+ registers) without $O(N^2)$ bottlenecks.
-- **Address Offset Application**: Applies an integer shift (`address_offset`) across all addresses while validating that resulting addresses remain within valid Modbus bounds ($0$ to $65535$).
+### Column mapping
 
-### 4. Data Type Normalization & Coefficient Calculation
-- **Types Supported**: `U8`, `I8`, `U16`, `I16`, `U32`, `I32`, `U64`, `I64`, `F32`, `F64`, `STRING`, `BITS`, `IP`, `IPV6`, `MAC`.
-- **Endianness Flags**: Endianness hints in input strings (`swap`, `big endian`, `word`) automatically yield normalized suffixes (`_WB`, `_B`, `_W`).
-- **Coefficients (`CoefA` & `CoefB`)**: Linear scaling parameters are calculated as:
-  $$\text{CoefA} = \text{Factor} \times 10^{\text{ScaleFactor}}$$
-  $$\text{CoefB} = \text{Offset}$$
-  Both values are formatted cleanly to 6 decimal places.
+The mapper resolves vendor-specific columns in three tiers:
 
----
+1. case-insensitive exact internal-name match;
+2. exact synonym match against `Extractor.COLUMN_MAPPING`;
+3. partial fallback match.
 
-## 🔒 Security Specifications
+Explicit JSON overrides remain available through `--mapping`.
 
-- **CSV Formula Injection Mitigation**: `Generator.sanitize_csv_field` prevents spreadsheet macro execution. Any field starting with formula triggers (`=`, `+`, `-`, `@`, `|`, `%`), fullwidth variants (`\uff1d`, `\uff0b`, `\uff0d`, `\uff20`), or leading control characters (`\t`, `\r`, `\n`, NBSP) has a single apostrophe (`'`) prepended. Valid numeric literals (`-10.5`, `+25`, `1.5e3`) are preserved as numbers.
-- **Control Character Filtering**: Non-printable characters (such as embedded null bytes `\x00`) are stripped before writing output CSVs.
-- **XXE & Bomb Resistance**: XML parsing strictly enforces `defusedxml` constraints (`DTDForbidden`, `EntitiesForbidden`, `ExternalReferenceForbidden`).
+### Modbus semantics
 
----
+The generator normalizes:
 
-## 💻 Usage & CLI Reference
+- decimal and hexadecimal addresses;
+- register widths for `U8/I8`, `U16/I16`, `U32/I32/F32/IP`, `U64/I64/F64`, `MAC`, `IPV6`, `STRING`, and `BITS`;
+- data type / endianness aliases;
+- coefficients (`CoefA = Factor × 10^ScaleFactor`, `CoefB = Offset`);
+- tags, register type codes, and actions.
 
-### 1. Primary CLI (`DefFileGenerator/main.py` / `deffilegen`)
+`BITS` values use `address_startbit_length`. A slice must stay inside one 16-bit register, and strict validation detects overlapping slices on the same base register. See [`docs/input-format.md`](docs/input-format.md).
 
-#### Subcommands:
-- `run`: Extracts registers from documentation and generates a validated definition CSV in a single pass.
-- `extract`: Extracts raw registers into an intermediate normalized CSV.
-- `generate`: Converts an intermediate register CSV into a WebdynSunPM definition CSV.
-- `validate`: Validates an existing definition file for Tag uniqueness, Type validity, and Address overlaps.
+## Requirements & installation
 
-#### Example Usage:
+Python **3.10+** is required.
+
 ```bash
-# Full conversion run
-deffilegen run datasheet.pdf --manufacturer "Huawei" --model "SUN2000" -o webdyn_huawei.csv
+# Core CLI / library
+python -m pip install -e .
+
+# Core + FastAPI web interface
+python -m pip install -e ".[web]"
+
+# Development / test dependencies
+python -m pip install -e ".[dev,web]"
+```
+
+The wheel includes the `web` package and its static frontend assets; CI builds and inspects the wheel to enforce that packaging contract.
+
+## CLI
+
+The installed entry point is `deffilegen`.
+
+```bash
+# Full extraction + generation
+deffilegen run datasheet.pdf \
+  --manufacturer "Huawei" \
+  --model "SUN2000" \
+  -o huawei_sun2000.csv
 
 # Extraction only
-deffilegen extract inverter_map.xlsx --sheet "Registers" -o extracted.csv
+deffilegen extract inverter_map.xlsx \
+  --sheet "Registers" \
+  -o extracted.csv
 
-# Validation
-deffilegen validate webdyn_huawei.csv
+# Generate from normalized CSV
+deffilegen generate extracted.csv \
+  --manufacturer "SMA" \
+  --model "STP5000" \
+  -o sma_stp5000.csv
+
+# Strict validation
+deffilegen validate sma_stp5000.csv
 ```
 
-### 2. Direct Programmatic API (`generate_webdyn_def.py`)
+Main subcommands:
+
+- `run` — extract, generate, and validate in one workflow;
+- `extract` — create an intermediate normalized register CSV;
+- `generate` — build a WebdynSunPM definition from normalized data;
+- `validate` — check an existing definition.
+
+## Programmatic API
 
 ```python
 from generate_webdyn_def import generate_webdyn_definition
@@ -98,14 +129,61 @@ success = generate_webdyn_definition(
 )
 ```
 
----
+## Web interface
 
-## 🧪 Quality Assurance & Test Suite
+Run the optional FastAPI backend with:
 
-The repository maintains 100% test pass rate across:
-- **Unit & Integration Suite**: `pytest` (463 tests passing)
-- **Static Type Checking**: `mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py`
-- **Linting & Formatting**: `ruff check .` and `ruff format --check .`
-- **Stress & Torture Batteries**:
-  - `run_torture_battery.py`: Tests ambiguous column resolution, string length shifts, and extreme edge cases.
-  - `run_gigantic_battery.py`: Benchmark execution across 5,000+ registers, memory streaming checks, and type normalization call volumes.
+```bash
+uvicorn web.app:app --host 127.0.0.1 --port 8000
+```
+
+Endpoints:
+
+- `GET /api/health`
+- `POST /api/convert`
+- `POST /api/validate`
+
+Uploads are streamed in bounded chunks and capped at **10 MiB**. Parser/generator exceptions are logged server-side while API clients receive sanitized error messages. Wildcard CORS is non-credentialed.
+
+## Security & integrity
+
+Key controls include:
+
+- **CSV formula-injection mitigation** for ASCII and Unicode trigger variants;
+- **control-character filtering** before CSV output;
+- **XXE / entity-expansion protection** through `defusedxml`;
+- **atomic output replacement** so a failed generation cannot truncate an existing definition file;
+- **bit-slice range and overlap validation** for `BITS` addresses;
+- **bounded web uploads** and non-disclosure of internal exception text;
+- **privileged auto-merge trust checks** restricting the Jules workflow to owner-authored, same-repository PRs after successful CI.
+
+See [`docs/security.md`](docs/security.md) for the complete security model.
+
+## Quality gates
+
+The established suite contains **500+ unit and integration tests**. GitHub Actions runs the project across Python 3.10, 3.11, and 3.12 with:
+
+```text
+ruff check .
+ruff format --check .
+mypy DefFileGenerator web
+bandit -r DefFileGenerator web -ll
+python -m pytest --cov=DefFileGenerator --cov=web
+```
+
+CI also builds a wheel and verifies that `web/app.py` plus the static frontend assets are present in the distributable artifact.
+
+Additional stress batteries cover ambiguous column resolution, large register maps, string length semantics, and type normalization behavior.
+
+## Documentation
+
+- [`docs/quickstart.md`](docs/quickstart.md) — concise usage walkthrough
+- [`docs/input-format.md`](docs/input-format.md) — accepted columns and address notation
+- [`docs/architecture.md`](docs/architecture.md) — internal architecture
+- [`docs/security.md`](docs/security.md) — security and integrity guarantees
+- [`docs/development.md`](docs/development.md) — contributor workflow
+- [`docs/booklet/def-file-generator-booklet.html`](docs/booklet/def-file-generator-booklet.html) — versioned source for the visual Canva booklet
+
+## License
+
+MIT.

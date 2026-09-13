@@ -7,7 +7,7 @@ name = "def-file-generator"
 version = "0.2.1"
 description = "Extract Modbus register maps and generate WebdynSunPM definition CSV files."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "MIT"
 authors = [{name = "Cylae"}]
 dependencies = [
@@ -36,7 +36,10 @@ dev = [
 deffilegen = "DefFileGenerator.main:main"
 
 [tool.setuptools.packages.find]
-include = ["DefFileGenerator*"]
+include = ["DefFileGenerator*", "web*"]
+
+[tool.setuptools.package-data]
+web = ["static/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["DefFileGenerator/tests"]
