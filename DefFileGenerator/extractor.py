@@ -174,7 +174,21 @@ class Extractor:
         "Gain": ["gain"],
         "Offset": ["offset", "bias", "coefficient b", "coefb", "coef_b"],
         "ScaleFactor": ["scalefactor", "scale factor"],
-        "Length": ["length", "len", "size", "count", "quantity", "qty", "nb registers"],
+        "Length": [
+            "length",
+            "len",
+            "size",
+            "count",
+            "quantity",
+            "qty",
+            "nb registers",
+            "number of reg",
+            "number of regs",
+            "nb of reg",
+            "no. of reg",
+            "no of reg",
+            "number of registers",
+        ],
         "StartBit": ["startbit", "start bit", "bit offset", "start_bit"],
     }
 
@@ -186,6 +200,70 @@ class Extractor:
         if Generator is not None:
             return Generator.normalize_type(t)
         return str(t).upper() if t else "U16"
+
+    @staticmethod
+    def _infer_table_columns(table: list[list[Any]]) -> Optional[list[str]]:
+        if not table or len(table) < 1:
+            return None
+        cols_count = max(len(r) for r in table)
+        col_scores = {
+            c: {"addr": 0, "type": 0, "rw": 0, "len": 0, "name": 0, "unit": 0, "gain": 0}
+            for c in range(cols_count)
+        }
+        type_pattern = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.IGNORECASE)
+        rw_pattern = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
+        unit_pattern = re.compile(r"^(v|a|w|kw|kwh|mwh|var|kvar|hz|%|deg|c|℃)$", re.IGNORECASE)
+
+        for row in table[:10]:
+            for c, val in enumerate(row):
+                if not val:
+                    continue
+                v_clean = re.sub(r"\s+", "", str(val).strip())
+                if re.match(r"^(0x[0-9a-fA-F]+|\d{4,5})$", v_clean):
+                    try:
+                        val_int = int(v_clean, 0)
+                        if 100 <= val_int <= 65535:
+                            col_scores[c]["addr"] += 1
+                    except ValueError:
+                        pass
+                if type_pattern.match(v_clean):
+                    col_scores[c]["type"] += 1
+                if rw_pattern.match(v_clean):
+                    col_scores[c]["rw"] += 1
+                if v_clean in ("1", "2", "4", "8", "10", "15", "16", "32"):
+                    col_scores[c]["len"] += 1
+                if v_clean in ("1", "10", "100", "1000", "10000"):
+                    col_scores[c]["gain"] += 1
+                if unit_pattern.match(v_clean):
+                    col_scores[c]["unit"] += 1
+                if len(str(val).strip()) > 3 and not re.match(r"^\d+$", v_clean):
+                    col_scores[c]["name"] += 1
+
+        addr_col = max(col_scores.keys(), key=lambda c: col_scores[c]["addr"])
+        type_col = max(col_scores.keys(), key=lambda c: col_scores[c]["type"])
+        if (
+            col_scores[addr_col]["addr"] >= 1
+            and col_scores[type_col]["type"] >= 1
+            and addr_col != type_col
+        ):
+            headers = [""] * cols_count
+            headers[addr_col] = "Address"
+            headers[type_col] = "Type"
+            used = {addr_col, type_col}
+            for attr, pat_name in [
+                ("ReadWrite", "rw"),
+                ("Name", "name"),
+                ("Length", "len"),
+                ("Unit", "unit"),
+                ("Gain", "gain"),
+            ]:
+                cands = [c for c in col_scores if c not in used and col_scores[c][pat_name] >= 1]
+                if cands:
+                    best_c = max(cands, key=lambda c: col_scores[c][pat_name])
+                    headers[best_c] = attr
+                    used.add(best_c)
+            return headers
+        return None
 
     def extract_from_excel(
         self, filepath: str, sheet_name: Optional[str] = None
@@ -380,7 +458,10 @@ class Extractor:
                                 for idx, r in enumerate(current_table[:8]):
                                     if any(
                                         c
-                                        and re.match(r"^(0x[0-9a-fA-F]+|\d{1,5})$", str(c).strip())
+                                        and re.match(
+                                            r"^(0x[0-9a-fA-F]+|\d{1,5})$",
+                                            re.sub(r"\s+", "", str(c).strip()),
+                                        )
                                         for c in r
                                     ):
                                         first_addr_idx = idx
@@ -423,18 +504,25 @@ class Extractor:
                                     if first_addr_idx is not None
                                     else min(4, len(current_table))
                                 )
-                                for idx, r in enumerate(current_table[: max(1, max_scan)]):
-                                    if not r:
-                                        continue
-                                    score = sum(
-                                        1
-                                        for c in r
-                                        if c is not None
-                                        and any(k in str(c).lower() for k in keywords)
-                                    )
-                                    if score > best_score:
-                                        best_score = score
-                                        best_idx = idx
+                                if max_scan > 0:
+                                    for idx, r in enumerate(current_table[:max_scan]):
+                                        if not r:
+                                            continue
+                                        score = 0
+                                        for c in r:
+                                            if not c:
+                                                continue
+                                            c_str = str(c).lower().strip()
+                                            c_clean = "".join(c_str.split())
+                                            for k in keywords:
+                                                if k == "format" and "information" in c_str:
+                                                    continue
+                                                if k in c_str or k in c_clean:
+                                                    score += 1
+                                                    break
+                                        if score > best_score:
+                                            best_score = score
+                                            best_idx = idx
 
                                 cols_count = len(current_table[0])
 
@@ -468,11 +556,16 @@ class Extractor:
                                     combined_headers = list(last_headers)
                                     data_rows = current_table
                                 else:
-                                    combined_headers = [
-                                        str(c).replace("\n", " ").strip() if c else ""
-                                        for c in current_table[0]
-                                    ]
-                                    data_rows = current_table[1:]
+                                    inferred = Extractor._infer_table_columns(current_table)
+                                    if inferred:
+                                        combined_headers = inferred
+                                        data_rows = current_table
+                                    else:
+                                        combined_headers = [
+                                            str(c).replace("\n", " ").strip() if c else ""
+                                            for c in current_table[0]
+                                        ]
+                                        data_rows = current_table[1:]
 
                                 # Header alignment shift: if col c_i is empty and col c_i+1 has text,
                                 # while in data rows col c_i has data and col c_i+1 is empty
@@ -681,7 +774,7 @@ class Extractor:
                 "StartBit",
             ]
 
-            # 1. Exact target-name match (case-insensitive)
+            # 1. Exact target-name match (case-insensitive and space-normalized)
             for target in detection_order:
                 if target in col_map:
                     continue
@@ -689,20 +782,25 @@ class Extractor:
                 for src_col in all_keys:
                     if src_col in used_src_cols:
                         continue
-                    if str(src_col).lower().strip() == target_low:
+                    src_str = str(src_col).lower().strip()
+                    src_clean = re.sub(r"\s+", "", src_str)
+                    if src_str == target_low or src_clean == target_low:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
 
-            # 2. Pattern-based exact match
+            # 2. Pattern-based exact match (including space-normalized)
             for target in detection_order:
                 if target in col_map:
                     continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                clean_patterns = [re.sub(r"\s+", "", p) for p in patterns]
                 for src_col in all_keys:
                     if src_col in used_src_cols:
                         continue
-                    if str(src_col).lower().strip() in patterns:
+                    src_str = str(src_col).lower().strip()
+                    src_clean = re.sub(r"\s+", "", src_str)
+                    if src_str in patterns or src_clean in clean_patterns:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
@@ -724,14 +822,35 @@ class Extractor:
                 if target in col_map:
                     continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                clean_patterns = [re.sub(r"\s+", "", p) for p in patterns]
                 for src_col in all_keys:
                     if src_col in used_src_cols:
                         continue
                     src_low = str(src_col).lower().strip()
-                    # Guard: If column contains name/description terms, do not match it as Address
-                    if target == "Address" and any(ind in src_low for ind in NAME_INDICATORS):
+                    src_clean = re.sub(r"\s+", "", src_low)
+                    # Guard: If column contains name/description terms or metadata terms, do not match it as Address
+                    NON_ADDRESS_TERMS = {
+                        "country",
+                        "region",
+                        "standard",
+                        "category",
+                        "degree",
+                        "version",
+                        "date",
+                        "time",
+                        "team",
+                        "firmware",
+                    }
+                    if target == "Address" and (
+                        any(ind in src_low for ind in NAME_INDICATORS)
+                        or any(ind in src_clean for ind in NAME_INDICATORS)
+                        or any(t in src_low for t in NON_ADDRESS_TERMS)
+                        or any(t in src_clean for t in NON_ADDRESS_TERMS)
+                    ):
                         continue
-                    if any(p in src_low for p in patterns):
+                    if any(p in src_low for p in patterns) or any(
+                        cp in src_clean for cp in clean_patterns
+                    ):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
@@ -740,7 +859,9 @@ class Extractor:
                 continue
 
             length_src = str(col_map.get("Length", "")).lower()
-            length_is_register_quantity = any(p in length_src for p in ("quantity", "count", "qty"))
+            length_is_register_quantity = any(
+                p in length_src for p in ("quantity", "count", "qty", "reg")
+            )
 
             def process_row(
                 r: dict[str, Any],
@@ -751,12 +872,23 @@ class Extractor:
                 addr_val = str(new_row.get("Address") or "").strip()
                 if not addr_val:
                     return None
+                # Collapse internal whitespace for fragmented digits from PDFs (e.g. "3000 0" -> "30000", "4700 2" -> "47002")
+                compact_addr = re.sub(r"\s+", "", addr_val)
+                if compact_addr.isdigit() or (
+                    compact_addr.lower().startswith("0x") and compact_addr[2:].isalnum()
+                ):
+                    addr_val = compact_addr
+
                 sbit = str(r.get(col_map.get("StartBit", ""), "")).strip()
                 slen = str(r.get(col_map.get("Length", ""), "")).strip()
+                compact_slen = re.sub(r"\s+", "", slen)
+                if compact_slen.isdigit():
+                    slen = compact_slen
+
                 raw_type = new_row.get("Type", "U16")
                 dtype = Generator.normalize_type(raw_type) if Generator else str(raw_type).upper()
                 new_row["Type"] = dtype
-                addr = str(new_row.get("Address", "")).strip()
+                addr = addr_val
 
                 is_string_type = dtype == "STRING" or dtype.startswith("STR")
                 if is_string_type and slen.isdigit() and length_is_register_quantity:
@@ -788,10 +920,13 @@ class Extractor:
                 # Factor/multiplier column was already detected.
                 if not new_row.get("Factor"):
                     gain_str = str(new_row.get("Gain", "")).strip()
+                    compact_gain = re.sub(r"\s+", "", gain_str)
+                    if compact_gain.isdigit():
+                        gain_str = compact_gain
                     if gain_str and Generator is not None:
                         gain_val = Generator._parse_numeric(gain_str, default=0.0)
                         if gain_val:
-                            new_row["Factor"] = str(1.0 / gain_val)
+                            new_row["Factor"] = f"{1.0 / gain_val:.6f}"
 
                 if new_row.get("Factor") is not None:
                     if Generator is not None:

@@ -298,3 +298,29 @@ class TestExtractorUncoveredEdgeCases(unittest.TestCase):
             self.assertEqual(len(tables), 0)
         finally:
             ext_mod.HAS_DEFUSEDXML = old_val
+
+    def test_infer_table_columns_continuation(self):
+        """Verifies content-based column inference for headerless continuation tables."""
+        raw_table = [
+            ["29", "Subpackage 7 info", "RO", "U3 2", "", "30124", "2", "Notes"],
+            ["30", "Subpackage 8 info", "RO", "U3 2", "", "30126", "2", "Notes"],
+        ]
+        inferred = Extractor._infer_table_columns(raw_table)
+        self.assertIsNotNone(inferred)
+        self.assertIn("Address", inferred)
+        self.assertIn("Type", inferred)
+        self.assertIn("Name", inferred)
+        self.assertEqual(inferred[5], "Address")
+        self.assertEqual(inferred[3], "Type")
+
+    def test_normalize_type_kerning_and_variants(self):
+        """Verifies normalization handles PDF kerning artifacts and signed/swap variants."""
+        self.assertEqual(Extractor.normalize_type("u1 6"), "U16")
+        self.assertEqual(Extractor.normalize_type("u 3 2"), "U32")
+        self.assertEqual(Extractor.normalize_type("bitfield 16"), "U16")
+        self.assertEqual(Extractor.normalize_type("Bitfield1 6"), "U16")
+        self.assertEqual(Extractor.normalize_type("str*30"), "STR30")
+        self.assertEqual(Extractor.normalize_type("s16"), "I16")
+        self.assertEqual(Extractor.normalize_type("s32"), "I32")
+        self.assertEqual(Extractor.normalize_type("u32 swap"), "U32_WB")
+        self.assertEqual(Extractor.normalize_type("unsigned int 16"), "U16")

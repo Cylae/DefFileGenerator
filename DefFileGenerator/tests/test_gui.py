@@ -282,7 +282,10 @@ class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
             issues=[],
             stats={"errors": 0, "warnings": 0, "types": {"3": 1}, "registers": 1},
         )
-        with patch.object(gui_module.messagebox, "showinfo"):
+        with (
+            patch.object(gui_module.messagebox, "showinfo"),
+            patch.object(gui_module.messagebox, "showerror"),
+        ):
             self.app._on_conversion_success("test_out_fallback.csv", mock_rows, mock_report)
 
         self.assertEqual(self.app.last_generated_file, "test_out_fallback.csv")

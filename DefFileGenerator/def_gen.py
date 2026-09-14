@@ -148,6 +148,18 @@ class Generator:
         if not dtype:
             return "U16"
         t = str(dtype).lower().strip()
+        # Collapse internal whitespace for fragmented PDF font extractions (e.g. "u1 6" -> "u16", "st r" -> "str")
+        compact_t = re.sub(r"\s+", "", t)
+        if compact_t in ("str", "string"):
+            return "STRING"
+        if compact_t in ("u16", "u32", "i16", "i32", "s16", "s32", "u64", "i64", "f32", "f64"):
+            if compact_t.startswith("s"):
+                return f"I{compact_t[1:]}".upper()
+            return compact_t.upper()
+
+        for _ in range(2):
+            t = re.sub(r"([a-zA-Z0-9])\s+(\d+)\b", r"\1\2", t)
+
         suffix = ""
         if any(x in t for x in ["_wb", "swap", "big endian"]):
             suffix = "_WB"
@@ -179,14 +191,14 @@ class Generator:
 
         # Mapping ordered by specificity
         synonyms = [
-            (r"unsigned integer 64|unsigned int 64|uint64|\bu64\b", "U64"),
-            (r"signed integer 64|signed int 64|sint64|int64|\bi64\b|\bs64\b", "I64"),
-            (r"unsigned integer 32|unsigned int 32|uint32|\bu32\b", "U32"),
-            (r"signed integer 32|signed int 32|sint32|int32|\bi32\b|\bs32\b", "I32"),
-            (r"unsigned integer 16|unsigned int 16|uint16|\bu16\b", "U16"),
-            (r"signed integer 16|signed int 16|sint16|int16|\bi16\b|\bs16\b", "I16"),
-            (r"unsigned integer 8|unsigned int 8|uint8|\bu8\b", "U8"),
-            (r"signed integer 8|signed int 8|sint8|int8|\bi8\b|\bs8\b", "I8"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*64|uint64|\bu64\b", "U64"),
+            (r"signed\s*(?:int(?:eger)?)?\s*64|sint64|\bint64\b|\bi64\b|\bs64\b", "I64"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*32|uint32|\bu32\b", "U32"),
+            (r"signed\s*(?:int(?:eger)?)?\s*32|sint32|\bint32\b|\bi32\b|\bs32\b", "I32"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b", "U16"),
+            (r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b", "I16"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b", "U8"),
+            (r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b", "I8"),
             (r"float64|double|\bf64\b", "F64"),
             (r"float32|float|\bf32\b", "F32"),
             (r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b", "BITS"),

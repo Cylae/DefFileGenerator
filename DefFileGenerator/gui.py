@@ -1138,7 +1138,7 @@ class DefFileGenApp:
             self.btn_convert.configure(state="normal")
             if hasattr(self, "progress_bar"):
                 self.progress_bar.stop()
-                if HAS_CUSTOMTKINTER:
+                if hasattr(self.progress_bar, "set"):
                     self.progress_bar.set(1.0)
 
             self.last_generated_file = output_path
@@ -1193,7 +1193,7 @@ class DefFileGenApp:
         self.btn_convert.configure(state="normal")
         if hasattr(self, "progress_bar"):
             self.progress_bar.stop()
-            if HAS_CUSTOMTKINTER:
+            if hasattr(self.progress_bar, "set"):
                 self.progress_bar.set(0)
         self.lbl_results_badge.configure(text=f"❌ Erreur : {error_msg}")
         messagebox.showerror(
