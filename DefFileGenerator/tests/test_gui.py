@@ -238,7 +238,6 @@ class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
         except Exception as e:
             raise unittest.SkipTest(f"Tkinter environment not available: {e}") from e
 
-
     @classmethod
     def tearDownClass(cls):
         try:
@@ -295,4 +294,3 @@ class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

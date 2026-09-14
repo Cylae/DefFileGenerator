@@ -208,7 +208,6 @@ class Generator:
         t = _CLEAN_TYPE_RE.sub("", t)
         return t.upper() if t else "U16"
 
-
     @staticmethod
     def validate_type(dtype: str) -> bool:
         dtype_upper = str(dtype).upper()

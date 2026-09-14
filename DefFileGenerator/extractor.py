@@ -337,7 +337,9 @@ class Extractor:
 
                             # Skip metadata header/footer boxes (<= 3 rows containing document revision metadata)
                             if len(table) <= 3:
-                                text_meta = " ".join(str(c) for row in table for c in row if c).lower()
+                                text_meta = " ".join(
+                                    str(c) for row in table for c in row if c
+                                ).lower()
                                 meta_keywords = [
                                     "prepared by",
                                     "firmware team",
@@ -353,7 +355,9 @@ class Extractor:
 
                             # Skip serial communication / connection parameter tables (2 columns with baud rate, parity, etc.)
                             if len(table[0]) <= 2:
-                                text_comm = " ".join(str(c) for row in table for c in row if c).lower()
+                                text_comm = " ".join(
+                                    str(c) for row in table for c in row if c
+                                ).lower()
                                 comm_keywords = [
                                     "baud rate",
                                     "parity",
@@ -375,7 +379,8 @@ class Extractor:
                                 first_addr_idx = None
                                 for idx, r in enumerate(current_table[:8]):
                                     if any(
-                                        c and re.match(r"^(0x[0-9a-fA-F]+|\d{1,5})$", str(c).strip())
+                                        c
+                                        and re.match(r"^(0x[0-9a-fA-F]+|\d{1,5})$", str(c).strip())
                                         for c in r
                                     ):
                                         first_addr_idx = idx
@@ -424,7 +429,8 @@ class Extractor:
                                     score = sum(
                                         1
                                         for c in r
-                                        if c is not None and any(k in str(c).lower() for k in keywords)
+                                        if c is not None
+                                        and any(k in str(c).lower() for k in keywords)
                                     )
                                     if score > best_score:
                                         best_score = score
@@ -435,7 +441,9 @@ class Extractor:
                                 if best_score >= 2:
                                     header_end = (
                                         first_addr_idx
-                                        if (first_addr_idx is not None and first_addr_idx > best_idx)
+                                        if (
+                                            first_addr_idx is not None and first_addr_idx > best_idx
+                                        )
                                         else best_idx + 1
                                     )
                                     combined_headers = []
@@ -768,7 +776,6 @@ class Extractor:
                     addr = f"{addr}_{sbit}_{slen}"
                 elif is_string_type and slen != "" and "_" not in addr:
                     addr = f"{addr}_{slen}"
-
 
                 if Generator is not None:
                     new_row["Address"] = Generator.apply_address_offset(addr, address_offset)

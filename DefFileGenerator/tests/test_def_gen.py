@@ -376,5 +376,3 @@ class TestGeneratorUncoveredEdgeCases(unittest.TestCase):
             extractor.map_and_clean([[{"Address": "40001_3_1", "Type": "BITS", "Name": "Status"}]])
         )
         self.assertEqual(cleaned_bits2[0]["Address"], "40001_3_1")
-
-

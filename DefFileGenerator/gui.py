@@ -1564,7 +1564,9 @@ class DefFileGenApp:
             self.lbl_tmpl_desc.configure(text=EQUIPMENT_TEMPLATES[choice]["description"])
 
     def _generate_template_action(self) -> None:
-        category = self.opt_tmpl_category.get() if hasattr(self, "opt_tmpl_category") else "Inverter"
+        category = (
+            self.opt_tmpl_category.get() if hasattr(self, "opt_tmpl_category") else "Inverter"
+        )
         tmpl_data = EQUIPMENT_TEMPLATES.get(category, EQUIPMENT_TEMPLATES["Inverter"])
 
         save_path = filedialog.asksaveasfilename(
@@ -1613,14 +1615,10 @@ class DefFileGenApp:
             )
             btn_copy.pack(side="left")
         else:
-            btn_clear = ttk.Button(
-                btn_bar, text="🗑️ Effacer les logs", command=self._clear_logs
-            )
+            btn_clear = ttk.Button(btn_bar, text="🗑️ Effacer les logs", command=self._clear_logs)
             btn_clear.pack(side="left", padx=(0, 8))
 
-            btn_copy = ttk.Button(
-                btn_bar, text="📋 Copier les logs", command=self._copy_logs
-            )
+            btn_copy = ttk.Button(btn_bar, text="📋 Copier les logs", command=self._copy_logs)
             btn_copy.pack(side="left")
 
         # Scrolled text widget for console
