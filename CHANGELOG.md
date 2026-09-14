@@ -62,7 +62,7 @@ Rebuilt against the current `main`. Functionally audited, hardened, and verified
   - High-DPI per-monitor awareness via Windows 11 API `SetProcessDpiAwareness(2)`.
   - Responsive multi-threaded worker architecture (`threading.Thread`) keeping the GUI reactive without freezing.
   - Dark/Light mode theme integration matching Windows 11 system preferences.
-  - 4 functional tabs: *Conversion & Génération* (with live register table preview), *Validateur de Définition* (line-by-line syntax & overlap inspection), *Modèles d'Équipement* (pre-configured Inverters, Meters, Pyranometers, Batteries, Weather Stations), and *Console & Logs*.
+  - 4 functional tabs: *Conversion & Generation* (with live register table preview), *Definition Validator* (line-by-line syntax & overlap inspection), *Equipment Templates* (pre-configured Inverters, Meters, Pyranometers, Batteries, Weather Stations), and *Console & Logs*.
   - Entry points: `deffilegen-gui`, `deffilegen gui`, `deffilegen --gui`, and double-click `launch_gui.bat`.
 - **Smart Header Detection for PDF Tables.** Added semantic keyword density scanning across the first 4 rows of PDF tables in `Extractor.extract_from_pdf` to bypass merged title rows.
 - **Structured Validation Diagnostics.** Added `validate_csv_detailed` returning `ValidationReport` and `ValidationIssue` objects for rich diagnostics across CLI, Web API, and Desktop GUI.
