@@ -131,10 +131,10 @@ deffilegen --gui
 ```
 
 ### Key Capabilities:
-- **⚡ Conversion & Génération** : Select or browse documentation (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`). Auto-infers manufacturer and model from filenames, extracts registers in a background thread without freezing the UI, and displays an interactive preview table with quick actions (*Open CSV*, *Open Folder*, *Copy CSV*).
-- **🛡️ Validateur de Définition** : Instant validation of WebdynSunPM definition files against strict specifications (mandatory headers, duplicate tags, data type syntax, address ranges, bit-slice collisions) with color-coded diagnostic table and exportable audit report.
-- **📋 Modèles d'Équipement** : Pre-configured templates for Photovoltaic Inverters, Energy Meters, Irradiance Sensors / Pyranometers, Battery Energy Storage Systems (BESS), Weather Stations, Trackers, and Generic Modbus devices.
-- **📜 Console & Logs en direct** : Real-time log streaming with severity color cues (INFO, WARNING, ERROR), log filtering, and clipboard export.
+- **⚡ Conversion & Generation** : Select or browse documentation (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`). Auto-infers manufacturer and model from filenames, extracts registers in a background thread without freezing the UI, and displays an interactive preview table with quick actions (*Open CSV*, *Open Folder*, *Copy CSV*).
+- **🛡️ Definition Validator** : Instant validation of WebdynSunPM definition files against strict specifications (mandatory headers, duplicate tags, data type syntax, address ranges, bit-slice collisions) with color-coded diagnostic table and exportable audit report.
+- **📋 Equipment Templates** : Pre-configured templates for Photovoltaic Inverters, Energy Meters, Irradiance Sensors / Pyranometers, Battery Energy Storage Systems (BESS), Weather Stations, Trackers, and Generic Modbus devices.
+- **📜 Console & Live Logs** : Real-time log streaming with severity color cues (INFO, WARNING, ERROR), log filtering, and clipboard export.
 
 ## Programmatic API
 

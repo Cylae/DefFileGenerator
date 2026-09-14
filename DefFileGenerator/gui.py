@@ -594,9 +594,9 @@ class DefFileGenApp:
         if HAS_CUSTOMTKINTER:
             self.tabs = ctk.CTkTabview(self.root, corner_radius=10)
             self.tabs.pack(fill="both", expand=True, padx=16, pady=(8, 16))
-            self.tab_convert = self.tabs.add("⚡ Conversion & Génération")
-            self.tab_validator = self.tabs.add("🛡️ Validateur de Définition")
-            self.tab_templates = self.tabs.add("📋 Modèles d'Équipement")
+            self.tab_convert = self.tabs.add("⚡ Conversion & Generation")
+            self.tab_validator = self.tabs.add("🛡️ Definition Validator")
+            self.tab_templates = self.tabs.add("📋 Equipment Templates")
             self.tab_logs = self.tabs.add("📜 Console & Logs")
         else:
             self.tabs = ttk.Notebook(self.root)
@@ -605,9 +605,9 @@ class DefFileGenApp:
             self.tab_validator = ttk.Frame(self.tabs)
             self.tab_templates = ttk.Frame(self.tabs)
             self.tab_logs = ttk.Frame(self.tabs)
-            self.tabs.add(self.tab_convert, text="Conversion & Génération")
+            self.tabs.add(self.tab_convert, text="Conversion & Generation")
             self.tabs.add(self.tab_validator, text="Validateur")
-            self.tabs.add(self.tab_templates, text="Modèles")
+            self.tabs.add(self.tab_templates, text="Templates")
             self.tabs.add(self.tab_logs, text="Logs")
 
         self._build_convert_tab()
@@ -633,25 +633,25 @@ class DefFileGenApp:
         file_frame = (
             ctk.CTkFrame(parent, corner_radius=8)
             if HAS_CUSTOMTKINTER
-            else ttk.LabelFrame(parent, text="Fichier Documentation Source")
+            else ttk.LabelFrame(parent, text="Source Documentation File")
         )
         file_frame.pack(fill="x", padx=12, pady=(8, 6))
 
         if HAS_CUSTOMTKINTER:
             lbl_file = ctk.CTkLabel(
                 file_frame,
-                text="Fichier Source (PDF, Excel .xlsx, CSV, XML) :",
+                text="Source File (PDF, Excel .xlsx, CSV, XML) :",
                 font=ctk.CTkFont(weight="bold"),
             )
             lbl_file.grid(row=0, column=0, sticky="w", padx=14, pady=(10, 2))
 
             self.entry_input_file = ctk.CTkEntry(
-                file_frame, placeholder_text="Sélectionnez ou glissez un fichier...", width=620
+                file_frame, placeholder_text="Select or drag a file...", width=620
             )
             self.entry_input_file.grid(row=1, column=0, padx=14, pady=(0, 10), sticky="ew")
 
             btn_browse_in = ctk.CTkButton(
-                file_frame, text="📂 Parcourir...", width=120, command=self._browse_input_file
+                file_frame, text="📂 Browse...", width=120, command=self._browse_input_file
             )
             btn_browse_in.grid(row=1, column=1, padx=(0, 14), pady=(0, 10))
 
@@ -668,7 +668,7 @@ class DefFileGenApp:
         params_frame = (
             ctk.CTkFrame(parent, corner_radius=8)
             if HAS_CUSTOMTKINTER
-            else ttk.LabelFrame(parent, text="Paramètres WebdynSunPM")
+            else ttk.LabelFrame(parent, text="WebdynSunPM Parameters")
         )
         params_frame.pack(fill="x", padx=12, pady=6)
 
@@ -681,7 +681,7 @@ class DefFileGenApp:
             self.entry_mfg.insert(0, "Huawei")
             self.entry_mfg.grid(row=1, column=0, sticky="ew", padx=14, pady=(0, 8))
 
-            ctk.CTkLabel(params_frame, text="Modèle (Model) *").grid(
+            ctk.CTkLabel(params_frame, text="Model *").grid(
                 row=0, column=1, sticky="w", padx=14, pady=(10, 2)
             )
             self.entry_model = ctk.CTkEntry(params_frame, placeholder_text="Ex: SUN2000-50KTL")
@@ -696,7 +696,7 @@ class DefFileGenApp:
             self.opt_protocol.set("modbusRTU")
             self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=14, pady=(0, 8))
 
-            ctk.CTkLabel(params_frame, text="Catégorie").grid(
+            ctk.CTkLabel(params_frame, text="Category").grid(
                 row=2, column=1, sticky="w", padx=14, pady=(4, 2)
             )
             self.opt_category = ctk.CTkOptionMenu(
@@ -715,20 +715,20 @@ class DefFileGenApp:
             self.opt_category.grid(row=3, column=1, sticky="ew", padx=14, pady=(0, 8))
 
             # Row 2: Address Offset & Output File
-            ctk.CTkLabel(params_frame, text="Décalage d'adresse (Address Offset)").grid(
+            ctk.CTkLabel(params_frame, text="Address Offset").grid(
                 row=4, column=0, sticky="w", padx=14, pady=(4, 2)
             )
             self.entry_offset = ctk.CTkEntry(params_frame, placeholder_text="0")
             self.entry_offset.insert(0, "0")
             self.entry_offset.grid(row=5, column=0, sticky="ew", padx=14, pady=(0, 12))
 
-            ctk.CTkLabel(params_frame, text="Fichier de sortie (.csv) :").grid(
+            ctk.CTkLabel(params_frame, text="Output File (.csv) :").grid(
                 row=4, column=1, sticky="w", padx=14, pady=(4, 2)
             )
             out_box = ctk.CTkFrame(params_frame, fg_color="transparent")
             out_box.grid(row=5, column=1, sticky="ew", padx=14, pady=(0, 12))
             self.entry_output_file = ctk.CTkEntry(
-                out_box, placeholder_text="Auto-généré ou personnalisé"
+                out_box, placeholder_text="Auto-generated or custom"
             )
             self.entry_output_file.pack(side="left", fill="x", expand=True, padx=(0, 8))
             btn_browse_out = ctk.CTkButton(
@@ -747,7 +747,7 @@ class DefFileGenApp:
             self.entry_mfg.insert(0, "Huawei")
             self.entry_mfg.grid(row=1, column=0, sticky="ew", padx=10, pady=(0, 6))
 
-            ttk.Label(params_frame, text="Modèle (Model) *").grid(
+            ttk.Label(params_frame, text="Model *").grid(
                 row=0, column=1, sticky="w", padx=10, pady=(8, 2)
             )
             self.entry_model = ttk.Entry(params_frame)
@@ -764,7 +764,7 @@ class DefFileGenApp:
             self.opt_protocol.set("modbusRTU")
             self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 6))
 
-            ttk.Label(params_frame, text="Catégorie").grid(
+            ttk.Label(params_frame, text="Category").grid(
                 row=2, column=1, sticky="w", padx=10, pady=(4, 2)
             )
             self.opt_category = ttk.Combobox(
@@ -784,14 +784,14 @@ class DefFileGenApp:
             self.opt_category.grid(row=3, column=1, sticky="ew", padx=10, pady=(0, 6))
 
             # Row 2: Address Offset & Output File
-            ttk.Label(params_frame, text="Décalage d'adresse (Address Offset)").grid(
+            ttk.Label(params_frame, text="Address Offset").grid(
                 row=4, column=0, sticky="w", padx=10, pady=(4, 2)
             )
             self.entry_offset = ttk.Entry(params_frame)
             self.entry_offset.insert(0, "0")
             self.entry_offset.grid(row=5, column=0, sticky="ew", padx=10, pady=(0, 10))
 
-            ttk.Label(params_frame, text="Fichier de sortie (.csv) :").grid(
+            ttk.Label(params_frame, text="Output File (.csv) :").grid(
                 row=4, column=1, sticky="w", padx=10, pady=(4, 2)
             )
             out_box = ttk.Frame(params_frame)
@@ -815,7 +815,7 @@ class DefFileGenApp:
         if HAS_CUSTOMTKINTER:
             self.btn_convert = ctk.CTkButton(
                 action_frame,
-                text="⚡ Extraire & Générer le Fichier de Définition WebdynSunPM",
+                text="⚡ Extract & Generate WebdynSunPM Definition File",
                 font=ctk.CTkFont(size=13, weight="bold"),
                 height=38,
                 command=self._start_conversion_thread,
@@ -828,7 +828,7 @@ class DefFileGenApp:
         else:
             self.btn_convert = ttk.Button(
                 action_frame,
-                text="⚡ Extraire & Générer le Fichier de Définition WebdynSunPM",
+                text="⚡ Extract & Generate WebdynSunPM Definition File",
                 command=self._start_conversion_thread,
             )
             self.btn_convert.pack(side="left", fill="x", expand=True, padx=(0, 10))
@@ -845,14 +845,14 @@ class DefFileGenApp:
         if HAS_CUSTOMTKINTER:
             self.lbl_results_badge = ctk.CTkLabel(
                 results_header,
-                text="Aucun registre extrait pour le moment",
+                text="No registers extracted yet",
                 font=ctk.CTkFont(weight="bold"),
             )
             self.lbl_results_badge.pack(side="left")
 
             self.btn_open_file = ctk.CTkButton(
                 results_header,
-                text="📄 Ouvrir Fichier CSV",
+                text="📄 Open CSV File",
                 width=140,
                 state="disabled",
                 command=self._open_last_generated_file,
@@ -870,7 +870,7 @@ class DefFileGenApp:
 
             self.btn_copy_csv = ctk.CTkButton(
                 results_header,
-                text="📋 Copier CSV",
+                text="📋 Copy CSV",
                 width=100,
                 state="disabled",
                 command=self._copy_csv_to_clipboard,
@@ -879,14 +879,14 @@ class DefFileGenApp:
         else:
             self.lbl_results_badge = ttk.Label(
                 results_header,
-                text="Aucun registre extrait pour le moment",
+                text="No registers extracted yet",
                 font=("Segoe UI", 9, "bold"),
             )
             self.lbl_results_badge.pack(side="left")
 
             self.btn_open_file = ttk.Button(
                 results_header,
-                text="📄 Ouvrir Fichier CSV",
+                text="📄 Open CSV File",
                 state="disabled",
                 command=self._open_last_generated_file,
             )
@@ -902,7 +902,7 @@ class DefFileGenApp:
 
             self.btn_copy_csv = ttk.Button(
                 results_header,
-                text="📋 Copier CSV",
+                text="📋 Copy CSV",
                 state="disabled",
                 command=self._copy_csv_to_clipboard,
             )
@@ -933,12 +933,12 @@ class DefFileGenApp:
             ("RegType", 75),
             ("Adresse", 90),
             ("Type", 80),
-            ("Nom du paramètre", 260),
+            ("Parameter name", 260),
             ("Tag", 140),
             ("CoefA", 75),
             ("CoefB", 65),
-            ("Unité", 65),
-            ("Accès", 60),
+            ("Unit", 65),
+            ("Access", 60),
         ]
         for col, (name, width) in zip(columns, headers, strict=False):
             self.tree_preview.heading(col, text=name)
@@ -958,14 +958,14 @@ class DefFileGenApp:
 
     def _browse_input_file(self) -> None:
         file_path = filedialog.askopenfilename(
-            title="Sélectionner une documentation Modbus",
+            title="Select Modbus documentation",
             filetypes=[
-                ("Tous formats supportés", "*.pdf;*.xlsx;*.xlsm;*.csv;*.xml"),
-                ("Documents PDF", "*.pdf"),
-                ("Classeurs Excel", "*.xlsx;*.xlsm"),
-                ("Fichiers CSV", "*.csv"),
-                ("Fichiers XML", "*.xml"),
-                ("Tous les fichiers", "*.*"),
+                ("All supported formats", "*.pdf;*.xlsx;*.xlsm;*.csv;*.xml"),
+                ("PDF Documents", "*.pdf"),
+                ("Excel Workbooks", "*.xlsx;*.xlsm"),
+                ("CSV Files", "*.csv"),
+                ("XML Files", "*.xml"),
+                ("All files", "*.*"),
             ],
         )
         if file_path:
@@ -994,11 +994,11 @@ class DefFileGenApp:
 
     def _browse_output_file(self) -> None:
         file_path = filedialog.asksaveasfilename(
-            title="Enregistrer la définition WebdynSunPM",
+            title="Save WebdynSunPM definition",
             defaultextension=".csv",
             filetypes=[
-                ("Fichier Définition WebdynSunPM CSV", "*.csv"),
-                ("Tous les fichiers", "*.*"),
+                ("WebdynSunPM CSV Definition File", "*.csv"),
+                ("All files", "*.*"),
             ],
         )
         if file_path:
@@ -1012,11 +1012,11 @@ class DefFileGenApp:
 
         input_path = self.entry_input_file.get().strip()
         if not input_path:
-            messagebox.showwarning("Fichier manquant", "Veuillez sélectionner un fichier source.")
+            messagebox.showwarning("Missing file", "Please select a source file.")
             return
 
         if not os.path.exists(input_path):
-            messagebox.showerror("Erreur", f"Le fichier source n'existe pas :\n{input_path}")
+            messagebox.showerror("Error", f"The source file does not exist:\n{input_path}")
             return
 
         mfg = self.entry_mfg.get().strip() or "Manufacturer"
@@ -1027,9 +1027,7 @@ class DefFileGenApp:
         try:
             offset = int(self.entry_offset.get().strip() or "0")
         except ValueError:
-            messagebox.showerror(
-                "Offset invalide", "Le décalage d'adresse (offset) doit être un nombre entier."
-            )
+            messagebox.showerror("Invalid offset", "The address offset must be an integer.")
             return
 
         output_path = self.entry_output_file.get().strip()
@@ -1077,7 +1075,7 @@ class DefFileGenApp:
         raw_data: Any = iter([])
 
         try:
-            logger.info("Début de l'extraction depuis : %s", input_path)
+            logger.info("Starting extraction from: %s", input_path)
             if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
                 raw_data = extractor.extract_from_excel(input_path)
             elif ext == ".pdf":
@@ -1087,23 +1085,23 @@ class DefFileGenApp:
             elif ext == ".xml":
                 raw_data = extractor.extract_from_xml(input_path)
             else:
-                raise ValueError(f"Format non supporté: {ext}")
+                raise ValueError(f"Unsupported format: {ext}")
 
             has_data, raw_data_peeked = peek_generator(raw_data)
             if not has_data:
                 raise RuntimeError(
-                    "Aucune table de données exploitable détectée dans ce document.\n"
-                    "Assurez-vous que le document contient des tables textuelles et non des scans d'images."
+                    "No usable data table detected in this document.\n"
+                    "Ensure the document contains textual tables and not image scans."
                 )
 
             mapped_gen = extractor.map_and_clean(raw_data_peeked, offset)
             has_regs, mapped_peeked = peek_generator(mapped_gen)
             if not has_regs:
                 raise RuntimeError(
-                    "Aucun registre n'a pu être mappé vers les champs Modbus standards.\n\n"
+                    "No register could be mapped to standard Modbus fields.\n\n"
                     "Explications possibles :\n"
-                    "• Le document est une notice d'installation mécanique ou une brochure produit sans registres Modbus (ex: notices de montage Siebert).\n"
-                    "• Le document ne comporte pas de colonnes de registres exploitables (adresses, types, noms)."
+                    "• The document is a mechanical installation manual or product brochure without Modbus registers.\n"
+                    "• The document does not contain usable register columns (addresses, types, names)."
                 )
 
             full_mapped = list(mapped_peeked)
@@ -1115,19 +1113,19 @@ class DefFileGenApp:
                 model=model,
                 protocol=protocol,
                 category=category,
-                address_offset=0,  # Déjà appliqué dans map_and_clean
+                address_offset=0,  # Already applied in map_and_clean
             )
 
             run_generator(config, input_data=full_mapped)
 
-            # Validation du fichier généré
+            # Validation of the generated file
             generator = Generator()
             report = generator.validate_csv_detailed(output_path, strict=True)
 
             self.root.after(0, self._on_conversion_success, output_path, full_mapped, report)
 
         except Exception as exc:
-            logger.exception("Échec de la conversion")
+            logger.exception("Conversion failed")
             self.root.after(0, self._on_conversion_error, str(exc))
 
     def _on_conversion_success(
@@ -1148,9 +1146,9 @@ class DefFileGenApp:
 
             count = len(mapped_rows)
             status_text = (
-                f"✅ Succès : {count} registres extraits · Fichier WebdynSunPM 100% Valide"
+                f"✅ Success: {count} registers extracted · 100% Valid WebdynSunPM File"
                 if report.is_valid
-                else f"⚠️ Succès partiel : {count} registres extraits · {len(report.issues)} avertissement(s)"
+                else f"⚠️ Partial success: {count} registers extracted · {len(report.issues)} warning(s)"
             )
             self.lbl_results_badge.configure(text=status_text)
 
@@ -1177,15 +1175,15 @@ class DefFileGenApp:
                 )
 
             messagebox.showinfo(
-                "Génération Réussie",
-                f"Le fichier de définition WebdynSunPM a été généré avec succès :\n\n{output_path}\n\n"
-                f"Registres extraits : {count}\nStatut de validation : {'VALIDE' if report.is_valid else 'ATTENTION'}",
+                "Generation Successful",
+                f"The WebdynSunPM definition file was successfully generated:\n\n{output_path}\n\n"
+                f"Extracted registers: {count}\nValidation status: {'VALID' if report.is_valid else 'WARNING'}",
             )
         except Exception as exc:
-            logger.exception("Erreur lors de la mise à jour de l'affichage")
+            logger.exception("Error updating display")
             messagebox.showerror(
-                "Erreur d'affichage",
-                f"Erreur lors de l'affichage des résultats dans l'interface :\n{exc}",
+                "Display Error",
+                f"Error displaying results in interface:\n{exc}",
             )
 
     def _on_conversion_error(self, error_msg: str) -> None:
@@ -1195,10 +1193,8 @@ class DefFileGenApp:
             self.progress_bar.stop()
             if hasattr(self.progress_bar, "set"):
                 self.progress_bar.set(0)
-        self.lbl_results_badge.configure(text=f"❌ Erreur : {error_msg}")
-        messagebox.showerror(
-            "Erreur d'extraction", f"Impossible d'extraire les registres :\n\n{error_msg}"
-        )
+        self.lbl_results_badge.configure(text=f"❌ Error : {error_msg}")
+        messagebox.showerror("Extraction error", f"Unable to extract registers:\n\n{error_msg}")
 
     def _open_last_generated_file(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
@@ -1222,7 +1218,7 @@ class DefFileGenApp:
             self.root.clipboard_clear()
             self.root.clipboard_append(content)
             messagebox.showinfo(
-                "Copié", "Le contenu CSV de définition a été copié dans le presse-papier."
+                "Copied", "The definition CSV content has been copied to the clipboard."
             )
 
     # -------------------------------------------------------------------------
@@ -1235,14 +1231,14 @@ class DefFileGenApp:
         val_frame = (
             ctk.CTkFrame(parent, corner_radius=8)
             if HAS_CUSTOMTKINTER
-            else ttk.LabelFrame(parent, text="Fichier de Définition à Valider")
+            else ttk.LabelFrame(parent, text="Definition File to Validate")
         )
         val_frame.pack(fill="x", padx=12, pady=10)
 
         if HAS_CUSTOMTKINTER:
             ctk.CTkLabel(
                 val_frame,
-                text="Sélectionnez un fichier WebdynSunPM définition (.csv) :",
+                text="Select a WebdynSunPM definition file (.csv):",
                 font=ctk.CTkFont(weight="bold"),
             ).pack(anchor="w", padx=14, pady=(10, 2))
 
@@ -1250,12 +1246,12 @@ class DefFileGenApp:
             box.pack(fill="x", padx=14, pady=(0, 10))
 
             self.entry_val_file = ctk.CTkEntry(
-                box, placeholder_text="Chemin vers le fichier .csv...", width=600
+                box, placeholder_text="Path to the .csv file...", width=600
             )
             self.entry_val_file.pack(side="left", fill="x", expand=True, padx=(0, 10))
 
             btn_browse_val = ctk.CTkButton(
-                box, text="📂 Parcourir...", width=120, command=self._browse_validator_file
+                box, text="📂 Browse...", width=120, command=self._browse_validator_file
             )
             btn_browse_val.pack(side="left", padx=(0, 8))
 
@@ -1270,7 +1266,7 @@ class DefFileGenApp:
         else:
             ttk.Label(
                 val_frame,
-                text="Sélectionnez un fichier WebdynSunPM définition (.csv) :",
+                text="Select a WebdynSunPM definition file (.csv):",
                 font=("Segoe UI", 9, "bold"),
             ).pack(anchor="w", padx=10, pady=(8, 2))
 
@@ -1281,7 +1277,7 @@ class DefFileGenApp:
             self.entry_val_file.pack(side="left", fill="x", expand=True, padx=(0, 8))
 
             btn_browse_val = ttk.Button(
-                box, text="📂 Parcourir...", command=self._browse_validator_file
+                box, text="📂 Browse...", command=self._browse_validator_file
             )
             btn_browse_val.pack(side="left", padx=(0, 6))
 
@@ -1301,7 +1297,7 @@ class DefFileGenApp:
         if HAS_CUSTOMTKINTER:
             self.lbl_val_status = ctk.CTkLabel(
                 self.banner_frame,
-                text="Aucun fichier validé. Sélectionnez une définition WebdynSunPM ci-dessus.",
+                text="No file validated. Select a WebdynSunPM definition above.",
                 font=ctk.CTkFont(size=13, weight="bold"),
             )
             self.lbl_val_status.pack(side="left", padx=16, pady=10)
@@ -1317,7 +1313,7 @@ class DefFileGenApp:
         else:
             self.lbl_val_status = ttk.Label(
                 self.banner_frame,
-                text="Aucun fichier validé. Sélectionnez une définition WebdynSunPM ci-dessus.",
+                text="No file validated. Select a WebdynSunPM definition above.",
                 font=("Segoe UI", 10, "bold"),
             )
             self.lbl_val_status.pack(side="left", padx=12, pady=8)
@@ -1341,10 +1337,10 @@ class DefFileGenApp:
 
         headers = [
             ("Ligne", 65),
-            ("Sévérité", 90),
+            ("Severity", 90),
             ("Code", 130),
             ("Champ", 100),
-            ("Message / Description de l'erreur", 550),
+            ("Message / Error Description", 550),
         ]
         for col, (name, width) in zip(columns, headers, strict=False):
             self.tree_issues.heading(col, text=name)
@@ -1359,8 +1355,8 @@ class DefFileGenApp:
 
     def _browse_validator_file(self) -> None:
         file_path = filedialog.askopenfilename(
-            title="Sélectionner une définition WebdynSunPM",
-            filetypes=[("Fichier Définition CSV", "*.csv"), ("Tous les fichiers", "*.*")],
+            title="Select a WebdynSunPM definition",
+            filetypes=[("CSV Definition File", "*.csv"), ("All files", "*.*")],
         )
         if file_path:
             self.entry_val_file.delete(0, tk.END)
@@ -1370,9 +1366,7 @@ class DefFileGenApp:
     def _run_validation(self) -> None:
         filepath = self.entry_val_file.get().strip()
         if not filepath or not os.path.exists(filepath):
-            messagebox.showwarning(
-                "Fichier introuvable", "Veuillez sélectionner un fichier CSV existant."
-            )
+            messagebox.showwarning("File not found", "Please select an existing CSV file.")
             return
 
         generator = Generator()
@@ -1385,7 +1379,9 @@ class DefFileGenApp:
 
         # Update status banner
         if report.is_valid:
-            status_text = f"✅ DÉFINITION 100% CONFORME · {report.register_count} registres valides · 0 erreur"
+            status_text = (
+                f"✅ 100% COMPLIANT DEFINITION · {report.register_count} valid registers · 0 errors"
+            )
             if HAS_CUSTOMTKINTER:
                 self.lbl_val_status.configure(
                     text=status_text,
@@ -1396,7 +1392,7 @@ class DefFileGenApp:
         else:
             errs = report.stats.get("errors", 0)
             warns = report.stats.get("warnings", 0)
-            status_text = f"❌ DÉFINITION NON CONFORME · {report.register_count} registres · {errs} Erreur(s) critique(s) · {warns} Avertissement(s)"
+            status_text = f"❌ NON-COMPLIANT DEFINITION · {report.register_count} registers · {errs} Critical Error(s) · {warns} Warning(s)"
             if HAS_CUSTOMTKINTER:
                 self.lbl_val_status.configure(
                     text=status_text,
@@ -1417,7 +1413,7 @@ class DefFileGenApp:
                     "INFO",
                     "CLEAN",
                     "-",
-                    "Aucun problème détecté. Le fichier respecte la spécification Webdyn.",
+                    "No problems detected. The file complies with the Webdyn specification.",
                 ),
             )
         else:
@@ -1438,9 +1434,9 @@ class DefFileGenApp:
         if not self.last_validation_report:
             return
         out_path = filedialog.asksaveasfilename(
-            title="Exporter le rapport de validation",
+            title="Export validation report",
             defaultextension=".txt",
-            filetypes=[("Fichier Texte", "*.txt"), ("Fichier JSON", "*.json")],
+            filetypes=[("Text File", "*.txt"), ("JSON File", "*.json")],
         )
         if not out_path:
             return
@@ -1448,21 +1444,21 @@ class DefFileGenApp:
         report = self.last_validation_report
         with open(out_path, "w", encoding="utf-8") as f:
             f.write("=" * 70 + "\n")
-            f.write("RAPPORT D'AUDIT ET VALIDATION WEBDYNSUNPM\n")
+            f.write("WEBDYNSUNPM AUDIT AND VALIDATION REPORT\n")
             f.write("=" * 70 + "\n\n")
-            f.write(f"Statut : {'VALIDE' if report.is_valid else 'NON CONFORME'}\n")
-            f.write(f"Nombre total de registres : {report.register_count}\n")
-            f.write(f"Erreurs : {report.stats.get('errors', 0)}\n")
-            f.write(f"Avertissements : {report.stats.get('warnings', 0)}\n\n")
+            f.write(f"Status : {'VALID' if report.is_valid else 'NON-COMPLIANT'}\n")
+            f.write(f"Total registers: {report.register_count}\n")
+            f.write(f"Errors : {report.stats.get('errors', 0)}\n")
+            f.write(f"Warnings: {report.stats.get('warnings', 0)}\n\n")
             f.write("-" * 70 + "\n")
-            f.write("DÉTAIL DES ANOMALIES DÉTECTÉES :\n")
+            f.write("DETAILS OF DETECTED ANOMALIES:\n")
             f.write("-" * 70 + "\n")
             for issue in report.issues:
                 f.write(
                     f"[{issue.severity}] Ligne {issue.line} | Code: {issue.code} | Champ: {issue.field}\n"
                     f"       --> {issue.message}\n"
                 )
-        messagebox.showinfo("Export réussi", f"Rapport de validation enregistré sous :\n{out_path}")
+        messagebox.showinfo("Export successful", f"Validation report saved as:\n{out_path}")
 
     # -------------------------------------------------------------------------
     # TAB 3: EQUIPMENT TEMPLATES
@@ -1473,28 +1469,28 @@ class DefFileGenApp:
         card = (
             ctk.CTkFrame(parent, corner_radius=8)
             if HAS_CUSTOMTKINTER
-            else ttk.LabelFrame(parent, text="Générateur de Modèles WebdynSunPM")
+            else ttk.LabelFrame(parent, text="WebdynSunPM Template Generator")
         )
         card.pack(fill="x", padx=14, pady=12)
 
         if HAS_CUSTOMTKINTER:
             ctk.CTkLabel(
                 card,
-                text="Modèles Pré-structurés d'Équipements Solaires & Énergétiques",
+                text="Pre-structured Solar & Energy Equipment Templates",
                 font=ctk.CTkFont(size=14, weight="bold"),
             ).pack(anchor="w", padx=16, pady=(12, 4))
 
             ctk.CTkLabel(
                 card,
-                text="Générez instantanément des définitions conformes WebdynSunPM prêtes à l'emploi :",
+                text="Instantly generate compliant, ready-to-use WebdynSunPM definitions :",
             ).pack(anchor="w", padx=16, pady=(0, 10))
 
             form_grid = ctk.CTkFrame(card, fg_color="transparent")
             form_grid.pack(fill="x", padx=16, pady=(0, 12))
 
-            ctk.CTkLabel(
-                form_grid, text="Type d'équipement :", font=ctk.CTkFont(weight="bold")
-            ).grid(row=0, column=0, sticky="w", padx=(0, 10), pady=6)
+            ctk.CTkLabel(form_grid, text="Equipment Type :", font=ctk.CTkFont(weight="bold")).grid(
+                row=0, column=0, sticky="w", padx=(0, 10), pady=6
+            )
             self.opt_tmpl_category = ctk.CTkOptionMenu(
                 form_grid,
                 values=list(EQUIPMENT_TEMPLATES.keys()),
@@ -1512,7 +1508,7 @@ class DefFileGenApp:
 
             btn_gen_tmpl = ctk.CTkButton(
                 card,
-                text="📋 Générer et Enregistrer le Modèle CSV",
+                text="📋 Generate and Save CSV Template",
                 font=ctk.CTkFont(weight="bold"),
                 height=36,
                 command=self._generate_template_action,
@@ -1521,19 +1517,19 @@ class DefFileGenApp:
         else:
             ttk.Label(
                 card,
-                text="Modèles Pré-structurés d'Équipements Solaires & Énergétiques",
+                text="Pre-structured Solar & Energy Equipment Templates",
                 font=("Segoe UI", 11, "bold"),
             ).pack(anchor="w", padx=12, pady=(10, 4))
 
             ttk.Label(
                 card,
-                text="Générez instantanément des définitions conformes WebdynSunPM prêtes à l'emploi :",
+                text="Instantly generate compliant, ready-to-use WebdynSunPM definitions :",
             ).pack(anchor="w", padx=12, pady=(0, 8))
 
             form_grid = ttk.Frame(card)
             form_grid.pack(fill="x", padx=12, pady=(0, 10))
 
-            ttk.Label(form_grid, text="Type d'équipement :", font=("Segoe UI", 9, "bold")).grid(
+            ttk.Label(form_grid, text="Equipment Type :", font=("Segoe UI", 9, "bold")).grid(
                 row=0, column=0, sticky="w", padx=(0, 8), pady=6
             )
             self.opt_tmpl_category = ttk.Combobox(
@@ -1554,7 +1550,7 @@ class DefFileGenApp:
 
             btn_gen_tmpl = ttk.Button(
                 card,
-                text="📋 Générer et Enregistrer le Modèle CSV",
+                text="📋 Generate and Save CSV Template",
                 command=self._generate_template_action,
             )
             btn_gen_tmpl.pack(anchor="w", padx=12, pady=(4, 12))
@@ -1570,10 +1566,10 @@ class DefFileGenApp:
         tmpl_data = EQUIPMENT_TEMPLATES.get(category, EQUIPMENT_TEMPLATES["Inverter"])
 
         save_path = filedialog.asksaveasfilename(
-            title=f"Enregistrer le modèle {category}",
+            title=f"Save template {category}",
             defaultextension=".csv",
             initialfile=f"modele_webdyn_{category.lower()}.csv",
-            filetypes=[("Fichier Définition WebdynSunPM CSV", "*.csv")],
+            filetypes=[("WebdynSunPM CSV Definition File", "*.csv")],
         )
         if not save_path:
             return
@@ -1581,16 +1577,16 @@ class DefFileGenApp:
         with open(save_path, "w", newline="", encoding="utf-8-sig") as f:
             writer = csv.writer(f, delimiter=";", lineterminator="\n")
             # Header row
-            header_row = ["modbusRTU", category, f"Exemple_{category}", "Modele_1", ""] + [""] * 6
+            header_row = ["modbusRTU", category, f"Example_{category}", "Model_1", ""] + [""] * 6
             writer.writerow(header_row)
             # Register rows
             for r in tmpl_data["registers"]:
                 writer.writerow(r)
 
         messagebox.showinfo(
-            "Modèle Généré",
-            f"Le modèle pour '{category}' a été créé avec succès :\n\n{save_path}\n\n"
-            f"{len(tmpl_data['registers'])} registres types configurés.",
+            "Generated Template",
+            f"The template for '{category}' was created successfully:\n\n{save_path}\n\n"
+            f"{len(tmpl_data['registers'])} standard registers configured.",
         )
 
     # -------------------------------------------------------------------------
@@ -1606,19 +1602,19 @@ class DefFileGenApp:
 
         if HAS_CUSTOMTKINTER:
             btn_clear = ctk.CTkButton(
-                btn_bar, text="🗑️ Effacer les logs", width=120, command=self._clear_logs
+                btn_bar, text="🗑️ Clear logs", width=120, command=self._clear_logs
             )
             btn_clear.pack(side="left", padx=(0, 8))
 
             btn_copy = ctk.CTkButton(
-                btn_bar, text="📋 Copier les logs", width=120, command=self._copy_logs
+                btn_bar, text="📋 Copy logs", width=120, command=self._copy_logs
             )
             btn_copy.pack(side="left")
         else:
-            btn_clear = ttk.Button(btn_bar, text="🗑️ Effacer les logs", command=self._clear_logs)
+            btn_clear = ttk.Button(btn_bar, text="🗑️ Clear logs", command=self._clear_logs)
             btn_clear.pack(side="left", padx=(0, 8))
 
-            btn_copy = ttk.Button(btn_bar, text="📋 Copier les logs", command=self._copy_logs)
+            btn_copy = ttk.Button(btn_bar, text="📋 Copy logs", command=self._copy_logs)
             btn_copy.pack(side="left")
 
         # Scrolled text widget for console
@@ -1662,7 +1658,7 @@ class DefFileGenApp:
             logs = self.txt_logs.get("1.0", tk.END)
         self.root.clipboard_clear()
         self.root.clipboard_append(logs)
-        messagebox.showinfo("Copié", "Tous les logs ont été copiés dans le presse-papier.")
+        messagebox.showinfo("Copied", "All logs have been copied to the clipboard.")
 
 
 def main() -> None:
