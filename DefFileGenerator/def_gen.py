@@ -180,26 +180,34 @@ class Generator:
         # Mapping ordered by specificity
         synonyms = [
             (r"unsigned integer 64|unsigned int 64|uint64|\bu64\b", "U64"),
-            (r"signed integer 64|signed int 64|int64|\bi64\b", "I64"),
+            (r"signed integer 64|signed int 64|sint64|int64|\bi64\b|\bs64\b", "I64"),
             (r"unsigned integer 32|unsigned int 32|uint32|\bu32\b", "U32"),
-            (r"signed integer 32|signed int 32|int32|\bi32\b", "I32"),
+            (r"signed integer 32|signed int 32|sint32|int32|\bi32\b|\bs32\b", "I32"),
             (r"unsigned integer 16|unsigned int 16|uint16|\bu16\b", "U16"),
-            (r"signed integer 16|signed int 16|int16|\bi16\b", "I16"),
+            (r"signed integer 16|signed int 16|sint16|int16|\bi16\b|\bs16\b", "I16"),
             (r"unsigned integer 8|unsigned int 8|uint8|\bu8\b", "U8"),
-            (r"signed integer 8|signed int 8|int8|\bi8\b", "I8"),
+            (r"signed integer 8|signed int 8|sint8|int8|\bi8\b|\bs8\b", "I8"),
             (r"float64|double|\bf64\b", "F64"),
             (r"float32|float|\bf32\b", "F32"),
-            (r"string", "STRING"),
+            (r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b", "BITS"),
         ]
         for pattern, replacement in synonyms:
             if re.search(pattern, t):
                 return f"{replacement}{suffix}"
+
+        str_pattern_match = re.match(r"^(?:string|str)[\*x_]?\s*(\d+)$", t)
+        if str_pattern_match:
+            return f"STR{str_pattern_match.group(1)}"
+
+        if re.search(r"string", t):
+            return f"STRING{suffix}"
 
         if t.startswith("str") and t[3:].isdigit():
             return t.upper()
 
         t = _CLEAN_TYPE_RE.sub("", t)
         return t.upper() if t else "U16"
+
 
     @staticmethod
     def validate_type(dtype: str) -> bool:
@@ -556,7 +564,11 @@ class Generator:
                 dtype = "STRING"
                 if "_" not in address:
                     address = f"{address}_{match_str.group(1)}"
+            elif dtype == "BITS" and "_" not in address:
+                address = f"{address}_0_16"
             address = Generator.apply_address_offset(address, address_offset, line_num, name)
+            if dtype == "STRING" and "_" in address:
+                address = re.sub(r"[^\d_]+$", "", address)
             if not self.validate_address(address, dtype):
                 logging.warning(
                     f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping."

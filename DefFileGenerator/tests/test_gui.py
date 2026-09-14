@@ -225,5 +225,74 @@ class TestMainCLIGUIDispatch(unittest.TestCase):
         mock_gui_main.assert_called_once()
 
 
+class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
+    """Verifies that DefFileGenApp works completely when customtkinter is not available."""
+
+    @classmethod
+    def setUpClass(cls):
+        try:
+            with patch.object(gui_module, "HAS_CUSTOMTKINTER", False):
+                cls.root = gui_module.tk.Tk()
+                cls.root.withdraw()
+                cls.app = DefFileGenApp(cls.root)
+        except Exception as e:
+            raise unittest.SkipTest(f"Tkinter environment not available: {e}") from e
+
+
+    @classmethod
+    def tearDownClass(cls):
+        try:
+            cls.root.destroy()
+        except Exception:
+            pass
+
+    def test_fallback_widgets_instantiation(self):
+        """Verifies that all widgets, entries, and action buttons exist in fallback mode."""
+        self.assertIsNotNone(self.app.entry_input_file)
+        self.assertIsNotNone(self.app.entry_mfg)
+        self.assertIsNotNone(self.app.entry_model)
+        self.assertIsNotNone(self.app.opt_protocol)
+        self.assertIsNotNone(self.app.opt_category)
+        self.assertIsNotNone(self.app.entry_offset)
+        self.assertIsNotNone(self.app.entry_output_file)
+        self.assertIsNotNone(self.app.progress_bar)
+        self.assertIsNotNone(self.app.lbl_results_badge)
+        self.assertIsNotNone(self.app.btn_open_file)
+        self.assertIsNotNone(self.app.btn_open_folder)
+        self.assertIsNotNone(self.app.btn_copy_csv)
+        self.assertIsNotNone(self.app.tree_preview)
+
+    def test_fallback_on_conversion_success(self):
+        """Verifies preview treeview population and action button activation in fallback mode."""
+        mock_rows = [
+            {
+                "RegisterType": "Holding",
+                "Address": "40001",
+                "Type": "U16",
+                "Name": "Solar Voltage",
+                "Tag": "solar_volt",
+                "Factor": "0.1",
+                "Offset": "0",
+                "Unit": "V",
+                "Action": "4",
+            }
+        ]
+        mock_report = ValidationReport(
+            is_valid=True,
+            register_count=1,
+            issues=[],
+            stats={"errors": 0, "warnings": 0, "types": {"3": 1}, "registers": 1},
+        )
+        with patch.object(gui_module.messagebox, "showinfo"):
+            self.app._on_conversion_success("test_out_fallback.csv", mock_rows, mock_report)
+
+        self.assertEqual(self.app.last_generated_file, "test_out_fallback.csv")
+        self.assertEqual(len(self.app.tree_preview.get_children()), 1)
+        self.assertEqual(str(self.app.btn_open_file["state"]), "normal")
+        self.assertEqual(str(self.app.btn_open_folder["state"]), "normal")
+        self.assertEqual(str(self.app.btn_copy_csv["state"]), "normal")
+
+
 if __name__ == "__main__":
     unittest.main()
+

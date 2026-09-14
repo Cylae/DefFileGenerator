@@ -739,13 +739,72 @@ class DefFileGenApp:
             params_frame.columnconfigure(0, weight=1)
             params_frame.columnconfigure(1, weight=1)
         else:
+            # Row 0: Manufacturer & Model
+            ttk.Label(params_frame, text="Constructeur (Manufacturer) *").grid(
+                row=0, column=0, sticky="w", padx=10, pady=(8, 2)
+            )
             self.entry_mfg = ttk.Entry(params_frame)
             self.entry_mfg.insert(0, "Huawei")
+            self.entry_mfg.grid(row=1, column=0, sticky="ew", padx=10, pady=(0, 6))
+
+            ttk.Label(params_frame, text="Modèle (Model) *").grid(
+                row=0, column=1, sticky="w", padx=10, pady=(8, 2)
+            )
             self.entry_model = ttk.Entry(params_frame)
             self.entry_model.insert(0, "SUN2000")
+            self.entry_model.grid(row=1, column=1, sticky="ew", padx=10, pady=(0, 6))
+
+            # Row 1: Protocol & Category
+            ttk.Label(params_frame, text="Protocole").grid(
+                row=2, column=0, sticky="w", padx=10, pady=(4, 2)
+            )
+            self.opt_protocol = ttk.Combobox(
+                params_frame, values=["modbusRTU", "modbusTCP"], state="readonly"
+            )
+            self.opt_protocol.set("modbusRTU")
+            self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 6))
+
+            ttk.Label(params_frame, text="Catégorie").grid(
+                row=2, column=1, sticky="w", padx=10, pady=(4, 2)
+            )
+            self.opt_category = ttk.Combobox(
+                params_frame,
+                values=[
+                    "Inverter",
+                    "Meter",
+                    "Sensor",
+                    "Battery",
+                    "WeatherStation",
+                    "Tracker",
+                    "Other",
+                ],
+                state="readonly",
+            )
+            self.opt_category.set("Inverter")
+            self.opt_category.grid(row=3, column=1, sticky="ew", padx=10, pady=(0, 6))
+
+            # Row 2: Address Offset & Output File
+            ttk.Label(params_frame, text="Décalage d'adresse (Address Offset)").grid(
+                row=4, column=0, sticky="w", padx=10, pady=(4, 2)
+            )
             self.entry_offset = ttk.Entry(params_frame)
             self.entry_offset.insert(0, "0")
-            self.entry_output_file = ttk.Entry(params_frame)
+            self.entry_offset.grid(row=5, column=0, sticky="ew", padx=10, pady=(0, 10))
+
+            ttk.Label(params_frame, text="Fichier de sortie (.csv) :").grid(
+                row=4, column=1, sticky="w", padx=10, pady=(4, 2)
+            )
+            out_box = ttk.Frame(params_frame)
+            out_box.grid(row=5, column=1, sticky="ew", padx=10, pady=(0, 10))
+            self.entry_output_file = ttk.Entry(out_box)
+            self.entry_output_file.pack(side="left", fill="x", expand=True, padx=(0, 6))
+            btn_browse_out = ttk.Button(
+                out_box, text="Enregistrer sous...", command=self._browse_output_file
+            )
+            btn_browse_out.pack(side="right")
+
+            params_frame.columnconfigure(0, weight=1)
+            params_frame.columnconfigure(1, weight=1)
 
         # Section 3: Action & Progress Bar
         action_frame = (
@@ -769,10 +828,13 @@ class DefFileGenApp:
         else:
             self.btn_convert = ttk.Button(
                 action_frame,
-                text="Extraire & Générer la Définition",
+                text="⚡ Extraire & Générer le Fichier de Définition WebdynSunPM",
                 command=self._start_conversion_thread,
             )
-            self.btn_convert.pack(side="left", fill="x", expand=True)
+            self.btn_convert.pack(side="left", fill="x", expand=True, padx=(0, 10))
+
+            self.progress_bar = ttk.Progressbar(action_frame, mode="indeterminate", length=220)
+            self.progress_bar.pack(side="right", padx=4)
 
         # Section 4: Results Preview & Quick Action Bar
         results_header = (
@@ -810,6 +872,37 @@ class DefFileGenApp:
                 results_header,
                 text="📋 Copier CSV",
                 width=100,
+                state="disabled",
+                command=self._copy_csv_to_clipboard,
+            )
+            self.btn_copy_csv.pack(side="right", padx=(6, 0))
+        else:
+            self.lbl_results_badge = ttk.Label(
+                results_header,
+                text="Aucun registre extrait pour le moment",
+                font=("Segoe UI", 9, "bold"),
+            )
+            self.lbl_results_badge.pack(side="left")
+
+            self.btn_open_file = ttk.Button(
+                results_header,
+                text="📄 Ouvrir Fichier CSV",
+                state="disabled",
+                command=self._open_last_generated_file,
+            )
+            self.btn_open_file.pack(side="right", padx=(6, 0))
+
+            self.btn_open_folder = ttk.Button(
+                results_header,
+                text="📁 Ouvrir Dossier",
+                state="disabled",
+                command=self._open_output_folder,
+            )
+            self.btn_open_folder.pack(side="right", padx=(6, 0))
+
+            self.btn_copy_csv = ttk.Button(
+                results_header,
+                text="📋 Copier CSV",
                 state="disabled",
                 command=self._copy_csv_to_clipboard,
             )
@@ -928,8 +1021,8 @@ class DefFileGenApp:
 
         mfg = self.entry_mfg.get().strip() or "Manufacturer"
         model = self.entry_model.get().strip() or "Model"
-        protocol = self.opt_protocol.get() if HAS_CUSTOMTKINTER else "modbusRTU"
-        category = self.opt_category.get() if HAS_CUSTOMTKINTER else "Inverter"
+        protocol = self.opt_protocol.get() if hasattr(self, "opt_protocol") else "modbusRTU"
+        category = self.opt_category.get() if hasattr(self, "opt_category") else "Inverter"
 
         try:
             offset = int(self.entry_offset.get().strip() or "0")
@@ -951,11 +1044,11 @@ class DefFileGenApp:
         # Update UI state to processing
         self.is_processing = True
         self.btn_convert.configure(state="disabled")
-        if HAS_CUSTOMTKINTER:
+        if hasattr(self, "progress_bar"):
             self.progress_bar.start()
-            self.lbl_results_badge.configure(
-                text="Traitement en cours... Extraction des tables Modbus..."
-            )
+        self.lbl_results_badge.configure(
+            text="Traitement en cours... Extraction des tables Modbus..."
+        )
 
         # Clear existing preview rows
         for item in self.tree_preview.get_children():
@@ -998,13 +1091,19 @@ class DefFileGenApp:
 
             has_data, raw_data_peeked = peek_generator(raw_data)
             if not has_data:
-                raise RuntimeError("Aucune table de registres Modbus détectée dans ce document.")
+                raise RuntimeError(
+                    "Aucune table de données exploitable détectée dans ce document.\n"
+                    "Assurez-vous que le document contient des tables textuelles et non des scans d'images."
+                )
 
             mapped_gen = extractor.map_and_clean(raw_data_peeked, offset)
             has_regs, mapped_peeked = peek_generator(mapped_gen)
             if not has_regs:
                 raise RuntimeError(
-                    "Aucun registre n'a pu être mappé vers les champs Modbus standards."
+                    "Aucun registre n'a pu être mappé vers les champs Modbus standards.\n\n"
+                    "Explications possibles :\n"
+                    "• Le document est une notice d'installation mécanique ou une brochure produit sans registres Modbus (ex: notices de montage Siebert).\n"
+                    "• Le document ne comporte pas de colonnes de registres exploitables (adresses, types, noms)."
                 )
 
             full_mapped = list(mapped_peeked)
@@ -1034,58 +1133,69 @@ class DefFileGenApp:
     def _on_conversion_success(
         self, output_path: str, mapped_rows: list[dict[str, Any]], report: ValidationReport
     ) -> None:
-        self.is_processing = False
-        self.btn_convert.configure(state="normal")
-        if HAS_CUSTOMTKINTER:
-            self.progress_bar.stop()
-            self.progress_bar.set(1.0)
+        try:
+            self.is_processing = False
+            self.btn_convert.configure(state="normal")
+            if hasattr(self, "progress_bar"):
+                self.progress_bar.stop()
+                if HAS_CUSTOMTKINTER:
+                    self.progress_bar.set(1.0)
 
-        self.last_generated_file = output_path
-        self.btn_open_file.configure(state="normal")
-        self.btn_open_folder.configure(state="normal")
-        self.btn_copy_csv.configure(state="normal")
+            self.last_generated_file = output_path
+            self.btn_open_file.configure(state="normal")
+            self.btn_open_folder.configure(state="normal")
+            self.btn_copy_csv.configure(state="normal")
 
-        count = len(mapped_rows)
-        status_text = (
-            f"✅ Succès : {count} registres extraits · Fichier WebdynSunPM 100% Valide"
-            if report.is_valid
-            else f"⚠️ Succès partiel : {count} registres extraits · {len(report.issues)} avertissement(s)"
-        )
-        if HAS_CUSTOMTKINTER:
+            count = len(mapped_rows)
+            status_text = (
+                f"✅ Succès : {count} registres extraits · Fichier WebdynSunPM 100% Valide"
+                if report.is_valid
+                else f"⚠️ Succès partiel : {count} registres extraits · {len(report.issues)} avertissement(s)"
+            )
             self.lbl_results_badge.configure(text=status_text)
 
-        # Populate treeview
-        for idx, row in enumerate(mapped_rows[:1000], start=1):
-            self.tree_preview.insert(
-                "",
-                "end",
-                values=(
-                    idx,
-                    row.get("RegisterType", "Holding"),
-                    row.get("Address", ""),
-                    row.get("Type", "U16"),
-                    row.get("Name", ""),
-                    row.get("Tag", ""),
-                    row.get("Factor", "1"),
-                    row.get("Offset", "0"),
-                    row.get("Unit", ""),
-                    row.get("Action", "4"),
-                ),
-            )
+            # Clear and populate treeview
+            for item in self.tree_preview.get_children():
+                self.tree_preview.delete(item)
 
-        messagebox.showinfo(
-            "Génération Réussie",
-            f"Le fichier de définition WebdynSunPM a été généré avec succès :\n\n{output_path}\n\n"
-            f"Registres extraits : {count}\nStatut de validation : {'VALIDE' if report.is_valid else 'ATTENTION'}",
-        )
+            for idx, row in enumerate(mapped_rows[:1000], start=1):
+                self.tree_preview.insert(
+                    "",
+                    "end",
+                    values=(
+                        idx,
+                        row.get("RegisterType", "Holding"),
+                        row.get("Address", ""),
+                        row.get("Type", "U16"),
+                        row.get("Name", ""),
+                        row.get("Tag", ""),
+                        row.get("Factor", "1"),
+                        row.get("Offset", "0"),
+                        row.get("Unit", ""),
+                        row.get("Action", "4"),
+                    ),
+                )
+
+            messagebox.showinfo(
+                "Génération Réussie",
+                f"Le fichier de définition WebdynSunPM a été généré avec succès :\n\n{output_path}\n\n"
+                f"Registres extraits : {count}\nStatut de validation : {'VALIDE' if report.is_valid else 'ATTENTION'}",
+            )
+        except Exception as exc:
+            logger.exception("Erreur lors de la mise à jour de l'affichage")
+            messagebox.showerror(
+                "Erreur d'affichage",
+                f"Erreur lors de l'affichage des résultats dans l'interface :\n{exc}",
+            )
 
     def _on_conversion_error(self, error_msg: str) -> None:
         self.is_processing = False
         self.btn_convert.configure(state="normal")
-        if HAS_CUSTOMTKINTER:
+        if hasattr(self, "progress_bar"):
             self.progress_bar.stop()
-            self.progress_bar.set(0)
-            self.lbl_results_badge.configure(text=f"❌ Erreur : {error_msg}")
+            if HAS_CUSTOMTKINTER:
+                self.progress_bar.set(0)
+        self.lbl_results_badge.configure(text=f"❌ Erreur : {error_msg}")
         messagebox.showerror(
             "Erreur d'extraction", f"Impossible d'extraire les registres :\n\n{error_msg}"
         )
@@ -1157,6 +1267,30 @@ class DefFileGenApp:
                 command=self._run_validation,
             )
             btn_run_val.pack(side="left")
+        else:
+            ttk.Label(
+                val_frame,
+                text="Sélectionnez un fichier WebdynSunPM définition (.csv) :",
+                font=("Segoe UI", 9, "bold"),
+            ).pack(anchor="w", padx=10, pady=(8, 2))
+
+            box = ttk.Frame(val_frame)
+            box.pack(fill="x", padx=10, pady=(0, 10))
+
+            self.entry_val_file = ttk.Entry(box, width=70)
+            self.entry_val_file.pack(side="left", fill="x", expand=True, padx=(0, 8))
+
+            btn_browse_val = ttk.Button(
+                box, text="📂 Parcourir...", command=self._browse_validator_file
+            )
+            btn_browse_val.pack(side="left", padx=(0, 6))
+
+            btn_run_val = ttk.Button(
+                box,
+                text="🛡️ Valider Maintenant",
+                command=self._run_validation,
+            )
+            btn_run_val.pack(side="left")
 
         # Summary Banner
         self.banner_frame = (
@@ -1180,6 +1314,21 @@ class DefFileGenApp:
                 command=self._export_validation_report,
             )
             self.btn_export_val.pack(side="right", padx=14, pady=10)
+        else:
+            self.lbl_val_status = ttk.Label(
+                self.banner_frame,
+                text="Aucun fichier validé. Sélectionnez une définition WebdynSunPM ci-dessus.",
+                font=("Segoe UI", 10, "bold"),
+            )
+            self.lbl_val_status.pack(side="left", padx=12, pady=8)
+
+            self.btn_export_val = ttk.Button(
+                self.banner_frame,
+                text="💾 Exporter Rapport",
+                state="disabled",
+                command=self._export_validation_report,
+            )
+            self.btn_export_val.pack(side="right", padx=12, pady=8)
 
         # Issues Table
         table_frame = ttk.Frame(parent)
@@ -1242,6 +1391,8 @@ class DefFileGenApp:
                     text=status_text,
                     text_color="#10B981",  # Emerald green
                 )
+            else:
+                self.lbl_val_status.configure(text=status_text)
         else:
             errs = report.stats.get("errors", 0)
             warns = report.stats.get("warnings", 0)
@@ -1251,9 +1402,10 @@ class DefFileGenApp:
                     text=status_text,
                     text_color="#EF4444",  # Crimson red
                 )
+            else:
+                self.lbl_val_status.configure(text=status_text)
 
-        if HAS_CUSTOMTKINTER:
-            self.btn_export_val.configure(state="normal")
+        self.btn_export_val.configure(state="normal")
 
         # Insert issues into tree
         if not report.issues:
@@ -1366,13 +1518,53 @@ class DefFileGenApp:
                 command=self._generate_template_action,
             )
             btn_gen_tmpl.pack(anchor="w", padx=16, pady=(4, 14))
+        else:
+            ttk.Label(
+                card,
+                text="Modèles Pré-structurés d'Équipements Solaires & Énergétiques",
+                font=("Segoe UI", 11, "bold"),
+            ).pack(anchor="w", padx=12, pady=(10, 4))
+
+            ttk.Label(
+                card,
+                text="Générez instantanément des définitions conformes WebdynSunPM prêtes à l'emploi :",
+            ).pack(anchor="w", padx=12, pady=(0, 8))
+
+            form_grid = ttk.Frame(card)
+            form_grid.pack(fill="x", padx=12, pady=(0, 10))
+
+            ttk.Label(form_grid, text="Type d'équipement :", font=("Segoe UI", 9, "bold")).grid(
+                row=0, column=0, sticky="w", padx=(0, 8), pady=6
+            )
+            self.opt_tmpl_category = ttk.Combobox(
+                form_grid, values=list(EQUIPMENT_TEMPLATES.keys()), state="readonly"
+            )
+            self.opt_tmpl_category.set("Inverter")
+            self.opt_tmpl_category.grid(row=0, column=1, sticky="w", pady=6)
+            self.opt_tmpl_category.bind(
+                "<<ComboboxSelected>>",
+                lambda _e: self._on_template_selected(self.opt_tmpl_category.get()),
+            )
+
+            self.lbl_tmpl_desc = ttk.Label(
+                form_grid,
+                text=EQUIPMENT_TEMPLATES["Inverter"]["description"],
+            )
+            self.lbl_tmpl_desc.grid(row=0, column=2, sticky="w", padx=(12, 0), pady=6)
+
+            btn_gen_tmpl = ttk.Button(
+                card,
+                text="📋 Générer et Enregistrer le Modèle CSV",
+                command=self._generate_template_action,
+            )
+            btn_gen_tmpl.pack(anchor="w", padx=12, pady=(4, 12))
 
     def _on_template_selected(self, choice: str) -> None:
-        if choice in EQUIPMENT_TEMPLATES and HAS_CUSTOMTKINTER:
+        if choice in EQUIPMENT_TEMPLATES:
             self.lbl_tmpl_desc.configure(text=EQUIPMENT_TEMPLATES[choice]["description"])
 
     def _generate_template_action(self) -> None:
-        category = self.opt_tmpl_category.get() if HAS_CUSTOMTKINTER else "Inverter"
+        category = self.opt_tmpl_category.get() if hasattr(self, "opt_tmpl_category") else "Inverter"
         tmpl_data = EQUIPMENT_TEMPLATES.get(category, EQUIPMENT_TEMPLATES["Inverter"])
 
         save_path = filedialog.asksaveasfilename(
@@ -1418,6 +1610,16 @@ class DefFileGenApp:
 
             btn_copy = ctk.CTkButton(
                 btn_bar, text="📋 Copier les logs", width=120, command=self._copy_logs
+            )
+            btn_copy.pack(side="left")
+        else:
+            btn_clear = ttk.Button(
+                btn_bar, text="🗑️ Effacer les logs", command=self._clear_logs
+            )
+            btn_clear.pack(side="left", padx=(0, 8))
+
+            btn_copy = ttk.Button(
+                btn_bar, text="📋 Copier les logs", command=self._copy_logs
             )
             btn_copy.pack(side="left")
 

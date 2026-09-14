@@ -340,3 +340,41 @@ class TestGeneratorUncoveredEdgeCases(unittest.TestCase):
             if os.path.exists(temp_path):
                 os.remove(temp_path)
             logging.disable(logging.CRITICAL)
+
+    def test_signed_and_extended_type_normalization(self):
+        generator = Generator()
+        # Signed integers
+        self.assertEqual(generator.normalize_type("S16"), "I16")
+        self.assertEqual(generator.normalize_type("s32"), "I32")
+        self.assertEqual(generator.normalize_type("S8"), "I8")
+        self.assertEqual(generator.normalize_type("S64"), "I64")
+        self.assertEqual(generator.normalize_type("SINT16"), "I16")
+        self.assertEqual(generator.normalize_type("SINT32"), "I32")
+        # Strings with length
+        self.assertEqual(generator.normalize_type("STR30"), "STR30")
+        self.assertEqual(generator.normalize_type("STRING_32"), "STR32")
+        self.assertEqual(generator.normalize_type("STRING_16"), "STR16")
+        self.assertEqual(generator.normalize_type("STR20"), "STR20")
+        # Bitmaps
+        self.assertEqual(generator.normalize_type("BIT16"), "BITS")
+        self.assertEqual(generator.normalize_type("BIT32"), "BITS")
+        self.assertEqual(generator.normalize_type("BITMAP16"), "BITS")
+        self.assertEqual(generator.normalize_type("BITMAP32"), "BITS")
+
+    def test_address_normalization_bits_and_strings(self):
+        from DefFileGenerator.extractor import Extractor
+
+        extractor = Extractor()
+        # BITS address without bit offset gets default _0_16
+        cleaned_bits = list(
+            extractor.map_and_clean([[{"Address": "40001", "Type": "BITS", "Name": "Status"}]])
+        )
+        self.assertEqual(cleaned_bits[0]["Address"], "40001_0_16")
+
+        # BITS address with bit offset preserved
+        cleaned_bits2 = list(
+            extractor.map_and_clean([[{"Address": "40001_3_1", "Type": "BITS", "Name": "Status"}]])
+        )
+        self.assertEqual(cleaned_bits2[0]["Address"], "40001_3_1")
+
+

@@ -14,6 +14,7 @@ import itertools
 import json
 import logging
 import os
+import re
 import sys
 import zipfile
 from collections.abc import Iterable, Iterator
@@ -326,14 +327,60 @@ class Extractor:
                             except (ValueError, TypeError):
                                 logging.warning(f"Invalid page reference: {p}")
 
+                    last_headers: Optional[list[str]] = None
+
                     for page in target_pages:
                         tables = page.extract_tables()
                         for table in tables:
                             if not table or len(table) < 2:
                                 continue
 
+                            # Skip metadata header/footer boxes (<= 3 rows containing document revision metadata)
+                            if len(table) <= 3:
+                                text_meta = " ".join(str(c) for row in table for c in row if c).lower()
+                                meta_keywords = [
+                                    "prepared by",
+                                    "firmware team",
+                                    "doc no",
+                                    "sheet:",
+                                    "page of",
+                                    "drawing no",
+                                    "confidential",
+                                    "all rights reserved",
+                                ]
+                                if any(k in text_meta for k in meta_keywords):
+                                    continue
+
+                            # Skip serial communication / connection parameter tables (2 columns with baud rate, parity, etc.)
+                            if len(table[0]) <= 2:
+                                text_comm = " ".join(str(c) for row in table for c in row if c).lower()
+                                comm_keywords = [
+                                    "baud rate",
+                                    "parity",
+                                    "data bits",
+                                    "stop bits",
+                                    "check (parity) bit",
+                                    "interface",
+                                    "subnet",
+                                    "gateway",
+                                    "tcp port",
+                                    "port number",
+                                ]
+                                if any(k in text_comm for k in comm_keywords):
+                                    continue
+
                             def table_generator(current_table=table) -> Iterator[dict[str, Any]]:
-                                # Smart header detection: check up to first 4 rows for known Modbus columns
+                                nonlocal last_headers
+                                # Smart header detection: check up to first 8 rows for known Modbus columns
+                                first_addr_idx = None
+                                for idx, r in enumerate(current_table[:8]):
+                                    if any(
+                                        c and re.match(r"^(0x[0-9a-fA-F]+|\d{1,5})$", str(c).strip())
+                                        for c in r
+                                    ):
+                                        first_addr_idx = idx
+                                        break
+
                                 best_idx = 0
                                 best_score = 0
                                 keywords = {
@@ -366,35 +413,85 @@ class Extractor:
                                     "res.",
                                     "start reg",
                                 }
-                                for idx, r in enumerate(current_table[:4]):
+                                max_scan = (
+                                    first_addr_idx
+                                    if first_addr_idx is not None
+                                    else min(4, len(current_table))
+                                )
+                                for idx, r in enumerate(current_table[: max(1, max_scan)]):
                                     if not r:
                                         continue
                                     score = sum(
                                         1
                                         for c in r
-                                        if c is not None
-                                        and any(k in str(c).lower() for k in keywords)
+                                        if c is not None and any(k in str(c).lower() for k in keywords)
                                     )
                                     if score > best_score:
                                         best_score = score
                                         best_idx = idx
 
+                                cols_count = len(current_table[0])
+
                                 if best_score >= 2:
-                                    header_row = current_table[best_idx]
-                                    data_rows = current_table[best_idx + 1 :]
+                                    header_end = (
+                                        first_addr_idx
+                                        if (first_addr_idx is not None and first_addr_idx > best_idx)
+                                        else best_idx + 1
+                                    )
+                                    combined_headers = []
+                                    for c_i in range(cols_count):
+                                        parts = []
+                                        for r_i in range(best_idx, header_end):
+                                            cell_val = current_table[r_i][c_i]
+                                            if cell_val:
+                                                text_cell = str(cell_val).replace("\n", " ").strip()
+                                                if not (
+                                                    "block" in text_cell.lower()
+                                                    and "element" in text_cell.lower()
+                                                ):
+                                                    parts.append(text_cell)
+                                        combined_headers.append(" ".join(parts).strip())
+                                    data_rows = current_table[header_end:]
+                                elif (
+                                    last_headers
+                                    and len(last_headers) == cols_count
+                                    and first_addr_idx == 0
+                                ):
+                                    combined_headers = list(last_headers)
+                                    data_rows = current_table
                                 else:
-                                    header_row = current_table[0]
+                                    combined_headers = [
+                                        str(c).replace("\n", " ").strip() if c else ""
+                                        for c in current_table[0]
+                                    ]
                                     data_rows = current_table[1:]
 
-                                headers = [
-                                    str(c).replace("\n", " ").strip() if c else ""
-                                    for c in header_row
-                                ]
+                                # Header alignment shift: if col c_i is empty and col c_i+1 has text,
+                                # while in data rows col c_i has data and col c_i+1 is empty
+                                for c_i in range(len(combined_headers) - 1):
+                                    if not combined_headers[c_i] and combined_headers[c_i + 1]:
+                                        c_i_has_data = any(
+                                            row[c_i] and str(row[c_i]).strip()
+                                            for row in data_rows
+                                            if len(row) > c_i
+                                        )
+                                        c_next_no_data = not any(
+                                            row[c_i + 1] and str(row[c_i + 1]).strip()
+                                            for row in data_rows
+                                            if len(row) > c_i + 1
+                                        )
+                                        if c_i_has_data and c_next_no_data:
+                                            combined_headers[c_i] = combined_headers[c_i + 1]
+                                            combined_headers[c_i + 1] = ""
+
+                                if best_score >= 2:
+                                    last_headers = combined_headers
+
                                 for row in data_rows:
                                     row_dict = {}
                                     for i, cell in enumerate(row):
-                                        if i < len(headers):
-                                            row_dict[headers[i]] = (
+                                        if i < len(combined_headers):
+                                            row_dict[combined_headers[i]] = (
                                                 str(cell).replace("\n", " ").strip() if cell else ""
                                             )
                                     if any(v.strip() for v in row_dict.values() if v):
@@ -548,7 +645,9 @@ class Extractor:
             if not buffer:
                 continue
 
-            all_keys = set().union(*buffer) if buffer else set()
+            all_keys = list(
+                dict.fromkeys(col for r in buffer for col in r.keys() if col is not None)
+            )
 
             col_map = {}
             used_src_cols = set()
@@ -601,6 +700,18 @@ class Extractor:
                         break
 
             # 3. Partial matches
+            NAME_INDICATORS = {
+                "description",
+                "desc",
+                "name",
+                "nom",
+                "designation",
+                "parameter",
+                "param",
+                "variable",
+                "signal",
+                "label",
+            }
             for target in detection_order:
                 if target in col_map:
                     continue
@@ -608,10 +719,17 @@ class Extractor:
                 for src_col in all_keys:
                     if src_col in used_src_cols:
                         continue
-                    if any(p in str(src_col).lower() for p in patterns):
+                    src_low = str(src_col).lower().strip()
+                    # Guard: If column contains name/description terms, do not match it as Address
+                    if target == "Address" and any(ind in src_low for ind in NAME_INDICATORS):
+                        continue
+                    if any(p in src_low for p in patterns):
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
+
+            if "Address" not in col_map:
+                continue
 
             length_src = str(col_map.get("Length", "")).lower()
             length_is_register_quantity = any(p in length_src for p in ("quantity", "count", "qty"))
@@ -622,7 +740,8 @@ class Extractor:
                 length_is_register_quantity=length_is_register_quantity,
             ) -> Optional[dict[str, Any]]:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
-                if not new_row.get("Name") and not new_row.get("Address"):
+                addr_val = str(new_row.get("Address") or "").strip()
+                if not addr_val:
                     return None
                 sbit = str(r.get(col_map.get("StartBit", ""), "")).strip()
                 slen = str(r.get(col_map.get("Length", ""), "")).strip()
@@ -638,12 +757,18 @@ class Extractor:
                     # definition format's STRING address suffix is a byte length.
                     slen = str(int(slen) * 2)
 
-                if dtype == "BITS" and sbit != "" and "_" not in addr:
-                    if slen == "":
-                        slen = "1"
+                if dtype == "BITS" and "_" not in addr:
+                    if sbit != "":
+                        if slen == "":
+                            slen = "1"
+                    else:
+                        sbit = "0"
+                        if slen == "":
+                            slen = "16"
                     addr = f"{addr}_{sbit}_{slen}"
                 elif is_string_type and slen != "" and "_" not in addr:
                     addr = f"{addr}_{slen}"
+
 
                 if Generator is not None:
                     new_row["Address"] = Generator.apply_address_offset(addr, address_offset)
