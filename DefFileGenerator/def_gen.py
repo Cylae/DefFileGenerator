@@ -113,9 +113,19 @@ class Generator:
             return ""
 
         # Check for prefix characters that trigger injection
-        if s[0] in ("\t", "\r", "\n", "\u00a0", "\ufeff") or s.startswith(
-            ("\uff1d", "\uff0b", "\uff0d", "\uff20")
-        ):
+        if s[0] in (
+            "\t",
+            "\r",
+            "\n",
+            "\u00a0",
+            "\ufeff",
+            "\u200b",
+            "\u200e",
+            "\u200f",
+            "\u2028",
+            "\u2029",
+            "\u0085",
+        ) or s.startswith(("\uff1d", "\uff0b", "\uff0d", "\uff20")):
             prefix = s[0]
             rest = s[1:].replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
             return "'" + prefix + rest
@@ -123,11 +133,11 @@ class Generator:
         # Replace internal newlines and carriage returns with a space to prevent multiline CSV records
         s = s.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
 
-        stripped = s.lstrip()
+        stripped = s.lstrip(" \t\n\r\v\f\u00a0\ufeff\u200b\u200e\u200f\u2028\u2029\u0085")
         if not stripped:
             return s
 
-        if stripped[0] in ("=", "+", "-", "@", "|", "%"):
+        if stripped[0] in ("=", "+", "-", "@", "|", "%", "\uff1d", "\uff0b", "\uff0d", "\uff20"):
             if "_" in stripped or "inf" in stripped.lower() or "nan" in stripped.lower():
                 return "'" + s
             try:
