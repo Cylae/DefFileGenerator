@@ -191,17 +191,24 @@ class Generator:
 
         # Mapping ordered by specificity
         synonyms = [
-            (r"unsigned\s*(?:int(?:eger)?)?\s*64|uint64|\bu64\b", "U64"),
-            (r"signed\s*(?:int(?:eger)?)?\s*64|sint64|\bint64\b|\bi64\b|\bs64\b", "I64"),
-            (r"unsigned\s*(?:int(?:eger)?)?\s*32|uint32|\bu32\b", "U32"),
-            (r"signed\s*(?:int(?:eger)?)?\s*32|sint32|\bint32\b|\bi32\b|\bs32\b", "I32"),
-            (r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b", "U16"),
-            (r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b", "I16"),
-            (r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b", "U8"),
-            (r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b", "I8"),
-            (r"float64|double|\bf64\b", "F64"),
-            (r"float32|float|\bf32\b", "F32"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*64|uint64|\bu64\b|\bint64u\b", "U64"),
+            (r"signed\s*(?:int(?:eger)?)?\s*64|sint64|\bint64\b|\bi64\b|\bs64\b|\bint64s\b", "I64"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*32|uint32|\bu32\b|\bint32u\b", "U32"),
+            (r"signed\s*(?:int(?:eger)?)?\s*32|sint32|\bint32\b|\bi32\b|\bs32\b|\bint32s\b", "I32"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b|\bint16u\b", "U16"),
+            (r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b|\bint16s\b", "I16"),
+            (r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b|\bint8u\b", "U8"),
+            (r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b|\bint8s\b", "I8"),
+            (r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754", "F64"),
+            (r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754", "F32"),
             (r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b", "BITS"),
+            (r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$", "U32"),
+            (r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$", "U16"),
+            (r"^unsigned\s*(?:int(?:eger)?)?$|^uint$|^unsigned$", "U16"),
+            (r"^signed\s*(?:int(?:eger)?)?$|^sint$|^int$", "I16"),
+            (r"\bdate\s*time\b|\bdatetime\b", "U32"),
+            (r"\b(?:ip4|ipv4)\b", "IP"),
+            (r"\b(?:ip6|ipv6)\b", "IPV6"),
         ]
         for pattern, replacement in synonyms:
             if re.search(pattern, t):
@@ -236,6 +243,15 @@ class Generator:
         if isinstance(addr_part, int):
             return str(addr_part)
         s = str(addr_part).strip()
+        if not s:
+            return ""
+
+        # Handle range notation if present: e.g. "31657~31658", "0x8232 ~ 0x82FE", "40001-40002", "30001..30002"
+        # Extract the start address before the range separator
+        range_match = re.match(r"^([^\s~.]+?)\s*(?:~|\.\.|\s+-\s+|-(?=[0-9a-fA-FxX]))", s)
+        if range_match:
+            s = range_match.group(1).strip()
+
         if s.isdigit() and (not s.startswith("0") or s == "0"):
             return s
         addr_part = s

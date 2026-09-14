@@ -54,9 +54,10 @@ Explicit JSON overrides remain available through `--mapping`.
 
 The generator normalizes:
 
-- decimal and hexadecimal addresses;
+- decimal, hexadecimal addresses (`0x1000`, `1000h`), and register ranges (`31657~31658`, `40001-40002`, `0x8232 ~ 0x82FE`);
 - register widths for `U8/I8`, `U16/I16`, `U32/I32/F32/IP`, `U64/I64/F64`, `MAC`, `IPV6`, `STRING`, and `BITS`;
-- data type / endianness aliases;
+- manufacturer type aliases: `INT16U`/`INT32U`/`INT64U` (unsigned), `INT16S`/`INT32S`/`INT64S` (signed), `32-bit IEEE 754` (`F32`), `64-bit IEEE 754` (`F64`), `DATETIME` (`U32`), `IP4` (`IP`), and `HEX` (`U16`);
+- data type / endianness aliases (`_WB`, `_B`, `_W`, `swap`, `big endian`);
 - coefficients (`CoefA = Factor × 10^ScaleFactor`, `CoefB = Offset`);
 - tags, register type codes, and actions.
 

@@ -59,8 +59,29 @@ deffilegen extract datasheet.xlsx --mapping custom_mapping.json -o registers.csv
 
 1. **Decimal**: `40001` -> parsed directly.
 2. **Hexadecimal**: `0x9C41` or `9C41h` -> converted to decimal `40001`.
-3. **Compound Bitfields (`BITS`)**: `address_startbit_length`, for example `30001_0_1`.
-4. **Compound Strings (`STR<n>`)**: `address_length`, for example `30030_20`.
+3. **Register Ranges**: `31657~31658`, `40001-40002`, `0x8232 ~ 0x82FE`, `30001..30002` -> automatically extracts base start register (`31657`, `40001`, `33330`, `30001`).
+4. **Compound Bitfields (`BITS`)**: `address_startbit_length`, for example `30001_0_1`.
+5. **Compound Strings (`STR<n>`)**: `address_length`, for example `30030_20`.
+
+---
+
+## 🔠 Supported Data Types & Aliases
+
+The generator normalizes a broad range of vendor type representations:
+
+| Normalized Type | Vendor Input Examples | Notes |
+|---|---|---|
+| **U16** | `uint16`, `u16`, `int16u`, `unsigned int 16`, `unsigned integer`, `uint`, `hex`, `16-bit hex`, `bitfield16` | 1 Modbus word (16 bits unsigned) |
+| **I16** | `int16`, `i16`, `int16s`, `sint16`, `s16`, `signed int 16`, `signed integer`, `int` | 1 Modbus word (16 bits signed) |
+| **U32** | `uint32`, `u32`, `int32u`, `unsigned int 32`, `hex32`, `32-bit hex`, `bitfield32`, `datetime` | 2 Modbus words (32 bits unsigned) |
+| **I32** | `int32`, `i32`, `int32s`, `sint32`, `s32`, `signed int 32` | 2 Modbus words (32 bits signed) |
+| **F32** | `float`, `float32`, `f32`, `32-bit IEEE 754`, `IEEE-754` | 2 Modbus words (IEEE 754 single precision) |
+| **U64** | `uint64`, `u64`, `int64u`, `unsigned int 64`, `bitfield64` | 4 Modbus words (64 bits unsigned) |
+| **I64** | `int64`, `i64`, `int64s`, `sint64`, `s64`, `signed int 64` | 4 Modbus words (64 bits signed) |
+| **F64** | `double`, `float64`, `f64`, `64-bit IEEE 754` | 4 Modbus words (IEEE 754 double precision) |
+| **BITS** | `bit16`, `bitmap16`, `bits16`, `bit32`, `bitmap32` | Bitfield slice (`addr_startbit_length`) |
+| **IP / IPV6** | `ip`, `ip4`, `ipv4`, `ipv6` | Network IP addresses |
+| **STRING** | `string 20`, `str*30`, `string_16`, `STR` | Modbus ASCII character string |
 
 ### BITS constraints
 

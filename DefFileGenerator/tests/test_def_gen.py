@@ -93,6 +93,11 @@ class TestGenerator(unittest.TestCase):
         self.assertEqual(self.generator.normalize_address_val("10"), "10")
         self.assertEqual(self.generator.normalize_address_val("A0"), "160")
         self.assertEqual(self.generator.normalize_address_val("1,234"), "1234")
+        # Range notation
+        self.assertEqual(self.generator.normalize_address_val("31657~31658"), "31657")
+        self.assertEqual(self.generator.normalize_address_val("0x8232 ~ 0x82FE"), "33330")
+        self.assertEqual(self.generator.normalize_address_val("40001-40002"), "40001")
+        self.assertEqual(self.generator.normalize_address_val("30001..30002"), "30001")
 
     def test_validate_address_invalid(self):
         self.assertFalse(self.generator.validate_address("30001_10", "U16"))  # U16 expects int
@@ -350,6 +355,36 @@ class TestGeneratorUncoveredEdgeCases(unittest.TestCase):
         self.assertEqual(generator.normalize_type("S64"), "I64")
         self.assertEqual(generator.normalize_type("SINT16"), "I16")
         self.assertEqual(generator.normalize_type("SINT32"), "I32")
+        # INTxxU / INTxxS manufacturer variants
+        self.assertEqual(generator.normalize_type("INT16U"), "U16")
+        self.assertEqual(generator.normalize_type("INT32U"), "U32")
+        self.assertEqual(generator.normalize_type("INT64U"), "U64")
+        self.assertEqual(generator.normalize_type("INT8U"), "U8")
+        self.assertEqual(generator.normalize_type("INT16S"), "I16")
+        self.assertEqual(generator.normalize_type("INT32S"), "I32")
+        self.assertEqual(generator.normalize_type("INT64S"), "I64")
+        self.assertEqual(generator.normalize_type("INT8S"), "I8")
+        # IEEE 754 floating point
+        self.assertEqual(generator.normalize_type("32-bit IEEE 754"), "F32")
+        self.assertEqual(generator.normalize_type("32BIT IEEE-754"), "F32")
+        self.assertEqual(generator.normalize_type("IEEE 754"), "F32")
+        self.assertEqual(generator.normalize_type("64-bit IEEE 754"), "F64")
+        # Bare unsigned / signed integers
+        self.assertEqual(generator.normalize_type("unsigned integer"), "U16")
+        self.assertEqual(generator.normalize_type("unsigned int"), "U16")
+        self.assertEqual(generator.normalize_type("uint"), "U16")
+        self.assertEqual(generator.normalize_type("signed integer"), "I16")
+        self.assertEqual(generator.normalize_type("int"), "I16")
+        # DateTime
+        self.assertEqual(generator.normalize_type("datetime"), "U32")
+        self.assertEqual(generator.normalize_type("DateTime"), "U32")
+        # IP representations
+        self.assertEqual(generator.normalize_type("IP4"), "IP")
+        self.assertEqual(generator.normalize_type("IPv4"), "IP")
+        self.assertEqual(generator.normalize_type("IPv6"), "IPV6")
+        # Hexadecimal
+        self.assertEqual(generator.normalize_type("HEX"), "U16")
+        self.assertEqual(generator.normalize_type("16-bit hex"), "U16")
         # Strings with length
         self.assertEqual(generator.normalize_type("STR30"), "STR30")
         self.assertEqual(generator.normalize_type("STRING_32"), "STR32")
