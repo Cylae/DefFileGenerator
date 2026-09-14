@@ -194,7 +194,7 @@ class TestDefFileGenApp(unittest.TestCase):
             self.assertTrue(os.path.exists(out_path))
             with open(out_path, encoding="utf-8") as f:
                 content = f.read()
-            self.assertIn("RAPPORT D'AUDIT ET VALIDATION", content)
+            self.assertIn("WEBDYNSUNPM AUDIT AND VALIDATION REPORT", content)
             self.assertIn("DUPLICATE_TAG", content)
         finally:
             try:
