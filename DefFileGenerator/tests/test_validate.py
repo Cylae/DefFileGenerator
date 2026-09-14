@@ -3,6 +3,7 @@ import logging
 import os
 import tempfile
 import unittest
+import unittest.mock
 
 from DefFileGenerator.def_gen import Generator
 

@@ -139,7 +139,8 @@ def validate_command(args):
 
     generator = Generator()
     strict = not getattr(args, "lenient", False)
-    if generator.validate_csv(input_file, strict=strict):
+    report = generator.validate_csv_detailed(input_file, strict=strict)
+    if report.is_valid:
         logging.info(f"Validation successful: {input_file}")
     else:
         logging.error(f"Validation failed: {input_file}")
@@ -261,6 +262,7 @@ def _run_cli(argv=None):
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--version", action="version", version="deffilegen 0.2.1")
+    parser.add_argument("--gui", action="store_true", help="Launch Windows 11 Desktop Application")
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
     parser.add_argument("-q", "--quiet", action="store_true", help="Quiet logging")
 
@@ -269,6 +271,10 @@ def _run_cli(argv=None):
     def add_common_flags(p):
         p.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
         p.add_argument("-q", "--quiet", action="store_true", help="Quiet logging")
+
+    # GUI
+    parser_gui = subparsers.add_parser("gui", help="Launch Windows 11 Desktop Application")
+    add_common_flags(parser_gui)
 
     # Validate
     parser_validate = subparsers.add_parser(
@@ -330,6 +336,12 @@ def _run_cli(argv=None):
     )
 
     args = parser.parse_args(argv)
+
+    if getattr(args, "gui", False) or args.command == "gui":
+        from DefFileGenerator.gui import main as gui_main
+
+        gui_main()
+        sys.exit(0)
 
     if not args.command:
         parser.print_help()

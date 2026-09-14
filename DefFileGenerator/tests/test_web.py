@@ -112,6 +112,47 @@ class TestWebBackend(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFalse(response.json()["valid"])
 
+    def test_convert_filename_fallback_when_empty_or_symbols(self):
+        csv_content = "Register,Name,Data Type,Unit,Scale,Access\n40001,Active Power,uint16,W,1,R\n"
+        file_obj = io.BytesIO(csv_content.encode("utf-8"))
+        response = self.client.post(
+            "/api/convert",
+            files={"file": ("sample.csv", file_obj, "text/csv")},
+            data={"manufacturer": "@#$%", "model": "^&*()"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["filename"], "manufacturer_model_definition.csv")
+
+    def test_convert_excel_file_cleans_up_without_lock(self):
+        import openpyxl
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        assert ws is not None
+        ws.title = "Registers"
+        ws.append(["Name", "Address", "Type", "Unit"])
+        ws.append(["Grid Voltage", "40001", "U16", "V"])
+        excel_buffer = io.BytesIO()
+        wb.save(excel_buffer)
+        excel_buffer.seek(0)
+
+        response = self.client.post(
+            "/api/convert",
+            files={
+                "file": (
+                    "test_upload.xlsx",
+                    excel_buffer,
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                )
+            },
+            data={"manufacturer": "TestInverter", "model": "ModelX"},
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertTrue(data["success"])
+        self.assertEqual(data["register_count"], 1)
+        self.assertEqual(data["filename"], "testinverter_modelx_definition.csv")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -173,11 +173,13 @@ async def convert_file(
         with open(output_path, encoding="utf-8-sig") as f:
             csv_content = f.read()
 
-        filename_mfg = "".join(
-            c for c in manufacturer.lower().replace(" ", "_") if c.isalnum() or c == "_"
+        filename_mfg = (
+            "".join(c for c in manufacturer.lower().replace(" ", "_") if c.isalnum() or c == "_")
+            or "manufacturer"
         )
-        filename_model = "".join(
-            c for c in model.lower().replace(" ", "_") if c.isalnum() or c == "_"
+        filename_model = (
+            "".join(c for c in model.lower().replace(" ", "_") if c.isalnum() or c == "_")
+            or "model"
         )
         out_filename = f"{filename_mfg}_{filename_model}_definition.csv"
 
@@ -209,7 +211,7 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
 
         generator = Generator()
         try:
-            is_valid = generator.validate_csv(input_path, strict=True)
+            report = generator.validate_csv_detailed(input_path, strict=True)
         except Exception:
             logger.exception("Validation error for %s", safe_filename)
             raise HTTPException(
@@ -217,7 +219,24 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
                 detail="Failed to validate uploaded definition CSV.",
             ) from None
 
-        return JSONResponse(content={"filename": safe_filename, "valid": is_valid})
+        return JSONResponse(
+            content={
+                "filename": safe_filename,
+                "valid": report.is_valid,
+                "register_count": report.register_count,
+                "issues": [
+                    {
+                        "line": i.line,
+                        "severity": i.severity,
+                        "code": i.code,
+                        "field": i.field,
+                        "message": i.message,
+                    }
+                    for i in report.issues
+                ],
+                "stats": report.stats,
+            }
+        )
 
 
 # Serve static web frontend assets

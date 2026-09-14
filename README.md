@@ -107,10 +107,33 @@ deffilegen validate sma_stp5000.csv
 
 Main subcommands:
 
+- `gui` — launch the Windows 11 native desktop application;
 - `run` — extract, generate, and validate in one workflow;
 - `extract` — create an intermediate normalized register CSV;
 - `generate` — build a WebdynSunPM definition from normalized data;
 - `validate` — check an existing definition.
+
+## Windows 11 Desktop Application
+
+`DefFileGenerator` includes a native, modern desktop application designed specifically for **Windows 11** with dark/light mode, per-monitor high-DPI awareness, non-blocking worker threads, and offline execution:
+
+```bash
+# Launch from Windows Explorer (double click)
+launch_gui.bat
+
+# Launch via dedicated CLI entry point
+deffilegen-gui
+
+# Or via sub-command or flag
+deffilegen gui
+deffilegen --gui
+```
+
+### Key Capabilities:
+- **⚡ Conversion & Génération** : Select or browse documentation (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`). Auto-infers manufacturer and model from filenames, extracts registers in a background thread without freezing the UI, and displays an interactive preview table with quick actions (*Open CSV*, *Open Folder*, *Copy CSV*).
+- **🛡️ Validateur de Définition** : Instant validation of WebdynSunPM definition files against strict specifications (mandatory headers, duplicate tags, data type syntax, address ranges, bit-slice collisions) with color-coded diagnostic table and exportable audit report.
+- **📋 Modèles d'Équipement** : Pre-configured templates for Photovoltaic Inverters, Energy Meters, Irradiance Sensors / Pyranometers, Battery Energy Storage Systems (BESS), Weather Stations, Trackers, and Generic Modbus devices.
+- **📜 Console & Logs en direct** : Real-time log streaming with severity color cues (INFO, WARNING, ERROR), log filtering, and clipboard export.
 
 ## Programmatic API
 

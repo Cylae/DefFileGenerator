@@ -65,6 +65,23 @@ class GeneratorConfig:
     address_offset: int = 0
 
 
+@dataclass
+class ValidationIssue:
+    line: int
+    severity: str  # "ERROR" or "WARNING"
+    code: str
+    field: str
+    message: str
+
+
+@dataclass
+class ValidationReport:
+    is_valid: bool
+    register_count: int
+    issues: list[ValidationIssue]
+    stats: dict[str, Any]
+
+
 class Generator:
     def __init__(self, strict: bool = False) -> None:
         self.register_type_map = {
@@ -99,7 +116,12 @@ class Generator:
         if s[0] in ("\t", "\r", "\n", "\u00a0", "\ufeff") or s.startswith(
             ("\uff1d", "\uff0b", "\uff0d", "\uff20")
         ):
-            return "'" + s
+            prefix = s[0]
+            rest = s[1:].replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
+            return "'" + prefix + rest
+
+        # Replace internal newlines and carriage returns with a space to prevent multiline CSV records
+        s = s.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
 
         stripped = s.lstrip()
         if not stripped:
@@ -584,21 +606,38 @@ class Generator:
                 "Action": norm_action,
             }
 
-    def validate_csv(
+    def validate_csv_detailed(
         self, filepath: str, strict: bool = False, strict_overlap: Optional[bool] = None
-    ) -> bool:
-        """Validates an existing WebdynSunPM definition file."""
+    ) -> ValidationReport:
+        """Validates an existing WebdynSunPM definition file and returns a structured report."""
         if not os.path.exists(filepath):
-            logging.error(f"File not found: {filepath}")
-            return False
+            msg = f"File not found: {filepath}"
+            logging.error(msg)
+            return ValidationReport(
+                is_valid=False,
+                register_count=0,
+                issues=[
+                    ValidationIssue(
+                        line=0,
+                        severity="ERROR",
+                        code="FILE_NOT_FOUND",
+                        field="filepath",
+                        message=msg,
+                    )
+                ],
+                stats={"errors": 1, "warnings": 0, "types": {}, "registers": 0},
+            )
 
         if strict_overlap is None:
             strict_overlap = strict
 
         valid = True
+        issues: list[ValidationIssue] = []
         seen_tags: dict[str, int] = {}
         address_usage: dict[str, dict[str, Any]] = {}
         warned_lines: set[tuple[int, int]] = set()
+        type_counts: dict[str, int] = {}
+        total_registers = 0
 
         try:
             with open(filepath, "rb") as f:
@@ -611,24 +650,78 @@ class Generator:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader, None)
                 if not header or len(header) < 2 or not any(header):
-                    logging.error("Invalid WebdynSunPM header.")
-                    return False
+                    msg = "Invalid WebdynSunPM header."
+                    logging.error(msg)
+                    return ValidationReport(
+                        is_valid=False,
+                        register_count=0,
+                        issues=[
+                            ValidationIssue(
+                                line=1,
+                                severity="ERROR",
+                                code="INVALID_HEADER",
+                                field="header",
+                                message=msg,
+                            )
+                        ],
+                        stats={"errors": 1, "warnings": 0, "types": {}, "registers": 0},
+                    )
 
                 for line_num, row in enumerate(reader, start=2):
                     if not row or not any(row):
                         continue
                     if len(row) < 11:
-                        logging.warning(f"Line {line_num}: Row has insufficient columns.")
+                        msg = f"Line {line_num}: Row has insufficient columns ({len(row)}/11)."
+                        logging.warning(msg)
+                        issues.append(
+                            ValidationIssue(
+                                line=line_num,
+                                severity="ERROR" if strict else "WARNING",
+                                code="INSUFFICIENT_COLUMNS",
+                                field="row",
+                                message=msg,
+                            )
+                        )
+                        if strict:
+                            valid = False
                         continue
 
+                    total_registers += 1
                     # row format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
                     info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+
+                    # Validate Info1
+                    info1_str = str(info1).strip()
+                    if info1_str not in ("1", "2", "3", "4"):
+                        msg = f"Line {line_num}: Invalid Info1 '{info1}' (expected 1, 2, 3, or 4)."
+                        logging.warning(msg)
+                        issues.append(
+                            ValidationIssue(
+                                line=line_num,
+                                severity="ERROR" if strict else "WARNING",
+                                code="INVALID_INFO1",
+                                field="Info1",
+                                message=msg,
+                            )
+                        )
+                        if strict:
+                            valid = False
+                    else:
+                        type_counts[info1_str] = type_counts.get(info1_str, 0) + 1
 
                     # Validate Tag uniqueness (fatal)
                     if tag:
                         if tag in seen_tags:
-                            logging.error(
-                                f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})."
+                            msg = f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})."
+                            logging.error(msg)
+                            issues.append(
+                                ValidationIssue(
+                                    line=line_num,
+                                    severity="ERROR",
+                                    code="DUPLICATE_TAG",
+                                    field="Tag",
+                                    message=msg,
+                                )
                             )
                             valid = False
                         else:
@@ -636,29 +729,129 @@ class Generator:
 
                     # Validate Type
                     if not self.validate_type(info3):
-                        logging.warning(f"Line {line_num}: Invalid Type '{info3}'.")
+                        msg = f"Line {line_num}: Invalid Type '{info3}'."
+                        logging.warning(msg)
+                        issues.append(
+                            ValidationIssue(
+                                line=line_num,
+                                severity="ERROR",
+                                code="INVALID_TYPE",
+                                field="Info3",
+                                message=msg,
+                            )
+                        )
                         valid = False
 
                     # Validate Address format and range (fatal)
                     if not self.validate_address(info2, info3, strict=strict):
-                        logging.error(
-                            f"Line {line_num}: Invalid address or range '{info2}' for Type '{info3}'."
+                        msg = f"Line {line_num}: Invalid address or range '{info2}' for Type '{info3}'."
+                        logging.error(msg)
+                        issues.append(
+                            ValidationIssue(
+                                line=line_num,
+                                severity="ERROR",
+                                code="INVALID_ADDRESS",
+                                field="Info2",
+                                message=msg,
+                            )
                         )
                         valid = False
 
+                    # Validate Action
+                    action_val = str(row[10]).strip()
+                    if action_val and action_val not in self.allowed_actions:
+                        msg = f"Line {line_num}: Invalid Action '{action_val}'."
+                        logging.warning(msg)
+                        issues.append(
+                            ValidationIssue(
+                                line=line_num,
+                                severity="ERROR" if strict else "WARNING",
+                                code="INVALID_ACTION",
+                                field="Action",
+                                message=msg,
+                            )
+                        )
+                        if strict:
+                            valid = False
+
+                    # Validate CoefA and CoefB
+                    for coef_idx, coef_name in ((7, "CoefA"), (8, "CoefB")):
+                        c_val = str(row[coef_idx]).strip()
+                        if c_val:
+                            try:
+                                f_val = float(c_val)
+                                if not math.isfinite(f_val):
+                                    raise ValueError()
+                            except ValueError:
+                                msg = f"Line {line_num}: Non-numeric {coef_name} '{c_val}'."
+                                logging.warning(msg)
+                                issues.append(
+                                    ValidationIssue(
+                                        line=line_num,
+                                        severity="ERROR" if strict else "WARNING",
+                                        code="INVALID_COEF",
+                                        field=coef_name,
+                                        message=msg,
+                                    )
+                                )
+                                if strict:
+                                    valid = False
+
+                    prev_warned = len(warned_lines)
                     self._check_address_overlap(
                         info1, info2, info3, name, line_num, address_usage, warned_lines
                     )
+                    if len(warned_lines) > prev_warned:
+                        issues.append(
+                            ValidationIssue(
+                                line=line_num,
+                                severity="ERROR" if strict_overlap else "WARNING",
+                                code="ADDRESS_OVERLAP",
+                                field="Info2",
+                                message=f"Line {line_num}: Address overlap detected for '{name}' at {info2}.",
+                            )
+                        )
 
             if strict_overlap and warned_lines:
-                logging.error("Address overlaps detected. Validation failed.")
+                msg = "Address overlaps detected. Validation failed."
+                logging.error(msg)
                 valid = False
 
-            return valid
+            err_count = sum(1 for i in issues if i.severity == "ERROR")
+            warn_count = sum(1 for i in issues if i.severity == "WARNING")
+            stats = {
+                "errors": err_count,
+                "warnings": warn_count,
+                "types": type_counts,
+                "registers": total_registers,
+            }
+            return ValidationReport(
+                is_valid=valid,
+                register_count=total_registers,
+                issues=issues,
+                stats=stats,
+            )
 
         except (OSError, csv.Error) as e:
-            logging.error(f"Error reading definition file: {e}")
-            return False
+            msg = f"Error reading definition file: {e}"
+            logging.error(msg)
+            return ValidationReport(
+                is_valid=False,
+                register_count=0,
+                issues=[
+                    ValidationIssue(
+                        line=0, severity="ERROR", code="IO_ERROR", field="file", message=msg
+                    )
+                ],
+                stats={"errors": 1, "warnings": 0, "types": {}, "registers": 0},
+            )
+
+    def validate_csv(
+        self, filepath: str, strict: bool = False, strict_overlap: Optional[bool] = None
+    ) -> bool:
+        """Validates an existing WebdynSunPM definition file."""
+        report = self.validate_csv_detailed(filepath, strict=strict, strict_overlap=strict_overlap)
+        return report.is_valid
 
     @staticmethod
     def write_output_csv(

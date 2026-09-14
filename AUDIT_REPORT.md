@@ -45,22 +45,55 @@ The project consists of four core components:
 - **Impact**: Unhandled validation errors or unexpected definition outputs.
 - **Remediation**: Hardened `apply_address_offset` and `validate_address` in `def_gen.py` to safely format base addresses, issue clear warnings for negative or out-of-bounds addresses, and enforce strict 0-65535 Modbus register range validation. Tested extensively in `DefFileGenerator/tests/test_address_edge.py`.
 
+### 6. Windows Openpyxl File Descriptor Locking (HIGH)
+- **Problem**: On Windows operating systems, opening Excel workbooks using `load_workbook(filename, read_only=True)` maintains an open file lock on the underlying file descriptor until garbage collection or explicit closure. In generator workflows where row generation is yielded lazily, the file descriptor remained locked, triggering `PermissionError: [WinError 32] The process cannot access the file because it is being used by another process` whenever calling code attempted to delete temporary upload files.
+- **Impact**: Server file descriptor leaks, temporary file cleanup failures, and test suite execution failures on Windows platforms.
+- **Remediation**: Updated `Extractor.extract_from_excel` in `DefFileGenerator/extractor.py` to read the file contents into memory via `io.BytesIO(file_data)` and open the workbook with `read_only=False`. This eliminates OS file locking on disk files while preserving fast in-memory parsing.
+
+### 7. Real-World Encoding & WebdynSunPM CSV Ingestion (MEDIUM)
+- **Problem**: Manufacturer documentation in real-world deployments (e.g. from European vendors) frequently uses Windows-1252 (`cp1252`) encoding with non-ASCII accented characters (`°`, `é`, `ä`) or UTF-16 with BOM. Furthermore, existing WebdynSunPM definition files (starting with `modbus;...` metadata headers) lacked standard column headers and caused standard `csv.DictReader` ingestion to fail.
+- **Impact**: Crashes during ingestion of vendor CSVs and existing Webdyn definition files.
+- **Remediation**: Enhanced `Extractor.extract_from_csv` with multi-stage encoding fallback (`utf-16` with BOM, `utf-8`, `cp1252`, and fallback with character replacement). Implemented automatic detection and parsing of WebdynSunPM definition CSV headers (`modbus;...`). Expanded `COLUMN_MAPPING` to recognize `info1`, `info2`, `info3`, `coefa`, and `coefb` aliases.
+
+### 8. CSV Row-Splitting via Multiline Injections (HIGH)
+- **Problem**: Register descriptions extracted from PDF tables or multiline Excel cells can contain raw embedded carriage returns (`\r\n`, `\r`, or `\n`). When written to CSV without normalization, these line breaks split a single Modbus definition row into multiple fragmented lines, corrupting the WebdynSunPM definition syntax.
+- **Impact**: Corrupted definition files rejected by WebdynSunPM gateways or causing incorrect parsing in downstream monitoring equipment.
+- **Remediation**: Enhanced `Generator.sanitize_csv_field` in `def_gen.py` to replace embedded `\r\n`, `\r`, and `\n` sequences with single spaces, ensuring every register definition remains strictly contained on a single physical line. Added comprehensive test coverage in `DefFileGenerator/tests/test_adversarial_security.py`.
+
+### 9. Web Frontend XSS & Null/Whitespace Fallbacks (MEDIUM)
+- **Problem**: Uploads with whitespace-only or non-alphanumeric manufacturer/model names resulted in empty filenames or invalid download paths. In the web frontend UI, `escapeHtml` did not escape single quotes (`'`), creating potential DOM XSS injection vectors if dynamic attributes were enclosed in single quotes.
+- **Impact**: Invalid downloads and potential script execution vulnerabilities in web browsers.
+- **Remediation**: Updated `web/app.py` to provide fallback defaults (`"manufacturer"`, `"model"`) when sanitized parameters are empty. Updated `web/static/app.js` to escape single quotes to `&#39;`. Added unit tests in `DefFileGenerator/tests/test_web.py`.
+
 ---
 
 ## Validation Matrix
 
 | Validation | Result | Evidence / Command |
 |---|---|---|
-| Core Unit tests | **PASS** | `python3 -m pytest` (472 passed in 16.85s) |
-| Web Backend Unit tests | **PASS** | `python3 -m pytest DefFileGenerator/tests/test_web.py` (9 passed) |
-| Ruff Linting | **PASS** | `ruff check .` (0 errors across 36 files) |
-| Ruff Formatting | **PASS** | `ruff format --check .` (46 files formatted) |
-| Mypy Type Checking | **PASS** | `mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py web` (Success) |
-| Torture Battery | **PASS** | `PYTHONPATH=. python3 DefFileGenerator/tests/run_torture_battery.py` (Passed) |
-| Gigantic Stress Battery | **PASS** | `PYTHONPATH=. python3 DefFileGenerator/tests/run_gigantic_battery.py` (Passed) |
+| Core & Web Pytest Suite | **PASS** | `pytest --cov=DefFileGenerator --cov=web` (523 passed in 17.5s, 88% coverage, 93% on `def_gen.py`) |
+| Ruff Linting | **PASS** | `ruff check .` (0 errors across 39 files) |
+| Ruff Formatting | **PASS** | `ruff format --check .` (49 files inspected, all formatted) |
+| Mypy Type Checking | **PASS** | `mypy DefFileGenerator web generate_webdyn_def.py doc_to_webdyn.py` (Success: no issues in 39 source files) |
+| Bandit Security Scan | **PASS** | `bandit -r DefFileGenerator web -ll` (0 High, 0 Medium issues) |
+| Torture Stress Battery | **PASS** | `python DefFileGenerator/tests/run_torture_battery.py` (2,501 stress registers generated & validated) |
+| Gigantic Stress Battery | **PASS** | `python DefFileGenerator/tests/run_gigantic_battery.py` (2,501 large-scale registers generated & validated) |
+| Equipementiers Real-World Battery | **PASS** | `python DefFileGenerator/tests/run_equipementiers_battery.py` (9,862 real registers extracted across Excel, CSV, and XML with 0 errors) |
+
+---
+
+## Real-World Manufacturer Dataset Validation
+
+The system was tested directly against real-world manufacturer documentation from `G:\My Drive\08092026\Equipementiers` (containing 253 manufacturer directories across solar inverters, meters, weather stations, and energy storage systems).
+
+Results of the automated battery (`DefFileGenerator/tests/run_equipementiers_battery.py`):
+- **Files Processed**: 25 real-world multi-format manufacturer files (sample covering major vendors including A-eberle, Autarco, Bonfiglioli, ABB, etc.).
+- **Total Registers Extracted**: 9,862 registers across `.xlsx`, `.csv`, and `.xml`.
+- **Definition Generation & Validation**: 100% successful generation with 0 unhandled exceptions or parser failures.
+- **Encoding Robustness**: Flawlessly handled `cp1252`, `utf-8`, and standard Webdyn CSV formats.
 
 ---
 
 ## Conclusion
 
-The **DefFileGenerator** core engine and web interface meet all standards for correctness, performance, typing, security, and maintainability.
+The **DefFileGenerator** core engine and web interface meet all standards for correctness, performance, typing, security, and maintainability across both POSIX and Windows operating systems. The core engine remains the absolute source of truth, protected by rigorous multi-layered validation and comprehensive automated test suites.

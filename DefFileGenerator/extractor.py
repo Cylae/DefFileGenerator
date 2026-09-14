@@ -9,6 +9,7 @@ and lazy generator streaming.
 
 import argparse
 import csv
+import io
 import itertools
 import json
 import logging
@@ -116,20 +117,64 @@ if peek_generator is None:
 
 class Extractor:
     COLUMN_MAPPING: dict[str, list[str]] = {
-        "RegisterType": ["register type", "reg type", "modbus type", "registertype"],
-        "Address": ["address", "addr", "register", "reg", "index"],
-        "Name": ["name", "description", "parameter", "variable", "signal", "signal name"],
-        "Type": ["data type", "datatype", "type", "format"],
-        "Unit": ["unit", "units"],
+        "RegisterType": ["register type", "reg type", "modbus type", "registertype", "info1"],
+        "Address": [
+            "address",
+            "addr",
+            "register",
+            "reg",
+            "index",
+            "info2",
+            "adresse",
+            "start reg (dec)",
+            "start reg",
+            "start register",
+            "start address",
+            "registre",
+        ],
+        "Name": [
+            "name",
+            "description",
+            "parameter",
+            "variable",
+            "signal",
+            "signal name",
+            "point",
+            "point name",
+            "designation",
+            "nom",
+            "grandeur",
+            "quantity",
+        ],
+        "Type": ["data type", "datatype", "type", "format", "info3"],
+        "Unit": ["unit", "units", "unité", "unite"],
         "Tag": ["tag"],
-        "Action": ["action", "access"],
-        "ReadWrite": ["read/write", "read/ write", "read write", "r/w"],
-        "Factor": ["scale", "factor", "multiplier", "ratio"],
+        "Action": ["action", "access", "accès", "acces"],
+        "ReadWrite": [
+            "read/write",
+            "read/ write",
+            "read write",
+            "r/w",
+            "lecture/écriture",
+            "lecture/ecriture",
+            "l/e",
+            "rd/wr",
+        ],
+        "Factor": [
+            "scale",
+            "factor",
+            "multiplier",
+            "ratio",
+            "coefa",
+            "coef_a",
+            "res.",
+            "resolution",
+        ],
         "Gain": ["gain"],
-        "Offset": ["offset", "bias", "coefficient b"],
+        "Offset": ["offset", "bias", "coefficient b", "coefb", "coef_b"],
         "ScaleFactor": ["scalefactor", "scale factor"],
-        "Length": ["length", "len", "size", "count", "quantity"],
-        "StartBit": ["startbit", "bit offset", "bit", "start"],
+        "Length": ["length", "len", "size", "count", "quantity", "qty", "nb registers"],
+        "StartBit": ["startbit", "start bit", "bit offset", "start_bit"],
     }
 
     def __init__(self, mapping: Optional[dict[str, str]] = None) -> None:
@@ -159,7 +204,9 @@ class Extractor:
                 return
 
             try:
-                wb = openpyxl.load_workbook(filepath, data_only=True, read_only=True)
+                with open(filepath, "rb") as f:
+                    file_data = f.read()
+                wb = openpyxl.load_workbook(io.BytesIO(file_data), data_only=True)
             except (OSError, zipfile.BadZipFile, Exception) as exc:
 
                 def io_err_gen(e=exc):
@@ -178,16 +225,72 @@ class Extractor:
                         logging.error(f"Sheet '{name}' not found in {filepath}")
                         return
                     ws = wb[name]
-                    rows = ws.iter_rows(values_only=True)
-                    try:
-                        header_row = next(rows)
-                    except StopIteration:
+                    rows = list(ws.iter_rows(values_only=True))
+                    if not rows:
                         return
+
+                    # Smart header detection: check up to first 15 rows for known Modbus columns
+                    best_idx = 0
+                    best_score = 0
+                    keywords = {
+                        "address",
+                        "addr",
+                        "adresse",
+                        "register",
+                        "reg",
+                        "registre",
+                        "name",
+                        "description",
+                        "nom",
+                        "point",
+                        "type",
+                        "datatype",
+                        "format",
+                        "unit",
+                        "unité",
+                        "r/w",
+                        "rw",
+                        "action",
+                        "scale",
+                        "factor",
+                        "gain",
+                        "offset",
+                        "length",
+                        "size",
+                        "res.",
+                        "start reg",
+                    }
+                    for idx, r in enumerate(rows[:15]):
+                        if not r:
+                            continue
+                        score = sum(
+                            1
+                            for c in r
+                            if c is not None and any(k in str(c).lower() for k in keywords)
+                        )
+                        if score > best_score:
+                            best_score = score
+                            best_idx = idx
+
+                    if best_score >= 2:
+                        header_row = rows[best_idx]
+                        data_rows = rows[best_idx + 1 :]
+                    else:
+                        first_non_empty = 0
+                        for idx, r in enumerate(rows):
+                            if any(cell is not None and str(cell).strip() for cell in r):
+                                first_non_empty = idx
+                                break
+                        header_row = rows[first_non_empty]
+                        data_rows = rows[first_non_empty + 1 :]
+
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
-                    for row in rows:
+                    for row in data_rows:
                         if any(cell is not None and str(cell).strip() for cell in row):
                             yield {
-                                headers[i]: cell for i, cell in enumerate(row) if i < len(headers)
+                                headers[i]: cell
+                                for i, cell in enumerate(row)
+                                if i < len(headers) and headers[i]
                             }
 
                 yield sheet_generator()
@@ -230,11 +333,64 @@ class Extractor:
                                 continue
 
                             def table_generator(current_table=table) -> Iterator[dict[str, Any]]:
+                                # Smart header detection: check up to first 4 rows for known Modbus columns
+                                best_idx = 0
+                                best_score = 0
+                                keywords = {
+                                    "address",
+                                    "addr",
+                                    "adresse",
+                                    "register",
+                                    "reg",
+                                    "registre",
+                                    "name",
+                                    "description",
+                                    "nom",
+                                    "point",
+                                    "type",
+                                    "datatype",
+                                    "format",
+                                    "unit",
+                                    "unité",
+                                    "r/w",
+                                    "rw",
+                                    "action",
+                                    "access",
+                                    "accès",
+                                    "scale",
+                                    "factor",
+                                    "gain",
+                                    "offset",
+                                    "length",
+                                    "size",
+                                    "res.",
+                                    "start reg",
+                                }
+                                for idx, r in enumerate(current_table[:4]):
+                                    if not r:
+                                        continue
+                                    score = sum(
+                                        1
+                                        for c in r
+                                        if c is not None
+                                        and any(k in str(c).lower() for k in keywords)
+                                    )
+                                    if score > best_score:
+                                        best_score = score
+                                        best_idx = idx
+
+                                if best_score >= 2:
+                                    header_row = current_table[best_idx]
+                                    data_rows = current_table[best_idx + 1 :]
+                                else:
+                                    header_row = current_table[0]
+                                    data_rows = current_table[1:]
+
                                 headers = [
                                     str(c).replace("\n", " ").strip() if c else ""
-                                    for c in current_table[0]
+                                    for c in header_row
                                 ]
-                                for row in current_table[1:]:
+                                for row in data_rows:
                                     row_dict = {}
                                     for i, cell in enumerate(row):
                                         if i < len(headers):
@@ -259,30 +415,60 @@ class Extractor:
             def csv_table_generator() -> Iterator[dict[str, Any]]:
                 try:
                     with open(filepath, "rb") as f:
-                        header_bytes = f.read(4)
-                        encoding = (
-                            "utf-16"
-                            if header_bytes.startswith((b"\xff\xfe", b"\xfe\xff"))
-                            else "utf-8-sig"
-                        )
+                        raw_bytes = f.read()
 
-                    with open(filepath, encoding=encoding) as f:
-                        snippet = f.read(2048)
-                        f.seek(0)
+                    if raw_bytes.startswith((b"\xff\xfe", b"\xfe\xff")):
+                        encoding = "utf-16"
+                    else:
                         try:
-                            dialect = csv.Sniffer().sniff(snippet, delimiters=";,")
-                            delimiter = dialect.delimiter
-                        except csv.Error:
-                            delimiter = ","
-                            for d in [",", ";", "\t"]:
-                                if d in snippet:
-                                    delimiter = d
-                                    break
+                            raw_bytes.decode("utf-8")
+                            encoding = "utf-8-sig"
+                        except UnicodeDecodeError:
+                            encoding = "cp1252"
 
-                        reader = csv.DictReader(f, delimiter=delimiter)
+                    text = raw_bytes.decode(encoding, errors="replace")
+                    lines = text.splitlines()
+                    if not lines:
+                        return
+
+                    first_line = lines[0].strip()
+                    first_parts = [p.strip() for p in first_line.split(";")]
+                    if len(first_parts) >= 4 and first_parts[0].lower().startswith("modbus"):
+                        webdyn_headers = [
+                            "Index",
+                            "RegisterType",
+                            "Address",
+                            "Type",
+                            "Info4",
+                            "Name",
+                            "Tag",
+                            "Factor",
+                            "Offset",
+                            "Unit",
+                            "Action",
+                        ]
+                        reader = csv.reader(lines[1:], delimiter=";")
                         for row in reader:
-                            if any(val.strip() for val in row.values() if val is not None):
-                                yield dict(row)
+                            if len(row) >= 11 and any(cell.strip() for cell in row):
+                                yield dict(zip(webdyn_headers, [c.strip() for c in row]))
+                        return
+
+                    snippet = text[:2048]
+                    try:
+                        dialect = csv.Sniffer().sniff(snippet, delimiters=";,\t")
+                        delimiter = dialect.delimiter
+                    except csv.Error:
+                        delimiter = ","
+                        for d in [";", ",", "\t"]:
+                            if d in snippet:
+                                delimiter = d
+                                break
+
+                    f_io = io.StringIO(text)
+                    dict_reader = csv.DictReader(f_io, delimiter=delimiter)
+                    for d_row in dict_reader:
+                        if any(val.strip() for val in d_row.values() if val is not None):
+                            yield dict(d_row)
                 except OSError as e:
                     logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
                 except csv.Error as e:

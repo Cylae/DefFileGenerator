@@ -88,6 +88,62 @@ class TestAdversarialSecurity(unittest.TestCase):
         self.assertNotIn("\x00", sanitized)
         self.assertNotIn("\x07", sanitized)
 
+    def test_multiline_field_sanitization_prevents_row_splitting(self):
+        """Verify embedded newlines and carriage returns are normalized to single spaces."""
+        val = "Total Active\nPower\r\n(kW)"
+        sanitized = Generator.sanitize_csv_field(val)
+        self.assertNotIn("\n", sanitized)
+        self.assertNotIn("\r", sanitized)
+        self.assertEqual(sanitized, "Total Active Power (kW)")
+
+    def test_csv_cp1252_encoding_fallback_and_webdyn_extraction(self):
+        """Verify CSV extractor gracefully handles cp1252/latin-1 French/German characters and Webdyn definition format."""
+        csv_path = os.path.join(self.temp_dir.name, "cp1252_test.csv")
+        # Write bytes encoded in cp1252 (with 'é' as \xe9)
+        content = (
+            "modbus;Meter;PQ PLUS;GENERIC;;;;;;;\n"
+            "1;3;25946;F32_W;;Puissance active Phase L1;ActivePow;0.001;0;kW;4\n"
+            "2;3;25948;F32_W;;Puissance réactive Phase L1;ReactivePow;1;0;var;4\n"
+        )
+        with open(csv_path, "wb") as f:
+            f.write(content.encode("cp1252"))
+
+        extractor = Extractor()
+        raw = list(extractor.extract_from_csv(csv_path))
+        self.assertEqual(len(raw), 1)
+        rows = list(raw[0])
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["Name"], "Puissance active Phase L1")
+        self.assertIn("réactive", rows[1]["Name"])
+
+        # Re-extract for map_and_clean since raw generator was consumed above
+        raw2 = extractor.extract_from_csv(csv_path)
+        mapped = list(extractor.map_and_clean(raw2))
+        self.assertEqual(len(mapped), 2)
+        self.assertEqual(mapped[0]["Address"], "25946")
+
+    def test_validate_csv_strict_enforcement(self):
+        """Verify validate_csv strictly checks Info1, Action, and numeric coefficients."""
+        gen = Generator()
+        # Invalid Info1 (e.g. 5)
+        bad_info1 = os.path.join(self.temp_dir.name, "bad_info1.csv")
+        with open(bad_info1, "w", encoding="utf-8") as f:
+            f.write("modbusRTU;Inverter;Mfg;Model;;;;;;;\n1;5;1000;U16;;V1;tag1;1.0;0.0;V;4\n")
+        self.assertFalse(gen.validate_csv(bad_info1, strict=True))
+        self.assertTrue(gen.validate_csv(bad_info1, strict=False))
+
+        # Invalid Action (e.g. 99)
+        bad_act = os.path.join(self.temp_dir.name, "bad_act.csv")
+        with open(bad_act, "w", encoding="utf-8") as f:
+            f.write("modbusRTU;Inverter;Mfg;Model;;;;;;;\n1;3;1000;U16;;V1;tag1;1.0;0.0;V;99\n")
+        self.assertFalse(gen.validate_csv(bad_act, strict=True))
+
+        # Non-numeric CoefA
+        bad_coef = os.path.join(self.temp_dir.name, "bad_coef.csv")
+        with open(bad_coef, "w", encoding="utf-8") as f:
+            f.write("modbusRTU;Inverter;Mfg;Model;;;;;;;\n1;3;1000;U16;;V1;tag1;NOT_NUM;0.0;V;4\n")
+        self.assertFalse(gen.validate_csv(bad_coef, strict=True))
+
 
 if __name__ == "__main__":
     unittest.main()
