@@ -1027,9 +1027,7 @@ class DefFileGenApp:
         try:
             offset = int(self.entry_offset.get().strip() or "0")
         except ValueError:
-            messagebox.showerror(
-                "Invalid offset", "The address offset must be an integer."
-            )
+            messagebox.showerror("Invalid offset", "The address offset must be an integer.")
             return
 
         output_path = self.entry_output_file.get().strip()
@@ -1196,9 +1194,7 @@ class DefFileGenApp:
             if hasattr(self.progress_bar, "set"):
                 self.progress_bar.set(0)
         self.lbl_results_badge.configure(text=f"❌ Error : {error_msg}")
-        messagebox.showerror(
-            "Extraction error", f"Unable to extract registers:\n\n{error_msg}"
-        )
+        messagebox.showerror("Extraction error", f"Unable to extract registers:\n\n{error_msg}")
 
     def _open_last_generated_file(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
@@ -1370,9 +1366,7 @@ class DefFileGenApp:
     def _run_validation(self) -> None:
         filepath = self.entry_val_file.get().strip()
         if not filepath or not os.path.exists(filepath):
-            messagebox.showwarning(
-                "File not found", "Please select an existing CSV file."
-            )
+            messagebox.showwarning("File not found", "Please select an existing CSV file.")
             return
 
         generator = Generator()
@@ -1385,7 +1379,9 @@ class DefFileGenApp:
 
         # Update status banner
         if report.is_valid:
-            status_text = f"✅ 100% COMPLIANT DEFINITION · {report.register_count} valid registers · 0 errors"
+            status_text = (
+                f"✅ 100% COMPLIANT DEFINITION · {report.register_count} valid registers · 0 errors"
+            )
             if HAS_CUSTOMTKINTER:
                 self.lbl_val_status.configure(
                     text=status_text,
@@ -1492,9 +1488,9 @@ class DefFileGenApp:
             form_grid = ctk.CTkFrame(card, fg_color="transparent")
             form_grid.pack(fill="x", padx=16, pady=(0, 12))
 
-            ctk.CTkLabel(
-                form_grid, text="Equipment Type :", font=ctk.CTkFont(weight="bold")
-            ).grid(row=0, column=0, sticky="w", padx=(0, 10), pady=6)
+            ctk.CTkLabel(form_grid, text="Equipment Type :", font=ctk.CTkFont(weight="bold")).grid(
+                row=0, column=0, sticky="w", padx=(0, 10), pady=6
+            )
             self.opt_tmpl_category = ctk.CTkOptionMenu(
                 form_grid,
                 values=list(EQUIPMENT_TEMPLATES.keys()),
