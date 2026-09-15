@@ -356,7 +356,8 @@ class Generator:
         if "/" in s:
             try:
                 parts = s.split("/")
-                return float(parts[0]) / float(parts[1])
+                res = float(parts[0]) / float(parts[1])
+                return res if math.isfinite(res) else default
             except (ValueError, ZeroDivisionError, IndexError):
                 return default
         if "," in s and "." in s:
@@ -370,7 +371,8 @@ class Generator:
             else:
                 s = s.replace(",", ".")
         try:
-            return float(s)
+            res = float(s)
+            return res if math.isfinite(res) else default
         except ValueError:
             return default
 
@@ -554,10 +556,28 @@ class Generator:
         offset = Generator._parse_numeric(offset_str, default=0.0)
         try:
             scale_val = int(float(scale_factor_str)) if scale_factor_str else 0
-        except ValueError:
+            if abs(scale_val) > 100:
+                scale_val = 0
+        except (ValueError, OverflowError):
             scale_val = 0
-        coef_a = f"{factor * (10**scale_val):.6f}"
-        coef_b = f"{offset:.6f}"
+
+        try:
+            val_a = factor * (10**scale_val)
+            if not math.isfinite(val_a):
+                coef_a = "1.000000"
+            else:
+                coef_a = f"{val_a:.6f}"
+        except (OverflowError, ValueError):
+            coef_a = "1.000000"
+
+        try:
+            if not math.isfinite(offset):
+                coef_b = "0.000000"
+            else:
+                coef_b = f"{offset:.6f}"
+        except (OverflowError, ValueError):
+            coef_b = "0.000000"
+
         return coef_a, coef_b
 
     def process_rows(
