@@ -84,6 +84,16 @@ class TestCalculateCoefficients(unittest.TestCase):
         self.assertAlmostEqual(float(a), 1.0)
         self.assertAlmostEqual(float(b), 0.0)
 
+    def test_extreme_overflow_scale_factor(self):
+        a, b = Generator._calculate_coefficients("1.0", "0.0", "1000000000")
+        self.assertEqual(a, "1.000000")
+        self.assertEqual(b, "0.000000")
+
+    def test_nan_or_inf_coefficients(self):
+        a, b = Generator._calculate_coefficients("nan", "inf", "0")
+        self.assertEqual(a, "1.000000")
+        self.assertEqual(b, "0.000000")
+
 
 class TestApplyAddressOffset(unittest.TestCase):
     """apply_address_offset handles edge cases."""
