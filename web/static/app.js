@@ -136,5 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
     });
 });

@@ -52,6 +52,15 @@ class CSVHeaderConfig:
 
 
 @dataclass
+class RegisterEntry:
+    info1: str
+    address: str
+    dtype: str
+    name: str
+    line_num: int = 0
+
+
+@dataclass
 class GeneratorConfig:
     input_file: Optional[str] = None
     output: Optional[str] = None
@@ -326,6 +335,12 @@ class Generator:
                 if strict:
                     return False
 
+            if dtype_upper == "STRING":
+                str_len = int(parts[1])
+                if str_len <= 0:
+                    logging.warning(f"STRING address '{address}' must have positive byte length")
+                    return False
+
             if dtype_upper == "BITS":
                 start_bit = int(parts[1])
                 bit_length = int(parts[2])
@@ -366,6 +381,8 @@ class Generator:
         if "/" in s:
             try:
                 parts = s.split("/")
+                if len(parts) != 2:
+                    return default
                 res = float(parts[0]) / float(parts[1])
                 return res if math.isfinite(res) else default
             except (ValueError, ZeroDivisionError, IndexError):
@@ -479,30 +496,53 @@ class Generator:
 
     def _check_address_overlap(
         self,
-        info1: str,
-        address: str,
-        dtype: str,
-        name: str,
-        line_num: int,
-        address_usage: dict[str, dict[str, Any]],
-        warned_lines: set[tuple[int, int]],
+        info1: Union[str, RegisterEntry],
+        address: Any = None,
+        dtype: str = "",
+        name: str = "",
+        line_num: int = 0,
+        address_usage: Optional[dict[str, dict[str, Any]]] = None,
+        warned_lines: Optional[set[tuple[int, int]]] = None,
     ) -> bool:
         """Checks for address overlaps using O(log N) binary search on intervals. Returns True if overlap detected."""
+        if isinstance(info1, RegisterEntry):
+            entry = info1
+            if isinstance(address, dict):
+                address_usage = address
+            if isinstance(dtype, set):
+                warned_lines = dtype
+            info1_val = entry.info1
+            address_val = entry.address
+            dtype_val = entry.dtype
+            name_val = entry.name
+            line_num_val = entry.line_num
+        else:
+            info1_val = str(info1)
+            address_val = str(address) if address is not None else ""
+            dtype_val = str(dtype)
+            name_val = str(name)
+            line_num_val = int(line_num)
+
+        if address_usage is None:
+            address_usage = {}
+        if warned_lines is None:
+            warned_lines = set()
+
         try:
-            addr_part = address.split("_")[0]
+            addr_part = address_val.split("_")[0]
             start_addr = int(self.normalize_address_val(addr_part))
-            reg_count = self.get_register_count(dtype, address)
+            reg_count = self.get_register_count(dtype_val, address_val)
             end_addr = start_addr + reg_count - 1
 
-            if info1 not in address_usage:
-                address_usage[info1] = {"intervals": [], "max_len": 0}
+            if info1_val not in address_usage:
+                address_usage[info1_val] = {"intervals": [], "max_len": 0}
 
-            usage = address_usage[info1]
+            usage = address_usage[info1_val]
             intervals = usage["intervals"]
             max_len = usage["max_len"]
 
-            is_bits = dtype.upper() == "BITS"
-            current_bits = self._bit_slice(address, dtype)
+            is_bits = dtype_val.upper() == "BITS"
+            current_bits = self._bit_slice(address_val, dtype_val)
             overlap_detected = False
 
             import bisect
@@ -525,10 +565,10 @@ class Generator:
                     if not slices_overlap(u_type, u_start, u_bit_start, u_bit_end):
                         continue
                     overlap_detected = True
-                    warn_key = tuple(sorted((line_num, u_line)))
+                    warn_key = tuple(sorted((line_num_val, u_line)))
                     if warn_key not in warned_lines:
                         logging.warning(
-                            f"Line {line_num}: Address overlap detected for '{name}' at {max(start_addr, u_start)}. Overlaps with '{u_name}' (Line {u_line})."
+                            f"Line {line_num_val}: Address overlap detected for '{name_val}' at {max(start_addr, u_start)}. Overlaps with '{u_name}' (Line {u_line})."
                         )
                         warned_lines.add(warn_key)
 
@@ -540,17 +580,25 @@ class Generator:
                     if not slices_overlap(u_type, u_start, u_bit_start, u_bit_end):
                         continue
                     overlap_detected = True
-                    warn_key = tuple(sorted((line_num, u_line)))
+                    warn_key = tuple(sorted((line_num_val, u_line)))
                     if warn_key not in warned_lines:
                         logging.warning(
-                            f"Line {line_num}: Address overlap detected for '{name}' at {max(start_addr, u_start)}. Overlaps with '{u_name}' (Line {u_line})."
+                            f"Line {line_num_val}: Address overlap detected for '{name_val}' at {max(start_addr, u_start)}. Overlaps with '{u_name}' (Line {u_line})."
                         )
                         warned_lines.add(warn_key)
 
             bit_start, bit_end = current_bits if current_bits is not None else (-1, -1)
             bisect.insort(
                 intervals,
-                (start_addr, end_addr, line_num, name, dtype.upper(), bit_start, bit_end),
+                (
+                    start_addr,
+                    end_addr,
+                    line_num_val,
+                    name_val,
+                    dtype_val.upper(),
+                    bit_start,
+                    bit_end,
+                ),
             )
             if reg_count > max_len:
                 usage["max_len"] = reg_count
@@ -1026,9 +1074,9 @@ class Generator:
                 os.fsync(outfile.fileno())
                 outfile.close()
                 outfile = None
-                assert temp_path is not None
-                os.replace(temp_path, os.path.abspath(output))
-                temp_path = None
+                if temp_path is not None:
+                    os.replace(temp_path, os.path.abspath(output))
+                    temp_path = None
 
             summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
             if summary:
@@ -1037,11 +1085,14 @@ class Generator:
             logging.error(f"Error writing output CSV: {e}")
         finally:
             if isinstance(output, str) and outfile is not None:
-                outfile.close()
+                try:
+                    outfile.close()
+                except OSError:
+                    pass
             if temp_path is not None:
                 try:
                     os.unlink(temp_path)
-                except FileNotFoundError:
+                except OSError:
                     pass
 
 

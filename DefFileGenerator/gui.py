@@ -16,6 +16,7 @@ import logging
 import os
 import queue
 import re
+import shutil
 import subprocess
 import sys
 import threading
@@ -1200,16 +1201,24 @@ class DefFileGenApp:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
             if sys.platform == "win32":
                 os.startfile(self.last_generated_file)  # type: ignore[attr-defined]
+            elif sys.platform == "darwin":
+                subprocess.run(["/usr/bin/open", self.last_generated_file], check=False)
             else:
-                subprocess.run(["xdg-open", self.last_generated_file], check=False)
+                opener = shutil.which("xdg-open")
+                if opener:
+                    subprocess.run([opener, self.last_generated_file], check=False)
 
     def _open_output_folder(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
             folder = os.path.dirname(os.path.abspath(self.last_generated_file))
             if sys.platform == "win32":
                 os.startfile(folder)  # type: ignore[attr-defined]
+            elif sys.platform == "darwin":
+                subprocess.run(["/usr/bin/open", folder], check=False)
             else:
-                subprocess.run(["xdg-open", folder], check=False)
+                opener = shutil.which("xdg-open")
+                if opener:
+                    subprocess.run([opener, folder], check=False)
 
     def _copy_csv_to_clipboard(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):

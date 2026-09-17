@@ -69,9 +69,9 @@ except ImportError:
 
 XML_PARSE_ERRORS: tuple[type[BaseException], ...]
 try:
-    import xml.etree.ElementTree as ET_STD
+    from defusedxml.ElementTree import ParseError as DefusedParseError
 
-    XML_PARSE_ERRORS = (ET_STD.ParseError,)
+    XML_PARSE_ERRORS = (DefusedParseError,)
 except ImportError:
     XML_PARSE_ERRORS = (Exception,)
 
@@ -407,9 +407,16 @@ class Extractor:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
 
+        if not os.path.exists(filepath):
+            logging.error(f"PDF file not found: {filepath}")
+            return iter([])
+
         def pdf_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
             try:
-                with pdfplumber.open(filepath) as pdf:
+                with open(filepath, "rb") as f:
+                    file_data = f.read()
+                pdf_stream = io.BytesIO(file_data)
+                with pdfplumber.open(pdf_stream) as pdf:
                     target_pages = []
                     if pages is None:
                         target_pages = pdf.pages

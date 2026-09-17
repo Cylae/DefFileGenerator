@@ -83,8 +83,8 @@ async def convert_file(
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
     # Sanitize filename to prevent path traversal attack
-    safe_filename = os.path.basename(file.filename.strip())
-    if not safe_filename:
+    safe_filename = os.path.basename(file.filename.replace("\\", "/").strip())
+    if not safe_filename or safe_filename in (".", ".."):
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 
     ext = os.path.splitext(safe_filename)[1].lower()
@@ -96,7 +96,7 @@ async def convert_file(
         )
 
     with tempfile.TemporaryDirectory() as temp_dir:
-        input_path = os.path.join(temp_dir, safe_filename)
+        input_path = os.path.join(temp_dir, f"source_input{ext}")
         output_path = os.path.join(temp_dir, "generated_definition.csv")
 
         await _save_upload(file, input_path)
@@ -173,14 +173,14 @@ async def convert_file(
         with open(output_path, encoding="utf-8-sig") as f:
             csv_content = f.read()
 
-        filename_mfg = (
-            "".join(c for c in manufacturer.lower().replace(" ", "_") if c.isalnum() or c == "_")
-            or "manufacturer"
-        )
-        filename_model = (
-            "".join(c for c in model.lower().replace(" ", "_") if c.isalnum() or c == "_")
-            or "model"
-        )
+        mfg_clean = "".join(
+            c for c in manufacturer.lower().replace(" ", "_") if c.isalnum() or c == "_"
+        )[:50]
+        filename_mfg = mfg_clean or "manufacturer"
+        model_clean = "".join(
+            c for c in model.lower().replace(" ", "_") if c.isalnum() or c == "_"
+        )[:50]
+        filename_model = model_clean or "model"
         out_filename = f"{filename_mfg}_{filename_model}_definition.csv"
 
         return JSONResponse(
@@ -201,12 +201,13 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
-    safe_filename = os.path.basename(file.filename.strip())
-    if not safe_filename:
+    safe_filename = os.path.basename(file.filename.replace("\\", "/").strip())
+    if not safe_filename or safe_filename in (".", ".."):
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 
+    ext = os.path.splitext(safe_filename)[1].lower()
     with tempfile.TemporaryDirectory() as temp_dir:
-        input_path = os.path.join(temp_dir, safe_filename)
+        input_path = os.path.join(temp_dir, f"source_input{ext}")
         await _save_upload(file, input_path)
 
         generator = Generator()
