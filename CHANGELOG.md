@@ -4,6 +4,21 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Developer Onboarding Manual (`DEVELOPER_GUIDE.md`).** Detailed technical documentation describing system architecture, data pipeline, WebdynSunPM domain rules, security invariants, developer extension recipes, and validation tooling.
+- **Clarity & Efficiency Benchmark Suite (`DefFileGenerator/tests/test_clarity_and_efficiency.py`).** 9 automated tests verifying domain constants, pre-compiled regex tables, frozen keyword sets, documentation coverage, and sub-millisecond type normalization performance.
+- **Domain Constants in `DefFileGenerator/def_gen.py`.** Added named constants for Modbus function codes (`MODBUS_COIL`, `MODBUS_DISCRETE`, `MODBUS_HOLDING`, `MODBUS_INPUT`), address boundaries (`MIN_MODBUS_ADDRESS`, `MAX_MODBUS_ADDRESS`), and standard actions (`ACTION_WRITE_ONLY`, `ACTION_READ_ONLY`).
+
+### Changed
+
+- **Pre-Compiled Regular Expressions.** Converted all 28 type synonym patterns in `normalize_type` to a module-level pre-compiled tuple (`TYPE_SYNONYMS_COMPILED`), eliminating per-invocation regex re-compilation. Pre-compiled address range delimiters, grouping commas, hex address matches, and slug regexes.
+- **Constant Time Lookups in Extractor.** Converted table header keywords, PDF metadata markers, communication parameter keywords, and address guards to module-level `frozenset` constants.
+- **Python 3.10+ Type Annotations.** Modernized all type annotations to use modern union syntax (`T | None`, `X | Y`) across all modules.
+- **Documentation & In-Line Comments.** Added comprehensive Google-style docstrings and educational in-line comments in English across all classes, methods, and functions.
+
 ## [0.2.1]
 
 Rebuilt against the current `main`. Functionally audited, hardened, and verified across both Core engine and Web service components.

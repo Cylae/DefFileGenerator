@@ -201,6 +201,7 @@ Additional stress batteries cover ambiguous column resolution, large register ma
 
 ## Documentation
 
+- [`DEVELOPER_GUIDE.md`](DEVELOPER_GUIDE.md) — comprehensive architecture, domain concepts & onboarding guide
 - [`docs/quickstart.md`](docs/quickstart.md) — concise usage walkthrough
 - [`docs/input-format.md`](docs/input-format.md) — accepted columns and address notation
 - [`docs/architecture.md`](docs/architecture.md) — internal architecture

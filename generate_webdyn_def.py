@@ -18,7 +18,7 @@ from DefFileGenerator.def_gen import (
 from DefFileGenerator.extractor import Extractor, peek_generator
 
 
-def setup_logging():
+def setup_logging() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s", force=True)
 
 

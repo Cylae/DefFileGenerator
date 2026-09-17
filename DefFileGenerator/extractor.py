@@ -1,11 +1,29 @@
 #!/usr/bin/env python3
 """
-Modbus Register Extractor Module.
+Format-Agnostic Modbus Register Extractor Module.
 
-Provides format-agnostic extraction of register tables from Excel, PDF, CSV, and XML files,
-applying two-pass heuristic column mapping, address offset adjustments,
-and lazy generator streaming.
+This module provides high-throughput, memory-bounded extraction of tabular Modbus
+register maps from manufacturer documentation in diverse formats:
+    - Microsoft Excel (.xlsx, .xlsm, .xltx, .xltm) via openpyxl
+    - Adobe PDF (.pdf) via pdfplumber
+    - Delimited text (.csv, .tsv) via Python csv module and sniffer
+    - Extensible Markup Language (.xml) via defusedxml
+
+Architecture & Pipeline:
+    1. Stream Ingestion: Files are loaded into memory buffers or accessed as streams,
+       preventing OS file descriptor lock contention on Windows systems.
+    2. Smart Header Detection: Tables are scanned using keyword scoring to locate the
+       true Modbus header row and merge multiline header banners. Non-register tables
+       (e.g., communication parameters, document revision blocks) are filtered out.
+    3. Inferred Fallback: When explicit headers are absent, column types are inferred
+       statistically from cell value shapes (hex/decimal addresses, type codes, units).
+    4. Two-Pass Heuristic Mapping: Target Webdyn fields (Address, Name, Type, etc.) are
+       mapped to source column names using exact matching, synonym lookup, and fuzzy indicators.
+    5. Normalization & Sanitization: Address whitespace is collapsed, register counts
+       converted to byte lengths for strings, and gain divisors inverted to multipliers.
 """
+
+from __future__ import annotations
 
 import argparse
 import csv
@@ -18,10 +36,14 @@ import re
 import sys
 import zipfile
 from collections.abc import Iterable, Iterator
-from typing import Any, Optional, Union
+from typing import Any
 
 # Named logger for this module
 logger = logging.getLogger("DefFileGenerator.extractor")
+
+# -----------------------------------------------------------------------------
+# Optional Dependencies and Safe Parser Fallbacks
+# -----------------------------------------------------------------------------
 
 try:
     import openpyxl
@@ -75,6 +97,7 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = (Exception,)
 
+# Import core generator utilities with resilient fallbacks
 Generator: Any = None
 peek_generator: Any = None
 try:
@@ -99,11 +122,10 @@ except ImportError:
 
 if peek_generator is None:
 
-    def _peek_generator_impl(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
-        """
-        Checks if an iterable is non-empty without fully consuming it.
-        Returns (has_data, original_iterator).
-        """
+    def _peek_generator_impl(
+        iterable: Iterable[Any] | None,
+    ) -> tuple[bool, Iterator[Any]]:
+        """Fallback peek implementation when def_gen is not in path."""
         if iterable is None:
             return False, iter([])
         it = iter(iterable)
@@ -115,10 +137,136 @@ if peek_generator is None:
 
     peek_generator = _peek_generator_impl
 
+# -----------------------------------------------------------------------------
+# Pre-compiled Regex Patterns for Extractor Performance
+# -----------------------------------------------------------------------------
+
+RE_CLEAN_WHITESPACE = re.compile(r"\s+")
+RE_HEX_OR_DEC = re.compile(r"^(0x[0-9a-fA-F]+|\d{4,5})$")
+RE_FIRST_ADDR_CANDIDATE = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
+RE_HEURISTIC_TYPE = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.IGNORECASE)
+RE_HEURISTIC_RW = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
+RE_HEURISTIC_UNIT = re.compile(r"^(v|a|w|kw|kwh|mwh|var|kvar|hz|%|deg|c|℃)$", re.IGNORECASE)
+RE_COMPACT_DIGITS = re.compile(r"^\d+$")
+
+# -----------------------------------------------------------------------------
+# Domain Keyword Sets (Frozen for O(1) Fast Membership Checks)
+# -----------------------------------------------------------------------------
+
+MODBUS_HEADER_KEYWORDS = frozenset(
+    {
+        "address",
+        "addr",
+        "adresse",
+        "register",
+        "reg",
+        "registre",
+        "name",
+        "description",
+        "nom",
+        "point",
+        "type",
+        "datatype",
+        "format",
+        "unit",
+        "unité",
+        "r/w",
+        "rw",
+        "action",
+        "access",
+        "accès",
+        "scale",
+        "factor",
+        "gain",
+        "offset",
+        "length",
+        "size",
+        "res.",
+        "start reg",
+    }
+)
+
+PDF_METADATA_KEYWORDS = frozenset(
+    {
+        "prepared by",
+        "firmware team",
+        "doc no",
+        "sheet:",
+        "page of",
+        "drawing no",
+        "confidential",
+        "all rights reserved",
+    }
+)
+
+PDF_COMM_KEYWORDS = frozenset(
+    {
+        "baud rate",
+        "parity",
+        "data bits",
+        "stop bits",
+        "check (parity) bit",
+        "interface",
+        "subnet",
+        "gateway",
+        "tcp port",
+        "port number",
+    }
+)
+
+NAME_INDICATOR_TERMS = frozenset(
+    {
+        "description",
+        "desc",
+        "name",
+        "nom",
+        "designation",
+        "parameter",
+        "param",
+        "variable",
+        "signal",
+        "label",
+    }
+)
+
+NON_ADDRESS_COLUMN_TERMS = frozenset(
+    {
+        "country",
+        "region",
+        "standard",
+        "category",
+        "degree",
+        "version",
+        "date",
+        "time",
+        "team",
+        "firmware",
+    }
+)
+
+
+# -----------------------------------------------------------------------------
+# Extractor Class
+# -----------------------------------------------------------------------------
+
 
 class Extractor:
+    """
+    Extracts, maps, and normalizes Modbus registers from various manufacturer formats.
+
+    Attributes:
+        mapping: Optional user-supplied dictionary mapping target fields to source column names.
+        COLUMN_MAPPING: Comprehensive dictionary of standard synonyms for Modbus table headers.
+    """
+
     COLUMN_MAPPING: dict[str, list[str]] = {
-        "RegisterType": ["register type", "reg type", "modbus type", "registertype", "info1"],
+        "RegisterType": [
+            "register type",
+            "reg type",
+            "modbus type",
+            "registertype",
+            "info1",
+        ],
         "Address": [
             "address",
             "addr",
@@ -216,55 +364,88 @@ class Extractor:
         "StartBit": ["startbit", "start bit", "bit offset", "start_bit"],
     }
 
-    def __init__(self, mapping: Optional[dict[str, str]] = None) -> None:
+    def __init__(self, mapping: dict[str, str] | None = None) -> None:
+        """
+        Initializes an Extractor instance.
+
+        Args:
+            mapping: Optional explicit target-to-source column name mapping dictionary.
+        """
         self.mapping = mapping or {}
 
     @staticmethod
     def normalize_type(t: Any) -> str:
+        """
+        Normalizes a data type description using the Generator's normalization logic.
+
+        Args:
+            t: Raw data type description.
+
+        Returns:
+            str: Normalized data type code.
+        """
         if Generator is not None:
             return Generator.normalize_type(t)
         return str(t).upper() if t else "U16"
 
     @staticmethod
-    def _infer_table_columns(table: list[list[Any]]) -> Optional[list[str]]:
+    def _infer_table_columns(table: list[list[Any]]) -> list[str] | None:
+        """
+        Infers header column roles by analyzing data patterns across table rows.
+
+        Used when a PDF or Excel document has no header text row and starts
+        immediately with register records.
+
+        Args:
+            table: 2D list of extracted table cells.
+
+        Returns:
+            Optional[list[str]]: Inferred header row strings, or None if detection fails.
+        """
         if not table or len(table) < 1:
             return None
         cols_count = max(len(r) for r in table)
         col_scores = {
-            c: {"addr": 0, "type": 0, "rw": 0, "len": 0, "name": 0, "unit": 0, "gain": 0}
+            c: {
+                "addr": 0,
+                "type": 0,
+                "rw": 0,
+                "len": 0,
+                "name": 0,
+                "unit": 0,
+                "gain": 0,
+            }
             for c in range(cols_count)
         }
-        type_pattern = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.IGNORECASE)
-        rw_pattern = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
-        unit_pattern = re.compile(r"^(v|a|w|kw|kwh|mwh|var|kvar|hz|%|deg|c|℃)$", re.IGNORECASE)
 
         for row in table[:10]:
             for c, val in enumerate(row):
                 if not val:
                     continue
-                v_clean = re.sub(r"\s+", "", str(val).strip())
-                if re.match(r"^(0x[0-9a-fA-F]+|\d{4,5})$", v_clean):
+                v_clean = RE_CLEAN_WHITESPACE.sub("", str(val).strip())
+                if RE_HEX_OR_DEC.match(v_clean):
                     try:
                         val_int = int(v_clean, 0)
                         if 100 <= val_int <= 65535:
                             col_scores[c]["addr"] += 1
                     except ValueError:
                         pass
-                if type_pattern.match(v_clean):
+                if RE_HEURISTIC_TYPE.match(v_clean):
                     col_scores[c]["type"] += 1
-                if rw_pattern.match(v_clean):
+                if RE_HEURISTIC_RW.match(v_clean):
                     col_scores[c]["rw"] += 1
                 if v_clean in ("1", "2", "4", "8", "10", "15", "16", "32"):
                     col_scores[c]["len"] += 1
                 if v_clean in ("1", "10", "100", "1000", "10000"):
                     col_scores[c]["gain"] += 1
-                if unit_pattern.match(v_clean):
+                if RE_HEURISTIC_UNIT.match(v_clean):
                     col_scores[c]["unit"] += 1
-                if len(str(val).strip()) > 3 and not re.match(r"^\d+$", v_clean):
+                if len(str(val).strip()) > 3 and not RE_COMPACT_DIGITS.match(v_clean):
                     col_scores[c]["name"] += 1
 
         addr_col = max(col_scores.keys(), key=lambda c: col_scores[c]["addr"])
         type_col = max(col_scores.keys(), key=lambda c: col_scores[c]["type"])
+
         if (
             col_scores[addr_col]["addr"] >= 1
             and col_scores[type_col]["type"] >= 1
@@ -287,11 +468,25 @@ class Extractor:
                     headers[best_c] = attr
                     used.add(best_c)
             return headers
+
         return None
 
     def extract_from_excel(
-        self, filepath: str, sheet_name: Optional[str] = None
+        self, filepath: str, sheet_name: str | None = None
     ) -> Iterator[Iterator[dict[str, Any]]]:
+        """
+        Extracts register tables from an Excel spreadsheet as lazy generator streams.
+
+        Loads file into an in-memory BytesIO buffer to prevent Windows OS file lock issues.
+        Performs smart header detection by scoring rows for Modbus keywords.
+
+        Args:
+            filepath: Path to the .xlsx / .xlsm spreadsheet.
+            sheet_name: Optional single sheet name to extract. If None, processes all sheets.
+
+        Yields:
+            Iterator[dict[str, Any]]: Generator yielding dictionary rows for each sheet.
+        """
         if not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
             return iter([])
@@ -335,41 +530,14 @@ class Extractor:
                     # Smart header detection: check up to first 15 rows for known Modbus columns
                     best_idx = 0
                     best_score = 0
-                    keywords = {
-                        "address",
-                        "addr",
-                        "adresse",
-                        "register",
-                        "reg",
-                        "registre",
-                        "name",
-                        "description",
-                        "nom",
-                        "point",
-                        "type",
-                        "datatype",
-                        "format",
-                        "unit",
-                        "unité",
-                        "r/w",
-                        "rw",
-                        "action",
-                        "scale",
-                        "factor",
-                        "gain",
-                        "offset",
-                        "length",
-                        "size",
-                        "res.",
-                        "start reg",
-                    }
                     for idx, r in enumerate(rows[:15]):
                         if not r:
                             continue
                         score = sum(
                             1
                             for c in r
-                            if c is not None and any(k in str(c).lower() for k in keywords)
+                            if c is not None
+                            and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
                         )
                         if score > best_score:
                             best_score = score
@@ -401,8 +569,26 @@ class Extractor:
         return excel_sheets_generator()
 
     def extract_from_pdf(
-        self, filepath: str, pages: Optional[Union[int, list[Union[int, str]], str]] = None
+        self,
+        filepath: str,
+        pages: int | list[int | str] | str | None = None,
     ) -> Iterator[Iterator[dict[str, Any]]]:
+        """
+        Extracts register tables from a PDF document.
+
+        Features:
+            - Filters out metadata boxes and serial communication parameter tables.
+            - Merges multiline headers across table splits.
+            - Carries forward headers across consecutive page table continuations.
+            - Corrects header alignment shifts between label and value columns.
+
+        Args:
+            filepath: Path to the PDF document.
+            pages: Optional page numbers (1-indexed) as integer, list, or comma-separated string.
+
+        Yields:
+            Iterator[dict[str, Any]]: Generator yielding dictionary rows for each table.
+        """
         if not HAS_PDFPLUMBER:
             logging.error("pdfplumber is required for PDF extraction.")
             return iter([])
@@ -436,7 +622,7 @@ class Extractor:
                             except (ValueError, TypeError):
                                 logging.warning(f"Invalid page reference: {p}")
 
-                    last_headers: Optional[list[str]] = None
+                    last_headers: list[str] | None = None
 
                     for page in target_pages:
                         tables = page.extract_tables()
@@ -444,54 +630,34 @@ class Extractor:
                             if not table or len(table) < 2:
                                 continue
 
-                            # Skip metadata header/footer boxes (<= 3 rows containing document revision metadata)
+                            # Skip metadata header/footer boxes (document revision/author blocks)
                             if len(table) <= 3:
                                 text_meta = " ".join(
                                     str(c) for row in table for c in row if c
                                 ).lower()
-                                meta_keywords = [
-                                    "prepared by",
-                                    "firmware team",
-                                    "doc no",
-                                    "sheet:",
-                                    "page of",
-                                    "drawing no",
-                                    "confidential",
-                                    "all rights reserved",
-                                ]
-                                if any(k in text_meta for k in meta_keywords):
+                                if any(k in text_meta for k in PDF_METADATA_KEYWORDS):
                                     continue
 
-                            # Skip serial communication / connection parameter tables (2 columns with baud rate, parity, etc.)
+                            # Skip serial communication / port configuration tables (2 columns)
                             if len(table[0]) <= 2:
                                 text_comm = " ".join(
                                     str(c) for row in table for c in row if c
                                 ).lower()
-                                comm_keywords = [
-                                    "baud rate",
-                                    "parity",
-                                    "data bits",
-                                    "stop bits",
-                                    "check (parity) bit",
-                                    "interface",
-                                    "subnet",
-                                    "gateway",
-                                    "tcp port",
-                                    "port number",
-                                ]
-                                if any(k in text_comm for k in comm_keywords):
+                                if any(k in text_comm for k in PDF_COMM_KEYWORDS):
                                     continue
 
-                            def table_generator(current_table=table) -> Iterator[dict[str, Any]]:
+                            def table_generator(
+                                current_table=table,
+                            ) -> Iterator[dict[str, Any]]:
                                 nonlocal last_headers
-                                # Smart header detection: check up to first 8 rows for known Modbus columns
+
+                                # Scan first 8 rows to find the first candidate address
                                 first_addr_idx = None
                                 for idx, r in enumerate(current_table[:8]):
                                     if any(
                                         c
-                                        and re.match(
-                                            r"^(0x[0-9a-fA-F]+|\d{1,5})$",
-                                            re.sub(r"\s+", "", str(c).strip()),
+                                        and RE_FIRST_ADDR_CANDIDATE.match(
+                                            RE_CLEAN_WHITESPACE.sub("", str(c).strip())
                                         )
                                         for c in r
                                     ):
@@ -500,36 +666,6 @@ class Extractor:
 
                                 best_idx = 0
                                 best_score = 0
-                                keywords = {
-                                    "address",
-                                    "addr",
-                                    "adresse",
-                                    "register",
-                                    "reg",
-                                    "registre",
-                                    "name",
-                                    "description",
-                                    "nom",
-                                    "point",
-                                    "type",
-                                    "datatype",
-                                    "format",
-                                    "unit",
-                                    "unité",
-                                    "r/w",
-                                    "rw",
-                                    "action",
-                                    "access",
-                                    "accès",
-                                    "scale",
-                                    "factor",
-                                    "gain",
-                                    "offset",
-                                    "length",
-                                    "size",
-                                    "res.",
-                                    "start reg",
-                                }
                                 max_scan = (
                                     first_addr_idx
                                     if first_addr_idx is not None
@@ -545,7 +681,7 @@ class Extractor:
                                                 continue
                                             c_str = str(c).lower().strip()
                                             c_clean = "".join(c_str.split())
-                                            for k in keywords:
+                                            for k in MODBUS_HEADER_KEYWORDS:
                                                 if k == "format" and "information" in c_str:
                                                     continue
                                                 if k in c_str or k in c_clean:
@@ -598,8 +734,7 @@ class Extractor:
                                         ]
                                         data_rows = current_table[1:]
 
-                                # Header alignment shift: if col c_i is empty and col c_i+1 has text,
-                                # while in data rows col c_i has data and col c_i+1 is empty
+                                # Header alignment shift correction
                                 for c_i in range(len(combined_headers) - 1):
                                     if not combined_headers[c_i] and combined_headers[c_i + 1]:
                                         c_i_has_data = any(
@@ -630,6 +765,7 @@ class Extractor:
                                         yield row_dict
 
                             yield table_generator()
+
             except (OSError, *PDF_ERRORS) as e:  # type: ignore[misc]
                 logging.error(
                     f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}"
@@ -640,6 +776,19 @@ class Extractor:
         return pdf_tables_generator()
 
     def extract_from_csv(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        """
+        Extracts register tables from delimited CSV or TSV files.
+
+        Auto-detects UTF-16, UTF-8-sig, or CP1252 character encodings and sniffs delimiters.
+        Directly identifies already-formatted WebdynSunPM definition files.
+
+        Args:
+            filepath: Path to the CSV file.
+
+        Yields:
+            Iterator[dict[str, Any]]: Generator yielding dictionary rows.
+        """
+
         def csv_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
             def csv_table_generator() -> Iterator[dict[str, Any]]:
                 try:
@@ -688,7 +837,7 @@ class Extractor:
                         delimiter = dialect.delimiter
                     except csv.Error:
                         delimiter = ","
-                        for d in [";", ",", "\t"]:
+                        for d in (";", ",", "\t"):
                             if d in snippet:
                                 delimiter = d
                                 break
@@ -712,6 +861,17 @@ class Extractor:
         return csv_tables_generator()
 
     def extract_from_xml(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        """
+        Extracts register tables from XML documentation using defusedxml.
+
+        Safely parses XML documents without entity expansion or external resource fetching.
+
+        Args:
+            filepath: Path to the XML file.
+
+        Yields:
+            Iterator[dict[str, Any]]: Generator yielding dictionary rows.
+        """
         if not HAS_DEFUSEDXML:
             logging.error("defusedxml is required for secure XML parsing.")
             return iter([])
@@ -758,8 +918,34 @@ class Extractor:
         return xml_tables_generator()
 
     def map_and_clean(
-        self, tables: Optional[Iterable[Iterable[dict[str, Any]]]], address_offset: int = 0
+        self,
+        tables: Iterable[Iterable[dict[str, Any]]] | None,
+        address_offset: int = 0,
     ) -> Iterator[dict[str, Any]]:
+        """
+        Resolves table column roles and transforms extracted raw dictionaries into
+        standard intermediate register dictionaries.
+
+        Pipeline per table:
+            1. Buffers first 50 rows to discover all distinct column headers.
+            2. Resolves mapping using 3-stage priority:
+               - Exact target field name match (case-insensitive)
+               - Exact synonym match from COLUMN_MAPPING
+               - Substring indicator match (with non-address guards)
+            3. Checks that an Address column was resolved.
+            4. Normalizes rows:
+               - Collapses fragmented address whitespace.
+               - Multiplies string register length by 2 when expressed as words.
+               - Inverts Gain divisors into multiplication Factors (1 / Gain).
+               - Applies address offsets.
+
+        Args:
+            tables: Stream of extracted tables (each table is an iterable of row dicts).
+            address_offset: Global numerical offset to shift register addresses.
+
+        Yields:
+            dict[str, Any]: Normalized register dictionary ready for definition generation.
+        """
         if not tables:
             return
 
@@ -788,6 +974,8 @@ class Extractor:
 
             col_map = {}
             used_src_cols = set()
+
+            # Apply explicit user mapping first
             for target, source in self.mapping.items():
                 if source in all_keys:
                     col_map[target] = source
@@ -810,7 +998,7 @@ class Extractor:
                 "StartBit",
             ]
 
-            # 1. Exact target-name match (case-insensitive and space-normalized)
+            # Stage 1: Exact target-name match (case-insensitive and space-normalized)
             for target in detection_order:
                 if target in col_map:
                     continue
@@ -819,71 +1007,49 @@ class Extractor:
                     if src_col in used_src_cols:
                         continue
                     src_str = str(src_col).lower().strip()
-                    src_clean = re.sub(r"\s+", "", src_str)
+                    src_clean = RE_CLEAN_WHITESPACE.sub("", src_str)
                     if src_str == target_low or src_clean == target_low:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
 
-            # 2. Pattern-based exact match (including space-normalized)
+            # Stage 2: Pattern-based exact match from COLUMN_MAPPING
             for target in detection_order:
                 if target in col_map:
                     continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                clean_patterns = [re.sub(r"\s+", "", p) for p in patterns]
+                clean_patterns = [RE_CLEAN_WHITESPACE.sub("", p) for p in patterns]
                 for src_col in all_keys:
                     if src_col in used_src_cols:
                         continue
                     src_str = str(src_col).lower().strip()
-                    src_clean = re.sub(r"\s+", "", src_str)
+                    src_clean = RE_CLEAN_WHITESPACE.sub("", src_str)
                     if src_str in patterns or src_clean in clean_patterns:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
 
-            # 3. Partial matches
-            NAME_INDICATORS = {
-                "description",
-                "desc",
-                "name",
-                "nom",
-                "designation",
-                "parameter",
-                "param",
-                "variable",
-                "signal",
-                "label",
-            }
+            # Stage 3: Partial substring matches with non-address guards
             for target in detection_order:
                 if target in col_map:
                     continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
-                clean_patterns = [re.sub(r"\s+", "", p) for p in patterns]
+                clean_patterns = [RE_CLEAN_WHITESPACE.sub("", p) for p in patterns]
                 for src_col in all_keys:
                     if src_col in used_src_cols:
                         continue
                     src_low = str(src_col).lower().strip()
-                    src_clean = re.sub(r"\s+", "", src_low)
-                    # Guard: If column contains name/description terms or metadata terms, do not match it as Address
-                    NON_ADDRESS_TERMS = {
-                        "country",
-                        "region",
-                        "standard",
-                        "category",
-                        "degree",
-                        "version",
-                        "date",
-                        "time",
-                        "team",
-                        "firmware",
-                    }
+                    src_clean = RE_CLEAN_WHITESPACE.sub("", src_low)
+
+                    # Guard: If column contains name/description terms or metadata, do NOT map as Address
                     if target == "Address" and (
-                        any(ind in src_low for ind in NAME_INDICATORS)
-                        or any(ind in src_clean for ind in NAME_INDICATORS)
-                        or any(t in src_low for t in NON_ADDRESS_TERMS)
-                        or any(t in src_clean for t in NON_ADDRESS_TERMS)
+                        any(ind in src_low for ind in NAME_INDICATOR_TERMS)
+                        or any(ind in src_clean for ind in NAME_INDICATOR_TERMS)
+                        or any(t in src_low for t in NON_ADDRESS_COLUMN_TERMS)
+                        or any(t in src_clean for t in NON_ADDRESS_COLUMN_TERMS)
                     ):
                         continue
+
                     if any(p in src_low for p in patterns) or any(
                         cp in src_clean for cp in clean_patterns
                     ):
@@ -903,13 +1069,14 @@ class Extractor:
                 r: dict[str, Any],
                 col_map=col_map,
                 length_is_register_quantity=length_is_register_quantity,
-            ) -> Optional[dict[str, Any]]:
+            ) -> dict[str, Any] | None:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 addr_val = str(new_row.get("Address") or "").strip()
                 if not addr_val:
                     return None
-                # Collapse internal whitespace for fragmented digits from PDFs (e.g. "3000 0" -> "30000", "4700 2" -> "47002")
-                compact_addr = re.sub(r"\s+", "", addr_val)
+
+                # Collapse whitespace in addresses caused by fragmented font rendering in PDFs
+                compact_addr = RE_CLEAN_WHITESPACE.sub("", addr_val)
                 if compact_addr.isdigit() or (
                     compact_addr.lower().startswith("0x") and compact_addr[2:].isalnum()
                 ):
@@ -917,7 +1084,7 @@ class Extractor:
 
                 sbit = str(r.get(col_map.get("StartBit", ""), "")).strip()
                 slen = str(r.get(col_map.get("Length", ""), "")).strip()
-                compact_slen = re.sub(r"\s+", "", slen)
+                compact_slen = RE_CLEAN_WHITESPACE.sub("", slen)
                 if compact_slen.isdigit():
                     slen = compact_slen
 
@@ -928,9 +1095,7 @@ class Extractor:
 
                 is_string_type = dtype == "STRING" or dtype.startswith("STR")
                 if is_string_type and slen.isdigit() and length_is_register_quantity:
-                    # Manufacturer tables commonly express string fields as a register
-                    # ("word") quantity (1 register = 2 bytes), but the WebdynSunPM
-                    # definition format's STRING address suffix is a byte length.
+                    # Convert 16-bit word length into Webdyn byte length (1 register = 2 bytes)
                     slen = str(int(slen) * 2)
 
                 if dtype == "BITS" and "_" not in addr:
@@ -950,13 +1115,10 @@ class Extractor:
                 else:
                     new_row["Address"] = addr
 
-                # A dedicated "Gain" column (Huawei-style documentation) expresses a
-                # divisor applied to the raw register value, whereas the definition
-                # format's Factor/CoefA is a multiplier. Only use it when no direct
-                # Factor/multiplier column was already detected.
+                # Gain column expresses a divisor (e.g. Huawei 10 -> 0.1 multiplier)
                 if not new_row.get("Factor"):
                     gain_str = str(new_row.get("Gain", "")).strip()
-                    compact_gain = re.sub(r"\s+", "", gain_str)
+                    compact_gain = RE_CLEAN_WHITESPACE.sub("", gain_str)
                     if compact_gain.isdigit():
                         gain_str = compact_gain
                     if gain_str and Generator is not None:
@@ -964,13 +1126,10 @@ class Extractor:
                         if gain_val:
                             new_row["Factor"] = f"{1.0 / gain_val:.6f}"
 
-                if new_row.get("Factor") is not None:
-                    if Generator is not None:
-                        new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
+                if new_row.get("Factor") is not None and Generator is not None:
+                    new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
 
-                # Fall back to a dedicated Read/Write column when no Action column
-                # was detected, so e.g. Huawei's "Read/ Write" header (RO/RW) still
-                # drives the generated Action code instead of silently defaulting.
+                # Fallback to ReadWrite column if Action was not directly provided
                 if not new_row.get("Action"):
                     rw_str = str(new_row.get("ReadWrite", "")).strip()
                     if rw_str:
@@ -978,6 +1137,7 @@ class Extractor:
 
                 if not new_row.get("RegisterType"):
                     new_row["RegisterType"] = "Holding Register"
+
                 return new_row
 
             for row in itertools.chain(buffer, iterator):
@@ -986,15 +1146,21 @@ class Extractor:
                     yield processed
 
 
-def main():
+def main() -> None:
+    """Command-line entrypoint for the standalone extractor script."""
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-    parser = argparse.ArgumentParser(description="Extract register information.")
-    parser.add_argument("input_file")
-    parser.add_argument("-o", "--output")
-    parser.add_argument("--mapping")
-    parser.add_argument("--sheet")
-    parser.add_argument("--pages")
-    parser.add_argument("--address-offset", type=int, default=0)
+    parser = argparse.ArgumentParser(description="Extract register information from documentation.")
+    parser.add_argument("input_file", help="Path to input document (PDF, Excel, CSV, XML)")
+    parser.add_argument("-o", "--output", help="Output simplified CSV destination")
+    parser.add_argument("--mapping", help="Path to JSON column mapping file")
+    parser.add_argument("--sheet", help="Target Excel sheet name")
+    parser.add_argument("--pages", help="Target PDF page numbers (e.g. 1,2,5-8)")
+    parser.add_argument(
+        "--address-offset",
+        type=int,
+        default=0,
+        help="Global address offset shift",
+    )
     args = parser.parse_args()
 
     mapping = {}
@@ -1004,7 +1170,8 @@ def main():
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()
     pages = args.pages
-    if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
+
+    if ext in (".xlsx", ".xlsm", ".xltx", ".xltm"):
         raw = extractor.extract_from_excel(args.input_file, args.sheet)
     elif ext == ".pdf":
         raw = extractor.extract_from_pdf(args.input_file, pages)
@@ -1015,6 +1182,7 @@ def main():
     else:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)
+
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
 
     out = open(args.output, "w", newline="", encoding="utf-8") if args.output else sys.stdout

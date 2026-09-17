@@ -2,9 +2,15 @@
 """
 Primary Command Line Interface for WebdynSunPM Definition Tool.
 
-Provides sub-commands (`run`, `extract`, `generate`, `validate`) to extract registers
-from documentation files, convert them into WebdynSunPM format, and validate output files.
+Provides unified sub-commands:
+    - run: End-to-end extraction from documentation and Webdyn CSV generation.
+    - extract: Parses input files into a clean intermediate tabular register CSV.
+    - generate: Converts an intermediate register CSV into a validated Webdyn definition CSV.
+    - validate: Audits an existing Webdyn definition file for compliance and syntax errors.
+    - gui: Launches the native Windows 11 desktop application.
 """
+
+from __future__ import annotations
 
 import argparse
 import csv
@@ -13,28 +19,65 @@ import logging
 import os
 import re
 import sys
+from collections.abc import Iterator
+from typing import Any
 
 # Ensure parent directory is in sys.path to support direct and packaged executions
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, peek_generator, run_generator
+from DefFileGenerator.def_gen import (
+    Generator,
+    GeneratorConfig,
+    peek_generator,
+    run_generator,
+)
 from DefFileGenerator.extractor import Extractor
 
-ALLOWED_EXTENSIONS = {".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"}
+ALLOWED_EXTENSIONS = frozenset({".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"})
+RE_SLUGIFY = re.compile(r"[^a-zA-Z0-9]")
 
 
-def setup_logging(verbose=False, quiet=False):
+def setup_logging(verbose: bool = False, quiet: bool = False) -> None:
+    """
+    Configures console logging severity.
+
+    Args:
+        verbose: Enables DEBUG level logging.
+        quiet: Suppresses INFO logging; only WARNING and ERROR are displayed.
+    """
     level = logging.DEBUG if verbose else (logging.WARNING if quiet else logging.INFO)
     logging.basicConfig(level=level, format="%(levelname)s: %(message)s", force=True)
 
 
-def _get_default_output(manufacturer, model):
-    m = re.sub(r"[^a-zA-Z0-9]", "_", manufacturer).lower()
-    md = re.sub(r"[^a-zA-Z0-9]", "_", model).lower()
+def _get_default_output(manufacturer: str, model: str) -> str:
+    """
+    Generates a standardized filename from manufacturer and model strings.
+
+    Args:
+        manufacturer: Manufacturer brand name (e.g. "Huawei").
+        model: Equipment model identifier (e.g. "SUN2000").
+
+    Returns:
+        str: Output definition filename formatted as `<mfg>_<model>_definition.csv`.
+    """
+    m = RE_SLUGIFY.sub("_", manufacturer).lower()
+    md = RE_SLUGIFY.sub("_", model).lower()
     return f"{m}_{md}_definition.csv"
 
 
-def _perform_extraction(args):
+def _perform_extraction(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
+    """
+    Validates input arguments and executes multi-format register extraction.
+
+    Args:
+        args: Parsed command line arguments.
+
+    Returns:
+        Iterator[dict[str, Any]]: Stream of extracted and normalized register dictionaries.
+
+    Raises:
+        SystemExit: If input file is missing, unsupported, or contains no registers.
+    """
     input_file = getattr(args, "input_file", None)
     if not input_file:
         logging.error("Input file is required.")
@@ -65,7 +108,7 @@ def _perform_extraction(args):
     pages = getattr(args, "pages", None)
     sheet = getattr(args, "sheet", None)
 
-    if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
+    if ext in (".xlsx", ".xlsm", ".xltx", ".xltm"):
         raw_data = extractor.extract_from_excel(input_file, sheet)
     elif ext == ".pdf":
         raw_data = extractor.extract_from_pdf(input_file, pages)
@@ -91,7 +134,13 @@ def _perform_extraction(args):
     return mapped_peeked
 
 
-def extract_command(args):
+def extract_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'extract': parses documentation and outputs an intermediate CSV.
+
+    Args:
+        args: Parsed command line arguments.
+    """
     output = getattr(args, "output", None)
     if output and os.path.exists(output) and not getattr(args, "force", False):
         logging.error(f"Output file '{output}' already exists. Use --force to overwrite.")
@@ -116,6 +165,7 @@ def extract_command(args):
         "ScaleFactor",
     ]
 
+    f: Any
     if output:
         f = open(output, "w", newline="", encoding="utf-8")
     else:
@@ -131,7 +181,13 @@ def extract_command(args):
             logging.info(f"Extraction complete. Saved to {output}")
 
 
-def validate_command(args):
+def validate_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'validate': audits a Webdyn definition CSV file.
+
+    Args:
+        args: Parsed command line arguments.
+    """
     input_file = getattr(args, "input_file", None)
     if not input_file or not os.path.exists(input_file):
         logging.error(f"File not found: {input_file}")
@@ -147,7 +203,13 @@ def validate_command(args):
         sys.exit(1)
 
 
-def generate_command(args):
+def generate_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'generate': converts an intermediate register CSV into Webdyn format.
+
+    Args:
+        args: Parsed command line arguments.
+    """
     template = getattr(args, "template", False)
     template_mode = getattr(args, "template_mode", "input")
     m_name = getattr(args, "manufacturer", None)
@@ -185,7 +247,13 @@ def generate_command(args):
     run_generator(config)
 
 
-def run_command(args):
+def run_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'run': executes end-to-end extraction, generation, and validation.
+
+    Args:
+        args: Parsed command line arguments.
+    """
     template = getattr(args, "template", False)
     m_name = getattr(args, "manufacturer", None)
     m_model = getattr(args, "model", None)
@@ -212,8 +280,8 @@ def run_command(args):
 
     output_file = getattr(args, "output", None)
     if not output_file and not template:
-        sanitized_mfg = re.sub(r"[^a-zA-Z0-9]", "_", m_name).lower()
-        sanitized_model = re.sub(r"[^a-zA-Z0-9]", "_", m_model).lower()
+        sanitized_mfg = RE_SLUGIFY.sub("_", str(m_name or "Manufacturer")).lower()
+        sanitized_model = RE_SLUGIFY.sub("_", str(m_model or "Model")).lower()
         output_file = f"{sanitized_mfg}_{sanitized_model}_definition.csv"
 
     if output_file and os.path.exists(output_file) and not getattr(args, "force", False):
@@ -243,7 +311,13 @@ def run_command(args):
             sys.exit(1)
 
 
-def _run_cli(argv=None):
+def _run_cli(argv: list[str] | None = None) -> None:
+    """
+    Parses CLI arguments and dispatches to the corresponding command handler.
+
+    Args:
+        argv: List of command line arguments (defaults to sys.argv[1:]).
+    """
     if argv is None:
         argv = sys.argv[1:]
     else:
@@ -258,7 +332,17 @@ def _run_cli(argv=None):
     parser = argparse.ArgumentParser(
         prog="deffilegen",
         description="WebdynSunPM Definition Tool",
-        epilog="Examples:\n  deffilegen run input.xlsx --manufacturer Huawei --model SUN2000 -o huawei.csv\n  deffilegen extract doc.pdf -o registers.csv\n  deffilegen generate registers.csv --manufacturer SMA --model STP5000 -o sma.csv\n  deffilegen validate definition.csv\n\nExit codes:\n  0: Success\n  1: Execution error\n  2: Usage / argument error",
+        epilog=(
+            "Examples:\n"
+            "  deffilegen run input.xlsx --manufacturer Huawei --model SUN2000 -o huawei.csv\n"
+            "  deffilegen extract doc.pdf -o registers.csv\n"
+            "  deffilegen generate registers.csv --manufacturer SMA --model STP5000 -o sma.csv\n"
+            "  deffilegen validate definition.csv\n\n"
+            "Exit codes:\n"
+            "  0: Success\n"
+            "  1: Execution error\n"
+            "  2: Usage / argument error"
+        ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--version", action="version", version="deffilegen 0.2.1")
@@ -268,7 +352,7 @@ def _run_cli(argv=None):
 
     subparsers = parser.add_subparsers(dest="command", help="Sub-commands")
 
-    def add_common_flags(p):
+    def add_common_flags(p: argparse.ArgumentParser) -> None:
         p.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
         p.add_argument("-q", "--quiet", action="store_true", help="Quiet logging")
 
@@ -283,7 +367,9 @@ def _run_cli(argv=None):
     add_common_flags(parser_validate)
     parser_validate.add_argument("input_file", help="Definition CSV to validate")
     parser_validate.add_argument(
-        "--lenient", action="store_true", help="Lenient validation (allow address overlaps)"
+        "--lenient",
+        action="store_true",
+        help="Lenient validation (allow address overlaps)",
     )
 
     # Extract Subparser
@@ -357,7 +443,12 @@ def _run_cli(argv=None):
         ext = os.path.splitext(input_file)[1].lower()
         if getattr(args, "pages", None) and ext != ".pdf":
             logging.warning("--pages is only applicable for PDF files. Ignoring.")
-        if getattr(args, "sheet", None) and ext not in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
+        if getattr(args, "sheet", None) and ext not in (
+            ".xlsx",
+            ".xlsm",
+            ".xltx",
+            ".xltm",
+        ):
             logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
     if args.command == "extract":
@@ -370,7 +461,13 @@ def _run_cli(argv=None):
         run_command(args)
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
+    """
+    Main entrypoint invoked when executing `deffilegen` or `python -m DefFileGenerator.main`.
+
+    Args:
+        args: Optional list of argument strings.
+    """
     try:
         _run_cli(args)
     except KeyboardInterrupt:

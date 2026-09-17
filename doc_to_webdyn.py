@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+"""
+Convenience CLI Script: Modbus Documentation to WebdynSunPM Definition.
+
+Extracts Modbus register maps from vendor documents (PDF, Excel, CSV, XML)
+and compiles them into a WebdynSunPM definition file (.csv).
+"""
+
+from __future__ import annotations
+
 import argparse
 import json
 import logging
@@ -9,8 +18,10 @@ import sys
 from DefFileGenerator.def_gen import GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
 
+RE_SLUGIFY = re.compile(r"[^a-zA-Z0-9]")
 
-def _run_cli(argv=None):
+
+def _run_cli(argv: list[str] | None = None) -> None:
     if argv is None:
         argv = sys.argv[1:]
     else:
@@ -110,7 +121,7 @@ def _run_cli(argv=None):
     m_model = args.model or "Model"
     output_file = args.output
     if not output_file:
-        output_file = f"{re.sub(r'[^a-zA-Z0-9]', '_', m_name).lower()}_{re.sub(r'[^a-zA-Z0-9]', '_', m_model).lower()}_definition.csv"
+        output_file = f"{RE_SLUGIFY.sub('_', m_name).lower()}_{RE_SLUGIFY.sub('_', m_model).lower()}_definition.csv"
 
     config = GeneratorConfig(
         input_file=args.input_file,
@@ -125,7 +136,7 @@ def _run_cli(argv=None):
     run_generator(config, input_data=mapped_peeked)
 
 
-def main(args=None):
+def main(args: list[str] | None = None) -> None:
     try:
         _run_cli(args)
     except KeyboardInterrupt:

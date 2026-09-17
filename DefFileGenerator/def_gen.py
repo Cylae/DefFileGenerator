@@ -1,5 +1,23 @@
 #!/usr/bin/env python3
+"""
+WebdynSunPM Definition File Generator and Validator.
+
+This module provides the core domain logic for generating, processing, and
+validating WebdynSunPM definition CSV files from extracted Modbus registers.
+
+Key Capabilities:
+    - Normalizes non-standard vendor data types into valid WebdynSunPM type codes.
+    - Resolves addresses, address offsets, and bit-level slicing.
+    - Detects address collisions and overlaps using an O(log N) bisect interval search.
+    - Sanitizes all CSV text fields against formula injection and multiline splitting.
+    - Writes valid definition files atomically using temporary files and fsync.
+    - Validates generated and existing definition CSV files against strict Modbus rules.
+"""
+
+from __future__ import annotations
+
 import argparse
+import bisect
 import csv
 import functools
 import itertools
@@ -10,14 +28,143 @@ import re
 import sys
 import tempfile
 from collections.abc import Iterable, Iterator
-from dataclasses import dataclass
-from typing import Any, Optional, Union
+from dataclasses import dataclass, field
+from typing import Any
+
+# -----------------------------------------------------------------------------
+# Modbus & WebdynSunPM Domain Constants
+# -----------------------------------------------------------------------------
+
+# WebdynSunPM Modbus Info1 Function Codes
+MODBUS_COIL = "1"  # Read/Write 1-bit Coil (Modbus FC 01, 05, 15)
+MODBUS_DISCRETE = "2"  # Read-Only 1-bit Discrete Input (Modbus FC 02)
+MODBUS_HOLDING = "3"  # Read/Write 16-bit Holding Register (Modbus FC 03, 06, 16)
+MODBUS_INPUT = "4"  # Read-Only 16-bit Input Register (Modbus FC 04)
+
+# Modbus Standard Address Boundaries
+MIN_MODBUS_ADDRESS = 0
+MAX_MODBUS_ADDRESS = 65535
+DEFAULT_BITS_REGISTER_WIDTH = 16  # Modbus registers are 16-bit words
+
+# WebdynSunPM Action Permissions (Field 11)
+ACTION_WRITE_ONLY = "1"
+ACTION_READ_ONLY = "4"
+
+# Allowed Action Codes accepted by WebdynSunPM firmware
+ALLOWED_ACTIONS = frozenset({"0", "1", "2", "4", "6", "7", "8", "9"})
+
+# -----------------------------------------------------------------------------
+# Pre-compiled Regular Expressions (High-Throughput Parsing)
+# -----------------------------------------------------------------------------
+
+RE_TYPE_NUMERIC = re.compile(r"^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$", re.IGNORECASE)
+RE_TYPE_STR_CONV = re.compile(r"^STR(\d+)$", re.IGNORECASE)
+RE_ADDR_STRING = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)$", re.IGNORECASE)
+RE_ADDR_BITS = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)_(\d+)$", re.IGNORECASE)
+RE_ADDR_INT = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$", re.IGNORECASE)
+RE_COUNT_16_8 = re.compile(r"^([UI](16|8)(_(W|B|WB))?|BITS)$", re.IGNORECASE)
+RE_COUNT_32 = re.compile(r"^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$", re.IGNORECASE)
+RE_COUNT_64 = re.compile(r"^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$", re.IGNORECASE)
+
+_CLEAN_TYPE_RE = re.compile(r"[^a-z0-9_]+")
+_ADDR_RANGE_RE = re.compile(r"^([^\s~.]+?)\s*(?:~|\.\.|\s+-\s+|-(?=[0-9a-fA-FxX]))")
+_ADDR_GROUPING_COMMA_RE = re.compile(r"(?<=\d),(?=\d{3}(?!\d))")
+_ADDR_HEX_MATCH_RE = re.compile(r"^-?[0-9A-Fa-f]+$")
+_ADDR_CLEAN_BITFIELD_RE = re.compile(r"_(wb|b|w)$|\b(swap|big endian|big|word)\b")
+_ADDR_BITFIELD_MATCH_RE = re.compile(r"^bitfield(8|16|32|64)$")
+_ADDR_STRING_MATCH_RE = re.compile(r"^(?:string|str)[\*x_]?\s*(\d+)$")
+_COLLAPSE_WHITESPACE_RE = re.compile(r"\s+")
+_DIGIT_SPLIT_RE = re.compile(r"([a-zA-Z0-9])\s+(\d+)\b")
+_WORD_SWAP_RE = re.compile(
+    r"(_w\b|_w$|\bword\s*swap\b|\bword-swap\b|(?:float\d*|f\d+|u\d+|i\d+|int\d*|uint\d*)\s+word\b)"
+)
+_TAG_BASE_RE = re.compile(r"[^a-z0-9_]")
+_MULTI_UNDERSCORE_RE = re.compile(r"_+")
+_THOUSANDS_COMMA_RE = re.compile(r"^-?\d{1,3}(,\d{3})+$")
+_TRAILING_NON_DIGIT_RE = re.compile(r"[^\d_]+$")
+_STR_MATCH_RE = re.compile(r"string\s*(\d+)")
+
+# Pre-compiled Type Synonyms Table (ordered by specificity)
+TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
+    (
+        re.compile(r"unsigned\s*(?:int(?:eger)?)?\s*64|uint64|\bu64\b|\bint64u\b"),
+        "U64",
+    ),
+    (
+        re.compile(r"signed\s*(?:int(?:eger)?)?\s*64|sint64|\bint64\b|\bi64\b|\bs64\b|\bint64s\b"),
+        "I64",
+    ),
+    (re.compile(r"\bunsigned\s*long(?:\s*int)?\b|\bulong\b|\buint32_t\b"), "U32"),
+    (re.compile(r"\bsigned\s*long(?:\s*int)?\b|\bslong\b|\blong(?:\s*int)?\b|\bint32_t\b"), "I32"),
+    (re.compile(r"unsigned\s*(?:int(?:eger)?)?\s*32|uint32|\bu32\b|\bint32u\b"), "U32"),
+    (
+        re.compile(r"signed\s*(?:int(?:eger)?)?\s*32|sint32|\bint32\b|\bi32\b|\bs32\b|\bint32s\b"),
+        "I32",
+    ),
+    (re.compile(r"\bunsigned\s*short(?:\s*int)?\b|\bushort\b|\buint16_t\b"), "U16"),
+    (re.compile(r"\bsigned\s*short(?:\s*int)?\b|\bsshort\b|\bshort(?:\s*int)?\b"), "I16"),
+    (re.compile(r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b|\bint16u\b"), "U16"),
+    (
+        re.compile(r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b|\bint16s\b"),
+        "I16",
+    ),
+    (re.compile(r"\bunsigned\s*char\b|\buchar\b|\buint8_t\b"), "U8"),
+    (re.compile(r"\bsigned\s*char\b|\bschar\b"), "I8"),
+    (re.compile(r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b|\bint8u\b"), "U8"),
+    (re.compile(r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b|\bint8s\b"), "I8"),
+    (re.compile(r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754"), "F64"),
+    (re.compile(r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754"), "F32"),
+    (re.compile(r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b"), "BITS"),
+    (re.compile(r"\bqword\b"), "U64"),
+    (re.compile(r"\bdword\b"), "U32"),
+    (re.compile(r"\bword\b|\buword\b"), "U16"),
+    (re.compile(r"\bbyte\b|\bubyte\b"), "U8"),
+    (re.compile(r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$"), "U32"),
+    (re.compile(r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$"), "U16"),
+    (re.compile(r"^unsigned\s*(?:int(?:eger)?)?$|^uint$|^unsigned$"), "U16"),
+    (re.compile(r"^signed\s*(?:int(?:eger)?)?$|^sint$|^int$"), "I16"),
+    (re.compile(r"\bdate\s*time\b|\bdatetime\b"), "U32"),
+    (re.compile(r"\b(?:ip4|ipv4)\b"), "IP"),
+    (re.compile(r"\b(?:ip6|ipv6)\b"), "IPV6"),
+)
+
+# Characters to strip when inspecting text for CSV formula injection
+_CSV_STRIP_CHARS = (
+    " \t\n\r\v\f\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
+    + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
+    + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
+    + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
+)
+
+# Leading whitespace/zero-width characters that spreadsheet apps ignore before executing formulas
+_CSV_PREFIX_TRIGGERS = tuple(
+    set(
+        "\t\r\n\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
+        + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
+        + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
+        + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
+    )
+)
 
 
-def peek_generator(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
+# -----------------------------------------------------------------------------
+# Helper Utilities
+# -----------------------------------------------------------------------------
+
+
+def peek_generator(
+    iterable: Iterable[Any] | None,
+) -> tuple[bool, Iterator[Any]]:
     """
-    Checks if an iterable is non-empty without fully consuming it.
-    Returns (has_data, original_iterator).
+    Checks if an iterable contains data without fully consuming it.
+
+    Reconstructs the original stream by prepending the peeked item via itertools.chain.
+
+    Args:
+        iterable: Any iterable stream or generator to inspect.
+
+    Returns:
+        tuple[bool, Iterator[Any]]: (has_data, reconstructed_iterator).
     """
     if iterable is None:
         return False, iter([])
@@ -29,36 +176,15 @@ def peek_generator(iterable: Optional[Iterable]) -> tuple[bool, Iterator]:
     return True, itertools.chain([first], it)
 
 
-# Pre-compiled regex patterns for optimization
-RE_TYPE_NUMERIC = re.compile(r"^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$", re.IGNORECASE)
-RE_TYPE_STR_CONV = re.compile(r"^STR(\d+)$", re.IGNORECASE)
-RE_ADDR_STRING = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)$", re.IGNORECASE)
-RE_ADDR_BITS = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)_(\d+)$", re.IGNORECASE)
-RE_ADDR_INT = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$", re.IGNORECASE)
-RE_COUNT_16_8 = re.compile(r"^([UI](16|8)(_(W|B|WB))?|BITS)$", re.IGNORECASE)
-RE_COUNT_32 = re.compile(r"^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$", re.IGNORECASE)
-RE_COUNT_64 = re.compile(r"^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$", re.IGNORECASE)
-
-_CLEAN_TYPE_RE = re.compile(r"[^a-z0-9_]+")
-
-_CSV_STRIP_CHARS = (
-    " \t\n\r\v\f\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
-    + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
-    + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
-    + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
-)
-_CSV_PREFIX_TRIGGERS = tuple(
-    set(
-        "\t\r\n\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
-        + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
-        + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
-        + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
-    )
-)
+# -----------------------------------------------------------------------------
+# Configuration and Data Models
+# -----------------------------------------------------------------------------
 
 
 @dataclass
 class WebdynDefConfig:
+    """Configuration options for programmatic definition generation."""
+
     input_file: str
     output_file: str
     manufacturer: str
@@ -71,6 +197,8 @@ class WebdynDefConfig:
 
 @dataclass
 class CSVHeaderConfig:
+    """Header metadata for the first line of a WebdynSunPM definition CSV."""
+
     manufacturer: str = ""
     model: str = ""
     protocol: str = "modbusRTU"
@@ -80,6 +208,8 @@ class CSVHeaderConfig:
 
 @dataclass
 class RegisterEntry:
+    """Encapsulates a single Modbus register entry for validation and output."""
+
     info1: str
     address: str
     dtype: str
@@ -89,10 +219,12 @@ class RegisterEntry:
 
 @dataclass
 class GeneratorConfig:
-    input_file: Optional[str] = None
-    output: Optional[str] = None
-    manufacturer: Optional[str] = None
-    model: Optional[str] = None
+    """Execution options for CLI and batch generator runs."""
+
+    input_file: str | None = None
+    output: str | None = None
+    manufacturer: str | None = None
+    model: str | None = None
     protocol: str = "modbusRTU"
     category: str = "Inverter"
     forced_write: str = ""
@@ -103,6 +235,8 @@ class GeneratorConfig:
 
 @dataclass
 class ValidationIssue:
+    """Details a single error or warning encountered during definition validation."""
+
     line: int
     severity: str  # "ERROR" or "WARNING"
     code: str
@@ -112,31 +246,69 @@ class ValidationIssue:
 
 @dataclass
 class ValidationReport:
+    """Structured report returned by definition file validation."""
+
     is_valid: bool
     register_count: int
     issues: list[ValidationIssue]
-    stats: dict[str, Any]
+    stats: dict[str, Any] = field(default_factory=dict)
+
+
+# -----------------------------------------------------------------------------
+# Generator Engine Class
+# -----------------------------------------------------------------------------
 
 
 class Generator:
+    """
+    Core engine responsible for data normalization, validation, and CSV output generation.
+
+    Attributes:
+        register_type_map: Mapping from common Modbus register descriptions to Webdyn Info1 codes.
+        allowed_actions: Set of permitted WebdynSunPM register action codes.
+    """
+
     def __init__(self, strict: bool = False) -> None:
-        self.register_type_map = {
-            "coil": "1",
-            "coils": "1",
-            "discrete input": "2",
-            "discrete register": "2",
-            "discrete registers": "2",
-            "discrete": "2",
-            "holding register": "3",
-            "holding": "3",
-            "input register": "4",
-            "input": "4",
+        """
+        Initializes the Generator instance.
+
+        Args:
+            strict: Whether to enforce strict mode (warnings treated as fatal errors).
+        """
+        self.register_type_map: dict[str, str] = {
+            "coil": MODBUS_COIL,
+            "coils": MODBUS_COIL,
+            "discrete input": MODBUS_DISCRETE,
+            "discrete register": MODBUS_DISCRETE,
+            "discrete registers": MODBUS_DISCRETE,
+            "discrete": MODBUS_DISCRETE,
+            "holding register": MODBUS_HOLDING,
+            "holding": MODBUS_HOLDING,
+            "input register": MODBUS_INPUT,
+            "input": MODBUS_INPUT,
         }
-        self.allowed_actions = ["0", "1", "2", "4", "6", "7", "8", "9"]
+        self.allowed_actions: list[str] = ["0", "1", "2", "4", "6", "7", "8", "9"]
+        self.strict = strict
 
     @staticmethod
     def sanitize_csv_field(val: Any) -> str:
-        """Precludes CSV injection by prepending an apostrophe if needed."""
+        """
+        Sanitizes a CSV field value to prevent CSV Formula Injection (DDE attacks)
+        and multiline record desynchronization.
+
+        Rules applied:
+            1. Strips non-printable ASCII and surrogate codepoints (U+D800 - U+DFFF).
+            2. Replaces internal newlines (\r, \n) with a space to avoid multiline rows.
+            3. Detects formula invocation characters (=, +, -, @, |, %, and full-width equivalents).
+            4. Safely ignores valid finite numeric literals.
+            5. Prepends an apostrophe (') to neutralize formula execution in Excel/LibreOffice.
+
+        Args:
+            val: Raw value of any type.
+
+        Returns:
+            str: Sanitized, injection-safe string representation.
+        """
         if val is None:
             return ""
         if isinstance(val, (int, float)):
@@ -144,6 +316,8 @@ class Generator:
         s = str(val)
         if not s:
             return ""
+
+        # Remove control and invalid surrogate characters
         s = "".join(
             ch
             for ch in s
@@ -153,25 +327,38 @@ class Generator:
         if not s:
             return ""
 
-        # Check for prefix characters that trigger injection
+        # Check for leading whitespace or zero-width triggers used in CSV injection payloads
         if s[0] in _CSV_PREFIX_TRIGGERS or s.startswith(("\uff1d", "\uff0b", "\uff0d", "\uff20")):
             prefix = s[0]
             rest = s[1:].replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
             return "'" + prefix + rest
 
-        # Replace internal newlines and carriage returns with a space to prevent multiline CSV records
+        # Replace internal newlines with space to prevent row splitting
         s = s.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
 
         stripped = s.lstrip(_CSV_STRIP_CHARS)
         if not stripped:
             return s
 
-        if stripped[0] in ("=", "+", "-", "@", "|", "%", "\uff1d", "\uff0b", "\uff0d", "\uff20"):
+        # Neutralize spreadsheet formula prefix triggers
+        if stripped[0] in (
+            "=",
+            "+",
+            "-",
+            "@",
+            "|",
+            "%",
+            "\uff1d",
+            "\uff0b",
+            "\uff0d",
+            "\uff20",
+        ):
             if "_" in stripped or "inf" in stripped.lower() or "nan" in stripped.lower():
                 return "'" + s
             try:
                 f = float(stripped)
                 if math.isfinite(f):
+                    # Negative numbers with leading space can be misinterpreted in some spreadsheet engines
                     if s.startswith(" ") and not s.startswith("  ") and stripped.startswith("-"):
                         return "'" + s
                     return s
@@ -184,32 +371,65 @@ class Generator:
     @staticmethod
     @functools.lru_cache(maxsize=2048)
     def normalize_type(dtype: Any) -> str:
+        """
+        Normalizes arbitrary manufacturer data type descriptions into WebdynSunPM type codes.
+
+        Handles endianness qualifiers:
+            - _WB: Word-swap and Byte-swap (big endian words and bytes)
+            - _B: Byte-swap only
+            - _W: Word-swap only
+
+        Examples:
+            - "uint16" -> "U16"
+            - "float32" -> "F32"
+            - "float32 big endian" -> "F32_WB"
+            - "string 20" -> "STR20"
+            - "bitfield16" -> "U16"
+
+        Args:
+            dtype: Raw string or object representing the data type.
+
+        Returns:
+            str: Normalized WebdynSunPM data type code.
+        """
         if not dtype:
             return "U16"
         t = str(dtype).lower().strip()
-        # Collapse internal whitespace for fragmented PDF font extractions (e.g. "u1 6" -> "u16", "st r" -> "str")
-        compact_t = re.sub(r"\s+", "", t)
+
+        # Collapse internal whitespace for fragmented font extractions (e.g. "u1 6" -> "u16")
+        compact_t = _COLLAPSE_WHITESPACE_RE.sub("", t)
         if compact_t in ("str", "string"):
             return "STRING"
-        if compact_t in ("u16", "u32", "i16", "i32", "s16", "s32", "u64", "i64", "f32", "f64"):
+        if compact_t in (
+            "u16",
+            "u32",
+            "i16",
+            "i32",
+            "s16",
+            "s32",
+            "u64",
+            "i64",
+            "f32",
+            "f64",
+        ):
             if compact_t.startswith("s"):
                 return f"I{compact_t[1:]}".upper()
             return compact_t.upper()
 
+        # Normalize spaces before trailing digits (e.g., "uint 16" -> "uint16")
         for _ in range(2):
-            t = re.sub(r"([a-zA-Z0-9])\s+(\d+)\b", r"\1\2", t)
+            t = _DIGIT_SPLIT_RE.sub(r"\1\2", t)
 
+        # Detect endianness / byte-order suffixes
         suffix = ""
         if any(x in t for x in ["_wb", "swap", "big endian"]):
             suffix = "_WB"
         elif any(x in t for x in ["_b", "big"]):
             suffix = "_B"
-        elif re.search(
-            r"(_w\b|_w$|\bword\s*swap\b|\bword-swap\b|(?:float\d*|f\d+|u\d+|i\d+|int\d*|uint\d*)\s+word\b)",
-            t,
-        ):
+        elif _WORD_SWAP_RE.search(t):
             suffix = "_W"
 
+        # Direct canonical shorthand matches
         if compact_t in ("word", "uword", "ushort", "unsignedshort"):
             return f"U16{suffix}"
         if compact_t in ("dword", "udword", "ulong", "unsignedlong"):
@@ -223,79 +443,53 @@ class Generator:
         if compact_t in ("long", "slong", "signedlong"):
             return f"I32{suffix}"
 
-        # Handle "string 20" -> "STR20"
-        str_match = re.search(r"string\s*(\d+)", t)
+        # Handle explicit string length notation (e.g. "string 20" -> "STR20")
+        str_match = _STR_MATCH_RE.search(t)
         if str_match:
             return f"STR{str_match.group(1)}{suffix}"
 
-        # Manufacturer tables (e.g. Huawei) often use a bare "STR" type code with
-        # the actual character/byte length given in a separate Length/Quantity
-        # column rather than embedded in the type itself.
+        # Bare "str" maps to STRING; length is typically supplied via quantity column
         if t == "str":
             return "STRING"
 
-        # A full-register status/alarm bitmask ("Bitfield16", "Bitfield1 6" once a
-        # PDF line-wrap has been collapsed, "Bitfield32", ...) is transported as a
-        # plain unsigned integer of matching width, not the discrete "BITS" type.
-        clean_bitfield_t = re.sub(r"_(wb|b|w)$|\b(swap|big endian|big|word)\b", "", t).replace(
-            " ", ""
-        )
-        bitfield_match = re.match(r"^bitfield(8|16|32|64)$", clean_bitfield_t)
+        # Bitfield masks (e.g. "Bitfield16") map to unsigned integers of matching width
+        clean_bitfield_t = _ADDR_CLEAN_BITFIELD_RE.sub("", t).replace(" ", "")
+        bitfield_match = _ADDR_BITFIELD_MATCH_RE.match(clean_bitfield_t)
         if bitfield_match:
             return f"U{bitfield_match.group(1)}{suffix}"
 
-        # Mapping ordered by specificity
-        synonyms = [
-            (r"unsigned\s*(?:int(?:eger)?)?\s*64|uint64|\bu64\b|\bint64u\b", "U64"),
-            (r"signed\s*(?:int(?:eger)?)?\s*64|sint64|\bint64\b|\bi64\b|\bs64\b|\bint64s\b", "I64"),
-            (r"\bunsigned\s*long(?:\s*int)?\b|\bulong\b|\buint32_t\b", "U32"),
-            (r"\bsigned\s*long(?:\s*int)?\b|\bslong\b|\blong(?:\s*int)?\b|\bint32_t\b", "I32"),
-            (r"unsigned\s*(?:int(?:eger)?)?\s*32|uint32|\bu32\b|\bint32u\b", "U32"),
-            (r"signed\s*(?:int(?:eger)?)?\s*32|sint32|\bint32\b|\bi32\b|\bs32\b|\bint32s\b", "I32"),
-            (r"\bunsigned\s*short(?:\s*int)?\b|\bushort\b|\buint16_t\b", "U16"),
-            (r"\bsigned\s*short(?:\s*int)?\b|\bsshort\b|\bshort(?:\s*int)?\b", "I16"),
-            (r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b|\bint16u\b", "U16"),
-            (r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b|\bint16s\b", "I16"),
-            (r"\bunsigned\s*char\b|\buchar\b|\buint8_t\b", "U8"),
-            (r"\bsigned\s*char\b|\bschar\b", "I8"),
-            (r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b|\bint8u\b", "U8"),
-            (r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b|\bint8s\b", "I8"),
-            (r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754", "F64"),
-            (r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754", "F32"),
-            (r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b", "BITS"),
-            (r"\bqword\b", "U64"),
-            (r"\bdword\b", "U32"),
-            (r"\bword\b|\buword\b", "U16"),
-            (r"\bbyte\b|\bubyte\b", "U8"),
-            (r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$", "U32"),
-            (r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$", "U16"),
-            (r"^unsigned\s*(?:int(?:eger)?)?$|^uint$|^unsigned$", "U16"),
-            (r"^signed\s*(?:int(?:eger)?)?$|^sint$|^int$", "I16"),
-            (r"\bdate\s*time\b|\bdatetime\b", "U32"),
-            (r"\b(?:ip4|ipv4)\b", "IP"),
-            (r"\b(?:ip6|ipv6)\b", "IPV6"),
-        ]
-        for pattern, replacement in synonyms:
-            if re.search(pattern, t):
+        # Evaluate pre-compiled synonym patterns
+        for pattern, replacement in TYPE_SYNONYMS_COMPILED:
+            if pattern.search(t):
                 return f"{replacement}{suffix}"
 
-        str_pattern_match = re.match(r"^(?:string|str)[\*x_]?\s*(\d+)$", t)
+        str_pattern_match = _ADDR_STRING_MATCH_RE.match(t)
         if str_pattern_match:
             return f"STR{str_pattern_match.group(1)}"
 
-        if re.search(r"string", t):
+        if "string" in t:
             return f"STRING{suffix}"
 
         if t.startswith("str") and t[3:].isdigit():
             return t.upper()
 
+        # Fallback: strip unexpected punctuation and return uppercase
         t = _CLEAN_TYPE_RE.sub("", t)
         return t.upper() if t else "U16"
 
     @staticmethod
     def validate_type(dtype: str) -> bool:
+        """
+        Validates if a normalized data type string is recognized by WebdynSunPM.
+
+        Args:
+            dtype: Normalized type string (e.g. "U16", "STRING", "STR20", "BITS").
+
+        Returns:
+            bool: True if the type is valid, False otherwise.
+        """
         dtype_upper = str(dtype).upper()
-        if dtype_upper in ["STRING", "BITS", "IP", "IPV6", "MAC"]:
+        if dtype_upper in ("STRING", "BITS", "IP", "IPV6", "MAC"):
             return True
         if RE_TYPE_NUMERIC.match(dtype_upper):
             return True
@@ -305,15 +499,29 @@ class Generator:
 
     @staticmethod
     def normalize_address_val(addr_part: Any) -> str:
+        """
+        Converts varied address representations (hexadecimal, range notations, commas)
+        into a clean decimal string.
+
+        Supported input formats:
+            - Hexadecimal: "0x8232", "8232h", "1F40"
+            - Decimal: "40001", "30,001"
+            - Range notation: "31657~31658", "0x8232 - 0x82FE" (extracts starting address)
+
+        Args:
+            addr_part: Address string or integer.
+
+        Returns:
+            str: Normalized base address in decimal string representation.
+        """
         if isinstance(addr_part, int):
             return str(addr_part)
         s = str(addr_part).strip()
         if not s:
             return ""
 
-        # Handle range notation if present: e.g. "31657~31658", "0x8232 ~ 0x82FE", "40001-40002", "30001..30002"
-        # Extract the start address before the range separator
-        range_match = re.match(r"^([^\s~.]+?)\s*(?:~|\.\.|\s+-\s+|-(?=[0-9a-fA-FxX]))", s)
+        # Handle range notations: extract starting address before range delimiter
+        range_match = _ADDR_RANGE_RE.match(s)
         if range_match:
             s = range_match.group(1).strip()
 
@@ -322,13 +530,17 @@ class Generator:
 
         if s.isdigit() and (not s.startswith("0") or s == "0"):
             return s
+
         addr_part = s
-        addr_part = re.sub(r"(?<=\d),(?=\d{3}(?!\d))", "", addr_part)
+        # Remove grouping commas (e.g., "30,001" -> "30001")
+        addr_part = _ADDR_GROUPING_COMMA_RE.sub("", addr_part)
         if not addr_part:
             return ""
+
         is_neg = addr_part.startswith("-")
         clean_addr = addr_part[1:] if is_neg else addr_part
 
+        # Check explicit hexadecimal prefix or suffix
         if clean_addr.lower().startswith("0x"):
             try:
                 val = int(clean_addr, 16)
@@ -341,25 +553,43 @@ class Generator:
                 return str(-val if is_neg else val)
             except ValueError:
                 return addr_part
+
         try:
             return str(int(addr_part, 0))
         except ValueError:
             pass
-        if re.match(r"^-?[0-9A-Fa-f]+$", addr_part):
+
+        # Try parsing plain hexadecimal string without 0x prefix
+        if _ADDR_HEX_MATCH_RE.match(addr_part):
             try:
                 return str(int(addr_part, 16))
             except ValueError:
                 return addr_part
+
         return addr_part
 
     @staticmethod
     def validate_address(address: str, dtype: str, strict: bool = True) -> bool:
-        """Validates the address format based on type and Modbus range (0-65535)."""
+        """
+        Validates address syntax and checks Modbus address boundary (0-65535).
+
+        Rules:
+            - Non-compound types: single integer ("40001")
+            - STRING: compound address with byte length ("40001_20")
+            - BITS: compound address with bit offset and length ("40001_0_16")
+
+        Args:
+            address: Address string to validate.
+            dtype: Associated normalized data type.
+            strict: If True, out-of-range addresses (not in 0..65535) fail validation.
+
+        Returns:
+            bool: True if the address is valid, False otherwise.
+        """
         dtype_upper = dtype.upper()
         if RE_TYPE_STR_CONV.match(dtype_upper):
             dtype_upper = "STRING"
 
-        is_valid_format = False
         if dtype_upper == "STRING":
             is_valid_format = RE_ADDR_STRING.match(address) is not None
         elif dtype_upper == "BITS":
@@ -374,8 +604,10 @@ class Generator:
             parts = address.split("_")
             base_addr_str = Generator.normalize_address_val(parts[0])
             base_addr = int(base_addr_str)
-            if not (0 <= base_addr <= 65535):
-                logging.warning(f"Address {base_addr} is out of Modbus range (0-65535)")
+            if not (MIN_MODBUS_ADDRESS <= base_addr <= MAX_MODBUS_ADDRESS):
+                logging.warning(
+                    f"Address {base_addr} is out of Modbus range ({MIN_MODBUS_ADDRESS}-{MAX_MODBUS_ADDRESS})"
+                )
                 if strict:
                     return False
 
@@ -388,17 +620,40 @@ class Generator:
             if dtype_upper == "BITS":
                 start_bit = int(parts[1])
                 bit_length = int(parts[2])
-                if bit_length <= 0 or start_bit < 0 or start_bit + bit_length > 16:
+                if (
+                    bit_length <= 0
+                    or start_bit < 0
+                    or start_bit + bit_length > DEFAULT_BITS_REGISTER_WIDTH
+                ):
                     logging.warning(
                         f"BITS address '{address}' must describe a non-empty slice inside bits 0-15"
                     )
                     return False
         except (ValueError, IndexError):
             return False
+
         return True
 
     @staticmethod
     def get_register_count(dtype: str, address: str) -> int:
+        """
+        Computes how many 16-bit Modbus registers are occupied by the given data type.
+
+        Width Mapping:
+            - U8, I8, U16, I16, BITS: 1 register (16 bits)
+            - U32, I32, F32, IP: 2 registers (32 bits)
+            - U64, I64, F64: 4 registers (64 bits)
+            - MAC: 3 registers (48 bits)
+            - IPV6: 8 registers (128 bits)
+            - STRING: ceil(byte_length / 2)
+
+        Args:
+            dtype: Normalized data type.
+            address: Address string (provides byte length for STRING types).
+
+        Returns:
+            int: Number of 16-bit registers occupied.
+        """
         dtype_upper = dtype.upper()
         if RE_COUNT_16_8.match(dtype_upper):
             return 1
@@ -419,9 +674,26 @@ class Generator:
 
     @staticmethod
     def _parse_numeric(val: Any, default: float = 0.0) -> float:
+        """
+        Extracts a numeric float value from diverse documentation string formats.
+
+        Handles:
+            - Fractions (e.g. "1/100" -> 0.01)
+            - Decimal commas (European notation: "0,1" -> 0.1)
+            - Thousands separators ("1,000" -> 1000.0)
+
+        Args:
+            val: Raw value to parse.
+            default: Value returned if parsing fails.
+
+        Returns:
+            float: Extracted finite floating point number.
+        """
         if val is None or str(val).strip() == "":
             return default
         s = str(val).strip()
+
+        # Parse fractions (e.g. 1/10, 1/100)
         if "/" in s:
             try:
                 parts = s.split("/")
@@ -431,16 +703,18 @@ class Generator:
                 return res if math.isfinite(res) else default
             except (ValueError, ZeroDivisionError, IndexError):
                 return default
+
         if "," in s and "." in s:
             if s.find(",") < s.find("."):
                 s = s.replace(",", "")
             else:
                 s = s.replace(".", "").replace(",", ".")
         elif "," in s:
-            if re.match(r"^-?\d{1,3}(,\d{3})+$", s):
+            if _THOUSANDS_COMMA_RE.match(s):
                 s = s.replace(",", "")
             else:
                 s = s.replace(",", ".")
+
         try:
             res = float(s)
             return res if math.isfinite(res) else default
@@ -449,8 +723,28 @@ class Generator:
 
     @staticmethod
     def apply_address_offset(
-        address: Any, offset: int, line_num: Optional[int] = None, name: Optional[str] = None
+        address: Any,
+        offset: int,
+        line_num: int | None = None,
+        name: str | None = None,
     ) -> str:
+        """
+        Applies a numeric offset to the base register address while preserving subfield suffixes.
+
+        For example:
+            - apply_address_offset("40001", -1) -> "40000"
+            - apply_address_offset("40001_20", -1) -> "40000_20"
+            - apply_address_offset("40001_0_16", 10) -> "40011_0_16"
+
+        Args:
+            address: Raw or formatted address.
+            offset: Integer offset to add to the base address.
+            line_num: Optional source row number for logging warnings.
+            name: Optional register name for logging warnings.
+
+        Returns:
+            str: Modified address string with offset applied.
+        """
         if not address:
             return ""
         if offset == 0 and isinstance(address, (int, str)):
@@ -459,6 +753,7 @@ class Generator:
                 norm = Generator.normalize_address_val(s_addr)
                 if norm.isdigit():
                     return norm
+
         parts = str(address).split("_")
         norm_parts = [Generator.normalize_address_val(p) for p in parts]
         try:
@@ -484,6 +779,21 @@ class Generator:
         seen_names: dict[str, int],
         seen_tags: dict[str, int],
     ) -> str:
+        """
+        Generates and deduplicates the Webdyn variable Tag from the register Name.
+
+        WebdynSunPM requires Tags to be unique, lowercase identifiers starting with a letter.
+
+        Args:
+            name: Human-readable register name.
+            tag: Explicit tag if already provided.
+            line_num: Current row number for reporting duplicates.
+            seen_names: Dictionary tracking previous name occurrences.
+            seen_tags: Dictionary tracking previous tag occurrences.
+
+        Returns:
+            str: Normalized unique tag.
+        """
         if name:
             if name in seen_names:
                 logging.warning(
@@ -491,9 +801,10 @@ class Generator:
                 )
             else:
                 seen_names[name] = line_num
+
         if not tag and name:
-            base_tag = re.sub(r"[^a-z0-9_]", "", name.lower().replace(" ", "_"))
-            base_tag = re.sub(r"_+", "_", base_tag).strip("_")
+            base_tag = _TAG_BASE_RE.sub("", name.lower().replace(" ", "_"))
+            base_tag = _MULTI_UNDERSCORE_RE.sub("_", base_tag).strip("_")
             if not base_tag or not base_tag[0].isalpha():
                 base_tag = f"v_{base_tag}" if base_tag else "var"
             tag = base_tag
@@ -501,6 +812,7 @@ class Generator:
             while tag in seen_tags:
                 tag = f"{base_tag}_{counter}"
                 counter += 1
+
         if tag:
             if tag in seen_tags:
                 logging.warning(
@@ -508,27 +820,42 @@ class Generator:
                 )
             else:
                 seen_tags[tag] = line_num
+
         return tag
 
     def _determine_info1(self, reg_type_str: str, line_num: int = 0) -> str:
-        """Maps RegisterType string to Webdyn Info1 code."""
+        """
+        Maps a register type string to the Webdyn Info1 Modbus function code.
+
+        Returns:
+            - "1": Coil (0x)
+            - "2": Discrete Input (1x)
+            - "3": Holding Register (4x) [Default]
+            - "4": Input Register (3x)
+        """
         if reg_type_str is None:
-            return "3"
+            return MODBUS_HOLDING
         lt = str(reg_type_str).lower().strip()
         if not lt:
-            return "3"
+            return MODBUS_HOLDING
         if lt in self.register_type_map:
             return self.register_type_map[lt]
-        elif lt in ["1", "2", "3", "4"]:
+        elif lt in (MODBUS_COIL, MODBUS_DISCRETE, MODBUS_HOLDING, MODBUS_INPUT):
             return lt
         if line_num:
             logging.warning(
-                f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to 3."
+                f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to {MODBUS_HOLDING}."
             )
-        return "3"
+        return MODBUS_HOLDING
 
     @staticmethod
     def _bit_slice(address: str, dtype: str) -> tuple[int, int] | None:
+        """
+        Extracts the (bit_start, bit_end) range for BITS data types within a 16-bit register.
+
+        Returns:
+            tuple[int, int] | None: Inclusive (start_bit, end_bit) slice, or None if not BITS.
+        """
         if dtype.upper() != "BITS":
             return None
         try:
@@ -540,15 +867,37 @@ class Generator:
 
     def _check_address_overlap(
         self,
-        info1: Union[str, RegisterEntry],
+        info1: str | RegisterEntry,
         address: Any = None,
         dtype: str = "",
         name: str = "",
         line_num: int = 0,
-        address_usage: Optional[dict[str, dict[str, Any]]] = None,
-        warned_lines: Optional[set[tuple[int, int]]] = None,
+        address_usage: dict[str, dict[str, Any]] | None = None,
+        warned_lines: set[tuple[int, int]] | None = None,
     ) -> bool:
-        """Checks for address overlaps using O(log N) binary search on intervals. Returns True if overlap detected."""
+        """
+        Checks for address collisions across registers using an interval binary search (O(log N)).
+
+        Supports both modern RegisterEntry dataclass objects and legacy positional arguments.
+
+        Collision Rules:
+            - Two registers overlap if they share the same Info1 (Modbus address space)
+              and their numerical address ranges [start, start + length - 1] intersect.
+            - Exception: Multiple BITS entries packed into the same 16-bit word do NOT
+              conflict if their bit slices [bit_start, bit_end] are disjoint.
+
+        Args:
+            info1: Info1 function code string or a RegisterEntry instance.
+            address: Address string (ignored if info1 is a RegisterEntry).
+            dtype: Data type string.
+            name: Register variable name.
+            line_num: Current line number.
+            address_usage: State dictionary storing sorted intervals per Info1 space.
+            warned_lines: Set tracking reported collision line pairs to prevent duplicate warnings.
+
+        Returns:
+            bool: True if an address overlap is detected, False otherwise.
+        """
         if isinstance(info1, RegisterEntry):
             entry = info1
             if isinstance(address, dict):
@@ -589,11 +938,11 @@ class Generator:
             current_bits = self._bit_slice(address_val, dtype_val)
             overlap_detected = False
 
-            import bisect
-
+            # Binary search for interval insertion position
             idx = bisect.bisect_left(intervals, (start_addr, -1, -1, "", "", -1, -1))
 
             def slices_overlap(u_type: str, u_start: int, u_bit_start: int, u_bit_end: int) -> bool:
+                """Checks if two entries in the same word have overlapping bit slices."""
                 if not (is_bits and u_type == "BITS" and start_addr == u_start):
                     return True
                 if current_bits is None or u_bit_start < 0 or u_bit_end < 0:
@@ -601,6 +950,7 @@ class Generator:
                 bit_start, bit_end = current_bits
                 return max(bit_start, u_bit_start) <= min(bit_end, u_bit_end)
 
+            # Scan forward intervals
             for j in range(idx, len(intervals)):
                 u_start, u_end, u_line, u_name, u_type, u_bit_start, u_bit_end = intervals[j]
                 if u_start > end_addr:
@@ -616,6 +966,7 @@ class Generator:
                         )
                         warned_lines.add(warn_key)
 
+            # Scan backward intervals within maximum span
             for j in range(idx - 1, -1, -1):
                 u_start, u_end, u_line, u_name, u_type, u_bit_start, u_bit_end = intervals[j]
                 if start_addr - u_start > max_len:
@@ -646,6 +997,7 @@ class Generator:
             )
             if reg_count > max_len:
                 usage["max_len"] = reg_count
+
             return overlap_detected
         except (ValueError, IndexError):
             return False
@@ -654,6 +1006,19 @@ class Generator:
     def _calculate_coefficients(
         factor_str: Any, offset_str: Any, scale_factor_str: Any
     ) -> tuple[str, str]:
+        """
+        Calculates Webdyn linear scaling coefficients (CoefA and CoefB).
+
+        The WebdynSunPM data logging engine applies the polynomial conversion:
+            Physical Value = CoefA * Raw_Value + CoefB
+
+        Calculation:
+            CoefA = Factor * (10 ^ ScaleFactor)
+            CoefB = Offset
+
+        Returns:
+            tuple[str, str]: (CoefA, CoefB) formatted to 6 decimal places.
+        """
         factor = Generator._parse_numeric(factor_str, default=1.0)
         offset = Generator._parse_numeric(offset_str, default=0.0)
         try:
@@ -685,10 +1050,31 @@ class Generator:
     def process_rows(
         self, rows: Iterable[dict[str, Any]], address_offset: int = 0
     ) -> Iterator[dict[str, Any]]:
+        """
+        Streams and normalizes raw register records into validated WebdynSunPM dictionary rows.
+
+        Args:
+            rows: Iterable stream of extracted register dictionaries.
+            address_offset: Global numerical offset to shift all register addresses.
+
+        Yields:
+            dict[str, Any]: Standardized Webdyn register row dictionary containing:
+                - Info1: Modbus register type code ("1", "2", "3", "4")
+                - Info2: Modbus address string
+                - Info3: Normalized Webdyn type
+                - Info4: Reserved field (empty string)
+                - Name: Human-readable variable description
+                - Tag: Normalized unique variable identifier
+                - CoefA: Scaling multiplier factor
+                - CoefB: Scaling offset bias
+                - Unit: Engineering measurement unit
+                - Action: Access code ("1"=Write/RW, "4"=Read-only)
+        """
         seen_names: dict[str, int] = {}
         seen_tags: dict[str, int] = {}
         address_usage: dict[str, dict[str, Any]] = {}
         warned_lines: set[tuple[int, int]] = set()
+
         for line_num, row in enumerate(rows, start=2):
             if not any(v for v in row.values() if v):
                 continue
@@ -707,17 +1093,22 @@ class Generator:
                 norm_row.get("offset", ""),
                 norm_row.get("unit", ""),
             )
-            action, scale_factor_str = norm_row.get("action", ""), norm_row.get("scalefactor", "")
+            action, scale_factor_str = (
+                norm_row.get("action", ""),
+                norm_row.get("scalefactor", ""),
+            )
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
+
             dtype = self.normalize_type(dtype_raw)
             if not self.validate_type(dtype):
                 logging.warning(
                     f"Line {line_num}: Invalid Type '{dtype_raw}' (normalized to '{dtype}'). Skipping."
                 )
                 continue
+
             match_str = RE_TYPE_STR_CONV.match(dtype)
             if match_str:
                 dtype = "STRING"
@@ -725,14 +1116,17 @@ class Generator:
                     address = f"{address}_{match_str.group(1)}"
             elif dtype == "BITS" and "_" not in address:
                 address = f"{address}_0_16"
+
             address = Generator.apply_address_offset(address, address_offset, line_num, name)
             if dtype == "STRING" and "_" in address:
-                address = re.sub(r"[^\d_]+$", "", address)
+                address = _TRAILING_NON_DIGIT_RE.sub("", address)
+
             if not self.validate_address(address, dtype):
                 logging.warning(
                     f"Line {line_num}: Invalid Address '{address}' for Type '{dtype}'. Skipping."
                 )
                 continue
+
             tag = self._process_name_and_tag(name, tag, line_num, seen_names, seen_tags)
             info1 = self._determine_info1(reg_type_str, line_num)
             self._check_address_overlap(
@@ -740,13 +1134,18 @@ class Generator:
             )
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
-            # Action normalization with intelligent defaulting
+            # Action normalization with intelligent defaulting:
+            # Inputs and Discrete Inputs default to Read-Only ("4"), Coils/Holding default to Write/RW ("1")
             act_str = str(action).strip().upper()
             if not act_str:
-                norm_action = "4" if info1 in ["2", "4"] else "1"
-            elif act_str in ["R", "READ", "RO", "READ-ONLY", "READ ONLY", "4"]:
-                norm_action = "4"
-            elif act_str in [
+                norm_action = (
+                    ACTION_READ_ONLY
+                    if info1 in (MODBUS_DISCRETE, MODBUS_INPUT)
+                    else ACTION_WRITE_ONLY
+                )
+            elif act_str in ("R", "READ", "RO", "READ-ONLY", "READ ONLY", "4"):
+                norm_action = ACTION_READ_ONLY
+            elif act_str in (
                 "RW",
                 "W",
                 "WRITE",
@@ -757,12 +1156,16 @@ class Generator:
                 "WRITE-ONLY",
                 "WRITE ONLY",
                 "1",
-            ]:
-                norm_action = "1"
+            ):
+                norm_action = ACTION_WRITE_ONLY
             elif act_str in self.allowed_actions:
                 norm_action = act_str
             else:
-                norm_action = "4" if info1 in ["2", "4"] else "1"
+                norm_action = (
+                    ACTION_READ_ONLY
+                    if info1 in (MODBUS_DISCRETE, MODBUS_INPUT)
+                    else ACTION_WRITE_ONLY
+                )
 
             yield {
                 "Info1": info1,
@@ -778,9 +1181,33 @@ class Generator:
             }
 
     def validate_csv_detailed(
-        self, filepath: str, strict: bool = False, strict_overlap: Optional[bool] = None
+        self,
+        filepath: str,
+        strict: bool = False,
+        strict_overlap: bool | None = None,
     ) -> ValidationReport:
-        """Validates an existing WebdynSunPM definition file and returns a structured report."""
+        """
+        Validates an existing WebdynSunPM definition CSV file and returns a detailed report.
+
+        Checks:
+            - UTF-8-sig / UTF-16 encoding with valid semicolon-separated columns.
+            - Header format with protocol and manufacturer fields.
+            - Minimum column count (11 columns).
+            - Valid Info1 Modbus function codes (1, 2, 3, 4).
+            - Fatal uniqueness check for variable Tags.
+            - Supported Webdyn data types.
+            - Address syntax and 0..65535 boundary compliance.
+            - Finite numeric CoefA and CoefB values.
+            - Address interval collision detection.
+
+        Args:
+            filepath: Path to the definition CSV file.
+            strict: If True, treat all warnings as validation errors.
+            strict_overlap: If True, address overlaps fail validation. Defaults to strict.
+
+        Returns:
+            ValidationReport: Summary report containing boolean validity, issue counts, and register statistics.
+        """
         if not os.path.exists(filepath):
             msg = f"File not found: {filepath}"
             logging.error(msg)
@@ -858,12 +1285,23 @@ class Generator:
                         continue
 
                     total_registers += 1
-                    # row format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
-                    info1, info2, info3, name, tag = row[1], row[2], row[3], row[5], row[6]
+                    # Webdyn format: Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+                    info1, info2, info3, name, tag = (
+                        row[1],
+                        row[2],
+                        row[3],
+                        row[5],
+                        row[6],
+                    )
 
                     # Validate Info1
                     info1_str = str(info1).strip()
-                    if info1_str not in ("1", "2", "3", "4"):
+                    if info1_str not in (
+                        MODBUS_COIL,
+                        MODBUS_DISCRETE,
+                        MODBUS_HOLDING,
+                        MODBUS_INPUT,
+                    ):
                         msg = f"Line {line_num}: Invalid Info1 '{info1}' (expected 1, 2, 3, or 4)."
                         logging.warning(msg)
                         issues.append(
@@ -880,7 +1318,7 @@ class Generator:
                     else:
                         type_counts[info1_str] = type_counts.get(info1_str, 0) + 1
 
-                    # Validate Tag uniqueness (fatal)
+                    # Validate Tag uniqueness (fatal error)
                     if tag:
                         if tag in seen_tags:
                             msg = f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})."
@@ -913,7 +1351,7 @@ class Generator:
                         )
                         valid = False
 
-                    # Validate Address format and range (fatal)
+                    # Validate Address format and boundary range (fatal error)
                     if not self.validate_address(info2, info3, strict=strict):
                         msg = f"Line {line_num}: Invalid address or range '{info2}' for Type '{info3}'."
                         logging.error(msg)
@@ -928,7 +1366,7 @@ class Generator:
                         )
                         valid = False
 
-                    # Validate Action
+                    # Validate Action permission
                     action_val = str(row[10]).strip()
                     if action_val and action_val not in self.allowed_actions:
                         msg = f"Line {line_num}: Invalid Action '{action_val}'."
@@ -945,7 +1383,7 @@ class Generator:
                         if strict:
                             valid = False
 
-                    # Validate CoefA and CoefB
+                    # Validate CoefA and CoefB floats
                     for coef_idx, coef_name in ((7, "CoefA"), (8, "CoefB")):
                         c_val = str(row[coef_idx]).strip()
                         if c_val:
@@ -1011,28 +1449,57 @@ class Generator:
                 register_count=0,
                 issues=[
                     ValidationIssue(
-                        line=0, severity="ERROR", code="IO_ERROR", field="file", message=msg
+                        line=0,
+                        severity="ERROR",
+                        code="IO_ERROR",
+                        field="file",
+                        message=msg,
                     )
                 ],
                 stats={"errors": 1, "warnings": 0, "types": {}, "registers": 0},
             )
 
     def validate_csv(
-        self, filepath: str, strict: bool = False, strict_overlap: Optional[bool] = None
+        self,
+        filepath: str,
+        strict: bool = False,
+        strict_overlap: bool | None = None,
     ) -> bool:
-        """Validates an existing WebdynSunPM definition file."""
+        """
+        Validates an existing WebdynSunPM definition file and returns True if valid.
+
+        Args:
+            filepath: Path to definition CSV file.
+            strict: If True, warnings are treated as fatal.
+            strict_overlap: If True, address overlaps cause failure.
+
+        Returns:
+            bool: True if the file passed validation, False otherwise.
+        """
         report = self.validate_csv_detailed(filepath, strict=strict, strict_overlap=strict_overlap)
         return report.is_valid
 
     @staticmethod
     def write_output_csv(
-        output: Union[str, Any, None],
+        output: str | Any | None,
         processed_rows: Iterable[dict[str, Any]],
-        config: Union[CSVHeaderConfig, GeneratorConfig, str, None] = None,
+        config: CSVHeaderConfig | GeneratorConfig | str | None = None,
         *args: Any,
         **kwargs: Any,
     ) -> None:
-        """Centralized method to write the WebdynSunPM CSV format atomically for paths."""
+        """
+        Writes WebdynSunPM definition CSV output atomically with formula injection sanitization.
+
+        When output is a string filepath, the file is written to a temporary sibling file
+        in the target directory, synced to disk via os.fsync, and atomically replaced into place.
+
+        Args:
+            output: Filepath string, open file object, or None (defaults to sys.stdout).
+            processed_rows: Stream of normalized register dictionaries.
+            config: Header configuration object or manufacturer string for legacy positional callers.
+            *args: Optional legacy positional parameters (model, protocol, category, forced_write).
+            **kwargs: Optional keyword parameters for header metadata.
+        """
         if isinstance(config, (CSVHeaderConfig, GeneratorConfig)):
             mfg_val = getattr(config, "manufacturer", "") or ""
             model_val = getattr(config, "model", "") or ""
@@ -1057,10 +1524,17 @@ class Generator:
             protocol_val = str(kwargs.get("protocol", "modbusRTU")) or "modbusRTU"
             category_val = str(kwargs.get("category", "Inverter")) or "Inverter"
             forced_write_val = str(kwargs.get("forced_write", "")) or ""
+
         type_counts = {"1": 0, "2": 0, "3": 0, "4": 0}
-        type_labels = {"1": "Coils", "2": "Discrete", "3": "Holding", "4": "Input"}
+        type_labels = {
+            "1": "Coils",
+            "2": "Discrete",
+            "3": "Holding",
+            "4": "Input",
+        }
         outfile: Any = None
-        temp_path: Optional[str] = None
+        temp_path: str | None = None
+
         try:
             if isinstance(output, str):
                 target_path = os.path.abspath(output)
@@ -1140,8 +1614,23 @@ class Generator:
                     pass
 
 
-def generate_template(output_file: Optional[str], mode: str = "input") -> None:
-    """Generates a sample template CSV file."""
+# -----------------------------------------------------------------------------
+# Template Generation & Top-Level Execution
+# -----------------------------------------------------------------------------
+
+
+def generate_template(output_file: str | None, mode: str = "input") -> None:
+    """
+    Generates a sample template CSV file.
+
+    Modes:
+        - "input": Generates a simplified, human-friendly register map CSV.
+        - "definition": Generates a valid raw WebdynSunPM semicolon-delimited CSV.
+
+    Args:
+        output_file: Path to destination file, or None to print to standard output.
+        mode: "input" or "definition".
+    """
     if mode == "definition":
         headers = [
             "#Index",
@@ -1183,7 +1672,19 @@ def generate_template(output_file: Optional[str], mode: str = "input") -> None:
                 "W",
                 "4",
             ],
-            ["2", "3", "40002", "U16", "", "Voltage", "voltage", "0.100000", "0.000000", "V", "4"],
+            [
+                "2",
+                "3",
+                "40002",
+                "U16",
+                "",
+                "Voltage",
+                "voltage",
+                "0.100000",
+                "0.000000",
+                "V",
+                "4",
+            ],
         ]
         delimiter = ";"
     else:
@@ -1245,8 +1746,16 @@ def generate_template(output_file: Optional[str], mode: str = "input") -> None:
 
 
 def run_generator(
-    config: GeneratorConfig, input_data: Optional[Iterable[dict[str, Any]]] = None
+    config: GeneratorConfig,
+    input_data: Iterable[dict[str, Any]] | None = None,
 ) -> None:
+    """
+    Executes definition generation from a GeneratorConfig object and optional input stream.
+
+    Args:
+        config: Execution configuration.
+        input_data: Optional pre-extracted register stream. If None, reads from config.input_file.
+    """
     generator = Generator()
     if config.template:
         mode = config.template_mode
@@ -1313,7 +1822,8 @@ def run_generator(
         logging.error(f"An error occurred during generation: {e}")
 
 
-def main():
+def main() -> None:
+    """Command-line entrypoint for the standalone def_gen script."""
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s", force=True)
     parser = argparse.ArgumentParser(description="Generate WebdynSunPM Modbus definition file.")
     parser.add_argument("input_file", nargs="?", help="Input simplified CSV.")
