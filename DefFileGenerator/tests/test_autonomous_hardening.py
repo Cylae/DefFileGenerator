@@ -36,7 +36,9 @@ class TestAutonomousHardening(unittest.TestCase):
         self.assertTrue(Generator.sanitize_csv_field("-CALC").startswith("'"))
 
     def test_extractor_map_and_clean_non_string_keys(self):
-        table = [[{None: "invalid", "": "blank", "Address": "40001", "Name": "TestReg", "Type": "U16"}]]
+        table = [
+            [{None: "invalid", "": "blank", "Address": "40001", "Name": "TestReg", "Type": "U16"}]
+        ]
         mapped = list(self.extractor.map_and_clean(table))
         self.assertEqual(len(mapped), 1)
         self.assertEqual(mapped[0]["Address"], "40001")
