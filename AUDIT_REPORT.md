@@ -465,3 +465,19 @@ All validation steps were executed directly against the workspace:
 | Build / package | **PASS** | `uv build` (Built sdist and wheel successfully, exited 0) |
 | Pre-commit | **NOT APPLICABLE** | No `.pre-commit-config.yaml` configured in repository |
 | Dependency/security audit | **PASS** | `uv run bandit -r DefFileGenerator web -x DefFileGenerator/tests` (4117 lines scanned, 0 issues, exited 0) |
+
+## Validation Evidence (Update - Agent Run)
+
+| Validation                         | Result              | Evidence |
+|------------------------------------|---------------------|----------|
+| Core unit tests                    | PASS                | `python3 -m pytest DefFileGenerator/tests/` (582 passed, 9 skipped) |
+| Web unit tests                     | PASS                | `python3 -m pytest DefFileGenerator/tests/test_web*` |
+| Web/Core integration tests         | PASS                | `python3 -m pytest DefFileGenerator/tests/test_integration.py` |
+| Security regression tests          | PASS                | `python3 -m pytest DefFileGenerator/tests/test_adversarial_security.py` |
+| Stress tests                       | PASS                | `python3 DefFileGenerator/tests/stress_test_gen.py` (Passed) |
+| Torture tests                      | PASS                | `python3 DefFileGenerator/tests/run_torture_battery.py` (Passed) |
+| Gigantic / large-scale tests       | PASS                | `python3 DefFileGenerator/tests/run_gigantic_battery.py` (Passed) |
+| Lint                               | PASS                | `ruff check .` (4 fixed unused imports initially, then 0 errors) |
+| Type checking                      | PASS                | `mypy DefFileGenerator web` (Success) |
+| Formatting                         | PASS                | `ruff format --check .` (Passed) |
+| Dependency/security audit          | PASS                | `bandit -r DefFileGenerator web -ll` (No issues) |

@@ -1,12 +1,11 @@
 import io
-import os
 import tempfile
 import unittest
 
 from fastapi.testclient import TestClient
 
 import DefFileGenerator
-from DefFileGenerator import CSVHeaderConfig, Generator, RegisterEntry, WebdynDefConfig
+from DefFileGenerator import Generator, WebdynDefConfig
 from generate_webdyn_def import WebdynDefConfig as RootWebdynDefConfig
 from web.app import MAX_WEB_REGISTERS, app
 
