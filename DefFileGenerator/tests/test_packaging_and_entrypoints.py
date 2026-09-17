@@ -105,6 +105,22 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
         )
         self.assertIn("deffilegen-gui 0.2.1", res.stdout)
 
+    def test_mypy_typecheck_passes(self):
+        res = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "mypy",
+                "--config-file",
+                os.path.join(REPO_ROOT, "pyproject.toml"),
+                os.path.join(REPO_ROOT, "DefFileGenerator"),
+                os.path.join(REPO_ROOT, "generate_webdyn_def.py"),
+            ],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(res.returncode, 0, f"mypy typecheck failed:\n{res.stdout}\n{res.stderr}")
+
 
 if __name__ == "__main__":
     unittest.main()
