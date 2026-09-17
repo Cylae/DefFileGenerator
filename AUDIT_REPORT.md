@@ -521,5 +521,7 @@ All validation steps were executed directly against the workspace:
 | Type checking | **PASS** | `uv run mypy DefFileGenerator web` (Success: no issues in 53 source files, exited 0) |
 | Formatting | **PASS** | `uv run ruff format --check .` (69 files already formatted, exited 0) |
 | Build / package | **PASS** | `uv build` (Built sdist and wheel successfully, exited 0) |
+| Standalone Windows Executables | **PASS** | `build_exe.py` & GitHub Actions `35220304829` (Built GUI & CLI `.exe`, exited 0) |
+| GitHub Actions CI | **PASS** | Workflow run `35220304776` (Matrix py3.10, py3.11, py3.12 all passed, exited 0) |
 | Pre-commit | **NOT APPLICABLE** | No `.pre-commit-config.yaml` configured in repository |
 | Dependency/security audit | **PASS** | `uv run bandit -r DefFileGenerator web -ll` (11,554 lines scanned, 0 issues, exited 0) |
