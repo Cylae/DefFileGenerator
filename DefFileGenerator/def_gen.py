@@ -137,13 +137,90 @@ _CSV_STRIP_CHARS = (
 )
 
 # Leading whitespace/zero-width characters that spreadsheet apps ignore before executing formulas
-_CSV_PREFIX_TRIGGERS = tuple(
-    set(
-        "\t\r\n\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
-        + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
-        + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
-        + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
-    )
+_CSV_PREFIX_TRIGGERS: frozenset[str] = frozenset(
+    "\t\r\n\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
+    + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
+    + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
+    + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
+)
+_CSV_FORMULA_CHARS: frozenset[str] = frozenset(
+    {"=", "+", "-", "@", "|", "%", "\uff1d", "\uff0b", "\uff0d", "\uff20"}
+)
+_CSV_FULLWIDTH_TRIGGERS: tuple[str, ...] = ("\uff1d", "\uff0b", "\uff0d", "\uff20")
+
+MODBUS_VALID_INFO1: frozenset[str] = frozenset(
+    {MODBUS_COIL, MODBUS_DISCRETE, MODBUS_HOLDING, MODBUS_INPUT}
+)
+
+_EXACT_REG_COUNTS: dict[str, int] = {
+    "U16": 1,
+    "I16": 1,
+    "U8": 1,
+    "I8": 1,
+    "BITS": 1,
+    "U32": 2,
+    "I32": 2,
+    "F32": 2,
+    "IP": 2,
+    "U64": 4,
+    "I64": 4,
+    "F64": 4,
+    "MAC": 3,
+    "IPV6": 8,
+}
+
+_VALID_SPECIAL_TYPES: frozenset[str] = frozenset({"STRING", "BITS", "IP", "IPV6", "MAC"})
+_COMMON_VALID_NUMERIC: frozenset[str] = frozenset(
+    {
+        "U8",
+        "U16",
+        "U32",
+        "U64",
+        "I8",
+        "I16",
+        "I32",
+        "I64",
+        "F32",
+        "F64",
+    }
+)
+
+_SHORTHAND_TYPE_MAP: dict[str, str] = {
+    "word": "U16",
+    "uword": "U16",
+    "ushort": "U16",
+    "unsignedshort": "U16",
+    "dword": "U32",
+    "udword": "U32",
+    "ulong": "U32",
+    "unsignedlong": "U32",
+    "qword": "U64",
+    "uqword": "U64",
+    "byte": "U8",
+    "ubyte": "U8",
+    "uchar": "U8",
+    "unsignedchar": "U8",
+    "short": "I16",
+    "sshort": "I16",
+    "signedshort": "I16",
+    "long": "I32",
+    "slong": "I32",
+    "signedlong": "I32",
+}
+
+_CANONICAL_TYPE_SET: frozenset[str] = frozenset(
+    {
+        "u16",
+        "u32",
+        "i16",
+        "i32",
+        "s16",
+        "s32",
+        "u64",
+        "i64",
+        "f32",
+        "f64",
+    }
 )
 
 
@@ -254,6 +331,57 @@ class ValidationReport:
     stats: dict[str, Any] = field(default_factory=dict)
 
 
+@functools.lru_cache(maxsize=4096)
+def _normalize_address_cached(s: str) -> str:
+    """Internal cached helper for resolving compound/hex/range addresses."""
+    range_match = _ADDR_RANGE_RE.match(s)
+    if range_match:
+        s = range_match.group(1).strip()
+
+    if s.endswith(".") and not s.endswith(".."):
+        s = s.rstrip(".")
+
+    if s.isdigit() and (not s.startswith("0") or s == "0"):
+        return s
+
+    addr_part = s
+    # Remove grouping commas (e.g., "30,001" -> "30001")
+    addr_part = _ADDR_GROUPING_COMMA_RE.sub("", addr_part)
+    if not addr_part:
+        return ""
+
+    is_neg = addr_part.startswith("-")
+    clean_addr = addr_part[1:] if is_neg else addr_part
+
+    # Check explicit hexadecimal prefix or suffix
+    if clean_addr.lower().startswith("0x"):
+        try:
+            val = int(clean_addr, 16)
+            return str(-val if is_neg else val)
+        except ValueError:
+            return addr_part
+    elif clean_addr.lower().endswith("h"):
+        try:
+            val = int(clean_addr[:-1], 16)
+            return str(-val if is_neg else val)
+        except ValueError:
+            return addr_part
+
+    try:
+        return str(int(addr_part, 0))
+    except ValueError:
+        pass
+
+    # Try parsing plain hexadecimal string without 0x prefix
+    if _ADDR_HEX_MATCH_RE.match(addr_part):
+        try:
+            return str(int(addr_part, 16))
+        except ValueError:
+            return addr_part
+
+    return addr_part
+
+
 # -----------------------------------------------------------------------------
 # Generator Engine Class
 # -----------------------------------------------------------------------------
@@ -317,42 +445,37 @@ class Generator:
         if not s:
             return ""
 
+        # Fast-path: 99% of normal industrial modbus registers are clean printable ASCII starting with an alnum
+        if s.isascii() and s.isprintable() and s[0].isalnum():
+            return s
+
         # Remove control and invalid surrogate characters
-        s = "".join(
-            ch
-            for ch in s
-            if (ord(ch) in (9, 10, 13) or (ord(ch) >= 32 and ord(ch) != 127))
-            and not (0xD800 <= ord(ch) <= 0xDFFF)
-        )
-        if not s:
-            return ""
+        if not s.isprintable():
+            s = "".join(
+                ch
+                for ch in s
+                if (ord(ch) in (9, 10, 13) or (ord(ch) >= 32 and ord(ch) != 127))
+                and not (0xD800 <= ord(ch) <= 0xDFFF)
+            )
+            if not s:
+                return ""
 
         # Check for leading whitespace or zero-width triggers used in CSV injection payloads
-        if s[0] in _CSV_PREFIX_TRIGGERS or s.startswith(("\uff1d", "\uff0b", "\uff0d", "\uff20")):
+        if s[0] in _CSV_PREFIX_TRIGGERS or s.startswith(_CSV_FULLWIDTH_TRIGGERS):
             prefix = s[0]
             rest = s[1:].replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
             return "'" + prefix + rest
 
         # Replace internal newlines with space to prevent row splitting
-        s = s.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
+        if "\n" in s or "\r" in s:
+            s = s.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
 
         stripped = s.lstrip(_CSV_STRIP_CHARS)
         if not stripped:
             return s
 
         # Neutralize spreadsheet formula prefix triggers
-        if stripped[0] in (
-            "=",
-            "+",
-            "-",
-            "@",
-            "|",
-            "%",
-            "\uff1d",
-            "\uff0b",
-            "\uff0d",
-            "\uff20",
-        ):
+        if stripped[0] in _CSV_FORMULA_CHARS:
             if "_" in stripped or "inf" in stripped.lower() or "nan" in stripped.lower():
                 return "'" + s
             try:
@@ -400,18 +523,7 @@ class Generator:
         compact_t = _COLLAPSE_WHITESPACE_RE.sub("", t)
         if compact_t in ("str", "string"):
             return "STRING"
-        if compact_t in (
-            "u16",
-            "u32",
-            "i16",
-            "i32",
-            "s16",
-            "s32",
-            "u64",
-            "i64",
-            "f32",
-            "f64",
-        ):
+        if compact_t in _CANONICAL_TYPE_SET:
             if compact_t.startswith("s"):
                 return f"I{compact_t[1:]}".upper()
             return compact_t.upper()
@@ -430,18 +542,9 @@ class Generator:
             suffix = "_W"
 
         # Direct canonical shorthand matches
-        if compact_t in ("word", "uword", "ushort", "unsignedshort"):
-            return f"U16{suffix}"
-        if compact_t in ("dword", "udword", "ulong", "unsignedlong"):
-            return f"U32{suffix}"
-        if compact_t in ("qword", "uqword"):
-            return f"U64{suffix}"
-        if compact_t in ("byte", "ubyte", "uchar", "unsignedchar"):
-            return f"U8{suffix}"
-        if compact_t in ("short", "sshort", "signedshort"):
-            return f"I16{suffix}"
-        if compact_t in ("long", "slong", "signedlong"):
-            return f"I32{suffix}"
+        base_shorthand = _SHORTHAND_TYPE_MAP.get(compact_t)
+        if base_shorthand:
+            return f"{base_shorthand}{suffix}"
 
         # Handle explicit string length notation (e.g. "string 20" -> "STR20")
         str_match = _STR_MATCH_RE.search(t)
@@ -489,7 +592,7 @@ class Generator:
             bool: True if the type is valid, False otherwise.
         """
         dtype_upper = str(dtype).upper()
-        if dtype_upper in ("STRING", "BITS", "IP", "IPV6", "MAC"):
+        if dtype_upper in _COMMON_VALID_NUMERIC or dtype_upper in _VALID_SPECIAL_TYPES:
             return True
         if RE_TYPE_NUMERIC.match(dtype_upper):
             return True
@@ -516,57 +619,18 @@ class Generator:
         """
         if isinstance(addr_part, int):
             return str(addr_part)
-        s = str(addr_part).strip()
+        try:
+            s = str(addr_part).strip()
+        except Exception:
+            return ""
         if not s:
             return ""
 
-        # Handle range notations: extract starting address before range delimiter
-        range_match = _ADDR_RANGE_RE.match(s)
-        if range_match:
-            s = range_match.group(1).strip()
-
-        if s.endswith(".") and not s.endswith(".."):
-            s = s.rstrip(".")
-
-        if s.isdigit() and (not s.startswith("0") or s == "0"):
+        # Fast-path: positive decimal integers without range/punctuation (e.g. "40001", "0")
+        if s.isdigit() and (s == "0" or not s.startswith("0")):
             return s
 
-        addr_part = s
-        # Remove grouping commas (e.g., "30,001" -> "30001")
-        addr_part = _ADDR_GROUPING_COMMA_RE.sub("", addr_part)
-        if not addr_part:
-            return ""
-
-        is_neg = addr_part.startswith("-")
-        clean_addr = addr_part[1:] if is_neg else addr_part
-
-        # Check explicit hexadecimal prefix or suffix
-        if clean_addr.lower().startswith("0x"):
-            try:
-                val = int(clean_addr, 16)
-                return str(-val if is_neg else val)
-            except ValueError:
-                return addr_part
-        elif clean_addr.lower().endswith("h"):
-            try:
-                val = int(clean_addr[:-1], 16)
-                return str(-val if is_neg else val)
-            except ValueError:
-                return addr_part
-
-        try:
-            return str(int(addr_part, 0))
-        except ValueError:
-            pass
-
-        # Try parsing plain hexadecimal string without 0x prefix
-        if _ADDR_HEX_MATCH_RE.match(addr_part):
-            try:
-                return str(int(addr_part, 16))
-            except ValueError:
-                return addr_part
-
-        return addr_part
+        return _normalize_address_cached(s)
 
     @staticmethod
     def validate_address(address: str, dtype: str, strict: bool = True) -> bool:
@@ -655,16 +719,15 @@ class Generator:
             int: Number of 16-bit registers occupied.
         """
         dtype_upper = dtype.upper()
+        count = _EXACT_REG_COUNTS.get(dtype_upper)
+        if count is not None:
+            return count
         if RE_COUNT_16_8.match(dtype_upper):
             return 1
         elif RE_COUNT_32.match(dtype_upper):
             return 2
         elif RE_COUNT_64.match(dtype_upper):
             return 4
-        elif dtype_upper == "MAC":
-            return 3
-        elif dtype_upper == "IPV6":
-            return 8
         elif dtype_upper == "STRING":
             try:
                 return math.ceil(int(address.split("_")[1]) / 2)
@@ -840,7 +903,7 @@ class Generator:
             return MODBUS_HOLDING
         if lt in self.register_type_map:
             return self.register_type_map[lt]
-        elif lt in (MODBUS_COIL, MODBUS_DISCRETE, MODBUS_HOLDING, MODBUS_INPUT):
+        elif lt in MODBUS_VALID_INFO1:
             return lt
         if line_num:
             logging.warning(
@@ -1296,12 +1359,7 @@ class Generator:
 
                     # Validate Info1
                     info1_str = str(info1).strip()
-                    if info1_str not in (
-                        MODBUS_COIL,
-                        MODBUS_DISCRETE,
-                        MODBUS_HOLDING,
-                        MODBUS_INPUT,
-                    ):
+                    if info1_str not in MODBUS_VALID_INFO1:
                         msg = f"Line {line_num}: Invalid Info1 '{info1}' (expected 1, 2, 3, or 4)."
                         logging.warning(msg)
                         issues.append(
