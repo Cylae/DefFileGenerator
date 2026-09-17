@@ -81,6 +81,7 @@ module = [
   "fastapi.*",
   "starlette.*",
   "uvicorn.*",
+  "PyInstaller.*",
 ]
 ignore_missing_imports = true
 

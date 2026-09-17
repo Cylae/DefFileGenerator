@@ -10,12 +10,9 @@ Validates:
 from __future__ import annotations
 
 import hashlib
-import os
 import sys
 from pathlib import Path
 from unittest.mock import patch
-
-import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 SPEC_FILE = REPO_ROOT / "DefFileGenerator.spec"
