@@ -15,6 +15,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from DefFileGenerator.extractor import Extractor
 
@@ -97,13 +98,20 @@ class TestWave10Hardening(unittest.TestCase):
         self.assertIn("--help", res.stdout)
         self.assertIn("--version", res.stdout)
 
-    def test_build_exe_check_pyinstaller_succeeds_in_current_env(self) -> None:
-        """Verify check_pyinstaller in build_exe runs without error when PyInstaller is present."""
+    def test_build_exe_check_pyinstaller_branches(self) -> None:
+        """Verify check_pyinstaller logic under both available and missing PyInstaller scenarios."""
         sys.path.insert(0, str(REPO_ROOT))
         import build_exe
 
-        # Should execute cleanly without calling sys.exit
-        build_exe.check_pyinstaller()
+        # 1. When PyInstaller is present in sys.modules, check_pyinstaller returns cleanly
+        with patch.dict("sys.modules", {"PyInstaller": type(sys)("PyInstaller")}):
+            build_exe.check_pyinstaller()
+
+        # 2. When PyInstaller is not installed and no .venv fallback exists, it exits with SystemExit
+        with patch.dict("sys.modules", {"PyInstaller": None}):
+            with patch("pathlib.Path.is_file", return_value=False):
+                with self.assertRaises(SystemExit):
+                    build_exe.check_pyinstaller()
 
 
 if __name__ == "__main__":
