@@ -27,6 +27,7 @@ logger = logging.getLogger("DefFileGenerator.web")
 
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 UPLOAD_CHUNK_BYTES = 1024 * 1024
+MAX_WEB_REGISTERS = 65536
 
 app = FastAPI(
     title="WebdynSunPM Definition Generator API",
@@ -137,6 +138,11 @@ async def convert_file(
                 )
 
             full_mapped = list(mapped_peeked)
+            if len(full_mapped) > MAX_WEB_REGISTERS:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Uploaded file contains {len(full_mapped)} registers, exceeding the maximum allowable limit of {MAX_WEB_REGISTERS}.",
+                )
             preview_rows = full_mapped[:500]
 
             config = GeneratorConfig(
@@ -206,6 +212,12 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 
     ext = os.path.splitext(safe_filename)[1].lower()
+    if ext not in {".csv", ".txt"}:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file format '{ext}'. Validation requires a CSV definition file (.csv, .txt).",
+        )
+
     with tempfile.TemporaryDirectory() as temp_dir:
         input_path = os.path.join(temp_dir, f"source_input{ext}")
         await _save_upload(file, input_path)
@@ -233,7 +245,7 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
                         "field": i.field,
                         "message": i.message,
                     }
-                    for i in report.issues
+                    for i in report.issues[:1000]
                 ],
                 "stats": report.stats,
             }

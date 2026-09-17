@@ -10,20 +10,13 @@ import sys
 from dataclasses import dataclass
 from typing import Optional, Union
 
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import (
+    Generator,
+    GeneratorConfig,
+    WebdynDefConfig,
+    run_generator,
+)
 from DefFileGenerator.extractor import Extractor, peek_generator
-
-
-@dataclass
-class WebdynDefConfig:
-    input_file: str
-    output_file: str
-    manufacturer: str
-    model: str
-    protocol: str = "modbusRTU"
-    category: str = "Inverter"
-    address_offset: int = 0
-    strict_validation: bool = True
 
 
 def setup_logging():

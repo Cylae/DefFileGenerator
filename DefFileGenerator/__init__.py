@@ -7,6 +7,7 @@ from DefFileGenerator.def_gen import (
     RegisterEntry,
     ValidationIssue,
     ValidationReport,
+    WebdynDefConfig,
 )
 from DefFileGenerator.extractor import Extractor
 
@@ -19,5 +20,6 @@ __all__ = [
     "RegisterEntry",
     "ValidationIssue",
     "ValidationReport",
+    "WebdynDefConfig",
     "Extractor",
 ]

@@ -41,6 +41,33 @@ RE_COUNT_64 = re.compile(r"^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$", re.IGNORECAS
 
 _CLEAN_TYPE_RE = re.compile(r"[^a-z0-9_]+")
 
+_CSV_STRIP_CHARS = (
+    " \t\n\r\v\f\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
+    + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
+    + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
+    + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
+)
+_CSV_PREFIX_TRIGGERS = tuple(
+    set(
+        "\t\r\n\u00a0\u0085\u00ad\u1680\u180e\ufeff\u3000"
+        + "".join(chr(c) for c in range(0x2000, 0x200F + 1))
+        + "".join(chr(c) for c in range(0x2028, 0x202F + 1))
+        + "".join(chr(c) for c in range(0x205F, 0x206F + 1))
+    )
+)
+
+
+@dataclass
+class WebdynDefConfig:
+    input_file: str
+    output_file: str
+    manufacturer: str
+    model: str
+    protocol: str = "modbusRTU"
+    category: str = "Inverter"
+    address_offset: int = 0
+    strict_validation: bool = True
+
 
 @dataclass
 class CSVHeaderConfig:
@@ -127,19 +154,7 @@ class Generator:
             return ""
 
         # Check for prefix characters that trigger injection
-        if s[0] in (
-            "\t",
-            "\r",
-            "\n",
-            "\u00a0",
-            "\ufeff",
-            "\u200b",
-            "\u200e",
-            "\u200f",
-            "\u2028",
-            "\u2029",
-            "\u0085",
-        ) or s.startswith(("\uff1d", "\uff0b", "\uff0d", "\uff20")):
+        if s[0] in _CSV_PREFIX_TRIGGERS or s.startswith(("\uff1d", "\uff0b", "\uff0d", "\uff20")):
             prefix = s[0]
             rest = s[1:].replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
             return "'" + prefix + rest
@@ -147,7 +162,7 @@ class Generator:
         # Replace internal newlines and carriage returns with a space to prevent multiline CSV records
         s = s.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
 
-        stripped = s.lstrip(" \t\n\r\v\f\u00a0\ufeff\u200b\u200e\u200f\u2028\u2029\u0085")
+        stripped = s.lstrip(_CSV_STRIP_CHARS)
         if not stripped:
             return s
 
@@ -189,8 +204,24 @@ class Generator:
             suffix = "_WB"
         elif any(x in t for x in ["_b", "big"]):
             suffix = "_B"
-        elif any(x in t for x in ["_w", "word"]):
+        elif re.search(
+            r"(_w\b|_w$|\bword\s*swap\b|\bword-swap\b|(?:float\d*|f\d+|u\d+|i\d+|int\d*|uint\d*)\s+word\b)",
+            t,
+        ):
             suffix = "_W"
+
+        if compact_t in ("word", "uword", "ushort", "unsignedshort"):
+            return f"U16{suffix}"
+        if compact_t in ("dword", "udword", "ulong", "unsignedlong"):
+            return f"U32{suffix}"
+        if compact_t in ("qword", "uqword"):
+            return f"U64{suffix}"
+        if compact_t in ("byte", "ubyte", "uchar", "unsignedchar"):
+            return f"U8{suffix}"
+        if compact_t in ("short", "sshort", "signedshort"):
+            return f"I16{suffix}"
+        if compact_t in ("long", "slong", "signedlong"):
+            return f"I32{suffix}"
 
         # Handle "string 20" -> "STR20"
         str_match = re.search(r"string\s*(\d+)", t)
@@ -217,15 +248,25 @@ class Generator:
         synonyms = [
             (r"unsigned\s*(?:int(?:eger)?)?\s*64|uint64|\bu64\b|\bint64u\b", "U64"),
             (r"signed\s*(?:int(?:eger)?)?\s*64|sint64|\bint64\b|\bi64\b|\bs64\b|\bint64s\b", "I64"),
+            (r"\bunsigned\s*long(?:\s*int)?\b|\bulong\b|\buint32_t\b", "U32"),
+            (r"\bsigned\s*long(?:\s*int)?\b|\bslong\b|\blong(?:\s*int)?\b|\bint32_t\b", "I32"),
             (r"unsigned\s*(?:int(?:eger)?)?\s*32|uint32|\bu32\b|\bint32u\b", "U32"),
             (r"signed\s*(?:int(?:eger)?)?\s*32|sint32|\bint32\b|\bi32\b|\bs32\b|\bint32s\b", "I32"),
+            (r"\bunsigned\s*short(?:\s*int)?\b|\bushort\b|\buint16_t\b", "U16"),
+            (r"\bsigned\s*short(?:\s*int)?\b|\bsshort\b|\bshort(?:\s*int)?\b", "I16"),
             (r"unsigned\s*(?:int(?:eger)?)?\s*16|uint16|\bu16\b|\bint16u\b", "U16"),
             (r"signed\s*(?:int(?:eger)?)?\s*16|sint16|\bint16\b|\bi16\b|\bs16\b|\bint16s\b", "I16"),
+            (r"\bunsigned\s*char\b|\buchar\b|\buint8_t\b", "U8"),
+            (r"\bsigned\s*char\b|\bschar\b", "I8"),
             (r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b|\bint8u\b", "U8"),
             (r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b|\bint8s\b", "I8"),
             (r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754", "F64"),
             (r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754", "F32"),
             (r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b", "BITS"),
+            (r"\bqword\b", "U64"),
+            (r"\bdword\b", "U32"),
+            (r"\bword\b|\buword\b", "U16"),
+            (r"\bbyte\b|\bubyte\b", "U8"),
             (r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$", "U32"),
             (r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$", "U16"),
             (r"^unsigned\s*(?:int(?:eger)?)?$|^uint$|^unsigned$", "U16"),
@@ -275,6 +316,9 @@ class Generator:
         range_match = re.match(r"^([^\s~.]+?)\s*(?:~|\.\.|\s+-\s+|-(?=[0-9a-fA-FxX]))", s)
         if range_match:
             s = range_match.group(1).strip()
+
+        if s.endswith(".") and not s.endswith(".."):
+            s = s.rstrip(".")
 
         if s.isdigit() and (not s.startswith("0") or s == "0"):
             return s
