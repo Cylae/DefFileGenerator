@@ -208,7 +208,7 @@ See [`docs/security.md`](docs/security.md) for the complete security model.
 
 ## Quality gates
 
-The established suite contains **500+ unit and integration tests**. GitHub Actions runs the project across Python 3.10, 3.11, and 3.12 with:
+The established suite contains **610+ unit and integration tests** with 86% statement coverage. GitHub Actions runs the project across Python 3.10, 3.11, and 3.12 with:
 
 ```text
 ruff check .

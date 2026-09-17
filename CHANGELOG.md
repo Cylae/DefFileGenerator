@@ -22,8 +22,14 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - **Surplus CSV Column Exception Hardening (`DefFileGenerator/extractor.py`).** Resolved `AttributeError: 'list' object has no attribute 'strip'` when extracting CSV files containing empty leading cells and trailing overflow columns (where `csv.DictReader` assigns a list under key `None`). Filtered `None` overflow keys from yielded dictionaries.
 - **PyInstaller Virtual Environment Auto-Delegation (`build_exe.py`).** Enhanced `check_pyinstaller` to detect and automatically delegate execution to a local `.venv` containing PyInstaller when executed from an unactivated terminal or base Python interpreter.
 
+### Removed
+
+- **Unused Ad-Hoc Test Artifact (`DefFileGenerator/test_input.csv`).** Removed unreferenced loose CSV file from the core package root directory.
+- **Tracked Test Output Artifacts.** Untracked generated test outputs (`stress_test_data/output.csv`, `stress_test_data/output_offset.csv`, `torture_test/output.csv`, `torture_test/output_str.csv`) from version control and updated `.gitignore` with `torture_test/output*.csv` so test batteries execute without dirtying the working directory.
+
 ### Changed
 
+- **Core Import Refactoring & Strict Typing (`DefFileGenerator/extractor.py`).** Eliminated dynamic runtime fallback imports (`Generator: Any = None`, `peek_generator: Any = None`, duplicate `_peek_generator_impl`) in favor of direct, statically-typed imports from `DefFileGenerator.def_gen`. Removed redundant `if Generator is not None:` guards in `normalize_type` and `map_and_clean`.
 - **Pre-Compiled Regular Expressions.** Converted all 28 type synonym patterns in `normalize_type` to a module-level pre-compiled tuple (`TYPE_SYNONYMS_COMPILED`), eliminating per-invocation regex re-compilation. Pre-compiled address range delimiters, grouping commas, hex address matches, and slug regexes.
 - **Constant Time Lookups in Extractor.** Converted table header keywords, PDF metadata markers, communication parameter keywords, and address guards to module-level `frozenset` constants.
 - **Python 3.10+ Type Annotations.** Modernized all type annotations to use modern union syntax (`T | None`, `X | Y`) across all modules.

@@ -429,6 +429,10 @@ The following public APIs and contracts are strictly preserved and verified by r
 | `web/static/app.js` | Revoke Blob Object URL via `setTimeout` after download trigger | Prevent client-side browser memory leaks |
 | `DefFileGenerator/tests/test_wave8_hardening.py` | Comprehensive regression test suite (9 tests) | Permanent regression coverage for wave 8 fixes |
 | `DefFileGenerator/tests/test_wave9_hardening.py` | Comprehensive regression test suite (6 tests) | Permanent regression coverage for wave 9 fixes |
+| `DefFileGenerator/tests/test_wave10_hardening.py` | Comprehensive regression test suite (5 tests) | Permanent regression coverage for wave 10 fixes |
+| `DefFileGenerator/test_input.csv` | Deleted unreferenced ad-hoc file from core package root | Package hygiene and cleanliness |
+| `.gitignore` | Added `torture_test/output*.csv` and untracked battery output CSVs | Test batteries no longer dirty working tree |
+| `DefFileGenerator/extractor.py` | Direct typed `Generator` imports; removed redundant runtime guards | Clean static typing and eliminated dead fallback paths |
 
 ---
 

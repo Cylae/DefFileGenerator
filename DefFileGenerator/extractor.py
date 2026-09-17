@@ -97,45 +97,11 @@ try:
 except ImportError:
     XML_PARSE_ERRORS = (Exception,)
 
-# Import core generator utilities with resilient fallbacks
-Generator: Any = None
-peek_generator: Any = None
+# Import core generator utilities
 try:
-    from DefFileGenerator.def_gen import Generator as _Gen
-    from DefFileGenerator.def_gen import peek_generator as _PeekGen
-
-    Generator = _Gen
-    peek_generator = _PeekGen
+    from DefFileGenerator.def_gen import Generator, peek_generator
 except ImportError:
-    try:
-        from def_gen import (  # type: ignore[import-not-found, no-redef]
-            Generator as _GenFallback,
-        )
-        from def_gen import (
-            peek_generator as _PeekGenFallback,
-        )
-
-        Generator = _GenFallback
-        peek_generator = _PeekGenFallback
-    except ImportError:
-        pass
-
-if peek_generator is None:
-
-    def _peek_generator_impl(
-        iterable: Iterable[Any] | None,
-    ) -> tuple[bool, Iterator[Any]]:
-        """Fallback peek implementation when def_gen is not in path."""
-        if iterable is None:
-            return False, iter([])
-        it = iter(iterable)
-        try:
-            first = next(it)
-        except StopIteration:
-            return False, iter([])
-        return True, itertools.chain([first], it)
-
-    peek_generator = _peek_generator_impl
+    from .def_gen import Generator, peek_generator  # type: ignore[no-redef]
 
 # -----------------------------------------------------------------------------
 # Pre-compiled Regex Patterns for Extractor Performance
@@ -384,9 +350,7 @@ class Extractor:
         Returns:
             str: Normalized data type code.
         """
-        if Generator is not None:
-            return Generator.normalize_type(t)
-        return str(t).upper() if t else "U16"
+        return Generator.normalize_type(t)
 
     @staticmethod
     def _infer_table_columns(table: list[list[Any]]) -> list[str] | None:
@@ -1094,7 +1058,7 @@ class Extractor:
                     slen = compact_slen
 
                 raw_type = new_row.get("Type", "U16")
-                dtype = Generator.normalize_type(raw_type) if Generator else str(raw_type).upper()
+                dtype = Generator.normalize_type(raw_type)
                 new_row["Type"] = dtype
                 addr = addr_val
 
@@ -1115,10 +1079,7 @@ class Extractor:
                 elif is_string_type and slen != "" and "_" not in addr:
                     addr = f"{addr}_{slen}"
 
-                if Generator is not None:
-                    new_row["Address"] = Generator.apply_address_offset(addr, address_offset)
-                else:
-                    new_row["Address"] = addr
+                new_row["Address"] = Generator.apply_address_offset(addr, address_offset)
 
                 # Gain column expresses a divisor (e.g. Huawei 10 -> 0.1 multiplier)
                 if not new_row.get("Factor"):
@@ -1126,12 +1087,12 @@ class Extractor:
                     compact_gain = RE_CLEAN_WHITESPACE.sub("", gain_str)
                     if compact_gain.isdigit():
                         gain_str = compact_gain
-                    if gain_str and Generator is not None:
+                    if gain_str:
                         gain_val = Generator._parse_numeric(gain_str, default=0.0)
                         if gain_val:
                             new_row["Factor"] = f"{1.0 / gain_val:.6f}"
 
-                if new_row.get("Factor") is not None and Generator is not None:
+                if new_row.get("Factor") is not None:
                     new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
 
                 # Fallback to ReadWrite column if Action was not directly provided

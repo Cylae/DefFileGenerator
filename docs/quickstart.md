@@ -45,7 +45,9 @@ Run `deffilegen --help` or `deffilegen <subcommand> --help` to inspect all avail
 ## Quality Checks Before Delivery
 
 ```bash
-pytest
-ruff check .
-mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py
+uv run --all-extras pytest --cov=DefFileGenerator --cov=web
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy DefFileGenerator web
+uv run bandit -r DefFileGenerator web -ll
 ```

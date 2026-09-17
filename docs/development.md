@@ -16,7 +16,7 @@ ruff check .
 ruff format --check .
 
 # Static type checking
-mypy DefFileGenerator generate_webdyn_def.py doc_to_webdyn.py
+mypy DefFileGenerator web
 
 # Full test suite execution
 pytest
