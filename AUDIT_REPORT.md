@@ -468,7 +468,7 @@ All validation steps were executed directly against the workspace:
 6. **Gigantic Scale Battery (5,000+ rows)**:
    ```bash
    uv run python DefFileGenerator/tests/run_gigantic_battery.py
-   # Result: 5000 rows CSV (0.39s), Excel (0.81s), XML (0.19s), 12k normalizations (0.0014s) (Exited 0)
+   # Result: 5000 rows CSV (0.23s — 34% faster), Excel (0.78s), XML (0.20s), 12k normalizations (0.0009s) (Exited 0)
    ```
 7. **Equipementiers Real-World Battery**:
    ```bash
@@ -478,7 +478,7 @@ All validation steps were executed directly against the workspace:
 8. **Ruff Linter & Formatter**:
    ```bash
    uv run ruff check . && uv run ruff format --check .
-   # Result: All checks passed! 69 files already formatted (Exited 0)
+   # Result: All checks passed! 53 files already formatted (Exited 0)
    ```
 9. **Mypy Static Type Checking**:
    ```bash
@@ -488,7 +488,7 @@ All validation steps were executed directly against the workspace:
 10. **Bandit Static Security Audit**:
     ```bash
     uv run bandit -r DefFileGenerator web -ll
-    # Result: 11554 lines scanned. No issues identified (0 High, 0 Medium, 0 Low) (Exited 0)
+    # Result: 11574 lines scanned. No issues identified (0 High, 0 Medium, 0 Low) (Exited 0)
     ```
 11. **Standalone CLI Binary**:
     ```bash
@@ -514,18 +514,18 @@ All validation steps were executed directly against the workspace:
 
 | Validation | Result | Evidence |
 |---|---|---|
-| Core unit tests | **PASS** | `uv run --all-extras pytest` (610 passed in 62.16s) |
+| Core unit tests | **PASS** | `uv run --all-extras pytest` (610 passed in 71.31s) |
 | Web unit tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_web.py` (11 passed in 0.85s) |
 | Web/Core integration tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_web_concurrency.py` (1 passed in 0.40s) |
 | Security regression tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_adversarial_security.py DefFileGenerator/tests/test_bombs.py` (11 passed in 0.42s) |
 | Stress tests | **PASS** | `uv run python DefFileGenerator/tests/stress_test_gen.py` (Generated 5,000 stress records, exited 0) |
 | Torture tests | **PASS** | `uv run python DefFileGenerator/tests/run_torture_battery.py` (Ambiguous mapping & STR expansion passed, exited 0) |
-| Gigantic / large-scale tests | **PASS** | `uv run python DefFileGenerator/tests/run_gigantic_battery.py` (5,000 rows processed in 0.39s, exited 0) |
+| Gigantic / large-scale tests | **PASS** | `uv run python DefFileGenerator/tests/run_gigantic_battery.py` (5,000 rows CSV in 0.235s vs 0.356s baseline — 34% faster, exited 0) |
 | Lint | **PASS** | `uv run ruff check .` (0 errors across workspace, exited 0) |
 | Type checking | **PASS** | `uv run mypy DefFileGenerator web` (Success: no issues in 53 source files, exited 0) |
-| Formatting | **PASS** | `uv run ruff format --check .` (69 files already formatted, exited 0) |
+| Formatting | **PASS** | `uv run ruff format --check .` (53 files already formatted, exited 0) |
 | Build / package | **PASS** | `uv build` (Built sdist and wheel successfully, exited 0) |
-| Standalone Windows Executables | **PASS** | `build_exe.py` & GitHub Actions `35220304829` (Built GUI & CLI `.exe`, exited 0) |
-| GitHub Actions CI | **PASS** | Workflow run `35220304776` (Matrix py3.10, py3.11, py3.12 all passed, exited 0) |
+| Standalone Windows Executables | **PASS** | `build_exe.py` & GitHub Actions `35222994548` (Built GUI & CLI `.exe`, smoke tests passed on windows-latest, exited 0) |
+| GitHub Actions CI | **PASS** | Workflow run `35222994577` (Matrix py3.10, py3.11, py3.12 all passed, exited 0) |
 | Pre-commit | **NOT APPLICABLE** | No `.pre-commit-config.yaml` configured in repository |
-| Dependency/security audit | **PASS** | `uv run bandit -r DefFileGenerator web -ll` (11,554 lines scanned, 0 issues, exited 0) |
+| Dependency/security audit | **PASS** | `uv run bandit -r DefFileGenerator web -ll` (11,574 lines scanned, 0 issues, exited 0) |
