@@ -83,7 +83,7 @@ async def convert_file(
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
     # Sanitize filename to prevent path traversal attack
-    safe_filename = os.path.basename(file.filename)
+    safe_filename = os.path.basename(file.filename.strip())
     if not safe_filename:
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 
@@ -201,7 +201,7 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
 
-    safe_filename = os.path.basename(file.filename)
+    safe_filename = os.path.basename(file.filename.strip())
     if not safe_filename:
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 

@@ -771,7 +771,12 @@ class Extractor:
                 continue
 
             all_keys = list(
-                dict.fromkeys(col for r in buffer for col in r.keys() if col is not None)
+                dict.fromkeys(
+                    str(col)
+                    for r in buffer
+                    for col in r.keys()
+                    if col is not None and str(col).strip() != ""
+                )
             )
 
             col_map = {}
