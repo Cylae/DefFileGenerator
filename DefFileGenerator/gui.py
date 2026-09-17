@@ -17,7 +17,7 @@ import os
 import queue
 import re
 import shutil
-import subprocess
+import subprocess  # nosec: B404
 import sys
 import threading
 import tkinter as tk
@@ -49,7 +49,7 @@ if sys.platform == "win32":
     except Exception:
         try:
             ctypes.windll.user32.SetProcessDPIAware()
-        except Exception:
+        except Exception:  # nosec: B110
             pass
 
 logger = logging.getLogger("DefFileGenerator.gui")
@@ -1200,25 +1200,25 @@ class DefFileGenApp:
     def _open_last_generated_file(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
             if sys.platform == "win32":
-                os.startfile(self.last_generated_file)  # type: ignore[attr-defined]
+                os.startfile(self.last_generated_file)  # type: ignore[attr-defined] # nosec: B606
             elif sys.platform == "darwin":
-                subprocess.run(["/usr/bin/open", self.last_generated_file], check=False)
+                subprocess.run(["/usr/bin/open", self.last_generated_file], check=False)  # nosec: B603
             else:
                 opener = shutil.which("xdg-open")
                 if opener:
-                    subprocess.run([opener, self.last_generated_file], check=False)
+                    subprocess.run([opener, self.last_generated_file], check=False)  # nosec: B603
 
     def _open_output_folder(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
             folder = os.path.dirname(os.path.abspath(self.last_generated_file))
             if sys.platform == "win32":
-                os.startfile(folder)  # type: ignore[attr-defined]
+                os.startfile(folder)  # type: ignore[attr-defined] # nosec: B606
             elif sys.platform == "darwin":
-                subprocess.run(["/usr/bin/open", folder], check=False)
+                subprocess.run(["/usr/bin/open", folder], check=False)  # nosec: B603
             else:
                 opener = shutil.which("xdg-open")
                 if opener:
-                    subprocess.run([opener, folder], check=False)
+                    subprocess.run([opener, folder], check=False)  # nosec: B603
 
     def _copy_csv_to_clipboard(self) -> None:
         if self.last_generated_file and os.path.exists(self.last_generated_file):
