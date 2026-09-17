@@ -202,3 +202,39 @@ bandit -r DefFileGenerator web
 ```powershell
 python -m build
 ```
+
+---
+
+## 7. Standalone Windows Executables (.exe)
+
+The repository provides a complete, automated PyInstaller pipeline to compile self-contained 64-bit Windows executables requiring zero Python runtime on the client machine.
+
+### Targets Built
+1. **`DefFileGenerator-GUI.exe`**: Desktop GUI application (`DefFileGenerator/gui.py`), compiled with `console=False` (windowed, no command prompt popup). Bundles CustomTkinter json themes, Roboto fonts, and darkdetect.
+2. **`deffilegen.exe`**: Command-line binary (`DefFileGenerator/main.py`), compiled with `console=True` for interactive PowerShell and automation pipeline usage.
+
+### PyInstaller Specification (`DefFileGenerator.spec`)
+The spec file manages:
+- **Asset Collection**: Dynamically collects non-code assets and hidden imports for `customtkinter`, `openpyxl`, `pdfplumber`, `pypdfium2`, and `defusedxml` via `PyInstaller.utils.hooks.collect_all`.
+- **Target Selection**: Respects the `BUILD_TARGET` environment variable (`all`, `gui`, or `cli`).
+- **Binary Trimming**: Excludes unnecessary heavyweight scientific packages (`matplotlib`, `scipy`, `pandas`, `IPython`) to minimize binary footprint and startup latency.
+
+### One-Click Local Compilation
+Developers can build both executables locally on Windows:
+```cmd
+# Windows batch launcher (detects .venv or system Python):
+build_exe.bat
+
+# Python build orchestrator:
+python build_exe.py --target all --zip
+```
+The orchestrator:
+1. Cleans `build/` and `dist/` directories.
+2. Invokes PyInstaller with `DefFileGenerator.spec`.
+3. Runs automated smoke tests (`deffilegen.exe --version` and size checks).
+4. Generates `dist/SHA256SUMS.txt` checksum file.
+5. Packages a distribution archive: `dist/DefFileGenerator-v{version}-windows-x64.zip`.
+
+### CI/CD Release Automation (`.github/workflows/build-exe.yml`)
+- **Automated Workflow Artifacts**: On every push to `main`, GitHub Actions compiles the executables on `windows-latest`, validates CLI execution, and uploads the `.exe` and `.zip` artifacts (14-day retention).
+- **Automated GitHub Releases**: On every tag matching `v*` (e.g., `git tag v0.2.2 && git push --tags`), the workflow automatically drafts and publishes a GitHub Release with the standalone `.exe` binaries, zip bundle, and SHA-256 checksums.

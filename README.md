@@ -80,6 +80,29 @@ python -m pip install -e ".[dev,web]"
 
 The wheel includes the `web` package and its static frontend assets; CI builds and inspects the wheel to enforce that packaging contract.
 
+## Standalone Windows Executables (.exe)
+
+For users who do not wish to install Python or manage dependencies, pre-compiled standalone 64-bit Windows executables are available:
+
+- **`DefFileGenerator-GUI.exe`**: Native Windows 11 desktop application with dark/light themes, real-time logging, and register preview. Runs windowed without a console window.
+- **`deffilegen.exe`**: Portable, high-performance command-line binary.
+
+### Automated GitHub Actions Releases
+Executables are automatically compiled and verified on Windows runners via GitHub Actions:
+- **Nightly / Continuous**: Every push to `main` produces downloadable `.exe` artifacts in the GitHub Actions workflow run.
+- **Releases**: Pushing a version tag (`v*`) automatically creates a GitHub Release with pre-packaged zip archives and SHA-256 checksums.
+
+### Compiling Locally
+To compile the standalone `.exe` binaries locally on Windows:
+```cmd
+# Double-click build_exe.bat or run via command line:
+build_exe.bat
+
+# Or invoke the Python build orchestrator directly:
+python build_exe.py --target all --zip
+```
+Binaries and release bundles are generated in the `dist/` directory.
+
 ## CLI
 
 The installed entry point is `deffilegen`.

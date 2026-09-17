@@ -9,11 +9,24 @@ Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will
 2. Extract addresses, names, data types, units, etc.
 3. Generate a ready-to-use WebdynSunPM definition file
 
-## Installation
+## Installation & Quick Options
 
+### Option A: Standalone Windows Executable (No Python Required)
+If you are on Windows, you can use the pre-compiled standalone executables:
+- Download the latest `DefFileGenerator-vX.X.X-windows-x64.zip` or `.exe` from the [Releases](https://github.com/Cylae/DefFileGenerator/releases) or GitHub Actions Artifacts tab.
+- Double-click **`DefFileGenerator-GUI.exe`** to launch the Windows 11 desktop application.
+- Or use **`deffilegen.exe`** directly in PowerShell or Command Prompt.
+
+### Option B: Python Installation
 ```bash
-# Install required dependencies
-pip install pandas openpyxl pdfplumber
+# Core CLI / library
+pip install -e .
+
+# With Windows Desktop GUI (CustomTkinter)
+pip install -e ".[gui]"
+
+# With FastAPI Web interface
+pip install -e ".[web]"
 ```
 
 ## Basic Usage

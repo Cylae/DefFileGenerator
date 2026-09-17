@@ -37,6 +37,9 @@ dev = [
   "mypy>=1.10",
   "bandit>=1.7",
 ]
+build = [
+  "pyinstaller>=6.0",
+]
 
 [project.scripts]
 deffilegen = "DefFileGenerator.main:main"

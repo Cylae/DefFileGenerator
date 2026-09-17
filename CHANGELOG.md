@@ -8,6 +8,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Added
 
+- **Standalone Windows Executables (.exe).** Added reproducible PyInstaller specification (`DefFileGenerator.spec`), build orchestration script (`build_exe.py`), and one-click Windows launcher (`build_exe.bat`) compiling `DefFileGenerator-GUI.exe` (windowed desktop UI) and `deffilegen.exe` (portable CLI).
+- **Automated GitHub Actions Build & Release Workflow (`.github/workflows/build-exe.yml`).** Automatically compiles and smoke-tests Windows binaries on `windows-latest` runners on push to `main` (published as downloadable workflow artifacts) and on release tags `v*` (published as GitHub Release assets with zip bundles and SHA-256 checksums).
+- **Build System Unit Tests (`DefFileGenerator/tests/test_build_exe.py`).** Added automated test coverage validating spec targets, package collections, CLI argument parsing, SHA-256 checksum generation, and workflow syntax.
 - **Developer Onboarding Manual (`DEVELOPER_GUIDE.md`).** Detailed technical documentation describing system architecture, data pipeline, WebdynSunPM domain rules, security invariants, developer extension recipes, and validation tooling.
 - **Clarity & Efficiency Benchmark Suite (`DefFileGenerator/tests/test_clarity_and_efficiency.py`).** 9 automated tests verifying domain constants, pre-compiled regex tables, frozen keyword sets, documentation coverage, and sub-millisecond type normalization performance.
 - **Domain Constants in `DefFileGenerator/def_gen.py`.** Added named constants for Modbus function codes (`MODBUS_COIL`, `MODBUS_DISCRETE`, `MODBUS_HOLDING`, `MODBUS_INPUT`), address boundaries (`MIN_MODBUS_ADDRESS`, `MAX_MODBUS_ADDRESS`), and standard actions (`ACTION_WRITE_ONLY`, `ACTION_READ_ONLY`).

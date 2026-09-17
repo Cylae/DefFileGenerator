@@ -1,0 +1,80 @@
+name: Build Windows Executables
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Binary target to compile'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - gui
+          - cli
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-exe-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows-exe:
+    name: Compile Windows Executables (.exe)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Upgrade pip and install build dependencies
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[gui,web,build]"
+
+      - name: Build standalone executables
+        shell: bash
+        run: |
+          TARGET="${{ github.event.inputs.target || 'all' }}"
+          python build_exe.py --target "$TARGET" --zip
+
+      - name: Verify CLI executable functionality
+        shell: bash
+        run: |
+          if [ -f "dist/deffilegen.exe" ]; then
+            echo "Running smoke test on deffilegen.exe..."
+            ./dist/deffilegen.exe --version
+            ./dist/deffilegen.exe --help
+          fi
+
+      - name: Upload Windows Executable Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: DefFileGenerator-Windows-x64-${{ github.sha }}
+          path: |
+            dist/*.exe
+            dist/*.zip
+            dist/SHA256SUMS.txt
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Publish GitHub Release (on version tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.exe
+            dist/*.zip
+            dist/SHA256SUMS.txt
+          generate_release_notes: true
