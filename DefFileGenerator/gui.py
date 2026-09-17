@@ -24,6 +24,9 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from typing import Any
 
+# Ensure parent directory is in sys.path to support direct and packaged executions
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from DefFileGenerator.def_gen import (
     Generator,
     GeneratorConfig,
@@ -1672,6 +1675,17 @@ class DefFileGenApp:
 
 def main() -> None:
     """Entry point for Windows 11 Desktop Application."""
+    if len(sys.argv) > 1 and sys.argv[1] in ("--help", "-h"):
+        print("WebdynSunPM Definition Generator - Windows 11 Desktop Application")
+        print("Usage: deffilegen-gui [options]")
+        print("Options:")
+        print("  -h, --help     Show this help message and exit")
+        print("  --version      Show program's version number and exit")
+        return
+    if len(sys.argv) > 1 and sys.argv[1] == "--version":
+        print("deffilegen-gui 0.2.1")
+        return
+
     if HAS_CUSTOMTKINTER:
         root = ctk.CTk()
     else:

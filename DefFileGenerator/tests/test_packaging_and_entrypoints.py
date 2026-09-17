@@ -95,6 +95,16 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
             )
             self.assertIn("deffilegen 0.2.1", res.stdout)
 
+    def test_gui_direct_script_entrypoint(self):
+        gui_path = os.path.join(REPO_ROOT, "DefFileGenerator", "gui.py")
+        res = subprocess.run(
+            [sys.executable, gui_path, "--version"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        self.assertIn("deffilegen-gui 0.2.1", res.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -80,10 +80,37 @@ def check_pyinstaller() -> None:
     """Ensure PyInstaller is installed and available in the current environment."""
     try:
         import PyInstaller  # noqa: F401 # type: ignore[import-untyped]
+
+        return
     except ImportError:
-        print("[ERROR] PyInstaller is not installed in the current Python environment.")
-        print('   Please install it via: pip install pyinstaller or pip install -e ".[build]"')
-        sys.exit(1)
+        pass
+
+    # Check if a virtual environment with PyInstaller exists in .venv
+    venv_python = (
+        REPO_ROOT / ".venv" / "Scripts" / "python.exe"
+        if sys.platform == "win32"
+        else REPO_ROOT / ".venv" / "bin" / "python"
+    )
+    if venv_python.is_file() and str(venv_python) != sys.executable:
+        try:
+            res = subprocess.run(  # nosec: B603
+                [str(venv_python), "-c", "import PyInstaller"],
+                capture_output=True,
+                check=False,
+            )
+            if res.returncode == 0:
+                print(f"[INFO] PyInstaller detected in local virtual environment ({venv_python}).")
+                print("   Delegating build execution...")
+                cmd = [str(venv_python), str(Path(__file__).resolve())] + sys.argv[1:]
+                sub_res = subprocess.run(cmd)  # nosec: B603
+                sys.exit(sub_res.returncode)
+        except Exception:
+            pass
+
+    print("[ERROR] PyInstaller is not installed in the current Python environment.")
+    print('   Please install it via: pip install pyinstaller or pip install -e ".[build]"')
+    print("   Or run directly via uv: uv run python build_exe.py")
+    sys.exit(1)
 
 
 def run_pyinstaller(target: str) -> None:

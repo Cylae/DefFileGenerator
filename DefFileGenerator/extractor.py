@@ -845,15 +845,20 @@ class Extractor:
                     f_io = io.StringIO(text)
                     dict_reader = csv.DictReader(f_io, delimiter=delimiter)
                     for d_row in dict_reader:
-                        if any(val.strip() for val in d_row.values() if val is not None):
-                            yield dict(d_row)
+                        row_has_data = any(
+                            (v.strip() if isinstance(v, str) else any(str(x).strip() for x in v))
+                            for k, v in d_row.items()
+                            if k is not None and v is not None
+                        )
+                        if row_has_data:
+                            yield {str(k): v for k, v in d_row.items() if k is not None}
                 except OSError as e:
                     logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
                 except csv.Error as e:
                     logging.error(f"CSV Parsing Error in {filepath}: {e}")
                 except UnicodeError as e:
                     logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
-                except (ValueError, TypeError) as e:
+                except (ValueError, TypeError, AttributeError) as e:
                     logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
 
             yield csv_table_generator()

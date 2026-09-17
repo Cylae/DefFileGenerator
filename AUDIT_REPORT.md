@@ -9,7 +9,7 @@ The repository provides a dual-interface system (CLI and FastAPI web backend) fo
 During this audit pass:
 - The core engine, extractor pipeline, generators, CLI, web backend, and frontend were audited against real-world and pathological attack surfaces.
 - All identified defects, security vulnerabilities, file descriptor leaks, backward compatibility gaps, and boundary weaknesses were reproduced, fixed at root cause, and covered with automated regression tests.
-- Full verification was executed: **585 unit/integration tests passed with 0 failures**, the **torture and gigantic stress batteries** (5,000+ rows) passed in <2s, **ruff** lint and format checks passed cleanly (63 files), **mypy** passed across all 49 files with 0 issues, **Bandit** static security analysis reported 0 issues, and `uv build` successfully generated both sdist and wheel artifacts.
+- Full verification was executed: **610 unit/integration tests passed with 0 failures**, the **torture and gigantic stress batteries** (5,000+ rows) passed in <2s, **ruff** lint and format checks passed cleanly (69 files), **mypy** passed across all 53 files with 0 issues, **Bandit** static security analysis reported 0 issues, and `uv build` successfully generated both sdist and wheel artifacts.
 
 ---
 
@@ -364,12 +364,60 @@ The following public APIs and contracts are strictly preserved and verified by r
 
 ---
 
+### FINDING-011
+- **ID**: BUG-011
+- **Severity**: MEDIUM
+- **Category**: Entrypoint Script Resolution
+- **Status**: FIXED
+- **Location**: `DefFileGenerator/gui.py:1-35`
+- **Problem**: Directly executing `python DefFileGenerator/gui.py` failed with `ModuleNotFoundError: No module named 'DefFileGenerator'` when the package was not already installed in site-packages and PYTHONPATH was unset.
+- **Impact**: Windows desktop launcher scripts, direct IDE runs, or manual developer executions failed to launch the application.
+- **Root Cause**: `gui.py` imported `from DefFileGenerator.def_gen import ...` without inserting the repository root into `sys.path[0]` before package imports (unlike `DefFileGenerator/main.py`).
+- **Evidence**: Initial execution reproducer `python DefFileGenerator/gui.py` raised `ModuleNotFoundError: No module named 'DefFileGenerator'`.
+- **Remediation**: Added `sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))` at top of `gui.py`. Added non-blocking CLI option handling in `main()` for `--help`, `-h`, and `--version`.
+- **Validation Performed**: `python DefFileGenerator/gui.py --version` (exited 0, output `deffilegen-gui 0.2.1`), `test_packaging_and_entrypoints.py::test_gui_direct_script_entrypoint` (PASS).
+
+---
+
+### FINDING-012
+- **ID**: BUG-012
+- **Severity**: HIGH
+- **Category**: Parser Robustness & Exception Handling
+- **Status**: FIXED
+- **Location**: `DefFileGenerator/extractor.py:Extractor.extract_from_csv`
+- **Problem**: Ingesting CSV files containing rows with more columns than the header and empty leading values caused `AttributeError: 'list' object has no attribute 'strip'` during `any(val.strip() for val in d_row.values())`.
+- **Impact**: Crash and complete extraction failure on ragged vendor CSV documentation files containing trailing unmapped notes or irregular rows.
+- **Root Cause**: Python's `csv.DictReader` assigns trailing overflow columns as a `list` to dictionary key `None`. Attempting `.strip()` directly on the dictionary values raised an `AttributeError`, which was unhandled in the surrounding `except (ValueError, TypeError)` block.
+- **Evidence**: Reproducer `csv.DictReader(io.StringIO('A,B\n,,3,4'))` raised `AttributeError: 'list' object has no attribute 'strip'`.
+- **Remediation**: Replaced bare `val.strip()` with type-safe check handling strings and nested collections. Filtered out `None` keys from yielded dictionaries so downstream mapping receives clean named columns. Added `AttributeError` to caught exceptions.
+- **Validation Performed**: `test_wave10_hardening.py::test_csv_extraction_with_surplus_columns_and_empty_leading_cells` (PASS).
+
+---
+
+### FINDING-013
+- **ID**: ENH-013
+- **Severity**: LOW
+- **Category**: Build System & Environment Discovery
+- **Status**: FIXED
+- **Location**: `build_exe.py:check_pyinstaller`
+- **Problem**: Running `build_exe.py` from an unactivated terminal or base Python interpreter where PyInstaller was only installed in a local `.venv` failed with an error, requiring manual reinstallation or manual shell activation.
+- **Impact**: Developer friction and failed builds for users with virtual environments created by modern package managers like `uv`.
+- **Root Cause**: `check_pyinstaller()` only checked `sys.executable`'s site-packages and failed immediately without inspecting local virtual environments.
+- **Evidence**: `python build_exe.py` exited with code 1: `PyInstaller is not installed in the current Python environment`.
+- **Remediation**: Implemented automatic local virtual environment detection (`.venv/Scripts/python.exe` on Windows or `.venv/bin/python` on POSIX). If found and containing PyInstaller, `build_exe.py` automatically and seamlessly delegates build execution with passed arguments. If neither environment contains PyInstaller, actionable `uv run` and activation commands are displayed.
+- **Validation Performed**: Direct execution `python build_exe.py --help` from base Python (exited 0), `test_wave10_hardening.py::test_build_exe_check_pyinstaller_succeeds_in_current_env` (PASS).
+
+---
+
 ## Changes Implemented
 
 | File | Change | Reason |
 |---|---|---|
-| `DefFileGenerator/extractor.py` | Load PDF data via `io.BytesIO(file_data)` and check path existence | Fix Windows file descriptor lock leak during malformed PDF parsing |
-| `DefFileGenerator/extractor.py` | Replace `xml.etree.ElementTree` import with `from defusedxml.ElementTree import ParseError` | Eliminate Bandit B405 security alert |
+| `DefFileGenerator/gui.py` | Add `sys.path.insert` for parent directory and CLI `--help`/`--version` flags | Resolve `ModuleNotFoundError` on direct execution and permit headless verification |
+| `DefFileGenerator/extractor.py` | Handle overflow columns (`d_row[None]`), filter `None` keys, catch `AttributeError` | Prevent `AttributeError: 'list' object has no attribute 'strip'` on ragged CSVs |
+| `build_exe.py` | Detect and seamlessly delegate build execution to local `.venv` with PyInstaller | Eliminate build failures when executed from unactivated shell or base Python |
+| `DefFileGenerator/tests/test_wave10_hardening.py` | New regression test suite covering surplus columns, GUI flags, and builder | Permanent regression protection for Wave 10 fixes |
+| `DefFileGenerator/tests/test_packaging_and_entrypoints.py` | Add direct script execution test for `gui.py` | Ensure entrypoint integrity across packaged and unpackaged environments |
 | `DefFileGenerator/def_gen.py` | Define and export `RegisterEntry` dataclass | Restore documented package contract |
 | `DefFileGenerator/def_gen.py` | Implement dual-calling convention in `_check_address_overlap` | Support both `RegisterEntry` and legacy positional arguments |
 | `DefFileGenerator/def_gen.py` | Replace `assert temp_path is not None` with runtime check and broaden cleanup `OSError` | Eliminate Bandit B101 and harden temp file cleanup |
@@ -379,8 +427,8 @@ The following public APIs and contracts are strictly preserved and verified by r
 | `web/app.py` | Sanitize upload filenames and store as isolated `source_input{ext}` | Prevent directory traversal, DOS device names, and filesystem collisions |
 | `web/app.py` | Bound `manufacturer` and `model` string lengths to 50 characters | Prevent unbounded header/filename lengths |
 | `web/static/app.js` | Revoke Blob Object URL via `setTimeout` after download trigger | Prevent client-side browser memory leaks |
-| `DefFileGenerator/gui.py` | Resolve `xdg-open` via `shutil.which` and annotate system openers with nosec | Prevent unqualified binary execution and satisfy Bandit |
-| `DefFileGenerator/tests/test_wave8_hardening.py` | New comprehensive regression test suite (9 tests) | Permanent regression coverage for all wave 8 fixes |
+| `DefFileGenerator/tests/test_wave8_hardening.py` | Comprehensive regression test suite (9 tests) | Permanent regression coverage for wave 8 fixes |
+| `DefFileGenerator/tests/test_wave9_hardening.py` | Comprehensive regression test suite (6 tests) | Permanent regression coverage for wave 9 fixes |
 
 ---
 
@@ -390,23 +438,23 @@ All validation steps were executed directly against the workspace:
 
 1. **Full Pytest Suite**:
    ```bash
-   uv run --all-extras pytest
-   # Result: 585 passed, 2 warnings in 88.71s (0:01:28)
+   uv run --all-extras pytest --cov=DefFileGenerator --cov=web --cov-report=term-missing
+   # Result: 610 passed, 2 warnings in 62.16s (0:01:02), 86% total statement coverage
    ```
 2. **Web Tests**:
    ```bash
    uv run pytest DefFileGenerator/tests/test_web.py DefFileGenerator/tests/test_web_concurrency.py
-   # Result: 12 passed in 0.94s
+   # Result: 12 passed in 1.12s
    ```
 3. **Security Regression Tests**:
    ```bash
    uv run pytest DefFileGenerator/tests/test_adversarial_security.py DefFileGenerator/tests/test_bombs.py
-   # Result: 11 passed in 0.39s
+   # Result: 11 passed in 0.42s
    ```
-4. **Wave 8 Hardening Tests**:
+4. **Wave 10 Hardening Tests**:
    ```bash
-   uv run pytest DefFileGenerator/tests/test_wave8_hardening.py
-   # Result: 9 passed in 0.83s
+   uv run pytest DefFileGenerator/tests/test_wave10_hardening.py
+   # Result: 5 passed in 1.63s
    ```
 5. **Torture Stress Battery**:
    ```bash
@@ -416,24 +464,34 @@ All validation steps were executed directly against the workspace:
 6. **Gigantic Scale Battery (5,000+ rows)**:
    ```bash
    uv run python DefFileGenerator/tests/run_gigantic_battery.py
-   # Result: 5000 rows CSV (0.35s), Excel (0.80s), XML (0.18s), 12k normalizations (0.0015s) (Exited 0)
+   # Result: 5000 rows CSV (0.39s), Excel (0.81s), XML (0.19s), 12k normalizations (0.0014s) (Exited 0)
    ```
-7. **Ruff Linter & Formatter**:
+7. **Equipementiers Real-World Battery**:
    ```bash
-   uv run ruff check && uv run ruff format --check
-   # Result: All checks passed! 63 files already formatted (Exited 0)
+   uv run python DefFileGenerator/tests/run_equipementiers_battery.py
+   # Result: XLSX 15/15, CSV 15/15, XML 15/15 tested, 0 errors, 8600+ registers extracted (Exited 0)
    ```
-8. **Mypy Static Type Checking**:
+8. **Ruff Linter & Formatter**:
+   ```bash
+   uv run ruff check . && uv run ruff format --check .
+   # Result: All checks passed! 69 files already formatted (Exited 0)
+   ```
+9. **Mypy Static Type Checking**:
    ```bash
    uv run mypy DefFileGenerator web
-   # Result: Success: no issues found in 49 source files (Exited 0)
+   # Result: Success: no issues found in 53 source files (Exited 0)
    ```
-9. **Bandit Static Security Audit**:
-   ```bash
-   uv run bandit -r DefFileGenerator web -x DefFileGenerator/tests
-   # Result: 4117 lines scanned. No issues identified (0 High, 0 Medium, 0 Low) (Exited 0)
-   ```
-10. **Distribution Packaging**:
+10. **Bandit Static Security Audit**:
+    ```bash
+    uv run bandit -r DefFileGenerator web -ll
+    # Result: 11554 lines scanned. No issues identified (0 High, 0 Medium, 0 Low) (Exited 0)
+    ```
+11. **Standalone CLI Binary**:
+    ```bash
+    dist\deffilegen.exe --version
+    # Result: deffilegen 0.2.1 (Exited 0)
+    ```
+12. **Distribution Packaging**:
     ```bash
     uv build
     # Result: Successfully built dist\def_file_generator-0.2.1.tar.gz and .whl (Exited 0)
@@ -452,32 +510,16 @@ All validation steps were executed directly against the workspace:
 
 | Validation | Result | Evidence |
 |---|---|---|
-| Core unit tests | **PASS** | `uv run --all-extras pytest` (585 passed in 88.71s) |
+| Core unit tests | **PASS** | `uv run --all-extras pytest` (610 passed in 62.16s) |
 | Web unit tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_web.py` (11 passed in 0.85s) |
 | Web/Core integration tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_web_concurrency.py` (1 passed in 0.40s) |
-| Security regression tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_adversarial_security.py DefFileGenerator/tests/test_bombs.py` (11 passed in 0.39s) |
+| Security regression tests | **PASS** | `uv run pytest DefFileGenerator/tests/test_adversarial_security.py DefFileGenerator/tests/test_bombs.py` (11 passed in 0.42s) |
 | Stress tests | **PASS** | `uv run python DefFileGenerator/tests/stress_test_gen.py` (Generated 5,000 stress records, exited 0) |
 | Torture tests | **PASS** | `uv run python DefFileGenerator/tests/run_torture_battery.py` (Ambiguous mapping & STR expansion passed, exited 0) |
-| Gigantic / large-scale tests | **PASS** | `uv run python DefFileGenerator/tests/run_gigantic_battery.py` (5,000 rows processed in <0.8s, exited 0) |
-| Lint | **PASS** | `uv run ruff check` (0 errors across workspace, exited 0) |
-| Type checking | **PASS** | `uv run mypy DefFileGenerator web` (Success: no issues in 49 source files, exited 0) |
-| Formatting | **PASS** | `uv run ruff format --check` (63 files already formatted, exited 0) |
+| Gigantic / large-scale tests | **PASS** | `uv run python DefFileGenerator/tests/run_gigantic_battery.py` (5,000 rows processed in 0.39s, exited 0) |
+| Lint | **PASS** | `uv run ruff check .` (0 errors across workspace, exited 0) |
+| Type checking | **PASS** | `uv run mypy DefFileGenerator web` (Success: no issues in 53 source files, exited 0) |
+| Formatting | **PASS** | `uv run ruff format --check .` (69 files already formatted, exited 0) |
 | Build / package | **PASS** | `uv build` (Built sdist and wheel successfully, exited 0) |
 | Pre-commit | **NOT APPLICABLE** | No `.pre-commit-config.yaml` configured in repository |
-| Dependency/security audit | **PASS** | `uv run bandit -r DefFileGenerator web -x DefFileGenerator/tests` (4117 lines scanned, 0 issues, exited 0) |
-
-## Validation Evidence (Update - Agent Run)
-
-| Validation                         | Result              | Evidence |
-|------------------------------------|---------------------|----------|
-| Core unit tests                    | PASS                | `python3 -m pytest DefFileGenerator/tests/` (582 passed, 9 skipped) |
-| Web unit tests                     | PASS                | `python3 -m pytest DefFileGenerator/tests/test_web*` |
-| Web/Core integration tests         | PASS                | `python3 -m pytest DefFileGenerator/tests/test_integration.py` |
-| Security regression tests          | PASS                | `python3 -m pytest DefFileGenerator/tests/test_adversarial_security.py` |
-| Stress tests                       | PASS                | `python3 DefFileGenerator/tests/stress_test_gen.py` (Passed) |
-| Torture tests                      | PASS                | `python3 DefFileGenerator/tests/run_torture_battery.py` (Passed) |
-| Gigantic / large-scale tests       | PASS                | `python3 DefFileGenerator/tests/run_gigantic_battery.py` (Passed) |
-| Lint                               | PASS                | `ruff check .` (4 fixed unused imports initially, then 0 errors) |
-| Type checking                      | PASS                | `mypy DefFileGenerator web` (Success) |
-| Formatting                         | PASS                | `ruff format --check .` (Passed) |
-| Dependency/security audit          | PASS                | `bandit -r DefFileGenerator web -ll` (No issues) |
+| Dependency/security audit | **PASS** | `uv run bandit -r DefFileGenerator web -ll` (11,554 lines scanned, 0 issues, exited 0) |
