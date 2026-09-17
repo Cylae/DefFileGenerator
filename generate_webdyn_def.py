@@ -7,7 +7,6 @@ using the DefFileGenerator package.
 import logging
 import os
 import sys
-from dataclasses import dataclass
 from typing import Optional, Union
 
 from DefFileGenerator.def_gen import (
