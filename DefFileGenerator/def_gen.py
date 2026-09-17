@@ -108,7 +108,12 @@ class Generator:
         s = str(val)
         if not s:
             return ""
-        s = "".join(ch for ch in s if ord(ch) in (9, 10, 13) or (ord(ch) >= 32 and ord(ch) != 127))
+        s = "".join(
+            ch
+            for ch in s
+            if (ord(ch) in (9, 10, 13) or (ord(ch) >= 32 and ord(ch) != 127))
+            and not (0xD800 <= ord(ch) <= 0xDFFF)
+        )
         if not s:
             return ""
 
@@ -268,21 +273,26 @@ class Generator:
         addr_part = re.sub(r"(?<=\d),(?=\d{3}(?!\d))", "", addr_part)
         if not addr_part:
             return ""
-        if addr_part.lower().startswith("0x"):
+        is_neg = addr_part.startswith("-")
+        clean_addr = addr_part[1:] if is_neg else addr_part
+
+        if clean_addr.lower().startswith("0x"):
             try:
-                return str(int(addr_part, 16))
+                val = int(clean_addr, 16)
+                return str(-val if is_neg else val)
             except ValueError:
                 return addr_part
-        elif addr_part.lower().endswith("h"):
+        elif clean_addr.lower().endswith("h"):
             try:
-                return str(int(addr_part[:-1], 16))
+                val = int(clean_addr[:-1], 16)
+                return str(-val if is_neg else val)
             except ValueError:
                 return addr_part
         try:
             return str(int(addr_part, 0))
         except ValueError:
             pass
-        if re.match(r"^[0-9A-Fa-f]+$", addr_part):
+        if re.match(r"^-?[0-9A-Fa-f]+$", addr_part):
             try:
                 return str(int(addr_part, 16))
             except ValueError:
