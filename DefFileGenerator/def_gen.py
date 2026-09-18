@@ -633,7 +633,7 @@ class Generator:
         return _normalize_address_cached(s)
 
     @staticmethod
-    def validate_address(address: str, dtype: str, strict: bool = True) -> bool:
+    def validate_address(address: Any, dtype: str, strict: bool = True) -> bool:
         """
         Validates address syntax and checks Modbus address boundary (0-65535).
 
@@ -643,29 +643,32 @@ class Generator:
             - BITS: compound address with bit offset and length ("40001_0_16")
 
         Args:
-            address: Address string to validate.
+            address: Address string or int to validate.
             dtype: Associated normalized data type.
             strict: If True, out-of-range addresses (not in 0..65535) fail validation.
 
         Returns:
             bool: True if the address is valid, False otherwise.
         """
+        if address is None:
+            return False
+        addr_str = str(address).strip()
         dtype_upper = dtype.upper()
         if RE_TYPE_STR_CONV.match(dtype_upper):
             dtype_upper = "STRING"
 
         if dtype_upper == "STRING":
-            is_valid_format = RE_ADDR_STRING.match(address) is not None
+            is_valid_format = RE_ADDR_STRING.match(addr_str) is not None
         elif dtype_upper == "BITS":
-            is_valid_format = RE_ADDR_BITS.match(address) is not None
+            is_valid_format = RE_ADDR_BITS.match(addr_str) is not None
         else:
-            is_valid_format = RE_ADDR_INT.match(address) is not None
+            is_valid_format = RE_ADDR_INT.match(addr_str) is not None
 
         if not is_valid_format:
             return False
 
         try:
-            parts = address.split("_")
+            parts = addr_str.split("_")
             base_addr_str = Generator.normalize_address_val(parts[0])
             base_addr = int(base_addr_str)
             if not (MIN_MODBUS_ADDRESS <= base_addr <= MAX_MODBUS_ADDRESS):
@@ -728,11 +731,19 @@ class Generator:
             return 2
         elif RE_COUNT_64.match(dtype_upper):
             return 4
-        elif dtype_upper == "STRING":
+        elif dtype_upper == "STRING" or dtype_upper.startswith("STR"):
             try:
-                return math.ceil(int(address.split("_")[1]) / 2)
+                if "_" in address:
+                    return math.ceil(int(address.split("_")[1]) / 2)
             except (IndexError, ValueError):
-                return 0
+                pass
+            match_str = RE_TYPE_STR_CONV.match(dtype_upper)
+            if match_str:
+                try:
+                    return math.ceil(int(match_str.group(1)) / 2)
+                except ValueError:
+                    pass
+            return 0
         return 1
 
     @staticmethod
