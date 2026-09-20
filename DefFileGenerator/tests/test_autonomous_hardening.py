@@ -62,6 +62,32 @@ class TestAutonomousHardening(unittest.TestCase):
         )
         self.assertEqual(res_v.status_code, 400)
 
+    def test_web_convert_unhandled_exception_handling(self):
+        client = TestClient(app)
+        # Upload a CSV that causes an unhandled error inside run_generator by monkeypatching or sending unexpected input
+        from unittest.mock import patch
+
+        csv_data = b"Address,Name,Type\n40001,Test,U16\n"
+        with patch("web.app.run_generator", side_effect=RuntimeError("Simulated engine failure")):
+            res = client.post(
+                "/api/convert",
+                files={"file": ("test.csv", csv_data, "text/csv")},
+                data={"manufacturer": "Test", "model": "Test"},
+            )
+            self.assertEqual(res.status_code, 400)
+            self.assertIn("Core generator processing failed", res.json()["detail"])
+
+    def test_validate_address_extreme_hex_and_octal(self):
+        self.assertEqual(Generator.normalize_address_val("0x0"), "0")
+        self.assertEqual(Generator.normalize_address_val("0x10000"), "65536")
+        self.assertEqual(Generator.normalize_address_val("0o777"), "511")
+
+    def test_sanitize_csv_field_unicode_control_characters(self):
+        raw = "\ud800=1+1"
+        sanit = Generator.sanitize_csv_field(raw)
+        self.assertNotIn("\ud800", sanit)
+        self.assertTrue(sanit.startswith("'"))
+
 
 if __name__ == "__main__":
     unittest.main()
