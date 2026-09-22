@@ -368,6 +368,22 @@ class TestAdversarialAndEdgeCaseExpansion(unittest.TestCase):
         self.assertFalse(Generator.validate_address("1000_8_9", "BITS"))
         self.assertFalse(Generator.validate_address("1000_0_0", "BITS"))
 
+    def test_apply_address_offset_zero_and_empty(self):
+        from DefFileGenerator.def_gen import Generator
+
+        self.assertEqual(Generator.apply_address_offset("", 10), "")
+        self.assertEqual(Generator.apply_address_offset(None, 10), "")
+        self.assertEqual(Generator.apply_address_offset("40001", 0), "40001")
+        self.assertEqual(Generator.apply_address_offset("0x1000", 0), "4096")
+
+    def test_normalize_type_whitespace_and_cases(self):
+        from DefFileGenerator.def_gen import Generator
+
+        self.assertEqual(Generator.normalize_type("  u1 6  "), "U16")
+        self.assertEqual(Generator.normalize_type("INT32S"), "I32")
+        self.assertEqual(Generator.normalize_type(""), "U16")
+        self.assertEqual(Generator.normalize_type(None), "U16")
+
 
 if __name__ == "__main__":
     unittest.main()
