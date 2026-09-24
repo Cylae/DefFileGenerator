@@ -271,6 +271,12 @@ class WebdynDefConfig:
     address_offset: int = 0
     strict_validation: bool = True
 
+    def __post_init__(self) -> None:
+        if self.input_file is not None:
+            self.input_file = str(self.input_file)
+        if self.output_file is not None:
+            self.output_file = str(self.output_file)
+
 
 @dataclass
 class CSVHeaderConfig:
@@ -308,6 +314,12 @@ class GeneratorConfig:
     template: bool = False
     template_mode: str = "input"  # 'input' or 'definition'
     address_offset: int = 0
+
+    def __post_init__(self) -> None:
+        if self.input_file is not None:
+            self.input_file = str(self.input_file)
+        if self.output is not None:
+            self.output = str(self.output)
 
 
 @dataclass

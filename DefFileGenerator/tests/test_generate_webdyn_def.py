@@ -84,6 +84,40 @@ class TestGenerateWebdynDef(unittest.TestCase):
             if os.path.exists(bad_format_file):
                 os.remove(bad_format_file)
 
+    def test_generate_webdyn_definition_no_raw_data_extracted(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Mock extract_from_csv to yield empty generator
+        with patch(
+            "DefFileGenerator.extractor.Extractor.extract_from_csv", return_value=(x for x in [])
+        ):
+            success = generate_webdyn_definition(
+                input_file=self.input_csv,
+                output_file=self.output_csv,
+                manufacturer="TestMfg",
+                model="TestModel",
+            )
+            self.assertFalse(success)
+
+    def test_generate_webdyn_definition_unknown_extension(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Create dummy file with .unknown extension
+        unk_file = "test_unk.unknown"
+        with open(unk_file, "w") as f:
+            f.write("content")
+        try:
+            success = generate_webdyn_definition(
+                input_file=unk_file,
+                output_file=self.output_csv,
+                manufacturer="TestMfg",
+                model="TestModel",
+            )
+            self.assertFalse(success)
+        finally:
+            if os.path.exists(unk_file):
+                os.remove(unk_file)
+
     def test_generate_webdyn_definition_empty_input(self):
         from generate_webdyn_def import generate_webdyn_definition
 
@@ -145,6 +179,121 @@ class TestGenerateWebdynDef(unittest.TestCase):
         finally:
             if os.path.exists(overlap_csv):
                 os.remove(overlap_csv)
+
+    def test_generate_webdyn_definition_no_valid_registers_after_mapping(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Mock map_and_clean to yield empty generator
+        with patch(
+            "DefFileGenerator.extractor.Extractor.map_and_clean", return_value=(x for x in [])
+        ):
+            success = generate_webdyn_definition(
+                input_file=self.input_csv,
+                output_file=self.output_csv,
+                manufacturer="TestMfg",
+                model="TestModel",
+            )
+            self.assertFalse(success)
+
+    def test_generate_webdyn_definition_validation_return_false(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Mock Generator.validate_csv to return False
+        with patch("DefFileGenerator.def_gen.Generator.validate_csv", return_value=False):
+            success = generate_webdyn_definition(
+                input_file=self.input_csv,
+                output_file=self.output_csv,
+                manufacturer="TestMfg",
+                model="TestModel",
+            )
+            self.assertFalse(success)
+
+    def test_generate_webdyn_definition_missing_required_params(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Calling with string input_file without output_file, manufacturer, or model
+        success = generate_webdyn_definition(input_file=self.input_csv)
+        self.assertFalse(success)
+
+    def test_generate_webdyn_definition_with_webdyn_def_config(self):
+        from DefFileGenerator.def_gen import WebdynDefConfig
+        from generate_webdyn_def import generate_webdyn_definition
+
+        cfg = WebdynDefConfig(
+            input_file=self.input_csv,
+            output_file=self.output_csv,
+            manufacturer="ConfigMfg",
+            model="ConfigModel",
+        )
+        success = generate_webdyn_definition(cfg)
+        self.assertTrue(success)
+        self.assertTrue(os.path.exists(self.output_csv))
+
+    def test_generate_webdyn_definition_other_formats(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        # Test excel, pdf, xml formats error handling / routing
+        for ext in [".xlsx", ".pdf", ".xml"]:
+            fname = f"test_dummy{ext}"
+            with open(fname, "w") as f:
+                f.write("dummy content")
+            try:
+                with patch(
+                    "DefFileGenerator.extractor.Extractor.extract_from_excel",
+                    side_effect=Exception("Excel err"),
+                ):
+                    with patch(
+                        "DefFileGenerator.extractor.Extractor.extract_from_pdf",
+                        side_effect=Exception("PDF err"),
+                    ):
+                        with patch(
+                            "DefFileGenerator.extractor.Extractor.extract_from_xml",
+                            side_effect=Exception("XML err"),
+                        ):
+                            success = generate_webdyn_definition(
+                                input_file=fname,
+                                output_file=self.output_csv,
+                                manufacturer="Mfg",
+                                model="Model",
+                            )
+                            self.assertFalse(success)
+            finally:
+                if os.path.exists(fname):
+                    os.remove(fname)
+
+    def test_generate_webdyn_definition_generator_exception(self):
+        from generate_webdyn_def import generate_webdyn_definition
+
+        with patch("generate_webdyn_def.run_generator", side_effect=RuntimeError("Gen failed")):
+            success = generate_webdyn_definition(
+                input_file=self.input_csv,
+                output_file=self.output_csv,
+                manufacturer="TestMfg",
+                model="TestModel",
+            )
+            self.assertFalse(success)
+
+    def test_generate_webdyn_definition_non_strict_validation(self):
+        # Input with non-fatal warning (e.g. unknown tag or duplicate name warning if non-strict)
+        warn_csv = "test_warn.csv"
+        with open(warn_csv, "w", encoding="utf-8") as f:
+            f.write("Register,Name,Data Type,Unit\n")
+            f.write("30001,Power,uint16,W\n")
+
+        from generate_webdyn_def import generate_webdyn_definition
+
+        try:
+            success = generate_webdyn_definition(
+                input_file=warn_csv,
+                output_file=self.output_csv,
+                manufacturer="TestMfg",
+                model="TestModel",
+                strict_validation=False,
+            )
+            self.assertTrue(success)
+        finally:
+            if os.path.exists(warn_csv):
+                os.remove(warn_csv)
 
     def test_main_demo_mode(self):
         # When fewer than 5 arguments are provided, main should run the demo mode
