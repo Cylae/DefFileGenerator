@@ -571,9 +571,29 @@ class Extractor:
                     if pages is None:
                         target_pages = pdf.pages
                     else:
-                        requested = pages if isinstance(pages, list) else [pages]
+                        raw_requested = pages if isinstance(pages, list) else [pages]
+                        requested: list[str | int] = []
                         if isinstance(pages, str):
-                            requested = [p.strip() for p in pages.split(",")]
+                            raw_requested = [p.strip() for p in pages.split(",") if p.strip()]
+
+                        for item in raw_requested:
+                            if isinstance(item, str) and "-" in item and not item.startswith("-"):
+                                parts = item.split("-")
+                                if (
+                                    len(parts) == 2
+                                    and parts[0].strip().isdigit()
+                                    and parts[1].strip().isdigit()
+                                ):
+                                    start_p = int(parts[0].strip())
+                                    end_p = int(parts[1].strip())
+                                    step = 1 if start_p <= end_p else -1
+                                    for p_num in range(start_p, end_p + step, step):
+                                        requested.append(p_num)
+                                else:
+                                    requested.append(item)
+                            else:
+                                requested.append(item)
+
                         for p in requested:
                             try:
                                 idx = int(p) - 1
