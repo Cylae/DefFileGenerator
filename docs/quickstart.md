@@ -1,72 +1,108 @@
-# Quick Start Guide
+# Quick Start Cheatsheet & CLI Reference
 
-## Installation
+<p align="center">
+  <a href="../README.md"><b>README</b></a> •
+  <a href="../QUICKSTART.md"><b>Beginner Tutorial</b></a> •
+  <a href="input-format.md"><b>Input Formats</b></a> •
+  <a href="architecture.md"><b>Architecture</b></a> •
+  <a href="security.md"><b>Security</b></a>
+</p>
 
-Python 3.10 or newer is required. To install the CLI and desktop application in editable mode:
+---
 
-```bash
-pip install -e .
-```
+## ⚡ Direct File Conversion
 
-To install development and quality assurance dependencies:
-
-```bash
-pip install -e ".[dev,web]"
-```
-
-## Direct File Conversion
-
-Transform a manufacturer register documentation file into a WebdynSunPM definition CSV:
+Convert a manufacturer documentation file into a WebdynSunPM definition CSV in a single step:
 
 ```bash
 deffilegen run register_map.xlsx \
-  --manufacturer "Webdyn" \
-  --model "DeviceModel" \
-  -o definition.csv
+  --manufacturer "Huawei" \
+  --model "SUN2000-50KTL" \
+  -o huawei_definition.csv
 ```
 
-Supported inputs are PDF, CSV, XML, and modern Excel files (`.xlsx`, `.xlsm`, `.xltx`, `.xltm`). Legacy `.xls` files must first be converted to `.xlsx`.
+Supported input formats: **PDF, Excel (`.xlsx`, `.xlsm`, `.xltx`, `.xltm`), CSV, and XML**.
 
-## Multi-Step Workflow CLI
+---
 
-Use the main command-line interface (`deffilegen`) to separate register extraction, generation, and validation steps:
+## 🛠️ Multi-Step Pipeline Commands
+
+For custom workflows and intermediate data inspection, `deffilegen` provides decoupled subcommands:
+
+```text
+┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+│   1. extract    │ ───▶  │   2. generate   │ ───▶  │   3. validate   │
+│ (Raw registers) │       │  (Webdyn CSV)   │       │(Strict checks)  │
+└─────────────────┘       └─────────────────┘       └─────────────────┘
+```
 
 ```bash
-# 1. Extract registers to an intermediate CSV
-deffilegen extract register_map.xlsx -o registers.csv
+# 1. Extract raw registers into an intermediate CSV file
+deffilegen extract datasheet.pdf -o raw_registers.csv
 
-# 2. Generate the WebdynSunPM definition file
-deffilegen generate registers.csv --manufacturer "Webdyn" --model "DeviceModel" -o definition.csv
+# 2. Generate a WebdynSunPM definition CSV from intermediate registers
+deffilegen generate raw_registers.csv --manufacturer "SMA" --model "STP5000" -o sma_def.csv
 
-# 3. Validate the definition file
-deffilegen validate definition.csv
+# 3. Validate an existing definition file
+deffilegen validate sma_def.csv
+
+# Optional: Validate in lenient mode (permits address overlaps for diagnostics)
+deffilegen validate sma_def.csv --lenient
 ```
 
-Useful extraction controls:
+---
+
+## 📋 Common Command Options
+
+| Flag | Description | Example |
+|---|---|---|
+| `-o, --output FILE` | Destination output file path | `-o definition.csv` |
+| `--protocol PROTO` | Modbus protocol (`modbusRTU` or `modbusTCP`) | `--protocol modbusTCP` |
+| `--category CAT` | Device classification (`Inverter`, `Meter`, `Sensor`, `Battery`) | `--category Inverter` |
+| `--sheet NAME` | Specific Excel worksheet name | `--sheet "Holding Registers"` |
+| `--pages RANGE` | Selective PDF pages range | `--pages "12,14-18"` |
+| `--mapping FILE` | Custom JSON column mapping dictionary | `--mapping custom_map.json` |
+| `--address-offset N` | Global address shift (applied once) | `--address-offset -1` |
+| `--force` | Overwrite existing output without prompt | `--force` |
+| `--no-validate` | Skip post-generation validation step | `--no-validate` |
+| `-v, --verbose` | Enable diagnostic logging output | `-v` |
+
+---
+
+## 📄 Generating Built-in Templates
+
+Create blank template files without requiring an input document:
 
 ```bash
-# Select PDF pages and overwrite an existing output intentionally
-deffilegen run manual.pdf --pages "12,14-18" --force \
-  --manufacturer "Vendor" --model "Model" -o definition.csv
+# Generate intermediate register input template
+deffilegen generate --template --template-mode input -o template_input.csv
 
-# Select an Excel worksheet and provide explicit source-column names
-deffilegen extract map.xlsx --sheet "Holding Registers" \
-  --mapping mapping.json -o registers.csv
+# Generate full WebdynSunPM definition CSV template
+deffilegen generate --template --template-mode definition -o template_definition.csv
 ```
 
-Use `--address-offset` only when the manufacturer's addressing convention is known. The offset is applied once during extraction. `run` validates its result by default; `--no-validate` disables that final check. `validate --lenient` permits overlaps but still checks the file structure and field syntax.
+---
 
-Image-only PDFs require OCR before extraction. A successful command means the recovered rows are valid; it does not prove that an unreadable source table was complete. Compare register counts and boundaries with the manufacturer's manual.
-
-Run `deffilegen --help` or `deffilegen <subcommand> --help` to inspect all available arguments.
-
-## Quality Checks Before Delivery
+## 🧪 Quality Gates & Validation Suite
 
 ```bash
-uv run --all-extras pytest --cov=DefFileGenerator --cov=web
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy DefFileGenerator web
-uv run bandit -r DefFileGenerator web -ll
-uv build
+# Run complete test suite (685 tests)
+pytest
+
+# Code formatting and linting
+ruff check .
+ruff format --check .
+
+# Static type analysis
+mypy DefFileGenerator web
+
+# Security scanning
+bandit -r DefFileGenerator web -ll
 ```
+
+---
+
+<p align="center">
+  <a href="../README.md"><b>⬅ Back to README</b></a> •
+  <a href="input-format.md"><b>Input Formats Guide ➡</b></a>
+</p>

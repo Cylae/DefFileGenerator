@@ -1,5 +1,16 @@
 # Comprehensive Codebase Audit and Security Report
 
+<p align="center">
+  <a href="README.md"><b>README</b></a> •
+  <a href="DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
+  <a href="docs/architecture.md"><b>Architecture</b></a> •
+  <a href="docs/security.md"><b>Security</b></a> •
+  <a href="CHANGELOG.md"><b>Changelog</b></a>
+</p>
+
+> [!NOTE]
+> This is a chronological evidence log. Test counts and measurements inside older sections describe the repository at the date of each audit; the latest validation result appears in the most recent dated section and pull request.
+
 ## Executive Summary
 
 This report documents the autonomous principal engineer full-codebase audit, hardening, refactoring, and evidence-based validation pass performed on the **DefFileGenerator** repository.

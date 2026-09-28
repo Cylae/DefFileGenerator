@@ -28,7 +28,7 @@ IF %ERRORLEVEL% EQU 0 (
     exit /b 0
 )
 
-echo [ERREUR] Python n'a pas ete trouve dans le PATH ou dans .venv.
-echo Veuillez executer 'uv sync' ou installer Python.
+echo [ERROR] Python was not found in PATH or in .venv.
+echo Please run 'uv sync' or install Python.
 pause
 exit /b 1

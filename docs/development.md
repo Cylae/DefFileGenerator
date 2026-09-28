@@ -1,48 +1,71 @@
 # Developer Guidelines & Engineering Practices
 
-## Environment Setup
+<p align="center">
+  <a href="../README.md"><b>README</b></a> •
+  <a href="../DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
+  <a href="architecture.md"><b>Architecture</b></a> •
+  <a href="security.md"><b>Security</b></a> •
+  <a href="../AUDIT_REPORT.md"><b>Audit Report</b></a>
+</p>
+
+---
+
+## 🛠️ Environment Setup
+
+To set up an isolated development environment with all required QA and build tooling:
 
 ```bash
-pip install -e ".[dev,web]"
+# 1. Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .\.venv\Scripts\Activate.ps1
+
+# 2. Install editable package with dev, web, and build extras
+pip install --upgrade pip
+pip install -e ".[dev,web,build]"
 ```
 
-## Quality Assurance Commands
+---
 
-```bash
-# Code linting
-ruff check .
+## 🧪 Quality Assurance Commands
 
-# Code formatting check
-ruff format --check .
+All code modifications must pass the established quality gates with zero errors before pull request submission:
 
-# Static type checking
-mypy DefFileGenerator web
+| Check | Tool | Command | Description |
+|---|---|---|---|
+| **Linting** | Ruff | `ruff check .` | Checks syntax, imports, and static quality rules |
+| **Formatting** | Ruff | `ruff format --check .` | Verifies adherence to Black/Ruff styling conventions |
+| **Auto-Format** | Ruff | `ruff format .` | Automatically formats all Python code |
+| **Type Checking** | Mypy | `mypy DefFileGenerator web` | Strict static type verification |
+| **Security Audit** | Bandit | `bandit -r DefFileGenerator web -ll` | Static security scanner for high/medium vulnerabilities |
+| **Test Suite** | Pytest | `pytest` | Runs the full 685+ automated test suite |
+| **Test Coverage** | Pytest-Cov | `pytest --cov=DefFileGenerator --cov=web` | Generates detailed line/branch coverage report |
+| **Wheel Build** | Build / UV | `uv build` (or `python -m build`) | Verifies packaging contract and asset inclusions |
 
-# Full test suite execution
-pytest
+---
 
-# Test coverage reporting
-pytest --cov=DefFileGenerator --cov-report=term-missing
+## 🛡️ Testing Strategy
 
-# Distribution contract
-uv build
-```
+- **Deterministic & Network-Free**: All unit tests must execute deterministically without requiring internet or external server access.
+- **End-to-End Pipelines**: Integration tests must cover the complete flow: document extraction $\rightarrow$ heuristic mapping $\rightarrow$ data normalization $\rightarrow$ overlap checks $\rightarrow$ atomic writing.
+- **Regression Invariance**: Every bug fix must introduce a minimal reproducing test case in [`DefFileGenerator/tests/`](../DefFileGenerator/tests/).
+- **Stress & Benchmark Testing**: Benchmark suites evaluate performance on large register maps (5,000+ registers) using [`DefFileGenerator/tests/stress_test_gen.py`](../DefFileGenerator/tests/stress_test_gen.py).
+- **Dead-Code Auditing**: Run `vulture` periodically to detect dead code and unused imports:
+  ```bash
+  vulture DefFileGenerator web build_exe.py generate_webdyn_def.py --min-confidence 80
+  ```
 
-## Testing Strategy
+---
 
-- **Unit Tests**: Must be deterministic, fast, isolated, and require zero network access.
-- **Integration Tests**: Verify the end-to-end pipeline: extraction → field mapping → generation → overlap validation.
-- **Regression Protection**: Every bug fix must include a minimal reproducing test case in `DefFileGenerator/tests/`.
-- **Stress & Battery Tests**: Large-scale benchmark datasets (e.g. 5,000+ registers) are generated on demand via `DefFileGenerator/tests/stress_test_gen.py` and evaluated via `run_gigantic_battery.py`.
-- **Dead-code audit**: `uvx vulture DefFileGenerator web build_exe.py doc_to_webdyn.py generate_webdyn_def.py --min-confidence 80`. Review results manually because framework callbacks, decorators, compatibility wrappers, and test fixtures can be false positives.
+## 📜 Contribution Rules
 
-## Contribution Rules
+1. **Single Responsibility**: Each pull request must address a single, well-defined bug fix, feature, or refactoring task.
+2. **Backward Compatibility**: Preserve existing CLI flags, public programmatic APIs (`GeneratorConfig`, `generate_webdyn_definition`), and official WebdynSunPM CSV layouts.
+3. **Memory Efficiency**: Always favor generator pipelines (`yield`) over large in-memory list allocations for rows and records. Never return a generator attached to an already closed file resource.
+4. **Code Cleanliness**: Maintain zero warnings under `ruff` and `mypy`. Avoid committing transient caches (`.pytest_cache`, `.mypy_cache`, `dist/`, `build/`).
 
-1. **Single Responsibility**: Pull requests should address one clear feature or fix.
-2. **Backward Compatibility**: Preserve existing CLI arguments, public Python APIs (`GeneratorConfig`, `generate_webdyn_definition`), and Webdyn CSV output structures.
-3. **Resource Efficiency**: Use lazy generator pipelines (`yield`) for processing row iterables to keep memory usage $O(1)$. Never return a generator bound to an already closed file resource.
-4. **Clean Codebase**: Maintain Python 3.10+ compatibility and zero `ruff` or `mypy` errors. Generated caches and build outputs must remain untracked.
+---
 
-## Performance Metrics
-
-Always measure execution times before and after making structural changes. Critical benchmarks include total execution time, row streaming throughput, peak memory usage, and type normalization latency.
+<p align="center">
+  <a href="../README.md"><b>⬅ Back to README</b></a> •
+  <a href="security.md"><b>Security Model ➡</b></a>
+</p>

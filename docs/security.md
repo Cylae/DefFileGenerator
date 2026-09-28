@@ -1,64 +1,115 @@
-# Security & Integrity
+# Security & Integrity Model
 
-DefFileGenerator treats manufacturer documentation, uploaded files, register metadata, and pull-request content as untrusted input. Security controls are enforced at the parser, generator, web API, packaging, and automation boundaries.
+<p align="center">
+  <a href="../README.md"><b>README</b></a> •
+  <a href="architecture.md"><b>Architecture</b></a> •
+  <a href="development.md"><b>Development</b></a> •
+  <a href="../AUDIT_REPORT.md"><b>Audit Report</b></a> •
+  <a href="../DEVELOPER_GUIDE.md"><b>Developer Guide</b></a>
+</p>
 
-## CSV Injection Mitigation
+---
 
-A CSV cell opened in spreadsheet software can be interpreted as an active formula when its first significant character is a formula trigger. Spreadsheet applications may strip leading whitespace before evaluating the cell and may normalize Unicode operator variants.
+DefFileGenerator treats all manufacturer documentation files, uploaded spreadsheets/PDFs, user-provided metadata, and external PR artifacts as **untrusted input**. Rigorous security controls and sanitization policies are enforced at every architectural boundary.
 
-`Generator.sanitize_csv_field` handles:
+---
 
-| Category | Characters |
-|--|--|
-| ASCII triggers | `=` `+` `-` `@` `\|` `%` |
-| Leading whitespace/control | tab, CR, LF, NBSP, BOM |
-| Fullwidth variants | `＝` `＋` `－` `＠` |
+## 📑 Table of Contents
 
-Potentially active string values are prefixed with a single apostrophe. Finite signed numeric literals retain their numeric representation when safe; non-finite or ambiguous strings are escaped. Non-printable control characters are removed before output.
+- [🛡️ Security Controls Matrix](#️-security-controls-matrix)
+- [💉 CSV Formula Injection Mitigation (DDE Defense)](#-csv-formula-injection-mitigation-dde-defense)
+- [📦 XML Entity & XXE Attack Protection](#-xml-entity--xxe-attack-protection)
+- [💾 Atomic Output Writes & Filesystem Resilience](#-atomic-output-writes--filesystem-resilience)
+- [🧩 Bitfield Slice Integrity (`BITS`)](#-bitfield-slice-integrity-bits)
+- [🌐 Web API Ingestion Boundaries (FastAPI)](#-web-api-ingestion-boundaries-fastapi)
+- [🤖 Hardened Privileged GitHub Actions Automation](#-hardened-privileged-github-actions-automation)
 
-Treat every vendor document as untrusted data and validate generated definitions before deploying them to production gateways.
+---
 
-## XML Entity & XXE Protection
+## 🛡️ Security Controls Matrix
 
-XML extraction uses `defusedxml.ElementTree`. DTDs, external entities, external references, and entity-expansion attacks are rejected. The standard library XML parser is not used as a fallback for untrusted XML input.
+| Attack Vector / Risk | Defensive Mechanism | Enforcing Component |
+|---|---|---|
+| **CSV Formula Injection** | Apostrophe `'` prefix on trigger characters + Unicode normalization | `Generator.sanitize_csv_field` |
+| **XML External Entity (XXE)** | DTD and external entity parsing disabled via `defusedxml` | `Extractor._extract_xml` |
+| **Partial Output Corruption** | Staged sibling tempfile + `os.fsync` + atomic `os.replace` | `Generator.generate` |
+| **Memory Exhaustion Denial of Service** | Strict 10 MiB upload cap + chunk streaming + 65,536 register limit | `web/app.py` |
+| **Information Disclosure (CWE-209)** | Sanitized client error messages masking internal exception traces | `web/app.py` |
+| **CI Automation Spoofing** | Head repo, author, branch, and cryptographic marker checks in Jules | `.github/workflows/` |
 
-## Atomic Definition Writes
+---
 
-When the generator writes to a filesystem path, it now creates a temporary file in the destination directory, flushes and `fsync`s the completed CSV, closes it, and atomically replaces the destination with `os.replace`.
+## 💉 CSV Formula Injection Mitigation (DDE Defense)
 
-If row processing or writing fails before replacement, the existing destination remains unchanged and the temporary file is removed. File-like objects and stdout retain their streaming behavior.
+When a CSV file is opened in spreadsheet software (Microsoft Excel, LibreOffice Calc), any cell starting with an active formula trigger can execute dynamic spreadsheet macros or trigger system commands via Dynamic Data Exchange (DDE).
 
-## Bit-Slice Integrity
+The `Generator.sanitize_csv_field` method inspects every cell string before writing:
 
-`BITS` addresses use `address_startbit_length`. A bit slice must be non-empty and stay inside one 16-bit Modbus register: `startbit >= 0`, `length >= 1`, and `startbit + length <= 16`.
+| Category | Neutralized Trigger Characters |
+|---|---|
+| **Standard ASCII Triggers** | `=` `+` `-` `@` `\|` `%` |
+| **Leading Whitespace & Hidden Characters** | Tab (`\t`), Carriage Return (`\r`), Line Feed (`\n`), Non-breaking space (`\u00A0`), UTF-8 BOM |
+| **Fullwidth Unicode Variants** | `＝` (`\uFF1D`), `＋` (`\uFF0B`), `－` (`\uFF0D`), `＠` (`\uFF20`) |
 
-Overlap validation distinguishes disjoint bit slices on the same register from genuinely overlapping slices. For example, `100_0_4` and `100_4_4` may coexist, while `100_0_4` and `100_2_4` overlap and fail strict validation.
+> [!NOTE]
+> **Preservation of Numeric Literals:**  
+> Genuine signed numeric literals (e.g. `-10`, `+5.4`) are recognized and preserved as raw numeric values without an unnecessary leading apostrophe.
 
-## Web API Upload Boundary
+---
 
-The FastAPI upload endpoints write request bodies incrementally rather than reading the entire upload into memory. Uploads are capped at 10 MiB and oversized requests receive HTTP `413`. Conversion rejects more than 65,536 mapped registers, returns at most 500 preview rows, and validation returns at most 1,000 issue records.
+## 📦 XML Entity & XXE Attack Protection
 
-Internal parser/generator exceptions are logged server-side but are not reflected verbatim to API clients. Client error messages are intentionally generic so internal paths, library details, and customer-specific data cannot leak through exception text.
+XML files are parsed exclusively using `defusedxml.ElementTree`:
+- External DTD declarations and entity expansions are systematically rejected.
+- Recursive entity expansion attacks ("Billion Laughs") trigger an immediate defensive exception without consuming CPU or memory resources.
 
-The public wildcard CORS policy does not enable credentialed cross-origin requests (`allow_credentials=False`). If authentication is added later, explicit trusted origins must replace the wildcard policy before credentials are enabled.
+---
 
-## Privileged GitHub Automation Boundary
+## 💾 Atomic Output Writes & Filesystem Resilience
 
-The Jules auto-merge workflow is triggered through `workflow_run`, which executes with write permissions after CI. To prevent an untrusted fork from spoofing Jules' textual marker, the privileged job only qualifies a pull request when all of the following hold:
+When generating an output file on disk:
+1. Data is written to a unique hidden temporary file in the destination directory: `.{name}.{uuid}.tmp`.
+2. All buffers are flushed and physically synced to persistent storage using `os.fsync(fd)`.
+3. The temporary file atomically replaces the destination path via `os.replace()`.
 
-- CI completed successfully for a pull-request event;
-- the workflow run originates from the same repository;
-- the pull request targets `main` and is not a draft;
-- the head repository is the same repository;
-- the pull request author is the repository owner;
-- the explicit Jules marker is present.
+> [!IMPORTANT]
+> If extraction fails, validation reports errors, or the process is abruptly terminated, the pre-existing target file remains **completely untouched and uncorrupted**, and the temporary file is safely cleaned up.
 
-The privileged workflow never checks out or executes code from the pull-request branch.
+---
 
-## Packaging Integrity
+## 🧩 Bitfield Slice Integrity (`BITS`)
 
-CI builds a wheel and verifies that the FastAPI backend and static frontend assets are actually included. The declared Python runtime floor is Python 3.10, matching syntax used by the codebase and the CI matrix.
+A `BITS` slice (`address_startbit_length`) must strictly fit within a single 16-bit Modbus word:
+- `startbit` $\ge 0$
+- `length` $\ge 1$
+- `startbit + length` $\le 16$
 
-## Secret Management
+The $O(\log N)$ interval algorithm verifies that multiple bitfield slices on the same base register address occupy disjoint bit ranges.
 
-No credentials, API tokens, customer exports, or sensitive site data should be stored in source control or test fixtures. Tests use synthetic values.
+---
+
+## 🌐 Web API Ingestion Boundaries (FastAPI)
+
+The FastAPI web backend enforces defensive boundaries:
+- **Maximum File Size**: Capped at **10 MiB**. Oversized payloads are rejected immediately with HTTP `413 Request Entity Too Large`.
+- **Chunk-Based Streaming**: Uploads are processed in 64 KiB chunks, preventing large files from exhausting server RAM.
+- **Register Ceiling**: Conversions reject files containing more than 65,536 registers.
+- **Sanitized Client Errors**: Internal stack traces and server file paths are logged server-side and never returned to clients.
+
+---
+
+## 🤖 Hardened Privileged GitHub Actions Automation
+
+The automated Jules merge workflow triggers via `workflow_run`. To prevent untrusted forks from exploiting write permissions, the job verifies that:
+1. CI tests completed with 100% success.
+2. The workflow originated from the root repository (`head_repository == repository`).
+3. The pull request targets `main` and is not a draft.
+4. The pull request author is the verified repository owner.
+5. The explicit cryptographic Jules marker is present in metadata.
+
+---
+
+<p align="center">
+  <a href="../README.md"><b>⬅ Back to README</b></a> •
+  <a href="development.md"><b>Development Guidelines ➡</b></a>
+</p>

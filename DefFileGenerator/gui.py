@@ -610,7 +610,7 @@ class DefFileGenApp:
             self.tab_templates = ttk.Frame(self.tabs)
             self.tab_logs = ttk.Frame(self.tabs)
             self.tabs.add(self.tab_convert, text="Conversion & Generation")
-            self.tabs.add(self.tab_validator, text="Validateur")
+            self.tabs.add(self.tab_validator, text="Validator")
             self.tabs.add(self.tab_templates, text="Templates")
             self.tabs.add(self.tab_logs, text="Logs")
 
@@ -664,7 +664,7 @@ class DefFileGenApp:
             self.entry_input_file = ttk.Entry(file_frame, width=80)
             self.entry_input_file.pack(side="left", fill="x", expand=True, padx=10, pady=10)
             btn_browse_in = ttk.Button(
-                file_frame, text="Parcourir...", command=self._browse_input_file
+                file_frame, text="Browse...", command=self._browse_input_file
             )
             btn_browse_in.pack(side="right", padx=10, pady=10)
 
@@ -678,7 +678,7 @@ class DefFileGenApp:
 
         if HAS_CUSTOMTKINTER:
             # Row 0: Manufacturer & Model
-            ctk.CTkLabel(params_frame, text="Constructeur (Manufacturer) *").grid(
+            ctk.CTkLabel(params_frame, text="Manufacturer *").grid(
                 row=0, column=0, sticky="w", padx=14, pady=(10, 2)
             )
             self.entry_mfg = ctk.CTkEntry(params_frame, placeholder_text="Ex: Huawei, ABB, SMA")
@@ -693,7 +693,7 @@ class DefFileGenApp:
             self.entry_model.grid(row=1, column=1, sticky="ew", padx=14, pady=(0, 8))
 
             # Row 1: Protocol & Category
-            ctk.CTkLabel(params_frame, text="Protocole").grid(
+            ctk.CTkLabel(params_frame, text="Protocol").grid(
                 row=2, column=0, sticky="w", padx=14, pady=(4, 2)
             )
             self.opt_protocol = ctk.CTkOptionMenu(params_frame, values=["modbusRTU", "modbusTCP"])
@@ -736,7 +736,7 @@ class DefFileGenApp:
             )
             self.entry_output_file.pack(side="left", fill="x", expand=True, padx=(0, 8))
             btn_browse_out = ctk.CTkButton(
-                out_box, text="Enregistrer sous...", width=110, command=self._browse_output_file
+                out_box, text="Save as...", width=110, command=self._browse_output_file
             )
             btn_browse_out.pack(side="right")
 
@@ -744,7 +744,7 @@ class DefFileGenApp:
             params_frame.columnconfigure(1, weight=1)
         else:
             # Row 0: Manufacturer & Model
-            ttk.Label(params_frame, text="Constructeur (Manufacturer) *").grid(
+            ttk.Label(params_frame, text="Manufacturer *").grid(
                 row=0, column=0, sticky="w", padx=10, pady=(8, 2)
             )
             self.entry_mfg = ttk.Entry(params_frame)
@@ -759,7 +759,7 @@ class DefFileGenApp:
             self.entry_model.grid(row=1, column=1, sticky="ew", padx=10, pady=(0, 6))
 
             # Row 1: Protocol & Category
-            ttk.Label(params_frame, text="Protocole").grid(
+            ttk.Label(params_frame, text="Protocol").grid(
                 row=2, column=0, sticky="w", padx=10, pady=(4, 2)
             )
             self.opt_protocol = ttk.Combobox(
@@ -803,7 +803,7 @@ class DefFileGenApp:
             self.entry_output_file = ttk.Entry(out_box)
             self.entry_output_file.pack(side="left", fill="x", expand=True, padx=(0, 6))
             btn_browse_out = ttk.Button(
-                out_box, text="Enregistrer sous...", command=self._browse_output_file
+                out_box, text="Save as...", command=self._browse_output_file
             )
             btn_browse_out.pack(side="right")
 
@@ -865,7 +865,7 @@ class DefFileGenApp:
 
             self.btn_open_folder = ctk.CTkButton(
                 results_header,
-                text="📁 Ouvrir Dossier",
+                text="📁 Open Folder",
                 width=120,
                 state="disabled",
                 command=self._open_output_folder,
@@ -898,7 +898,7 @@ class DefFileGenApp:
 
             self.btn_open_folder = ttk.Button(
                 results_header,
-                text="📁 Ouvrir Dossier",
+                text="📁 Open Folder",
                 state="disabled",
                 command=self._open_output_folder,
             )
@@ -1048,9 +1048,7 @@ class DefFileGenApp:
         self.btn_convert.configure(state="disabled")
         if hasattr(self, "progress_bar"):
             self.progress_bar.start()
-        self.lbl_results_badge.configure(
-            text="Traitement en cours... Extraction des tables Modbus..."
-        )
+        self.lbl_results_badge.configure(text="Processing... Extracting Modbus tables...")
 
         # Clear existing preview rows
         for item in self.tree_preview.get_children():
@@ -1269,7 +1267,7 @@ class DefFileGenApp:
 
             btn_run_val = ctk.CTkButton(
                 box,
-                text="🛡️ Valider Maintenant",
+                text="🛡️ Validate Now",
                 width=160,
                 font=ctk.CTkFont(weight="bold"),
                 command=self._run_validation,
@@ -1295,7 +1293,7 @@ class DefFileGenApp:
 
             btn_run_val = ttk.Button(
                 box,
-                text="🛡️ Valider Maintenant",
+                text="🛡️ Validate Now",
                 command=self._run_validation,
             )
             btn_run_val.pack(side="left")
@@ -1316,7 +1314,7 @@ class DefFileGenApp:
 
             self.btn_export_val = ctk.CTkButton(
                 self.banner_frame,
-                text="💾 Exporter Rapport",
+                text="💾 Export Report",
                 width=140,
                 state="disabled",
                 command=self._export_validation_report,
@@ -1332,7 +1330,7 @@ class DefFileGenApp:
 
             self.btn_export_val = ttk.Button(
                 self.banner_frame,
-                text="💾 Exporter Rapport",
+                text="💾 Export Report",
                 state="disabled",
                 command=self._export_validation_report,
             )
@@ -1348,10 +1346,10 @@ class DefFileGenApp:
         )
 
         headers = [
-            ("Ligne", 65),
+            ("Line", 65),
             ("Severity", 90),
             ("Code", 130),
-            ("Champ", 100),
+            ("Field", 100),
             ("Message / Error Description", 550),
         ]
         for col, (name, width) in zip(columns, headers, strict=False):
@@ -1467,7 +1465,7 @@ class DefFileGenApp:
             f.write("-" * 70 + "\n")
             for issue in report.issues:
                 f.write(
-                    f"[{issue.severity}] Ligne {issue.line} | Code: {issue.code} | Champ: {issue.field}\n"
+                    f"[{issue.severity}] Line {issue.line} | Code: {issue.code} | Field: {issue.field}\n"
                     f"       --> {issue.message}\n"
                 )
         messagebox.showinfo("Export successful", f"Validation report saved as:\n{out_path}")
@@ -1580,7 +1578,7 @@ class DefFileGenApp:
         save_path = filedialog.asksaveasfilename(
             title=f"Save template {category}",
             defaultextension=".csv",
-            initialfile=f"modele_webdyn_{category.lower()}.csv",
+            initialfile=f"webdyn_template_{category.lower()}.csv",
             filetypes=[("WebdynSunPM CSV Definition File", "*.csv")],
         )
         if not save_path:

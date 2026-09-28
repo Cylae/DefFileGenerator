@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<p align="center">
+  <a href="README.md"><b>README</b></a> •
+  <a href="QUICKSTART.md"><b>Quick Start</b></a> •
+  <a href="DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
+  <a href="AUDIT_REPORT.md"><b>Audit Report</b></a>
+</p>
+
 ## [Unreleased]
 
 ### Performance
@@ -25,6 +32,7 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- **Beginner Installation and Documentation Layout.** Expanded the README with an exhaustive, start-to-finish Windows executable and source installation guide for complete beginners, first-run walkthroughs, GUI/CLI/Web guides, updating, uninstalling, troubleshooting, and safety notes. Migrated all documentation, UI strings, and batch scripts entirely to English with consistent visual navigation and modern layout.
 - **Documentation and Repository Hygiene.** Synchronized the README, quick starts, architecture, security, input-format, developer guide, and visual booklet with the current CLI, Web API limits, supported formats, RAW/action semantics, PDF extraction boundaries, packaging, and validation behavior. Removed dead test scaffolding identified by static analysis while retaining tested compatibility entry points and fixtures.
 - **Definition Template Validity.** Fixed `generate --template --template-mode definition` so its first row is the required Webdyn metadata header instead of an incompatible `#Index` schema row; definition templates now use UTF-8 with BOM and pass strict validation.
 - **Cross-Manufacturer PDF Completeness.** Added last-resort recognition for fragmented and reversed PDF headings without overriding normal exact/partial mappings. This recovered 7,513 previously omitted registers across 35 real manufacturer documents with no per-document regression in the 399-document corpus.

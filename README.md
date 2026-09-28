@@ -1,258 +1,569 @@
 # WebdynSunPM DefFileGenerator & Documentation Parser
 
-A production-grade Python library, CLI, Windows desktop application, and optional FastAPI interface for extracting Modbus register maps from heterogeneous manufacturer documentation (**PDF, XLSX/XLSM/XLTX/XLTM, CSV, XML**) and generating validated **WebdynSunPM definition CSV files**.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License" />
+  <img src="https://img.shields.io/badge/Tests-685%20passed-success?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests 685 passed" />
+  <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
+</p>
 
-> [!IMPORTANT]
-> Extraction is evidence-based: the tool only emits registers whose address and fields can be recovered from the source. Image-only PDFs require OCR before import, and PDFs whose addresses are drawn outside table cells may need preprocessing or a custom mapping. Always validate and review a generated definition before deploying it to a gateway.
+---
 
-## Architecture
+> **Universal and intelligent Modbus register table converter.**  
+> Automatically extracts Modbus register maps from heterogeneous manufacturer documentation (**PDF, Excel XLSX/XLSM, CSV, XML**) and generates validated, production-ready CSV definition files for **WebdynSunPM** telemetry gateways.
+
+---
+
+## 📑 Table of Contents
+
+- [🎯 What is DefFileGenerator?](#-what-is-deffilegenerator)
+- [🚀 A-to-Z Installation Guide (Absolute Beginner Friendly)](#-a-to-z-installation-guide-absolute-beginner-friendly)
+  - [Method 1 — Ready-to-use Standalone Executable (Recommended for Windows)](#method-1--ready-to-use-standalone-executable-recommended-for-windows)
+  - [Method 2 — Express Start via `launch_gui.bat` Script](#method-2--express-start-via-launch_guibat-script)
+  - [Method 3 — Complete Step-by-Step Python Installation (The Ultimate Walkthrough)](#method-3--complete-step-by-step-python-installation-the-ultimate-walkthrough)
+  - [Method 4 — For macOS and Linux Users](#method-4--for-macos-and-linux-users)
+- [⚡ Quick Start in 3 Minutes (First Conversion Walkthrough)](#-quick-start-in-3-minutes-first-conversion-walkthrough)
+  - [Case A: Using the Windows Desktop GUI](#case-a-using-the-windows-desktop-gui)
+  - [Case B: Using the Command Line Interface (CLI)](#case-b-using-the-command-line-interface-cli)
+  - [Case C: Using the Local Web Browser Interface](#case-c-using-the-local-web-browser-interface)
+- [🖥️ 4 Ways to Use the Software](#️-4-ways-to-use-the-software)
+  - [1. Native Windows 11 Desktop GUI](#1-native-windows-11-desktop-gui)
+  - [2. High-Performance CLI (`deffilegen`)](#2-high-performance-cli-deffilegen)
+  - [3. Local Web Interface (FastAPI Browser App)](#3-local-web-interface-fastapi-browser-app)
+  - [4. Python Programmatic API](#4-python-programmatic-api)
+- [📊 System Architecture & Pipeline](#-system-architecture--pipeline)
+- [📑 Supported Input Formats & Modbus Semantics](#-supported-input-formats--modbus-semantics)
+- [🚨 Beginner SOS & Troubleshooting FAQ](#-beginner-sos--troubleshooting-faq)
+- [🛡️ Security & Data Integrity Model](#️-security--data-integrity-model)
+- [🧪 Quality Gates & Automated Tests](#-quality-gates--automated-tests)
+- [📚 Full Documentation Index](#-full-documentation-index)
+
+---
+
+## 🎯 What is DefFileGenerator?
+
+To connect an industrial photovoltaic inverter (Huawei, SMA, SolarEdge, Sungrow, Fronius, ABB, etc.), energy meter, or weather station to a **WebdynSunPM** data logger, you must provide a strict semicolon-delimited CSV definition file containing every Modbus register address, data type, physical unit, and scaling factor.
+
+Manually creating this file usually requires hours of tedious, error-prone manual work: copy-pasting tables from PDF user manuals or Excel spreadsheets, converting hexadecimal addresses to decimal numbers, calculating scale factors, and checking for overlapping memory registers.
+
+**DefFileGenerator automates the entire process in seconds:**
+1. **Reads your source document** (PDF datasheet, Excel workbook, CSV table, or XML register map).
+2. **Automatically locates register tables** and understands vendor-specific column names in English, French, and German.
+3. **Normalizes data types and addresses** (hex/decimal conversions, standard types like `U16`, `I32`, `F32`, individual bitfield slices).
+4. **Performs strict validation** (unique variable tags, valid Modbus address spaces, $O(\log N)$ collision and overlap checks).
+5. **Generates an official WebdynSunPM CSV file**, ready to be imported directly into your data logger gateway!
+
+---
+
+## 🚀 A-to-Z Installation Guide (Absolute Beginner Friendly)
+
+Choose **the method that best matches your setup and comfort level**:
 
 ```text
-[ PDF / Excel / CSV / XML ]
-            │
-            ▼
-[ Extractor ]
-  format-specific readers
-  + lazy row generators
-            │
-            ▼
-[ Mapper / Cleaner ]
-  exact → synonym → partial → PDF fallback
-  column resolution
-            │
-            ▼
-[ Generator Core ]
-  types · addresses · tags
-  coefficients · actions
-            │
-            ▼
-[ Validation Layer ]
-  range · tag uniqueness
-  register + bit overlap
-            │
-            ▼
-[ Atomic CSV Writer ]
-  sanitization · fsync
-  atomic replace
+┌────────────────────────────────────────────────────────────────────────┐
+│                        WHICH METHOD SHOULD YOU PICK?                   │
+├────────────────────────────────────────────────────────────────────────┤
+│ • You want zero hassle on Windows without installing anything extra:   │
+│   👉 Choose METHOD 1 (Standalone pre-compiled .exe — no Python needed) │
+│                                                                        │
+│ • You downloaded the project repository source folder on Windows:      │
+│   👉 Choose METHOD 2 (Double-click launch_gui.bat)                     │
+│                                                                        │
+│ • You want to install and run the tool properly via Python:            │
+│   👉 Follow METHOD 3 (The complete step-by-step beginner guide)        │
+│                                                                        │
+│ • You are using macOS or Linux:                                        │
+│   👉 Follow METHOD 4                                                   │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Extraction
+---
 
-- **PDF** — `pdfplumber` table extraction with page selection and newline cleanup.
-- **Excel** — `.xlsx`, `.xlsm`, `.xltx`, and `.xltm` through `openpyxl` in `read_only=True`, `data_only=True` mode; optional sheet selection.
-- **CSV** — BOM-aware decoding plus delimiter detection.
-- **XML** — `defusedxml.ElementTree`, rejecting DTD/entity based attacks.
+### Method 1 — Ready-to-use Standalone Executable (Recommended for Windows)
 
-### Column mapping
+This method requires **no Python installation, no terminal commands, and zero technical background**. The application is pre-compiled as a standalone 64-bit Windows executable.
 
-The mapper resolves vendor-specific columns in four ordered tiers:
+#### Step 1: Download the software
+1. Navigate to the official [GitHub Releases Page](https://github.com/Cylae/DefFileGenerator/releases).
+2. Locate the latest release (tagged at the top of the page).
+3. Under the **Assets** section, click on the download link for:  
+   `DefFileGenerator-vX.X.X-windows-x64.zip` (approximately 50 MB).
+4. Save the file to your computer (e.g. in your `Downloads` folder).
 
-1. case-insensitive exact internal-name match;
-2. exact synonym match against `Extractor.COLUMN_MAPPING`;
-3. partial fallback match (excluding the short `Tag` field to avoid matches such as `Voltage`);
-4. conservative similarity recovery for PDF headings extracted in fragmented or reversed glyph order.
+#### Step 2: Extract the ZIP archive
 
-Explicit JSON overrides remain available through `--mapping`.
+> [!CAUTION]
+> **CRITICAL BEGINNER TRAP #1:**  
+> Do **NOT** double-click the executable directly from inside the `.zip` archive! Windows will open it in a temporary read-only state where auxiliary libraries cannot load, causing an immediate crash. You **MUST** extract the folder first.
 
-### Modbus semantics
+1. Go to your `Downloads` folder.
+2. **Right-click** on `DefFileGenerator-vX.X.X-windows-x64.zip`.
+3. Select **Extract All...** (or your preferred unzip utility like 7-Zip).
+4. Ensure the checkbox *"Show extracted files when complete"* is checked, then click **Extract**.
+5. A new, regular uncompressed folder will open.
 
-The generator normalizes:
+#### Step 3: Launch the Desktop Application
+Inside the extracted folder, find:
+- **`DefFileGenerator-GUI.exe`** (with the application icon).
+- Double-click it to start the visual desktop interface.
 
-- decimal, hexadecimal addresses (`0x1000`, `1000h`), and register ranges (`31657~31658`, `40001-40002`, `0x8232 ~ 0x82FE`);
-- register widths for `U8/I8`, `U16/I16`, `U32/I32/F32/IP`, `U64/I64/F64`, `MAC`, `IPV6`, `STRING`, `RAW`, and `BITS`;
-- manufacturer type aliases: `INT16U`/`INT32U`/`INT64U` (unsigned), `INT16S`/`INT32S`/`INT64S` (signed), `32-bit IEEE 754` (`F32`), `64-bit IEEE 754` (`F64`), `DATETIME` (`U32`), `IP4` (`IP`), and `HEX` (`U16`);
-- data type / endianness aliases (`_WB`, `_B`, `_W`, `swap`, `big endian`);
-- coefficients (`CoefA = Factor × 10^ScaleFactor`, `CoefB = Offset`);
-- tags, register type codes, and actions.
+#### Step 4: If Windows SmartScreen displays an alert
 
-`BITS` values use `address_startbit_length`. `STRING` and `RAW` values use `address_byte_length`; `RAW` lengths must be positive and even. A bit slice must stay inside one 16-bit register, and strict validation detects overlapping slices on the same base register. See [`docs/input-format.md`](docs/input-format.md).
+> [!NOTE]
+> Windows Defender SmartScreen frequently shows a blue alert screen on newly downloaded open-source tools:  
+> *« Windows protected your PC - Microsoft Defender SmartScreen prevented an unrecognized app from starting. »*  
+> **This is completely normal** for independent open-source software that is not signed with an expensive corporate certificate.
 
-## Requirements & installation
+To proceed:
+1. Click the underlined text link: **"More info"** (located under the warning message).
+2. A button labeled **"Run anyway"** will appear in the bottom right corner: click it.
+3. The application will launch smoothly!
 
-Python **3.10+** is required.
+> [!TIP]
+> If you prefer command-line usage, the exact same folder also provides **`deffilegen.exe`**. Simply open PowerShell or Command Prompt in that folder and run:  
+> `.\deffilegen.exe --help`
 
-```bash
-# Core CLI / library
+---
+
+### Method 2 — Express Start via `launch_gui.bat` Script
+
+If you downloaded or cloned the project repository on a Windows computer with Python installed:
+
+1. Open the repository root folder in Windows File Explorer.
+2. Double-click the file named **`launch_gui.bat`**.
+3. The script automatically checks for an active `.venv` or system Python and launches the native Windows 11 GUI without leaving an empty command prompt window open.
+
+---
+
+### Method 3 — Complete Step-by-Step Python Installation (The Ultimate Walkthrough)
+
+Want to install the modifiable Python package, run the CLI, or use the local web server? Follow these clear steps.
+
+#### Step 0: Check if Python is already installed on your PC
+1. Press the **Windows Key + R** shortcut on your keyboard.
+2. A small *Run* window will open in the bottom-left corner: type `cmd` and press **Enter**.
+3. In the black console window, type:
+   ```cmd
+   python --version
+   ```
+4. Check the output:
+   - If you see `Python 3.10.x`, `Python 3.11.x`, or `Python 3.12.x`: **Great! Skip directly to Step 2.**
+   - If Windows opens the Microsoft Store or prints *"'python' is not recognized"*: **Proceed to Step 1 below.**
+
+#### Step 1: Install Python (Watch out for the #1 beginner trap!)
+1. Visit the official Python download page: [python.org/downloads](https://www.python.org/downloads/).
+2. Click the yellow button **Download Python 3.12.x** (or any version $\ge$ 3.10).
+3. Run the downloaded installer `.exe` file.
+4. ⚠️ **ATTENTION — THE MOST CRITICAL STEP:**  
+   At the very bottom of the first installer screen, **you MUST check the box:**  
+   ☑️ **Add python.exe to PATH**
+5. Click **Install Now**.
+6. When the installation finishes, click **Close**.
+7. Close your command prompt and open a new one: typing `python --version` should now show your installed version!
+
+#### Step 2: Download the project source code
+Choose either option:
+
+- **Option A (Without Git — Easiest for beginners):**
+  1. Visit the repository page: [github.com/Cylae/DefFileGenerator](https://github.com/Cylae/DefFileGenerator).
+  2. Click the green **`<> Code`** button near the top right.
+  3. Click **`Download ZIP`**.
+  4. Right-click the downloaded ZIP file > **Extract All...** to an easy-to-find location (e.g. `C:\DefFileGenerator`).
+
+- **Option B (Using Git):**
+  Open your terminal and run:
+  ```powershell
+  git clone https://github.com/Cylae/DefFileGenerator.git
+  cd DefFileGenerator
+  ```
+
+#### Step 3: Magic trick to open terminal directly in the project folder
+
+> [!TIP]
+> **Windows Magic Shortcut to never type long directory paths:**  
+> 1. Open your extracted `DefFileGenerator` folder in Windows File Explorer.  
+> 2. Click on the **address bar** at the very top (where the folder path is displayed).  
+> 3. Delete the text, type `powershell` (or `cmd`), and hit **Enter**.  
+> 4. PowerShell will open immediately, pre-positioned in your project directory!
+
+#### Step 4: Create and activate an isolated virtual environment
+
+An isolated virtual environment ensures that project libraries do not conflict with anything else on your computer.
+
+In your PowerShell window, run:
+
+```powershell
+# 1. Create the virtual environment in a folder named .venv
+python -m venv .venv
+
+# 2. Activate the virtual environment
+.\.venv\Scripts\Activate.ps1
+```
+
+> [!WARNING]
+> **CRITICAL BEGINNER TRAP #2 (PowerShell Execution Policy):**  
+> If PowerShell prints red text stating:  
+> *« File ...\Activate.ps1 cannot be loaded because running scripts is disabled on this system... »*  
+> Do not worry; this is a default Windows policy. Fix it instantly by running:
+> ```powershell
+> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+> ```
+> Then re-run the activation command:
+> ```powershell
+> .\.venv\Scripts\Activate.ps1
+> ```
+> You will now see `(.venv)` displayed at the start of your command prompt. Your environment is active!
+
+#### Step 5: Install DefFileGenerator and its dependencies
+
+Execute the following commands:
+
+```powershell
+# Upgrade pip to the latest release
+python -m pip install --upgrade pip
+
+# Install DefFileGenerator with both CLI and Windows Desktop GUI
 python -m pip install -e .
 
-# Core + FastAPI web interface
+# (Optional) If you also want the browser-based Web interface:
 python -m pip install -e ".[web]"
-
-# Development / test dependencies
-python -m pip install -e ".[dev,web]"
 ```
 
-The wheel includes the `web` package and its static frontend assets; CI builds and inspects the wheel to enforce that packaging contract.
+*Installation takes about 30 seconds to fetch required libraries (pdfplumber, openpyxl, customtkinter, defusedxml).*
 
-## Standalone Windows Executables (.exe)
+#### Step 6: Verify the installation!
 
-For users who do not wish to install Python or manage dependencies, pre-compiled standalone 64-bit Windows executables are available:
-
-- **`DefFileGenerator-GUI.exe`**: Native Windows 11 desktop application with dark/light themes, real-time logging, and register preview. Runs windowed without a console window.
-- **`deffilegen.exe`**: Portable, high-performance command-line binary.
-
-### Automated GitHub Actions Releases
-Executables are automatically compiled and verified on Windows runners via GitHub Actions:
-- **Nightly / Continuous**: Every push to `main` produces downloadable `.exe` artifacts in the GitHub Actions workflow run.
-- **Releases**: Pushing a version tag (`v*`) automatically creates a GitHub Release with pre-packaged zip archives and SHA-256 checksums.
-
-### Compiling Locally
-To compile the standalone `.exe` binaries locally on Windows:
-```cmd
-# Double-click build_exe.bat or run via command line:
-build_exe.bat
-
-# Or invoke the Python build orchestrator directly:
-python build_exe.py --target all --zip
+Run:
+```powershell
+deffilegen --version
 ```
-Binaries and release bundles are generated in the `dist/` directory.
+The terminal will respond:
+```text
+deffilegen 0.2.1
+```
 
-## CLI
+You are all set! 🎉
 
-The installed entry point is `deffilegen`.
+---
+
+### Method 4 — For macOS and Linux Users
+
+On macOS or Linux distributions (Ubuntu, Debian, Fedora, Arch):
 
 ```bash
-# Full extraction + generation
-deffilegen run datasheet.pdf \
-  --manufacturer "Huawei" \
-  --model "SUN2000" \
-  -o huawei_sun2000.csv
+# 1. Clone the repository
+git clone https://github.com/Cylae/DefFileGenerator.git
+cd DefFileGenerator
 
-# Extraction only
-deffilegen extract inverter_map.xlsx \
-  --sheet "Registers" \
-  -o extracted.csv
+# 2. Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
 
-# Generate from normalized CSV
-deffilegen generate extracted.csv \
-  --manufacturer "SMA" \
-  --model "STP5000" \
-  -o sma_stp5000.csv
+# 3. Install dependencies (CLI and Web interface)
+pip install --upgrade pip
+pip install -e ".[web]"
 
-# Strict validation
-deffilegen validate sma_stp5000.csv
-
-# Allow address overlaps while retaining all other validation checks
-deffilegen validate sma_stp5000.csv --lenient
+# 4. Verify installation
+deffilegen --version
 ```
 
-Main subcommands:
+*(Note: The desktop GUI is optimized for Windows 11. On Linux and macOS, the CLI and the local Web browser interface are recommended).*
 
-- `gui` — launch the Windows 11 native desktop application;
-- `run` — extract, generate, and validate in one workflow;
-- `extract` — create an intermediate normalized register CSV;
-- `generate` — build a WebdynSunPM definition from normalized data;
-- `validate` — check an existing definition.
+---
 
-Common workflow options include `--mapping FILE`, `--sheet NAME`, `--pages 1,3-5`, `--address-offset N`, and `--force`. `run` also supports `--no-validate`; generation defaults are `--protocol modbusRTU` and `--category Inverter`. Use `deffilegen <command> --help` for the authoritative option list. Commands return `0` on success, `1` on execution or validation failure, and `2` for invalid CLI usage.
+## ⚡ Quick Start in 3 Minutes (First Conversion Walkthrough)
 
-Template creation is available without an input file:
+Validate your installation immediately using the sample files provided in the repository!
 
-```bash
-deffilegen generate --template --template-mode input -o input-template.csv
-deffilegen generate --template --template-mode definition -o definition-template.csv
+### Case A: Using the Windows Desktop GUI
+
+1. Launch the application by double-clicking **`DefFileGenerator-GUI.exe`** or **`launch_gui.bat`** (or execute `deffilegen-gui` in your activated terminal).
+2. The modern Windows 11 application window opens.
+3. Click **Browse** on the *Source Document* row and select the included sample file:  
+   `sample_inverter_registers.xlsx` (or `template.csv`).
+4. Notice that **Manufacturer** and **Model** fields auto-fill if detected from the filename.
+5. Set your destination CSV file path (or keep the suggested default).
+6. Click the green **Generate Definition File** button.
+7. In under 2 seconds, the progress bar completes, logs stream in the console, and the live preview table at the bottom populates with all normalized registers!
+8. Click the **Validator** tab to run instant verification on your generated file.
+
+---
+
+### Case B: Using the Command Line Interface (CLI)
+
+Open your terminal in the project directory and run your first conversion:
+
+```powershell
+# Direct conversion of the bundled sample Excel register map
+deffilegen run sample_inverter_registers.xlsx --manufacturer "MyBrand" --model "Inverter-5000" -o my_inverter.csv
+
+# Immediate audit of the generated CSV file
+deffilegen validate my_inverter.csv
 ```
 
-Generated definitions are semicolon-delimited UTF-8-with-BOM files. Their header is `Protocol;Category;Manufacturer;Model;Forced writing code`; each register row contains `Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action`.
+The CLI outputs a clear validation audit report:
+```text
+Validation report for my_inverter.csv:
+Total errors: 0
+Total warnings: 0
+Summary: Valid definition file.
+```
 
-## Windows 11 Desktop Application
+---
 
-`DefFileGenerator` includes a native, modern desktop application designed specifically for **Windows 11** with dark/light mode, per-monitor high-DPI awareness, non-blocking worker threads, and offline execution:
+### Case C: Using the Local Web Browser Interface
 
-```bash
-# Launch from Windows Explorer (double click)
-launch_gui.bat
+If you installed the `[web]` optional dependencies, start the local server:
 
-# Launch via dedicated CLI entry point
+```powershell
+uvicorn web.app:app --host 127.0.0.1 --port 8000
+```
+
+1. Open your web browser (Chrome, Edge, Firefox, Safari).
+2. Navigate to: [http://127.0.0.1:8000](http://127.0.0.1:8000).
+3. Drag and drop your manufacturer document into the upload zone, configure equipment metadata, and click **Convert**.
+4. Download your validated WebdynSunPM CSV file instantly!
+5. To stop the web server, press **Ctrl + C** in the terminal.
+
+---
+
+## 🖥️ 4 Ways to Use the Software
+
+| Interface | Best For | Key Strengths | How to Launch |
+|---|---|---|---|
+| **Windows Desktop GUI** | Everyone / Beginners | Visual interface, live table preview, dark/light mode, equipment templates | `DefFileGenerator-GUI.exe` or `launch_gui.bat` |
+| **Command Line (CLI)** | Engineers & Automation | Fully scriptable, fast, selective PDF pages and Excel worksheet targeting | `deffilegen run ...` |
+| **Local Web Interface** | Cross-platform / Browsers | Drag-and-drop web UI, responsive preview, OpenAPI `/docs` endpoints | `uvicorn web.app:app` |
+| **Python Core API** | Integrators & Developers | Clean functional Python API for data ingestion pipelines | `import generate_webdyn_def` |
+
+---
+
+### 1. Native Windows 11 Desktop GUI
+
+Built using **CustomTkinter** to provide a seamless, modern desktop experience:
+- 🎨 **Adaptive Light / Dark Themes** matching Windows 11 system preferences.
+- ⚡ **Asynchronous Background Worker Threads**: the UI never freezes, even when parsing massive 400-page PDF documents.
+- 📋 **Pre-configured Equipment Templates**: One-click presets for Solar PV Inverters, Energy Meters, Pyranometers / Irradiance Sensors, Battery Storage Systems (BESS), Weather Stations, and Trackers.
+- 🔍 **Interactive Register Preview**: Live filterable data table with quick actions (*Open CSV*, *Open Folder*, *Copy Data*).
+- 🛡️ **Embedded Validator**: Immediate diagnostic feedback with color-coded severity badges (green = valid, orange = warning, red = blocker).
+
+```powershell
+# Commands to launch the GUI:
 deffilegen-gui
-
-# Or via sub-command or flag
 deffilegen gui
-deffilegen --gui
+launch_gui.bat
 ```
 
-### Key Capabilities:
-- **⚡ Conversion & Generation** : Select or browse documentation (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`). Auto-infers manufacturer and model from filenames, extracts registers in a background thread without freezing the UI, and displays an interactive preview table with quick actions (*Open CSV*, *Open Folder*, *Copy CSV*).
-- **🛡️ Definition Validator** : Instant validation of WebdynSunPM definition files against strict specifications (mandatory headers, duplicate tags, data type syntax, address ranges, bit-slice collisions) with color-coded diagnostic table and exportable audit report.
-- **📋 Equipment Templates** : Pre-configured templates for Photovoltaic Inverters, Energy Meters, Irradiance Sensors / Pyranometers, Battery Energy Storage Systems (BESS), Weather Stations, Trackers, and Generic Modbus devices.
-- **📜 Console & Live Logs** : Real-time log streaming with severity color cues (INFO, WARNING, ERROR), log filtering, and clipboard export.
+---
 
-## Programmatic API
+### 2. High-Performance CLI (`deffilegen`)
+
+The command-line suite offers 4 primary subcommands:
+
+```powershell
+# 1. Complete end-to-end workflow (Extract + Generate + Validate)
+deffilegen run "datasheet.pdf" --manufacturer "Huawei" --model "SUN2000-50KTL" -o huawei.csv
+
+# 2. Extract registers to an intermediate raw CSV
+deffilegen extract "register_map.xlsx" --sheet "Holding Registers" -o raw_registers.csv
+
+# 3. Generate a Webdyn definition from intermediate CSV data
+deffilegen generate raw_registers.csv --manufacturer "SMA" --model "STP-5000" -o sma_def.csv
+
+# 4. Audit an existing definition CSV for WebdynSunPM compliance
+deffilegen validate sma_def.csv
+```
+
+#### Helpful CLI Flags:
+- `--pages 12,14-18` : Target specific register table pages in a large manual.
+- `--sheet "Registers"` : Target a specific worksheet inside an Excel workbook.
+- `--mapping custom.json` : Supply explicit column mapping overrides.
+- `--address-offset -1` : Adjust 0-based vs 1-based numbering conventions.
+- `--force` : Overwrite existing output files without prompting.
+- `-v` or `--verbose` : Print granular parsing heuristics and diagnostic traces.
+
+---
+
+### 3. Local Web Interface (FastAPI Browser App)
+
+```powershell
+uvicorn web.app:app --host 127.0.0.1 --port 8000
+```
+- Web Application: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- Interactive OpenAPI Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- Endpoints: `POST /api/convert` (file conversion) and `POST /api/validate` (compliance check).
+
+---
+
+### 4. Python Programmatic API
+
+Embed the conversion engine directly into custom Python tools:
 
 ```python
 from generate_webdyn_def import generate_webdyn_definition
 
 success = generate_webdyn_definition(
-    input_file="registers.xlsx",
-    output_file="output_definition.csv",
-    manufacturer="SMA",
-    model="STP5000",
+    input_file="manufacturer_datasheet.pdf",
+    output_file="webdyn_definition.csv",
+    manufacturer="SolarEdge",
+    model="SE10000",
     protocol="modbusRTU",
     category="Inverter",
     address_offset=0,
     strict_validation=True,
 )
+
+if success:
+    print("WebdynSunPM definition generated and validated successfully!")
 ```
 
-## Web interface
+---
 
-Run the optional FastAPI backend with:
-
-```bash
-uvicorn web.app:app --host 127.0.0.1 --port 8000
-```
-
-Endpoints:
-
-- `GET /api/health`
-- `POST /api/convert`
-- `POST /api/validate`
-
-Open `http://127.0.0.1:8000/` for the bundled frontend or `/docs` for OpenAPI. `POST /api/convert` accepts the source as multipart field `file` plus optional `manufacturer`, `model`, `protocol`, `category`, `address_offset`, and `forced_write` fields. `POST /api/validate` accepts a `.csv` or `.txt` definition as field `file`.
-
-Uploads are streamed in bounded chunks and capped at **10 MiB**; conversion is additionally capped at **65,536 mapped registers**, previews contain at most 500 rows, and validation returns at most 1,000 issues. Parser/generator exceptions are logged server-side while API clients receive sanitized error messages. Wildcard CORS is non-credentialed.
-
-## Security & integrity
-
-Key controls include:
-
-- **CSV formula-injection mitigation** for ASCII and Unicode trigger variants;
-- **control-character filtering** before CSV output;
-- **XXE / entity-expansion protection** through `defusedxml`;
-- **atomic output replacement** so a failed generation cannot truncate an existing definition file;
-- **bit-slice range and overlap validation** for `BITS` addresses;
-- **bounded web uploads** and non-disclosure of internal exception text;
-- **privileged auto-merge trust checks** restricting the Jules workflow to owner-authored, same-repository PRs after successful CI.
-
-See [`docs/security.md`](docs/security.md) for the complete security model.
-
-## Quality gates
-
-The established suite contains **680+ unit and integration tests**. GitHub Actions runs the project across Python 3.10, 3.11, and 3.12 with:
+## 📊 System Architecture & Pipeline
 
 ```text
-ruff check .
-ruff format --check .
-mypy DefFileGenerator web
-bandit -r DefFileGenerator web -ll
-python -m pytest --cov=DefFileGenerator --cov=web
+┌────────────────────────────────────────────────────────┐
+│  Source Input: PDF, Excel (.xlsx), CSV, XML            │
+└───────────────────────────┬────────────────────────────┘
+                            │ Safe memory buffer ingestion
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│  1. MULTI-FORMAT EXTRACTOR (extractor.py)              │
+│  - Engine parsers (pdfplumber, openpyxl, defusedxml)   │
+│  - Multi-row banner header merging                     │
+│  - 4-tier heuristic column mapping                     │
+└───────────────────────────┬────────────────────────────┘
+                            │ Streaming intermediate register dicts
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│  2. NORMALIZATION ENGINE (def_gen.py)                  │
+│  - Address resolution (Hex 0x..., Decimal, Ranges)     │
+│  - Data type standardization (U16, I32, F32, BITS...)  │
+│  - Polynomial scaling computation (CoefA, CoefB)       │
+│  - Unique variable tag generation                      │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│  3. STRICT VALIDATION LAYER (def_gen.py)               │
+│  - Address boundary checks (0..65535)                  │
+│  - O(log N) bisect register overlap detection          │
+│  - BITS compound validation (startbit 0..15, len 1..16)│
+│  - CSV formula injection escaping                      │
+└───────────────────────────┬────────────────────────────┘
+                            │ Atomic write (fsync + replace)
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│  Output: WebdynSunPM Definition CSV                    │
+│  (UTF-8 with BOM, semicolon-delimited, 11 columns)     │
+└────────────────────────────────────────────────────────┘
 ```
 
-CI also builds a wheel and verifies that `web/app.py` plus the static frontend assets are present in the distributable artifact.
+---
 
-Additional stress batteries cover ambiguous column resolution, large register maps, string length semantics, and type normalization behavior.
+## 📑 Supported Input Formats & Modbus Semantics
 
-## Documentation
+### 1. Accepted Input Formats
+- **PDF** : Text-based tabular pages parsed via `pdfplumber`. *(Scanned image-only PDFs require external OCR).*
+- **Excel** : Modern `.xlsx`, `.xlsm`, `.xltx`, `.xltm` files handled via `openpyxl`. *(Legacy 1997 `.xls` files must be saved as `.xlsx`).*
+- **CSV** : Automatic delimiter detection (comma, semicolon, tab) and multi-encoding recognition (UTF-8, UTF-8-SIG, CP1252, Latin-1).
+- **XML** : Hardened XML parsing with `defusedxml` to block XXE attacks.
 
-- [`DEVELOPER_GUIDE.md`](DEVELOPER_GUIDE.md) — comprehensive architecture, domain concepts & onboarding guide
-- [`docs/quickstart.md`](docs/quickstart.md) — concise usage walkthrough
-- [`docs/input-format.md`](docs/input-format.md) — accepted columns and address notation
-- [`docs/architecture.md`](docs/architecture.md) — internal architecture
-- [`docs/security.md`](docs/security.md) — security and integrity guarantees
-- [`docs/development.md`](docs/development.md) — contributor workflow
-- [`QUICKSTART.md`](QUICKSTART.md) — detailed end-user tutorial and troubleshooting
-- [`docs/booklet/def-file-generator-booklet.html`](docs/booklet/def-file-generator-booklet.html) — versioned source for the visual Canva booklet
+### 2. Recognized Column Headers
+The extractor recognizes headers in English, French, and German:
 
-## License
+| Target Field | Purpose | Sample Vendor Headers Recognized |
+|---|---|---|
+| **Address** | Register start address | `address`, `addr`, `register`, `reg`, `registre`, `adresse`, `offset`, `index` |
+| **Name** | Human description | `name`, `description`, `parameter`, `variable`, `signal`, `grandeur`, `nom` |
+| **Type** | Modbus data type | `type`, `data type`, `datatype`, `format`, `taille`, `longueur` |
+| **Unit** | Engineering unit | `unit`, `units`, `unite`, `unité`, `symbole` |
+| **Factor** | Multiplier / Scale | `scale`, `factor`, `multiplier`, `ratio`, `gain`, `pas`, `coeff`, `multiplicateur` |
+| **Offset** | Addition bias | `offset`, `bias`, `decalage`, `b` |
+| **Action** | Access permission | `action`, `access`, `read/write`, `r/w`, `droits` |
 
-MIT.
+### 3. Normalized Data Types
+
+| Canonical Code | Common Vendor Names Recognized | Modbus Format |
+|---|---|---|
+| **U16** | `uint16`, `unsigned short`, `hex16`, `word`, `int16u` | 1 Modbus word (16-bit unsigned) |
+| **I16** | `int16`, `short`, `signed short`, `int16s` | 1 Modbus word (16-bit signed) |
+| **U32** | `uint32`, `unsigned long`, `dword`, `int32u`, `datetime` | 2 Modbus words (32-bit unsigned) |
+| **I32** | `int32`, `long`, `signed long`, `int32s` | 2 Modbus words (32-bit signed) |
+| **F32** | `float`, `float32`, `single`, `32-bit IEEE 754` | 2 Modbus words (single-precision float) |
+| **U64 / I64** | `uint64`, `int64`, `qword` | 4 Modbus words (64-bit integer) |
+| **F64** | `double`, `float64`, `64-bit IEEE 754` | 4 Modbus words (double-precision float) |
+| **BITS** | `bit16`, `bitmap`, `bitfield`, e.g. `30001_0_1` | Bitfield slice within a 16-bit register |
+| **STRING** | `string 20`, `str*30`, e.g. `30030_20` | ASCII character string |
+| **RAW** | `raw`, e.g. `30040_10` (even byte length) | Uninterpreted raw bytes sequence |
+
+---
+
+## 🚨 Beginner SOS & Troubleshooting FAQ
+
+Encountering an issue? Find your immediate solution here:
+
+| Error Message or Symptom | Probable Cause | Immediate Fix |
+|---|---|---|
+| **`python` is not recognized...** | Python was not added to your system PATH variable during installation. | Try typing `py` instead of `python`. If that fails, reinstall Python and make sure to check **Add python.exe to PATH**. |
+| **Running scripts is disabled on this system...** | Default Windows PowerShell execution security policy. | Run this command in PowerShell: `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` then re-run activation. |
+| **Application closes immediately when opening `.exe`** | The executable was double-clicked from inside the `.zip` without extraction. | Right-click the ZIP archive > **Extract All...**, and launch the `.exe` from the unzipped folder. |
+| **Blue screen: "Windows protected your PC"** | Standard Windows Defender SmartScreen notice for new open-source software. | Click **More info**, then click **Run anyway**. |
+| **No registers extracted (0 registers found)** | The PDF contains scanned pictures of tables rather than selectable text. | Run the PDF through an OCR tool (e.g. Adobe Acrobat or an online OCR tool) to make text selectable, then retry. |
+| **All register addresses are shifted by +1 or -1** | The manufacturer used 0-based indexing instead of 1-based indexing (or vice versa). | Add `--address-offset 1` or `--address-offset -1` to your command to re-align all addresses in bulk. |
+| **Address overlap validation error** | Multiple variables occupy the same Modbus memory words. | Check your manual. If the vendor intentionally documents alternative interpretations of the same word, use `--lenient` to permit generation. |
+| **Web browser does not open automatically** | The uvicorn server started, but terminal commands do not launch browsers automatically. | Open your browser manually and navigate to: `http://127.0.0.1:8000`. |
+| **`File already exists`** | The output CSV filename is already taken on your disk. | Pick a different destination name or pass the `--force` flag to permit overwriting. |
+
+---
+
+## 🛡️ Security & Data Integrity Model
+
+DefFileGenerator treats all external documentation files as **untrusted input**:
+
+- **CSV Formula Injection Mitigation (DDE Defense)**: Any cell beginning with active formula triggers (`=`, `+`, `-`, `@`, `|`, `%`, or fullwidth Unicode variants) is prefixed with an apostrophe `'` to prevent arbitrary spreadsheet code execution.
+- **XML Entity & XXE Defense**: XML extraction relies exclusively on `defusedxml.ElementTree`. External DTDs, external entity expansions, and "Billion Laughs" denial-of-service payloads are strictly rejected.
+- **Atomic File Writes**: Output files are staged into hidden sibling temporary files, synced to physical storage with `os.fsync`, and atomically renamed with `os.replace`. Partial or corrupted files are never left on disk.
+- **Upload Bounding**: Web uploads are streamed in 64 KiB chunks, strictly capped at 10 MiB, and restricted to 65,536 registers.
+
+See [`docs/security.md`](docs/security.md) for the complete security specification.
+
+---
+
+## 🧪 Quality Gates & Automated Tests
+
+The codebase is protected by **685 automated unit and integration tests**:
+
+```powershell
+# Run the entire test suite
+pytest
+
+# Check code formatting and linting
+ruff check .
+ruff format --check .
+
+# Static type verification
+mypy DefFileGenerator web
+```
+
+---
+
+## 📚 Full Documentation Index
+
+| Guide | Description |
+|---|---|
+| 📖 **[`QUICKSTART.md`](QUICKSTART.md)** | Practical walkthrough with real-world manufacturer file conversions (GoodWe, SMA, ABB). |
+| 📋 **[`docs/input-format.md`](docs/input-format.md)** | Technical reference for input columns, BITS compound rules, and data types. |
+| 🏛️ **[`docs/architecture.md`](docs/architecture.md)** | Detailed architecture flowcharts, component invariants, and public interfaces. |
+| 🛡️ **[`docs/security.md`](docs/security.md)** | In-depth security model, CSV injection defense, and automation protections. |
+| 💻 **[`DEVELOPER_GUIDE.md`](DEVELOPER_GUIDE.md)** | Onboarding manual and extension recipes for engineers working on the codebase. |
+| 🛠️ **[`docs/development.md`](docs/development.md)** | Developer workflow, Git guidelines, and static analysis checklists. |
+| 📊 **[`AUDIT_REPORT.md`](AUDIT_REPORT.md)** | Engineering audit report, test metrics, and hardening history. |
+| 📝 **[`CHANGELOG.md`](CHANGELOG.md)** | Chronological history of releases, performance improvements, and fixes. |
+
+---
+
+## 📄 License
+
+This project is licensed under the open-source **MIT License**. You are free to use, modify, and distribute it in personal and commercial environments.

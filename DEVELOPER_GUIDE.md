@@ -1,5 +1,23 @@
 # DefFileGenerator — Developer Architecture & Onboarding Guide
 
+<p align="center">
+  <a href="README.md"><b>README</b></a> •
+  <a href="docs/development.md"><b>Development</b></a> •
+  <a href="docs/architecture.md"><b>Architecture</b></a> •
+  <a href="docs/security.md"><b>Security</b></a> •
+  <a href="AUDIT_REPORT.md"><b>Audit Report</b></a>
+</p>
+
+## Table of contents
+
+1. [Purpose](#1-executive-summary--purpose)
+2. [Architecture](#2-system-architecture--data-flow)
+3. [WebdynSunPM invariants](#3-webdynsunpm-specification--domain-invariants)
+4. [Implementation details](#4-key-implementation-details--algorithms)
+5. [Extension recipes](#5-developer-recipes-how-to-extend-the-codebase)
+6. [Quality workflow](#6-development--quality-assurance-workflows)
+7. [Windows executables](#7-standalone-windows-executables-exe)
+
 Welcome to the **DefFileGenerator** project! This guide is written for software engineers maintaining, debugging, or extending this codebase. It documents the domain concepts, system architecture, data structures, invariants, and standard development workflows.
 
 ---
@@ -238,3 +256,7 @@ The orchestrator:
 ### CI/CD Release Automation (`.github/workflows/build-exe.yml`)
 - **Automated Workflow Artifacts**: On every push to `main`, GitHub Actions compiles the executables on `windows-latest`, validates CLI execution, and uploads the `.exe` and `.zip` artifacts (14-day retention).
 - **Automated GitHub Releases**: On every tag matching `v*` (e.g., `git tag v0.2.2 && git push --tags`), the workflow automatically drafts and publishes a GitHub Release with the standalone `.exe` binaries, zip bundle, and SHA-256 checksums.
+
+---
+
+[Back to README](README.md) · [Contributor checklist](docs/development.md) · [Security model](docs/security.md)
