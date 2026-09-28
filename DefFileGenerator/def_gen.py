@@ -169,7 +169,7 @@ _EXACT_REG_COUNTS: dict[str, int] = {
     "IPV6": 8,
 }
 
-_VALID_SPECIAL_TYPES: frozenset[str] = frozenset({"STRING", "BITS", "IP", "IPV6", "MAC"})
+_VALID_SPECIAL_TYPES: frozenset[str] = frozenset({"STRING", "BITS", "IP", "IPV6", "MAC", "RAW"})
 _COMMON_VALID_NUMERIC: frozenset[str] = frozenset(
     {
         "U8",
@@ -427,7 +427,7 @@ class Generator:
             "input register": MODBUS_INPUT,
             "input": MODBUS_INPUT,
         }
-        self.allowed_actions: list[str] = ["0", "1", "2", "4", "6", "7", "8", "9"]
+        self.allowed_actions: list[str] = ["0", "1", "2", "4", "6", "7", "8", "9", "10"]
         self.strict = strict
 
     @staticmethod
@@ -651,7 +651,7 @@ class Generator:
 
         Rules:
             - Non-compound types: single integer ("40001")
-            - STRING: compound address with byte length ("40001_20")
+            - STRING/RAW: compound address with byte length ("40001_20")
             - BITS: compound address with bit offset and length ("40001_0_16")
 
         Args:
@@ -669,7 +669,7 @@ class Generator:
         if RE_TYPE_STR_CONV.match(dtype_upper):
             dtype_upper = "STRING"
 
-        if dtype_upper == "STRING":
+        if dtype_upper in {"STRING", "RAW"}:
             is_valid_format = RE_ADDR_STRING.match(addr_str) is not None
         elif dtype_upper == "BITS":
             is_valid_format = RE_ADDR_BITS.match(addr_str) is not None
@@ -690,10 +690,15 @@ class Generator:
                 if strict:
                     return False
 
-            if dtype_upper == "STRING":
+            if dtype_upper in {"STRING", "RAW"}:
                 str_len = int(parts[1])
                 if str_len <= 0:
-                    logging.warning(f"STRING address '{address}' must have positive byte length")
+                    logging.warning(
+                        f"{dtype_upper} address '{address}' must have positive byte length"
+                    )
+                    return False
+                if dtype_upper == "RAW" and str_len % 2:
+                    logging.warning(f"RAW address '{address}' byte length must be a multiple of 2")
                     return False
 
             if dtype_upper == "BITS":
@@ -725,6 +730,7 @@ class Generator:
             - MAC: 3 registers (48 bits)
             - IPV6: 8 registers (128 bits)
             - STRING: ceil(byte_length / 2)
+            - RAW: byte_length / 2
 
         Args:
             dtype: Normalized data type.
@@ -743,7 +749,7 @@ class Generator:
             return 2
         elif RE_COUNT_64.match(dtype_upper):
             return 4
-        elif dtype_upper == "STRING" or dtype_upper.startswith("STR"):
+        elif dtype_upper == "STRING" or dtype_upper == "RAW" or dtype_upper.startswith("STR"):
             try:
                 if "_" in address:
                     return math.ceil(int(address.split("_")[1]) / 2)

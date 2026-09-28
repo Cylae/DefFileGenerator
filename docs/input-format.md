@@ -10,7 +10,8 @@ When a document table is read, the extractor samples rows, collects column heade
 
 1. **Exact Case-Insensitive Match**: Direct comparison against target internal names (`Address`, `Name`, `Type`, `Unit`, `Action`, `Factor`, `Offset`, `ScaleFactor`, `Length`, `StartBit`).
 2. **Pattern Match**: Comparison against pre-compiled synonym dictionaries in `Extractor.COLUMN_MAPPING`.
-3. **Partial Match**: Substring matching for descriptive vendor headers (e.g., `"Register Start Address"` -> `Address`).
+3. **Partial Match**: Substring matching for descriptive vendor headers (e.g., `"Register Start Address"` -> `Address`). Short semantic fields such as `Tag` are excluded to prevent collisions such as `voltage` -> `tag`.
+4. **Fragmented/Rotated PDF Fallback**: Conservative similarity matching recovers headings whose glyph order is reversed by PDF extraction (for example `s s e r d d A` -> `Address`). It runs only after exact and partial matching so normal documents retain priority.
 
 ---
 
@@ -82,6 +83,11 @@ The generator normalizes a broad range of vendor type representations:
 | **BITS** | `bit16`, `bitmap16`, `bits16`, `bit32`, `bitmap32` | Bitfield slice (`addr_startbit_length`) |
 | **IP / IPV6** | `ip`, `ip4`, `ipv4`, `ipv6` | Network IP addresses |
 | **STRING** | `string 20`, `str*30`, `string_16`, `STR` | Modbus ASCII character string |
+| **RAW** | `raw` | Uninterpreted register sequence; address uses `address_byte_length` and byte length must be a positive multiple of 2 |
+
+### Action codes
+
+WebdynSunPM action codes `0`, `1`, `2`, `4`, `6`, `7`, `8`, `9`, and `10` are preserved. Action `10` represents a constant and must not be replaced by a default action.
 
 ### BITS constraints
 
