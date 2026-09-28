@@ -130,7 +130,7 @@ class TestCliEntryPoints(unittest.TestCase):
             self.assertTrue(os.path.exists("test_out.csv"))
             with open("test_out.csv") as f:
                 content = f.read()
-                self.assertIn("#Index;Info1;Info2", content)
+                self.assertIn("modbusRTU;Inverter;SampleManufacturer;SampleModel", content)
 
     def test_def_file_gen_main_extract(self):
         from DefFileGenerator.main import main

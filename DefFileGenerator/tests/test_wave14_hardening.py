@@ -32,8 +32,7 @@ class TestWave14DefGen(unittest.TestCase):
         self.assertEqual(list(it), [])
 
         def empty_gen():
-            return
-            yield
+            return iter(())
 
         has_data, it = peek_generator(empty_gen())
         self.assertFalse(has_data)

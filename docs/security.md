@@ -36,7 +36,7 @@ Overlap validation distinguishes disjoint bit slices on the same register from g
 
 ## Web API Upload Boundary
 
-The FastAPI upload endpoints write request bodies incrementally rather than reading the entire upload into memory. Uploads are capped at 10 MiB and oversized requests receive HTTP `413`.
+The FastAPI upload endpoints write request bodies incrementally rather than reading the entire upload into memory. Uploads are capped at 10 MiB and oversized requests receive HTTP `413`. Conversion rejects more than 65,536 mapped registers, returns at most 500 preview rows, and validation returns at most 1,000 issue records.
 
 Internal parser/generator exceptions are logged server-side but are not reflected verbatim to API clients. Client error messages are intentionally generic so internal paths, library details, and customer-specific data cannot leak through exception text.
 

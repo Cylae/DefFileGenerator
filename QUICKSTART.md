@@ -4,7 +4,7 @@
 
 This tool **automatically extracts** register information from manufacturer documentation files and generates WebdynSunPM definition files.
 
-Simply provide a PDF, Excel, CSV, or XML file from the manufacturer, and it will:
+Provide a PDF, modern Excel (`.xlsx`, `.xlsm`, `.xltx`, `.xltm`), CSV, or XML file from the manufacturer, and it will:
 1. Find the register tables
 2. Extract addresses, names, data types, units, etc.
 3. Generate a ready-to-use WebdynSunPM definition file
@@ -33,7 +33,7 @@ pip install -e ".[web]"
 
 ### From PDF Documentation
 ```bash
-python doc_to_webdyn.py manufacturer_datasheet.pdf \
+deffilegen run manufacturer_datasheet.pdf \
     --manufacturer "Huawei" \
     --model "SUN2000-5KTL" \
     -o huawei_definition.csv
@@ -41,7 +41,7 @@ python doc_to_webdyn.py manufacturer_datasheet.pdf \
 
 ### From Excel Register Map
 ```bash
-python doc_to_webdyn.py register_map.xlsx \
+deffilegen run register_map.xlsx \
     --manufacturer "SolarEdge" \
     --model "SE5000H" \
     -o solaredge_definition.csv
@@ -49,7 +49,7 @@ python doc_to_webdyn.py register_map.xlsx \
 
 ### From CSV File
 ```bash
-python doc_to_webdyn.py registers.csv \
+deffilegen run registers.csv \
     --manufacturer "Fronius" \
     --model "Symo-5.0" \
     -o fronius_definition.csv
@@ -102,7 +102,7 @@ Register | Parameter Name    | Type   | Unit | Scale | Access
 
 Run:
 ```bash
-python doc_to_webdyn.py inverter_datasheet.pdf \
+deffilegen run inverter_datasheet.pdf \
     --manufacturer "GoodWe" \
     --model "GW5000-DNS" \
     -o goodwe_definition.csv
@@ -122,13 +122,13 @@ If you have an Excel file with sheets containing register information:
 
 ```bash
 # Process all sheets
-python doc_to_webdyn.py Inverter_Registers.xlsx \
+deffilegen run Inverter_Registers.xlsx \
     --manufacturer "SMA" \
     --model "STP-5000TL" \
     -o sma_definition.csv
 
 # Process specific sheet
-python doc_to_webdyn.py Inverter_Registers.xlsx \
+deffilegen run Inverter_Registers.xlsx \
     --sheet "Holding Registers" \
     --manufacturer "SMA" \
     --model "STP-5000TL" \
@@ -140,7 +140,7 @@ python doc_to_webdyn.py Inverter_Registers.xlsx \
 If you exported a CSV from the manufacturer's software:
 
 ```bash
-python doc_to_webdyn.py exported_registers.csv \
+deffilegen run exported_registers.csv \
     --manufacturer "ABB" \
     --model "PVS-5.0-TL" \
     -o abb_definition.csv
@@ -149,7 +149,7 @@ python doc_to_webdyn.py exported_registers.csv \
 ## Command-Line Options
 
 ```bash
-python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
+deffilegen run INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 ```
 
 ### Required Arguments
@@ -162,6 +162,12 @@ python doc_to_webdyn.py INPUT_FILE --manufacturer MFG --model MODEL [OPTIONS]
 - `--protocol PROTO` - Protocol name (default: modbusRTU)
 - `--category CAT` - Device category (default: Inverter)
 - `--sheet NAME` - Excel sheet name (processes all if not specified)
+- `--pages RANGE` - PDF pages such as `1,3-5`
+- `--mapping FILE` - Explicit JSON source-column mapping
+- `--address-offset N` - Shift normalized addresses once during extraction
+- `--forced-write CODE` - Header forced-writing code
+- `--force` - Replace an existing output file
+- `--no-validate` - Skip the default post-generation validation
 - `-v, --verbose` - Show detailed processing information
 
 ## Testing with Sample Files
@@ -170,7 +176,7 @@ Two sample files are included for testing:
 
 ### 1. CSV Sample
 ```bash
-python doc_to_webdyn.py sample_register_map.csv \
+deffilegen run template.csv \
     --manufacturer "TestMfg" \
     --model "TEST-1000" \
     -o test_csv_output.csv
@@ -178,7 +184,7 @@ python doc_to_webdyn.py sample_register_map.csv \
 
 ### 2. Excel Sample
 ```bash
-python doc_to_webdyn.py sample_inverter_registers.xlsx \
+deffilegen run sample_inverter_registers.xlsx \
     --manufacturer "TestMfg" \
     --model "TEST-2000" \
     -o test_excel_output.csv
@@ -192,7 +198,7 @@ python doc_to_webdyn.py sample_inverter_registers.xlsx \
 1. Check if your file has clearly labeled columns
 2. Run with `-v` (verbose) to see what's happening:
    ```bash
-   python doc_to_webdyn.py yourfile.pdf --manufacturer "X" --model "Y" -v
+   deffilegen run yourfile.pdf --manufacturer "X" --model "Y" -v
    ```
 3. Make sure tables in PDF are text-based (not scanned images)
 
@@ -228,7 +234,7 @@ After running the tool, you get a WebdynSunPM definition file that includes:
 ✅ Units
 ✅ Action codes
 
-**This file is ready to use with WebdynSunPM!**
+The generated file is syntactically ready for WebdynSunPM after validation. Confirm completeness against the manufacturer's source before field deployment.
 
 ## Tips for Best Results
 
@@ -242,10 +248,10 @@ After running the tool, you get a WebdynSunPM definition file that includes:
 
 Run with verbose mode to see detailed processing:
 ```bash
-python doc_to_webdyn.py yourfile.pdf --manufacturer "X" --model "Y" -v
+deffilegen run yourfile.pdf --manufacturer "X" --model "Y" -v
 ```
 
-Check the full README (DOC_PARSER_README.md) for:
+Check [`README.md`](README.md) and [`docs/input-format.md`](docs/input-format.md) for:
 - Complete column name recognition list
 - Full data type mapping table
 - Advanced usage examples
@@ -253,4 +259,4 @@ Check the full README (DOC_PARSER_README.md) for:
 
 ---
 
-**You're ready to go! Just point the tool at your manufacturer documentation and it will do the rest.**
+Image-only PDFs require OCR. PDFs with addresses drawn outside table cells may require preprocessing or an explicit mapping; the tool deliberately does not fabricate missing addresses.
