@@ -1,6 +1,9 @@
 # WebdynSunPM DefFileGenerator & Documentation Parser
 
-A production-grade Python library, CLI, and optional FastAPI interface for extracting Modbus register maps from heterogeneous manufacturer documentation (**PDF, Excel, CSV, XML**) and generating validated **WebdynSunPM definition CSV files**.
+A production-grade Python library, CLI, Windows desktop application, and optional FastAPI interface for extracting Modbus register maps from heterogeneous manufacturer documentation (**PDF, XLSX/XLSM/XLTX/XLTM, CSV, XML**) and generating validated **WebdynSunPM definition CSV files**.
+
+> [!IMPORTANT]
+> Extraction is evidence-based: the tool only emits registers whose address and fields can be recovered from the source. Image-only PDFs require OCR before import, and PDFs whose addresses are drawn outside table cells may need preprocessing or a custom mapping. Always validate and review a generated definition before deploying it to a gateway.
 
 ## Architecture
 
@@ -14,7 +17,7 @@ A production-grade Python library, CLI, and optional FastAPI interface for extra
             │
             ▼
 [ Mapper / Cleaner ]
-  exact → synonym → partial
+  exact → synonym → partial → PDF fallback
   column resolution
             │
             ▼
@@ -36,17 +39,18 @@ A production-grade Python library, CLI, and optional FastAPI interface for extra
 ### Extraction
 
 - **PDF** — `pdfplumber` table extraction with page selection and newline cleanup.
-- **Excel** — `openpyxl` in `read_only=True`, `data_only=True` mode.
+- **Excel** — `.xlsx`, `.xlsm`, `.xltx`, and `.xltm` through `openpyxl` in `read_only=True`, `data_only=True` mode; optional sheet selection.
 - **CSV** — BOM-aware decoding plus delimiter detection.
 - **XML** — `defusedxml.ElementTree`, rejecting DTD/entity based attacks.
 
 ### Column mapping
 
-The mapper resolves vendor-specific columns in three tiers:
+The mapper resolves vendor-specific columns in four ordered tiers:
 
 1. case-insensitive exact internal-name match;
 2. exact synonym match against `Extractor.COLUMN_MAPPING`;
-3. partial fallback match.
+3. partial fallback match (excluding the short `Tag` field to avoid matches such as `Voltage`);
+4. conservative similarity recovery for PDF headings extracted in fragmented or reversed glyph order.
 
 Explicit JSON overrides remain available through `--mapping`.
 
@@ -55,13 +59,13 @@ Explicit JSON overrides remain available through `--mapping`.
 The generator normalizes:
 
 - decimal, hexadecimal addresses (`0x1000`, `1000h`), and register ranges (`31657~31658`, `40001-40002`, `0x8232 ~ 0x82FE`);
-- register widths for `U8/I8`, `U16/I16`, `U32/I32/F32/IP`, `U64/I64/F64`, `MAC`, `IPV6`, `STRING`, and `BITS`;
+- register widths for `U8/I8`, `U16/I16`, `U32/I32/F32/IP`, `U64/I64/F64`, `MAC`, `IPV6`, `STRING`, `RAW`, and `BITS`;
 - manufacturer type aliases: `INT16U`/`INT32U`/`INT64U` (unsigned), `INT16S`/`INT32S`/`INT64S` (signed), `32-bit IEEE 754` (`F32`), `64-bit IEEE 754` (`F64`), `DATETIME` (`U32`), `IP4` (`IP`), and `HEX` (`U16`);
 - data type / endianness aliases (`_WB`, `_B`, `_W`, `swap`, `big endian`);
 - coefficients (`CoefA = Factor × 10^ScaleFactor`, `CoefB = Offset`);
 - tags, register type codes, and actions.
 
-`BITS` values use `address_startbit_length`. A slice must stay inside one 16-bit register, and strict validation detects overlapping slices on the same base register. See [`docs/input-format.md`](docs/input-format.md).
+`BITS` values use `address_startbit_length`. `STRING` and `RAW` values use `address_byte_length`; `RAW` lengths must be positive and even. A bit slice must stay inside one 16-bit register, and strict validation detects overlapping slices on the same base register. See [`docs/input-format.md`](docs/input-format.md).
 
 ## Requirements & installation
 
@@ -127,6 +131,9 @@ deffilegen generate extracted.csv \
 
 # Strict validation
 deffilegen validate sma_stp5000.csv
+
+# Allow address overlaps while retaining all other validation checks
+deffilegen validate sma_stp5000.csv --lenient
 ```
 
 Main subcommands:
@@ -136,6 +143,17 @@ Main subcommands:
 - `extract` — create an intermediate normalized register CSV;
 - `generate` — build a WebdynSunPM definition from normalized data;
 - `validate` — check an existing definition.
+
+Common workflow options include `--mapping FILE`, `--sheet NAME`, `--pages 1,3-5`, `--address-offset N`, and `--force`. `run` also supports `--no-validate`; generation defaults are `--protocol modbusRTU` and `--category Inverter`. Use `deffilegen <command> --help` for the authoritative option list. Commands return `0` on success, `1` on execution or validation failure, and `2` for invalid CLI usage.
+
+Template creation is available without an input file:
+
+```bash
+deffilegen generate --template --template-mode input -o input-template.csv
+deffilegen generate --template --template-mode definition -o definition-template.csv
+```
+
+Generated definitions are semicolon-delimited UTF-8-with-BOM files. Their header is `Protocol;Category;Manufacturer;Model;Forced writing code`; each register row contains `Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action`.
 
 ## Windows 11 Desktop Application
 
@@ -190,7 +208,9 @@ Endpoints:
 - `POST /api/convert`
 - `POST /api/validate`
 
-Uploads are streamed in bounded chunks and capped at **10 MiB**. Parser/generator exceptions are logged server-side while API clients receive sanitized error messages. Wildcard CORS is non-credentialed.
+Open `http://127.0.0.1:8000/` for the bundled frontend or `/docs` for OpenAPI. `POST /api/convert` accepts the source as multipart field `file` plus optional `manufacturer`, `model`, `protocol`, `category`, `address_offset`, and `forced_write` fields. `POST /api/validate` accepts a `.csv` or `.txt` definition as field `file`.
+
+Uploads are streamed in bounded chunks and capped at **10 MiB**; conversion is additionally capped at **65,536 mapped registers**, previews contain at most 500 rows, and validation returns at most 1,000 issues. Parser/generator exceptions are logged server-side while API clients receive sanitized error messages. Wildcard CORS is non-credentialed.
 
 ## Security & integrity
 
@@ -208,7 +228,7 @@ See [`docs/security.md`](docs/security.md) for the complete security model.
 
 ## Quality gates
 
-The established suite contains **610+ unit and integration tests** with 86% statement coverage. GitHub Actions runs the project across Python 3.10, 3.11, and 3.12 with:
+The established suite contains **680+ unit and integration tests**. GitHub Actions runs the project across Python 3.10, 3.11, and 3.12 with:
 
 ```text
 ruff check .
@@ -230,6 +250,7 @@ Additional stress batteries cover ambiguous column resolution, large register ma
 - [`docs/architecture.md`](docs/architecture.md) — internal architecture
 - [`docs/security.md`](docs/security.md) — security and integrity guarantees
 - [`docs/development.md`](docs/development.md) — contributor workflow
+- [`QUICKSTART.md`](QUICKSTART.md) — detailed end-user tutorial and troubleshooting
 - [`docs/booklet/def-file-generator-booklet.html`](docs/booklet/def-file-generator-booklet.html) — versioned source for the visual Canva booklet
 
 ## License

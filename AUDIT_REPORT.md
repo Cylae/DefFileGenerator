@@ -529,6 +529,13 @@ All validation steps were executed directly against the workspace:
 - **Representative equipmentiers**: Huawei (296), SofarSolar (905), Carlo Gavazzi (120), ElMeasure (304), Seven Sensor Solutions (8), Kaco (383), Atess (650), and Chint Power (554) all generated valid definitions.
 - **Known limitation**: image-only PDFs require OCR. PDFs that draw addresses outside table cells (for example some rotated ABB/PowerOne tables) require a future geometry-aware extractor; the mapper does not fabricate missing addresses.
 
+## 2026-09-28 Documentation and Dead-Code Audit
+
+- **Documentation scope**: reconciled `README.md`, both quick-start guides, the developer guide, architecture, security, input-format reference, changelog, and versioned HTML booklet with the current CLI help, package metadata, Web API implementation, generator format, and extractor behavior.
+- **Code reachability**: Vulture at 80% confidence found no unused production symbol after cleanup. Compatibility wrappers (`doc_to_webdyn.py`, `generate_webdyn_def.py`), build scripts, test datasets, and battery folders are referenced and were retained.
+- **Cleanup**: removed unreachable empty-generator test scaffolding and marked decorator-injected mock arguments intentionally unused. Generated caches/build outputs remain ignored rather than versioned.
+- **Regression policy**: no public entry point, fixture, compatibility surface, or tracked folder was removed without a concrete reachability and test justification.
+
 ---
 
 ## Validation Matrix

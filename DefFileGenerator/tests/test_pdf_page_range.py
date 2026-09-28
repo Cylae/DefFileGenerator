@@ -28,7 +28,7 @@ def create_mock_pdf(num_pages: int = 10):
 @patch("os.path.exists", return_value=True)
 @patch("builtins.open", new_callable=mock_open, read_data=b"%PDF-1.4 dummy content")
 @patch("pdfplumber.open")
-def test_pdf_page_range_single_int(mock_pdfplumber_open, mock_file_open, mock_exists):
+def test_pdf_page_range_single_int(mock_pdfplumber_open, _mock_file_open, _mock_exists):
     """Test passing a single integer as pages."""
     mock_pdf = create_mock_pdf(10)
     mock_pdfplumber_open.return_value.__enter__.return_value = mock_pdf
@@ -46,7 +46,7 @@ def test_pdf_page_range_single_int(mock_pdfplumber_open, mock_file_open, mock_ex
 @patch("os.path.exists", return_value=True)
 @patch("builtins.open", new_callable=mock_open, read_data=b"%PDF-1.4 dummy content")
 @patch("pdfplumber.open")
-def test_pdf_page_range_comma_string(mock_pdfplumber_open, mock_file_open, mock_exists):
+def test_pdf_page_range_comma_string(mock_pdfplumber_open, _mock_file_open, _mock_exists):
     """Test passing comma-separated page string."""
     mock_pdf = create_mock_pdf(10)
     mock_pdfplumber_open.return_value.__enter__.return_value = mock_pdf
@@ -62,7 +62,7 @@ def test_pdf_page_range_comma_string(mock_pdfplumber_open, mock_file_open, mock_
 @patch("os.path.exists", return_value=True)
 @patch("builtins.open", new_callable=mock_open, read_data=b"%PDF-1.4 dummy content")
 @patch("pdfplumber.open")
-def test_pdf_page_range_dash_string(mock_pdfplumber_open, mock_file_open, mock_exists):
+def test_pdf_page_range_dash_string(mock_pdfplumber_open, _mock_file_open, _mock_exists):
     """Test passing dash-range string notation (e.g. '3-6')."""
     mock_pdf = create_mock_pdf(10)
     mock_pdfplumber_open.return_value.__enter__.return_value = mock_pdf
@@ -78,7 +78,7 @@ def test_pdf_page_range_dash_string(mock_pdfplumber_open, mock_file_open, mock_e
 @patch("os.path.exists", return_value=True)
 @patch("builtins.open", new_callable=mock_open, read_data=b"%PDF-1.4 dummy content")
 @patch("pdfplumber.open")
-def test_pdf_page_range_mixed_string(mock_pdfplumber_open, mock_file_open, mock_exists):
+def test_pdf_page_range_mixed_string(mock_pdfplumber_open, _mock_file_open, _mock_exists):
     """Test passing mixed comma and dash range string (e.g. '1, 3-5, 9')."""
     mock_pdf = create_mock_pdf(10)
     mock_pdfplumber_open.return_value.__enter__.return_value = mock_pdf
@@ -94,7 +94,7 @@ def test_pdf_page_range_mixed_string(mock_pdfplumber_open, mock_file_open, mock_
 @patch("os.path.exists", return_value=True)
 @patch("builtins.open", new_callable=mock_open, read_data=b"%PDF-1.4 dummy content")
 @patch("pdfplumber.open")
-def test_pdf_page_range_inverted_dash_string(mock_pdfplumber_open, mock_file_open, mock_exists):
+def test_pdf_page_range_inverted_dash_string(mock_pdfplumber_open, _mock_file_open, _mock_exists):
     """Test passing inverted dash range notation (e.g. '5-3')."""
     mock_pdf = create_mock_pdf(10)
     mock_pdfplumber_open.return_value.__enter__.return_value = mock_pdf
@@ -111,7 +111,7 @@ def test_pdf_page_range_inverted_dash_string(mock_pdfplumber_open, mock_file_ope
 @patch("builtins.open", new_callable=mock_open, read_data=b"%PDF-1.4 dummy content")
 @patch("pdfplumber.open")
 def test_pdf_page_range_out_of_bounds_and_invalid(
-    mock_pdfplumber_open, mock_file_open, mock_exists
+    mock_pdfplumber_open, _mock_file_open, _mock_exists
 ):
     """Test out-of-bound pages and invalid page strings emit warnings and process valid pages."""
     mock_pdf = create_mock_pdf(5)

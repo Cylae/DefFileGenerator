@@ -38,7 +38,7 @@
   <div style="margin-top:70px;max-width:560px">
     <div class="kicker">PDF · EXCEL · CSV · XML</div>
     <div class="bigline" style="margin-top:10px">Extract. Normalize. Validate. Generate.</div>
-    <p class="body muted">A Python library, CLI and FastAPI interface engineered for repeatable register-map conversion, defensive parsing and field-ready CSV output.</p>
+    <p class="body muted">A Python library, CLI, Windows desktop app and FastAPI interface engineered for repeatable register-map conversion, defensive parsing and validated CSV output.</p>
   </div>
   <div class="footer"><span>Cylae / DefFileGenerator</span><span>01</span></div>
 </section>
@@ -58,7 +58,7 @@
     <div class="node">Generate<br><span class="caption">Webdyn CSV</span></div>
   </div>
   <div class="grid2" style="margin-top:38px">
-    <div class="card"><h3>Format-agnostic input</h3><p class="body muted">Vendor column names are mapped through exact, synonym and partial matching tiers.</p></div>
+    <div class="card"><h3>Format-agnostic input</h3><p class="body muted">Vendor columns are mapped through exact, synonym, partial and conservative PDF glyph-recovery tiers.</p></div>
     <div class="card"><h3>Deterministic output</h3><p class="body muted">Addresses, data types, coefficients, tags and action codes are normalized before export.</p></div>
     <div class="card"><h3>CLI + API</h3><p class="body muted">Use the command line for automation or the FastAPI interface for browser-based conversion.</p></div>
     <div class="card"><h3>Validation first</h3><p class="body muted">Generated definitions can be checked for malformed types, ranges, tags and address collisions.</p></div>
@@ -93,7 +93,7 @@
   <table>
     <tr><th>Semantic type</th><th>Notation</th><th>Example</th></tr>
     <tr><td>Scalar register</td><td>address</td><td><b>40001</b></td></tr>
-    <tr><td>String</td><td>address_length</td><td><b>30030_20</b></td></tr>
+    <tr><td>String / RAW</td><td>address_byte_length</td><td><b>30030_20</b></td></tr>
     <tr><td>Bit slice</td><td>address_startbit_length</td><td><b>30001_8_4</b></td></tr>
   </table>
   <div class="grid2" style="margin-top:32px">
@@ -111,7 +111,7 @@
     <div class="card"><h3>CSV injection</h3><p class="body muted">Formula-triggering values and Unicode variants are escaped before spreadsheet consumption.</p></div>
     <div class="card"><h3>XXE protection</h3><p class="body muted">Untrusted XML is parsed through defusedxml; DTD and external entity attacks are rejected.</p></div>
     <div class="card"><h3>Atomic output</h3><p class="body muted">Definitions are staged, fsynced and atomically replaced so a failed write cannot truncate the existing production file.</p></div>
-    <div class="card"><h3>Bounded uploads</h3><p class="body muted">The web API streams request bodies in chunks and enforces a 10 MiB upload ceiling.</p></div>
+    <div class="card"><h3>Bounded uploads</h3><p class="body muted">The web API enforces 10 MiB uploads, 65,536 mapped registers, 500 preview rows and 1,000 returned issues.</p></div>
     <div class="card"><h3>Error privacy</h3><p class="body muted">Internal exception details stay in server logs instead of leaking filesystem paths or parser internals to clients.</p></div>
     <div class="card"><h3>Automation trust</h3><p class="body muted">Privileged auto-merge only accepts owner-authored, same-repository PRs after successful CI.</p></div>
   </div>
@@ -124,7 +124,7 @@
   <h2>CI checks what users actually receive.</h2>
   <div class="grid3" style="margin-top:26px">
     <div class="card"><div class="metric">3</div><div class="caption">Python runtimes<br>3.10 · 3.11 · 3.12</div></div>
-    <div class="card"><div class="metric">500+</div><div class="caption">unit / integration tests in the established suite</div></div>
+    <div class="card"><div class="metric">680+</div><div class="caption">unit / integration tests in the established suite</div></div>
     <div class="card"><div class="metric">1 wheel</div><div class="caption">built and inspected for runtime web assets</div></div>
   </div>
   <div class="rule"></div>
@@ -159,6 +159,7 @@ uvicorn web.app:app --host 127.0.0.1 --port 8000</div>
     <div class="card"><h3>Extract only</h3><p class="mini muted">deffilegen extract register-map.xlsx --sheet Registers -o normalized.csv</p></div>
     <div class="card"><h3>Generate only</h3><p class="mini muted">deffilegen generate normalized.csv --manufacturer SMA --model STP5000 -o sma.csv</p></div>
   </div>
+  <p class="caption" style="margin-top:24px">PDF extraction is table-based and does not perform OCR or invent missing addresses. Review completeness against the source manual.</p>
   <div class="footer"><span>Getting started</span><span>07</span></div>
 </section>
 

@@ -35,7 +35,7 @@ The codebase strictly enforces a layered architecture where the core domain logi
 │  - Smart header detection & Modbus keyword scoring     │
 │  - Multi-row header banner merging                     │
 │  - Statistical column type inference fallback          │
-│  - Two-pass heuristic column mapping                   │
+│  - Exact, synonym, partial, and PDF fallback mapping   │
 └───────────────────────────┬────────────────────────────┘
                             │ Yields intermediate register dicts
                             ▼
@@ -63,7 +63,7 @@ The codebase strictly enforces a layered architecture where the core domain logi
 
 ## 3. WebdynSunPM Specification & Domain Invariants
 
-WebdynSunPM data loggers communicate with Modbus RTU/TCP inverters, meters, and weather stations. The gateway expects a semicolon-delimited (`;`), UTF-8-sig or UTF-16 definition CSV file structured as follows:
+WebdynSunPM data loggers communicate with Modbus RTU/TCP inverters, meters, and weather stations. The generator writes semicolon-delimited (`;`) UTF-8-with-BOM definition CSV files; the validator also accepts supported legacy encodings.
 
 ### Line 1: Header Row
 | Column Index | Field Name | Description | Example |
@@ -72,8 +72,8 @@ WebdynSunPM data loggers communicate with Modbus RTU/TCP inverters, meters, and 
 | 1 | `Category` | Equipment classification | `Inverter`, `Meter`, `Sensor` |
 | 2 | `Manufacturer` | Equipment brand | `Huawei`, `ABB`, `SMA` |
 | 3 | `Model` | Device model identifier | `SUN2000`, `STP5000` |
-| 4 | `ForcedWrite` | Optional forced write command | Empty or command string |
-| 5–10 | Empty | Remaining columns on line 1 are empty semicolons | `;;;;;;` |
+| 4 | `Forced writing code` | Optional forced write command | Empty or command string |
+| 5–10 | Empty | Padding so the header has the same width as register rows | `;;;;;;` |
 
 ### Lines 2+: Register Rows
 | Column Index | Field Name | Type | Description |
@@ -81,14 +81,14 @@ WebdynSunPM data loggers communicate with Modbus RTU/TCP inverters, meters, and 
 | 0 | `Index` | Integer | 1-based sequential line counter (`1`, `2`, `3`, ...) |
 | 1 | `Info1` | Integer | Modbus function code category: `1`=Coil, `2`=Discrete Input, `3`=Holding Register, `4`=Input Register |
 | 2 | `Info2` | String | Modbus address (e.g. `40001`, `40001_20` for strings, `40001_0_16` for bits) |
-| 3 | `Info3` | String | Normalized Webdyn type: `U16`, `I16`, `U32_WB`, `F32_WB`, `STRING`, `BITS`, etc. |
+| 3 | `Info3` | String | Normalized Webdyn type: `U16`, `I16`, `U32_WB`, `F32_WB`, `STRING`, `RAW`, `BITS`, etc. |
 | 4 | `Info4` | String | Reserved for future firmware expansion (always empty string `""`) |
 | 5 | `Name` | String | Human-readable variable description (e.g. `"Active Power"`) |
 | 6 | `Tag` | String | Unique variable identifier, lowercase starting with a letter (`active_power`) |
 | 7 | `CoefA` | Float | Multiplier factor formatted to 6 decimal places ($a \cdot 10^{\text{scale}}$) |
 | 8 | `CoefB` | Float | Offset addition bias formatted to 6 decimal places |
 | 9 | `Unit` | String | Engineering measurement unit (`V`, `A`, `W`, `kW`, `Hz`, `°C`) |
-| 10 | `Action` | String | Access permission: `"4"`=Read-Only (RO), `"1"`=Write/Read-Write (RW) |
+| 10 | `Action` | String | Webdyn action code: `0`, `1`, `2`, `4`, `6`, `7`, `8`, `9`, or `10` (constant) |
 
 ### Scaling Polynomial Formula
 Webdyn loggers compute the physical reading using the linear equation:
@@ -169,8 +169,8 @@ All code must pass static typing, linting, and automated tests before committing
 
 ### Running Tests
 ```powershell
-# Run entire test suite (590+ tests)
-pytest
+# Run the entire environment-matched suite (680+ tests)
+uv run --all-extras pytest
 
 # Run tests fast without external equipment benchmark
 pytest DefFileGenerator/tests/test_def_gen.py DefFileGenerator/tests/test_extractor.py
@@ -195,12 +195,12 @@ mypy DefFileGenerator web
 
 ### Static Security Analysis
 ```powershell
-bandit -r DefFileGenerator web
+bandit -r DefFileGenerator web -ll
 ```
 
 ### Packaging & Build
 ```powershell
-python -m build
+uv build
 ```
 
 ---

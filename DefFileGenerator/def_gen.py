@@ -1720,32 +1720,19 @@ def generate_template(output_file: str | None, mode: str = "input") -> None:
     """
     if mode == "definition":
         headers = [
-            "#Index",
-            "Info1",
-            "Info2",
-            "Info3",
-            "Info4",
-            "Name",
-            "Tag",
-            "CoefA",
-            "CoefB",
-            "Unit",
-            "Action",
+            "modbusRTU",
+            "Inverter",
+            "SampleManufacturer",
+            "SampleModel",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
         ]
         rows = [
-            [
-                "modbusRTU",
-                "Inverter",
-                "SampleManufacturer",
-                "SampleModel",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-            ],
             [
                 "1",
                 "3",
@@ -1818,7 +1805,8 @@ def generate_template(output_file: str | None, mode: str = "input") -> None:
     outfile = None
     try:
         if output_file:
-            outfile = open(output_file, "w", newline="", encoding="utf-8")
+            encoding = "utf-8-sig" if mode == "definition" else "utf-8"
+            outfile = open(output_file, "w", newline="", encoding=encoding)
             writer = csv.writer(outfile, delimiter=delimiter)
         else:
             writer = csv.writer(sys.stdout, delimiter=delimiter)

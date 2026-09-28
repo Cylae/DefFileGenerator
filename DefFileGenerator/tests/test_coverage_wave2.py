@@ -129,6 +129,9 @@ class TestParseNumeric(unittest.TestCase):
 
 
 class TestApplyAddressOffset(unittest.TestCase):
+    def setUp(self):
+        logging.disable(logging.NOTSET)
+
     def test_empty_address_returns_empty(self):
         result = Generator.apply_address_offset("", 10)
         self.assertEqual(result, "")
@@ -368,7 +371,7 @@ class TestRunGenerator(unittest.TestCase):
         run_generator(config, input_data=input_data)
         with open(out) as f:
             content = f.read()
-        self.assertIn("#Index", content)
+        self.assertIn("modbusRTU;Inverter;SampleManufacturer;SampleModel", content)
 
     def test_no_input_file_logs_error(self):
         config = GeneratorConfig(

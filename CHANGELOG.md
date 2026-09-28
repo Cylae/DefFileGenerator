@@ -25,6 +25,8 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- **Documentation and Repository Hygiene.** Synchronized the README, quick starts, architecture, security, input-format, developer guide, and visual booklet with the current CLI, Web API limits, supported formats, RAW/action semantics, PDF extraction boundaries, packaging, and validation behavior. Removed dead test scaffolding identified by static analysis while retaining tested compatibility entry points and fixtures.
+- **Definition Template Validity.** Fixed `generate --template --template-mode definition` so its first row is the required Webdyn metadata header instead of an incompatible `#Index` schema row; definition templates now use UTF-8 with BOM and pass strict validation.
 - **Cross-Manufacturer PDF Completeness.** Added last-resort recognition for fragmented and reversed PDF headings without overriding normal exact/partial mappings. This recovered 7,513 previously omitted registers across 35 real manufacturer documents with no per-document regression in the 399-document corpus.
 - **False Tag Detection.** Prevented the short token `tag` from partially matching headers such as `Voltage range`, which produced duplicate tags and invalid SofarSolar definitions.
 - **Official WebdynSunPM Type Support.** Added the documented `RAW` register-sequence type with positive, even byte-length validation and restored documented constant action code `10`.

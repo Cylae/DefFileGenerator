@@ -1,12 +1,12 @@
 # Input Formats & Column Mapping Mechanics
 
-The extractor pipeline accepts manufacturer register maps in **PDF, XLSX, CSV, or XML** formats. Column headers vary across manufacturers (e.g., Huawei, SMA, SolarEdge, Schneider). The extractor automatically maps diverse input headers using staged heuristic matching and pattern dictionaries.
+The extractor pipeline accepts manufacturer register maps in **PDF, XLSX/XLSM/XLTX/XLTM, CSV, or XML** formats. Legacy `.xls` files are not supported by `openpyxl`. Column headers vary across manufacturers; the extractor automatically maps diverse input headers using staged heuristic matching and pattern dictionaries.
 
 ---
 
 ## 🔍 Heuristic Mapping Logic
 
-When a document table is read, the extractor samples rows, collects column headers, and evaluates them in three sequential tiers:
+When a document table is read, the extractor samples rows, collects column headers, and evaluates them in four sequential tiers:
 
 1. **Exact Case-Insensitive Match**: Direct comparison against target internal names (`Address`, `Name`, `Type`, `Unit`, `Action`, `Factor`, `Offset`, `ScaleFactor`, `Length`, `StartBit`).
 2. **Pattern Match**: Comparison against pre-compiled synonym dictionaries in `Extractor.COLUMN_MAPPING`.
@@ -63,6 +63,7 @@ deffilegen extract datasheet.xlsx --mapping custom_mapping.json -o registers.csv
 3. **Register Ranges**: `31657~31658`, `40001-40002`, `0x8232 ~ 0x82FE`, `30001..30002` -> automatically extracts base start register (`31657`, `40001`, `33330`, `30001`).
 4. **Compound Bitfields (`BITS`)**: `address_startbit_length`, for example `30001_0_1`.
 5. **Compound Strings (`STR<n>`)**: `address_length`, for example `30030_20`.
+6. **Raw Register Sequences (`RAW`)**: `address_byte_length`, for example `30040_10` for five Modbus registers. The byte length must be positive and divisible by two.
 
 ---
 
@@ -108,3 +109,23 @@ Examples:
 | `30001_0_0` | invalid | empty bit slice |
 
 Strict validation also checks bit-level overlap. Disjoint slices on the same register are valid (`30001_0_4` and `30001_4_4`); overlapping slices (`30001_0_4` and `30001_2_4`) are rejected.
+
+## Output definition structure
+
+Definitions use semicolons and UTF-8 with BOM. The first row has five metadata fields followed by six empty fields so every row has eleven columns:
+
+```text
+Protocol;Category;Manufacturer;Model;Forced writing code;;;;;;
+```
+
+Every following row has eleven fields:
+
+```text
+Index;Info1;Info2;Info3;Info4;Name;Tag;CoefA;CoefB;Unit;Action
+```
+
+For Modbus, `Info1` is `1` (coil), `2` (discrete input), `3` (holding register), or `4` (input register); `Info2` contains the normalized address notation and `Info3` the normalized data type. `CoefA` is computed from the source factor and scale factor, while `CoefB` is the offset.
+
+## Extraction boundaries
+
+The PDF reader consumes tables exposed by `pdfplumber`; it does not perform OCR and does not infer addresses that are absent from extracted cells. For difficult manuals, restrict processing with `--pages`, OCR image-only pages externally, or use `--mapping` after inspecting an intermediate `extract` CSV. This conservative behavior prevents fabricated registers.
