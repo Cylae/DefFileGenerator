@@ -518,6 +518,17 @@ All validation steps were executed directly against the workspace:
 - **Artifact evidence**: A clean `uv build` produced a 58,750-byte wheel with 15 archive entries, all five required web runtime assets, and zero `DefFileGenerator/tests/` entries. The prior wheel was 157,192 bytes and contained 53 test entries.
 - **Strategy decision**: **KEEP with focused remediation**. The architecture and technology remain appropriate; the defect was isolated to distribution configuration and did not justify broader replacement.
 
+## 2026-09-28 Multi-Manufacturer PDF Completeness Audit
+
+- **Authoritative specification**: WebdynSunPM User Manual v1.1, sections 2.3.3 and Modbus/SunSpec (pages 35-41), plus the working `HUAWEI_V4.csv` definition as a structural quality reference rather than a register-content oracle.
+- **Corpus**: 515 PDFs selected by coherent Modbus/register/protocol filenames; content inspection confirmed 399 Modbus register documents.
+- **Baseline**: 323 documents produced mapped registers, 65,128 registers were mapped, 323 definitions were generated, and 322 were valid.
+- **Findings**: fragmented/reversed PDF headings caused complete table loss; partial `Tag` matching interpreted `Voltage range` as a tag column; documented `RAW` values and action `10` were rejected.
+- **Remediation**: introduced last-resort scored header recovery after normal mapping, made Tag recognition exact-only, added RAW address/width semantics, and accepted action 10.
+- **Differential result**: all 399 confirmed documents retested; 326 produced definitions, all 326 definitions validated, 72,641 registers were mapped, no parser exceptions occurred, and no document lost registers relative to baseline. Net recovery: 7,513 registers across 35 documents.
+- **Representative equipmentiers**: Huawei (296), SofarSolar (905), Carlo Gavazzi (120), ElMeasure (304), Seven Sensor Solutions (8), Kaco (383), Atess (650), and Chint Power (554) all generated valid definitions.
+- **Known limitation**: image-only PDFs require OCR. PDFs that draw addresses outside table cells (for example some rotated ABB/PowerOne tables) require a future geometry-aware extractor; the mapper does not fabricate missing addresses.
+
 ---
 
 ## Validation Matrix

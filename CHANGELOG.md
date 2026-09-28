@@ -25,6 +25,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- **Cross-Manufacturer PDF Completeness.** Added last-resort recognition for fragmented and reversed PDF headings without overriding normal exact/partial mappings. This recovered 7,513 previously omitted registers across 35 real manufacturer documents with no per-document regression in the 399-document corpus.
+- **False Tag Detection.** Prevented the short token `tag` from partially matching headers such as `Voltage range`, which produced duplicate tags and invalid SofarSolar definitions.
+- **Official WebdynSunPM Type Support.** Added the documented `RAW` register-sequence type with positive, even byte-length validation and restored documented constant action code `10`.
 - **Production Wheel Contents.** Excluded `DefFileGenerator.tests` and stress utilities from the runtime wheel while preserving the explicitly declared web frontend assets. The CI artifact inspection now rejects wheels that omit required web files or bundle the test package.
 - **Direct Script Execution for Desktop GUI (`DefFileGenerator/gui.py`).** Added parent directory to `sys.path[0]` before package imports, resolving `ModuleNotFoundError: No module named 'DefFileGenerator'` when executing `python DefFileGenerator/gui.py` directly from uninstalled environments. Added headless `--help` and `--version` CLI flags to desktop GUI launcher.
 - **Surplus CSV Column Exception Hardening (`DefFileGenerator/extractor.py`).** Resolved `AttributeError: 'list' object has no attribute 'strip'` when extracting CSV files containing empty leading cells and trailing overflow columns (where `csv.DictReader` assigns a list under key `None`). Filtered `None` overflow keys from yielded dictionaries.

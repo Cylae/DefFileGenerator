@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import difflib
 import io
 import itertools
 import json
@@ -114,6 +115,7 @@ RE_HEURISTIC_TYPE = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.
 RE_HEURISTIC_RW = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
 RE_HEURISTIC_UNIT = re.compile(r"^(v|a|w|kw|kwh|mwh|var|kvar|hz|%|deg|c|℃)$", re.IGNORECASE)
 RE_COMPACT_DIGITS = re.compile(r"^\d+$")
+RE_HEADER_ALNUM = re.compile(r"[^a-z0-9]+")
 
 # -----------------------------------------------------------------------------
 # Domain Keyword Sets (Frozen for O(1) Fast Membership Checks)
@@ -270,6 +272,7 @@ class Extractor:
             "nom",
             "grandeur",
             "quantity",
+            "register",
         ],
         "Type": [
             "data type",
@@ -351,6 +354,38 @@ class Extractor:
             str: Normalized data type code.
         """
         return Generator.normalize_type(t)
+
+    @staticmethod
+    def _fuzzy_header_score(source: str, patterns: Iterable[str]) -> float:
+        """Recognize PDF headers whose glyph order was fragmented or reversed.
+
+        Some vendor PDFs store rotated table headings in reverse drawing order.  Text
+        extraction consequently turns ``Address`` into ``s s e r d d a`` and
+        ``Data type`` into ``e p y t a at D``.  Matching is deliberately restricted
+        to reasonably long header labels to avoid treating short values as columns.
+        """
+        source_compact = RE_HEADER_ALNUM.sub("", source.lower())
+        if len(source_compact) < 4:
+            return 0.0
+
+        candidates = (source_compact, source_compact[::-1])
+        best_score = 0.0
+        for pattern in patterns:
+            pattern_compact = RE_HEADER_ALNUM.sub("", pattern.lower())
+            if len(pattern_compact) < 4:
+                continue
+            for candidate in candidates:
+                if pattern_compact in candidate:
+                    best_score = max(best_score, len(pattern_compact) / len(candidate))
+                best_score = max(
+                    best_score,
+                    difflib.SequenceMatcher(None, candidate, pattern_compact).ratio(),
+                )
+        return best_score
+
+    @staticmethod
+    def _fuzzy_header_matches(source: str, patterns: Iterable[str]) -> bool:
+        return Extractor._fuzzy_header_score(source, patterns) >= 0.75
 
     @staticmethod
     def _infer_table_columns(table: list[list[Any]]) -> list[str] | None:
@@ -1022,6 +1057,8 @@ class Extractor:
             for target in detection_order:
                 if target in col_map:
                     continue
+                if target == "Tag":
+                    continue
                 patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
                 clean_patterns = [RE_CLEAN_WHITESPACE.sub("", p) for p in patterns]
                 for src_col in all_keys:
@@ -1045,6 +1082,26 @@ class Extractor:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
                         break
+
+            # Stage 4: recover fragmented/reversed headings only as a last resort.
+            for target in detection_order:
+                if target in col_map:
+                    continue
+                if target in {"RegisterType", "Action", "Tag", "ScaleFactor"}:
+                    continue
+                patterns = self.COLUMN_MAPPING.get(target, [target.lower()])
+                best_source = None
+                best_score = 0.0
+                for src_col in all_keys:
+                    if src_col in used_src_cols:
+                        continue
+                    score = self._fuzzy_header_score(str(src_col), patterns)
+                    if score > best_score:
+                        best_source = src_col
+                        best_score = score
+                if best_source is not None and best_score >= 0.75:
+                    col_map[target] = best_source
+                    used_src_cols.add(best_source)
 
             if "Address" not in col_map:
                 continue
