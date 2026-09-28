@@ -6,6 +6,8 @@ import subprocess
 import sys
 import unittest
 
+from setuptools import find_packages  # type: ignore[import-untyped]
+
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 
@@ -44,6 +46,17 @@ def _locate_script(name: str) -> str | None:
 
 
 class TestPackagingAndEntrypoints(unittest.TestCase):
+    def test_production_package_discovery_excludes_tests(self):
+        packages = find_packages(
+            where=REPO_ROOT,
+            include=("DefFileGenerator*", "web*"),
+            exclude=("DefFileGenerator.tests*",),
+        )
+
+        self.assertIn("DefFileGenerator", packages)
+        self.assertIn("web", packages)
+        self.assertNotIn("DefFileGenerator.tests", packages)
+
     def test_package_metadata(self):
         dist = importlib.metadata.distribution("def-file-generator")
         self.assertEqual(dist.metadata["Version"], "0.2.1")

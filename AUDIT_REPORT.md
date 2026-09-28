@@ -510,6 +510,16 @@ All validation steps were executed directly against the workspace:
 
 ---
 
+## 2026-09-28 Packaging Audit Addendum
+
+- **Finding**: The production wheel contained the complete `DefFileGenerator.tests` package, including stress utilities. Package discovery excluded no subpackages, and setuptools' implicit package-data behavior copied the tests back into wheels built from the source distribution.
+- **Remediation**: Excluded `DefFileGenerator.tests*`, disabled implicit package-data inclusion, and retained the web frontend through the existing explicit `web = ["static/*"]` declaration.
+- **Regression protection**: Package-discovery coverage was added to `test_packaging_and_entrypoints.py`; CI now inspects the built archive and fails if runtime web assets are missing or any test module is bundled.
+- **Artifact evidence**: A clean `uv build` produced a 58,750-byte wheel with 15 archive entries, all five required web runtime assets, and zero `DefFileGenerator/tests/` entries. The prior wheel was 157,192 bytes and contained 53 test entries.
+- **Strategy decision**: **KEEP with focused remediation**. The architecture and technology remain appropriate; the defect was isolated to distribution configuration and did not justify broader replacement.
+
+---
+
 ## Validation Matrix
 
 | Validation | Result | Evidence |

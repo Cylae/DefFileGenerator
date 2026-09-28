@@ -60,9 +60,15 @@ jobs:
               "web/static/styles.css",
           }
           with zipfile.ZipFile(wheels[0]) as archive:
-              missing = sorted(required.difference(archive.namelist()))
+              packaged_files = archive.namelist()
+              missing = sorted(required.difference(packaged_files))
+              bundled_tests = sorted(
+                  name for name in packaged_files if name.startswith("DefFileGenerator/tests/")
+              )
           if missing:
               raise SystemExit(f"Wheel is missing web runtime files: {missing}")
+          if bundled_tests:
+              raise SystemExit(f"Wheel unexpectedly contains tests: {bundled_tests}")
           PY
       - name: Run tests and publish coverage baseline
         run: python -m pytest --cov=DefFileGenerator --cov=web --cov-report=term-missing --cov-report=xml
