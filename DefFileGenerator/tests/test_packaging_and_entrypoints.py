@@ -44,6 +44,13 @@ def _locate_script(name: str) -> str | None:
 
 
 class TestPackagingAndEntrypoints(unittest.TestCase):
+    def test_production_package_discovery_excludes_tests(self):
+        with open(os.path.join(REPO_ROOT, "pyproject.toml"), encoding="utf-8") as config_file:
+            build_config = config_file.read()
+
+        self.assertIn("include-package-data = false", build_config)
+        self.assertIn('exclude = ["DefFileGenerator.tests*"]', build_config)
+
     def test_package_metadata(self):
         dist = importlib.metadata.distribution("def-file-generator")
         self.assertEqual(dist.metadata["Version"], "0.2.1")
