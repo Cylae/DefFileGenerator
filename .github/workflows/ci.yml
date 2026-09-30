@@ -53,6 +53,9 @@ jobs:
               raise SystemExit(f"Expected exactly one wheel, found: {wheels}")
 
           required = {
+              "generate_webdyn_def.py",
+              "doc_to_webdyn.py",
+              "DefFileGenerator/io_utils.py",
               "web/__init__.py",
               "web/app.py",
               "web/static/app.js",

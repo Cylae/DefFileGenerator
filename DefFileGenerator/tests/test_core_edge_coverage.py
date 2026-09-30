@@ -10,7 +10,7 @@ from DefFileGenerator.def_gen import (
     WebdynDefConfig,
     run_generator,
 )
-from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.extractor import ExtractionError, Extractor
 
 
 class TestCoreEdgeCoverage(unittest.TestCase):
@@ -94,8 +94,10 @@ class TestCoreEdgeCoverage(unittest.TestCase):
         try:
             tables = list(extractor.extract_from_csv(f_path))
             self.assertEqual(len(tables), 1)
-            rows = list(tables[0])
-            self.assertEqual(len(rows), 0)
+            # Corrupt input now fails explicitly rather than silently returning
+            # an empty or partially decoded register table.
+            with self.assertRaises(ExtractionError):
+                list(tables[0])
         finally:
             if os.path.exists(f_path):
                 os.remove(f_path)

@@ -241,7 +241,7 @@ def create_zip_archive(version: str) -> Path:
     if checksum_file.is_file():
         files_to_pack.append(checksum_file)
 
-    for doc in ["README.md", "QUICKSTART.md"]:
+    for doc in ["README.md", "QUICKSTART.md", "LICENSE"]:
         doc_path = REPO_ROOT / doc
         if doc_path.is_file():
             files_to_pack.append(doc_path)

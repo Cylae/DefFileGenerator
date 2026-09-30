@@ -110,6 +110,10 @@ The generator parses and normalizes diverse vendor notations:
 5. **Character Strings (`STR<n>`)**: `address_length` notation (e.g. `30030_20` for 20 characters).
 6. **Raw Bytes (`RAW`)**: `address_byte_length` notation (e.g. `30040_10` for 5 Modbus 16-bit words). Byte length must be an even positive integer.
 
+Every register's complete occupied span must fit in the address space `0..65535`, including multiword numeric types, strings, raw bytes, and network-address types. For example, `U16` at `65535` is valid, while `U32` there extends past the final Modbus word and fails strict validation.
+
+Numeric Excel addresses equal to zero are preserved. A supplied `Factor`, including zero, takes precedence over `Gain`; a reciprocal gain retains its precision until final six-decimal coefficient formatting. When `RAW` uses a separate `Length` column, that length is interpreted in bytes; a `Quantity` or register-count column is converted from words to bytes.
+
 ---
 
 ## 🔠 Normalized Data Types & Aliases

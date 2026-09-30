@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License" />
-  <img src="https://img.shields.io/badge/Tests-685%20passed-success?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests 685 passed" />
+  <img src="https://github.com/Cylae/DefFileGenerator/actions/workflows/ci.yml/badge.svg" alt="Continuous integration" />
   <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
 </p>
 
@@ -281,11 +281,11 @@ Validate your installation immediately using the sample files provided in the re
 1. Launch the application by double-clicking **`DefFileGenerator-GUI.exe`** or **`launch_gui.bat`** (or execute `deffilegen-gui` in your activated terminal).
 2. The modern Windows 11 application window opens.
 3. Click **Browse** on the *Source Document* row and select the included sample file:  
-   `sample_inverter_registers.xlsx` (or `template.csv`).
+   `sample_inverter_registers.xlsx`. You can also create a CSV template with `deffilegen template template.csv`.
 4. Notice that **Manufacturer** and **Model** fields auto-fill if detected from the filename.
 5. Set your destination CSV file path (or keep the suggested default).
 6. Click the green **Generate Definition File** button.
-7. In under 2 seconds, the progress bar completes, logs stream in the console, and the live preview table at the bottom populates with all normalized registers!
+7. When conversion completes, inspect the logs and the preview of the generated registers. Processing time depends on the source document.
 8. Click the **Validator** tab to run instant verification on your generated file.
 
 ---
@@ -304,10 +304,7 @@ deffilegen validate my_inverter.csv
 
 The CLI outputs a clear validation audit report:
 ```text
-Validation report for my_inverter.csv:
-Total errors: 0
-Total warnings: 0
-Summary: Valid definition file.
+INFO: Validation successful: my_inverter.csv
 ```
 
 ---
@@ -343,7 +340,7 @@ uvicorn web.app:app --host 127.0.0.1 --port 8000
 
 Built using **CustomTkinter** to provide a seamless, modern desktop experience:
 - 🎨 **Adaptive Light / Dark Themes** matching Windows 11 system preferences.
-- ⚡ **Asynchronous Background Worker Threads**: the UI never freezes, even when parsing massive 400-page PDF documents.
+- ⚡ **Background Worker Threads**: document conversion runs outside the main UI thread.
 - 📋 **Pre-configured Equipment Templates**: One-click presets for Solar PV Inverters, Energy Meters, Pyranometers / Irradiance Sensors, Battery Storage Systems (BESS), Weather Stations, and Trackers.
 - 🔍 **Interactive Register Preview**: Live filterable data table with quick actions (*Open CSV*, *Open Folder*, *Copy Data*).
 - 🛡️ **Embedded Validator**: Immediate diagnostic feedback with color-coded severity badges (green = valid, orange = warning, red = blocker).
@@ -512,7 +509,7 @@ Encountering an issue? Find your immediate solution here:
 | **Blue screen: "Windows protected your PC"** | Standard Windows Defender SmartScreen notice for new open-source software. | Click **More info**, then click **Run anyway**. |
 | **No registers extracted (0 registers found)** | The PDF contains scanned pictures of tables rather than selectable text. | Run the PDF through an OCR tool (e.g. Adobe Acrobat or an online OCR tool) to make text selectable, then retry. |
 | **All register addresses are shifted by +1 or -1** | The manufacturer used 0-based indexing instead of 1-based indexing (or vice versa). | Add `--address-offset 1` or `--address-offset -1` to your command to re-align all addresses in bulk. |
-| **Address overlap validation error** | Multiple variables occupy the same Modbus memory words. | Check your manual. If the vendor intentionally documents alternative interpretations of the same word, use `--lenient` to permit generation. |
+| **Address overlap validation error** | Multiple variables occupy the same Modbus memory words. | Check the manual and choose the intended variables. `deffilegen validate FILE --lenient` permits overlap diagnostics; normal generation remains strict. |
 | **Web browser does not open automatically** | The uvicorn server started, but terminal commands do not launch browsers automatically. | Open your browser manually and navigate to: `http://127.0.0.1:8000`. |
 | **`File already exists`** | The output CSV filename is already taken on your disk. | Pick a different destination name or pass the `--force` flag to permit overwriting. |
 
@@ -525,7 +522,8 @@ DefFileGenerator treats all external documentation files as **untrusted input**:
 - **CSV Formula Injection Mitigation (DDE Defense)**: Any cell beginning with active formula triggers (`=`, `+`, `-`, `@`, `|`, `%`, or fullwidth Unicode variants) is prefixed with an apostrophe `'` to prevent arbitrary spreadsheet code execution.
 - **XML Entity & XXE Defense**: XML extraction relies exclusively on `defusedxml.ElementTree`. External DTDs, external entity expansions, and "Billion Laughs" denial-of-service payloads are strictly rejected.
 - **Atomic File Writes**: Output files are staged into hidden sibling temporary files, synced to physical storage with `os.fsync`, and atomically renamed with `os.replace`. Partial or corrupted files are never left on disk.
-- **Upload Bounding**: Web uploads are streamed in 64 KiB chunks, strictly capped at 10 MiB, and restricted to 65,536 registers.
+- **Upload Bounding**: Web uploads are streamed in 1 MiB chunks, capped at 10 MiB, and restricted to 65,536 registers. Excel ZIP expansion and worksheet dimensions are bounded before expensive processing.
+- **Destination Protection**: Conversion validates a staged definition before replacing an existing destination. Source documents are protected even when the output path is a symbolic-link or hard-link alias.
 
 See [`docs/security.md`](docs/security.md) for the complete security specification.
 
@@ -533,7 +531,7 @@ See [`docs/security.md`](docs/security.md) for the complete security specificati
 
 ## 🧪 Quality Gates & Automated Tests
 
-The codebase is protected by **685 automated unit and integration tests**:
+The codebase is protected by automated unit and integration tests:
 
 ```powershell
 # Run the entire test suite

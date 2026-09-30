@@ -42,6 +42,17 @@ from typing import Any
 # Named logger for this module
 logger = logging.getLogger("DefFileGenerator.extractor")
 
+# Bound the rectangular traversal induced by worksheet dimensions, including
+# sparse sheets whose last formatted cell is far beyond their register table.
+MAX_EXCEL_SHEET_CELLS = 2_000_000
+MAX_EXCEL_ARCHIVE_BYTES = 128 * 1024 * 1024
+MAX_EXCEL_ARCHIVE_MEMBER_BYTES = 64 * 1024 * 1024
+
+
+class ExtractionError(RuntimeError):
+    """Input parsing or resource limits prevented complete register extraction."""
+
+
 # -----------------------------------------------------------------------------
 # Optional Dependencies and Safe Parser Fallbacks
 # -----------------------------------------------------------------------------
@@ -109,7 +120,7 @@ except ImportError:
 # -----------------------------------------------------------------------------
 
 RE_CLEAN_WHITESPACE = re.compile(r"\s+")
-RE_HEX_OR_DEC = re.compile(r"^(0x[0-9a-fA-F]+|\d{4,5})$")
+RE_HEX_OR_DEC = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
 RE_FIRST_ADDR_CANDIDATE = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
 RE_HEURISTIC_TYPE = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.IGNORECASE)
 RE_HEURISTIC_RW = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
@@ -407,6 +418,7 @@ class Extractor:
         col_scores = {
             c: {
                 "addr": 0,
+                "preferred_addr": 0,
                 "type": 0,
                 "rw": 0,
                 "len": 0,
@@ -416,17 +428,23 @@ class Extractor:
             }
             for c in range(cols_count)
         }
+        if not col_scores:
+            return None
 
         for row in table[:10]:
             for c, val in enumerate(row):
-                if not val:
+                if val is None:
                     continue
                 v_clean = RE_CLEAN_WHITESPACE.sub("", str(val).strip())
                 if RE_HEX_OR_DEC.match(v_clean):
                     try:
                         val_int = int(v_clean, 0)
-                        if 100 <= val_int <= 65535:
+                        if 0 <= val_int <= 65535:
                             col_scores[c]["addr"] += 1
+                            # Preserve the preference for register-map addresses
+                            # over small row indices/counts when both are present.
+                            if v_clean.startswith("0x") or val_int >= 1000:
+                                col_scores[c]["preferred_addr"] += 1
                     except ValueError:
                         pass
                 if RE_HEURISTIC_TYPE.match(v_clean):
@@ -442,7 +460,18 @@ class Extractor:
                 if len(str(val).strip()) > 3 and not RE_COMPACT_DIGITS.match(v_clean):
                     col_scores[c]["name"] += 1
 
-        addr_col = max(col_scores.keys(), key=lambda c: col_scores[c]["addr"])
+        address_candidates = [c for c in col_scores if col_scores[c]["addr"]]
+        if len(address_candidates) > 1 and not any(
+            col_scores[c]["preferred_addr"] for c in address_candidates
+        ):
+            # Small addresses and numeric row indices/lengths have the same shape.
+            # Require a header or explicit mapping instead of guessing between them.
+            return None
+
+        addr_col = max(
+            col_scores.keys(),
+            key=lambda c: (col_scores[c]["preferred_addr"], col_scores[c]["addr"]),
+        )
         type_col = max(col_scores.keys(), key=lambda c: col_scores[c]["type"])
 
         if (
@@ -503,7 +532,22 @@ class Extractor:
             try:
                 with open(filepath, "rb") as f:
                     file_data = f.read()
+                # Inspect ZIP metadata before openpyxl expands workbook members.
+                with zipfile.ZipFile(io.BytesIO(file_data)) as archive:
+                    members = archive.infolist()
+                    if any(member.file_size > MAX_EXCEL_ARCHIVE_MEMBER_BYTES for member in members):
+                        raise ExtractionError(
+                            "Excel workbook exceeds the maximum expanded archive member size "
+                            f"of {MAX_EXCEL_ARCHIVE_MEMBER_BYTES} bytes."
+                        )
+                    if sum(member.file_size for member in members) > MAX_EXCEL_ARCHIVE_BYTES:
+                        raise ExtractionError(
+                            "Excel workbook exceeds the maximum expanded archive size "
+                            f"of {MAX_EXCEL_ARCHIVE_BYTES} bytes."
+                        )
                 wb = openpyxl.load_workbook(io.BytesIO(file_data), data_only=True)
+            except ExtractionError:
+                raise
             except (OSError, zipfile.BadZipFile, Exception) as exc:
 
                 def io_err_gen(e=exc):
@@ -522,6 +566,11 @@ class Extractor:
                         logging.error(f"Sheet '{name}' not found in {filepath}")
                         return
                     ws = wb[name]
+                    if ws.max_row * ws.max_column > MAX_EXCEL_SHEET_CELLS:
+                        raise ExtractionError(
+                            f"Sheet '{name}' exceeds the maximum expanded worksheet size "
+                            f"of {MAX_EXCEL_SHEET_CELLS} cells."
+                        )
                     rows = list(ws.iter_rows(values_only=True))
                     if not rows:
                         return
@@ -553,6 +602,13 @@ class Extractor:
                                 break
                         header_row = rows[first_non_empty]
                         data_rows = rows[first_non_empty + 1 :]
+
+                        # Infer only when the first non-empty row itself looks like
+                        # register data, so an unfamiliar explicit header is retained.
+                        inferred = Extractor._infer_table_columns([list(header_row)])
+                        if inferred is not None:
+                            header_row = inferred
+                            data_rows = rows[first_non_empty:]
 
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
                     for row in data_rows:
@@ -597,6 +653,7 @@ class Extractor:
             return iter([])
 
         def pdf_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            yielded_tables = 0
             try:
                 with open(filepath, "rb") as f:
                     file_data = f.read()
@@ -646,7 +703,7 @@ class Extractor:
                     for page in target_pages:
                         tables = page.extract_tables()
                         for table in tables:
-                            if not table or len(table) < 2:
+                            if not table:
                                 continue
 
                             # Skip metadata header/footer boxes (document revision/author blocks)
@@ -783,14 +840,19 @@ class Extractor:
                                     if any(v.strip() for v in row_dict.values() if v):
                                         yield row_dict
 
+                            yielded_tables += 1
                             yield table_generator()
 
             except (OSError, *PDF_ERRORS) as e:  # type: ignore[misc]
                 logging.error(
                     f"File IO Error or PDF Syntax Error extracting from PDF {filepath}: {e}"
                 )
+                if yielded_tables:
+                    raise ExtractionError(f"PDF extraction failed in {filepath}: {e}") from e
             except (ValueError, TypeError, IndexError) as e:
                 logging.error(f"Error extracting from PDF {filepath}: {e}")
+                if yielded_tables:
+                    raise ExtractionError(f"PDF extraction failed in {filepath}: {e}") from e
 
         return pdf_tables_generator()
 
@@ -816,6 +878,8 @@ class Extractor:
 
                     if raw_bytes.startswith((b"\xff\xfe", b"\xfe\xff")):
                         encoding = "utf-16"
+                    elif raw_bytes.startswith(b"\xef\xbb\xbf"):
+                        encoding = "utf-8-sig"
                     else:
                         try:
                             raw_bytes.decode("utf-8")
@@ -823,7 +887,13 @@ class Extractor:
                         except UnicodeDecodeError:
                             encoding = "cp1252"
 
-                    text = raw_bytes.decode(encoding, errors="replace")
+                    # A BOM declares a Unicode encoding; replacing malformed code
+                    # units could corrupt a final record while retaining earlier rows.
+                    text = raw_bytes.decode(
+                        encoding, errors="replace" if encoding == "cp1252" else "strict"
+                    )
+                    if "\x00" in text:
+                        raise csv.Error("NUL characters are not valid in register CSV input.")
                     lines = text.splitlines()
                     if not lines:
                         return
@@ -847,7 +917,9 @@ class Extractor:
                         reader = csv.reader(lines[1:], delimiter=";")
                         for row in reader:
                             if len(row) >= 11 and any(cell.strip() for cell in row):
-                                yield dict(zip(webdyn_headers, [c.strip() for c in row]))
+                                yield dict(
+                                    zip(webdyn_headers, [c.strip() for c in row], strict=False)
+                                )
                         return
 
                     snippet = text[:2048]
@@ -875,10 +947,13 @@ class Extractor:
                     logging.error(f"File IO Error extracting from CSV {filepath}: {e}")
                 except csv.Error as e:
                     logging.error(f"CSV Parsing Error in {filepath}: {e}")
+                    raise ExtractionError(f"CSV parsing failed in {filepath}: {e}") from e
                 except UnicodeError as e:
                     logging.error(f"Encoding Error extracting from CSV {filepath}: {e}")
+                    raise ExtractionError(f"CSV decoding failed in {filepath}: {e}") from e
                 except (ValueError, TypeError, AttributeError) as e:
                     logging.error(f"Unexpected error extracting from CSV {filepath}: {e}")
+                    raise ExtractionError(f"CSV extraction failed in {filepath}: {e}") from e
 
             yield csv_table_generator()
 
@@ -913,7 +988,7 @@ class Extractor:
             def xml_generator() -> Iterator[dict[str, Any]]:
                 try:
                     with open(filepath, "rb") as f:
-                        tree = ET.parse(f)
+                        tree = ET.parse(f, forbid_dtd=True)
                         root = tree.getroot()
 
                     seen = set()
@@ -1117,7 +1192,8 @@ class Extractor:
                 length_is_register_quantity=length_is_register_quantity,
             ) -> dict[str, Any] | None:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
-                addr_val = str(new_row.get("Address") or "").strip()
+                raw_address = new_row.get("Address")
+                addr_val = str(raw_address).strip() if raw_address is not None else ""
                 if not addr_val:
                     return None
 
@@ -1140,7 +1216,8 @@ class Extractor:
                 addr = addr_val
 
                 is_string_type = dtype == "STRING" or dtype.startswith("STR")
-                if is_string_type and slen.isdigit() and length_is_register_quantity:
+                is_byte_length_type = is_string_type or dtype == "RAW"
+                if is_byte_length_type and slen.isdigit() and length_is_register_quantity:
                     # Convert 16-bit word length into Webdyn byte length (1 register = 2 bytes)
                     slen = str(int(slen) * 2)
 
@@ -1153,13 +1230,14 @@ class Extractor:
                         if slen == "":
                             slen = "16"
                     addr = f"{addr}_{sbit}_{slen}"
-                elif is_string_type and slen != "" and "_" not in addr:
+                elif is_byte_length_type and slen != "" and "_" not in addr:
                     addr = f"{addr}_{slen}"
 
                 new_row["Address"] = Generator.apply_address_offset(addr, address_offset)
 
                 # Gain column expresses a divisor (e.g. Huawei 10 -> 0.1 multiplier)
-                if not new_row.get("Factor"):
+                factor = new_row.get("Factor")
+                if factor is None or str(factor).strip() == "":
                     gain_str = str(new_row.get("Gain", "")).strip()
                     compact_gain = RE_CLEAN_WHITESPACE.sub("", gain_str)
                     if compact_gain.isdigit():
@@ -1167,7 +1245,7 @@ class Extractor:
                     if gain_str:
                         gain_val = Generator._parse_numeric(gain_str, default=0.0)
                         if gain_val:
-                            new_row["Factor"] = f"{1.0 / gain_val:.6f}"
+                            new_row["Factor"] = str(1.0 / gain_val)
 
                 if new_row.get("Factor") is not None:
                     new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))

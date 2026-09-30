@@ -37,9 +37,19 @@ All code modifications must pass the established quality gates with zero errors 
 | **Auto-Format** | Ruff | `ruff format .` | Automatically formats all Python code |
 | **Type Checking** | Mypy | `mypy DefFileGenerator web` | Strict static type verification |
 | **Security Audit** | Bandit | `bandit -r DefFileGenerator web -ll` | Static security scanner for high/medium vulnerabilities |
-| **Test Suite** | Pytest | `pytest` | Runs the full 685+ automated test suite |
-| **Test Coverage** | Pytest-Cov | `pytest --cov=DefFileGenerator --cov=web` | Generates detailed line/branch coverage report |
+| **Test Suite** | Pytest | `pytest` | Runs the automated test suite; an optional equipment corpus requires local manufacturer fixtures |
+| **Test Coverage** | Pytest-Cov | `pytest --cov=DefFileGenerator --cov=web` | Measures runtime code; test modules are excluded from the coverage denominator |
 | **Wheel Build** | Build / UV | `uv build` (or `python -m build`) | Verifies packaging contract and asset inclusions |
+
+---
+
+### Reproducible dependency installation
+
+The checked-in `uv.lock` records the resolved dependency versions. Use `uv sync --frozen --extra dev --extra web` to reproduce that environment, then run checks with `uv run --frozen`. The `build` extra adds PyInstaller for Windows executables.
+
+When the operating-system temporary directory is unavailable, use a writable workspace directory with `pytest --basetemp=work/pytest-temp`. Pytest deletes that directory before use, so choose a dedicated disposable path.
+
+The wheel includes `generate_webdyn_def` and `doc_to_webdyn`, the CLI entry points, and web runtime assets. Validate imports from an installed wheel outside the source tree when changing package discovery; editable installs alone can conceal missing modules.
 
 ---
 

@@ -47,6 +47,7 @@ deffilegen-gui = "DefFileGenerator.gui:main"
 
 [tool.setuptools]
 include-package-data = false
+py-modules = ["generate_webdyn_def", "doc_to_webdyn"]
 
 [tool.setuptools.packages.find]
 include = ["DefFileGenerator*", "web*"]
@@ -60,7 +61,7 @@ testpaths = ["DefFileGenerator/tests"]
 addopts = "-ra"
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 line-length = 100
 
 [tool.ruff.lint]
@@ -97,6 +98,7 @@ ignore_missing_imports = true
 [tool.coverage.run]
 source = ["DefFileGenerator"]
 branch = true
+omit = ["DefFileGenerator/tests/*"]
 
 [tool.coverage.report]
 show_missing = true

@@ -20,6 +20,7 @@ import os
 import re
 import sys
 from collections.abc import Iterator
+from contextlib import nullcontext
 from typing import Any
 
 # Ensure parent directory is in sys.path to support direct and packaged executions
@@ -32,9 +33,16 @@ from DefFileGenerator.def_gen import (
     run_generator,
 )
 from DefFileGenerator.extractor import Extractor
+from DefFileGenerator.io_utils import paths_refer_to_same_file, staged_text_output
 
 ALLOWED_EXTENSIONS = frozenset({".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"})
 RE_SLUGIFY = re.compile(r"[^a-zA-Z0-9]")
+
+
+def _guard_source_output(input_file: str | None, output: str | None) -> None:
+    if input_file and output and paths_refer_to_same_file(input_file, output):
+        logging.error("The output file must differ from the source file, even with --force.")
+        sys.exit(1)
 
 
 def setup_logging(verbose: bool = False, quiet: bool = False) -> None:
@@ -142,6 +150,7 @@ def extract_command(args: argparse.Namespace) -> None:
         args: Parsed command line arguments.
     """
     output = getattr(args, "output", None)
+    _guard_source_output(getattr(args, "input_file", None), output)
     if output and os.path.exists(output) and not getattr(args, "force", False):
         logging.error(f"Output file '{output}' already exists. Use --force to overwrite.")
         sys.exit(1)
@@ -165,20 +174,16 @@ def extract_command(args: argparse.Namespace) -> None:
         "ScaleFactor",
     ]
 
-    f: Any
-    if output:
-        f = open(output, "w", newline="", encoding="utf-8")
-    else:
-        f = sys.stdout
-
-    try:
+    output_context = staged_text_output(output) if output else nullcontext(sys.stdout)
+    with output_context as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
-        writer.writerows(mapped_data_iter)
-    finally:
-        if output:
-            f.close()
-            logging.info(f"Extraction complete. Saved to {output}")
+        writer.writerows(
+            {field: Generator.sanitize_csv_field(row.get(field, "")) for field in fieldnames}
+            for row in mapped_data_iter
+        )
+    if output:
+        logging.info(f"Extraction complete. Saved to {output}")
 
 
 def validate_command(args: argparse.Namespace) -> None:
@@ -216,6 +221,7 @@ def generate_command(args: argparse.Namespace) -> None:
     m_model = getattr(args, "model", None)
     input_file = getattr(args, "input_file", None)
     output = getattr(args, "output", None)
+    _guard_source_output(input_file, output)
 
     if not template:
         if not m_name or not m_model:
@@ -243,8 +249,11 @@ def generate_command(args: argparse.Namespace) -> None:
         address_offset=getattr(args, "address_offset", 0),
         template=template,
         template_mode=template_mode,
+        strict_validation=True,
     )
-    run_generator(config)
+    if run_generator(config) is False:
+        logging.error("Definition generation failed.")
+        sys.exit(1)
 
 
 def run_command(args: argparse.Namespace) -> None:
@@ -284,6 +293,8 @@ def run_command(args: argparse.Namespace) -> None:
         sanitized_model = RE_SLUGIFY.sub("_", str(m_model or "Model")).lower()
         output_file = f"{sanitized_mfg}_{sanitized_model}_definition.csv"
 
+    _guard_source_output(input_file, output_file)
+
     if output_file and os.path.exists(output_file) and not getattr(args, "force", False):
         logging.error(f"Output file '{output_file}' already exists. Use --force to overwrite.")
         sys.exit(1)
@@ -299,12 +310,15 @@ def run_command(args: argparse.Namespace) -> None:
         address_offset=0,  # Already applied during extraction
         template=template,
         template_mode=getattr(args, "template_mode", "input"),
+        strict_validation=not getattr(args, "no_validate", False),
     )
-    run_generator(config, input_data=mapped_data)
+    if run_generator(config, input_data=mapped_data) is False:
+        logging.error("Definition generation failed.")
+        sys.exit(1)
 
     if output_file and not getattr(args, "no_validate", False) and not template:
         generator = Generator()
-        if generator.validate_csv(output_file):
+        if generator.validate_csv(output_file, strict=True):
             logging.info("Post-generation validation passed.")
         else:
             logging.error("Post-generation validation failed.")
@@ -353,8 +367,16 @@ def _run_cli(argv: list[str] | None = None) -> None:
     subparsers = parser.add_subparsers(dest="command", help="Sub-commands")
 
     def add_common_flags(p: argparse.ArgumentParser) -> None:
-        p.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
-        p.add_argument("-q", "--quiet", action="store_true", help="Quiet logging")
+        p.add_argument(
+            "-v",
+            "--verbose",
+            action="store_true",
+            default=argparse.SUPPRESS,
+            help="Verbose logging",
+        )
+        p.add_argument(
+            "-q", "--quiet", action="store_true", default=argparse.SUPPRESS, help="Quiet logging"
+        )
 
     # GUI
     parser_gui = subparsers.add_parser("gui", help="Launch Windows 11 Desktop Application")

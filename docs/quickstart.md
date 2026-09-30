@@ -64,7 +64,7 @@ deffilegen validate sma_def.csv --lenient
 | `--mapping FILE` | Custom JSON column mapping dictionary | `--mapping custom_map.json` |
 | `--address-offset N` | Global address shift (applied once) | `--address-offset -1` |
 | `--force` | Overwrite existing output without prompt | `--force` |
-| `--no-validate` | Skip post-generation validation step | `--no-validate` |
+| `--no-validate` | `run` only: opt out of generation validation for diagnostics | `--no-validate` |
 | `-v, --verbose` | Enable diagnostic logging output | `-v` |
 
 ---
@@ -86,7 +86,7 @@ deffilegen generate --template --template-mode definition -o template_definition
 ## 🧪 Quality Gates & Validation Suite
 
 ```bash
-# Run complete test suite (685 tests)
+# Run the complete automated test suite
 pytest
 
 # Code formatting and linting

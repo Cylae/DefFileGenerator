@@ -28,8 +28,17 @@ import re
 import sys
 import tempfile
 from collections.abc import Iterable, Iterator
+from contextlib import nullcontext
 from dataclasses import dataclass, field
 from typing import Any
+
+if __package__:
+    from .io_utils import paths_refer_to_same_file, staged_text_output
+else:
+    from io_utils import (  # type: ignore[import-not-found, no-redef]
+        paths_refer_to_same_file,
+        staged_text_output,
+    )
 
 # -----------------------------------------------------------------------------
 # Modbus & WebdynSunPM Domain Constants
@@ -78,6 +87,7 @@ _DIGIT_SPLIT_RE = re.compile(r"([a-zA-Z0-9])\s+(\d+)\b")
 _WORD_SWAP_RE = re.compile(
     r"(_w\b|_w$|\bword\s*swap\b|\bword-swap\b|(?:float\d*|f\d+|u\d+|i\d+|int\d*|uint\d*)\s+word\b)"
 )
+_BYTE_SWAP_RE = re.compile(r"(_b\b|_b$|\bbyte\s*swap\b|\bbyte-swap\b)")
 _TAG_BASE_RE = re.compile(r"[^a-z0-9_]")
 _MULTI_UNDERSCORE_RE = re.compile(r"_+")
 _THOUSANDS_COMMA_RE = re.compile(r"^-?\d{1,3}(,\d{3})+$")
@@ -314,6 +324,7 @@ class GeneratorConfig:
     template: bool = False
     template_mode: str = "input"  # 'input' or 'definition'
     address_offset: int = 0
+    strict_validation: bool | None = None
 
     def __post_init__(self) -> None:
         if self.input_file is not None:
@@ -546,12 +557,18 @@ class Generator:
 
         # Detect endianness / byte-order suffixes
         suffix = ""
-        if any(x in t for x in ["_wb", "swap", "big endian"]):
+        word_swap = _WORD_SWAP_RE.search(t) is not None
+        byte_swap = _BYTE_SWAP_RE.search(t) is not None
+        if any(x in t for x in ["_wb", "big endian"]) or (word_swap and byte_swap):
+            suffix = "_WB"
+        elif byte_swap:
+            suffix = "_B"
+        elif word_swap:
+            suffix = "_W"
+        elif "swap" in t:
             suffix = "_WB"
         elif any(x in t for x in ["_b", "big"]):
             suffix = "_B"
-        elif _WORD_SWAP_RE.search(t):
-            suffix = "_W"
 
         # Direct canonical shorthand matches
         base_shorthand = _SHORTHAND_TYPE_MAP.get(compact_t)
@@ -713,6 +730,14 @@ class Generator:
                         f"BITS address '{address}' must describe a non-empty slice inside bits 0-15"
                     )
                     return False
+
+            end_addr = base_addr + Generator.get_register_count(dtype_upper, addr_str) - 1
+            if base_addr <= MAX_MODBUS_ADDRESS < end_addr:
+                logging.warning(
+                    f"Address span {base_addr}-{end_addr} is out of Modbus range ({MIN_MODBUS_ADDRESS}-{MAX_MODBUS_ADDRESS})"
+                )
+                if strict:
+                    return False
         except (ValueError, IndexError):
             return False
 
@@ -752,13 +777,13 @@ class Generator:
         elif dtype_upper == "STRING" or dtype_upper == "RAW" or dtype_upper.startswith("STR"):
             try:
                 if "_" in address:
-                    return math.ceil(int(address.split("_")[1]) / 2)
+                    return (int(address.split("_")[1]) + 1) // 2
             except (IndexError, ValueError):
                 pass
             match_str = RE_TYPE_STR_CONV.match(dtype_upper)
             if match_str:
                 try:
-                    return math.ceil(int(match_str.group(1)) / 2)
+                    return (int(match_str.group(1)) + 1) // 2
                 except ValueError:
                     pass
             return 0
@@ -1495,7 +1520,7 @@ class Generator:
 
                     prev_warned = len(warned_lines)
                     self._check_address_overlap(
-                        info1, info2, info3, name, line_num, address_usage, warned_lines
+                        info1_str, info2, info3, name, line_num, address_usage, warned_lines
                     )
                     if len(warned_lines) > prev_warned:
                         issues.append(
@@ -1528,7 +1553,7 @@ class Generator:
                 stats=stats,
             )
 
-        except (OSError, csv.Error) as e:
+        except (OSError, csv.Error, UnicodeError) as e:
             msg = f"Error reading definition file: {e}"
             logging.error(msg)
             return ValidationReport(
@@ -1572,8 +1597,9 @@ class Generator:
         processed_rows: Iterable[dict[str, Any]],
         config: CSVHeaderConfig | GeneratorConfig | str | None = None,
         *args: Any,
+        validation_strict: bool | None = None,
         **kwargs: Any,
-    ) -> None:
+    ) -> bool:
         """
         Writes WebdynSunPM definition CSV output atomically with formula injection sanitization.
 
@@ -1585,7 +1611,13 @@ class Generator:
             processed_rows: Stream of normalized register dictionaries.
             config: Header configuration object or manufacturer string for legacy positional callers.
             *args: Optional legacy positional parameters (model, protocol, category, forced_write).
+            validation_strict: When configured, validate the complete staged definition
+                before replacing a file or copying text to a caller-owned stream.
+                None skips validation and writes streams directly.
             **kwargs: Optional keyword parameters for header metadata.
+
+        Returns:
+            bool: True after successful output; False on write or validation failure.
         """
         if isinstance(config, (CSVHeaderConfig, GeneratorConfig)):
             mfg_val = getattr(config, "manufacturer", "") or ""
@@ -1621,6 +1653,9 @@ class Generator:
         }
         outfile: Any = None
         temp_path: str | None = None
+        stream_staging = not isinstance(output, str) and validation_strict is not None
+        owns_output = isinstance(output, str) or stream_staging
+        target_stream: Any = sys.stdout if output is None else output
 
         try:
             if isinstance(output, str):
@@ -1632,6 +1667,11 @@ class Generator:
                     dir=target_dir,
                 )
                 outfile = os.fdopen(fd, "w", newline="", encoding="utf-8-sig")
+            elif stream_staging:
+                outfile = tempfile.NamedTemporaryFile(
+                    mode="w", newline="", encoding="utf-8", delete=False
+                )
+                temp_path = outfile.name
             elif output is None:
                 outfile = sys.stdout
             else:
@@ -1674,22 +1714,39 @@ class Generator:
                 type_counts[row["Info1"]] = type_counts.get(row["Info1"], 0) + 1
                 total += 1
 
-            if isinstance(output, str):
+            if owns_output:
+                if validation_strict is not None and total == 0:
+                    logging.error("No valid registers generated; destination preserved.")
+                    return False
                 outfile.flush()
                 os.fsync(outfile.fileno())
                 outfile.close()
                 outfile = None
                 if temp_path is not None:
-                    os.replace(temp_path, os.path.abspath(output))
-                    temp_path = None
+                    if validation_strict is not None and not Generator().validate_csv(
+                        temp_path, strict=validation_strict
+                    ):
+                        logging.error("Output definition failed validation; destination preserved.")
+                        return False
+                    if isinstance(output, str):
+                        os.replace(temp_path, os.path.abspath(output))
+                        temp_path = None
+                    else:
+                        with open(temp_path, encoding="utf-8", newline="") as staged:
+                            while chunk := staged.read(65536):
+                                target_stream.write(chunk)
 
             summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
             if summary:
                 logging.info(f"Generated {total} registers ({summary})")
-        except (OSError, csv.Error) as e:
+            return True
+        except Exception as e:
+            if not stream_staging and not isinstance(e, (OSError, csv.Error)):
+                raise
             logging.error(f"Error writing output CSV: {e}")
+            return False
         finally:
-            if isinstance(output, str) and outfile is not None:
+            if owns_output and outfile is not None:
                 try:
                     outfile.close()
                 except OSError:
@@ -1706,7 +1763,7 @@ class Generator:
 # -----------------------------------------------------------------------------
 
 
-def generate_template(output_file: str | None, mode: str = "input") -> None:
+def generate_template(output_file: str | None, mode: str = "input") -> bool:
     """
     Generates a sample template CSV file.
 
@@ -1717,6 +1774,9 @@ def generate_template(output_file: str | None, mode: str = "input") -> None:
     Args:
         output_file: Path to destination file, or None to print to standard output.
         mode: "input" or "definition".
+
+    Returns:
+        bool: True after successful output; False on a write failure.
     """
     if mode == "definition":
         headers = [
@@ -1802,42 +1862,51 @@ def generate_template(output_file: str | None, mode: str = "input") -> None:
         ]
         delimiter = ","
 
-    outfile = None
     try:
-        if output_file:
-            encoding = "utf-8-sig" if mode == "definition" else "utf-8"
-            outfile = open(output_file, "w", newline="", encoding=encoding)
+        encoding = "utf-8-sig" if mode == "definition" else "utf-8"
+        output_context = (
+            staged_text_output(output_file, encoding=encoding)
+            if output_file
+            else nullcontext(sys.stdout)
+        )
+        with output_context as outfile:
             writer = csv.writer(outfile, delimiter=delimiter)
-        else:
-            writer = csv.writer(sys.stdout, delimiter=delimiter)
-
-        writer.writerow(headers)
-        writer.writerows(rows)
-    except OSError as e:
+            writer.writerow(headers)
+            writer.writerows(rows)
+        return True
+    except (OSError, csv.Error) as e:
         logging.error(f"Error generating template: {e}")
-    finally:
-        if output_file and outfile:
-            outfile.close()
+        return False
 
 
 def run_generator(
     config: GeneratorConfig,
     input_data: Iterable[dict[str, Any]] | None = None,
-) -> None:
+) -> bool:
     """
     Executes definition generation from a GeneratorConfig object and optional input stream.
 
     Args:
         config: Execution configuration.
         input_data: Optional pre-extracted register stream. If None, reads from config.input_file.
+
+    Returns:
+        bool: True after successful generation; False on input, output, or validation failure.
     """
+    if (
+        config.input_file
+        and config.output
+        and paths_refer_to_same_file(config.input_file, config.output)
+    ):
+        logging.error("The output file must differ from the source file.")
+        return False
+
     generator = Generator()
     if config.template:
         mode = config.template_mode
         if input_data is not None:
             mode = "definition"
-        generate_template(config.output, mode=mode)
-        return
+        return generate_template(config.output, mode=mode)
 
     manufacturer = config.manufacturer or "Manufacturer"
     model = config.model or "Model"
@@ -1845,10 +1914,10 @@ def run_generator(
     if input_data is None:
         if not config.input_file:
             logging.error("input_file or input_data is required.")
-            return
+            return False
         if not os.path.exists(config.input_file):
             logging.error(f"Input file not found: {config.input_file}")
-            return
+            return False
 
     try:
         hdr_cfg = CSVHeaderConfig(
@@ -1860,18 +1929,19 @@ def run_generator(
         )
         if input_data is not None:
             processed_rows = generator.process_rows(input_data, config.address_offset)
-            generator.write_output_csv(
+            return generator.write_output_csv(
                 config.output,
                 processed_rows,
                 hdr_cfg,
+                validation_strict=config.strict_validation,
             )
         else:
             if not config.input_file:
                 logging.error("input_file or input_data is required.")
-                return
+                return False
             if not os.path.exists(config.input_file):
                 logging.error(f"Input file not found: {config.input_file}")
-                return
+                return False
             with open(config.input_file, mode="rb") as f:
                 header_bytes = f.read(4)
                 encoding = (
@@ -1888,13 +1958,15 @@ def run_generator(
                 reader = csv.DictReader(csvfile, dialect=dialect)
                 processed_rows = generator.process_rows(reader, config.address_offset)
 
-                generator.write_output_csv(
+                return generator.write_output_csv(
                     config.output,
                     processed_rows,
                     hdr_cfg,
+                    validation_strict=config.strict_validation,
                 )
-    except (OSError, csv.Error, ValueError, TypeError, KeyError) as e:
+    except Exception as e:
         logging.error(f"An error occurred during generation: {e}")
+        return False
 
 
 def main() -> None:
@@ -1924,7 +1996,8 @@ def main() -> None:
         template_mode=args.template_mode,
         address_offset=args.address_offset,
     )
-    run_generator(config)
+    if run_generator(config) is False:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
