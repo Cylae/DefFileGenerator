@@ -61,7 +61,7 @@ The codebase strictly enforces a layered architecture where the core domain logi
 │  DefFileGenerator/def_gen.py                           │
 │  - Data type normalization & endianness tagging        │
 │  - Address boundary validation (0..65535)              │
-│  - O(log N) bisect interval address overlap detection  │
+│  - Bisect interval lookup and address overlap checks  │
 │  - Linear coefficient computation (CoefA, CoefB)       │
 │  - Unique variable tag synthesis                       │
 │  - CSV injection neutralization                        │
@@ -124,7 +124,7 @@ In `DefFileGenerator`:
 Modbus addresses cannot overlap within the same `Info1` memory space (e.g. two 32-bit registers cannot share address `40001` and `40002`).
 
 - **Interval Model**: Each register is treated as an interval $[\text{start}, \text{start} + \text{count} - 1]$.
-- **Binary Search**: Uses `bisect.bisect_left` on sorted interval lists for $O(\log N)$ lookup performance.
+- **Binary Search**: Uses `bisect.bisect_left` on sorted interval lists for $O(\log N)$ lookup. Insertion into a Python list still takes $O(N)$ in the worst case; this is not a logarithmic bound on the entire validation pass.
 - **Bit-Slice Exception**: Multiple `BITS` entries inside the same 16-bit word (e.g. `30001_0_1` and `30001_1_1`) do **not** trigger a collision if their bit ranges $[start, start + length - 1]$ are disjoint.
 
 ### 4.2. CSV Formula Injection Defense (`sanitize_csv_field`)
@@ -137,7 +137,11 @@ Spreadsheet applications (Microsoft Excel, LibreOffice Calc) execute formulas if
 When writing output CSV files:
 1. Data is written to a temporary sibling file (`.{name}.{uuid}.tmp`) in the destination directory.
 2. Changes are flushed and synced to disk via `os.fsync(fd)`.
-3. The file is atomically replaced via `os.replace`, guaranteeing that interruptions or power losses never produce corrupted partial files.
+3. Configured generation validates the complete staging file before replacement; `os.replace` publishes the completed file atomically. A crash can leave a staging file, which must not be mistaken for a completed definition.
+
+`run_generator`, `write_output_csv`, and template generation return `True` on success and `False` on handled failures. Check the result before opening an existing output path: its presence alone does not demonstrate success. `GeneratorConfig.strict_validation=True` checks complete register spans, overlaps, and nonempty output before publishing files or configured stdout/file-like streams. `False` permits validation warnings; the default `None` preserves lower-level compatibility. Caller-owned streams remain open.
+
+Malformed processed dictionaries can still raise programmer errors from the low-level writer. High-level conversion catches deferred parser failures and reports failure. Local conversion rejects source/output aliases, including hard links.
 
 ---
 
@@ -187,8 +191,9 @@ All code must pass static typing, linting, and automated tests before committing
 
 ### Running Tests
 ```powershell
-# Run the entire environment-matched suite (680+ tests)
-uv run --all-extras pytest
+# Reproduce the locked development environment and run the suite
+uv sync --frozen --extra dev --extra web
+uv run --frozen pytest
 
 # Run tests fast without external equipment benchmark
 pytest DefFileGenerator/tests/test_def_gen.py DefFileGenerator/tests/test_extractor.py

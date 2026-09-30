@@ -8,11 +8,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsSection = document.getElementById('resultsSection');
     const previewBody = document.getElementById('previewBody');
     const registerBadge = document.getElementById('registerBadge');
+    const validBadge = document.getElementById('validBadge');
     const downloadBtn = document.getElementById('downloadBtn');
+    const convertLabel = convertBtn.innerHTML;
 
     let selectedFile = null;
     let convertedCsvContent = null;
     let convertedFilename = 'definition.csv';
+    let requestVersion = 0;
+    let pendingController = null;
+
+    function resetResults() {
+        convertedCsvContent = null;
+        resultsSection.classList.add('hidden');
+        previewBody.innerHTML = '';
+        downloadBtn.disabled = true;
+    }
+
+    function invalidateConversion() {
+        requestVersion += 1;
+        if (pendingController) pendingController.abort();
+        pendingController = null;
+        resetResults();
+        convertBtn.disabled = !selectedFile;
+        convertBtn.innerHTML = convertLabel;
+    }
+
+    document.getElementById('convertForm').addEventListener('input', invalidateConversion);
 
     // Drag & Drop
     ['dragenter', 'dragover'].forEach(eventName => {
@@ -40,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleFile(file) {
         selectedFile = file;
+        invalidateConversion();
         fileName.textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
         dropZone.classList.add('hidden');
         fileDetails.classList.remove('hidden');
@@ -48,16 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     removeFileBtn.addEventListener('click', () => {
         selectedFile = null;
+        invalidateConversion();
         fileInput.value = '';
         dropZone.classList.remove('hidden');
         fileDetails.classList.add('hidden');
         convertBtn.disabled = true;
-        resultsSection.classList.add('hidden');
     });
 
     convertBtn.addEventListener('click', async () => {
         if (!selectedFile) return;
 
+        const version = ++requestVersion;
+        const controller = new AbortController();
+        pendingController = controller;
+        resetResults();
         convertBtn.disabled = true;
         convertBtn.textContent = 'Processing...';
 
@@ -73,28 +100,42 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('/api/convert', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                signal: controller.signal
             });
+            if (version !== requestVersion) return;
 
             if (!response.ok) {
                 const errData = await response.json();
+                if (version !== requestVersion) return;
                 alert(`Conversion Error: ${errData.detail || 'Unknown error'}`);
                 return;
             }
 
             const data = await response.json();
+            if (version !== requestVersion) return;
             convertedCsvContent = data.csv_content;
             convertedFilename = data.filename;
 
-            registerBadge.textContent = `${data.register_count} registers`;
+            const skipped = Math.max(0, (data.extracted_count || data.register_count) - data.register_count);
+            registerBadge.textContent = `${data.register_count} registers generated${skipped ? ` (${skipped} skipped)` : ''}`;
+            validBadge.textContent = data.is_valid === true ? 'Valid' : 'Invalid';
+            validBadge.classList.toggle('badge-success', data.is_valid === true);
+            validBadge.classList.toggle('badge-error', data.is_valid !== true);
+            downloadBtn.disabled = data.is_valid !== true;
             renderPreview(data.preview);
             resultsSection.classList.remove('hidden');
 
         } catch (err) {
-            alert(`Network or Server Error: ${err.message}`);
+            if (version === requestVersion && err.name !== 'AbortError') {
+                alert(`Network or Server Error: ${err.message}`);
+            }
         } finally {
-            convertBtn.disabled = false;
-            convertBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Extract & Generate Definition`;
+            if (version === requestVersion) {
+                pendingController = null;
+                convertBtn.disabled = !selectedFile;
+                convertBtn.innerHTML = convertLabel;
+            }
         }
     });
 
@@ -106,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${escapeHtml(r.Name || '')}</td>
                 <td><code>${escapeHtml(r.Tag || '')}</code></td>
                 <td>${escapeHtml(r.RegisterType || 'Holding Register')}</td>
-                <td><code>${escapeHtml(r.Address || '')}</code></td>
+                <td><code>${escapeHtml(r.Address ?? '')}</code></td>
                 <td>${escapeHtml(r.Type || '')}</td>
-                <td>${escapeHtml(r.Factor || '1')}</td>
-                <td>${escapeHtml(r.Offset || '0')}</td>
+                <td>${escapeHtml(r.Factor ?? '1')}</td>
+                <td>${escapeHtml(r.Offset ?? '0')}</td>
                 <td>${escapeHtml(r.Unit || '')}</td>
                 <td>${escapeHtml(r.Action || '1')}</td>
             `;
@@ -127,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     downloadBtn.addEventListener('click', () => {
-        if (!convertedCsvContent) return;
-        const blob = new Blob([convertedCsvContent], { type: 'text/csv;charset=utf-8;' });
+        if (!convertedCsvContent || downloadBtn.disabled) return;
+        const blob = new Blob(['\ufeff', convertedCsvContent], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;

@@ -40,7 +40,7 @@ flowchart TD
     end
 
     subgraph Validation["🛡️ Validation & Security Layer"]
-        D1["O(log N) Bisect Interval Address Overlap Check"]
+        D1["Bisect Interval Address Overlap Check"]
         D2["Bit-Slice Constraints (startbit 0..15, length 1..16)"]
         D3["CSV Formula Injection Escaping"]
     end
@@ -80,7 +80,7 @@ flowchart TD
 │  - Address Normalization (Hex 0x..., Decimal, Ranges)  │
 │  - Data Type Standardization (U16, I32, F32, Endian)   │
 │  - BITS compound slicing (address_startbit_length)     │
-│  - O(log N) Bisect Register Overlap Detection          │
+│  - Bisect Interval Lookup and Overlap Detection       │
 │  - Linear Scaling (CoefA = Factor * 10^Scale, CoefB)   │
 │  - CSV Injection Escaping & Control Character Stripping │
 └───────────────────────────┬────────────────────────────┘
@@ -105,7 +105,7 @@ flowchart TD
 
 ## ⚡ Key Architectural Invariants
 
-1. **Streaming-Oriented Pipeline**: CSV, XML, and mapped rows use generator pipelines (`yield`) to minimize memory footprints.
+1. **Lazy Row Pipeline**: Parsers expose iterators of tables and rows. Source bytes are buffered for document parsing; Excel archive sizes and expanded worksheet dimensions are bounded before expensive processing. The web API caps request bytes before multipart parsing and consumes at most one row beyond its register limit.
 2. **Strict Determinism**: Generated output files are guaranteed to be byte-identical across runs with identical inputs, unaffected by `PYTHONHASHSEED`.
 3. **Decoupled Responsibilities**: 
    - `extractor.py` handles document parsing and column mapping heuristics.
@@ -113,6 +113,8 @@ flowchart TD
    - Entry points (`main.py`, `gui.py`, `web/app.py`) depend on the core engine, never vice-versa.
 4. **Defensive Parsing at System Boundaries**: Malformed XML entities, CSV formula injection attempts, and control characters are neutralized before reaching state.
 5. **Conservative Completeness**: The pipeline never fabricates missing addresses. Scanned PDFs require external OCR.
+6. **Transactional Publication**: Configured conversion validates complete staged output before publishing it. Input/validation failures emit no configured stdout CSV and preserve existing file destinations; caller-owned streams remain open.
+7. **Interface Consistency**: Web and desktop previews read serialized CSV values rather than raw mapped dictionaries. Web parsing and validation run outside the request event loop, and invalid definitions are rejected.
 
 ---
 

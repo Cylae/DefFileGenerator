@@ -17,6 +17,7 @@ import sys
 
 from DefFileGenerator.def_gen import GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.io_utils import paths_refer_to_same_file
 
 RE_SLUGIFY = re.compile(r"[^a-zA-Z0-9]")
 
@@ -42,6 +43,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser.add_argument("--model", help="Model name")
     parser.add_argument("--template", action="store_true", help="Generate a template definition")
     parser.add_argument("-o", "--output", help="Output filename")
+    parser.add_argument("--force", action="store_true", help="Overwrite an existing output file")
     parser.add_argument("--protocol", default="modbusRTU")
     parser.add_argument("--category", default="Inverter")
     parser.add_argument("--sheet", help="Excel sheet name")
@@ -59,8 +61,12 @@ def _run_cli(argv: list[str] | None = None) -> None:
     )
 
     if args.template:
+        if args.output and os.path.exists(args.output) and not args.force:
+            logging.error("Output already exists. Use --force to overwrite it.")
+            sys.exit(1)
         config = GeneratorConfig(output=args.output, template=True)
-        run_generator(config)
+        if run_generator(config) is False:
+            sys.exit(1)
         return
 
     if not args.input_file:
@@ -123,6 +129,13 @@ def _run_cli(argv: list[str] | None = None) -> None:
     if not output_file:
         output_file = f"{RE_SLUGIFY.sub('_', m_name).lower()}_{RE_SLUGIFY.sub('_', m_model).lower()}_definition.csv"
 
+    if paths_refer_to_same_file(args.input_file, output_file):
+        logging.error("The output file must be different from the input document.")
+        sys.exit(1)
+    if os.path.exists(output_file) and not args.force:
+        logging.error("Output already exists. Use --force to overwrite it.")
+        sys.exit(1)
+
     config = GeneratorConfig(
         input_file=args.input_file,
         output=output_file,
@@ -132,8 +145,11 @@ def _run_cli(argv: list[str] | None = None) -> None:
         category=args.category,
         forced_write=args.forced_write,
         address_offset=0,
+        strict_validation=True,
     )
-    run_generator(config, input_data=mapped_peeked)
+    if run_generator(config, input_data=mapped_peeked) is False:
+        logging.error("Definition generation failed.")
+        sys.exit(1)
 
 
 def main(args: list[str] | None = None) -> None:

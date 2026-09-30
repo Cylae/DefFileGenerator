@@ -7,7 +7,6 @@ using the DefFileGenerator package.
 import logging
 import os
 import sys
-from typing import Optional, Union
 
 from DefFileGenerator.def_gen import (
     Generator,
@@ -16,6 +15,7 @@ from DefFileGenerator.def_gen import (
     run_generator,
 )
 from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.io_utils import paths_refer_to_same_file
 
 
 def setup_logging() -> None:
@@ -23,10 +23,10 @@ def setup_logging() -> None:
 
 
 def generate_webdyn_definition(
-    input_file: Union[str, WebdynDefConfig],
-    output_file: Optional[str] = None,
-    manufacturer: Optional[str] = None,
-    model: Optional[str] = None,
+    input_file: str | WebdynDefConfig,
+    output_file: str | None = None,
+    manufacturer: str | None = None,
+    model: str | None = None,
     protocol: str = "modbusRTU",
     category: str = "Inverter",
     address_offset: int = 0,
@@ -69,6 +69,10 @@ def generate_webdyn_definition(
         logging.error(f"Input file not found: {input_file}")
         return False
 
+    if output_file and paths_refer_to_same_file(input_file, output_file):
+        logging.error("The output file must be different from the input document.")
+        return False
+
     ext = os.path.splitext(input_file)[1].lower()
     extractor = Extractor()
 
@@ -85,20 +89,21 @@ def generate_webdyn_definition(
         else:
             logging.error(f"Unsupported file format: {ext}")
             return False
+        # Extraction and mapping are lazy: parser errors can occur while peeking,
+        # rather than when constructing the iterator.
+        has_data, raw_data_peeked = peek_generator(raw_data)
+        if not has_data:
+            logging.error("No register data could be extracted from the file.")
+            return False
+
+        logging.info("Step 2: Cleaning and mapping fields (addresses, types, tags)...")
+        mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
+        has_regs, mapped_peeked = peek_generator(mapped_gen)
+        if not has_regs:
+            logging.error("No valid registers mapped after cleaning step.")
+            return False
     except Exception as e:
         logging.error(f"Failed to extract registers due to error: {e}")
-        return False
-
-    has_data, raw_data_peeked = peek_generator(raw_data)
-    if not has_data:
-        logging.error("No register data could be extracted from the file.")
-        return False
-
-    logging.info("Step 2: Cleaning and mapping fields (addresses, types, tags)...")
-    mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
-    has_regs, mapped_peeked = peek_generator(mapped_gen)
-    if not has_regs:
-        logging.error("No valid registers mapped after cleaning step.")
         return False
 
     logging.info(f"Step 3: Writing WebdynSunPM definition file to: {output_file}")
@@ -110,10 +115,13 @@ def generate_webdyn_definition(
         protocol=protocol,
         category=category,
         address_offset=0,  # Already applied during extraction mapping
+        strict_validation=strict_validation,
     )
 
     try:
-        run_generator(config, input_data=mapped_peeked)
+        if run_generator(config, input_data=mapped_peeked) is False:
+            logging.error("Definition generation failed; the destination was not replaced.")
+            return False
     except Exception as e:
         logging.error(f"Error during WebdynSunPM file generation: {e}")
         return False

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import csv
 import ctypes
+import json
 import logging
 import os
 import queue
@@ -21,6 +22,7 @@ import subprocess  # nosec: B404
 import sys
 import threading
 import tkinter as tk
+from dataclasses import asdict
 from tkinter import filedialog, messagebox, ttk
 from typing import Any
 
@@ -34,6 +36,11 @@ from DefFileGenerator.def_gen import (
     run_generator,
 )
 from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.io_utils import (
+    definition_preview,
+    paths_refer_to_same_file,
+    staged_text_output,
+)
 
 # Optional CustomTkinter import
 HAS_CUSTOMTKINTER = False
@@ -1043,6 +1050,17 @@ class DefFileGenApp:
             self.entry_output_file.delete(0, tk.END)
             self.entry_output_file.insert(0, output_path)
 
+        if paths_refer_to_same_file(input_path, output_path):
+            messagebox.showerror(
+                "Invalid output file", "Choose an output file different from the source document."
+            )
+            return
+        if os.path.exists(output_path) and not messagebox.askyesno(
+            "Overwrite output file",
+            f"The output file already exists:\n{output_path}\n\nReplace it?",
+        ):
+            return
+
         # Update UI state to processing
         self.is_processing = True
         self.btn_convert.configure(state="disabled")
@@ -1077,6 +1095,8 @@ class DefFileGenApp:
         raw_data: Any = iter([])
 
         try:
+            if paths_refer_to_same_file(input_path, output_path):
+                raise ValueError("The output file must differ from the source document.")
             logger.info("Starting extraction from: %s", input_path)
             if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
                 raw_data = extractor.extract_from_excel(input_path)
@@ -1116,15 +1136,21 @@ class DefFileGenApp:
                 protocol=protocol,
                 category=category,
                 address_offset=0,  # Already applied in map_and_clean
+                strict_validation=True,
             )
 
-            run_generator(config, input_data=full_mapped)
+            if run_generator(config, input_data=full_mapped) is False:
+                raise RuntimeError("Definition generation failed. See the logs for details.")
 
             # Validation of the generated file
             generator = Generator()
             report = generator.validate_csv_detailed(output_path, strict=True)
+            if not report.is_valid:
+                raise RuntimeError("The generated definition failed strict validation.")
+            with open(output_path, encoding="utf-8-sig") as generated:
+                preview_rows = definition_preview(generated.read(), limit=1000)
 
-            self.root.after(0, self._on_conversion_success, output_path, full_mapped, report)
+            self.root.after(0, self._on_conversion_success, output_path, preview_rows, report)
 
         except Exception as exc:
             logger.exception("Conversion failed")
@@ -1146,11 +1172,11 @@ class DefFileGenApp:
             self.btn_open_folder.configure(state="normal")
             self.btn_copy_csv.configure(state="normal")
 
-            count = len(mapped_rows)
+            count = report.register_count
             status_text = (
-                f"✅ Success: {count} registers extracted · 100% Valid WebdynSunPM File"
+                f"✅ Success: {count} registers generated · 100% Valid WebdynSunPM File"
                 if report.is_valid
-                else f"⚠️ Partial success: {count} registers extracted · {len(report.issues)} warning(s)"
+                else f"⚠️ Partial success: {count} registers generated · {len(report.issues)} issue(s)"
             )
             self.lbl_results_badge.configure(text=status_text)
 
@@ -1179,7 +1205,7 @@ class DefFileGenApp:
             messagebox.showinfo(
                 "Generation Successful",
                 f"The WebdynSunPM definition file was successfully generated:\n\n{output_path}\n\n"
-                f"Extracted registers: {count}\nValidation status: {'VALID' if report.is_valid else 'WARNING'}",
+                f"Generated registers: {count}\nValidation status: {'VALID' if report.is_valid else 'WARNING'}",
             )
         except Exception as exc:
             logger.exception("Error updating display")
@@ -1452,7 +1478,13 @@ class DefFileGenApp:
             return
 
         report = self.last_validation_report
-        with open(out_path, "w", encoding="utf-8") as f:
+        if os.path.splitext(out_path)[1].lower() == ".json":
+            with staged_text_output(out_path) as f:
+                json.dump(asdict(report), f, ensure_ascii=False, indent=2)
+                f.write("\n")
+            messagebox.showinfo("Export successful", f"Validation report saved as:\n{out_path}")
+            return
+        with staged_text_output(out_path) as f:
             f.write("=" * 70 + "\n")
             f.write("WEBDYNSUNPM AUDIT AND VALIDATION REPORT\n")
             f.write("=" * 70 + "\n\n")

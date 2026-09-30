@@ -86,7 +86,7 @@ deffilegen run "GoodWe_Modbus_Datasheet.pdf" \
     -o "goodwe_definition.csv"
 ```
 
-The output file `goodwe_definition.csv` is generated instantly:
+The output file `goodwe_definition.csv` contains:
 ```csv
 modbusRTU;Inverter;GoodWe;GW5000-DNS;;;;;;;
 1;3;40001;U16;;AC Power;ac_power;1.000000;0.000000;W;4
@@ -154,7 +154,7 @@ The extractor recognizes headers in English, French, and German:
 - Clean, lowercase variable tags are synthesized automatically.
 
 ### Step 3: Strict Validation & Atomic Disk Writing
-The definition is validated by the $O(\log N)$ interval engine (duplicate tag checks, bit slice limits, memory collisions) before being atomically written to disk with `os.fsync` and `os.replace`.
+The definition is validated for duplicate tags, bit slice limits, and register collisions before the staged file is flushed with `os.fsync` and published with `os.replace`.
 
 ---
 
@@ -184,7 +184,7 @@ deffilegen run SOURCE_FILE --manufacturer BRAND --model MODEL [OPTIONS]
 | `--address-offset` | `0` | Global address shift (e.g. `-1` to fix 1-based indexing) |
 | `--forced-write` | `""` | Forced writing code inserted into CSV header |
 | `--force` | `false` | Overwrite destination file without prompting |
-| `--no-validate` | `false` | Skip the default post-generation validation step |
+| `--no-validate` | `false` | `run` only: opt out of generation validation for diagnostics |
 | `-v, --verbose` | `false` | Enable verbose diagnostic logging |
 
 ---
@@ -201,8 +201,9 @@ deffilegen run sample_inverter_registers.xlsx \
     -o test_excel_output.csv
 ```
 
-### Test 2: Using the Bundled CSV Template
+### Test 2: Generating and Converting a CSV Template
 ```bash
+deffilegen generate --template --template-mode input -o template.csv
 deffilegen run template.csv \
     --manufacturer "TestBrand" \
     --model "TEST-1000" \
@@ -241,7 +242,7 @@ The resulting CSV file strictly satisfies WebdynSunPM telemetry gateway specific
 
 ## 💡 Pro-Tips for Best Results
 
-1. **Prefer text-based documents**: If you can select and highlight text in the PDF with your mouse, the extractor will read tables with 100% fidelity.
+1. **Prefer text-based documents**: Selectable text is required for PDF extraction. Complex layouts can still require explicit column mapping; compare the preview and generated rows with the manufacturer manual.
 2. **Narrow down PDF pages**: For large 300-page user manuals where registers only appear on pages 45 to 52, use `--pages 45-52` to save time.
 3. **Use verbose mode for diagnostics**: If column detection seems unexpected, pass `-v` to inspect exact heuristic scores.
 4. **Always validate before site deployment**: Run `deffilegen validate output.csv` to ensure zero register collisions before importing into your gateway.

@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Validate complete Modbus register spans and explicit word/byte swap aliases.
+- Preserve zero addresses/factors and reciprocal scaling precision; support small-address headerless Excel tables and separate RAW byte lengths.
+- Reject malformed Unicode, incomplete document parsing, XML DTDs, and excessive Excel archive or worksheet expansion.
+- Validate staged definitions before file or stream publication, preserve source aliases and previous destinations, and report generation failures reliably.
+- Bound multipart requests before parsing, offload web processing, and align previews/counts/downloads with serialized output.
+- Protect intermediate CSVs against formula injection; fix GUI JSON exports, overwrite prompts, quiet flags, and stale browser results.
+- Include the documented Python API in built distributions, exclude tests from runtime coverage, and refresh installation/security/maintenance documentation.
+
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
