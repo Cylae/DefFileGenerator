@@ -51,7 +51,7 @@ Manually creating this file usually requires hours of tedious, error-prone manua
 1. **Reads your source document** (PDF datasheet, Excel workbook, CSV table, or XML register map).
 2. **Automatically locates register tables** and understands vendor-specific column names in English, French, and German.
 3. **Normalizes data types and addresses** (hex/decimal conversions, standard types like `U16`, `I32`, `F32`, individual bitfield slices).
-4. **Performs strict validation** (unique variable tags, valid Modbus address spaces, $O(\log N)$ collision and overlap checks).
+4. **Performs strict validation** (unique variable tags, valid Modbus address spaces, and interval collision and overlap checks).
 5. **Generates an official WebdynSunPM CSV file**, ready to be imported directly into your data logger gateway!
 
 ---
@@ -445,7 +445,7 @@ if success:
 ┌────────────────────────────────────────────────────────┐
 │  3. STRICT VALIDATION LAYER (def_gen.py)               │
 │  - Address boundary checks (0..65535)                  │
-│  - O(log N) bisect register overlap detection          │
+│  - Bisect interval lookup and overlap detection       │
 │  - BITS compound validation (startbit 0..15, len 1..16)│
 │  - CSV formula injection escaping                      │
 └───────────────────────────┬────────────────────────────┘
@@ -521,7 +521,7 @@ DefFileGenerator treats all external documentation files as **untrusted input**:
 
 - **CSV Formula Injection Mitigation (DDE Defense)**: Any cell beginning with active formula triggers (`=`, `+`, `-`, `@`, `|`, `%`, or fullwidth Unicode variants) is prefixed with an apostrophe `'` to prevent arbitrary spreadsheet code execution.
 - **XML Entity & XXE Defense**: XML extraction relies exclusively on `defusedxml.ElementTree`. External DTDs, external entity expansions, and "Billion Laughs" denial-of-service payloads are strictly rejected.
-- **Atomic File Writes**: Output files are staged into hidden sibling temporary files, synced to physical storage with `os.fsync`, and atomically renamed with `os.replace`. Partial or corrupted files are never left on disk.
+- **Atomic File Writes**: Output files are staged into hidden sibling temporary files, flushed with `os.fsync`, and replaced with `os.replace`. Handled failures preserve the previous destination and remove staging files; abrupt termination can leave a temporary file. Filesystem durability depends on the storage system.
 - **Upload Bounding**: Web uploads are streamed in 1 MiB chunks, capped at 10 MiB, and restricted to 65,536 registers. Excel ZIP expansion and worksheet dimensions are bounded before expensive processing.
 - **Destination Protection**: Conversion validates a staged definition before replacing an existing destination. Source documents are protected even when the output path is a symbolic-link or hard-link alias.
 

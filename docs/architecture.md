@@ -40,7 +40,7 @@ flowchart TD
     end
 
     subgraph Validation["🛡️ Validation & Security Layer"]
-        D1["O(log N) Bisect Interval Address Overlap Check"]
+        D1["Bisect Interval Address Overlap Check"]
         D2["Bit-Slice Constraints (startbit 0..15, length 1..16)"]
         D3["CSV Formula Injection Escaping"]
     end
@@ -80,7 +80,7 @@ flowchart TD
 │  - Address Normalization (Hex 0x..., Decimal, Ranges)  │
 │  - Data Type Standardization (U16, I32, F32, Endian)   │
 │  - BITS compound slicing (address_startbit_length)     │
-│  - O(log N) Bisect Register Overlap Detection          │
+│  - Bisect Interval Lookup and Overlap Detection       │
 │  - Linear Scaling (CoefA = Factor * 10^Scale, CoefB)   │
 │  - CSV Injection Escaping & Control Character Stripping │
 └───────────────────────────┬────────────────────────────┘

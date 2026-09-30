@@ -86,7 +86,7 @@ deffilegen run "GoodWe_Modbus_Datasheet.pdf" \
     -o "goodwe_definition.csv"
 ```
 
-The output file `goodwe_definition.csv` is generated instantly:
+The output file `goodwe_definition.csv` contains:
 ```csv
 modbusRTU;Inverter;GoodWe;GW5000-DNS;;;;;;;
 1;3;40001;U16;;AC Power;ac_power;1.000000;0.000000;W;4
@@ -154,7 +154,7 @@ The extractor recognizes headers in English, French, and German:
 - Clean, lowercase variable tags are synthesized automatically.
 
 ### Step 3: Strict Validation & Atomic Disk Writing
-The definition is validated by the $O(\log N)$ interval engine (duplicate tag checks, bit slice limits, memory collisions) before being atomically written to disk with `os.fsync` and `os.replace`.
+The definition is validated for duplicate tags, bit slice limits, and register collisions before the staged file is flushed with `os.fsync` and published with `os.replace`.
 
 ---
 

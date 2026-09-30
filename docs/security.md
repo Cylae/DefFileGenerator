@@ -87,7 +87,7 @@ A `BITS` slice (`address_startbit_length`) must strictly fit within a single 16-
 - `length` $\ge 1$
 - `startbit + length` $\le 16$
 
-The $O(\log N)$ interval algorithm verifies that multiple bitfield slices on the same base register address occupy disjoint bit ranges.
+The interval checks verify that multiple bitfield slices on the same base register address occupy disjoint bit ranges. Bisect lookup is logarithmic; insertion into the sorted Python list can be linear.
 
 ---
 

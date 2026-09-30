@@ -61,7 +61,7 @@ The codebase strictly enforces a layered architecture where the core domain logi
 │  DefFileGenerator/def_gen.py                           │
 │  - Data type normalization & endianness tagging        │
 │  - Address boundary validation (0..65535)              │
-│  - O(log N) bisect interval address overlap detection  │
+│  - Bisect interval lookup and address overlap checks  │
 │  - Linear coefficient computation (CoefA, CoefB)       │
 │  - Unique variable tag synthesis                       │
 │  - CSV injection neutralization                        │
@@ -124,7 +124,7 @@ In `DefFileGenerator`:
 Modbus addresses cannot overlap within the same `Info1` memory space (e.g. two 32-bit registers cannot share address `40001` and `40002`).
 
 - **Interval Model**: Each register is treated as an interval $[\text{start}, \text{start} + \text{count} - 1]$.
-- **Binary Search**: Uses `bisect.bisect_left` on sorted interval lists for $O(\log N)$ lookup performance.
+- **Binary Search**: Uses `bisect.bisect_left` on sorted interval lists for $O(\log N)$ lookup. Insertion into a Python list still takes $O(N)$ in the worst case; this is not a logarithmic bound on the entire validation pass.
 - **Bit-Slice Exception**: Multiple `BITS` entries inside the same 16-bit word (e.g. `30001_0_1` and `30001_1_1`) do **not** trigger a collision if their bit ranges $[start, start + length - 1]$ are disjoint.
 
 ### 4.2. CSV Formula Injection Defense (`sanitize_csv_field`)
