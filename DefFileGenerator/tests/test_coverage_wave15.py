@@ -8,7 +8,7 @@ from DefFileGenerator.extractor import Extractor
 
 
 class TestCoverageWave15(unittest.TestCase):
-    def test_apply_address_offset_edge_cases(self):
+    def test_apply_address_offset_edge_cases(self) -> None:
         """Test Generator.apply_address_offset with invalid/unusual inputs."""
         # Non-numeric string address
         res = Generator.apply_address_offset("invalid_addr", 10)
@@ -24,7 +24,7 @@ class TestCoverageWave15(unittest.TestCase):
         res_hex_compound = Generator.apply_address_offset("0x10_0x20", 5)
         self.assertEqual(res_hex_compound, "21_32")
 
-    def test_calculate_coefficients_extreme_floats(self):
+    def test_calculate_coefficients_extreme_floats(self) -> None:
         """Test Generator._calculate_coefficients with extreme float/non-finite values."""
         # NaN / Infinity inputs with scale_factor
         a, b = Generator._calculate_coefficients("NaN", "0", "1")
@@ -33,7 +33,7 @@ class TestCoverageWave15(unittest.TestCase):
         a_inf, b_inf = Generator._calculate_coefficients("inf", "0", "1")
         self.assertEqual((a_inf, b_inf), ("10.000000", "0.000000"))
 
-    def test_extractor_pdf_page_range_parsing(self):
+    def test_extractor_pdf_page_range_parsing(self) -> None:
         """Test Extractor handling of PDF page range arguments."""
         extractor = Extractor()
         # Non-existent file with page range string
@@ -42,7 +42,7 @@ class TestCoverageWave15(unittest.TestCase):
 
 
 class TestGuiWave15(unittest.TestCase):
-    def test_gui_helpers_without_display(self):
+    def test_gui_helpers_without_display(self) -> None:
         """Test GUI helper functions and queue logging."""
         import queue
 

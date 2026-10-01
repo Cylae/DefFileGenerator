@@ -21,6 +21,10 @@ def paths_refer_to_same_file(source: str, destination: str) -> bool:
         return False
 
 
+def _get_field(row: list[str], idx: int, default: str = "") -> str:
+    return row[idx] if idx < len(row) else default
+
+
 def definition_preview(csv_content: str, limit: int) -> list[dict[str, str]]:
     """Read a preview from a validated definition's actual serialized fields."""
     reader = csv.reader(io.StringIO(csv_content), delimiter=";")
@@ -35,17 +39,20 @@ def definition_preview(csv_content: str, limit: int) -> list[dict[str, str]]:
     for index, row in enumerate(reader):
         if index >= limit:
             break
+        if not row:
+            continue
+        reg_type_raw = _get_field(row, 1)
         rows.append(
             {
-                "RegisterType": register_types.get(row[1], row[1]),
-                "Address": row[2],
-                "Type": row[3],
-                "Name": row[5],
-                "Tag": row[6],
-                "Factor": row[7],
-                "Offset": row[8],
-                "Unit": row[9],
-                "Action": row[10],
+                "RegisterType": register_types.get(reg_type_raw, reg_type_raw),
+                "Address": _get_field(row, 2),
+                "Type": _get_field(row, 3),
+                "Name": _get_field(row, 5),
+                "Tag": _get_field(row, 6),
+                "Factor": _get_field(row, 7),
+                "Offset": _get_field(row, 8),
+                "Unit": _get_field(row, 9),
+                "Action": _get_field(row, 10),
             }
         )
     return rows
