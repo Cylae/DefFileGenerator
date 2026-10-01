@@ -19,7 +19,7 @@ from DefFileGenerator.gui import (
 
 
 class TestGUIComponents(unittest.TestCase):
-    def test_equipment_templates_structure(self):
+    def test_equipment_templates_structure(self) -> None:
         """Verifies all equipment templates have valid registers and descriptions."""
         self.assertIn("Inverter", EQUIPMENT_TEMPLATES)
         self.assertIn("Meter", EQUIPMENT_TEMPLATES)
@@ -38,7 +38,7 @@ class TestGUIComponents(unittest.TestCase):
                     len(reg), 11, f"Template {name} register {reg} has invalid column count"
                 )
 
-    def test_queue_log_handler(self):
+    def test_queue_log_handler(self) -> None:
         """Verifies thread-safe log handler pushes records into the queue."""
         log_q: queue.Queue[tuple[str, str]] = queue.Queue()
         handler = QueueLogHandler(log_q)
@@ -58,8 +58,11 @@ class TestGUIComponents(unittest.TestCase):
 
 
 class TestDefFileGenApp(unittest.TestCase):
+    root: gui_module.tk.Tk
+    app: DefFileGenApp
+
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls) -> None:
         # Create a hidden Tk instance for testing UI controllers without popping windows
         try:
             if gui_module.HAS_CUSTOMTKINTER:
@@ -72,13 +75,13 @@ class TestDefFileGenApp(unittest.TestCase):
             raise unittest.SkipTest(f"GUI environment not available: {e}") from e
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(cls) -> None:
         try:
             cls.root.destroy()
         except Exception:
             pass
 
-    def test_app_initialization(self):
+    def test_app_initialization(self) -> None:
         """Checks app state and UI controls are properly instantiated."""
         self.assertIsNotNone(self.app.entry_input_file)
         self.assertIsNotNone(self.app.entry_mfg)
@@ -87,7 +90,7 @@ class TestDefFileGenApp(unittest.TestCase):
         self.assertIsNotNone(self.app.tree_issues)
         self.assertFalse(self.app.is_processing)
 
-    def test_on_conversion_success_callback(self):
+    def test_on_conversion_success_callback(self) -> None:
         """Tests UI update on conversion completion."""
         mock_rows = [
             {
@@ -114,14 +117,14 @@ class TestDefFileGenApp(unittest.TestCase):
             self.assertEqual(self.app.last_generated_file, "test_out.csv")
             self.assertEqual(len(self.app.tree_preview.get_children()), 1)
 
-    def test_on_conversion_error_callback(self):
+    def test_on_conversion_error_callback(self) -> None:
         """Tests UI update on conversion error."""
         with patch.object(gui_module.messagebox, "showerror") as mock_box:
             self.app._on_conversion_error("Extraction failed badly")
             mock_box.assert_called_once()
             self.assertFalse(self.app.is_processing)
 
-    def test_run_validation_valid_file(self):
+    def test_run_validation_valid_file(self) -> None:
         """Tests validator tab execution on a valid file."""
         with tempfile.NamedTemporaryFile(
             mode="w", suffix=".csv", delete=False, newline="", encoding="utf-8"
@@ -135,16 +138,18 @@ class TestDefFileGenApp(unittest.TestCase):
             self.app.entry_val_file.insert(0, filepath)
             self.app._run_validation()
 
-            self.assertIsNotNone(self.app.last_validation_report)
-            self.assertTrue(self.app.last_validation_report.is_valid)
-            self.assertEqual(self.app.last_validation_report.register_count, 1)
+            report = self.app.last_validation_report
+            self.assertIsNotNone(report)
+            assert report is not None
+            self.assertTrue(report.is_valid)
+            self.assertEqual(report.register_count, 1)
         finally:
             try:
                 os.unlink(filepath)
             except OSError:
                 pass
 
-    def test_run_validation_invalid_file(self):
+    def test_run_validation_invalid_file(self) -> None:
         """Tests validator tab execution on an invalid file."""
         with tempfile.NamedTemporaryFile(
             mode="w", suffix=".csv", delete=False, newline="", encoding="utf-8"
@@ -158,8 +163,10 @@ class TestDefFileGenApp(unittest.TestCase):
             self.app.entry_val_file.insert(0, filepath)
             self.app._run_validation()
 
-            self.assertIsNotNone(self.app.last_validation_report)
-            self.assertFalse(self.app.last_validation_report.is_valid)
+            report = self.app.last_validation_report
+            self.assertIsNotNone(report)
+            assert report is not None
+            self.assertFalse(report.is_valid)
             self.assertGreater(len(self.app.tree_issues.get_children()), 0)
         finally:
             try:
@@ -167,7 +174,7 @@ class TestDefFileGenApp(unittest.TestCase):
             except OSError:
                 pass
 
-    def test_export_validation_report(self):
+    def test_export_validation_report(self) -> None:
         """Tests exporting validation report to a text file."""
         self.app.last_validation_report = ValidationReport(
             is_valid=False,
@@ -205,7 +212,7 @@ class TestDefFileGenApp(unittest.TestCase):
 
 class TestMainCLIGUIDispatch(unittest.TestCase):
     @patch("DefFileGenerator.gui.main")
-    def test_main_gui_subcommand(self, mock_gui_main):
+    def test_main_gui_subcommand(self, mock_gui_main: unittest.mock.MagicMock) -> None:
         """Tests that `deffilegen gui` invokes gui.main()."""
         import DefFileGenerator.main as cli_main
 
@@ -215,7 +222,7 @@ class TestMainCLIGUIDispatch(unittest.TestCase):
         mock_gui_main.assert_called_once()
 
     @patch("DefFileGenerator.gui.main")
-    def test_main_gui_flag(self, mock_gui_main):
+    def test_main_gui_flag(self, mock_gui_main: unittest.mock.MagicMock) -> None:
         """Tests that `deffilegen --gui` invokes gui.main()."""
         import DefFileGenerator.main as cli_main
 
@@ -228,8 +235,11 @@ class TestMainCLIGUIDispatch(unittest.TestCase):
 class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
     """Verifies that DefFileGenApp works completely when customtkinter is not available."""
 
+    root: gui_module.tk.Tk
+    app: DefFileGenApp
+
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls) -> None:
         try:
             with patch.object(gui_module, "HAS_CUSTOMTKINTER", False):
                 cls.root = gui_module.tk.Tk()
@@ -239,13 +249,13 @@ class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
             raise unittest.SkipTest(f"Tkinter environment not available: {e}") from e
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(cls) -> None:
         try:
             cls.root.destroy()
         except Exception:
             pass
 
-    def test_fallback_widgets_instantiation(self):
+    def test_fallback_widgets_instantiation(self) -> None:
         """Verifies that all widgets, entries, and action buttons exist in fallback mode."""
         self.assertIsNotNone(self.app.entry_input_file)
         self.assertIsNotNone(self.app.entry_mfg)
@@ -261,7 +271,7 @@ class TestDefFileGenAppFallbackTkinter(unittest.TestCase):
         self.assertIsNotNone(self.app.btn_copy_csv)
         self.assertIsNotNone(self.app.tree_preview)
 
-    def test_fallback_on_conversion_success(self):
+    def test_fallback_on_conversion_success(self) -> None:
         """Verifies preview treeview population and action button activation in fallback mode."""
         mock_rows = [
             {
