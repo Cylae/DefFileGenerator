@@ -28,6 +28,46 @@ from web.app import app
 class TestDefGenWave16(unittest.TestCase):
     """Targeted tests for def_gen.py edge cases."""
 
+    def test_validate_address_exceptions(self) -> None:
+        # Invalid object or string triggering ValueError / IndexError in parts
+        self.assertFalse(Generator.validate_address("30001_abc", "STRING", strict=True))
+        self.assertFalse(Generator.validate_address("30001_0_def", "BITS", strict=True))
+
+    def test_get_register_count_exceptions(self) -> None:
+        # Malformed STR or RAW address string that causes ValueError / IndexError
+        self.assertEqual(Generator.get_register_count("STRING", "30001_abc"), 0)
+        self.assertEqual(Generator.get_register_count("STR_INVALID", "30001"), 0)
+
+    def test_apply_address_offset_exceptions(self) -> None:
+        self.assertEqual(Generator.apply_address_offset(None, 10), "")
+        # Address part not parseable as int or hex
+        self.assertEqual(Generator.apply_address_offset("xyz_qrs", 10), "xyz_qrs")
+
+    def test_determine_info1_variations(self) -> None:
+        gen = Generator()
+        self.assertEqual(gen._determine_info1("unknown_type", line_num=10), "3")
+        self.assertEqual(gen._determine_info1(None), "3")  # type: ignore[arg-type]
+        self.assertEqual(gen._determine_info1(""), "3")
+
+    def test_run_generator_and_template_edge_cases(self) -> None:
+        from DefFileGenerator.def_gen import GeneratorConfig, run_generator
+
+        # Same input and output path failure
+        with tempfile.NamedTemporaryFile("w", suffix=".csv", delete=False) as f:
+            f.write("test")
+            tmp_path = f.name
+
+        try:
+            cfg = GeneratorConfig(input_file=tmp_path, output=tmp_path)
+            self.assertFalse(run_generator(cfg))
+
+            # Non-existent input file failure
+            cfg_missing = GeneratorConfig(input_file="/nonexistent/path/to/file.csv", output="out.csv")
+            self.assertFalse(run_generator(cfg_missing))
+        finally:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+
     def test_peek_generator(self) -> None:
         has_data, it = peek_generator(None)
         self.assertFalse(has_data)
