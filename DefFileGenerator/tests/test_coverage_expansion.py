@@ -182,21 +182,43 @@ class TestMainCliCoverage(unittest.TestCase):
             if os.path.exists(tmp_path):
                 os.remove(tmp_path)
 
-    def test_perform_extraction_invalid_mapping_json(self):
+    def test_perform_extraction_mapping_os_error(self):
+        with tempfile.NamedTemporaryFile(suffix=".csv", mode="w+", delete=False) as f_csv:
+            f_csv.write("Name,Address\nVar1,100\n")
+            csv_path = f_csv.name
+
+        missing_json_path = csv_path + ".missing_mapping.json"
+
+        try:
+            args = argparse.Namespace(input_file=csv_path, mapping=missing_json_path)
+            with patch("logging.error") as mock_log:
+                with self.assertRaises(SystemExit) as cm:
+                    _perform_extraction(args)
+                self.assertEqual(cm.exception.code, 1)
+                mock_log.assert_called_once()
+                self.assertIn("Error reading mapping file:", mock_log.call_args[0][0])
+        finally:
+            if os.path.exists(csv_path):
+                os.remove(csv_path)
+
+    def test_perform_extraction_mapping_value_error(self):
         with (
             tempfile.NamedTemporaryFile(suffix=".csv", mode="w+", delete=False) as f_csv,
             tempfile.NamedTemporaryFile(suffix=".json", mode="w+", delete=False) as f_json,
         ):
             f_csv.write("Name,Address\nVar1,100\n")
-            f_json.write("{invalid json")
+            f_json.write("{invalid json format")
             csv_path = f_csv.name
             json_path = f_json.name
 
         try:
             args = argparse.Namespace(input_file=csv_path, mapping=json_path)
-            with self.assertRaises(SystemExit) as cm:
-                _perform_extraction(args)
-            self.assertEqual(cm.exception.code, 1)
+            with patch("logging.error") as mock_log:
+                with self.assertRaises(SystemExit) as cm:
+                    _perform_extraction(args)
+                self.assertEqual(cm.exception.code, 1)
+                mock_log.assert_called_once()
+                self.assertIn("Error reading mapping file:", mock_log.call_args[0][0])
         finally:
             if os.path.exists(csv_path):
                 os.remove(csv_path)
