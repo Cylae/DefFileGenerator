@@ -62,7 +62,9 @@ class TestDefGenWave16(unittest.TestCase):
             self.assertFalse(run_generator(cfg))
 
             # Non-existent input file failure
-            cfg_missing = GeneratorConfig(input_file="/nonexistent/path/to/file.csv", output="out.csv")
+            cfg_missing = GeneratorConfig(
+                input_file="/nonexistent/path/to/file.csv", output="out.csv"
+            )
             self.assertFalse(run_generator(cfg_missing))
         finally:
             if os.path.exists(tmp_path):
