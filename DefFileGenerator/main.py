@@ -289,9 +289,7 @@ def run_command(args: argparse.Namespace) -> None:
 
     output_file = getattr(args, "output", None)
     if not output_file and not template:
-        sanitized_mfg = RE_SLUGIFY.sub("_", str(m_name or "Manufacturer")).lower()
-        sanitized_model = RE_SLUGIFY.sub("_", str(m_model or "Model")).lower()
-        output_file = f"{sanitized_mfg}_{sanitized_model}_definition.csv"
+        output_file = _get_default_output(str(m_name or "Manufacturer"), str(m_model or "Model"))
 
     _guard_source_output(input_file, output_file)
 
