@@ -299,6 +299,33 @@ class TestCliDeep(unittest.TestCase):
         self.assertIn("sheet", result.stderr.lower())
 
     # ------------------------------------------------------------------
+    # _get_default_output
+    # ------------------------------------------------------------------
+    def test_get_default_output_standard(self):
+        from DefFileGenerator.main import _get_default_output
+
+        res = _get_default_output("Huawei", "SUN2000")
+        self.assertEqual(res, "huawei_sun2000_definition.csv")
+
+    def test_get_default_output_special_characters(self):
+        from DefFileGenerator.main import _get_default_output
+
+        res = _get_default_output("Test Mfg!", "Model-X 100#")
+        self.assertEqual(res, "test_mfg__model_x_100__definition.csv")
+
+    def test_get_default_output_already_slugified(self):
+        from DefFileGenerator.main import _get_default_output
+
+        res = _get_default_output("sma", "stp5000")
+        self.assertEqual(res, "sma_stp5000_definition.csv")
+
+    def test_get_default_output_dots_and_dashes(self):
+        from DefFileGenerator.main import _get_default_output
+
+        res = _get_default_output("A.B.C", "123-456")
+        self.assertEqual(res, "a_b_c_123_456_definition.csv")
+
+    # ------------------------------------------------------------------
     # setup_logging
     # ------------------------------------------------------------------
     def test_setup_logging_verbose(self):
