@@ -2,6 +2,7 @@ import io
 import unittest
 from unittest.mock import patch
 
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
 import web.app as web_app
@@ -105,6 +106,19 @@ class TestWebEdgeCases(unittest.TestCase):
             self.assertIn(
                 "Failed to extract registers from uploaded file", response.json()["detail"]
             )
+
+    def test_convert_extraction_httpexception_reraised(self):
+        file_obj = io.BytesIO(b"dummy data")
+        with patch(
+            "DefFileGenerator.extractor.Extractor.extract_from_csv",
+            side_effect=HTTPException(status_code=400, detail="Extraction HTTP error"),
+        ):
+            response = self.client.post(
+                "/api/convert",
+                files={"file": ("sample.csv", file_obj, "text/csv")},
+            )
+            self.assertEqual(response.status_code, 400)
+            self.assertEqual(response.json()["detail"], "Extraction HTTP error")
 
     def test_validate_exception_returns_400(self):
         file_obj = io.BytesIO(b"Header\n1;3;40001;U16;;N;t;1;0;V;4\n")
