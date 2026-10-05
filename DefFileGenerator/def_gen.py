@@ -1297,6 +1297,158 @@ class Generator:
                 "Action": norm_action,
             }
 
+    def _validate_row_info1(
+        self,
+        info1: Any,
+        line_num: int,
+        strict: bool,
+        issues: list[ValidationIssue],
+        type_counts: dict[str, int],
+    ) -> tuple[str, bool]:
+        """Validates the Info1 Modbus function code field."""
+        info1_str = str(info1).strip()
+        if info1_str not in MODBUS_VALID_INFO1:
+            msg = f"Line {line_num}: Invalid Info1 '{info1}' (expected 1, 2, 3, or 4)."
+            logging.warning(msg)
+            issues.append(
+                ValidationIssue(
+                    line=line_num,
+                    severity="ERROR" if strict else "WARNING",
+                    code="INVALID_INFO1",
+                    field="Info1",
+                    message=msg,
+                )
+            )
+            return info1_str, not strict
+        type_counts[info1_str] = type_counts.get(info1_str, 0) + 1
+        return info1_str, True
+
+    def _validate_row_tag(
+        self,
+        tag: Any,
+        line_num: int,
+        seen_tags: dict[str, int],
+        issues: list[ValidationIssue],
+    ) -> bool:
+        """Validates variable Tag uniqueness."""
+        if tag:
+            if tag in seen_tags:
+                msg = f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})."
+                logging.error(msg)
+                issues.append(
+                    ValidationIssue(
+                        line=line_num,
+                        severity="ERROR",
+                        code="DUPLICATE_TAG",
+                        field="Tag",
+                        message=msg,
+                    )
+                )
+                return False
+            seen_tags[tag] = line_num
+        return True
+
+    def _validate_row_type(
+        self,
+        info3: Any,
+        line_num: int,
+        issues: list[ValidationIssue],
+    ) -> bool:
+        """Validates the Webdyn SunPM data type."""
+        if not self.validate_type(info3):
+            msg = f"Line {line_num}: Invalid Type '{info3}'."
+            logging.warning(msg)
+            issues.append(
+                ValidationIssue(
+                    line=line_num,
+                    severity="ERROR",
+                    code="INVALID_TYPE",
+                    field="Info3",
+                    message=msg,
+                )
+            )
+            return False
+        return True
+
+    def _validate_row_address(
+        self,
+        info2: Any,
+        info3: Any,
+        line_num: int,
+        strict: bool,
+        issues: list[ValidationIssue],
+    ) -> bool:
+        """Validates register address format and boundary range."""
+        if not self.validate_address(info2, info3, strict=strict):
+            msg = f"Line {line_num}: Invalid address or range '{info2}' for Type '{info3}'."
+            logging.error(msg)
+            issues.append(
+                ValidationIssue(
+                    line=line_num,
+                    severity="ERROR",
+                    code="INVALID_ADDRESS",
+                    field="Info2",
+                    message=msg,
+                )
+            )
+            return False
+        return True
+
+    def _validate_row_action(
+        self,
+        action_val: str,
+        line_num: int,
+        strict: bool,
+        issues: list[ValidationIssue],
+    ) -> bool:
+        """Validates the Action access permission code."""
+        if action_val and action_val not in self.allowed_actions:
+            msg = f"Line {line_num}: Invalid Action '{action_val}'."
+            logging.warning(msg)
+            issues.append(
+                ValidationIssue(
+                    line=line_num,
+                    severity="ERROR" if strict else "WARNING",
+                    code="INVALID_ACTION",
+                    field="Action",
+                    message=msg,
+                )
+            )
+            return not strict
+        return True
+
+    def _validate_row_coefs(
+        self,
+        row: list[str],
+        line_num: int,
+        strict: bool,
+        issues: list[ValidationIssue],
+    ) -> bool:
+        """Validates CoefA and CoefB finite float values."""
+        valid = True
+        for coef_idx, coef_name in ((7, "CoefA"), (8, "CoefB")):
+            c_val = str(row[coef_idx]).strip()
+            if c_val:
+                try:
+                    f_val = float(c_val)
+                    if not math.isfinite(f_val):
+                        raise ValueError()
+                except ValueError:
+                    msg = f"Line {line_num}: Non-numeric {coef_name} '{c_val}'."
+                    logging.warning(msg)
+                    issues.append(
+                        ValidationIssue(
+                            line=line_num,
+                            severity="ERROR" if strict else "WARNING",
+                            code="INVALID_COEF",
+                            field=coef_name,
+                            message=msg,
+                        )
+                    )
+                    if strict:
+                        valid = False
+        return valid
+
     def validate_csv_detailed(
         self,
         filepath: str,
@@ -1411,112 +1563,27 @@ class Generator:
                         row[6],
                     )
 
-                    # Validate Info1
-                    info1_str = str(info1).strip()
-                    if info1_str not in MODBUS_VALID_INFO1:
-                        msg = f"Line {line_num}: Invalid Info1 '{info1}' (expected 1, 2, 3, or 4)."
-                        logging.warning(msg)
-                        issues.append(
-                            ValidationIssue(
-                                line=line_num,
-                                severity="ERROR" if strict else "WARNING",
-                                code="INVALID_INFO1",
-                                field="Info1",
-                                message=msg,
-                            )
-                        )
-                        if strict:
-                            valid = False
-                    else:
-                        type_counts[info1_str] = type_counts.get(info1_str, 0) + 1
-
-                    # Validate Tag uniqueness (fatal error)
-                    if tag:
-                        if tag in seen_tags:
-                            msg = f"Line {line_num}: Fatal Error - Duplicate Tag '{tag}' (previously at line {seen_tags[tag]})."
-                            logging.error(msg)
-                            issues.append(
-                                ValidationIssue(
-                                    line=line_num,
-                                    severity="ERROR",
-                                    code="DUPLICATE_TAG",
-                                    field="Tag",
-                                    message=msg,
-                                )
-                            )
-                            valid = False
-                        else:
-                            seen_tags[tag] = line_num
-
-                    # Validate Type
-                    if not self.validate_type(info3):
-                        msg = f"Line {line_num}: Invalid Type '{info3}'."
-                        logging.warning(msg)
-                        issues.append(
-                            ValidationIssue(
-                                line=line_num,
-                                severity="ERROR",
-                                code="INVALID_TYPE",
-                                field="Info3",
-                                message=msg,
-                            )
-                        )
+                    info1_str, is_info1_valid = self._validate_row_info1(
+                        info1, line_num, strict, issues, type_counts
+                    )
+                    if not is_info1_valid:
                         valid = False
 
-                    # Validate Address format and boundary range (fatal error)
-                    if not self.validate_address(info2, info3, strict=strict):
-                        msg = f"Line {line_num}: Invalid address or range '{info2}' for Type '{info3}'."
-                        logging.error(msg)
-                        issues.append(
-                            ValidationIssue(
-                                line=line_num,
-                                severity="ERROR",
-                                code="INVALID_ADDRESS",
-                                field="Info2",
-                                message=msg,
-                            )
-                        )
+                    if not self._validate_row_tag(tag, line_num, seen_tags, issues):
                         valid = False
 
-                    # Validate Action permission
+                    if not self._validate_row_type(info3, line_num, issues):
+                        valid = False
+
+                    if not self._validate_row_address(info2, info3, line_num, strict, issues):
+                        valid = False
+
                     action_val = str(row[10]).strip()
-                    if action_val and action_val not in self.allowed_actions:
-                        msg = f"Line {line_num}: Invalid Action '{action_val}'."
-                        logging.warning(msg)
-                        issues.append(
-                            ValidationIssue(
-                                line=line_num,
-                                severity="ERROR" if strict else "WARNING",
-                                code="INVALID_ACTION",
-                                field="Action",
-                                message=msg,
-                            )
-                        )
-                        if strict:
-                            valid = False
+                    if not self._validate_row_action(action_val, line_num, strict, issues):
+                        valid = False
 
-                    # Validate CoefA and CoefB floats
-                    for coef_idx, coef_name in ((7, "CoefA"), (8, "CoefB")):
-                        c_val = str(row[coef_idx]).strip()
-                        if c_val:
-                            try:
-                                f_val = float(c_val)
-                                if not math.isfinite(f_val):
-                                    raise ValueError()
-                            except ValueError:
-                                msg = f"Line {line_num}: Non-numeric {coef_name} '{c_val}'."
-                                logging.warning(msg)
-                                issues.append(
-                                    ValidationIssue(
-                                        line=line_num,
-                                        severity="ERROR" if strict else "WARNING",
-                                        code="INVALID_COEF",
-                                        field=coef_name,
-                                        message=msg,
-                                    )
-                                )
-                                if strict:
-                                    valid = False
+                    if not self._validate_row_coefs(row, line_num, strict, issues):
+                        valid = False
 
                     prev_warned = len(warned_lines)
                     self._check_address_overlap(
