@@ -21,7 +21,9 @@ class TestGeneratorRowValidationHelpers(unittest.TestCase):
     def test_validate_row_info1_valid(self) -> None:
         issues: list[ValidationIssue] = []
         counts: dict[str, int] = {}
-        code, ok = self.generator._validate_row_info1("3", line_num=2, strict=True, issues=issues, type_counts=counts)
+        code, ok = self.generator._validate_row_info1(
+            "3", line_num=2, strict=True, issues=issues, type_counts=counts
+        )
         self.assertTrue(ok)
         self.assertEqual(code, "3")
         self.assertEqual(counts.get("3"), 1)
@@ -30,7 +32,9 @@ class TestGeneratorRowValidationHelpers(unittest.TestCase):
     def test_validate_row_info1_invalid_lenient(self) -> None:
         issues: list[ValidationIssue] = []
         counts: dict[str, int] = {}
-        code, ok = self.generator._validate_row_info1("99", line_num=3, strict=False, issues=issues, type_counts=counts)
+        code, ok = self.generator._validate_row_info1(
+            "99", line_num=3, strict=False, issues=issues, type_counts=counts
+        )
         self.assertTrue(ok)
         self.assertEqual(code, "99")
         self.assertEqual(len(issues), 1)
@@ -39,7 +43,9 @@ class TestGeneratorRowValidationHelpers(unittest.TestCase):
     def test_validate_row_info1_invalid_strict(self) -> None:
         issues: list[ValidationIssue] = []
         counts: dict[str, int] = {}
-        code, ok = self.generator._validate_row_info1("99", line_num=4, strict=True, issues=issues, type_counts=counts)
+        code, ok = self.generator._validate_row_info1(
+            "99", line_num=4, strict=True, issues=issues, type_counts=counts
+        )
         self.assertFalse(ok)
         self.assertEqual(len(issues), 1)
         self.assertEqual(issues[0].severity, "ERROR")
@@ -61,7 +67,9 @@ class TestGeneratorRowValidationHelpers(unittest.TestCase):
 
     def test_validate_row_address_invalid(self) -> None:
         issues: list[ValidationIssue] = []
-        ok = self.generator._validate_row_address("70000", "U16", line_num=7, strict=True, issues=issues)
+        ok = self.generator._validate_row_address(
+            "70000", "U16", line_num=7, strict=True, issues=issues
+        )
         self.assertFalse(ok)
         self.assertEqual(len(issues), 1)
         self.assertEqual(issues[0].code, "INVALID_ADDRESS")
@@ -95,7 +103,20 @@ class TestCLIEdgeCasesWave19(unittest.TestCase):
         try:
             with patch("logging.warning") as mock_warn:
                 try:
-                    cli_main(["run", csv_path, "--pages", "1-5", "--output", csv_path + ".out", "--manufacturer", "M", "--model", "Mod"])
+                    cli_main(
+                        [
+                            "run",
+                            csv_path,
+                            "--pages",
+                            "1-5",
+                            "--output",
+                            csv_path + ".out",
+                            "--manufacturer",
+                            "M",
+                            "--model",
+                            "Mod",
+                        ]
+                    )
                 except SystemExit:
                     pass
                 # Check that warning regarding --pages was emitted
