@@ -84,7 +84,9 @@ def test_def_gen_file_and_cli_edge_cases(tmp_path):
     """Test csv sniffer error, empty config, and main CLI failure exit."""
     # Line 1539: validate_csv_detailed empty row handling
     test_csv = tmp_path / "test.csv"
-    test_csv.write_text("modbusRTU;Inverter;Mfg;Model;;;;;;;\n\n\n1;3;30001;U16;;V1;v1;1;0;V;4\n", encoding="utf-8")
+    test_csv.write_text(
+        "modbusRTU;Inverter;Mfg;Model;;;;;;;\n\n\n1;3;30001;U16;;V1;v1;1;0;V;4\n", encoding="utf-8"
+    )
     report = Generator().validate_csv_detailed(str(test_csv))
     assert report.is_valid is True
 
@@ -93,7 +95,23 @@ def test_def_gen_file_and_cli_edge_cases(tmp_path):
     fake_outfile.close.side_effect = OSError("Disk error")
     fake_outfile.fileno.return_value = 1
     # write_output_csv handles closing error gracefully
-    res = Generator.write_output_csv(None, [{"Info1": "1", "Info2": "30001", "Info3": "U16", "Info4": "", "Name": "A", "Tag": "a", "CoefA": "1", "CoefB": "0", "Unit": "V", "Action": "4"}])
+    res = Generator.write_output_csv(
+        None,
+        [
+            {
+                "Info1": "1",
+                "Info2": "30001",
+                "Info3": "U16",
+                "Info4": "",
+                "Name": "A",
+                "Tag": "a",
+                "CoefA": "1",
+                "CoefB": "0",
+                "Unit": "V",
+                "Action": "4",
+            }
+        ],
+    )
     assert res is True
 
     # Line 2007: run_generator with input_file None and input_data None
@@ -104,7 +122,9 @@ def test_def_gen_file_and_cli_edge_cases(tmp_path):
     input_csv = tmp_path / "sniff_fail.csv"
     input_csv.write_text("Name,Tag,Address\nVar1,tag1,30001\n", encoding="utf-8")
     with patch("csv.Sniffer.sniff", side_effect=csv.Error("Sniff failed")):
-        cfg_sniff = GeneratorConfig(input_file=str(input_csv), output=str(tmp_path / "out_sniff.csv"))
+        cfg_sniff = GeneratorConfig(
+            input_file=str(input_csv), output=str(tmp_path / "out_sniff.csv")
+        )
         assert run_generator(cfg_sniff) is True
 
     # Line 2067: def_gen main exit failure
@@ -152,7 +172,9 @@ def test_extractor_column_and_pdf_edge_cases(tmp_path):
     # Line 954: extract_from_csv unexpected error
     bad_csv = tmp_path / "bad.csv"
     bad_csv.write_text("a,b,c\n1,2,3\n", encoding="utf-8")
-    with patch("DefFileGenerator.extractor.csv.DictReader", side_effect=AttributeError("Unexpected error")):
+    with patch(
+        "DefFileGenerator.extractor.csv.DictReader", side_effect=AttributeError("Unexpected error")
+    ):
         with pytest.raises(ExtractionError):
             for t in ext.extract_from_csv(str(bad_csv)):
                 list(t)
@@ -172,7 +194,10 @@ def test_extractor_column_and_pdf_edge_cases(tmp_path):
     # Line 1296 & 1298: extractor.main execution
     excel_file = tmp_path / "test.xlsx"
     excel_file.write_bytes(b"dummy")
-    with patch("DefFileGenerator.extractor.Extractor.extract_from_excel", return_value=[iter([{"Name": "A", "Address": "10"}])]):
+    with patch(
+        "DefFileGenerator.extractor.Extractor.extract_from_excel",
+        return_value=[iter([{"Name": "A", "Address": "10"}])],
+    ):
         with patch("sys.argv", ["extractor.py", str(excel_file)]):
             extractor_main()
 
@@ -186,7 +211,9 @@ def test_main_cli_extraction_and_error_paths(tmp_path):
     """Test _perform_extraction with xlsx/xml and run command failure paths."""
     # Line 120 & 125: _perform_extraction with xlsx and xml
     xml_file = tmp_path / "input.xml"
-    xml_file.write_text("<root><row><name>V1</name><address>30001</address></row></root>", encoding="utf-8")
+    xml_file.write_text(
+        "<root><row><name>V1</name><address>30001</address></row></root>", encoding="utf-8"
+    )
     ns_xml = argparse.Namespace(input_file=str(xml_file), sheet=None, pages=None)
     ext_res = list(_perform_extraction(ns_xml))
     assert len(ext_res) > 0
@@ -194,7 +221,10 @@ def test_main_cli_extraction_and_error_paths(tmp_path):
     xlsx_file = tmp_path / "input.xlsx"
     xlsx_file.write_bytes(b"dummy")
     ns_xlsx = argparse.Namespace(input_file=str(xlsx_file), sheet=None, pages=None)
-    with patch("DefFileGenerator.extractor.Extractor.extract_from_excel", return_value=[iter([{"Name": "V2", "Address": "30002"}])]):
+    with patch(
+        "DefFileGenerator.extractor.Extractor.extract_from_excel",
+        return_value=[iter([{"Name": "V2", "Address": "30002"}])],
+    ):
         ext_xlsx = list(_perform_extraction(ns_xlsx))
         assert len(ext_xlsx) > 0
 
@@ -220,7 +250,9 @@ def test_main_cli_extraction_and_error_paths(tmp_path):
 
     # Line 322: main_cli run command validation failure
     valid_csv = tmp_path / "valid_in.csv"
-    valid_csv.write_text("Name,Tag,Address,Type,RegisterType\nV1,t1,30001,U16,Holding\n", encoding="utf-8")
+    valid_csv.write_text(
+        "Name,Tag,Address,Type,RegisterType\nV1,t1,30001,U16,Holding\n", encoding="utf-8"
+    )
     out_csv = tmp_path / "out_val_fail.csv"
     with patch("DefFileGenerator.def_gen.Generator.validate_csv", return_value=False):
         with patch("sys.argv", ["deffilegen", "run", str(valid_csv), "-o", str(out_csv)]):
@@ -243,14 +275,18 @@ def test_web_app_edge_and_error_branches(tmp_path):
     assert res_xml.status_code in (200, 400)
 
     # Line 256: convert endpoint with no readable registers
-    res_no_regs = client.post("/api/convert", files={"file": ("empty.csv", b"col1,col2\nval1,val2\n", "text/csv")})
+    res_no_regs = client.post(
+        "/api/convert", files={"file": ("empty.csv", b"col1,col2\nval1,val2\n", "text/csv")}
+    )
     assert res_no_regs.status_code == 400
 
     # Line 303 & 309: convert endpoint validation failure & HTTPException re-raise
     valid_input = b"Name,Tag,Address,Type,RegisterType\nV1,t1,30001,U16,Holding\n"
     with patch("DefFileGenerator.def_gen.Generator.validate_csv_detailed") as mock_val:
         mock_val.return_value = MagicMock(is_valid=False, register_count=0, issues=[], stats={})
-        res_val_fail = client.post("/api/convert", files={"file": ("in.csv", valid_input, "text/csv")})
+        res_val_fail = client.post(
+            "/api/convert", files={"file": ("in.csv", valid_input, "text/csv")}
+        )
         assert res_val_fail.status_code == 400
 
     # Line 375: validate endpoint missing filename
