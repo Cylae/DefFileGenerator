@@ -1203,7 +1203,11 @@ class Extractor:
                         current_section_reg_type = "Discrete Input"
                     elif "0x04" in row_str_low or "input registers" in row_str_low:
                         current_section_reg_type = "Input Register"
-                    elif "0x01" in row_str_low or "read coils" in row_str_low or "coils" in row_str_low:
+                    elif (
+                        "0x01" in row_str_low
+                        or "read coils" in row_str_low
+                        or "coils" in row_str_low
+                    ):
                         current_section_reg_type = "Coil"
                     elif (
                         "0x03" in row_str_low
@@ -1222,14 +1226,22 @@ class Extractor:
                 # Filter sub-table header repeats (e.g. Address == 'addr'/'address' and Type == 'type')
                 addr_low = addr_val.lower()
                 raw_type_str = str(new_row.get("Type", "")).strip().lower()
-                if addr_low in ("addr", "address", "address (dec)", "registre") and raw_type_str in ("type", "data type", "format", "datatype"):
+                if addr_low in (
+                    "addr",
+                    "address",
+                    "address (dec)",
+                    "registre",
+                ) and raw_type_str in ("type", "data type", "format", "datatype"):
                     return None
 
                 # Filter instruction / banner rows where Address contains long instruction text, Function Code notes, or Modbus Addr headers
                 if (
-                    (len(addr_val) > 15 and not RE_HEX_OR_DEC.match(RE_CLEAN_WHITESPACE.sub("", addr_val)))
+                    (
+                        len(addr_val) > 15
+                        and not RE_HEX_OR_DEC.match(RE_CLEAN_WHITESPACE.sub("", addr_val))
+                    )
                     or "modbus addr" in addr_low
-                     or "function code" in addr_low
+                    or "function code" in addr_low
                 ):
                     return None
 
@@ -1294,7 +1306,10 @@ class Extractor:
 
                 if not new_row.get("RegisterType"):
                     new_row["RegisterType"] = current_section_reg_type or "Holding Register"
-                elif current_section_reg_type and new_row.get("RegisterType") in ("Holding Register", ""):
+                elif current_section_reg_type and new_row.get("RegisterType") in (
+                    "Holding Register",
+                    "",
+                ):
                     new_row["RegisterType"] = current_section_reg_type
 
                 return new_row
