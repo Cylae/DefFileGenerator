@@ -122,15 +122,20 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\bsigned\s*char\b|\bschar\b"), "I8"),
     (re.compile(r"unsigned\s*(?:int(?:eger)?)?\s*8|uint8|\bu8\b|\bint8u\b"), "U8"),
     (re.compile(r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b|\bint8s\b"), "I8"),
+    (re.compile(r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$"), "U32"),
+    (re.compile(r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$"), "U16"),
     (re.compile(r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754"), "F64"),
     (re.compile(r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754"), "F32"),
-    (re.compile(r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16)\b"), "BITS"),
+    (
+        re.compile(
+            r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16|bit|bits|bool|boolean|bitmap)\b"
+        ),
+        "BITS",
+    ),
     (re.compile(r"\bqword\b"), "U64"),
     (re.compile(r"\bdword\b"), "U32"),
     (re.compile(r"\bword\b|\buword\b"), "U16"),
     (re.compile(r"\bbyte\b|\bubyte\b"), "U8"),
-    (re.compile(r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$"), "U32"),
-    (re.compile(r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$"), "U16"),
     (re.compile(r"^unsigned\s*(?:int(?:eger)?)?$|^uint$|^unsigned$"), "U16"),
     (re.compile(r"^signed\s*(?:int(?:eger)?)?$|^sint$|^int$"), "I16"),
     (re.compile(r"\bdate\s*time\b|\bdatetime\b"), "U32"),
@@ -429,14 +434,44 @@ class Generator:
         self.register_type_map: dict[str, str] = {
             "coil": MODBUS_COIL,
             "coils": MODBUS_COIL,
+            "read coils": MODBUS_COIL,
+            "0x01": MODBUS_COIL,
+            "fc01": MODBUS_COIL,
+            "fc1": MODBUS_COIL,
+            "01": MODBUS_COIL,
+            "1": MODBUS_COIL,
             "discrete input": MODBUS_DISCRETE,
+            "discrete inputs": MODBUS_DISCRETE,
+            "read discrete inputs": MODBUS_DISCRETE,
             "discrete register": MODBUS_DISCRETE,
             "discrete registers": MODBUS_DISCRETE,
             "discrete": MODBUS_DISCRETE,
+            "0x02": MODBUS_DISCRETE,
+            "fc02": MODBUS_DISCRETE,
+            "fc2": MODBUS_DISCRETE,
+            "02": MODBUS_DISCRETE,
+            "2": MODBUS_DISCRETE,
             "holding register": MODBUS_HOLDING,
+            "holding registers": MODBUS_HOLDING,
+            "read holding registers": MODBUS_HOLDING,
             "holding": MODBUS_HOLDING,
+            "0x03": MODBUS_HOLDING,
+            "fc03": MODBUS_HOLDING,
+            "fc3": MODBUS_HOLDING,
+            "03": MODBUS_HOLDING,
+            "0x16": MODBUS_HOLDING,
+            "0x06": MODBUS_HOLDING,
+            "0x10": MODBUS_HOLDING,
+            "3": MODBUS_HOLDING,
             "input register": MODBUS_INPUT,
+            "input registers": MODBUS_INPUT,
+            "read input registers": MODBUS_INPUT,
             "input": MODBUS_INPUT,
+            "0x04": MODBUS_INPUT,
+            "fc04": MODBUS_INPUT,
+            "fc4": MODBUS_INPUT,
+            "04": MODBUS_INPUT,
+            "4": MODBUS_INPUT,
         }
         self.allowed_actions: list[str] = ["0", "1", "2", "4", "6", "7", "8", "9", "10"]
         self.strict = strict
@@ -959,6 +994,24 @@ class Generator:
             return self.register_type_map[lt]
         elif lt in MODBUS_VALID_INFO1:
             return lt
+
+        # Substring / pattern matching for complex banners or embedded function code descriptions
+        if "0x02" in lt or "discrete" in lt or "fc02" in lt:
+            return MODBUS_DISCRETE
+        if "0x04" in lt or "input register" in lt or "read input" in lt or "fc04" in lt:
+            return MODBUS_INPUT
+        if "0x01" in lt or "coil" in lt or "fc01" in lt:
+            return MODBUS_COIL
+        if (
+            "0x03" in lt
+            or "0x16" in lt
+            or "holding" in lt
+            or "read holding" in lt
+            or "fc03" in lt
+            or "fc16" in lt
+        ):
+            return MODBUS_HOLDING
+
         if line_num:
             logging.warning(
                 f"Line {line_num}: Unknown RegisterType '{reg_type_str}'. Defaulting to {MODBUS_HOLDING}."
@@ -1196,7 +1249,10 @@ class Generator:
             if not any(v for v in row.values() if v):
                 continue
             norm_row = {
-                k.lower().strip(): (str(v).strip() if v is not None else "") for k, v in row.items()
+                (k.lower().strip() if k is not None else ""): (
+                    str(v).strip() if v is not None else ""
+                )
+                for k, v in row.items()
             }
             name, tag, reg_type_str, address = (
                 norm_row.get("name", ""),
