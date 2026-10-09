@@ -5,21 +5,20 @@ Targeted unit tests (Wave 23) for edge branches in def_gen.py, main.py, and web/
 import io
 import os
 import tempfile
-import pytest
-from unittest.mock import patch, MagicMock, AsyncMock
+from unittest.mock import AsyncMock, patch
 
-from DefFileGenerator.def_gen import (
-    Generator,
-    GeneratorConfig,
-    CSVHeaderConfig,
-    ValidationIssue,
-    ValidationReport,
-    run_generator,
-    generate_template,
-)
+import pytest
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
-from web.app import app, _save_upload, UploadBodyLimitMiddleware, MultiPartException
+
+from DefFileGenerator.def_gen import (
+    CSVHeaderConfig,
+    Generator,
+    GeneratorConfig,
+    generate_template,
+    run_generator,
+)
+from web.app import _save_upload, app
 
 
 def test_validate_address_raw_invalid_len():
@@ -93,9 +92,8 @@ def test_run_generator_missing_input_file():
     assert run_generator(config) is False
 
 
-def test_web_upload_body_limit_middleware_multipart_exception():
+def test_web_health_endpoint():
     client = TestClient(app)
-    # Test uploading valid endpoint
     res = client.get("/api/health")
     assert res.status_code == 200
 
