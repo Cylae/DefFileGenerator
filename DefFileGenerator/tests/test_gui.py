@@ -209,6 +209,164 @@ class TestDefFileGenApp(unittest.TestCase):
             except OSError:
                 pass
 
+    def test_search_and_filter_live(self) -> None:
+        """Verifies real-time multi-token register filtering and count updates."""
+        mock_rows = [
+            {
+                "RegisterType": "Holding",
+                "Address": "40001",
+                "Type": "U16",
+                "Name": "Grid Voltage",
+                "Tag": "grid_voltage",
+                "Factor": "0.1",
+                "Offset": "0",
+                "Unit": "V",
+                "Action": "4",
+            },
+            {
+                "RegisterType": "Holding",
+                "Address": "40002",
+                "Type": "U16",
+                "Name": "Grid Frequency",
+                "Tag": "grid_freq",
+                "Factor": "0.01",
+                "Offset": "0",
+                "Unit": "Hz",
+                "Action": "4",
+            },
+            {
+                "RegisterType": "Holding",
+                "Address": "40003",
+                "Type": "U32",
+                "Name": "Active Power",
+                "Tag": "active_power",
+                "Factor": "1.0",
+                "Offset": "0",
+                "Unit": "W",
+                "Action": "4",
+            },
+            {
+                "RegisterType": "Holding",
+                "Address": "40005",
+                "Type": "U16",
+                "Name": "Battery SOC",
+                "Tag": "battery_soc",
+                "Factor": "1.0",
+                "Offset": "0",
+                "Unit": "%",
+                "Action": "4",
+            },
+        ]
+        self.app.extracted_rows = list(mock_rows)
+        self.app.current_preview_rows = list(mock_rows)
+        self.app._populate_preview_table(self.app.current_preview_rows)
+        self.assertEqual(len(self.app.tree_preview.get_children()), 4)
+
+        # 1. Filter by "grid" -> 2 registers
+        self.app.entry_search.delete(0, "end")
+        self.app.entry_search.insert(0, "grid")
+        self.app._on_search_filter_changed()
+        self.assertEqual(len(self.app.tree_preview.get_children()), 2)
+        self.assertIn("2 / 4 matching", self.app.lbl_filter_count.cget("text"))
+
+        # 2. Multi-token filter: "grid freq" -> 1 register
+        self.app.entry_search.delete(0, "end")
+        self.app.entry_search.insert(0, "grid freq")
+        self.app._on_search_filter_changed()
+        self.assertEqual(len(self.app.tree_preview.get_children()), 1)
+
+        # 3. Filter by address: "40003" -> 1 register
+        self.app.entry_search.delete(0, "end")
+        self.app.entry_search.insert(0, "40003")
+        self.app._on_search_filter_changed()
+        self.assertEqual(len(self.app.tree_preview.get_children()), 1)
+
+        # 4. Clear filter -> all 4 restored
+        self.app._clear_search_filter()
+        self.assertEqual(len(self.app.tree_preview.get_children()), 4)
+        self.assertIn("4 registers displayed", self.app.lbl_filter_count.cget("text"))
+
+    def test_reset_form(self) -> None:
+        """Verifies 1-click Reset restores default parameters and clears preview."""
+        self.app.entry_mfg.delete(0, "end")
+        self.app.entry_mfg.insert(0, "CustomManufacturer")
+        self.app.entry_model.delete(0, "end")
+        self.app.entry_model.insert(0, "CustomModel")
+        self.app.entry_input_file.delete(0, "end")
+        self.app.entry_input_file.insert(0, "C:/dummy/input.xlsx")
+
+        self.app._reset_form()
+        self.assertEqual(self.app.entry_mfg.get(), "Huawei")
+        self.assertEqual(self.app.entry_model.get(), "SUN2000")
+        self.assertEqual(self.app.entry_input_file.get(), "")
+        self.assertEqual(len(self.app.tree_preview.get_children()), 0)
+        self.assertEqual(self.app.last_generated_file, None)
+
+    def test_row_double_click_inspection(self) -> None:
+        """Verifies double-clicking a row opens detailed register dialog."""
+        mock_row = [
+            {
+                "RegisterType": "Holding",
+                "Address": "40001",
+                "Type": "U16",
+                "Name": "AC Phase A Voltage",
+                "Tag": "u_ac_a",
+                "Factor": "0.1",
+                "Offset": "0",
+                "Unit": "V",
+                "Action": "4",
+            }
+        ]
+        self.app.extracted_rows = list(mock_row)
+        self.app.current_preview_rows = list(mock_row)
+        self.app._populate_preview_table(self.app.current_preview_rows)
+
+        children = self.app.tree_preview.get_children()
+        self.assertGreater(len(children), 0)
+        self.app.tree_preview.selection_set(children[0])
+
+        with patch.object(gui_module.messagebox, "showinfo") as mock_box:
+            self.app._on_tree_row_double_click()
+            mock_box.assert_called_once()
+            title, content = mock_box.call_args[0]
+            self.assertEqual(title, "Register Information")
+            self.assertIn("AC Phase A Voltage", content)
+            self.assertIn("40001", content)
+            self.assertIn("u_ac_a", content)
+
+    def test_error_guidance_messages(self) -> None:
+        """Verifies user-friendly error dialog includes actionable hints."""
+        with patch.object(gui_module.messagebox, "showerror") as mock_box:
+            self.app._on_conversion_error("No register could be mapped to standard Modbus fields.")
+            mock_box.assert_called_once()
+            title, content = mock_box.call_args[0]
+            self.assertIn("Helpful Tips", content)
+            self.assertIn("Worksheet", content)
+
+    def test_excel_sheets_inspection_and_selector(self) -> None:
+        """Verifies multi-sheet Excel inspection and automatic dropdown options."""
+        mars_path = r"C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
+        if os.path.exists(mars_path):
+            sheets = gui_module._inspect_excel_sheets(mars_path)
+            self.assertGreater(len(sheets), 5)
+            self.assertIn("LC Information", sheets)
+
+            self.app._apply_inferred_metadata(mars_path)
+            self.assertEqual(self.app.entry_mfg.get(), "Mars Energy")
+            self.assertIn("MarsLocalController", self.app.entry_model.get())
+            self.assertEqual(self.app.opt_protocol.get(), "modbusTCP")
+            self.assertEqual(self.app.opt_category.get(), "Battery")
+
+            if hasattr(self.app, "opt_sheet"):
+                vals = (
+                    self.app.opt_sheet.cget("values")
+                    if gui_module.HAS_CUSTOMTKINTER
+                    else self.app.opt_sheet["values"]
+                )
+                self.assertIn("📄 All Sheets (Merged)", vals)
+                self.assertIn("📑 LC Information", vals)
+                self.assertIn("📑 Rack and Cell Information", vals)
+
 
 class TestMainCLIGUIDispatch(unittest.TestCase):
     @patch("DefFileGenerator.gui.main")

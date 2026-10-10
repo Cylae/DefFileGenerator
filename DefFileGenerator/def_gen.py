@@ -70,6 +70,7 @@ RE_TYPE_NUMERIC = re.compile(r"^([UI](8|16|32|64)|F(32|64))(_(W|B|WB))?$", re.IG
 RE_TYPE_STR_CONV = re.compile(r"^STR(\d+)$", re.IGNORECASE)
 RE_ADDR_STRING = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)$", re.IGNORECASE)
 RE_ADDR_BITS = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_(\d+)_(\d+)$", re.IGNORECASE)
+RE_ADDR_BYTE = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)_([01])$", re.IGNORECASE)
 RE_ADDR_INT = re.compile(r"^([0-9A-F]+|0x[0-9A-F]+|[0-9A-F]+h|-?\d+)$", re.IGNORECASE)
 RE_COUNT_16_8 = re.compile(r"^([UI](16|8)(_(W|B|WB))?|BITS)$", re.IGNORECASE)
 RE_COUNT_32 = re.compile(r"^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$", re.IGNORECASE)
@@ -81,7 +82,7 @@ _ADDR_GROUPING_COMMA_RE = re.compile(r"(?<=\d),(?=\d{3}(?!\d))")
 _ADDR_HEX_MATCH_RE = re.compile(r"^-?[0-9A-Fa-f]+$")
 _ADDR_CLEAN_BITFIELD_RE = re.compile(r"_(wb|b|w)$|\b(swap|big endian|big|word)\b")
 _ADDR_BITFIELD_MATCH_RE = re.compile(r"^bitfield(8|16|32|64)$")
-_ADDR_STRING_MATCH_RE = re.compile(r"^(?:string|str)[\*x_]?\s*(\d+)$")
+_ADDR_STRING_MATCH_RE = re.compile(r"^(?:string|str)[\[\(\*x_]?\s*(\d+)[\]\)]?$")
 _COLLAPSE_WHITESPACE_RE = re.compile(r"\s+")
 _DIGIT_SPLIT_RE = re.compile(r"([a-zA-Z0-9])\s+(\d+)\b")
 _WORD_SWAP_RE = re.compile(
@@ -136,6 +137,16 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\bdate\s*time\b|\bdatetime\b"), "U32"),
     (re.compile(r"\b(?:ip4|ipv4)\b"), "IP"),
     (re.compile(r"\b(?:ip6|ipv6)\b"), "IPV6"),
+    # SunSpec Alliance, standard industrial & multilingual data types
+    (re.compile(r"^sunssf$"), "I16"),
+    (re.compile(r"^acc32$"), "U32"),
+    (re.compile(r"^acc64$"), "U64"),
+    (re.compile(r"^pad$"), "U16"),
+    (re.compile(r"^enum16$"), "U16"),
+    (re.compile(r"^enum32$"), "U32"),
+    (re.compile(r"^bool(?:ean)?$"), "U16"),
+    (re.compile(r"^single$"), "F32"),
+    (re.compile(r"^raw16$"), "U16"),
 )
 
 # Characters to strip when inspecting text for CSV formula injection
@@ -688,8 +699,15 @@ class Generator:
 
         if dtype_upper in {"STRING", "RAW"}:
             is_valid_format = RE_ADDR_STRING.match(addr_str) is not None
+            if not is_valid_format and not strict and RE_ADDR_INT.match(addr_str) is not None:
+                is_valid_format = True
         elif dtype_upper == "BITS":
             is_valid_format = RE_ADDR_BITS.match(addr_str) is not None
+        elif dtype_upper.startswith(("U8", "I8")):
+            is_valid_format = (
+                RE_ADDR_INT.match(addr_str) is not None
+                or RE_ADDR_BYTE.match(addr_str) is not None
+            )
         else:
             is_valid_format = RE_ADDR_INT.match(addr_str) is not None
 
@@ -707,7 +725,7 @@ class Generator:
                 if strict:
                     return False
 
-            if dtype_upper in {"STRING", "RAW"}:
+            if dtype_upper in {"STRING", "RAW"} and len(parts) > 1:
                 str_len = int(parts[1])
                 if str_len <= 0:
                     logging.warning(
@@ -968,19 +986,30 @@ class Generator:
     @staticmethod
     def _bit_slice(address: str, dtype: str) -> tuple[int, int] | None:
         """
-        Extracts the (bit_start, bit_end) range for BITS data types within a 16-bit register.
+        Extracts the (bit_start, bit_end) range for BITS and byte-addressed (U8/I8) data types within a 16-bit register.
 
         Returns:
-            tuple[int, int] | None: Inclusive (start_bit, end_bit) slice, or None if not BITS.
+            tuple[int, int] | None: Inclusive (start_bit, end_bit) slice, or None if not subword.
         """
-        if dtype.upper() != "BITS":
-            return None
-        try:
-            _, start, length = address.split("_")
-            bit_start = int(start)
-            return bit_start, bit_start + int(length) - 1
-        except (ValueError, IndexError):
-            return None
+        dtype_u = dtype.upper()
+        if dtype_u == "BITS":
+            try:
+                _, start, length = address.split("_")
+                bit_start = int(start)
+                return bit_start, bit_start + int(length) - 1
+            except (ValueError, IndexError):
+                return None
+        if dtype_u.startswith(("U8", "I8")) and "_" in address:
+            try:
+                _, byte_idx = address.split("_")
+                b = int(byte_idx)
+                if b == 0:
+                    return 0, 7
+                elif b == 1:
+                    return 8, 15
+            except (ValueError, IndexError):
+                return None
+        return None
 
     def _check_address_overlap(
         self,
@@ -1000,8 +1029,8 @@ class Generator:
         Collision Rules:
             - Two registers overlap if they share the same Info1 (Modbus address space)
               and their numerical address ranges [start, start + length - 1] intersect.
-            - Exception: Multiple BITS entries packed into the same 16-bit word do NOT
-              conflict if their bit slices [bit_start, bit_end] are disjoint.
+            - Exception: Multiple BITS or byte-addressed (U8/I8) entries packed into the same
+              16-bit word do NOT conflict if their bit slices [bit_start, bit_end] are disjoint.
 
         Args:
             info1: Info1 function code string or a RegisterEntry instance.
@@ -1052,6 +1081,7 @@ class Generator:
             max_len = usage["max_len"]
 
             is_bits = dtype_val.upper() == "BITS"
+            is_subword = is_bits or dtype_val.upper().startswith(("U8", "I8"))
             current_bits = self._bit_slice(address_val, dtype_val)
             overlap_detected = False
 
@@ -1060,7 +1090,8 @@ class Generator:
 
             def slices_overlap(u_type: str, u_start: int, u_bit_start: int, u_bit_end: int) -> bool:
                 """Checks if two entries in the same word have overlapping bit slices."""
-                if not (is_bits and u_type == "BITS" and start_addr == u_start):
+                u_is_subword = (u_type == "BITS" or u_type.startswith(("U8", "I8")))
+                if not (is_subword and u_is_subword and start_addr == u_start):
                     return True
                 if current_bits is None or u_bit_start < 0 or u_bit_end < 0:
                     return True
@@ -1353,9 +1384,24 @@ class Generator:
         info3: Any,
         line_num: int,
         issues: list[ValidationIssue],
+        strict: bool = True,
     ) -> bool:
         """Validates the Webdyn SunPM data type."""
-        if not self.validate_type(info3):
+        info3_str = str(info3).strip() if info3 is not None else ""
+        if not info3_str and not strict:
+            msg = f"Line {line_num}: Empty Type defaulted to 'U16' in non-strict mode."
+            logging.warning(msg)
+            issues.append(
+                ValidationIssue(
+                    line=line_num,
+                    severity="WARNING",
+                    code="EMPTY_TYPE",
+                    field="Info3",
+                    message=msg,
+                )
+            )
+            return True
+        if not self.validate_type(info3_str):
             msg = f"Line {line_num}: Invalid Type '{info3}'."
             logging.warning(msg)
             issues.append(
@@ -1509,9 +1555,22 @@ class Generator:
         try:
             with open(filepath, "rb") as f:
                 header_bytes = f.read(4)
-                encoding = (
-                    "utf-16" if header_bytes.startswith((b"\xff\xfe", b"\xfe\xff")) else "utf-8-sig"
-                )
+            if header_bytes.startswith((b"\xff\xfe", b"\xfe\xff")):
+                encoding = "utf-16"
+            elif strict:
+                encoding = "utf-8-sig"
+            else:
+                with open(filepath, "rb") as f:
+                    raw_data = f.read()
+                try:
+                    raw_data.decode("utf-8-sig")
+                    encoding = "utf-8-sig"
+                except UnicodeDecodeError:
+                    try:
+                        raw_data.decode("windows-1252")
+                        encoding = "windows-1252"
+                    except UnicodeDecodeError:
+                        encoding = "utf-8-sig"
 
             with open(filepath, encoding=encoding) as f:
                 reader = csv.reader(f, delimiter=";")
@@ -1572,7 +1631,7 @@ class Generator:
                     if not self._validate_row_tag(tag, line_num, seen_tags, issues):
                         valid = False
 
-                    if not self._validate_row_type(info3, line_num, issues):
+                    if not self._validate_row_type(info3, line_num, issues, strict=strict):
                         valid = False
 
                     if not self._validate_row_address(info2, info3, line_num, strict, issues):

@@ -112,8 +112,18 @@ except ImportError:
 # Import core generator utilities
 try:
     from DefFileGenerator.def_gen import Generator, peek_generator
+    from DefFileGenerator.knowledge_miner import (
+        infer_action_code,
+        infer_webdyn_tag,
+        parse_function_code_from_text,
+    )
 except ImportError:
     from .def_gen import Generator, peek_generator  # type: ignore[no-redef]
+    from .knowledge_miner import (  # type: ignore[no-redef]
+        infer_action_code,
+        infer_webdyn_tag,
+        parse_function_code_from_text,
+    )
 
 # -----------------------------------------------------------------------------
 # Pre-compiled Regex Patterns for Extractor Performance
@@ -144,16 +154,31 @@ MODBUS_HEADER_KEYWORDS = frozenset(
         "description",
         "nom",
         "point",
+        "point table",
+        "point name",
+        "signal",
+        "signal name",
+        "data name",
+        "designation",
+        "désignation",
+        "grandeur",
+        "parameter",
+        "paramètre",
+        "channel",
+        "kanal",
+        "bezeichnung",
         "type",
         "datatype",
         "format",
         "unit",
         "unité",
+        "einheit",
         "r/w",
         "rw",
         "action",
         "access",
         "accès",
+        "zugriff",
         "scale",
         "factor",
         "gain",
@@ -162,6 +187,16 @@ MODBUS_HEADER_KEYWORDS = frozenset(
         "size",
         "res.",
         "start reg",
+        # Multilingual Chinese keywords
+        "地址",
+        "寄存器",
+        "信号名称",
+        "数据名称",
+        "点名",
+        "数据类型",
+        "单位",
+        "读写",
+        "增益",
     }
 )
 
@@ -200,11 +235,15 @@ NAME_INDICATOR_TERMS = frozenset(
         "name",
         "nom",
         "designation",
+        "désignation",
         "parameter",
         "param",
         "variable",
         "signal",
         "label",
+        "bezeichnung",
+        "信号名称",
+        "数据名称",
     }
 )
 
@@ -266,24 +305,73 @@ class Extractor:
             "dec reg",
             "hex reg",
             "adresse (dec)",
+            "adresse (déc)",
+            "address (dec)",
+            "address(dec)",
             "modbus address",
             "modbus register",
             "register address",
+            "modbus-adresse",
+            "modbus-register-adresse",
+            "registeradresse",
+            "point table",
+            "point index",
+            "offset",
+            "logical address",
+            "adresse registre [hex]",
+            "adresse registre",
+            "adresse [hex]",
+            "registre [hex]",
+            "high byte",
+            "high-byte",
+            "highbyte",
+            "地址",
+            "地址 (dec)",
+            "地址(dec)",
+            "寄存器地址",
+            "寄存器",
+        ],
+        "HighByte": [
+            "high byte",
+            "high-byte",
+            "highbyte",
+            "high",
+            "octet de poids fort",
+            "poids fort",
+        ],
+        "LowByte": [
+            "low byte",
+            "low-byte",
+            "lowbyte",
+            "low",
+            "octet de poids faible",
+            "poids faible",
         ],
         "Name": [
             "name",
             "description",
             "parameter",
+            "parameter name",
             "variable",
             "signal",
             "signal name",
+            "data name",
             "point",
             "point name",
             "designation",
+            "désignation",
+            "channel",
+            "kanal",
+            "bezeichnung",
             "nom",
             "grandeur",
             "quantity",
             "register",
+            "信号名称",
+            "数据名称",
+            "点名",
+            "参数名称",
+            "名称",
         ],
         "Type": [
             "data type",
@@ -295,8 +383,24 @@ class Extractor:
             "type de donnees",
             "format de données",
             "data format",
+            "format / daten-typ",
+            "daten-typ",
+            "数据类型",
+            "格式",
         ],
-        "Unit": ["unit", "units", "unité", "unite", "eng unit", "engineering unit"],
+        "Unit": [
+            "unit",
+            "units",
+            "unité",
+            "unite",
+            "eng unit",
+            "eng. unit",
+            "eng units",
+            "eng. units",
+            "engineering unit",
+            "einheit",
+            "单位",
+        ],
         "Tag": ["tag"],
         "Action": ["action", "access", "accès", "acces"],
         "ReadWrite": [
@@ -308,6 +412,11 @@ class Extractor:
             "lecture/ecriture",
             "l/e",
             "rd/wr",
+            "zugriff",
+            "access mode",
+            "property",
+            "读写",
+            "读/写",
         ],
         "Factor": [
             "scale",
@@ -322,9 +431,23 @@ class Extractor:
             "accuracy",
             "precision",
             "facteur",
+            "faktor",
+            "auflösung",
         ],
-        "Gain": ["gain"],
-        "Offset": ["offset", "bias", "coefficient b", "coefb", "coef_b"],
+        "Gain": [
+            "gain",
+            "增益",
+            "比例",
+        ],
+        "Offset": [
+            "offset",
+            "bias",
+            "coefficient b",
+            "coefb",
+            "coef_b",
+            "décalage",
+            "偏置",
+        ],
         "ScaleFactor": ["scalefactor", "scale factor"],
         "Length": [
             "length",
@@ -340,6 +463,7 @@ class Extractor:
             "no. of reg",
             "no of reg",
             "number of registers",
+            "长度",
         ],
         "StartBit": ["startbit", "start bit", "bit offset", "start_bit"],
     }
@@ -611,13 +735,48 @@ class Extractor:
                             data_rows = rows[first_non_empty:]
 
                     headers = [str(h).strip() if h is not None else "" for h in header_row]
+                    current_reg_type = ""
                     for row in data_rows:
-                        if any(cell is not None and str(cell).strip() for cell in row):
-                            yield {
-                                headers[i]: cell
-                                for i, cell in enumerate(row)
-                                if i < len(headers) and headers[i]
-                            }
+                        if not any(cell is not None and str(cell).strip() for cell in row):
+                            continue
+                        row_non_empty = [c for c in row if c is not None and str(c).strip()]
+                        # Check if this row is a section banner (e.g. Function Code 0x04 / 0x03)
+                        if len(row_non_empty) <= 2:
+                            row_text = " ".join(str(c) for c in row_non_empty)
+                            fc_code = parse_function_code_from_text(row_text)
+                            if (
+                                "function code" in row_text.lower()
+                                or "registre" in row_text.lower()
+                                or "register" in row_text.lower()
+                            ):
+                                if fc_code == "1":
+                                    current_reg_type = "Coil"
+                                elif fc_code == "2":
+                                    current_reg_type = "Discrete Input"
+                                elif fc_code == "4":
+                                    current_reg_type = "Input Register"
+                                elif fc_code == "3":
+                                    current_reg_type = "Holding Register"
+
+                        # Check if this row is a secondary table header row
+                        score = sum(
+                            1
+                            for c in row
+                            if c is not None
+                            and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
+                        )
+                        if score >= 2:
+                            headers = [str(h).strip() if h is not None else "" for h in row]
+                            continue
+
+                        row_dict = {
+                            headers[i]: cell
+                            for i, cell in enumerate(row)
+                            if i < len(headers) and headers[i]
+                        }
+                        if current_reg_type and not row_dict.get("RegisterType"):
+                            row_dict["RegisterType"] = current_reg_type
+                        yield row_dict
 
                 yield sheet_generator()
 
@@ -751,6 +910,16 @@ class Extractor:
                                     for idx, r in enumerate(current_table[:max_scan]):
                                         if not r:
                                             continue
+                                        non_empty_cells = [
+                                            str(c).strip().lower()
+                                            for c in r
+                                            if c and str(c).strip()
+                                        ]
+                                        if (
+                                            len(non_empty_cells) >= 4
+                                            and len(set(non_empty_cells)) <= 2
+                                        ):
+                                            continue
                                         score = 0
                                         for c in r:
                                             if not c:
@@ -827,21 +996,113 @@ class Extractor:
                                             combined_headers[c_i] = combined_headers[c_i + 1]
                                             combined_headers[c_i + 1] = ""
 
-                                if best_score >= 2:
-                                    last_headers = combined_headers
+                                # Ensure column names are unique to avoid key collision overwrites
+                                unique_headers = []
+                                counts: dict[str, int] = {}
+                                for h in combined_headers:
+                                    base = h if h else "col"
+                                    counts[base] = counts.get(base, 0) + 1
+                                    if counts[base] == 1:
+                                        unique_headers.append(base)
+                                    else:
+                                        unique_headers.append(f"{base}_{counts[base]}")
 
+                                if best_score >= 2:
+                                    last_headers = unique_headers
+
+                                current_active_headers = list(unique_headers)
                                 for row in data_rows:
+                                    if not any(row):
+                                        continue
+                                    row_score = sum(
+                                        1
+                                        for c in row
+                                        if c is not None
+                                        and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
+                                    )
+                                    if row_score >= 2:
+                                        new_headers = [
+                                            str(h).replace("\n", " ").strip()
+                                            if h is not None
+                                            else ""
+                                            for h in row
+                                        ]
+                                        unique_new = []
+                                        c_map: dict[str, int] = {}
+                                        for h in new_headers:
+                                            base = h if h else "col"
+                                            c_map[base] = c_map.get(base, 0) + 1
+                                            unique_new.append(
+                                                base
+                                                if c_map[base] == 1
+                                                else f"{base}_{c_map[base]}"
+                                            )
+                                        current_active_headers = unique_new
+                                        continue
+
                                     row_dict = {}
                                     for i, cell in enumerate(row):
-                                        if i < len(combined_headers):
-                                            row_dict[combined_headers[i]] = (
+                                        if i < len(current_active_headers):
+                                            row_dict[current_active_headers[i]] = (
                                                 str(cell).replace("\n", " ").strip() if cell else ""
                                             )
+                                    # Synthesize address if high/low byte columns exist
+                                    if not row_dict.get("Address"):
+                                        hi_val = None
+                                        lo_val = None
+                                        for k, v in list(row_dict.items()):
+                                            k_low = k.lower()
+                                            if "high" in k_low:
+                                                hi_val = str(v).strip()
+                                            elif "low" in k_low:
+                                                lo_val = str(v).strip()
+                                        if (
+                                            hi_val is not None
+                                            and lo_val is not None
+                                            and len(hi_val) <= 2
+                                            and len(lo_val) <= 2
+                                            and all(c in "0123456789abcdefABCDEF" for c in hi_val)
+                                            and all(c in "0123456789abcdefABCDEF" for c in lo_val)
+                                        ):
+                                            row_dict["Address"] = (
+                                                f"0x{hi_val.zfill(2)}{lo_val.zfill(2)}"
+                                            )
+
                                     if any(v.strip() for v in row_dict.values() if v):
                                         yield row_dict
 
                             yielded_tables += 1
                             yield table_generator()
+
+                    # Fallback for text-based tables (e.g. Hukseflux documentation)
+                    if yielded_tables == 0:
+                        re_modbus_line = re.compile(
+                            r"^(\d{1,5}|0x[0-9a-fA-F]+)\s+(\d{1,2})\s+([A-Za-z0-9_]+)\s+(.+)$"
+                        )
+                        text_rows = []
+                        for page in target_pages:
+                            text = page.extract_text()
+                            if not text:
+                                continue
+                            for line in text.splitlines():
+                                m = re_modbus_line.match(line.strip())
+                                if m:
+                                    addr, length, dtype, name = m.groups()
+                                    text_rows.append(
+                                        {
+                                            "Address": addr,
+                                            "Length": length,
+                                            "Type": dtype,
+                                            "Name": name,
+                                        }
+                                    )
+                        if text_rows:
+
+                            def text_table_generator(rows=text_rows) -> Iterator[dict[str, Any]]:
+                                yield from rows
+
+                            yielded_tables += 1
+                            yield text_table_generator()
 
             except (OSError, *PDF_ERRORS) as e:  # type: ignore[misc]
                 logging.error(
@@ -1048,6 +1309,8 @@ class Extractor:
         if not tables:
             return
 
+        assigned_tags: set[str] = set()
+
         for table in tables:
             has_rows, table = peek_generator(table)
             if not has_rows:
@@ -1095,6 +1358,8 @@ class Extractor:
                 "ScaleFactor",
                 "Length",
                 "StartBit",
+                "HighByte",
+                "LowByte",
             ]
 
             # Stage 1: Exact target-name match (case-insensitive and space-normalized)
@@ -1179,7 +1444,10 @@ class Extractor:
                     used_src_cols.add(best_source)
 
             if "Address" not in col_map:
-                continue
+                if "HighByte" in col_map and "LowByte" in col_map:
+                    col_map["Address"] = "__high_low_combined__"
+                else:
+                    continue
 
             length_src = str(col_map.get("Length", "")).lower()
             length_is_register_quantity = any(
@@ -1192,17 +1460,48 @@ class Extractor:
                 length_is_register_quantity=length_is_register_quantity,
             ) -> dict[str, Any] | None:
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
-                raw_address = new_row.get("Address")
-                addr_val = str(raw_address).strip() if raw_address is not None else ""
+                if col_map.get("Address") == "__high_low_combined__":
+                    raw_hi = str(r.get(col_map["HighByte"], "") or "").strip()
+                    raw_lo = str(r.get(col_map["LowByte"], "") or "").strip()
+                    if raw_hi and raw_lo:
+                        addr_val = f"0x{raw_hi.zfill(2)}{raw_lo.zfill(2)}"
+                    else:
+                        return None
+                else:
+                    raw_address = new_row.get("Address")
+                    addr_val = str(raw_address).strip() if raw_address is not None else ""
                 if not addr_val:
                     return None
 
                 # Collapse whitespace in addresses caused by fragmented font rendering in PDFs
                 compact_addr = RE_CLEAN_WHITESPACE.sub("", addr_val)
-                if compact_addr.isdigit() or (
-                    compact_addr.lower().startswith("0x") and compact_addr[2:].isalnum()
+                clean_num = compact_addr.replace(",", "")
+                if clean_num.isdigit() or (
+                    clean_num.lower().startswith("0x") and clean_num[2:].isalnum()
                 ):
                     addr_val = compact_addr
+
+                # Filter out banner/text sentences mistakenly mapped to Address
+                if (
+                    not (
+                        clean_num.isdigit()
+                        or (
+                            clean_num.lower().startswith("0x")
+                            and all(c in "0123456789abcdefABCDEF" for c in clean_num[2:])
+                        )
+                        or (
+                            clean_num.lower().endswith("h")
+                            and all(c in "0123456789abcdefABCDEF" for c in clean_num[:-1])
+                        )
+                        or (
+                            any(sep in clean_num for sep in ("_", "-", "~"))
+                            and any(c.isdigit() for c in clean_num)
+                            and len(clean_num) < 25
+                        )
+                    )
+                    or len(clean_num) > 25
+                ):
+                    return None
 
                 sbit = str(r.get(col_map.get("StartBit", ""), "")).strip()
                 slen = str(r.get(col_map.get("Length", ""), "")).strip()
@@ -1246,15 +1545,37 @@ class Extractor:
                         gain_val = Generator._parse_numeric(gain_str, default=0.0)
                         if gain_val:
                             new_row["Factor"] = str(1.0 / gain_val)
+                    elif (
+                        new_row.get("ScaleFactor") is not None
+                        and str(new_row.get("ScaleFactor", "")).strip() != ""
+                    ):
+                        try:
+                            sf_int = int(str(new_row["ScaleFactor"]).strip())
+                            new_row["Factor"] = str(10.0**sf_int)
+                        except ValueError:
+                            pass
 
                 if new_row.get("Factor") is not None:
                     new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
 
-                # Fallback to ReadWrite column if Action was not directly provided
+                var_name = str(new_row.get("Name") or "").strip()
+                raw_tag = str(new_row.get("Tag") or "").strip()
+                if raw_tag:
+                    assigned_tags.add(raw_tag)
+                elif var_name:
+                    inferred_tag = infer_webdyn_tag(var_name)
+                    if inferred_tag and inferred_tag not in assigned_tags:
+                        new_row["Tag"] = inferred_tag
+                        assigned_tags.add(inferred_tag)
+
+                # Fallback to ReadWrite column or learned Action code
                 if not new_row.get("Action"):
-                    rw_str = str(new_row.get("ReadWrite", "")).strip()
+                    rw_str = str(new_row.get("ReadWrite") or "").strip()
                     if rw_str:
                         new_row["Action"] = rw_str
+                    elif var_name:
+                        fc_val = str(new_row.get("RegisterType") or "4").strip()
+                        new_row["Action"] = infer_action_code(var_name, fc=fc_val)
 
                 if not new_row.get("RegisterType"):
                     new_row["RegisterType"] = "Holding Register"

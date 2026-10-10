@@ -1,0 +1,13 @@
+﻿modbusTCP;BESS;Mars Energy;MarsLocalController EMS V7.0;;;;;;;
+1;4;0;U16;;LC Overview - Measurement point version number;;1.000000;0.000000;;4
+2;4;1;U16;;LC Overview - PCS Number;;1.000000;0.000000;;4
+3;4;2;U16;;LC Overview - Bank Number;;1.000000;0.000000;;4
+4;4;3;U16;;LC Overview - Rack Number;;1.000000;0.000000;;4
+5;4;4;U16;;LC Overview - Meter Number;;1.000000;0.000000;;4
+6;3;0;U16;;EMS Consigne - EMS Working Mode;;1.000000;0.000000;;1
+7;3;1;I32;;EMS Consigne - Remote Control Duration;;1.000000;0.000000;min;1
+8;3;3;U16;;EMS Consigne - Energy Storage Working Mode;;1.000000;0.000000;;1
+9;3;4;I32;;EMS Consigne - Energy Storage Active Power;;1.000000;0.000000;W;1
+10;3;6;I32;;EMS Consigne - Energy Storage Reactive Power;;1.000000;0.000000;Var;1
+11;3;8;U16;;EMS Consigne - AC Voltage;;1.000000;0.000000;V;1
+12;3;9;U16;;EMS Consigne - AC Frequency;;0.010000;0.000000;Hz;1

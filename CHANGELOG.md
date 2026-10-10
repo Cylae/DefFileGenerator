@@ -40,8 +40,18 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - **Clarity & Efficiency Benchmark Suite (`DefFileGenerator/tests/test_clarity_and_efficiency.py`).** 9 automated tests verifying domain constants, pre-compiled regex tables, frozen keyword sets, documentation coverage, and sub-millisecond type normalization performance.
 - **Domain Constants in `DefFileGenerator/def_gen.py`.** Added named constants for Modbus function codes (`MODBUS_COIL`, `MODBUS_DISCRETE`, `MODBUS_HOLDING`, `MODBUS_INPUT`), address boundaries (`MIN_MODBUS_ADDRESS`, `MAX_MODBUS_ADDRESS`), and standard actions (`ACTION_WRITE_ONLY`, `ACTION_READ_ONLY`).
 
+- **Mars Renewable / Mars Local Controller V7.0 Definition Suite (`generate_mars_definitions.py`).** Generates production-ready WebdynSunPM definitions strictly conforming to the `INV_HUAWEI_V4.csv` benchmark:
+  - `MarsLocalController_V7.0_webdyn.csv` (Slave 1: BESS Concentrator with 11,704 registers, 0 errors, 0 overlaps).
+  - `MarsLocalController_V7.0_EMS_Slave247.csv` (Slave 247: LC Overview & EMS Write commands with 12 registers).
+  - `MarsLocalController_V7.0_RackCell_SlaveN.csv` (Slave N+1: Rack & 1,000 Cells with 5,030 registers).
+  - `MarsLocalController_V7.0_AllInOne.csv` (Unified system map with 16,746 registers).
+- **R&D Bible Battery Test Suite (`DefFileGenerator/tests/test_mars_and_r_and_d_battery.py`).** Automated tests verifying 100% pass rate (134/134 files) across all production R&D definition files in `G:\My Drive\08092026\DEF_PM_R&D`.
+
 ### Fixed
 
+- **Subword & Byte Addressing Support (`U8`/`I8`).** Extended address parser and interval collision detector to handle `_0` and `_1` byte addresses without false positive overlap errors.
+- **Legacy Definition Encoding Fallback.** Added automatic graceful fallback to Windows-1252 / CP1252 in lenient validation mode for historical manufacturer files containing special characters.
+- **Mars Local Controller Vendor Typo Resolution.** Corrected vendor documentation typo where `Branch 2~n DC Current` was misaddressed at 71 instead of 72, avoiding 32-bit float collision.
 - **Beginner Installation and Documentation Layout.** Expanded the README with an exhaustive, start-to-finish Windows executable and source installation guide for complete beginners, first-run walkthroughs, GUI/CLI/Web guides, updating, uninstalling, troubleshooting, and safety notes. Migrated all documentation, UI strings, and batch scripts entirely to English with consistent visual navigation and modern layout.
 - **Documentation and Repository Hygiene.** Synchronized the README, quick starts, architecture, security, input-format, developer guide, and visual booklet with the current CLI, Web API limits, supported formats, RAW/action semantics, PDF extraction boundaries, packaging, and validation behavior. Removed dead test scaffolding identified by static analysis while retaining tested compatibility entry points and fixtures.
 - **Definition Template Validity.** Fixed `generate --template --template-mode definition` so its first row is the required Webdyn metadata header instead of an incompatible `#Index` schema row; definition templates now use UTF-8 with BOM and pass strict validation.
