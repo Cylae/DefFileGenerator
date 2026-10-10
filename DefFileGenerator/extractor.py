@@ -1454,11 +1454,37 @@ class Extractor:
                 p in length_src for p in ("quantity", "count", "qty", "reg")
             )
 
+            current_section_reg_type = None
+
             def process_row(
                 r: dict[str, Any],
                 col_map=col_map,
                 length_is_register_quantity=length_is_register_quantity,
             ) -> dict[str, Any] | None:
+                nonlocal current_section_reg_type
+
+                # Check if row is a section banner containing Function Code / Register Type
+                row_str_values = " ".join(str(v) for v in r.values() if v is not None)
+                row_str_low = row_str_values.lower()
+                if "function code" in row_str_low or "modbus addr" in row_str_low:
+                    if "0x02" in row_str_low or "discrete inputs" in row_str_low:
+                        current_section_reg_type = "Discrete Input"
+                    elif "0x04" in row_str_low or "input registers" in row_str_low:
+                        current_section_reg_type = "Input Register"
+                    elif (
+                        "0x01" in row_str_low
+                        or "read coils" in row_str_low
+                        or "coils" in row_str_low
+                    ):
+                        current_section_reg_type = "Coil"
+                    elif (
+                        "0x03" in row_str_low
+                        or "0x16" in row_str_low
+                        or "0x06" in row_str_low
+                        or "holding" in row_str_low
+                    ):
+                        current_section_reg_type = "Holding Register"
+
                 new_row = {target: r.get(src_col) for target, src_col in col_map.items()}
                 if col_map.get("Address") == "__high_low_combined__":
                     raw_hi = str(r.get(col_map["HighByte"], "") or "").strip()
@@ -1471,6 +1497,28 @@ class Extractor:
                     raw_address = new_row.get("Address")
                     addr_val = str(raw_address).strip() if raw_address is not None else ""
                 if not addr_val:
+                    return None
+
+                # Filter sub-table header repeats (e.g. Address == 'addr'/'address' and Type == 'type')
+                addr_low = addr_val.lower()
+                raw_type_str = str(new_row.get("Type", "")).strip().lower()
+                if addr_low in (
+                    "addr",
+                    "address",
+                    "address (dec)",
+                    "registre",
+                ) and raw_type_str in ("type", "data type", "format", "datatype"):
+                    return None
+
+                # Filter instruction / banner rows where Address contains long instruction text, Function Code notes, or Modbus Addr headers
+                if (
+                    (
+                        len(addr_val) > 15
+                        and not RE_HEX_OR_DEC.match(RE_CLEAN_WHITESPACE.sub("", addr_val))
+                    )
+                    or "modbus addr" in addr_low
+                    or "function code" in addr_low
+                ):
                     return None
 
                 # Collapse whitespace in addresses caused by fragmented font rendering in PDFs
@@ -1578,7 +1626,12 @@ class Extractor:
                         new_row["Action"] = infer_action_code(var_name, fc=fc_val)
 
                 if not new_row.get("RegisterType"):
-                    new_row["RegisterType"] = "Holding Register"
+                    new_row["RegisterType"] = current_section_reg_type or "Holding Register"
+                elif current_section_reg_type and new_row.get("RegisterType") in (
+                    "Holding Register",
+                    "",
+                ):
+                    new_row["RegisterType"] = current_section_reg_type
 
                 return new_row
 
