@@ -5,6 +5,7 @@ Verifies learning generalization across 250+ manufacturers and SunSpec models.
 """
 
 import pytest
+
 from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.knowledge_miner import (
@@ -69,8 +70,8 @@ class TestUniversalSemanticLearning:
         assert Generator.normalize_type("pad") == "U16"
         assert Generator.normalize_type("enum16") == "U16"
         assert Generator.normalize_type("enum32") == "U32"
-        assert Generator.normalize_type("bool") == "U16"
-        assert Generator.normalize_type("boolean") == "U16"
+        assert Generator.normalize_type("bool") == "BITS"
+        assert Generator.normalize_type("boolean") == "BITS"
         assert Generator.normalize_type("single") == "F32"
         assert Generator.normalize_type("raw16") == "U16"
 
@@ -82,8 +83,18 @@ class TestUniversalSemanticLearning:
     def test_multi_section_modbus_banner_parsing(self):
         """Validates function code parsing from text banners."""
         assert parse_function_code_from_text("Function Code: 0x04 - Read Input Registers") == "4"
-        assert parse_function_code_from_text("Register Settings (Function Code:0x02 - Read Discrete Inputs)") == "2"
-        assert parse_function_code_from_text("Function Code: 0x03/0x10 - Read/Write Multiple Registers") == "3"
+        assert (
+            parse_function_code_from_text(
+                "Register Settings (Function Code:0x02 - Read Discrete Inputs)"
+            )
+            == "2"
+        )
+        assert (
+            parse_function_code_from_text(
+                "Function Code: 0x03/0x10 - Read/Write Multiple Registers"
+            )
+            == "3"
+        )
         assert parse_function_code_from_text("Function Code: 0x01 - Read Coils") == "1"
 
     def test_universal_extractor_pipeline(self):
