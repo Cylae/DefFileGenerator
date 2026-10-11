@@ -1,0 +1,6586 @@
+{
+  "categories": {
+    "ANAlogEXtention": {
+      "total_files": 4,
+      "matched_files": 3,
+      "rd_total_regs": 206,
+      "gen_total_regs": 113,
+      "common_regs": 55,
+      "type_matches": 38,
+      "coef_matches": 55,
+      "name_matches": 39,
+      "files_detail": [
+        {
+          "name": "ANAEX_ICPDAS_M-7000.csv",
+          "status": "MATCH",
+          "val_count": 70,
+          "gen_count": 65,
+          "common": 12,
+          "match_pct": 17.1,
+          "source": "ICPDAS_M-7000.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "272",
+              "rd_name": "factory default calibration parameters",
+              "gen_name": "Reset status",
+              "rd_type": "",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "225",
+              "rd_name": "Status of current output open wire 0",
+              "gen_name": "Status of current output open wire 1",
+              "rd_type": "",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "227",
+              "rd_name": "Status of current output open wire 2",
+              "gen_name": "Status of current output open wire 3",
+              "rd_type": "",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "ANAEX_WEBDYN_16DI.csv",
+          "status": "MATCH",
+          "val_count": 60,
+          "gen_count": 28,
+          "common": 28,
+          "match_pct": 46.7,
+          "source": "IOEX_WEBDYN_16DI.csv",
+          "type_match_pct": 89.3,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 92.9,
+          "diff_sample": [
+            {
+              "addr": "100",
+              "rd_name": "Status digital Input channel",
+              "gen_name": "Status digital Input channel 16",
+              "rd_type": "I16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "135",
+              "rd_name": "Disable/Enable inputs part1",
+              "gen_name": "Disable/Enable input 8",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "136",
+              "rd_name": "Disable/Enable inputs part2",
+              "gen_name": "Disable/Enable input 16",
+              "rd_type": "I16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "ANAEX_WEBDYN_8AI.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 34,
+          "gen_count": 34,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "WEBDYN_Sens'IO-8AI_work.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "ANAEX_WEBDYN_8DI-6DO.csv",
+          "status": "MATCH",
+          "val_count": 42,
+          "gen_count": 20,
+          "common": 15,
+          "match_pct": 35.7,
+          "source": "WEBDYN_Sens'IO_8DI-6DO.csv",
+          "type_match_pct": 86.7,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 86.7,
+          "diff_sample": [
+            {
+              "addr": "120",
+              "rd_name": "Disable/Enable inputs",
+              "gen_name": "Disable/Enable input 8",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "101",
+              "rd_name": "Open collector outputs",
+              "gen_name": "Open collector output 6",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "Display": {
+      "total_files": 2,
+      "matched_files": 2,
+      "rd_total_regs": 6,
+      "gen_total_regs": 110,
+      "common_regs": 5,
+      "type_matches": 3,
+      "coef_matches": 5,
+      "name_matches": 0,
+      "files_detail": [
+        {
+          "name": "DISPLAY_SCHNEIDER_DISPLAYTECHNIK.csv",
+          "status": "MATCH",
+          "val_count": 3,
+          "gen_count": 105,
+          "common": 2,
+          "match_pct": 66.7,
+          "source": "Schneider_3255lite.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "4",
+              "rd_name": "Daily Energy",
+              "gen_name": "4",
+              "rd_type": "F32",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "2",
+              "rd_name": "Total Energy",
+              "gen_name": "2",
+              "rd_type": "F32",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "DISPLAY_SIEBERT_XC4XX.csv",
+          "status": "MATCH",
+          "val_count": 3,
+          "gen_count": 5,
+          "common": 3,
+          "match_pct": 100.0,
+          "source": "MODBUS_SIEBERT_XC4XX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "EV Charger": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 75,
+      "gen_total_regs": 75,
+      "common_regs": 73,
+      "type_matches": 73,
+      "coef_matches": 73,
+      "name_matches": 73,
+      "files_detail": [
+        {
+          "name": "ALPITRONIC_HYPERCHARGER.csv",
+          "status": "MATCH",
+          "val_count": 75,
+          "gen_count": 75,
+          "common": 73,
+          "match_pct": 97.3,
+          "source": "ALPITRONIC_HYPERCHARGER.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "ABB": {
+      "total_files": 4,
+      "matched_files": 1,
+      "rd_total_regs": 1218,
+      "gen_total_regs": 67,
+      "common_regs": 2,
+      "type_matches": 0,
+      "coef_matches": 2,
+      "name_matches": 0,
+      "files_detail": [
+        {
+          "name": "INV_ABB_10.5.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 19,
+          "gen_count": 20,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "ABB_Terra_AC_Charger_ModbusCommunication_v1.7.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_ABB_PVS800-57B.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 1053,
+          "gen_count": 12,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "PVS800-57B - Manuel firmware(table modbus).pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv",
+          "status": "MATCH",
+          "val_count": 89,
+          "gen_count": 67,
+          "common": 2,
+          "match_pct": 2.2,
+          "source": "Modbus_RTU_register_map_for_TRIO-20.0(27.6)-TL-OUTD_Revision_1.6 - FRANCAIS.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "304",
+              "rd_name": "Onduleur - Puissance active injectee",
+              "gen_name": "Carte de communication – Etat",
+              "rd_type": "F32_W",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "306",
+              "rd_name": "Onduleur - Courant",
+              "gen_name": "Onduleur – Energie journalière",
+              "rd_type": "F32_W",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_ABB_Ultra_Inverter_Module.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 57,
+          "gen_count": 1075,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "WPMD3FB_SunSpec_inverter_ABB_-3Q15-_0x045C-0xFF64-_modbusRTU.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "CEFEM": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 66,
+      "gen_total_regs": 57,
+      "common_regs": 53,
+      "type_matches": 53,
+      "coef_matches": 53,
+      "name_matches": 46,
+      "files_detail": [
+        {
+          "name": "INV_CEFEM_TrioSun_TrioTop.csv",
+          "status": "MATCH",
+          "val_count": 66,
+          "gen_count": 57,
+          "common": 53,
+          "match_pct": 80.3,
+          "source": "CEFEM_Modbus_TrioSunTrioTop.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 86.8,
+          "diff_sample": []
+        }
+      ]
+    },
+    "CYBERPOWER": {
+      "total_files": 5,
+      "matched_files": 2,
+      "rd_total_regs": 583,
+      "gen_total_regs": 178,
+      "common_regs": 9,
+      "type_matches": 1,
+      "coef_matches": 9,
+      "name_matches": 9,
+      "files_detail": [
+        {
+          "name": "INV_CYBERPOWER_1-Phase.csv",
+          "status": "MATCH",
+          "val_count": 85,
+          "gen_count": 89,
+          "common": 7,
+          "match_pct": 8.2,
+          "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+          "type_match_pct": 14.3,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "4158",
+              "rd_name": "System Life Runtime",
+              "gen_name": "",
+              "rd_type": "U32_W",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4174",
+              "rd_name": "Input2 Life Runtime",
+              "gen_name": "",
+              "rd_type": "U32_W",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4170",
+              "rd_name": "Input2 Today Runtime",
+              "gen_name": "",
+              "rd_type": "U32_W",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_CYBERPOWER_3-Phases.csv",
+          "status": "MATCH",
+          "val_count": 71,
+          "gen_count": 89,
+          "common": 2,
+          "match_pct": 2.8,
+          "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "4156",
+              "rd_name": "System Life kWh",
+              "gen_name": "System Life kWh",
+              "rd_type": "U32_W",
+              "gen_type": "U32",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4172",
+              "rd_name": "Input2 Life kWh",
+              "gen_name": "Input2 Life kWh",
+              "rd_type": "U32_W",
+              "gen_type": "U32",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_CYBERPOWER_50000ETL.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 80,
+          "gen_count": 89,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_CYBERPOWER_CPSHB6000ETL48_CPSHB6000ETLFR.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 103,
+          "gen_count": 89,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_CYBERPOWER_GENERIC.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 244,
+          "gen_count": 89,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "EFACEC": {
+      "total_files": 2,
+      "matched_files": 1,
+      "rd_total_regs": 201,
+      "gen_total_regs": 89,
+      "common_regs": 88,
+      "type_matches": 83,
+      "coef_matches": 88,
+      "name_matches": 83,
+      "files_detail": [
+        {
+          "name": "EFACEC_PV250HE_PV375HE_PV500HE.csv",
+          "status": "MATCH",
+          "val_count": 143,
+          "gen_count": 89,
+          "common": 88,
+          "match_pct": 61.5,
+          "source": "EFACEC_PV250HE_PV375HE_PV500HE.csv",
+          "type_match_pct": 94.3,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 94.3,
+          "diff_sample": [
+            {
+              "addr": "41055",
+              "rd_name": "Status",
+              "gen_name": "Grid Injection",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "41054",
+              "rd_name": "Alarm 4",
+              "gen_name": "Energy analyzer communication",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "41053",
+              "rd_name": "Alarm 3",
+              "gen_name": "Array current monitor communication",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_EFACEC_Generic.csv",
+          "status": "NO_SOURCE",
+          "val_count": 58,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0
+        }
+      ]
+    },
+    "GOODWE": {
+      "total_files": 5,
+      "matched_files": 3,
+      "rd_total_regs": 1537,
+      "gen_total_regs": 1111,
+      "common_regs": 840,
+      "type_matches": 826,
+      "coef_matches": 831,
+      "name_matches": 586,
+      "files_detail": [
+        {
+          "name": "INV_GOODWE_ES-EM-S-BP-BP_Series.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 394,
+          "gen_count": 292,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_GOODWE_ET-EH-BT-BH-EHB-AES-ABP-BTC_Series.csv",
+          "status": "MATCH",
+          "val_count": 527,
+          "gen_count": 527,
+          "common": 523,
+          "match_pct": 99.2,
+          "source": "GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_GOODWE_GT-SERIES.csv",
+          "status": "MATCH",
+          "val_count": 278,
+          "gen_count": 292,
+          "common": 109,
+          "match_pct": 39.2,
+          "source": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+          "type_match_pct": 90.8,
+          "coef_match_pct": 99.1,
+          "name_match_pct": 10.1,
+          "diff_sample": [
+            {
+              "addr": "42733",
+              "rd_name": "Undervoltage trigger third-order trip time",
+              "gen_name": "Undervoltag etrigger third-order triptime",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "42739",
+              "rd_name": "Undervoltage trigger fourth-order trip time",
+              "gen_name": "Undervoltag etrigger fourth-orde rtriptime",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "42736",
+              "rd_name": "Overvoltage trigger third-order  trip time",
+              "gen_name": "Overvoltage trigger third-order triptime",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_GOODWE_HT-SERIES.csv",
+          "status": "MATCH",
+          "val_count": 215,
+          "gen_count": 292,
+          "common": 208,
+          "match_pct": 96.7,
+          "source": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+          "type_match_pct": 98.1,
+          "coef_match_pct": 96.2,
+          "name_match_pct": 25.0,
+          "diff_sample": [
+            {
+              "addr": "41482",
+              "rd_name": "Reactive power adjust",
+              "gen_name": "",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "41680",
+              "rd_name": "PU curve enable",
+              "gen_name": "",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "32052",
+              "rd_name": "PV19 Voltage (str1/mppt1 0)",
+              "gen_name": "7D34",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_GOODWE_MT-SERIES.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 123,
+          "gen_count": 292,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "GROWATT": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 116,
+      "gen_total_regs": 619,
+      "common_regs": 116,
+      "type_matches": 93,
+      "coef_matches": 113,
+      "name_matches": 7,
+      "files_detail": [
+        {
+          "name": "INV_GROWATT_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 116,
+          "gen_count": 619,
+          "common": 116,
+          "match_pct": 100.0,
+          "source": "W_Growatt_Generic.csv",
+          "type_match_pct": 80.2,
+          "coef_match_pct": 97.4,
+          "name_match_pct": 6.0,
+          "diff_sample": [
+            {
+              "addr": "147",
+              "rd_name": "current.inverter_entry.3",
+              "gen_name": "PV String3 current",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.100000"
+            },
+            {
+              "addr": "171",
+              "rd_name": "current.inverter_entry.15",
+              "gen_name": "PV String15 current",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.100000"
+            },
+            {
+              "addr": "163",
+              "rd_name": "current.inverter_entry.11",
+              "gen_name": "PV String11 current",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.100000"
+            }
+          ]
+        }
+      ]
+    },
+    "HUAWEI": {
+      "total_files": 3,
+      "matched_files": 3,
+      "rd_total_regs": 633,
+      "gen_total_regs": 1254,
+      "common_regs": 356,
+      "type_matches": 158,
+      "coef_matches": 109,
+      "name_matches": 8,
+      "files_detail": [
+        {
+          "name": "INV_HUAWEI_V2.csv",
+          "status": "MATCH",
+          "val_count": 214,
+          "gen_count": 418,
+          "common": 171,
+          "match_pct": 79.9,
+          "source": "Huawei_Work.xlsx",
+          "type_match_pct": 52.6,
+          "coef_match_pct": 41.5,
+          "name_match_pct": 2.3,
+          "diff_sample": [
+            {
+              "addr": "32274",
+              "rd_name": "Line voltage between phases A and B",
+              "gen_name": "4",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.100000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40120",
+              "rd_name": "[Power grid scheduling] Fixed Active power derated",
+              "gen_name": "13",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.100000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40155",
+              "rd_name": "U/Un value of Q-U curve point 1",
+              "gen_name": "16",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.100000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_HUAWEI_V3.csv",
+          "status": "MATCH",
+          "val_count": 97,
+          "gen_count": 418,
+          "common": 70,
+          "match_pct": 72.2,
+          "source": "Huawei_Work.xlsx",
+          "type_match_pct": 32.9,
+          "coef_match_pct": 22.9,
+          "name_match_pct": 2.9,
+          "diff_sample": [
+            {
+              "addr": "32039",
+              "rd_name": "Current inverter_entry 12",
+              "gen_name": "8",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.010000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "32082",
+              "rd_name": "Reactive_power",
+              "gen_name": "11",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "32106",
+              "rd_name": "Energy_total",
+              "gen_name": "12",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "0.010000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_HUAWEI_V4.csv",
+          "status": "MATCH",
+          "val_count": 322,
+          "gen_count": 418,
+          "common": 115,
+          "match_pct": 35.7,
+          "source": "Huawei_Work.xlsx",
+          "type_match_pct": 39.1,
+          "coef_match_pct": 19.1,
+          "name_match_pct": 1.7,
+          "diff_sample": [
+            {
+              "addr": "32082",
+              "rd_name": "Reactive_power",
+              "gen_name": "11",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40120",
+              "rd_name": "Active power derating",
+              "gen_name": "13",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.100000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40155",
+              "rd_name": "U/Un value at point 1_1",
+              "gen_name": "16",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.100000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "INGETEAM": {
+      "total_files": 6,
+      "matched_files": 6,
+      "rd_total_regs": 312,
+      "gen_total_regs": 307,
+      "common_regs": 293,
+      "type_matches": 266,
+      "coef_matches": 195,
+      "name_matches": 245,
+      "files_detail": [
+        {
+          "name": "INV_INGETEAM_1play(ABE1000).csv",
+          "status": "MATCH",
+          "val_count": 45,
+          "gen_count": 45,
+          "common": 45,
+          "match_pct": 100.0,
+          "source": "INGETEAM_1play(ABE1000).csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 80.0,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "31",
+              "rd_name": "Grid RMS voltage 2",
+              "gen_name": "Grid RMS voltage 2",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "37",
+              "rd_name": "PV1 current",
+              "gen_name": "PV1 current",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "100.000000"
+            },
+            {
+              "addr": "38",
+              "rd_name": "PV2 current",
+              "gen_name": "PV2 current",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "100.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_INGETEAM_1play(ABF1000).csv",
+          "status": "MATCH",
+          "val_count": 45,
+          "gen_count": 45,
+          "common": 44,
+          "match_pct": 97.8,
+          "source": "INGETEAM_1play(ABF1000).csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 81.8,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "31",
+              "rd_name": "Grid RMS voltage (Only split-phase-grid)",
+              "gen_name": "Grid RMS voltage (Only split-phase-grid)",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "37",
+              "rd_name": "PV current",
+              "gen_name": "PV current",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "100.000000"
+            },
+            {
+              "addr": "38",
+              "rd_name": "Reserved",
+              "gen_name": "Reserved",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_INGETEAM_3play(ABI1000 & ABI1004).csv",
+          "status": "MATCH",
+          "val_count": 59,
+          "gen_count": 59,
+          "common": 59,
+          "match_pct": 100.0,
+          "source": "Ingeteam_Modbus_3play(ABI1000-1004).csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 64.4,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "55",
+              "rd_name": "Current of PV string 4",
+              "gen_name": "Current of PV string 4",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "57",
+              "rd_name": "Current of PV string 6",
+              "gen_name": "Current of PV string 6",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "60",
+              "rd_name": "Current of PV string 9",
+              "gen_name": "Current of PV string 9",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_INGETEAM_3play(ABS1004).csv",
+          "status": "MATCH",
+          "val_count": 56,
+          "gen_count": 59,
+          "common": 54,
+          "match_pct": 96.4,
+          "source": "Ingeteam_Modbus_3play(ABS1004) - TODO CopieOf ABI 1000.csv",
+          "type_match_pct": 50.0,
+          "coef_match_pct": 40.7,
+          "name_match_pct": 11.1,
+          "diff_sample": [
+            {
+              "addr": "55",
+              "rd_name": "Unit flag 1",
+              "gen_name": "Current of PV string 4",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "57",
+              "rd_name": "Total Energy delivered by the unit",
+              "gen_name": "Current of PV string 6",
+              "rd_type": "U32",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "31",
+              "rd_name": "Cosine of Phi",
+              "gen_name": "Output grid RMS current of phase 3",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.001",
+              "gen_coef": "100.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_INGETEAM_PowerBlock(ABK1000).csv",
+          "status": "MATCH",
+          "val_count": 76,
+          "gen_count": 76,
+          "common": 76,
+          "match_pct": 100.0,
+          "source": "INGETEAM_PowerBlock(ABK1000).csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 63.2,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "7",
+              "rd_name": "Output reactive power",
+              "gen_name": "Output reactive power",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "31",
+              "rd_name": "Output apparent power",
+              "gen_name": "Output apparent power",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            },
+            {
+              "addr": "25",
+              "rd_name": "Grid RMS voltage of phase 3",
+              "gen_name": "Grid RMS voltage of phase 3",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_INGETEAM_PowerMax(centraux).csv",
+          "status": "MATCH",
+          "val_count": 31,
+          "gen_count": 23,
+          "common": 15,
+          "match_pct": 48.4,
+          "source": "INGETEAM_PowerMax(centraux).csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "JEMA": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 60,
+      "gen_total_regs": 60,
+      "common_regs": 60,
+      "type_matches": 60,
+      "coef_matches": 60,
+      "name_matches": 60,
+      "files_detail": [
+        {
+          "name": "INV_JEMA_Generic.csv",
+          "status": "MATCH",
+          "val_count": 60,
+          "gen_count": 60,
+          "common": 60,
+          "match_pct": 100.0,
+          "source": "JEMA_Generic_revG.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "KACO": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 182,
+      "gen_total_regs": 928,
+      "common_regs": 7,
+      "type_matches": 6,
+      "coef_matches": 7,
+      "name_matches": 0,
+      "files_detail": [
+        {
+          "name": "INV_KACO_NX1-NX3-Series.csv",
+          "status": "MATCH",
+          "val_count": 182,
+          "gen_count": 928,
+          "common": 7,
+          "match_pct": 3.8,
+          "source": "95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
+          "type_match_pct": 85.7,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "40201",
+              "rd_name": "Remote switch command: 0 = POWER OFF 1 = POWER ON",
+              "gen_name": "120_PFRtgQ4",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "KEHUA": {
+      "total_files": 3,
+      "matched_files": 3,
+      "rd_total_regs": 481,
+      "gen_total_regs": 731,
+      "common_regs": 144,
+      "type_matches": 119,
+      "coef_matches": 61,
+      "name_matches": 101,
+      "files_detail": [
+        {
+          "name": "INV_KEHUA_SinglePhase.csv",
+          "status": "MATCH",
+          "val_count": 159,
+          "gen_count": 210,
+          "common": 47,
+          "match_pct": 29.6,
+          "source": "KEHUA_SPI5-60B-K_Work.xlsx",
+          "type_match_pct": 51.1,
+          "coef_match_pct": 27.7,
+          "name_match_pct": 8.5,
+          "diff_sample": [
+            {
+              "addr": "6200",
+              "rd_name": "Work mode",
+              "gen_name": "Grid-teid recover time",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4526",
+              "rd_name": "PV daily power generation",
+              "gen_name": "Output power factor",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.045455"
+            },
+            {
+              "addr": "4551",
+              "rd_name": "Load total power consumption",
+              "gen_name": "Battery status",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "0.031250"
+            }
+          ]
+        },
+        {
+          "name": "INV_KEHUA_SPI100-250K-B.csv",
+          "status": "MATCH",
+          "val_count": 238,
+          "gen_count": 369,
+          "common": 87,
+          "match_pct": 36.6,
+          "source": "SPI100K - SPI250K-B-H series String PV Grid tied Inverter Monitor Protocol V2.0.pdf",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 44.8,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "11519",
+              "rd_name": "Inverter voltage (U/UV)",
+              "gen_name": "Inverter voltage (U/UV)",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "11031",
+              "rd_name": "Grid current (U)",
+              "gen_name": "Grid current (U)",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "5002",
+              "rd_name": "Bus voltage",
+              "gen_name": "Bus voltage",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_KEHUA_ThreePhase.csv",
+          "status": "MATCH",
+          "val_count": 84,
+          "gen_count": 152,
+          "common": 10,
+          "match_pct": 11.9,
+          "source": "KEHUA SPI threephased series communication protocol.pdf",
+          "type_match_pct": 80.0,
+          "coef_match_pct": 90.0,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "6003",
+              "rd_name": "Reactive power",
+              "gen_name": "",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "6002",
+              "rd_name": "Power factor",
+              "gen_name": "",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "KOSTAL": {
+      "total_files": 2,
+      "matched_files": 1,
+      "rd_total_regs": 172,
+      "gen_total_regs": 282,
+      "common_regs": 70,
+      "type_matches": 67,
+      "coef_matches": 70,
+      "name_matches": 63,
+      "files_detail": [
+        {
+          "name": "INV_KOSTAL_GENERIC.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 94,
+          "gen_count": 161,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "KOSTAL_SunSpecInformationModelReference.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_KOSTAL_PIKO-CI.csv",
+          "status": "MATCH",
+          "val_count": 78,
+          "gen_count": 282,
+          "common": 70,
+          "match_pct": 89.7,
+          "source": "BA_PIKO-CI_KOSTAL-Interface-description-Modbus-Sunspec.pdf",
+          "type_match_pct": 95.7,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 90.0,
+          "diff_sample": [
+            {
+              "addr": "579",
+              "rd_name": "Energy Scale Factor",
+              "gen_name": "Energy Scale Factor3",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "532",
+              "rd_name": "Inverter Peak Generation Power Scale Factor",
+              "gen_name": "Inverter Peak Generation Power Scale Factor3",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "576",
+              "rd_name": "Power Scale Factor",
+              "gen_name": "Power Scale Factor3",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "KSTAR": {
+      "total_files": 3,
+      "matched_files": 2,
+      "rd_total_regs": 483,
+      "gen_total_regs": 571,
+      "common_regs": 285,
+      "type_matches": 240,
+      "coef_matches": 197,
+      "name_matches": 277,
+      "files_detail": [
+        {
+          "name": "INV_KSTAR_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 52,
+          "gen_count": 250,
+          "common": 49,
+          "match_pct": 94.2,
+          "source": "INV_KSTAR_KSG1-250K.csv",
+          "type_match_pct": 79.6,
+          "coef_match_pct": 93.9,
+          "name_match_pct": 87.8,
+          "diff_sample": [
+            {
+              "addr": "3036",
+              "rd_name": "ARM alarm code",
+              "gen_name": "ARM error code",
+              "rd_type": "U16",
+              "gen_type": "U8",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "3056",
+              "rd_name": "Power factor",
+              "gen_name": "Power factor",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "3060",
+              "rd_name": "High voltage of the QV curve",
+              "gen_name": "Derating rate",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "0.010000"
+            }
+          ]
+        },
+        {
+          "name": "INV_KSTAR_HYBRID.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 177,
+          "gen_count": 1304,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "RS485_Solis_HybridInverters.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_KSTAR_KSG1-250K.csv",
+          "status": "MATCH",
+          "val_count": 254,
+          "gen_count": 321,
+          "common": 236,
+          "match_pct": 92.9,
+          "source": "3_KSG1－250KInverterModbusCommunicationProtocol3.6.pdf",
+          "type_match_pct": 85.2,
+          "coef_match_pct": 64.0,
+          "name_match_pct": 99.2,
+          "diff_sample": [
+            {
+              "addr": "3072",
+              "rd_name": "PV3 String current 1",
+              "gen_name": "",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "3070",
+              "rd_name": "PV2 String current 3",
+              "gen_name": "",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "3069",
+              "rd_name": "PV2 String current 2",
+              "gen_name": "",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "SAJ": {
+      "total_files": 2,
+      "matched_files": 2,
+      "rd_total_regs": 514,
+      "gen_total_regs": 596,
+      "common_regs": 512,
+      "type_matches": 512,
+      "coef_matches": 211,
+      "name_matches": 494,
+      "files_detail": [
+        {
+          "name": "INV_SAJ_R6.csv",
+          "status": "MATCH",
+          "val_count": 313,
+          "gen_count": 395,
+          "common": 313,
+          "match_pct": 100.0,
+          "source": "SAJ_MODBUS-communication protocol-R5R6C6 V7.2 (004).pdf",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 4.2,
+          "name_match_pct": 94.2,
+          "diff_sample": [
+            {
+              "addr": "16548",
+              "rd_name": "CT_PVPowerVA",
+              "gen_name": "CT_PVPowerVA",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "1.000000",
+              "gen_coef": "0.000000"
+            },
+            {
+              "addr": "24695",
+              "rd_name": "PV8StrCurr1",
+              "gen_name": "PV8StrCurr1",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.010000",
+              "gen_coef": "-2.000000"
+            },
+            {
+              "addr": "16420",
+              "rd_name": "InvChgPowerSet",
+              "gen_name": "InvChgPowerSet",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "1.000000",
+              "gen_coef": "0.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SAJ_SUNUNO_PLUS-SUNTRIO.csv",
+          "status": "MATCH",
+          "val_count": 201,
+          "gen_count": 201,
+          "common": 199,
+          "match_pct": 99.0,
+          "source": "SAJ_SunUno-Trio.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 99.5,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "275",
+              "rd_name": "Power",
+              "gen_name": "Power",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "SATCON": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 96,
+      "gen_total_regs": 315,
+      "common_regs": 47,
+      "type_matches": 2,
+      "coef_matches": 46,
+      "name_matches": 1,
+      "files_detail": [
+        {
+          "name": "INV_SATCON_PowerGate.csv",
+          "status": "MATCH",
+          "val_count": 96,
+          "gen_count": 315,
+          "common": 47,
+          "match_pct": 49.0,
+          "source": "Satcon Modbus manual rev2 (EN).pdf",
+          "type_match_pct": 4.3,
+          "coef_match_pct": 97.9,
+          "name_match_pct": 2.1,
+          "diff_sample": [
+            {
+              "addr": "30132",
+              "rd_name": "Strings Current 26",
+              "gen_name": "Total kilowatt hours",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "30070",
+              "rd_name": "Slave Address",
+              "gen_name": "Highest Recorded Internal Temp",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "30103",
+              "rd_name": "Output Power Limit",
+              "gen_name": "Kilowatt hours for Zone 13",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "SCHNEIDER": {
+      "total_files": 3,
+      "matched_files": 1,
+      "rd_total_regs": 314,
+      "gen_total_regs": 222,
+      "common_regs": 189,
+      "type_matches": 188,
+      "coef_matches": 189,
+      "name_matches": 188,
+      "files_detail": [
+        {
+          "name": "INV_SCHNEIDER_CONEXT CL-30-33-50.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 59,
+          "gen_count": 222,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "INV_SCHNEIDER_CONEXT_CORE_XC.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_SCHNEIDER_CONEXT_CORE_XC.csv",
+          "status": "MATCH",
+          "val_count": 207,
+          "gen_count": 222,
+          "common": 189,
+          "match_pct": 91.3,
+          "source": "INV_SCHNEIDER_CONEXT_CORE_XC.csv",
+          "type_match_pct": 99.5,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 99.5,
+          "diff_sample": [
+            {
+              "addr": "18471",
+              "rd_name": "APP-Info 4",
+              "gen_name": "CombineIN",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "STRINGBOX_SCHNEIDER.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 48,
+          "gen_count": 105,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "Schneider_3255lite.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "SIEL": {
+      "total_files": 9,
+      "matched_files": 8,
+      "rd_total_regs": 177,
+      "gen_total_regs": 245,
+      "common_regs": 146,
+      "type_matches": 127,
+      "coef_matches": 143,
+      "name_matches": 62,
+      "files_detail": [
+        {
+          "name": "INV_SIEL_10 TL SOLAR INVERTER.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 17,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": null,
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_SIEL_DSPX.csv",
+          "status": "MATCH",
+          "val_count": 21,
+          "gen_count": 21,
+          "common": 21,
+          "match_pct": 100.0,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_SIEL_FUEL CELL.csv",
+          "status": "MATCH",
+          "val_count": 22,
+          "gen_count": 21,
+          "common": 19,
+          "match_pct": 86.4,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_SIEL_MONOPHASE.csv",
+          "status": "MATCH",
+          "val_count": 11,
+          "gen_count": 21,
+          "common": 11,
+          "match_pct": 100.0,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 81.8,
+          "name_match_pct": 9.1,
+          "diff_sample": [
+            {
+              "addr": "13",
+              "rd_name": "Icell Current of cells",
+              "gen_name": "Icell",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "6",
+              "rd_name": "Mains current (tenths of A)",
+              "gen_name": "IR",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SIEL_RECTIFIERS.csv",
+          "status": "MATCH",
+          "val_count": 19,
+          "gen_count": 21,
+          "common": 17,
+          "match_pct": 89.5,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_SIEL_SOLAR CONVERTERS.csv",
+          "status": "MATCH",
+          "val_count": 19,
+          "gen_count": 98,
+          "common": 19,
+          "match_pct": 100.0,
+          "source": "ZeverSolar.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 10.5,
+          "diff_sample": [
+            {
+              "addr": "7",
+              "rd_name": "IS",
+              "gen_name": "3",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "13",
+              "rd_name": "Icell",
+              "gen_name": "4",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "10",
+              "rd_name": "T_amb",
+              "gen_name": "3",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SIEL_STS.csv",
+          "status": "MATCH",
+          "val_count": 25,
+          "gen_count": 21,
+          "common": 19,
+          "match_pct": 76.0,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "INV_SIEL_UPS UNITS.csv",
+          "status": "MATCH",
+          "val_count": 22,
+          "gen_count": 21,
+          "common": 21,
+          "match_pct": 95.5,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 95.2,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "9",
+              "rd_name": "Fout",
+              "gen_name": "Pout",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SIEL_WINDWAVE.csv",
+          "status": "MATCH",
+          "val_count": 21,
+          "gen_count": 21,
+          "common": 19,
+          "match_pct": 90.5,
+          "source": "SIEL_DSP-DSPX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "SMA": {
+      "total_files": 3,
+      "matched_files": 3,
+      "rd_total_regs": 1360,
+      "gen_total_regs": 1947,
+      "common_regs": 811,
+      "type_matches": 687,
+      "coef_matches": 682,
+      "name_matches": 83,
+      "files_detail": [
+        {
+          "name": "INV_SMA_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 857,
+          "gen_count": 556,
+          "common": 345,
+          "match_pct": 40.3,
+          "source": "SMA_Modbus-TI-en-22.xlsx",
+          "type_match_pct": 83.5,
+          "coef_match_pct": 72.5,
+          "name_match_pct": 23.5,
+          "diff_sample": [
+            {
+              "addr": "40627",
+              "rd_name": "Runtime for time-controlled inverter operation",
+              "gen_name": "Operating time for time-controlled inverter op.",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "1",
+              "gen_coef": "100.000000"
+            },
+            {
+              "addr": "30769",
+              "rd_name": "DC current input 1",
+              "gen_name": "DC current input [1]",
+              "rd_type": "I32",
+              "gen_type": "I32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "30905",
+              "rd_name": "Voltage of external grid connection line conductor L2",
+              "gen_name": "Voltage external power connection phase B",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SMA_SC2xxx.csv",
+          "status": "MATCH",
+          "val_count": 68,
+          "gen_count": 871,
+          "common": 67,
+          "match_pct": 98.5,
+          "source": "WORK_MODBUS_SMA.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 55.2,
+          "name_match_pct": 3.0,
+          "diff_sample": [
+            {
+              "addr": "68",
+              "rd_name": "PrchrgSwStt",
+              "gen_name": "8",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "96",
+              "rd_name": "ErrNo",
+              "gen_name": "9",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "66",
+              "rd_name": "CapacSwStt",
+              "gen_name": "8",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SMA_STPX.csv",
+          "status": "MATCH",
+          "val_count": 435,
+          "gen_count": 520,
+          "common": 399,
+          "match_pct": 91.7,
+          "source": "WPMXXXXXX_SMA_STPX(AllRegs)(OldTags).csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 99.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "30775",
+              "rd_name": "Puissance",
+              "gen_name": "GridMs_TotW",
+              "rd_type": "I32",
+              "gen_type": "I32",
+              "rd_coef": "0.001000",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "41463",
+              "rd_name": "Puissance totale de l installation",
+              "gen_name": "Plnt_WRtg",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "30203",
+              "rd_name": "Puissance nominale en etat OK_0",
+              "gen_name": "Operation_HealthStt_Ok_1",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.001000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "SOFAR": {
+      "total_files": 3,
+      "matched_files": 3,
+      "rd_total_regs": 805,
+      "gen_total_regs": 820,
+      "common_regs": 702,
+      "type_matches": 677,
+      "coef_matches": 615,
+      "name_matches": 580,
+      "files_detail": [
+        {
+          "name": "INV_SOFARSOLAR_1-40KTL.csv",
+          "status": "MATCH",
+          "val_count": 115,
+          "gen_count": 120,
+          "common": 78,
+          "match_pct": 67.8,
+          "source": "SOFAR 1-40KTL G1 Modbus Protocol 2020-07-27.pdf",
+          "type_match_pct": 97.4,
+          "coef_match_pct": 42.3,
+          "name_match_pct": 16.7,
+          "diff_sample": [
+            {
+              "addr": "4130",
+              "rd_name": "Trigger time for class 1 over frequency protection",
+              "gen_name": "Uint",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "10",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "271",
+              "rd_name": "PV6 Voltage_1",
+              "gen_name": "Uint",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4102",
+              "rd_name": "Over frequency protection value before grid connection",
+              "gen_name": "Uint",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SOFARSOLAR_50-70KTL.csv",
+          "status": "MATCH",
+          "val_count": 152,
+          "gen_count": 157,
+          "common": 96,
+          "match_pct": 63.2,
+          "source": "SOFAR 50-70KTL Modbus Protocol 2020-07-27.pdf",
+          "type_match_pct": 76.0,
+          "coef_match_pct": 58.3,
+          "name_match_pct": 40.6,
+          "diff_sample": [
+            {
+              "addr": "278",
+              "rd_name": "String 9 Current",
+              "gen_name": "int",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "271",
+              "rd_name": "String 6 Voltage",
+              "gen_name": "Uint",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4102",
+              "rd_name": "Over frequency protection value before grid connection",
+              "gen_name": "Uint",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SOFARSOLAR_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 538,
+          "gen_count": 543,
+          "common": 528,
+          "match_pct": 98.1,
+          "source": "INV_SOFARSOLAR_GENERIC.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 99.6,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "1600",
+              "rd_name": "AddressMask_Realtime_Input_Bat2",
+              "gen_name": "AddressMask_Realtime_Input_Bat2",
+              "rd_type": "U64",
+              "gen_type": "U64",
+              "rd_coef": "",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "2463",
+              "rd_name": "PhaseType",
+              "gen_name": "PhaseType",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "SOLAX": {
+      "total_files": 3,
+      "matched_files": 3,
+      "rd_total_regs": 648,
+      "gen_total_regs": 975,
+      "common_regs": 317,
+      "type_matches": 305,
+      "coef_matches": 304,
+      "name_matches": 300,
+      "files_detail": [
+        {
+          "name": "INV_SOLAX-X1-X3-G4_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 156,
+          "gen_count": 325,
+          "common": 10,
+          "match_pct": 6.4,
+          "source": "SOLAX_FORTH-MEGA_GENERIC.csv",
+          "type_match_pct": 30.0,
+          "coef_match_pct": 10.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "0",
+              "rd_name": "GridVoltage(X1)",
+              "gen_name": "Protocol Identifier",
+              "rd_type": "U16",
+              "gen_type": "STRING",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "258",
+              "rd_name": "ActivePowerTarget",
+              "gen_name": "line-voltage AC",
+              "rd_type": "I32_W",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "0.100000"
+            },
+            {
+              "addr": "34",
+              "rd_name": "InputEnergy_Charge.MSB",
+              "gen_name": "Software Version",
+              "rd_type": "U16",
+              "gen_type": "STRING",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SOLAX_FORTH-MEGA_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 326,
+          "gen_count": 325,
+          "common": 300,
+          "match_pct": 92.0,
+          "source": "SOLAX_FORTH-MEGA_GENERIC.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 99.3,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "8483",
+              "rd_name": "Dc component limit 2",
+              "gen_name": "Dc component limit 2",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "8967",
+              "rd_name": "reactive power rising slope",
+              "gen_name": "reactive power rising slope",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "INV_SOLAX_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 166,
+          "gen_count": 325,
+          "common": 7,
+          "match_pct": 4.2,
+          "source": "SOLAX_FORTH-MEGA_GENERIC.csv",
+          "type_match_pct": 28.6,
+          "coef_match_pct": 71.4,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "34",
+              "rd_name": "FacMinSlowProtect",
+              "gen_name": "Software Version",
+              "rd_type": "U16",
+              "gen_type": "STRING",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "18",
+              "rd_name": "DciFaultValue",
+              "gen_name": "Model Type",
+              "rd_type": "U16",
+              "gen_type": "STRING",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "67",
+              "rd_name": "Mgr FaultMessage",
+              "gen_name": "Rated output active power",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "0.100000"
+            }
+          ]
+        }
+      ]
+    },
+    "SOLIS": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 395,
+      "gen_total_regs": 653,
+      "common_regs": 395,
+      "type_matches": 359,
+      "coef_matches": 30,
+      "name_matches": 290,
+      "files_detail": [
+        {
+          "name": "INV_SOLIS_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 395,
+          "gen_count": 653,
+          "common": 395,
+          "match_pct": 100.0,
+          "source": "SOLIS_GENERIC_Work.xlsx",
+          "type_match_pct": 90.9,
+          "coef_match_pct": 7.6,
+          "name_match_pct": 73.4,
+          "diff_sample": [
+            {
+              "addr": "3069",
+              "rd_name": "Power limitation switch",
+              "gen_name": "Power limitation switch",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "1.0",
+              "gen_coef": "0.001686"
+            },
+            {
+              "addr": "3386",
+              "rd_name": "PVV23",
+              "gen_name": "PVV23",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.003846"
+            },
+            {
+              "addr": "3288",
+              "rd_name": "PV21I",
+              "gen_name": "PV21I",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.006024"
+            }
+          ]
+        }
+      ]
+    },
+    "SUNGROW": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 153,
+      "gen_total_regs": 153,
+      "common_regs": 150,
+      "type_matches": 150,
+      "coef_matches": 149,
+      "name_matches": 138,
+      "files_detail": [
+        {
+          "name": "INV_SUNGROW_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 153,
+          "gen_count": 153,
+          "common": 150,
+          "match_pct": 98.0,
+          "source": "WPM01A12B_Sungrow_Generic.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 99.3,
+          "name_match_pct": 92.0,
+          "diff_sample": [
+            {
+              "addr": "5007",
+              "rd_name": "Power limitation setting",
+              "gen_name": "Power limitation setting",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "0.090900"
+            }
+          ]
+        }
+      ]
+    },
+    "TATA": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 20,
+      "gen_total_regs": 20,
+      "common_regs": 20,
+      "type_matches": 20,
+      "coef_matches": 20,
+      "name_matches": 20,
+      "files_detail": [
+        {
+          "name": "INV_TATA_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 20,
+          "gen_count": 20,
+          "common": 20,
+          "match_pct": 100.0,
+          "source": "TATA_Generic.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "VICTRON": {
+      "total_files": 1,
+      "matched_files": 0,
+      "rd_total_regs": 12,
+      "gen_total_regs": 0,
+      "common_regs": 0,
+      "type_matches": 0,
+      "coef_matches": 0,
+      "name_matches": 0,
+      "files_detail": [
+        {
+          "name": "INV_VICTRON_GENERIC.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 12,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": null,
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "ZUCCHETI SYSTEMI": {
+      "total_files": 1,
+      "matched_files": 1,
+      "rd_total_regs": 503,
+      "gen_total_regs": 764,
+      "common_regs": 169,
+      "type_matches": 126,
+      "coef_matches": 96,
+      "name_matches": 87,
+      "files_detail": [
+        {
+          "name": "INV_ZCS_HYD_3PH.csv",
+          "status": "MATCH",
+          "val_count": 503,
+          "gen_count": 764,
+          "common": 169,
+          "match_pct": 33.6,
+          "source": "SOFAR Modbus Protocol HYD 5...20K-3PH and HYD3-6K-EP.xlsx",
+          "type_match_pct": 74.6,
+          "coef_match_pct": 56.8,
+          "name_match_pct": 51.5,
+          "diff_sample": [
+            {
+              "addr": "1188",
+              "rd_name": "Current_Output_T",
+              "gen_name": "",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "1176",
+              "rd_name": "Voltage_Phase_S",
+              "gen_name": "",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "1308",
+              "rd_name": "ActivePower_Load_T",
+              "gen_name": "Italay_Autotest_Result5",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "0.100000"
+            }
+          ]
+        }
+      ]
+    },
+    "Logger": {
+      "total_files": 3,
+      "matched_files": 3,
+      "rd_total_regs": 192,
+      "gen_total_regs": 355,
+      "common_regs": 169,
+      "type_matches": 169,
+      "coef_matches": 167,
+      "name_matches": 154,
+      "files_detail": [
+        {
+          "name": "LOG_GOODWE_EZLOGGER3000.csv",
+          "status": "MATCH",
+          "val_count": 60,
+          "gen_count": 229,
+          "common": 46,
+          "match_pct": 76.7,
+          "source": "ModbusTCP_GOODWE_Ezlogger.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 69.6,
+          "diff_sample": []
+        },
+        {
+          "name": "LOG_HUAWEI_SL3000.csv",
+          "status": "MATCH",
+          "val_count": 82,
+          "gen_count": 76,
+          "common": 73,
+          "match_pct": 89.0,
+          "source": "HUAWEI_SmartLogger3000.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 97.3,
+          "name_match_pct": 98.6,
+          "diff_sample": [
+            {
+              "addr": "40738",
+              "rd_name": "Active power scheduling target value",
+              "gen_name": "Active power scheduling target value",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40742",
+              "rd_name": "Reactive power scheduling target value",
+              "gen_name": "Reactive power scheduling target value",
+              "rd_type": "I32",
+              "gen_type": "I32",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "LOG_SUNGROW_LOGGER-1000-3000.csv",
+          "status": "MATCH",
+          "val_count": 50,
+          "gen_count": 50,
+          "common": 50,
+          "match_pct": 100.0,
+          "source": "MODBUS_SUNGROW_Logger1000-3000.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        }
+      ]
+    },
+    "Meter": {
+      "total_files": 34,
+      "matched_files": 24,
+      "rd_total_regs": 3886,
+      "gen_total_regs": 4926,
+      "common_regs": 2191,
+      "type_matches": 2102,
+      "coef_matches": 1981,
+      "name_matches": 1769,
+      "files_detail": [
+        {
+          "name": "METER_ABB_B21_B23_B24.csv",
+          "status": "MATCH",
+          "val_count": 137,
+          "gen_count": 137,
+          "common": 135,
+          "match_pct": 98.5,
+          "source": "ABB_Meter_B21_B23_B24.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 99.3,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_ABB_M2M_METER.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 126,
+          "gen_count": 137,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "ABB_Meter_B21_B23_B24.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_ALGODUE_UPM209_309.csv",
+          "status": "MATCH",
+          "val_count": 98,
+          "gen_count": 103,
+          "common": 97,
+          "match_pct": 99.0,
+          "source": "Algodue_UPM209_309.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_CARLOGAVAZZI_EM210.csv",
+          "status": "MATCH",
+          "val_count": 115,
+          "gen_count": 115,
+          "common": 115,
+          "match_pct": 100.0,
+          "source": "CarloGavazzi_EM210.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_CARLOGAVAZZI_EM300-ET300.csv",
+          "status": "MATCH",
+          "val_count": 135,
+          "gen_count": 146,
+          "common": 135,
+          "match_pct": 100.0,
+          "source": "CarloGavazzi_EM300-ET300.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 69.6,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_CHAUVINARNOUX_ULYS-TT_M.csv",
+          "status": "MATCH",
+          "val_count": 19,
+          "gen_count": 130,
+          "common": 4,
+          "match_pct": 21.1,
+          "source": "CHAUVINARNOUX_ULYS_FLEX.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_CHINT_DTSU.csv",
+          "status": "MATCH",
+          "val_count": 29,
+          "gen_count": 287,
+          "common": 15,
+          "match_pct": 51.7,
+          "source": "Chint-50-60kW-Modbus-Map-Spec.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 26.7,
+          "name_match_pct": 6.7,
+          "diff_sample": [
+            {
+              "addr": "8210",
+              "rd_name": "Pt",
+              "gen_name": "FrqMaxTripT2",
+              "rd_type": "F32",
+              "gen_type": "U16",
+              "rd_coef": "0.0001",
+              "gen_coef": "0.000100"
+            },
+            {
+              "addr": "8206",
+              "rd_name": "Ib",
+              "gen_name": "VoltRecoveryT",
+              "rd_type": "F32",
+              "gen_type": "U16",
+              "rd_coef": "0.001",
+              "gen_coef": "0.000100"
+            },
+            {
+              "addr": "8214",
+              "rd_name": "Pb",
+              "gen_name": "FrqMinTripT1",
+              "rd_type": "F32",
+              "gen_type": "U16",
+              "rd_coef": "0.0001",
+              "gen_coef": "0.000100"
+            }
+          ]
+        },
+        {
+          "name": "METER_CIRCUTOR_CVME3MINI.csv",
+          "status": "MATCH",
+          "val_count": 31,
+          "gen_count": 19,
+          "common": 19,
+          "match_pct": 61.3,
+          "source": "MODBUS_PM_RTU_CIRCUTOR_CVME3MINI_carte2.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 36.8,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_ECOADAPT_POWERELEC6.csv",
+          "status": "NO_SOURCE",
+          "val_count": 221,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0
+        },
+        {
+          "name": "METER_EDMI_MK6.csv",
+          "status": "MATCH",
+          "val_count": 59,
+          "gen_count": 59,
+          "common": 59,
+          "match_pct": 100.0,
+          "source": "EDMI_Mk6.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_HAGER_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 102,
+          "gen_count": 102,
+          "common": 95,
+          "match_pct": 93.1,
+          "source": "Hager_Generic.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_HUAWEI_POWERMETER.csv",
+          "status": "MATCH",
+          "val_count": 44,
+          "gen_count": 418,
+          "common": 24,
+          "match_pct": 54.5,
+          "source": "Huawei_Work.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "32276",
+              "rd_name": "Phase C current",
+              "gen_name": "4",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "32325",
+              "rd_name": "Custom 6",
+              "gen_name": "9",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "32274",
+              "rd_name": "Phase B current",
+              "gen_name": "4",
+              "rd_type": "I32",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_INEPRO_PRO380-MOD-CT.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 24,
+          "gen_count": 14,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "WORK_MODBUS_SUNGROW.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_JANITZA_GENERIC.csv",
+          "status": "MATCH",
+          "val_count": 61,
+          "gen_count": 61,
+          "common": 61,
+          "match_pct": 100.0,
+          "source": "JANITZA_GENERIC_TCP.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 93.4,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "19026",
+              "rd_name": "P_SUM3",
+              "gen_name": "P_SUM3",
+              "rd_type": "F32",
+              "gen_type": "F32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "19020",
+              "rd_name": "PLN[0]",
+              "gen_name": "PLN[0]",
+              "rd_type": "F32",
+              "gen_type": "F32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "19024",
+              "rd_name": "PLN[2]",
+              "gen_name": "PLN[2]",
+              "rd_type": "F32",
+              "gen_type": "F32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_LEGRAND_LEG412052.csv",
+          "status": "MATCH",
+          "val_count": 488,
+          "gen_count": 488,
+          "common": 488,
+          "match_pct": 100.0,
+          "source": "LEGRAND_Meter_LEG412052.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_LETTEL_MAP4-34RJ.csv",
+          "status": "MATCH",
+          "val_count": 405,
+          "gen_count": 405,
+          "common": 405,
+          "match_pct": 100.0,
+          "source": "LETTEL_MAP4-34RJ.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_LETTEL_MCT4-45.csv",
+          "status": "MATCH",
+          "val_count": 82,
+          "gen_count": 82,
+          "common": 82,
+          "match_pct": 100.0,
+          "source": "LETTEL_MCT4-45.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_LETTEL_MCT4-45_FLOAT.csv",
+          "status": "MATCH",
+          "val_count": 30,
+          "gen_count": 102,
+          "common": 30,
+          "match_pct": 100.0,
+          "source": "LETTEL_MCX4-34V_FLOAT.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 86.7,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "12",
+              "rd_name": "A phase current",
+              "gen_name": "Phase 1 active power.",
+              "rd_type": "F32",
+              "gen_type": "F32",
+              "rd_coef": "1",
+              "gen_coef": "0.001000"
+            },
+            {
+              "addr": "16",
+              "rd_name": "C phase current",
+              "gen_name": "Phase 3 active power.",
+              "rd_type": "F32",
+              "gen_type": "F32",
+              "rd_coef": "1",
+              "gen_coef": "0.001000"
+            },
+            {
+              "addr": "50",
+              "rd_name": "Frequency",
+              "gen_name": "Total system active power.",
+              "rd_type": "F32",
+              "gen_type": "F32",
+              "rd_coef": "1",
+              "gen_coef": "0.001000"
+            }
+          ]
+        },
+        {
+          "name": "METER_LETTEL_MCX4-34V.csv",
+          "status": "MATCH",
+          "val_count": 139,
+          "gen_count": 157,
+          "common": 139,
+          "match_pct": 100.0,
+          "source": "mcx4-34v_table_modbus_fr.pdf",
+          "type_match_pct": 99.3,
+          "coef_match_pct": 29.5,
+          "name_match_pct": 0.7,
+          "diff_sample": [
+            {
+              "addr": "100",
+              "rd_name": "Average line current THD.",
+              "gen_name": "THD moyen des courants",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "1044",
+              "rd_name": "L1 import active Energy",
+              "gen_name": "Énergie active importée phase 1",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "1070",
+              "rd_name": "L2 export reactive energy",
+              "gen_name": "Énergie réactive exportée phase 2",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_LETTEL_MCX4-34V_FLOAT.csv",
+          "status": "MATCH",
+          "val_count": 102,
+          "gen_count": 157,
+          "common": 40,
+          "match_pct": 39.2,
+          "source": "mcx4-34v_table_modbus_fr.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 2.5,
+          "diff_sample": [
+            {
+              "addr": "10",
+              "rd_name": "Phase 3 current.",
+              "gen_name": "Courant phase 3",
+              "rd_type": "F32",
+              "gen_type": "U32",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "132",
+              "rd_name": "Phase 2 current THD",
+              "gen_name": "Demande maxi courant phase 2",
+              "rd_type": "F32",
+              "gen_type": "U32",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "60",
+              "rd_name": "Sum of line currents.",
+              "gen_name": "Courant du neutre",
+              "rd_type": "F32",
+              "gen_type": "U32",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_PHOENIXCONTACT_EEM-EMxxx.csv",
+          "status": "NO_SOURCE",
+          "val_count": 276,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0
+        },
+        {
+          "name": "METER_POLIER_MTR5LMOD.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 33,
+          "gen_count": 145,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "MTRROGMOD Compteur électrique POLIER Table Modbus.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SCHNEIDER_EM1200.csv",
+          "status": "MATCH",
+          "val_count": 96,
+          "gen_count": 105,
+          "common": 2,
+          "match_pct": 2.1,
+          "source": "Schneider_3255lite.xlsx",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SCHNEIDER_IEM3xxx.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 55,
+          "gen_count": 105,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "Schneider_3255lite.xlsx",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SCHNEIDER_PM5xxx.csv",
+          "status": "MATCH",
+          "val_count": 35,
+          "gen_count": 875,
+          "common": 5,
+          "match_pct": 14.3,
+          "source": "METER_SCHNEIDER_PM5xxx.csv",
+          "type_match_pct": 80.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 60.0,
+          "diff_sample": [
+            {
+              "addr": "8905",
+              "rd_name": "Digital Input Status",
+              "gen_name": "Digital Input Status Base Unit_1",
+              "rd_type": "U16",
+              "gen_type": "U32",
+              "rd_coef": "1.0",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_SCHNEIDER_PMXXXX.csv",
+          "status": "MATCH",
+          "val_count": 517,
+          "gen_count": 105,
+          "common": 3,
+          "match_pct": 0.6,
+          "source": "Schneider_3255lite.xlsx",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SOCOMEC_COUNTIS_E23.csv",
+          "status": "MATCH",
+          "val_count": 59,
+          "gen_count": 167,
+          "common": 28,
+          "match_pct": 47.5,
+          "source": "METER_SOCOMEC_COUNTIS_P44_old.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 39.3,
+          "name_match_pct": 3.6,
+          "diff_sample": [
+            {
+              "addr": "50564",
+              "rd_name": "Power Factor phase 2 - leading and + lagging PF2 (CT)",
+              "gen_name": "Power Factor phase 2 -: leading and + : lagging : PF2",
+              "rd_type": "I32",
+              "gen_type": "I32",
+              "rd_coef": "1.0",
+              "gen_coef": "0.001000"
+            },
+            {
+              "addr": "50542",
+              "rd_name": "(Sum)Power Factor - leading et + lagging PF (CT)",
+              "gen_name": "Power Factor : -: leading et + : lagging : PF",
+              "rd_type": "I32",
+              "gen_type": "I32",
+              "rd_coef": "1.0",
+              "gen_coef": "0.001000"
+            },
+            {
+              "addr": "50558",
+              "rd_name": "Apparent Power phase 2 S2 (CT)",
+              "gen_name": "Apparent Power phase 2 : S2",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.1",
+              "gen_coef": "10.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_SOCOMEC_COUNTIS_E33_E43.csv",
+          "status": "MATCH",
+          "val_count": 73,
+          "gen_count": 314,
+          "common": 71,
+          "match_pct": 97.3,
+          "source": "modbus countis e43.pdf",
+          "type_match_pct": 90.1,
+          "coef_match_pct": 45.1,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "51281",
+              "rd_name": "Phase to Phase Voltage U12 (no CT)",
+              "gen_name": "Phase to Phase Voltage: U12",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "50522",
+              "rd_name": "Simple voltage V2 (CT)",
+              "gen_name": "Simple voltage : V2",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "51299",
+              "rd_name": "Reactive Power phase 1 +/- Q1 (no CT)",
+              "gen_name": "Reactive Power phase 1 +/- : Q1",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "0.01",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_SOCOMEC_DIRIS_A10.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 75,
+          "gen_count": 271,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "SOCOMEC_DIRIS_B10.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SOCOMEC_DIRIS_A40.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 35,
+          "gen_count": 271,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "SOCOMEC_DIRIS_B10.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SOCOMEC_DIRIS_B10.csv",
+          "status": "MATCH",
+          "val_count": 23,
+          "gen_count": 271,
+          "common": 19,
+          "match_pct": 82.6,
+          "source": "SOCOMEC_DIRIS_B10.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 36.8,
+          "name_match_pct": 26.3,
+          "diff_sample": [
+            {
+              "addr": "18490",
+              "rd_name": "Active_power___P2",
+              "gen_name": "Load_1 - Active power : P2",
+              "rd_type": "I32",
+              "gen_type": "I32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "18462",
+              "rd_name": "Current___I3",
+              "gen_name": "Load_1 - Current : I3",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "18464",
+              "rd_name": "Current___In",
+              "gen_name": "Load_1 - Current : In",
+              "rd_type": "U32",
+              "gen_type": "U32",
+              "rd_coef": "0.001",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "METER_SOCOMEC_DIRIS_B30.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 20,
+          "gen_count": 75,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "METER_SOCOMEC_DIRIS_A10.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_SOCOMEC_DIRIS_I30.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 20,
+          "gen_count": 75,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "METER_SOCOMEC_DIRIS_A10.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "METER_WEIDMULLER_610.csv",
+          "status": "MATCH",
+          "val_count": 122,
+          "gen_count": 121,
+          "common": 120,
+          "match_pct": 98.4,
+          "source": "2576780000_00_02-2018_MAN_EM_610_EN.pdf",
+          "type_match_pct": 99.2,
+          "coef_match_pct": 99.2,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "106",
+              "rd_name": "Minimum pulse length (1 = 10 ms) Digital output 1/2",
+              "gen_name": "",
+              "rd_type": "I16",
+              "gen_type": "I16",
+              "rd_coef": "10",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "600",
+              "rd_name": "Metering range exceedance",
+              "gen_name": "",
+              "rd_type": "U32",
+              "gen_type": "U16",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        }
+      ]
+    },
+    "Sensor": {
+      "total_files": 24,
+      "matched_files": 19,
+      "rd_total_regs": 499,
+      "gen_total_regs": 569,
+      "common_regs": 403,
+      "type_matches": 371,
+      "coef_matches": 377,
+      "name_matches": 336,
+      "files_detail": [
+        {
+          "name": "SENSOR_ATERSA_DATASOLMET.csv",
+          "status": "NO_SOURCE",
+          "val_count": 5,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0
+        },
+        {
+          "name": "SENSOR_BDSENSOR_FUELSENSOR.csv",
+          "status": "NO_SOURCE",
+          "val_count": 15,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0
+        },
+        {
+          "name": "SENSOR_DELTAOHM_HD523D.csv",
+          "status": "MATCH",
+          "val_count": 10,
+          "gen_count": 25,
+          "common": 8,
+          "match_pct": 80.0,
+          "source": "DeltaOHM_HD52.3D_manual_ENG.pdf",
+          "type_match_pct": 75.0,
+          "coef_match_pct": 12.5,
+          "name_match_pct": 75.0,
+          "diff_sample": [
+            {
+              "addr": "7",
+              "rd_name": "Relative humidity in Percent RH",
+              "gen_name": "Relative humidity in %RH (x10)",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "10.0",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "28",
+              "rd_name": "Rainfall rate",
+              "gen_name": "Rainfall rate (x10 if the unit of measure- ment is mm/h, x100 if the unit of meas- urement is inch/h)",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "10.0",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "1",
+              "rd_name": "Wind speed",
+              "gen_name": "Wind speed (x100)",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "100.0",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_DELTAOHM_LPPYRA03.csv",
+          "status": "MATCH",
+          "val_count": 6,
+          "gen_count": 25,
+          "common": 5,
+          "match_pct": 83.3,
+          "source": "DeltaOHM_HD52.3D_manual_ENG.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": [
+            {
+              "addr": "1",
+              "rd_name": "Temperature in Deg.Fahrenheit",
+              "gen_name": "Wind speed (x100)",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "3",
+              "rd_name": "Status register",
+              "gen_name": "Sonic temperature measured by the first transducers pair (x10)",
+              "rd_type": "I16",
+              "gen_type": "BITS",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4",
+              "rd_name": "Average solar radiation in W/m2",
+              "gen_name": "Sonic temperature measured by the second transducers pair (x10)",
+              "rd_type": "I16",
+              "gen_type": "BITS",
+              "rd_coef": "0.1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_EKO_MS40.csv",
+          "status": "MATCH",
+          "val_count": 28,
+          "gen_count": 28,
+          "common": 28,
+          "match_pct": 100.0,
+          "source": "EKO_MS40.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 75.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_EKO_MS80.csv",
+          "status": "MATCH",
+          "val_count": 40,
+          "gen_count": 40,
+          "common": 38,
+          "match_pct": 95.0,
+          "source": "MS80.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_INGENIEURBURO_SI-RS485-TC-2T-v - Copie.csv",
+          "status": "MATCH",
+          "val_count": 7,
+          "gen_count": 7,
+          "common": 7,
+          "match_pct": 100.0,
+          "source": "INGENIEURBURO_Si-RS485-TC-2T-v.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_INGENIEURBURO_SI-RS485-TC-2T-v.csv",
+          "status": "MATCH",
+          "val_count": 7,
+          "gen_count": 7,
+          "common": 7,
+          "match_pct": 100.0,
+          "source": "INGENIEURBURO_Si-RS485-TC-2T-v.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_KIPPZONEN_DUSTIQ.csv",
+          "status": "MATCH",
+          "val_count": 19,
+          "gen_count": 19,
+          "common": 19,
+          "match_pct": 100.0,
+          "source": "KippZonen_DustIQ.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_KIPPZONEN_RT1.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 15,
+          "gen_count": 0,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": null,
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_KIPPZONEN_SMP.csv",
+          "status": "MATCH",
+          "val_count": 35,
+          "gen_count": 53,
+          "common": 33,
+          "match_pct": 94.3,
+          "source": "SENSOR_KIPPZONEN_SMP12.csv",
+          "type_match_pct": 87.9,
+          "coef_match_pct": 87.9,
+          "name_match_pct": 87.9,
+          "diff_sample": [
+            {
+              "addr": "13",
+              "rd_name": "IO_BODY_TEMP_K",
+              "gen_name": "IO_TEMP_SENSOR_1_K",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "0.0",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "15",
+              "rd_name": "IO_AUX_INPUT3",
+              "gen_name": "IO_TILT",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1.0",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "4",
+              "rd_name": "IO_SCALE_FACTOR",
+              "gen_name": "IO_SCALE_FACTOR",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1.0",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_KIPPZONEN_SMP12.csv",
+          "status": "MATCH",
+          "val_count": 53,
+          "gen_count": 53,
+          "common": 33,
+          "match_pct": 62.3,
+          "source": "SENSOR_KIPPZONEN_SMP12.csv",
+          "type_match_pct": 78.8,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 3.0,
+          "diff_sample": [
+            {
+              "addr": "13",
+              "rd_name": "IO_STDEV_SENSOR2",
+              "gen_name": "IO_TEMP_SENSOR_1_K",
+              "rd_type": "I16",
+              "gen_type": "U16",
+              "rd_coef": "1.0",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "44",
+              "rd_name": "FL_STDEV_SENSOR1",
+              "gen_name": "IO_HARDWARE_VERSION",
+              "rd_type": "F32",
+              "gen_type": "U16",
+              "rd_coef": "1.0",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "5",
+              "rd_name": "IO_SCALE_FACTOR",
+              "gen_name": "IO_SENSOR1_DATA",
+              "rd_type": "U16",
+              "gen_type": "I16",
+              "rd_coef": "1.0",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_LSILASTEM_DPA870-873.csv",
+          "status": "MATCH",
+          "val_count": 30,
+          "gen_count": 30,
+          "common": 30,
+          "match_pct": 100.0,
+          "source": "LSILASTEM_DPA870-873.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_LUFFT_WS10.csv",
+          "status": "MATCH",
+          "val_count": 23,
+          "gen_count": 77,
+          "common": 11,
+          "match_pct": 47.8,
+          "source": "Manual_WS10_FR.pdf",
+          "type_match_pct": 90.9,
+          "coef_match_pct": 9.1,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "55",
+              "rd_name": "Direction magnetique",
+              "gen_name": "",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "10",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "71",
+              "rd_name": "Position du soleil elevation",
+              "gen_name": "",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "10",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "54",
+              "rd_name": "Direction du vent  (corrige par la boussole)",
+              "gen_name": "",
+              "rd_type": "U16",
+              "gen_type": "U16",
+              "rd_coef": "10",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_MEIER_ADL-SR.csv",
+          "status": "MATCH",
+          "val_count": 18,
+          "gen_count": 22,
+          "common": 17,
+          "match_pct": 94.4,
+          "source": "ADL-SR_ModBus-Registers_Customer_EN.pdf",
+          "type_match_pct": 29.4,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 5.9,
+          "diff_sample": [
+            {
+              "addr": "30100",
+              "rd_name": "Cycle-Counter",
+              "gen_name": "99",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40219",
+              "rd_name": "Calibration time stamp",
+              "gen_name": "218",
+              "rd_type": "I32",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            },
+            {
+              "addr": "40206",
+              "rd_name": "ModBus address",
+              "gen_name": "205",
+              "rd_type": "U16",
+              "gen_type": "BITS",
+              "rd_coef": "1",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_PYRANO_HUKSEFLUX_SR05.csv",
+          "status": "MATCH",
+          "val_count": 27,
+          "gen_count": 28,
+          "common": 25,
+          "match_pct": 92.6,
+          "source": "Hukseflux_SR05-D1A3.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_PYRANO_HUKSEFLUX_SR30.csv",
+          "status": "MATCH",
+          "val_count": 28,
+          "gen_count": 28,
+          "common": 26,
+          "match_pct": 92.9,
+          "source": "Hukseflux_SR30.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_RIKA_PYRANO_M200-03.csv",
+          "status": "MATCH",
+          "val_count": 1,
+          "gen_count": 6,
+          "common": 1,
+          "match_pct": 100.0,
+          "source": "Fiche technique_Sens'Pyranometer AC1401-01_FR.pdf",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_RIKA_WINDSENSOR_RK100-01.csv",
+          "status": "MATCH",
+          "val_count": 2,
+          "gen_count": 2,
+          "common": 1,
+          "match_pct": 50.0,
+          "source": "RK100-02 Wind Speed Sensor Communication Protocol.pdf",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_S+SREGELTECHNIK_HYDRASGARD.csv",
+          "status": "MATCH",
+          "val_count": 8,
+          "gen_count": 8,
+          "common": 8,
+          "match_pct": 100.0,
+          "source": "S+SREGELTECHNIK_HYDRASGARD.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_SEVEN_SENSOR_3S-IS.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 9,
+          "gen_count": 45,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "WPM01375A_SunSpec_inverter_Seven_Sensor_3S-IS_8.0_modbusRTU.csv",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_SEVEN_SENSOR_3S-IS_8.0_SUNSPEC.csv",
+          "status": "MATCH",
+          "val_count": 45,
+          "gen_count": 45,
+          "common": 40,
+          "match_pct": 88.9,
+          "source": "WPM01375A_SunSpec_inverter_Seven_Sensor_3S-IS_8.0_modbusRTU.csv",
+          "type_match_pct": 97.5,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": [
+            {
+              "addr": "40068",
+              "rd_name": "1_DA",
+              "gen_name": "1_DA",
+              "rd_type": "U16_B",
+              "gen_type": "U16",
+              "rd_coef": "1.000000",
+              "gen_coef": "1.000000"
+            }
+          ]
+        },
+        {
+          "name": "SENSOR_THERMOKON_AGS55.csv",
+          "status": "MATCH",
+          "val_count": 66,
+          "gen_count": 66,
+          "common": 66,
+          "match_pct": 100.0,
+          "source": "SENSOR_THERMOKON_AGS55.csv",
+          "type_match_pct": 100.0,
+          "coef_match_pct": 100.0,
+          "name_match_pct": 100.0,
+          "diff_sample": []
+        },
+        {
+          "name": "SENSOR_TRACKSO_SOZ-03.csv",
+          "status": "NO_OVERLAP",
+          "val_count": 2,
+          "gen_count": 2,
+          "common": 0,
+          "match_pct": 0.0,
+          "source": "Sensor-SOZ03-TrackSo-Datasheet-Installation-Guide-Solar-Radiation.pdf",
+          "type_match_pct": 0.0,
+          "coef_match_pct": 0.0,
+          "name_match_pct": 0.0,
+          "diff_sample": []
+        }
+      ]
+    }
+  },
+  "equipment_matches": [
+    {
+      "name": "INV_SOFARSOLAR_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 538,
+      "gen_count": 543,
+      "common": 528,
+      "match_pct": 98.1,
+      "source": "INV_SOFARSOLAR_GENERIC.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 99.6,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "1600",
+          "rd_name": "AddressMask_Realtime_Input_Bat2",
+          "gen_name": "AddressMask_Realtime_Input_Bat2",
+          "rd_type": "U64",
+          "gen_type": "U64",
+          "rd_coef": "",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "2463",
+          "rd_name": "PhaseType",
+          "gen_name": "PhaseType",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_GOODWE_ET-EH-BT-BH-EHB-AES-ABP-BTC_Series.csv",
+      "status": "MATCH",
+      "val_count": 527,
+      "gen_count": 527,
+      "common": 523,
+      "match_pct": 99.2,
+      "source": "GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_LEGRAND_LEG412052.csv",
+      "status": "MATCH",
+      "val_count": 488,
+      "gen_count": 488,
+      "common": 488,
+      "match_pct": 100.0,
+      "source": "LEGRAND_Meter_LEG412052.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_LETTEL_MAP4-34RJ.csv",
+      "status": "MATCH",
+      "val_count": 405,
+      "gen_count": 405,
+      "common": 405,
+      "match_pct": 100.0,
+      "source": "LETTEL_MAP4-34RJ.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SMA_STPX.csv",
+      "status": "MATCH",
+      "val_count": 435,
+      "gen_count": 520,
+      "common": 399,
+      "match_pct": 91.7,
+      "source": "WPMXXXXXX_SMA_STPX(AllRegs)(OldTags).csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 99.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "30775",
+          "rd_name": "Puissance",
+          "gen_name": "GridMs_TotW",
+          "rd_type": "I32",
+          "gen_type": "I32",
+          "rd_coef": "0.001000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "41463",
+          "rd_name": "Puissance totale de l installation",
+          "gen_name": "Plnt_WRtg",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "30203",
+          "rd_name": "Puissance nominale en etat OK_0",
+          "gen_name": "Operation_HealthStt_Ok_1",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.001000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SOLIS_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 395,
+      "gen_count": 653,
+      "common": 395,
+      "match_pct": 100.0,
+      "source": "SOLIS_GENERIC_Work.xlsx",
+      "type_match_pct": 90.9,
+      "coef_match_pct": 7.6,
+      "name_match_pct": 73.4,
+      "diff_sample": [
+        {
+          "addr": "3069",
+          "rd_name": "Power limitation switch",
+          "gen_name": "Power limitation switch",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "1.0",
+          "gen_coef": "0.001686"
+        },
+        {
+          "addr": "3386",
+          "rd_name": "PVV23",
+          "gen_name": "PVV23",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.003846"
+        },
+        {
+          "addr": "3288",
+          "rd_name": "PV21I",
+          "gen_name": "PV21I",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.006024"
+        }
+      ]
+    },
+    {
+      "name": "INV_SMA_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 857,
+      "gen_count": 556,
+      "common": 345,
+      "match_pct": 40.3,
+      "source": "SMA_Modbus-TI-en-22.xlsx",
+      "type_match_pct": 83.5,
+      "coef_match_pct": 72.5,
+      "name_match_pct": 23.5,
+      "diff_sample": [
+        {
+          "addr": "40627",
+          "rd_name": "Runtime for time-controlled inverter operation",
+          "gen_name": "Operating time for time-controlled inverter op.",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "1",
+          "gen_coef": "100.000000"
+        },
+        {
+          "addr": "30769",
+          "rd_name": "DC current input 1",
+          "gen_name": "DC current input [1]",
+          "rd_type": "I32",
+          "gen_type": "I32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "30905",
+          "rd_name": "Voltage of external grid connection line conductor L2",
+          "gen_name": "Voltage external power connection phase B",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SAJ_R6.csv",
+      "status": "MATCH",
+      "val_count": 313,
+      "gen_count": 395,
+      "common": 313,
+      "match_pct": 100.0,
+      "source": "SAJ_MODBUS-communication protocol-R5R6C6 V7.2 (004).pdf",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 4.2,
+      "name_match_pct": 94.2,
+      "diff_sample": [
+        {
+          "addr": "16548",
+          "rd_name": "CT_PVPowerVA",
+          "gen_name": "CT_PVPowerVA",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "1.000000",
+          "gen_coef": "0.000000"
+        },
+        {
+          "addr": "24695",
+          "rd_name": "PV8StrCurr1",
+          "gen_name": "PV8StrCurr1",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.010000",
+          "gen_coef": "-2.000000"
+        },
+        {
+          "addr": "16420",
+          "rd_name": "InvChgPowerSet",
+          "gen_name": "InvChgPowerSet",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "1.000000",
+          "gen_coef": "0.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SOLAX_FORTH-MEGA_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 326,
+      "gen_count": 325,
+      "common": 300,
+      "match_pct": 92.0,
+      "source": "SOLAX_FORTH-MEGA_GENERIC.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 99.3,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "8483",
+          "rd_name": "Dc component limit 2",
+          "gen_name": "Dc component limit 2",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "8967",
+          "rd_name": "reactive power rising slope",
+          "gen_name": "reactive power rising slope",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_KSTAR_KSG1-250K.csv",
+      "status": "MATCH",
+      "val_count": 254,
+      "gen_count": 321,
+      "common": 236,
+      "match_pct": 92.9,
+      "source": "3_KSG1－250KInverterModbusCommunicationProtocol3.6.pdf",
+      "type_match_pct": 85.2,
+      "coef_match_pct": 64.0,
+      "name_match_pct": 99.2,
+      "diff_sample": [
+        {
+          "addr": "3072",
+          "rd_name": "PV3 String current 1",
+          "gen_name": "",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "3070",
+          "rd_name": "PV2 String current 3",
+          "gen_name": "",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "3069",
+          "rd_name": "PV2 String current 2",
+          "gen_name": "",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_GOODWE_HT-SERIES.csv",
+      "status": "MATCH",
+      "val_count": 215,
+      "gen_count": 292,
+      "common": 208,
+      "match_pct": 96.7,
+      "source": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+      "type_match_pct": 98.1,
+      "coef_match_pct": 96.2,
+      "name_match_pct": 25.0,
+      "diff_sample": [
+        {
+          "addr": "41482",
+          "rd_name": "Reactive power adjust",
+          "gen_name": "",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "41680",
+          "rd_name": "PU curve enable",
+          "gen_name": "",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "32052",
+          "rd_name": "PV19 Voltage (str1/mppt1 0)",
+          "gen_name": "7D34",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SAJ_SUNUNO_PLUS-SUNTRIO.csv",
+      "status": "MATCH",
+      "val_count": 201,
+      "gen_count": 201,
+      "common": 199,
+      "match_pct": 99.0,
+      "source": "SAJ_SunUno-Trio.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 99.5,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "275",
+          "rd_name": "Power",
+          "gen_name": "Power",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SCHNEIDER_CONEXT_CORE_XC.csv",
+      "status": "MATCH",
+      "val_count": 207,
+      "gen_count": 222,
+      "common": 189,
+      "match_pct": 91.3,
+      "source": "INV_SCHNEIDER_CONEXT_CORE_XC.csv",
+      "type_match_pct": 99.5,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 99.5,
+      "diff_sample": [
+        {
+          "addr": "18471",
+          "rd_name": "APP-Info 4",
+          "gen_name": "CombineIN",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_HUAWEI_V2.csv",
+      "status": "MATCH",
+      "val_count": 214,
+      "gen_count": 418,
+      "common": 171,
+      "match_pct": 79.9,
+      "source": "Huawei_Work.xlsx",
+      "type_match_pct": 52.6,
+      "coef_match_pct": 41.5,
+      "name_match_pct": 2.3,
+      "diff_sample": [
+        {
+          "addr": "32274",
+          "rd_name": "Line voltage between phases A and B",
+          "gen_name": "4",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.100000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40120",
+          "rd_name": "[Power grid scheduling] Fixed Active power derated",
+          "gen_name": "13",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.100000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40155",
+          "rd_name": "U/Un value of Q-U curve point 1",
+          "gen_name": "16",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.100000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_ZCS_HYD_3PH.csv",
+      "status": "MATCH",
+      "val_count": 503,
+      "gen_count": 764,
+      "common": 169,
+      "match_pct": 33.6,
+      "source": "SOFAR Modbus Protocol HYD 5...20K-3PH and HYD3-6K-EP.xlsx",
+      "type_match_pct": 74.6,
+      "coef_match_pct": 56.8,
+      "name_match_pct": 51.5,
+      "diff_sample": [
+        {
+          "addr": "1188",
+          "rd_name": "Current_Output_T",
+          "gen_name": "",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "1176",
+          "rd_name": "Voltage_Phase_S",
+          "gen_name": "",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "1308",
+          "rd_name": "ActivePower_Load_T",
+          "gen_name": "Italay_Autotest_Result5",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "0.100000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SUNGROW_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 153,
+      "gen_count": 153,
+      "common": 150,
+      "match_pct": 98.0,
+      "source": "WPM01A12B_Sungrow_Generic.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 99.3,
+      "name_match_pct": 92.0,
+      "diff_sample": [
+        {
+          "addr": "5007",
+          "rd_name": "Power limitation setting",
+          "gen_name": "Power limitation setting",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.090900"
+        }
+      ]
+    },
+    {
+      "name": "METER_LETTEL_MCX4-34V.csv",
+      "status": "MATCH",
+      "val_count": 139,
+      "gen_count": 157,
+      "common": 139,
+      "match_pct": 100.0,
+      "source": "mcx4-34v_table_modbus_fr.pdf",
+      "type_match_pct": 99.3,
+      "coef_match_pct": 29.5,
+      "name_match_pct": 0.7,
+      "diff_sample": [
+        {
+          "addr": "100",
+          "rd_name": "Average line current THD.",
+          "gen_name": "THD moyen des courants",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "1044",
+          "rd_name": "L1 import active Energy",
+          "gen_name": "Énergie active importée phase 1",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "1070",
+          "rd_name": "L2 export reactive energy",
+          "gen_name": "Énergie réactive exportée phase 2",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_ABB_B21_B23_B24.csv",
+      "status": "MATCH",
+      "val_count": 137,
+      "gen_count": 137,
+      "common": 135,
+      "match_pct": 98.5,
+      "source": "ABB_Meter_B21_B23_B24.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 99.3,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_CARLOGAVAZZI_EM300-ET300.csv",
+      "status": "MATCH",
+      "val_count": 135,
+      "gen_count": 146,
+      "common": 135,
+      "match_pct": 100.0,
+      "source": "CarloGavazzi_EM300-ET300.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 69.6,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_WEIDMULLER_610.csv",
+      "status": "MATCH",
+      "val_count": 122,
+      "gen_count": 121,
+      "common": 120,
+      "match_pct": 98.4,
+      "source": "2576780000_00_02-2018_MAN_EM_610_EN.pdf",
+      "type_match_pct": 99.2,
+      "coef_match_pct": 99.2,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "106",
+          "rd_name": "Minimum pulse length (1 = 10 ms) Digital output 1/2",
+          "gen_name": "",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "10",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "600",
+          "rd_name": "Metering range exceedance",
+          "gen_name": "",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_GROWATT_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 116,
+      "gen_count": 619,
+      "common": 116,
+      "match_pct": 100.0,
+      "source": "W_Growatt_Generic.csv",
+      "type_match_pct": 80.2,
+      "coef_match_pct": 97.4,
+      "name_match_pct": 6.0,
+      "diff_sample": [
+        {
+          "addr": "147",
+          "rd_name": "current.inverter_entry.3",
+          "gen_name": "PV String3 current",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.100000"
+        },
+        {
+          "addr": "171",
+          "rd_name": "current.inverter_entry.15",
+          "gen_name": "PV String15 current",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.100000"
+        },
+        {
+          "addr": "163",
+          "rd_name": "current.inverter_entry.11",
+          "gen_name": "PV String11 current",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.100000"
+        }
+      ]
+    },
+    {
+      "name": "INV_HUAWEI_V4.csv",
+      "status": "MATCH",
+      "val_count": 322,
+      "gen_count": 418,
+      "common": 115,
+      "match_pct": 35.7,
+      "source": "Huawei_Work.xlsx",
+      "type_match_pct": 39.1,
+      "coef_match_pct": 19.1,
+      "name_match_pct": 1.7,
+      "diff_sample": [
+        {
+          "addr": "32082",
+          "rd_name": "Reactive_power",
+          "gen_name": "11",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40120",
+          "rd_name": "Active power derating",
+          "gen_name": "13",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.100000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40155",
+          "rd_name": "U/Un value at point 1_1",
+          "gen_name": "16",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.100000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_CARLOGAVAZZI_EM210.csv",
+      "status": "MATCH",
+      "val_count": 115,
+      "gen_count": 115,
+      "common": 115,
+      "match_pct": 100.0,
+      "source": "CarloGavazzi_EM210.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_GOODWE_GT-SERIES.csv",
+      "status": "MATCH",
+      "val_count": 278,
+      "gen_count": 292,
+      "common": 109,
+      "match_pct": 39.2,
+      "source": "GoodWe grid-tied HT-series Modbus Protocol-customer version_V1.3.pdf",
+      "type_match_pct": 90.8,
+      "coef_match_pct": 99.1,
+      "name_match_pct": 10.1,
+      "diff_sample": [
+        {
+          "addr": "42733",
+          "rd_name": "Undervoltage trigger third-order trip time",
+          "gen_name": "Undervoltag etrigger third-order triptime",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "42739",
+          "rd_name": "Undervoltage trigger fourth-order trip time",
+          "gen_name": "Undervoltag etrigger fourth-orde rtriptime",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "42736",
+          "rd_name": "Overvoltage trigger third-order  trip time",
+          "gen_name": "Overvoltage trigger third-order triptime",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_ALGODUE_UPM209_309.csv",
+      "status": "MATCH",
+      "val_count": 98,
+      "gen_count": 103,
+      "common": 97,
+      "match_pct": 99.0,
+      "source": "Algodue_UPM209_309.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SOFARSOLAR_50-70KTL.csv",
+      "status": "MATCH",
+      "val_count": 152,
+      "gen_count": 157,
+      "common": 96,
+      "match_pct": 63.2,
+      "source": "SOFAR 50-70KTL Modbus Protocol 2020-07-27.pdf",
+      "type_match_pct": 76.0,
+      "coef_match_pct": 58.3,
+      "name_match_pct": 40.6,
+      "diff_sample": [
+        {
+          "addr": "278",
+          "rd_name": "String 9 Current",
+          "gen_name": "int",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "271",
+          "rd_name": "String 6 Voltage",
+          "gen_name": "Uint",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4102",
+          "rd_name": "Over frequency protection value before grid connection",
+          "gen_name": "Uint",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_HAGER_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 102,
+      "gen_count": 102,
+      "common": 95,
+      "match_pct": 93.1,
+      "source": "Hager_Generic.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "EFACEC_PV250HE_PV375HE_PV500HE.csv",
+      "status": "MATCH",
+      "val_count": 143,
+      "gen_count": 89,
+      "common": 88,
+      "match_pct": 61.5,
+      "source": "EFACEC_PV250HE_PV375HE_PV500HE.csv",
+      "type_match_pct": 94.3,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 94.3,
+      "diff_sample": [
+        {
+          "addr": "41055",
+          "rd_name": "Status",
+          "gen_name": "Grid Injection",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "41054",
+          "rd_name": "Alarm 4",
+          "gen_name": "Energy analyzer communication",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "41053",
+          "rd_name": "Alarm 3",
+          "gen_name": "Array current monitor communication",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_KEHUA_SPI100-250K-B.csv",
+      "status": "MATCH",
+      "val_count": 238,
+      "gen_count": 369,
+      "common": 87,
+      "match_pct": 36.6,
+      "source": "SPI100K - SPI250K-B-H series String PV Grid tied Inverter Monitor Protocol V2.0.pdf",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 44.8,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "11519",
+          "rd_name": "Inverter voltage (U/UV)",
+          "gen_name": "Inverter voltage (U/UV)",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "11031",
+          "rd_name": "Grid current (U)",
+          "gen_name": "Grid current (U)",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "5002",
+          "rd_name": "Bus voltage",
+          "gen_name": "Bus voltage",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_LETTEL_MCT4-45.csv",
+      "status": "MATCH",
+      "val_count": 82,
+      "gen_count": 82,
+      "common": 82,
+      "match_pct": 100.0,
+      "source": "LETTEL_MCT4-45.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SOFARSOLAR_1-40KTL.csv",
+      "status": "MATCH",
+      "val_count": 115,
+      "gen_count": 120,
+      "common": 78,
+      "match_pct": 67.8,
+      "source": "SOFAR 1-40KTL G1 Modbus Protocol 2020-07-27.pdf",
+      "type_match_pct": 97.4,
+      "coef_match_pct": 42.3,
+      "name_match_pct": 16.7,
+      "diff_sample": [
+        {
+          "addr": "4130",
+          "rd_name": "Trigger time for class 1 over frequency protection",
+          "gen_name": "Uint",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "10",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "271",
+          "rd_name": "PV6 Voltage_1",
+          "gen_name": "Uint",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4102",
+          "rd_name": "Over frequency protection value before grid connection",
+          "gen_name": "Uint",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_INGETEAM_PowerBlock(ABK1000).csv",
+      "status": "MATCH",
+      "val_count": 76,
+      "gen_count": 76,
+      "common": 76,
+      "match_pct": 100.0,
+      "source": "INGETEAM_PowerBlock(ABK1000).csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 63.2,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "7",
+          "rd_name": "Output reactive power",
+          "gen_name": "Output reactive power",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "31",
+          "rd_name": "Output apparent power",
+          "gen_name": "Output apparent power",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "25",
+          "rd_name": "Grid RMS voltage of phase 3",
+          "gen_name": "Grid RMS voltage of phase 3",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        }
+      ]
+    },
+    {
+      "name": "ALPITRONIC_HYPERCHARGER.csv",
+      "status": "MATCH",
+      "val_count": 75,
+      "gen_count": 75,
+      "common": 73,
+      "match_pct": 97.3,
+      "source": "ALPITRONIC_HYPERCHARGER.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "LOG_HUAWEI_SL3000.csv",
+      "status": "MATCH",
+      "val_count": 82,
+      "gen_count": 76,
+      "common": 73,
+      "match_pct": 89.0,
+      "source": "HUAWEI_SmartLogger3000.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 97.3,
+      "name_match_pct": 98.6,
+      "diff_sample": [
+        {
+          "addr": "40738",
+          "rd_name": "Active power scheduling target value",
+          "gen_name": "Active power scheduling target value",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40742",
+          "rd_name": "Reactive power scheduling target value",
+          "gen_name": "Reactive power scheduling target value",
+          "rd_type": "I32",
+          "gen_type": "I32",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_SOCOMEC_COUNTIS_E33_E43.csv",
+      "status": "MATCH",
+      "val_count": 73,
+      "gen_count": 314,
+      "common": 71,
+      "match_pct": 97.3,
+      "source": "modbus countis e43.pdf",
+      "type_match_pct": 90.1,
+      "coef_match_pct": 45.1,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "51281",
+          "rd_name": "Phase to Phase Voltage U12 (no CT)",
+          "gen_name": "Phase to Phase Voltage: U12",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "50522",
+          "rd_name": "Simple voltage V2 (CT)",
+          "gen_name": "Simple voltage : V2",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "51299",
+          "rd_name": "Reactive Power phase 1 +/- Q1 (no CT)",
+          "gen_name": "Reactive Power phase 1 +/- : Q1",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_HUAWEI_V3.csv",
+      "status": "MATCH",
+      "val_count": 97,
+      "gen_count": 418,
+      "common": 70,
+      "match_pct": 72.2,
+      "source": "Huawei_Work.xlsx",
+      "type_match_pct": 32.9,
+      "coef_match_pct": 22.9,
+      "name_match_pct": 2.9,
+      "diff_sample": [
+        {
+          "addr": "32039",
+          "rd_name": "Current inverter_entry 12",
+          "gen_name": "8",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.010000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "32082",
+          "rd_name": "Reactive_power",
+          "gen_name": "11",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "32106",
+          "rd_name": "Energy_total",
+          "gen_name": "12",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "0.010000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_KOSTAL_PIKO-CI.csv",
+      "status": "MATCH",
+      "val_count": 78,
+      "gen_count": 282,
+      "common": 70,
+      "match_pct": 89.7,
+      "source": "BA_PIKO-CI_KOSTAL-Interface-description-Modbus-Sunspec.pdf",
+      "type_match_pct": 95.7,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 90.0,
+      "diff_sample": [
+        {
+          "addr": "579",
+          "rd_name": "Energy Scale Factor",
+          "gen_name": "Energy Scale Factor3",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "532",
+          "rd_name": "Inverter Peak Generation Power Scale Factor",
+          "gen_name": "Inverter Peak Generation Power Scale Factor3",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "576",
+          "rd_name": "Power Scale Factor",
+          "gen_name": "Power Scale Factor3",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SMA_SC2xxx.csv",
+      "status": "MATCH",
+      "val_count": 68,
+      "gen_count": 871,
+      "common": 67,
+      "match_pct": 98.5,
+      "source": "WORK_MODBUS_SMA.xlsx",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 55.2,
+      "name_match_pct": 3.0,
+      "diff_sample": [
+        {
+          "addr": "68",
+          "rd_name": "PrchrgSwStt",
+          "gen_name": "8",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "96",
+          "rd_name": "ErrNo",
+          "gen_name": "9",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "66",
+          "rd_name": "CapacSwStt",
+          "gen_name": "8",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_THERMOKON_AGS55.csv",
+      "status": "MATCH",
+      "val_count": 66,
+      "gen_count": 66,
+      "common": 66,
+      "match_pct": 100.0,
+      "source": "SENSOR_THERMOKON_AGS55.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_JANITZA_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 61,
+      "gen_count": 61,
+      "common": 61,
+      "match_pct": 100.0,
+      "source": "JANITZA_GENERIC_TCP.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 93.4,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "19026",
+          "rd_name": "P_SUM3",
+          "gen_name": "P_SUM3",
+          "rd_type": "F32",
+          "gen_type": "F32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "19020",
+          "rd_name": "PLN[0]",
+          "gen_name": "PLN[0]",
+          "rd_type": "F32",
+          "gen_type": "F32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "19024",
+          "rd_name": "PLN[2]",
+          "gen_name": "PLN[2]",
+          "rd_type": "F32",
+          "gen_type": "F32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_JEMA_Generic.csv",
+      "status": "MATCH",
+      "val_count": 60,
+      "gen_count": 60,
+      "common": 60,
+      "match_pct": 100.0,
+      "source": "JEMA_Generic_revG.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_INGETEAM_3play(ABI1000 & ABI1004).csv",
+      "status": "MATCH",
+      "val_count": 59,
+      "gen_count": 59,
+      "common": 59,
+      "match_pct": 100.0,
+      "source": "Ingeteam_Modbus_3play(ABI1000-1004).csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 64.4,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "55",
+          "rd_name": "Current of PV string 4",
+          "gen_name": "Current of PV string 4",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "57",
+          "rd_name": "Current of PV string 6",
+          "gen_name": "Current of PV string 6",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "60",
+          "rd_name": "Current of PV string 9",
+          "gen_name": "Current of PV string 9",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_EDMI_MK6.csv",
+      "status": "MATCH",
+      "val_count": 59,
+      "gen_count": 59,
+      "common": 59,
+      "match_pct": 100.0,
+      "source": "EDMI_Mk6.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_INGETEAM_3play(ABS1004).csv",
+      "status": "MATCH",
+      "val_count": 56,
+      "gen_count": 59,
+      "common": 54,
+      "match_pct": 96.4,
+      "source": "Ingeteam_Modbus_3play(ABS1004) - TODO CopieOf ABI 1000.csv",
+      "type_match_pct": 50.0,
+      "coef_match_pct": 40.7,
+      "name_match_pct": 11.1,
+      "diff_sample": [
+        {
+          "addr": "55",
+          "rd_name": "Unit flag 1",
+          "gen_name": "Current of PV string 4",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "57",
+          "rd_name": "Total Energy delivered by the unit",
+          "gen_name": "Current of PV string 6",
+          "rd_type": "U32",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "31",
+          "rd_name": "Cosine of Phi",
+          "gen_name": "Output grid RMS current of phase 3",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.001",
+          "gen_coef": "100.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_CEFEM_TrioSun_TrioTop.csv",
+      "status": "MATCH",
+      "val_count": 66,
+      "gen_count": 57,
+      "common": 53,
+      "match_pct": 80.3,
+      "source": "CEFEM_Modbus_TrioSunTrioTop.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 86.8,
+      "diff_sample": []
+    },
+    {
+      "name": "LOG_SUNGROW_LOGGER-1000-3000.csv",
+      "status": "MATCH",
+      "val_count": 50,
+      "gen_count": 50,
+      "common": 50,
+      "match_pct": 100.0,
+      "source": "MODBUS_SUNGROW_Logger1000-3000.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_KSTAR_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 52,
+      "gen_count": 250,
+      "common": 49,
+      "match_pct": 94.2,
+      "source": "INV_KSTAR_KSG1-250K.csv",
+      "type_match_pct": 79.6,
+      "coef_match_pct": 93.9,
+      "name_match_pct": 87.8,
+      "diff_sample": [
+        {
+          "addr": "3036",
+          "rd_name": "ARM alarm code",
+          "gen_name": "ARM error code",
+          "rd_type": "U16",
+          "gen_type": "U8",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "3056",
+          "rd_name": "Power factor",
+          "gen_name": "Power factor",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "3060",
+          "rd_name": "High voltage of the QV curve",
+          "gen_name": "Derating rate",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "0.010000"
+        }
+      ]
+    },
+    {
+      "name": "INV_KEHUA_SinglePhase.csv",
+      "status": "MATCH",
+      "val_count": 159,
+      "gen_count": 210,
+      "common": 47,
+      "match_pct": 29.6,
+      "source": "KEHUA_SPI5-60B-K_Work.xlsx",
+      "type_match_pct": 51.1,
+      "coef_match_pct": 27.7,
+      "name_match_pct": 8.5,
+      "diff_sample": [
+        {
+          "addr": "6200",
+          "rd_name": "Work mode",
+          "gen_name": "Grid-teid recover time",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4526",
+          "rd_name": "PV daily power generation",
+          "gen_name": "Output power factor",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "0.045455"
+        },
+        {
+          "addr": "4551",
+          "rd_name": "Load total power consumption",
+          "gen_name": "Battery status",
+          "rd_type": "U32",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "0.031250"
+        }
+      ]
+    },
+    {
+      "name": "INV_SATCON_PowerGate.csv",
+      "status": "MATCH",
+      "val_count": 96,
+      "gen_count": 315,
+      "common": 47,
+      "match_pct": 49.0,
+      "source": "Satcon Modbus manual rev2 (EN).pdf",
+      "type_match_pct": 4.3,
+      "coef_match_pct": 97.9,
+      "name_match_pct": 2.1,
+      "diff_sample": [
+        {
+          "addr": "30132",
+          "rd_name": "Strings Current 26",
+          "gen_name": "Total kilowatt hours",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "30070",
+          "rd_name": "Slave Address",
+          "gen_name": "Highest Recorded Internal Temp",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "30103",
+          "rd_name": "Output Power Limit",
+          "gen_name": "Kilowatt hours for Zone 13",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "LOG_GOODWE_EZLOGGER3000.csv",
+      "status": "MATCH",
+      "val_count": 60,
+      "gen_count": 229,
+      "common": 46,
+      "match_pct": 76.7,
+      "source": "ModbusTCP_GOODWE_Ezlogger.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 69.6,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_INGETEAM_1play(ABE1000).csv",
+      "status": "MATCH",
+      "val_count": 45,
+      "gen_count": 45,
+      "common": 45,
+      "match_pct": 100.0,
+      "source": "INGETEAM_1play(ABE1000).csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 80.0,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "31",
+          "rd_name": "Grid RMS voltage 2",
+          "gen_name": "Grid RMS voltage 2",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "37",
+          "rd_name": "PV1 current",
+          "gen_name": "PV1 current",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "100.000000"
+        },
+        {
+          "addr": "38",
+          "rd_name": "PV2 current",
+          "gen_name": "PV2 current",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "100.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_INGETEAM_1play(ABF1000).csv",
+      "status": "MATCH",
+      "val_count": 45,
+      "gen_count": 45,
+      "common": 44,
+      "match_pct": 97.8,
+      "source": "INGETEAM_1play(ABF1000).csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 81.8,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "31",
+          "rd_name": "Grid RMS voltage (Only split-phase-grid)",
+          "gen_name": "Grid RMS voltage (Only split-phase-grid)",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        },
+        {
+          "addr": "37",
+          "rd_name": "PV current",
+          "gen_name": "PV current",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "100.000000"
+        },
+        {
+          "addr": "38",
+          "rd_name": "Reserved",
+          "gen_name": "Reserved",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_LETTEL_MCX4-34V_FLOAT.csv",
+      "status": "MATCH",
+      "val_count": 102,
+      "gen_count": 157,
+      "common": 40,
+      "match_pct": 39.2,
+      "source": "mcx4-34v_table_modbus_fr.pdf",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 2.5,
+      "diff_sample": [
+        {
+          "addr": "10",
+          "rd_name": "Phase 3 current.",
+          "gen_name": "Courant phase 3",
+          "rd_type": "F32",
+          "gen_type": "U32",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "132",
+          "rd_name": "Phase 2 current THD",
+          "gen_name": "Demande maxi courant phase 2",
+          "rd_type": "F32",
+          "gen_type": "U32",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "60",
+          "rd_name": "Sum of line currents.",
+          "gen_name": "Courant du neutre",
+          "rd_type": "F32",
+          "gen_type": "U32",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_SEVEN_SENSOR_3S-IS_8.0_SUNSPEC.csv",
+      "status": "MATCH",
+      "val_count": 45,
+      "gen_count": 45,
+      "common": 40,
+      "match_pct": 88.9,
+      "source": "WPM01375A_SunSpec_inverter_Seven_Sensor_3S-IS_8.0_modbusRTU.csv",
+      "type_match_pct": 97.5,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "40068",
+          "rd_name": "1_DA",
+          "gen_name": "1_DA",
+          "rd_type": "U16_B",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_EKO_MS80.csv",
+      "status": "MATCH",
+      "val_count": 40,
+      "gen_count": 40,
+      "common": 38,
+      "match_pct": 95.0,
+      "source": "MS80.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_KIPPZONEN_SMP.csv",
+      "status": "MATCH",
+      "val_count": 35,
+      "gen_count": 53,
+      "common": 33,
+      "match_pct": 94.3,
+      "source": "SENSOR_KIPPZONEN_SMP12.csv",
+      "type_match_pct": 87.9,
+      "coef_match_pct": 87.9,
+      "name_match_pct": 87.9,
+      "diff_sample": [
+        {
+          "addr": "13",
+          "rd_name": "IO_BODY_TEMP_K",
+          "gen_name": "IO_TEMP_SENSOR_1_K",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "0.0",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "15",
+          "rd_name": "IO_AUX_INPUT3",
+          "gen_name": "IO_TILT",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1.0",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4",
+          "rd_name": "IO_SCALE_FACTOR",
+          "gen_name": "IO_SCALE_FACTOR",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1.0",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_KIPPZONEN_SMP12.csv",
+      "status": "MATCH",
+      "val_count": 53,
+      "gen_count": 53,
+      "common": 33,
+      "match_pct": 62.3,
+      "source": "SENSOR_KIPPZONEN_SMP12.csv",
+      "type_match_pct": 78.8,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 3.0,
+      "diff_sample": [
+        {
+          "addr": "13",
+          "rd_name": "IO_STDEV_SENSOR2",
+          "gen_name": "IO_TEMP_SENSOR_1_K",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1.0",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "44",
+          "rd_name": "FL_STDEV_SENSOR1",
+          "gen_name": "IO_HARDWARE_VERSION",
+          "rd_type": "F32",
+          "gen_type": "U16",
+          "rd_coef": "1.0",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "5",
+          "rd_name": "IO_SCALE_FACTOR",
+          "gen_name": "IO_SENSOR1_DATA",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1.0",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_LETTEL_MCT4-45_FLOAT.csv",
+      "status": "MATCH",
+      "val_count": 30,
+      "gen_count": 102,
+      "common": 30,
+      "match_pct": 100.0,
+      "source": "LETTEL_MCX4-34V_FLOAT.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 86.7,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "12",
+          "rd_name": "A phase current",
+          "gen_name": "Phase 1 active power.",
+          "rd_type": "F32",
+          "gen_type": "F32",
+          "rd_coef": "1",
+          "gen_coef": "0.001000"
+        },
+        {
+          "addr": "16",
+          "rd_name": "C phase current",
+          "gen_name": "Phase 3 active power.",
+          "rd_type": "F32",
+          "gen_type": "F32",
+          "rd_coef": "1",
+          "gen_coef": "0.001000"
+        },
+        {
+          "addr": "50",
+          "rd_name": "Frequency",
+          "gen_name": "Total system active power.",
+          "rd_type": "F32",
+          "gen_type": "F32",
+          "rd_coef": "1",
+          "gen_coef": "0.001000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_LSILASTEM_DPA870-873.csv",
+      "status": "MATCH",
+      "val_count": 30,
+      "gen_count": 30,
+      "common": 30,
+      "match_pct": 100.0,
+      "source": "LSILASTEM_DPA870-873.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "ANAEX_WEBDYN_16DI.csv",
+      "status": "MATCH",
+      "val_count": 60,
+      "gen_count": 28,
+      "common": 28,
+      "match_pct": 46.7,
+      "source": "IOEX_WEBDYN_16DI.csv",
+      "type_match_pct": 89.3,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 92.9,
+      "diff_sample": [
+        {
+          "addr": "100",
+          "rd_name": "Status digital Input channel",
+          "gen_name": "Status digital Input channel 16",
+          "rd_type": "I16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "135",
+          "rd_name": "Disable/Enable inputs part1",
+          "gen_name": "Disable/Enable input 8",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "136",
+          "rd_name": "Disable/Enable inputs part2",
+          "gen_name": "Disable/Enable input 16",
+          "rd_type": "I16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_SOCOMEC_COUNTIS_E23.csv",
+      "status": "MATCH",
+      "val_count": 59,
+      "gen_count": 167,
+      "common": 28,
+      "match_pct": 47.5,
+      "source": "METER_SOCOMEC_COUNTIS_P44_old.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 39.3,
+      "name_match_pct": 3.6,
+      "diff_sample": [
+        {
+          "addr": "50564",
+          "rd_name": "Power Factor phase 2 - leading and + lagging PF2 (CT)",
+          "gen_name": "Power Factor phase 2 -: leading and + : lagging : PF2",
+          "rd_type": "I32",
+          "gen_type": "I32",
+          "rd_coef": "1.0",
+          "gen_coef": "0.001000"
+        },
+        {
+          "addr": "50542",
+          "rd_name": "(Sum)Power Factor - leading et + lagging PF (CT)",
+          "gen_name": "Power Factor : -: leading et + : lagging : PF",
+          "rd_type": "I32",
+          "gen_type": "I32",
+          "rd_coef": "1.0",
+          "gen_coef": "0.001000"
+        },
+        {
+          "addr": "50558",
+          "rd_name": "Apparent Power phase 2 S2 (CT)",
+          "gen_name": "Apparent Power phase 2 : S2",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.1",
+          "gen_coef": "10.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_EKO_MS40.csv",
+      "status": "MATCH",
+      "val_count": 28,
+      "gen_count": 28,
+      "common": 28,
+      "match_pct": 100.0,
+      "source": "EKO_MS40.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 75.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_PYRANO_HUKSEFLUX_SR30.csv",
+      "status": "MATCH",
+      "val_count": 28,
+      "gen_count": 28,
+      "common": 26,
+      "match_pct": 92.9,
+      "source": "Hukseflux_SR30.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_PYRANO_HUKSEFLUX_SR05.csv",
+      "status": "MATCH",
+      "val_count": 27,
+      "gen_count": 28,
+      "common": 25,
+      "match_pct": 92.6,
+      "source": "Hukseflux_SR05-D1A3.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_HUAWEI_POWERMETER.csv",
+      "status": "MATCH",
+      "val_count": 44,
+      "gen_count": 418,
+      "common": 24,
+      "match_pct": 54.5,
+      "source": "Huawei_Work.xlsx",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 0.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "32276",
+          "rd_name": "Phase C current",
+          "gen_name": "4",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "32325",
+          "rd_name": "Custom 6",
+          "gen_name": "9",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "32274",
+          "rd_name": "Phase B current",
+          "gen_name": "4",
+          "rd_type": "I32",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SIEL_DSPX.csv",
+      "status": "MATCH",
+      "val_count": 21,
+      "gen_count": 21,
+      "common": 21,
+      "match_pct": 100.0,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SIEL_UPS UNITS.csv",
+      "status": "MATCH",
+      "val_count": 22,
+      "gen_count": 21,
+      "common": 21,
+      "match_pct": 95.5,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 95.2,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "9",
+          "rd_name": "Fout",
+          "gen_name": "Pout",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_TATA_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 20,
+      "gen_count": 20,
+      "common": 20,
+      "match_pct": 100.0,
+      "source": "TATA_Generic.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SIEL_FUEL CELL.csv",
+      "status": "MATCH",
+      "val_count": 22,
+      "gen_count": 21,
+      "common": 19,
+      "match_pct": 86.4,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SIEL_SOLAR CONVERTERS.csv",
+      "status": "MATCH",
+      "val_count": 19,
+      "gen_count": 98,
+      "common": 19,
+      "match_pct": 100.0,
+      "source": "ZeverSolar.xlsx",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 10.5,
+      "diff_sample": [
+        {
+          "addr": "7",
+          "rd_name": "IS",
+          "gen_name": "3",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "13",
+          "rd_name": "Icell",
+          "gen_name": "4",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "10",
+          "rd_name": "T_amb",
+          "gen_name": "3",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SIEL_STS.csv",
+      "status": "MATCH",
+      "val_count": 25,
+      "gen_count": 21,
+      "common": 19,
+      "match_pct": 76.0,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SIEL_WINDWAVE.csv",
+      "status": "MATCH",
+      "val_count": 21,
+      "gen_count": 21,
+      "common": 19,
+      "match_pct": 90.5,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_CIRCUTOR_CVME3MINI.csv",
+      "status": "MATCH",
+      "val_count": 31,
+      "gen_count": 19,
+      "common": 19,
+      "match_pct": 61.3,
+      "source": "MODBUS_PM_RTU_CIRCUTOR_CVME3MINI_carte2.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 36.8,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_SOCOMEC_DIRIS_B10.csv",
+      "status": "MATCH",
+      "val_count": 23,
+      "gen_count": 271,
+      "common": 19,
+      "match_pct": 82.6,
+      "source": "SOCOMEC_DIRIS_B10.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 36.8,
+      "name_match_pct": 26.3,
+      "diff_sample": [
+        {
+          "addr": "18490",
+          "rd_name": "Active_power___P2",
+          "gen_name": "Load_1 - Active power : P2",
+          "rd_type": "I32",
+          "gen_type": "I32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "18462",
+          "rd_name": "Current___I3",
+          "gen_name": "Load_1 - Current : I3",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "18464",
+          "rd_name": "Current___In",
+          "gen_name": "Load_1 - Current : In",
+          "rd_type": "U32",
+          "gen_type": "U32",
+          "rd_coef": "0.001",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_KIPPZONEN_DUSTIQ.csv",
+      "status": "MATCH",
+      "val_count": 19,
+      "gen_count": 19,
+      "common": 19,
+      "match_pct": 100.0,
+      "source": "KippZonen_DustIQ.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_SIEL_RECTIFIERS.csv",
+      "status": "MATCH",
+      "val_count": 19,
+      "gen_count": 21,
+      "common": 17,
+      "match_pct": 89.5,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_MEIER_ADL-SR.csv",
+      "status": "MATCH",
+      "val_count": 18,
+      "gen_count": 22,
+      "common": 17,
+      "match_pct": 94.4,
+      "source": "ADL-SR_ModBus-Registers_Customer_EN.pdf",
+      "type_match_pct": 29.4,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 5.9,
+      "diff_sample": [
+        {
+          "addr": "30100",
+          "rd_name": "Cycle-Counter",
+          "gen_name": "99",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40219",
+          "rd_name": "Calibration time stamp",
+          "gen_name": "218",
+          "rd_type": "I32",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "40206",
+          "rd_name": "ModBus address",
+          "gen_name": "205",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "ANAEX_WEBDYN_8DI-6DO.csv",
+      "status": "MATCH",
+      "val_count": 42,
+      "gen_count": 20,
+      "common": 15,
+      "match_pct": 35.7,
+      "source": "WEBDYN_Sens'IO_8DI-6DO.csv",
+      "type_match_pct": 86.7,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 86.7,
+      "diff_sample": [
+        {
+          "addr": "120",
+          "rd_name": "Disable/Enable inputs",
+          "gen_name": "Disable/Enable input 8",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "101",
+          "rd_name": "Open collector outputs",
+          "gen_name": "Open collector output 6",
+          "rd_type": "U16",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_INGETEAM_PowerMax(centraux).csv",
+      "status": "MATCH",
+      "val_count": 31,
+      "gen_count": 23,
+      "common": 15,
+      "match_pct": 48.4,
+      "source": "INGETEAM_PowerMax(centraux).csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_CHINT_DTSU.csv",
+      "status": "MATCH",
+      "val_count": 29,
+      "gen_count": 287,
+      "common": 15,
+      "match_pct": 51.7,
+      "source": "Chint-50-60kW-Modbus-Map-Spec.pdf",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 26.7,
+      "name_match_pct": 6.7,
+      "diff_sample": [
+        {
+          "addr": "8210",
+          "rd_name": "Pt",
+          "gen_name": "FrqMaxTripT2",
+          "rd_type": "F32",
+          "gen_type": "U16",
+          "rd_coef": "0.0001",
+          "gen_coef": "0.000100"
+        },
+        {
+          "addr": "8206",
+          "rd_name": "Ib",
+          "gen_name": "VoltRecoveryT",
+          "rd_type": "F32",
+          "gen_type": "U16",
+          "rd_coef": "0.001",
+          "gen_coef": "0.000100"
+        },
+        {
+          "addr": "8214",
+          "rd_name": "Pb",
+          "gen_name": "FrqMinTripT1",
+          "rd_type": "F32",
+          "gen_type": "U16",
+          "rd_coef": "0.0001",
+          "gen_coef": "0.000100"
+        }
+      ]
+    },
+    {
+      "name": "ANAEX_ICPDAS_M-7000.csv",
+      "status": "MATCH",
+      "val_count": 70,
+      "gen_count": 65,
+      "common": 12,
+      "match_pct": 17.1,
+      "source": "ICPDAS_M-7000.csv",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "272",
+          "rd_name": "factory default calibration parameters",
+          "gen_name": "Reset status",
+          "rd_type": "",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "225",
+          "rd_name": "Status of current output open wire 0",
+          "gen_name": "Status of current output open wire 1",
+          "rd_type": "",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "227",
+          "rd_name": "Status of current output open wire 2",
+          "gen_name": "Status of current output open wire 3",
+          "rd_type": "",
+          "gen_type": "BITS",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SIEL_MONOPHASE.csv",
+      "status": "MATCH",
+      "val_count": 11,
+      "gen_count": 21,
+      "common": 11,
+      "match_pct": 100.0,
+      "source": "SIEL_DSP-DSPX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 81.8,
+      "name_match_pct": 9.1,
+      "diff_sample": [
+        {
+          "addr": "13",
+          "rd_name": "Icell Current of cells",
+          "gen_name": "Icell",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "6",
+          "rd_name": "Mains current (tenths of A)",
+          "gen_name": "IR",
+          "rd_type": "I16",
+          "gen_type": "I16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_LUFFT_WS10.csv",
+      "status": "MATCH",
+      "val_count": 23,
+      "gen_count": 77,
+      "common": 11,
+      "match_pct": 47.8,
+      "source": "Manual_WS10_FR.pdf",
+      "type_match_pct": 90.9,
+      "coef_match_pct": 9.1,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "55",
+          "rd_name": "Direction magnetique",
+          "gen_name": "",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "10",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "71",
+          "rd_name": "Position du soleil elevation",
+          "gen_name": "",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "10",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "54",
+          "rd_name": "Direction du vent  (corrige par la boussole)",
+          "gen_name": "",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "10",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_KEHUA_ThreePhase.csv",
+      "status": "MATCH",
+      "val_count": 84,
+      "gen_count": 152,
+      "common": 10,
+      "match_pct": 11.9,
+      "source": "KEHUA SPI threephased series communication protocol.pdf",
+      "type_match_pct": 80.0,
+      "coef_match_pct": 90.0,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "6003",
+          "rd_name": "Reactive power",
+          "gen_name": "",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "6002",
+          "rd_name": "Power factor",
+          "gen_name": "",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SOLAX-X1-X3-G4_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 156,
+      "gen_count": 325,
+      "common": 10,
+      "match_pct": 6.4,
+      "source": "SOLAX_FORTH-MEGA_GENERIC.csv",
+      "type_match_pct": 30.0,
+      "coef_match_pct": 10.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "0",
+          "rd_name": "GridVoltage(X1)",
+          "gen_name": "Protocol Identifier",
+          "rd_type": "U16",
+          "gen_type": "STRING",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "258",
+          "rd_name": "ActivePowerTarget",
+          "gen_name": "line-voltage AC",
+          "rd_type": "I32_W",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "0.100000"
+        },
+        {
+          "addr": "34",
+          "rd_name": "InputEnergy_Charge.MSB",
+          "gen_name": "Software Version",
+          "rd_type": "U16",
+          "gen_type": "STRING",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_DELTAOHM_HD523D.csv",
+      "status": "MATCH",
+      "val_count": 10,
+      "gen_count": 25,
+      "common": 8,
+      "match_pct": 80.0,
+      "source": "DeltaOHM_HD52.3D_manual_ENG.pdf",
+      "type_match_pct": 75.0,
+      "coef_match_pct": 12.5,
+      "name_match_pct": 75.0,
+      "diff_sample": [
+        {
+          "addr": "7",
+          "rd_name": "Relative humidity in Percent RH",
+          "gen_name": "Relative humidity in %RH (x10)",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "10.0",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "28",
+          "rd_name": "Rainfall rate",
+          "gen_name": "Rainfall rate (x10 if the unit of measure- ment is mm/h, x100 if the unit of meas- urement is inch/h)",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "10.0",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "1",
+          "rd_name": "Wind speed",
+          "gen_name": "Wind speed (x100)",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "100.0",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_S+SREGELTECHNIK_HYDRASGARD.csv",
+      "status": "MATCH",
+      "val_count": 8,
+      "gen_count": 8,
+      "common": 8,
+      "match_pct": 100.0,
+      "source": "S+SREGELTECHNIK_HYDRASGARD.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "INV_CYBERPOWER_1-Phase.csv",
+      "status": "MATCH",
+      "val_count": 85,
+      "gen_count": 89,
+      "common": 7,
+      "match_pct": 8.2,
+      "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+      "type_match_pct": 14.3,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "4158",
+          "rd_name": "System Life Runtime",
+          "gen_name": "",
+          "rd_type": "U32_W",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4174",
+          "rd_name": "Input2 Life Runtime",
+          "gen_name": "",
+          "rd_type": "U32_W",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4170",
+          "rd_name": "Input2 Today Runtime",
+          "gen_name": "",
+          "rd_type": "U32_W",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_KACO_NX1-NX3-Series.csv",
+      "status": "MATCH",
+      "val_count": 182,
+      "gen_count": 928,
+      "common": 7,
+      "match_pct": 3.8,
+      "source": "95308-LOGNON_SunSpec_inverter_KACO_new_energy_blueplanet_125_NX3_M10_IEC_5.0.3.3-ec484f_modbusRTU.csv",
+      "type_match_pct": 85.7,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "40201",
+          "rd_name": "Remote switch command: 0 = POWER OFF 1 = POWER ON",
+          "gen_name": "120_PFRtgQ4",
+          "rd_type": "U16",
+          "gen_type": "I16",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_SOLAX_GENERIC.csv",
+      "status": "MATCH",
+      "val_count": 166,
+      "gen_count": 325,
+      "common": 7,
+      "match_pct": 4.2,
+      "source": "SOLAX_FORTH-MEGA_GENERIC.csv",
+      "type_match_pct": 28.6,
+      "coef_match_pct": 71.4,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "34",
+          "rd_name": "FacMinSlowProtect",
+          "gen_name": "Software Version",
+          "rd_type": "U16",
+          "gen_type": "STRING",
+          "rd_coef": "0.01",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "18",
+          "rd_name": "DciFaultValue",
+          "gen_name": "Model Type",
+          "rd_type": "U16",
+          "gen_type": "STRING",
+          "rd_coef": "1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "67",
+          "rd_name": "Mgr FaultMessage",
+          "gen_name": "Rated output active power",
+          "rd_type": "U16",
+          "gen_type": "U16",
+          "rd_coef": "1",
+          "gen_coef": "0.100000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_INGENIEURBURO_SI-RS485-TC-2T-v - Copie.csv",
+      "status": "MATCH",
+      "val_count": 7,
+      "gen_count": 7,
+      "common": 7,
+      "match_pct": 100.0,
+      "source": "INGENIEURBURO_Si-RS485-TC-2T-v.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_INGENIEURBURO_SI-RS485-TC-2T-v.csv",
+      "status": "MATCH",
+      "val_count": 7,
+      "gen_count": 7,
+      "common": 7,
+      "match_pct": 100.0,
+      "source": "INGENIEURBURO_Si-RS485-TC-2T-v.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_SCHNEIDER_PM5xxx.csv",
+      "status": "MATCH",
+      "val_count": 35,
+      "gen_count": 875,
+      "common": 5,
+      "match_pct": 14.3,
+      "source": "METER_SCHNEIDER_PM5xxx.csv",
+      "type_match_pct": 80.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 60.0,
+      "diff_sample": [
+        {
+          "addr": "8905",
+          "rd_name": "Digital Input Status",
+          "gen_name": "Digital Input Status Base Unit_1",
+          "rd_type": "U16",
+          "gen_type": "U32",
+          "rd_coef": "1.0",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "SENSOR_DELTAOHM_LPPYRA03.csv",
+      "status": "MATCH",
+      "val_count": 6,
+      "gen_count": 25,
+      "common": 5,
+      "match_pct": 83.3,
+      "source": "DeltaOHM_HD52.3D_manual_ENG.pdf",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 0.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "1",
+          "rd_name": "Temperature in Deg.Fahrenheit",
+          "gen_name": "Wind speed (x100)",
+          "rd_type": "I16",
+          "gen_type": "U16",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "3",
+          "rd_name": "Status register",
+          "gen_name": "Sonic temperature measured by the first transducers pair (x10)",
+          "rd_type": "I16",
+          "gen_type": "BITS",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4",
+          "rd_name": "Average solar radiation in W/m2",
+          "gen_name": "Sonic temperature measured by the second transducers pair (x10)",
+          "rd_type": "I16",
+          "gen_type": "BITS",
+          "rd_coef": "0.1",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_CHAUVINARNOUX_ULYS-TT_M.csv",
+      "status": "MATCH",
+      "val_count": 19,
+      "gen_count": 130,
+      "common": 4,
+      "match_pct": 21.1,
+      "source": "CHAUVINARNOUX_ULYS_FLEX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "DISPLAY_SIEBERT_XC4XX.csv",
+      "status": "MATCH",
+      "val_count": 3,
+      "gen_count": 5,
+      "common": 3,
+      "match_pct": 100.0,
+      "source": "MODBUS_SIEBERT_XC4XX.csv",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "METER_SCHNEIDER_PMXXXX.csv",
+      "status": "MATCH",
+      "val_count": 517,
+      "gen_count": 105,
+      "common": 3,
+      "match_pct": 0.6,
+      "source": "Schneider_3255lite.xlsx",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "DISPLAY_SCHNEIDER_DISPLAYTECHNIK.csv",
+      "status": "MATCH",
+      "val_count": 3,
+      "gen_count": 105,
+      "common": 2,
+      "match_pct": 66.7,
+      "source": "Schneider_3255lite.xlsx",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "4",
+          "rd_name": "Daily Energy",
+          "gen_name": "4",
+          "rd_type": "F32",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "2",
+          "rd_name": "Total Energy",
+          "gen_name": "2",
+          "rd_type": "F32",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv",
+      "status": "MATCH",
+      "val_count": 89,
+      "gen_count": 67,
+      "common": 2,
+      "match_pct": 2.2,
+      "source": "Modbus_RTU_register_map_for_TRIO-20.0(27.6)-TL-OUTD_Revision_1.6 - FRANCAIS.pdf",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": [
+        {
+          "addr": "304",
+          "rd_name": "Onduleur - Puissance active injectee",
+          "gen_name": "Carte de communication – Etat",
+          "rd_type": "F32_W",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "306",
+          "rd_name": "Onduleur - Courant",
+          "gen_name": "Onduleur – Energie journalière",
+          "rd_type": "F32_W",
+          "gen_type": "U16",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "INV_CYBERPOWER_3-Phases.csv",
+      "status": "MATCH",
+      "val_count": 71,
+      "gen_count": 89,
+      "common": 2,
+      "match_pct": 2.8,
+      "source": "CyberPower Systems RS485 Protocol in Photovoltaic Inverter (V2_17 Jan2016).pdf",
+      "type_match_pct": 0.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": [
+        {
+          "addr": "4156",
+          "rd_name": "System Life kWh",
+          "gen_name": "System Life kWh",
+          "rd_type": "U32_W",
+          "gen_type": "U32",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        },
+        {
+          "addr": "4172",
+          "rd_name": "Input2 Life kWh",
+          "gen_name": "Input2 Life kWh",
+          "rd_type": "U32_W",
+          "gen_type": "U32",
+          "rd_coef": "1.000000",
+          "gen_coef": "1.000000"
+        }
+      ]
+    },
+    {
+      "name": "METER_SCHNEIDER_EM1200.csv",
+      "status": "MATCH",
+      "val_count": 96,
+      "gen_count": 105,
+      "common": 2,
+      "match_pct": 2.1,
+      "source": "Schneider_3255lite.xlsx",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_RIKA_PYRANO_M200-03.csv",
+      "status": "MATCH",
+      "val_count": 1,
+      "gen_count": 6,
+      "common": 1,
+      "match_pct": 100.0,
+      "source": "Fiche technique_Sens'Pyranometer AC1401-01_FR.pdf",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 0.0,
+      "diff_sample": []
+    },
+    {
+      "name": "SENSOR_RIKA_WINDSENSOR_RK100-01.csv",
+      "status": "MATCH",
+      "val_count": 2,
+      "gen_count": 2,
+      "common": 1,
+      "match_pct": 50.0,
+      "source": "RK100-02 Wind Speed Sensor Communication Protocol.pdf",
+      "type_match_pct": 100.0,
+      "coef_match_pct": 100.0,
+      "name_match_pct": 100.0,
+      "diff_sample": []
+    }
+  ]
+}
