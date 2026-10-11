@@ -70,8 +70,8 @@ class TestUniversalSemanticLearning:
         assert Generator.normalize_type("pad") == "U16"
         assert Generator.normalize_type("enum16") == "U16"
         assert Generator.normalize_type("enum32") == "U32"
-        assert Generator.normalize_type("bool") == "U16"
-        assert Generator.normalize_type("boolean") == "U16"
+        assert Generator.normalize_type("bool") == "BITS"
+        assert Generator.normalize_type("boolean") == "BITS"
         assert Generator.normalize_type("single") == "F32"
         assert Generator.normalize_type("raw16") == "U16"
 
