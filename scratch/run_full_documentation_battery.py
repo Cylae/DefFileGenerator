@@ -81,7 +81,10 @@ CATALOG = [
         "mfg": "Huawei",
         "model": "SUN2000MA_V100R001C00",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Huawei\Inverter\Sources\SUN2000MA_V100R001C00_ModbusInterfaceDefinitions_issue08_2024.pdf"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"Huawei\Inverter\Sources\SUN2000MA_V100R001C00_ModbusInterfaceDefinitions_issue08_2024.pdf",
+        ),
         "sheet": None,
         "output_name": "INV_Huawei_SUN2000MA_V100R001C00.csv",
         "description": "Manuel PDF officiel d'interface Modbus Huawei SUN2000 (Issue 08, 2024)",
@@ -105,7 +108,9 @@ CATALOG = [
         "mfg": "Huawei",
         "model": "SmartLogger3000",
         "protocol": "modbusTCP",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Huawei\SmartLogger\SL3000\HUAWEI_SmartLogger3000.csv"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR, r"Huawei\SmartLogger\SL3000\HUAWEI_SmartLogger3000.csv"
+        ),
         "sheet": None,
         "output_name": "COM_Huawei_SmartLogger3000.csv",
         "description": "Passerelle de communication Huawei SmartLogger 3000",
@@ -120,7 +125,9 @@ CATALOG = [
         "mfg": "ABB",
         "model": "PVS1xx_SunSpec",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"PowerOne\Sunspec\Sources\SUNSPEC_PVS1xx_PICS_V002_GL20181011.xlsx"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR, r"PowerOne\Sunspec\Sources\SUNSPEC_PVS1xx_PICS_V002_GL20181011.xlsx"
+        ),
         "sheet": None,
         "output_name": "INV_ABB_PVS1xx_SunSpec.csv",
         "description": "Spécification PICS SunSpec Excel pour onduleurs triphasés ABB PVS1xx",
@@ -132,7 +139,10 @@ CATALOG = [
         "mfg": "ABB",
         "model": "M4M_NetworkAnalyzer",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"PowerOne\Modbus\sources\analyseur reseau M4M\M4M Modbus map - v.1.3N.xlsx"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"PowerOne\Modbus\sources\analyseur reseau M4M\M4M Modbus map - v.1.3N.xlsx",
+        ),
         "sheet": None,
         "output_name": "MET_ABB_M4M_NetworkAnalyzer.csv",
         "description": "Analyseur de réseau haute précision ABB M4M (v1.3N)",
@@ -144,7 +154,10 @@ CATALOG = [
         "mfg": "ABB",
         "model": "Terra_AC_Charger",
         "protocol": "modbusTCP",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"PowerOne\ABB Terra Heavy charger\ABB_Terra_AC_Charger_ModbusCommunication_v1.7.pdf"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"PowerOne\ABB Terra Heavy charger\ABB_Terra_AC_Charger_ModbusCommunication_v1.7.pdf",
+        ),
         "sheet": None,
         "output_name": "OTH_ABB_Terra_AC_Charger.csv",
         "description": "Manuel PDF Borne de recharge pour véhicules électriques ABB Terra AC (v1.7)",
@@ -159,7 +172,10 @@ CATALOG = [
         "mfg": "Fox ESS",
         "model": "G-MAX_ModbusTCP",
         "protocol": "modbusTCP",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Fox ESS\G-MAX Communication Protocol modbusTcp-EN-20250425(1).xlsx"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"Fox ESS\G-MAX Communication Protocol modbusTcp-EN-20250425(1).xlsx",
+        ),
         "sheet": None,
         "output_name": "INV_FoxESS_G_MAX_ModbusTCP.csv",
         "description": "Protocole de communication Modbus TCP Fox ESS G-MAX (Excel multi-feuilles)",
@@ -198,7 +214,10 @@ CATALOG = [
         "mfg": "GoodWe",
         "model": "ThreePhase_SunSpec",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Goodwe\Sources\Sunspec for Inverters\GOODWE_three_phase_grid-tied_inverter_PICS.xlsx"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"Goodwe\Sources\Sunspec for Inverters\GOODWE_three_phase_grid-tied_inverter_PICS.xlsx",
+        ),
         "sheet": None,
         "output_name": "INV_GoodWe_ThreePhase_SunSpec.csv",
         "description": "Onduleur réseau triphasé GoodWe PICS SunSpec (Excel)",
@@ -222,7 +241,9 @@ CATALOG = [
         "mfg": "GoodWe",
         "model": "ET_EH_Hybrid_Series",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Goodwe\GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR, r"Goodwe\GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv"
+        ),
         "sheet": None,
         "output_name": "INV_GoodWe_ET_EH_Hybrid_Series.csv",
         "description": "Gamme hybride avec stockage batterie GoodWe ET/EH/BT/BH Modbus RTU",
@@ -237,7 +258,10 @@ CATALOG = [
         "mfg": "Growatt",
         "model": "Growatt_RTU_Protocol_II",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Growatt\Sources\Growatt Inverter Modbus RTU Protocol_II V1 07 （20180918）.pdf"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"Growatt\Sources\Growatt Inverter Modbus RTU Protocol_II V1 07 （20180918）.pdf",
+        ),
         "sheet": None,
         "output_name": "INV_Growatt_RTU_Protocol_II.csv",
         "description": "Documentation PDF Protocole Modbus RTU II Growatt (v1.07)",
@@ -249,7 +273,10 @@ CATALOG = [
         "mfg": "Growatt",
         "model": "Growatt_PV_Inverter_V3.14",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Growatt\Sources\Growatt PV Inverter Modbus RS485 RTU Protocol V3 14.pdf"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR,
+            r"Growatt\Sources\Growatt PV Inverter Modbus RS485 RTU Protocol V3 14.pdf",
+        ),
         "sheet": None,
         "output_name": "INV_Growatt_PV_Inverter_V3.14.csv",
         "description": "Manuel PDF Growatt RS485 RTU V3.14",
@@ -315,7 +342,9 @@ CATALOG = [
         "mfg": "Janitza",
         "model": "UMG604-PRO",
         "protocol": "modbusTCP",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Janitza\Fichier de def inconnu\METER_JANITZA_UMG604-PRO.csv"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR, r"Janitza\Fichier de def inconnu\METER_JANITZA_UMG604-PRO.csv"
+        ),
         "sheet": None,
         "output_name": "MET_Janitza_UMG604_PRO.csv",
         "description": "Analyseur de puissance réseau et qualité d'énergie Janitza UMG 604-PRO",
@@ -354,7 +383,9 @@ CATALOG = [
         "mfg": "Kaco",
         "model": "NX3_G2_G3_SunSpec",
         "protocol": "modbusRTU",
-        "path": os.path.join(EQUIPEMENTIERS_DIR, r"Kaco\DOC from Kaco\SUNSPEC_NX3_G2_G3_1xx_7xx.xlsx"),
+        "path": os.path.join(
+            EQUIPEMENTIERS_DIR, r"Kaco\DOC from Kaco\SUNSPEC_NX3_G2_G3_1xx_7xx.xlsx"
+        ),
         "sheet": None,
         "output_name": "INV_Kaco_NX3_G2_G3_SunSpec.csv",
         "description": "Tableur Excel SunSpec officiel Kaco new energy (NX3 G2/G3 Models 1xx to 7xx)",
@@ -571,7 +602,9 @@ def run_battery():
                 raise RuntimeError("Échec de la génération du fichier CSV.")
 
             # Strict validation using WebdynSunPM rules
-            report = generator.validate_csv_detailed(final_csv_path, strict=True, strict_overlap=False)
+            report = generator.validate_csv_detailed(
+                final_csv_path, strict=True, strict_overlap=False
+            )
             res["register_count"] = report.register_count
             res["error_count"] = report.stats.get("errors", 0)
             res["warning_count"] = report.stats.get("warnings", 0)
@@ -586,7 +619,9 @@ def run_battery():
                 res["error_msg"] = "; ".join([iss.message for iss in report.issues[:3]])
 
             status_str = "✅ SUCCES (100% CONFORME)" if res["success"] else "❌ ECHEC"
-            print(f"     --> {status_str} : {res['register_count']} registres extraits en {(time.time() - t0)*1000:.1f} ms")
+            print(
+                f"     --> {status_str} : {res['register_count']} registres extraits en {(time.time() - t0) * 1000:.1f} ms"
+            )
 
         except Exception as exc:
             res["success"] = False
@@ -599,7 +634,9 @@ def run_battery():
     total_time = time.time() - start_global
     print("\n" + "=" * 80)
     print(f"AUDIT TERMINE EN {total_time:.2f} s")
-    print(f"Taux de succès : {sum(1 for r in summary_results if r['success'])} / {len(summary_results)} ({sum(1 for r in summary_results if r['success'])/len(summary_results)*100:.1f}%)")
+    print(
+        f"Taux de succès : {sum(1 for r in summary_results if r['success'])} / {len(summary_results)} ({sum(1 for r in summary_results if r['success']) / len(summary_results) * 100:.1f}%)"
+    )
     print("=" * 80)
 
     # Save structured audit results as JSON for report compilation

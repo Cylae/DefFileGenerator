@@ -147,7 +147,7 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"^pad$"), "U16"),
     (re.compile(r"^enum16$"), "U16"),
     (re.compile(r"^enum32$"), "U32"),
-    (re.compile(r"^bool(?:ean)?$"), "U16"),
+    (re.compile(r"^bool(?:ean)?$"), "BITS"),
     (re.compile(r"^single$"), "F32"),
     (re.compile(r"^raw16$"), "U16"),
 )

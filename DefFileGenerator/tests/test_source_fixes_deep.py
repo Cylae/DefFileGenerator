@@ -43,7 +43,15 @@ def test_scalefactor_ratio_divisor_and_overflow_protection():
 def test_is_secondary_header_row_guards_against_addresses_and_ranges():
     """Verify that data rows with addresses or address ranges are never mistaken for headers."""
     # Data row where column 0 is category, column 1 is address 40000, description mentions 'slave address'
-    data_row = ["RS485 settings", "40000", "R/W", "RS485 slave address for port", "U16", "---", "1 ~ 247"]
+    data_row = [
+        "RS485 settings",
+        "40000",
+        "R/W",
+        "RS485 slave address for port",
+        "U16",
+        "---",
+        "1 ~ 247",
+    ]
     assert Extractor._is_secondary_header_row(data_row) is False
 
     # Data row with address range '041A -- 041F'
@@ -85,6 +93,7 @@ def test_effective_max_column_bounding(tmp_path):
 def test_legacy_xls_extraction_if_available():
     """Verify that legacy .xls files can be read when xlrd is installed."""
     import sys
+
     if "xlrd" not in sys.modules:
         pytest.skip("xlrd not installed")
     ext = Extractor()

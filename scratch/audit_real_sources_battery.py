@@ -7,6 +7,7 @@ from DefFileGenerator.extractor import Extractor
 
 DATASET_ROOT = r"G:\My Drive\08092026\Equipementiers"
 
+
 def audit_all():
     ext = Extractor()
     files = []
@@ -14,18 +15,30 @@ def audit_all():
         files.extend(glob.glob(os.path.join(DATASET_ROOT, "**", ext_pattern), recursive=True))
 
     print(f"Total candidate source files found: {len(files)}")
-    
+
     results = {"success": [], "zero_registers": [], "error": []}
 
     for fpath in files:
         f_lower = fpath.lower()
         # skip non-technical non-modbus files
-        if any(ign in f_lower for ign in ["ticket", "support", "reunion", "prio", "qualité", "client", "trame", "synthese"]):
+        if any(
+            ign in f_lower
+            for ign in [
+                "ticket",
+                "support",
+                "reunion",
+                "prio",
+                "qualité",
+                "client",
+                "trame",
+                "synthese",
+            ]
+        ):
             continue
-        
+
         rel = os.path.relpath(fpath, DATASET_ROOT)
         ext_type = os.path.splitext(fpath)[1].lower()
-        
+
         try:
             total_regs = 0
             tables_count = 0
@@ -66,6 +79,7 @@ def audit_all():
         print(f"\n================ ZERO REGISTERS SAMPLE (First 20) ================")
         for rel, ext_type, tcount in results["zero_registers"][:20]:
             print(f"[ZERO] {rel} ({ext_type}) - tables found: {tcount}")
+
 
 if __name__ == "__main__":
     audit_all()

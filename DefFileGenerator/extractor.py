@@ -729,10 +729,7 @@ class Extractor:
             return
 
         # Normalize float representations of integers (e.g. 1.0 -> 1) from openpyxl / xlrd
-        rows = [
-            [int(c) if isinstance(c, float) and c.is_integer() else c for c in r]
-            for r in rows
-        ]
+        rows = [[int(c) if isinstance(c, float) and c.is_integer() else c for c in r] for r in rows]
 
         # Smart header detection: check up to first 15 rows for known Modbus columns
         best_idx = 0
@@ -743,8 +740,7 @@ class Extractor:
             score = sum(
                 1
                 for c in r
-                if c is not None
-                and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
+                if c is not None and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
             )
             if score > best_score:
                 best_score = score
@@ -821,9 +817,7 @@ class Extractor:
                 continue
 
             row_dict = {
-                headers[i]: cell
-                for i, cell in enumerate(row)
-                if i < len(headers) and headers[i]
+                headers[i]: cell for i, cell in enumerate(row) if i < len(headers) and headers[i]
             }
             if current_reg_type and not row_dict.get("RegisterType"):
                 row_dict["RegisterType"] = current_reg_type
@@ -891,8 +885,7 @@ class Extractor:
                                 f"of {MAX_EXCEL_SHEET_CELLS} cells."
                             )
                         raw_rows = [
-                            [ws.cell_value(r, c) for c in range(ws.ncols)]
-                            for r in range(ws.nrows)
+                            [ws.cell_value(r, c) for c in range(ws.ncols)] for r in range(ws.nrows)
                         ]
                         yield from Extractor._process_sheet_rows(raw_rows)
 

@@ -21,6 +21,7 @@ from scratch.compare_with_def_pm_rd import (
     EQUIP_DIR,
 )
 
+
 def run_deep_comparison():
     def_files = sorted(list(Path(DEF_PM_DIR).rglob("*.csv")))
     equip_sources = []
@@ -30,17 +31,19 @@ def run_deep_comparison():
     extractor = Extractor()
     generator = Generator()
 
-    category_stats = defaultdict(lambda: {
-        "total_files": 0,
-        "matched_files": 0,
-        "rd_total_regs": 0,
-        "gen_total_regs": 0,
-        "common_regs": 0,
-        "type_matches": 0,
-        "coef_matches": 0,
-        "name_matches": 0,
-        "files_detail": []
-    })
+    category_stats = defaultdict(
+        lambda: {
+            "total_files": 0,
+            "matched_files": 0,
+            "rd_total_regs": 0,
+            "gen_total_regs": 0,
+            "common_regs": 0,
+            "type_matches": 0,
+            "coef_matches": 0,
+            "name_matches": 0,
+            "files_detail": [],
+        }
+    )
 
     equipment_matches = []
 
@@ -55,14 +58,16 @@ def run_deep_comparison():
 
         candidates = find_candidate_sources_for_def(df, equip_sources)
         if not candidates:
-            category_stats[cat]["files_detail"].append({
-                "name": df.name,
-                "status": "NO_SOURCE",
-                "val_count": val_count,
-                "gen_count": 0,
-                "common": 0,
-                "match_pct": 0.0,
-            })
+            category_stats[cat]["files_detail"].append(
+                {
+                    "name": df.name,
+                    "status": "NO_SOURCE",
+                    "val_count": val_count,
+                    "gen_count": 0,
+                    "common": 0,
+                    "match_pct": 0.0,
+                }
+            )
             continue
 
         best_gen_rows = []
@@ -123,16 +128,20 @@ def run_deep_comparison():
             if v_name == g_name or v_name in g_name or g_name in v_name:
                 name_match += 1
 
-            if len(diff_sample) < 3 and (v_type != g_type or abs(float(v_c or 0) - float(g_c or 0)) >= 1e-4):
-                diff_sample.append({
-                    "addr": addr,
-                    "rd_name": vr.get("name"),
-                    "gen_name": gr.get("Name"),
-                    "rd_type": v_type,
-                    "gen_type": g_type,
-                    "rd_coef": v_c,
-                    "gen_coef": g_c,
-                })
+            if len(diff_sample) < 3 and (
+                v_type != g_type or abs(float(v_c or 0) - float(g_c or 0)) >= 1e-4
+            ):
+                diff_sample.append(
+                    {
+                        "addr": addr,
+                        "rd_name": vr.get("name"),
+                        "gen_name": gr.get("Name"),
+                        "rd_type": v_type,
+                        "gen_type": g_type,
+                        "rd_coef": v_c,
+                        "gen_coef": g_c,
+                    }
+                )
 
         match_count = len(common)
         if match_count > 0:
@@ -170,6 +179,7 @@ def run_deep_comparison():
         json.dump(out, f, indent=2, ensure_ascii=False)
 
     print("SUCCESS: Exact metrics saved to scratch/rd_exact_metrics.json")
+
 
 if __name__ == "__main__":
     run_deep_comparison()

@@ -20,6 +20,7 @@ from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 DEF_PM_DIR = r"G:\My Drive\08092026\DEF_PM_R&D"
 EQUIP_DIR = r"G:\My Drive\08092026\Equipementiers"
 
+
 def load_validated_def(filepath: str) -> Dict[str, Any]:
     """Parse a validated Webdyn definition CSV file."""
     with open(filepath, "r", encoding="latin-1") as f:
@@ -58,6 +59,7 @@ def load_validated_def(filepath: str) -> Dict[str, Any]:
         "raw_count": len(registers),
     }
 
+
 def find_candidate_sources_for_def(def_path: Path, equip_index: List[Path]) -> List[Path]:
     """Find source documents corresponding to a validated definition."""
     def_name = def_path.stem.lower()
@@ -70,7 +72,10 @@ def find_candidate_sources_for_def(def_path: Path, equip_index: List[Path]) -> L
         sp_lower = sp.name.lower()
         sp_dir = str(sp.parent).lower()
         # skip temporary, ticket, support
-        if any(ign in sp_lower for ign in ["ticket", "support", "reunion", "prio", "qualité", "client", "trame"]):
+        if any(
+            ign in sp_lower
+            for ign in ["ticket", "support", "reunion", "prio", "qualité", "client", "trame"]
+        ):
             continue
 
         score = 0
@@ -86,6 +91,7 @@ def find_candidate_sources_for_def(def_path: Path, equip_index: List[Path]) -> L
 
     matched.sort(key=lambda x: x[0], reverse=True)
     return [p for _, p in matched]
+
 
 def run_benchmark():
     print("=== Scanning DEF_PM_R&D ===")
@@ -114,18 +120,20 @@ def run_benchmark():
 
         candidates = find_candidate_sources_for_def(df, equip_sources)
         if not candidates:
-            results.append({
-                "def_file": df.name,
-                "category": category,
-                "mfg": mfg,
-                "model": model,
-                "val_count": val_reg_count,
-                "gen_count": 0,
-                "source_file": "Source non trouvée",
-                "status": "NO_SOURCE",
-                "common_addrs": 0,
-                "match_rate": 0.0,
-            })
+            results.append(
+                {
+                    "def_file": df.name,
+                    "category": category,
+                    "mfg": mfg,
+                    "model": model,
+                    "val_count": val_reg_count,
+                    "gen_count": 0,
+                    "source_file": "Source non trouvée",
+                    "status": "NO_SOURCE",
+                    "common_addrs": 0,
+                    "match_rate": 0.0,
+                }
+            )
             continue
 
         # Try candidates to see if we can extract registers
@@ -159,37 +167,48 @@ def run_benchmark():
         val_addrs = set(val_data["registers"].keys())
         gen_addrs = set(best_gen_regs.keys())
         common = val_addrs.intersection(gen_addrs)
-        
+
         match_rate = (len(common) / len(val_addrs) * 100.0) if val_addrs else 0.0
 
-        results.append({
-            "def_file": df.name,
-            "category": category,
-            "mfg": mfg,
-            "model": model,
-            "val_count": val_reg_count,
-            "gen_count": len(best_gen_regs),
-            "source_file": best_candidate.name if best_candidate else "Aucune extraction valide",
-            "source_rel": str(best_candidate.relative_to(Path(EQUIP_DIR))) if best_candidate else "",
-            "status": "SUCCESS" if common else ("GEN_ONLY" if gen_addrs else "NO_EXTRACTION"),
-            "common_addrs": len(common),
-            "match_rate": match_rate,
-            "sample_common": list(common)[:5],
-        })
+        results.append(
+            {
+                "def_file": df.name,
+                "category": category,
+                "mfg": mfg,
+                "model": model,
+                "val_count": val_reg_count,
+                "gen_count": len(best_gen_regs),
+                "source_file": best_candidate.name
+                if best_candidate
+                else "Aucune extraction valide",
+                "source_rel": str(best_candidate.relative_to(Path(EQUIP_DIR)))
+                if best_candidate
+                else "",
+                "status": "SUCCESS" if common else ("GEN_ONLY" if gen_addrs else "NO_EXTRACTION"),
+                "common_addrs": len(common),
+                "match_rate": match_rate,
+                "sample_common": list(common)[:5],
+            }
+        )
 
     # Summary
     success_matches = [r for r in results if r["status"] == "SUCCESS"]
     print(f"\n================ BENCHMARK SUMMARY ================")
     print(f"Total Validated Definitions: {len(results)}")
-    print(f"Definitions directly matched & extracted from technical sources: {len(success_matches)}")
+    print(
+        f"Definitions directly matched & extracted from technical sources: {len(success_matches)}"
+    )
     print(f"Definitions with common Modbus addresses: {len(success_matches)}")
 
     for r in success_matches[:25]:
         print(f"\n[MATCH] {r['def_file']} ({r['mfg']} {r['model']})")
         print(f"  Source: {r['source_file']}")
-        print(f"  R&D Count: {r['val_count']} | Gen Count: {r['gen_count']} | Common Addrs: {r['common_addrs']} ({r['match_rate']:.1f}%)")
-        if r['sample_common']:
+        print(
+            f"  R&D Count: {r['val_count']} | Gen Count: {r['gen_count']} | Common Addrs: {r['common_addrs']} ({r['match_rate']:.1f}%)"
+        )
+        if r["sample_common"]:
             print(f"  Sample Addrs: {r['sample_common']}")
+
 
 if __name__ == "__main__":
     run_benchmark()
