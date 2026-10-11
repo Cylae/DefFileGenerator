@@ -19,8 +19,9 @@ Features:
 
 import csv
 import os
-import re
+
 import openpyxl
+
 from DefFileGenerator.def_gen import Generator
 
 
@@ -187,13 +188,11 @@ def parse_mars_workbook(xlsx_path: str):
                     break
                 continue
             addr = int(addr_str)
-            eq = str(r[1]).strip() if r[1] else ""
             name = str(r[2]).strip() if r[2] else ""
             acc = str(r[3]).strip() if len(r) > 3 and r[3] else ""
             unit_val = str(r[4]).strip() if len(r) > 4 and r[4] else ""
             type_val = str(r[5]).strip() if len(r) > 5 and r[5] else ""
-            notes = str(r[6]).strip() if len(r) > 6 and r[6] else ""
-            
+
             unit, unit_factor = normalize_unit(unit_val)
             acc_factor = 1.0
             if acc:

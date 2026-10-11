@@ -5,9 +5,10 @@ and R&D production definition files (INV_HUAWEI_V4 reference benchmark).
 
 import glob
 import os
-import pytest
-from DefFileGenerator.def_gen import Generator
 
+import pytest
+
+from DefFileGenerator.def_gen import Generator
 
 WORKSPACE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BIBLE_DIR = r"G:\My Drive\08092026\DEF_PM_R&D"
@@ -39,7 +40,7 @@ def test_mars_local_controller_slave1_strict_validation():
     assert report.stats["errors"] == 0
 
     # Verify header conformance with Huawei V4 pattern (11 columns)
-    with open(target_csv, "r", encoding="utf-8-sig") as f:
+    with open(target_csv, encoding="utf-8-sig") as f:
         header_line = f.readline().rstrip("\r\n").split(";")
         assert len(header_line) == 11, f"Expected 11 columns in header, got {len(header_line)}"
         assert header_line[0] == "modbusTCP"
@@ -68,7 +69,7 @@ def test_mars_local_controller_ems_slave247():
     assert report.register_count == 12
 
     # Check write action code on EMS commands
-    with open(target_csv, "r", encoding="utf-8-sig") as f:
+    with open(target_csv, encoding="utf-8-sig") as f:
         rows = [line.strip().split(";") for line in f if line.strip()][1:]
         writes = [r for r in rows if r[1] == "3"]
         assert len(writes) == 7

@@ -13,7 +13,6 @@ Provides:
 from __future__ import annotations
 
 import re
-from typing import Any
 
 # -----------------------------------------------------------------------------
 # Canonical Webdyn Tags Semantic Matchers (Extracted from 211,000+ Dataset Registers)
