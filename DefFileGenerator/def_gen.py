@@ -740,8 +740,7 @@ class Generator:
             is_valid_format = RE_ADDR_BITS.match(addr_str) is not None
         elif dtype_upper.startswith(("U8", "I8")):
             is_valid_format = (
-                RE_ADDR_INT.match(addr_str) is not None
-                or RE_ADDR_BYTE.match(addr_str) is not None
+                RE_ADDR_INT.match(addr_str) is not None or RE_ADDR_BYTE.match(addr_str) is not None
             )
         else:
             is_valid_format = RE_ADDR_INT.match(addr_str) is not None
@@ -1143,7 +1142,7 @@ class Generator:
 
             def slices_overlap(u_type: str, u_start: int, u_bit_start: int, u_bit_end: int) -> bool:
                 """Checks if two entries in the same word have overlapping bit slices."""
-                u_is_subword = (u_type == "BITS" or u_type.startswith(("U8", "I8")))
+                u_is_subword = u_type == "BITS" or u_type.startswith(("U8", "I8"))
                 if not (is_subword and u_is_subword and start_addr == u_start):
                     return True
                 if current_bits is None or u_bit_start < 0 or u_bit_end < 0:

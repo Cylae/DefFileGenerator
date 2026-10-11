@@ -20,61 +20,94 @@ import re
 
 TAG_MATCHERS: list[tuple[str, re.Pattern[str]]] = [
     # Active Power
-    ("RealPower", re.compile(
-        r"^(?:total\s+)?(?:ac\s+)?(?:output\s+)?active\s+power(?:\s+sum)?$|"
-        r"^(?:puissance\s+active\s+totale|activepowsumkw|p_total|total_active_power|realpower|pac)$",
-        re.IGNORECASE,
-    )),
+    (
+        "RealPower",
+        re.compile(
+            r"^(?:total\s+)?(?:ac\s+)?(?:output\s+)?active\s+power(?:\s+sum)?$|"
+            r"^(?:puissance\s+active\s+totale|activepowsumkw|p_total|total_active_power|realpower|pac)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Cumulative Energy
-    ("EnergyTotal", re.compile(
-        r"^(?:total\s+)?(?:cumulative\s+)?(?:ac\s+)?(?:discharging\s+)?energy(?:\s+(?:total|yield|delivered))?$|"
-        r"^(?:system\s+life\s+kwh|total\s+forward\s+active\s+energy|energie\s+totale|energytotal|e_total|eac_total)$",
-        re.IGNORECASE,
-    )),
+    (
+        "EnergyTotal",
+        re.compile(
+            r"^(?:total\s+)?(?:cumulative\s+)?(?:ac\s+)?(?:discharging\s+)?energy(?:\s+(?:total|yield|delivered))?$|"
+            r"^(?:system\s+life\s+kwh|total\s+forward\s+active\s+energy|energie\s+totale|energytotal|e_total|eac_total)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Daily Energy
-    ("EnergyDay", re.compile(
-        r"^(?:daily\s+)?(?:ac\s+)?(?:discharging\s+)?energy\s+(?:yield|of\s+current\s+day|today|daily)?$|"
-        r"^(?:daily\s+power\s+generation|energie\s+du\s+jour|energyday|e_day|today_energy)$",
-        re.IGNORECASE,
-    )),
+    (
+        "EnergyDay",
+        re.compile(
+            r"^(?:daily\s+)?(?:ac\s+)?(?:discharging\s+)?energy\s+(?:yield|of\s+current\s+day|today|daily)?$|"
+            r"^(?:daily\s+power\s+generation|energie\s+du\s+jour|energyday|e_day|today_energy)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Nominal / Rated Power
-    ("NominalPower", re.compile(
-        r"^(?:rated\s+power(?:\s*\(pn\))?|nominal\s+active\s+power|puissance\s+nominale|nominalpower|p_rated)$",
-        re.IGNORECASE,
-    )),
+    (
+        "NominalPower",
+        re.compile(
+            r"^(?:rated\s+power(?:\s*\(pn\))?|nominal\s+active\s+power|puissance\s+nominale|nominalpower|p_rated)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Grid Frequency
-    ("GridFrequency", re.compile(
-        r"^(?:grid\s+)?frequency$|^(?:fréquence\s+réseau|gridfrequency|fac|freq_grid)$",
-        re.IGNORECASE,
-    )),
+    (
+        "GridFrequency",
+        re.compile(
+            r"^(?:grid\s+)?frequency$|^(?:fréquence\s+réseau|gridfrequency|fac|freq_grid)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Power Factor
-    ("CosPhi", re.compile(
-        r"^(?:total\s+)?power\s+factor$|^(?:facteur\s+de\s+puissance|cosphi|cos_phi|pf)$",
-        re.IGNORECASE,
-    )),
+    (
+        "CosPhi",
+        re.compile(
+            r"^(?:total\s+)?power\s+factor$|^(?:facteur\s+de\s+puissance|cosphi|cos_phi|pf)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Model
-    ("DisplayModel", re.compile(
-        r"^(?:model(?:\s+name)?|device\s+model|product\s+model|modèle)$",
-        re.IGNORECASE,
-    )),
+    (
+        "DisplayModel",
+        re.compile(
+            r"^(?:model(?:\s+name)?|device\s+model|product\s+model|modèle)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Serial Number
-    ("DisplaySerialNumber", re.compile(
-        r"^(?:serial\s+number|sn|numéro\s+de\s+série|device_sn)$",
-        re.IGNORECASE,
-    )),
+    (
+        "DisplaySerialNumber",
+        re.compile(
+            r"^(?:serial\s+number|sn|numéro\s+de\s+série|device_sn)$",
+            re.IGNORECASE,
+        ),
+    ),
     # Remote Power Control Commands
-    ("cmdPwrPercent", re.compile(
-        r"^(?:set\s+(?:the\s+)?active\s+power(?:\s+ratio)?|power_limitation_pct|limitpower|cmdpwrpercent)$",
-        re.IGNORECASE,
-    )),
-    ("cmdOn", re.compile(
-        r"^(?:power\s+on|turn\s*on(?:\s+command)?|on/off|start\s*inverter)$",
-        re.IGNORECASE,
-    )),
-    ("cmdOff", re.compile(
-        r"^(?:power\s+off|turn\s*off(?:\s+command)?|stop\s*inverter|reboot\s+inverter)$",
-        re.IGNORECASE,
-    )),
+    (
+        "cmdPwrPercent",
+        re.compile(
+            r"^(?:set\s+(?:the\s+)?active\s+power(?:\s+ratio)?|power_limitation_pct|limitpower|cmdpwrpercent)$",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "cmdOn",
+        re.compile(
+            r"^(?:power\s+on|turn\s*on(?:\s+command)?|on/off|start\s*inverter)$",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "cmdOff",
+        re.compile(
+            r"^(?:power\s+off|turn\s*off(?:\s+command)?|stop\s*inverter|reboot\s+inverter)$",
+            re.IGNORECASE,
+        ),
+    ),
 ]
 
 

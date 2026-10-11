@@ -83,8 +83,18 @@ class TestUniversalSemanticLearning:
     def test_multi_section_modbus_banner_parsing(self):
         """Validates function code parsing from text banners."""
         assert parse_function_code_from_text("Function Code: 0x04 - Read Input Registers") == "4"
-        assert parse_function_code_from_text("Register Settings (Function Code:0x02 - Read Discrete Inputs)") == "2"
-        assert parse_function_code_from_text("Function Code: 0x03/0x10 - Read/Write Multiple Registers") == "3"
+        assert (
+            parse_function_code_from_text(
+                "Register Settings (Function Code:0x02 - Read Discrete Inputs)"
+            )
+            == "2"
+        )
+        assert (
+            parse_function_code_from_text(
+                "Function Code: 0x03/0x10 - Read/Write Multiple Registers"
+            )
+            == "3"
+        )
         assert parse_function_code_from_text("Function Code: 0x01 - Read Coils") == "1"
 
     def test_universal_extractor_pipeline(self):

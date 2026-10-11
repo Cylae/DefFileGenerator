@@ -65,7 +65,9 @@ def determine_action(name: str, fc: str, is_reserve: bool) -> str:
     """Determines WebdynSunPM Action code based on signal role."""
     if is_reserve:
         return "0"
-    if fc in ("1", "16", "3") and ("write" in name.lower() or "mode" in name.lower() and "set" in name.lower()):
+    if fc in ("1", "16", "3") and (
+        "write" in name.lower() or "mode" in name.lower() and "set" in name.lower()
+    ):
         return "1"
     name_lower = name.lower()
     if any(k in name_lower for k in ("alarm", "status", "fault", "crash-stop", "trip", "state")):
@@ -73,7 +75,15 @@ def determine_action(name: str, fc: str, is_reserve: bool) -> str:
     return "4"
 
 
-def build_definition_file(output_path: str, protocol: str, category: str, manufacturer: str, model: str, registers: list[dict], strict_overlap: bool = True) -> bool:
+def build_definition_file(
+    output_path: str,
+    protocol: str,
+    category: str,
+    manufacturer: str,
+    model: str,
+    registers: list[dict],
+    strict_overlap: bool = True,
+) -> bool:
     """Writes a strictly compliant WebdynSunPM definition file with UTF-8 BOM encoding."""
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     with open(output_path, "w", encoding="utf-8-sig", newline="") as f:
@@ -82,19 +92,21 @@ def build_definition_file(output_path: str, protocol: str, category: str, manufa
         writer.writerow([protocol, category, manufacturer, model, "", "", "", "", "", "", ""])
 
         for idx, reg in enumerate(registers, start=1):
-            writer.writerow([
-                str(idx),
-                str(reg["Info1"]),
-                str(reg["Info2"]),
-                str(reg["Info3"]),
-                "",
-                str(reg["Name"]),
-                str(reg.get("Tag", "")),
-                f"{float(reg['CoefA']):.6f}",
-                f"{float(reg['CoefB']):.6f}",
-                str(reg.get("Unit", "")),
-                str(reg["Action"]),
-            ])
+            writer.writerow(
+                [
+                    str(idx),
+                    str(reg["Info1"]),
+                    str(reg["Info2"]),
+                    str(reg["Info3"]),
+                    "",
+                    str(reg["Name"]),
+                    str(reg.get("Tag", "")),
+                    f"{float(reg['CoefA']):.6f}",
+                    f"{float(reg['CoefB']):.6f}",
+                    str(reg.get("Unit", "")),
+                    str(reg["Action"]),
+                ]
+            )
 
     # Validate output file
     gen = Generator()
@@ -124,17 +136,19 @@ def parse_mars_workbook(xlsx_path: str):
             addr = int(r[0])
             name = f"LC Overview - {str(r[2]).strip()}"
             dtype = normalize_type(r[4])
-            lc_overview.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": dtype,
-                "Name": name,
-                "Tag": "",
-                "CoefA": 1.0,
-                "CoefB": 0.0,
-                "Unit": "",
-                "Action": "4",
-            })
+            lc_overview.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": dtype,
+                    "Name": name,
+                    "Tag": "",
+                    "CoefA": 1.0,
+                    "CoefB": 0.0,
+                    "Unit": "",
+                    "Action": "4",
+                }
+            )
 
     # Lines 18-24: EMS Write FC 0x16 (or FC 3), Addr 247
     lc_writes = []
@@ -144,17 +158,19 @@ def parse_mars_workbook(xlsx_path: str):
             name = f"EMS Consigne - {str(r[2]).strip()}"
             unit, factor = normalize_unit(r[3])
             dtype = normalize_type(r[4])
-            lc_writes.append({
-                "Info1": "3",
-                "Info2": str(addr),
-                "Info3": dtype,
-                "Name": name,
-                "Tag": "",
-                "CoefA": factor,
-                "CoefB": 0.0,
-                "Unit": unit,
-                "Action": "1",
-            })
+            lc_writes.append(
+                {
+                    "Info1": "3",
+                    "Info2": str(addr),
+                    "Info3": dtype,
+                    "Name": name,
+                    "Tag": "",
+                    "CoefA": factor,
+                    "CoefB": 0.0,
+                    "Unit": unit,
+                    "Action": "1",
+                }
+            )
 
     # Lines 30-33: LC Alarm Details FC 0x02, Addr 1
     lc_alarms = []
@@ -162,17 +178,19 @@ def parse_mars_workbook(xlsx_path: str):
         if r and r[0] is not None and str(r[0]).isdigit():
             addr = int(r[0])
             name = f"LC Alarm - {str(r[2]).strip()}"
-            lc_alarms.append({
-                "Info1": "2",
-                "Info2": str(addr),
-                "Info3": "U16",
-                "Name": name,
-                "Tag": "",
-                "CoefA": 1.0,
-                "CoefB": 0.0,
-                "Unit": "",
-                "Action": "9",
-            })
+            lc_alarms.append(
+                {
+                    "Info1": "2",
+                    "Info2": str(addr),
+                    "Info3": "U16",
+                    "Name": name,
+                    "Tag": "",
+                    "CoefA": 1.0,
+                    "CoefB": 0.0,
+                    "Unit": "",
+                    "Action": "9",
+                }
+            )
 
     # Helper function to extract equipment template rows
     def extract_template(sheet_name: str, skip_header_rows: int = 6):
@@ -210,14 +228,16 @@ def parse_mars_workbook(xlsx_path: str):
             if addr == 71 and "branch 2~n dc current" in name.lower():
                 addr = 72
 
-            template.append({
-                "rel_addr": addr,
-                "name": name,
-                "dtype": dtype,
-                "unit": unit,
-                "coef_a": coef_a,
-                "action": action,
-            })
+            template.append(
+                {
+                    "rel_addr": addr,
+                    "name": name,
+                    "dtype": dtype,
+                    "unit": unit,
+                    "coef_a": coef_a,
+                    "action": action,
+                }
+            )
         return template
 
     pcs_tpl = extract_template("PCS Information")
@@ -252,23 +272,27 @@ def parse_mars_workbook(xlsx_path: str):
         action = "9" if "status" in name.lower() or "alarm" in name.lower() else "4"
 
         if addr < 100 and not in_cell:
-            rack_tpl.append({
-                "rel_addr": addr,
-                "name": name,
-                "dtype": dtype,
-                "unit": unit,
-                "coef_a": factor,
-                "action": action,
-            })
+            rack_tpl.append(
+                {
+                    "rel_addr": addr,
+                    "name": name,
+                    "dtype": dtype,
+                    "unit": unit,
+                    "coef_a": factor,
+                    "action": action,
+                }
+            )
         elif 100 <= addr <= 109:
-            cell_tpl.append({
-                "rel_addr": addr - 100,
-                "name": name,
-                "dtype": dtype,
-                "unit": unit,
-                "coef_a": factor,
-                "action": action,
-            })
+            cell_tpl.append(
+                {
+                    "rel_addr": addr - 100,
+                    "name": name,
+                    "dtype": dtype,
+                    "unit": unit,
+                    "coef_a": factor,
+                    "action": action,
+                }
+            )
 
     return {
         "lc_overview": lc_overview,
@@ -323,17 +347,19 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
                     tag = "EnergyDay"
                 elif "AC Frequency" in item["name"]:
                     tag = "GridFrequency"
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#PCS - {item['name']}",
-                "Tag": tag,
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#PCS - {item['name']}",
+                    "Tag": tag,
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     # 50 Banks (FC 4)
     bank_base0 = data["bank_tpl"][0]["rel_addr"] if data["bank_tpl"] else 5000
@@ -341,17 +367,19 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
         offset = 5000 + (i - 1) * 100
         for item in data["bank_tpl"]:
             addr = item["rel_addr"] - bank_base0 + offset
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#battery bank - {item['name']}",
-                "Tag": "",
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#battery bank - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     # 100 Meters (FC 4)
     meter_base0 = data["meter_tpl"][0]["rel_addr"] if data["meter_tpl"] else 10000
@@ -359,17 +387,19 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
         offset = 10000 + (i - 1) * 50
         for item in data["meter_tpl"]:
             addr = item["rel_addr"] - meter_base0 + offset
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#Bidirectional Meter - {item['name']}",
-                "Tag": "",
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#Bidirectional Meter - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     # 100 AC (FC 4)
     ac_base0 = data["ac_tpl"][0]["rel_addr"] if data["ac_tpl"] else 15000
@@ -377,17 +407,19 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
         offset = 15000 + (i - 1) * 50
         for item in data["ac_tpl"]:
             addr = item["rel_addr"] - ac_base0 + offset
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#AC - {item['name']}",
-                "Tag": "",
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#AC - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     # 50 DIO (FC 4)
     dio_base0 = data["dio_tpl"][0]["rel_addr"] if data["dio_tpl"] else 20000
@@ -395,17 +427,19 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
         offset = 20000 + (i - 1) * 100
         for item in data["dio_tpl"]:
             addr = item["rel_addr"] - dio_base0 + offset
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#DIO - {item['name']}",
-                "Tag": "",
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#DIO - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     # 50 PV (FC 4)
     pv_base0 = data["pv_tpl"][0]["rel_addr"] if data["pv_tpl"] else 25000
@@ -413,17 +447,19 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
         offset = 25000 + (i - 1) * 100
         for item in data["pv_tpl"]:
             addr = item["rel_addr"] - pv_base0 + offset
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#PV - {item['name']}",
-                "Tag": "",
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#PV - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     # 100 LC (FC 4)
     lc_base0 = data["lc_cool_tpl"][0]["rel_addr"] if data["lc_cool_tpl"] else 30000
@@ -431,20 +467,24 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
         offset = 30000 + (i - 1) * 50
         for item in data["lc_cool_tpl"]:
             addr = item["rel_addr"] - lc_base0 + offset
-            slave1_regs.append({
-                "Info1": "4",
-                "Info2": str(addr),
-                "Info3": item["dtype"],
-                "Name": f"{i}#Liquid Cooling - {item['name']}",
-                "Tag": "",
-                "CoefA": item["coef_a"],
-                "CoefB": 0.0,
-                "Unit": item["unit"],
-                "Action": item["action"],
-            })
+            slave1_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(addr),
+                    "Info3": item["dtype"],
+                    "Name": f"{i}#Liquid Cooling - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     slave1_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_webdyn.csv")
-    build_definition_file(slave1_path, "modbusTCP", "BESS", "Mars Energy", "MarsLocalController V7.0", slave1_regs)
+    build_definition_file(
+        slave1_path, "modbusTCP", "BESS", "Mars Energy", "MarsLocalController V7.0", slave1_regs
+    )
 
     # -------------------------------------------------------------------------
     # File 2: Slave 247 - EMS Management (MarsLocalController_V7.0_EMS_Slave247.csv)
@@ -453,43 +493,61 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     slave247_regs.extend(data["lc_overview"])
     slave247_regs.extend(data["lc_writes"])
     slave247_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_EMS_Slave247.csv")
-    build_definition_file(slave247_path, "modbusTCP", "BESS", "Mars Energy", "MarsLocalController EMS V7.0", slave247_regs)
+    build_definition_file(
+        slave247_path,
+        "modbusTCP",
+        "BESS",
+        "Mars Energy",
+        "MarsLocalController EMS V7.0",
+        slave247_regs,
+    )
 
     # -------------------------------------------------------------------------
     # File 3: Slave N+1 - Rack & 1000 Cells (MarsLocalController_V7.0_RackCell_SlaveN.csv)
     # -------------------------------------------------------------------------
     rack_regs = []
     for item in data["rack_tpl"]:
-        rack_regs.append({
-            "Info1": "4",
-            "Info2": str(item["rel_addr"]),
-            "Info3": item["dtype"],
-            "Name": f"Rack - {item['name']}",
-            "Tag": "",
-            "CoefA": item["coef_a"],
-            "CoefB": 0.0,
-            "Unit": item["unit"],
-            "Action": item["action"],
-        })
-
-    for cell_idx in range(1, 1001):
-        cell_offset = 100 + (cell_idx - 1) * 10
-        for item in data["cell_tpl"]:
-            cell_addr = cell_offset + item["rel_addr"]
-            rack_regs.append({
+        rack_regs.append(
+            {
                 "Info1": "4",
-                "Info2": str(cell_addr),
+                "Info2": str(item["rel_addr"]),
                 "Info3": item["dtype"],
-                "Name": f"Cell {cell_idx} - {item['name']}",
+                "Name": f"Rack - {item['name']}",
                 "Tag": "",
                 "CoefA": item["coef_a"],
                 "CoefB": 0.0,
                 "Unit": item["unit"],
                 "Action": item["action"],
-            })
+            }
+        )
+
+    for cell_idx in range(1, 1001):
+        cell_offset = 100 + (cell_idx - 1) * 10
+        for item in data["cell_tpl"]:
+            cell_addr = cell_offset + item["rel_addr"]
+            rack_regs.append(
+                {
+                    "Info1": "4",
+                    "Info2": str(cell_addr),
+                    "Info3": item["dtype"],
+                    "Name": f"Cell {cell_idx} - {item['name']}",
+                    "Tag": "",
+                    "CoefA": item["coef_a"],
+                    "CoefB": 0.0,
+                    "Unit": item["unit"],
+                    "Action": item["action"],
+                }
+            )
 
     rack_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_RackCell_SlaveN.csv")
-    build_definition_file(rack_path, "modbusTCP", "BatteryRack", "Mars Energy", "MarsLocalController Rack V7.0", rack_regs)
+    build_definition_file(
+        rack_path,
+        "modbusTCP",
+        "BatteryRack",
+        "Mars Energy",
+        "MarsLocalController Rack V7.0",
+        rack_regs,
+    )
 
     # -------------------------------------------------------------------------
     # File 4: All-In-One Unified Architecture (MarsLocalController_V7.0_AllInOne.csv)
@@ -499,7 +557,15 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     all_regs.extend(slave1_regs)
     all_regs.extend(rack_regs)
     all_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_AllInOne.csv")
-    build_definition_file(all_path, "modbusTCP", "BESS", "Mars Energy", "MarsLocalController All-In-One V7.0", all_regs, strict_overlap=False)
+    build_definition_file(
+        all_path,
+        "modbusTCP",
+        "BESS",
+        "Mars Energy",
+        "MarsLocalController All-In-One V7.0",
+        all_regs,
+        strict_overlap=False,
+    )
 
 
 if __name__ == "__main__":

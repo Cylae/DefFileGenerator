@@ -35,7 +35,9 @@ def test_mars_local_controller_slave1_strict_validation():
 
     gen = Generator()
     report = gen.validate_csv_detailed(target_csv, strict=True, strict_overlap=True)
-    assert report.is_valid, f"Mars Local Controller Slave 1 failed validation: {[i.message for i in report.issues]}"
+    assert report.is_valid, (
+        f"Mars Local Controller Slave 1 failed validation: {[i.message for i in report.issues]}"
+    )
     assert report.register_count >= 10000, f"Expected >10000 registers, got {report.register_count}"
     assert report.stats["errors"] == 0
 
