@@ -128,9 +128,7 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754"), "F64"),
     (re.compile(r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754"), "F32"),
     (
-        re.compile(
-            r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16|bit|bits|bool|boolean|bitmap)\b"
-        ),
+        re.compile(r"\b(bit32|bitmap32|bits32|bit16|bitmap16|bits16|bit|bits|bitmap)\b"),
         "BITS",
     ),
     (re.compile(r"\bqword\b"), "U64"),
@@ -472,17 +470,37 @@ class Generator:
             "03": MODBUS_HOLDING,
             "0x16": MODBUS_HOLDING,
             "0x06": MODBUS_HOLDING,
+            "fc06": MODBUS_HOLDING,
+            "fc6": MODBUS_HOLDING,
+            "06": MODBUS_HOLDING,
+            "6": MODBUS_HOLDING,
             "0x10": MODBUS_HOLDING,
+            "fc16": MODBUS_HOLDING,
+            "fc10": MODBUS_HOLDING,
+            "16": MODBUS_HOLDING,
+            "10": MODBUS_HOLDING,
+            "hr": MODBUS_HOLDING,
             "3": MODBUS_HOLDING,
             "input register": MODBUS_INPUT,
             "input registers": MODBUS_INPUT,
             "read input registers": MODBUS_INPUT,
             "input": MODBUS_INPUT,
+            "ir": MODBUS_INPUT,
             "0x04": MODBUS_INPUT,
             "fc04": MODBUS_INPUT,
             "fc4": MODBUS_INPUT,
             "04": MODBUS_INPUT,
             "4": MODBUS_INPUT,
+            "fc05": MODBUS_COIL,
+            "fc5": MODBUS_COIL,
+            "05": MODBUS_COIL,
+            "5": MODBUS_COIL,
+            "0x05": MODBUS_COIL,
+            "fc15": MODBUS_COIL,
+            "15": MODBUS_COIL,
+            "0x15": MODBUS_COIL,
+            "do": MODBUS_COIL,
+            "di": MODBUS_DISCRETE,
         }
         self.allowed_actions: list[str] = ["0", "1", "2", "4", "6", "7", "8", "9", "10"]
         self.strict = strict
@@ -740,8 +758,7 @@ class Generator:
             is_valid_format = RE_ADDR_BITS.match(addr_str) is not None
         elif dtype_upper.startswith(("U8", "I8")):
             is_valid_format = (
-                RE_ADDR_INT.match(addr_str) is not None
-                or RE_ADDR_BYTE.match(addr_str) is not None
+                RE_ADDR_INT.match(addr_str) is not None or RE_ADDR_BYTE.match(addr_str) is not None
             )
         else:
             is_valid_format = RE_ADDR_INT.match(addr_str) is not None
@@ -1143,7 +1160,7 @@ class Generator:
 
             def slices_overlap(u_type: str, u_start: int, u_bit_start: int, u_bit_end: int) -> bool:
                 """Checks if two entries in the same word have overlapping bit slices."""
-                u_is_subword = (u_type == "BITS" or u_type.startswith(("U8", "I8")))
+                u_is_subword = u_type == "BITS" or u_type.startswith(("U8", "I8"))
                 if not (is_subword and u_is_subword and start_addr == u_start):
                     return True
                 if current_bits is None or u_bit_start < 0 or u_bit_end < 0:
@@ -1348,7 +1365,28 @@ class Generator:
                     else ACTION_WRITE_ONLY
                 )
             elif act_str in ("R", "READ", "RO", "READ-ONLY", "READ ONLY", "4"):
-                norm_action = ACTION_READ_ONLY
+                if act_str != "4" and any(
+                    k in name.lower()
+                    for k in (
+                        "alarm",
+                        "alarme",
+                        "status",
+                        "fault",
+                        "failure",
+                        "fail",
+                        "error",
+                        "erreur",
+                        "alert",
+                        "alerte",
+                        "trip",
+                        "warning",
+                        "défaut",
+                        "defaut",
+                    )
+                ):
+                    norm_action = "9"
+                else:
+                    norm_action = ACTION_READ_ONLY
             elif act_str in (
                 "RW",
                 "W",

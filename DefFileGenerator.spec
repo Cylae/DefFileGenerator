@@ -34,6 +34,7 @@ packages_to_collect = [
     "pdfplumber",
     "pypdfium2",
     "defusedxml",
+    "xlrd",
 ]
 
 collected_datas = []

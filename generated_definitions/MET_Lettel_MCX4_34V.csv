@@ -1,0 +1,140 @@
+﻿modbusRTU;Meter;Lettel;MCX4-34V_Modbus_FR;;;;;;;
+1;3;0;U32;;Tension simple phase 1;tension_simple_phase_1;1.000000;0.000000;0.01V;4
+2;3;2;U32;;Tension simple phase 1;tension_simple_phase_1_1;1.000000;0.000000;0.01V;4
+3;3;4;U32;;Tension simple phase 1;tension_simple_phase_1_2;1.000000;0.000000;0.01V;4
+4;3;6;U32;;Courant phase 1;courant_phase_1;1.000000;0.000000;0.001A;4
+5;3;8;U32;;Courant phase 2;courant_phase_2;1.000000;0.000000;0.001A;4
+6;3;10;U32;;Courant phase 3;courant_phase_3;1.000000;0.000000;0.001A;4
+7;3;12;I32;;Puissance active phase 1;puissance_active_phase_1;1.000000;0.000000;0.001kW;4
+8;3;14;I32;;Puissance active phase 2;puissance_active_phase_2;1.000000;0.000000;0.001kW;4
+9;3;16;I32;;Puissance active phase 3;puissance_active_phase_3;1.000000;0.000000;0.001kW;4
+10;3;18;I32;;Puissance réactive phase 1;puissance_ractive_phase_1;1.000000;0.000000;0.001kvar;4
+11;3;20;I32;;Puissance réactive phase 2;puissance_ractive_phase_2;1.000000;0.000000;0.001kvar;4
+12;3;22;I32;;Puissance réactive phase 3;puissance_ractive_phase_3;1.000000;0.000000;0.001kvar;4
+13;3;24;U32;;Puissance apparente phase 1;puissance_apparente_phase_1;1.000000;0.000000;0.001kVA;4
+14;3;26;U32;;Puissance apparente phase 2;puissance_apparente_phase_2;1.000000;0.000000;0.001kVA;4
+15;3;28;U32;;Puissance apparente phase 3;puissance_apparente_phase_3;1.000000;0.000000;0.001kVA;4
+16;3;30;I16;;Facteur de puissance phase 1 (1).;facteur_de_puissance_phase_1_1;1.000000;0.000000;0.001;4
+17;3;31;I16;;Facteur de puissance phase 2 (1).;facteur_de_puissance_phase_2_1;1.000000;0.000000;0.001;4
+18;3;32;I16;;Facteur de puissance phase 3 (1).;facteur_de_puissance_phase_3_1;1.000000;0.000000;0.001;4
+19;3;33;I16;;Angle de phase 1;angle_de_phase_1;1.000000;0.000000;0.01°;4
+20;3;34;I16;;Angle de phase 2;angle_de_phase_2;1.000000;0.000000;0.01°;4
+21;3;35;I16;;Angle de phase 3;angle_de_phase_3;1.000000;0.000000;0.01°;4
+22;3;36;U32;;Tension composée L1-L2;tension_compose_l1l2;1.000000;0.000000;0.01V;4
+23;3;38;U32;;Tension composée L2-L3;tension_compose_l2l3;1.000000;0.000000;0.01V;4
+24;3;40;U32;;Tension composée L3-L1;tension_compose_l3l1;1.000000;0.000000;0.01V;4
+25;3;42;U16;;Fréquence;frquence;1.000000;0.000000;0.01Hz;4
+26;3;44;I32;;Puissance active totale;RealPower;1.000000;0.000000;0.001kW;4
+27;3;46;I32;;Puissance réactive totale;puissance_ractive_totale;1.000000;0.000000;0.001kvar;4
+28;3;48;U32;;Puissance apparente totale;puissance_apparente_totale;1.000000;0.000000;0.001kVA;4
+29;3;50;I16;;Facteur de puissance total (1).;facteur_de_puissance_total_1;1.000000;0.000000;0.001;4
+30;3;51;I16;;Angle de phase total;angle_de_phase_total;1.000000;0.000000;0.01°;4
+31;3;52;U32;;Courant total;courant_total;1.000000;0.000000;0.001A;4
+32;3;54;U32;;Moyenne tensions simples;moyenne_tensions_simples;1.000000;0.000000;0.01V;4
+33;3;56;U32;;Moyenne tensions composées;moyenne_tensions_composes;1.000000;0.000000;0.01V;4
+34;3;58;U32;;Moyenne des courants;moyenne_des_courants;1.000000;0.000000;0.001A;4
+35;3;60;U32;;Courant du neutre;courant_du_neutre;1.000000;0.000000;0.001A;4
+36;3;70;U16;;Type de charge phase 1 (résistive=1、inductive=2、 capacitive =3）;type_de_charge_phase_1_rsistive1inductive2_capacitive_3;1.000000;0.000000;None;4
+37;3;71;U16;;Type de charge phase 2 (résistive=1、inductive=2、 capacitive =3）;type_de_charge_phase_2_rsistive1inductive2_capacitive_3;1.000000;0.000000;None;4
+38;3;72;U16;;Type de charge phase 3 (résistive=1、inductive=2、 capacitive =3）;type_de_charge_phase_3_rsistive1inductive2_capacitive_3;1.000000;0.000000;None;4
+39;3;73;U16;;Type de charge système （Résistive =1、inductive =2、capacitive =3）;type_de_charge_systme_rsistive_1inductive_2capacitive_3;1.000000;0.000000;None;4
+40;3;93;U16;;THD tension phase 1 (2);thd_tension_phase_1_2;1.000000;0.000000;0.01%;4
+41;3;94;U16;;THD tension phase 2 (2);thd_tension_phase_2_2;1.000000;0.000000;0.01%;4
+42;3;95;U16;;THD tension phase 3 (2);thd_tension_phase_3_2;1.000000;0.000000;0.01%;4
+43;3;96;U16;;THD courant phase 1;thd_courant_phase_1;1.000000;0.000000;0.01%;4
+44;3;97;U16;;THD courant phase 2;thd_courant_phase_2;1.000000;0.000000;0.01%;4
+45;3;98;U16;;THD courant phase 3;thd_courant_phase_3;1.000000;0.000000;0.01%;4
+46;3;99;U16;;THD moyen des tensions (2);thd_moyen_des_tensions_2;1.000000;0.000000;0.01%;4
+47;3;100;U16;;THD moyen des courants;thd_moyen_des_courants;1.000000;0.000000;0.01%;4
+48;3;102;I32;;Demande puissance active totale (3).;demande_puissance_active_totale_3;1.000000;0.000000;0.001kW;4
+49;3;104;I32;;Demande puissance réactive totale (3).;demande_puissance_ractive_totale_3;1.000000;0.000000;0.001kvar;4
+50;3;106;U32;;Demande puissance apparente totale (3).;demande_puissance_apparente_totale_3;1.000000;0.000000;0.001kVA;4
+51;3;108;U32;;Demande courant phase 1;demande_courant_phase_1;1.000000;0.000000;0.001A;4
+52;3;110;U32;;Demande courant phase 2;demande_courant_phase_2;1.000000;0.000000;0.001A;4
+53;3;112;U32;;Demande courant phase 3;demande_courant_phase_3;1.000000;0.000000;0.001A;4
+54;3;114;U32;;Demande courant du neutre;demande_courant_du_neutre;1.000000;0.000000;0.001A;4
+55;3;116;U32;;Demande puissance active importée;demande_puissance_active_importe;1.000000;0.000000;0.001kW;4
+56;3;118;U32;;Demande puissance active exportée;demande_puissance_active_exporte;1.000000;0.000000;0.001kW;4
+57;3;124;I32;;Demande maxi puissance active (3).;demande_maxi_puissance_active_3;1.000000;0.000000;0.001kW;4
+58;3;126;I32;;Demande maxi puissance réactive (3).;demande_maxi_puissance_ractive_3;1.000000;0.000000;0.001kvar;4
+59;3;128;U32;;Demande maxi puissance apparente (3).;demande_maxi_puissance_apparente_3;1.000000;0.000000;0.001kVA;4
+60;3;130;U32;;Demande maxi courant phase 1;demande_maxi_courant_phase_1;1.000000;0.000000;0.001A;4
+61;3;132;U32;;Demande maxi courant phase 2;demande_maxi_courant_phase_2;1.000000;0.000000;0.001A;4
+62;3;134;U32;;Demande maxi courant phase 3;demande_maxi_courant_phase_3;1.000000;0.000000;0.001A;4
+63;3;136;U32;;Demande maxi courant du neutre;demande_maxi_courant_du_neutre;1.000000;0.000000;0.001A;4
+64;3;138;U32;;Demande maxi puissance active importée;demande_maxi_puissance_active_importe;1.000000;0.000000;0.001kW;4
+65;3;140;U32;;Demande maxi puissance active exportée;demande_maxi_puissance_active_exporte;1.000000;0.000000;0.001kW;4
+66;3;1024;U32;;Énergie active importée totale;nergie_active_importe_totale;1.000000;0.000000;0.01kWh;4
+67;3;1026;U32;;Énergie active exportée totale;nergie_active_exporte_totale;1.000000;0.000000;0.01kWh;4
+68;3;1028;I32;;Énergie active totale (importée + exportée);nergie_active_totale_importe_exporte;1.000000;0.000000;0.01kWh;4
+69;3;1032;U32;;Énergie réactive importée totale;nergie_ractive_importe_totale;1.000000;0.000000;0.01kvarh;4
+70;3;1034;U32;;Énergie réactive exportée totale;nergie_ractive_exporte_totale;1.000000;0.000000;0.01kvarh;4
+71;3;1036;I32;;Énergie réactive totale (importée + exportée);nergie_ractive_totale_importe_exporte;1.000000;0.000000;0.01kvarh;4
+72;3;1040;U32;;Énergie apparente totale;nergie_apparente_totale;1.000000;0.000000;0.01kVA;4
+73;3;1044;U32;;Énergie active importée phase 1;nergie_active_importe_phase_1;1.000000;0.000000;0.01kWh;4
+74;3;1046;U32;;Énergie active importée phase 2;nergie_active_importe_phase_2;1.000000;0.000000;0.01kWh;4
+75;3;1048;U32;;Énergie active importée phase 3;nergie_active_importe_phase_3;1.000000;0.000000;0.01kWh;4
+76;3;1050;U32;;Énergie active exportée phase 1;nergie_active_exporte_phase_1;1.000000;0.000000;0.01kWh;4
+77;3;1052;U32;;Énergie active exportée phase 2;nergie_active_exporte_phase_2;1.000000;0.000000;0.01kWh;4
+78;3;1054;U32;;Énergie active exportée phase 3;nergie_active_exporte_phase_3;1.000000;0.000000;0.01kWh;4
+79;3;1056;I32;;Énergie active totale phase 1;nergie_active_totale_phase_1;1.000000;0.000000;0.01kWh;4
+80;3;1058;I32;;Énergie active totale phase 2;nergie_active_totale_phase_2;1.000000;0.000000;0.01kWh;4
+81;3;1060;I32;;Énergie active totale phase 3;nergie_active_totale_phase_3;1.000000;0.000000;0.01kWh;4
+82;3;1062;U32;;Énergie réactive importée phase 1;nergie_ractive_importe_phase_1;1.000000;0.000000;0.01kvarh;4
+83;3;1064;U32;;Énergie réactive importée phase 2;nergie_ractive_importe_phase_2;1.000000;0.000000;0.01kvarh;4
+84;3;1066;U32;;Énergie réactive importée phase 3;nergie_ractive_importe_phase_3;1.000000;0.000000;0.01kvarh;4
+85;3;1068;U32;;Énergie réactive exportée phase 1;nergie_ractive_exporte_phase_1;1.000000;0.000000;0.01kvarh;4
+86;3;1070;U32;;Énergie réactive exportée phase 2;nergie_ractive_exporte_phase_2;1.000000;0.000000;0.01kvarh;4
+87;3;1072;U32;;Énergie réactive exportée phase 3;nergie_ractive_exporte_phase_3;1.000000;0.000000;0.01kvarh;4
+88;3;1074;I32;;Énergie réactive totale phase 1;nergie_ractive_totale_phase_1;1.000000;0.000000;0.01kvarh;4
+89;3;1076;I32;;Énergie réactive totale phase 2;nergie_ractive_totale_phase_2;1.000000;0.000000;0.01kvarh;4
+90;3;1078;I32;;Énergie réactive totale phase 3;nergie_ractive_totale_phase_3;1.000000;0.000000;0.01kvarh;4
+91;3;1080;I32;;Énergie active totale tarif 1;nergie_active_totale_tarif_1;1.000000;0.000000;0.01kWh;4
+92;3;1082;I32;;Énergie active totale tarif 2;nergie_active_totale_tarif_2;1.000000;0.000000;0.01kWh;4
+93;3;1088;U32;;Énergie active importée tarif 1;nergie_active_importe_tarif_1;1.000000;0.000000;0.01kWh;4
+94;3;1090;U32;;Énergie active importée tarif 2;nergie_active_importe_tarif_2;1.000000;0.000000;0.01kWh;4
+95;3;1096;U32;;Énergie active exportée tarif 1;nergie_active_exporte_tarif_1;1.000000;0.000000;0.01kWh;4
+96;3;1098;U32;;Énergie active exportée tarif 2;nergie_active_exporte_tarif_2;1.000000;0.000000;0.01kWh;4
+97;3;1104;I32;;Énergie réactive totale tarif 1;nergie_ractive_totale_tarif_1;1.000000;0.000000;0.01kvarh;4
+98;3;1106;I32;;Énergie réactive totale tarif 2;nergie_ractive_totale_tarif_2;1.000000;0.000000;0.01kvarh;4
+99;3;1112;U32;;Énergie réactive importée tarif 1;nergie_ractive_importe_tarif_1;1.000000;0.000000;0.01kvarh;4
+100;3;1114;U32;;Énergie réactive importée tarif 2;nergie_ractive_importe_tarif_2;1.000000;0.000000;0.01kvarh;4
+101;3;1120;U32;;Énergie réactive exportée tarif 1;nergie_ractive_exporte_tarif_1;1.000000;0.000000;0.01kvarh;4
+102;3;1122;U32;;Énergie réactive exportée tarif 2;nergie_ractive_exporte_tarif_2;1.000000;0.000000;0.01kvarh;4
+103;3;7424;I64;;Énergie active importée totale;nergie_active_importe_totale_1;1.000000;0.000000;Wh;4
+104;3;7428;I64;;Énergie active exportée totale;nergie_active_exporte_totale_1;1.000000;0.000000;Wh;4
+105;3;7432;I64;;Énergie active totale (importée + exportée);nergie_active_totale_importe_exporte_1;1.000000;0.000000;Wh;4
+106;3;7440;I64;;Énergie réactive importée totale;nergie_ractive_importe_totale_1;1.000000;0.000000;varh;4
+107;3;7444;I64;;Énergie réactive exportée totale;nergie_ractive_exporte_totale_1;1.000000;0.000000;varh;4
+108;3;7448;I64;;Énergie réactive totale (importée + exportée);nergie_ractive_totale_importe_exporte_1;1.000000;0.000000;varh;4
+109;3;7456;I64;;Énergie apparente totale;nergie_apparente_totale_1;1.000000;0.000000;VAh;4
+110;3;7460;I64;;Énergie active importée phase 1;nergie_active_importe_phase_1_1;1.000000;0.000000;Wh;4
+111;3;7464;I64;;Énergie active importée phase 2;nergie_active_importe_phase_2_1;1.000000;0.000000;Wh;4
+112;3;7468;I64;;Énergie active importée phase 3;nergie_active_importe_phase_3_1;1.000000;0.000000;Wh;4
+113;3;7472;I64;;Énergie active exportée phase 1;nergie_active_exporte_phase_1_1;1.000000;0.000000;Wh;4
+114;3;7476;I64;;Énergie active exportée phase 2;nergie_active_exporte_phase_2_1;1.000000;0.000000;Wh;4
+115;3;7480;I64;;Énergie active exportée phase 3;nergie_active_exporte_phase_3_1;1.000000;0.000000;Wh;4
+116;3;7484;I64;;Énergie active totale phase 1;nergie_active_totale_phase_1_1;1.000000;0.000000;Wh;4
+117;3;7488;I64;;Énergie active totale phase 2;nergie_active_totale_phase_2_1;1.000000;0.000000;Wh;4
+118;3;7492;I64;;Énergie active totale phase 3;nergie_active_totale_phase_3_1;1.000000;0.000000;Wh;4
+119;3;7496;I64;;Énergie réactive importée phase 1;nergie_ractive_importe_phase_1_1;1.000000;0.000000;varh;4
+120;3;7500;I64;;Énergie réactive importée phase 2;nergie_ractive_importe_phase_2_1;1.000000;0.000000;varh;4
+121;3;7504;I64;;Énergie réactive importée phase 3;nergie_ractive_importe_phase_3_1;1.000000;0.000000;varh;4
+122;3;7508;I64;;Énergie réactive exportée phase 1;nergie_ractive_exporte_phase_1_1;1.000000;0.000000;varh;4
+123;3;7512;I64;;Énergie réactive exportée phase 2;nergie_ractive_exporte_phase_2_1;1.000000;0.000000;varh;4
+124;3;7516;I64;;Énergie réactive exportée phase 3;nergie_ractive_exporte_phase_3_1;1.000000;0.000000;varh;4
+125;3;7520;I64;;Énergie réactive totale phase 1;nergie_ractive_totale_phase_1_1;1.000000;0.000000;varh;4
+126;3;7524;I64;;Énergie réactive totale phase 2;nergie_ractive_totale_phase_2_1;1.000000;0.000000;varh;4
+127;3;7528;I64;;Énergie réactive totale phase 3;nergie_ractive_totale_phase_3_1;1.000000;0.000000;varh;4
+128;3;7532;I64;;Énergie active totale tarif 1;nergie_active_totale_tarif_1_1;1.000000;0.000000;Wh;4
+129;3;7536;I64;;Énergie active totale tarif 2;nergie_active_totale_tarif_2_1;1.000000;0.000000;Wh;4
+130;3;7548;I64;;Énergie active importée tarif 1;nergie_active_importe_tarif_1_1;1.000000;0.000000;Wh;4
+131;3;7552;I64;;Énergie active importée tarif 2;nergie_active_importe_tarif_2_1;1.000000;0.000000;Wh;4
+132;3;7564;I64;;Énergie active exportée tarif 1;nergie_active_exporte_tarif_1_1;1.000000;0.000000;Wh;4
+133;3;7568;I64;;Énergie active exportée tarif 2;nergie_active_exporte_tarif_2_1;1.000000;0.000000;Wh;4
+134;3;7580;I64;;Énergie réactive totale tarif 1;nergie_ractive_totale_tarif_1_1;1.000000;0.000000;varh;4
+135;3;7584;I64;;Énergie réactive totale tarif 2;nergie_ractive_totale_tarif_2_1;1.000000;0.000000;varh;4
+136;3;7596;I64;;Énergie réactive importée tarif 1;nergie_ractive_importe_tarif_1_1;1.000000;0.000000;varh;4
+137;3;7600;I64;;Énergie réactive importée tarif 2;nergie_ractive_importe_tarif_2_1;1.000000;0.000000;varh;4
+138;3;7612;I64;;Énergie réactive exportée tarif 1;nergie_ractive_exporte_tarif_1_1;1.000000;0.000000;varh;4
+139;3;7616;I64;;Énergie réactive exportée tarif 2;nergie_ractive_exporte_tarif_2_1;1.000000;0.000000;varh;4

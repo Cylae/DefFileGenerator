@@ -36,8 +36,13 @@ import os
 import re
 import sys
 import zipfile
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable, Iterator, Sequence
 from typing import Any
+
+try:
+    import xlrd  # type: ignore[import-untyped]
+except ImportError:
+    xlrd = None
 
 # Named logger for this module
 logger = logging.getLogger("DefFileGenerator.extractor")
@@ -131,6 +136,10 @@ except ImportError:
 
 RE_CLEAN_WHITESPACE = re.compile(r"\s+")
 RE_HEX_OR_DEC = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
+RE_ADDR_RANGE = re.compile(
+    r"^(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})\s*([-\u2013\u2014~]|--|\.\.|to)\s*(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})$",
+    re.IGNORECASE,
+)
 RE_FIRST_ADDR_CANDIDATE = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
 RE_HEURISTIC_TYPE = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.IGNORECASE)
 RE_HEURISTIC_RW = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
@@ -283,7 +292,20 @@ class Extractor:
             "reg type",
             "modbus type",
             "registertype",
+            "register_type",
+            "type de registre",
             "info1",
+            "function",
+            "function code",
+            "code fonction",
+            "fonction",
+            "modbus function",
+            "modbus fc",
+            "fc code",
+            "fc no",
+            "fcno",
+            "fc",
+            "fun",
         ],
         "Address": [
             "address",
@@ -623,24 +645,209 @@ class Extractor:
 
         return None
 
+    @staticmethod
+    def _is_secondary_header_row(row: Iterable[Any]) -> bool:
+        """
+        Determines whether a table row is a secondary column header row.
+
+        Guards against false positives:
+        - Never treats a row starting with a numeric Modbus address as a header.
+        - Requires an explicit address indicator keyword (address, addr, reg, point, offset).
+        - Requires at least one secondary column indicator keyword (name, type, unit, etc.).
+        """
+        row_list = list(row)
+        if not row_list:
+            return False
+
+        row_non_empty = [c for c in row_list if c is not None and str(c).strip()]
+        if len(row_non_empty) < 3:
+            return False
+
+        # If any cell is long explanatory prose, this is a documentation note or data row
+        if any(len(str(c).strip()) > 50 for c in row_non_empty):
+            return False
+
+        # Guard against data rows: leading cells must not contain numeric addresses, hex values, or address ranges
+        for c in row_list[:5]:
+            if isinstance(c, (int, float)):
+                return False
+            if c is not None:
+                c_str = str(c).strip()
+                if c_str and (
+                    RE_HEX_OR_DEC.match(c_str)
+                    or RE_ADDR_RANGE.match(c_str)
+                    or (c_str.lower().endswith("h") and c_str[:-1].isalnum())
+                ):
+                    return False
+
+        addr_kw = (
+            "address",
+            "addr",
+            "adresse",
+            "registre",
+            "register",
+            "start reg",
+            "point table",
+            "point index",
+        )
+        other_kw = (
+            "name",
+            "description",
+            "nom",
+            "designation",
+            "désignation",
+            "type",
+            "format",
+            "datatype",
+            "unit",
+            "unité",
+            "accuracy",
+            "gain",
+            "factor",
+            "r/w",
+            "rw",
+            "action",
+            "access",
+        )
+        has_addr = any(
+            any(re.search(r"\b" + re.escape(k) + r"\b", str(c).lower()) for k in addr_kw)
+            for c in row_non_empty
+        )
+        has_other = any(
+            any(re.search(r"\b" + re.escape(k) + r"\b", str(c).lower()) for k in other_kw)
+            for c in row_non_empty
+        )
+        return has_addr and has_other
+
+    @staticmethod
+    def _process_sheet_rows(rows: Sequence[Sequence[Any]]) -> Iterator[dict[str, Any]]:
+        """
+        Processes raw extracted worksheet rows into dictionary rows with header detection,
+        function code recognition, and secondary header filtering.
+        """
+        if not rows:
+            return
+
+        # Normalize float representations of integers (e.g. 1.0 -> 1) from openpyxl / xlrd
+        rows = [
+            [int(c) if isinstance(c, float) and c.is_integer() else c for c in r]
+            for r in rows
+        ]
+
+        # Smart header detection: check up to first 15 rows for known Modbus columns
+        best_idx = 0
+        best_score = 0
+        for idx, r in enumerate(rows[:15]):
+            if not r:
+                continue
+            score = sum(
+                1
+                for c in r
+                if c is not None
+                and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
+            )
+            if score > best_score:
+                best_score = score
+                best_idx = idx
+
+        if best_score >= 2:
+            header_row = rows[best_idx]
+            data_rows = rows[best_idx + 1 :]
+        else:
+            first_non_empty = 0
+            for idx, r in enumerate(rows):
+                if any(cell is not None and str(cell).strip() for cell in r):
+                    first_non_empty = idx
+                    break
+            header_row = rows[first_non_empty]
+            data_rows = rows[first_non_empty + 1 :]
+
+            # Infer from row samples when explicit header is absent
+            inferred = Extractor._infer_table_columns(
+                [list(r) for r in rows[first_non_empty : first_non_empty + 15]]
+            )
+            if inferred is not None:
+                header_row = inferred
+                data_rows = rows[first_non_empty:]
+
+        headers = [str(h).strip() if h is not None else "" for h in header_row]
+        current_reg_type = ""
+        for pre_row in rows[:best_idx]:
+            pre_non_empty = [c for c in pre_row if c is not None and str(c).strip()]
+            if pre_non_empty:
+                pre_text = " ".join(str(c) for c in pre_non_empty)
+                fc_code = parse_function_code_from_text(pre_text)
+                if (
+                    "function code" in pre_text.lower()
+                    or "code fonction" in pre_text.lower()
+                    or "fc" in pre_text.lower()
+                    or "registre" in pre_text.lower()
+                    or "register" in pre_text.lower()
+                ):
+                    if fc_code == "1":
+                        current_reg_type = "Coil"
+                    elif fc_code == "2":
+                        current_reg_type = "Discrete Input"
+                    elif fc_code == "4":
+                        current_reg_type = "Input Register"
+                    elif fc_code == "3":
+                        current_reg_type = "Holding Register"
+
+        for row in data_rows:
+            if not any(cell is not None and str(cell).strip() for cell in row):
+                continue
+            row_non_empty = [c for c in row if c is not None and str(c).strip()]
+            # Check if this row is a section banner (e.g. Function Code 0x04 / 0x03)
+            if len(row_non_empty) <= 2:
+                row_text = " ".join(str(c) for c in row_non_empty)
+                fc_code = parse_function_code_from_text(row_text)
+                if (
+                    "function code" in row_text.lower()
+                    or "registre" in row_text.lower()
+                    or "register" in row_text.lower()
+                ):
+                    if fc_code == "1":
+                        current_reg_type = "Coil"
+                    elif fc_code == "2":
+                        current_reg_type = "Discrete Input"
+                    elif fc_code == "4":
+                        current_reg_type = "Input Register"
+                    elif fc_code == "3":
+                        current_reg_type = "Holding Register"
+
+            # Check if this row is a secondary table header row
+            if Extractor._is_secondary_header_row(row):
+                headers = [str(h).strip() if h is not None else "" for h in row]
+                continue
+
+            row_dict = {
+                headers[i]: cell
+                for i, cell in enumerate(row)
+                if i < len(headers) and headers[i]
+            }
+            if current_reg_type and not row_dict.get("RegisterType"):
+                row_dict["RegisterType"] = current_reg_type
+            yield row_dict
+
     def extract_from_excel(
-        self, filepath: str, sheet_name: str | None = None
+        self,
+        filepath: str,
+        sheet_name: str | None = None,
     ) -> Iterator[Iterator[dict[str, Any]]]:
         """
-        Extracts register tables from an Excel spreadsheet as lazy generator streams.
+        Extracts register tables from an Excel spreadsheet.
 
-        Loads file into an in-memory BytesIO buffer to prevent Windows OS file lock issues.
-        Performs smart header detection by scoring rows for Modbus keywords.
-
-        Args:
-            filepath: Path to the .xlsx / .xlsm spreadsheet.
-            sheet_name: Optional single sheet name to extract. If None, processes all sheets.
+        Supports both modern OpenXML (.xlsx, .xlsm) workbooks via openpyxl and
+        legacy binary (.xls) workbooks via xlrd.
 
         Yields:
             Iterator[dict[str, Any]]: Generator yielding dictionary rows for each sheet.
         """
-        if not HAS_OPENPYXL:
+        if not filepath.lower().endswith(".xls") and not HAS_OPENPYXL:
             logging.error("openpyxl is required for Excel extraction.")
+            return iter([])
+        if filepath.lower().endswith(".xls") and xlrd is None:
+            logging.error("xlrd is required for legacy Excel extraction.")
             return iter([])
 
         def excel_sheets_generator() -> Iterator[Iterator[dict[str, Any]]]:
@@ -651,6 +858,45 @@ class Extractor:
                     yield from ()
 
                 yield missing_file_gen()
+                return
+
+            # Support legacy Excel format (.xls) via xlrd
+            if filepath.lower().endswith(".xls"):
+                if xlrd is None:
+                    raise ExtractionError(
+                        "Legacy Excel format (.xls) requires 'xlrd' to be installed."
+                    )
+                try:
+                    wb_xls = xlrd.open_workbook(filepath)
+                except Exception as exc:
+
+                    def io_err_gen_xls(e=exc):
+                        logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
+                        yield from ()
+
+                    yield io_err_gen_xls()
+                    return
+
+                sheet_names = [sheet_name] if sheet_name else wb_xls.sheet_names()
+                for sname in sheet_names:
+
+                    def sheet_generator_xls(name=sname) -> Iterator[dict[str, Any]]:
+                        if name not in wb_xls.sheet_names():
+                            logging.error(f"Sheet '{name}' not found in {filepath}")
+                            return
+                        ws = wb_xls.sheet_by_name(name)
+                        if ws.nrows * ws.ncols > MAX_EXCEL_SHEET_CELLS:
+                            raise ExtractionError(
+                                f"Sheet '{name}' exceeds the maximum expanded worksheet size "
+                                f"of {MAX_EXCEL_SHEET_CELLS} cells."
+                            )
+                        raw_rows = [
+                            [ws.cell_value(r, c) for c in range(ws.ncols)]
+                            for r in range(ws.nrows)
+                        ]
+                        yield from Extractor._process_sheet_rows(raw_rows)
+
+                    yield sheet_generator_xls()
                 return
 
             try:
@@ -673,6 +919,25 @@ class Extractor:
             except ExtractionError:
                 raise
             except (OSError, zipfile.BadZipFile, Exception) as exc:
+                # If BadZipFile occurs and file might be a legacy .xls or BIFF file
+                if xlrd is not None:
+                    try:
+                        wb_xls = xlrd.open_workbook(filepath)
+                        sheet_names = [sheet_name] if sheet_name else wb_xls.sheet_names()
+                        for sname in sheet_names:
+
+                            def sheet_fallback_xls(name=sname) -> Iterator[dict[str, Any]]:
+                                ws = wb_xls.sheet_by_name(name)
+                                raw_rows = [
+                                    [ws.cell_value(r, c) for c in range(ws.ncols)]
+                                    for r in range(ws.nrows)
+                                ]
+                                yield from Extractor._process_sheet_rows(raw_rows)
+
+                            yield sheet_fallback_xls()
+                        return
+                    except Exception:
+                        pass
 
                 def io_err_gen(e=exc):
                     logging.error(f"File IO Error extracting from Excel {filepath}: {e}")
@@ -690,93 +955,13 @@ class Extractor:
                         logging.error(f"Sheet '{name}' not found in {filepath}")
                         return
                     ws = wb[name]
-                    if ws.max_row * ws.max_column > MAX_EXCEL_SHEET_CELLS:
+                    if (ws.max_row or 0) * (ws.max_column or 0) > MAX_EXCEL_SHEET_CELLS:
                         raise ExtractionError(
                             f"Sheet '{name}' exceeds the maximum expanded worksheet size "
                             f"of {MAX_EXCEL_SHEET_CELLS} cells."
                         )
                     rows = list(ws.iter_rows(values_only=True))
-                    if not rows:
-                        return
-
-                    # Smart header detection: check up to first 15 rows for known Modbus columns
-                    best_idx = 0
-                    best_score = 0
-                    for idx, r in enumerate(rows[:15]):
-                        if not r:
-                            continue
-                        score = sum(
-                            1
-                            for c in r
-                            if c is not None
-                            and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
-                        )
-                        if score > best_score:
-                            best_score = score
-                            best_idx = idx
-
-                    if best_score >= 2:
-                        header_row = rows[best_idx]
-                        data_rows = rows[best_idx + 1 :]
-                    else:
-                        first_non_empty = 0
-                        for idx, r in enumerate(rows):
-                            if any(cell is not None and str(cell).strip() for cell in r):
-                                first_non_empty = idx
-                                break
-                        header_row = rows[first_non_empty]
-                        data_rows = rows[first_non_empty + 1 :]
-
-                        # Infer only when the first non-empty row itself looks like
-                        # register data, so an unfamiliar explicit header is retained.
-                        inferred = Extractor._infer_table_columns([list(header_row)])
-                        if inferred is not None:
-                            header_row = inferred
-                            data_rows = rows[first_non_empty:]
-
-                    headers = [str(h).strip() if h is not None else "" for h in header_row]
-                    current_reg_type = ""
-                    for row in data_rows:
-                        if not any(cell is not None and str(cell).strip() for cell in row):
-                            continue
-                        row_non_empty = [c for c in row if c is not None and str(c).strip()]
-                        # Check if this row is a section banner (e.g. Function Code 0x04 / 0x03)
-                        if len(row_non_empty) <= 2:
-                            row_text = " ".join(str(c) for c in row_non_empty)
-                            fc_code = parse_function_code_from_text(row_text)
-                            if (
-                                "function code" in row_text.lower()
-                                or "registre" in row_text.lower()
-                                or "register" in row_text.lower()
-                            ):
-                                if fc_code == "1":
-                                    current_reg_type = "Coil"
-                                elif fc_code == "2":
-                                    current_reg_type = "Discrete Input"
-                                elif fc_code == "4":
-                                    current_reg_type = "Input Register"
-                                elif fc_code == "3":
-                                    current_reg_type = "Holding Register"
-
-                        # Check if this row is a secondary table header row
-                        score = sum(
-                            1
-                            for c in row
-                            if c is not None
-                            and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
-                        )
-                        if score >= 2:
-                            headers = [str(h).strip() if h is not None else "" for h in row]
-                            continue
-
-                        row_dict = {
-                            headers[i]: cell
-                            for i, cell in enumerate(row)
-                            if i < len(headers) and headers[i]
-                        }
-                        if current_reg_type and not row_dict.get("RegisterType"):
-                            row_dict["RegisterType"] = current_reg_type
-                        yield row_dict
+                    yield from Extractor._process_sheet_rows(rows)
 
                 yield sheet_generator()
 
@@ -1014,13 +1199,7 @@ class Extractor:
                                 for row in data_rows:
                                     if not any(row):
                                         continue
-                                    row_score = sum(
-                                        1
-                                        for c in row
-                                        if c is not None
-                                        and any(k in str(c).lower() for k in MODBUS_HEADER_KEYWORDS)
-                                    )
-                                    if row_score >= 2:
+                                    if Extractor._is_secondary_header_row(row):
                                         new_headers = [
                                             str(h).replace("\n", " ").strip()
                                             if h is not None
@@ -1524,6 +1703,9 @@ class Extractor:
                 # Collapse whitespace in addresses caused by fragmented font rendering in PDFs
                 compact_addr = RE_CLEAN_WHITESPACE.sub("", addr_val)
                 clean_num = compact_addr.replace(",", "")
+                if clean_num.endswith(".0"):
+                    clean_num = clean_num[:-2]
+                    compact_addr = compact_addr[:-2]
                 if clean_num.isdigit() or (
                     clean_num.lower().startswith("0x") and clean_num[2:].isalnum()
                 ):
@@ -1598,9 +1780,14 @@ class Extractor:
                         and str(new_row.get("ScaleFactor", "")).strip() != ""
                     ):
                         try:
-                            sf_int = int(str(new_row["ScaleFactor"]).strip())
-                            new_row["Factor"] = str(10.0**sf_int)
-                        except ValueError:
+                            sf_raw = str(new_row["ScaleFactor"]).strip()
+                            sf_num = float(sf_raw)
+                            if -6 <= sf_num <= 6 and sf_num.is_integer() and "." not in sf_raw:
+                                new_row["Factor"] = str(10.0 ** int(sf_num))
+                            elif sf_num != 0:
+                                new_row["Factor"] = str(1.0 / sf_num)
+                                new_row["ScaleFactor"] = "0"
+                        except (ValueError, OverflowError):
                             pass
 
                 if new_row.get("Factor") is not None:
@@ -1619,14 +1806,19 @@ class Extractor:
                 # Fallback to ReadWrite column or learned Action code
                 if not new_row.get("Action"):
                     rw_str = str(new_row.get("ReadWrite") or "").strip()
-                    if rw_str:
+                    n_low = var_name.lower()
+                    if "reserve" in n_low or "reserved" in n_low or n_low in ("res", "res.", "nc"):
+                        new_row["Action"] = "0"
+                    elif rw_str:
                         new_row["Action"] = rw_str
                     elif var_name:
                         fc_val = str(new_row.get("RegisterType") or "4").strip()
-                        new_row["Action"] = infer_action_code(var_name, fc=fc_val)
+                        new_row["Action"] = infer_action_code(var_name, fc=fc_val, rw_field=rw_str)
 
                 if not new_row.get("RegisterType"):
-                    new_row["RegisterType"] = current_section_reg_type or "Holding Register"
+                    new_row["RegisterType"] = (
+                        r.get("RegisterType") or current_section_reg_type or "Holding Register"
+                    )
                 elif current_section_reg_type and new_row.get("RegisterType") in (
                     "Holding Register",
                     "",

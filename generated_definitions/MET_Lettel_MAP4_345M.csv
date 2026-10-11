@@ -1,0 +1,302 @@
+﻿modbusRTU;Meter;Lettel;MAP4-345M_Table;;;;;;;
+1;3;3;U16;;Séquence des phases;squence_des_phases;1.000000;0.000000;/;4
+2;3;4;F32;;Angle de phase 1 entre tension et courant;angle_de_phase_1_entre_tension_et_courant;1.000000;0.000000;0.1º;4
+3;3;6;F32;;Angle de phase L2 entre tension et courant;angle_de_phase_l2_entre_tension_et_courant;1.000000;0.000000;0.1º;4
+4;3;8;F32;;Angle de phase L3 entre phase et courant;angle_de_phase_l3_entre_phase_et_courant;1.000000;0.000000;0.1º;4
+5;3;10;F32;;Tension  L1-L2;tension_l1l2;1.000000;0.000000;0.1V;4
+6;3;12;F32;;Tension  L3-L2;tension_l3l2;1.000000;0.000000;0.1V;4
+7;3;14;F32;;Tension  L1-L3;tension_l1l3;1.000000;0.000000;0.1V;4
+8;3;16;F32;;Tension  L1-N;tension_l1n;1.000000;0.000000;0.1V;4
+9;3;18;F32;;Tension  L2-N;tension_l2n;1.000000;0.000000;0.1V;4
+10;3;20;F32;;Tension  L3-N;tension_l3n;1.000000;0.000000;0.1V;4
+11;3;22;F32;;Courant L1;courant_l1;1.000000;0.000000;0.001A;4
+12;3;24;F32;;Courant L2;courant_l2;1.000000;0.000000;0.001A;4
+13;3;26;F32;;Courant L3;courant_l3;1.000000;0.000000;0.001A;4
+14;3;28;F32;;Courant N;courant_n;1.000000;0.000000;0.001A;4
+15;3;30;F32;;Courant total;courant_total;1.000000;0.000000;0.001A;4
+16;3;32;F32;;Puissance active L1;puissance_active_l1;1.000000;0.000000;0.001kW;4
+17;3;34;F32;;Puissance active L2;puissance_active_l2;1.000000;0.000000;0.001kW;4
+18;3;36;F32;;Puissance active L3;puissance_active_l3;1.000000;0.000000;0.001kW;4
+19;3;38;F32;;Puissance active Totale;RealPower;1.000000;0.000000;0.001kW;4
+20;3;40;F32;;Puissance réactive L1;puissance_ractive_l1;1.000000;0.000000;0.001kVAR;4
+21;3;42;F32;;Puissance réactive L2;puissance_ractive_l2;1.000000;0.000000;0.001kVAR;4
+22;3;44;F32;;Puissance réactive L3;puissance_ractive_l3;1.000000;0.000000;0.001kVAR;4
+23;3;46;F32;;Puissance réactive Totale;puissance_ractive_totale;1.000000;0.000000;0.001kVAR;4
+24;3;48;F32;;Puissance apparente L1;puissance_apparente_l1;1.000000;0.000000;0.001kVA;4
+25;3;50;F32;;Puissance apparente L2;puissance_apparente_l2;1.000000;0.000000;0.001kVA;4
+26;3;52;F32;;Puissance apparente L3;puissance_apparente_l3;1.000000;0.000000;0.001kVA;4
+27;3;54;F32;;Puissance apparente Totale;puissance_apparente_totale;1.000000;0.000000;0.001kVA;4
+28;3;56;F32;;Facteur de puissance L1;facteur_de_puissance_l1;1.000000;0.000000;0.001PF;4
+29;3;58;F32;;Facteur de puissance L2;facteur_de_puissance_l2;1.000000;0.000000;0.001PF;4
+30;3;60;F32;;Facteur de puissance L3;facteur_de_puissance_l3;1.000000;0.000000;0.001PF;4
+31;3;62;F32;;Facteur de puissance Total;facteur_de_puissance_total;1.000000;0.000000;0.001PF;4
+32;3;64;F32;;Fréquence;frquence;1.000000;0.000000;0.01Hz;4
+33;3;66;F32;;Asymétrie de tension phase-phase;asymtrie_de_tension_phasephase;1.000000;0.000000;0.0001;4
+34;3;68;F32;;Asymétrie de tension phase-neutre;asymtrie_de_tension_phaseneutre;1.000000;0.000000;0.0001;4
+35;3;70;F32;;Asymétrie de courant;asymtrie_de_courant;1.000000;0.000000;0.0001;4
+36;3;72;F32;;Angle de phase de la tension L1;angle_de_phase_de_la_tension_l1;1.000000;0.000000;0.1º;4
+37;3;74;F32;;Angle de phase de la tension L2;angle_de_phase_de_la_tension_l2;1.000000;0.000000;0.1º;4
+38;3;76;F32;;Angle de phase de la tension L3;angle_de_phase_de_la_tension_l3;1.000000;0.000000;0.1º;4
+39;3;77;F32;;Réservé;rserv;1.000000;0.000000;/;4
+40;3;352;F32;;Énergie active;nergie_active;1.000000;0.000000;0.01kWh;4
+41;3;354;F32;;Énergie réactive;nergie_ractive;1.000000;0.000000;0.01kvarh;4
+42;3;356;F32;;Énergie apparente;nergie_apparente;1.000000;0.000000;0.01VAh;4
+43;3;358;F32;;Énergie active;nergie_active_1;1.000000;0.000000;0.01kWh;4
+44;3;360;F32;;Énergie réactive totale;nergie_ractive_totale;1.000000;0.000000;0.01kvarh;4
+45;3;362;F32;;Énergie apparente;nergie_apparente_1;1.000000;0.000000;0.01VAh;4
+46;3;364;F32;;Énergie active totale;nergie_active_totale;1.000000;0.000000;0.01kWh;4
+47;3;366;F32;;Énergie réactive totale;nergie_ractive_totale_1;1.000000;0.000000;0.01kvarh;4
+48;3;368;F32;;Énergie apparente totale;nergie_apparente_totale;1.000000;0.000000;0.01VAh;4
+49;3;1794;F32;;Énergie active nette T1;nergie_active_nette_t1;1.000000;0.000000;0.01kWh;4
+50;3;1796;F32;;Énergie active nette T2;nergie_active_nette_t2;1.000000;0.000000;0.01kWh;4
+51;3;1798;F32;;Réservé;rserv_1;1.000000;0.000000;/;4
+52;3;2050;F32;;Énergie active;nergie_active_2;1.000000;0.000000;0.01kWh;4
+53;3;2052;F32;;Énergie active;nergie_active_3;1.000000;0.000000;0.01kWh;4
+54;3;2054;F32;;Réservé;rserv_2;1.000000;0.000000;/;4
+55;3;2306;F32;;Énergie active;nergie_active_4;1.000000;0.000000;0.01kWh;4
+56;3;2308;F32;;Énergie active;nergie_active_5;1.000000;0.000000;0.01kWh;4
+57;3;2310;F32;;Réservé;rserv_3;1.000000;0.000000;0.01kWh;4
+58;3;2562;F32;;Énergie réactive;nergie_ractive_1;1.000000;0.000000;0.01kvarh;4
+59;3;2564;F32;;Énergie réactive;nergie_ractive_2;1.000000;0.000000;0.01kvarh;4
+60;3;2566;F32;;Réservé;rserv_4;1.000000;0.000000;/;4
+61;3;2818;F32;;Énergie réactive;nergie_ractive_3;1.000000;0.000000;0.01kvarh;4
+62;3;2820;F32;;Énergie réactive;nergie_ractive_4;1.000000;0.000000;0.01kvarh;4
+63;3;2822;F32;;Réservé;rserv_5;1.000000;0.000000;/;4
+64;3;4096;U16;;Impédance L1;impdance_l1;1.000000;0.000000;0.01 ohms;4
+65;3;4097;U16;;Impédance L2;impdance_l2;1.000000;0.000000;0.01 ohms;4
+66;3;4098;U16;;Impédance L3;impdance_l3;1.000000;0.000000;0.01 ohms;4
+67;3;4099;U16;;Distorsion harmonique totale de la tension L1;distorsion_harmonique_totale_de_la_tension_l1;1.000000;0.000000;0.0001;4
+68;3;4100;U16;;3ème harmonique THD de la tension L1;v_3me_harmonique_thdde_la_tension_l1;1.000000;0.000000;0.0001;4
+69;3;4101;U16;;5ème harmonique THD de la tension L1;v_5me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+70;3;4102;U16;;7ème harmonique THD de la tension L1;v_7me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+71;3;4103;U16;;9èm harmonique THD de la tension L1;v_9m_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+72;3;4104;U16;;11ème harmonique THD de la tension L1;v_11me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+73;3;4105;U16;;13ème harmonique THD de la tension L1;v_13me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+74;3;4106;U16;;15ème harmonique THD de la tension L1;v_15me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+75;3;4107;U16;;17ème harmonique THD de la tension L1;v_17me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+76;3;4108;U16;;19ème harmonique THD de la tension L1;v_19me_harmonique_thdde_la_tension_l1;1.000000;0.000000;0.0001;4
+77;3;4109;U16;;21ème harmonique THD de la tension L1;v_21me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+78;3;4110;U16;;23ème harmonique THD de la tension L1;v_23me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+79;3;4111;U16;;25ème harmonique THD de la tension L1;v_25me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+80;3;4112;U16;;27ème harmonique THD de la tension L1;v_27me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+81;3;4113;U16;;29ème harmonique THD de la tension L1;v_29me_harmonique_thdde_la_tension_l1;1.000000;0.000000;0.0001;4
+82;3;4114;U16;;31ème harmonique THD de la tension L1;v_31me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+83;3;4115;U16;;33ème harmonique THD de la tension L1;v_33me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+84;3;4116;U16;;35ème harmonique THD de la tension L1;v_35me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+85;3;4117;U16;;37ème harmonique THD de la tension L1;v_37me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+86;3;4118;U16;;39ème harmonique THD de la tension L1;v_39me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+87;3;4119;U16;;41ème harmonique THD de la tension L1;v_41me_harmonique_thd_de_la_tension_l1;1.000000;0.000000;0.0001;4
+88;3;4120;U16;;Distorsion harmonique totale courant L1;distorsion_harmonique_totale_courant_l1;1.000000;0.000000;0.0001;4
+89;3;4121;U16;;Distorsion harmonique totale courant L2;distorsion_harmonique_totale_courant_l2;1.000000;0.000000;0.0001;4
+90;3;4122;U16;;3ème harmonique THD de la tension L2;v_3me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+91;3;4123;U16;;5ème harmonique THD de la tension L2;v_5me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+92;3;4124;U16;;7ème harmonique THD de la tension L2;v_7me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+93;3;4125;U16;;9ème harmonique THD de la tension L2;v_9me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+94;3;4126;U16;;11ème harmonique THD de la tension L2;v_11me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+95;3;4127;U16;;13ème harmonique THD de la tension L2;v_13me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+96;3;4128;U16;;15ème harmonique THD de la tension L2;v_15me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+97;3;4129;U16;;17ème harmonique THD de la tension L2;v_17me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+98;3;4130;U16;;19ème harmonique THD de la tension L2;v_19me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+99;3;4131;U16;;21ème harmonique THD de la tension L2;v_21me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+100;3;4132;U16;;23ème harmonique THD de la tension L2;v_23me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+101;3;4133;U16;;25ème harmonique THD de la tension L2;v_25me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+102;3;4134;U16;;27ème harmonique THD de la tension L2;v_27me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+103;3;4135;U16;;29ème harmonique THD de la tension L2;v_29me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+104;3;4136;U16;;31ème harmonique THD de la tension L2;v_31me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+105;3;4137;U16;;33ème harmonique THD de la tension L2;v_33me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+106;3;4138;U16;;35ème harmonique THD de la tension L2;v_35me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+107;3;4139;U16;;37ème harmonique THD de la tension L2;v_37me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+108;3;4140;U16;;39ème harmonique THD de la tension L2;v_39me_harmonique_thdde_la_tension_l2;1.000000;0.000000;0.0001;4
+109;3;4141;U16;;41ème harmonique THD de la tension L2;v_41me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+110;3;4142;U16;;Distorsion Harmonique de la tension L2;distorsion_harmonique_de_la_tension_l2;1.000000;0.000000;0.0001;4
+111;3;4143;U16;;Distorsion Harmonique Totale du Courant L3;distorsion_harmonique_totale_du_courant_l3;1.000000;0.000000;0.0001;4
+112;3;4144;U16;;3ème harmonique THD de la tension L3;v_3me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+113;3;4145;U16;;5ème harmonique THD de la tension L3;v_5me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+114;3;4146;U16;;7ème harmonique THD de la tension L3;v_7me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+115;3;4147;U16;;9ème harmonique THD de la tension L3;v_9me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+116;3;4148;U16;;11ème harmonique THD de la tension L3;v_11me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+117;3;4149;U16;;13ème harmonique THD de la tension L3;v_13me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+118;3;4150;U16;;15ème harmonique THD de la tension L3;v_15me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+119;3;4151;U16;;17ème harmonique THD de la tension L3;v_17me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+120;3;4152;U16;;19ème harmonique THD de la tension L3;v_19me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+121;3;4153;U16;;21ème harmonique THD de la tension L3;v_21me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+122;3;4154;U16;;23ème harmonique THD de la tension L3;v_23me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+123;3;4155;U16;;25ème harmonique THD de la tension L3;v_25me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+124;3;4156;U16;;27ème harmonique THD de la tension L3;v_27me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+125;3;4157;U16;;29ème harmonique THD de la tension L3;v_29me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+126;3;4158;U16;;31ème harmonique THD de la tension L3;v_31me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+127;3;4159;U16;;33ème harmonique THD de la tension L3;v_33me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+128;3;4160;U16;;35ème harmonique THD de la tension L3;v_35me_harmonique_thd_de_la_tension_l3;1.000000;0.000000;0.0001;4
+129;3;4161;U16;;37ème harmonique THD de la tension L2;v_37me_harmonique_thd_de_la_tension_l2_1;1.000000;0.000000;0.0001;4
+130;3;4162;U16;;39ème harmonique THD de la tension L2;v_39me_harmonique_thd_de_la_tension_l2;1.000000;0.000000;0.0001;4
+131;3;4163;U16;;41ème harmonique THD de la tension L2;v_41me_harmonique_thd_de_la_tension_l2_1;1.000000;0.000000;0.0001;4
+132;3;4164;U16;;Distorsion Harmonique Totale du Courant L3;distorsion_harmonique_totale_du_courant_l3_1;1.000000;0.000000;0.0001;4
+133;3;4165;U16;;Distorsion Harmonique Totale du Courant N;distorsion_harmonique_totale_du_courant_n;1.000000;0.000000;0.0001;4
+134;3;4166;U16;;Reservé;reserv;1.000000;0.000000;/;4
+135;3;4352;F32;;Tension L1 max;tension_l1_max;1.000000;0.000000;0.1V;4
+136;3;4354;F32;;Tension L1 min;tension_l1_min;1.000000;0.000000;0.1V;4
+137;3;4356;F32;;Tension L1 moyenne;tension_l1_moyenne;1.000000;0.000000;0.1V;4
+138;3;4358;F32;;Instantané de la tension L1;instantan_de_la_tension_l1;1.000000;0.000000;0.1V;4
+139;3;4360;F32;;Courant L1 max;courant_l1_max;1.000000;0.000000;0.001A;4
+140;3;4362;F32;;Courant L1 min;courant_l1_min;1.000000;0.000000;0.001A;4
+141;3;4364;F32;;Courant L1 moyen;courant_l1_moyen;1.000000;0.000000;0.001A;4
+142;3;4366;F32;;Instantané du courant L1;instantan_du_courant_l1;1.000000;0.000000;0.001A;4
+143;3;4368;F32;;Facteur de puissance L1 max;facteur_de_puissance_l1_max;1.000000;0.000000;0.001PF;4
+144;3;4370;F32;;Facteur de puissance L1 min;facteur_de_puissance_l1_min;1.000000;0.000000;0.001PF;4
+145;3;4372;F32;;Facteur de puissance L1 moyen;facteur_de_puissance_l1_moyen;1.000000;0.000000;0.001PF;4
+146;3;4374;F32;;Instantané du facteur de puissance L1;instantan_du_facteur_de_puissance_l1;1.000000;0.000000;0.001PF;4
+147;3;4376;F32;;Puissance active L1 max;puissance_active_l1_max;1.000000;0.000000;0.001kW;4
+148;3;4378;F32;;Puissance active L1 min;puissance_active_l1_min;1.000000;0.000000;0.001kW;4
+149;3;4380;F32;;Puissance active L1 moyenne;puissance_active_l1_moyenne;1.000000;0.000000;0.001kW;4
+150;3;4382;F32;;Instantané de la puissance active L1;instantan_de_la_puissance_active_l1;1.000000;0.000000;0.001kW;4
+151;3;4384;F32;;Puissance apparente L1 max;puissance_apparente_l1_max;1.000000;0.000000;0.001kVA;4
+152;3;4386;F32;;Puissance apparente L1 min;puissance_apparente_l1_min;1.000000;0.000000;0.001kVA;4
+153;3;4388;F32;;Puissance apparente L1 moyenne;puissance_apparente_l1_moyenne;1.000000;0.000000;0.001kVA;4
+154;3;4390;F32;;Instantané de la puissance apparente L1;instantan_de_la_puissance_apparente_l1;1.000000;0.000000;0.001kVA;4
+155;3;4392;F32;;Puissance réactive L1 max;puissance_ractive_l1_max;1.000000;0.000000;0.001kVAR;4
+156;3;4394;F32;;Puissance réactive L1 min;puissance_ractive_l1_min;1.000000;0.000000;0.001kVAR;4
+157;3;4396;F32;;Puissance réactive L1 moyenne;puissance_ractive_l1_moyenne;1.000000;0.000000;0.001kVAR;4
+158;3;4398;F32;;Instantané de la puissance réactive L1;instantan_de_la_puissance_ractive_l1;1.000000;0.000000;0.001kVAR;4
+159;3;4400;F32;;Tension L2 max;tension_l2_max;1.000000;0.000000;0.1V;4
+160;3;4402;F32;;Tension L2 min;tension_l2_min;1.000000;0.000000;0.1V;4
+161;3;4404;F32;;Tension L2 moyenne;tension_l2_moyenne;1.000000;0.000000;0.1V;4
+162;3;4406;F32;;Instantané de la tension L2;instantan_de_la_tension_l2;1.000000;0.000000;0.1V;4
+163;3;4408;F32;;Courant L2 max;courant_l2_max;1.000000;0.000000;0.001A;4
+164;3;4410;F32;;Courant L2 min;courant_l2_min;1.000000;0.000000;0.001A;4
+165;3;4412;F32;;Courant L1 moyen;courant_l1_moyen_1;1.000000;0.000000;0.001A;4
+166;3;4414;F32;;Instantané du courant L2;instantan_du_courant_l2;1.000000;0.000000;0.001A;4
+167;3;4416;F32;;Facteur de puissance L2 max;facteur_de_puissance_l2_max;1.000000;0.000000;0.001PF;4
+168;3;4418;F32;;Facteur de puissance L2 min;facteur_de_puissance_l2_min;1.000000;0.000000;0.001PF;4
+169;3;4420;F32;;Facteur de puissance L2 moyen;facteur_de_puissance_l2_moyen;1.000000;0.000000;0.001PF;4
+170;3;4422;F32;;Instantané du facteur de puissance L2;instantan_du_facteur_de_puissance_l2;1.000000;0.000000;0.001PF;4
+171;3;4424;F32;;Puissance active L2 max;puissance_active_l2_max;1.000000;0.000000;0.001kW;4
+172;3;4426;F32;;Puissance active L2 min;puissance_active_l2_min;1.000000;0.000000;0.001kW;4
+173;3;4428;F32;;Puissance active L2 moyenne;puissance_active_l2_moyenne;1.000000;0.000000;0.001kW;4
+174;3;4430;F32;;Instantané de puissance active L2;instantan_depuissance_active_l2;1.000000;0.000000;0.001kW;4
+175;3;4432;F32;;Puissance apparente L2 max;puissance_apparente_l2_max;1.000000;0.000000;0.001kVA;4
+176;3;4434;F32;;Puissance apparente L2 min;puissance_apparente_l2_min;1.000000;0.000000;0.001kVA;4
+177;3;4436;F32;;Puissance apparente L2 moyenne;puissance_apparente_l2_moyenne;1.000000;0.000000;0.001kVA;4
+178;3;4438;F32;;Instantané de puissance apparente L2;instantan_de_puissance_apparente_l2;1.000000;0.000000;0.001kVA;4
+179;3;4440;F32;;Puissance réactive L2 max;puissance_ractive_l2_max;1.000000;0.000000;0.001kVAR;4
+180;3;4442;F32;;Puissance réactive L2 min;puissance_ractive_l2_min;1.000000;0.000000;0.001kVAR;4
+181;3;4444;F32;;Puissance réactive L2 moyenne;puissance_ractive_l2_moyenne;1.000000;0.000000;0.001kVAR;4
+182;3;4446;F32;;Instantané de puissance réactive L2;instantan_de_puissance_ractive_l2;1.000000;0.000000;0.001kVAR;4
+183;3;4448;F32;;Tension L3 max;tension_l3_max;1.000000;0.000000;0.1V;4
+184;3;4450;F32;;Tension L3 min;tension_l3_min;1.000000;0.000000;0.1V;4
+185;3;4452;F32;;Tension L3 moyenne;tension_l3_moyenne;1.000000;0.000000;0.1V;4
+186;3;4454;F32;;Instantané de tension L3;instantan_de_tension_l3;1.000000;0.000000;0.1V;4
+187;3;4456;F32;;Courant L3 max;courant_l3_max;1.000000;0.000000;0.001A;4
+188;3;4458;F32;;Courant L3 min;courant_l3_min;1.000000;0.000000;0.001A;4
+189;3;4460;F32;;Courant L3 moyen;courant_l3_moyen;1.000000;0.000000;0.001A;4
+190;3;4462;F32;;Instantané de courant L3;instantan_de_courant_l3;1.000000;0.000000;0.001A;4
+191;3;4464;F32;;Facteur de puissance L3 max;facteur_de_puissance_l3_max;1.000000;0.000000;0.001PF;4
+192;3;4466;F32;;Facteur de puissance L3 min;facteur_de_puissance_l3_min;1.000000;0.000000;0.001PF;4
+193;3;4468;F32;;Facteur de puissance L3 moyen;facteur_de_puissance_l3_moyen;1.000000;0.000000;0.001PF;4
+194;3;4470;F32;;Instantané de facteur de puissance L3;instantan_de_facteur_de_puissance_l3;1.000000;0.000000;0.001PF;4
+195;3;4472;F32;;Puissance active L3 max;puissance_active_l3_max;1.000000;0.000000;0.001kW;4
+196;3;4474;F32;;Puissance active L3 min;puissance_active_l3_min;1.000000;0.000000;0.001kW;4
+197;3;4476;F32;;Puissance active L3 moyenne;puissance_active_l3_moyenne;1.000000;0.000000;0.001kW;4
+198;3;4478;F32;;Instantané de puissance active L3;instantan_de_puissance_active_l3;1.000000;0.000000;0.001kW;4
+199;3;4480;F32;;Puissance apparente L3 max;puissance_apparente_l3_max;1.000000;0.000000;0.001kVA;4
+200;3;4482;F32;;Puissance apparente L3 min;puissance_apparente_l3_min;1.000000;0.000000;0.001kVA;4
+201;3;4484;F32;;Puissance apparente L3 moyenne;puissance_apparente_l3_moyenne;1.000000;0.000000;0.001kVA;4
+202;3;4486;F32;;Instantané de puissance apparente L3;instantan_de_puissance_apparente_l3;1.000000;0.000000;0.001kVA;4
+203;3;4488;F32;;Puissance réactive L3 max;puissance_ractive_l3_max;1.000000;0.000000;0.001kVAR;4
+204;3;4490;F32;;Puissance réactive L3 min;puissance_ractive_l3_min;1.000000;0.000000;0.001kVAR;4
+205;3;4492;F32;;Puissance réactive L3 moyenne;puissance_ractive_l3_moyenne;1.000000;0.000000;0.001kVAR;4
+206;3;4494;F32;;Instantané de puissance réactive L3;instantan_de_puissance_ractive_l3;1.000000;0.000000;0.001kVAR;4
+207;3;4496;F32;;Courant N max;courant_n_max;1.000000;0.000000;0.001A;4
+208;3;4498;F32;;Courant N min;courant_n_min;1.000000;0.000000;0.001A;4
+209;3;4500;F32;;Courant N moyen actuel;courant_n_moyen_actuel;1.000000;0.000000;0.001A;4
+210;3;4502;F32;;Instantané actuel du courant N;instantan_actuel_du_courant_n;1.000000;0.000000;0.001A;4
+211;3;4504;F32;;Fréquence max;frquence_max;1.000000;0.000000;0.01Hz;4
+212;3;4506;F32;;Fréquence min;frquence_min;1.000000;0.000000;0.01Hz;4
+213;3;4508;F32;;Fréquence moyenne;frquence_moyenne;1.000000;0.000000;0.01Hz;4
+214;3;4510;F32;;Instantané de la fréquence;instantan_de_la_frquence;1.000000;0.000000;0.01Hz;4
+215;3;4512;F32;;Tension L1-L2 max;tension_l1l2_max;1.000000;0.000000;0.1V;4
+216;3;4514;F32;;Tension L1-L2 min;tension_l1l2_min;1.000000;0.000000;0.1V;4
+217;3;4516;F32;;Tension L1-L2 moyenne;tension_l1l2_moyenne;1.000000;0.000000;0.1V;4
+218;3;4518;F32;;Instantané de la tension L1-L2;instantan_de_la_tension_l1l2;1.000000;0.000000;0.1V;4
+219;3;4520;F32;;Tension L3-L2 max;tension_l3l2_max;1.000000;0.000000;0.1V;4
+220;3;4522;F32;;Tension L3-L2 min;tension_l3l2_min;1.000000;0.000000;0.1V;4
+221;3;4524;F32;;Tension L3-L2 moyenne;tension_l3l2_moyenne;1.000000;0.000000;0.1V;4
+222;3;4526;F32;;Instantané de la tension L3-L2;instantan_de_la_tension_l3l2;1.000000;0.000000;0.1V;4
+223;3;4528;F32;;Tension L1-L3 max;tension_l1l3_max;1.000000;0.000000;0.1V;4
+224;3;4530;F32;;Tension L1-L3 min;tension_l1l3_min;1.000000;0.000000;0.1V;4
+225;3;4532;F32;;Tension L1-L3 moyenne;tension_l1l3_moyenne;1.000000;0.000000;0.1V;4
+226;3;4534;F32;;Instantané de la tension L1-L3;instantan_de_la_tension_l1l3;1.000000;0.000000;0.1V;4
+227;3;4535;F32;;Reservé;reserv_1;1.000000;0.000000;/;4
+228;3;4608;F32;;Énergie active;nergie_active_6;1.000000;0.000000;0.01kWh;4
+229;3;4610;F32;;Énergie active;nergie_active_7;1.000000;0.000000;0.01kWh;4
+230;3;4612;F32;;Énergie active;nergie_active_8;1.000000;0.000000;0.01kWh;4
+231;3;4614;F32;;Énergie active;nergie_active_9;1.000000;0.000000;0.01kWh;4
+232;3;4616;F32;;Énergie active;nergie_active_10;1.000000;0.000000;0.01kWh;4
+233;3;4618;F32;;Énergie active;nergie_active_11;1.000000;0.000000;0.01kWh;4
+234;3;4620;F32;;Reservé;reserv_2;1.000000;0.000000;/;4
+235;3;4624;F32;;Énergie réactive;nergie_ractive_5;1.000000;0.000000;0.01kvarh;4
+236;3;4626;F32;;Énergie réactive;nergie_ractive_6;1.000000;0.000000;0.01kvarh;4
+237;3;4628;F32;;Énergie réactive;nergie_ractive_7;1.000000;0.000000;0.01kvarh;4
+238;3;4630;F32;;Énergie réactive;nergie_ractive_8;1.000000;0.000000;0.01kvarh;4
+239;3;4632;F32;;Énergie réactive;nergie_ractive_9;1.000000;0.000000;0.01kvarh;4
+240;3;4634;F32;;Énergie réactive;nergie_ractive_10;1.000000;0.000000;0.01kvarh;4
+241;3;4636;F32;;Reservé;reserv_3;1.000000;0.000000;/;4
+242;3;4864;F32;;Demande de courant L1;demande_de_courant_l1;1.000000;0.000000;0.001A;4
+243;3;4866;F32;;Demande de courant L2;demande_de_courant_l2;1.000000;0.000000;0.001A;4
+244;3;4868;F32;;Demande de courant L3;demande_de_courant_l3;1.000000;0.000000;0.001A;4
+245;3;4870;F32;;Demande maximale de courant L1;demande_maximale_de_courant_l1;1.000000;0.000000;0.001A;4
+246;3;4872;F32;;Demande maximale de courant L2;demande_maximale_de_courant_l2;1.000000;0.000000;0.001A;4
+247;3;4874;F32;;Demande maximale de courant L3;demande_maximale_de_courant_l3;1.000000;0.000000;0.001A;4
+248;3;4876;F32;;Demande de puissance active importée L1;demande_de_puissance_active_importe_l1;1.000000;0.000000;0.001kW;4
+249;3;4878;F32;;Demande de puissance active importée L2;demande_de_puissance_active_importe_l2;1.000000;0.000000;0.001kW;4
+250;3;4880;F32;;Demande de puissance active importée L3;demande_de_puissance_active_importe_l3;1.000000;0.000000;0.001kW;4
+251;3;4882;F32;;Demande maximale de puissance active importée L1;demande_maximale_de_puissance_active_importe_l1;1.000000;0.000000;0.001kW;4
+252;3;4884;F32;;Demande maximale de puissance active importée L2;demande_maximale_de_puissance_active_importe_l2;1.000000;0.000000;0.001kW;4
+253;3;4886;F32;;Demande maximale de puissance active importée L3;demande_maximale_de_puissance_active_importe_l3;1.000000;0.000000;0.001kW;4
+254;3;4888;F32;;Demande de puissance active exportée L1;demande_de_puissance_active_exporte_l1;1.000000;0.000000;0.001kW;4
+255;3;4890;F32;;Demande de puissance active exportée L2;demande_de_puissance_active_exporte_l2;1.000000;0.000000;0.001kW;4
+256;3;4892;F32;;Demande de puissance active exportée L3;demande_de_puissance_active_exporte_l3;1.000000;0.000000;0.001kW;4
+257;3;4894;F32;;Demande maximale de puissance active exportée L1;demande_maximale_de_puissance_active_exporte_l1;1.000000;0.000000;0.001kW;4
+258;3;4896;F32;;Demande maximale de puissance active exportée L2;demande_maximale_de_puissance_active_exporte_l2;1.000000;0.000000;0.001kW;4
+259;3;4898;F32;;Demande maximale de puissance active exportée L3;demande_maximale_de_puissance_active_exporte_l3;1.000000;0.000000;0.001kW;4
+260;3;4900;F32;;Demande totale de puissance active importée;demande_totale_de_puissance_active_importe;1.000000;0.000000;0.001kW;4
+261;3;4902;F32;;Demande totale de puissance active exportée;demande_totale_de_puissance_active_exporte;1.000000;0.000000;0.001kW;4
+262;3;4904;F32;;Demande totale de puissance active;demande_totale_de_puissance_active;1.000000;0.000000;0.001kW;4
+263;3;4906;F32;;Demande maximale de puissance active importée totale;demande_maximale_de_puissance_active_importe_totale;1.000000;0.000000;0.001kW;4
+264;3;4908;F32;;Demande maximale de puissance active exportée totale;demande_maximale_de_puissance_active_exporte_totale;1.000000;0.000000;0.001kW;4
+265;3;4910;F32;;Demande maximale de puissance active totale;demande_maximale_de_puissance_active_totale;1.000000;0.000000;0.001kW;4
+266;3;4912;F32;;Demande totale de puissance apparente;demande_totale_de_puissance_apparente;1.000000;0.000000;0.001kVA;4
+267;3;4914;F32;;Demande maximale de puissance  apparente totale;demande_maximale_de_puissance_apparente_totale;1.000000;0.000000;0.001kVA;4
+268;3;4916;F32;;Demande totale de puissance réactive du système;demande_totale_de_puissance_ractive_du_systme;1.000000;0.000000;0.001kVAR;4
+269;3;4918;F32;;Demande maximale de puissance réactive du système;demande_maximale_de_puissance_ractive_du_systme;1.000000;0.000000;0.001kVAR;4
+270;3;4920;F32;;;;1.000000;0.000000;/;4
+271;3;12289;F32;;Heure du profil de charge Dernier 1 kWh actif total Dernier 1 kWh actif importé Dernier 1 kWh actif exporté;heure_du_profil_de_charge_dernier_1_kwh_actif_total_dernier_1_kwh_actif_importdernier_1_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
+272;3;12290;F32;;Heure de l'avant dernier profil de charge Dernier 2 kWh actif total Dernier 2 kWh actif importé Dernier 2 kWh actif exporté;heure_de_lavant_dernier_profil_de_chargedernier_2_kwh_actif_total_dernier_2_kwh_actif_importdernier_2_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
+273;3;16383;F32;;Dernier profil de charge 4095 temps Dernier 4095 kWh actif total Dernier 4095 kWh actif importé Dernier 4095 kWh actif exporté;dernier_profil_de_charge_4095_tempsdernier_4095_kwh_actif_total_dernier_4095_kwh_actif_importdernier_4095_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
+274;3;1316;U16;;Identifiant Modbus;identifiant_modbus;1.000000;0.000000;HEX(0001);1
+275;3;1317;U16;;Débit en bauds;dbit_en_bauds;1.000000;0.000000;HEX(2580);1
+276;3;1379;U16;;Réinitialiser la demande maximale;rinitialiser_la_demande_maximale;1.000000;0.000000;;1
+277;3;1380;U16;;Réinitialiser les valeurs max/min;rinitialiser_les_valeurs_maxmin;1.000000;0.000000;;1
+278;3;1381;U16;;EVacer l'énergie;evacer_lnergie;1.000000;0.000000;;1
+279;3;1382;U32;;DO1 ON/OFF;do1_onoff;1.000000;0.000000;;1
+280;3;1384;U16;;CT 1;ct_1;1.000000;0.000000;;1
+281;3;1385;U16;;Reservé;reserv_4;1.000000;0.000000;;4
+282;3;1396;U16;;Direction du courant;direction_du_courant;1.000000;0.000000;;1
+283;3;1397;U16;;Reservé;reserv_5;1.000000;0.000000;;4
+284;3;1400;U64;;Temps Époque UTC (ms);temps_poque_utc_ms;1.000000;0.000000;;1
+285;3;65024;U16;;1er code d'aVichage de défilement;v_1er_code_davichage_de_dfilement;1.000000;0.000000;;1
+286;3;65025;U16;;2em code d'aVichage de défilement;v_2em_code_davichage_de_dfilement;1.000000;0.000000;;1
+287;3;65043;U16;;20ème code d'aVichage de défilement;v_20me_code_davichage_de_dfilement;1.000000;0.000000;;1
+288;3;65044;U16;;1er code d'aVichage de défilement;v_1er_code_davichage_de_dfilement_1;1.000000;0.000000;;1
+289;3;65045;U16;;2em code d'aVichage de défilement;v_2em_code_davichage_de_dfilement_1;1.000000;0.000000;;1
+290;3;65083;U16;;40ème code d'aVichage de pression de bouton;v_40me_code_davichage_de_pression_de_bouton;1.000000;0.000000;;1
+291;3;65280;U16;;Numéro de série du compteur;numro_de_srie_du_compteur;1.000000;0.000000;/;1
+292;3;65282;U16;;Code du fabricant;code_du_fabricant;1.000000;0.000000;/;1
+293;3;65293;U16;;Largeur de l'impulsion SO2;largeur_de_limpulsion_so2;1.000000;0.000000;ms;1
+294;3;65294;U16;;Reservé;reserv_6;1.000000;0.000000;/;4
+295;3;65298;U16;;Nombre d'aVichages défilants;nombre_davichages_dfilants;1.000000;0.000000;/;4
+296;3;65299;U16;;Nombre d'aVichages par pression de bouton;nombre_davichages_par_pression_de_bouton;1.000000;0.000000;/;4
+297;3;65300;U16;;Reservé;reserv_7;1.000000;0.000000;/;4
+298;3;65301;U16;;Temps de la fenêtre glissante;temps_de_la_fentre_glissante;1.000000;0.000000;minute;1
+299;3;65302;U16;;Période de demande;priode_de_demande;1.000000;0.000000;minute;1
+300;3;65303;U16;;CT2;ct2;1.000000;0.000000;/;4
+301;3;65304;U16;;Valeur du rapport PT;valeur_du_rapport_pt;1.000000;0.000000;/;1

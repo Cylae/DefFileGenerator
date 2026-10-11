@@ -1,0 +1,145 @@
+﻿modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
+1;3;0;U16;;The Inverter On/Off state and the auto start state, The low byte is the on/off(1/0), the high byte is the auto start state or not(1/0).;the_inverter_onoff_state_and_the_auto_start_state_the_low_byte_is_the_onoff10_the_high_byte_is_the_auto_start_state_or_not10;1.000000;0.000000;;4
+2;3;1;U16;;SPI(system protection interface) function enable;spisystem_protection_interface_function_enable;1.000000;0.000000;;4
+3;3;2;U16;;Set the following 3,4,5,99 CMD will be memory or not(1/0), if not, these settings are the initial value.;set_the_following_34599_cmd_will_be_memory_or_not10_if_not_these_settings_are_the_initial_value;1.000000;0.000000;;4
+4;3;3;U16;;Read Inverter max output active power percent;read_inverter_max_output_active_power_percent;1.000000;0.000000;perce nt;4
+5;3;4;U16;;Read Inverter max output reactive power percent;read_inverter_max_output_reactive_power_percent;1.000000;0.000000;perce nt;4
+6;3;8;U16;;Normal work PV voltage;normal_work_pv_voltage;1.000000;0.000000;0.1V;4
+7;3;9;U16;;Firmware version (high);firmware_version_high;1.000000;0.000000;ASCII;4
+8;3;10;U16;;Firmware version (middle);firmware_version_middle;1.000000;0.000000;;4
+9;3;11;U16;;Firmware version (low);firmware_version_low;1.000000;0.000000;;4
+10;3;12;U16;;Control Firmware version (high);control_firmware_version_high;1.000000;0.000000;ASCII;4
+11;3;13;U16;;Control Firmware version (middle);control_firmware_version_middle;1.000000;0.000000;;4
+12;3;14;U16;;Control Firmware version (low);control_firmware_version_low;1.000000;0.000000;;4
+13;3;15;U16;;LCD language;lcd_language;1.000000;0.000000;;4
+14;3;16;U16;;LCD Contrast;lcd_contrast;1.000000;0.000000;;4
+15;3;17;U16;;Input start voltage;input_start_voltage;1.000000;0.000000;0.1V;4
+16;3;18;U16;;Start time;start_time;1.000000;0.000000;1S;4
+17;3;19;U16;;Grid voltage low limit protect;grid_voltage_low_limit_protect;1.000000;0.000000;0.1V;4
+18;3;20;U16;;Grid voltage high limit protect;grid_voltage_high_limit_protect;1.000000;0.000000;0.1V;4
+19;3;21;U16;;Grid frequency low limit protect;grid_frequency_low_limit_protect;1.000000;0.000000;0.01 Hz;4
+20;3;22;U16;;Grid high frequency limit protect;grid_high_frequency_limit_protect;1.000000;0.000000;0.01 Hz;4
+21;3;23;U16;;Serial number 5;serial_number_5;1.000000;0.000000;ASCII;4
+22;3;24;U16;;Serial number 4;serial_number_4;1.000000;0.000000;;4
+23;3;25;U16;;Serial number 3;serial_number_3;1.000000;0.000000;;4
+24;3;26;U16;;Serial number 2;serial_number_2;1.000000;0.000000;;4
+25;3;27;U16;;Serial number 1;serial_number_1;1.000000;0.000000;;4
+26;3;28;U16;;Inverter Moudle (high);inverter_moudle_high;1.000000;0.000000;;4
+27;3;29;U16;;Inverter Moudle (low);inverter_moudle_low;1.000000;0.000000;;4
+28;3;54;U16;;Grid voltage high limit protect time 2;grid_voltage_high_limit_protect_time_2;1.000000;0.000000;Cycle;4
+29;3;55;U16;;Grid frequency low limit protect time 1;grid_frequency_low_limit_protect_time_1;1.000000;0.000000;Cycle;4
+30;3;56;U16;;Grid frequency high limit protect time 1;grid_frequency_high_limit_protect_time_1;1.000000;0.000000;Cycle;4
+31;3;57;U16;;Grid frequency low limit protect time 2;grid_frequency_low_limit_protect_time_2;1.000000;0.000000;Cycle;4
+32;3;58;U16;;Grid frequency high limit protect time 2;grid_frequency_high_limit_protect_time_2;1.000000;0.000000;Cycle;4
+33;3;59;U16;;Manufacturer information (high);manufacturer_information_high;1.000000;0.000000;ASCII;4
+34;3;60;U16;;Manufacturer information (middle);manufacturer_information_middle;1.000000;0.000000;;4
+35;3;61;U16;;Manufacturer information (low);manufacturer_information_low;1.000000;0.000000;;4
+36;3;62;U16;;Manufacturer information (high);manufacturer_information_high_1;1.000000;0.000000;;4
+37;3;63;U16;;Manufacturer information (middle);manufacturer_information_middle_1;1.000000;0.000000;;4
+38;3;64;U16;;Manufacturer information (low);manufacturer_information_low_1;1.000000;0.000000;;4
+39;3;65;U16;;Manufacturer information (low);manufacturer_information_low_2;1.000000;0.000000;;4
+40;3;66;U16;;Manufacturer information (high);manufacturer_information_high_2;1.000000;0.000000;ASCII;4
+41;3;67;U16;;Control FW Build No. 2;control_fw_build_no_2;1.000000;0.000000;ASCII;4
+42;3;68;U16;;Control FW Build No. 1;control_fw_build_no_1;1.000000;0.000000;;4
+43;3;69;U16;;COM FW Build No. 2;com_fw_build_no_2;1.000000;0.000000;;4
+44;3;70;U16;;COM FW Build No. 1;com_fw_build_no_1;1.000000;0.000000;ASCII;4
+45;3;71;U16;;;;1.000000;0.000000;;1
+46;3;72;U16;;Sys Weekly;sys_weekly;1.000000;0.000000;;4
+47;3;73;U16;;Modbus Version;modbus_version;1.000000;0.000000;Int(16 bits);4
+48;3;74;U16;;Model Selected or not;model_selected_or_not;1.000000;0.000000;;4
+49;3;75;U16;;232T485Enable;v_232t485enable;1.000000;0.000000;;4
+50;3;76;U16;;Decrease output watt;decrease_output_watt;1.000000;0.000000;;4
+51;3;77;U16;;Decrease output watt;decrease_output_watt_1;1.000000;0.000000;0.1W;4
+52;3;78;U16;;Increase output watt;increase_output_watt;1.000000;0.000000;;4
+53;3;79;U16;;Increase output watt;increase_output_watt_1;1.000000;0.000000;0.1W;4
+54;3;80;U16;;The ODM Info code;the_odm_info_code;1.000000;0.000000;;4
+55;3;81;U16;;Frequency derating start point;frequency_derating_start_point;1.000000;0.000000;0.01H Z;4
+56;3;82;U16;;Load add speed;load_add_speed;1.000000;0.000000;0.1%;4
+57;3;83;U16;;60Hz Fac low;v_60hz_fac_low;1.000000;0.000000;0.01H Z;4
+58;3;84;U16;;60Hz Fac hingh;v_60hz_fac_hingh;1.000000;0.000000;0.01H Z;4
+59;3;85;U16;;Vac start adjust by pf;vac_start_adjust_by_pf;1.000000;0.000000;0.1V;4
+60;3;86;U16;;Max pf of adjust Vac;max_pf_of_adjust_vac;1.000000;0.000000;;4
+61;3;87;U16;;PID Working Model;pid_working_model;1.000000;0.000000;;4
+62;3;88;U16;;PID On/Off Control;pid_onoff_control;1.000000;0.000000;;4
+63;3;89;U16;;PID Output Voltage Option;pid_output_voltage_option;1.000000;0.000000;V;4
+64;3;107;U16;;Low Voltage Fault Ride Through enable;low_voltage_fault_ride_through_enable;1.000000;0.000000;;9
+65;3;108;U16;;CEI021 V1S Q(v);cei021_v1s_qv;1.000000;0.000000;0.1V;4
+66;3;109;U16;;CEI021 V2S Q(v);cei021_v2s_qv;1.000000;0.000000;0.1V;4
+67;3;110;U16;;CEI021 V1L Q(v);cei021_v1l_qv;1.000000;0.000000;0.1V;4
+68;3;111;U16;;CEI021 V2L Q(v);cei021_v2l_qv;1.000000;0.000000;0.1V;4
+69;3;112;U16;;Volt protection for 10 min;volt_protection_for_10_min;1.000000;0.000000;0.1V;4
+70;3;113;U16;;Q(v) lock in active power of CEI021;qv_lock_in_active_power_of_cei021;1.000000;0.000000;Perce nt;4
+71;3;114;U16;;Lock in gird volt of CEI021 PF line;lock_in_gird_volt_of_cei021_pf_line;1.000000;0.000000;0.1V;4
+72;3;115;U16;;Lock out gird volt of CEI021 PF line;lock_out_gird_volt_of_cei021_pf_line;1.000000;0.000000;0.1V;4
+73;3;116;U16;;Above 6KwSystem for CEI021;above_6kwsystem_for_cei021;1.000000;0.000000;;4
+74;3;117;U16;;Frequency Derating Enable;frequency_derating_enable;1.000000;0.000000;;4
+75;3;118;U16;;Q(v) lock Out active power of CEI021;qv_lock_out_active_power_of_cei021;1.000000;0.000000;Perce nt;4
+76;3;119;U16;;"Restart Delay Time after fault back;";restart_delay_time_after_fault_back;1.000000;0.000000;s;9
+77;3;120;U16;;Reactive Rate in LVFRT;reactive_rate_in_lvfrt;1.000000;0.000000;;4
+78;3;121;U16;;LVFRT low fault value 1;lvfrt_low_fault_value_1;1.000000;0.000000;0.1V;9
+79;3;122;U16;;LVFRT low fault time 1;lvfrt_low_fault_time_1;1.000000;0.000000;1ms;9
+80;3;123;U16;;LVFRT low fault value 2;lvfrt_low_fault_value_2;1.000000;0.000000;0.1V;9
+81;3;124;U16;;LVFRT low fault time 2;lvfrt_low_fault_time_2;1.000000;0.000000;1ms;9
+82;3;125;U16;;LVFRT low fault value 3;lvfrt_low_fault_value_3;1.000000;0.000000;0.1V;9
+83;3;126;U16;;LVFRT low fault time 3;lvfrt_low_fault_time_3;1.000000;0.000000;1ms;9
+84;3;127;U16;;LVFRT low fault value 4;lvfrt_low_fault_value_4;1.000000;0.000000;0.1V;9
+85;3;128;U16;;LVFRT low fault time 4;lvfrt_low_fault_time_4;1.000000;0.000000;1ms;9
+86;3;129;U16;;LVFRT high fault value 1;lvfrt_high_fault_value_1;1.000000;0.000000;0.1V;9
+87;3;130;U16;;LVFRT high fault time 1;lvfrt_high_fault_time_1;1.000000;0.000000;1ms;9
+88;3;131;U16;;Power restart slope;power_restart_slope;1.000000;0.000000;0.1%;4
+89;3;132;U16;;Load derate start ac voltage;load_derate_start_ac_voltage;1.000000;0.000000;0.1V;4
+90;3;135;U16;;Unlock or set Specpassword;unlock_or_set_specpassword;1.000000;0.000000;;4
+91;3;136;U16;;SpecPassword3;specpassword3;1.000000;0.000000;ASCII;4
+92;3;137;U16;;SpecPassword2;specpassword2;1.000000;0.000000;ASCII;4
+93;3;138;U16;;SpecPassword1;specpassword1;1.000000;0.000000;ASCII;4
+94;3;139;U16;;;;1.000000;0.000000;;1
+95;3;140;U16;;GFCI Module type;gfci_module_type;1.000000;0.000000;;4
+96;3;141;U16;;DCI offset;dci_offset;1.000000;0.000000;;4
+97;3;142;U16;;DCI adjust;dci_adjust;1.000000;0.000000;;4
+98;3;143;U16;;About Fast mppt;about_fast_mppt;1.000000;0.000000;;4
+99;3;144;U16;;IslandDisable;islanddisable;1.000000;0.000000;;4
+100;3;145;U16;;IniEEPROM;inieeprom;1.000000;0.000000;;4
+101;3;146;U16;;Phaseflag|ErrorCod e;phaseflagerrorcod_e;1.000000;0.000000;;9
+102;3;147;U16;;Power H;power_h;1.000000;0.000000;;4
+103;3;148;U16;;Power L;power_l;1.000000;0.000000;;4
+104;3;149;U16;;High ac voltage load derating slope;high_ac_voltage_load_derating_slope;1.000000;0.000000;0-100;4
+105;3;150;U16;;Start Fan Check;start_fan_check;1.000000;0.000000;;4
+106;3;151;U16;;Enable N Line of grid;enable_n_line_of_grid;1.000000;0.000000;;4
+107;3;5;U16;;PV1 input watt (high);pv1_input_watt_high;1.000000;0.000000;0.1W;4
+108;3;6;U16;;PV1 input watt (low);pv1_input_watt_low;1.000000;0.000000;0.1W;4
+109;3;7;U16;;PV2 voltage;pv2_voltage;1.000000;0.000000;0.1V;4
+110;3;30;U16;;Work time total (high);work_time_total_high;1.000000;0.000000;0.5S;4
+111;3;31;U16;;Work time total (low);work_time_total_low;1.000000;0.000000;0.5S;4
+112;3;32;U16;;Inverter temperature;inverter_temperature;1.000000;0.000000;0.1C;4
+113;3;33;U16;;ISO Fault value;iso_fault_value;1.000000;0.000000;0.1V;9
+114;3;34;U16;;GFCI fault Value;gfci_fault_value;1.000000;0.000000;1mA;9
+115;3;35;U16;;DCI fault Value;dci_fault_value;1.000000;0.000000;0.01 A;9
+116;3;36;U16;;PV voltage fault value;pv_voltage_fault_value;1.000000;0.000000;0.1V;9
+117;3;37;U16;;AC voltage fault value;ac_voltage_fault_value;1.000000;0.000000;0.1V;9
+118;3;38;U16;;AC frequency fault value;ac_frequency_fault_value;1.000000;0.000000;0.01 Hz;9
+119;3;39;U16;;Temperature fault value;temperature_fault_value;1.000000;0.000000;0.1C;9
+120;3;40;U16;;Inverter fault bit;inverter_fault_bit;1.000000;0.000000;;9
+121;3;41;U16;;The inside IPM in inverter Temperature;the_inside_ipm_in_inverter_temperature;1.000000;0.000000;0.1C;4
+122;3;42;U16;;P Bus inside Voltage;p_bus_inside_voltage;1.000000;0.000000;0.1V;4
+123;3;43;U16;;N Bus inside Voltage;n_bus_inside_voltage;1.000000;0.000000;0.1V;4
+124;3;44;U16;;Product check step;product_check_step;1.000000;0.000000;;4
+125;3;45;U16;;Inverter output PF now;inverter_output_pf_now;1.000000;0.000000;;4
+126;3;46;U16;;Reset check data;reset_check_data;1.000000;0.000000;;4
+127;3;47;U16;;DeratingMode;deratingmode;1.000000;0.000000;;4
+128;3;100;U16;;Grid Fault record 3 - code;grid_fault_record_3_code;1.000000;0.000000;;9
+129;3;101;U16;;Grid Fault record 3 - year| month;grid_fault_record_3_year_month;1.000000;0.000000;;9
+130;3;102;U16;;Grid Fault record 3 - day| hour;grid_fault_record_3_day_hour;1.000000;0.000000;;9
+131;3;103;U16;;Grid Fault record 3 - min| sec;grid_fault_record_3_min_sec;1.000000;0.000000;;9
+132;3;104;U16;;Grid Fault record 3-value;grid_fault_record_3value;1.000000;0.000000;;9
+133;3;105;U16;;Grid Fault record 4 - code;grid_fault_record_4_code;1.000000;0.000000;;9
+134;3;106;U16;;Grid Fault record 4 - year| month;grid_fault_record_4_year_month;1.000000;0.000000;;9
+135;3;133;U16;;;;1.000000;0.000000;;1
+136;3;134;U16;;;;1.000000;0.000000;;1
+137;3;178;U16;;;;1.000000;0.000000;;1
+138;3;179;U16;;;;1.000000;0.000000;;1
+139;3;180;U16;;Inverter Error record 1 - code;inverter_error_record_1_code;1.000000;0.000000;;9
+140;3;181;U16;;Inverter Error record 1 - year| month;inverter_error_record_1_year_month;1.000000;0.000000;;9
+141;3;182;U16;;Inverter Error record 1 - day| hour;inverter_error_record_1_day_hour;1.000000;0.000000;;9
+142;3;183;U16;;Inverter Error record 1 - min| sec;inverter_error_record_1_min_sec;1.000000;0.000000;;9
+143;3;257;U16;;;;1.000000;0.000000;;1
+144;3;514;U16;;;;1.000000;0.000000;;1
