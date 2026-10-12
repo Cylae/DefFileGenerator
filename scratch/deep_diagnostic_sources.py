@@ -4,17 +4,16 @@ Deep Diagnostic and Bug Hunting Runner across Real Equipment Manufacturer Source
 Extracts tables, normalizes fields, checks for anomalies, warnings, and unhandled errors.
 """
 
+import logging
 import os
 import sys
-import glob
-import logging
 import traceback
-from typing import Any
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
+from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.extractor import Extractor
+
 
 # Intercept and record logging warnings/errors
 class WarningCollector(logging.Handler):
@@ -24,11 +23,14 @@ class WarningCollector(logging.Handler):
 
     def emit(self, record):
         if record.levelno >= logging.WARNING:
-            self.records.append({
-                "level": record.levelname,
-                "msg": record.getMessage(),
-                "logger": record.name,
-            })
+            self.records.append(
+                {
+                    "level": record.levelname,
+                    "msg": record.getMessage(),
+                    "logger": record.name,
+                }
+            )
+
 
 collector = WarningCollector()
 logging.getLogger().addHandler(collector)
@@ -45,23 +47,35 @@ if os.path.exists(MARS_SOURCE):
     source_files.append(("Mars Energy", "MarsLocalController_V7.0.xlsx", MARS_SOURCE))
 
 # 2. Excel spreadsheets in Equipementiers (Sources/ and subfolders)
-for root, dirs, files in os.walk(EQUIP_DIR):
+for root, _dirs, files in os.walk(EQUIP_DIR):
     for f in files:
         ext = os.path.splitext(f)[1].lower()
-        if ext in ('.xlsx', '.xlsm') and not f.startswith('~$'):
+        if ext in (".xlsx", ".xlsm") and not f.startswith("~$"):
             full_path = os.path.join(root, f)
             rel_path = os.path.relpath(full_path, EQUIP_DIR)
             mfg = rel_path.split(os.sep)[0]
             source_files.append((mfg, rel_path, full_path))
 
 # 3. Dedicated Modbus protocol PDFs in Sources/
-for root, dirs, files in os.walk(EQUIP_DIR):
+for root, _dirs, files in os.walk(EQUIP_DIR):
     for f in files:
         ext = os.path.splitext(f)[1].lower()
-        if ext == '.pdf':
+        if ext == ".pdf":
             f_low = f.lower()
-            if any(k in f_low for k in ('modbus', 'communication protocol', 'protocol modbus', 'interface definitions', 'io list')):
-                if not any(skip in f_low for skip in ('declaration', 'certificat', 'brochure', 'flyer', 'catalog')):
+            if any(
+                k in f_low
+                for k in (
+                    "modbus",
+                    "communication protocol",
+                    "protocol modbus",
+                    "interface definitions",
+                    "io list",
+                )
+            ):
+                if not any(
+                    skip in f_low
+                    for skip in ("declaration", "certificat", "brochure", "flyer", "catalog")
+                ):
                     full_path = os.path.join(root, f)
                     rel_path = os.path.relpath(full_path, EQUIP_DIR)
                     mfg = rel_path.split(os.sep)[0]
@@ -89,9 +103,9 @@ for idx, (mfg, rel, path) in enumerate(source_files, 1):
 
     try:
         file_ext = os.path.splitext(path)[1].lower()
-        if file_ext in ('.xlsx', '.xlsm'):
+        if file_ext in (".xlsx", ".xlsm"):
             raw_tables = list(ext.extract_from_excel(path))
-        elif file_ext == '.pdf':
+        elif file_ext == ".pdf":
             raw_tables = list(ext.extract_from_pdf(path))
         else:
             continue
@@ -117,7 +131,9 @@ for idx, (mfg, rel, path) in enumerate(source_files, 1):
 
     status_icon = "PASS" if res["status"] == "SUCCESS" else res["status"]
     warn_count = len(res["warnings"])
-    print(f"[{idx:3d}/{len(source_files):3d}] [{status_icon:14s}] {mfg:15s} | {os.path.basename(path):35s} | Regs: {res['registers_extracted']:5d} | Warn: {warn_count:2d}")
+    print(
+        f"[{idx:3d}/{len(source_files):3d}] [{status_icon:14s}] {mfg:15s} | {os.path.basename(path):35s} | Regs: {res['registers_extracted']:5d} | Warn: {warn_count:2d}"
+    )
 
 # Summary
 successes = [r for r in results if r["status"] == "SUCCESS"]
