@@ -146,9 +146,7 @@ def test_web_app_rest_api_edge_cases():
     assert resp.json()["status"] == "ok"
 
     # API validate with empty file content
-    resp_val = client.post(
-        "/api/validate", files={"file": ("empty.csv", b"", "text/csv")}
-    )
+    resp_val = client.post("/api/validate", files={"file": ("empty.csv", b"", "text/csv")})
     assert resp_val.status_code in (200, 400)
 
     # API validate with invalid CSV headers
