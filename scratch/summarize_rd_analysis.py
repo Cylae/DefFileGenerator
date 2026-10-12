@@ -1,6 +1,6 @@
 import json
 
-with open("scratch/rd_deep_analysis_result.json", "r", encoding="utf-8") as f:
+with open("scratch/rd_deep_analysis_result.json", encoding="utf-8") as f:
     data = json.load(f)
 
 cats = data["categories"]

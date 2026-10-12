@@ -4,21 +4,21 @@ Deep register-level comparison between generated definitions and the R&D Bible.
 Produces exact numerical and semantic matching metrics.
 """
 
+import json
 import os
 import sys
-import json
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.def_gen import Generator
+from DefFileGenerator.extractor import Extractor
 from scratch.compare_with_def_pm_rd import (
-    load_validated_def,
-    find_candidate_sources_for_def,
     DEF_PM_DIR,
     EQUIP_DIR,
+    find_candidate_sources_for_def,
+    load_validated_def,
 )
 
 

@@ -1,6 +1,6 @@
 import json
 
-with open("scratch/rd_exact_metrics.json", "r", encoding="utf-8") as f:
+with open("scratch/rd_exact_metrics.json", encoding="utf-8") as f:
     data = json.load(f)
 
 cats = data["categories"]

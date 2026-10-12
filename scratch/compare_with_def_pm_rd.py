@@ -4,26 +4,23 @@ Deep comparison benchmark between generated definitions and the R&D Bible in DEF
 """
 
 import os
-import sys
-import glob
 import re
-import csv
-import io
+import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.extractor import Extractor
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 
 DEF_PM_DIR = r"G:\My Drive\08092026\DEF_PM_R&D"
 EQUIP_DIR = r"G:\My Drive\08092026\Equipementiers"
 
 
-def load_validated_def(filepath: str) -> Dict[str, Any]:
+def load_validated_def(filepath: str) -> dict[str, Any]:
     """Parse a validated Webdyn definition CSV file."""
-    with open(filepath, "r", encoding="latin-1") as f:
+    with open(filepath, encoding="latin-1") as f:
         lines = [line.strip() for line in f if line.strip()]
 
     if not lines:
@@ -31,7 +28,7 @@ def load_validated_def(filepath: str) -> Dict[str, Any]:
 
     header = lines[0].split(";")
     registers = {}
-    for idx, line in enumerate(lines[1:]):
+    for _idx, line in enumerate(lines[1:]):
         parts = line.split(";")
         if len(parts) >= 11:
             addr = parts[2].strip()
@@ -60,7 +57,7 @@ def load_validated_def(filepath: str) -> Dict[str, Any]:
     }
 
 
-def find_candidate_sources_for_def(def_path: Path, equip_index: List[Path]) -> List[Path]:
+def find_candidate_sources_for_def(def_path: Path, equip_index: list[Path]) -> list[Path]:
     """Find source documents corresponding to a validated definition."""
     def_name = def_path.stem.lower()
     # Normalize name: strip prefixes like INV_, METER_, SEN_, COM_, OTH_, DISPLAY_, ANAEX_
@@ -193,7 +190,7 @@ def run_benchmark():
 
     # Summary
     success_matches = [r for r in results if r["status"] == "SUCCESS"]
-    print(f"\n================ BENCHMARK SUMMARY ================")
+    print("\n================ BENCHMARK SUMMARY ================")
     print(f"Total Validated Definitions: {len(results)}")
     print(
         f"Definitions directly matched & extracted from technical sources: {len(success_matches)}"

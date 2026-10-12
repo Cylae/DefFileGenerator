@@ -6,11 +6,9 @@ in the dataset (Mars Renewable, 30+ Manufacturers, and R&D productions).
 Outputs structured results for audit reporting.
 """
 
-import io
 import json
 import logging
 import os
-import re
 import sys
 import tempfile
 import time
@@ -21,7 +19,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../.
 
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.io_utils import definition_preview
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger("FullDocBattery")
@@ -499,7 +496,7 @@ CATALOG = [
 def run_battery():
     extractor = Extractor()
     generator = Generator()
-    temp_dir = tempfile.TemporaryDirectory()
+    tempfile.TemporaryDirectory()
 
     output_dir = os.path.join(WORKSPACE_DIR, "generated_definitions")
     os.makedirs(output_dir, exist_ok=True)
