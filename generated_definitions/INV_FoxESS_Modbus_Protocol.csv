@@ -1,0 +1,389 @@
+﻿modbusRTU;Inverter;Fox ESS;Modbus Protocol;;;;;;;
+1;3;36001;U16;;Master Version;master_version;1.000000;0.000000;N/A;4
+2;3;36002;U16;;Slave Version;slave_version;1.000000;0.000000;N/A;4
+3;3;36003;U16;;Manager Version;manager_version;1.000000;0.000000;N/A;4
+4;3;37002;U16;;BMS1 Connection Status;bms1_connection_status;1.000000;0.000000;N/A;9
+5;3;37003;U16;;BMS1 Master Version;bms1_master_version;1.000000;0.000000;N/A;4
+6;3;37004;U16;;BMS1 Master Type;bms1_master_type;1.000000;0.000000;N/A;4
+7;3;37032;U16;;BMS1 Slave Number;bms1_slave_number;1.000000;0.000000;N/A;4
+8;3;37033;U16;;BMS1 Slave 1 Version;bms1_slave_1_version;1.000000;0.000000;N/A;4
+9;3;37034;U16;;BMS1 Slave 2 Version;bms1_slave_2_version;1.000000;0.000000;N/A;4
+10;3;37609;U16;;BMS1 Voltage;bms1_voltage;1.000000;0.000000;V;4
+11;3;37610;I16;;BMS1 Current;bms1_current;1.000000;0.000000;A;4
+12;3;37611;I16;;BMS1 Ambient Temperature;bms1_ambient_temperature;1.000000;0.000000;;4
+13;3;37612;U16;;BMS1 SoC;bms1_soc;1.000000;0.000000;'%;4
+14;3;37617;I16;;BMS1 Max Temperature;bms1_max_temperature;1.000000;0.000000;;4
+15;3;37618;I16;;BMS1 Min Temperature;bms1_min_temperature;1.000000;0.000000;;4
+16;3;37619;U16;;BMS1 Max Cell Voltage;bms1_max_cell_voltage;1.000000;0.000000;mV;4
+17;3;37620;U16;;BMS1 Min Cell Voltage;bms1_min_cell_voltage;1.000000;0.000000;mV;4
+18;3;37624;U16;;BMS1 SOH;bms1_soh;1.000000;0.000000;'%;4
+19;3;37626;U16;;BMS1 Fault1;bms1_fault1;1.000000;0.000000;N/A;9
+20;3;37627;U16;;BMS1 Fault2;bms1_fault2;1.000000;0.000000;N/A;9
+21;3;37628;U16;;BMS1 Fault3;bms1_fault3;1.000000;0.000000;N/A;9
+22;3;37629;U16;;BMS1 Fault4;bms1_fault4;1.000000;0.000000;N/A;9
+23;3;37630;U16;;BMS1 Fault5;bms1_fault5;1.000000;0.000000;N/A;9
+24;3;37631;U16;;BMS1 Fault6;bms1_fault6;1.000000;0.000000;N/A;9
+25;3;37632;U16;;BMS1 Remain Energy;bms1_remain_energy;1.000000;0.000000;Wh;4
+26;3;37633;U16;;BMS1 FCC Capacity;bms1_fcc_capacity;0.100000;0.000000;Ah;4
+27;3;37634;U16;;reserve;reserve;1.000000;0.000000;N/A;0
+28;3;37635;U16;;BMS1 Design Energy;bms1_design_energy;10.000000;0.000000;Wh;4
+29;3;37636;U16;;BMS1 Force to Change battery Flag;bms1_force_to_change_battery_flag;1.000000;0.000000;N/A;4
+30;3;37700;U16;;BMS2 Connection Status;bms2_connection_status;1.000000;0.000000;N/A;9
+31;3;37701;U16;;BMS2 Master Version;bms2_master_version;1.000000;0.000000;N/A;4
+32;3;37702;U16;;BMS2 Master Type;bms2_master_type;1.000000;0.000000;N/A;4
+33;3;37730;U16;;BMS2 Slave Number;bms2_slave_number;1.000000;0.000000;N/A;4
+34;3;37731;U16;;BMS2 Slave 1 Version;bms2_slave_1_version;1.000000;0.000000;N/A;4
+35;3;37732;U16;;BMS2 Slave 2 Version;bms2_slave_2_version;1.000000;0.000000;N/A;4
+36;3;37795_16;STRING;;BMS2 Slave1 SN;bms2_slave1_sn;1.000000;0.000000;N/A;4
+37;3;37811_16;STRING;;BMS2 Slave2 SN;bms2_slave2_sn;1.000000;0.000000;N/A;4
+38;3;38307;U16;;BMS2 Voltage;bms2_voltage;0.100000;0.000000;V;4
+39;3;38308;I16;;BMS2 Current;bms2_current;0.100000;0.000000;A;4
+40;3;38309;I16;;BMS2 Ambient Temperature;bms2_ambient_temperature;0.100000;0.000000;;4
+41;3;38310;U16;;BMS2 SoC;bms2_soc;1.000000;0.000000;'%;4
+42;3;38315;I16;;BMS2 Max Temperature;bms2_max_temperature;0.100000;0.000000;;4
+43;3;38316;I16;;BMS2 Min Temperature;bms2_min_temperature;0.100000;0.000000;;4
+44;3;38317;U16;;BMS2 Max Cell Voltage;bms2_max_cell_voltage;1.000000;0.000000;mV;4
+45;3;38318;U16;;BMS2 Min Cell Voltage;bms2_min_cell_voltage;1.000000;0.000000;mV;4
+46;3;38322;U16;;BMS2 SOH;bms2_soh;1.000000;0.000000;'%;4
+47;3;38324;U16;;BMS2 Fault1;bms2_fault1;1.000000;0.000000;N/A;9
+48;3;38325;U16;;BMS2 Fault2;bms2_fault2;1.000000;0.000000;N/A;9
+49;3;38326;U16;;BMS2 Fault3;bms2_fault3;1.000000;0.000000;N/A;9
+50;3;38327;U16;;BMS2 Fault4;bms2_fault4;1.000000;0.000000;N/A;9
+51;3;38328;U16;;BMS2 Fault5;bms2_fault5;1.000000;0.000000;N/A;9
+52;3;38329;U16;;BMS2 Fault6;bms2_fault6;1.000000;0.000000;N/A;9
+53;3;38330;U16;;BMS2 Remain Energy;bms2_remain_energy;10.000000;0.000000;Wh;4
+54;3;38331;U16;;BMS2 FCC Capacity;bms2_fcc_capacity;0.100000;0.000000;Ah;4
+55;3;38332;U16;;reserve;reserve_1;1.000000;0.000000;N/A;0
+56;3;38333;U16;;BMS2 Design Energy;bms2_design_energy;10.000000;0.000000;Wh;4
+57;3;38334;U16;;BMS2 Force to Change battery Flag;bms2_force_to_change_battery_flag;1.000000;0.000000;N/A;4
+58;3;38801;U16;;Meter1/CT1 Connection State;meter1ct1_connection_state;1.000000;0.000000;N/A;4
+59;3;38802;I32;;Meter1/CT1 R Phase Voltage;meter1ct1_r_phase_voltage;0.100000;0.000000;V;4
+60;3;38804;I32;;Meter1/CT1 S Phase Voltage;meter1ct1_s_phase_voltage;0.100000;0.000000;V;4
+61;3;38806;I32;;Meter1/CT1 T Phase Voltage;meter1ct1_t_phase_voltage;0.100000;0.000000;V;4
+62;3;38808;I32;;Meter1/CT1 R Phase Current;meter1ct1_r_phase_current;0.001000;0.000000;A;4
+63;3;38810;I32;;Meter1/CT1 S Phase Current;meter1ct1_s_phase_current;0.001000;0.000000;A;4
+64;3;38812;I32;;Meter1/CT1 T Phase Current;meter1ct1_t_phase_current;0.001000;0.000000;A;4
+65;3;38814;I32;;Meter1/CT1 Combined Active Power;meter1ct1_combined_active_power;0.100000;0.000000;W;4
+66;3;38816;I32;;Meter1/CT1 R Phase Active Power;meter1ct1_r_phase_active_power;0.100000;0.000000;W;4
+67;3;38818;I32;;Meter1/CT1 S Phase Active Power;meter1ct1_s_phase_active_power;0.100000;0.000000;W;4
+68;3;38820;I32;;Meter1/CT1 T Phase Active Power;meter1ct1_t_phase_active_power;0.100000;0.000000;W;4
+69;3;38822;I32;;Meter1/CT1 Combined Reactive Power;meter1ct1_combined_reactive_power;0.100000;0.000000;Var;4
+70;3;38824;I32;;Meter1/CT1 R Phase Reactive Power;meter1ct1_r_phase_reactive_power;0.100000;0.000000;Var;4
+71;3;38826;I32;;Meter1/CT1 S Phase Reactive Power;meter1ct1_s_phase_reactive_power;0.100000;0.000000;Var;4
+72;3;38828;I32;;Meter1/CT1 T Phase Reactive Power;meter1ct1_t_phase_reactive_power;0.100000;0.000000;Var;4
+73;3;38830;I32;;Meter1/CT1 Combined Apparent Power;meter1ct1_combined_apparent_power;0.100000;0.000000;VA;4
+74;3;38832;I32;;Meter1/CT1 R Phase Apparent Power;meter1ct1_r_phase_apparent_power;0.100000;0.000000;VA;4
+75;3;38834;I32;;Meter1/CT1 S Phase Apparent;meter1ct1_s_phase_apparent;0.100000;0.000000;VA;4
+76;3;38836;I32;;Meter1/CT1 T Phase Apparent Power;meter1ct1_t_phase_apparent_power;0.100000;0.000000;VA;4
+77;3;38838;I32;;Meter1/CT1 Combined Power Factor;meter1ct1_combined_power_factor;0.001000;0.000000;N/A;4
+78;3;38840;I32;;Meter1/CT1 R Phase Power Factor;meter1ct1_r_phase_power_factor;0.001000;0.000000;N/A;4
+79;3;38842;I32;;Meter1/CT1 S Phase Power Factor;meter1ct1_s_phase_power_factor;0.001000;0.000000;N/A;4
+80;3;38844;I32;;Meter1/CT1 T Phase Power Factor;meter1ct1_t_phase_power_factor;0.001000;0.000000;N/A;4
+81;3;38846;I32;;Meter1/CT1 Freq;meter1ct1_freq;0.010000;0.000000;Hz;4
+82;3;38901;U16;;Meter2/CT2 Connection State;meter2ct2_connection_state;1.000000;0.000000;N/A;4
+83;3;38902;I32;;Meter2/CT2 R Phase Voltage;meter2ct2_r_phase_voltage;0.100000;0.000000;V;4
+84;3;38904;I32;;Meter2/CT2 S Phase Voltage;meter2ct2_s_phase_voltage;0.100000;0.000000;V;4
+85;3;38906;I32;;Meter2/CT2 T Phase Voltage;meter2ct2_t_phase_voltage;0.100000;0.000000;V;4
+86;3;38908;I32;;Meter2/CT2 R Phase Current;meter2ct2_r_phase_current;0.001000;0.000000;A;4
+87;3;38910;I32;;Meter2/CT2 S Phase Current;meter2ct2_s_phase_current;0.001000;0.000000;A;4
+88;3;38912;I32;;Meter2/CT2 T Phase Current;meter2ct2_t_phase_current;0.001000;0.000000;A;4
+89;3;38914;I32;;Meter2/CT2 Combined Active Power;meter2ct2_combined_active_power;0.100000;0.000000;W;4
+90;3;38916;I32;;Meter2/CT2 R Phase Active Power;meter2ct2_r_phase_active_power;0.100000;0.000000;W;4
+91;3;38918;I32;;Meter2/CT2 S Phase Active Power;meter2ct2_s_phase_active_power;0.100000;0.000000;W;4
+92;3;38920;I32;;Meter2/CT2 T Phase Active Power;meter2ct2_t_phase_active_power;0.100000;0.000000;W;4
+93;3;38922;I32;;Meter2/CT2 Combined Reactive Power;meter2ct2_combined_reactive_power;0.100000;0.000000;Var;4
+94;3;38924;I32;;Meter2/CT2 R Phase Reactive Power;meter2ct2_r_phase_reactive_power;0.100000;0.000000;Var;4
+95;3;38926;I32;;Meter2/CT2 S Phase Reactive Power;meter2ct2_s_phase_reactive_power;0.100000;0.000000;Var;4
+96;3;38928;I32;;Meter2/CT2 T Phase Reactive Power;meter2ct2_t_phase_reactive_power;0.100000;0.000000;Var;4
+97;3;38930;I32;;Meter2/CT2 Combined Apparent Power;meter2ct2_combined_apparent_power;0.100000;0.000000;VA;4
+98;3;38932;I32;;Meter2/CT2 R Phase Apparent Power;meter2ct2_r_phase_apparent_power;0.100000;0.000000;VA;4
+99;3;38934;I32;;Meter2/CT2 S Phase Apparent Power;meter2ct2_s_phase_apparent_power;0.100000;0.000000;VA;4
+100;3;38936;I32;;Meter2/CT2 T Phase Apparent Power;meter2ct2_t_phase_apparent_power;0.100000;0.000000;VA;4
+101;3;38938;I32;;Meter2/CT2 Combined Power Factor;meter2ct2_combined_power_factor;0.001000;0.000000;N/A;4
+102;3;38940;I32;;Meter2/CT2 R Phase Power Factor;meter2ct2_r_phase_power_factor;0.001000;0.000000;N/A;4
+103;3;38942;I32;;Meter2/CT2 S Phase Power Factor;meter2ct2_s_phase_power_factor;0.001000;0.000000;N/A;4
+104;3;38944;I32;;Meter2/CT2 T Phase Power Factor;meter2ct2_t_phase_power_factor;0.001000;0.000000;N/A;4
+105;3;38946;I32;;Meter2/CT2 Freq;meter2ct2_freq;0.010000;0.000000;Hz;4
+106;3;39000;U32;;Protocol Version;protocol_version;1.000000;0.000000;N/A;4
+107;3;39050;U16;;Model ID;model_id;1.000000;0.000000;N/A;4
+108;3;39051;U16;;Number of strings;number_of_strings;1.000000;0.000000;N/A;4
+109;3;39052;U16;;Number of MPPTs;number_of_mppts;1.000000;0.000000;N/A;4
+110;3;39053;I32;;Rated power (Pn);NominalPower;0.001000;0.000000;kW;4
+111;3;39055;I32;;Maximum active power (Pmax);maximum_active_power_pmax;0.001000;0.000000;kW;4
+112;3;39057;I32;;Maximum apparent value (Smax);maximum_apparent_value_smax;0.001000;0.000000;kVA;4
+113;3;39059;I32;;Maximum reactive power;maximum_reactive_power;0.001000;0.000000;kVar;4
+114;3;39061;I32;;Maximum reactive power (Qmax, absorbed from the grid);maximum_reactive_power_qmax_absorbed_from_the_grid;0.001000;0.000000;kVar;4
+115;3;39063;U16;;Status 1;status_1;1.000000;0.000000;N/A;9
+116;3;39064;U16;;reserve;reserve_2;1.000000;0.000000;;0
+117;3;39065;U32;;Status 3;status_3;1.000000;0.000000;N/A;9
+118;3;39067;U16;;Alarm 1;alarm_1;1.000000;0.000000;N/A;9
+119;3;39068;U16;;Alarm 2;alarm_2;1.000000;0.000000;N/A;9
+120;3;39069;U16;;Alarm 3;alarm_3;1.000000;0.000000;N/A;9
+121;3;39070;I16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+122;3;39071;I16;;PV1 current;pv1_current;0.010000;0.000000;A;4
+123;3;39072;I16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+124;3;39073;I16;;PV2 current;pv2_current;0.010000;0.000000;A;4
+125;3;39074;I16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+126;3;39075;I16;;PV3 current;pv3_current;0.010000;0.000000;A;4
+127;3;39076;I16;;PV4 voltage;pv4_voltage;0.100000;0.000000;V;4
+128;3;39077;I16;;PV4 current;pv4_current;0.010000;0.000000;A;4
+129;3;39118;I32;;Total PV input power;total_pv_input_power;0.001000;0.000000;kW;4
+130;3;39120;U16;;reserve;reserve_3;1.000000;0.000000;;0
+131;3;39121;U16;;reserve;reserve_4;1.000000;0.000000;;0
+132;3;39122;U16;;reserve;reserve_5;1.000000;0.000000;;0
+133;3;39123;I16;;Grid R Phase Voltage;grid_r_phase_voltage;0.100000;0.000000;V;4
+134;3;39124;I16;;Grid S Phase Voltage;grid_s_phase_voltage;0.100000;0.000000;V;4
+135;3;39125;I16;;Grid T Phase Voltage;grid_t_phase_voltage;0.100000;0.000000;V;4
+136;3;39126;I32;;Inverter R Phase Current;inverter_r_phase_current;0.001000;0.000000;A;4
+137;3;39128;I32;;Inverter S Phase Current;inverter_s_phase_current;0.001000;0.000000;A;4
+138;3;39130;I32;;Inverter T Phase Current;inverter_t_phase_current;0.001000;0.000000;A;4
+139;3;39132;U32;;reserve;reserve_6;1.000000;0.000000;;0
+140;3;39134;I32;;Active power;RealPower;0.001000;0.000000;kW;4
+141;3;39136;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
+142;3;39138;I16;;Power Factor;CosPhi;0.001000;0.000000;N/A;4
+143;3;39139;I16;;Grid Frequency;GridFrequency;0.010000;0.000000;Hz;4
+144;3;39140;U16;;reserve;reserve_7;1.000000;0.000000;;0
+145;3;39141;I16;;Internal temperature;internal_temperature;0.100000;0.000000;;4
+146;3;39142;U16;;reserve;reserve_8;1.000000;0.000000;;0
+147;3;39143;U16;;reserve;reserve_9;1.000000;0.000000;;0
+148;3;39144;U16;;reserve;reserve_10;1.000000;0.000000;;0
+149;3;39145;U32;;reserve;reserve_11;1.000000;0.000000;;0
+150;3;39147;U32;;reserve;reserve_12;1.000000;0.000000;;0
+151;3;39149;U32;;Cumulative power generation;cumulative_power_generation;0.010000;0.000000;kWh;4
+152;3;39151;U32;;Power generation on the day;power_generation_on_the_day;0.010000;0.000000;kWh;4
+153;3;39153;U16;;reserve;reserve_13;1.000000;0.000000;;0
+154;3;39154;U32;;reserve;reserve_14;1.000000;0.000000;;0
+155;3;39156;U16;;reserve;reserve_15;1.000000;0.000000;;0
+156;3;39157;U16;;reserve;reserve_16;1.000000;0.000000;;0
+157;3;39158;U32;;reserve;reserve_17;1.000000;0.000000;;0
+158;3;39160;U16;;reserve;reserve_18;1.000000;0.000000;;0
+159;3;39161;U16;;reserve;reserve_19;1.000000;0.000000;;0
+160;3;39162;I32;;[Energy storage module 1] Charge and discharge;energy_storage_module_1_charge_and_discharge;1.000000;0.000000;W;4
+161;3;39164;U32;;reserve;reserve_20;1.000000;0.000000;;0
+162;3;39166;U32;;reserve;reserve_21;1.000000;0.000000;;0
+163;3;39168;I32;;[Meter collection] Active power *;meter_collection_active_power;1.000000;0.000000;W;4
+164;3;39170;U16;;reserve;reserve_22;1.000000;0.000000;;0
+165;3;39171;U16;;reserve;reserve_23;1.000000;0.000000;;0
+166;3;39172;U16;;reserve;reserve_24;1.000000;0.000000;;0
+167;3;39200;U16;;reserve;reserve_25;1.000000;0.000000;;0
+168;3;39201;U16;;EPS R Phase Voltage;eps_r_phase_voltage;0.100000;0.000000;V;4
+169;3;39202;U16;;EPS S Phase Voltage;eps_s_phase_voltage;0.100000;0.000000;V;4
+170;3;39203;U16;;EPS T Phase Voltage;eps_t_phase_voltage;0.100000;0.000000;V;4
+171;3;39204;I32;;EPS R Phase Current;eps_r_phase_current;0.001000;0.000000;A;4
+172;3;39206;I32;;EPS S Phase Current;eps_s_phase_current;0.001000;0.000000;A;4
+173;3;39208;I32;;EPS T Phase Current;eps_t_phase_current;0.001000;0.000000;A;4
+174;3;39210;I32;;EPS R Phase Power;eps_r_phase_power;1.000000;0.000000;W;4
+175;3;39212;I32;;EPS S Phase Power;eps_s_phase_power;1.000000;0.000000;W;4
+176;3;39214;I32;;EPS T Phase Power;eps_t_phase_power;1.000000;0.000000;W;4
+177;3;39216;I32;;EPS Combined Power;eps_combined_power;1.000000;0.000000;W;4
+178;3;39218;I16;;EPS Frequency;eps_frequency;0.010000;0.000000;Hz;4
+179;3;39219;I32;;Load R Phase Power;load_r_phase_power;1.000000;0.000000;W;4
+180;3;39221;I32;;Load S Phase Power;load_s_phase_power;1.000000;0.000000;W;4
+181;3;39223;I32;;Load T Phase Power;load_t_phase_power;1.000000;0.000000;W;4
+182;3;39225;I32;;Load Combined Power;load_combined_power;1.000000;0.000000;W;4
+183;3;39227;I16;;Battery1 Voltage;battery1_voltage;0.100000;0.000000;V;4
+184;3;39228;I32;;Battery1 Current;battery1_current;0.001000;0.000000;A;4
+185;3;39230;I32;;Battery1 Power;battery1_power;1.000000;0.000000;W;4
+186;3;39232;I16;;Battery2 Voltage;battery2_voltage;0.100000;0.000000;V;4
+187;3;39233;I32;;Battery2 Current;battery2_current;0.001000;0.000000;A;4
+188;3;39235;I32;;Battery2 Power;battery2_power;1.000000;0.000000;W;4
+189;3;39237;I32;;Battery Combined Power;battery_combined_power;1.000000;0.000000;W;4
+190;3;39239;I16;;reserve;reserve_26;1.000000;0.000000;;0
+191;3;39240;I16;;reserve;reserve_27;1.000000;0.000000;;0
+192;3;39241;I16;;reserve;reserve_28;1.000000;0.000000;;0
+193;3;39242;I32;;reserve;reserve_29;1.000000;0.000000;;0
+194;3;39244;I32;;reserve;reserve_30;1.000000;0.000000;;0
+195;3;39246;I32;;reserve;reserve_31;1.000000;0.000000;;0
+196;3;39248;I32;;INV R Phase Active Power;inv_r_phase_active_power;1.000000;0.000000;W;4
+197;3;39250;I32;;INV S Phase Active Power;inv_s_phase_active_power;1.000000;0.000000;W;4
+198;3;39252;I32;;INV T Phase Active Power;inv_t_phase_active_power;1.000000;0.000000;W;4
+199;3;39254;I32;;reserve;reserve_32;1.000000;0.000000;;0
+200;3;39256;I32;;INV R Phase Reactive Power;inv_r_phase_reactive_power;1.000000;0.000000;Var;4
+201;3;39258;I32;;INV S Phase Reactive Power;inv_s_phase_reactive_power;1.000000;0.000000;Var;4
+202;3;39260;I32;;INV T Phase Reactive Power;inv_t_phase_reactive_power;1.000000;0.000000;Var;4
+203;3;39262;I32;;reserve;reserve_33;1.000000;0.000000;;0
+204;3;39264;I32;;INV R Phase Apparent Power;inv_r_phase_apparent_power;1.000000;0.000000;VA;4
+205;3;39266;I32;;INV S Phase Apparent Power;inv_s_phase_apparent_power;1.000000;0.000000;VA;4
+206;3;39268;I32;;INV T Phase Apparent Power;inv_t_phase_apparent_power;1.000000;0.000000;VA;4
+207;3;39270;I32;;INV Combined Apparent Power;inv_combined_apparent_power;1.000000;0.000000;VA;4
+208;3;39272;I16;;INV Frequency R;inv_frequency_r;0.010000;0.000000;Hz;4
+209;3;39273;I16;;INV Frequency S;inv_frequency_s;0.010000;0.000000;Hz;4
+210;3;39274;I16;;INV Frequency T;inv_frequency_t;0.010000;0.000000;Hz;4
+211;3;39275;I32;;Available Import Power;available_import_power;1.000000;0.000000;W;4
+212;3;39277;I32;;Available Export Power;available_export_power;1.000000;0.000000;W;4
+213;3;39279;I32;;PV1 Power;pv1_power;1.000000;0.000000;W;4
+214;3;39281;I32;;PV2 Power;pv2_power;1.000000;0.000000;W;4
+215;3;39283;I32;;PV3 Power;pv3_power;1.000000;0.000000;W;4
+216;3;39285;I32;;PV4 Power;pv4_power;1.000000;0.000000;W;4
+217;3;39327;I16;;MPPT1 Voltage;mppt1_voltage;0.100000;0.000000;V;4
+218;3;39328;I16;;MPPT1 Current;mppt1_current;0.010000;0.000000;A;4
+219;3;39329;I32;;MPPT1 Power;mppt1_power;1.000000;0.000000;W;4
+220;3;39331;I16;;MPPT2 Voltage;mppt2_voltage;0.100000;0.000000;V;4
+221;3;39332;I16;;MPPT2 Current;mppt2_current;0.010000;0.000000;A;4
+222;3;39333;I32;;MPPT2 Power;mppt2_power;1.000000;0.000000;W;4
+223;3;39335;I16;;MPPT3 Voltage;mppt3_voltage;0.100000;0.000000;V;4
+224;3;39336;I16;;MPPT3 Current;mppt3_current;0.010000;0.000000;A;4
+225;3;39337;I32;;MPPT3 Power;mppt3_power;1.000000;0.000000;W;4
+226;3;39423;U16;;System SoC;system_soc;1.000000;0.000000;'%;4
+227;3;39424;I16;;Power Factor for Phase-R;power_factor_for_phaser;0.001000;0.000000;N/A;4
+228;3;39425;I16;;Power Factor for Phase-S;power_factor_for_phases;0.001000;0.000000;N/A;4
+229;3;39426;I16;;Power Factor for Phase-T;power_factor_for_phaset;0.001000;0.000000;N/A;4
+230;3;39600;U16;;reserve;reserve_34;1.000000;0.000000;N/A;0
+231;3;39601;U32;;PV total power;pv_total_power;0.010000;0.000000;kWh;4
+232;3;39603;U32;;Total PV power today;total_pv_power_today;0.010000;0.000000;kWh;4
+233;3;39605;U32;;Total charging capacity;total_charging_capacity;0.010000;0.000000;kWh;4
+234;3;39607;U32;;Todays total charging capacity;todays_total_charging_capacity;0.010000;0.000000;kWh;4
+235;3;39609;U32;;Total discharge power;total_discharge_power;0.010000;0.000000;kWh;4
+236;3;39611;U32;;Todays total discharge power;todays_total_discharge_power;0.010000;0.000000;kWh;4
+237;3;39613;U32;;Total power of feeder network;total_power_of_feeder_network;0.010000;0.000000;kWh;4
+238;3;39615;U32;;Todays total feeder power;todays_total_feeder_power;0.010000;0.000000;kWh;4
+239;3;39617;U32;;Total power taken;total_power_taken;0.010000;0.000000;kWh;4
+240;3;39619;U32;;Todays total electricity consumption;todays_total_electricity_consumption;0.010000;0.000000;kWh;4
+241;3;39621;U32;;Output total power;output_total_power;0.010000;0.000000;kWh;4
+242;3;39623;U32;;Total power output today;total_power_output_today;0.010000;0.000000;kWh;4
+243;3;39625;U32;;Enter total power;enter_total_power;0.010000;0.000000;kWh;4
+244;3;39627;U32;;Enter total power today;enter_total_power_today;0.010000;0.000000;kWh;4
+245;3;39629;U32;;Total load power;total_load_power;0.010000;0.000000;kWh;4
+246;3;39631;U32;;Total load power today;total_load_power_today;0.010000;0.000000;kWh;4
+247;3;39633;U32;;Total BMS charging capacity;total_bms_charging_capacity;0.010000;0.000000;kWh;4
+248;3;39635;U32;;Todays total BMS charging capacity;todays_total_bms_charging_capacity;0.010000;0.000000;kWh;4
+249;3;39637;U32;;Total BMS discharge power;total_bms_discharge_power;0.010000;0.000000;kWh;4
+250;3;39639;U32;;Todays total BMS discharge power;todays_total_bms_discharge_power;0.010000;0.000000;kWh;4
+251;3;45000;U16;;reserve;reserve_35;1.000000;0.000000;N/A;0
+252;3;45001;U16;;reserve;reserve_36;1.000000;0.000000;N/A;0
+253;3;45002;U16;;Factory Reset;factory_reset;1.000000;0.000000;N/A;1
+254;3;45003;U16;;Battery power active;battery_power_active;1.000000;0.000000;N/A;1
+255;3;45004;U16;;reserve;reserve_37;1.000000;0.000000;N/A;0
+256;3;45005;U16;;Battery power shut- dowm;battery_power_shut_dowm;1.000000;0.000000;N/A;1
+257;3;45006;U16;;Battery power ON/OFF;battery_power_onoff;1.000000;0.000000;N/A;4
+258;3;45007;U16;;Battery Connect Enable;battery_connect_enable;1.000000;0.000000;N/A;1
+259;3;46000;U16;;reserve;reserve_38;1.000000;0.000000;N/A;0
+260;3;46001;U16;;Remote Control;remote_control;1.000000;0.000000;N/A;1
+261;3;46002;U16;;Remote Timeout Set;remote_timeout_set;1.000000;0.000000;s;1
+262;3;46003;I32;;Remote Control Active Power Command;remote_control_active_power_command;1.000000;0.000000;W;1
+263;3;46005;I32;;Remote Control Reactive Power Command;remote_control_reactive_power_command;1.000000;0.000000;Var;1
+264;3;46007;U16;;Remote Timeout Countdown;remote_timeout_countdown;1.000000;0.000000;s;4
+265;3;46018;I32;;Pwr_limit Bat_Up;pwr_limit_bat_up;1.000000;0.000000;W;4
+266;3;46020;I32;;Pwr_limit Bat_Dn;pwr_limit_bat_dn;1.000000;0.000000;W;4
+267;3;46026;I32;;Remote Control PV Power Command;remote_control_pv_power_command;1.000000;0.000000;W;1
+268;3;46500;U16;;reserve;reserve_39;1.000000;0.000000;N/A;0
+269;3;46501;I32;;Import Power Limit *;import_power_limit;1.000000;0.000000;W;1
+270;3;46503;U16;;Threshold SOC *;threshold_soc;1.000000;0.000000;'%;1
+271;3;46504;I32;;Export Peak Limit *;export_peak_limit;1.000000;0.000000;W;1
+272;3;46506;U16;;ChrInLowIm port *;chrinlowim_port;1.000000;0.000000;N/A;1
+273;3;46507;U16;;ChrInLowTi me1- StartHour *;chrinlowti_me1_starthour;1.000000;0.000000;N/A;1
+274;3;46508;U16;;ChrInLowTi me1- StartMinute *;chrinlowti_me1_startminute;1.000000;0.000000;N/A;1
+275;3;46509;U16;;ChrInLowTi me1- EndHour *;chrinlowti_me1_endhour;1.000000;0.000000;N/A;1
+276;3;46510;U16;;ChrInLowTi me1- EndMinute *;chrinlowti_me1_endminute;1.000000;0.000000;N/A;1
+277;3;46511;U16;;ChrInLowTi me2- StartHour *;chrinlowti_me2_starthour;1.000000;0.000000;N/A;1
+278;3;46512;U16;;ChrInLowTi me2- StartMinute *;chrinlowti_me2_startminute;1.000000;0.000000;N/A;1
+279;3;46513;U16;;ChrInLowTi me2 - EndHour *;chrinlowti_me2_endhour;1.000000;0.000000;N/A;1
+280;3;46514;U16;;ChrInLowTi me2- EndMinute *;chrinlowti_me2_endminute;1.000000;0.000000;N/A;1
+281;3;46601;U16;;reserve;reserve_40;1.000000;0.000000;N/A;0
+282;3;46602;U16;;reserve;reserve_41;1.000000;0.000000;N/A;0
+283;3;46603;U16;;reserve;reserve_42;1.000000;0.000000;N/A;0
+284;3;46604;U16;;reserve;reserve_43;1.000000;0.000000;N/A;0
+285;3;46605;U16;;reserve;reserve_44;1.000000;0.000000;N/A;0
+286;3;46606;U16;;reserve;reserve_45;1.000000;0.000000;N/A;0
+287;3;46607;I16;;Battery maximum charging current *;battery_maximum_charging_current;0.100000;0.000000;A;1
+288;3;46608;I16;;Battery maximum discharge current *;battery_maximum_discharge_current;0.100000;0.000000;A;1
+289;3;46609;U16;;Minimum SoC *;minimum_soc;1.000000;0.000000;'%;1
+290;3;46610;U16;;Maximum SoC *;maximum_soc;1.000000;0.000000;'%;1
+291;3;46611;U16;;Minimum SoC OnGrid *;minimum_soc_ongrid;1.000000;0.000000;'%;1
+292;3;46612;U16;;EPS Frequency Select * _;eps_frequency_select;1.000000;0.000000;N/A;1
+293;3;46613;U16;;0:Disable 2:EPS Mode 3:Ups Mode;v_0disable_2eps_mode_3ups_mode;1.000000;0.000000;N/A;1
+294;3;46614;U16;;0:Disable 1:Enable;v_0disable_1enable;1.000000;0.000000;N/A;1
+295;3;46615;U16;;0:Disable 1:Enable;v_0disable_1enable_1;1.000000;0.000000;N/A;1
+296;3;46616;I32;;[0, Pmax];v_0_pmax;1.000000;0.000000;W;1
+297;3;46618;I16;;H3-G2: [0, 200] KH: [2, 100] 812: [2, 100];h3g2_0_200_kh_2_100_812_2_100;0.100000;0.000000;A;1
+298;3;46619;I16;;H3-G2: [0, 200] KH: [2, 100] 812: [2, 100];h3g2_0_200_kh_2_100_812_2_100_1;0.100000;0.000000;A;1
+299;3;46620;U16;;[10,100];v_10100;1.000000;0.000000;'%;1
+300;3;48000;U16;;Time Mode Flag;time_mode_flag;1.000000;0.000000;N/A;1
+301;3;48001;U16;;reserve;reserve_46;1.000000;0.000000;N/A;0
+302;3;48002;U16;;reserve;reserve_47;1.000000;0.000000;N/A;0
+303;3;48003;U16;;reserve;reserve_48;1.000000;0.000000;N/A;0
+304;3;48004;U16;;reserve;reserve_49;1.000000;0.000000;N/A;0
+305;3;48005;U16;;reserve;reserve_50;1.000000;0.000000;N/A;0
+306;3;48006;U16;;reserve;reserve_51;1.000000;0.000000;N/A;0
+307;3;48007;U16;;reserve;reserve_52;1.000000;0.000000;N/A;0
+308;3;48008;U16;;reserve;reserve_53;1.000000;0.000000;N/A;0
+309;3;48009;U16;;reserve;reserve_54;1.000000;0.000000;N/A;0
+310;3;49000;U32;;System Time;system_time;1.000000;0.000000;N/A;1
+311;3;49002;U16;;reserve;reserve_55;1.000000;0.000000;;0
+312;3;49003;U16;;reserve;reserve_56;1.000000;0.000000;;0
+313;3;49004;U16;;reserve;reserve_57;1.000000;0.000000;;0
+314;3;49005;I16;;[ Power Grid Scheduling ] None Power compensatio n (PF);power_grid_scheduling_none_power_compensatio_n_pf;0.001000;0.000000;N/A;1
+315;3;49006;I16;;[Power Grid Scheduling] None Power compensatio n (Q/S);power_grid_scheduling_none_power_compensatio_n_qs;0.001000;0.000000;N/A;1
+316;3;49007;I16;;[Power grid dispatch] Active power percentage derating (0.1%);power_grid_dispatch_active_power_percentage_derating_01;0.100000;0.000000;'%;1
+317;3;49008;U32;;[Power grid dispatch] Fixed Active power derated (W);power_grid_dispatch_fixed_active_power_derated_w;1.000000;0.000000;W;1
+318;3;49010;I32;;[Power grid dispatch] Night Reactive power compensatio n (kVar);power_grid_dispatch_night_reactive_power_compensatio_n_kvar;0.001000;0.000000;kVar;1
+319;3;49075;U16;;reserve;reserve_58;1.000000;0.000000;;0
+320;3;49076;U16;;reserve;reserve_59;1.000000;0.000000;;0
+321;3;49077;U16;;Power on;cmdOn;1.000000;0.000000;N/A;1
+322;3;49078;U16;;Shut down;shut_down;1.000000;0.000000;N/A;1
+323;3;49079;U16;;Grid standard code;grid_standard_code;1.000000;0.000000;N/A;1
+324;3;49080;U32;;reserve;reserve_60;1.000000;0.000000;;0
+325;3;49082;U32;;reserve;reserve_61;1.000000;0.000000;;0
+326;3;49084;U32;;reserve;reserve_62;1.000000;0.000000;;0
+327;3;49086;U16;;reserve;reserve_63;1.000000;0.000000;;0
+328;3;49087;U16;;reserve;reserve_64;1.000000;0.000000;;0
+329;3;49088;U16;;reserve;reserve_65;1.000000;0.000000;;0
+330;3;49130;U32;;reserve;reserve_66;1.000000;0.000000;;0
+331;3;49132;U32;;reserve;reserve_67;1.000000;0.000000;;0
+332;3;49134;U32;;reserve;reserve_68;1.000000;0.000000;;0
+333;3;49136;I32;;Grid point power limit;grid_point_power_limit;1.000000;0.000000;W;1
+334;3;49138;U16;;reserve;reserve_69;1.000000;0.000000;;0
+335;3;49139;U16;;reserve;reserve_70;1.000000;0.000000;;0
+336;3;49140;U16;;reserve;reserve_71;1.000000;0.000000;;0
+337;3;49141;U32;;reserve;reserve_72;1.000000;0.000000;;0
+338;3;49203;U16;;Work mode;work_mode;1.000000;0.000000;N/A;1
+339;3;49206;U16;;DRM;drm;1.000000;0.000000;N / A;1
+340;3;49207;U16;;Meter1 /CT1;meter1_ct1;1.000000;0.000000;N / A;1
+341;3;49208;U16;;Meter2 /CT2 *;meter2_ct2;1.000000;0.000000;N / A;1
+342;3;49209;U16;;BUZZER;buzzer;1.000000;0.000000;N / A;1
+343;3;49210;U16;;MPPT Switch (PV;mppt_switch_pv;1.000000;0.000000;N / A;1
+344;3;49211;U16;;Relay1 Switch;relay1_switch;1.000000;0.000000;N/A;1
+345;3;49212;U16;;Relay2 Switch;relay2_switch;1.000000;0.000000;N/A;1
+346;3;49221;U16;;Brightness Level;brightness_level;1.000000;0.000000;'%;1
+347;3;49222;U16;;Date-Year;dateyear;1.000000;0.000000;N/A;1
+348;3;49223;U16;;Date-Month;datemonth;1.000000;0.000000;N/A;1
+349;3;49224;U16;;Date-Day;dateday;1.000000;0.000000;N/A;1
+350;3;49225;U16;;Time-Hour;timehour;1.000000;0.000000;N/A;1
+351;3;49226;U16;;Time-Minute;timeminute;1.000000;0.000000;N/A;1
+352;3;49227;U16;;Time- Second;time_second;1.000000;0.000000;N/A;1
+353;3;49228;U16;;System Power State;system_power_state;1.000000;0.000000;N/A;4
+354;3;49229;U16;;Idle State;idle_state;1.000000;0.000000;N/A;1
+355;3;49230;U16;;Idle Loadpower Threshold;idle_loadpower_threshold;1.000000;0.000000;W;1
+356;3;49231;U16;;Clear Idle Count;clear_idle_count;1.000000;0.000000;N/A;1
+357;3;49232_8;STRING;;Key Password;key_password;1.000000;0.000000;N/A;1
+358;3;49240;U16;;Network Status;network_status;1.000000;0.000000;N/A;9
+359;3;49241;U16;;Ripple Control Enable;ripple_control_enable;1.000000;0.000000;N/A;1
+360;3;49242;U16;;Trigger Signal;trigger_signal;1.000000;0.000000;N/A;4
+361;3;49243;U16;;K1 Power Ratio;k1_power_ratio;1.000000;0.000000;'%;1
+362;3;49244;U16;;K2 Power Ratio;k2_power_ratio;1.000000;0.000000;'%;1
+363;3;49245;U16;;K3 Power Ratio;k3_power_ratio;1.000000;0.000000;'%;1
+364;3;49246;U16;;K4 Power;k4_power;1.000000;0.000000;'%;1
+365;3;49247;U16;;OffGridMast er;offgridmast_er;1.000000;0.000000;N/A;1
+366;3;49248;I16;;Meter Compensati on;meter_compensati_on;1.000000;0.000000;W;1
+367;3;49249;I16;;GFCI Current;gfci_current;0.010000;0.000000;A;4
+368;3;49251;U16;;;;1.000000;0.000000;;1
+369;3;49252;U16;;G100 State;g100_state;1.000000;0.000000;N/A;1
+370;3;49253;U16;;G100 Reset For End User;g100_reset_for_end_user;1.000000;0.000000;N/A;1
+371;3;49254;U16;;G100 Reset For Admin;g100_reset_for_admin;1.000000;0.000000;N/A;1
+372;3;49255;U16;;Grid Charge Flag;grid_charge_flag;1.000000;0.000000;N/A;1
+373;3;49256;U16;;ECO Mode;eco_mode;1.000000;0.000000;N/A;1
+374;3;49257;I32;;Easy Mode Power;easy_mode_power;1.000000;0.000000;W;1
+375;3;49259;U16;;Low Power Mode;low_power_mode;1.000000;0.000000;N/A;1
+376;3;49501;I32;;PV Limited Power;pv_limited_power;1.000000;0.000000;W;1
+377;3;49503;U16;;Forced Standby;forced_standby;1.000000;0.000000;N/A;1
+378;3;49504;U16;;Shadow Scan (Global MPPT);shadow_scan_global_mppt;1.000000;0.000000;N/A;1
+379;3;49505;U16;;Shadow Scan Interval (Global MPPT);shadow_scan_interval_global_mppt;1.000000;0.000000;Min;1
+380;3;53400;U16;;BMS Warm Up Enable;bms_warm_up_enable;1.000000;0.000000;N/A;1
+381;3;53408;U16;;High Byte is hour, and its range is [0, 23]. Low Byte is minute, and its range is [0, 59].;high_byte_is_hour_and_its_range_is_0_23_low_byte_is_minute_and_its_range_is_0_59;1.000000;0.000000;;1
+382;3;53409;U16;;0: Disable 1: Enable;v_0_disable_1_enable;1.000000;0.000000;;1
+383;3;53410;U16;;High Byte is hour, and its range is [0, 23]. Low Byte is minute, and its range is [0, 59].;high_byte_is_hour_and_its_range_is_0_23_low_byte_is_minute_and_its_range_is_0_59_1;1.000000;0.000000;;1
+384;3;53411;U16;;High Byte is hour, and its range is [0, 23]. Low Byte is minute, and its range is [0, 59].;high_byte_is_hour_and_its_range_is_0_23_low_byte_is_minute_and_its_range_is_0_59_2;1.000000;0.000000;;1
+385;3;53412;I16;;"High Byte is minimum start temperature; Low Byte is maximum start temperature.";high_byte_is_minimum_start_temperature_low_byte_is_maximum_start_temperature;1.000000;0.000000;;4
+386;3;53413;I16;;"High Byte is minimum stop temperature; Low Byte is maximum stop temperature.";high_byte_is_minimum_stop_temperature_low_byte_is_maximum_stop_temperature;1.000000;0.000000;;4
+387;3;53414;U16;;"High Byte is BMS-1 warm up state: 0: The battery is in a stopped warm up state; 1: The battery is in a ready warm up state; 2: The battery is in the warm up state; 3: The battery is in a ready stopped warm up state; 4: Battery is in self";high_byte_is_bms1_warm_up_state_0_the_battery_is_in_a_stopped_warm_up_state_1_the_battery_is_in_a_ready_warm_up_state_2_the_battery_is_in_the_warm_up_state_3_the_battery_is_in_a_ready_stopped_warm_up_state_4_battery_is_in_self;1.000000;0.000000;;4
+388;3;53415;U16;;"High Byte is BMS-2 warm up state: 0: The battery is in a stopped warm up state; 1: The battery is in a ready warm up state; 2: The battery is in the warm up state; 3: The battery is in a ready stopped warm up state; 4: Battery is in self warm up state; Low Byte is Battery warm up function enable flag: 0: The battery has no warm up function; 1: The battery has a warm up function;";high_byte_is_bms2_warm_up_state_0_the_battery_is_in_a_stopped_warm_up_state_1_the_battery_is_in_a_ready_warm_up_state_2_the_battery_is_in_the_warm_up_state_3_the_battery_is_in_a_ready_stopped_warm_up_state_4_battery_is_in_self_warm_up_state_low_byte_is_battery_warm_up_function_enable_flag_0_the_battery_has_no_warm_up_function_1_the_battery_has_a_warm_up_function;1.000000;0.000000;;4
