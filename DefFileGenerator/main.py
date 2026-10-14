@@ -208,6 +208,37 @@ def validate_command(args: argparse.Namespace) -> None:
         sys.exit(1)
 
 
+def tag_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'tag': enriches a definition CSV with canonical SunPM tags.
+
+    Args:
+        args: Parsed command line arguments.
+    """
+    input_file = getattr(args, "input_file", None)
+    if not input_file or not os.path.exists(input_file):
+        logging.error(f"File not found: {input_file}")
+        sys.exit(1)
+
+    output = getattr(args, "output", None) or input_file
+    equipment_type = getattr(args, "category", "")
+    overwrite = getattr(args, "overwrite", False)
+    normalize_legacy = not getattr(args, "no_normalize", False)
+
+    from DefFileGenerator.knowledge_miner import enrich_definition_file
+
+    count = enrich_definition_file(
+        input_path=input_file,
+        output_path=output,
+        equipment_type=equipment_type,
+        overwrite_existing=overwrite,
+        normalize_legacy=normalize_legacy,
+    )
+    logging.info(
+        f"SunPM Tag enrichment complete for {input_file}. Updated {count} tag(s). Saved to {output}"
+    )
+
+
 def generate_command(args: argparse.Namespace) -> None:
     """
     Subcommand handler for 'generate': converts an intermediate register CSV into Webdyn format.
@@ -441,6 +472,25 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "--no-validate", action="store_true", help="Skip post-generation validation"
     )
 
+    # Tag
+    parser_tag = subparsers.add_parser(
+        "tag", help="Enrich definition CSV with official Webdyn SunPM tags"
+    )
+    add_common_flags(parser_tag)
+    parser_tag.add_argument("input_file", help="Definition CSV file")
+    parser_tag.add_argument("-o", "--output", help="Output definition CSV (defaults to in-place)")
+    parser_tag.add_argument(
+        "--category",
+        default="",
+        help="Equipment category (Inverter, Meter, Sensor, Battery, etc.)",
+    )
+    parser_tag.add_argument("--overwrite", action="store_true", help="Overwrite existing tags")
+    parser_tag.add_argument(
+        "--no-normalize",
+        action="store_true",
+        help="Do not normalize legacy tags to SunPM canonical standard",
+    )
+
     args = parser.parse_args(argv)
 
     if getattr(args, "gui", False) or args.command == "gui":
@@ -479,6 +529,8 @@ def _run_cli(argv: list[str] | None = None) -> None:
         generate_command(args)
     elif args.command == "run":
         run_command(args)
+    elif args.command == "tag":
+        tag_command(args)
 
 
 def main(args: list[str] | None = None) -> None:

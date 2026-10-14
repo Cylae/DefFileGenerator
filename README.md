@@ -581,6 +581,7 @@ DefFileGenerator/
 ├── stress_test_data/         # Real-world vendor datasets for stress testing
 ├── docs/                     # Full technical documentation & audit reports
 │   ├── architecture.md       # Architecture & flowcharts
+│   ├── WEBDYN_TAGS_REFERENCE.md # Official SunPM tag dictionary & supervisory telemetry reference
 │   ├── AUDIT_REPORT.md       # Security & code audit evidence
 │   ├── RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md # Technical audit report
 │   ├── input-format.md       # Input format reference

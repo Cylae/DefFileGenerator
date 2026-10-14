@@ -1,0 +1,2774 @@
+{
+  "sheets": [
+    "3E-input",
+    "TAG_INVERTER",
+    "TAG_METER",
+    "TAG_BATTERY",
+    "TAG_SENSOR",
+    "TAG_DISPLAY",
+    "TAG LOGGER",
+    "TAG_IO",
+    "TAG_PLANT",
+    "TagsPrésents_18_12_25",
+    "InverterBasicControl",
+    "InverterActiveControl",
+    "GridActivePower"
+  ],
+  "categories": {
+    "Inverter": [
+      {
+        "tag": "SERIAL",
+        "previous_tags": [
+          "DisplaySerial",
+          "DisplaySerialNumber"
+        ],
+        "description": "Serial Number of inverter",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "MODEL",
+        "previous_tags": [
+          "DisplayModel"
+        ],
+        "description": "Model of inverter",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "MANUFACTURER",
+        "previous_tags": [
+          "ManufacturerStr"
+        ],
+        "description": "Manufacturer of inverter",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "NAME",
+        "previous_tags": [],
+        "description": "Name of inverter",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "P_RATED",
+        "previous_tags": [
+          "NominalPower"
+        ],
+        "description": "Nominal Active Power",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "Q_RATED",
+        "previous_tags": [],
+        "description": "Nominal Reactive Power",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "STATE[1..x]",
+        "previous_tags": [],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "ALARM[1..x]",
+        "previous_tags": [],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_ON",
+        "previous_tags": [
+          "cmdOn"
+        ],
+        "description": "Active High Switch",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_OFF",
+        "previous_tags": [
+          "cmdOff"
+        ],
+        "description": "Active Low Switch",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_P_AC_LIM_PERCENT",
+        "previous_tags": [],
+        "description": "Active Power Limitation in percent",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_P_AC_LIM_ABS",
+        "previous_tags": [],
+        "description": "Active Power Limitation (in unit specified in def file : W, kW ...)",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_P_AC_SET_PERCENT",
+        "previous_tags": [
+          "cmdPwrPercent"
+        ],
+        "description": "Active Power Setpoint in percent",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_P_AC_SET_ABS",
+        "previous_tags": [
+          "cmdPwr"
+        ],
+        "description": "Active Power Setpoint (in unit specified in def file  : W, kW ...)",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_P_ENA",
+        "previous_tags": [
+          "WMaxLim_Ena"
+        ],
+        "description": "Power Limitation Enable Latch",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_P_MODE",
+        "previous_tags": [],
+        "description": "Selection mode de pilotage de l'actif",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_RAMP_TIME_S",
+        "previous_tags": [
+          "WMaxLimPct_RmpTms"
+        ],
+        "description": "Ramp time for moving from current setpoint to new setpoint.",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_REVERT_TIME_S",
+        "previous_tags": [
+          "WMaxLimPct_RvrtTms"
+        ],
+        "description": "Timeout period for power limit.",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "VAR_P_AC_REPEAT_TIME_S",
+        "previous_tags": [],
+        "description": "Repeating time for P_AC control",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_AC_LIM_PERCENT",
+        "previous_tags": [],
+        "description": "Reactive Power Limitation in percent",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_AC_LIM_ABS",
+        "previous_tags": [],
+        "description": "Reactive Power Limitation (in unit specified in def file  : VAR, kVAR ...)",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_AC_SET_PERCENT",
+        "previous_tags": [],
+        "description": "Reactive Power Setpoint in percent",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_AC_SET_ABS",
+        "previous_tags": [],
+        "description": "Reactive Power Setpoint  (in unit specified in def file  : VAR, kVAR ...)",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_ENA",
+        "previous_tags": [
+          "VArPct_Ena"
+        ],
+        "description": "Activation consigne reactif",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_MODE",
+        "previous_tags": [
+          "VArPct_Mod"
+        ],
+        "description": "Selection mode de pilotage du réactif",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_RAMP_TIME_S",
+        "previous_tags": [
+          "VArPct_RmpTms"
+        ],
+        "description": "Ramp time for moving from current setpoint to new setpoint.",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_REVERT_TIME_S",
+        "previous_tags": [
+          "VArPct_RvrtTms"
+        ],
+        "description": "Timeout period for power limit.",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_PF_INT",
+        "previous_tags": [
+          "cmdPFint"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_PERCENT",
+        "previous_tags": [
+          "cmdQPct"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_Q_ANGLE",
+        "previous_tags": [
+          "cmdAngle"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "VAR_PF_SIGN",
+        "previous_tags": [],
+        "description": "Indication du signe du facteur de puissance",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_PF",
+        "previous_tags": [
+          "cmdPF",
+          "OutPFSet"
+        ],
+        "description": "Power Factor Setpoint",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "E_DAY",
+        "previous_tags": [
+          "EnergyDay"
+        ],
+        "description": "Daily Energy Generation",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "E_TOT",
+        "previous_tags": [
+          "EnergyTotal"
+        ],
+        "description": "Total Energy Generation",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "TOT",
+        "previous_tags": [],
+        "description": "Total Operating Time",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "TEMP_INT",
+        "previous_tags": [],
+        "description": "Internal Temperature",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "S_AC",
+        "previous_tags": [],
+        "description": "Total Apparent Power",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "S_AC_[1..3]",
+        "previous_tags": [],
+        "description": "Apparent Power Phase 1..3",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "P_AC",
+        "previous_tags": [
+          "RealPower"
+        ],
+        "description": "Total Active Power",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "P_AC_[1..3]",
+        "previous_tags": [],
+        "description": "Active Power phase 1..3",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "PF_[1..3]",
+        "previous_tags": [],
+        "description": "Power Factor Phase 1..3",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "PF",
+        "previous_tags": [
+          "cosPHI",
+          "CosPhi"
+        ],
+        "description": "Power Factor",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "Q_AC",
+        "previous_tags": [
+          "ReactivePower"
+        ],
+        "description": "Total Reative Power",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "Q_AC_[1..3]",
+        "previous_tags": [],
+        "description": "Reactive Power Phase 1..3",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "FREQ_[1..3]",
+        "previous_tags": [
+          "GridFrequency1-2-3"
+        ],
+        "description": "Grid Frequency Phase 1..3",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "FREQ",
+        "previous_tags": [
+          "GridFrequency"
+        ],
+        "description": "Grid Frequency",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "I_AC",
+        "previous_tags": [],
+        "description": "AC Current",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "I_AC_[1..3]",
+        "previous_tags": [],
+        "description": "AC Current Phase 1..3",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_AC_L1L2  - L2L3 - L3L1",
+        "previous_tags": [],
+        "description": "AC Phase to phase Voltage",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_AC_[1..3]",
+        "previous_tags": [],
+        "description": "AC Phase to neutral Voltage 1..3",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "I_DC",
+        "previous_tags": [],
+        "description": "DC Bus current",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "I_DC_MPPT_[1..X]",
+        "previous_tags": [],
+        "description": "MPPT Current 1..X",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "P_DC",
+        "previous_tags": [],
+        "description": "Total DC Power",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "P_DC_MPPT_[1..x]",
+        "previous_tags": [],
+        "description": "DC Power MPPT 1…X",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_DC",
+        "previous_tags": [],
+        "description": "DC Bus Voltage",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_DC_MPPT_[1..x]",
+        "previous_tags": [],
+        "description": "MPPT Voltage 1..X",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_DC_STRING_[1..x]",
+        "previous_tags": [],
+        "description": "String Voltage 1..X",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_DC_NE",
+        "previous_tags": [],
+        "description": "Negative Voltage to earth",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "U_DC_PE",
+        "previous_tags": [],
+        "description": "Positive voltage to earth",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "I_DC_STRING_[1..X]",
+        "previous_tags": [],
+        "description": "PV STRING Current 1..X",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "R_ISO",
+        "previous_tags": [],
+        "description": "Insulation Resistance",
+        "mvp": true,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_PF_ENA",
+        "previous_tags": [
+          "OutPFSet_Ena"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_PF_RAMP_TIME_S",
+        "previous_tags": [
+          "OutPFSet_RmpTms"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_PF_REVERT_TIME_S",
+        "previous_tags": [
+          "OutPFSet_RvrtTms"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "UNIT_ID",
+        "previous_tags": [
+          "SlaveAddress"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      },
+      {
+        "tag": "CMD_COMMIT",
+        "previous_tags": [
+          "Commit"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Inverter"
+      }
+    ],
+    "Meter": [
+      {
+        "tag": "U_AC_L1L2  - L2L3 - L3L1",
+        "previous_tags": [],
+        "description": "AC Phase to phase Voltage 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "U_AC_[1..3]",
+        "previous_tags": [],
+        "description": "AC Phase to neutral Voltage 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "U_LE_AC_[1..3]",
+        "previous_tags": [],
+        "description": "AC Phase to earth Voltage 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "U_NE",
+        "previous_tags": [],
+        "description": "AC Neutral to Eearh",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "I_AC_[1..3]",
+        "previous_tags": [],
+        "description": "AC Current Phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "P_AC_[1..3]",
+        "previous_tags": [
+          "ActivePow1..2..3kW"
+        ],
+        "description": "Active Power Phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "P_AC",
+        "previous_tags": [
+          "ActivePowSumkW"
+        ],
+        "description": "Total Active Power",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "Q_AC_[1..3]",
+        "previous_tags": [
+          "ReactivePow1..2..3kW"
+        ],
+        "description": "Reactive Power Phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "Q_AC",
+        "previous_tags": [
+          "ReactivePowSumkW"
+        ],
+        "description": "total Reactive Power",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "S_AC_[1..3]",
+        "previous_tags": [],
+        "description": "Apparent Power Phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "S_AC",
+        "previous_tags": [],
+        "description": "Total Apparent Power",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "PF_[1..3]",
+        "previous_tags": [],
+        "description": "Power Factor Phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "PF",
+        "previous_tags": [],
+        "description": "Total Power Factor",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "FREQ_[1..3]",
+        "previous_tags": [],
+        "description": "Frequency Phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "FREQ",
+        "previous_tags": [],
+        "description": "Total Frequency",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "E_TOT_[1..3]",
+        "previous_tags": [],
+        "description": "Energy phase 1..3",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "E_TOT",
+        "previous_tags": [],
+        "description": "Total Energy",
+        "mvp": true,
+        "category": "Meter"
+      },
+      {
+        "tag": "E_EXP_[1..3]",
+        "previous_tags": [],
+        "description": "Export Energy Phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "E_EXP",
+        "previous_tags": [],
+        "description": "Total Export Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "E_IMP_[1..3]",
+        "previous_tags": [],
+        "description": "Import Energy Phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "E_IMP",
+        "previous_tags": [],
+        "description": "Total Import Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "ES_[1..3]",
+        "previous_tags": [],
+        "description": "Apparent Energy Phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "ES",
+        "previous_tags": [],
+        "description": "Total Apparent Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "ES_EXP_[1..3]",
+        "previous_tags": [],
+        "description": "TotalExport Apparent Energy  Phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "ES_EXP",
+        "previous_tags": [],
+        "description": "TotalExport Apparent Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "ES_IMP_[1..3]",
+        "previous_tags": [],
+        "description": "TotalImport Apparent Energy  Phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "ES_IMP",
+        "previous_tags": [],
+        "description": "TotalImport Apparent Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "EQ_[1..3]",
+        "previous_tags": [],
+        "description": "Reactive Energy phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "EQ",
+        "previous_tags": [],
+        "description": "Total Reactive Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "EQ_EXP_[1..3]",
+        "previous_tags": [],
+        "description": "TotalExport Reactive Energy phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "EQ_EXP",
+        "previous_tags": [],
+        "description": "TotalExport Reactive Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "EQ_IMP_[1..3]",
+        "previous_tags": [],
+        "description": "Total Import Reactive Energy phase 1..3",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "EQ_IMP",
+        "previous_tags": [],
+        "description": "Total Import Reactive Energy",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "SERIAL",
+        "previous_tags": [
+          "DisplaySerial",
+          "DisplaySerialNumber"
+        ],
+        "description": "Serial Number of the meter",
+        "mvp": false,
+        "category": "Meter"
+      },
+      {
+        "tag": "MODEL",
+        "previous_tags": [
+          "DisplayModel"
+        ],
+        "description": "Model of the meter",
+        "mvp": false,
+        "category": "Meter"
+      }
+    ],
+    "Battery": [
+      {
+        "tag": "SOC",
+        "previous_tags": [],
+        "description": "Battery SOC",
+        "mvp": true,
+        "category": "Battery"
+      },
+      {
+        "tag": "SOH",
+        "previous_tags": [],
+        "description": "Battery SOH",
+        "mvp": true,
+        "category": "Battery"
+      },
+      {
+        "tag": "TEMP",
+        "previous_tags": [],
+        "description": "Battery TEMP",
+        "mvp": true,
+        "category": "Battery"
+      },
+      {
+        "tag": "U_DC",
+        "previous_tags": [],
+        "description": "Battery U_DC",
+        "mvp": true,
+        "category": "Battery"
+      }
+    ],
+    "Sensor": [
+      {
+        "tag": "POA",
+        "previous_tags": [],
+        "description": "",
+        "mvp": true,
+        "category": "Sensor"
+      },
+      {
+        "tag": "GHI",
+        "previous_tags": [],
+        "description": "",
+        "mvp": true,
+        "category": "Sensor"
+      },
+      {
+        "tag": "TEMP_AMB",
+        "previous_tags": [],
+        "description": "",
+        "mvp": true,
+        "category": "Sensor"
+      },
+      {
+        "tag": "TEMP_CELL",
+        "previous_tags": [],
+        "description": "",
+        "mvp": true,
+        "category": "Sensor"
+      },
+      {
+        "tag": "SERIAL",
+        "previous_tags": [
+          "DisplaySerial",
+          "DisplaySerialNumber"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Sensor"
+      },
+      {
+        "tag": "MODEL",
+        "previous_tags": [
+          "DisplayModel"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Sensor"
+      },
+      {
+        "tag": "MANUFACTURER",
+        "previous_tags": [
+          "ManufacturerStr"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Sensor"
+      }
+    ],
+    "Display": [
+      {
+        "tag": "P_AC",
+        "previous_tags": [
+          "Pac-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "E_TOT",
+        "previous_tags": [
+          "Eac-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "E_DAY",
+        "previous_tags": [
+          "EacDay-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "AVOIDED_CO2",
+        "previous_tags": [
+          "Carb-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "AVOIDED_CO2_DAY",
+        "previous_tags": [
+          "CarbDay-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "P_RATED",
+        "previous_tags": [],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "SELF_CONSUMPTION_RATIO",
+        "previous_tags": [
+          "AutoConso-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "LOAD_P_AC",
+        "previous_tags": [
+          "Conso-Tag"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "SERIAL",
+        "previous_tags": [
+          "DisplaySerial"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "MODEL",
+        "previous_tags": [
+          "DisplayModel"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      },
+      {
+        "tag": "MANUFACTURER",
+        "previous_tags": [
+          "ManufacturerStr"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Display"
+      }
+    ],
+    "Logger": [
+      {
+        "tag": "CMD_OFF",
+        "previous_tags": [
+          "cmdOff"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      },
+      {
+        "tag": "CMD_ON",
+        "previous_tags": [
+          "cmdOn"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      },
+      {
+        "tag": "CMD_P_AC_SET_PERCENT",
+        "previous_tags": [
+          "cmdPwrPercent"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      },
+      {
+        "tag": "PF",
+        "previous_tags": [
+          "CosPhi"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      },
+      {
+        "tag": "E_DAY",
+        "previous_tags": [
+          "EnergyDay"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      },
+      {
+        "tag": "E_TOT",
+        "previous_tags": [
+          "EnergyTotal"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      },
+      {
+        "tag": "P_AC",
+        "previous_tags": [
+          "RealPower"
+        ],
+        "description": "",
+        "mvp": false,
+        "category": "Logger"
+      }
+    ],
+    "Plant": [
+      {
+        "tag": "E_DAY",
+        "previous_tags": [],
+        "description": "Today Generation",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "E_TOT",
+        "previous_tags": [],
+        "description": "Total Génération",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "CO2",
+        "previous_tags": [],
+        "description": "CO2 Avoided",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "P_RATED",
+        "previous_tags": [],
+        "description": "Plant Capacity",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "P_AC",
+        "previous_tags": [],
+        "description": "PV Active power",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "P_EXPORTED",
+        "previous_tags": [],
+        "description": "Exported power",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "P_SELF",
+        "previous_tags": [],
+        "description": "Self consumption",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "TEMP_AMP",
+        "previous_tags": [],
+        "description": "Ambient temperature",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "TEMP_MODULE",
+        "previous_tags": [],
+        "description": "Module temperature",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "IRRADIANCE",
+        "previous_tags": [],
+        "description": "Irradiance",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "WIND_SPEED",
+        "previous_tags": [],
+        "description": "Wind speed",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "STATUS_PLANT",
+        "previous_tags": [],
+        "description": "Plant status",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "STATUS_INVERTERS",
+        "previous_tags": [],
+        "description": "Inverters status",
+        "mvp": false,
+        "category": "Plant"
+      },
+      {
+        "tag": "PF",
+        "previous_tags": [],
+        "description": "Power factor",
+        "mvp": false,
+        "category": "Plant"
+      }
+    ]
+  },
+  "tag_dictionary": {},
+  "previous_tags_mapping": {},
+  "synaptiq_indicators": [
+    {
+      "indicator": "charge.state",
+      "display_name": "State of Charge",
+      "description": "Percentage of charge of the storage device",
+      "device_level": "BESS",
+      "unit": "%",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": "B_SoC",
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "charge.health",
+      "display_name": "State of Health",
+      "description": "State of health of the storage device",
+      "device_level": "BESS",
+      "unit": "%",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": "B_SoH",
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "charge.meter.ac",
+      "display_name": "Energy AC Charging",
+      "description": "Positive AC yield pertinent to the charge of the device",
+      "device_level": "BESS",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "charge.meter.dc",
+      "display_name": "Energy DC Charging",
+      "description": "Positive DC yield pertinent to the charge of the device",
+      "device_level": "BESS",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.battery",
+      "display_name": "Temperature Battery",
+      "description": "Temperature of a battery.",
+      "device_level": "BESS",
+      "unit": "°C",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": "B_TEMP",
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.battery",
+      "display_name": "Voltage Battery",
+      "description": "Voltage of a battery.",
+      "device_level": "BESS",
+      "unit": "V",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": "B_U_DC",
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "charge.state.error",
+      "display_name": "State of Charge Error",
+      "description": "Tolerance of accuracy regarding the state of charge",
+      "device_level": "BESS",
+      "unit": "%",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "charge.voltage.set.point",
+      "display_name": "Voltage DC Charging",
+      "description": "DC voltage setpoint that the storage system targets",
+      "device_level": "BESS",
+      "unit": "V",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "mode.errorCode",
+      "display_name": "Error code",
+      "description": "The error code reported by a device.",
+      "device_level": "Inverter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "mode.statusCode",
+      "display_name": "Status code",
+      "description": "The status code reported by a device.",
+      "device_level": "Inverter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "resistance.isolation",
+      "display_name": "Resistance Isolation",
+      "description": "RISO",
+      "device_level": "Inverter",
+      "unit": "Ohm",
+      "priority": 1,
+      "tags": {
+        "Inverter": "R_ISO",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.inverter",
+      "display_name": "Temperature Inverter",
+      "description": "Temperature of the Inverter",
+      "device_level": "Inverter",
+      "unit": "°C",
+      "priority": 1,
+      "tags": {
+        "Inverter": "TEMP_INT",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "yield.inverter",
+      "display_name": "Energy",
+      "description": "AC Energy production calculated based on the data provided by the generation system and the imported historical data.",
+      "device_level": "Inverter",
+      "unit": "Wh",
+      "priority": 1,
+      "tags": {
+        "Inverter": "E_TOT",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac",
+      "display_name": "Current AC",
+      "description": "Total AC current outputted from the inverter",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 1,
+      "tags": {
+        "Inverter": "I_AC",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.AC1",
+      "display_name": "Current AC Phase 1",
+      "description": "Phase 1 AC current",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 1,
+      "tags": {
+        "Inverter": "I_AC[1..3]",
+        "Meter": "M_I_AC_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.AC2",
+      "display_name": "Current AC Phase 2",
+      "description": "Phase 2 AC current",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 1,
+      "tags": {
+        "Inverter": "I_AC[1..3]",
+        "Meter": "M_I_AC_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.AC3",
+      "display_name": "Current AC Phase 3",
+      "description": "Phase 3 AC current",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 1,
+      "tags": {
+        "Inverter": "I_AC[1..3]",
+        "Meter": "M_I_AC_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.dc",
+      "display_name": "Current DC",
+      "description": "Total DC-side current",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 1,
+      "tags": {
+        "Inverter": "I_DC",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.dc.DCX",
+      "display_name": "Current DC Input X",
+      "description": "Current DC at input X",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 1,
+      "tags": {
+        "Inverter": "I_DC_MPPT_[1..X]",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.generation",
+      "display_name": "Energy Generation",
+      "description": "AC energy generated by the generators without considering AC losses.",
+      "device_level": "Inverter/Meter",
+      "unit": "kWh",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.production",
+      "display_name": "Energy Production",
+      "description": "AC energy produced by a generator or aggregate as input to a next level of aggregation with  AC losses considered up to this level.",
+      "device_level": "Inverter/Meter",
+      "unit": "kWh",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "frequency",
+      "display_name": "Frequency Grid",
+      "description": "Frequency of the Grid/Inverter",
+      "device_level": "Inverter/Meter",
+      "unit": "Hz",
+      "priority": 1,
+      "tags": {
+        "Inverter": "FREQ",
+        "Meter": "M_FREQ",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "frequency.AC1",
+      "display_name": "Frequency Grid Phase 1",
+      "description": "Frequency on Phase 1",
+      "device_level": "Inverter/Meter",
+      "unit": "Hz",
+      "priority": 1,
+      "tags": {
+        "Inverter": "FREQ[1..3]",
+        "Meter": "M_FREQ_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "frequency.AC2",
+      "display_name": "Frequency Grid Phase 2",
+      "description": "Frequency on Phase 2",
+      "device_level": "Inverter/Meter",
+      "unit": "Hz",
+      "priority": 1,
+      "tags": {
+        "Inverter": "FREQ[1..3]",
+        "Meter": "M_FREQ_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "frequency.AC3",
+      "display_name": "Frequency Grid Phase 3",
+      "description": "Frequency on Phase 3",
+      "device_level": "Inverter/Meter",
+      "unit": "Hz",
+      "priority": 1,
+      "tags": {
+        "Inverter": "FREQ[1..3]",
+        "Meter": "M_FREQ_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.ac",
+      "display_name": "Power AC",
+      "description": "Active AC Power.",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "P_AC",
+        "Meter": "M_P_AC",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.ac.AC1",
+      "display_name": "Power AC Phase 1",
+      "description": "Active AC Power at Phase 1",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "P_AC[1..3]",
+        "Meter": "M_P_AC_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.ac.AC2",
+      "display_name": "Power AC Phase 2",
+      "description": "Active AC Power at Phase 2",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "P_AC[1..3]",
+        "Meter": "M_P_AC_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.ac.AC3",
+      "display_name": "Power AC Phase 3",
+      "description": "Active AC Power at Phase 3",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "P_AC[1..3]",
+        "Meter": "M_P_AC_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.ac.setpoint",
+      "display_name": "Power AC - setpoint",
+      "description": "Setpoint for the power AC",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "cmd_P_AC_setabs",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.dc",
+      "display_name": "Power DC",
+      "description": "DC Power.",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "P_DC",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.dc.DCX",
+      "display_name": "Power DC input X",
+      "description": "Power DC at input X",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 1,
+      "tags": {
+        "Inverter": "P_DC[1..x]",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.factor.displacement",
+      "display_name": "Cosinus Phi",
+      "description": "COS PHI",
+      "device_level": "Inverter/Meter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": "PF",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.factor.setpoint",
+      "display_name": "Power Factor - setpoint",
+      "description": "Setpoint for the power factor",
+      "device_level": "Inverter/Meter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": "cmd_PF",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.factor.true",
+      "display_name": "Power Factor",
+      "description": "Power Factor",
+      "device_level": "Inverter/Meter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": "PF",
+        "Meter": "M_PF",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.factor.true.AC1",
+      "display_name": "Power Factor Phase 1",
+      "description": "Power Factor at phase 1",
+      "device_level": "Inverter/Meter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": "PF_[1..3]",
+        "Meter": "M_PF_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.factor.true.AC2",
+      "display_name": "Power Factor Phase 2",
+      "description": "Power Factor at phase 2",
+      "device_level": "Inverter/Meter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": "PF_[1..3]",
+        "Meter": "M_PF_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.factor.true.AC3",
+      "display_name": "Power Factor Phase 3",
+      "description": "Power Factor  at phase 3",
+      "device_level": "Inverter/Meter",
+      "unit": "/",
+      "priority": 1,
+      "tags": {
+        "Inverter": "PF_[1..3]",
+        "Meter": "M_PF_[1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.VA",
+      "display_name": "Power VA",
+      "description": "VA = volt·ampere, Apparent AC Power",
+      "device_level": "Inverter/Meter",
+      "unit": "kVA",
+      "priority": 1,
+      "tags": {
+        "Inverter": "S_AC",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.var",
+      "display_name": "Power var",
+      "description": "var = volt·ampere reactive, Reactive AC Power",
+      "device_level": "Inverter/Meter",
+      "unit": "kVAr",
+      "priority": 1,
+      "tags": {
+        "Inverter": "Q_AC",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac",
+      "display_name": "Voltage AC",
+      "description": "Voltage between a single phase and neutral or the average phase to neutral over all phases.",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac.AC1",
+      "display_name": "Voltage AC Phase 1",
+      "description": "Voltage between phase 1 and neutral",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac.AC2",
+      "display_name": "Voltage AC Phase 2",
+      "description": "Voltage between phase 2 and neutral",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac.AC3",
+      "display_name": "Voltage AC Phase 3",
+      "description": "Voltage between phase 3 and neutral",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac.ab",
+      "display_name": "Voltage AC 1-2",
+      "description": "Line voltage between phases L1 and L2",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": "U_AC[1..3]",
+        "Meter": "M_U_AC_ [1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac.bc",
+      "display_name": "Voltage AC 2-3",
+      "description": "Line voltage between phases L2 and L3",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": "U_AC[1..3]",
+        "Meter": "M_U_AC_ [1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.ac.ca",
+      "display_name": "Voltage AC 3-1",
+      "description": "Line voltage between phases L3 and L1",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": "U_AC[1..3]",
+        "Meter": "M_U_AC_ [1..3]",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.dc",
+      "display_name": "Voltage DC",
+      "description": "Voltage DC",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": "U_DC",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.dc.DCX",
+      "display_name": "Voltage DC Input X",
+      "description": "Voltage DC at input X",
+      "device_level": "Inverter/Meter",
+      "unit": "V",
+      "priority": 1,
+      "tags": {
+        "Inverter": "U_DC_MPPT_[1..x]",
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "derated.capacity",
+      "display_name": "Power Limitation Normalized",
+      "description": "Normalized active power limitation setpoint, same as [derated.power.ac] / [capacity.rated.ac].",
+      "device_level": "Inverter/Meter",
+      "unit": "%",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "derated.power.ac",
+      "display_name": "Power AC Limit",
+      "description": "The maximum value for [power.ac] as imposed by external constraints. When no constraints apply, the value is the same as [capacity.rated.ac].",
+      "device_level": "Inverter/Meter",
+      "unit": "W",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.ac.counter",
+      "display_name": "Energy Counter",
+      "description": "Energy counter value as reported by the device normalised to kWh.",
+      "device_level": "Inverter/Meter",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.ac.daily",
+      "display_name": "Energy Daily",
+      "description": "Energy daily counter value as reported by the device normalised to kWh.",
+      "device_level": "Inverter/Meter",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.var.setpoint",
+      "display_name": "Power var - setpoint",
+      "description": "Setpoint for the reactive power",
+      "device_level": "Inverter/Meter",
+      "unit": "kVAr",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "yield.dc",
+      "display_name": "Energy DC",
+      "description": "Energy measured at DC level.",
+      "device_level": "Inverter/Meter",
+      "unit": "Wh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.ground",
+      "display_name": "Current AC Ground",
+      "description": "Current measured through the grounding conductor",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.neutral",
+      "display_name": "Current AC Neutral",
+      "description": "Current measured through neutral",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.thd",
+      "display_name": "Current AC THD",
+      "description": "Total harmonic distortion of AC current",
+      "device_level": "Inverter/Meter",
+      "unit": "%",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.ac.unbalance",
+      "display_name": "Current AC Unbalance",
+      "description": "Maximum difference of the AC phases compared to average",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "current.apparent",
+      "display_name": "Current AC Apparent",
+      "description": "Apparent component of the total AC current",
+      "device_level": "Inverter/Meter",
+      "unit": "A",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.vah",
+      "display_name": "Energy VAh",
+      "description": "VAh = Volt·Ampere hour, Apparent AC Energy",
+      "device_level": "Inverter/Meter",
+      "unit": "kVAh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh",
+      "display_name": "Energy varh",
+      "description": "varh = volt·ampere reactive hour, Reactive AC Energy",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.capacitive",
+      "display_name": "Energy varh capacitive",
+      "description": "varh = volt·ampere reactive capacitive hour, Reactive Capacitive AC Energy",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.daily",
+      "display_name": "Energy varh Daily",
+      "description": "Daily counter for [energy.varh].",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.import",
+      "display_name": "Energy varh Import",
+      "description": "varh = volt·ampere reactive hour, Reactive AC Energy imported.",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.inductive",
+      "display_name": "Energy varh inductive",
+      "description": "varh = volt·ampere reactive inductive hour, Reactive Inductive AC Energy",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.q1",
+      "display_name": "Energy varh Q1",
+      "description": "varh = volt·ampere reactive hour in Quadrant 1 (import active/import reactive)",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.q2",
+      "display_name": "Energy varh Q2",
+      "description": "varh = volt·ampere reactive hour in Quadrant 2 (export active/import reactive)",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.q3",
+      "display_name": "Energy varh Q3",
+      "description": "varh = volt·ampere reactive hour in Quadrant 3 (export active/export reactive)",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.varh.q4",
+      "display_name": "Energy varh Q4",
+      "description": "varh = volt·ampere reactive hour in Quadrant 4 (import active/export reactive)",
+      "device_level": "Inverter/Meter",
+      "unit": "kVArh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "impedance",
+      "display_name": "Impedance Grid",
+      "description": "Impedance from the Grid",
+      "device_level": "Inverter/Meter",
+      "unit": "Ohm",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.var.capacitive",
+      "display_name": "Power var capacitive",
+      "description": "var = volt·ampere reactive capacitive, Reactive Capacitive AC Power",
+      "device_level": "Inverter/Meter",
+      "unit": "kVAr",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.var.inductive",
+      "display_name": "Power var inductive",
+      "description": "var = volt·ampere reactive inductive, Reactive Inductive AC Power",
+      "device_level": "Inverter/Meter",
+      "unit": "kVAr",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.enclosure",
+      "display_name": "Temperature Enclosure",
+      "description": "Air temperature inside a device enclosure, e.g., a cabinet.",
+      "device_level": "Inverter/Meter/Sensor",
+      "unit": "°C",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "mode.flag",
+      "display_name": "Flag state",
+      "description": "The state of a flag, i.e., a value of 1 means on/up/active and a value of 0 means off/down/normal.",
+      "device_level": "Inverter/Meter/Sensor/Tracker",
+      "unit": "/",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.export",
+      "display_name": "Energy Export",
+      "description": "AC energy exported to the grid, always positive.",
+      "device_level": "Meter",
+      "unit": "kWh",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": "M_E_EXP",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.import",
+      "display_name": "Energy Import",
+      "description": "AC energy imported from the grid, always positive.",
+      "device_level": "Meter",
+      "unit": "kWh",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": "M_E_IMP",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "yield.meter.green",
+      "display_name": "Energy (Meter)",
+      "description": "AC energy balance of the generation system. The balance may be negative due to energy consumption by the generation system.",
+      "device_level": "Meter",
+      "unit": "Wh",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": "M_E",
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.consumption",
+      "display_name": "Energy Consumption",
+      "description": "Local energy consumption which is not related to the generation system.",
+      "device_level": "Meter",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.consumption.import",
+      "display_name": "Energy Grid-Consumption",
+      "description": "The part of [energy.consumption] that was imported from the grid.",
+      "device_level": "Meter",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.consumption.self",
+      "display_name": "Energy Self-Consumption",
+      "description": "The part of [energy.consumption] that was produced by the generation system.",
+      "device_level": "Meter",
+      "unit": "kWh",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "energy.system",
+      "display_name": "Energy System",
+      "description": "AC energy consumed by the generation system.",
+      "device_level": "Meter",
+      "unit": "kWh",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "power.ac.import",
+      "display_name": "Power AC Import",
+      "description": "Active AC Power import.",
+      "device_level": "Meter",
+      "unit": "W",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "voltage.tap",
+      "display_name": "Voltage tap",
+      "description": "Tap position in transformer.",
+      "device_level": "Meter",
+      "unit": "/",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "derated.capacity",
+      "display_name": "Power Limitation Normalized",
+      "description": "Normalized active power limitation setpoint, same as [derated.power.ac] / [capacity.rated.ac].",
+      "device_level": "Sensor",
+      "unit": "%",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "irradiance",
+      "display_name": "Irradiance",
+      "description": "Irradiance in the plane of the array(s) calculated using the same configuration and data as [irradiation.actual].",
+      "device_level": "Sensor",
+      "unit": "W/m²",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": "S_POA"
+      }
+    },
+    {
+      "indicator": "irradiance.horizontal",
+      "display_name": "Irradiance Horizontal",
+      "description": "irradiance in the horizontal plane",
+      "device_level": "Sensor",
+      "unit": "W/m²",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": "S_GHI"
+      }
+    },
+    {
+      "indicator": "temperature.ambient",
+      "display_name": "Temperature Ambient",
+      "description": "Ambient temperature",
+      "device_level": "Sensor",
+      "unit": "°C",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": "S_TEMP_AMB"
+      }
+    },
+    {
+      "indicator": "temperature.cells",
+      "display_name": "Temperature PV Module",
+      "description": "Temperature of PV cells.",
+      "device_level": "Sensor",
+      "unit": "°C",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": "S_TEMP_CELL"
+      }
+    },
+    {
+      "indicator": "fraction.loss.soiling",
+      "display_name": "Fraction Soling Loss",
+      "description": "The fraction of total performance lost due to soiling transmission loss.",
+      "device_level": "Sensor",
+      "unit": "%",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "humidity.relative",
+      "display_name": "Relative humidity",
+      "description": "Relative humidity",
+      "device_level": "Sensor",
+      "unit": "%",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "index.loss.soiling",
+      "display_name": "Index Loss Soiling",
+      "description": "The ratio of soiled to clean performance (1 - [fraction.loss.soiling]).",
+      "device_level": "Sensor",
+      "unit": "%",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "precipitation.height",
+      "display_name": "Precipitation",
+      "description": "Amount of rainfall during the interval.",
+      "device_level": "Sensor",
+      "unit": "mm",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "precipitation.height.accumulated",
+      "display_name": "Snowfall",
+      "description": "Accumulated snowfall.",
+      "device_level": "Sensor",
+      "unit": "cm",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "precipitation.mass.load",
+      "display_name": "Snowload",
+      "description": "Snow mass per unit of surface",
+      "device_level": "Sensor",
+      "unit": "mm",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "pressure.air",
+      "display_name": "Pressure Air",
+      "description": "Air pressure",
+      "device_level": "Sensor",
+      "unit": "hpa",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.oil",
+      "display_name": "Temperature Oil",
+      "description": "Transformer oil temperature",
+      "device_level": "Sensor",
+      "unit": "°C",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.winding",
+      "display_name": "Temperature Winding",
+      "description": "Transformer winding temperature",
+      "device_level": "Sensor",
+      "unit": "°C",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "wind.bearing",
+      "display_name": "Wind Bearing",
+      "description": "Angle of incidence of the wind at instant t",
+      "device_level": "Sensor",
+      "unit": "°",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "wind.speed",
+      "display_name": "Wind Speed",
+      "description": "Speed of the wind at instant t",
+      "device_level": "Sensor",
+      "unit": "m/s",
+      "priority": 2,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "flow.water",
+      "display_name": "Flow water",
+      "description": "Flow of water as volume per unit of time.",
+      "device_level": "Sensor",
+      "unit": "m³/s",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "fraction.cleaned",
+      "display_name": "Fraction cleaned",
+      "description": "Fraction of cleaned items vs total number.",
+      "device_level": "Sensor",
+      "unit": "%",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "fraction.open",
+      "display_name": "Fraction Open",
+      "description": "Opening of a valve or other device as percentage of completely open.",
+      "device_level": "Sensor",
+      "unit": "%",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "irradiance.diffuse",
+      "display_name": "Irradiance Diffuse",
+      "description": "irradiance diffuse",
+      "device_level": "Sensor",
+      "unit": "W/m²",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "level.gate",
+      "display_name": "Level Gate",
+      "description": "Opening of a gate as distance.",
+      "device_level": "Sensor",
+      "unit": "cm",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "level.oil",
+      "display_name": "Level Oil",
+      "description": "Level of oil.",
+      "device_level": "Sensor",
+      "unit": "cm",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "level.water",
+      "display_name": "Level Water",
+      "description": "Level of water.",
+      "device_level": "Sensor",
+      "unit": "cm",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.igbt",
+      "display_name": "Temperature IGBT",
+      "description": "Temperature of the IGBT component.",
+      "device_level": "Sensor",
+      "unit": "°C",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "temperature.mosfet",
+      "display_name": "Temperature MOSFET",
+      "description": "Temperature of the MOSFET component.",
+      "device_level": "Sensor",
+      "unit": "°C",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "angle.axis1",
+      "display_name": "Angle axis 1",
+      "description": "Angle of first axis.",
+      "device_level": "Tracker",
+      "unit": "°",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "angle.axis1.setpoint",
+      "display_name": "Angle axis 1 - setpoint",
+      "description": "Setpoint for angle of first axis.",
+      "device_level": "Tracker",
+      "unit": "°",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "angle.axis2",
+      "display_name": "Angle axis 2",
+      "description": "Angle of second axis.",
+      "device_level": "Tracker",
+      "unit": "°",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "angle.axis2.setpoint",
+      "display_name": "Angle axis 2 - setpoint",
+      "description": "A setpoint for angle of second axis.",
+      "device_level": "Tracker",
+      "unit": "°",
+      "priority": 1,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "angle.axis1.error",
+      "display_name": "Angle axis 1 - error",
+      "description": "Difference between angle and set-point of first axis.",
+      "device_level": "Tracker",
+      "unit": "°",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    },
+    {
+      "indicator": "angle.axis2.error",
+      "display_name": "Angle axis 2 - error",
+      "description": "Difference between angle and set-point of second axis.",
+      "device_level": "Tracker",
+      "unit": "°",
+      "priority": 3,
+      "tags": {
+        "Inverter": null,
+        "Meter": null,
+        "Battery": null,
+        "Sensor": null
+      }
+    }
+  ]
+}
