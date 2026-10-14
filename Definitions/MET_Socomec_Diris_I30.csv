@@ -1,0 +1,21 @@
+Modbus;Meter;Socomec;Diris_I30
+1;3;18442;U32;;Frequency;;0.001;0.0;Hz;4
+2;3;18444;U32;;Ph-N Voltage_ V1;;0.01;0.0;V;4
+3;3;18446;U32;;Ph-N Voltage_ V2;;0.01;0.0;V;4
+4;3;18448;U32;;Ph-N Voltage_ V3;;0.01;0.0;V;4
+5;3;18452;U32;;Ph-Ph Voltage_ U12;;0.01;0.0;V;4
+6;3;18454;U32;;Ph-Ph Voltage_ U23;;0.01;0.0;V;4
+7;3;18456;U32;;Ph-Ph Voltage_ U31;;0.01;0.0;V;4
+8;3;18458;U32;;Current _ I1;;0.001;0.0;V;4
+9;3;18460;U32;;Current _ I2;;0.001;0.0;A;4
+10;3;18462;U32;;Current _ I3;;0.001;0.0;A;4
+11;3;18464;U32;;Current _ In;;0.001;0.0;A;4
+12;3;18476;I32;;Total active power;P_AC;0.001;0.0;W;4
+13;3;18478;I32;;Total reactive power;;0.001;0.0;Var;4
+14;3;18484;U32;;Total apparent power;;0.001;0.0;VA;4
+15;3;18486;I16;;Total power factor;;0.001;0.0;COS phi;4
+16;3;19841;U32;;Total Positive active Energy _ Ea_;;1.0;0.0;KWh;4
+17;3;19844;U32;;Total Negative active Energy _ Ea-;;1.0;0.0;KWh;4
+18;3;19847;U32;;Total Positive reactive Energy _ Er_;;1.0;0.0;Kvarh;4
+19;3;19850;U32;;Total Negative reactive Energy _ Er-;;1.0;0.0;Kvarh;4
+20;3;19853;U32;;Total Apparent Energy _ Eap;;1.0;0.0;KVAh;4

@@ -5,7 +5,7 @@
   <a href="docs/development.md"><b>Development</b></a> •
   <a href="docs/architecture.md"><b>Architecture</b></a> •
   <a href="docs/security.md"><b>Security</b></a> •
-  <a href="AUDIT_REPORT.md"><b>Audit Report</b></a>
+  <a href="docs/AUDIT_REPORT.md"><b>Audit Report</b></a>
 </p>
 
 ## Table of contents

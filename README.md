@@ -555,10 +555,45 @@ mypy DefFileGenerator web
 | 📋 **[`docs/input-format.md`](docs/input-format.md)** | Technical reference for input columns, BITS compound rules, and data types. |
 | 🏛️ **[`docs/architecture.md`](docs/architecture.md)** | Detailed architecture flowcharts, component invariants, and public interfaces. |
 | 🛡️ **[`docs/security.md`](docs/security.md)** | In-depth security model, CSV injection defense, and automation protections. |
-| 💻 **[`DEVELOPER_GUIDE.md`](DEVELOPER_GUIDE.md)** | Onboarding manual and extension recipes for engineers working on the codebase. |
-| 🛠️ **[`docs/development.md`](docs/development.md)** | Developer workflow, Git guidelines, and static analysis checklists. |
-| 📊 **[`AUDIT_REPORT.md`](AUDIT_REPORT.md)** | Engineering audit report, test metrics, and hardening history. |
+| 📊 **[`docs/AUDIT_REPORT.md`](docs/AUDIT_REPORT.md)** | Engineering audit report, test metrics, and hardening history. |
+| 📑 **[`docs/RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md`](docs/RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md)** | Detailed audit of technical vendor documentation conversions. |
 | 📝 **[`CHANGELOG.md`](CHANGELOG.md)** | Chronological history of releases, performance improvements, and fixes. |
+
+---
+
+## 📂 Repository Structure
+
+```text
+DefFileGenerator/
+├── DefFileGenerator/         # Core Python package
+│   ├── def_gen.py            # Modbus normalization, validation & CSV generation
+│   ├── extractor.py          # Multi-format parser (PDF, Excel, CSV, XML)
+│   ├── gui.py                # Desktop GUI application (CustomTkinter / Tkinter)
+│   ├── io_utils.py           # Atomic file IO and preview utilities
+│   ├── knowledge_miner.py    # Industrial tag and action code inference
+│   ├── main.py               # Unified CLI entrypoint (deffilegen)
+│   └── tests/                # Comprehensive test suite (950+ tests)
+├── web/                      # FastAPI Web Application & UI
+│   ├── app.py                # REST API endpoints (/api/convert, /api/validate)
+│   └── static/               # Responsive Vanilla JS / CSS frontend
+├── Definitions/              # Validated industrial equipment definitions library (125 models: INV, MET, SEN, COM, OTH)
+├── generated_definitions/    # Production Webdyn CSV definitions (34+ models)
+├── stress_test_data/         # Real-world vendor datasets for stress testing
+├── docs/                     # Full technical documentation & audit reports
+│   ├── architecture.md       # Architecture & flowcharts
+│   ├── AUDIT_REPORT.md       # Security & code audit evidence
+│   ├── RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md # Technical audit report
+│   ├── input-format.md       # Input format reference
+│   ├── security.md           # Security policy and mitigation models
+│   └── quickstart.md         # Quick start cheatsheet
+├── doc_to_webdyn.py          # Standalone convenience CLI wrapper
+├── generate_webdyn_def.py    # Programmatic generator API wrapper
+├── build_exe.py              # PyInstaller executable builder
+├── pyproject.toml            # Project packaging & tool configuration
+├── DEVELOPER_GUIDE.md        # Architecture and developer manual
+├── QUICKSTART.md             # Beginner walkthrough
+└── README.md                 # Primary project overview
+```
 
 ---
 

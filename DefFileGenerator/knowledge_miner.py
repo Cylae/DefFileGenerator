@@ -149,24 +149,24 @@ def infer_action_code(name: str, fc: str | int = 4, rw_field: str = "") -> str:
     # Write commands
     if (fc_str in ("1", "5", "6", "15", "16") or "w" in rw_lower) and any(
         k in n_lower
-            for k in (
-                "write",
-                "cmd",
-                "command",
-                "commande",
-                "control",
-                "contrôle",
-                "set",
-                "consigne",
-                "setting",
-                "mode",
-                "duration",
-                "limit",
-                "on/off",
-                "enable",
-            )
-        ):
-            return "1"
+        for k in (
+            "write",
+            "cmd",
+            "command",
+            "commande",
+            "control",
+            "contrôle",
+            "set",
+            "consigne",
+            "setting",
+            "mode",
+            "duration",
+            "limit",
+            "on/off",
+            "enable",
+        )
+    ):
+        return "1"
 
     # Alarms and status
     if any(

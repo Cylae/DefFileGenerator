@@ -94,7 +94,24 @@ def _run_cli(argv: list[str] | None = None) -> None:
     pages = getattr(args, "pages", None)
     if pages and ext == ".pdf":
         try:
-            pages = [int(p.strip()) for p in pages.split(",")]
+            parsed_pages: list[int] = []
+            for p in pages.split(","):
+                p_clean = p.strip()
+                if "-" in p_clean and not p_clean.startswith("-"):
+                    parts = p_clean.split("-")
+                    if (
+                        len(parts) == 2
+                        and parts[0].strip().isdigit()
+                        and parts[1].strip().isdigit()
+                    ):
+                        start_p, end_p = int(parts[0].strip()), int(parts[1].strip())
+                        step = 1 if start_p <= end_p else -1
+                        parsed_pages.extend(range(start_p, end_p + step, step))
+                    else:
+                        raise ValueError("Invalid range")
+                else:
+                    parsed_pages.append(int(p_clean))
+            pages = parsed_pages
         except ValueError:
             logging.error("Invalid format for --pages. Expected comma-separated integers.")
             sys.exit(1)

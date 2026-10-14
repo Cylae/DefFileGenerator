@@ -4,7 +4,7 @@
   <a href="../README.md"><b>README</b></a> •
   <a href="architecture.md"><b>Architecture</b></a> •
   <a href="development.md"><b>Development</b></a> •
-  <a href="../AUDIT_REPORT.md"><b>Audit Report</b></a> •
+  <a href="AUDIT_REPORT.md"><b>Audit Report</b></a> •
   <a href="../DEVELOPER_GUIDE.md"><b>Developer Guide</b></a>
 </p>
 

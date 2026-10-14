@@ -1,0 +1,24 @@
+Modbus;Meter;SOCOMEC;DIRIS_B10
+1;3;18444;U32;;Ph-N_Voltage__V1;;0.01;0.0;V;4
+2;3;18446;U32;;Ph-N_Voltage__V2;;0.01;0.0;V;4
+3;3;18448;U32;;Ph-N_Voltage__V3;;0.01;0.0;V;4
+4;3;18450;U32;;Ph-N Voltage _ Vn;;0.01;0.0;V;4
+5;3;18452;U32;;Ph-Ph Voltage _ U12;;0.01;0.0;V;4
+6;3;18454;U32;;Ph-Ph Voltage _ U23;;0.01;0.0;V;4
+7;3;18456;U32;;Ph-Ph Voltage _ U31;;0.01;0.0;V;4
+8;3;18458;U32;;Current___I1;;0.001;0.0;A;4
+9;3;18460;U32;;Current___I2;;0.001;0.0;A;4
+10;3;18462;U32;;Current___I3;;0.001;0.0;A;4
+11;3;18464;U32;;Current___In;;0.001;0.0;A;4
+12;3;18488;I32;;Active_power___P1;P_AC_1;0.001;0.0;kW;4
+13;3;18490;I32;;Active_power___P2;P_AC_2;0.001;0.0;kW;4
+14;3;18492;I32;;Active_power___P3;P_AC_3;0.001;0.0;kW;4
+15;3;18494;I32;;Reactive_power___P1;;0.001;0.0;kVAr;4
+16;3;18496;I32;;Reactive_power___P2;;0.001;0.0;kVAr;4
+17;3;18498;I32;;Reactive_power___P3;;0.001;0.0;kVAr;4
+18;3;18442;U32;;Frequency;;0.001;0.0;Hz;4
+19;3;18476;I32;;Total_active_power;P_AC;0.001;0.0;kW;4
+20;3;19843;U32;;Total_Positive_active_Energy___Ea_;;1.0;0.0;kWh;4
+21;3;19846;U32;;Total_Negative_active_Energy___Ea-;;1.0;0.0;kWh;4
+22;3;19849;U32;;Total_Positive_reactive_Energy___Er_;;1.0;0.0;kVArh;4
+23;3;19852;U32;;Total_Negative_reactive_Energy___Er-;;1.0;0.0;kVArh;4

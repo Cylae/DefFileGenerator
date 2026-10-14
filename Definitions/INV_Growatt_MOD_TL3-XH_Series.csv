@@ -1,0 +1,411 @@
+Modbus;Inverter;Growatt;MOD_TL3-XH_Series;1
+1;3;0;U16;;Remote OnOff;CMD_ON;1.0;0.0;;4
+2;3;1_0_1;Bits;;SaftyFuncEn : SPI enable;;1.0;0.0;;4
+3;3;1_1_1;Bits;;SaftyFuncEn : AutoTestStart;;1.0;0.0;;4
+4;3;1_2_1;Bits;;SaftyFuncEn : LVFRT enable;;1.0;0.0;;4
+5;3;1_3_1;Bits;;SaftyFuncEn : FreqDerating Enable;;1.0;0.0;;4
+6;3;1_4_1;Bits;;SaftyFuncEn : Softstart enable;;1.0;0.0;;4
+7;3;1_5_1;Bits;;SaftyFuncEn : DRMS enable;;1.0;0.0;;4
+8;3;1_6_1;Bits;;SaftyFuncEn : PowerVoltFunc Enable;;1.0;0.0;;4
+9;3;1_7_1;Bits;;SaftyFuncEn : HVFRT enable;;1.0;0.0;;4
+10;3;1_8_1;Bits;;SaftyFuncEn : ROCOF enable;;1.0;0.0;;4
+11;3;1_9_1;Bits;;SaftyFuncEn : Recover FreqDeratingMode Enable;;1.0;0.0;;4
+12;3;1_10_1;Bits;;SaftyFuncEn : Split phase enable;;1.0;0.0;;4
+13;3;2;U16;;PF CMD memory state;CMD_P_ENA;1.0;0.0;;4
+14;3;3;U16;;Active Power Rate;CMD_P_AC_SET_PERCENT;1.0;0.0;%;4
+15;3;4;I16;;Reactive Power Rate;CMD_Q_AC_SET_PERCENT;1.0;0.0;%;4
+16;3;5;U16;;Power factor;CMD_PF;1.0;0.0;;4
+17;3;6;U32;;Pmax;P_RATED;0.1;0.0;VA;4
+18;3;8;U16;;Vnormal;;0.1;0.0;V;4
+19;3;9_6;STRING;;Fw version;;1.0;0.0;;4
+20;3;12_6;STRING;;Control Fw version;;1.0;0.0;;4
+21;3;15;U16;;LCD language;;1.0;0.0;;4
+22;3;16;U16;;Country Selected;;1.0;0.0;;4
+23;3;17;U16;;Vpv start;;0.1;0.0;V;4
+24;3;18;U16;;Time start;;1.0;0.0;s;4
+25;3;19;U16;;Restart Delay Time;;1.0;0.0;s;4
+26;3;20;U16;;wPower Start Slope;;0.1;0.0;%;4
+27;3;21;U16;;wPower Restart SlopeEE;;0.1;0.0;%;4
+28;3;22;U16;;wSelect Baudrate;;1.0;0.0;;4
+29;3;23_10;STRING;;Serial Number;;1.0;0.0;;4
+30;3;28;U32;;Inverter Module;;1.0;0.0;;4
+31;3;30;U16;;Com Address;;1.0;0.0;;4
+32;3;31;U16;;FlashStart;;1.0;0.0;;4
+33;3;32;U16;;Reset User Info;;1.0;0.0;;4
+34;3;33;U16;;Reset to factory;;1.0;0.0;;4
+35;3;34_16;STRING;;Manufacturer Info;MANUFACTURER;1.0;0.0;;4
+36;3;42;U16;;bfail safe En;;1.0;0.0;;4
+37;3;43;U16;;Device Type Code;;1.0;0.0;;4
+38;3;44;U16;;TP;;1.0;0.0;;4
+39;3;45;U16;;System Year;;1.0;0.0;;4
+40;3;46;U16;;System Month;;1.0;0.0;;4
+41;3;47;U16;;System Day;;1.0;0.0;;4
+42;3;48;U16;;System Hour;;1.0;0.0;;4
+43;3;49;U16;;System Min;;1.0;0.0;;4
+44;3;50;U16;;System Sec;;1.0;0.0;;4
+45;3;51;U16;;System Weekly;;1.0;0.0;;4
+46;3;52;U16;;Grid voltage low limit protect;;0.1;0.0;V;4
+47;3;53;U16;;Grid voltage high limit protect;;0.1;0.0;V;4
+48;3;54;U16;;Grid frequency low limit protect;;0.01;0.0;Hz;4
+49;3;55;U16;;Grid high frequency limit protect;;0.01;0.0;Hz;4
+50;3;56;U16;;Grid voltage low limit protect 2;;0.1;0.0;V;4
+51;3;57;U16;;Grid voltage high limit protect 2;;0.1;0.0;V;4
+52;3;58;U16;;Grid frequency low limit protect 2;;0.01;0.0;Hz;4
+53;3;59;U16;;Grid high frequency limit protect 2;;0.01;0.0;Hz;4
+54;3;60;U16;;Grid voltage low limit protect 3;;0.1;0.0;V;4
+55;3;61;U16;;Grid voltage high limit protect 3;;0.1;0.0;V;4
+56;3;62;U16;;Grid frequency low limit protect 3;;0.01;0.0;Hz;4
+57;3;63;U16;;Frid frequency high limit protect3;;0.01;0.0;Hz;4
+58;3;64;U16;;Grid low voltage limit connect to Grid;;0.1;0.0;V;4
+59;3;65;U16;;Grid high voltage limit connect to Grid;;0.1;0.0;V;4
+60;3;66;U16;;Grid low frequency limit connect to Grid;;0.01;0.0;Hz;4
+61;3;67;U16;;Grid high frequency limit connect to Grid;;0.01;0.0;Hz;4
+62;3;68;U16;;Grid voltage low limit protect time 1;;1.0;0.0;Cycle;4
+63;3;69;U16;;Grid voltage high limit protect time 1;;1.0;0.0;Cycle;4
+64;3;70;U16;;Grid voltage low limit protect time 2;;1.0;0.0;Cycle;4
+65;3;71;U16;;Grid voltage high limit protect time 2;;1.0;0.0;Cycle;4
+66;3;72;U16;;Grid frequency low limit protect time 1;;1.0;0.0;Cycle;4
+67;3;73;U16;;Grid frequency high limit protect time 1;;1.0;0.0;Cycle;4
+68;3;74;U16;;Grid frequency low limit protect time 2;;1.0;0.0;Cycle;4
+69;3;75;U16;;Grid frequency high limit protect time 2;;1.0;0.0;Cycle;4
+70;3;76;U16;;Grid voltage low limit protect time 3;;1.0;0.0;Cycle;4
+71;3;77;U16;;Grid voltage high limit protect time 3;;1.0;0.0;Cycle;4
+72;3;78;U16;;Grid frequency low limit protect time 3;;1.0;0.0;Cycle;4
+73;3;79;U16;;Grid frequency high limit protectti me 3;;1.0;0.0;Cycle;4
+74;3;80;U16;;Volt protection for 10 min;;0.1;0.0;V;4
+75;3;81;U16;;PV Voltage High Fault;;0.1;0.0;V;4
+76;3;82_12;STRING;;FW Build No;;1.0;0.0;;4
+77;3;88;U16;;Modbus Version;;1.0;0.0;;4
+78;3;89;U16;;SetPFfunctionModel;CMD_Q_MODE;1.0;0.0;;4
+79;3;90_0_4;BITS;;GPRS IPFlag : GPRS IP;;1.0;0.0;;4
+80;3;90_4_4;BITS;;GPRS IPFlag : GPRS status;;1.0;0.0;;4
+81;3;91;U16;;Frequency derating start point;;0.01;0.0;Hz;4
+82;3;92;U16;;Frequency load limit rate;;1.0;0.0;10times;4
+83;3;93;U16;;V1S;;0.1;0.0;V;4
+84;3;94;U16;;V2S;;0.1;0.0;V;4
+85;3;95;U16;;V1L;;0.1;0.0;V;4
+86;3;96;U16;;V2L;;0.1;0.0;V;4
+87;3;97;U16;;Qlock in power;;1.0;0.0;%;4
+88;3;98;U16;;Qlock Out power;;1.0;0.0;%;4
+89;3;99;U16;;Lock in gird volt of PF line;;0.1;0.0;V;4
+90;3;100;U16;;Lock out gird volt of PF Line;;0.1;0.0;V;4
+91;3;101;U16;;PF adjust value 1;;1.0;0.0;;4
+92;3;102;U16;;PF adjust value 2;;1.0;0.0;;4
+93;3;103;U16;;PF adjust value 3;;1.0;0.0;;4
+94;3;104;U16;;PF adjust value 4;;1.0;0.0;;4
+95;3;105;U16;;PF adjust value 5;;1.0;0.0;;4
+96;3;106;U16;;PF adjust value 6;;1.0;0.0;;4
+97;3;107;U16;;QV Reactive Power delay time;;1.0;0.0;s;4
+98;3;108;U16;;Overfrequency derating delay time;;50.0;0.0;ms;4
+99;3;109;U16;;Qmax for Q(V) curve;;0.1;0.0;%;4
+100;3;110;U16;;PF limit line point 1 load percent;;1.0;0.0;%;4
+101;3;111;U16;;PF limit line point 1 power factor;;1.0;0.0;;4
+102;3;112;U16;;PF limit line point 2 load percent;;1.0;0.0;%;4
+103;3;113;U16;;PF limit line point 2 power factor;;1.0;0.0;;4
+104;3;114;U16;;PF limit line point 3 load percent;;1.0;0.0;%;4
+105;3;115;U16;;PF limit line point 3 power factor;;1.0;0.0;;4
+106;3;116;U16;;PF limit line point 4 load percent;;1.0;0.0;%;4
+107;3;117;U16;;PF limit line point 4 power factor;;1.0;0.0;;4
+108;3;118;U16;;Inverter Module 4;;1.0;0.0;;4
+109;3;119;U16;;Inverter Module 3;;1.0;0.0;;4
+110;3;120;U16;;Inverter Module 2;;1.0;0.0;;4
+111;3;121;U16;;Inverter Module 1;;1.0;0.0;;4
+112;3;122;U16;;Export Limit En/dis;;1.0;0.0;;4
+113;3;123;I16;;Export Limit Power Rate;;0.1;0.0;%;4
+114;3;124;U16;;Traker Model;;1.0;0.0;;4
+115;3;3000;U16;;Export Limit Filed Power Rate;;0.1;0.0;%;4
+116;3;3001_30;STRING;;New Serial NO Serial NO;SERIAL;1.0;0.0;;4
+117;3;3016;U16;;Dry Contact Function Enable;;1.0;0.0;;4
+118;3;3017;U16;;Dry Contact On Rate;;0.1;0.0;%;4
+119;3;3018;I16;;WorkMode;;1.0;0.0;;4
+120;3;3019;U16;;Dry Contact Off Rate;;0.1;0.0;%;4
+121;3;3020;U16;;Box Ctrl Inv Order;;1.0;0.0;;4
+122;3;3021;U16;;Exter Comm Off Grid Enable;;1.0;0.0;;4
+123;3;3022;U16;;Bdc Stop Work Of Bus Volt;;1.0;0.0;;4
+124;3;3023;I16;;GridType;;1.0;0.0;;4
+125;3;3024;U16;;Float charge current lim;;0.1;0.0;A;4
+126;3;3025;U16;;Vbat Warning;;0.1;0.0;V;4
+127;3;3026;U16;;Vbat low Warn Clr;;0.1;0.0;V;4
+128;3;3027;U16;;Vbat stop for discharge;;0.1;0.0;V;4
+129;3;3028;U16;;Vbat stop charge;;0.01;0.0;V;4
+130;3;3029;U16;;Vbat start discharge;;0.01;0.0;V;4
+131;3;3030;U16;;Vbat constant charge;;0.01;0.0;V;4
+132;3;3031;I16;;Bat temp lower limit d;;0.1;0.0;°C;4
+133;3;3032;U16;;Bat temp upper limit d;;0.1;0.0;°C;4
+134;3;3033;I16;;Bat temp lower limit c;;0.1;0.0;°C;4
+135;3;3034;U16;;Bat temp upper limit c;;0.1;0.0;°C;4
+136;3;3035;U16;;Under Fre Discharge Delay Time;;50.0;0.0;ms;4
+137;3;3036;U16;;Grid First Dicharge Power Rate;;1.0;0.0;;4
+138;3;3037;U16;;Grid First Stop SOC;;1.0;0.0;;4
+139;3;3038_0_8;Bits;;Time 1 : minutes;;1.0;0.0;;4
+140;3;3038_8_5;Bits;;Time 1 : hour;;1.0;0.0;;4
+141;3;3038_13_2;Bits;;Time 1 : priority;;1.0;0.0;;4
+142;3;3038_15_1;Bits;;Time 1 : enabled;;1.0;0.0;;4
+143;3;3039_0_8;Bits;;Time 1_2 : minutes;;1.0;0.0;;4
+144;3;3039_8_5;Bits;;Time 1_2 : hour;;1.0;0.0;;4
+145;3;3040_0_8;Bits;;Time 2 : minutes;;1.0;0.0;;4
+146;3;3040_8_5;Bits;;Time 2 : hour;;1.0;0.0;;4
+147;3;3040_13_2;Bits;;Time 2 : priority;;1.0;0.0;;4
+148;3;3040_15_1;Bits;;Time 2 : enabled;;1.0;0.0;;4
+149;3;3041_0_8;Bits;;Time 2_2 : minutes;;1.0;0.0;;4
+150;3;3041_8_5;Bits;;Time 2_2 : hour;;1.0;0.0;;4
+151;3;3042_0_8;Bits;;Time 3 : minutes;;1.0;0.0;;4
+152;3;3042_8_5;Bits;;Time 3 : hour;;1.0;0.0;;4
+153;3;3042_13_2;Bits;;Time 3 : priority;;1.0;0.0;;4
+154;3;3042_15_1;Bits;;Time 3 : enabled;;1.0;0.0;;4
+155;3;3043_0_8;Bits;;Time 3_2 : minutes;;1.0;0.0;;4
+156;3;3043_8_5;Bits;;Time 3_2 : hour;;1.0;0.0;;4
+157;3;3044_0_8;Bits;;Time 4 : minutes;;1.0;0.0;;4
+158;3;3044_8_5;Bits;;Time 4 : hour;;1.0;0.0;;4
+159;3;3044_13_2;Bits;;Time 4 : priority;;1.0;0.0;;4
+160;3;3044_15_1;Bits;;Time 4 : enabled;;1.0;0.0;;4
+161;3;3045_0_8;Bits;;Time 4_2 : minutes;;1.0;0.0;;4
+162;3;3045_8_5;Bits;;Time 4_2 : hour;;1.0;0.0;;4
+163;3;3047;U16;;Bat First Power Rate;;1.0;0.0;;4
+164;3;3048;U16;;Bat First stop SOC;;1.0;0.0;;4
+165;3;3049;U16;;Ac Charge Enable;;1.0;0.0;;4
+166;3;3050_0_8;Bits;;Time 5 : minutes;;1.0;0.0;;4
+167;3;3050_8_5;Bits;;Time 5 : hour;;1.0;0.0;;4
+168;3;3050_13_2;Bits;;Time 5 : priority;;1.0;0.0;;4
+169;3;3050_15_1;Bits;;Time 5 : enabled;;1.0;0.0;;4
+170;3;3051_0_8;Bits;;Time 5_2 : minutes;;1.0;0.0;;4
+171;3;3051_8_5;Bits;;Time 5_2 : hour;;1.0;0.0;;4
+172;3;3052_0_8;Bits;;Time 6 : minutes;;1.0;0.0;;4
+173;3;3052_8_5;Bits;;Time 6 : hour;;1.0;0.0;;4
+174;3;3052_13_2;Bits;;Time 6 : priority;;1.0;0.0;;4
+175;3;3052_15_1;Bits;;Time 6 : enabled;;1.0;0.0;;4
+176;3;3053_0_8;Bits;;Time 6_2 : minutes;;1.0;0.0;;4
+177;3;3053_8_5;Bits;;Time 6_2 : hour;;1.0;0.0;;4
+178;3;3054_0_8;Bits;;Time 7 : minutes;;1.0;0.0;;4
+179;3;3054_8_5;Bits;;Time 7 : hour;;1.0;0.0;;4
+180;3;3054_13_2;Bits;;Time 7 : priority;;1.0;0.0;;4
+181;3;3054_15_1;Bits;;Time 7 : enabled;;1.0;0.0;;4
+182;3;3055_0_8;Bits;;Time 7_2 : minutes;;1.0;0.0;;4
+183;3;3055_8_5;Bits;;Time 7_2 : hour;;1.0;0.0;;4
+184;3;3056_0_8;Bits;;Time 8 : minutes;;1.0;0.0;;4
+185;3;3056_8_5;Bits;;Time 8 : hour;;1.0;0.0;;4
+186;3;3056_13_2;Bits;;Time 8 : priority;;1.0;0.0;;4
+187;3;3056_15_1;Bits;;Time 8 : enabled;;1.0;0.0;;4
+188;3;3057_0_8;Bits;;Time 8_2 : minutes;;1.0;0.0;;4
+189;3;3057_8_5;Bits;;Time 8_2 : hour;;1.0;0.0;;4
+190;3;3058_0_8;Bits;;Time 9 : minutes;;1.0;0.0;;4
+191;3;3058_8_5;Bits;;Time 9 : hour;;1.0;0.0;;4
+192;3;3058_13_2;Bits;;Time 9 : priority;;1.0;0.0;;4
+193;3;3058_15_1;Bits;;Time 9 : enabled;;1.0;0.0;;4
+194;3;3059_0_8;Bits;;Time 9_2 : minutes;;1.0;0.0;;4
+195;3;3059_8_5;Bits;;Time 9_2 : hour;;1.0;0.0;;4
+196;3;3070;U16;;Battery Type choose of buck-boost input;;1.0;0.0;;4
+197;3;3071;U16;;BatMdlSeria/ParalNum;;1.0;0.0;;4
+198;3;3079;U16;;Ups Function Enable;;1.0;0.0;;4
+199;3;3080;U16;;UPS Voltage Set;;1.0;0.0;;4
+200;3;3081;U16;;UPS Freq Set;;1.0;0.0;;4
+201;3;3082;U16;;Load First StopSoc Set;;1.0;0.0;;4
+202;3;3085;U16;;Com Address_2;;1.0;0.0;;4
+203;3;3086;U16;;BaudRate;;1.0;0.0;;4
+204;3;3087_16;STRING;;Serial number battery;;1.0;0.0;;4
+205;3;3095;U16;;BDC Reset Cmd;;1.0;0.0;;4
+206;3;3096;U32;;BDC Monitoring software code;;1.0;0.0;;4
+207;3;3098;U16;;DTC;;1.0;0.0;;4
+208;3;3099_4;STRING;;DSP software code;;1.0;0.0;;4
+209;3;3101_2;STRING;;DSP Software Version;;1.0;0.0;;4
+210;3;3102;U16;;Bus Voltage Ref;;1.0;0.0;;4
+211;3;3103;U16;;BDC monitoring software version;;1.0;0.0;;4
+212;3;3104;U16;;BDC hardware software version;;1.0;0.0;;4
+213;3;3105;U16;;BMS software version information;;1.0;0.0;;4
+214;3;3106;U16;;BMS Manufacturer Name;;1.0;0.0;;4
+215;3;3107;U16;;BMS Comm Type;;1.0;0.0;;4
+216;3;3108;U16;;BDC model 4;;1.0;0.0;;4
+217;3;3109;U16;;BDC model 3;;1.0;0.0;;4
+218;3;3110;U16;;BDC model 2;;1.0;0.0;;4
+219;3;3111;U16;;BDC model 1;;1.0;0.0;;4
+220;3;3113;U16;;BDC Protocol Ver;;1.0;0.0;;4
+221;3;3114;U16;;BDC Certification Ver;;1.0;0.0;;4
+222;4;3000;U16;;InverterStatus;;1.0;0.0;;4
+223;4;3001;U32;;PV total power;P_DC;0.1;0.0;W;4
+224;4;3003;U16;;PV1 voltage_1;U_DC_MPPT_1;0.1;0.0;V;4
+225;4;3004;U16;;PV1 input current_1;I_DC_MPPT_1;0.1;0.0;A;4
+226;4;3005;U32;;PV1 power_1;P_DC_MPPT_1;0.1;0.0;W;4
+227;4;3007;U16;;PV2 voltage_1;U_DC_MPPT_2;0.1;0.0;V;4
+228;4;3008;U16;;PV2 input current_1;I_DC_MPPT_2;0.1;0.0;A;4
+229;4;3009;U32;;PV2 power_1;P_DC_MPPT_2;0.1;0.0;W;4
+230;4;3011;U16;;PV3 voltage_1;U_DC_MPPT_3;0.1;0.0;V;4
+231;4;3012;U16;;PV3 input current_1;I_DC_MPPT_3;0.1;0.0;A;4
+232;4;3013;U32;;PV3 power_1;P_DC_MPPT_3;0.1;0.0;W;4
+233;4;3015;U16;;PV4 voltage_1;U_DC_MPPT_4;0.1;0.0;V;4
+234;4;3016;U16;;PV4 input current_1;I_DC_MPPT_4;0.1;0.0;A;4
+235;4;3017;U32;;PV4 power_1;P_DC_MPPT_4;0.1;0.0;W;4
+236;4;3019;U32;;System output power;;0.1;0.0;W;4
+237;4;3021;U32;;reactive power;CMD_Q_AC_SET_ABS;0.1;0.0;Var;4
+238;4;3023;U32;;Output power;P_AC;0.1;0.0;W;4
+239;4;3025;U16;;Grid frequency;FREQ;0.01;0.0;Hz;4
+240;4;3026;U16;;Three/single phase grid voltage_1;U_AC_1;0.1;0.0;V;4
+241;4;3027;U16;;Three/single phase grid output current_1;I_AC_1;0.1;0.0;A;4
+242;4;3028;U32;;Three/single phase grid output watt_1;S_AC_1;0.1;0.0;VA;4
+243;4;3030;U16;;Three phase grid voltage_2;U_AC_2;0.1;0.0;V;4
+244;4;3031;U16;;Three phase grid output current_2;I_AC_2;0.1;0.0;A;4
+245;4;3032;U32;;Three phase grid output power_2;S_AC_2;0.1;0.0;VA;4
+246;4;3034;U16;;Three phase grid voltage_3;U_AC_3;0.1;0.0;V;4
+247;4;3035;U16;;Three phase grid output current_3;I_AC_3;0.1;0.0;A;4
+248;4;3036;U32;;Three phase grid output power_3;S_AC_3;0.1;0.0;VA;4
+249;4;3038;U16;;Three phase grid voltage (RS);U_AC_L1L2;0.1;0.0;V;4
+250;4;3039;U16;;Three phase grid voltage (ST);U_AC_L2L3;0.1;0.0;V;4
+251;4;3040;U16;;Three phase grid voltage (TR);U_AC_L3L1;0.1;0.0;V;4
+252;4;3041;U32;;Total forward power;;0.1;0.0;W;4
+253;4;3043;U16;;Total reverse power;;0.1;0.0;W;4
+254;4;3045;U32;;Total load power_1;;0.1;0.0;W;4
+255;4;3045;U32;;Total load power_2;;0.1;0.0;W;4
+256;4;3047;U32;;Work time total_1;TOT;0.5;0.0;s;4
+257;4;3049;U32;;Today generate energy_1;E_DAY;0.1;0.0;kWh;4
+258;4;3051;U32;;Total generate energy_1;E_TOT;0.1;0.0;kWh;4
+259;4;3053;U32;;PV energy total;;0.1;0.0;kWh;4
+260;4;3055;U32;;PV1 energy today;;0.1;0.0;kWh;4
+261;4;3057;U32;;PV1 energy total;;0.1;0.0;kWh;4
+262;4;3059;U32;;PV2 energy today;;0.1;0.0;kWh;4
+263;4;3061;U32;;PV2 energy total;;0.1;0.0;kWh;4
+264;4;3063;U32;;PV3 energy today;;0.1;0.0;kWh;4
+265;4;3065;U32;;PV3 energy total;;0.1;0.0;kWh;4
+266;4;3067;U32;;Today energy to user;;0.1;0.0;kWh;4
+267;4;3069;U32;;Total energy to user;;0.1;0.0;kWh;4
+268;4;3071;U32;;Today energy to grid;;0.1;0.0;kWh;4
+269;4;3073;U32;;Total energy to grid;;0.1;0.0;kWh;4
+270;4;3075;U32;;Today energy of user load;;0.1;0.0;kWh;4
+271;4;3077;U32;;Total energy of user load;;0.1;0.0;kWh;4
+272;4;3079;U32;;PV4 energy today;;0.1;0.0;kWh;4
+273;4;3081;U32;;PV4 energy total;;0.1;0.0;kWh;4
+274;4;3083;U32;;PV energy today;;0.1;0.0;kWh;4
+275;4;3086;U16;;DeratingMode;;1.0;0.0;;4
+276;4;3087;U16;;PV ISO value;R_ISO;1.0;0.0;kOhm;4
+277;4;3088;U16;;R DCI Curr;;0.1;0.0;mA;4
+278;4;3089;U16;;S DCI Curr;;0.1;0.0;mA;4
+279;4;3090;U16;;T DCI Curr;;0.1;0.0;mA;4
+280;4;3091;U16;;GFCI Curr;;1.0;0.0;mA;4
+281;4;3092;U16;;Total Bus Voltage;;0.1;0.0;V;4
+282;4;3093;U16;;Inverter temperature;TEMP_INT;0.1;0.0;°C;4
+283;4;3094;U16;;The inside IPM in inverter temperature;;0.1;0.0;°C;4
+284;4;3095;U16;;Boost temperature;;0.1;0.0;°C;4
+285;4;3097;U16;;Commmunication broad temperature;;0.1;0.0;°C;4
+286;4;3098;U16;;P Bus inside Voltage;;0.1;0.0;V;4
+287;4;3099;U16;;N Bus inside Voltage;;0.1;0.0;V;4
+288;4;3100;U16;;Inverter output PF now_1;;1.0;0.0;;4
+289;4;3101;U16;;Real Output power Percent_1;;1.0;0.0;%;4
+290;4;3102;U32;;Output Maxpower Limited_1;CMD_P_AC_LIM_ABS;0.1;0.0;W;4
+291;4;3104_0_1;BITS;;Inverter standby : turn off;;1.0;0.0;;4
+292;4;3103_1_1;Bits;;Inverter standby : PV low;;1.0;0.0;;4
+293;4;3103_2_1;Bits;;Inverter standby : AC Volt/Freq out of scope;;1.0;0.0;;4
+294;4;3105;U16;;Inverter fault maincode;;1.0;0.0;;4
+295;4;3106;U16;;Inverter Warning maincode;;1.0;0.0;;4
+296;4;3107;U16;;Inverter fault subcode;;1.0;0.0;;4
+297;4;3108;U16;;Inverter Warning subcode;;1.0;0.0;;4
+298;4;3111;U16;;PresentFFTValue [CHANNEL_A];;1.0;0.0;;4
+299;4;3112;U16;;AFCI Status;;1.0;0.0;;4
+300;4;3113;U16;;AFCI Strength [CHANNEL_A];;1.0;0.0;;4
+301;4;3114;U16;;AFCI SelfCheck [CHANNEL_A];;1.0;0.0;;4
+302;4;3115;U16;;inv start delay time_1;;1.0;0.0;s;4
+303;4;3118;U16;;BDC connect state;;1.0;0.0;;4
+304;4;3119;U16;;Current status of DryContact;;1.0;0.0;;4
+305;4;3121;U32;;self?use power;;0.1;0.0;W;4
+306;4;3123;U32;;System energy today;;0.1;0.0;kWh;4
+307;4;3125;U32;;Today discharge energy;;0.1;0.0;kWh;4
+308;4;3127;U32;;Total discharge energy;;0.1;0.0;kWh;4
+309;4;3129;U32;;Charge energy today;;0.1;0.0;kWh;4
+310;4;3131;U32;;Charge energy total;;0.1;0.0;kWh;4
+311;4;3133;U32;;Today energy of AC charge;;0.1;0.0;kWh;4
+312;4;3135;U32;;Total energy of AC charge;;0.1;0.0;kWh;4
+313;4;3137;U32;;Total energy of system output;;0.1;0.0;kWh;4
+314;4;3139;U32;;Today energy of Self output;;0.1;0.0;kWh;4
+315;4;3141;U32;;Total energy of Self output;;0.1;0.0;kWh;4
+316;4;3144;U16;;Word Mode;;1.0;0.0;;4
+317;4;3145;U16;;UPS frequency;;0.01;0.0;Hz;4
+318;4;3146;U16;;UPS phase R output voltage;;0.1;0.0;V;4
+319;4;3147;U16;;UPS phase R output current;;0.1;0.0;A;4
+320;4;3148;U32;;UPS phase R output power;;0.1;0.0;VA;4
+321;4;3150;U16;;UPS phase S output voltage;;0.1;0.0;V;4
+322;4;3151;U16;;UPS phase S output current;;0.1;0.0;A;4
+323;4;3152;U32;;UPS phase S output power;;0.1;0.0;VA;4
+324;4;3154;U16;;UPS phase T output voltage;;0.1;0.0;V;4
+325;4;3155;U16;;UPS phase T output current;;0.1;0.0;A;4
+326;4;3156;U32;;UPS phase T output power;;0.1;0.0;VA;4
+327;4;3158;U32;;UPS output power;;0.1;0.0;VA;4
+328;4;3160;U16;;Load percent of UPS output;;0.1;0.0;%;4
+329;4;3161;U16;;Power factor_2;;0.1;0.0;;4
+330;4;3162;U16;;DC voltage;;1.0;0.0;mV;4
+331;4;3164;U16;;Whether to parse BDC data separately;;1.0;0.0;;4
+332;4;3165;U16;;BDCDeratingMode;;1.0;0.0;;4
+333;4;3166;U16;;System work State and mode;;1.0;0.0;;4
+334;4;3167;U16;;Storge device fault code;;1.0;0.0;;4
+335;4;3168;U16;;Storge device warning code;;1.0;0.0;;4
+336;4;3169;U16;;Battery voltage;;0.01;0.0;V;4
+337;4;3170;U16;;Battery current;;0.1;0.0;A;4
+338;4;3171;U16;;State of charge Capacity;;1.0;0.0;%;4
+339;4;3172;U16;;Total BUS voltage;;0.1;0.0;V;4
+340;4;3173;U16;;On the BUS voltage;;0.1;0.0;V;4
+341;4;3174;U16;;BUCK-BOOST Current;;0.1;0.0;A;4
+342;4;3175;U16;;LLC Current;;0.1;0.0;A;4
+343;4;3176;U16;;Temperture A;;0.1;0.0;°C;4
+344;4;3177;U16;;Temperture B;;0.1;0.0;°C;4
+345;4;3178;U32;;Discharge power;;0.1;0.0;W;4
+346;4;3180;U32;;Charge power;;0.1;0.0;W;4
+347;4;3182;U32;;Discharge total energy of storage device;;0.1;0.0;kWh;4
+348;4;3184;U32;;Charge total energy of storage device;;0.1;0.0;kWh;4
+349;4;3187_0_1;BITS;;BDC flag : ChargeEn;;1.0;0.0;;4
+350;4;3187_1_1;BITS;;BDC flag : DischargeEn;;1.0;0.0;;4
+351;4;3187_8_4;BITS;;BDC flag : WarnSubCode;;1.0;0.0;;4
+352;4;3187_12_4;BITS;;BDC flag : FaultSubCode;;1.0;0.0;;4
+353;4;3188;U16;;Lower BUS voltage;;0.1;0.0;V;4
+354;4;3189;U16;;BmsMaxVoltCellNo;;1.0;0.0;;4
+355;4;3190;U16;;BmsMinVoltCellNo;;1.0;0.0;;4
+356;4;3191;U16;;BmsBatteryAvgTemp_1;;1.0;0.0;;4
+357;4;3192;U16;;BmsMaxCellTemp_1;;0.1;0.0;°C;4
+358;4;3193;U16;;BmsBatteryAvgTemp_2;;0.1;0.0;°C;4
+359;4;3194;U16;;BmsMaxCellTemp_2;;1.0;0.0;;4
+360;4;3195;U16;;BmsBatteryAvgTemp_3;;1.0;0.0;;4
+361;4;3196;U16;;BmsMaxSOC;;1.0;0.0;%;4
+362;4;3197;U16;;BmsMinSOC;;1.0;0.0;%;4
+363;4;3198;U16;;ParallelBatteryNum;;1.0;0.0;;4
+364;4;3199;U16;;BmsDerateReason;;1.0;0.0;;4
+365;4;3200;U16;;BmsGaugeFCC;;1.0;0.0;Ah;4
+366;4;3201;U16;;BmsGaugeRM;;1.0;0.0;Ah;4
+367;4;3202;U16;;Bms Protect1;;1.0;0.0;;4
+368;4;3203;U16;;BmsWarn1;;1.0;0.0;;4
+369;4;3204;U16;;BmsFault1;;1.0;0.0;;4
+370;4;3205;U16;;BmsFault2;;1.0;0.0;;4
+371;4;3210;U16;;Battery ISO detection status;;1.0;0.0;;4
+372;4;3211_0_1;Bits;;Battery work request : Prohibit charging;;1.0;0.0;;4
+373;4;3211_1_1;Bits;;Battery work request : Enable strong charge;;1.0;0.0;;4
+374;4;3211_2_1;Bits;;Battery work request : Enable strong charge2;;1.0;0.0;;4
+375;4;3211_8_1;Bits;;Battery work request : Discharge is prohibited;;1.0;0.0;;4
+376;4;3211_9_1;Bits;;Battery work request : Turn on power reduction;;1.0;0.0;;4
+377;4;3212;U16;;battery working status;;1.0;0.0;;4
+378;4;3213;U16;;BMS Protect2;;1.0;0.0;;4
+379;4;3214;U16;;BMS Warn2;;1.0;0.0;;4
+380;4;3215;U16;;BMS SOC;;1.0;0.0;%;4
+381;4;3216;U16;;BMS BatteryVolt;;0.01;0.0;V;4
+382;4;3217;U16;;BMS BatteryCurr;;0.01;0.0;A;4
+383;4;3218;U16;;battery cell maximum temperature;;0.1;0.0;°C;4
+384;4;3219;U16;;Maximum charging current;;0.01;0.0;A;4
+385;4;3220;U16;;Maximum discharge current;;0.01;0.0;A;4
+386;4;3221;U16;;BMSCycleCnt;;1.0;0.0;;4
+387;4;3222;U16;;BMS SOH;;1.0;0.0;;4
+388;4;3223;U16;;Battery charging voltage limit value;;0.01;0.0;V;4
+389;4;3224;U16;;Battery discharge voltage limit value;;1.0;0.0;;4
+390;4;3225;U16;;BMS Warn 3;;1.0;0.0;;4
+391;4;3226;U16;;BMS Protect3;;1.0;0.0;;4
+392;4;3230;U16;;BMS Battery SingleVoltMax;;0.001;0.0;V;4
+393;4;3231;U16;;BMS Battery SingleVoltMin;;0.001;0.0;V;4
+394;4;3232;U16;;Battery LoadVolt;;0.01;0.0;V;4
+395;4;3234;U16;;Debug data1;;1.0;0.0;;4
+396;4;3235;U16;;Debug data2;;1.0;0.0;;4
+397;4;3236;U16;;Debug data3;;1.0;0.0;;4
+398;4;3237;U16;;Debug data4;;1.0;0.0;;4
+399;4;3238;U16;;Debug data5;;1.0;0.0;;4
+400;4;3239;U16;;Debug data6;;1.0;0.0;;4
+401;4;3240;U16;;Debug data7;;1.0;0.0;;4
+402;4;3241;U16;;Debug data8;;1.0;0.0;;4
+403;4;3242;U16;;Debug data9;;1.0;0.0;;4
+404;4;3243;U16;;Debug data10;;1.0;0.0;;4
+405;4;3244;U16;;Debug data11;;1.0;0.0;;4
+406;4;3245;U16;;Debug data12;;1.0;0.0;;4
+407;4;3246;U16;;Debug data13;;1.0;0.0;;4
+408;4;3247;U16;;Debug data14;;1.0;0.0;;4
+409;4;3248;U16;;Debug data15;;1.0;0.0;;4
+410;4;3249;U16;;Debug data16;;1.0;0.0;;4

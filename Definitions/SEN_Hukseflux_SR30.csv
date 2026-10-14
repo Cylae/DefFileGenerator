@@ -1,0 +1,29 @@
+Modbus;Sensor;Hukseflux;SR30
+1;3;0;U16;;Modbus address;UNIT_ID;1.0;0.0;;4
+2;3;1;U16;;Serial communication settings;;1.0;0.0;;4
+3;3;2;I32;;Irradiance (temperature compensated signal);;0.01;0.0;W/m2;4
+4;3;4;I32;;Irradiance (uncompensated signal);;0.01;0.0;W/m2;4
+5;3;6;I16;;Sensor body temperature;;0.01;0.0;Deg.Celsius;4
+6;3;7;U16;;Sensor electrical resistance;;0.1;0.0;Ohm;4
+7;3;8;U16;;Scaling factor irradiance;;1.0;0.0;;4
+8;3;9;U16;;Scaling factor temperature;;1.0;0.0;;4
+9;3;10;I32;;Sensor voltage output;;1.0;0.0;uV;4
+10;3;32_8;STRING;;Sensor model part1;;1.0;0.0;;1
+11;3;36_8;STRING;;Sensor model part2;;1.0;0.0;;1
+12;3;40;U16;;Sensor serial number;;1.0;0.0;;4
+13;3;41;F32;;Sensor sensitivity;;0.001;0.0;mV/(W/m2);1
+14;3;43;U16;;Response time;;0.1;0.0;s;1
+15;3;44;U16;;Sensor resistance;;0.1;0.0;Ohm;1
+16;3;46;U32;;Sensor calibration date;;1.0;0.0;;1
+17;3;61;U16;;Firmware version;;1.0;0.0;;1
+18;3;62;U16;;Hardware version;;1.0;0.0;;1
+19;3;63;F32;;Sensor sensitivity history 1;;0.001;0.0;mV/(W/m2);1
+20;3;65;U32;;Calibration date history 1;;1.0;0.0;;1
+21;3;67;F32;;Sensor sensitivity history 2;;0.001;0.0;mV/(W/m2);1
+22;3;69;U32;;Calibration date history 2;;1.0;0.0;;1
+23;3;71;F32;;Sensor sensitivity history 3;;0.001;0.0;mV/(W/m2);1
+24;3;73;U32;;Calibration date history 3;;1.0;0.0;;1
+25;3;75;F32;;Sensor sensitivity history 4;;0.001;0.0;mV/(W/m2);1
+26;3;77;U32;;Calibration date history 4;;1.0;0.0;;1
+27;3;79;F32;;Sensor sensitivity history 5;;0.001;0.0;mV/(W/m2);1
+28;3;81;U32;;Calibration date history 5;;1.0;0.0;;1

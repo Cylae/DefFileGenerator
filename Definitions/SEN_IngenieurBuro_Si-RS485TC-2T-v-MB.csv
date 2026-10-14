@@ -1,0 +1,8 @@
+Modbus;Sensor;IngenieurBuro;Si-RS485TC-2T-v-MB
+1;4;0;U16;;Irradiance;;0.1;0.0;W/m;4
+2;4;1;U16;;Cell temperature;;0.1;-25.0;C;4
+3;4;2;U16;;External temperature;;0.1;-25.0;C;4
+4;4;3;U16;;Wind speed measurement;;1.0;0.0;m/s;4
+5;4;4;I16;;reserved;;0.0;1.0;;0
+6;4;5;U16;;Cell temperature measurement T_cell;;1.0;4.0;;0
+7;4;6;U16;;External temperature measurement T_ext;;1.0;4.0;;0

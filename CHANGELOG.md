@@ -18,7 +18,7 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   <a href="README.md"><b>README</b></a> •
   <a href="QUICKSTART.md"><b>Quick Start</b></a> •
   <a href="DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
-  <a href="AUDIT_REPORT.md"><b>Audit Report</b></a>
+  <a href="docs/AUDIT_REPORT.md"><b>Audit Report</b></a>
 </p>
 
 ## [Unreleased]
@@ -32,6 +32,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Added
 
+- **Industrial Definitions Library (`Definitions/`).** Standardized, audited, and cataloged 125 industrial definition CSV files covering 18,131 Modbus registers across 61 manufacturers. Every file follows the canonical 3-letter prefix convention (`INV_` for 66 inverters, `MET_` for 31 meters, `SEN_` for 21 sensors, `COM_` for 2 communication loggers, `OTH_` for 5 IO/displays) and includes a comprehensive markdown catalog `Definitions/README.md`.
+- **Definitions Library Automated Test Suite (`DefFileGenerator/tests/test_definitions_library.py`).** Added 4 automated integration tests validating 100% of the 125 definition files against Webdyn schema constraints, prefix conformity, and catalog synchronization.
+- **Repository Structural Reorganization.** Cleaned repository root by relocating technical audit reports (`AUDIT_REPORT.md`, `RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md`) into `docs/` and generated Mars controller CSV artifacts into `generated_definitions/`.
 - **Wave 10 Hardening Regression Suite (`DefFileGenerator/tests/test_wave10_hardening.py`).** Added permanent automated tests covering surplus CSV column handling, ragged rows, GUI CLI flags, and builder environment discovery.
 - **Standalone Windows Executables (.exe).** Added reproducible PyInstaller specification (`DefFileGenerator.spec`), build orchestration script (`build_exe.py`), and one-click Windows launcher (`build_exe.bat`) compiling `DefFileGenerator-GUI.exe` (windowed desktop UI) and `deffilegen.exe` (portable CLI).
 - **Automated GitHub Actions Build & Release Workflow (`.github/workflows/build-exe.yml`).** Automatically compiles and smoke-tests Windows binaries on `windows-latest` runners on push to `main` (published as downloadable workflow artifacts) and on release tags `v*` (published as GitHub Release assets with zip bundles and SHA-256 checksums).

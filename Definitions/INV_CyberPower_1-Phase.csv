@@ -1,0 +1,86 @@
+Modbus;Inverter;CyberPower;1-Phase
+1;4;4096;U32_W;;Product_ID;;1.0;0.0;;4
+2;4;4098;U16;;Inverter_Rated_Power;;1.0;0.0;;4
+3;4;4099;U16;;Peak Panel_Power;;1.0;0.0;;4
+4;4;4100;U16;;Installation_Year;;1.0;0.0;;4
+5;4;4101;U16;;Installation_Month;;1.0;0.0;;4
+6;4;4102;U16;;Installation_Day;;1.0;0.0;;4
+7;4;4103;U16;;RS485_ID;UNIT_ID;1.0;0.0;;4
+8;4;4104_16;STRING;;Serial Number;SERIAL;1.0;0.0;;4
+9;4;4112_16;STRING;;Model Name;MODEL;1.0;0.0;;4
+10;4;4120;U16;;Processor1 FW Version;;1.0;0.0;;4
+11;4;4121;U16;;Processor1 FW Date;;1.0;0.0;;4
+12;4;4122;U16;;Processor1 HW Version;;1.0;0.0;;4
+13;4;4123;U16;;Processor2 FW Version;;1.0;0.0;;4
+14;4;4124;U16;;Processor2 FW Date;;1.0;0.0;;4
+15;4;4125;U16;;Processor2 HW Version;;1.0;0.0;;4
+16;4;4126;U16;;Processor3 FW Version;;1.0;0.0;;4
+17;4;4127;U16;;Processor3 FW Date;;1.0;0.0;;4
+18;4;4128;U16;;Processor3 HW Version;;1.0;0.0;;4
+19;4;4129;U16;;Processor4 FW Version;;1.0;0.0;;4
+20;4;4130;U16;;Processor4 FW Date;;1.0;0.0;;4
+21;4;4131;U16;;Processor4 HW Version;;1.0;0.0;;4
+22;4;4132;U16;;Processor5 FW Version;;1.0;0.0;;4
+23;4;4133;U16;;Processor5 FW Date;;1.0;0.0;;4
+24;4;4134;U16;;Processor5 HW Version;;1.0;0.0;;4
+25;4;4135;U16;;Processor6 FW Version;;1.0;0.0;;4
+26;4;4136;U16;;Processor6 FW Date;;1.0;0.0;;4
+27;4;4137;U16;;Processor6 HW Version;;1.0;0.0;;4
+28;4;4138;U16;;Grid code (Country);;1.0;0.0;;4
+29;4;4139;U16;;Custom flag;;1.0;0.0;;4
+30;4;4140;U16;;DC Connection Detection;;1.0;0.0;;4
+31;4;4141;U16;;DC Connection Status;;1.0;0.0;;4
+32;4;4142;U16;;Language;;1.0;0.0;;4
+33;4;4143;U16;;System Structure;;1.0;0.0;;4
+34;4;4144;U16;;Inverter Status;;1.0;0.0;;4
+35;4;4145;U16;;CPS_PV_Status;;1.0;0.0;;4
+36;4;4146;U16;;Function Status Counter;;1.0;0.0;;4
+37;4;4147;U16;;Reconnected Time;;1.0;0.0;;4
+38;4;4148;U16;;Event Index Start;;1.0;0.0;;4
+39;4;4149;U16;;Event Index End;;1.0;0.0;;4
+40;4;4150;U16;;Input1 R Leakage;;1.0;0.0;kOhm;4
+41;4;4151;U16;;Input2 R Leakage;;1.0;0.0;kOhm;4
+42;4;4152;U32_W;;Today kWh;E_DAY;1.0;0.0;Wh;4
+43;4;4154;U32_W;;Today Runtime;;1.0;0.0;s;4
+44;4;4156;U32_W;;System Life kWh;E_TOT;1.0;0.0;Wh;4
+45;4;4158;U32_W;;System Life Runtime;;1.0;0.0;s;4
+46;4;4160;U32_W;;Input1 Today kWh;;1.0;0.0;Wh;4
+47;4;4162;U32_W;;Input1 Today Runtime;;1.0;0.0;s;4
+48;4;4164;U32_W;;Input1 Life kWh;;1.0;0.0;Wh;4
+49;4;4166;U32_W;;Input1 Life Runtime;;1.0;0.0;s;4
+50;4;4168;U32_W;;Input2 Today kWh;;1.0;0.0;Wh;4
+51;4;4170;U32_W;;Input2 Today Runtime;;1.0;0.0;s;4
+52;4;4172;U32_W;;Input2 Life kWh;;1.0;0.0;Wh;4
+53;4;4174;U32_W;;Input2 Life Runtime;;1.0;0.0;s;4
+54;4;4176;U16;;Input1 Volt (average);;0.1;0.0;V;4
+55;4;4177;U16;;Input1 Curr (average);;0.01;0.0;A;4
+56;4;4178;U16;;Input1 Watt (average);;1.0;0.0;W;4
+57;4;4179;U16;;Input2 Volt (average);;0.1;0.0;V;4
+58;4;4180;U16;;Input2 Curr (average);;0.01;0.0;A;4
+59;4;4181;U16;;Input2 Watt (average);;1.0;0.0;W;4
+60;4;4182;U16;;Bus Volt (Pos)_ (average);;0.1;0.0;V;4
+61;4;4183;U16;;Bus Volt (Neg)_ (average);;0.1;0.0;V;4
+62;4;4184;U16;;AC Volt (average);;0.1;0.0;V;4
+63;4;4185;U16;;AC Curr (average);;0.01;0.0;A;4
+64;4;4186;U16;;AC Watt (average);;1.0;0.0;W;4
+65;4;4187;U16;;AC Freq (average);;0.01;0.0;Hz;4
+66;4;4188;U16;;AC Volt (redundant) (average);;0.1;0.0;V;4
+67;4;4189;U16;;AC Freq (redundant) (average);;0.01;0.0;Hz;4
+68;4;4190;U16;;Temperature (Ambient);;1.0;0.0;K;4
+69;4;4191;U16;;Temperature (Heatsink);;1.0;0.0;K;4
+70;4;4192;U16;;Input1 Volt;;0.1;0.0;V;4
+71;4;4193;U16;;Input1 Curr;;0.01;0.0;A;4
+72;4;4194;U16;;Input1 Watt;;1.0;0.0;W;4
+73;4;4195;U16;;Input2 Volt;;0.1;0.0;V;4
+74;4;4196;U16;;Input2 Curr;;0.01;0.0;A;4
+75;4;4197;U16;;Input2 Watt;;1.0;0.0;W;4
+76;4;4198;U16;;Bus Volt (Pos);;0.1;0.0;V;4
+77;4;4199;U16;;Bus Volt (Neg);;0.1;0.0;V;4
+78;4;4200;U16;;AC Volt;;0.1;0.0;V;4
+79;4;4201;U16;;AC Curr;;0.01;0.0;A;4
+80;4;4202;U16;;AC Watt;P_AC;1.0;0.0;W;4
+81;4;4203;U16;;AC Freq;FREQ;0.01;0.0;Hz;4
+82;4;4204;U16;;AC Volt (redundant);;0.1;0.0;V;4
+83;4;4205;U16;;AC Freq (redundant);;0.01;0.0;Hz;4
+84;4;4206;U16;;Input1 R Leakage_1;;1.0;0.0;kOhm;4
+85;4;4207;U16;;Input2 R Leakage_1;;1.0;0.0;kOhm;4

@@ -37,7 +37,8 @@ import re
 import sys
 import zipfile
 from collections.abc import Iterable, Iterator, Sequence
-from typing import Any
+from contextlib import nullcontext
+from typing import Any, ClassVar
 
 try:
     import xlrd  # type: ignore[import-untyped]
@@ -117,6 +118,7 @@ except ImportError:
 # Import core generator utilities
 try:
     from DefFileGenerator.def_gen import Generator, peek_generator
+    from DefFileGenerator.io_utils import staged_text_output
     from DefFileGenerator.knowledge_miner import (
         infer_action_code,
         infer_webdyn_tag,
@@ -124,6 +126,7 @@ try:
     )
 except ImportError:
     from .def_gen import Generator, peek_generator  # type: ignore[no-redef]
+    from .io_utils import staged_text_output  # type: ignore[no-redef]
     from .knowledge_miner import (  # type: ignore[no-redef]
         infer_action_code,
         infer_webdyn_tag,
@@ -286,7 +289,7 @@ class Extractor:
         COLUMN_MAPPING: Comprehensive dictionary of standard synonyms for Modbus table headers.
     """
 
-    COLUMN_MAPPING: dict[str, list[str]] = {
+    COLUMN_MAPPING: ClassVar[dict[str, list[str]]] = {
         "RegisterType": [
             "register type",
             "reg type",
@@ -1016,8 +1019,7 @@ class Extractor:
                                     start_p = int(parts[0].strip())
                                     end_p = int(parts[1].strip())
                                     step = 1 if start_p <= end_p else -1
-                                    for p_num in range(start_p, end_p + step, step):
-                                        requested.append(p_num)
+                                    requested.extend(range(start_p, end_p + step, step))
                                 else:
                                     requested.append(item)
                             else:
@@ -1229,8 +1231,8 @@ class Extractor:
                                             elif "low" in k_low:
                                                 lo_val = str(v).strip()
                                         if (
-                                            hi_val is not None
-                                            and lo_val is not None
+                                            hi_val
+                                            and lo_val
                                             and len(hi_val) <= 2
                                             and len(lo_val) <= 2
                                             and all(c in "0123456789abcdefABCDEF" for c in hi_val)
@@ -1483,8 +1485,8 @@ class Extractor:
 
         assigned_tags: set[str] = set()
 
-        for table in tables:
-            has_rows, table = peek_generator(table)
+        for raw_table in tables:
+            has_rows, table = peek_generator(raw_table)
             if not has_rows:
                 continue
             iterator = iter(table)
@@ -1501,7 +1503,7 @@ class Extractor:
                 dict.fromkeys(
                     str(col)
                     for r in buffer
-                    for col in r.keys()
+                    for col in r
                     if col is not None and str(col).strip() != ""
                 )
             )
@@ -1865,27 +1867,26 @@ def main() -> None:
 
     mapped = list(extractor.map_and_clean(raw, args.address_offset))
 
-    out = open(args.output, "w", newline="", encoding="utf-8") if args.output else sys.stdout
-    writer = csv.DictWriter(
-        out,
-        fieldnames=[
-            "Name",
-            "Tag",
-            "RegisterType",
-            "Address",
-            "Type",
-            "Factor",
-            "Offset",
-            "Unit",
-            "Action",
-            "ScaleFactor",
-        ],
-        extrasaction="ignore",
-    )
-    writer.writeheader()
-    writer.writerows(mapped)
-    if args.output:
-        out.close()
+    output_context = staged_text_output(args.output) if args.output else nullcontext(sys.stdout)
+    with output_context as out:
+        writer = csv.DictWriter(
+            out,
+            fieldnames=[
+                "Name",
+                "Tag",
+                "RegisterType",
+                "Address",
+                "Type",
+                "Factor",
+                "Offset",
+                "Unit",
+                "Action",
+                "ScaleFactor",
+            ],
+            extrasaction="ignore",
+        )
+        writer.writeheader()
+        writer.writerows(mapped)
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ import re
 import sys
 import tempfile
 from collections.abc import Iterable, Iterator
-from contextlib import nullcontext
+from contextlib import nullcontext, suppress
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -685,13 +685,12 @@ class Generator:
             bool: True if the type is valid, False otherwise.
         """
         dtype_upper = str(dtype).upper()
-        if dtype_upper in _COMMON_VALID_NUMERIC or dtype_upper in _VALID_SPECIAL_TYPES:
-            return True
-        if RE_TYPE_NUMERIC.match(dtype_upper):
-            return True
-        if RE_TYPE_STR_CONV.match(dtype_upper):
-            return True
-        return False
+        return (
+            dtype_upper in _COMMON_VALID_NUMERIC
+            or dtype_upper in _VALID_SPECIAL_TYPES
+            or bool(RE_TYPE_NUMERIC.match(dtype_upper))
+            or bool(RE_TYPE_STR_CONV.match(dtype_upper))
+        )
 
     @staticmethod
     def normalize_address_val(addr_part: Any) -> str:
@@ -897,10 +896,7 @@ class Generator:
             else:
                 s = s.replace(".", "").replace(",", ".")
         elif "," in s:
-            if _THOUSANDS_COMMA_RE.match(s):
-                s = s.replace(",", "")
-            else:
-                s = s.replace(",", ".")
+            s = s.replace(",", "") if _THOUSANDS_COMMA_RE.match(s) else s.replace(",", ".")
 
         try:
             res = float(s)
@@ -1248,18 +1244,12 @@ class Generator:
 
         try:
             val_a = factor * (10**scale_val)
-            if not math.isfinite(val_a):
-                coef_a = "1.000000"
-            else:
-                coef_a = f"{val_a:.6f}"
+            coef_a = "1.000000" if not math.isfinite(val_a) else f"{val_a:.6f}"
         except (OverflowError, ValueError):
             coef_a = "1.000000"
 
         try:
-            if not math.isfinite(offset):
-                coef_b = "0.000000"
-            else:
-                coef_b = f"{offset:.6f}"
+            coef_b = "0.000000" if not math.isfinite(offset) else f"{offset:.6f}"
         except (OverflowError, ValueError):
             coef_b = "0.000000"
 
@@ -1967,15 +1957,11 @@ class Generator:
             return False
         finally:
             if owns_output and outfile is not None:
-                try:
+                with suppress(OSError):
                     outfile.close()
-                except OSError:
-                    pass
             if temp_path is not None:
-                try:
+                with suppress(OSError):
                     os.unlink(temp_path)
-                except OSError:
-                    pass
 
 
 # -----------------------------------------------------------------------------

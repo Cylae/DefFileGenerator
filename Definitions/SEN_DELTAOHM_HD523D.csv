@@ -1,0 +1,11 @@
+Modbus;Sensor;DELTAOHM;HD523D
+1;4;1;U16;;Wind speed;;100.0;0.0;;4
+2;4;2;U16;;Wind direction in degrees;;10.0;0.0;;4
+3;4;6;I16;;Temperature measured by Pt100 sensor;;10.0;0.0;;4
+4;4;7;U16;;Relative humidity in _RH;;10.0;0.0;;4
+5;4;8;U16;;Barometric pressure (x1000 if the unit of measurement is atm_ x10 in the other cases);;1000.0;0.0;;4
+6;4;14;I16;;Dew point temperature (x10);;10.0;0.0;;4
+7;4;24;U32;;Total amount of rainfall (x1000 if the unit of measurement is mm_ x10000 if the unit of measurement is inch);;1000.0;0.0;;4
+8;4;26;U32;;Partial amount of rainfall (x1000 if the unit of measurement is mm_ x10000 if the unit of measurement is inch);;1000.0;0.0;;4
+9;4;28;U16;;Rainfall rate (x10 if the unit of measurement is mm_h_ x100 if the unit of measurement is inch_h;;10.0;0.0;;4
+10;4;29;U16;;Rainfall unit of measurement;;1.0;0.0;;4

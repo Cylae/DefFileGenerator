@@ -1,13 +1,13 @@
 # Comprehensive Codebase Audit and Security Report
 
-> Historical audit notes: the metrics and conclusions below describe earlier engineering passes. They are not a certification of the current tree. For current behavior and reproducible checks, use [the enhancement report](docs/enhancement-report.md), [developer guide](DEVELOPER_GUIDE.md), and [security model](docs/security.md). Earlier endpoint descriptions below may describe superseded designs; the current API is documented at `/docs`.
+> Historical audit notes: the metrics and conclusions below describe earlier engineering passes. They are not a certification of the current tree. For current behavior and reproducible checks, use [the enhancement report](enhancement-report.md), [developer guide](../DEVELOPER_GUIDE.md), and [security model](security.md). Earlier endpoint descriptions below may describe superseded designs; the current API is documented at `/docs`.
 
 <p align="center">
-  <a href="README.md"><b>README</b></a> •
-  <a href="DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
-  <a href="docs/architecture.md"><b>Architecture</b></a> •
-  <a href="docs/security.md"><b>Security</b></a> •
-  <a href="CHANGELOG.md"><b>Changelog</b></a>
+  <a href="../README.md"><b>README</b></a> •
+  <a href="../DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
+  <a href="architecture.md"><b>Architecture</b></a> •
+  <a href="security.md"><b>Security</b></a> •
+  <a href="../CHANGELOG.md"><b>Changelog</b></a>
 </p>
 
 > [!NOTE]

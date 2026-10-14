@@ -1,0 +1,3 @@
+Modbus;Sensor;Webdyn;RK100-01
+1;3;0;U16;;Wind speed;;1.0;0.0;m/s;4
+2;3;48;U16;;Modify Slave Address;UNIT_ID;1.0;0.0;;4

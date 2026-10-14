@@ -1,0 +1,18 @@
+Modbus;Sensor;BD_SENSOR;FUEL_SENSOR
+1;4;0;U32;;Serial number;;1.0;0.0;;4
+2;4;2;U32;;Date of last calibration;;1.0;0.0;;4
+3;4;4;F32;;Upper range of pressure channel;;1.0;0.0;;4
+4;4;6;F32;;Lower range of pressure channel;;1.0;0.0;;4
+5;4;8;F32;;Actual pressure;;1.0;0.0;;4
+6;4;10;F32;;Maximal Pressure;;1.0;0.0;;4
+7;4;12;F32;;Minimal Pressure;;1.0;0.0;;4
+8;4;14;F32;;Upper range of temperature channel;;1.0;0.0;;4
+9;4;16;F32;;Lower range of temperature channel;;1.0;0.0;;4
+10;4;18;F32;;Actual temperature;;1.0;0.0;;4
+11;4;20;F32;;Maximal temperature;;1.0;0.0;;4
+12;4;22;F32;;Minimal temperature;;1.0;0.0;;4
+13;3;1;U16;;Unit of pressure channel;;1.0;0.0;;4
+14;3;2;U16;;Unit of temperature channel;;1.0;0.0;;4
+15;3;3;U16;;Device address;;1.0;0.0;;4
+16;3;4;U16;;Baud rate;;1.0;0.0;;4
+17;3;5;U16;;Parity;;1.0;0.0;;4

@@ -1,0 +1,183 @@
+Modbus;Inverter;Kaco;NX1-NX3_Series
+1;4;31001_2;STRING;;Device Type;;1.0;0.0;;4
+2;4;31002;U16;;Modbus address;;1.0;0.0;;4
+3;4;31003_32;STRING;;Serial Number;SERIAL;1.0;0.0;;4
+4;4;31019_16;STRING;;Machine type;;1.0;0.0;;4
+5;4;31027;U16;;Current grid code;;1.0;0.0;;4
+6;4;31028;U32;;Rated Power;P_RATED;1.0;0.0;W;4
+7;4;31030_14;STRING;;Software Version;;1.0;0.0;;4
+8;4;31044_14;STRING;;Safety Version;;1.0;0.0;;4
+9;4;31057_16;STRING;;Manufacturer_s name;;1.0;0.0;;4
+10;4;31065_16;STRING;;Brand name;;1.0;0.0;;4
+11;4;31301;U16;;Grid rated voltage;;0.1;0.0;V;4
+12;4;31302;U16;;Grid rated frequency;;0.01;0.0;Hz;4
+13;4;31303;U32;;E-Today of inverter;E_DAY;0.1;0.0;kWh;4
+14;4;31305;U32;;E-Total of inverter;E_TOT;0.1;0.0;kWh;4
+15;4;31307;U32;;H-Total;;1.0;0.0;H;4
+16;4;31309;U16;;Device State;;1.0;0.0;;4
+17;4;31310;U16;;Connect time;;1.0;0.0;s;4
+18;4;31311;I16;;Air temperature;;0.1;0.0;C;4
+19;4;31312;I16;;Inverter U phase temperature;;0.1;0.0;C;4
+20;4;31313;I16;;Inverter V phase temperature;;0.1;0.0;C;4
+21;4;31314;I16;;Inverter W phase temperature;;0.1;0.0;C;4
+22;4;31315;I16;;Boost temperature;;0.1;0.0;C;4
+23;4;31317;U16;;Bus voltage;;0.1;0.0;V;4
+24;4;31319;U16;;PV1 voltage;;0.1;0.0;V;4
+25;4;31320;U16;;PV1 current;;0.01;0.0;A;4
+26;4;31321;U16;;PV2 voltage;;0.1;0.0;V;4
+27;4;31322;U16;;PV2 current;;0.01;0.0;A;4
+28;4;31323;U16;;PV3 voltage;;0.1;0.0;V;4
+29;4;31324;U16;;PV3 current;;0.01;0.0;A;4
+30;4;31325;U16;;PV4 voltage;;0.1;0.0;V;4
+31;4;31326;U16;;PV4 current;;0.01;0.0;A;4
+32;4;31339;U16;;String 1 current;;0.1;0.0;A;4
+33;4;31340;U16;;String 2 current;;0.1;0.0;A;4
+34;4;31341;U16;;String 3 current;;0.1;0.0;A;4
+35;4;31342;U16;;String 4 current;;0.1;0.0;A;4
+36;4;31343;U16;;String 5 current;;0.1;0.0;A;4
+37;4;31344;U16;;String 6 current;;0.1;0.0;A;4
+38;4;31345;U16;;String 7 current;;0.1;0.0;A;4
+39;4;31346;U16;;String 8 current;;0.1;0.0;A;4
+40;4;31359;U16;;L1 Phase voltage;;0.1;0.0;V;4
+41;4;31360;U16;;L1 Phase current;;0.1;0.0;A;4
+42;4;31361;U16;;L2 Phase voltage;;0.1;0.0;V;4
+43;4;31362;U16;;L2 Phase current;;0.1;0.0;A;4
+44;4;31363;U16;;L3 Phase voltage;;0.1;0.0;V;4
+45;4;31364;U16;;L3 Phase current;;0.1;0.0;A;4
+46;4;31365;U16;;RS Line voltage;;0.1;0.0;V;4
+47;4;31366;U16;;RT Line voltage;;0.1;0.0;V;4
+48;4;31367;U16;;ST Line voltage;;0.1;0.0;V;4
+49;4;31368;U16;;Grid frequency;FREQ;0.01;0.0;Hz;4
+50;4;31369;U32;;Apparent power;;1.0;0.0;VA;4
+51;4;31371;U32;;Active power;P_AC;1.0;0.0;W;4
+52;4;31373;I32;;Reactive power;;1.0;0.0;Var;4
+53;4;31375;I16;;Power factor;PF;0.01;0.0;;4
+54;4;31378;U16;;Error message;;1.0;0.0;;4
+55;4;31379;U16;;Warning message;;1.0;0.0;;4
+56;3;40201;U16;;Remote switch command_ 0 _ POWER OFF 1 _ POWER ON;CMD_ON;1.0;0.0;;4
+57;3;41001;U16;;RTC_Year;;1.0;0.0;;4
+58;3;41002;U16;;RTC_Month;;1.0;0.0;;4
+59;3;41003;U16;;RTC_Day;;1.0;0.0;;4
+60;3;41004;U16;;RTC_Hour;;1.0;0.0;;4
+61;3;41005;U16;;RTC_Minute;;1.0;0.0;;4
+62;3;41006;U16;;RTC_Seconds;;1.0;0.0;;4
+63;3;44001;U16;;Active power control function;;1.0;0.0;;4
+64;3;44002;U16;;EEG control function;;1.0;0.0;;4
+65;3;44003;U16;;Slope load function;;1.0;0.0;;4
+66;3;44004;U16;;Overvoltage reduce power function;;1.0;0.0;;4
+67;3;44005;U16;;Overfrequency reduce power function;;1.0;0.0;;4
+68;3;44006;U16;;Reactive power control fucntion;;1.0;0.0;;4
+69;3;44007;U16;;LVRT Function;;1.0;0.0;;4
+70;3;44009;U16;;10 Minutes Average Overvoltage protect fucntion 0 _ Disable 1 _ Enable;;1.0;0.0;;4
+71;3;44010;U16;;Islanding protect function;;1.0;0.0;;4
+72;3;44012;U16;;PE connnection check function;;1.0;0.0;;4
+73;3;44017;U16;;Overload function;;1.0;0.0;;4
+74;3;44025;U16;;Shadow MPPT function;;1.0;0.0;;4
+75;3;45201;U16;;Grid code;;1.0;0.0;;4
+76;3;45202;U16;;Overvoltage protection value of the first grid connection;;0.1;0.0;V;4
+77;3;45203;U16;;Overvoltage protection value of the first grid connection_1;;0.1;0.0;V;4
+78;3;45204;U16;;Overvoltage protection value of the first grid connection_2;;0.01;0.0;Hz;4
+79;3;45205;U16;;Underfrequency protection value for first grid connection;;0.01;0.0;Hz;4
+80;3;45206;U16;;Grid Voltage High Limit3;;0.1;0.0;V;4
+81;3;45207;U32;;Grid Voltage High Limit Time3;;1.0;0.0;ms;4
+82;3;45209;U16;;Grid Voltage High Limit2;;0.1;0.0;V;4
+83;3;45210;U32;;Grid Voltage High Limit Time2;;1.0;0.0;ms;4
+84;3;45212;U16;;Grid Voltage High Limit1;;0.1;0.0;V;4
+85;3;45213;U32;;Grid Voltage High Limit Time1;;1.0;0.0;ms;4
+86;3;45215;U16;;Grid Voltage Low Limit3;;0.1;0.0;V;4
+87;3;45216;U32;;Grid Voltage Low Limit Time3;;1.0;0.0;ms;4
+88;3;45218;U16;;Grid Voltage Low Limit2;;0.1;0.0;V;4
+89;3;45219;U32;;Grid Voltage Low Limit Time2;;1.0;0.0;ms;4
+90;3;45221;U16;;Grid Voltage Low Limit1;;0.1;0.0;V;4
+91;3;45222;U32;;Grid Voltage Low Limit Time1;;1.0;0.0;ms;4
+92;3;45224;U16;;10 Minutes Average Overvoltage Threshold;;0.1;0.0;V;4
+93;3;45225;U16;;10 Minutes Average Overvoltage Portect Time;;1.0;0.0;ms;4
+94;3;45226;U16;;Overvoltage recover value;;0.1;0.0;V;4
+95;3;45227;U16;;Undervoltage recover value;;0.1;0.0;V;4
+96;3;45228;U16;;Grid Frequency High Limit3;;0.01;0.0;Hz;4
+97;3;45229;U32;;Grid Frequency High Limit Time3;;1.0;0.0;ms;4
+98;3;45231;U16;;Grid Frequency High Limit2;;0.01;0.0;Hz;4
+99;3;45232;U32;;Grid Frequency High Limit Time2;;1.0;0.0;ms;4
+100;3;45234;U16;;Grid Frequency High Limit1;;0.01;0.0;Hz;4
+101;3;45235;U32;;Grid Frequency High Limit Time1;;1.0;0.0;ms;4
+102;3;45237;U16;;Grid Frequency Low Limit3;;0.01;0.0;Hz;4
+103;3;45238;U32;;Grid Frequency Low Limit Time3;;1.0;0.0;ms;4
+104;3;45240;U16;;Grid Frequency Low Limit2;;0.01;0.0;Hz;4
+105;3;45241;U32;;Grid Frequency Low Limit Time2;;1.0;0.0;ms;4
+106;3;45243;U16;;Grid Frequency Low Limit1;;0.01;0.0;Hz;4
+107;3;45244;U32;;Grid Frequency Low Limit Time1;;1.0;0.0;ms;4
+108;3;45246;U16;;Vary rate of Frequecny protect value;;0.01;0.0;Hz/s;4
+109;3;45247;U32;;Vary rate of Frequecny protect time;;1.0;0.0;ms;4
+110;3;45249;U16;;Overfrequency recover value;;0.01;0.0;Hz;4
+111;3;45250;U16;;Underfrequency recover value;;0.01;0.0;Hz;4
+112;3;45251;U16;;Time of first connection to grid;;1.0;0.0;s;4
+113;3;45252;U16;;Time of re-connection to grid;;1.0;0.0;s;4
+114;3;45253;U16;;ISO protect threshold;;1.0;0.0;kOhm;4
+115;3;45254;U16;;DCI protect threshold;;1.0;0.0;mA;4
+116;3;45255;U16;;DCI protect time;;1.0;0.0;ms;4
+117;3;45401;U16;;Load rate of first connection to grid;;1.0;0.0;%Pn/min;4
+118;3;45402;U16;;Load rate of re-connection to grid;;1.0;0.0;%Pn/min;4
+119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.01;0.0;%Pn;4
+120;3;45404;U16;;Increase rate of active power;;0.01;0.0;%Pn/min;4
+121;3;45405;U16;;Decrease rate of active power;;0.01;0.0;%Pn/min;4
+122;3;45408;U16;;Over frequency reduce power mode;;1.0;0.0;;4
+123;3;45409;U16;;Over frequency reduce power_ Start frequency;;0.01;0.0;Hz;4
+124;3;45410;U16;;Over frequency reduce power_ Stop frequency;;0.01;0.0;Hz;4
+125;3;45411;U16;;Over frequency reduce power_ Back frequency;;0.01;0.0;Hz;4
+126;3;45412;U16;;The reduce ratio of over frequency reduce power;;0.01;0.0;%Pnor%Pm;4
+127;3;45413;U16;;Over frequency reduce power _reduce power delay time;;0.1;0.0;s;4
+128;3;45414;U16;;Over frequency reduce power_recover power delay time;;0.1;0.0;s;4
+129;3;45416;U16;;Speed of Over frequency recover to Pn;;0.01;0.0;%Pn/min;4
+130;3;45419;U16;;Over voltage reduce power mode;;1.0;0.0;;4
+131;3;45420;U16;;Over voltage reduce power_ Start voltage;;0.01;0.0;%Un;4
+132;3;45422;U16;;Over voltage reduce power_ Stop voltage;;0.01;0.0;%Un;4
+133;3;45424;U16;;Over voltage reduce power_ Back voltage;;0.01;0.0;%Un;4
+134;3;45426;U16;;The reduce ratio of over voltage reduce power;;0.01;0.0;%Pnor%Pm;4
+135;3;45427;U16;;Over voltage reduce power delay time;;0.1;0.0;s;4
+136;3;45428;U16;;Over voltage recover power delay time;;0.1;0.0;s;4
+137;3;45429;U16;;Speed of Over voltage recover to Pn;;0.01;0.0;%Pn/min;4
+138;3;45432;U16;;Under frequency increase power mode;;1.0;0.0;;4
+139;3;45433;U16;;Under frequency increase power_ Start frequency;;0.01;0.0;Hz;4
+140;3;45434;U16;;Under frequency increase power_ Stop frequency;;0.01;0.0;Hz;4
+141;3;45435;U16;;Under frequency increase power_ Back frequency;;0.01;0.0;Hz;4
+142;3;45436;U16;;The increase ratio of under frequency increase power;;0.01;0.0;%Pnor%Pm;4
+143;3;45437;U16;;Under frequency increase power delay time;;0.1;0.0;s;4
+144;3;45438;U16;;Under frequency recover power delay time;;0.1;0.0;s;4
+145;3;45440;U16;;Speed of Under frequency recover to Pn;;0.01;0.0;%Pn/min;4
+146;3;45441;U16;;Under frequency increase power 0 power frequency point;;0.01;0.0;Hz;4
+147;3;45443;U16;;Under voltage increase power mode;;1.0;0.0;;4
+148;3;45444;U16;;Under voltage increase power_ Start voltage;;0.01;0.0;%Un;4
+149;3;45445;U16;;Under voltage increase power_ Stop voltage;;0.01;0.0;%Un;4
+150;3;45446;U16;;Under voltage increase power_ Back voltage;;0.01;0.0;%Un;4
+151;3;45447;U16;;The increase ratio of under voltage increase power;;0.01;0.0;%Pnor%Pm;4
+152;3;45448;U16;;Under voltage increase power delay time;;0.1;0.0;s;4
+153;3;45449;U16;;Under voltage increase power delay time_1;;0.1;0.0;s;4
+154;3;45450;U16;;Speed of under voltage recover to Pn;;0.01;0.0;%Pn/min;4
+155;3;45451;I16;;Pav;;0.01;0.0;%Pn;4
+156;3;45452;U16;;DRMs Pval;;0.01;0.0;%Pn;4
+157;3;45501;U16;;Reactive power control mode;;1.0;0.0;s;4
+158;3;45502;U16;;Time constant of reactive power curve;;1.0;0.0;s;4
+159;3;45503;I16;;Power factor_1;;1.0E-4;0.0;;4
+160;3;45504;U16;;cos phi(P) curve_ Active power of the first point;;0.01;0.0;%Pn;4
+161;3;45505;I16;;cos phi(P) curve_ cos phi of the first point;;1.0E-4;0.0;;4
+162;3;45506;U16;;cos phi(P) curve_ Active power of the second point;;0.01;0.0;%Pn;4
+163;3;45507;I16;;cos phi(P) curve_ cos phi of the second point;;1.0E-4;0.0;;4
+164;3;45508;U16;;cos phi(P) curve_ Active power of the third point;;0.01;0.0;%Pn;4
+165;3;45509;I16;;cos phi(P) curve_ cos phi of the third point;;1.0E-4;0.0;;4
+166;3;45510;U16;;cos phi(P) curve_ Active power of the fourth point;;0.01;0.0;%Pn;4
+167;3;45511;I16;;cos phi(P) curve_ cos phi of the fourth point;;1.0E-4;0.0;;4
+168;3;45512;U16;;Lock in voltage (for cos phi(P) curve_;;0.01;0.0;%Un;4
+169;3;45513;U16;;Lock out voltage (for cos phi(P) curve);;0.01;0.0;%Un;4
+170;3;45516;I16;;Q Set Value;;0.01;0.0;%Sn;4
+171;3;45518;U16;;Q(U) curve_ U of the first point;;0.01;0.0;%Un;4
+172;3;45519;I16;;Q(U) curve_ Q of the first point;;0.01;0.0;%Sn;4
+173;3;45520;U16;;Q(U) curve_ U of the second point;;0.01;0.0;%Un;4
+174;3;45521;I16;;Q(U) curve_ Q of the second point;;0.01;0.0;%Sn;4
+175;3;45522;U16;;Q(U) curve_ U of the third point;;0.01;0.0;%Un;4
+176;3;45523;I16;;Q(U) curve_ Q of the third point;;0.01;0.0;%Sn;4
+177;3;45524;U16;;Q(U) curve_ U of the fourth point;;0.01;0.0;%Un;4
+178;3;45525;I16;;Q(U) curve_ Q of the fourth point;;0.01;0.0;%Sn;4
+179;3;45526;U16;;Lock in power_for Q(U) curve_;;0.01;0.0;%Pn;4
+180;3;45527;U16;;Lock outpower_for Q(U) curve_;;0.01;0.0;%Pn;4
+181;3;45606;U16;;LVRT Trigger voltage;;0.01;0.0;%Un;4
+182;3;45609;U16;;LVRT active power limit mode;;1.0;0.0;;4

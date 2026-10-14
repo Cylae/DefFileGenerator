@@ -28,9 +28,16 @@ def test_huawei_v4_reference_conformance():
     assert report.stats["warnings"] == 0
 
 
+def _get_target_csv(filename: str) -> str:
+    path = os.path.join(WORKSPACE_DIR, "generated_definitions", filename)
+    if os.path.exists(path):
+        return path
+    return os.path.join(WORKSPACE_DIR, filename)
+
+
 def test_mars_local_controller_slave1_strict_validation():
     """Verify MarsLocalController_V7.0_webdyn.csv (Slave 1) passes strict validation with 0 errors and 0 overlaps."""
-    target_csv = os.path.join(WORKSPACE_DIR, "MarsLocalController_V7.0_webdyn.csv")
+    target_csv = _get_target_csv("MarsLocalController_V7.0_webdyn.csv")
     assert os.path.exists(target_csv), f"Generated definition missing at {target_csv}"
 
     gen = Generator()
@@ -62,7 +69,7 @@ def test_mars_local_controller_slave1_strict_validation():
 
 def test_mars_local_controller_ems_slave247():
     """Verify MarsLocalController_V7.0_EMS_Slave247.csv passes strict validation."""
-    target_csv = os.path.join(WORKSPACE_DIR, "MarsLocalController_V7.0_EMS_Slave247.csv")
+    target_csv = _get_target_csv("MarsLocalController_V7.0_EMS_Slave247.csv")
     assert os.path.exists(target_csv), f"File missing: {target_csv}"
 
     gen = Generator()
@@ -81,7 +88,7 @@ def test_mars_local_controller_ems_slave247():
 
 def test_mars_local_controller_rack_slave_n():
     """Verify MarsLocalController_V7.0_RackCell_SlaveN.csv passes strict validation."""
-    target_csv = os.path.join(WORKSPACE_DIR, "MarsLocalController_V7.0_RackCell_SlaveN.csv")
+    target_csv = _get_target_csv("MarsLocalController_V7.0_RackCell_SlaveN.csv")
     assert os.path.exists(target_csv), f"File missing: {target_csv}"
 
     gen = Generator()

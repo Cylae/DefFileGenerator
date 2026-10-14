@@ -1,0 +1,103 @@
+Modbus;Meter;Lettel;MCX4-34V
+1;4;0;F32;;Phase 1 line to neutral volts.;;1.0;0.0;V;4
+2;4;2;F32;;Phase 2 line to neutral volts.;;1.0;0.0;V;4
+3;4;4;F32;;Phase 3 line to neutral volts.;;1.0;0.0;V;4
+4;4;6;F32;;Phase 1 current.;;1.0;0.0;A;4
+5;4;8;F32;;Phase 2 current.;;1.0;0.0;A;4
+6;4;10;F32;;Phase 3 current.;;1.0;0.0;A;4
+7;4;12;F32;;Phase 1 active power.;P_AC_1;1.0;0.0;W;4
+8;4;14;F32;;Phase 2 active power.;P_AC_2;1.0;0.0;W;4
+9;4;16;F32;;Phase 3 active power.;P_AC_3;1.0;0.0;W;4
+10;4;18;F32;;Phase 1 reactive power.;;1.0;0.0;var;4
+11;4;20;F32;;Phase 2 reactive power.;;1.0;0.0;var;4
+12;4;22;F32;;Phase 3 reactive power.;;1.0;0.0;var;4
+13;4;24;F32;;Phase 1 apparent power.;;1.0;0.0;VA;4
+14;4;26;F32;;Phase 2 apparent power.;;1.0;0.0;VA;4
+15;4;28;F32;;Phase 3 apparent power.;;1.0;0.0;VA;4
+16;4;30;F32;;Phase 1 power factor (1).;;1.0;0.0;;4
+17;4;32;F32;;Phase 2 power factor (1).;;1.0;0.0;;4
+18;4;34;F32;;Phase 3 power factor (1).;;1.0;0.0;;4
+19;4;36;F32;;Phase 1 phase angle.;;1.0;0.0;Degrees;4
+20;4;38;F32;;Phase 2 phase angle.;;1.0;0.0;Degrees;4
+21;4;40;F32;;Phase 3 phase angle.;;1.0;0.0;Degrees;4
+22;4;42;F32;;Line 1 to Line 2 volts.;;1.0;0.0;V;4
+23;4;44;F32;;Line 2 to Line 3 volts.;;1.0;0.0;V;4
+24;4;46;F32;;Line 3 to Line 1 volts.;;1.0;0.0;V;4
+25;4;48;F32;;Frequency of supply voltages.;;1.0;0.0;Hz;4
+26;4;50;F32;;Total system active power.;P_AC;1.0;0.0;W;4
+27;4;52;F32;;Total system reactive power.;;1.0;0.0;var;4
+28;4;54;F32;;Total system apparent power.;;1.0;0.0;VA;4
+29;4;56;F32;;Total system power factor (1).;;1.0;0.0;;4
+30;4;58;F32;;Total system phase angle.;;1.0;0.0;Degrees;4
+31;4;60;F32;;Sum of line currents.;;1.0;0.0;A;4
+32;4;62;F32;;Average line to neutral volts.;;1.0;0.0;V;4
+33;4;64;F32;;Average line to line volts.;;1.0;0.0;V;4
+34;4;66;F32;;Average line current.;;1.0;0.0;A;4
+35;4;68;F32;;Neutral current.;;1.0;0.0;A;4
+36;4;78;F32;;Nature   of   L1   load   (Resistive_1_   inductive_2_ capacitive _3_ Non Load_4);;1.0;0.0;;4
+37;4;80;F32;;Nature   of   L2   load   (Resistive_1_   inductive_2_ capacitive _3_ Non Load_4);;1.0;0.0;;4
+38;4;82;F32;;Nature   of   L3   load   (Resistive_1_   inductive_2_ capacitive _3_ Non Load_4);;1.0;0.0;;4
+39;4;84;F32;;Nature  of  the system load(Resistive_1_ inductive_2_ capacitive _3_ Non Load_4);;1.0;0.0;;4
+40;4;124;F32;;Phase 1 voltage THD (2).;;1.0;0.0;Percent;4
+41;4;126;F32;;Phase 2 voltage THD (2).;;1.0;0.0;Percent;4
+42;4;128;F32;;Phase 3 voltage THD (2).;;1.0;0.0;Percent;4
+43;4;130;F32;;Phase 1 current THD;;1.0;0.0;Percent;4
+44;4;132;F32;;Phase 2 current THD;;1.0;0.0;Percent;4
+45;4;134;F32;;Phase 3 current THD;;1.0;0.0;Percent;4
+46;4;136;F32;;Average voltage THD (2).;;1.0;0.0;Percent;4
+47;4;138;F32;;Average line current THD.;;1.0;0.0;Percent;4
+48;4;140;F32;;Total system active power demand (3).;;1.0;0.0;W;4
+49;4;142;F32;;Total system reactive power demand (3).;;1.0;0.0;var;4
+50;4;144;F32;;Total system apparent power demand.;;1.0;0.0;VA;4
+51;4;146;F32;;Phase 1 current demand.;;1.0;0.0;A;4
+52;4;148;F32;;Phase 2 current demand.;;1.0;0.0;A;4
+53;4;150;F32;;Phase 3 current demand.;;1.0;0.0;A;4
+54;4;152;F32;;Neutral current demand.;;1.0;0.0;A;4
+55;4;154;F32;;Import active power demand;;1.0;0.0;W;4
+56;4;156;F32;;Export active power demand;;1.0;0.0;W;4
+57;4;162;F32;;Maximum total system active power demand (3).;;1.0;0.0;W;4
+58;4;164;F32;;Maximum total system reactive power demand (3).;;1.0;0.0;var;4
+59;4;166;F32;;Maximum total system apparent power demand.;;1.0;0.0;VA;4
+60;4;168;F32;;Maximum phase 1 current demand.;;1.0;0.0;A;4
+61;4;170;F32;;Maximum phase 2 current demand.;;1.0;0.0;A;4
+62;4;172;F32;;Maximum phase 3 current demand.;;1.0;0.0;A;4
+63;4;174;F32;;Maximum neutral current demand.;;1.0;0.0;A;4
+64;4;176;F32;;Maximum import active power demand;;1.0;0.0;W;4
+65;4;178;F32;;Maximum export active power demand;;1.0;0.0;W;4
+66;4;1280;F32;;Total import active energy.;;1.0;0.0;kWh;4
+67;4;1282;F32;;Total export active energy.;;1.0;0.0;kWh;4
+68;4;1284;F32;;Total active Energy.;;1.0;0.0;kWh;4
+69;4;1288;F32;;Total import reactive energy.;;1.0;0.0;kvarh;4
+70;4;1290;F32;;Total export reactive energy.;;1.0;0.0;kvarh;4
+71;4;1292;F32;;Total reactive Energy.;;1.0;0.0;kvarh;4
+72;4;1296;F32;;Total apparent energy.;;1.0;0.0;kVAh;4
+73;4;1300;F32;;L1 import active Energy;;1.0;0.0;kWh;4
+74;4;1302;F32;;L2 import active Energy;;1.0;0.0;kWh;4
+75;4;1304;F32;;L3 import active Energy;;1.0;0.0;kWh;4
+76;4;1306;F32;;L1 export active Energy;;1.0;0.0;kWh;4
+77;4;1308;F32;;L2 export active Energy;;1.0;0.0;kWh;4
+78;4;1310;F32;;L3 export active Energy;;1.0;0.0;kWh;4
+79;4;1312;F32;;L1 total active Energy;;1.0;0.0;kWh;4
+80;4;1314;F32;;L2 total active Energy;;1.0;0.0;kWh;4
+81;4;1316;F32;;L3 total active Energy;;1.0;0.0;kWh;4
+82;4;1318;F32;;L1 import reactive energy;;1.0;0.0;kvarh;4
+83;4;1320;F32;;L2 import reactive energy;;1.0;0.0;kvarh;4
+84;4;1322;F32;;L3 import reactive energy;;1.0;0.0;kvarh;4
+85;4;1324;F32;;L1 export reactive energy;;1.0;0.0;kvarh;4
+86;4;1326;F32;;L2 export reactive energy;;1.0;0.0;kvarh;4
+87;4;1328;F32;;L3 export reactive energy;;1.0;0.0;kvarh;4
+88;4;1330;F32;;L1 total reactive energy;;1.0;0.0;kvarh;4
+89;4;1332;F32;;L2 total reactive energy;;1.0;0.0;kvarh;4
+90;4;1334;F32;;L3 total reactive energy;;1.0;0.0;kvarh;4
+91;4;1336;F32;;Total active energy of rate 1;;1.0;0.0;kWh;4
+92;4;1338;F32;;Total active energy of rate 2;;1.0;0.0;kWh;4
+93;4;1344;F32;;Import active energy of rate 1;;1.0;0.0;kWh;4
+94;4;1346;F32;;Import active energy of rate 2;;1.0;0.0;kWh;4
+95;4;1352;F32;;Export active energy of rate 1;;1.0;0.0;kWh;4
+96;4;1354;F32;;Export active energy of rate 2;;1.0;0.0;kWh;4
+97;4;1360;F32;;Total reactive energy of rate 1;;1.0;0.0;kvarh;4
+98;4;1362;F32;;Total reactive energy of rate 2;;1.0;0.0;kvarh;4
+99;4;1368;F32;;Import reactive energy of rate 1;;1.0;0.0;kvarh;4
+100;4;1370;F32;;Import reactive energy of rate 2;;1.0;0.0;kvarh;4
+101;4;1376;F32;;Export reactive energy of rate 1;;1.0;0.0;kvarh;4
+102;4;1378;F32;;Export reactive energy of rate 2;;1.0;0.0;kvarh;4

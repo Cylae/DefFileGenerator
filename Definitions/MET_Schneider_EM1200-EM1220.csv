@@ -1,0 +1,97 @@
+Modbus;Meter;Schneider;EM1200-EM1220
+1;3;3057;F32;;A  Current average;;1.0;0.0;;4
+2;3;3009;F32;;A1  Current_ phase 1;;1.0;0.0;;4
+3;3;3025;F32;;A2  Current_ phase 2;;1.0;0.0;;4
+4;3;3041;F32;;A3  Current_ phase 3;;1.0;0.0;;4
+5;3;3059;F32;;V LL  Voltage (LL) average;;1.0;0.0;;4
+6;3;3011;F32;;V12  Voltage(LL)_ phase 1-2;;1.0;0.0;;4
+7;3;3027;F32;;V23  Voltage(LL)_ phase 2-3;;1.0;0.0;;4
+8;3;3043;F32;;V31  Voltage(LL)_ phase 3-1;;1.0;0.0;;4
+9;3;3061;F32;;V LN  Voltage(LN) average;;1.0;0.0;;4
+10;3;3013;F32;;V1  Voltage(LN)_ phase 1;;1.0;0.0;;4
+11;3;3029;F32;;V2  Voltage(LN)_ phase 2;;1.0;0.0;;4
+12;3;3045;F32;;V3  Voltage(LN)_ phase 3;;1.0;0.0;;4
+13;3;3063;F32;;F  Frequency;;1.0;0.0;;4
+14;3;3051;F32;;W Active power_ total;P_AC;1.0;0.0;;4
+15;3;3003;F32;;W1 Active power_ phase 1;P_AC_1;1.0;0.0;;4
+16;3;3019;F32;;W2 Active power_ phase 2;P_AC_2;1.0;0.0;;4
+17;3;3035;F32;;W3 Active power_ phase 3;P_AC_3;1.0;0.0;;4
+18;3;3053;F32;;VAR  Reactive power_ total;;1.0;0.0;;4
+19;3;3005;F32;;VAR1 Reactive power_ phase 1;;1.0;0.0;;4
+20;3;3021;F32;;VAR2 Reactive power_ phase 2;;1.0;0.0;;4
+21;3;3037;F32;;VAR3 Reactive power_ phase 3;;1.0;0.0;;4
+22;3;3049;F32;;VA Apparent power_ total;;1.0;0.0;;4
+23;3;3001;F32;;VA1 Apparent power_ phase 1;;1.0;0.0;;4
+24;3;3017;F32;;VA2 Apparent power_ phase 2;;1.0;0.0;;4
+25;3;3033;F32;;VA3 Apparent power_ phase 3;;1.0;0.0;;4
+26;3;3055;F32;;PF Power factor total;;1.0;0.0;;4
+27;3;3007;F32;;PF1 Power factor_ phase 1;;1.0;0.0;;4
+28;3;3023;F32;;PF2 Power factor_ phase 2;;1.0;0.0;;4
+29;3;3039;F32;;PF3 Power factor_ phase 3;;1.0;0.0;;4
+30;3;3201;F32;;FwdVAh Forward apparent energy;;1.0;0.0;;4
+31;3;3203;F32;;FwdWh Forward active energy;;1.0;0.0;;4
+32;3;3205;F32;;FwdVARh Forward reactive energy;;1.0;0.0;;4
+33;3;3265;U32;;FwdRun secs  Forward run seconds;;1.0;0.0;;4
+34;3;3267;U32;;FwdOn Sec  ON Seconds;;1.0;0.0;;4
+35;3;3269;U32;;Intr Number of input voltage  interruptions;;1.0;0.0;;4
+36;3;2507;F32;;A  Current average TURBO;;1.0;0.0;;4
+37;3;2501;F32;;A1  Current_ phase 1 TURBO;;1.0;0.0;;4
+38;3;2503;F32;;A2  Current_ phase 2 TURBO;;1.0;0.0;;4
+39;3;2505;F32;;A3  Current_ phase 3 TURBO;;1.0;0.0;;4
+40;3;2515;F32;;V LL  Voltage (LL) average TURBO;;1.0;0.0;;4
+41;3;2509;F32;;V12  Voltage(LL)_ phase 1-2 TURBO;;1.0;0.0;;4
+42;3;2511;F32;;V23  Voltage(LL)_ phase 2-3 TURBO;;1.0;0.0;;4
+43;3;2513;F32;;V31  Voltage(LL)_ phase 3-1 TURBO;;1.0;0.0;;4
+44;3;2523;F32;;V LN  Voltage(LN) average TURBO;;1.0;0.0;;4
+45;3;2517;F32;;V1  Voltage(LN)_ phase 1 TURBO;;1.0;0.0;;4
+46;3;2519;F32;;V2  Voltage(LN)_ phase 2 TURBO;;1.0;0.0;;4
+47;3;2521;F32;;V3  Voltage(LN)_ phase 3 TURBO;;1.0;0.0;;4
+48;3;2531;F32;;F  Frequency TURBO;;1.0;0.0;;4
+49;3;2547;F32;;W Active power_ total TURBO;;1.0;0.0;;4
+50;3;2541;F32;;W1 Active power_ phase 1 TURBO;;1.0;0.0;;4
+51;3;2543;F32;;W2 Active power_ phase 2 TURBO;;1.0;0.0;;4
+52;3;2545;F32;;W3 Active power_ phase 3 TURBO;;1.0;0.0;;4
+53;3;2555;F32;;VAR  Reactive power_ total TURBO;;1.0;0.0;;4
+54;3;2549;F32;;VAR1 Reactive power_ phase 1 TURBO;;1.0;0.0;;4
+55;3;2551;F32;;VAR2 Reactive power_ phase 2 TURBO;;1.0;0.0;;4
+56;3;2553;F32;;VAR3 Reactive power_ phase 3 TURBO;;1.0;0.0;;4
+57;3;2539;F32;;VA Apparent power_ total TURBO;;1.0;0.0;;4
+58;3;2533;F32;;VA1 Apparent power_ phase 1 TURBO;;1.0;0.0;;4
+59;3;2535;F32;;VA2 Apparent power_ phase 2 TURBO;;1.0;0.0;;4
+60;3;2537;F32;;VA3 Apparent power_ phase 3 TURBO;;1.0;0.0;;4
+61;3;2563;F32;;PF Power factor total TURBO;;1.0;0.0;;4
+62;3;2557;F32;;PF1 Power factor_ phase 1 TURBO;;1.0;0.0;;4
+63;3;2559;F32;;PF2 Power factor_ phase 2 TURBO;;1.0;0.0;;4
+64;3;2561;F32;;PF3 Power factor_ phase 3 TURBO;;1.0;0.0;;4
+65;3;2565;F32;;FwdVAh Forward apparent energy TURBO;;1.0;0.0;;4
+66;3;2567;F32;;FwdWh Forward active energy TURBO;;1.0;0.0;;4
+67;3;2569;F32;;FwdVARh Forward reactive energy TURBO;;1.0;0.0;;4
+68;3;2595;U32;;FwdRun secs  Forward run seconds TURBO;;1.0;0.0;;4
+69;3;2597;U32;;FwdOn Sec  ON Seconds TURBO;;1.0;0.0;;4
+70;3;2599;U32;;Intr Number of input voltage  interruptions TURBO;;1.0;0.0;;4
+71;3;1001;F32;;A.PRI Current Primary;;1.0;0.0;;4
+72;3;1003;F32;;A.SEC  Current Secondary;;1.0;0.0;;4
+73;3;1005;F32;;V.PRI  Voltage Primary;;1.0;0.0;;4
+74;3;1007;F32;;V.SEC  Voltage Secondary;;1.0;0.0;;4
+75;3;1009;U16;;YS  System Configuration;;1.0;0.0;;4
+76;3;1010;U16;;ST.A  Starting current;;1.0;0.0;;4
+77;3;1011;U16;;PF.STD  PF standard selection;;1.0;0.0;;4
+78;3;1012;U16;;VA.FN  VA function selection;;1.0;0.0;;4
+79;3;1013;U16;;PAR  Parameter selection;;1.0;0.0;;4
+80;3;1014;U16;;E.POP  Energy per pulse;;1.0;0.0;;4
+81;3;1015;U16;;POP.ON  Pulse on time;;1.0;0.0;;4
+82;3;1017;U16;;Baud rate  Baud rate;;1.0;0.0;;4
+83;3;1018;U16;;PRTY  Parity;;1.0;0.0;;4
+84;3;1019;U16;;ID  Unit ID;;1.0;0.0;;4
+85;3;1_20;STRING;;Mfg Name  SCHNEIDER ELECTRIC;;1.0;0.0;;4
+86;3;11_20;STRING;;Product code   EM1200  _  EM1220;;1.0;0.0;;4
+87;3;21_10;STRING;;FW version;;1.0;0.0;;4
+88;3;26;U16;;Firmware Version;;1.0;0.0;;4
+89;3;27;U16;;Model no(model tag);;1.0;0.0;;4
+90;3;28_6;STRING;;HW_version;;1.0;0.0;;4
+91;3;7001;F32;;FwdVAh Forward apparent energy old;;1.0;0.0;;4
+92;3;7003;F32;;FwdWh Forward active energy old;;1.0;0.0;;4
+93;3;7005;F32;;FwdVARh Forward reactive energy old;;1.0;0.0;;4
+94;3;7065;U16;;FwdRun secs  Forward run seconds old;;1.0;0.0;;4
+95;3;7067;U16;;FwdOn Sec  ON Seconds old;;1.0;0.0;;4
+96;3;7069;U16;;Intr Number of input voltage interruptions old;;1.0;0.0;;4

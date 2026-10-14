@@ -481,7 +481,12 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
                 }
             )
 
-    slave1_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_webdyn.csv")
+    gen_dir = (
+        os.path.join(workspace_dir, "generated_definitions")
+        if os.path.isdir(os.path.join(workspace_dir, "generated_definitions"))
+        else workspace_dir
+    )
+    slave1_path = os.path.join(gen_dir, "MarsLocalController_V7.0_webdyn.csv")
     build_definition_file(
         slave1_path, "modbusTCP", "BESS", "Mars Energy", "MarsLocalController V7.0", slave1_regs
     )
@@ -492,7 +497,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     slave247_regs = []
     slave247_regs.extend(data["lc_overview"])
     slave247_regs.extend(data["lc_writes"])
-    slave247_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_EMS_Slave247.csv")
+    slave247_path = os.path.join(gen_dir, "MarsLocalController_V7.0_EMS_Slave247.csv")
     build_definition_file(
         slave247_path,
         "modbusTCP",
@@ -539,7 +544,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
                 }
             )
 
-    rack_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_RackCell_SlaveN.csv")
+    rack_path = os.path.join(gen_dir, "MarsLocalController_V7.0_RackCell_SlaveN.csv")
     build_definition_file(
         rack_path,
         "modbusTCP",
@@ -556,7 +561,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     all_regs.extend(slave247_regs)
     all_regs.extend(slave1_regs)
     all_regs.extend(rack_regs)
-    all_path = os.path.join(workspace_dir, "MarsLocalController_V7.0_AllInOne.csv")
+    all_path = os.path.join(gen_dir, "MarsLocalController_V7.0_AllInOne.csv")
     build_definition_file(
         all_path,
         "modbusTCP",
@@ -568,7 +573,36 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     )
 
 
+def main(argv: list[str] | None = None) -> None:
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(
+        description="Generate WebdynSunPM definition files for Mars Local Controller V7.0"
+    )
+    parser.add_argument(
+        "source_xlsx",
+        nargs="?",
+        default="MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+        help="Path to Mars Local Controller IO list Excel file (.xlsx)",
+    )
+    parser.add_argument(
+        "--out-dir",
+        default=os.path.dirname(os.path.abspath(__file__)),
+        help="Output directory for generated CSV definition files",
+    )
+    cli_args = parser.parse_args(argv)
+
+    if not os.path.isfile(cli_args.source_xlsx):
+        print(f"Error: Source workbook not found at: {cli_args.source_xlsx}", file=sys.stderr)
+        print(
+            "Usage: python generate_mars_definitions.py <path_to_io_list.xlsx> [--out-dir <dir>]",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    generate_all_mars_files(cli_args.source_xlsx, cli_args.out_dir)
+
+
 if __name__ == "__main__":
-    src_xlsx = r"C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
-    wk_dir = r"c:\Users\Cylae\Documents\GitHub\DefFileGenerator"
-    generate_all_mars_files(src_xlsx, wk_dir)
+    main()
