@@ -492,8 +492,8 @@ def main(args: list[str] | None = None) -> None:
         _run_cli(args)
     except KeyboardInterrupt:
         sys.exit(130)
-    except SystemExit as e:
-        raise e
+    except SystemExit:
+        raise
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         sys.exit(1)

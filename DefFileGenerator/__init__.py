@@ -15,11 +15,11 @@ __version__ = "0.2.1"
 
 __all__ = [
     "CSVHeaderConfig",
+    "Extractor",
     "Generator",
     "GeneratorConfig",
     "RegisterEntry",
     "ValidationIssue",
     "ValidationReport",
     "WebdynDefConfig",
-    "Extractor",
 ]

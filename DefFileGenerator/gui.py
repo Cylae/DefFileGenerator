@@ -10,6 +10,7 @@ validation, template generation, and real-time logging.
 
 from __future__ import annotations
 
+import contextlib
 import csv
 import ctypes
 import json
@@ -63,14 +64,11 @@ except ImportError:
 
 # Enable Windows High-DPI awareness before creating UI instances
 if sys.platform == "win32":
-    try:
+    with contextlib.suppress(Exception):
         # Per-monitor DPI awareness v2 (Windows 10 Creators Update and Windows 11)
         ctypes.windll.shcore.SetProcessDpiAwareness(2)
-    except Exception:
-        try:
-            ctypes.windll.user32.SetProcessDPIAware()
-        except Exception:  # nosec: B110
-            pass
+    with contextlib.suppress(Exception):
+        ctypes.windll.user32.SetProcessDPIAware()
 
 logger = logging.getLogger("DefFileGenerator.gui")
 
@@ -2141,10 +2139,7 @@ def main() -> None:
         print("deffilegen-gui 0.2.1")
         return
 
-    if HAS_CUSTOMTKINTER:
-        root = ctk.CTk()
-    else:
-        root = tk.Tk()
+    root = ctk.CTk() if HAS_CUSTOMTKINTER else tk.Tk()
 
     _app = DefFileGenApp(root)
     root.mainloop()
