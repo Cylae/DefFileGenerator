@@ -1481,14 +1481,7 @@ def auto_fix_definition_file(
     new_lines = [header]
     seen_rows: set[tuple[str, str, str, str]] = set()
 
-    # Pre-populate seen tags to ensure uniqueness
     seen_tags: set[str] = set()
-    for row in lines[1:]:
-        if len(row) > 6 and row[6].strip():
-            tag_val = row[6].strip()
-            if normalize_legacy:
-                tag_val = normalize_tag_to_sunpm(tag_val)
-            seen_tags.add(tag_val)
 
     for row in lines[1:]:
         if len(row) < 7:
@@ -1507,14 +1500,17 @@ def auto_fix_definition_file(
             continue
         seen_rows.add(row_key)
 
-        target_tag = existing_tag
+        target_tag = ""
         if existing_tag:
-            if normalize_legacy:
-                norm = normalize_tag_to_sunpm(existing_tag)
+            norm = normalize_tag_to_sunpm(existing_tag) if normalize_legacy else existing_tag
+            if norm not in seen_tags:
+                target_tag = norm
+                seen_tags.add(target_tag)
                 if norm != existing_tag:
-                    target_tag = norm
                     counts["tags_normalized"] += 1
-            seen_tags.add(target_tag)
+            else:
+                # Do not produce duplicate canonical tags within the same definition
+                target_tag = ""
         elif auto_tag:
             inferred = infer_sunpm_tag(
                 variable_name=var_name,
