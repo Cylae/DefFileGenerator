@@ -1,0 +1,83 @@
+﻿modbusRTU;Meter;Lettel;LETTEL_MCT4-45;;;;;;;
+1;4;262;U16;;Positive Active Energy;;1.0;0.0;Wh;4
+2;4;264;U16;;Reverse Active Energy;;1.0;0.0;Wh;4
+3;4;266;U16;;Positive reactive Energy;;1.0;0.0;Varh;4
+4;4;268;U16;;Reverse reactive Energy;;1.0;0.0;Varh;4
+5;4;270;U16;;Sight electrical Energy;;1.0;0.0;Vah;4
+6;4;272;U16;;First quadrant reactive Energy;;1.0;0.0;Varh;4
+7;4;274;U16;;Second quadrant reactive Energy;;1.0;0.0;Varh;4
+8;4;276;U16;;Third quadrant reactive Energy;;1.0;0.0;Varh;4
+9;4;278;U16;;Fourth quadrant reactive Energy;;1.0;0.0;Varh;4
+10;4;280;U16;;Active Energy [Total];E_TOT;1.0;0.0;Wh;4
+11;4;282;U16;;Active Energy [tip];;1.0;0.0;Wh;4
+12;4;284;U16;;Active Energy [peak];;1.0;0.0;Wh;4
+13;4;286;U16;;Active Energy [Flat];;1.0;0.0;Wh;4
+14;4;288;U16;;Active Energy [Valley];;1.0;0.0;Wh;4
+15;4;290;U16;;Active Energy this month [Total];;1.0;0.0;Wh;4
+16;4;292;U16;;Active Energy this month[tip];;1.0;0.0;Wh;4
+17;4;294;U16;;Active Energy this month[Peak];;1.0;0.0;Wh;4
+18;4;296;U16;;Active Energy this month[Flat];;1.0;0.0;Wh;4
+19;4;298;U16;;Active Energy this month[Valley];;1.0;0.0;Wh;4
+20;4;300;U16;;Active Energy Last month[total];;1.0;0.0;Wh;4
+21;4;302;U16;;Active Energy last month[tip];;1.0;0.0;Wh;4
+22;4;304;U16;;Active Energy last month[Peak];;1.0;0.0;Wh;4
+23;4;306;U16;;Active Power last month[Flat];P_AC;1.0;0.0;Wh;4
+24;4;308;U16;;Active Power last month[Valley];;1.0;0.0;Wh;4
+25;4;310;U16;;Active Energy the month before last month;;1.0;0.0;Wh;4
+26;4;312;U16;;Active Energy the month before last month[T];;1.0;0.0;Wh;4
+27;4;314;U16;;Active Energy the month before last month[P];;1.0;0.0;Wh;4
+28;4;316;U16;;Active Energy the month before last month[F];;1.0;0.0;Wh;4
+29;4;318;U16;;Active Energy the month before last month[V];;1.0;0.0;Wh;4
+30;4;512;U16;;A phase voltage;;1.0;0.0;V;4
+31;4;513;U16;;B phase voltage;;1.0;0.0;V;4
+32;4;514;U16;;C phase voltage;;1.0;0.0;V;4
+33;4;515;U16;;AB line voltage;;1.0;0.0;V;4
+34;4;516;U16;;BC line voltage;;1.0;0.0;V;4
+35;4;517;U16;;CA line voltage;;1.0;0.0;V;4
+36;4;518;U16;;A phase current;I_AC_3;1.0;0.0;A;4
+37;4;519;U16;;B phase current;;1.0;0.0;A;4
+38;4;520;U16;;C phase current;;1.0;0.0;A;4
+39;4;521;U16;;A Phase active power;P_AC_1;1.0;0.0;W;4
+40;4;522;U16;;B Phase active power;P_AC_2;1.0;0.0;W;4
+41;4;523;U16;;C Phase active power;P_AC_3;1.0;0.0;W;4
+42;4;524;U16;;Total active power;;1.0;0.0;W;4
+43;4;525;U16;;A Active power;;1.0;0.0;var;4
+44;4;526;U16;;B Active power;;1.0;0.0;var;4
+45;4;527;U16;;C Active power;;1.0;0.0;var;4
+46;4;528;U16;;Total reactive power;Q_AC;1.0;0.0;var;4
+47;4;529;U16;;A Phase view power;;1.0;0.0;VA;4
+48;4;530;U16;;B Phase view power;;1.0;0.0;VA;4
+49;4;531;U16;;C Phase view power;;1.0;0.0;VA;4
+50;4;532;U16;;Total apparent power;S_AC;1.0;0.0;VA;4
+51;4;533;U16;;A Phase power factor;PF;1.0;0.0;;4
+52;4;534;U16;;B Phase power factor;;1.0;0.0;;4
+53;4;535;U16;;C Phase power factor;;1.0;0.0;;4
+54;4;536;U16;;Total power factor;;1.0;0.0;;4
+55;4;537;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+56;4;1536;U16;;Maximum phase voltage;;1.0;0.0;V;4
+57;4;1537;U16;;Maximum line voltage;;1.0;0.0;V;4
+58;4;1538;U16;;Maximum current;;1.0;0.0;A;4
+59;4;1539;U16;;Maximum active power;;1.0;0.0;W;4
+60;4;1540;U16;;Maximum reactive power;;1.0;0.0;var;4
+61;4;1541;U16;;Maximum apparent power;;1.0;0.0;VA;4
+62;4;1542;U16;;Maximum active power requirement;;1.0;0.0;W;4
+63;4;1543;U16;;Maximum reactive power requirement;;1.0;0.0;var;4
+64;4;1544;U16;;Maximum apparent power requirement;;1.0;0.0;VA;4
+65;4;1545;U16;;Maximum phase voltage this month;;1.0;0.0;V;4
+66;4;1546;U16;;Maximum line voltage this month;;1.0;0.0;V;4
+67;4;1547;U16;;Maximum current this month;;1.0;0.0;A;4
+68;4;1548;U16;;Maximum active power this month;;1.0;0.0;W;4
+69;4;1549;U16;;Maximum reactive power this month;;1.0;0.0;var;4
+70;4;1550;U16;;Maximum power available this month;;1.0;0.0;VA;4
+71;4;1551;U16;;Maximum active power requirement this month;;1.0;0.0;W;4
+72;4;1552;U16;;Maximum reactive power requirement this month;;1.0;0.0;var;4
+73;4;1553;U16;;Maximum power requirement this month;;1.0;0.0;VA;4
+74;4;1554;U16;;Current active power requirements;;1.0;0.0;W;4
+75;4;1555;U16;;Current reactive power requirements;;1.0;0.0;var;4
+76;4;1556;U16;;Current apparent power requirement;;1.0;0.0;VA;4
+77;4;1557;U16;;Average phase voltage;;1.0;0.0;V;4
+78;4;1558;U16;;Average line voltage;;1.0;0.0;V;4
+79;4;1559;U16;;Current average;;1.0;0.0;A;4
+80;4;1560;U16;;Average active power;;1.0;0.0;W;4
+81;4;1561;U16;;Average reactive power;;1.0;0.0;var;4
+82;4;1562;U16;;Average apparent power;;1.0;0.0;VA;4

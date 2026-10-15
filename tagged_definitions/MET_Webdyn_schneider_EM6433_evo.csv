@@ -1,0 +1,18 @@
+﻿ModbusRTU;Meter;Schneider;EM 6433 EVO;;;;;;;
+1;3;3900;F32_W;;Apparent power, total;S_AC;1.0;0.0;;4
+2;3;3902;F32_W;;Active power, total;P_AC;1.0;0.0;;4
+3;3;3912;F32_W;;Current average;;1.0;0.0;;4
+4;3;3916;F32_W;;Apparent power, phase 1;S_AC_1;1.0;0.0;;4
+5;3;3918;F32_W;;Active power, phase 1;P_AC_1;1.0;0.0;;4
+6;3;3928;F32_W;;Current, phase 1;I_AC_1;1.0;0.0;;4
+7;3;3930;F32_W;;Apparent power, phase 2;S_AC_2;1.0;0.0;;4
+8;3;3932;F32_W;;Active power, phase 2;P_AC_2;1.0;0.0;;4
+9;3;3942;F32_W;;Current, phase 2;I_AC_2;1.0;0.0;;4
+10;3;3944;F32_W;;Apparent power, phase 3;S_AC_3;1.0;0.0;;4
+11;3;3946;F32_W;;Active power, phase 3;P_AC_3;1.0;0.0;;4
+12;3;3956;F32_W;;Current, phase 3;I_AC_3;1.0;0.0;;4
+13;3;3958;F32_W;;Forward apparent energy;;1.0;0.0;;4
+14;3;3960;F32_W;;Forward active energy;;1.0;0.0;;4
+15;3;3992;F32_W;;n hours;;1.0;0.0;;4
+16;3;3994;F32_W;;Forward run seconds;;1.0;0.0;;4
+17;3;3998;F32_W;;Number of power interruptions;;1.0;0.0;;4

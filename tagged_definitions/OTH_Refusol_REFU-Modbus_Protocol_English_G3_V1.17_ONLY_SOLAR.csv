@@ -1,0 +1,145 @@
+﻿modbusRTU;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
+1;3;64;U64;;Mask area for the 64 register address words starting at this address. Each bit of this field corresponds to the validity of the 64 addresses in this field (each bit corresponds to a register address, including the address of this field). A corresponding bit of 0 means invalid, a 1 means valid. Example: 0x0000 0x0000 0x0000 0x001F means that the 0x0044 address function is valid, followed by the same meaning of the mask area and a merged treatment of the address interval, not listed separately.;mask_area_for_the_64_register_address_words_starting_at_this_addresseach_bit_of_this_field_corresponds_to_the_validity_of_the_64_addresses_in_this_field_each_bit_corresponds_to_a_register_address_including_the_address_of_this_fielda_corresponding_bit_of_0_means_invalid_a_1_means_validexample_0x0000_0x0000_0x0000_0x001f_means_that_the_0x0044_address_function_is_valid_followed_by_the_same_meaning_of_the_mask_area_and_a_merged_treatment_of_the_address_interval_not_listed_separately;1.000000;0.000000;;4
+2;3;82;U16;;Version number of the protocol between ARM and DSPM. The high 8 bits correspond to the ARM-DSPM protocol version number. The lower 8 bits correspond to the DSPM-ARM protocol version number.;version_number_of_the_protocol_between_arm_and_dspmthe_high_8_bits_correspond_to_the_armdspm_protocol_version_numberthe_lower_8_bits_correspond_to_the_dspmarm_protocol_version_number;1.000000;0.000000;;4
+3;3;83;U16;;Protocol version number between ARM and DSPS. The high 8 bits correspond to the ARM-DSPS protocol version number, the The lower 8 bits correspond to the DSPS-ARM protocol version number.;protocol_version_number_between_arm_and_dspsthe_high_8_bits_correspond_to_the_armdsps_protocol_version_number_thethe_lower_8_bits_correspond_to_the_dspsarm_protocol_version_number;1.000000;0.000000;;4
+4;3;84;U16;;Protocol version number between DSPM and DSPS. The high 8 bits correspond to the DSPM-DSPS protocol version number, the The lower 8 bits correspond to the DSPS-DSPM protocol version number.;protocol_version_number_between_dspm_and_dspsthe_high_8_bits_correspond_to_the_dspmdsps_protocol_version_number_thethe_lower_8_bits_correspond_to_the_dspsdspm_protocol_version_number;1.000000;0.000000;;4
+5;3;1028;U16;;Operational status. 0: Waiting status 1: Detection status 2: Grid-connected status 3: Emergency power state 4: Recoverable fault state 5: Permanent fault state 6: Upgrade status 7: Self-charging state 8: SVG state 9: PID state;operational_status0_waiting_status1_detection_status2_gridconnected_status3_emergency_power_state4_recoverable_fault_state5_permanent_fault_state6_upgrade_status7_selfcharging_state8_svg_state9_pid_state;1.000000;0.000000;;9
+6;3;1047;U16;;Grid connection waiting time (countdown to switch-on);grid_connection_waiting_time_countdown_to_switchon;1.000000;0.000000;秒;4
+7;3;1062;U16;;Power generation time for the day;power_generation_time_for_the_day;1.000000;0.000000;分钟;4
+8;3;1072;U16;;System Time - Minute;system_time_minute;1.000000;0.000000;;4
+9;3;1073;U16;;System time-second;system_timesecond;1.000000;0.000000;;4
+10;3;1092;U16;;Reserved;reserved;1.000000;0.000000;;0
+11;3;1156;U16;;Grid frequency.;grid_frequency;0.010000;0.000000;Hz;4
+12;3;1157;I16;;Total active power.;total_active_power;0.010000;0.000000;kW;4
+13;3;1158;I16;;Total reactive power.;total_reactive_power;0.010000;0.000000;kW;4
+14;3;1159;I16;;Total apparent power.;total_apparent_power;0.010000;0.000000;kW;4
+15;3;1160;I16;;Total PCC active power.;total_pcc_active_power;0.010000;0.000000;kW;4
+16;3;1161;I16;;Total PCC reactive power.;total_pcc_reactive_power;0.010000;0.000000;kW;4
+17;3;1168;I16;;R phase inverter output reactive power.;r_phase_inverter_output_reactive_power;0.010000;0.000000;kW;4
+18;3;1169;I16;;R-phase power factor.;rphase_power_factor;0.001000;0.000000;p.u.;4
+19;3;1170;U16;;R-phase PCC current.;rphase_pcc_current;0.010000;0.000000;A;4
+20;3;1171;I16;;R-phase PCC active power;rphase_pcc_active_power;0.010000;0.000000;kW;4
+21;3;1172;I16;;R-phase PCC reactive power.;rphase_pcc_reactive_power;0.010000;0.000000;kW;4
+22;3;1173;I16;;R phase PCC power factor.;r_phase_pcc_power_factor;0.001000;0.000000;p.u.;4
+23;3;1176;U16;;Phase S grid voltage;phase_s_grid_voltage;0.100000;0.000000;V;4
+24;3;1177;U16;;Phase S inverter output current;phase_s_inverter_output_current;0.010000;0.000000;A;4
+25;3;1284;I16;;Load active power.;load_active_power;0.010000;0.000000;kW;4
+26;3;1285;I16;;Load reactive power;load_reactive_power;0.010000;0.000000;kW;4
+27;3;1286;I16;;Load apparent power.;load_apparent_power;0.010000;0.000000;kW;4
+28;3;1287;U16;;Output voltage frequency;output_voltage_frequency;0.010000;0.000000;Hz;4
+29;3;1296;U16;;R corresponding acute load voltage;r_corresponding_acute_load_voltage;0.100000;0.000000;V;4
+30;3;1297;U16;;R phase reserve 2;r_phase_reserve_2;1.000000;0.000000;;0
+31;3;1298;U16;;Phase S inverter output voltage;phase_s_inverter_output_voltage;0.100000;0.000000;V;4
+32;3;1299;I16;;S phase load current;s_phase_load_current;0.010000;0.000000;A;4
+33;3;1300;I16;;S phase load active power.;s_phase_load_active_power;0.010000;0.000000;kW;4
+34;3;1301;I16;;S phase load reactive power.;s_phase_load_reactive_power;0.010000;0.000000;kW;4
+35;3;1302;I16;;S phase load apparent power.;s_phase_load_apparent_power;0.010000;0.000000;kVA;4
+36;3;1303;U16;;S phase load peak ratio;s_phase_load_peak_ratio;0.010000;0.000000;p.u.;4
+37;3;1304;U16;;S phase corresponding acute load voltage;s_phase_corresponding_acute_load_voltage;0.100000;0.000000;V;4
+38;3;1305;U16;;S phase reserve 2;s_phase_reserve_2;1.000000;0.000000;;0
+39;3;1312;U16;;T corresponding acute load voltage;t_corresponding_acute_load_voltage;0.100000;0.000000;V;4
+40;3;1313;U16;;T phase reserved 2;t_phase_reserved_2;1.000000;0.000000;;0
+41;3;1314;U16;;Inverter L1 to N voltage RMS;inverter_l1_to_n_voltage_rms;0.100000;0.000000;V;4
+42;3;1315;I16;;L1 load current RMS;l1_load_current_rms;0.010000;0.000000;A;4
+43;3;1316;I16;;Load L1 to N active power;load_l1_to_n_active_power;0.010000;0.000000;kW;4
+44;3;1317;U16;;Inverter L2 to N voltage RMS;inverter_l2_to_n_voltage_rms;0.100000;0.000000;V;4
+45;3;1318;I16;;L2 load current RMS;l2_load_current_rms;0.010000;0.000000;A;4
+46;3;1319;I16;;Load L2 to N active power;load_l2_to_n_active_power;0.010000;0.000000;kW;4
+47;3;1639;I16;;Total battery charging and discharging power. Charging is positive, discharging is negative;total_battery_charging_and_discharging_power_charging_is_positive_discharging_is_negative;0.100000;0.000000;kW;4
+48;3;1640;U16;;Average of total battery pack SOC;average_of_total_battery_pack_soc;1.000000;0.000000;'%;4
+49;3;1641;U16;;Aggregate battery pack SOH;aggregate_battery_pack_soh;1.000000;0.000000;'%;4
+50;3;2048;U16;;Waiting time before grid connection;waiting_time_before_grid_connection;1.000000;0.000000;秒;1
+51;3;2049;U16;;100 indicates the rate corresponding to a 1-minute rise to full load, other values are multiplied and divided on this basis Note: Grid connection rise rate;v_100_indicates_the_rate_corresponding_to_a_1minute_rise_to_full_load_other_values_are_multiplied_and_divided_on_this_basis_note_grid_connection_rise_rate;1.000000;0.000000;'%Pn/min;1
+52;3;2050;U16;;Waiting time before re-connecting to the grid after grid failure recovery;waiting_time_before_reconnecting_to_the_grid_after_grid_failure_recovery;1.000000;0.000000;秒;1
+53;3;2051;U16;;100 indicates the rate at which 1 minute rises to full load, other values are multiplied and divided by this.;v_100_indicates_the_rate_at_which_1_minute_rises_to_full_load_other_values_are_multiplied_and_divided_by_this;1.000000;0.000000;'%Pn/min;1
+54;3;2052;U16;;Upper limit of grid start-up voltage Note: The grid start-up voltage must not exceed this setting;upper_limit_of_grid_startup_voltage_note_the_grid_startup_voltage_must_not_exceed_this_setting;0.100000;0.000000;V;1
+55;3;2053;U16;;Lower limit of the start-up grid voltage Note: The voltage at start-up cannot be lower than this setting;lower_limit_of_the_startup_grid_voltage_note_the_voltage_at_startup_cannot_be_lower_than_this_setting;0.100000;0.000000;V;1
+56;3;2054;U16;;Start grid frequency upper limit;start_grid_frequency_upper_limit;0.010000;0.000000;Hz;1
+57;3;2055;U16;;Lower limit of start-up grid frequency;lower_limit_of_startup_grid_frequency;0.010000;0.000000;Hz;1
+58;3;2056;U16;;Reconnect grid voltage upper limit;reconnect_grid_voltage_upper_limit;0.100000;0.000000;V;1
+59;3;2057;U16;;Lower limit of reconnected grid voltage;lower_limit_of_reconnected_grid_voltage;0.100000;0.000000;V;1
+60;3;2112;U16;;Bit0: Overvoltage primary protection enable bit Bit1: Overvoltage secondary protection enable bit Bit2: Overvoltage level 3 protection enable bit Bit3: Undervoltage primary protection enable bit Bit4: Undervoltage secondary protection enable bit Bit5: Undervoltage level 3 protection enable bit Bit6: 10 minutes overvoltage protection enable bit Note: Enable is set to 1 for on, set to 0 for off;bit0_overvoltage_primary_protection_enable_bitbit1_overvoltage_secondary_protection_enable_bitbit2_overvoltage_level_3_protection_enable_bitbit3_undervoltage_primary_protection_enable_bitbit4_undervoltage_secondary_protection_enable_bitbit5_undervoltage_level_3_protection_enable_bitbit6_10_minutes_overvoltage_protection_enable_bit_note_enable_is_set_to_1_for_on_set_to_0_for_off;1.000000;0.000000;;1
+61;3;2113;U16;;Rated grid voltage;rated_grid_voltage;0.100000;0.000000;V;1
+62;3;2114;U16;;Note: The first level of voltage protection threshold is set and exceeds the trigger protection mechanism;note_the_first_level_of_voltage_protection_threshold_is_set_and_exceeds_the_trigger_protection_mechanism;0.100000;0.000000;V;1
+63;3;2115;U16;;First-level overvoltage protection time Note: Set threshold for first-level voltage time, exceeds trigger protection mechanism;firstlevel_overvoltage_protection_time_note_set_threshold_for_firstlevel_voltage_time_exceeds_trigger_protection_mechanism;10.000000;0.000000;ms;1
+64;3;2116;U16;;Secondary overvoltage protection value;secondary_overvoltage_protection_value;0.100000;0.000000;V;1
+65;3;2117;U16;;Secondary overvoltage protection time;secondary_overvoltage_protection_time;10.000000;0.000000;ms;1
+66;3;2118;U16;;Tertiary overvoltage protection value;tertiary_overvoltage_protection_value;0.100000;0.000000;V;1
+67;3;2119;U16;;Three-stage overvoltage protection time;threestage_overvoltage_protection_time;10.000000;0.000000;ms;1
+68;3;2120;U16;;Level 1 undervoltage protection value;level_1_undervoltage_protection_value;0.100000;0.000000;V;1
+69;3;2121;U16;;Primary undervoltage protection time;primary_undervoltage_protection_time;10.000000;0.000000;ms;1
+70;3;2128;U16;;Secondary overvoltage protection time high;secondary_overvoltage_protection_time_high;1.000000;0.000000;;1
+71;3;2129;U16;;Three-level overvoltage protection time high;threelevel_overvoltage_protection_time_high;1.000000;0.000000;;1
+72;3;2176;U16;;Bit0 Overfrequency primary protection enable bit Bit1 Overfrequency secondary protection enable bit Bit2 Overfrequency level 3 protection enable bit Bit3 Underfrequency primary protection enable bit Bit4 Underfrequency secondary protection enable bit Bit5 Underfrequency level 3 protection enable bit Note: Enable is set to 1 for on, set to 0 for off;bit0_overfrequency_primary_protection_enable_bitbit1_overfrequency_secondary_protection_enable_bitbit2_overfrequency_level_3_protection_enable_bitbit3_underfrequency_primary_protection_enable_bitbit4_underfrequency_secondary_protection_enable_bitbit5_underfrequency_level_3_protection_enable_bit_note_enable_is_set_to_1_for_on_set_to_0_for_off;1.000000;0.000000;;1
+73;3;2177;U16;;Rated grid frequency;rated_grid_frequency;0.010000;0.000000;Hz;1
+74;3;2178;U16;;Primary overfrequency protection value Note: Primary frequency protection threshold, exceeds trigger protection mechanism;primary_overfrequency_protection_value_note_primary_frequency_protection_threshold_exceeds_trigger_protection_mechanism;0.010000;0.000000;Hz;1
+75;3;2179;U16;;Primary overfrequency protection time Note: Primary frequency time protection threshold, exceeds the trigger protection mechanism;primary_overfrequency_protection_time_note_primary_frequency_time_protection_threshold_exceeds_the_trigger_protection_mechanism;10.000000;0.000000;ms;1
+76;3;2180;U16;;Secondary overfrequency protection value;secondary_overfrequency_protection_value;0.010000;0.000000;Hz;1
+77;3;2181;U16;;Secondary overfrequency protection time;secondary_overfrequency_protection_time;10.000000;0.000000;ms;1
+78;3;2182;U16;;Level 3 overfrequency protection value;level_3_overfrequency_protection_value;0.010000;0.000000;Hz;1
+79;3;2183;U16;;Level 3 overfrequency protection time;level_3_overfrequency_protection_time;10.000000;0.000000;ms;1
+80;3;2184;U16;;Level 1 under-frequency protection value;level_1_underfrequency_protection_value;0.010000;0.000000;Hz;1
+81;3;2185;U16;;Level 1 underfrequency protection time;level_1_underfrequency_protection_time;10.000000;0.000000;ms;1
+82;3;2192;U16;;Three-level underfrequency protection time high;threelevel_underfrequency_protection_time_high;1.000000;0.000000;;1
+83;3;2193;U16;;Level 1 underfrequency protection time high;level_1_underfrequency_protection_time_high;1.000000;0.000000;;1
+84;3;2194;U16;;Secondary underfrequency protection time high;secondary_underfrequency_protection_time_high;1.000000;0.000000;;1
+85;3;2195;U16;;Level 3 underfrequency protection time high;level_3_underfrequency_protection_time_high;1.000000;0.000000;;1
+86;3;2304;U16;;Bit0: Active down load enable bit Bit1: Remote switch-on/off enable bit Bit2: overvoltage down load enable bit Bit3: overvoltage charge down enable bit Bit4: Under-voltage charge-down power enable bit Bit5: DRM0 enable bit Bit6: Logic interface (DRM1-8) enable bit Bit7: Anti-backflow overload enable bit Bit8: Voltage drop-down PT curve enable bit Bit9: Remote shutdown down load enable bit (0: default direct shutdown, 1: ramp down load shutdown)                       Note: Enable is set to 1 for on, set to 0 for off;bit0_active_down_load_enable_bitbit1_remote_switchonoff_enable_bitbit2_overvoltage_down_load_enable_bitbit3_overvoltage_charge_down_enable_bitbit4_undervoltage_chargedown_power_enable_bitbit5_drm0_enable_bitbit6_logic_interface_drm18_enable_bitbit7_antibackflow_overload_enable_bitbit8_voltage_dropdown_pt_curve_enable_bitbit9_remote_shutdown_down_load_enable_bit_0_default_direct_shutdown_1_ramp_down_load_shutdown_note_enable_is_set_to_1_for_on_set_to_0_for_off;1.000000;0.000000;;1
+87;3;2305;U16;;Active output percentage;active_output_percentage;0.100000;0.000000;'%;1
+88;3;2306;U16;;Active load shedding rate;active_load_shedding_rate;1.000000;0.000000;'%Pn/min;1
+89;3;2307;U16;;Grid overvoltage load shedding start point;grid_overvoltage_load_shedding_start_point;0.100000;0.000000;V;1
+90;3;2308;U16;;Grid overvoltage derate cut-off point;grid_overvoltage_derate_cutoff_point;0.100000;0.000000;V;1
+91;3;2309;I16;;Grid over-voltage derating cut-off power;grid_overvoltage_derating_cutoff_power;1.000000;0.000000;'%;1
+92;3;2310;U16;;Over-voltage derating rate;overvoltage_derating_rate;1.000000;0.000000;'%Pn/min;1
+93;3;2311;U16;;Grid under-voltage load shedding start point;grid_undervoltage_load_shedding_start_point;0.100000;0.000000;V;1
+94;3;2312;U16;;Grid undervoltage cut-off point;grid_undervoltage_cutoff_point;0.100000;0.000000;V;1
+95;3;2313;I16;;Grid undervoltage cut-off power;grid_undervoltage_cutoff_power;1.000000;0.000000;'%;1
+96;3;2322;U16;;Anti-backflow power (VDE4105 safety regulation grid-connected power limit);antibackflow_power_vde4105_safety_regulation_gridconnected_power_limit;1.000000;0.000000;'%;1
+97;3;2323;U16;;Anti-backflow overload time (VDE4105 safety regulation backflow overload off-grid time);antibackflow_overload_time_vde4105_safety_regulation_backflow_overload_offgrid_time;10.000000;0.000000;ms;1
+98;3;2324;U16;;Logical interface down load rate;logical_interface_down_load_rate;1.000000;0.000000;'%Pn/min;1
+99;3;2325;U16;;Logical interface return load rate;logical_interface_return_load_rate;1.000000;0.000000;'%Pn/min;1
+100;3;2326;U16;;Voltage down load rate;voltage_down_load_rate;1.000000;0.000000;秒;1
+101;3;2327;U16;;Remote shutdown down rate;remote_shutdown_down_rate;1.000000;0.000000;'%Pn/min;1
+102;3;2368;U16;;Bit0: Overclocked output down load enable Bit1: Underclocked input down load enable Bit2: Overclock back enable Bit3: Underfrequency return enable Bit4: Overfrequency down load enable from rated power Bit5: Current power calculation ramp down enable Bit6: Energy storage segmentation curve enable Bit7: Maximum power calculation enable Bit8: Underfrequency download from rated power enable Bit12-13: Load down mode (0 slope mode/1 frequency range mode) Note: 225kw PV models do not support the energy storage segmentation curve enable and maximum power calculation enable functions.                       Note: The 225kw model does not support the load shedding enable from the rated power and the current power calculation load shedding ramp enable in this interface Note: This parameter interface area is divided into two interfaces, PV and energy storage Note: Enable is set to 1 for on, set to 0 for off;bit0_overclocked_output_down_load_enablebit1_underclocked_input_down_load_enablebit2_overclock_back_enablebit3_underfrequency_return_enablebit4_overfrequency_down_load_enable_from_rated_powerbit5_current_power_calculation_ramp_down_enablebit6_energy_storage_segmentation_curve_enablebit7_maximum_power_calculation_enablebit8_underfrequency_download_from_rated_power_enablebit1213_load_down_mode_0_slope_mode1_frequency_range_mode_note_225kw_pv_models_do_not_support_the_energy_storage_segmentation_curve_enable_and_maximum_power_calculation_enable_functions_note_the_225kw_model_does_not_support_the_load_shedding_enable_from_the_rated_power_and_the_current_power_calculation_load_shedding_ramp_enable_in_this_interface_note_this_parameter_interface_area_is_divided_into_two_interfaces_pv_and_energy_storage_note_enable_is_set_to_1_for_on_set_to_0_for_off;1.000000;0.000000;;1
+103;3;2369;U16;;Overfrequency load shedding starting frequency;overfrequency_load_shedding_starting_frequency;0.010000;0.000000;Hz;1
+104;3;2370;U16;;Over-frequency load shedding cut-off frequency. Valid in frequency range mode;overfrequency_load_shedding_cutoff_frequency_valid_in_frequency_range_mode;0.010000;0.000000;Hz;1
+105;3;2371;U16;;Overfrequency ramp down percentage. Slope mode valid DeMarker slope=1/(s*fn);overfrequency_ramp_down_percentage_slope_mode_validdemarker_slope1sfn;1.000000;0.000000;'%Pn/Hz;1
+106;3;2372;U16;;Overfrequency download start wait time;overfrequency_download_start_wait_time;10.000000;0.000000;ms;1
+107;3;2373;U16;;Waiting time before overfrequency loadback;waiting_time_before_overfrequency_loadback;10.000000;0.000000;ms;1
+108;3;2374;U16;;Overfrequency down load return frequency. Effective when overfrequency reload is disabled.;overfrequency_down_load_return_frequency_effective_when_overfrequency_reload_is_disabled;0.010000;0.000000;Hz;1
+109;3;2375;U16;;Percentage of overfrequency reload rate;percentage_of_overfrequency_reload_rate;1.000000;0.000000;'%Pn/min;1
+110;3;2376;U16;;Under frequency down load start frequency;under_frequency_down_load_start_frequency;0.010000;0.000000;Hz;1
+111;3;2377;U16;;Underclocking cut-off frequency. Valid for frequency range mode;underclocking_cutoff_frequency_valid_for_frequency_range_mode;0.010000;0.000000;Hz;1
+112;3;2384;U16;;Exits the lowest frequency of the dropout. Shared over-under frequency. Effective when underload is allowed;exits_the_lowest_frequency_of_the_dropout_shared_overunder_frequency_effective_when_underload_is_allowed;0.010000;0.000000;Hz;1
+113;3;2385;U16;;(Energy storage) Overload start frequency;energy_storage_overload_start_frequency;0.010000;0.000000;Hz;1
+114;3;2386;U16;;(Energy storage) Overdrive cut-off frequency. Valid in frequency range mode;energy_storage_overdrive_cutoff_frequency_valid_in_frequency_range_mode;0.010000;0.000000;Hz;1
+115;3;2387;U16;;(Energy Storage) Overfrequency Derate Ramp Percentage. Slope mode valid German Standard slope=1/(s*fn);energy_storage_overfrequency_derate_ramp_percentage_slope_mode_validgerman_standard_slope1sfn;1.000000;0.000000;'%Pn/Hz;1
+116;3;2388;U16;;(Energy storage) Overfrequency download start-up waiting time;energy_storage_overfrequency_download_startup_waiting_time;10.000000;0.000000;ms;1
+117;3;2389;U16;;(Energy storage) Waiting time before overfrequency return to load;energy_storage_waiting_time_before_overfrequency_return_to_load;10.000000;0.000000;ms;1
+118;3;2390;U16;;(energy storage) Overfrequency down load return frequency. Effective when overfrequency backload is disabled.;energy_storage_overfrequency_down_load_return_frequency_effective_when_overfrequency_backload_is_disabled;0.010000;0.000000;Hz;1
+119;3;2391;U16;;(Energy storage) Percentage of overload rate;energy_storage_percentage_of_overload_rate;1.000000;0.000000;'%Pn/min;1
+120;3;2392;U16;;(Energy storage) Underfrequency down load start frequency;energy_storage_underfrequency_down_load_start_frequency;0.010000;0.000000;Hz;1
+121;3;2393;U16;;(ENERGY STORAGE) Underfrequency derate cut-off frequency. Valid in frequency range mode;energy_storage_underfrequency_derate_cutoff_frequency_valid_in_frequency_range_mode;0.010000;0.000000;Hz;1
+122;3;2400;U16;;(Energy storage) Exit the lowest frequency of the load shedding. Over and under frequency sharing;energy_storage_exit_the_lowest_frequency_of_the_load_shedding_over_and_under_frequency_sharing;0.010000;0.000000;Hz;1
+123;3;2401;U16;;(energy storage) Overdrive power crossing frequency point. Valid when 0940 Bit6 is enabled.;energy_storage_overdrive_power_crossing_frequency_point_valid_when_0940_bit6_is_enabled;0.010000;0.000000;Hz;1
+124;3;2402;U16;;(energy storage) Underfrequency power down crossing frequency point. Valid when 0940 Bit6 is enabled.;energy_storage_underfrequency_power_down_crossing_frequency_point_valid_when_0940_bit6_is_enabled;0.010000;0.000000;Hz;1
+125;3;2432;U16;;Bit0: Reactive enable Bit1-3: Reactive mode Bit8: Reactive mode three-voltage entry enable bit Bit9: Charge reactive enable Bit10: Reactive mode four Austrian enable bit Note: Reactive mode bits1-3 control the six reactive modes Note: The corresponding functions are controlled in the corresponding reactive modes, as described in the following register functions Note: Enable is set to 1 for on, set to 0 for off;bit0_reactive_enablebit13_reactive_modebit8_reactive_mode_threevoltage_entry_enable_bitbit9_charge_reactive_enablebit10_reactive_mode_four_austrian_enable_bit_note_reactive_mode_bits13_control_the_six_reactive_modes_note_the_corresponding_functions_are_controlled_in_the_corresponding_reactive_modes_as_described_in_the_following_register_functions_note_enable_is_set_to_1_for_on_set_to_0_for_off;1.000000;0.000000;;1
+126;3;2433;I16;;"Power factor for reactive mode one to calculate Tanphi. Positive values represent the provision of inductive under-stimulated reactive power, with the inverter output current overriding the grid voltage; A negative value means that capacitive over-excitation reactive power is provided and the inverter output current lags behind the grid voltage;";power_factor_for_reactive_mode_one_to_calculate_tanphipositive_values_represent_the_provision_of_inductive_understimulated_reactive_power_with_the_inverter_output_current_overriding_the_grid_voltagea_negative_value_means_that_capacitive_overexcitation_reactive_power_is_provided_and_the_inverter_output_current_lags_behind_the_grid_voltage;0.000100;0.000000;;1
+127;3;2434;I16;;"Fixed reactive power percentage for reactive mode II calculation of reactive power. positive values represent the supply of inductive under-excitation reactive power and the inverter output current overruns the grid voltage; A negative value means that capacitive over-excitation reactive power is provided and the inverter output current lags behind the grid voltage;";fixed_reactive_power_percentage_for_reactive_mode_ii_calculation_of_reactive_powerpositive_values_represent_the_supply_of_inductive_underexcitation_reactive_power_and_the_inverter_output_current_overruns_the_grid_voltagea_negative_value_means_that_capacitive_overexcitation_reactive_power_is_provided_and_the_inverter_output_current_lags_behind_the_grid_voltage;0.010000;0.000000;'%;1
+128;3;2435;I16;;"is used for reactive mode III, the first point power factor value. positive values represent the supply of inductive under-excitation reactive power and the inverter output current overruns the grid voltage; A negative value means that capacitive over-excitation reactive power is supplied and the inverter output current lags behind the grid voltage;";is_used_for_reactive_mode_iii_the_first_point_power_factor_valuepositive_values_represent_the_supply_of_inductive_underexcitation_reactive_power_and_the_inverter_output_current_overruns_the_grid_voltagea_negative_value_means_that_capacitive_overexcitation_reactive_power_is_supplied_and_the_inverter_output_current_lags_behind_the_grid_voltage;0.000100;0.000000;;1
+129;3;2436;I16;;for reactive mode III, first point power percentage;for_reactive_mode_iii_first_point_power_percentage;1.000000;0.000000;'%;1
+130;3;2437;I16;;for reactive mode III, second point power factor value;for_reactive_mode_iii_second_point_power_factor_value;0.000100;0.000000;;1
+131;3;2438;I16;;for reactive mode III, second point power percentage;for_reactive_mode_iii_second_point_power_percentage;1.000000;0.000000;'%;1
+132;3;2439;I16;;for reactive mode III, third point power factor value;for_reactive_mode_iii_third_point_power_factor_value;0.000100;0.000000;;1
+133;3;2440;I16;;for reactive mode III, third point power percentage;for_reactive_mode_iii_third_point_power_percentage;1.000000;0.000000;'%;1
+134;3;2441;I16;;for reactive mode III, fourth power factor point;for_reactive_mode_iii_fourth_power_factor_point;0.000100;0.000000;;1
+135;3;2448;U16;;for reactive mode IV, % LV termination voltage;for_reactive_mode_iv_lv_termination_voltage;1.000000;0.000000;'%;1
+136;3;2449;U16;;for reactive mode IV, % of Lockin power value;for_reactive_mode_iv_of_lockin_power_value;1.000000;0.000000;'%;1
+137;3;2450;U16;;for reactive mode IV, % of Lockout power value;for_reactive_mode_iv_of_lockout_power_value;1.000000;0.000000;'%;1
+138;3;2451;U16;;for reactive mode IV, % of maximum overrun reactive power;for_reactive_mode_iv_of_maximum_overrun_reactive_power;0.010000;0.000000;'%Pn;1
+139;3;2452;U16;;for Reactive mode IV, Reactive response waiting time;for_reactive_mode_iv_reactive_response_waiting_time;10.000000;0.000000;ms;1
+140;3;2453;I16;;For reactive mode IV, percentage reactive power offset Offset reactive power curve over the entire operating voltage range. Positive values indicate overrunning, negative values indicate lagging.;for_reactive_mode_iv_percentage_reactive_power_offset_offset_reactive_power_curve_over_the_entire_operating_voltage_range_positive_values_indicate_overrunning_negative_values_indicate_lagging;0.010000;0.000000;'%Qmax;1
+141;3;2454;U16;;"For reactive mode IV, 50% of the percentage change in reactive power range from the low voltage starting voltage to the high voltage starting voltage point. The low-voltage starting voltage corresponds to the reactive power lagging in this register; the high-voltage starting voltage corresponds to the reactive power overrunning in this register;";for_reactive_mode_iv_50_of_the_percentage_change_in_reactive_power_range_from_the_low_voltage_starting_voltage_to_the_high_voltage_starting_voltage_point_the_lowvoltage_starting_voltage_corresponds_to_the_reactive_power_lagging_in_this_register_the_highvoltage_starting_voltage_corresponds_to_the_reactive_power_overrunning_in_this_register;0.010000;0.000000;'%Pn;1
+142;3;2455;U16;;For reactive mode V, percentage of high-voltage starting voltage;for_reactive_mode_v_percentage_of_highvoltage_starting_voltage;1.000000;0.000000;'%;1
+143;3;2456;U16;;for reactive mode V, percentage of high-voltage termination voltage;for_reactive_mode_v_percentage_of_highvoltage_termination_voltage;1.000000;0.000000;'%;1
+144;3;2457;U16;;for reactive mode V, percentage of low-voltage starting voltage;for_reactive_mode_v_percentage_of_lowvoltage_starting_voltage;1.000000;0.000000;'%;1

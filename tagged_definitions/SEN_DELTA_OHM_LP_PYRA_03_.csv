@@ -1,0 +1,7 @@
+﻿Modbus;Sensor;DELTA_OHM;LP_PYRA_03_;;;;;;;
+1;4;0;I16;;Temperature in Deg.Celsius;;0.1;0.0;Deg.Celsius;4
+2;4;1;I16;;Temperature in Deg.Fahrenheit;;0.1;0.0;Deg.Fahrenheit;4
+3;4;2;I16;;Solar radiation in W_m2;;0.1;0.0;W/m2;4
+4;4;3;I16;;Status register;;0.1;0.0;;4
+5;4;4;I16;;Average solar radiation in W_m2;;0.1;0.0;W/m2;4
+6;4;5;I16;;Signal (in mV x 100) generated;;0.01;0.0;mV;4

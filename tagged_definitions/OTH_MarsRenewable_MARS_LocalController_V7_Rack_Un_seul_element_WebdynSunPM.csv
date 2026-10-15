@@ -1,0 +1,36 @@
+﻿modbusRTU;Other;MarsRenewable;MARS_LocalController_V7_Rack_U;;;;;;;
+1;4;0;U16;;Rack - Number of cells in Rack;rack_number_of_cells_in_rack;1.000000;0.000000;;4
+2;4;1;F32;;Rack - Rack Voltage;rack_rack_voltage;1.000000;0.000000;V;4
+3;4;3;F32;;Rack - Rack Current;rack_rack_current;1.000000;0.000000;A;4
+4;4;5;F32;;Rack - Rack SOC;rack_rack_soc;1.000000;0.000000;'%;4
+5;4;7;F32;;Rack - Rack SOH;rack_rack_soh;1.000000;0.000000;'%;4
+6;4;9;F32;;Rack - Rack Insulation Resistance;rack_rack_insulation_resistance;1.000000;0.000000;Ohm;4
+7;4;11;F32;;Rack - Maximum Allowable Charge Current;rack_maximum_allowable_charge_current;1.000000;0.000000;A;4
+8;4;13;F32;;Rack - Maximum Allowable Discharge Current;rack_maximum_allowable_discharge_current;1.000000;0.000000;A;4
+9;4;15;F32;;Rack - Total Charge Energy;rack_total_charge_energy;1.000000;0.000000;kWh;4
+10;4;17;F32;;Rack - Total Discharge Energy;rack_total_discharge_energy;1.000000;0.000000;kWh;4
+11;4;19;F32;;Rack - Available Charge Energy;rack_available_charge_energy;1.000000;0.000000;kWh;4
+12;4;21;F32;;Rack - Available Discharge Energy;rack_available_discharge_energy;1.000000;0.000000;kWh;4
+13;4;23;F32;;Rack - Average Cell Voltage;rack_average_cell_voltage;1.000000;0.000000;V;4
+14;4;25;F32;;Rack - Average Cell Temperature;rack_average_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+15;4;27;F32;;Rack - Maximum Cell Voltage;rack_maximum_cell_voltage;1.000000;0.000000;V;4
+16;4;29;F32;;Rack - Maximum Cell Voltage Cell Number;rack_maximum_cell_voltage_cell_number;1.000000;0.000000;;4
+17;4;31;F32;;Rack - Minimum Cell Voltage;rack_minimum_cell_voltage;1.000000;0.000000;V;4
+18;4;33;F32;;Rack - Minimum Cell Voltage Cell Number;rack_minimum_cell_voltage_cell_number;1.000000;0.000000;;4
+19;4;35;F32;;Rack - Maximum Cell Temperature;rack_maximum_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+20;4;37;F32;;Rack - Maximum Cell Temperature Cell Number;rack_maximum_cell_temperature_cell_number;1.000000;0.000000;;4
+21;4;39;F32;;Rack - Minimum Cell Temperature;rack_minimum_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+22;4;41;F32;;Rack - Minimum Cell Temperature Cell Number;rack_minimum_cell_temperature_cell_number;1.000000;0.000000;;4
+23;4;43;F32;;Rack - Maximum Cell SOC;rack_maximum_cell_soc;1.000000;0.000000;'%;4
+24;4;45;F32;;Rack - Maximum Cell SOC Cell Number;rack_maximum_cell_soc_cell_number;1.000000;0.000000;;4
+25;4;47;F32;;Rack - Minimum Cell SOC;rack_minimum_cell_soc;1.000000;0.000000;'%;4
+26;4;49;F32;;Rack - Minimum Cell SOC Cell Number;rack_minimum_cell_soc_cell_number;1.000000;0.000000;;4
+27;4;51;F32;;Rack - Maximum Cell SOH;rack_maximum_cell_soh;1.000000;0.000000;'%;4
+28;4;53;F32;;Rack - Maximum Cell SOH Cell Number;rack_maximum_cell_soh_cell_number;1.000000;0.000000;;4
+29;4;55;F32;;Rack - Minimum Cell SOH;rack_minimum_cell_soh;1.000000;0.000000;'%;4
+30;4;57;F32;;Rack - Minimum Cell SOH Cell Number;rack_minimum_cell_soh_cell_number;1.000000;0.000000;;4
+31;4;100;F32;;1# Cell - Cell Voltage;v_1_cell_cell_voltage;1.000000;0.000000;V;4
+32;4;102;F32;;1# Cell - Cell Temperature;v_1_cell_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+33;4;104;F32;;1# Cell - Cell SOC;v_1_cell_cell_soc;1.000000;0.000000;'%;4
+34;4;106;F32;;1# Cell - Cell SOH;v_1_cell_cell_soh;1.000000;0.000000;'%;4
+35;4;108;F32;;1# Cell - Cell Resistance;v_1_cell_cell_resistance;1.000000;0.000000;Ohm;4

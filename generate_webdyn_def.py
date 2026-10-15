@@ -31,6 +31,7 @@ def generate_webdyn_definition(
     category: str = "Inverter",
     address_offset: int = 0,
     strict_validation: bool = True,
+    report_file: str | None = None,
 ) -> bool:
     """
     Extracts registers from a manufacturer documentation file (PDF, Excel, CSV, or XML)
@@ -45,6 +46,7 @@ def generate_webdyn_definition(
         category: Category string (default "Inverter")
         address_offset: Value to shift all register addresses by (default 0)
         strict_validation: Whether to fail on warnings like address overlaps (default True)
+        report_file: Optional path to save a detailed Markdown technical report
 
     Returns:
         bool: True if generation and validation succeeded, False otherwise
@@ -134,6 +136,11 @@ def generate_webdyn_definition(
         logging.info(
             f"Success! Definition file successfully generated and validated at '{output_file}'"
         )
+        if report_file and output_file:
+            from DefFileGenerator.report_generator import generate_single_definition_report
+
+            generate_single_definition_report(output_file, output_report_path=report_file)
+            logging.info(f"Technical report generated at '{report_file}'")
         return True
     else:
         logging.error("Validation failed! The generated file contains critical errors or overlaps.")
@@ -147,7 +154,7 @@ def main():
     if len(sys.argv) < 5:
         print("Usage:")
         print(
-            "  python3 generate_webdyn_def.py <input_file> <output_file> <manufacturer> <model> [options]"
+            "  python3 generate_webdyn_def.py <input_file> <output_file> <manufacturer> <model> [protocol] [category] [--report <path>]"
         )
         print("\nDemo execution using sample registers:")
 
@@ -164,7 +171,11 @@ def main():
 
         logging.info("Running demo generation...")
         success = generate_webdyn_definition(
-            input_file=sample_in, output_file=sample_out, manufacturer="DemoMfg", model="DemoModel"
+            input_file=sample_in,
+            output_file=sample_out,
+            manufacturer="DemoMfg",
+            model="DemoModel",
+            report_file="sample_technical_report.md",
         )
         sys.exit(0 if success else 1)
         return
@@ -175,8 +186,14 @@ def main():
     model = sys.argv[4]
 
     # Optional arguments
-    protocol = sys.argv[5] if len(sys.argv) > 5 else "modbusRTU"
-    category = sys.argv[6] if len(sys.argv) > 6 else "Inverter"
+    protocol = sys.argv[5] if len(sys.argv) > 5 and not sys.argv[5].startswith("--") else "modbusRTU"
+    category = sys.argv[6] if len(sys.argv) > 6 and not sys.argv[6].startswith("--") else "Inverter"
+
+    report_file = None
+    if "--report" in sys.argv:
+        r_idx = sys.argv.index("--report")
+        if r_idx + 1 < len(sys.argv):
+            report_file = sys.argv[r_idx + 1]
 
     success = generate_webdyn_definition(
         input_file=input_file,
@@ -185,6 +202,7 @@ def main():
         model=model,
         protocol=protocol,
         category=category,
+        report_file=report_file,
     )
     sys.exit(0 if success else 1)
 

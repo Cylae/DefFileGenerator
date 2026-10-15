@@ -1,0 +1,7 @@
+﻿modbusRTU;Other;Webdyn;REPPORT;;;;;;;
+1;4;1;U16;;Dernière acquisition;;1.0;0.0;GMT;4
+2;4;2;U16;;Puissance instantanée;P_AC;1.0;0.0;W;4
+3;4;3;U16;;Energie total produite;E_TOT;1.0;0.0;Wh;4
+4;4;4;U16;;Energie journalière produite;E_DAY;1.0;0.0;kWh;4
+5;4;5;U16;;Economie d'émission de CO2;;1.0;0.0;kg;4
+6;4;6;U16;;Economie d'émission de CO2 journalière;;1.0;0.0;kg;4

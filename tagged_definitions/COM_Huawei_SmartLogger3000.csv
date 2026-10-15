@@ -1,0 +1,84 @@
+﻿modbusTCP;Communication;Huawei;SmartLogger3000;;;;;;;
+1;3;40000;U32;;Date&Time;datetime;1.000000;0.000000;Epoch;4
+2;3;40002;U32;;City;city;1.000000;0.000000;;4
+3;3;40004;U16;;Daylight Saving Time (DST;daylight_saving_time_dst;1.000000;0.000000;;4
+4;3;40005;I32;;Time Zone;time_zone;1.000000;0.000000;s;4
+5;3;40007;U16;;DST state;dst_state;1.000000;0.000000;;4
+6;3;40008;U16;;DST offset;dst_offset;1.000000;0.000000;;4
+7;3;40009;U32;;The Local Time;the_local_time;1.000000;0.000000;Epoch;4
+8;3;40200;U16;;Power On;CMD_ON;1.000000;0.000000;;1
+9;3;40201;U16;;Power Off;CMD_OFF;1.000000;0.000000;;1
+10;3;40204;U16;;Transfer trip;transfer_trip;1.000000;0.000000;;4
+11;3;40205;U16;;Array reset;array_reset;1.000000;0.000000;;4
+12;3;40420;U32;;ActiveAdjustment;CMD_P_AC_SET_PERCENT;0.100000;0.000000;kW;1
+13;3;40422;I32;;ReactiveAdjustment;reactiveadjustment;0.100000;0.000000;kVar;4
+14;3;40424;U32;;ActiveAdjustment_2;activeadjustment_2;0.100000;0.000000;kW;4
+15;3;40426;I32;;ReactiveAdjustment_2;reactiveadjustment_2;0.100000;0.000000;kVar;4
+16;3;40428;U16;;Active power adjustment by percentage;active_power_adjustment_by_percentage;0.100000;0.000000;'%;4
+17;3;40429;I16;;Power factor adjustment;power_factor_adjustment;0.001000;0.000000;;4
+18;3;40500;I16;;DC Current;dc_current;0.100000;0.000000;A;4
+19;3;40521;U32;;Input power;input_power;0.001000;0.000000;kW;4
+20;3;40523;U32;;CO2 reduction;co2_reduction;0.100000;0.000000;kg;4
+21;3;40525;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+22;3;40532;I16;;Power Factor;PF;0.001000;0.000000;;4
+23;3;40543;U16;;Plant status;plant_status;1.000000;0.000000;;4
+24;3;40544;I32;;Reactive power;reactive_power;0.001000;0.000000;;4
+25;3;40550;U64;;CO2 reduction_1;co2_reduction_1;0.010000;0.000000;kg;4
+26;3;40554;I32;;DC Current 2;dc_current_2;0.100000;0.000000;A;4
+27;3;40560;U32;;E-Total;etotal;0.100000;0.000000;kWh;4
+28;3;40562;U32;;E-Daily;edaily;0.100000;0.000000;kWh;4
+29;3;40564;U32;;Duration of daily power generation;duration_of_daily_power_generation;0.100000;0.000000;h;4
+30;3;40566;U16;;Plant status_1;plant_status_1;1.000000;0.000000;;4
+31;3;40567;U16;;Plant status_2;plant_status_2;1.000000;0.000000;;4
+32;3;40568;U32;;Active alarm sequence number;active_alarm_sequence_number;1.000000;0.000000;;4
+33;3;40570;U32;;Historical alarm sequence number;historical_alarm_sequence_number;1.000000;0.000000;;4
+34;3;40572;I16;;Phase A current;phase_a_current;0.001000;0.000000;A;4
+35;3;40573;I16;;Phase B current;phase_b_current;0.001000;0.000000;A;4
+36;3;40574;I16;;Phase C current;phase_c_current;0.001000;0.000000;A;4
+37;3;40575;U16;;Uab;uab;0.100000;0.000000;V;4
+38;3;40576;U16;;Ubc;ubc;0.100000;0.000000;V;4
+39;3;40577;U16;;Uca;uca;0.100000;0.000000;V;4
+40;3;40685;U16;;Inverter efficiency;inverter_efficiency;0.010000;0.000000;'%;4
+41;3;40693;U32;;Max. reactive adjustment;max_reactive_adjustment;0.010000;0.000000;kVar;4
+42;3;40695;I32;;Min. reactive adjustment;min_reactive_adjustment;0.010000;0.000000;kVar;4
+43;3;40697;U32;;Max. active adjustment;max_active_adjustment;0.010000;0.000000;kW;4
+44;3;40699;U16;;Locked;locked;1.000000;0.000000;;4
+45;3;40700;U16;;DI Status;di_status;1.000000;0.000000;;4
+46;3;40701_0_1;BITS;;DI Status : DI 1;di_status_di_1;1.000000;0.000000;;4
+47;3;40701_1_1;BITS;;DI Status : DI 2;di_status_di_2;1.000000;0.000000;;4
+48;3;40701_2_1;BITS;;DI Status : DI 3;di_status_di_3;1.000000;0.000000;;4
+49;3;40701_3_1;BITS;;DI Status : DI 4;di_status_di_4;1.000000;0.000000;;4
+50;3;40701_4_1;BITS;;DI Status : DI 5;di_status_di_5;1.000000;0.000000;;4
+51;3;40701_5_1;BITS;;DI Status : DI 6;di_status_di_6;1.000000;0.000000;;4
+52;3;40701_6_1;BITS;;DI Status : DI 7;di_status_di_7;1.000000;0.000000;;4
+53;3;40701_7_1;BITS;;DI Status : DI 8;di_status_di_8;1.000000;0.000000;;4
+54;3;40713_10;STRING;;ESN;esn;1.000000;0.000000;;4
+55;3;40723;U16;;System reset;system_reset;1.000000;0.000000;;4
+56;3;40724;U16;;Fast device access;fast_device_access;1.000000;0.000000;;4
+57;3;40736;U16;;Device access status;device_access_status;1.000000;0.000000;;4
+58;3;40737;U16;;Active power control mode;active_power_control_mode;1.000000;0.000000;;4
+59;3;40738;U32;;Active power scheduling target value;active_power_scheduling_target_value;1.000000;0.000000;kW;4
+60;3;40740;U16;;Reactive power control mode;reactive_power_control_mode;1.000000;0.000000;;4
+61;3;40741;U16;;Reactive power scheduling curve mode;reactive_power_scheduling_curve_mode;1.000000;0.000000;;4
+62;3;40742;I32;;Reactive power scheduling target value;reactive_power_scheduling_target_value;1.000000;0.000000;kVar;4
+63;3;40802;U32;;Active scheduling percentage;active_scheduling_percentage;1.000000;0.000000;'%;4
+64;3;41124;U16;;CO2 emission reduction coefficient;co2_emission_reduction_coefficient;0.001000;0.000000;kg/kWh;4
+65;3;41934;U32;;PV module capacity;pv_module_capacity;0.001000;0.000000;kW;4
+66;3;41936;U32;;Rated plant capacity;rated_plant_capacity;0.001000;0.000000;kW;4
+67;3;41938;U32;;Total rated capacity of grid connected inverters;total_rated_capacity_of_grid_connected_inverters;0.001000;0.000000;kW;4
+68;3;41940;U32;;Conversion coefficient;conversion_coefficient;0.001000;0.000000;;4
+69;3;41942;U16;;Communication status;communication_status;1.000000;0.000000;;4
+70;3;41947;U16;;Communication abnormal shutdown;communication_abnormal_shutdown;1.000000;0.000000;;4
+71;3;41948;U16;;Communication abnormal detection time;communication_abnormal_detection_time;1.000000;0.000000;s;4
+72;3;41949;U16;;Auto start upon communication recovery;auto_start_upon_communication_recovery;1.000000;0.000000;;4
+73;3;42017;U16;;The SystemTime: year;the_systemtime_year;1.000000;0.000000;year;4
+74;3;42018;U16;;The SystemTime: month;the_systemtime_month;1.000000;0.000000;month;4
+75;3;42019;U16;;The SystemTime: day;the_systemtime_day;1.000000;0.000000;day;4
+76;3;42020;U16;;The SystemTime: hour;the_systemtime_hour;1.000000;0.000000;hours;4
+77;3;42021;U16;;The SystemTime: minute;the_systemtime_minute;1.000000;0.000000;minute;4
+78;3;42022;U16;;The SystemTime: second;the_systemtime_second;1.000000;0.000000;s;4
+79;3;42150;U16;;Current error during scanning;current_error_during_scanning;0.001000;0.000000;;4
+80;3;42730;U16;;Inspection;inspection;1.000000;0.000000;;4
+81;3;42779;U16;;IV curve scanning;iv_curve_scanning;1.000000;0.000000;;4
+82;3;50000;U16;;Alarm Info 1;alarm_info_1;1.000000;0.000000;;4
+83;3;50001;U16;;Alarm Info 2;alarm_info_2;1.000000;0.000000;;4

@@ -1,0 +1,264 @@
+﻿modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
+1;3;30000_30;STRING;;Model;MODEL;1.000000;0.000000;N/A;4
+2;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;N/A;4
+3;3;30025_20;STRING;;PN;pn;1.000000;0.000000;N/A;4
+4;3;30070;U16;;Model ID;model_id;1.000000;0.000000;N/A;4
+5;3;30071;U16;;Number of PV strings;number_of_pv_strings;1.000000;0.000000;N/A;4
+6;3;30072;U16;;Number of MPP trackers;number_of_mpp_trackers;1.000000;0.000000;N/A;4
+7;3;30073;U32;;Rated power (P ) n;rated_power_p_n;0.001000;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (P ) max;maximum_active_power_p_max;0.001000;0.000000;kW;4
+9;3;30077;U32;;Maximum apparent power (S ) max;maximum_apparent_power_s_max;0.001000;0.000000;kVA;4
+10;3;30079;I32;;Maximum reactive power (Q , fed to max the power grid);maximum_reactive_power_q_fed_to_max_the_power_grid;0.001000;0.000000;kVar;4
+11;3;30081;I32;;Maximum reactive power (Q , max absorbed from the power grid);maximum_reactive_power_q_max_absorbed_from_the_power_grid;0.001000;0.000000;kVar;4
+12;3;30561_30;STRING;;Offering name of southbound device 1;offering_name_of_southbound_device_1;1.000000;0.000000;N/A;4
+13;3;30576_30;STRING;;Offering name of southbound device 2;offering_name_of_southbound_device_2;1.000000;0.000000;N/A;4
+14;3;30591_30;STRING;;Offering name of southbound device 3;offering_name_of_southbound_device_3;1.000000;0.000000;N/A;4
+15;3;31000_30;STRING;;Hardware version;hardware_version;1.000000;0.000000;N/A;4
+16;3;31015_20;STRING;;Monitoring board SN;monitoring_board_sn;1.000000;0.000000;N/A;4
+17;3;31025_30;STRING;;Monitoring software version;monitoring_software_version;1.000000;0.000000;N/A;4
+18;3;31040_30;STRING;;Master DSP version;master_dsp_version;1.000000;0.000000;N/A;4
+19;3;31070_30;STRING;;CPLD version;cpld_version;1.000000;0.000000;N/A;4
+20;3;31085_30;STRING;;AFCI version;afci_version;1.000000;0.000000;N/A;4
+21;3;31115_30;STRING;;DC-MBUS version;dcmbus_version;1.000000;0.000000;N/A;4
+22;3;31200_20;STRING;;REGKEY;regkey;1.000000;0.000000;N/A;4
+23;3;32000;U16;;[Remote communicati on] Single- machine remote communicati on;remote_communicati_on_single_machine_remote_communicati_on;1.000000;0.000000;N/A;4
+24;3;32002;U16;;[Remote communicati on] Running status (monitoring processing);remote_communicati_on_running_status_monitoring_processing;1.000000;0.000000;N/A;4
+25;3;32003;U32;;[Remote communicati on] Running status (power processing);remote_communicati_on_running_status_power_processing;1.000000;0.000000;N/A;4
+26;3;32008;U16;;Alarm 1;alarm_1;1.000000;0.000000;N/A;4
+27;3;32009;U16;;Alarm 2;alarm_2;1.000000;0.000000;N/A;4
+28;3;32010;U16;;Alarm 3;alarm_3;1.000000;0.000000;N/A;4
+29;3;32015;U16;;ESN;esn;1.000000;0.000000;N/A;4
+30;3;32016;I16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+31;3;32017;I16;;PV1 current;pv1_current;0.010000;0.000000;A;4
+32;3;32018;I16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+33;3;32019;I16;;PV2 current;pv2_current;0.010000;0.000000;A;4
+34;3;32020;I16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+35;3;32021;I16;;PV3 current;pv3_current;0.010000;0.000000;A;4
+36;3;32022;I16;;PV4 voltage;pv4_voltage;0.100000;0.000000;V;4
+37;3;32023;I16;;PV4 current;pv4_current;0.010000;0.000000;A;4
+38;3;32064;I32;;Input power;input_power;0.001000;0.000000;kW;4
+39;3;32066;U16;;Power grid voltage/Line voltage between phases A and B;power_grid_voltageline_voltage_between_phases_a_and_b;0.100000;0.000000;V;4
+40;3;32067;U16;;Line voltage between phases B and C;line_voltage_between_phases_b_and_c;0.100000;0.000000;V;4
+41;3;32068;U16;;Line voltage between phases C and A;line_voltage_between_phases_c_and_a;0.100000;0.000000;V;4
+42;3;32069;U16;;Phase A voltage;phase_a_voltage;0.100000;0.000000;V;4
+43;3;32070;U16;;Phase B voltage;phase_b_voltage;0.100000;0.000000;V;4
+44;3;32071;U16;;Phase C voltage;phase_c_voltage;0.100000;0.000000;V;4
+45;3;32072;I32;;Power grid current/ Phase A current;power_grid_current_phase_a_current;0.001000;0.000000;A;4
+46;3;32074;I32;;Phase B current;phase_b_current;0.001000;0.000000;A;4
+47;3;32076;I32;;Phase C current;phase_c_current;0.001000;0.000000;A;4
+48;3;32078;I32;;Peak active power of current day;peak_active_power_of_current_day;0.001000;0.000000;kW;4
+49;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+50;3;32082;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
+51;3;32084;I16;;Power factor;PF;0.001000;0.000000;N/A;4
+52;3;32085;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+53;3;32086;U16;;Efficiency;efficiency;0.010000;0.000000;'%;4
+54;3;32087;I16;;Internal temperature;internal_temperature;0.100000;0.000000;°C;4
+55;3;32088;U16;;Insulation resistance;insulation_resistance;0.001000;0.000000;MΩ;4
+56;3;32089;U16;;Device status;device_status;1.000000;0.000000;N/A;4
+57;3;32090;U16;;Fault code;fault_code;1.000000;0.000000;N/A;4
+58;3;32106;U32;;Accumulate d energy yield;accumulate_d_energy_yield;0.010000;0.000000;kWh;4
+59;3;32114;U32;;Daily energy yield;E_DAY;0.010000;0.000000;kWh;4
+60;3;35127;U16;;[Manageme nt system] Managemen t system status;manageme_nt_system_managemen_t_system_status;1.000000;0.000000;N/A;4
+61;3;35138;U16;;[Smart I-V Curve Diagnosis] License status;smart_iv_curve_diagnosis_license_status;1.000000;0.000000;N/A;4
+62;3;35145_20;STRING;;License SN;license_sn;1.000000;0.000000;N/A;4
+63;3;35155_128;STRING;;Revocation code;revocation_code;1.000000;0.000000;N/A;4
+64;3;35249;U16;;[4G] Module status;v_4g_module_status;1.000000;0.000000;N/A;4
+65;3;35250;U32;;[4G] IP address;v_4g_ip_address;1.000000;0.000000;N/A;4
+66;3;35252;U32;;[4G] Subnet mask;v_4g_subnet_mask;1.000000;0.000000;N/A;4
+67;3;35254_20;STRING;;[4G] IMEI;v_4g_imei;1.000000;0.000000;N/A;4
+68;3;35264;U16;;[4G] Signal strength;v_4g_signal_strength;1.000000;0.000000;N/A;4
+69;3;35265;U16;;[4G] Maximum number of PIN attempts;v_4g_maximum_number_of_pin_attempts;1.000000;0.000000;N/A;4
+70;3;35266;U16;;[4G] PIN verification status;v_4g_pin_verification_status;1.000000;0.000000;N/A;4
+71;3;37006;U16;;[System level] Charge/ Discharge mode;system_level_charge_discharge_mode;1.000000;0.000000;N/A;4
+72;3;37113;I32;;[Power meter collection] Active power*;power_meter_collection_active_power;1.000000;0.000000;W;4
+73;3;37200;U16;;[Optimizer] Total number of optimizers*;optimizer_total_number_of_optimizers;1.000000;0.000000;N/A;4
+74;3;37201;U16;;[Optimizer] Number of online optimizers*;optimizer_number_of_online_optimizers;1.000000;0.000000;N/A;4
+75;3;37202;U16;;[Optimizer] Feature data*;optimizer_feature_data;1.000000;0.000000;N/A;4
+76;3;40037;U16;;[Power grid scheduling] Q-U characteristi c curve mode*;power_grid_scheduling_qu_characteristi_c_curve_mode;1.000000;0.000000;N/A;1
+77;3;40038;I16;;[Power grid scheduling] Q-U dispatch trigger power (%)*;power_grid_scheduling_qu_dispatch_trigger_power;1.000000;0.000000;'%;1
+78;3;40120;U16;;[Power grid scheduling] Fixed active power derated;power_grid_scheduling_fixed_active_power_derated;0.100000;0.000000;kW;1
+79;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);power_grid_scheduling_fixed_active_power_derated_w;1.000000;0.000000;W;1
+80;3;40129;I32;;[Power grid scheduling] Reactive power compensatio n at night (kVar);power_grid_scheduling_reactive_power_compensatio_n_at_night_kvar;0.001000;0.000000;kVar;1
+81;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;power_grid_scheduling_reactive_power_adjustment_time;1.000000;0.000000;s;1
+82;3;40198;I16;;[Power grid scheduling] Q-U power percentage to exit scheduling*;power_grid_scheduling_qu_power_percentage_to_exit_scheduling;1.000000;0.000000;'%;1
+83;3;40200;U16;;Startup;startup;1.000000;0.000000;N/A;1
+84;3;40201;U16;;Shutdown;shutdown;1.000000;0.000000;N/A;1
+85;3;42000;U16;;Grid code;grid_code;1.000000;0.000000;NA;1
+86;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;power_grid_scheduling_reactive_power_change_gradient;0.001000;0.000000;'%/s;1
+87;3;42017;U32;;[Power grid scheduling] Active power change gradient;power_grid_scheduling_active_power_change_gradient;0.001000;0.000000;'%/s;1
+88;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;power_grid_scheduling_schedule_instruction_valid_duration;1.000000;0.000000;s;1
+89;3;42405;I32;;Failsafe Active Power Limit [kW] [High Accuracy];failsafe_active_power_limit_kw_high_accuracy;0.001000;0.000000;kW;1
+90;3;43006;I16;;Time zone;time_zone;1.000000;0.000000;min;1
+91;3;43098;U16;;[Manageme nt system] TLS encryption;manageme_nt_system_tls_encryption;1.000000;0.000000;N/A;1
+92;3;45052;U16;;WLAN wakeup;wlan_wakeup;1.000000;0.000000;N/A;1
+93;3;45086;U16;;Fast power scheduling;fast_power_scheduling;1.000000;0.000000;N/A;1
+94;3;47589;U16;;[Inverter level] Remote charge/ discharge control mode;inverter_level_remote_charge_discharge_control_mode;1.000000;0.000000;N/A;1
+95;3;47674;U16;;Scheduled task;scheduled_task;1.000000;0.000000;N/A;1
+96;3;47675;I32;;Default maximum feed-in power;default_maximum_feedin_power;0.001000;0.000000;kW;1
+97;3;47677;U32;;Default active power change gradient;default_active_power_change_gradient;0.001000;0.000000;'%/s;1
+98;3;47954;U16;;Peak Shaving;peak_shaving;1.000000;0.000000;N/A;1
+99;3;47955;U16;;Backup power SOC for peak shaving;backup_power_soc_for_peak_shaving;0.100000;0.000000;'%;1
+100;3;48020;U16;;AI optical storage;ai_optical_storage;1.000000;0.000000;N/A;1
+101;3;48089;U16;;Backup Box model;backup_box_model;1.000000;0.000000;N/A;1
+102;3;48090;U16;;Phase-to- ground short-circuit protection;phaseto_ground_shortcircuit_protection;1.000000;0.000000;N/A;1
+103;3;37000;U16;;[Energ y storag e unit 1] [1] Runni ng status;energ_y_storag_e_unit_1_1_runni_ng_status;1.000000;0.000000;N/A;4
+104;3;37001;I32;;[Energ y storag e unit 1] Charg e and discha rge power;energ_y_storag_e_unit_1_charg_e_and_discha_rge_power;1.000000;0.000000;W;4
+105;3;37003;U16;;[Energ y storag e unit 1] Bus voltag e;energ_y_storag_e_unit_1_bus_voltag_e;0.100000;0.000000;V;4
+106;3;37004;U16;;[Energ y storag e unit 1] Batter y SOC;energ_y_storag_e_unit_1_batter_y_soc;0.100000;0.000000;'%;4
+107;3;37007;U32;;[Energ y storag e unit 1] Rated charge power;energ_y_storag_e_unit_1_rated_charge_power;1.000000;0.000000;W;1
+108;3;37009;U32;;[Energ y storag e unit 1] Rated discha rge power;energ_y_storag_e_unit_1_rated_discha_rge_power;1.000000;0.000000;W;1
+109;3;37014;U16;;[Energ y storag e unit 1] Fault ID;energ_y_storag_e_unit_1_fault_id;1.000000;0.000000;N/A;1
+110;3;37015;U32;;[Energ y storag e unit 1] Curren t-day charge capaci ty;energ_y_storag_e_unit_1_curren_tday_charge_capaci_ty;0.010000;0.000000;kWh;4
+111;3;37017;U32;;[Energ y storag e unit 1] Curren t-day discha rge capaci ty;energ_y_storag_e_unit_1_curren_tday_discha_rge_capaci_ty;0.010000;0.000000;kWh;4
+112;3;37021;I16;;[Energ y storag e unit 1] Bus curren t;energ_y_storag_e_unit_1_bus_curren_t;0.100000;0.000000;A;4
+113;3;37022;I16;;[Energ y storag e unit 1] batter y tempe rature;energ_y_storag_e_unit_1_batter_y_tempe_rature;0.100000;0.000000;℃;4
+114;3;37025;U16;;[Energ y storag e unit 1] Remai ning charge / discha rge time;energ_y_storag_e_unit_1_remai_ning_charge_discha_rge_time;1.000000;0.000000;mins;4
+115;3;37026_20;STRING;;[Energ y storag e unit 1] DCDC versio n;energ_y_storag_e_unit_1_dcdc_versio_n;1.000000;0.000000;N/A;4
+116;3;37036_20;STRING;;[Energ y storag e unit 1] BMSve rsion;energ_y_storag_e_unit_1_bmsve_rsion;1.000000;0.000000;N/A;4
+117;3;37046;U32;;[Energ y storag e]Max imum charge power;energ_y_storag_emax_imum_charge_power;1.000000;0.000000;W;4
+118;3;37048;U32;;[Energ y storag e] Maxi mum discha rge power;energ_y_storag_e_maxi_mum_discha_rge_power;1.000000;0.000000;W;4
+119;3;37052_20;STRING;;[Energ y storag e unit 1] SN;energ_y_storag_e_unit_1_sn;1.000000;0.000000;N/A;4
+120;3;37066;U32;;[Energ y storag e unit 1] Total charge;energ_y_storag_e_unit_1_total_charge;0.010000;0.000000;kWh;4
+121;3;37068;U32;;[Energ y storag e unit 1] Total discha rge;energ_y_storag_e_unit_1_total_discha_rge;0.010000;0.000000;kWh;4
+122;3;37700;U8;;[Energ y storag e unit 2] SN;energ_y_storag_e_unit_2_sn;1.000000;0.000000;N/A;4
+123;3;37738;U16;;[Energ y storag e unit 2] Batter y SOC;energ_y_storag_e_unit_2_batter_y_soc;0.100000;0.000000;'%;4
+124;3;37741;U16;;[Energ y storag e unit 2] Runni ng status;energ_y_storag_e_unit_2_runni_ng_status;1.000000;0.000000;N/A;4
+125;3;37743;I32;;[Energ y storag e unit 2] Charg e and discha rge power;energ_y_storag_e_unit_2_charg_e_and_discha_rge_power;1.000000;0.000000;W;4
+126;3;37746;U32;;[Energ y storag e unit 2] Curren t-day charge capaci ty;energ_y_storag_e_unit_2_curren_tday_charge_capaci_ty;0.010000;0.000000;kWh;4
+127;3;37748;U32;;[Energ y storag e unit 2] Curren t-day discha rge capaci ty;energ_y_storag_e_unit_2_curren_tday_discha_rge_capaci_ty;0.010000;0.000000;kWh;4
+128;3;37750;U16;;[Energ y storag e unit 2] Bus voltag e;energ_y_storag_e_unit_2_bus_voltag_e;0.100000;0.000000;V;4
+129;3;37751;I16;;[Energ y storag e unit 2] Bus curren t;energ_y_storag_e_unit_2_bus_curren_t;0.100000;0.000000;A;4
+130;3;37752;I16;;[Energ y storag e unit 2] Batter y tempe rature;energ_y_storag_e_unit_2_batter_y_tempe_rature;0.100000;0.000000;℃;4
+131;3;37753;U32;;[Energ y storag e unit 2] Total charge;energ_y_storag_e_unit_2_total_charge;0.010000;0.000000;kWh;4
+132;3;37755;U32;;[Energ y storag e unit 2] Total discha rge;energ_y_storag_e_unit_2_total_discha_rge;0.010000;0.000000;kWh;4
+133;3;37758;U32;;[Energ y storag e]Rate d capaci ty;energ_y_storag_erate_d_capaci_ty;1.000000;0.000000;Wh;4
+134;3;37760;U16;;[Energ y storag e]SOC;energ_y_storag_esoc;0.100000;0.000000;'%;4
+135;3;37762;U16;;[Energ y storag e]Run ning status;energ_y_storag_erun_ning_status;1.000000;0.000000;N/A;4
+136;3;37763;U16;;[Energ y storag e]Bus voltag e;energ_y_storag_ebus_voltag_e;0.100000;0.000000;V;4
+137;3;37764;I16;;[Energ y storag e]Bus curren t;energ_y_storag_ebus_curren_t;0.100000;0.000000;A;4
+138;3;37765;I32;;[Energ y storag e]Char ge/ Discha rge power;energ_y_storag_echar_ge_discha_rge_power;1.000000;0.000000;W;4
+139;3;37780;U32;;[Energ y storag e]Tota l charge;energ_y_storag_etota_l_charge;0.010000;0.000000;kWh;4
+140;3;37782;U32;;[Energ y storag e]Tota l discha rge;energ_y_storag_etota_l_discha_rge;0.010000;0.000000;kWh;4
+141;3;37784;U32;;[Energ y storag e] Curren t-day charge capaci ty;energ_y_storag_e_curren_tday_charge_capaci_ty;0.010000;0.000000;kWh;4
+142;3;37786;U32;;[Energ y storag e] Curren t-day discha rge capaci ty;energ_y_storag_e_curren_tday_discha_rge_capaci_ty;0.010000;0.000000;kWh;4
+143;3;37799_30;STRING;;[Energ y storag e unit 2] softwa re versio n;energ_y_storag_e_unit_2_softwa_re_versio_n;1.000000;0.000000;N/A;4
+144;3;37814_30;STRING;;[Energ y storag e unit 1] softwa re versio n;energ_y_storag_e_unit_1_softwa_re_versio_n;1.000000;0.000000;N/A;4
+145;3;37920;U16;;[Energ y storag e unit 1] [Batte ry pack1 ]SOH Calibr ation Status;energ_y_storag_e_unit_1_batte_ry_pack1_soh_calibr_ation_status;1.000000;0.000000;N/A;4
+146;3;37921;U16;;[Energ y storag e unit 1] [Batte ry pack2 ]SOH Calibr ation Status;energ_y_storag_e_unit_1_batte_ry_pack2_soh_calibr_ation_status;1.000000;0.000000;N/A;4
+147;3;37922;U16;;[Energ y storag e unit 1] [Batte ry pack3 ]SOH Calibr ation Status;energ_y_storag_e_unit_1_batte_ry_pack3_soh_calibr_ation_status;1.000000;0.000000;N/A;4
+148;3;37923;U16;;[Energ y storag e unit 2] [Batte ry pack1 ]SOH Calibr ation Status;energ_y_storag_e_unit_2_batte_ry_pack1_soh_calibr_ation_status;1.000000;0.000000;N/A;4
+149;3;37924;U16;;[Energ y storag e unit 2] [Batte ry pack2 ]SOH Calibr ation Status;energ_y_storag_e_unit_2_batte_ry_pack2_soh_calibr_ation_status;1.000000;0.000000;N/A;4
+150;3;37925;U16;;[Energ y storag e unit 2] [Batte ry pack3 ]SOH Calibr ation Status;energ_y_storag_e_unit_2_batte_ry_pack3_soh_calibr_ation_status;1.000000;0.000000;N/A;4
+151;3;37926;U16;;SOH Calibr ation Status;soh_calibr_ation_status;1.000000;0.000000;N/A;4
+152;3;37927;U16;;SOH Calibr ation Releas e the lower discha rge limit of the SOC;soh_calibr_ation_releas_e_the_lower_discha_rge_limit_of_the_soc;0.100000;0.000000;N/A;4
+153;3;37928;U16;;SOH Calibr ation Enable the backu p power SOC.;soh_calibr_ation_enable_the_backu_p_power_soc;0.100000;0.000000;N/A;4
+154;3;38200_20;STRING;;[Energ y storag e unit 1] [Batte ry pack1 ]SN;energ_y_storag_e_unit_1_batte_ry_pack1_sn;1.000000;0.000000;N/A;4
+155;3;38210_30;STRING;;[Energ y storag e unit 1] [Batte ry pack1 ]Firm ware versio n;energ_y_storag_e_unit_1_batte_ry_pack1_firm_ware_versio_n;1.000000;0.000000;N/A;4
+156;3;38228;U16;;[Energ y storag e unit 1] [Batte ry pack1 ]Work ing status;energ_y_storag_e_unit_1_batte_ry_pack1_work_ing_status;1.000000;0.000000;N/A;4
+157;3;38229;U16;;[Energ y storag e unit 1] [Batte ry pack1 ]SOC;energ_y_storag_e_unit_1_batte_ry_pack1_soc;0.100000;0.000000;'%;4
+158;3;38233;I32;;[Energ y storag e unit 1] [Batte ry pack1 ]Char ge/ Discha rge power;energ_y_storag_e_unit_1_batte_ry_pack1_char_ge_discha_rge_power;0.001000;0.000000;kW;4
+159;3;38235;U16;;[Energ y storag e unit 1] [Batte ry pack1 ]Volta ge;energ_y_storag_e_unit_1_batte_ry_pack1_volta_ge;0.100000;0.000000;V;4
+160;3;38236;I16;;[Energ y storag e unit 1] [Batte ry pack1 ]Curre nt;energ_y_storag_e_unit_1_batte_ry_pack1_curre_nt;0.100000;0.000000;A;4
+161;3;38238;U32;;[Energ y storag e unit 1] [Batte ry pack1 ]Total charge;energ_y_storag_e_unit_1_batte_ry_pack1_total_charge;0.010000;0.000000;kWh;4
+162;3;38240;U32;;[Energ y storag e unit 1] [Batte ry pack1 ]Total discha rge;energ_y_storag_e_unit_1_batte_ry_pack1_total_discha_rge;0.010000;0.000000;kWh;4
+163;3;38242_20;STRING;;[Energ y storag e unit 1] [Batte ry pack2 ]SN;energ_y_storag_e_unit_1_batte_ry_pack2_sn;1.000000;0.000000;N/A;4
+164;3;38252_30;STRING;;[Energ y storag e unit 1] [Batte ry pack2 ]Firm ware versio n;energ_y_storag_e_unit_1_batte_ry_pack2_firm_ware_versio_n;1.000000;0.000000;N/A;4
+165;3;38270;U16;;[Energ y storag e unit 1] [Batte ry pack2 ]Work ing status;energ_y_storag_e_unit_1_batte_ry_pack2_work_ing_status;1.000000;0.000000;N/A;4
+166;3;38271;U16;;[Energ y storag e unit 1] [Batte ry pack2 ]SOC;energ_y_storag_e_unit_1_batte_ry_pack2_soc;0.100000;0.000000;'%;4
+167;3;38275;I32;;[Energ y storag e unit 1] [Batte ry pack2 ]Char ge/ Discha rge power;energ_y_storag_e_unit_1_batte_ry_pack2_char_ge_discha_rge_power;0.001000;0.000000;kW;4
+168;3;38277;U16;;[Energ y storag e unit 1] [Batte ry pack2 ]Volta ge;energ_y_storag_e_unit_1_batte_ry_pack2_volta_ge;0.100000;0.000000;V;4
+169;3;38278;I16;;[Energ y storag e unit 1] [Batte ry pack2 ]Curre nt;energ_y_storag_e_unit_1_batte_ry_pack2_curre_nt;0.100000;0.000000;A;4
+170;3;38280;U32;;[Energ y storag e unit 1] [Batte ry pack2 ]Total charge;energ_y_storag_e_unit_1_batte_ry_pack2_total_charge;0.010000;0.000000;kWh;4
+171;3;38282;U32;;[Energ y storag e unit 1] [Batte ry pack2 ]Total discha rge;energ_y_storag_e_unit_1_batte_ry_pack2_total_discha_rge;0.010000;0.000000;kWh;4
+172;3;38284_20;STRING;;[Energ y storag e unit 1] [Batte ry pack3 ]SN;energ_y_storag_e_unit_1_batte_ry_pack3_sn;1.000000;0.000000;N/A;4
+173;3;38294_30;STRING;;[Energ y storag e unit 1] [Batte ry pack3 ]Firm ware versio n;energ_y_storag_e_unit_1_batte_ry_pack3_firm_ware_versio_n;1.000000;0.000000;N/A;4
+174;3;38312;U16;;[Energ y storag e unit 1] [Batte ry pack3 ]Work ing status;energ_y_storag_e_unit_1_batte_ry_pack3_work_ing_status;1.000000;0.000000;N/A;4
+175;3;38313;U16;;[Energ y storag e unit 1] [Batte ry pack3 ]SOC;energ_y_storag_e_unit_1_batte_ry_pack3_soc;0.100000;0.000000;'%;4
+176;3;38317;I32;;[Energ y storag e unit 1] [Batte ry pack3 ]Char ge/ Discha rge power;energ_y_storag_e_unit_1_batte_ry_pack3_char_ge_discha_rge_power;0.001000;0.000000;kW;4
+177;3;38319;U16;;[Energ y storag e unit 1] [Batte ry pack3 ]Volta ge;energ_y_storag_e_unit_1_batte_ry_pack3_volta_ge;0.100000;0.000000;V;4
+178;3;38320;I16;;[Energ y storag e unit 1] [Batte ry pack3 ]Curre nt;energ_y_storag_e_unit_1_batte_ry_pack3_curre_nt;0.100000;0.000000;A;4
+179;3;38322;U32;;[Energ y storag e unit 1] [Batte ry pack3 ]Total charge;energ_y_storag_e_unit_1_batte_ry_pack3_total_charge;0.010000;0.000000;kWh;4
+180;3;38324;U32;;[Energ y storag e unit 1] [Batte ry pack3 ]Total discha rge;energ_y_storag_e_unit_1_batte_ry_pack3_total_discha_rge;0.010000;0.000000;kWh;4
+181;3;38326_20;STRING;;[Energ y storag e unit 2] [Batte ry pack1 ]SN;energ_y_storag_e_unit_2_batte_ry_pack1_sn;1.000000;0.000000;N/A;4
+182;3;38336_30;STRING;;[Energ y storag e unit 2] [Batte ry pack1 ]Firm ware versio n;energ_y_storag_e_unit_2_batte_ry_pack1_firm_ware_versio_n;1.000000;0.000000;N/A;4
+183;3;38354;U16;;[Energ y storag e unit 2] [Batte ry pack1 ]Work ing status;energ_y_storag_e_unit_2_batte_ry_pack1_work_ing_status;1.000000;0.000000;N/A;4
+184;3;38355;U16;;[Energ y storag e unit 2] [Batte ry pack1 ]SOC;energ_y_storag_e_unit_2_batte_ry_pack1_soc;0.100000;0.000000;'%;4
+185;3;38359;I32;;[Energ y storag e unit 2] [Batte ry pack1 ]Char ge/ Discha rge power;energ_y_storag_e_unit_2_batte_ry_pack1_char_ge_discha_rge_power;0.001000;0.000000;kW;4
+186;3;38361;U16;;[Energ y storag e unit 2] [Batte ry pack1 ]Volta ge;energ_y_storag_e_unit_2_batte_ry_pack1_volta_ge;0.100000;0.000000;V;4
+187;3;38362;I16;;[Energ y storag e unit 2] [Batte ry pack1 ]Curre nt;energ_y_storag_e_unit_2_batte_ry_pack1_curre_nt;0.100000;0.000000;A;4
+188;3;38364;U32;;[Energ y storag e unit 2] [Batte ry pack1 ]Total charge;energ_y_storag_e_unit_2_batte_ry_pack1_total_charge;0.010000;0.000000;kWh;4
+189;3;38366;U32;;[Energ y storag e unit 2] [Batte ry pack1 ]Total discha rge;energ_y_storag_e_unit_2_batte_ry_pack1_total_discha_rge;0.010000;0.000000;kWh;4
+190;3;38368_20;STRING;;[Energ y storag e unit 2] [Batte ry pack2 ]SN;energ_y_storag_e_unit_2_batte_ry_pack2_sn;1.000000;0.000000;N/A;4
+191;3;38378_30;STRING;;[Energ y storag e unit 2] [Batte ry pack2 ]Firm ware versio n;energ_y_storag_e_unit_2_batte_ry_pack2_firm_ware_versio_n;1.000000;0.000000;N/A;4
+192;3;38396;U16;;[Energ y storag e unit 2] [Batte ry pack2 ]Work ing status;energ_y_storag_e_unit_2_batte_ry_pack2_work_ing_status;1.000000;0.000000;N/A;4
+193;3;38397;U16;;[Energ y storag e unit 2] [Batte ry pack2 ]SOC;energ_y_storag_e_unit_2_batte_ry_pack2_soc;0.100000;0.000000;'%;4
+194;3;38401;I32;;[Energ y storag e unit 2] [Batte ry pack2 ]Char ge/ Discha rge power;energ_y_storag_e_unit_2_batte_ry_pack2_char_ge_discha_rge_power;0.001000;0.000000;kW;4
+195;3;38403;U16;;[Energ y storag e unit 2] [Batte ry pack2 ]Volta ge;energ_y_storag_e_unit_2_batte_ry_pack2_volta_ge;0.100000;0.000000;V;4
+196;3;38404;I16;;[Energ y storag e unit 2] [Batte ry pack2 ]Curre nt;energ_y_storag_e_unit_2_batte_ry_pack2_curre_nt;0.100000;0.000000;A;4
+197;3;38406;U32;;[Energ y storag e unit 2] [Batte ry pack2 ]Total charge;energ_y_storag_e_unit_2_batte_ry_pack2_total_charge;0.010000;0.000000;kWh;4
+198;3;38408;U32;;[Energ y storag e unit 2] [Batte ry pack2 ]Total discha rge;energ_y_storag_e_unit_2_batte_ry_pack2_total_discha_rge;0.010000;0.000000;kWh;4
+199;3;38410_20;STRING;;[Energ y storag e unit 2] [Batte ry pack3 ]SN;energ_y_storag_e_unit_2_batte_ry_pack3_sn;1.000000;0.000000;N/A;4
+200;3;38420_30;STRING;;[Energ y storag e unit 2] [Batte ry pack3 ]Firm ware versio n;energ_y_storag_e_unit_2_batte_ry_pack3_firm_ware_versio_n;1.000000;0.000000;N/A;4
+201;3;38438;U16;;[Energ y storag e unit 2] [Batte ry pack3 ]Work ing status;energ_y_storag_e_unit_2_batte_ry_pack3_work_ing_status;1.000000;0.000000;N/A;4
+202;3;38439;U16;;[Energ y storag e unit 2] [Batte ry pack3 ]SOC;energ_y_storag_e_unit_2_batte_ry_pack3_soc;0.100000;0.000000;'%;4
+203;3;38443;I32;;[Energ y storag e unit 2] [Batte ry pack3 ]Char ge/ Discha rge power;energ_y_storag_e_unit_2_batte_ry_pack3_char_ge_discha_rge_power;0.001000;0.000000;kW;4
+204;3;38445;U16;;[Energ y storag e unit 2] [Batte ry pack3 ]Volta ge;energ_y_storag_e_unit_2_batte_ry_pack3_volta_ge;0.100000;0.000000;V;4
+205;3;38446;I16;;[Energ y storag e unit 2] [Batte ry pack3 ]Curre nt;energ_y_storag_e_unit_2_batte_ry_pack3_curre_nt;0.100000;0.000000;A;4
+206;3;38448;U32;;[Energ y storag e unit 2] [Batte ry pack3 ]Total charge;energ_y_storag_e_unit_2_batte_ry_pack3_total_charge;0.010000;0.000000;kWh;4
+207;3;38450;U32;;[Energ y storag e unit 2] [Batte ry pack3 ]Total discha rge;energ_y_storag_e_unit_2_batte_ry_pack3_total_discha_rge;0.010000;0.000000;kWh;4
+208;3;38452;I16;;[Energ y storag e unit 1] [Batte ry pack1 ]Maxi mum tempe rature;energ_y_storag_e_unit_1_batte_ry_pack1_maxi_mum_tempe_rature;0.100000;0.000000;℃;4
+209;3;38453;I16;;[Energ y storag e unit 1] [Batte ry pack1 ]Mini mum tempe rature;energ_y_storag_e_unit_1_batte_ry_pack1_mini_mum_tempe_rature;0.100000;0.000000;℃;4
+210;3;38454;I16;;[Energ y storag e unit 1] [Batte ry pack2 ]Maxi mum tempe rature;energ_y_storag_e_unit_1_batte_ry_pack2_maxi_mum_tempe_rature;0.100000;0.000000;℃;4
+211;3;38455;I16;;[Energ y storag e unit 1] [Batte ry pack2 ]Mini mum tempe rature;energ_y_storag_e_unit_1_batte_ry_pack2_mini_mum_tempe_rature;0.100000;0.000000;℃;4
+212;3;38456;I16;;[Energ y storag e unit 1] [Batte ry pack3 ]Maxi mum tempe rature;energ_y_storag_e_unit_1_batte_ry_pack3_maxi_mum_tempe_rature;0.100000;0.000000;℃;4
+213;3;38457;I16;;[Energ y storag e unit 1] [Batte ry pack3 ]Mini mum tempe rature;energ_y_storag_e_unit_1_batte_ry_pack3_mini_mum_tempe_rature;0.100000;0.000000;℃;4
+214;3;38458;I16;;[Energ y storag e unit 2] [Batte ry pack1 ]Maxi mum tempe rature;energ_y_storag_e_unit_2_batte_ry_pack1_maxi_mum_tempe_rature;0.100000;0.000000;℃;4
+215;3;38459;I16;;[Energ y storag e unit 2] [Batte ry pack1 ]Mini mum tempe rature;energ_y_storag_e_unit_2_batte_ry_pack1_mini_mum_tempe_rature;0.100000;0.000000;℃;4
+216;3;38460;I16;;[Energ y storag e unit 2] [Batte ry pack2 ]Maxi mum tempe rature;energ_y_storag_e_unit_2_batte_ry_pack2_maxi_mum_tempe_rature;0.100000;0.000000;℃;4
+217;3;38461;I16;;[Energ y storag e unit 2] [Batte ry pack2 ]Mini mum tempe rature;energ_y_storag_e_unit_2_batte_ry_pack2_mini_mum_tempe_rature;0.100000;0.000000;℃;4
+218;3;38462;I16;;[Energ y storag e unit 2] [Batte ry pack3 ]Maxi mum tempe rature;energ_y_storag_e_unit_2_batte_ry_pack3_maxi_mum_tempe_rature;0.100000;0.000000;℃;4
+219;3;38463;I16;;[Energ y storag e unit 2] [Batte ry pack3 ]Mini mum tempe rature;energ_y_storag_e_unit_2_batte_ry_pack3_mini_mum_tempe_rature;0.100000;0.000000;℃;4
+220;3;47075;U32;;[Energ y storag e]Max imum chargi ng power;energ_y_storag_emax_imum_chargi_ng_power;1.000000;0.000000;W;1
+221;3;47077;U32;;[Energ y storag e]Max imum discha rging power;energ_y_storag_emax_imum_discha_rging_power;1.000000;0.000000;W;1
+222;3;47081;U16;;[Energ y storag e]Char ging cutoff capaci ty;energ_y_storag_echar_ging_cutoff_capaci_ty;0.100000;0.000000;'%;1
+223;3;47082;U16;;[Energ y storag e] Discha rge cutoff capaci ty;energ_y_storag_e_discha_rge_cutoff_capaci_ty;0.100000;0.000000;'%;1
+224;3;47083;U16;;[Energ y storag e]Forc ed chargi ng and discha rging period;energ_y_storag_eforc_ed_chargi_ng_and_discha_rging_period;1.000000;0.000000;mins;1
+225;3;47084;I32;;[Energ y storag e]Forc ed chargi ng and discha rging power;energ_y_storag_eforc_ed_chargi_ng_and_discha_rging_power;1.000000;0.000000;W;1
+226;3;47086;U16;;[Energ y storag e]Wor king mode settin gs;energ_y_storag_ewor_king_mode_settin_gs;1.000000;0.000000;N/A;1
+227;3;47087;U16;;[Energ y storag e] Charg e from grid Functi on;energ_y_storag_e_charg_e_from_grid_functi_on;1.000000;0.000000;N/A;1
+228;3;47088;U16;;[Energ y storag e] Grid charge cutoff SOC;energ_y_storag_e_grid_charge_cutoff_soc;0.100000;0.000000;'%;1
+229;3;47102;U16;;[Energ y storag e] Backu p power SOC;energ_y_storag_e_backu_p_power_soc;0.100000;0.000000;'%;1
+230;3;47106;U16;;[Energ y storag e] Produ ct model;energ_y_storag_e_produ_ct_model;1.000000;0.000000;N/A;1
+231;3;47244;U32;;[Energ y storag e]Max imum power of charge from grid;energ_y_storag_emax_imum_power_of_charge_from_grid;0.001000;0.000000;kW;1
+232;3;47246;U16;;[Energ y storag e]Forci ble charge / discha rge settin g mode;energ_y_storag_eforci_ble_charge_discha_rge_settin_g_mode;1.000000;0.000000;N/A;1
+233;3;47247;U32;;[Energ y storag e] Forcibl e charge power;energ_y_storag_e_forcibl_e_charge_power;0.001000;0.000000;kW;1
+234;3;47249;U32;;[Energ y storag e] Forcibl e discha rge power;energ_y_storag_e_forcibl_e_discha_rge_power;0.001000;0.000000;kW;1
+235;3;47255;U8;;[Energ y storag e]Tim e of Use chargi ng and discha rging period s;energ_y_storag_etim_e_of_use_chargi_ng_and_discha_rging_period_s;1.000000;0.000000;N/A;1
+236;3;47299;U16;;[Energ y storag e] Excess PV energy use in TOU;energ_y_storag_e_excess_pv_energy_use_in_tou;1.000000;0.000000;N/A;1
+237;3;47415;U16;;Active power contro l mode;active_power_contro_l_mode;1.000000;0.000000;N/A;1
+238;3;47416;I32;;Maxi mum Feed Grid Power (kW);maxi_mum_feed_grid_power_kw;0.001000;0.000000;Kw;1
+239;3;47418;I16;;Maxi mum Feed Grid Power (%);maxi_mum_feed_grid_power;0.100000;0.000000;'%;1
+240;3;47590;U32;;[Dong le] [Plant ]maxi mum charge -from- grid power;dong_le_plant_maxi_mum_charge_from_grid_power;0.001000;0.000000;Kw;1
+241;3;47604;U16;;[Back up]Sw itch to off- grid;back_upsw_itch_to_off_grid;1.000000;0.000000;N/A;1
+242;3;47605;U16;;[Back up] Voltag e in indepe ndent operat ion;back_up_voltag_e_in_indepe_ndent_operat_ion;1.000000;0.000000;V;1
+243;3;37100;U16;;Meter status;meter_status;1.000000;0.000000;N/A;4
+244;3;37101;I32;;Grid voltage (A phase);grid_voltage_a_phase;0.100000;0.000000;V;4
+245;3;37103;I32;;B phase voltage;b_phase_voltage;0.100000;0.000000;V;4
+246;3;37105;I32;;C phase voltage;c_phase_voltage;0.100000;0.000000;V;4
+247;3;37107;I32;;Grid current(A phase);grid_currenta_phase;0.010000;0.000000;A;4
+248;3;37109;I32;;B phase current;b_phase_current;0.010000;0.000000;A;4
+249;3;37111;I32;;C phase current;c_phase_current;0.010000;0.000000;A;4
+250;3;37115;I32;;Reactive power;reactive_power_1;1.000000;0.000000;Var;4
+251;3;37117;I16;;Power factor;power_factor;0.001000;0.000000;NA;4
+252;3;37118;I16;;Grid frequency;grid_frequency;0.010000;0.000000;Hz;4
+253;3;37119;I32;;Positive active electricity;positive_active_electricity;0.010000;0.000000;kWh;4
+254;3;37121;I32;;Reverse active power;reverse_active_power;0.010000;0.000000;kWh;4
+255;3;37123;I32;;Accumulat ed reactive power;accumulat_ed_reactive_power;0.010000;0.000000;kVar h;4
+256;3;37125;U16;;Meter type;meter_type;1.000000;0.000000;N/A;4
+257;3;37126;I32;;A-B line voltage;ab_line_voltage;0.100000;0.000000;V;4
+258;3;37128;I32;;B-C line voltage;bc_line_voltage;0.100000;0.000000;V;4
+259;3;37130;I32;;CA line voltage;ca_line_voltage;0.100000;0.000000;V;4
+260;3;37132;I32;;A phase active power;a_phase_active_power;1.000000;0.000000;W;4
+261;3;37134;I32;;B phase active power;b_phase_active_power;1.000000;0.000000;W;4
+262;3;37136;I32;;C phase active power;c_phase_active_power;1.000000;0.000000;W;4
+263;3;37138;U16;;Meter model detection result;meter_model_detection_result;1.000000;0.000000;N/A;4

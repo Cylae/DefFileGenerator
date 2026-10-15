@@ -1,0 +1,1724 @@
+﻿Modbus;Battery;Robestec;BESS;;;;;;;
+1;4;100;I16;;EMS - PCS real total active power (summary);P_AC;0.1;0;kW;4
+2;4;101;I16;;EMS - PCS real total reactive power (summary);Q_AC;0.1;0;kVar;4
+3;4;102;I16;;EMS - Total volt. (summary);;0.1;0;V;4
+4;4;103;I16;;EMS - Total curr. (summary);;0.1;0;A;4
+5;4;104;U16;;EMS - Total SOC (summary);SOC;1;0;%;4
+6;4;105;I16;;EMS - Battery average temp. (summary);TEMP;1;0;Degr.Celsius;4
+7;4;106;I16;;EMS - Battery max. temp-diff. (summary);;1;0;Degr.Celsius;4
+8;4;107;U16;;EMS - Max. cell volt. (summary);;0.001;0;V;4
+9;4;108;U16;;EMS - Min. cell volt. (summary);;0.001;0;V;4
+10;4;111;U16;;EMS - System status;;1;0;;4
+11;4;200;U16;;BMS Cabinet 1 - Stack SOC;;1;0;%;4
+12;4;201;U16;;BMS Cabinet 1 - Stack SOH;SOH;1;0;%;4
+13;4;202;U16;;BMS Cabinet 1 - Stack Status;;1;0;;4
+14;4;203;I16;;BMS Cabinet 1 - Stack volt.;;0.1;0;V;4
+15;4;204;I16;;BMS Cabinet 1 - Stack curr.;;0.1;0;A;4
+16;4;205;I16;;BMS Cabinet 1 - Max. cell volt.;;0.001;0;V;4
+17;4;206;I16;;BMS Cabinet 1 - Min. cell volt.;;0.001;0;V;4
+18;4;207;I16;;BMS Cabinet 1 - Max. cell temp.;TEMP_CELL;1;0;Degr.Celsius;4
+19;4;208;I16;;BMS Cabinet 1 - Min. cell temp.;;1;0;Degr.Celsius;4
+20;4;209;U16;;BMS Cabinet 1 - Max. cell SOC;;1;0;%;4
+21;4;210;U16;;BMS Cabinet 1 - Min. cell SOC;;1;0;%;4
+22;4;211;U16;;BMS Cabinet 1 - Maximum cell voltage cluster number;;1;0;;4
+23;4;212;U16;;BMS Cabinet 1 - Max. cell volt. cell#;;1;0;;4
+24;4;213;U16;;BMS Cabinet 1 - Minimum cell voltage cluster number;;1;0;;4
+25;4;214;U16;;BMS Cabinet 1 - Min. cell volt. cell#;;1;0;;4
+26;4;215;U16;;BMS Cabinet 1 - Maximum cell temperature cluster number;;1;0;;4
+27;4;216;U16;;BMS Cabinet 1 - Max. cell temp. cell#;;1;0;;4
+28;4;217;U16;;BMS Cabinet 1 - Minimum cell temperature cluster number;;1;0;;4
+29;4;218;U16;;BMS Cabinet 1 - Min. cell temp. cell#;;1;0;;4
+30;4;219;I16;;BMS Cabinet 1 - Allowable CHA curr. (max.);;1;0;A;4
+31;4;220;I16;;BMS Cabinet 1 - Allowable DIS curr. (max.);;1;0;A;4
+32;4;223;U16;;BMS Cabinet 1 - Max. cell volt-diff.;;0.001;0;mA;4
+33;4;224;I16;;BMS Cabinet 1 - Stack power;;1;0;kW;4
+34;4;225;I16;;BMS Cabinet 1 - Allowable CHA power (max.);;1;0;kW;4
+35;4;226;I16;;BMS Cabinet 1 - Allowable DIS power (max.);;1;0;kW;4
+36;4;227;U32;;BMS Cabinet 1 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+37;4;229;U32;;BMS Cabinet 1 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+38;4;250;U16;;BMS Cabinet 2 - Stack SOC;;1;0;%;4
+39;4;251;U16;;BMS Cabinet 2 - Stack SOH;;1;0;%;4
+40;4;252;U16;;BMS Cabinet 2 - Stack Status;;1;0;;4
+41;4;253;I16;;BMS Cabinet 2 - Stack volt.;;0.1;0;V;4
+42;4;254;I16;;BMS Cabinet 2 - Stack curr.;;0.1;0;A;4
+43;4;255;I16;;BMS Cabinet 2 - Max. cell volt.;;0.001;0;V;4
+44;4;256;I16;;BMS Cabinet 2 - Min. cell volt.;;0.001;0;V;4
+45;4;257;I16;;BMS Cabinet 2 - Max. cell temp.;;1;0;Degr.Celsius;4
+46;4;258;I16;;BMS Cabinet 2 - Min. cell temp.;;1;0;Degr.Celsius;4
+47;4;259;U16;;BMS Cabinet 2 - Max. cell SOC;;1;0;%;4
+48;4;260;U16;;BMS Cabinet 2 - Min. cell SOC;;1;0;%;4
+49;4;261;U16;;BMS Cabinet 2 - Maximum cell voltage cluster number;;1;0;;4
+50;4;262;U16;;BMS Cabinet 2 - Max. cell volt. cell#;;1;0;;4
+51;4;263;U16;;BMS Cabinet 2 - Minimum cell voltage cluster number;;1;0;;4
+52;4;264;U16;;BMS Cabinet 2 - Min. cell volt. cell#;;1;0;;4
+53;4;265;U16;;BMS Cabinet 2 - Maximum cell temperature cluster number;;1;0;;4
+54;4;266;U16;;BMS Cabinet 2 - Max. cell temp. cell#;;1;0;;4
+55;4;267;U16;;BMS Cabinet 2 - Minimum cell temperature cluster number;;1;0;;4
+56;4;268;U16;;BMS Cabinet 2 - Min. cell temp. cell#;;1;0;;4
+57;4;269;I16;;BMS Cabinet 2 - Allowable CHA curr. (max.);;1;0;A;4
+58;4;270;I16;;BMS Cabinet 2 - Allowable DIS curr. (max.);;1;0;A;4
+59;4;273;U16;;BMS Cabinet 2 - Max. cell volt-diff.;;0.001;0;mA;4
+60;4;274;I16;;BMS Cabinet 2 - Stack power;;1;0;kW;4
+61;4;275;I16;;BMS Cabinet 2 - Allowable CHA power (max.);;1;0;kW;4
+62;4;276;I16;;BMS Cabinet 2 - Allowable DIS power (max.);;1;0;kW;4
+63;4;277;U32;;BMS Cabinet 2 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+64;4;279;U32;;BMS Cabinet 2 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+65;4;300;U16;;BMS Cabinet 3 - Stack SOC;;1;0;%;4
+66;4;301;U16;;BMS Cabinet 3 - Stack SOH;;1;0;%;4
+67;4;302;U16;;BMS Cabinet 3 - Stack Status;;1;0;;4
+68;4;303;I16;;BMS Cabinet 3 - Stack volt.;;0.1;0;V;4
+69;4;304;I16;;BMS Cabinet 3 - Stack curr.;;0.1;0;A;4
+70;4;305;I16;;BMS Cabinet 3 - Max. cell volt.;;0.001;0;V;4
+71;4;306;I16;;BMS Cabinet 3 - Min. cell volt.;;0.001;0;V;4
+72;4;307;I16;;BMS Cabinet 3 - Max. cell temp.;;1;0;Degr.Celsius;4
+73;4;308;I16;;BMS Cabinet 3 - Min. cell temp.;;1;0;Degr.Celsius;4
+74;4;309;U16;;BMS Cabinet 3 - Max. cell SOC;;1;0;%;4
+75;4;310;U16;;BMS Cabinet 3 - Min. cell SOC;;1;0;%;4
+76;4;311;U16;;BMS Cabinet 3 - Maximum cell voltage cluster number;;1;0;;4
+77;4;312;U16;;BMS Cabinet 3 - Max. cell volt. cell#;;1;0;;4
+78;4;313;U16;;BMS Cabinet 3 - Minimum cell voltage cluster number;;1;0;;4
+79;4;314;U16;;BMS Cabinet 3 - Min. cell volt. cell#;;1;0;;4
+80;4;315;U16;;BMS Cabinet 3 - Maximum cell temperature cluster number;;1;0;;4
+81;4;316;U16;;BMS Cabinet 3 - Max. cell temp. cell#;;1;0;;4
+82;4;317;U16;;BMS Cabinet 3 - Minimum cell temperature cluster number;;1;0;;4
+83;4;318;U16;;BMS Cabinet 3 - Min. cell temp. cell#;;1;0;;4
+84;4;319;I16;;BMS Cabinet 3 - Allowable CHA curr. (max.);;1;0;A;4
+85;4;320;I16;;BMS Cabinet 3 - Allowable DIS curr. (max.);;1;0;A;4
+86;4;323;U16;;BMS Cabinet 3 - Max. cell volt-diff.;;0.001;0;mA;4
+87;4;324;I16;;BMS Cabinet 3 - Stack power;;1;0;kW;4
+88;4;325;I16;;BMS Cabinet 3 - Allowable CHA power (max.);;1;0;kW;4
+89;4;326;I16;;BMS Cabinet 3 - Allowable DIS power (max.);;1;0;kW;4
+90;4;327;U32;;BMS Cabinet 3 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+91;4;329;U32;;BMS Cabinet 3 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+92;4;350;U16;;BMS Cabinet 4 - Stack SOC;;1;0;%;4
+93;4;351;U16;;BMS Cabinet 4 - Stack SOH;;1;0;%;4
+94;4;352;U16;;BMS Cabinet 4 - Stack Status;;1;0;;4
+95;4;353;I16;;BMS Cabinet 4 - Stack volt.;;0.1;0;V;4
+96;4;354;I16;;BMS Cabinet 4 - Stack curr.;;0.1;0;A;4
+97;4;355;I16;;BMS Cabinet 4 - Max. cell volt.;;0.001;0;V;4
+98;4;356;I16;;BMS Cabinet 4 - Min. cell volt.;;0.001;0;V;4
+99;4;357;I16;;BMS Cabinet 4 - Max. cell temp.;;1;0;Degr.Celsius;4
+100;4;358;I16;;BMS Cabinet 4 - Min. cell temp.;;1;0;Degr.Celsius;4
+101;4;359;U16;;BMS Cabinet 4 - Max. cell SOC;;1;0;%;4
+102;4;360;U16;;BMS Cabinet 4 - Min. cell SOC;;1;0;%;4
+103;4;361;U16;;BMS Cabinet 4 - Maximum cell voltage cluster number;;1;0;;4
+104;4;362;U16;;BMS Cabinet 4 - Max. cell volt. cell#;;1;0;;4
+105;4;363;U16;;BMS Cabinet 4 - Minimum cell voltage cluster number;;1;0;;4
+106;4;364;U16;;BMS Cabinet 4 - Min. cell volt. cell#;;1;0;;4
+107;4;365;U16;;BMS Cabinet 4 - Maximum cell temperature cluster number;;1;0;;4
+108;4;366;U16;;BMS Cabinet 4 - Max. cell temp. cell#;;1;0;;4
+109;4;367;U16;;BMS Cabinet 4 - Minimum cell temperature cluster number;;1;0;;4
+110;4;368;U16;;BMS Cabinet 4 - Min. cell temp. cell#;;1;0;;4
+111;4;369;I16;;BMS Cabinet 4 - Allowable CHA curr. (max.);;1;0;A;4
+112;4;370;I16;;BMS Cabinet 4 - Allowable DIS curr. (max.);;1;0;A;4
+113;4;373;U16;;BMS Cabinet 4 - Max. cell volt-diff.;;0.001;0;mA;4
+114;4;374;I16;;BMS Cabinet 4 - Stack power;;1;0;kW;4
+115;4;375;I16;;BMS Cabinet 4 - Allowable CHA power (max.);;1;0;kW;4
+116;4;376;I16;;BMS Cabinet 4 - Allowable DIS power (max.);;1;0;kW;4
+117;4;377;U32;;BMS Cabinet 4 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+118;4;379;U32;;BMS Cabinet 4 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+119;4;400;U16;;BMS Cabinet 5 - Stack SOC;;1;0;%;4
+120;4;401;U16;;BMS Cabinet 5 - Stack SOH;;1;0;%;4
+121;4;402;U16;;BMS Cabinet 5 - Stack Status;;1;0;;4
+122;4;403;I16;;BMS Cabinet 5 - Stack volt.;;0.1;0;V;4
+123;4;404;I16;;BMS Cabinet 5 - Stack curr.;;0.1;0;A;4
+124;4;405;I16;;BMS Cabinet 5 - Max. cell volt.;;0.001;0;V;4
+125;4;406;I16;;BMS Cabinet 5 - Min. cell volt.;;0.001;0;V;4
+126;4;407;I16;;BMS Cabinet 5 - Max. cell temp.;;1;0;Degr.Celsius;4
+127;4;408;I16;;BMS Cabinet 5 - Min. cell temp.;;1;0;Degr.Celsius;4
+128;4;409;U16;;BMS Cabinet 5 - Max. cell SOC;;1;0;%;4
+129;4;410;U16;;BMS Cabinet 5 - Min. cell SOC;;1;0;%;4
+130;4;411;U16;;BMS Cabinet 5 - Maximum cell voltage cluster number;;1;0;;4
+131;4;412;U16;;BMS Cabinet 5 - Max. cell volt. cell#;;1;0;;4
+132;4;413;U16;;BMS Cabinet 5 - Minimum cell voltage cluster number;;1;0;;4
+133;4;414;U16;;BMS Cabinet 5 - Min. cell volt. cell#;;1;0;;4
+134;4;415;U16;;BMS Cabinet 5 - Maximum cell temperature cluster number;;1;0;;4
+135;4;416;U16;;BMS Cabinet 5 - Max. cell temp. cell#;;1;0;;4
+136;4;417;U16;;BMS Cabinet 5 - Minimum cell temperature cluster number;;1;0;;4
+137;4;418;U16;;BMS Cabinet 5 - Min. cell temp. cell#;;1;0;;4
+138;4;419;I16;;BMS Cabinet 5 - Allowable CHA curr. (max.);;1;0;A;4
+139;4;420;I16;;BMS Cabinet 5 - Allowable DIS curr. (max.);;1;0;A;4
+140;4;423;U16;;BMS Cabinet 5 - Max. cell volt-diff.;;0.001;0;mA;4
+141;4;424;I16;;BMS Cabinet 5 - Stack power;;1;0;kW;4
+142;4;425;I16;;BMS Cabinet 5 - Allowable CHA power (max.);;1;0;kW;4
+143;4;426;I16;;BMS Cabinet 5 - Allowable DIS power (max.);;1;0;kW;4
+144;4;427;U32;;BMS Cabinet 5 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+145;4;429;U32;;BMS Cabinet 5 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+146;4;2200;U16;;BMS Rack 1 - Rack SOC;;1;0;%;4
+147;4;2201;U16;;BMS Rack 1 - Rack SOH;;1;0;%;4
+148;4;2202;U16;;BMS Rack 1 - Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1;0;;4
+149;4;2203;I16;;BMS Rack 1 - Rack volt.;;0.1;0;V;4
+150;4;2204;I16;;BMS Rack 1 - Rack curr.;;0.1;0;A;4
+151;4;2205;I16;;BMS Rack 1 - Max. cell volt.;;0.001;0;V;4
+152;4;2206;I16;;BMS Rack 1 - Min. cell volt.;;0.001;0;V;4
+153;4;2207;I16;;BMS Rack 1 - Max. cell temp.;;1;0;Degr.Celsius;4
+154;4;2208;I16;;BMS Rack 1 - Min. cell temp.;;1;0;Degr.Celsius;4
+155;4;2209;U16;;BMS Rack 1 - Max. cell SOC;;1;0;%;4
+156;4;2210;U16;;BMS Rack 1 - Min. cell SOC;;1;0;%;4
+157;4;2212;U16;;BMS Rack 1 - Max. cell volt. cell#;;1;0;;4
+158;4;2214;U16;;BMS Rack 1 - Min. cell volt. cell#;;1;0;;4
+159;4;2216;U16;;BMS Rack 1 - Max. cell temp. cell#;;1;0;;4
+160;4;2218;U16;;BMS Rack 1 - Min. cell temp. cell#;;1;0;;4
+161;4;2219;I16;;BMS Rack 1 - Allowable CHA curr. (max.);;0.1;0;A;4
+162;4;2220;I16;;BMS Rack 1 - Allowable DIS curr. (max.);;0.1;0;A;4
+163;4;2221;U16;;BMS Rack 1 - Number of cell in rack;;1;0;;4
+164;4;2222;U16;;BMS Rack 1 - Number of temp. DAQ point in rack;;1;0;;4
+165;4;2223;U16;;BMS Rack 1 - Max. cell volt-diff.;;0.001;0;;4
+166;4;2224;I16;;BMS Rack 1 - Rack power;;1;0;kW;4
+167;4;2225;I16;;BMS Rack 1 - Allowable CHA power (max.);;1;0;kW;4
+168;4;2226;I16;;BMS Rack 1 - Allowable DIS power (max.);;1;0;kW;4
+169;4;2227;U32;;BMS Rack 1 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+170;4;2229;U32;;BMS Rack 1 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+171;4;2250;U16;;BMS Rack 2 - Rack SOC;;1;0;%;4
+172;4;2251;U16;;BMS Rack 2 - Rack SOH;;1;0;%;4
+173;4;2252;U16;;BMS Rack 2 - Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1;0;;4
+174;4;2253;I16;;BMS Rack 2 - Rack volt.;;0.1;0;V;4
+175;4;2254;I16;;BMS Rack 2 - Rack curr.;;0.1;0;A;4
+176;4;2255;I16;;BMS Rack 2 - Max. cell volt.;;0.001;0;V;4
+177;4;2256;I16;;BMS Rack 2 - Min. cell volt.;;0.001;0;V;4
+178;4;2257;I16;;BMS Rack 2 - Max. cell temp.;;1;0;Degr.Celsius;4
+179;4;2258;I16;;BMS Rack 2 - Min. cell temp.;;1;0;Degr.Celsius;4
+180;4;2259;U16;;BMS Rack 2 - Max. cell SOC;;1;0;%;4
+181;4;2260;U16;;BMS Rack 2 - Min. cell SOC;;1;0;%;4
+182;4;2262;U16;;BMS Rack 2 - Max. cell volt. cell#;;1;0;;4
+183;4;2264;U16;;BMS Rack 2 - Min. cell volt. cell#;;1;0;;4
+184;4;2266;U16;;BMS Rack 2 - Max. cell temp. cell#;;1;0;;4
+185;4;2268;U16;;BMS Rack 2 - Min. cell temp. cell#;;1;0;;4
+186;4;2269;I16;;BMS Rack 2 - Allowable CHA curr. (max.);;0.1;0;A;4
+187;4;2270;I16;;BMS Rack 2 - Allowable DIS curr. (max.);;0.1;0;A;4
+188;4;2271;U16;;BMS Rack 2 - Number of cell in rack;;1;0;;4
+189;4;2272;U16;;BMS Rack 2 - Number of temp. DAQ point in rack;;1;0;;4
+190;4;2273;U16;;BMS Rack 2 - Max. cell volt-diff.;;0.001;0;;4
+191;4;2274;I16;;BMS Rack 2 - Rack power;;1;0;kW;4
+192;4;2275;I16;;BMS Rack 2 - Allowable CHA power (max.);;1;0;kW;4
+193;4;2276;I16;;BMS Rack 2 - Allowable DIS power (max.);;1;0;kW;4
+194;4;2277;U32;;BMS Rack 2 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+195;4;2279;U32;;BMS Rack 2 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+196;4;2300;U16;;BMS Rack 3 - Rack SOC;;1;0;%;4
+197;4;2301;U16;;BMS Rack 3 - Rack SOH;;1;0;%;4
+198;4;2302;U16;;BMS Rack 3 - Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1;0;;4
+199;4;2303;I16;;BMS Rack 3 - Rack volt.;;0.1;0;V;4
+200;4;2304;I16;;BMS Rack 3 - Rack curr.;;0.1;0;A;4
+201;4;2305;I16;;BMS Rack 3 - Max. cell volt.;;0.001;0;V;4
+202;4;2306;I16;;BMS Rack 3 - Min. cell volt.;;0.001;0;V;4
+203;4;2307;I16;;BMS Rack 3 - Max. cell temp.;;1;0;Degr.Celsius;4
+204;4;2308;I16;;BMS Rack 3 - Min. cell temp.;;1;0;Degr.Celsius;4
+205;4;2309;U16;;BMS Rack 3 - Max. cell SOC;;1;0;%;4
+206;4;2310;U16;;BMS Rack 3 - Min. cell SOC;;1;0;%;4
+207;4;2312;U16;;BMS Rack 3 - Max. cell volt. cell#;;1;0;;4
+208;4;2314;U16;;BMS Rack 3 - Min. cell volt. cell#;;1;0;;4
+209;4;2316;U16;;BMS Rack 3 - Max. cell temp. cell#;;1;0;;4
+210;4;2318;U16;;BMS Rack 3 - Min. cell temp. cell#;;1;0;;4
+211;4;2319;I16;;BMS Rack 3 - Allowable CHA curr. (max.);;0.1;0;A;4
+212;4;2320;I16;;BMS Rack 3 - Allowable DIS curr. (max.);;0.1;0;A;4
+213;4;2321;U16;;BMS Rack 3 - Number of cell in rack;;1;0;;4
+214;4;2322;U16;;BMS Rack 3 - Number of temp. DAQ point in rack;;1;0;;4
+215;4;2323;U16;;BMS Rack 3 - Max. cell volt-diff.;;0.001;0;;4
+216;4;2324;I16;;BMS Rack 3 - Rack power;;1;0;kW;4
+217;4;2325;I16;;BMS Rack 3 - Allowable CHA power (max.);;1;0;kW;4
+218;4;2326;I16;;BMS Rack 3 - Allowable DIS power (max.);;1;0;kW;4
+219;4;2327;U32;;BMS Rack 3 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+220;4;2329;U32;;BMS Rack 3 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+221;4;2350;U16;;BMS Rack 4 - Rack SOC;;1;0;%;4
+222;4;2351;U16;;BMS Rack 4 - Rack SOH;;1;0;%;4
+223;4;2352;U16;;BMS Rack 4 - Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1;0;;4
+224;4;2353;I16;;BMS Rack 4 - Rack volt.;;0.1;0;V;4
+225;4;2354;I16;;BMS Rack 4 - Rack curr.;;0.1;0;A;4
+226;4;2355;I16;;BMS Rack 4 - Max. cell volt.;;0.001;0;V;4
+227;4;2356;I16;;BMS Rack 4 - Min. cell volt.;;0.001;0;V;4
+228;4;2357;I16;;BMS Rack 4 - Max. cell temp.;;1;0;Degr.Celsius;4
+229;4;2358;I16;;BMS Rack 4 - Min. cell temp.;;1;0;Degr.Celsius;4
+230;4;2359;U16;;BMS Rack 4 - Max. cell SOC;;1;0;%;4
+231;4;2360;U16;;BMS Rack 4 - Min. cell SOC;;1;0;%;4
+232;4;2362;U16;;BMS Rack 4 - Max. cell volt. cell#;;1;0;;4
+233;4;2364;U16;;BMS Rack 4 - Min. cell volt. cell#;;1;0;;4
+234;4;2366;U16;;BMS Rack 4 - Max. cell temp. cell#;;1;0;;4
+235;4;2368;U16;;BMS Rack 4 - Min. cell temp. cell#;;1;0;;4
+236;4;2369;I16;;BMS Rack 4 - Allowable CHA curr. (max.);;0.1;0;A;4
+237;4;2370;I16;;BMS Rack 4 - Allowable DIS curr. (max.);;0.1;0;A;4
+238;4;2371;U16;;BMS Rack 4 - Number of cell in rack;;1;0;;4
+239;4;2372;U16;;BMS Rack 4 - Number of temp. DAQ point in rack;;1;0;;4
+240;4;2373;U16;;BMS Rack 4 - Max. cell volt-diff.;;0.001;0;;4
+241;4;2374;I16;;BMS Rack 4 - Rack power;;1;0;kW;4
+242;4;2375;I16;;BMS Rack 4 - Allowable CHA power (max.);;1;0;kW;4
+243;4;2376;I16;;BMS Rack 4 - Allowable DIS power (max.);;1;0;kW;4
+244;4;2377;U32;;BMS Rack 4 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+245;4;2379;U32;;BMS Rack 4 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+246;4;2400;U16;;BMS Rack 5 - Rack SOC;;1;0;%;4
+247;4;2401;U16;;BMS Rack 5 - Rack SOH;;1;0;%;4
+248;4;2402;U16;;BMS Rack 5 - Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1;0;;4
+249;4;2403;I16;;BMS Rack 5 - Rack volt.;;0.1;0;V;4
+250;4;2404;I16;;BMS Rack 5 - Rack curr.;;0.1;0;A;4
+251;4;2405;I16;;BMS Rack 5 - Max. cell volt.;;0.001;0;V;4
+252;4;2406;I16;;BMS Rack 5 - Min. cell volt.;;0.001;0;V;4
+253;4;2407;I16;;BMS Rack 5 - Max. cell temp.;;1;0;Degr.Celsius;4
+254;4;2408;I16;;BMS Rack 5 - Min. cell temp.;;1;0;Degr.Celsius;4
+255;4;2409;U16;;BMS Rack 5 - Max. cell SOC;;1;0;%;4
+256;4;2410;U16;;BMS Rack 5 - Min. cell SOC;;1;0;%;4
+257;4;2412;U16;;BMS Rack 5 - Max. cell volt. cell#;;1;0;;4
+258;4;2414;U16;;BMS Rack 5 - Min. cell volt. cell#;;1;0;;4
+259;4;2416;U16;;BMS Rack 5 - Max. cell temp. cell#;;1;0;;4
+260;4;2418;U16;;BMS Rack 5 - Min. cell temp. cell#;;1;0;;4
+261;4;2419;I16;;BMS Rack 5 - Allowable CHA curr. (max.);;0.1;0;A;4
+262;4;2420;I16;;BMS Rack 5 - Allowable DIS curr. (max.);;0.1;0;A;4
+263;4;2421;U16;;BMS Rack 5 - Number of cell in rack;;1;0;;4
+264;4;2422;U16;;BMS Rack 5 - Number of temp. DAQ point in rack;;1;0;;4
+265;4;2423;U16;;BMS Rack 5 - Max. cell volt-diff.;;0.001;0;;4
+266;4;2424;I16;;BMS Rack 5 - Rack power;;1;0;kW;4
+267;4;2425;I16;;BMS Rack 5 - Allowable CHA power (max.);;1;0;kW;4
+268;4;2426;I16;;BMS Rack 5 - Allowable DIS power (max.);;1;0;kW;4
+269;4;2427;U32;;BMS Rack 5 - Accumulated rack CHA energy capa.;;1;0;kWh;4
+270;4;2429;U32;;BMS Rack 5 - Accumulated rack DIS energy capa.;;1;0;kWh;4
+271;4;6200;I16;;BMS Cell Module 1 - Celltemperature;;1;0;;4
+272;4;6600;U16;;BMS Cell Module 1 - Cell voltage;;0.001;0;;4
+273;4;7000;U16;;BMS Cell Module 1 - Cell SOC;;1;0;%;4
+274;4;7400;I16;;BMS Cell Module 2 - Celltemperature;;1;0;;4
+275;4;7800;U16;;BMS Cell Module 2 - Cell voltage;;0.001;0;;4
+276;4;8200;U16;;BMS Cell Module 2 - Cell SOC;;1;0;%;4
+277;4;8600;I16;;BMS Cell Module 3 - Celltemperature;;1;0;;4
+278;4;9000;U16;;BMS Cell Module 3 - Cell voltage;;0.001;0;;4
+279;4;9400;U16;;BMS Cell Module 3 - Cell SOC;;1;0;%;4
+280;4;9800;I16;;BMS Cell Module 4 - Celltemperature;;1;0;;4
+281;4;10200;U16;;BMS Cell Module 4 - Cell voltage;;0.001;0;;4
+282;4;10600;U16;;BMS Cell Module 4 - Cell SOC;;1;0;%;4
+283;4;11000;I16;;BMS Cell Module 5 - Celltemperature;;1;0;;4
+284;4;11400;U16;;BMS Cell Module 5 - Cell voltage;;0.001;0;;4
+285;4;11800;U16;;BMS Cell Module 5 - Cell SOC;;1;0;%;4
+286;4;55050;U32;;Meter 1 - Frequency;FREQ;0.01;0;Hz;4
+287;4;55052;U32;;Meter 1 - Phase-A volt.;;0.1;0;;4
+288;4;55054;U32;;Meter 1 - Phase-B volt.;;0.1;0;;4
+289;4;55056;U32;;Meter 1 - Phase-C volt.;;0.1;0;;4
+290;4;55058;I32;;Meter 1 - Phase-A curr.;;0.01;0;;4
+291;4;55060;I32;;Meter 1 - Phase-B curr.;;0.01;0;;4
+292;4;55062;I32;;Meter 1 - Phase-C curr.;;0.01;0;;4
+293;4;55064;U32;;Meter 1 - A-B line volt.;;0.1;0;;4
+294;4;55066;U32;;Meter 1 - C-B line volt.;;0.1;0;;4
+295;4;55068;U32;;Meter 1 - A-C line volt.;;0.1;0;;4
+296;4;55070;I32;;Meter 1 - Phase-A active power;;0.001;0;kW;4
+297;4;55072;I32;;Meter 1 - Phase-B active power;;0.001;0;kW;4
+298;4;55074;I32;;Meter 1 - Phase-C active power;;0.001;0;kW;4
+299;4;55076;I32;;Meter 1 - Total active power;;0.001;0;kW;4
+300;4;55078;I32;;Meter 1 - Phase-A reactive power;;0.001;0;kVar;4
+301;4;55080;I32;;Meter 1 - Phase-B reactive power;;0.001;0;kVar;4
+302;4;55082;I32;;Meter 1 - Phase-C reactive power;;0.001;0;kVar;4
+303;4;55084;I32;;Meter 1 - Total reactive power;;0.001;0;kVar;4
+304;4;55086;U32;;Meter 1 - Phase-A apparent power;S_AC;0.001;0;kVA;4
+305;4;55088;U32;;Meter 1 - Phase-B apparent power;;0.001;0;kVA;4
+306;4;55090;U32;;Meter 1 - Phase-C apparent power;;0.001;0;kVA;4
+307;4;55092;U32;;Meter 1 - Total apparent power;;0.001;0;kVA;4
+308;4;55094;I16;;Meter 1 - Phase-A PF;;0.001;0;;4
+309;4;55095;I16;;Meter 1 - Phase-B PF;;0.001;0;;4
+310;4;55096;I16;;Meter 1 - Phase-C PF;;0.001;0;;4
+311;4;55097;U16;;Meter 1 - Total PF;;0.001;0;;4
+312;4;55098;U32;;Meter 1 - Combined Total Active Energy;E_TOT;0.01;0;kWh;4
+313;4;55100;U32;;Meter 1 - Curr. combination total reactive electrical energy;;0.01;0;kWh;4
+314;4;55102;U32;;Meter 1 - Import Peak Active Energy;E_IMP;0.01;0;kWh;4
+315;4;55104;U32;;Meter 1 - Import Shoulder Active Energy;;0.01;0;kWh;4
+316;4;55106;U32;;Meter 1 - Import Flat Active Energy;;0.01;0;kWh;4
+317;4;55108;U32;;Meter 1 - Import Valley Active Energy;;0.01;0;kWh;4
+318;4;55110;U32;;Meter 1 - Export Peak Active Energy;E_EXP;0.01;0;kWh;4
+319;4;55112;U32;;Meter 1 - Export Shoulder Active Energy;;0.01;0;kWh;4
+320;4;55114;U32;;Meter 1 - Export Flat Active Energy;;0.01;0;kWh;4
+321;4;55116;U32;;Meter 1 - Export Valley Active Energy;;0.01;0;kWh;4
+322;4;55118;U32;;Meter 1 - Import Total Active Energy;;0.01;0;kWh;4
+323;4;55120;U32;;Meter 1 - Export Total Active Energy;;0.01;0;kWh;4
+324;4;55150;U32;;Meter 2 - Frequency;;0.01;0;Hz;4
+325;4;55152;U32;;Meter 2 - Phase-A volt.;;0.1;0;;4
+326;4;55154;U32;;Meter 2 - Phase-B volt.;;0.1;0;;4
+327;4;55156;U32;;Meter 2 - Phase-C volt.;;0.1;0;;4
+328;4;55158;I32;;Meter 2 - Phase-A curr.;;0.01;0;;4
+329;4;55160;I32;;Meter 2 - Phase-B curr.;;0.01;0;;4
+330;4;55162;I32;;Meter 2 - Phase-C curr.;;0.01;0;;4
+331;4;55164;U32;;Meter 2 - Line-volt. UAB;;0.1;0;;4
+332;4;55166;U32;;Meter 2 - Line-volt. UBC;;0.1;0;;4
+333;4;55168;U32;;Meter 2 - Line-volt. UCA;;0.1;0;;4
+334;4;55170;I32;;Meter 2 - Phase-A active power;;0.001;0;kW;4
+335;4;55172;I32;;Meter 2 - Phase-B active power;;0.001;0;kW;4
+336;4;55174;I32;;Meter 2 - Phase-C active power;;0.001;0;kW;4
+337;4;55176;I32;;Meter 2 - Total active power;;0.001;0;kW;4
+338;4;55178;I32;;Meter 2 - Phase-A reactive power;;0.001;0;kVar;4
+339;4;55180;I32;;Meter 2 - Phase-B reactive power;;0.001;0;kVar;4
+340;4;55182;I32;;Meter 2 - Phase-C reactive power;;0.001;0;kVar;4
+341;4;55184;I32;;Meter 2 - Total reactive power;;0.001;0;kVar;4
+342;4;55186;U32;;Meter 2 - Phase-A apparent power;;0.001;0;kVA;4
+343;4;55188;U32;;Meter 2 - Phase-B apparent power;;0.001;0;kVA;4
+344;4;55190;U32;;Meter 2 - Phase-C apparent power;;0.001;0;kVA;4
+345;4;55192;U32;;Meter 2 - Total apparent power;;0.001;0;kVA;4
+346;4;55194;I16;;Meter 2 - Phase-A PF;;0.001;0;;4
+347;4;55195;I16;;Meter 2 - Phase-B PF;;0.001;0;;4
+348;4;55196;I16;;Meter 2 - Phase-C PF;;0.001;0;;4
+349;4;55197;U16;;Meter 2 - Total PF;;0.001;0;;4
+350;4;55198;U32;;Meter 2 - Combined Total Active Energy;;0.01;0;kWh;4
+351;4;55200;U32;;Meter 2 - Curr. combination total reactive electrical energy;;0.01;0;kWh;4
+352;4;55202;U32;;Meter 2 - Import Peak Active Energy;;0.01;0;kWh;4
+353;4;55204;U32;;Meter 2 - Import Shoulder Active Energy;;0.01;0;kWh;4
+354;4;55206;U32;;Meter 2 - Import Flat Active Energy;;0.01;0;kWh;4
+355;4;55208;U32;;Meter 2 - Import Valley Active Energy;;0.01;0;kWh;4
+356;4;55210;U32;;Meter 2 - Export Peak Active Energy;;0.01;0;kWh;4
+357;4;55212;U32;;Meter 2 - Export Shoulder Active Energy;;0.01;0;kWh;4
+358;4;55214;U32;;Meter 2 - Export Flat Active Energy;;0.01;0;kWh;4
+359;4;55216;U32;;Meter 2 - Export Valley Active Energy;;0.01;0;kWh;4
+360;4;55218;U32;;Meter 2 - Import Total Active Energy;;0.01;0;kWh;4
+361;4;55220;U32;;Meter 2 - Export Total Active Energy;;0.01;0;kWh;4
+362;4;56000;U16;;PCS 1 - Operational state;;1;0;;4
+363;4;56001;U16;;PCS 1 - Grid-on/off status;;1;0;;4
+364;4;56002;I16;;PCS 1 - Input curr.;;0.1;0;;4
+365;4;56003;U16;;PCS 1 - Input volt.;;0.1;0;V;4
+366;4;56004;I16;;PCS 1 - Input power;;0.1;0;;4
+367;4;56005;U16;;PCS 1 - Phase-A volt.;;0.1;0;V;4
+368;4;56006;U16;;PCS 1 - Phase-B volt.;;0.1;0;V;4
+369;4;56007;U16;;PCS 1 - Phase-C volt.;;0.1;0;V;4
+370;4;56008;I16;;PCS 1 - Phase-A curr.;;0.1;0;A;4
+371;4;56009;I16;;PCS 1 - Phase-B curr.;;0.1;0;A;4
+372;4;56010;I16;;PCS 1 - Phase-C curr.;;0.1;0;A;4
+373;4;56011;I16;;PCS 1 - Output active power phase-A;;0.1;0;kW;4
+374;4;56012;I16;;PCS 1 - Output active power phase-B;;0.1;0;kW;4
+375;4;56013;I16;;PCS 1 - Output active power phase-C;;0.1;0;kW;4
+376;4;56014;I16;;PCS 1 - Total output active power;;0.1;0;;4
+377;4;56016;I16;;PCS 1 - Output reactive power phase-A;;0.1;0;kVar;4
+378;4;56017;I16;;PCS 1 - Output reactive power phase-B;;0.1;0;kVar;4
+379;4;56018;I16;;PCS 1 - Output reactive power phase-C;;0.1;0;kVar;4
+380;4;56019;I16;;PCS 1 - Total output reactive power;;0.1;0;kVar;4
+381;4;56020;U16;;PCS 1 - Output apparent power phase-A;;0.1;0;kVA;4
+382;4;56021;U16;;PCS 1 - Output apparent power phase-B;;0.1;0;kVA;4
+383;4;56022;U16;;PCS 1 - Output apparent power phase-C;;0.1;0;kVA;4
+384;4;56023;U16;;PCS 1 - Total output apparent power;;0.1;0;kVA;4
+385;4;56024;I16;;PCS 1 - Total output PF;;0.01;0;;4
+386;4;56025;U16;;PCS 1 - Frequency;;0.01;0;Hz;4
+387;4;56350;U16;;Liquid Cooling 1 - Curr. mode;;1;0;;4
+388;4;56351;U16;;Liquid Cooling 1 - Pump operating status;;1;0;;4
+389;4;56352;U16;;Liquid Cooling 1 - 1#Compressor status;;1;0;;4
+390;4;56353;U16;;Liquid Cooling 1 - Electrical heater operation status;;1;0;;4
+391;4;56355;I16;;Liquid Cooling 1 - Water outlet temp.;;0.1;0;;4
+392;4;56356;I16;;Liquid Cooling 1 - Water Return Temperature;;0.1;0;;4
+393;4;56357;U16;;Liquid Cooling 1 - Water outlet pressure;PRESSURE;0.01;0;;4
+394;4;56358;U16;;Liquid Cooling 1 - Return water pressure;;0.01;0;;4
+395;4;56450;U16;;Dryer 1 - Temperature alarm upper limit value;;0.1;0;;4
+396;4;56451;I16;;Dryer 1 - Temperature alarm lower limit value;;0.1;0;;4
+397;4;56452;U16;;Dryer 1 - Humidity control start value;HUMIDITY;0.1;0;;4
+398;4;56453;U16;;Dryer 1 - Humidity control stop value;;0.1;0;%RH;4
+399;4;56455;I16;;Dryer 1 - Temperature control stop value;;0.1;0;;4
+400;4;56456;I16;;Dryer 1 - Temperature control start value;;0.1;0;;4
+401;4;57000;U16;;PCS 2 - Operational state;;1;0;;4
+402;4;57001;U16;;PCS 2 - Grid-on/off status;;1;0;;4
+403;4;57002;I16;;PCS 2 - Input curr.;;0.1;0;;4
+404;4;57003;U16;;PCS 2 - Input volt.;;0.1;0;V;4
+405;4;57004;I16;;PCS 2 - Input power;;0.1;0;;4
+406;4;57005;U16;;PCS 2 - Phase-A volt.;;0.1;0;V;4
+407;4;57006;U16;;PCS 2 - Phase-B volt.;;0.1;0;V;4
+408;4;57007;U16;;PCS 2 - Phase-C volt.;;0.1;0;V;4
+409;4;57008;I16;;PCS 2 - Phase-A curr.;;0.1;0;A;4
+410;4;57009;I16;;PCS 2 - Phase-B curr.;;0.1;0;A;4
+411;4;57010;I16;;PCS 2 - Phase-C curr.;;0.1;0;A;4
+412;4;57011;I16;;PCS 2 - Output active power phase-A;;0.1;0;kW;4
+413;4;57012;I16;;PCS 2 - Output active power phase-B;;0.1;0;kW;4
+414;4;57013;I16;;PCS 2 - Output active power phase-C;;0.1;0;kW;4
+415;4;57014;I16;;PCS 2 - Total output active power;;0.1;0;;4
+416;4;57016;I16;;PCS 2 - Output reactive power phase-A;;0.1;0;kVar;4
+417;4;57017;I16;;PCS 2 - Output reactive power phase-B;;0.1;0;kVar;4
+418;4;57018;I16;;PCS 2 - Output reactive power phase-C;;0.1;0;kVar;4
+419;4;57019;I16;;PCS 2 - Total output reactive power;;0.1;0;kVar;4
+420;4;57020;U16;;PCS 2 - Output apparent power phase-A;;0.1;0;kVA;4
+421;4;57021;U16;;PCS 2 - Output apparent power phase-B;;0.1;0;kVA;4
+422;4;57022;U16;;PCS 2 - Output apparent power phase-C;;0.1;0;kVA;4
+423;4;57023;U16;;PCS 2 - Total output apparent power;;0.1;0;kVA;4
+424;4;57024;I16;;PCS 2 - Total output PF;;0.01;0;;4
+425;4;57025;U16;;PCS 2 - Frequency;;0.01;0;Hz;4
+426;4;57350;U16;;Liquid Cooling 2 - Curr. mode;;1;0;;4
+427;4;57351;U16;;Liquid Cooling 2 - Pump operating status;;1;0;;4
+428;4;57352;U16;;Liquid Cooling 2 - 1#Compressor status;;1;0;;4
+429;4;57353;U16;;Liquid Cooling 2 - Electrical heater operation status;;1;0;;4
+430;4;57355;I16;;Liquid Cooling 2 - Water outlet temp.;;0.1;0;;4
+431;4;57356;I16;;Liquid Cooling 2 - Water Return Temperature;;0.1;0;;4
+432;4;57357;U16;;Liquid Cooling 2 - Water outlet pressure;;0.01;0;;4
+433;4;57358;U16;;Liquid Cooling 2 - Return water pressure;;0.01;0;;4
+434;4;57450;U16;;Dryer 2 - Temperature alarm upper limit value;;0.1;0;;4
+435;4;57451;I16;;Dryer 2 - Temperature alarm lower limit value;;0.1;0;;4
+436;4;57452;U16;;Dryer 2 - Humidity control start value;;0.1;0;;4
+437;4;57453;U16;;Dryer 2 - Humidity control stop value;;0.1;0;%RH;4
+438;4;57455;I16;;Dryer 2 - Temperature control stop value;;0.1;0;;4
+439;4;57456;I16;;Dryer 2 - Temperature control start value;;0.1;0;;4
+440;4;58000;U16;;PCS 3 - Operational state;;1;0;;4
+441;4;58001;U16;;PCS 3 - Grid-on/off status;;1;0;;4
+442;4;58002;I16;;PCS 3 - Input curr.;;0.1;0;;4
+443;4;58003;U16;;PCS 3 - Input volt.;;0.1;0;V;4
+444;4;58004;I16;;PCS 3 - Input power;;0.1;0;;4
+445;4;58005;U16;;PCS 3 - Phase-A volt.;;0.1;0;V;4
+446;4;58006;U16;;PCS 3 - Phase-B volt.;;0.1;0;V;4
+447;4;58007;U16;;PCS 3 - Phase-C volt.;;0.1;0;V;4
+448;4;58008;I16;;PCS 3 - Phase-A curr.;;0.1;0;A;4
+449;4;58009;I16;;PCS 3 - Phase-B curr.;;0.1;0;A;4
+450;4;58010;I16;;PCS 3 - Phase-C curr.;;0.1;0;A;4
+451;4;58011;I16;;PCS 3 - Output active power phase-A;;0.1;0;kW;4
+452;4;58012;I16;;PCS 3 - Output active power phase-B;;0.1;0;kW;4
+453;4;58013;I16;;PCS 3 - Output active power phase-C;;0.1;0;kW;4
+454;4;58014;I16;;PCS 3 - Total output active power;;0.1;0;;4
+455;4;58016;I16;;PCS 3 - Output reactive power phase-A;;0.1;0;kVar;4
+456;4;58017;I16;;PCS 3 - Output reactive power phase-B;;0.1;0;kVar;4
+457;4;58018;I16;;PCS 3 - Output reactive power phase-C;;0.1;0;kVar;4
+458;4;58019;I16;;PCS 3 - Total output reactive power;;0.1;0;kVar;4
+459;4;58020;U16;;PCS 3 - Output apparent power phase-A;;0.1;0;kVA;4
+460;4;58021;U16;;PCS 3 - Output apparent power phase-B;;0.1;0;kVA;4
+461;4;58022;U16;;PCS 3 - Output apparent power phase-C;;0.1;0;kVA;4
+462;4;58023;U16;;PCS 3 - Total output apparent power;;0.1;0;kVA;4
+463;4;58024;I16;;PCS 3 - Total output PF;;0.01;0;;4
+464;4;58025;U16;;PCS 3 - Frequency;;0.01;0;Hz;4
+465;4;58350;U16;;Liquid Cooling 3 - Curr. mode;;1;0;;4
+466;4;58351;U16;;Liquid Cooling 3 - Pump operating status;;1;0;;4
+467;4;58352;U16;;Liquid Cooling 3 - 1#Compressor status;;1;0;;4
+468;4;58353;U16;;Liquid Cooling 3 - Electrical heater operation status;;1;0;;4
+469;4;58355;I16;;Liquid Cooling 3 - Water outlet temp.;;0.1;0;;4
+470;4;58356;I16;;Liquid Cooling 3 - Water Return Temperature;;0.1;0;;4
+471;4;58357;U16;;Liquid Cooling 3 - Water outlet pressure;;0.01;0;;4
+472;4;58358;U16;;Liquid Cooling 3 - Return water pressure;;0.01;0;;4
+473;4;58450;U16;;Dryer 3 - Temperature alarm upper limit value;;0.1;0;;4
+474;4;58451;I16;;Dryer 3 - Temperature alarm lower limit value;;0.1;0;;4
+475;4;58452;U16;;Dryer 3 - Humidity control start value;;0.1;0;;4
+476;4;58453;U16;;Dryer 3 - Humidity control stop value;;0.1;0;%RH;4
+477;4;58455;I16;;Dryer 3 - Temperature control stop value;;0.1;0;;4
+478;4;58456;I16;;Dryer 3 - Temperature control start value;;0.1;0;;4
+479;4;59000;U16;;PCS 4 - Operational state;;1;0;;4
+480;4;59001;U16;;PCS 4 - Grid-on/off status;;1;0;;4
+481;4;59002;I16;;PCS 4 - Input curr.;;0.1;0;;4
+482;4;59003;U16;;PCS 4 - Input volt.;;0.1;0;V;4
+483;4;59004;I16;;PCS 4 - Input power;;0.1;0;;4
+484;4;59005;U16;;PCS 4 - Phase-A volt.;;0.1;0;V;4
+485;4;59006;U16;;PCS 4 - Phase-B volt.;;0.1;0;V;4
+486;4;59007;U16;;PCS 4 - Phase-C volt.;;0.1;0;V;4
+487;4;59008;I16;;PCS 4 - Phase-A curr.;;0.1;0;A;4
+488;4;59009;I16;;PCS 4 - Phase-B curr.;;0.1;0;A;4
+489;4;59010;I16;;PCS 4 - Phase-C curr.;;0.1;0;A;4
+490;4;59011;I16;;PCS 4 - Output active power phase-A;;0.1;0;kW;4
+491;4;59012;I16;;PCS 4 - Output active power phase-B;;0.1;0;kW;4
+492;4;59013;I16;;PCS 4 - Output active power phase-C;;0.1;0;kW;4
+493;4;59014;I16;;PCS 4 - Total output active power;;0.1;0;;4
+494;4;59016;I16;;PCS 4 - Output reactive power phase-A;;0.1;0;kVar;4
+495;4;59017;I16;;PCS 4 - Output reactive power phase-B;;0.1;0;kVar;4
+496;4;59018;I16;;PCS 4 - Output reactive power phase-C;;0.1;0;kVar;4
+497;4;59019;I16;;PCS 4 - Total output reactive power;;0.1;0;kVar;4
+498;4;59020;U16;;PCS 4 - Output apparent power phase-A;;0.1;0;kVA;4
+499;4;59021;U16;;PCS 4 - Output apparent power phase-B;;0.1;0;kVA;4
+500;4;59022;U16;;PCS 4 - Output apparent power phase-C;;0.1;0;kVA;4
+501;4;59023;U16;;PCS 4 - Total output apparent power;;0.1;0;kVA;4
+502;4;59024;I16;;PCS 4 - Total output PF;;0.01;0;;4
+503;4;59025;U16;;PCS 4 - Frequency;;0.01;0;Hz;4
+504;4;59350;U16;;Liquid Cooling 4 - Curr. mode;;1;0;;4
+505;4;59351;U16;;Liquid Cooling 4 - Pump operating status;;1;0;;4
+506;4;59352;U16;;Liquid Cooling 4 - 1#Compressor status;;1;0;;4
+507;4;59353;U16;;Liquid Cooling 4 - Electrical heater operation status;;1;0;;4
+508;4;59355;I16;;Liquid Cooling 4 - Water outlet temp.;;0.1;0;;4
+509;4;59356;I16;;Liquid Cooling 4 - Water Return Temperature;;0.1;0;;4
+510;4;59357;U16;;Liquid Cooling 4 - Water outlet pressure;;0.01;0;;4
+511;4;59358;U16;;Liquid Cooling 4 - Return water pressure;;0.01;0;;4
+512;4;59450;U16;;Dryer 4 - Temperature alarm upper limit value;;0.1;0;;4
+513;4;59451;I16;;Dryer 4 - Temperature alarm lower limit value;;0.1;0;;4
+514;4;59452;U16;;Dryer 4 - Humidity control start value;;0.1;0;;4
+515;4;59453;U16;;Dryer 4 - Humidity control stop value;;0.1;0;%RH;4
+516;4;59455;I16;;Dryer 4 - Temperature control stop value;;0.1;0;;4
+517;4;59456;I16;;Dryer 4 - Temperature control start value;;0.1;0;;4
+518;4;60000;U16;;PCS 5 - Operational state;;1;0;;4
+519;4;60001;U16;;PCS 5 - Grid-on/off status;;1;0;;4
+520;4;60002;I16;;PCS 5 - Input curr.;;0.1;0;;4
+521;4;60003;U16;;PCS 5 - Input volt.;;0.1;0;V;4
+522;4;60004;I16;;PCS 5 - Input power;;0.1;0;;4
+523;4;60005;U16;;PCS 5 - Phase-A volt.;;0.1;0;V;4
+524;4;60006;U16;;PCS 5 - Phase-B volt.;;0.1;0;V;4
+525;4;60007;U16;;PCS 5 - Phase-C volt.;;0.1;0;V;4
+526;4;60008;I16;;PCS 5 - Phase-A curr.;;0.1;0;A;4
+527;4;60009;I16;;PCS 5 - Phase-B curr.;;0.1;0;A;4
+528;4;60010;I16;;PCS 5 - Phase-C curr.;;0.1;0;A;4
+529;4;60011;I16;;PCS 5 - Output active power phase-A;;0.1;0;kW;4
+530;4;60012;I16;;PCS 5 - Output active power phase-B;;0.1;0;kW;4
+531;4;60013;I16;;PCS 5 - Output active power phase-C;;0.1;0;kW;4
+532;4;60014;I16;;PCS 5 - Total output active power;;0.1;0;;4
+533;4;60016;I16;;PCS 5 - Output reactive power phase-A;;0.1;0;kVar;4
+534;4;60017;I16;;PCS 5 - Output reactive power phase-B;;0.1;0;kVar;4
+535;4;60018;I16;;PCS 5 - Output reactive power phase-C;;0.1;0;kVar;4
+536;4;60019;I16;;PCS 5 - Total output reactive power;;0.1;0;kVar;4
+537;4;60020;U16;;PCS 5 - Output apparent power phase-A;;0.1;0;kVA;4
+538;4;60021;U16;;PCS 5 - Output apparent power phase-B;;0.1;0;kVA;4
+539;4;60022;U16;;PCS 5 - Output apparent power phase-C;;0.1;0;kVA;4
+540;4;60023;U16;;PCS 5 - Total output apparent power;;0.1;0;kVA;4
+541;4;60024;I16;;PCS 5 - Total output PF;;0.01;0;;4
+542;4;60025;U16;;PCS 5 - Frequency;;0.01;0;Hz;4
+543;4;60350;U16;;Liquid Cooling 5 - Curr. mode;;1;0;;4
+544;4;60351;U16;;Liquid Cooling 5 - Pump operating status;;1;0;;4
+545;4;60352;U16;;Liquid Cooling 5 - 1#Compressor status;;1;0;;4
+546;4;60353;U16;;Liquid Cooling 5 - Electrical heater operation status;;1;0;;4
+547;4;60355;I16;;Liquid Cooling 5 - Water outlet temp.;;0.1;0;;4
+548;4;60356;I16;;Liquid Cooling 5 - Water Return Temperature;;0.1;0;;4
+549;4;60357;U16;;Liquid Cooling 5 - Water outlet pressure;;0.01;0;;4
+550;4;60358;U16;;Liquid Cooling 5 - Return water pressure;;0.01;0;;4
+551;4;60450;U16;;Dryer 5 - Temperature alarm upper limit value;;0.1;0;;4
+552;4;60451;I16;;Dryer 5 - Temperature alarm lower limit value;;0.1;0;;4
+553;4;60452;U16;;Dryer 5 - Humidity control start value;;0.1;0;;4
+554;4;60453;U16;;Dryer 5 - Humidity control stop value;;0.1;0;%RH;4
+555;4;60455;I16;;Dryer 5 - Temperature control stop value;;0.1;0;;4
+556;4;60456;I16;;Dryer 5 - Temperature control start value;;0.1;0;;4
+557;3;101;U16;;EMS - Remote user timeout time(s);;1;0;s;1
+558;3;102;U16;;EMS - Command mode(0-Sub-system, 1-Plan, 2-Main command);;1;0;;4
+559;3;103;U16;;EMS - 0: Seasonal timing, 1: Timing, 2: Curve;;1;0;;1
+560;3;104;U16;;EMS - Control source;;1;0;;4
+561;3;105;I16;;EMS - Total active power command;;0.1;0;kW;4
+562;3;106;I16;;EMS - Total reactive power command;;0.1;0;kVar;4
+563;3;107;I16;;EMS - Time division A:0:00~0:15;;0.1;0;kW;1
+564;3;108;I16;;EMS - Time division A:0:15~0:30;;0.1;0;kW;1
+565;3;109;I16;;EMS - Time division A:0:30~0:45;;0.1;0;kW;1
+566;3;110;I16;;EMS - Time division A:0:45~1:00;;0.1;0;kW;1
+567;3;111;I16;;EMS - Time division A:1:00~1:15;;0.1;0;kW;1
+568;3;112;I16;;EMS - Time division A:1:15~1:30;;0.1;0;kW;1
+569;3;113;I16;;EMS - Time division A:1:30~1:45;;0.1;0;kW;1
+570;3;114;I16;;EMS - Time division A:1:45~2:00;;0.1;0;kW;1
+571;3;115;I16;;EMS - Time division A:2:00~2:15;;0.1;0;kW;1
+572;3;116;I16;;EMS - Time division A:2:15~2:30;;0.1;0;kW;1
+573;3;117;I16;;EMS - Time division A:2:30~2:45;;0.1;0;kW;1
+574;3;118;I16;;EMS - Time division A:2:45~3:00;;0.1;0;kW;1
+575;3;119;I16;;EMS - Time division A:3:00~3:15;;0.1;0;kW;1
+576;3;120;I16;;EMS - Time division A:3:15~3:30;;0.1;0;kW;1
+577;3;121;I16;;EMS - Time division A:3:30~3:45;;0.1;0;kW;1
+578;3;122;I16;;EMS - Time division A:3:45~4:0;;0.1;0;kW;1
+579;3;123;I16;;EMS - Time division A:4:00~4:15;;0.1;0;kW;1
+580;3;124;I16;;EMS - Time division A:4:15~4:30;;0.1;0;kW;1
+581;3;125;I16;;EMS - Time division A:4:30~4:45;;0.1;0;kW;1
+582;3;126;I16;;EMS - Time division A:4:45~4:00;;0.1;0;kW;1
+583;3;127;I16;;EMS - Time division A:5:00~5:15;;0.1;0;kW;1
+584;3;128;I16;;EMS - Time division A:5:15~5:30;;0.1;0;kW;1
+585;3;129;I16;;EMS - Time division A:5:30~5:45;;0.1;0;kW;1
+586;3;130;I16;;EMS - Time division A:5:45~6:00;;0.1;0;kW;1
+587;3;131;I16;;EMS - Time division A:6:00~6:15;;0.1;0;kW;1
+588;3;132;I16;;EMS - Time division A:6:15~6:30;;0.1;0;kW;1
+589;3;133;I16;;EMS - Time division A:6:30~6:45;;0.1;0;kW;1
+590;3;134;I16;;EMS - Time division A:6:45~7:00;;0.1;0;kW;1
+591;3;135;I16;;EMS - Time division A:7:00~7:15;;0.1;0;kW;1
+592;3;136;I16;;EMS - Time division A:7:15~7:30;;0.1;0;kW;1
+593;3;137;I16;;EMS - Time division A:7:30~7:45;;0.1;0;kW;1
+594;3;138;I16;;EMS - Time division A:7:45~8:00;;0.1;0;kW;1
+595;3;139;I16;;EMS - Time division A:8:00~8:15;;0.1;0;kW;1
+596;3;140;I16;;EMS - Time division A:8:15~8:30;;0.1;0;kW;1
+597;3;141;I16;;EMS - Time division A:8:30~8:45;;0.1;0;kW;1
+598;3;142;I16;;EMS - Time division A:8:45~9:00;;0.1;0;kW;1
+599;3;143;I16;;EMS - Time division A:9:00~9:15;;0.1;0;kW;1
+600;3;144;I16;;EMS - Time division A:9:15~9:30;;0.1;0;kW;1
+601;3;145;I16;;EMS - Time division A:9:30~9:45;;0.1;0;kW;1
+602;3;146;I16;;EMS - Time division A:9:45~10:00;;0.1;0;kW;1
+603;3;147;I16;;EMS - Time division A:10:00~10:15;;0.1;0;kW;1
+604;3;148;I16;;EMS - Time division A:10:15~10:30;;0.1;0;kW;1
+605;3;149;I16;;EMS - Time division A:10:30~10:45;;0.1;0;kW;1
+606;3;150;I16;;EMS - Time division A:10:45~11:00;;0.1;0;kW;1
+607;3;151;I16;;EMS - Time division A:11:00~11:15;;0.1;0;kW;1
+608;3;152;I16;;EMS - Time division A:11:15~11:30;;0.1;0;kW;1
+609;3;153;I16;;EMS - Time division A:11:30~11:45;;0.1;0;kW;1
+610;3;154;I16;;EMS - Time division A:11:45~12:00;;0.1;0;kW;1
+611;3;155;I16;;EMS - Time division A:12:00~12:15;;0.1;0;kW;1
+612;3;156;I16;;EMS - Time division A:12:15~12:30;;0.1;0;kW;1
+613;3;157;I16;;EMS - Time division A:12:30~12:45;;0.1;0;kW;1
+614;3;158;I16;;EMS - Time division A:12:45~13:00;;0.1;0;kW;1
+615;3;159;I16;;EMS - Time division A:13:00~13:15;;0.1;0;kW;1
+616;3;160;I16;;EMS - Time division A:13:15~13:30;;0.1;0;kW;1
+617;3;161;I16;;EMS - Time division A:13:30~13:45;;0.1;0;kW;1
+618;3;162;I16;;EMS - Time division A:13:45~14:00;;0.1;0;kW;1
+619;3;163;I16;;EMS - Time division A:14:00~14:15;;0.1;0;kW;1
+620;3;164;I16;;EMS - Time division A:14:15~14:30;;0.1;0;kW;1
+621;3;165;I16;;EMS - Time division A:14:30~14:45;;0.1;0;kW;1
+622;3;166;I16;;EMS - Time division A:14:45~15:00;;0.1;0;kW;1
+623;3;167;I16;;EMS - Time division A:15:00~15:15;;0.1;0;kW;1
+624;3;168;I16;;EMS - Time division A:15:15~15:30;;0.1;0;kW;1
+625;3;169;I16;;EMS - Time division A:15:30~15:45;;0.1;0;kW;1
+626;3;170;I16;;EMS - Time division A:15:45~16:00;;0.1;0;kW;1
+627;3;171;I16;;EMS - Time division A:16:00~16:15;;0.1;0;kW;1
+628;3;172;I16;;EMS - Time division A:16:15~16:30;;0.1;0;kW;1
+629;3;173;I16;;EMS - Time division A:16:30~16:45;;0.1;0;kW;1
+630;3;174;I16;;EMS - Time division A:16:45~17:00;;0.1;0;kW;1
+631;3;175;I16;;EMS - Time division A:17:00~17:15;;0.1;0;kW;1
+632;3;176;I16;;EMS - Time division A:17:15~17:30;;0.1;0;kW;1
+633;3;177;I16;;EMS - Time division A:17:30~17:45;;0.1;0;kW;1
+634;3;178;I16;;EMS - Time division A:17:45~18:00;;0.1;0;kW;1
+635;3;179;I16;;EMS - Time division A:18:00~18:15;;0.1;0;kW;1
+636;3;180;I16;;EMS - Time division A:18:15~18:30;;0.1;0;kW;1
+637;3;181;I16;;EMS - Time division A:18:30~18:45;;0.1;0;kW;1
+638;3;182;I16;;EMS - Time division A:18:45~19:00;;0.1;0;kW;1
+639;3;183;I16;;EMS - Time division A:19:00~19:15;;0.1;0;kW;1
+640;3;184;I16;;EMS - Time division A:19:15~19:30;;0.1;0;kW;1
+641;3;185;I16;;EMS - Time division A:19:30~19:45;;0.1;0;kW;1
+642;3;186;I16;;EMS - Time division A:19:45~20:00;;0.1;0;kW;1
+643;3;187;I16;;EMS - Time division A:20:00~20:15;;0.1;0;kW;1
+644;3;188;I16;;EMS - Time division A:20:15~20:30;;0.1;0;kW;1
+645;3;189;I16;;EMS - Time division A:20:30~20:45;;0.1;0;kW;1
+646;3;190;I16;;EMS - Time division A:20:45~21:00;;0.1;0;kW;1
+647;3;191;I16;;EMS - Time division A:21:00~21:15;;0.1;0;kW;1
+648;3;192;I16;;EMS - Time division A:21:15~21:30;;0.1;0;kW;1
+649;3;193;I16;;EMS - Time division A:21:30~21:45;;0.1;0;kW;1
+650;3;194;I16;;EMS - Time division A:21:45~22:00;;0.1;0;kW;1
+651;3;195;I16;;EMS - Time division A:22:00~22:15;;0.1;0;kW;1
+652;3;196;I16;;EMS - Time division A:22:15~22:30;;0.1;0;kW;1
+653;3;197;I16;;EMS - Time division A:22:30~22:45;;0.1;0;kW;1
+654;3;198;I16;;EMS - Time division A:22:45~23:00;;0.1;0;kW;1
+655;3;199;I16;;EMS - Time division A:23:00~23:15;;0.1;0;kW;1
+656;3;200;I16;;EMS - Time division A:23:15~23:30;;0.1;0;kW;1
+657;3;201;I16;;EMS - Time division A:23:30~23:45;;0.1;0;kW;1
+658;3;202;I16;;EMS - Time division A:23:45~00:00;;0.1;0;kW;1
+659;3;204;I16;;EMS - Time division B:0:00~0:15;;0.1;0;kW;1
+660;3;205;I16;;EMS - Time division B:0:15~0:30;;0.1;0;kW;1
+661;3;206;I16;;EMS - Time division B:0:30~0:45;;0.1;0;kW;1
+662;3;207;I16;;EMS - Time division B:0:45~1:00;;0.1;0;kW;1
+663;3;208;I16;;EMS - Time division B:1:00~1:15;;0.1;0;kW;1
+664;3;209;I16;;EMS - Time division B:1:15~1:30;;0.1;0;kW;1
+665;3;210;I16;;EMS - Time division B:1:30~1:45;;0.1;0;kW;1
+666;3;211;I16;;EMS - Time division B:1:45~2:00;;0.1;0;kW;1
+667;3;212;I16;;EMS - Time division B:2:00~2:15;;0.1;0;kW;1
+668;3;213;I16;;EMS - Time division B:2:15~2:30;;0.1;0;kW;1
+669;3;214;I16;;EMS - Time division B:2:30~2:45;;0.1;0;kW;1
+670;3;215;I16;;EMS - Time division B:2:45~3:00;;0.1;0;kW;1
+671;3;216;I16;;EMS - Time division B:3:00~3:15;;0.1;0;kW;1
+672;3;217;I16;;EMS - Time division B:3:15~3:30;;0.1;0;kW;1
+673;3;218;I16;;EMS - Time division B:3:30~3:45;;0.1;0;kW;1
+674;3;219;I16;;EMS - Time division B:3:45~4:0;;0.1;0;kW;1
+675;3;220;I16;;EMS - Time division B:4:00~4:15;;0.1;0;kW;1
+676;3;221;I16;;EMS - Time division B:4:15~4:30;;0.1;0;kW;1
+677;3;222;I16;;EMS - Time division B:4:30~4:45;;0.1;0;kW;1
+678;3;223;I16;;EMS - Time division B:4:45~4:00;;0.1;0;kW;1
+679;3;224;I16;;EMS - Time division B:5:00~5:15;;0.1;0;kW;1
+680;3;225;I16;;EMS - Time division B:5:15~5:30;;0.1;0;kW;1
+681;3;226;I16;;EMS - Time division B:5:30~5:45;;0.1;0;kW;1
+682;3;227;I16;;EMS - Time division B:5:45~6:00;;0.1;0;kW;1
+683;3;228;I16;;EMS - Time division B:6:00~6:15;;0.1;0;kW;1
+684;3;229;I16;;EMS - Time division B:6:15~6:30;;0.1;0;kW;1
+685;3;230;I16;;EMS - Time division B:6:30~6:45;;0.1;0;kW;1
+686;3;231;I16;;EMS - Time division B:6:45~7:00;;0.1;0;kW;1
+687;3;232;I16;;EMS - Time division B:7:00~7:15;;0.1;0;kW;1
+688;3;233;I16;;EMS - Time division B:7:15~7:30;;0.1;0;kW;1
+689;3;234;I16;;EMS - Time division B:7:30~7:45;;0.1;0;kW;1
+690;3;235;I16;;EMS - Time division B:7:45~8:00;;0.1;0;kW;1
+691;3;236;I16;;EMS - Time division B:8:00~8:15;;0.1;0;kW;1
+692;3;237;I16;;EMS - Time division B:8:15~8:30;;0.1;0;kW;1
+693;3;238;I16;;EMS - Time division B:8:30~8:45;;0.1;0;kW;1
+694;3;239;I16;;EMS - Time division B:8:45~9:00;;0.1;0;kW;1
+695;3;240;I16;;EMS - Time division B:9:00~9:15;;0.1;0;kW;1
+696;3;241;I16;;EMS - Time division B:9:15~9:30;;0.1;0;kW;1
+697;3;242;I16;;EMS - Time division B:9:30~9:45;;0.1;0;kW;1
+698;3;243;I16;;EMS - Time division B:9:45~10:00;;0.1;0;kW;1
+699;3;244;I16;;EMS - Time division B:10:00~10:15;;0.1;0;kW;1
+700;3;245;I16;;EMS - Time division B:10:15~10:30;;0.1;0;kW;1
+701;3;246;I16;;EMS - Time division B:10:30~10:45;;0.1;0;kW;1
+702;3;247;I16;;EMS - Time division B:10:45~11:00;;0.1;0;kW;1
+703;3;248;I16;;EMS - Time division B:11:00~11:15;;0.1;0;kW;1
+704;3;249;I16;;EMS - Time division B:11:15~11:30;;0.1;0;kW;1
+705;3;250;I16;;EMS - Time division B:11:30~11:45;;0.1;0;kW;1
+706;3;251;I16;;EMS - Time division B:11:45~12:00;;0.1;0;kW;1
+707;3;252;I16;;EMS - Time division B:12:00~12:15;;0.1;0;kW;1
+708;3;253;I16;;EMS - Time division B:12:15~12:30;;0.1;0;kW;1
+709;3;254;I16;;EMS - Time division B:12:30~12:45;;0.1;0;kW;1
+710;3;255;I16;;EMS - Time division B:12:45~13:00;;0.1;0;kW;1
+711;3;256;I16;;EMS - Time division B:13:00~13:15;;0.1;0;kW;1
+712;3;257;I16;;EMS - Time division B:13:15~13:30;;0.1;0;kW;1
+713;3;258;I16;;EMS - Time division B:13:30~13:45;;0.1;0;kW;1
+714;3;259;I16;;EMS - Time division B:13:45~14:00;;0.1;0;kW;1
+715;3;260;I16;;EMS - Time division B:14:00~14:15;;0.1;0;kW;1
+716;3;261;I16;;EMS - Time division B:14:15~14:30;;0.1;0;kW;1
+717;3;262;I16;;EMS - Time division B:14:30~14:45;;0.1;0;kW;1
+718;3;263;I16;;EMS - Time division B:14:45~15:00;;0.1;0;kW;1
+719;3;264;I16;;EMS - Time division B:15:00~15:15;;0.1;0;kW;1
+720;3;265;I16;;EMS - Time division B:15:15~15:30;;0.1;0;kW;1
+721;3;266;I16;;EMS - Time division B:15:30~15:45;;0.1;0;kW;1
+722;3;267;I16;;EMS - Time division B:15:45~16:00;;0.1;0;kW;1
+723;3;268;I16;;EMS - Time division B:16:00~16:15;;0.1;0;kW;1
+724;3;269;I16;;EMS - Time division B:16:15~16:30;;0.1;0;kW;1
+725;3;270;I16;;EMS - Time division B:16:30~16:45;;0.1;0;kW;1
+726;3;271;I16;;EMS - Time division B:16:45~17:00;;0.1;0;kW;1
+727;3;272;I16;;EMS - Time division B:17:00~17:15;;0.1;0;kW;1
+728;3;273;I16;;EMS - Time division B:17:15~17:30;;0.1;0;kW;1
+729;3;274;I16;;EMS - Time division B:17:30~17:45;;0.1;0;kW;1
+730;3;275;I16;;EMS - Time division B:17:45~18:00;;0.1;0;kW;1
+731;3;276;I16;;EMS - Time division B:18:00~18:15;;0.1;0;kW;1
+732;3;277;I16;;EMS - Time division B:18:15~18:30;;0.1;0;kW;1
+733;3;278;I16;;EMS - Time division B:18:30~18:45;;0.1;0;kW;1
+734;3;279;I16;;EMS - Time division B:18:45~19:00;;0.1;0;kW;1
+735;3;280;I16;;EMS - Time division B:19:00~19:15;;0.1;0;kW;1
+736;3;281;I16;;EMS - Time division B:19:15~19:30;;0.1;0;kW;1
+737;3;282;I16;;EMS - Time division B:19:30~19:45;;0.1;0;kW;1
+738;3;283;I16;;EMS - Time division B:19:45~20:00;;0.1;0;kW;1
+739;3;284;I16;;EMS - Time division B:20:00~20:15;;0.1;0;kW;1
+740;3;285;I16;;EMS - Time division B:20:15~20:30;;0.1;0;kW;1
+741;3;286;I16;;EMS - Time division B:20:30~20:45;;0.1;0;kW;1
+742;3;287;I16;;EMS - Time division B:20:45~21:00;;0.1;0;kW;1
+743;3;288;I16;;EMS - Time division B:21:00~21:15;;0.1;0;kW;1
+744;3;289;I16;;EMS - Time division B:21:15~21:30;;0.1;0;kW;1
+745;3;290;I16;;EMS - Time division B:21:30~21:45;;0.1;0;kW;1
+746;3;291;I16;;EMS - Time division B:21:45~22:00;;0.1;0;kW;1
+747;3;292;I16;;EMS - Time division B:22:00~22:15;;0.1;0;kW;1
+748;3;293;I16;;EMS - Time division B:22:15~22:30;;0.1;0;kW;1
+749;3;294;I16;;EMS - Time division B:22:30~22:45;;0.1;0;kW;1
+750;3;295;I16;;EMS - Time division B:22:45~23:00;;0.1;0;kW;1
+751;3;296;I16;;EMS - Time division B:23:00~23:15;;0.1;0;kW;1
+752;3;297;I16;;EMS - Time division B:23:15~23:30;;0.1;0;kW;1
+753;3;298;I16;;EMS - Time division B:23:30~23:45;;0.1;0;kW;1
+754;3;299;I16;;EMS - Time division B:23:45~00:00;;0.1;0;kW;1
+755;3;300;U16;;EMS - Season A starting month;;1;0;;1
+756;3;301;U16;;EMS - Seasonal timing B starting month;;1;0;;1
+757;3;336;I16;;EMS - Max. temp. power limitation temp. point [0];CMD_P_AC_SET_ABS;1;0;Degr.Celsius;1
+758;3;337;I16;;EMS - Max. temp. power limitation temp. point [1];;1;0;Degr.Celsius;1
+759;3;338;I16;;EMS - Max. temp. power limitation temp. point [2];;1;0;Degr.Celsius;1
+760;3;339;I16;;EMS - Max. temp. power limitation temp. point [3];;1;0;Degr.Celsius;1
+761;3;340;I16;;EMS - Max. temp. power limitation temp. point [4];;1;0;Degr.Celsius;1
+762;3;341;I16;;EMS - Max. temp. power limitation temp. point [5];;1;0;Degr.Celsius;1
+763;3;342;I16;;EMS - Max. temp. power limitation temp. point [6];;1;0;Degr.Celsius;1
+764;3;343;I16;;EMS - Max. temp. power limitation temp. point [7];;1;0;Degr.Celsius;1
+765;3;344;I16;;EMS - Max. temp. power limitation temp. point [8];;1;0;Degr.Celsius;1
+766;3;345;I16;;EMS - Max Temp Limit Dis Pwr Pt0;;0.1;0;kW;1
+767;3;346;I16;;EMS - Max Temp Limit Dis Pwr Pt1;;0.1;0;kW;1
+768;3;347;I16;;EMS - Max Temp Limit Dis Pwr Pt2;;0.1;0;kW;1
+769;3;348;I16;;EMS - Max Temp Limit Dis Pwr Pt3;;0.1;0;kW;1
+770;3;349;I16;;EMS - Max Temp Limit Dis Pwr Pt4;;0.1;0;kW;1
+771;3;350;I16;;EMS - Max Temp Limit Dis Pwr Pt5;;0.1;0;kW;1
+772;3;351;I16;;EMS - Max Temp Limit Dis Pwr Pt6;;0.1;0;kW;1
+773;3;352;I16;;EMS - Max Temp Limit Dis Pwr Pt7;;0.1;0;kW;1
+774;3;353;I16;;EMS - Max Temp Limit Dis Pwr Pt8;;0.1;0;kW;1
+775;3;354;I16;;EMS - Max Temp Limit Dis Pwr Pt9;;0.1;0;kW;1
+776;3;355;I16;;EMS - Max Temp Limit Chg Pwr Pt0;;0.1;0;kW;1
+777;3;356;I16;;EMS - Max Temp Limit Chg Pwr Pt1;;0.1;0;kW;1
+778;3;357;I16;;EMS - Max Temp Limit Chg Pwr Pt2;;0.1;0;kW;1
+779;3;358;I16;;EMS - Max Temp Limit Chg Pwr Pt3;;0.1;0;kW;1
+780;3;359;I16;;EMS - Max Temp Limit Chg Pwr Pt4;;0.1;0;kW;1
+781;3;360;I16;;EMS - Max Temp Limit Chg Pwr Pt5;;0.1;0;kW;1
+782;3;361;I16;;EMS - Max Temp Limit Chg Pwr Pt6;;0.1;0;kW;1
+783;3;362;I16;;EMS - Max Temp Limit Chg Pwr Pt7;;0.1;0;kW;1
+784;3;363;I16;;EMS - Max Temp Limit Chg Pwr Pt8;;0.1;0;kW;1
+785;3;364;I16;;EMS - Max Temp Limit Chg Pwr Pt9;;0.1;0;kW;1
+786;3;365;I16;;EMS - PCS max. DIS power;;0.1;0;kW;1
+787;3;366;I16;;EMS - PCS max. CHA power;;0.1;0;kW;1
+788;3;367;I16;;EMS - CHA stop cell volt.;;0.001;0;V;1
+789;3;368;I16;;EMS - CHA stop cell volt. hysteresis;;0.001;0;V;1
+790;3;369;I16;;EMS - DIS stop cell volt.;;0.001;0;V;1
+791;3;370;I16;;EMS - DIS stop cell volt. hysteresis;;0.001;0;V;1
+792;3;371;I16;;EMS - Reverse curr.-Nominal power(kW);P_RATED;0.1;0;kW;1
+793;3;375;I16;;EMS - Reverse curr.-Power hysteresis;;0.1;0;kW;1
+794;3;376;U16;;EMS - Reverse curr.-Frequency regulation(s);;1;0;s;1
+795;3;377;I16;;EMS - Cell volt. power limitation volt. point [0] (v);;0.001;0;V;1
+796;3;378;I16;;EMS - Cell volt. power limitation volt. point [1] (v);;0.001;0;V;1
+797;3;379;I16;;EMS - Cell volt. power limitation volt. point [2] (v);;0.001;0;V;1
+798;3;380;I16;;EMS - Cell volt. power limitation volt. point [3] (v);;0.001;0;V;1
+799;3;381;I16;;EMS - Cell volt. power limitation volt. point [4] (v);;0.001;0;V;1
+800;3;382;I16;;EMS - Cell volt. power limitation volt. point [5] (v);;0.001;0;V;1
+801;3;383;I16;;EMS - Cell volt. power limitation volt. point [6] (v);;0.001;0;V;1
+802;3;384;I16;;EMS - Cell volt. power limitation volt. point [7] (v);;0.001;0;V;1
+803;3;385;I16;;EMS - Cell volt. power limitation volt. point [8] (v);;0.001;0;V;1
+804;3;386;I16;;EMS - Cell Volt Limit Dis Pwr Pt0;;0.1;0;kW;1
+805;3;387;I16;;EMS - Cell Volt Limit Dis Pwr Pt1;;0.1;0;kW;1
+806;3;388;I16;;EMS - Cell Volt Limit Dis Pwr Pt2;;0.1;0;kW;1
+807;3;389;I16;;EMS - Cell Volt Limit Dis Pwr Pt3;;0.1;0;kW;1
+808;3;390;I16;;EMS - Cell Volt Limit Dis Pwr Pt4;;0.1;0;kW;1
+809;3;391;I16;;EMS - Cell Volt Limit Dis Pwr Pt5;;0.1;0;kW;1
+810;3;392;I16;;EMS - Cell Volt Limit Dis Pwr Pt6;;0.1;0;kW;1
+811;3;393;I16;;EMS - Cell Volt Limit Dis Pwr Pt7;;0.1;0;kW;1
+812;3;394;I16;;EMS - Cell Volt Limit Dis Pwr Pt8;;0.1;0;kW;1
+813;3;395;I16;;EMS - Cell Volt Limit Dis Pwr Pt9;;0.1;0;kW;1
+814;3;396;I16;;EMS - Cell Volt Limit Chg Pwr Pt0;;0.1;0;kW;1
+815;3;397;I16;;EMS - Cell Volt Limit Chg Pwr Pt1;;0.1;0;kW;1
+816;3;398;I16;;EMS - Cell Volt Limit Chg Pwr Pt2;;0.1;0;kW;1
+817;3;399;I16;;EMS - Cell Volt Limit Chg Pwr Pt3;;0.1;0;kW;1
+818;3;400;I16;;EMS - Cell Volt Limit Chg Pwr Pt4;;0.1;0;kW;1
+819;3;401;I16;;EMS - Cell Volt Limit Chg Pwr Pt5;;0.1;0;kW;1
+820;3;402;I16;;EMS - Cell Volt Limit Chg Pwr Pt6;;0.1;0;kW;1
+821;3;403;I16;;EMS - Cell Volt Limit Chg Pwr Pt7;;0.1;0;kW;1
+822;3;404;I16;;EMS - Cell Volt Limit Chg Pwr Pt8;;0.1;0;kW;1
+823;3;405;I16;;EMS - Cell Volt Limit Chg Pwr Pt9;;0.1;0;kW;1
+824;3;406;I16;;EMS - Demand-Nominal power(Jan)(kw);;0.1;0;kW;1
+825;3;407;I16;;EMS - Demand-Nominal power(Feb)(kw);;0.1;0;kW;1
+826;3;408;I16;;EMS - Demand-Nominal power(Mar)(kw);;0.1;0;kW;1
+827;3;409;I16;;EMS - Demand-Nominal power(Apr)(kw);;0.1;0;kW;1
+828;3;410;I16;;EMS - Demand-Nominal power(May)(kw);;0.1;0;kW;1
+829;3;411;I16;;EMS - Demand-Nominal power(Jun)(kw);;0.1;0;kW;1
+830;3;412;I16;;EMS - Demand-Nominal power(Jul)(kw);;0.1;0;kW;1
+831;3;413;I16;;EMS - Demand-Nominal power(Aug)(kw);;0.1;0;kW;1
+832;3;414;I16;;EMS - Demand-Nominal power(Sep)(kw);;0.1;0;kW;1
+833;3;415;I16;;EMS - Demand-Nominal power(Oct)(kw);;0.1;0;kW;1
+834;3;416;I16;;EMS - Demand-Nominal power(Nov)(kw);;0.1;0;kW;1
+835;3;417;I16;;EMS - Demand-Nominal power(Dec)(kw);;0.1;0;kW;1
+836;3;421;I16;;EMS - Demand-Power hysteresis (less than hysteresis);;0.1;0;kW;1
+837;3;422;U16;;EMS - Demand-Frequency regulating;;1;0;s;1
+838;3;423;U16;;EMS - Planned power reverse flow enable switch;;1;0;;1
+839;3;424;U32;;EMS - Planned power 1 start time YMD;;1;0;;1
+840;3;426;U32;;EMS - Planned power 1 end time YMD;;1;0;;1
+841;3;428;U32;;EMS - Planned power 1 start time HMS;;1;0;;1
+842;3;430;U32;;EMS - Planned power 1 end time HMS;;1;0;;1
+843;3;432;I16;;EMS - Planned power 1 active power;;0.1;0;kW;1
+844;3;433;I16;;EMS - Planned power 1 reactive power;;0.1;0;kVar;1
+845;3;434;U16;;EMS - Planned power 1 use mark;;1;0;;1
+846;3;435;U32;;EMS - Planned power 2 start time YMD;;1;0;;1
+847;3;437;U32;;EMS - Planned power 2 end time YMD;;1;0;;1
+848;3;439;U32;;EMS - Planned power 2 start time HMS;;1;0;;1
+849;3;441;U32;;EMS - Planned power 2 end time HMS;;1;0;;1
+850;3;443;I16;;EMS - Planned power 2 active power;;0.1;0;kW;1
+851;3;444;I16;;EMS - Planned power 2 reactive power;;0.1;0;kVar;1
+852;3;445;U16;;EMS - Planned power 2 use mark;;1;0;;1
+853;3;446;U32;;EMS - Planned power 3 start time YMD;;1;0;;1
+854;3;448;U32;;EMS - Planned power 3 end time YMD;;1;0;;1
+855;3;450;U32;;EMS - Planned power 3 start time HMS;;1;0;;1
+856;3;452;U32;;EMS - Planned power 3 end time HMS;;1;0;;1
+857;3;454;I16;;EMS - Planned power 3 active power;;0.1;0;kW;1
+858;3;455;I16;;EMS - Planned power 3 reactive power;;0.1;0;kVar;1
+859;3;456;U16;;EMS - Planned power 3 use mark;;1;0;;1
+860;3;457;U32;;EMS - Planned power 4 start time YMD;;1;0;;1
+861;3;459;U32;;EMS - Planned power 4 end time YMD;;1;0;;1
+862;3;461;U32;;EMS - Planned power 4 start time HMS;;1;0;;1
+863;3;463;U32;;EMS - Planned power 4 end time HMS;;1;0;;1
+864;3;465;I16;;EMS - Planned power 4 active power;;0.1;0;kW;1
+865;3;466;I16;;EMS - Planned power 4 reactive power;;0.1;0;kVar;1
+866;3;467;U16;;EMS - Planned power 4 use mark;;1;0;;1
+867;3;468;U32;;EMS - Planned power 5 start time YMD;;1;0;;1
+868;3;470;U32;;EMS - Planned power 5 end time YMD;;1;0;;1
+869;3;472;U32;;EMS - Planned power 5 start time HMS;;1;0;;1
+870;3;474;U32;;EMS - Planned power 5 end time HMS;;1;0;;1
+871;3;476;I16;;EMS - Planned power 5 active power;;0.1;0;kW;1
+872;3;477;I16;;EMS - Planned power 5 reactive power;;0.1;0;kVar;1
+873;3;478;U16;;EMS - Planned power 5 use mark;;1;0;;1
+874;3;479;U32;;EMS - Planned power 6 start time YMD;;1;0;;1
+875;3;481;U32;;EMS - Planned power 6 end time YMD;;1;0;;1
+876;3;483;U32;;EMS - Planned power 6 start time HMS;;1;0;;1
+877;3;485;U32;;EMS - Planned power 6 end time HMS;;1;0;;1
+878;3;487;I16;;EMS - Planned power 6 active power;;0.1;0;kW;1
+879;3;488;I16;;EMS - Planned power 6 reactive power;;0.1;0;kVar;1
+880;3;489;U16;;EMS - Planned power 6 use mark;;1;0;;1
+881;3;490;U32;;EMS - Planned power 7 start time YMD;;1;0;;1
+882;3;492;U32;;EMS - Planned power 7 end time YMD;;1;0;;1
+883;3;494;U32;;EMS - Planned power 7 start time HMS;;1;0;;1
+884;3;496;U32;;EMS - Planned power 7 end time HMS;;1;0;;1
+885;3;498;I16;;EMS - Planned power 7 active power;;0.1;0;kW;1
+886;3;499;I16;;EMS - Planned power 7 reactive power;;0.1;0;kVar;1
+887;3;500;U16;;EMS - Planned power 7 use mark;;1;0;;1
+888;3;501;U32;;EMS - Plan power 8 start time year/month/day;;1;0;;1
+889;3;503;U32;;EMS - Plan power 8 end time year/month/day;;1;0;;1
+890;3;505;U32;;EMS - Plan power 8 start time hour/minute/second;;1;0;;1
+891;3;507;U32;;EMS - Plan power 8 end time hour/minute/second;;1;0;;1
+892;3;509;I16;;EMS - Plan power 8 active power;;0.1;0;kW;1
+893;3;510;I16;;EMS - Plan power 8 reactive power;;0.1;0;kVar;1
+894;3;511;U16;;EMS - Plan power 8 use mark;;1;0;;1
+895;3;512;U32;;EMS - Plan power 9 start time year/month/day;;1;0;;1
+896;3;514;U32;;EMS - Plan power 9 end time year/month/day;;1;0;;1
+897;3;516;U32;;EMS - Plan power 9 start time hour/minute/second;;1;0;;1
+898;3;518;U32;;EMS - Plan power 9 end time hour/minute/second;;1;0;;1
+899;3;520;I16;;EMS - Plan power 9 active power;;0.1;0;kW;1
+900;3;521;I16;;EMS - Plan power 9 reactive power;;0.1;0;kVar;1
+901;3;522;U16;;EMS - Plan power 9 use mark;;1;0;;1
+902;3;523;U32;;EMS - Plan power 10 start time year/month/day;;1;0;;1
+903;3;525;U32;;EMS - Plan power 10 end time year/month/day;;1;0;;1
+904;3;527;U32;;EMS - Plan power 10 start time hour/minute/second;;1;0;;1
+905;3;529;U32;;EMS - Plan power 10 end time hour/minute/second;;1;0;;1
+906;3;531;I16;;EMS - Plan power 10 active power;;0.1;0;kW;1
+907;3;532;I16;;EMS - Plan power 10 reactive power;;0.1;0;kVar;1
+908;3;533;U16;;EMS - Plan power 10 use mark;;1;0;;1
+909;3;534;U32;;EMS - Plan power 11 start time year/month/day;;1;0;;1
+910;3;536;U32;;EMS - Plan power 11 end time year/month/day;;1;0;;1
+911;3;538;U32;;EMS - Plan power 11 start time hour/minute/second;;1;0;;1
+912;3;540;U32;;EMS - Plan power 11 end time hour/minute/second;;1;0;;1
+913;3;542;I16;;EMS - Plan power 11 active power;;0.1;0;kW;1
+914;3;543;I16;;EMS - Plan power 11 reactive power;;0.1;0;kVar;1
+915;3;544;U16;;EMS - Plan power 11 use mark;;1;0;;1
+916;3;545;U32;;EMS - Plan power 12 start time year/month/day;;1;0;;1
+917;3;547;U32;;EMS - Plan power 12 end time year/month/day;;1;0;;1
+918;3;549;U32;;EMS - Plan power 12 start time hour/minute/second;;1;0;;1
+919;3;551;U32;;EMS - Plan power 12 end time hour/minute/second;;1;0;;1
+920;3;553;I16;;EMS - Plan power 12 active power;;0.1;0;kW;1
+921;3;554;I16;;EMS - Plan power 12 reactive power;;0.1;0;kVar;1
+922;3;555;U16;;EMS - Plan power 12 use mark;;1;0;;1
+923;3;556;U32;;EMS - Plan power 13 start time year/month/day;;1;0;;1
+924;3;558;U32;;EMS - Plan power 13 end time year/month/day;;1;0;;1
+925;3;560;U32;;EMS - Plan power 13 start time hour/minute/second;;1;0;;1
+926;3;562;U32;;EMS - Plan power 13 end time hour/minute/second;;1;0;;1
+927;3;564;I16;;EMS - Plan power 13 active power;;0.1;0;kW;1
+928;3;565;I16;;EMS - Plan power 13 reactive power;;0.1;0;kVar;1
+929;3;566;U16;;EMS - Plan power 13 use mark;;1;0;;1
+930;3;567;U32;;EMS - Plan power 14 start time year/month/day;;1;0;;1
+931;3;569;U32;;EMS - Plan power 14 end time year/month/day;;1;0;;1
+932;3;571;U32;;EMS - Plan power 14 start time hour/minute/second;;1;0;;1
+933;3;573;U32;;EMS - Plan power 14 end time hour/minute/second;;1;0;;1
+934;3;575;I16;;EMS - Plan power 14 active power;;0.1;0;kW;1
+935;3;576;I16;;EMS - Plan power 14 reactive power;;0.1;0;kVar;1
+936;3;577;U16;;EMS - Plan power 14 use mark;;1;0;;1
+937;3;578;U32;;EMS - Plan power 15 start time year/month/day;;1;0;;1
+938;3;580;U32;;EMS - Plan power 15 end time year/month/day;;1;0;;1
+939;3;582;U32;;EMS - Plan power 15 start time hour/minute/second;;1;0;;1
+940;3;584;U32;;EMS - Plan power 15 end time hour/minute/second;;1;0;;1
+941;3;586;I16;;EMS - Plan power 15 active power;;0.1;0;kW;1
+942;3;587;I16;;EMS - Plan power 15 reactive power;;0.1;0;kVar;1
+943;3;588;U16;;EMS - Plan power 15 use mark;;1;0;;1
+944;3;589;U32;;EMS - Plan power 16 start time year/month/day;;1;0;;1
+945;3;591;U32;;EMS - Plan power 16 end time year/month/day;;1;0;;1
+946;3;593;U32;;EMS - Plan power 16 start time hour/minute/second;;1;0;;1
+947;3;595;U32;;EMS - Plan power 16 end time hour/minute/second;;1;0;;1
+948;3;597;I16;;EMS - Plan power 16 active power;;0.1;0;kW;1
+949;3;598;I16;;EMS - Plan power 16 reactive power;;0.1;0;kVar;1
+950;3;599;U16;;EMS - Plan power 16 use mark;;1;0;;1
+951;3;600;U32;;EMS - Plan power 17 start time year/month/day;;1;0;;1
+952;3;602;U32;;EMS - Plan power 17 end time year/month/day;;1;0;;1
+953;3;604;U32;;EMS - Plan power 17 start time hour/minute/second;;1;0;;1
+954;3;606;U32;;EMS - Plan power 17 end time hour/minute/second;;1;0;;1
+955;3;608;I16;;EMS - Plan power 17 active power;;0.1;0;kW;1
+956;3;609;I16;;EMS - Plan power 17 reactive power;;0.1;0;kVar;1
+957;3;610;U16;;EMS - Plan power 17 use mark;;1;0;;1
+958;3;611;U32;;EMS - Plan power 18 start time year/month/day;;1;0;;1
+959;3;613;U32;;EMS - Plan power 18 end time year/month/day;;1;0;;1
+960;3;615;U32;;EMS - Plan power 18 start time hour/minute/second;;1;0;;1
+961;3;617;U32;;EMS - Plan power 18 end time hour/minute/second;;1;0;;1
+962;3;619;I16;;EMS - Plan power 18 active power;;0.1;0;kW;1
+963;3;620;I16;;EMS - Plan power 18 reactive power;;0.1;0;kVar;1
+964;3;621;U16;;EMS - Plan power 18 use mark;;1;0;;1
+965;3;622;U32;;EMS - Plan power 19 start time year/month/day;;1;0;;1
+966;3;624;U32;;EMS - Plan power 19 end time year/month/day;;1;0;;1
+967;3;626;U32;;EMS - Plan power 19 start time hour/minute/second;;1;0;;1
+968;3;628;U32;;EMS - Plan power 19 end time hour/minute/second;;1;0;;1
+969;3;630;I16;;EMS - Plan power 19 active power;;0.1;0;kW;1
+970;3;631;I16;;EMS - Plan power 19 reactive power;;0.1;0;kVar;1
+971;3;632;U16;;EMS - Plan power 19 use mark;;1;0;;1
+972;3;633;U32;;EMS - Plan power 20 start time year/month/day;;1;0;;1
+973;3;635;U32;;EMS - Plan power 20 end time year/month/day;;1;0;;1
+974;3;637;U32;;EMS - Plan power 20 start time hour/minute/second;;1;0;;1
+975;3;639;U32;;EMS - Plan power 20 end time hour/minute/second;;1;0;;1
+976;3;641;I16;;EMS - Plan power 20 active power;;0.1;0;kW;1
+977;3;642;I16;;EMS - Plan power 20 reactive power;;0.1;0;kVar;1
+978;3;643;U16;;EMS - Plan power 20 use mark;;1;0;;1
+979;3;644;U32;;EMS - Plan power 21 start time year/month/day;;1;0;;1
+980;3;646;U32;;EMS - Plan power 21 end time year/month/day;;1;0;;1
+981;3;648;U32;;EMS - Plan power 21 start time hour/minute/second;;1;0;;1
+982;3;650;U32;;EMS - Plan power 21 end time hour/minute/second;;1;0;;1
+983;3;652;I16;;EMS - Plan power 21 active power;;0.1;0;kW;1
+984;3;653;I16;;EMS - Plan power 21 reactive power;;0.1;0;kVar;1
+985;3;654;U16;;EMS - Plan power 21 use mark;;1;0;;1
+986;3;655;U32;;EMS - Plan power 22 start time year/month/day;;1;0;;1
+987;3;657;U32;;EMS - Plan power 22 end time year/month/day;;1;0;;1
+988;3;659;U32;;EMS - Plan power 22 start time hour/minute/second;;1;0;;1
+989;3;661;U32;;EMS - Plan power 22 end time hour/minute/second;;1;0;;1
+990;3;663;I16;;EMS - Plan power 22 active power;;0.1;0;kW;1
+991;3;664;I16;;EMS - Plan power 22 reactive power;;0.1;0;kVar;1
+992;3;665;U16;;EMS - Plan power 22 use mark;;1;0;;1
+993;3;666;U32;;EMS - Plan power 23 start time year/month/day;;1;0;;1
+994;3;668;U32;;EMS - Plan power 23 end time year/month/day;;1;0;;1
+995;3;670;U32;;EMS - Plan power 23 start time hour/minute/second;;1;0;;1
+996;3;672;U32;;EMS - Plan power 23 end time hour/minute/second;;1;0;;1
+997;3;674;I16;;EMS - Plan power 23 active power;;0.1;0;kW;1
+998;3;675;I16;;EMS - Plan power 23 reactive power;;0.1;0;kVar;1
+999;3;676;U16;;EMS - Plan power 23 use mark;;1;0;;1
+1000;3;677;U32;;EMS - Plan power 24 start time year/month/day;;1;0;;1
+1001;3;679;U32;;EMS - Plan power 24 end time year/month/day;;1;0;;1
+1002;3;681;U32;;EMS - Plan power 24 start time hour/minute/second;;1;0;;1
+1003;3;683;U32;;EMS - Plan power 24 end time hour/minute/second;;1;0;;1
+1004;3;685;I16;;EMS - Plan power 24 active power;;0.1;0;kW;1
+1005;3;686;I16;;EMS - Plan power 24 reactive power;;0.1;0;kVar;1
+1006;3;687;U16;;EMS - Plan power 24 use mark;;1;0;;1
+1007;3;714;I16;;EMS - Min. temp. power limitation temp. point [0];;1;0;Degr.Celsius;1
+1008;3;715;I16;;EMS - Min. temp. power limitation temp. point [1];;1;0;Degr.Celsius;1
+1009;3;716;I16;;EMS - Min. temp. power limitation temp. point [2];;1;0;Degr.Celsius;1
+1010;3;717;I16;;EMS - Min. temp. power limitation temp. point [3];;1;0;Degr.Celsius;1
+1011;3;718;I16;;EMS - Min. temp. power limitation temp. point [4];;1;0;Degr.Celsius;1
+1012;3;719;I16;;EMS - Min. temp. power limitation temp. point [5];;1;0;Degr.Celsius;1
+1013;3;720;I16;;EMS - Min. temp. power limitation temp. point [6];;1;0;Degr.Celsius;1
+1014;3;721;I16;;EMS - Min. temp. power limitation temp. point [7];;1;0;Degr.Celsius;1
+1015;3;722;I16;;EMS - Min. temp. power limitation temp. point [8];;1;0;Degr.Celsius;1
+1016;3;723;I16;;EMS - Min Temp Limit Dis Pwr Pt0;;0.1;0;kW;1
+1017;3;724;I16;;EMS - Min Temp Limit Dis Pwr Pt1;;0.1;0;kW;1
+1018;3;725;I16;;EMS - Min Temp Limit Dis Pwr Pt2;;0.1;0;kW;1
+1019;3;726;I16;;EMS - Min Temp Limit Dis Pwr Pt3;;0.1;0;kW;1
+1020;3;727;I16;;EMS - Min Temp Limit Dis Pwr Pt4;;0.1;0;kW;1
+1021;3;728;I16;;EMS - Min Temp Limit Dis Pwr Pt5;;0.1;0;kW;1
+1022;3;729;I16;;EMS - Min Temp Limit Dis Pwr Pt6;;0.1;0;kW;1
+1023;3;730;I16;;EMS - Min Temp Limit Dis Pwr Pt7;;0.1;0;kW;1
+1024;3;731;I16;;EMS - Min Temp Limit Dis Pwr Pt8;;0.1;0;kW;1
+1025;3;732;I16;;EMS - Min Temp Limit Dis Pwr Pt9;;0.1;0;kW;1
+1026;3;733;I16;;EMS - Min Temp Limit Chg Pwr Pt0;;0.1;0;kW;1
+1027;3;734;I16;;EMS - Min Temp Limit Chg Pwr Pt1;;0.1;0;kW;1
+1028;3;735;I16;;EMS - Min Temp Limit Chg Pwr Pt2;;0.1;0;kW;1
+1029;3;736;I16;;EMS - Min Temp Limit Chg Pwr Pt3;;0.1;0;kW;1
+1030;3;737;I16;;EMS - Min Temp Limit Chg Pwr Pt4;;0.1;0;kW;1
+1031;3;738;I16;;EMS - Min Temp Limit Chg Pwr Pt5;;0.1;0;kW;1
+1032;3;739;I16;;EMS - Min Temp Limit Chg Pwr Pt6;;0.1;0;kW;1
+1033;3;740;I16;;EMS - Min Temp Limit Chg Pwr Pt7;;0.1;0;kW;1
+1034;3;741;I16;;EMS - Min Temp Limit Chg Pwr Pt8;;0.1;0;kW;1
+1035;3;742;I16;;EMS - Min Temp Limit Chg Pwr Pt9;;0.1;0;kW;1
+1036;3;743;U16;;EMS - Lems backflow threshold;;1;0;;1
+1037;3;744;U16;;EMS - Lems reverse power differential value;;1;0;;1
+1038;3;745;U16;;EMS - Lems backflow adjustment time step;;1;0;;1
+1039;3;746;U16;;EMS - Lems static demand-rated power (month) (kw);;1;0;;1
+1040;3;747;U16;;EMS - Lems static demand-rated power (February) (kw);;1;0;;1
+1041;3;748;U16;;EMS - Lems static demand-rated power (March) (kw);;1;0;;1
+1042;3;749;U16;;EMS - Lems static demand-rated power (April) (kw);;1;0;;1
+1043;3;750;U16;;EMS - Lems static demand-rated power (may) (kw);;1;0;;1
+1044;3;751;U16;;EMS - Lems static demand-rated power (June) (kw);;1;0;;1
+1045;3;752;U16;;EMS - Lems static demand-rated power (July) (kw);;1;0;;1
+1046;3;753;U16;;EMS - Lems static demand-rated power (August) (kw);;1;0;;1
+1047;3;754;U16;;EMS - Lems static demand-rated power (September) (kw);;1;0;;1
+1048;3;755;U16;;EMS - Lems static demand-rated power (Oct)(kw);;1;0;;1
+1049;3;756;U16;;EMS - Lems static demand-rated power (November) (kw);;1;0;;1
+1050;3;757;U16;;EMS - Lems static demand-rated power (December) (kw);;1;0;;1
+1051;3;758;U16;;EMS - LEMS Static Demand Power Hysteresis;;1;0;;1
+1052;3;759;U16;;EMS - Lems static demand-power adjustment step;;1;0;;1
+1053;3;760;U16;;EMS - Aems reverse power differential value;;1;0;;1
+1054;3;761;U16;;EMS - AEMS countercurrent adjustment time step;;1;0;;1
+1055;3;762;U16;;EMS - Aems backflow threshold;;1;0;;1
+1056;3;763;U16;;EMS - Aems static demand-rated power (one month) (kw);;1;0;;1
+1057;3;764;U16;;EMS - Aems static demand-rated power (February) (kw);;1;0;;1
+1058;3;765;U16;;EMS - Aems static demand-rated power (March) (kw);;1;0;;1
+1059;3;766;U16;;EMS - Aems static demand-rated power (April) (kw);;1;0;;1
+1060;3;767;U16;;EMS - Aems static demand-rated power (May) (kw);;1;0;;1
+1061;3;768;U16;;EMS - Aems static demand-rated power (June) (kw);;1;0;;1
+1062;3;769;U16;;EMS - Aems static demand-rated power (July) (kw);;1;0;;1
+1063;3;770;U16;;EMS - Aems static demand-rated power (August) (kw);;1;0;;1
+1064;3;771;U16;;EMS - Aems static demand-rated power (September) (kw);;1;0;;1
+1065;3;772;U16;;EMS - Aems static demand-rated power (October) (kw);;1;0;;1
+1066;3;773;U16;;EMS - Aems static demand-rated power (November) (kw);;1;0;;1
+1067;3;774;U16;;EMS - Aems static demand-rated power (December) (kw);;1;0;;1
+1068;3;775;U16;;EMS - AEMS Static Demand Power Hysteresis;;1;0;;1
+1069;3;776;U16;;EMS - Aems static demand-power adjustment step;;1;0;;1
+1070;3;777;U16;;EMS - Peak-valley arbitrage-discharge enable 1;;1;0;;1
+1071;3;778;U32;;EMS - Peak-valley arbitrage-Start time1 (DIS);;1;0;;1
+1072;3;780;U32;;EMS - Peak-valley arbitrage-End time1 (DIS);;1;0;;1
+1073;3;782;I16;;EMS - Peak-valley arbitrage-Power setting1 (DIS);;1;0;;1
+1074;3;783;U16;;EMS - Peak-valley arbitrage-DIS stop SOC1 (DIS);;1;0;;1
+1075;3;784;U16;;EMS - Peak-valley arbitrage-discharge enable 2;;1;0;;1
+1076;3;785;U32;;EMS - Peak-valley arbitrage-Start time2 (DIS);;1;0;;1
+1077;3;787;U32;;EMS - Peak-valley arbitrage-End time2 (DIS);;1;0;;1
+1078;3;789;I16;;EMS - Peak-valley arbitrage-Power setting2 (DIS);;1;0;;1
+1079;3;790;U16;;EMS - Peak-valley arbitrage-DIS stop SOC2 (DIS);;1;0;;1
+1080;3;791;U16;;EMS - Peak-valley arbitrage-discharge enable 3;;1;0;;1
+1081;3;792;U32;;EMS - Peak-valley arbitrage-Start time3 (DIS);;1;0;;1
+1082;3;794;U32;;EMS - Peak-valley arbitrage-End time3 (DIS);;1;0;;1
+1083;3;796;I16;;EMS - Peak-valley arbitrage-Power setting3 (DIS);;1;0;;1
+1084;3;797;U16;;EMS - Peak-valley arbitrage-DIS stop SOC3 (DIS);;1;0;;1
+1085;3;798;U16;;EMS - Peak-valley arbitrage-discharge enable 4;;1;0;;1
+1086;3;799;U32;;EMS - Peak-valley arbitrage-Start time4 (DIS);;1;0;;1
+1087;3;801;U32;;EMS - Peak-valley arbitrage-End time4 (DIS);;1;0;;1
+1088;3;803;I16;;EMS - Peak-valley arbitrage-Power setting4 (DIS);;1;0;;1
+1089;3;804;U16;;EMS - Peak-valley arbitrage-DIS stop SOC4 (DIS);;1;0;;1
+1090;3;805;U16;;EMS - Peak-valley arbitrage-charging enablement 1;;1;0;;1
+1091;3;806;U32;;EMS - Peak-valley arbitrage-Start time1 (CHA);;1;0;;1
+1092;3;808;U32;;EMS - Peak-valley arbitrage-End time1 (CHA);;1;0;;1
+1093;3;810;I16;;EMS - Peak-valley arbitrage-Power setting1 (CHA);;1;0;;1
+1094;3;811;U16;;EMS - Peak-valley arbitrage-DIS stop SOC1 (CHA);;1;0;;1
+1095;3;812;U16;;EMS - Peak-valley arbitrage-charging enablement 2;;1;0;;1
+1096;3;813;U32;;EMS - Peak-valley arbitrage-Start time2 (CHA);;1;0;;1
+1097;3;815;U32;;EMS - Peak-valley arbitrage-End time2 (CHA);;1;0;;1
+1098;3;817;I16;;EMS - Peak-valley arbitrage-Power setting2 (CHA);;1;0;;1
+1099;3;818;U16;;EMS - Peak-valley arbitrage-DIS stop SOC2 (CHA);;1;0;;1
+1100;3;819;U16;;EMS - Peak-valley arbitrage-charging enablement 3;;1;0;;1
+1101;3;820;U32;;EMS - Peak-valley arbitrage-Start time3 (CHA);;1;0;;1
+1102;3;822;U32;;EMS - Peak-valley arbitrage-End time3 (CHA);;1;0;;1
+1103;3;824;I16;;EMS - Peak-valley arbitrage-Power setting3 (CHA);;1;0;;1
+1104;3;825;U16;;EMS - Peak-valley arbitrage-DIS stop SOC3 (CHA);;1;0;;1
+1105;3;826;U16;;EMS - Peak-valley arbitrage-charging enablement 4;;1;0;;1
+1106;3;827;U32;;EMS - Peak-valley arbitrage-Start time4 (CHA);;1;0;;1
+1107;3;829;U32;;EMS - Peak-valley arbitrage-End time4 (CHA);;1;0;;1
+1108;3;831;I16;;EMS - Peak-valley arbitrage-Power setting4 (CHA);;1;0;;1
+1109;3;832;U16;;EMS - Peak-valley arbitrage-DIS stop SOC4 (CHA);;1;0;;1
+1110;3;2000;U16;;EMS - Master StartCmd (0-Off,1-On,2-Rst,3-Test);;1;0;;1
+1111;3;2001;U16;;EMS - System on-grid/off-grid command;;1;0;;1
+1112;3;2002;U16;;EMS - Subsystem 1 start and stop command;;1;0;;1
+1113;3;2003;U16;;EMS - Subsystem 2 start and stop command;;1;0;;1
+1114;3;2004;U16;;EMS - Subsystem 3 start and stop command;;1;0;;1
+1115;3;2005;U16;;EMS - Subsystem 4 start and stop command;;1;0;;1
+1116;3;2006;U16;;EMS - Subsystem 5 start and stop command;;1;0;;1
+1117;3;2007;U16;;EMS - Subsystem 6 start and stop command;;1;0;;1
+1118;3;2008;U16;;EMS - Subsystem 7 start and stop command;;1;0;;1
+1119;3;2009;U16;;EMS - Subsystem 8 start and stop command;;1;0;;1
+1120;3;2010;U16;;EMS - Subsystem 9 start and stop command;;1;0;;1
+1121;3;2011;U16;;EMS - Subsystem 10 start and stop command;;1;0;;1
+1122;3;2012;U16;;EMS - Subsystem 11 start and stop command;;1;0;;1
+1123;3;2013;U16;;EMS - Subsystem 12 start and stop command;;1;0;;1
+1124;3;2014;U16;;EMS - Emergency stop button;;1;0;;1
+1125;3;2015;U16;;EMS - Enable-Temp. power limit function;;1;0;;1
+1126;3;2016;U16;;EMS - Enable-Anti-reverse curr. function;;1;0;;1
+1127;3;2017;U16;;EMS - Enable-Cell volt. power limit function;;1;0;;1
+1128;3;2018;U16;;EMS - Enable-Cell volt. power limit flat;;1;0;;1
+1129;3;2019;U16;;EMS - Enable-Demand limit function;;1;0;;1
+1130;3;2020;U16;;EMS - Enable-BMS max./min. volt. protection;;1;0;;1
+1131;3;2021;U16;;EMS - SOC stop CHA/DIS enable;;1;0;;1
+1132;3;2022;U16;;EMS - Anti-reverse current discharge to charge enable;;1;0;;1
+1133;3;2023;U16;;EMS - LEMS Anti Reverse Discharge To Charge En;;1;0;;1
+1134;3;2024;U16;;EMS - AEMS anti-reverse discharge to charge enable;;1;0;;1
+1135;3;2025;U16;;EMS - Demand charge to discharge enable;;1;0;;1
+1136;3;2026;U16;;EMS - Lems demand charge to discharge enable;;1;0;;1
+1137;3;2027;U16;;EMS - Aems demand charge to discharge enable;;1;0;;1
+1138;3;2028;U16;;EMS - Lems reverse flow control enable;;1;0;;1
+1139;3;2029;U16;;EMS - Aems reverse flow control enable;;1;0;;1
+1140;3;2030;U16;;EMS - Lems static demand enable-demand limit function;;1;0;;1
+1141;3;2031;U16;;EMS - Aems static demand enable-demand limit function;;1;0;;1
+1142;3;55280;U16;;Liquid Cooling 1 - System ON/OFF;;1;0;;1
+1143;3;55480;U16;;Liquid Cooling 2 - System ON/OFF;;1;0;;1
+1144;3;55680;U16;;Liquid Cooling 3 - System ON/OFF;;1;0;;1
+1145;3;55880;U16;;Liquid Cooling 4 - System ON/OFF;;1;0;;1
+1146;3;56080;U16;;Liquid Cooling 5 - System ON/OFF;;1;0;;1
+1147;3;60200;I16;;PCS 1 - Real Active power command;;1;0;;4
+1148;3;60201;I16;;PCS 1 - Real Reactive power command;;1;0;;4
+1149;3;60202;I16;;PCS 1 - Real Power factor command;;1;0;;4
+1150;3;60280;U16;;Liquid Cooling 1 - BMS Mode Control;;1;0;;1
+1151;3;60281;I16;;Liquid Cooling 1 - Cooling point;;1;0;;1
+1152;3;60282;I16;;Liquid Cooling 1 - Heating point;;1;0;;1
+1153;3;60400;I16;;PCS 2 - Real Active power command;;1;0;;4
+1154;3;60401;I16;;PCS 2 - Real Reactive power command;;1;0;;4
+1155;3;60402;I16;;PCS 2 - Real Power factor command;;1;0;;4
+1156;3;60480;U16;;Liquid Cooling 2 - BMS Mode Control;;1;0;;1
+1157;3;60481;I16;;Liquid Cooling 2 - Cooling point;;1;0;;1
+1158;3;60482;I16;;Liquid Cooling 2 - Heating point;;1;0;;1
+1159;3;60600;I16;;PCS 3 - Real Active power command;;1;0;;4
+1160;3;60601;I16;;PCS 3 - Real Reactive power command;;1;0;;4
+1161;3;60602;I16;;PCS 3 - Real Power factor command;;1;0;;4
+1162;3;60680;U16;;Liquid Cooling 3 - BMS Mode Control;;1;0;;1
+1163;3;60681;I16;;Liquid Cooling 3 - Cooling point;;1;0;;1
+1164;3;60682;I16;;Liquid Cooling 3 - Heating point;;1;0;;1
+1165;3;60800;I16;;PCS 4 - Real Active power command;;1;0;;4
+1166;3;60801;I16;;PCS 4 - Real Reactive power command;;1;0;;4
+1167;3;60802;I16;;PCS 4 - Real Power factor command;;1;0;;4
+1168;3;60880;U16;;Liquid Cooling 4 - BMS mode control;;1;0;;1
+1169;3;60881;I16;;Liquid Cooling 4 - Cooling point;;1;0;;1
+1170;3;60882;I16;;Liquid Cooling 4 - Heating point;;1;0;;1
+1171;3;61000;I16;;PCS 5 - Real Active power command;;1;0;;4
+1172;3;61001;I16;;PCS 5 - Real Reactive power command;;1;0;;4
+1173;3;61002;I16;;PCS 5 - Real Power factor command;;1;0;;4
+1174;3;61080;U16;;Liquid Cooling 5 - BMS mode control;;1;0;;1
+1175;3;61081;I16;;Liquid Cooling 5 - Cooling point;;1;0;;1
+1176;3;61082;I16;;Liquid Cooling 5 - Heating point;;1;0;;1
+1177;2;200_0_1;BITS;;BMS Cabinet 1 - Negative electrical insulation alarm minor;R_ISO;1;0;;4
+1178;2;201_0_1;BITS;;BMS Cabinet 1 - Negative electrical insulation alarm major;;1;0;;4
+1179;2;202_0_1;BITS;;BMS Cabinet 1 - Negative electrical insulation alarm critical;;1;0;;4
+1180;2;206_0_1;BITS;;BMS Cabinet 1 - Rack OV-volt. alarm minor;;1;0;;4
+1181;2;207_0_1;BITS;;BMS Cabinet 1 - Rack OV-volt. alarm major;;1;0;;4
+1182;2;208_0_1;BITS;;BMS Cabinet 1 - Rack OV-volt. alarm critical;;1;0;;4
+1183;2;209_0_1;BITS;;BMS Cabinet 1 - Rack UN-volt. alarm minor;;1;0;;4
+1184;2;210_0_1;BITS;;BMS Cabinet 1 - Rack UN-volt. alarm major;;1;0;;4
+1185;2;211_0_1;BITS;;BMS Cabinet 1 - Rack UN-volt. alarm critical;;1;0;;4
+1186;2;212_0_1;BITS;;BMS Cabinet 1 - Rack OV-curr. alarm minor;;1;0;;4
+1187;2;213_0_1;BITS;;BMS Cabinet 1 - Rack OV-curr. alarm major;;1;0;;4
+1188;2;214_0_1;BITS;;BMS Cabinet 1 - Rack OV-curr. alarm critical;;1;0;;4
+1189;2;215_0_1;BITS;;BMS Cabinet 1 - Cluster end discharge overcurrent slight alarm;;1;0;;4
+1190;2;216_0_1;BITS;;BMS Cabinet 1 - Cluster end discharge overcurrent moderate alarm;;1;0;;4
+1191;2;217_0_1;BITS;;BMS Cabinet 1 - Cluster end discharge overcurrent severe alarm;;1;0;;4
+1192;2;218_0_1;BITS;;BMS Cabinet 1 - Cell OV-volt. alarm minor;;1;0;;4
+1193;2;219_0_1;BITS;;BMS Cabinet 1 - Cell OV-volt. alarm major;;1;0;;4
+1194;2;220_0_1;BITS;;BMS Cabinet 1 - Cell OV-volt. alarm critical;;1;0;;4
+1195;2;221_0_1;BITS;;BMS Cabinet 1 - Cell UN-volt. alarm minor;;1;0;;4
+1196;2;222_0_1;BITS;;BMS Cabinet 1 - Cell UN-volt. alarm major;;1;0;;4
+1197;2;223_0_1;BITS;;BMS Cabinet 1 - Cell UN-volt. alarm critical;;1;0;;4
+1198;2;224_0_1;BITS;;BMS Cabinet 1 - Cell OV-temp. alarm minor;;1;0;;4
+1199;2;225_0_1;BITS;;BMS Cabinet 1 - Cell OV-temp. alarm major;;1;0;;4
+1200;2;226_0_1;BITS;;BMS Cabinet 1 - Cell OV-temp. alarm critical;;1;0;;4
+1201;2;227_0_1;BITS;;BMS Cabinet 1 - Cell UN-temp. alarm minor;;1;0;;4
+1202;2;228_0_1;BITS;;BMS Cabinet 1 - Cell UN-temp. alarm major;;1;0;;4
+1203;2;229_0_1;BITS;;BMS Cabinet 1 - Cell UN-temp. alarm critical;;1;0;;4
+1204;2;230_0_1;BITS;;BMS Cabinet 1 - Single cell discharge overtemperature mild alarm;;1;0;;4
+1205;2;231_0_1;BITS;;BMS Cabinet 1 - Monomer discharge overtemperature moderate alarm;;1;0;;4
+1206;2;232_0_1;BITS;;BMS Cabinet 1 - Cell Discharge OverTemp Severe Alarm;;1;0;;4
+1207;2;233_0_1;BITS;;BMS Cabinet 1 - Cell Discharge UnderTemp Light Alarm;;1;0;;4
+1208;2;234_0_1;BITS;;BMS Cabinet 1 - Monomer discharge undertemperature moderate alarm;;1;0;;4
+1209;2;235_0_1;BITS;;BMS Cabinet 1 - Cell Discharge UnderTemp Severe Alarm;;1;0;;4
+1210;2;236_0_1;BITS;;BMS Cabinet 1 - Cell LO-SOC alarm minor;;1;0;;4
+1211;2;237_0_1;BITS;;BMS Cabinet 1 - Cell LO-SOC alarm major;;1;0;;4
+1212;2;238_0_1;BITS;;BMS Cabinet 1 - Cell LO-SOC alarm critical;;1;0;;4
+1213;2;239_0_1;BITS;;BMS Cabinet 1 - Cell HI-SOC alarm minor;;1;0;;4
+1214;2;240_0_1;BITS;;BMS Cabinet 1 - Cell HI-SOC alarm major;;1;0;;4
+1215;2;241_0_1;BITS;;BMS Cabinet 1 - Cell HI-SOC alarm critical;;1;0;;4
+1216;2;242_0_1;BITS;;BMS Cabinet 1 - Cell SOC-diff. alarm minor;;1;0;;4
+1217;2;243_0_1;BITS;;BMS Cabinet 1 - Cell SOC-diff. alarm major;;1;0;;4
+1218;2;244_0_1;BITS;;BMS Cabinet 1 - Cell SOC-diff. alarm critical;;1;0;;4
+1219;2;245_0_1;BITS;;BMS Cabinet 1 - Cell temp-diff. alarm minor;;1;0;;4
+1220;2;246_0_1;BITS;;BMS Cabinet 1 - Cell temp-diff. alarm major;;1;0;;4
+1221;2;247_0_1;BITS;;BMS Cabinet 1 - Cell temp-diff. alarm critical;;1;0;;4
+1222;2;248_0_1;BITS;;BMS Cabinet 1 - In-stack temp. rise rapidly (critical);;1;0;;4
+1223;2;250_0_1;BITS;;BMS Cabinet 1 - CHA disallowed (protection);;1;0;;4
+1224;2;251_0_1;BITS;;BMS Cabinet 1 - DIS disallowed (protection);;1;0;;4
+1225;2;252_0_1;BITS;;BMS Cabinet 1 - BMS system alarm summary;;1;0;;4
+1226;2;253_0_1;BITS;;BMS Cabinet 1 - BMS system fault summary;;1;0;;4
+1227;2;254_0_1;BITS;;BMS Cabinet 1 - Cell limit OV-volt. reaction alarm;;1;0;;4
+1228;2;255_0_1;BITS;;BMS Cabinet 1 - Cell limit UN-volt. reaction alarm;;1;0;;4
+1229;2;256_0_1;BITS;;BMS Cabinet 1 - Cell limit OV-temp. reaction alarm;;1;0;;4
+1230;2;300_0_1;BITS;;BMS Cabinet 2 - Negative electrical insulation alarm minor;;1;0;;4
+1231;2;301_0_1;BITS;;BMS Cabinet 2 - Negative electrical insulation alarm major;;1;0;;4
+1232;2;302_0_1;BITS;;BMS Cabinet 2 - Negative electrical insulation alarm critical;;1;0;;4
+1233;2;306_0_1;BITS;;BMS Cabinet 2 - Rack OV-volt. alarm minor;;1;0;;4
+1234;2;307_0_1;BITS;;BMS Cabinet 2 - Rack OV-volt. alarm major;;1;0;;4
+1235;2;308_0_1;BITS;;BMS Cabinet 2 - Rack OV-volt. alarm critical;;1;0;;4
+1236;2;309_0_1;BITS;;BMS Cabinet 2 - Rack UN-volt. alarm minor;;1;0;;4
+1237;2;310_0_1;BITS;;BMS Cabinet 2 - Rack UN-volt. alarm major;;1;0;;4
+1238;2;311_0_1;BITS;;BMS Cabinet 2 - Rack UN-volt. alarm critical;;1;0;;4
+1239;2;312_0_1;BITS;;BMS Cabinet 2 - Rack OV-curr. alarm minor;;1;0;;4
+1240;2;313_0_1;BITS;;BMS Cabinet 2 - Rack OV-curr. alarm major;;1;0;;4
+1241;2;314_0_1;BITS;;BMS Cabinet 2 - Rack OV-curr. alarm critical;;1;0;;4
+1242;2;315_0_1;BITS;;BMS Cabinet 2 - Cluster end discharge overcurrent slight alarm;;1;0;;4
+1243;2;316_0_1;BITS;;BMS Cabinet 2 - Cluster end discharge overcurrent moderate alarm;;1;0;;4
+1244;2;317_0_1;BITS;;BMS Cabinet 2 - Cluster end discharge overcurrent severe alarm;;1;0;;4
+1245;2;318_0_1;BITS;;BMS Cabinet 2 - Cell OV-volt. alarm minor;;1;0;;4
+1246;2;319_0_1;BITS;;BMS Cabinet 2 - Cell OV-volt. alarm major;;1;0;;4
+1247;2;320_0_1;BITS;;BMS Cabinet 2 - Cell OV-volt. alarm critical;;1;0;;4
+1248;2;321_0_1;BITS;;BMS Cabinet 2 - Cell UN-volt. alarm minor;;1;0;;4
+1249;2;322_0_1;BITS;;BMS Cabinet 2 - Cell UN-volt. alarm major;;1;0;;4
+1250;2;323_0_1;BITS;;BMS Cabinet 2 - Cell UN-volt. alarm critical;;1;0;;4
+1251;2;324_0_1;BITS;;BMS Cabinet 2 - Cell OV-temp. alarm minor;;1;0;;4
+1252;2;325_0_1;BITS;;BMS Cabinet 2 - Cell OV-temp. alarm major;;1;0;;4
+1253;2;326_0_1;BITS;;BMS Cabinet 2 - Cell OV-temp. alarm critical;;1;0;;4
+1254;2;327_0_1;BITS;;BMS Cabinet 2 - Cell UN-temp. alarm minor;;1;0;;4
+1255;2;328_0_1;BITS;;BMS Cabinet 2 - Cell UN-temp. alarm major;;1;0;;4
+1256;2;329_0_1;BITS;;BMS Cabinet 2 - Cell UN-temp. alarm critical;;1;0;;4
+1257;2;330_0_1;BITS;;BMS Cabinet 2 - Single cell discharge overtemperature mild alarm;;1;0;;4
+1258;2;331_0_1;BITS;;BMS Cabinet 2 - Monomer discharge overtemperature moderate alarm;;1;0;;4
+1259;2;332_0_1;BITS;;BMS Cabinet 2 - Cell Discharge OverTemp Severe Alarm;;1;0;;4
+1260;2;333_0_1;BITS;;BMS Cabinet 2 - Cell Discharge UnderTemp Light Alarm;;1;0;;4
+1261;2;334_0_1;BITS;;BMS Cabinet 2 - Monomer discharge undertemperature moderate alarm;;1;0;;4
+1262;2;335_0_1;BITS;;BMS Cabinet 2 - Cell Discharge UnderTemp Severe Alarm;;1;0;;4
+1263;2;336_0_1;BITS;;BMS Cabinet 2 - Cell LO-SOC alarm minor;;1;0;;4
+1264;2;337_0_1;BITS;;BMS Cabinet 2 - Cell LO-SOC alarm major;;1;0;;4
+1265;2;338_0_1;BITS;;BMS Cabinet 2 - Cell LO-SOC alarm critical;;1;0;;4
+1266;2;339_0_1;BITS;;BMS Cabinet 2 - Cell HI-SOC alarm minor;;1;0;;4
+1267;2;340_0_1;BITS;;BMS Cabinet 2 - Cell HI-SOC alarm major;;1;0;;4
+1268;2;341_0_1;BITS;;BMS Cabinet 2 - Cell HI-SOC alarm critical;;1;0;;4
+1269;2;342_0_1;BITS;;BMS Cabinet 2 - Cell SOC-diff. alarm minor;;1;0;;4
+1270;2;343_0_1;BITS;;BMS Cabinet 2 - Cell SOC-diff. alarm major;;1;0;;4
+1271;2;344_0_1;BITS;;BMS Cabinet 2 - Cell SOC-diff. alarm critical;;1;0;;4
+1272;2;345_0_1;BITS;;BMS Cabinet 2 - Cell temp-diff. alarm minor;;1;0;;4
+1273;2;346_0_1;BITS;;BMS Cabinet 2 - Cell temp-diff. alarm major;;1;0;;4
+1274;2;347_0_1;BITS;;BMS Cabinet 2 - Cell temp-diff. alarm critical;;1;0;;4
+1275;2;348_0_1;BITS;;BMS Cabinet 2 - In-stack temp. rise rapidly (critical);;1;0;;4
+1276;2;350_0_1;BITS;;BMS Cabinet 2 - CHA disallowed (protection);;1;0;;4
+1277;2;351_0_1;BITS;;BMS Cabinet 2 - DIS disallowed (protection);;1;0;;4
+1278;2;352_0_1;BITS;;BMS Cabinet 2 - BMS system alarm summary;;1;0;;4
+1279;2;353_0_1;BITS;;BMS Cabinet 2 - BMS system fault summary;;1;0;;4
+1280;2;354_0_1;BITS;;BMS Cabinet 2 - Cell limit OV-volt. reaction alarm;;1;0;;4
+1281;2;355_0_1;BITS;;BMS Cabinet 2 - Cell limit UN-volt. reaction alarm;;1;0;;4
+1282;2;356_0_1;BITS;;BMS Cabinet 2 - Cell limit OV-temp. reaction alarm;;1;0;;4
+1283;2;400_0_1;BITS;;BMS Cabinet 3 - Negative electrical insulation alarm minor;;1;0;;4
+1284;2;401_0_1;BITS;;BMS Cabinet 3 - Negative electrical insulation alarm major;;1;0;;4
+1285;2;402_0_1;BITS;;BMS Cabinet 3 - Negative electrical insulation alarm critical;;1;0;;4
+1286;2;406_0_1;BITS;;BMS Cabinet 3 - Rack OV-volt. alarm minor;;1;0;;4
+1287;2;407_0_1;BITS;;BMS Cabinet 3 - Rack OV-volt. alarm major;;1;0;;4
+1288;2;408_0_1;BITS;;BMS Cabinet 3 - Rack OV-volt. alarm critical;;1;0;;4
+1289;2;409_0_1;BITS;;BMS Cabinet 3 - Rack UN-volt. alarm minor;;1;0;;4
+1290;2;410_0_1;BITS;;BMS Cabinet 3 - Rack UN-volt. alarm major;;1;0;;4
+1291;2;411_0_1;BITS;;BMS Cabinet 3 - Rack UN-volt. alarm critical;;1;0;;4
+1292;2;412_0_1;BITS;;BMS Cabinet 3 - Rack OV-curr. alarm minor;;1;0;;4
+1293;2;413_0_1;BITS;;BMS Cabinet 3 - Rack OV-curr. alarm major;;1;0;;4
+1294;2;414_0_1;BITS;;BMS Cabinet 3 - Rack OV-curr. alarm critical;;1;0;;4
+1295;2;415_0_1;BITS;;BMS Cabinet 3 - Cluster end discharge overcurrent slight alarm;;1;0;;4
+1296;2;416_0_1;BITS;;BMS Cabinet 3 - Cluster end discharge overcurrent moderate alarm;;1;0;;4
+1297;2;417_0_1;BITS;;BMS Cabinet 3 - Cluster end discharge overcurrent severe alarm;;1;0;;4
+1298;2;418_0_1;BITS;;BMS Cabinet 3 - Cell OV-volt. alarm minor;;1;0;;4
+1299;2;419_0_1;BITS;;BMS Cabinet 3 - Cell OV-volt. alarm major;;1;0;;4
+1300;2;420_0_1;BITS;;BMS Cabinet 3 - Cell OV-volt. alarm critical;;1;0;;4
+1301;2;421_0_1;BITS;;BMS Cabinet 3 - Cell UN-volt. alarm minor;;1;0;;4
+1302;2;422_0_1;BITS;;BMS Cabinet 3 - Cell UN-volt. alarm major;;1;0;;4
+1303;2;423_0_1;BITS;;BMS Cabinet 3 - Cell UN-volt. alarm critical;;1;0;;4
+1304;2;424_0_1;BITS;;BMS Cabinet 3 - Cell OV-temp. alarm minor;;1;0;;4
+1305;2;425_0_1;BITS;;BMS Cabinet 3 - Cell OV-temp. alarm major;;1;0;;4
+1306;2;426_0_1;BITS;;BMS Cabinet 3 - Cell OV-temp. alarm critical;;1;0;;4
+1307;2;427_0_1;BITS;;BMS Cabinet 3 - Cell UN-temp. alarm minor;;1;0;;4
+1308;2;428_0_1;BITS;;BMS Cabinet 3 - Cell UN-temp. alarm major;;1;0;;4
+1309;2;429_0_1;BITS;;BMS Cabinet 3 - Cell UN-temp. alarm critical;;1;0;;4
+1310;2;430_0_1;BITS;;BMS Cabinet 3 - Single cell discharge overtemperature mild alarm;;1;0;;4
+1311;2;431_0_1;BITS;;BMS Cabinet 3 - Monomer discharge overtemperature moderate alarm;;1;0;;4
+1312;2;432_0_1;BITS;;BMS Cabinet 3 - Cell Discharge OverTemp Severe Alarm;;1;0;;4
+1313;2;433_0_1;BITS;;BMS Cabinet 3 - Cell Discharge UnderTemp Light Alarm;;1;0;;4
+1314;2;434_0_1;BITS;;BMS Cabinet 3 - Monomer discharge undertemperature moderate alarm;;1;0;;4
+1315;2;435_0_1;BITS;;BMS Cabinet 3 - Cell Discharge UnderTemp Severe Alarm;;1;0;;4
+1316;2;436_0_1;BITS;;BMS Cabinet 3 - Cell LO-SOC alarm minor;;1;0;;4
+1317;2;437_0_1;BITS;;BMS Cabinet 3 - Cell LO-SOC alarm major;;1;0;;4
+1318;2;438_0_1;BITS;;BMS Cabinet 3 - Cell LO-SOC alarm critical;;1;0;;4
+1319;2;439_0_1;BITS;;BMS Cabinet 3 - Cell HI-SOC alarm minor;;1;0;;4
+1320;2;440_0_1;BITS;;BMS Cabinet 3 - Cell HI-SOC alarm major;;1;0;;4
+1321;2;441_0_1;BITS;;BMS Cabinet 3 - Cell HI-SOC alarm critical;;1;0;;4
+1322;2;442_0_1;BITS;;BMS Cabinet 3 - Cell SOC-diff. alarm minor;;1;0;;4
+1323;2;443_0_1;BITS;;BMS Cabinet 3 - Cell SOC-diff. alarm major;;1;0;;4
+1324;2;444_0_1;BITS;;BMS Cabinet 3 - Cell SOC-diff. alarm critical;;1;0;;4
+1325;2;445_0_1;BITS;;BMS Cabinet 3 - Cell temp-diff. alarm minor;;1;0;;4
+1326;2;446_0_1;BITS;;BMS Cabinet 3 - Cell temp-diff. alarm major;;1;0;;4
+1327;2;447_0_1;BITS;;BMS Cabinet 3 - Cell temp-diff. alarm critical;;1;0;;4
+1328;2;448_0_1;BITS;;BMS Cabinet 3 - In-stack temp. rise rapidly (critical);;1;0;;4
+1329;2;450_0_1;BITS;;BMS Cabinet 3 - CHA disallowed (protection);;1;0;;4
+1330;2;451_0_1;BITS;;BMS Cabinet 3 - DIS disallowed (protection);;1;0;;4
+1331;2;452_0_1;BITS;;BMS Cabinet 3 - BMS system alarm summary;;1;0;;4
+1332;2;453_0_1;BITS;;BMS Cabinet 3 - BMS system fault summary;;1;0;;4
+1333;2;454_0_1;BITS;;BMS Cabinet 3 - Cell limit OV-volt. reaction alarm;;1;0;;4
+1334;2;455_0_1;BITS;;BMS Cabinet 3 - Cell limit UN-volt. reaction alarm;;1;0;;4
+1335;2;456_0_1;BITS;;BMS Cabinet 3 - Cell limit OV-temp. reaction alarm;;1;0;;4
+1336;2;500_0_1;BITS;;BMS Cabinet 4 - Negative electrical insulation alarm minor;;1;0;;4
+1337;2;501_0_1;BITS;;BMS Cabinet 4 - Negative electrical insulation alarm major;;1;0;;4
+1338;2;502_0_1;BITS;;BMS Cabinet 4 - Negative electrical insulation alarm critical;;1;0;;4
+1339;2;506_0_1;BITS;;BMS Cabinet 4 - Rack OV-volt. alarm minor;;1;0;;4
+1340;2;507_0_1;BITS;;BMS Cabinet 4 - Rack OV-volt. alarm major;;1;0;;4
+1341;2;508_0_1;BITS;;BMS Cabinet 4 - Rack OV-volt. alarm critical;;1;0;;4
+1342;2;509_0_1;BITS;;BMS Cabinet 4 - Rack UN-volt. alarm minor;;1;0;;4
+1343;2;510_0_1;BITS;;BMS Cabinet 4 - Rack UN-volt. alarm major;;1;0;;4
+1344;2;511_0_1;BITS;;BMS Cabinet 4 - Rack UN-volt. alarm critical;;1;0;;4
+1345;2;512_0_1;BITS;;BMS Cabinet 4 - Rack OV-curr. alarm minor;;1;0;;4
+1346;2;513_0_1;BITS;;BMS Cabinet 4 - Rack OV-curr. alarm major;;1;0;;4
+1347;2;514_0_1;BITS;;BMS Cabinet 4 - Rack OV-curr. alarm critical;;1;0;;4
+1348;2;515_0_1;BITS;;BMS Cabinet 4 - Cluster end discharge overcurrent slight alarm;;1;0;;4
+1349;2;516_0_1;BITS;;BMS Cabinet 4 - Cluster end discharge overcurrent moderate alarm;;1;0;;4
+1350;2;517_0_1;BITS;;BMS Cabinet 4 - Cluster end discharge overcurrent severe alarm;;1;0;;4
+1351;2;518_0_1;BITS;;BMS Cabinet 4 - Cell OV-volt. alarm minor;;1;0;;4
+1352;2;519_0_1;BITS;;BMS Cabinet 4 - Cell OV-volt. alarm major;;1;0;;4
+1353;2;520_0_1;BITS;;BMS Cabinet 4 - Cell OV-volt. alarm critical;;1;0;;4
+1354;2;521_0_1;BITS;;BMS Cabinet 4 - Cell UN-volt. alarm minor;;1;0;;4
+1355;2;522_0_1;BITS;;BMS Cabinet 4 - Cell UN-volt. alarm major;;1;0;;4
+1356;2;523_0_1;BITS;;BMS Cabinet 4 - Cell UN-volt. alarm critical;;1;0;;4
+1357;2;524_0_1;BITS;;BMS Cabinet 4 - Cell OV-temp. alarm minor;;1;0;;4
+1358;2;525_0_1;BITS;;BMS Cabinet 4 - Cell OV-temp. alarm major;;1;0;;4
+1359;2;526_0_1;BITS;;BMS Cabinet 4 - Cell OV-temp. alarm critical;;1;0;;4
+1360;2;527_0_1;BITS;;BMS Cabinet 4 - Cell UN-temp. alarm minor;;1;0;;4
+1361;2;528_0_1;BITS;;BMS Cabinet 4 - Cell UN-temp. alarm major;;1;0;;4
+1362;2;529_0_1;BITS;;BMS Cabinet 4 - Cell UN-temp. alarm critical;;1;0;;4
+1363;2;530_0_1;BITS;;BMS Cabinet 4 - Single cell discharge overtemperature mild alarm;;1;0;;4
+1364;2;531_0_1;BITS;;BMS Cabinet 4 - Monomer discharge overtemperature moderate alarm;;1;0;;4
+1365;2;532_0_1;BITS;;BMS Cabinet 4 - Cell Discharge OverTemp Severe Alarm;;1;0;;4
+1366;2;533_0_1;BITS;;BMS Cabinet 4 - Cell Discharge UnderTemp Light Alarm;;1;0;;4
+1367;2;534_0_1;BITS;;BMS Cabinet 4 - Monomer discharge undertemperature moderate alarm;;1;0;;4
+1368;2;535_0_1;BITS;;BMS Cabinet 4 - Cell Discharge UnderTemp Severe Alarm;;1;0;;4
+1369;2;536_0_1;BITS;;BMS Cabinet 4 - Cell LO-SOC alarm minor;;1;0;;4
+1370;2;537_0_1;BITS;;BMS Cabinet 4 - Cell LO-SOC alarm major;;1;0;;4
+1371;2;538_0_1;BITS;;BMS Cabinet 4 - Cell LO-SOC alarm critical;;1;0;;4
+1372;2;539_0_1;BITS;;BMS Cabinet 4 - Cell HI-SOC alarm minor;;1;0;;4
+1373;2;540_0_1;BITS;;BMS Cabinet 4 - Cell HI-SOC alarm major;;1;0;;4
+1374;2;541_0_1;BITS;;BMS Cabinet 4 - Cell HI-SOC alarm critical;;1;0;;4
+1375;2;542_0_1;BITS;;BMS Cabinet 4 - Cell SOC-diff. alarm minor;;1;0;;4
+1376;2;543_0_1;BITS;;BMS Cabinet 4 - Cell SOC-diff. alarm major;;1;0;;4
+1377;2;544_0_1;BITS;;BMS Cabinet 4 - Cell SOC-diff. alarm critical;;1;0;;4
+1378;2;545_0_1;BITS;;BMS Cabinet 4 - Cell temp-diff. alarm minor;;1;0;;4
+1379;2;546_0_1;BITS;;BMS Cabinet 4 - Cell temp-diff. alarm major;;1;0;;4
+1380;2;547_0_1;BITS;;BMS Cabinet 4 - Cell temp-diff. alarm critical;;1;0;;4
+1381;2;548_0_1;BITS;;BMS Cabinet 4 - In-stack temp. rise rapidly (critical);;1;0;;4
+1382;2;550_0_1;BITS;;BMS Cabinet 4 - CHA disallowed (protection);;1;0;;4
+1383;2;551_0_1;BITS;;BMS Cabinet 4 - DIS disallowed (protection);;1;0;;4
+1384;2;552_0_1;BITS;;BMS Cabinet 4 - BMS system alarm summary;;1;0;;4
+1385;2;553_0_1;BITS;;BMS Cabinet 4 - BMS system fault summary;;1;0;;4
+1386;2;554_0_1;BITS;;BMS Cabinet 4 - Cell limit OV-volt. reaction alarm;;1;0;;4
+1387;2;555_0_1;BITS;;BMS Cabinet 4 - Cell limit UN-volt. reaction alarm;;1;0;;4
+1388;2;556_0_1;BITS;;BMS Cabinet 4 - Cell limit OV-temp. reaction alarm;;1;0;;4
+1389;2;600_0_1;BITS;;BMS Cabinet 5 - Negative electrical insulation alarm minor;;1;0;;4
+1390;2;601_0_1;BITS;;BMS Cabinet 5 - Negative electrical insulation alarm major;;1;0;;4
+1391;2;602_0_1;BITS;;BMS Cabinet 5 - Negative electrical insulation alarm critical;;1;0;;4
+1392;2;606_0_1;BITS;;BMS Cabinet 5 - Rack OV-volt. alarm minor;;1;0;;4
+1393;2;607_0_1;BITS;;BMS Cabinet 5 - Rack OV-volt. alarm major;;1;0;;4
+1394;2;608_0_1;BITS;;BMS Cabinet 5 - Rack OV-volt. alarm critical;;1;0;;4
+1395;2;609_0_1;BITS;;BMS Cabinet 5 - Rack UN-volt. alarm minor;;1;0;;4
+1396;2;610_0_1;BITS;;BMS Cabinet 5 - Rack UN-volt. alarm major;;1;0;;4
+1397;2;611_0_1;BITS;;BMS Cabinet 5 - Rack UN-volt. alarm critical;;1;0;;4
+1398;2;612_0_1;BITS;;BMS Cabinet 5 - Rack OV-curr. alarm minor;;1;0;;4
+1399;2;613_0_1;BITS;;BMS Cabinet 5 - Rack OV-curr. alarm major;;1;0;;4
+1400;2;614_0_1;BITS;;BMS Cabinet 5 - Rack OV-curr. alarm critical;;1;0;;4
+1401;2;615_0_1;BITS;;BMS Cabinet 5 - Cluster end discharge overcurrent slight alarm;;1;0;;4
+1402;2;616_0_1;BITS;;BMS Cabinet 5 - Cluster end discharge overcurrent moderate alarm;;1;0;;4
+1403;2;617_0_1;BITS;;BMS Cabinet 5 - Cluster end discharge overcurrent severe alarm;;1;0;;4
+1404;2;618_0_1;BITS;;BMS Cabinet 5 - Cell OV-volt. alarm minor;;1;0;;4
+1405;2;619_0_1;BITS;;BMS Cabinet 5 - Cell OV-volt. alarm major;;1;0;;4
+1406;2;620_0_1;BITS;;BMS Cabinet 5 - Cell OV-volt. alarm critical;;1;0;;4
+1407;2;621_0_1;BITS;;BMS Cabinet 5 - Cell UN-volt. alarm minor;;1;0;;4
+1408;2;622_0_1;BITS;;BMS Cabinet 5 - Cell UN-volt. alarm major;;1;0;;4
+1409;2;623_0_1;BITS;;BMS Cabinet 5 - Cell UN-volt. alarm critical;;1;0;;4
+1410;2;624_0_1;BITS;;BMS Cabinet 5 - Cell OV-temp. alarm minor;;1;0;;4
+1411;2;625_0_1;BITS;;BMS Cabinet 5 - Cell OV-temp. alarm major;;1;0;;4
+1412;2;626_0_1;BITS;;BMS Cabinet 5 - Cell OV-temp. alarm critical;;1;0;;4
+1413;2;627_0_1;BITS;;BMS Cabinet 5 - Cell UN-temp. alarm minor;;1;0;;4
+1414;2;628_0_1;BITS;;BMS Cabinet 5 - Cell UN-temp. alarm major;;1;0;;4
+1415;2;629_0_1;BITS;;BMS Cabinet 5 - Cell UN-temp. alarm critical;;1;0;;4
+1416;2;630_0_1;BITS;;BMS Cabinet 5 - Single cell discharge overtemperature mild alarm;;1;0;;4
+1417;2;631_0_1;BITS;;BMS Cabinet 5 - Monomer discharge overtemperature moderate alarm;;1;0;;4
+1418;2;632_0_1;BITS;;BMS Cabinet 5 - Cell Discharge OverTemp Severe Alarm;;1;0;;4
+1419;2;633_0_1;BITS;;BMS Cabinet 5 - Cell Discharge UnderTemp Light Alarm;;1;0;;4
+1420;2;634_0_1;BITS;;BMS Cabinet 5 - Monomer discharge undertemperature moderate alarm;;1;0;;4
+1421;2;635_0_1;BITS;;BMS Cabinet 5 - Cell Discharge UnderTemp Severe Alarm;;1;0;;4
+1422;2;636_0_1;BITS;;BMS Cabinet 5 - Cell LO-SOC alarm minor;;1;0;;4
+1423;2;637_0_1;BITS;;BMS Cabinet 5 - Cell LO-SOC alarm major;;1;0;;4
+1424;2;638_0_1;BITS;;BMS Cabinet 5 - Cell LO-SOC alarm critical;;1;0;;4
+1425;2;639_0_1;BITS;;BMS Cabinet 5 - Cell HI-SOC alarm minor;;1;0;;4
+1426;2;640_0_1;BITS;;BMS Cabinet 5 - Cell HI-SOC alarm major;;1;0;;4
+1427;2;641_0_1;BITS;;BMS Cabinet 5 - Cell HI-SOC alarm critical;;1;0;;4
+1428;2;642_0_1;BITS;;BMS Cabinet 5 - Cell SOC-diff. alarm minor;;1;0;;4
+1429;2;643_0_1;BITS;;BMS Cabinet 5 - Cell SOC-diff. alarm major;;1;0;;4
+1430;2;644_0_1;BITS;;BMS Cabinet 5 - Cell SOC-diff. alarm critical;;1;0;;4
+1431;2;645_0_1;BITS;;BMS Cabinet 5 - Cell temp-diff. alarm minor;;1;0;;4
+1432;2;646_0_1;BITS;;BMS Cabinet 5 - Cell temp-diff. alarm major;;1;0;;4
+1433;2;647_0_1;BITS;;BMS Cabinet 5 - Cell temp-diff. alarm critical;;1;0;;4
+1434;2;648_0_1;BITS;;BMS Cabinet 5 - In-stack temp. rise rapidly (critical);;1;0;;4
+1435;2;650_0_1;BITS;;BMS Cabinet 5 - CHA disallowed (protection);;1;0;;4
+1436;2;651_0_1;BITS;;BMS Cabinet 5 - DIS disallowed (protection);;1;0;;4
+1437;2;652_0_1;BITS;;BMS Cabinet 5 - BMS system alarm summary;;1;0;;4
+1438;2;653_0_1;BITS;;BMS Cabinet 5 - BMS system fault summary;;1;0;;4
+1439;2;654_0_1;BITS;;BMS Cabinet 5 - Cell limit OV-volt. reaction alarm;;1;0;;4
+1440;2;655_0_1;BITS;;BMS Cabinet 5 - Cell limit UN-volt. reaction alarm;;1;0;;4
+1441;2;656_0_1;BITS;;BMS Cabinet 5 - Cell limit OV-temp. reaction alarm;;1;0;;4
+1442;2;4200_0_1;BITS;;BMS Rack 1 - Rack negative electrical insulation alarm (minor);;1;0;;4
+1443;2;4201_0_1;BITS;;BMS Rack 1 - Rack negative electrical insulation alarm (major);;1;0;;4
+1444;2;4202_0_1;BITS;;BMS Rack 1 - Clu End Neg Insul Severe Alarm;;1;0;;4
+1445;2;4203_0_1;BITS;;BMS Rack 1 - Rack LO-SOC (minor);;1;0;;4
+1446;2;4204_0_1;BITS;;BMS Rack 1 - Rack LO-SOC (major);;1;0;;4
+1447;2;4205_0_1;BITS;;BMS Rack 1 - Rack LO-SOC (critical);;1;0;;4
+1448;2;4206_0_1;BITS;;BMS Rack 1 - Rack OV-volt. (minor);;1;0;;4
+1449;2;4207_0_1;BITS;;BMS Rack 1 - Rack OV-volt. (major);;1;0;;4
+1450;2;4208_0_1;BITS;;BMS Rack 1 - Rack OV-volt. (critical);;1;0;;4
+1451;2;4209_0_1;BITS;;BMS Rack 1 - Rack UN-volt. (minor);;1;0;;4
+1452;2;4210_0_1;BITS;;BMS Rack 1 - Rack UN-volt. (major);;1;0;;4
+1453;2;4211_0_1;BITS;;BMS Rack 1 - Rack UN-volt. (critical);;1;0;;4
+1454;2;4212_0_1;BITS;;BMS Rack 1 - Rack CHA OV-curr. alarm (minor);;1;0;;4
+1455;2;4213_0_1;BITS;;BMS Rack 1 - Rack CHA OV-curr. alarm (major);;1;0;;4
+1456;2;4214_0_1;BITS;;BMS Rack 1 - Rack CHA OV-curr. alarm (critical);;1;0;;4
+1457;2;4215_0_1;BITS;;BMS Rack 1 - Rack DIS OV-curr. alarm (minor);;1;0;;4
+1458;2;4216_0_1;BITS;;BMS Rack 1 - Rack DIS OV-curr. alarm (major);;1;0;;4
+1459;2;4217_0_1;BITS;;BMS Rack 1 - Rack DIS OV-curr. alarm (critical);;1;0;;4
+1460;2;4218_0_1;BITS;;BMS Rack 1 - Cell OV-volt. (minor);;1;0;;4
+1461;2;4219_0_1;BITS;;BMS Rack 1 - Cell OV-volt. (major);;1;0;;4
+1462;2;4220_0_1;BITS;;BMS Rack 1 - Cell OV-volt. (critical);;1;0;;4
+1463;2;4221_0_1;BITS;;BMS Rack 1 - Cell UN-volt. (minor);;1;0;;4
+1464;2;4222_0_1;BITS;;BMS Rack 1 - Cell UN-volt. (major);;1;0;;4
+1465;2;4223_0_1;BITS;;BMS Rack 1 - Cell UN-volt. (critical);;1;0;;4
+1466;2;4224_0_1;BITS;;BMS Rack 1 - CHA cell OV-temp. (minor);;1;0;;4
+1467;2;4225_0_1;BITS;;BMS Rack 1 - CHA cell OV-temp. (major);;1;0;;4
+1468;2;4226_0_1;BITS;;BMS Rack 1 - CHA cell OV-temp. (critical);;1;0;;4
+1469;2;4227_0_1;BITS;;BMS Rack 1 - CHA cell UN-temp. (minor);;1;0;;4
+1470;2;4228_0_1;BITS;;BMS Rack 1 - CHA cell UN-temp. (major);;1;0;;4
+1471;2;4229_0_1;BITS;;BMS Rack 1 - CHA cell UN-temp. (critical);;1;0;;4
+1472;2;4230_0_1;BITS;;BMS Rack 1 - DIS cell OV-temp. (minor);;1;0;;4
+1473;2;4231_0_1;BITS;;BMS Rack 1 - DIS cell OV-temp. (major);;1;0;;4
+1474;2;4232_0_1;BITS;;BMS Rack 1 - DIS cell OV-temp. (critical);;1;0;;4
+1475;2;4233_0_1;BITS;;BMS Rack 1 - DIS cell UN-temp. (minor);;1;0;;4
+1476;2;4234_0_1;BITS;;BMS Rack 1 - DIS cell UN-temp. (major);;1;0;;4
+1477;2;4235_0_1;BITS;;BMS Rack 1 - DIS cell UN-temp. (critical);;1;0;;4
+1478;2;4236_0_1;BITS;;BMS Rack 1 - Cell LO-SOC minor;;1;0;;4
+1479;2;4237_0_1;BITS;;BMS Rack 1 - Cell LO-SOC major;;1;0;;4
+1480;2;4238_0_1;BITS;;BMS Rack 1 - Cell LO-SOC critical;;1;0;;4
+1481;2;4239_0_1;BITS;;BMS Rack 1 - Cell HI-SOC minor;;1;0;;4
+1482;2;4240_0_1;BITS;;BMS Rack 1 - Cell HI-SOC major;;1;0;;4
+1483;2;4241_0_1;BITS;;BMS Rack 1 - Cell HI-SOC critical;;1;0;;4
+1484;2;4242_0_1;BITS;;BMS Rack 1 - Cell volt-diff. (minor);;1;0;;4
+1485;2;4243_0_1;BITS;;BMS Rack 1 - Cell volt-diff. (major);;1;0;;4
+1486;2;4244_0_1;BITS;;BMS Rack 1 - Cell volt-diff. (critical);;1;0;;4
+1487;2;4245_0_1;BITS;;BMS Rack 1 - Cell temp-diff. (minor);;1;0;;4
+1488;2;4246_0_1;BITS;;BMS Rack 1 - Cell temp-diff. (major);;1;0;;4
+1489;2;4247_0_1;BITS;;BMS Rack 1 - Cell temp-diff. (critical);;1;0;;4
+1490;2;4249_0_1;BITS;;BMS Rack 1 - Main positive contactor;;1;0;;4
+1491;2;4250_0_1;BITS;;BMS Rack 1 - Rack CHA disallowed;;1;0;;4
+1492;2;4251_0_1;BITS;;BMS Rack 1 - Rack DIS disallowed;;1;0;;4
+1493;2;4252_0_1;BITS;;BMS Rack 1 - Major alarm summary;;1;0;;4
+1494;2;4253_0_1;BITS;;BMS Rack 1 - Critical alarm summary;;1;0;;4
+1495;2;4254_0_1;BITS;;BMS Rack 1 - BCM comm. fault;;1;0;;4
+1496;2;4300_0_1;BITS;;BMS Rack 2 - Rack negative electrical insulation alarm (minor);;1;0;;4
+1497;2;4301_0_1;BITS;;BMS Rack 2 - Rack negative electrical insulation alarm (major);;1;0;;4
+1498;2;4302_0_1;BITS;;BMS Rack 2 - Clu End Neg Insul Severe Alarm;;1;0;;4
+1499;2;4303_0_1;BITS;;BMS Rack 2 - Rack LO-SOC (minor);;1;0;;4
+1500;2;4304_0_1;BITS;;BMS Rack 2 - Rack LO-SOC (major);;1;0;;4
+1501;2;4305_0_1;BITS;;BMS Rack 2 - Rack LO-SOC (critical);;1;0;;4
+1502;2;4306_0_1;BITS;;BMS Rack 2 - Rack OV-volt. (minor);;1;0;;4
+1503;2;4307_0_1;BITS;;BMS Rack 2 - Rack OV-volt. (major);;1;0;;4
+1504;2;4308_0_1;BITS;;BMS Rack 2 - Rack OV-volt. (critical);;1;0;;4
+1505;2;4309_0_1;BITS;;BMS Rack 2 - Rack UN-volt. (minor);;1;0;;4
+1506;2;4310_0_1;BITS;;BMS Rack 2 - Rack UN-volt. (major);;1;0;;4
+1507;2;4311_0_1;BITS;;BMS Rack 2 - Rack UN-volt. (critical);;1;0;;4
+1508;2;4312_0_1;BITS;;BMS Rack 2 - Rack CHA OV-curr. alarm (minor);;1;0;;4
+1509;2;4313_0_1;BITS;;BMS Rack 2 - Rack CHA OV-curr. alarm (major);;1;0;;4
+1510;2;4314_0_1;BITS;;BMS Rack 2 - Rack CHA OV-curr. alarm (critical);;1;0;;4
+1511;2;4315_0_1;BITS;;BMS Rack 2 - Rack DIS OV-curr. alarm (minor);;1;0;;4
+1512;2;4316_0_1;BITS;;BMS Rack 2 - Rack DIS OV-curr. alarm (major);;1;0;;4
+1513;2;4317_0_1;BITS;;BMS Rack 2 - Rack DIS OV-curr. alarm (critical);;1;0;;4
+1514;2;4318_0_1;BITS;;BMS Rack 2 - Cell OV-volt. (minor);;1;0;;4
+1515;2;4319_0_1;BITS;;BMS Rack 2 - Cell OV-volt. (major);;1;0;;4
+1516;2;4320_0_1;BITS;;BMS Rack 2 - Cell OV-volt. (critical);;1;0;;4
+1517;2;4321_0_1;BITS;;BMS Rack 2 - Cell UN-volt. (minor);;1;0;;4
+1518;2;4322_0_1;BITS;;BMS Rack 2 - Cell UN-volt. (major);;1;0;;4
+1519;2;4323_0_1;BITS;;BMS Rack 2 - Cell UN-volt. (critical);;1;0;;4
+1520;2;4324_0_1;BITS;;BMS Rack 2 - CHA cell OV-temp. (minor);;1;0;;4
+1521;2;4325_0_1;BITS;;BMS Rack 2 - CHA cell OV-temp. (major);;1;0;;4
+1522;2;4326_0_1;BITS;;BMS Rack 2 - CHA cell OV-temp. (critical);;1;0;;4
+1523;2;4327_0_1;BITS;;BMS Rack 2 - CHA cell UN-temp. (minor);;1;0;;4
+1524;2;4328_0_1;BITS;;BMS Rack 2 - CHA cell UN-temp. (major);;1;0;;4
+1525;2;4329_0_1;BITS;;BMS Rack 2 - CHA cell UN-temp. (critical);;1;0;;4
+1526;2;4330_0_1;BITS;;BMS Rack 2 - DIS cell OV-temp. (minor);;1;0;;4
+1527;2;4331_0_1;BITS;;BMS Rack 2 - DIS cell OV-temp. (major);;1;0;;4
+1528;2;4332_0_1;BITS;;BMS Rack 2 - DIS cell OV-temp. (critical);;1;0;;4
+1529;2;4333_0_1;BITS;;BMS Rack 2 - DIS cell UN-temp. (minor);;1;0;;4
+1530;2;4334_0_1;BITS;;BMS Rack 2 - DIS cell UN-temp. (major);;1;0;;4
+1531;2;4335_0_1;BITS;;BMS Rack 2 - DIS cell UN-temp. (critical);;1;0;;4
+1532;2;4336_0_1;BITS;;BMS Rack 2 - Cell LO-SOC minor;;1;0;;4
+1533;2;4337_0_1;BITS;;BMS Rack 2 - Cell LO-SOC major;;1;0;;4
+1534;2;4338_0_1;BITS;;BMS Rack 2 - Cell LO-SOC critical;;1;0;;4
+1535;2;4339_0_1;BITS;;BMS Rack 2 - Cell HI-SOC minor;;1;0;;4
+1536;2;4340_0_1;BITS;;BMS Rack 2 - Cell HI-SOC major;;1;0;;4
+1537;2;4341_0_1;BITS;;BMS Rack 2 - Cell HI-SOC critical;;1;0;;4
+1538;2;4342_0_1;BITS;;BMS Rack 2 - Cell volt-diff. (minor);;1;0;;4
+1539;2;4343_0_1;BITS;;BMS Rack 2 - Cell volt-diff. (major);;1;0;;4
+1540;2;4344_0_1;BITS;;BMS Rack 2 - Cell volt-diff. (critical);;1;0;;4
+1541;2;4345_0_1;BITS;;BMS Rack 2 - Cell temp-diff. (minor);;1;0;;4
+1542;2;4346_0_1;BITS;;BMS Rack 2 - Cell temp-diff. (major);;1;0;;4
+1543;2;4347_0_1;BITS;;BMS Rack 2 - Cell temp-diff. (critical);;1;0;;4
+1544;2;4349_0_1;BITS;;BMS Rack 2 - Main positive contactor;;1;0;;4
+1545;2;4350_0_1;BITS;;BMS Rack 2 - Rack CHA disallowed;;1;0;;4
+1546;2;4351_0_1;BITS;;BMS Rack 2 - Rack DIS disallowed;;1;0;;4
+1547;2;4352_0_1;BITS;;BMS Rack 2 - Major alarm summary;;1;0;;4
+1548;2;4353_0_1;BITS;;BMS Rack 2 - Critical alarm summary;;1;0;;4
+1549;2;4354_0_1;BITS;;BMS Rack 2 - BCM comm. fault;;1;0;;4
+1550;2;4400_0_1;BITS;;BMS Rack 3 - Rack negative electrical insulation alarm (minor);;1;0;;4
+1551;2;4401_0_1;BITS;;BMS Rack 3 - Rack negative electrical insulation alarm (major);;1;0;;4
+1552;2;4402_0_1;BITS;;BMS Rack 3 - Clu End Neg Insul Severe Alarm;;1;0;;4
+1553;2;4403_0_1;BITS;;BMS Rack 3 - Rack LO-SOC (minor);;1;0;;4
+1554;2;4404_0_1;BITS;;BMS Rack 3 - Rack LO-SOC (major);;1;0;;4
+1555;2;4405_0_1;BITS;;BMS Rack 3 - Rack LO-SOC (critical);;1;0;;4
+1556;2;4406_0_1;BITS;;BMS Rack 3 - Rack OV-volt. (minor);;1;0;;4
+1557;2;4407_0_1;BITS;;BMS Rack 3 - Rack OV-volt. (major);;1;0;;4
+1558;2;4408_0_1;BITS;;BMS Rack 3 - Rack OV-volt. (critical);;1;0;;4
+1559;2;4409_0_1;BITS;;BMS Rack 3 - Rack UN-volt. (minor);;1;0;;4
+1560;2;4410_0_1;BITS;;BMS Rack 3 - Rack UN-volt. (major);;1;0;;4
+1561;2;4411_0_1;BITS;;BMS Rack 3 - Rack UN-volt. (critical);;1;0;;4
+1562;2;4412_0_1;BITS;;BMS Rack 3 - Rack CHA OV-curr. alarm (minor);;1;0;;4
+1563;2;4413_0_1;BITS;;BMS Rack 3 - Rack CHA OV-curr. alarm (major);;1;0;;4
+1564;2;4414_0_1;BITS;;BMS Rack 3 - Rack CHA OV-curr. alarm (critical);;1;0;;4
+1565;2;4415_0_1;BITS;;BMS Rack 3 - Rack DIS OV-curr. alarm (minor);;1;0;;4
+1566;2;4416_0_1;BITS;;BMS Rack 3 - Rack DIS OV-curr. alarm (major);;1;0;;4
+1567;2;4417_0_1;BITS;;BMS Rack 3 - Rack DIS OV-curr. alarm (critical);;1;0;;4
+1568;2;4418_0_1;BITS;;BMS Rack 3 - Cell OV-volt. (minor);;1;0;;4
+1569;2;4419_0_1;BITS;;BMS Rack 3 - Cell OV-volt. (major);;1;0;;4
+1570;2;4420_0_1;BITS;;BMS Rack 3 - Cell OV-volt. (critical);;1;0;;4
+1571;2;4421_0_1;BITS;;BMS Rack 3 - Cell UN-volt. (minor);;1;0;;4
+1572;2;4422_0_1;BITS;;BMS Rack 3 - Cell UN-volt. (major);;1;0;;4
+1573;2;4423_0_1;BITS;;BMS Rack 3 - Cell UN-volt. (critical);;1;0;;4
+1574;2;4424_0_1;BITS;;BMS Rack 3 - CHA cell OV-temp. (minor);;1;0;;4
+1575;2;4425_0_1;BITS;;BMS Rack 3 - CHA cell OV-temp. (major);;1;0;;4
+1576;2;4426_0_1;BITS;;BMS Rack 3 - CHA cell OV-temp. (critical);;1;0;;4
+1577;2;4427_0_1;BITS;;BMS Rack 3 - CHA cell UN-temp. (minor);;1;0;;4
+1578;2;4428_0_1;BITS;;BMS Rack 3 - CHA cell UN-temp. (major);;1;0;;4
+1579;2;4429_0_1;BITS;;BMS Rack 3 - CHA cell UN-temp. (critical);;1;0;;4
+1580;2;4430_0_1;BITS;;BMS Rack 3 - DIS cell OV-temp. (minor);;1;0;;4
+1581;2;4431_0_1;BITS;;BMS Rack 3 - DIS cell OV-temp. (major);;1;0;;4
+1582;2;4432_0_1;BITS;;BMS Rack 3 - DIS cell OV-temp. (critical);;1;0;;4
+1583;2;4433_0_1;BITS;;BMS Rack 3 - DIS cell UN-temp. (minor);;1;0;;4
+1584;2;4434_0_1;BITS;;BMS Rack 3 - DIS cell UN-temp. (major);;1;0;;4
+1585;2;4435_0_1;BITS;;BMS Rack 3 - DIS cell UN-temp. (critical);;1;0;;4
+1586;2;4436_0_1;BITS;;BMS Rack 3 - Cell LO-SOC minor;;1;0;;4
+1587;2;4437_0_1;BITS;;BMS Rack 3 - Cell LO-SOC major;;1;0;;4
+1588;2;4438_0_1;BITS;;BMS Rack 3 - Cell LO-SOC critical;;1;0;;4
+1589;2;4439_0_1;BITS;;BMS Rack 3 - Cell HI-SOC minor;;1;0;;4
+1590;2;4440_0_1;BITS;;BMS Rack 3 - Cell HI-SOC major;;1;0;;4
+1591;2;4441_0_1;BITS;;BMS Rack 3 - Cell HI-SOC critical;;1;0;;4
+1592;2;4442_0_1;BITS;;BMS Rack 3 - Cell volt-diff. (minor);;1;0;;4
+1593;2;4443_0_1;BITS;;BMS Rack 3 - Cell volt-diff. (major);;1;0;;4
+1594;2;4444_0_1;BITS;;BMS Rack 3 - Cell volt-diff. (critical);;1;0;;4
+1595;2;4445_0_1;BITS;;BMS Rack 3 - Cell temp-diff. (minor);;1;0;;4
+1596;2;4446_0_1;BITS;;BMS Rack 3 - Cell temp-diff. (major);;1;0;;4
+1597;2;4447_0_1;BITS;;BMS Rack 3 - Cell temp-diff. (critical);;1;0;;4
+1598;2;4449_0_1;BITS;;BMS Rack 3 - Main positive contactor;;1;0;;4
+1599;2;4450_0_1;BITS;;BMS Rack 3 - Rack CHA disallowed;;1;0;;4
+1600;2;4451_0_1;BITS;;BMS Rack 3 - Rack DIS disallowed;;1;0;;4
+1601;2;4452_0_1;BITS;;BMS Rack 3 - Major alarm summary;;1;0;;4
+1602;2;4453_0_1;BITS;;BMS Rack 3 - Critical alarm summary;;1;0;;4
+1603;2;4454_0_1;BITS;;BMS Rack 3 - BCM comm. fault;;1;0;;4
+1604;2;4500_0_1;BITS;;BMS Rack 4 - Rack negative electrical insulation alarm (minor);;1;0;;4
+1605;2;4501_0_1;BITS;;BMS Rack 4 - Rack negative electrical insulation alarm (major);;1;0;;4
+1606;2;4502_0_1;BITS;;BMS Rack 4 - Clu End Neg Insul Severe Alarm;;1;0;;4
+1607;2;4503_0_1;BITS;;BMS Rack 4 - Rack LO-SOC (minor);;1;0;;4
+1608;2;4504_0_1;BITS;;BMS Rack 4 - Rack LO-SOC (major);;1;0;;4
+1609;2;4505_0_1;BITS;;BMS Rack 4 - Rack LO-SOC (critical);;1;0;;4
+1610;2;4506_0_1;BITS;;BMS Rack 4 - Rack OV-volt. (minor);;1;0;;4
+1611;2;4507_0_1;BITS;;BMS Rack 4 - Rack OV-volt. (major);;1;0;;4
+1612;2;4508_0_1;BITS;;BMS Rack 4 - Rack OV-volt. (critical);;1;0;;4
+1613;2;4509_0_1;BITS;;BMS Rack 4 - Rack UN-volt. (minor);;1;0;;4
+1614;2;4510_0_1;BITS;;BMS Rack 4 - Rack UN-volt. (major);;1;0;;4
+1615;2;4511_0_1;BITS;;BMS Rack 4 - Rack UN-volt. (critical);;1;0;;4
+1616;2;4512_0_1;BITS;;BMS Rack 4 - Rack CHA OV-curr. alarm (minor);;1;0;;4
+1617;2;4513_0_1;BITS;;BMS Rack 4 - Rack CHA OV-curr. alarm (major);;1;0;;4
+1618;2;4514_0_1;BITS;;BMS Rack 4 - Rack CHA OV-curr. alarm (critical);;1;0;;4
+1619;2;4515_0_1;BITS;;BMS Rack 4 - Rack DIS OV-curr. alarm (minor);;1;0;;4
+1620;2;4516_0_1;BITS;;BMS Rack 4 - Rack DIS OV-curr. alarm (major);;1;0;;4
+1621;2;4517_0_1;BITS;;BMS Rack 4 - Rack DIS OV-curr. alarm (critical);;1;0;;4
+1622;2;4518_0_1;BITS;;BMS Rack 4 - Cell OV-volt. (minor);;1;0;;4
+1623;2;4519_0_1;BITS;;BMS Rack 4 - Cell OV-volt. (major);;1;0;;4
+1624;2;4520_0_1;BITS;;BMS Rack 4 - Cell OV-volt. (critical);;1;0;;4
+1625;2;4521_0_1;BITS;;BMS Rack 4 - Cell UN-volt. (minor);;1;0;;4
+1626;2;4522_0_1;BITS;;BMS Rack 4 - Cell UN-volt. (major);;1;0;;4
+1627;2;4523_0_1;BITS;;BMS Rack 4 - Cell UN-volt. (critical);;1;0;;4
+1628;2;4524_0_1;BITS;;BMS Rack 4 - CHA cell OV-temp. (minor);;1;0;;4
+1629;2;4525_0_1;BITS;;BMS Rack 4 - CHA cell OV-temp. (major);;1;0;;4
+1630;2;4526_0_1;BITS;;BMS Rack 4 - CHA cell OV-temp. (critical);;1;0;;4
+1631;2;4527_0_1;BITS;;BMS Rack 4 - CHA cell UN-temp. (minor);;1;0;;4
+1632;2;4528_0_1;BITS;;BMS Rack 4 - CHA cell UN-temp. (major);;1;0;;4
+1633;2;4529_0_1;BITS;;BMS Rack 4 - CHA cell UN-temp. (critical);;1;0;;4
+1634;2;4530_0_1;BITS;;BMS Rack 4 - DIS cell OV-temp. (minor);;1;0;;4
+1635;2;4531_0_1;BITS;;BMS Rack 4 - DIS cell OV-temp. (major);;1;0;;4
+1636;2;4532_0_1;BITS;;BMS Rack 4 - DIS cell OV-temp. (critical);;1;0;;4
+1637;2;4533_0_1;BITS;;BMS Rack 4 - DIS cell UN-temp. (minor);;1;0;;4
+1638;2;4534_0_1;BITS;;BMS Rack 4 - DIS cell UN-temp. (major);;1;0;;4
+1639;2;4535_0_1;BITS;;BMS Rack 4 - DIS cell UN-temp. (critical);;1;0;;4
+1640;2;4536_0_1;BITS;;BMS Rack 4 - Cell LO-SOC minor;;1;0;;4
+1641;2;4537_0_1;BITS;;BMS Rack 4 - Cell LO-SOC major;;1;0;;4
+1642;2;4538_0_1;BITS;;BMS Rack 4 - Cell LO-SOC critical;;1;0;;4
+1643;2;4539_0_1;BITS;;BMS Rack 4 - Cell HI-SOC minor;;1;0;;4
+1644;2;4540_0_1;BITS;;BMS Rack 4 - Cell HI-SOC major;;1;0;;4
+1645;2;4541_0_1;BITS;;BMS Rack 4 - Cell HI-SOC critical;;1;0;;4
+1646;2;4542_0_1;BITS;;BMS Rack 4 - Cell volt-diff. (minor);;1;0;;4
+1647;2;4543_0_1;BITS;;BMS Rack 4 - Cell volt-diff. (major);;1;0;;4
+1648;2;4544_0_1;BITS;;BMS Rack 4 - Cell volt-diff. (critical);;1;0;;4
+1649;2;4545_0_1;BITS;;BMS Rack 4 - Cell temp-diff. (minor);;1;0;;4
+1650;2;4546_0_1;BITS;;BMS Rack 4 - Cell temp-diff. (major);;1;0;;4
+1651;2;4547_0_1;BITS;;BMS Rack 4 - Cell temp-diff. (critical);;1;0;;4
+1652;2;4549_0_1;BITS;;BMS Rack 4 - Main positive contactor;;1;0;;4
+1653;2;4550_0_1;BITS;;BMS Rack 4 - Rack CHA disallowed;;1;0;;4
+1654;2;4551_0_1;BITS;;BMS Rack 4 - Rack DIS disallowed;;1;0;;4
+1655;2;4552_0_1;BITS;;BMS Rack 4 - Major alarm summary;;1;0;;4
+1656;2;4553_0_1;BITS;;BMS Rack 4 - Critical alarm summary;;1;0;;4
+1657;2;4554_0_1;BITS;;BMS Rack 4 - BCM comm. fault;;1;0;;4
+1658;2;4600_0_1;BITS;;BMS Rack 5 - Rack negative electrical insulation alarm (minor);;1;0;;4
+1659;2;4601_0_1;BITS;;BMS Rack 5 - Rack negative electrical insulation alarm (major);;1;0;;4
+1660;2;4602_0_1;BITS;;BMS Rack 5 - Clu End Neg Insul Severe Alarm;;1;0;;4
+1661;2;4603_0_1;BITS;;BMS Rack 5 - Rack LO-SOC (minor);;1;0;;4
+1662;2;4604_0_1;BITS;;BMS Rack 5 - Rack LO-SOC (major);;1;0;;4
+1663;2;4605_0_1;BITS;;BMS Rack 5 - Rack LO-SOC (critical);;1;0;;4
+1664;2;4606_0_1;BITS;;BMS Rack 5 - Rack OV-volt. (minor);;1;0;;4
+1665;2;4607_0_1;BITS;;BMS Rack 5 - Rack OV-volt. (major);;1;0;;4
+1666;2;4608_0_1;BITS;;BMS Rack 5 - Rack OV-volt. (critical);;1;0;;4
+1667;2;4609_0_1;BITS;;BMS Rack 5 - Rack UN-volt. (minor);;1;0;;4
+1668;2;4610_0_1;BITS;;BMS Rack 5 - Rack UN-volt. (major);;1;0;;4
+1669;2;4611_0_1;BITS;;BMS Rack 5 - Rack UN-volt. (critical);;1;0;;4
+1670;2;4612_0_1;BITS;;BMS Rack 5 - Rack CHA OV-curr. alarm (minor);;1;0;;4
+1671;2;4613_0_1;BITS;;BMS Rack 5 - Rack CHA OV-curr. alarm (major);;1;0;;4
+1672;2;4614_0_1;BITS;;BMS Rack 5 - Rack CHA OV-curr. alarm (critical);;1;0;;4
+1673;2;4615_0_1;BITS;;BMS Rack 5 - Rack DIS OV-curr. alarm (minor);;1;0;;4
+1674;2;4616_0_1;BITS;;BMS Rack 5 - Rack DIS OV-curr. alarm (major);;1;0;;4
+1675;2;4617_0_1;BITS;;BMS Rack 5 - Rack DIS OV-curr. alarm (critical);;1;0;;4
+1676;2;4618_0_1;BITS;;BMS Rack 5 - Cell OV-volt. (minor);;1;0;;4
+1677;2;4619_0_1;BITS;;BMS Rack 5 - Cell OV-volt. (major);;1;0;;4
+1678;2;4620_0_1;BITS;;BMS Rack 5 - Cell OV-volt. (critical);;1;0;;4
+1679;2;4621_0_1;BITS;;BMS Rack 5 - Cell UN-volt. (minor);;1;0;;4
+1680;2;4622_0_1;BITS;;BMS Rack 5 - Cell UN-volt. (major);;1;0;;4
+1681;2;4623_0_1;BITS;;BMS Rack 5 - Cell UN-volt. (critical);;1;0;;4
+1682;2;4624_0_1;BITS;;BMS Rack 5 - CHA cell OV-temp. (minor);;1;0;;4
+1683;2;4625_0_1;BITS;;BMS Rack 5 - CHA cell OV-temp. (major);;1;0;;4
+1684;2;4626_0_1;BITS;;BMS Rack 5 - CHA cell OV-temp. (critical);;1;0;;4
+1685;2;4627_0_1;BITS;;BMS Rack 5 - CHA cell UN-temp. (minor);;1;0;;4
+1686;2;4628_0_1;BITS;;BMS Rack 5 - CHA cell UN-temp. (major);;1;0;;4
+1687;2;4629_0_1;BITS;;BMS Rack 5 - CHA cell UN-temp. (critical);;1;0;;4
+1688;2;4630_0_1;BITS;;BMS Rack 5 - DIS cell OV-temp. (minor);;1;0;;4
+1689;2;4631_0_1;BITS;;BMS Rack 5 - DIS cell OV-temp. (major);;1;0;;4
+1690;2;4632_0_1;BITS;;BMS Rack 5 - DIS cell OV-temp. (critical);;1;0;;4
+1691;2;4633_0_1;BITS;;BMS Rack 5 - DIS cell UN-temp. (minor);;1;0;;4
+1692;2;4634_0_1;BITS;;BMS Rack 5 - DIS cell UN-temp. (major);;1;0;;4
+1693;2;4635_0_1;BITS;;BMS Rack 5 - DIS cell UN-temp. (critical);;1;0;;4
+1694;2;4636_0_1;BITS;;BMS Rack 5 - Cell LO-SOC minor;;1;0;;4
+1695;2;4637_0_1;BITS;;BMS Rack 5 - Cell LO-SOC major;;1;0;;4
+1696;2;4638_0_1;BITS;;BMS Rack 5 - Cell LO-SOC critical;;1;0;;4
+1697;2;4639_0_1;BITS;;BMS Rack 5 - Cell HI-SOC minor;;1;0;;4
+1698;2;4640_0_1;BITS;;BMS Rack 5 - Cell HI-SOC major;;1;0;;4
+1699;2;4641_0_1;BITS;;BMS Rack 5 - Cell HI-SOC critical;;1;0;;4
+1700;2;4642_0_1;BITS;;BMS Rack 5 - Cell volt-diff. (minor);;1;0;;4
+1701;2;4643_0_1;BITS;;BMS Rack 5 - Cell volt-diff. (major);;1;0;;4
+1702;2;4644_0_1;BITS;;BMS Rack 5 - Cell volt-diff. (critical);;1;0;;4
+1703;2;4645_0_1;BITS;;BMS Rack 5 - Cell temp-diff. (minor);;1;0;;4
+1704;2;4646_0_1;BITS;;BMS Rack 5 - Cell temp-diff. (major);;1;0;;4
+1705;2;4647_0_1;BITS;;BMS Rack 5 - Cell temp-diff. (critical);;1;0;;4
+1706;2;4649_0_1;BITS;;BMS Rack 5 - Main positive contactor;;1;0;;4
+1707;2;4650_0_1;BITS;;BMS Rack 5 - Rack CHA disallowed;;1;0;;4
+1708;2;4651_0_1;BITS;;BMS Rack 5 - Rack DIS disallowed;;1;0;;4
+1709;2;4652_0_1;BITS;;BMS Rack 5 - Major alarm summary;;1;0;;4
+1710;2;4653_0_1;BITS;;BMS Rack 5 - Critical alarm summary;;1;0;;4
+1711;2;4654_0_1;BITS;;BMS Rack 5 - BCM comm. fault;;1;0;;4
+1712;2;55100_0_1;BITS;;Meter 1 - Meter comm. fault;;1;0;;4
+1713;2;55125_0_1;BITS;;Meter 2 - Meter comm. fault;;1;0;;4
+1714;2;55750_0_1;BITS;;PCS 1 - PCS comm. fault;;1;0;;4
+1715;2;56000_0_1;BITS;;Liquid Cooling 1 - Liquid cooling comm. fault;;1;0;;4
+1716;2;56500_0_1;BITS;;PCS 2 - PCS comm. fault;;1;0;;4
+1717;2;56750_0_1;BITS;;Liquid Cooling 2 - Liquid cooling comm. fault;;1;0;;4
+1718;2;57250_0_1;BITS;;PCS 3 - PCS comm. fault;;1;0;;4
+1719;2;57500_0_1;BITS;;Liquid Cooling 3 - Liquid cooling comm. fault;;1;0;;4
+1720;2;58000_0_1;BITS;;PCS 4 - PCS comm. fault;;1;0;;4
+1721;2;58250_0_1;BITS;;Liquid Cooling 4 - Liquid cooling comm. fault;;1;0;;4
+1722;2;58750_0_1;BITS;;PCS 5 - PCS comm. fault;;1;0;;4
+1723;2;59000_0_1;BITS;;Liquid Cooling 5 - Liquid cooling comm. fault;;1;0;;4

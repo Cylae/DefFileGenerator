@@ -1,0 +1,30 @@
+﻿ModbusRTU;Meter;CHINT;DTSU666;;;;;;;
+1;3;8192;F32;;Uab;;0.1;0;V;4
+2;3;8194;F32;;Ubc;;0.1;0;V;4
+3;3;8196;F32;;Uca;;0.1;0;V;4
+4;3;8198;F32;;Ua;;0.1;0;V;4
+5;3;8200;F32;;Ub;;0.1;0;V;4
+6;3;8202;F32;;Uc;;0.1;0;V;4
+7;3;8204;F32;;Ia;;0.001;0;A;4
+8;3;8206;F32;;Ib;;0.001;0;A;4
+9;3;8208;F32;;Ic;;0.001;0;A;4
+10;3;8210;F32;;Pt;P_AC;0.0001;0;kW;4
+11;3;8212;F32;;Pa;P_AC_1;0.0001;0;kW;4
+12;3;8214;F32;;Pb;P_AC_2;0.0001;0;kW;4
+13;3;8216;F32;;Pc;P_AC_3;0.0001;0;kW;4
+14;3;8218;F32;;Qt;;1;0;Var;4
+15;3;8220;F32;;Qa;;1;0;Var;4
+16;3;8222;F32;;Qb;;1;0;Var;4
+17;3;8224;F32;;Qc;;1;0;Var;4
+18;3;8234;F32;;PFt;;1;0;;4
+19;3;8236;F32;;PFa;;1;0;;4
+20;3;8238;F32;;PFb;;1;0;;4
+21;3;8240;F32;;PFc;;1;0;;4
+22;3;8260;F32;;Freq;FREQ;0.01;0;Hz;4
+23;3;8272;F32;;DmPt (Total active power demand);;1;0;;4
+24;3;16414;F32;;ImpEp (positive active total energy);E_TOT;1;0;;4
+25;3;16424;F32;;ExpEp (current) negative active total energy;I_AC;1;0;;4
+26;3;16434;F32;;Q1Eq (quadrant I reactive total energy);;1;0;;4
+27;3;16444;F32;;Q2Eq (quadrant II reactive total energy);;1;0;;4
+28;3;16454;F32;;Q3Eq (quadrant III reactive total energy);;1;0;;4
+29;3;16464;F32;;Q4Eq 5(quadrant IV reactive total energy);;1;0;;4

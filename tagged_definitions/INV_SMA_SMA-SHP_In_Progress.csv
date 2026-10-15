@@ -1,0 +1,123 @@
+﻿modbusRTU;Inverter;SMA;SMA-SHP_In_Progress;;;;;;;
+1;3;40187;U32;;Capacite nominale batterie;capacite_nominale_batterie;1.000000;0.000000;Wh;1
+2;3;32251;U32;;Courant de charge maximum;courant_de_charge_maximum;0.001000;0.000000;A;4
+3;3;31061;U32;;Commande de la charge batterie disponible par comm;commande_de_la_charge_batterie_disponible_par_comm;1.000000;0.000000;;4
+4;3;34669;U32;;Commande de la charge batterie disponible par comm;commande_de_la_charge_batterie_disponible_par_comm_1;1.000000;0.000000;;4
+5;3;32239;U32;;Tension de fin de charge;tension_de_fin_de_charge;0.010000;0.000000;V;4
+6;3;30847;U32;;Capacite de la batterie actuelle;capacite_de_la_batterie_actuelle;1.000000;0.000000;Wh;4
+7;3;32257;U32;;Courant de decharge maximum;courant_de_decharge_maximum;0.001000;0.000000;A;4
+8;3;32245;U32;;Tension de fin de decharge;tension_de_fin_de_decharge;0.010000;0.000000;V;4
+9;3;30849;I32;;Temperature batterie;temperature_batterie;0.100000;0.000000;C;4
+10;3;31397;U64;;Chargement batterie;chargement_batterie;1.000000;0.000000;Wh;4
+11;3;31401;U64;;Dechargement batterie;dechargement_batterie;1.000000;0.000000;Wh;4
+12;3;41363;U32;;Energie de charge;energie_de_charge;1.000000;0.000000;Wh;1
+13;3;41365;U32;;Energie de decharge;energie_de_decharge;1.000000;0.000000;Wh;1
+14;3;32201;U64;;Energie de charge actuelle;energie_de_charge_actuelle;1.000000;0.000000;Wh;4
+15;3;32205;U64;;Energie de decharge actuelle;energie_de_decharge_actuelle;1.000000;0.000000;Wh;4
+16;3;40013;U32;;Langue de l interface;langue_de_l_interface;1.000000;0.000000;;1
+17;3;40005;U32;;Passage automatique heure ete/hiver active;passage_automatique_heure_etehiver_active;1.000000;0.000000;;1
+18;3;40003;U32;;Fuseau horaire;fuseau_horaire;1.000000;0.000000;;1
+19;3;34623;U32;;Rayonnement sur capteur externe;rayonnement_sur_capteur_externe;1.000000;0.000000;W/m2;4
+20;3;34615;U32;;Vitesse du vent 1;vitesse_du_vent_1;0.010000;0.000000;m/s;4
+21;3;34633;U32;;Vitesse du vent 2;vitesse_du_vent_2;0.010000;0.000000;m/s;4
+22;3;34635;U32;;Vitesse du vent 3;vitesse_du_vent_3;0.010000;0.000000;m/s;4
+23;3;34609;I32;;Temperature exterieure 1;temperature_exterieure_1;0.100000;0.000000;C;4
+24;3;34625;I32;;Temperature exterieure 2;temperature_exterieure_2;0.100000;0.000000;C;4
+25;3;34627;I32;;Temperature exterieure 3;temperature_exterieure_3;0.100000;0.000000;C;4
+26;3;34611;I32;;Temperature exterieure mesuree maximale;temperature_exterieure_mesuree_maximale;0.100000;0.000000;C;4
+27;3;41437;U32;;Appliquer la configuration des parametres de la courbe;appliquer_la_configuration_des_parametres_de_la_courbe;1.000000;0.000000;;1
+28;3;41439;U32;;Resultat de l application des parametres de la courbe;resultat_de_l_application_des_parametres_de_la_courbe;1.000000;0.000000;;1
+29;3;41187;U32;;Source de la mesure de reference pour regulation de puissance;source_de_la_mesure_de_reference_pour_regulation_de_puissance;1.000000;0.000000;;1
+30;3;41215;I32;;Cons. de puissance active valeur de retombee;cons_de_puissance_active_valeur_de_retombee;1.000000;0.000000;W;1
+31;3;40151;U32;;Reg.puiss.act.et app.par comm 1;regpuissactet_apppar_comm_1;1.000000;0.000000;;4
+32;3;44427;U32;;Reg.puiss.act.et app.par comm 2;regpuissactet_apppar_comm_2;1.000000;0.000000;;4
+33;3;40149;I32;;Prescription de puiss. active 1;prescription_de_puiss_active_1;1.000000;0.000000;W;4
+34;3;44425;I32;;Prescription de puiss. active 2;prescription_de_puiss_active_2;1.000000;0.000000;W;4
+35;3;41457;U32;;Valeur de reference SunSpec VarModDeptRef;valeur_de_reference_sunspec_varmoddeptref;1.000000;0.000000;;1
+36;3;41459;U32;;Valeur de reference SunSpec VoltVarDeptRef;valeur_de_reference_sunspec_voltvardeptref;1.000000;0.000000;;1
+37;3;41461;U32;;Valeur de reference SunSpec WattVarDeptRef;valeur_de_reference_sunspec_wattvardeptref;1.000000;0.000000;;1
+38;3;34621;I32;;Temperature des panneaux 1;temperature_des_panneaux_1;0.100000;0.000000;C;4
+39;3;34629;I32;;Temperature des panneaux 2;temperature_des_panneaux_2;0.100000;0.000000;C;4
+40;3;34631;I32;;Temperature des panneaux 3;temperature_des_panneaux_3;0.100000;0.000000;C;4
+41;3;30517;U64;;Energie degagee jour actuel;energie_degagee_jour_actuel;1.000000;0.000000;Wh;4
+42;3;30535;U32;;Energie degagee jour actuel 1;energie_degagee_jour_actuel_1;1.000000;0.000000;Wh;4
+43;3;30537;U32;;Energie degagee jour actuel 2;energie_degagee_jour_actuel_2;1.000000;0.000000;Wh;4
+44;3;30539;U32;;Energie degagee jour actuel 3;energie_degagee_jour_actuel_3;1.000000;0.000000;Wh;4
+45;3;31435;I32;;Courant du reseau phase L1;courant_du_reseau_phase_l1;0.001000;0.000000;A;4
+46;3;31437;I32;;Courant du reseau phase L2;courant_du_reseau_phase_l2;0.001000;0.000000;A;4
+47;3;31439;I32;;Courant du reseau phase L3;courant_du_reseau_phase_l3;0.001000;0.000000;A;4
+48;3;31447;U32;;Frequence du reseau;frequence_du_reseau;0.010000;0.000000;Hz;4
+49;3;31253;U32;;Tension du reseau phase L1;tension_du_reseau_phase_l1;0.010000;0.000000;V;4
+50;3;31451;U32;;Tension de reseau phase L1 contre L2;tension_de_reseau_phase_l1_contre_l2;0.010000;0.000000;V;4
+51;3;31255;U32;;Tension du reseau phase L2;tension_du_reseau_phase_l2;0.010000;0.000000;V;4
+52;3;31453;U32;;Tension de reseau phase L2 contre L3;tension_de_reseau_phase_l2_contre_l3;0.010000;0.000000;V;4
+53;3;31257;U32;;Tension du reseau phase L3;tension_du_reseau_phase_l3;0.010000;0.000000;V;4
+54;3;31449;U32;;Tension de reseau phase L3 contre L1;tension_de_reseau_phase_l3_contre_l1;0.010000;0.000000;V;4
+55;3;31433;U32;;Facteur de dephasage;facteur_de_dephasage;0.010000;0.000000;;4
+56;3;31499;I32;;Facteur de dephasage EEI;facteur_de_dephasage_eei;0.001000;0.000000;;4
+57;3;31455;I32;;Puissance apparente;puissance_apparente;1.000000;0.000000;VA;4
+58;3;31277;I32;;Puissance reactive d injection dans le reseau;puissance_reactive_d_injection_dans_le_reseau;1.000000;0.000000;VAr;4
+59;3;30581;U32;;Etat du compteur de prelevement;etat_du_compteur_de_prelevement;1.000000;0.000000;Wh;4
+60;3;30583;U32;;Etat du compteur d injection dans le reseau;etat_du_compteur_d_injection_dans_le_reseau;1.000000;0.000000;Wh;4
+61;3;30865;I32;;Puissance de prelevement;puissance_de_prelevement;1.000000;0.000000;W;4
+62;3;30867;I32;;Puissance d injection dans le reseau 1;puissance_d_injection_dans_le_reseau_1;1.000000;0.000000;W;4
+63;3;32341;I32;;Puissance d injection dans le reseau 2;puissance_d_injection_dans_le_reseau_2;1.000000;0.000000;W;4
+64;3;31441;I32;;Puissance apparente L1;puissance_apparente_l1;1.000000;0.000000;VA;4
+65;3;31443;I32;;Puissance apparente L2;puissance_apparente_l2;1.000000;0.000000;VA;4
+66;3;31445;I32;;Puissance apparente L3;puissance_apparente_l3;1.000000;0.000000;VA;4
+67;3;31271;I32;;Puiss. react. d injection dans le reseau phase L1;puiss_react_d_injection_dans_le_reseau_phase_l1;1.000000;0.000000;VAr;4
+68;3;31273;I32;;Puiss. react. d injection dans le reseau phase L2;puiss_react_d_injection_dans_le_reseau_phase_l2;1.000000;0.000000;VAr;4
+69;3;31275;I32;;Puiss. react. d injection dans le reseau phase L3;puiss_react_d_injection_dans_le_reseau_phase_l3;1.000000;0.000000;VAr;4
+70;3;31259;U32;;Puissance d injection dans le reseau L1;puissance_d_injection_dans_le_reseau_l1;1.000000;0.000000;W;4
+71;3;31261;U32;;Puissance d injection dans le reseau L2;puissance_d_injection_dans_le_reseau_l2;1.000000;0.000000;W;4
+72;3;31263;U32;;Puissance d injection dans le reseau L3;puissance_d_injection_dans_le_reseau_l3;1.000000;0.000000;W;4
+73;3;31265;U32;;Puissance de prelevement sur le reseau phase L1;puissance_de_prelevement_sur_le_reseau_phase_l1;1.000000;0.000000;W;4
+74;3;31267;U32;;Puissance de prelevement sur le reseau phase L2;puissance_de_prelevement_sur_le_reseau_phase_l2;1.000000;0.000000;W;4
+75;3;31269;U32;;Puissance de prelevement sur le reseau phase L3;puissance_de_prelevement_sur_le_reseau_phase_l3;1.000000;0.000000;W;4
+76;3;30513;U64;;Rendement total 1;rendement_total_1;1.000000;0.000000;Wh;4
+77;3;30529;U32;;Rendement total 2;rendement_total_2;1.000000;0.000000;Wh;4
+78;3;30531;U32;;Rendement total 3;rendement_total_3;1.000000;0.000000;kWh;4
+79;3;30533;U32;;Rendement total 4;rendement_total_4;1.000000;0.000000;MWh;4
+80;3;40575;U32;;Mode de fonctionnement du relais multifonction 1;mode_de_fonctionnement_du_relais_multifonction_1;1.000000;0.000000;;1
+81;3;40577;U32;;Mode de fonctionnement du relais multifonction 2;mode_de_fonctionnement_du_relais_multifonction_2;1.000000;0.000000;;1
+82;3;30875;U32;;Etat du relais multifonction;etat_du_relais_multifonction;1.000000;0.000000;;4
+83;3;31389;U32;;Version Firmware SGB;version_firmware_sgb;1.000000;0.000000;;1
+84;3;40497_16;STRING;;MacId;macid;1.000000;0.000000;;1
+85;3;40109;U32;;Jeu de donnees regionales regle;jeu_de_donnees_regionales_regle;1.000000;0.000000;;4
+86;3;41171;U32;;Reglage energie tot. degagee point rac. reseau;reglage_energie_tot_degagee_point_rac_reseau;1.000000;0.000000;kWh;1
+87;3;30057;U32;;Numero de serie 1;numero_de_serie_1;1.000000;0.000000;;1
+88;3;40067;U32;;Numero de serie 2;numero_de_serie_2;1.000000;0.000000;;1
+89;3;41203;U32;;Puissance nominale de l installation;puissance_nominale_de_l_installation;1.000000;0.000000;W;1
+90;3;41121;U32;;Definition du jeu de donnees regionales;definition_du_jeu_de_donnees_regionales;1.000000;0.000000;;4
+91;3;30953;I32;;Temperature interieure 1;temperature_interieure_1;0.100000;0.000000;C;4
+92;3;34113;I32;;Temperature interieure 2;temperature_interieure_2;0.100000;0.000000;C;4
+93;3;30975;I32;;Tension du circuit intermediaire;tension_du_circuit_intermediaire;0.010000;0.000000;V;4
+94;3;30881;U32;;Connexion reseau de l installation;connexion_reseau_de_l_installation;1.000000;0.000000;;4
+95;3;31793;I32;;Entree courant DC 1;entree_courant_dc_1;0.001000;0.000000;A;4
+96;3;41143;U32;;Tension limite pour terminer l injection;tension_limite_pour_terminer_l_injection;0.010000;0.000000;V;1
+97;3;41155;U32;;Retard de demarrage entree;retard_de_demarrage_entree;1.000000;0.000000;s;1
+98;3;41131;U32;;Entree tension minimale;entree_tension_minimale;0.010000;0.000000;V;1
+99;3;30769;I32;;Entree courant DC 2;entree_courant_dc_2;0.001000;0.000000;A;4
+100;3;30771;I32;;Entree tension DC;entree_tension_dc;0.010000;0.000000;V;4
+101;3;30525;U64;;Temps d injection 1;temps_d_injection_1;1.000000;0.000000;s;4
+102;3;30543;U32;;Temps d injection 2;temps_d_injection_2;1.000000;0.000000;s;4
+103;3;30521;U64;;Temps de service 1;temps_de_service_1;1.000000;0.000000;s;4
+104;3;30541;U32;;Temps de service 2;temps_de_service_2;1.000000;0.000000;s;4
+105;3;30599;U32;;Nombre de connexions au reseau;nombre_de_connexions_au_reseau;1.000000;0.000000;;4
+106;3;40135;U32;;Frequence nominale;frequence_nominale;0.010000;0.000000;Hz;1
+107;3;44495;U32;;Tension d activation maximale apres redemarrage;tension_d_activation_maximale_apres_redemarrage;0.001000;0.000000;p.u.;1
+108;3;44497;U32;;Tension d activation minimale apres redemarrage;tension_d_activation_minimale_apres_redemarrage;0.001000;0.000000;p.u.;1
+109;3;44503;U32;;Frequence d activation maximale apres coupure par surfrequence;frequence_d_activation_maximale_apres_coupure_par_surfrequence;0.010000;0.000000;Hz;1
+110;3;44501;U32;;Frequence d activation minimale apres redemarrage;frequence_d_activation_minimale_apres_redemarrage;0.010000;0.000000;Hz;1
+111;3;44499;U32;;Frequence d activation maximale apres redemarrage;frequence_d_activation_maximale_apres_redemarrage;0.010000;0.000000;Hz;1
+112;3;41195;U32;;Consigne de puissance active externe, Timeout 1;consigne_de_puissance_active_externe_timeout_1;1.000000;0.000000;s;1
+113;3;41451;U32;;Consigne de puissance active externe 2, Timeout 2;consigne_de_puissance_active_externe_2_timeout_2;1.000000;0.000000;s;1
+114;3;41223;I32;;Consigne de puissance reactive externe, valeur de retombee;consigne_de_puissance_reactive_externe_valeur_de_retombee;0.010000;0.000000;'%;1
+115;3;41221;U32;;Consigne de puissance reactive externe, Timeout;consigne_de_puissance_reactive_externe_timeout;1.000000;0.000000;s;1
+116;3;40023;I16;;Limite puissance alim normalisee via cde install. 1;limite_puissance_alim_normalisee_via_cde_install_1;0.010000;0.000000;'%;4
+117;3;41255;I16;;Limite puissance alim normalisee via cde install. 2;limite_puissance_alim_normalisee_via_cde_install_2;0.010000;0.000000;'%;4
+118;3;40016;I16;;Limite puissance alim normalisee via cde install. 3;limite_puissance_alim_normalisee_via_cde_install_3;1.000000;0.000000;;4
+119;3;41251;I32;;Limitation de puissance absorbee en W;limitation_de_puissance_absorbee_en_w;1.000000;0.000000;W;4
+120;3;40022;I16;;Consigne de puissance reactive externe;consigne_de_puissance_reactive_externe;0.010000;0.000000;'%;4
+121;3;41256;I16;;Consigne de puissance reactive externe;consigne_de_puissance_reactive_externe_1;0.010000;0.000000;'%;4
+122;3;41219;U32;;Consigne de puissance reactive externe, comportement de retombee;consigne_de_puissance_reactive_externe_comportement_de_retombee;1.000000;0.000000;;1

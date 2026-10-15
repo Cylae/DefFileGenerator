@@ -1,0 +1,152 @@
+﻿Modbus;Inverter;Nidec ASI;SOLARGATE 2010;;;;;;;
+1;3;40001;U16;;PKW1;;1;0;;0
+2;3;40002;U16;;PKW2;;1;0;;0
+3;3;40003;U16;;PKW3;;1;0;;0
+4;3;40004;U16;;PKW4;;1;0;;0
+5;3;40005;U16;;Command Word;;1;0;;0
+6;3;40006;I16;;DC voltage reference;U_DC;1;0;;0
+7;3;40007;I16;;Preset DC voltage reference;;1;0;;0
+8;3;40008;I16;;Reactive power reference;Q_AC;0.00381475547417;0;%;0
+9;3;40009;I16;;Preset Reactive power reference;;0.00381475547417;0;%;0
+10;3;40010;U16;;Strobe for preset;;1;0;;0
+11;3;40011;U16;;Auxiliary Command Word;;1;0;;0
+12;3;40012;I16;;Active power reference;P_AC;0.00381475547417;0;%;0
+13;3;40013;I16;;Preset Active power reference;CMD_P_AC_SET_ABS;0.00381475547417;0;%;0
+14;3;40014;I16;;Reactive current reference;;1;0;;0
+15;3;40015;I16;;Preset Reactive current reference;;1;0;;0
+16;3;40016;I16;;Active current reference;;1;0;;0
+17;3;40017;I16;;Preset Active current reference;;1;0;;0
+18;3;40018;I16;;Upper Limit for active current;;1;0;;0
+19;3;40019;I16;;Preset Limit for active current;;1;0;;0
+20;3;40020;I16;;Upper Limit for reactive current;;1;0;;0
+21;3;40021;I16;;Preset Limit for reactive current;;1;0;;0
+22;3;40210;U16;;RMS AcLine reactive current;;1;0;;4
+23;3;40211;I16;;AC Line Power Factor (cosφ);PF;0.00003051850948;0;;4
+24;3;40212;U16;;DC bus voltage (Vdc);;1;0;;4
+25;3;40213;U16;;AC Line Voltage;;1;0;;4
+26;3;40214;U16;;AC Line frequency;FREQ;1;0;;4
+27;3;40215;U16;;Converter output voltage;;1;0;;4
+28;3;40216;U16;;RMS converter current;;1;0;;4
+29;3;40217;I16;;AC Line Active Power;P_AC_1;1;0;;4
+30;3;40218;I16;;AC Line Reactive Power;;1;0;;4
+31;3;40219;U16;;Phase sequence;;1;0;;4
+32;3;40220;I16;;Analog imput voltage 1 (VsyncUV);;0.000381475547417;0;V;4
+33;3;40221;I16;;Analog imput voltage 2 (VsyncWU);;0.000381475547417;0;V;4
+34;3;40222;I16;;Analog output (AO 1) command from network;;0.000381475547417;0;V;4
+35;3;40223;I16;;Analog output (AO 2) command from network;;0.000381475547417;0;V;4
+36;3;40224;I16;;Analog output (AO 3) command from network;;0.000381475547417;0;V;4
+37;3;40225;I16;;Analog output (AO 4) command from network;;0.000381475547417;0;V;4
+38;3;40256;U16;;Modbus comunication state;;1;0;;4
+39;3;40308;U16;;Status for PC;;1;0;;4
+40;3;40308_0_1;BITS;;StatusPC Protection;;1;0;;8
+41;3;40308_1_1;BITS;;StatusPC Idle;;1;0;;4
+42;3;40308_2_1;BITS;;StatusPC Ready;;1;0;;4
+43;3;40308_3_1;BITS;;StatusPC Run;;1;0;;4
+44;3;40308_4_1;BITS;;StatusPC Stop;;1;0;;4
+45;3;40308_7_1;BITS;;StatusPC BusDrop;;1;0;;4
+46;3;40308_8_1;BITS;;StatusPC MacroLoading;;1;0;;4
+47;3;40308_10_1;BITS;;StatusPC Alarm;;1;0;;8
+48;3;40308_11_1;BITS;;StatusPC Manual;;1;0;;4
+49;3;40308_12_1;BITS;;StatusPC LEDOnPCKeypad;;1;0;;4
+50;3;40308_13_1;BITS;;StatusPC LEDFaultKeypad;;1;0;;4
+51;3;40308_14_1;BITS;;StatusPC LEDRunKeypad;;1;0;;4
+52;3;40308_15_1;BITS;;StatusPC DialogBoxText2;;1;0;;4
+53;3;40309;U16;;DC current;I_DC;0.1;0;A;4
+54;3;40310;U16;;DC voltage;;0.1;0;V;4
+55;3;40311;I16;;DC link power;P_DC;0.1;0;kW;4
+56;3;40312;I16;;CPU temperature Degrees;;0.1;0;Degr.Celsius;4
+57;3;40313;U16;;AC line current;I_AC_3;0.1;0;A;4
+58;3;40314;U16;;AC line voltage;;0.1;0;V;4
+59;3;40315;I16;;Active Power;;0.1;0;kW;4
+60;3;40316;U16;;Max absolute peak Power;;0.1;0;kW;4
+61;3;40317;U16;;Daily Peak Power;;0.1;0;kW;4
+62;3;40318;U32_W;;Daily energy;E_DAY;0.1;0;kWh;4
+63;3;40320;U32_W;;Weekly energy;;0.1;0;kWh;4
+64;3;40322;U32_W;;Monthly energy;;0.1;0;kWh;4
+65;3;40324;U32_W;;Yearly energy;;0.1;0;kWh;4
+66;3;40326;U32_W;;Total energy;E_TOT;1;0;kWh;4
+67;3;40328;U16;;FieldNet Bitword: Last protection/alarm encoding;;1;0;;4
+68;3;40329;U16;;FieldNet Bitword: Trip hardware (TripsHW);;1;0;;4
+69;3;40329_0_1;BITS;;TripHW OverCurrent;;1;0;;8
+70;3;40329_1_1;BITS;;TripHW OverVoltage;;1;0;;8
+71;3;40329_2_1;BITS;;TripHW ProtEsternaErr;;1;0;;8
+72;3;40329_3_1;BITS;;TripHW DesatTrip;;1;0;;8
+73;3;40329_4_1;BITS;;TripHW P220VError;;1;0;;8
+74;3;40329_5_1;BITS;;TripHW ResetFault;;1;0;;8
+75;3;40329_7_1;BITS;;TripHW DPRAMError;;1;0;;8
+76;3;40329_8_1;BITS;;TripHW WdogExternalTrip;;1;0;;8
+77;3;40329_9_1;BITS;;TripHW UnderVdc;;1;0;;8
+78;3;40329_10_1;BITS;;TripHW ParallProt;;1;0;;8
+79;3;40329_11_1;BITS;;TripHW OverTemperature;;1;0;;8
+80;3;40329_12_1;BITS;;TripHW BrakeOrPrecFault;;1;0;;8
+81;3;40329_13_1;BITS;;TripHW P24;;1;0;;8
+82;3;40329_14_1;BITS;;TripHW NoGrid;;1;0;;8
+83;3;40329_15_1;BITS;;TripHW NTCError;;1;0;;8
+84;3;40330;U16;;FieldNet Bitword: Trip software 1 (TripsSW 1);;1;0;;4
+85;3;40330_0_1;BITS;;TripSW1 PrecErr;;1;0;;8
+86;3;40330_2_1;BITS;;TripSW1 ConfErr;;1;0;;8
+87;3;40330_3_1;BITS;;TripSW1 DSPErr;;1;0;;8
+88;3;40330_4_1;BITS;;TripSW1 NetErr;;1;0;;8
+89;3;40330_5_1;BITS;;TripSW1 AndOrErr;;1;0;;8
+90;3;40330_6_1;BITS;;TripSW1 IacLimErr;;1;0;;8
+91;3;40330_7_1;BITS;;TripSW1 FastStopErr;;1;0;;8
+92;3;40330_8_1;BITS;;TripSW1 UnderVoltageErr;;1;0;;8
+93;3;40330_9_1;BITS;;TripSW1 TagliaErr;;1;0;;8
+94;3;40330_10_1;BITS;;TripSW1 GroundFaultTripErr;;1;0;;8
+95;3;40330_11_1;BITS;;TripSW1 Exp_IO_Comm_Err;;1;0;;8
+96;3;40330_12_1;BITS;;TripSW1 ThermErr;;1;0;;8
+97;3;40330_15_1;BITS;;TripSW1 PWM_reg_Err;;1;0;;8
+98;3;40331;U16;;FieldNet Bitword: Alarms (Alarm);;1;0;;4
+99;3;40331_1_1;BITS;;Alarm CurrentHigh;;1;0;;8
+100;3;40331_2_1;BITS;;Alarm UserAlarmAndFunction;;1;0;;8
+101;3;40331_3_1;BITS;;Alarm GroundFault;;1;0;;8
+102;3;40331_4_1;BITS;;Alarm EEIntWriteErr;;1;0;;8
+103;3;40331_5_1;BITS;;Alarm EEExtWriteErr;;1;0;;8
+104;3;40331_6_1;BITS;;Alarm UserAlarmDigExp;;1;0;;8
+105;3;40331_7_1;BITS;;Alarm UserAlarmOrFunction;;1;0;;8
+106;3;40331_8_1;BITS;;Alarm ThermalWarning;;1;0;;8
+107;3;40331_9_1;BITS;;Alarm PwmSincro_Out;;1;0;;8
+108;3;40331_10_1;BITS;;Alarm Net_Link_Fault;;1;0;;8
+109;3;40331_11_1;BITS;;Alarm UserAlarms;;1;0;;8
+110;3;40331_12_1;BITS;;Alarm AnOverRange;;1;0;;8
+111;3;40331_13_1;BITS;;Alarm InputPhaseAlarm;;1;0;;8
+112;3;40331_14_1;BITS;;Alarm ThermalAlm;;1;0;;8
+113;3;40331_15_1;BITS;;Alarm EEIntReadErr;;1;0;;8
+114;3;40332;U16;;FieldNet Bitword: Terminal block status (TBStatus);;1;0;;4
+115;3;40332_0_1;BITS;;Terminal DI1_StartStop;;1;0;;4
+116;3;40332_1_1;BITS;;Terminal DI7;;1;0;;4
+117;3;40332_2_1;BITS;;Terminal DI6;;1;0;;4
+118;3;40332_3_1;BITS;;Terminal DI5;;1;0;;4
+119;3;40332_4_1;BITS;;Terminal DI3;;1;0;;4
+120;3;40332_5_1;BITS;;Terminal DI4;;1;0;;4
+121;3;40332_6_1;BITS;;Terminal DI2;;1;0;;4
+122;3;40332_7_1;BITS;;Terminal DI8_DriveEnable;;1;0;;4
+123;3;40332_8_1;BITS;;Terminal ResetCommand;;1;0;;4
+124;3;40332_9_1;BITS;;Terminal RO2;;1;0;;4
+125;3;40332_10_1;BITS;;Terminal RO1;;1;0;;4
+126;3;40332_11_1;BITS;;Terminal DO4_DI9;;1;0;;4
+127;3;40332_12_1;BITS;;Terminal DO5_DI10;;1;0;;4
+128;3;40332_13_1;BITS;;Terminal DO6;;1;0;;4
+129;3;40332_14_1;BITS;;Terminal RO3;;1;0;;4
+130;3;40333;U16;;FieldNet Bitword: Auxiliary protection word (AuxTrip);;1;0;;4
+131;3;40334;U16;;FieldNet Bitword: DI expansion board status (InputStatus);;1;0;;4
+132;3;40335;U16;;FieldNet Bitword: Saturation regulator word (SatRegWord);;1;0;;4
+133;3;40336;U16;;FieldNet Bitword: Echo back Command Word (ExecCommand);;1;0;;4
+134;3;40337;U16;;FieldNet Bitword: Drive Status Word (Status Word);;1;0;;4
+135;3;40337_0_1;BITS;;DriveStatus StatProtection;;1;0;;4
+136;3;40337_1_1;BITS;;DriveStatus StatRun;;1;0;;4
+137;3;40337_3_1;BITS;;DriveStatus StatSpecialFunction;;1;0;;4
+138;3;40337_4_1;BITS;;DriveStatus StatPrecharge;;1;0;;4
+139;3;40337_5_1;BITS;;DriveStatus StatWait4Synchro;;1;0;;4
+140;3;40337_6_1;BITS;;DriveStatus StatNetOK;;1;0;;4
+141;3;40337_8_1;BITS;;DriveStatus StatIacLimActive;;1;0;;4
+142;3;40337_9_1;BITS;;DriveStatus StatLocal;;1;0;;4
+143;3;40337_12_1;BITS;;DriveStatus LocalReset;;1;0;;4
+144;3;40337_14_1;BITS;;DriveStatus StatBusDrop;;1;0;;4
+145;3;40337_15_1;BITS;;DriveStatus StatPerNetwork;;1;0;;4
+146;3;40338;U16;;FieldNet Bitword: Trip software 2 (TripSW 2);;1;0;;4
+147;3;40339;U16;;Last protection and/or alarm occurred;;1;0;;4
+148;3;40340;U16;;Hours of run;;1;0;h;4
+149;3;40341;U16;;Days of run;;1;0;d;4
+150;3;40408;I16;;Retour consigne puissance reactive;;0.00381475547417;0;%;4
+151;3;40412;I16;;Retour consigne puissance active;;0.00381475547417;0;%;4

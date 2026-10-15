@@ -1,0 +1,11 @@
+﻿modbusRTU;Sensor;SES AUTOMATION;WT-485-PRO;;;;;;;
+1;3;257;U16;;Valeur de l'ensoleillement;POA;1;0;W/m²;4
+2;3;34818;U16;;Temperature de la cellule;TEMP_CELL;1;0;Degr. Celsius;4
+3;3;259;U16;;Status;;1;0;;4
+4;3;32769;U16;;Serial number;SERIAL;1;0;;4
+5;3;32770;U16;;Serial number_1;;1;0;;4
+6;3;32771;U16;;Firmware main version;;1;0;;4
+7;3;32772;U16;;Firmware main version_1;;1;0;;4
+8;3;37773;U16;;Node address;;1;0;;4
+9;3;32774;U16;;Bitrate;;1;0;;4
+10;3;32776;U16;;Serial configuration;;1;0;;4

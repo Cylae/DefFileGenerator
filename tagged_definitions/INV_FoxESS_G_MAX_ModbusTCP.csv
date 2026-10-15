@@ -1,0 +1,247 @@
+﻿modbusTCP;Inverter;Fox ESS;G-MAX_ModbusTCP;;;;;;;
+1;3;101;U16;;PCS actual total active power (summary);pcs_actual_total_active_power_summary;10.000000;0.000000;KW;4
+2;3;102;U16;;PCS actual total reactive power (summary);pcs_actual_total_reactive_power_summary;10.000000;0.000000;Kvar;4
+3;3;103;U16;;Total voltage (summary);total_voltage_summary;10.000000;0.000000;V;4
+4;3;104;U16;;Total current (summary);total_current_summary;10.000000;0.000000;A;4
+5;3;105;U16;;Total soc (summary);total_soc_summary;1.000000;0.000000;'%;4
+6;3;106;U16;;Battery status (summary);battery_status_summary;1.000000;0.000000;;4
+7;3;107;U16;;Total number of batteries (summary);total_number_of_batteries_summary;1.000000;0.000000;;4
+8;3;108;U16;;Average battery temperature (summary);average_battery_temperature_summary;1.000000;0.000000;℃;4
+9;3;109;U16;;Maximum battery temperature difference (summary);maximum_battery_temperature_difference_summary;1.000000;0.000000;℃;4
+10;3;110;U16;;Maximum single cell voltage value (summary);maximum_single_cell_voltage_value_summary;1000.000000;0.000000;V;4
+11;3;111;U16;;Minimum single cell voltage value (summary);minimum_single_cell_voltage_value_summary;1000.000000;0.000000;V;4
+12;3;114;U16;;System Status;system_status;1.000000;0.000000;;4
+13;3;136;U16;;Heartbeat Point;heartbeat_point;1.000000;0.000000;;4
+14;3;32024;U16;;Battery Pack Serial Number 1;battery_pack_serial_number_1;1.000000;0.000000;;4
+15;3;32048;U16;;Battery pack serial number 2;battery_pack_serial_number_2;1.000000;0.000000;;4
+16;3;32072;U16;;Battery pack serial number 3;battery_pack_serial_number_3;1.000000;0.000000;;4
+17;3;32096;U16;;Battery pack serial number 4;battery_pack_serial_number_4;1.000000;0.000000;;4
+18;3;32120;U16;;Software Version;software_version;1.000000;0.000000;;4
+19;3;32144;U16;;Hardware version;hardware_version;1.000000;0.000000;;4
+20;3;32168;U16;;Manufacturer Name;manufacturer_name;1.000000;0.000000;;4
+21;3;32192;U16;;Date of manufacture;date_of_manufacture;1.000000;0.000000;;4
+22;3;31048;U16;;System ID;system_id;1.000000;0.000000;;4
+23;3;31072;U16;;System Model;system_model;1.000000;0.000000;;4
+24;3;31096;U16;;System version;system_version;1.000000;0.000000;;4
+25;3;31120;U16;;CPLD Version;cpld_version;1.000000;0.000000;;4
+26;3;31144;U16;;DSP1 version;dsp1_version;1.000000;0.000000;;4
+27;3;31168;U16;;devName;devname;1.000000;0.000000;;4
+28;3;201;U16;;Heap SOH;heap_soh;1.000000;0.000000;'%;4
+29;3;202;U16;;Stack status (0: Stop 1: Charge 2: Discharge 3: Standby 4 Fault);stack_status_0_stop_1_charge_2_discharge_3_standby_4_fault;1.000000;0.000000;;4
+30;3;203;U16;;Stack voltage;stack_voltage;10.000000;0.000000;V;4
+31;3;204;U16;;Stack current;stack_current;10.000000;0.000000;A;4
+32;3;205;U16;;Maximum single cell voltage;maximum_single_cell_voltage;1000.000000;0.000000;V;4
+33;3;206;U16;;Minimum single cell voltage;minimum_single_cell_voltage;1000.000000;0.000000;V;4
+34;3;207;U16;;Maximum monomer temperature;maximum_monomer_temperature;1.000000;0.000000;℃;4
+35;3;208;U16;;Minimum monomer temperature;minimum_monomer_temperature;1.000000;0.000000;℃;4
+36;3;209;U16;;Maximum single cell SOC value;maximum_single_cell_soc_value;1.000000;0.000000;'%;4
+37;3;210;U16;;Minimum single cell SOC value;minimum_single_cell_soc_value;1.000000;0.000000;'%;4
+38;3;211;U16;;Maximum cell voltage cluster number;maximum_cell_voltage_cluster_number;1.000000;0.000000;;4
+39;3;212;U16;;Maximum cell voltage Cell number;maximum_cell_voltage_cell_number;1.000000;0.000000;;4
+40;3;213;U16;;Minimum cell voltage cluster number;minimum_cell_voltage_cluster_number;1.000000;0.000000;;4
+41;3;214;U16;;Minimum cell voltage Cell number;minimum_cell_voltage_cell_number;1.000000;0.000000;;4
+42;3;215;U16;;Maximum cell temperature cluster number;maximum_cell_temperature_cluster_number;1.000000;0.000000;;4
+43;3;216;U16;;Maximum monomer temperature monomer number;maximum_monomer_temperature_monomer_number;1.000000;0.000000;;4
+44;3;217;U16;;Minimum cell temperature cluster number;minimum_cell_temperature_cluster_number;1.000000;0.000000;;4
+45;3;218;U16;;Minimum monomer temperature monomer number;minimum_monomer_temperature_monomer_number;1.000000;0.000000;;4
+46;3;223;U16;;Maximum pressure difference of monomer;maximum_pressure_difference_of_monomer;1.000000;0.000000;mV;4
+47;3;224;U16;;Stack power;stack_power;1.000000;0.000000;KW;4
+48;3;227;U16;;Cumulative cluster charging capacity;cumulative_cluster_charging_capacity;1.000000;0.000000;KWh;4
+49;3;229;U16;;Cumulative cluster discharge capacity;cumulative_cluster_discharge_capacity;1.000000;0.000000;KWh;4
+50;3;231;U16;;Rechargeable capacity;rechargeable_capacity;10.000000;0.000000;KWh;4
+51;3;233;U16;;Dischargeable capacity;dischargeable_capacity;10.000000;0.000000;KWh;4
+52;3;6600;U16;;Single cell voltage;single_cell_voltage;1000.000000;0.000000;V;4
+53;3;7000;U16;;Single SOC;single_soc;1.000000;0.000000;'%;4
+54;3;2201;U16;;Cluster SOH;cluster_soh;1.000000;0.000000;'%;4
+55;3;2202;U16;;Cluster status 0: Stop 1: Charging 2: Discharging 3: Standby 4 Fault;cluster_status_0_stop_1_charging_2_discharging_3_standby_4_fault;1.000000;0.000000;;4
+56;3;2203;U16;;Cluster voltage;cluster_voltage;10.000000;0.000000;V;4
+57;3;2204;U16;;Cluster current;cluster_current;10.000000;0.000000;A;4
+58;3;2205;U16;;Maximum single cell voltage;maximum_single_cell_voltage_1;1000.000000;0.000000;V;4
+59;3;2206;U16;;Minimum single cell voltage;minimum_single_cell_voltage_1;1000.000000;0.000000;V;4
+60;3;2207;U16;;Maximum monomer temperature;maximum_monomer_temperature_1;1.000000;0.000000;℃;4
+61;3;2208;U16;;Minimum monomer temperature;minimum_monomer_temperature_1;1.000000;0.000000;℃;4
+62;3;2209;U16;;Maximum single cell SOC value;maximum_single_cell_soc_value_1;1.000000;0.000000;'%;4
+63;3;2210;U16;;Minimum single cell SOC value;minimum_single_cell_soc_value_1;1.000000;0.000000;'%;4
+64;3;2212;U16;;Maximum cell voltage Cell number;maximum_cell_voltage_cell_number_1;1.000000;0.000000;;4
+65;3;2214;U16;;Minimum cell voltage Cell number;minimum_cell_voltage_cell_number_1;1.000000;0.000000;;4
+66;3;2216;U16;;Maximum monomer temperature monomer number;maximum_monomer_temperature_monomer_number_1;1.000000;0.000000;;4
+67;3;2218;U16;;Minimum monomer temperature monomer number;minimum_monomer_temperature_monomer_number_1;1.000000;0.000000;;4
+68;3;2221;U16;;Number of cluster batteries;number_of_cluster_batteries;1.000000;0.000000;;4
+69;3;2222;U16;;Number of cluster temperatures;number_of_cluster_temperatures;1.000000;0.000000;;4
+70;3;2224;U16;;Cluster Power;cluster_power;1.000000;0.000000;KW;4
+71;3;2227;U16;;Cumulative cluster charging capacity;cumulative_cluster_charging_capacity_1;1.000000;0.000000;KWh;4
+72;3;2229;U16;;Cumulative cluster discharge capacity;cumulative_cluster_discharge_capacity_1;1.000000;0.000000;KWh;4
+73;3;221;U16;;Single cell undervoltage slight alarm;single_cell_undervoltage_slight_alarm;1.000000;0.000000;;4
+74;3;222;U16;;Single cell undervoltage moderate alarm;single_cell_undervoltage_moderate_alarm;1.000000;0.000000;;4
+75;3;225;U16;;Moderate over-temperature alarm;moderate_overtemperature_alarm;1.000000;0.000000;;4
+76;3;226;U16;;Single cell overtemperature severe alarm;single_cell_overtemperature_severe_alarm;1.000000;0.000000;;4
+77;3;228;U16;;Moderate alarm for cell undertemperature;moderate_alarm_for_cell_undertemperature;1.000000;0.000000;;4
+78;3;230;U16;;Single cell discharge overtemperature slight alarm;single_cell_discharge_overtemperature_slight_alarm;1.000000;0.000000;;4
+79;3;232;U16;;Single cell discharge over temperature severe alarm;single_cell_discharge_over_temperature_severe_alarm;1.000000;0.000000;;4
+80;3;234;U16;;Monomer discharge undertemperature moderate alarm;monomer_discharge_undertemperature_moderate_alarm;1.000000;0.000000;;4
+81;3;235;U16;;Single cell discharge undertemperature severe alarm;single_cell_discharge_undertemperature_severe_alarm;1.000000;0.000000;;4
+82;3;236;U16;;Single cell SOC low mild warning;single_cell_soc_low_mild_warning;1.000000;0.000000;;4
+83;3;237;U16;;Single SOC low to moderate warning;single_soc_low_to_moderate_warning;1.000000;0.000000;;4
+84;3;238;U16;;Single cell SOC low severe alarm;single_cell_soc_low_severe_alarm;1.000000;0.000000;;4
+85;3;239;U16;;Single SOC high mild warning;single_soc_high_mild_warning;1.000000;0.000000;;4
+86;3;240;U16;;Single SOC high moderate alarm;single_soc_high_moderate_alarm;1.000000;0.000000;;4
+87;3;241;U16;;Single SOC high serious alarm;single_soc_high_serious_alarm;1.000000;0.000000;;4
+88;3;242;U16;;Single cell SOC difference mild warning;single_cell_soc_difference_mild_warning;1.000000;0.000000;;4
+89;3;243;U16;;Single cell SOC difference moderate warning;single_cell_soc_difference_moderate_warning;1.000000;0.000000;;4
+90;3;244;U16;;Single cell SOC difference serious alarm;single_cell_soc_difference_serious_alarm;1.000000;0.000000;;4
+91;3;245;U16;;Single cell temperature difference slight alarm;single_cell_temperature_difference_slight_alarm;1.000000;0.000000;;4
+92;3;246;U16;;Moderate temperature difference alarm;moderate_temperature_difference_alarm;1.000000;0.000000;;4
+93;3;247;U16;;Serious temperature difference alarm;serious_temperature_difference_alarm;1.000000;0.000000;;4
+94;3;248;U16;;The temperature in the pile rises too fast (severe);the_temperature_in_the_pile_rises_too_fast_severe;1.000000;0.000000;;4
+95;3;250;U16;;Prohibit charging (protection);prohibit_charging_protection;1.000000;0.000000;;4
+96;3;251;U16;;Prohibited (protection);prohibited_protection;1.000000;0.000000;;4
+97;3;252;U16;;BMS system alarm;bms_system_alarm;1.000000;0.000000;;4
+98;3;253;U16;;BMS system fault summary;bms_system_fault_summary;1.000000;0.000000;;4
+99;3;254;U16;;Extreme single-cell overvoltage action alarm;extreme_singlecell_overvoltage_action_alarm;1.000000;0.000000;;4
+100;3;255;U16;;Limit single cell undervoltage action alarm;limit_single_cell_undervoltage_action_alarm;1.000000;0.000000;;4
+101;3;256;U16;;Extreme single cell over-temperature action alarm;extreme_single_cell_overtemperature_action_alarm;1.000000;0.000000;;4
+102;3;4201;U16;;Cluster end negative insulation alarm (medium);cluster_end_negative_insulation_alarm_medium;1.000000;0.000000;;4
+103;3;4202;U16;;Cluster end negative insulation alarm (serious);cluster_end_negative_insulation_alarm_serious;1.000000;0.000000;;4
+104;3;4203;U16;;Cluster-end SOC low (mild);clusterend_soc_low_mild;1.000000;0.000000;;4
+105;3;4204;U16;;Cluster-end SOC low (medium);clusterend_soc_low_medium;1.000000;0.000000;;4
+106;3;4205;U16;;Cluster-end SOC low (severe);clusterend_soc_low_severe;1.000000;0.000000;;4
+107;3;4206;U16;;Cluster end overvoltage alarm (minor);cluster_end_overvoltage_alarm_minor;1.000000;0.000000;;4
+108;3;4207;U16;;Cluster end overvoltage alarm (moderate);cluster_end_overvoltage_alarm_moderate;1.000000;0.000000;;4
+109;3;4208;U16;;Cluster end overvoltage alarm (serious);cluster_end_overvoltage_alarm_serious;1.000000;0.000000;;4
+110;3;4209;U16;;Cluster end undervoltage alarm (minor);cluster_end_undervoltage_alarm_minor;1.000000;0.000000;;4
+111;3;4210;U16;;Cluster end undervoltage alarm (moderate);cluster_end_undervoltage_alarm_moderate;1.000000;0.000000;;4
+112;3;4211;U16;;Cluster end undervoltage alarm (serious);cluster_end_undervoltage_alarm_serious;1.000000;0.000000;;4
+113;3;4212;U16;;Charging cluster end overcurrent alarm (mild);charging_cluster_end_overcurrent_alarm_mild;1.000000;0.000000;;4
+114;3;4213;U16;;Charging cluster end overcurrent alarm (moderate);charging_cluster_end_overcurrent_alarm_moderate;1.000000;0.000000;;4
+115;3;4214;U16;;Charging cluster end overcurrent alarm (severe);charging_cluster_end_overcurrent_alarm_severe;1.000000;0.000000;;4
+116;3;4215;U16;;Discharge cluster end overcurrent alarm (mild);discharge_cluster_end_overcurrent_alarm_mild;1.000000;0.000000;;4
+117;3;4216;U16;;Discharge cluster end overcurrent alarm (moderate);discharge_cluster_end_overcurrent_alarm_moderate;1.000000;0.000000;;4
+118;3;4217;U16;;Discharge cluster end overcurrent alarm (severe);discharge_cluster_end_overcurrent_alarm_severe;1.000000;0.000000;;4
+119;3;4218;U16;;Single cell overpressure (mild);single_cell_overpressure_mild;1.000000;0.000000;;4
+120;3;4219;U16;;Monomer overpressure (moderate);monomer_overpressure_moderate;1.000000;0.000000;;4
+121;3;4220;U16;;Single cell overpressure (severe);single_cell_overpressure_severe;1.000000;0.000000;;4
+122;3;4221;U16;;Single cell undervoltage (mild);single_cell_undervoltage_mild;1.000000;0.000000;;4
+123;3;4222;U16;;Monomer undervoltage (moderate);monomer_undervoltage_moderate;1.000000;0.000000;;4
+124;3;4223;U16;;Single cell underpressure (severe);single_cell_underpressure_severe;1.000000;0.000000;;4
+125;3;4224;U16;;Charging cell overheating (mild);charging_cell_overheating_mild;1.000000;0.000000;;4
+126;3;4225;U16;;Charging cell overtemperature (moderate);charging_cell_overtemperature_moderate;1.000000;0.000000;;4
+127;3;4226;U16;;Charging cell overtemperature (severe);charging_cell_overtemperature_severe;1.000000;0.000000;;4
+128;3;4227;U16;;Charging cell undertemperature (mild);charging_cell_undertemperature_mild;1.000000;0.000000;;4
+129;3;4228;U16;;Charging cell undertemperature (moderate);charging_cell_undertemperature_moderate;1.000000;0.000000;;4
+130;3;4229;U16;;Charging cell undertemperature (severe);charging_cell_undertemperature_severe;1.000000;0.000000;;4
+131;3;4230;U16;;Discharge cell overheating (mild);discharge_cell_overheating_mild;1.000000;0.000000;;4
+132;3;4231;U16;;Discharge cell overtemperature (moderate);discharge_cell_overtemperature_moderate;1.000000;0.000000;;4
+133;3;4232;U16;;Discharge cell overtemperature (severe);discharge_cell_overtemperature_severe;1.000000;0.000000;;4
+134;3;4233;U16;;Discharge cell undertemperature (mild);discharge_cell_undertemperature_mild;1.000000;0.000000;;4
+135;3;4234;U16;;Discharge cell undertemperature (moderate);discharge_cell_undertemperature_moderate;1.000000;0.000000;;4
+136;3;4235;U16;;Discharge cell undertemperature (severe);discharge_cell_undertemperature_severe;1.000000;0.000000;;4
+137;3;4236;U16;;Low SOC of monomer (mild);low_soc_of_monomer_mild;1.000000;0.000000;;4
+138;3;4237;U16;;Monomer SOC low (moderate);monomer_soc_low_moderate;1.000000;0.000000;;4
+139;3;4238;U16;;Low SOC of single cell (severe);low_soc_of_single_cell_severe;1.000000;0.000000;;4
+140;3;4239;U16;;Single SOC high (mild);single_soc_high_mild;1.000000;0.000000;;4
+141;3;4240;U16;;Single SOC high (medium);single_soc_high_medium;1.000000;0.000000;;4
+142;3;4241;U16;;Single SOC high (severe);single_soc_high_severe;1.000000;0.000000;;4
+143;3;4242;U16;;Single pressure difference (mild);single_pressure_difference_mild;1.000000;0.000000;;4
+144;3;4243;U16;;Single pressure difference (medium);single_pressure_difference_medium;1.000000;0.000000;;4
+145;3;4244;U16;;Single pressure difference (heavy);single_pressure_difference_heavy;1.000000;0.000000;;4
+146;3;4245;U16;;Temperature difference between cells (mild);temperature_difference_between_cells_mild;1.000000;0.000000;;4
+147;3;4246;U16;;Single temperature difference (moderate);single_temperature_difference_moderate;1.000000;0.000000;;4
+148;3;4247;U16;;Single temperature difference (heavy);single_temperature_difference_heavy;1.000000;0.000000;;4
+149;3;4249;U16;;Positive contactor;positive_contactor;1.000000;0.000000;;4
+150;3;4250;U16;;Cluster charging prohibited;cluster_charging_prohibited;1.000000;0.000000;;4
+151;3;4251;U16;;Burst Discharge Inhibit;burst_discharge_inhibit;1.000000;0.000000;;4
+152;3;4252;U16;;Alarm Summary Moderate;alarm_summary_moderate;1.000000;0.000000;;4
+153;3;4253;U16;;Alarm Summary Serious;alarm_summary_serious;1.000000;0.000000;;4
+154;3;4254;U16;;BCM communication failure;bcm_communication_failure;1.000000;0.000000;;4
+155;3;4255;U16;;Battery module overvoltage severe alarm;battery_module_overvoltage_severe_alarm;1.000000;0.000000;;4
+156;3;4256;U16;;Battery module overvoltage moderate alarm;battery_module_overvoltage_moderate_alarm;1.000000;0.000000;;4
+157;3;4257;U16;;Battery module overvoltage slight alarm;battery_module_overvoltage_slight_alarm;1.000000;0.000000;;4
+158;3;4258;U16;;Battery module undervoltage severe alarm;battery_module_undervoltage_severe_alarm;1.000000;0.000000;;4
+159;3;4259;U16;;Battery module undervoltage moderate alarm;battery_module_undervoltage_moderate_alarm;1.000000;0.000000;;4
+160;3;4260;U16;;Battery module undervoltage slight alarm;battery_module_undervoltage_slight_alarm;1.000000;0.000000;;4
+161;3;4261;U16;;Insulation detection fault;insulation_detection_fault;1.000000;0.000000;;4
+162;3;4262;U16;;Serious alarm for over-high power supply voltage;serious_alarm_for_overhigh_power_supply_voltage;1.000000;0.000000;;4
+163;3;4263;U16;;Power supply voltage is too high, moderate alarm;power_supply_voltage_is_too_high_moderate_alarm;1.000000;0.000000;;4
+164;3;4264;U16;;Power supply voltage is too high, slight warning;power_supply_voltage_is_too_high_slight_warning;1.000000;0.000000;;4
+165;3;4265;U16;;Serious low power supply voltage alarm;serious_low_power_supply_voltage_alarm;1.000000;0.000000;;4
+166;3;4266;U16;;Moderate low power supply voltage warning;moderate_low_power_supply_voltage_warning;1.000000;0.000000;;4
+167;3;4267;U16;;Low power supply voltage warning;low_power_supply_voltage_warning;1.000000;0.000000;;4
+168;3;4268;U16;;Insulation detection fault;insulation_detection_fault_1;1.000000;0.000000;;4
+169;3;4269;U16;;Current collection line fault;current_collection_line_fault;1.000000;0.000000;;4
+170;3;4270;U16;;Battery cell temperature detection module failure;battery_cell_temperature_detection_module_failure;1.000000;0.000000;;4
+171;3;4271;U16;;Battery total voltage detection circuit failure;battery_total_voltage_detection_circuit_failure;1.000000;0.000000;;4
+172;3;4272;U16;;The copper busbars connecting the battery cluster charging and discharging circuits are loosely connected;the_copper_busbars_connecting_the_battery_cluster_charging_and_discharging_circuits_are_loosely_connected;1.000000;0.000000;;4
+173;3;4273;U16;;Positive and negative contactor overtemperature;positive_and_negative_contactor_overtemperature;1.000000;0.000000;;4
+174;3;4274;U16;;Cascade addressing failed;cascade_addressing_failed;1.000000;0.000000;;4
+175;3;4275;U16;;MSD not connected fault;msd_not_connected_fault;1.000000;0.000000;;4
+176;3;4276;U16;;Serious alarm for excessive pressure difference of a single cell;serious_alarm_for_excessive_pressure_difference_of_a_single_cell;1.000000;0.000000;;4
+177;3;4277;U16;;The single cell pressure difference is too large, medium alarm;the_single_cell_pressure_difference_is_too_large_medium_alarm;1.000000;0.000000;;4
+178;3;4278;U16;;The pressure difference of the single cell is too large, a slight alarm;the_pressure_difference_of_the_single_cell_is_too_large_a_slight_alarm;1.000000;0.000000;;4
+179;3;55101;U16;;Ub phase voltage;ub_phase_voltage;1.000000;0.000000;V;4
+180;3;55102;U16;;Uc phase voltage;uc_phase_voltage;1.000000;0.000000;V;4
+181;3;55103;U16;;Ia phase current;ia_phase_current;1.000000;0.000000;A;4
+182;3;55104;U16;;Ib phase current;ib_phase_current;1.000000;0.000000;A;4
+183;3;55105;U16;;Ic phase current;ic_phase_current;1.000000;0.000000;A;4
+184;3;55106;U16;;Uab line voltage;uab_line_voltage;1.000000;0.000000;V;4
+185;3;55107;U16;;Ubc line voltage;ubc_line_voltage;1.000000;0.000000;V;4
+186;3;55108;U16;;Uca line voltage;uca_line_voltage;1.000000;0.000000;V;4
+187;3;55109;U16;;Phase A active power;phase_a_active_power;1.000000;0.000000;kw;4
+188;3;55110;U16;;Phase B active power;phase_b_active_power;1.000000;0.000000;kw;4
+189;3;55111;U16;;Phase C active power;phase_c_active_power;1.000000;0.000000;kw;4
+190;3;55112;U16;;Total active power;P_AC;1.000000;0.000000;kw;4
+191;3;55113;U16;;Phase A reactive power;phase_a_reactive_power;1.000000;0.000000;kvar;4
+192;3;55114;U16;;B phase reactive power;b_phase_reactive_power;1.000000;0.000000;kvar;4
+193;3;55115;U16;;Phase C reactive power;phase_c_reactive_power;1.000000;0.000000;kvar;4
+194;3;55116;U16;;Total reactive power;total_reactive_power;1.000000;0.000000;kvar;4
+195;3;55117;U16;;spare;spare;1.000000;0.000000;VA;4
+196;3;55118;U16;;spare;spare_1;1.000000;0.000000;VA;4
+197;3;55119;U16;;spare;spare_2;1.000000;0.000000;VA;4
+198;3;55120;U16;;spare;spare_3;1.000000;0.000000;VA;4
+199;3;55121;U16;;Phase A power factor;phase_a_power_factor;100.000000;0.000000;;4
+200;3;55122;U16;;Phase B power factor;phase_b_power_factor;100.000000;0.000000;;4
+201;3;55123;U16;;Phase C power factor;phase_c_power_factor;100.000000;0.000000;;4
+202;3;55124;U16;;Total power factor;PF;100.000000;0.000000;;4
+203;3;55125;U16;;frequency;FREQ;1.000000;0.000000;Hz;4
+204;3;55126;U16;;Current forward total peak active energy;current_forward_total_peak_active_energy;1.000000;0.000000;KWh;4
+205;3;55127;U16;;Current total forward peak active energy;current_total_forward_peak_active_energy;1.000000;0.000000;KWh;4
+206;3;55128;U16;;Current forward total active energy;current_forward_total_active_energy;1.000000;0.000000;KWh;4
+207;3;55129;U16;;Current forward total valley active energy;current_forward_total_valley_active_energy;1.000000;0.000000;KWh;4
+208;3;55130;U16;;Current total reverse peak active energy;current_total_reverse_peak_active_energy;1.000000;0.000000;KWh;4
+209;3;55131;U16;;Current total reverse peak active energy;current_total_reverse_peak_active_energy_1;1.000000;0.000000;KWh;4
+210;3;55132;U16;;Current total reverse active energy;current_total_reverse_active_energy;1.000000;0.000000;KWh;4
+211;3;55133;U16;;Current total reverse active energy;current_total_reverse_active_energy_1;1.000000;0.000000;KWh;4
+212;3;55134;U16;;spare;spare_4;1.000000;0.000000;;4
+213;3;55135;U16;;spare;spare_5;1.000000;0.000000;;4
+214;3;55151;U16;;Ub phase voltage;ub_phase_voltage_1;1.000000;0.000000;V;4
+215;3;55152;U16;;Uc phase voltage;uc_phase_voltage_1;1.000000;0.000000;V;4
+216;3;55153;U16;;Ia phase current;ia_phase_current_1;1.000000;0.000000;A;4
+217;3;55154;U16;;Ib phase current;ib_phase_current_1;1.000000;0.000000;A;4
+218;3;55155;U16;;Ic phase current;ic_phase_current_1;1.000000;0.000000;A;4
+219;3;55156;U16;;Uab line voltage;uab_line_voltage_1;1.000000;0.000000;V;4
+220;3;55157;U16;;Ubc line voltage;ubc_line_voltage_1;1.000000;0.000000;V;4
+221;3;55158;U16;;Uca line voltage;uca_line_voltage_1;1.000000;0.000000;V;4
+222;3;55159;U16;;Phase A active power;phase_a_active_power_1;1.000000;0.000000;kw;4
+223;3;55160;U16;;Phase B active power;phase_b_active_power_1;1.000000;0.000000;kw;4
+224;3;55161;U16;;Phase C active power;phase_c_active_power_1;1.000000;0.000000;kw;4
+225;3;55162;U16;;Total active power;total_active_power;1.000000;0.000000;kw;4
+226;3;55163;U16;;Phase A reactive power;phase_a_reactive_power_1;1.000000;0.000000;kvar;4
+227;3;55164;U16;;B phase reactive power;b_phase_reactive_power_1;1.000000;0.000000;kvar;4
+228;3;55165;U16;;Phase C reactive power;phase_c_reactive_power_1;1.000000;0.000000;kvar;4
+229;3;55166;U16;;Total reactive power;total_reactive_power_1;1.000000;0.000000;kvar;4
+230;3;55167;U16;;spare;spare_6;1.000000;0.000000;VA;4
+231;3;55168;U16;;spare;spare_7;1.000000;0.000000;VA;4
+232;3;55169;U16;;spare;spare_8;1.000000;0.000000;VA;4
+233;3;55170;U16;;spare;spare_9;1.000000;0.000000;VA;4
+234;3;55171;U16;;Phase A power factor;phase_a_power_factor_1;100.000000;0.000000;;4
+235;3;55172;U16;;Phase B power factor;phase_b_power_factor_1;100.000000;0.000000;;4
+236;3;55173;U16;;Phase C power factor;phase_c_power_factor_1;100.000000;0.000000;;4
+237;3;55174;U16;;Total power factor;total_power_factor;100.000000;0.000000;;4
+238;3;55175;U16;;frequency;frequency;1.000000;0.000000;;4
+239;3;54201;U16;;surge;surge;1.000000;0.000000;;4
+240;3;54202;U16;;Water immersion feedback;water_immersion_feedback;1.000000;0.000000;;4
+241;3;54203;U16;;Fire Extinguisher Feedback;fire_extinguisher_feedback;1.000000;0.000000;;4
+242;3;54204;U16;;Smoke feedback;smoke_feedback;1.000000;0.000000;;4
+243;3;54205;U16;;Access control feedback;access_control_feedback;1.000000;0.000000;;4
+244;3;56001;U16;;spare;spare_10;1.000000;0.000000;;4
+245;3;56002;U16;;spare;spare_11;1.000000;0.000000;;4
+246;3;56003;U16;;spare;spare_12;1.000000;0.000000;;4

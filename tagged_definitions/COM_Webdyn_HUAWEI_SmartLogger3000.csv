@@ -1,0 +1,12 @@
+﻿modbusRTU;Other;Webdyn;HUAWEI_SmartLogger3000;;;;;;;
+1;4;40575;U16;;Volt L1 to 2_Uab;;1.0;0.0;V;4
+2;4;40576;U16;;Volt L2 to 3_Ubc;;1.0;0.0;V;4
+3;4;40577;U16;;Volt L3 to 1_Uca;;1.0;0.0;V;4
+4;4;40572;U16;;Current1_Ia;;1.0;0.0;A;4
+5;4;40573;U16;;Current2_Ib;;1.0;0.0;A;4
+6;4;40574;U16;;Current3_Ic;;1.0;0.0;A;4
+7;4;40120;U16;;Active power derating;P_AC;1.0;0.0;kW;4
+8;4;40200;U16;;Power On;CMD_ON;1.0;0.0;-;1
+9;4;40201;U16;;Power Off;CMD_OFF;1.0;0.0;-;1
+10;4;40420;U16;;ActiveAdjustment;CMD_P_AC_SET_PERCENT;1.0;0.0;kW;1
+11;4;40543;U16;;Operating status;;1.0;0.0;-;4

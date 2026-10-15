@@ -1,0 +1,48 @@
+﻿modbusRTU;Other;Huawei;Huawei_2345;;;;;;;
+1;4;30000;U16;;1  Model Name;MODEL;1.0;0.0;;4
+2;4;30015;U16;;2  SN;SERIAL;1.0;0.0;;4
+3;4;30025;U16;;3  PN;;1.0;0.0;;4
+4;4;30070;U16;;4  Model ID;;1.0;0.0;;4
+5;4;30071;U16;;5  String Number;;1.0;0.0;;4
+6;4;30072;U16;;6  MPPT Number;;1.0;0.0;;4
+7;4;30073;U16;;7  Rated power (Pn);P_RATED;1.0;0.0;kW;4
+8;4;30075;U16;;8  Maximum active power;P_AC;1.0;0.0;kW;4
+9;4;30077;U16;;9  Maximum apparent power;S_AC;1.0;0.0;kVA;4
+10;4;30079;U16;;10  Maximum reactive power;Q_AC;1.0;0.0;kVar;4
+11;4;30081;U16;;11  Maximum reactive power;;1.0;0.0;kVar;4
+12;4;32000;U16;;12  Standalone teleindication;;1.0;0.0;;4
+13;4;32002;U16;;13  Operating status;;1.0;0.0;;4
+14;4;32008;U16;;14  Alarm 1;;1.0;0.0;;4
+15;4;32009;U16;;15  Alarm 2;;1.0;0.0;;4
+16;4;32016;U16;;17  PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;4
+17;4;32017;U16;;18  PV1 Current;I_DC_STRING_1;1.0;0.0;A;4
+18;4;32018;U16;;19  PV2 Voltage;U_DC_STRING_2;1.0;0.0;V;4
+19;4;32019;U16;;20  PV2 Current;I_DC_STRING_2;1.0;0.0;A;4
+20;4;32020;U16;;21  PV3 Voltage;U_DC_STRING_3;1.0;0.0;V;4
+21;4;32021;U16;;22  PV3 Current;I_DC_STRING_3;1.0;0.0;A;4
+22;4;32022;U16;;23  PV4 Voltage;U_DC_STRING_4;1.0;0.0;V;4
+23;4;32023;U16;;24  PV4 Current;I_DC_STRING_4;1.0;0.0;A;4
+24;4;32064;U16;;41  Input power;;1.0;0.0;kW;4
+25;4;32066;U16;;42 Grid Voltage;;1.0;0.0;V;4
+26;4;32072;U16;;48  Grid Current;;1.0;0.0;A;4
+27;4;32078;U16;;51  Active power peak of current day;;1.0;0.0;kW;4
+28;4;32080;U16;;52  Active power;;1.0;0.0;kW;4
+29;4;32082;U16;;53  Reactive power;;1.0;0.0;kVar;4
+30;4;32084;U16;;54  Power factor;PF;1.0;0.0;;4
+31;4;32085;U16;;55  Frequency;FREQ;1.0;0.0;Hz;4
+32;4;32086;U16;;56  Inverter efficiency;;1.0;0.0;%;4
+33;4;32087;U16;;57  Cabinet temperature;TEMP_INT;1.0;0.0;?;4
+34;4;32088;U16;;58  Insulation resistance;R_ISO;1.0;0.0;M?;4
+35;4;32089;U16;;59  Device status;;1.0;0.0;;4
+36;4;32090;U16;;60  Fault code;;1.0;0.0;;4
+37;4;32091;U16;;61  Startup time;;1.0;0.0;;4
+38;4;32093;U16;;62  Shutdown time;;1.0;0.0;;4
+39;4;32106;U16;;63  Total energy yield;E_TOT;1.0;0.0;kWh;4
+40;4;40000;U16;;67  System Time;;1.0;0.0;;4
+41;4;40122;U16;;69  Reactive power compensation (PF);;1.0;0.0;;4
+42;4;40123;U16;;70  Reactive power compensation(Q/S);;1.0;0.0;;4
+43;4;40125;U16;;71  Active power derating percent(0.1%);;1.0;0.0;%;4
+44;4;40126;U16;;Active power derating (fixed value W);;1.0;0.0;W;4
+45;4;40200;U16;;72  Power on;CMD_ON;1.0;0.0;;1
+46;4;40201;U16;;73  Power off;CMD_OFF;1.0;0.0;;1
+47;4;43006;U16;;Time zone;;1.0;0.0;;4

@@ -1,0 +1,8 @@
+﻿Modbus;Meter;SLEnergy;Generic6;;;;;;;
+1;4;14025;I16;;R-phase current;I_AC_3;0.100000;0.000000;A;4
+2;4;14026;I16;;S-phase current;;0.100000;0.000000;A;4
+3;4;14027;I16;;T-phase current;;0.100000;0.000000;A;4
+4;3;40040;U16;;AC power measurement methods;;1.000000;0.000000;;4
+5;3;40041;U16;;Electricity meter settings;;1.000000;0.000000;;4
+6;3;40042;U16;;CT related settings;;1.000000;0.000000;;4
+7;3;40043;U16;;External CT transformer ratio;;1.000000;0.000000;;4

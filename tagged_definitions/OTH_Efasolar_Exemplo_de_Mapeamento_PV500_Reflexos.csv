@@ -1,0 +1,69 @@
+﻿modbusRTU;Other;Efasolar;Exemplo de Mapeamento PV500 Re;;;;;;;
+1;4;40040;U16;;Estado do Inversor;;1.0;0.0;;4
+2;4;40041;U16;;Tensao de Rede;;1.0;0.0;;4
+3;4;40041;U16;;Frequencia;;1.0;0.0;;4
+4;4;40041;U16;;Pico Tensão Rede;;1.0;0.0;;4
+5;4;40041;U16;;Pico Corrente Rede;;1.0;0.0;;4
+6;4;40041;U16;;Pico Corrente CC;;1.0;0.0;;4
+7;4;40041;U16;;Sobrecarga;;1.0;0.0;;4
+8;4;40041;U16;;Sobretemperatura;;1.0;0.0;;4
+9;4;40041;U16;;Precarga Tensao PV;;1.0;0.0;;4
+10;4;40041;U16;;Precarga Condensadores Vcap;;1.0;0.0;;4
+11;4;40041;U16;;Tensão PV;;1.0;0.0;;4
+12;4;40041;U16;;Tensão Condensadores Vcap;;1.0;0.0;;4
+13;4;40041;U16;;Drivers;;1.0;0.0;;4
+14;4;40042;U16;;DSP;;1.0;0.0;;4
+15;4;40042;U16;;Reenvio MP;;1.0;0.0;;4
+16;4;40042;U16;;Reenvio KCC;;1.0;0.0;;4
+17;4;40042;U16;;Reenvio KS;;1.0;0.0;;4
+18;4;40042;U16;;Fusiveis Varistores;;1.0;0.0;;4
+19;4;40042;U16;;Fuga Terra;;1.0;0.0;;4
+20;4;40042;U16;;Interrupcao perdida;;1.0;0.0;;4
+21;4;40042;U16;;Reenvio KI;;1.0;0.0;;4
+22;4;40042;U16;;Reenvio KVENT;WIND_SPEED;1.0;0.0;;4
+23;4;40042;U16;;Corrente CC;;1.0;0.0;;4
+24;4;40042;U16;;Potencia CC;;1.0;0.0;;4
+25;4;40042;U16;;Correntes assimetricas;;1.0;0.0;;4
+26;4;40042;U16;;Tensoes assimetricas;;1.0;0.0;;4
+27;4;40042;U16;;Reenvio KT;;1.0;0.0;;4
+28;4;40042;U16;;Verificacao Entradas/Saidas;;1.0;0.0;;4
+29;4;40042;U16;;Controlo Proteccao anti-ilha;;1.0;0.0;;4
+30;4;40043;U16;;Fuga Terra TN;;1.0;0.0;;4
+31;4;40043;U16;;Fuga Terra TS;;1.0;0.0;;4
+32;4;40043;U16;;Alimentacao UPS;;1.0;0.0;;4
+33;4;40043;U16;;Tensao Saida UPS;;1.0;0.0;;4
+34;4;40043;U16;;Fusiveis Varistores (CA);;1.0;0.0;;4
+35;4;40043;U16;;Varistores (CC);;1.0;0.0;;4
+36;4;40043;U16;;Ventilacao Stack;;1.0;0.0;;4
+37;4;40043;U16;;Ventilacao Bobine;;1.0;0.0;;4
+38;4;40043;U16;;Driver Fase R;;1.0;0.0;;4
+39;4;40043;U16;;Driver Fase S;;1.0;0.0;;4
+40;4;40043;U16;;Driver Fase T;;1.0;0.0;;4
+41;4;40043;U16;;Proteccao Ventilacao;;1.0;0.0;;4
+42;4;40043;U16;;Reenvio KI Rede;;1.0;0.0;;4
+43;4;40043;U16;;Precarga Rede (CA);;1.0;0.0;;4
+44;4;40043;U16;;Tensao Homopolar;;1.0;0.0;;4
+45;4;40043;U16;;Renvio Agrupamento K;;1.0;0.0;;4
+46;4;40001;U16;;Tensao Condensadores Entrada CC (Vdc);U_DC;1.0;0.0;;4
+47;4;40003;U16;;Corrente Barramento CC (Idc);I_DC;1.0;0.0;;4
+48;4;40005;U16;;Potencia Entrada CC (Pdc);P_DC;1.0;0.0;;4
+49;4;40007;U16;;Tensao Saida (Vrs);;1.0;0.0;;4
+50;4;40009;U16;;Tensao Saida (Vst);;1.0;0.0;;4
+51;4;40011;U16;;Tensao Saida (Vtr);;1.0;0.0;;4
+52;4;40013;U16;;Corrente Saida (Ir);;1.0;0.0;;4
+53;4;40015;U16;;Corrente Saida (Is);;1.0;0.0;;4
+54;4;40017;U16;;Corrente Saida (It);;1.0;0.0;;4
+55;4;40019;U16;;Potencia Saida;;1.0;0.0;;4
+56;4;40021;U16;;Factor de Potencia;;1.0;0.0;;4
+57;4;40023;U16;;Temperatura;;1.0;0.0;;4
+58;4;40025;U16;;Frequencia;;1.0;0.0;;4
+59;4;40027;U16;;Alarme Tensao de Rede;;1.0;0.0;;9
+60;4;40028;U16;;Alarme Frequencia;;1.0;0.0;;9
+61;4;40029;U16;;Alarme Fusiveis;;1.0;0.0;;9
+62;4;40030;U16;;Alarme Fuga de Isolamento;;1.0;0.0;;9
+63;4;40031;U16;;Alarme Proteccao Interna;;1.0;0.0;;9
+64;4;40032;U16;;Alarme Sobretemperatura;;1.0;0.0;;9
+65;4;40033;U16;;Pré-Alarme Sobretemperatura;;1.0;0.0;;9
+66;4;40034;U16;;Alarme Ventilação Inversor;;1.0;0.0;;9
+67;4;40035;U16;;Contador de Energia Activa;;1.0;0.0;;4
+68;4;40037;U16;;Contador de Energia Reactiva;;1.0;0.0;;4

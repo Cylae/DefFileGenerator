@@ -1,0 +1,13 @@
+﻿modbusRTU;Sensor;Hukseflux;Hukseflux_SR20-D2;;;;;;;
+1;4;1;U16;;Modbus address;UNIT_ID;1.0;0.0;;1
+2;4;3;U16;;Irradiance (temperature compensated signal);POA;1.0;0.0;mW/m2;1
+3;4;5;U16;;Irradiance (temperature uncompensated signal);;1.0;0.0;mW/m2;1
+4;4;7;U16;;Sensor body temperature;;1.0;0.0;°C;1
+5;4;8;U16;;Sensor electrical resistance;;1.0;0.0;Ohm;1
+6;4;9;U16;;Scaling factor irradiance;;1.0;0.0;;1
+7;4;10;U16;;Scaling factor temperature;;1.0;0.0;;1
+8;4;11;U16;;Sensor voltage output;;1.0;0.0;nV;1
+9;4;41;U16;;Serial number;SERIAL;1.0;0.0;;1
+10;4;42;U16;;Sensor sensitivity;;1.0;0.0;uV/W/m2;1
+11;4;47;U16;;Calibration date;;1.0;0.0;;1
+12;4;99;U16;;Humidity;HUMIDITY;1.0;0.0;%;1

@@ -1,0 +1,72 @@
+﻿ModbusRTU;Inverter;CyberPower;3-Phases;;;;;;;
+1;4;4096;U32_W;;Product_ID;;1;0;;4
+2;4;4098;U16;;Inverter_Rated_Power;P_RATED;1;0;;4
+3;4;4099;U16;;Peak Panel_Power;;1;0;;4
+4;4;4103;U16;;RS485_ID;UNIT_ID;1;0;;4
+5;4;4104_16;STRING;;Serial Number;SERIAL;1;0;;4
+6;4;4112_16;STRING;;Model Name;MODEL;1;0;;4
+7;4;4120;U16;;Processor1 FW Version;;1;0;;4
+8;4;4121;U16;;Processor1 FW Date;;1;0;;4
+9;4;4122;U16;;Processor1 HW Version;;1;0;;4
+10;4;4123;U16;;Processor2 FW Version;;1;0;;4
+11;4;4124;U16;;Processor2 FW Date;;1;0;;4
+12;4;4125;U16;;Processor2 HW Version;;1;0;;4
+13;4;4126;U16;;Processor3 FW Version;;1;0;;4
+14;4;4127;U16;;Processor3 FW Date;;1;0;;4
+15;4;4128;U16;;Processor3 HW Version;;1;0;;4
+16;4;4129;U16;;Processor4 FW Version;;1;0;;4
+17;4;4130;U16;;Processor4 FW Date;;1;0;;4
+18;4;4131;U16;;Processor4 HW Version;;1;0;;4
+19;4;4132;U16;;Processor5 FW Version;;1;0;;4
+20;4;4133;U16;;Processor5 FW Date;;1;0;;4
+21;4;4134;U16;;Processor5 HW Version;;1;0;;4
+22;4;4135;U16;;Processor6 FW Version;;1;0;;4
+23;4;4136;U16;;Processor6 FW Date;;1;0;;4
+24;4;4137;U16;;Processor6 HW Version;;1;0;;4
+25;4;4141;U16;;DC Connection Status;;1;0;;4
+26;4;4143;U16;;System Structure;;1;0;;1
+27;4;4144;U16;;Inverter Status;;1;0;;4
+28;4;4145;U16;;CPS_PV_Status;;1;0;;4
+29;4;4147;U16;;Reconnected Time;;1;0;;4
+30;4;4152;U32_W;;Today kWh;E_DAY;1;0;Wh;4
+31;4;4156;U32_W;;System Life kWh;WattHours;1;0;Wh;4
+32;4;4160;U32_W;;Input1 Today kWh;;1;0;Wh;4
+33;4;4164;U32_W;;Input1 Life kWh;;1;0;Wh;4
+34;4;4168;U32_W;;Input2 Today kWh;;1;0;Wh;4
+35;4;4172;U32_W;;Input2 Life kWh;;1;0;Wh;4
+36;4;4256;U16;;AC_VoltageAN;;0.1;0;V;4
+37;4;4257;U16;;AC_VoltageBN;;0.1;0;V;4
+38;4;4258;U16;;AC_VoltageCN;;0.1;0;V;4
+39;4;4259;U16;;AC_CurrentA;;0.01;0;A;4
+40;4;4260;U16;;AC_CurrentB;;0.01;0;A;4
+41;4;4261;U16;;AC_CurrentC;;0.01;0;A;4
+42;4;4262;I16;;AC_PowerA;;1;0;W;4
+43;4;4263;I16;;AC_PowerB;;1;0;W;4
+44;4;4264;I16;;AC_PowerC;;1;0;W;4
+45;4;4265;U16;;AC_VoltageAB;;0.1;0;V;4
+46;4;4266;U16;;AC_VoltageBC;;0.1;0;V;4
+47;4;4267;U16;;AC_VoltageCA;;0.1;0;V;4
+48;4;4268;U16;;AC_Frequency;FREQ;0.01;0;Hz;4
+49;4;4272;U16;;DC1_Voltage;U_DC;0.1;0;V;4
+50;4;4273;U16;;DC1_Current;I_DC;0.01;0;A;4
+51;4;4274;I16;;DC1_Power;P_DC;1;0;W;4
+52;4;4275;U16;;DC2_Voltage;;0.1;0;V;4
+53;4;4276;U16;;DC2_Current;;0.01;0;A;4
+54;4;4277;I16;;DC2_Power;;1;0;W;4
+55;4;4278;U16;;BUS1_Voltage;;0.1;0;V;4
+56;4;4279;U16;;BUS2_Voltage;;0.1;0;V;4
+57;4;4284;U16;;Temperature (Amb);TEMP;0.1;0;C;4
+58;4;4285;U16;;Temperature 1;TEMP_CELL;0.1;0;C;4
+59;4;4286;U16;;Temperature 2;;0.1;0;C;4
+60;4;4288;U16_B;;CPS_PV_Status_1;;1;0;;4
+61;4;4289;U16;;Reconnected Time_1;;1;0;s;4
+62;4;4290;U32_W;;I_Event_1;WIND_SPEED;1;0;Bitfield;4
+63;4;4292;U32_W;;I_Event_2;;1;0;Bitfield;4
+64;4;4294;U16;;I_Event_1_Vendor;;1;0;Bitfield;4
+65;4;4295;U16;;I_Event_2_Vendor;;1;0;Bitfield;4
+66;4;4296;U16;;I_Event_3_Vendor;;1;0;Bitfield;4
+67;4;4297;U16;;I_Event_4_Vendor;;1;0;Bitfield;4
+68;4;4298;U16;;I_Event_5_Vendor;;1;0;Bitfield;4
+69;4;4299;U16;;I_Event_6_Vendor;;1;0;Bitfield;4
+70;4;4300;U16;;I_Event_7_Vendor;;1;0;Bitfield;4
+71;4;4301;U16;;I_Event_8_Vendor;;1;0;Bitfield;4

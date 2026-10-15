@@ -1,0 +1,105 @@
+﻿modbusRTU;Inverter;PowerOne;INV_ABB_PVI50-60;;;;;;;
+1;4;179;U16;;Remote On/Off;CMD_ON;1.0;0.0;;1
+2;4;180;U16;;Alarm manual reset;;1.0;0.0;;1
+3;4;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance;;1.0;0.0;s;1
+4;4;190;U16;;Mode dynamique - Tempo - Duree des consignes;;1.0;0.0;min;1
+5;4;197;U16;;Definition du comportement transitoire;;1.0;0.0;;1
+6;4;199;U16;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi);Q_AC;1.0;0.0;;1
+7;4;201;U16;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi);;1.0;0.0;;1
+8;4;204;U16;;Mode permanent - facteur de puissance remis à  1;PF;1.0;0.0;;1
+9;4;209;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en %;P_AC;1.0;0.0;%;1
+10;4;211;U16;;Mode permanent - regulation de la puissance active maximale de sortie en %;;1.0;0.0;%;1
+11;4;214;U16;;Mode permanent - Reset de la regulation de puissance active;;1.0;0.0;;1
+12;4;219;U16;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi) 2;;1.0;0.0;;1
+13;4;221;U16;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;;1.0;0.0;;1
+14;4;224;U16;;Mode dynamique - gestion de la puissance reactive en % de la puissance apparente;;1.0;0.0;%;1
+15;4;226;U16;;Mode permanent - gestion de la puissance reactive en % de la puissance apparente;;1.0;0.0;%;1
+16;4;299;U16;;Compteur cardiaque;;1.0;0.0;;4
+17;4;300;U16;;Onduleur - Puissance reactive;;1.0;0.0;VAR;4
+18;4;302;U16;;Onduleur - Tension du reseau;;1.0;0.0;V;4
+19;4;304;U16;;Onduleur - Puissance active injectee;;1.0;0.0;W;4
+20;4;306;U16;;Onduleur - Courant;;1.0;0.0;A;4
+21;4;500;U16;;Definition de l'unite des registres (% ou ‰);;1.0;0.0;;1
+22;4;501;U16;;Definir le mode utilise (permanent ou dynamique);;1.0;0.0;;1
+23;4;502;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance (reactif);;1.0;0.0;s;1
+24;4;503;U16;;Mode dynamique - Tempo - Duree des consignes 2;;1.0;0.0;min;1
+25;4;504;U16;;Definition du comportement transitoire 2;;1.0;0.0;;1
+26;4;505;U16;;Definition de la quantite de puissance reactive à  fournir;;1.0;0.0;;1
+27;4;506;U16;;Mode dynamique - gestion de la puissance reactive en %;;1.0;0.0;%;1
+28;4;507;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en % ou ‰;;1.0;0.0;%;1
+29;4;508;U16;;Mode dynamique - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;;1.0;0.0;;1
+30;4;510;U16;;Mode permanent - gestion de la puissance reactive en % ou ‰;;1.0;0.0;%;1
+31;4;511;U16;;Mode permanent - regulation de la puissance active maximale de sortie en % ou ‰;;1.0;0.0;%;1
+32;4;512;U16;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;;1.0;0.0;;1
+33;4;514;U16;;Reset de la puissance active;;1.0;0.0;;1
+34;4;515;U16;;Reset de la puissance reactive;;1.0;0.0;;1
+35;4;99;U16;;Onduleur - Start register;;1.0;0.0;;4
+36;4;100;U16;;Onduleur - Map size;;1.0;0.0;;4
+37;4;101;U16;;Onduleur - Version de la table d'echange;;1.0;0.0;;4
+38;4;102;U16;;Addresse RS485 de l'onduleur;;1.0;0.0;;4
+39;4;103;U16;;Serial Number;SERIAL;1.0;0.0;;4
+40;4;109;U16;;Part Number;;1.0;0.0;;4
+41;4;115;U16;;Onduleur Identifiant;;1.0;0.0;;4
+42;4;116;U16;;Onduleur Code pays;;1.0;0.0;;4
+43;4;117;U16;;Onduleur Isolation galvanique;R_ISO;1.0;0.0;;4
+44;4;118;U16;;Onduleur Type;;1.0;0.0;;4
+45;4;119;U16;;Onduleur Semaine de production;;1.0;0.0;;4
+46;4;121;U16;;Onduleur Annee de production;;1.0;0.0;;4
+47;4;123;U16;;Onduleur Etats - Etat general;;1.0;0.0;;9
+48;4;124;U16;;Onduleur Etats - Etat onduleur;;1.0;0.0;;9
+49;4;125;U16;;Onduleur Etats - Etat canal (MPPT) 1;;1.0;0.0;;9
+50;4;126;U16;;Onduleur Etats - Etat canal (MPPT) 2;;1.0;0.0;;9
+51;4;127;U16;;Onduleur Etats - Etat alarmes;;1.0;0.0;;9
+52;4;128;U16;;Carte de contrà´le de l'afficheur Etat;;1.0;0.0;;9
+53;4;129;U16;;Carte de communication Etat;;1.0;0.0;;9
+54;4;130;U16;;Carte porte-fusibles Etat;;1.0;0.0;;9
+55;4;131;U16;;Onduleur Energie journalià¨re;E_DAY;1.0;0.0;Wh;4
+56;4;133;U16;;Onduleur Energie totale;E_TOT;1.0;0.0;kWh;4
+57;4;135;U16;;Onduleur Energie partielle;;1.0;0.0;kWh;4
+58;4;137;U16;;Onduleur Energie hebdomadaire;;1.0;0.0;kWh;4
+59;4;139;U16;;Onduleur Energie mensuelle;;1.0;0.0;kWh;4
+60;4;141;U16;;Onduleur Energie annuelle;;1.0;0.0;kWh;4
+61;4;143;U16;;Onduleur Tension du reseau 2;;1.0;0.0;V;4
+62;4;145;U16;;Onduleur Courant injecte;;1.0;0.0;A;4
+63;4;147;U16;;Onduleur Puissance d'injection;;1.0;0.0;W;4
+64;4;149;U16;;Onduleur Frequence du reseau;FREQ;1.0;0.0;Hz;4
+65;4;151;U16;;Onduleur Puissance MPPT1;P_DC_MPPT_1;1.0;0.0;W;4
+66;4;153;U16;;Onduleur Tension MPPT1;U_DC_MPPT_1;1.0;0.0;V;4
+67;4;155;U16;;Onduleur Courant MPPT1;I_DC_MPPT_1;1.0;0.0;A;4
+68;4;157;U16;;Onduleur Puissance MPPT2;P_DC_MPPT_2;1.0;0.0;W;4
+69;4;159;U16;;Onduleur Tension MPPT2;U_DC_MPPT_2;1.0;0.0;V;4
+70;4;161;U16;;Onduleur Courant MPPT2;I_DC_MPPT_2;1.0;0.0;A;4
+71;4;163;U16;;Onduleur Temperature onduleur;;1.0;0.0;Â°C;4
+72;4;165;U16;;Onduleur Temperature booster;;1.0;0.0;Â°C;4
+73;4;167;U16;;Onduleur Resistance d'isolement (Riso);;1.0;0.0;MOhm;4
+74;4;169;U16;;Onduleur Frequence (eolien uniquement);;1.0;0.0;Hz;4
+75;4;171;U16;;Onduleur Cos(phi);;1.0;0.0;;4
+76;4;173;U16;;Onduleur - Presence;;1.0;0.0;;4
+77;4;1049;U16;;Global State;;1.0;0.0;;9
+78;4;1050;U16;;Alarm State;;1.0;0.0;;9
+79;4;1051;U16;;DC/DC Converter State;;1.0;0.0;;9
+80;4;1052;U16;;DC/AC Converter State;;1.0;0.0;;9
+81;4;1053;U16;;Derating State;;1.0;0.0;;9
+82;4;1093;U16;;Output Active Power Instantaneous;;1.0;0.0;W;4
+83;4;1095;U16;;Output Active Power Absolute Peak;;1.0;0.0;W;4
+84;4;1097;U16;;Output Active Power Daily Peak;;1.0;0.0;W;4
+85;4;1099;U16;;Output Active Power Feedback on Curtailment applied;;1.0;0.0;W;4
+86;4;1101;U16;;Reactive Power Feedback on Set Point applied;;1.0;0.0;VAr;4
+87;4;1103;U16;;Power Factor Feedback on Set Point applied;;1.0;0.0;;4
+88;4;1107;U16;;Active Power on DC Input #1;;1.0;0.0;W;4
+89;4;1109;U16;;Voltage on DC Input #1;U_DC;1.0;0.0;V;4
+90;4;1111;U16;;Current on DC Input #1;I_DC;1.0;0.0;A;4
+91;4;1113;U16;;Active Power on DC Input #2;;1.0;0.0;W;4
+92;4;1115;U16;;Voltage on DC Input #2;;1.0;0.0;V;4
+93;4;1117;U16;;Current on DC Input #2;;1.0;0.0;A;4
+94;4;1119;U16;;Internal Temperature (DC Box);TEMP_INT;1.0;0.0;Â°C;4
+95;4;1125;U16;;Isolation Resistance;;1.0;0.0;MOhm;4
+96;4;1127;U16;;Max Leakage Current;;1.0;0.0;A;4
+97;4;1129;U16;;Active Power on DC Input #3;;1.0;0.0;W;4
+98;4;1131;U16;;Voltage on DC Input #3;;1.0;0.0;V;4
+99;4;1133;U16;;Current on DC Input #3;;1.0;0.0;A;4
+100;4;3649;U16;;Family product;;1.0;0.0;;4
+101;4;3650;U16;;Product model;MODEL;1.0;0.0;;4
+102;4;3651;U16;;Major release;;1.0;0.0;;4
+103;4;3652;U16;;Minor release;;1.0;0.0;;4
+104;4;3653;U16;;Build version;;1.0;0.0;;4

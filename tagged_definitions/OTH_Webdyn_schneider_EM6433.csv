@@ -1,0 +1,18 @@
+﻿modbusRTU;Other;Webdyn;schneider_EM6433;;;;;;;
+1;4;3900;U16;;Apparent power, total;S_AC;1.0;0.0;;4
+2;4;3902;U16;;Active power, total;P_AC;1.0;0.0;;4
+3;4;3912;U16;;Current average;;1.0;0.0;;4
+4;4;3916;U16;;Apparent power, phase 1;S_AC_1;1.0;0.0;;4
+5;4;3918;U16;;Active power, phase 1;P_AC_1;1.0;0.0;;4
+6;4;3928;U16;;Current, phase 1;I_AC_1;1.0;0.0;;4
+7;4;3930;U16;;Apparent power, phase 2;S_AC_2;1.0;0.0;;4
+8;4;3932;U16;;Active power, phase 2;P_AC_2;1.0;0.0;;4
+9;4;3942;U16;;Current, phase 2;I_AC_2;1.0;0.0;;4
+10;4;3944;U16;;Apparent power, phase 3;S_AC_3;1.0;0.0;;4
+11;4;3946;U16;;Active power, phase 3;P_AC_3;1.0;0.0;;4
+12;4;3956;U16;;Current, phase 3;I_AC_3;1.0;0.0;;4
+13;4;3958;U16;;Forward apparent energy;;1.0;0.0;;4
+14;4;3960;U16;;Forward active energy;;1.0;0.0;;4
+15;4;3992;U16;;n hours;;1.0;0.0;;4
+16;4;3994;U16;;Forward run seconds;;1.0;0.0;;4
+17;4;3998;U16;;Number of power interruptions;;1.0;0.0;;4

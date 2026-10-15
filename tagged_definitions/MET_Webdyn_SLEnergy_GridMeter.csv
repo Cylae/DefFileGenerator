@@ -1,0 +1,66 @@
+﻿modbus;Meter;SL Energy;GridMeter;;;;;;;
+1;3;10500;U16;;Grid_Voltage_R;;0.1;0;V;4
+2;3;10501;U16;;Grid_Voltage_S;;0.1;0;V;4
+3;3;10502;U16;;Grid_Voltage_T;;0.1;0;V;4
+4;3;10503;I16;;Grid_Current_R;;0.1;0;A;4
+5;3;10504;I16;;Grid_Current_S;;0.1;0;A;4
+6;3;10505;I16;;Grid_Current_T;;0.1;0;A;4
+7;3;10506;U16;;Grid_Frequency_R;FREQ;0.01;0;Hz;4
+8;3;10507;U16;;Grid_Frequency_S;;0.01;0;Hz;4
+9;3;10508;U16;;Grid_Frequency_T;;0.01;0;Hz;4
+10;3;10509;I32;;Grid_Total_Active_Power;P_AC;1;0;W;4
+11;3;10511;I32;;Grid_Total_Reactive_Power;Q_AC;1;0;Var;4
+12;3;10513;I32;;Grid_Total_Apparent_Power;;1;0;Va;4
+13;3;10515;I32;;Grid_Active_Power_R;;1;0;W;4
+14;3;10517;I32;;Grid_Active_Power_S;;1;0;W;4
+15;3;10519;I32;;Grid_Active_Power_T;;1;0;W;4
+16;3;10521;I32;;Grid_Reactive_Power_R;;1;0;Var;4
+17;3;10523;I32;;Grid_Reactive_Power_S;;1;0;Var;4
+18;3;10525;I32;;Grid_Reactive_Power_T;;1;0;Var;4
+19;3;10527;I32;;Grid_Apparent_Power_R;;1;0;Va;4
+20;3;10529;I32;;Grid_Apparent_Power_S;;1;0;Va;4
+21;3;10531;I32;;Grid_Apparent_Power_T;;1;0;Va;4
+22;3;10533;U16;;Grid_Line_Voltage_RS;;0.1;0;V;4
+23;3;10534;U16;;Grid_Line_Voltage_ST;;0.1;0;V;4
+24;3;10535;U16;;Grid_Line_Voltage_TR;;0.1;0;V;4
+25;3;10536;I16;;Power_Factor_R;;0.001;0;;4
+26;3;10537;U16;;Daily_Grid_Conn_Time;;0.1;0;H;4
+27;3;10538;U32;;Cumul_Grid_Conn_Time;;0.1;0;H;4
+28;3;10540;I16;;Grid_Conn_Gen_Daily;;0.1;0;kWh;4
+29;3;10541;I32;;Grid_Conn_Gen_Cumul;;0.1;0;kWh;4
+30;3;10543;U16;;Inverter_Efficiency;;0.001;0;;4
+31;3;10544;I16;;DCI_R;;0.1;0;mA;4
+32;3;10545;I16;;DCI_S;;0.1;0;mA;4
+33;3;10546;I16;;DCI_T;;0.1;0;mA;4
+34;3;10547;I16;;Power_Factor_S;;0.001;0;;4
+35;3;10548;I16;;Power_Factor_T;;0.001;0;;4
+36;3;10549;I32;;Forward_Reverse_Pwr_S;;1;0;W;4
+37;3;10551;I32;;Forward_Reverse_Pwr_T;;1;0;W;4
+38;3;14000;I32;;Meter_Combined_Active_Power;;0.1;0;W;4
+39;3;14002;I32;;Meter_Active_Power_R;;0.1;0;W;4
+40;3;14004;I32;;Meter_Active_Power_S;;0.1;0;W;4
+41;3;14006;I32;;Meter_Active_Power_T;;0.1;0;W;4
+42;3;14008;I32;;Meter_Combined Phase Reactive Pwr;;0.1;0;Var;4
+43;3;14010;I32;;Meter_Combined Phase Power Factor;PF;0.001;0;;4
+44;3;14012;I32;;Meter_Daily_Active_Energy;E_DAY;0.1;0;kWh;4
+45;3;14014;I32;;Meter_Total_Positive_Energy;E_TOT;0.1;0;kWh;4
+46;3;14016;I32;;Meter_Daily_Reverse_Energy;;0.1;0;kWh;4
+47;3;14018;I32;;Meter_Total_Reverse_Energy;;0.1;0;kWh;4
+48;3;14025;I16;;Meter_CT_Current_R;;0.1;0;A;4
+49;3;14026;I16;;Meter_CT_Current_S;;0.1;0;A;4
+50;3;14027;I16;;Meter_CT_Current_T;;0.1;0;A;4
+51;3;14060;U16;;Com Interface Status;;1;0;;4
+52;3;14070;U16;;PID operating status;;1.0;0.0;;4
+53;3;14071;U16;;PID_Bus_Voltage;U_DC;0.1;0;V;4
+54;3;14072;U16;;PID_PV1_PE_Voltage;;0.1;0;V;4
+55;3;14073;U16;;PID_PV2_PE_Voltage;;0.1;0;V;4
+56;3;40030;U16;;AC_Starting_High_Voltage;;0.1;0;V;4
+57;3;40031;U16;;AC_Startup_Low_Voltage;;0.1;0;V;4
+58;3;40032;U16;;AC_Starts_At_High_Frequency;;0.01;0;Hz;4
+59;3;40033;U16;;AC_Starts_At_Low_Frequency;;0.01;0;Hz;4
+60;3;40034;U16;;Grid_Voltage_Type_2;;1;0;;4
+61;3;40035;U16;;Power_Grid_Type_Selection;;1;0;;4
+62;3;40040;U16;;AC_Power_Measurement_Methods;;1;0;;4
+63;3;40041;U16;;Electricity_Meter_Settings;;1;0;;4
+64;3;40042;U16;;CT_Related_Settings;;1;0;;4
+65;3;40043;U16;;External_CT_Transformer_Ratio;;1;0;;4

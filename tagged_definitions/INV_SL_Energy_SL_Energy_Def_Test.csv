@@ -1,0 +1,167 @@
+﻿modbusRTU;Inverter;SL_Energy;Generic;0;;;;;;
+1;4;9999;U16;;Comm Protocol Version;CommVer;1;0;;1
+2;4;10000;U16;;Main DSP Version;MainDSPVer;1;0;;1
+3;4;10001;U16;;Aux DSP Version;AuxDSPVer;1;0;;1
+4;4;10002;U16;;ARM Version;ARMVer;1;0;;1
+5;4;10003;U16;;CPLD Version;CPLDVer;1;0;;1
+6;4;10004;U16;;CPU1 Software Version;CPU1Ver;1;0;;1
+7;4;10008_18;STRING;;Serial Number;SN;1;0;;1
+8;4;10017;U16;;Product Code;ProdCode;1;0;;1
+9;4;10018;U16;;Equipment Info;EquipInfo;1;0;;4
+10;4;10019;U16;;Parallel Operation Info;ParaInfo;1;0;;4
+11;4;10020;U16;;Rated Power;RatedPower;0.1;0;kW;1
+12;4;10021;U16;;MPPT String Count;MPPTStrCnt;1;0;;1
+13;4;10022;U16;;Grid Voltage Type;GridType;1;0;;1
+14;4;10023;U16;;Battery Info;BattInfo;1;0;;1
+15;4;10024;U16;;Battery Operating Type;BattOpType;1;0;;4
+16;4;10025;U16;;Battery Series Parallel;BattSerPar;1;0;;1
+17;4;10026;U16;;Special Function Reg 1;SpecFunc1;1;0;;4
+18;4;10027;U16;;Gen Input As Load Out;GenAsLoad;1;0;;4
+19;4;10028;U16;;Firmware Scope;FWScope;1;0;;1
+20;4;10034;U16;;Energy Dist Pattern;EnDistPatt;1;0;;4
+21;4;10035;U16;;Running Status;RunStatus;1;0;;4
+22;4;10036;U16;;Grid Conn Countdown;GridCount;1;0;s;4
+23;4;10037;U16;;Total Bus Voltage;BusVolt;0.1;0;V;4
+24;4;10038;U16;;NBUS Voltage;NBusVolt;0.1;0;V;4
+25;4;10039;U16;;DC Insulation Res;DCIsoRes;1;0;kOhm;4
+26;4;10040;U16;;Leakage Current;LeakCurr;0.1;0;mA;4
+27;4;10041;I32_W;;Derating Power;DeratePwr;1;0;W;4
+28;4;10043;U16;;Power Limiting Mode;PwrLimMode;1;0;;4
+29;4;10044;I16;;N-G Voltage;NGVolt;0.1;0;V;4
+30;4;10050;I16;;INV Module R Temp;InvRTemp;0.1;0;C;4
+31;4;10051;I16;;INV Module Temp 1;InvTemp1;0.1;0;C;4
+32;4;10052;I16;;INV Module Temp 2;InvTemp2;0.1;0;C;4
+33;4;10053;I16;;Ambient Temperature;AmbTemp;0.1;0;C;4
+34;4;10054;I16;;Radiator Temperature;RadTemp;0.1;0;C;4
+35;4;10055;I16;;Boost 1 Temperature;Boost1Temp;0.1;0;C;4
+36;4;10056;I16;;Boost 2 Temperature;Boost2Temp;0.1;0;C;4
+37;4;10057;I16;;Boost 3 Temperature;Boost3Temp;0.1;0;C;4
+38;4;10058;I16;;Boost 4 Temperature;Boost4Temp;0.1;0;C;4
+39;4;10063;U16;;Main Fault Code;MainFault;1;0;;8
+40;4;10064;U16;;Sub Fault Code;SubFault;1;0;;8
+41;4;10065;U16;;Main Alarm Code;MainAlarm;1;0;;8
+42;4;10066;U16;;Sub Alarm Code;SubAlarm;1;0;;8
+43;4;10443;I16;;Inverter Current R;InvCurrR;0.1;0;A;4
+44;4;10444;I16;;Inverter Current S;InvCurrS;0.1;0;A;4
+45;4;10445;I16;;Inverter Current T;InvCurrT;0.1;0;A;4
+46;4;10449;I32_W;;Total Active Power;TotActPwr;1;0;W;4
+47;4;10455;I32_W;;Active Power R;ActPwrR;1;0;W;4
+48;4;10457;I32_W;;Active Power S;ActPwrS;1;0;W;4
+49;4;10459;I32_W;;Active Power T;ActPwrT;1;0;W;4
+50;4;10461;I16;;Daily Energy Yield;DayYield;0.1;0;kWh;4
+51;4;10462;I32_W;;Total Energy Yield;TotYield;0.1;0;kWh;4
+52;4;10500;U16;;Grid Voltage R;GridVoltR;0.1;0;V;4
+53;4;10501;U16;;Grid Voltage S;GridVoltS;0.1;0;V;4
+54;4;10502;U16;;Grid Voltage T;GridVoltT;0.1;0;V;4
+55;4;10503;I16;;Grid Current R;GridCurrR;0.1;0;A;4
+56;4;10504;I16;;Grid Current S;GridCurrS;0.1;0;A;4
+57;4;10505;I16;;Grid Current T;GridCurrT;0.1;0;A;4
+58;4;10506;U16;;Grid Frequency R;GridFreqR;0.01;0;Hz;4
+59;4;10507;U16;;Grid Frequency S;GridFreqS;0.01;0;Hz;4
+60;4;10508;U16;;Grid Frequency T;GridFreqT;0.01;0;Hz;4
+61;4;10509;I32_W;;Grid Total Active Pwr;GridTotActP;1;0;W;4
+62;4;10511;I32_W;;Grid Total React Pwr;GridTotReactP;1;0;var;4
+63;4;10513;I32_W;;Grid Total Appr Pwr;GridTotApprP;1;0;VA;4
+64;4;10515;I32_W;;Grid Active Power R;GridActPwrR;1;0;W;4
+65;4;10517;I32_W;;Grid Active Power S;GridActPwrS;1;0;W;4
+66;4;10519;I32_W;;Grid Active Power T;GridActPwrT;1;0;W;4
+67;4;10521;I32_W;;Grid React Power R;GridReactPwrR;1;0;var;4
+68;4;10523;I32_W;;Grid React Power S;GridReactPwrS;1;0;var;4
+69;4;10525;I32_W;;Grid React Power T;GridReactPwrT;1;0;var;4
+70;4;10527;I32_W;;Grid Appr Power R;GridApprPwrR;1;0;VA;4
+71;4;10529;I32_W;;Grid Appr Power S;GridApprPwrS;1;0;VA;4
+72;4;10531;I32_W;;Grid Appr Power T;GridApprPwrT;1;0;VA;4
+73;4;10533;U16;;Line Voltage RS;LineVoltRS;0.1;0;V;4
+74;4;10534;U16;;Line Voltage ST;LineVoltST;0.1;0;V;4
+75;4;10535;U16;;Line Voltage TR;LineVoltTR;0.1;0;V;4
+76;4;10536;I16;;Power Factor R;PFR;0.001;0;;4
+77;4;10537;U16;;Daily Grid Conn Time;DayConnTime;0.1;0;h;4
+78;4;10538;U32_W;;Total Grid Conn Time;TotConnTime;0.1;0;h;4
+79;4;10540;I16;;Daily Grid Feed-in;DayFeedIn;0.1;0;kWh;4
+80;4;10541;I32_W;;Total Grid Feed-in;TotFeedIn;0.1;0;kWh;4
+81;4;10543;U16;;Inverter Efficiency;InvEff;0.1;0;%;4
+82;4;10544;I16;;DCI R;DCIR;0.1;0;mA;4
+83;4;10545;I16;;DCI S;DCIS;0.1;0;mA;4
+84;4;10546;I16;;DCI T;DCIT;0.1;0;mA;4
+85;4;10547;I16;;Power Factor S;PFS;0.001;0;;4
+86;4;10548;I16;;Power Factor T;PFT;0.001;0;;4
+87;4;10560;U32_W;;Total PV Power;TotPVPower;1;0;W;4
+88;4;10562;U16;;PV1 Voltage;PV1Volt;0.1;0;V;4
+89;4;10563;U16;;PV1 Current;PV1Curr;0.1;0;A;4
+90;4;10564;U16;;PV1 Power;PV1Pwr;1;0;W;4
+91;4;10565;U16;;PV2 Voltage;PV2Volt;0.1;0;V;4
+92;4;10566;U16;;PV2 Current;PV2Curr;0.1;0;A;4
+93;4;10567;U16;;PV2 Power;PV2Pwr;1;0;W;4
+94;4;10568;U16;;PV3 Voltage;PV3Volt;0.1;0;V;4
+95;4;10569;U16;;PV3 Current;PV3Curr;0.1;0;A;4
+96;4;10570;U16;;PV3 Power;PV3Pwr;1;0;W;4
+97;4;10571;U16;;PV4 Voltage;PV4Volt;0.1;0;V;4
+98;4;10572;U16;;PV4 Current;PV4Curr;0.1;0;A;4
+99;4;10573;U16;;PV4 Power;PV4Pwr;1;0;W;4
+100;4;10635;I16;;String 1 Current;Str1Curr;0.01;0;A;4
+101;4;10636;I16;;String 2 Current;Str2Curr;0.01;0;A;4
+102;4;10637;I16;;String 3 Current;Str3Curr;0.01;0;A;4
+103;4;10638;I16;;String 4 Current;Str4Curr;0.01;0;A;4
+104;4;10683;U16;;Daily PV Yield;DayPVYield;0.1;0;kWh;4
+105;4;10684;U32_W;;Total PV Yield;TotPVYield;0.1;0;kWh;4
+106;4;10800;I32_W;;Total Load Active Pwr;TotLoadActP;1;0;W;4
+107;4;10802;I32_W;;Load Active Power R;LoadActPwrR;1;0;W;4
+108;4;10804;I32_W;;Load Active Power S;LoadActPwrS;1;0;W;4
+109;4;10806;I32_W;;Load Active Power T;LoadActPwrT;1;0;W;4
+110;4;11000;U16;;Daily Grid Purchase;DayGridBuy;0.1;0;kWh;4
+111;4;11005;U32_W;;Total Grid Purchase;TotGridBuy;0.1;0;kWh;4
+112;4;11007;U16;;Daily Grid Sales;DayGridSell;0.1;0;kWh;4
+113;4;11012;U32_W;;Total Grid Sales;TotGridSell;0.1;0;kWh;4
+114;4;11014;U16;;Daily Consumption;DayConsump;0.1;0;kWh;4
+115;4;11019;U32_W;;Total Consumption;TotConsump;0.1;0;kWh;4
+116;4;11040;U16;;Gen Voltage R;GenVoltR;0.1;0;V;4
+117;4;11041;U16;;Gen Voltage S;GenVoltS;0.1;0;V;4
+118;4;11042;U16;;Gen Voltage T;GenVoltT;0.1;0;V;4
+119;4;11043;I16;;Gen Current R;GenCurrR;0.1;0;A;4
+120;4;11044;I16;;Gen Current S;GenCurrS;0.1;0;A;4
+121;4;11045;I16;;Gen Current T;GenCurrT;0.1;0;A;4
+122;4;11046;U16;;Gen Frequency R;GenFreqR;0.01;0;Hz;4
+123;4;11049;I32_W;;Gen Total Power;GenTotPwr;1;0;W;4
+124;4;11057;I16;;Daily Gen Yield;DayGenYield;0.1;0;kWh;4
+125;4;11058;I32_W;;Total Gen Yield;TotGenYield;0.1;0;kWh;4
+126;4;11060;U16;;Gen Daily Run Time;GenDayRunT;0.1;0;h;4
+127;4;11070;U16;;Backup Voltage R;BackVoltR;0.1;0;V;4
+128;4;11071;U16;;Backup Voltage S;BackVoltS;0.1;0;V;4
+129;4;11072;U16;;Backup Voltage T;BackVoltT;0.1;0;V;4
+130;4;11073;I16;;Backup Current R;BackCurrR;0.1;0;A;4
+131;4;11074;I16;;Backup Current S;BackCurrS;0.1;0;A;4
+132;4;11075;I16;;Backup Current T;BackCurrT;0.1;0;A;4
+133;4;11076;U16;;Backup Frequency R;BackFreqR;0.01;0;Hz;4
+134;4;11079;I32_W;;Backup Tot Act Pwr;BackTotActP;1;0;W;4
+135;4;11107;I16;;Daily Backup Yield;DayBackYld;0.1;0;kWh;4
+136;4;11108;I32_W;;Total Backup Yield;TotBackYld;0.1;0;kWh;4
+137;4;11125;I32_W;;Battery Power;BattPower;1;0;W;4
+138;4;11127;U16;;Min Cell Voltage;MinCellVolt;0.1;0;V;4
+139;4;11128;U16;;Max Cell Voltage;MaxCellVolt;0.1;0;V;4
+140;4;11130;U16;;Battery Voltage;BattVolt;0.1;0;V;4
+141;4;11131;I16;;Batt Discharge Curr;BattDischCur;0.1;0;A;4
+142;4;11132;I16;;Batt Charge Curr;BattChrgCur;0.1;0;A;4
+143;4;11133;I16;;Battery Temperature;BattTemp;0.1;0;C;4
+144;4;11135;U16;;SOC;SOC;1;0;%;4
+145;4;11136;U16;;SOH;SOH;1;0;%;4
+146;4;11140;U16;;Battery Status;BattStatus;1;0;;4
+147;4;11141;I16;;Daily Batt Charge;DayBattChrg;0.1;0;kWh;4
+148;4;11142;I32_W;;Total Batt Charge;TotBattChrg;0.1;0;kWh;4
+149;4;11144;I16;;Daily Batt Discharge;DayBattDisch;0.1;0;kWh;4
+150;4;11145;I32_W;;Total Batt Discharge;TotBattDisch;0.1;0;kWh;4
+151;4;11170;U16;;BMS Main Alarm;BMSMainAlm;1;0;;8
+152;4;11174;U16;;BMS Main Fault;BMSMainFlt;1;0;;8
+153;4;14000;I32_W;;Meter Tot Active Pwr;MtrTotActPwr;0.1;0;W;4
+154;4;14002;I32_W;;Meter Act Power R;MtrActPwrR;0.1;0;W;4
+155;4;14004;I32_W;;Meter Act Power S;MtrActPwrS;0.1;0;W;4
+156;4;14006;I32_W;;Meter Act Power T;MtrActPwrT;0.1;0;W;4
+157;4;14008;I32_W;;Meter Tot React Pwr;MtrTotReaPwr;0.1;0;var;4
+158;4;14010;I32_W;;Meter Power Factor;MtrPF;0.001;0;;4
+159;4;14012;I32_W;;Meter Day Act Energy;MtrDayEn;0.1;0;kWh;4
+160;4;14025;I16;;Meter Current R;MtrCurrR;0.1;0;A;4
+161;4;14026;I16;;Meter Current S;MtrCurrS;0.1;0;A;4
+162;4;14027;I16;;Meter Current T;MtrCurrT;0.1;0;A;4
+163;4;14070;U16;;PID Status;PIDStatus;1;0;;4
+164;4;14071;U16;;PID Bus Voltage;PIDBusVolt;0.1;0;V;4
+165;4;14072;U16;;PV1-PE Voltage;PV1PEVolt;0.1;0;V;4
+166;4;14073;U16;;PV2-PE Voltage;PV2PEVolt;0.1;0;V;4

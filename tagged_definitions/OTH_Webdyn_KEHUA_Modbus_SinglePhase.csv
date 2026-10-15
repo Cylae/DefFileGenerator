@@ -1,0 +1,37 @@
+﻿modbusRTU;Other;Webdyn;KEHUA_Modbus_SinglePhase;;;;;;;
+1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
+2;4;4502;U16;;Power Voltage;;1.0;0.0;V;4
+3;4;4503;U16;;Grid Current;;1.0;0.0;A;4
+4;4;4504;U16;;Grid Frequency;FREQ;1.0;0.0;Hz;4
+5;4;4505;U16;;Daily Power Consumption;;1.0;0.0;kWh;4
+6;4;4506;U16;;Daily Power Generation;E_DAY;1.0;0.0;kWh;4
+7;4;4507;U16;;Grid as apparent power;S_AC;1.0;0.0;VA;4
+8;4;4508;U16;;Grid active power;P_AC;1.0;0.0;W;4
+9;4;4509;U16;;Grid reactive Power;Q_AC;1.0;0.0;Var;4
+10;4;4510;U16;;Inverter voltage;;1.0;0.0;V;4
+11;4;4511;U16;;Inverter current;;1.0;0.0;A;4
+12;4;4512;U16;;Inverter frequency;;1.0;0.0;Hz;4
+13;4;4513;U16;;Load Voltage;;1.0;0.0;V;4
+14;4;4514;U16;;Load Current;;1.0;0.0;A;4
+15;4;4515;U16;;Daily load Power comsumption;;1.0;0.0;kWh;4
+16;4;4516;U16;;Apparent load power;;1.0;0.0;VA;4
+17;4;4517;U16;;Load active power;;1.0;0.0;W;4
+18;4;4518;U16;;Load reactive power;;1.0;0.0;Var;4
+19;4;4519;U16;;Power Factor;PF;1.0;0.0;;4
+20;4;4520;U16;;PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;4
+21;4;4521;U16;;PV1 Current;I_DC_STRING_1;1.0;0.0;A;4
+22;4;4522;U16;;PV1 Power;;1.0;0.0;W;4
+23;4;4523;U16;;PV2 Voltage;U_DC_STRING_2;1.0;0.0;V;4
+24;4;4524;U16;;PV2 Current;I_DC_STRING_2;1.0;0.0;A;4
+25;4;4525;U16;;PV2 Power;;1.0;0.0;W;4
+26;4;4526;U16;;PV Day Power generation;;1.0;0.0;kWh;4
+27;4;4537;U16;;Total PV Power;;1.0;0.0;W;4
+28;4;4560;U16;;PV3 Voltage;U_DC_STRING_3;1.0;0.0;V;4
+29;4;4561;U16;;PV3 Current;I_DC_STRING_3;1.0;0.0;A;4
+30;4;4562;U16;;PV3 Power;;1.0;0.0;W;4
+31;4;4563;U16;;PV4 Voltage;U_DC_STRING_4;1.0;0.0;V;4
+32;4;4564;U16;;PV4 Current;I_DC_STRING_4;1.0;0.0;A;4
+33;4;4565;U16;;PV4 Power;;1.0;0.0;W;4
+34;4;6000;U16;;Power factor;;1.0;0.0;;4
+35;4;6001;U16;;Reactive Power;;1.0;0.0;Var;4
+36;4;6002;U16;;PV Output Power;;1.0;0.0;%;4

@@ -1,0 +1,123 @@
+﻿modbusRTU;Other;Weidmuller;Weidmuller_610;;;;;;;
+1;4;0;U16;;Device address;UNIT_ID;1.0;0.0;;4
+2;4;1;U16;;Baud rate;;1.0;0.0;kbps;4
+3;4;2;U16;;Modbus Master;;1.0;0.0;;4
+4;4;3;U16;;Stopbits;;1.0;0.0;;4
+5;4;10;U16;;Current transformer I1, primary;;1.0;0.0;A;4
+6;4;12;U16;;Current transformer I1, secondary;;1.0;0.0;A;4
+7;4;14;U16;;Voltage transformer V1, primary;;1.0;0.0;V;4
+8;4;16;U16;;Voltage transformer V1, secondary;;1.0;0.0;V;4
+9;4;18;U16;;Current transformer I2, primary;;1.0;0.0;A;4
+10;4;20;U16;;Current transformer I2, secondary;;1.0;0.0;A;4
+11;4;22;U16;;Voltage transformer V2, primary;;1.0;0.0;V;4
+12;4;24;U16;;Voltage transformer V2, secondary;;1.0;0.0;V;4
+13;4;26;U16;;Current transformer I3, primary;;1.0;0.0;A;4
+14;4;28;U16;;Current transformer I3, secondary;;1.0;0.0;A;4
+15;4;30;U16;;Voltage transformer V3, primary;;1.0;0.0;V;4
+16;4;32;U16;;Voltage transformer V3, secondary;;1.0;0.0;V;4
+17;4;34;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+18;4;35;U16;;Display contrast;;1.0;0.0;;4
+19;4;36;U16;;Backlight;;1.0;0.0;;4
+20;4;37;U16;;Display profile;;1.0;0.0;;4
+21;4;38;U16;;Display change profile;;1.0;0.0;;4
+22;4;39;U16;;Changeover time;;1.0;0.0;s;4
+23;4;40;U16;;Averaging time, I;;1.0;0.0;;4
+24;4;41;U16;;Averaging time, P;;1.0;0.0;;4
+25;4;42;U16;;Averaging time, U;;1.0;0.0;;4
+26;4;45;U16;;Response threshold of current measuring I1 to I3;;1.0;0.0;mA;4
+27;4;50;U16;;Password;;1.0;0.0;;4
+28;4;100;U16;;Address of the measured value, Digital output 1;;1.0;0.0;;4
+29;4;101;U16;;Address of the measured value, Digital output 2;;1.0;0.0;;4
+30;4;102;U16;;Pulse value, Digital output 1;;1.0;0.0;Wh;4
+31;4;104;U16;;Pulse value, Digital output 2;;1.0;0.0;Wh;4
+32;4;106;U16;;Minimum pulse length (1 = 10 ms) Digital output 1/2;;1.0;0.0;ms;4
+33;4;206;U16;;“Drag indicator” period duration;;1.0;0.0;s;4
+34;4;207;U16;;“Drag indicator” capture time;;1.0;0.0;s;4
+35;4;208;U16;;Config. Digital input 1;;1.0;0.0;;4
+36;4;500;U16;;Terminal assignment, I L1;;1.0;0.0;;4
+37;4;501;U16;;Terminal assignment, I L2;;1.0;0.0;;4
+38;4;502;U16;;Terminal assignment, I L3;;1.0;0.0;;4
+39;4;503;U16;;Terminal assignment, U L1;;1.0;0.0;;4
+40;4;504;U16;;Terminal assignment, U L2;;1.0;0.0;;4
+41;4;505;U16;;Terminal assignment, U L3;;1.0;0.0;;4
+42;4;506;U16;;Clear min. and max. values;;1.0;0.0;;4
+43;4;507;U16;;Clear energy meter;;1.0;0.0;;4
+44;4;508;U16;;Force write EEPROM;;1.0;0.0;;4
+45;4;509;U16;;Voltage connection diagram;;1.0;0.0;;4
+46;4;510;U16;;Current connection diagram;;1.0;0.0;;4
+47;4;511;U16;;Relative voltage for THD and FFT;;1.0;0.0;;4
+48;4;512;U16;;Year;;1.0;0.0;;4
+49;4;513;U16;;Month;;1.0;0.0;;4
+50;4;514;U16;;Day;;1.0;0.0;;4
+51;4;515;U16;;Hour;;1.0;0.0;;4
+52;4;516;U16;;Minute;;1.0;0.0;;4
+53;4;517;U16;;Second;;1.0;0.0;;4
+54;4;600;U16;;Metering range exceedance;;1.0;0.0;;4
+55;4;746;U16;;Period of time after which the backlight will switch to standby;;1.0;0.0;s;4
+56;4;747;U16;;Brightness of the standby backlight;;1.0;0.0;s;4
+57;4;750;U16;;Software release;;1.0;0.0;;4
+58;4;754;U16;;Serial number;SERIAL;1.0;0.0;;4
+59;4;756;U16;;Production number;;1.0;0.0;;4
+60;4;19000;U16;;Voltage L1-N;U_AC_1;1.0;0.0;V;4
+61;4;19002;U16;;Voltage L2-N;U_AC_2;1.0;0.0;V;4
+62;4;19004;U16;;Voltage L3-N;U_AC_3;1.0;0.0;V;4
+63;4;19006;U16;;Voltage L1-L2;U_AC_L1L2;1.0;0.0;V;4
+64;4;19008;U16;;Voltage L2-L3;U_AC_L2L3;1.0;0.0;V;4
+65;4;19010;U16;;Voltage L3-L1;U_AC_L3L1;1.0;0.0;V;4
+66;4;19012;U16;;Current, L1;I_AC_1;1.0;0.0;A;4
+67;4;19014;U16;;Current, L2;I_AC_2;1.0;0.0;A;4
+68;4;19016;U16;;Current, L3;I_AC_3;1.0;0.0;A;4
+69;4;19018;U16;;Vektor sum  IN = I1 + I2 + I3;;1.0;0.0;A;4
+70;4;19020;U16;;Real power L1;P_AC_1;1.0;0.0;Wh;4
+71;4;19022;U16;;Real power L2;P_AC_2;1.0;0.0;Wh;4
+72;4;19024;U16;;Real power L3;P_AC_3;1.0;0.0;Wh;4
+73;4;19026;U16;;Psum3;;1.0;0.0;Wh;4
+74;4;19028;U16;;Apparent powerS L1;S_AC_1;1.0;0.0;VA;4
+75;4;19030;U16;;Apparent powerS L2;S_AC_2;1.0;0.0;VA;4
+76;4;19032;U16;;Apparent powerS L3;S_AC_3;1.0;0.0;VA;4
+77;4;19034;U16;;Ssum3;;1.0;0.0;VA;4
+78;4;19036;U16;;Fund. reactive power (mains frequency) Q L1;Q_AC_1;1.0;0.0;var;4
+79;4;19038;U16;;Fund. reactive power (mains frequency) Q L2;Q_AC_2;1.0;0.0;var;4
+80;4;19040;U16;;Fund. reactive power (mains frequency) Q L3;Q_AC_3;1.0;0.0;var;4
+81;4;19042;U16;;Qsum3;;1.0;0.0;var;4
+82;4;19044;U16;;Fund. power factor, CosPhi  U L1-N IL1;PF_1;1.0;0.0;;4
+83;4;19046;U16;;Fund. power factor, CosPhi  U L2-N IL2;PF_2;1.0;0.0;;4
+84;4;19048;U16;;Fund. power factor, CosPhi  U L3-N IL3;PF_3;1.0;0.0;;4
+85;4;19050;U16;;Measured frequency;;1.0;0.0;Hz;4
+86;4;19052;U16;;Rotation field;;1.0;0.0;;4
+87;4;19054;U16;;Real energy L1;;1.0;0.0;Wh;4
+88;4;19056;U16;;Real energy L2;;1.0;0.0;Wh;4
+89;4;19058;U16;;Real energy L3;;1.0;0.0;Wh;4
+90;4;19060;U16;;Real energy L1..L3;;1.0;0.0;Wh;4
+91;4;19062;U16;;Real energy L1, consumed;;1.0;0.0;Wh;4
+92;4;19064;U16;;Real energy L2, consumed;;1.0;0.0;Wh;4
+93;4;19066;U16;;Real energy L3, consumed;;1.0;0.0;Wh;4
+94;4;19068;U16;;Real energy L1..L3, consumed, rate 1;;1.0;0.0;Wh;4
+95;4;19070;U16;;Real energy L1, delivered;;1.0;0.0;Wh;4
+96;4;19072;U16;;Real energy L2, delivered;;1.0;0.0;Wh;4
+97;4;19074;U16;;Real energy L3, delivered;;1.0;0.0;Wh;4
+98;4;19076;U16;;Real energy L1..L3, delivered;;1.0;0.0;Wh;4
+99;4;19078;U16;;Apparent energy L1;;1.0;0.0;VAh;4
+100;4;19080;U16;;Apparent energy L2;;1.0;0.0;VAh;4
+101;4;19082;U16;;Apparent energy L3;;1.0;0.0;VAh;4
+102;4;19084;U16;;Apparent energy L1..L3;;1.0;0.0;VAh;4
+103;4;19086;U16;;Reaktive energy L1;;1.0;0.0;varh;4
+104;4;19088;U16;;Reaktive energy L2;;1.0;0.0;varh;4
+105;4;19090;U16;;Reaktive energy L3;;1.0;0.0;varh;4
+106;4;19092;U16;;Reaktive energy L1..L3;;1.0;0.0;varh;4
+107;4;19094;U16;;Reaktive energy, inductive, L1;;1.0;0.0;varh;4
+108;4;19096;U16;;Reaktive energy, inductive, L2;;1.0;0.0;varh;4
+109;4;19098;U16;;Reaktive energy, inductive, L3;;1.0;0.0;varh;4
+110;4;19100;U16;;Reaktive energy, L1..L3, inductive;;1.0;0.0;varh;4
+111;4;19102;U16;;Reactive energy, capacitive, L1;;1.0;0.0;varh;4
+112;4;19104;U16;;Reactive energy, capacitive, L2;;1.0;0.0;varh;4
+113;4;19106;U16;;Reactive energy, capacitive, L3;;1.0;0.0;varh;4
+114;4;19108;U16;;Reactive energy, L1..L3, capacitive;;1.0;0.0;varh;4
+115;4;19110;U16;;Harmonic, THD, U L1-N;;1.0;0.0;%;4
+116;4;19112;U16;;Harmonic, THD, U L2-N;;1.0;0.0;%;4
+117;4;19114;U16;;Harmonic, THD, U L3-N;;1.0;0.0;%;4
+118;4;19116;U16;;Harmonic, THD, I L1;;1.0;0.0;%;4
+119;4;19118;U16;;Harmonic, THD, I L2;;1.0;0.0;%;4
+120;4;19120;U16;;Harmonic, THD, I L3;;1.0;0.0;%;4
+121;4;20022;U16;;Current transformer I4, primary;;1.0;0.0;A;4
+122;4;20024;U16;;Current transformer I4, secondary;;1.0;0.0;A;4

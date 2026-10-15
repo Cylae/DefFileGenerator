@@ -1,0 +1,510 @@
+﻿modbusRTU;Inverter;Webdyn;INV_SMA_STPX;;;;;;;
+1;4;30001;U16;;SMA Modbus profile revision;;1.0;0.0;;4
+2;4;30003;U16;;SUSyID;;1.0;0.0;;4
+3;4;30005;U16;;Serial number;SERIAL;1.0;0.0;;4
+4;4;30007;U16;;Modbus data change count;;1.0;0.0;;4
+5;4;30051;U16;;Classe d appareil;;1.0;0.0;;4
+6;4;30053;U16;;Type d appareil;MODEL;1.0;0.0;;4
+7;4;30055;U16;;Fabricant;MANUFACTURER;1.0;0.0;;4
+8;4;30057;U16;;Numero de serie;;1.0;0.0;;4
+9;4;30059;U16;;Version du micrologiciel;;1.0;0.0;;4
+10;4;30193;U16;;UTC system time;;1.0;0.0;;4
+11;4;30201;U16;;Etat;;1.0;0.0;;4
+12;4;30203;U16;;Puissance nominale en etat OK;P_RATED;1.0;0.0;W;4
+13;4;30205;U16;;Puissance nominale en etat avertissement;;1.0;0.0;W;4
+14;4;30207;U16;;Puissance nominale en etat erreur;;1.0;0.0;W;4
+15;4;30213;U16;;Message;;1.0;0.0;;4
+16;4;30215;U16;;Mesure d elimination des erreurs;;1.0;0.0;;4
+17;4;30217;U16;;Relais/Contacteur reseau;;1.0;0.0;;4
+18;4;30219;U16;;Cause de la reduction de puissance;;1.0;0.0;;4
+19;4;30225;U16;;Resistance d isolement;R_ISO;1.0;0.0;Ohm;4
+20;4;30231;U16;;Puissance active assignee WMaxOutRtg;P_AC;1.0;0.0;W;4
+21;4;30233;U16;;Lim. de puiss. active reglee;;1.0;0.0;W;4
+22;4;30235;U16;;Etat du mode de sauvegarde;;1.0;0.0;;4
+23;4;30237;U16;;Type de reseau;;1.0;0.0;;4
+24;4;30251;U16;;Etat de verrouillage;;1.0;0.0;;4
+25;4;30513;U16;;Rendement total;;1.0;0.0;Wh;4
+26;4;30521;U16;;Temps de service;;1.0;0.0;s;4
+27;4;30525;U16;;Temps d injection;;1.0;0.0;s;4
+28;4;30529;U16;;Rendement total_2;;1.0;0.0;Wh;4
+29;4;30531;U16;;Rendement total_3;;1.0;0.0;Wh;4
+30;4;30533;U16;;Rendement total_4;;1.0;0.0;Wh;4
+31;4;30541;U16;;Temps de service_2;;1.0;0.0;s;4
+32;4;30543;U16;;Temps d injection_2;;1.0;0.0;s;4
+33;4;30559;U16;;Nombre evenements pour utilisateur;;1.0;0.0;;4
+34;4;30561;U16;;Nombre evenements pour installateur;;1.0;0.0;;4
+35;4;30563;U16;;Nombre evenements pour service;;1.0;0.0;;4
+36;4;30599;U16;;Nombre de connexions au reseau;;1.0;0.0;;4
+37;4;30769;U16;;Entree courant DC 0;I_DC;1.0;0.0;A;4
+38;4;30771;U16;;Entree tension DC 0;U_DC;1.0;0.0;V;4
+39;4;30773;U16;;Entree puissance DC 0;P_DC;1.0;0.0;W;4
+40;4;30775;U16;;Puissance;;1.0;0.0;W;4
+41;4;30777;U16;;Puissance L1;;1.0;0.0;W;4
+42;4;30779;U16;;Puissance L2;;1.0;0.0;W;4
+43;4;30781;U16;;Puissance L3;;1.0;0.0;W;4
+44;4;30783;U16;;Tension du reseau phase L1;U_AC_1;1.0;0.0;V;4
+45;4;30785;U16;;Tension du reseau phase L2;U_AC_2;1.0;0.0;V;4
+46;4;30787;U16;;Tension du reseau phase L3;U_AC_3;1.0;0.0;V;4
+47;4;30789;U16;;Tension di reseau entre phase L1 et L2;;1.0;0.0;V;4
+48;4;30791;U16;;Tension de reseau phase L2 contre L3;;1.0;0.0;V;4
+49;4;30793;U16;;Tension de reseau phase L3 contre L1;;1.0;0.0;V;4
+50;4;30795;U16;;Courant du reseau;;1.0;0.0;A;4
+51;4;30797;U16;;Courant du reseau phase L1;I_AC_1;1.0;0.0;A;4
+52;4;30799;U16;;Courant du reseau phase L2;I_AC_2;1.0;0.0;A;4
+53;4;30801;U16;;Courant du reseau phase L3;I_AC_3;1.0;0.0;A;4
+54;4;30803;U16;;Frequence du reseau;FREQ;1.0;0.0;Hz;4
+55;4;30805;U16;;Puissance reactive;Q_AC;1.0;0.0;;4
+56;4;30807;U16;;Puissance reactive L1;Q_AC_1;1.0;0.0;;4
+57;4;30809;U16;;Puissance reactive L2;Q_AC_2;1.0;0.0;;4
+58;4;30811;U16;;Puissance reactive L3;Q_AC_3;1.0;0.0;;4
+59;4;30813;U16;;Puissance apparente;S_AC;1.0;0.0;VA;4
+60;4;30815;U16;;Puissance apparente L1;S_AC_1;1.0;0.0;VA;4
+61;4;30817;U16;;Puissance apparente L2;S_AC_2;1.0;0.0;VA;4
+62;4;30819;U16;;Puissance apparente L3;S_AC_3;1.0;0.0;VA;4
+63;4;30823;U16;;Type d'excitation du cos Phi;PF;1.0;0.0;;4
+64;4;30827;U16;;Consigne de puissance reactive manuelle en cas de puissance active delivree;;1.0;0.0;;4
+65;4;30829;U16;;Consigne de puissance reactive manuelle en cas de puissance active delivree_2;;1.0;0.0;%;4
+66;4;30835;U16;;Mode de fonctionnement consigne de puissance active;;1.0;0.0;;4
+67;4;30837;U16;;Limitation de la puissance active P, configuration de la puissance active;;1.0;0.0;W;4
+68;4;30839;U16;;Limitation de la puissance active P, configuration de la puissance active_2;;1.0;0.0;%;4
+69;4;30881;U16;;Connexion reseau de l installation;;1.0;0.0;;4
+70;4;30921;U16;;Consigne de puissance reactive manuelle avec puissance active nulle;;1.0;0.0;;4
+71;4;30923;U16;;Consigne de puissance reactive manuelle avec puissance active nulle_2;;1.0;0.0;%;4
+72;4;30929;U16;;Etat de connexion Speedwire de SMACOM A;;1.0;0.0;;4
+73;4;30949;U16;;Facteur de decalage;;1.0;0.0;;4
+74;4;30953;U16;;Temperature interieure;;1.0;0.0;-¦C;4
+75;4;30957;U16;;Entree courant DC 1;;1.0;0.0;A;4
+76;4;30959;U16;;Entree tension DC 1;;1.0;0.0;V;4
+77;4;30961;U16;;Entree puissance DC 1;;1.0;0.0;W;4
+78;4;30963;U16;;Entree courant DC 2;;1.0;0.0;A;4
+79;4;30965;U16;;Entree tension DC 2;;1.0;0.0;V;4
+80;4;30967;U16;;Entree puissance DC 2;;1.0;0.0;W;4
+81;4;30975;U16;;Tension du circuit intermediaire;;1.0;0.0;V;4
+82;4;30977;U16;;Courant du reseau phase L1_2;;1.0;0.0;A;4
+83;4;30979;U16;;Courant du reseau phase L2_2;;1.0;0.0;A;4
+84;4;30981;U16;;Courant du reseau phase L3_2;;1.0;0.0;A;4
+85;4;31221;U16;;Facteur de dephasage EEI;;1.0;0.0;;4
+86;4;31241;U16;;Limitation de puissance PV par communication pour vente directe;WIND_SPEED;1.0;0.0;%;4
+87;4;31245;U16;;Limitation de puissance PV interne;;1.0;0.0;%;4
+88;4;31247;U16;;Courant de defaut;;1.0;0.0;A;4
+89;4;31249;U16;;Puiss. effective au pt de raccordement au reseau;;1.0;0.0;W;4
+90;4;31251;U16;;Puiss. reactive au pt de raccordement au reseau;;1.0;0.0;;4
+91;4;31405;U16;;Cons. actuelle lim. puis. act. P;;1.0;0.0;W;4
+92;4;31497;U16;;Puissance reactive_2;;1.0;0.0;;4
+93;4;31503;U16;;Puissance injection reseau conducteur de ligne L1 au niveau du point de raccordement au reseau;;1.0;0.0;W;4
+94;4;31505;U16;;Puissance injection reseau conducteur de ligne L2 au niveau du point de raccordement au reseau;;1.0;0.0;W;4
+95;4;31507;U16;;Puissance injection reseau conducteur de ligne L3 au niveau du point de raccordement au reseau;;1.0;0.0;W;4
+96;4;31509;U16;;Puissance reactive injection reseau conducteur de ligne L1 au niveau du point de raccordement au reseau;;1.0;0.0;;4
+97;4;31511;U16;;Puissance reactive injection reseau conducteur de ligne L2 au niveau du point de raccordement au reseau;;1.0;0.0;;4
+98;4;31513;U16;;Puissance reactive injection reseau conducteur de ligne L3 au niveau du point de raccordement au reseau;;1.0;0.0;;4
+99;4;31525;U16;;Facteur de dephasage au niveau du point de raccordement au reseau;;1.0;0.0;;4
+100;4;31529;U16;;Tension de l installation Phase L1;;1.0;0.0;V;4
+101;4;31531;U16;;Tension de l installation Phase L2;;1.0;0.0;V;4
+102;4;31533;U16;;Tension de l installation Phase L3;;1.0;0.0;V;4
+103;4;31535;U16;;Courant de sortie injection reseau conducteur de ligne L1 au niveau du point de raccordement au reseau;;1.0;0.0;A;4
+104;4;31537;U16;;Courant de sortie injection reseau conducteur de ligne L2 au niveau du point de raccordement au reseau;;1.0;0.0;A;4
+105;4;31539;U16;;Courant de sortie injection reseau conducteur de ligne L3 au niveau du point de raccordement au reseau;;1.0;0.0;A;4
+106;4;31547;U16;;Puissance disponible de l'onduleur;;1.0;0.0;W;4
+107;4;31793;U16;;Entree courant DC 0_2;;1.0;0.0;A;4
+108;4;31795;U16;;Entree courant DC 1_2;;1.0;0.0;A;4
+109;4;31797;U16;;Entree courant DC 2_2;;1.0;0.0;A;4
+110;4;32187;U16;;Puissance reactive sous-excitee disponible;;1.0;0.0;;4
+111;4;32189;U16;;Puissance reactive surexcitee disponible;;1.0;0.0;;4
+112;4;32193;U16;;Disponibilite de l'installation de generation;;1.0;0.0;%;4
+113;4;32197;U16;;Puissance reactive capacitive disponible;;1.0;0.0;%;4
+114;4;32199;U16;;Puissance reactive inductive disponible;;1.0;0.0;%;4
+115;4;32209;U16;;energie fournie par le string 0;;1.0;0.0;Wh;4
+116;4;32213;U16;;energie fournie par le string 1;;1.0;0.0;Wh;4
+117;4;32217;U16;;energie fournie par le string 2;;1.0;0.0;Wh;4
+118;4;32503;U16;;Nombre de timeouts de communication detectes avec des appareils de commande superposes de l'installation;;1.0;0.0;;4
+119;4;32505;U16;;Nombre de timeouts de communication detectes lors de la saisie de valeurs de mesure du compteur;;1.0;0.0;;4
+120;4;32507;U16;;Nombre de timeouts de communication detectes lors de la saisie de valeurs de mesure de l'appareil;;1.0;0.0;;4
+121;4;33001;U16;;etat de veille;;1.0;0.0;;4
+122;4;33003;U16;;etat de fonctionnement;;1.0;0.0;;4
+123;4;33007;U16;;Domaine de puissance reactive actif;;1.0;0.0;;4
+124;4;33009;U16;;cos Phi(U), etat;;1.0;0.0;;4
+125;4;33017;U16;;Puissance active nominale WMaxOutRtg_2;;1.0;0.0;W;4
+126;4;33019;U16;;Puissance active nominale WMaxInRtg_2;;1.0;0.0;W;4
+127;4;33025;U16;;Puissance apparente nominale VAMaxOutRtg_2;;1.0;0.0;VA;4
+128;4;33027;U16;;Puissance apparente nominale VAMaxInRtg_2;;1.0;0.0;VA;4
+129;4;33029;U16;;Puissance active nominale VArMaxQ1Rtg_2;;1.0;0.0;;4
+130;4;33031;U16;;Puissance active nominale VArMaxQ2Rtg_2;;1.0;0.0;;4
+131;4;33033;U16;;Puissance active nominale VArMaxQ3Rtg_2;;1.0;0.0;;4
+132;4;33035;U16;;Puissance active nominale VArMaxQ4Rtg_2;;1.0;0.0;;4
+133;4;33037;U16;;cos Phi nominal PFMinQ1Rtg_2;;1.0;0.0;;4
+134;4;33039;U16;;cos Phi nominal PFMinQ2Rtg_2;;1.0;0.0;;4
+135;4;33041;U16;;cos Phi nominal PFMinQ3Rtg_2;;1.0;0.0;;4
+136;4;33043;U16;;cos Phi nominal PFMinQ4Rtg_2;;1.0;0.0;;4
+137;4;34113;U16;;Temperature interieure_2;;1.0;0.0;-¦C;4
+138;4;34695;U16;;Cons. puissance reactive max.;;1.0;0.0;%;4
+139;4;35377;U16;;Nombre evenements pour utilisateur_2;;1.0;0.0;;4
+140;4;35381;U16;;Nombre evenements pour installateur_2;;1.0;0.0;;4
+141;4;35385;U16;;Nombre evenements pour service_2;;1.0;0.0;;4
+142;4;35407;U16;;Nombre d'onduleurs dans l'etat Execution;;1.0;0.0;;4
+143;4;35409;U16;;Nombre d'onduleurs dans l'etat Attente;;1.0;0.0;;4
+144;4;35411;U16;;Nombre d'onduleurs dans l'etat Arret;;1.0;0.0;;4
+145;4;35413;U16;;Nombre d'onduleurs dans l'etat Q on Demand;;1.0;0.0;;4
+146;4;35415;U16;;Puiss. effective (prelev.) au pt de raccordement au reseau;;1.0;0.0;W;4
+147;4;35417;U16;;Prelev. d'energie sur le point de raccord. du reseau;;1.0;0.0;Wh;4
+148;4;35421;U16;;Energie injectee au point de raccordement du reseau;;1.0;0.0;Wh;4
+149;4;35425;U16;;Disponibilite de la reserve rapide pour l'unite de stockage (FRS);;1.0;0.0;;4
+150;4;35427;U16;;Capacite nominale de l'installation;;1.0;0.0;Wh;4
+151;4;35429;U16;;Capacite disponible de l'installation;;1.0;0.0;Wh;4
+152;4;35431;U16;;Charge disponible de l'installation;;1.0;0.0;Wh;4
+153;4;40007;U16;;Type de regulation de tension DC;;1.0;0.0;;4
+154;4;40009;U16;;Mode de fonctionnement general;;1.0;0.0;;4
+155;4;40011;U16;;Confirmer erreur;;1.0;0.0;;4
+156;4;40015;U16;;Lim. puis. react. normalisee via cde install.;;1.0;0.0;%;4
+157;4;40016;U16;;Limite puissance alim normalisee via cde install.;;1.0;0.0;%;4
+158;4;40018;U16;;Mise hors service rapide;;1.0;0.0;;4
+159;4;40024;U16;;Consigne externe cos Phi, consigne de cos Phi avec puissance active delivree;;1.0;0.0;;4
+160;4;40025;U16;;Consigne externe cos Phi, type d excitation avec puissance active delivree;;1.0;0.0;;4
+161;4;40029;U16;;etat de fonctionnement general_2;;1.0;0.0;;4
+162;4;40077;U16;;Declencher le redemarrage de l appareil;;1.0;0.0;;4
+163;4;40101;U16;;Surveillance de frequence, seuil minimum inferieur;;1.0;0.0;Hz;4
+164;4;40103;U16;;Surveillance de frequence, seuil maximum superieur;;1.0;0.0;Hz;4
+165;4;40135;U16;;Frequence nominale;;1.0;0.0;Hz;4
+166;4;40157;U16;;Configuration automatique de Speedwire activee;;1.0;0.0;;4
+167;4;40183;U16;;Attribution des phases;;1.0;0.0;;4
+168;4;40202;U16;;Consigne de puissance reactive manuelle en cas de puissance active delivree_3;;1.0;0.0;;4
+169;4;40204;U16;;Consigne de puissance reactive manuelle en cas de puissance active delivree_4;;1.0;0.0;%;4
+170;4;40210;U16;;Mode de fonctionnement consigne de puissance active_2;CMD_P_ENA;1.0;0.0;;1
+171;4;40212;U16;;Limitation de la puissance active P, configuration de la puissance active_3;;1.0;0.0;W;4
+172;4;40214;U16;;Limitation de la puissance active P, configuration de la puissance active_4;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
+173;4;40242;U16;;P(f), taux de modification de la puissance active apres la fin du defaut;;1.0;0.0;%/min;4
+174;4;40244;U16;;Soutien dynamique du reseau, mode statique de courant reactif;;1.0;0.0;;4
+175;4;40246;U16;;Soutien dynamique du reseau, facteur k du mode statique de courant reactif en cas de sous-tension;;1.0;0.0;%;4
+176;4;40248;U16;;Soutien dynamique du reseau, facteur k du mode statique de courant reactif en cas de surtension;;1.0;0.0;%;4
+177;4;40250;U16;;Soutien dynamique du reseau, mode de fonctionnement;;1.0;0.0;;4
+178;4;40426;U16;;Surveillance de frequence, temps de declenchement seuil maximum superieur;;1.0;0.0;ms;4
+179;4;40432;U16;;Surveillance de frequence, seuil maximum inferieur;;1.0;0.0;Hz;4
+180;4;40434;U16;;Surveillance de frequence, temps de declenchement seuil maximum inferieur;;1.0;0.0;ms;4
+181;4;40436;U16;;Surveillance de frequence, seuil minimum superieur;;1.0;0.0;Hz;4
+182;4;40438;U16;;Surveillance de frequence, temps de declenchement seuil minimum superieur;;1.0;0.0;ms;4
+183;4;40444;U16;;Surveillance de frequence, temps de declenchement seuil minimum inferieur;;1.0;0.0;ms;4
+184;4;40450;U16;;Surveillance de tension, temps de declenchement seuil maximum moyen;;1.0;0.0;ms;4
+185;4;40456;U16;;Surveillance de tension, temps de declenchement seuil maximum inferieur;;1.0;0.0;ms;4
+186;4;40462;U16;;Surveillance de tension, temps de declenchement seuil minimum superieur;;1.0;0.0;ms;4
+187;4;40466;U16;;Surveillance de tension, temps de declenchement seuil minimum moyen;;1.0;0.0;ms;4
+188;4;40468;U16;;Surveillance de tension, temps de declenchement seuil minimum inferieur;;1.0;0.0;ms;4
+189;4;40472;U16;;Tension nominale de reseau;;1.0;0.0;V;4
+190;4;40647;U16;;Mises ?? jour automatiques activees;;1.0;0.0;;4
+191;4;40751;U16;;Tension nominale onduleur;;1.0;0.0;V;4
+192;4;40915;U16;;Lim. de puiss. active reglee_2;;1.0;0.0;W;4
+193;4;41121;U16;;Definition du jeu de donnees regionales;;1.0;0.0;;4
+194;4;41127;U16;;Frequence de reconnexion minimum;;1.0;0.0;Hz;4
+195;4;41129;U16;;Frequence de reconnexion maximum;;1.0;0.0;Hz;4
+196;4;41131;U16;;Entree tension minimale 0;;1.0;0.0;V;4
+197;4;41133;U16;;Entree tension minimale 1;;1.0;0.0;V;4
+198;4;41135;U16;;Entree tension minimale 2;;1.0;0.0;V;4
+199;4;41143;U16;;Tension limite pour terminer l'injection 0;;1.0;0.0;V;4
+200;4;41145;U16;;Tension limite pour terminer l'injection 1;;1.0;0.0;V;4
+201;4;41147;U16;;Tension limite pour terminer l'injection 2;;1.0;0.0;V;4
+202;4;41155;U16;;Retard de demarrage entree;;1.0;0.0;s;4
+203;4;41169;U16;;Resistance d'isolement minimale;;1.0;0.0;Ohm;4
+204;4;41171;U16;;Reglage energie tot. degagee point rac. reseau;;1.0;0.0;kWh;4
+205;4;41173;U16;;Reglage temps serv. tot. au point raccord. reseau;;1.0;0.0;h;4
+206;4;41193;U16;;Consigne de puissance active externe, comportement de retombee;;1.0;0.0;;4
+207;4;41219;U16;;Consigne de puissance reactive externe, comportement de retombee;;1.0;0.0;;4
+208;4;41223;U16;;Consigne de puissance reactive externe, valeur de retombee;;1.0;0.0;%;4
+209;4;41225;U16;;Consigne cos Phi externe, comportement de retombee_2;;1.0;0.0;;4
+210;4;41229;U16;;Consigne externe cos Phi, valeur de retombee de cos Phi avec puiss. active delivree_2;;1.0;0.0;;4
+211;4;41249;U16;;Limitation de puissance active absorbee en %;;1.0;0.0;%;4
+212;4;41251;U16;;Limitation de puissance absorbee en W;;1.0;0.0;W;4
+213;4;41265;U16;;AFCI active;;1.0;0.0;;4
+214;4;41311;U16;;Q(U), mode de fonctionnement de l adaptation de la tension de reference;;1.0;0.0;;4
+215;4;41313;U16;;Q(U), temps de reglage de l adaptation de la tension de reference;;1.0;0.0;s;4
+216;4;41315;U16;;Mode de fonctionnement regulateur de puissance active;;1.0;0.0;;4
+217;4;41317;U16;;Mode de fonctionnement pour limiteur puissance reactive;;1.0;0.0;;4
+218;4;41319;U16;;Procedure de puissance reactive en cas de puissance active delivree;;1.0;0.0;;4
+219;4;41321;U16;;Procedure de puissance reactive en cas de puissance active absorbee;;1.0;0.0;;4
+220;4;41323;U16;;Procedure de puissance reactive en cas de puissance active nulle;;1.0;0.0;;4
+221;4;41325;U16;;Q(U), valeur de tension 0;;1.0;0.0;p.u.;4
+222;4;41327;U16;;Q(U), valeur de tension 1;;1.0;0.0;p.u.;4
+223;4;41329;U16;;Q(U), valeur de tension 2;;1.0;0.0;p.u.;4
+224;4;41331;U16;;Q(U), valeur de tension 3;;1.0;0.0;p.u.;4
+225;4;41333;U16;;Q(U), valeur de tension 4;;1.0;0.0;p.u.;4
+226;4;41335;U16;;Q(U), valeur de tension 5;;1.0;0.0;p.u.;4
+227;4;41337;U16;;Q(U), valeur de tension 6;;1.0;0.0;p.u.;4
+228;4;41339;U16;;Q(U), valeur de tension 7;;1.0;0.0;p.u.;4
+229;4;41341;U16;;Q(U), valeur de puissance reactive 0;;1.0;0.0;%;4
+230;4;41343;U16;;Q(U), valeur de puissance reactive 1;;1.0;0.0;%;4
+231;4;41345;U16;;Q(U), valeur de puissance reactive 2;;1.0;0.0;%;4
+232;4;41347;U16;;Q(U), valeur de puissance reactive 3;;1.0;0.0;%;4
+233;4;41349;U16;;Q(U), valeur de puissance reactive 4;;1.0;0.0;%;4
+234;4;41351;U16;;Q(U), valeur de puissance reactive 5;;1.0;0.0;%;4
+235;4;41353;U16;;Q(U), valeur de puissance reactive 6;;1.0;0.0;%;4
+236;4;41355;U16;;Q(U), valeur de puissance reactive 7;;1.0;0.0;%;4
+237;4;41367;U16;;PFMinQ1-Q4 Limitation pour tous les modes de puissance reactive;;1.0;0.0;;4
+238;4;41369;U16;;Seuil d'activation en cas de puissance active delivree;;1.0;0.0;%;4
+239;4;41371;U16;;Seuil de desactivation en cas de puissance active delivree;;1.0;0.0;%;4
+240;4;41373;U16;;Seuil d'activation en cas de puissance active absorbee;;1.0;0.0;%;4
+241;4;41375;U16;;Seuil de desactivation en cas de puissance active absorbee;;1.0;0.0;%;4
+242;4;41377;U16;;Consigne de puissance reactive avec limitation de tension;;1.0;0.0;;4
+243;4;41383;U16;;Consigne de puissance active externe;;1.0;0.0;;4
+244;4;41413;U16;;Moment de la mesure de l'isolement cyclique;;1.0;0.0;;4
+245;4;41415;U16;;Consigne de puissance reactive avec limitation de tension, valeur de tension 0;;1.0;0.0;p.u.;4
+246;4;41417;U16;;Consigne de puissance reactive avec limitation de tension, valeur de tension 1;;1.0;0.0;p.u.;4
+247;4;41419;U16;;Consigne de puissance reactive avec limitation de tension, valeur de tension 2;;1.0;0.0;p.u.;4
+248;4;41421;U16;;Consigne de puissance reactive avec limitation de tension, valeur de tension 3;;1.0;0.0;p.u.;4
+249;4;41423;U16;;Consigne de puissance reactive avec limitation de tension, valeur de puissance reactive 0;;1.0;0.0;%;4
+250;4;41425;U16;;Consigne de puissance reactive avec limitation de tension, valeur de puissance reactive 1;;1.0;0.0;%;4
+251;4;41427;U16;;Consigne de puissance reactive avec limitation de tension, valeur de puissance reactive 2;;1.0;0.0;%;4
+252;4;41429;U16;;Consigne de puissance reactive avec limitation de tension, valeur de puissance reactive 3;;1.0;0.0;%;4
+253;4;41431;U16;;Puissance active maximum;;1.0;0.0;W;4
+254;4;41433;U16;;Puissance active minimum;;1.0;0.0;W;4
+255;4;41435;U16;;Consigne cos Phi externe, valeur de retombee du type d excitation avec puiss. active delivree_2;;1.0;0.0;;4
+256;4;41445;U16;;Consigne de puissance active externe 2, comportement de retombee;;1.0;0.0;;4
+257;4;41453;U16;;Consigne de puissance active externe 2;;1.0;0.0;;4
+258;4;41455;U16;;Frequence locale integrale, activation via Modbus;;1.0;0.0;;4
+259;4;41463;U16;;Puissance totale de l'installation;E_TOT;1.0;0.0;W;4
+260;4;41493;U16;;Charge desequilibree maximale;;1.0;0.0;W;4
+261;4;41495;U16;;Luminosite des DEL;;1.0;0.0;;4
+262;4;41497;U16;;Chercher et installer la mise ?? jour;;1.0;0.0;;4
+263;4;44001;U16;;Taux de demarrage progressif P;;1.0;0.0;%/min;4
+264;4;44003;U16;;Demarrage progressif P;;1.0;0.0;;4
+265;4;44005;U16;;Taux de demarrage progressif Q;;1.0;0.0;%/min;4
+266;4;44007;U16;;Demarrage progressif Q;;1.0;0.0;;4
+267;4;44009;U16;;Temps de connexion apres reinitialisation;;1.0;0.0;s;4
+268;4;44011;U16;;Taux de demarrage progressif P apres derangement reseau;;1.0;0.0;%/min;4
+269;4;44013;U16;;Demarrage progressif P apres derangement reseau;;1.0;0.0;;4
+270;4;44015;U16;;Temps de connexion apres erreur de reseau;;1.0;0.0;s;4
+271;4;44017;U16;;Temps de connexion rapide apres interruption breve;;1.0;0.0;s;4
+272;4;44019;U16;;Duree maximale d'une interruption breve;;1.0;0.0;s;4
+273;4;44021;U16;;Reinitialiser les donnees de service;;1.0;0.0;;4
+274;4;44023;U16;;Taux d augmentation du changement de rayonnement;;1.0;0.0;%/min;4
+275;4;44025;U16;;Consigne de puissance active externe, filtre de valeur de consigne;;1.0;0.0;;4
+276;4;44027;U16;;Consigne de puissance active externe, temps de reglage du filtre de valeur de consigne;;1.0;0.0;s;4
+277;4;44029;U16;;Consigne de puissance active externe, limitation du taux de changement;;1.0;0.0;;4
+278;4;44031;U16;;Consigne de puissance active externe, taux d augmentation;;1.0;0.0;%/s;4
+279;4;44033;U16;;Consigne de puissance active externe, taux de reduction;;1.0;0.0;%/s;4
+280;4;44039;U16;;Puissance active maximum_2;;1.0;0.0;%;4
+281;4;44041;U16;;Puissance active minimum_2;;1.0;0.0;%;4
+282;4;44043;U16;;P(U), activation;;1.0;0.0;;4
+283;4;44045;U16;;P(U), type de tension de reference;;1.0;0.0;;4
+284;4;44047;U16;;P(U), type de puissance active de reference;;1.0;0.0;;4
+285;4;44049;U16;;P(U), nombre de points utilises;;1.0;0.0;;4
+286;4;44051;U16;;P(U), valeur de tension 0;;1.0;0.0;p.u.;4
+287;4;44053;U16;;P(U), valeur de tension 1;;1.0;0.0;p.u.;4
+288;4;44055;U16;;P(U), valeur de tension 2;;1.0;0.0;p.u.;4
+289;4;44057;U16;;P(U), valeur de tension 3;;1.0;0.0;p.u.;4
+290;4;44059;U16;;P(U), valeur de tension 4;;1.0;0.0;p.u.;4
+291;4;44061;U16;;P(U), valeur de tension 5;;1.0;0.0;p.u.;4
+292;4;44063;U16;;P(U), valeur de tension 6;;1.0;0.0;p.u.;4
+293;4;44065;U16;;P(U), valeur de tension 7;;1.0;0.0;p.u.;4
+294;4;44067;U16;;P(U), valeur de puissance active 0;;1.0;0.0;%;4
+295;4;44069;U16;;P(U), valeur de puissance active 1;;1.0;0.0;%;4
+296;4;44071;U16;;P(U), valeur de puissance active 2;;1.0;0.0;%;4
+297;4;44073;U16;;P(U), valeur de puissance active 3;;1.0;0.0;%;4
+298;4;44075;U16;;P(U), valeur de puissance active 4;;1.0;0.0;%;4
+299;4;44077;U16;;P(U), valeur de puissance active 5;;1.0;0.0;%;4
+300;4;44079;U16;;P(U), valeur de puissance active 6;;1.0;0.0;%;4
+301;4;44081;U16;;P(U), valeur de puissance active 7;;1.0;0.0;%;4
+302;4;44083;U16;;P(U), filtre de valeur de consigne;;1.0;0.0;;4
+303;4;44085;U16;;P(U), temps de reglage filtre de valeur de consigne;;1.0;0.0;s;4
+304;4;44087;U16;;P(U), limitation du taux de changement;;1.0;0.0;;4
+305;4;44089;U16;;P(U), taux d augmentation;;1.0;0.0;%/s;4
+306;4;44091;U16;;P(U), taux de reduction;;1.0;0.0;%/s;4
+307;4;44093;U16;;P(U), retart au declenchement;;1.0;0.0;s;4
+308;4;44095;U16;;Procedure de puissance reactive, grandeur de reference pour consigne de puissance reactive;;1.0;0.0;;4
+309;4;44097;U16;;Consigne cos Phi externe, comportement de retombee_3;;1.0;0.0;;4
+310;4;44101;U16;;Consigne de puissance reactive, filtre de valeur de consigne;;1.0;0.0;;4
+311;4;44103;U16;;Consigne de puissance reactive, temps de reglage filtre de valeur de consigne;;1.0;0.0;s;4
+312;4;44105;U16;;Consigne de puissance reactive, limitation du taux de changement;;1.0;0.0;;4
+313;4;44107;U16;;Consigne de puissance reactive, taux d augmentation;;1.0;0.0;%/s;4
+314;4;44109;U16;;Consigne de puissance reactive, taux de reduction;;1.0;0.0;%/s;4
+315;4;44111;U16;;Consigne externe cos Phi, valeur de retombee du cos Phi en cas de puissance active delivree_3;;1.0;0.0;;4
+316;4;44113;U16;;Consigne externe cos Phi, valeur de retombee du type d excitation en cas de puissance active delivree_3;;1.0;0.0;;4
+317;4;44115;U16;;Consigne cos Phi externe, valeur de retombee du cos Phi en cas de puissance active absorbee;;1.0;0.0;;4
+318;4;44117;U16;;Consigne cos Phi externe, valeur de retombee du type d excitation en cas de puissance active absorbee;;1.0;0.0;;4
+319;4;44119;U16;;Consigne cos Phi manuelle, valeur de consigne cos Phi en cas de consommation de puissance active;;1.0;0.0;;4
+320;4;44121;U16;;Consigne cos Phi manuelle, type d excitation en cas de consommation de puissance active;;1.0;0.0;;4
+321;4;44123;U16;;Consigne cos Phi, filtre de valeur reelle pour valeur de mesure de puissance active;;1.0;0.0;;4
+322;4;44125;U16;;Consigne cos Phi, filtre de valeur reelle pour valeur de mesure de puissance active_2;;1.0;0.0;s;4
+323;4;44127;U16;;Consigne cos Phi, filtre de valeur de consigne;;1.0;0.0;;4
+324;4;44129;U16;;Consigne cos Phi, temps de reglage filtre de valeur de consigne;;1.0;0.0;s;4
+325;4;44131;U16;;Consigne cos Phi, limitation du taux de changement;;1.0;0.0;;4
+326;4;44133;U16;;Consigne cos Phi, taux d augmentation;;1.0;0.0;%/s;4
+327;4;44135;U16;;Consigne cos Phi, taux de reduction;;1.0;0.0;%/s;4
+328;4;44141;U16;;Consigne cos Phi externe, valeur de consigne cos Phi en cas de puissance active absorbee_2;;1.0;0.0;;4
+329;4;44143;U16;;Consigne cos Phi externe, type d excitation en cas de puissance active absorbee_2;;1.0;0.0;;4
+330;4;44145;U16;;Q(P), nombre de points de reference utilises;;1.0;0.0;;4
+331;4;44147;U16;;Q(P), valeur de puissance active 0;;1.0;0.0;%;4
+332;4;44149;U16;;Q(P), valeur de puissance active 1;;1.0;0.0;%;4
+333;4;44151;U16;;Q(P), valeur de puissance active 2;;1.0;0.0;%;4
+334;4;44153;U16;;Q(P), valeur de puissance active 3;;1.0;0.0;%;4
+335;4;44155;U16;;Q(P), valeur de puissance active 4;;1.0;0.0;%;4
+336;4;44157;U16;;Q(P), valeur de puissance active 5;;1.0;0.0;%;4
+337;4;44159;U16;;Q(P), valeur de puissance active 6;;1.0;0.0;%;4
+338;4;44161;U16;;Q(P), valeur de puissance active 7;;1.0;0.0;%;4
+339;4;44163;U16;;Q(P), valeur de puissance reactive 0;;1.0;0.0;%;4
+340;4;44165;U16;;Q(P), valeur de puissance reactive 1;;1.0;0.0;%;4
+341;4;44167;U16;;Q(P), valeur de puissance reactive 2;;1.0;0.0;%;4
+342;4;44169;U16;;Q(P), valeur de puissance reactive 3;;1.0;0.0;%;4
+343;4;44171;U16;;Q(P), valeur de puissance reactive 4;;1.0;0.0;%;4
+344;4;44173;U16;;Q(P), valeur de puissance reactive 5;;1.0;0.0;%;4
+345;4;44175;U16;;Q(P), valeur de puissance reactive 6;;1.0;0.0;%;4
+346;4;44177;U16;;Q(P), valeur de puissance reactive 7;;1.0;0.0;%;4
+347;4;44179;U16;;Q(P), filtre de valeur de consigne;;1.0;0.0;;4
+348;4;44181;U16;;Q(P), temps de reglage du filtre de valeur de consigne;;1.0;0.0;s;4
+349;4;44183;U16;;Q(P), limitation du taux de changement;;1.0;0.0;;4
+350;4;44185;U16;;Q(P), taux d augmentation;;1.0;0.0;%/s;4
+351;4;44187;U16;;Q(P), taux de reduction;;1.0;0.0;%/s;4
+352;4;44189;U16;;Q(P), retart au declenchement;;1.0;0.0;s;4
+353;4;44191;U16;;Q(U), nombre de points de reference utilises_2;;1.0;0.0;;4
+354;4;44193;U16;;Q(U), comportement de retombee en cas de consigne de tension de reference manquante;;1.0;0.0;;4
+355;4;44195;U16;;Q(U), tension de reference de retombee;;1.0;0.0;p.u.;4
+356;4;44197;U16;;Q(U), Timeout pour consigne de tension de reference manquante;;1.0;0.0;s;4
+357;4;44199;U16;;Q(U), filtre de valeur de consigne_2;;1.0;0.0;;4
+358;4;44201;U16;;Q(U), temps de reglage filtre de valeur de consigne_2;;1.0;0.0;s;4
+359;4;44203;U16;;Q(U), limitation du taux de changement_2;;1.0;0.0;;4
+360;4;44205;U16;;Q(U), taux d augmentation_2;;1.0;0.0;%/s;4
+361;4;44207;U16;;Q(U), taux de reduction_2;;1.0;0.0;%/s;4
+362;4;44209;U16;;Q(U), retart au declenchement_2;;1.0;0.0;s;4
+363;4;44211;U16;;Q(U), Valeur prescrite externe de la tension de reference par unite;;1.0;0.0;p.u.;4
+364;4;44213;U16;;cos Phi(P), nombre de points de reference utilises;;1.0;0.0;;4
+365;4;44215;U16;;cos Phi(P), type d excitation 0;;1.0;0.0;;4
+366;4;44217;U16;;cos Phi(P), type d excitation 1;;1.0;0.0;;4
+367;4;44219;U16;;cos Phi(P), type d excitation 2;;1.0;0.0;;4
+368;4;44221;U16;;cos Phi(P), type d excitation 3;;1.0;0.0;;4
+369;4;44223;U16;;cos Phi(P), valeur de consigne cos Phi 0;;1.0;0.0;;4
+370;4;44225;U16;;cos Phi(P), valeur de consigne cos Phi 1;;1.0;0.0;;4
+371;4;44227;U16;;cos Phi(P), valeur de consigne cos Phi 2;;1.0;0.0;;4
+372;4;44229;U16;;cos Phi(P), valeur de consigne cos Phi 3;;1.0;0.0;;4
+373;4;44231;U16;;cos Phi(P), puissance active 0;;1.0;0.0;%;4
+374;4;44233;U16;;cos Phi(P), puissance active 1;;1.0;0.0;%;4
+375;4;44235;U16;;cos Phi(P), puissance active 2;;1.0;0.0;%;4
+376;4;44237;U16;;cos Phi(P), puissance active 3;;1.0;0.0;%;4
+377;4;44239;U16;;cos Phi(P), filtre de valeur reelle pour la valeur de mesure de puissance active;;1.0;0.0;;4
+378;4;44241;U16;;cos Phi(P), temps de reglage du filtre de valeur reelle;;1.0;0.0;s;4
+379;4;44243;U16;;cos Phi(P), filtre de valeur de consigne;;1.0;0.0;;4
+380;4;44245;U16;;cos Phi(P), temps de reglage filtre de valeur de consigne;;1.0;0.0;s;4
+381;4;44247;U16;;cos Phi(P), limitation du taux de changement;;1.0;0.0;;4
+382;4;44249;U16;;cos Phi(P), taux d augmentation;;1.0;0.0;%/s;4
+383;4;44251;U16;;cos Phi(P), taux de reduction;;1.0;0.0;%/s;4
+384;4;44253;U16;;cos Phi(P), retart au declenchement;;1.0;0.0;s;4
+385;4;44255;U16;;cos Phi(U), nombre de points de reference utilises;;1.0;0.0;;4
+386;4;44257;U16;;cos Phi(U), valeur de tension 0;;1.0;0.0;p.u.;4
+387;4;44259;U16;;cos Phi(U), valeur de tension 1;;1.0;0.0;p.u.;4
+388;4;44261;U16;;cos Phi(U), valeur de tension 2;;1.0;0.0;p.u.;4
+389;4;44263;U16;;cos Phi(U), valeur de tension 3;;1.0;0.0;p.u.;4
+390;4;44265;U16;;cos Phi(U), type d excitation 0;;1.0;0.0;;4
+391;4;44267;U16;;cos Phi(U), type d excitation 1;;1.0;0.0;;4
+392;4;44269;U16;;cos Phi(U), type d excitation 2;;1.0;0.0;;4
+393;4;44271;U16;;cos Phi(U), type d excitation 3;;1.0;0.0;;4
+394;4;44273;U16;;cos Phi(U), valeur de consigne cos Phi 0;;1.0;0.0;;4
+395;4;44275;U16;;cos Phi(U), valeur de consigne cos Phi 1;;1.0;0.0;;4
+396;4;44277;U16;;cos Phi(U), valeur de consigne cos Phi 2;;1.0;0.0;;4
+397;4;44279;U16;;cos Phi(U), valeur de consigne cos Phi 3;;1.0;0.0;;4
+398;4;44281;U16;;cos Phi(U), filtre de valeur reelle pour la valeur de mesure de puissance active;;1.0;0.0;;4
+399;4;44283;U16;;cos Phi(U), temps de reglage du filtre de valeur reelle;;1.0;0.0;s;4
+400;4;44285;U16;;cos Phi(U), filtre de valeur de consigne;;1.0;0.0;;4
+401;4;44287;U16;;cos Phi(U), temps de reglage du filtre de valeur de consigne;;1.0;0.0;s;4
+402;4;44289;U16;;cos Phi(U), limitation du taux de changement;;1.0;0.0;;4
+403;4;44291;U16;;cos Phi(U), taux d augmentation;;1.0;0.0;%/s;4
+404;4;44293;U16;;cos Phi(U), taux de reduction;;1.0;0.0;%/s;4
+405;4;44295;U16;;cos Phi(U), retart au declenchement;;1.0;0.0;s;4
+406;4;44297;U16;;Surveillance de tension, seuil maximum superieur;;1.0;0.0;p.u.;4
+407;4;44299;U16;;Surveillance de tension, seuil maximum moyen;;1.0;0.0;p.u.;4
+408;4;44301;U16;;Surveillance de tension, seuil maximum inferieur;;1.0;0.0;p.u.;4
+409;4;44303;U16;;Surveillance de tension, temps de declenchement seuil maximum superieur;;1.0;0.0;ms;4
+410;4;44305;U16;;Surveillance de tension, seuil minimum inferieur;;1.0;0.0;p.u.;4
+411;4;44307;U16;;Surveillance de tension, seuil minimum moyen;;1.0;0.0;p.u.;4
+412;4;44309;U16;;Surveillance de tension, seuil minimum superieur;;1.0;0.0;p.u.;4
+413;4;44311;U16;;Tension maximum de reconnexion;;1.0;0.0;p.u.;4
+414;4;44313;U16;;Tension minimum de reconnexion;;1.0;0.0;p.u.;4
+415;4;44315;U16;;Surveillance de tension, seuil de tension de crete;;1.0;0.0;p.u.;4
+416;4;44317;U16;;Surveillance de tension, temps de declenchement seuil de tension de crete;;1.0;0.0;ms;4
+417;4;44319;U16;;Soutien dynamique du reseau, seuil de surtension pour courant nul;;1.0;0.0;p.u.;4
+418;4;44321;U16;;Soutien dynamique du reseau, seuil de sous-tension pour courant nul;;1.0;0.0;p.u.;4
+419;4;44323;U16;;Soutien dynamique du reseau, tension d'hysteresis;;1.0;0.0;p.u.;4
+420;4;44325;U16;;Soutien dynamique du reseau, moyennage pour le mode statique de courant reactif;;1.0;0.0;;4
+421;4;44327;U16;;Soutien dynamique du reseau, seuil de surtension pour courant reactif;;1.0;0.0;p.u.;4
+422;4;44329;U16;;Soutien dynamique du reseau, seuil de sous-tension pour courant reactif;;1.0;0.0;p.u.;4
+423;4;44331;U16;;Soutien dynamique du reseau, hauteur de saut de tension;;1.0;0.0;p.u.;4
+424;4;44333;U16;;Courbe caract. P(f);;1.0;0.0;;4
+425;4;44335;U16;;P(f), grandeur de reference pour puissance active en cas de surfrequence;;1.0;0.0;;4
+426;4;44337;U16;;P(f), grandeur de reference pour puissance active en cas de sous-frequence;;1.0;0.0;;4
+427;4;44339;U16;;P(f), temps de reglage;;1.0;0.0;s;4
+428;4;44341;U16;;P(f), hysteresis en cas de surfrequence;;1.0;0.0;;4
+429;4;44343;U16;;P(f), hysteresis en cas de sous-frequence;;1.0;0.0;;4
+430;4;44345;U16;;P(f), surfrequence de coude 0;;1.0;0.0;Hz;4
+431;4;44347;U16;;P(f), surfrequence de coude 1;;1.0;0.0;Hz;4
+432;4;44349;U16;;P(f), surfrequence de coude 2;;1.0;0.0;Hz;4
+433;4;44351;U16;;P(f), modification de la puissance active par Hz en cas de surfrequence 0;;1.0;0.0;%;4
+434;4;44353;U16;;P(f), modification de la puissance active par Hz en cas de surfrequence 1;;1.0;0.0;%;4
+435;4;44355;U16;;P(f), modification de la puissance active par Hz en cas de surfrequence 2;;1.0;0.0;%;4
+436;4;44357;U16;;P(f), surfrequence de reinitialisation;;1.0;0.0;Hz;4
+437;4;44359;U16;;P(f), sous-frequence de coude 0;;1.0;0.0;Hz;4
+438;4;44361;U16;;P(f), sous-frequence de coude 1;;1.0;0.0;Hz;4
+439;4;44363;U16;;P(f), sous-frequence de coude 2;;1.0;0.0;Hz;4
+440;4;44365;U16;;P(f), modification de la puissance active par Hz en cas de sous-frequence 0;;1.0;0.0;%;4
+441;4;44367;U16;;P(f), modification de la puissance active par Hz en cas de sous-frequence 1;;1.0;0.0;%;4
+442;4;44369;U16;;P(f), modification de la puissance active par Hz en cas de sous-frequence 2;;1.0;0.0;%;4
+443;4;44371;U16;;P(f), sous-frequence de reinitialisation;;1.0;0.0;Hz;4
+444;4;44373;U16;;P(f), retart au declenchement;;1.0;0.0;ms;4
+445;4;44375;U16;;P(f), temps de poursuite;;1.0;0.0;s;4
+446;4;44377;U16;;Detection de reseau en ilotage, etat de la surveillance de frequence;;1.0;0.0;;4
+447;4;44379;U16;;Detection de reseau en ilotage, temps de declenchement de la surveillance de frequence;;1.0;0.0;ms;4
+448;4;44381;U16;;Puissance active nominale WMaxOut_2;;1.0;0.0;W;4
+449;4;44383;U16;;Puissance active nominale WMaxIn_2;;1.0;0.0;W;4
+450;4;44389;U16;;Puissance apparente nominale VAMaxOut_2;;1.0;0.0;VA;4
+451;4;44391;U16;;Puissance apparente nominale VAMaxIn_2;;1.0;0.0;VA;4
+452;4;44393;U16;;Puissance reactive nominale VArMaxQ1;;1.0;0.0;;4
+453;4;44395;U16;;Puissance reactive nominale VArMaxQ2;;1.0;0.0;;4
+454;4;44397;U16;;Puissance reactive nominale VArMaxQ3;;1.0;0.0;;4
+455;4;44399;U16;;Puissance reactive nominale VArMaxQ4;;1.0;0.0;;4
+456;4;44401;U16;;Puissance reactive nominale VArMaxZerWQ1;;1.0;0.0;;4
+457;4;44403;U16;;Puissance reactive nominale VArMaxZerWQ2;;1.0;0.0;;4
+458;4;44405;U16;;Puissance reactive nominale VArMaxZerWQ3;;1.0;0.0;;4
+459;4;44407;U16;;Puissance reactive nominale VArMaxZerWQ4;;1.0;0.0;;4
+460;4;44409;U16;;cos Phi nominal PFMinQ1_3;;1.0;0.0;;4
+461;4;44411;U16;;cos Phi nominal PFMinQ2_3;;1.0;0.0;;4
+462;4;44413;U16;;cos Phi nominal PFMinQ3_3;;1.0;0.0;;4
+463;4;44415;U16;;cos Phi nominal PFMinQ4_3;;1.0;0.0;;4
+464;4;44417;U16;;Detection de reseau en ilotage, etat de la detection d'asymetrie;;1.0;0.0;;4
+465;4;44419;U16;;Detection de reseau en ilotage, symetrie admissible du reseau;;1.0;0.0;%;4
+466;4;44421;U16;;Detection de reseau en ilotage, temps de declenchement de la detection d asymetrie;;1.0;0.0;ms;4
+467;4;44461;U16;;Consigne de puissance active externe 2, filtre de valeur de consigne;;1.0;0.0;;4
+468;4;44463;U16;;Consigne de puissance active externe 2, limitation du taux de changement;;1.0;0.0;;4
+469;4;44465;U16;;Consigne de puissance active externe 2, taux d augmentation;;1.0;0.0;%/s;4
+470;4;44467;U16;;Consigne de puissance active externe 2, taux de reduction;;1.0;0.0;%/s;4
+471;4;44477;U16;;Q(U), Temps de reglage du filtre de valeur de consigne_3;;1.0;0.0;s;4
+472;4;44479;U16;;Mode de sensibilite ?? la frequence (FSM);;1.0;0.0;;4
+473;4;44495;U16;;Tension d'activation maximale apres redemarrage;;1.0;0.0;p.u.;4
+474;4;44497;U16;;Tension d'activation minimale apres redemarrage;;1.0;0.0;p.u.;4
+475;4;44499;U16;;Frequence d'activation maximale apres redemarrage;;1.0;0.0;Hz;4
+476;4;44501;U16;;Frequence d'activation minimale apres redemarrage;;1.0;0.0;Hz;4
+477;4;44503;U16;;Frequence d'activation maximale apres coupure par surfrequence;;1.0;0.0;Hz;4
+478;4;44505;U16;;Limitation de la puissance active en %;;1.0;0.0;%;4
+479;4;44511;U16;;Prereglage de la courbe caracteristique Q(U);;1.0;0.0;;4
+480;4;44515;U16;;Consigne de puissance active manuelle en %;;1.0;0.0;;4
+481;4;44519;U16;;Mode de sensibilite ?? la frequence (FSM), puissance active de reference pour le decalage de la puissance active;;1.0;0.0;;1
+482;4;44521;U16;;Mode de sensibilite ?? la frequence (FSM), surfrequence de coupure 0;;1.0;0.0;Hz;1
+483;4;44523;U16;;Mode de sensibilite ?? la frequence (FSM), surfrequence de coupure 1;;1.0;0.0;Hz;1
+484;4;44525;U16;;Mode de sensibilite ?? la frequence (FSM), surfrequence de coupure 2;;1.0;0.0;Hz;1
+485;4;44527;U16;;Mode de sensibilite ?? la frequence (FSM), decalage de la puissance active par Hz en cas de surfrequence 0;;1.0;0.0;%;1
+486;4;44529;U16;;Mode de sensibilite ?? la frequence (FSM), decalage de la puissance active par Hz en cas de surfrequence 1;;1.0;0.0;%;1
+487;4;44531;U16;;Mode de sensibilite ?? la frequence (FSM), decalage de la puissance active par Hz en cas de surfrequence 2;;1.0;0.0;%;1
+488;4;44533;U16;;Mode de sensibilite ?? la frequence (FSM), valeur limite pour l'activation en cas de surfrequence;;1.0;0.0;Hz;1
+489;4;44535;U16;;Mode de sensibilite ?? la frequence (FSM), sous-frequence de coude 0;;1.0;0.0;Hz;1
+490;4;44537;U16;;Mode de sensibilite ?? la frequence (FSM), sous-frequence de coude 1;;1.0;0.0;Hz;1
+491;4;44539;U16;;Mode de sensibilite ?? la frequence (FSM), sous-frequence de coude 2;;1.0;0.0;Hz;1
+492;4;44541;U16;;Mode de sensibilite ?? la frequence (FSM), decalage de la puissance active par Hz en cas de sous-frequence 0;;1.0;0.0;%;1
+493;4;44543;U16;;Mode de sensibilite ?? la frequence (FSM), decalage de la puissance active par Hz en cas de sous-frequence 1;;1.0;0.0;%;1
+494;4;44545;U16;;Mode de sensibilite ?? la frequence (FSM), decalage de la puissance active par Hz en cas de sous-frequence 2;;1.0;0.0;%;1
+495;4;44547;U16;;Mode de sensibilite ?? la frequence (FSM), valeur limite pour l'activation en cas de sous-frequence;;1.0;0.0;Hz;1
+496;4;44549;U16;;Mode de sensibilite ?? la frequence (FSM), filtre de valeur reelle pour la valeur de mesure de la frequence;;1.0;0.0;;1
+497;4;44551;U16;;Mode de sensibilite ?? la frequence (FSM), temps de reglage du filtre de valeur reelle pour la valeur de mesure de la frequence;;1.0;0.0;s;1
+498;4;44553;U16;;Mode de sensibilite ?? la puissance (FSM), puissance de reserve rapportee ?? la puissance active disponible;;1.0;0.0;%;1
+499;4;44555;U16;;Mode de sensibilite ?? la puissance (FSM), filtre pour la puissance active disponible;;1.0;0.0;;1
+500;4;44557;U16;;Mode de sensibilite ?? la frequence (FSM), temps de reglage du filtre pour la puissance active disponible;;1.0;0.0;s;1
+501;4;44559;U16;;Mode de sensibilite ?? la frequence (FSM), limitation de la vitesse de variation de la puissance active disponible;;1.0;0.0;;1
+502;4;44561;U16;;Mode de sensibilite ?? la frequence (FSM), taux d'augmentation de la puissance active disponible;;1.0;0.0;%/s;1
+503;4;44563;U16;;Mode de sensibilite ?? la frequence (FSM), taux d'abaissement de la puissance active disponible;;1.0;0.0;%/s;1
+504;4;44565;U16;;Mode de sensibilite ?? la frequence (FSM), filtre de valeur de consigne pour le decalage de la puissance active;;1.0;0.0;;1
+505;4;44567;U16;;Mode de sensibilite ?? la frequence (FSM), temps de reglage du filtre de valeur de consigne pour le decalage de la puissance active;;1.0;0.0;s;1
+506;4;44569;U16;;Mode de sensibilite ?? la frequence (FSM), limitation de la vitesse de variation du decalage de la puissance active;;1.0;0.0;;1
+507;4;44571;U16;;Mode de sensibilite ?? la frequence (FSM), taux d'augmentation du decalage de la puissance active;;1.0;0.0;%/s;1
+508;4;44573;U16;;Mode de sensibilite ?? la frequence (FSM), taux d'abaissement du decalage de la puissance active;;1.0;0.0;%/s;1
+509;4;44575;U16;;Mode de sensibilite ?? la frequence (FSM), puissance active de base;;1.0;0.0;;1

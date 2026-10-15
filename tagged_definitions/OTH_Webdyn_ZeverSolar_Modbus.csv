@@ -1,0 +1,76 @@
+﻿modbusRTU;Other;Webdyn;ZeverSolar_Modbus;;;;;;;
+1;4;0_1;STRING;;Device Type;device_type;1.000000;0.000000;;4
+2;4;1;U32;;E-today;etoday;0.000000;0.000000;kW;4
+3;4;3;U32;;E-total;etotal;0.000000;0.000000;kW;4
+4;4;5;U32;;H-total;htotal;1.000000;0.000000;H;4
+5;4;7;U32;;resv;resv;1.000000;0.000000;;0
+6;4;9;U32;;resv_1;resv_1;1.000000;0.000000;;0
+7;4;11;U16;;State;state;1.000000;0.000000;;8
+8;4;12;U16;;Error Code;error_code;1.000000;0.000000;;4
+9;4;13;U16;;Connect Time;connect_time;1.000000;0.000000;s;4
+10;4;14;I16;;Temperature;temperature;0.000000;0.000000;°C;4
+11;4;15;U16;;Connected PV Strings;connected_pv_strings;1.000000;0.000000;;4
+12;4;16;U16;;BUS Voltage;bus_voltage;0.000000;0.000000;V;4
+13;4;17;U16;;PV Voltage 1;pv_voltage_1;0.000000;0.000000;V;4
+14;4;18;U16;;PV Current 1;pv_current_1;0.000000;0.000000;A;4
+15;4;19;U16;;PV Voltage 2;pv_voltage_2;0.000000;0.000000;V;4
+16;4;20;U16;;PV Current 2;pv_current_2;0.000000;0.000000;A;4
+17;4;21;U16;;PV Voltage 3;pv_voltage_3;0.000000;0.000000;V;4
+18;4;22;U16;;PV Current 3;pv_current_3;0.000000;0.000000;A;4
+19;4;23;U32;;Resv_2;resv_2;1.000000;0.000000;W;4
+20;4;25;U32;;Resv_3;resv_3;1.000000;0.000000;;4
+21;4;27;U16;;Resv_4;resv_4;1.000000;0.000000;;4
+22;4;28;U16;;L1 Phase Voltage;l1_phase_voltage;0.000000;0.000000;V;4
+23;4;29;U16;;L1 Phase Current;l1_phase_current;0.000000;0.000000;A;4
+24;4;30;U16;;L2 Phase Voltage;l2_phase_voltage;0.000000;0.000000;V;4
+25;4;31;U16;;L2 Phase Current;l2_phase_current;0.000000;0.000000;A;4
+26;4;32;U16;;L3 Phase Voltage;l3_phase_voltage;0.000000;0.000000;V;4
+27;4;33;U16;;L3 Phase Current;l3_phase_current;0.000000;0.000000;A;4
+28;4;34;U16;;Grid Freq;grid_freq;0.000000;0.000000;Hz;4
+29;4;35;U32;;Resv_5;resv_5;1.000000;0.000000;;4
+30;4;37;U32;;Pac;P_AC;1.000000;0.000000;W;4
+31;4;39;I32;;Qac;qac;1.000000;0.000000;Var;4
+32;4;41;I16;;PF;PF;0.000000;0.000000;;4
+33;4;42;U16;;Reactive Power Mode;reactive_power_mode;1.000000;0.000000;;4
+34;4;43;U16;;Active Power Mode;active_power_mode;1.000000;0.000000;;4
+35;4;44;U16;;OverLoad;overload;1.000000;0.000000;;4
+36;4;45;U16;;EEG70;eeg70;1.000000;0.000000;;4
+37;4;46;U16;;Version of Protocol;version_of_protocol;1.000000;0.000000;;4
+38;4;47;U16;;String Current 1;string_current_1;0.000000;0.000000;A;4
+39;4;48;U16;;String Current 2;string_current_2;0.000000;0.000000;A;4
+40;4;49;U16;;String Current 3;string_current_3;0.000000;0.000000;A;4
+41;4;50;U16;;String Current 4;string_current_4;0.000000;0.000000;A;4
+42;4;51;U16;;String Current 5;string_current_5;0.000000;0.000000;A;4
+43;4;52;U16;;String Current 6;string_current_6;0.000000;0.000000;A;4
+44;4;53;U16;;String Current 7;string_current_7;0.000000;0.000000;A;4
+45;4;54;U16;;String Current 8;string_current_8;0.000000;0.000000;A;4
+46;4;55;U16;;String Current 9;string_current_9;0.000000;0.000000;A;4
+47;4;56;U16;;String Current 10;string_current_10;0.000000;0.000000;A;4
+48;4;57;U16;;String Current 11;string_current_11;0.000000;0.000000;A;4
+49;4;58;U16;;String Current 12;string_current_12;0.000000;0.000000;A;4
+50;4;59;U16;;Resv_6;resv_6;1.000000;0.000000;;4
+51;3;12;U16;;Power ON/OFF;power_onoff;1.000000;0.000000;;4
+52;3;5000;U16;;Safety type;safety_type;1.000000;0.000000;;4
+53;3;5006;U16;;Grid voltage high limit2;grid_voltage_high_limit2;0.000000;0.000000;V;4
+54;3;5007;U16;;Grid voltage high limit time2;grid_voltage_high_limit_time2;1.000000;0.000000;ms;4
+55;3;5008;U16;;Grid voltage high limit1;grid_voltage_high_limit1;0.000000;0.000000;V;4
+56;3;5009;U16;;Grid voltage high limit time1;grid_voltage_high_limit_time1;1.000000;0.000000;ms;4
+57;3;5010;U16;;Grid voltage low limit2;grid_voltage_low_limit2;0.000000;0.000000;V;4
+58;3;5011;U16;;Grid voltage low limit time2;grid_voltage_low_limit_time2;1.000000;0.000000;ms;4
+59;3;5012;U16;;Grid voltage low limit1;grid_voltage_low_limit1;0.000000;0.000000;V;4
+60;3;5013;U16;;Grid voltage low limit time1;grid_voltage_low_limit_time1;1.000000;0.000000;ms;4
+61;3;5014;U16;;Grid voltage high recovery value;grid_voltage_high_recovery_value;0.000000;0.000000;V;4
+62;3;5015;U16;;Grid voltage low recovery value;grid_voltage_low_recovery_value;0.000000;0.000000;V;4
+63;3;5016;U16;;Grid frequency high limit2;grid_frequency_high_limit2;0.000000;0.000000;Hz;4
+64;3;5017;U16;;Grid frequency high limit time2;grid_frequency_high_limit_time2;1.000000;0.000000;ms;4
+65;3;5018;U16;;Grid frequency high limit1;grid_frequency_high_limit1;0.000000;0.000000;Hz;4
+66;3;5019;U16;;Grid frequency high limit time1;grid_frequency_high_limit_time1;1.000000;0.000000;ms;4
+67;3;5020;U16;;Grid frequency low limit2;grid_frequency_low_limit2;1.000000;0.000000;Hz;4
+68;3;5021;U16;;Grid frequency low limit time2;grid_frequency_low_limit_time2;1.000000;0.000000;ms;4
+69;3;5022;U16;;Grid frequency low limit1;grid_frequency_low_limit1;1.000000;0.000000;Hz;4
+70;3;5023;U16;;Grid frequency low limit time1;grid_frequency_low_limit_time1;1.000000;0.000000;ms;4
+71;3;5024;U16;;Grid frequency high recovery value;grid_frequency_high_recovery_value;1.000000;0.000000;Hz;4
+72;3;5025;U16;;Grid frequency low recovery value;grid_frequency_low_recovery_value;1.000000;0.000000;Hz;4
+73;3;5026;U16;;10 minutes average over voltage threshold;v_10_minutes_average_over_voltage_threshold;0.000000;0.000000;V;4
+74;3;5027;U16;;ISO fault threshold;iso_fault_threshold;1.000000;0.000000;kOhm;4
+75;3;5028;U16;;DCI fault threshold;dci_fault_threshold;1.000000;0.000000;mA;4

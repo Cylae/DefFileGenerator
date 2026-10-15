@@ -1,0 +1,29 @@
+﻿modbusRTU;Other;CarloGavazzi;CarloGavazzi_EM24;;;;;;;
+1;4;1;U16;;volt1;;1.0;0.0;V;4
+2;4;3;U16;;volt2;;1.0;0.0;V;4
+3;4;5;U16;;volt3;;1.0;0.0;V;4
+4;4;13;U16;;current1;;1.0;0.0;A;4
+5;4;15;U16;;current2;;1.0;0.0;A;4
+6;4;17;U16;;current3;;1.0;0.0;A;4
+7;4;19;U16;;power1;;1.0;0.0;W;4
+8;4;21;U16;;power2;;1.0;0.0;W;4
+9;4;23;U16;;power3;;1.0;0.0;W;4
+10;4;25;U16;;apparent_power1;PLN[0];1.0;0.0;Va;4
+11;4;27;U16;;apparent_power2;PLN[1];1.0;0.0;Va;4
+12;4;29;U16;;apparent_power3;PLN[2];1.0;0.0;Va;4
+13;4;31;U16;;reactive_power1;;1.0;0.0;Var;4
+14;4;33;U16;;reactive_power2;;1.0;0.0;Var;4
+15;4;35;U16;;reactive_power3;;1.0;0.0;Var;4
+16;4;37;U16;;volt;;1.0;0.0;V;4
+17;4;39;U16;;V l-l;;1.0;0.0;V;4
+18;4;41;U16;;power;P_AC;1.0;0.0;W;4
+19;4;43;U16;;apparent_power;P_SUM3;1.0;0.0;Va;4
+20;4;45;U16;;reactive_power;Q_AC;1.0;0.0;Var;4
+21;4;47;U16;;Pf l1;;1.0;0.0;;4
+22;4;48;U16;;Pf l2;;1.0;0.0;;4
+23;4;49;U16;;Pf l3;;1.0;0.0;;4
+24;4;50;U16;;Pf;PF;1.0;0.0;;4
+25;4;51;U16;;Phase sequence;;1.0;0.0;;4
+26;4;52;U16;;frequency;FREQ;1.0;0.0;Hz;4
+27;4;53;U16;;energy_tot;;1.0;0.0;kWh;4
+28;4;55;U16;;reactive_energy_tot;;1.0;0.0;kvarh;4

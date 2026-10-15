@@ -1,0 +1,31 @@
+﻿modbusRTU;Other;LSI LASTEM SRL;LSILASTEM_DPA870-873;;;;;;;
+1;4;0;U16;;Irradiance Instantaneous;POA;1.0;0.0;W/m2;4
+2;4;2;U16;;Irradiance Mean;;1.0;0.0;W/m2;4
+3;4;4;U16;;Irradiance Minimum;;1.0;0.0;W/m2;4
+4;4;6;U16;;Irradiance Maximum;;1.0;0.0;W/m2;4
+5;4;8;U16;;Irradiance Total;;1.0;0.0;W/m2;4
+6;4;10;U16;;Ext. Temperature Instantaneous;;1.0;0.0;Degree.Celsius;4
+7;4;12;U16;;Ext. Temperature Mean;;1.0;0.0;Degree.Celsius;4
+8;4;14;U16;;Ext. Temperature Minimum;;1.0;0.0;Degree.Celsius;4
+9;4;16;U16;;Ext. Temperature Maximum;;1.0;0.0;Degree.Celsius;4
+10;4;18;U16;;Ext. Temperature Total;;1.0;0.0;Degree.Celsius;4
+11;4;20;U16;;Int. Temperature Instantaneous;;1.0;0.0;Degree.Celsius;4
+12;4;22;U16;;Int. Temperature Mean;;1.0;0.0;Degree.Celsius;4
+13;4;24;U16;;Int. Temperature Minimum;;1.0;0.0;Degree.Celsius;4
+14;4;26;U16;;Int. Temperature Maximum;;1.0;0.0;Degree.Celsius;4
+15;4;28;U16;;Int. Temperature Total;;1.0;0.0;Degree.Celsius;4
+16;4;1000;U16;;Irradiance Instantaneous_1;;1.0;0.0;W/m2;4
+17;4;1001;U16;;Irradiance Mean_1;;1.0;0.0;W/m2;4
+18;4;1002;U16;;Irradiance Minimum_1;;1.0;0.0;W/m2;4
+19;4;1003;U16;;Irradiance Maximum_1;;1.0;0.0;W/m2;4
+20;4;1004;U16;;Irradiance Total_1;;1.0;0.0;W/m2;4
+21;4;1005;U16;;Ext. Temperature Instantaneous_1;;1.0;0.0;Degree.Celsius;4
+22;4;1006;U16;;Ext. Temperature Mean_1;;1.0;0.0;Degree.Celsius;4
+23;4;1007;U16;;Ext. Temperature Minimum_1;;1.0;0.0;Degree.Celsius;4
+24;4;1008;U16;;Ext. Temperature Maximum_1;;1.0;0.0;Degree.Celsius;4
+25;4;1009;U16;;Ext. Temperature Total_1;;1.0;0.0;Degree.Celsius;4
+26;4;1010;U16;;Int. Temperature Instantaneous_1;;1.0;0.0;Degree.Celsius;4
+27;4;1011;U16;;Int. Temperature Mean_1;;1.0;0.0;Degree.Celsius;4
+28;4;1012;U16;;Int. Temperature Minimum_1;;1.0;0.0;Degree.Celsius;4
+29;4;1013;U16;;Int. Temperature Maximum_1;;1.0;0.0;Degree.Celsius;4
+30;4;1014;U16;;Int. Temperature Total_1;;1.0;0.0;Degree.Celsius;4

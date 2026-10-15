@@ -1,0 +1,6 @@
+﻿modbusRTU;Other;Algodue;ALGODUE_UPM209;;;;;;;
+1;4;1048;U16;;System imported active energy;E_IMP;1.0;0.0;Wh;4
+2;4;1050;U16;;System imported active energy_1;;1.0;0.0;Wh;4
+3;4;1052;U16;;System exported active energy;E_EXP;1.0;0.0;Wh;4
+4;4;1054;U16;;System exported active energy_1;;1.0;0.0;Wh;4
+5;4;114;U16;;Frequency;FREQ;1.0;0.0;Hz;4

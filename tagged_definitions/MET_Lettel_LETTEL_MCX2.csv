@@ -1,0 +1,55 @@
+﻿modbusRTU;Meter;Lettel;LETTEL_MCX2;;;;;;;
+1;4;0;U16;;Tension_Float;;1.0;0.0;V;4
+2;4;6;U16;;Courant_Float;;1.0;0.0;A;4
+3;4;12;U16;;Puissance active_Float;;1.0;0.0;Kw;4
+4;4;18;U16;;Puissance reactive_Float;Q_AC;1.0;0.0;kvar;4
+5;4;24;U16;;Puissance apparente_Float;S_AC;1.0;0.0;Kva;4
+6;4;30;U16;;Facteur de puissance_Float;PF;1.0;0.0;;4
+7;4;36;U16;;Angle de phase_Float;;1.0;0.0;Degres;4
+8;4;48;U16;;Frequence des entrees tensons du circuit mesure_Float;FREQ;1.0;0.0;Hz;4
+9;4;78;U16;;Type de charge (Resistive=1, inductive=2, capacitive =3, Sans charge=4_Float;;1.0;0.0;;4
+10;4;140;U16;;Demande puissance active_Float;;1.0;0.0;kW;4
+11;4;142;U16;;Demande puissance reactive_Float;;1.0;0.0;kvar;4
+12;4;144;U16;;Demande puissance apparente_Float;;1.0;0.0;Kva;4
+13;4;146;U16;;Demande courant_Float;;1.0;0.0;A;4
+14;4;154;U16;;Demande puissance active importee_Float;P_AC;1.0;0.0;kW;4
+15;4;156;U16;;Demande puissance active exportee_Float;;1.0;0.0;kW;4
+16;4;162;U16;;Demande maxi puissance active_Float;;1.0;0.0;kW;4
+17;4;164;U16;;Demande maxi puissance reactive_Float;;1.0;0.0;kvar;4
+18;4;166;U16;;Demande maxi puissance apparente_Float;;1.0;0.0;Kva;4
+19;4;168;U16;;Demande maxi courant_Float;;1.0;0.0;A;4
+20;4;176;U16;;Demande maxi puissance active importee_Float;;1.0;0.0;kW;4
+21;4;178;U16;;Demande maxi puissance active exportee_Float;;1.0;0.0;kW;4
+22;4;1280;U16;;energie active importee totale_Float;E_IMP;1.0;0.0;kWh;4
+23;4;1282;U16;;energie active exportee totale_Float;E_EXP;1.0;0.0;kWh;4
+24;4;1284;U16;;energie active totale_Float;E_TOT;1.0;0.0;kWh;4
+25;4;1288;U16;;energie reactive importee totale_Float;;1.0;0.0;kvarh;4
+26;4;1290;U16;;energie reactive exportee totale_Float;;1.0;0.0;kvarh;4
+27;4;1292;U16;;energie reactive totale_Float;;1.0;0.0;kvarh;4
+28;4;0;U16;;Tension;;1.0;0.0;V;4
+29;4;6;U16;;Courant;;1.0;0.0;A;4
+30;4;12;U16;;Puissance active;;1.0;0.0;Kw;4
+31;4;18;U16;;Puissance reactive;;1.0;0.0;kvar;4
+32;4;24;U16;;Puissance apparente;;1.0;0.0;Kva;4
+33;4;30;U16;;Facteur de puissance;;1.0;0.0;;4
+34;4;33;U16;;Angle de phase;;1.0;0.0;Degres;4
+35;4;42;U16;;Frequence des entrees tensons du circuit mesure;;1.0;0.0;Hz;4
+36;4;70;U16;;Type de charge (Resistive=1, inductive=2, capacitive =3, Sans charge=4;;1.0;0.0;;4
+37;4;102;U16;;Demande puissance active;;1.0;0.0;kW;4
+38;4;104;U16;;Demande puissance reactive;;1.0;0.0;kvar;4
+39;4;106;U16;;Demande puissance apparente;;1.0;0.0;Kva;4
+40;4;108;U16;;Demande courant;;1.0;0.0;A;4
+41;4;116;U16;;Demande puissance active importee;;1.0;0.0;kW;4
+42;4;118;U16;;Demande puissance active exportee;;1.0;0.0;kW;4
+43;4;124;U16;;Demande maxi puissance active;;1.0;0.0;kW;4
+44;4;126;U16;;Demande maxi puissance reactive;;1.0;0.0;kvar;4
+45;4;128;U16;;Demande maxi puissance apparente;;1.0;0.0;Kva;4
+46;4;130;U16;;Demande maxi courant;;1.0;0.0;A;4
+47;4;138;U16;;Demande maxi puissance active importee;;1.0;0.0;kW;4
+48;4;140;U16;;Demande maxi puissance active exportee;;1.0;0.0;kW;4
+49;4;1024;U16;;energie active importee totale;;1.0;0.0;kWh;4
+50;4;1026;U16;;energie active exportee totale;;1.0;0.0;kWh;4
+51;4;1028;U16;;energie active totale;;1.0;0.0;kWh;4
+52;4;1032;U16;;energie reactive importee totale;;1.0;0.0;kvarh;4
+53;4;1034;U16;;energie reactive exportee totale;;1.0;0.0;kvarh;4
+54;4;1036;U16;;energie reactive totale;;1.0;0.0;kvarh;4

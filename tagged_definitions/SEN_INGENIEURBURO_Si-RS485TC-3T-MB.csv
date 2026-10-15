@@ -1,0 +1,11 @@
+﻿Modbus;Sensor;IngenieurBuro;Si-RS485TC-3T-MB;;;;;;;
+1;4;0;U16;;Irradiance;POA;0.1;0.0;W/m2;4
+2;4;1;U16;;Cell temperature;TEMP_CELL;0.1;-25.0;C;4
+3;4;2;U16;;External temperature;;0.1;-25.0;C;4
+4;4;3;U16;;Wind speed measurement;WIND_SPEED;0.1;0.0;m/s;4
+5;4;4;I16;;reserved;;1.0;0.0;;0
+6;4;5;U16;;Cell temperature measurement T_cell;;0.1;-100;C;4
+7;4;6;U16;;External temperature measurement T_ext;;0.1;-100;C;4
+8;4;7;I16;;Cell Temperature;;0.1;0.0;C;4
+9;4;8;I16;;External Temp. no. 1;;0.1;0.0;C;4
+10;4;9;I16;;External Temp. no. 2;;0.1;0.0;C;4

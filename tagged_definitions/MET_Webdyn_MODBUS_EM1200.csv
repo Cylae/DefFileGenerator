@@ -1,0 +1,8 @@
+﻿ModbusRTU;Meter;Schneider;EM 1200;;;;;;;
+1;3;3200;F32;;Forward Apparent Energy;;1.0;0.0;FwdVAh;4
+2;3;3202;F32;;Forward Active Energy;;1.0;0.0;FwdWh;4
+3;3;3204;F32;;Forward Reactive Energy;;1.0;0.0;FwdVARh;4
+4;3;3048;F32;;Apparent Power Total;S_AC;1.0;0.0;VA;4
+5;3;3050;F32;;Active Power Total;P_AC;1.0;0.0;W;4
+6;3;3052;F32;;Reactive Power Total;Q_AC;1.0;0.0;VAR;4
+7;3;3054;F32;;Total Power Factor;PF;1.0;0.0;;4

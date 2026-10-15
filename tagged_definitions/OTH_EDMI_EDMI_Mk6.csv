@@ -1,0 +1,60 @@
+﻿modbusRTU;Other;EDMI;EDMI_Mk6;;;;;;;
+1;4;73;U16;;Im BT Total kWh;;1.0;0.0;kWh;4
+2;4;96;U16;;Total Wh T1;;1.0;0.0;Wh;4
+3;4;97;U16;;Total Wh T2;;1.0;0.0;Wh;4
+4;4;98;U16;;Total Wh T3;;1.0;0.0;Wh;4
+5;4;105;U16;;Total Im Wh TU;;1.0;0.0;Wh;4
+6;4;329;U16;;Im BT Total kVarh;;1.0;0.0;kVarh;4
+7;4;352;U16;;Curr VAR Hour T1;;1.0;0.0;VAR/hour;4
+8;4;353;U16;;Curr VAR Hour T2;;1.0;0.0;VAR/hour;4
+9;4;354;U16;;Curr VAR Hour T3;;1.0;0.0;VAR/hour;4
+10;4;361;U16;;Total Im varh TU;;1.0;0.0;varH;4
+11;4;585;U16;;Ex BT Total Kwh;;1.0;0.0;kWh;4
+12;4;608;U16;;Ex kWh Rate A;;1.0;0.0;kWh;4
+13;4;609;U16;;Ex kWh Rate B;;1.0;0.0;kWh;4
+14;4;610;U16;;Ex kWh Rate C;;1.0;0.0;kWh;4
+15;4;617;U16;;Total Ex Wh TU;;1.0;0.0;Wh;4
+16;4;841;U16;;Ex BT Total kVarh;;1.0;0.0;kVarh;4
+17;4;864;U16;;Ex kVarh Rate A;;1.0;0.0;kVarh;4
+18;4;865;U16;;Ex kVarh Rate B;;1.0;0.0;kVarh;4
+19;4;866;U16;;Ex kVarh Rate C;;1.0;0.0;kVarh;4
+20;4;873;U16;;Total Ex varh TU;;1.0;0.0;varh;4
+21;4;4096;U16;;MD Watt T1;;1.0;0.0;W;4
+22;4;4097;U16;;MD Watt T2;;1.0;0.0;W;4
+23;4;4098;U16;;MD Watt T3;;1.0;0.0;W;4
+24;4;4105;U16;;Curr Im MD W TU;;1.0;0.0;W;4
+25;4;4352;U16;;Curr MD VAR T1;;1.0;0.0;VAR;4
+26;4;4353;U16;;Curr MD VAR T2;;1.0;0.0;VAR;4
+27;4;4354;U16;;Curr MD VAR T3;;1.0;0.0;VAR;4
+28;4;4361;U16;;Curr Im MD var TU;;1.0;0.0;var;4
+29;4;4617;U16;;Curr Ex MD W TU;;1.0;0.0;W;4
+30;4;4873;U16;;Curr Ex MD var TU;;1.0;0.0;var;4
+31;4;32768;U16;;MD Watt Time T1;;1.0;0.0;W;4
+32;4;32769;U16;;MD Watt Time T2;;1.0;0.0;W;4
+33;4;32770;U16;;MD Watt Time T3;;1.0;0.0;W;4
+34;4;32777;U16;;Time Im MD W TU;;1.0;0.0;W;4
+35;4;33024;U16;;MD VAR Time T1;;1.0;0.0;VAR;4
+36;4;33025;U16;;MD VAR Time T2;;1.0;0.0;VAR;4
+37;4;33026;U16;;MD VAR Time T3;;1.0;0.0;VAR;4
+38;4;33033;U16;;Time Im MD var TU;;1.0;0.0;var;4
+39;4;33289;U16;;Time Ex MD W TU;;1.0;0.0;W;4
+40;4;33545;U16;;Time Ex MD var TU;;1.0;0.0;var;4
+41;4;57344;U16;;Ph A Volt;;1.0;0.0;V;4
+42;4;57345;U16;;Ph B Volt;;1.0;0.0;V;4
+43;4;57346;U16;;Ph C Volt;;1.0;0.0;V;4
+44;4;57360;U16;;Ph A Curr;;1.0;0.0;A;4
+45;4;57361;U16;;Ph B Curr;;1.0;0.0;A;4
+46;4;57362;U16;;Ph C Curr;;1.0;0.0;A;4
+47;4;57376;U16;;Phase Angle A;;1.0;0.0;;4
+48;4;57377;U16;;Phase Angle B;;1.0;0.0;;4
+49;4;57378;U16;;Phase Angle C;;1.0;0.0;;4
+50;4;57382;U16;;Power Factor;PF;1.0;0.0;;4
+51;4;57392;U16;;Ph  A Watts;;1.0;0.0;W;4
+52;4;57393;U16;;Ph  B Watts;;1.0;0.0;W;4
+53;4;57394;U16;;Ph  C Watts;;1.0;0.0;W;4
+54;4;57395;U16;;Inst kW;P_AC;1.0;0.0;kW;4
+55;4;57408;U16;;Ph  A Var;;1.0;0.0;Var;4
+56;4;57409;U16;;Ph  B Var;;1.0;0.0;Var;4
+57;4;57410;U16;;Ph C Var;;1.0;0.0;Var;4
+58;4;57411;U16;;Inst kvar;;1.0;0.0;kvar;4
+59;4;57440;U16;;Frequency;FREQ;1.0;0.0;Hz;4

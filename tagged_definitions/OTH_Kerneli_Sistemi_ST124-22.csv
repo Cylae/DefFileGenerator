@@ -1,0 +1,163 @@
+﻿modbusRTU;Other;Kerneli Sistemi;ST124-22;;;;;;;
+1;4;30001;U16;;Digital Inputs Status (INP0...INP3);;1.0;0.0;;9
+2;4;30002;U16;;Instantaneous Current String 01;I_DC_STRING_01;1.0;0.0;mA;4
+3;4;30003;U16;;Instantaneous Current String 02;I_DC_STRING_02;1.0;0.0;mA;4
+4;4;30004;U16;;Instantaneous Current String 03;I_DC_STRING_03;1.0;0.0;mA;4
+5;4;30005;U16;;Instantaneous Current String 04;I_DC_STRING_04;1.0;0.0;mA;4
+6;4;30006;U16;;Instantaneous Current String 05;I_DC_STRING_05;1.0;0.0;mA;4
+7;4;30007;U16;;Instantaneous Current String 06;I_DC_STRING_06;1.0;0.0;mA;4
+8;4;30008;U16;;Instantaneous Current String 07;I_DC_STRING_07;1.0;0.0;mA;4
+9;4;30009;U16;;Instantaneous Current String 08;I_DC_STRING_08;1.0;0.0;mA;4
+10;4;30010;U16;;Instantaneous Current String 09;I_DC_STRING_09;1.0;0.0;mA;4
+11;4;30011;U16;;Instantaneous Current String 10;I_DC_STRING_10;1.0;0.0;mA;4
+12;4;30012;U16;;Instantaneous Current String 11;I_DC_STRING_11;1.0;0.0;mA;4
+13;4;30013;U16;;Instantaneous Current String 12;I_DC_STRING_12;1.0;0.0;mA;4
+14;4;30014;U16;;Instantaneous Current String 13;I_DC_STRING_13;1.0;0.0;mA;4
+15;4;30015;U16;;Instantaneous Current String 14;I_DC_STRING_14;1.0;0.0;mA;4
+16;4;30016;U16;;Instantaneous Current String 15;I_DC_STRING_15;1.0;0.0;mA;4
+17;4;30017;U16;;Instantaneous Current String 16;I_DC_STRING_16;1.0;0.0;mA;4
+18;4;30018;U16;;Instantaneous Current String 17;I_DC_STRING_17;1.0;0.0;mA;4
+19;4;30019;U16;;Instantaneous Current String 18;I_DC_STRING_18;1.0;0.0;mA;4
+20;4;30020;U16;;Instantaneous Current String 19;I_DC_STRING_19;1.0;0.0;mA;4
+21;4;30021;U16;;Instantaneous Current String 20;I_DC_STRING_20;1.0;0.0;mA;4
+22;4;30022;U16;;Instantaneous Current String 21;I_DC_STRING_21;1.0;0.0;mA;4
+23;4;30023;U16;;Instantaneous Current String 22;I_DC_STRING_22;1.0;0.0;mA;4
+24;4;30024;U16;;Instantaneous Current String 23;I_DC_STRING_23;1.0;0.0;mA;4
+25;4;30025;U16;;Instantaneous Current String 24;I_DC_STRING_24;1.0;0.0;mA;4
+26;4;30034;U16;;Fuse Status Ch01...Ch16 (1 if < 200mA);;1.0;0.0;;9
+27;4;30035;U16;;Fuse Status Ch17...Ch32 (1 if < 200mA);;1.0;0.0;;9
+28;4;30040;U16;;Instantaneous DC Bus Voltage;U_DC;1.0;0.0;V;4
+29;4;30042;U16;;Instantaneous Auxiliary Input 1 (0...10V);;1.0;0.0;;4
+30;4;30043;U16;;Instantaneous Auxiliary Input 2 (0...20mA);;1.0;0.0;mA;4
+31;4;30044;U16;;Instantaneous Temperature 1 (External PT100);;1.0;0.0;°C;4
+32;4;30045;U16;;Instantaneous Temperature 2 (On-Board);;1.0;0.0;°C;4
+33;4;30047;U16;;Sum of all active string currents;;1.0;0.0;A;4
+34;4;30048;U16;;Calculated Power - Least Significant Word (LSW);;1.0;0.0;W;4
+35;4;30049;U16;;Calculated Power - Most Significant Word (MSW);;1.0;0.0;W;4
+36;4;30052;U16;;RMS Average Current String 01 (6s average);;1.0;0.0;mA;4
+37;4;30053;U16;;RMS Average Current String 02 (6s average);;1.0;0.0;mA;4
+38;4;30054;U16;;RMS Average Current String 03 (6s average);;1.0;0.0;mA;4
+39;4;30055;U16;;RMS Average Current String 04 (6s average);;1.0;0.0;mA;4
+40;4;30056;U16;;RMS Average Current String 05 (6s average);;1.0;0.0;mA;4
+41;4;30057;U16;;RMS Average Current String 06 (6s average);;1.0;0.0;mA;4
+42;4;30058;U16;;RMS Average Current String 07 (6s average);;1.0;0.0;mA;4
+43;4;30059;U16;;RMS Average Current String 08 (6s average);;1.0;0.0;mA;4
+44;4;30060;U16;;RMS Average Current String 09 (6s average);;1.0;0.0;mA;4
+45;4;30061;U16;;RMS Average Current String 10 (6s average);;1.0;0.0;mA;4
+46;4;30062;U16;;RMS Average Current String 11 (6s average);;1.0;0.0;mA;4
+47;4;30063;U16;;RMS Average Current String 12 (6s average);;1.0;0.0;mA;4
+48;4;30064;U16;;RMS Average Current String 13 (6s average);;1.0;0.0;mA;4
+49;4;30065;U16;;RMS Average Current String 14 (6s average);;1.0;0.0;mA;4
+50;4;30066;U16;;RMS Average Current String 15 (6s average);;1.0;0.0;mA;4
+51;4;30067;U16;;RMS Average Current String 16 (6s average);;1.0;0.0;mA;4
+52;4;30068;U16;;RMS Average Current String 17 (6s average);;1.0;0.0;mA;4
+53;4;30069;U16;;RMS Average Current String 18 (6s average);;1.0;0.0;mA;4
+54;4;30070;U16;;RMS Average Current String 19 (6s average);;1.0;0.0;mA;4
+55;4;30071;U16;;RMS Average Current String 20 (6s average);;1.0;0.0;mA;4
+56;4;30072;U16;;RMS Average Current String 21 (6s average);;1.0;0.0;mA;4
+57;4;30073;U16;;RMS Average Current String 22 (6s average);;1.0;0.0;mA;4
+58;4;30074;U16;;RMS Average Current String 23 (6s average);;1.0;0.0;mA;4
+59;4;30075;U16;;RMS Average Current String 24 (6s average);;1.0;0.0;mA;4
+60;4;30084;U16;;RMS Average DC Bus Voltage (6s);;1.0;0.0;V;4
+61;4;30086;U16;;RMS Average Auxiliary Input 1 (6s);;1.0;0.0;;4
+62;4;30087;U16;;RMS Average Auxiliary Input 2 (6s);;1.0;0.0;mA;4
+63;4;30088;U16;;RMS Average Temperature 1 PT100 (6s);;1.0;0.0;°C;4
+64;4;30089;U16;;RMS Average Temperature 2 On-Board (6s);;1.0;0.0;°C;4
+65;4;30091;U16;;RMS Average Sum of all currents (6s);I_AC;1.0;0.0;A;4
+66;4;30092;U16;;RMS Average Power - LSW (6s);;1.0;0.0;W;4
+67;4;30093;U16;;RMS Average Power - MSW (6s);;1.0;0.0;W;4
+68;4;30201;U16;;Embedded Firmware Version;;1.0;0.0;;4
+69;4;30202;U16;;Internal Use SMU Model Code;MODEL;1.0;0.0;;4
+70;4;30203;U16;;Active Hardware Channels Count;;1.0;0.0;;4
+71;4;30204;U16;;Hardware Shunt Type;;1.0;0.0;;4
+72;4;30205;U16;;Hardware End Scale Value;;1.0;0.0;;4
+73;4;30211;U16;;Unique Hardware Device ID Code [0] (96-bit total);;1.0;0.0;;4
+74;4;30212;U16;;Unique Hardware Device ID Code [1];;1.0;0.0;;4
+75;4;30213;U16;;Unique Hardware Device ID Code [2];;1.0;0.0;;4
+76;4;30214;U16;;Unique Hardware Device ID Code [3];;1.0;0.0;;4
+77;4;30215;U16;;Unique Hardware Device ID Code [4];;1.0;0.0;;4
+78;4;30216;U16;;Unique Hardware Device ID Code [5];;1.0;0.0;;4
+79;4;40001;U16;;Serial Parity Configuration (1:None;;1.0;0.0;1;0
+80;4;40002;U16;;Calibration Offset Current String 01;;1.0;0.0;;4
+81;4;40003;U16;;Calibration Offset Current String 02;;1.0;0.0;;4
+82;4;40004;U16;;Calibration Offset Current String 03;;1.0;0.0;;4
+83;4;40005;U16;;Calibration Offset Current String 04;;1.0;0.0;;4
+84;4;40006;U16;;Calibration Offset Current String 05;;1.0;0.0;;4
+85;4;40007;U16;;Calibration Offset Current String 06;;1.0;0.0;;4
+86;4;40008;U16;;Calibration Offset Current String 07;;1.0;0.0;;4
+87;4;40009;U16;;Calibration Offset Current String 08;;1.0;0.0;;4
+88;4;40010;U16;;Calibration Offset Current String 09;;1.0;0.0;;4
+89;4;40011;U16;;Calibration Offset Current String 10;;1.0;0.0;;4
+90;4;40012;U16;;Calibration Offset Current String 11;;1.0;0.0;;4
+91;4;40013;U16;;Calibration Offset Current String 12;;1.0;0.0;;4
+92;4;40014;U16;;Calibration Offset Current String 13;;1.0;0.0;;4
+93;4;40015;U16;;Calibration Offset Current String 14;;1.0;0.0;;4
+94;4;40016;U16;;Calibration Offset Current String 15;;1.0;0.0;;4
+95;4;40017;U16;;Calibration Offset Current String 16;;1.0;0.0;;4
+96;4;40018;U16;;Calibration Offset Current String 17;;1.0;0.0;;4
+97;4;40019;U16;;Calibration Offset Current String 18;;1.0;0.0;;4
+98;4;40020;U16;;Calibration Offset Current String 19;;1.0;0.0;;4
+99;4;40021;U16;;Calibration Offset Current String 20;;1.0;0.0;;4
+100;4;40022;U16;;Calibration Offset Current String 21;;1.0;0.0;;4
+101;4;40023;U16;;Calibration Offset Current String 22;;1.0;0.0;;4
+102;4;40024;U16;;Calibration Offset Current String 23;;1.0;0.0;;4
+103;4;40025;U16;;Calibration Offset Current String 24;;1.0;0.0;;4
+104;4;40034;U16;;Modbus Processing Response Answer Delay;;1.0;0.0;ms;4
+105;4;40035;U16;;Communication Activity Timeout Duration;;1.0;0.0;s;4
+106;4;40036;U16;;Parity Register Mirror (=40001);;1.0;0.0;;4
+107;4;40037;U16;;Software Fuse Threshold Value Setting;;1.0;0.0;;4
+108;4;40038;U16;;Reversing Sign of Current Ch01...Ch16 (ST0HS only);;1.0;0.0;;4
+109;4;40039;U16;;Reversing Sign of Current Ch17...Ch32 (ST0HS only);;1.0;0.0;;4
+110;4;40040;U16;;DC Bus Voltage Calibration Offset;;1.0;0.0;;4
+111;4;40042;U16;;Auxiliary Input 1 Calibration Offset;;1.0;0.0;;4
+112;4;40043;U16;;Auxiliary Input 2 Calibration Offset;;1.0;0.0;;4
+113;4;40044;U16;;Temperature 1 PT100 Calibration Offset;;1.0;0.0;;4
+114;4;40045;U16;;Temperature 2 On-Board Calibration Offset;;1.0;0.0;;4
+115;4;40052;U16;;Calibration Gain Multiplier String 01 (1000=x1.0);;1.0;0.0;;4
+116;4;40053;U16;;Calibration Gain Multiplier String 02;;1.0;0.0;;4
+117;4;40054;U16;;Calibration Gain Multiplier String 03;;1.0;0.0;;4
+118;4;40055;U16;;Calibration Gain Multiplier String 04;;1.0;0.0;;4
+119;4;40056;U16;;Calibration Gain Multiplier String 05;;1.0;0.0;;4
+120;4;40057;U16;;Calibration Gain Multiplier String 06;;1.0;0.0;;4
+121;4;40058;U16;;Calibration Gain Multiplier String 07;;1.0;0.0;;4
+122;4;40059;U16;;Calibration Gain Multiplier String 08;;1.0;0.0;;4
+123;4;40060;U16;;Calibration Gain Multiplier String 09;;1.0;0.0;;4
+124;4;40061;U16;;Calibration Gain Multiplier String 10;;1.0;0.0;;4
+125;4;40062;U16;;Calibration Gain Multiplier String 11;;1.0;0.0;;4
+126;4;40063;U16;;Calibration Gain Multiplier String 12;;1.0;0.0;;4
+127;4;40064;U16;;Calibration Gain Multiplier String 13;;1.0;0.0;;4
+128;4;40065;U16;;Calibration Gain Multiplier String 14;;1.0;0.0;;4
+129;4;40066;U16;;Calibration Gain Multiplier String 15;;1.0;0.0;;4
+130;4;40067;U16;;Calibration Gain Multiplier String 16;;1.0;0.0;;4
+131;4;40068;U16;;Calibration Gain Multiplier String 17;;1.0;0.0;;4
+132;4;40069;U16;;Calibration Gain Multiplier String 18;;1.0;0.0;;4
+133;4;40070;U16;;Calibration Gain Multiplier String 19;;1.0;0.0;;4
+134;4;40071;U16;;Calibration Gain Multiplier String 20;;1.0;0.0;;4
+135;4;40072;U16;;Calibration Gain Multiplier String 21;;1.0;0.0;;4
+136;4;40073;U16;;Calibration Gain Multiplier String 22;;1.0;0.0;;4
+137;4;40074;U16;;Calibration Gain Multiplier String 23;;1.0;0.0;;4
+138;4;40075;U16;;Calibration Gain Multiplier String 24;;1.0;0.0;;4
+139;4;40090;U16;;DC Bus Voltage Calibration Gain Multiplier;;1.0;0.0;;4
+140;4;40092;U16;;Auxiliary Input 1 Calibration Gain Multiplier;;1.0;0.0;;4
+141;4;40093;U16;;Auxiliary Input 2 Calibration Gain Multiplier;;1.0;0.0;;4
+142;4;40094;U16;;Temperature 1 PT100 Calibration Gain Multiplier;;1.0;0.0;;4
+143;4;40095;U16;;Temperature 2 On-Board Calibration Gain Multiplier;;1.0;0.0;;4
+144;4;40101;U16;;Free Customer Generic User Memory Register 01;;1.0;0.0;;4
+145;4;40102;U16;;Free Customer Generic User Memory Register 02;;1.0;0.0;;4
+146;4;40103;U16;;Free Customer Generic User Memory Register 03;;1.0;0.0;;4
+147;4;40104;U16;;Free Customer Generic User Memory Register 04;;1.0;0.0;;4
+148;4;40105;U16;;Free Customer Generic User Memory Register 05;;1.0;0.0;;4
+149;4;40106;U16;;Free Customer Generic User Memory Register 06;;1.0;0.0;;4
+150;4;40107;U16;;Free Customer Generic User Memory Register 07;;1.0;0.0;;4
+151;4;40108;U16;;Free Customer Generic User Memory Register 08;;1.0;0.0;;4
+152;4;40201;U16;;Hardware Shunt Type Mirror (=30204) - RO;;1.0;0.0;;4
+153;4;40202;U16;;SMU Model Code Mirror (=30202) - RO;;1.0;0.0;;4
+154;4;40203;U16;;Embedded Firmware Version Mirror (=30201) - RO;;1.0;0.0;;4
+155;4;40204;U16;;Active Hardware Channels Count Mirror (=30203) - RO;;1.0;0.0;;4
+156;4;40205;U16;;Hardware End Scale Value Mirror (=30205) - RO;;1.0;0.0;;4
+157;4;40210;U16;;Unique Hardware Device ID Code [0] Mirror (=30211) - RO;;1.0;0.0;;4
+158;4;40211;U16;;Unique Hardware Device ID Code [1] Mirror (=30212) - RO;;1.0;0.0;;4
+159;4;40212;U16;;Unique Hardware Device ID Code [2] Mirror (=30213) - RO;;1.0;0.0;;4
+160;4;40213;U16;;Unique Hardware Device ID Code [3] Mirror (=30214) - RO;;1.0;0.0;;4
+161;4;40214;U16;;Unique Hardware Device ID Code [4] Mirror (=30215) - RO;;1.0;0.0;;4
+162;4;40215;U16;;Unique Hardware Device ID Code [5] Mirror (=30216) - RO;;1.0;0.0;;4

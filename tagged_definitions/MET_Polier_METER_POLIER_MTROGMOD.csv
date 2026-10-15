@@ -1,0 +1,309 @@
+﻿modbusRTU;Meter;POLIER;MTROGMOD;;;;;;;
+1;3;60_20;STRING;;Meter Model;MODEL;1;0;;4
+2;3;70;U32;;Serial No.;;1;0;;4
+3;3;72;U16;;APP Version No.;;1;0;;4
+4;3;75;U64;;Date and Time;;1;0;;4
+5;3;80;U16;;Slave Address;UNIT_ID;1;0;;4
+6;3;81;U16;;Baud Rate;;1;0;;4
+7;3;82;U16;;Parity;;1;0;;4
+8;3;83;U16;;Stop Bit;;1;0;;4
+9;3;200;U16;;Relay Output Control Mode;;1;0;;4
+10;3;201;U16;;Relay Output Control;;1;0;;4
+11;3;202;U16;;Relay Output State;;1;0;;4
+12;3;210;U16;;Digital Input Status;;1;0;;4
+13;3;220;U16;;Voltage/Current Phase Sequence State;;1;0;;4
+14;3;424;U16;;Last Configuration Instruction Code;;1;0;;4
+15;3;425;U16;;Last Configuration Result;;1;0;;4
+16;3;500;U16;;Wiring Mode;;1;0;;4
+17;3;501;U16;;Grid Frequency;FREQ;1;0;Hz;4
+18;3;502;U16;;Nominal Voltage;;1;0;V;4
+19;3;503;U32;;VT Ratio;;0.0001;0;;4
+20;3;505;U32;;CT Ratio;;0.0001;0;;4
+21;3;510;U16;;L1L2L3 Sensor Type;;1;0;;4
+22;3;511;U32;;L1L2L3 Rogowski Coil Pri;;1;0;A;4
+23;3;513;U32;;L1L2L3 Rogowski Coil Sec;;0.01;0;mV;4
+24;3;515;U32;;L1L2L3 Rogowski Nominal Current;;1;0;A;4
+25;3;517;U32;;L1L2L3 VCT Pri;;1;0;A;4
+26;3;519;U32;;L1L2L3 VCT Sec;;0.01;0;mV;4
+27;3;521;U32;;L1L2L3 VCT Nominal Current;;1;0;A;4
+28;3;530;U16;;N-Phase Sensor Type;;1;0;;4
+29;3;531;U32;;N-Phase Rogowski Coil Pri;;1;0;A;4
+30;3;533;U32;;N-Phase Rogowski Coil Sec;;0.01;0;mV;4
+31;3;535;U32;;N-Phase Rogowski Nominal Current;;1;0;A;4
+32;3;537;U32;;N-Phase VCT Pri;;1;0;A;4
+33;3;539;U32;;N-Phase VCT Sec;;0.01;0;mV;4
+34;3;541;U32;;N-Phase VCT Nominal Current;;1;0;A;4
+35;3;600;U16;;Voltage Zero Drift Suppression;PRESSURE;0.01;0;%;4
+36;3;601;U16;;Current Zero Drift Suppression;;0.01;0;%;4
+37;3;800;U16;;Current Tariff;;1;0;;4
+38;3;801;U16;;Tariff Switching Mode;;1;0;;4
+39;3;802;U16;;Manual Tariff Selection;;1;0;;4
+40;3;821;U16;;RTC Ta Tariff Select;;1;0;;4
+41;3;822;U16;;RTC Tb Tariff Select;;1;0;;4
+42;3;823;U16;;RTC Tc Tariff Select;;1;0;;4
+43;3;824;U16;;RTC Td Tariff Select;;1;0;;4
+44;3;825;U16;;RTC Te Tariff Select;;1;0;;4
+45;3;826;U16;;RTC Tf Tariff Select;;1;0;;4
+46;3;1000;F32;;Phase L1 Current;I_AC_1;1;0;A;4
+47;3;1002;F32;;Phase L2 Current;I_AC_2;1;0;A;4
+48;3;1004;F32;;Phase L3 Current;I_AC_3;1;0;A;4
+49;3;1006;F32;;Average 3-Phase Current;;1;0;A;4
+50;3;1008;F32;;Phase N Current;;1;0;A;4
+51;3;1010;F32;;U1-UN Voltage;;1;0;V;4
+52;3;1012;F32;;U2-UN Voltage;;1;0;V;4
+53;3;1014;F32;;U3-UN Voltage;;1;0;V;4
+54;3;1016;F32;;Average Phase Voltage;;1;0;V;4
+55;3;1018;F32;;Zero Sequence Voltage;;1;0;V;4
+56;3;1020;F32;;U1-U2 Line Voltage;;1;0;V;4
+57;3;1022;F32;;U2-U3 Line Voltage;;1;0;V;4
+58;3;1024;F32;;U3-U1 Line Voltage;;1;0;V;4
+59;3;1026;F32;;Average Line Voltage;;1;0;V;4
+60;3;1028;F32;;Phase L1 Active Power;P_AC_1;1;0;kW;4
+61;3;1030;F32;;Phase L2 Active Power;P_AC_2;1;0;kW;4
+62;3;1032;F32;;Phase L3 Active Power;P_AC_3;1;0;kW;4
+63;3;1034;F32;;Total Active Power;P_AC;1;0;kW;4
+64;3;1036;F32;;Phase L1 Reactive Power;ReactivePow1;1;0;kVAR;4
+65;3;1038;F32;;Phase L2 Reactive Power;ReactivePow2;1;0;kVAR;4
+66;3;1040;F32;;Phase L3 Reactive Power;ReactivePow3;1;0;kVAR;4
+67;3;1042;F32;;Total Reactive Power;ReactivePowSUM;1;0;kVAR;4
+68;3;1044;F32;;Phase L1 Apparent Power;S_AC_1;1;0;kVA;4
+69;3;1046;F32;;Phase L2 Apparent Power;S_AC_2;1;0;kVA;4
+70;3;1048;F32;;Phase L3 Apparent Power;S_AC_3;1;0;kVA;4
+71;3;1050;F32;;Total Apparent Power;S_AC;1;0;kVA;4
+72;3;1060;F32;;Phase L1 Power Factor;PF_1;1;0;;4
+73;3;1062;F32;;Phase L2 Power Factor;PF_2;1;0;;4
+74;3;1064;F32;;Phase L3 Power Factor;PF_3;1;0;;4
+75;3;1066;F32;;Total Power Factor;PF;1;0;;4
+76;3;2500;I64;;Phase L1 Positive Active Energy;;1;0;Wh;4
+77;3;2504;I64;;Phase L2 Positive Active Energy;;1;0;Wh;4
+78;3;2508;I64;;Phase L3 Positive Active Energy;;1;0;Wh;4
+79;3;2512;I64;;Total Positive Active Energy;E_TOT;1;0;Wh;4
+80;3;2516;I64;;Phase L1 Reverse Active Energy;;1;0;Wh;4
+81;3;2520;I64;;Phase L2 Reverse Active Energy;;1;0;Wh;4
+82;3;2524;I64;;Phase L3 Reverse Active Energy;;1;0;Wh;4
+83;3;2528;I64;;Total Reverse Active Energy;;1;0;Wh;4
+84;3;2532;I64;;Phase L1 Positive Reactive Energy;;1;0;VARh;4
+85;3;2536;I64;;Phase L2 Positive Reactive Energy;;1;0;VARh;4
+86;3;2540;I64;;Phase L3 Positive Reactive Energy;;1;0;VARh;4
+87;3;2544;I64;;Total Positive Reactive Energy;;1;0;VARh;4
+88;3;2548;I64;;Phase L1 Reverse Reactive Energy;;1;0;VARh;4
+89;3;2552;I64;;Phase L2 Reverse Reactive Energy;;1;0;VARh;4
+90;3;2556;I64;;Phase L3 Reverse Reactive Energy;;1;0;VARh;4
+91;3;2560;I64;;Total Reverse Reactive Energy;;1;0;VARh;4
+92;3;2564;I64;;Phase L1 Apparent Energy;;1;0;VAh;4
+93;3;2568;I64;;Phase L2 Apparent Energy;;1;0;VAh;4
+94;3;2572;I64;;Phase L3 Apparent Energy;;1;0;VAh;4
+95;3;2576;I64;;Total Apparent Energy;;1;0;VAh;4
+96;3;2600;U32;;Phase L1 Positive Active Energy kWh;;1;0;kWh;4
+97;3;2602;U32;;Phase L2 Positive Active Energy kWh;;1;0;kWh;4
+98;3;2604;U32;;Phase L3 Positive Active Energy kWh;;1;0;kWh;4
+99;3;2606;U32;;Total Positive Active Energy kWh;;1;0;kWh;4
+100;3;2608;U32;;Phase L1 Reverse Active Energy kWh;;1;0;kWh;4
+101;3;2610;U32;;Phase L2 Reverse Active Energy kWh;;1;0;kWh;4
+102;3;2612;U32;;Phase L3 Reverse Active Energy kWh;;1;0;kWh;4
+103;3;2614;U32;;Total Reverse Active Energy kWh;;1;0;kWh;4
+104;3;2616;U32;;Phase L1 Positive Reactive Energy kVARh;;1;0;kVARh;4
+105;3;2618;U32;;Phase L2 Positive Reactive Energy kVARh;;1;0;kVARh;4
+106;3;2620;U32;;Phase L3 Positive Reactive Energy kVARh;;1;0;kVARh;4
+107;3;2622;U32;;Total Positive Reactive Energy kVARh;;1;0;kVARh;4
+108;3;2624;U32;;Phase L1 Reverse Reactive Energy kVARh;;1;0;kVARh;4
+109;3;2626;U32;;Phase L2 Reverse Reactive Energy kVARh;;1;0;kVARh;4
+110;3;2628;U32;;Phase L3 Reverse Reactive Energy kVARh;;1;0;kVARh;4
+111;3;2630;U32;;Total Reverse Reactive Energy kVARh;;1;0;kVARh;4
+112;3;2632;U32;;Phase L1 Apparent Energy kVAh;;1;0;kVAh;4
+113;3;2634;U32;;Phase L2 Apparent Energy kVAh;;1;0;kVAh;4
+114;3;2636;U32;;Phase L3 Apparent Energy kVAh;;1;0;kVAh;4
+115;3;2638;U32;;Total Apparent Energy kVAh;;1;0;kVAh;4
+116;3;2700;I64;;Tariff 1 Active Energy;;1;0;Wh;4
+117;3;2704;I64;;Tariff 2 Active Energy;;1;0;Wh;4
+118;3;2708;I64;;Tariff 3 Active Energy;;1;0;Wh;4
+119;3;2712;I64;;Tariff 4 Active Energy;;1;0;Wh;4
+120;3;2716;I64;;Tariff 5 Active Energy;;1;0;Wh;4
+121;3;2720;I64;;Tariff 6 Active Energy;;1;0;Wh;4
+122;3;2750;U32;;Tariff 1 Active Energy kWh;;1;0;kWh;4
+123;3;2752;U32;;Tariff 2 Active Energy kWh;;1;0;kWh;4
+124;3;2754;U32;;Tariff 3 Active Energy kWh;;1;0;kWh;4
+125;3;2756;U32;;Tariff 4 Active Energy kWh;;1;0;kWh;4
+126;3;2758;U32;;Tariff 5 Active Energy kWh;;1;0;kWh;4
+127;3;2760;U32;;Tariff 6 Active Energy kWh;;1;0;kWh;4
+128;3;3000;U16;;Demand Calculation Method;;1;0;;4
+129;3;3001;U16;;Demand Interval;;1;0;Minute;4
+130;3;3002;U64;;Peak Demand Reset Time;;1;0;;4
+131;3;3020;F32;;Current Active Power Demand P1;;1;0;kW;4
+132;3;3022;F32;;Peak Active Power Demand P1;;1;0;kW;4
+133;3;3024;U64;;Occurrence Time of P1 Peak;;1;0;;4
+134;3;3028;F32;;Current Active Power Demand P2;;1;0;kW;4
+135;3;3030;F32;;Peak Active Power Demand P2;;1;0;kW;4
+136;3;3032;U64;;Occurrence Time of P2 Peak;;1;0;;4
+137;3;3036;F32;;Current Active Power Demand P3;;1;0;kW;4
+138;3;3038;F32;;Peak Active Power Demand P3;;1;0;kW;4
+139;3;3040;U64;;Occurrence Time of P3 Peak;;1;0;;4
+140;3;3044;F32;;Current Total Active Power Demand;I_AC;1;0;kW;4
+141;3;3046;F32;;Peak Total Active Power Demand;;1;0;kW;4
+142;3;3048;U64;;Occurrence Time of Total P Peak;;1;0;;4
+143;3;3052;F32;;Current Reactive Power Demand Q1;Q_AC;1;0;kVar;4
+144;3;3054;F32;;Peak Reactive Power Demand Q1;;1;0;kVar;4
+145;3;3056;U64;;Occurrence Time of Q1 Peak;;1;0;;4
+146;3;3060;F32;;Current Reactive Power Demand Q2;;1;0;kVar;4
+147;3;3062;F32;;Peak Reactive Power Demand Q2;;1;0;kVar;4
+148;3;3064;U64;;Occurrence Time of Q2 Peak;;1;0;;4
+149;3;3068;F32;;Current Reactive Power Demand Q3;;1;0;kVar;4
+150;3;3070;F32;;Peak Reactive Power Demand Q3;;1;0;kVar;4
+151;3;3072;U64;;Occurrence Time of Q3 Peak;;1;0;;4
+152;3;3076;F32;;Current Total Reactive Power Demand;;1;0;kVar;4
+153;3;3078;F32;;Peak Total Reactive Power Demand;;1;0;kVar;4
+154;3;3080;U64;;Occurrence Time of Total Q Peak;;1;0;;4
+155;3;3084;F32;;Current Apparent Power Demand S1;;1;0;kVa;4
+156;3;3086;F32;;Peak Apparent Power Demand S1;;1;0;kVa;4
+157;3;3088;U64;;Occurrence Time of S1 Peak;;1;0;;4
+158;3;3092;F32;;Current Apparent Power Demand S2;;1;0;kVa;4
+159;3;3094;F32;;Peak Apparent Power Demand S2;;1;0;kVa;4
+160;3;3096;U64;;Occurrence Time of S2 Peak;;1;0;;4
+161;3;3100;F32;;Current Apparent Power Demand S3;;1;0;kVa;4
+162;3;3102;F32;;Peak Apparent Power Demand S3;;1;0;kVa;4
+163;3;3104;U64;;Occurrence Time of S3 Peak;;1;0;;4
+164;3;3108;F32;;Current Total Apparent Power Demand;;1;0;kVa;4
+165;3;3110;F32;;Peak Total Apparent Power Demand;;1;0;kVa;4
+166;3;3112;U64;;Occurrence Time of Total S Peak;;1;0;;4
+167;3;6000;F32;;Phase L1 Maximum Current;;1;0;A;4
+168;3;6002;F32;;Phase L2 Maximum Current;;1;0;A;4
+169;3;6004;F32;;Phase L3 Maximum Current;;1;0;A;4
+170;3;6006;F32;;Maximum Three Phase Average Current;;1;0;A;4
+171;3;6008;F32;;Phase N Maximum Current;;1;0;A;4
+172;3;6010;F32;;Phase L1 Minimum Current;;1;0;A;4
+173;3;6012;F32;;Phase L2 Minimum Current;;1;0;A;4
+174;3;6014;F32;;Phase L3 Minimum Current;;1;0;A;4
+175;3;6016;F32;;Minimum Three Phase Average Current;;1;0;A;4
+176;3;6018;F32;;Phase N Minimum Current;;1;0;A;4
+177;3;6020;F32;;U1-UN Maximum Phase Voltage;;1;0;V;4
+178;3;6022;F32;;U2-UN Maximum Phase Voltage;;1;0;V;4
+179;3;6024;F32;;U3-UN Maximum Phase Voltage;;1;0;V;4
+180;3;6026;F32;;Maximum Average Phase Voltage;;1;0;V;4
+181;3;6030;F32;;U1-UN Minimum Phase Voltage;;1;0;V;4
+182;3;6032;F32;;U2-UN Minimum Phase Voltage;;1;0;V;4
+183;3;6034;F32;;U3-UN Minimum Phase Voltage;;1;0;V;4
+184;3;6036;F32;;Minimum Average Phase Voltage;;1;0;V;4
+185;3;6040;F32;;U1-U2 Maximum Line Voltage;;1;0;V;4
+186;3;6042;F32;;U2-U3 Maximum Line Voltage;;1;0;V;4
+187;3;6044;F32;;U3-U1 Maximum Line Voltage;;1;0;V;4
+188;3;6046;F32;;Maximum Average Line Voltage;;1;0;V;4
+189;3;6050;F32;;U1-U2 Minimum Line Voltage;;1;0;V;4
+190;3;6052;F32;;U2-U3 Minimum Line Voltage;;1;0;V;4
+191;3;6054;F32;;U3-U1 Minimum Line Voltage;;1;0;V;4
+192;3;6056;F32;;Minimum Average Line Voltage;;1;0;V;4
+193;3;6060;F32;;P1 Maximum Active Power;;1;0;kW;4
+194;3;6062;F32;;P2 Maximum Active Power;;1;0;kW;4
+195;3;6064;F32;;P3 Maximum Active Power;;1;0;kW;4
+196;3;6066;F32;;Maximum Total Active Power;;1;0;kW;4
+197;3;6070;F32;;P1 Minimum Active Power;;1;0;kW;4
+198;3;6072;F32;;P2 Minimum Active Power;;1;0;kW;4
+199;3;6074;F32;;P3 Minimum Active Power;;1;0;kW;4
+200;3;6076;F32;;Minimum Total Active Power;;1;0;kW;4
+201;3;6080;F32;;Q1 Maximum Reactive Power;;1;0;kVar;4
+202;3;6082;F32;;Q2 Maximum Reactive Power;;1;0;kVar;4
+203;3;6084;F32;;Q3 Maximum Reactive Power;;1;0;kVar;4
+204;3;6086;F32;;Maximum Total Reactive Power;;1;0;kVar;4
+205;3;6090;F32;;Q1 Minimum Reactive Power;;1;0;kVar;4
+206;3;6092;F32;;Q2 Minimum Reactive Power;;1;0;kVar;4
+207;3;6094;F32;;Q3 Minimum Reactive Power;;1;0;kVar;4
+208;3;6096;F32;;Minimum Total Reactive Power;;1;0;kVar;4
+209;3;6100;F32;;S1 Maximum Apparent Power;;1;0;kVa;4
+210;3;6102;F32;;S2 Maximum Apparent Power;;1;0;kVa;4
+211;3;6104;F32;;S3 Maximum Apparent Power;;1;0;kVa;4
+212;3;6106;F32;;Maximum Total Apparent Power;;1;0;kVa;4
+213;3;6110;F32;;S1 Minimum Apparent Power;;1;0;kVa;4
+214;3;6112;F32;;S2 Minimum Apparent Power;;1;0;kVa;4
+215;3;6114;F32;;S3 Minimum Apparent Power;;1;0;kVa;4
+216;3;6116;F32;;Minimum Total Apparent Power;;1;0;kVa;4
+217;3;7000;F32;;Voltage Negative Sequence Unbalance;;1;0;%;4
+218;3;7002;F32;;Voltage Zero Sequence Unbalance;;1;0;%;4
+219;3;7004;F32;;Current Negative Sequence Unbalance;;1;0;%;4
+220;3;7006;F32;;Current Zero Sequence Unbalance;;1;0;%;4
+221;3;8000;F32;;Current K-Factor Phase L1;;1;0;;4
+222;3;8002;F32;;Current K-Factor Phase L2;;1;0;;4
+223;3;8004;F32;;Current K-Factor Phase L3;;1;0;;4
+224;3;8100;F32;;Angle Phase L1 Voltage;U_AC_1;1;0;°;4
+225;3;8102;F32;;Angle Phase L2 Voltage;U_AC_2;1;0;°;4
+226;3;8104;F32;;Angle Phase L3 Voltage;U_AC_3;1;0;°;4
+227;3;8106;F32;;Angle Phase L1 Current;;1;0;°;4
+228;3;8108;F32;;Angle Phase L2 Current;;1;0;°;4
+229;3;8110;F32;;Angle Phase L3 Current;;1;0;°;4
+230;3;8112;F32;;Angle between V and I Phase L1;;1;0;°;4
+231;3;8114;F32;;Angle between V and I Phase L2;;1;0;°;4
+232;3;8116;F32;;Angle between V and I Phase L3;;1;0;°;4
+233;3;10000;U16;;Enabled Alarm Bitmap 1;;1;0;;4
+234;3;10001;U16;;Enabled Alarm Bitmap 2;;1;0;;4
+235;3;10010;U16;;Active Alarm Bitmap 1;;1;0;;4
+236;3;10011;U16;;Active Alarm Bitmap 2;;1;0;;4
+237;3;10020;U16;;Current Alarm Output Bitmap 1;;1;0;;4
+238;3;10021;U16;;Current Alarm Output Bitmap 2;;1;0;;4
+239;3;10100;U16;;Current Over Alarm Status;;1;0;;4
+240;3;10102;F32;;Current Over Alarm Threshold;;1;0;A;4
+241;3;10104;F32;;Current Over Alarm Release Point;;1;0;%;4
+242;3;10106;U16;;Current Over Alarm Buzzer;;1;0;;4
+243;3;10107;U16;;Current Over Alarm Relay;;1;0;;4
+244;3;10120;U16;;Current Under Alarm Status;;1;0;;4
+245;3;10122;F32;;Current Under Alarm Threshold;;1;0;A;4
+246;3;10124;F32;;Current Under Alarm Release Point;;1;0;%;4
+247;3;10126;U16;;Current Under Alarm Buzzer;;1;0;;4
+248;3;10127;U16;;Current Under Alarm Relay;;1;0;;4
+249;3;10140;U16;;Phase Voltage Over Alarm Status;;1;0;;4
+250;3;10142;F32;;Phase Voltage Over Alarm Threshold;;1;0;V;4
+251;3;10144;F32;;Phase Voltage Over Alarm Release Point;;1;0;%;4
+252;3;10146;U16;;Phase Voltage Over Alarm Buzzer;;1;0;;4
+253;3;10147;U16;;Phase Voltage Over Alarm Relay;;1;0;;4
+254;3;10160;U16;;Phase Voltage Under Alarm Status;;1;0;;4
+255;3;10162;F32;;Phase Voltage Under Alarm Threshold;;1;0;V;4
+256;3;10164;F32;;Phase Voltage Under Alarm Release Point;;1;0;%;4
+257;3;10166;U16;;Phase Voltage Under Alarm Buzzer;;1;0;;4
+258;3;10167;U16;;Phase Voltage Under Alarm Relay;;1;0;;4
+259;3;10180;U16;;Line Voltage Over Alarm Status;;1;0;;4
+260;3;10182;F32;;Line Voltage Over Alarm Threshold;;1;0;V;4
+261;3;10184;F32;;Line Voltage Over Alarm Release Point;;1;0;%;4
+262;3;10186;U16;;Line Voltage Over Alarm Buzzer;;1;0;;4
+263;3;10187;U16;;Line Voltage Over Alarm Relay;;1;0;;4
+264;3;10200;U16;;Line Voltage Under Alarm Status;;1;0;;4
+265;3;10202;F32;;Line Voltage Under Alarm Threshold;;1;0;V;4
+266;3;10204;F32;;Line Voltage Under Alarm Release Point;;1;0;%;4
+267;3;10206;U16;;Line Voltage Under Alarm Buzzer;;1;0;;4
+268;3;10207;U16;;Line Voltage Under Alarm Relay;;1;0;;4
+269;3;10220;U16;;Power P Over Alarm Status;;1;0;;4
+270;3;10222;F32;;Power P Over Alarm Threshold;;1;0;kW;4
+271;3;10224;F32;;Power P Over Alarm Release Point;;1;0;%;4
+272;3;10226;U16;;Power P Over Alarm Buzzer;;1;0;;4
+273;3;10227;U16;;Power P Over Alarm Relay;;1;0;;4
+274;3;10240;U16;;Power Q Over Alarm Status;;1;0;;4
+275;3;10242;F32;;Power Q Over Alarm Threshold;;1;0;kVar;4
+276;3;10244;F32;;Power Q Over Alarm Release Point;;1;0;%;4
+277;3;10246;U16;;Power Q Over Alarm Buzzer;;1;0;;4
+278;3;10247;U16;;Power Q Over Alarm Relay;;1;0;;4
+279;3;10260;U16;;Power S Over Alarm Status;;1;0;;4
+280;3;10262;F32;;Power S Over Alarm Threshold;;1;0;kVA;4
+281;3;10264;F32;;Power S Over Alarm Release Point;;1;0;%;4
+282;3;10266;U16;;Power S Over Alarm Buzzer;;1;0;;4
+283;3;10267;U16;;Power S Over Alarm Relay;;1;0;;4
+284;3;10280;U16;;Power P DMD Over Alarm Status;;1;0;;4
+285;3;10282;F32;;Power P DMD Over Alarm Threshold;;1;0;kW;4
+286;3;10284;F32;;Power P DMD Over Alarm Release Point;;1;0;%;4
+287;3;10286;U16;;Power P DMD Over Alarm Buzzer;;1;0;;4
+288;3;10287;U16;;Power P DMD Over Alarm Relay;;1;0;;4
+289;3;10300;U16;;Power Q DMD Over Alarm Status;;1;0;;4
+290;3;10302;F32;;Power Q DMD Over Alarm Threshold;;1;0;kVar;4
+291;3;10304;F32;;Power Q DMD Over Alarm Release Point;;1;0;%;4
+292;3;10306;U16;;Power Q DMD Over Alarm Buzzer;;1;0;;4
+293;3;10307;U16;;Power Q DMD Over Alarm Relay;;1;0;;4
+294;3;10320;U16;;Power S DMD Over Alarm Status;;1;0;;4
+295;3;10322;F32;;Power S DMD Over Alarm Threshold;;1;0;kVA;4
+296;3;10324;F32;;Power S DMD Over Alarm Release Point;;1;0;%;4
+297;3;10326;U16;;Power S DMD Over Alarm Buzzer;;1;0;;4
+298;3;10327;U16;;Power S DMD Over Alarm Relay;;1;0;;4
+299;3;10340;U16;;THD-U Over Alarm Status;;1;0;;4
+300;3;10342;F32;;THD-U Over Alarm Threshold;;1;0;%;4
+301;3;10344;F32;;THD-U Over Alarm Release Point;;1;0;%;4
+302;3;10346;U16;;THD-U Over Alarm Buzzer;;1;0;;4
+303;3;10347;U16;;THD-U Over Alarm Relay;;1;0;;4
+304;3;10360;U16;;THD-I Over Alarm Status;;1;0;;4
+305;3;10362;F32;;THD-I Over Alarm Threshold;;1;0;%;4
+306;3;10364;F32;;THD-I Over Alarm Release Point;;1;0;%;4
+307;3;10366;U16;;THD-I Over Alarm Buzzer;;1;0;;4
+308;3;10367;U16;;THD-I Over Alarm Relay;;1;0;;4

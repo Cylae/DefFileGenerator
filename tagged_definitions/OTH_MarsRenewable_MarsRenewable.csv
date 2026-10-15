@@ -1,0 +1,175 @@
+﻿modbusRTU;Other;MarsRenewable;MarsRenewable;;;;;;;
+1;4;0;U16;;LC Alarm Summary [0=normal, 1=alarm];;1.0;0.0;;9
+2;4;1;U16;;PCS Alarm Summary [0=normal, 1=alarm];;1.0;0.0;;9
+3;4;2;U16;;Bank Alarm Summary [0=normal, 1=alarm];;1.0;0.0;;9
+4;4;3;U16;;Air Conditioning Alarm Summary [0=normal, 1=alarm];;1.0;0.0;;9
+5;4;0;U16;;PCS1 Operating Status [0=stopped, 1=running];;1.0;0.0;;9
+6;4;2;U16;;PCS1 AC Uab Line Voltage;U_AC_L1L2;1.0;0.0;V;4
+7;4;4;U16;;PCS1 AC Ubc Line Voltage;U_AC_L2L3;1.0;0.0;V;4
+8;4;6;U16;;PCS1 AC Uca Line Voltage;U_AC_L3L1;1.0;0.0;V;4
+9;4;8;U16;;PCS1 AC Phase A Current;I_AC_1;1.0;0.0;A;4
+10;4;10;U16;;PCS1 AC Phase B Current;I_AC_2;1.0;0.0;A;4
+11;4;12;U16;;PCS1 AC Phase C Current;I_AC_3;1.0;0.0;A;4
+12;4;14;U16;;PCS1 AC Frequency;FREQ;1.0;0.0;Hz;4
+13;4;16;U16;;PCS1 Total AC Active Power [+charge, -discharge];P_AC;1.0;0.0;kW;4
+14;4;18;U16;;PCS1 Total AC Reactive Power;Q_AC;1.0;0.0;kvar;4
+15;4;20;U16;;PCS1 Total AC Apparent Power;S_AC;1.0;0.0;kVA;4
+16;4;22;U16;;PCS1 Total AC Power Factor;PF;1.0;0.0;;4
+17;4;24;U16;;PCS1 Phase A AC Active Power;P_AC_1;1.0;0.0;kW;4
+18;4;26;U16;;PCS1 Phase B AC Active Power;P_AC_2;1.0;0.0;kW;4
+19;4;28;U16;;PCS1 Phase C AC Active Power;P_AC_3;1.0;0.0;kW;4
+20;4;30;U16;;PCS1 Phase A AC Reactive Power;Q_AC_1;1.0;0.0;kvar;4
+21;4;32;U16;;PCS1 Phase B AC Reactive Power;Q_AC_2;1.0;0.0;kvar;4
+22;4;34;U16;;PCS1 Phase C AC Reactive Power;Q_AC_3;1.0;0.0;kvar;4
+23;4;36;U16;;PCS1 Phase A AC Apparent Power;S_AC_1;1.0;0.0;kVA;4
+24;4;38;U16;;PCS1 Phase B AC Apparent Power;S_AC_2;1.0;0.0;kVA;4
+25;4;40;U16;;PCS1 Phase C AC Apparent Power;S_AC_3;1.0;0.0;kVA;4
+26;4;42;U16;;PCS1 Phase A AC Power Factor;PF_1;1.0;0.0;;4
+27;4;44;U16;;PCS1 Phase B AC Power Factor;PF_2;1.0;0.0;;4
+28;4;46;U16;;PCS1 Phase C AC Power Factor;PF_3;1.0;0.0;;4
+29;4;48;U16;;PCS1 IGBT Module Temperature;TEMP_CELL;1.0;0.0;°C;4
+30;4;50;U16;;PCS1 Ambient Temperature;TEMP_AMB;1.0;0.0;°C;4
+31;4;52;U16;;PCS1 Total AC Charging Energy;E_TOT;1.0;0.0;kWh;4
+32;4;54;U16;;PCS1 Total AC Discharging Energy;;1.0;0.0;kWh;4
+33;4;56;U16;;PCS1 Daily AC Charging Energy;E_DAY;1.0;0.0;kWh;4
+34;4;58;U16;;PCS1 Daily AC Discharging Energy;;1.0;0.0;kWh;4
+35;4;60;U16;;PCS1 Number of branches;;1.0;0.0;;1
+36;4;62;U16;;PCS1 Branch 1 DC Power;P_DC;1.0;0.0;kW;4
+37;4;64;U16;;PCS1 Branch 1 DC Voltage;U_DC;1.0;0.0;V;4
+38;4;66;U16;;PCS1 Branch 1 DC Current;I_DC;1.0;0.0;A;4
+39;4;68;U16;;PCS1 Branch 2 DC Power;;1.0;0.0;kW;4
+40;4;70;U16;;PCS1 Branch 2 DC Voltage;;1.0;0.0;V;4
+41;4;72;U16;;PCS1 Branch 2 DC Current;;1.0;0.0;A;4
+42;4;74;U16;;PCS1 Branch 3 DC Power;;1.0;0.0;kW;4
+43;4;76;U16;;PCS1 Branch 3 DC Voltage;;1.0;0.0;V;4
+44;4;78;U16;;PCS1 Branch 3 DC Current;;1.0;0.0;A;4
+45;4;80;U16;;PCS1 Branch 4 DC Power;;1.0;0.0;kW;4
+46;4;82;U16;;PCS1 Branch 4 DC Voltage;;1.0;0.0;V;4
+47;4;84;U16;;PCS1 Branch 4 DC Current;;1.0;0.0;A;4
+48;4;86;U16;;PCS1 Branch 5 DC Power;;1.0;0.0;kW;4
+49;4;88;U16;;PCS1 Branch 5 DC Voltage;;1.0;0.0;V;4
+50;4;90;U16;;PCS1 Branch 5 DC Current;;1.0;0.0;A;4
+51;4;92;U16;;PCS1 Branch 6 DC Power;;1.0;0.0;kW;4
+52;4;94;U16;;PCS1 Branch 6 DC Voltage;;1.0;0.0;V;4
+53;4;96;U16;;PCS1 Branch 6 DC Current;;1.0;0.0;A;4
+54;4;5000;U16;;Bank1 Bank Voltage;;1.0;0.0;V;4
+55;4;5002;U16;;Bank1 Bank Current;;1.0;0.0;A;4
+56;4;5004;U16;;Bank1 Bank SOC;;1.0;0.0;%;4
+57;4;5006;U16;;Bank1 Bank SOH;;1.0;0.0;%;4
+58;4;5008;U16;;Bank1 Bank Insulation Resistance;R_ISO;1.0;0.0;Ohm;4
+59;4;5010;U16;;Bank1 Bank Available Charge Energy;;1.0;0.0;kWh;4
+60;4;5012;U16;;Bank1 Bank Available Discharge Energy;;1.0;0.0;kWh;4
+61;4;5014;U16;;Bank1 System Allowed Maximum Charge Current;;1.0;0.0;A;4
+62;4;5016;U16;;Bank1 System Allowed Maximum Discharge Current;;1.0;0.0;A;4
+63;4;5018;U16;;Bank1 Today's Charge Energy;;1.0;0.0;kWh;4
+64;4;5020;U16;;Bank1 Today's Discharge Energy;;1.0;0.0;kWh;4
+65;4;5022;U16;;Bank1 Accumulated Charge Energy;;1.0;0.0;kWh;4
+66;4;5024;U16;;Bank1 Accumulated Discharge Energy;;1.0;0.0;kWh;4
+67;4;10000;U16;;Meter1 Total Forward Active Energy;;1.0;0.0;kWh;4
+68;4;10002;U16;;Meter1 Total Forward Sharp Energy;;1.0;0.0;kWh;4
+69;4;10004;U16;;Meter1 Total Forward Peak Energy;;1.0;0.0;kWh;4
+70;4;10006;U16;;Meter1 Total Forward Flat Energy;;1.0;0.0;kWh;4
+71;4;10008;U16;;Meter1 Total Forward Valley Energy;;1.0;0.0;kWh;4
+72;4;10010;U16;;Meter1 Total Reverse Active Energy;;1.0;0.0;kWh;4
+73;4;10012;U16;;Meter1 Total Reverse Sharp Energy;;1.0;0.0;kWh;4
+74;4;10014;U16;;Meter1 Total Reverse Peak Energy;;1.0;0.0;kWh;4
+75;4;10016;U16;;Meter1 Total Reverse Flat Energy;;1.0;0.0;kWh;4
+76;4;10018;U16;;Meter1 Total Reverse Valley Energy;;1.0;0.0;kWh;4
+77;4;10020;U16;;Meter1 Total Active Power;;1.0;0.0;kW;4
+78;4;15000;U16;;AC1 Operating Status [0=stopped, 1=running];;1.0;0.0;;9
+79;4;15004;U16;;AC1 Cooling Low Point;;1.0;0.0;°C;1
+80;4;15006;U16;;AC1 Cooling High Point;;1.0;0.0;°C;1
+81;4;15008;U16;;AC1 Heating Low Point;;1.0;0.0;°C;1
+82;4;15010;U16;;AC1 Heating High Point;;1.0;0.0;°C;1
+83;4;15012;U16;;AC1 Dehumidification High Point (Start Point);;1.0;0.0;%;1
+84;4;15014;U16;;AC1 Dehumidification Low Point (Stop Point);;1.0;0.0;%;1
+85;4;15016;U16;;AC1 High Temperature Alarm Point;;1.0;0.0;°C;1
+86;4;15018;U16;;AC1 Low Temperature Alarm Point;;1.0;0.0;°C;1
+87;4;15020;U16;;AC1 Temperature;;1.0;0.0;°C;4
+88;4;15022;U16;;AC1 Temperature Status [0=normal, 1=alarm];;1.0;0.0;;9
+89;4;15023;U16;;AC1 Voltage Status [0=normal, 1=alarm];;1.0;0.0;;9
+90;4;15024;U16;;AC1 Sensor Status [0=normal, 1=alarm];;1.0;0.0;;9
+91;4;15025;U16;;AC1 Compressor Status [0=normal, 1=alarm];;1.0;0.0;;9
+92;4;15026;U16;;AC1 Air Pressure Status [0=normal, 1=alarm];PRESSURE;1.0;0.0;;9
+93;4;15027;U16;;AC1 Relative Humidity;HUMIDITY;1.0;0.0;%;4
+94;4;20006;U16;;DIO1 DI-1 (crash-stop) [0=normal, 1=alarm];;1.0;0.0;;9
+95;4;20007;U16;;DIO1 DI-2 (Surge fault feedback) [0=normal, 1=alarm];;1.0;0.0;;9
+96;4;20008;U16;;DIO1 DI-3 (PCS Discharge/Charge Status) [0=normal, 1=alarm];;1.0;0.0;;9
+97;4;20009;U16;;DIO1 DI-4 (Water Cooling) [0=normal, 1=alarm];;1.0;0.0;;9
+98;4;20010;U16;;DIO1 DI-5 (Aerosol spraying) [0=normal, 1=alarm];;1.0;0.0;;9
+99;4;20011;U16;;DIO1 DI-6 (KA1-KA6 Contactor Monitoring) [0=normal, 1=alarm];;1.0;0.0;;9
+100;4;20014;U16;;DIO1 DI-9 (Temperature feedback) [1=normal, 0=alarm];;1.0;0.0;;9
+101;4;20015;U16;;DIO1 DI-10 (Smoke feedback) [1=normal, 0=alarm];;1.0;0.0;;9
+102;4;20016;U16;;DIO1 DI-11 (AC side entrance guard) [1=normal, 0=alarm];;1.0;0.0;;9
+103;4;20017;U16;;DIO1 DI-12 (DC side entrance guard) [1=normal, 0=alarm];;1.0;0.0;;9
+104;4;20018;U16;;DIO1 DI-13 (Exhaust Fan Feedback) [1=normal, 0=alarm];;1.0;0.0;;9
+105;4;20019;U16;;DIO1 DO-1 (Running Indicator) [0=off, 1=on];;1.0;0.0;;4
+106;4;20020;U16;;DIO1 DO-2 (Fault Indicator) [0=off, 1=on];;1.0;0.0;;4
+107;4;20021;U16;;DIO1 DO-3 (Intermediate relay) [0=off, 1=on];;1.0;0.0;;4
+108;4;25000;U16;;PV1 Operating Status [0=stopped, 1=running];;1.0;0.0;;9
+109;4;25002;U16;;PV1 AC Phase A Voltage;U_AC_1;1.0;0.0;V;4
+110;4;25004;U16;;PV1 AC Phase B Voltage;U_AC_2;1.0;0.0;V;4
+111;4;25006;U16;;PV1 AC Phase C Voltage;U_AC_3;1.0;0.0;V;4
+112;4;25008;U16;;PV1 AC Phase A Current;;1.0;0.0;A;4
+113;4;25010;U16;;PV1 AC Phase B Current;;1.0;0.0;A;4
+114;4;25012;U16;;PV1 AC Phase C Current;;1.0;0.0;A;4
+115;4;25014;U16;;PV1 AC Frequency;;1.0;0.0;Hz;4
+116;4;25016;U16;;PV1 Total AC Active Power;;1.0;0.0;W;4
+117;4;25018;U16;;PV1 Total AC Reactive Power;;1.0;0.0;Var;4
+118;4;25020;U16;;PV1 Total AC Apparent Power;;1.0;0.0;kVA;4
+119;4;25022;U16;;PV1 Total AC Power Factor;;1.0;0.0;;4
+120;4;25024;U16;;PV1 Phase A AC Active Power;;1.0;0.0;kW;4
+121;4;25026;U16;;PV1 Phase B AC Active Power;;1.0;0.0;kW;4
+122;4;25028;U16;;PV1 Phase C AC Active Power;;1.0;0.0;kW;4
+123;4;25030;U16;;PV1 Phase A AC Reactive Power;;1.0;0.0;kvar;4
+124;4;25032;U16;;PV1 Phase B AC Reactive Power;;1.0;0.0;kvar;4
+125;4;25034;U16;;PV1 Phase C AC Reactive Power;;1.0;0.0;kvar;4
+126;4;25036;U16;;PV1 Phase A AC Apparent Power;;1.0;0.0;kVA;4
+127;4;25038;U16;;PV1 Phase B AC Apparent Power;;1.0;0.0;kVA;4
+128;4;25040;U16;;PV1 Phase C AC Apparent Power;;1.0;0.0;kVA;4
+129;4;25042;U16;;PV1 Phase A AC Power Factor;;1.0;0.0;;4
+130;4;25044;U16;;PV1 Phase B AC Power Factor;;1.0;0.0;;4
+131;4;25046;U16;;PV1 Phase C AC Power Factor;;1.0;0.0;;4
+132;4;25048;U16;;PV1 IGBT Module Temperature;;1.0;0.0;°C;4
+133;4;25050;U16;;PV1 Ambient Temperature;;1.0;0.0;°C;4
+134;4;25052;U16;;PV1 Total AC Charging Energy;;1.0;0.0;kWh;4
+135;4;25054;U16;;PV1 Total AC Discharging Energy;;1.0;0.0;kWh;4
+136;4;25056;U16;;PV1 Daily AC Charging Energy;;1.0;0.0;kWh;4
+137;4;25058;U16;;PV1 Daily AC Discharging Energy;;1.0;0.0;kWh;4
+138;4;25060;U16;;PV1 Number of branches;;1.0;0.0;;1
+139;4;25062;U16;;PV1 Branch 1 DC Power;;1.0;0.0;kW;4
+140;4;25064;U16;;PV1 Branch 1 DC Voltage;U_DC_STRING_1;1.0;0.0;V;4
+141;4;25066;U16;;PV1 Branch 1 DC Current;I_DC_STRING_1;1.0;0.0;A;4
+142;4;25068;U16;;PV1 Branch 2 DC Power;;1.0;0.0;kW;4
+143;4;25070;U16;;PV1 Branch 2 DC Voltage;;1.0;0.0;V;4
+144;4;25072;U16;;PV1 Branch 2 DC Current;;1.0;0.0;A;4
+145;4;25074;U16;;PV1 Branch 3 DC Power;;1.0;0.0;kW;4
+146;4;25076;U16;;PV1 Branch 3 DC Voltage;;1.0;0.0;V;4
+147;4;25078;U16;;PV1 Branch 3 DC Current;;1.0;0.0;A;4
+148;4;25080;U16;;PV1 Branch 4 DC Power;;1.0;0.0;kW;4
+149;4;25082;U16;;PV1 Branch 4 DC Voltage;;1.0;0.0;V;4
+150;4;25084;U16;;PV1 Branch 4 DC Current;;1.0;0.0;A;4
+151;4;25086;U16;;PV1 Branch 5 DC Power;;1.0;0.0;kW;4
+152;4;25088;U16;;PV1 Branch 5 DC Voltage;;1.0;0.0;V;4
+153;4;25090;U16;;PV1 Branch 5 DC Current;;1.0;0.0;A;4
+154;4;25092;U16;;PV1 Branch 6 DC Power;;1.0;0.0;kW;4
+155;4;25094;U16;;PV1 Branch 6 DC Voltage;;1.0;0.0;V;4
+156;4;25096;U16;;PV1 Branch 6 DC Current;;1.0;0.0;A;4
+157;4;30000;U16;;LiquidCooling1 Operating Status [0=stopped, 1=running];;1.0;0.0;;9
+158;4;30004;U16;;LiquidCooling1 Operating Mode [0=stop,1=cool,2=heat,3=self-circ,4=auto,5=standby];;1.0;0.0;;4
+159;4;30006;U16;;LiquidCooling1 Ambient Temperature;;1.0;0.0;°C;4
+160;4;30008;U16;;LiquidCooling1 Supply Water Temperature;;1.0;0.0;°C;4
+161;4;30010;U16;;LiquidCooling1 Inlet Water Temperature;;1.0;0.0;°C;4
+162;4;30012;U16;;LiquidCooling1 Supply Water Pressure;;1.0;0.0;;4
+163;4;30014;U16;;LiquidCooling1 Return Water Pressure;;1.0;0.0;;4
+164;4;30016;U16;;LiquidCooling1 Fan Operating Status;;1.0;0.0;;9
+165;4;30017;U16;;LiquidCooling1 Water Pump Operating Status;;1.0;0.0;;9
+166;4;30018;U16;;LiquidCooling1 Electric Heating Operating Status;;1.0;0.0;;9
+167;4;30019;U16;;LiquidCooling1 Refrigerant Operating Status;;1.0;0.0;;9
+168;4;30020;U16;;LiquidCooling1 Fan Output;;1.0;0.0;;4
+169;4;30022;U16;;LiquidCooling1 Water Pump Output;;1.0;0.0;;4
+170;4;30024;U16;;LiquidCooling1 Target Cooling Start Point;;1.0;0.0;°C;1
+171;4;30026;U16;;LiquidCooling1 Target Cooling Stop Point;;1.0;0.0;°C;1
+172;4;30028;U16;;LiquidCooling1 Target Heating Start Point;;1.0;0.0;°C;1
+173;4;30030;U16;;LiquidCooling1 Target Heating Stop Point;;1.0;0.0;°C;1
+174;4;30032;U16;;LiquidCooling1 EMS Control Mode Status [0=false, 1=true];;1.0;0.0;;4

@@ -1,0 +1,18 @@
+﻿ModbusRTU;Inverter;Gamesa;INVERSOR III 100 KW;;;;;;;
+1;4;50514;U32_W;;Vcc Paneles;;1.0;0.0;;4
+2;4;50516;U32_W;;Vcc Puente;;1.0;0.0;;4
+3;4;50518;U32_W;;Intensidad continua;;0.1;0.0;;4
+4;4;50520;U32_W;;Tension VRS;;1.0;0.0;;4
+5;4;50522;U32_W;;Tension VST;;1.0;0.0;;4
+6;4;50524;U32_W;;Tension VTR;;1.0;0.0;;4
+7;4;50526;U32_W;;Intensidad IR;;0.1;0.0;;4
+8;4;50528;U32_W;;Intensidad IS;;0.1;0.0;;4
+9;4;50530;U32_W;;Intensidad IT;;0.1;0.0;;4
+10;4;50532;U32_W;;Potencia Continua;;0.1;0.0;;4
+11;4;50534;U32_W;;Potencia Alterna;;0.1;0.0;;4
+12;4;50536;U32_W;;Factor de potencia;;0.01;0.0;;4
+13;4;50538;U32_W;;Frecuencia;;0.01;0.0;;4
+14;4;50540;U32_W;;Rsvrd;;1.0;0.0;;1
+15;4;50542;U32_W;;Rsvrd1;;1.0;0.0;;1
+16;4;50544;U32_W;;Rsvrd2;;1.0;0.0;;1
+17;4;50546;U32_W;;Alarms;;1.0;0.0;;8

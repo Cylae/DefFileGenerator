@@ -1,0 +1,99 @@
+﻿Modbus;Meter;Algodue;UPM209-309;;;;;;;
+1;3;4096;F32;;Phase 1-N voltage;U_AC_1;1.0;0.0;V;4
+2;3;4098;F32;;Phase 2-N voltage;U_AC_2;1.0;0.0;V;4
+3;3;4100;F32;;Phase 3-N voltage;U_AC_3;1.0;0.0;V;4
+4;3;4102;F32;;Line 12 voltage;;1.0;0.0;V;4
+5;3;4104;F32;;Line 23 voltage;;1.0;0.0;V;4
+6;3;4106;F32;;Line 31 voltage;;1.0;0.0;V;4
+7;3;4108;F32;;System voltage;;1.0;0.0;V;4
+8;3;4110;F32;;Phase 1 current;I_AC_1;1.0;0.0;A;4
+9;3;4112;F32;;Phase 2 current;I_AC_2;1.0;0.0;A;4
+10;3;4114;F32;;Phase 3 current;I_AC_3;1.0;0.0;A;4
+11;3;4116;F32;;Neutral current;;1.0;0.0;A;4
+12;3;4118;F32;;System current;;1.0;0.0;A;4
+13;3;4120;F32;;Phase 1 active power;P_AC_1;1.0;0.0;W;4
+14;3;4122;F32;;Phase 2 active power;P_AC_2;1.0;0.0;W;4
+15;3;4124;F32;;Phase 3 active power;P_AC_3;1.0;0.0;W;4
+16;3;4126;F32;;System active power;P_AC;1.0;0.0;W;4
+17;3;4128;F32;;Phase 1 apparent power;S_AC_1;1.0;0.0;VA;4
+18;3;4130;F32;;Phase 2 apparent power;S_AC_2;1.0;0.0;VA;4
+19;3;4132;F32;;Phase 3 apparent power;S_AC_3;1.0;0.0;VA;4
+20;3;4134;F32;;System apparent power;S_AC;1.0;0.0;VA;4
+21;3;4136;F32;;Phase 1 reactive power;Q_AC_1;1.0;0.0;var;4
+22;3;4138;F32;;Phase 2 reactive power;Q_AC_2;1.0;0.0;var;4
+23;3;4140;F32;;Phase 3 reactive power;Q_AC_3;1.0;0.0;var;4
+24;3;4142;F32;;System reactive power;Q_AC;1.0;0.0;var;4
+25;3;4144;F32;;Phase 1 power factor;PF_1;1.0;0.0;;4
+26;3;4146;F32;;Phase 2 power factor;PF_2;1.0;0.0;;4
+27;3;4148;F32;;Phase 3 power factor;PF_3;1.0;0.0;;4
+28;3;4150;F32;;System power factor;PF;1.0;0.0;;4
+29;3;4152;F32;;Phase 1 DPF;;1.0;0.0;;4
+30;3;4154;F32;;Phase 2 DPF;;1.0;0.0;;4
+31;3;4156;F32;;Phase 3 DPF;;1.0;0.0;;4
+32;3;4158;F32;;Phase 1 tangent;;1.0;0.0;;4
+33;3;4160;F32;;Phase 2 tangent;;1.0;0.0;;4
+34;3;4162;F32;;Phase 3 tangent;;1.0;0.0;;4
+35;3;4164;F32;;System tangent;;1.0;0.0;;4
+36;3;4166;F32;;Phase 1-N voltage THD;;1.0;0.0;%;4
+37;3;4168;F32;;Phase 2-N voltage THD;;1.0;0.0;%;4
+38;3;4170;F32;;Phase 3-N voltage THD;;1.0;0.0;%;4
+39;3;4172;F32;;Line 12 voltage THD;;1.0;0.0;%;4
+40;3;4174;F32;;Line 23 voltage THD;;1.0;0.0;%;4
+41;3;4176;F32;;Line 31 voltage THD;;1.0;0.0;%;4
+42;3;4178;F32;;Phase 1 current THD;;1.0;0.0;%;4
+43;3;4180;F32;;Phase 2 current THD;;1.0;0.0;%;4
+44;3;4182;F32;;Phase 3 current THD;;1.0;0.0;%;4
+45;3;4184;F32;;Neutral current THD;;1.0;0.0;%;4
+46;3;4186;F32;;Frequency;FREQ;1.0;0.0;Hz;4
+47;3;4188;F32;;Phase sequence;;1.0;0.0;;4
+48;3;4190;F32;;Installation hourcounter;;1.0;0.0;h;4
+49;3;4192;F32;;Measurement hourcounter;;1.0;0.0;h;4
+50;3;5120;F32;;Phase 1 imported active energy;E_IMP;1.0;0.0;Wh;4
+51;3;5122;F32;;Phase 1 exported active energy;E_EXP;1.0;0.0;Wh;4
+52;3;5124;F32;;Phase 2 imported active energy;;1.0;0.0;Wh;4
+53;3;5126;F32;;Phase 2 exported active energy;;1.0;0.0;Wh;4
+54;3;5128;F32;;Phase 3 imported active energy;;1.0;0.0;Wh;4
+55;3;5130;F32;;Phase 3 exported active energy;;1.0;0.0;Wh;4
+56;3;5132;F32;;System imported active energy;;1.0;0.0;Wh;4
+57;3;5134;F32;;System exported active energy;;1.0;0.0;Wh;4
+58;3;5136;F32;;Balance of system active energy (imp-exp);;1.0;0.0;Wh;4
+59;3;5190;F32;;Balance of system apparent energy (BAL-C _ BAL-L);;1.0;0.0;Vah;4
+60;3;5192;F32;;Phase 1 imported capacitive reactive energy;;1.0;0.0;varh;4
+61;3;5194;F32;;Phase 1 exported capacitive reactive energy;;1.0;0.0;varh;4
+62;3;5196;F32;;Phase 1 imported inductive reactive energy;;1.0;0.0;varh;4
+63;3;5198;F32;;Phase 1 exported inductive reactive energy;;1.0;0.0;varh;4
+64;3;5200;F32;;Phase 2 imported capacitive reactive energy;;1.0;0.0;varh;4
+65;3;5202;F32;;Phase 2 exported capacitive reactive energy;;1.0;0.0;varh;4
+66;3;5204;F32;;Phase 2 imported inductive reactive energy;;1.0;0.0;varh;4
+67;3;5206;F32;;Phase 2 exported inductive reactive energy;;1.0;0.0;varh;4
+68;3;5208;F32;;Phase 3 imported capacitive reactive energy;;1.0;0.0;varh;4
+69;3;5210;F32;;Phase 3 exported capacitive reactive energy;;1.0;0.0;varh;4
+70;3;5212;F32;;Phase 3 imported inductive reactive energy;;1.0;0.0;varh;4
+71;3;5214;F32;;Phase 3 exported inductive reactive energy;;1.0;0.0;varh;4
+72;3;5216;F32;;System imported capacitive reactive energy;;1.0;0.0;varh;4
+73;3;5218;F32;;System exported capacitive reactive energy;;1.0;0.0;varh;4
+74;3;5220;F32;;System imported inductive reactive energy;;1.0;0.0;varh;4
+75;3;5222;F32;;System exported inductive reactive energy;;1.0;0.0;varh;4
+76;3;5224;F32;;Balance of system capacitive reactive en. (imp-exp);;1.0;0.0;varh;4
+77;3;5226;F32;;Balance of system inductive reactive en. (imp-exp);;1.0;0.0;varh;4
+78;3;5228;F32;;Balance of system reactive energy (BAL-C _ BAL-L);;1.0;0.0;varh;4
+79;3;8192_12;STRING;;Serial number;SERIAL;1.0;0.0;;4
+80;3;8198;U32;;Firmware release;;1.0;0.0;;4
+81;3;8200;U32;;Hardware version;;1.0;0.0;;4
+82;3;8202;U32;;Model;MODEL;1.0;0.0;;4
+83;3;8204;U32;;COM features;;1.0;0.0;;4
+84;3;8208;U32;;Digital output number;;1.0;0.0;;4
+85;3;8214;U32;;Calibration date;;1.0;0.0;;4
+86;3;8220;U32;;Error code;;1.0;0.0;;4
+87;3;8230;U32;;MODBUS address;UNIT_ID;1.0;0.0;;4
+88;3;8232;U32;;Communication speed;;1.0;0.0;;4
+89;3;8234;U32;;MODBUS mode;;1.0;0.0;;4
+90;3;8236;U32;;Phase 1 current full scale;;1.0;0.0;;4
+91;3;8238;U32;;Phase 1 CT secondary;;1.0;0.0;;4
+92;3;8240;U32;;Phase 2 current full scale;;1.0;0.0;;4
+93;3;8242;U32;;Phase 2 CT secondary;;1.0;0.0;;4
+94;3;8244;U32;;Phase 3 current full scale;;1.0;0.0;;4
+95;3;8246;U32;;Phase 3 CT secondary;;1.0;0.0;;4
+96;3;8248;U32;;PT primary;;1.0;0.0;;4
+97;3;8250;U32;;PT secondary;;1.0;0.0;;4
+98;3;8252;U32;;Wiring mode;;1.0;0.0;;4

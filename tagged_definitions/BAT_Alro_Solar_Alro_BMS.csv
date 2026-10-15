@@ -1,0 +1,115 @@
+﻿modbusRTU;Other;Alro Solar;Alro_BMS;;;;;;;
+1;4;20000;U16;;Battery software version;;1.0;0.0;---;4
+2;4;20010;U16;;Total battery pack voltage (PCS);;1.0;0.0;0.1V;4
+3;4;20011;U16;;Total battery pack current (PCS);I_AC;1.0;0.0;0.1A;4
+4;4;20013;U16;;Main control temperature;;1.0;0.0;0.1℃;4
+5;4;20014;U16;;SOC;SOC;1.0;0.0;0.001;4
+6;4;20015;U16;;SOH;SOH;1.0;0.0;%;4
+7;4;20016;U16;;SOE;;1.0;0.0;0.001;4
+8;4;20017;U16;;Charging cutoff voltage;;1.0;0.0;0.1V;4
+9;4;20018;U16;;Discharge cutoff voltage;;1.0;0.0;0.1V;4
+10;4;20019;U16;;Maximum charging current;;1.0;0.0;0.1A;4
+11;4;20020;U16;;Maximum discharge current;;1.0;0.0;0.1A;4
+12;4;20021;U16;;Cumulative charging power (high bytes);;1.0;0.0;0.1 kWh;4
+13;4;20022;U16;;Lowest cumulative charging capacity;;1.0;0.0;None;4
+14;4;20023;U16;;High byte of cumulative discharge capacity;;1.0;0.0;0.1 kWh;4
+15;4;20024;U16;;Low byte of cumulative discharge capacity;;1.0;0.0;None;4
+16;4;20025;U16;;Daily charging volume;;1.0;0.0;0.1 kWh;4
+17;4;20026;U16;;Daily discharge volume;;1.0;0.0;0.1 kWh;4
+18;4;20027;U16;;Battery pack total power (high bytes);;1.0;0.0;W;4
+19;4;20028;U16;;Battery pack total power (low bytes);;1.0;0.0;None;4
+20;4;20029;U16;;tooling status;;1.0;0.0;None;9
+21;4;20030;U16;;Cell type;;1.0;0.0;None;4
+22;4;20031;U16;;Total battery pack voltage;;1.0;0.0;0.1V;4
+23;4;20032;U16;;Total current of battery pack;;1.0;0.0;0.1A;4
+24;4;20033;U16;;Battery pack total power high bytes;;1.0;0.0;W;4
+25;4;20034;U16;;Battery pack total power low bytes;;1.0;0.0;None;4
+26;4;20200;U16;;highest single-unit voltage;;1.0;0.0;1mV;4
+27;4;20201;U16;;Minimum unit voltage;;1.0;0.0;1mV;4
+28;4;20202;U16;;Highest single-unit voltage group number;;1.0;0.0;None;4
+29;4;20203;U16;;Highest single-unit voltage serial number;SERIAL;1.0;0.0;None;4
+30;4;20204;U16;;Lowest unit voltage group number;;1.0;0.0;None;4
+31;4;20205;U16;;Lowest single-unit voltage serial number;;1.0;0.0;None;4
+32;4;20206;U16;;Maximum single-unit temperature;;1.0;0.0;0.1℃;4
+33;4;20207;U16;;Minimum monomer temperature;;1.0;0.0;0.1℃;4
+34;4;20208;U16;;Highest single-unit temperature group number;;1.0;0.0;None;4
+35;4;20209;U16;;Highest single-unit temperature serial number;;1.0;0.0;None;4
+36;4;20210;U16;;Lowest unit temperature group number;;1.0;0.0;None;4
+37;4;20211;U16;;Lowest monomer temperature serial number;;1.0;0.0;None;4
+38;4;20301;U16;;Slave DI signal status;;1.0;0.0;None;9
+39;4;20302;U16;;Slave power supply voltage;;1.0;0.0;V;4
+40;4;20303;U16;;Slave version number;;1.0;0.0;None;4
+41;4;20311;U16;;Slave DI signal status;;1.0;0.0;None;9
+42;4;20312;U16;;Slave power supply voltage;;1.0;0.0;V;4
+43;4;20313;U16;;Slave version number;;1.0;0.0;None;4
+44;4;20321;U16;;Slave DI signal status;;1.0;0.0;None;9
+45;4;20322;U16;;Slave power supply voltage;;1.0;0.0;V;4
+46;4;20323;U16;;Slave version number;;1.0;0.0;None;4
+47;4;20331;U16;;Slave DI signal status;;1.0;0.0;None;9
+48;4;20332;U16;;Slave power supply voltage;;1.0;0.0;V;4
+49;4;20333;U16;;Slave version number;;1.0;0.0;None;4
+50;4;20400;U16;;Battery status;;1.0;0.0;None;9
+51;4;20401;U16;;DRY drive control status;;1.0;0.0;None;9
+52;4;20402;U16;;DI signal status;;1.0;0.0;None;9
+53;4;20403;U16;;Output positive terminal voltage;;1.0;0.0;0.1V;4
+54;4;20404;U16;;Output negative terminal voltage;;1.0;0.0;0.1V;4
+55;4;20405;U16;;Precharge relay status;;1.0;0.0;None;9
+56;4;20406;U16;;Total positive contactor status;;1.0;0.0;None;9
+57;4;20407;U16;;Total negative contactor status;;1.0;0.0;None;9
+58;4;20408;U16;;Loop count;;1.0;0.0;None;4
+59;4;20500;U16;;Active balancing current;;1.0;0.0;0.1A;4
+60;4;20501;U16;;Relay front voltage;;1.0;0.0;0.1V;4
+61;4;20502;U16;;Relay voltage;;1.0;0.0;0.1V;4
+62;4;20503;U16;;Resistance to ground;;1.0;0.0;KΩ;4
+63;4;20504;U16;;negative resistance to ground;;1.0;0.0;KΩ;4
+64;4;20505;U16;;Number of online individual voltages;;1.0;0.0;None;4
+65;4;20506;U16;;Online number of individual unit temperatures;;1.0;0.0;None;4
+66;4;20507;U16;;Number of online modules;;1.0;0.0;None;4
+67;4;20508;U16;;From the addressing state;;1.0;0.0;None;4
+68;4;20509;U16;;Average voltage;;1.0;0.0;mV;4
+69;4;20510;U16;;Average temperature;;1.0;0.0;0.1℃;4
+70;4;20511;U16;;Single cell voltage difference;;1.0;0.0;mV;4
+71;4;20512;U16;;Individual cell temperature difference;TEMP_CELL;1.0;0.0;0.1℃;4
+72;4;20600;U16;;Number of alarm codes;;1.0;0.0;None;9
+73;4;20601;U16;;Main alarm code 1;;1.0;0.0;None;9
+74;4;20602;U16;;Child alarm code 1;;1.0;0.0;None;9
+75;4;20603;U16;;Main alarm code 2;;1.0;0.0;None;9
+76;4;20604;U16;;Sub-alarm code 2;;1.0;0.0;None;9
+77;4;20619;U16;;Main alarm code 10;;1.0;0.0;None;9
+78;4;20620;U16;;Child alarm code 10;;1.0;0.0;None;9
+79;4;20640;U16;;Number of protection codes;;1.0;0.0;None;4
+80;4;20641;U16;;Master protection code 1;;1.0;0.0;None;4
+81;4;20642;U16;;Sub-protection code 1;;1.0;0.0;None;4
+82;4;20643;U16;;Master protection code 2;;1.0;0.0;None;4
+83;4;20644;U16;;Sub-protection code 2;;1.0;0.0;None;4
+84;4;20659;U16;;Master protection code 10;;1.0;0.0;None;4
+85;4;20660;U16;;Sub-protection code 10;;1.0;0.0;None;4
+86;4;20680;U16;;Number of fault codes;;1.0;0.0;None;9
+87;4;20681;U16;;Main fault code 1;;1.0;0.0;None;9
+88;4;20682;U16;;Sub-fault code 1;;1.0;0.0;None;9
+89;4;20683;U16;;Main fault code 2;;1.0;0.0;None;9
+90;4;20684;U16;;Sub-fault code 2;;1.0;0.0;None;9
+91;4;20699;U16;;Main fault code 10;;1.0;0.0;None;9
+92;4;20700;U16;;Sub-fault code 10;;1.0;0.0;None;9
+93;4;15400;U16;;Article 1 BMS Failure Year/Month;;1.0;0.0;---;4
+94;4;15401;U16;;Article 1 BMS Failure Day/Hour;;1.0;0.0;---;4
+95;4;15402;U16;;BMS Fault Item 1 (minutes/seconds);;1.0;0.0;---;4
+96;4;15403;U16;;BMS fault code #1;;1.0;0.0;---;4
+97;4;15796;U16;;Item 100: BMS Fault (Year/Month);;1.0;0.0;---;4
+98;4;15797;U16;;Article 100 BMS Fault Day/Hour;;1.0;0.0;---;4
+99;4;15798;U16;;100th BMS fault (minutes/seconds);;1.0;0.0;---;4
+100;4;15799;U16;;BMS fault code 100;;1.0;0.0;---;4
+101;4;20001;U16;;BMS serial number SN0;;1.0;0.0;---;4
+102;4;20002;U16;;BMS serial number SN1;;1.0;0.0;---;4
+103;4;20003;U16;;BMS serial number SN2;;1.0;0.0;---;4
+104;4;20004;U16;;BMS serial number SN3;;1.0;0.0;---;4
+105;4;20005;U16;;BMS serial number SN4;;1.0;0.0;---;4
+106;4;20006;U16;;BMS serial number SN5;;1.0;0.0;---;4
+107;4;20007;U16;;BMS serial number SN6;;1.0;0.0;---;4
+108;4;20008;U16;;BMS serial number SN7;;1.0;0.0;---;4
+109;4;20009;U16;;BMS serial number SN8;;1.0;0.0;---;4
+110;4;23009;U16;;Change of working mode;;1.0;0.0;---;4
+111;4;23011;U16;;Parameter processing;;1.0;0.0;---;4
+112;4;23020;U16;;years;;1.0;0.0;---;1
+113;4;23021;U16;;Day Hour;;1.0;0.0;---;1
+114;4;23022;U16;;minutes and seconds;;1.0;0.0;---;1

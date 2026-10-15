@@ -1,0 +1,21 @@
+﻿Modbus;Inverter;TATA;Generic;;;;;;;
+1;4;30000;U16;;AC_Voltage(V);;1.0;0.0;;4
+2;4;30001;U16;;AC_Current(I);;1.0;0.0;;4
+3;4;30002;U16;;Frequency(F);FREQ;1.0;0.0;;4
+4;4;30003;U16;;Active Power(AP);P_AC;1.0;0.0;;4
+5;4;30004;U16;;Reactive Power(RP);Q_AC;1.0;0.0;;4
+6;4;30005;U16;;PV_Voltage(PVV);;1.0;0.0;;4
+7;4;30006;U16;;PV_Current(PVI);;1.0;0.0;;4
+8;4;30007;U16;;PV_Power(PVP);;1.0;0.0;;4
+9;4;30008;U32;;Cumulative Energy High(CEHi);E_TOT;1.0;0.0;;4
+10;4;30010;U16;;Today_Energy Energy(TE);E_DAY;1.0;0.0;;4
+11;4;30011;U16;;Faults(F);;1.0;0.0;;8
+12;4;30012;U16;;Temperature(T1);TEMP;1.0;0.0;;4
+13;4;30013;U16;;Temperature(T2);;1.0;0.0;;4
+14;4;40000;U16;;Maximum current limit;;1.0;0.0;;1
+15;4;40001;U16;;Minimum current limit;;1.0;0.0;;1
+16;4;40002;U16;;Maximum frequency set;;1.0;0.0;;1
+17;4;40003;U16;;Minimum frequency set;;1.0;0.0;;1
+18;4;40004;U16;;Maximum voltage set;;1.0;0.0;;1
+19;4;40005;U16;;Minimum voltage set;;1.0;0.0;;1
+20;4;40006;U16;;Address set;;1.0;0.0;;1

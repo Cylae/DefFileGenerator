@@ -1,0 +1,53 @@
+﻿ModbusRTU;stringbox;Ingeteam;StringBox;;;;;;;
+1;4;30001;U32;;h_total;;1;0;H;4
+2;4;30003;U32;;Operating Time;;1;0;H;4
+3;4;30005;U8;;Current from string 1;I_DC_STRING_1;10;0;A;4
+4;4;30005_1;U8;;Current from string 2;I_DC_STRING_2;10;0;A;4
+5;4;30006;U8;;Current from string 3;I_DC_STRING_3;10;0;A;4
+6;4;30006_1;U8;;Current from string 4;I_DC_STRING_4;10;0;A;4
+7;4;30007;U8;;Current from string 5;I_DC_STRING_5;10;0;A;4
+8;4;30007_1;U8;;Current from string 6;I_DC_STRING_6;10;0;A;4
+9;4;30008;U8;;Current from string 7;I_DC_STRING_7;10;0;A;4
+10;4;30008_1;U8;;Current from string 8;I_DC_STRING_8;10;0;A;4
+11;4;30009;U8;;Current from string 9;I_DC_STRING_9;10;0;A;4
+12;4;30009_1;U8;;Current from string 10;I_DC_STRING_10;10;0;A;4
+13;4;30010;U8;;Current from string 11;I_DC_STRING_11;10;0;A;4
+14;4;30010_1;U8;;Current from string 12;I_DC_STRING_12;10;0;A;4
+15;4;30011;U8;;Current from string 13;I_DC_STRING_13;10;0;A;4
+16;4;30011_1;U8;;Current from string 14;I_DC_STRING_14;10;0;A;4
+17;4;30012;U8;;Current from string 15;I_DC_STRING_15;10;0;A;4
+18;4;30012_1;U8;;Current from string 16;I_DC_STRING_16;10;0;A;4
+19;4;30013;U16;;Sum of instant currents;I_AC;1;0;A;4
+20;4;30014;U16;;Temperature;TEMP;1;0;C;4
+21;4;30015;U16;;String current alarms;;1;0;-;8
+22;4;30016;U16;;Fuse alarms;;1;0;-;8
+23;4;30019;U16;;General alarms;;1;0;-;8
+24;4;30020;U16;;Current year;;1;0;-;4
+25;4;30021;U16;;Current month;;1;0;-;4
+26;4;30022;U16;;Current day;;1;0;-;4
+27;4;30023;U16;;Current hour;;1;0;-;4
+28;4;30024;U16;;Current minute;;1;0;-;4
+29;4;30025;U16;;Current sec;;1;0;-;4
+30;4;30026;U32;;Grid frequency;FREQ;0.001;0;;4
+31;4;30034;U16;;Sun position azimut;;1;0;;4
+32;4;30035;U16;;Sun position cenit;;1;0;;4
+33;4;30036;U16;;Suntracker 1, ModSeg_1  _;;1;0;;4
+34;4;30037;U16;;Suntracker 1, Est_MotSeg_1 state;;1;0;;4
+35;4;30038;U16;;Suntracker 1, GPor10MotSeg_1;;10;0;;4
+36;4;30039;U16;;Suntracker 1, GPor10PosConsig_1;;10;0;;4
+37;4;30040;U16;;Suntracker 1, EstSeg_1;;1;0;;4
+38;4;30041;U16;;Suntracker 1, OffsetSeg_1;;1;0;;4
+39;4;30042;U16;;Suntracker 1, PasoSeg_1;;1;0;;4
+40;4;30043;U16;;Suntracker 2, ModSeg_2;;1;0;;4
+41;4;30044;U16;;Suntracker 2, Est_MotSeg_2 state;;1;0;;4
+42;4;30045;U16;;Suntracker 2, GPor10MotSeg_2;;10;0;;4
+43;4;30046;U16;;Suntracker 2, GPor10PosConsig_2;;10;0;;4
+44;4;30047;U16;;Suntracker 2, EstSeg_2;;1;0;;4
+45;4;30048;U16;;Suntracker 2, OffsetSeg_2;;1;0;;4
+46;4;30049;U16;;Suntracker 2, PasoSeg_2;;1;0;;4
+47;4;30050;U16;;Analog Input 1;;1;0;;4
+48;4;30051;U16;;Analog Input 2;;1;0;;4
+49;4;30052;U16;;Analog Input 3;;1;0;;4
+50;4;30053;U16;;Analog Input 4;;1;0;;4
+51;4;30054;U16;;Analog Input 5  PT100 n 1;;1;0;;4
+52;4;30055;U16;;Analog Input 6  PT100 n 2;;1;0;;4

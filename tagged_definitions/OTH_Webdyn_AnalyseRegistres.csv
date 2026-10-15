@@ -1,0 +1,11 @@
+﻿modbusRTU;Other;Webdyn;AnalyseRegistres;;;;;;;
+1;4;30201;U16;;etat;alarm;1.0;0.0;;4
+2;4;32385;U16;;etat onduleur;None;1.0;0.0;;4
+3;4;30219;U16;;Cause de la reduction de puissance;;1.0;0.0;;4
+4;4;30251;U16;;État de verrouillage;lock;1.0;0.0;;9
+5;4;30929;U16;;Etat de connexion Speedwire de SMACOM A;;1.0;0.0;;4
+6;4;30935;U16;;Etat de connexion Speedwire de SMACOM B;;1.0;0.0;;4
+7;4;33001;U16;;État de veille;;1.0;0.0;;9
+8;4;3300;U16;;État de fonctionnement;status;1.0;0.0;;9
+9;4;40029;U16;;État de fonctionnement général;;1.0;0.0;;9
+10;4;34659;U16;;Etat de fonctionnement (batterie);;1.0;0.0;;4

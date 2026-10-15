@@ -1,0 +1,4 @@
+﻿modbusRTU;IOmodbus;Advantec;ADAM4068_2;;;;;;;
+1;1;17_0_1;BITS;;Rel1-P0;Rel1-P0;1.000000;0.000000;;4
+2;1;18_0_1;BITS;;Rel2-Q0;Rel2-Q0;1.000000;0.000000;;4
+3;1;16_0_1;BITS;;Rel0-Rearmement;Rel0-Rearmement;1.000000;0.000000;;4

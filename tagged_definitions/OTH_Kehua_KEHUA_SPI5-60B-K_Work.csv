@@ -1,0 +1,211 @@
+﻿modbusRTU;Other;Kehua;KEHUA_SPI5-60B-K_Work;;;;;;;
+1;3;4501;U16;;Device status;device_status;1.000000;0.000000;;9
+2;3;4506;U16;;Daily energy;daily_energy;0.333333;0.000000;kWh;4
+3;3;4507;U32;;Total energy;E_TOT;0.250000;0.000000;kWh;4
+4;3;4511;I16;;Grid frequency;FREQ;0.142857;0.000000;Hz;4
+5;3;4512;I16;;U-phase/UV grid voltage;uphaseuv_grid_voltage;0.125000;0.000000;V;4
+6;3;4513;I16;;V-phase/VW grid voltage;vphasevw_grid_voltage;0.111111;0.000000;V;4
+7;3;4514;U16;;W-phase/WU grid voltage;wphasewu_grid_voltage;0.100000;0.000000;V;4
+8;3;4515;U16;;U-phase grid current;uphase_grid_current;0.090909;0.000000;A;4
+9;3;4516;U16;;V-phase grid current;vphase_grid_current;0.083333;0.000000;A;4
+10;3;4517;U16;;W-phase grid current;wphase_grid_current;0.076923;0.000000;A;4
+11;3;4518;I16;;Grid-connected total active power;gridconnected_total_active_power;0.071429;0.000000;kW;4
+12;3;4519;I16;;Grid-connected total reactive power;gridconnected_total_reactive_power;0.066667;0.000000;kVar;4
+13;3;4520;I16;;Heatsink temperature;heatsink_temperature;0.062500;0.000000;kVar;4
+14;3;4521;I16;;Inner temperature;inner_temperature;0.058824;0.000000;Deg. Celsius;4
+15;3;4522;U16;;Grid-connected total apparent power;gridconnected_total_apparent_power;0.055556;0.000000;kVA;4
+16;3;4523;I16;;IGBT temperature;igbt_temperature;0.052632;0.000000;Deg. Celsius;4
+17;3;4526;I16;;Output power factor;output_power_factor;0.045455;0.000000;;4
+18;3;4527;U16;;PV input total power;pv_input_total_power;0.043478;0.000000;kW;4
+19;3;4528;U16;;AC leakage current;ac_leakage_current;0.041667;0.000000;mA;4
+20;3;4529;I16;;Daily power consumption;daily_power_consumption;0.040000;0.000000;;4
+21;3;4530;U32;;Total power consumption;total_power_consumption;0.038462;0.000000;;4
+22;3;4532;I16;;On-grid active power;ongrid_active_power;0.037037;0.000000;kW;4
+23;3;4533;I16;;On-grid apparent power;ongrid_apparent_power;0.035714;0.000000;kVA;4
+24;3;4534;I16;;On-grid reactive power;ongrid_reactive_power;0.034483;0.000000;kVar;4
+25;3;4535;I16;;On-grid Power factor;ongrid_power_factor;0.033333;0.000000;;4
+26;3;4551;U16;;Battery status;battery_status;0.031250;0.000000;;9
+27;3;4552;U16;;Batery voltage;batery_voltage;0.030303;0.000000;V;4
+28;3;4553;I16;;Batery current;batery_current;0.029412;0.000000;A;4
+29;3;4554;I16;;Batery power;batery_power;0.028571;0.000000;kW;4
+30;3;4555;I16;;Batery max. temperature;batery_max_temperature;0.027778;0.000000;Deg. Celsius;4
+31;3;4556;I16;;Batery min. temperature;batery_min_temperature;0.027027;0.000000;Deg. Celsius;4
+32;3;4557;U16;;Cell's max voltage;cells_max_voltage;0.026316;0.000000;;4
+33;3;4558;U16;;Cell's min voltage;cells_min_voltage;0.025641;0.000000;;4
+34;3;4559;U16;;Batery capacity;batery_capacity;0.025000;0.000000;;4
+35;3;4560;U16;;Battery daily charge capacity;battery_daily_charge_capacity;0.024390;0.000000;;4
+36;3;4561;U16;;Battery daily discharge capacity;battery_daily_discharge_capacity;0.023256;0.000000;;4
+37;3;4601;U16;;U-phase load voltage;uphase_load_voltage;0.022222;0.000000;;4
+38;3;4602;U16;;V-phase load voltage;vphase_load_voltage;0.021739;0.000000;;4
+39;3;4603;U16;;W-phase load voltage;wphase_load_voltage;0.021277;0.000000;;4
+40;3;4604;U16;;U-phase load current;uphase_load_current;0.020833;0.000000;;4
+41;3;4605;U16;;V-phase load current;vphase_load_current;0.020408;0.000000;;4
+42;3;4606;U16;;W-phase load current;wphase_load_current;0.020000;0.000000;;4
+43;3;4607;I16;;Load total active power;load_total_active_power;0.019608;0.000000;;4
+44;3;4608;I16;;Load total reactive power;load_total_reactive_power;0.019231;0.000000;;4
+45;3;4609;U16;;Load total apparent power;load_total_apparent_power;0.018868;0.000000;;4
+46;3;4610;I16;;U-phase load active power;uphase_load_active_power;0.018519;0.000000;;4
+47;3;4611;I16;;V-phase load active power;vphase_load_active_power;0.018182;0.000000;;4
+48;3;4612;I16;;W-phase load active power;wphase_load_active_power;0.017857;0.000000;;4
+49;3;4613;I16;;U-phase load reactive power;uphase_load_reactive_power;0.017544;0.000000;;4
+50;3;4614;I16;;V-phase load reactive power;vphase_load_reactive_power;0.017241;0.000000;;4
+51;3;4615;I16;;W-phase load reactive power;wphase_load_reactive_power;0.016949;0.000000;;4
+52;3;4616;U16;;U-phase load apparent power;uphase_load_apparent_power;0.016667;0.000000;;4
+53;3;4617;U16;;V-phase load apparent power;vphase_load_apparent_power;0.016393;0.000000;;4
+54;3;4618;U16;;W-phase load apparent power;wphase_load_apparent_power;0.016129;0.000000;;4
+55;3;4619;U16;;U-phase load power factor;uphase_load_power_factor;0.015873;0.000000;;4
+56;3;4620;U16;;V-phase load power factor;vphase_load_power_factor;0.015625;0.000000;;4
+57;3;4621;U16;;W-phase load power factor;wphase_load_power_factor;0.015385;0.000000;;4
+58;3;4622;U16;;Load power factor;load_power_factor;0.015152;0.000000;;4
+59;3;4623;U16;;Daily load power consumption;daily_load_power_consumption;0.014925;0.000000;;4
+60;3;4624;U32;;Total load power consumption;total_load_power_consumption;0.014706;0.000000;;4
+61;3;4651;U16;;Daily PV energy;daily_pv_energy;0.014286;0.000000;;4
+62;3;4652;U32;;Total PV energy;total_pv_energy;0.014085;0.000000;;4
+63;3;4654;U16;;Total insulation impedance;total_insulation_impedance;0.013889;0.000000;;4
+64;3;4661;U16;;Voltage of MPPT1;voltage_of_mppt1;0.013514;0.000000;;4
+65;3;4662;U16;;Voltage of MPPT2;voltage_of_mppt2;0.013333;0.000000;;4
+66;3;4663;U16;;Voltage of MPPT3;voltage_of_mppt3;0.013158;0.000000;;4
+67;3;4664;U16;;Voltage of MPPT4;voltage_of_mppt4;0.012987;0.000000;;4
+68;3;4665;U16;;Voltage of MPPT5;voltage_of_mppt5;0.012821;0.000000;;4
+69;3;4666;U16;;Voltage of MPPT6;voltage_of_mppt6;0.012658;0.000000;;4
+70;3;4667;U16;;Voltage of MPPT7;voltage_of_mppt7;0.012500;0.000000;;4
+71;3;4668;U16;;Voltage of MPPT8;voltage_of_mppt8;0.012346;0.000000;;4
+72;3;4669;I16;;Current of MPPT1;current_of_mppt1;0.012195;0.000000;;4
+73;3;4670;I16;;Current of MPPT2;current_of_mppt2;0.012048;0.000000;;4
+74;3;4671;I16;;Current of MPPT3;current_of_mppt3;0.011905;0.000000;;4
+75;3;4672;I16;;Current of MPPT4;current_of_mppt4;0.011765;0.000000;;4
+76;3;4673;I16;;Current of MPPT5;current_of_mppt5;0.011628;0.000000;;4
+77;3;4674;I16;;Current of MPPT6;current_of_mppt6;0.011494;0.000000;;4
+78;3;4675;I16;;Current of MPPT7;current_of_mppt7;0.011364;0.000000;;4
+79;3;4676;I16;;Current of MPPT8;current_of_mppt8;0.011236;0.000000;;4
+80;3;4701;U16;;Voltage of PV 1;voltage_of_pv_1;0.011111;0.000000;;4
+81;3;4702;U16;;Voltage of PV 2;voltage_of_pv_2;0.010989;0.000000;;4
+82;3;4703;U16;;Voltage of PV 3;voltage_of_pv_3;0.010870;0.000000;;4
+83;3;4704;U16;;Voltage of PV 4;voltage_of_pv_4;0.010753;0.000000;;4
+84;3;4705;U16;;Voltage of PV 5;voltage_of_pv_5;0.010638;0.000000;;4
+85;3;4706;U16;;Voltage of PV 6;voltage_of_pv_6;0.010526;0.000000;;4
+86;3;4707;U16;;Voltage of PV 7;voltage_of_pv_7;0.010417;0.000000;;4
+87;3;4708;U16;;Voltage of PV 8;voltage_of_pv_8;0.010309;0.000000;;4
+88;3;4709;U16;;Voltage of PV 9;voltage_of_pv_9;0.010204;0.000000;;4
+89;3;4710;U16;;Voltage of PV 10;voltage_of_pv_10;0.010101;0.000000;;4
+90;3;4711;U16;;Voltage of PV 11;voltage_of_pv_11;0.010000;0.000000;;4
+91;3;4712;U16;;Voltage of PV 12;voltage_of_pv_12;0.009901;0.000000;;4
+92;3;4713;U16;;Voltage of PV 13;voltage_of_pv_13;0.009804;0.000000;;4
+93;3;4714;U16;;Voltage of PV 14;voltage_of_pv_14;0.009709;0.000000;;4
+94;3;4715;U16;;Voltage of PV 15;voltage_of_pv_15;0.009615;0.000000;;4
+95;3;4716;U16;;Voltage of PV 16;voltage_of_pv_16;0.009524;0.000000;;4
+96;3;4717;U16;;Voltage of PV 17;voltage_of_pv_17;0.009434;0.000000;;4
+97;3;4718;U16;;Voltage of PV 18;voltage_of_pv_18;0.009346;0.000000;;4
+98;3;4719;U16;;Voltage of PV 19;voltage_of_pv_19;0.009259;0.000000;;4
+99;3;4720;U16;;Voltage of PV 20;voltage_of_pv_20;0.009174;0.000000;;4
+100;3;4721;U16;;Voltage of PV 21;voltage_of_pv_21;0.009091;0.000000;;4
+101;3;4722;U16;;Voltage of PV 22;voltage_of_pv_22;0.009009;0.000000;;4
+102;3;4723;U16;;Voltage of PV 23;voltage_of_pv_23;0.008929;0.000000;;4
+103;3;4724;U16;;Voltage of PV 24;voltage_of_pv_24;0.008850;0.000000;;4
+104;3;4725;U16;;Voltage of PV 25;voltage_of_pv_25;0.008772;0.000000;;4
+105;3;4726;U16;;Voltage of PV 26;voltage_of_pv_26;0.008696;0.000000;;4
+106;3;4727;U16;;Voltage of PV 27;voltage_of_pv_27;0.008621;0.000000;;4
+107;3;4728;U16;;Voltage of PV 28;voltage_of_pv_28;0.008547;0.000000;;4
+108;3;4729;U16;;Voltage of PV 29;voltage_of_pv_29;0.008475;0.000000;;4
+109;3;4730;U16;;Voltage of PV 30;voltage_of_pv_30;0.008403;0.000000;;4
+110;3;4731;U16;;Voltage of PV 31;voltage_of_pv_31;0.008333;0.000000;;4
+111;3;4732;U16;;Voltage of PV 32;voltage_of_pv_32;0.008264;0.000000;;4
+112;3;4733;I16;;Current of PV 1;current_of_pv_1;0.008197;0.000000;;4
+113;3;4734;I16;;Current of PV 2;current_of_pv_2;0.008130;0.000000;;4
+114;3;4735;I16;;Current of PV 3;current_of_pv_3;0.008065;0.000000;;4
+115;3;4736;I16;;Current of PV 4;current_of_pv_4;0.008000;0.000000;;4
+116;3;4737;I16;;Current of PV 5;current_of_pv_5;0.007937;0.000000;;4
+117;3;4738;I16;;Current of PV 6;current_of_pv_6;0.007874;0.000000;;4
+118;3;4739;I16;;Current of PV 7;current_of_pv_7;0.007812;0.000000;;4
+119;3;4740;I16;;Current of PV 8;current_of_pv_8;0.007752;0.000000;;4
+120;3;4741;I16;;Current of PV 9;current_of_pv_9;0.007692;0.000000;;4
+121;3;4742;I16;;Current of PV 10;current_of_pv_10;0.007634;0.000000;;4
+122;3;4743;I16;;Current of PV 11;current_of_pv_11;0.007576;0.000000;;4
+123;3;4744;I16;;Current of PV 12;current_of_pv_12;0.007519;0.000000;;4
+124;3;4745;I16;;Current of PV 13;current_of_pv_13;0.007463;0.000000;;4
+125;3;4746;I16;;Current of PV 14;current_of_pv_14;0.007407;0.000000;;4
+126;3;4747;I16;;Current of PV 15;current_of_pv_15;0.007353;0.000000;;4
+127;3;4748;I16;;Current of PV 16;current_of_pv_16;0.007299;0.000000;;4
+128;3;4749;I16;;Current of PV 17;current_of_pv_17;0.007246;0.000000;;4
+129;3;4750;I16;;Current of PV 18;current_of_pv_18;0.007194;0.000000;;4
+130;3;4751;I16;;Current of PV 19;current_of_pv_19;0.007143;0.000000;;4
+131;3;4752;I16;;Current of PV 20;current_of_pv_20;0.007092;0.000000;;4
+132;3;4753;I16;;Current of PV 21;current_of_pv_21;0.007042;0.000000;;4
+133;3;4754;I16;;Current of PV 22;current_of_pv_22;0.006993;0.000000;;4
+134;3;4755;I16;;Current of PV 23;current_of_pv_23;0.006944;0.000000;;4
+135;3;4756;I16;;Current of PV 24;current_of_pv_24;0.006897;0.000000;;4
+136;3;4757;I16;;Current of PV 25;current_of_pv_25;0.006849;0.000000;;4
+137;3;4758;I16;;Current of PV 26;current_of_pv_26;0.006803;0.000000;;4
+138;3;4759;I16;;Current of PV 27;current_of_pv_27;0.006757;0.000000;;4
+139;3;4760;I16;;Current of PV 28;current_of_pv_28;0.006711;0.000000;;4
+140;3;4761;I16;;Current of PV 29;current_of_pv_29;0.006667;0.000000;;4
+141;3;4762;I16;;Current of PV 30;current_of_pv_30;0.006623;0.000000;;4
+142;3;4763;I16;;Current of PV 31;current_of_pv_31;0.006579;0.000000;;4
+143;3;4764;I16;;Current of PV 32;current_of_pv_32;0.006536;0.000000;;4
+144;3;4765;I16;;Power of PV 1;power_of_pv_1;0.006494;0.000000;;4
+145;3;4766;I16;;Power of PV 2;power_of_pv_2;0.006452;0.000000;;4
+146;3;4767;I16;;Power of PV 3;power_of_pv_3;0.006410;0.000000;;4
+147;3;4768;I16;;Power of PV 4;power_of_pv_4;0.006369;0.000000;;4
+148;3;4769;I16;;Power of PV 5;power_of_pv_5;0.006329;0.000000;;4
+149;3;4770;I16;;Power of PV 6;power_of_pv_6;0.006289;0.000000;;4
+150;3;4771;I16;;Power of PV 7;power_of_pv_7;0.006250;0.000000;;4
+151;3;4772;I16;;Power of PV 8;power_of_pv_8;0.006211;0.000000;;4
+152;3;4773;I16;;Power of PV 9;power_of_pv_9;0.006173;0.000000;;4
+153;3;4774;I16;;Power of PV 10;power_of_pv_10;0.006135;0.000000;;4
+154;3;4775;I16;;Power of PV 11;power_of_pv_11;0.006098;0.000000;;4
+155;3;4776;I16;;Power of PV 12;power_of_pv_12;0.006061;0.000000;;4
+156;3;4777;I16;;Power of PV 13;power_of_pv_13;0.006024;0.000000;;4
+157;3;4778;I16;;Power of PV 14;power_of_pv_14;0.005988;0.000000;;4
+158;3;4779;I16;;Power of PV 15;power_of_pv_15;0.005952;0.000000;;4
+159;3;4780;I16;;Power of PV 16;power_of_pv_16;0.005917;0.000000;;4
+160;3;4781;I16;;Power of PV 17;power_of_pv_17;0.005882;0.000000;;4
+161;3;4782;I16;;Power of PV 18;power_of_pv_18;0.005848;0.000000;;4
+162;3;4783;I16;;Power of PV 19;power_of_pv_19;0.005814;0.000000;;4
+163;3;4784;I16;;Power of PV 20;power_of_pv_20;0.005780;0.000000;;4
+164;3;4785;I16;;Power of PV 21;power_of_pv_21;0.005747;0.000000;;4
+165;3;4786;I16;;Power of PV 22;power_of_pv_22;0.005714;0.000000;;4
+166;3;4787;I16;;Power of PV 23;power_of_pv_23;0.005682;0.000000;;4
+167;3;4788;I16;;Power of PV 24;power_of_pv_24;0.005650;0.000000;;4
+168;3;4789;I16;;Power of PV 25;power_of_pv_25;0.005618;0.000000;;4
+169;3;4790;I16;;Power of PV 26;power_of_pv_26;0.005587;0.000000;;4
+170;3;4791;I16;;Power of PV 27;power_of_pv_27;0.005556;0.000000;;4
+171;3;4792;I16;;Power of PV 28;power_of_pv_28;0.005525;0.000000;;4
+172;3;4793;I16;;Power of PV 29;power_of_pv_29;0.005495;0.000000;;4
+173;3;4794;I16;;Power of PV 30;power_of_pv_30;0.005464;0.000000;;4
+174;3;4795;I16;;Power of PV 31;power_of_pv_31;0.005435;0.000000;;4
+175;3;4796;I16;;Power of PV 32;power_of_pv_32;0.005405;0.000000;;4
+176;3;4800_0;U8;;Model;MODEL;1.000000;0.000000;;4
+177;3;4801_0;U8;;Model;model;1.000000;0.000000;;4
+178;3;4802_0;U8;;Model;model_1;1.000000;0.000000;;4
+179;3;4803_0;U8;;Model;model_2;1.000000;0.000000;;4
+180;3;4804_0;U8;;Model;model_3;1.000000;0.000000;;4
+181;3;4805_0;U8;;Model;model_4;1.000000;0.000000;;4
+182;3;4806_0;U8;;Model;model_5;1.000000;0.000000;;4
+183;3;4807_0;U8;;Model;model_6;1.000000;0.000000;;4
+184;3;4808_0;U8;;Model;model_7;1.000000;0.000000;;4
+185;3;4809_0;U8;;Model;model_8;1.000000;0.000000;;4
+186;3;4820;U16;;HMI version (ASCII);hmi_version_ascii;1.000000;0.000000;;4
+187;3;4825;U16;;S/N (ASCII);sn_ascii;1.000000;0.000000;;4
+188;3;4840;U16;;Control software 1's version (ASCII);control_software_1s_version_ascii;1.000000;0.000000;;4
+189;3;4845;U16;;Control software 2's version (ASCII);control_software_2s_version_ascii;1.000000;0.000000;;4
+190;3;4850;U16;;Device type;device_type;1.000000;0.000000;;4
+191;3;4851;U16;;MPPT quantity;mppt_quantity;1.000000;0.000000;;4
+192;3;4852;U16;;Protocol type;protocol_type;1.000000;0.000000;;4
+193;3;4853;U16;;Protocol version (ASCII);protocol_version_ascii;1.000000;0.000000;;4
+194;3;4858;U16;;Manufacturer info. (ASCII);manufacturer_info_ascii;1.000000;0.000000;;4
+195;3;4873;U16;;PV branch's quantity;pv_branchs_quantity;1.000000;0.000000;;4
+196;3;4874;U16;;Remaining probation time;remaining_probation_time;1.000000;0.000000;;4
+197;3;6000;U16;;Active power setting;active_power_setting;1.000000;0.000000;;4
+198;3;6001;U16;;ON/OFF setting;onoff_setting;1.000000;0.000000;;4
+199;3;6002;U16;;Power factor;PF;1.000000;0.000000;;4
+200;3;6003;U16;;Reactive power;reactive_power;1.000000;0.000000;;4
+201;3;6004;I16;;Grid control power;grid_control_power;1.000000;0.000000;;4
+202;3;6005;I16;;Battery      charge/discharge power;battery_chargedischarge_power;1.000000;0.000000;;4
+203;3;6020;U16;;Occupied;occupied;1.000000;0.000000;;4
+204;3;6200;I16;;Grid-teid recover time;gridteid_recover_time;1.000000;0.000000;;4
+205;3;6201;U16;;MPPT disturbance step;mppt_disturbance_step;1.000000;0.000000;;4
+206;3;6202;U16;;Active soft start rate;active_soft_start_rate;1.000000;0.000000;;4
+207;3;6203;U16;;Max charge current;max_charge_current;1.000000;0.000000;;4
+208;3;6204;U16;;Max sidcharge current;max_sidcharge_current;1.000000;0.000000;;4
+209;3;6205;U16;;Battery max charge power;battery_max_charge_power;1.000000;0.000000;;4
+210;3;6206;U16;;Battery     max     discharge power;battery_max_discharge_power;1.000000;0.000000;;4

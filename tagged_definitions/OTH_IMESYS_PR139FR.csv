@@ -1,0 +1,67 @@
+﻿modbusRTU;Other;IMESYS;PR139FR;;;;;;;
+1;4;4096;U16;;Phase 1 : phase voltage;U_AC_1;1.0;0.0;mV;4
+2;4;4098;U16;;Phase 2 : phase voltage;U_AC_2;1.0;0.0;mV;4
+3;4;4100;U16;;Phase 3 : phase voltage;U_AC_3;1.0;0.0;mV;4
+4;4;4102;U16;;Phase 1 : current;I_AC_1;1.0;0.0;mA;4
+5;4;4104;U16;;Phase 2 : current;I_AC_2;1.0;0.0;mA;4
+6;4;4106;U16;;Phase 3 : current;I_AC_3;1.0;0.0;mA;4
+7;4;4108;U16;;Neutral current;;1.0;0.0;mA;4
+8;4;4110;U16;;Chained voltage : L1-L2;U_AC_L1L2;1.0;0.0;mV;4
+9;4;4112;U16;;Chained voltage : L2-L3;U_AC_L2L3;1.0;0.0;mV;4
+10;4;4114;U16;;Chained voltage : L3-L1;U_AC_L3L1;1.0;0.0;mV;4
+11;4;4116;U16;;3-phase : active power;P_AC;1.0;0.0;-3;4
+12;4;4118;U16;;3-phase : reactive power;Q_AC;1.0;0.0;-3;4
+13;4;4120;U16;;3-phase : apparent power;S_AC;1.0;0.0;-3;4
+14;4;4122;U16;;3-phase : sign of active power;;1.0;0.0;-6;4
+15;4;4123;U16;;3-phase : sign of reactive power;;1.0;0.0;-6;4
+16;4;4124;U16;;3-phase : positive active energy;;1.0;0.0;-4;4
+17;4;4126;U16;;3-phase : positive reactive energy;;1.0;0.0;-4;4
+18;4;4128;U16;;3-phase : negative active energy;;1.0;0.0;-4;4
+19;4;4130;U16;;3-phase : negative reactive energy;;1.0;0.0;-4;4
+20;4;4132;U16;;3-phase : power factor;PF;1.0;0.0;1/100 signed;4
+21;4;4133;U16;;3-phase : sector of power factor (cap or ind);;1.0;0.0;"0 : PF = 1
+1 : ind
+2 : cap";4
+22;4;4134;U16;;Frequency;FREQ;1.0;0.0;Hz/10;4
+23;4;4135;U16;;3-phase : average power;;1.0;0.0;-3;4
+24;4;4137;U16;;3-phase : peak maximum demand;;1.0;0.0;-3;4
+25;4;4139;U16;;Time counter for average power;;1.0;0.0;minutes;4
+26;4;4140;U16;;Phase 1 : active power;P_AC_1;1.0;0.0;-3;4
+27;4;4142;U16;;Phase 2 : active power;P_AC_2;1.0;0.0;-3;4
+28;4;4144;U16;;Phase 3 : active power;P_AC_3;1.0;0.0;-3;4
+29;4;4146;U16;;Phase 1 : sign of active power;;1.0;0.0;-6;4
+30;4;4147;U16;;Phase 2 : sign of active power;;1.0;0.0;-6;4
+31;4;4148;U16;;Phase 3 : sign of active power;;1.0;0.0;-6;4
+32;4;4149;U16;;Phase 1 : reactive power;Q_AC_1;1.0;0.0;-3;4
+33;4;4151;U16;;Phase 2 : reactive power;Q_AC_2;1.0;0.0;-3;4
+34;4;4153;U16;;Phase 3 : reactive power;Q_AC_3;1.0;0.0;-3;4
+35;4;4155;U16;;Phase 1 : sign of reactive power;;1.0;0.0;-6;4
+36;4;4156;U16;;Phase 2 : sign of reactive power;;1.0;0.0;-6;4
+37;4;4157;U16;;Phase 3 : sign of reactive power;;1.0;0.0;-6;4
+38;4;4158;U16;;Phase 1 : apparent power;S_AC_1;1.0;0.0;-3;4
+39;4;4160;U16;;Phase 2 : apparent power;S_AC_2;1.0;0.0;-3;4
+40;4;4162;U16;;Phase 3 : apparent power;S_AC_3;1.0;0.0;-3;4
+41;4;4164;U16;;Phase 1 : power factor;PF_1;1.0;0.0;1/100 signed;4
+42;4;4165;U16;;Phase 2 : power factor;PF_2;1.0;0.0;1/100 signed;4
+43;4;4166;U16;;Phase 3 : power factor;PF_3;1.0;0.0;1/100 signed;4
+44;4;4167;U16;;Phase 1 : power factor sector;;1.0;0.0;"0 : PF = 1
+1 : ind
+2 : cap";4
+45;4;4168;U16;;Phase 2 : power factor sector;;1.0;0.0;"0 : PF = 1
+1 : ind
+2 : cap";4
+46;4;4169;U16;;Phase 3 : power factor sector;;1.0;0.0;"0 : PF = 1
+1 : ind
+2 : cap";4
+47;4;4170;U16;;Phase 1 : THD V1;;1.0;0.0;1/10 %;4
+48;4;4171;U16;;Phase 2 : THD V2;;1.0;0.0;1/10 %;4
+49;4;4172;U16;;Phase 3 : THD V3;;1.0;0.0;1/10 %;4
+50;4;256;U16;;Write Current transformer ratio (KTA);;1.0;0.0;;4
+51;4;258;U16;;Write Voltage transformer ratio (KTV);;1.0;0.0;;4
+52;4;8192;U16;;Write Standard setup parameters;;1.0;0.0;;4
+53;4;8704;U16;;Write Programming parameters of pulse output (slot 2);;1.0;0.0;;4
+54;4;9216;U16;;"Reset Hour Meter, Maximum Powers, Maximum Voltages, Maximum Currents, Minimum Voltages, Active Partial
+Energy, Reactive Partial Energy";;1.0;0.0;;4
+55;4;9728;U16;;Saving in EEPROM parameters changed by Remote commands;;1.0;0.0;;4
+56;4;9984;U16;;Enable Remote Writing Operation;;1.0;0.0;;4
+57;4;10240;U16;;Load previous setup parameters stored in EEPROM;;1.0;0.0;;4

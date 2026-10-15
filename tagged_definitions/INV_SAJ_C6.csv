@@ -1,0 +1,139 @@
+﻿Modbus;Inverter;SAJ;C6;;;;;;;
+1;3;36608;U16;;Device Type;MODEL;1;0;;1
+2;3;36609;U16;;Subclass Machine Power;;1;0;;1
+3;3;36610;U16;;Comms Protocol Version;;0.001;0;;1
+4;3;36611;STRING;;Serial Number;SERIAL;1;0;;1
+5;3;36621;STRING;;Product Code;;1;0;;1
+6;3;36631;U16;;Display Software Version;;0.001;0;;1
+7;3;36632;U16;;Master Ctrl Software Version;;0.001;0;;1
+8;3;36633;U16;;Slave Ctrl Software Version;;0.001;0;;1
+9;3;36634;U16;;DispBoard Hardware Version;;1;0;;1
+10;3;36635;U16;;CtrlBoard Hardware Version;;1;0;;1
+11;3;36636;U16;;PowerBoard Hardware Version;;1;0;;1
+12;3;24576;STRING;;Inverter Current Time;;1;0;;1
+13;3;24580;U32;;Inverter Total Power Generation;E_TOT;0.01;0;kWh;1
+14;3;24582;U32;;Inverter Yearly Power Generation;;0.01;0;kWh;1
+15;3;24584;U32;;Inverter Monthly Power Generation;;0.01;0;kWh;1
+16;3;24586;U32;;Inverter Daily Power Generation;E_DAY;0.01;0;kWh;1
+17;3;24588;U32;;Inverter Total Operating Hours;;0.1;0;h;1
+18;3;24590;U16;;Inverter Daily Operating Hours;;0.1;0;h;1
+19;3;24591;U16;;Inverter Error Count;;1;0;;1
+20;3;24592;U16;;Historical Error Fault Serial Number;;1;0;;1
+21;3;24593;U16;;Setting Parameters Area Serial Number;;1;0;;1
+22;3;24595;U16;;Inverter Operating Mode;;1;0;;1
+23;3;24596;STRING;;Inverter Error Message (FaultMSG);;1;0;;1
+24;3;24602;U16;;Inverter Countdown Seconds;;1;0;s;1
+25;3;24603;U32;;Cumulative Generation Value;;0.01;0;kWh;1
+26;3;24605;U32;;Inverter Output Active Power;P_AC;0.001;0;kW;1
+27;3;24607;I32;;Inverter Output Reactive Power;Q_AC;1;0;Var;1
+28;3;24609;I16;;Inverter Output Power Factor;PF;0.001;0;;1
+29;3;24610;U16;;L1 Phase Voltage;U_AC_1;0.1;0;V;1
+30;3;24611;U16;;L1 Phase Current;I_AC_1;0.01;0;A;1
+31;3;24612;U16;;L1 Phase Frequency;FREQ_1;0.01;0;Hz;1
+32;3;24613;I16;;L1 Phase DC Component;;1;0;mA;1
+33;3;24614;U16;;L1 Power;;0.001;0;kW;1
+34;3;24615;I16;;L1 Power Factor;PF_1;0.001;0;;1
+35;3;24616;U16;;L2 Phase Voltage;U_AC_2;0.1;0;V;1
+36;3;24617;U16;;L2 Phase Current;I_AC_2;0.01;0;A;1
+37;3;24618;U16;;L2 Phase Frequency;FREQ_2;0.01;0;Hz;1
+38;3;24619;I16;;L2 Phase DC Component;;1;0;mA;1
+39;3;24620;U16;;L2 Power;;0.001;0;kW;1
+40;3;24621;I16;;L2 Power Factor;PF_2;0.001;0;;1
+41;3;24622;U16;;L3 Phase Voltage;U_AC_3;0.1;0;V;1
+42;3;24623;U16;;L3 Phase Current;I_AC_3;0.01;0;A;1
+43;3;24624;U16;;L3 Phase Frequency;FREQ_3;0.01;0;Hz;1
+44;3;24625;I16;;L3 Phase DC Component;;1;0;mA;1
+45;3;24626;U16;;L3 Power;;0.001;0;kW;1
+46;3;24627;I16;;L3 Power Factor;PF_3;0.001;0;;1
+47;3;24628;U16;;Neutral to Ground Voltage;;0.1;0;V;1
+48;3;24629;I16;;Ground Leakage Current (GFCI);;1;0;mA;1
+49;3;24630;U16;;BUS Voltage;U_DC;0.1;0;V;1
+50;3;24631;U16;;BUS Neutral Point Voltage;;0.1;0;V;1
+51;3;24632;I16;;Heatsink Temperature (InvTempC_1);TEMP_INT;0.1;0;C;1
+52;3;24633;I16;;L1 Phase Temperature;;0.1;0;C;1
+53;3;24634;I16;;L2 Phase Temperature;;0.1;0;C;1
+54;3;24635;I16;;L3 Phase Temperature;;0.1;0;C;1
+55;3;24636;I16;;Chamber Temperature;;0.1;0;C;1
+56;3;24637;I16;;Boost Module Temperature 1;TEMP_CELL;0.1;0;C;1
+57;3;24638;I16;;Boost Module Temperature 2;;0.1;0;C;1
+58;3;24639;I16;;Boost Module Temperature 3;;0.1;0;C;1
+59;3;24640;I16;;Boost Module Temperature 4;;0.1;0;C;1
+60;3;24641;U16;;PV1+ ISO;;1;0;kOhm;1
+61;3;24642;U16;;PV2+ ISO;;1;0;kOhm;1
+62;3;24643;U16;;PV3+ ISO;;1;0;kOhm;1
+63;3;24644;U16;;PV ISO;;1;0;kOhm;1
+64;3;24645;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;1
+65;3;24646;U16;;PV1 Current;I_DC_STRING_1;0.01;0;A;1
+66;3;24647;U16;;PV1 Power;;1;0;W;1
+67;3;24648;U16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;1
+68;3;24649;U16;;PV2 Current;I_DC_STRING_2;0.01;0;A;1
+69;3;24650;U16;;PV2 Power;;1;0;W;1
+70;3;24651;U16;;PV3 Voltage;U_DC_STRING_3;0.1;0;V;1
+71;3;24652;U16;;PV3 Current;I_DC_STRING_3;0.01;0;A;1
+72;3;24653;U16;;PV3 Power;;1;0;W;1
+73;3;24654;U16;;PV4 Voltage;U_DC_STRING_4;0.1;0;V;1
+74;3;24655;U16;;PV4 Current;I_DC_STRING_4;0.01;0;A;1
+75;3;24656;U16;;PV4 Power;;1;0;W;1
+76;3;24657;U16;;PV5 Voltage;U_DC_STRING_5;0.1;0;V;1
+77;3;24658;U16;;PV5 Current;I_DC_STRING_5;0.01;0;A;1
+78;3;24659;U16;;PV5 Power;;1;0;W;1
+79;3;24660;U16;;PV6 Voltage;U_DC_STRING_6;0.1;0;V;1
+80;3;24661;U16;;PV6 Current;I_DC_STRING_6;0.01;0;A;1
+81;3;24662;U16;;PV6 Power;;1;0;W;1
+82;3;24663;U16;;PV1 String Current 1;;0.01;0;A;1
+83;3;24664;U16;;PV1 String Current 2;;0.01;0;A;1
+84;3;24665;U16;;PV2 String Current 1;;0.01;0;A;1
+85;3;24666;U16;;PV2 String Current 2;;0.01;0;A;1
+86;3;24667;U16;;PV3 String Current 1;;0.01;0;A;1
+87;3;24668;U16;;PV3 String Current 2;;0.01;0;A;1
+88;3;24669;U16;;PV4 String Current 1;;0.01;0;A;1
+89;3;24670;U16;;PV4 String Current 2;;0.01;0;A;1
+90;3;24671;U16;;PV5 String Current 1;;0.01;0;A;1
+91;3;24672;U16;;PV5 String Current 2;;0.01;0;A;1
+92;3;24673;U16;;PV6 String Current 1;;0.01;0;A;1
+93;3;24674;U16;;PV6 String Current 2;;0.01;0;A;1
+94;3;24675;U16;;PV7 Voltage;U_DC_STRING_7;0.1;0;V;1
+95;3;24676;U16;;PV7 Current;I_DC_STRING_7;0.01;0;A;1
+96;3;24677;U16;;PV7 Power;;1;0;W;1
+97;3;24678;U16;;PV8 Voltage;U_DC_STRING_8;0.1;0;V;1
+98;3;24679;U16;;PV8 Current;I_DC_STRING_8;0.01;0;A;1
+99;3;24680;U16;;PV8 Power;;1;0;W;1
+100;3;24681;U16;;PV9 Voltage;U_DC_STRING_9;0.1;0;V;1
+101;3;24682;U16;;PV9 Current;I_DC_STRING_9;0.01;0;A;1
+102;3;24683;U16;;PV9 Power;;1;0;W;1
+103;3;24684;U16;;PV10 Voltage;U_DC_STRING_10;0.1;0;V;1
+104;3;24685;U16;;PV10 Current;I_DC_STRING_10;0.01;0;A;1
+105;3;24686;U16;;PV10 Power;;1;0;W;1
+106;3;24687;U16;;PV11 Voltage;U_DC_STRING_11;0.1;0;V;1
+107;3;24688;U16;;PV11 Current;I_DC_STRING_11;0.01;0;A;1
+108;3;24689;U16;;PV11 Power;;1;0;W;1
+109;3;24690;U16;;PV12 Voltage;U_DC_STRING_12;0.1;0;V;1
+110;3;24691;U16;;PV12 Current;I_DC_STRING_12;0.01;0;A;1
+111;3;24692;U16;;PV12 Power;;1;0;W;1
+112;3;24693;U16;;PV7 String Current 1;;0.01;0;A;1
+113;3;24694;U16;;PV7 String Current 2;;0.01;0;A;1
+114;3;24695;U16;;PV8 String Current 1;;0.01;0;A;1
+115;3;24696;U16;;PV8 String Current 2;;0.01;0;A;1
+116;3;24697;U16;;PV9 String Current 1;;0.01;0;A;1
+117;3;24698;U16;;PV9 String Current 2;;0.01;0;A;1
+118;3;24699;U16;;PV10 String Current 1;;0.01;0;A;1
+119;3;24700;U16;;PV10 String Current 2;;0.01;0;A;1
+120;3;24701;U16;;PV11 String Current 1;;0.01;0;A;1
+121;3;24702;U16;;PV11 String Current 2;;0.01;0;A;1
+122;3;24703;U16;;PV12 String Current 1;;0.01;0;A;1
+123;3;24704;U16;;PV12 String Current 2;;0.01;0;A;1
+124;3;4104;U16;;Inverter Safety Standard Number;;1;0;;4
+125;3;4105;U16;;Inverter Function Word (FunMask);;1;0;;4
+126;3;4121;U16;;ISO Limit Value;;1;0;kOhm;4
+127;3;4124;U16;;Power Limit Value;CMD_P_AC_SET_ABS;0.1;0;%;1
+128;3;4125;U16;;Reactive Power Compensation Mode;;1;0;;4
+129;3;4126;U16;;Reactive Value Regulation;;0.001;0;;4
+130;3;4151;U16;;Remote On/Off Command;;1;0;;4
+131;3;4166;U16;;PV Input Mode;;1;0;;4
+132;3;32788;U16;;RS485 Baud Rate and Slave Address;UNIT_ID;1;0;;2
+133;3;32789;U16;;Clear Historical Faults;;1;0;;2
+134;3;32795;U16;;Clear Generated Energy;;1;0;;2
+135;3;32799;U16;;Real-time Power Limit (ATE);;0.1;0;%;4
+136;3;32800;STRING;;Device Time Set;;1;0;;2
+137;3;32804;U16;;Reactive Power Direction Mode (ATE);;1;0;;2
+138;3;32805;U16;;Power Factor Regulation Value (ATE);;0.001;0;;2

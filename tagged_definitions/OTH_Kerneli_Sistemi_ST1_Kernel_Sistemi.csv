@@ -1,0 +1,118 @@
+﻿modbusRTU;String Combiner;Kernel Sistemi;ST1;;;;;;;
+1;4;30001;U16;;Inputs;;1;0;;4
+2;4;30002;U16;;Inst Curr Str_01 (mA [0...30000]);;1;0;mA;4
+3;4;30003;U16;;Inst Curr Str_02 (mA [0...30000]);;1;0;mA;4
+4;4;30004;U16;;Inst Curr Str_03 (mA [0...30000]);;1;0;mA;4
+5;4;30005;U16;;Inst Curr Str_04 (mA [0...30000]);;1;0;mA;4
+6;4;30006;U16;;Inst Curr Str_05 (mA [0...30000]);;1;0;mA;4
+7;4;30007;U16;;Inst Curr Str_06 (mA [0...30000]);;1;0;mA;4
+8;4;30008;U16;;Inst Curr Str_07 (mA [0...30000]);;1;0;mA;4
+9;4;30009;U16;;Inst Curr Str_08 (mA [0...30000]);;1;0;mA;4
+10;4;30010;U16;;Inst Curr Str_09 (mA [0...30000]);;1;0;mA;4
+11;4;30011;U16;;Inst Curr Str_10 (mA [0...30000]);;1;0;mA;4
+12;4;30012;U16;;Inst Curr Str_11 (mA [0...30000]);;1;0;mA;4
+13;4;30013;U16;;Inst Curr Str_12 (mA [0...30000]);;1;0;mA;4
+14;4;30014;U16;;Inst Curr Str_13 (mA [0...30000]);;1;0;mA;4
+15;4;30015;U16;;Inst Curr Str_14 (mA [0...30000]);;1;0;mA;4
+16;4;30016;U16;;Inst Curr Str_15 (mA [0...30000]);;1;0;mA;4
+17;4;30017;U16;;Inst Curr Str_16 (mA [0...30000]);;1;0;mA;4
+18;4;30018;U16;;Inst Curr Str_17 (mA [0...30000]);;1;0;mA;4
+19;4;30019;U16;;Inst Curr Str_18 (mA [0...30000]);;1;0;mA;4
+20;4;30020;U16;;Inst Curr Str_19 (mA [0...30000]);;1;0;mA;4
+21;4;30021;U16;;Inst Curr Str_20 (mA [0...30000]);;1;0;mA;4
+22;4;30022;U16;;Inst Curr Str_21 (mA [0...30000]);;1;0;mA;4
+23;4;30023;U16;;Inst Curr Str_22 (mA [0...30000]);;1;0;mA;4
+24;4;30024;U16;;Inst Curr Str_23 (mA [0...30000]);;1;0;mA;4
+25;4;30025;U16;;Inst Curr Str_24 (mA [0...30000]);;1;0;mA;4
+26;4;30040;U16;;Inst V_1 (V [0...1000]);;1;0;V;4
+27;4;30042;U16;;Aux 1 (0...10V) [0...1000];;1;0;V;4
+28;4;30043;U16;;Aux 2 (0...20mA) [0...1000];;1;0;mA;4
+29;4;30044;U16;;Inst T_1 (C [0...100]);;1;0;C;4
+30;4;30045;I16;;Inst T_2 (C [-22,0...+83,0]);;1;0;C;4
+31;4;30046;I16;;Inst T_3 (C [-22,0...+83,0]);;1;0;C;4
+32;4;30047;U16;;Sum of all currents (A);I_AC;1;0;A;4
+33;4;30048;U16;;Power (W);P_AC;1;0;W;4
+34;4;30052;U16;;RMS Curr Str_01 (average value on last 6 seconds);;1;0;;4
+35;4;30053;U16;;RMS Curr Str_02 (average value on last 6 seconds);;1;0;;4
+36;4;30054;U16;;RMS Curr Str_03 (average value on last 6 seconds);;1;0;;4
+37;4;30055;U16;;RMS Curr Str_04 (average value on last 6 seconds);;1;0;;4
+38;4;30056;U16;;RMS Curr Str_05 (average value on last 6 seconds);;1;0;;4
+39;4;30057;U16;;RMS Curr Str_06 (average value on last 6 seconds);;1;0;;4
+40;4;30058;U16;;RMS Curr Str_07 (average value on last 6 seconds);;1;0;;4
+41;4;30059;U16;;RMS Curr Str_08 (average value on last 6 seconds);;1;0;;4
+42;4;30060;U16;;RMS Curr Str_09 (average value on last 6 seconds);;1;0;;4
+43;4;30061;U16;;RMS Curr Str_10 (average value on last 6 seconds);;1;0;;4
+44;4;30062;U16;;RMS Curr Str_11 (average value on last 6 seconds);;1;0;;4
+45;4;30063;U16;;RMS Curr Str_12 (average value on last 6 seconds);;1;0;;4
+46;4;30064;U16;;RMS Curr Str_13 (average value on last 6 seconds);;1;0;;4
+47;4;30065;U16;;RMS Curr Str_14 (average value on last 6 seconds);;1;0;;4
+48;4;30066;U16;;RMS Curr Str_15 (average value on last 6 seconds);;1;0;;4
+49;4;30067;U16;;RMS Curr Str_16 (average value on last 6 seconds);;1;0;;4
+50;4;30068;U16;;RMS Curr Str_17 (average value on last 6 seconds);;1;0;;4
+51;4;30069;U16;;RMS Curr Str_18 (average value on last 6 seconds);;1;0;;4
+52;4;30070;U16;;RMS Curr Str_19 (average value on last 6 seconds);;1;0;;4
+53;4;30071;U16;;RMS Curr Str_20 (average value on last 6 seconds);;1;0;;4
+54;4;30072;U16;;RMS Curr Str_21 (average value on last 6 seconds);;1;0;;4
+55;4;30073;U16;;RMS Curr Str_22 (average value on last 6 seconds);;1;0;;4
+56;4;30074;U16;;RMS Curr Str_23 (average value on last 6 seconds);;1;0;;4
+57;4;30075;U16;;RMS Curr Str_24 (average value on last 6 seconds);;1;0;;4
+58;3;40002;U16;;Offset Curr Str_01;;1;0;;4
+59;3;40003;U16;;Offset Curr Str_02;;1;0;;4
+60;3;40004;U16;;Offset Curr Str_03;;1;0;;4
+61;3;40005;U16;;Offset Curr Str_04;;1;0;;4
+62;3;40006;U16;;Offset Curr Str_05;;1;0;;4
+63;3;40007;U16;;Offset Curr Str_06;;1;0;;4
+64;3;40008;U16;;Offset Curr Str_07;;1;0;;4
+65;3;40009;U16;;Offset Curr Str_08;;1;0;;4
+66;3;40010;U16;;Offset Curr Str_09;;1;0;;4
+67;3;40011;U16;;Offset Curr Str_10;;1;0;;4
+68;3;40012;U16;;Offset Curr Str_11;;1;0;;4
+69;3;40013;U16;;Offset Curr Str_12;;1;0;;4
+70;3;40014;U16;;Offset Curr Str_13;;1;0;;4
+71;3;40015;U16;;Offset Curr Str_14;;1;0;;4
+72;3;40016;U16;;Offset Curr Str_15;;1;0;;4
+73;3;40017;U16;;Offset Curr Str_16;;1;0;;4
+74;3;40018;U16;;Offset Curr Str_17;;1;0;;4
+75;3;40019;U16;;Offset Curr Str_18;;1;0;;4
+76;3;40020;U16;;Offset Curr Str_19;;1;0;;4
+77;3;40021;U16;;Offset Curr Str_20;;1;0;;4
+78;3;40022;U16;;Offset Curr Str_21;;1;0;;4
+79;3;40023;U16;;Offset Curr Str_22;;1;0;;4
+80;3;40024;U16;;Offset Curr Str_23;;1;0;;4
+81;3;40025;U16;;Offset Curr Str_24;;1;0;;4
+82;3;40040;U16;;Offset V_1;;1;0;;4
+83;3;40042;U16;;Offset Aux_1;;1;0;;4
+84;3;40043;U16;;Offset Aux_2;;1;0;;4
+85;3;40044;U16;;Offset T_1;;1;0;;4
+86;3;40045;U16;;Offset T_2;;1;0;;4
+87;3;40046;U16;;Offset T_3;;1;0;;4
+88;3;40052;U16;;Gain Curr Str_1;;0.001;0;;4
+89;3;40053;U16;;Gain Curr Str_2;;0.001;0;;4
+90;3;40054;U16;;Gain Curr Str_3;;0.001;0;;4
+91;3;40055;U16;;Gain Curr Str_4;;0.001;0;;4
+92;3;40056;U16;;Gain Curr Str_5;;0.001;0;;4
+93;3;40057;U16;;Gain Curr Str_6;;0.001;0;;4
+94;3;40058;U16;;Gain Curr Str_7;;0.001;0;;4
+95;3;40059;U16;;Gain Curr Str_8;;0.001;0;;4
+96;3;40060;U16;;Gain Curr Str_9;;0.001;0;;4
+97;3;40061;U16;;Gain Curr Str_10;;0.001;0;;4
+98;3;40062;U16;;Gain Curr Str_11;;0.001;0;;4
+99;3;40063;U16;;Gain Curr Str_12;;0.001;0;;4
+100;3;40064;U16;;Gain Curr Str_13;;0.001;0;;4
+101;3;40065;U16;;Gain Curr Str_14;;0.001;0;;4
+102;3;40066;U16;;Gain Curr Str_15;;0.001;0;;4
+103;3;40067;U16;;Gain Curr Str_16;;0.001;0;;4
+104;3;40068;U16;;Gain Curr Str_17;;0.001;0;;4
+105;3;40069;U16;;Gain Curr Str_18;;0.001;0;;4
+106;3;40071;U16;;Gain Curr Str_19;;0.001;0;;4
+107;3;40072;U16;;Gain Curr Str_20;;0.001;0;;4
+108;3;40073;U16;;Gain Curr Str_21;;0.001;0;;4
+109;3;40074;U16;;Gain Curr Str_22;;0.001;0;;4
+110;3;40075;U16;;Gain Curr Str_23;;0.001;0;;4
+111;3;40076;U16;;Gain Curr Str_24;;0.001;0;;4
+112;3;40090;U16;;Gain V_1;;1;0;;4
+113;3;40092;U16;;Gain Aux_1;;1;0;;4
+114;3;40093;U16;;Gain Aux_2;;1;0;;4
+115;3;40094;U16;;Gain T_1;;1;0;;4
+116;3;40095;U16;;Gain T_2;;1;0;;4
+117;3;40096;U16;;Gain T_3;;1;0;;4

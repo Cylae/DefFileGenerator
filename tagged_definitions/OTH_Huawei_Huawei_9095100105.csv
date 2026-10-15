@@ -1,0 +1,74 @@
+﻿modbusRTU;Other;Huawei;Huawei_9095100105;;;;;;;
+1;4;30000;U16;;1  Model Name;MODEL;1.0;0.0;-;4
+2;4;30015;U16;;2  SN;SERIAL;1.0;0.0;-;4
+3;4;30025;U16;;3  PN;;1.0;0.0;-;4
+4;4;30070;U16;;4  Model ID;;1.0;0.0;-;4
+5;4;30071;U16;;5  String Number;;1.0;0.0;-;4
+6;4;30072;U16;;6  MPPT Number;;1.0;0.0;-;4
+7;4;30073;U16;;7  Rated power (Pn);P_RATED;1.0;0.0;kW;4
+8;4;30075;U16;;8  Maximum active power (Pmax);P_AC;1.0;0.0;kW;4
+9;4;30077;U16;;9  Maximum apparent power (Smax);S_AC;1.0;0.0;kVA;4
+10;4;30079;U16;;10  Maximum reactive power (Qmax, fed to the power grid);Q_AC;1.0;0.0;kVar;4
+11;4;30081;U16;;11  Maximum reactive power (Qmax, absorbed from the power grid);;1.0;0.0;kVar;4
+12;4;32000;U16;;12  Standalone teleindication;;1.0;0.0;-;4
+13;4;32002;U16;;13  Operating status;;1.0;0.0;-;8
+14;4;32008;U16;;14  Alarm 1;;1.0;0.0;-;4
+15;4;32009;U16;;15  Alarm 2;;1.0;0.0;-;4
+16;4;32010;U16;;16  Alarm 3;;1.0;0.0;-;4
+17;4;32016;U16;;17  PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;4
+18;4;32017;U16;;18  PV1 Current;I_DC_STRING_1;1.0;0.0;A;4
+19;4;32018;U16;;19  PV2 Voltage;U_DC_STRING_2;1.0;0.0;V;4
+20;4;32019;U16;;20  PV2 Current;I_DC_STRING_2;1.0;0.0;A;4
+21;4;32020;U16;;21  PV3 Voltage;U_DC_STRING_3;1.0;0.0;V;4
+22;4;32021;U16;;22  PV3 Current;I_DC_STRING_3;1.0;0.0;A;4
+23;4;32022;U16;;23  PV4 Voltage;U_DC_STRING_4;1.0;0.0;V;4
+24;4;32023;U16;;24  PV4 Current;I_DC_STRING_4;1.0;0.0;A;4
+25;4;32024;U16;;25  PV5 Voltage;U_DC_STRING_5;1.0;0.0;V;4
+26;4;32025;U16;;26  PV5 Current;I_DC_STRING_5;1.0;0.0;A;4
+27;4;32026;U16;;27  PV6 Voltage;U_DC_STRING_6;1.0;0.0;V;4
+28;4;32027;U16;;28  PV6 Current;I_DC_STRING_6;1.0;0.0;A;4
+29;4;32028;U16;;29  PV7 Voltage;U_DC_STRING_7;1.0;0.0;V;4
+30;4;32029;U16;;30  PV7 Current;I_DC_STRING_7;1.0;0.0;A;4
+31;4;32030;U16;;31  PV8 Voltage;U_DC_STRING_8;1.0;0.0;V;4
+32;4;32031;U16;;32  PV8 Current;I_DC_STRING_8;1.0;0.0;A;4
+33;4;32032;U16;;33  PV9 Voltage;U_DC_STRING_9;1.0;0.0;V;4
+34;4;32033;U16;;34  PV9 Current;I_DC_STRING_9;1.0;0.0;A;4
+35;4;32034;U16;;35  PV10 Voltage;U_DC_STRING_10;1.0;0.0;V;4
+36;4;32035;U16;;36  PV10 Current;I_DC_STRING_10;1.0;0.0;A;4
+37;4;32036;U16;;37  PV11 Voltage;U_DC_STRING_11;1.0;0.0;V;4
+38;4;32037;U16;;38  PV11 Current;I_DC_STRING_11;1.0;0.0;A;4
+39;4;32038;U16;;39  PV12 Voltage;U_DC_STRING_12;1.0;0.0;V;4
+40;4;32039;U16;;40  PV12 Current;I_DC_STRING_12;1.0;0.0;A;4
+41;4;32064;U16;;41  Input power;;1.0;0.0;kW;4
+42;4;32066;U16;;42  Uab;;1.0;0.0;V;4
+43;4;32067;U16;;43  Ubc;;1.0;0.0;V;4
+44;4;32068;U16;;44  Uca;;1.0;0.0;V;4
+45;4;32069;U16;;45  Ua;;1.0;0.0;V;4
+46;4;32070;U16;;46  Ub;;1.0;0.0;V;4
+47;4;32071;U16;;47  Uc;;1.0;0.0;V;4
+48;4;32072;U16;;48  Ia;;1.0;0.0;A;4
+49;4;32074;U16;;49  Ib;;1.0;0.0;A;4
+50;4;32076;U16;;50  Ic;;1.0;0.0;A;4
+51;4;32078;U16;;51  Active power peak of current day;;1.0;0.0;kW;4
+52;4;32080;U16;;52  Active power;;1.0;0.0;kW;4
+53;4;32082;U16;;53  Reactive power;;1.0;0.0;kVar;4
+54;4;32084;U16;;54  Power factor;PF;1.0;0.0;-;4
+55;4;32085;U16;;55  Frequency;FREQ;1.0;0.0;Hz;4
+56;4;32086;U16;;56  Inverter efficiency;;1.0;0.0;%;4
+57;4;32087;U16;;57  Cabinet temperature;TEMP_INT;1.0;0.0;?;4
+58;4;32088;U16;;58  Insulation resistance;R_ISO;1.0;0.0;M?;4
+59;4;32089;U16;;59  Device status;;1.0;0.0;-;8
+60;4;32090;U16;;60  Fault code;;1.0;0.0;-;4
+61;4;32091;U16;;61  Startup time;;1.0;0.0;s;4
+62;4;32093;U16;;62  Shutdown time;;1.0;0.0;s;4
+63;4;32106;U16;;63  Total energy yield;E_TOT;1.0;0.0;kWh;4
+64;4;32114;U16;;64  Energy yield of current day;;1.0;0.0;kWh;4
+65;4;32116;U16;;65  Energy yield of current month;;1.0;0.0;kWh;4
+66;4;32118;U16;;66  Energy yield of current year;;1.0;0.0;kWh;4
+67;4;40000;U16;;67  System Time;;1.0;0.0;s;4
+68;4;40120;U16;;68  Active power derating;;1.0;0.0;kW;4
+69;4;40122;U16;;69  Reactive power compensation (PF);;1.0;0.0;-;4
+70;4;40123;U16;;70  Reactive power compensation(Q/S);;1.0;0.0;-;4
+71;4;40125;U16;;71  Active power derating percent(0.1%);;1.0;0.0;%;4
+72;4;40200;U16;;72  Power on;CMD_ON;1.0;0.0;-;1
+73;4;40201;U16;;73  Power off;CMD_OFF;1.0;0.0;-;1

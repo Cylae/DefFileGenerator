@@ -1,0 +1,15 @@
+﻿ModbusRTU;Meter;Socomec;Diris I30;;;;;;;
+1;3;19840_0;U8;;Load Status_Hi;;1.0;0.0;4;0
+2;3;19840_1;U8;;Load Status_Lo;;1.0;0.0;4;0
+3;3;18442;U32;;Frequency;FREQ;0.001;0.0;Hz;4
+4;3;18458;U32;;Current I1;;0.001;0.0;A;4
+5;3;18460;U32;;Current I2;;0.001;0.0;A;4
+6;3;18462;U32;;Current I3;;0.001;0.0;A;4
+7;3;18476;I32;;Total active power;P_AC;1.0;0.0;W;4
+8;3;18478;I32;;Total reactive power;Q_AC;1.0;0.0;var;4
+9;3;18486;I16;;Total power factor;PF;0.001;0.0;;4
+10;3;19841;U32;;Total Positive active Energy Ea+;E_TOT;0.001;0.0;Wh;4
+11;3;19844;U32;;Total Negative active Energy Ea-;;0.001;0.0;Wh;4
+12;3;19847;U32;;Total Positive reactive Energy Er+;;0.001;0.0;varh;4
+13;3;19850;U32;;Total Negative reactive Energy Er-;;0.001;0.0;varh;4
+14;3;19853;U32;;Total Apparent Energy Eap;;0.001;0.0;VAh;4

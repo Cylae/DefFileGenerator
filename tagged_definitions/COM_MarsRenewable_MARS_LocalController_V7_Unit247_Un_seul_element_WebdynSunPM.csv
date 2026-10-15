@@ -1,0 +1,6 @@
+﻿Modbus;Logger;MarsRenewable;LocalController V7.0 Unit247 - Single element;0;;;;;;
+1;4;0;U16;;LC - Measurement point version number;;1;0;;4
+2;4;1;U16;;LC - PCS Number;;1;0;;4
+3;4;2;U16;;LC - Bank Number;;1;0;;4
+4;4;3;U16;;LC - Rack Number;;1;0;;4
+5;4;4;U16;;LC - Meter Number;;1;0;;4

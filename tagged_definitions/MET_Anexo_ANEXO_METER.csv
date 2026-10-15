@@ -1,0 +1,15 @@
+﻿modbusRTU;Meter;Anexo;ANEXO_METER;;;;;;;
+1;4;0;U16;;0.0.1 modbus adres (modbus adres  1);;1.0;0.0;;4
+2;4;2;U16;;32.25 Voltage L1 (230V);U_AC_1;1.0;0.0;V;4
+3;4;4;U16;;52.25 Voltage L2 (230V);U_AC_2;1.0;0.0;V;4
+4;4;6;U16;;72.25 Voltage L3 (230V);U_AC_3;1.0;0.0;V;4
+5;4;8;U16;;31.25 Stroom L1 (25A);;1.0;0.0;A;4
+6;4;10;U16;;51.25 Stroom L2 (25A);;1.0;0.0;A;4
+7;4;12;U16;;71.25 Stroom L3 (25A);;1.0;0.0;A;4
+8;4;14;U16;;1.25 Werkelijk vermogen (17 kW);;1.0;0.0;kW;4
+9;4;16;U16;;3.25 Blind vermogen (0 kVAR);;1.0;0.0;KVAR;4
+10;4;18;U16;;9.25 Schijnbaar vermogen (17 kW);;1.0;0.0;Kw;4
+11;4;20;U16;;14.25 Frequentie (50.00 Hz);;1.0;0.0;Hz;4
+12;4;22;U16;;13.25 Arbeidsfactor (1.00);;1.0;0.0;;4
+13;4;24;U16;;1.8.0 meterstand leveren cumulatief (70000 kWh);;1.0;0.0;kWh;4
+14;4;26;U16;;2.8.0 meterstand terugleveren cumulatief (125000 kWh);;1.0;0.0;kWh;4

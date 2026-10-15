@@ -1,0 +1,329 @@
+﻿ModbusRTU;Inverter;Huawei;8KTL,10KTL,12KTL,14KTL,18KTL,20KTL;;;;;;;
+1;3;32001;U16;;1 Rated inverter power;;1.0;0.0;-;4
+2;3;32002;U16;;2 Output mode;;1.0;0.0;-;4
+3;3;32003_10;STRING;;3 ESN;SERIAL;1.0;0.0;-;4
+4;3;32262;I16;;4 PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
+5;3;32263;I16;;5 PV1 Current;I_DC_STRING_1;0.01;0.0;A;4
+6;3;32264;I16;;6 PV2 Voltage;U_DC_STRING_2;0.1;0.0;V;4
+7;3;32265;I16;;7 PV2 Current;I_DC_STRING_2;0.01;0.0;A;4
+8;3;32266;I16;;8 PV3 Voltage;U_DC_STRING_3;0.1;0.0;V;4
+9;3;32267;I16;;9 PV3 Current;I_DC_STRING_3;0.01;0.0;A;4
+10;3;32268;I16;;10 PV4 Voltage;U_DC_STRING_4;0.1;0.0;V;4
+11;3;32269;I16;;11 PV4 Current;I_DC_STRING_4;0.01;0.0;A;4
+12;3;32270;I16;;12 PV5 Voltage;U_DC_STRING_5;0.1;0.0;V;4
+13;3;32271;I16;;13 PV5 Current;I_DC_STRING_5;0.01;0.0;A;4
+14;3;32272;I16;;14 PV6 Voltage;U_DC_STRING_6;0.1;0.0;V;4
+15;3;32273;I16;;15 PV6 Current;I_DC_STRING_6;0.01;0.0;A;4
+16;3;32274;U16;;16 Uab;;0.01;0.0;V;4
+17;3;32275;U16;;17 Ubc;;0.01;0.0;V;4
+18;3;32276;U16;;18 Uca;;0.01;0.0;V;4
+19;3;32277;U16;;19 Ua;;0.01;0.0;V;4
+20;3;32278;U16;;20 Ub;;0.01;0.0;V;4
+21;3;32279;U16;;21 Uc;;0.01;0.0;V;4
+22;3;32280;U16;;22 Ia;;0.01;0.0;A;4
+23;3;32281;U16;;23 Ib;;0.01;0.0;A;4
+24;3;32282;U16;;24 Ic;;0.01;0.0;A;4
+25;3;32283;U16;;25 Frequency;FREQ;0.01;0.0;Hz;4
+26;3;32284;I16;;26 Power factor;PF;0.001;0.0;-;4
+27;3;32285;U16;;27 Inverter efficiency;;0.01;0.0;%;4
+28;3;32286;I16;;28 Cabinet temperature;TEMP_INT;0.1;0.0;C;4
+29;3;32287;U16;;29 Inverter status;;1.0;0.0;;8
+30;3;32288;I32;;30 Active power peak of current day;P_AC;0.001;0.0;kW;4
+31;3;32290;I32;;31 Active power;;0.001;0.0;kW;4
+32;3;32292;I32;;32 Reactive power;Q_AC;0.001;0.0;kVar;4
+33;3;32294;U32;;33 Total input power;;0.001;0.0;kW;4
+34;3;32298;U32;;34 E-Hour;;0.01;0.0;kWh;4
+35;3;32300;U32;;35 E-Day;;0.01;0.0;kWh;4
+36;3;32302;U32;;36 E-Month;;0.01;0.0;kWh;4
+37;3;32306;U32;;37 E-Total;;0.01;0.0;kWh;4
+38;3;32320;U16;;38 Locking;;1.0;0.0;-;4
+39;3;32321_0_1;BITS;;39 Zero voltage ride through protection;;1.0;0.0;-;4
+40;3;32322_0_1;BITS;;40 LVRT protection;;1.0;0.0;-;4
+41;3;32323_0_1;BITS;;41 Anti-islanding;;1.0;0.0;-;4
+42;3;32324_0_1;BITS;;BitOffset:4;;1.0;0.0;-;4
+43;3;32325_0_1;BITS;;BitOffset:5;;1.0;0.0;-;4
+44;3;32326_0_1;BITS;;BitOffset:6;;1.0;0.0;-;4
+45;3;32327_0_1;BITS;;BitOffset:7;;1.0;0.0;-;4
+46;3;32328_0_1;BITS;;BitOffset:8;;1.0;0.0;-;4
+47;3;32329;U16;;42 Inverter on-grid;;1.0;0.0;-;4
+48;3;32330;U16;;43 Insulation resistance;R_ISO;0.001;0.0;M?;4
+49;3;32325;U32;;44 Inverter start time;;1.0;0.0;Sec;4
+50;3;32327;U32;;45 Inverter shutdown time;;1.0;0.0;Sec;4
+51;3;33022;U32;;46 MPPT1 total input power;P_DC_MPPT_1;0.001;0.0;kW;4
+52;3;33024;U32;;47 MPPT2 total input power;P_DC_MPPT_2;0.001;0.0;kW;4
+53;3;33026;U32;;48 MPPT3 total input power;P_DC_MPPT_3;0.001;0.0;kW;4
+54;3;40000;U32;;49 Date and time;;1.0;0.0;-;4
+55;3;40117;U16;;50 Reactive power compensation;;1.0;0.0;-;4
+56;3;40118;U16;;51 Active power control;;1.0;0.0;-;4
+57;3;40119;U16;;52 Active power derating (1%);;1.0;0.0;%;4
+58;3;40120;U16;;53 Active power derating (fixed value);;0.1;0.0;kW;4
+59;3;40121;U16;;54 Active power deration gradient;;0.1;0.0;%/s;4
+60;3;40122;U16;;55 Reactive power compensation (PF);;0.001;0.0;-;4
+61;3;40123;U16;;56 Reactive power compensation(Q/S);;0.001;0.0;-;4
+62;3;40124;I16;;57 Reactive power adjustment time;;1.0;0.0;Sec;4
+63;3;40125;I16;;58 Active power derating (0.1%);;0.1;0.0;%;4
+64;3;40133;U16;;59 cos(Phi)-P/Pn characteristic curve;;1.0;0.0;-;4
+65;3;40134;U16;;P/Pn value of cos?-P/Pn curve point 1;;0.1;0.0;%;4
+66;3;40135;U16;;cos? value of cos?-P/Pn curve point 1;;0.001;0.0;-;4
+67;3;40136;U16;;P/Pn value of cos?-P/Pn curve point 2;;0.1;0.0;%;4
+68;3;40137;U16;;cos? value of cos?-P/Pn curve point 2;;0.001;0.0;-;4
+69;3;40138;U16;;P/Pn value of cos?-P/Pn curve point 3;;0.1;0.0;%;4
+70;3;40139;U16;;cos? value of cos?-P/Pn curve point 3;;0.001;0.0;-;4
+71;3;40140;U16;;P/Pn value of cos?-P/Pn curve point 4;;0.1;0.0;%;4
+72;3;40141;U16;;cos? value of cos?-P/Pn curve point 4;;0.001;0.0;-;4
+73;3;40142;U16;;P/Pn value of cos?-P/Pn curve point 5;;0.1;0.0;%;4
+74;3;40143;U16;;cos? value of cos?-P/Pn curve point 5;;0.001;0.0;-;4
+75;3;40144;U16;;P/Pn value of cos?-P/Pn curve point 6;;0.1;0.0;%;4
+76;3;40145;U16;;cos? value of cos?-P/Pn curve point 6;;0.001;0.0;-;4
+77;3;40146;U16;;P/Pn value of cos?-P/Pn curve point 7;;0.1;0.0;%;4
+78;3;40147;U16;;cos? value of cos?-P/Pn curve point 7;;0.001;0.0;-;4
+79;3;40148;U16;;P/Pn value of cos?-P/Pn curve point 8;;0.1;0.0;%;4
+80;3;40149;U16;;cos? value of cos?-P/Pn curve point 8;;0.001;0.0;-;4
+81;3;40150;U16;;P/Pn value of cos?-P/Pn curve point 9;;0.1;0.0;%;4
+82;3;40151;U16;;cos? value of cos?-P/Pn curve point 9;;0.001;0.0;-;4
+83;3;40152;U16;;P/Pn value of cos?-P/Pn curve point 10;;0.1;0.0;%;4
+84;3;40153;U16;;cos? value of cos?-P/Pn curve point 10;;0.001;0.0;-;4
+85;3;40154;U16;;60 Q-U characteristic curve;;1.0;0.0;-;4
+86;3;40155;I16;;U/Un value of Q-U curve point 1;;0.1;0.0;%;4
+87;3;40156;I16;;Q/S value of Q-U curve point 1;;0.001;0.0;-;4
+88;3;40157;I16;;U/Un value of Q-U curve point 2;;0.1;0.0;%;4
+89;3;40158;I16;;Q/S value of Q-U curve point 2;;0.001;0.0;-;4
+90;3;40159;I16;;U/Un value of Q-U curve point 3;;0.1;0.0;%;4
+91;3;40160;I16;;Q/S value of Q-U curve point 3;;0.001;0.0;-;4
+92;3;40161;I16;;U/Un value of Q-U curve point 4;;0.1;0.0;%;4
+93;3;40162;I16;;Q/S value of Q-U curve point 4;;0.001;0.0;-;4
+94;3;40163;I16;;U/Un value of Q-U curve point 5;;0.1;0.0;%;4
+95;3;40164;I16;;Q/S value of Q-U curve point 5;;0.001;0.0;-;4
+96;3;40165;I16;;U/Un value of Q-U curve point 6;;0.1;0.0;%;4
+97;3;40166;I16;;Q/S value of Q-U curve point 6;;0.001;0.0;-;4
+98;3;40167;I16;;U/Un value of Q-U curve point 7;;0.1;0.0;%;4
+99;3;40168;I16;;Q/S value of Q-U curve point 7;;0.001;0.0;-;4
+100;3;40169;I16;;U/Un value of Q-U curve point 8;;0.1;0.0;%;4
+101;3;40170;I16;;Q/S value of Q-U curve point 8;;0.001;0.0;-;4
+102;3;40171;I16;;U/Un value of Q-U curve point 9;;0.1;0.0;%;4
+103;3;40172;I16;;Q/S value of Q-U curve point 9;;0.001;0.0;-;4
+104;3;40173;I16;;U/Un value of Q-U curve point 10;;0.1;0.0;%;4
+105;3;40174;I16;;Q/S value of Q-U curve point 10;;0.001;0.0;-;4
+106;3;40200;U16;;61 Power on;CMD_ON;1.0;0.0;-;1
+107;3;40201;U16;;62 Power off;CMD_OFF;1.0;0.0;-;1
+108;3;40232;U16;;63 Active power derating percent;;1.0;0.0;%;4
+109;3;40234;U16;;64 Active power deration percent;;1.0;0.0;%;4
+110;3;40235;U16;;65 Active power deration fixed value;;0.1;0.0;kW;4
+111;3;40236;I16;;66 Reactive power compensation Q/S;;0.001;0.0;-;4
+112;3;40237;I16;;67 Reactive power compensation factor instruction;;0.001;0.0;-;4
+113;3;42045;U32;;68 Level-1 OV prot.time;;1.0;0.0;ms;4
+114;3;42047;U32;;69 Level-2 OV prot.time;;1.0;0.0;ms;4
+115;3;42049;U32;;70 Level-1 UV prot.time;;1.0;0.0;ms;4
+116;3;42051;U32;;71 Level-2 UV prot.time;;1.0;0.0;ms;4
+117;3;42053;U32;;72 Level-1 OF prot.time;;1.0;0.0;ms;4
+118;3;42055;U32;;73 Level-2 OF prot.time;;1.0;0.0;ms;4
+119;3;42057;U32;;74 Level-1 UF prot.time;;1.0;0.0;ms;4
+120;3;42059;U32;;75 Level-2 UF prot.time;;1.0;0.0;ms;4
+121;3;42061;U32;;76 10-min OV protec.time;;1.0;0.0;ms;4
+122;3;42063;U16;;77 Level-1 OV prot.;;0.01;0.0;V;4
+123;3;42064;U16;;78 Level-2 OV prot.;;0.01;0.0;V;4
+124;3;42065;U16;;79 Level-1 UV prot.;;0.01;0.0;V;4
+125;3;42066;U16;;80 Level-2 UV prot.;;0.01;0.0;V;4
+126;3;42067;U16;;81 Level-1 OF prot.;;0.01;0.0;Hz;4
+127;3;42068;U16;;82 Level-2 OF prot.;;0.01;0.0;Hz;4
+128;3;42069;U16;;83 Level-1 UF prot.;;0.01;0.0;Hz;4
+129;3;42070;U16;;84 Level-2 UF prot.;;0.01;0.0;Hz;4
+130;3;42071;U16;;85 10-min OV protec.;;0.01;0.0;V;4
+131;3;42072;U16;;86 Grid code;;1.0;0.0;-;4
+132;3;42074;U16;;87 Insulation res. protec.;;0.001;0.0;M?;4
+133;3;42075;U16;;88 Unbal.volt. protec.;;0.1;0.0;%;4
+134;3;42083;U16;;89 Soft startup time after grid failure;;1.0;0.0;Sec;4
+135;3;42084;U16;;90 LVRT;;1.0;0.0;-;4
+136;3;42085;U16;;91 Soft start time;;1.0;0.0;Sec;4
+137;3;42086;U16;;92 Feed grid recovery time;;1.0;0.0;Sec;4
+138;3;42087;U16;;93 Islanding detection;;1.0;0.0;-;4
+139;3;42089;U16;;94 LVRT reactive power compensation factor;;0.1;0.0;-;4
+140;3;42090;U16;;95 Reactive power compensation (cos?-P) trigger voltage;;1.0;0.0;%;4
+141;3;42091;U16;;96 Reactive power compensation (cos?-P) exit voltage;;1.0;0.0;%;4
+142;3;42092;U16;;97 Overfrequency deration trigger threshold;;0.01;0.0;Hz;4
+143;3;42093;U16;;98 Overfrequency deration exit threshold;;0.01;0.0;Hz;4
+144;3;42094;U16;;99 Overfrequency deration recoverygradient;;1.0;0.0;%/min;4
+145;3;42095;U16;;100 Q-U characteristic curve mode;;1.0;0.0;-;4
+146;3;42096;U16;;101 Q-U dispatch trigger power percent;;1.0;0.0;%;4
+147;3;42097;U16;;102 MPPT setting;;1.0;0.0;-;4
+148;3;42101;U16;;103 MPPT scanning interval;;1.0;0.0;Mins;4
+149;3;42174;U16;;104 Shutdown at 0% power limit;CMD_P_AC_SET_PERCENT;1.0;0.0;-;1
+150;3;42320;U16;;105 Active power deration;;1.0;0.0;%;4
+151;3;42321;U16;;106 Reactive power compensation;;0.001;0.0;-;4
+152;3;42333;U16;;107 Remote power schedule;;1.0;0.0;-;4
+153;3;50000_0_1;BITS;;0x00;;1.0;0.0;-;0
+154;3;50001_0_1;BITS;;0x01;;1.0;0.0;-;0
+155;3;50002_0_1;BITS;;0x02;;1.0;0.0;-;0
+156;3;50003_0_1;BITS;;0x03;;1.0;0.0;-;0
+157;3;50004_0_1;BITS;;0x04;;1.0;0.0;-;0
+158;3;50005_0_1;BITS;;0x05;;1.0;0.0;-;0
+159;3;50006_0_1;BITS;;0x06;;1.0;0.0;-;0
+160;3;50007_0_1;BITS;;0x07;;1.0;0.0;-;0
+161;3;50008_0_1;BITS;;0x08;;1.0;0.0;-;0
+162;3;50009_0_1;BITS;;0x09;;1.0;0.0;-;0
+163;3;50010_0_1;BITS;;0X0A Software Ver. Unmatch;;1.0;0.0;-;4
+164;3;50011_0_1;BITS;;0x0B;;1.0;0.0;-;0
+165;3;50012_0_1;BITS;;0X0C Upgrade Failed;;1.0;0.0;-;4
+166;3;50013_0_1;BITS;;0X0D Flash Fault;;1.0;0.0;-;4
+167;3;50014_0_1;BITS;;0x0E;;1.0;0.0;-;0
+168;3;50015_0_1;BITS;;0x0F;;1.0;0.0;-;0
+169;3;50016_0_1;BITS;;0x00-1;;1.0;0.0;-;0
+170;3;50017_0_1;BITS;;0X01 Software Ver. Unmatch;;1.0;0.0;-;4
+171;3;50018_0_1;BITS;;0X02 Software Ver. Unmatch1;;1.0;0.0;-;4
+172;3;50019_0_1;BITS;;0X03 System Fault;;1.0;0.0;-;4
+173;3;50020_0_1;BITS;;0X04 System Fault;;1.0;0.0;-;4
+174;3;50021_0_1;BITS;;0x05-100;;1.0;0.0;-;0
+175;3;50022_0_1;BITS;;0X06 Abnormal Inv. Circuit;;1.0;0.0;-;4
+176;3;50023_0_1;BITS;;0X07 Abnormal Resid. Cur.;;1.0;0.0;-;4
+177;3;50024_0_1;BITS;;0X08 Cabinet Overtemp.;;1.0;0.0;-;4
+178;3;50025_0_1;BITS;;0x09-1;;1.0;0.0;-;0
+179;3;50026_0_1;BITS;;0X0A System Fault;;1.0;0.0;-;4
+180;3;50027_0_1;BITS;;0X0B Fan Fault;;1.0;0.0;-;4
+181;3;50028_0_1;BITS;;0X0C Abnormal SPI Comm.;;1.0;0.0;-;4
+182;3;50029_0_1;BITS;;0x0D-1;;1.0;0.0;-;0
+183;3;50030_0_1;BITS;;0X0E System Fault;;1.0;0.0;-;4
+184;3;50031_0_1;BITS;;0x0F-1;;1.0;0.0;-;0
+185;3;50032_0_1;BITS;;0X00 Low Insulation Res.;;1.0;0.0;-;4
+186;3;50033_0_1;BITS;;0X01 AFCI Self-test Fault;;1.0;0.0;-;4
+187;3;50034_0_1;BITS;;0X02 DC Arc Fault;;1.0;0.0;-;4
+188;3;50035_0_1;BITS;;0X03 AFCI Self-test Fault;;1.0;0.0;-;4
+189;3;50036_0_1;BITS;;0X04 AFCI Self-test Fault;;1.0;0.0;-;4
+190;3;50037_0_1;BITS;;0x05-1;;1.0;0.0;-;0
+191;3;50038_0_1;BITS;;0x06-1;;1.0;0.0;-;0
+192;3;50039_0_1;BITS;;0X07 System Fault;;1.0;0.0;-;4
+193;3;50040_0_1;BITS;;0X08 System Fault;;1.0;0.0;-;4
+194;3;50041_0_1;BITS;;0X09 String 3 Reversed;;1.0;0.0;-;4
+195;3;50042_0_1;BITS;;0X0A-1;;1.0;0.0;-;0
+196;3;50043_0_1;BITS;;0x0B-1--;;1.0;0.0;-;0
+197;3;50044_0_1;BITS;;0X0C DC Arc Fault;;1.0;0.0;-;4
+198;3;50045_0_1;BITS;;0X0D DC Arc Fault;;1.0;0.0;-;4
+199;3;50046_0_1;BITS;;0X0E DC Arc Fault;;1.0;0.0;-;4
+200;3;50047_0_1;BITS;;0X0F System Fault;;1.0;0.0;-;4
+201;3;50048_0_1;BITS;;0x00-2;;1.0;0.0;-;0
+202;3;50049_0_1;BITS;;0X01 String 1 Reversed;;1.0;0.0;-;4
+203;3;50050_0_1;BITS;;0X02 String 2 Reversed;;1.0;0.0;-;4
+204;3;50051_0_1;BITS;;0X03 Abnormal DC Circuit;;1.0;0.0;-;4
+205;3;50052_0_1;BITS;;0x04-2;;1.0;0.0;-;0
+206;3;50053_0_1;BITS;;0x05-2;;1.0;0.0;-;0
+207;3;50054_0_1;BITS;;0X06 String 4 Reversed;;1.0;0.0;-;4
+208;3;50055_0_1;BITS;;0X07 String 5 Reversed;;1.0;0.0;-;4
+209;3;50056_0_1;BITS;;0X08 String 6 Reversed;;1.0;0.0;-;4
+210;3;50057_0_1;BITS;;0X09 High DC Input Volt.;;1.0;0.0;-;4
+211;3;50058_0_1;BITS;;0X0A High DC Input Volt.;;1.0;0.0;-;4
+212;3;50059_0_1;BITS;;0X0B High DC Input Volt.;;1.0;0.0;-;4
+213;3;50060_0_1;BITS;;0X0C High DC Input Volt.;;1.0;0.0;-;4
+214;3;50061_0_1;BITS;;0x0E-1;;1.0;0.0;-;0
+215;3;50062_0_1;BITS;;0x0F-2;;1.0;0.0;-;0
+216;3;50063_0_1;BITS;;0X0F Abnormal DC Circuit;;1.0;0.0;-;4
+217;3;50064_0_1;BITS;;0x00--15;;1.0;0.0;-;0
+218;3;50065_0_1;BITS;;0x01--15;;1.0;0.0;-;0
+219;3;50066_0_1;BITS;;0X02 String 1 Reversed;;1.0;0.0;-;4
+220;3;50067_0_1;BITS;;0X03 String 2 Reversed;;1.0;0.0;-;4
+221;3;50068_0_1;BITS;;0X04 String 7 Reversed;;1.0;0.0;-;4
+222;3;50069_0_1;BITS;;0X05 String 7 Reversed;;1.0;0.0;-;4
+223;3;50070_0_1;BITS;;0X06 String 8 Reversed;;1.0;0.0;-;4
+224;3;50071_0_1;BITS;;0X07 String 8 Reversed;;1.0;0.0;-;4
+225;3;50072_0_1;BITS;;0x08-02;;1.0;0.0;-;0
+226;3;50073_0_1;BITS;;0x09-02;;1.0;0.0;-;0
+227;3;50074_0_1;BITS;;0x0A-02;;1.0;0.0;-;0
+228;3;50075_0_1;BITS;;0x0B-02;;1.0;0.0;-;0
+229;3;50076_0_1;BITS;;0X0C String 3 Reversed;;1.0;0.0;-;4
+230;3;50077_0_1;BITS;;0X0D String 4 Reversed;;1.0;0.0;-;4
+231;3;50078_0_1;BITS;;0X0E String 5 Reversed;;1.0;0.0;-;4
+232;3;50079_0_1;BITS;;0X0F String 6 Reversed;;1.0;0.0;-;4
+233;3;50080_0_1;BITS;;0x00-03;;1.0;0.0;-;0
+234;3;50081_0_1;BITS;;0X01 Abnormal DC Circuit;;1.0;0.0;-;4
+235;3;50082_0_1;BITS;;0X02 Abnormal Auxiliary power;;1.0;0.0;-;4
+236;3;50083_0_1;BITS;;0x03-01;;1.0;0.0;-;0
+237;3;50084_0_1;BITS;;0X04 Abnormal DC Circuit;;1.0;0.0;-;4
+238;3;50085_0_1;BITS;;0X05 Abnormal DC Circuit;;1.0;0.0;-;4
+239;3;50086_0_1;BITS;;0X06 Abnormal DC Circuit;;1.0;0.0;-;4
+240;3;50087_0_1;BITS;;0x07-04;;1.0;0.0;-;0
+241;3;50088_0_1;BITS;;0x08-04;;1.0;0.0;-;0
+242;3;50089_0_1;BITS;;0x09-04;;1.0;0.0;-;0
+243;3;50090_0_1;BITS;;0x0A-021;;1.0;0.0;-;0
+244;3;50091_0_1;BITS;;0x0B-05;;1.0;0.0;-;0
+245;3;50092_0_1;BITS;;0x0C-05;;1.0;0.0;-;0
+246;3;50093_0_1;BITS;;0x0D-06;;1.0;0.0;-;0
+247;3;50094_0_1;BITS;;0x0E-3;;1.0;0.0;-;0
+248;3;50095_0_1;BITS;;0x0F-3;;1.0;0.0;-;0
+249;3;50096_0_1;BITS;;0x00-4;;1.0;0.0;-;0
+250;3;50097_0_1;BITS;;0x01-3;;1.0;0.0;-;0
+251;3;50098_0_1;BITS;;0x02-3;;1.0;0.0;-;0
+252;3;50099_0_1;BITS;;0x03-4;;1.0;0.0;-;0
+253;3;50100_0_1;BITS;;0x04-4;;1.0;0.0;-;0
+254;3;50101_0_1;BITS;;0x05-5;;1.0;0.0;-;0
+255;3;50102_0_1;BITS;;0X06 System Fault;;1.0;0.0;-;4
+256;3;50103_0_1;BITS;;0x07-7;;1.0;0.0;-;0
+257;3;50104_0_1;BITS;;0x08-8;;1.0;0.0;-;0
+258;3;50105_0_1;BITS;;0x09-9;;1.0;0.0;-;0
+259;3;50106_0_1;BITS;;0X0A Abnormal Inv. Circuit;;1.0;0.0;-;4
+260;3;50107_0_1;BITS;;0x0B-1;;1.0;0.0;-;0
+261;3;50108_0_1;BITS;;0X0C Abnormal Inv. Circuit;;1.0;0.0;-;4
+262;3;50109_0_1;BITS;;0x0D-2;;1.0;0.0;-;0
+263;3;50110_0_1;BITS;;0x0E-4;;1.0;0.0;-;0
+264;3;50111_0_1;BITS;;0x0F-4;;1.0;0.0;-;0
+265;3;50112_0_1;BITS;;0x00-4--;;1.0;0.0;-;0
+266;3;50113_0_1;BITS;;0X01 Abnormal Inv. Circuit;;1.0;0.0;-;4
+267;3;50114_0_1;BITS;;0x02-5;;1.0;0.0;-;0
+268;3;50115_0_1;BITS;;0x03-5;;1.0;0.0;-;0
+269;3;50116_0_1;BITS;;0x04-5;;1.0;0.0;-;0
+270;3;50117_0_1;BITS;;0X05 System Fault;;1.0;0.0;-;4
+271;3;50118_0_1;BITS;;0x06-6;;1.0;0.0;-;0
+272;3;50119_0_1;BITS;;0x07-6;;1.0;0.0;-;0
+273;3;50120_0_1;BITS;;0x08-6;;1.0;0.0;-;0
+274;3;50121_0_1;BITS;;0x09-6;;1.0;0.0;-;0
+275;3;50122_0_1;BITS;;0x0A-6;;1.0;0.0;-;0
+276;3;50123_0_1;BITS;;0x0B-6;;1.0;0.0;-;0
+277;3;50124_0_1;BITS;;0x0C-7;;1.0;0.0;-;0
+278;3;50125_0_1;BITS;;0x0D-7;;1.0;0.0;-;0
+279;3;50126_0_1;BITS;;0x0E-7;;1.0;0.0;-;0
+280;3;50127_0_1;BITS;;0x0F-7;;1.0;0.0;-;0
+281;3;50128_0_1;BITS;;58 0X00 Abnormal Grid Volt.;;1.0;0.0;-;4
+282;3;50129_0_1;BITS;;0x01-8;;1.0;0.0;-;0
+283;3;50130_0_1;BITS;;0x02-8;;1.0;0.0;-;0
+284;3;50131_0_1;BITS;;59 0X03 Abnormal Grid Volt.;;1.0;0.0;-;4
+285;3;50132_0_1;BITS;;0x04-9;;1.0;0.0;-;0
+286;3;50133_0_1;BITS;;0x05-9;;1.0;0.0;-;0
+287;3;50134_0_1;BITS;;60 0X06 Frequency Abnormal;;1.0;0.0;-;4
+288;3;50135_0_1;BITS;;61 0X07 Frequency Abnormal;;1.0;0.0;-;4
+289;3;50136_0_1;BITS;;62  0X08 Abnormal Grid Volt.;;1.0;0.0;-;4
+290;3;50137_0_1;BITS;;63 0X09 Abnormal Grid Volt.;;1.0;0.0;-;4
+291;3;50138_0_1;BITS;;64 0X0A Abnormal Ground.;;1.0;0.0;-;4
+292;3;50139_0_1;BITS;;65 0X0B Abnormal Grid Volt.;;1.0;0.0;-;4
+293;3;50140_0_1;BITS;;66 0X0C Frequency Abnormal;;1.0;0.0;-;4
+294;3;50141_0_1;BITS;;0x0D-10;;1.0;0.0;-;0
+295;3;50142_0_1;BITS;;0x0E-10;;1.0;0.0;-;0
+296;3;50143_0_1;BITS;;0x0F-10;;1.0;0.0;-;0
+297;3;50144_0_1;BITS;;67 0X00 Abnormal Grid Volt.;;1.0;0.0;-;4
+298;3;50145_0_1;BITS;;68 0X01 Abnormal Grid Volt.;;1.0;0.0;-;4
+299;3;50146_0_1;BITS;;69 0X02 Abnormal Grid Volt.;;1.0;0.0;-;4
+300;3;50147_0_1;BITS;;0x03-11;;1.0;0.0;-;0
+301;3;50148_0_1;BITS;;0x04-11;;1.0;0.0;-;0
+302;3;50149_0_1;BITS;;0x05-11;;1.0;0.0;-;0
+303;3;50150_0_1;BITS;;0x06-11;;1.0;0.0;-;0
+304;3;50151_0_1;BITS;;0x07-11;;1.0;0.0;-;0
+305;3;50152_0_1;BITS;;0X08 Abnormal Grid Volt.;;1.0;0.0;-;4
+306;3;50153_0_1;BITS;;0x09-11;;1.0;0.0;-;0
+307;3;50154_0_1;BITS;;0x0A-11;;1.0;0.0;-;0
+308;3;50155_0_1;BITS;;0x0B-11;;1.0;0.0;-;0
+309;3;50156_0_1;BITS;;0x0C-11;;1.0;0.0;-;0
+310;3;50157_0_1;BITS;;0x0D-12;;1.0;0.0;-;0
+311;3;50158_0_1;BITS;;0x0E-12;;1.0;0.0;-;0
+312;3;50159_0_1;BITS;;0x0F-13;;1.0;0.0;-;0
+313;3;50016_0_1;BITS;;71 0X00 Abnormal String 1;;1.0;0.0;-;4
+314;3;50017_0_1;BITS;;72 0X01 Abnormal String 2;;1.0;0.0;-;4
+315;3;50018_0_1;BITS;;73 0X02 Abnormal String 3;;1.0;0.0;-;4
+316;3;50019_0_1;BITS;;74 0X03 Abnormal String 4;;1.0;0.0;-;4
+317;3;50020_0_1;BITS;;75 0X04 Abnormal String 5;;1.0;0.0;-;4
+318;3;50021_0_1;BITS;;76 0X05 Abnormal String 6;;1.0;0.0;-;4
+319;3;50022_0_1;BITS;;77 0X06 Abnormal String 7;;1.0;0.0;-;4
+320;3;50023_0_1;BITS;;78 0X07 Abnormal String 8;;1.0;0.0;-;4
+321;3;50024_0_1;BITS;;0x08-14;;1.0;0.0;-;0
+322;3;50025_0_1;BITS;;0x09-14;;1.0;0.0;-;0
+323;3;50026_0_1;BITS;;0X0A-14;;1.0;0.0;-;0
+324;3;50027_0_1;BITS;;0x0B-14;;1.0;0.0;-;0
+325;3;50028_0_1;BITS;;0x0C-15;;1.0;0.0;-;0
+326;3;50029_0_1;BITS;;0x0D-16;;1.0;0.0;-;0
+327;3;50030_0_1;BITS;;0x0E-17;;1.0;0.0;-;0
+328;3;50031_0_1;BITS;;0x0F-18;;1.0;0.0;-;0

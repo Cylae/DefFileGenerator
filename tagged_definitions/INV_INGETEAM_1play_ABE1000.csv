@@ -1,0 +1,46 @@
+﻿ModbusRTU;Inverter;INGETEAM;1play(ABE1000);;;;;;;
+1;4;0;U16;;Actual Date.Year;;1;0;Year;4
+2;4;1;U16;;Actual Date.Month of the Year;;1;0;Month;4
+3;4;2;U16;;Actual Date.Day of the month;;1;0;Day;4
+4;4;3;U16;;Actual Date.Hour of the day;;1;0;Hour;4
+5;4;4;U16;;Actual Date.Minute;;1;0;Minute;4
+6;4;5;U16;;Actual Date.Second;;1;0;Second;4
+7;4;6;U32;;Total Energy delivered by the unit;E_TOT;1;0;kW*h;4
+8;4;8;U32;;Total hours of operation. hours;;1;0;Hours;4
+9;4;10;U32;;Total number of connections since launching;;1;0;;4
+10;4;12;U32;;Partial Energy delivered by the unit since user reset;;1;0;kW*h.;4
+11;4;14;U32;;Partial number of hours of operation. hours;;1;0;hours;4
+12;4;16;U32;;Partial number of connection since user reset.;;1;0;;4
+13;4;18;U16;;Instantaneous alarm code 1;;1;0;Flag bits;4
+14;4;19;U16;;Instantaneous alarm code 2;;1;0;Flag bits;4
+15;4;20;U16;;Instantaneous alarm code 3;;1;0;Flag bits;4
+16;4;21;U16;;Instantaneous alarm code 4;;1;0;Flag bits;4
+17;4;22;U16;;Warning code;;1;0;Flag bits;4
+18;4;23;U16;;Unit flags 1;;1;0;Flag bits;4
+19;4;24;U16;;Unit flags 2;;1;0;Flag bits;4
+20;4;25;U16;;Unit flags 3;;1;0;Flag bits;4
+21;4;26;U16;;Status Unit1;;1;0;States;4
+22;4;27;U16;;Status Unit2;;1;0;States;4
+23;4;28;U16;;Status Unit3;;1;0;States;4
+24;4;29;U16;;Output grid current RMS;;100;0;Amps;4
+25;4;30;U16;;Grid RMS voltage 1;;10;0;Vrms;4
+26;4;31;U16;;Grid RMS voltage 2;;10;0;Vrms;4
+27;4;32;U16;;Grid frequency;FREQ;100;0;Hz;4
+28;4;33;I16;;Output apparent power;S_AC;1;0;VA;4
+29;4;34;I16;;Output active power;P_AC;1;0;Watt;4
+30;4;35;I16;;Output reactive power;Q_AC;1;0;Var;4
+31;4;36;I16;;Cosine of Phi;;1000;0;;4
+32;4;37;I16;;PV1 current;I_DC_STRING_1;100;0;Amps;4
+33;4;38;I16;;PV2 current;I_DC_STRING_2;100;0;Amps;4
+34;4;39;I16;;PV1 voltage;U_DC_STRING_1;1;0;Vdc;4
+35;4;40;I16;;PV2 voltage;U_DC_STRING_2;1;0;Vdc;4
+36;4;41;I16;;PV power;;1;0;Watt;4
+37;4;42;I16;;PV1 power;;1;0;Watt;4
+38;4;43;I16;;PV2 power;;1;0;Watt;4
+39;4;44;U16;;Isolation resistance of PV field;R_ISO;1;0;kOhm;4
+40;4;45;I16;;Wattmeter measurement (Self-Consumption mode);;0.1;0;Watt;4
+41;4;46;U16;;Active Power Reduction rate;;1;0;%;4
+42;4;47;U16;;Active Power Reduction Reason;;1;0;Reason;4
+43;4;48;U16;;Reactive Power Reference type;;1;0;Reason;4
+44;4;49;U32;;Daily energy value;E_DAY;100;0;KWh;4
+45;4;51;U16;;Self Consumption ratio;;1;0;%;4

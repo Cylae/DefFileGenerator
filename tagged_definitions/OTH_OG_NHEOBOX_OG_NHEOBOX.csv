@@ -1,0 +1,97 @@
+﻿modbusRTU;Other;OG NHEOBOX;OG_NHEOBOX;;;;;;;
+1;4;28200;U16;;Active power_MEM;;1.0;0.0;kW;4
+2;4;28202;U16;;Reactive power_MEM;Q_AC;1.0;0.0;kW;4
+3;4;28204;U16;;Phase A voltage_MEM;U_AC_1;1.0;0.0;V;4
+4;4;28206;U16;;Phase B voltage_MEM;U_AC_2;1.0;0.0;V;4
+5;4;28208;U16;;Phase C voltage_MEM;U_AC_3;1.0;0.0;V;4
+6;4;28210;U16;;Phase A current_MEM;I_AC_1;1.0;0.0;A;4
+7;4;28212;U16;;Phase B current_MEM;I_AC_2;1.0;0.0;A;4
+8;4;28214;U16;;Phase C current_MEM;I_AC_3;1.0;0.0;A;4
+9;4;28216;U16;;Input total active energy_MEM;E_TOT;1.0;0.0;kWh;4
+10;4;28218;U16;;Output total active energy_MEM;;1.0;0.0;kWh;4
+11;4;28220;U16;;Power factor_MEM;PF;1.0;0.0;;4
+12;4;28222;U16;;Frequency_MEM;FREQ;1.0;0.0;Hz;4
+13;4;28224;U16;;Total harmonic distortion of Phase A voltage_MEM;;1.0;0.0;%;4
+14;4;28226;U16;;Total harmonic distortion of Phase B voltage_MEM;;1.0;0.0;%;4
+15;4;28228;U16;;Total harmonic distortion of Phase C voltage_MEM;;1.0;0.0;%;4
+16;4;28230;U16;;Total harmonic distortion of Phase A current_MEM;;1.0;0.0;%;4
+17;4;28232;U16;;Total harmonic distortion of Phase B current_MEM;;1.0;0.0;%;4
+18;4;28234;U16;;Total harmonic distortion of Phase C current_MEM;;1.0;0.0;%;4
+19;4;28236;U16;;Active energy in peak period_MEM;;1.0;0.0;kWh;4
+20;4;28238;U16;;Active energy in peak period_MEM_1;;1.0;0.0;kWh;4
+21;4;28240;U16;;Active energy in peak period_MEM_2;;1.0;0.0;kWh;4
+22;4;28242;U16;;Active energy in peak period_MEM_3;;1.0;0.0;kWh;4
+23;4;28244;U16;;Active energy in off-peak period_MEM;;1.0;0.0;kWh;4
+24;4;28246;U16;;Active energy in off-peak period_MEM_1;;1.0;0.0;kWh;4
+25;4;28248;U16;;Active energy in off-peak period_MEM_2;;1.0;0.0;kWh;4
+26;4;28250;U16;;Active energy in off-peak period_MEM_3;;1.0;0.0;kWh;4
+27;4;28252;U16;;Meter communication status_MEM;;1.0;0.0;;4
+28;4;28260;U16;;Active energy total_SCEM;;1.0;0.0;kW;4
+29;4;28262;U16;;Voltage_SCEM;;1.0;0.0;V;4
+30;4;28263;U16;;Current_SCEM;;1.0;0.0;A;4
+31;4;28265;U16;;Active power_SCEM;;1.0;0.0;W;4
+32;4;28267;U16;;Apparent power_SCEM;S_AC;1.0;0.0;VA;4
+33;4;28269;U16;;Reactive power_SCEM;;1.0;0.0;Var;4
+34;4;28271;U16;;Frequency_SCEM;;1.0;0.0;Hz;4
+35;4;28272;U16;;Power factor_SCEM;;1.0;0.0;;4
+36;4;28273;U16;;Input active energy_SCEM;;1.0;0.0;kWh;4
+37;4;28275;U16;;Output active energy_SCEM;;1.0;0.0;kWh;4
+38;4;28279;U16;;Input reactive power_SCEM;;1.0;0.0;kVar;4
+39;4;28281;U16;;Output reactive power_SCEM;;1.0;0.0;kVar;4
+40;4;28283;U16;;Total reactive energy_SCEM;;1.0;0.0;kWh;4
+41;4;28285;U16;;Total apparent energy_SCEM;;1.0;0.0;kWh;4
+42;4;28287;U16;;Meter communication status_SCEM;;1.0;0.0;;4
+43;4;28300;U16;;Active Power Total_PSCM;P_AC;1.0;0.0;kW;4
+44;4;28302;U16;;Reactive Power Total_PSCM;;1.0;0.0;kW;4
+45;4;28304;U16;;Voltage Phase A_PSCM;;1.0;0.0;V;4
+46;4;28306;U16;;Voltage Phase B_PSCM;;1.0;0.0;V;4
+47;4;28308;U16;;Voltage Phase C_PSCM;;1.0;0.0;V;4
+48;4;28310;U16;;Current Phase A_PSCM;;1.0;0.0;A;4
+49;4;28312;U16;;Current Phase B_PSCM;;1.0;0.0;A;4
+50;4;28314;U16;;Current Phase C_PSCM;;1.0;0.0;A;4
+51;4;28316;U16;;Input Active Energy Total_PSCM;;1.0;0.0;kWh;4
+52;4;28318;U16;;Output Active Energy Total_PSCM;;1.0;0.0;kWh;4
+53;4;28320;U16;;Power Factor_PSCM;;1.0;0.0;;4
+54;4;28322;U16;;Frequency_PSCM;;1.0;0.0;Hz;4
+55;4;28324;U16;;Voltage Harmonic Distortion Phase A_PSCM;;1.0;0.0;%;4
+56;4;28326;U16;;Voltage Harmonic Distortion Phase B_PSCM;;1.0;0.0;%;4
+57;4;28328;U16;;Voltage Harmonic Distortion Phase C_PSCM;;1.0;0.0;%;4
+58;4;28330;U16;;Current Harmonic Distortion Phase A_PSCM;;1.0;0.0;%;4
+59;4;28332;U16;;Current Harmonic Distortion Phase B_PSCM;;1.0;0.0;%;4
+60;4;28334;U16;;Current Harmonic Distortion Phase C_PSCM;;1.0;0.0;%;4
+61;4;28336;U16;;Active Energy Input in Peak Period_PSCM;;1.0;0.0;kWh;4
+62;4;28338;U16;;Active Energy Input in Peak Period_PSCM_1;;1.0;0.0;kWh;4
+63;4;28340;U16;;Active Energy Input in Peak Period_PSCM_2;;1.0;0.0;kWh;4
+64;4;28342;U16;;Active Energy Input in Peak Period_PSCM_3;;1.0;0.0;kWh;4
+65;4;28344;U16;;Active Energy Output in Peak Period_PSCM;;1.0;0.0;kWh;4
+66;4;28346;U16;;Active Energy Output in Peak Period_PSCM_1;;1.0;0.0;kWh;4
+67;4;28348;U16;;Active Energy Output in Peak Period_PSCM_2;;1.0;0.0;kWh;4
+68;4;28350;U16;;Active Energy Output in Peak Period_PSCM_3;;1.0;0.0;kWh;4
+69;4;28352;U16;;Meter Communication Status_PSCM;;1.0;0.0;;4
+70;4;28400;U16;;Active Power Total_PDCM;;1.0;0.0;kW;4
+71;4;28402;U16;;Reactive Power Total_PDCM;;1.0;0.0;kW;4
+72;4;28404;U16;;Voltage Phase A_PDCM;U_DC;1.0;0.0;V;4
+73;4;28406;U16;;Voltage Phase B_PDCM;;1.0;0.0;V;4
+74;4;28408;U16;;Voltage Phase C_PDCM;;1.0;0.0;V;4
+75;4;28410;U16;;Current Phase A_PDCM;I_DC;1.0;0.0;A;4
+76;4;28412;U16;;Current Phase B_PDCM;;1.0;0.0;A;4
+77;4;28414;U16;;Current Phase C_PDCM;;1.0;0.0;A;4
+78;4;28416;U16;;Input Active Energy Total_PDCM;;1.0;0.0;kWh;4
+79;4;28418;U16;;Output Active Energy Total_PDCM;;1.0;0.0;kWh;4
+80;4;28420;U16;;Power Factor_PDCM;;1.0;0.0;;4
+81;4;28422;U16;;Frequency_PDCM;;1.0;0.0;Hz;4
+82;4;28424;U16;;Voltage Harmonic Distortion Phase A_PDCM;;1.0;0.0;%;4
+83;4;28426;U16;;Voltage Harmonic Distortion Phase B_PDCM;;1.0;0.0;%;4
+84;4;28428;U16;;Voltage Harmonic Distortion Phase C_PDCM;;1.0;0.0;%;4
+85;4;28430;U16;;Current Harmonic Distortion Phase A_PDCM;;1.0;0.0;%;4
+86;4;28432;U16;;Current Harmonic Distortion Phase B_PDCM;;1.0;0.0;%;4
+87;4;28434;U16;;Current Harmonic Distortion Phase C_PDCM;;1.0;0.0;%;4
+88;4;28436;U16;;Active Energy Input in Peak Period_PDCM;P_DC;1.0;0.0;kWh;4
+89;4;28438;U16;;Active Energy Input in Peak Period_PDCM_1;;1.0;0.0;kWh;4
+90;4;28440;U16;;Active Energy Input in Peak Period_PDCM_2;;1.0;0.0;kWh;4
+91;4;28442;U16;;Active Energy Input in Peak Period_PDCM_3;;1.0;0.0;kWh;4
+92;4;28444;U16;;Active Energy Output in Peak Period_PDCM;;1.0;0.0;kWh;4
+93;4;28446;U16;;Active Energy Output in Peak Period_PDCM_1;;1.0;0.0;kWh;4
+94;4;28448;U16;;Active Energy Output in Peak Period_PDCM_2;;1.0;0.0;kWh;4
+95;4;28450;U16;;Active Energy Output in Peak Period_PDCM_3;;1.0;0.0;kWh;4
+96;4;28452;U16;;Meter Communication Status_PDCM;;1.0;0.0;;4

@@ -1,0 +1,131 @@
+﻿modbusRTU;Other;ChauvinArnoud;CHAUVINARNOUX_ULYS_FLEX;;;;;;;
+1;3;4096;F32;;Voltage L1-N;voltage_l1n;1.000000;0.000000;V;4
+2;3;4098;F32;;Voltage L2-N;voltage_l2n;1.000000;0.000000;V;4
+3;3;4100;F32;;Voltage L3-N;voltage_l3n;1.000000;0.000000;V;4
+4;3;4102;F32;;Voltage L1-L2;voltage_l1l2;1.000000;0.000000;V;4
+5;3;4104;F32;;Voltage L2-L3;voltage_l2l3;1.000000;0.000000;V;4
+6;3;4106;F32;;Voltage L3-L1;voltage_l3l1;1.000000;0.000000;V;4
+7;3;4108;F32;;System Voltage;system_voltage;1.000000;0.000000;V;4
+8;3;4110;F32;;Current L1;current_l1;1.000000;0.000000;A;4
+9;3;4112;F32;;Current L2;current_l2;1.000000;0.000000;A;4
+10;3;4114;F32;;Current L3;current_l3;1.000000;0.000000;A;4
+11;3;4116;F32;;Neutral Current;neutral_current;1.000000;0.000000;A;4
+12;3;4118;F32;;System Current;system_current;1.000000;0.000000;A;4
+13;3;4120;F32;;Active Power L1;active_power_l1;1.000000;0.000000;W;4
+14;3;4122;F32;;Active Power L2;active_power_l2;1.000000;0.000000;W;4
+15;3;4124;F32;;Active Power L3;active_power_l3;1.000000;0.000000;W;4
+16;3;4126;F32;;System Active Power;system_active_power;1.000000;0.000000;W;4
+17;3;4128;F32;;Apparent Power L1;apparent_power_l1;1.000000;0.000000;VA;4
+18;3;4130;F32;;Apparent Power L2;apparent_power_l2;1.000000;0.000000;VA;4
+19;3;4132;F32;;Apparent Power L3;apparent_power_l3;1.000000;0.000000;VA;4
+20;3;4134;F32;;System Apparent Power;system_apparent_power;1.000000;0.000000;VA;4
+21;3;4136;F32;;Reactive Power L1;reactive_power_l1;1.000000;0.000000;var;4
+22;3;4138;F32;;Reactive Power L2;reactive_power_l2;1.000000;0.000000;var;4
+23;3;4140;F32;;Reactive Power L3;reactive_power_l3;1.000000;0.000000;var;4
+24;3;4142;F32;;System Reactive Power;system_reactive_power;1.000000;0.000000;var;4
+25;3;4144;F32;;Power Factor L1;power_factor_l1;1.000000;0.000000;;4
+26;3;4146;F32;;Power Factor L2;power_factor_l2;1.000000;0.000000;;4
+27;3;4148;F32;;Power Factor L3;power_factor_l3;1.000000;0.000000;;4
+28;3;4150;F32;;System Power Factor;system_power_factor;1.000000;0.000000;;4
+29;3;4158;F32;;Tangent Phi L1;tangent_phi_l1;1.000000;0.000000;;4
+30;3;4160;F32;;Tangent Phi L2;tangent_phi_l2;1.000000;0.000000;;4
+31;3;4162;F32;;Tangent Phi L3;tangent_phi_l3;1.000000;0.000000;;4
+32;3;4164;F32;;System Tangent Phi;system_tangent_phi;1.000000;0.000000;;4
+33;3;4166;F32;;THD Voltage L1-N;thd_voltage_l1n;1.000000;0.000000;'%;4
+34;3;4168;F32;;THD Voltage L2-N;thd_voltage_l2n;1.000000;0.000000;'%;4
+35;3;4170;F32;;THD Voltage L3-N;thd_voltage_l3n;1.000000;0.000000;'%;4
+36;3;4172;F32;;THD Voltage L1-L2;thd_voltage_l1l2;1.000000;0.000000;'%;4
+37;3;4174;F32;;THD Voltage L2-L3;thd_voltage_l2l3;1.000000;0.000000;'%;4
+38;3;4176;F32;;THD Voltage L3-L1;thd_voltage_l3l1;1.000000;0.000000;'%;4
+39;3;4178;F32;;THD Current L1;thd_current_l1;1.000000;0.000000;'%;4
+40;3;4180;F32;;THD Current L2;thd_current_l2;1.000000;0.000000;'%;4
+41;3;4182;F32;;THD Current L3;thd_current_l3;1.000000;0.000000;'%;4
+42;3;4184;F32;;THD Current Neutral;thd_current_neutral;1.000000;0.000000;'%;4
+43;3;4186;F32;;Frequency;FREQ;1.000000;0.000000;Hz;4
+44;3;4188;F32;;Phase Sequence;phase_sequence;1.000000;0.000000;;4
+45;3;4376;F32;;Imp Active Power DMD L1;imp_active_power_dmd_l1;1.000000;0.000000;W;4
+46;3;4378;F32;;Exp Active Power DMD L1;exp_active_power_dmd_l1;1.000000;0.000000;W;4
+47;3;4380;F32;;Imp Active Power DMD L2;imp_active_power_dmd_l2;1.000000;0.000000;W;4
+48;3;4382;F32;;Exp Active Power DMD L2;exp_active_power_dmd_l2;1.000000;0.000000;W;4
+49;3;4384;F32;;Imp Active Power DMD L3;imp_active_power_dmd_l3;1.000000;0.000000;W;4
+50;3;4386;F32;;Exp Active Power DMD L3;exp_active_power_dmd_l3;1.000000;0.000000;W;4
+51;3;4388;F32;;Imp Active Power DMD Sys;imp_active_power_dmd_sys;1.000000;0.000000;W;4
+52;3;4390;F32;;Exp Active Power DMD Sys;exp_active_power_dmd_sys;1.000000;0.000000;W;4
+53;3;4412;F32;;Imp React Power DMD L1;imp_react_power_dmd_l1;1.000000;0.000000;var;4
+54;3;4414;F32;;Exp React Power DMD L1;exp_react_power_dmd_l1;1.000000;0.000000;var;4
+55;3;4416;F32;;Imp React Power DMD L2;imp_react_power_dmd_l2;1.000000;0.000000;var;4
+56;3;4418;F32;;Exp React Power DMD L2;exp_react_power_dmd_l2;1.000000;0.000000;var;4
+57;3;4420;F32;;Imp React Power DMD L3;imp_react_power_dmd_l3;1.000000;0.000000;var;4
+58;3;4422;F32;;Exp React Power DMD L3;exp_react_power_dmd_l3;1.000000;0.000000;var;4
+59;3;4424;F32;;Imp React Power DMD Sys;imp_react_power_dmd_sys;1.000000;0.000000;var;4
+60;3;4426;F32;;Exp React Power DMD Sys;exp_react_power_dmd_sys;1.000000;0.000000;var;4
+61;3;4608;F32;;Voltage Max L1-N;voltage_max_l1n;1.000000;0.000000;V;4
+62;3;4610;F32;;Voltage Max L2-N;voltage_max_l2n;1.000000;0.000000;V;4
+63;3;4612;F32;;Voltage Max L3-N;voltage_max_l3n;1.000000;0.000000;V;4
+64;3;4614;F32;;Voltage Max L1-L2;voltage_max_l1l2;1.000000;0.000000;V;4
+65;3;4616;F32;;Voltage Max L2-L3;voltage_max_l2l3;1.000000;0.000000;V;4
+66;3;4618;F32;;Voltage Max L3-L1;voltage_max_l3l1;1.000000;0.000000;V;4
+67;3;4620;F32;;System Voltage Max;system_voltage_max;1.000000;0.000000;V;4
+68;3;4622;F32;;Current Max L1;current_max_l1;1.000000;0.000000;A;4
+69;3;4624;F32;;Current Max L2;current_max_l2;1.000000;0.000000;A;4
+70;3;4626;F32;;Current Max L3;current_max_l3;1.000000;0.000000;A;4
+71;3;4628;F32;;Neutral Current Max;neutral_current_max;1.000000;0.000000;A;4
+72;3;4630;F32;;System Current Max;system_current_max;1.000000;0.000000;A;4
+73;3;4740;F32;;Imp Active Power DMD Max L1;imp_active_power_dmd_max_l1;1.000000;0.000000;W;4
+74;3;4742;F32;;Exp Active Power DMD Max L1;exp_active_power_dmd_max_l1;1.000000;0.000000;W;4
+75;3;4744;F32;;Imp Active Power DMD Max L2;imp_active_power_dmd_max_l2;1.000000;0.000000;W;4
+76;3;4746;F32;;Exp Active Power DMD Max L2;exp_active_power_dmd_max_l2;1.000000;0.000000;W;4
+77;3;4748;F32;;Imp Active Power DMD Max L3;imp_active_power_dmd_max_l3;1.000000;0.000000;W;4
+78;3;4750;F32;;Exp Active Power DMD Max L3;exp_active_power_dmd_max_l3;1.000000;0.000000;W;4
+79;3;4752;F32;;Imp Active Pwr DMD Max Sys;imp_active_pwr_dmd_max_sys;1.000000;0.000000;W;4
+80;3;4754;F32;;Exp Active Pwr DMD Max Sys;exp_active_pwr_dmd_max_sys;1.000000;0.000000;W;4
+81;3;4772;F32;;Imp React Power DMD Max L1;imp_react_power_dmd_max_l1;1.000000;0.000000;var;4
+82;3;4774;F32;;Exp React Power DMD Max L1;exp_react_power_dmd_max_l1;1.000000;0.000000;var;4
+83;3;4776;F32;;Imp React Power DMD Max L2;imp_react_power_dmd_max_l2;1.000000;0.000000;var;4
+84;3;4778;F32;;Exp React Power DMD Max L2;exp_react_power_dmd_max_l2;1.000000;0.000000;var;4
+85;3;4780;F32;;Imp React Power DMD Max L3;imp_react_power_dmd_max_l3;1.000000;0.000000;var;4
+86;3;4782;F32;;Exp React Power DMD Max L3;exp_react_power_dmd_max_l3;1.000000;0.000000;var;4
+87;3;4784;F32;;Imp React Pwr DMD Max Sys;imp_react_pwr_dmd_max_sys;1.000000;0.000000;var;4
+88;3;4786;F32;;Exp React Pwr DMD Max Sys;exp_react_pwr_dmd_max_sys;1.000000;0.000000;var;4
+89;3;4788;F32;;System Active Power Min;system_active_power_min;1.000000;0.000000;W;4
+90;3;4790;F32;;System Apparent Power Min;system_apparent_power_min;1.000000;0.000000;VA;4
+91;3;4792;F32;;System Reactive Power Min;system_reactive_power_min;1.000000;0.000000;var;4
+92;3;5120;F32;;Imported Active Energy L1;imported_active_energy_l1;1.000000;0.000000;Wh;4
+93;3;5122;F32;;Exported Active Energy L1;exported_active_energy_l1;1.000000;0.000000;Wh;4
+94;3;5124;F32;;Imported Active Energy L2;imported_active_energy_l2;1.000000;0.000000;Wh;4
+95;3;5126;F32;;Exported Active Energy L2;exported_active_energy_l2;1.000000;0.000000;Wh;4
+96;3;5128;F32;;Imported Active Energy L3;imported_active_energy_l3;1.000000;0.000000;Wh;4
+97;3;5130;F32;;Exported Active Energy L3;exported_active_energy_l3;1.000000;0.000000;Wh;4
+98;3;5132;F32;;Imported Active Energy Sys;imported_active_energy_sys;1.000000;0.000000;Wh;4
+99;3;5134;F32;;Exported Active Energy Sys;exported_active_energy_sys;1.000000;0.000000;Wh;4
+100;3;5136;F32;;Active Energy Bal (imp-exp) Sys;active_energy_bal_impexp_sys;1.000000;0.000000;Wh;4
+101;3;5138;F32;;Imp Capacit Apparent Engy L1;imp_capacit_apparent_engy_l1;1.000000;0.000000;VAh;4
+102;3;5140;F32;;Exp Capacit Apparent Engy L1;exp_capacit_apparent_engy_l1;1.000000;0.000000;VAh;4
+103;3;5142;F32;;Imp Induct Apparent Engy L1;imp_induct_apparent_engy_l1;1.000000;0.000000;VAh;4
+104;3;5144;F32;;Exp Induct Apparent Engy L1;exp_induct_apparent_engy_l1;1.000000;0.000000;VAh;4
+105;3;5150;F32;;Imp Capacit Apparent Engy L2;imp_capacit_apparent_engy_l2;1.000000;0.000000;VAh;4
+106;3;5152;F32;;Exp Capacit Apparent Engy L2;exp_capacit_apparent_engy_l2;1.000000;0.000000;VAh;4
+107;3;5154;F32;;Imp Induct Apparent Engy L2;imp_induct_apparent_engy_l2;1.000000;0.000000;VAh;4
+108;3;5156;F32;;Exp Induct Apparent Engy L2;exp_induct_apparent_engy_l2;1.000000;0.000000;VAh;4
+109;3;5162;F32;;Imp Capacit Apparent Engy L3;imp_capacit_apparent_engy_l3;1.000000;0.000000;VAh;4
+110;3;5164;F32;;Exp Capacit Apparent Engy L3;exp_capacit_apparent_engy_l3;1.000000;0.000000;VAh;4
+111;3;5166;F32;;Imp Induct Apparent Engy L3;imp_induct_apparent_engy_l3;1.000000;0.000000;VAh;4
+112;3;5168;F32;;Exp Induct Apparent Engy L3;exp_induct_apparent_engy_l3;1.000000;0.000000;VAh;4
+113;3;5174;F32;;Imp Capacit Apparent Engy Sys;imp_capacit_apparent_engy_sys;1.000000;0.000000;VAh;4
+114;3;5176;F32;;Exp Capacit Apparent Engy Sys;exp_capacit_apparent_engy_sys;1.000000;0.000000;VAh;4
+115;3;5178;F32;;Imp Induct Apparent Engy Sys;imp_induct_apparent_engy_sys;1.000000;0.000000;VAh;4
+116;3;5180;F32;;Exp Induct Apparent Engy Sys;exp_induct_apparent_engy_sys;1.000000;0.000000;VAh;4
+117;3;5186;F32;;Apparent Engy Cap Bal Sys;apparent_engy_cap_bal_sys;1.000000;0.000000;VAh;4
+118;3;5188;F32;;Apparent Engy Ind Bal Sys;apparent_engy_ind_bal_sys;1.000000;0.000000;VAh;4
+119;3;5190;F32;;Apparent Energy Balance Sys;apparent_energy_balance_sys;1.000000;0.000000;VAh;4
+120;3;5216;F32;;Imp Capacit Reactive Engy Sys;imp_capacit_reactive_engy_sys;1.000000;0.000000;varh;4
+121;3;5218;F32;;Exp Capacit Reactive Engy Sys;exp_capacit_reactive_engy_sys;1.000000;0.000000;varh;4
+122;3;5220;F32;;Imp Induct Reactive Engy Sys;imp_induct_reactive_engy_sys;1.000000;0.000000;varh;4
+123;3;5222;F32;;Exp Induct Reactive Engy Sys;exp_induct_reactive_engy_sys;1.000000;0.000000;varh;4
+124;3;5224;F32;;Reactive Engy Cap Bal Sys;reactive_engy_cap_bal_sys;1.000000;0.000000;varh;4
+125;3;5226;F32;;Reactive Engy Ind Bal Sys;reactive_engy_ind_bal_sys;1.000000;0.000000;varh;4
+126;3;5228;F32;;Reactive Energy Balance Sys;reactive_energy_balance_sys;1.000000;0.000000;varh;4
+127;3;8192_12;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+128;3;8198;U32;;Firmware Release;firmware_release;1.000000;0.000000;;4
+129;3;8200;U32;;Hardware Version;hardware_version;1.000000;0.000000;;4
+130;3;8220;U32;;Error Code;error_code;1.000000;0.000000;;4

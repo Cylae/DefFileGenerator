@@ -1,0 +1,74 @@
+﻿modbusRTU;Other;IME Meter;IME_IM-MFD4ORFCDT1;;;;;;;
+1;4;20480;U16;;Phase 1 Current Value (R);I_AC_1;1.0;0.0;mA;4
+2;4;20482;U16;;Phase 2 Current Value (S);I_AC_2;1.0;0.0;mA;4
+3;4;20484;U16;;Phase 3 Current Value (T);I_AC_3;1.0;0.0;mA;4
+4;4;20486;U16;;Neutral Current Value;;1.0;0.0;mA;4
+5;4;20492;U16;;Medium value Im=(R+sec.+T)/3;;1.0;0.0;mA;4
+6;4;20498;U16;;Medium thermal value 1 (R);;1.0;0.0;mA;4
+7;4;20500;U16;;Medium thermal value 2 (S);;1.0;0.0;mA;4
+8;4;20502;U16;;Medium thermal value 3 (T);;1.0;0.0;mA;4
+9;4;20509;U16;;1-N Voltage;;1.0;0.0;mV;4
+10;4;20511;U16;;2-N Voltage;;1.0;0.0;mV;4
+11;4;20513;U16;;3-N Voltage;;1.0;0.0;mV;4
+12;4;20515;U16;;1-2 Voltage;;1.0;0.0;mV;4
+13;4;20517;U16;;2-3 Voltage;;1.0;0.0;mV;4
+14;4;20519;U16;;3-1 Voltage;;1.0;0.0;mV;4
+15;4;20537;U16;;Three-phase frequency;FREQ;1.0;0.0;Hz;4
+16;4;20538;U16;;Three-phase Active Power;P_AC;1.0;0.0;;4
+17;4;20540;U16;;Three-phase reactive power;Q_AC;1.0;0.0;;4
+18;4;20544;U16;;Threee-Phase Apparent Power;S_AC_1;1.0;0.0;;4
+19;4;20546;U16;;Three-phase Power Distortion;;1.0;0.0;;4
+20;4;20548;U16;;Three-phase Power Factor (PF);PF;1.0;0.0;;4
+21;4;20550;U16;;Power Factor Sector;;1.0;0.0;;4
+22;4;20551;U16;;Phase 1 Active Power;P_AC_1;1.0;0.0;;4
+23;4;20553;U16;;Phase 2 Active Power;P_AC_2;1.0;0.0;;4
+24;4;20555;U16;;Phase 3 Active Power;P_AC_3;1.0;0.0;;4
+25;4;20557;U16;;Phase 1 Reactive power;Q_AC_1;1.0;0.0;;4
+26;4;20559;U16;;Phase 2 Reactive power;Q_AC_2;1.0;0.0;;4
+27;4;20561;U16;;Phase 3 Reactive power;Q_AC_3;1.0;0.0;;4
+28;4;20569;U16;;Phase 1 Apparent Power;;1.0;0.0;;4
+29;4;20571;U16;;Phase 2 Apparent Power;S_AC_2;1.0;0.0;;4
+30;4;20573;U16;;Phase 3 Apparent Power;S_AC_3;1.0;0.0;;4
+31;4;20581;U16;;Power Factor Phase 1 (R);PF_1;1.0;0.0;;4
+32;4;20582;U16;;Power Factor Phase 2 (S);PF_2;1.0;0.0;;4
+33;4;20583;U16;;Power Factor Phase 3 (T);PF_3;1.0;0.0;;4
+34;4;20587;U16;;Power Factor Sector Phase 1 (R);;1.0;0.0;;4
+35;4;20588;U16;;Power Factor Sector Phase 2 (S);;1.0;0.0;;4
+36;4;20589;U16;;Power Factor Sector Phase 3 (T);;1.0;0.0;;4
+37;4;20592;U16;;Positive Three-phase Active Energy;;1.0;0.0;;4
+38;4;20594;U16;;Negative Three-phase Active Energy;;1.0;0.0;;4
+39;4;20598;U16;;Positive Three-phase Reactive Energy;;1.0;0.0;;4
+40;4;20600;U16;;Negative Three-phase Reactive Energy;;1.0;0.0;;4
+41;4;20604;U16;;Positive Three-phase Active Energy (Tariff 1);;1.0;0.0;;4
+42;4;20612;U16;;Positive Three-phase Active Energy (Tariff 2);;1.0;0.0;;4
+43;4;20706;U16;;THD Phase 1 (R) vs. fundamental;;1.0;0.0;%;4
+44;4;20707;U16;;THD Phase 2 (S) vs. fundamental;;1.0;0.0;%;4
+45;4;20708;U16;;THD Phase 3 (T) vs. fundamental;;1.0;0.0;%;4
+46;4;20710;U16;;THD Voltage 1-N vs. fundamental;;1.0;0.0;%;4
+47;4;20711;U16;;THD Voltage 2-N vs. fundamental;;1.0;0.0;%;4
+48;4;20712;U16;;THD Voltage 3-N vs. fundamental;;1.0;0.0;%;4
+49;4;20738;U16;;Wrap round total positive active energy;E_TOT;1.0;0.0;;4
+50;4;20739;U16;;Wrap round total positive reactive energy;;1.0;0.0;;4
+51;4;20740;U16;;Wrap round total negative active energy;;1.0;0.0;;4
+52;4;20741;U16;;Wrap round total negative reactive energy;;1.0;0.0;;4
+53;4;20480;U16;;Measurement System Features;;1.0;0.0;;1
+54;4;20481;U16;;Phase Current Transformation Ratio;;1.0;0.0;;1
+55;4;20484;U16;;Voltage Transformation Ratio;;1.0;0.0;;1
+56;4;20485;U16;;Calculation Settings Requirement;;1.0;0.0;;1
+57;4;20608;U16;;Minimum value V1-N;;1.0;0.0;mV;4
+58;4;20610;U16;;Minimum value V2-N;;1.0;0.0;mV;4
+59;4;20612;U16;;Minimum value V3-N;;1.0;0.0;mV;4
+60;4;20614;U16;;Maximum value V1-N;;1.0;0.0;mV;4
+61;4;20616;U16;;Maximum value V2-N;;1.0;0.0;mV;4
+62;4;20618;U16;;Maximum value V3-N;;1.0;0.0;mV;4
+63;4;20628;U16;;Maximum Phase 1 Current Requirement (R);;1.0;0.0;mA;4
+64;4;20630;U16;;Maximum Phase 2 Current Requirement (S);;1.0;0.0;mA;4
+65;4;20632;U16;;Maximum Phase 3 Current Requirement (T);;1.0;0.0;mA;4
+66;4;20672;U16;;Maximum Total Active Power Requirement Tariff 1;;1.0;0.0;;4
+67;4;20674;U16;;Maximum Total Reactive Power Requirement Tariff 1;;1.0;0.0;;4
+68;4;20676;U16;;Maximum Total Apparent Power Requirement Tariff 1;S_AC;1.0;0.0;;4
+69;4;20678;U16;;Maximum Total Active Power Requirement Tariff 2;;1.0;0.0;;4
+70;4;20680;U16;;Maximum Total Reactive Power Requirement Tariff 2;;1.0;0.0;;4
+71;4;20682;U16;;Maximum Total Apparent Power Requirement Tariff 2;;1.0;0.0;;4
+72;4;20696;U16;;Run hour meter threshold;;1.0;0.0;%;1
+73;4;20697;U16;;Run hour meter (TOT);;1.0;0.0;minutes;1

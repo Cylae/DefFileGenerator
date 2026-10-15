@@ -1,0 +1,136 @@
+﻿modbusRTU;Other;Hoymiles;HOYMILES_BATTERY_HOYULTRA2;;;;;;;
+1;4;1;U16;;Heartbeat Information;;1.0;0.0;;4
+2;4;2;U16;;Current Control Mode;;1.0;0.0;;4
+3;4;3;U16;;Current Operating Mode;;1.0;0.0;;4
+4;4;4;U16;;System Operating Status;;1.0;0.0;;4
+5;4;5;U16;;System Fault Status;;1.0;0.0;;4
+6;4;6;U16;;Total SOC;SOC;1.0;0.0;%;4
+7;4;7;U16;;Total SOH;SOH;1.0;0.0;%;4
+8;4;8;U16;;Total Active Power;P_AC;1.0;0.0;kW;4
+9;4;10;U16;;Total Reactive Power;Q_AC;1.0;0.0;kVar;4
+10;4;12;U16;;Total Charging Energy;E_TOT;1.0;0.0;kWh;4
+11;4;14;U16;;Total Discharging Energy;;1.0;0.0;kWh;4
+12;4;16;U16;;Maximum Allowable Charging Power;;1.0;0.0;kW;4
+13;4;18;U16;;Maximum Allowable Discharging Power;;1.0;0.0;kW;4
+14;4;20;U16;;Maximum Allowable Charging Capacity;;1.0;0.0;kWh;4
+15;4;22;U16;;Maximum Allowable Discharging Capacity;;1.0;0.0;kWh;4
+16;4;101;U16;;Unit 1 Fault Status;;1.0;0.0;;4
+17;4;102;U16;;Unit 1 Allowable Charge - Discharge Status;;1.0;0.0;;4
+18;4;103;U16;;Unit 1 SOC;;1.0;0.0;%;4
+19;4;104;U16;;Unit 1 SOH;;1.0;0.0;%;4
+20;4;105;U16;;Unit 1 Active Power;;1.0;0.0;A;4
+21;4;106;U16;;Unit 1 Average Cell Voltage;;1.0;0.0;V;4
+22;4;107;U16;;Unit 1 Average Cell Temperature;TEMP_CELL;1.0;0.0;Deg.C;4
+23;4;201;U16;;Unit 2 Fault Status;;1.0;0.0;;4
+24;4;202;U16;;Unit 2 Allowable Charge - Discharge Status;;1.0;0.0;;4
+25;4;203;U16;;Unit 2 SOC;;1.0;0.0;%;4
+26;4;204;U16;;Unit 2 SOH;;1.0;0.0;%;4
+27;4;205;U16;;Unit 2 Active Power;;1.0;0.0;A;4
+28;4;206;U16;;Unit 2 Average Cell Voltage;;1.0;0.0;V;4
+29;4;207;U16;;Unit 2 Average Cell Temperature;;1.0;0.0;Deg.C;4
+30;4;301;U16;;Unit 3 Fault Status;;1.0;0.0;;4
+31;4;302;U16;;Unit 3 Allowable Charge - Discharge Status;;1.0;0.0;;4
+32;4;303;U16;;Unit 3 SOC;;1.0;0.0;%;4
+33;4;304;U16;;Unit 3 SOH;;1.0;0.0;%;4
+34;4;305;U16;;Unit 3 Active Power;;1.0;0.0;A;4
+35;4;306;U16;;Unit 3 Average Cell Voltage;;1.0;0.0;V;4
+36;4;307;U16;;Unit 3 Average Cell Temperature;;1.0;0.0;Deg.C;4
+37;4;401;U16;;Unit 4 Fault Status;;1.0;0.0;;4
+38;4;402;U16;;Unit 4 Allowable Charge - Discharge Status;;1.0;0.0;;4
+39;4;403;U16;;Unit 4 SOC;;1.0;0.0;%;4
+40;4;404;U16;;Unit 4 SOH;;1.0;0.0;%;4
+41;4;405;U16;;Unit 4 Active Power;;1.0;0.0;A;4
+42;4;406;U16;;Unit 4 Average Cell Voltage;;1.0;0.0;V;4
+43;4;407;U16;;Unit 4 Average Cell Temperature;;1.0;0.0;Deg.C;4
+44;4;501;U16;;Unit 5 Fault Status;;1.0;0.0;;4
+45;4;502;U16;;Unit 5 Allowable Charge - Discharge Status;;1.0;0.0;;4
+46;4;503;U16;;Unit 5 SOC;;1.0;0.0;%;4
+47;4;504;U16;;Unit 5 SOH;;1.0;0.0;%;4
+48;4;505;U16;;Unit 5 Active Power;;1.0;0.0;A;4
+49;4;506;U16;;Unit 5 Average Cell Voltage;;1.0;0.0;V;4
+50;4;507;U16;;Unit 5 Average Cell Temperature;;1.0;0.0;Deg.C;4
+51;4;601;U16;;Unit 6 Fault Status;;1.0;0.0;;4
+52;4;602;U16;;Unit 6 Allowable Charge - Discharge Status;;1.0;0.0;;4
+53;4;603;U16;;Unit 6 SOC;;1.0;0.0;%;4
+54;4;604;U16;;Unit 6 SOH;;1.0;0.0;%;4
+55;4;605;U16;;Unit 6 Active Power;;1.0;0.0;A;4
+56;4;606;U16;;Unit 6 Average Cell Voltage;;1.0;0.0;V;4
+57;4;607;U16;;Unit 6 Average Cell Temperature;;1.0;0.0;Deg.C;4
+58;4;701;U16;;Unit 7 Fault Status;;1.0;0.0;;4
+59;4;702;U16;;Unit 7 Allowable Charge - Discharge Status;;1.0;0.0;;4
+60;4;703;U16;;Unit 7 SOC;;1.0;0.0;%;4
+61;4;704;U16;;Unit 7 SOH;;1.0;0.0;%;4
+62;4;705;U16;;Unit 7 Active Power;;1.0;0.0;A;4
+63;4;706;U16;;Unit 7 Average Cell Voltage;;1.0;0.0;V;4
+64;4;707;U16;;Unit 7 Average Cell Temperature;;1.0;0.0;Deg.C;4
+65;4;801;U16;;Unit 8 Fault Status;;1.0;0.0;;4
+66;4;802;U16;;Unit 8 Allowable Charge - Discharge Status;;1.0;0.0;;4
+67;4;803;U16;;Unit 8 SOC;;1.0;0.0;%;4
+68;4;804;U16;;Unit 8 SOH;;1.0;0.0;%;4
+69;4;805;U16;;Unit 8 Active Power;;1.0;0.0;A;4
+70;4;806;U16;;Unit 8 Average Cell Voltage;;1.0;0.0;V;4
+71;4;807;U16;;Unit 8 Average Cell Temperature;;1.0;0.0;Deg.C;4
+72;4;901;U16;;Unit 9 Fault Status;;1.0;0.0;;4
+73;4;902;U16;;Unit 9 Allowable Charge - Discharge Status;;1.0;0.0;;4
+74;4;903;U16;;Unit 9 SOC;;1.0;0.0;%;4
+75;4;904;U16;;Unit 9 SOH;;1.0;0.0;%;4
+76;4;905;U16;;Unit 9 Active Power;;1.0;0.0;A;4
+77;4;906;U16;;Unit 9 Average Cell Voltage;;1.0;0.0;V;4
+78;4;907;U16;;Unit 9 Average Cell Temperature;;1.0;0.0;Deg.C;4
+79;4;1001;U16;;Unit 10 Fault Status;;1.0;0.0;;4
+80;4;1002;U16;;Unit 10 Allowable Charge - Discharge Status;;1.0;0.0;;4
+81;4;1003;U16;;Unit 10 SOC;;1.0;0.0;%;4
+82;4;1004;U16;;Unit 10 SOH;;1.0;0.0;%;4
+83;4;1005;U16;;Unit 10 Active Power;;1.0;0.0;A;4
+84;4;1006;U16;;Unit 10 Average Cell Voltage;;1.0;0.0;V;4
+85;4;1007;U16;;Unit 10 Average Cell Temperature;;1.0;0.0;Deg.C;4
+86;4;1101;U16;;Unit 11 Fault Status;;1.0;0.0;;4
+87;4;1102;U16;;Unit 11 Allowable Charge - Discharge Status;;1.0;0.0;;4
+88;4;1103;U16;;Unit 11 SOC;;1.0;0.0;%;4
+89;4;1104;U16;;Unit 11 SOH;;1.0;0.0;%;4
+90;4;1105;U16;;Unit 11 Active Power;;1.0;0.0;A;4
+91;4;1106;U16;;Unit 11 Average Cell Voltage;;1.0;0.0;V;4
+92;4;1107;U16;;Unit 11 Average Cell Temperature;;1.0;0.0;Deg.C;4
+93;4;1201;U16;;Unit 12 Fault Status;;1.0;0.0;;4
+94;4;1202;U16;;Unit 12 Allowable Charge - Discharge Status;;1.0;0.0;;4
+95;4;1203;U16;;Unit 12 SOC;;1.0;0.0;%;4
+96;4;1204;U16;;Unit 12 SOH;;1.0;0.0;%;4
+97;4;1205;U16;;Unit 12 Active Power;;1.0;0.0;A;4
+98;4;1206;U16;;Unit 12 Average Cell Voltage;;1.0;0.0;V;4
+99;4;1207;U16;;Unit 12 Average Cell Temperature;;1.0;0.0;Deg.C;4
+100;4;1301;U16;;Unit 13 Fault Status;;1.0;0.0;;4
+101;4;1302;U16;;Unit 13 Allowable Charge - Discharge Status;;1.0;0.0;;4
+102;4;1303;U16;;Unit 13 SOC;;1.0;0.0;%;4
+103;4;1304;U16;;Unit 13 SOH;;1.0;0.0;%;4
+104;4;1305;U16;;Unit 13 Active Power;;1.0;0.0;A;4
+105;4;1306;U16;;Unit 13 Average Cell Voltage;;1.0;0.0;V;4
+106;4;1307;U16;;Unit 13 Average Cell Temperature;;1.0;0.0;Deg.C;4
+107;4;1401;U16;;Unit 14 Fault Status;;1.0;0.0;;4
+108;4;1402;U16;;Unit 14 Allowable Charge - Discharge Status;;1.0;0.0;;4
+109;4;1403;U16;;Unit 14 SOC;;1.0;0.0;%;4
+110;4;1404;U16;;Unit 14 SOH;;1.0;0.0;%;4
+111;4;1405;U16;;Unit 14 Active Power;;1.0;0.0;A;4
+112;4;1406;U16;;Unit 14 Average Cell Voltage;;1.0;0.0;V;4
+113;4;1407;U16;;Unit 14 Average Cell Temperature;;1.0;0.0;Deg.C;4
+114;4;1501;U16;;Unit 15 Fault Status;;1.0;0.0;;4
+115;4;1502;U16;;Unit 15 Allowable Charge - Discharge Status;;1.0;0.0;;4
+116;4;1503;U16;;Unit 15 SOC;;1.0;0.0;%;4
+117;4;1504;U16;;Unit 15 SOH;;1.0;0.0;%;4
+118;4;1505;U16;;Unit 15 Active Power;;1.0;0.0;A;4
+119;4;1506;U16;;Unit 15 Average Cell Voltage;;1.0;0.0;V;4
+120;4;1507;U16;;Unit 15 Average Cell Temperature;;1.0;0.0;Deg.C;4
+121;4;1601;U16;;Unit 16 Fault Status;;1.0;0.0;;4
+122;4;1602;U16;;Unit 16 Allowable Charge - Discharge Status;;1.0;0.0;;4
+123;4;1603;U16;;Unit 16 SOC;;1.0;0.0;%;4
+124;4;1604;U16;;Unit 16 SOH;;1.0;0.0;%;4
+125;4;1605;U16;;Unit 16 Active Power;;1.0;0.0;A;4
+126;4;1606;U16;;Unit 16 Average Cell Voltage;;1.0;0.0;V;4
+127;4;1607;U16;;Unit 16 Average Cell Temperature;;1.0;0.0;Deg.C;4
+128;4;1;U16;;Control Mode Setting;;1.0;0.0;;4
+129;4;2;U16;;Active Power Command;;1.0;0.0;kW;4
+130;4;3;U16;;Reactive Power Command;;1.0;0.0;kVar;4
+131;4;4;U16;;Operating Mode Setting;;1.0;0.0;;4
+132;4;5;U16;;System Fault Reset Command;;1.0;0.0;;4
+133;4;6;U16;;System Power On/Off Command;CMD_ON;1.0;0.0;;1
+134;4;7;U16;;Off-Grid VF Mode Output Frequency Setting;FREQ;1.0;0.0;Hz;4
+135;4;8;U16;;Off-Grid VF Mode Output Line Voltage Setting;;1.0;0.0;V;4

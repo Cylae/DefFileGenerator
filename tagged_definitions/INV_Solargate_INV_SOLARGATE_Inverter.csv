@@ -1,0 +1,152 @@
+﻿modbusRTU;Inverter;Solargate;INV_SOLARGATE_Inverter;;;;;;;
+1;3;40001;U16;;PKW1;pkw1;1.000000;0.000000;;0
+2;3;40002;U16;;PKW2;pkw2;1.000000;0.000000;;0
+3;3;40003;U16;;PKW3;pkw3;1.000000;0.000000;;0
+4;3;40004;U16;;PKW4;pkw4;1.000000;0.000000;;0
+5;3;40005;U16;;Command Word;command_word;1.000000;0.000000;;0
+6;3;40006;I16;;DC voltage reference;dc_voltage_reference;1.000000;0.000000;;0
+7;3;40007;I16;;Preset DC voltage reference;preset_dc_voltage_reference;1.000000;0.000000;;0
+8;3;40008;I16;;Reactive power reference;reactive_power_reference;0.003815;0.000000;'%;0
+9;3;40009;I16;;Preset Reactive power reference;preset_reactive_power_reference;0.003815;0.000000;'%;0
+10;3;40010;U16;;Strobe for preset;strobe_for_preset;1.000000;0.000000;;0
+11;3;40011;U16;;Auxiliary Command Word;auxiliary_command_word;1.000000;0.000000;;0
+12;3;40012;I16;;Active power reference;active_power_reference;0.003815;0.000000;'%;0
+13;3;40013;I16;;Preset Active power reference;preset_active_power_reference;0.003815;0.000000;'%;0
+14;3;40014;I16;;Reactive current reference;reactive_current_reference;1.000000;0.000000;;0
+15;3;40015;I16;;Preset Reactive current reference;preset_reactive_current_reference;1.000000;0.000000;;0
+16;3;40016;I16;;Active current reference;active_current_reference;1.000000;0.000000;;0
+17;3;40017;I16;;Preset Active current reference;preset_active_current_reference;1.000000;0.000000;;0
+18;3;40018;I16;;Upper Limit for active current;upper_limit_for_active_current;1.000000;0.000000;;0
+19;3;40019;I16;;Preset Limit for active current;preset_limit_for_active_current;1.000000;0.000000;;0
+20;3;40020;I16;;Upper Limit for reactive current;upper_limit_for_reactive_current;1.000000;0.000000;;0
+21;3;40021;I16;;Preset Limit for reactive current;preset_limit_for_reactive_current;1.000000;0.000000;;0
+22;3;40210;U16;;RMS AcLine reactive current;rms_acline_reactive_current;1.000000;0.000000;;4
+23;3;40211;I16;;AC Line Power Factor (cosφ);ac_line_power_factor_cos;0.000031;0.000000;;4
+24;3;40212;U16;;DC bus voltage (Vdc);dc_bus_voltage_vdc;1.000000;0.000000;;4
+25;3;40213;U16;;AC Line Voltage;ac_line_voltage;1.000000;0.000000;;4
+26;3;40214;U16;;AC Line frequency;ac_line_frequency;1.000000;0.000000;;4
+27;3;40215;U16;;Converter output voltage;converter_output_voltage;1.000000;0.000000;;4
+28;3;40216;U16;;RMS converter current;rms_converter_current;1.000000;0.000000;;4
+29;3;40217;I16;;AC Line Active Power;ac_line_active_power;1.000000;0.000000;;4
+30;3;40218;I16;;AC Line Reactive Power;ac_line_reactive_power;1.000000;0.000000;;4
+31;3;40219;U16;;Phase sequence;phase_sequence;1.000000;0.000000;;4
+32;3;40220;I16;;Analog imput voltage 1 (VsyncUV);analog_imput_voltage_1_vsyncuv;0.000381;0.000000;V;4
+33;3;40221;I16;;Analog imput voltage 2 (VsyncWU);analog_imput_voltage_2_vsyncwu;0.000381;0.000000;V;4
+34;3;40222;I16;;Analog output (AO 1) command from network;analog_output_ao_1_command_from_network;0.000381;0.000000;V;4
+35;3;40223;I16;;Analog output (AO 2) command from network;analog_output_ao_2_command_from_network;0.000381;0.000000;V;4
+36;3;40224;I16;;Analog output (AO 3) command from network;analog_output_ao_3_command_from_network;0.000381;0.000000;V;4
+37;3;40225;I16;;Analog output (AO 4) command from network;analog_output_ao_4_command_from_network;0.000381;0.000000;V;4
+38;3;40256;U16;;Modbus comunication state;modbus_comunication_state;1.000000;0.000000;;4
+39;3;40308;U16;;Status for PC;status_for_pc;1.000000;0.000000;;4
+40;3;40308_0_1;BITS;;StatusPC Protection;statuspc_protection;1.000000;0.000000;;8
+41;3;40308_1_1;BITS;;StatusPC Idle;statuspc_idle;1.000000;0.000000;;4
+42;3;40308_2_1;BITS;;StatusPC Ready;statuspc_ready;1.000000;0.000000;;4
+43;3;40308_3_1;BITS;;StatusPC Run;statuspc_run;1.000000;0.000000;;4
+44;3;40308_4_1;BITS;;StatusPC Stop;statuspc_stop;1.000000;0.000000;;4
+45;3;40308_7_1;BITS;;StatusPC BusDrop;statuspc_busdrop;1.000000;0.000000;;4
+46;3;40308_8_1;BITS;;StatusPC MacroLoading;statuspc_macroloading;1.000000;0.000000;;4
+47;3;40308_10_1;BITS;;StatusPC Alarm;statuspc_alarm;1.000000;0.000000;;8
+48;3;40308_11_1;BITS;;StatusPC Manual;statuspc_manual;1.000000;0.000000;;4
+49;3;40308_12_1;BITS;;StatusPC LEDOnPCKeypad;statuspc_ledonpckeypad;1.000000;0.000000;;4
+50;3;40308_13_1;BITS;;StatusPC LEDFaultKeypad;statuspc_ledfaultkeypad;1.000000;0.000000;;4
+51;3;40308_14_1;BITS;;StatusPC LEDRunKeypad;statuspc_ledrunkeypad;1.000000;0.000000;;4
+52;3;40308_15_1;BITS;;StatusPC DialogBoxText2;statuspc_dialogboxtext2;1.000000;0.000000;;4
+53;3;40309;U16;;DC current;dc_current;0.100000;0.000000;A;4
+54;3;40310;U16;;DC voltage;dc_voltage;0.100000;0.000000;V;4
+55;3;40311;I16;;DC link power;dc_link_power;0.100000;0.000000;kW;4
+56;3;40312;I16;;CPU temperature Degrees;cpu_temperature_degrees;0.100000;0.000000;Degr.Celsius;4
+57;3;40313;U16;;AC line current;ac_line_current;0.100000;0.000000;A;4
+58;3;40314;U16;;AC line voltage;ac_line_voltage_1;0.100000;0.000000;V;4
+59;3;40315;I16;;Active Power;P_AC;0.100000;0.000000;kW;4
+60;3;40316;U16;;Max absolute peak Power;max_absolute_peak_power;0.100000;0.000000;kW;4
+61;3;40317;U16;;Daily Peak Power;daily_peak_power;0.100000;0.000000;kW;4
+62;3;40318;U32_W;;Daily energy;daily_energy;0.100000;0.000000;kWh;4
+63;3;40320;U32_W;;Weekly energy;weekly_energy;0.100000;0.000000;kWh;4
+64;3;40322;U32_W;;Monthly energy;monthly_energy;0.100000;0.000000;kWh;4
+65;3;40324;U32_W;;Yearly energy;yearly_energy;0.100000;0.000000;kWh;4
+66;3;40326;U32_W;;Total energy;E_TOT;1.000000;0.000000;kWh;4
+67;3;40328;U16;;FieldNet Bitword: Last protection/alarm encoding;fieldnet_bitword_last_protectionalarm_encoding;1.000000;0.000000;;4
+68;3;40329;U16;;FieldNet Bitword: Trip hardware (TripsHW);fieldnet_bitword_trip_hardware_tripshw;1.000000;0.000000;;4
+69;3;40329_0_1;BITS;;TripHW OverCurrent;triphw_overcurrent;1.000000;0.000000;;8
+70;3;40329_1_1;BITS;;TripHW OverVoltage;triphw_overvoltage;1.000000;0.000000;;8
+71;3;40329_2_1;BITS;;TripHW ProtEsternaErr;triphw_protesternaerr;1.000000;0.000000;;8
+72;3;40329_3_1;BITS;;TripHW DesatTrip;triphw_desattrip;1.000000;0.000000;;8
+73;3;40329_4_1;BITS;;TripHW P220VError;triphw_p220verror;1.000000;0.000000;;8
+74;3;40329_5_1;BITS;;TripHW ResetFault;triphw_resetfault;1.000000;0.000000;;8
+75;3;40329_7_1;BITS;;TripHW DPRAMError;triphw_dpramerror;1.000000;0.000000;;8
+76;3;40329_8_1;BITS;;TripHW WdogExternalTrip;triphw_wdogexternaltrip;1.000000;0.000000;;8
+77;3;40329_9_1;BITS;;TripHW UnderVdc;triphw_undervdc;1.000000;0.000000;;8
+78;3;40329_10_1;BITS;;TripHW ParallProt;triphw_parallprot;1.000000;0.000000;;8
+79;3;40329_11_1;BITS;;TripHW OverTemperature;triphw_overtemperature;1.000000;0.000000;;8
+80;3;40329_12_1;BITS;;TripHW BrakeOrPrecFault;triphw_brakeorprecfault;1.000000;0.000000;;8
+81;3;40329_13_1;BITS;;TripHW P24;triphw_p24;1.000000;0.000000;;8
+82;3;40329_14_1;BITS;;TripHW NoGrid;triphw_nogrid;1.000000;0.000000;;8
+83;3;40329_15_1;BITS;;TripHW NTCError;triphw_ntcerror;1.000000;0.000000;;8
+84;3;40330;U16;;FieldNet Bitword: Trip software 1 (TripsSW 1);fieldnet_bitword_trip_software_1_tripssw_1;1.000000;0.000000;;4
+85;3;40330_0_1;BITS;;TripSW1 PrecErr;tripsw1_precerr;1.000000;0.000000;;8
+86;3;40330_2_1;BITS;;TripSW1 ConfErr;tripsw1_conferr;1.000000;0.000000;;8
+87;3;40330_3_1;BITS;;TripSW1 DSPErr;tripsw1_dsperr;1.000000;0.000000;;8
+88;3;40330_4_1;BITS;;TripSW1 NetErr;tripsw1_neterr;1.000000;0.000000;;8
+89;3;40330_5_1;BITS;;TripSW1 AndOrErr;tripsw1_andorerr;1.000000;0.000000;;8
+90;3;40330_6_1;BITS;;TripSW1 IacLimErr;tripsw1_iaclimerr;1.000000;0.000000;;8
+91;3;40330_7_1;BITS;;TripSW1 FastStopErr;tripsw1_faststoperr;1.000000;0.000000;;8
+92;3;40330_8_1;BITS;;TripSW1 UnderVoltageErr;tripsw1_undervoltageerr;1.000000;0.000000;;8
+93;3;40330_9_1;BITS;;TripSW1 TagliaErr;tripsw1_tagliaerr;1.000000;0.000000;;8
+94;3;40330_10_1;BITS;;TripSW1 GroundFaultTripErr;tripsw1_groundfaulttriperr;1.000000;0.000000;;8
+95;3;40330_11_1;BITS;;TripSW1 Exp_IO_Comm_Err;tripsw1_exp_io_comm_err;1.000000;0.000000;;8
+96;3;40330_12_1;BITS;;TripSW1 ThermErr;tripsw1_thermerr;1.000000;0.000000;;8
+97;3;40330_15_1;BITS;;TripSW1 PWM_reg_Err;tripsw1_pwm_reg_err;1.000000;0.000000;;8
+98;3;40331;U16;;FieldNet Bitword: Alarms (Alarm);fieldnet_bitword_alarms_alarm;1.000000;0.000000;;4
+99;3;40331_1_1;BITS;;Alarm CurrentHigh;alarm_currenthigh;1.000000;0.000000;;8
+100;3;40331_2_1;BITS;;Alarm UserAlarmAndFunction;alarm_useralarmandfunction;1.000000;0.000000;;8
+101;3;40331_3_1;BITS;;Alarm GroundFault;alarm_groundfault;1.000000;0.000000;;8
+102;3;40331_4_1;BITS;;Alarm EEIntWriteErr;alarm_eeintwriteerr;1.000000;0.000000;;8
+103;3;40331_5_1;BITS;;Alarm EEExtWriteErr;alarm_eeextwriteerr;1.000000;0.000000;;8
+104;3;40331_6_1;BITS;;Alarm UserAlarmDigExp;alarm_useralarmdigexp;1.000000;0.000000;;8
+105;3;40331_7_1;BITS;;Alarm UserAlarmOrFunction;alarm_useralarmorfunction;1.000000;0.000000;;8
+106;3;40331_8_1;BITS;;Alarm ThermalWarning;alarm_thermalwarning;1.000000;0.000000;;8
+107;3;40331_9_1;BITS;;Alarm PwmSincro_Out;alarm_pwmsincro_out;1.000000;0.000000;;8
+108;3;40331_10_1;BITS;;Alarm Net_Link_Fault;alarm_net_link_fault;1.000000;0.000000;;8
+109;3;40331_11_1;BITS;;Alarm UserAlarms;alarm_useralarms;1.000000;0.000000;;8
+110;3;40331_12_1;BITS;;Alarm AnOverRange;alarm_anoverrange;1.000000;0.000000;;8
+111;3;40331_13_1;BITS;;Alarm InputPhaseAlarm;alarm_inputphasealarm;1.000000;0.000000;;8
+112;3;40331_14_1;BITS;;Alarm ThermalAlm;alarm_thermalalm;1.000000;0.000000;;8
+113;3;40331_15_1;BITS;;Alarm EEIntReadErr;alarm_eeintreaderr;1.000000;0.000000;;8
+114;3;40332;U16;;FieldNet Bitword: Terminal block status (TBStatus);fieldnet_bitword_terminal_block_status_tbstatus;1.000000;0.000000;;4
+115;3;40332_0_1;BITS;;Terminal DI1_StartStop;terminal_di1_startstop;1.000000;0.000000;;4
+116;3;40332_1_1;BITS;;Terminal DI7;terminal_di7;1.000000;0.000000;;4
+117;3;40332_2_1;BITS;;Terminal DI6;terminal_di6;1.000000;0.000000;;4
+118;3;40332_3_1;BITS;;Terminal DI5;terminal_di5;1.000000;0.000000;;4
+119;3;40332_4_1;BITS;;Terminal DI3;terminal_di3;1.000000;0.000000;;4
+120;3;40332_5_1;BITS;;Terminal DI4;terminal_di4;1.000000;0.000000;;4
+121;3;40332_6_1;BITS;;Terminal DI2;terminal_di2;1.000000;0.000000;;4
+122;3;40332_7_1;BITS;;Terminal DI8_DriveEnable;terminal_di8_driveenable;1.000000;0.000000;;4
+123;3;40332_8_1;BITS;;Terminal ResetCommand;terminal_resetcommand;1.000000;0.000000;;4
+124;3;40332_9_1;BITS;;Terminal RO2;terminal_ro2;1.000000;0.000000;;4
+125;3;40332_10_1;BITS;;Terminal RO1;terminal_ro1;1.000000;0.000000;;4
+126;3;40332_11_1;BITS;;Terminal DO4_DI9;terminal_do4_di9;1.000000;0.000000;;4
+127;3;40332_12_1;BITS;;Terminal DO5_DI10;terminal_do5_di10;1.000000;0.000000;;4
+128;3;40332_13_1;BITS;;Terminal DO6;terminal_do6;1.000000;0.000000;;4
+129;3;40332_14_1;BITS;;Terminal RO3;terminal_ro3;1.000000;0.000000;;4
+130;3;40333;U16;;FieldNet Bitword: Auxiliary protection word (AuxTrip);fieldnet_bitword_auxiliary_protection_word_auxtrip;1.000000;0.000000;;4
+131;3;40334;U16;;FieldNet Bitword: DI expansion board status (InputStatus);fieldnet_bitword_di_expansion_board_status_inputstatus;1.000000;0.000000;;4
+132;3;40335;U16;;FieldNet Bitword: Saturation regulator word (SatRegWord);fieldnet_bitword_saturation_regulator_word_satregword;1.000000;0.000000;;4
+133;3;40336;U16;;FieldNet Bitword: Echo back Command Word (ExecCommand);fieldnet_bitword_echo_back_command_word_execcommand;1.000000;0.000000;;4
+134;3;40337;U16;;FieldNet Bitword: Drive Status Word (Status Word);fieldnet_bitword_drive_status_word_status_word;1.000000;0.000000;;4
+135;3;40337_0_1;BITS;;DriveStatus StatProtection;drivestatus_statprotection;1.000000;0.000000;;4
+136;3;40337_1_1;BITS;;DriveStatus StatRun;drivestatus_statrun;1.000000;0.000000;;4
+137;3;40337_3_1;BITS;;DriveStatus StatSpecialFunction;drivestatus_statspecialfunction;1.000000;0.000000;;4
+138;3;40337_4_1;BITS;;DriveStatus StatPrecharge;drivestatus_statprecharge;1.000000;0.000000;;4
+139;3;40337_5_1;BITS;;DriveStatus StatWait4Synchro;drivestatus_statwait4synchro;1.000000;0.000000;;4
+140;3;40337_6_1;BITS;;DriveStatus StatNetOK;drivestatus_statnetok;1.000000;0.000000;;4
+141;3;40337_8_1;BITS;;DriveStatus StatIacLimActive;drivestatus_statiaclimactive;1.000000;0.000000;;4
+142;3;40337_9_1;BITS;;DriveStatus StatLocal;drivestatus_statlocal;1.000000;0.000000;;4
+143;3;40337_12_1;BITS;;DriveStatus LocalReset;drivestatus_localreset;1.000000;0.000000;;4
+144;3;40337_14_1;BITS;;DriveStatus StatBusDrop;drivestatus_statbusdrop;1.000000;0.000000;;4
+145;3;40337_15_1;BITS;;DriveStatus StatPerNetwork;drivestatus_statpernetwork;1.000000;0.000000;;4
+146;3;40338;U16;;FieldNet Bitword: Trip software 2 (TripSW 2);fieldnet_bitword_trip_software_2_tripsw_2;1.000000;0.000000;;4
+147;3;40339;U16;;Last protection and/or alarm occurred;last_protection_andor_alarm_occurred;1.000000;0.000000;;4
+148;3;40340;U16;;Hours of run;hours_of_run;1.000000;0.000000;h;4
+149;3;40341;U16;;Days of run;days_of_run;1.000000;0.000000;d;4
+150;3;40408;I16;;Retour consigne puissance reactive;retour_consigne_puissance_reactive;0.003815;0.000000;'%;4
+151;3;40412;I16;;Retour consigne puissance active;retour_consigne_puissance_active;0.003815;0.000000;'%;4

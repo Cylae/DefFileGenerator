@@ -1,0 +1,12 @@
+﻿modbusRTU;Other;Webdyn;Schneider_Modbus_RL;;;;;;;
+1;4;6143;U16;;PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;4
+2;4;6144;U16;;PV1 Current;I_DC_STRING_1;1.0;0.0;A;4
+3;4;6145;U16;;PV1 Power;;1.0;0.0;kW;4
+4;4;2050;U16;;Energy since commissioning;;1.0;0.0;kWh;4
+5;4;64249;U16;;Power production;;1.0;0.0;;4
+6;4;64250;U16;;Output power;P_AC;1.0;0.0;kW;4
+7;4;64251;U16;;Duration;;1.0;0.0;min;4
+8;4;6185;U16;;PV2 Voltage;U_DC_STRING_2;1.0;0.0;V;4
+9;4;6171;U16;;Real Power;;1.0;0.0;kW;4
+10;4;6186;U16;;PV2 Current;I_DC_STRING_2;1.0;0.0;A;4
+11;4;6191;U16;;PV2 Power;;1.0;0.0;kW;4

@@ -1,0 +1,436 @@
+﻿Modbus;Inverter;SMA;STP_X;;;;;;;
+1;3;30005;U32;;Numero de serie_0;SERIAL;1.0;0.0;;4
+2;3;30051;U32;;Classe d appareil;;1.0;0.0;;4
+3;3;30053;U32;;Type d appareil;MODEL;1.0;0.0;;4
+4;3;30055;U32;;Fabricant;MANUFACTURER;1.0;0.0;;4
+5;3;30057;U32;;Numero de serie_1;;1.0;0.0;;4
+6;3;30059;U32;;Version du micrologiciel;;1.0;0.0;;4
+7;3;30201;U32;;Etat;;1.0;0.0;;4
+8;3;30203;U32;;Puissance nominale en etat OK_0;P_RATED;0.001;0.0;kW;4
+9;3;30205;U32;;Puissance nominale en etat avertissement;;1.0;0.0;W;4
+10;3;30207;U32;;Puissance nominale en etat erreur;;1.0;0.0;W;4
+11;3;30213;U32;;Message;;1.0;0.0;;4
+12;3;30215;U32;;Mesure d elimination des erreurs;;1.0;0.0;;4
+13;3;30217;U32;;Relais_Contacteur reseau;;1.0;0.0;;4
+14;3;30219;U32;;Cause de la reduction de puissance;;1.0;0.0;;4
+15;3;30225;U32;;Resistance d isolement;R_ISO;1.0;0.0;Ohm;4
+16;3;30231;U32;;Puissance active assignee WMaxOutRtg;P_AC;1.0;0.0;W;4
+17;3;30233;U32;;Lim. de puiss. active reglee_RO;;1.0;0.0;W;4
+18;3;30235;U32;;Etat du mode de sauvegarde;;1.0;0.0;;4
+19;3;30247;U32;;Numero d evenement actuel pour fabricant;;1.0;0.0;;4
+20;3;30251;U32;;Etat de verrouillage;;1.0;0.0;;4
+21;3;30513;U64;;Rendement total_0;;1.0;0.0;Wh;4
+22;3;30521;U64;;Temps de service_0;;1.0;0.0;s;4
+23;3;30525;U64;;Temps d injection_1;;1.0;0.0;s;4
+24;3;30529;U32;;Rendement total_1;;1.0;0.0;Wh;4
+25;3;30541;U32;;Temps de service_1;;1.0;0.0;s;4
+26;3;30543;U32;;Temps d injection_0;;1.0;0.0;s;4
+27;3;30559;U32;;Nombre evenements pour utilisateur_0;;1.0;0.0;;4
+28;3;30561;U32;;Nombre evenements pour installateur_1;;1.0;0.0;;4
+29;3;30599;U32;;Nombre de connexions au reseau;;1.0;0.0;;4
+30;3;30775;I32;;Puissance;;0.001;0.0;kW;4
+31;3;30777;I32;;Puissance L1;;1.0;0.0;W;4
+32;3;30779;I32;;Puissance L2;;1.0;0.0;W;4
+33;3;30781;I32;;Puissance L3;;1.0;0.0;W;4
+34;3;30783;U32;;Tension du reseau phase L1;U_AC_1;0.01;0.0;V;4
+35;3;30785;U32;;Tension du reseau phase L2;U_AC_2;0.01;0.0;V;4
+36;3;30787;U32;;Tension du reseau phase L3;U_AC_3;0.01;0.0;V;4
+37;3;30789;U32;;Tension de reseau entre phase L1 et L2;;0.01;0.0;V;4
+38;3;30791;U32;;Tension de reseau phase L2 contre L3;;0.01;0.0;V;4
+39;3;30793;U32;;Tension de reseau phase L3 contre L1;;0.01;0.0;V;4
+40;3;30795;U32;;Courant du reseau;;0.001;0.0;A;4
+41;3;30797;U32;;Courant du reseau phase L1_0;;0.001;0.0;A;4
+42;3;30799;U32;;Courant du reseau phase L2_0;;0.001;0.0;A;4
+43;3;30801;U32;;Courant du reseau phase L3_0;;0.001;0.0;A;4
+44;3;30803;U32;;Frequence du reseau;FREQ;0.01;0.0;Hz;4
+45;3;30805;I32;;Puissance reactive;Q_AC;0.01;0.0;VAr;4
+46;3;30807;I32;;Puissance reactive L1;Q_AC_1;1.0;0.0;VAr;4
+47;3;30809;I32;;Puissance reactive L2;Q_AC_2;1.0;0.0;VAr;4
+48;3;30811;I32;;Puissance reactive L3;Q_AC_3;1.0;0.0;VAr;4
+49;3;30813;I32;;Puissance apparente;S_AC;1.0;0.0;VA;4
+50;3;30815;I32;;Puissance apparente L1;S_AC_1;1.0;0.0;VA;4
+51;3;30817;I32;;Puissance apparente L2;S_AC_2;1.0;0.0;VA;4
+52;3;30819;I32;;Puissance apparente L3;S_AC_3;1.0;0.0;VA;4
+53;3;30823;U32;;Type d excitation du cos phi;PF;1.0;0.0;;4
+54;3;30827;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_0;;1.0;0.0;VAr;4
+55;3;30829;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_1;;0.1;0.0;;4
+56;3;30835;U32;;Mode de fonctionnement consigne de puissance active_RO;;1.0;0.0;;4
+57;3;30837;U32;;Limitation de la puissance active P_ configuration de la puissance active_RO_0;;1.0;0.0;W;4
+58;3;30839;U32;;Limitation de la puissance active P_ configuration de la puissance active_RO_1;;1.0;0.0;pct;4
+59;3;30845;U32;;Etat de charge actuel de la batterie;;1.0;0.0;%;4
+60;3;30847;U32;;Capacite de la batterie actuelle;;1.0;0.0;pct;4
+61;3;30881;U32;;Connexion reseau de l_installation;;1.0;0.0;;4
+62;3;30921;I32;;Consigne de puissance reactive manuelle avec puissance active nulle_0;;1.0;0.0;VAr;4
+63;3;30923;I32;;Consigne de puissance reactive manuelle avec puissance active nulle_1;;0.1;0.0;;4
+64;3;30949;U32;;Facteur de decalage;;0.001;0.0;;4
+65;3;30963;I32;;Entree courant DC_1;I_DC;0.001;0.0;A;4
+66;3;30965;I32;;Entree tension DC_1;U_DC;0.01;0.0;V;4
+67;3;30967;I32;;Entree puissance DC_1;P_DC;1.0;0.0;W;4
+68;3;30969;I32;;Entree courant DC_2;;0.001;0.0;A;4
+69;3;30971;I32;;Entree tension DC_2;;0.01;0.0;V;4
+70;3;30973;I32;;Entree puissance DC_2;;1.0;0.0;W;4
+71;3;30975;I32;;Tension du circuit intermediaire;;0.01;0.0;V;4
+72;3;30977;I32;;Courant du reseau phase L1_1;;0.001;0.0;A;4
+73;3;30979;I32;;Courant du reseau phase L2_1;;0.001;0.0;A;4
+74;3;30981;I32;;Courant du reseau phase L3_1;;0.001;0.0;A;4
+75;3;31085;U32;;Puissance nominale en etat OK_1;;1.0;0.0;W;4
+76;3;31209;I32;;Entree courant DC_3;;0.001;0.0;A;4
+77;3;31211;I32;;Entree tension DC_3;;0.01;0.0;V;4
+78;3;31213;I32;;Entree puissance DC_3;;1.0;0.0;W;4
+79;3;31215;I32;;Entree courant DC_4;;0.001;0.0;A;4
+80;3;31217;I32;;Entree tension DC_4;;0.01;0.0;V;4
+81;3;31219;I32;;Entree puissance DC_4;;1.0;0.0;W;4
+82;3;31221;I32;;Facteur de dephasage EEI;;0.001;0.0;;4
+83;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;WIND_SPEED;0.01;0.0;pct;4
+84;3;31245;U32;;Limitation de puissance PV interne;;0.01;0.0;pct;4
+85;3;31247;I32;;Courant de defaut;;0.001;0.0;A;4
+86;3;31391;U32;;Etat batterie;;1.0;0.0;;4
+87;3;31405;U32;;Cons. actuelle lim. puis. act. P;;1.0;0.0;W;4
+88;3;31795;I32;;Entree courant DC_5;;0.001;0.0;A;4
+89;3;31797;I32;;Entree courant DC_6;;0.001;0.0;A;4
+90;3;31799;I32;;Entree courant DC_7;;0.001;0.0;A;4
+91;3;31801;I32;;Entree courant DC_8;;0.001;0.0;A;4
+92;3;31803;I32;;Entree courant DC_9;;0.001;0.0;A;4
+93;3;33001;U32;;Etat de veille;;1.0;0.0;;4
+94;3;33003;U32;;Etat de fonctionnement;;1.0;0.0;;4
+95;3;33007;U32;;Domaine de puissance reactive actif;;1.0;0.0;;4
+96;3;33009;U32;;cos (U)_ etat;;1.0;0.0;;4
+97;3;33017;I32;;Puissance active nominale WMaxOutRtg;;1.0;0.0;W;4
+98;3;33019;I32;;Puissance active nominale WMaxInRtg;;1.0;0.0;W;4
+99;3;33025;U32;;Puissance apparente nominale VAMaxOutRtg;;1.0;0.0;VA;4
+100;3;33027;U32;;Puissance apparente nominale VAMaxInRtg;;1.0;0.0;VA;4
+101;3;33029;I32;;Puissance active nominale VArMaxQ1Rtg;;1.0;0.0;VAr;4
+102;3;33031;I32;;Puissance active nominale VArMaxQ2Rtg;;1.0;0.0;VAr;4
+103;3;33033;I32;;Puissance active nominale VArMaxQ3Rtg;;1.0;0.0;VAr;4
+104;3;33035;I32;;Puissance active nominale VArMaxQ4Rtg;;1.0;0.0;VAr;4
+105;3;33037;U32;;cos phi nominal PFMinQ1Rtg;;1.0E-4;0.0;;4
+106;3;33039;U32;;cos phi nominal PFMinQ2Rtg;;1.0E-4;0.0;;4
+107;3;33041;U32;;cos phi nominal PFMinQ3Rtg;;1.0E-4;0.0;;4
+108;3;33043;U32;;cos phi nominal PFMinQ4Rtg;;1.0E-4;0.0;;4
+109;3;34113;I32;;Temperature interieure;;0.1;0.0;C;4
+110;3;34611;I32;;Temperature extrerieure mesuree maximale;;0.1;0.0;C;4
+111;3;34695;I32;;Cons. puissance reactive max.;;0.01;0.0;pct;4
+112;3;35377;U64;;Nombre evenements pour utilisateur_1;;1.0;0.0;;4
+113;3;35381;U64;;Nombre evenements pour installateur_0;;1.0;0.0;;4
+114;3;40007;U32;;Type de regulation de tension DC;;1.0;0.0;;4
+115;3;40009;U32;;Mode de fonctionnement general;;1.0;0.0;;4
+116;3;40015;I16;;Lim. puis. react. normalisee via cde install.;;0.1;0.0;;4
+117;3;40016;I16;;Limite puissance alim normalisee via cde install.;;1.0;0.0;pct;4
+118;3;40018;U32;;Mise hors service rapide_WO;;1.0;0.0;;4
+119;3;40024;U16;;Consigne externe cos phi_ consigne de cos phi avec puissance active delivree;;1.0E-4;0.0;;4
+120;3;40025;U32;;Consigne externe cos phi_ type d excitation avec puissance active delivree;;1.0;0.0;;4
+121;3;40029;U32;;Etat de fonctionnement general;;1.0;0.0;;4
+122;3;40063;U32;;Version de logiciel du processeur principal;;1.0;0.0;;4
+123;3;40067;U32;;Numero de serie_2;;1.0;0.0;;4
+124;3;40077;U32;;Declencher le redemarrage de l appareil;;1.0;0.0;;4
+125;3;40101;U32;;Surveillance de frequence_ seuil minimum inferieur;;0.01;0.0;Hz;4
+126;3;40103;U32;;Surveillance de frequence_ seuil maximum superieur;;0.01;0.0;Hz;4
+127;3;40109;U32;;Jeu de donnees regionales regle;;1.0;0.0;;4
+128;3;40135;U32;;Frequence nominale;;0.01;0.0;Hz;4
+129;3;40157;U32;;Configuration automatique de Speedwire activee;;1.0;0.0;;4
+130;3;40183;U32;;Attribution des phases;;1.0;0.0;;4
+131;3;40187;U32;;Capacite nominale batterie;;1.0;0.0;Wh;4
+132;3;40202;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_2;;1.0;0.0;VAr;4
+133;3;40204;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_3;;0.1;0.0;;4
+134;3;40210;U32;;Mode de fonctionnement consigne de puissance active_RW;CMD_P_ENA;1.0;0.0;;1
+135;3;40212;U32;;Limitation de la puissance active P_ configuration de la puissance active_W;;1.0;0.0;W;4
+136;3;40214;U32;;Limitation de la puissance active P_ configuration de la puissance active_pct;CMD_P_AC_SET_PERCENT;1.0;0.0;pct;1
+137;3;40236;U32;;Mode de service de BMS_0;;1.0;0.0;;4
+138;3;40242;U32;;P(f)_ taux de modification de la puissance active apres la fin du defaut;;1.0;0.0;pct/min;4
+139;3;40244;U32;;Soutien dynamique du reseau_ mode statique de courant reactif;;1.0;0.0;;4
+140;3;40246;U32;;Soutien dynamique du reseau_ facteur phi du mode statique de courant reactif en cas de sous-tension;;0.01;0.0;pct;4
+141;3;40248;U32;;Soutien dynamique du reseau_ facteur phi du mode statique de courant reactif en cas de surtension;;0.01;0.0;pct;4
+142;3;40250;U32;;Soutien dynamique du reseau_ mode de fonctionnement;;1.0;0.0;;4
+143;3;40426;U32;;Surveillance de frequence_ temps de declenchement seuil maximum superieur;;1.0;0.0;ms;4
+144;3;40432;U32;;Surveillance de frequence_ seuil maximum inferieur;;0.01;0.0;Hz;4
+145;3;40434;U32;;Surveillance de frequence_ temps de declenchement seuil maximum inferieur;;1.0;0.0;ms;4
+146;3;40436;U32;;Surveillance de frequence_ seuil minimum superieur;;0.01;0.0;Hz;4
+147;3;40438;U32;;Surveillance de frequence_ temps de declenchement seuil minimum superieur;;1.0;0.0;ms;4
+148;3;40444;U32;;Surveillance de frequence_ temps de declenchement seuil minimum inferieur;;1.0;0.0;ms;4
+149;3;40450;U32;;Surveillance de tension_ temps de declenchement seuil maximum moyen;;1.0;0.0;ms;4
+150;3;40456;U32;;Surveillance de tension_ temps de declenchement seuil maximum inferieur;;1.0;0.0;ms;4
+151;3;40462;U32;;Surveillance de tension_ temps de declenchement seuil minimum superieur;;1.0;0.0;ms;4
+152;3;40466;U32;;Surveillance de tension_ temps de declenchement seuil minimum moyen;;1.0;0.0;ms;4
+153;3;40468;U32;;Surveillance de tension_ temps de declenchement seuil minimum inferieur;;1.0;0.0;ms;4
+154;3;40472;U32;;Tension nominale de reseau;;1.0;0.0;V;4
+155;3;40480;U32;;Cour.nom. toutes les phases;;0.001;0.0;A;4
+156;3;40647;U32;;Mises phi jour automatiques activees;;1.0;0.0;;4
+157;3;40751;U32;;Tension nominale onduleur;;1.0;0.0;V;4
+158;3;40915;U32;;Lim. de puiss. active reglee_RW;;1.0;0.0;W;4
+159;3;41121;U32;;Definition du jeu de donnees regionales;;1.0;0.0;;4
+160;3;41127;U32;;Frequence de reconnexion minimum;;0.01;0.0;Hz;4
+161;3;41129;U32;;Frequence de reconnexion maximum;;0.01;0.0;Hz;4
+162;3;41133;U32;;Entree tension minimale_0;;0.01;0.0;V;4
+163;3;41135;U32;;Entree tension minimale_1;;0.01;0.0;V;4
+164;3;41137;U32;;Entree tension minimale_2;;0.01;0.0;V;4
+165;3;41139;U32;;Entree tension minimale_3;;0.01;0.0;V;4
+166;3;41141;U32;;Entree tension minimale_4;;0.01;0.0;V;4
+167;3;41145;U32;;Tension limite pour terminer l injection_0;;0.01;0.0;V;4
+168;3;41147;U32;;Tension limite pour terminer l injection_1;;0.01;0.0;V;4
+169;3;41149;U32;;Tension limite pour terminer l injection_2;;0.01;0.0;V;4
+170;3;41151;U32;;Tension limite pour terminer l injection_3;;0.01;0.0;V;4
+171;3;41153;U32;;Tension limite pour terminer l injection_4;;0.01;0.0;V;4
+172;3;41155;U32;;Retard de demarrage entree;;1.0;0.0;s;4
+173;3;41169;U32;;Resistance d isolement minimale;;1.0;0.0;Ohm;4
+174;3;41171;U32;;Reglage energie tot. degagee point rac. reseau;;1.0;0.0;kWh;4
+175;3;41173;U32;;Reglage temps serv. tot. au point raccord. reseau;;1.0;0.0;Hz;4
+176;3;41193;U32;;Consigne de puissance active externe_ comportement de retombee;;1.0;0.0;;4
+177;3;41195;U32;;Consigne de puissance active externe_ Timeout;;1.0;0.0;s;4
+178;3;41201;U32;;Taux d_augmentation du changement de rayonnement_0;;1.0;0.0;pct/min;4
+179;3;41219;U32;;Consigne de puissance reactive externe_ comportement de retombee;;1.0;0.0;;4
+180;3;41221;U32;;Consigne de puissance reactive externe_ Timeout;;1.0;0.0;s;4
+181;3;41223;I32;;Consigne de puissance reactive externe_ valeur de retombee;;0.01;0.0;;4
+182;3;41225;U32;;Consigne cos phi externe_ comportement de retombee_0;;1.0;0.0;;4
+183;3;41227;U32;;Consigne cos phi externe_ Timeout_0;;1.0;0.0;s;4
+184;3;41229;I32;;Consigne externe cos phi_ valeur de retombee de cos phi avec puiss. active delivree;;1.0E-4;0.0;;4
+185;3;41249;I32;;Limitation de puissance active absorbee en _;;0.01;0.0;pct;4
+186;3;41251;I32;;Limitation de puissance absorbee en W;;1.0;0.0;W;4
+187;3;41253;U32;;Mise hors service rapide_RW;;1.0;0.0;;4
+188;3;41259;U32;;Mode de service de BMS_1;;1.0;0.0;;4
+189;3;41265;U32;;AFCI active;;1.0;0.0;;4
+190;3;41311;U32;;Q(U)_ mode de fonctionnement de l_adaptation de la tension de reference;;1.0;0.0;;4
+191;3;41313;U32;;Q(U)_ temps de reglage de l_adaptation de la tension de reference;;1.0;0.0;s;4
+192;3;41315;U32;;Mode de fonctionnement regulateur de puissance active;;1.0;0.0;;4
+193;3;41317;U32;;Mode de fonctionnement pour limiteur puissance reactive;;1.0;0.0;;4
+194;3;41319;U32;;Procedure de puissance reactive en cas de puissance active delivree;;1.0;0.0;;4
+195;3;41321;U32;;Procedure de puissance reactive en cas de puissance active absorbee;;1.0;0.0;;4
+196;3;41323;U32;;Procedure de puissance reactive en cas de puissance active nulle;;1.0;0.0;;4
+197;3;41325;U32;;Q(U)_ valeur de tension_0;;0.001;0.0;p.u.;4
+198;3;41327;U32;;Q(U)_ valeur de tension_1;;0.001;0.0;p.u.;4
+199;3;41329;U32;;Q(U)_ valeur de tension_2;;0.001;0.0;p.u.;4
+200;3;41331;U32;;Q(U)_ valeur de tension_3;;0.001;0.0;p.u.;4
+201;3;41333;U32;;Q(U)_ valeur de tension_4;;0.001;0.0;p.u.;4
+202;3;41335;U32;;Q(U)_ valeur de tension_5;;0.001;0.0;p.u.;4
+203;3;41337;U32;;Q(U)_ valeur de tension_6;;0.001;0.0;p.u.;4
+204;3;41339;U32;;Q(U)_ valeur de tension_7;;0.001;0.0;p.u.;4
+205;3;41341;I32;;Q(U)_ valeur de puissance reactive_0;;0.001;0.0;;4
+206;3;41343;I32;;Q(U)_ valeur de puissance reactive_1;;0.001;0.0;;4
+207;3;41345;I32;;Q(U)_ valeur de puissance reactive_2;;0.001;0.0;;4
+208;3;41347;I32;;Q(U)_ valeur de puissance reactive_3;;0.001;0.0;;4
+209;3;41349;I32;;Q(U)_ valeur de puissance reactive_4;;0.001;0.0;;4
+210;3;41351;I32;;Q(U)_ valeur de puissance reactive_5;;0.001;0.0;;4
+211;3;41353;I32;;Q(U)_ valeur de puissance reactive_6;;0.001;0.0;;4
+212;3;41355;I32;;Q(U)_ valeur de puissance reactive_7;;0.001;0.0;;4
+213;3;41367;U32;;PFMinQ1-Q4 Limitation pour tous les modes de puissance reactive;;1.0;0.0;;4
+214;3;41369;I32;;Seuil d activation en cas de puissance active delivree;;0.001;0.0;pct;4
+215;3;41371;I32;;Seuil de desactivation en cas de puissance active delivree;;0.001;0.0;pct;4
+216;3;41373;I32;;Seuil d activation en cas de puissance active absorbee;;0.001;0.0;pct;4
+217;3;41375;I32;;Seuil de desactivation en cas de puissance active absorbee;;0.001;0.0;pct;4
+218;3;41377;U32;;Consigne de puissance reactive avec limitation de tension;;1.0;0.0;;4
+219;3;41383;U32;;Consigne de puissance active externe;;1.0;0.0;;4
+220;3;41415;U32;;Consigne de puissance reactive avec limitation de tension_ valeur de tension_0;;0.01;0.0;p.u.;4
+221;3;41417;U32;;Consigne de puissance reactive avec limitation de tension_ valeur de tension_1;;0.01;0.0;p.u.;4
+222;3;41419;U32;;Consigne de puissance reactive avec limitation de tension_ valeur de tension_2;;0.01;0.0;p.u.;4
+223;3;41421;U32;;Consigne de puissance reactive avec limitation de tension_ valeur de tension_3;;0.01;0.0;p.u.;4
+224;3;41423;I32;;Consigne de puissance reactive avec limitation de tension_ valeur de puissance reactive_0;;0.01;0.0;;4
+225;3;41425;I32;;Consigne de puissance reactive avec limitation de tension_ valeur de puissance reactive_1;;0.01;0.0;;4
+226;3;41427;I32;;Consigne de puissance reactive avec limitation de tension_ valeur de puissance reactive_2;;0.01;0.0;;4
+227;3;41429;I32;;Consigne de puissance reactive avec limitation de tension_ valeur de puissance reactive_3;;0.01;0.0;;4
+228;3;41431;I32;;Puissance active maximum_0;;1.0;0.0;W;4
+229;3;41433;I32;;Puissance active minimum_0;;1.0;0.0;W;4
+230;3;41435;U32;;Consigne externe cos phi_ valeur de retombee du type d excitation avec puiss. active delivree;;1.0;0.0;;4
+231;3;41445;U32;;Consigne de puissance active externe 2_ comportement de retombee;;1.0;0.0;;4
+232;3;41451;U32;;Consigne de puissance active externe 2_ Timeout;;1.0;0.0;s;4
+233;3;41453;U32;;Consigne de puissance active externe 2;;1.0;0.0;;4
+234;3;41455;U32;;Frequence locale integrale_ activation via Modbus;;1.0;0.0;;4
+235;3;41463;U32;;Puissance totale de l installation;E_TOT;0.001;0.0;kW;4
+236;3;44001;U32;;Taux de demarrage progressif P;;1.0;0.0;pct/min;4
+237;3;44003;U32;;Demarrage progressif P;;1.0;0.0;;4
+238;3;44005;U32;;Taux de demarrage progressif Q;;1.0;0.0;pct/min;4
+239;3;44007;U32;;Demarrage progressif Q;;1.0;0.0;;4
+240;3;44009;U32;;Temps de connexion apres reinitialisation;;0.001;0.0;s;4
+241;3;44011;U32;;Taux de demarrage progressif phi apres derangement reseau;;1.0;0.0;pct/min;4
+242;3;44013;U32;;Demarrage progressif phi apres derangement reseau;;1.0;0.0;;4
+243;3;44015;U32;;Temps de connexion apres erreur de reseau;;0.001;0.0;s;4
+244;3;44017;U32;;Temps de connexion rapide apres interruption breve;;0.001;0.0;s;4
+245;3;44019;U32;;Duree maximale d une interruption breve;;0.001;0.0;s;4
+246;3;44021;U32;;Reinitialiser les donnees de service;;1.0;0.0;;4
+247;3;44023;U32;;Taux d_augmentation du changement de rayonnement_1;;1.0;0.0;pct/min;4
+248;3;44025;U32;;Consigne de puissance active externe_ filtre de valeur de consigne;;1.0;0.0;;4
+249;3;44027;U32;;Consigne de puissance active externe_ temps de reglage du filtre de valeur de consigne;;0.01;0.0;s;4
+250;3;44029;U32;;Consigne de puissance active externe_ limitation du taux de changement;;1.0;0.0;;4
+251;3;44031;U32;;Consigne de puissance active externe_ taux d_augmentation;;0.01;0.0;pct/s;4
+252;3;44033;U32;;Consigne de puissance active externe_ taux de reduction;;0.01;0.0;pct/s;4
+253;3;44039;I32;;Puissance active maximum_1;;0.01;0.0;pct;4
+254;3;44041;I32;;Puissance active minimum_1;;0.01;0.0;pct;4
+255;3;44043;U32;;P(U)_ activation;;1.0;0.0;;4
+256;3;44045;U32;;P(U)_ type de tension de reference;;1.0;0.0;;4
+257;3;44047;U32;;P(U)_ type de puissance active de reference;;1.0;0.0;;4
+258;3;44049;U32;;P(U)_ nombre de points utilises;;1.0;0.0;;4
+259;3;44053;U32;;P(U)_ valeur de tension_0;;0.001;0.0;p.u.;4
+260;3;44055;U32;;P(U)_ valeur de tension_1;;0.001;0.0;p.u.;4
+261;3;44057;U32;;P(U)_ valeur de tension_2;;0.001;0.0;p.u.;4
+262;3;44059;U32;;P(U)_ valeur de tension_3;;0.001;0.0;p.u.;4
+263;3;44061;U32;;P(U)_ valeur de tension_4;;0.001;0.0;p.u.;4
+264;3;44063;U32;;P(U)_ valeur de tension_5;;0.001;0.0;p.u.;4
+265;3;44065;U32;;P(U)_ valeur de tension_6;;0.001;0.0;p.u.;4
+266;3;44069;I32;;P(U)_ valeur de puissance active_0;;0.001;0.0;;4
+267;3;44071;I32;;P(U)_ valeur de puissance active_1;;0.001;0.0;;4
+268;3;44073;I32;;P(U)_ valeur de puissance active_2;;0.001;0.0;;4
+269;3;44075;I32;;P(U)_ valeur de puissance active_3;;0.001;0.0;;4
+270;3;44077;I32;;P(U)_ valeur de puissance active_4;;0.001;0.0;;4
+271;3;44079;I32;;P(U)_ valeur de puissance active_5;;0.001;0.0;;4
+272;3;44081;I32;;P(U)_ valeur de puissance active_6;;0.001;0.0;;4
+273;3;44083;U32;;P(U)_ filtre de valeur de consigne;;1.0;0.0;;4
+274;3;44085;U32;;P(U)_ temps de reglage filtre de valeur de consigne;;0.01;0.0;s;4
+275;3;44087;U32;;P(U)_ limitation du taux de changement;;1.0;0.0;;4
+276;3;44089;U32;;P(U)_ taux d_augmentation;;0.01;0.0;pct/s;4
+277;3;44091;U32;;P(U)_ taux de reduction;;0.01;0.0;pct/s;4
+278;3;44093;U32;;P(U)_ retart au declenchement;;1.0;0.0;s;4
+279;3;44095;U32;;Procedure de puissance reactive_ grandeur de reference pour consigne de puissance reactive;;1.0;0.0;;4
+280;3;44097;U32;;Consigne cos phi externe_ comportement de retombee_1;;1.0;0.0;;4
+281;3;44099;U32;;Consigne cos phi externe_ Timeout_1;;1.0;0.0;s;4
+282;3;44101;U32;;Consigne de puissance reactive_ filtre de valeur de consigne;;1.0;0.0;;4
+283;3;44103;U32;;Consigne de puissance reactive_ temps de reglage filtre de valeur de consigne;;0.01;0.0;s;4
+284;3;44105;U32;;Consigne de puissance reactive_ limitation du taux de changement;;1.0;0.0;;4
+285;3;44107;U32;;Consigne de puissance reactive_ taux d_augmentation;;0.01;0.0;pct/s;4
+286;3;44109;U32;;Consigne de puissance reactive_ taux de reduction;;0.01;0.0;pct/s;4
+287;3;44111;U32;;Consigne cos phi externe_ valeur de retombee du cos phi en cas de puissance active delivree;;1.0E-4;0.0;;4
+288;3;44113;U32;;Consigne cos phi externe_ valeur de retombee du type d_excitation en cas de puissance active delivree;;1.0;0.0;;4
+289;3;44115;U32;;Consigne cos phi externe_ valeur de retombee du cos phi en cas de puissance active absorbee;;1.0E-4;0.0;;4
+290;3;44117;U32;;Consigne cos phi externe_ valeur de retombee du type d_excitation en cas de puissance active absorbee;;1.0;0.0;;4
+291;3;44119;U32;;Consigne cos phi manuelle_ valeur de consigne cos phi en cas de consommation de puissance active;;1.0E-4;0.0;;4
+292;3;44121;U32;;Consigne cos phi manuelle_ type d_excitation en cas de consommation de puissance active;;1.0;0.0;;4
+293;3;44123;U32;;Consigne cos phi_ filtre de valeur reelle pour valeur de mesure de puissance active_0;;1.0;0.0;;4
+294;3;44125;U32;;Consigne cos phi_ filtre de valeur reelle pour valeur de mesure de puissance active_1;;0.01;0.0;s;4
+295;3;44127;U32;;Consigne cos phi_ filtre de valeur de consigne;;1.0;0.0;;4
+296;3;44129;U32;;Consigne cos phi_ temps de reglage filtre de valeur de consigne;;0.01;0.0;s;4
+297;3;44131;U32;;Consigne cos phi_ limitation du taux de changement;;1.0;0.0;;4
+298;3;44133;U32;;Consigne cos phi_ taux d_augmentation;;0.01;0.0;pct/s;4
+299;3;44135;U32;;Consigne cos phi_ taux de reduction;;0.01;0.0;pct/s;4
+300;3;44141;U32;;Consigne cos phi externe_ valeur de consigne cos phi en cas de puissance active absorbee;;1.0E-4;0.0;;4
+301;3;44143;U32;;Consigne cos phi externe_ type d_excitation en cas de puissance active absorbee;;1.0;0.0;;4
+302;3;44145;U32;;Q(P)_ nombre de points de reference utilises;;1.0;0.0;;4
+303;3;44149;I32;;Q(P)_ valeur de puissance active_0;;0.001;0.0;;4
+304;3;44151;I32;;Q(P)_ valeur de puissance active_1;;0.001;0.0;;4
+305;3;44153;I32;;Q(P)_ valeur de puissance active_2;;0.001;0.0;;4
+306;3;44155;I32;;Q(P)_ valeur de puissance active_3;;0.001;0.0;;4
+307;3;44157;I32;;Q(P)_ valeur de puissance active_4;;0.001;0.0;;4
+308;3;44159;I32;;Q(P)_ valeur de puissance active_5;;0.001;0.0;;4
+309;3;44161;I32;;Q(P)_ valeur de puissance active_6;;0.001;0.0;;4
+310;3;44165;I32;;Q(P)_ valeur de puissance reactive_0;;0.001;0.0;;4
+311;3;44167;I32;;Q(P)_ valeur de puissance reactive_1;;0.001;0.0;;4
+312;3;44169;I32;;Q(P)_ valeur de puissance reactive_2;;0.001;0.0;;4
+313;3;44171;I32;;Q(P)_ valeur de puissance reactive_3;;0.001;0.0;;4
+314;3;44173;I32;;Q(P)_ valeur de puissance reactive_4;;0.001;0.0;;4
+315;3;44175;I32;;Q(P)_ valeur de puissance reactive_5;;0.001;0.0;;4
+316;3;44177;I32;;Q(P)_ valeur de puissance reactive_6;;0.001;0.0;;4
+317;3;44179;U32;;Q(P)_ filtre de valeur de consigne;;1.0;0.0;;4
+318;3;44181;U32;;Q(P)_ temps de reglage du filtre de valeur de consigne;;0.01;0.0;s;4
+319;3;44183;U32;;Q(P)_ limitation du taux de changement;;1.0;0.0;;4
+320;3;44185;U32;;Q(P)_ taux d_augmentation;;0.01;0.0;pct/s;4
+321;3;44187;U32;;Q(P)_ taux de reduction;;0.01;0.0;pct/s;4
+322;3;44189;U32;;Q(P)_ retart au declenchement;;1.0;0.0;s;4
+323;3;44191;U32;;Q(U)_ nombre de points de reference utilises;;1.0;0.0;;4
+324;3;44193;U32;;Q(U)_ comportement de retombee en cas de consigne de tension de reference manquante;;1.0;0.0;;4
+325;3;44195;U32;;Q(U)_ tension de reference de retombee;;0.01;0.0;p.u.;4
+326;3;44197;U32;;Q(U)_ Timeout pour consigne de tension de reference manquante;;1.0;0.0;s;4
+327;3;44199;U32;;Q(U)_ filtre de valeur de consigne;;1.0;0.0;;4
+328;3;44201;U32;;Q(U)_ temps de reglage filtre de valeur de consigne;;1.0;0.0;s;4
+329;3;44203;U32;;Q(U)_ limitation du taux de changement;;1.0;0.0;;4
+330;3;44205;U32;;Q(U)_ taux d_augmentation;;0.01;0.0;pct/s;4
+331;3;44207;U32;;Q(U)_ taux de reduction;;0.01;0.0;pct/s;4
+332;3;44209;U32;;Q(U)_ retart au declenchement;;1.0;0.0;s;4
+333;3;44211;U32;;Q(U)_ Valeur prescrite externe de la tension de reference par unite_0;;0.001;0.0;p.u.;4
+334;3;44213;U32;;cos phi(P)_ nombre de points de reference utilises;;1.0;0.0;;4
+335;3;44217;U32;;cos phi(P)_ type d_excitation_0;;1.0;0.0;;4
+336;3;44219;U32;;cos phi(P)_ type d_excitation_1;;1.0;0.0;;4
+337;3;44221;U32;;cos phi(P)_ type d_excitation_2;;1.0;0.0;;4
+338;3;44225;U32;;cos phi(P)_ valeur de consigne cos phi_0;;1.0E-4;0.0;;4
+339;3;44227;U32;;cos phi(P)_ valeur de consigne cos phi_1;;1.0E-4;0.0;;4
+340;3;44229;U32;;cos phi(P)_ valeur de consigne cos phi_2;;1.0E-4;0.0;;4
+341;3;44233;I32;;cos phi(P)_ puissance active_0;;1.0;0.0;;4
+342;3;44235;I32;;cos phi(P)_ puissance active_1;;1.0;0.0;;4
+343;3;44237;I32;;cos phi(P)_ puissance active_2;;1.0;0.0;;4
+344;3;44239;U32;;cos phi(P)_ filtre de valeur reelle pour la valeur de mesure de puissance active;;1.0;0.0;;4
+345;3;44241;U32;;cos phi(P)_ temps de reglage du filtre de valeur reelle;;0.01;0.0;s;4
+346;3;44243;U32;;cos phi(P)_ filtre de valeur de consigne;;1.0;0.0;;4
+347;3;44245;U32;;cos phi(P)_ temps de reglage filtre de valeur de consigne;;0.01;0.0;s;4
+348;3;44247;U32;;cos phi(P)_ limitation du taux de changement;;1.0;0.0;;4
+349;3;44249;U32;;cos phi(P)_ taux d_augmentation;;0.01;0.0;pct/s;4
+350;3;44251;U32;;cos phi(P)_ taux de reduction;;0.01;0.0;pct/s;4
+351;3;44253;U32;;cos phi(P)_ retart au declenchement;;1.0;0.0;s;4
+352;3;44255;U32;;cos phi(U)_ nombre de points de reference utilises;;1.0;0.0;;4
+353;3;44259;U32;;cos phi(U)_ valeur de tension_0;;0.001;0.0;p.u.;4
+354;3;44261;U32;;cos phi(U)_ valeur de tension_1;;0.001;0.0;p.u.;4
+355;3;44263;U32;;cos phi(U)_ valeur de tension_2;;0.001;0.0;p.u.;4
+356;3;44267;U32;;cos phi(U)_ type d_excitation_0;;1.0;0.0;;4
+357;3;44269;U32;;cos phi(U)_ type d_excitation_1;;1.0;0.0;;4
+358;3;44271;U32;;cos phi(U)_ type d_excitation_2;;1.0;0.0;;4
+359;3;44275;U32;;cos phi(U)_ valeur de consigne cos phi_0;;0.01;0.0;;4
+360;3;44277;U32;;cos phi(U)_ valeur de consigne cos phi_1;;0.01;0.0;;4
+361;3;44279;U32;;cos phi(U)_ valeur de consigne cos phi_2;;0.01;0.0;;4
+362;3;44281;U32;;cos phi(U)_ filtre de valeur reelle pour la valeur de mesure de puissance active;;1.0;0.0;;4
+363;3;44283;U32;;cos phi(U)_ temps de reglage du filtre de valeur reelle;;0.01;0.0;s;4
+364;3;44285;U32;;cos phi(U)_ filtre de valeur de consigne;;1.0;0.0;;4
+365;3;44287;U32;;cos phi(U)_ temps de reglage du filtre de valeur de consigne;;0.01;0.0;s;4
+366;3;44289;U32;;cos phi(U)_ limitation du taux de changement;;1.0;0.0;;4
+367;3;44291;U32;;cos phi(U)_ taux d_augmentation;;0.01;0.0;pct/s;4
+368;3;44293;U32;;cos phi(U)_ taux de reduction;;0.01;0.0;pct/s;4
+369;3;44295;U32;;cos phi(U)_ retart au declenchement;;1.0;0.0;s;4
+370;3;44297;U32;;Surveillance de tension_ seuil maximum superieur;;0.001;0.0;p.u.;4
+371;3;44299;U32;;Surveillance de tension_ seuil maximum moyen;;0.001;0.0;p.u.;4
+372;3;44301;U32;;Surveillance de tension_ seuil maximum inferieur;;0.001;0.0;p.u.;4
+373;3;44303;U32;;Surveillance de tension_ temps de declenchement seuil maximum superieur;;1.0;0.0;ms;4
+374;3;44305;U32;;Surveillance de tension_ seuil minimum inferieur;;0.001;0.0;p.u.;4
+375;3;44307;U32;;Surveillance de tension_ seuil minimum moyen;;0.001;0.0;p.u.;4
+376;3;44309;U32;;Surveillance de tension_ seuil minimum superieur;;0.001;0.0;p.u.;4
+377;3;44311;U32;;Tension maximum de reconnexion;;0.001;0.0;p.u.;4
+378;3;44313;U32;;Tension minimum de reconnexion;;0.001;0.0;p.u.;4
+379;3;44315;U32;;Surveillance de tension_ seuil de tension de crete;;0.001;0.0;p.u.;4
+380;3;44317;U32;;Surveillance de tension_ temps de declenchement seuil de tension de crete;;0.001;0.0;ms;4
+381;3;44319;U32;;Soutien dynamique du reseau_ seuil de surtension pour courant nul;;0.01;0.0;p.u.;4
+382;3;44321;U32;;Soutien dynamique du reseau_ seuil de sous-tension pour courant nul;;0.01;0.0;p.u.;4
+383;3;44323;U32;;Soutien dynamique du reseau_ tension d hysteresis;;0.01;0.0;p.u.;4
+384;3;44325;U32;;Soutien dynamique du reseau_ moyennage pour le mode statique de courant reactif;;1.0;0.0;;4
+385;3;44327;U32;;Soutien dynamique du reseau_ seuil de surtension pour courant reactif;;0.01;0.0;p.u.;4
+386;3;44329;U32;;Soutien dynamique du reseau_ seuil de sous-tension pour courant reactif;;0.01;0.0;p.u.;4
+387;3;44331;U32;;Soutien dynamique du reseau_ hauteur de saut de tension;;0.01;0.0;p.u.;4
+388;3;44333;U32;;Courbe caract. P(f);;1.0;0.0;;4
+389;3;44335;U32;;P(f)_ grandeur de reference pour puissance active en cas de surfrequence;;1.0;0.0;;4
+390;3;44337;U32;;P(f)_ grandeur de reference pour puissance active en cas de sous-frequence;;1.0;0.0;;4
+391;3;44339;U32;;P(f)_ temps de reglage;;0.01;0.0;s;4
+392;3;44341;U32;;P(f)_ hysteresis en cas de surfrequence;;1.0;0.0;;4
+393;3;44343;U32;;P(f)_ hysteresis en cas de sous-frequence;;1.0;0.0;;4
+394;3;44347;U32;;P(f)_ surfrequence de coude_0;;0.001;0.0;Hz;4
+395;3;44349;U32;;P(f)_ surfrequence de coude_1;;0.001;0.0;Hz;4
+396;3;44353;I32;;P(f)_ modification de la puissance active par Hz en cas de surfrequence_0;;0.001;0.0;;4
+397;3;44355;I32;;P(f)_ modification de la puissance active par Hz en cas de surfrequence_1;;0.001;0.0;;4
+398;3;44357;I32;;P(f)_ surfrequence de reinitialisation;;0.001;0.0;Hz;4
+399;3;44361;I32;;P(f)_ sous-frequence de coude_0;;0.001;0.0;Hz;4
+400;3;44363;I32;;P(f)_ sous-frequence de coude_1;;0.001;0.0;Hz;4
+401;3;44367;I32;;P(f)_ modification de la puissance active par Hz en cas de sous-frequence_0;;0.001;0.0;;4
+402;3;44369;I32;;P(f)_ modification de la puissance active par Hz en cas de sous-frequence_1;;0.001;0.0;;4
+403;3;44371;I32;;P(f)_ sous-frequence de reinitialisation;;0.001;0.0;Hz;4
+404;3;44373;U32;;P(f)_ retart au declenchement;;1.0;0.0;ms;4
+405;3;44375;U32;;P(f)_ temps de poursuite;;1.0;0.0;s;4
+406;3;44377;U32;;Detection de reseau en oelotage_ etat de la surveillance de frequence;;1.0;0.0;;4
+407;3;44379;U32;;Detection de reseau en oelotage_ temps de declenchement de la surveillance de frequence;;1.0;0.0;ms;4
+408;3;44381;I32;;Puissance active nominale WMaxOut;;1.0;0.0;W;4
+409;3;44383;I32;;Puissance active nominale WMaxIn;;1.0;0.0;W;4
+410;3;44389;U32;;Puissance apparente nominale VAMaxOut;;1.0;0.0;VA;4
+411;3;44391;U32;;Puissance apparente nominale VAMaxIn;;1.0;0.0;VA;4
+412;3;44393;I32;;Puissance reactive nominale VArMaxQ1;;1.0;0.0;VAr;4
+413;3;44395;I32;;Puissance reactive nominale VArMaxQ2;;1.0;0.0;VAr;4
+414;3;44397;I32;;Puissance reactive nominale VArMaxQ3;;1.0;0.0;VAr;4
+415;3;44399;I32;;Puissance reactive nominale VArMaxQ4;;1.0;0.0;VAr;4
+416;3;44401;I32;;Puissance reactive nominale VArMaxZerWQ1;;1.0;0.0;VAr;4
+417;3;44403;I32;;Puissance reactive nominale VArMaxZerWQ2;;1.0;0.0;VAr;4
+418;3;44405;I32;;Puissance reactive nominale VArMaxZerWQ3;;1.0;0.0;VAr;4
+419;3;44407;I32;;Puissance reactive nominale VArMaxZerWQ4;;1.0;0.0;VAr;4
+420;3;44409;U32;;cos phi nominal PFMinQ1;;1.0E-4;0.0;;4
+421;3;44411;U32;;cos phi nominal PFMinQ2;;1.0E-4;0.0;;4
+422;3;44413;U32;;cos phi nominal PFMinQ3;;1.0E-4;0.0;;4
+423;3;44415;U32;;cos phi nominal PFMinQ4;;1.0E-4;0.0;;4
+424;3;44417;U32;;Detection de reseau en oelotage_ etat de la detection d asymetrie;;1.0;0.0;;4
+425;3;44419;U32;;Detection de reseau en oelotage_ symetrie admissible du reseau;;1.0;0.0;pct;4
+426;3;44421;U32;;Detection de reseau en oelotage_ temps de declenchement de la detection d_asymetrie;;1.0;0.0;ms;4
+427;3;44459;U32;;Q(U)_ Valeur prescrite externe de la tension de reference par unite_1;;0.001;0.0;p.u.;4
+428;3;44461;U32;;Consigne de puissance active externe 2_ filtre de valeur de consigne;;1.0;0.0;;4
+429;3;44463;U32;;Consigne de puissance active externe 2_ limitation du taux de changement;;1.0;0.0;;4
+430;3;44465;U32;;Consigne de puissance active externe 2_ taux d_augmentation;;0.01;0.0;pct/s;4
+431;3;44467;U32;;Consigne de puissance active externe 2_ taux de reduction;;0.01;0.0;pct/s;4
+432;3;44469;I32;;Q(P)_ valeur de puissance active_7;;0.001;0.0;;4
+433;3;44473;I32;;Q(P)_ valeur de puissance reactive_7;;0.001;0.0;;4
+434;3;44477;U32;;Q(U)_ Temps de reglage du filtre de valeur de consigne;;0.01;0.0;s;4
+435;3;44479;U32;;Mode de sensibilite phi la frequence (FSM);;1.0;0.0;;4

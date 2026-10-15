@@ -1,0 +1,199 @@
+﻿modbusRTU;Other;PDL;Elite 440- Modbus Mapping;;;;;;;
+1;4;40017;U16;;Ext_M;ext_m;1.000000;0.000000;NA;4
+2;4;40018;U16;;MBID;mbid;1.000000;0.000000;NA;4
+3;4;40019;U16;;Pver_rev;pver_rev;1.000000;0.000000;NA;4
+4;4;40026_0_16;BITS;;Metro LED Pulse Rate;metro_led_pulse_rate;1.000000;0.000000;Number of counts per unit increment;4
+5;4;40028;U16;;Supported Parameters Energy;supported_parameters_energy;1.000000;0.000000;NA;4
+6;4;40030;U32;;Next Bill Date;next_bill_date;1.000000;0.000000;Seconds Since 1988;4
+7;4;40041;U16;;Meter Type;meter_type;1.000000;0.000000;NA;4
+8;4;40051;U16;;Energy Parameters;energy_parameters;1.000000;0.000000;NA;4
+9;4;40052;U16;;MD_Params;md_params;1.000000;0.000000;NA;4
+10;4;40058;U16;;SIP;sip;1.000000;0.000000;Minutes;4
+11;4;40060;U16;;Energy parameter BitMask for Load Survey;energy_parameter_bitmask_for_load_survey;1.000000;0.000000;NA;4
+12;4;40061;U16;;Instantaneous parameter BitMask for Load Survey;instantaneous_parameter_bitmask_for_load_survey;1.000000;0.000000;NA;4
+13;1;1;U16;;Billing Trigger;billing_trigger;1.000000;0.000000;;4
+14;4;40350;U16;;VmaxR;vmaxr;1.000000;0.000000;;4
+15;4;40352;U16;;RTVmaxR;rtvmaxr;1.000000;0.000000;;4
+16;4;40354;U16;;VminR;vminr;1.000000;0.000000;;4
+17;4;40356;U16;;RTVminR;rtvminr;1.000000;0.000000;;4
+18;4;40358;U16;;VmaxY;vmaxy;1.000000;0.000000;;4
+19;4;40360;U16;;RTVmaxY;rtvmaxy;1.000000;0.000000;;4
+20;4;40362;U16;;VminY;vminy;1.000000;0.000000;;4
+21;4;40364;U16;;RTVminY;rtvminy;1.000000;0.000000;;4
+22;4;40366;U16;;VmaxB;vmaxb;1.000000;0.000000;;4
+23;4;40368;U16;;RTVmaxB;rtvmaxb;1.000000;0.000000;;4
+24;4;40370;U16;;VminB;vminb;1.000000;0.000000;;4
+25;4;40372;U16;;RTVminB;rtvminb;1.000000;0.000000;;4
+26;4;40374;U16;;LmaxR;lmaxr;1.000000;0.000000;;4
+27;4;40376;U16;;RTLmaxR;rtlmaxr;1.000000;0.000000;;4
+28;4;40378;U16;;LminR;lminr;1.000000;0.000000;;4
+29;4;40380;U16;;RTLminR;rtlminr;1.000000;0.000000;;4
+30;4;40382;U16;;LmaxY;lmaxy;1.000000;0.000000;;4
+31;4;40384;U16;;RTLmaxY;rtlmaxy;1.000000;0.000000;;4
+32;4;40386;U16;;LminY;lminy;1.000000;0.000000;;4
+33;4;40388;U16;;RTLminY;rtlminy;1.000000;0.000000;;4
+34;4;40390;U16;;LmaxB;lmaxb;1.000000;0.000000;;4
+35;4;40392;U16;;RTLmaxB;rtlmaxb;1.000000;0.000000;;4
+36;4;40394;U16;;LminB;lminb;1.000000;0.000000;;4
+37;4;40396;U16;;RTLminB;rtlminb;1.000000;0.000000;;4
+38;4;40398;U16;;PowerActiveMaxR;poweractivemaxr;1.000000;0.000000;;4
+39;4;40400;U16;;RTPowerActiveMaxR;rtpoweractivemaxr;1.000000;0.000000;;4
+40;4;40402;U16;;PowerActiveMinR;poweractiveminr;1.000000;0.000000;;4
+41;4;40404;U16;;RTPowerActiveMinR;rtpoweractiveminr;1.000000;0.000000;;4
+42;4;40406;U16;;PowerActiveMaxY;poweractivemaxy;1.000000;0.000000;;4
+43;4;40408;U16;;RTPowerActiveMaxY;rtpoweractivemaxy;1.000000;0.000000;;4
+44;4;40410;U16;;PowerActiveMinY;poweractiveminy;1.000000;0.000000;;4
+45;4;40412;U16;;RTPowerActiveMinY;rtpoweractiveminy;1.000000;0.000000;;4
+46;4;40414;U16;;PowerActiveMaxB;poweractivemaxb;1.000000;0.000000;;4
+47;4;40416;U16;;RTPowerActiveMaxB;rtpoweractivemaxb;1.000000;0.000000;;4
+48;4;40418;U16;;PowerActiveMinB;poweractiveminb;1.000000;0.000000;;4
+49;4;40420;U16;;RTPowerActiveMinB;rtpoweractiveminb;1.000000;0.000000;;4
+50;4;40422;U16;;PowerReactiveMaxR;powerreactivemaxr;1.000000;0.000000;;4
+51;4;40424;U16;;RTPowerReactiveMaxR;rtpowerreactivemaxr;1.000000;0.000000;;4
+52;4;40426;U16;;PowerReactiveMinR;powerreactiveminr;1.000000;0.000000;;4
+53;4;40428;U16;;RTPowerReactiveMinR;rtpowerreactiveminr;1.000000;0.000000;;4
+54;4;40430;U16;;PowerReactiveMaxY;powerreactivemaxy;1.000000;0.000000;;4
+55;4;40432;U16;;RTPowerReactiveMaxY;rtpowerreactivemaxy;1.000000;0.000000;;4
+56;4;40434;U16;;PowerReactiveMinY;powerreactiveminy;1.000000;0.000000;;4
+57;4;40436;U16;;RTPowerReactiveMinY;rtpowerreactiveminy;1.000000;0.000000;;4
+58;4;40438;U16;;PowerReactiveMaxB;powerreactivemaxb;1.000000;0.000000;;4
+59;4;40440;U16;;RTPowerReactiveMaxB;rtpowerreactivemaxb;1.000000;0.000000;;4
+60;4;40442;U16;;PowerReactiveMinB;powerreactiveminb;1.000000;0.000000;;4
+61;4;40444;U16;;RTPowerReactiveMinB;rtpowerreactiveminb;1.000000;0.000000;;4
+62;4;40446;U16;;PowerApparentMaxR;powerapparentmaxr;1.000000;0.000000;;4
+63;4;40448;U16;;RTPowerApparentMaxR;rtpowerapparentmaxr;1.000000;0.000000;;4
+64;4;40450;U16;;PowerApparentMinR;powerapparentminr;1.000000;0.000000;;4
+65;4;40452;U16;;RTPowerApparentMinR;rtpowerapparentminr;1.000000;0.000000;;4
+66;4;40454;U16;;PowerApparentMaxY;powerapparentmaxy;1.000000;0.000000;;4
+67;4;40456;U16;;RTPowerApparentMaxY;rtpowerapparentmaxy;1.000000;0.000000;;4
+68;4;40458;U16;;PowerApparentMinY;powerapparentminy;1.000000;0.000000;;4
+69;4;40460;U16;;RTPowerApparentMinY;rtpowerapparentminy;1.000000;0.000000;;4
+70;4;40462;U16;;PowerApparentMaxB;powerapparentmaxb;1.000000;0.000000;;4
+71;4;40464;U16;;RTPowerApparentMaxB;rtpowerapparentmaxb;1.000000;0.000000;;4
+72;4;40466;U16;;PowerApparentMinB;powerapparentminb;1.000000;0.000000;;4
+73;4;40468;U16;;RTPowerApparentMinB;rtpowerapparentminb;1.000000;0.000000;;4
+74;4;40470;U16;;PowerFactorMinLagR;powerfactorminlagr;1.000000;0.000000;;4
+75;4;40472;U16;;RTPowerFactorMinLagR;rtpowerfactorminlagr;1.000000;0.000000;;4
+76;4;40474;U16;;PowerFactorMinLeadR;powerfactorminleadr;1.000000;0.000000;;4
+77;4;40476;U16;;RTPowerFactorMinLeadR;rtpowerfactorminleadr;1.000000;0.000000;;4
+78;4;40478;U16;;PowerFactorMinLagY;powerfactorminlagy;1.000000;0.000000;;4
+79;4;40480;U16;;RTPowerFactorMinLagY;rtpowerfactorminlagy;1.000000;0.000000;;4
+80;4;40482;U16;;PowerFactorMinLeadY;powerfactorminleady;1.000000;0.000000;;4
+81;4;40484;U16;;RTPowerFactorMinLeadY;rtpowerfactorminleady;1.000000;0.000000;;4
+82;4;40486;U16;;PowerFactorMinLagB;powerfactorminlagb;1.000000;0.000000;;4
+83;4;40488;U16;;RTPowerFactorMinLagB;rtpowerfactorminlagb;1.000000;0.000000;;4
+84;4;40490;U16;;PowerFactorMinLeadB;powerfactorminleadb;1.000000;0.000000;;4
+85;4;40492;U16;;RTPowerFactorMinLeadB;rtpowerfactorminleadb;1.000000;0.000000;;4
+86;4;40494;U16;;FrequencyMax;frequencymax;1.000000;0.000000;;4
+87;4;40496;U16;;RTFrequencyMax;rtfrequencymax;1.000000;0.000000;;4
+88;4;40498;U16;;FrequencyMin;frequencymin;1.000000;0.000000;;4
+89;4;40500;U16;;RTFrequencyMin;rtfrequencymin;1.000000;0.000000;;4
+90;4;40520;U16;;History Available;history_available;1.000000;0.000000;;4
+91;4;40521;U16;;History Number;history_number;1.000000;0.000000;;4
+92;4;40522;U16;;History Date;history_date;1.000000;0.000000;;4
+93;4;40524;U16;;Supported Energy Mask as per History number;supported_energy_mask_as_per_history_number;1.000000;0.000000;;4
+94;4;40525;U16;;Supported MD Mask as per History number;supported_md_mask_as_per_history_number;1.000000;0.000000;;4
+95;4;40527;U16;;kWhT(I);kwhti;1.000000;0.000000;;4
+96;4;40529;U16;;kWhT(E);kwhte;1.000000;0.000000;;4
+97;4;40531;U16;;kWhT(I);kwhti_1;1.000000;0.000000;;4
+98;4;40533;U16;;kWhT(E);kwhte_1;1.000000;0.000000;;4
+99;4;40535;U16;;kVArh(I)_WI;kvarhi_wi;1.000000;0.000000;;4
+100;4;40537;U16;;kVArh(E)_WI;kvarhe_wi;1.000000;0.000000;;4
+101;4;40539;U16;;kVArh(I)_WE;kvarhi_we;1.000000;0.000000;;4
+102;4;40541;U16;;kVArh(E)_WE;kvarhe_we;1.000000;0.000000;;4
+103;4;40543;U16;;kVAh(I);kvahi;1.000000;0.000000;;4
+104;4;40545;U16;;kVAh(E);kvahe;1.000000;0.000000;;4
+105;4;40547;U16;;kVArh(I);kvarhi;1.000000;0.000000;;4
+106;4;40549;U16;;kVArh(E);kvarhe;1.000000;0.000000;;4
+107;4;40551;U16;;kWh (ABS);kwh_abs;1.000000;0.000000;;4
+108;4;40553;U16;;kVAh(ABS);kvahabs;1.000000;0.000000;;4
+109;4;40555;U16;;kWhLag (ABS);kwhlag_abs;1.000000;0.000000;;4
+110;4;40557;U16;;kWhLead (ABS);kwhlead_abs;1.000000;0.000000;;4
+111;4;40570;U16;;kWT(I);kwti;1.000000;0.000000;;4
+112;4;40572;U16;;24hMDTime kWT(I);v_24hmdtime_kwti;1.000000;0.000000;;4
+113;4;40574;U16;;kWT(E);kwte;1.000000;0.000000;;4
+114;4;40576;U16;;24hMDTime kWT(E);v_24hmdtime_kwte;1.000000;0.000000;;4
+115;4;40578;U16;;kW(I);kwi;1.000000;0.000000;;4
+116;4;40580;U16;;24hMDTime kW(I);v_24hmdtime_kwi;1.000000;0.000000;;4
+117;4;40582;U16;;kW(E);kwe;1.000000;0.000000;;4
+118;4;40584;U16;;24hMDTime kW(E);v_24hmdtime_kwe;1.000000;0.000000;;4
+119;4;40586;U16;;kVAr(I)_WI;kvari_wi;1.000000;0.000000;;4
+120;4;40588;U16;;24hMDTime kVAr(I)_WI;v_24hmdtime_kvari_wi;1.000000;0.000000;;4
+121;4;40590;U16;;kVAr(E)_WI;kvare_wi;1.000000;0.000000;;4
+122;4;40592;U16;;24hMDTime kVAr(E)_WI;v_24hmdtime_kvare_wi;1.000000;0.000000;;4
+123;4;40594;U16;;kVAr(I)_WE;kvari_we;1.000000;0.000000;;4
+124;4;40596;U16;;24hMDTime kVAr(I)_WE;v_24hmdtime_kvari_we;1.000000;0.000000;;4
+125;4;40598;U16;;kVAr(E)_WE;kvare_we;1.000000;0.000000;;4
+126;4;40600;U16;;24hMDTime kVAr(E)_WE;v_24hmdtime_kvare_we;1.000000;0.000000;;4
+127;4;40602;U16;;kVA(I);kvai;1.000000;0.000000;;4
+128;4;40604;U16;;24hMDTime kVA(I);v_24hmdtime_kvai;1.000000;0.000000;;4
+129;4;40606;U16;;kVA(E);kvae;1.000000;0.000000;;4
+130;4;40608;U16;;24hMDTime kVA(E);v_24hmdtime_kvae;1.000000;0.000000;;4
+131;4;40610;U16;;kVAr(I);kvari;1.000000;0.000000;;4
+132;4;40612;U16;;24hMDTime kVAr(I);v_24hmdtime_kvari;1.000000;0.000000;;4
+133;4;40614;U16;;kVAr(E);kvare;1.000000;0.000000;;4
+134;4;40616;U16;;24hMDTime kVAr(E);v_24hmdtime_kvare;1.000000;0.000000;;4
+135;4;40618;U16;;kW(I)  ABS;kwi_abs;1.000000;0.000000;;4
+136;4;40620;U16;;24hMDTime kW(I)  ABS;v_24hmdtime_kwi_abs;1.000000;0.000000;;4
+137;4;40622;U16;;kVA (ABS);kva_abs;1.000000;0.000000;;4
+138;4;40624;U16;;24hMDTime kVA (ABS);v_24hmdtime_kva_abs;1.000000;0.000000;;4
+139;4;40626;U16;;kVAr(I)_Lag (ABS);kvari_lag_abs;1.000000;0.000000;;4
+140;4;40628;U16;;24hMDTime kVAr(I)_Lag (ABS);v_24hmdtime_kvari_lag_abs;1.000000;0.000000;;4
+141;4;40630;U16;;kVAr(I)_Lead (ABS);kvari_lead_abs;1.000000;0.000000;;4
+142;4;40632;U16;;24hMDTime kVAr(I)_Lead (ABS);v_24hmdtime_kvari_lead_abs;1.000000;0.000000;;4
+143;4;40640;U16;;CMD_kWhT(I);cmd_kwhti;1.000000;0.000000;;4
+144;4;40642;U16;;CMD_kWhT(E);cmd_kwhte;1.000000;0.000000;;4
+145;4;40644;U16;;CMD_kWhT(I);cmd_kwhti_1;1.000000;0.000000;;4
+146;4;40646;U16;;CMD_kWhT(E);cmd_kwhte_1;1.000000;0.000000;;4
+147;4;40648;U16;;CMD_kVArh(I)_WI;cmd_kvarhi_wi;1.000000;0.000000;;4
+148;4;40650;U16;;CMD_kVArh(E)_WI;cmd_kvarhe_wi;1.000000;0.000000;;4
+149;4;40652;U16;;CMD_kVArh(I)_WE;cmd_kvarhi_we;1.000000;0.000000;;4
+150;4;40654;U16;;CMD_kVArh(E)_WE;cmd_kvarhe_we;1.000000;0.000000;;4
+151;4;40656;U16;;CMD_kVAh(I);cmd_kvahi;1.000000;0.000000;;4
+152;4;40658;U16;;CMD_kVAh(E);cmd_kvahe;1.000000;0.000000;;4
+153;4;40660;U16;;CMD_kVArh(I);cmd_kvarhi;1.000000;0.000000;;4
+154;4;40662;U16;;CMD_kVArh(E);cmd_kvarhe;1.000000;0.000000;;4
+155;4;40664;U16;;CMD_kW(I)  ABS;cmd_kwi_abs;1.000000;0.000000;;4
+156;4;40666;U16;;CMD_kVA (ABS);cmd_kva_abs;1.000000;0.000000;;4
+157;4;40668;U16;;CMD_kVAr(I)_Lag(ABS);cmd_kvari_lagabs;1.000000;0.000000;;4
+158;4;40670;U16;;CMD_kVAr(I)_Lead(ABS);cmd_kvari_leadabs;1.000000;0.000000;;4
+159;4;40680;U16;;PONMins;ponmins;1.000000;0.000000;;4
+160;4;40682;U16;;POFFMins;poffmins;1.000000;0.000000;;4
+161;4;40684;U16;;LON Mins;lon_mins;1.000000;0.000000;;4
+162;4;40686;U16;;LOFF Mins;loff_mins;1.000000;0.000000;;4
+163;4;40700;U16;;Available Snapshots;available_snapshots;1.000000;0.000000;;4
+164;4;40701;U16;;Snap shot number;snap_shot_number;1.000000;0.000000;;4
+165;4;40702;U16;;Time of snapshot;time_of_snapshot;1.000000;0.000000;;4
+166;4;40704;U16;;Daily Energy Parameter Mask as per Snapshot number;daily_energy_parameter_mask_as_per_snapshot_number;1.000000;0.000000;;4
+167;4;40710;U16;;kWhT(I);kwhti_2;1.000000;0.000000;;4
+168;4;40712;U16;;kWhT(E);kwhte_2;1.000000;0.000000;;4
+169;4;40714;U16;;kWhT(I);kwhti_3;1.000000;0.000000;;4
+170;4;40716;U16;;kWhT(E);kwhte_3;1.000000;0.000000;;4
+171;4;40718;U16;;kVArh(I)_WI;kvarhi_wi_1;1.000000;0.000000;;4
+172;4;40720;U16;;kVArh(E)_WI;kvarhe_wi_1;1.000000;0.000000;;4
+173;4;40722;U16;;kVArh(I)_WE;kvarhi_we_1;1.000000;0.000000;;4
+174;4;40724;U16;;kVArh(E)_WE;kvarhe_we_1;1.000000;0.000000;;4
+175;4;40726;U16;;kVAh(I);kvahi_1;1.000000;0.000000;;4
+176;4;40728;U16;;kVAh(E);kvahe_1;1.000000;0.000000;;4
+177;4;40730;U16;;kVArh(I);kvarhi_1;1.000000;0.000000;;4
+178;4;40732;U16;;kVArh(E);kvarhe_1;1.000000;0.000000;;4
+179;4;40734;U16;;kWh (ABS);kwh_abs_1;1.000000;0.000000;;4
+180;4;40736;U16;;kVAh(ABS);kvahabs_1;1.000000;0.000000;;4
+181;4;40738;U16;;kWhLag (ABS);kwhlag_abs_1;1.000000;0.000000;;4
+182;4;40740;U16;;kWhLead (ABS);kwhlead_abs_1;1.000000;0.000000;;4
+183;4;0;U16;;R-Phase Voltage missing;rphase_voltage_missing;1.000000;0.000000;;4
+184;4;1;U16;;Y-Phase Voltage missing;yphase_voltage_missing;1.000000;0.000000;;4
+185;4;2;U16;;B-Phase Voltage missing;bphase_voltage_missing;1.000000;0.000000;;4
+186;4;3;U16;;Invalid Voltage;invalid_voltage;1.000000;0.000000;;4
+187;4;4;U16;;Voltage Imbalance;voltage_imbalance;1.000000;0.000000;;4
+188;4;5;U16;;High Voltage;high_voltage;1.000000;0.000000;;4
+189;4;6;U16;;Low Voltage;low_voltage;1.000000;0.000000;;4
+190;4;7;U16;;R-Phase CT reverse;rphase_ct_reverse;1.000000;0.000000;;4
+191;4;8;U16;;Y-Phase CT reverse;yphase_ct_reverse;1.000000;0.000000;;4
+192;4;9;U16;;B-Phase CT reverse;bphase_ct_reverse;1.000000;0.000000;;4
+193;4;10;U16;;Low power factor;low_power_factor;1.000000;0.000000;;4
+194;4;11;U16;;Invalid Phase Association;invalid_phase_association;1.000000;0.000000;;4
+195;4;12;U16;;Over Load;over_load;1.000000;0.000000;;4
+196;4;13;U16;;Under Load;under_load;1.000000;0.000000;;4
+197;4;14;U16;;Current Imbalance;current_imbalance;1.000000;0.000000;;4
+198;4;15;U16;;Module Card Unplugged;module_card_unplugged;1.000000;0.000000;;4

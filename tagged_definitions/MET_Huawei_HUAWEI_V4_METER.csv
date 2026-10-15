@@ -1,0 +1,23 @@
+﻿modbusRTU;Meter;Huawei;HUAWEI_V4 (METER);;;;;;;
+1;4;37100;U16;;Meter status;;1.0;0.0;;4
+2;4;37101;U16;;Grid voltage (A phase) / Meter;;1.0;0.0;V;4
+3;4;37103;U16;;B phase voltage / Meter;;1.0;0.0;V;4
+4;4;37105;U16;;C phase voltage / Meter;;1.0;0.0;V;4
+5;4;37107;U16;;Grid current(A phase) / Meter;;1.0;0.0;A;4
+6;4;37109;U16;;B phase current / Meter;I_AC_3;1.0;0.0;A;4
+7;4;37111;U16;;C phase current / Meter;;1.0;0.0;A;4
+8;4;37113;U16;;Active power / Meter;P_AC;1.0;0.0;W;4
+9;4;37115;U16;;Reactive power / Meter;Q_AC;1.0;0.0;Var;4
+10;4;37117;U16;;Power factor / Meter;PF;1.0;0.0;NA;4
+11;4;37118;U16;;Grid frequency / Meter;FREQ;1.0;0.0;Hz;4
+12;4;37119;U16;;Positive active electricity / Meter;;1.0;0.0;kWh;4
+13;4;37121;U16;;Reverse active power / Meter;;1.0;0.0;kWh;4
+14;4;37123;U16;;Accumulated reactive power / Meter;;1.0;0.0;kVarh;4
+15;4;37125;U16;;Meter type;;1.0;0.0;;4
+16;4;37126;U16;;A-B line voltage / Meter;;1.0;0.0;V;4
+17;4;37128;U16;;B-C line voltage / Meter;;1.0;0.0;V;4
+18;4;37130;U16;;CA line voltage / Meter;;1.0;0.0;V;4
+19;4;37132;U16;;A phase active power / Meter;P_AC_1;1.0;0.0;W;4
+20;4;37134;U16;;B phase active power / Meter;;1.0;0.0;W;4
+21;4;37136;U16;;C phase active power / Meter;;1.0;0.0;W;4
+22;4;37138;U16;;Meter model detection result;MODEL;1.0;0.0;;4

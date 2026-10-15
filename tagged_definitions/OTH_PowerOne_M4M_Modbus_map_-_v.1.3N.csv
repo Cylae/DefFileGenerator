@@ -1,0 +1,533 @@
+﻿modbusRTU;Other;PowerOne;M4M Modbus map - v.1.3N;;;;;;;
+1;4;20480;U16;;Active energy - import;;1.0;0.0;kWh;4
+2;4;20484;U16;;Active energy - export;;1.0;0.0;kWh;4
+3;4;20488;U16;;Active energy - net;;1.0;0.0;kWh;4
+4;4;20492;U16;;Reactive energy - import;;1.0;0.0;kvarh;4
+5;4;20496;U16;;Reactive energy - export;;1.0;0.0;kvarh;4
+6;4;20500;U16;;Reactive energy - net;;1.0;0.0;kvarh;4
+7;4;20504;U16;;Apparent energy - import;;1.0;0.0;kVA;4
+8;4;20508;U16;;Apparent energy - export;;1.0;0.0;kVA;4
+9;4;20512;U16;;Apparent energy - net;;1.0;0.0;kVA;4
+10;4;20516;U16;;Active energy - import;;1.0;0.0;kg / kWh;4
+11;4;20532;U16;;Active energy - import;;1.0;0.0;Currency / kWh;4
+12;4;20848;U16;;Active energy - import (Tariffs);;1.0;0.0;kWh;4
+13;4;20880;U16;;Active energy - export (Tariffs);;1.0;0.0;kWh;4
+14;4;20912;U16;;Reactive energy - import (Tariffs);;1.0;0.0;kvarh;4
+15;4;20944;U16;;Reactive energy - export (Tariffs);;1.0;0.0;kvarh;4
+16;4;21600;U16;;Active energy - import;;1.0;0.0;kWh;4
+17;4;21612;U16;;Active energy - export;;1.0;0.0;kWh;4
+18;4;21624;U16;;Active energy - net;;1.0;0.0;kWh;4
+19;4;21636;U16;;Reactive energy - import;;1.0;0.0;kvarh;4
+20;4;21648;U16;;Reactive energy - export;;1.0;0.0;kvarh;4
+21;4;21660;U16;;Reactive energy - net;;1.0;0.0;kvarh;4
+22;4;21672;U16;;Apparent energy - import;;1.0;0.0;kVA;4
+23;4;21684;U16;;Apparent energy - export;;1.0;0.0;kVA;4
+24;4;21696;U16;;Apparent energy - net;;1.0;0.0;kVA;4
+25;4;23296;U16;;Three phase system voltage;;1.0;0.0;V;4
+26;4;23298;U16;;Phase voltage L1;U_AC_1;1.0;0.0;V;4
+27;4;23300;U16;;Phase voltage L2;U_AC_2;1.0;0.0;V;4
+28;4;23302;U16;;Phase voltage L3;U_AC_3;1.0;0.0;V;4
+29;4;23304;U16;;Line voltage L1-L2;U_AC_L1L2;1.0;0.0;V;4
+30;4;23306;U16;;Line voltage L3-L2;;1.0;0.0;V;4
+31;4;23308;U16;;Line voltage L1-L3;;1.0;0.0;V;4
+32;4;23310;U16;;Three phase system current;;1.0;0.0;A;4
+33;4;23312;U16;;Current;;1.0;0.0;A;4
+34;4;23314;U16;;Current;;1.0;0.0;A;4
+35;4;23316;U16;;Current;;1.0;0.0;A;4
+36;4;23318;U16;;Current;;1.0;0.0;A;4
+37;4;23322;U16;;Active power;P_AC;1.0;0.0;W;4
+38;4;23324;U16;;Active power;;1.0;0.0;W;4
+39;4;23326;U16;;Active power;;1.0;0.0;W;4
+40;4;23328;U16;;Active power;;1.0;0.0;W;4
+41;4;23330;U16;;Reactive power;Q_AC;1.0;0.0;var;4
+42;4;23332;U16;;Reactive power;;1.0;0.0;var;4
+43;4;23334;U16;;Reactive power;;1.0;0.0;var;4
+44;4;23336;U16;;Reactive power;;1.0;0.0;var;4
+45;4;23338;U16;;Apparent power;S_AC;1.0;0.0;VA;4
+46;4;23340;U16;;Apparent power;;1.0;0.0;VA;4
+47;4;23342;U16;;Apparent power;;1.0;0.0;VA;4
+48;4;23344;U16;;Apparent power;;1.0;0.0;VA;4
+49;4;23346;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+50;4;23347;U16;;Phase angles power;;1.0;0.0;°;4
+51;4;23351;U16;;Phase angles voltage;;1.0;0.0;°;4
+52;4;23357;U16;;Phase angles current;I_AC_1;1.0;0.0;°;4
+53;4;23360;U16;;Power factors;PF;1.0;0.0;None;4
+54;4;23361;U16;;Power factors;;1.0;0.0;None;4
+55;4;23362;U16;;Power factors;;1.0;0.0;None;4
+56;4;23363;U16;;Power factors;;1.0;0.0;None;4
+57;4;23364;U16;;Current quadrant;;1.0;0.0;None;4
+58;4;23368;U16;;Cosphi (displacement factor);;1.0;0.0;°;4
+59;4;23369;U16;;Cosphi (displacement factor);;1.0;0.0;°;4
+60;4;23370;U16;;Cosphi (displacement factor);;1.0;0.0;°;4
+61;4;23371;U16;;Cosphi (displacement factor);;1.0;0.0;°;4
+62;4;23508;U16;;Average current L1;;1.0;0.0;A;4
+63;4;23510;U16;;Average current L2;I_AC_2;1.0;0.0;A;4
+64;4;23512;U16;;Average current L3;I_AC_3;1.0;0.0;A;4
+65;4;23514;U16;;Average current neutral;;1.0;0.0;A;4
+66;4;23516;U16;;Average voltage L1;;1.0;0.0;V;4
+67;4;23518;U16;;Average voltage L2;;1.0;0.0;V;4
+68;4;23520;U16;;Average voltage L3;;1.0;0.0;V;4
+69;4;23522;U16;;Average voltage L1-L2;;1.0;0.0;V;4
+70;4;23524;U16;;Average voltage L2-L3;U_AC_L2L3;1.0;0.0;V;4
+71;4;23526;U16;;Average voltage L1-L3;;1.0;0.0;V;4
+72;4;23528;U16;;Average active power total;;1.0;0.0;W;4
+73;4;23530;U16;;Average active power L1;P_AC_1;1.0;0.0;W;4
+74;4;23532;U16;;Average active power L2;P_AC_2;1.0;0.0;W;4
+75;4;23534;U16;;Average active power L3;P_AC_3;1.0;0.0;W;4
+76;4;23536;U16;;Average reactive power total;;1.0;0.0;var;4
+77;4;23538;U16;;Average reactive power L1;Q_AC_1;1.0;0.0;var;4
+78;4;23540;U16;;Average reactive power L2;Q_AC_2;1.0;0.0;var;4
+79;4;23542;U16;;Average reactive power L3;Q_AC_3;1.0;0.0;var;4
+80;4;23544;U16;;Average apparent power total;;1.0;0.0;VA;4
+81;4;23546;U16;;Average apparent power L1;S_AC_1;1.0;0.0;VA;4
+82;4;23548;U16;;Average apparent power L2;S_AC_2;1.0;0.0;VA;4
+83;4;23550;U16;;Average apparent power L3;S_AC_3;1.0;0.0;VA;4
+84;4;23568;U16;;Maximum current L1;;1.0;0.0;A;4
+85;4;23570;U16;;Maximum current L2;;1.0;0.0;A;4
+86;4;23572;U16;;Maximum current L3;;1.0;0.0;A;4
+87;4;23574;U16;;Maximum current neutral;;1.0;0.0;A;4
+88;4;23576;U16;;Maximum voltage L1;;1.0;0.0;V;4
+89;4;23578;U16;;Maximum voltage L2;;1.0;0.0;V;4
+90;4;23580;U16;;Maximum voltage L3;;1.0;0.0;V;4
+91;4;23582;U16;;Maximum voltage L1-L2;;1.0;0.0;V;4
+92;4;23584;U16;;Maximum voltage L2-L3;;1.0;0.0;V;4
+93;4;23586;U16;;Maximum voltage L1-L3;;1.0;0.0;V;4
+94;4;23588;U16;;Maximum active power total;;1.0;0.0;W;4
+95;4;23590;U16;;Maximum active power L1;;1.0;0.0;W;4
+96;4;23592;U16;;Maximum active power L2;;1.0;0.0;W;4
+97;4;23594;U16;;Maximum active power L3;;1.0;0.0;W;4
+98;4;23596;U16;;Maximum reactive power total;;1.0;0.0;var;4
+99;4;23598;U16;;Maximum reactive power L1;;1.0;0.0;var;4
+100;4;23600;U16;;Maximum reactive power L2;;1.0;0.0;var;4
+101;4;23602;U16;;Maximum reactive power L3;;1.0;0.0;var;4
+102;4;23604;U16;;Maximum apparent power total;;1.0;0.0;VA;4
+103;4;23606;U16;;Maximum apparent power L1;;1.0;0.0;VA;4
+104;4;23608;U16;;Maximum apparent power L2;;1.0;0.0;VA;4
+105;4;23610;U16;;Maximum apparent power L3;;1.0;0.0;VA;4
+106;4;23628;U16;;Maximum current L1 timestamp;;1.0;0.0;None;4
+107;4;23630;U16;;Maximum current L2 timestamp;;1.0;0.0;None;4
+108;4;23632;U16;;Maximum current L3 timestamp;;1.0;0.0;None;4
+109;4;23634;U16;;Maximum current neutral timestamp;;1.0;0.0;None;4
+110;4;23636;U16;;Maximum voltage L1 timestamp;;1.0;0.0;None;4
+111;4;23638;U16;;Maximum voltage L2 timestamp;;1.0;0.0;None;4
+112;4;23640;U16;;Maximum voltage L3 timestamp;;1.0;0.0;None;4
+113;4;23642;U16;;Maximum voltage L1-L2 timestamp;;1.0;0.0;None;4
+114;4;23644;U16;;Maximum voltage L2-L3 timestamp;;1.0;0.0;None;4
+115;4;23646;U16;;Maximum voltage L1-L3 timestamp;;1.0;0.0;None;4
+116;4;23648;U16;;Maximum active power total timestamp;;1.0;0.0;None;4
+117;4;23650;U16;;Maximum active power L1 timestamp;;1.0;0.0;None;4
+118;4;23652;U16;;Maximum active power L2 timestamp;;1.0;0.0;None;4
+119;4;23654;U16;;Maximum active power L3 timestamp;;1.0;0.0;None;4
+120;4;23656;U16;;Maximum reactive power total timestamp;;1.0;0.0;None;4
+121;4;23658;U16;;Maximum reactive power L1 timestamp;;1.0;0.0;None;4
+122;4;23660;U16;;Maximum reactive power L2 timestamp;;1.0;0.0;None;4
+123;4;23662;U16;;Maximum reactive power L3 timestamp;;1.0;0.0;None;4
+124;4;23664;U16;;Maximum apparent power total timestamp;;1.0;0.0;None;4
+125;4;23666;U16;;Maximum apparent power L1 timestamp;;1.0;0.0;None;4
+126;4;23668;U16;;Maximum apparent power L2 timestamp;;1.0;0.0;None;4
+127;4;23670;U16;;Maximum apparent power L3 timestamp;;1.0;0.0;None;4
+128;4;23688;U16;;Minimum current L1;;1.0;0.0;A;4
+129;4;23690;U16;;Minimum current L2;;1.0;0.0;A;4
+130;4;23692;U16;;Minimum current L3;;1.0;0.0;A;4
+131;4;23694;U16;;Minimum current neutral;;1.0;0.0;A;4
+132;4;23696;U16;;Minimum voltage L1;;1.0;0.0;V;4
+133;4;23698;U16;;Minimum voltage L2;;1.0;0.0;V;4
+134;4;23700;U16;;Minimum voltage L3;;1.0;0.0;V;4
+135;4;23702;U16;;Minimum voltage L1-L2;;1.0;0.0;V;4
+136;4;23704;U16;;Minimum voltage L2-L3;;1.0;0.0;V;4
+137;4;23706;U16;;Minimum voltage L1-L3;;1.0;0.0;V;4
+138;4;23708;U16;;Minimum active power total;;1.0;0.0;W;4
+139;4;23710;U16;;Minimum active power L1;;1.0;0.0;W;4
+140;4;23712;U16;;Minimum active power L2;;1.0;0.0;W;4
+141;4;23714;U16;;Minimum active power L3;;1.0;0.0;W;4
+142;4;23716;U16;;Minimum reactive power total;;1.0;0.0;var;4
+143;4;23718;U16;;Minimum reactive power L1;;1.0;0.0;var;4
+144;4;23720;U16;;Minimum reactive power L2;;1.0;0.0;var;4
+145;4;23722;U16;;Minimum reactive power L3;;1.0;0.0;var;4
+146;4;23724;U16;;Minimum apparent power total;;1.0;0.0;VA;4
+147;4;23726;U16;;Minimum apparent power L1;;1.0;0.0;VA;4
+148;4;23728;U16;;Minimum apparent power L2;;1.0;0.0;VA;4
+149;4;23730;U16;;Minimum apparent power L3;;1.0;0.0;VA;4
+150;4;23748;U16;;Minimum current L1 timestamp;;1.0;0.0;None;4
+151;4;23750;U16;;Minimum current L2 timestamp;;1.0;0.0;None;4
+152;4;23752;U16;;Minimum current L3 timestamp;;1.0;0.0;None;4
+153;4;23754;U16;;Minimum current neutral timestamp;;1.0;0.0;None;4
+154;4;23756;U16;;Minimum voltage L1 timestamp;;1.0;0.0;None;4
+155;4;23758;U16;;Minimum voltage L2 timestamp;;1.0;0.0;None;4
+156;4;23760;U16;;Minimum voltage L3 timestamp;;1.0;0.0;None;4
+157;4;23762;U16;;Minimum voltage L1-L2 timestamp;;1.0;0.0;None;4
+158;4;23764;U16;;Minimum voltage L2-L3 timestamp;;1.0;0.0;None;4
+159;4;23766;U16;;Minimum voltage L1-L3 timestamp;;1.0;0.0;None;4
+160;4;23768;U16;;Minimum active power total timestamp;;1.0;0.0;None;4
+161;4;23770;U16;;Minimum active power L1 timestamp;;1.0;0.0;None;4
+162;4;23772;U16;;Minimum active power L2 timestamp;;1.0;0.0;None;4
+163;4;23774;U16;;Minimum active power L3 timestamp;;1.0;0.0;None;4
+164;4;23776;U16;;Minimum reactive power total timestamp;;1.0;0.0;None;4
+165;4;23778;U16;;Minimum reactive power L1 timestamp;;1.0;0.0;None;4
+166;4;23780;U16;;Minimum reactive power L2 timestamp;;1.0;0.0;None;4
+167;4;23782;U16;;Minimum reactive power L3 timestamp;;1.0;0.0;None;4
+168;4;23784;U16;;Minimum apparent power total timestamp;;1.0;0.0;None;4
+169;4;23786;U16;;Minimum apparent power L1 timestamp;;1.0;0.0;None;4
+170;4;23788;U16;;Minimum apparent power L2 timestamp;;1.0;0.0;None;4
+171;4;23790;U16;;Minimum apparent power L3 timestamp;;1.0;0.0;None;4
+172;4;23808;U16;;Voltage THD harmonics;;1.0;0.0;%;4
+173;4;23809;U16;;None;;1.0;0.0;None;4
+174;4;23936;U16;;None;;1.0;0.0;%;4
+175;4;23937;U16;;None;;1.0;0.0;None;4
+176;4;24064;U16;;None;;1.0;0.0;%;4
+177;4;24065;U16;;None;;1.0;0.0;None;4
+178;4;24192;U16;;None;;1.0;0.0;%;4
+179;4;24193;U16;;None;;1.0;0.0;None;4
+180;4;24320;U16;;None;;1.0;0.0;%;4
+181;4;24321;U16;;None;;1.0;0.0;None;4
+182;4;24448;U16;;None;;1.0;0.0;%;4
+183;4;24449;U16;;None;;1.0;0.0;None;4
+184;4;24576;U16;;Current harmonics;;1.0;0.0;%;4
+185;4;24577;U16;;None;;1.0;0.0;None;4
+186;4;24704;U16;;None;;1.0;0.0;%;4
+187;4;24705;U16;;None;;1.0;0.0;None;4
+188;4;24832;U16;;None;;1.0;0.0;%;4
+189;4;24833;U16;;None;;1.0;0.0;None;4
+190;4;24960;U16;;None;;1.0;0.0;%;4
+191;4;24961;U16;;None;;1.0;0.0;None;4
+192;4;25088;U16;;Unbalances;;1.0;0.0;%;4
+193;4;25090;U16;;None;;1.0;0.0;%;4
+194;4;25092;U16;;None;;1.0;0.0;%;4
+195;4;25344;U16;;Outputs;;1.0;0.0;0: OFF, 1: ON;1
+196;4;25345;U16;;None;;1.0;0.0;0: OFF, 1: ON;1
+197;4;25346;U16;;None;;1.0;0.0;0: OFF, 1: ON;1
+198;4;25347;U16;;None;;1.0;0.0;0: OFF, 1: ON;1
+199;4;25348;U16;;None;;1.0;0.0;0: OFF, 1: ON;1
+200;4;25349;U16;;None;;1.0;0.0;0: OFF, 1: ON;1
+201;4;25352;U16;;Inputs;;1.0;0.0;0: OFF, 1: ON;4
+202;4;25353;U16;;None;;1.0;0.0;0: OFF, 1: ON;4
+203;4;25354;U16;;None;;1.0;0.0;0: OFF, 1: ON;4
+204;4;25355;U16;;None;;1.0;0.0;0: OFF, 1: ON;4
+205;4;25356;U16;;None;;1.0;0.0;0: OFF, 1: ON;4
+206;4;25357;U16;;None;;1.0;0.0;0: OFF, 1: ON;4
+207;4;25368;U16;;Inputs Counter;;1.0;0.0;None;4
+208;4;25372;U16;;None;;1.0;0.0;None;4
+209;4;25376;U16;;None;;1.0;0.0;None;4
+210;4;25380;U16;;None;;1.0;0.0;None;4
+211;4;25384;U16;;None;;1.0;0.0;None;4
+212;4;25388;U16;;None;;1.0;0.0;None;4
+213;4;25856;U16;;Errors Log;;1.0;0.0;None;1
+214;4;25857;U16;;None;;1.0;0.0;None;1
+215;4;25863;U16;;None;;1.0;0.0;None;1
+216;4;25872;U16;;None;;1.0;0.0;None;4
+217;4;26032;U16;;Alarms log;;1.0;0.0;None;1
+218;4;26033;U16;;None;;1.0;0.0;None;1
+219;4;26039;U16;;None;;1.0;0.0;None;1
+220;4;26048;U16;;None;;1.0;0.0;None;4
+221;4;26208;U16;;Audit Log;;1.0;0.0;None;1
+222;4;26209;U16;;None;;1.0;0.0;None;1
+223;4;26215;U16;;None;;1.0;0.0;None;1
+224;4;26224;U16;;None;;1.0;0.0;None;4
+225;4;26226;U16;;None;;1.0;0.0;None;4
+226;4;26228;U16;;None;;1.0;0.0;None;4
+227;4;26229;U16;;None;;1.0;0.0;None;4
+228;4;26235;U16;;None;;1.0;0.0;None;4
+229;4;26237;U16;;None;;1.0;0.0;None;4
+230;4;26239;U16;;None;;1.0;0.0;None;4
+231;4;26241;U16;;None;;1.0;0.0;None;4
+232;4;26243;U16;;None;;1.0;0.0;None;4
+233;4;26245;U16;;None;;1.0;0.0;None;4
+234;4;26247;U16;;None;;1.0;0.0;None;4
+235;4;26248;U16;;None;;1.0;0.0;None;4
+236;4;26252;U16;;None;;1.0;0.0;None;4
+237;4;26256;U16;;None;;1.0;0.0;None;4
+238;4;26260;U16;;None;;1.0;0.0;None;4
+239;4;26264;U16;;None;;1.0;0.0;None;4
+240;4;26268;U16;;None;;1.0;0.0;None;4
+241;4;26272;U16;;None;;1.0;0.0;None;4
+242;4;26276;U16;;None;;1.0;0.0;None;4
+243;4;26280;U16;;None;;1.0;0.0;None;4
+244;4;26284;U16;;None;;1.0;0.0;None;4
+245;4;26288;U16;;None;;1.0;0.0;None;4
+246;4;26384;U16;;Warnings log;;1.0;0.0;None;1
+247;4;26385;U16;;None;;1.0;0.0;None;1
+248;4;26391;U16;;None;;1.0;0.0;None;1
+249;4;26400;U16;;None;;1.0;0.0;None;4
+250;4;26560;U16;;Power Outage Log;;1.0;0.0;None;1
+251;4;26561;U16;;None;;1.0;0.0;None;1
+252;4;26567;U16;;None;;1.0;0.0;None;1
+253;4;26576;U16;;None;;1.0;0.0;None;4
+254;4;32768;U16;;Energy Cumulative;E_TOT;1.0;0.0;None;1
+255;4;32769;U16;;None;;1.0;0.0;None;1
+256;4;32772;U16;;None;;1.0;0.0;None;1
+257;4;32775;U16;;None;;1.0;0.0;None;1
+258;4;32784;U16;;None;;1.0;0.0;None;4
+259;4;32880;U16;;None;;1.0;0.0;None;4
+260;4;32976;U16;;None;;1.0;0.0;None;4
+261;4;33072;U16;;None;;1.0;0.0;None;4
+262;4;33168;U16;;None;;1.0;0.0;None;4
+263;4;33264;U16;;None;;1.0;0.0;None;4
+264;4;33360;U16;;None;;1.0;0.0;None;4
+265;4;33536;U16;;Energy Snapshots;SERIAL;1.0;0.0;None;1
+266;4;33537;U16;;None;;1.0;0.0;None;1
+267;4;33540;U16;;None;;1.0;0.0;None;1
+268;4;33543;U16;;None;;1.0;0.0;None;1
+269;4;33552;U16;;None;;1.0;0.0;None;4
+270;4;33648;U16;;None;;1.0;0.0;None;4
+271;4;33744;U16;;None;;1.0;0.0;None;4
+272;4;33840;U16;;None;;1.0;0.0;None;4
+273;4;33936;U16;;None;;1.0;0.0;None;4
+274;4;34032;U16;;None;;1.0;0.0;None;4
+275;4;34128;U16;;None;;1.0;0.0;None;4
+276;4;34560;U16;;Load profile;;1.0;0.0;None;1
+277;4;34563;U16;;None;;1.0;0.0;None;1
+278;4;34564;U16;;None;;1.0;0.0;None;1
+279;4;34567;U16;;None;;1.0;0.0;None;1
+280;4;34576;U16;;None;;1.0;0.0;None;1
+281;4;34579;U16;;None;;1.0;0.0;None;1
+282;4;34580;U16;;None;;1.0;0.0;None;1
+283;4;34582;U16;;None;;1.0;0.0;None;1
+284;4;34592;U16;;None;;1.0;0.0;None;4
+285;4;35072;U16;;Serial number(s);;1.0;0.0;None;4
+286;4;35080;U16;;Meter firmware version;;1.0;0.0;None;4
+287;4;35088;U16;;Product type number ID;;1.0;0.0;None;4
+288;4;35089;U16;;Slave ID;UNIT_ID;1.0;0.0;None;4
+289;4;35097;U16;;Product tag name;;1.0;0.0;None;1
+290;4;35168;U16;;Type designation;;1.0;0.0;None;4
+291;4;35174;U16;;Product Name;;1.0;0.0;None;4
+292;4;35328;U16;;Date Time;;1.0;0.0;None;1
+293;4;35331;U16;;Day of week;;1.0;0.0;None;4
+294;4;35333;U16;;Active day type;;1.0;0.0;None;4
+295;4;35334;U16;;Active season;;1.0;0.0;None;4
+296;4;35335;U16;;Current tariff;;1.0;0.0;None;1
+297;4;35347;U16;;Error flags;;1.0;0.0;None;4
+298;4;35353;U16;;Information flags;;1.0;0.0;25 Alarm flags;4
+299;4;35359;U16;;Warning flags;;1.0;0.0;None;4
+300;4;35365;U16;;Alarm flags (simple and complex);;1.0;0.0;None;4
+301;4;35840;U16;;Transformer ratios;;1.0;0.0;None;1
+302;4;35842;U16;;None;;1.0;0.0;None;1
+303;4;35844;U16;;None;;1.0;0.0;None;1
+304;4;35846;U16;;None;;1.0;0.0;None;1
+305;4;35848;U16;;None;;1.0;0.0;None;1
+306;4;35850;U16;;None;;1.0;0.0;None;1
+307;4;35852;U16;;I/O settings - Function;;1.0;0.0;None;1
+308;4;35853;U16;;None;;1.0;0.0;None;1
+309;4;35854;U16;;None;;1.0;0.0;None;1
+310;4;35855;U16;;None;;1.0;0.0;None;1
+311;4;35856;U16;;None;;1.0;0.0;None;1
+312;4;35857;U16;;None;;1.0;0.0;None;1
+313;4;35858;U16;;I/O settings - Pulse input/output instance;;1.0;0.0;None;1
+314;4;35859;U16;;I/O settings - Pulse outputs configuration;;1.0;0.0;None;1
+315;4;35860;U16;;None;;1.0;0.0;OBIS code;1
+316;4;35863;U16;;None;;1.0;0.0;kWh;1
+317;4;35865;U16;;None;;1.0;0.0;kvarh;1
+318;4;35867;U16;;None;;1.0;0.0;milliseconds;1
+319;4;35869;U16;;None;;1.0;0.0;None;1
+320;4;35872;U16;;Load profile settings;;1.0;0.0;None;1
+321;4;35873;U16;;None;;1.0;0.0;OBIS code;1
+322;4;35876;U16;;None;;1.0;0.0;minutes;1
+323;4;35878;U16;;None;;1.0;0.0;None;1
+324;4;35888;U16;;Max/Min Demand settings;;1.0;0.0;None;1
+325;4;35889;U16;;None;;1.0;0.0;None;4
+326;4;35890;U16;;None;;1.0;0.0;OBIS code;1
+327;4;35893;U16;;None;;1.0;0.0;OBIS code;1
+328;4;35896;U16;;None;;1.0;0.0;None;1
+329;4;35897;U16;;None;;1.0;0.0;minutes;1
+330;4;35898;U16;;None;;1.0;0.0;minutes;1
+331;4;35899;U16;;None;;1.0;0.0;None;1
+332;4;35920;U16;;Energy Cumulative/Snapshots settings;;1.0;0.0;None;1
+333;4;35921;U16;;None;;1.0;0.0;None;4
+334;4;35922;U16;;None;;1.0;0.0;OBIS code;1
+335;4;35925;U16;;None;;1.0;0.0;None;1
+336;4;35936;U16;;Alarm settings;;1.0;0.0;None;1
+337;4;35937;U16;;None;;1.0;0.0;OBIS code;1
+338;4;35940;U16;;None;;1.0;0.0;None;1
+339;4;35944;U16;;None;;1.0;0.0;%;1
+340;4;35945;U16;;None;;1.0;0.0;seconds;1
+341;4;35947;U16;;None;;1.0;0.0;None;1
+342;4;35948;U16;;None;;1.0;0.0;None;1
+343;4;35968;U16;;Complex Alarms;;1.0;0.0;None;1
+344;4;35969;U16;;None;;1.0;0.0;None;1
+345;4;35973;U16;;None;;1.0;0.0;None;1
+346;4;35974;U16;;None;;1.0;0.0;None;1
+347;4;35984;U16;;Tariff settings;;1.0;0.0;None;1
+348;4;35985;U16;;None;;1.0;0.0;None;1
+349;4;36045;U16;;None;;1.0;0.0;None;1
+350;4;36046;U16;;None;;1.0;0.0;None;4
+351;4;36047;U16;;None;;1.0;0.0;None;1
+352;4;36048;U16;;None;;1.0;0.0;None;4
+353;4;36049;U16;;None;;1.0;0.0;None;1
+354;4;36064;U16;;CO2 conversion factor actIive energy;;1.0;0.0;kg / kWh;1
+355;4;36066;U16;;Currency conversion factor active enenrgy;;1.0;0.0;Currency / kWh;1
+356;4;36068;U16;;LED source;;1.0;0.0;None;1
+357;4;36069;U16;;Wires;;1.0;0.0;None;1
+358;4;36070;U16;;DST start;;1.0;0.0;None;1
+359;4;36072;U16;;DST end;;1.0;0.0;None;1
+360;4;36074;U16;;DST enabled;;1.0;0.0;None;1
+361;4;36075;U16;;Modbus RTU;;1.0;0.0;None;1
+362;4;36076;U16;;None;;1.0;0.0;None;1
+363;4;36078;U16;;None;;1.0;0.0;None;1
+364;4;36079;U16;;Modbus TCP/IP;;1.0;0.0;None;1
+365;4;36080;U16;;None;;1.0;0.0;None;1
+366;4;36082;U16;;None;;1.0;0.0;None;1
+367;4;36084;U16;;None;;1.0;0.0;None;1
+368;4;36086;U16;;None;;1.0;0.0;None;1
+369;4;36087;U16;;Up/Down Counters;;1.0;0.0;None;4
+370;4;36089;U16;;None;;1.0;0.0;None;4
+371;4;36091;U16;;None;;1.0;0.0;None;1
+372;4;36093;U16;;HMI Config;;1.0;0.0;None;1
+373;4;36094;U16;;None;;1.0;0.0;None;1
+374;4;36604;U16;;Bluetooth Enable;;1.0;0.0;None;1
+375;4;36624;U16;;I/O settings - Pulse input ratio;;1.0;0.0;None;1
+376;4;36626;U16;;I/O settings - Pulse input unit;;1.0;0.0;None;1
+377;4;36695;U16;;Reset Logs;;1.0;0.0;None;1
+378;4;36696;U16;;Reset historical functionality;;1.0;0.0;None;1
+379;4;36697;U16;;Reset Timer;;1.0;0.0;None;1
+380;4;36698;U16;;Reset Energy;;1.0;0.0;None;1
+381;4;36699;U16;;Reset Factory setting default;;1.0;0.0;None;1
+382;4;36700;U16;;Reset Max / Min / Average;;1.0;0.0;None;1
+383;4;36722;U16;;Max/Min Demand;;1.0;0.0;None;1
+384;4;36723;U16;;None;;1.0;0.0;None;1
+385;4;36726;U16;;None;;1.0;0.0;None;1
+386;4;36729;U16;;None;;1.0;0.0;None;1
+387;4;36738;U16;;None;;1.0;0.0;None;4
+388;4;36866;U16;;None;;1.0;0.0;None;4
+389;4;36994;U16;;None;;1.0;0.0;None;4
+390;4;37122;U16;;None;;1.0;0.0;None;4
+391;4;37250;U16;;None;;1.0;0.0;None;4
+392;4;37378;U16;;None;;1.0;0.0;None;4
+393;4;37506;U16;;None;;1.0;0.0;None;4
+394;4;37634;U16;;None;;1.0;0.0;None;4
+395;4;37762;U16;;None;;1.0;0.0;None;4
+396;4;37890;U16;;None;;1.0;0.0;None;4
+397;4;38018;U16;;None;;1.0;0.0;None;4
+398;4;38146;U16;;None;;1.0;0.0;None;4
+399;4;38274;U16;;None;;1.0;0.0;None;4
+400;4;38402;U16;;None;;1.0;0.0;None;4
+401;4;38530;U16;;None;;1.0;0.0;None;4
+402;4;38658;U16;;None;;1.0;0.0;None;4
+403;4;38786;U16;;None;;1.0;0.0;None;4
+404;4;38914;U16;;None;;1.0;0.0;None;4
+405;4;39042;U16;;None;;1.0;0.0;None;4
+406;4;51994;U16;;Active power total Scaler 1;;1.0;0.0;W;4
+407;4;51996;U16;;Active power L1 Scaler 1;;1.0;0.0;W;4
+408;4;51998;U16;;Active power L2 Scaler 1;;1.0;0.0;W;4
+409;4;52000;U16;;Active power L3 Scaler 1;;1.0;0.0;W;4
+410;4;52002;U16;;Reactive power total Scaler 1;;1.0;0.0;VAR;4
+411;4;52004;U16;;Reactive power L1 Scaler 1;;1.0;0.0;VAR;4
+412;4;52006;U16;;Reactive power L2 Scaler 1;;1.0;0.0;VAR;4
+413;4;52008;U16;;Reactive power L3 Scaler 1;;1.0;0.0;VAR;4
+414;4;52010;U16;;Apparent power total Scaler 1;;1.0;0.0;VA;4
+415;4;52012;U16;;Apparent power L1 Scaler 1;;1.0;0.0;VA;4
+416;4;52014;U16;;Apparent power L2 Scaler 1;;1.0;0.0;VA;4
+417;4;52016;U16;;Apparent power L3 Scaler 1;;1.0;0.0;VA;4
+418;4;52200;U16;;Average Active power total Scaler 1;;1.0;0.0;W;4
+419;4;52202;U16;;Average Active power L1 Scaler 1;;1.0;0.0;W;4
+420;4;52204;U16;;Average Active power L2 Scaler 1;;1.0;0.0;W;4
+421;4;52206;U16;;Average Active power L3 Scaler 1;;1.0;0.0;W;4
+422;4;52208;U16;;Average Reactive power total Scaler 1;;1.0;0.0;VAR;4
+423;4;52210;U16;;Average Reactive power L1 Scaler 1;;1.0;0.0;VAR;4
+424;4;52212;U16;;Average Reactive power L2 Scaler 1;;1.0;0.0;VAR;4
+425;4;52214;U16;;Average Reactive power L3 Scaler 1;;1.0;0.0;VAR;4
+426;4;52216;U16;;Average Apparent power total Scaler 1;;1.0;0.0;VA;4
+427;4;52218;U16;;Average Apparent power L1 Scaler 1;;1.0;0.0;VA;4
+428;4;52220;U16;;Average Apparent power L2 Scaler 1;;1.0;0.0;VA;4
+429;4;52222;U16;;Average Apparent power L3 Scaler 1;;1.0;0.0;VA;4
+430;4;52260;U16;;Max Active power total Scaler 1;;1.0;0.0;W;4
+431;4;52262;U16;;Max Active power L1 Scaler 1;;1.0;0.0;W;4
+432;4;52264;U16;;Max Active power L2 Scaler 1;;1.0;0.0;W;4
+433;4;52266;U16;;Max Active power L3 Scaler 1;;1.0;0.0;W;4
+434;4;52268;U16;;Max Reactive power total Scaler 1;;1.0;0.0;VAR;4
+435;4;52270;U16;;Max Reactive power L1 Scaler 1;;1.0;0.0;VAR;4
+436;4;52272;U16;;Max Reactive power L2 Scaler 1;;1.0;0.0;VAR;4
+437;4;52274;U16;;Max Reactive power L3 Scaler 1;;1.0;0.0;VAR;4
+438;4;52276;U16;;Max Apparent power total Scaler 1;;1.0;0.0;VA;4
+439;4;52278;U16;;Max Apparent power L1 Scaler 1;;1.0;0.0;VA;4
+440;4;52280;U16;;Max Apparent power L2 Scaler 1;;1.0;0.0;VA;4
+441;4;52282;U16;;Max Apparent power L3 Scaler 1;;1.0;0.0;VA;4
+442;4;52380;U16;;Min Active power total Scaler 1;;1.0;0.0;W;4
+443;4;52382;U16;;Min Active power L1 Scaler 1;;1.0;0.0;W;4
+444;4;52384;U16;;Min Active power L2 Scaler 1;;1.0;0.0;W;4
+445;4;52386;U16;;Min Active power L3 Scaler 1;;1.0;0.0;W;4
+446;4;52388;U16;;Min Reactive power total Scaler 1;;1.0;0.0;VAR;4
+447;4;52390;U16;;Min Reactive power L1 Scaler 1;;1.0;0.0;VAR;4
+448;4;52392;U16;;Min Reactive power L2 Scaler 1;;1.0;0.0;VAR;4
+449;4;52394;U16;;Min Reactive power L3 Scaler 1;;1.0;0.0;VAR;4
+450;4;52396;U16;;Min Apparent power total Scaler 1;;1.0;0.0;VA;4
+451;4;52398;U16;;Min Apparent power L1 Scaler 1;;1.0;0.0;VA;4
+452;4;52400;U16;;Min Apparent power L2 Scaler 1;;1.0;0.0;VA;4
+453;4;52402;U16;;Min Apparent power L3 Scaler 1;;1.0;0.0;VA;4
+454;4;4096;U16;;3-PHASE SYSTEM VOLTAGE;;1.0;0.0;Volt;4
+455;4;4098;U16;;PHASE VOLTAGE L1-N;;1.0;0.0;Volt;4
+456;4;4100;U16;;PHASE VOLTAGE L2-N;;1.0;0.0;Volt;4
+457;4;4102;U16;;PHASE VOLTAGE L3-N;;1.0;0.0;Volt;4
+458;4;4104;U16;;LINE VOLTAGE L1-2;;1.0;0.0;Volt;4
+459;4;4106;U16;;LINE VOLTAGE L2-3;;1.0;0.0;Volt;4
+460;4;4108;U16;;LINE VOLTAGE L3-1;;1.0;0.0;Volt;4
+461;4;4110;U16;;3-PHASE SYSTEM CURRENT;;1.0;0.0;mA;4
+462;4;4112;U16;;LINE CURRENT L1;;1.0;0.0;mA;4
+463;4;4114;U16;;LINE CURRENT L2;;1.0;0.0;mA;4
+464;4;4116;U16;;LINE CURRENT L3;;1.0;0.0;mA;4
+465;4;4118;U16;;3-PHASE SYS. POWER FACTOR I;;1.0;0.0;None;4
+466;4;4120;U16;;POWER FACTOR L1;PF_1;1.0;0.0;None;4
+467;4;4122;U16;;POWER FACTOR L2;PF_2;1.0;0.0;None;4
+468;4;4124;U16;;POWER FACTOR L3;PF_3;1.0;0.0;None;4
+469;4;4126;U16;;3-PHASE SYSTEM COS ϕ;;1.0;0.0;None;4
+470;4;4128;U16;;PHASE COS ϕ1;;1.0;0.0;None;4
+471;4;4130;U16;;PHASE COS ϕ2;;1.0;0.0;None;4
+472;4;4132;U16;;PHASE COS ϕ3;;1.0;0.0;None;4
+473;4;4134;U16;;3-PHASE S. APPARENT POWER;;1.0;0.0;VA;4
+474;4;4136;U16;;APPARENT POWER L1;;1.0;0.0;VA;4
+475;4;4138;U16;;APPARENT POWER L2;;1.0;0.0;VA;4
+476;4;4140;U16;;APPARENT POWER L3;;1.0;0.0;VA;4
+477;4;4142;U16;;3-PHASE SYS. ACTIVE POWER;;1.0;0.0;Watt;4
+478;4;4144;U16;;ACTIVE POWER L1;;1.0;0.0;Watt;4
+479;4;4146;U16;;ACTIVE POWER L2;;1.0;0.0;Watt;4
+480;4;4148;U16;;ACTIVE POWER L3;;1.0;0.0;Watt;4
+481;4;4150;U16;;3-PHASE S. REACTIVE POWER;;1.0;0.0;VAr;4
+482;4;4152;U16;;REACTIVE POWER L1;;1.0;0.0;VAr;4
+483;4;4154;U16;;REACTIVE POWER L2;;1.0;0.0;VAr;4
+484;4;4156;U16;;REACTIVE POWER L3;;1.0;0.0;VAr;4
+485;4;4158;U16;;3-PHASE SYS. ACTIVE ENERGY;;1.0;0.0;Wh;4
+486;4;4160;U16;;3-PHASE S. REACTIVE ENERGY;;1.0;0.0;VArh;4
+487;4;4166;U16;;FREQUENCY;;1.0;0.0;mHz;4
+488;4;4192;U16;;MAX LINE CURRENT L1;;1.0;0.0;mA;4
+489;4;4194;U16;;MAX LINE CURRENT L2;;1.0;0.0;mA;4
+490;4;4196;U16;;MAX LINE CURRENT L3;;1.0;0.0;mA;4
+491;4;4198;U16;;MAX 3-PHASE SYS. ACTIVE POWER;;1.0;0.0;Watt;4
+492;4;4200;U16;;MAX 3-PHASE S. APPARENT POWER;;1.0;0.0;VA;4
+493;4;4208;U16;;3-PHASE SYS. ACTIVE POWER 15’ AVER;;1.0;0.0;Watt;4
+494;4;4210;U16;;3-PHASE SYS. APPARENT POWER 15’ AVER;;1.0;0.0;VA;4
+495;4;4212;U16;;ACTIVE ENERGY L1;;1.0;0.0;Wh;4
+496;4;4214;U16;;ACTIVE ENERGY L2;;1.0;0.0;Wh;4
+497;4;4216;U16;;ACTIVE ENERGY L3;;1.0;0.0;Wh;4
+498;4;4218;U16;;REACTIVE ENERGY L1;;1.0;0.0;VArh;4
+499;4;4220;U16;;REACTIVE ENERGY L2;;1.0;0.0;VArh;4
+500;4;4222;U16;;REACTIVE ENERGY L3;;1.0;0.0;VArh;4
+501;4;4224;U16;;MAX 3-PHASE SYS. ACTIVE POWER 15’ AVER;;1.0;0.0;Watt;4
+502;4;4226;U16;;VOLTAGE THD L1;;1.0;0.0;None;4
+503;4;4228;U16;;VOLTAGE THD L2;;1.0;0.0;None;4
+504;4;4230;U16;;VOLTAGE THD L3;;1.0;0.0;None;4
+505;4;4232;U16;;CURRENT THD L1;;1.0;0.0;None;4
+506;4;4234;U16;;CURRENT THD L2;;1.0;0.0;None;4
+507;4;4236;U16;;CURRENT THD L3;;1.0;0.0;None;4
+508;4;4238;U16;;MAX ACTIVE POWER 15’ AVER L1;;1.0;0.0;Watt;4
+509;4;4240;U16;;MAX ACTIVE POWER 15’ AVER L2;;1.0;0.0;Watt;4
+510;4;4242;U16;;MAX ACTIVE POWER 15’ AVER L3;;1.0;0.0;Watt;4
+511;4;4244;U16;;MAX 3-PHASE SYS. APPARENT POWER 15’ AVER;;1.0;0.0;VA;4
+512;4;4246;U16;;MAX APPARERENT POWER 15’ AVER L1;;1.0;0.0;VA;4
+513;4;4248;U16;;MAX APPARERENT POWER 15’ AVER L2;;1.0;0.0;VA;4
+514;4;4250;U16;;MAX APPARERENT POWER 15’ AVER L3;;1.0;0.0;VA;4
+515;4;4262;U16;;3-PHASE SYS. APPARENT ENERGY;;1.0;0.0;VAh;4
+516;4;4264;U16;;APPARENT ENERGY L1;;1.0;0.0;VAh;4
+517;4;4266;U16;;APPARENT ENERGY L2;;1.0;0.0;VAh;4
+518;4;4268;U16;;APPARENT ENERGY L3;;1.0;0.0;VAh;4
+519;4;4270;U16;;3-PHASE SYS. GENERATED ACTIVE ENERGY;;1.0;0.0;Wh;4
+520;4;4272;U16;;GENERATED ACTIVE ENERGY L1;;1.0;0.0;Wh;4
+521;4;4274;U16;;GENERATED ACTIVE ENERGY L2;;1.0;0.0;Wh;4
+522;4;4276;U16;;GENERATED ACTIVE ENERGY L3;;1.0;0.0;Wh;4
+523;4;4278;U16;;3-PHASE S. GENERATED REACTIVE ENERGY;;1.0;0.0;VArh;4
+524;4;4280;U16;;GENERATED REACTIVE ENERGY L1;;1.0;0.0;VArh;4
+525;4;4282;U16;;GENERATED REACTIVE ENERGY L2;;1.0;0.0;VArh;4
+526;4;4284;U16;;GENERATED REACTIVE ENERGY L3;;1.0;0.0;VArh;4
+527;4;4286;U16;;3-PHASE S. GENERATED APPARENT ENERGY;;1.0;0.0;VAh;4
+528;4;4288;U16;;GENERATED APPARENT ENERGY L1;;1.0;0.0;VAh;4
+529;4;4290;U16;;GENERATED APPARENT ENERGY L2;;1.0;0.0;VAh;4
+530;4;4292;U16;;GENERATED APPARENT ENERGY L3;;1.0;0.0;VAh;4
+531;4;4512;U16;;CURRENT TRANSFORMER PRIMARY (CT);;1.0;0.0;None;4
+532;4;4514;U16;;VOLTAGE TRANSFORMER PRIMARY (VT);;1.0;0.0;None;4

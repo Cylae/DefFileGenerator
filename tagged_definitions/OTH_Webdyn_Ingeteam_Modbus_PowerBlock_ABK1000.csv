@@ -1,0 +1,77 @@
+﻿modbusRTU;Other;Webdyn;Ingeteam_Modbus_PowerBlock(ABK;;;;;;;
+1;4;0;U16;;Actual Date.Year;actual_dateyear;1.000000;0.000000;Year;4
+2;4;1;U16;;Actual Date.Month of the Year;actual_datemonth_of_the_year;1.000000;0.000000;Month;4
+3;4;2;U16;;Actual Date.Day of the month;actual_dateday_of_the_month;1.000000;0.000000;Day;4
+4;4;3;U16;;Actual Date.Hour of the day;actual_datehour_of_the_day;1.000000;0.000000;Hour;4
+5;4;4;U16;;Actual Date.Minute;actual_dateminute;1.000000;0.000000;Minute;4
+6;4;5;U16;;Actual Date.Second;actual_datesecond;1.000000;0.000000;Second;4
+7;4;6;I16;;Output active power;P_AC;10.000000;0.000000;KW;4
+8;4;7;I16;;Output reactive power;output_reactive_power;10.000000;0.000000;KVar;4
+9;4;8;U16;;Active Power Reduction rate;active_power_reduction_rate;100.000000;0.000000;'%;4
+10;4;9;U16;;Reactive Power Reduction rate;reactive_power_reduction_rate;100.000000;0.000000;'%;4
+11;4;10;U16;;Active Power Reduction Reason;active_power_reduction_reason;1.000000;0.000000;Reason;4
+12;4;11;U16;;Reactive Power Reduction Reason;reactive_power_reduction_reason;1.000000;0.000000;Reason;4
+13;4;12;I16;;PV power;pv_power;0.100000;0.000000;Wat;4
+14;4;13;I16;;BUS voltage;bus_voltage;1.000000;0.000000;V;4
+15;4;14;I16;;PV current;pv_current;100.000000;0.000000;Amps;4
+16;4;15;I16;;PV voltage;pv_voltage;1.000000;0.000000;Vdc;4
+17;4;16;I16;;HeatSink R Temperature;heatsink_r_temperature;10.000000;0.000000;°C;4
+18;4;17;I16;;HeatSink S Temperature;heatsink_s_temperature;10.000000;0.000000;°C;4
+19;4;18;I16;;HeatSink T Temperature;heatsink_t_temperature;10.000000;0.000000;°C;4
+20;4;19;I16;;Coil Temperature;coil_temperature;10.000000;0.000000;°C;4
+21;4;20;I16;;Stack Amb. Temperature;stack_amb_temperature;10.000000;0.000000;°C;4
+22;4;21;I16;;Ambient. Temperature;ambient_temperature;10.000000;0.000000;°C;4
+23;4;22;I16;;Reserved Temperature;reserved_temperature;10.000000;0.000000;°C;0
+24;4;23;U16;;Grid RMS voltage of phase 1;grid_rms_voltage_of_phase_1;10.000000;0.000000;Vrms;4
+25;4;24;U16;;Grid RMS voltage of phase 2;grid_rms_voltage_of_phase_2;10.000000;0.000000;Vrms;4
+26;4;25;U16;;Grid RMS voltage of phase 3;grid_rms_voltage_of_phase_3;10.000000;0.000000;Vrms;4
+27;4;26;U16;;Output grid RMS current of phase 1;output_grid_rms_current_of_phase_1;100.000000;0.000000;Amps;4
+28;4;27;U16;;Output grid RMS current of phase 2;output_grid_rms_current_of_phase_2;100.000000;0.000000;Amps;4
+29;4;28;U16;;Output grid RMS current of phase 3;output_grid_rms_current_of_phase_3;100.000000;0.000000;Amps;4
+30;4;29;I16;;Cosine of Phi;cosine_of_phi;1000.000000;0.000000;;4
+31;4;30;I16;;Sign of Phi;sign_of_phi;1.000000;0.000000;;4
+32;4;31;I16;;Output apparent power;output_apparent_power;0.100000;0.000000;VA;4
+33;4;32;U16;;Grid frequency;FREQ;100.000000;0.000000;Hz;4
+34;4;33;U16;;Filter RMS Current Phase 1;filter_rms_current_phase_1;100.000000;0.000000;Amps;4
+35;4;34;U16;;Filter RMS Current Phase 2;filter_rms_current_phase_2;100.000000;0.000000;Amps;4
+36;4;35;U16;;BUS+ – EARTH voltage;bus_earth_voltage;10.000000;0.000000;Vrms;4
+37;4;36;U16;;EARTH – BUS- voltage;earth_bus_voltage;10.000000;0.000000;Vrms;4
+38;4;37;U16;;Isolation resistance of PV field;isolation_resistance_of_pv_field;1.000000;0.000000;kOhm;4
+39;4;38;I16;;External Extra Measurement 1;external_extra_measurement_1;1000.000000;0.000000;;4
+40;4;39;U32;;Daily AC injected energy;daily_ac_injected_energy;0.001000;0.000000;kW*h;4
+41;4;41;U32;;Reserved (Daily AC consumed energy);reserved_daily_ac_consumed_energy;1.000000;0.000000;;0
+42;4;43;U32;;Reserved (Daily DC injected energy);reserved_daily_dc_injected_energy;1.000000;0.000000;;0
+43;4;45;U32;;Reserved (Daily DC consumed energy);reserved_daily_dc_consumed_energy;1.000000;0.000000;;0
+44;4;47;U32;;Partial AC energy injected since user reset;partial_ac_energy_injected_since_user_reset;1.000000;0.000000;kW*h.;4
+45;4;49;U32;;Reserved (Partial AC consumed energy);reserved_partial_ac_consumed_energy;1.000000;0.000000;;0
+46;4;51;U32;;Reserved (Partial DC injected energy);reserved_partial_dc_injected_energy;1.000000;0.000000;;0
+47;4;53;U32;;Reserved (Partial DC consumed energy);reserved_partial_dc_consumed_energy;1.000000;0.000000;;0
+48;4;55;U32;;Partial number of hours of operation. hours;partial_number_of_hours_of_operation_hours;1.000000;0.000000;hours;4
+49;4;57;U32;;Partial number of connection since user reset.;partial_number_of_connection_since_user_reset;1.000000;0.000000;;4
+50;4;59;U32;;Total AC Energy injected by the unit;total_ac_energy_injected_by_the_unit;1.000000;0.000000;kW*h;4
+51;4;61;U32;;Reserved (Total AC consumed energy);reserved_total_ac_consumed_energy;1.000000;0.000000;;0
+52;4;63;U32;;Reserved (Total DC injected energy);reserved_total_dc_injected_energy;1.000000;0.000000;;0
+53;4;65;U32;;Reserved (Total DC consumed energy);reserved_total_dc_consumed_energy;1.000000;0.000000;;0
+54;4;67;U32;;Total hours of operation. hours;total_hours_of_operation_hours;1.000000;0.000000;Hours;4
+55;4;69;U32;;Total number of connections since launching;total_number_of_connections_since_launching;1.000000;0.000000;;4
+56;4;71;I16;;Connection waiting time;connection_waiting_time;1.000000;0.000000;s;4
+57;4;72;I16;;Time left to connect;time_left_to_connect;1.000000;0.000000;s;4
+58;4;73;U16;;Instantaneous alarm code 1;instantaneous_alarm_code_1;1.000000;0.000000;Flag bits;4
+59;4;74;U16;;Instantaneous alarm code 2;instantaneous_alarm_code_2;1.000000;0.000000;Flag bits;4
+60;4;75;U16;;Instantaneous alarm code 3;instantaneous_alarm_code_3;1.000000;0.000000;Flag bits;4
+61;4;76;U16;;Instantaneous alarm code 4;instantaneous_alarm_code_4;1.000000;0.000000;Flag bits;4
+62;4;77;U16;;Instantaneous Warning code;instantaneous_warning_code;1.000000;0.000000;Flag bits;4
+63;4;78_0;I8;;Stop events3;stop_events3;0.000000;0.000000;;4
+64;4;78;U16;;Unit flags 1;unit_flags_1;1.000000;0.000000;Flag bits;4
+65;4;79;U16;;Unit flags 2;unit_flags_2;1.000000;0.000000;Flag bits;4
+66;4;80;U16;;Unit flags 3;unit_flags_3;1.000000;0.000000;Flag bits;4
+67;4;81;U16;;Status Unit1;status_unit1;1.000000;0.000000;States;4
+68;4;82;U16;;Status Unit2;status_unit2;1.000000;0.000000;States;4
+69;4;83;U16;;Status Unit3;status_unit3;1.000000;0.000000;States;4
+70;4;84;U16;;Millisecond tick;millisecond_tick;1.000000;0.000000;ms;4
+71;4;85;U16;;Cyclic redundancy check;cyclic_redundancy_check;1.000000;0.000000;ms;4
+72;4;86;U16;;Grounding kit alarm;grounding_kit_alarm;1.000000;0.000000;;4
+73;4;87;U16;;Grounding kit status;grounding_kit_status;1.000000;0.000000;mA;4
+74;4;88;U16;;Average current;average_current;1.000000;0.000000;mA;4
+75;4;89;U16;;Rms current;rms_current;1.000000;0.000000;mA;4
+76;4;90;U16;;Com errors;com_errors;1.000000;0.000000;;4

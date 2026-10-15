@@ -1,0 +1,111 @@
+﻿modbusRTU;Other;MarsRenewable;MarsRenewable_Rack_V7;;;;;;;
+1;4;0;U16;;Number of Cells in Rack;number_of_cells_in_rack;1.000000;0.000000;;1
+2;4;1;F32;;Rack Rack Voltage;rack_rack_voltage;1.000000;0.000000;V;4
+3;4;3;F32;;Rack Rack Current;rack_rack_current;1.000000;0.000000;A;4
+4;4;5;F32;;Rack Rack SOC;rack_rack_soc;1.000000;0.000000;'%;4
+5;4;7;F32;;Rack Rack SOH;rack_rack_soh;1.000000;0.000000;'%;4
+6;4;9;F32;;Rack Rack Insulation Resistance;rack_rack_insulation_resistance;1.000000;0.000000;Ohm;4
+7;4;11;F32;;Rack Maximum Allowable Charge Current;rack_maximum_allowable_charge_current;1.000000;0.000000;A;4
+8;4;13;F32;;Rack Maximum Allowable Discharge Current;rack_maximum_allowable_discharge_current;1.000000;0.000000;A;4
+9;4;15;F32;;Rack Total Charge Energy;rack_total_charge_energy;1.000000;0.000000;kWh;4
+10;4;17;F32;;Rack Total Discharge Energy;rack_total_discharge_energy;1.000000;0.000000;kWh;4
+11;4;19;F32;;Rack Available Charge Energy;rack_available_charge_energy;1.000000;0.000000;kWh;4
+12;4;21;F32;;Rack Available Discharge Energy;rack_available_discharge_energy;1.000000;0.000000;kWh;4
+13;4;23;F32;;Rack Average Cell Voltage;rack_average_cell_voltage;1.000000;0.000000;V;4
+14;4;25;F32;;Rack Average Cell Temperature;rack_average_cell_temperature;1.000000;0.000000;°C;4
+15;4;27;F32;;Rack Maximum Cell Voltage;rack_maximum_cell_voltage;1.000000;0.000000;V;4
+16;4;29;F32;;Rack Maximum Cell Voltage Cell Number;rack_maximum_cell_voltage_cell_number;1.000000;0.000000;;4
+17;4;31;F32;;Rack Minimum Cell Voltage;rack_minimum_cell_voltage;1.000000;0.000000;V;4
+18;4;33;F32;;Rack Minimum Cell Voltage Cell Number;rack_minimum_cell_voltage_cell_number;1.000000;0.000000;;4
+19;4;35;F32;;Rack Maximum Cell Temperature;rack_maximum_cell_temperature;1.000000;0.000000;°C;4
+20;4;37;F32;;Rack Maximum Cell Temperature Cell Number;rack_maximum_cell_temperature_cell_number;1.000000;0.000000;;4
+21;4;39;F32;;Rack Minimum Cell Temperature;rack_minimum_cell_temperature;1.000000;0.000000;°C;4
+22;4;41;F32;;Rack Minimum Cell Temperature Cell Number;rack_minimum_cell_temperature_cell_number;1.000000;0.000000;;4
+23;4;43;F32;;Rack Maximum Cell SOC;rack_maximum_cell_soc;1.000000;0.000000;'%;4
+24;4;45;F32;;Rack Maximum Cell SOC Cell Number;rack_maximum_cell_soc_cell_number;1.000000;0.000000;;4
+25;4;47;F32;;Rack Minimum Cell SOC;rack_minimum_cell_soc;1.000000;0.000000;'%;4
+26;4;49;F32;;Rack Minimum Cell SOC Cell Number;rack_minimum_cell_soc_cell_number;1.000000;0.000000;;4
+27;4;51;F32;;Rack Maximum Cell SOH;rack_maximum_cell_soh;1.000000;0.000000;'%;4
+28;4;53;F32;;Rack Maximum Cell SOH Cell Number;rack_maximum_cell_soh_cell_number;1.000000;0.000000;;4
+29;4;55;F32;;Rack Minimum Cell SOH;rack_minimum_cell_soh;1.000000;0.000000;'%;4
+30;4;57;F32;;Rack Minimum Cell SOH Cell Number;rack_minimum_cell_soh_cell_number;1.000000;0.000000;;4
+31;4;100;F32;;Cell 1 Voltage;cell_1_voltage;1.000000;0.000000;V;4
+32;4;102;F32;;Cell 1 Temperature;cell_1_temperature;1.000000;0.000000;°C;4
+33;4;104;F32;;Cell 1 SOC;cell_1_soc;1.000000;0.000000;'%;4
+34;4;106;F32;;Cell 1 SOH;cell_1_soh;1.000000;0.000000;'%;4
+35;4;108;F32;;Cell 1 Resistance;cell_1_resistance;1.000000;0.000000;Ohm;4
+36;4;110;F32;;Cell 2 Voltage;cell_2_voltage;1.000000;0.000000;V;4
+37;4;112;F32;;Cell 2 Temperature;cell_2_temperature;1.000000;0.000000;°C;4
+38;4;114;F32;;Cell 2 SOC;cell_2_soc;1.000000;0.000000;'%;4
+39;4;116;F32;;Cell 2 SOH;cell_2_soh;1.000000;0.000000;'%;4
+40;4;118;F32;;Cell 2 Resistance;cell_2_resistance;1.000000;0.000000;Ohm;4
+41;4;120;F32;;Cell 3 Voltage;cell_3_voltage;1.000000;0.000000;V;4
+42;4;122;F32;;Cell 3 Temperature;cell_3_temperature;1.000000;0.000000;°C;4
+43;4;124;F32;;Cell 3 SOC;cell_3_soc;1.000000;0.000000;'%;4
+44;4;126;F32;;Cell 3 SOH;cell_3_soh;1.000000;0.000000;'%;4
+45;4;128;F32;;Cell 3 Resistance;cell_3_resistance;1.000000;0.000000;Ohm;4
+46;4;130;F32;;Cell 4 Voltage;cell_4_voltage;1.000000;0.000000;V;4
+47;4;132;F32;;Cell 4 Temperature;cell_4_temperature;1.000000;0.000000;°C;4
+48;4;134;F32;;Cell 4 SOC;cell_4_soc;1.000000;0.000000;'%;4
+49;4;136;F32;;Cell 4 SOH;cell_4_soh;1.000000;0.000000;'%;4
+50;4;138;F32;;Cell 4 Resistance;cell_4_resistance;1.000000;0.000000;Ohm;4
+51;4;140;F32;;Cell 5 Voltage;cell_5_voltage;1.000000;0.000000;V;4
+52;4;142;F32;;Cell 5 Temperature;cell_5_temperature;1.000000;0.000000;°C;4
+53;4;144;F32;;Cell 5 SOC;cell_5_soc;1.000000;0.000000;'%;4
+54;4;146;F32;;Cell 5 SOH;cell_5_soh;1.000000;0.000000;'%;4
+55;4;148;F32;;Cell 5 Resistance;cell_5_resistance;1.000000;0.000000;Ohm;4
+56;4;150;F32;;Cell 6 Voltage;cell_6_voltage;1.000000;0.000000;V;4
+57;4;152;F32;;Cell 6 Temperature;cell_6_temperature;1.000000;0.000000;°C;4
+58;4;154;F32;;Cell 6 SOC;cell_6_soc;1.000000;0.000000;'%;4
+59;4;156;F32;;Cell 6 SOH;cell_6_soh;1.000000;0.000000;'%;4
+60;4;158;F32;;Cell 6 Resistance;cell_6_resistance;1.000000;0.000000;Ohm;4
+61;4;160;F32;;Cell 7 Voltage;cell_7_voltage;1.000000;0.000000;V;4
+62;4;162;F32;;Cell 7 Temperature;cell_7_temperature;1.000000;0.000000;°C;4
+63;4;164;F32;;Cell 7 SOC;cell_7_soc;1.000000;0.000000;'%;4
+64;4;166;F32;;Cell 7 SOH;cell_7_soh;1.000000;0.000000;'%;4
+65;4;168;F32;;Cell 7 Resistance;cell_7_resistance;1.000000;0.000000;Ohm;4
+66;4;170;F32;;Cell 8 Voltage;cell_8_voltage;1.000000;0.000000;V;4
+67;4;172;F32;;Cell 8 Temperature;cell_8_temperature;1.000000;0.000000;°C;4
+68;4;174;F32;;Cell 8 SOC;cell_8_soc;1.000000;0.000000;'%;4
+69;4;176;F32;;Cell 8 SOH;cell_8_soh;1.000000;0.000000;'%;4
+70;4;178;F32;;Cell 8 Resistance;cell_8_resistance;1.000000;0.000000;Ohm;4
+71;4;180;F32;;Cell 9 Voltage;cell_9_voltage;1.000000;0.000000;V;4
+72;4;182;F32;;Cell 9 Temperature;cell_9_temperature;1.000000;0.000000;°C;4
+73;4;184;F32;;Cell 9 SOC;cell_9_soc;1.000000;0.000000;'%;4
+74;4;186;F32;;Cell 9 SOH;cell_9_soh;1.000000;0.000000;'%;4
+75;4;188;F32;;Cell 9 Resistance;cell_9_resistance;1.000000;0.000000;Ohm;4
+76;4;190;F32;;Cell 10 Voltage;cell_10_voltage;1.000000;0.000000;V;4
+77;4;192;F32;;Cell 10 Temperature;cell_10_temperature;1.000000;0.000000;°C;4
+78;4;194;F32;;Cell 10 SOC;cell_10_soc;1.000000;0.000000;'%;4
+79;4;196;F32;;Cell 10 SOH;cell_10_soh;1.000000;0.000000;'%;4
+80;4;198;F32;;Cell 10 Resistance;cell_10_resistance;1.000000;0.000000;Ohm;4
+81;4;200;F32;;Cell 11 Voltage;cell_11_voltage;1.000000;0.000000;V;4
+82;4;202;F32;;Cell 11 Temperature;cell_11_temperature;1.000000;0.000000;°C;4
+83;4;204;F32;;Cell 11 SOC;cell_11_soc;1.000000;0.000000;'%;4
+84;4;206;F32;;Cell 11 SOH;cell_11_soh;1.000000;0.000000;'%;4
+85;4;208;F32;;Cell 11 Resistance;cell_11_resistance;1.000000;0.000000;Ohm;4
+86;4;210;F32;;Cell 12 Voltage;cell_12_voltage;1.000000;0.000000;V;4
+87;4;212;F32;;Cell 12 Temperature;cell_12_temperature;1.000000;0.000000;°C;4
+88;4;214;F32;;Cell 12 SOC;cell_12_soc;1.000000;0.000000;'%;4
+89;4;216;F32;;Cell 12 SOH;cell_12_soh;1.000000;0.000000;'%;4
+90;4;218;F32;;Cell 12 Resistance;cell_12_resistance;1.000000;0.000000;Ohm;4
+91;4;220;F32;;Cell 13 Voltage;cell_13_voltage;1.000000;0.000000;V;4
+92;4;222;F32;;Cell 13 Temperature;cell_13_temperature;1.000000;0.000000;°C;4
+93;4;224;F32;;Cell 13 SOC;cell_13_soc;1.000000;0.000000;'%;4
+94;4;226;F32;;Cell 13 SOH;cell_13_soh;1.000000;0.000000;'%;4
+95;4;228;F32;;Cell 13 Resistance;cell_13_resistance;1.000000;0.000000;Ohm;4
+96;4;230;F32;;Cell 14 Voltage;cell_14_voltage;1.000000;0.000000;V;4
+97;4;232;F32;;Cell 14 Temperature;cell_14_temperature;1.000000;0.000000;°C;4
+98;4;234;F32;;Cell 14 SOC;cell_14_soc;1.000000;0.000000;'%;4
+99;4;236;F32;;Cell 14 SOH;cell_14_soh;1.000000;0.000000;'%;4
+100;4;238;F32;;Cell 14 Resistance;cell_14_resistance;1.000000;0.000000;Ohm;4
+101;4;240;F32;;Cell 15 Voltage;cell_15_voltage;1.000000;0.000000;V;4
+102;4;242;F32;;Cell 15 Temperature;cell_15_temperature;1.000000;0.000000;°C;4
+103;4;244;F32;;Cell 15 SOC;cell_15_soc;1.000000;0.000000;'%;4
+104;4;246;F32;;Cell 15 SOH;cell_15_soh;1.000000;0.000000;'%;4
+105;4;248;F32;;Cell 15 Resistance;cell_15_resistance;1.000000;0.000000;Ohm;4
+106;4;250;F32;;Cell 16 Voltage;cell_16_voltage;1.000000;0.000000;V;4
+107;4;252;F32;;Cell 16 Temperature;cell_16_temperature;1.000000;0.000000;°C;4
+108;4;254;F32;;Cell 16 SOC;cell_16_soc;1.000000;0.000000;'%;4
+109;4;256;F32;;Cell 16 SOH;cell_16_soh;1.000000;0.000000;'%;4
+110;4;258;F32;;Cell 16 Resistance;cell_16_resistance;1.000000;0.000000;Ohm;4

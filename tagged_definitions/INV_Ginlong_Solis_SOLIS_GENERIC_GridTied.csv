@@ -1,0 +1,691 @@
+﻿Modbus;Inverter;SOLIS;GridTied;;;;;;;
+1;4;2999;U16;;Product model;MODEL;1.0;0.0;;4
+2;4;3000;U16;;DSP software version;;1.0;0.0;;4
+3;4;3001;U16;;LCD software version;;1.0;0.0;;4
+4;4;3002;U16;;AC output type;;1.0;0.0;;4
+5;4;3003;U16;;DC input type;;1.0;0.0;;4
+6;4;3004;U32;;Active Power;P_AC;1.0;0.0;W;4
+7;4;3006;U32_W;;Total DC output power;P_DC;1.0;0.0;W;4
+8;4;3008;U32;;Total energy;E_TOT;1.0;0.0;kWh;4
+9;4;3010;U32_W;;Energy this month;;1.0;0.0;kWh;4
+10;4;3012;U32_W;;Energy last month;;1.0;0.0;kWh;4
+11;4;3014;U16;;Energy today;E_DAY;0.1;0.0;kWh;4
+12;4;3015;U16;;Energy last day;;0.1;0.0;kWh;4
+13;4;3016;U32_W;;Energy this year;;1.0;0.0;kWh;4
+14;4;3018;U32_W;;Energy last year;;1.0;0.0;kWh;4
+15;4;3020;I16;;HMI Version;;1.0;0.0;kWh;4
+16;4;3021;U16;;DC voltage 1;U_DC;0.1;0.0;V;4
+17;4;3022;U16;;DC current 1;I_DC;0.1;0.0;A;4
+18;4;3023;U16;;DC voltage 2;;0.1;0.0;V;4
+19;4;3024;U16;;DC current 2;;0.1;0.0;A;4
+20;4;3025;U16;;DC voltage 3;;0.1;0.0;V;4
+21;4;3026;U16;;DC current 3;;0.1;0.0;A;4
+22;4;3027;U16;;DC voltage 4;;0.1;0.0;V;4
+23;4;3028;U16;;DC current 4;;0.1;0.0;A;4
+24;4;3029;U16;;Alarm code data;;1.0;0.0;;8
+25;4;3030;U16;;Initialize ground voltage;;0.1;0.0;V;4
+26;4;3031;U16;;DC busbar voltage;;1.0;0.0;;4
+27;4;3032;U16;;DC half-busbar voltage;;0.1;0.0;V;4
+28;4;3033;U16;;AB line voltage / A phase voltage;;0.1;0.0;V;4
+29;4;3034;U16;;BC line voltage / B phase voltage;;0.1;0.0;V;4
+30;4;3035;U16;;CA line voltage / C phase voltage;;0.1;0.0;V;4
+31;4;3036;U16;;A phase current;I_AC_3;0.1;0.0;V;4
+32;4;3037;U16;;B phase current;;0.1;0.0;A;4
+33;4;3038;U16;;C phase current;;0.1;0.0;A;4
+34;4;3039;U16;;Master/slave dsp upgrade switch;;1.0;0.0;;0
+35;4;3040;U16;;Working mode;;1.0;0.0;;4
+36;4;3041;U16;;Inverter temperature;TEMP_INT;0.1;0.0;C;4
+37;4;3042;U16;;Grid Frequency;FREQ;0.01;0.0;Hz;4
+38;4;3043;U16;;Inverter status;;1.0;0.0;;8
+39;4;3044;I32;;Limit active power adjustement rated power;LimitP;1.0;0.0;W;4
+40;4;3046;I32;;Limit reactive power adjustment rated power;LimitQ;1.0;0.0;Var;4
+41;4;3048;U16;;Inverter control word;ControlRead;1.0;0.0;;4
+42;4;3049;U16;;Power limit actual value;CmdPwrPctRead;0.01;0.0;%;4
+43;4;3050;I16;;Actual adjust value of power factor;PF1Read;0.001;0.0;;4
+44;4;3051;I16;;Actual adjust value of power factor_1;PF2Read;0.001;0.0;;4
+45;4;3052;I16;;Reactive power limitation;QPctRead;1.0;0.0;%;4
+46;4;3053;U16;;Country standard code;;1.0;0.0;;4
+47;4;3054;U16;;Power curve code;;1.0;0.0;;4
+48;4;3055;I32;;Reactive power;Q_AC;1.0;0.0;Var;4
+49;4;3057;I32;;Apparent power;S_AC;1.0;0.0;VA;4
+50;4;3059;I16;;Real-time power factor;PFRead;0.01;0.0;;4
+51;4;3060;U16;;Inverter SN_1;SERIAL;1.0;0.0;;4
+52;4;3061;U16;;Inverter SN_2;;1.0;0.0;;4
+53;4;3062;U16;;Inverter SN_3;;1.0;0.0;;4
+54;4;3063;U16;;Inverter SN_4;;1.0;0.0;;4
+55;4;3065;U16;;Setting flag;;1.0;0.0;;4
+56;4;3066;U16;;Fault code 01;;1.0;0.0;;4
+57;4;3067;U16;;Fault code 02;;1.0;0.0;;4
+58;4;3068;U16;;Fault code 03;;1.0;0.0;;4
+59;4;3069;U16;;Fault code 04;;1.0;0.0;;4
+60;4;3070;U16;;Fault code 05;;1.0;0.0;;4
+61;4;3071;U16;;Working status;;1.0;0.0;;4
+62;4;3072;U16;;System Time(Year);;1.0;0.0;;4
+63;4;3073;U16;;System Time(Month);;1.0;0.0;;4
+64;4;3074;U16;;System Time(Day);;1.0;0.0;;4
+65;4;3075;U16;;System Time(hour);;1.0;0.0;;4
+66;4;3076;U16;;System Time(Min);;1.0;0.0;;4
+67;4;3077;U16;;System Time(Sec);;1.0;0.0;;4
+68;4;3078;U16;;DRM;;1.0;0.0;;4
+69;4;3079;U32;;Meter total active generation;;1.0;0.0;Wh;4
+70;4;3081;U16;;Meter voltage;;1.0;0.0;V;4
+71;4;3082;U16;;Meter current;;1.0;0.0;A;4
+72;4;3083;I32;;Meter active power;;1.0;0.0;W;4
+73;4;3085;U16;;Leakage current threshold;;1.0;0.0;mA;4
+74;4;3086;U16;;PV ISO threshold;;1.0;0.0;Kohm;4
+75;4;3089;U16;;Power limit switch;CMD_P_AC_SET_ABS;1.0;0.0;;1
+76;4;3090;U16;;Reactive power switch read;;1.0;0.0;;4
+77;4;3091;U16;;Groudning resistance;;1.0;0.0;Kohm;4
+78;4;3092;I16;;AC NTC (IGBT) Module Temperature;TEMP_CELL;0.1;0.0;Deg.Celsius;4
+79;4;3094;U16;;Fault word 00;;1.0;0.0;;1
+80;4;3095;U16;;Fault word 01;;1.0;0.0;;1
+81;4;3096;U16;;Fault word 02;;1.0;0.0;;1
+82;4;3097;U16;;Fault word 03;;1.0;0.0;;1
+83;4;3098;U16;;Fault word 04;;1.0;0.0;;1
+84;4;3099;U16;;Fault word 05;;1.0;0.0;;1
+85;4;3105;U16;;Ileak Real time data;;1.0;0.0;mA;1
+86;4;3106;U16;;Grid filter number;;1.0;0.0;;1
+87;4;3107;U16;;Master dsp sub version;;1.0;0.0;;1
+88;4;3108;U16;;Real time power percentage;CmdPwrPctRead2;0.01;0.0;%;1
+89;4;3109;U16;;Inverter rated apparent power;;0.1;0.0;VA;1
+90;4;3110;U16;;Internal EPM Switch;;1.0;0.0;;1
+91;4;3111;I16;;Internal EPM backflow power;;0.01;0.0;W;1
+92;4;3112;U16;;Internal EPM failsafe switch;;1.0;0.0;;1
+93;4;3113;U16;;EPM real time backflow power;;0.1;0.0;W;1
+94;4;3114;U16;;Internal EPM Hard Switch for AU 2020 Code;;1.0;0.0;;1
+95;4;3115;I16;;Internal EPM Hard Limit for AU 2020 Code;;0.01;0.0;W;1
+96;4;3116;U16;;Total Energy  Decimal Part;;0.001;0.0;kWh;1
+97;4;3117;U16;;CT Link Test;;1.0;0.0;;1
+98;4;3118;U16;;G100 Running Status;;1.0;0.0;;1
+99;4;3119;U16;;ARC-Fault Number of occurrences;;1.0;0.0;;1
+100;4;3120;U16;;Italy Single Self-Test;;1.0;0.0;;1
+101;4;3121;U16;;Italy Full Self-test;;1.0;0.0;;1
+102;4;3122;U16;;01-59.S1 Voltage;;0.1;0.0;V;1
+103;4;3123;U16;;01-59.S1 Time;;1.0;0.0;ms;1
+104;4;3124;U16;;02-59.S2 Voltage;;0.1;0.0;V;1
+105;4;3125;U16;;02-59.S2 Time;;1.0;0.0;ms;1
+106;4;3126;U16;;03-27.S1 Voltage;;0.1;0.0;V;1
+107;4;3127;U16;;03-27.S1 Time;;1.0;0.0;ms;1
+108;4;3128;U16;;04-27.S2 Voltage;;0.1;0.0;V;1
+109;4;3129;U16;;04-27.S2 Time;;1.0;0.0;ms;1
+110;4;3130;U16;;05-81>.S1Frequency;;0.01;0.0;Hz;1
+111;4;3131;U16;;05-81>.S1 Time;;1.0;0.0;ms;1
+112;4;3132;U16;;06-81 < .S1 Frequency;;0.01;0.0;Hz;1
+113;4;3133;U16;;06-81 < .S1 Time;;1.0;0.0;ms;1
+114;4;3134;U16;;07-81>.S2F Frequency;;0.01;0.0;Hz;1
+115;4;3135;U16;;07-81>.S2F Time;;1.0;0.0;ms;1
+116;4;3136;U16;;08-81>.S2F Frequency;;0.01;0.0;Hz;1
+117;4;3137;U16;;08-81>.S2F Time;;1.0;0.0;ms;1
+118;4;3138;U16;;09-81>.S2S Frequency;;0.01;0.0;Hz;1
+119;4;3139;U16;;09-81>.S2S Time;;1.0;0.0;ms;1
+120;4;3140;U16;;10-81>.S2S Frequency;;0.01;0.0;Hz;1
+121;4;3141;U16;;10-81>.S2S Time;;1.0;0.0;ms;1
+122;4;3142;U16;;DSP1 Version;;1.0;0.0;;1
+123;4;3143;U16;;DSP2 Version;;1.0;0.0;;1
+124;4;3144;U16;;DSP3 Version;;1.0;0.0;;1
+125;4;3145;U16;;DSP4 Version;;1.0;0.0;;1
+126;4;3146;U16;;Voltage enable switch Ride-through;;1.0;0.0;;1
+127;4;3147;U16;;Voltage Ride-through enable flag bit;;1.0;0.0;;1
+128;4;3148;U16;;AFCI board model;;1.0;0.0;;1
+129;4;3149;U16;;AFCI board Version;;1.0;0.0;;1
+130;4;3150;U16;;AFCI Request fault data status;;1.0;0.0;;1
+131;4;3151;U16;;AFCI board CT module hardware fault check result;;1.0;0.0;;1
+132;4;3152;U16;;AFCI board arc fault check result;;1.0;0.0;;1
+133;4;3219;U16;;Broadcast Batch Upgrade Flag;;1.0;0.0;;1
+134;4;3220;U16;;Inverter initial setting state;;1.0;0.0;;1
+135;4;3221;U16;;Bit error rate between HMI and DSP;;0.1;0.0;%;1
+136;4;3222;U16;;Safety Version;;1.0;0.0;;1
+137;4;3223;U16;;AFCI SelfCheck Completed;;1.0;0.0;;1
+138;4;3224;U16;;IGBT Self-Check Flag Bit;;1.0;0.0;;1
+139;4;3227;U16;;One Click Reset Enable Command Status;;1.0;0.0;;1
+140;4;3228;U16;;One Click Reset Operating Command Status;;1.0;0.0;;1
+141;4;3229_38;STRING;;SN Number;;1.0;0.0;;1
+142;4;3249;U16;;Meter location;;1.0;0.0;;1
+143;4;3250;U16;;Meter AC voltage A;;0.1;0.0;V;1
+144;4;3251;U16;;Meter AC current A;I_AC;0.01;0.0;A;1
+145;4;3252;U16;;Meter AC voltage B;;0.1;0.0;V;1
+146;4;3253;U16;;Meter AC current B;;0.01;0.0;A;1
+147;4;3254;U16;;Meter AC voltage C;;0.1;0.0;V;1
+148;4;3255;U16;;Meter AC current C;;0.01;0.0;A;1
+149;4;3256;I32;;Meter Active Power A;;0.001;0.0;kW;1
+150;4;3258;I32;;Meter Active Power B;;0.001;0.0;kW;1
+151;4;3260;I32;;Meter Active Power C;;0.001;0.0;kW;1
+152;4;3262;I32;;Meter Total Active Power;;0.001;0.0;kW;1
+153;4;3264;I32;;Meter Reactive Power A;;1.0;0.0;Var;1
+154;4;3266;I32;;Meter Reactive Power B;;1.0;0.0;Var;1
+155;4;3268;I32;;Meter Reactive Power C;;1.0;0.0;Var;1
+156;4;3270;I32;;Meter Total Reactive Power;;1.0;0.0;Var;1
+157;4;3272;I32;;Meter Apparent Power A;;1.0;0.0;VA;1
+158;4;3274;I32;;Meter Apparent Power B;;1.0;0.0;VA;1
+159;4;3276;I32;;Meter Apparent Power C;;1.0;0.0;VA;1
+160;4;3278;I32;;Meter Total Apparent Power;;1.0;0.0;VA;1
+161;4;3280;I16;;Meter PF;;0.001;0.0;;1
+162;4;3281;U16;;Meter Freq;;0.01;0.0;Hz;1
+163;4;3282;U32;;Meter grid import active energy;E_IMP;0.01;0.0;kWh;1
+164;4;3284;U32;;Meter grid export active energy;E_EXP;0.01;0.0;kWh;1
+165;4;3286;U16;;PV string voltage and Current Combination Description;;1.0;0.0;;1
+166;4;3288;I16;;PV21I;;0.1;0.0;A;4
+167;4;3289;I16;;PV22I;;0.1;0.0;A;4
+168;4;3290;I16;;PV23I;;0.1;0.0;A;4
+169;4;3291;I16;;PV24I;;0.1;0.0;A;4
+170;4;3292;I16;;PV25I;;0.1;0.0;A;4
+171;4;3293;I16;;PV26I;;0.1;0.0;A;4
+172;4;3294;I16;;PV27I;;0.1;0.0;A;4
+173;4;3295;I16;;PV28I;;0.1;0.0;A;4
+174;4;3296;I16;;PV29I;;0.1;0.0;A;4
+175;4;3297;I16;;PV30I;;0.1;0.0;A;4
+176;4;3298;U16;;Total PV V;;0.1;0.0;V;4
+177;4;3299;I16;;Total PV I;;0.1;0.0;A;4
+178;4;3300;I16;;PV1 I;;0.1;0.0;A;4
+179;4;3301;I16;;PV2 I;;0.1;0.0;A;4
+180;4;3302;I16;;PV3 I;;0.1;0.0;A;4
+181;4;3303;I16;;PV4 I;;0.1;0.0;A;4
+182;4;3304;I16;;PV5 I;;0.1;0.0;A;4
+183;4;3305;I16;;PV6 I;;0.1;0.0;A;4
+184;4;3306;I16;;PV7 I;;0.1;0.0;A;4
+185;4;3307;I16;;PV8 I;;0.1;0.0;A;4
+186;4;3308;I16;;PV9 I;;0.1;0.0;A;4
+187;4;3309;I16;;PV10 I;;0.1;0.0;A;4
+188;4;3310;I16;;PV11 I;;0.1;0.0;A;4
+189;4;3311;I16;;PV12 I;;0.1;0.0;A;4
+190;4;3312;I16;;PV13 I;;0.1;0.0;A;4
+191;4;3313;I16;;PV14 I;;0.1;0.0;A;4
+192;4;3314;I16;;PV15 I;;0.1;0.0;A;4
+193;4;3315;I16;;PV16 I;;0.1;0.0;A;4
+194;4;3316;I16;;PV17 I;;0.1;0.0;A;4
+195;4;3317;I16;;PV18 I;;0.1;0.0;A;4
+196;4;3318;I16;;PV19 I;;0.1;0.0;A;4
+197;4;3319;I16;;PV20 I;;0.1;0.0;A;4
+198;4;3320;U16;;PV1 V;;0.1;0.0;V;4
+199;4;3321;U16;;PV2 V;;0.1;0.0;V;4
+200;4;3322;U16;;PV3 V;;0.1;0.0;V;4
+201;4;3323;U16;;PV4 V;;0.1;0.0;V;4
+202;4;3324;U16;;PV5 V;;0.1;0.0;V;4
+203;4;3325;U16;;PV6 V;;0.1;0.0;V;4
+204;4;3326;U16;;PV7 V;;0.1;0.0;V;4
+205;4;3327;U16;;PV8 V;;0.1;0.0;V;4
+206;4;3328;U16;;PV9 V;;0.1;0.0;V;4
+207;4;3329;U16;;PV10 V;;0.1;0.0;V;4
+208;4;3330;U16;;PV11 V;;0.1;0.0;V;4
+209;4;3331;U16;;PV12V;;0.1;0.0;V;4
+210;4;3332;U16;;PV13V;;0.1;0.0;V;4
+211;4;3333;U16;;PV14V;;0.1;0.0;V;4
+212;4;3334;U16;;PV15V;;0.1;0.0;V;4
+213;4;3499;U16;;MPPT 1V;;0.1;0.0;V;4
+214;4;3500;U16;;MPPT 2V;;0.1;0.0;V;4
+215;4;3501;U16;;MPPT 3V;;0.1;0.0;V;4
+216;4;3502;U16;;MPPT 4V;;0.1;0.0;V;4
+217;4;3503;U16;;MPPT 5V;;0.1;0.0;V;4
+218;4;3504;U16;;MPPT 6V;;0.1;0.0;V;4
+219;4;3505;U16;;MPPT 7V;;0.1;0.0;V;4
+220;4;3506;U16;;MPPT 8V;;0.1;0.0;V;4
+221;4;3507;U16;;MPPT 9V;;0.1;0.0;V;4
+222;4;3508;U16;;MPPT 10V;;0.1;0.0;V;4
+223;4;3509;U16;;MPPT 11V;;0.1;0.0;V;4
+224;4;3510;U16;;MPPT 12V;;0.1;0.0;V;4
+225;4;3511;U16;;MPPT 13V;;0.1;0.0;V;4
+226;4;3512;U16;;MPPT 14V;;0.1;0.0;V;4
+227;4;3513;U16;;MPPT 15V;;0.1;0.0;V;4
+228;4;3529;I16;;MPPT 1I;;0.1;0.0;A;4
+229;4;3530;I16;;MPPT 2I;;0.1;0.0;A;4
+230;4;3531;I16;;MPPT 3I;;0.1;0.0;A;4
+231;4;3532;I16;;MPPT 4I;;0.1;0.0;A;4
+232;4;3533;I16;;MPPT 5I;;0.1;0.0;A;4
+233;4;3534;I16;;MPPT 6I;;0.1;0.0;A;4
+234;4;3535;I16;;MPPT 7I;;0.1;0.0;A;4
+235;4;3536;I16;;MPPT 8I;;0.1;0.0;A;4
+236;4;3537;I16;;MPPT 9I;;0.1;0.0;A;4
+237;4;3538;I16;;MPPT 10I;;0.1;0.0;A;4
+238;4;3539;I16;;MPPT 11I;;0.1;0.0;A;4
+239;4;3540;I16;;MPPT 12I;;0.1;0.0;A;4
+240;4;3541;I16;;MPPT 13I;;0.1;0.0;A;4
+241;4;3542;I16;;MPPT 14I;;0.1;0.0;A;4
+242;4;3543;I16;;MPPT 15I;;0.1;0.0;A;4
+243;4;3569;U16;;A Phase Module NTC Temperature;;0.1;0.0;C;4
+244;4;3570;U16;;B Phase Module NTC Temperature;;0.1;0.0;C;4
+245;4;3571;U16;;C Phase Module NTC Temperature;;0.1;0.0;C;4
+246;4;3572;U16;;DC NTC1 Temperature;;0.1;0.0;C;4
+247;4;3573;U16;;DC NTC2 Temperature;;0.1;0.0;C;4
+248;4;3574;U16;;DC NTC3 Temperature;;0.1;0.0;C;4
+249;4;3575;U16;;DC NTC4 Temperature;;0.1;0.0;C;4
+250;4;3576;U16;;DC NTC5 Temperature;;0.1;0.0;C;4
+251;4;3577;U16;;DC NTC6 Temperature;;0.1;0.0;C;4
+252;4;3578;U16;;DC NTC7 Temperature;;0.1;0.0;C;4
+253;4;3579;U16;;DC NTC8 Temperature;;0.1;0.0;C;4
+254;4;3699;U32;;Rated active power;P_RATED;1.0;0.0;W;4
+255;4;3701;U32;;Active power at PF=+0.8 under rated full load;;1.0;0.0;W;4
+256;4;3703;U16;;Leading power factor +0.8;PF;0.01;0.0;;4
+257;4;3704;U32;;Active power at PF=-0.8 under rated full load;;1.0;0.0;W;4
+258;4;3706;U16;;Lagging power factor -0.8;;0.01;0.0;;4
+259;4;3707;U16;;Normal operating performance category;;1.0;0.0;;4
+260;4;3708;U16;;Abnormal operating performance category;;1.0;0.0;;4
+261;4;3709;U16;;AC rated voltage;;1.0;0.0;V;4
+262;4;3710;U16;;AC 1st overvoltage upper limit;;0.1;0.0;V;4
+263;4;3711;U16;;AC 1st undervoltage lower limit;;0.1;0.0;V;4
+264;4;3712;U16;;Control mode;;1.0;0.0;V;4
+265;4;3713;U16;;Admittance parameters;;0.001;0.0;;4
+266;4;3714;U16;;Manufacturer;MANUFACTURER;1.0;0.0;;4
+267;4;3715;U16;;Hardware version number (mainboard);;1.0;0.0;;4
+268;4;3716;U32;;Real-time reactive power;;1.0;0.0;Var;4
+269;4;3718;U32;;Capacitive maximum reactive power 60% apparent power;;1.0;0.0;Var;4
+270;4;3720;U32;;Inductive maximum reactive power 60% apparent power;;1.0;0.0;Var;4
+271;4;3733;U16;;IV curve 128 point scaning flags;;1.0;0.0;;1
+272;4;3734;U16;;String Number;;1.0;0.0;;1
+273;4;3735;U16;;PVV1;;0.1;0.0;V;1
+274;4;3736;I16;;PVI1;;0.01;0.0;A;1
+275;4;3737;U16;;PVV2;;0.1;0.0;V;1
+276;4;3738;I16;;PVI2;;0.01;0.0;A;1
+277;4;3739;U16;;PVV3;;0.1;0.0;V;1
+278;4;3740;I16;;PVI3;;0.01;0.0;A;1
+279;4;3741;U16;;PVV4;;0.1;0.0;V;1
+280;4;3742;I16;;PVI4;;0.01;0.0;A;1
+281;4;3743;U16;;PVV5;;0.1;0.0;V;1
+282;4;3744;I16;;PVI5;;0.01;0.0;A;1
+283;4;3745;U16;;PVV6;;0.1;0.0;V;1
+284;4;3746;I16;;PVI6;;0.01;0.0;A;1
+285;4;3747;U16;;PVV7;;0.1;0.0;V;1
+286;4;3748;I16;;PVI7;;0.01;0.0;A;1
+287;4;3749;U16;;PVV8;;0.1;0.0;V;1
+288;4;3750;I16;;PVI8;;0.01;0.0;A;1
+289;4;3751;U16;;PVV9;;0.1;0.0;V;1
+290;4;3752;I16;;PVI9;;0.01;0.0;A;1
+291;4;3753;U16;;PVV10;;0.1;0.0;V;1
+292;4;3754;I16;;PVI10;;0.01;0.0;A;1
+293;4;3755;U16;;PVV11;;0.1;0.0;V;1
+294;4;3756;I16;;PVI11;;0.01;0.0;A;1
+295;4;3757;U16;;PVV12;;0.1;0.0;V;1
+296;4;3758;I16;;PVI12;;0.01;0.0;A;1
+297;4;3759;U16;;PVV13;;0.1;0.0;V;1
+298;4;3760;I16;;PVI13;;0.01;0.0;A;1
+299;4;3761;U16;;PVV14;;0.1;0.0;V;1
+300;4;3762;I16;;PVI14;;0.01;0.0;A;1
+301;4;3763;U16;;PVV15;;0.1;0.0;V;1
+302;4;3764;I16;;PVI15;;0.01;0.0;A;1
+303;4;3765;U16;;PVV16;;0.1;0.0;V;1
+304;4;3766;I16;;PVI16;;0.01;0.0;A;1
+305;4;3767;U16;;PVV17;;0.1;0.0;V;1
+306;4;3768;I16;;PVI17;;0.01;0.0;A;1
+307;4;3769;U16;;PVV18;;0.1;0.0;V;1
+308;4;3770;I16;;PVI18;;0.01;0.0;A;1
+309;4;3771;U16;;PVV19;;0.1;0.0;V;1
+310;4;3772;I16;;PVI19;;0.01;0.0;A;1
+311;4;3773;U16;;PVV20;;0.1;0.0;V;1
+312;4;3774;I16;;PVI20;;0.01;0.0;A;1
+313;4;3775;U16;;PVV21;;0.1;0.0;V;1
+314;4;3776;I16;;PVI21;;0.01;0.0;A;1
+315;4;3777;U16;;PVV22;;0.1;0.0;V;1
+316;4;3778;I16;;PVI22;;0.01;0.0;A;1
+317;4;3779;U16;;PVV23;;0.1;0.0;V;1
+318;4;3780;I16;;PVI23;;0.01;0.0;A;1
+319;4;3781;U16;;PVV24;;0.1;0.0;V;1
+320;4;3782;I16;;PVI24;;0.01;0.0;A;1
+321;4;3783;U16;;PVV25;;0.1;0.0;V;1
+322;4;3784;I16;;PVI25;;0.01;0.0;A;1
+323;4;3785;U16;;PVV26;;0.1;0.0;V;1
+324;4;3786;I16;;PVI26;;0.01;0.0;A;1
+325;4;3787;U16;;PVV27;;0.1;0.0;V;1
+326;4;3788;I16;;PVI27;;0.01;0.0;A;1
+327;4;3789;U16;;PVV28;;0.1;0.0;V;1
+328;4;3790;I16;;PVI28;;0.01;0.0;A;1
+329;4;3791;U16;;PVV29;;0.1;0.0;V;1
+330;4;3792;I16;;PVI29;;0.01;0.0;A;1
+331;4;3793;U16;;PVV30;;0.1;0.0;V;1
+332;4;3794;I16;;PVI30;;0.01;0.0;A;1
+333;4;3795;U16;;PVV31;;0.1;0.0;V;1
+334;4;3796;I16;;PVI31;;0.01;0.0;A;1
+335;4;3797;U16;;PVV32;;0.1;0.0;V;1
+336;4;3798;I16;;PVI32;;0.01;0.0;A;1
+337;4;33600;U16;;Energy Read Progress;;1.0;0.0;%;1
+338;4;33601;U16;;Energy Check Method;;1.0;0.0;;1
+339;4;33602;U16;;Energy Detailed Type;;1.0;0.0;;1
+340;4;33603;U16;;XYearYMonth1Day;;0.1;0.0;kwh;1
+341;4;33604;U16;;XYearYMonth2Day;;0.1;0.0;kwh;1
+342;4;33605;U16;;XYearYMonth3Day;;0.1;0.0;kwh;1
+343;4;33606;U16;;XYearYMonth4Day;;0.1;0.0;kwh;1
+344;4;33607;U16;;XYearYMonth5Day;;0.1;0.0;kwh;1
+345;4;33608;U16;;XYearYMonth6Day;;0.1;0.0;kwh;1
+346;4;33609;U16;;XYearYMonth7Day;;0.1;0.0;kwh;1
+347;4;33610;U16;;XYearYMonth8Day;;0.1;0.0;kwh;1
+348;4;33611;U16;;XYearYMonth9Day;;0.1;0.0;kwh;1
+349;4;33612;U16;;XYearYMonth10Day;;0.1;0.0;kwh;1
+350;4;33613;U16;;XYearYMonth11Day;;0.1;0.0;kwh;1
+351;4;33614;U16;;XYearYMonth12Day;;0.1;0.0;kwh;1
+352;4;33615;U16;;XYearYMonth13Day;;0.1;0.0;kwh;1
+353;4;33616;U16;;XYearYMonth14Day;;0.1;0.0;kwh;1
+354;4;33617;U16;;XYearYMonth15Day;;0.1;0.0;kwh;1
+355;4;33618;U16;;XYearYMonth16Day;;0.1;0.0;kwh;1
+356;4;33619;U16;;XYearYMonth17Day;;0.1;0.0;kwh;1
+357;4;33620;U16;;XYearYMonth18Day;;0.1;0.0;kwh;1
+358;4;33621;U16;;XYearYMonth19Day;;0.1;0.0;kwh;1
+359;4;33622;U16;;XYearYMonth20Day;;0.1;0.0;kwh;1
+360;4;33623;U16;;XYearYMonth21Day;;0.1;0.0;kwh;1
+361;4;33624;U16;;XYearYMonth22Day;;0.1;0.0;kwh;1
+362;4;33625;U16;;XYearYMonth23Day;;0.1;0.0;kwh;1
+363;4;33626;U16;;XYearYMonth24Day;;0.1;0.0;kwh;1
+364;4;33627;U16;;XYearYMonth25Day;;0.1;0.0;kwh;1
+365;4;33628;U16;;XYearYMonth26Day;;0.1;0.0;kwh;1
+366;4;33629;U16;;XYearYMonth27Day;;0.1;0.0;kwh;1
+367;4;33630;U16;;XYearYMonth28Day;;0.1;0.0;kwh;1
+368;4;33631;U16;;XYearYMonth29Day;;0.1;0.0;kwh;1
+369;4;33632;U16;;XYearYMonth30Day;;0.1;0.0;kwh;1
+370;4;33633;U16;;XYearYMonth31Day;;0.1;0.0;kwh;1
+371;4;33634;U32;;XYear1Month;;1.0;0.0;kwh;1
+372;4;33636;U32;;XYear2Month;;1.0;0.0;kwh;1
+373;4;33638;U32;;XYear3Month;;1.0;0.0;kwh;1
+374;4;33640;U32;;XYear4Month;;1.0;0.0;kwh;1
+375;4;33642;U32;;XYear5Month;;1.0;0.0;kwh;1
+376;4;33644;U32;;XYear6Month;;1.0;0.0;kwh;1
+377;4;33646;U32;;XYear7Month;;1.0;0.0;kwh;1
+378;4;33648;U32;;XYear8Month;;1.0;0.0;kwh;1
+379;4;33650;U32;;XYear9Month;;1.0;0.0;kwh;1
+380;4;33652;U32;;XYear10Month;;1.0;0.0;kwh;1
+381;4;33654;U32;;XYear11Month;;1.0;0.0;kwh;1
+382;4;33656;U32;;XYear12Month;;1.0;0.0;kwh;1
+383;4;33658;U32;;0Year;;1.0;0.0;kwh;1
+384;4;33660;U32;;1Year;;1.0;0.0;kwh;1
+385;4;33662;U32;;2Year;;1.0;0.0;kwh;1
+386;4;33664;U32;;3Year;;1.0;0.0;kwh;1
+387;4;33666;U32;;4Year;;1.0;0.0;kwh;1
+388;4;33668;U32;;5Year;;1.0;0.0;kwh;1
+389;4;33670;U32;;6Year;;1.0;0.0;kwh;1
+390;4;33672;U32;;7Year;;1.0;0.0;kwh;1
+391;4;33674;U32;;8Year;;1.0;0.0;kwh;1
+392;4;33676;U32;;9Year;;1.0;0.0;kwh;1
+393;4;33678;U16;;Historical fault/alert data read progress;;1.0;0.0;%;1
+394;4;33679;U16;;Serial numbers of historical fault/alert data 5;;1.0;0.0;;1
+395;4;33680;U16;;Date of occurrence of fault/alarm 1: Year;;1.0;0.0;;1
+396;4;33681;U16;;Date of occurrence of fault/alarm 1: Month-Day;;1.0;0.0;;1
+397;4;33682;U16;;Fault/Alarm 1 occurred when: hours: minutes;;1.0;0.0;;1
+398;4;33683;U16;;Fault/Alarm 1 status;;1.0;0.0;;1
+399;4;33684;U16;;Fault/Alert 1 data;;1.0;0.0;;1
+400;4;33685;U16;;Date of occurrence of fault/alarm 2: Year;;1.0;0.0;;1
+401;4;33686;U16;;Date of occurrence of fault/alarm 2: Month-Day;;1.0;0.0;;1
+402;4;33687;U16;;Fault/Alarm 2 occurred when: hours: minutes;;1.0;0.0;;1
+403;4;33688;U16;;Fault/Alarm 2 status;;1.0;0.0;;1
+404;4;33689;U16;;Fault/Alert 2 data;;1.0;0.0;;1
+405;4;33690;U16;;Date of occurrence of fault/alarm 3: Year;;1.0;0.0;;1
+406;4;33691;U16;;Date of occurrence of fault/alarm 3: Month-Day;;1.0;0.0;;1
+407;4;33692;U16;;Fault/Alarm 3 occurred when: hours: minutes;;1.0;0.0;;1
+408;4;33693;U16;;Fault/Alarm 3 status;;1.0;0.0;;1
+409;4;33694;U16;;Fault/Alert 3 data;;1.0;0.0;;1
+410;4;33695;U16;;Date of occurrence of fault/alarm 4: Year;;1.0;0.0;;1
+411;4;33696;U16;;Date of occurrence of fault/alarm 4: Month-Day;;1.0;0.0;;1
+412;4;33697;U16;;Fault/Alarm 4 occurred when: hours: minutes;;1.0;0.0;;1
+413;4;33698;U16;;Fault/Alarm 4 status;;1.0;0.0;;1
+414;4;33699;U16;;Fault/Alert 4 data;;1.0;0.0;;1
+415;4;33700;U16;;Date of occurrence of fault/alarm 5: Year;;1.0;0.0;;1
+416;4;33701;U16;;Date of occurrence of fault/alarm 5: Month-Day;;1.0;0.0;;1
+417;4;33702;U16;;Fault/Alarm 5 occurred when: hours: minutes;;1.0;0.0;;1
+418;4;33703;U16;;Fault/Alarm 5 status;;1.0;0.0;;1
+419;4;33704;U16;;Fault/Alert 5 data;;1.0;0.0;;1
+420;3;2999;U16;;Year;;1.0;0.0;;4
+421;3;3000;U16;;Month;;1.0;0.0;;4
+422;3;3001;U16;;Day;;1.0;0.0;;4
+423;3;3002;U16;;Hours;;1.0;0.0;;4
+424;3;3003;U16;;Mins;;1.0;0.0;;4
+425;3;3004;U16;;Seconds;;1.0;0.0;;4
+426;3;3005;U16;;Slave address;UNIT_ID;1.0;0.0;;4
+427;3;3006;U16;;ON/OFF;CMD_ON;-0.03125;6.9375;;1
+428;3;3008;U16;;Power curve number;;1.0;0.0;;4
+429;3;3009;U16;;81>S1;;0.01;0.0;Hz;4
+430;3;3010;U16;;81>S1-T;;0.01;0.0;s;4
+431;3;3011;U16;;81<S1_1;;0.01;0.0;Hz;4
+432;3;3012;U16;;81<S1-T_1;;0.01;0.0;s;4
+433;3;3013;U16;;81>S2F;;0.01;0.0;Hz;4
+434;3;3014;U16;;81>S2F-T;;0.01;0.0;s;4
+435;3;3015;U16;;81<S2F_1;;0.01;0.0;Hz;4
+436;3;3016;U16;;81>S2F-T_1;;0.01;0.0;s;4
+437;3;3017;U16;;81>S2S;;0.01;0.0;Hz;4
+438;3;3018;U16;;81>S2S-T;;0.01;0.0;s;4
+439;3;3019;U16;;81>S2S_1;;0.01;0.0;Hz;4
+440;3;3020;U16;;81>S2S-T_1;;0.01;0.0;s;4
+441;3;3021;U16;;Restart Inverter;Restart;1.0;0.0;;4
+442;3;3022;U16;;DRM S1 Limit 1;;1.0;0.0;%;4
+443;3;3023;U16;;DRM S2 Limit 2;;1.0;0.0;%;4
+444;3;3024;U16;;DRM S3 Limit 3;;1.0;0.0;%;4
+445;3;3025;U16;;DRM S4 Limit 4;;1.0;0.0;%;4
+446;3;3026;U16;;DRM ON/OFF;;1.0;0.0;;4
+447;3;3027;U16;;Restart the HMI;;1.0;0.0;;4
+448;3;3028;U16;;Inverter installation Method;;1.0;0.0;;4
+449;3;3029;I16;;Night SVG Q Set;;0.01;0.0;;4
+450;3;3030;U16;;Remote active power limit percentage;RemotecmdPwrPercent;0.01;0.0;%;4
+451;3;3032;U16;;VRT Enable Switch;;1.0;0.0;;4
+452;3;3033;U16;;BDEW LVRT K value;;1.0;0.0;;4
+453;3;3050;I16;;Reactive power limitation_set;CMD_Q_PERCENT;0.01;0.0;%;1
+454;3;3051;U16;;Power limitation;CMD_P_AC_SET_PERCENT;0.011;0.0;%;1
+455;3;3052;I16;;PF Setting;CMD_PF;0.001;0.0;;1
+456;3;3053;I16;;PF Setting 02;cmdPF2;0.001;0.0;;4
+457;3;3055;U32;;Calibrate total generation;;1.0;0.0;kWh;1
+458;3;3057;U32;;Calibrate current month generation;;1.0;0.0;kWh;1
+459;3;3059;U32;;Calibrate last month generation;;1.0;0.0;kWh;1
+460;3;3061;U16;;Calibrate today generation;;0.1;0.0;kWh;1
+461;3;3062;U16;;Calibrate yesterday generation;;0.1;0.0;kWh;1
+462;3;3063;U32;;Calibrate this year generation;;1.0;0.0;kWh;1
+463;3;3065;U32;;Calibrate last year generation;;1.0;0.0;kWh;1
+464;3;3067;U16;;Grid standard;;1.0;0.0;;4
+465;3;3068;U16;;Power-off saving function;PwrOffSave;1.0;0.0;;4
+466;3;3069;U16;;Power limitation switch;CMD_P_ENA;0.011765;-1;;1
+467;3;3070;U16;;Reactive power switch;CMD_Q_ENA;0.012987;-1.103896;;1
+468;3;3071;U16;;Day Time PID Switch;;1.0;0.0;;4
+469;3;3072;U16;;Working mode_set;;1.0;0.0;;4
+470;3;3076;U16;;AFCI ON/OFF;;1.0;0.0;;4
+471;3;3079;U16;;Power control word;;1.0;0.0;;4
+472;3;3080;I16;;Limit power actual value;;0.1;0.0;W;4
+473;3;3082;I16;;Limiting reactive power adjustment value;cmdQPwr;0.1;0.0;Var;4
+474;3;3083;U16;;Leakage current protection;;1.0;0.0;mA;4
+475;3;3084;U16;;PV insulation protection;R_ISO;1.0;0.0;kOhm;4
+476;3;3088;U16;;Grid code accuracy set flag;;1.0;0.0;;4
+477;3;3089;U16;;OV-G-V 01;;1.0;0.0;V;4
+478;3;3090;U16;;OV-G-V-T 01;;0.01;0.0;ms;4
+479;3;3091;U16;;OV-G-V 02;;1.0;0.0;V;4
+480;3;3092;U16;;OV-G-V-T 02;;0.01;0.0;ms;4
+481;3;3093;U16;;UN-G-V 01;;1.0;0.0;V;4
+482;3;3094;U16;;UN-G-V-T 01;;0.01;0.0;ms;4
+483;3;3095;U16;;UN-G-V 02;;1.0;0.0;V;4
+484;3;3096;U16;;UN-G-V-T 02;;0.01;0.0;ms;4
+485;3;3097;U16;;OV-G-F 01;;0.1;0.0;Hz;4
+486;3;3098;U16;;OV-G-F-T 01;;0.01;0.0;ms;4
+487;3;3099;U16;;OV-G-F 02;;0.1;0.0;Hz;4
+488;3;3100;U16;;OV-G-F-T 02;;0.01;0.0;ms;4
+489;3;3101;U16;;UN-G-F 01;;0.1;0.0;Hz;4
+490;3;3102;U16;;UN-G-F-T 01;;0.01;0.0;ms;4
+491;3;3103;U16;;UN-G-F 02;;0.1;0.0;Hz;4
+492;3;3104;U16;;UN-G-F-T 02;;0.01;0.0;ms;4
+493;3;3105;U16;;Startup time;;1.0;0.0;s;4
+494;3;3106;U16;;Reconnect time;;1.0;0.0;s;4
+495;3;3107;U16;;Recover V upper limit;;0.1;0.0;V;4
+496;3;3108;U16;;Recover V lower limit;;0.1;0.0;V;4
+497;3;3109;U16;;Recover F upper limit;;0.01;0.0;Hz;4
+498;3;3110;U16;;Recover F lower limit;;0.01;0.0;Hz;4
+499;3;3111;U16;;Startup V upper limit;;0.1;0.0;V;4
+500;3;3112;U16;;Startup V lower limit;;0.1;0.0;V;4
+501;3;3113;U16;;Startup F upper limit;;0.01;0.0;Hz;4
+502;3;3114;U16;;Startup F lower limit;;0.01;0.0;Hz;4
+503;3;3115;U16;;Denmark Freq  Change Protection Threshold;;0.1;0.0;Hz;4
+504;3;3116;U16;;Denmark Freq Change Protection Time;;1.0;0.0;ms;4
+505;3;3117;U16;;Working mode control switch;;1.0;0.0;;4
+506;3;3118;U16;;OV-G-V03;;0.1;0.0;V;4
+507;3;3119;U16;;OV-G-V03-T;;0.1;0.0;ms;4
+508;3;3120;U16;;UN-G-V03;;0.1;0.0;V;4
+509;3;3121;U16;;UN-G-V03-T;;0.1;0.0;ms;4
+510;3;3125;U16;;Volt-Var Vref Setting;;0.1;0.0;V;4
+511;3;3126;U16;;Volt-Var Vref Time Setting;;0.1;0.0;s;4
+512;3;3127;I16;;02 working mode V2-Q2 Percent;;0.01;0.0;%;4
+513;3;3128;I16;;02 working mode V3-Q3 Percent;;0.01;0.0;%;4
+514;3;3129;U16;;01/06 working mode V1Set;;0.1;0.0;V;4
+515;3;3130;U16;;01/06 working mode V2Set;;0.1;0.0;V;4
+516;3;3131;U16;;01/06 working mode V3Set;;0.1;0.0;V;4
+517;3;3132;U16;;01/06working mode V4Set;;0.1;0.0;V;4
+518;3;3133;U16;;01/06 working mode(P1% Set);;1.0;0.0;%;4
+519;3;3134;U16;;01/06 working mode(P2% Set);;1.0;0.0;%;4
+520;3;3135;U16;;01/06 working mode(P3% Set);;1.0;0.0;%;4
+521;3;3136;U16;;01/06 working mode(P4% Set);;1.0;0.0;%;4
+522;3;3137;U16;;02 working mode V1Set;;0.1;0.0;V;4
+523;3;3138;U16;;02 working mode V2Set;;0.1;0.0;V;4
+524;3;3139;U16;;02 working mode V3Set;;0.1;0.0;V;4
+525;3;3140;U16;;02 working mode V4Set;;0.1;0.0;V;4
+526;3;3141;U16;;02 working mode(MaxLeadingVar%);;1.0;0.0;%;4
+527;3;3142;U16;;02 working mode (MaxLaggingVar);;1.0;0.0;%;4
+528;3;3143;U16;;05 working mode(Pb% Set);;1.0;0.0;%;4
+529;3;3144;U16;;05 working mode(Pc% Set);;1.0;0.0;%;4
+530;3;3145;U16;;05 working mode (PFcSet);;0.01;0.0;;4
+531;3;3146;U16;;10mins over voltage;;0.1;0.0;V;4
+532;3;3147;U16;;Power ramp rate (Wgra), general;;1.0;0.0;%;4
+533;3;3148;U16;;Power ramp up rate;;1.0;0.0;%;4
+534;3;3149;U16;;Power ramp down rate;;1.0;0.0;%;4
+535;3;3150;U16;;Internal EPM Switch_set;;1.0;0.0;;4
+536;3;3151;I16;;Internal EPM backflow power_set;;0.01;0.0;W;4
+537;3;3152;U16;;Internal EPM failsafe switch_set;;1.0;0.0;;4
+538;3;3153;U16;;Internal EPM Hard Switch for AU 2020 Code_set;;1.0;0.0;;4
+539;3;3154;U16;;Internal EPM Hard Limit for AU 2020 Code_set;;0.01;0.0;W;4
+540;3;3155;U16;;Backflow Work mode;;1.0;0.0;;4
+541;3;3156;U16;;Power Control Slope;;0.01;0.0;%;4
+542;3;3158;U16;;Factory Reset;;1.0;0.0;;4
+543;3;3159;U16;;Reset 01 Working Mode;;1.0;0.0;;4
+544;3;3160;U16;;Reset 02 Power rate limit;;1.0;0.0;;4
+545;3;3161;U16;;Reset 0 Freq Derate Set;;1.0;0.0;;4
+546;3;3162;U16;;Reset 04 10min overvoltage;;1.0;0.0;;4
+547;3;3163;U16;;G100 Control Switch;;1.0;0.0;;4
+548;3;3164;I16;;Backflow Current;;0.01;0.0;A;4
+549;3;3165;U16;;Clear G100 Alarm;;1.0;0.0;;4
+550;3;3166;U16;;G100 Clear Alarm Type Select;;1.0;0.0;;4
+551;3;3175;U16;;Default Export Limit Value (For AU SAPN Flexible Export Project);;0.01;0.0;;4
+552;3;3176;U16;;Default Export Limit Enable Switch (For AU SAPN Flexible Export Project);;1.0;0.0;;4
+553;3;3178;U16;;Safety Fault&Ride through Switch Set;;1.0;0.0;;4
+554;3;3179;U16;;Shading MPPT Scan Enable;;1.0;0.0;;4
+555;3;3180;U16;;Shading MPPT Scan Time interval;;1.0;0.0;min;4
+556;3;3181;U16;;EN50549 Reconnect Slope Limit (Wgra_Rec) setting;;0.1;0.0;%;4
+557;3;3182;U16;;EN50549 Startup Slope Limit?Wgra_nor?setting;;0.1;0.0;%;4
+558;3;3183;U16;;Power Ramp up Slope Limit (Wgra+) setting;;0.01;0.0;%;4
+559;3;3184;U16;;Power Ramp down Slope Limit (Wgra+) setting;;0.01;0.0;%;4
+560;3;3185;U16;;EN50549 P-Lock in;;1.0;0.0;%;4
+561;3;3186;U16;;EN50549 P-Lock out;;1.0;0.0;%;4
+562;3;3187;U16;;05 Working Mode P-PF, Ulockin Vset For Brazil 140, Dubai, CEI021;;0.1;0.0;V;4
+563;3;3188;U16;;05 Working Mode P-PF, Ulockout Vset For Brazil 140, Dubai, CEI021;;0.1;0.0;V;4
+564;3;3228;U16;;Bluetooth Connection Status;;1.0;0.0;;4
+565;3;3229;U16;;Datalogger 1 Connection Status;;1.0;0.0;;4
+566;3;3230;U16;;Datalogger 2 Connection Status;;1.0;0.0;;4
+567;3;3231;U16;;WIFI Signal Strength;;1.0;0.0;%;4
+568;3;3232;U16;;Password Level;;1.0;0.0;;4
+569;3;3233;U16;;The 1st?2nd digit password;;1.0;0.0;;4
+570;3;3234;U16;;The 3rd?4th digit password;;1.0;0.0;;4
+571;3;3235;U16;;The 5th?6th digit password;;1.0;0.0;;4
+572;3;3237;U16;;IV curve 128 points request flag bits;;1.0;0.0;;4
+573;3;3238;U16;;IV curve 128 point string number;;1.0;0.0;;4
+574;3;3239;U16;;IV curve starting setting;;1.0;0.0;;4
+575;3;3240;U16;;IV curve start voltage;;1.0;0.0;V;4
+576;3;3241;U16;;IV curve interval voltage;;1.0;0.0;V;4
+577;3;3242;U16;;Get current IV curve number;;1.0;0.0;;4
+578;3;3243;U16;;Remote Request AFCI Fault Signature Data Switch;;1.0;0.0;;4
+579;3;3244;U16;;Obtained module number and module frame number;;1.0;0.0;;4
+580;3;3245;U16;;Remote acquisition of AFCI fault characteristic data non-stop flag;;1.0;0.0;;4
+581;3;3251;U16;;Learning enable switch;;1.0;0.0;;4
+582;3;3252;U16;;Self-Learning time setting;;1.0;0.0;;4
+583;3;3253;U16;;Self-learning result clear switch;;1.0;0.0;;4
+584;3;3293;U16;;AD debug array;;1.0;0.0;;4
+585;3;3294;U32;;Read DSP fixed address variable value function;;1.0;0.0;;4
+586;3;3296;U32;;Read ARM fixed address variable value function;;1.0;0.0;;4
+587;3;3298;U16;;Calibrate real-time power parameter settings;;1.0;0.0;;4
+588;3;3299;U16;;Clear Generation Data;;1.0;0.0;;4
+589;3;3300;U16;;Fan self-test;;1.0;0.0;;4
+590;3;3301;U16;;One Click Reset Enable Command;;1.0;0.0;;4
+591;3;3302;U16;;One Click Reset Operating Command;;1.0;0.0;;4
+592;3;3303;U16;;Special Function Control Word;;1.0;0.0;;4
+593;3;3304;I16;;Grid V A compensation;;0.1;0.0;V;4
+594;3;3305;I16;;Grid V B compensation;;0.1;0.0;V;4
+595;3;3306;I16;;Grid V C compensation;;0.1;0.0;V;4
+596;3;3307;I16;;Grid V A compensation Rated value;;0.1;0.0;A;4
+597;3;3308;I16;;Grid V B compensation Rated value;;0.1;0.0;A;4
+598;3;3309;I16;;Grid V C compensation Rated value;;0.1;0.0;A;4
+599;3;3310;U16;;Enable Power ON display to select grid code Flag;;1.0;0.0;;4
+600;3;3311;U16;;Special control word 02;;1.0;0.0;;4
+601;3;3312;U16;;Voltage value in constant voltage Mppt mode;;0.1;0.0;V;4
+602;3;3313;U16;;Grid filter Setting;;1.0;0.0;;4
+603;3;3314;U16;;Special control word 03;;1.0;0.0;;4
+604;3;3315;U16;;External EPM FailSafe Switch;;1.0;0.0;;4
+605;3;3316;U16;;PCC (point of coupling) voltage in the case of Rule21Phase3;;0.1;0.0;V;4
+606;3;3317;U16;;PCC offset voltage in the case of ule21Phase3;;0.1;0.0;V;4
+607;3;3319;U16;;US Code reconnection power recovery slope setting value;;0.01;0.0;%;4
+608;3;3320;U16;;P_Q Mode P1;;0.01;0.0;%;4
+609;3;3321;U16;;P_Q Mode P2;;0.01;0.0;%;4
+610;3;3322;U16;;P_Q Mode P3;;0.01;0.0;%;4
+611;3;3323;U16;;P_Q Mode P4;;0.01;0.0;%;4
+612;3;3324;U16;;P_Q Mode P5;;0.01;0.0;%;4
+613;3;3325;U16;;P_Q Mode Q1;;0.01;0.0;%;4
+614;3;3326;U16;;P_Q Mode Q2;;0.01;0.0;%;4
+615;3;3327;U16;;P_Q Mode Q3;;0.01;0.0;%;4
+616;3;3328;U16;;P_Q Mode Q4;;0.01;0.0;%;4
+617;3;3329;U16;;P_Q Mode Q5;;0.01;0.0;%;4
+618;3;3330;U16;;Volt Var P3Tau;;0.01;0.0;s;4
+619;3;3331;U16;;Volt Var Q3Tau;;0.01;0.0;s;4
+620;3;3333;I16;;DRM7 Reactive power;;0.01;0.0;%;4
+621;3;3334;U16;;Active priority or reactive power priority control settings;;1.0;0.0;;4
+622;3;3335;U16;;Meter Setting;;1.0;0.0;;4
+623;3;3336;U16;;Volt Var Qdroop;;0.01;0.0;%;4
+624;3;3399;U16;;Frequency Derating Mode;;1.0;0.0;;4
+625;3;3400;U16;;UnderFrequency Ramping Fstart Mode;;0.01;0.0;Hz;4
+626;3;3401;U16;;UnderFrequency Ramping Droop Mode;;0.1;0.0;%;4
+627;3;3402;U16;;Overfrequency Derating Response Time Mode;;0.01;0.0;s;4
+628;3;3403;U16;;Overfrequency Derating Droop Mode;;0.01;0.0;%;4
+629;3;3404;U16;;Overfrequency Derating Fstart Mode;;0.01;0.0;Hz;4
+630;3;3406;U16;;Overfrequency Derating Fstop Mode;;0.01;0.0;Hz;4
+631;3;3407;U16;;Overfrequency Derating_HystEna Mode;;1.0;0.0;;4
+632;3;3409;U16;;UnderFrequency Ramping Fstop Mode;;0.01;0.0;Hz;4
+633;3;3412;U16;;EN50549 - Overfrequency Derating Start Frequency?f1?Mode;;0.01;0.0;Hz;4
+634;3;3413;U16;;0E Mode EN50549 - Overfrequency Derating HystEnable Mode;;1.0;0.0;;4
+635;3;3414;U16;;0E Mode EN50549 - Overfrequency Derating HystFrequency?fstop?Mode;;0.01;0.0;Hz;4
+636;3;3415;U16;;0E Mode EN50549 - Overfrequency Derating HystFrequency Response Time?Tstop?Mode;;1.0;0.0;s;4
+637;3;3416;U16;;0E Mode EN50549 - Overfrequency Derating?Droop?Mode;;0.01;0.0;%;4
+638;3;3417;U16;;0E Mode EN50549 and 04 Mode Brazil 140 - Overfrequency Derating Frequency Response delay Tintendelay Mode;;0.01;0.0;s;4
+639;3;43500;U16;;History Energy Data Check method;;1.0;0.0;;4
+640;3;43501;U16;;History Energy Data Check Year/Month;;1.0;0.0;;4
+641;3;43502;U16;;Data type of historical energy data;;1.0;0.0;;4
+642;3;43505;U16;;Query method of fault/warning records;;1.0;0.0;;4
+643;3;43506;U16;;Query sequence number of fault/warning records;;1.0;0.0;;4
+644;4;36000;U16;;[EPM] AC V A;;1.0;0.0;V;4
+645;4;36001;U16;;[EPM] AC I A;;1.0;0.0;A;4
+646;4;36002;U16;;[EPM]  AC V B;;1.0;0.0;V;4
+647;4;36003;U16;;[EPM] AC I B;;1.0;0.0;A;4
+648;4;36004;U16;;[EPM]  AC V C;;1.0;0.0;V;4
+649;4;36005;U16;;[EPM] AC I C;;1.0;0.0;A;4
+650;4;36006;I16;;[EPM] Power A;;1.0;0.0;W;4
+651;4;36007;I16;;[EPM] Power B;;1.0;0.0;W;4
+652;4;36008;I16;;[EPM] Power C;;1.0;0.0;W;4
+653;4;36009;I32_W;;[EPM] Power Total;;1.0;0.0;W;4
+654;4;36011;I32_W;;[EPM] Inverter Total Power;;1.0;0.0;W;4
+655;4;36013;U16;;[EPM] Inverter Model Number;;1.0;0.0;;4
+656;4;36014;U16;;[EPM]  firmware version;;1.0;0.0;;4
+657;4;36015;U16;;[EPM] Power control percent;;1.0;0.0;%;4
+658;4;36016;U16;;[EPM] CT ratio;;1.0;0.0;;4
+659;4;36017;I16;;[EPM] Backflow power setting value;;1.0;0.0;;4
+660;4;36018;U16;;[EPM] Inverter number setting value;;1.0;0.0;;4
+661;4;36019;U16;;[EPM]Year;;1.0;0.0;;4
+662;4;36020;U16;;[EPM]Month;;1.0;0.0;;4
+663;4;36021;U16;;[EPM]Day;;1.0;0.0;;4
+664;4;36022;U16;;[EPM]Hours;;1.0;0.0;;4
+665;4;36023;U16;;[EPM]Mins;;1.0;0.0;;4
+666;4;36024;U16;;[EPM]Seconds;;1.0;0.0;;4
+667;4;36025;U16;;[EPM]FailSafe ON/OFF;;1.0;0.0;;4
+668;4;36026;I16;;[EPM]Grid PF;;1.0;0.0;;4
+669;4;36027;U16;;[EPM]Grid Freq(Meter);;0.01;0.0;Hz;4
+670;4;36028;U32_W;;[EPM]Total Load power;;1.0;0.0;W;4
+671;4;36050;U32_W;;[EPM]Inverter total generation energy;;0.01;0.0;kWh;4
+672;4;36052;U32_W;;[EPM]Load total consumption energy;;0.01;0.0;kWh;4
+673;4;36054;U32_W;;[EPM]Grid import total active energy;;0.01;0.0;kWh;4
+674;4;36056;U32_W;;[EPM]Grid export total active energy;;0.01;0.0;kWh;4
+675;4;36058;U16;;[EPM]data transmission Switch;;1.0;0.0;;4
+676;4;36059;U16;;[EPM]Batch upgrade flag;;1.0;0.0;;4
+677;4;36060;U16;;[EPM] model;;1.0;0.0;;4
+678;3;36500;U16;;[EPM]Year_set;;1.0;0.0;;4
+679;3;36501;U16;;[EPM]Month_set;;1.0;0.0;;4
+680;3;36502;U16;;[EPM]Day_set;;1.0;0.0;;4
+681;3;36503;U16;;[EPM]Hours_set;;1.0;0.0;;4
+682;3;36504;U16;;[EPM]Mins_set;;1.0;0.0;;4
+683;3;36506;U16;;[EPM]Seconds_set;;1.0;0.0;;4
+684;3;36507;U16;;[EPM]Slave address;;1.0;0.0;;4
+685;3;36508;U16;;[EPM]CT ratio_1;;1.0;0.0;;4
+686;3;36509;I16;;[EPM]Backflow power;;1.0;0.0;W;4
+687;3;36510;U16;;[EPM]Inverter number;;1.0;0.0;;4
+688;3;36511;U16;;[EPM] mode;;1.0;0.0;;4
+689;3;36513;U16;;[EPM]FailSafe ON/OFF_1;;1.0;0.0;;4
+690;3;36514;U16;;[EPM] data transmission Switch_1;;1.0;0.0;;4

@@ -1,0 +1,6 @@
+﻿ModbusRTU;Meter;ALGODUE;UPM-209;;;;;;;
+1;3;1048;U32;;System imported active energy;E_IMP;0.1;0.0;Wh;4
+2;3;1050;U32;;System imported active energy_1;;0.1;0.0;Wh;4
+3;3;1052;U32;;System exported active energy;E_EXP;0.1;0.0;Wh;4
+4;3;1054;U32;;System exported active energy_1;;0.1;0.0;Wh;4
+5;3;114;U32;;Frequency;FREQ;0.001;0.0;Hz;4

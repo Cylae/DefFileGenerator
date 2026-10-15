@@ -1,0 +1,23 @@
+﻿ModbusRTU;Meter;Webdyn;EMM220;;;;;;;
+1;4;1;F32;;Line to neutral volts;;1.0;0.0;V;4
+2;4;6;F32;;Current;;1.0;0.0;A;4
+3;4;12;F32;;Active Power;P_AC;1.0;0.0;W;4
+4;4;18;F32;;Apparent Power;S_AC;1.0;0.0;VA;4
+5;4;24;F32;;Reactive Power;Q_AC;1.0;0.0;VAr;4
+6;4;30;F32;;Power Factor;PF;1.0;0.0;-;4
+7;4;36;F32;;Phase Angle;;1.0;0.0;-;4
+8;4;70;F32;;Frequency;FREQ;1.0;0.0;Hz;4
+9;4;72;F32;;Import active energy;E_IMP;1.0;0.0;kWh;4
+10;4;74;F32;;Export active energy;E_EXP;1.0;0.0;kWh;4
+11;4;76;F32;;Import reactive energy;;1.0;0.0;kVArh;4
+12;4;78;F32;;Export reactive energy;;1.0;0.0;kVArh;4
+13;4;86;F32;;Total active energy;;1.0;0.0;kWh;4
+14;4;88;F32;;Total reactive energy;E_TOT;1.0;0.0;kVArh;4
+15;3;12;F32;;Relay Pulse Width_Float;;1.0;0.0;;1
+16;3;18;F32;;Network Parity Stop;;1.0;0.0;;1
+17;3;20;F32;;Network Port Mode;;1.0;0.0;;1
+18;3;28;F32;;Network Baudrate;;1.0;0.0;;1
+19;3;62720;F32;;DemandInterval;;1.0;0.0;;1
+20;3;63760;F32;;Pulse constant;;1.0;0.0;;1
+21;3;63776;F32;;Measurement  mode;;1.0;0.0;;1
+22;3;63792;F32;;Pulse output and LED indicator mode;;1.0;0.0;;1

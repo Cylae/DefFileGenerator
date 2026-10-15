@@ -1,0 +1,12 @@
+﻿modbusRTU;Other;Schneider;PM820(SERM);;;;;;;
+1;4;1104;U16;;I moyen 3 phases;;1.0;0.0;A;4
+2;4;1119;U16;;U efficaces entre phases 1 et 2;;1.0;0.0;V;4
+3;4;1142;U16;;Puissance active totale;P_AC;1.0;0.0;kW;4
+4;4;1146;U16;;Puissance reactive totale;Q_AC;1.0;0.0;kvar;4
+5;4;1162;U16;;Facteur de puissance vrai totale;PF;1.0;0.0;;4
+6;4;1170;U16;;Cos Phi total;;1.0;0.0;;4
+7;4;1179;U16;;Frequence;FREQ;1.0;0.0;Hz;4
+8;4;1699;U16;;Energie active (entree);;1.0;0.0;Wh;4
+9;4;1703;U16;;Energie reactive (entree);;1.0;0.0;varh;4
+10;4;1707;U16;;Energie active (sortie);;1.0;0.0;Wh;4
+11;4;1711;U16;;Energie reactive (sortie);;1.0;0.0;varh;4

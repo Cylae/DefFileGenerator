@@ -1,0 +1,798 @@
+﻿modbusRTU;Other;IMESYS;IMESYS_NEMO 96HDLe;;;;;;;
+1;4;256;U16;;Current transformer ratio  (KTA);MODEL;1.0;0.0;;4
+2;4;258;U16;;Voltage transformer ratio  (KTV);SERIAL;1.0;0.0;;4
+3;4;768;U16;;Device identifier;;1.0;0.0;;4
+4;4;4096;U16;;Phase 1 : phase voltage;U_AC_1;1.0;0.0;mV;4
+5;4;4098;U16;;Phase 2 : phase voltage;U_AC_2;1.0;0.0;mV;4
+6;4;4100;U16;;Phase 3 : phase voltage;U_AC_3;1.0;0.0;mV;4
+7;4;4102;U16;;Phase 1 : current;I_AC_1;1.0;0.0;mA;4
+8;4;4104;U16;;Phase 2 : current;I_AC_2;1.0;0.0;mA;4
+9;4;4106;U16;;Phase 3 : current;I_AC_3;1.0;0.0;mA;4
+10;4;4108;U16;;Neutral current;;1.0;0.0;mA;4
+11;4;4110;U16;;Chained voltage : L1-L2;U_AC_L1L2;1.0;0.0;mV;4
+12;4;4112;U16;;Chained voltage : L2-L3;U_AC_L2L3;1.0;0.0;mV;4
+13;4;4114;U16;;Chained voltage : L3-L1;U_AC_L3L1;1.0;0.0;mV;4
+14;4;4116;U16;;3-phase : active power;P_AC;1.0;0.0;-3;4
+15;4;4118;U16;;3-phase : reactive power;Q_AC;1.0;0.0;-3;4
+16;4;4120;U16;;3-phase : apparent power;S_AC;1.0;0.0;-3;4
+17;4;4122;U16;;3-phase : sign of active power;;1.0;0.0;-6;4
+18;4;4123;U16;;3-phase : sign of reactive power;;1.0;0.0;-6;4
+19;4;4124;U16;;3-phase : positive active energy;;1.0;0.0;-4;4
+20;4;4126;U16;;3-phase : positive reactive energy;;1.0;0.0;-4;4
+21;4;4128;U16;;3-phase : negative active energy;;1.0;0.0;-4;4
+22;4;4130;U16;;3-phase : negative reactive energy;;1.0;0.0;-4;4
+23;4;4132;U16;;3-phase : power factor;PF;1.0;0.0;;4
+24;4;4133;U16;;3-phase : sector of power factor (cap or ind);;1.0;0.0;;4
+25;4;4134;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+26;4;4135;U16;;3-phase : average power;;1.0;0.0;-3;4
+27;4;4137;U16;;3-phase : peak maximum demand;;1.0;0.0;-3;4
+28;4;4139;U16;;Time counter for average power;;1.0;0.0;minutes;4
+29;4;4140;U16;;Phase 1 : active power;P_AC_1;1.0;0.0;-3;4
+30;4;4142;U16;;Phase 2 : active power;P_AC_2;1.0;0.0;-3;4
+31;4;4144;U16;;Phase 3 : active power;P_AC_3;1.0;0.0;-3;4
+32;4;4146;U16;;Phase 1 : sign of active power;;1.0;0.0;-6;4
+33;4;4147;U16;;Phase 2 : sign of active power;;1.0;0.0;-6;4
+34;4;4148;U16;;Phase 3 : sign of active power;;1.0;0.0;-6;4
+35;4;4149;U16;;Phase 1 : reactive power;Q_AC_1;1.0;0.0;-3;4
+36;4;4151;U16;;Phase 2 : reactive power;Q_AC_2;1.0;0.0;-3;4
+37;4;4153;U16;;Phase 3 : reactive power;Q_AC_3;1.0;0.0;-3;4
+38;4;4155;U16;;Phase 1 : sign of reactive power;;1.0;0.0;-6;4
+39;4;4156;U16;;Phase 2 : sign of reactive power;;1.0;0.0;-6;4
+40;4;4157;U16;;Phase 3 : sign of reactive power;;1.0;0.0;-6;4
+41;4;4158;U16;;Phase 1 : apparent power;S_AC_1;1.0;0.0;-3;4
+42;4;4160;U16;;Phase 2 : apparent power;S_AC_2;1.0;0.0;-3;4
+43;4;4162;U16;;Phase 3 : apparent power;S_AC_3;1.0;0.0;-3;4
+44;4;4164;U16;;Phase 1 : power factor;PF_1;1.0;0.0;;4
+45;4;4165;U16;;Phase 2 : power factor;PF_2;1.0;0.0;;4
+46;4;4166;U16;;Phase 3 : power factor;PF_3;1.0;0.0;;4
+47;4;4167;U16;;Phase 1 : power factor sector;;1.0;0.0;;4
+48;4;4168;U16;;Phase 2 : power factor sector;;1.0;0.0;;4
+49;4;4169;U16;;Phase 3 : power factor sector;;1.0;0.0;;4
+50;4;4170;U16;;Phase 1 : THD V1;;1.0;0.0;%;4
+51;4;4171;U16;;Phase 2 : THD V2;;1.0;0.0;%;4
+52;4;4172;U16;;Phase 3 : THD V3;;1.0;0.0;%;4
+53;4;4173;U16;;Phase 1 : THD I1;;1.0;0.0;%;4
+54;4;4174;U16;;Phase 2 : THD I2;;1.0;0.0;%;4
+55;4;4175;U16;;Phase 3 : THD I3;;1.0;0.0;%;4
+56;4;4176;U16;;Phase 1 : I1 average;;1.0;0.0;mA;4
+57;4;4178;U16;;Phase 2 : I2 average;;1.0;0.0;mA;4
+58;4;4180;U16;;Phase 3 : I3 average;;1.0;0.0;mA;4
+59;4;4182;U16;;Phase 1 : I1 peak maximum;;1.0;0.0;mA;4
+60;4;4184;U16;;Phase 2 : I2 peak maximum;;1.0;0.0;mA;4
+61;4;4186;U16;;Phase 3 : I3 peak maximum;;1.0;0.0;mA;4
+62;4;4188;U16;;(I1+I2+I3)/3;;1.0;0.0;mA;4
+63;4;4190;U16;;Phase 1 : V1 min;;1.0;0.0;mV;4
+64;4;4192;U16;;Phase 2 : V2 min;;1.0;0.0;mV;4
+65;4;4194;U16;;Phase 3 : V3 min;;1.0;0.0;mV;4
+66;4;4196;U16;;Phase 1 : V1 max;;1.0;0.0;mV;4
+67;4;4198;U16;;Phase 2 : V2 max;;1.0;0.0;mV;4
+68;4;4200;U16;;Phase 3 : V3 max;;1.0;0.0;mV;4
+69;4;4202;U16;;3-phase : active partial energy;;1.0;0.0;;4
+70;4;4204;U16;;3-phase : reactive partial energy;;1.0;0.0;;4
+71;4;4206;U16;;Run hour meter;;1.0;0.0;Hour;4
+72;4;4207;U16;;Not used;;1.0;0.0;;4
+73;4;4208;U16;;3-phase : active average power;;1.0;0.0;;4
+74;4;4210;U16;;3-phase : reactive average power;;1.0;0.0;;4
+75;4;4212;U16;;3-phase : apparent average power;;1.0;0.0;;4
+76;4;4214;U16;;3-phase : active PMD power;;1.0;0.0;;4
+77;4;4216;U16;;3-phase : reactive PMD power;;1.0;0.0;;4
+78;4;4218;U16;;3-phase : apparent PMD power;;1.0;0.0;;4
+79;4;4608;U16;;Current transformer ratio  (KTA);;1.0;0.0;;4
+80;4;4609;U16;;Voltage transformer ratio  (KTV);;1.0;0.0;;4
+81;4;4610;U16;;Device configuration;;1.0;0.0;-1;4
+82;4;4612;U16;;Device identifier;;1.0;0.0;;4
+83;4;4613;U16;;Voltages sequence diagnostic;;1.0;0.0;;4
+84;4;5376;U16;;Positive Active Energy   - Low;;1.0;0.0;Wh;4
+85;4;5378;U16;;Positive Active Energy   – High;;1.0;0.0;MWh;4
+86;4;5380;U16;;Positive Reactive Energy - Low;;1.0;0.0;varh;4
+87;4;5382;U16;;Positive Reactive Energy – High;;1.0;0.0;Mvarh;4
+88;4;5384;U16;;Negative Active Energy   - Low;;1.0;0.0;Wh;4
+89;4;5386;U16;;Negative Active Energy   – High;;1.0;0.0;MWh;4
+90;4;5388;U16;;Negative Reactive Energy - Low;;1.0;0.0;varh;4
+91;4;5390;U16;;Negative Reactive Energy – High;;1.0;0.0;Mvarh;4
+92;4;5392;U16;;Partial  Active Energy   - Low;;1.0;0.0;Wh;4
+93;4;5394;U16;;Partial  Active Energy   - High;;1.0;0.0;MWh;4
+94;4;5396;U16;;Partial  Reactive Energy - Low;;1.0;0.0;varh;4
+95;4;5398;U16;;Partial  Reactive Energy - High;;1.0;0.0;Mvarh;4
+96;4;5400;U16;;Signed 3-ph   Active Power;;1.0;0.0;W;4
+97;4;5402;U16;;Signed 3-ph   Reactive Power;;1.0;0.0;var;4
+98;4;5404;U16;;Signed Phase1 Active Power;;1.0;0.0;W;4
+99;4;5406;U16;;Signed Phase2 Active Power;;1.0;0.0;W;4
+100;4;5408;U16;;Signed Phase3 Active Power;;1.0;0.0;W;4
+101;4;5410;U16;;Signed Phase1 Reactive Power;;1.0;0.0;var;4
+102;4;5412;U16;;Signed Phase2 Reactive Power;;1.0;0.0;var;4
+103;4;5414;U16;;Signed Phase3 Reactive Power;;1.0;0.0;var;4
+104;4;5416;U16;;Signed 3-ph   Power Factor;;1.0;0.0;;4
+105;4;5418;U16;;Signed Phase1 Power Factor;;1.0;0.0;;4
+106;4;5420;U16;;Signed Phase2 Power Factor;;1.0;0.0;;4
+107;4;5422;U16;;Signed Phase3 Power Factor;;1.0;0.0;;4
+108;4;5424;U16;;Apparent power;;1.0;0.0;VA;4
+109;4;5426;U16;;3-phase : active average power;;1.0;0.0;W;4
+110;4;5428;U16;;3-phase : reactive average power;;1.0;0.0;Var;4
+111;4;5430;U16;;3-phase : apparent average power;;1.0;0.0;VA;4
+112;4;5432;U16;;3-phase : active PMD power;;1.0;0.0;W;4
+113;4;5434;U16;;3-phase : reactive PMD power;;1.0;0.0;Var;4
+114;4;5436;U16;;3-phase : apparent PMD power;;1.0;0.0;VA;4
+115;4;5504;U16;;Phase1 voltage crest factor;;1.0;0.0;;4
+116;4;5505;U16;;Phase2 voltage crest factor;;1.0;0.0;;4
+117;4;5506;U16;;Phase3 voltage crest factor;;1.0;0.0;;4
+118;4;5507;U16;;Phase1 current crest factor;;1.0;0.0;;4
+119;4;5508;U16;;Phase2 current crest factor;;1.0;0.0;;4
+120;4;5509;U16;;Phase3 current crest factor;;1.0;0.0;;4
+121;4;5510;U16;;Phase12 voltage crest factor;;1.0;0.0;;4
+122;4;5511;U16;;Phase23 voltage crest factor;;1.0;0.0;;4
+123;4;5512;U16;;Phase31 voltage crest factor;;1.0;0.0;;4
+124;4;5888;U16;;Positive Active Energy   - Low;;1.0;0.0;Wh;4
+125;4;5890;U16;;Positive Active Energy   – High;;1.0;0.0;MWh;4
+126;4;5892;U16;;Positive Reactive Energy - Low;;1.0;0.0;varh;4
+127;4;5894;U16;;Positive Reactive Energy – High;;1.0;0.0;Mvarh;4
+128;4;5896;U16;;Negative Active Energy   - Low;;1.0;0.0;Wh;4
+129;4;5898;U16;;Negative Active Energy   – High;;1.0;0.0;MWh;4
+130;4;5900;U16;;Negative Reactive Energy - Low;;1.0;0.0;varh;4
+131;4;5902;U16;;Negative Reactive Energy – High;;1.0;0.0;Mvarh;4
+132;4;5904;U16;;Partial+ Active Energy   - Low;;1.0;0.0;Wh;4
+133;4;5906;U16;;Partial+ Active Energy   - High;;1.0;0.0;MWh;4
+134;4;5908;U16;;Partial+ Reactive Energy - Low;;1.0;0.0;varh;4
+135;4;5910;U16;;Partial+ Reactive Energy - High;;1.0;0.0;Mvarh;4
+136;4;5912;U16;;Partial- Active Energy   - Low;;1.0;0.0;Wh;4
+137;4;5914;U16;;Partial- Active Energy   - High;;1.0;0.0;MWh;4
+138;4;5916;U16;;Partial- Reactive Energy – Low;;1.0;0.0;varh;4
+139;4;5918;U16;;Partial- Reactive Energy - High;;1.0;0.0;Mvarh;4
+140;4;5920;U16;;Signed 3-ph   active power;;1.0;0.0;W;4
+141;4;5922;U16;;Signed 3-ph   reactive power;;1.0;0.0;var;4
+142;4;5924;U16;;Signed phase1 active power;;1.0;0.0;W;4
+143;4;5926;U16;;Signed phase2 active power;;1.0;0.0;W;4
+144;4;5928;U16;;Signed phase3 active power;;1.0;0.0;W;4
+145;4;5930;U16;;Signed phase1 reactive power;;1.0;0.0;var;4
+146;4;5932;U16;;Signed phase2 reactive power;;1.0;0.0;var;4
+147;4;5934;U16;;Signed phase3 reactive power;;1.0;0.0;var;4
+148;4;5936;U16;;Signed 3-ph   Power Factor;;1.0;0.0;;4
+149;4;5938;U16;;Signed phase1 Power Factor;;1.0;0.0;;4
+150;4;5940;U16;;Signed phase2 Power Factor;;1.0;0.0;;4
+151;4;5942;U16;;Signed phase3 Power Factor;;1.0;0.0;;4
+152;4;28672;U16;;Current phase 1 - fundamental;;1.0;0.0;;4
+153;4;28673;U16;;Current phase 1 - 2nd harmonic (percentage);;1.0;0.0;%;4
+154;4;28674;U16;;Current phase 1 - 3rd harmonic (percentage);;1.0;0.0;%;4
+155;4;28675;U16;;Current phase 1 - 4th harmonic (percentage);;1.0;0.0;%;4
+156;4;28676;U16;;Current phase 1 - 5th harmonic (percentage);;1.0;0.0;%;4
+157;4;28677;U16;;Current phase 1 - 6th harmonic (percentage);;1.0;0.0;%;4
+158;4;28678;U16;;Current phase 1 - 7th harmonic (percentage);;1.0;0.0;%;4
+159;4;28679;U16;;Current phase 1 - 8th harmonic (percentage);;1.0;0.0;%;4
+160;4;28680;U16;;Current phase 1 - 9th harmonic (percentage);;1.0;0.0;%;4
+161;4;28681;U16;;Current phase 1 - 10th harmonic (percentage);;1.0;0.0;%;4
+162;4;28682;U16;;Current phase 1 - 11th harmonic (percentage);;1.0;0.0;%;4
+163;4;28683;U16;;Current phase 1 - 12th harmonic (percentage);;1.0;0.0;%;4
+164;4;28684;U16;;Current phase 1 - 13th harmonic (percentage);;1.0;0.0;%;4
+165;4;28685;U16;;Current phase 1 - 14th harmonic (percentage);;1.0;0.0;%;4
+166;4;28686;U16;;Current phase 1 - 15th harmonic (percentage);;1.0;0.0;%;4
+167;4;28687;U16;;Current phase 1 - 16th harmonic (percentage);;1.0;0.0;%;4
+168;4;28688;U16;;Current phase 1 - 17th harmonic (percentage);;1.0;0.0;%;4
+169;4;28689;U16;;Current phase 1 - 18th harmonic (percentage);;1.0;0.0;%;4
+170;4;28690;U16;;Current phase 1 - 19th harmonic (percentage);;1.0;0.0;%;4
+171;4;28691;U16;;Current phase 1 - 20th harmonic (percentage);;1.0;0.0;%;4
+172;4;28692;U16;;Current phase 1 - 21st harmonic (percentage);;1.0;0.0;%;4
+173;4;28693;U16;;Current phase 1 - 22nd harmonic (percentage);;1.0;0.0;%;4
+174;4;28694;U16;;Current phase 1 - 23rd harmonic (percentage);;1.0;0.0;%;4
+175;4;28695;U16;;Current phase 1 - 24th harmonic (percentage);;1.0;0.0;%;4
+176;4;28696;U16;;Current phase 1 - 25th harmonic (percentage);CMD_ON;1.0;0.0;%;1
+177;4;28697;U16;;Current phase 1 - 26th harmonic (percentage);CMD_OFF;1.0;0.0;%;1
+178;4;28698;U16;;Current phase 1 - 27th harmonic (percentage);;1.0;0.0;%;4
+179;4;28699;U16;;Current phase 1 - 28th harmonic (percentage);;1.0;0.0;%;4
+180;4;28700;U16;;Current phase 1 - 29th harmonic (percentage);;1.0;0.0;%;4
+181;4;28701;U16;;Current phase 1 - 30th harmonic (percentage);;1.0;0.0;%;4
+182;4;28702;U16;;Current phase 1 - 31st harmonic (percentage);;1.0;0.0;%;4
+183;4;28703;U16;;Current phase 1 - 32nd harmonic (percentage);;1.0;0.0;%;4
+184;4;28704;U16;;Current phase 1 - 33rd harmonic (percentage);;1.0;0.0;%;4
+185;4;28705;U16;;Current phase 1 - 34th harmonic (percentage);;1.0;0.0;%;4
+186;4;28706;U16;;Current phase 1 - 35th harmonic (percentage);;1.0;0.0;%;4
+187;4;28707;U16;;Current phase 1 - 36th harmonic (percentage);;1.0;0.0;%;4
+188;4;28708;U16;;Current phase 1 - 37th harmonic (percentage);;1.0;0.0;%;4
+189;4;28709;U16;;Current phase 1 - 38th harmonic (percentage);;1.0;0.0;%;4
+190;4;28710;U16;;Current phase 1 - 39th harmonic (percentage);;1.0;0.0;%;4
+191;4;28711;U16;;Current phase 1 - 40th harmonic (percentage);;1.0;0.0;%;4
+192;4;28712;U16;;Current phase 1 - 41st harmonic (percentage);;1.0;0.0;%;4
+193;4;28713;U16;;Current phase 1 - 42nd harmonic (percentage);;1.0;0.0;%;4
+194;4;28714;U16;;Current phase 1 - 43rd harmonic (percentage);;1.0;0.0;%;4
+195;4;28715;U16;;Current phase 1 - 44th harmonic (percentage);;1.0;0.0;%;4
+196;4;28716;U16;;Current phase 1 - 45th harmonic (percentage);;1.0;0.0;%;4
+197;4;28717;U16;;Current phase 1 - 46th harmonic (percentage);;1.0;0.0;%;4
+198;4;28718;U16;;Current phase 1 - 47th harmonic (percentage);;1.0;0.0;%;4
+199;4;28719;U16;;Current phase 1 - 48th harmonic (percentage);;1.0;0.0;%;4
+200;4;28720;U16;;Current phase 1 - 49th harmonic (percentage);;1.0;0.0;%;4
+201;4;28721;U16;;Current phase 1 - 50th harmonic (percentage);;1.0;0.0;%;4
+202;4;28736;U16;;Current phase 2 - fundamental;;1.0;0.0;;4
+203;4;28737;U16;;Current phase 2 - 2nd harmonic (percentage);;1.0;0.0;%;4
+204;4;28738;U16;;Current phase 2 - 3rd harmonic (percentage);;1.0;0.0;%;4
+205;4;28739;U16;;Current phase 2 - 4th harmonic (percentage);;1.0;0.0;%;4
+206;4;28740;U16;;Current phase 2 - 5th harmonic (percentage);;1.0;0.0;%;4
+207;4;28741;U16;;Current phase 2 - 6th harmonic (percentage);;1.0;0.0;%;4
+208;4;28742;U16;;Current phase 2 - 7th harmonic (percentage);;1.0;0.0;%;4
+209;4;28743;U16;;Current phase 2 - 8th harmonic (percentage);;1.0;0.0;%;4
+210;4;28744;U16;;Current phase 2 - 9th harmonic (percentage);;1.0;0.0;%;4
+211;4;28745;U16;;Current phase 2 - 10th harmonic (percentage);;1.0;0.0;%;4
+212;4;28746;U16;;Current phase 2 - 11th harmonic (percentage);;1.0;0.0;%;4
+213;4;28747;U16;;Current phase 2 - 12th harmonic (percentage);;1.0;0.0;%;4
+214;4;28748;U16;;Current phase 2 - 13th harmonic (percentage);;1.0;0.0;%;4
+215;4;28749;U16;;Current phase 2 - 14th harmonic (percentage);;1.0;0.0;%;4
+216;4;28750;U16;;Current phase 2 - 15th harmonic (percentage);;1.0;0.0;%;4
+217;4;28751;U16;;Current phase 2 - 16th harmonic (percentage);;1.0;0.0;%;4
+218;4;28752;U16;;Current phase 2 - 17th harmonic (percentage);;1.0;0.0;%;4
+219;4;28753;U16;;Current phase 2 - 18th harmonic (percentage);;1.0;0.0;%;4
+220;4;28754;U16;;Current phase 2 - 19th harmonic (percentage);;1.0;0.0;%;4
+221;4;28755;U16;;Current phase 2 - 20th harmonic (percentage);;1.0;0.0;%;4
+222;4;28756;U16;;Current phase 2 - 21st harmonic (percentage);;1.0;0.0;%;4
+223;4;28757;U16;;Current phase 2 - 22nd harmonic (percentage);;1.0;0.0;%;4
+224;4;28758;U16;;Current phase 2 - 23rd harmonic (percentage);;1.0;0.0;%;4
+225;4;28759;U16;;Current phase 2 - 24th harmonic (percentage);;1.0;0.0;%;4
+226;4;28760;U16;;Current phase 2 - 25th harmonic (percentage);;1.0;0.0;%;4
+227;4;28761;U16;;Current phase 2 - 26th harmonic (percentage);;1.0;0.0;%;4
+228;4;28762;U16;;Current phase 2 - 27th harmonic (percentage);;1.0;0.0;%;4
+229;4;28763;U16;;Current phase 2 - 28th harmonic (percentage);;1.0;0.0;%;4
+230;4;28764;U16;;Current phase 2 - 29th harmonic (percentage);;1.0;0.0;%;4
+231;4;28765;U16;;Current phase 2 - 30th harmonic (percentage);;1.0;0.0;%;4
+232;4;28766;U16;;Current phase 2 - 31st harmonic (percentage);;1.0;0.0;%;4
+233;4;28767;U16;;Current phase 2 - 32nd harmonic (percentage);;1.0;0.0;%;4
+234;4;28768;U16;;Current phase 2 - 33rd harmonic (percentage);;1.0;0.0;%;4
+235;4;28769;U16;;Current phase 2 - 34th harmonic (percentage);;1.0;0.0;%;4
+236;4;28770;U16;;Current phase 2 - 35th harmonic (percentage);;1.0;0.0;%;4
+237;4;28771;U16;;Current phase 2 - 36th harmonic (percentage);;1.0;0.0;%;4
+238;4;28772;U16;;Current phase 2 - 37th harmonic (percentage);;1.0;0.0;%;4
+239;4;28773;U16;;Current phase 2 - 38th harmonic (percentage);;1.0;0.0;%;4
+240;4;28774;U16;;Current phase 2 - 39th harmonic (percentage);;1.0;0.0;%;4
+241;4;28775;U16;;Current phase 2 - 40th harmonic (percentage);;1.0;0.0;%;4
+242;4;28776;U16;;Current phase 2 - 41st harmonic (percentage);;1.0;0.0;%;4
+243;4;28777;U16;;Current phase 2 - 42nd harmonic (percentage);;1.0;0.0;%;4
+244;4;28778;U16;;Current phase 2 - 43rd harmonic (percentage);;1.0;0.0;%;4
+245;4;28779;U16;;Current phase 2 - 44th harmonic (percentage);;1.0;0.0;%;4
+246;4;28780;U16;;Current phase 2 - 45th harmonic (percentage);;1.0;0.0;%;4
+247;4;28781;U16;;Current phase 2 - 46th harmonic (percentage);;1.0;0.0;%;4
+248;4;28782;U16;;Current phase 2 - 47th harmonic (percentage);;1.0;0.0;%;4
+249;4;28783;U16;;Current phase 2 - 48th harmonic (percentage);;1.0;0.0;%;4
+250;4;28784;U16;;Current phase 2 - 49th harmonic (percentage);;1.0;0.0;%;4
+251;4;28785;U16;;Current phase 2 - 50th harmonic (percentage);;1.0;0.0;%;4
+252;4;28800;U16;;Current phase 3 - fundamental;;1.0;0.0;;4
+253;4;28801;U16;;Current phase 3 - 2nd harmonic (percentage);;1.0;0.0;%;4
+254;4;28802;U16;;Current phase 3 - 3rd harmonic (percentage);;1.0;0.0;%;4
+255;4;28803;U16;;Current phase 3 - 4th harmonic (percentage);;1.0;0.0;%;4
+256;4;28804;U16;;Current phase 3 - 5th harmonic (percentage);;1.0;0.0;%;4
+257;4;28805;U16;;Current phase 3 - 6th harmonic (percentage);;1.0;0.0;%;4
+258;4;28806;U16;;Current phase 3 - 7th harmonic (percentage);;1.0;0.0;%;4
+259;4;28807;U16;;Current phase 3 - 8th harmonic (percentage);;1.0;0.0;%;4
+260;4;28808;U16;;Current phase 3 - 9th harmonic (percentage);;1.0;0.0;%;4
+261;4;28809;U16;;Current phase 3 - 10th harmonic (percentage);;1.0;0.0;%;4
+262;4;28810;U16;;Current phase 3 - 11th harmonic (percentage);;1.0;0.0;%;4
+263;4;28811;U16;;Current phase 3 - 12th harmonic (percentage);;1.0;0.0;%;4
+264;4;28812;U16;;Current phase 3 - 13th harmonic (percentage);;1.0;0.0;%;4
+265;4;28813;U16;;Current phase 3 - 14th harmonic (percentage);;1.0;0.0;%;4
+266;4;28814;U16;;Current phase 3 - 15th harmonic (percentage);;1.0;0.0;%;4
+267;4;28815;U16;;Current phase 3 - 16th harmonic (percentage);;1.0;0.0;%;4
+268;4;28816;U16;;Current phase 3 - 17th harmonic (percentage);;1.0;0.0;%;4
+269;4;28817;U16;;Current phase 3 - 18th harmonic (percentage);;1.0;0.0;%;4
+270;4;28818;U16;;Current phase 3 - 19th harmonic (percentage);;1.0;0.0;%;4
+271;4;28819;U16;;Current phase 3 - 20th harmonic (percentage);;1.0;0.0;%;4
+272;4;28820;U16;;Current phase 3 - 21st harmonic (percentage);;1.0;0.0;%;4
+273;4;28821;U16;;Current phase 3 - 22nd harmonic (percentage);;1.0;0.0;%;4
+274;4;28822;U16;;Current phase 3 - 23rd harmonic (percentage);;1.0;0.0;%;4
+275;4;28823;U16;;Current phase 3 - 24th harmonic (percentage);;1.0;0.0;%;4
+276;4;28824;U16;;Current phase 3 - 25th harmonic (percentage);;1.0;0.0;%;4
+277;4;28825;U16;;Current phase 3 - 26th harmonic (percentage);;1.0;0.0;%;4
+278;4;28826;U16;;Current phase 3 - 27th harmonic (percentage);;1.0;0.0;%;4
+279;4;28827;U16;;Current phase 3 - 28th harmonic (percentage);;1.0;0.0;%;4
+280;4;28828;U16;;Current phase 3 - 29th harmonic (percentage);;1.0;0.0;%;4
+281;4;28829;U16;;Current phase 3 - 30th harmonic (percentage);;1.0;0.0;%;4
+282;4;28830;U16;;Current phase 3 - 31st harmonic (percentage);;1.0;0.0;%;4
+283;4;28831;U16;;Current phase 3 - 32nd harmonic (percentage);;1.0;0.0;%;4
+284;4;28832;U16;;Current phase 3 - 33rd harmonic (percentage);;1.0;0.0;%;4
+285;4;28833;U16;;Current phase 3 - 34th harmonic (percentage);;1.0;0.0;%;4
+286;4;28834;U16;;Current phase 3 - 35th harmonic (percentage);;1.0;0.0;%;4
+287;4;28835;U16;;Current phase 3 - 36th harmonic (percentage);;1.0;0.0;%;4
+288;4;28836;U16;;Current phase 3 - 37th harmonic (percentage);;1.0;0.0;%;4
+289;4;28837;U16;;Current phase 3 - 38th harmonic (percentage);;1.0;0.0;%;4
+290;4;28838;U16;;Current phase 3 - 39th harmonic (percentage);;1.0;0.0;%;4
+291;4;28839;U16;;Current phase 3 - 40th harmonic (percentage);;1.0;0.0;%;4
+292;4;28840;U16;;Current phase 3 - 41st harmonic (percentage);;1.0;0.0;%;4
+293;4;28841;U16;;Current phase 3 - 42nd harmonic (percentage);;1.0;0.0;%;4
+294;4;28842;U16;;Current phase 3 - 43rd harmonic (percentage);;1.0;0.0;%;4
+295;4;28843;U16;;Current phase 3 - 44th harmonic (percentage);;1.0;0.0;%;4
+296;4;28844;U16;;Current phase 3 - 45th harmonic (percentage);;1.0;0.0;%;4
+297;4;28845;U16;;Current phase 3 - 46th harmonic (percentage);;1.0;0.0;%;4
+298;4;28846;U16;;Current phase 3 - 47th harmonic (percentage);;1.0;0.0;%;4
+299;4;28847;U16;;Current phase 3 - 48th harmonic (percentage);;1.0;0.0;%;4
+300;4;28848;U16;;Current phase 3 - 49th harmonic (percentage);;1.0;0.0;%;4
+301;4;28849;U16;;Current phase 3 - 50th harmonic (percentage);;1.0;0.0;%;4
+302;4;28864;U16;;Voltage phase 1 (V12) - fundamental;;1.0;0.0;;4
+303;4;28865;U16;;Voltage phase 1 (V12) - 2nd  harmonic (percentage);;1.0;0.0;%;4
+304;4;28866;U16;;Voltage phase 1 (V12) - 3rd  harmonic (percentage);;1.0;0.0;%;4
+305;4;28867;U16;;Voltage phase 1 (V12) - 4th  harmonic (percentage);;1.0;0.0;%;4
+306;4;28868;U16;;Voltage phase 1 (V12) - 5th  harmonic (percentage);;1.0;0.0;%;4
+307;4;28869;U16;;Voltage phase 1 (V12) - 6th  harmonic (percentage);;1.0;0.0;%;4
+308;4;28870;U16;;Voltage phase 1 (V12) - 7th  harmonic (percentage);;1.0;0.0;%;4
+309;4;28871;U16;;Voltage phase 1 (V12) - 8th  harmonic (percentage);;1.0;0.0;%;4
+310;4;28872;U16;;Voltage phase 1 (V12) - 9th  harmonic (percentage);;1.0;0.0;%;4
+311;4;28873;U16;;Voltage phase 1 (V12) - 10th  harmonic (percentage);;1.0;0.0;%;4
+312;4;28874;U16;;Voltage phase 1 (V12) - 11th  harmonic (percentage);;1.0;0.0;%;4
+313;4;28875;U16;;Voltage phase 1 (V12) - 12th  harmonic (percentage);;1.0;0.0;%;4
+314;4;28876;U16;;Voltage phase 1 (V12) - 13th  harmonic (percentage);;1.0;0.0;%;4
+315;4;28877;U16;;Voltage phase 1 (V12) - 14th  harmonic (percentage);;1.0;0.0;%;4
+316;4;28878;U16;;Voltage phase 1 (V12) - 15th  harmonic (percentage);;1.0;0.0;%;4
+317;4;28879;U16;;Voltage phase 1 (V12) - 16th  harmonic (percentage);;1.0;0.0;%;4
+318;4;28880;U16;;Voltage phase 1 (V12) - 17th  harmonic (percentage);;1.0;0.0;%;4
+319;4;28881;U16;;Voltage phase 1 (V12) - 18th  harmonic (percentage);;1.0;0.0;%;4
+320;4;28882;U16;;Voltage phase 1 (V12) - 19th  harmonic (percentage);;1.0;0.0;%;4
+321;4;28883;U16;;Voltage phase 1 (V12) - 20th  harmonic (percentage);;1.0;0.0;%;4
+322;4;28884;U16;;Voltage phase 1 (V12) - 21st  harmonic (percentage);;1.0;0.0;%;4
+323;4;28885;U16;;Voltage phase 1 (V12) - 22nd  harmonic (percentage);;1.0;0.0;%;4
+324;4;28886;U16;;Voltage phase 1 (V12) - 23rd  harmonic (percentage);;1.0;0.0;%;4
+325;4;28887;U16;;Voltage phase 1 (V12) - 24th  harmonic (percentage);;1.0;0.0;%;4
+326;4;28888;U16;;Voltage phase 1 (V12) - 25th  harmonic (percentage);;1.0;0.0;%;4
+327;4;28889;U16;;Voltage phase 1 (V12) - 26th  harmonic (percentage);;1.0;0.0;%;4
+328;4;28890;U16;;Voltage phase 1 (V12) - 27th  harmonic (percentage);;1.0;0.0;%;4
+329;4;28891;U16;;Voltage phase 1 (V12) - 28th  harmonic (percentage);;1.0;0.0;%;4
+330;4;28892;U16;;Voltage phase 1 (V12) - 29th  harmonic (percentage);;1.0;0.0;%;4
+331;4;28893;U16;;Voltage phase 1 (V12) - 30th  harmonic (percentage);;1.0;0.0;%;4
+332;4;28894;U16;;Voltage phase 1 (V12) - 31st  harmonic (percentage);;1.0;0.0;%;4
+333;4;28895;U16;;Voltage phase 1 (V12) - 32nd  harmonic (percentage);;1.0;0.0;%;4
+334;4;28896;U16;;Voltage phase 1 (V12) - 33rd  harmonic (percentage);;1.0;0.0;%;4
+335;4;28897;U16;;Voltage phase 1 (V12) - 34th  harmonic (percentage);;1.0;0.0;%;4
+336;4;28898;U16;;Voltage phase 1 (V12) - 35th  harmonic (percentage);;1.0;0.0;%;4
+337;4;28899;U16;;Voltage phase 1 (V12) - 36th  harmonic (percentage);;1.0;0.0;%;4
+338;4;28900;U16;;Voltage phase 1 (V12) - 37th  harmonic (percentage);;1.0;0.0;%;4
+339;4;28901;U16;;Voltage phase 1 (V12) - 38th  harmonic (percentage);;1.0;0.0;%;4
+340;4;28902;U16;;Voltage phase 1 (V12) - 39th  harmonic (percentage);;1.0;0.0;%;4
+341;4;28903;U16;;Voltage phase 1 (V12) - 40th  harmonic (percentage);;1.0;0.0;%;4
+342;4;28904;U16;;Voltage phase 1 (V12) - 41st  harmonic (percentage);;1.0;0.0;%;4
+343;4;28905;U16;;Voltage phase 1 (V12) - 42nd  harmonic (percentage);;1.0;0.0;%;4
+344;4;28906;U16;;Voltage phase 1 (V12) - 43rd  harmonic (percentage);;1.0;0.0;%;4
+345;4;28907;U16;;Voltage phase 1 (V12) - 44th  harmonic (percentage);;1.0;0.0;%;4
+346;4;28908;U16;;Voltage phase 1 (V12) - 45th  harmonic (percentage);;1.0;0.0;%;4
+347;4;28909;U16;;Voltage phase 1 (V12) - 46th  harmonic (percentage);;1.0;0.0;%;4
+348;4;28910;U16;;Voltage phase 1 (V12) - 47th  harmonic (percentage);;1.0;0.0;%;4
+349;4;28911;U16;;Voltage phase 1 (V12) - 48th  harmonic (percentage);;1.0;0.0;%;4
+350;4;28912;U16;;Voltage phase 1 (V12) - 49th  harmonic (percentage);;1.0;0.0;%;4
+351;4;28913;U16;;Voltage phase 1 (V12) - 50th  harmonic (percentage);;1.0;0.0;%;4
+352;4;28928;U16;;Voltage phase 2 (V23) - fundamental;;1.0;0.0;;4
+353;4;28929;U16;;Voltage phase 2 (V23) - 2nd  harmonic (percentage);;1.0;0.0;%;4
+354;4;28930;U16;;Voltage phase 2 (V23) - 3rd  harmonic (percentage);;1.0;0.0;%;4
+355;4;28931;U16;;Voltage phase 2 (V23) - 4th  harmonic (percentage);;1.0;0.0;%;4
+356;4;28932;U16;;Voltage phase 2 (V23) - 5th  harmonic (percentage);;1.0;0.0;%;4
+357;4;28933;U16;;Voltage phase 2 (V23) - 6th  harmonic (percentage);;1.0;0.0;%;4
+358;4;28934;U16;;Voltage phase 2 (V23) - 7th  harmonic (percentage);;1.0;0.0;%;4
+359;4;28935;U16;;Voltage phase 2 (V23) - 8th  harmonic (percentage);;1.0;0.0;%;4
+360;4;28936;U16;;Voltage phase 2 (V23) - 9th  harmonic (percentage);;1.0;0.0;%;4
+361;4;28937;U16;;Voltage phase 2 (V23) - 10th  harmonic (percentage);;1.0;0.0;%;4
+362;4;28938;U16;;Voltage phase 2 (V23) - 11th  harmonic (percentage);;1.0;0.0;%;4
+363;4;28939;U16;;Voltage phase 2 (V23) - 12th  harmonic (percentage);;1.0;0.0;%;4
+364;4;28940;U16;;Voltage phase 2 (V23) - 13th  harmonic (percentage);;1.0;0.0;%;4
+365;4;28941;U16;;Voltage phase 2 (V23) - 14th  harmonic (percentage);;1.0;0.0;%;4
+366;4;28942;U16;;Voltage phase 2 (V23) - 15th  harmonic (percentage);;1.0;0.0;%;4
+367;4;28943;U16;;Voltage phase 2 (V23) - 16th  harmonic (percentage);;1.0;0.0;%;4
+368;4;28944;U16;;Voltage phase 2 (V23) - 17th  harmonic (percentage);;1.0;0.0;%;4
+369;4;28945;U16;;Voltage phase 2 (V23) - 18th  harmonic (percentage);;1.0;0.0;%;4
+370;4;28946;U16;;Voltage phase 2 (V23) - 19th  harmonic (percentage);;1.0;0.0;%;4
+371;4;28947;U16;;Voltage phase 2 (V23) - 20th  harmonic (percentage);;1.0;0.0;%;4
+372;4;28948;U16;;Voltage phase 2 (V23) - 21st  harmonic (percentage);;1.0;0.0;%;4
+373;4;28949;U16;;Voltage phase 2 (V23) - 22nd  harmonic (percentage);;1.0;0.0;%;4
+374;4;28950;U16;;Voltage phase 2 (V23) - 23rd  harmonic (percentage);;1.0;0.0;%;4
+375;4;28951;U16;;Voltage phase 2 (V23) - 24th  harmonic (percentage);;1.0;0.0;%;4
+376;4;28952;U16;;Voltage phase 2 (V23) - 25th  harmonic (percentage);;1.0;0.0;%;4
+377;4;28953;U16;;Voltage phase 2 (V23) - 26th  harmonic (percentage);;1.0;0.0;%;4
+378;4;28954;U16;;Voltage phase 2 (V23) - 27th  harmonic (percentage);;1.0;0.0;%;4
+379;4;28955;U16;;Voltage phase 2 (V23) - 28th  harmonic (percentage);;1.0;0.0;%;4
+380;4;28956;U16;;Voltage phase 2 (V23) - 29th  harmonic (percentage);;1.0;0.0;%;4
+381;4;28957;U16;;Voltage phase 2 (V23) - 30th  harmonic (percentage);;1.0;0.0;%;4
+382;4;28958;U16;;Voltage phase 2 (V23) - 31st  harmonic (percentage);;1.0;0.0;%;4
+383;4;28959;U16;;Voltage phase 2 (V23) - 32nd  harmonic (percentage);;1.0;0.0;%;4
+384;4;28960;U16;;Voltage phase 2 (V23) - 33rd  harmonic (percentage);;1.0;0.0;%;4
+385;4;28961;U16;;Voltage phase 2 (V23) - 34th  harmonic (percentage);;1.0;0.0;%;4
+386;4;28962;U16;;Voltage phase 2 (V23) - 35th  harmonic (percentage);;1.0;0.0;%;4
+387;4;28963;U16;;Voltage phase 2 (V23) - 36th  harmonic (percentage);;1.0;0.0;%;4
+388;4;28964;U16;;Voltage phase 2 (V23) - 37th  harmonic (percentage);;1.0;0.0;%;4
+389;4;28965;U16;;Voltage phase 2 (V23) - 38th  harmonic (percentage);;1.0;0.0;%;4
+390;4;28966;U16;;Voltage phase 2 (V23) - 39th  harmonic (percentage);;1.0;0.0;%;4
+391;4;28967;U16;;Voltage phase 2 (V23) - 40th  harmonic (percentage);;1.0;0.0;%;4
+392;4;28968;U16;;Voltage phase 2 (V23) - 41st  harmonic (percentage);;1.0;0.0;%;4
+393;4;28969;U16;;Voltage phase 2 (V23) - 42nd  harmonic (percentage);;1.0;0.0;%;4
+394;4;28970;U16;;Voltage phase 2 (V23) - 43rd  harmonic (percentage);;1.0;0.0;%;4
+395;4;28971;U16;;Voltage phase 2 (V23) - 44th  harmonic (percentage);;1.0;0.0;%;4
+396;4;28972;U16;;Voltage phase 2 (V23) - 45th  harmonic (percentage);;1.0;0.0;%;4
+397;4;28973;U16;;Voltage phase 2 (V23) - 46th  harmonic (percentage);;1.0;0.0;%;4
+398;4;28974;U16;;Voltage phase 2 (V23) - 47th  harmonic (percentage);;1.0;0.0;%;4
+399;4;28975;U16;;Voltage phase 2 (V23) - 48th  harmonic (percentage);;1.0;0.0;%;4
+400;4;28976;U16;;Voltage phase 2 (V23) - 49th  harmonic (percentage);;1.0;0.0;%;4
+401;4;28977;U16;;Voltage phase 2 (V23) - 50th  harmonic (percentage);;1.0;0.0;%;4
+402;4;28992;U16;;Voltage phase 3 (V31) - fundamental;;1.0;0.0;;4
+403;4;28993;U16;;Voltage phase 3 (V31) - 2nd  harmonic (percentage);;1.0;0.0;%;4
+404;4;28994;U16;;Voltage phase 3 (V31) - 3rd  harmonic (percentage);;1.0;0.0;%;4
+405;4;28995;U16;;Voltage phase 3 (V31) - 4th  harmonic (percentage);;1.0;0.0;%;4
+406;4;28996;U16;;Voltage phase 3 (V31) - 5th  harmonic (percentage);;1.0;0.0;%;4
+407;4;28997;U16;;Voltage phase 3 (V31) - 6th  harmonic (percentage);;1.0;0.0;%;4
+408;4;28998;U16;;Voltage phase 3 (V31) - 7th  harmonic (percentage);;1.0;0.0;%;4
+409;4;28999;U16;;Voltage phase 3 (V31) - 8th  harmonic (percentage);;1.0;0.0;%;4
+410;4;29000;U16;;Voltage phase 3 (V31) - 9th  harmonic (percentage);;1.0;0.0;%;4
+411;4;29001;U16;;Voltage phase 3 (V31) - 10th  harmonic (percentage);;1.0;0.0;%;4
+412;4;29002;U16;;Voltage phase 3 (V31) - 11th  harmonic (percentage);;1.0;0.0;%;4
+413;4;29003;U16;;Voltage phase 3 (V31) - 12th  harmonic (percentage);;1.0;0.0;%;4
+414;4;29004;U16;;Voltage phase 3 (V31) - 13th  harmonic (percentage);;1.0;0.0;%;4
+415;4;29005;U16;;Voltage phase 3 (V31) - 14th  harmonic (percentage);;1.0;0.0;%;4
+416;4;29006;U16;;Voltage phase 3 (V31) - 15th  harmonic (percentage);;1.0;0.0;%;4
+417;4;29007;U16;;Voltage phase 3 (V31) - 16th  harmonic (percentage);;1.0;0.0;%;4
+418;4;29008;U16;;Voltage phase 3 (V31) - 17th  harmonic (percentage);;1.0;0.0;%;4
+419;4;29009;U16;;Voltage phase 3 (V31) - 18th  harmonic (percentage);;1.0;0.0;%;4
+420;4;29010;U16;;Voltage phase 3 (V31) - 19th  harmonic (percentage);;1.0;0.0;%;4
+421;4;29011;U16;;Voltage phase 3 (V31) - 20th  harmonic (percentage);;1.0;0.0;%;4
+422;4;29012;U16;;Voltage phase 3 (V31) - 21st  harmonic (percentage);;1.0;0.0;%;4
+423;4;29013;U16;;Voltage phase 3 (V31) - 22nd  harmonic (percentage);;1.0;0.0;%;4
+424;4;29014;U16;;Voltage phase 3 (V31) - 23rd  harmonic (percentage);;1.0;0.0;%;4
+425;4;29015;U16;;Voltage phase 3 (V31) - 24th  harmonic (percentage);;1.0;0.0;%;4
+426;4;29016;U16;;Voltage phase 3 (V31) - 25th  harmonic (percentage);;1.0;0.0;%;4
+427;4;29017;U16;;Voltage phase 3 (V31) - 26th  harmonic (percentage);;1.0;0.0;%;4
+428;4;29018;U16;;Voltage phase 3 (V31) - 27th  harmonic (percentage);;1.0;0.0;%;4
+429;4;29019;U16;;Voltage phase 3 (V31) - 28th  harmonic (percentage);;1.0;0.0;%;4
+430;4;29020;U16;;Voltage phase 3 (V31) - 29th  harmonic (percentage);;1.0;0.0;%;4
+431;4;29021;U16;;Voltage phase 3 (V31) - 30th  harmonic (percentage);;1.0;0.0;%;4
+432;4;29022;U16;;Voltage phase 3 (V31) - 31st  harmonic (percentage);;1.0;0.0;%;4
+433;4;29023;U16;;Voltage phase 3 (V31) - 32nd  harmonic (percentage);;1.0;0.0;%;4
+434;4;29024;U16;;Voltage phase 3 (V31) - 33rd  harmonic (percentage);;1.0;0.0;%;4
+435;4;29025;U16;;Voltage phase 3 (V31) - 34th  harmonic (percentage);;1.0;0.0;%;4
+436;4;29026;U16;;Voltage phase 3 (V31) - 35th  harmonic (percentage);;1.0;0.0;%;4
+437;4;29027;U16;;Voltage phase 3 (V31) - 36th  harmonic (percentage);;1.0;0.0;%;4
+438;4;29028;U16;;Voltage phase 3 (V31) - 37th  harmonic (percentage);;1.0;0.0;%;4
+439;4;29029;U16;;Voltage phase 3 (V31) - 38th  harmonic (percentage);;1.0;0.0;%;4
+440;4;29030;U16;;Voltage phase 3 (V31) - 39th  harmonic (percentage);;1.0;0.0;%;4
+441;4;29031;U16;;Voltage phase 3 (V31) - 40th  harmonic (percentage);;1.0;0.0;%;4
+442;4;29032;U16;;Voltage phase 3 (V31) - 41st  harmonic (percentage);;1.0;0.0;%;4
+443;4;29033;U16;;Voltage phase 3 (V31) - 42nd  harmonic (percentage);;1.0;0.0;%;4
+444;4;29034;U16;;Voltage phase 3 (V31) - 43rd  harmonic (percentage);;1.0;0.0;%;4
+445;4;29035;U16;;Voltage phase 3 (V31) - 44th  harmonic (percentage);;1.0;0.0;%;4
+446;4;29036;U16;;Voltage phase 3 (V31) - 45th  harmonic (percentage);;1.0;0.0;%;4
+447;4;29037;U16;;Voltage phase 3 (V31) - 46th  harmonic (percentage);;1.0;0.0;%;4
+448;4;29038;U16;;Voltage phase 3 (V31) - 47th  harmonic (percentage);;1.0;0.0;%;4
+449;4;29039;U16;;Voltage phase 3 (V31) - 48th  harmonic (percentage);;1.0;0.0;%;4
+450;4;29040;U16;;Voltage phase 3 (V31) - 49th  harmonic (percentage);;1.0;0.0;%;4
+451;4;29041;U16;;Voltage phase 3 (V31) - 50th  harmonic (percentage);;1.0;0.0;%;4
+452;4;29184;U16;;Current phase 1 - fundamental (rms);;1.0;0.0;mA;4
+453;4;29186;U16;;Current phase 1 - 2nd harmonic (rms);;1.0;0.0;mA;4
+454;4;29188;U16;;Current phase 1 - 3rd harmonic (rms);;1.0;0.0;mA;4
+455;4;29190;U16;;Current phase 1 - 4th harmonic (rms);;1.0;0.0;mA;4
+456;4;29192;U16;;Current phase 1 - 5th harmonic (rms);;1.0;0.0;mA;4
+457;4;29194;U16;;Current phase 1 - 6th harmonic (rms);;1.0;0.0;mA;4
+458;4;29196;U16;;Current phase 1 - 7th harmonic (rms);;1.0;0.0;mA;4
+459;4;29198;U16;;Current phase 1 - 8th harmonic (rms);;1.0;0.0;mA;4
+460;4;29200;U16;;Current phase 1 - 9th harmonic (rms);;1.0;0.0;mA;4
+461;4;29202;U16;;Current phase 1 - 10th harmonic (rms);;1.0;0.0;mA;4
+462;4;29204;U16;;Current phase 1 - 11th harmonic (rms);;1.0;0.0;mA;4
+463;4;29206;U16;;Current phase 1 - 12th harmonic (rms);;1.0;0.0;mA;4
+464;4;29208;U16;;Current phase 1 - 13th harmonic (rms);;1.0;0.0;mA;4
+465;4;29210;U16;;Current phase 1 - 14th harmonic (rms);;1.0;0.0;mA;4
+466;4;29212;U16;;Current phase 1 - 15th harmonic (rms);;1.0;0.0;mA;4
+467;4;29214;U16;;Current phase 1 - 16th harmonic (rms);;1.0;0.0;mA;4
+468;4;29216;U16;;Current phase 1 - 17th harmonic (rms);;1.0;0.0;mA;4
+469;4;29218;U16;;Current phase 1 - 18th harmonic (rms);;1.0;0.0;mA;4
+470;4;29220;U16;;Current phase 1 - 19th harmonic (rms);;1.0;0.0;mA;4
+471;4;29222;U16;;Current phase 1 - 20th harmonic (rms);;1.0;0.0;mA;4
+472;4;29224;U16;;Current phase 1 - 21st harmonic (rms);;1.0;0.0;mA;4
+473;4;29226;U16;;Current phase 1 - 22nd harmonic (rms);;1.0;0.0;mA;4
+474;4;29228;U16;;Current phase 1 - 23rd harmonic (rms);;1.0;0.0;mA;4
+475;4;29230;U16;;Current phase 1 - 24th harmonic (rms);;1.0;0.0;mA;4
+476;4;29232;U16;;Current phase 1 - 25th harmonic (rms);;1.0;0.0;mA;4
+477;4;29234;U16;;Current phase 1 - 26th harmonic (rms);;1.0;0.0;mA;4
+478;4;29236;U16;;Current phase 1 - 27th harmonic (rms);;1.0;0.0;mA;4
+479;4;29238;U16;;Current phase 1 - 28th harmonic (rms);;1.0;0.0;mA;4
+480;4;29240;U16;;Current phase 1 - 29th harmonic (rms);;1.0;0.0;mA;4
+481;4;29242;U16;;Current phase 1 - 30th harmonic (rms);;1.0;0.0;mA;4
+482;4;29244;U16;;Current phase 1 - 31st harmonic (rms);;1.0;0.0;mA;4
+483;4;29246;U16;;Current phase 1 - 32nd harmonic (rms);;1.0;0.0;mA;4
+484;4;29248;U16;;Current phase 1 - 33rd harmonic (rms);;1.0;0.0;mA;4
+485;4;29250;U16;;Current phase 1 - 34th harmonic (rms);;1.0;0.0;mA;4
+486;4;29252;U16;;Current phase 1 - 35th harmonic (rms);;1.0;0.0;mA;4
+487;4;29254;U16;;Current phase 1 - 36th harmonic (rms);;1.0;0.0;mA;4
+488;4;29256;U16;;Current phase 1 - 37th harmonic (rms);;1.0;0.0;mA;4
+489;4;29258;U16;;Current phase 1 - 38th harmonic (rms);;1.0;0.0;mA;4
+490;4;29260;U16;;Current phase 1 - 39th harmonic (rms);;1.0;0.0;mA;4
+491;4;29262;U16;;Current phase 1 - 40th harmonic (rms);;1.0;0.0;mA;4
+492;4;29264;U16;;Current phase 1 - 41st harmonic (rms);;1.0;0.0;mA;4
+493;4;29266;U16;;Current phase 1 - 42nd harmonic (rms);;1.0;0.0;mA;4
+494;4;29268;U16;;Current phase 1 - 43rd harmonic (rms);;1.0;0.0;mA;4
+495;4;29270;U16;;Current phase 1 - 44th harmonic (rms);;1.0;0.0;mA;4
+496;4;29272;U16;;Current phase 1 - 45th harmonic (rms);;1.0;0.0;mA;4
+497;4;29274;U16;;Current phase 1 - 46th harmonic (rms);;1.0;0.0;mA;4
+498;4;29276;U16;;Current phase 1 - 47th harmonic (rms);;1.0;0.0;mA;4
+499;4;29278;U16;;Current phase 1 - 48th harmonic (rms);;1.0;0.0;mA;4
+500;4;29280;U16;;Current phase 1 - 49th harmonic (rms);;1.0;0.0;mA;4
+501;4;29282;U16;;Current phase 1 - 50th harmonic (rms);;1.0;0.0;mA;4
+502;4;29312;U16;;Current phase 2 - fundamental (rms);;1.0;0.0;mA;4
+503;4;29314;U16;;Current phase 2 - 2nd harmonic (rms);;1.0;0.0;mA;4
+504;4;29316;U16;;Current phase 2 - 3rd harmonic (rms);;1.0;0.0;mA;4
+505;4;29318;U16;;Current phase 2 - 4th harmonic (rms);;1.0;0.0;mA;4
+506;4;29320;U16;;Current phase 2 - 5th harmonic (rms);;1.0;0.0;mA;4
+507;4;29322;U16;;Current phase 2 - 6th harmonic (rms);;1.0;0.0;mA;4
+508;4;29324;U16;;Current phase 2 - 7th harmonic (rms);;1.0;0.0;mA;4
+509;4;29326;U16;;Current phase 2 - 8th harmonic (rms);;1.0;0.0;mA;4
+510;4;29328;U16;;Current phase 2 - 9th harmonic (rms);;1.0;0.0;mA;4
+511;4;29330;U16;;Current phase 2 - 10th harmonic (rms);;1.0;0.0;mA;4
+512;4;29332;U16;;Current phase 2 - 11th harmonic (rms);;1.0;0.0;mA;4
+513;4;29334;U16;;Current phase 2 - 12th harmonic (rms);;1.0;0.0;mA;4
+514;4;29336;U16;;Current phase 2 - 13th harmonic (rms);;1.0;0.0;mA;4
+515;4;29338;U16;;Current phase 2 - 14th harmonic (rms);;1.0;0.0;mA;4
+516;4;29340;U16;;Current phase 2 - 15th harmonic (rms);;1.0;0.0;mA;4
+517;4;29342;U16;;Current phase 2 - 16th harmonic (rms);;1.0;0.0;mA;4
+518;4;29344;U16;;Current phase 2 - 17th harmonic (rms);;1.0;0.0;mA;4
+519;4;29346;U16;;Current phase 2 - 18th harmonic (rms);;1.0;0.0;mA;4
+520;4;29348;U16;;Current phase 2 - 19th harmonic (rms);;1.0;0.0;mA;4
+521;4;29350;U16;;Current phase 2 - 20th harmonic (rms);;1.0;0.0;mA;4
+522;4;29352;U16;;Current phase 2 - 21st harmonic (rms);;1.0;0.0;mA;4
+523;4;29354;U16;;Current phase 2 - 22nd harmonic (rms);;1.0;0.0;mA;4
+524;4;29356;U16;;Current phase 2 - 23rd harmonic (rms);;1.0;0.0;mA;4
+525;4;29358;U16;;Current phase 2 - 24th harmonic (rms);;1.0;0.0;mA;4
+526;4;29360;U16;;Current phase 2 - 25th harmonic (rms);;1.0;0.0;mA;4
+527;4;29362;U16;;Current phase 2 - 26th harmonic (rms);;1.0;0.0;mA;4
+528;4;29364;U16;;Current phase 2 - 27th harmonic (rms);;1.0;0.0;mA;4
+529;4;29366;U16;;Current phase 2 - 28th harmonic (rms);;1.0;0.0;mA;4
+530;4;29368;U16;;Current phase 2 - 29th harmonic (rms);;1.0;0.0;mA;4
+531;4;29370;U16;;Current phase 2 - 30th harmonic (rms);;1.0;0.0;mA;4
+532;4;29372;U16;;Current phase 2 - 31st harmonic (rms);;1.0;0.0;mA;4
+533;4;29374;U16;;Current phase 2 - 32nd harmonic (rms);;1.0;0.0;mA;4
+534;4;29376;U16;;Current phase 2 - 33rd harmonic (rms);;1.0;0.0;mA;4
+535;4;29378;U16;;Current phase 2 - 34th harmonic (rms);;1.0;0.0;mA;4
+536;4;29380;U16;;Current phase 2 - 35th harmonic (rms);;1.0;0.0;mA;4
+537;4;29382;U16;;Current phase 2 - 36th harmonic (rms);;1.0;0.0;mA;4
+538;4;29384;U16;;Current phase 2 - 37th harmonic (rms);;1.0;0.0;mA;4
+539;4;29386;U16;;Current phase 2 - 38th harmonic (rms);;1.0;0.0;mA;4
+540;4;29388;U16;;Current phase 2 - 39th harmonic (rms);;1.0;0.0;mA;4
+541;4;29390;U16;;Current phase 2 - 40th harmonic (rms);;1.0;0.0;mA;4
+542;4;29392;U16;;Current phase 2 - 41st harmonic (rms);;1.0;0.0;mA;4
+543;4;29394;U16;;Current phase 2 - 42nd harmonic (rms);;1.0;0.0;mA;4
+544;4;29396;U16;;Current phase 2 - 43rd harmonic (rms);;1.0;0.0;mA;4
+545;4;29398;U16;;Current phase 2 - 44th harmonic (rms);;1.0;0.0;mA;4
+546;4;29400;U16;;Current phase 2 - 45th harmonic (rms);;1.0;0.0;mA;4
+547;4;29402;U16;;Current phase 2 - 46th harmonic (rms);;1.0;0.0;mA;4
+548;4;29404;U16;;Current phase 2 - 47th harmonic (rms);;1.0;0.0;mA;4
+549;4;29406;U16;;Current phase 2 - 48th harmonic (rms);;1.0;0.0;mA;4
+550;4;29408;U16;;Current phase 2 - 49th harmonic (rms);;1.0;0.0;mA;4
+551;4;29412;U16;;Current phase 2 - 50th harmonic (rms);;1.0;0.0;mA;4
+552;4;29440;U16;;Current phase 3 - fundamental (rms);;1.0;0.0;mA;4
+553;4;29442;U16;;Current phase 3 - 2nd harmonic (rms);;1.0;0.0;mA;4
+554;4;29444;U16;;Current phase 3 - 3rd harmonic (rms);;1.0;0.0;mA;4
+555;4;29446;U16;;Current phase 3 - 4th harmonic (rms);;1.0;0.0;mA;4
+556;4;29448;U16;;Current phase 3 - 5th harmonic (rms);;1.0;0.0;mA;4
+557;4;29450;U16;;Current phase 3 - 6th harmonic (rms);;1.0;0.0;mA;4
+558;4;29452;U16;;Current phase 3 - 7th harmonic (rms);;1.0;0.0;mA;4
+559;4;29454;U16;;Current phase 3 - 8th harmonic (rms);;1.0;0.0;mA;4
+560;4;29456;U16;;Current phase 3 - 9th harmonic (rms);;1.0;0.0;mA;4
+561;4;29458;U16;;Current phase 3 - 10th harmonic (rms);;1.0;0.0;mA;4
+562;4;29460;U16;;Current phase 3 - 11th harmonic (rms);;1.0;0.0;mA;4
+563;4;29462;U16;;Current phase 3 - 12th harmonic (rms);;1.0;0.0;mA;4
+564;4;29464;U16;;Current phase 3 - 13th harmonic (rms);;1.0;0.0;mA;4
+565;4;29466;U16;;Current phase 3 - 14th harmonic (rms);;1.0;0.0;mA;4
+566;4;29468;U16;;Current phase 3 - 15th harmonic (rms);;1.0;0.0;mA;4
+567;4;29470;U16;;Current phase 3 - 16th harmonic (rms);;1.0;0.0;mA;4
+568;4;29472;U16;;Current phase 3 - 17th harmonic (rms);;1.0;0.0;mA;4
+569;4;29474;U16;;Current phase 3 - 18th harmonic (rms);;1.0;0.0;mA;4
+570;4;29476;U16;;Current phase 3 - 19th harmonic (rms);;1.0;0.0;mA;4
+571;4;29478;U16;;Current phase 3 - 20th harmonic (rms);;1.0;0.0;mA;4
+572;4;29480;U16;;Current phase 3 - 21st harmonic (rms);;1.0;0.0;mA;4
+573;4;29482;U16;;Current phase 3 - 22nd harmonic (rms);;1.0;0.0;mA;4
+574;4;29484;U16;;Current phase 3 - 23rd harmonic (rms);;1.0;0.0;mA;4
+575;4;29486;U16;;Current phase 3 - 24th harmonic (rms);;1.0;0.0;mA;4
+576;4;29488;U16;;Current phase 3 - 25th harmonic (rms);;1.0;0.0;mA;4
+577;4;29490;U16;;Current phase 3 - 26th harmonic (rms);;1.0;0.0;mA;4
+578;4;29492;U16;;Current phase 3 - 27th harmonic (rms);;1.0;0.0;mA;4
+579;4;29494;U16;;Current phase 3 - 28th harmonic (rms);;1.0;0.0;mA;4
+580;4;29496;U16;;Current phase 3 - 29th harmonic (rms);;1.0;0.0;mA;4
+581;4;29498;U16;;Current phase 3 - 30th harmonic (rms);;1.0;0.0;mA;4
+582;4;29500;U16;;Current phase 3 - 31st harmonic (rms);;1.0;0.0;mA;4
+583;4;29502;U16;;Current phase 3 - 32nd harmonic (rms);;1.0;0.0;mA;4
+584;4;29504;U16;;Current phase 3 - 33rd harmonic (rms);;1.0;0.0;mA;4
+585;4;29506;U16;;Current phase 3 - 34th harmonic (rms);;1.0;0.0;mA;4
+586;4;29508;U16;;Current phase 3 - 35th harmonic (rms);;1.0;0.0;mA;4
+587;4;29510;U16;;Current phase 3 - 36th harmonic (rms);;1.0;0.0;mA;4
+588;4;29512;U16;;Current phase 3 - 37th harmonic (rms);;1.0;0.0;mA;4
+589;4;29514;U16;;Current phase 3 - 38th harmonic (rms);;1.0;0.0;mA;4
+590;4;29516;U16;;Current phase 3 - 39th harmonic (rms);;1.0;0.0;mA;4
+591;4;29518;U16;;Current phase 3 - 40th harmonic (rms);;1.0;0.0;mA;4
+592;4;29520;U16;;Current phase 3 - 41st harmonic (rms);;1.0;0.0;mA;4
+593;4;29522;U16;;Current phase 3 - 42nd harmonic (rms);;1.0;0.0;mA;4
+594;4;29524;U16;;Current phase 3 - 43rd harmonic (rms);;1.0;0.0;mA;4
+595;4;29526;U16;;Current phase 3 - 44th harmonic (rms);;1.0;0.0;mA;4
+596;4;29528;U16;;Current phase 3 - 45th harmonic (rms);;1.0;0.0;mA;4
+597;4;29530;U16;;Current phase 3 - 46th harmonic (rms);;1.0;0.0;mA;4
+598;4;29532;U16;;Current phase 3 - 47th harmonic (rms);;1.0;0.0;mA;4
+599;4;29534;U16;;Current phase 3 - 48th harmonic (rms);;1.0;0.0;mA;4
+600;4;29536;U16;;Current phase 3 - 49th harmonic (rms);;1.0;0.0;mA;4
+601;4;29540;U16;;Current phase 3 - 50th harmonic (rms);;1.0;0.0;mA;4
+602;4;29568;U16;;Voltage phase 1 (V12) - fundamental (rms);;1.0;0.0;mV;4
+603;4;29570;U16;;Voltage phase 1 (V12) - 2nd  harmonic (rms);;1.0;0.0;mV;4
+604;4;29572;U16;;Voltage phase 1 (V12) - 3rd  harmonic (rms);;1.0;0.0;mV;4
+605;4;29574;U16;;Voltage phase 1 (V12) - 4th  harmonic (rms);;1.0;0.0;mV;4
+606;4;29576;U16;;Voltage phase 1 (V12) - 5th  harmonic (rms);;1.0;0.0;mV;4
+607;4;29578;U16;;Voltage phase 1 (V12) - 6th  harmonic (rms);;1.0;0.0;mV;4
+608;4;29580;U16;;Voltage phase 1 (V12) - 7th  harmonic (rms);;1.0;0.0;mV;4
+609;4;29582;U16;;Voltage phase 1 (V12) - 8th  harmonic (rms);;1.0;0.0;mV;4
+610;4;29584;U16;;Voltage phase 1 (V12) - 9th  harmonic (rms);;1.0;0.0;mV;4
+611;4;29586;U16;;Voltage phase 1 (V12) - 10th  harmonic (rms);;1.0;0.0;mV;4
+612;4;29588;U16;;Voltage phase 1 (V12) - 11th  harmonic (rms);;1.0;0.0;mV;4
+613;4;29590;U16;;Voltage phase 1 (V12) - 12th  harmonic (rms);;1.0;0.0;mV;4
+614;4;29592;U16;;Voltage phase 1 (V12) - 13th  harmonic (rms);;1.0;0.0;mV;4
+615;4;29594;U16;;Voltage phase 1 (V12) - 14th  harmonic (rms);;1.0;0.0;mV;4
+616;4;29596;U16;;Voltage phase 1 (V12) - 15th  harmonic (rms);;1.0;0.0;mV;4
+617;4;29598;U16;;Voltage phase 1 (V12) - 16th  harmonic (rms);;1.0;0.0;mV;4
+618;4;29600;U16;;Voltage phase 1 (V12) - 17th  harmonic (rms);;1.0;0.0;mV;4
+619;4;29602;U16;;Voltage phase 1 (V12) - 18th  harmonic (rms);;1.0;0.0;mV;4
+620;4;29604;U16;;Voltage phase 1 (V12) - 19th  harmonic (rms);;1.0;0.0;mV;4
+621;4;29606;U16;;Voltage phase 1 (V12) - 20th  harmonic (rms);;1.0;0.0;mV;4
+622;4;29608;U16;;Voltage phase 1 (V12) - 21st  harmonic (rms);;1.0;0.0;mV;4
+623;4;29610;U16;;Voltage phase 1 (V12) - 22nd  harmonic (rms);;1.0;0.0;mV;4
+624;4;29612;U16;;Voltage phase 1 (V12) - 23rd  harmonic (rms);;1.0;0.0;mV;4
+625;4;29614;U16;;Voltage phase 1 (V12) - 24th  harmonic (rms);;1.0;0.0;mV;4
+626;4;29616;U16;;Voltage phase 1 (V12) - 25th  harmonic (rms);;1.0;0.0;mV;4
+627;4;29618;U16;;Voltage phase 1 (V12) - 26th  harmonic (rms);;1.0;0.0;mV;4
+628;4;29620;U16;;Voltage phase 1 (V12) - 27th  harmonic (rms);;1.0;0.0;mV;4
+629;4;29622;U16;;Voltage phase 1 (V12) - 28th  harmonic (rms);;1.0;0.0;mV;4
+630;4;29624;U16;;Voltage phase 1 (V12) - 29th  harmonic (rms);;1.0;0.0;mV;4
+631;4;29626;U16;;Voltage phase 1 (V12) - 30th  harmonic (rms);;1.0;0.0;mV;4
+632;4;29628;U16;;Voltage phase 1 (V12) - 31st  harmonic (rms);;1.0;0.0;mV;4
+633;4;29630;U16;;Voltage phase 1 (V12) - 32nd  harmonic (rms);;1.0;0.0;mV;4
+634;4;29632;U16;;Voltage phase 1 (V12) - 33rd  harmonic (rms);;1.0;0.0;mV;4
+635;4;29634;U16;;Voltage phase 1 (V12) - 34th  harmonic (rms);;1.0;0.0;mV;4
+636;4;29636;U16;;Voltage phase 1 (V12) - 35th  harmonic (rms);;1.0;0.0;mV;4
+637;4;29638;U16;;Voltage phase 1 (V12) - 36th  harmonic (rms);;1.0;0.0;mV;4
+638;4;29640;U16;;Voltage phase 1 (V12) - 37th  harmonic (rms);;1.0;0.0;mV;4
+639;4;29642;U16;;Voltage phase 1 (V12) - 38th  harmonic (rms);;1.0;0.0;mV;4
+640;4;29644;U16;;Voltage phase 1 (V12) - 39th  harmonic (rms);;1.0;0.0;mV;4
+641;4;29646;U16;;Voltage phase 1 (V12) - 40th  harmonic (rms);;1.0;0.0;mV;4
+642;4;29648;U16;;Voltage phase 1 (V12) - 41st  harmonic (rms);;1.0;0.0;mV;4
+643;4;29650;U16;;Voltage phase 1 (V12) - 42nd  harmonic (rms);;1.0;0.0;mV;4
+644;4;29652;U16;;Voltage phase 1 (V12) - 43rd  harmonic (rms);;1.0;0.0;mV;4
+645;4;29654;U16;;Voltage phase 1 (V12) - 44th  harmonic (rms);;1.0;0.0;mV;4
+646;4;29656;U16;;Voltage phase 1 (V12) - 45th  harmonic (rms);;1.0;0.0;mV;4
+647;4;29658;U16;;Voltage phase 1 (V12) - 46th  harmonic (rms);;1.0;0.0;mV;4
+648;4;29660;U16;;Voltage phase 1 (V12) - 47th  harmonic (rms);;1.0;0.0;mV;4
+649;4;29662;U16;;Voltage phase 1 (V12) - 48th  harmonic (rms);;1.0;0.0;mV;4
+650;4;29664;U16;;Voltage phase 1 (V12) - 49th  harmonic (rms);;1.0;0.0;mV;4
+651;4;29666;U16;;Voltage phase 1 (V12) - 50th  harmonic (rms);;1.0;0.0;mV;4
+652;4;29696;U16;;Voltage phase 2 (V23) - fundamental (rms);;1.0;0.0;mV;4
+653;4;29698;U16;;Voltage phase 2 (V23) - 2nd  harmonic (rms);;1.0;0.0;mV;4
+654;4;29700;U16;;Voltage phase 2 (V23) - 3rd  harmonic (rms);;1.0;0.0;mV;4
+655;4;29702;U16;;Voltage phase 2 (V23) - 4th  harmonic (rms);;1.0;0.0;mV;4
+656;4;29704;U16;;Voltage phase 2 (V23) - 5th  harmonic (rms);;1.0;0.0;mV;4
+657;4;29706;U16;;Voltage phase 2 (V23) - 6th  harmonic (rms);;1.0;0.0;mV;4
+658;4;29708;U16;;Voltage phase 2 (V23) - 7th  harmonic (rms);;1.0;0.0;mV;4
+659;4;29710;U16;;Voltage phase 2 (V23) - 8th  harmonic (rms);;1.0;0.0;mV;4
+660;4;29712;U16;;Voltage phase 2 (V23) - 9th  harmonic (rms);;1.0;0.0;mV;4
+661;4;29714;U16;;Voltage phase 2 (V23) - 10th  harmonic (rms);;1.0;0.0;mV;4
+662;4;29716;U16;;Voltage phase 2 (V23) - 11th  harmonic (rms);;1.0;0.0;mV;4
+663;4;29718;U16;;Voltage phase 2 (V23) - 12th  harmonic (rms);;1.0;0.0;mV;4
+664;4;29720;U16;;Voltage phase 2 (V23) - 13th  harmonic (rms);;1.0;0.0;mV;4
+665;4;29722;U16;;Voltage phase 2 (V23) - 14th  harmonic (rms);;1.0;0.0;mV;4
+666;4;29724;U16;;Voltage phase 2 (V23) - 15th  harmonic (rms);;1.0;0.0;mV;4
+667;4;29726;U16;;Voltage phase 2 (V23) - 16th  harmonic (rms);;1.0;0.0;mV;4
+668;4;29728;U16;;Voltage phase 2 (V23) - 17th  harmonic (rms);;1.0;0.0;mV;4
+669;4;29730;U16;;Voltage phase 2 (V23) - 18th  harmonic (rms);;1.0;0.0;mV;4
+670;4;29732;U16;;Voltage phase 2 (V23) - 19th  harmonic (rms);;1.0;0.0;mV;4
+671;4;29734;U16;;Voltage phase 2 (V23) - 20th  harmonic (rms);;1.0;0.0;mV;4
+672;4;29736;U16;;Voltage phase 2 (V23) - 21st  harmonic (rms);;1.0;0.0;mV;4
+673;4;29738;U16;;Voltage phase 2 (V23) - 22nd  harmonic (rms);;1.0;0.0;mV;4
+674;4;29740;U16;;Voltage phase 2 (V23) - 23rd  harmonic (rms);;1.0;0.0;mV;4
+675;4;29742;U16;;Voltage phase 2 (V23) - 24th  harmonic (rms);;1.0;0.0;mV;4
+676;4;29744;U16;;Voltage phase 2 (V23) - 25th  harmonic (rms);;1.0;0.0;mV;4
+677;4;29746;U16;;Voltage phase 2 (V23) - 26th  harmonic (rms);;1.0;0.0;mV;4
+678;4;29748;U16;;Voltage phase 2 (V23) - 27th  harmonic (rms);;1.0;0.0;mV;4
+679;4;29750;U16;;Voltage phase 2 (V23) - 28th  harmonic (rms);;1.0;0.0;mV;4
+680;4;29752;U16;;Voltage phase 2 (V23) - 29th  harmonic (rms);;1.0;0.0;mV;4
+681;4;29754;U16;;Voltage phase 2 (V23) - 30th  harmonic (rms);;1.0;0.0;mV;4
+682;4;29756;U16;;Voltage phase 2 (V23) - 31st  harmonic (rms);;1.0;0.0;mV;4
+683;4;29758;U16;;Voltage phase 2 (V23) - 32nd  harmonic (rms);;1.0;0.0;mV;4
+684;4;29760;U16;;Voltage phase 2 (V23) - 33rd  harmonic (rms);;1.0;0.0;mV;4
+685;4;29762;U16;;Voltage phase 2 (V23) - 34th  harmonic (rms);;1.0;0.0;mV;4
+686;4;29764;U16;;Voltage phase 2 (V23) - 35th  harmonic (rms);;1.0;0.0;mV;4
+687;4;29766;U16;;Voltage phase 2 (V23) - 36th  harmonic (rms);;1.0;0.0;mV;4
+688;4;29768;U16;;Voltage phase 2 (V23) - 37th  harmonic (rms);;1.0;0.0;mV;4
+689;4;29770;U16;;Voltage phase 2 (V23) - 38th  harmonic (rms);;1.0;0.0;mV;4
+690;4;29772;U16;;Voltage phase 2 (V23) - 39th  harmonic (rms);;1.0;0.0;mV;4
+691;4;29774;U16;;Voltage phase 2 (V23) - 40th  harmonic (rms);;1.0;0.0;mV;4
+692;4;29776;U16;;Voltage phase 2 (V23) - 41st  harmonic (rms);;1.0;0.0;mV;4
+693;4;29778;U16;;Voltage phase 2 (V23) - 42nd  harmonic (rms);;1.0;0.0;mV;4
+694;4;29780;U16;;Voltage phase 2 (V23) - 43rd  harmonic (rms);;1.0;0.0;mV;4
+695;4;29782;U16;;Voltage phase 2 (V23) - 44th  harmonic (rms);;1.0;0.0;mV;4
+696;4;29784;U16;;Voltage phase 2 (V23) - 45th  harmonic (rms);;1.0;0.0;mV;4
+697;4;29786;U16;;Voltage phase 2 (V23) - 46th  harmonic (rms);;1.0;0.0;mV;4
+698;4;29788;U16;;Voltage phase 2 (V23) - 47th  harmonic (rms);;1.0;0.0;mV;4
+699;4;29790;U16;;Voltage phase 2 (V23) - 48th  harmonic (rms);;1.0;0.0;mV;4
+700;4;29792;U16;;Voltage phase 2 (V23) - 49th  harmonic (rms);;1.0;0.0;mV;4
+701;4;29794;U16;;Voltage phase 2 (V23) - 50th  harmonic (rms);;1.0;0.0;mV;4
+702;4;29824;U16;;Voltage phase 3 (V31) - fundamental (rms);;1.0;0.0;mV;4
+703;4;29826;U16;;Voltage phase 3 (V31) - 2nd  harmonic (rms);;1.0;0.0;mV;4
+704;4;29828;U16;;Voltage phase 3 (V31) - 3rd  harmonic (rms);;1.0;0.0;mV;4
+705;4;29830;U16;;Voltage phase 3 (V31) - 4th  harmonic (rms);;1.0;0.0;mV;4
+706;4;29832;U16;;Voltage phase 3 (V31) - 5th  harmonic (rms);;1.0;0.0;mV;4
+707;4;29834;U16;;Voltage phase 3 (V31) - 6th  harmonic (rms);;1.0;0.0;mV;4
+708;4;29836;U16;;Voltage phase 3 (V31) - 7th  harmonic (rms);;1.0;0.0;mV;4
+709;4;29838;U16;;Voltage phase 3 (V31) - 8th  harmonic (rms);;1.0;0.0;mV;4
+710;4;29840;U16;;Voltage phase 3 (V31) - 9th  harmonic (rms);;1.0;0.0;mV;4
+711;4;29842;U16;;Voltage phase 3 (V31) - 10th  harmonic (rms);;1.0;0.0;mV;4
+712;4;29844;U16;;Voltage phase 3 (V31) - 11th  harmonic (rms);;1.0;0.0;mV;4
+713;4;29846;U16;;Voltage phase 3 (V31) - 12th  harmonic (rms);;1.0;0.0;mV;4
+714;4;29848;U16;;Voltage phase 3 (V31) - 13th  harmonic (rms);;1.0;0.0;mV;4
+715;4;29850;U16;;Voltage phase 3 (V31) - 14th  harmonic (rms);;1.0;0.0;mV;4
+716;4;29852;U16;;Voltage phase 3 (V31) - 15th  harmonic (rms);;1.0;0.0;mV;4
+717;4;29854;U16;;Voltage phase 3 (V31) - 16th  harmonic (rms);;1.0;0.0;mV;4
+718;4;29856;U16;;Voltage phase 3 (V31) - 17th  harmonic (rms);;1.0;0.0;mV;4
+719;4;29858;U16;;Voltage phase 3 (V31) - 18th  harmonic (rms);;1.0;0.0;mV;4
+720;4;29860;U16;;Voltage phase 3 (V31) - 19th  harmonic (rms);;1.0;0.0;mV;4
+721;4;29862;U16;;Voltage phase 3 (V31) - 20th  harmonic (rms);;1.0;0.0;mV;4
+722;4;29864;U16;;Voltage phase 3 (V31) - 21st  harmonic (rms);;1.0;0.0;mV;4
+723;4;29866;U16;;Voltage phase 3 (V31) - 22nd  harmonic (rms);;1.0;0.0;mV;4
+724;4;29868;U16;;Voltage phase 3 (V31) - 23rd  harmonic (rms);;1.0;0.0;mV;4
+725;4;29870;U16;;Voltage phase 3 (V31) - 24th  harmonic (rms);;1.0;0.0;mV;4
+726;4;29872;U16;;Voltage phase 3 (V31) - 25th  harmonic (rms);;1.0;0.0;mV;4
+727;4;29874;U16;;Voltage phase 3 (V31) - 26th  harmonic (rms);;1.0;0.0;mV;4
+728;4;29876;U16;;Voltage phase 3 (V31) - 27th  harmonic (rms);;1.0;0.0;mV;4
+729;4;29878;U16;;Voltage phase 3 (V31) - 28th  harmonic (rms);;1.0;0.0;mV;4
+730;4;29880;U16;;Voltage phase 3 (V31) - 29th  harmonic (rms);;1.0;0.0;mV;4
+731;4;29882;U16;;Voltage phase 3 (V31) - 30th  harmonic (rms);;1.0;0.0;mV;4
+732;4;29884;U16;;Voltage phase 3 (V31) - 31st  harmonic (rms);;1.0;0.0;mV;4
+733;4;29886;U16;;Voltage phase 3 (V31) - 32nd  harmonic (rms);;1.0;0.0;mV;4
+734;4;29888;U16;;Voltage phase 3 (V31) - 33rd  harmonic (rms);;1.0;0.0;mV;4
+735;4;29890;U16;;Voltage phase 3 (V31) - 34th  harmonic (rms);;1.0;0.0;mV;4
+736;4;29892;U16;;Voltage phase 3 (V31) - 35th  harmonic (rms);;1.0;0.0;mV;4
+737;4;29894;U16;;Voltage phase 3 (V31) - 36th  harmonic (rms);;1.0;0.0;mV;4
+738;4;29896;U16;;Voltage phase 3 (V31) - 37th  harmonic (rms);;1.0;0.0;mV;4
+739;4;29898;U16;;Voltage phase 3 (V31) - 38th  harmonic (rms);;1.0;0.0;mV;4
+740;4;29900;U16;;Voltage phase 3 (V31) - 39th  harmonic (rms);;1.0;0.0;mV;4
+741;4;29902;U16;;Voltage phase 3 (V31) - 40th  harmonic (rms);;1.0;0.0;mV;4
+742;4;29904;U16;;Voltage phase 3 (V31) - 41st  harmonic (rms);;1.0;0.0;mV;4
+743;4;29906;U16;;Voltage phase 3 (V31) - 42nd  harmonic (rms);;1.0;0.0;mV;4
+744;4;29908;U16;;Voltage phase 3 (V31) - 43rd  harmonic (rms);;1.0;0.0;mV;4
+745;4;29910;U16;;Voltage phase 3 (V31) - 44th  harmonic (rms);;1.0;0.0;mV;4
+746;4;29912;U16;;Voltage phase 3 (V31) - 45th  harmonic (rms);;1.0;0.0;mV;4
+747;4;29914;U16;;Voltage phase 3 (V31) - 46th  harmonic (rms);;1.0;0.0;mV;4
+748;4;29916;U16;;Voltage phase 3 (V31) - 47th  harmonic (rms);;1.0;0.0;mV;4
+749;4;29918;U16;;Voltage phase 3 (V31) - 48th  harmonic (rms);;1.0;0.0;mV;4
+750;4;29920;U16;;Voltage phase 3 (V31) - 49th  harmonic (rms);;1.0;0.0;mV;4
+751;4;29922;U16;;Voltage phase 3 (V31) - 50th  harmonic (rms);;1.0;0.0;mV;4
+752;4;29952;U16;;THD I1;;1.0;0.0;%;4
+753;4;29953;U16;;THD I2;;1.0;0.0;%;4
+754;4;29954;U16;;THD I3;;1.0;0.0;%;4
+755;4;29955;U16;;THD V1;;1.0;0.0;%;4
+756;4;29956;U16;;THD V2;;1.0;0.0;%;4
+757;4;29957;U16;;THD V3;;1.0;0.0;%;4
+758;4;8192;U16;;RFU;;1.0;0.0;;4
+759;4;8193;U16;;RFU;;1.0;0.0;;4
+760;4;8194;U16;;RFU;;1.0;0.0;;4
+761;4;8195;U16;;RFU;;1.0;0.0;;4
+762;4;8196;U16;;RFU;;1.0;0.0;;4
+763;4;8197;U16;;Run hour meter active on;;1.0;0.0;;4
+764;4;8198;U16;;RFU;;1.0;0.0;;4
+765;4;8199;U16;;Rated current;;1.0;0.0;;4
+766;4;8200;U16;;Backlight intensity;;1.0;0.0;;4
+767;4;8201;U16;;Display contrast;;1.0;0.0;;4
+768;4;8202;U16;;Power Averaging time;;1.0;0.0;;4
+769;4;8203;U16;;Insertion type;;1.0;0.0;;4
+770;4;8204;U16;;Measure on line 3 of custom page;;1.0;0.0;;4
+771;4;8205;U16;;Measure on line 2 of custom page;;1.0;0.0;;4
+772;4;8206;U16;;Measure on line 1 of custom page;;1.0;0.0;;4
+773;4;8207;U16;;RFU;;1.0;0.0;;4
+774;4;8704;U16;;RFU;;1.0;0.0;;4
+775;4;8705;U16;;RFU;;1.0;0.0;;4
+776;4;8706;U16;;RFU;;1.0;0.0;;4
+777;4;8707;U16;;RFU;;1.0;0.0;;4
+778;4;8708;U16;;RFU;;1.0;0.0;;4
+779;4;8709;U16;;RFU;;1.0;0.0;;4
+780;4;8710;U16;;RFU;;1.0;0.0;;4
+781;4;8711;U16;;RFU;;1.0;0.0;;4
+782;4;8712;U16;;RFU;;1.0;0.0;;4
+783;4;8713;U16;;RFU;;1.0;0.0;;4
+784;4;8714;U16;;RFU;;1.0;0.0;;4
+785;4;8715;U16;;RFU;;1.0;0.0;;4
+786;4;8716;U16;;RFU;;1.0;0.0;;4
+787;4;8717;U16;;RFU;;1.0;0.0;;4
+788;4;8718;U16;;RFU;;1.0;0.0;;4
+789;4;8719;U16;;RFU;;1.0;0.0;;4
+790;4;8720;U16;;RFU;;1.0;0.0;;4
+791;4;8721;U16;;RFU;;1.0;0.0;;4
+792;4;8722;U16;;RFU;;1.0;0.0;;4
+793;4;8723;U16;;RFU;;1.0;0.0;;4
+794;4;8724;U16;;RFU;;1.0;0.0;;4
+795;4;8725;U16;;Pulse duration;;1.0;0.0;;4
+796;4;8726;U16;;Pulse weight;;1.0;0.0;;4
+797;4;8727;U16;;Positive Energy type used for the pulse output;;1.0;0.0;;4

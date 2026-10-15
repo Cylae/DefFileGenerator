@@ -1,0 +1,6 @@
+﻿modbusRTU;Other;Thies Clima;Wind_Transmitter_Thies_Test_2;;;;;;;
+1;4;1;U16;;Instantaneous value of the wind velocity;WIND_SPEED;1.0;0.0;m/s;4
+2;4;3;U16;;Current average value of the wind velocity;;1.0;0.0;m/s;4
+3;4;5;U16;;Instantaneous value of the wind velocity, calculated with the standard curve;;1.0;0.0;m/s;4
+4;4;7;U16;;Current standard deviation of the wind velocity, calculated with the current calibration table (35007) 1;;1.0;0.0;m/s;4
+5;4;9;U16;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (35009) 1;;1.0;0.0;m/s;4

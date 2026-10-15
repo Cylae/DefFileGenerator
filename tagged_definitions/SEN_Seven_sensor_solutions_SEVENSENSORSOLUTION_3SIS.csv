@@ -1,0 +1,9 @@
+﻿ModbusRTU;Sensor;SEVEN SENSOR SOLUTION;3S-IS;;;;;;;
+1;4;3;U16;;Wind speed;WIND_SPEED;1;0;m/s;4
+2;4;5;U16;;Temperature compensated Irradiance value;POA;1;0;W/m2;4
+3;4;10;U16;;External temperature;;0.1;0;Deg. Celsius;4
+4;4;15;U16;;Total Effective Module Temperature;TEMP_CELL;0.1;0;Deg. Celsius;4
+5;4;16;I16;;Module Temperature;;0.1;0;Deg. Celsius;4
+6;4;17;U16;;Ambient Temperature;TEMP_AMB;0.1;0;Deg. Celsius;4
+7;4;18;U16;;External relative humidity;HUMIDITY;1;0;Percent;4
+8;4;19;U16;;Wind direction;WIND_BEARING;1;0;Degree;4

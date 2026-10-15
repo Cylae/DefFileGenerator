@@ -1,0 +1,23 @@
+﻿modbusRTU;Inverter;HUAWEI;V4 (Meter);;;;;;;
+1;3;37100;U16;;Meter status;;1;0;;4
+2;3;37101;I32;;Grid voltage (A phase) / Meter;;0.1;0;V;4
+3;3;37103;I32;;B phase voltage / Meter;;0.1;0;V;4
+4;3;37105;I32;;C phase voltage / Meter;;0.1;0;V;4
+5;3;37107;I32;;Grid current(A phase) / Meter;;0.01;0;A;4
+6;3;37109;I32;;B phase current / Meter;I_AC_3;0.01;0;A;4
+7;3;37111;I32;;C phase current / Meter;;0.01;0;A;4
+8;3;37113;I32;;Active power / Meter;P_AC;1;0;W;4
+9;3;37115;I32;;Reactive power / Meter;Q_AC;1;0;Var;4
+10;3;37117;I16;;Power factor / Meter;PF;0.001;0;NA;4
+11;3;37118;I16;;Grid frequency / Meter;FREQ;0.01;0;Hz;4
+12;3;37119;I32;;Positive active electricity / Meter;;0.01;0;kWh;4
+13;3;37121;I32;;Reverse active power / Meter;;0.01;0;kWh;4
+14;3;37123;I32;;Accumulated reactive power / Meter;;0.01;0;kVarh;4
+15;3;37125;U16;;Meter type;;1;0;;4
+16;3;37126;I32;;A-B line voltage / Meter;;0.1;0;V;4
+17;3;37128;I32;;B-C line voltage / Meter;;0.1;0;V;4
+18;3;37130;I32;;CA line voltage / Meter;;0.01;0;V;4
+19;3;37132;I32;;A phase active power / Meter;P_AC_1;1;0;W;4
+20;3;37134;I32;;B phase active power / Meter;;1;0;W;4
+21;3;37136;I32;;C phase active power / Meter;;1;0;W;4
+22;3;37138;U16;;Meter model detection result;MODEL;1;0;;4

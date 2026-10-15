@@ -1,0 +1,75 @@
+﻿modbusRTU;Other;SolarLog;SOLARLOG_PRO380_Test;;;;;;;
+1;4;16384;U16;;Serial number;SERIAL;1.0;0.0;;4
+2;4;16386;U16;;Meter code;;1.0;0.0;;4
+3;4;16387;U16;;Meter ID (Mbus/Modbus);;1.0;0.0;;4
+4;4;16388;U16;;Baud Rate;;1.0;0.0;;4
+5;4;16389;U16;;Protocol Version;;1.0;0.0;;4
+6;4;16391;U16;;Software Version;;1.0;0.0;;4
+7;4;16393;U16;;Hardware Version;;1.0;0.0;;4
+8;4;16395;U16;;Meter Amps;;1.0;0.0;;4
+9;4;16396;U16;;CT rate;;1.0;0.0;;4
+10;4;16397;U16;;S0 output rate;;1.0;0.0;;4
+11;4;16399;U16;;Combined Code;;1.0;0.0;;4
+12;4;16400;U16;;LCD cycle time;;1.0;0.0;;4
+13;4;16401;U16;;Parity setting;;1.0;0.0;;4
+14;4;20482;U16;;L1 Voltage;U_AC_1;1.0;0.0;;4
+15;4;20484;U16;;L2 Voltage;U_AC_2;1.0;0.0;;4
+16;4;20486;U16;;L3 Voltage;U_AC_3;1.0;0.0;;4
+17;4;20488;U16;;Grid Frequency;FREQ;1.0;0.0;;4
+18;4;20490;U16;;Current;;1.0;0.0;;4
+19;4;20492;U16;;L1 Current;I_AC_1;1.0;0.0;;4
+20;4;20494;U16;;L2 Current;I_AC_2;1.0;0.0;;4
+21;4;20496;U16;;L3 Current;I_AC_3;1.0;0.0;;4
+22;4;20498;U16;;Total Active Power;P_AC;1.0;0.0;;4
+23;4;20500;U16;;L1 Active Power;P_AC_1;1.0;0.0;;4
+24;4;20502;U16;;L2 Active Power;P_AC_2;1.0;0.0;;4
+25;4;20504;U16;;L3 Active Power;P_AC_3;1.0;0.0;;4
+26;4;20506;U16;;Total reactive power;Q_AC;1.0;0.0;;4
+27;4;20508;U16;;L1 reactive power;Q_AC_1;1.0;0.0;;4
+28;4;20510;U16;;L2 reactive power;Q_AC_2;1.0;0.0;;4
+29;4;20512;U16;;L3 reactive power;Q_AC_3;1.0;0.0;;4
+30;4;20514;U16;;Total Apparent Power;S_AC;1.0;0.0;;4
+31;4;20516;U16;;L1 Apparent Power;S_AC_1;1.0;0.0;;4
+32;4;20518;U16;;L2 Apparent Power;S_AC_2;1.0;0.0;;4
+33;4;20520;U16;;L3 Apparent Power;S_AC_3;1.0;0.0;;4
+34;4;20522;U16;;Power Factor;PF;1.0;0.0;;4
+35;4;20524;U16;;L1 Power Factor;PF_1;1.0;0.0;;4
+36;4;20526;U16;;L2 Power Factor;PF_2;1.0;0.0;;4
+37;4;20528;U16;;L3 Power Factor;PF_3;1.0;0.0;;4
+38;4;24578;U16;;Total Active Energy;;1.0;0.0;;4
+39;4;24580;U16;;T1 Total Active Energy;E_TOT;1.0;0.0;;4
+40;4;24582;U16;;T2 Total Active Energy;;1.0;0.0;;4
+41;4;24584;U16;;L1 Total Active Energy;E_TOT_1;1.0;0.0;;4
+42;4;24586;U16;;L2 Total Active Energy;E_TOT_2;1.0;0.0;;4
+43;4;24588;U16;;L3 Total Active Energy;E_TOT_3;1.0;0.0;;4
+44;4;24590;U16;;Forward Active Energy;;1.0;0.0;;4
+45;4;24592;U16;;T1 Forward Active Energy;;1.0;0.0;;4
+46;4;24594;U16;;T2 Forward Active Energy;;1.0;0.0;;4
+47;4;24596;U16;;L1 Forward Active Energy;;1.0;0.0;;4
+48;4;24598;U16;;L2 Forward Active Energy;;1.0;0.0;;4
+49;4;24600;U16;;L3 Forward Active Energy;;1.0;0.0;;4
+50;4;24602;U16;;Reverse Active Energy;;1.0;0.0;;4
+51;4;24604;U16;;T1 Reverse Active Energy;;1.0;0.0;;4
+52;4;24606;U16;;T2 Reverse Active Energy;;1.0;0.0;;4
+53;4;24608;U16;;L1 Reverse Active Energy;;1.0;0.0;;4
+54;4;24610;U16;;L2 Reverse Active Energy;;1.0;0.0;;4
+55;4;24612;U16;;L3 Reverse Active Energy;;1.0;0.0;;4
+56;4;24614;U16;;Total Reactive Energy;;1.0;0.0;;4
+57;4;24616;U16;;T1 Total Reactive Energy;;1.0;0.0;;4
+58;4;24618;U16;;T2 Total Reactive Energy;;1.0;0.0;;4
+59;4;24620;U16;;L1 Total Reactive Energy;;1.0;0.0;;4
+60;4;24622;U16;;L2 Total Reactive Energy;;1.0;0.0;;4
+61;4;24624;U16;;L3 Total Reactive Energy;;1.0;0.0;;4
+62;4;24626;U16;;Forward Reactive Energy;;1.0;0.0;;4
+63;4;24628;U16;;T1 Forward Reactive Energy;;1.0;0.0;;4
+64;4;24630;U16;;T2 Forward Reactive Energy;;1.0;0.0;;4
+65;4;24632;U16;;L1 Forward Reactive Energy;;1.0;0.0;;4
+66;4;24634;U16;;L2 Forward Reactive Energy;;1.0;0.0;;4
+67;4;24636;U16;;L3 Forward Reactive Energy;;1.0;0.0;;4
+68;4;24638;U16;;Reverse Reactive Energy;;1.0;0.0;;4
+69;4;24640;U16;;T1 Reverse Reactive Energy;;1.0;0.0;;4
+70;4;24642;U16;;T2 Reverse Reactive Energy;;1.0;0.0;;4
+71;4;24644;U16;;L1 Reverse Reactive Energy;;1.0;0.0;;4
+72;4;24646;U16;;L2 Reverse Reactive Energy;;1.0;0.0;;4
+73;4;24648;U16;;L3 Reverse Reactive Energy;;1.0;0.0;;4
+74;4;24648;U16;;Tariff;;1.0;0.0;;4

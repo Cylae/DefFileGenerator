@@ -1,0 +1,50 @@
+﻿modbusTCP;Evcharger;Schneider;EVLink;;;;;;;
+1;3;1;U16;;evState;;1;0;;4
+2;3;150;U16;;OCPP Status;;1;0;;4
+3;3;1150;U16;;evPresence;evPresence;1;0;;4
+4;3;1212;U16;;EVSEglobal_major;;1;0;;4
+5;3;1213;U16;;EVSEglobal_minor;;1;0;;4
+6;3;1214;U16;;EVSEglobal_build;;1;0;;4
+7;3;2999;F32;;Current Phase 1;I_AC_1;1;0;A;4
+8;3;3001;F32;;Current Phase 2;I_AC_2;1;0;A;4
+9;3;3003;F32;;Current Phase 3;I_AC_3;1;0;A;4
+10;3;3009;F32;;Current Phase AVG;;1;0;A;4
+11;3;3027;F32;;Voltage Phase 1;U_AC_1;1;0;V;4
+12;3;3029;F32;;Voltage Phase 2;U_AC_2;1;0;V;4
+13;3;3031;F32;;Voltage Phase 3;U_AC_3;1;0;V;4
+14;3;3035;F32;;Voltage Phase AVG;;1;0;V;4
+15;3;3053;F32;;Power Active Phase 1;;1;0;kW;4
+16;3;3055;F32;;Power Active Phase 2;;1;0;kW;4
+17;3;3057;F32;;Power Active Phase 3;;1;0;kW;4
+18;3;3059;F32;;Power Active Phase TOT;;1;0;kW;4
+19;3;3075;F32;;Power Apparent TOT;;1;0;kVA;4
+20;3;3083;F32;;Power factor;PF;1;0;;4
+21;3;3109;F32;;Frequence;FREQ;1;0;Hz;4
+22;3;3203;I64;;Energy Active TOT;;1;0;Wh;4
+23;3;3219;I64;;Energy Reactive TOT;;1;0;kVArh;4
+24;3;4000;U16;;Lifebit;;1;0;;4
+25;3;4001;U16;;Set command;cmd;1;0;;4
+26;3;4002;U32;;Command status;;1;0;;4
+27;3;4004;U16;;Set Point;setpoint;1;0;A;4
+28;3;4005;U16;;Degraded Set Point Mono;;1;0;A;4
+29;3;4006;U16;;Degraded Set Point Tri;;1;0;A;4
+30;3;4007;U32;;Contactor charging time;;1;0;s;4
+31;3;4009;U32;;Session charging time;;1;0;s;4
+32;3;4011;U16;;Last stop cause;;1;0;;4
+33;3;4012;U32;;Session energy;;1;0;Wh;4
+34;3;4020;U32;;Error group bitfield;;1;0;;4
+35;3;4022;U32;;Error code bitfield;;1;0;;4
+36;3;4024;U16;;Last event n.0 - event code;WIND_SPEED;1;0;;4
+37;3;4025;U16;;Last event n.0 - event start time;;1;0;;4
+38;3;4026;U16;;Last event n.0 - event end time;;1;0;;4
+39;3;4027;U16;;Last event n.1 - event code;;1;0;;4
+40;3;4028;U16;;Last event n.1 - event start time;;1;0;;4
+41;3;4029;U16;;Last event n.1 - event end time;;1;0;;4
+42;3;4030;U16;;Last event n.2 - event code;;1;0;;4
+43;3;4031;U16;;Last event n.2 - event start time;;1;0;;4
+44;3;4032;U16;;Last event n.2 - event end time;;1;0;;4
+45;3;4033;U16;;Last event n.3 - event code;;1;0;;4
+46;3;4034;U16;;Last event n.3 - event start time;;1;0;;4
+47;3;4035;U16;;Last event n.3 - event end time;;1;0;;4
+48;3;4040_18;STRING;;EVSE Mode;;1;0;;4
+49;3;4060_18;STRING;;EVSE Commercial Reference;;1;0;;4

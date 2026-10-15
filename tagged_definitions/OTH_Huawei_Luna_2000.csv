@@ -1,0 +1,171 @@
+﻿modbusRTU;Other;Huawei;Luna_2000;;;;;;;
+1;4;30000;U16;;Container Status 1;;1.0;0.0;;9
+2;4;30001;U16;;Container Status 2;;1.0;0.0;;9
+3;4;30002;U16;;Container Status 3;;1.0;0.0;;9
+4;4;30014;U16;;Battery Cabin Temperature 1;TEMP;1.0;0.0;°C;4
+5;4;30015;U16;;Battery Cabin Humidity 1;HUMIDITY;1.0;0.0;%;4
+6;4;30016;U16;;Battery Cabin Temperature 2;;1.0;0.0;°C;4
+7;4;30017;U16;;Battery Cabin Humidity 2;;1.0;0.0;%;4
+8;4;30018;U16;;Battery Cabin Temperature 3;;1.0;0.0;°C;4
+9;4;30019;U16;;Battery Cabin Humidity 3;;1.0;0.0;%;4
+10;4;30020;U16;;Battery Cabin Temperature 4;;1.0;0.0;°C;4
+11;4;30021;U16;;Battery Cabin Humidity 4;;1.0;0.0;%;4
+12;4;30030;U16;;Control Unit Cabin Temperature 1;;1.0;0.0;°C;4
+13;4;30031;U16;;Control Unit Cabin Humidity 1;;1.0;0.0;%;4
+14;4;30033;U16;;Control Unit Cabin Dew Point Temperature;;1.0;0.0;°C;4
+15;4;30034;U16;;Battery Cabin Dew Point Temperature;;1.0;0.0;°C;4
+16;4;30035;U16;;SOC;SOC;1.0;0.0;%;4
+17;4;30038;U16;;Energy Charged Today;E_DAY;1.0;0.0;kWh;4
+18;4;30040;U16;;Energy Discharged Today;;1.0;0.0;kWh;4
+19;4;30042;U16;;Energy Charged This Month;;1.0;0.0;kWh;4
+20;4;30044;U16;;Energy Discharged This Month;;1.0;0.0;kWh;4
+21;4;30046;U16;;Energy Charged This Year Low;;1.0;0.0;kWh;4
+22;4;30048;U16;;Energy Charged This Year High;;1.0;0.0;kWh;0
+23;4;30050;U16;;Energy Discharged This Year Low;;1.0;0.0;kWh;4
+24;4;30052;U16;;Energy Discharged This Year High;;1.0;0.0;kWh;0
+25;4;30060;U16;;Total Auxiliary Power Consumption;;1.0;0.0;kWh;4
+26;4;30062;U16;;Charge Discharge Power;P_AC;1.0;0.0;kW;4
+27;4;30064;U16;;Rated Capacity;P_RATED;1.0;0.0;kWh;4
+28;4;30066;U16;;Rated Power;;1.0;0.0;kW;4
+29;4;30068;U16;;Chargeable Capacity;;1.0;0.0;kWh;4
+30;4;30070;U16;;Dischargeable Capacity;;1.0;0.0;kWh;4
+31;4;30076;U16;;Total Energy Charged Low;E_TOT;1.0;0.0;kWh;4
+32;4;30078;U16;;Total Energy Charged High;;1.0;0.0;kWh;0
+33;4;30080;U16;;Total Energy Discharged Low;;1.0;0.0;kWh;4
+34;4;30082;U16;;Total Energy Discharged High;;1.0;0.0;kWh;0
+35;4;30091;U16;;CO Concentration 1;;1.0;0.0;ppm;4
+36;4;30092;U16;;CO Concentration 2;;1.0;0.0;ppm;4
+37;4;30093;U16;;CO Concentration 3;;1.0;0.0;ppm;4
+38;4;30094;U16;;CO Concentration 4;;1.0;0.0;ppm;4
+39;4;30095;U16;;CO Concentration 5;;1.0;0.0;ppm;4
+40;4;30096;U16;;CO Concentration 6;;1.0;0.0;ppm;4
+41;4;30104;U16;;H2 Concentration 1;;1.0;0.0;ppm;4
+42;4;30118;U16;;Alarm 1;;1.0;0.0;;9
+43;4;30119;U16;;Alarm 2;;1.0;0.0;;9
+44;4;30120;U16;;Alarm 3 Rectifiers;;1.0;0.0;;9
+45;4;30122;U16;;Alarm TH Sensors;;1.0;0.0;;9
+46;4;30123;U16;;Alarm Air Conditioners;;1.0;0.0;;9
+47;4;30124;U16;;Alarm CO Sensors;;1.0;0.0;;9
+48;4;30125;U16;;Alarm System Communication;;1.0;0.0;;9
+49;4;30126;U16;;Alarm ESC;;1.0;0.0;;9
+50;4;30190;U16;;Fan Speed 1;;1.0;0.0;RPM;0
+51;4;30191;U16;;Fan Speed 2;;1.0;0.0;RPM;0
+52;4;30192;U16;;Fan Speed 3;;1.0;0.0;RPM;0
+53;4;30193;U16;;Fan Speed 4;;1.0;0.0;RPM;0
+54;4;30194;U16;;Fan Speed 5;;1.0;0.0;RPM;0
+55;4;30195;U16;;Fan Speed 6;;1.0;0.0;RPM;0
+56;4;30196;U16;;Fan Speed 7;;1.0;0.0;RPM;0
+57;4;30197;U16;;Fan Speed 8;;1.0;0.0;RPM;0
+58;4;30198;U16;;Fan Speed 9;;1.0;0.0;RPM;0
+59;4;30199;U16;;Fan Speed 10;;1.0;0.0;RPM;0
+60;4;30200;U16;;Fan Speed 11;;1.0;0.0;RPM;0
+61;4;30201;U16;;Fan Speed 12;;1.0;0.0;RPM;0
+62;4;30202;U16;;DC Bus Voltage;U_DC;1.0;0.0;V;4
+63;4;30203;U16;;DC Bus Current;I_DC;1.0;0.0;A;4
+64;4;30300;U16;;Phase A Voltage;U_AC_1;1.0;0.0;V;4
+65;4;30302;U16;;Phase B Voltage;U_AC_2;1.0;0.0;V;4
+66;4;30304;U16;;Phase C Voltage;U_AC_3;1.0;0.0;V;4
+67;4;30306;U16;;Phase A Active Power;P_AC_1;1.0;0.0;kW;4
+68;4;30308;U16;;Phase B Active Power;P_AC_2;1.0;0.0;kW;4
+69;4;30310;U16;;Phase C Active Power;P_AC_3;1.0;0.0;kW;4
+70;4;30312;U16;;Active Power;;1.0;0.0;kW;4
+71;4;30314;U16;;Reactive Power;Q_AC;1.0;0.0;kVar;4
+72;4;30316;U16;;Power Factor;CMD_PF;1.0;0.0;;1
+73;4;30500;U16;;Total Output Voltage Of Rectifiers;;1.0;0.0;V;4
+74;4;30501;U16;;Total Output Current Of Rectifiers;I_AC;1.0;0.0;A;4
+75;4;30502;U16;;Quantity Of Rectifiers;;1.0;0.0;;0
+76;4;30503;U16;;Total Output Power Of Rectifiers;;1.0;0.0;kW;4
+77;4;30101;U16;;BCU 1 Quantity Of Working Packs;;1.0;0.0;;0
+78;4;30102;U16;;BCU 1 Device Status;;1.0;0.0;;9
+79;4;30103;U16;;BCU 1 Rack Voltage;;1.0;0.0;V;4
+80;4;30104;U16;;BCU 1 Rack Current;;1.0;0.0;A;4
+81;4;30105;U16;;BCU 1 SOC;;1.0;0.0;%;4
+82;4;30106;U16;;BCU 1 SOH;;1.0;0.0;%;4
+83;4;30107;U16;;BCU 1 Charge Discharge Power;;1.0;0.0;kW;4
+84;4;30164;U16;;BCU 1 SOE;;1.0;0.0;%;4
+85;4;30167;U16;;BCU 1 DOD;;1.0;0.0;%;4
+86;4;30168;U16;;BCU 1 Chargeable Capacity;;1.0;0.0;kWh;4
+87;4;30170;U16;;BCU 1 Dischargeable Capacity;;1.0;0.0;kWh;4
+88;4;30172;U16;;BCU 1 Chargeable Power;;1.0;0.0;kW;4
+89;4;30174;U16;;BCU 1 Dischargeable Power;;1.0;0.0;kW;4
+90;4;30176;U16;;BCU 1 Highest Pack Temperature;;1.0;0.0;°C;4
+91;4;30177;U16;;BCU 1 Pack With Highest Temperature;;1.0;0.0;;0
+92;4;30178;U16;;BCU 1 Lowest Pack Temperature;;1.0;0.0;°C;4
+93;4;30179;U16;;BCU 1 Pack With Lowest Temperature;;1.0;0.0;;0
+94;4;30180;U16;;BCU 1 Lowest Pack Voltage;;1.0;0.0;V;4
+95;4;30181;U16;;BCU 1 Pack With Lowest Voltage;;1.0;0.0;;0
+96;4;30182;U16;;BCU 1 Highest Pack Voltage;;1.0;0.0;V;4
+97;4;30183;U16;;BCU 1 Pack With Highest Voltage;;1.0;0.0;;0
+98;4;30192;U16;;BCU 1 Energy Charged Today;;1.0;0.0;kWh;4
+99;4;30194;U16;;BCU 1 Energy Charged This Month;;1.0;0.0;kWh;4
+100;4;30196;U16;;BCU 1 Energy Charged This Year;;1.0;0.0;kWh;4
+101;4;30202;U16;;BCU 1 Energy Discharged Today;;1.0;0.0;kWh;4
+102;4;30204;U16;;BCU 1 Energy Discharged This Month;;1.0;0.0;kWh;4
+103;4;30206;U16;;BCU 1 Energy Discharged This Year;;1.0;0.0;kWh;4
+104;4;30501;U16;;BCU 2 Quantity Of Working Packs;;1.0;0.0;;0
+105;4;30502;U16;;BCU 2 Device Status;;1.0;0.0;;9
+106;4;30503;U16;;BCU 2 Rack Voltage;;1.0;0.0;V;4
+107;4;30504;U16;;BCU 2 Rack Current;;1.0;0.0;A;4
+108;4;30505;U16;;BCU 2 SOC;;1.0;0.0;%;4
+109;4;30506;U16;;BCU 2 SOH;;1.0;0.0;%;4
+110;4;30564;U16;;BCU 2 SOE;;1.0;0.0;%;4
+111;4;30567;U16;;BCU 2 DOD;;1.0;0.0;%;4
+112;4;30568;U16;;BCU 2 Chargeable Capacity;;1.0;0.0;kWh;4
+113;4;30570;U16;;BCU 2 Dischargeable Capacity;;1.0;0.0;kWh;4
+114;4;30572;U16;;BCU 2 Chargeable Power;;1.0;0.0;kW;4
+115;4;30574;U16;;BCU 2 Dischargeable Power;;1.0;0.0;kW;4
+116;4;30576;U16;;BCU 2 Highest Pack Temperature;;1.0;0.0;°C;4
+117;4;30577;U16;;BCU 2 Pack With Highest Temperature;;1.0;0.0;;0
+118;4;30578;U16;;BCU 2 Lowest Pack Temperature;;1.0;0.0;°C;4
+119;4;30579;U16;;BCU 2 Pack With Lowest Temperature;;1.0;0.0;;0
+120;4;30580;U16;;BCU 2 Lowest Pack Voltage;;1.0;0.0;V;4
+121;4;30581;U16;;BCU 2 Pack With Lowest Voltage;;1.0;0.0;;0
+122;4;30582;U16;;BCU 2 Highest Pack Voltage;;1.0;0.0;V;4
+123;4;30583;U16;;BCU 2 Pack With Highest Voltage;;1.0;0.0;;0
+124;4;30592;U16;;BCU 2 Energy Charged Today;;1.0;0.0;kWh;4
+125;4;30594;U16;;BCU 2 Energy Charged This Month;;1.0;0.0;kWh;4
+126;4;30596;U16;;BCU 2 Energy Charged This Year;;1.0;0.0;kWh;4
+127;4;30602;U16;;BCU 2 Energy Discharged Today;;1.0;0.0;kWh;4
+128;4;30604;U16;;BCU 2 Energy Discharged This Month;;1.0;0.0;kWh;4
+129;4;30606;U16;;BCU 2 Energy Discharged This Year;;1.0;0.0;kWh;4
+130;4;31561;U16;;DCDC Battery Side Voltage 1C;;1.0;0.0;V;4
+131;4;31562;U16;;DCDC Bus Side Voltage 1C;;1.0;0.0;V;4
+132;4;31563;U16;;DCDC Battery Side Current 1C;;1.0;0.0;A;4
+133;4;31564;U16;;DCDC Bus Side Current 1C;;1.0;0.0;A;4
+134;4;31565;U16;;DCDC Cabinet Temperature;TEMP_INT;1.0;0.0;°C;4
+135;4;31571;U16;;DCDC ISO Insulation Resistance 1C;R_ISO;1.0;0.0;M/Ohm;4
+136;4;31614;U16;;DCDC Running Status 1C;;1.0;0.0;;9
+137;4;39002;U16;;DCDC 1 ISO Insulation Resistance;;1.0;0.0;M/Ohm;4
+138;4;39003;U16;;DCDC 1 Battery Side Voltage;;1.0;0.0;V;4
+139;4;39004;U16;;DCDC 1 Bus Side Voltage;;1.0;0.0;V;4
+140;4;39005;U16;;DCDC 1 Battery Side Current;;1.0;0.0;A;4
+141;4;39006;U16;;DCDC 1 Bus Side Current;;1.0;0.0;A;4
+142;4;39007;U16;;DCDC 2 ISO Insulation Resistance;;1.0;0.0;M/Ohm;4
+143;4;39008;U16;;DCDC 2 Battery Side Voltage;;1.0;0.0;V;4
+144;4;39009;U16;;DCDC 2 Bus Side Voltage;;1.0;0.0;V;4
+145;4;39010;U16;;DCDC 2 Battery Side Current;;1.0;0.0;A;4
+146;4;39011;U16;;DCDC 2 Bus Side Current;;1.0;0.0;A;4
+147;4;39012;U16;;DCDC 1 Running Status;;1.0;0.0;;9
+148;4;39013;U16;;DCDC 2 Running Status;;1.0;0.0;;9
+149;4;39014;U16;;Teleindication Alarm 1;;1.0;0.0;;9
+150;4;39015;U16;;Teleindication Alarm 2;;1.0;0.0;;9
+151;4;39016;U16;;Teleindication Alarm 3;;1.0;0.0;;9
+152;4;39017;U16;;Teleindication Alarm 4;;1.0;0.0;;9
+153;4;39018;U16;;Teleindication Alarm SOH Calibration;;1.0;0.0;;9
+154;4;33032;U16;;Air Conditioner 1 Temperature High;;1.0;0.0;;9
+155;4;33038;U16;;Air Conditioner 1 Temperature Low;;1.0;0.0;;9
+156;4;33033;U16;;Air Conditioner 1 Internal Fan Fault;;1.0;0.0;;9
+157;4;33034;U16;;Air Conditioner 1 External Fan Fault;;1.0;0.0;;9
+158;4;33035;U16;;Air Conditioner 1 Compressor Fault;;1.0;0.0;;9
+159;4;33036;U16;;Air Conditioner 1 Return Air Temp Sensor Fault;;1.0;0.0;;9
+160;4;33048;U16;;Air Conditioner 1 Supply Air Temp Sensor Fault;;1.0;0.0;;9
+161;4;33037;U16;;Air Conditioner 1 System Pressure High;PRESSURE;1.0;0.0;;9
+162;4;33041;U16;;Air Conditioner 1 AC Overvoltage;;1.0;0.0;;9
+163;4;33042;U16;;Air Conditioner 1 AC Undervoltage;;1.0;0.0;;9
+164;4;33043;U16;;Air Conditioner 1 Evaporator Temp Sensor Fault;;1.0;0.0;;9
+165;4;33044;U16;;Air Conditioner 1 Condenser Temp Sensor Fault;;1.0;0.0;;9
+166;4;33045;U16;;Air Conditioner 1 Ambient Temp Sensor Fault;TEMP_AMB;1.0;0.0;;9
+167;4;33046;U16;;Air Conditioner 1 Evaporator Frozen;;1.0;0.0;;9
+168;4;33047;U16;;Air Conditioner 1 System Pressure Frequently High;;1.0;0.0;;9
+169;4;33039;U16;;Air Conditioner 1 DC Overvoltage;;1.0;0.0;;9
+170;4;33040;U16;;Air Conditioner 1 DC Undervoltage;;1.0;0.0;;9

@@ -1,0 +1,183 @@
+﻿Modbus;Inverter;Huawei;V3;;;;;;;
+1;3;30000_30;STRING;;Model;MODEL;1.0;0.0;;4
+2;3;30015_20;STRING;;SN;SERIAL;1.0;0.0;;4
+3;3;30025_20;STRING;;PN;;1.0;0.0;;4
+4;3;30070;U16;;Model ID;;1.0;0.0;;4
+5;3;30071;U16;;Number of PV strings;;1.0;0.0;;4
+6;3;30072;U16;;Number of MPP trackers;;1.0;0.0;;4
+7;3;30073;U32;;Rated power (Pn);P_RATED;0.001;0.0;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001;0.0;kW;4
+9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001;0.0;kVA;4
+10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);Q_AC;0.001;0.0;kVar;4
+11;3;30081;I32;;Maximum reactive power (Qmax: absorbed from the power grid);;0.001;0.0;kVar;4
+12;3;32000;U16;;State 1;;1.0;0.0;;9
+13;3;32002;U16;;State 2;;1.0;0.0;;9
+14;3;32003;U32;;State 3;;1.0;0.0;;9
+15;3;32008;U16;;Alarm 1;;1.0;0.0;;9
+16;3;32009;U16;;Alarm 2;;1.0;0.0;;9
+17;3;32010;U16;;Alarm 3;;1.0;0.0;;9
+18;3;32016;I16;;PV1 voltage;U_DC_STRING_1;0.1;0.0;V;4
+19;3;32017;I16;;PV1 current;I_DC_STRING_1;0.01;0.0;A;4
+20;3;32018;I16;;PV2 voltage;U_DC_STRING_2;0.1;0.0;V;4
+21;3;32019;I16;;PV2 current;I_DC_STRING_2;0.01;0.0;A;4
+22;3;32020;I16;;PV3 voltage;U_DC_STRING_3;0.1;0.0;V;4
+23;3;32021;I16;;PV3 current;I_DC_STRING_3;0.01;0.0;A;4
+24;3;32022;I16;;PV4 voltage;U_DC_STRING_4;0.1;0.0;V;4
+25;3;32023;I16;;PV4 current;I_DC_STRING_4;0.01;0.0;A;4
+26;3;32024;I16;;PV5 voltage;U_DC_STRING_5;0.1;0.0;V;4
+27;3;32025;I16;;PV5 current;I_DC_STRING_5;0.01;0.0;A;4
+28;3;32026;I16;;PV6 voltage;U_DC_STRING_6;0.1;0.0;V;4
+29;3;32027;I16;;PV6 current;I_DC_STRING_6;0.01;0.0;A;4
+30;3;32028;I16;;PV7 voltage;U_DC_STRING_7;0.1;0.0;V;4
+31;3;32029;I16;;PV7 current;I_DC_STRING_7;0.01;0.0;A;4
+32;3;32030;I16;;PV8 voltage;U_DC_STRING_8;0.1;0.0;V;4
+33;3;32031;I16;;PV8 current;I_DC_STRING_8;0.01;0.0;A;4
+34;3;32032;I16;;PV9 voltage;U_DC_STRING_9;0.1;0.0;V;4
+35;3;32033;I16;;PV9 current;I_DC_STRING_9;0.01;0.0;A;4
+36;3;32034;I16;;PV10 voltage;U_DC_STRING_10;0.1;0.0;V;4
+37;3;32035;I16;;PV10 current;I_DC_STRING_10;0.01;0.0;A;4
+38;3;32036;I16;;PV11 voltage;U_DC_STRING_11;0.1;0.0;V;4
+39;3;32037;I16;;PV11 current;I_DC_STRING_11;0.01;0.0;A;4
+40;3;32038;I16;;PV12 voltage;U_DC_STRING_12;0.1;0.0;V;4
+41;3;32039;I16;;PV12 current;I_DC_STRING_12;0.01;0.0;A;4
+42;3;32040;I16;;PV13 voltage;U_DC_STRING_13;0.1;0.0;V;4
+43;3;32041;I16;;PV13 current;I_DC_STRING_13;0.01;0.0;A;4
+44;3;32042;I16;;PV14 voltage;U_DC_STRING_14;0.1;0.0;V;4
+45;3;32043;I16;;PV14 current;I_DC_STRING_14;0.01;0.0;A;4
+46;3;32044;I16;;PV15 voltage;U_DC_STRING_15;0.1;0.0;V;4
+47;3;32045;I16;;PV15 current;I_DC_STRING_15;0.01;0.0;A;4
+48;3;32046;I16;;PV16 voltage;U_DC_STRING_16;0.1;0.0;V;4
+49;3;32047;I16;;PV16 current;I_DC_STRING_16;0.01;0.0;A;4
+50;3;32048;I16;;PV17 voltage;U_DC_STRING_17;0.1;0.0;V;4
+51;3;32049;I16;;PV17 current;I_DC_STRING_17;0.01;0.0;A;4
+52;3;32050;I16;;PV18 voltage;U_DC_STRING_18;0.1;0.0;V;4
+53;3;32051;I16;;PV18 current;I_DC_STRING_18;0.01;0.0;A;4
+54;3;32052;I16;;PV19 voltage;U_DC_STRING_19;0.1;0.0;V;4
+55;3;32053;I16;;PV19 current;I_DC_STRING_19;0.01;0.0;A;4
+56;3;32054;I16;;PV20 voltage;U_DC_STRING_20;0.1;0.0;V;4
+57;3;32055;I16;;PV20 current;I_DC_STRING_20;0.01;0.0;A;4
+58;3;32056;I16;;PV21 voltage;U_DC_STRING_21;0.1;0.0;V;4
+59;3;32057;I16;;PV21 current;I_DC_STRING_21;0.01;0.0;A;4
+60;3;32058;I16;;PV22 voltage;U_DC_STRING_22;0.1;0.0;V;4
+61;3;32059;I16;;PV22 current;I_DC_STRING_22;0.01;0.0;A;4
+62;3;32060;I16;;PV23 voltage;U_DC_STRING_23;0.1;0.0;V;4
+63;3;32061;I16;;PV23 current;I_DC_STRING_23;0.01;0.0;A;4
+64;3;32062;I16;;PV24 voltage;U_DC_STRING_24;0.1;0.0;V;4
+65;3;32063;I16;;PV24 current;I_DC_STRING_24;0.01;0.0;A;4
+66;3;32064;I32;;Input power;P_DC;0.001;0.0;kW;4
+67;3;32066;U16;;Power grid voltage/Line voltage between phases A and B;U_AC_L1L2;0.1;0.0;V;4
+68;3;32067;U16;;Line voltage between phases B and C;U_AC_L2L3;0.1;0.0;V;4
+69;3;32068;U16;;Line voltage between phases C and A;U_AC_L3L1;0.1;0.0;V;4
+70;3;32069;U16;;Phase A voltage;U_AC_1;0.1;0.0;V;4
+71;3;32070;U16;;Phase B voltage;U_AC_2;0.1;0.0;V;4
+72;3;32071;U16;;Phase C voltage;U_AC_3;0.1;0.0;V;4
+73;3;32072;I32;;Power grid current/Phase A current;I_AC_1;0.001;0.0;A;4
+74;3;32074;I32;;Phase B current;I_AC_2;0.001;0.0;A;4
+75;3;32076;I32;;Phase C current;I_AC_3;0.001;0.0;A;4
+76;3;32078;I32;;Peak active power of current day;;0.001;0.0;kW;4
+77;3;32080;I32;;Active power;;0.001;0.0;kW;4
+78;3;32082;I32;;Reactive power;;0.001;0.0;kVar;4
+79;3;32084;I16;;Power factor;PF;0.001;0.0;;4
+80;3;32085;U16;;Grid frequency;FREQ;0.01;0.0;Hz;4
+81;3;32086;U16;;Efficiency;;0.01;0.0;%;4
+82;3;32087;I16;;Internal temperature;TEMP_INT;0.1;0.0;�C;4
+83;3;32088;U16;;Insulation resistance;R_ISO;0.001;0.0;M/Ohm;4
+84;3;32089;U16;;Device status;;1.0;0.0;;4
+85;3;32090;U16;;Fault code;;1.0;0.0;;4
+86;3;32091;U32;;Startup time;;1.0;0.0;s;4
+87;3;32093;U32;;Shutdown time;;1.0;0.0;s;4
+88;3;32106;U32;;Accumulated energy yield;E_TOT;0.01;0.0;kWh;4
+89;3;32114;U32;;Daily energy yield;E_DAY;0.01;0.0;kWh;4
+90;3;32116;U32;;Energy yield of the month;;0.01;0.0;kWh;4
+91;3;32118;U32;;Energy yield of the year;;0.01;0.0;kWh;4
+92;3;35300;U16;;[Active] Adjusment mode;;1.0;0.0;;4
+93;3;35301;U32;;[Active] Adjusment value;;1.0;0.0;;4
+94;3;35303;U16;;[Active] Adjusment command;;1.0;0.0;;4
+95;3;35304;U16;;[Reactive] Adjustment mode;;1.0;0.0;;4
+96;3;35305;U32;;[Reactive] Adjustment value;;1.0;0.0;;4
+97;3;35307;U16;;[Reactive] Adjustment command;;1.0;0.0;;4
+98;3;37113;I32;;[Power meter collection] Active power;;1.0;0.0;W;4
+99;3;37200;U16;;[Optimizer] Total number of optimizers;;1.0;0.0;;4
+100;3;37201;U16;;[Optimizer] Number of online optimizers;;1.0;0.0;;4
+101;3;37202;U16;;[Optimizer] Feature data;;1.0;0.0;;4
+102;3;40000;U32;;System Time;;1.0;0.0;s;4
+103;3;40037;U16;;[Power grid scheduling] Q-U characteristic curve mode;;1.0;0.0;;4
+104;3;40038;U16;;[Power grid scheduling] Q-U dispatch trigger power (%);;1.0;0.0;%;4
+105;3;40120;U16;;[Power grid scheduling] Fixed active power derated;CMD_P_AC_SET_ABS;0.1;0.0;kW;1
+106;3;40122;I16;;power factor;CMD_PF;0.001;0.0;;1
+107;3;40123;I16;;[Power grid scheduling] Reactive power compensation(Q/S);;0.001;0.0;;4
+108;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);CMD_P_AC_SET_PERCENT;0.1;0.0;%;1
+109;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);;1.0;0.0;W;4
+110;3;40129;I32;;[Power grid scheduling] Reactive power compensation at night (kVar);;0.001;0.0;kVar;4
+111;3;40133;U16;;Number of points cosphi-P/Pn;;1.0;0.0;;4
+112;3;40134;U16;;P/Pn value at point 1;;0.1;0.0;%;4
+113;3;40135;I16;;cosphi value at point 1;;0.001;0.0;;4
+114;3;40136;U16;;P/Pn value at point 2;;0.1;0.0;%;4
+115;3;40137;I16;;cosphi value at point 2;;0.001;0.0;;4
+116;3;40138;U16;;P/Pn value at point 3;;0.1;0.0;%;4
+117;3;40139;I16;;cosphi value at point 3;;0.001;0.0;;4
+118;3;40140;U16;;P/Pn value at point 4;;0.1;0.0;%;4
+119;3;40141;I16;;cosphi value at point 4;;0.001;0.0;;4
+120;3;40142;U16;;P/Pn value at point 5;;0.1;0.0;%;4
+121;3;40143;I16;;cosphi value at point 5;;0.001;0.0;;4
+122;3;40144;U16;;P/Pn value at point 6;;0.1;0.0;%;4
+123;3;40145;I16;;cosphi value at point 6;;0.001;0.0;;4
+124;3;40146;U16;;P/Pn value at point 7;;0.1;0.0;%;4
+125;3;40147;I16;;cosphi value at point 7;;0.001;0.0;;4
+126;3;40148;U16;;P/Pn value at point 8;;0.1;0.0;%;4
+127;3;40149;I16;;cosphi value at point 8;;0.001;0.0;;4
+128;3;40150;U16;;P/Pn value at point 9;;0.1;0.0;%;4
+129;3;40151;I16;;cosphi value at point 9;;0.001;0.0;;4
+130;3;40152;U16;;P/Pn value at point 10;;0.1;0.0;%;4
+131;3;40153;I16;;cosphi value at point 10;;0.001;0.0;;4
+132;3;40154;U16;;Number of points Q-U;;1.0;0.0;;4
+133;3;40155;U16;;U/Un value at point 1_1;;0.1;0.0;%;4
+134;3;40156;I16;;Q/S value at point 1;;0.001;0.0;;4
+135;3;40157;U16;;U/Un value at point 2_1;;0.1;0.0;%;4
+136;3;40158;I16;;Q/S value at point 2;;0.001;0.0;;4
+137;3;40159;U16;;U/Un value at point 3_1;;0.1;0.0;%;4
+138;3;40160;I16;;Q/S value at point 3;;0.001;0.0;;4
+139;3;40161;U16;;U/Un value at point 4_1;;0.1;0.0;%;4
+140;3;40162;I16;;Q/S value at point 4;;0.001;0.0;;4
+141;3;40163;U16;;U/Un value at point 5_1;;0.1;0.0;%;4
+142;3;40164;I16;;Q/S value at point 5;;0.001;0.0;;4
+143;3;40165;U16;;U/Un value at point 6_1;;0.1;0.0;%;4
+144;3;40166;I16;;Q/S value at point 6;;0.001;0.0;;4
+145;3;40167;U16;;U/Un value at point 7_1;;0.1;0.0;%;4
+146;3;40168;I16;;Q/S value at point 7;;0.001;0.0;;4
+147;3;40169;U16;;U/Un value at point 8_1;;0.1;0.0;%;4
+148;3;40170;I16;;Q/S value at point 8;;0.001;0.0;;4
+149;3;40171;U16;;U/Un value at point 9_1;;0.1;0.0;%;4
+150;3;40172;I16;;Q/S value at point 9;;0.001;0.0;;4
+151;3;40173;U16;;U/Un value at point 10_1;;0.1;0.0;%;4
+152;3;40174;I16;;Q/S value at point 10;;0.001;0.0;;4
+153;3;40175;U16;;Number of points PF-U;;1.0;0.0;;4
+154;3;40176;U16;;U/Un value at point 1;;0.1;0.0;%;4
+155;3;40177;I16;;PF value at point 1;;0.001;0.0;;4
+156;3;40178;U16;;U/Un value at point 2;;0.1;0.0;%;4
+157;3;40179;I16;;PF value at point 2;;0.001;0.0;;4
+158;3;40180;U16;;U/Un value at point 3;;0.1;0.0;%;4
+159;3;40181;I16;;PF value at point 3;;0.001;0.0;;4
+160;3;40182;U16;;U/Un value at point 4;;0.1;0.0;%;4
+161;3;40183;I16;;PF value at point 4;;0.001;0.0;;4
+162;3;40184;U16;;U/Un value at point 5;;0.1;0.0;%;4
+163;3;40185;I16;;PF value at point 5;;0.001;0.0;;4
+164;3;40186;U16;;U/Un value at point 6;;0.1;0.0;%;4
+165;3;40187;I16;;PF value at point 6;;0.001;0.0;;4
+166;3;40188;U16;;U/Un value at point 7;;0.1;0.0;%;4
+167;3;40189;I16;;PF value at point 7;;0.001;0.0;;4
+168;3;40190;U16;;U/Un value at point 8;;0.1;0.0;%;4
+169;3;40191;I16;;PF value at point 8;;0.001;0.0;;4
+170;3;40192;U16;;U/Un value at point 9;;0.1;0.0;%;4
+171;3;40193;I16;;PF value at point 9;;0.001;0.0;;4
+172;3;40194;U16;;U/Un value at point 10;;0.1;0.0;%;4
+173;3;40195;I16;;PF value at point 10;;0.001;0.0;;4
+174;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;CMD_RAMP_TIME_S;1.0;0.0;s;1
+175;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;;1.0;0.0;%;4
+176;3;40200;U16;;Startup;CMD_ON;1.0;0.0;;1
+177;3;40201;U16;;Shutdown;CMD_OFF;1.0;0.0;;1
+178;3;42000;U16;;Grid code;;0.001;0.0;;4
+179;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001;0.0;%/s;4
+180;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001;0.0;;4
+181;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.0;0.0;s;1
+182;3;43006;I16;;Time Zone;;1.0;0.0;min;4

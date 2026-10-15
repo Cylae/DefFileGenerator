@@ -1,0 +1,56 @@
+﻿modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic;;;;;;;
+1;4;3841;U16;;Active Power;P_AC;1.0;0.0;kW;4
+2;4;3842;U16;;DC-Link Voltage;U_DC;1.0;0.0;V;4
+3;4;3843;U16;;Heat Sink Temperature;TEMP_INT;1.0;0.0;°C;4
+4;4;3844;U16;;Inside Temperature;;1.0;0.0;°C;4
+5;4;3845;U16;;Current Error;;1.0;0.0;;4
+6;4;3846;U16;;Power supply current;;1.0;0.0;A;4
+7;4;3847;U16;;Power supply voltage;;1.0;0.0;V;4
+8;4;3848;U16;;DC Power;P_DC;1.0;0.0;kW;4
+9;4;3849;U16;;Apparent Power;S_AC;1.0;0.0;kVA;4
+10;4;3850;U16;;Solar-Status;;1.0;0.0;;4
+11;4;3851;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+12;4;3852;U16;;Digital Inputs;;1.0;0.0;;4
+13;4;3853;U16;;DC Current;I_DC;1.0;0.0;A;4
+14;4;3854;U16;;Active Energy, Positive;;1.0;0.0;MWh;4
+15;4;3855;U16;;Apparent Power Phase a;S_AC_1;1.0;0.0;kVA;4
+16;4;3856;U16;;Apparent Power Phase b;S_AC_2;1.0;0.0;kVA;4
+17;4;3857;U16;;Apparent Power Phase c;S_AC_3;1.0;0.0;kVA;4
+18;4;3858;U16;;Active Power Phase a;P_AC_1;1.0;0.0;kW;4
+19;4;3859;U16;;Active Power Phase b;P_AC_2;1.0;0.0;kW;4
+20;4;3860;U16;;Active Power Phase c;P_AC_3;1.0;0.0;kW;4
+21;4;3861;U16;;Current Phase a;I_AC_1;1.0;0.0;A;4
+22;4;3862;U16;;Current Phase b;I_AC_2;1.0;0.0;A;4
+23;4;3863;U16;;Current Phase c;I_AC_3;1.0;0.0;A;4
+24;4;3864;U16;;Power Supply Voltage Phase a;U_AC_1;1.0;0.0;V;4
+25;4;3865;U16;;Power Supply Voltage Phase b;U_AC_2;1.0;0.0;V;4
+26;4;3866;U16;;Power Supply Voltage Phase c;U_AC_3;1.0;0.0;V;4
+27;4;3867;U16;;Reactive power Phase a;Q_AC_1;1.0;0.0;kvar;4
+28;4;3868;U16;;Reactive power Phase b;Q_AC_2;1.0;0.0;kvar;4
+29;4;3869;U16;;Reactive power Phase c;Q_AC_3;1.0;0.0;kvar;4
+30;4;3870;U16;;Reactive Power;Q_AC;1.0;0.0;kVA;4
+31;4;3871;U16;;Reference value reactive power;;1.0;0.0;kVA;4
+32;4;3872;U16;;DC-Link Voltage_1;;1.0;0.0;V;4
+33;4;3873;U16;;R.m.s. Current;;1.0;0.0;A;4
+34;4;3874;U16;;Modulation;;1.0;0.0;%;4
+35;4;3875;U16;;Reference Percentage Value;;1.0;0.0;%;4
+36;4;3876;U16;;Active Energy High Word;;1.0;0.0;;4
+37;4;3877;U16;;Active Energy Low  Word;;1.0;0.0;;4
+38;4;3878;U16;;Digital Inputs hardware;;1.0;0.0;;4
+39;4;3879;U16;;Active Data Set;;1.0;0.0;;4
+40;4;3880;U16;;Analog Input MFI1A;;1.0;0.0;%;4
+41;4;3881;U16;;Analog Input EM-S1INA;;1.0;0.0;%;4
+42;4;3882;U16;;Digital Outputs;;1.0;0.0;;4
+43;4;3883;U16;;Analog Output MFO1A;;1.0;0.0;V;4
+44;4;3884;U16;;Analog Output EM-S1OUTA;;1.0;0.0;V;4
+45;4;3885;U16;;STO Status;;1.0;0.0;;4
+46;4;3887;U16;;Working Hours Counter High;;1.0;0.0;;4
+47;4;3888;U16;;Working Hours Counter Low Word;;1.0;0.0;;4
+48;4;3889;U16;;Operation Hours Counter High  Word;;1.0;0.0;;4
+49;4;3890;U16;;Operation Hours Counter Low  Word;;1.0;0.0;;4
+50;4;3899;U16;;Power Factor Phase a;PF_1;1.0;0.0;;4
+51;4;3900;U16;;Power Factor Phase b;PF_2;1.0;0.0;;4
+52;4;3901;U16;;Power Factor Phase c;PF_3;1.0;0.0;;4
+53;4;3902;U16;;Power Factor Total;PF;1.0;0.0;;4
+54;4;3903;U16;;Active current;;1.0;0.0;A;4
+55;4;3904;U16;;Reactive current;;1.0;0.0;A;4

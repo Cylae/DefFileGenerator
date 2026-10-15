@@ -1,0 +1,525 @@
+﻿modbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
+1;2;512_0_1;BITS;;Bus arc trip state;;1.000000;0.000000;;4
+2;2;513_0_1;BITS;;Channel arc trip state;;1.000000;0.000000;;4
+3;2;515_0_1;BITS;;Bus voltage is too high trip state;U_DC;1.000000;0.000000;;4
+4;2;516_0_1;BITS;;Temperature sensor 1;;1.000000;0.000000;;4
+5;2;517_0_1;BITS;;Temperature sensor 2;;1.000000;0.000000;;4
+6;2;518_0_1;BITS;;Channel reverse current trip state;;1.000000;0.000000;;4
+7;2;519_0_1;BITS;;Total reverse current trip state;I_AC;1.000000;0.000000;;4
+8;2;521_0_1;BITS;;Total current is too high trip state;;1.000000;0.000000;;4
+9;2;522_0_1;BITS;;Channel no current trip state;;1.000000;0.000000;;4
+10;2;523_0_1;BITS;;Channel undercurrent trip state;;1.000000;0.000000;;4
+11;2;524_0_1;BITS;;Channel overcurrent trip state;;1.000000;0.000000;;4
+12;2;525_0_1;BITS;;Channel current is too low to trip state;;1.000000;0.000000;;4
+13;2;526_0_1;BITS;;Channel current is too high to trip state;;1.000000;0.000000;;4
+14;2;528_0_1;BITS;;Lightning arrester fault trip state;;1.000000;0.000000;;4
+15;2;529_0_1;BITS;;The circuit breaker is disconnected from the trip state;;1.000000;0.000000;;4
+16;2;530_0_1;BITS;;Circuit breaker fault tripping status;;1.000000;0.000000;;4
+17;2;531_0_1;BITS;;Switch 4 trip status;;1.000000;0.000000;;4
+18;2;542_0_1;BITS;;Remote manual trip status;;1.000000;0.000000;;4
+19;2;560_0_1;BITS;;Bus arc alarm status;;1.000000;0.000000;;4
+20;2;561_0_1;BITS;;Channel arc alarm status;;1.000000;0.000000;;4
+21;2;562_0_1;BITS;;Bus voltage too low alarm status;;1.000000;0.000000;;4
+22;2;563_0_1;BITS;;Bus voltage to high alarm status;;1.000000;0.000000;;4
+23;2;564_0_1;BITS;;Temperature sensor 1 high temperature alarm status;;1.000000;0.000000;;4
+24;2;565_0_1;BITS;;Temperature sensor 2 high temperature alarm status;;1.000000;0.000000;;4
+25;2;566_0_1;BITS;;Channel reverse current alarm status;;1.000000;0.000000;;4
+26;2;567_0_1;BITS;;Total reverse current alarm status;;1.000000;0.000000;;4
+27;2;568_0_1;BITS;;Total current too low alarm state;;1.000000;0.000000;;4
+28;2;569_0_1;BITS;;Total current too high alarm state;;1.000000;0.000000;;4
+29;2;570_0_1;BITS;;Channel current value zero;;1.000000;0.000000;;4
+30;2;571_0_1;BITS;;Channel current value undercurrent;;1.000000;0.000000;;4
+31;2;572_0_1;BITS;;Channel current value overcurrent;;1.000000;0.000000;;4
+32;2;573_0_1;BITS;;Channel current value is too low;;1.000000;0.000000;;4
+33;2;574_0_1;BITS;;Channel current value is too high;;1.000000;0.000000;;4
+34;2;575_0_1;BITS;;Lightning arrester short circuit alarm status;;1.000000;0.000000;;4
+35;2;577_0_1;BITS;;Circuit breaker disconnection alarm state;;1.000000;0.000000;;4
+36;2;578_0_1;BITS;;Circuit breaker fault alarm status;;1.000000;0.000000;;4
+37;2;579_0_1;BITS;;Switch 4 alarm status;;1.000000;0.000000;;4
+38;2;608_0_1;BITS;;Channel 1 arc alarm status;;1.000000;0.000000;;4
+39;2;609_0_1;BITS;;Channel 2 arc alarm status;;1.000000;0.000000;;4
+40;2;610_0_1;BITS;;Channel 3 arc alarm status;;1.000000;0.000000;;4
+41;2;611_0_1;BITS;;Channel 4 arc alarm status;;1.000000;0.000000;;4
+42;2;612_0_1;BITS;;Channel 5 arc alarm status;;1.000000;0.000000;;4
+43;2;613_0_1;BITS;;Channel 6 arc alarm status;;1.000000;0.000000;;4
+44;2;614_0_1;BITS;;Channel 7 arc alarm status;;1.000000;0.000000;;4
+45;2;615_0_1;BITS;;Channel 8 arc alarm status;;1.000000;0.000000;;4
+46;2;616_0_1;BITS;;Channel 9 arc alarm status;;1.000000;0.000000;;4
+47;2;617_0_1;BITS;;Channel 10 arc alarm status;;1.000000;0.000000;;4
+48;2;618_0_1;BITS;;Channel 11 arc alarm status;;1.000000;0.000000;;4
+49;2;619_0_1;BITS;;Channel 12 arc alarm status;;1.000000;0.000000;;4
+50;2;620_0_1;BITS;;Channel 13 arc alarm status;;1.000000;0.000000;;4
+51;2;621_0_1;BITS;;Channel 14 arc alarm status;;1.000000;0.000000;;4
+52;2;622_0_1;BITS;;Channel 15 arc alarm status;;1.000000;0.000000;;4
+53;2;623_0_1;BITS;;Channel 16 arc alarm status;;1.000000;0.000000;;4
+54;2;624_0_1;BITS;;Channel 17 arc alarm status;;1.000000;0.000000;;4
+55;2;625_0_1;BITS;;Channel 18 arc alarm status;;1.000000;0.000000;;4
+56;2;626_0_1;BITS;;Channel 19 arc alarm status;;1.000000;0.000000;;4
+57;2;627_0_1;BITS;;Channel 20 arc alarm status;;1.000000;0.000000;;4
+58;2;628_0_1;BITS;;Channel 21 arc alarm status;;1.000000;0.000000;;4
+59;2;629_0_1;BITS;;Channel 22 arc alarm status;;1.000000;0.000000;;4
+60;2;630_0_1;BITS;;Channel 23 arc alarm status;;1.000000;0.000000;;4
+61;2;631_0_1;BITS;;Channel 24 arc alarm status;;1.000000;0.000000;;4
+62;2;640_0_1;BITS;;Channel 1 current reverse alarm status;;1.000000;0.000000;;4
+63;2;641_0_1;BITS;;Channel 2 current reverse alarm status;;1.000000;0.000000;;4
+64;2;642_0_1;BITS;;Channel 3 current reverse alarm status;;1.000000;0.000000;;4
+65;2;643_0_1;BITS;;Channel 4 current reverse alarm status;;1.000000;0.000000;;4
+66;2;644_0_1;BITS;;Channel 5 current reverse alarm status;;1.000000;0.000000;;4
+67;2;645_0_1;BITS;;Channel 6 current reverse alarm status;;1.000000;0.000000;;4
+68;2;646_0_1;BITS;;Channel 7 current reverse alarm status;;1.000000;0.000000;;4
+69;2;647_0_1;BITS;;Channel 8 current reverse alarm status;;1.000000;0.000000;;4
+70;2;648_0_1;BITS;;Channel 9 current reverse alarm status;;1.000000;0.000000;;4
+71;2;649_0_1;BITS;;Channel 10 current reverse alarm status;;1.000000;0.000000;;4
+72;2;650_0_1;BITS;;Channel 11 current reverse alarm status;;1.000000;0.000000;;4
+73;2;651_0_1;BITS;;Channel 12 current reverse alarm status;;1.000000;0.000000;;4
+74;2;652_0_1;BITS;;Channel 13 current reverse alarm status;;1.000000;0.000000;;4
+75;2;653_0_1;BITS;;Channel 14 current reverse alarm status;;1.000000;0.000000;;4
+76;2;654_0_1;BITS;;Channel 15 current reverse alarm status;;1.000000;0.000000;;4
+77;2;655_0_1;BITS;;Channel 16 current reverse alarm status;;1.000000;0.000000;;4
+78;2;656_0_1;BITS;;Channel 17 current reverse alarm status;;1.000000;0.000000;;4
+79;2;657_0_1;BITS;;Channel 18 current reverse alarm status;;1.000000;0.000000;;4
+80;2;658_0_1;BITS;;Channel 19 current reverse alarm status;;1.000000;0.000000;;4
+81;2;659_0_1;BITS;;Channel 20 current reverse alarm status;;1.000000;0.000000;;4
+82;2;660_0_1;BITS;;Channel 21 current reverse alarm status;;1.000000;0.000000;;4
+83;2;661_0_1;BITS;;Channel 22 current reverse alarm status;;1.000000;0.000000;;4
+84;2;662_0_1;BITS;;Channel 23 current reverse alarm status;;1.000000;0.000000;;4
+85;2;663_0_1;BITS;;Channel 24 current reverse alarm status;;1.000000;0.000000;;4
+86;2;672_0_1;BITS;;Channel 1 no current alarm status;;1.000000;0.000000;;4
+87;2;673_0_1;BITS;;Channel 2 no curren alarm status;;1.000000;0.000000;;4
+88;2;674_0_1;BITS;;Channel 3 no current alarm status;;1.000000;0.000000;;4
+89;2;675_0_1;BITS;;Channel 4 no current alarm status;;1.000000;0.000000;;4
+90;2;676_0_1;BITS;;Channel 5 no current alarm status;;1.000000;0.000000;;4
+91;2;677_0_1;BITS;;Channel 6 no current alarm status;;1.000000;0.000000;;4
+92;2;678_0_1;BITS;;Channel 7 no current alarm status;;1.000000;0.000000;;4
+93;2;679_0_1;BITS;;Channel 8 no current alarm status;;1.000000;0.000000;;4
+94;2;680_0_1;BITS;;Channel 9 no current alarm status;;1.000000;0.000000;;4
+95;2;681_0_1;BITS;;Channel 10 no current alarm status;;1.000000;0.000000;;4
+96;2;682_0_1;BITS;;Channel 11 no current alarm status;;1.000000;0.000000;;4
+97;2;683_0_1;BITS;;Channel 12 no current alarm status;;1.000000;0.000000;;4
+98;2;684_0_1;BITS;;Channel 13 no current alarm status;;1.000000;0.000000;;4
+99;2;685_0_1;BITS;;Channel 14 no current alarm status;;1.000000;0.000000;;4
+100;2;686_0_1;BITS;;Channel 15 no current alarm status;;1.000000;0.000000;;4
+101;2;687_0_1;BITS;;Channel 16 no current alarm status;;1.000000;0.000000;;4
+102;2;688_0_1;BITS;;Channel 17 no current alarm status;;1.000000;0.000000;;4
+103;2;689_0_1;BITS;;Channel 18 no current alarm status;;1.000000;0.000000;;4
+104;2;690_0_1;BITS;;Channel 19 no current alarm status;;1.000000;0.000000;;4
+105;2;691_0_1;BITS;;Channel 20 no current alarm status;;1.000000;0.000000;;4
+106;2;692_0_1;BITS;;Channel 21 no current alarm status;;1.000000;0.000000;;4
+107;2;693_0_1;BITS;;Channel 22 no current alarm status;;1.000000;0.000000;;4
+108;2;694_0_1;BITS;;Channel 23 no current alarm status;;1.000000;0.000000;;4
+109;2;695_0_1;BITS;;Channel 24 no current alarm status;;1.000000;0.000000;;4
+110;2;704_0_1;BITS;;Channel 1 undercurrent alarm status;;1.000000;0.000000;;4
+111;2;705_0_1;BITS;;Channel 2 undercurrent alarm status;;1.000000;0.000000;;4
+112;2;706_0_1;BITS;;Channel 3 undercurrent alarm status;;1.000000;0.000000;;4
+113;2;707_0_1;BITS;;Channel 4 undercurrent alarm status;;1.000000;0.000000;;4
+114;2;708_0_1;BITS;;Channel 5 undercurrent alarm status;;1.000000;0.000000;;4
+115;2;709_0_1;BITS;;Channel 6 undercurrent alarm status;;1.000000;0.000000;;4
+116;2;710_0_1;BITS;;Channel 7 undercurrent alarm status;;1.000000;0.000000;;4
+117;2;711_0_1;BITS;;Channel 8 undercurrent alarm status;;1.000000;0.000000;;4
+118;2;712_0_1;BITS;;Channel 9 undercurrent alarm status;;1.000000;0.000000;;4
+119;2;713_0_1;BITS;;Channel 10 undercurrent alarm status;;1.000000;0.000000;;4
+120;2;714_0_1;BITS;;Channel 11 undercurrent alarm status;;1.000000;0.000000;;4
+121;2;715_0_1;BITS;;Channel 12 undercurrent alarm status;;1.000000;0.000000;;4
+122;2;716_0_1;BITS;;Channel 13 undercurrent alarm status;;1.000000;0.000000;;4
+123;2;717_0_1;BITS;;Channel 14 undercurrent alarm status;;1.000000;0.000000;;4
+124;2;718_0_1;BITS;;Channel 15 undercurrent alarm status;;1.000000;0.000000;;4
+125;2;719_0_1;BITS;;Channel 16 undercurrent alarm status;;1.000000;0.000000;;4
+126;2;720_0_1;BITS;;Channel 17 undercurrent alarm status;;1.000000;0.000000;;4
+127;2;721_0_1;BITS;;Channel 18 undercurrent alarm status;;1.000000;0.000000;;4
+128;2;722_0_1;BITS;;Channel 19 undercurrent alarm status;;1.000000;0.000000;;4
+129;2;723_0_1;BITS;;Channel 20 undercurrent alarm status;;1.000000;0.000000;;4
+130;2;724_0_1;BITS;;Channel 21 undercurrent alarm status;;1.000000;0.000000;;4
+131;2;725_0_1;BITS;;Channel 22 undercurrent alarm status;;1.000000;0.000000;;4
+132;2;726_0_1;BITS;;Channel 23 undercurrent alarm status;;1.000000;0.000000;;4
+133;2;727_0_1;BITS;;Channel 24 undercurrent alarm status;;1.000000;0.000000;;4
+134;2;736_0_1;BITS;;Channel 1 undercurrent alarm status 2;;1.000000;0.000000;;4
+135;2;737_0_1;BITS;;Channel 2 undercurrent alarm status 2;;1.000000;0.000000;;4
+136;2;738_0_1;BITS;;Channel 3 undercurrent alarm status 2;;1.000000;0.000000;;4
+137;2;739_0_1;BITS;;Channel 4 overcurrent alarm status;;1.000000;0.000000;;4
+138;2;740_0_1;BITS;;Channel 5 overcurrent alarm status;;1.000000;0.000000;;4
+139;2;741_0_1;BITS;;Channel 6 overcurrent alarm status;;1.000000;0.000000;;4
+140;2;742_0_1;BITS;;Channel 7 overcurrent alarm status;;1.000000;0.000000;;4
+141;2;743_0_1;BITS;;Channel 8 overcurrent alarm status;;1.000000;0.000000;;4
+142;2;744_0_1;BITS;;Channel 9 overcurrent alarm status;;1.000000;0.000000;;4
+143;2;745_0_1;BITS;;Channel 10 overcurrent alarm status;;1.000000;0.000000;;4
+144;2;746_0_1;BITS;;Channel 11 overcurrent alarm status;;1.000000;0.000000;;4
+145;2;747_0_1;BITS;;Channel 12 overcurrent alarm status;;1.000000;0.000000;;4
+146;2;748_0_1;BITS;;Channel 13 overcurrent alarm status;;1.000000;0.000000;;4
+147;2;749_0_1;BITS;;Channel 14 overcurrent alarm status;;1.000000;0.000000;;4
+148;2;750_0_1;BITS;;Channel 15 overcurrent alarm status;;1.000000;0.000000;;4
+149;2;751_0_1;BITS;;Channel 16 overcurrent alarm status;;1.000000;0.000000;;4
+150;2;752_0_1;BITS;;Channel 17 overcurrent alarm status;;1.000000;0.000000;;4
+151;2;753_0_1;BITS;;Channel 18 overcurrent alarm status;;1.000000;0.000000;;4
+152;2;754_0_1;BITS;;Channel 19 overcurrent alarm status;;1.000000;0.000000;;4
+153;2;755_0_1;BITS;;Channel 20 overcurrent alarm status;;1.000000;0.000000;;4
+154;2;756_0_1;BITS;;Channel 21 overcurrent alarm status;;1.000000;0.000000;;4
+155;2;757_0_1;BITS;;Channel 22 overcurrent alarm status;;1.000000;0.000000;;4
+156;2;758_0_1;BITS;;Channel 23 overcurrent alarm status;;1.000000;0.000000;;4
+157;2;759_0_1;BITS;;Channel 24 overcurrent alarm status;;1.000000;0.000000;;4
+158;2;768_0_1;BITS;;Channel 1 current low alarm state 2;;1.000000;0.000000;;4
+159;2;769_0_1;BITS;;Channel 2 current low alarm state 2;;1.000000;0.000000;;4
+160;2;770_0_1;BITS;;Channel 3 current low alarm state 2;;1.000000;0.000000;;4
+161;2;771_0_1;BITS;;Channel 4 current low alarm state 2;;1.000000;0.000000;;4
+162;2;772_0_1;BITS;;Channel 5 current low alarm state 2;;1.000000;0.000000;;4
+163;2;773_0_1;BITS;;Channel 6 current low alarm state 2;;1.000000;0.000000;;4
+164;2;774_0_1;BITS;;Channel 7 current low alarm state 2;;1.000000;0.000000;;4
+165;2;775_0_1;BITS;;Channel 8 current low alarm state 2;;1.000000;0.000000;;4
+166;2;776_0_1;BITS;;Channel 9 current low alarm state 2;;1.000000;0.000000;;4
+167;2;777_0_1;BITS;;Channel 10 current low alarm state 2;;1.000000;0.000000;;4
+168;2;778_0_1;BITS;;Channel 11 current low alarm state 2;;1.000000;0.000000;;4
+169;2;779_0_1;BITS;;Channel 12 current low alarm state 2;;1.000000;0.000000;;4
+170;2;780_0_1;BITS;;Channel 13 current low alarm state 2;;1.000000;0.000000;;4
+171;2;781_0_1;BITS;;Channel 14 current low alarm state 2;;1.000000;0.000000;;4
+172;2;782_0_1;BITS;;Channel 15 current low alarm state 2;;1.000000;0.000000;;4
+173;2;783_0_1;BITS;;Channel 16 current low alarm state 2;;1.000000;0.000000;;4
+174;2;784_0_1;BITS;;Channel 17 current low alarm state 2;;1.000000;0.000000;;4
+175;2;785_0_1;BITS;;Channel 18 current low alarm state 2;;1.000000;0.000000;;4
+176;2;786_0_1;BITS;;Channel 19 current low alarm state 2;;1.000000;0.000000;;4
+177;2;787_0_1;BITS;;Channel 20 current low alarm state 2;;1.000000;0.000000;;4
+178;2;788_0_1;BITS;;Channel 21 current low alarm state 2;;1.000000;0.000000;;4
+179;2;789_0_1;BITS;;Channel 22 current low alarm state 2;;1.000000;0.000000;;4
+180;2;790_0_1;BITS;;Channel 23 current low alarm state 2;;1.000000;0.000000;;4
+181;2;791_0_1;BITS;;Channel 24 current low alarm state 2;;1.000000;0.000000;;4
+182;2;800_0_1;BITS;;Channel 1 current too high alarm state;;1.000000;0.000000;;4
+183;2;801_0_1;BITS;;Channel 2 current too high alarm state;;1.000000;0.000000;;4
+184;2;802_0_1;BITS;;Channel 3 current too high alarm state;;1.000000;0.000000;;4
+185;2;803_0_1;BITS;;Channel 4 current too high alarm state;;1.000000;0.000000;;4
+186;2;804_0_1;BITS;;Channel 5 current too high alarm state;;1.000000;0.000000;;4
+187;2;805_0_1;BITS;;Channel 6 current too high alarm state;;1.000000;0.000000;;4
+188;2;806_0_1;BITS;;Channel 21 overcurrent alarm status 2;;1.000000;0.000000;;4
+189;2;807_0_1;BITS;;Channel 22 overcurrent alarm status 2;;1.000000;0.000000;;4
+190;2;808_0_1;BITS;;Channel 23 overcurrent alarm status 2;;1.000000;0.000000;;4
+191;2;809_0_1;BITS;;Channel 24 overcurrent alarm status 2;;1.000000;0.000000;;4
+192;2;810_0_1;BITS;;Channel 1 current low alarm state;;1.000000;0.000000;;4
+193;2;811_0_1;BITS;;Channel 2 current low alarm state;;1.000000;0.000000;;4
+194;2;812_0_1;BITS;;Channel 3 current low alarm state;;1.000000;0.000000;;4
+195;2;813_0_1;BITS;;Channel 4 current low alarm state;;1.000000;0.000000;;4
+196;2;814_0_1;BITS;;Channel 5 current low alarm state;;1.000000;0.000000;;4
+197;2;815_0_1;BITS;;Channel 6 current low alarm state;;1.000000;0.000000;;4
+198;2;816_0_1;BITS;;Channel 7 current low alarm state;;1.000000;0.000000;;4
+199;2;817_0_1;BITS;;Channel 8 current low alarm state;;1.000000;0.000000;;4
+200;2;818_0_1;BITS;;Channel 9 current low alarm state;;1.000000;0.000000;;4
+201;2;819_0_1;BITS;;Channel 10 current low alarm state;;1.000000;0.000000;;4
+202;2;820_0_1;BITS;;Channel 11 current low alarm state;;1.000000;0.000000;;4
+203;2;821_0_1;BITS;;Channel 12 current low alarm state;;1.000000;0.000000;;4
+204;2;822_0_1;BITS;;Channel 13 current low alarm state;;1.000000;0.000000;;4
+205;2;823_0_1;BITS;;Channel 24 current too high alarm state;;1.000000;0.000000;;4
+206;4;256;U16;;Broadcast time  (year month);;1.000000;0.000000;;4
+207;4;257;U16;;Broadcast time  (day  hour);;1.000000;0.000000;;4
+208;4;258;U16;;Broadcast time  (minutes seconds);;1.000000;0.000000;;4
+209;4;259;U16;;Broadcast time  milliseconds;;1.000000;0.000000;;4
+210;4;260;U16;;Bus voltage;udc_v;1.000000;0.000000;V;2
+211;4;261;I16;;Temperature sensor 1-1;;0.100000;0.000000;C;4
+212;4;262;I16;;Temperature sensor 2-1;;0.100000;0.000000;C;4
+213;4;263;U16;;Switch input_0;;1.000000;0.000000;;4
+214;4;263_0_1;BITS;;Switch input_1;;1.000000;0.000000;;4
+215;4;263_1_1;BITS;;Switch input_2;;1.000000;0.000000;;4
+216;4;263_2_1;BITS;;Switch input_3;;1.000000;0.000000;;4
+217;4;263_3_1;BITS;;Switch input_4;;1.000000;0.000000;;4
+218;4;264;U16;;Quantity of online Hall channels;;1.000000;0.000000;;4
+219;4;265;I16;;Total reverse current;;10.000000;0.000000;mA;4
+220;4;266;I16;;Total current;;10.000000;0.000000;mA;4
+221;4;267;I16;;Average current;;1.000000;0.000000;mA;4
+222;4;268;I16;;Channel 1 current;idc1_ma;1.000000;0.000000;mA;2
+223;4;269;I16;;Channel 2 current;idc2_ma;1.000000;0.000000;mA;2
+224;4;270;I16;;Channel 3 current;idc3_ma;1.000000;0.000000;mA;2
+225;4;271;I16;;Channel 4 current;idc4_ma;1.000000;0.000000;mA;2
+226;4;272;I16;;Channel 5 current;idc5_ma;1.000000;0.000000;mA;2
+227;4;273;I16;;Channel 6 current;idc6_ma;1.000000;0.000000;mA;2
+228;4;274;I16;;Channel 7 current;idc7_ma;1.000000;0.000000;mA;2
+229;4;275;I16;;Channel 8 current;idc8_ma;1.000000;0.000000;mA;2
+230;4;276;I16;;Channel 9 current;idc9_ma;1.000000;0.000000;mA;2
+231;4;277;I16;;Channel 10 current;idc10_ma;1.000000;0.000000;mA;2
+232;4;278;I16;;Channel 11 current;idc11_ma;1.000000;0.000000;mA;2
+233;4;279;I16;;Channel 12 current;idc12_ma;1.000000;0.000000;mA;2
+234;4;280;I16;;Channel 13 current;idc13_ma;1.000000;0.000000;mA;2
+235;4;281;I16;;Channel 14 current;idc14_ma;1.000000;0.000000;mA;2
+236;4;282;I16;;Channel 15 current;idc15_ma;1.000000;0.000000;mA;2
+237;4;283;I16;;Channel 16 current;idc16_ma;1.000000;0.000000;mA;2
+238;4;284;I16;;Channel 17 current;idc17_ma;1.000000;0.000000;mA;2
+239;4;285;I16;;Channel 18 current;idc18_ma;1.000000;0.000000;mA;2
+240;4;286;I16;;Channel 19 current;idc19_ma;1.000000;0.000000;mA;2
+241;4;287;I16;;Channel 20 current;idc20_ma;1.000000;0.000000;mA;2
+242;4;288;I16;;Channel 21 current;idc21_ma;1.000000;0.000000;mA;2
+243;4;289;I16;;Channel 22 current;idc22_ma;1.000000;0.000000;mA;2
+244;4;290;I16;;Channel 23 current;idc23_ma;1.000000;0.000000;mA;2
+245;4;291;I16;;Channel 24 current;idc24_ma;1.000000;0.000000;mA;2
+246;4;298;U16;;Shunt trip status1;;1.000000;0.000000;;4
+247;4;299;U16;;Shunt trip status2;;1.000000;0.000000;;4
+248;4;301;U16;;Alarm status 1;;1.000000;0.000000;;4
+249;4;302;U16;;Alarm status2;;1.000000;0.000000;;4
+250;4;304;U16;;Channel 1~ 16 arc alarm;;1.000000;0.000000;;4
+251;4;305;U16;;Channel 17~ 24 arc alarm;;1.000000;0.000000;;4
+252;4;306;U16;;The quantity of Bus arc history alarm;;1.000000;0.000000;;4
+253;4;331;U16;;Channel 1~16 reverse current alarm;;1.000000;0.000000;;4
+254;4;332;U16;;Channel 17~24 reverse current alarm;;1.000000;0.000000;;4
+255;4;333;U16;;Channel 1~16 no current alarm;;1.000000;0.000000;;4
+256;4;334;U16;;Channel 17~24 no current alarm;;1.000000;0.000000;;4
+257;4;335;U16;;Channel 1~16 undercurrent alarm;;1.000000;0.000000;;4
+258;4;336;U16;;Channel 17~24 undercurrent alarm;;1.000000;0.000000;;4
+259;4;337;U16;;Channel 1~16 overcurrent alarm;;1.000000;0.000000;;4
+260;4;338;U16;;Channel 17~24 overcurrent alarm;;1.000000;0.000000;;4
+261;4;339;U16;;Channel 1~16 current low alarm;;1.000000;0.000000;;4
+262;4;340;U16;;Channel 17~24 current low alarm;;1.000000;0.000000;;4
+263;4;341;U16;;Channel 1~16 current high alarm;;1.000000;0.000000;;4
+264;4;342;U16;;Channel 17~24 current high alarm;;1.000000;0.000000;;4
+265;4;343;U16;;Channel 1~16 arc channel self-check status;;1.000000;0.000000;;4
+266;4;344;U16;;Channel 17~24 arc channel self-check status;;1.000000;0.000000;;4
+267;4;512;U16;;Total power;;100.000000;0.000000;W;4
+268;4;513;U16;;Average power;;1.000000;0.000000;W;4
+269;4;514;U16;;Channel 1 power;pdc1_ma;1.000000;0.000000;W;2
+270;4;515;U16;;Channel 2 power;pdc2_ma;1.000000;0.000000;W;2
+271;4;516;U16;;Channel 3 power;pdc3_ma;1.000000;0.000000;W;2
+272;4;517;U16;;Channel 4 power;pdc4_ma;1.000000;0.000000;W;2
+273;4;518;U16;;Channel 5 power;pdc5_ma;1.000000;0.000000;W;2
+274;4;519;U16;;Channel 6 power;pdc6_ma;1.000000;0.000000;W;2
+275;4;520;U16;;Channel 7 power;pdc7_ma;1.000000;0.000000;W;2
+276;4;521;U16;;Channel 8 power;pdc8_ma;1.000000;0.000000;W;2
+277;4;522;U16;;Channel 9 power;pdc9_ma;1.000000;0.000000;W;2
+278;4;523;U16;;Channel 10 power;pdc10_ma;1.000000;0.000000;W;2
+279;4;524;U16;;Channel 11 power;pdc11_ma;1.000000;0.000000;W;2
+280;4;525;U16;;Channel 12 power;pdc12_ma;1.000000;0.000000;W;2
+281;4;526;U16;;Channel 13 power;pdc13_ma;1.000000;0.000000;W;2
+282;4;527;U16;;Channel 14 power;pdc14_ma;1.000000;0.000000;W;2
+283;4;528;U16;;Channel 15 power;pdc15_ma;1.000000;0.000000;W;2
+284;4;529;U16;;Channel 16 power;pdc16_ma;1.000000;0.000000;W;2
+285;4;530;U16;;Channel 17 power;pdc17_ma;1.000000;0.000000;W;2
+286;4;531;U16;;Channel 18 power;pdc18_ma;1.000000;0.000000;W;2
+287;4;532;U16;;Channel 19 power;pdc19_ma;1.000000;0.000000;W;2
+288;4;533;U16;;Channel 20 power;pdc20_ma;1.000000;0.000000;W;2
+289;4;534;U16;;Channel 21 power;pdc21_ma;1.000000;0.000000;W;2
+290;4;535;U16;;Channel 22 power;pdc22_ma;1.000000;0.000000;W;2
+291;4;536;U16;;Channel 23 power;pdc23_ma;1.000000;0.000000;W;2
+292;4;537;U16;;Channel 24 power;pdc24_ma;1.000000;0.000000;W;2
+293;4;538;U16;;The higher 16bit of the total generated energy;E_TOT;1.000000;0.000000;Wh;4
+294;4;539;U16;;The lower 16bit of the total generated energy;;1.000000;0.000000;Wh;4
+295;4;540;U16;;The higher 16bit of the generated energy of channel 1;;1.000000;0.000000;Wh;4
+296;4;541;U16;;The lower 16bit of the generated energy of channel 1;;1.000000;0.000000;Wh;4
+297;4;586;U16;;The lower 16bit of the generated energy of channel 24;;1.000000;0.000000;Wh;4
+298;4;587;U16;;The lower 16bit of the generated energy of channel 24-1;;1.000000;0.000000;Wh;4
+299;4;592;U16;;Channel 1 arc intensity real-time value;;1.000000;0.000000;;4
+300;4;593;U16;;Channel 2 arc intensity real-time value;;1.000000;0.000000;;4
+301;4;594;U16;;Channel 3 arc intensity real-time value;;1.000000;0.000000;;4
+302;4;595;U16;;Channel 4 arc intensity real-time value;;1.000000;0.000000;;4
+303;4;596;U16;;Channel 5 arc intensity real-time value;;1.000000;0.000000;;4
+304;4;597;U16;;Channel 6 arc intensity real-time value;;1.000000;0.000000;;4
+305;4;598;U16;;Channel 7 arc intensity real-time value;;1.000000;0.000000;;4
+306;4;599;U16;;Channel 8 arc intensity real-time value;;1.000000;0.000000;;4
+307;4;600;U16;;Channel 9 arc intensity real-time value;;1.000000;0.000000;;4
+308;4;601;U16;;Channel 10 arc intensity real-time value;;1.000000;0.000000;;4
+309;4;602;U16;;Channel 11 arc intensity real-time value;;1.000000;0.000000;;4
+310;4;603;U16;;Channel 12 arc intensity real-time value;;1.000000;0.000000;;4
+311;4;604;U16;;Channel 13 arc intensity real-time value;;1.000000;0.000000;;4
+312;4;605;U16;;Channel 14 arc intensity real-time value;;1.000000;0.000000;;4
+313;4;606;U16;;Channel 15 arc intensity real-time value;;1.000000;0.000000;;4
+314;4;607;U16;;Channel 16 arc intensity real-time value;;1.000000;0.000000;;4
+315;4;608;U16;;Channel 17 arc intensity real-time value;;1.000000;0.000000;;4
+316;4;609;U16;;Channel 18 arc intensity real-time value;;1.000000;0.000000;;4
+317;4;610;U16;;Channel 19 arc intensity real-time value;;1.000000;0.000000;;4
+318;4;611;U16;;Channel 20 arc intensity real-time value;;1.000000;0.000000;;4
+319;4;612;U16;;Channel 21 arc intensity real-time value;;1.000000;0.000000;;4
+320;4;613;U16;;Channel 22 arc intensity real-time value;;1.000000;0.000000;;4
+321;4;614;U16;;Channel 23 arc intensity real-time value;;1.000000;0.000000;;4
+322;4;615;U16;;Channel 24 arc intensity real-time value;;1.000000;0.000000;;4
+323;4;616;U16;;Channel 1 arc intensity history maximum;;1.000000;0.000000;;4
+324;4;617;U16;;Channel 2 arc intensity history maximum;;1.000000;0.000000;;4
+325;4;618;U16;;Channel 3 arc intensity history maximum;;1.000000;0.000000;;4
+326;4;619;U16;;Channel 4 arc intensity history maximum;;1.000000;0.000000;;4
+327;4;620;U16;;Channel 5 arc intensity history maximum;;1.000000;0.000000;;4
+328;4;621;U16;;Channel 6 arc intensity history maximum;;1.000000;0.000000;;4
+329;4;622;U16;;Channel 7 arc intensity history maximum;;1.000000;0.000000;;4
+330;4;623;U16;;Channel 8 arc intensity history maximum;;1.000000;0.000000;;4
+331;4;624;U16;;Channel 9 arc intensity history maximum;;1.000000;0.000000;;4
+332;4;625;U16;;Channel 10 arc intensity history maximum;;1.000000;0.000000;;4
+333;4;626;U16;;Channel 11 arc intensity history maximum;;1.000000;0.000000;;4
+334;4;627;U16;;Channel 12 arc intensity history maximum;;1.000000;0.000000;;4
+335;4;628;U16;;Channel 13 arc intensity history maximum;;1.000000;0.000000;;4
+336;4;629;U16;;Channel 14 arc intensity history maximum;;1.000000;0.000000;;4
+337;4;630;U16;;Channel 15 arc intensity history maximum;;1.000000;0.000000;;4
+338;4;631;U16;;Channel 16 arc intensity history maximum;;1.000000;0.000000;;4
+339;4;632;U16;;Channel 17 arc intensity history maximum;;1.000000;0.000000;;4
+340;4;633;U16;;Channel 18 arc intensity history maximum;;1.000000;0.000000;;4
+341;4;634;U16;;Channel 19 arc intensity history maximum;;1.000000;0.000000;;4
+342;4;635;U16;;Channel 20 arc intensity history maximum;;1.000000;0.000000;;4
+343;4;636;U16;;Channel 21 arc intensity history maximum;;1.000000;0.000000;;4
+344;4;637;U16;;Channel 22 arc intensity history maximum;;1.000000;0.000000;;4
+345;4;638;U16;;Channel 23 arc intensity history maximum;;1.000000;0.000000;;4
+346;4;639;U16;;Channel 24 arc intensity history maximum;;1.000000;0.000000;;4
+347;3;2560;U16;;Log read mark;;1.000000;0.000000;;4
+348;4;2561;U16;;Total log trips;;1.000000;0.000000;;4
+349;4;2562;U16;;Log trip time - year, month;;1.000000;0.000000;;4
+350;4;2563;U16;;Log trip time - day, hour;;1.000000;0.000000;;4
+351;4;2564;I16;;Log trip time - minutes, seconds;;1.000000;0.000000;;4
+352;4;2565;I16;;Log trip time - milliseconds;;1.000000;0.000000;;4
+353;4;2566;U16;;Log trip type;;1.000000;0.000000;;4
+354;4;2567;U16;;Log trip voltage;;1.000000;0.000000;;4
+355;4;2568;I16;;Log trip temperature 1;;1.000000;0.000000;;4
+356;4;2569;U16;;Log trip temperature 2;;1.000000;0.000000;;4
+357;4;2570;U16;;Log trip switch status;;1.000000;0.000000;;4
+358;4;2571;U16;;Log trip arc fault channel;;1.000000;0.000000;;4
+359;4;2572;I16;;Log trip 1 channel arc probability;;1.000000;0.000000;;4
+360;4;2573;I16;;Log trip 2 channel arc probability;;1.000000;0.000000;;4
+361;4;2574;I16;;Log trip 3 channel arc probability;;1.000000;0.000000;;4
+362;4;2575;I16;;Log trip 4 channel arc probability;;1.000000;0.000000;;4
+363;4;2576;I16;;Log trip 5 channel arc probability;;1.000000;0.000000;;4
+364;4;2577;I16;;Log trip 6 channel arc probability;;1.000000;0.000000;;4
+365;4;2578;I16;;Log trip 7 channel arc probability;;1.000000;0.000000;;4
+366;4;2579;I16;;Log trip 8 channel arc probability;;1.000000;0.000000;;4
+367;4;2580;I16;;Log trip 9 channel arc probability;;1.000000;0.000000;;4
+368;4;2581;I16;;Log trip 10 channel arc probability;;1.000000;0.000000;;4
+369;4;2582;I16;;Log trip 11 channel arc probability;;1.000000;0.000000;;4
+370;4;2583;I16;;Log trip 12 channel arc probability;;1.000000;0.000000;;4
+371;4;2584;I16;;Log trip 13 channel arc probability;;1.000000;0.000000;;4
+372;4;2585;I16;;Log trip 14 channel arc probability;;1.000000;0.000000;;4
+373;4;2586;I16;;Log trip 15 channel arc probability;;1.000000;0.000000;;4
+374;4;2587;I16;;Log trip 16 channel arc probability;;1.000000;0.000000;;4
+375;4;2588;I16;;Log trip 17 channel arc probability;;1.000000;0.000000;;4
+376;4;2589;I16;;Log trip 18 channel arc probability;;1.000000;0.000000;;4
+377;4;2590;I16;;Log trip 19 channel arc probability;;1.000000;0.000000;;4
+378;4;2591;I16;;Log trip 20 channel arc probability;;1.000000;0.000000;;4
+379;4;2592;I16;;Log trip 21 channel arc probability;;1.000000;0.000000;;4
+380;4;2593;I16;;Log trip 22 channel arc probability;;1.000000;0.000000;;4
+381;4;2594;I16;;Log trip 23 channel arc probability;;1.000000;0.000000;;4
+382;4;2595;I16;;Log trip 24 channel arc probability;;1.000000;0.000000;;4
+383;4;2596;I16;;Log trip 1  channel current;;1.000000;0.000000;;4
+384;4;2597;I16;;Log trip 2 channel current;;1.000000;0.000000;;4
+385;4;2598;I16;;Log trip 3 channel current;;1.000000;0.000000;;4
+386;4;2599;I16;;Log trip 4 channel current;;1.000000;0.000000;;4
+387;4;2600;I16;;Log trip 5 channel current;;1.000000;0.000000;;4
+388;4;2601;I16;;Log trip 6 channel current;;1.000000;0.000000;;4
+389;4;2602;I16;;Log trip 7 channel current;;1.000000;0.000000;;4
+390;4;2603;I16;;Log trip 8 channel current;;1.000000;0.000000;;4
+391;4;2604;I16;;Log trip 9 channel current;;1.000000;0.000000;;4
+392;4;2605;I16;;Log trip 10 channel current;;1.000000;0.000000;;4
+393;4;2606;I16;;Log trip 11 channel current;;1.000000;0.000000;;4
+394;4;2607;I16;;Log trip 12 channel current;;1.000000;0.000000;;4
+395;4;2608;I16;;Log trip 13 channel current;;1.000000;0.000000;;4
+396;4;2609;I16;;Log trip 14 channel current;;1.000000;0.000000;;4
+397;4;2610;I16;;Log trip 15 channel current;;1.000000;0.000000;;4
+398;4;2611;I16;;Log trip 16 channel current;;1.000000;0.000000;;4
+399;4;2612;I16;;Log trip 17 channel current;;1.000000;0.000000;;4
+400;4;2613;I16;;Log trip 18 channel current;;1.000000;0.000000;;4
+401;4;2614;I16;;Log trip 19 channel current;;1.000000;0.000000;;4
+402;4;2615;I16;;Log trip 20 channel current;;1.000000;0.000000;;4
+403;4;2616;I16;;Log trip 21 channel current;;1.000000;0.000000;;4
+404;4;2617;I16;;Log trip 22 channel current;;1.000000;0.000000;;4
+405;4;2618;I16;;Log trip 23 channel current;;1.000000;0.000000;;4
+406;4;2619;I16;;Log trip 24 channel current;;1.000000;0.000000;;4
+407;4;2620;U16;;1 channels trip log arcing times;;1.000000;0.000000;;4
+408;4;2621;U16;;2 channels trip log arcing times;;1.000000;0.000000;;4
+409;4;2622;U16;;3 channels trip log arcing times;;1.000000;0.000000;;4
+410;4;2623;U16;;4 channels trip log arcing times;;1.000000;0.000000;;4
+411;4;2624;U16;;5 channels trip log arcing times;;1.000000;0.000000;;4
+412;4;2625;U16;;6 channels trip log arcing times;;1.000000;0.000000;;4
+413;4;2626;U16;;7 channels trip log arcing times;;1.000000;0.000000;;4
+414;4;2627;U16;;8 channels trip log arcing times;;1.000000;0.000000;;4
+415;4;2628;U16;;9 channels trip log arcing times;;1.000000;0.000000;;4
+416;4;2629;U16;;10 channels trip log arcing times;;1.000000;0.000000;;4
+417;4;2630;U16;;11 channels trip log arcing times;;1.000000;0.000000;;4
+418;4;2631;U16;;12 channels trip log arcing times;;1.000000;0.000000;;4
+419;4;2632;U16;;13 channels trip log arcing times;;1.000000;0.000000;;4
+420;4;2633;U16;;14 channels trip log arcing times;;1.000000;0.000000;;4
+421;4;2634;U16;;15 channels trip log arcing times;;1.000000;0.000000;;4
+422;4;2635;U16;;16 channels trip log arcing times;;1.000000;0.000000;;4
+423;4;2636;U16;;17 channels trip log arcing times;;1.000000;0.000000;;4
+424;4;2637;U16;;18 channels trip log arcing times;;1.000000;0.000000;;4
+425;4;2638;U16;;19 channels trip log arcing times;;1.000000;0.000000;;4
+426;4;2639;U16;;20 channels trip log arcing times;;1.000000;0.000000;;4
+427;4;2640;U16;;21 channels trip log arcing times;;1.000000;0.000000;;4
+428;4;2641;U16;;22 channels trip log arcing times;;1.000000;0.000000;;4
+429;4;2642;U16;;23 channels trip log arcing times;;1.000000;0.000000;;4
+430;4;2643;U16;;24 channels trip log arcing times;;1.000000;0.000000;;4
+431;4;2644;U16;;Log bus trip arcing times;;1.000000;0.000000;;4
+432;3;2816;U16;;Alarm release;;1.000000;0.000000;%;4
+433;3;2817;U16;;Bus voltage alarm low threshold;;1.000000;0.000000;V;4
+434;3;2818;U16;;Bus voltage alarm high threshold;;1.000000;0.000000;V;4
+435;3;2819;I16;;Temperature sensor 1 alarm high threshold;;0.100000;0.000000;C;4
+436;3;2820;I16;;Temperature sensor 2 alarm high threshold;;0.100000;0.000000;C;4
+437;3;2821;U16;;Total current low alarm threshold;;10.000000;0.000000;mV;4
+438;3;2822;U16;;Total current too high alarm threshold;;10.000000;0.000000;mV;4
+439;3;2823;U16;;Current channel related alarm activation threshold;;1.000000;0.000000;mV;4
+440;3;2824;U16;;Undercurrent, overcurrent alarm threshold;;1.000000;0.000000;;4
+441;3;2825;U16;;Channel current low alarm threshold;;1.000000;0.000000;mA;4
+442;3;2826;U16;;Channel current high alarm threshold;;1.000000;0.000000;mA;4
+443;3;2827;I16;;Reverse total current too high threshold;;10.000000;0.000000;mA;4
+444;3;2828;I16;;Channel reverse current too high threshold;;1.000000;0.000000;mA;4
+445;3;2829;U16;;Current channel related trip threshold;;1.000000;0.000000;;4
+446;3;2830;I16;;Channel arc intensity super high;;1.000000;0.000000;;4
+447;3;2831;I16;;alarm threshold;;1.000000;0.000000;;4
+448;3;2832;U16;;Bus arc strength super high alarm threshold;;1.000000;0.000000;;4
+449;3;2833;U16;;Shunt release trip time length;;1.000000;0.000000;;4
+450;3;2834;U16;;Channel 1~16 current channel switch setting;;1.000000;0.000000;;4
+451;3;2835;U16;;Channel 17~24 current channel;;1.000000;0.000000;;4
+452;3;2836;U16;;switch setting;;1.000000;0.000000;;4
+453;3;2837;U16;;External power management time setting;;1.000000;0.000000;minutes;4
+454;3;2838;U16;;Current UI display, direction, reverse order control;;1.000000;0.000000;;4
+455;3;2839;U16;;Check the battery board drop interval setting;;1.000000;0.000000;;4
+456;3;2848;I16;;Alarm function management 1;;1.000000;0.000000;;4
+457;3;2849;U16;;Alarm function management 2;;1.000000;0.000000;;4
+458;3;2851;U16;;Alarm trip action management 1;;1.000000;0.000000;;4
+459;3;2852;U16;;Alarm trip action management 2;;1.000000;0.000000;;4
+460;3;3072;U16;;Clear power generation history value record;;1.000000;0.000000;;4
+461;3;3073;U16;;Clear channel arc and bus arc history alarms;;1.000000;0.000000;;4
+462;3;3074;U16;;Clear alarm trip status information and alarm interface;;1.000000;0.000000;;4
+463;3;3075;U16;;Clear arc alarm status;;1.000000;0.000000;;4
+464;3;3076;U16;;Remote manual control release performs tripping;;1.000000;0.000000;;4
+465;3;3077;U16;;Arc channel selfcheck operation;;1.000000;0.000000;;4
+466;3;3078;U16;;Log clear operation;;1.000000;0.000000;;4
+467;3;3200;U16;;Serial number 47~32;SERIAL;1.000000;0.000000;;4
+468;3;3201;U16;;Serial number 31~16;;1.000000;0.000000;;4
+469;3;3202;U16;;Serial number 15~0;;1.000000;0.000000;;4
+470;4;3203;U16;;Modbus slave address;UNIT_ID;1.000000;0.000000;;4
+471;4;3216;U16;;Broadcast time - year, month;;1.000000;0.000000;;4
+472;4;3217;U16;;Broadcast time - day, hour;;1.000000;0.000000;;4
+473;4;3218;U16;;Broadcast time - minutes, seconds;;1.000000;0.000000;;4
+474;4;3219;U16;;Broadcast time - milliseconds;;1.000000;0.000000;;4
+475;4;4096;I16;;Channel 1 panel 1 : voltage;;1.000000;0.000000;mV;4
+476;4;4097;I16;;Channel 1 panel 1: temperature;TEMP_CELL;1.000000;0.000000;C;4
+477;4;4098;I16;;Channel 1 panel 1 : channel and node addresses;;1.000000;0.000000;;4
+478;4;4099;I16;;Channel 1 panel 1 : year, month;;1.000000;0.000000;;4
+479;4;4100;I16;;Channel 1 panel 1 : day, hour;;1.000000;0.000000;;4
+480;4;4101;I16;;Channel 1 panel 1: minutes, seconds;;1.000000;0.000000;;4
+481;4;4330;I16;;Channel 1 panel 40 : voltage;;1.000000;0.000000;mV;4
+482;4;4331;I16;;Channel 1 panel 40 : temperature, high;;1.000000;0.000000;C;4
+483;4;4332;I16;;Channel 1 panel 40 : channel and node addresses;;1.000000;0.000000;;4
+484;4;4333;I16;;Channel 1 panel 40 : year, month;;1.000000;0.000000;;4
+485;4;4334;I16;;Channel 1 panel 40 : day, hour;;1.000000;0.000000;;4
+486;4;4342;I16;;Channel 2 panel 1 : voltage;;1.000000;0.000000;;4
+487;4;4588;I16;;Channel 3 panel 1 : voltage;;1.000000;0.000000;;4
+488;4;4834;I16;;Channel 4 panel 1 : voltage;;1.000000;0.000000;;4
+489;4;5080;I16;;Channel 5 panel 1 : voltage;;1.000000;0.000000;;4
+490;4;5326;I16;;Channel 6 panel 1 : voltage;;1.000000;0.000000;;4
+491;4;5572;I16;;Channel 7 panel 1 : voltage;;1.000000;0.000000;;4
+492;4;5818;I16;;Channel 8 panel 1 : voltage;;1.000000;0.000000;;4
+493;4;6064;I16;;Channel 9 panel 1 : voltage;;1.000000;0.000000;;4
+494;4;6310;I16;;Channel 10 panel 1 : voltage;;1.000000;0.000000;;4
+495;4;6556;I16;;Channel 11 panel 1 : voltage;;1.000000;0.000000;;4
+496;4;6802;I16;;Channel 12 panel 1 : voltage;;1.000000;0.000000;;4
+497;4;7048;I16;;Channel 13 panel 1 : voltage;;1.000000;0.000000;;4
+498;4;7294;I16;;Channel 14 panel 1 : voltage;;1.000000;0.000000;;4
+499;4;7540;I16;;Channel 15 panel 1 : voltage;;1.000000;0.000000;;4
+500;4;7786;I16;;Channel 16 panel 1 : voltage;;1.000000;0.000000;;4
+501;4;8032;I16;;Channel 17 panel 1 : voltage;;1.000000;0.000000;;4
+502;4;8278;I16;;Channel 18 panel 1: day, hour;;1.000000;0.000000;;4
+503;4;8524;I16;;Channel 19 panel 1 : voltage;;1.000000;0.000000;;4
+504;4;8770;I16;;Channel 20 panel 1 : voltage;;1.000000;0.000000;;4
+505;4;9016;I16;;Channel 21 panel 1 : voltage;;1.000000;0.000000;;4
+506;4;9262;I16;;Channel 22 panel 1 : voltage;;1.000000;0.000000;;4
+507;4;9508;I16;;Channel 23 panel 1 : voltage;;1.000000;0.000000;;4
+508;4;9754;I16;;Channel 24 panel 1 : voltage;;1.000000;0.000000;mV;4
+509;4;9755;I16;;Channel 24 panel 1 : temperature sensor;;1.000000;0.000000;C;4
+510;4;9756;I16;;Channel 24 panel 1 : channel and node addresses;;1.000000;0.000000;;4
+511;4;9757;I16;;Channel 24 panel 1 : year, month;;1.000000;0.000000;;4
+512;4;9758;I16;;Channel 24 panel 1 : day, hour;;1.000000;0.000000;;4
+513;4;9759;I16;;Channel 24 panel 1: minutes, seconds;;1.000000;0.000000;;4
+514;4;9988;I16;;Channel 24 panel 40 : voltage;;1.000000;0.000000;mV;4
+515;4;9989;I16;;Channel 24 panel 40 : temperature sensor;;1.000000;0.000000;mV;4
+516;4;9990;I16;;Channel 18 panel 1 : day, hour;;1.000000;0.000000;;4
+517;4;9991;I16;;Channel 24 panel 40 : year, month;;1.000000;0.000000;;4
+518;4;9992;I16;;Channel 24 panel 40: day, hour;;1.000000;0.000000;;4
+519;4;9993;I16;;Channel 24 panel 40 : minutes, seconds;;1.000000;0.000000;;4
+520;3;65024;U16;;Modbus address;;1.000000;0.000000;;4
+521;3;65025;U16;;Modbus Baud rate;;1.000000;0.000000;;4
+522;3;65026;U16;;Modbus Parity;;1.000000;0.000000;;4
+523;4;65039;U16;;Gilgal3 node software version Unsigned;;1.000000;0.000000;;4
+524;3;65040;U16;;Gilgal3 node hardware version;;1.000000;0.000000;;4

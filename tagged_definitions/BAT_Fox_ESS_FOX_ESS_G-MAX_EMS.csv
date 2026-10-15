@@ -1,0 +1,589 @@
+﻿Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
+1;4;101;I16;;PCS actual total active power summary;P_AC;0.1;0;KW;4
+2;4;102;I16;;PCS actual total reactive power summary;Q_AC;0.1;0;Kvar;4
+3;4;103;I16;;Total voltage summary;;0.1;0;V;4
+4;4;104;I16;;Total current summary;I_AC;0.1;0;A;4
+5;4;105;U16;;Total soc summary;SOC;1;0;%;4
+6;4;106;U16;;Battery status summary;;1;0;;4
+7;4;107;U16;;Total number of batteries summary;;1;0;;4
+8;4;108;I16;;Average battery temperature summary;TEMP;1;0;Degr. Celsius;4
+9;4;109;I16;;Maximum battery temperature difference summary;;1;0;Degr. Celsius;4
+10;4;110;U16;;Maximum single cell voltage value summary;;0.001;0;V;4
+11;4;111;U16;;Minimum single cell voltage value summary;;0.001;0;V;4
+12;4;114;U16;;System Status;;1;0;;4
+13;4;136;U32;;Heartbeat Point;;1;0;;4
+14;4;32000;U16;;Device serial number;SERIAL;1;0;;4
+15;4;32024;U16;;Battery Pack Serial Number 1;;1;0;;4
+16;4;32048;U16;;Battery pack serial number 2;;1;0;;4
+17;4;32072;U16;;Battery pack serial number 3;;1;0;;4
+18;4;32096;U16;;Battery pack serial number 4;;1;0;;4
+19;4;32120;U16;;Software Version;;1;0;;4
+20;4;32144;U16;;Hardware version;;1;0;;4
+21;4;32168;U16;;Manufacturer Name;MANUFACTURER;1;0;;4
+22;4;32192;U16;;Date of manufacture;;1;0;;4
+23;4;31024;U16;;Software Version 2;;1;0;;4
+24;4;31048;U16;;System ID;;1;0;;4
+25;4;31072;U16;;System Model;MODEL;1;0;;4
+26;4;31096;U16;;System version;;1;0;;4
+27;4;31120;U16;;CPLD Version;;1;0;;4
+28;4;31144;U16;;DSP1 version;;1;0;;4
+29;4;31168;U16;;devName;;1;0;;4
+30;3;2000;U16;;Total start and stop command shutdown 0-startup 1-reset 2-test 3;;1;0;;4
+31;3;2001;U16;;System on grid and off grid instructions;;1;0;;4
+32;3;90;I16;;Schedule automatic mode switching;;1;0;;4
+33;3;91;I16;;Subsystem control mode 1 when the three functions are activated at the same time local demand side response peak valley;;1;0;;4
+34;3;92;I16;;Subsystem control mode 0 when the three functions are activated at the same time local demand side response peak valley;;1;0;;4
+35;3;93;U16;;modbus disconnect timeout;;1;0;s;4
+36;3;94;U16;;Modbus fault recovery;;1;0;;4
+37;3;95;U16;;ModbusTCP communication loss strategy enable;;1;0;;4
+38;3;102;U16;;Instruction mode 0 subsystem 1 plan 2 total instructions;;1;0;;4
+39;3;104;U16;;Control source local 0 remote 1 other;;1;0;;4
+40;3;105;I16;;Total active power command;;0.1;0;kW;4
+41;3;106;I16;;Total reactive power command;;0.1;0;kVar;4
+42;3;107;I16;;Season table A 0h00-0h15;;0.1;0;kW;4
+43;3;108;I16;;Seasonal table A 0h15-0h30;;0.1;0;kW;4
+44;3;109;I16;;Seasonal table A 0h30-0h45;;0.1;0;kW;4
+45;3;110;I16;;Seasonal table A 0h45-1h00;;0.1;0;kW;4
+46;3;111;I16;;Seasonal table A 1h00-1h15;;0.1;0;kW;4
+47;3;112;I16;;Seasonal table A 1h15-1h30;;0.1;0;kW;4
+48;3;113;I16;;Seasonal table A 1h30-1h45;;0.1;0;kW;4
+49;3;114;I16;;Seasonal table A 1h45-2h00;;0.1;0;kW;4
+50;3;115;I16;;Seasonal table A 2h00-2h15;;0.1;0;kW;4
+51;3;116;I16;;Seasonal table A 2h15-2h30;;0.1;0;kW;4
+52;3;117;I16;;Seasonal table A 2h30-2h45;;0.1;0;kW;4
+53;3;118;I16;;Seasonal table A 2h45-3h00;;0.1;0;kW;4
+54;3;119;I16;;Seasonal table A 3h00-3h15;;0.1;0;kW;4
+55;3;120;I16;;Seasonal table A 3h15-3h30;;0.1;0;kW;4
+56;3;121;I16;;Seasonal table A 3h30-3h45;;0.1;0;kW;4
+57;3;122;I16;;Seasonal table A 3h45-4h00;;0.1;0;kW;4
+58;3;123;I16;;Seasonal table A 4h00-4h15;;0.1;0;kW;4
+59;3;124;I16;;Seasonal table A 4h15-4h30;;0.1;0;kW;4
+60;3;125;I16;;Seasonal table A 4h30-4h45;;0.1;0;kW;4
+61;3;126;I16;;Seasonal table A 4h45-5h00;;0.1;0;kW;4
+62;3;127;I16;;Seasonal table A 5h00-5h15;;0.1;0;kW;4
+63;3;128;I16;;Seasonal Schedule A 5h15-5h30;;0.1;0;kW;4
+64;3;129;I16;;Seasonal table A 5h30-5h45;;0.1;0;kW;4
+65;3;130;I16;;Seasonal table A 5h45-6h00;;0.1;0;kW;4
+66;3;131;I16;;Seasonal Schedule A 6h00-6h15;;0.1;0;kW;4
+67;3;132;I16;;Seasonal Schedule A 6h15-6h30;;0.1;0;kW;4
+68;3;133;I16;;Seasonal table A 6h30-6h45;;0.1;0;kW;4
+69;3;134;I16;;Seasonal table A 6h45-7h00;;0.1;0;kW;4
+70;3;135;I16;;Seasonal Schedule A 7h00-7h15;;0.1;0;kW;4
+71;3;136;I16;;Seasonal Schedule A 7h15-7h30;;0.1;0;kW;4
+72;3;137;I16;;Seasonal table A 7h30-7h45;;0.1;0;kW;4
+73;3;138;I16;;Seasonal table A 7h45-8h00;;0.1;0;kW;4
+74;3;139;I16;;Seasonal Schedule A 8h00-8h15;;0.1;0;kW;4
+75;3;140;I16;;Seasonal Schedule A 8h15-8h30;;0.1;0;kW;4
+76;3;141;I16;;Seasonal table A 8h30-8h45;;0.1;0;kW;4
+77;3;142;I16;;Seasonal table A 8h45-9h00;;0.1;0;kW;4
+78;3;143;I16;;Seasonal Schedule A 9h00-9h15;;0.1;0;kW;4
+79;3;144;I16;;Seasonal Schedule A 9h15-9h30;;0.1;0;kW;4
+80;3;145;I16;;Seasonal table A 9h30-9h45;;0.1;0;kW;4
+81;3;146;I16;;Seasonal table A 9h45-10h00;;0.1;0;kW;4
+82;3;147;I16;;Seasonal Schedule A 10h00-10h15;;0.1;0;kW;4
+83;3;148;I16;;Seasonal table A 10h15-10h30;;0.1;0;kW;4
+84;3;149;I16;;Seasonal table A 10h30-10h45;;0.1;0;kW;4
+85;3;150;I16;;Seasonal Schedule A 10h45-11h00;;0.1;0;kW;4
+86;3;151;I16;;Seasonal Schedule A 11h00-11h15;;0.1;0;kW;4
+87;3;152;I16;;Seasonal Schedule A 11h15-11h30;;0.1;0;kW;4
+88;3;153;I16;;Seasonal Schedule A 11h30-11h45;;0.1;0;kW;4
+89;3;154;I16;;Seasonal Schedule A 11h45-12h00;;0.1;0;kW;4
+90;3;155;I16;;Seasonal Schedule A 12h00-12h15;;0.1;0;kW;4
+91;3;156;I16;;Seasonal Schedule A 12h15-12h30;;0.1;0;kW;4
+92;3;157;I16;;Seasonal table A 12h30-12h45;;0.1;0;kW;4
+93;3;158;I16;;Seasonal table A 12h45-13h00;;0.1;0;kW;4
+94;3;159;I16;;Seasonal table A 13h00-13h15;;0.1;0;kW;4
+95;3;160;I16;;Seasonal table A 13h15-13h30;;0.1;0;kW;4
+96;3;161;I16;;Seasonal table A 13h30-13h45;;0.1;0;kW;4
+97;3;162;I16;;Seasonal table A 13h45-14h00;;0.1;0;kW;4
+98;3;163;I16;;Seasonal table A 14h00-14h15;;0.1;0;kW;4
+99;3;164;I16;;Seasonal table A 14h15-14h30;;0.1;0;kW;4
+100;3;165;I16;;Seasonal table A 14h30-14h45;;0.1;0;kW;4
+101;3;166;I16;;Seasonal table A 14h45-15h00;;0.1;0;kW;4
+102;3;167;I16;;Seasonal table A 15h00-15h15;;0.1;0;kW;4
+103;3;168;I16;;Seasonal table A 15h15-15h30;;0.1;0;kW;4
+104;3;169;I16;;Seasonal table A 15h30-15h45;;0.1;0;kW;4
+105;3;170;I16;;Seasonal table A 15h45-16h00;;0.1;0;kW;4
+106;3;171;I16;;Seasonal table A 16h00-16h15;;0.1;0;kW;4
+107;3;172;I16;;Seasonal table A 16h15-16h30;;0.1;0;kW;4
+108;3;173;I16;;Seasonal table A 16h30-16h45;;0.1;0;kW;4
+109;3;174;I16;;Seasonal table A 16h45-17h00;;0.1;0;kW;4
+110;3;175;I16;;Seasonal table A 17h00-17h15;;0.1;0;kW;4
+111;3;176;I16;;Seasonal table A 17h15-17h30;;0.1;0;kW;4
+112;3;177;I16;;Seasonal table A 17h30-17h45;;0.1;0;kW;4
+113;3;178;I16;;Seasonal table A 17h45-18h00;;0.1;0;kW;4
+114;3;179;I16;;Seasonal table A 18h00-18h15;;0.1;0;kW;4
+115;3;180;I16;;Seasonal table A 18h15-18h30;;0.1;0;kW;4
+116;3;181;I16;;Seasonal table A 18h30-18h45;;0.1;0;kW;4
+117;3;182;I16;;Seasonal table A 18h45-19h00;;0.1;0;kW;4
+118;3;183;I16;;Seasonal table A 19h00-19h15;;0.1;0;kW;4
+119;3;184;I16;;Seasonal table A 19h15-19h30;;0.1;0;kW;4
+120;3;185;I16;;Seasonal table A 19h30-19h45;;0.1;0;kW;4
+121;3;186;I16;;Seasonal table A 19h45-20h00;;0.1;0;kW;4
+122;3;187;I16;;Seasonal table A 20h00-20h15;;0.1;0;kW;4
+123;3;188;I16;;Seasonal table A 20h15-20h30;;0.1;0;kW;4
+124;3;189;I16;;Seasonal table A 20h30-20h45;;0.1;0;kW;4
+125;3;190;I16;;Seasonal table A 20h45-21h00;;0.1;0;kW;4
+126;3;191;I16;;Seasonal table A 21h00-21h15;;0.1;0;kW;4
+127;3;192;I16;;Seasonal table A 21h15-21h30;;0.1;0;kW;4
+128;3;193;I16;;Seasonal table A 21h30-21h45;;0.1;0;kW;4
+129;3;194;I16;;Seasonal table A 21h45-22h00;;0.1;0;kW;4
+130;3;195;I16;;Seasonal table A 22h00-22h15;;0.1;0;kW;4
+131;3;196;I16;;Seasonal table A 22h15-22h30;;0.1;0;kW;4
+132;3;197;I16;;Seasonal table A 22h30-22h45;;0.1;0;kW;4
+133;3;198;I16;;Seasonal table A 22h45-23h00;;0.1;0;kW;4
+134;3;199;I16;;Seasonal table A 23h00-23h15;;0.1;0;kW;4
+135;3;200;I16;;Seasonal table A 23h15-23h30;;0.1;0;kW;4
+136;3;201;I16;;Seasonal table A 23h30-23h45;;0.1;0;kW;4
+137;3;202;I16;;Seasonal table A 23h45-00h00;;0.1;0;kW;4
+138;3;204;I16;;Season table B 0h00-0h15;;0.1;0;kW;4
+139;3;205;I16;;Seasonal table B 0h15-0h30;;0.1;0;kW;4
+140;3;206;I16;;Seasonal table B 0h30-0h45;;0.1;0;kW;4
+141;3;207;I16;;Seasonal table B 0h45-1h00;;0.1;0;kW;4
+142;3;208;I16;;Seasonal table B 1h00-1h15;;0.1;0;kW;4
+143;3;209;I16;;Seasonal table B 1h15-1h30;;0.1;0;kW;4
+144;3;210;I16;;Seasonal table B 1h30-1h45;;0.1;0;kW;4
+145;3;211;I16;;Seasonal table B 1h45-2h00;;0.1;0;kW;4
+146;3;212;I16;;Seasonal table B 2h00-2h15;;0.1;0;kW;4
+147;3;213;I16;;Seasonal table B 2h15-2h30;;0.1;0;kW;4
+148;3;214;I16;;Seasonal table B 2h30-2h45;;0.1;0;kW;4
+149;3;215;I16;;Seasonal table B 2h45-3h00;;0.1;0;kW;4
+150;3;216;I16;;Seasonal table B 3h00-3h15;;0.1;0;kW;4
+151;3;217;I16;;Seasonal table B 3h15-3h30;;0.1;0;kW;4
+152;3;218;I16;;Seasonal table B 3h30-3h45;;0.1;0;kW;4
+153;3;219;I16;;Seasonal table B 3h45-4h00;;0.1;0;kW;4
+154;3;220;I16;;Seasonal table B 4h00-4h15;;0.1;0;kW;4
+155;3;221;I16;;Seasonal table B 4h15-4h30;;0.1;0;kW;4
+156;3;222;I16;;Seasonal table B 4h30-4h45;;0.1;0;kW;4
+157;3;223;I16;;Seasonal table B 4h45-5h00;;0.1;0;kW;4
+158;3;224;I16;;Seasonal table B 5h00-5h15;;0.1;0;kW;4
+159;3;225;I16;;Seasonal table B 5h15-5h30;;0.1;0;kW;4
+160;3;226;I16;;Seasonal table B 5h30-5h45;;0.1;0;kW;4
+161;3;227;I16;;Seasonal table B 5h45-6h00;;0.1;0;kW;4
+162;3;228;I16;;Seasonal table B 6h00-6h15;;0.1;0;kW;4
+163;3;229;I16;;Seasonal table B 6h15-6h30;;0.1;0;kW;4
+164;3;230;I16;;Seasonal table B 6h30-6h45;;0.1;0;kW;4
+165;3;231;I16;;Seasonal table B 6h45-7h00;;0.1;0;kW;4
+166;3;232;I16;;Seasonal table B 7h00-7h15;;0.1;0;kW;4
+167;3;233;I16;;Seasonal table B 7h15-7h30;;0.1;0;kW;4
+168;3;234;I16;;Seasonal table B 7h30-7h45;;0.1;0;kW;4
+169;3;235;I16;;Seasonal table B 7h45-8h00;;0.1;0;kW;4
+170;3;236;I16;;Seasonal table B 8h00-8h15;;0.1;0;kW;4
+171;3;237;I16;;Seasonal table B 8h15-8h30;;0.1;0;kW;4
+172;3;238;I16;;Seasonal table B 8h30-8h45;;0.1;0;kW;4
+173;3;239;I16;;Seasonal table B 8h45-9h00;;0.1;0;kW;4
+174;3;240;I16;;Seasonal table B 9h00-9h15;;0.1;0;kW;4
+175;3;241;I16;;Seasonal table B 9h15-9h30;;0.1;0;kW;4
+176;3;242;I16;;Seasonal table B 9h30-9h45;;0.1;0;kW;4
+177;3;243;I16;;Seasonal table B 9h45-10h00;;0.1;0;kW;4
+178;3;244;I16;;Seasonal table B 10h00-10h15;;0.1;0;kW;4
+179;3;245;I16;;Seasonal table B 10h15-10h30;;0.1;0;kW;4
+180;3;246;I16;;Seasonal table B 10h30-10h45;;0.1;0;kW;4
+181;3;247;I16;;Seasonal table B 10h45-11h00;;0.1;0;kW;4
+182;3;248;I16;;Seasonal table B 11h00-11h15;;0.1;0;kW;4
+183;3;249;I16;;Seasonal table B 11h15-11h30;;0.1;0;kW;4
+184;3;250;I16;;Seasonal table B 11h30-11h45;;0.1;0;kW;4
+185;3;251;I16;;Seasonal table B 11h45-12h00;;0.1;0;kW;4
+186;3;252;I16;;Seasonal table B 12h00-12h15;;0.1;0;kW;4
+187;3;253;I16;;Seasonal table B 12h15-12h30;;0.1;0;kW;4
+188;3;254;I16;;Seasonal table B 12h30-12h45;;0.1;0;kW;4
+189;3;255;I16;;Seasonal table B 12h45-13h00;;0.1;0;kW;4
+190;3;256;I16;;Seasonal table B 13h00-13h15;;0.1;0;kW;4
+191;3;257;I16;;Seasonal table B 13h15-13h30;;0.1;0;kW;4
+192;3;258;I16;;Seasonal table B 13h30-13h45;;0.1;0;kW;4
+193;3;259;I16;;Seasonal table B 13h45-14h00;;0.1;0;kW;4
+194;3;260;I16;;Seasonal table B 14h00-14h15;;0.1;0;kW;4
+195;3;261;I16;;Seasonal table B 14h15-14h30;;0.1;0;kW;4
+196;3;262;I16;;Seasonal table B 14h30-14h45;;0.1;0;kW;4
+197;3;263;I16;;Seasonal table B 14h45-15h00;;0.1;0;kW;4
+198;3;264;I16;;Seasonal table B 15h00-15h15;;0.1;0;kW;4
+199;3;265;I16;;Seasonal table B 15h15-15h30;;0.1;0;kW;4
+200;3;266;I16;;Seasonal table B 15h30-15h45;;0.1;0;kW;4
+201;3;267;I16;;Seasonal table B 15h45-16h00;;0.1;0;kW;4
+202;3;268;I16;;Seasonal table B 16h00-16h15;;0.1;0;kW;4
+203;3;269;I16;;Seasonal table B 16h15-16h30;;0.1;0;kW;4
+204;3;270;I16;;Seasonal table B 16h30-16h45;;0.1;0;kW;4
+205;3;271;I16;;Seasonal table B 16h45-17h00;;0.1;0;kW;4
+206;3;272;I16;;Seasonal table B 17h00-17h15;;0.1;0;kW;4
+207;3;273;I16;;Seasonal table B 17h15-17h30;;0.1;0;kW;4
+208;3;274;I16;;Seasonal table B 17h30-17h45;;0.1;0;kW;4
+209;3;275;I16;;Seasonal table B 17h45-18h00;;0.1;0;kW;4
+210;3;276;I16;;Seasonal table B 18h00-18h15;;0.1;0;kW;4
+211;3;277;I16;;Seasonal table B 18h15-18h30;;0.1;0;kW;4
+212;3;278;I16;;Seasonal table B 18h30-18h45;;0.1;0;kW;4
+213;3;279;I16;;Seasonal table B 18h45-19h00;;0.1;0;kW;4
+214;3;280;I16;;Seasonal table B 19h00-19h15;;0.1;0;kW;4
+215;3;281;I16;;Seasonal table B 19h15-19h30;;0.1;0;kW;4
+216;3;282;I16;;Seasonal table B 19h30-19h45;;0.1;0;kW;4
+217;3;283;I16;;Seasonal table B 19h45-20h00;;0.1;0;kW;4
+218;3;284;I16;;Seasonal table B 20h00-20h15;;0.1;0;kW;4
+219;3;285;I16;;Seasonal table B 20h15-20h30;;0.1;0;kW;4
+220;3;286;I16;;Seasonal table B 20h30-20h45;;0.1;0;kW;4
+221;3;287;I16;;Seasonal table B 20h45-21h00;;0.1;0;kW;4
+222;3;288;I16;;Seasonal table B 21h00-21h15;;0.1;0;kW;4
+223;3;289;I16;;Seasonal table B 21h15-21h30;;0.1;0;kW;4
+224;3;290;I16;;Seasonal table B 21h30-21h45;;0.1;0;kW;4
+225;3;291;I16;;Seasonal table B 21h45-22h00;;0.1;0;kW;4
+226;3;292;I16;;Seasonal table B 22h00-22h15;;0.1;0;kW;4
+227;3;293;I16;;Seasonal table B 22h15-22h30;;0.1;0;kW;4
+228;3;294;I16;;Seasonal table B 22h30-22h45;;0.1;0;kW;4
+229;3;295;I16;;Seasonal table B 22h45-23h00;;0.1;0;kW;4
+230;3;296;I16;;Seasonal table B 23h00-23h15;;0.1;0;kW;4
+231;3;297;I16;;Seasonal table B 23h15-23h30;;0.1;0;kW;4
+232;3;298;I16;;Seasonal table B 23h30-23h45;;0.1;0;kW;4
+233;3;299;I16;;Seasonal table B 23h45-00h00;;0.1;0;kW;4
+234;3;300;U16;;Season A starting month;;1;0;;4
+235;3;301;U16;;Season B starting month;;1;0;;4
+236;3;336;I16;;Max temperature limit power working temperature point 0;;1;0;Degr. Celsius;4
+237;3;337;I16;;Max temperature limit power working temperature point 1;;1;0;Degr. Celsius;4
+238;3;338;I16;;Max temperature limit power working temperature point 2;;1;0;Degr. Celsius;4
+239;3;339;I16;;Max temperature limit power working temperature point 3;;1;0;Degr. Celsius;4
+240;3;340;I16;;Max temperature limit power working temperature point 4;;1;0;Degr. Celsius;4
+241;3;341;I16;;Max temperature limit power working temperature point 5;;1;0;Degr. Celsius;4
+242;3;342;I16;;Max temperature limit power working temperature point 6;;1;0;Degr. Celsius;4
+243;3;343;I16;;Max temperature limit power working temperature point 7;;1;0;Degr. Celsius;4
+244;3;344;I16;;Max temperature limit power working temperature point 8;;1;0;Degr. Celsius;4
+245;3;345;I16;;Max temperature limit power discharge power point 0;;0.1;0;kW;4
+246;3;346;I16;;Max temperature limit power discharge power point 1;;0.1;0;kW;4
+247;3;347;I16;;Max temperature limit power discharge power point 2;;0.1;0;kW;4
+248;3;348;I16;;Max temperature limit power discharge power point 3;;0.1;0;kW;4
+249;3;349;I16;;Max temperature limit power discharge power point 4;;0.1;0;kW;4
+250;3;350;I16;;Max temperature limit power discharge power point 5;;0.1;0;kW;4
+251;3;351;I16;;Max temperature limit power discharge power point 6;;0.1;0;kW;4
+252;3;352;I16;;Max temperature limit power discharge power point 7;;0.1;0;kW;4
+253;3;353;I16;;Max temperature limit power discharge power point 8;;0.1;0;kW;4
+254;3;354;I16;;Max temperature limit power discharge power point 9;;0.1;0;kW;4
+255;3;355;I16;;Max temperature limit power charging power point 0 kw;;0.1;0;kW;4
+256;3;356;I16;;Max temperature limit power charging power point 1 kw;;0.1;0;kW;4
+257;3;357;I16;;Max temperature limit power charging power point 2 kw;;0.1;0;kW;4
+258;3;358;I16;;Max temperature limit power charging power point 3 kw;;0.1;0;kW;4
+259;3;359;I16;;Max temperature limit power charging power point 4 kw;;0.1;0;kW;4
+260;3;360;I16;;Max temperature limit power charging power point 5 kw;;0.1;0;kW;4
+261;3;361;I16;;Max temperature limit power charging power point 6 kw;;0.1;0;kW;4
+262;3;362;I16;;Max temperature limit power charging power point 7 kw;;0.1;0;kW;4
+263;3;363;I16;;Max temperature limit power charging power point 8 kw;;0.1;0;kW;4
+264;3;364;I16;;Max temperature limit power charging power point 9 kw;;0.1;0;kW;4
+265;3;365;I16;;PCS maximum discharge power;;0.1;0;kW;4
+266;3;366;I16;;PCS charging maximum power;;0.1;0;kW;4
+267;3;367;I16;;Stop charging single cell voltage;;0.001;0;V;4
+268;3;368;I16;;Stop charging single cell voltage return difference;;0.001;0;V;4
+269;3;369;I16;;Parking cell voltage;;0.001;0;V;4
+270;3;370;I16;;Parking single cell voltage hysteresis value;;0.001;0;V;4
+271;3;371;I16;;Reverse flow rated power kW;P_RATED;0.1;0;kW;4
+272;3;375;I16;;Reverse flow power differential value;;0.1;0;kW;4
+273;3;376;U16;;Backflow adjustment frequency s;FREQ;1;0;s;4
+274;3;377;I16;;Single cell voltage limit power voltage point 0 v;;0.001;0;V;4
+275;3;378;I16;;Single cell voltage limit power voltage point 1 v;;0.001;0;V;4
+276;3;379;I16;;Single cell voltage limit power voltage point 2 v;;0.001;0;V;4
+277;3;380;I16;;Single cell voltage limit power voltage point 3 v;;0.001;0;V;4
+278;3;381;I16;;Single cell voltage limit power voltage point 4 v;;0.001;0;V;4
+279;3;382;I16;;Single cell voltage limit power voltage point 5 v;;0.001;0;V;4
+280;3;383;I16;;Single cell voltage limit power voltage point 6 v;;0.001;0;V;4
+281;3;384;I16;;Single cell voltage limit power voltage point 7 v;;0.001;0;V;4
+282;3;385;I16;;Single cell voltage limit power voltage point 8 v;;0.001;0;V;4
+283;3;386;I16;;Single cell voltage limited power discharge power point 0;;0.1;0;kW;4
+284;3;387;I16;;Single cell voltage limited power discharge power point 1;;0.1;0;kW;4
+285;3;388;I16;;Single cell voltage limited power discharge power point 2;;0.1;0;kW;4
+286;3;389;I16;;Single cell voltage limited power discharge power point 3;;0.1;0;kW;4
+287;3;390;I16;;Single cell voltage limit power discharge power point 4;;0.1;0;kW;4
+288;3;391;I16;;Single cell voltage limited power discharge power point 5;;0.1;0;kW;4
+289;3;392;I16;;Single cell voltage limit power discharge power point 6;;0.1;0;kW;4
+290;3;393;I16;;Single cell voltage limited power discharge power point 7;;0.1;0;kW;4
+291;3;394;I16;;Single cell voltage limited power discharge power point 8;;0.1;0;kW;4
+292;3;395;I16;;Single cell voltage limit power discharge power point 9;;0.1;0;kW;4
+293;3;396;I16;;Single cell voltage limited power charging power point 0 kw;;0.1;0;kW;4
+294;3;397;I16;;Single cell voltage limited power charging power point 1 kw;;0.1;0;kW;4
+295;3;398;I16;;Single cell voltage limited power charging power point 2 kw;;0.1;0;kW;4
+296;3;399;I16;;Single cell voltage limited power charging power point 3 kw;;0.1;0;kW;4
+297;3;400;I16;;Single cell voltage limited power charging power point 4 kw;;0.1;0;kW;4
+298;3;401;I16;;Single cell voltage limited power charging power point 5 kw;;0.1;0;kW;4
+299;3;402;I16;;Single cell voltage limited power charging power point 6 kw;;0.1;0;kW;4
+300;3;403;I16;;Single cell voltage limited power charging power point 7 kw;;0.1;0;kW;4
+301;3;404;I16;;Single cell voltage limited power charging power point 8 kw;;0.1;0;kW;4
+302;3;405;I16;;Single cell voltage limited power charging power point 9 kw;;0.1;0;kW;4
+303;3;406;I16;;Demand rated power month kw;;0.1;0;kW;4
+304;3;407;I16;;Demand rated power February kw;;0.1;0;kW;4
+305;3;408;I16;;Demand rated power March kw;;0.1;0;kW;4
+306;3;409;I16;;Demand rated power April kw;;0.1;0;kW;4
+307;3;410;I16;;Demand rated power May kw;;0.1;0;kW;4
+308;3;411;I16;;Demand rated power June kw;;0.1;0;kW;4
+309;3;412;I16;;Demand rated power July kw;;0.1;0;kW;4
+310;3;413;I16;;Demand rated power August kw;;0.1;0;kW;4
+311;3;414;I16;;Demand rated power September kw;;0.1;0;kW;4
+312;3;415;I16;;Demand rated power October kw;;0.1;0;kW;4
+313;3;416;I16;;Demand rated power November kw;;0.1;0;kW;4
+314;3;417;I16;;Demand rated power December kw;;0.1;0;kW;4
+315;3;421;I16;;Demand power hysteresis value must be less than the hysteresis value;;0.1;0;kW;4
+316;3;422;U16;;Demand adjustment frequency s;;1;0;s;4
+317;3;423;U16;;Planned power reverse flow enable switch;;1;0;;4
+318;3;424;U32;;Planned power 1 start time year month day;;1;0;;4
+319;3;426;U32;;Planned power 1 end time year month day;;1;0;;4
+320;3;428;U32;;Planned power 1 start time hours Minutes seconds;;1;0;;4
+321;3;430;U32;;Planned power 1 end time hours Minutes seconds;;1;0;;4
+322;3;432;I16;;Planned power 1 Active power;;0.1;0;kW;4
+323;3;433;I16;;Planned power 1 reactive power;;0.1;0;kVar;4
+324;3;434;U16;;Planned power 1 usage indicator;;1;0;;4
+325;3;435;U32;;Planned power 2 start time year month day;;1;0;;4
+326;3;437;U32;;Planned power 2 end time year month day;;1;0;;4
+327;3;439;U32;;Planned power 2 start time hours Minutes seconds;;1;0;;4
+328;3;441;U32;;Planned power 2 end time hours Minutes seconds;;1;0;;4
+329;3;443;I16;;Planned power 2 active power;;0.1;0;kW;4
+330;3;444;I16;;Planned power 2 reactive power;;0.1;0;kVar;4
+331;3;445;U16;;Planned Power 2 Usage Logo;;1;0;;4
+332;3;446;U32;;Planned power 3 start time year month day;;1;0;;4
+333;3;448;U32;;Planned power 3 end time year month day;;1;0;;4
+334;3;450;U32;;Planned power 3 start time hours Minutes seconds;;1;0;;4
+335;3;452;U32;;Planned power 3 end time hours Minutes seconds;;1;0;;4
+336;3;454;I16;;Planned power 3 active power;;0.1;0;kW;4
+337;3;455;I16;;Planned power 3 reactive power;;0.1;0;kVar;4
+338;3;456;U16;;Planned power 3 usage logo;;1;0;;4
+339;3;457;U32;;Planned power 4 start time year month day;;1;0;;4
+340;3;459;U32;;Planned power 4 end time year month day;;1;0;;4
+341;3;461;U32;;Planned power 4 start time hours Minutes seconds;;1;0;;4
+342;3;463;U32;;Planned power 4 end time hours Minutes seconds;;1;0;;4
+343;3;465;I16;;Planned power 4 active power;;0.1;0;kW;4
+344;3;466;I16;;Planned power 4 reactive power;;0.1;0;kVar;4
+345;3;467;U16;;Planned Power 4 Use Logo;;1;0;;4
+346;3;468;U32;;Planned power 5 start time year month day;;1;0;;4
+347;3;470;U32;;Planned power 5 end time year month day;;1;0;;4
+348;3;472;U32;;Planned power 5 start time hours Minutes seconds;;1;0;;4
+349;3;474;U32;;Planned power 5 end time hours Minutes seconds;;1;0;;4
+350;3;476;I16;;Planned power 5 active power;;0.1;0;kW;4
+351;3;477;I16;;Planned power 5 reactive power;;0.1;0;kVar;4
+352;3;478;U16;;Planned power 5 use logo;;1;0;;4
+353;3;479;U32;;Planned power 6 start time year month day;;1;0;;4
+354;3;481;U32;;Planned power 6 end time year month day;;1;0;;4
+355;3;483;U32;;Planned power 6 start time hours Minutes seconds;;1;0;;4
+356;3;485;U32;;Planned power 6 end time hours Minutes seconds;;1;0;;4
+357;3;487;I16;;Planned power 6 active power;;0.1;0;kW;4
+358;3;488;I16;;Planned power 6 reactive power;;0.1;0;kVar;4
+359;3;489;U16;;Planned power 6 use logo;;1;0;;4
+360;3;490;U32;;Planned power 7 start time year month day;;1;0;;4
+361;3;492;U32;;Planned power 7 end time year month day;;1;0;;4
+362;3;494;U32;;Planned power 7 start time hours Minutes seconds;;1;0;;4
+363;3;496;U32;;Planned power 7 end time hours Minutes seconds;;1;0;;4
+364;3;498;I16;;Planned power 7 Active power;;0.1;0;kW;4
+365;3;499;I16;;Planned power 7 reactive power;;0.1;0;kVar;4
+366;3;500;U16;;Planned power 7 use logo;;1;0;;4
+367;3;501;U32;;Planned power 8 start time year month day;;1;0;;4
+368;3;503;U32;;Planned power 8 end time year month day;;1;0;;4
+369;3;505;U32;;Planned power 8 start time hours Minutes seconds;;1;0;;4
+370;3;507;U32;;Planned power 8 end time hours Minutes seconds;;1;0;;4
+371;3;509;I16;;Planned power 8 active power;;0.1;0;kW;4
+372;3;510;I16;;Planned power 8 reactive power;;0.1;0;kVar;4
+373;3;511;U16;;Planned power 8 use logo;;1;0;;4
+374;3;512;U32;;Planned power 9 start time year month day;;1;0;;4
+375;3;514;U32;;Planned power 9 end time year month day;;1;0;;4
+376;3;516;U32;;Planned power 9 start time hours Minutes seconds;;1;0;;4
+377;3;518;U32;;Planned power 9 end time hours Minutes seconds;;1;0;;4
+378;3;520;I16;;Planned power 9 Active power;;0.1;0;kW;4
+379;3;521;I16;;Planned power 9 reactive power;;0.1;0;kVar;4
+380;3;522;U16;;Planned power 9 use logo;;1;0;;4
+381;3;523;U32;;Planned power 10 start time year month day;;1;0;;4
+382;3;525;U32;;Planned power 10 end time year month day;;1;0;;4
+383;3;527;U32;;Planned power 10 start time hours Minutes seconds;;1;0;;4
+384;3;529;U32;;Planned power 10 end time hours Minutes seconds;;1;0;;4
+385;3;531;I16;;Planned power 10 active power;;0.1;0;kW;4
+386;3;532;I16;;Planned power 10 reactive power;;0.1;0;kVar;4
+387;3;533;U16;;Planned power 10 use logo;;1;0;;4
+388;3;534;U32;;Planned power 11 start time year month day;;1;0;;4
+389;3;536;U32;;Planned power 11 end time year month day;;1;0;;4
+390;3;538;U32;;Planned power 11 start time hours Minutes seconds;;1;0;;4
+391;3;540;U32;;Planned power 11 end time hours Minutes seconds;;1;0;;4
+392;3;542;I16;;Planned power 11 Active power;;0.1;0;kW;4
+393;3;543;I16;;Planned power 11 reactive power;;0.1;0;kVar;4
+394;3;544;U16;;Planned power 11 use logo;;1;0;;4
+395;3;545;U32;;Planned power 12 start time year month day;;1;0;;4
+396;3;547;U32;;Planned power 12 end time year month day;;1;0;;4
+397;3;549;U32;;Planned power 12 start time hours Minutes seconds;;1;0;;4
+398;3;551;U32;;Planned power 12 end time hours Minutes seconds;;1;0;;4
+399;3;553;I16;;Planned power 12 Active power;;0.1;0;kW;4
+400;3;554;I16;;Planned power 12 reactive power;;0.1;0;kVar;4
+401;3;555;U16;;Planned power 12 use logo;;1;0;;4
+402;3;556;U32;;Planned power 13 start time year month day;;1;0;;4
+403;3;558;U32;;Planned power 13 end time year month day;;1;0;;4
+404;3;560;U32;;Planned power 13 start time hours Minutes seconds;;1;0;;4
+405;3;562;U32;;Planned power 13 end time hours Minutes seconds;;1;0;;4
+406;3;564;I16;;Planned power 13 Active power;;0.1;0;kW;4
+407;3;565;I16;;Planned power 13 reactive power;;0.1;0;kVar;4
+408;3;566;U16;;Planned power 13 use logo;;1;0;;4
+409;3;567;U32;;Planned power 14 start time year month day;;1;0;;4
+410;3;569;U32;;Planned power 14 end time year month day;;1;0;;4
+411;3;571;U32;;Planned power 14 start time hours Minutes seconds;;1;0;;4
+412;3;573;U32;;Planned power 14 end time hours Minutes seconds;;1;0;;4
+413;3;575;I16;;Planned power 14 Active power;;0.1;0;kW;4
+414;3;576;I16;;Planned power 14 reactive power;;0.1;0;kVar;4
+415;3;577;U16;;Planned power 14 use logo;;1;0;;4
+416;3;578;U32;;Planned power 15 start time year month day;;1;0;;4
+417;3;580;U32;;Planned power 15 end time year month day;;1;0;;4
+418;3;582;U32;;Planned power 15 start time hours Minutes seconds;;1;0;;4
+419;3;584;U32;;Planned power 15 end time hours Minutes seconds;;1;0;;4
+420;3;586;I16;;Planned power 15 Active power;;0.1;0;kW;4
+421;3;587;I16;;Planned power 15 reactive power;;0.1;0;kVar;4
+422;3;588;U16;;Planned power 15 use logo;;1;0;;4
+423;3;589;U32;;Planned power 16 start time year month day;;1;0;;4
+424;3;591;U32;;Planned power 16 end time year month day;;1;0;;4
+425;3;593;U32;;Planned power 16 start time hours Minutes seconds;;1;0;;4
+426;3;595;U32;;Planned power 16 end time hours Minutes seconds;;1;0;;4
+427;3;597;I16;;Planned power 16 Active power;;0.1;0;kW;4
+428;3;598;I16;;Planned power 16 reactive power;;0.1;0;kVar;4
+429;3;599;U16;;Planned power 16 usage logo;;1;0;;4
+430;3;600;U32;;Planned power 17 start time year month day;;1;0;;4
+431;3;602;U32;;Planned power 17 end time year month day;;1;0;;4
+432;3;604;U32;;Planned power 17 start time hours Minutes seconds;;1;0;;4
+433;3;606;U32;;Planned power 17 end time hours Minutes seconds;;1;0;;4
+434;3;608;I16;;Planned power 17 Active power;;0.1;0;kW;4
+435;3;609;I16;;Planned power 17 reactive power;;0.1;0;kVar;4
+436;3;610;U16;;Planned power 17 use logo;;1;0;;4
+437;3;611;U32;;Planned power 18 start time year month day;;1;0;;4
+438;3;613;U32;;Planned power 18 end time year month day;;1;0;;4
+439;3;615;U32;;Planned power 18 start time hours Minutes seconds;;1;0;;4
+440;3;617;U32;;Planned power 18 end time hours Minutes seconds;;1;0;;4
+441;3;619;I16;;Planned power 18 Active power;;0.1;0;kW;4
+442;3;620;I16;;Planned power 18 reactive power;;0.1;0;kVar;4
+443;3;621;U16;;Planned power 18 use logo;;1;0;;4
+444;3;622;U32;;Planned power 19 start time year month day;;1;0;;4
+445;3;624;U32;;Planned power 19 end time year month day;;1;0;;4
+446;3;626;U32;;Planned power 19 start time hours Minutes seconds;;1;0;;4
+447;3;628;U32;;Planned power 19 end time hours Minutes seconds;;1;0;;4
+448;3;630;I16;;Planned power 19 Active power;;0.1;0;kW;4
+449;3;631;I16;;Planned power 19 reactive power;;0.1;0;kVar;4
+450;3;632;U16;;Planned power 19 use logo;;1;0;;4
+451;3;633;U32;;Planned power 20 start time year month day;;1;0;;4
+452;3;635;U32;;Planned power 20 end time year month day;;1;0;;4
+453;3;637;U32;;Planned power 20 start time hours Minutes seconds;;1;0;;4
+454;3;639;U32;;Planned power 20 end time hours Minutes seconds;;1;0;;4
+455;3;641;I16;;Planned power 20 Active power;;0.1;0;kW;4
+456;3;642;I16;;Planned power 20 reactive power;;0.1;0;kVar;4
+457;3;643;U16;;Planned power 20 use logo;;1;0;;4
+458;3;644;U32;;Planned power 21 start time year month day;;1;0;;4
+459;3;646;U32;;Planned power 21 end time year month day;;1;0;;4
+460;3;648;U32;;Planned power 21 start time hours Minutes seconds;;1;0;;4
+461;3;650;U32;;Planned power 21 end time hours Minutes seconds;;1;0;;4
+462;3;652;I16;;Planned power 21 Active power;;0.1;0;kW;4
+463;3;653;I16;;Planned power 21 reactive power;;0.1;0;kVar;4
+464;3;654;U16;;Planned Power 21 Use Logo;;1;0;;4
+465;3;655;U32;;Planned power 22 start time year month day;;1;0;;4
+466;3;657;U32;;Planned power 22 end time year month day;;1;0;;4
+467;3;659;U32;;Planned power 22 start time hours Minutes seconds;;1;0;;4
+468;3;661;U32;;Planned power 22 end time hours Minutes seconds;;1;0;;4
+469;3;663;I16;;Planned power 22 Active power;;0.1;0;kW;4
+470;3;664;I16;;Planned power 22 reactive power;;0.1;0;kVar;4
+471;3;665;U16;;Planned power 22 use logo;;1;0;;4
+472;3;666;U32;;Planned power 23 start time year month day;;1;0;;4
+473;3;668;U32;;Planned power 23 end time year month day;;1;0;;4
+474;3;670;U32;;Planned power 23 start time hours Minutes seconds;;1;0;;4
+475;3;672;U32;;Planned power 23 end time hours Minutes seconds;;1;0;;4
+476;3;674;I16;;Planned power 23 Active power;;0.1;0;kW;4
+477;3;675;I16;;Planned power 23 reactive power;;0.1;0;kVar;4
+478;3;676;U16;;Planned power 23 use logo;;1;0;;4
+479;3;677;U32;;Planned power 24 start time year month day;;1;0;;4
+480;3;679;U32;;Planned power 24 end time year month day;;1;0;;4
+481;3;681;U32;;Planned power 24 start time hours Minutes seconds;;1;0;;4
+482;3;683;U32;;Planned power 24 end time hours Minutes seconds;;1;0;;4
+483;3;685;I16;;Planned power 24 Active power;;0.1;0;kW;4
+484;3;686;I16;;Planned power 24 reactive power;;0.1;0;kVar;4
+485;3;687;U16;;Planned power 24 use logo;;1;0;;4
+486;3;714;I16;;Min temperature limit power point 0;;1;0;Degr. Celsius;4
+487;3;715;I16;;Minimum temperature limit power point 1;;1;0;Degr. Celsius;4
+488;3;716;I16;;Minimum temperature limit power working temperature point 2;;1;0;Degr. Celsius;4
+489;3;717;I16;;Min temperature limit power working temperature point 3;;1;0;Degr. Celsius;4
+490;3;718;I16;;Min temperature limit power point 4;;1;0;Degr. Celsius;4
+491;3;719;I16;;Min temperature limit power working temperature point 5;;1;0;Degr. Celsius;4
+492;3;720;I16;;Minimum temperature limit power working temperature point 6;;1;0;Degr. Celsius;4
+493;3;721;I16;;Min temperature limit power working temperature point 7;;1;0;Degr. Celsius;4
+494;3;722;I16;;Min temperature limit power working temperature point 8;;1;0;Degr. Celsius;4
+495;3;723;I16;;Min temperature limit power discharge power point 0;;0.1;0;kW;4
+496;3;724;I16;;Min temperature limit power discharge power point 1;;0.1;0;kW;4
+497;3;725;I16;;Min temperature limit power discharge power point 2;;0.1;0;kW;4
+498;3;726;I16;;Min temperature limit power discharge power point 3;;0.1;0;kW;4
+499;3;727;I16;;Min temperature limit power discharge power point 4;;0.1;0;kW;4
+500;3;728;I16;;Min temperature limit power discharge power point 5;;0.1;0;kW;4
+501;3;729;I16;;Min temperature limit power discharge power point 6;;0.1;0;kW;4
+502;3;730;I16;;Min temperature limit power discharge power point 7;;0.1;0;kW;4
+503;3;731;I16;;Min temperature limit power discharge power point 8;;0.1;0;kW;4
+504;3;732;I16;;Min temperature limit power discharge power point 9;;0.1;0;kW;4
+505;3;733;I16;;Min temperature limit power charging power point 0 kw;;0.1;0;kW;4
+506;3;734;I16;;Min temperature limit power charging power point 1 kw;;0.1;0;kW;4
+507;3;735;I16;;Min temperature limit power charging power point 2 kw;;0.1;0;kW;4
+508;3;736;I16;;Min temperature limit power charging power point 3 kw;;0.1;0;kW;4
+509;3;737;I16;;Min temperature limit power charging power point 4 kw;;0.1;0;kW;4
+510;3;738;I16;;Min temperature limit power charging power point 5 kw;;0.1;0;kW;4
+511;3;739;I16;;Min temperature limit power charging power point 6 kw;;0.1;0;kW;4
+512;3;740;I16;;Min temperature limit power charging power point 7 kw;;0.1;0;kW;4
+513;3;741;I16;;Min temperature limit power charging power point 8 kw;;0.1;0;kW;4
+514;3;742;I16;;Min temperature limit power charging power point 9 kw;;0.1;0;kW;4
+515;3;743;U16;;Lems backflow threshold;;1;0;;4
+516;3;744;U16;;Lems reverse power differential value;;1;0;;4
+517;3;745;U16;;Lems backflow adjustment time step;;1;0;;4
+518;3;746;U16;;Lems static demand rated power month kw;;1;0;;4
+519;3;747;U16;;Lems static demand rated power February kw;;1;0;;4
+520;3;748;U16;;Lems static demand rated power March kw;;1;0;;4
+521;3;749;U16;;Lems static demand rated power April kw;;1;0;;4
+522;3;750;U16;;Lems static demand rated power may kw;;1;0;;4
+523;3;751;U16;;Lems static demand rated power June kw;;1;0;;4
+524;3;752;U16;;Lems static demand rated power July kw;;1;0;;4
+525;3;753;U16;;Lems static demand rated power August kw;;1;0;;4
+526;3;754;U16;;Lems static demand rated power September kw;;1;0;;4
+527;3;755;U16;;Lems static demand rated power Oct kw;;1;0;;4
+528;3;756;U16;;Lems static demand rated power November kw;;1;0;;4
+529;3;757;U16;;Lems static demand rated power December kw;;1;0;;4
+530;3;758;U16;;Lems static demand power hysteresis value must be less than the hysteresis value;;1;0;;4
+531;3;759;U16;;Lems static demand power adjustment step;;1;0;;4
+532;3;760;U16;;Aems reverse power differential value;;1;0;;4
+533;3;761;U16;;Aems countercurrent adjustment time step;;1;0;;4
+534;3;762;U16;;Aems backflow threshold;;1;0;;4
+535;3;763;U16;;Aems static demand rated power one month kw;CMD_ON;1;0;;1
+536;3;764;U16;;Aems static demand rated power February kw;;1;0;;4
+537;3;765;U16;;Aems static demand rated power March kw;;1;0;;4
+538;3;766;U16;;Aems static demand rated power April kw;;1;0;;4
+539;3;767;U16;;Aems static demand rated power May kw;;1;0;;4
+540;3;768;U16;;Aems static demand rated power June kw;;1;0;;4
+541;3;769;U16;;Aems static demand rated power July kw;;1;0;;4
+542;3;770;U16;;Aems static demand rated power August kw;;1;0;;4
+543;3;771;U16;;Aems static demand rated power September kw;;1;0;;4
+544;3;772;U16;;Aems static demand rated power October kw;;1;0;;4
+545;3;773;U16;;Aems static demand rated power November kw;;1;0;;4
+546;3;774;U16;;Aems static demand rated power December kw;;1;0;;4
+547;3;775;U16;;Aems static demand power hysteresis value must be less than the hysteresis value;;1;0;;4
+548;3;776;U16;;Aems static demand power adjustment step;;1;0;;4
+549;3;777;U16;;Peak valley arbitrage discharge enable 1;;1;0;;4
+550;3;778;U32;;Peak valley arbitrage start time 1 discharge;;1;0;;4
+551;3;780;U32;;Peak valley arbitrage end time 1 discharge;;1;0;;4
+552;3;782;I16;;Peak valley arbitrage set power 1 discharge;;1;0;kW;4
+553;3;783;U16;;Peak valley arbitrage discharge cutoff soc1 discharge;;1;0;%;4
+554;3;784;U16;;Peak valley arbitrage discharge enable 2;;1;0;;4
+555;3;785;U32;;Peak valley arbitrage start time 2 discharge;;1;0;;4
+556;3;787;U32;;Peak valley arbitrage end time 2 discharge;;1;0;;4
+557;3;789;I16;;Peak valley arbitrage set power 2 discharge;;1;0;kW;4
+558;3;790;U16;;Peak valley arbitrage discharge cutoff soc2 discharge;;1;0;%;4
+559;3;791;U16;;Peak valley arbitrage discharge enable 3;;1;0;;4
+560;3;792;U32;;Peak valley arbitrage start time 3 discharge;;1;0;;4
+561;3;794;U32;;Peak valley arbitrage end time 3 discharge;;1;0;;4
+562;3;796;I16;;Peak valley arbitrage set power 3 discharge;;1;0;kW;4
+563;3;797;U16;;Peak valley arbitrage discharge cutoff soc3 discharge;;1;0;%;4
+564;3;798;U16;;Peak valley arbitrage discharge enable 4;;1;0;;4
+565;3;799;U32;;Peak valley arbitrage start time 4 discharge;;1;0;;4
+566;3;801;U32;;Peak valley arbitrage end time 4 discharge;;1;0;;4
+567;3;803;I16;;Peak valley arbitrage set power 4 discharge;;1;0;kW;4
+568;3;804;U16;;Peak valley arbitrage discharge cutoff soc4 discharge;;1;0;%;4
+569;3;805;U16;;Peak valley arbitrage charging enablement 1;;1;0;;4
+570;3;806;U32;;Peak valley arbitrage start time 1 charging;;1;0;;4
+571;3;808;U32;;Peak Valley Arbitrage End Time 1 Charging;;1;0;;4
+572;3;810;I16;;Peak valley arbitrage set power 1 charging;;1;0;kW;4
+573;3;811;U16;;Peak valley arbitrage discharge cutoff soc1 charging;;1;0;%;4
+574;3;812;U16;;Peak valley arbitrage charging enablement 2;;1;0;;4
+575;3;813;U32;;Peak valley arbitrage start time 2 charging;;1;0;;4
+576;3;815;U32;;Peak Valley Arbitrage End Time 2 Charging;;1;0;;4
+577;3;817;I16;;Peak valley arbitrage set power 2 charging;;1;0;kW;4
+578;3;818;U16;;Peak valley arbitrage discharge cutoff soc2 charging;;1;0;%;4
+579;3;819;U16;;Peak valley arbitrage charging enablement 3;;1;0;;4
+580;3;820;U32;;Peak valley arbitrage start time 3 charging;;1;0;;4
+581;3;822;U32;;Peak Valley Arbitrage End Time 3 Charging;;1;0;;4
+582;3;824;I16;;Peak valley arbitrage set power 3 charging;;1;0;kW;4
+583;3;825;U16;;Peak valley arbitrage discharge cutoff soc3 charging;;1;0;%;4
+584;3;826;U16;;Peak valley arbitrage charging enablement 4;;1;0;;4
+585;3;827;U32;;Peak valley arbitrage start time 4 charging;;1;0;;4
+586;3;829;U32;;Peak Valley Arbitrage End Time 4 Charging;;1;0;;4
+587;3;831;I16;;Peak valley arbitrage set power 4 charging;;1;0;kW;4
+588;3;832;U16;;Peak valley arbitrage discharge cutoff soc4 charging;;1;0;%;4

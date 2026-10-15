@@ -1,0 +1,129 @@
+﻿modbusRTU;Inverter;PowerOne;INV_ABB TRIO20-27-6;;;;;;;
+1;3;179;U16;;Remote on/off;CMD_ON;1.000000;0.000000;;1
+2;3;180;U16;;Reset by-hand;reset_byhand;1.000000;0.000000;;4
+3;3;189;U16;;Power ramping interval;power_ramping_interval;1.000000;0.000000;s;4
+4;3;190;U16;;Dynamic mode - Timeout;dynamic_mode_timeout;1.000000;0.000000;min;4
+5;3;197;U16;;Set transient options;set_transient_options;1.000000;0.000000;;4
+6;3;199;F32_W;;Dynamic Mode - Reactive Power management by fixed PF;dynamic_mode_reactive_power_management_by_fixed_pf;1.000000;0.000000;;4
+7;3;201;F32_W;;Permanent Mode - Reactive Power management by fixed PF;permanent_mode_reactive_power_management_by_fixed_pf;1.000000;0.000000;;4
+8;3;204;U16;;Permanent Mode - Reset PF to 1;permanent_mode_reset_pf_to_1;1.000000;0.000000;;4
+9;3;209;U16;;Dynamic Mode - Active Power management;dynamic_mode_active_power_management;1.000000;0.000000;'%;4
+10;3;211;U16;;Permanent Mode - Active Power management;permanent_mode_active_power_management;1.000000;0.000000;'%;4
+11;3;214;U16;;Permanent Mode - Reset Active Power to 100% of Nominal Power (PNOM);permanent_mode_reset_active_power_to_100_of_nominal_power_pnom;1.000000;0.000000;;4
+12;3;219;F32_W;;Dynamic Mode - Reactive power management;dynamic_mode_reactive_power_management;1.000000;0.000000;;4
+13;3;221;F32_W;;Permanent Mode - Reactive power management;permanent_mode_reactive_power_management;1.000000;0.000000;;4
+14;3;224;I16;;Dynamic Mode - Reactive Power management_1;dynamic_mode_reactive_power_management_1;1.000000;0.000000;'%;4
+15;3;226;I16;;Permanent Mode - Reactive Power management_1;permanent_mode_reactive_power_management_1;1.000000;0.000000;'%;4
+16;3;298;U16;;Transient options configurable;transient_options_configurable;1.000000;0.000000;;4
+17;3;299;U16;;Heartbeat counter;heartbeat_counter;1.000000;0.000000;;4
+18;3;300;F32_W;;Inverter - Grid Reactive Power;inverter_grid_reactive_power;1.000000;0.000000;VAR;4
+19;3;302;F32_W;;Inverter - Grid Voltage;inverter_grid_voltage;1.000000;0.000000;V;4
+20;3;304;F32_W;;Inverter - Grid Power;P_AC;0.001000;0.000000;kW;4
+21;3;306;F32_W;;Inverter - Grid Current;inverter_grid_current;1.000000;0.000000;A;4
+22;3;500;U16;;Set unit of registers 0507, 0508, 0511 and 0512 (% or %/1000);set_unit_of_registers_0507_0508_0511_and_0512_or_1000;1.000000;0.000000;;4
+23;3;501;U16;;Set active mode (permanent or dynamic);set_active_mode_permanent_or_dynamic;1.000000;0.000000;;4
+24;3;502;U16;;Power ramping interval_1;CMD_RAMP_TIME_S;1.000000;0.000000;s;1
+25;3;503;U16;;Dynamic mode - Timeout_1;CMD_REVERT_TIME_S;1.000000;0.000000;min;1
+26;3;504;U16;;Set transient options_1;set_transient_options_1;1.000000;0.000000;;4
+27;3;505;U16;;Set reactive power control mode (Q fixed or PF fixed);set_reactive_power_control_mode_q_fixed_or_pf_fixed;1.000000;0.000000;;4
+28;3;506;I16;;Dynamic Mode - Reactive Power management_2;dynamic_mode_reactive_power_management_2;0.100000;0.000000;'%;4
+29;3;507;U16;;Dynamic Mode - Active Power management_2;CMD_P_AC_SET_PERCENT;0.100000;0.000000;'%;1
+30;3;508;F32_W;;Dynamic Mode - Reactive Power management by fixed PF_2;dynamic_mode_reactive_power_management_by_fixed_pf_2;1.000000;0.000000;;4
+31;3;510;I16;;Permanent Mode - Reactive Power management_2;permanent_mode_reactive_power_management_2;0.100000;0.000000;'%;4
+32;3;511;U16;;Permanent Mode - Active Power management_2;permanent_mode_active_power_management_2;0.100000;0.000000;'%;4
+33;3;512;F32_W;;Permanent Mode - Reactive Power management by fixed PF_2;permanent_mode_reactive_power_management_by_fixed_pf_2;1.000000;0.000000;;4
+34;3;514;U16;;Reset Active Power management;reset_active_power_management;1.000000;0.000000;;4
+35;3;515;U16;;Reset Reactive Power management;reset_reactive_power_management;1.000000;0.000000;;4
+36;4;99;U16;;Inverter - Start register;inverter_start_register;1.000000;0.000000;;4
+37;4;100;U16;;Inverter - Map size;inverter_map_size;1.000000;0.000000;;4
+38;4;101;U16;;Inverter - Map Version;inverter_map_version;1.000000;0.000000;;4
+39;4;102;U16;;Inverter address;inverter_address;1.000000;0.000000;;4
+40;4;103_6;STRING;;Inverter - Serial number;SERIAL;1.000000;0.000000;;4
+41;4;109_6;STRING;;Inverter - Part number;inverter_part_number;1.000000;0.000000;;4
+42;4;115;U16;;Inverter - Model identifier;inverter_model_identifier;1.000000;0.000000;;4
+43;4;116;U16;;Inverter - Country/Grid standard;inverter_countrygrid_standard;1.000000;0.000000;;4
+44;4;117;U16;;Inverter -Transformer type;inverter_transformer_type;1.000000;0.000000;;4
+45;4;118;U16;;Inverter - Inverter type;inverter_inverter_type;1.000000;0.000000;;4
+46;4;119;U16;;Inverter - Week production;inverter_week_production;1.000000;0.000000;;4
+47;4;121;U16;;Inverter - Year production;inverter_year_production;1.000000;0.000000;;4
+48;4;123;U16;;Inverter - States (Byte 0) - Global state;inverter_states_byte_0_global_state;1.000000;0.000000;;4
+49;4;124;U16;;Inverter - States (Byte 1) - Inverter state;inverter_states_byte_1_inverter_state;1.000000;0.000000;;4
+50;4;125;U16;;Inverter - States (Byte 2) - DC/DC Channel 1 state;inverter_states_byte_2_dcdc_channel_1_state;1.000000;0.000000;;4
+51;4;126;U16;;Inverter - States (Byte 3) - DC/DC Channel 2 state;inverter_states_byte_3_dcdc_channel_2_state;1.000000;0.000000;;4
+52;4;127;U16;;Inverter - States (Byte 4) - Alarm state;inverter_states_byte_4_alarm_state;1.000000;0.000000;;4
+53;4;128;U16;;Display Board - Presence;display_board_presence;1.000000;0.000000;;4
+54;4;129;U16;;Communication Board - Presence;communication_board_presence;1.000000;0.000000;;4
+55;4;130;U16;;Fuse Control Board - Presence;fuse_control_board_presence;1.000000;0.000000;;4
+56;4;131;F32_W;;Inverter - Daily Energy;inverter_daily_energy;1.000000;0.000000;Wh;4
+57;4;133;F32_W;;Inverter - Total Energy;E_TOT;1.000000;0.000000;kWh;4
+58;4;135;F32_W;;Inverter - Partial Energy;inverter_partial_energy;1.000000;0.000000;kWh;4
+59;4;137;F32_W;;Inverter - Week Energy;inverter_week_energy;1.000000;0.000000;kWh;4
+60;4;139;F32_W;;Inverter - Monthly Energy;inverter_monthly_energy;1.000000;0.000000;kWh;4
+61;4;141;F32_W;;Inverter - Yearly Energy;inverter_yearly_energy;1.000000;0.000000;kWh;4
+62;4;143;F32_W;;Inverter - Grid Voltage_1;inverter_grid_voltage_1;1.000000;0.000000;V;4
+63;4;145;F32_W;;Inverter - Grid Current_;inverter_grid_current_1;1.000000;0.000000;A;4
+64;4;147;F32_W;;Inverter - Grid Power_1;inverter_grid_power_1;1.000000;0.000000;W;4
+65;4;149;F32_W;;Inverter - Frequency;FREQ;1.000000;0.000000;Hz;4
+66;4;151;F32_W;;Inverter - Input 1 Power;inverter_input_1_power;1.000000;0.000000;W;4
+67;4;153;F32_W;;Inverter - Input 1 Voltage;inverter_input_1_voltage;1.000000;0.000000;V;4
+68;4;155;F32_W;;Inverter - Input 1 Current;inverter_input_1_current;1.000000;0.000000;A;4
+69;4;157;F32_W;;Inverter - Input 2 Power;inverter_input_2_power;1.000000;0.000000;W;4
+70;4;160;F32_W;;Inverter - Input 2 Voltage;inverter_input_2_voltage;1.000000;0.000000;V;4
+71;4;161;F32_W;;Inverter - Input 2 Current;inverter_input_2_current;1.000000;0.000000;A;4
+72;4;163;F32_W;;Inverter - Inverter Temperature;inverter_inverter_temperature;1.000000;0.000000;Degr.Celsius;4
+73;4;165;F32_W;;Inverter - Booster Temperature;inverter_booster_temperature;1.000000;0.000000;Degr.Celsius;4
+74;4;167;F32_W;;Inverter - Isolation Resistance;inverter_isolation_resistance;1.000000;0.000000;Mohm;4
+75;4;169;F32_W;;Inverter - Wind Generator Frequency;inverter_wind_generator_frequency;1.000000;0.000000;Hz;4
+76;4;171;F32_W;;Inverter - Cos(phi);inverter_cosphi;1.000000;0.000000;Cosphi;4
+77;4;173;U16;;Inverter - Presence - Indicates status of board to inverter;inverter_presence_indicates_status_of_board_to_inverter;1.000000;0.000000;;4
+78;4;249;U16;;Auxiliary Boards - Start register;auxiliary_boards_start_register;1.000000;0.000000;;4
+79;4;250;U16;;Auxiliary Board - Map size;auxiliary_board_map_size;1.000000;0.000000;;4
+80;4;251;U16;;Auxiliary Board - Map Version;auxiliary_board_map_version;1.000000;0.000000;;4
+81;4;253_6;STRING;;Inverter - Serial number (Auxiliary);inverter_serial_number_auxiliary;1.000000;0.000000;;4
+82;4;275_6;STRING;;Communication Board - Serial number;communication_board_serial_number;1.000000;0.000000;;4
+83;4;281_6;STRING;;Communication Board - Part number;communication_board_part_number;1.000000;0.000000;;4
+84;4;287;U16;;Communication Board - Week production;communication_board_week_production;1.000000;0.000000;;4
+85;4;289;U16;;Communication Board - Year production;communication_board_year_production;1.000000;0.000000;;4
+86;4;291_6;STRING;;Fuse Control Board - Serial number;fuse_control_board_serial_number;1.000000;0.000000;;4
+87;4;297_6;STRING;;Fuse Control Board - Part number;fuse_control_board_part_number;1.000000;0.000000;;4
+88;4;303;U16;;Fuse Control Board - Week production;fuse_control_board_week_production;1.000000;0.000000;;4
+89;4;305;U16;;Fuse Control Board - Year production;fuse_control_board_year_production;1.000000;0.000000;;4
+90;4;307;U16;;Communication Board - States (Byte 4);communication_board_states_byte_4;1.000000;0.000000;;4
+91;4;308;U16;;Communication Board - States (Byte 5);communication_board_states_byte_5;1.000000;0.000000;;4
+92;4;309;U16;;Fuse Control Board - States (Byte 0);fuse_control_board_states_byte_0;1.000000;0.000000;;4
+93;4;310;U16;;Fuse Control Board - States (Byte 1);fuse_control_board_states_byte_1;1.000000;0.000000;;4
+94;4;311;U16;;Fuse Control Board - States (Byte 2);fuse_control_board_states_byte_2;1.000000;0.000000;;4
+95;4;312;U16;;Fuse Control Board - States (Byte 3);fuse_control_board_states_byte_3;1.000000;0.000000;;4
+96;4;313;U16;;Fuse Control Board - States (Byte 4);fuse_control_board_states_byte_4;1.000000;0.000000;;4
+97;4;314;F32_W;;Communication Board - PT100;communication_board_pt100;1.000000;0.000000;Degr.Celsius;4
+98;4;316;F32_W;;Communication Board - PT1000;communication_board_pt1000;1.000000;0.000000;Degr.Celsius;4
+99;4;318;F32_W;;Communication Board - Analog Input 1;communication_board_analog_input_1;1.000000;0.000000;V or mA;4
+100;4;320;F32_W;;Communication Board - Analog Input 2;communication_board_analog_input_2;1.000000;0.000000;V or mA;4
+101;4;322;F32_W;;Communication Board - NTC;communication_board_ntc;1.000000;0.000000;Degr.Celsius;4
+102;4;324;F32_W;;Fuse Control Board - Voltage 1A;fuse_control_board_voltage_1a;1.000000;0.000000;V;4
+103;4;326;F32_W;;Fuse Control Board - Voltage 1B;fuse_control_board_voltage_1b;1.000000;0.000000;V;4
+104;4;328;F32_W;;Fuse Control Board - Voltage 1C;fuse_control_board_voltage_1c;1.000000;0.000000;V;4
+105;4;330;F32_W;;Fuse Control Board - Voltage 1D;fuse_control_board_voltage_1d;1.000000;0.000000;V;4
+106;4;332;F32_W;;Fuse Control Board - Voltage 1E;fuse_control_board_voltage_1e;1.000000;0.000000;V;4
+107;4;334;F32_W;;Fuse Control Board - Voltage 2A;fuse_control_board_voltage_2a;1.000000;0.000000;V;4
+108;4;336;F32_W;;Fuse Control Board - Voltage 2B;fuse_control_board_voltage_2b;1.000000;0.000000;V;4
+109;4;338;F32_W;;Fuse Control Board - Voltage 2C;fuse_control_board_voltage_2c;1.000000;0.000000;V;4
+110;4;340;F32_W;;Fuse Control Board - Voltage 2D;fuse_control_board_voltage_2d;1.000000;0.000000;V;4
+111;4;342;F32_W;;Fuse Control Board - Voltage 2E;fuse_control_board_voltage_2e;1.000000;0.000000;V;4
+112;4;344;F32_W;;Fuse Control Board - Voltage Ch1;fuse_control_board_voltage_ch1;1.000000;0.000000;V;4
+113;4;346;F32_W;;Fuse Control Board - Voltage Ch2;fuse_control_board_voltage_ch2;1.000000;0.000000;V;4
+114;4;348;F32_W;;Fuse Control Board - Current 1A;fuse_control_board_current_1a;1.000000;0.000000;A;4
+115;4;350;F32_W;;Fuse Control Board - Current 1B;fuse_control_board_current_1b;1.000000;0.000000;A;4
+116;4;352;F32_W;;Fuse Control Board - Current 1C;fuse_control_board_current_1c;1.000000;0.000000;A;4
+117;4;354;F32_W;;Fuse Control Board - Current 1D;fuse_control_board_current_1d;1.000000;0.000000;A;4
+118;4;356;F32_W;;Fuse Control Board - Current 1E;fuse_control_board_current_1e;1.000000;0.000000;A;4
+119;4;358;F32_W;;Fuse Control Board - Current 2A;fuse_control_board_current_2a;1.000000;0.000000;A;4
+120;4;360;F32_W;;Fuse Control Board - Current 2B;fuse_control_board_current_2b;1.000000;0.000000;A;4
+121;4;362;F32_W;;Fuse Control Board - Current 2C;fuse_control_board_current_2c;1.000000;0.000000;A;4
+122;4;364;F32_W;;Fuse Control Board - Current 2D;fuse_control_board_current_2d;1.000000;0.000000;A;4
+123;4;366;F32_W;;Fuse Control Board - Current 2E;fuse_control_board_current_2e;1.000000;0.000000;A;4
+124;4;368;U16;;Fuse Control Board - States (Byte 5);fuse_control_board_states_byte_5;1.000000;0.000000;;4
+125;4;3649;U16;;Registers Map - Type;registers_map_type;1.000000;0.000000;;4
+126;4;3650;U16;;Registers Map - Inverter family supported;registers_map_inverter_family_supported;1.000000;0.000000;;4
+127;4;3651;U16;;Registers Map - Major Version;registers_map_major_version;1.000000;0.000000;;4
+128;4;3652;U16;;Registers Map - Minor Version;registers_map_minor_version;1.000000;0.000000;;4

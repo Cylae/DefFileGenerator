@@ -1,0 +1,61 @@
+﻿ModbusRTU;AnalogExtention;Webdyn;Sens'IO 16DI;;;;;;;
+1;3;0;I16;;Serial Number;SERIAL;1;0.0;-;4
+2;3;4;I16;;Firmware Version;;1;0.0;-;4
+3;3;6;I16;;Device Address;UNIT_ID;1;0.0;-;4
+4;3;7;I16;;Product Model;MODEL;1;0.0;-;4
+5;3;8;I16;;Hardware Version;;1;0.0;-;4
+6;3;9;I16;;Baudrate Setting;;1;0.0;-;4
+7;3;100;I16;;Status digital Input channel;;1;0.0;-;4
+8;3;100_0_1;BITS;;Status digital Input channel 1;XDIN1;1;0.0;-;4
+9;3;100_1_1;BITS;;Status digital Input channel 2;XDIN2;1;0.0;-;4
+10;3;100_2_1;BITS;;Status digital Input channel 3;XDIN3;1;0.0;-;4
+11;3;100_3_1;BITS;;Status digital Input channel 4;XDIN4;1;0.0;-;4
+12;3;100_4_1;BITS;;Status digital Input channel 5;XDIN5;1;0.0;-;4
+13;3;100_5_1;BITS;;Status digital Input channel 6;XDIN6;1;0.0;-;4
+14;3;100_6_1;BITS;;Status digital Input channel 7;XDIN7;1;0.0;-;4
+15;3;100_7_1;BITS;;Status digital Input channel 8;XDIN8;1;0.0;-;4
+16;3;100_8_1;BITS;;Status digital Input channel 9;XDIN9;1;0.0;-;4
+17;3;100_9_1;BITS;;Status digital Input channel 10;XDIN10;1;0.0;-;4
+18;3;100_10_1;BITS;;Status digital Input channel 11;XDIN11;1;0.0;-;4
+19;3;100_11_1;BITS;;Status digital Input channel 12;XDIN12;1;0.0;-;4
+20;3;100_12_1;BITS;;Status digital Input channel 13;XDIN13;1;0.0;-;4
+21;3;100_13_1;BITS;;Status digital Input channel 14;XDIN14;1;0.0;-;4
+22;3;100_14_1;BITS;;Status digital Input channel 15;XDIN15;1;0.0;-;4
+23;3;100_15_1;BITS;;Status digital Input channel 16;XDIN16;1;0.0;-;4
+24;3;101;I32;;Counter input 1;;1;0.0;-;4
+25;3;103;I32;;Counter input 2;;1;0.0;-;4
+26;3;105;I32;;Counter input 3;;1;0.0;-;4
+27;3;107;I32;;Counter input 4;;1;0.0;-;4
+28;3;109;I32;;Counter input 5;;1;0.0;-;4
+29;3;111;I32;;Counter input 6;;1;0.0;-;4
+30;3;113;I32;;Counter input 7;;1;0.0;-;4
+31;3;115;I32;;Counter input 8;;1;0.0;-;4
+32;3;117;I32;;Counter input 9;;1;0.0;-;4
+33;3;119;I32;;Counter input 10;;1;0.0;-;4
+34;3;121;I32;;Counter input 11;;1;0.0;-;4
+35;3;123;I32;;Counter input 12;;1;0.0;-;4
+36;3;125;I32;;Counter input 13;;1;0.0;-;4
+37;3;127;I32;;Counter input 14;;1;0.0;-;4
+38;3;129;I32;;Counter input 15;;1;0.0;-;4
+39;3;131;I32;;Counter input 16;;1;0.0;-;4
+40;3;133;I16;;Response delay for serial communication;;1;0.0;-;4
+41;3;134;I16;;Filter time for counter input;;10;0.0;us;4
+42;3;135;U16;;Disable/Enable inputs part1;;1;0.0;-;4
+43;3;135_0_1;BITS;;Disable/Enable input 1;;1;0.0;-;4
+44;3;135_1_1;BITS;;Disable/Enable input 2;;1;0.0;-;4
+45;3;135_2_1;BITS;;Disable/Enable input 3;;1;0.0;-;4
+46;3;135_3_1;BITS;;Disable/Enable input 4;;1;0.0;-;4
+47;3;135_4_1;BITS;;Disable/Enable input 5;;1;0.0;-;4
+48;3;135_5_1;BITS;;Disable/Enable input 6;;1;0.0;-;4
+49;3;135_6_1;BITS;;Disable/Enable input 7;;1;0.0;-;4
+50;3;135_7_1;BITS;;Disable/Enable input 8;;1;0.0;-;4
+51;3;136;I16;;Disable/Enable inputs part2;;1;0.0;-;4
+52;3;136_0_1;BITS;;Disable/Enable input 9;;1;0.0;-;4
+53;3;136_1_1;BITS;;Disable/Enable input 10;;1;0.0;-;4
+54;3;136_2_1;BITS;;Disable/Enable input 11;;1;0.0;-;4
+55;3;136_3_1;BITS;;Disable/Enable input 12;;1;0.0;-;4
+56;3;136_4_1;BITS;;Disable/Enable input 13;;1;0.0;-;4
+57;3;136_5_1;BITS;;Disable/Enable input 14;;1;0.0;-;4
+58;3;136_6_1;BITS;;Disable/Enable input 15;;1;0.0;-;4
+59;3;136_7_1;BITS;;Disable/Enable input 16;;1;0.0;-;4
+60;3;137;I16;;Input status selection;SwitchLogic;1;0.0;-;4

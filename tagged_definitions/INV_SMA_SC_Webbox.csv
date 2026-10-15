@@ -1,0 +1,351 @@
+﻿modbusTCP;Inverter;SMA;SC GENERIC;;;;;;;
+1;3;30057;U32;;Serial number Serial Number;SERIAL;1;0;;4
+2;3;30193;U32;;Reading the plant time UTC SerTm;;1;0;s;4
+3;3;30197;U32;;Event ID of the current event;WIND_SPEED;1;0;;4
+4;3;30231;U32;;Maximum possible continuous active power Plimit;P_AC;1;0;W;4
+5;3;30233;U32;;Permanent active power limitation Pmax;CMD_P_AC_SET_ABS;1;0;W;1
+6;3;30513;U64;;Total yield Wh E-total;E_TOT;1;0;Wh;4
+7;3;30517;U64;;Day yield Wh E-heute;;1;0;Wh;4
+8;3;30521;U64;;Operating time s h-On;;1;0;s;4
+9;3;30525;U64;;Feed-in time s h-total;;1;0;s;4
+10;3;30529;U32;;Total yield Wh E-Total_1;;1;0;Wh;4
+11;3;30531;U32;;Total yield kWh E-Total;;1;0;kWh;4
+12;3;30533;U32;;Total yield MWh E-Total_1;;1;0;MWh;4
+13;3;30541;U32;;Operating time s h-on_1;;1;0;s;4
+14;3;30543;U32;;Feed-in time s h-Total;;1;0;s;4
+15;3;30769;I32;;DC current input A Ipv;I_DC;0.001;0;A;4
+16;3;30771;I32;;DC voltage input V Vpv;U_DC;0.01;0;V;4
+17;3;30773;I32;;DC power input W Ppv;P_DC;1;0;W;4
+18;3;30775;I32;;AC active power across all phases W Pac;;1;0;W;4
+19;3;30789;U32;;Grid voltage phase AB V VacL12;U_AC_1;0.01;0;V;4
+20;3;30791;U32;;Grid voltage phase BC V VacL23;U_AC_2;0.01;0;V;4
+21;3;30793;U32;;Grid voltage phase CA V VacL31;U_AC_3;0.01;0;V;4
+22;3;30795;U32;;Grid current A Iac;;0.001;0;A;4
+23;3;30803;U32;;Power frequency Hz Fac;FREQ;0.01;0;Hz;4
+24;3;30805;I32;;Reactive power var Qac;Q_AC;1;0;var;4
+25;3;30813;I32;;Apparent power3 VA Sac;S_AC;1;0;VA;4
+26;3;30837;U32;;Active power target value W P-WSpt;;1;0;W;4
+27;3;34109;I32;;Heat sink temperature 1 Degree Celsius TmpHs;;0.1;0;Degree Celsius;4
+28;3;34113;I32;;Interior temperature 1 Degree Celsius TmpCab1;;0.1;0;Degree Celsius;4
+29;3;34125;I32;;External temperature 1 Degree Celsius TmpExl1;;0.1;0;Degree Celsius;4
+30;3;40001;U32;;Setting of the plant time UTC SerTm;;1;0;s;4
+31;3;30051;U32;;Device class MainModel;MODEL;1;0;;4
+32;3;30213;U32;;Message Error;;1;0;;4
+33;3;30235;U32;;Status of the backup mode Backup State;;1;0;;4
+34;3;30237;U32;;Grid type Grid Type;;1;0;;4
+35;3;30239;U32;;Operating mode of the PowerBalancer;;1;0;;4
+36;3;30241;U32;;Operation mode Mode;;1;0;;4
+37;3;30561;U32;;Number of events for installer;;1;0;;4
+38;3;30783;U32;;Grid voltage L1 against N V VacL1;;0.01;0;V;4
+39;3;30785;U32;;Grid voltage L2 against N V VacL2;;0.01;0;V;4
+40;3;30797;U32;;Grid current L1 A Iac;I_AC_1;0.001;0;A;4
+41;3;40007;U32;;Type of inverter control Operating mode;;1;0;;4
+42;3;30195;U32;;Reading the time zone UTC TmZn;;1;0;;4
+43;3;30199;U32;;Time until grid connection attempt s;;1;0;s;4
+44;3;30211;U32;;Recommended action Prio;;1;0;;4
+45;3;30217;U32;;Grid contactor GriSwStt;;1;0;;4
+46;3;30225;U32;;Insulation resistance ohms Riso;R_ISO;1;0;Ohm;4
+47;3;30227;U32;;Status of the key switch;;1;0;;4
+48;3;30243;U32;;Error Error;;1;0;;4
+49;3;30247;U32;;Current event number for manufacturer;;1;0;;4
+50;3;30249;U32;;GFDI relay status DInGfdi;;1;0;;4
+51;3;30251;U32;;Restart block status ManResStt;;1;0;;4
+52;3;30257;U32;;DC switch in cabinet DcSwStt;;1;0;;4
+53;3;30261;U32;;AC switch 1 in cabinet AcSwStt;;1;0;;4
+54;3;30265;U32;;AC switch-disconnector in cabinet;;1;0;;4
+55;3;30535;U32;;Day yield Wh E-heute_1;;1;0;Wh;4
+56;3;30537;U32;;Day yield kWh E-heute;;1;0;kWh;4
+57;3;30539;U32;;Day yield MWh E-heute;;1;0;MWh;4
+58;3;30545;U32;;Operating time interior fan 1 s;;1;0;s;4
+59;3;30547;U32;;Operating time interior fan 2 s;;1;0;s;4
+60;3;30549;U32;;Operating time heat sink fan s;;1;0;s;4
+61;3;30557;U32;;Operating time cabinet heating 2 s;;1;0;s;4
+62;3;30601;U32;;Operating time interior fan 3 s;;1;0;s;4
+63;3;30799;U32;;Grid current L2 A IacL2;I_AC_2;0.001;0;A;4
+64;3;30801;U32;;Grid current L3 A IacL3;I_AC_3;0.001;0;A;4
+65;3;30821;U32;;Displacement power factor PF;PF;0.01;0;cos phi;4
+66;3;30823;U32;;Excitation type of cos phi PFExt;;1;0;;4
+67;3;30825;U32;;Operating mode of reactive power regulation;;1;0;;4
+68;3;30827;I32;;Reactive power target value var;;1;0;var;4
+69;3;30829;I32;;Reactive power target value % Q-VArNom;;0.1;0;%;4
+70;3;30831;I32;;Target value cos phi PF-PFSpt;;0.01;0;cos phi;4
+71;3;30833;U32;;Target value excitation type;;1;0;;4
+72;3;30835;U32;;Operating mode of active power limitation;;1;0;;4
+73;3;30839;U32;;Active power target value % P-WNom;;1;0;%;4
+74;3;30841;U32;;AC voltages average Vac;;0.01;0;V;4
+75;3;30919;U32;;Operating mode voltage-stability Q at Night;;1;0;;4
+76;3;30921;I32;;"Reactive power setpoint Q at Night"" var";CMD_Q_AC_SET_ABS;1;0;var;1
+77;3;30923;I32;;"Reactive power setpoint Q at Night"" %";CMD_Q_AC_SET_PERCENT;0.1;0;%;1
+78;3;34097;U64;;Operating time interior fan 1 s_1;;1;0;s;4
+79;3;34101;U64;;Operating time interior fan 2 s_1;;1;0;s;4
+80;3;34105;U64;;Operating time heat sink fan s_1;;1;0;s;4
+81;3;34117;I32;;Interior temperature 3 Degree Celsius TmpCab3;;0.1;0;Degree Celsius;4
+82;3;34141;U64;;Operating time interior heater 2 s_1;;1;0;s;4
+83;3;34145;I32;;Temp sine-wave filter chokes Degree Celsius TmpCol;;0.1;0;Degree Celsius;4
+84;3;34613;U32;;Total irradiation ExtSolIrr;;1;0;W/m2;4
+85;3;34637;I32;;Analogue current input 1 mA;;0.01;0;mA;4
+86;3;34639;I32;;Analogue current input 2 mA;;0.01;0;mA;4
+87;3;34645;I32;;Analogue voltage input 1 V;;0.01;0;V;4
+88;3;40003;U32;;Selected time zone for the display TmZn;;1;0;;4
+89;3;40009;U32;;Operating state SpntRemEna;;1;0;;4
+90;3;40020;U32;;External measurement insulation resistance;;1;0;;4
+91;3;34115;I32;;Interior temperature 2 Degree Celsius TmpCab2;;0.1;0;Degree Celsius;4
+92;3;34121;I32;;Transformer temperature 1 Degree Celsius TmpTrf;;0.1;0;Degree Celsius;4
+93;3;31283;I32;;PV string current group 1;;0.001;0;A;4
+94;3;31289;I32;;PV string current group 2;;0.001;0;A;4
+95;3;31295;I32;;PV string current group 3;;0.001;0;A;4
+96;3;32049;U32;;SSM ID communication fault;;1;0;;4
+97;3;32051;U32;;SMU warning code for string fault;;1;0;;4
+98;3;30061;U32;;Firmware FwVer;;1;0;;4
+99;3;30063;U32;;Firmware FwVer2;;1;0;;4
+100;3;30201;U32;;Condition Mode;;1;0;;4
+101;3;30229;U32;;Local time s Tm;;1;0;s;4
+102;3;30565;U32;;Number of generator starts GnStrCnt;;1;0;;4
+103;3;30567;U32;;Amp hours counter battery charge Ah;;1;0;Ah;4
+104;3;30569;U32;;Amp hours counter battery discharge Ah;;1;0;Ah;4
+105;3;30571;U32;;Meter reading consumption meter Wh;;1;0;Wh;4
+106;3;30573;U32;;Generator operating time s;;1;0;s;4
+107;3;30575;U32;;Released generator power Wh;;1;0;Wh;4
+108;3;30577;U32;;Grid energy consumption today Wh;E_DAY;1;0;Wh;4
+109;3;30579;U32;;Grid energy feed-in today Wh;;1;0;Wh;4
+110;3;30581;U32;;Grid reference counter reading Wh;;1;0;Wh;4
+111;3;30583;U32;;Grid feed-in counter reading Wh;;1;0;Wh;4
+112;3;30585;U32;;Power outage s GdFailTms;;1;0;s;4
+113;3;30587;U32;;PV generation counter reading Wh;;1;0;Wh;4
+114;3;30589;U32;;Rise in self-consumption in total Wh;;1;0;Wh;4
+115;3;30591;U32;;Rise in self-consumption today Wh;;1;0;Wh;4
+116;3;30593;U32;;Energy consumed internally total Wh;;1;0;Wh;4
+117;3;30595;U32;;Absorbed energy Wh EgyCntIn;;1;0;Wh;4
+118;3;30597;U32;;Released energy Wh EgyCntOut;;1;0;Wh;4
+119;3;30599;U32;;Number of grid connections GdCtcCnt;;1;0;;4
+120;3;30777;I32;;Power L1 W InvPwrAt;;1;0;W;4
+121;3;30779;I32;;Power L2 W InvPwrAtSlv1;;1;0;W;4
+122;3;30781;I32;;Power L3 W InvPwrAtSlv2;;1;0;W;4
+123;3;30787;U32;;Grid voltage phase L3 V;;0.01;0;V;4
+124;3;30807;I32;;Reactive power L1 var InvPwrRt;Q_AC_1;1;0;var;4
+125;3;30809;I32;;Reactive power L2 var InvPwrRtSlv1;Q_AC_2;1;0;var;4
+126;3;30811;I32;;Reactive power L3 var InvPwrRtSlv2;Q_AC_3;1;0;var;4
+127;3;30843;I32;;Battery current A TotBatCur;;0.001;0;A;4
+128;3;30845;U32;;Current battery charge status %;;1;0;%;4
+129;3;30847;U32;;Current battery capacity %;;1;0;%;4
+130;3;30849;I32;;Battery temperature Degree Celsius BatTmp;TEMP;0.1;0;Degree Celsius;4
+131;3;30851;U32;;Battery voltage V BatVtg;;0.01;0;V;4
+132;3;30853;U32;;Active battery charging mode;;1;0;;4
+133;3;30855;U32;;Current battery charging set voltage V;;0.01;0;V;4
+134;3;30857;I32;;Number of battery charge throughputs;;1;0;;4
+135;3;30859;U32;;Battery maintenance charge status;;1;0;;4
+136;3;30861;I32;;Consumer power W TotLodPwrAt;;1;0;W;4
+137;3;30863;U32;;Current generator power W;;1;0;W;4
+138;3;30865;I32;;Power grid reference W;;1;0;W;4
+139;3;30867;I32;;Power grid feed-in W;;1;0;W;4
+140;3;30869;I32;;PV power generated W TotPvPwr;;1;0;W;4
+141;3;30871;U32;;Current self-consumption W;;1;0;W;4
+142;3;30873;I32;;Current rise in self-consumption W;;1;0;W;4
+143;3;30875;U32;;Multifunction relay status Rly1Stt;;1;0;;4
+144;3;30877;U32;;Power supply status LodGdConStt;;1;0;;4
+145;3;30879;U32;;Reason for generator request GnDmdSrc;;1;0;;4
+146;3;30881;U32;;PV mains connection PvGdConStt;;1;0;;4
+147;3;30883;U32;;Status public electricity mains GdStt;;1;0;;4
+148;3;30885;U32;;Power external mains connection W;;1;0;W;4
+149;3;30887;U32;;Power external mains connection phase A W;;1;0;W;4
+150;3;30889;U32;;Power external mains connection phase B W;;1;0;W;4
+151;3;30891;U32;;Power external mains connection phase C W;;1;0;W;4
+152;3;30893;U32;;Reactive power external mains connection var;;1;0;var;4
+153;3;30895;U32;;Reactive power external mains phase A var;;1;0;var;4
+154;3;30897;U32;;Reactive power external mains phase B var;;1;0;var;4
+155;3;30899;U32;;Reactive power external mains phase C var;;1;0;var;4
+156;3;30901;U32;;Grid frequency external mains Hz;;0.01;0;Hz;4
+157;3;30903;U32;;Voltage external mains phase A V;;0.01;0;V;4
+158;3;30905;U32;;Voltage external mains phase B V;;0.01;0;V;4
+159;3;30907;U32;;Voltage external mains phase C V;;0.01;0;V;4
+160;3;30909;I32;;Current external mains phase A A;;0.001;0;A;4
+161;3;30911;I32;;Current external mains phase B A;;0.001;0;A;4
+162;3;30913;I32;;Current external mains phase C A;;0.001;0;A;4
+163;3;30917;U32;;Generator status GnStt;;1;0;;4
+164;3;40011;U32;;Acknowledge fault ErrAckn;;1;0;;4
+165;3;40031;U32;;Rated battery capacity Ah;;1;0;Ah;4
+166;3;40033;U32;;Max. battery temperature Degree Celsius;;0.1;0;Degree Celsius;4
+167;3;40035;U32;;Battery type BatTyp;;1;0;;4
+168;3;40037;U32;;Rated battery voltage V;;0.01;0;V;4
+169;3;40039;U32;;Battery quick charge time min;;1;0;min;4
+170;3;40041;U32;;Battery compensation charge time h;;1;0;h;4
+171;3;40043;U32;;Battery full charge time h;;1;0;h;4
+172;3;40045;U32;;Max. battery charging current A;;0.001;0;A;4
+173;3;40047;U32;;Rated generator current A;;0.001;0;A;4
+174;3;40049;U32;;Automatic generator start;;1;0;;4
+175;3;40051;U32;;Gen shutdown battery charge limit %;;1;0;%;4
+176;3;40053;U32;;Gen startup battery charge limit %;;1;0;%;4
+177;3;40055;U32;;Manual generator control GnManStr;;1;0;;4
+178;3;40057;U32;;Generator request via power on;CMD_ON;1;0;;1
+179;3;40059;U32;;Generator shutdown load limit W;;1;0;W;4
+180;3;40061;U32;;Generator startup load limit W;;1;0;W;4
+181;3;40071;U32;;Grid creating generator ExtSrc;;1;0;;4
+182;3;40073;U32;;Lower limit rise in self-consumption %;;1;0;%;4
+183;3;40075;U32;;Rise in self-consumption switched on;;1;0;;4
+184;3;40077;U32;;Initiate device restart InvRs;;1;0;;4
+185;3;40079;U32;;Charging stop voltage battery V;;0.01;0;V;4
+186;3;40081;U32;;Max charging current battery A;;0.001;0;A;4
+187;3;40083;U32;;Max discharging current battery A;;0.001;0;A;4
+188;3;40085;U32;;Target voltage cell quick charge V;;0.01;0;V;4
+189;3;40087;U32;;Target voltage cell full charge V;;0.01;0;V;4
+190;3;40089;U32;;Target voltage cell compensation V;;0.01;0;V;4
+191;3;40091;U32;;Target voltage cell maintenance V;;0.01;0;V;4
+192;3;40093;U32;;Voltage monitoring min threshold V;;0.01;0;V;4
+193;3;40095;U32;;Voltage monitoring max threshold V;;0.01;0;V;4
+194;3;40097;U32;;Voltage hysteresis min threshold V;;0.01;0;V;4
+195;3;40099;U32;;Voltage hysteresis max threshold V;;0.01;0;V;4
+196;3;40101;U32;;Frequency monitoring min threshold Hz;;0.01;0;Hz;4
+197;3;40103;U32;;Frequency monitoring max threshold Hz;;0.01;0;Hz;4
+198;3;40105;U32;;Frequency hysteresis min threshold Hz;;0.01;0;Hz;4
+199;3;40107;U32;;Frequency hysteresis max threshold Hz;;0.01;0;Hz;4
+200;3;40109;U32;;Country standard set Country;;1;0;;4
+201;3;40111;U32;;Voltage mon generator min threshold V;;0.01;0;V;4
+202;3;40113;U32;;Voltage mon generator max threshold V;;0.01;0;V;4
+203;3;40115;U32;;Voltage mon generator hysteresis min V;;0.01;0;V;4
+204;3;40117;U32;;Voltage mon generator hysteresis max V;;0.01;0;V;4
+205;3;40119;U32;;Freq mon generator min threshold Hz;;0.01;0;Hz;4
+206;3;40121;U32;;Freq mon generator max threshold Hz;;0.01;0;Hz;4
+207;3;40123;U32;;Freq mon generator hysteresis min Hz;;0.01;0;Hz;4
+208;3;40125;U32;;Freq mon generator hysteresis max Hz;;0.01;0;Hz;4
+209;3;40127;U32;;Voltage mon gen max reverse power W;;1;0;W;4
+210;3;40129;U32;;Voltage mon gen reverse power time s;;1;0;s;4
+211;3;40131;U32;;Grid connection point rated current A;;0.01;0;A;4
+212;3;40133;U32;;Grid nominal voltage V;;1;0;V;4
+213;3;40135;U32;;Nominal frequency Hz;;0.01;0;Hz;4
+214;3;40137;U32;;Acknowledge generator faults;;1;0;;4
+215;3;40141;U32;;Max. start attempts after error;;1;0;;4
+216;3;40143;I32;;Active current plant control A;;0.01;0;A;4
+217;3;40145;I32;;Reactive current plant control A;;0.01;0;A;4
+218;3;40147;U32;;Gen active current limitation A;;0.01;0;A;4
+219;3;40149;I32;;Active power setpoint W;;1;0;W;4
+220;3;40151;U32;;Plant control Comm.;;1;0;;4
+221;3;40153;I32;;Reactive power setpoint var;;1;0;var;4
+222;3;30053;U32;;Device-ID Model;;1;0;;4
+223;3;30559;U32;;Number of events for user;;1;0;;4
+224;3;30563;U32;;Number of events for service;;1;0;;4
+225;3;30815;I32;;Apparent power L1 VA;S_AC_1;1;0;VA;4
+226;3;30817;I32;;Apparent power L2 VA;S_AC_2;1;0;VA;4
+227;3;30819;I32;;Apparent power L3 VA;S_AC_3;1;0;VA;4
+228;3;35377;U64;;Number of events for user_1;;1;0;;4
+229;3;35381;U64;;Number of events for installer_1;;1;0;;4
+230;3;35385;U64;;Number of events for service_1;;1;0;;4
+231;3;40204;I32;;Reactive power setpoint Q %;;0.1;0;%;4
+232;3;40206;I32;;Cos phi setpoint, direct;;0.01;0;cos phi;4
+233;3;40208;U32;;Cos phi excitation type;;1;0;;4
+234;3;40212;U32;;Active power limitation P W;;1;0;W;4
+235;3;40214;U32;;Active power limitation P %;CMD_P_AC_SET_PERCENT;1;0;%;1
+236;3;30065;U32;;Firmware SMID-CT1 Firmware-3;;1;0;;4
+237;3;30067;U32;;Boot loader SMID-CT1 Firmware-4;;1;0;;4
+238;3;30069;U32;;Firmware SMID-CT2 Firmware-5;;1;0;;4
+239;3;30071;U32;;Boot loader SMID-CT2 Firmware-6;;1;0;;4
+240;3;30073;U32;;Firmware SMID-CT3 Firmware-7;;1;0;;4
+241;3;30075;U32;;Boot loader SMID-CT3 Firmware-8;;1;0;;4
+242;3;30077;U32;;Firmware SMID-CT4 Firmware-9;;1;0;;4
+243;3;30079;U32;;Boot loader SMID-CT4 Firmware-10;;1;0;;4
+244;3;30097;U32;;Serial number SMID-CT1;;1;0;;4
+245;3;30099;U32;;Serial number SMID-CT2;;1;0;;4
+246;3;30101;U32;;Serial number SMID-CT3;;1;0;;4
+247;3;30103;U32;;Serial number SMID-CT4;;1;0;;4
+248;3;30267;U32;;DC Switch 1 Status;;1;0;;4
+249;3;30269;U32;;DC Switch 2 Status;;1;0;;4
+250;3;30271;U32;;DC Switch 3 Status;;1;0;;4
+251;3;30273;U32;;DC Switch 4 Status;;1;0;;4
+252;3;30275;U32;;DC Switch 5 Status;;1;0;;4
+253;3;30277;U32;;DC Switch 6 Status;;1;0;;4
+254;3;30279;U32;;DC Switch 7 Status;;1;0;;4
+255;3;30281;U32;;DC Switch 8 Status;;1;0;;4
+256;3;30283;U32;;DC Switch 9 Status;;1;0;;4
+257;3;30285;U32;;DC Switch 10 Status;;1;0;;4
+258;3;30287;U32;;DC Switch 11 Status;;1;0;;4
+259;3;30289;U32;;DC Switch 12 Status;;1;0;;4
+260;3;30291;U32;;DC Switch 13 Status;;1;0;;4
+261;3;30293;U32;;DC Switch 14 Status;;1;0;;4
+262;3;30295;U32;;DC Switch 15 Status;;1;0;;4
+263;3;30297;U32;;DC Switch 16 Status;;1;0;;4
+264;3;30331;U32;;DcSwErr 1;;1;0;;4
+265;3;30333;U32;;DcSwErr 2;;1;0;;4
+266;3;30335;U32;;DcSwErr 3;;1;0;;4
+267;3;30337;U32;;DcSwErr 4;;1;0;;4
+268;3;30339;U32;;DcSwErr 5;;1;0;;4
+269;3;30341;U32;;DcSwErr 6;;1;0;;4
+270;3;30343;U32;;DcSwErr 7;;1;0;;4
+271;3;30345;U32;;DcSwErr 8;;1;0;;4
+272;3;30347;U32;;DcSwErr 9;;1;0;;4
+273;3;30349;U32;;DcSwErr 10;;1;0;;4
+274;3;30351;U32;;DcSwErr 11;;1;0;;4
+275;3;30353;U32;;DcSwErr 12;;1;0;;4
+276;3;30355;U32;;DcSwErr 13;;1;0;;4
+277;3;30357;U32;;DcSwErr 14;;1;0;;4
+278;3;30359;U32;;DcSwErr 15;;1;0;;4
+279;3;30361;U32;;DcSwErr 16;;1;0;;4
+280;3;31791;U32;;Number of DC current units CTNoOf;;1;0;;4
+281;3;31793;I32;;StringCurrent 1;;0.001;0;A;4
+282;3;31795;I32;;StringCurrent 2;;0.001;0;A;4
+283;3;31797;I32;;StringCurrent 3;;0.001;0;A;4
+284;3;31799;I32;;StringCurrent 4;;0.001;0;A;4
+285;3;31801;I32;;StringCurrent 5;;0.001;0;A;4
+286;3;31803;I32;;StringCurrent 6;;0.001;0;A;4
+287;3;31805;I32;;StringCurrent 7;;0.001;0;A;4
+288;3;31807;I32;;StringCurrent 8;;0.001;0;A;4
+289;3;31809;I32;;StringCurrent 9;;0.001;0;A;4
+290;3;31811;I32;;StringCurrent 10;;0.001;0;A;4
+291;3;31813;I32;;StringCurrent 11;;0.001;0;A;4
+292;3;31815;I32;;StringCurrent 12;;0.001;0;A;4
+293;3;31817;I32;;StringCurrent 13;;0.001;0;A;4
+294;3;31819;I32;;StringCurrent 14;;0.001;0;A;4
+295;3;31821;I32;;StringCurrent 15;;0.001;0;A;4
+296;3;31823;I32;;StringCurrent 16;;0.001;0;A;4
+297;3;31825;I32;;StringCurrent 17;;0.001;0;A;4
+298;3;31827;I32;;StringCurrent 18;;0.001;0;A;4
+299;3;31829;I32;;StringCurrent 19;;0.001;0;A;4
+300;3;31831;I32;;StringCurrent 20;;0.001;0;A;4
+301;3;31833;I32;;StringCurrent 21;;0.001;0;A;4
+302;3;31835;I32;;StringCurrent 22;;0.001;0;A;4
+303;3;31837;I32;;StringCurrent 23;;0.001;0;A;4
+304;3;31839;I32;;StringCurrent 24;;0.001;0;A;4
+305;3;31841;I32;;StringCurrent 25;;0.001;0;A;4
+306;3;31843;I32;;StringCurrent 26;;0.001;0;A;4
+307;3;31845;I32;;StringCurrent 27;;0.001;0;A;4
+308;3;31847;I32;;StringCurrent 28;;0.001;0;A;4
+309;3;31849;I32;;StringCurrent 29;;0.001;0;A;4
+310;3;31851;I32;;StringCurrent 30;;0.001;0;A;4
+311;3;31853;I32;;StringCurrent 31;;0.001;0;A;4
+312;3;31855;I32;;StringCurrent 32;;0.001;0;A;4
+313;3;32057;U32;;DcInStt 1;;1;0;;4
+314;3;32059;U32;;DcInStt 2;;1;0;;4
+315;3;32061;U32;;DcInStt 3;;1;0;;4
+316;3;32063;U32;;DcInStt 4;;1;0;;4
+317;3;32065;U32;;DcInStt 5;;1;0;;4
+318;3;32067;U32;;DcInStt 6;;1;0;;4
+319;3;32069;U32;;DcInStt 7;;1;0;;4
+320;3;32071;U32;;DcInStt 8;;1;0;;4
+321;3;32073;U32;;DcInStt 9;;1;0;;4
+322;3;32075;U32;;DcInStt 10;;1;0;;4
+323;3;32077;U32;;DcInStt 11;;1;0;;4
+324;3;32079;U32;;DcInStt 12;;1;0;;4
+325;3;32081;U32;;DcInStt 13;;1;0;;4
+326;3;32083;U32;;DcInStt 14;;1;0;;4
+327;3;32085;U32;;DcInStt 15;;1;0;;4
+328;3;32087;U32;;DcInStt 16;;1;0;;4
+329;3;32089;U32;;DcInStt 17;;1;0;;4
+330;3;32091;U32;;DcInStt 18;;1;0;;4
+331;3;32093;U32;;DcInStt 19;;1;0;;4
+332;3;32095;U32;;DcInStt 20;;1;0;;4
+333;3;32097;U32;;DcInStt 21;;1;0;;4
+334;3;32099;U32;;DcInStt 22;;1;0;;4
+335;3;32101;U32;;DcInStt 23;;1;0;;4
+336;3;32103;U32;;DcInStt 24;;1;0;;4
+337;3;32105;U32;;DcInStt 25;;1;0;;4
+338;3;32107;U32;;DcInStt 26;;1;0;;4
+339;3;32109;U32;;DcInStt 27;;1;0;;4
+340;3;32111;U32;;DcInStt 28;;1;0;;4
+341;3;32113;U32;;DcInStt 29;;1;0;;4
+342;3;32115;U32;;DcInStt 30;;1;0;;4
+343;3;32117;U32;;DcInStt 31;;1;0;;4
+344;3;32119;U32;;DcInStt 32;;1;0;;4
+345;3;30245;U32;;SMU ID SSM Identifier;;1;0;;4
+346;3;32053;U32;;Status signal contact 1;;1;0;;4
+347;3;32055;U32;;Status signal contact 2;;1;0;;4
+348;3;31301;I32;;PV string current group 4;;0.001;0;A;4
+349;3;31307;I32;;PV string current group 5;;0.001;0;A;4
+350;3;31313;I32;;PV string current group 6;;0.001;0;A;4

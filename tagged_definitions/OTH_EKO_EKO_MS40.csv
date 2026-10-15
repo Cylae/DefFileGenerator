@@ -1,0 +1,29 @@
+﻿modbusRTU;Other;EKO;EKO_MS40;;;;;;;
+1;4;0;U16;;Serial number;SERIAL;1.0;0.0;;4
+2;4;1;U16;;Serial number _1;;1.0;0.0;;4
+3;4;2;U16;;Serial number _2;;1.0;0.0;;4
+4;4;3;U16;;Serial number _3;;1.0;0.0;;4
+5;4;4;U16;;Serial number _4;;1.0;0.0;;4
+6;4;5;U16;;Serial number _5;;1.0;0.0;;4
+7;4;6;U16;;Serial number _6;;1.0;0.0;;4
+8;4;7;U16;;Serial number _7;;1.0;0.0;;4
+9;4;8;U16;;Model Number;MODEL;1.0;0.0;;4
+10;4;9;U16;;Model Number_1;;1.0;0.0;;4
+11;4;10;U16;;Model Number_2;;1.0;0.0;;4
+12;4;11;U16;;Model Number_3;;1.0;0.0;;4
+13;4;12;U16;;Model Number_4;;1.0;0.0;;4
+14;4;13;U16;;Minimum solar radiation intensity;;1.0;0.0;;4
+15;4;14;U16;;Maximum solar radiation intensity;;1.0;0.0;;4
+16;4;15;U16;;Measurement mode;;1.0;0.0;;4
+17;4;16;U16;;Sensitivity;;1.0;0.0;(micro V/W /m -2);4
+18;4;18;U16;;Temperature unit;;1.0;0.0;Deg.Celsius;4
+19;4;19;U16;;AD(mV);;1.0;0.0;mV;4
+20;4;21;U16;;Comp.Irr(W/m2);;1.0;0.0;W/m2;4
+21;4;25;U16;;Password;;1.0;0.0;;4
+22;4;34;U16;;L.Coeff. K1;;1.0;0.0;;4
+23;4;36;U16;;L.Coeff. K2;;1.0;0.0;;4
+24;4;38;U16;;L.Coeff. K3;;1.0;0.0;;4
+25;4;40;U16;;L.Coeff. K4;;1.0;0.0;;4
+26;4;42;U16;;Addr;;1.0;0.0;;4
+27;4;43;U16;;BPS;;1.0;0.0;;4
+28;4;45;U16;;Parity;;1.0;0.0;;4

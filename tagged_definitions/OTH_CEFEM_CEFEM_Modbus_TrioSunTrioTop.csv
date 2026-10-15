@@ -1,0 +1,69 @@
+﻿modbusRTU;Other;CEFEM;CEFEM_Modbus_TrioSunTrioTop;;;;;;;
+1;3;0;U16;;Fabrication number Low;fabrication_number_low;1.000000;0.000000;;4
+2;3;1;U16;;Order number;order_number;1.000000;0.000000;;4
+3;3;2;U16;;Model;MODEL;1.000000;0.000000;;4
+4;3;3;U16;;Software version DC1;software_version_dc1;1.000000;0.000000;;4
+5;3;4;U16;;Software version DC2;software_version_dc2;1.000000;0.000000;;4
+6;3;5;U16;;Software version Inv;software_version_inv;1.000000;0.000000;;4
+7;3;6;U16;;Software version IHM;software_version_ihm;1.000000;0.000000;;4
+8;3;7;U16;;Status Register;status_register;1.000000;0.000000;;4
+9;3;8;U16;;Fault Register 1;fault_register_1;1.000000;0.000000;;8
+10;3;9;U16;;Voltage DC1;voltage_dc1;1.000000;0.000000;V;4
+11;3;10;U16;;Power DC1;power_dc1;1.000000;0.000000;W;4
+12;3;11;U16;;Voltage DC2;voltage_dc2;1.000000;0.000000;V;4
+13;3;12;U16;;Power DC2;power_dc2;1.000000;0.000000;W;4
+14;3;13;U16;;Voltage PhaseA;voltage_phasea;1.000000;0.000000;V;4
+15;3;14;U16;;Voltage PhaseB;voltage_phaseb;1.000000;0.000000;V;4
+16;3;15;U16;;Voltage PhaseC;voltage_phasec;1.000000;0.000000;V;4
+17;3;16;U16;;PowerFactor;powerfactor;1.000000;0.000000;;4
+18;3;17;U16;;Output Power;output_power;1.000000;0.000000;W;4
+19;3;18;U16;;Daily Production;daily_production;2.000000;0.000000;Wh;4
+20;3;19_0_4;BITS;;Seconds units;seconds_units;1.000000;0.000000;s;4
+21;3;19_4_4;BITS;;Seconds tens;seconds_tens;1.000000;0.000000;s;4
+22;3;19_8_4;BITS;;minutes units;minutes_units;1.000000;0.000000;min;4
+23;3;19_12_4;BITS;;minutes tens;minutes_tens;1.000000;0.000000;min;4
+24;3;20_0_4;BITS;;Hours units;hours_units;1.000000;0.000000;h;4
+25;3;20_4_4;BITS;;Hours tens;hours_tens;1.000000;0.000000;h;4
+26;3;20_8_4;BITS;;Day of week;day_of_week;1.000000;0.000000;;4
+27;3;21_0_4;BITS;;Day of month units;day_of_month_units;1.000000;0.000000;;4
+28;3;21_4_4;BITS;;Day of month tens;day_of_month_tens;1.000000;0.000000;;4
+29;3;21_8_4;BITS;;Month units;month_units;1.000000;0.000000;;4
+30;3;21_12_4;BITS;;Month tens;month_tens;1.000000;0.000000;;4
+31;3;22_0_4;BITS;;Year units;year_units;1.000000;0.000000;;4
+32;3;22_4_4;BITS;;Year tens;year_tens;1.000000;0.000000;;4
+33;3;23_0;U8;;Temp Ambiante;temp_ambiante;1.000000;0.000000;C;4
+34;3;23_1;U8;;Temp DC1;temp_dc1;1.000000;0.000000;C;4
+35;3;24_0;U8;;Temp DC2;temp_dc2;1.000000;0.000000;C;4
+36;3;24_1;U8;;Temp INV;temp_inv;1.000000;0.000000;C;4
+37;3;25;U16;;Analog Input 1;analog_input_1;1.000000;0.000000;;4
+38;3;26;U16;;Analog Input 2;analog_input_2;1.000000;0.000000;;4
+39;3;27;U16;;Fault Register2;fault_register2;1.000000;0.000000;;8
+40;3;28;U32;;Daily production;daily_production_1;1.000000;0.000000;Wh;4
+41;3;30;U16;;Fabrication number High;fabrication_number_high;1.000000;0.000000;;4
+42;3;31;U32;;PowerLimit;cmdPwrWatt;1.000000;0.000000;W;4
+43;3;33;U32;;External Total Prod;external_total_prod;1.000000;0.000000;;4
+44;3;35;U16;;Seconds;seconds;1.000000;0.000000;;4
+45;3;36;U16;;Minutes;minutes;1.000000;0.000000;;4
+46;3;37;U16;;Hour;hour;1.000000;0.000000;;4
+47;3;38;U16;;Day of the week;day_of_the_week;1.000000;0.000000;;4
+48;3;39;U16;;Day of the month;day_of_the_month;1.000000;0.000000;;4
+49;3;40;U16;;Month;month;1.000000;0.000000;;4
+50;3;41;U16;;Year;year;1.000000;0.000000;;4
+51;3;42;U16;;Boot Version HMI card;boot_version_hmi_card;1.000000;0.000000;;4
+52;3;43;U16;;Boot Version Inverter;boot_version_inverter;1.000000;0.000000;;4
+53;3;44;U16;;Boot Version SBP (DC DC);boot_version_sbp_dc_dc;1.000000;0.000000;;4
+54;3;45;U16;;Boot Version Switch;boot_version_switch;1.000000;0.000000;;4
+55;3;46;U16;;Voltage DC3;voltage_dc3;1.000000;0.000000;V;4
+56;3;47;U16;;Power DC3;power_dc3;1.000000;0.000000;W;4
+57;3;48;U16;;Voltage DC4;voltage_dc4;1.000000;0.000000;V;4
+58;3;49;U16;;Power DC4;power_dc4;1.000000;0.000000;W;4
+59;3;50;U16;;Isolation resistance 1;isolation_resistance_1;1.000000;0.000000;KOhm;4
+60;3;51;U16;;Isolation resistance 2;isolation_resistance_2;1.000000;0.000000;KOhm;4
+61;3;52;U16;;Isolation resistance 3;isolation_resistance_3;1.000000;0.000000;KOhm;4
+62;3;53;U16;;Isolation resistance 4;isolation_resistance_4;1.000000;0.000000;KOhm;4
+63;3;54;U16;;Status Switch;status_switch;1.000000;0.000000;;4
+64;3;55;U16;;Power Limitation Percentage;CMD_P_AC_SET_PERCENT;0.100000;0.000000;'%;1
+65;3;56;U16;;Nominal Power Inverter;P_RATED;1.000000;0.000000;W;4
+66;3;58;U16;;INV Temperature;inv_temperature;1.000000;0.000000;C;4
+67;3;59;U16;;DC DC Temperature;dc_dc_temperature;1.000000;0.000000;C;4
+68;3;60;U16;;GUI Temperature;gui_temperature;1.000000;0.000000;C;4

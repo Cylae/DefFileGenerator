@@ -1,0 +1,116 @@
+﻿modbusRTU;Meter;CarloGavazzi;CarloGavazzi_EM210;;;;;;;
+1;4;1;U16;;volt1;;1.0;0.0;V;4
+2;4;3;U16;;volt2;;1.0;0.0;V;4
+3;4;5;U16;;volt3;;1.0;0.0;V;4
+4;4;13;U16;;current1;;1.0;0.0;A;4
+5;4;15;U16;;current2;;1.0;0.0;A;4
+6;4;17;U16;;current3;;1.0;0.0;A;4
+7;4;19;U16;;power1;P_AC_1;1.0;0.0;W;4
+8;4;21;U16;;power2;P_AC_2;1.0;0.0;W;4
+9;4;23;U16;;power3;P_AC_3;1.0;0.0;W;4
+10;4;25;U16;;apparent_power1;;1.0;0.0;VA;4
+11;4;27;U16;;apparent_power2;;1.0;0.0;VA;4
+12;4;29;U16;;apparent_power3;;1.0;0.0;VA;4
+13;4;31;U16;;reactive_power1;;1.0;0.0;VAR;4
+14;4;33;U16;;reactive_power2;;1.0;0.0;VAR;4
+15;4;35;U16;;reactive_power3;;1.0;0.0;VAR;4
+16;4;37;U16;;volt;;1.0;0.0;V;4
+17;4;39;U16;;V l-l;;1.0;0.0;V;4
+18;4;41;U16;;power;P_AC;1.0;0.0;W;4
+19;4;43;U16;;apparent_power;S_AC;1.0;0.0;VA;4
+20;4;45;U16;;reactive_power;Q_AC;1.0;0.0;VAR;4
+21;4;47;U16;;Pf l1;;1.0;0.0;;4
+22;4;48;U16;;Pf l2;;1.0;0.0;;4
+23;4;49;U16;;Pf l3;;1.0;0.0;;4
+24;4;50;U16;;Pf;PF;1.0;0.0;;4
+25;4;51;U16;;Phase sequence;;1.0;0.0;;4
+26;4;52;U16;;frequency;FREQ;1.0;0.0;Hz;4
+27;4;53;U16;;energy_tot;;1.0;0.0;kWh;4
+28;4;55;U16;;reactive_energy_tot;;1.0;0.0;kvarh;4
+29;4;79;U16;;kWh(-) TOT;;1.0;0.0;kWh;4
+30;4;91;U16;;Hour counter meter;;1.0;0.0;Hours;4
+31;4;93;U16;;Hour counter meter neg;;1.0;0.0;Hours;4
+32;4;131;U16;;THD(15h) A L1;;1.0;0.0;Percent;4
+33;4;133;U16;;THD(15h) A L2;;1.0;0.0;Percent;4
+34;4;135;U16;;THD(15h) A L3;;1.0;0.0;Percent;4
+35;4;139;U16;;THD(15h) V1-N;;1.0;0.0;Percent;4
+36;4;141;U16;;THD(15h) V2-N;;1.0;0.0;Percent;4
+37;4;143;U16;;THD(15h) V3-N;;1.0;0.0;Percent;4
+38;4;147;U16;;THD(15h) V12;;1.0;0.0;Percent;4
+39;4;149;U16;;THD(15h) V23;;1.0;0.0;Percent;4
+40;4;151;U16;;THD(15h) V31;;1.0;0.0;Percent;4
+41;4;153;U16;;Neutral current (In);;1.0;0.0;A;4
+42;4;247;U16;;Hour counter meter neg_1;;1.0;0.0;Hours;4
+43;4;249;U16;;Neutral current (In)_1;;1.0;0.0;A;4
+44;4;255;U16;;Hour counter meter_1;;1.0;0.0;Hours;4
+45;4;259;U16;;V L-N sum;;1.0;0.0;V;4
+46;4;261;U16;;V L-L sum;;1.0;0.0;V;4
+47;4;263;U16;;W sum;;1.0;0.0;W;4
+48;4;265;U16;;VA sum;;1.0;0.0;VA;4
+49;4;267;U16;;VAR sum;;1.0;0.0;VAR;4
+50;4;269;U16;;PF sum;;1.0;0.0;;4
+51;4;271;U16;;Phase sequence_1;;1.0;0.0;;4
+52;4;273;U16;;Hz;;1.0;0.0;Hz;4
+53;4;275;U16;;kWh(+) TOT;;1.0;0.0;kWh;4
+54;4;277;U16;;kVarh(+) TOT;;1.0;0.0;kvarh;4
+55;4;279;U16;;kWh(-) TOT_1;;1.0;0.0;kWh;4
+56;4;287;U16;;V L1-L2;;1.0;0.0;V;4
+57;4;289;U16;;V L1-N;;1.0;0.0;V;4
+58;4;291;U16;;A L1;;1.0;0.0;A;4
+59;4;293;U16;;W L1;;1.0;0.0;W;4
+60;4;295;U16;;VA L1;;1.0;0.0;VA;4
+61;4;297;U16;;VAR L1;;1.0;0.0;VAR;4
+62;4;299;U16;;PF L1;;1.0;0.0;;4
+63;4;301;U16;;V L2-L3;;1.0;0.0;V;4
+64;4;303;U16;;V L2-N;;1.0;0.0;V;4
+65;4;305;U16;;A L2;;1.0;0.0;A;4
+66;4;307;U16;;W L2;;1.0;0.0;W;4
+67;4;309;U16;;VA L2;;1.0;0.0;VA;4
+68;4;311;U16;;VAR L2;;1.0;0.0;VAR;4
+69;4;313;U16;;PF L2;;1.0;0.0;;4
+70;4;315;U16;;V L3-L1;;1.0;0.0;V;4
+71;4;317;U16;;V L3-N;;1.0;0.0;V;4
+72;4;319;U16;;A L3;;1.0;0.0;A;4
+73;4;321;U16;;W L3;;1.0;0.0;W;4
+74;4;323;U16;;VA L3;;1.0;0.0;VA;4
+75;4;325;U16;;VAR L3;;1.0;0.0;VAR;4
+76;4;327;U16;;PF L3;;1.0;0.0;;4
+77;4;385;U16;;THD(15h) A L1_1;;1.0;0.0;Percent;4
+78;4;387;U16;;THD(15h) V1-N_1;;1.0;0.0;Percent;4
+79;4;389;U16;;THD(15h) V12_1;;1.0;0.0;Percent;4
+80;4;403;U16;;THD(15h) A L2_1;;1.0;0.0;Percent;4
+81;4;405;U16;;THD(15h) V2-N_1;;1.0;0.0;Percent;4
+82;4;407;U16;;THD(15h) V23_1;;1.0;0.0;Percent;4
+83;4;421;U16;;THD(15h) A L3_1;;1.0;0.0;Percent;4
+84;4;423;U16;;THD(15h) V3-N_1;;1.0;0.0;Percent;4
+85;4;425;U16;;THD(15h) V31_1;;1.0;0.0;Percent;4
+86;4;771;U16;;Version code;;1.0;0.0;;4
+87;4;772;U16;;Revision code;;1.0;0.0;;4
+88;4;773;U16;;Programming lock (trimmer position in the rear of the display);;1.0;0.0;;4
+89;4;12;U16;;Carlo Gavazzi Controls identification code;;1.0;0.0;;4
+90;4;4099;U16;;Measuring system;;1.0;0.0;;4
+91;4;4100;U16;;Primary current;;1.0;0.0;;4
+92;4;4102;U16;;Voltage transformer ratio;SERIAL;1.0;0.0;;4
+93;4;4104;U16;;Sensor selection;;1.0;0.0;;4
+94;4;4105;U16;;Range Rogowski sensor;;1.0;0.0;;4
+95;4;4357;U16;;Wrong connection (Installing help) management enabling;;1.0;0.0;;4
+96;4;4358;U16;;Wrong connection (installing help) status;;1.0;0.0;;4
+97;4;4359;U16;;THD calculation enabling;;1.0;0.0;;4
+98;4;4360;U16;;I_counth;;1.0;0.0;;4
+99;4;4115;U16;;Pulse output duration (TON);;1.0;0.0;;4
+100;4;4129;U16;;kWh per pulse;;1.0;0.0;;4
+101;4;4865;U16;;Type of application;;1.0;0.0;;4
+102;4;8193;U16;;RS485 instrument address;;1.0;0.0;;4
+103;4;8194;U16;;RS485 baud rate;;1.0;0.0;;4
+104;4;8195;U16;;RS485 parity;;1.0;0.0;;4
+105;4;8196;U16;;RS485 Stop bit;;1.0;0.0;;4
+106;4;16385;U16;;Reset of all meters (kWhTOT, kvarhTOT, positive HoursCounter, negative HoursCounter);;1.0;0.0;;4
+107;4;20481;U16;;SerialNumber_Letter 1 (from SX) Letter 2 (from SX);;1.0;0.0;;4
+108;4;20482;U16;;SerialNumber_Letter 3 (from SX) Letter 4 (from SX);;1.0;0.0;;4
+109;4;20483;U16;;SerialNumber_Letter 5 (from SX) Letter 6 (from SX);;1.0;0.0;;4
+110;4;20484;U16;;SerialNumber_Letter 7 (from SX) Letter 8 (from SX);;1.0;0.0;;4
+111;4;20485;U16;;SerialNumber_Letter 9 (from SX) Letter 10 (from SX);;1.0;0.0;;4
+112;4;20486;U16;;SerialNumber_Letter 11 (from SX) Letter 12 (from SX);;1.0;0.0;;4
+113;4;20487;U16;;SerialNumber_Letter 13 (from SX);;1.0;0.0;;4
+114;4;20488;U16;;Instrument production year;;1.0;0.0;;4
+115;4;20737;U16;;Instrument secondary address;;1.0;0.0;;4

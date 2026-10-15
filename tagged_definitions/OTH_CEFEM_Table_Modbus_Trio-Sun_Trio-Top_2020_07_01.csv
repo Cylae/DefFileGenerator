@@ -1,0 +1,34 @@
+﻿modbusRTU;Other;CEFEM;Table Modbus Trio-Sun Trio-Top;;;;;;;
+1;4;0;U16;;Numéro de fabrication;;1.0;0.0;;4
+2;4;1;U16;;Numéro d'ordre;;1.0;0.0;;4
+3;4;2;U16;;Modèle;MODEL;1.0;0.0;;4
+4;4;3;U16;;Version de soft convertisseur DC1;;1.0;0.0;;4
+5;4;4;U16;;Version de soft convertisseur DC2;;1.0;0.0;;4
+6;4;5;U16;;Version de Soft Onduleur;;1.0;0.0;;4
+7;4;6;U16;;Version de Soft IHM;;1.0;0.0;;4
+8;4;7;U16;;Registre de status;;1.0;0.0;;4
+9;4;8;U16;;Registre de défauts;;1.0;0.0;;4
+10;4;9;U16;;Tension panneaux DC1;U_DC;1.0;0.0;;4
+11;4;10;U16;;Puissance panneaux DC1;P_DC;1.0;0.0;;4
+12;4;11;U16;;Tension panneaux DC2;;1.0;0.0;;4
+13;4;12;U16;;Puissance panneaux DC2;;1.0;0.0;;4
+14;4;13;U16;;Tension Phase A;U_AC_1;1.0;0.0;;4
+15;4;14;U16;;Tension Phase B;U_AC_2;1.0;0.0;;4
+16;4;15;U16;;Tension Phase C;U_AC_3;1.0;0.0;;4
+17;4;16;U16;;Facteur de puissance;PF;1.0;0.0;;4
+18;4;17;U16;;Puissance de sortie de l'onduleur;;1.0;0.0;;4
+19;4;18;U16;;Production journalière;;1.0;0.0;;4
+20;4;19;U16;;Secondes et minutes;;1.0;0.0;;4
+21;4;20;U16;;Heures et jour de la semaine;;1.0;0.0;;4
+22;4;21;U16;;Mois et jour du mois;;1.0;0.0;;4
+23;4;22;U16;;Années;;1.0;0.0;;4
+24;4;23;U16;;Température ambiante et DC1;TEMP_AMB;1.0;0.0;;4
+25;4;24;U16;;Température DC2 et Onduleur;;1.0;0.0;;4
+26;4;25;U16;;Entrée analogique 1;;1.0;0.0;;4
+27;4;26;U16;;Entrée analogique 2;;1.0;0.0;;4
+28;4;27;U16;;Registre de défauts 2;;1.0;0.0;;4
+29;4;28;U16;;Production journalière ( En Wh);;1.0;0.0;;4
+30;4;29;U16;;Production journalière ( En Wh);;1.0;0.0;;4
+31;4;30;U16;;Numéro de fabrication 2;;1.0;0.0;;4
+32;4;31;U16;;"Limitationde puissance de l'onduleur 
+(En Watts)";;1.0;0.0;;4

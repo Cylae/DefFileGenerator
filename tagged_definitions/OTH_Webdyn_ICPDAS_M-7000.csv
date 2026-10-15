@@ -1,0 +1,71 @@
+﻿modbusRTU;Io;ICPDAS;M7028;;;;;;;
+1;4;64;U16;;Read Output Channel 0;;1;0;;4
+2;4;65;U16;;Read Output Channel 1;;1;0;;4
+3;4;66;U16;;Read Output Channel 2;;1;0;;4
+4;4;67;U16;;Read Output Channel 3;;1;0;;4
+5;4;68;U16;;Read Output Channel 4;;1;0;;4
+6;4;69;U16;;Read Output Channel 5;;1;0;;4
+7;4;70;U16;;Read Output Channel 6;;1;0;;4
+8;4;71;U16;;Read Output Channel 7;;1;0;;4
+9;3;0;U16;;Output Channel 0;Output1;1;0;;4
+10;3;1;U16;;Output Channel 1;Output2;1;0;;4
+11;3;2;U16;;Output Channel 2;Output3;1;0;;4
+12;3;3;U16;;Output Channel 3;Output4;1;0;;4
+13;3;4;U16;;Output Channel 4;Output5;1;0;;4
+14;3;5;U16;;Output Channel 5;Output6;1;0;;4
+15;3;6;U16;;Output Channel 6;Output7;1;0;;4
+16;3;7;U16;;Output Channel 7;Output8;1;0;;4
+17;3;96;U16;;Safe analog output Channel 0;;1;0;;4
+18;3;97;U16;;Safe analog output Channel 1;;1;0;;4
+19;3;98;U16;;Safe analog output Channel 2;;1;0;;4
+20;3;99;U16;;Safe analog output Channel 3;;1;0;;4
+21;3;100;U16;;Safe analog output Channel 4;;1;0;;4
+22;3;101;U16;;Safe analog output Channel 5;;1;0;;4
+23;3;102;U16;;Safe analog output Channel 6;;1;0;;4
+24;3;103;U16;;Safe analog output Channel 7;;1;0;;4
+25;3;192;U16;;Power on analog output value of channel 0;CMD_ON;1;0;;1
+26;3;193;U16;;Power on analog output value of channel 1;;1;0;;4
+27;3;194;U16;;Power on analog output value of channel 2;;1;0;;4
+28;3;195;U16;;Power on analog output value of channel 3;;1;0;;4
+29;3;196;U16;;Power on analog output value of channel 4;;1;0;;4
+30;3;197;U16;;Power on analog output value of channel 5;;1;0;;4
+31;3;198;U16;;Power on analog output value of channel 6;;1;0;;4
+32;3;199;U16;;Power on analog output value of channel 7;;1;0;;4
+33;3;256;U16;;Analog output type code of channel 0;ChannelConfig0;1;0;;4
+34;3;257;U16;;Analog output type code of channel 1;ChannelConfig1;1;0;;4
+35;3;258;U16;;Analog output type code of channel 2;ChannelConfig2;1;0;;4
+36;3;259;U16;;Analog output type code of channel 3;ChannelConfig3;1;0;;4
+37;3;260;U16;;Analog output type code of channel 4;ChannelConfig4;1;0;;4
+38;3;261;U16;;Analog output type code of channel 5;ChannelConfig5;1;0;;4
+39;3;262;U16;;Analog output type code of channel 6;ChannelConfig6;1;0;;4
+40;3;263;U16;;Analog output type code of channel 7;ChannelConfig7;1;0;;4
+41;3;288;U16;;Analog output slew rate of channel 0;;1;0;;4
+42;3;288;U16;;Analog output slew rate of channel 1;;1;0;;4
+43;3;290;U16;;Analog output slew rate of channel 2;;1;0;;4
+44;3;290;U16;;Analog output slew rate of channel 3;;1;0;;4
+45;3;291;U16;;Analog output slew rate of channel 4;;1;0;;4
+46;3;292;U16;;Analog output slew rate of channel 5;;1;0;;4
+47;3;294;U16;;Analog output slew rate of channel 6;;1;0;;4
+48;3;295;U16;;Analog output slew rate of channel 7;;1;0;;4
+49;3;480;U32;;Firmware version;;1;0;;4
+50;3;482;U32;;Module name;;1;0;;4
+51;3;484;U16;;Module address;UNIT_ID;1;0;;4
+52;3;485;U16;;Bus Config;BusConfig;1;0;;4
+53;3;487;U16;;Modbus response delay time;;1;0;ms;4
+54;3;488;U16;;Host watchdog timeout;;0.1;0;ms;4
+55;3;491;U16;;Host watchdog timeout count;;1;0;;4
+56;1;224_0_1;BITS;;Status of current output open wire 0;;1;0;;4
+57;1;225_0_1;BITS;;Status of current output open wire 1;;1;0;;4
+58;1;226_0_1;BITS;;Status of current output open wire 2;;1;0;;4
+59;1;227_0_1;BITS;;Status of current output open wire 3;;1;0;;4
+60;1;228_0_1;BITS;;Status of current output open wire 4;;1;0;;4
+61;1;229_0_1;BITS;;Status of current output open wire 5;;1;0;;4
+62;1;230_0_1;BITS;;Status of current output open wire 6;;1;0;;4
+63;1;231_0_1;BITS;;Status of current output open wire 7;;1;0;;4
+64;1;256_0_1;BITS;;Protocol;;1;0;;4
+65;1;259_0_1;BITS;;Modbus host watchdog mode;;1;0;;4
+66;1;260_0_1;BITS;;enable host watchdog;;1;0;;4
+67;1;268_0_1;BITS;;Modbus data format;;1;0;;4
+68;1;269_0_1;BITS;;Host watch dog timeout status;;1;0;;4
+69;1;271_0_1;BITS;;factory default calibration parameters;;1;0;;4
+70;1;272_0_1;BITS;;Reset status;;1;0;;4

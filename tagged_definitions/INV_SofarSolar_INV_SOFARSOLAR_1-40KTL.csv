@@ -1,0 +1,116 @@
+﻿modbusRTU;Inverter;SofarSolar;INV_SOFARSOLAR_1-40KTL;;;;;;;
+1;4;0;U16;;Operating state;;1.0;0.0;;4
+2;4;1;U16;;Fault 1;;1.0;0.0;;4
+3;4;2;U16;;Fault 2;;1.0;0.0;;4
+4;4;3;U16;;Fault 3;;1.0;0.0;;4
+5;4;4;U16;;Fault 4;;1.0;0.0;;4
+6;4;5;U16;;Fault 5;;1.0;0.0;;4
+7;4;6;U16;;PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;4
+8;4;7;U16;;PV1 Current;I_DC_STRING_1;1.0;0.0;A;4
+9;4;8;U16;;PV2 Voltage;U_DC_STRING_2;1.0;0.0;V;4
+10;4;9;U16;;PV2 Current;I_DC_STRING_2;1.0;0.0;A;4
+11;4;10;U16;;PV1 Power;;1.0;0.0;kW;4
+12;4;11;U16;;PV2 Power;;1.0;0.0;kW;4
+13;4;12;U16;;Active power output;P_AC;1.0;0.0;kW;4
+14;4;13;U16;;Reactive power output;Q_AC;1.0;0.0;kVar;4
+15;4;14;U16;;Grid frequency;FREQ;1.0;0.0;Hz;4
+16;4;15;U16;;A-phase voltage;;1.0;0.0;V;4
+17;4;16;U16;;A-phase current;I_AC_3;1.0;0.0;A;4
+18;4;17;U16;;B-phase voltage;;1.0;0.0;V;4
+19;4;18;U16;;B-phase current;;1.0;0.0;A;4
+20;4;19;U16;;C-phase voltage;;1.0;0.0;V;4
+21;4;20;U16;;C-phase current;;1.0;0.0;A;4
+22;4;21;U16;;Total production;E_TOT;1.0;0.0;kWh;4
+23;4;23;U16;;Total generation time;TOT;1.0;0.0;hour;4
+24;4;25;U16;;The day generation;E_DAY;1.0;0.0;kW;4
+25;4;26;U16;;The day generation time;;1.0;0.0;minute;4
+26;4;27;U16;;Inverter module temperature;TEMP_CELL;1.0;0.0;C;4
+27;4;28;U16;;Inverter inner temperature;TEMP_INT;1.0;0.0;C;4
+28;4;29;U16;;Inverter bus voltage;U_DC;1.0;0.0;V;4
+29;4;30;U16;;PV1 input voltage sampling by CPU Slave;;1.0;0.0;V;4
+30;4;31;U16;;PV2 input voltage sampling by CPU Slave;;1.0;0.0;V;4
+31;4;32;U16;;Count-down time;;1.0;0.0;;4
+32;4;33;U16;;Inverter alert message;;1.0;0.0;;4
+33;4;34;U16;;Input mode;;1.0;0.0;;4
+34;4;35;U16;;Inverter inner message;;1.0;0.0;;4
+35;4;36;U16;;Insulation of PV1+ to ground;R_ISO;1.0;0.0;;4
+36;4;37;U16;;Insulation of PV2+ to ground;;1.0;0.0;;4
+37;4;38;U16;;Insulation of PV- to ground;;1.0;0.0;;4
+38;4;39;U16;;Country code;;1.0;0.0;;4
+39;4;40;U16;;CT current;;1.0;0.0;A;4
+40;4;41;U16;;CT power;;1.0;0.0;kW;4
+41;4;42;U16;;GCFI Valid value;;1.0;0.0;mA;4
+42;4;43;U16;;DCI value phase R;;1.0;0.0;mA;4
+43;4;44;U16;;DCI value phase S;;1.0;0.0;mA;4
+44;4;45;U16;;DCI value phase T;;1.0;0.0;mA;4
+45;4;256;U16;;Fault 1_1;;1.0;0.0;;4
+46;4;257;U16;;Fault 2_1;;1.0;0.0;;4
+47;4;258;U16;;Fault 3_1;;1.0;0.0;;4
+48;4;259;U16;;Fault 4_1;;1.0;0.0;;4
+49;4;260;U16;;Fault 5_1;;1.0;0.0;;4
+50;4;261;U16;;PV1 Voltage_1;U_DC_MPPT_1;1.0;0.0;V;4
+51;4;262;U16;;PV1 Current_1;;1.0;0.0;A;4
+52;4;263;U16;;PV2 Voltage_1;U_DC_MPPT_2;1.0;0.0;V;4
+53;4;264;U16;;PV2 Current_1;;1.0;0.0;A;4
+54;4;265;U16;;PV3 Voltage_1;U_DC_MPPT_3;1.0;0.0;V;4
+55;4;266;U16;;PV3 Current_1;I_DC_STRING_3;1.0;0.0;A;4
+56;4;267;U16;;PV4 Voltage_1;U_DC_MPPT_4;1.0;0.0;V;4
+57;4;268;U16;;PV4 Current_1;I_DC_STRING_4;1.0;0.0;A;4
+58;4;269;U16;;PV5 Voltage_1;U_DC_STRING_5;1.0;0.0;V;4
+59;4;270;U16;;PV5 Current_1;I_DC_STRING_5;1.0;0.0;A;4
+60;4;271;U16;;PV6 Voltage_1;U_DC_STRING_6;1.0;0.0;V;4
+61;4;272;U16;;PV6 Current_1;I_DC_STRING_6;1.0;0.0;A;4
+62;4;273;U16;;PV7 Voltage_1;U_DC_STRING_7;1.0;0.0;V;4
+63;4;274;U16;;PV7 Current_1;I_DC_STRING_7;1.0;0.0;A;4
+64;4;275;U16;;PV8 Voltage_1;U_DC_STRING_8;1.0;0.0;V;4
+65;4;276;U16;;PV8 Current_1;I_DC_STRING_8;1.0;0.0;A;4
+66;4;4096;U16;;Grid connection waiting time;;1.0;0.0;s;4
+67;4;4097;U16;;Grid power increasing Rate;;1.0;0.0;%/min;4
+68;4;4098;U16;;Grid connection waiting time after grid fault recovery;;1.0;0.0;s;4
+69;4;4099;U16;;Grid power increasing after grid fault recovery;;1.0;0.0;%/min;4
+70;4;4100;U16;;Over voltage protection value before grid connection;;1.0;0.0;V;4
+71;4;4101;U16;;Under voltage protection value before grid connection;;1.0;0.0;V;4
+72;4;4102;U16;;Over frequency protection value before grid connection;;1.0;0.0;Hz;4
+73;4;4103;U16;;Under frequency protection value before grid connection;;1.0;0.0;Hz;4
+74;4;4112;U16;;Enabled register for grid voltage protection;;1.0;0.0;;4
+75;4;4113;U16;;Class 1 over voltage protection value;;1.0;0.0;V;4
+76;4;4114;U16;;Trigger time for class 1 over voltage protection;;1.0;0.0;ms;4
+77;4;4115;U16;;Class 2 over voltage protection value;;1.0;0.0;mA;4
+78;4;4116;U16;;Trigger time for class 1 over voltage protection_1;;1.0;0.0;ms;4
+79;4;4117;U16;;Class 1 under voltage protection value;;1.0;0.0;A;4
+80;4;4118;U16;;Trigger time for class 1 under voltage protection;;1.0;0.0;ms;4
+81;4;4119;U16;;Class 2 under voltage protection value;;1.0;0.0;A;4
+82;4;4120;U16;;Trigger time for class 2 under voltage protection;;1.0;0.0;ms;4
+83;4;4121;U16;;10-Min Over voltage protection value;;1.0;0.0;A;4
+84;4;4128;U16;;Enabled register for grid frequency protection;;1.0;0.0;;4
+85;4;4129;U16;;Class 1 over frequency protection value;;1.0;0.0;Hz;4
+86;4;4130;U16;;Trigger time for class 1 over frequency protection;;1.0;0.0;ms;4
+87;4;4131;U16;;Class 2 over frequency protection value;;1.0;0.0;Hz;4
+88;4;4132;U16;;Trigger time for class 2 over frequency protection;;1.0;0.0;ms;4
+89;4;4133;U16;;Class 1 under frequency protection value;;1.0;0.0;Hz;4
+90;4;4134;U16;;Trigger time for class 1 under frequency protection;;1.0;0.0;ms;4
+91;4;4135;U16;;Class 2 under frequency protection value;;1.0;0.0;Hz;4
+92;4;4136;U16;;Trigger time for class 2 under frequency protection;;1.0;0.0;ms;4
+93;4;4144;U16;;Enable register for DCI protection;;1.0;0.0;;4
+94;4;4145;U16;;Class 1 DCI protection value;;1.0;0.0;mA;4
+95;4;4146;U16;;Trigger time for class 1 DCI Protection;;1.0;0.0;ms;4
+96;4;4147;U16;;Class 2 DCI protection value;;1.0;0.0;mA;4
+97;4;4148;U16;;Trigger time for class 2 DCI Protection;;1.0;0.0;ms;4
+98;4;4149;U16;;DCI injection test value;;1.0;0.0;mA;4
+99;4;4160;U16;;Enabled register for active & remote on/off control;CMD_P_ENA;1.0;0.0;;1
+100;4;4161;U16;;Percentage of active power output;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
+101;4;4162;U16;;Remote on/off (55 on / 56 off);CMD_ON;1.0;0.0;;1
+102;4;4163;U16;;Staring point for power derate cause by grid voltage;;1.0;0.0;;4
+103;4;4164;U16;;Ending point for power derate cause by grid voltage;;1.0;0.0;V;4
+104;4;4176;U16;;Enable & Working Mode selection register;;1.0;0.0;;4
+105;4;4177;U16;;Staring rate for over frequency power derate;;1.0;0.0;Hz;4
+106;4;4178;U16;;Over frequency power derate rate;;1.0;0.0;%;4
+107;4;4179;U16;;After over frequency power derate restore, maximum rate for power recovery;;1.0;0.0;Hz;4
+108;4;4180;U16;;After over frequency power derate restore, minimum rate for power recovery;;1.0;0.0;Hz;4
+109;4;4181;U16;;Waiting time after over frequency power derate restore;;1.0;0.0;s;4
+110;4;4182;U16;;Over frequency recovery rate;;1.0;0.0;%;4
+111;4;4183;U16;;Staring rate for under frequency power derate;;1.0;0.0;Hz;4
+112;4;4184;U16;;Under frequency power derate rate;;1.0;0.0;%;4
+113;4;4185;U16;;After under frequency power derate restore, maximum rate for power recovery;;1.0;0.0;Hz;4
+114;4;4186;U16;;Waiting time after under frequency power derate restore;;1.0;0.0;s;4
+115;4;4187;U16;;Under frequency recovery rate;;1.0;0.0;%;4

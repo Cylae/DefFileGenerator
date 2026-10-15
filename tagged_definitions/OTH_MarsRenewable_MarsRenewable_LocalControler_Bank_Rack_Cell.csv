@@ -1,0 +1,85 @@
+﻿modbusRTU;Other;MarsRenewable;MarsRenewable_LocalControler_B;;;;;;;
+1;4;5000;F32;;Bank Voltage;bank_voltage;1.000000;0.000000;V;4
+2;4;5002;F32;;Bank Current;bank_current;1.000000;0.000000;A;4
+3;4;5004;F32;;Bank SOC;bank_soc;1.000000;0.000000;'%;4
+4;4;5006;F32;;Bank SOH;bank_soh;1.000000;0.000000;'%;4
+5;4;5008;F32;;Bank Insulation Resistance;bank_insulation_resistance;1.000000;0.000000;Ohm;4
+6;4;5010;F32;;Bank Available Charge Energy;bank_available_charge_energy;1.000000;0.000000;kWh;4
+7;4;5012;F32;;Bank Available Discharge Energy;bank_available_discharge_energy;1.000000;0.000000;kWh;4
+8;4;5014;F32;;System Allowed Maximum Charge Current;system_allowed_maximum_charge_current;1.000000;0.000000;A;4
+9;4;5016;F32;;System Allowed Maximum Discharge Current;system_allowed_maximum_discharge_current;1.000000;0.000000;A;4
+10;4;5018;F32;;Today's Charge Energy;todays_charge_energy;1.000000;0.000000;kWh;4
+11;4;5020;F32;;Today's Discharge Energy;todays_discharge_energy;1.000000;0.000000;kWh;4
+12;4;5022;F32;;Accumulated Charge Energy;accumulated_charge_energy;1.000000;0.000000;kWh;4
+13;4;5024;F32;;Accumulated Discharge Energy;accumulated_discharge_energy;1.000000;0.000000;kWh;4
+14;4;5100;F32;;Bank Voltage 2;bank_voltage_2;1.000000;0.000000;V;4
+15;4;5102;F32;;Bank Current 2;bank_current_2;1.000000;0.000000;A;4
+16;4;5104;F32;;Bank SOC 2;bank_soc_2;1.000000;0.000000;'%;4
+17;4;5106;F32;;Bank SOH 2;bank_soh_2;1.000000;0.000000;'%;4
+18;4;5108;F32;;Bank Insulation Resistance 2;bank_insulation_resistance_2;1.000000;0.000000;Ohm;4
+19;4;5110;F32;;Bank Available Charge Energy 2;bank_available_charge_energy_2;1.000000;0.000000;kWh;4
+20;4;5112;F32;;Bank Available Discharge Energy 2;bank_available_discharge_energy_2;1.000000;0.000000;kWh;4
+21;4;5114;F32;;System Allowed Maximum Charge Current 2;system_allowed_maximum_charge_current_2;1.000000;0.000000;A;4
+22;4;5116;F32;;System Allowed Maximum Discharge Current 2;system_allowed_maximum_discharge_current_2;1.000000;0.000000;A;4
+23;4;5118;F32;;Today's Charge Energy 2;todays_charge_energy_2;1.000000;0.000000;kWh;4
+24;4;5120;F32;;Today's Discharge Energy 2;todays_discharge_energy_2;1.000000;0.000000;kWh;4
+25;4;5122;F32;;Accumulated Charge Energy 2;accumulated_charge_energy_2;1.000000;0.000000;kWh;4
+26;4;5124;F32;;Accumulated Discharge Energy 2;accumulated_discharge_energy_2;1.000000;0.000000;kWh;4
+27;4;5200;F32;;Bank Voltage 3;bank_voltage_3;1.000000;0.000000;V;4
+28;4;5202;F32;;Bank Current 3;bank_current_3;1.000000;0.000000;A;4
+29;4;5204;F32;;Bank SOC 3;bank_soc_3;1.000000;0.000000;'%;4
+30;4;5206;F32;;Bank SOH 3;bank_soh_3;1.000000;0.000000;'%;4
+31;4;5208;F32;;Bank Insulation Resistance 3;bank_insulation_resistance_3;1.000000;0.000000;Ohm;4
+32;4;5210;F32;;Bank Available Charge Energy 3;bank_available_charge_energy_3;1.000000;0.000000;kWh;4
+33;4;5212;F32;;Bank Available Discharge Energy 3;bank_available_discharge_energy_3;1.000000;0.000000;kWh;4
+34;4;5214;F32;;System Allowed Maximum Charge Current 3;system_allowed_maximum_charge_current_3;1.000000;0.000000;A;4
+35;4;5216;F32;;System Allowed Maximum Discharge Current 3;system_allowed_maximum_discharge_current_3;1.000000;0.000000;A;4
+36;4;5218;F32;;Today's Charge Energy 3;todays_charge_energy_3;1.000000;0.000000;kWh;4
+37;4;5220;F32;;Today's Discharge Energy 3;todays_discharge_energy_3;1.000000;0.000000;kWh;4
+38;4;5222;F32;;Accumulated Charge Energy 3;accumulated_charge_energy_3;1.000000;0.000000;kWh;4
+39;4;5224;F32;;Accumulated Discharge Energy 3;accumulated_discharge_energy_3;1.000000;0.000000;kWh;4
+40;4;1;U16;;Number of cells in Rack;number_of_cells_in_rack;1.000000;0.000000;;4
+41;4;2;F32;;Rack Voltage;rack_voltage;1.000000;0.000000;V;4
+42;4;4;F32;;Rack Current;rack_current;1.000000;0.000000;A;4
+43;4;6;F32;;Rack SOC;rack_soc;1.000000;0.000000;'%;4
+44;4;8;F32;;Rack SOH;rack_soh;1.000000;0.000000;'%;4
+45;4;10;F32;;Rack Insulation Resistance;rack_insulation_resistance;1.000000;0.000000;Ohm;4
+46;4;12;F32;;Maximum Allowable Charge Current;maximum_allowable_charge_current;1.000000;0.000000;A;4
+47;4;14;F32;;Maximum Allowable Discharge Current;maximum_allowable_discharge_current;1.000000;0.000000;A;4
+48;4;16;F32;;Total Charge Energy;total_charge_energy;1.000000;0.000000;kWh;4
+49;4;18;F32;;Total Discharge Energy;total_discharge_energy;1.000000;0.000000;kWh;4
+50;4;20;F32;;Available Charge Energy;available_charge_energy;1.000000;0.000000;kWh;4
+51;4;22;F32;;Available Discharge Energy;available_discharge_energy;1.000000;0.000000;kWh;4
+52;4;24;F32;;Average Cell Voltage;average_cell_voltage;1.000000;0.000000;V;4
+53;4;26;F32;;Average Cell Temperature;average_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+54;4;28;F32;;Maximum Cell Voltage;maximum_cell_voltage;1.000000;0.000000;V;4
+55;4;30;F32;;Maximum Cell Voltage Cell Number;maximum_cell_voltage_cell_number;1.000000;0.000000;;4
+56;4;32;F32;;Minimum Cell Voltage;minimum_cell_voltage;1.000000;0.000000;V;4
+57;4;34;F32;;Minimum Cell Voltage Cell Number;minimum_cell_voltage_cell_number;1.000000;0.000000;;4
+58;4;36;F32;;Maximum Cell Temperature;maximum_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+59;4;38;F32;;Maximum Cell Temperature Cell Number;maximum_cell_temperature_cell_number;1.000000;0.000000;;4
+60;4;40;F32;;Minimum Cell Temperature;minimum_cell_temperature;1.000000;0.000000;Degr.Celsius;4
+61;4;42;F32;;Minimum Cell Temperature Cell Number;minimum_cell_temperature_cell_number;1.000000;0.000000;;4
+62;4;44;F32;;Maximum Cell SOC;maximum_cell_soc;1.000000;0.000000;'%;4
+63;4;46;F32;;Maximum Cell SOC Cell Number;maximum_cell_soc_cell_number;1.000000;0.000000;;4
+64;4;48;F32;;Minimum Cell SOC;minimum_cell_soc;1.000000;0.000000;'%;4
+65;4;40;F32;;Minimum Cell SOC Cell Number;minimum_cell_soc_cell_number;1.000000;0.000000;;4
+66;4;52;F32;;Maximum Cell SOH;maximum_cell_soh;1.000000;0.000000;'%;4
+67;4;54;F32;;Maximum Cell SOH Cell Number;maximum_cell_soh_cell_number;1.000000;0.000000;;4
+68;4;56;F32;;Minimum Cell SOH;minimum_cell_soh;1.000000;0.000000;'%;4
+69;4;58;F32;;Minimum Cell SOH Cell Number;minimum_cell_soh_cell_number;1.000000;0.000000;;4
+70;4;100;F32;;Cell Voltage;cell_voltage;1.000000;0.000000;V;4
+71;4;102;F32;;Cell Temperature;cell_temperature;1.000000;0.000000;Degr.Celsius;4
+72;4;104;F32;;Cell SOC;cell_soc;1.000000;0.000000;'%;4
+73;4;106;F32;;Cell SOH;cell_soh;1.000000;0.000000;'%;4
+74;4;108;F32;;Cell Resistance;cell_resistance;1.000000;0.000000;Ohm;4
+75;4;110;F32;;Cell Voltage 2;cell_voltage_2;1.000000;0.000000;V;4
+76;4;112;F32;;Cell Temperature 2;cell_temperature_2;1.000000;0.000000;Degr.Celsius;4
+77;4;114;F32;;Cell SOC 2;cell_soc_2;1.000000;0.000000;'%;4
+78;4;116;F32;;Cell SOH 2;cell_soh_2;1.000000;0.000000;'%;4
+79;4;118;F32;;Cell Resistance 2;cell_resistance_2;1.000000;0.000000;Ohm;4
+80;4;120;F32;;Cell Voltage 3;cell_voltage_3;1.000000;0.000000;V;4
+81;4;122;F32;;Cell Temperature 3;cell_temperature_3;1.000000;0.000000;Degr.Celsius;4
+82;4;124;F32;;Cell SOC 3;cell_soc_3;1.000000;0.000000;'%;4
+83;4;126;F32;;Cell SOH 3;cell_soh_3;1.000000;0.000000;'%;4
+84;4;128;F32;;Cell Resistance 3;cell_resistance_3;1.000000;0.000000;Ohm;4

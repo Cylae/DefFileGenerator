@@ -453,6 +453,13 @@ def generate_command(args: argparse.Namespace) -> None:
         logging.error("Definition generation failed.")
         sys.exit(1)
 
+    report_path = getattr(args, "report", None)
+    if report_path and output:
+        from DefFileGenerator.report_generator import generate_single_definition_report
+
+        generate_single_definition_report(output, output_report_path=report_path)
+        logging.info(f"Technical report generated: {report_path}")
+
 
 def run_command(args: argparse.Namespace) -> None:
     """
@@ -516,9 +523,52 @@ def run_command(args: argparse.Namespace) -> None:
         generator = Generator()
         if generator.validate_csv(output_file, strict=True):
             logging.info("Post-generation validation passed.")
+            report_path = getattr(args, "report", None)
+            if report_path:
+                from DefFileGenerator.report_generator import generate_single_definition_report
+
+                generate_single_definition_report(output_file, output_report_path=report_path)
+                logging.info(f"Technical report generated: {report_path}")
         else:
             logging.error("Post-generation validation failed.")
             sys.exit(1)
+
+
+def report_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'report': generates comprehensive technical reports in Markdown/JSON.
+
+    Args:
+        args: Parsed command line arguments.
+    """
+    from DefFileGenerator.report_generator import (
+        analyze_definitions_directory,
+        export_report_json,
+        generate_directory_technical_report,
+        generate_single_definition_report,
+    )
+
+    target = getattr(args, "target", "tagged_definitions")
+    output = getattr(args, "output", None)
+    json_path = getattr(args, "json", None)
+
+    if not os.path.exists(target):
+        logging.error(f"Target path not found: {target}")
+        sys.exit(1)
+
+    if os.path.isfile(target):
+        out_report = output or f"{os.path.splitext(target)[0]}_report.md"
+        generate_single_definition_report(target, output_report_path=out_report)
+        logging.info(f"Technical report generated: {out_report}")
+    elif os.path.isdir(target):
+        out_report = output or os.path.join(target, "RAPPORT_TECHNIQUE_GENERATION.md")
+        generate_directory_technical_report(target, output_report_path=out_report)
+        logging.info(f"Directory technical report generated: {out_report}")
+        if json_path:
+            stats = analyze_definitions_directory(target)
+            export_report_json(stats, json_path)
+            logging.info(f"Structured metrics exported: {json_path}")
+
 
 
 def _run_cli(argv: list[str] | None = None) -> None:
@@ -616,6 +666,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_generate.add_argument("--category", default="Inverter")
     parser_generate.add_argument("--forced-write", default="")
     parser_generate.add_argument("--address-offset", type=int, default=0, help="Address offset")
+    parser_generate.add_argument("--report", help="Path to generate technical Markdown report")
     parser_generate.add_argument("--force", action="store_true", help="Force overwrite output file")
 
     # Run
@@ -634,10 +685,25 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_run.add_argument("--category", default="Inverter")
     parser_run.add_argument("--forced-write", default="")
     parser_run.add_argument("--address-offset", type=int, default=0, help="Address offset")
+    parser_run.add_argument("--report", help="Path to generate technical Markdown report")
     parser_run.add_argument("--force", action="store_true", help="Force overwrite output file")
     parser_run.add_argument(
         "--no-validate", action="store_true", help="Skip post-generation validation"
     )
+
+    # Report
+    parser_report = subparsers.add_parser(
+        "report", help="Generate comprehensive technical reports for definitions"
+    )
+    add_common_flags(parser_report)
+    parser_report.add_argument(
+        "target",
+        nargs="?",
+        default="tagged_definitions",
+        help="Definition file or directory to generate report for (default: tagged_definitions)",
+    )
+    parser_report.add_argument("-o", "--output", help="Output Markdown report path")
+    parser_report.add_argument("--json", help="Optional JSON metrics export path")
 
     # Tag
     parser_tag = subparsers.add_parser(
@@ -740,6 +806,8 @@ def _run_cli(argv: list[str] | None = None) -> None:
         generate_command(args)
     elif args.command == "run":
         run_command(args)
+    elif args.command == "report":
+        report_command(args)
     elif args.command == "tag":
         tag_command(args)
     elif args.command == "audit":

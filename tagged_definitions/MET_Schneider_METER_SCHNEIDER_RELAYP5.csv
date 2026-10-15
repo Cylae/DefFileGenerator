@@ -1,0 +1,58 @@
+﻿modbusRTU;Meter;Schneider Electric;Easergy P5;;;;;;;
+1;3;21350;F32;;Phase-to-ground voltage VA;;1;0;V;4
+2;3;21352;F32;;Phase-to-ground voltage VB;;1;0;V;4
+3;3;21354;F32;;Phase-to-ground voltage VC;;1;0;V;4
+4;3;21356;F32;;Phase-to-phase voltage VAB;;1;0;V;4
+5;3;21358;F32;;Phase-to-phase voltage VBC;;1;0;V;4
+6;3;21360;F32;;Phase-to-phase voltage VCA;;1;0;V;4
+7;3;21362;F32;;Phase current IA;I_AC_1;1;0;A;4
+8;3;21364;F32;;Phase current IB;I_AC_2;1;0;A;4
+9;3;21366;F32;;Phase current IC;I_AC_3;1;0;A;4
+10;3;21368;F32;;IN.meas;;1;0;A;4
+11;3;21370;F32;;IN.meas.sens;;1;0;A;4
+12;3;21372;F32;;IN.CSH;;1;0;A;4
+13;3;21374;F32;;Power factor;PF;1;0;;4
+14;3;21376;F32;;Frequency;FREQ;1;0;Hz;4
+15;3;21378;F32;;Active power;P_AC;1;0;kW;4
+16;3;21380;F32;;Reactive power;Q_AC;1;0;kvar;4
+17;3;21382;F32;;Apparent power;S_AC;1;0;kVA;4
+18;3;21384;F32;;Phase A active power;P_AC_1;1;0;kW;4
+19;3;21386;F32;;Phase B active power;P_AC_2;1;0;kW;4
+20;3;21388;F32;;Phase C active power;P_AC_3;1;0;kW;4
+21;3;21390;F32;;Phase A reactive power;Q_AC_1;1;0;kvar;4
+22;3;21392;F32;;Phase B reactive power;Q_AC_2;1;0;kvar;4
+23;3;21394;F32;;Phase C reactive power;Q_AC_3;1;0;kvar;4
+24;3;21396;F32;;Phase A apparent power;S_AC_1;1;0;kVA;4
+25;3;21398;F32;;Phase B apparent power;S_AC_2;1;0;kVA;4
+26;3;21400;F32;;Phase C apparent power;S_AC_3;1;0;kVA;4
+27;3;21402;F32;;Measured VN;;1;0;kV;4
+28;3;21404;F32;;Calculated VN;;1;0;kV;4
+29;3;21406;F32;;Positive sequence I1;;1;0;A;4
+30;3;21408;F32;;Negative sequence I2;;1;0;A;4
+31;3;21410;F32;;Current ratio I2/I1;;1;0;%;4
+32;3;21412;U16;;Current phase sequence;;1;0;;4
+33;3;21413;F32;;Phase current THD;;1;0;%;4
+34;3;21415;F32;;Phase current IA THD;;1;0;%;4
+35;3;21417;F32;;Phase current IB THD;;1;0;%;4
+36;3;21419;F32;;Phase current IC THD;;1;0;%;4
+37;3;21421;F32;;Phase current;;1;0;A;4
+38;3;21423;F32;;VN;;1;0;%;4
+39;3;21425;F32;;Tangent phi;;1;0;;4
+40;3;21427;F32;;Phase current Iph rms;;1;0;A;4
+41;3;21429;F32;;Phase current IA rms;;1;0;A;4
+42;3;21431;F32;;Phase current IB rms;;1;0;A;4
+43;3;21433;F32;;Phase current IC rms;;1;0;A;4
+44;3;21435;I32;;Ambient temperature;TEMP_AMB;1;0;°C / °F;4
+45;3;21437;F32;;Positive sequence V1;;1;0;V;4
+46;3;21439;F32;;Negative sequence V2;;1;0;V;4
+47;3;21441;F32;;V2/V1;;1;0;%;4
+48;3;21443;U16;;Voltage phase sequence;;1;0;;4
+49;3;21444;F32;;Voltage THD;;1;0;%;4
+50;3;21446;F32;;VA THD;;1;0;%;4
+51;3;21448;F32;;VB THD;;1;0;%;4
+52;3;21450;F32;;VC THD;;1;0;%;4
+53;3;21452;F32;;Phase-Earth voltage VARMS;;1;0;V;4
+54;3;21454;F32;;Phase-Earth voltage VBRMS;;1;0;V;4
+55;3;21456;F32;;Phase-Earth voltage VCRMS;;1;0;V;4
+56;3;21458;F32;;Cosphi;;1;0;;4
+57;3;21462;I16;;Power angle;;1;0;°;4

@@ -1,0 +1,8 @@
+﻿ModbusRTU;Meter;TicMaster;ICE-SAPHIR;;;;;;;
+1;3;98;I32;;Read32Test;;1;0;;4
+2;3;101;U32_W;;Type de compteur;;1;0;;4
+3;3;4658;I32;;PASI;P_AC;0.1;0;kW;4
+4;3;4300;U32;;Cumule Energie Active injectee de la Grille D;;1;0;kWh;4
+5;3;4628;U32;;PAS1;P_AC_1;0.1;0;kW;4
+6;3;4630;U32;;PAS2;P_AC_2;0.1;0;kW;4
+7;3;4632;U32;;PAS3;P_AC_3;0.1;0;kW;4

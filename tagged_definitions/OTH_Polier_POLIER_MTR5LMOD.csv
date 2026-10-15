@@ -1,0 +1,34 @@
+﻿modbusRTU;Other;Polier;POLIER_MTR5LMOD;;;;;;;
+1;4;0;U16;;Com address;;1.0;0.0;;4
+2;4;32784;U16;;Com address_1;;1.0;0.0;;4
+3;4;1;U16;;Baudrate;;1.0;0.0;;4
+4;4;32785;U16;;Baudrate_1;;1.0;0.0;;4
+5;4;2;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+6;4;3;U16;;Password;;1.0;0.0;;4
+7;4;4;U16;;Serial number;SERIAL;1.0;0.0;;4
+8;4;5;U16;;Serial number_1;;1.0;0.0;;4
+9;4;4096;U16;;L1-N   PhaseA voltage;U_AC_1;1.0;0.0;V;4
+10;4;4098;U16;;L2-N   PhaseB voltage;U_AC_2;1.0;0.0;V;4
+11;4;4100;U16;;L3-N   PhaseC voltage;U_AC_3;1.0;0.0;V;4
+12;4;4108;U16;;PhaseA current;I_AC_1;1.0;0.0;A;4
+13;4;4110;U16;;PhaseB current;I_AC_2;1.0;0.0;A;4
+14;4;4112;U16;;PhaseC current;I_AC_3;1.0;0.0;A;4
+15;4;4114;U16;;ABC PF;;1.0;0.0;;8
+16;4;4115;U16;;PhaseA PF;;1.0;0.0;;8
+17;4;4116;U16;;PhaseB PF;;1.0;0.0;;8
+18;4;4117;U16;;PhaseC PF;;1.0;0.0;;4
+19;4;24576;U16;;ABC active power;P_AC;1.0;0.0;W;4
+20;4;24578;U16;;PhaseA active power;P_AC_1;1.0;0.0;W;4
+21;4;24580;U16;;PhaseB active power;P_AC_2;1.0;0.0;W;4
+22;4;24582;U16;;PhaseC active power;P_AC_3;1.0;0.0;W;4
+23;4;24584;U16;;ABC reactive power;Q_AC;1.0;0.0;Var;4
+24;4;24586;U16;;PhaseA reactive power;Q_AC_1;1.0;0.0;Var;4
+25;4;24588;U16;;PhaseB reactive power;Q_AC_2;1.0;0.0;Var;4
+26;4;24590;U16;;PhaseC reactive power;Q_AC_3;1.0;0.0;Var;4
+27;4;28672;U16;;Total active energy;;1.0;0.0;kWh;4
+28;4;28928;U16;;Total reactive energy;E_TOT;1.0;0.0;kvarh;4
+29;4;32768;U16;;System Config.;;1.0;0.0;;4
+30;4;32771;U16;;Remote control output;;1.0;0.0;;4
+31;4;32773;U16;;CT rate;;1.0;0.0;;4
+32;4;32774;U16;;VT rate;;1.0;0.0;;4
+33;4;32786;U16;;Parity;;1.0;0.0;;4

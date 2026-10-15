@@ -1,0 +1,492 @@
+﻿modbusRTU;Inverter;Solplanet;V1;;;;;;;
+1;4;1000_2;STRING;;Device Type;MODEL;1;0;;4
+2;4;1001;U16;;Modbus Address RO;UNIT_ID;1;0;;4
+3;4;1002_32;STRING;;Serial Number;SERIAL;1;0;;4
+4;4;1018_16;STRING;;Model Name;;1;0;;4
+5;4;1026;U16;;Safety Standard;;1;0;;4
+6;4;1027;U32;;Rated Power;P_RATED;1;0;W;4
+7;4;1029_14;STRING;;Master SW Version;;1;0;;4
+8;4;1036_14;STRING;;Slave SW Version;;1;0;;4
+9;4;1043_14;STRING;;Safety SW Version;;1;0;;4
+10;4;1050_12;STRING;;Protocol Version;;1;0;;4
+11;4;1056_16;STRING;;Manufacturer;MANUFACTURER;1;0;;4
+12;4;1064_16;STRING;;Brand Name;;1;0;;4
+13;4;1072;U16;;Machine Type;;1;0;;4
+14;4;1073;U16;;PV Channel Count;;1;0;;4
+15;4;1074;U16;;STRING Count;;1;0;;4
+16;4;1075_4;STRING;;Hardware Version;;1;0;;4
+17;4;1077_6;STRING;;Master SW SubVer;;1;0;;4
+18;4;1080_16;STRING;;PSDR Version;;1;0;;4
+19;4;1088_16;STRING;;CNTL Version;;1;0;;4
+20;4;1096_14;STRING;;Sub DSP Version;;1;0;;4
+21;4;1103_6;STRING;;Sub DSP SubVer;;1;0;;4
+22;4;1106_14;STRING;;FPGA Version;;1;0;;4
+23;4;1116;U16;;PV1 4 STRING Map;;1;0;;4
+24;4;1117;U16;;PV5 8 STRING Map;;1;0;;4
+25;4;1118;U16;;PV9 12 STRING Map;;1;0;;4
+26;4;1119;U16;;PV13 16 STRING Map;;1;0;;4
+27;4;1120;U16;;PV17 20 STRING Map;;1;0;;4
+28;4;1121;U16;;PV21 24 STRING Map;;1;0;;4
+29;4;1122;U16;;PV25 28 STRING Map;;1;0;;4
+30;4;1123;U16;;PV29 32 STRING Map;;1;0;;4
+31;4;1124;U16;;Battery Count;;1;0;;4
+32;4;1300;U16;;Grid Rated Voltage;;0.1;0;V;4
+33;4;1301;U16;;Grid Rated Freq;;0.01;0;Hz;4
+34;4;1302;I32;;Daily Yield;E_DAY;0.1;0;kWh;4
+35;4;1304;I32;;Total Yield;E_TOT;0.1;0;kWh;4
+36;4;1306;U32;;Total Run Time;;1;0;h;4
+37;4;1308;U16;;Device State;;1;0;;4
+38;4;1309;U16;;Check Time Left;;1;0;s;4
+39;4;1310;I16;;Internal Temp;TEMP_INT;0.1;0;C;4
+40;4;1311;I16;;Temp Module U;TEMP_CELL;0.1;0;C;4
+41;4;1312;I16;;Temp Module V;;0.1;0;C;4
+42;4;1313;I16;;Temp Module W;;0.1;0;C;4
+43;4;1314;I16;;Temp Boost;;0.1;0;C;4
+44;4;1315;I16;;Temp DCDC;;0.1;0;C;4
+45;4;1316;U16;;Bus Voltage;U_DC;0.1;0;V;4
+46;4;1317;U16;;PV Conn Status;;1;0;;4
+47;4;1318;U16;;Voltage PV1;U_DC_STRING_1;0.1;0;V;4
+48;4;1319;U16;;Current PV1;I_DC_STRING_1;0.01;0;A;4
+49;4;1320;U16;;Voltage PV2;U_DC_STRING_2;0.1;0;V;4
+50;4;1321;U16;;Current PV2;I_DC_STRING_2;0.01;0;A;4
+51;4;1322;U16;;Voltage PV3;U_DC_STRING_3;0.1;0;V;4
+52;4;1323;U16;;Current PV3;I_DC_STRING_3;0.01;0;A;4
+53;4;1324;U16;;Voltage PV4;U_DC_STRING_4;0.1;0;V;4
+54;4;1325;U16;;Current PV4;I_DC_STRING_4;0.01;0;A;4
+55;4;1326;U16;;Voltage PV5;U_DC_STRING_5;0.1;0;V;4
+56;4;1327;U16;;Current PV5;I_DC_STRING_5;0.01;0;A;4
+57;4;1328;U16;;Voltage PV6;U_DC_STRING_6;0.1;0;V;4
+58;4;1329;U16;;Current PV6;I_DC_STRING_6;0.01;0;A;4
+59;4;1330;U16;;Voltage PV7;U_DC_STRING_7;0.1;0;V;4
+60;4;1331;U16;;Current PV7;I_DC_STRING_7;0.01;0;A;4
+61;4;1332;U16;;Voltage PV8;U_DC_STRING_8;0.1;0;V;4
+62;4;1333;U16;;Current PV8;I_DC_STRING_8;0.01;0;A;4
+63;4;1334;U16;;Voltage PV9;U_DC_STRING_9;0.1;0;V;4
+64;4;1335;U16;;Current PV9;I_DC_STRING_9;0.01;0;A;4
+65;4;1336;U16;;Voltage PV10;U_DC_STRING_10;0.1;0;V;4
+66;4;1337;U16;;Current PV10;I_DC_STRING_10;0.01;0;A;4
+67;4;1338;U16;;STRING 1 Current;;0.1;0;A;4
+68;4;1339;U16;;STRING 2 Current;;0.1;0;A;4
+69;4;1340;U16;;STRING 3 Current;;0.1;0;A;4
+70;4;1341;U16;;STRING 4 Current;;0.1;0;A;4
+71;4;1342;U16;;STRING 5 Current;;0.1;0;A;4
+72;4;1343;U16;;STRING 6 Current;;0.1;0;A;4
+73;4;1344;U16;;STRING 7 Current;;0.1;0;A;4
+74;4;1345;U16;;STRING 8 Current;;0.1;0;A;4
+75;4;1346;U16;;STRING 9 Current;;0.1;0;A;4
+76;4;1347;U16;;STRING 10 Current;;0.1;0;A;4
+77;4;1348;U16;;STRING 11 Current;I_DC_STRING_11;0.1;0;A;4
+78;4;1349;U16;;STRING 12 Current;I_DC_STRING_12;0.1;0;A;4
+79;4;1350;U16;;STRING 13 Current;I_DC_STRING_13;0.1;0;A;4
+80;4;1351;U16;;STRING 14 Current;I_DC_STRING_14;0.1;0;A;4
+81;4;1352;U16;;STRING 15 Current;I_DC_STRING_15;0.1;0;A;4
+82;4;1353;U16;;STRING 16 Current;I_DC_STRING_16;0.1;0;A;4
+83;4;1354;U16;;STRING 17 Current;I_DC_STRING_17;0.1;0;A;4
+84;4;1355;U16;;STRING 18 Current;I_DC_STRING_18;0.1;0;A;4
+85;4;1356;U16;;STRING 19 Current;I_DC_STRING_19;0.1;0;A;4
+86;4;1357;U16;;STRING 20 Current;I_DC_STRING_20;0.1;0;A;4
+87;4;1358;U16;;Voltage L1;U_AC_1;0.1;0;V;4
+88;4;1359;U16;;Current L1;I_AC_1;0.1;0;A;4
+89;4;1360;U16;;Voltage L2;U_AC_2;0.1;0;V;4
+90;4;1361;U16;;Current L2;I_AC_2;0.1;0;A;4
+91;4;1362;U16;;Voltage L3;U_AC_3;0.1;0;V;4
+92;4;1363;U16;;Current L3;I_AC_3;0.1;0;A;4
+93;4;1364;U16;;Line Voltage RS;;0.1;0;V;4
+94;4;1365;U16;;Line Voltage RT;;0.1;0;V;4
+95;4;1366;U16;;Line Voltage ST;;0.1;0;V;4
+96;4;1367;U16;;Grid Frequency;FREQ;0.01;0;Hz;4
+97;4;1368;U32;;Apparent Power;S_AC;1;0;VA;4
+98;4;1370;I32;;Active Power;P_AC;1;0;W;4
+99;4;1372;I32;;Reactive Power;Q_AC;1;0;Var;4
+100;4;1374;I16;;Power Factor;PF;0.01;0;;4
+101;4;1375;U16;;Power Limit Status;CMD_P_AC_SET_ABS;1;0;;1
+102;4;1376;U16;;Internal Fault Status;;1;0;;4
+103;4;1377;U16;;Error Code;;1;0;;4
+104;4;1378;U16;;Warning Code 1;;1;0;;4
+105;4;1379;U16;;Warning Code 2;;1;0;;4
+106;4;1380;U16;;Warning Code 3;;1;0;;4
+107;4;1381;U16;;Warning Code 4;;1;0;;4
+108;4;1382;U16;;Warning Code 5;;1;0;;4
+109;4;1383;U16;;Warning Code 6;;1;0;;4
+110;4;1384;U16;;Warning Code 7;;1;0;;4
+111;4;1385;U16;;Warning Code 8;;1;0;;4
+112;4;1386;U16;;Warning Code 9;;1;0;;4
+113;4;1387;U16;;Warning Code 10;;1;0;;4
+114;4;1388;U16;;ISO Measurement;;1;0;kOhm;4
+115;4;1390;U16;;Grid Conn Status;;1;0;;4
+116;4;1391;U32;;Total PV Power;;1;0;W;4
+117;4;1600;U32;;Total PV Power Bat;;1;0;W;4
+118;4;1602;U32;;PV Daily Yield;;0.1;0;kWh;4
+119;4;1604;U32;;PV Total Yield;;0.1;0;kWh;4
+120;4;1606;U16;;BMS1 Comm Status;;1;0;;4
+121;4;1607;U16;;BMS1 Status;;1;0;;4
+122;4;1608;U16;;BMS1 Error 1;;1;0;;4
+123;4;1609;U16;;BMS1 Error 2;;1;0;;4
+124;4;1610;U16;;BMS1 Error 3;;1;0;;4
+125;4;1611;U16;;BMS1 Error 4;;1;0;;4
+126;4;1612;U16;;BMS1 Warning 1;;1;0;;4
+127;4;1613;U16;;BMS1 Warning 2;;1;0;;4
+128;4;1614;U16;;BMS1 Warning 3;;1;0;;4
+129;4;1615;U16;;BMS1 Warning 4;;1;0;;4
+130;4;1616;U16;;BMS1 Voltage;;0.01;0;V;4
+131;4;1617;I16;;BMS1 Current;I_DC;0.1;0;A;4
+132;4;1618;I32;;BMS1 Power;;1;0;W;4
+133;4;1620;I16;;BMS1 Temp;;0.1;0;C;4
+134;4;1621;U16;;BMS1 SOC;SOC;0.01;0;%;4
+135;4;1622;U16;;BMS1 SOH;SOH;0.01;0;%;4
+136;4;1623;U16;;BMS1 Chg Limit;;0.1;0;A;4
+137;4;1624;U16;;BMS1 Dischg Limit;;0.1;0;A;4
+138;4;1625;U32;;BMS1 Daily Charge;;0.1;0;kWh;4
+139;4;1627;U32;;BMS1 Daily Dischg;;0.1;0;kWh;4
+140;4;1629;U32;;AC Daily Consumption;;0.1;0;kWh;4
+141;4;1631;U32;;AC Daily FeedIn;;0.1;0;kWh;4
+142;4;1633;U16;;EPS Voltage;;0.1;0;V;4
+143;4;1634;U16;;EPS Current;;0.1;0;A;4
+144;4;1635;U16;;EPS Frequency;;0.01;0;Hz;4
+145;4;1636;I32;;EPS Active Power;;1;0;W;4
+146;4;1638;I32;;EPS Reactive Power;;1;0;Var;4
+147;4;1640;U32;;EPS Daily Consumption;;0.1;0;kWh;4
+148;4;1642;U32;;EPS Total Consumption;;0.1;0;kWh;4
+149;4;1644;U16;;EPS Volt L1;;0.1;0;V;4
+150;4;1645;U16;;EPS Curr L1;;0.1;0;A;4
+151;4;1646;U16;;EPS Volt L2;;0.1;0;V;4
+152;4;1647;U16;;EPS Curr L2;;0.1;0;A;4
+153;4;1648;U16;;EPS Volt L3;;0.1;0;V;4
+154;4;1649;U16;;EPS Curr L3;;0.1;0;A;4
+155;4;1650;I32;;EPS Power L1;;1;0;W;4
+156;4;1652;I32;;EPS Reactive L1;;1;0;Var;4
+157;4;1654;I32;;EPS Power L2;;1;0;W;4
+158;4;1656;I32;;EPS Reactive L2;;1;0;Var;4
+159;4;1658;I32;;EPS Power L3;;1;0;W;4
+160;4;1660;I32;;EPS Reactive L3;;1;0;Var;4
+161;4;1662;U32;;AC Power L1;;1;0;W;4
+162;4;1664;I32;;AC Reactive L1;;1;0;Var;4
+163;4;1666;U32;;AC Power L2;;1;0;W;4
+164;4;1668;I32;;AC Reactive L2;;1;0;Var;4
+165;4;1670;U32;;AC Power L3;;1;0;W;4
+166;4;1672;I32;;AC Reactive L3;;1;0;Var;4
+167;4;1674;U32;;AC Daily Charge;;0.1;0;kWh;4
+168;4;1676;U32;;AC Total Charge;;0.1;0;kWh;4
+169;4;1678;U16;;BMS1 Insulation;R_ISO;1;0;kOhm;4
+170;4;1679;U16;;BMS1 Cycles;;1;0;;4
+171;4;1680;U16;;BMS1 Humidity;HUMIDITY;0.1;0;%;4
+172;4;1681;U16;;Batt Dischg V Min;;0.1;0;V;4
+173;4;1682;U16;;Grid Par Status;;1;0;;4
+174;4;1683;U16;;Gen Start Cmd DSP;;1;0;;4
+175;4;1684;I32;;Generator Power;;1;0;W;4
+176;4;1686;U32;;Gen Day Energy;;0.1;0;kWh;4
+177;4;1688;U16;;Gen Port Mode;;1;0;;4
+178;4;1689;U16;;BMS1 Capabilities;;1;0;;4
+179;4;1690;U16;;BMS1 Volt LowPrec;;0.1;0;V;4
+180;4;1691;U32;;Storage Status;;1;0;;4
+181;4;1693;U16;;Inv Bat1 Volt;;0.01;0;V;4
+182;4;1694;I16;;Inv Bat1 Curr;;0.1;0;A;4
+183;4;1695;U16;;Reserved Bat1;;1;0;;4
+184;4;1739;U16;;BMS2 Comm Status;;1;0;;4
+185;4;1740;U16;;BMS2 Status;;1;0;;4
+186;4;1741;U16;;BMS2 Error 1;;1;0;;4
+187;4;1742;U16;;BMS2 Error 2;;1;0;;4
+188;4;1743;U16;;BMS2 Error 3;;1;0;;4
+189;4;1744;U16;;BMS2 Error 4;;1;0;;4
+190;4;1745;U16;;BMS2 Warn 1;;1;0;;4
+191;4;1746;U16;;BMS2 Warn 2;;1;0;;4
+192;4;1747;U16;;BMS2 Warn 3;;1;0;;4
+193;4;1748;U16;;BMS2 Warn 4;;1;0;;4
+194;4;1749;U16;;BMS2 Voltage;;0.1;0;V;4
+195;4;1750;I16;;BMS2 Current;;0.1;0;A;4
+196;4;1751;I32;;BMS2 Power;;1;0;W;4
+197;4;1753;I16;;BMS2 Temp;;0.1;0;C;4
+198;4;1754;U16;;BMS2 SOC;;0.01;0;%;4
+199;4;1755;U16;;BMS2 SOH;;0.01;0;%;4
+200;4;1756;U16;;BMS2 Chg Limit;;0.1;0;A;4
+201;4;1757;U16;;BMS2 Dischg Limit;;0.1;0;A;4
+202;4;1758;U32;;BMS2 Day Chg E;;0.1;0;kWh;4
+203;4;1760;U32;;BMS2 Day Dischg E;;0.1;0;kWh;4
+204;4;1762;U16;;BMS2 Insulation;;1;0;kOhm;4
+205;4;1763;U16;;BMS2 Cycles;;1;0;;4
+206;4;1764;U16;;BMS2 Humidity;;0.1;0;%;4
+207;4;1765;U16;;BMS2 Dischg V Min;;0.1;0;V;4
+208;4;1766;U16;;BMS2 Capabilities;;1;0;;4
+209;4;1767;U16;;Inv Bat2 Volt;;0.01;0;V;4
+210;4;1768;I16;;Inv Bat2 Curr;;0.1;0;A;4
+211;4;1900;I32;;Total Batt Power;;1;0;W;4
+212;4;1902;U32;;Total Batt Day Chg;;0.1;0;kWh;4
+213;4;1904;U32;;Total Batt Day Dis;;0.1;0;kWh;4
+214;4;1940;U16;;Gen Volt L1;;0.1;0;V;4
+215;4;1941;U16;;Gen Volt L2;;0.1;0;V;4
+216;4;1942;U16;;Gen Volt L3;;0.1;0;V;4
+217;4;1943;U16;;Gen Curr L1;;0.1;0;A;4
+218;4;1944;U16;;Gen Curr L2;;0.1;0;A;4
+219;4;1945;U16;;Gen Curr L3;;0.1;0;A;4
+220;4;1946;I32;;Gen Power L1;;1;0;W;4
+221;4;1948;I32;;Gen Power L2;;1;0;W;4
+222;4;1950;I32;;Gen Power L3;;1;0;W;4
+223;4;1952;U16;;Gen Frequency;;0.01;0;Hz;4
+224;4;35000;U16;;Meter Volt L1;;0.1;0;V;4
+225;4;35001;U16;;Meter Volt L2;;0.1;0;V;4
+226;4;35002;U16;;Meter Volt L3;;0.1;0;V;4
+227;4;35003;U16;;Meter Volt Avg;;0.1;0;V;4
+228;4;35004;U16;;Meter Curr L1;;0.1;0;A;4
+229;4;35005;U16;;Meter Curr L2;;0.1;0;A;4
+230;4;35006;U16;;Meter Curr L3;;0.1;0;A;4
+231;4;35007;U16;;Meter Curr Avg;;0.1;0;A;4
+232;4;35008;U16;;Meter Curr Sum;;0.1;0;A;4
+233;4;35009;I32;;Meter P L1;;1;0;W;4
+234;4;35011;I32;;Meter P L2;;1;0;W;4
+235;4;35013;I32;;Meter P L3;;1;0;W;4
+236;4;35015;I32;;Meter Total Power;;1;0;W;4
+237;4;35017;U32;;Meter Import Wh;;0.1;0;kWh;4
+238;4;35019;U32;;Meter Export Wh;;0.1;0;kWh;4
+239;4;35021;U32;;Meter Imp Varh;;0.1;0;kVarh;4
+240;4;35023;U32;;Meter Export Varh;;0.1;0;kVarh;4
+241;4;35025;U32;;Meter VA L1;;1;0;VA;4
+242;4;35027;U32;;Meter VA L2;;1;0;VA;4
+243;4;35029;U32;;Meter VA L3;;1;0;VA;4
+244;4;35031;U32;;Meter VA Tot;;1;0;VA;4
+245;4;35033;I32;;Meter Q L1;;1;0;Var;4
+246;4;35035;I32;;Meter Q L2;;1;0;Var;4
+247;4;35037;I32;;Meter Q L3;;1;0;Var;4
+248;4;35039;I32;;Meter Q Tot;;1;0;Var;4
+249;4;35041;I16;;Meter PF L1;;0.01;0;;4
+250;4;35042;I16;;Meter PF L2;;0.01;0;;4
+251;4;35043;I16;;Meter PF L3;;0.01;0;;4
+252;4;35044;I16;;Meter PF Tot;;0.01;0;;4
+253;4;35045;U16;;Meter Ang L1;;1;0;deg;4
+254;4;35046;U16;;Meter Ang L2;;1;0;deg;4
+255;4;35047;U16;;Meter Ang L3;;1;0;deg;4
+256;4;35048;U16;;Meter Ang Tot;;1;0;deg;4
+257;4;35049;U16;;Meter Freq;;0.01;0;Hz;4
+258;4;35050;U16;;Ext CT Status;;1;0;;4
+259;3;200;U16;;CMD Power OnOff;CMD_ON;1;0;;1
+260;3;203;U16;;CMD Str I Lim;;0.01;0;A;4
+261;3;205;U16;;Meter Calc Mode;;1;0;;4
+262;3;1000;U16;;RTC Year;;1;0;;4
+263;3;1001;U16;;RTC Month;;1;0;;4
+264;3;1002;U16;;RTC Day;;1;0;;4
+265;3;1003;U16;;RTC Hour;;1;0;;4
+266;3;1004;U16;;RTC Minute;;1;0;;4
+267;3;1005;U16;;RTC Second;;1;0;;4
+268;3;1102;U16;;Stor Type Sel;;1;0;;4
+269;3;1103;U16;;Run Mode;;1;0;;4
+270;3;1104;U16;;Bat Make;;1;0;;4
+271;3;1105;U16;;Bat Model;;1;0;;4
+272;3;1106;U16;;Bat Qty;;1;0;;4
+273;3;1114;U16;;Bat Wake Flag;;1;0;;4
+274;3;1115;U16;;Offgrid Mode;;1;0;;4
+275;3;1152;I16;;Bat P Cmd;;1;0;W;4
+276;3;1153;U16;;Chg SOC Max;;0.01;0;%;4
+277;3;1154;U16;;Dischg SOC Min;;0.01;0;%;4
+278;3;1196;U16;;Gen Start SOC;;0.01;0;%;4
+279;3;1197;U16;;Gen Chg En;;1;0;;4
+280;3;1198;U16;;Gen Chg Curr;;0.1;0;A;4
+281;3;1199;U16;;Gen Stop Delta;;0.01;0;%;4
+282;3;1200;U16;;Sld On SOC;;0.01;0;%;4
+283;3;1201;U16;;Sld Off SOC;;0.01;0;%;4
+284;3;1202;U16;;Gen Port Cfg;;1;0;;4
+285;3;1203;U32;;Gen Max P;;1;0;W;4
+286;3;1205;U16;;Gen Run Time;;0.1;0;h;4
+287;3;1206;U16;;Gen Stop Dly;;1;0;min;4
+288;3;1207;U16;;SmartLd Always;;1;0;;4
+289;3;1208;U16;;Gen Man Ctrl;;1;0;;4
+290;3;1209;U16;;Gen Chg P;;1;0;W;4
+291;3;1211;I32;;Bat P Cmd Ext;;1;0;W;4
+292;3;1300;U16;;BMS2 Wake Flag;;1;0;;4
+293;3;1500;U16;;Bat OnOff;;1;0;;4
+294;3;1501;U16;;Bat Slp Wak;;1;0;;4
+295;3;1502;U16;;Bat LED Col;;1;0;;4
+296;3;1503;U16;;Bat LED Bri;;1;0;%;4
+297;3;1600;U16;;Ctrl Type;;1;0;;4
+298;3;1602;U16;;DRM0 En;;1;0;;4
+299;3;1603;U16;;Rip Ctrl Cnt;;1;0;;4
+300;3;1604;U16;;DI Comb 1;;1;0;;4
+301;3;1605;U16;;DI Comb 2;;1;0;;4
+302;3;1606;U16;;DI Comb 3;;1;0;;4
+303;3;1607;U16;;DI Comb 4;;1;0;;4
+304;3;1608;U16;;DI Comb 5;;1;0;;4
+305;3;1609;U16;;DI Comb 6;;1;0;;4
+306;3;1610;U16;;DI Comb 7;;1;0;;4
+307;3;1611;U16;;DI Comb 8;;1;0;;4
+308;3;1612;U16;;DI Comb 9;;1;0;;4
+309;3;1613;U16;;DI Comb 10;;1;0;;4
+310;3;1614;U16;;DI Comb 11;;1;0;;4
+311;3;1615;U16;;DI Comb 12;;1;0;;4
+312;3;1616;U16;;DI Comb 13;;1;0;;4
+313;3;1617;U16;;DI Comb 14;;1;0;;4
+314;3;1618;U16;;DI Comb 15;;1;0;;4
+315;3;1619;U16;;DI Comb 16;;1;0;;4
+316;3;1700;U16;;Lead Cap Set;;0.1;0;Ah;4
+317;3;1701;U16;;Lead Float V;;0.01;0;V;4
+318;3;1702;U16;;Lead Const V;;0.01;0;V;4
+319;3;1703;U16;;Lead Ref Sel;;1;0;;4
+320;3;1704;U16;;Lead Stop Dis;;0.01;0;;4
+321;3;1705;U16;;Lead Low Warn;;0.01;0;;4
+322;3;1706;U16;;Lead Recov Dis;;0.01;0;;4
+323;3;1707;I16;;Lead Temp Coeff;;0.1;0;mV/C;4
+324;3;1708;U16;;Lead Int Res;;0.1;0;mOhm;4
+325;3;1709;I16;;Lead Temp;;0.1;0;C;4
+326;3;1710;U16;;Lead Chg Max;;0.1;0;A;4
+327;3;1711;U16;;Lead Dis Max;;0.1;0;A;4
+328;3;2101;U16;;Set Mb Addr;;1;0;;4
+329;3;4000;U16;;En Active P;;1;0;;4
+330;3;4001;U16;;En EEG;;1;0;;4
+331;3;4002;U16;;En Slope;;1;0;;4
+332;3;4003;U16;;En Volt Red;;1;0;;4
+333;3;4004;U16;;En Freq Red;;1;0;;4
+334;3;4005;U16;;En React P;;1;0;;4
+335;3;4006;U16;;En LVRT;;1;0;;4
+336;3;4007;U16;;En HVRT;;1;0;;4
+337;3;4008;U16;;En 10m Volt;;1;0;;4
+338;3;4009;U16;;En Island;;1;0;;4
+339;3;4010;U16;;En Buzzer;;1;0;;4
+340;3;4011;U16;;En PE Chk;;1;0;;4
+341;3;4012;U16;;En Line Gnd;;1;0;;4
+342;3;4013;U16;;En AFCI;;1;0;;4
+343;3;4014;U16;;En Str Mon;;1;0;;4
+344;3;4015;U16;;En Zero Rel;;1;0;;4
+345;3;4016;U16;;En Ovld;;1;0;;4
+346;3;4017;U16;;En PV Par;;1;0;;4
+347;3;4018;U16;;En SPD;;1;0;;4
+348;3;4019;U16;;En UV Load;;1;0;;4
+349;3;4020;U16;;En UF Load;;1;0;;4
+350;3;4021;U16;;En CV Mode;;1;0;;4
+351;3;4022;U16;;En Lvl1 Prot;;1;0;;4
+352;3;4023;U16;;En Comm Loss;;1;0;;4
+353;3;4024;U16;;En Shadow;;1;0;;4
+354;3;4025;U16;;En Ext In;;1;0;;4
+355;3;4026;U16;;En Sunspec;;1;0;;4
+356;3;4027;U16;;En Gen;;1;0;;4
+357;3;4028;U16;;En Reflux;;1;0;;4
+358;3;4029;U16;;En 3Ph4W;;1;0;;4
+359;3;4030;U16;;En Fuse;;1;0;;4
+360;3;4031;U16;;En PV Inh;;1;0;;4
+361;3;4032;U16;;En ROCOF;;1;0;;4
+362;3;4100;U16;;Shad Scan T;;1;0;min;4
+363;3;5200;U16;;Grid Code;;1;0;;4
+364;3;5201;U16;;V Trip 1st;;0.1;0;V;4
+365;3;5202;U16;;V Trip 1st L;;0.1;0;V;4
+366;3;5203;U16;;F Trip 1st;;0.01;0;Hz;4
+367;3;5204;U16;;F Trip 1st L;;0.01;0;Hz;4
+368;3;5205;U16;;V Trip Hi3;;0.1;0;V;4
+369;3;5206;U32;;T Trip Hi3;;1;0;ms;4
+370;3;5208;U16;;V Trip Hi2;;0.1;0;V;4
+371;3;5209;U32;;T Trip Hi2;;1;0;ms;4
+372;3;5211;U16;;V Trip Hi1;;0.1;0;V;4
+373;3;5212;U32;;T Trip Hi1;;1;0;ms;4
+374;3;5214;U16;;V Trip Lo3;;0.1;0;V;4
+375;3;5215;U32;;T Trip Lo3;;1;0;ms;4
+376;3;5217;U16;;V Trip Lo2;;0.1;0;V;4
+377;3;5218;U32;;T Trip Lo2;;1;0;ms;4
+378;3;5220;U16;;V Trip Lo1;;0.1;0;V;4
+379;3;5221;U32;;T Trip Lo1;;1;0;ms;4
+380;3;5223;U16;;V Trip 10m;;0.1;0;V;4
+381;3;5224;U16;;T Trip 10m;;1;0;ms;4
+382;3;5225;U16;;V Recov Hi;;0.1;0;V;4
+383;3;5226;U16;;V Recov Lo;;0.1;0;V;4
+384;3;5227;U16;;F Trip Hi3;;0.01;0;Hz;4
+385;3;5228;U32;;T Trip Hi3 F;;1;0;ms;4
+386;3;5230;U16;;F Trip Hi2;;0.01;0;Hz;4
+387;3;5231;U32;;T Trip Hi2 F;;1;0;ms;4
+388;3;5233;U16;;F Trip Hi1;;0.01;0;Hz;4
+389;3;5234;U32;;T Trip Hi1 F;;1;0;ms;4
+390;3;5236;U16;;F Trip Lo3;;0.01;0;Hz;4
+391;3;5237;U32;;T Trip Lo3 F;;1;0;ms;4
+392;3;5239;U16;;F Trip Lo2;;0.01;0;Hz;4
+393;3;5240;U32;;T Trip Lo2 F;;1;0;ms;4
+394;3;5242;U16;;F Trip Lo1;;0.01;0;Hz;4
+395;3;5243;U32;;T Trip Lo1 F;;1;0;ms;4
+396;3;5245;U16;;ROCOF Val;;0.01;0;Hz/s;4
+397;3;5246;U32;;ROCOF Time;;1;0;ms;4
+398;3;5248;U16;;F Recov Hi;;0.01;0;Hz;4
+399;3;5249;U16;;F Recov Lo;;0.01;0;Hz;4
+400;3;5250;U16;;T Conn 1st;;1;0;s;4
+401;3;5251;U16;;T Conn Re;;1;0;s;4
+402;3;5252;U16;;ISO Prot;;1;0;kOhm;4
+403;3;5253;U16;;DCI Prot;;1;0;mA;4
+404;3;5254;U16;;DCI Time;;1;0;ms;4
+405;3;5255;U16;;V Trip Hi5;;0.1;0;V;4
+406;3;5256;U32;;T Trip Hi5;;1;0;ms;4
+407;3;5258;U16;;V Trip Hi4;;0.1;0;V;4
+408;3;5259;U32;;T Trip Hi4;;1;0;ms;4
+409;3;5261;U16;;V Trip Lo5;;0.1;0;V;4
+410;3;5262;U32;;T Trip Lo5;;1;0;ms;4
+411;3;5264;U16;;V Trip Lo4;;0.1;0;V;4
+412;3;5265;U32;;T Trip Lo4;;1;0;ms;4
+413;3;5267;U16;;F Trip Hi5;;0.01;0;Hz;4
+414;3;5268;U32;;T Trip Hi5 F;;1;0;ms;4
+415;3;5270;U16;;F Trip Hi4;;0.01;0;Hz;4
+416;3;5271;U32;;T Trip Hi4 F;;1;0;ms;4
+417;3;5273;U16;;F Trip Lo5;;0.01;0;Hz;4
+418;3;5274;U32;;T Trip Lo5 F;;1;0;ms;4
+419;3;5276;U16;;F Trip Lo4;;0.01;0;Hz;4
+420;3;5277;U32;;T Trip Lo4 F;;1;0;ms;4
+421;3;5279;U16;;F Trip Sw Hi;;0.01;0;Hz;4
+422;3;5280;U32;;T Trip Sw Hi;;1;0;ms;4
+423;3;5282;U16;;F Trip Sw Lo;;0.01;0;Hz;4
+424;3;5283;U32;;T Trip Sw Lo;;1;0;ms;4
+425;3;5285;U16;;Safe SubCode;;1;0;;4
+426;3;5400;U16;;P Ramp 1st;;1;0;%/min;4
+427;3;5401;U16;;P Ramp Re;;1;0;%/min;4
+428;3;5402;U16;;P Set Pct;;0.01;0;%;4
+429;3;5403;U16;;P Ramp Up;;0.01;0;%/min;4
+430;3;5404;U16;;P Ramp Down;;0.01;0;%/min;4
+431;3;5456;I32;;P Set W;;1;0;W;4
+432;3;5500;U16;;Q Mode;;1;0;;4
+433;3;5501;U16;;Q Time Const;;1;0;s;4
+434;3;5502;I16;;PF Set;;0.0001;0;;4
+435;3;5503;U16;;CosP P1;;0.01;0;%;4
+436;3;5504;I16;;CosP C1;;0.0001;0;;4
+437;3;5505;U16;;CosP P2;;0.01;0;%;4
+438;3;5506;I16;;CosP C2;;0.0001;0;;4
+439;3;5507;U16;;CosP P3;;0.01;0;%;4
+440;3;5508;I16;;CosP C3;;0.0001;0;;4
+441;3;5509;U16;;CosP P4;;0.01;0;%;4
+442;3;5510;I16;;CosP C4;;0.0001;0;;4
+443;3;5511;U16;;CosP Lock V;;0.01;0;%;4
+444;3;5512;U16;;CosP Unlk V;;0.01;0;%;4
+445;3;5515;I16;;Q Set Pct;;0.01;0;%;4
+446;3;5517;U16;;QU V1;;0.01;0;%;4
+447;3;5518;I16;;QU Q1;;0.01;0;%;4
+448;3;5519;U16;;QU V2;;0.01;0;%;4
+449;3;5520;I16;;QU Q2;;0.01;0;%;4
+450;3;5521;U16;;QU V3;;0.01;0;%;4
+451;3;5522;I16;;QU Q3;;0.01;0;%;4
+452;3;5523;U16;;QU V4;;0.01;0;%;4
+453;3;5524;I16;;QU Q4;;0.01;0;%;4
+454;3;5525;U16;;QU Lock P;;0.01;0;%;4
+455;3;5526;U16;;QU Unlk P;;0.01;0;%;4
+456;3;5530;I32;;Q Set Var;;1;0;Var;4
+457;3;6400;U16;;Meter V L1;;0.1;0;V;4
+458;3;6401;U16;;Meter V L2;;0.1;0;V;4
+459;3;6402;U16;;Meter V L3;;0.1;0;V;4
+460;3;6403;U16;;Meter I L1;;0.1;0;A;4
+461;3;6404;U16;;Meter I L2;;0.1;0;A;4
+462;3;6405;U16;;Meter I L3;;0.1;0;A;4
+463;3;6406;I32;;Meter P L1_1;;1;0;W;4
+464;3;6408;I32;;Meter P L2_2;;1;0;W;4
+465;3;6410;I32;;Meter P L3_3;;1;0;W;4
+466;3;6500_14;STRING;;AFCI Ver;;1;0;;4
+467;3;6519;U16;;AFCI Test;;1;0;;4
+468;3;6520;U16;;AFCI Sens;;1;0;;4
+469;3;6521;U16;;AFCI Clear;;1;0;;4
+470;3;6522;U16;;AFCI Man Clr;;1;0;;4
+471;3;6523;U16;;AFCI Recon;;1;0;min;4
+472;3;6600;U16;;HP Mode;;1;0;;4
+473;3;6601;U16;;HP Test St;;1;0;;4
+474;3;6602;U16;;HP Test Ctl;;1;0;;4
+475;3;6603;U16;;HP Thr Type;;1;0;;4
+476;3;6604;U32;;HP PV Thr;;0.1;0;W;4
+477;3;6606;U16;;HP Min Time;;1;0;min;4
+478;3;6607;U16;;HP Hold Time;;1;0;min;4
+479;3;6700;U16;;DO1 Config;;1;0;;4
+480;3;6701;U16;;DO2 Config;;1;0;;4
+481;3;6702;U16;;DO1 Stat;;1;0;;4
+482;3;6703;U16;;DO2 Stat;;1;0;;4
+483;3;6800;U16;;TP P Pct;;0.01;0;%;4
+484;3;6801;I32;;TP P W;;1;0;W;4
+485;3;6850;I16;;TP PF;;0.0001;0;;4
+486;3;6851;I16;;TP Q Pct;;0.01;0;%;4
+487;3;6852;I32;;TP Q Var;;1;0;Var;4
+488;3;6900;U16;;Active P Imp Lim;;0.01;0;%;4
+489;3;6901;U16;;Run Mode Ext;;1;0;;4
+490;3;6902;U16;;Chg SOC Max Ext;;0.01;0;%;4
+491;3;6903;U16;;Dischg SOC Min Ext;;0.01;0;%;4

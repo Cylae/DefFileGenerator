@@ -1,0 +1,115 @@
+﻿modbusRTU;Other;Alro Solar;Alro_BMS;;;;;;;
+1;3;20000;U16;;Battery software version;battery_software_version;1.000000;0.000000;'---;4
+2;3;20010;U16;;Total battery pack voltage (PCS);total_battery_pack_voltage_pcs;1.000000;0.000000;0.1V;4
+3;3;20011;I16;;Total battery pack current (PCS);total_battery_pack_current_pcs;1.000000;0.000000;0.1A;4
+4;3;20013;U16;;Main control temperature;main_control_temperature;1.000000;0.000000;0.1℃;4
+5;3;20014;U16;;SOC;soc;1.000000;0.000000;0.001;4
+6;3;20015;U16;;SOH;soh;1.000000;0.000000;'%;4
+7;3;20016;U16;;SOE;soe;1.000000;0.000000;0.001;4
+8;3;20017;U16;;Charging cutoff voltage;charging_cutoff_voltage;1.000000;0.000000;0.1V;4
+9;3;20018;U16;;Discharge cutoff voltage;discharge_cutoff_voltage;1.000000;0.000000;0.1V;4
+10;3;20019;U16;;Maximum charging current;maximum_charging_current;1.000000;0.000000;0.1A;4
+11;3;20020;U16;;Maximum discharge current;maximum_discharge_current;1.000000;0.000000;0.1A;4
+12;3;20021;I32;;Cumulative charging power (high bytes);cumulative_charging_power_high_bytes;1.000000;0.000000;0.1 kWh;4
+13;3;20022;U16;;Lowest cumulative charging capacity;lowest_cumulative_charging_capacity;1.000000;0.000000;;4
+14;3;20023;I32;;High byte of cumulative discharge capacity;high_byte_of_cumulative_discharge_capacity;1.000000;0.000000;0.1 kWh;4
+15;3;20024;U16;;Low byte of cumulative discharge capacity;low_byte_of_cumulative_discharge_capacity;1.000000;0.000000;;4
+16;3;20025;I16;;Daily charging volume;daily_charging_volume;1.000000;0.000000;0.1 kWh;4
+17;3;20026;I16;;Daily discharge volume;daily_discharge_volume;1.000000;0.000000;0.1 kWh;4
+18;3;20027;I32;;Battery pack total power (high bytes);battery_pack_total_power_high_bytes;1.000000;0.000000;W;4
+19;3;20028;U16;;Battery pack total power (low bytes);battery_pack_total_power_low_bytes;1.000000;0.000000;;4
+20;3;20029;I16;;tooling status;tooling_status;1.000000;0.000000;;9
+21;3;20030;I16;;Cell type;cell_type;1.000000;0.000000;;4
+22;3;20031;U16;;Total battery pack voltage;total_battery_pack_voltage;1.000000;0.000000;0.1V;4
+23;3;20032;I16;;Total current of battery pack;total_current_of_battery_pack;1.000000;0.000000;0.1A;4
+24;3;20033;I32;;Battery pack total power high bytes;battery_pack_total_power_high_bytes_1;1.000000;0.000000;W;4
+25;3;20034;U16;;Battery pack total power low bytes;battery_pack_total_power_low_bytes_1;1.000000;0.000000;;4
+26;3;20200;U16;;highest single-unit voltage;highest_singleunit_voltage;1.000000;0.000000;1mV;4
+27;3;20201;U16;;Minimum unit voltage;minimum_unit_voltage;1.000000;0.000000;1mV;4
+28;3;20202;U16;;Highest single-unit voltage group number;highest_singleunit_voltage_group_number;1.000000;0.000000;;4
+29;3;20203;U16;;Highest single-unit voltage serial number;highest_singleunit_voltage_serial_number;1.000000;0.000000;;4
+30;3;20204;U16;;Lowest unit voltage group number;lowest_unit_voltage_group_number;1.000000;0.000000;;4
+31;3;20205;U16;;Lowest single-unit voltage serial number;lowest_singleunit_voltage_serial_number;1.000000;0.000000;;4
+32;3;20206;I16;;Maximum single-unit temperature;maximum_singleunit_temperature;1.000000;0.000000;0.1℃;4
+33;3;20207;I16;;Minimum monomer temperature;minimum_monomer_temperature;1.000000;0.000000;0.1℃;4
+34;3;20208;U16;;Highest single-unit temperature group number;highest_singleunit_temperature_group_number;1.000000;0.000000;;4
+35;3;20209;U16;;Highest single-unit temperature serial number;highest_singleunit_temperature_serial_number;1.000000;0.000000;;4
+36;3;20210;U16;;Lowest unit temperature group number;lowest_unit_temperature_group_number;1.000000;0.000000;;4
+37;3;20211;U16;;Lowest monomer temperature serial number;lowest_monomer_temperature_serial_number;1.000000;0.000000;;4
+38;3;20301;U16;;Slave DI signal status;slave_di_signal_status;1.000000;0.000000;;9
+39;3;20302;U16;;Slave power supply voltage;slave_power_supply_voltage;1.000000;0.000000;V;4
+40;3;20303;U16;;Slave version number;slave_version_number;1.000000;0.000000;;4
+41;3;20311;U16;;Slave DI signal status;slave_di_signal_status_1;1.000000;0.000000;;9
+42;3;20312;U16;;Slave power supply voltage;slave_power_supply_voltage_1;1.000000;0.000000;V;4
+43;3;20313;U16;;Slave version number;slave_version_number_1;1.000000;0.000000;;4
+44;3;20321;U16;;Slave DI signal status;slave_di_signal_status_2;1.000000;0.000000;;9
+45;3;20322;U16;;Slave power supply voltage;slave_power_supply_voltage_2;1.000000;0.000000;V;4
+46;3;20323;U16;;Slave version number;slave_version_number_2;1.000000;0.000000;;4
+47;3;20331;U16;;Slave DI signal status;slave_di_signal_status_3;1.000000;0.000000;;9
+48;3;20332;U16;;Slave power supply voltage;slave_power_supply_voltage_3;1.000000;0.000000;V;4
+49;3;20333;U16;;Slave version number;slave_version_number_3;1.000000;0.000000;;4
+50;3;20400;U16;;Battery status;battery_status;1.000000;0.000000;;9
+51;3;20401;U16;;DRY drive control status;dry_drive_control_status;1.000000;0.000000;;9
+52;3;20402;U16;;DI signal status;di_signal_status;1.000000;0.000000;;9
+53;3;20403;U16;;Output positive terminal voltage;output_positive_terminal_voltage;1.000000;0.000000;0.1V;4
+54;3;20404;U16;;Output negative terminal voltage;output_negative_terminal_voltage;1.000000;0.000000;0.1V;4
+55;3;20405;U16;;Precharge relay status;precharge_relay_status;1.000000;0.000000;;9
+56;3;20406;U16;;Total positive contactor status;total_positive_contactor_status;1.000000;0.000000;;9
+57;3;20407;U16;;Total negative contactor status;total_negative_contactor_status;1.000000;0.000000;;9
+58;3;20408;U16;;Loop count;loop_count;1.000000;0.000000;;4
+59;3;20500;U16;;Active balancing current;active_balancing_current;1.000000;0.000000;0.1A;4
+60;3;20501;U16;;Relay front voltage;relay_front_voltage;1.000000;0.000000;0.1V;4
+61;3;20502;U16;;Relay voltage;relay_voltage;1.000000;0.000000;0.1V;4
+62;3;20503;U16;;Resistance to ground;resistance_to_ground;1.000000;0.000000;KΩ;4
+63;3;20504;U16;;negative resistance to ground;negative_resistance_to_ground;1.000000;0.000000;KΩ;4
+64;3;20505;U16;;Number of online individual voltages;number_of_online_individual_voltages;1.000000;0.000000;;4
+65;3;20506;U16;;Online number of individual unit temperatures;online_number_of_individual_unit_temperatures;1.000000;0.000000;;4
+66;3;20507;U16;;Number of online modules;number_of_online_modules;1.000000;0.000000;;4
+67;3;20508;U16;;From the addressing state;from_the_addressing_state;1.000000;0.000000;;4
+68;3;20509;U16;;Average voltage;average_voltage;1.000000;0.000000;mV;4
+69;3;20510;I16;;Average temperature;average_temperature;1.000000;0.000000;0.1℃;4
+70;3;20511;U16;;Single cell voltage difference;single_cell_voltage_difference;1.000000;0.000000;mV;4
+71;3;20512;I16;;Individual cell temperature difference;individual_cell_temperature_difference;1.000000;0.000000;0.1℃;4
+72;3;20600;U16;;Number of alarm codes;number_of_alarm_codes;1.000000;0.000000;;9
+73;3;20601;U16;;Main alarm code 1;main_alarm_code_1;1.000000;0.000000;;9
+74;3;20602;U16;;Child alarm code 1;child_alarm_code_1;1.000000;0.000000;;9
+75;3;20603;U16;;Main alarm code 2;main_alarm_code_2;1.000000;0.000000;;9
+76;3;20604;U16;;Sub-alarm code 2;subalarm_code_2;1.000000;0.000000;;9
+77;3;20619;U16;;Main alarm code 10;main_alarm_code_10;1.000000;0.000000;;9
+78;3;20620;U16;;Child alarm code 10;child_alarm_code_10;1.000000;0.000000;;9
+79;3;20640;U16;;Number of protection codes;number_of_protection_codes;1.000000;0.000000;;4
+80;3;20641;U16;;Master protection code 1;master_protection_code_1;1.000000;0.000000;;4
+81;3;20642;U16;;Sub-protection code 1;subprotection_code_1;1.000000;0.000000;;4
+82;3;20643;U16;;Master protection code 2;master_protection_code_2;1.000000;0.000000;;4
+83;3;20644;U16;;Sub-protection code 2;subprotection_code_2;1.000000;0.000000;;4
+84;3;20659;U16;;Master protection code 10;master_protection_code_10;1.000000;0.000000;;4
+85;3;20660;U16;;Sub-protection code 10;subprotection_code_10;1.000000;0.000000;;4
+86;3;20680;U16;;Number of fault codes;number_of_fault_codes;1.000000;0.000000;;9
+87;3;20681;U16;;Main fault code 1;main_fault_code_1;1.000000;0.000000;;9
+88;3;20682;U16;;Sub-fault code 1;subfault_code_1;1.000000;0.000000;;9
+89;3;20683;U16;;Main fault code 2;main_fault_code_2;1.000000;0.000000;;9
+90;3;20684;U16;;Sub-fault code 2;subfault_code_2;1.000000;0.000000;;9
+91;3;20699;U16;;Main fault code 10;main_fault_code_10;1.000000;0.000000;;9
+92;3;20700;U16;;Sub-fault code 10;subfault_code_10;1.000000;0.000000;;9
+93;3;15400;U16;;Article 1 BMS Failure Year/Month;article_1_bms_failure_yearmonth;1.000000;0.000000;'---;9
+94;3;15401;U16;;Article 1 BMS Failure Day/Hour;article_1_bms_failure_dayhour;1.000000;0.000000;'---;9
+95;3;15402;U16;;BMS Fault Item 1 (minutes/seconds);bms_fault_item_1_minutesseconds;1.000000;0.000000;'---;9
+96;3;15403;U16;;BMS fault code #1;bms_fault_code_1;1.000000;0.000000;'---;9
+97;3;15796;U16;;Item 100: BMS Fault (Year/Month);item_100_bms_fault_yearmonth;1.000000;0.000000;'---;9
+98;3;15797;U16;;Article 100 BMS Fault Day/Hour;article_100_bms_fault_dayhour;1.000000;0.000000;'---;9
+99;3;15798;U16;;100th BMS fault (minutes/seconds);v_100th_bms_fault_minutesseconds;1.000000;0.000000;'---;9
+100;3;15799;U16;;BMS fault code 100;bms_fault_code_100;1.000000;0.000000;'---;9
+101;3;20001;U16;;BMS serial number SN0;bms_serial_number_sn0;1.000000;0.000000;'---;4
+102;3;20002;U16;;BMS serial number SN1;bms_serial_number_sn1;1.000000;0.000000;'---;4
+103;3;20003;U16;;BMS serial number SN2;bms_serial_number_sn2;1.000000;0.000000;'---;4
+104;3;20004;U16;;BMS serial number SN3;bms_serial_number_sn3;1.000000;0.000000;'---;4
+105;3;20005;U16;;BMS serial number SN4;bms_serial_number_sn4;1.000000;0.000000;'---;4
+106;3;20006;U16;;BMS serial number SN5;bms_serial_number_sn5;1.000000;0.000000;'---;4
+107;3;20007;U16;;BMS serial number SN6;bms_serial_number_sn6;1.000000;0.000000;'---;4
+108;3;20008;U16;;BMS serial number SN7;bms_serial_number_sn7;1.000000;0.000000;'---;1
+109;3;20009;U16;;BMS serial number SN8;bms_serial_number_sn8;1.000000;0.000000;'---;1
+110;3;23009;U16;;Change of working mode;change_of_working_mode;1.000000;0.000000;'---;4
+111;3;23011;U16;;Parameter processing;parameter_processing;1.000000;0.000000;'---;4
+112;3;23020;U16;;years;years;1.000000;0.000000;'---;1
+113;3;23021;U16;;Day Hour;day_hour;1.000000;0.000000;'---;1
+114;3;23022;U16;;minutes and seconds;minutes_and_seconds;1.000000;0.000000;'---;1

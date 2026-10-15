@@ -1,0 +1,48 @@
+﻿modbus;Logger;ATMOCE;Gateway V1.2;;;;;;;
+1;3;60000_20;STRING;;SN;SERIAL;1;0;;4
+2;3;60010;U16;;Hardware Version;;1;0;;4
+3;3;60011_30;STRING;;Firmware Version;;1;0;;4
+4;3;60026;U16;;Protocol Version;;1;0;;4
+5;3;60027;U32;;Rated Photovoltaic Power;;0.001;0;kW;4
+6;3;60029;U32;;Rated Energy Storage Power;;0.001;0;kW;4
+7;3;60031;U32;;Energy Storage Capacity;;0.001;0;kWh;4
+8;3;60060;U32;;System Time;;1;0;;4
+9;3;60062;I32;;System Time Zone;;1;0;;4
+10;3;60064;U32;;System Local Time;;1;0;;4
+11;3;60066;U16;;Power Station Status;;1;0;;4
+12;3;60067;U16;;EnergyStorage Status;;1;0;;4
+13;3;60068;U16;;Energy Storage Operating Mode;;1;0;;4
+14;3;60069;U32;;Photovoltaic Power Output;;0.001;0;kW;4
+15;3;60071;I32;;Energy Storage Charging/Discharging Power;;0.001;0;kW;4
+16;3;60073;I32;;Grid Active Power;P_AC;0.001;0;kW;4
+17;3;60075;I32;;Photovoltaic Reactive Power;Q_AC;0.001;0;kVar;4
+18;3;60077;I32;;Energy Storage Reactive Power;;0.001;0;kVar;4
+19;3;60089;U16;;Phase AGridVoltage / Grid Voltage (Single Phase);U_AC_1;0.1;0;V;4
+20;3;60090;I16;;Phase AGridCurrent / Grid Current (Single Phase);I_DC;0.01;0;A;4
+21;3;60091;U16;;Phase B Grid Voltage;U_AC_2;0.1;0;V;4
+22;3;60092;I16;;Phase B Grid Current;I_AC_2;0.01;0;A;4
+23;3;60093;U16;;Phase C Grid Voltage;U_AC_3;0.1;0;V;4
+24;3;60094;I16;;Phase C Grid Current;I_AC_3;0.01;0;A;4
+25;3;60095;U16;;Energy Storage SOC;;1;0;%;4
+26;3;60160;U64;;Cumulative Photovoltaic Power Generation;;0.01;0;kWh;4
+27;3;60164;U32;;Daily Photovoltaic Power Generation;;0.01;0;kWh;4
+28;3;60166;U64;;Cumulative Energy Storage Charging Capacity;E_TOT;0.01;0;kWh;4
+29;3;60170;U32;;Daily Energy Storage Charging Capacity;E_DAY;0.01;0;kWh;4
+30;3;60172;U64;;Cumulative Energy Storage Discharging Capacity;;0.01;0;kWh;4
+31;3;60176;U32;;Daily Energy Storage Discharging Capacity;;0.01;0;kWh;4
+32;3;60178;U64;;Cumulative Electricity Sales Volume;;0.01;0;kWh;4
+33;3;60182;U32;;Daily Electricity Sales Volume;;0.01;0;kWh;4
+34;3;60184;U64;;Cumulative Electricity Purchase Volume;;0.01;0;kWh;4
+35;3;60188;U32;;Daily Electricity Purchase Volume;;0.01;0;kWh;4
+36;3;60200;U32;;Energy Storage Maximum Charging Power Limit;CMD_P_AC_SET_ABS;0.01;0;kW;1
+37;3;60202;U32;;Energy Storage Maximum Discharging Power Limit;;0.01;0;kW;4
+38;3;60301;U16;;Energy Storage Communication Control Mode;;1;0;;4
+39;3;60302;U32;;Active Power Fixed Value Regulation;;0.001;0;kW;4
+40;3;60304;U16;;Active Power Percentage Regulation;;0.1;0;%;4
+41;3;60310;U16;;EnergyStorage Forced Charging/Discharging;;1;0;;4
+42;3;60311;U16;;Energy Storage Forced Charging/Discharging Mode;;1;0;;4
+43;3;60312;U16;;Energy Storage Forced Charging/Discharging Target SOC;;1;0;%;4
+44;3;60313;U16;;Energy Storage Forced Charging/Discharging Duration;;1;0;mins;4
+45;3;60314;U32;;Energy Storage Forced Charging/Discharging Power;;0.001;0;kW;4
+46;3;60316;I32;;Energy Storage Dispatch Charging/Discharging Power;;0.001;0;kW;4
+47;3;60400;U16;;Reset;;1;0;;0

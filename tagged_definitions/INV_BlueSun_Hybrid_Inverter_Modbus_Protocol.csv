@@ -1,0 +1,9 @@
+﻿modbusRTU;Inverter;BlueSun;Hybrid Inverter_Modbus Protoco;;;;;;;
+1;4;40001;U16;;alarm or fault reset;;1.0;0.0;;9
+2;4;40021;U16;;system alarm or fault present;;1.0;0.0;;9
+3;4;40022;U16;;PCS device ready for switch on;;1.0;0.0;;4
+4;4;12544;U16;;"放电过流
+Discharge over current";;1.0;0.0;;4
+5;4;12546;U16;;"母线软起超时
+bus soft fail";;1.0;0.0;;9
+6;4;12548;U16;;0;;1.0;0.0;;4

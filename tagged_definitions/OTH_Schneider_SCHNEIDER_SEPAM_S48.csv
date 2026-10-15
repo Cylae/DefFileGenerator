@@ -1,0 +1,32 @@
+﻿modbusRTU;Other;Schneider;SCHNEIDER_SEPAM_S48;;;;;;;
+1;4;275;U16;;Courant phase I1;;1.0;0.0;A;4
+2;4;276;U16;;Courant phase I2;;1.0;0.0;A;4
+3;4;277;U16;;Courant phase I3;;1.0;0.0;A;4
+4;4;278;U16;;Courant residuel I0 Somme;;1.0;0.0;A;4
+5;4;279;U16;;Courant residuel mesure;;1.0;0.0;A;4
+6;4;280;U16;;Courant moyen phase Im1;;1.0;0.0;A;4
+7;4;281;U16;;Courant moyen phase Im2;;1.0;0.0;A;4
+8;4;282;U16;;Courant moyen phase Im3;;1.0;0.0;A;4
+9;4;283;U16;;Maximetre courant phase IM1;;1.0;0.0;A;4
+10;4;284;U16;;Maximetre courant phase IM2;;1.0;0.0;A;4
+11;4;285;U16;;Maximetre courant phase IM3;;1.0;0.0;A;4
+12;4;286;U16;;Tension composee U21;;1.0;0.0;V;4
+13;4;287;U16;;Tension composee U32;;1.0;0.0;V;4
+14;4;288;U16;;Tension composee U13;;1.0;0.0;V;4
+15;4;289;U16;;Tension simple V1;;1.0;0.0;V;4
+16;4;290;U16;;Tension simple V2;;1.0;0.0;V;4
+17;4;291;U16;;Tension simple V3;;1.0;0.0;V;4
+18;4;292;U16;;Tension residuelle V0;;1.0;0.0;V;4
+19;4;293;U16;;Tension directe Vd;;1.0;0.0;V;4
+20;4;294;U16;;Tension inverse Vi;;1.0;0.0;V;4
+21;4;295;U16;;Frequence;FREQ;1.0;0.0;Hz;4
+22;4;296;U16;;Puissance active P;P_AC;1.0;0.0;kW;4
+23;4;297;U16;;Puissance reactive Q;ReactivePowSum;1.0;0.0;kvar;4
+24;4;298;U16;;Puissance apparente S;ApparentPowSum;1.0;0.0;kVA;4
+25;4;299;U16;;Maximetre puissance active Pm;;1.0;0.0;kW;4
+26;4;300;U16;;Maximetre puissance reactive Qm;Q_AC;1.0;0.0;kvar;4
+27;4;301;U16;;Facteur de puissance cosphi;PF;1.0;0.0;;4
+28;4;302;U16;;Energie active positive Ea+;;1.0;0.0;kW.h;4
+29;4;304;U16;;Energie active negative Ea-;;1.0;0.0;kW.h;4
+30;4;306;U16;;Energie reactive positive Er+;;1.0;0.0;kvar.h;4
+31;4;308;U16;;Energie reactive negative Er-;;1.0;0.0;kvar.h;4

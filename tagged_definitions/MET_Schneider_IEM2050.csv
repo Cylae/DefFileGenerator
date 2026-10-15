@@ -1,0 +1,70 @@
+﻿modbus;Meter;Schneider;IEM2050;;;;;;;
+1;3;32_40;STRING;;Meter name;;1;0;;4
+2;3;52_40;STRING;;Meter model;MODEL;1;0;;4
+3;3;72_40;STRING;;Manufacturer;MANUFACTURER;1;0;;4
+4;3;92;U16;;Meter code;;1;0;;4
+5;3;132;U32;;Serial number;SERIAL;1;0;;4
+6;3;138_10;STRING;;Hardware revision;;1;0;;4
+7;3;1639;U16;;Present firmware version;;1;0;;4
+8;3;1831;U16;;Power on off counter;CMD_ON;1;0;;1
+9;3;2016;U16;;Number of phases;;1;0;;4
+10;3;2017;U16;;Number of wires;;1;0;;4
+11;3;2018;U16;;Power system;;1;0;;4
+12;3;2019;U16;;Nominal frequency;FREQ;1;0;Hz;4
+13;3;2022;F32;;Meter Amps;;1;0;A;4
+14;3;5252;U16;;Requested command;;1;0;;4
+15;3;5253;U16;;Reserved command;;1;0;;4
+16;3;5377;U16;;Command status;;1;0;;4
+17;3;5378;U16;;Command result codes;;1;0;;4
+18;3;6102;U16;;LCD cycle time;;1;0;s;4
+19;3;6503;U16;;RS-485 communication port address;;1;0;;4
+20;3;6504;U16;;RS-485 communication baud rate;;1;0;;4
+21;3;6505;U16;;RS-485 communication parity;;1;0;;4
+22;3;6506;F32;;SO output rate;;1;0;;4
+23;3;6508;U16;;Combined Code;;1;0;;4
+24;3;3002;F32;;Current;;1;0;A;4
+25;3;3030;F32;;Voltage;;1;0;V;4
+26;3;3056;F32;;Active power;P_AC;1;0;kW;4
+27;3;3070;F32;;Reactive power;Q_AC;1;0;kVAr;4
+28;3;3078;F32;;Apparent power;S_AC;1;0;kVA;4
+29;3;3086;F32;;Total power factor;PF;1;0;;4
+30;3;3112;F32;;Frequency;;1;0;Hz;4
+31;3;3206;I64;;Forward active energy;;1;0;Wh;4
+32;3;3210;I64;;Reverse active energy;;1;0;Wh;4
+33;3;3214;I64;;Total active energy;;1;0;Wh;4
+34;3;3222;I64;;Forward reactive energy;;1;0;VARh;4
+35;3;3226;I64;;Reverse reactive energy;;1;0;VARh;4
+36;3;3230;I64;;Total reactive energy;E_TOT;1;0;VARh;4
+37;3;3258;I64;;Forward partial active energy;;1;0;Wh;4
+38;3;4193;U16;;Tariff status;;1;0;;4
+39;3;4198;I64;;T1 Forward active energy;;1;0;Wh;4
+40;3;4202;I64;;T2 Forward active energy;;1;0;Wh;4
+41;3;4206;I64;;T1 Reverse active energy;;1;0;Wh;4
+42;3;4210;I64;;T2 Reverse active energy;;1;0;Wh;4
+43;3;4214;I64;;T1 Total active energy;;1;0;Wh;4
+44;3;4218;I64;;T2 Total active energy;;1;0;Wh;4
+45;3;4222;I64;;T1 Forward reactive energy;;1;0;VARh;4
+46;3;4226;I64;;T2 Forward reactive energy;;1;0;VARh;4
+47;3;4230;I64;;T1 Reverse reactive energy;;1;0;VARh;4
+48;3;4234;I64;;T2 Reverse reactive energy;;1;0;VARh;4
+49;3;4238;I64;;T1 Total reactive energy;;1;0;VARh;4
+50;3;4242;I64;;T2 Total reactive energy;;1;0;VARh;4
+51;3;45102;F32;;Forward active energy;;1;0;Wh;4
+52;3;45104;F32;;Reverse active energy;;1;0;Wh;4
+53;3;45106;F32;;Forward reactive energy;;1;0;VARh;4
+54;3;45108;F32;;Reverse reactive energy;;1;0;VARh;4
+55;3;45110;F32;;Forward partial active energy;;1;0;Wh;4
+56;3;45114;F32;;Total active energy;;1;0;Wh;4
+57;3;45116;F32;;Total reactive energy;;1;0;VARh;4
+58;3;45122;F32;;T1 Forward active energy;;1;0;Wh;4
+59;3;45124;F32;;T2 Forward active energy;;1;0;Wh;4
+60;3;45126;F32;;T1 Reverse active energy;;1;0;Wh;4
+61;3;45128;F32;;T2 Reverse active energy;;1;0;Wh;4
+62;3;45130;F32;;T1 Total active energy;;1;0;Wh;4
+63;3;45132;F32;;T2 Total active energy;;1;0;Wh;4
+64;3;45134;F32;;T1 Forward reactive energy;;1;0;VARh;4
+65;3;45136;F32;;T2 Forward reactive energy;;1;0;VARh;4
+66;3;45138;F32;;T1 Reverse reactive energy;;1;0;VARh;4
+67;3;45140;F32;;T2 Reverse reactive energy;;1;0;VARh;4
+68;3;45142;F32;;T1 Total reactive energy;;1;0;VARh;4
+69;3;45144;F32;;T2 Total reactive energy;;1;0;VARh;4

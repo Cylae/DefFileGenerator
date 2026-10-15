@@ -1,0 +1,299 @@
+﻿modbusRTU;Meter;ABB;M4M_NetworkAnalyzer;;;;;;;
+1;3;20480;U16;;Active energy - import;active_energy_import;0.010000;0.000000;kWh;4
+2;3;20484;U16;;Active energy - export;active_energy_export;0.010000;0.000000;kWh;4
+3;3;20488;I16;;Active energy - net;active_energy_net;0.010000;0.000000;kWh;4
+4;3;20492;U16;;Reactive energy - import;reactive_energy_import;0.010000;0.000000;kvarh;4
+5;3;20496;U16;;Reactive energy - export;reactive_energy_export;0.010000;0.000000;kvarh;4
+6;3;20500;I16;;Reactive energy - net;reactive_energy_net;0.010000;0.000000;kvarh;4
+7;3;20504;U16;;Apparent energy - import;apparent_energy_import;0.010000;0.000000;kVA;4
+8;3;20508;U16;;Apparent energy - export;apparent_energy_export;0.010000;0.000000;kVA;4
+9;3;20512;I16;;Apparent energy - net;apparent_energy_net;0.010000;0.000000;kVA;4
+10;3;20516;U16;;Active energy - import;active_energy_import_1;0.001000;0.000000;kg / kWh;4
+11;3;20532;U16;;Active energy - import;active_energy_import_2;0.001000;0.000000;Currency / kWh;4
+12;3;20848;U16;;Active energy - import (Tariffs);active_energy_import_tariffs;0.010000;0.000000;kWh;4
+13;3;20880;U16;;Active energy - export (Tariffs);active_energy_export_tariffs;0.010000;0.000000;kWh;4
+14;3;20912;U16;;Reactive energy - import (Tariffs);reactive_energy_import_tariffs;0.010000;0.000000;kvarh;4
+15;3;20944;U16;;Reactive energy - export (Tariffs);reactive_energy_export_tariffs;0.010000;0.000000;kvarh;4
+16;3;21600;U16;;Active energy - import;active_energy_import_3;0.010000;0.000000;kWh;4
+17;3;21612;U16;;Active energy - export;active_energy_export_1;0.010000;0.000000;kWh;4
+18;3;21624;I16;;Active energy - net;active_energy_net_1;0.010000;0.000000;kWh;4
+19;3;21636;U16;;Reactive energy - import;reactive_energy_import_1;0.010000;0.000000;kvarh;4
+20;3;21648;U16;;Reactive energy - export;reactive_energy_export_1;0.010000;0.000000;kvarh;4
+21;3;21660;I16;;Reactive energy - net;reactive_energy_net_1;0.010000;0.000000;kvarh;4
+22;3;21672;U16;;Apparent energy - import;apparent_energy_import_1;0.010000;0.000000;kVA;4
+23;3;21684;U16;;Apparent energy - export;apparent_energy_export_1;0.010000;0.000000;kVA;4
+24;3;21696;I16;;Apparent energy - net;apparent_energy_net_1;0.010000;0.000000;kVA;4
+25;3;23296;U16;;Three phase system voltage;three_phase_system_voltage;0.100000;0.000000;V;4
+26;3;23298;U16;;Phase voltage L1;phase_voltage_l1;0.100000;0.000000;V;4
+27;3;23300;U16;;Phase voltage L2;phase_voltage_l2;0.100000;0.000000;V;4
+28;3;23302;U16;;Phase voltage L3;phase_voltage_l3;0.100000;0.000000;V;4
+29;3;23304;U16;;Line voltage L1-L2;line_voltage_l1l2;0.100000;0.000000;V;4
+30;3;23306;U16;;Line voltage L3-L2;line_voltage_l3l2;0.100000;0.000000;V;4
+31;3;23308;U16;;Line voltage L1-L3;line_voltage_l1l3;0.100000;0.000000;V;4
+32;3;23310;U16;;Three phase system current;three_phase_system_current;0.010000;0.000000;A;4
+33;3;23312;U16;;Current;current;0.010000;0.000000;A;4
+34;3;23314;U16;;Current;current_1;0.010000;0.000000;A;4
+35;3;23316;U16;;Current;current_2;0.010000;0.000000;A;4
+36;3;23318;U16;;Current;current_3;0.010000;0.000000;A;4
+37;3;23322;I16;;Active power;P_AC;0.010000;0.000000;W;4
+38;3;23324;I16;;Active power;active_power;0.010000;0.000000;W;4
+39;3;23326;I16;;Active power;active_power_1;0.010000;0.000000;W;4
+40;3;23328;I16;;Active power;active_power_2;0.010000;0.000000;W;4
+41;3;23330;I16;;Reactive power;reactive_power;0.010000;0.000000;var;4
+42;3;23332;I16;;Reactive power;reactive_power_1;0.010000;0.000000;var;4
+43;3;23334;I16;;Reactive power;reactive_power_2;0.010000;0.000000;var;4
+44;3;23336;I16;;Reactive power;reactive_power_3;0.010000;0.000000;var;4
+45;3;23338;I16;;Apparent power;apparent_power;0.010000;0.000000;VA;4
+46;3;23340;I16;;Apparent power;apparent_power_1;0.010000;0.000000;VA;4
+47;3;23342;I16;;Apparent power;apparent_power_2;0.010000;0.000000;VA;4
+48;3;23344;I16;;Apparent power;apparent_power_3;0.010000;0.000000;VA;4
+49;3;23346;U16;;Frequency;FREQ;0.010000;0.000000;Hz;4
+50;3;23347;I16;;Phase angles power;phase_angles_power;0.100000;0.000000;°;4
+51;3;23351;I16;;Phase angles voltage;phase_angles_voltage;0.100000;0.000000;°;4
+52;3;23357;I16;;Phase angles current;phase_angles_current;0.100000;0.000000;°;4
+53;3;23360;I16;;Power factors;power_factors;0.001000;0.000000;;4
+54;3;23361;I16;;Power factors;power_factors_1;0.001000;0.000000;;4
+55;3;23362;I16;;Power factors;power_factors_2;0.001000;0.000000;;4
+56;3;23363;I16;;Power factors;power_factors_3;0.001000;0.000000;;4
+57;3;23364;U16;;Current quadrant;current_quadrant;1.000000;0.000000;;4
+58;3;23368;I16;;Cosphi (displacement factor);cosphi_displacement_factor;0.001000;0.000000;°;4
+59;3;23369;I16;;Cosphi (displacement factor);cosphi_displacement_factor_1;0.001000;0.000000;°;4
+60;3;23370;I16;;Cosphi (displacement factor);cosphi_displacement_factor_2;0.001000;0.000000;°;4
+61;3;23371;I16;;Cosphi (displacement factor);cosphi_displacement_factor_3;0.001000;0.000000;°;4
+62;3;23508;U16;;Average current L1;average_current_l1;0.010000;0.000000;A;4
+63;3;23510;U16;;Average current L2;average_current_l2;0.010000;0.000000;A;4
+64;3;23512;U16;;Average current L3;average_current_l3;0.010000;0.000000;A;4
+65;3;23514;U16;;Average current neutral;average_current_neutral;0.010000;0.000000;A;4
+66;3;23516;U16;;Average voltage L1;average_voltage_l1;0.100000;0.000000;V;4
+67;3;23518;U16;;Average voltage L2;average_voltage_l2;0.100000;0.000000;V;4
+68;3;23520;U16;;Average voltage L3;average_voltage_l3;0.100000;0.000000;V;4
+69;3;23522;U16;;Average voltage L1-L2;average_voltage_l1l2;0.100000;0.000000;V;4
+70;3;23524;U16;;Average voltage L2-L3;average_voltage_l2l3;0.100000;0.000000;V;4
+71;3;23526;U16;;Average voltage L1-L3;average_voltage_l1l3;0.100000;0.000000;V;4
+72;3;23528;I16;;Average active power total;average_active_power_total;0.010000;0.000000;W;4
+73;3;23530;I16;;Average active power L1;average_active_power_l1;0.010000;0.000000;W;4
+74;3;23532;I16;;Average active power L2;average_active_power_l2;0.010000;0.000000;W;4
+75;3;23534;I16;;Average active power L3;average_active_power_l3;0.010000;0.000000;W;4
+76;3;23536;I16;;Average reactive power total;average_reactive_power_total;0.010000;0.000000;var;4
+77;3;23538;I16;;Average reactive power L1;average_reactive_power_l1;0.010000;0.000000;var;4
+78;3;23540;I16;;Average reactive power L2;average_reactive_power_l2;0.010000;0.000000;var;4
+79;3;23542;I16;;Average reactive power L3;average_reactive_power_l3;0.010000;0.000000;var;4
+80;3;23544;I16;;Average apparent power total;average_apparent_power_total;0.010000;0.000000;VA;4
+81;3;23546;I16;;Average apparent power L1;average_apparent_power_l1;0.010000;0.000000;VA;4
+82;3;23548;I16;;Average apparent power L2;average_apparent_power_l2;0.010000;0.000000;VA;4
+83;3;23550;I16;;Average apparent power L3;average_apparent_power_l3;0.010000;0.000000;VA;4
+84;3;23568;U16;;Maximum current L1;maximum_current_l1;0.010000;0.000000;A;4
+85;3;23570;U16;;Maximum current L2;maximum_current_l2;0.010000;0.000000;A;4
+86;3;23572;U16;;Maximum current L3;maximum_current_l3;0.010000;0.000000;A;4
+87;3;23574;U16;;Maximum current neutral;maximum_current_neutral;0.010000;0.000000;A;4
+88;3;23576;U16;;Maximum voltage L1;maximum_voltage_l1;0.100000;0.000000;V;4
+89;3;23578;U16;;Maximum voltage L2;maximum_voltage_l2;0.100000;0.000000;V;4
+90;3;23580;U16;;Maximum voltage L3;maximum_voltage_l3;0.100000;0.000000;V;4
+91;3;23582;U16;;Maximum voltage L1-L2;maximum_voltage_l1l2;0.100000;0.000000;V;4
+92;3;23584;U16;;Maximum voltage L2-L3;maximum_voltage_l2l3;0.100000;0.000000;V;4
+93;3;23586;U16;;Maximum voltage L1-L3;maximum_voltage_l1l3;0.100000;0.000000;V;4
+94;3;23588;I16;;Maximum active power total;maximum_active_power_total;0.010000;0.000000;W;4
+95;3;23590;I16;;Maximum active power L1;maximum_active_power_l1;0.010000;0.000000;W;4
+96;3;23592;I16;;Maximum active power L2;maximum_active_power_l2;0.010000;0.000000;W;4
+97;3;23594;I16;;Maximum active power L3;maximum_active_power_l3;0.010000;0.000000;W;4
+98;3;23596;I16;;Maximum reactive power total;maximum_reactive_power_total;0.010000;0.000000;var;4
+99;3;23598;I16;;Maximum reactive power L1;maximum_reactive_power_l1;0.010000;0.000000;var;4
+100;3;23600;I16;;Maximum reactive power L2;maximum_reactive_power_l2;0.010000;0.000000;var;4
+101;3;23602;I16;;Maximum reactive power L3;maximum_reactive_power_l3;0.010000;0.000000;var;4
+102;3;23604;I16;;Maximum apparent power total;maximum_apparent_power_total;0.010000;0.000000;VA;4
+103;3;23606;I16;;Maximum apparent power L1;maximum_apparent_power_l1;0.010000;0.000000;VA;4
+104;3;23608;I16;;Maximum apparent power L2;maximum_apparent_power_l2;0.010000;0.000000;VA;4
+105;3;23610;I16;;Maximum apparent power L3;maximum_apparent_power_l3;0.010000;0.000000;VA;4
+106;3;23628;U16;;Maximum current L1 timestamp;maximum_current_l1_timestamp;1.000000;0.000000;;4
+107;3;23630;U16;;Maximum current L2 timestamp;maximum_current_l2_timestamp;1.000000;0.000000;;4
+108;3;23632;U16;;Maximum current L3 timestamp;maximum_current_l3_timestamp;1.000000;0.000000;;4
+109;3;23634;U16;;Maximum current neutral timestamp;maximum_current_neutral_timestamp;1.000000;0.000000;;4
+110;3;23636;U16;;Maximum voltage L1 timestamp;maximum_voltage_l1_timestamp;1.000000;0.000000;;4
+111;3;23638;U16;;Maximum voltage L2 timestamp;maximum_voltage_l2_timestamp;1.000000;0.000000;;4
+112;3;23640;U16;;Maximum voltage L3 timestamp;maximum_voltage_l3_timestamp;1.000000;0.000000;;4
+113;3;23642;U16;;Maximum voltage L1-L2 timestamp;maximum_voltage_l1l2_timestamp;1.000000;0.000000;;4
+114;3;23644;U16;;Maximum voltage L2-L3 timestamp;maximum_voltage_l2l3_timestamp;1.000000;0.000000;;4
+115;3;23646;U16;;Maximum voltage L1-L3 timestamp;maximum_voltage_l1l3_timestamp;1.000000;0.000000;;4
+116;3;23648;U16;;Maximum active power total timestamp;maximum_active_power_total_timestamp;1.000000;0.000000;;4
+117;3;23650;U16;;Maximum active power L1 timestamp;maximum_active_power_l1_timestamp;1.000000;0.000000;;4
+118;3;23652;U16;;Maximum active power L2 timestamp;maximum_active_power_l2_timestamp;1.000000;0.000000;;4
+119;3;23654;U16;;Maximum active power L3 timestamp;maximum_active_power_l3_timestamp;1.000000;0.000000;;4
+120;3;23656;U16;;Maximum reactive power total timestamp;maximum_reactive_power_total_timestamp;1.000000;0.000000;;4
+121;3;23658;U16;;Maximum reactive power L1 timestamp;maximum_reactive_power_l1_timestamp;1.000000;0.000000;;4
+122;3;23660;U16;;Maximum reactive power L2 timestamp;maximum_reactive_power_l2_timestamp;1.000000;0.000000;;4
+123;3;23662;U16;;Maximum reactive power L3 timestamp;maximum_reactive_power_l3_timestamp;1.000000;0.000000;;4
+124;3;23664;U16;;Maximum apparent power total timestamp;maximum_apparent_power_total_timestamp;1.000000;0.000000;;4
+125;3;23666;U16;;Maximum apparent power L1 timestamp;maximum_apparent_power_l1_timestamp;1.000000;0.000000;;4
+126;3;23668;U16;;Maximum apparent power L2 timestamp;maximum_apparent_power_l2_timestamp;1.000000;0.000000;;4
+127;3;23670;U16;;Maximum apparent power L3 timestamp;maximum_apparent_power_l3_timestamp;1.000000;0.000000;;4
+128;3;23688;U16;;Minimum current L1;minimum_current_l1;0.010000;0.000000;A;4
+129;3;23690;U16;;Minimum current L2;minimum_current_l2;0.010000;0.000000;A;4
+130;3;23692;U16;;Minimum current L3;minimum_current_l3;0.010000;0.000000;A;4
+131;3;23694;U16;;Minimum current neutral;minimum_current_neutral;0.010000;0.000000;A;4
+132;3;23696;U16;;Minimum voltage L1;minimum_voltage_l1;0.100000;0.000000;V;4
+133;3;23698;U16;;Minimum voltage L2;minimum_voltage_l2;0.100000;0.000000;V;4
+134;3;23700;U16;;Minimum voltage L3;minimum_voltage_l3;0.100000;0.000000;V;4
+135;3;23702;U16;;Minimum voltage L1-L2;minimum_voltage_l1l2;0.100000;0.000000;V;4
+136;3;23704;U16;;Minimum voltage L2-L3;minimum_voltage_l2l3;0.100000;0.000000;V;4
+137;3;23706;U16;;Minimum voltage L1-L3;minimum_voltage_l1l3;0.100000;0.000000;V;4
+138;3;23708;I16;;Minimum active power total;minimum_active_power_total;0.010000;0.000000;W;4
+139;3;23710;I16;;Minimum active power L1;minimum_active_power_l1;0.010000;0.000000;W;4
+140;3;23712;I16;;Minimum active power L2;minimum_active_power_l2;0.010000;0.000000;W;4
+141;3;23714;I16;;Minimum active power L3;minimum_active_power_l3;0.010000;0.000000;W;4
+142;3;23716;I16;;Minimum reactive power total;minimum_reactive_power_total;0.010000;0.000000;var;4
+143;3;23718;I16;;Minimum reactive power L1;minimum_reactive_power_l1;0.010000;0.000000;var;4
+144;3;23720;I16;;Minimum reactive power L2;minimum_reactive_power_l2;0.010000;0.000000;var;4
+145;3;23722;I16;;Minimum reactive power L3;minimum_reactive_power_l3;0.010000;0.000000;var;4
+146;3;23724;I16;;Minimum apparent power total;minimum_apparent_power_total;0.010000;0.000000;VA;4
+147;3;23726;I16;;Minimum apparent power L1;minimum_apparent_power_l1;0.010000;0.000000;VA;4
+148;3;23728;I16;;Minimum apparent power L2;minimum_apparent_power_l2;0.010000;0.000000;VA;4
+149;3;23730;I16;;Minimum apparent power L3;minimum_apparent_power_l3;0.010000;0.000000;VA;4
+150;3;23748;U16;;Minimum current L1 timestamp;minimum_current_l1_timestamp;1.000000;0.000000;;4
+151;3;23750;U16;;Minimum current L2 timestamp;minimum_current_l2_timestamp;1.000000;0.000000;;4
+152;3;23752;U16;;Minimum current L3 timestamp;minimum_current_l3_timestamp;1.000000;0.000000;;4
+153;3;23754;U16;;Minimum current neutral timestamp;minimum_current_neutral_timestamp;1.000000;0.000000;;4
+154;3;23756;U16;;Minimum voltage L1 timestamp;minimum_voltage_l1_timestamp;1.000000;0.000000;;4
+155;3;23758;U16;;Minimum voltage L2 timestamp;minimum_voltage_l2_timestamp;1.000000;0.000000;;4
+156;3;23760;U16;;Minimum voltage L3 timestamp;minimum_voltage_l3_timestamp;1.000000;0.000000;;4
+157;3;23762;U16;;Minimum voltage L1-L2 timestamp;minimum_voltage_l1l2_timestamp;1.000000;0.000000;;4
+158;3;23764;U16;;Minimum voltage L2-L3 timestamp;minimum_voltage_l2l3_timestamp;1.000000;0.000000;;4
+159;3;23766;U16;;Minimum voltage L1-L3 timestamp;minimum_voltage_l1l3_timestamp;1.000000;0.000000;;4
+160;3;23768;U16;;Minimum active power total timestamp;minimum_active_power_total_timestamp;1.000000;0.000000;;4
+161;3;23770;U16;;Minimum active power L1 timestamp;minimum_active_power_l1_timestamp;1.000000;0.000000;;4
+162;3;23772;U16;;Minimum active power L2 timestamp;minimum_active_power_l2_timestamp;1.000000;0.000000;;4
+163;3;23774;U16;;Minimum active power L3 timestamp;minimum_active_power_l3_timestamp;1.000000;0.000000;;4
+164;3;23776;U16;;Minimum reactive power total timestamp;minimum_reactive_power_total_timestamp;1.000000;0.000000;;4
+165;3;23778;U16;;Minimum reactive power L1 timestamp;minimum_reactive_power_l1_timestamp;1.000000;0.000000;;4
+166;3;23780;U16;;Minimum reactive power L2 timestamp;minimum_reactive_power_l2_timestamp;1.000000;0.000000;;4
+167;3;23782;U16;;Minimum reactive power L3 timestamp;minimum_reactive_power_l3_timestamp;1.000000;0.000000;;4
+168;3;23784;U16;;Minimum apparent power total timestamp;minimum_apparent_power_total_timestamp;1.000000;0.000000;;4
+169;3;23786;U16;;Minimum apparent power L1 timestamp;minimum_apparent_power_l1_timestamp;1.000000;0.000000;;4
+170;3;23788;U16;;Minimum apparent power L2 timestamp;minimum_apparent_power_l2_timestamp;1.000000;0.000000;;4
+171;3;23790;U16;;Minimum apparent power L3 timestamp;minimum_apparent_power_l3_timestamp;1.000000;0.000000;;4
+172;3;23808;U16;;Voltage THD harmonics;voltage_thd_harmonics;0.100000;0.000000;'%;4
+173;3;24576;U16;;Current harmonics;current_harmonics;0.100000;0.000000;'%;4
+174;3;25088;U16;;Unbalances;unbalances;0.100000;0.000000;'%;4
+175;3;25344;U16;;Outputs;outputs;1.000000;0.000000;0: OFF, 1: ON;1
+176;3;25352;U16;;Inputs;inputs;1.000000;0.000000;0: OFF, 1: ON;4
+177;3;25368;U16;;Inputs Counter;inputs_counter;1.000000;0.000000;;4
+178;3;25856;U16;;Errors Log;errors_log;1.000000;0.000000;;1
+179;3;26032;U16;;Alarms log;alarms_log;1.000000;0.000000;;1
+180;3;26208;U16;;Audit Log;audit_log;1.000000;0.000000;;1
+181;3;26384;U16;;Warnings log;warnings_log;1.000000;0.000000;;1
+182;3;26560;U16;;Power Outage Log;power_outage_log;1.000000;0.000000;;1
+183;3;32768;U16;;Energy Cumulative;energy_cumulative;1.000000;0.000000;;1
+184;3;33536;U16;;Energy Snapshots;energy_snapshots;1.000000;0.000000;;1
+185;3;34560;U16;;Load profile;load_profile;1.000000;0.000000;;1
+186;3;35088;U16;;Product type number ID;product_type_number_id;1.000000;0.000000;;4
+187;3;35089;U16;;Slave ID;slave_id;1.000000;0.000000;;4
+188;3;35328;U16;;Date Time;date_time;1.000000;0.000000;;1
+189;3;35331;U16;;Day of week;day_of_week;1.000000;0.000000;;4
+190;3;35333;U16;;Active day type;active_day_type;1.000000;0.000000;;4
+191;3;35334;U16;;Active season;active_season;1.000000;0.000000;;4
+192;3;35335;U16;;Current tariff;current_tariff;1.000000;0.000000;;1
+193;3;35347;U16;;Error flags;error_flags;1.000000;0.000000;;4
+194;3;35353;U16;;Information flags;information_flags;1.000000;0.000000;25 Alarm flags;4
+195;3;35359;U16;;Warning flags;warning_flags;1.000000;0.000000;;4
+196;3;35365;U16;;Alarm flags (simple and complex);alarm_flags_simple_and_complex;1.000000;0.000000;;4
+197;3;35840;U16;;Transformer ratios;transformer_ratios;1.000000;0.000000;;1
+198;3;35852;U16;;I/O settings - Function;io_settings_function;1.000000;0.000000;;1
+199;3;35858;U16;;I/O settings - Pulse input/output instance;io_settings_pulse_inputoutput_instance;1.000000;0.000000;;1
+200;3;35859;U16;;I/O settings - Pulse outputs configuration;io_settings_pulse_outputs_configuration;1.000000;0.000000;;1
+201;3;35872;U16;;Load profile settings;load_profile_settings;1.000000;0.000000;;1
+202;3;35888;U16;;Max/Min Demand settings;maxmin_demand_settings;1.000000;0.000000;;1
+203;3;35920;U16;;Energy Cumulative/Snapshots settings;energy_cumulativesnapshots_settings;1.000000;0.000000;;1
+204;3;35936;U16;;Alarm settings;alarm_settings;1.000000;0.000000;;1
+205;3;35968;U16;;Complex Alarms;complex_alarms;1.000000;0.000000;;1
+206;3;35984;U16;;Tariff settings;tariff_settings;1.000000;0.000000;;1
+207;3;36064;U16;;CO2 conversion factor actIive energy;co2_conversion_factor_actiive_energy;0.001000;0.000000;kg / kWh;1
+208;3;36066;U16;;Currency conversion factor active enenrgy;currency_conversion_factor_active_enenrgy;0.001000;0.000000;Currency / kWh;1
+209;3;36068;U16;;LED source;led_source;1.000000;0.000000;;1
+210;3;36069;U16;;Wires;wires;1.000000;0.000000;;1
+211;3;36070;U16;;DST start;dst_start;1.000000;0.000000;;1
+212;3;36072;U16;;DST end;dst_end;1.000000;0.000000;;1
+213;3;36074;U16;;DST enabled;dst_enabled;1.000000;0.000000;;1
+214;3;36075;U16;;Modbus RTU;modbus_rtu;1.000000;0.000000;;1
+215;3;36079;U16;;Modbus TCP/IP;modbus_tcpip;1.000000;0.000000;;1
+216;3;36087;U16;;Up/Down Counters;updown_counters;1.000000;0.000000;;4
+217;3;36093;U16;;HMI Config;hmi_config;1.000000;0.000000;;1
+218;3;36604;U16;;Bluetooth Enable;bluetooth_enable;1.000000;0.000000;;1
+219;3;36624;U16;;I/O settings - Pulse input ratio;io_settings_pulse_input_ratio;1.000000;0.000000;;1
+220;3;4096;U32;;3-PHASE SYSTEM VOLTAGE;v_3phase_system_voltage;1.000000;0.000000;Volt;4
+221;3;4098;U32;;PHASE VOLTAGE L1-N;phase_voltage_l1n;1.000000;0.000000;Volt;4
+222;3;4100;U32;;PHASE VOLTAGE L2-N;phase_voltage_l2n;1.000000;0.000000;Volt;4
+223;3;4102;U32;;PHASE VOLTAGE L3-N;phase_voltage_l3n;1.000000;0.000000;Volt;4
+224;3;4104;U32;;LINE VOLTAGE L1-2;line_voltage_l12;1.000000;0.000000;Volt;4
+225;3;4106;U32;;LINE VOLTAGE L2-3;line_voltage_l23;1.000000;0.000000;Volt;4
+226;3;4108;U32;;LINE VOLTAGE L3-1;line_voltage_l31;1.000000;0.000000;Volt;4
+227;3;4110;U32;;3-PHASE SYSTEM CURRENT;v_3phase_system_current;1.000000;0.000000;mA;4
+228;3;4112;U32;;LINE CURRENT L1;line_current_l1;1.000000;0.000000;mA;4
+229;3;4114;U32;;LINE CURRENT L2;line_current_l2;1.000000;0.000000;mA;4
+230;3;4116;U32;;LINE CURRENT L3;line_current_l3;1.000000;0.000000;mA;4
+231;3;4118;I32;;3-PHASE SYS. POWER FACTOR I;v_3phase_sys_power_factor_i;0.001000;0.000000;;4
+232;3;4120;I32;;POWER FACTOR L1;power_factor_l1;0.001000;0.000000;;4
+233;3;4122;I32;;POWER FACTOR L2;power_factor_l2;0.001000;0.000000;;4
+234;3;4124;I32;;POWER FACTOR L3;power_factor_l3;0.001000;0.000000;;4
+235;3;4126;I32;;3-PHASE SYSTEM COS ϕ;v_3phase_system_cos;0.001000;0.000000;;4
+236;3;4128;I32;;PHASE COS ϕ1;phase_cos_1;0.001000;0.000000;;4
+237;3;4130;I32;;PHASE COS ϕ2;phase_cos_2;0.001000;0.000000;;4
+238;3;4132;I32;;PHASE COS ϕ3;phase_cos_3;0.001000;0.000000;;4
+239;3;4134;U32;;3-PHASE S. APPARENT POWER;v_3phase_s_apparent_power;1.000000;0.000000;VA;4
+240;3;4136;U32;;APPARENT POWER L1;apparent_power_l1;1.000000;0.000000;VA;4
+241;3;4138;U32;;APPARENT POWER L2;apparent_power_l2;1.000000;0.000000;VA;4
+242;3;4140;U32;;APPARENT POWER L3;apparent_power_l3;1.000000;0.000000;VA;4
+243;3;4142;I32;;3-PHASE SYS. ACTIVE POWER;v_3phase_sys_active_power;1.000000;0.000000;Watt;4
+244;3;4144;I32;;ACTIVE POWER L1;active_power_l1;1.000000;0.000000;Watt;4
+245;3;4146;I32;;ACTIVE POWER L2;active_power_l2;1.000000;0.000000;Watt;4
+246;3;4148;I32;;ACTIVE POWER L3;active_power_l3;1.000000;0.000000;Watt;4
+247;3;4150;I32;;3-PHASE S. REACTIVE POWER;v_3phase_s_reactive_power;1.000000;0.000000;VAr;4
+248;3;4152;I32;;REACTIVE POWER L1;reactive_power_l1;1.000000;0.000000;VAr;4
+249;3;4154;I32;;REACTIVE POWER L2;reactive_power_l2;1.000000;0.000000;VAr;4
+250;3;4156;I32;;REACTIVE POWER L3;reactive_power_l3;1.000000;0.000000;VAr;4
+251;3;4158;U32;;3-PHASE SYS. ACTIVE ENERGY;v_3phase_sys_active_energy;100.000000;0.000000;Wh;4
+252;3;4160;U32;;3-PHASE S. REACTIVE ENERGY;v_3phase_s_reactive_energy;100.000000;0.000000;VArh;4
+253;3;4166;U32;;FREQUENCY;frequency;1.000000;0.000000;mHz;4
+254;3;4192;U32;;MAX LINE CURRENT L1;max_line_current_l1;1.000000;0.000000;mA;4
+255;3;4194;U32;;MAX LINE CURRENT L2;max_line_current_l2;1.000000;0.000000;mA;4
+256;3;4196;U32;;MAX LINE CURRENT L3;max_line_current_l3;1.000000;0.000000;mA;4
+257;3;4198;I32;;MAX 3-PHASE SYS. ACTIVE POWER;max_3phase_sys_active_power;1.000000;0.000000;Watt;4
+258;3;4200;U32;;MAX 3-PHASE S. APPARENT POWER;max_3phase_s_apparent_power;1.000000;0.000000;VA;4
+259;3;4208;I32;;3-PHASE SYS. ACTIVE POWER 15’ AVER;v_3phase_sys_active_power_15_aver;1.000000;0.000000;Watt;4
+260;3;4210;U32;;3-PHASE SYS. APPARENT POWER 15’ AVER;v_3phase_sys_apparent_power_15_aver;1.000000;0.000000;VA;4
+261;3;4212;U32;;ACTIVE ENERGY L1;active_energy_l1;100.000000;0.000000;Wh;4
+262;3;4214;U32;;ACTIVE ENERGY L2;active_energy_l2;100.000000;0.000000;Wh;4
+263;3;4216;U32;;ACTIVE ENERGY L3;active_energy_l3;100.000000;0.000000;Wh;4
+264;3;4218;U32;;REACTIVE ENERGY L1;reactive_energy_l1;100.000000;0.000000;VArh;4
+265;3;4220;U32;;REACTIVE ENERGY L2;reactive_energy_l2;100.000000;0.000000;VArh;4
+266;3;4222;U32;;REACTIVE ENERGY L3;reactive_energy_l3;100.000000;0.000000;VArh;4
+267;3;4224;I32;;MAX 3-PHASE SYS. ACTIVE POWER 15’ AVER;max_3phase_sys_active_power_15_aver;1.000000;0.000000;Watt;4
+268;3;4226;U32;;VOLTAGE THD L1;voltage_thd_l1;0.100000;0.000000;;4
+269;3;4228;U32;;VOLTAGE THD L2;voltage_thd_l2;0.100000;0.000000;;4
+270;3;4230;U32;;VOLTAGE THD L3;voltage_thd_l3;0.100000;0.000000;;4
+271;3;4232;U32;;CURRENT THD L1;current_thd_l1;0.100000;0.000000;;4
+272;3;4234;U32;;CURRENT THD L2;current_thd_l2;0.100000;0.000000;;4
+273;3;4236;U32;;CURRENT THD L3;current_thd_l3;0.100000;0.000000;;4
+274;3;4238;I32;;MAX ACTIVE POWER 15’ AVER L1;max_active_power_15_aver_l1;1.000000;0.000000;Watt;4
+275;3;4240;I32;;MAX ACTIVE POWER 15’ AVER L2;max_active_power_15_aver_l2;1.000000;0.000000;Watt;4
+276;3;4242;I32;;MAX ACTIVE POWER 15’ AVER L3;max_active_power_15_aver_l3;1.000000;0.000000;Watt;4
+277;3;4244;U32;;MAX 3-PHASE SYS. APPARENT POWER 15’ AVER;max_3phase_sys_apparent_power_15_aver;1.000000;0.000000;VA;4
+278;3;4246;U32;;MAX APPARERENT POWER 15’ AVER L1;max_apparerent_power_15_aver_l1;1.000000;0.000000;VA;4
+279;3;4248;U32;;MAX APPARERENT POWER 15’ AVER L2;max_apparerent_power_15_aver_l2;1.000000;0.000000;VA;4
+280;3;4250;U32;;MAX APPARERENT POWER 15’ AVER L3;max_apparerent_power_15_aver_l3;1.000000;0.000000;VA;4
+281;3;4262;U32;;3-PHASE SYS. APPARENT ENERGY;v_3phase_sys_apparent_energy;100.000000;0.000000;VAh;4
+282;3;4264;U32;;APPARENT ENERGY L1;apparent_energy_l1;100.000000;0.000000;VAh;4
+283;3;4266;U32;;APPARENT ENERGY L2;apparent_energy_l2;100.000000;0.000000;VAh;4
+284;3;4268;U32;;APPARENT ENERGY L3;apparent_energy_l3;100.000000;0.000000;VAh;4
+285;3;4270;U32;;3-PHASE SYS. GENERATED ACTIVE ENERGY;v_3phase_sys_generated_active_energy;100.000000;0.000000;Wh;4
+286;3;4272;U32;;GENERATED ACTIVE ENERGY L1;generated_active_energy_l1;100.000000;0.000000;Wh;4
+287;3;4274;U32;;GENERATED ACTIVE ENERGY L2;generated_active_energy_l2;100.000000;0.000000;Wh;4
+288;3;4276;U32;;GENERATED ACTIVE ENERGY L3;generated_active_energy_l3;100.000000;0.000000;Wh;4
+289;3;4278;U32;;3-PHASE S. GENERATED REACTIVE ENERGY;v_3phase_s_generated_reactive_energy;100.000000;0.000000;VArh;4
+290;3;4280;U32;;GENERATED REACTIVE ENERGY L1;generated_reactive_energy_l1;100.000000;0.000000;VArh;4
+291;3;4282;U32;;GENERATED REACTIVE ENERGY L2;generated_reactive_energy_l2;100.000000;0.000000;VArh;4
+292;3;4284;U32;;GENERATED REACTIVE ENERGY L3;generated_reactive_energy_l3;100.000000;0.000000;VArh;4
+293;3;4286;U32;;3-PHASE S. GENERATED APPARENT ENERGY;v_3phase_s_generated_apparent_energy;100.000000;0.000000;VAh;4
+294;3;4288;U32;;GENERATED APPARENT ENERGY L1;generated_apparent_energy_l1;100.000000;0.000000;VAh;4
+295;3;4290;U32;;GENERATED APPARENT ENERGY L2;generated_apparent_energy_l2;100.000000;0.000000;VAh;4
+296;3;4292;U32;;GENERATED APPARENT ENERGY L3;generated_apparent_energy_l3;100.000000;0.000000;VAh;4
+297;3;4512;U32;;CURRENT TRANSFORMER PRIMARY (CT);current_transformer_primary_ct;1.000000;0.000000;;4
+298;3;4514;U32;;VOLTAGE TRANSFORMER PRIMARY (VT);voltage_transformer_primary_vt;1.000000;0.000000;;4

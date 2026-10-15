@@ -1,0 +1,111 @@
+﻿modbusRTU;Other;MarsRenewable;MarsRenewable_Rack_V7;;;;;;;
+1;4;0;U16;;Number of Cells in Rack;;1.0;0.0;;1
+2;4;1;U16;;Rack Rack Voltage;;1.0;0.0;V;4
+3;4;3;U16;;Rack Rack Current;;1.0;0.0;A;4
+4;4;5;U16;;Rack Rack SOC;;1.0;0.0;%;4
+5;4;7;U16;;Rack Rack SOH;;1.0;0.0;%;4
+6;4;9;U16;;Rack Rack Insulation Resistance;R_ISO;1.0;0.0;Ohm;4
+7;4;11;U16;;Rack Maximum Allowable Charge Current;;1.0;0.0;A;4
+8;4;13;U16;;Rack Maximum Allowable Discharge Current;;1.0;0.0;A;4
+9;4;15;U16;;Rack Total Charge Energy;E_TOT;1.0;0.0;kWh;4
+10;4;17;U16;;Rack Total Discharge Energy;;1.0;0.0;kWh;4
+11;4;19;U16;;Rack Available Charge Energy;;1.0;0.0;kWh;4
+12;4;21;U16;;Rack Available Discharge Energy;;1.0;0.0;kWh;4
+13;4;23;U16;;Rack Average Cell Voltage;;1.0;0.0;V;4
+14;4;25;U16;;Rack Average Cell Temperature;TEMP_CELL;1.0;0.0;°C;4
+15;4;27;U16;;Rack Maximum Cell Voltage;;1.0;0.0;V;4
+16;4;29;U16;;Rack Maximum Cell Voltage Cell Number;;1.0;0.0;;4
+17;4;31;U16;;Rack Minimum Cell Voltage;;1.0;0.0;V;4
+18;4;33;U16;;Rack Minimum Cell Voltage Cell Number;;1.0;0.0;;4
+19;4;35;U16;;Rack Maximum Cell Temperature;;1.0;0.0;°C;4
+20;4;37;U16;;Rack Maximum Cell Temperature Cell Number;;1.0;0.0;;4
+21;4;39;U16;;Rack Minimum Cell Temperature;;1.0;0.0;°C;4
+22;4;41;U16;;Rack Minimum Cell Temperature Cell Number;;1.0;0.0;;4
+23;4;43;U16;;Rack Maximum Cell SOC;;1.0;0.0;%;4
+24;4;45;U16;;Rack Maximum Cell SOC Cell Number;;1.0;0.0;;4
+25;4;47;U16;;Rack Minimum Cell SOC;;1.0;0.0;%;4
+26;4;49;U16;;Rack Minimum Cell SOC Cell Number;;1.0;0.0;;4
+27;4;51;U16;;Rack Maximum Cell SOH;;1.0;0.0;%;4
+28;4;53;U16;;Rack Maximum Cell SOH Cell Number;;1.0;0.0;;4
+29;4;55;U16;;Rack Minimum Cell SOH;;1.0;0.0;%;4
+30;4;57;U16;;Rack Minimum Cell SOH Cell Number;;1.0;0.0;;4
+31;4;100;U16;;Cell 1 Voltage;;1.0;0.0;V;4
+32;4;102;U16;;Cell 1 Temperature;;1.0;0.0;°C;4
+33;4;104;U16;;Cell 1 SOC;;1.0;0.0;%;4
+34;4;106;U16;;Cell 1 SOH;;1.0;0.0;%;4
+35;4;108;U16;;Cell 1 Resistance;;1.0;0.0;Ohm;4
+36;4;110;U16;;Cell 2 Voltage;;1.0;0.0;V;4
+37;4;112;U16;;Cell 2 Temperature;;1.0;0.0;°C;4
+38;4;114;U16;;Cell 2 SOC;;1.0;0.0;%;4
+39;4;116;U16;;Cell 2 SOH;;1.0;0.0;%;4
+40;4;118;U16;;Cell 2 Resistance;;1.0;0.0;Ohm;4
+41;4;120;U16;;Cell 3 Voltage;;1.0;0.0;V;4
+42;4;122;U16;;Cell 3 Temperature;;1.0;0.0;°C;4
+43;4;124;U16;;Cell 3 SOC;;1.0;0.0;%;4
+44;4;126;U16;;Cell 3 SOH;;1.0;0.0;%;4
+45;4;128;U16;;Cell 3 Resistance;;1.0;0.0;Ohm;4
+46;4;130;U16;;Cell 4 Voltage;;1.0;0.0;V;4
+47;4;132;U16;;Cell 4 Temperature;;1.0;0.0;°C;4
+48;4;134;U16;;Cell 4 SOC;;1.0;0.0;%;4
+49;4;136;U16;;Cell 4 SOH;;1.0;0.0;%;4
+50;4;138;U16;;Cell 4 Resistance;;1.0;0.0;Ohm;4
+51;4;140;U16;;Cell 5 Voltage;;1.0;0.0;V;4
+52;4;142;U16;;Cell 5 Temperature;;1.0;0.0;°C;4
+53;4;144;U16;;Cell 5 SOC;;1.0;0.0;%;4
+54;4;146;U16;;Cell 5 SOH;;1.0;0.0;%;4
+55;4;148;U16;;Cell 5 Resistance;;1.0;0.0;Ohm;4
+56;4;150;U16;;Cell 6 Voltage;;1.0;0.0;V;4
+57;4;152;U16;;Cell 6 Temperature;;1.0;0.0;°C;4
+58;4;154;U16;;Cell 6 SOC;;1.0;0.0;%;4
+59;4;156;U16;;Cell 6 SOH;;1.0;0.0;%;4
+60;4;158;U16;;Cell 6 Resistance;;1.0;0.0;Ohm;4
+61;4;160;U16;;Cell 7 Voltage;;1.0;0.0;V;4
+62;4;162;U16;;Cell 7 Temperature;;1.0;0.0;°C;4
+63;4;164;U16;;Cell 7 SOC;;1.0;0.0;%;4
+64;4;166;U16;;Cell 7 SOH;;1.0;0.0;%;4
+65;4;168;U16;;Cell 7 Resistance;;1.0;0.0;Ohm;4
+66;4;170;U16;;Cell 8 Voltage;;1.0;0.0;V;4
+67;4;172;U16;;Cell 8 Temperature;;1.0;0.0;°C;4
+68;4;174;U16;;Cell 8 SOC;;1.0;0.0;%;4
+69;4;176;U16;;Cell 8 SOH;;1.0;0.0;%;4
+70;4;178;U16;;Cell 8 Resistance;;1.0;0.0;Ohm;4
+71;4;180;U16;;Cell 9 Voltage;;1.0;0.0;V;4
+72;4;182;U16;;Cell 9 Temperature;;1.0;0.0;°C;4
+73;4;184;U16;;Cell 9 SOC;;1.0;0.0;%;4
+74;4;186;U16;;Cell 9 SOH;;1.0;0.0;%;4
+75;4;188;U16;;Cell 9 Resistance;;1.0;0.0;Ohm;4
+76;4;190;U16;;Cell 10 Voltage;;1.0;0.0;V;4
+77;4;192;U16;;Cell 10 Temperature;;1.0;0.0;°C;4
+78;4;194;U16;;Cell 10 SOC;;1.0;0.0;%;4
+79;4;196;U16;;Cell 10 SOH;;1.0;0.0;%;4
+80;4;198;U16;;Cell 10 Resistance;;1.0;0.0;Ohm;4
+81;4;200;U16;;Cell 11 Voltage;;1.0;0.0;V;4
+82;4;202;U16;;Cell 11 Temperature;;1.0;0.0;°C;4
+83;4;204;U16;;Cell 11 SOC;;1.0;0.0;%;4
+84;4;206;U16;;Cell 11 SOH;;1.0;0.0;%;4
+85;4;208;U16;;Cell 11 Resistance;;1.0;0.0;Ohm;4
+86;4;210;U16;;Cell 12 Voltage;;1.0;0.0;V;4
+87;4;212;U16;;Cell 12 Temperature;;1.0;0.0;°C;4
+88;4;214;U16;;Cell 12 SOC;;1.0;0.0;%;4
+89;4;216;U16;;Cell 12 SOH;;1.0;0.0;%;4
+90;4;218;U16;;Cell 12 Resistance;;1.0;0.0;Ohm;4
+91;4;220;U16;;Cell 13 Voltage;;1.0;0.0;V;4
+92;4;222;U16;;Cell 13 Temperature;;1.0;0.0;°C;4
+93;4;224;U16;;Cell 13 SOC;;1.0;0.0;%;4
+94;4;226;U16;;Cell 13 SOH;;1.0;0.0;%;4
+95;4;228;U16;;Cell 13 Resistance;;1.0;0.0;Ohm;4
+96;4;230;U16;;Cell 14 Voltage;;1.0;0.0;V;4
+97;4;232;U16;;Cell 14 Temperature;;1.0;0.0;°C;4
+98;4;234;U16;;Cell 14 SOC;;1.0;0.0;%;4
+99;4;236;U16;;Cell 14 SOH;;1.0;0.0;%;4
+100;4;238;U16;;Cell 14 Resistance;;1.0;0.0;Ohm;4
+101;4;240;U16;;Cell 15 Voltage;;1.0;0.0;V;4
+102;4;242;U16;;Cell 15 Temperature;;1.0;0.0;°C;4
+103;4;244;U16;;Cell 15 SOC;;1.0;0.0;%;4
+104;4;246;U16;;Cell 15 SOH;;1.0;0.0;%;4
+105;4;248;U16;;Cell 15 Resistance;;1.0;0.0;Ohm;4
+106;4;250;U16;;Cell 16 Voltage;;1.0;0.0;V;4
+107;4;252;U16;;Cell 16 Temperature;;1.0;0.0;°C;4
+108;4;254;U16;;Cell 16 SOC;;1.0;0.0;%;4
+109;4;256;U16;;Cell 16 SOH;;1.0;0.0;%;4
+110;4;258;U16;;Cell 16 Resistance;;1.0;0.0;Ohm;4

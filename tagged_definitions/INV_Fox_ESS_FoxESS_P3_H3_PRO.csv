@@ -1,0 +1,285 @@
+﻿modbusRTU;Inverter;Fox ESS;FoxESS_P3_H3_PRO;;;;;;;
+1;3;30016_32;STRING;;SN;SERIAL;1.000000;0.000000;;4
+2;3;30000_32;STRING;;Model name;MODEL;1.000000;0.000000;;4
+3;3;30032_32;STRING;;MFG ID;mfg_id;1.000000;0.000000;;4
+4;3;36001;U16;;Master Version;master_version;1.000000;0.000000;;4
+5;3;36002;U16;;Slave Version;slave_version;1.000000;0.000000;;4
+6;3;36003;U16;;Manager Version;manager_version;1.000000;0.000000;;4
+7;3;39000;U32;;Protocol Version;protocol_version;1.000000;0.000000;;4
+8;3;39002_32;STRING;;Model name_2;model_name_2;1.000000;0.000000;;4
+9;3;39018_32;STRING;;SN_2;sn_2;1.000000;0.000000;;4
+10;3;39034_32;STRING;;PN;pn;1.000000;0.000000;;4
+11;3;39050;U16;;Model ID;model_id;1.000000;0.000000;;4
+12;3;39051;U16;;Number of strings;number_of_strings;1.000000;0.000000;;4
+13;3;39052;U16;;Number of MPPTs;number_of_mppts;1.000000;0.000000;;4
+14;3;39053;I32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
+15;3;39055;I32;;Maximum active power (Pmax);maximum_active_power_pmax;0.001000;0.000000;kW;4
+16;3;39057;I32;;Maximum apparent value (Smax);maximum_apparent_value_smax;0.001000;0.000000;kVA;4
+17;3;39059;I32;;Maximum reactive power (Qmax, fed into the grid);maximum_reactive_power_qmax_fed_into_the_grid;0.001000;0.000000;kVar;4
+18;3;39061;I32;;Maximum reactive power (Qmax, absorbed from the grid);maximum_reactive_power_qmax_absorbed_from_the_grid;0.001000;0.000000;kVar;4
+19;3;39063_0_1;BITS;;Standby status;standby_status;1.000000;0.000000;;4
+20;3;39063_0_16;BITS;;Status 1;status_1;1.000000;0.000000;;4
+21;3;39063_2_1;BITS;;Operation status;operation_status;1.000000;0.000000;;4
+22;3;39063_6_1;BITS;;Fault status;fault_status;1.000000;0.000000;;4
+23;3;39065_0_1;BITS;;Off-grid status;offgrid_status;1.000000;0.000000;;4
+24;3;39067_0_1;BITS;;Input string voltage is high;input_string_voltage_is_high;1.000000;0.000000;;4
+25;3;39067_0_16;BITS;;Alarm 1;alarm_1;1.000000;0.000000;;4
+26;3;39067_11_1;BITS;;Abnormal power grid frequency;abnormal_power_grid_frequency;1.000000;0.000000;;4
+27;3;39067_14_1;BITS;;Output overcurrent;output_overcurrent;1.000000;0.000000;;4
+28;3;39067_15_1;BITS;;The DC component of the output current is too large;the_dc_component_of_the_output_current_is_too_large;1.000000;0.000000;;4
+29;3;39067_1_1;BITS;;DC arc fault;dc_arc_fault;1.000000;0.000000;;4
+30;3;39067_2_1;BITS;;String reverse connection;string_reverse_connection;1.000000;0.000000;;4
+31;3;39067_7_1;BITS;;Grid power outage;grid_power_outage;1.000000;0.000000;;4
+32;3;39067_8_1;BITS;;Abnormal power grid voltage;abnormal_power_grid_voltage;1.000000;0.000000;;4
+33;3;39068_0_1;BITS;;Abnormal residual current;abnormal_residual_current;1.000000;0.000000;;4
+34;3;39068_0_16;BITS;;Alarm 2;alarm_2;1.000000;0.000000;;4
+35;3;39068_10_1;BITS;;Isolated island;isolated_island;1.000000;0.000000;;4
+36;3;39068_14_1;BITS;;Off-grid output overload;offgrid_output_overload;1.000000;0.000000;;4
+37;3;39068_1_1;BITS;;System grounding abnormality;system_grounding_abnormality;1.000000;0.000000;;4
+38;3;39068_2_1;BITS;;Low insulation resistance;low_insulation_resistance;1.000000;0.000000;;4
+39;3;39068_3_1;BITS;;Temperature is too high;temperature_is_too_high;1.000000;0.000000;;4
+40;3;39069_0_16;BITS;;Alarm 3;alarm_3;1.000000;0.000000;;4
+41;3;39069_3_1;BITS;;External fan abnormality;external_fan_abnormality;1.000000;0.000000;;4
+42;3;39070;I16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+43;3;39071;I16;;PV1 current;pv1_current;0.010000;0.000000;A;4
+44;3;39072;I16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+45;3;39073;I16;;PV2 current;pv2_current;0.010000;0.000000;A;4
+46;3;39074;I16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+47;3;39075;I16;;PV3 current;pv3_current;0.010000;0.000000;A;4
+48;3;39076;I16;;PV4 voltage;pv4_voltage;0.100000;0.000000;V;4
+49;3;39077;I16;;PV4 current;pv4_current;0.010000;0.000000;A;4
+50;3;39078;I16;;PV5 voltage;pv5_voltage;0.100000;0.000000;V;4
+51;3;39079;I16;;PV5 current;pv5_current;0.010000;0.000000;A;4
+52;3;39080;I16;;PV6 voltage;pv6_voltage;0.100000;0.000000;V;4
+53;3;39081;I16;;PV6 current;pv6_current;0.010000;0.000000;A;4
+54;3;39082;I16;;PV7 voltage;pv7_voltage;0.100000;0.000000;V;4
+55;3;39083;I16;;PV7 current;pv7_current;0.010000;0.000000;A;4
+56;3;39084;I16;;PV8 voltage;pv8_voltage;0.100000;0.000000;V;4
+57;3;39085;I16;;PV8 current;pv8_current;0.010000;0.000000;A;4
+58;3;39086;I16;;PV9 voltage;pv9_voltage;0.100000;0.000000;V;4
+59;3;39087;I16;;PV9 current;pv9_current;0.010000;0.000000;A;4
+60;3;39088;I16;;PV10 voltage;pv10_voltage;0.100000;0.000000;V;4
+61;3;39089;I16;;PV10 current;pv10_current;0.010000;0.000000;A;4
+62;3;39090;I16;;PV11 voltage;pv11_voltage;0.100000;0.000000;V;4
+63;3;39091;I16;;PV11 current;pv11_current;0.010000;0.000000;A;4
+64;3;39092;I16;;PV12 voltage;pv12_voltage;0.100000;0.000000;V;4
+65;3;39093;I16;;PV12 current;pv12_current;0.010000;0.000000;A;4
+66;3;39094;I16;;PV13 voltage;pv13_voltage;0.100000;0.000000;V;4
+67;3;39095;I16;;PV13 current;pv13_current;0.010000;0.000000;A;4
+68;3;39096;I16;;PV14 voltage;pv14_voltage;0.100000;0.000000;V;4
+69;3;39097;I16;;PV14 current;pv14_current;0.010000;0.000000;A;4
+70;3;39098;I16;;PV15 voltage;pv15_voltage;0.100000;0.000000;V;4
+71;3;39099;I16;;PV15 current;pv15_current;0.010000;0.000000;A;4
+72;3;39100;I16;;PV16 voltage;pv16_voltage;0.100000;0.000000;V;4
+73;3;39101;I16;;PV16 current;pv16_current;0.010000;0.000000;A;4
+74;3;39102;I16;;PV17 voltage;pv17_voltage;0.100000;0.000000;V;4
+75;3;39103;I16;;PV17 current;pv17_current;0.010000;0.000000;A;4
+76;3;39104;I16;;PV18 voltage;pv18_voltage;0.100000;0.000000;V;4
+77;3;39105;I16;;PV18 current;pv18_current;0.010000;0.000000;A;4
+78;3;39106;I16;;PV19 voltage;pv19_voltage;0.100000;0.000000;V;4
+79;3;39107;I16;;PV19 current;pv19_current;0.010000;0.000000;A;4
+80;3;39108;I16;;PV20 voltage;pv20_voltage;0.100000;0.000000;V;4
+81;3;39109;I16;;PV20 current;pv20_current;0.010000;0.000000;A;4
+82;3;39110;I16;;PV21 voltage;pv21_voltage;0.100000;0.000000;V;4
+83;3;39111;I16;;PV21 current;pv21_current;0.010000;0.000000;A;4
+84;3;39112;I16;;PV22 voltage;pv22_voltage;0.100000;0.000000;V;4
+85;3;39113;I16;;PV22 current;pv22_current;0.010000;0.000000;A;4
+86;3;39114;I16;;PV23 voltage;pv23_voltage;0.100000;0.000000;V;4
+87;3;39115;I16;;PV23 current;pv23_current;0.010000;0.000000;A;4
+88;3;39116;I16;;PV24 voltage;pv24_voltage;0.100000;0.000000;V;4
+89;3;39117;I16;;PV24 current;pv24_current;0.010000;0.000000;A;4
+90;3;39118;I32;;Total PV input power;total_pv_input_power;0.001000;0.000000;kW;4
+91;3;39123;I16;;Grid R Phase Voltage;grid_r_phase_voltage;0.100000;0.000000;V;4
+92;3;39124;I16;;Grid S Phase Voltage;grid_s_phase_voltage;0.100000;0.000000;V;4
+93;3;39125;I16;;Grid T Phase Voltage;grid_t_phase_voltage;0.100000;0.000000;V;4
+94;3;39126;I32;;Inverter R Phase Current;inverter_r_phase_current;0.001000;0.000000;A;4
+95;3;39128;I32;;Inverter S Phase Current;inverter_s_phase_current;0.001000;0.000000;A;4
+96;3;39130;I32;;Inverter T Phase Current;inverter_t_phase_current;0.001000;0.000000;A;4
+97;3;39134;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+98;3;39136;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
+99;3;39138;I16;;Power Factor;PF;0.001000;0.000000;;4
+100;3;39139;I16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;4
+101;3;39141;I16;;Internal temperature;internal_temperature;0.100000;0.000000;Degr.Celsius;4
+102;3;39149;U32;;Cumulative power generation;cumulative_power_generation;0.010000;0.000000;kWh;4
+103;3;39151;U32;;Power generation on the day;power_generation_on_the_day;0.010000;0.000000;kWh;4
+104;3;39201;U16;;EPS R Phase Voltage;eps_r_phase_voltage;0.100000;0.000000;V;4
+105;3;39202;U16;;EPS S Phase Voltage;eps_s_phase_voltage;0.100000;0.000000;V;4
+106;3;39203;U16;;EPS T Phase Voltage;eps_t_phase_voltage;0.100000;0.000000;V;4
+107;3;39204;I32;;EPS R Phase Current;eps_r_phase_current;0.001000;0.000000;A;4
+108;3;39206;I32;;EPS S Phase Current;eps_s_phase_current;0.001000;0.000000;A;4
+109;3;39208;I32;;EPS T Phase Current;eps_t_phase_current;0.001000;0.000000;A;4
+110;3;39210;I32;;EPS R Phase Power;eps_r_phase_power;1.000000;0.000000;W;4
+111;3;39212;I32;;EPS S Phase Power;eps_s_phase_power;1.000000;0.000000;W;4
+112;3;39214;I32;;EPS T Phase Power;eps_t_phase_power;1.000000;0.000000;W;4
+113;3;39216;I32;;EPS Combined Power;eps_combined_power;1.000000;0.000000;W;4
+114;3;39218;I16;;EPS Frequency;eps_frequency;0.010000;0.000000;Hz;4
+115;3;39248;I32;;INV R Phase Active Power;inv_r_phase_active_power;1.000000;0.000000;W;4
+116;3;39250;I32;;INV S Phase Active Power;inv_s_phase_active_power;1.000000;0.000000;W;4
+117;3;39252;I32;;INV T Phase Active Power;inv_t_phase_active_power;1.000000;0.000000;W;4
+118;3;39256;I32;;INV R Phase Reactive Power;inv_r_phase_reactive_power;1.000000;0.000000;Var;4
+119;3;39258;I32;;INV S Phase Reactive Power;inv_s_phase_reactive_power;1.000000;0.000000;Var;4
+120;3;39260;I32;;INV T Phase Reactive Power;inv_t_phase_reactive_power;1.000000;0.000000;Var;4
+121;3;39264;I32;;INV R Phase Apparent Power;inv_r_phase_apparent_power;1.000000;0.000000;VA;4
+122;3;39266;I32;;INV S Phase Apparent Power;inv_s_phase_apparent_power;1.000000;0.000000;VA;4
+123;3;39268;I32;;INV T Phase Apparent Power;inv_t_phase_apparent_power;1.000000;0.000000;VA;4
+124;3;39270;I32;;INV Combined Apparent Power;inv_combined_apparent_power;1.000000;0.000000;VA;4
+125;3;39272;I16;;INV Frequency R;inv_frequency_r;0.010000;0.000000;Hz;4
+126;3;39273;I16;;INV Frequency S;inv_frequency_s;0.010000;0.000000;Hz;4
+127;3;39274;I16;;INV Frequency T;inv_frequency_t;0.010000;0.000000;Hz;4
+128;3;39275;I32;;Available Import Power;available_import_power;1.000000;0.000000;W;4
+129;3;39277;I32;;Available Export Power;available_export_power;1.000000;0.000000;W;4
+130;3;39279;I32;;PV1 Power;pv1_power;1.000000;0.000000;W;4
+131;3;39281;I32;;PV2 Power;pv2_power;1.000000;0.000000;W;4
+132;3;39283;I32;;PV3 Power;pv3_power;1.000000;0.000000;W;4
+133;3;39285;I32;;PV4 Power;pv4_power;1.000000;0.000000;W;4
+134;3;39287;I32;;PV5 Power;pv5_power;1.000000;0.000000;W;4
+135;3;39289;I32;;PV6 Power;pv6_power;1.000000;0.000000;W;4
+136;3;39291;I32;;PV7 Power;pv7_power;1.000000;0.000000;W;4
+137;3;39293;I32;;PV8 Power;pv8_power;1.000000;0.000000;W;4
+138;3;39295;I32;;PV9 Power;pv9_power;1.000000;0.000000;W;4
+139;3;39297;I32;;PV10 Power;pv10_power;1.000000;0.000000;W;4
+140;3;39299;I32;;PV11 Power;pv11_power;1.000000;0.000000;W;4
+141;3;39301;I32;;PV12 Power;pv12_power;1.000000;0.000000;W;4
+142;3;39303;I32;;PV13 Power;pv13_power;1.000000;0.000000;W;4
+143;3;39305;I32;;PV14 Power;pv14_power;1.000000;0.000000;W;4
+144;3;39307;I32;;PV15 Power;pv15_power;1.000000;0.000000;W;4
+145;3;39309;I32;;PV16 Power;pv16_power;1.000000;0.000000;W;4
+146;3;39311;I32;;PV17 Power;pv17_power;1.000000;0.000000;W;4
+147;3;39313;I32;;PV18 Power;pv18_power;1.000000;0.000000;W;4
+148;3;39315;I32;;PV19 Power;pv19_power;1.000000;0.000000;W;4
+149;3;39317;I32;;PV20 Power;pv20_power;1.000000;0.000000;W;4
+150;3;39319;I32;;PV21 Power;pv21_power;1.000000;0.000000;W;4
+151;3;39321;I32;;PV22 Power;pv22_power;1.000000;0.000000;W;4
+152;3;39323;I32;;PV23 Power;pv23_power;1.000000;0.000000;W;4
+153;3;39325;I32;;PV24 Power;pv24_power;1.000000;0.000000;W;4
+154;3;39327;I16;;MPPT1 Voltage;mppt1_voltage;0.100000;0.000000;V;4
+155;3;39328;I16;;MPPT1 Current;mppt1_current;0.010000;0.000000;A;4
+156;3;39329;I32;;MPPT1 Power;mppt1_power;1.000000;0.000000;W;4
+157;3;39331;I16;;MPPT2 Voltage;mppt2_voltage;0.100000;0.000000;V;4
+158;3;39332;I16;;MPPT2 Current;mppt2_current;0.010000;0.000000;A;4
+159;3;39333;I32;;MPPT2 Power;mppt2_power;1.000000;0.000000;W;4
+160;3;39335;I16;;MPPT3 Voltage;mppt3_voltage;0.100000;0.000000;V;4
+161;3;39336;I16;;MPPT3 Current;mppt3_current;0.010000;0.000000;A;4
+162;3;39337;I32;;MPPT3 Power;mppt3_power;1.000000;0.000000;W;4
+163;3;39339;I16;;MPPT4 Voltage;mppt4_voltage;0.100000;0.000000;V;4
+164;3;39340;I16;;MPPT4 Current;mppt4_current;0.010000;0.000000;A;4
+165;3;39341;I32;;MPPT4 Power;mppt4_power;1.000000;0.000000;W;4
+166;3;39343;I16;;MPPT5 Voltage;mppt5_voltage;0.100000;0.000000;V;4
+167;3;39344;I16;;MPPT5 Current;mppt5_current;0.010000;0.000000;A;4
+168;3;39345;I32;;MPPT5 Power;mppt5_power;1.000000;0.000000;W;4
+169;3;39347;I16;;MPPT6 Voltage;mppt6_voltage;0.100000;0.000000;V;4
+170;3;39348;I16;;MPPT6 Current;mppt6_current;0.010000;0.000000;A;4
+171;3;39349;I32;;MPPT6 Power;mppt6_power;1.000000;0.000000;W;4
+172;3;39351;I16;;MPPT7 Voltage;mppt7_voltage;0.100000;0.000000;V;4
+173;3;39352;I16;;MPPT7 Current;mppt7_current;0.010000;0.000000;A;4
+174;3;39353;I32;;MPPT7 Power;mppt7_power;1.000000;0.000000;W;4
+175;3;39355;I16;;MPPT8 Voltage;mppt8_voltage;0.100000;0.000000;V;4
+176;3;39356;I16;;MPPT8 Current;mppt8_current;0.010000;0.000000;A;4
+177;3;39357;I32;;MPPT8 Power;mppt8_power;1.000000;0.000000;W;4
+178;3;39359;I16;;MPPT9 Voltage;mppt9_voltage;0.100000;0.000000;V;4
+179;3;39360;I16;;MPPT9 Current;mppt9_current;0.010000;0.000000;A;4
+180;3;39361;I32;;MPPT9 Power;mppt9_power;1.000000;0.000000;W;4
+181;3;39363;I16;;MPPT10 Voltage;mppt10_voltage;0.100000;0.000000;V;4
+182;3;39364;I16;;MPPT10 Current;mppt10_current;0.010000;0.000000;A;4
+183;3;39365;I32;;MPPT10 Power;mppt10_power;1.000000;0.000000;W;4
+184;3;39367;I16;;MPPT11 Voltage;mppt11_voltage;0.100000;0.000000;V;4
+185;3;39368;I16;;MPPT11 Current;mppt11_current;0.010000;0.000000;A;4
+186;3;39369;I32;;MPPT11 Power;mppt11_power;1.000000;0.000000;W;4
+187;3;39371;I16;;MPPT12 Voltage;mppt12_voltage;0.100000;0.000000;V;4
+188;3;39372;I16;;MPPT12 Current;mppt12_current;0.010000;0.000000;A;4
+189;3;39373;I32;;MPPT12 Power;mppt12_power;1.000000;0.000000;W;4
+190;3;39375;I16;;MPPT13 Voltage;mppt13_voltage;0.100000;0.000000;V;4
+191;3;39376;I16;;MPPT13 Current;mppt13_current;0.010000;0.000000;A;4
+192;3;39377;I32;;MPPT13 Power;mppt13_power;1.000000;0.000000;W;4
+193;3;39379;I16;;MPPT14 Voltage;mppt14_voltage;0.100000;0.000000;V;4
+194;3;39380;I16;;MPPT14 Current;mppt14_current;0.010000;0.000000;A;4
+195;3;39381;I32;;MPPT14 Power;mppt14_power;1.000000;0.000000;W;4
+196;3;39383;I16;;MPPT15 Voltage;mppt15_voltage;0.100000;0.000000;V;4
+197;3;39384;I16;;MPPT15 Current;mppt15_current;0.010000;0.000000;A;4
+198;3;39385;I32;;MPPT15 Power;mppt15_power;1.000000;0.000000;W;4
+199;3;39387;I16;;MPPT16 Voltage;mppt16_voltage;0.100000;0.000000;V;4
+200;3;39388;I16;;MPPT16 Current;mppt16_current;0.010000;0.000000;A;4
+201;3;39389;I32;;MPPT16 Power;mppt16_power;1.000000;0.000000;W;4
+202;3;39391;I16;;MPPT17 Voltage;mppt17_voltage;0.100000;0.000000;V;4
+203;3;39392;I16;;MPPT17 Current;mppt17_current;0.010000;0.000000;A;4
+204;3;39393;I32;;MPPT17 Power;mppt17_power;1.000000;0.000000;W;4
+205;3;39395;I16;;MPPT18 Voltage;mppt18_voltage;0.100000;0.000000;V;4
+206;3;39396;I16;;MPPT18 Current;mppt18_current;0.010000;0.000000;A;4
+207;3;39397;I32;;MPPT18 Power;mppt18_power;1.000000;0.000000;W;4
+208;3;39399;I16;;MPPT19 Voltage;mppt19_voltage;0.100000;0.000000;V;4
+209;3;39400;I16;;MPPT19 Current;mppt19_current;0.010000;0.000000;A;4
+210;3;39401;I32;;MPPT19 Power;mppt19_power;1.000000;0.000000;W;4
+211;3;39403;I16;;MPPT20 Voltage;mppt20_voltage;0.100000;0.000000;V;4
+212;3;39404;I16;;MPPT20 Current;mppt20_current;0.010000;0.000000;A;4
+213;3;39405;I32;;MPPT20 Power;mppt20_power;1.000000;0.000000;W;4
+214;3;39407;I16;;MPPT21 Voltage;mppt21_voltage;0.100000;0.000000;V;4
+215;3;39408;I16;;MPPT21 Current;mppt21_current;0.010000;0.000000;A;4
+216;3;39409;I32;;MPPT21 Power;mppt21_power;1.000000;0.000000;W;4
+217;3;39411;I16;;MPPT22 Voltage;mppt22_voltage;0.100000;0.000000;V;4
+218;3;39412;I16;;MPPT22 Current;mppt22_current;0.010000;0.000000;A;4
+219;3;39413;I32;;MPPT22 Power;mppt22_power;1.000000;0.000000;W;4
+220;3;39415;I16;;MPPT23 Voltage;mppt23_voltage;0.100000;0.000000;V;4
+221;3;39416;I16;;MPPT23 Current;mppt23_current;0.010000;0.000000;A;4
+222;3;39417;I32;;MPPT23 Power;mppt23_power;1.000000;0.000000;W;4
+223;3;39419;I16;;MPPT24 Voltage;mppt24_voltage;0.100000;0.000000;V;4
+224;3;39420;I16;;MPPT24 Current;mppt24_current;0.010000;0.000000;A;4
+225;3;39421;I32;;MPPT24 Power;mppt24_power;1.000000;0.000000;W;4
+226;3;39424;I16;;Power Factor for Phase-R;power_factor_for_phaser;0.001000;0.000000;;4
+227;3;39425;I16;;Power Factor for Phase-S;power_factor_for_phases;0.001000;0.000000;;4
+228;3;39426;I16;;Power Factor for Phase-T;power_factor_for_phaset;0.001000;0.000000;;4
+229;3;39601;U32;;PV total power;pv_total_power;0.010000;0.000000;kWh;4
+230;3;39603;U32;;Total PV power today;total_pv_power_today;0.010000;0.000000;kWh;4
+231;3;39621;U32;;Output total power;output_total_power;0.010000;0.000000;kWh;4
+232;3;39623;U32;;Total power output today;total_power_output_today;0.010000;0.000000;kWh;4
+233;3;46001_0_1;BITS;;Remote control enabled;remote_control_enabled;1.000000;0.000000;;4
+234;3;46001_0_16;BITS;;Remote Control;remote_control;1.000000;0.000000;;1
+235;3;46001_1_1;BITS;;Remote control positive direction;remote_control_positive_direction;1.000000;0.000000;;4
+236;3;46001_2_2;BITS;;Remote control target;remote_control_target;1.000000;0.000000;;4
+237;3;46001_9_1;BITS;;Remote control PV enabled;remote_control_pv_enabled;1.000000;0.000000;;4
+238;3;46002;U16;;Remote Timeout Set;remote_timeout_set;1.000000;0.000000;s;1
+239;3;46003;I32;;Remote Control Active Power Command;remote_control_active_power_command;1.000000;0.000000;W;1
+240;3;46005;I32;;Remote Control Reactive Power Command;remote_control_reactive_power_command;1.000000;0.000000;Var;1
+241;3;46007;U16;;Remote Timeout Countdown;remote_timeout_countdown;1.000000;0.000000;s;4
+242;3;46026;I32;;Remote Control PV Power Command;remote_control_pv_power_command;1.000000;0.000000;W;1
+243;3;46612;U16;;EPS Frequency Select;eps_frequency_select;1.000000;0.000000;;1
+244;3;46613;U16;;EPS Output;eps_output;1.000000;0.000000;;1
+245;3;46614;U16;;Balance Load;balance_load;1.000000;0.000000;;1
+246;3;46615;U16;;Balance Logic First;balance_logic_first;1.000000;0.000000;;1
+247;3;46616;I32;;Export Power Limit;export_power_limit;1.000000;0.000000;W;1
+248;3;49000;U32;;System Time;system_time;1.000000;0.000000;;1
+249;3;49005;I16;;[Power Grid Scheduling] None Power compensation (PF);power_grid_scheduling_none_power_compensation_pf;0.001000;0.000000;;1
+250;3;49006;I16;;[Power Grid Scheduling] None Power compensation (Q/S);power_grid_scheduling_none_power_compensation_qs;0.001000;0.000000;;1
+251;3;49007;I16;;[Power grid dispatch] Active power percentage derating (0.1%);power_grid_dispatch_active_power_percentage_derating_01;0.100000;0.000000;'%;1
+252;3;49008;U32;;[Power grid dispatch] Fixed Active power derated (W);power_grid_dispatch_fixed_active_power_derated_w;1.000000;0.000000;W;1
+253;3;49010;I32;;[Power grid dispatch] Night Reactive power compensation (kVar);power_grid_dispatch_night_reactive_power_compensation_kvar;0.001000;0.000000;kVar;1
+254;3;49077;U16;;Power on;CMD_ON;1.000000;0.000000;;1
+255;3;49078;U16;;Shut down;shut_down;1.000000;0.000000;;1
+256;3;49079;U16;;Grid standard code;grid_standard_code;1.000000;0.000000;;1
+257;3;49136;I32;;Grid point power limit;grid_point_power_limit;1.000000;0.000000;W;1
+258;3;49206;U16;;DRM;drm;1.000000;0.000000;;1
+259;3;49209;U16;;BUZZER;buzzer;1.000000;0.000000;;1
+260;3;49210;U16;;MPPT Switch (PV Shutdown);mppt_switch_pv_shutdown;1.000000;0.000000;;1
+261;3;49211;U16;;Relay1 Switch;relay1_switch;1.000000;0.000000;;1
+262;3;49212;U16;;Relay2 Switch;relay2_switch;1.000000;0.000000;;1
+263;3;49221;U16;;Brightness Level;brightness_level;1.000000;0.000000;'%;1
+264;3;49222;U16;;Date-Year;dateyear;1.000000;0.000000;;1
+265;3;49223;U16;;Date-Month;datemonth;1.000000;0.000000;;1
+266;3;49224;U16;;Date-Day;dateday;1.000000;0.000000;;1
+267;3;49225;U16;;Time-Hour;timehour;1.000000;0.000000;;1
+268;3;49226;U16;;Time-Minute;timeminute;1.000000;0.000000;;1
+269;3;49227;U16;;Time-Second;timesecond;1.000000;0.000000;;1
+270;3;49228;U16;;System Power State;system_power_state;1.000000;0.000000;;4
+271;3;49240;U16;;Network Status;network_status;1.000000;0.000000;;4
+272;3;49241;U16;;Ripple Control Enable;ripple_control_enable;1.000000;0.000000;;1
+273;3;49242;U16;;Trigger Signal;trigger_signal;1.000000;0.000000;;4
+274;3;49243;U16;;K1 Power Ratio;k1_power_ratio;1.000000;0.000000;'%;1
+275;3;49244;U16;;K2 Power Ratio;k2_power_ratio;1.000000;0.000000;'%;1
+276;3;49245;U16;;K3 Power Ratio;k3_power_ratio;1.000000;0.000000;'%;1
+277;3;49247;U16;;OffGridMaster;offgridmaster;1.000000;0.000000;;1
+278;3;49249;I16;;GFCI Current;gfci_current;0.010000;0.000000;A;4
+279;3;49251;U16;;PV Power Limited Flag;pv_power_limited_flag;1.000000;0.000000;;4
+280;3;49252;U16;;G100 State;g100_state;1.000000;0.000000;;1
+281;3;49501;I32;;PV Limited Power;pv_limited_power;1.000000;0.000000;W;1
+282;3;49503;U16;;Forced Standby;forced_standby;1.000000;0.000000;;1
+283;3;49504;U16;;Shadow Scan (Global MPPT);shadow_scan_global_mppt;1.000000;0.000000;;1
+284;3;49505;U16;;Shadow Scan Interval (Global MPPT);shadow_scan_interval_global_mppt;1.000000;0.000000;Min;1

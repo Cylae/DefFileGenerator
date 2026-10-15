@@ -688,6 +688,77 @@ def infer_sunpm_tag(
                     )
                 ):
                     learned = ""
+            if learned in (
+                "PF_1",
+                "PF_2",
+                "PF_3",
+                "P_AC_1",
+                "P_AC_2",
+                "P_AC_3",
+                "Q_AC_1",
+                "Q_AC_2",
+                "Q_AC_3",
+                "S_AC_1",
+                "S_AC_2",
+                "S_AC_3",
+            ):
+                low = variable_name.lower()
+                if not any(
+                    ph in low
+                    for ph in (
+                        "phase a",
+                        "phase b",
+                        "phase c",
+                        "phase 1",
+                        "phase 2",
+                        "phase 3",
+                        "phasea",
+                        "phaseb",
+                        "phasec",
+                        "pac1",
+                        "pac2",
+                        "pac3",
+                        "qac1",
+                        "qac2",
+                        "qac3",
+                        "sac1",
+                        "sac2",
+                        "sac3",
+                        "line a",
+                        "line b",
+                        "line c",
+                        "line 1",
+                        "line 2",
+                        "line 3",
+                        " l1",
+                        " l2",
+                        " l3",
+                        "(l1)",
+                        "(l2)",
+                        "(l3)",
+                        "[l1]",
+                        "[l2]",
+                        "[l3]",
+                    )
+                ):
+                    learned = ""
+            if learned == "TEMP":
+                low = variable_name.lower()
+                if any(
+                    k in low
+                    for k in (
+                        "internal",
+                        "interne",
+                        "cabinet",
+                        "inverter",
+                        "heatsink",
+                        "ambient",
+                        "ambiante",
+                        "cell",
+                        "module",
+                    )
+                ):
+                    learned = ""
             if learned:
                 return learned
 
@@ -720,10 +791,10 @@ def infer_sunpm_tag(
         if any(k in n_lower for k in ("kvar", "var", "abs")):
             return "CMD_Q_AC_SET_ABS"
         return "CMD_Q_AC_SET_PERCENT"
-    if any(k in n_lower for k in ("power limit", "power limitation", "cmdpwr")) or re.search(
-        r"\b(?:ac\s+)?active\s+power\s+(?:limitation|setpoint|limit)\b", n_lower
+    if any(k in n_lower for k in ("power limit", "power limitation", "cmdpwr", "set active power")) or re.search(
+        r"\b(?:ac\s+)?active\s+power\s+(?:limitation|setpoint|limit|ratio)\b", n_lower
     ):
-        if "%" in clean_name or "percent" in n_lower:
+        if "%" in clean_name or "percent" in n_lower or "ratio" in n_lower:
             return "CMD_P_AC_SET_PERCENT"
         if any(k in n_lower for k in ("kw", "w", "abs")):
             return "CMD_P_AC_SET_ABS"
@@ -802,7 +873,7 @@ def infer_sunpm_tag(
 
     # 4. Active Power (P_AC_1, P_AC_2, P_AC_3, P_AC)
     if re.search(
-        r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow",
+        r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow|\bp_total\b|\btotal_power\b",
         n_lower,
     ):
         if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|l1\b|pac1\b|activepow1)", n_lower):
@@ -935,14 +1006,14 @@ def infer_sunpm_tag(
         return "RAIN"
 
     # 15. Battery Storage (BESS)
-    if eq_lower in ("battery", "bess") or "battery" in n_lower:
+    if eq_lower in ("battery", "bess") or "battery" in n_lower or any(k in n_lower for k in ("state of charge", "state of health")):
         if any(k in n_lower for k in ("state of charge", "soc", "charge state")):
             return "SOC"
         if any(k in n_lower for k in ("state of health", "soh")):
             return "SOH"
 
     # 16. Electrical Insulation
-    if "insulation" in n_lower or "isolement" in n_lower or "r_iso" in n_lower:
+    if any(k in n_lower for k in ("insulation", "isolement", "r_iso", "isolation")):
         return "R_ISO"
 
     # 17. Device Metadata & Communication

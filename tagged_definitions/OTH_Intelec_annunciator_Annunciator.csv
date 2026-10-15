@@ -1,0 +1,11 @@
+﻿ModbusRTU;Other;Intelec;annunciator;;;;;;;
+1;1;257_0_1;BITS;;Parameter_1;;1.0;0.0;;4
+2;1;258_0_1;BITS;;Parameter_2;;1.0;0.0;;4
+3;1;259_0_1;BITS;;Parameter_3;;1.0;0.0;;4
+4;1;260_0_1;BITS;;Parameter_4;;1.0;0.0;;4
+5;1;261_0_1;BITS;;Parameter_5;;1.0;0.0;;4
+6;1;262_0_1;BITS;;Parameter_6;;1.0;0.0;;4
+7;1;263_0_1;BITS;;Parameter_7;;1.0;0.0;;4
+8;1;264_0_1;BITS;;Parameter_8;;1.0;0.0;;4
+9;1;265_0_1;BITS;;Parameter_9;;1.0;0.0;;4
+10;1;266_0_1;BITS;;Parameter_10;;1.0;0.0;;4

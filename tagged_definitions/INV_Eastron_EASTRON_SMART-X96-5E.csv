@@ -1,0 +1,126 @@
+﻿modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
+1;4;30001;U16;;Phase 1 line to neutral volts;;1.0;0.0;V;4
+2;4;30003;U16;;Phase 2 line to neutral volts;;1.0;0.0;V;4
+3;4;30005;U16;;Phase 3 line to neutral volts;;1.0;0.0;V;4
+4;4;30007;U16;;Phase 1 current;I_AC_1;1.0;0.0;A;4
+5;4;30009;U16;;Phase 2 current;I_AC_2;1.0;0.0;A;4
+6;4;30011;U16;;Phase 3 current;I_AC_3;1.0;0.0;A;4
+7;4;30013;U16;;Phase 1 active power;P_AC_1;1.0;0.0;W;4
+8;4;30015;U16;;Phase 2 active power;P_AC_2;1.0;0.0;W;4
+9;4;30017;U16;;Phase 3 active power;P_AC_3;1.0;0.0;W;4
+10;4;30019;U16;;Phase 1 apparent power;S_AC_1;1.0;0.0;VA;4
+11;4;30021;U16;;Phase 2 apparent power;S_AC_2;1.0;0.0;VA;4
+12;4;30023;U16;;Phase 3 apparent power;S_AC_3;1.0;0.0;VA;4
+13;4;30025;U16;;Phase 1 reactive power;Q_AC_1;1.0;0.0;VAr;4
+14;4;30027;U16;;Phase 2 reactive power;Q_AC_2;1.0;0.0;VAr;4
+15;4;30029;U16;;Phase 3 reactive power;Q_AC_3;1.0;0.0;VAr;4
+16;4;30031;U16;;Phase 1 power factor (1);PF_1;1.0;0.0;;4
+17;4;30033;U16;;Phase 2 power factor (1);PF_2;1.0;0.0;;4
+18;4;30035;U16;;Phase 3 power factor (1);PF_3;1.0;0.0;;4
+19;4;30037;U16;;Phase 1 phase angle;;1.0;0.0;Degrees;4
+20;4;30039;U16;;Phase 2 phase angle;;1.0;0.0;Degrees;4
+21;4;30041;U16;;Phase 3 phase angle;;1.0;0.0;Degrees;4
+22;4;30043;U16;;Average line to neutral volts;;1.0;0.0;V;4
+23;4;30047;U16;;Average line current;;1.0;0.0;A;4
+24;4;30049;U16;;Sum of line currents;;1.0;0.0;A;4
+25;4;30053;U16;;Total system power;P_AC;1.0;0.0;W;4
+26;4;30057;U16;;Total system volt amps;;1.0;0.0;VA;4
+27;4;30061;U16;;Total system VAr;;1.0;0.0;VAr;4
+28;4;30063;U16;;Total system power factor (1);PF;1.0;0.0;;4
+29;4;30067;U16;;Total system phase angle;;1.0;0.0;Degrees;4
+30;4;30071;U16;;Frequency of supply voltages;FREQ;1.0;0.0;Hz;4
+31;4;30073;U16;;Import Wh since last reset;;1.0;0.0;kWh;4
+32;4;30075;U16;;Export Wh since last reset;;1.0;0.0;kWh;4
+33;4;30077;U16;;Import VArh since last reset;;1.0;0.0;kVArh;4
+34;4;30079;U16;;Export VArh since last reset;;1.0;0.0;kVArh;4
+35;4;30081;U16;;VAh since last reset;;1.0;0.0;kVAh;4
+36;4;30083;U16;;Ah since last reset;;1.0;0.0;Ah;4
+37;4;30085;U16;;Total system power demand (2);;1.0;0.0;W;4
+38;4;30087;U16;;Maximum total system power demand (2);;1.0;0.0;W;4
+39;4;30089;U16;;Import active power demand;;1.0;0.0;W;4
+40;4;30091;U16;;Import active power max. demand;;1.0;0.0;W;4
+41;4;30093;U16;;Export active power demand;;1.0;0.0;W;4
+42;4;30095;U16;;Export active power max. demand;;1.0;0.0;W;4
+43;4;30101;U16;;Total system VA demand;;1.0;0.0;VA;4
+44;4;30103;U16;;Maximum total system VA demand;;1.0;0.0;VA;4
+45;4;30105;U16;;Neutral current demand;;1.0;0.0;Amps;4
+46;4;30107;U16;;Maximum neutral current demand;;1.0;0.0;Amps;4
+47;4;30109;U16;;Total system reactive power demand (2);Q_AC;1.0;0.0;VAr;4
+48;4;30111;U16;;Maximum total system reactive power demand(2);;1.0;0.0;VAr;4
+49;4;30161;U16;;Voltage phase sequence / (normal=1 , reverse=2);;1.0;0.0;;4
+50;4;30163;U16;;Current phase sequence / (normal=1 , reverse=2);;1.0;0.0;;4
+51;4;30193;U16;;Nature of the load / Resistive =1 , inductive=2 , capacitive=3);;1.0;0.0;;4
+52;4;30195;U16;;Nature of L1 load / Resistive =1 , inductive=2 , capacitive=3);;1.0;0.0;;4
+53;4;30197;U16;;Nature of L2 load / Resistive =1 , inductive=2  , capacitive=3 );;1.0;0.0;;4
+54;4;30199;U16;;Nature of L3 load / Resistive =1 , inductive=2  , capacitive=3 );;1.0;0.0;;4
+55;4;30201;U16;;Line 1 to Line 2 volts;;1.0;0.0;V;4
+56;4;30203;U16;;Line 2 to Line 3 volts;;1.0;0.0;V;4
+57;4;30205;U16;;Line 3 to Line 1 volts;;1.0;0.0;V;4
+58;4;30207;U16;;Average line to line volts;;1.0;0.0;V;4
+59;4;30225;U16;;Neutral current;;1.0;0.0;A;4
+60;4;30235;U16;;Phase 1 L/N volts THD;;1.0;0.0;Percent;4
+61;4;30237;U16;;Phase 2 L/N volts THD;;1.0;0.0;Percent;4
+62;4;30239;U16;;Phase 3 L/N volts THD;;1.0;0.0;Percent;4
+63;4;30241;U16;;Phase 1 Current THD;;1.0;0.0;Percent;4
+64;4;30243;U16;;Phase 2 Current THD;;1.0;0.0;Percent;4
+65;4;30245;U16;;Phase 3 Current THD;;1.0;0.0;Percent;4
+66;4;30249;U16;;Average line to neutral volts THD;;1.0;0.0;Percent;4
+67;4;30251;U16;;Average line current THD;;1.0;0.0;Percent;4
+68;4;30259;U16;;Phase 1 current demand;;1.0;0.0;A;4
+69;4;30261;U16;;Phase 2 current demand;;1.0;0.0;A;4
+70;4;30263;U16;;Phase 3 current demand;;1.0;0.0;A;4
+71;4;30265;U16;;Maximum phase 1 current demand;;1.0;0.0;A;4
+72;4;30267;U16;;Maximum phase 2 current demand;;1.0;0.0;A;4
+73;4;30269;U16;;Maximum phase 3 current demand;;1.0;0.0;A;4
+74;4;30335;U16;;Line 1 to line 2 volts THD;;1.0;0.0;Percent;4
+75;4;30337;U16;;Line 2 to line 3 volts THD;;1.0;0.0;Percent;4
+76;4;30339;U16;;Line 3 to line 1 volts THD;;1.0;0.0;Percent;4
+77;4;30341;U16;;Average line to line volts THD;;1.0;0.0;Percent;4
+78;4;30343;U16;;Total kwh (3);E_TOT;1.0;0.0;kWh;4
+79;4;30345;U16;;Total kvarh (3);;1.0;0.0;kVArh;4
+80;4;30347;U16;;L1 import kwh;;1.0;0.0;kWh;4
+81;4;30349;U16;;L2 import kwh;;1.0;0.0;kWh;4
+82;4;30351;U16;;L3 import kWh;;1.0;0.0;kWh;4
+83;4;30353;U16;;L1 export kWh;;1.0;0.0;kWh;4
+84;4;30355;U16;;L2 export kwh;;1.0;0.0;kWh;4
+85;4;30357;U16;;L3 export kWh;;1.0;0.0;kWh;4
+86;4;30359;U16;;L1 total kwh;;1.0;0.0;kWh;4
+87;4;30361;U16;;L2 total kWh;;1.0;0.0;kWh;4
+88;4;30363;U16;;L3 total kwh;;1.0;0.0;kWh;4
+89;4;30365;U16;;L1 import kvarh;;1.0;0.0;kVArh;4
+90;4;30367;U16;;L2 import kvarh;;1.0;0.0;kVArh;4
+91;4;30369;U16;;L3 import kvarh;;1.0;0.0;kVArh;4
+92;4;30371;U16;;L1 export kvarh;;1.0;0.0;kVArh;4
+93;4;30373;U16;;L2 export kvarh;;1.0;0.0;kVArh;4
+94;4;30375;U16;;L3 export kvarh;;1.0;0.0;kVArh;4
+95;4;30377;U16;;L1 total kvarh;;1.0;0.0;kVArh;4
+96;4;30379;U16;;L2 total kvarh;;1.0;0.0;kVArh;4
+97;4;30381;U16;;L3 total kvarh;;1.0;0.0;kVArh;4
+98;4;31147;U16;;Voltage Total Harmonic L1;U_AC_1;1.0;0.0;Percent;4
+99;4;31149;U16;;Voltage Total Harmonic L2;U_AC_2;1.0;0.0;Percent;4
+100;4;31151;U16;;Voltage Total Harmonic L3;U_AC_3;1.0;0.0;Percent;4
+101;4;31153;U16;;Current Total Harmonic L1;;1.0;0.0;Percent;4
+102;4;31155;U16;;Current Total Harmonic L2;;1.0;0.0;Percent;4
+103;4;31157;U16;;Current Total Harmonic L3;;1.0;0.0;Percent;4
+104;4;40001;U16;;Demand Time;;1.0;0.0;;4
+105;4;40003;U16;;Demand Period;;1.0;0.0;;4
+106;4;40005;U16;;Slide time;;1.0;0.0;;4
+107;4;40007;U16;;Demand Calculation Method;;1.0;0.0;;4
+108;4;40011;U16;;System Type;;1.0;0.0;;4
+109;4;40013;U16;;Pulse 1 Width;;1.0;0.0;;4
+110;4;40015;U16;;Key Parameter Programming Authorization (KPPA);;1.0;0.0;;4
+111;4;40019;U16;;Parity and Stop bits;;1.0;0.0;;4
+112;4;40021;U16;;Modbus Address;UNIT_ID;1.0;0.0;;4
+113;4;40023;U16;;Pulse 1 Rate;;1.0;0.0;;4
+114;4;40025;U16;;Password;;1.0;0.0;;4
+115;4;40029;U16;;Network Baud Rate;;1.0;0.0;;4
+116;4;40047;U16;;PT1;;1.0;0.0;;4
+117;4;40049;U16;;PT2;;1.0;0.0;;4
+118;4;40051;U16;;CT1;;1.0;0.0;;4
+119;4;40053;U16;;CT2;;1.0;0.0;;4
+120;4;40057;U16;;Current Direction correction (when the external CT is connected reversely);;1.0;0.0;;4
+121;4;40059;U16;;Automatic Scroll Display Time;;1.0;0.0;;4
+122;4;40061;U16;;Backlit time;;1.0;0.0;;4
+123;4;40087;U16;;Pulse 1 Energy;;1.0;0.0;;4
+124;4;461457;U16;;Reset;;1.0;0.0;;4
+125;4;461667;U16;;Meter Info;;1.0;0.0;;4

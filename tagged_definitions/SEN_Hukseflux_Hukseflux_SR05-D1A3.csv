@@ -1,0 +1,29 @@
+﻿modbusRTU;Sensor;Hukseflux;Hukseflux_SR05-D1A3;;;;;;;
+1;3;0;U16;;Modbus address;UNIT_ID;1.000000;0.000000;;4
+2;3;1;U16;;Serial communication settings;serial_communication_settings;1.000000;0.000000;;4
+3;3;2;I32;;Irradiance (temperature compensated signal);irradiance_temperature_compensated_signal;0.010000;0.000000;W/m2;4
+4;3;4;I32;;Irradiance (uncompensated signal);irradiance_uncompensated_signal;0.010000;0.000000;W/m2;4
+5;3;6;I16;;Sensor body temperature;sensor_body_temperature;0.010000;0.000000;C;4
+6;3;7;U16;;Sensor electrical resistance;sensor_electrical_resistance;0.100000;0.000000;Ohm;4
+7;3;8;U16;;Scaling factor irradiance;scaling_factor_irradiance;1.000000;0.000000;;4
+8;3;9;U16;;Scaling factor temperature;scaling_factor_temperature;1.000000;0.000000;;4
+9;3;10;I32;;Sensor voltage output;sensor_voltage_output;1.000000;0.000000;uV;4
+10;3;32_8;STRING;;Sensor model part1;sensor_model_part1;1.000000;0.000000;;1
+11;3;36_8;STRING;;Sensor model part2;sensor_model_part2;1.000000;0.000000;;1
+12;3;40;U16;;Sensor serial number;sensor_serial_number;1.000000;0.000000;;4
+13;3;41;F32;;Sensor sensitivity;sensor_sensitivity;0.001000;0.000000;mV/(W/m2);1
+14;3;43;U16;;Response time;response_time;0.100000;0.000000;s;1
+15;3;44;U16;;Sensor resistance;sensor_resistance;0.100000;0.000000;Ohm;1
+16;3;46;U32;;Sensor calibration date;sensor_calibration_date;1.000000;0.000000;;1
+17;3;61;U16;;Firmware version;firmware_version;1.000000;0.000000;;1
+18;3;62;U16;;Hardware version;hardware_version;1.000000;0.000000;;1
+19;3;63;F32;;Sensor sensitivity history 1;sensor_sensitivity_history_1;0.001000;0.000000;mV/(W/m2);1
+20;3;65;U32;;Calibration date history 1;calibration_date_history_1;1.000000;0.000000;;1
+21;3;67;F32;;Sensor sensitivity history 2;sensor_sensitivity_history_2;0.001000;0.000000;mV/(W/m2);1
+22;3;69;U32;;Calibration date history 2;calibration_date_history_2;1.000000;0.000000;;1
+23;3;71;F32;;Sensor sensitivity history 3;sensor_sensitivity_history_3;0.001000;0.000000;mV/(W/m2);1
+24;3;73;U32;;Calibration date history 3;calibration_date_history_3;1.000000;0.000000;;1
+25;3;75;F32;;Sensor sensitivity history 4;sensor_sensitivity_history_4;0.001000;0.000000;mV/(W/m2);1
+26;3;77;U32;;Calibration date history 4;calibration_date_history_4;1.000000;0.000000;;1
+27;3;79;F32;;Sensor sensitivity history 5;sensor_sensitivity_history_5;0.001000;0.000000;mV/(W/m2);1
+28;3;81;U32;;Calibration date history 5;calibration_date_history_5;1.000000;0.000000;;1

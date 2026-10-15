@@ -1,0 +1,59 @@
+﻿modbusRTU;Other;Webdyn;WPM015004_SCH_iem3xxx;;;;;;;
+1;4;2003;U16;;OperationTimer;;1.0;0.0;s;4
+2;4;6500;U16;;Address;UNIT_ID;1.0;0.0;;4
+3;4;6501;U16;;vitesse;;1.0;0.0;;4
+4;4;6502;U16;;parity;;1.0;0.0;;4
+5;4;8904;U16;;Digital Input Status;;1.0;0.0;;4
+6;4;2999;U16;;phase 1 current;I_AC_1;1.0;0.0;A;4
+7;4;3001;U16;;phase 2 current;I_AC_2;1.0;0.0;A;4
+8;4;3003;U16;;phase 3 current;I_AC_3;1.0;0.0;A;4
+9;4;3005;U16;;reserved_1;;1.0;0.0;;0
+10;4;3007;U16;;reserved_2;;1.0;0.0;;0
+11;4;3009;U16;;Current Avg;;1.0;0.0;A;4
+12;4;3019;U16;;Voltage L1–L2;U_AC_L1L2;1.0;0.0;V;4
+13;4;3021;U16;;Voltage L2–L3;U_AC_L2L3;1.0;0.0;V;4
+14;4;3023;U16;;Voltage L3–L1;U_AC_L3L1;1.0;0.0;V;4
+15;4;3025;U16;;Voltage L–L Avg;;1.0;0.0;V;4
+16;4;3027;U16;;Voltage L1–N;U_AC_1;1.0;0.0;V;4
+17;4;3029;U16;;Voltage L2–N;U_AC_2;1.0;0.0;V;4
+18;4;3031;U16;;Voltage L3–N;U_AC_3;1.0;0.0;V;4
+19;4;3033;U16;;reserved_3;;1.0;0.0;;0
+20;4;3035;U16;;Voltage L–N Avg;;1.0;0.0;V;4
+21;4;3053;U16;;Active Power Phase 1;P_AC_1;1.0;0.0;kW;4
+22;4;3055;U16;;Active Power Phase 2;P_AC_2;1.0;0.0;kW;4
+23;4;3057;U16;;Active Power Phase 3;P_AC_3;1.0;0.0;kW;4
+24;4;3059;U16;;Total Active Power;P_AC;1.0;0.0;kW;4
+25;4;3067;U16;;Total Reactive Power;Q_AC;1.0;0.0;kVAR;4
+26;4;3075;U16;;Total Apparent Power;S_AC;1.0;0.0;kVA;4
+27;4;3083;U16;;Total Power Factor;PF;1.0;0.0;;4
+28;4;3109;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+29;4;3251;U16;;Energy Reset Year;;1.0;0.0;;0
+30;4;3252;U16;;Energy Reset month;;1.0;0.0;;0
+31;4;3252;U16;;Energy Reset day;;1.0;0.0;;0
+32;4;3253;U16;;Energy Reset hour;;1.0;0.0;;0
+33;4;3253;U16;;Energy Reset min;;1.0;0.0;;0
+34;4;3254;U16;;Energy Reset ms;;1.0;0.0;;0
+35;4;3553;U16;;Input Accumulation Reset Year;;1.0;0.0;;0
+36;4;3554;U16;;Input Accumulation Reset month;;1.0;0.0;;0
+37;4;3554;U16;;Input Accumulation Reset day;;1.0;0.0;;0
+38;4;3555;U16;;Input Accumulation Reset hour;;1.0;0.0;;0
+39;4;3555;U16;;Input Accumulation Reset min;;1.0;0.0;;0
+40;4;3556;U16;;Input Accumulation Reset ms;;1.0;0.0;;0
+41;4;4190;U16;;MultiTariffs Energy Active Rate;;1.0;0.0;;0
+42;4;45099;U16;;Total Active Energy Import;E_IMP;1.0;0.0;Wh;4
+43;4;45101;U16;;Total Active Energy Export;E_EXP;1.0;0.0;Wh;4
+44;4;45103;U16;;Total Reactive Energy Import;;1.0;0.0;VARh;4
+45;4;45105;U16;;Total Reactive Energy Export;;1.0;0.0;VARh;4
+46;4;45107;U16;;Partial Active Energy Import;;1.0;0.0;Wh;4
+47;4;45109;U16;;Partial Reactive Energy Import;;1.0;0.0;VARh;4
+48;4;45111;U16;;Active Energy Import Phase 1;;1.0;0.0;Wh;4
+49;4;45113;U16;;Active Energy Import Phase 2;;1.0;0.0;Wh;4
+50;4;45115;U16;;Active Energy Import Phase 3;;1.0;0.0;Wh;4
+51;4;45117;U16;;Input Metering Accumulation;;1.0;0.0;unit;4
+52;4;45119;U16;;Rate A Active Energy Import;;1.0;0.0;Wh;0
+53;4;45121;U16;;Rate B Active Energy Import;;1.0;0.0;Wh;0
+54;4;45123;U16;;Rate C Active Energy Import;;1.0;0.0;Wh;0
+55;4;45125;U16;;Rate D Active Energy Import;;1.0;0.0;Wh;0
+56;4;45127;U16;;Reactive Energy Import Phase A;;1.0;0.0;KVARH;4
+57;4;45129;U16;;Reactive Energy Import Phase B;;1.0;0.0;KVARH;4
+58;4;45131;U16;;Reactive Energy Import Phase C;;1.0;0.0;KVARH;4

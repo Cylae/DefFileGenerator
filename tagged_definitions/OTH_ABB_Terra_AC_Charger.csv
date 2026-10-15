@@ -1,0 +1,21 @@
+﻿modbusTCP;Other;ABB;Terra_AC_Charger;;;;;;;
+1;3;16384;U16;;Serial Number;SERIAL;1.000000;0.000000;'-;4
+2;3;16388;U16;;Firmware version;firmware_version;1.000000;0.000000;'-;4
+3;3;16390;U16;;User Settable Max Current;user_settable_max_current;0.001000;0.000000;A;4
+4;3;16392;U16;;Error Code;error_code;1.000000;0.000000;'-;9
+5;3;16394;U16;;Socket Lock State;socket_lock_state;1.000000;0.000000;'-;4
+6;3;16396;U16;;Charging State;charging_state;1.000000;0.000000;'-;4
+7;3;16398;U16;;Charging Current Limit;charging_current_limit;0.001000;0.000000;A;4
+8;3;16400;U16;;Charging Current L1;charging_current_l1;0.001000;0.000000;A;4
+9;3;16402;U16;;Charging Current L2;charging_current_l2;0.001000;0.000000;A;4
+10;3;16404;U16;;Charging Current L3;charging_current_l3;0.001000;0.000000;A;4
+11;3;16406;U16;;Voltage L1;voltage_l1;0.100000;0.000000;V;4
+12;3;16408;U16;;Voltage L2;voltage_l2;0.100000;0.000000;V;4
+13;3;16410;U16;;Voltage L3;voltage_l3;0.100000;0.000000;V;4
+14;3;16412;U16;;Active Power;P_AC;1.000000;0.000000;W;4
+15;3;16414;U16;;Energy Delivered;E_TOT;1.000000;0.000000;Wh;4
+16;3;16416;U16;;Communication timeout;communication_timeout;1.000000;0.000000;second;4
+17;3;16640;U16;;Set Charging Current Limit;set_charging_current_limit;0.001000;0.000000;A;4
+18;3;16643;U16;;Lock/Unlock Socket Cable;lockunlock_socket_cable;1.000000;0.000000;'-;4
+19;3;16645;U16;;Start/Stop Charging Session;startstop_charging_session;1.000000;0.000000;'-;4
+20;3;16646;U16;;Communication timeout;communication_timeout_1;1.000000;0.000000;second;4

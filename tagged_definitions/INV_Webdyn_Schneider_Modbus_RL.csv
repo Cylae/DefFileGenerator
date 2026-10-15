@@ -1,0 +1,12 @@
+﻿ModbusRTU;Inverter;Schneider;Connext_RL;;;;;;;
+1;3;6143;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
+2;3;6144;I16;;PV1 Current;I_DC_STRING_1;0.1;0.0;A;4
+3;3;6145;I16;;PV1 Power;;0.1;0.0;kW;4
+4;3;2050;U32;;Energy since commissioning;;0.1;0.0;kWh;4
+5;3;64249;U16;;Power production;;1.0;0.0;;4
+6;3;64250;U16;;Output power;P_AC;0.1;0.0;kW;4
+7;3;64251;U16;;Duration;;1.0;0.0;min;4
+8;3;6185;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0.0;V;4
+9;3;6171;I16;;Real Power;;0.1;0.0;kW;4
+10;3;6186;I16;;PV2 Current;I_DC_STRING_2;0.1;0.0;A;4
+11;3;6191;I16;;PV2 Power;;0.1;0.0;kW;4

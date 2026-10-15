@@ -1,0 +1,77 @@
+﻿ModbusRTU;Other;Inverter;Sungrow;;;;;;;
+1;4;4999;U16;;Device type code;;1.0;0.0;;4
+2;4;5000;U16;;Nominal Active Power;P_RATED;1.0;0.0;0.1kW;4
+3;4;5001;U16;;Output type;;1.0;0.0;;4
+4;4;5002;U16;;Daily power yields;E_DAY;1.0;0.0;0.1 kWh;4
+5;4;5003;U32_W;;Total power yields;E_TOT;1.0;0.0;kWh;4
+6;4;5005;U32_W;;Total running time;TOT;1.0;0.0;h;4
+7;4;5007;U16;;Internal temperature;TEMP_INT;1.0;0.0;0.1 deg cel;4
+8;4;5008;U32_W;;Total apparent power;S_AC;1.0;0.0;VA;4
+9;4;5010;U16;;MPPT 1 voltage;U_DC_MPPT_1;1.0;0.0;0.1V;4
+10;4;5011;U16;;MPPT 1 current;I_DC_MPPT_1;1.0;0.0;0.1A;4
+11;4;5012;U16;;MPPT 2 voltage;U_DC_MPPT_2;1.0;0.0;0.1V;4
+12;4;5013;U16;;MPPT 2 current;I_DC_MPPT_2;1.0;0.0;0.1A;4
+13;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;1.0;0.0;0.1V;4
+14;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;1.0;0.0;0.1A;4
+15;4;5016;U32_W;;Total DC power;P_DC;1.0;0.0;W;4
+16;4;5018;U16;;Phase A Voltage;U_AC_1;1.0;0.0;0.1V;4
+17;4;5019;U16;;Phase B Voltage;U_AC_2;1.0;0.0;0.1V;4
+18;4;5020;U16;;Phase C Voltage;U_AC_3;1.0;0.0;0.1V;4
+19;4;5021;U16;;Phase A current;I_AC_1;1.0;0.0;0.1 A;4
+20;4;5022;U16;;Phase B current;I_AC_2;1.0;0.0;0.1 A;4
+21;4;5023;U16;;Phase C current;I_AC_3;1.0;0.0;0.1 A;4
+22;4;5024;U32_W;;Reserved;;1.0;0.0;W;4
+23;4;5026;U32_W;;Reserved_1;;1.0;0.0;W;4
+24;4;5028;U32_W;;Reserved_2;;1.0;0.0;W;4
+25;4;5030;U32_W;;Total active power;P_AC;1.0;0.0;W;4
+26;4;5032;U32_W;;Total reactive power;Q_AC;1.0;0.0;var;4
+27;4;5034;I16;;Power factor;PF;1.0;0.0;0.001;4
+28;4;5035;U16;;Grid frequency;FREQ;1.0;0.0;0.1 Hz;4
+29;4;5036;U16;;Reserved_3;;1.0;0.0;;4
+30;4;5037;U16;;Work state;;1.0;0.0;;8
+31;4;5044;U16;;Alaram Code;;1.0;0.0;;8
+32;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;1.0;0.0;0.1V;4
+33;4;5115;U16;;MPPT 4 current;I_DC_MPPT_4;1.0;0.0;0.1A;4
+34;4;5116;U16;;MPPT 5 voltage;U_DC_MPPT_5;1.0;0.0;0.1V;4
+35;4;5117;U16;;MPPT 5 current;I_DC_MPPT_5;1.0;0.0;0.1A;4
+36;4;5118;U16;;MPPT 6 voltage;U_DC_MPPT_6;1.0;0.0;0.1V;4
+37;4;5119;U16;;MPPT 6 current;I_DC_MPPT_6;1.0;0.0;0.1A;4
+38;4;5120;U16;;MPPT 7 voltage;U_DC_MPPT_7;1.0;0.0;0.1V;4
+39;4;5121;U16;;MPPT 7 current;I_DC_MPPT_7;1.0;0.0;0.1A;4
+40;4;5122;U16;;MPPT 8 voltage;U_DC_MPPT_8;1.0;0.0;0.1V;4
+41;4;5123;U16;;MPPT 8 current;I_DC_MPPT_8;1.0;0.0;0.1A;4
+42;4;5124;U16;;Reserved_4;;1.0;0.0;;4
+43;4;5125;U32_W;;Reserved_5;;1.0;0.0;;4
+44;4;5127;U32_W;;Monthly Power yields;;1.0;0.0;0.1kWh;4
+45;4;5129;U16;;MPPT 9 voltage;U_DC_MPPT_9;1.0;0.0;0.1V;4
+46;4;5130;U16;;MPPT 9 current;I_DC_MPPT_9;1.0;0.0;0.1A;4
+47;4;5131;U16;;MPPT 10 voltage;U_DC_MPPT_10;1.0;0.0;0.1V;4
+48;4;5132;U16;;MPPT 10 current;I_DC_MPPT_10;1.0;0.0;0.1A;4
+49;4;5133;U16;;MPPT 11 voltage;U_DC_MPPT_11;1.0;0.0;0.1V;4
+50;4;5134;U16;;MPPT 11 current;I_DC_MPPT_11;1.0;0.0;0.1A;4
+51;4;5135;U16;;MPPT 12 voltage;U_DC_MPPT_12;1.0;0.0;0.1V;4
+52;4;5136;U16;;MPPT 12 current;I_DC_MPPT_12;1.0;0.0;0.1A;4
+53;4;7013;U16;;Current of string 1;I_DC_STRING_1;1.0;0.0;0.01A;4
+54;4;7014;U16;;Current of string 2;I_DC_STRING_2;1.0;0.0;0.01A;4
+55;4;7015;U16;;Current of string 3;I_DC_STRING_3;1.0;0.0;0.01A;4
+56;4;7016;U16;;Current of string 4;I_DC_STRING_4;1.0;0.0;0.01A;4
+57;4;7017;U16;;Current of string 5;I_DC_STRING_5;1.0;0.0;0.01A;4
+58;4;7018;U16;;Current of string 6;I_DC_STRING_6;1.0;0.0;0.01A;4
+59;4;7019;U16;;Current of string 7;I_DC_STRING_7;1.0;0.0;0.01A;4
+60;4;7020;U16;;Current of string 8;I_DC_STRING_8;1.0;0.0;0.01A;4
+61;4;7021;U16;;Current of string 9;I_DC_STRING_9;1.0;0.0;0.01A;4
+62;4;7022;U16;;Current of string 10;I_DC_STRING_10;1.0;0.0;0.01A;4
+63;4;7023;U16;;Current of string 11;I_DC_STRING_11;1.0;0.0;0.01A;4
+64;4;7024;U16;;Current of string 12;I_DC_STRING_12;1.0;0.0;0.01A;4
+65;4;7025;U16;;Current of string 13;I_DC_STRING_13;1.0;0.0;0.01A;4
+66;4;7026;U16;;Current of string 14;I_DC_STRING_14;1.0;0.0;0.01A;4
+67;4;7027;U16;;Current of string 15;I_DC_STRING_15;1.0;0.0;0.01A;4
+68;4;7028;U16;;Current of string 16;I_DC_STRING_16;1.0;0.0;0.01A;4
+69;4;7029;U16;;Current of string 17;I_DC_STRING_17;1.0;0.0;0.01A;4
+70;4;7030;U16;;Current of string 18;I_DC_STRING_18;1.0;0.0;0.01A;4
+71;4;7031;U16;;Current of string 19;I_DC_STRING_19;1.0;0.0;0.01A;4
+72;4;7032;U16;;Current of string 20;I_DC_STRING_20;1.0;0.0;0.01A;4
+73;4;7033;U16;;Current of string 21;I_DC_STRING_21;1.0;0.0;0.01A;4
+74;4;7034;U16;;Current of string 22;I_DC_STRING_22;1.0;0.0;0.01A;4
+75;4;7035;U16;;Current of string 23;I_DC_STRING_23;1.0;0.0;0.01A;4
+76;4;7036;U16;;Current of string 24;I_DC_STRING_24;1.0;0.0;0.01A;4

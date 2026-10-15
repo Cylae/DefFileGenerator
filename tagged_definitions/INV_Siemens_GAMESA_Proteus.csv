@@ -1,0 +1,744 @@
+﻿ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
+1;3;0_32;STRING;;Manufacturer Info;MANUFACTURER;1;0;;4
+2;3;16_32;STRING;;Model & Options;MODEL;1;0;;4
+3;3;32_8;STRING;;GP Code;;1;0;;4
+4;3;36_16;STRING;;Version;;1;0;;4
+5;3;44_8;STRING;;Version date;;1;0;;4
+6;3;48_32;STRING;;Serial Number;SERIAL;1;0;;4
+7;3;64;U16;;Device Address;UNIT_ID;1;0;;4
+8;3;65;U16;;ModbusVr;;1;0;;4
+9;3;66;I16;;Operating State of the Inverter;;1;0;;4
+10;3;67;U16;;Alarm;;1;0;;4
+11;3;67_0_1;BITS;;Ground fault;;1;0;;4
+12;3;67_1_1;BITS;;DC over voltage;U_DC;1;0;;4
+13;3;67_2_1;BITS;;AC disconnected;;1;0;;4
+14;3;67_3_1;BITS;;DC disconnected;;1;0;;4
+15;3;67_4_1;BITS;;Grid disconnected;;1;0;;4
+16;3;67_6_1;BITS;;Emergency Relay;;1;0;;4
+17;3;67_7_1;BITS;;Over temperature;;1;0;;4
+18;3;67_8_1;BITS;;Over Frequency;FREQ;1;0;;4
+19;3;67_9_1;BITS;;Under Frequency;;1;0;;4
+20;3;67_10_1;BITS;;AC Over Voltage;;1;0;;4
+21;3;67_11_1;BITS;;AC Under Voltage;;1;0;;4
+22;3;67_13_1;BITS;;Under temperature;;1;0;;4
+23;3;67_14_1;BITS;;Communication error;;1;0;;4
+24;3;67_15_1;BITS;;Active Alarms for the Inverter 16;;1;0;;4
+25;3;68;I16;;Total Active Power Measurement;P_AC;1;0;kW;4
+26;3;69;U16;;Total Apparent Power Measurement;S_AC;1;0;kVA;4
+27;3;70;I16;;Total Reactive Power Measurement;Q_AC;1;0;kVAr;4
+28;3;71;I16;;Power Factor;PF;0.0001;0;;4
+29;3;72;U16;;Total AC Current;I_AC;0.1;0;A;4
+30;3;73;U16;;Line AC Voltage;U_AC_1;0.1;0;V;4
+31;3;74;U16;;Phase AC Voltage;;0.1;0;V;4
+32;3;75;U16;;AC Frequency;;0.01;0;Hz;4
+33;3;76;I64;;Total Energy Injected;E_TOT;1;0;kWh;4
+34;3;80;I64;;Total Energy Absorbed;;1;0;Wh;4
+35;3;84;I64;;Total Reactive Energy Injected;;1;0;Varh;4
+36;3;88;I64;;Total Reactive Energy Absorbed;;1;0;Varh;4
+37;3;92;I16;;Ambient temperature;TEMP_AMB;0.1;0;C;4
+38;3;93;I16;;Cabinet temperature;TEMP_INT;0.1;0;C;4
+39;3;94;I16;;Inductors temperature;;0.1;0;C;4
+40;3;95;I16;;Filter temperature;;0.1;0;C;4
+41;3;96;I16;;IGBT temperature;;0.1;0;C;4
+42;3;97;I16;;Coolant temperature;;0.1;0;C;4
+43;3;98;U16;;Current Measurement of Phase 1;I_AC_1;0.1;0;A;4
+44;3;99;U16;;Current Measurement of Phase 2;I_AC_2;0.1;0;A;4
+45;3;100;U16;;Current Measurement of Phase 3;I_AC_3;0.1;0;A;4
+46;3;101;U16;;UL12;;0.1;0;V;4
+47;3;102;U16;;UL23;;0.1;0;V;4
+48;3;103;U16;;UL31;;0.1;0;V;4
+49;3;104;U16;;UPh1;;0.1;0;V;4
+50;3;105;U16;;UPh2;;0.1;0;V;4
+51;3;106;U16;;UPh3;;0.1;0;V;4
+52;3;107;I16;;Inverter Running State;;1;0;;4
+53;3;108;U16;;Inverter Hardware State;;1;0;;4
+54;3;108_0_1;BITS;;Power Section 1;;1;0;;4
+55;3;108_2_1;BITS;;Power Section 1 AC Switch status 1-1;;1;0;;4
+56;3;108_3_1;BITS;;Power Section 1 AC Switch status 1-2;;1;0;;4
+57;3;108_4_1;BITS;;Power Section 1 DC Switch status 1-1;P_DC;1;0;;4
+58;3;108_5_1;BITS;;Power Section 1 DC Switch status 1-2;;1;0;;4
+59;3;108_6_1;BITS;;Power Section 2;;1;0;;4
+60;3;108_7_1;BITS;;Power Section 2 AC Switch status 1-1;;1;0;;4
+61;3;108_8_1;BITS;;Power Section 2 AC Switch status 1-2;;1;0;;4
+62;3;108_9_1;BITS;;Power Section 2 DC Switch status 1-1;;1;0;;4
+63;3;108_10_1;BITS;;Power Section 2 DC Switch status 1-2;;1;0;;4
+64;3;108_11_1;BITS;;Inverter Hardware State 12;;1;0;;4
+65;3;108_12_1;BITS;;Status of Grounding Switch 1-1;;1;0;;4
+66;3;108_13_1;BITS;;Status of Grounding Switch 1-2;;1;0;;4
+67;3;108_14_1;BITS;;Status of Harmonic Filter Switch 1-1;;1;0;;4
+68;3;108_15_1;BITS;;Status of Harmonic Filter Switch 1-2;;1;0;;4
+69;3;109;I16;;Total DC Current for all ports;I_DC;0.1;0;A;4
+70;3;110;I16;;Total DC Power for all ports;;1;0;kW;4
+71;3;111;I64;;EDCInj;;1;0;Wh;4
+72;3;119;U16;;Number of DC ports;;1;0;;4
+73;3;120;I16;;PrtTyp 1;;1;0;;4
+74;3;121;U16;;PrtID 1;;1;0;;4
+75;3;122;I16;;IDC 1;;0.1;0;A;4
+76;3;123;I16;;UDC 1;;0.1;0;V;4
+77;3;124;I16;;PDC 1;;1;0;kW;4
+78;3;133;U16;;PrtAlrm 1;;1;0;;4
+79;3;133_0_1;BITS;;Ground fault 1;;1;0;;4
+80;3;133_1_1;BITS;;DC over voltage 1;;1;0;;4
+81;3;133_2_1;BITS;;Reverse polarity 1;;1;0;;4
+82;3;133_3_1;BITS;;DC disconnected 1;;1;0;;4
+83;3;133_6_1;BITS;;Emergency Relay 1;;1;0;;4
+84;3;133_7_1;BITS;;DC Port disabled 1;;1;0;;4
+85;3;133_14_1;BITS;;Internal communication error 1;;1;0;;4
+86;3;134;I16;;PrtTyp 2;;1;0;;4
+87;3;135;U16;;PrtID 2;;1;0;;4
+88;3;136;I16;;IDC 2;;0.1;0;A;4
+89;3;137;I16;;UDC 2;;0.1;0;V;4
+90;3;138;I16;;PDC 2;;1;0;kW;4
+91;3;147;U16;;PrtAlrm 2;;1;0;;4
+92;3;147_0_1;BITS;;Ground fault 2;;1;0;;4
+93;3;147_1_1;BITS;;DC over voltage 2;;1;0;;4
+94;3;147_2_1;BITS;;Reverse polarity 2;;1;0;;4
+95;3;147_3_1;BITS;;DC disconnected 2;;1;0;;4
+96;3;147_6_1;BITS;;Emergency Relay 2;;1;0;;4
+97;3;147_7_1;BITS;;DC Port disabled 2;;1;0;;4
+98;3;147_14_1;BITS;;Internal communication error 2;;1;0;;4
+99;3;148;I16;;PrtTyp 3;;1;0;;4
+100;3;149;U16;;PrtID 3;;1;0;;4
+101;3;150;I16;;IDC 3;;0.1;0;A;4
+102;3;151;I16;;UDC 3;;0.1;0;V;4
+103;3;152;I16;;PDC 3;;1;0;kW;4
+104;3;161;U16;;PrtAlrm 3;;1;0;;4
+105;3;161_0_1;BITS;;Ground fault 3;;1;0;;4
+106;3;161_1_1;BITS;;DC over voltage 3;;1;0;;4
+107;3;161_2_1;BITS;;Reverse polarity 3;;1;0;;4
+108;3;161_3_1;BITS;;DC disconnected 3;;1;0;;4
+109;3;161_6_1;BITS;;Emergency Relay 3;;1;0;;4
+110;3;161_7_1;BITS;;DC Port disabled 3;;1;0;;4
+111;3;161_14_1;BITS;;Internal communication error 3;;1;0;;4
+112;3;162;I16;;PrtTyp 4;;1;0;;4
+113;3;163;U16;;PrtID 4;;1;0;;4
+114;3;164;I16;;IDC 4;;0.1;0;A;4
+115;3;165;I16;;UDC 4;;0.1;0;V;4
+116;3;166;I16;;PDC 4;;1;0;kW;4
+117;3;175;U16;;PrtAlrm 4;;1;0;;4
+118;3;175_0_1;BITS;;Ground fault 4;;1;0;;4
+119;3;175_1_1;BITS;;DC over voltage 4;;1;0;;4
+120;3;175_2_1;BITS;;Reverse polarity 4;;1;0;;4
+121;3;175_3_1;BITS;;DC disconnected 4;;1;0;;4
+122;3;175_6_1;BITS;;Emergency Relay 4;;1;0;;4
+123;3;175_7_1;BITS;;DC Port disabled 4;;1;0;;4
+124;3;175_14_1;BITS;;Internal communication error 4;;1;0;;4
+125;3;176;I16;;PrtTyp 5;;1;0;;4
+126;3;177;U16;;PrtID 5;;1;0;;4
+127;3;178;I16;;IDC 5;;0.1;0;A;4
+128;3;179;I16;;UDC 5;;0.1;0;V;4
+129;3;180;I16;;PDC 5;;1;0;kW;4
+130;3;189;U16;;PrtAlrm 5;;1;0;;4
+131;3;189_0_1;BITS;;Ground fault 5;;1;0;;4
+132;3;189_1_1;BITS;;DC over voltage 5;;1;0;;4
+133;3;189_2_1;BITS;;Reverse polarity 5;;1;0;;4
+134;3;189_3_1;BITS;;DC disconnected 5;;1;0;;4
+135;3;189_6_1;BITS;;Emergency Relay 5;;1;0;;4
+136;3;189_7_1;BITS;;DC Port disabled 5;;1;0;;4
+137;3;189_14_1;BITS;;Internal communication error 5;;1;0;;4
+138;3;190;I16;;PrtTyp 6;;1;0;;4
+139;3;191;U16;;PrtID 6;;1;0;;4
+140;3;192;I16;;IDC 6;;0.1;0;A;4
+141;3;193;I16;;UDC 6;;0.1;0;V;4
+142;3;194;I16;;PDC 6;;1;0;kW;4
+143;3;203;U16;;PrtAlrm 6;;1;0;;4
+144;3;203_0_1;BITS;;Ground fault 6;;1;0;;4
+145;3;203_1_1;BITS;;DC over voltage 6;;1;0;;4
+146;3;203_2_1;BITS;;Reverse polarity 6;;1;0;;4
+147;3;203_3_1;BITS;;DC disconnected 6;;1;0;;4
+148;3;203_6_1;BITS;;Emergency Relay 6;;1;0;;4
+149;3;203_7_1;BITS;;DC Port disabled 6;;1;0;;4
+150;3;203_14_1;BITS;;Internal communication error 6;;1;0;;4
+151;3;204;I16;;PrtTyp 7;;1;0;;4
+152;3;205;U16;;PrtID 7;;1;0;;4
+153;3;206;I16;;IDC 7;;0.1;0;A;4
+154;3;207;I16;;UDC 7;;0.1;0;V;4
+155;3;208;I16;;PDC 7;;1;0;kW;4
+156;3;217;U16;;PrtAlrm 7;;1;0;;4
+157;3;217_0_1;BITS;;Ground fault 7;;1;0;;4
+158;3;217_1_1;BITS;;DC over voltage 7;;1;0;;4
+159;3;217_2_1;BITS;;Reverse polarity 7;;1;0;;4
+160;3;217_3_1;BITS;;DC disconnected 7;;1;0;;4
+161;3;217_6_1;BITS;;Emergency Relay 7;;1;0;;4
+162;3;217_7_1;BITS;;DC Port disabled 7;;1;0;;4
+163;3;217_14_1;BITS;;Internal communication error 7;;1;0;;4
+164;3;218;I16;;PrtTyp 8;;1;0;;4
+165;3;219;U16;;PrtID 8;;1;0;;4
+166;3;220;I16;;IDC 8;;0.1;0;A;4
+167;3;221;I16;;UDC 8;;0.1;0;V;4
+168;3;222;I16;;PDC 8;;1;0;kW;4
+169;3;231;U16;;PrtAlrm 8;;1;0;;4
+170;3;231_0_1;BITS;;Ground fault 8;;1;0;;4
+171;3;231_1_1;BITS;;DC over voltage 8;;1;0;;4
+172;3;231_2_1;BITS;;Reverse polarity 8;;1;0;;4
+173;3;231_3_1;BITS;;DC disconnected 8;;1;0;;4
+174;3;231_6_1;BITS;;Emergency Relay 8;;1;0;;4
+175;3;231_7_1;BITS;;DC Port disabled 8;;1;0;;4
+176;3;231_14_1;BITS;;Internal communication error 8;;1;0;;4
+177;3;232;I16;;PrtTyp 9;;1;0;;4
+178;3;233;U16;;PrtID 9;;1;0;;4
+179;3;234;I16;;IDC 9;;0.1;0;A;4
+180;3;235;I16;;UDC 9;;0.1;0;V;4
+181;3;236;I16;;PDC 9;;1;0;kW;4
+182;3;245;U16;;PrtAlrm 9;;1;0;;4
+183;3;245_0_1;BITS;;Ground fault 9;;1;0;;4
+184;3;245_1_1;BITS;;DC over voltage 9;;1;0;;4
+185;3;245_2_1;BITS;;Reverse polarity 9;;1;0;;4
+186;3;245_3_1;BITS;;DC disconnected 9;;1;0;;4
+187;3;245_6_1;BITS;;Emergency Relay 9;;1;0;;4
+188;3;245_7_1;BITS;;DC Port disabled 9;;1;0;;4
+189;3;245_14_1;BITS;;Internal communication error 9;;1;0;;4
+190;3;246;I16;;PrtTyp 10;;1;0;;4
+191;3;247;U16;;PrtID 10;;1;0;;4
+192;3;248;I16;;IDC 10;;0.1;0;A;4
+193;3;249;I16;;UDC 10;;0.1;0;V;4
+194;3;250;I16;;PDC 10;;1;0;kW;4
+195;3;259;U16;;PrtAlrm 10;;1;0;;4
+196;3;259_0_1;BITS;;Ground fault 10;;1;0;;4
+197;3;259_1_1;BITS;;DC over voltage 10;;1;0;;4
+198;3;259_2_1;BITS;;Reverse polarity 10;;1;0;;4
+199;3;259_3_1;BITS;;DC disconnected 10;;1;0;;4
+200;3;259_6_1;BITS;;Emergency Relay 10;;1;0;;4
+201;3;259_7_1;BITS;;DC Port disabled 10;;1;0;;4
+202;3;259_14_1;BITS;;Internal communication error 10;;1;0;;4
+203;3;260;I16;;PrtTyp 11;;1;0;;4
+204;3;261;U16;;PrtID 11;;1;0;;4
+205;3;262;I16;;IDC 11;;0.1;0;A;4
+206;3;263;I16;;UDC 11;;0.1;0;V;4
+207;3;264;I16;;PDC 11;;1;0;kW;4
+208;3;273;U16;;PrtAlrm 11;;1;0;;4
+209;3;273_0_1;BITS;;Ground fault 11;;1;0;;4
+210;3;273_1_1;BITS;;DC over voltage 11;;1;0;;4
+211;3;273_2_1;BITS;;Reverse polarity 11;;1;0;;4
+212;3;273_3_1;BITS;;DC disconnected 11;;1;0;;4
+213;3;273_6_1;BITS;;Emergency Relay 11;;1;0;;4
+214;3;273_7_1;BITS;;DC Port disabled 11;;1;0;;4
+215;3;273_14_1;BITS;;Internal communication error 11;;1;0;;4
+216;3;274;I16;;PrtTyp 12;;1;0;;4
+217;3;275;U16;;PrtID 12;;1;0;;4
+218;3;276;I16;;IDC 12;;0.1;0;A;4
+219;3;277;I16;;UDC 12;;0.1;0;V;4
+220;3;278;I16;;PDC 12;;1;0;kW;4
+221;3;287;U16;;PrtAlrm 12;;1;0;;4
+222;3;287_0_1;BITS;;Ground fault 12;;1;0;;4
+223;3;287_1_1;BITS;;DC over voltage 12;;1;0;;4
+224;3;287_2_1;BITS;;Reverse polarity 12;;1;0;;4
+225;3;287_3_1;BITS;;DC disconnected 12;;1;0;;4
+226;3;287_6_1;BITS;;Emergency Relay 12;;1;0;;4
+227;3;287_7_1;BITS;;DC Port disabled 12;;1;0;;4
+228;3;287_14_1;BITS;;Internal communication error 12;;1;0;;4
+229;3;288;I16;;PrtTyp 13;;1;0;;4
+230;3;289;U16;;PrtID 13;;1;0;;4
+231;3;290;I16;;IDC 13;;0.1;0;A;4
+232;3;291;I16;;UDC 13;;0.1;0;V;4
+233;3;292;I16;;PDC 13;;1;0;kW;4
+234;3;287;U16;;PrtAlrm 13;;1;0;;4
+235;3;301_0_1;BITS;;Ground fault 13;;1;0;;4
+236;3;301_1_1;BITS;;DC over voltage 13;;1;0;;4
+237;3;301_2_1;BITS;;Reverse polarity 13;;1;0;;4
+238;3;301_3_1;BITS;;DC disconnected 13;;1;0;;4
+239;3;301_6_1;BITS;;Emergency Relay 13;;1;0;;4
+240;3;301_7_1;BITS;;DC Port disabled 13;;1;0;;4
+241;3;301_14_1;BITS;;Internal communication error 13;;1;0;;4
+242;3;302;I16;;PrtTyp 14;;1;0;;4
+243;3;303;U16;;PrtID 14;;1;0;;4
+244;3;304;I16;;IDC 14;;0.1;0;A;4
+245;3;305;I16;;UDC 14;;0.1;0;V;4
+246;3;306;I16;;PDC 14;;1;0;kW;4
+247;3;315;U16;;PrtAlrm 14;;1;0;;4
+248;3;315_0_1;BITS;;Ground fault 14;;1;0;;4
+249;3;315_1_1;BITS;;DC over voltage 14;;1;0;;4
+250;3;315_2_1;BITS;;Reverse polarity 14;;1;0;;4
+251;3;315_3_1;BITS;;DC disconnected 14;;1;0;;4
+252;3;315_6_1;BITS;;Emergency Relay 14;;1;0;;4
+253;3;315_7_1;BITS;;DC Port disabled 14;;1;0;;4
+254;3;315_14_1;BITS;;Internal communication error 14;;1;0;;4
+255;3;316;I16;;PrtTyp 15;;1;0;;4
+256;3;317;U16;;PrtID 15;;1;0;;4
+257;3;318;I16;;IDC 15;;0.1;0;A;4
+258;3;319;I16;;UDC 15;;0.1;0;V;4
+259;3;320;I16;;PDC 15;;1;0;kW;4
+260;3;329;U16;;PrtAlrm 15;;1;0;;4
+261;3;329_0_1;BITS;;Ground fault 15;;1;0;;4
+262;3;329_1_1;BITS;;DC over voltage 15;;1;0;;4
+263;3;329_2_1;BITS;;Reverse polarity 15;;1;0;;4
+264;3;329_3_1;BITS;;DC disconnected 15;;1;0;;4
+265;3;329_6_1;BITS;;Emergency Relay 15;;1;0;;4
+266;3;329_7_1;BITS;;DC Port disabled 15;;1;0;;4
+267;3;329_14_1;BITS;;Internal communication error 15;;1;0;;4
+268;3;330;I16;;PrtTyp 16;;1;0;;4
+269;3;331;U16;;PrtID 16;;1;0;;4
+270;3;332;I16;;IDC 16;;0.1;0;A;4
+271;3;333;I16;;UDC 16;;0.1;0;V;4
+272;3;334;I16;;PDC 16;;1;0;kW;4
+273;3;343;U16;;PrtAlrm 16;;1;0;;4
+274;3;329_0_1;BITS;;Ground fault 16;;1;0;;4
+275;3;329_1_1;BITS;;DC over voltage 16;;1;0;;4
+276;3;329_2_1;BITS;;Reverse polarity 16;;1;0;;4
+277;3;329_3_1;BITS;;DC disconnected 16;;1;0;;4
+278;3;329_6_1;BITS;;Emergency Relay 16;;1;0;;4
+279;3;329_7_1;BITS;;DC Port disabled 16;;1;0;;4
+280;3;329_14_1;BITS;;Internal communication error 16;;1;0;;4
+281;3;344;I16;;PrtTyp 17;;1;0;;4
+282;3;345;U16;;PrtID 17;;1;0;;4
+283;3;346;I16;;IDC 17;;0.1;0;A;4
+284;3;347;I16;;UDC 17;;0.1;0;V;4
+285;3;348;I16;;PDC 17;;1;0;kW;4
+286;3;357;U16;;PrtAlrm 17;;1;0;;4
+287;3;357_0_1;BITS;;Ground fault 17;;1;0;;4
+288;3;357_1_1;BITS;;DC over voltage 17;;1;0;;4
+289;3;357_2_1;BITS;;Reverse polarity 17;;1;0;;4
+290;3;357_3_1;BITS;;DC disconnected 17;;1;0;;4
+291;3;357_6_1;BITS;;Emergency Relay 17;;1;0;;4
+292;3;357_7_1;BITS;;DC Port disabled 17;;1;0;;4
+293;3;357_14_1;BITS;;Internal communication error 17;;1;0;;4
+294;3;358;I16;;PrtTyp 18;;1;0;;4
+295;3;359;U16;;PrtID 18;;1;0;;4
+296;3;360;I16;;IDC 18;;0.1;0;A;4
+297;3;361;I16;;UDC 18;;0.1;0;V;4
+298;3;362;I16;;PDC 18;;1;0;kW;4
+299;3;371;U16;;PrtAlrm 18;;1;0;;4
+300;3;371_0_1;BITS;;Ground fault 18;;1;0;;4
+301;3;371_1_1;BITS;;DC over voltage 18;;1;0;;4
+302;3;371_2_1;BITS;;Reverse polarity 18;;1;0;;4
+303;3;371_3_1;BITS;;DC disconnected 18;;1;0;;4
+304;3;371_6_1;BITS;;Emergency Relay 18;;1;0;;4
+305;3;371_7_1;BITS;;DC Port disabled 18;;1;0;;4
+306;3;371_14_1;BITS;;Internal communication error 18;;1;0;;4
+307;3;372;I16;;PrtTyp 19;;1;0;;4
+308;3;373;U16;;PrtID 19;;1;0;;4
+309;3;374;I16;;IDC 19;;0.1;0;A;4
+310;3;375;I16;;UDC 19;;0.1;0;V;4
+311;3;376;I16;;PDC 19;;1;0;kW;4
+312;3;385;U16;;PrtAlrm 19;;1;0;;4
+313;3;385_0_1;BITS;;Ground fault 19;;1;0;;4
+314;3;385_1_1;BITS;;DC over voltage 19;;1;0;;4
+315;3;385_2_1;BITS;;Reverse polarity 19;;1;0;;4
+316;3;385_3_1;BITS;;DC disconnected 19;;1;0;;4
+317;3;385_6_1;BITS;;Emergency Relay 19;;1;0;;4
+318;3;385_7_1;BITS;;DC Port disabled 19;;1;0;;4
+319;3;385_14_1;BITS;;Internal communication error 19;;1;0;;4
+320;3;386;I16;;PrtTyp 20;;1;0;;4
+321;3;387;U16;;PrtID 20;;1;0;;4
+322;3;388;I16;;IDC 20;;0.1;0;A;4
+323;3;389;I16;;UDC 20;;0.1;0;V;4
+324;3;390;I16;;PDC 20;;1;0;kW;4
+325;3;399;U16;;PrtAlrm 20;;1;0;;4
+326;3;399_0_1;BITS;;Ground fault 20;;1;0;;4
+327;3;399_1_1;BITS;;DC over voltage 20;;1;0;;4
+328;3;399_2_1;BITS;;Reverse polarity 20;;1;0;;4
+329;3;399_3_1;BITS;;DC disconnected 20;;1;0;;4
+330;3;399_6_1;BITS;;Emergency Relay 20;;1;0;;4
+331;3;399_7_1;BITS;;DC Port disabled 20;;1;0;;4
+332;3;399_14_1;BITS;;Internal communication error 20;;1;0;;4
+333;3;400;I16;;PrtTyp 21;;1;0;;4
+334;3;401;U16;;PrtID 21;;1;0;;4
+335;3;402;I16;;IDC 21;;0.1;0;A;4
+336;3;403;I16;;UDC 21;;0.1;0;V;4
+337;3;404;I16;;PDC 21;;1;0;kW;4
+338;3;413;U16;;PrtAlrm 21;;1;0;;4
+339;3;413_0_1;BITS;;Ground fault 21;;1;0;;4
+340;3;413_1_1;BITS;;DC over voltage 21;;1;0;;4
+341;3;413_2_1;BITS;;Reverse polarity 21;;1;0;;4
+342;3;413_3_1;BITS;;DC disconnected 21;;1;0;;4
+343;3;413_6_1;BITS;;Emergency Relay 21;;1;0;;4
+344;3;413_7_1;BITS;;DC Port disabled 21;;1;0;;4
+345;3;413_14_1;BITS;;Internal communication error 21;;1;0;;4
+346;3;414;I16;;PrtTyp 22;;1;0;;4
+347;3;415;U16;;PrtID 22;;1;0;;4
+348;3;416;I16;;IDC 22;;0.1;0;A;4
+349;3;417;I16;;UDC 22;;0.1;0;V;4
+350;3;418;I16;;PDC 22;;1;0;kW;4
+351;3;427;U16;;PrtAlrm 22;;1;0;;4
+352;3;427_0_1;BITS;;Ground fault 22;;1;0;;4
+353;3;427_1_1;BITS;;DC over voltage 22;;1;0;;4
+354;3;427_2_1;BITS;;Reverse polarity 22;;1;0;;4
+355;3;427_3_1;BITS;;DC disconnected 22;;1;0;;4
+356;3;427_6_1;BITS;;Emergency Relay 22;;1;0;;4
+357;3;427_7_1;BITS;;DC Port disabled 22;;1;0;;4
+358;3;427_14_1;BITS;;Internal communication error 22;;1;0;;4
+359;3;428;I16;;PrtTyp 23;;1;0;;4
+360;3;429;U16;;PrtID 23;;1;0;;4
+361;3;430;I16;;IDC 23;;0.1;0;A;4
+362;3;431;I16;;UDC 23;;0.1;0;V;4
+363;3;432;I16;;PDC 23;;1;0;kW;4
+364;3;441;U16;;PrtAlrm 23;;1;0;;4
+365;3;441_0_1;BITS;;Ground fault 23;;1;0;;4
+366;3;441_1_1;BITS;;DC over voltage 23;;1;0;;4
+367;3;441_2_1;BITS;;Reverse polarity 23;;1;0;;4
+368;3;441_3_1;BITS;;DC disconnected 23;;1;0;;4
+369;3;441_6_1;BITS;;Emergency Relay 23;;1;0;;4
+370;3;441_7_1;BITS;;DC Port disabled 23;;1;0;;4
+371;3;441_14_1;BITS;;Internal communication error 23;;1;0;;4
+372;3;442;I16;;PrtTyp 24;;1;0;;4
+373;3;443;U16;;PrtID 24;;1;0;;4
+374;3;444;I16;;IDC 24;;0.1;0;A;4
+375;3;445;I16;;UDC 24;;0.1;0;V;4
+376;3;446;I16;;PDC 24;;1;0;kW;4
+377;3;455;U16;;PrtAlrm 24;;1;0;;4
+378;3;455_0_1;BITS;;Ground fault 24;;1;0;;4
+379;3;455_1_1;BITS;;DC over voltage 24;;1;0;;4
+380;3;455_2_1;BITS;;Reverse polarity 24;;1;0;;4
+381;3;455_3_1;BITS;;DC disconnected 24;;1;0;;4
+382;3;455_6_1;BITS;;Emergency Relay 24;;1;0;;4
+383;3;455_7_1;BITS;;DC Port disabled 24;;1;0;;4
+384;3;455_14_1;BITS;;Internal communication error 24;;1;0;;4
+385;3;8192;U16;;Alarm word 0;;1;0;;4
+386;3;8192_0_1;BITS;;Software error;;1;0;;4
+387;3;8192_2_1;BITS;;Firmware error;;1;0;;4
+388;3;8192_3_1;BITS;;Not calibrated CCU;;1;0;;4
+389;3;8192_4_1;BITS;;Wrong Inverter's GP Code;;1;0;;4
+390;3;8192_5_1;BITS;;CCU version error;;1;0;;4
+391;3;8192_6_1;BITS;;FW startup;;1;0;;4
+392;3;8192_7_1;BITS;;Plant Controller communications error;;1;0;;4
+393;3;8192_8_1;BITS;;Cooling fan communications error;;1;0;;4
+394;3;8192_10_1;BITS;;Wrong Inverter's Serial Number;;1;0;;4
+395;3;8192_11_1;BITS;;Inverter configuration error;;1;0;;4
+396;3;8192_13_1;BITS;;Inverter PWM synchronization error;;1;0;;4
+397;3;8192_15_1;BITS;;Voltage measurement configuration error (W119);;1;0;;4
+398;3;8193;U16;;Alarm word 1;;1;0;;4
+399;3;8193_0_1;BITS;;Emergency relay;;1;0;;4
+400;3;8193_1_1;BITS;;Start/Stop switch;;1;0;;4
+401;3;8193_2_1;BITS;;DC Switch 1 Non Ready To Close;;1;0;;4
+402;3;8193_3_1;BITS;;DC Switch 2 Non Ready To Close;;1;0;;4
+403;3;8193_4_1;BITS;;AC Breaker 1 Trip;;1;0;;4
+404;3;8193_5_1;BITS;;AC Breaker 1 Non Ready To Close;;1;0;;4
+405;3;8193_6_1;BITS;;AC Breaker 2 Trip;;1;0;;4
+406;3;8193_7_1;BITS;;AC Breaker 2 Non Ready To Close;;1;0;;4
+407;3;8193_8_1;BITS;;Isolation Monitor 1 Alarm;R_ISO;1;0;;4
+408;3;8193_9_1;BITS;;Isolation Monitor 2 Alarm;;1;0;;4
+409;3;8193_10_1;BITS;;DC Grounding Protection Alarm;;1;0;;4
+410;3;8193_11_1;BITS;;Voltage grid measurement protection trip;;1;0;;4
+411;3;8193_12_1;BITS;;Harmonic Filter Discharge Contactors Feedback Error;;1;0;;4
+412;3;8193_13_1;BITS;;Supercaps protection trip;;1;0;;4
+413;3;8193_14_1;BITS;;Shunt Ground Current Monitor Alarm;;1;0;;4
+414;3;8193_15_1;BITS;;Humidity above 95%;HUMIDITY;1;0;;4
+415;3;8194;U16;;Alarm word 2;;1;0;;4
+416;3;8194_0_1;BITS;;High air outlet temperature;;1;0;;4
+417;3;8194_1_1;BITS;;Very high air outlet temperature;;1;0;;4
+418;3;8194_2_1;BITS;;High temperature in Harmonic filter;;1;0;;4
+419;3;8194_3_1;BITS;;Very high temperature in Harmonic filter;;1;0;;4
+420;3;8194_4_1;BITS;;High temperature in DC switch 2 area;;1;0;;4
+421;3;8194_5_1;BITS;;Very high temperature in DC switch 2 area;;1;0;;4
+422;3;8194_6_1;BITS;;High temperature in power block 1 area;;1;0;;4
+423;3;8194_7_1;BITS;;Very high temperature in power block 1 area;;1;0;;4
+424;3;8194_8_1;BITS;;High temperature in power block 2 area;;1;0;;4
+425;3;8194_9_1;BITS;;Very high temperature in power block 2 area;;1;0;;4
+426;3;8194_10_1;BITS;;High temperature in DC fuses area;;1;0;;4
+427;3;8194_11_1;BITS;;Very high temperature in DC fuses area;;1;0;;4
+428;3;8194_12_1;BITS;;High temperature in AC switch area;;1;0;;4
+429;3;8194_13_1;BITS;;Very high temperature in AC switch area;;1;0;;4
+430;3;8194_14_1;BITS;;High core temperature in inductance section 1;;1;0;;4
+431;3;8194_15_1;BITS;;Very high core temperature in inductance section 1;;1;0;;4
+432;3;8195;U16;;Alarm word 3;;1;0;;4
+433;3;8195_0_1;BITS;;Very high instantaneous voltage;;1;0;;4
+434;3;8195_1_1;BITS;;High grid frequency and low grid voltage;;1;0;;4
+435;3;8195_3_1;BITS;;High RMS voltage phase 1;;1;0;;4
+436;3;8195_4_1;BITS;;High RMS voltage phase 2;U_AC_2;1;0;;4
+437;3;8195_5_1;BITS;;High RMS voltage phase 3;U_AC_3;1;0;;4
+438;3;8195_6_1;BITS;;Very high RMS voltage phase 1;;1;0;;4
+439;3;8195_7_1;BITS;;Very high RMS voltage phase 2;;1;0;;4
+440;3;8195_8_1;BITS;;Very high RMS voltage phase 3;;1;0;;4
+441;3;8195_9_1;BITS;;Extra high RMS voltage phase 1;;1;0;;4
+442;3;8195_10_1;BITS;;Extra high RMS voltage phase 2;;1;0;;4
+443;3;8195_11_1;BITS;;Extra high RMS voltage phase 3;;1;0;;4
+444;3;8195_12_1;BITS;;High temperature in power block area;;1;0;;4
+445;3;8195_13_1;BITS;;Very High temperature in power block area;;1;0;;4
+446;3;8195_14_1;BITS;;High temperature in harmonic filter ambient;;1;0;;4
+447;3;8195_15_1;BITS;;Very High temperature in harmonic filter ambient;;1;0;;4
+448;3;8196;U16;;Alarm word 4;;1;0;;4
+449;3;8196_0_1;BITS;;Low RMS voltage phase 1;;1;0;;4
+450;3;8196_1_1;BITS;;Low RMS voltage phase 2;;1;0;;4
+451;3;8196_2_1;BITS;;Low RMS voltage phase 3;;1;0;;4
+452;3;8196_3_1;BITS;;Very low RMS voltage phase 1;;1;0;;4
+453;3;8196_4_1;BITS;;Very low RMS voltage phase 2;;1;0;;4
+454;3;8196_5_1;BITS;;Very low RMS voltage phase 3;;1;0;;4
+455;3;8196_6_1;BITS;;Extra low RMS voltage phase 1;;1;0;;4
+456;3;8196_7_1;BITS;;Extra low RMS voltage phase 2;;1;0;;4
+457;3;8196_8_1;BITS;;Extra low RMS voltage phase 3;;1;0;;4
+458;3;8196_9_1;BITS;;Asymmetry in grid voltages;;1;0;;4
+459;3;8196_10_1;BITS;;Grid sequence error;;1;0;;4
+460;3;8196_11_1;BITS;;Not supported dip;;1;0;;4
+461;3;8196_12_1;BITS;;Too many detected faults;;1;0;;4
+462;3;8196_13_1;BITS;;Grid phase error in precharge on section 1;;1;0;;4
+463;3;8196_14_1;BITS;;Grid phase error in precharge on section 2;;1;0;;4
+464;3;8196_15_1;BITS;;Not supported over voltage;;1;0;;4
+465;3;8197;U16;;Alarm word 5;;1;0;;4
+466;3;8197_0_1;BITS;;High grid frequency;;1;0;;4
+467;3;8197_1_1;BITS;;Very high grid frequency;;1;0;;4
+468;3;8197_2_1;BITS;;Extra high grid frequency;;1;0;;4
+469;3;8197_3_1;BITS;;Low grid frequency;;1;0;;4
+470;3;8197_4_1;BITS;;Very low grid frequency;;1;0;;4
+471;3;8197_5_1;BITS;;Extra low grid frequency;;1;0;;4
+472;3;8197_6_1;BITS;;Extra extra low grid frequency;;1;0;;4
+473;3;8197_7_1;BITS;;Extra extra extra low grid frequency;;1;0;;4
+474;3;8197_8_1;BITS;;High grid frequency for startup;;1;0;;4
+475;3;8197_9_1;BITS;;Low DC voltage on bridge 1 in short circuit test;;1;0;;4
+476;3;8197_10_1;BITS;;Low DC voltage on bridge 2 in short circuit test;;1;0;;4
+477;3;8197_11_1;BITS;;Current error on bridge 1 in short circuit test;;1;0;;4
+478;3;8197_12_1;BITS;;Current error on bridge 2 in short circuit test;;1;0;;4
+479;3;8197_13_1;BITS;;Not enough UDC to close AC contactor on bridge 1;;1;0;;4
+480;3;8197_14_1;BITS;;Not enough UDC to close AC contactor on bridge 2;;1;0;;4
+481;3;8197_15_1;BITS;;High voltage for startup;;1;0;;4
+482;3;8198;U16;;Alarm word 6;;1;0;;4
+483;3;8198_0_1;BITS;;Asymmetry in grid currents on section 1;;1;0;;4
+484;3;8198_1_1;BITS;;Instantaneous over current on section 1;;1;0;;4
+485;3;8198_2_1;BITS;;Leakage total output current error;;1;0;;4
+486;3;8198_4_1;BITS;;Driver error on section 1 power module phase 1;;1;0;;4
+487;3;8198_5_1;BITS;;Driver error on section 1 power module phase 2;;1;0;;4
+488;3;8198_6_1;BITS;;Driver error on section 1 power module phase 3;;1;0;;4
+489;3;8198_7_1;BITS;;Leakage output current error on section 1;;1;0;;4
+490;3;8198_8_1;BITS;;Filter area temperature out of range;;1;0;;4
+491;3;8198_9_1;BITS;;Output current offset error on section 1 phase 1;;1;0;;4
+492;3;8198_10_1;BITS;;Output current offset error on section 1 phase 2;;1;0;;4
+493;3;8198_11_1;BITS;;Output current offset error on section 1 phase 3;;1;0;;4
+494;3;8198_12_1;BITS;;Inductive core 2 temperature out of range;;1;0;;4
+495;3;8198_13_1;BITS;;AC switch area temperature out of range;;1;0;;4
+496;3;8198_14_1;BITS;;High CCU SOC temperature;;1;0;;4
+497;3;8198_15_1;BITS;;Very high CCU SOC temperature;;1;0;;4
+498;3;8199;U16;;Alarm word 7;;1;0;;4
+499;3;8199_0_1;BITS;;Very high voltage on DC bus 1;;1;0;;4
+500;3;8199_1_1;BITS;;Precharge timeout for section 1;;1;0;;4
+501;3;8199_2_1;BITS;;Charge timeout for section 1;;1;0;;4
+502;3;8199_3_1;BITS;;Very low voltage on DC bus 1;;1;0;;4
+503;3;8199_4_1;BITS;;Panel voltages are different;;1;0;;4
+504;3;8199_5_1;BITS;;Modbus server Added new socket;;1;0;;4
+505;3;8199_6_1;BITS;;Modbus server Server frozen;;1;0;;4
+506;3;8199_7_1;BITS;;Modbus server Closed orphan socket;;1;0;;4
+507;3;8199_8_1;BITS;;Reverse polarity on panel conection 1;;1;0;;4
+508;3;8199_9_1;BITS;;Reverse polarity on panel conection 2;;1;0;;4
+509;3;8199_10_1;BITS;;Very high voltage on panel 1;;1;0;;4
+510;3;8199_11_1;BITS;;Very high voltage on panel 2;;1;0;;4
+511;3;8199_12_1;BITS;;Temperature on section 1 any power module out of range;TEMP_CELL;1;0;;4
+512;3;8199_13_1;BITS;;Temperature on section 2 any power module out of range;;1;0;;4
+513;3;8199_14_1;BITS;;Low cooling temperature out of range;;1;0;;4
+514;3;8199_15_1;BITS;;High cooling temperature out of range;;1;0;;4
+515;3;8200;U16;;Alarm word 8;;1;0;;4
+516;3;8200_0_1;BITS;;Cooler trip;;1;0;;4
+517;3;8200_1_1;BITS;;Humidity above 50% power module cabinet;;1;0;;4
+518;3;8200_2_1;BITS;;Humidity above 75% in control cabinet;;1;0;;4
+519;3;8200_3_1;BITS;;Maximum humidity;;1;0;;4
+520;3;8200_4_1;BITS;;Top coolers trip;;1;0;;4
+521;3;8200_5_1;BITS;;Dangerous voltage level on DC bus 1;;1;0;;4
+522;3;8200_6_1;BITS;;Dangerous voltage level on DC bus 2;;1;0;;4
+523;3;8200_7_1;BITS;;Shunt Ground Current Monitor Warning;;1;0;;4
+524;3;8200_8_1;BITS;;Ambient conditions and 230Vac to filter breaker feedback;;1;0;;4
+525;3;8200_9_1;BITS;;Harmonic filter main contactor error;;1;0;;4
+526;3;8200_10_1;BITS;;Active and reactive power limited;CMD_P_AC_SET_ABS;1;0;;1
+527;3;8200_11_1;BITS;;Maximum Advanced Grounding Kit test error limit reached;;1;0;;4
+528;3;8200_12_1;BITS;;Doing Grounding Kit test in STATCOM;;1;0;;4
+529;3;8200_13_1;BITS;;Internal Cooler filter replace needed;;1;0;;4
+530;3;8200_14_1;BITS;;Internal Cooler filter replace mandatory;;1;0;;4
+531;3;8200_15_1;BITS;;Advanced Grounding Kit test error;;1;0;;4
+532;3;8201;U16;;Alarm word 9;;1;0;;4
+533;3;8201_0_1;BITS;;High coil temperature in inductance section 1;;1;0;;4
+534;3;8201_1_1;BITS;;Very high coil temperature in inductance section 1;;1;0;;4
+535;3;8201_2_1;BITS;;High core temperature in inductance section 2;;1;0;;4
+536;3;8201_3_1;BITS;;Very high core temperature in inductance section 2;;1;0;;4
+537;3;8201_4_1;BITS;;High coil temperature in inductance section 2;;1;0;;4
+538;3;8201_5_1;BITS;;High temperature in section 1 power module phase 1;;1;0;;4
+539;3;8201_6_1;BITS;;Over temperature in section 1 power module phase 1;;1;0;;4
+540;3;8201_7_1;BITS;;High temperature in section 1 power module phase 2;;1;0;;4
+541;3;8201_8_1;BITS;;Over temperature in section 1 power module phase 2;;1;0;;4
+542;3;8201_9_1;BITS;;High temperature in section 1 power module phase 3;;1;0;;4
+543;3;8201_10_1;BITS;;Over temperature in section 1 power module phase 3;;1;0;;4
+544;3;8201_11_1;BITS;;Very high coil temperature in inductance section 2;;1;0;;4
+545;3;8201_12_1;BITS;;High external ambient temperature;;1;0;;4
+546;3;8201_13_1;BITS;;Very high external ambient temperature;;1;0;;4
+547;3;8201_14_1;BITS;;Low external ambient temperature;;1;0;;4
+548;3;8201_15_1;BITS;;Very low external ambient temperature;;1;0;;4
+549;3;8202;U16;;Alarm word 10;;1;0;;4
+550;3;8202_0_1;BITS;;Asymmetry in grid currents on section 2;;1;0;;4
+551;3;8202_1_1;BITS;;Instantaneous over current on section 2;;1;0;;4
+552;3;8202_2_1;BITS;;High CCU temperature;;1;0;;4
+553;3;8202_3_1;BITS;;Very high CCU temperature;;1;0;;4
+554;3;8202_4_1;BITS;;High delta temperature;;1;0;;4
+555;3;8202_5_1;BITS;;Very high delta temperature;;1;0;;4
+556;3;8202_6_1;BITS;;External ambient temperature out of range;;1;0;;4
+557;3;8202_7_1;BITS;;Leakage output current error on section 2;;1;0;;4
+558;3;8203;U16;;Alarm word 11;;1;0;;4
+559;3;8203_0_1;BITS;;Very high voltage on DC bus 2;;1;0;;4
+560;3;8203_1_1;BITS;;Precharge timeout for section 2;;1;0;;4
+561;3;8203_2_1;BITS;;Charge timeout for section 2;;1;0;;4
+562;3;8203_3_1;BITS;;Very low voltage on DC bus 2;;1;0;;4
+563;3;8203_4_1;BITS;;Emergency Relay feedback error;;1;0;;4
+564;3;8203_5_1;BITS;;Precharge contactor alarm;;1;0;;4
+565;3;8203_6_1;BITS;;AC Breaker 1 feedback error;;1;0;;4
+566;3;8203_7_1;BITS;;AC Breaker 2 feedback error;;1;0;;4
+567;3;8203_8_1;BITS;;Power limited by operator on section 1;;1;0;;4
+568;3;8203_9_1;BITS;;Power limited by operator on section 2;;1;0;;4
+569;3;8203_10_1;BITS;;Section 1 disabled;;1;0;;4
+570;3;8203_11_1;BITS;;Section 2 disabled;;1;0;;4
+571;3;8203_12_1;BITS;;DC Switch 1 feedback error;;1;0;;4
+572;3;8203_13_1;BITS;;DC Switch 2 feedback error;;1;0;;4
+573;3;8203_14_1;BITS;;Liquid refrigeration pump feedback error;;1;0;;4
+574;3;8203_15_1;BITS;;Cooling liquid heater feedback error;;1;0;;4
+575;3;8204;U16;;Alarm word 12;;1;0;;4
+576;3;8204_0_1;BITS;;Instantaneous over current on section 1 phase 1 (hardware detection);;1;0;;4
+577;3;8204_1_1;BITS;;Instantaneous over current on section 1 phase 2 (hardware detection);;1;0;;4
+578;3;8204_2_1;BITS;;Instantaneous over current on section 1 phase 3 (hardware detection);;1;0;;4
+579;3;8204_3_1;BITS;;Instantaneous over current on section 2 phase 1 (hardware detection);;1;0;;4
+580;3;8204_4_1;BITS;;Instantaneous over current on section 2 phase 2 (hardware detection);;1;0;;4
+581;3;8204_5_1;BITS;;Instantaneous over current on section 2 phase 3 (hardware detection);;1;0;;4
+582;3;8204_6_1;BITS;;Air inlet temperature out of range;;1;0;;4
+583;3;8204_7_1;BITS;;Air outlet temperature out of range;;1;0;;4
+584;3;8204_8_1;BITS;;Harmonic filter temperature out of range;;1;0;;4
+585;3;8204_9_1;BITS;;DC switch area temperature out of range;;1;0;;4
+586;3;8204_10_1;BITS;;DC fuses area temperature out of range;;1;0;;4
+587;3;8204_11_1;BITS;;Power block 1 area temperature out of range;;1;0;;4
+588;3;8204_12_1;BITS;;Power block 2 area temperature out of range;;1;0;;4
+589;3;8204_13_1;BITS;;Inductive coil 1 temperature out of range;;1;0;;4
+590;3;8204_14_1;BITS;;Inductive coil 2 temperature out of range;;1;0;;4
+591;3;8204_15_1;BITS;;Inductive core 1 temperature out of range;;1;0;;4
+592;3;8205;U16;;Alarm word 13;;1;0;;4
+593;3;8205_0_1;BITS;;Cooling system error;;1;0;;4
+594;3;8205_1_1;BITS;;Liquid refrigeration pump error;;1;0;;4
+595;3;8205_2_1;BITS;;Cooling liquid heater error;;1;0;;4
+596;3;8205_3_1;BITS;;Liquid refrigeration cooler error;;1;0;;4
+597;3;8205_4_1;BITS;;Low pressure error;PRESSURE;1;0;;4
+598;3;8205_5_1;BITS;;High differential pressure error;;1;0;;4
+599;3;8205_6_1;BITS;;Inverter PWM syncing...;;1;0;;4
+600;3;8205_7_1;BITS;;Proportional electrovalve feedback error;;1;0;;4
+601;3;8205_8_1;BITS;;Cooling liquid temperature too low;;1;0;;4
+602;3;8205_9_1;BITS;;High pressure error;;1;0;;4
+603;3;8205_10_1;BITS;;Cooling liquid temperature too high;;1;0;;4
+604;3;8205_11_1;BITS;;Top Cooler fan 1 misfunction;;1;0;;4
+605;3;8205_12_1;BITS;;Top Cooler fan 2 misfunction;;1;0;;4
+606;3;8205_13_1;BITS;;Top Cooler fan 3 misfunction;;1;0;;4
+607;3;8205_14_1;BITS;;Top Cooler fan 4 misfunction;;1;0;;4
+608;3;8205_15_1;BITS;;Cooling liquid temperature low;;1;0;;4
+609;3;8206;U16;;Alarm word 14;;1;0;;4
+610;3;8206_0_1;BITS;;Asymmetry in harmonic filter current;;1;0;;4
+611;3;8206_1_1;BITS;;Instantaneous over current on harmonic filter;;1;0;;4
+612;3;8206_2_1;BITS;;Leakage harmonic filter current error;;1;0;;4
+613;3;8206_3_1;BITS;;Harmonic filter current offset error phase 1;;1;0;;4
+614;3;8206_4_1;BITS;;Harmonic filter current offset error phase 2;;1;0;;4
+615;3;8206_5_1;BITS;;Harmonic filter current offset error phase 3;;1;0;;4
+616;3;8206_6_1;BITS;;Maximum harmonic filter current error;;1;0;;4
+617;3;8206_7_1;BITS;;Minimum harmonic filter current error;;1;0;;4
+618;3;8206_8_1;BITS;;Power is being limited by high temperature on section 1;;1;0;;4
+619;3;8206_9_1;BITS;;Power is being limited by high temperature on section 2;;1;0;;4
+620;3;8205_10_1;BITS;;Power is being limited by power module overvoltage on section 1;;1;0;;4
+621;3;8205_11_1;BITS;;Power is being limited by power module overvoltage on section 2;;1;0;;4
+622;3;8205_12_1;BITS;;Power is being limited by high internal temperature;;1;0;;4
+623;3;8205_13_1;BITS;;Power is being limited by high external temperature;;1;0;;4
+624;3;8205_14_1;BITS;;Waiting for thermal conditioning to start;;1;0;;4
+625;3;8205_15_1;BITS;;Power is being limited by high internal temperature in DC area;;1;0;;4
+626;3;8207;U16;;Alarm word 15;;1;0;;4
+627;3;8207_0_1;BITS;;Emergency order received;;1;0;;4
+628;3;8207_1_1;BITS;;AC disconnect order received;;1;0;;4
+629;3;8207_2_1;BITS;;Discharge order received;;1;0;;4
+630;3;8207_3_1;BITS;;Top cooler 1 communications error;;1;0;;4
+631;3;8207_4_1;BITS;;Top cooler 2 communications error;;1;0;;4
+632;3;8207_5_1;BITS;;Top cooler 3 communications error;;1;0;;4
+633;3;8207_6_1;BITS;;Top cooler 4 communications error;;1;0;;4
+634;3;8207_7_1;BITS;;Temperature measurements communications failure;;1;0;;4
+635;3;8207_8_1;BITS;;Current measurements 1 communications failure;;1;0;;4
+636;3;8207_9_1;BITS;;Power limited by high frequency;;1;0;;4
+637;3;8207_10_1;BITS;;Power limited by high voltage;;1;0;;4
+638;3;8207_11_1;BITS;;Internal fan difference between setpoint and feedback;;1;0;;4
+639;3;8207_13_1;BITS;;Apparent Power is being limited by high external temperature;;1;0;;4
+640;3;8207_14_1;BITS;;Reactive Power is being limited by high external temperature;;1;0;;4
+641;3;8207_15_1;BITS;;Active Power is being limited by high external temperature;;1;0;;4
+642;3;8208;U16;;Alarm word 16;;1;0;;4
+643;3;8208_0_1;BITS;;Preventive maintenance warning;WIND_SPEED;1;0;;4
+644;3;8208_1_1;BITS;;Preventive maintenance alarm};;1;0;;4
+645;3;8208_2_1;BITS;;Preventive maintenance warning: Precharge 1;;1;0;;4
+646;3;8208_3_1;BITS;;Preventive maintenance alarm: Precharge 1;;1;0;;4
+647;3;8208_4_1;BITS;;Preventive maintenance warning: Precharge 2;;1;0;;4
+648;3;8208_5_1;BITS;;Preventive maintenance alarm: Precharge 2;;1;0;;4
+649;3;8208_6_1;BITS;;Preventive maintenance warning: DC Switch 1;;1;0;;4
+650;3;8208_7_1;BITS;;Preventive maintenance alarm: DC Switch 1;;1;0;;4
+651;3;8208_8_1;BITS;;Preventive maintenance warning: DC Switch 2;;1;0;;4
+652;3;8208_9_1;BITS;;Preventive maintenance alarm: DC Switch 2;;1;0;;4
+653;3;8208_10_1;BITS;;Preventive maintenance warning: AC Breaker 1;;1;0;;4
+654;3;8208_11_1;BITS;;Preventive maintenance alarm: AC Breaker 1;;1;0;;4
+655;3;8208_12_1;BITS;;Preventive maintenance warning: AC Breaker 2;;1;0;;4
+656;3;8208_13_1;BITS;;Preventive maintenance alarm: AC Breaker 2;;1;0;;4
+657;3;8208_14_1;BITS;;Preventive maintenance warning: Harmonic filter;;1;0;;4
+658;3;8208_15_1;BITS;;Preventive maintenance alarm: Harmonic filter;;1;0;;4
+659;3;8209;U16;;Alarm word 17;;1;0;;4
+660;3;8209_0_1;BITS;;Precharge fault for section 1;;1;0;;4
+661;3;8209_1_1;BITS;;Precharge fault for section 2;;1;0;;4
+662;3;8209_2_1;BITS;;High circuit pressure;;1;0;;4
+663;3;8209_3_1;BITS;;Grounding contactor feedback error;;1;0;;4
+664;3;8209_4_1;BITS;;Preparing Cooling system Inverter too hot...;;1;0;;4
+665;3;8209_5_1;BITS;;Power is being limited by high internal temperature in Power cabinet;;1;0;;4
+666;3;8209_6_1;BITS;;High temperature in section 2 power module phase 1;;1;0;;4
+667;3;8209_7_1;BITS;;Over temperature in section 2 power module phase 1;;1;0;;4
+668;3;8209_8_1;BITS;;High temperature in section 2 power module phase 2;;1;0;;4
+669;3;8209_9_1;BITS;;Over temperature in section 2 power module phase 2;;1;0;;4
+670;3;8209_10_1;BITS;;High temperature in section 2 power module phase 3;;1;0;;4
+671;3;8209_11_1;BITS;;Over temperature in section 2 power module phase 3;;1;0;;4
+672;3;8209_12_1;BITS;;Soft Stop order received;;1;0;;4
+673;3;8209_13_1;BITS;;Soft Stop Discharge order received;;1;0;;4
+674;3;8209_14_1;BITS;;Humidity protection system engaged problem with liquid heating resistor;;1;0;;4
+675;3;8209_15_1;BITS;;Humidity protection system engaged Delta between power bridge and ambient too low;;1;0;;4
+676;3;8210;U16;;Alarm word 18;;1;0;;4
+677;3;8210_0_1;BITS;;Filter Fan feedback error;;1;0;;4
+678;3;8210_1_1;BITS;;Problem with bridge 1 precharge feedback;;1;0;;4
+679;3;8210_2_1;BITS;;Problem with bridge 2 precharge feedback;;1;0;;4
+680;3;8210_3_1;BITS;;Problem with bridge 1 precharge resistors;;1;0;;4
+681;3;8210_4_1;BITS;;Problem with bridge 2 precharge resistors;;1;0;;4
+682;3;8210_5_1;BITS;;Current measurements 2 communications failure;;1;0;;4
+683;3;8210_6_1;BITS;;External humidity sensor communications failure;;1;0;;4
+684;3;8210_7_1;BITS;;Internal humidity sensor communications failure;;1;0;;4
+685;3;8210_8_1;BITS;;Current measurements TCP gateway communications failure;;1;0;;4
+686;3;8210_10_1;BITS;;Alarm relay of Shunt Ground Current Monitor enabled;;1;0;;4
+687;3;8210_11_1;BITS;;Force stop Generating to Waiting state;;1;0;;4
+688;3;8210_12_1;BITS;;Force stop STATCOM to Generating state;;1;0;;4
+689;3;8211;U16;;Alarm word 19;;1;0;;4
+690;3;8211_0_1;BITS;;Discharge malfunction;;1;0;;4
+691;3;8211_1_1;BITS;;AntiPID contactor feedback;;1;0;;4
+692;3;8211_2_1;BITS;;Auxiliary CAN communications failure;;1;0;;4
+693;3;8211_3_1;BITS;;AntiPID disabled due to feedback fault;;1;0;;4
+694;3;8211;U16;;Alarm word 20;;1;0;;4
+695;3;8212;U16;;Alarm word 21;;1;0;;4
+696;3;8213;U16;;Alarm word 22;;1;0;;4
+697;3;8214;U16;;Alarm word 23;;1;0;;4
+698;3;8215;U16;;Alarm word 24;;1;0;;4
+699;3;8216;U16;;Alarm word 25;;1;0;;4
+700;3;8217;U16;;Alarm word 26;;1;0;;4
+701;3;8218;U16;;Alarm word 27;;1;0;;4
+702;3;8219;U16;;Alarm word 28;;1;0;;4
+703;3;8220;U16;;Alarm word 29;;1;0;;4
+704;3;8221;U16;;Alarm word 30;;1;0;;4
+705;3;8222;U16;;Alarm word 31;;1;0;;4
+706;3;8222_0_1;BITS;;High voltage to close DC contactor on section 1;;1;0;;4
+707;3;8222_1_1;BITS;;High voltage to close DC contactor on section 2;;1;0;;4
+708;3;20480;F32;;External ambient temperature;;1;0;Deg. Celsius;4
+709;3;20482;F32;;Air Cooling temperature. Input;;1;0;Deg. Celsius;4
+710;3;20484;F32;;Air Cooling temperature. Output;;1;0;Deg. Celsius;4
+711;3;20486;F32;;Harmonic filter temperature of inductance;;1;0;Deg. Celsius;4
+712;3;20488;F32;;DC cabinet switch area ambient temperature;;1;0;Deg. Celsius;4
+713;3;20490;F32;;DC cabinet fuses area ambient temperature;;1;0;Deg. Celsius;4
+714;3;20492;F32;;Section 1 power cabinet ambient temperature;;1;0;Deg. Celsius;4
+715;3;20494;F32;;Section 2 power cabinet ambient temperature;;1;0;Deg. Celsius;4
+716;3;20496;F32;;Section 1 temperature of inductance. Coil;;1;0;Deg. Celsius;4
+717;3;20498;F32;;Section 2 temperature of inductance. Coil;;1;0;Deg. Celsius;4
+718;3;20500;F32;;Section 1 temperature of inductance. Core;;1;0;Deg. Celsius;4
+719;3;20502;F32;;Section 2 temperature of inductance. Core;;1;0;Deg. Celsius;4
+720;3;20504;F32;;AC cabinet switch area ambient temperature;;1;0;Deg. Celsius;4
+721;3;20506;F32;;Liquid cooling temperature. Low.;;1;0;Deg. Celsius;4
+722;3;20508;F32;;Liquid cooling temperature. High.;;1;0;Deg. Celsius;4
+723;3;20510;F32;;Liquid cooling pressure. Low.;;1;0;Deg. Celsius;4
+724;3;20512;F32;;Liquid cooling pressure. High.;;1;0;Deg. Celsius;4
+725;3;20514;F32;;Liquid cooling flow;;1;0;Deg. Celsius;4
+726;3;20516;F32;;Section 1 Phase 1 power module temperature;;1;0;Deg. Celsius;4
+727;3;20518;F32;;Section 1 Phase 2 power module temperature;;1;0;Deg. Celsius;4
+728;3;20520;F32;;Section 1 Phase 3 power module temperature;;1;0;Deg. Celsius;4
+729;3;20522;F32;;Section 2 Phase 1 power module temperature;;1;0;Deg. Celsius;4
+730;3;20524;F32;;Section 2 Phase 2 power module temperature;;1;0;Deg. Celsius;4
+731;3;20526;F32;;Section 2 Phase 3 power module temperature;;1;0;Deg. Celsius;4
+732;3;20528;F32;;Section 1 DC Voltage Measurement (Udc1);;1;0;V;4
+733;3;20530;F32;;Section 2 DC Voltage Measurement (Udc2);;1;0;V;4
+734;3;20532;F32;;Section 1 DC Current Measurement (Idc1);;1;0;A;4
+735;3;20534;F32;;Section 2 DC Current Measurement (Idc2);;1;0;A;4
+736;3;20536;F32;;Liquid cooling heat exchange fan 1 speed;;1;0;%;4
+737;3;20538;F32;;Liquid cooling heat exchange fan 2 speed;;1;0;%;4
+738;3;20540;F32;;Liquid cooling heat exchange fan 3 speed;;1;0;%;4
+739;3;20542;F32;;Liquid cooling heat exchange fan 4 speed;;1;0;%;4
+740;3;20544;F32;;Air cooling forced ventilation fan speed;;1;0;m3/h;4
+741;3;20546;F32;;CCU internal temperature;;1;0;Deg. Celsius;4
+742;3;20548;F32;;Speed setpoint for liquid cooling heat exchange fans;;1;0;%;4
+743;3;20550;F32;;Flow setpoint for air cooling forced ventilation fan;;1;0;m3/h;4

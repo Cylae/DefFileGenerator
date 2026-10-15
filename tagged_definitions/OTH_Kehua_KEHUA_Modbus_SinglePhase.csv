@@ -1,0 +1,160 @@
+﻿modbusRTU;Other;Kehua;KEHUA_Modbus_SinglePhase;;;;;;;
+1;4;4501;U16;;Device status;device_status;1.000000;0.000000;;8
+2;4;4502;U16;;Grid voltage;grid_voltage;0.100000;0.000000;V;4
+3;4;4503;U16;;Grid current;grid_current;0.100000;0.000000;A;4
+4;4;4504;U16;;Grid frequency;FREQ;0.100000;0.000000;Hz;4
+5;4;4505;U16;;Daily power generation;E_DAY;0.100000;0.000000;kWh;4
+6;4;4506;U16;;Daily On-grid generation;daily_ongrid_generation;0.100000;0.000000;kWh;4
+7;4;4507;I16;;On-grid apparent power;ongrid_apparent_power;1.000000;0.000000;VA;4
+8;4;4508;I16;;On-grid active power;ongrid_active_power;1.000000;0.000000;W;4
+9;4;4509;I16;;On-grid reactive power;ongrid_reactive_power;1.000000;0.000000;Var;4
+10;4;4510;U16;;Inverter voltage;inverter_voltage;0.100000;0.000000;V;4
+11;4;4511;U16;;Inverter current;inverter_current;0.100000;0.000000;A;4
+12;4;4512;U16;;Inverter frequency;inverter_frequency;0.100000;0.000000;Hz;4
+13;4;4513;U16;;load voltage;load_voltage;0.100000;0.000000;V;4
+14;4;4514;U16;;load current;load_current;0.100000;0.000000;A;4
+15;4;4515;U16;;Daily load power consumption;daily_load_power_consumption;0.100000;0.000000;kWh;4
+16;4;4516;U16;;Load apparent power;load_apparent_power;1.000000;0.000000;VA;4
+17;4;4517;U16;;Load active power;load_active_power;1.000000;0.000000;W;4
+18;4;4518;U16;;Load reactive power;load_reactive_power;1.000000;0.000000;Var;4
+19;4;4519;I16;;Power factor;PF;0.010000;0.000000;;4
+20;4;4520;U16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+21;4;4521;I16;;PV1 current;pv1_current;0.100000;0.000000;A;4
+22;4;4522;I16;;PV1 power;pv1_power;1.000000;0.000000;W;4
+23;4;4523;U16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+24;4;4524;I16;;PV2 current;pv2_current;0.100000;0.000000;A;4
+25;4;4525;I16;;PV2 power;pv2_power;1.000000;0.000000;W;4
+26;4;4526;U16;;PV daily power generation;pv_daily_power_generation;0.100000;0.000000;kWh;4
+27;4;4527;U16;;Battery status;battery_status;1.000000;0.000000;;4
+28;4;4528;U16;;Battery voltage;battery_voltage;0.100000;0.000000;V;4
+29;4;4529;I16;;Battery current;battery_current;0.100000;0.000000;A;4
+30;4;4530;I16;;Battery maximum temperature;battery_maximum_temperature;0.100000;0.000000;C;4
+31;4;4531;I16;;Battery minimum temperature;battery_minimum_temperature;0.100000;0.000000;C;4
+32;4;4532;U16;;Battery daily charging amount;battery_daily_charging_amount;0.100000;0.000000;kWh;4
+33;4;4533;U16;;Battery daily discharging amount;battery_daily_discharging_amount;0.100000;0.000000;kWh;4
+34;4;4534;I16;;internal temperature;internal_temperature;0.100000;0.000000;C;4
+35;4;4535;U16;;Battery discharging power;battery_discharging_power;1.000000;0.000000;W;4
+36;4;4536;U16;;Battery charging power;battery_charging_power;1.000000;0.000000;W;4
+37;4;4537;U16;;PV total power;pv_total_power;1.000000;0.000000;W;4
+38;4;4538;U32;;Grid-connected power total generation (Grid output electric quantity);gridconnected_power_total_generation_grid_output_electric_quantity;0.100000;0.000000;kWh;4
+39;4;4540;U32;;PV total generation;pv_total_generation;0.100000;0.000000;kWh;4
+40;4;4542;U32;;Running time (on-grid-off-grid);running_time_ongridoffgrid;0.100000;0.000000;h;4
+41;4;4544;U16;;Battery SOC;battery_soc;0.100000;0.000000;'%;4
+42;4;4545;U16;;Maximum single battery voltage;maximum_single_battery_voltage;0.001000;0.000000;V;4
+43;4;4546;U16;;Minimum single battery voltage;minimum_single_battery_voltage;0.001000;0.000000;V;4
+44;4;4547;U16;;Battery SOH;battery_soh;0.100000;0.000000;'%;4
+45;4;4551;U32;;Load total power consumption;load_total_power_consumption;0.010000;0.000000;kWh;4
+46;4;4553;U32;;Grid-connected total power consumption (Grid input);gridconnected_total_power_consumption_grid_input;0.010000;0.000000;kWh;4
+47;4;4555;U16;;Secondary load voltage;secondary_load_voltage;0.100000;0.000000;V;4
+48;4;4556;U16;;Secondary load current;secondary_load_current;0.100000;0.000000;A;4
+49;4;4557;U16;;Secondary load active power;secondary_load_active_power;1.000000;0.000000;W;4
+50;4;4558;I16;;Secondary load reactive power;secondary_load_reactive_power;1.000000;0.000000;Var;4
+51;4;4559;U16;;Secondary load apparent power;secondary_load_apparent_power;1.000000;0.000000;VA;4
+52;4;4560;U16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+53;4;4561;I16;;PV3 current;pv3_current;0.100000;0.000000;A;4
+54;4;4562;I16;;PV3 power;pv3_power;1.000000;0.000000;W;4
+55;4;4563;U16;;PV4 voltage;pv4_voltage;0.100000;0.000000;V;4
+56;4;4564;I16;;PV4 current;pv4_current;0.100000;0.000000;A;4
+57;4;4565;I16;;PV4 power;pv4_power;1.000000;0.000000;W;4
+58;4;4850;U16;;Device type;device_type;1.000000;0.000000;;4
+59;4;4851;U16;;MPPT quantity;mppt_quantity;1.000000;0.000000;;4
+60;4;4852;U16;;Protocol type;protocol_type;1.000000;0.000000;;4
+61;4;4853_10;STRING;;Protocol version(ASCII);protocol_versionascii;1.000000;0.000000;;4
+62;4;4858_30;STRING;;Manufacturer information(ASCII);manufacturer_informationascii;1.000000;0.000000;;4
+63;4;4874;U16;;Remaining time of probation;remaining_time_of_probation;1.000000;0.000000;h;4
+64;4;4901_20;STRING;;Battery model;battery_model;1.000000;0.000000;;4
+65;4;4911;U16;;BMS alarm code 1;bms_alarm_code_1;1.000000;0.000000;;4
+66;4;4912;U16;;BMS alarm code 2;bms_alarm_code_2;1.000000;0.000000;;4
+67;4;4913;U16;;BMS alarm code 3;bms_alarm_code_3;1.000000;0.000000;;4
+68;4;4914;U16;;BMS alarm code 4;bms_alarm_code_4;1.000000;0.000000;;4
+69;4;4915;U16;;BMS alarm code 1_1;bms_alarm_code_1_1;1.000000;0.000000;;4
+70;4;4916;U16;;BMS alarm code 2_1;bms_alarm_code_2_1;1.000000;0.000000;;4
+71;4;4917;U16;;BMS alarm code 3_1;bms_alarm_code_3_1;1.000000;0.000000;;4
+72;4;4918;U16;;BMS alarm code 4_1;bms_alarm_code_4_1;1.000000;0.000000;;4
+73;4;4919;U16;;BMS status code;bms_status_code;1.000000;0.000000;s;4
+74;4;4920;U16;;BMS battery voltage;bms_battery_voltage;0.100000;0.000000;V;4
+75;4;4921;I16;;BMS battery current;bms_battery_current;0.100000;0.000000;A;4
+76;4;4922;U16;;BMS charging limiting current;bms_charging_limiting_current;0.100000;0.000000;A;4
+77;4;4923;U16;;BMS discharging limiting current;bms_discharging_limiting_current;0.100000;0.000000;A;4
+78;4;4924;U16;;BMS charging limiting voltage;bms_charging_limiting_voltage;0.100000;0.000000;V;4
+79;4;4925;U16;;BMS discharging limiting voltage;bms_discharging_limiting_voltage;0.100000;0.000000;V;4
+80;4;5500;I16;;DC component of the inverter voltage;dc_component_of_the_inverter_voltage;0.100000;0.000000;mV;4
+81;4;5501;I16;;DC component of the inverter current;dc_component_of_the_inverter_current;0.100000;0.000000;mA;4
+82;4;5502;U16;;Busbar voltage;busbar_voltage;0.100000;0.000000;V;4
+83;4;5503;I16;;battery up and down voltage inductive current;battery_up_and_down_voltage_inductive_current;0.100000;0.000000;A;4
+84;4;5504;I16;;Radiator temperature;radiator_temperature;0.100000;0.000000;C;4
+85;4;5505;U16;;AC leakage current;ac_leakage_current;0.100000;0.000000;mA;4
+86;4;5506;U16;;Insulation resistance;insulation_resistance;0.100000;0.000000;k/Ohm;4
+87;3;6000;I16;;Power factor_1;power_factor_1;0.010000;0.000000;;4
+88;3;6001;I16;;Reactive power;reactive_power;1.000000;0.000000;Var;4
+89;3;6002;U16;;PV output power;pv_output_power;1.000000;0.000000;'%;4
+90;3;6003;U16;;MPPT perturbation step;mppt_perturbation_step;1.000000;0.000000;V/s Range;4
+91;3;6006;U16;;Maximum charging current of battery;maximum_charging_current_of_battery;0.100000;0.000000;A;4
+92;3;6007;U16;;Maximum discharging current of battery;maximum_discharging_current_of_battery;0.100000;0.000000;A;4
+93;3;6008;U16;;Maximum charging power of battery;maximum_charging_power_of_battery;1.000000;0.000000;W;4
+94;3;6009;U16;;Maximum discharging power of battery;maximum_discharging_power_of_battery;1.000000;0.000000;W;4
+95;3;6010;I16;;Battery charge and discharge power;battery_charge_and_discharge_power;1.000000;0.000000;W;4
+96;3;6011;I16;;Grid control power;grid_control_power;1.000000;0.000000;W;4
+97;3;6200;U16;;Work mode;work_mode;1.000000;0.000000;;4
+98;3;6201;U16;;Maximum backflow power;maximum_backflow_power;1.000000;0.000000;'%;4
+99;3;6202;I16;;Active power;Watts;1.000000;0.000000;W;4
+100;3;6203;U16;;Active power slow start rate;active_power_slow_start_rate;0.010000;0.000000;'%/s;4
+101;3;6204;U16;;Battery temperature compensation factor;battery_temperature_compensation_factor;1.000000;0.000000;mV/C/2V;4
+102;3;6300;U16;;Standard type;standard_type;1.000000;0.000000;;4
+103;3;6302;U16;;Grid-connected recovery time;gridconnected_recovery_time;1.000000;0.000000;s;4
+104;3;6308;U16;;Battery type;battery_type;1.000000;0.000000;;4
+105;3;6309;U16;;Number of parallel batteries;number_of_parallel_batteries;1.000000;0.000000;;4
+106;3;6310;U16;;Battery capacity setting;battery_capacity_setting;1.000000;0.000000;AH;4
+107;3;6311;U16;;Discharge cut-off voltage;discharge_cutoff_voltage;0.100000;0.000000;V;4
+108;3;6312;U16;;Charging rate;charging_rate;0.100000;0.000000;C;4
+109;3;6313;U16;;Equalized charging pressure point;equalized_charging_pressure_point;0.100000;0.000000;V;4
+110;3;6314;U16;;Floating charging pressure point;floating_charging_pressure_point;0.100000;0.000000;V;4
+111;3;6315;U16;;Battery over-voltage protection point;battery_overvoltage_protection_point;0.100000;0.000000;V;4
+112;3;6316;U16;;Battery under-voltage protection point;battery_undervoltage_protection_point;0.100000;0.000000;V;4
+113;3;6317;U16;;Single battery overpressure point;single_battery_overpressure_point;1.000000;0.000000;mV;4
+114;3;6318;U16;;Single battery under-pressure point;single_battery_underpressure_point;1.000000;0.000000;mV;4
+115;3;6319;U16;;Intelligent meter address;intelligent_meter_address;1.000000;0.000000;;4
+116;3;6320;U16;;External sensor;external_sensor;1.000000;0.000000;;4
+117;3;6321;U16;;CT ratio;ct_ratio;1.000000;0.000000;;4
+118;3;6400;U16;;Power grid primary under-voltage protection point;power_grid_primary_undervoltage_protection_point;0.100000;0.000000;'%;4
+119;3;6403;U16;;Power grid primary Over-voltage protection point;power_grid_primary_overvoltage_protection_point;0.100000;0.000000;'%;4
+120;3;6405;U16;;Power grid primary under-voltage protection time;power_grid_primary_undervoltage_protection_time;0.010000;0.000000;s;4
+121;3;6408;U16;;Power grid primary Over-voltage protection time;power_grid_primary_overvoltage_protection_time;0.010000;0.000000;s;4
+122;3;6410;U16;;Power grid under-voltage protection recovery point;power_grid_undervoltage_protection_recovery_point;0.100000;0.000000;'%;4
+123;3;6411;U16;;Power grid over-voltage protection recovery point;power_grid_overvoltage_protection_recovery_point;0.100000;0.000000;'%;4
+124;3;6412;U16;;Power grid primary under-frequency protection point;power_grid_primary_underfrequency_protection_point;0.010000;0.000000;Hz;4
+125;3;6414;U16;;Power grid primary over-frequency protection point;power_grid_primary_overfrequency_protection_point;0.010000;0.000000;Hz;4
+126;3;6416;U16;;Power grid primary under-frequency protection time;power_grid_primary_underfrequency_protection_time;0.010000;0.000000;s;4
+127;3;6418;U16;;Power grid primary over-frequency protection time;power_grid_primary_overfrequency_protection_time;0.010000;0.000000;s;4
+128;3;6420;U16;;Power grid under-frequency protection recovery point;power_grid_underfrequency_protection_recovery_point;0.010000;0.000000;Hz;4
+129;3;6421;U16;;Power grid over-frequency protection recovery point;power_grid_overfrequency_protection_recovery_point;0.010000;0.000000;Hz;4
+130;3;6426;U16;;L/HVRTmode;lhvrtmode;1.000000;0.000000;;4
+131;3;6437;U16;;L/HFRTmode;lhfrtmode;1.000000;0.000000;;4
+132;3;6446;U16;;P-V mode;pv_mode;1.000000;0.000000;;4
+133;3;6447;U16;;P-V modeV1(Discharge);pv_modev1discharge;0.100000;0.000000;'%;4
+134;3;6448;U16;;P-V modeP1(Discharge);pv_modep1discharge;1.000000;0.000000;'%;4
+135;3;6449;U16;;P-V modeV2(Discharge);pv_modev2discharge;0.100000;0.000000;'%;4
+136;3;6450;U16;;P-V modeP2(Discharge);pv_modep2discharge;1.000000;0.000000;'%;4
+137;3;6451;U16;;P-V modeV3(Discharge);pv_modev3discharge;0.100000;0.000000;'%;4
+138;3;6452;U16;;P-V modeP3(Discharge);pv_modep3discharge;1.000000;0.000000;'%;4
+139;3;6459;U16;;P-F mode;pf_mode;1.000000;0.000000;;4
+140;3;6472;U16;;Q-V mode;qv_mode;1.000000;0.000000;;4
+141;3;6480;U16;;SPF mode;spf_mode;1.000000;0.000000;;4
+142;3;6487;U16;;10min grid voltage point;v_10min_grid_voltage_point;0.100000;0.000000;'%;4
+143;3;6490;U16;;Soft start rate of ON/OFF;soft_start_rate_of_onoff;0.010000;0.000000;'%;4
+144;3;6492;U16;;P-LF mode;plf_mode;1.000000;0.000000;;4
+145;1;5000_0_1;BITS;;ON/OFF setting;onoff_setting;1.000000;0.000000;;4
+146;1;5001_0_1;BITS;;Buzzer enable;buzzer_enable;1.000000;0.000000;;4
+147;1;5002_0_1;BITS;;Battery alarm function enable;battery_alarm_function_enable;1.000000;0.000000;;4
+148;1;5003_0_1;BITS;;Input abnormal alarm function enable;input_abnormal_alarm_function_enable;1.000000;0.000000;;4
+149;1;5004_0_1;BITS;;Counter Curr mode;counter_curr_mode;1.000000;0.000000;;4
+150;1;5008_0_1;BITS;;External control mode enable;external_control_mode_enable;1.000000;0.000000;;4
+151;1;5009_0_1;BITS;;power control strategy;power_control_strategy;1.000000;0.000000;;4
+152;1;5010_0_1;BITS;;island active enable;island_active_enable;1.000000;0.000000;;4
+153;1;5011_0_1;BITS;;PV on-grid mode;pv_ongrid_mode;1.000000;0.000000;;4
+154;1;5012_0_1;BITS;;DRM enable;drm_enable;1.000000;0.000000;;4
+155;1;5013_0_1;BITS;;Battery temperature compensation function;battery_temperature_compensation_function;1.000000;0.000000;;4
+156;1;5014_0_1;BITS;;Battery activation enable;battery_activation_enable;1.000000;0.000000;;4
+157;1;5015_0_1;BITS;;Grounding detection enable;grounding_detection_enable;1.000000;0.000000;;4
+158;1;5016_0_1;BITS;;Grid quick check function;grid_quick_check_function;1.000000;0.000000;;4
+159;1;5017_0_1;BITS;;Restore factory setting;restore_factory_setting;1.000000;0.000000;;4

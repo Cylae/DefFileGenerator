@@ -1,0 +1,43 @@
+﻿modbusRTU;Other;Lufft;LUFFT_WS600;;;;;;;
+1;4;0;U16;;Identification;;1.0;0.0;;4
+2;4;1;U16;;Device status;;1.0;0.0;;4
+3;4;2;U16;;Sensor status 1;;1.0;0.0;;4
+4;4;3;U16;;Sensor status 2;;1.0;0.0;;4
+5;4;4;U16;;Sensor status 3;;1.0;0.0;;4
+6;4;5;U16;;Sensor status 4;;1.0;0.0;;4
+7;4;6;U16;;Sensor status 5;;1.0;0.0;;4
+8;4;7;U16;;Sensor status 6;;1.0;0.0;;4
+9;4;13;U16;;Relative humidity (avg.);HUMIDITY;1.0;0.0;;4
+10;4;17;U16;;Relative air pressure (avg.);PRESSURE;1.0;0.0;;4
+11;4;19;U16;;Wind direction (min.);WIND_BEARING;1.0;0.0;;4
+12;4;20;U16;;Wind direction (max.);;1.0;0.0;;4
+13;4;24;U16;;Compass;;1.0;0.0;;4
+14;4;25;U16;;Precipitation type;;1.0;0.0;;4
+15;4;26;U16;;Wind measurement quality;WIND_SPEED;1.0;0.0;;4
+16;4;30;U16;;Global radiation (avg).;;1.0;0.0;;4
+17;4;34;U16;;Air Temperature Degr.C (avg.);;1.0;0.0;Degr.C;4
+18;4;39;U16;;Wind chill-temperature Degr.C;;1.0;0.0;Degr.C;4
+19;4;40;U16;;Heating temperature Wind Degr.C;;1.0;0.0;Degr.C;4
+20;4;41;U16;;Heating temperature R2S Degr.C;;1.0;0.0;Degr.C;4
+21;4;43;U16;;Wind Speed m/s (min.);;1.0;0.0;m/s;4
+22;4;44;U16;;Wind Speed m/s (max.);;1.0;0.0;m/s;4
+23;4;45;U16;;Wind Speed m/s (avg.);;1.0;0.0;m/s;4
+24;4;48;U16;;Precipitation absolute mm;;1.0;0.0;mm;4
+25;4;49;U16;;Precipitation different mm;;1.0;0.0;mm;4
+26;4;50;U16;;Precipitation intensive mm/h;;1.0;0.0;mm/h;4
+27;4;74;U16;;Absolute humidity (avg.);;1.0;0.0;;4
+28;4;78;U16;;Mixing rratio (avg.);;1.0;0.0;;4
+29;4;82;U16;;Absolute air pressure (avg.);;1.0;0.0;;4
+30;4;86;U16;;Wind speed km/h (avg.);;1.0;0.0;km/h;4
+31;4;89;U16;;Wind speed kts (min.);;1.0;0.0;;4
+32;4;90;U16;;Wind speed kts (max.);;1.0;0.0;;4
+33;4;91;U16;;Wind speed kts (avg.);;1.0;0.0;;4
+34;4;95;U16;;Wind speed standard deviation m/s;;1.0;0.0;m/s;4
+35;4;97;U16;;Wind direction standard deviation;;1.0;0.0;;4
+36;4;98;U16;;Wet bulb temperature Degr.C (act);;1.0;0.0;Degr.C;4
+37;4;99;U16;;Specific enthalpy (act);;1.0;0.0;;4
+38;4;100;U16;;Air density (act);;1.0;0.0;;4
+39;4;101;U16;;External temperature Degr.C (act);;1.0;0.0;Degr.C;4
+40;4;107;U16;;Wind value quality (fast);;1.0;0.0;;4
+41;4;110;U16;;Lightning events (minute);;1.0;0.0;;4
+42;4;111;U16;;Lightning Events (Intervall);;1.0;0.0;;4

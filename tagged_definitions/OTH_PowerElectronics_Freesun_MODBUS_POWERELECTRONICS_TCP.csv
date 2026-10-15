@@ -1,0 +1,16 @@
+﻿modbusRTU;Other;PowerElectronics Freesun;MODBUS_POWERELECTRONICS_TCP;;;;;;;
+1;4;1100;U16;;volt1;;1.0;0.0;V;4
+2;4;1101;U16;;volt2;;1.0;0.0;V;4
+3;4;1102;U16;;volt3;;1.0;0.0;V;4
+4;4;1103;U16;;frequency;FREQ;1.0;0.0;Hz;4
+5;4;1104;U16;;reserva;;1.0;0.0;Hz;0
+6;4;1105;U16;;reserva;;1.0;0.0;Hz;0
+7;4;1106;U16;;current1;;1.0;0.0;A;4
+8;4;1107;U16;;current2;;1.0;0.0;A;4
+9;4;1108;U16;;current3;;1.0;0.0;A;4
+10;4;1109;U16;;power;P_AC;1.0;0.0;kW;4
+11;4;1110;U16;;cosphi;PF;1.0;0.0;-;4
+12;4;1126;U16;;volt_in;;1.0;0.0;V;4
+13;4;1127;U16;;current_in;;1.0;0.0;A;4
+14;4;1128;U16;;power_in;;1.0;0.0;kW;4
+15;4;1151;U16;;temperature;TEMP;1.0;0.0;C;4

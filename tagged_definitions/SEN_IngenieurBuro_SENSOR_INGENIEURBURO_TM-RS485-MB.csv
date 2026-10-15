@@ -1,0 +1,4 @@
+﻿ModbusRTU;Sensor;IngenieurBuro;TM-RS485-MB;;;;;;;
+1;4;1;U16;;Module temperature_Tm-RS485-MB;TEMP_CELL;0.1;-25;Degr. Celcius;4
+2;4;5;U16;;Module temperature_ Tm-RS485-MB_1.52;;0.1;-100;Degr. Celcius;4
+3;4;7;I16;;Module Temperature_Ta-ext-RS485-MB_1.53;;0.1;0;Degr. Celcius;4

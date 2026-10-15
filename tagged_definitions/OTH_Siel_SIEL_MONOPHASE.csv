@@ -1,0 +1,12 @@
+﻿modbusRTU;Other;Siel;SIEL_MONOPHASE;;;;;;;
+1;4;1;U16;;Statuses of alarms1;;1.0;0.0;;8
+2;4;2;U16;;Statuses of alarms2;;1.0;0.0;;8
+3;4;3;U16;;Main voltage;;1.0;0.0;V;4
+4;4;6;U16;;Mains current (tenths of A);;1.0;0.0;A;4
+5;4;9;U16;;Power transmitted to mains;;1.0;0.0;;4
+6;4;10;U16;;Internal temperature;TEMP_INT;1.0;0.0;C;4
+7;4;12;U16;;Cells Voltage;;1.0;0.0;V;4
+8;4;13;U16;;Icell Current of cells;;1.0;0.0;A;4
+9;4;16;U16;;Energy;E_TOT;1.0;0.0;KWh;4
+10;4;17;U16;;Energy MWh;;1.0;0.0;MWh;4
+11;4;20;U16;;FW_Ver;;1.0;0.0;;1

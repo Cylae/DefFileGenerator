@@ -1,0 +1,173 @@
+﻿modbusRTU;Other;Sungrow;Sungrow_Battery;;;;;;;
+1;4;10225;U16;;Working status;R_10225;1.0;0.0;;4
+2;4;10226;U16;;Fault Alarm code;R_10226;1.0;0.0;;4
+3;4;10227;U16;;Reserved;R_10227;1.0;0.0;;4
+4;4;10233;U16;;Reserved;R_10233;1.0;0.0;;4
+5;4;10234;U16;;Total running time;R_10234;1.0;0.0;h;4
+6;4;10236;U16;;Reserved;R_10236;1.0;0.0;;4
+7;4;10243;U16;;Reserved;R_10243;1.0;0.0;;4
+8;4;10244;U16;;Daily running time;R_10244;1.0;0.0;min;4
+9;4;10245;U16;;Total power factor;R_10245;1.0;0.0;;4
+10;4;10246;U16;;Gird frequency;R_10246;1.0;0.0;Hz;4
+11;4;10247;U16;;Reserved;R_10247;1.0;0.0;;4
+12;4;10248;U16;;Bus voltage;R_10248;1.0;0.0;V;4
+13;4;10249;U16;;Internal Air temperature;R_10249;1.0;0.0;C;4
+14;4;10250;U16;;Reserved;R_10250;1.0;0.0;;4
+15;4;10251;U16;;PhA voltage;R_10251;1.0;0.0;V;4
+16;4;10252;U16;;PhB voltage;R_10252;1.0;0.0;V;4
+17;4;10253;U16;;PhC voltage;R_10253;1.0;0.0;V;4
+18;4;10254;U16;;PhA current;R_10254;1.0;0.0;A;4
+19;4;10255;U16;;PhB current;R_10255;1.0;0.0;A;4
+20;4;10256;U16;;PhC current;R_10256;1.0;0.0;A;4
+21;4;10257;U16;;Device type code;R_10257;1.0;0.0;;4
+22;4;10258;U16;;Rated active power;R_10258;1.0;0.0;kW;4
+23;4;10259;U16;;Output type;R_10259;1.0;0.0;;4
+24;4;10260;U16;;Rated reactive power;R_10260;1.0;0.0;kvar;4
+25;4;10261;U16;;SN number;R_10261;1.0;0.0;;4
+26;4;10271;U16;;Machine type;R_10271;1.0;0.0;;4
+27;4;10272;U16;;Active overload rate;R_10272;1.0;0.0;;4
+28;4;10273;U16;;Reserved;R_10273;1.0;0.0;;4
+29;4;10274;U16;;Reserved;R_10274;1.0;0.0;;4
+30;4;10275;U16;;Rated grid voltage;R_10275;1.0;0.0;V;4
+31;4;10276;U16;;Rated grid frequency;R_10276;1.0;0.0;Hz;4
+32;4;10277;U16;;Initialization status;R_10277;1.0;0.0;;4
+33;4;10278;U16;;Grid type;R_10278;1.0;0.0;;4
+34;4;10279;U16;;Working mode;R_10279;1.0;0.0;;4
+35;4;10280;U16;;Charge discharge status;R_10280;1.0;0.0;;4
+36;4;10281;U16;;Leakage current value;R_10281;1.0;0.0;mA;4
+37;4;10282;U16;;Current black start beats;R_10282;1.0;0.0;;4
+38;4;10283;U16;;Max charge power;R_10283;1.0;0.0;kW;4
+39;4;10284;U16;;Max discharge power;R_10284;1.0;0.0;kW;4
+40;4;10285;U16;;Battery voltage 1;R_10285;1.0;0.0;V;4
+41;4;10286;U16;;Battery voltage 2;R_10286;1.0;0.0;V;4
+42;4;10287;U16;;Battery current 1;R_10287;1.0;0.0;A;4
+43;4;10288;U16;;Battery current 2;R_10288;1.0;0.0;A;4
+44;4;10289;U16;;DC voltage;R_10289;1.0;0.0;V;4
+45;4;10290;U16;;DC current;R_10290;1.0;0.0;A;4
+46;4;10291;U16;;DC impedance to ground;R_10291;1.0;0.0;kOhm;4
+47;4;10292;U16;;DC power;R_10292;1.0;0.0;kW;4
+48;4;10294;U16;;Active power;R_10294;1.0;0.0;kW;4
+49;4;10296;U16;;Reactive power;R_10296;1.0;0.0;kvar;4
+50;4;10298;U16;;Apparent power;R_10298;1.0;0.0;kVA;4
+51;4;10300;U16;;Phase N current;R_10300;1.0;0.0;A;4
+52;4;10301;U16;;Daily charge energy;R_10301;1.0;0.0;kWh;4
+53;4;10302;U16;;Monthly charge energy;R_10302;1.0;0.0;kWh;4
+54;4;10304;U16;;Annual charge energy;R_10304;1.0;0.0;kWh;4
+55;4;10306;U16;;Total charge energy;R_10306;1.0;0.0;kWh;4
+56;4;10308;U16;;Daily discharge energy;R_10308;1.0;0.0;kWh;4
+57;4;10309;U16;;Monthly discharge;R_10309;1.0;0.0;kWh;4
+58;4;10311;U16;;Yearly discharge;R_10311;1.0;0.0;kWh;4
+59;4;10313;U16;;Total discharge energy;R_10313;1.0;0.0;kWh;4
+60;4;10315;U16;;Daily charge minutes;R_10315;1.0;0.0;min;4
+61;4;10316;U16;;Total charge time;R_10316;1.0;0.0;h;4
+62;4;10318;U16;;Daily discharge minutes;R_10318;1.0;0.0;min;4
+63;4;10319;U16;;Total discharge time;R_10319;1.0;0.0;h;4
+64;4;10321;U16;;Grid voltage level;R_10321;1.0;0.0;;4
+65;4;10322;U16;;Node status;R_10322;1.0;0.0;;4
+66;4;10324;U16;;CMU comm status;R_10324;1.0;0.0;;4
+67;4;10325;U16;;Fault status 1;R_10325;1.0;0.0;;4
+68;4;10327;U16;;Fault status 2;R_10327;1.0;0.0;;4
+69;4;10329;U16;;Alarm running status 1;R_10329;1.0;0.0;;4
+70;4;10330;U16;;Alarm running status 2;R_10330;1.0;0.0;;4
+71;4;10331;U16;;Online flag;R_10331;1.0;0.0;;4
+72;4;10332;U16;;Can be upgraded flag;R_10332;1.0;0.0;;4
+73;4;10333;U16;;PCS ARM Version;R_10333;1.0;0.0;;4
+74;4;10344;U16;;PCS DSP Version;R_10344;1.0;0.0;;4
+75;4;10355;U16;;PCS CPLD Version;R_10355;1.0;0.0;;4
+76;4;10443;U16;;Inv current R;R_10443;1.0;0.0;A;4
+77;4;10444;U16;;Inv current S;R_10444;1.0;0.0;A;4
+78;4;10445;U16;;Inv current T;R_10445;1.0;0.0;A;4
+79;4;10449;U16;;Total active power Inv;R_10449;1.0;0.0;W;4
+80;4;10455;U16;;R active power Inv;R_10455;1.0;0.0;W;4
+81;4;10457;U16;;S active power Inv;R_10457;1.0;0.0;W;4
+82;4;10459;U16;;T active power Inv;R_10459;1.0;0.0;W;4
+83;4;10461;U16;;Daily power generation Inv;R_10461;1.0;0.0;kWh;4
+84;4;10462;U16;;Cumul power generation Inv;R_10462;1.0;0.0;kWh;4
+85;4;10500;U16;;Grid volt R;R_10500;1.0;0.0;V;4
+86;4;10501;U16;;Grid volt S;R_10501;1.0;0.0;V;4
+87;4;10502;U16;;Grid volt T;R_10502;1.0;0.0;V;4
+88;4;10503;U16;;Grid curr R;R_10503;1.0;0.0;A;4
+89;4;10504;U16;;Grid curr S;R_10504;1.0;0.0;A;4
+90;4;10505;U16;;Grid curr T;R_10505;1.0;0.0;A;4
+91;4;10506;U16;;Grid freq R;R_10506;1.0;0.0;Hz;4
+92;4;10507;U16;;Grid freq S;R_10507;1.0;0.0;Hz;4
+93;4;10508;U16;;Grid freq T;R_10508;1.0;0.0;Hz;4
+94;4;10509;U16;;Grid total act pwr;R_10509;1.0;0.0;W;4
+95;4;10511;U16;;Grid total react pwr;R_10511;1.0;0.0;Var;4
+96;4;10513;U16;;Grid total app pwr;R_10513;1.0;0.0;Va;4
+97;4;10515;U16;;R active power Grid;R_10515;1.0;0.0;W;4
+98;4;10517;U16;;S active power Grid;R_10517;1.0;0.0;W;4
+99;4;10519;U16;;T active power Grid;R_10519;1.0;0.0;W;4
+100;4;10521;U16;;R react power Grid;R_10521;1.0;0.0;Var;4
+101;4;10523;U16;;S react power Grid;R_10523;1.0;0.0;Var;4
+102;4;10525;U16;;T react power Grid;R_10525;1.0;0.0;Var;4
+103;4;10527;U16;;R app power Grid;R_10527;1.0;0.0;Va;4
+104;4;10529;U16;;S app power Grid;R_10529;1.0;0.0;Va;4
+105;4;10531;U16;;T app power Grid;R_10531;1.0;0.0;Va;4
+106;4;10533;U16;;RS line voltage;R_10533;1.0;0.0;V;4
+107;4;10534;U16;;ST line voltage;R_10534;1.0;0.0;V;4
+108;4;10535;U16;;TR line voltage;R_10535;1.0;0.0;V;4
+109;4;10536;U16;;Power factor;R_10536;1.0;0.0;;4
+110;4;10537;U16;;Daily grid conn time;R_10537;1.0;0.0;H;4
+111;4;10538;U16;;Cumul grid conn time;R_10538;1.0;0.0;H;4
+112;4;10540;U16;;Daily grid generation;R_10540;1.0;0.0;kWh;4
+113;4;10541;U16;;Cumul grid generation;R_10541;1.0;0.0;kWh;4
+114;4;10543;U16;;Inverter efficiency;R_10543;1.0;0.0;;4
+115;4;10544;U16;;DCI R;R_10544;1.0;0.0;mA;4
+116;4;10545;U16;;DCI S;R_10545;1.0;0.0;mA;4
+117;4;10546;U16;;DCI T;R_10546;1.0;0.0;mA;4
+118;4;10547;U16;;Power factor S;R_10547;1.0;0.0;;4
+119;4;10548;U16;;Power factor T;R_10548;1.0;0.0;;4
+120;4;10560;U16;;Total PV power;R_10560;1.0;0.0;W;4
+121;4;10562;U16;;PV1 voltage;R_10562;1.0;0.0;V;4
+122;4;10563;U16;;PV1 current;R_10563;1.0;0.0;A;4
+123;4;10564;U16;;PV1 power;R_10564;1.0;0.0;W;4
+124;4;10565;U16;;PV2 voltage;R_10565;1.0;0.0;V;4
+125;4;10566;U16;;PV2 current;R_10566;1.0;0.0;A;4
+126;4;10567;U16;;PV2 power;R_10567;1.0;0.0;W;4
+127;4;10568;U16;;PV3 voltage;R_10568;1.0;0.0;V;4
+128;4;10569;U16;;PV3 current;R_10569;1.0;0.0;A;4
+129;4;10570;U16;;PV3 power;R_10570;1.0;0.0;W;4
+130;4;10571;U16;;PV4 voltage;R_10571;1.0;0.0;V;4
+131;4;10572;U16;;PV4 current;R_10572;1.0;0.0;A;4
+132;4;10573;U16;;PV4 power;R_10573;1.0;0.0;W;4
+133;4;10631;U16;;PV24 voltage;R_10631;1.0;0.0;V;4
+134;4;10632;U16;;PV24 current;R_10632;1.0;0.0;A;4
+135;4;10633;U16;;PV24 power;R_10633;1.0;0.0;W;4
+136;4;10635;U16;;String 1 current;R_10635;1.0;0.0;A;4
+137;4;10636;U16;;String 2 current;R_10636;1.0;0.0;A;4
+138;4;10637;U16;;String 3 current;R_10637;1.0;0.0;A;4
+139;4;10638;U16;;String 4 current;R_10638;1.0;0.0;A;4
+140;4;10639;U16;;String 5 current;R_10639;1.0;0.0;A;4
+141;4;10640;U16;;String 6 current;R_10640;1.0;0.0;A;4
+142;4;10641;U16;;String 7 current;R_10641;1.0;0.0;A;4
+143;4;10642;U16;;String 8 current;R_10642;1.0;0.0;A;4
+144;4;10643;U16;;String 9 current;R_10643;1.0;0.0;A;4
+145;4;10644;U16;;String 10 current;R_10644;1.0;0.0;A;4
+146;4;10645;U16;;String 11 current;R_10645;1.0;0.0;A;4
+147;4;10646;U16;;12 channel current;R_10646;1.0;0.0;A;4
+148;4;10682;U16;;String 48 current;R_10682;1.0;0.0;A;4
+149;4;10683;U16;;Daily PV energy;R_10683;1.0;0.0;kWh;4
+150;4;10684;U16;;Cumul PV energy;R_10684;1.0;0.0;kWh;4
+151;4;10686;U16;;PV month energy;R_10686;1.0;0.0;kWh;4
+152;4;10688;U16;;PV year energy;R_10688;1.0;0.0;kWh;4
+153;4;10800;U16;;Total load act pwr;R_10800;1.0;0.0;W;4
+154;4;10802;U16;;Load R act pwr;R_10802;1.0;0.0;W;4
+155;4;10804;U16;;Load S act pwr;R_10804;1.0;0.0;W;4
+156;4;10806;U16;;Load T act pwr;R_10806;1.0;0.0;W;4
+157;4;11000;U16;;Energy purchased day;R_11000;1.0;0.0;kWh;4
+158;4;11001;U16;;Energy purchased Month;R_11001;1.0;0.0;kWh;4
+159;4;11003;U16;;Energy purchased Year;R_11003;1.0;0.0;kWh;4
+160;4;11005;U16;;Energy purchased Total;R_11005;1.0;0.0;kWh;4
+161;4;11007;U16;;Energy sold Day;R_11007;1.0;0.0;kWh;4
+162;4;11008;U16;;Energy sold Month;R_11008;1.0;0.0;kWh;4
+163;4;11010;U16;;Energy sold Year;R_11010;1.0;0.0;kWh;4
+164;4;11012;U16;;Energy sold Total;R_11012;1.0;0.0;kWh;4
+165;4;11014;U16;;Energy consumption Day;R_11014;1.0;0.0;kWh;4
+166;4;11015;U16;;Energy consumption Month;R_11015;1.0;0.0;kWh;4
+167;4;11017;U16;;Energy consumption Year;R_11017;1.0;0.0;kWh;4
+168;4;11019;U16;;Energy consumption Total;R_11019;1.0;0.0;kWh;4
+169;4;11040;U16;;R voltage 2;R_11040;1.0;0.0;V;4
+170;4;11041;U16;;S voltage 2;R_11041;1.0;0.0;V;4
+171;4;11042;U16;;T voltage 2;R_11042;1.0;0.0;V;4
+172;4;11043;U16;;R current 2;R_11043;1.0;0.0;A;4

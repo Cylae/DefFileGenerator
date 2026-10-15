@@ -1,0 +1,81 @@
+﻿modbusTCP;Other;ALPITRONIC;HYC150-300;;;;;;;
+1;4;0;U32;;Unix Time;;1;0;seconds;4
+2;4;2;U16;;NumConnectors;;1;0;;4
+3;4;3;U16;;StationState;;1;0;;4
+4;4;4;U32;;TotalPowerDrained;RAIN;1;0;W;4
+5;4;6_24;STRING;;SerialNumber;;1;0;;4
+6;4;18;U16;;Load Management Enabled;;1;0;bool;4
+7;4;30_32;STRING;;Charge point ID;;1;0;;4
+8;4;100;U16;;State;;1;0;;4
+9;4;101;U32;;Charging Voltage;;1;0;cV;4
+10;4;103;U16;;Charging Current;I_DC;1;0;cA;4
+11;4;104;U32;;Charging Power;;1;0;W;4
+12;4;106;U16;;Charge Time;;1;0;s;4
+13;4;107;U16;;Charged Energy;;0.01;0;kWh;4
+14;4;108;U16;;SoC;SOC;0.01;0;%;4
+15;4;109;U16;;Connector type;;1;0;;4
+16;4;110;U32;;Maximum charging power;;1;0;W;4
+17;4;112;U32;;Minimum charging power;;1;0;W;4
+18;4;114;U32;;Current maximum VAR inductive (+);;1;0;VAR;4
+19;4;116;U32;;Current maximum VAR capacitive (-);;1;0;VAR;4
+20;4;118;I16;;VID_1_1;;1;0;;4
+21;4;119;I16;;VID_1_2;;1;0;;4
+22;4;120;I16;;VID_1_3;;1;0;;4
+23;4;121;I16;;VID_1_4;;1;0;;4
+24;4;200;U16;;State_Connector2;;1;0;;4
+25;4;201;U32;;Charging Voltage_Connector2;;1;0;cV;4
+26;4;203;U16;;Charging Current_Connector2;;1;0;cA;4
+27;4;204;U32;;Charging Power_Connector2;;1;0;W;4
+28;4;206;U16;;Charge Time_Connector2;;1;0;s;4
+29;4;207;U16;;Charged Energy_Connector2;;0.01;0;kWh;4
+30;4;208;U16;;SoC_Connector2;;0.01;0;%;4
+31;4;209;U16;;Connector type_Connector2;;1;0;;4
+32;4;210;U32;;Maximum charging power_Connector2;;1;0;W;4
+33;4;212;U32;;Minimum charging power_Connector2;;1;0;W;4
+34;4;214;U32;;Current maximum VAR inductive (+)_Connector2;;1;0;VAR;4
+35;4;216;U32;;Current maximum VAR capacitive (-)_Connector2;;1;0;VAR;4
+36;4;218;I16;;VID_2_1;;1;0;;4
+37;4;219;I16;;VID_2_2;;1;0;;4
+38;4;220;I16;;VID_2_3;;1;0;;4
+39;4;221;I16;;VID_2_4;;1;0;;4
+40;4;300;U16;;State_Connector3;;1;0;;4
+41;4;301;U32;;Charging Voltage_Connector3;;1;0;cV;4
+42;4;303;U16;;Charging Current_Connector3;;1;0;cA;4
+43;4;304;U32;;Charging Power_Connector3;;1;0;W;4
+44;4;306;U16;;Charge Time_Connector3;;1;0;s;4
+45;4;307;U16;;Charged Energy_Connector3;;0.01;0;kWh;4
+46;4;308;U16;;SoC_Connector3;;0.01;0;%;4
+47;4;309;U16;;Connector type_Connector3;;1;0;;4
+48;4;310;U32;;Maximum charging power_Connector3;;1;0;W;4
+49;4;312;U32;;Minimum charging power_Connector3;;1;0;W;4
+50;4;314;U32;;Current maximum VAR inductive (+)_Connector3;;1;0;VAR;4
+51;4;316;U32;;Current maximum VAR capacitive (-)_Connector3;;1;0;VAR;4
+52;4;318;I16;;VID_3_1;;1;0;;4
+53;4;319;I16;;VID_3_2;;1;0;;4
+54;4;320;I16;;VID_3_3;;1;0;;4
+55;4;321;I16;;VID_3_4;;1;0;;4
+56;4;400;U16;;State_Connector4;;1;0;;4
+57;4;401;U32;;Charging Voltage_Connector4;;1;0;cV;4
+58;4;403;U16;;Charging Current_Connector4;;1;0;cA;4
+59;4;404;U32;;Charging Power_Connector4;;1;0;W;4
+60;4;406;U16;;Charge Time_Connector4;;1;0;s;4
+61;4;407;U16;;Charged Energy_Connector4;;0.01;0;kWh;4
+62;4;408;U16;;SoC_Connector4;;0.01;0;%;4
+63;4;409;U16;;Connector type_Connector4;;1;0;;4
+64;4;410;U32;;Maximum charging power_Connector4;;1;0;W;4
+65;4;412;U32;;Minimum charging power_Connector4;;1;0;W;4
+66;4;414;U32;;Current maximum VAR inductive (+)_Connector4;;1;0;VAR;4
+67;4;416;U32;;Current maximum VAR capacitive (-)_Connector4;;1;0;VAR;4
+68;4;418;I16;;VID_4_1;;1;0;;4
+69;4;419;I16;;VID_4_2;;1;0;;4
+70;4;420;I16;;VID_4_3;;1;0;;4
+71;4;421;I16;;VID_4_4;;1;0;;4
+72;3;0;U32;;Charging Station Max Power;;1;0;W;4
+73;3;100;U32;;Connector Max Power_1;;1;0;W;4
+74;3;102;I32;;Set Reactive Power_1;Q_AC;1;0;VAR;4
+75;3;200;U32;;Connector Max Power_2;;1;0;W;4
+76;3;202;I32;;Set Reactive Power_2;;1;0;VAR;4
+77;3;300;U32;;Connector Max Power_3;;1;0;W;4
+78;3;302;I32;;Set Reactive Power_3;;1;0;VAR;4
+79;3;400;U32;;Connector Max Power_4;;1;0;W;4
+80;3;402;I32;;Set Reactive Power_4;;1;0;VAR;4

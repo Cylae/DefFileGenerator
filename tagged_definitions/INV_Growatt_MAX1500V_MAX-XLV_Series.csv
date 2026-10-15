@@ -1,0 +1,469 @@
+﻿Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1;;;;;;
+1;3;0;U16;;Remote OnOff;CMD_ON;1.0;0.0;;1
+2;3;1_0_1;BITS;;SaftyFuncEn : SPI enable;;1.0;0.0;;4
+3;3;1_1_1;BITS;;SaftyFuncEn : AutoTestStart;;1.0;0.0;;4
+4;3;1_2_1;BITS;;SaftyFuncEn : LVFRT enable;;1.0;0.0;;4
+5;3;1_3_1;BITS;;SaftyFuncEn : FreqDerating Enable;;1.0;0.0;;4
+6;3;1_4_1;BITS;;SaftyFuncEn : Softstart enable;;1.0;0.0;;4
+7;3;1_5_1;BITS;;SaftyFuncEn : DRMS enable;;1.0;0.0;;4
+8;3;1_6_1;BITS;;SaftyFuncEn : PowerVoltFunc Enable;;1.0;0.0;;4
+9;3;1_7_1;BITS;;SaftyFuncEn : HVFRT enable;;1.0;0.0;;4
+10;3;1_8_1;BITS;;SaftyFuncEn : ROCOF enable;;1.0;0.0;;4
+11;3;1_9_1;BITS;;SaftyFuncEn : Recover FreqDeratingMode Enable;;1.0;0.0;;4
+12;3;1_10_1;BITS;;SaftyFuncEn : Split phase enable;;1.0;0.0;;4
+13;3;2;U16;;PF CMD memory state;CMD_P_ENA;1.0;0.0;;1
+14;3;3;U16;;Active Power Rate;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
+15;3;4;I16;;Reactive Power Rate;CMD_Q_AC_SET_PERCENT;1.0;0.0;%;1
+16;3;5;U16;;Power factor;CMD_PF;1.0;0.0;;1
+17;3;6;U32;;Pmax;P_RATED;0.1;0.0;VA;4
+18;3;8;U16;;Vnormal;;0.1;0.0;V;4
+19;3;9_6;STRING;;Fw version;;1.0;0.0;;4
+20;3;12_6;STRING;;Control Fw version;;1.0;0.0;;4
+21;3;15;U16;;LCD language;;1.0;0.0;;4
+22;3;16;U16;;Country Selected;;1.0;0.0;;4
+23;3;17;U16;;Vpv start;;0.1;0.0;V;4
+24;3;18;U16;;Time start;;1.0;0.0;s;4
+25;3;19;U16;;Restart Delay Time;;1.0;0.0;s;4
+26;3;20;U16;;wPower Start Slope;;0.1;0.0;%;4
+27;3;21;U16;;wPower Restart SlopeEE;;0.1;0.0;%;4
+28;3;22;U16;;wSelect Baudrate;;1.0;0.0;;4
+29;3;23_10;STRING;;Serial Number;SERIAL;1.0;0.0;;4
+30;3;28;U32;;Inverter Module;;1.0;0.0;;4
+31;3;30;U16;;Com Address;;1.0;0.0;;4
+32;3;31;U16;;FlashStart;;1.0;0.0;;4
+33;3;32;U16;;Reset User Info;;1.0;0.0;;4
+34;3;33;U16;;Reset to factory;;1.0;0.0;;4
+35;3;34_16;STRING;;Manufacturer Info;MANUFACTURER;1.0;0.0;;4
+36;3;42;U16;;bfail safe En;;1.0;0.0;;4
+37;3;43;U16;;Device Type Code;;1.0;0.0;;4
+38;3;44;U16;;TP;;1.0;0.0;;4
+39;3;45;U16;;System Year;;1.0;0.0;;4
+40;3;46;U16;;System Month;;1.0;0.0;;4
+41;3;47;U16;;System Day;;1.0;0.0;;4
+42;3;48;U16;;System Hour;;1.0;0.0;;4
+43;3;49;U16;;System Min;;1.0;0.0;;4
+44;3;50;U16;;System Sec;;1.0;0.0;;4
+45;3;51;U16;;System Weekly;;1.0;0.0;;4
+46;3;52;U16;;Grid voltage low limit protect;;0.1;0.0;V;4
+47;3;53;U16;;Grid voltage high limit protect;;0.1;0.0;V;4
+48;3;54;U16;;Grid frequency low limit protect;FREQ;0.01;0.0;Hz;4
+49;3;55;U16;;Grid high frequency limit protect;;0.01;0.0;Hz;4
+50;3;56;U16;;Grid voltage low limit protect 2;;0.1;0.0;V;4
+51;3;57;U16;;Grid voltage high limit protect 2;;0.1;0.0;V;4
+52;3;58;U16;;Grid frequency low limit protect 2;;0.01;0.0;Hz;4
+53;3;59;U16;;Grid high frequency limit protect 2;;0.01;0.0;Hz;4
+54;3;60;U16;;Grid voltage low limit protect 3;;0.1;0.0;V;4
+55;3;61;U16;;Grid voltage high limit protect 3;;0.1;0.0;V;4
+56;3;62;U16;;Grid frequency low limit protect 3;;0.01;0.0;Hz;4
+57;3;63;U16;;Frid frequency high limit protect3;;0.01;0.0;Hz;4
+58;3;64;U16;;Grid low voltage limit connect to Grid;;0.1;0.0;V;4
+59;3;65;U16;;Grid high voltage limit connect to Grid;;0.1;0.0;V;4
+60;3;66;U16;;Grid low frequency limit connect to Grid;;0.01;0.0;Hz;4
+61;3;67;U16;;Grid high frequency limit connect to Grid;;0.01;0.0;Hz;4
+62;3;68;U16;;Grid voltage low limit protect time 1;;1.0;0.0;Cycle;4
+63;3;69;U16;;Grid voltage high limit protect time 1;;1.0;0.0;Cycle;4
+64;3;70;U16;;Grid voltage low limit protect time 2;;1.0;0.0;Cycle;4
+65;3;71;U16;;Grid voltage high limit protect time 2;;1.0;0.0;Cycle;4
+66;3;72;U16;;Grid frequency low limit protect time 1;;1.0;0.0;Cycle;4
+67;3;73;U16;;Grid frequency high limit protect time 1;;1.0;0.0;Cycle;4
+68;3;74;U16;;Grid frequency low limit protect time 2;;1.0;0.0;Cycle;4
+69;3;75;U16;;Grid frequency high limit protect time 2;;1.0;0.0;Cycle;4
+70;3;76;U16;;Grid voltage low limit protect time 3;;1.0;0.0;Cycle;4
+71;3;77;U16;;Grid voltage high limit protect time 3;;1.0;0.0;Cycle;4
+72;3;78;U16;;Grid frequency low limit protect time 3;;1.0;0.0;Cycle;4
+73;3;79;U16;;Grid frequency high limit protectti me 3;;1.0;0.0;Cycle;4
+74;3;80;U16;;Volt protection for 10 min;;0.1;0.0;V;4
+75;3;81;U16;;PV Voltage High Fault;;0.1;0.0;V;4
+76;3;82_12;STRING;;FW Build No;;1.0;0.0;;4
+77;3;88;U16;;Modbus Version;;1.0;0.0;;4
+78;3;89;U16;;SetPFfunctionModel;CMD_Q_MODE;1.0;0.0;;1
+79;3;90_0_4;BITS;;GPRS IPFlag : GPRS IP;;1.0;0.0;;4
+80;3;90_4_4;BITS;;GPRS IPFlag : GPRS status;;1.0;0.0;;4
+81;3;91;U16;;Frequency derating start point;;0.01;0.0;Hz;4
+82;3;92;U16;;Frequency load limit rate;;1.0;0.0;10times;4
+83;3;93;U16;;V1S;;0.1;0.0;V;4
+84;3;94;U16;;V2S;;0.1;0.0;V;4
+85;3;95;U16;;V1L;;0.1;0.0;V;4
+86;3;96;U16;;V2L;;0.1;0.0;V;4
+87;3;97;U16;;Qlock in power;;1.0;0.0;%;4
+88;3;98;U16;;Qlock Out power;;1.0;0.0;%;4
+89;3;99;U16;;Lock in gird volt of PF line;;0.1;0.0;V;4
+90;3;100;U16;;Lock out gird volt of PF Line;;0.1;0.0;V;4
+91;3;101;U16;;PF adjust value 1;;1.0;0.0;;4
+92;3;102;U16;;PF adjust value 2;;1.0;0.0;;4
+93;3;103;U16;;PF adjust value 3;;1.0;0.0;;4
+94;3;104;U16;;PF adjust value 4;;1.0;0.0;;4
+95;3;105;U16;;PF adjust value 5;;1.0;0.0;;4
+96;3;106;U16;;PF adjust value 6;;1.0;0.0;;4
+97;3;107;U16;;QV Reactive Power delay time;Q_AC;1.0;0.0;s;4
+98;3;108;U16;;Overfrequency derating delay time;;50.0;0.0;ms;4
+99;3;109;U16;;Qmax for Q(V) curve;;0.1;0.0;%;4
+100;3;110;U16;;PF limit line point 1 load percent;;1.0;0.0;%;4
+101;3;111;U16;;PF limit line point 1 power factor;PF;1.0;0.0;;4
+102;3;112;U16;;PF limit line point 2 load percent;;1.0;0.0;%;4
+103;3;113;U16;;PF limit line point 2 power factor;;1.0;0.0;;4
+104;3;114;U16;;PF limit line point 3 load percent;;1.0;0.0;%;4
+105;3;115;U16;;PF limit line point 3 power factor;;1.0;0.0;;4
+106;3;116;U16;;PF limit line point 4 load percent;;1.0;0.0;%;4
+107;3;117;U16;;PF limit line point 4 power factor;;1.0;0.0;;4
+108;3;118;U16;;Inverter Module 4;;1.0;0.0;;4
+109;3;119;U16;;Inverter Module 3;;1.0;0.0;;4
+110;3;120;U16;;Inverter Module 2;;1.0;0.0;;4
+111;3;121;U16;;Inverter Module 1;;1.0;0.0;;4
+112;3;122;U16;;Export Limit En/dis;;1.0;0.0;;4
+113;3;123;I16;;Export Limit Power Rate;;0.1;0.0;%;4
+114;3;124;U16;;Traker Model;MODEL;1.0;0.0;;4
+115;3;137;U32;;Reactive Value;;0.1;0.0;Var;4
+116;3;139;U16;;Reactive Output Priority Enable;CMD_Q_ENA;1.0;0.0;;1
+117;3;140;U16;;Reactive Value(Ratio);;0.1;0.0;;4
+118;3;141;U16;;SvgFunction Enable;;1.0;0.0;;4
+119;3;142;U16;;uwUnderF Upload Point;;0.01;0.0;Hz;4
+120;3;143;U16;;uwOFDerate Recover Point;;0.01;0.0;Hz;4
+121;3;144;U16;;uwOFDerate Recover Delay Time;;50.0;0.0;ms;4
+122;3;145;U16;;Zero Current Enable;;1.0;0.0;;4
+123;3;146;U16;;uwZero Current Static lowV olt;;0.1;0.0;V;4
+124;3;147;U16;;uwZero Current Static High Volt;;0.1;0.0;V;4
+125;3;148;U16;;uwHVolt Derate High Point;;0.1;0.0;V;4
+126;3;149;U16;;uwHVolt Derate Low Point;;0.1;0.0;V;4
+127;3;150;U16;;uwQV Power Stable Time;;0.1;0.0;S;4
+128;3;151;U16;;uwUnderF Upload Stop Point;;0.01;0.0;Hz;4
+129;3;152;U16;;fUnder Freq Point;;0.01;0.0;Hz;4
+130;3;153;U16;;fUnder Freq End Point;;0.01;0.0;Hz;4
+131;3;154;U16;;fOver Freq Point;;0.01;0.0;Hz;4
+132;3;155;U16;;fOver Freq End Point;;0.01;0.0;Hz;4
+133;3;156;U16;;fUnder Volt Point;;0.1;0.0;V;4
+134;3;157;U16;;fUnder Volt End Point;;0.1;0.0;V;4
+135;3;158;U16;;fOver Volt Point;;0.1;0.0;V;4
+136;3;159;U16;;fOver Volt EndPoint;;0.1;0.0;V;4
+137;3;160;U16;;uwNominal Grid Volt;;1.0;0.0;;4
+138;3;161;U16;;uwGrid Watt Delay;;20.0;0.0;ms;4
+139;3;162;U16;;uwReconnect Start Slope;;0.1;0.0;;4
+140;3;163;U16;;LFRT1 Freq;;0.01;0.0;Hz;4
+141;3;164;U16;;LFRT1 Time;;20.0;0.0;ms;4
+142;3;165;U16;;LFRT2 Freq;;0.01;0.0;Hz;4
+143;3;166;U16;;LFRT2 Time;;20.0;0.0;ms;4
+144;3;167;U16;;HFRT1 Freq;;0.01;0.0;Hz;4
+145;3;168;U16;;HFRT1 Time;;20.0;0.0;ms;4
+146;3;169;U16;;HFRT2 Freq;;0.01;0.0;Hz;4
+147;3;170;U16;;HFRT2 Time;;20.0;0.0;ms;4
+148;3;171;U16;;HVRT1 Volt;;0.001;0.0;V;4
+149;3;172;U16;;HVRT1 Time;;20.0;0.0;ms;4
+150;3;173;U16;;HVRT2 Volt;;0.001;0.0;V;4
+151;3;174;U16;;HVRT2 Time;;20.0;0.0;ms;4
+152;3;175;I16;;uwUnderF Upload Delay Time;;50.0;0.0;ms;4
+153;3;176;U16;;uwUnderF Upload Rate;;1.0;0.0;;4
+154;3;177;U16;;uwGrid Restart High Freq;;0.01;0.0;Hz;4
+155;3;178;I16;;OverFDerat Response Time;;1.0;0.0;;4
+156;3;179;I16;;UnderFUpload Response Time;;1.0;0.0;;4
+157;3;180;U16;;MeterLink;;1.0;0.0;;4
+158;3;181;I16;;OPT Number;;1.0;0.0;;4
+159;3;182;U16;;OPT ConfigOK Flag;;1.0;0.0;;4
+160;3;183;U16;;String Num;;1.0;0.0;;4
+161;3;184;U16;;BDC parallel Num;;1.0;0.0;;4
+162;3;185;U16;;Pack Number;;1.0;0.0;;4
+163;3;187;U16;;VPP function enable status;;1.0;0.0;;4
+164;3;188;U16;;dataLog Connect Server status;;1.0;0.0;;4
+165;3;201;U16;;PID Working Model;;1.0;0.0;;4
+166;3;202;U16;;PID On_Off Ctrl;;1.0;0.0;;4
+167;3;203;U16;;PID Voltage Option;;1.0;0.0;V;4
+168;3;209_30;STRING;;New Serial Number;;1.0;0.0;;4
+169;3;229;U16;;Energy Adjuste;;0.1;0.0;%;4
+170;4;0;U16;;Inverter Status;;1.0;0.0;;4
+171;4;1;U32;;Input power;P_DC;0.1;0.0;W;4
+172;4;3;U16;;PV1 voltage;U_DC_MPPT_1;0.1;0.0;V;4
+173;4;4;U16;;PV1 input current;I_DC_MPPT_1;0.1;0.0;A;4
+174;4;5;U32;;PV1 input power;P_DC_MPPT_1;0.1;0.0;W;4
+175;4;7;U16;;PV2 voltage;U_DC_MPPT_2;0.1;0.0;V;4
+176;4;8;U16;;PV2 input current;I_DC_MPPT_2;0.1;0.0;A;4
+177;4;9;U32;;PV2 input power;P_DC_MPPT_2;0.1;0.0;W;4
+178;4;11;U16;;PV3 voltage;U_DC_MPPT_3;0.1;0.0;V;4
+179;4;12;U16;;PV3 input current;I_DC_MPPT_3;0.1;0.0;A;4
+180;4;13;U32;;PV3 input power;P_DC_MPPT_3;0.1;0.0;W;4
+181;4;15;U16;;PV4 voltage;U_DC_MPPT_4;0.1;0.0;V;4
+182;4;16;U16;;PV4 input current;I_DC_MPPT_4;0.1;0.0;A;4
+183;4;17;U32;;PV4 input power;P_DC_MPPT_4;0.1;0.0;W;4
+184;4;19;U16;;PV5 voltage;U_DC_MPPT_5;0.1;0.0;V;4
+185;4;20;U16;;PV5 input current;I_DC_MPPT_5;0.1;0.0;A;4
+186;4;21;U32;;PV5 input power;P_DC_MPPT_5;0.1;0.0;W;4
+187;4;23;U16;;PV6 voltage;U_DC_MPPT_6;0.1;0.0;V;4
+188;4;24;U16;;PV6 input current;I_DC_MPPT_6;0.1;0.0;A;4
+189;4;25;U32;;PV6 input power;P_DC_MPPT_6;0.1;0.0;W;4
+190;4;27;U16;;PV7 voltage;U_DC_MPPT_7;0.1;0.0;V;4
+191;4;28;U16;;PV7 input current;I_DC_MPPT_7;0.1;0.0;A;4
+192;4;29;U32;;PV7 input power;P_DC_MPPT_7;0.1;0.0;W;4
+193;4;31;U16;;PV8 voltage;U_DC_MPPT_8;0.1;0.0;V;4
+194;4;32;U16;;PV8 input current;I_DC_MPPT_8;0.1;0.0;A;4
+195;4;33;U32;;PV8 input power;P_DC_MPPT_8;0.1;0.0;W;4
+196;4;35;U32;;Outputpower;P_AC;0.1;0.0;W;4
+197;4;37;U16;;Gridfrequency;;0.01;0.0;Hz;4
+198;4;38;U16;;Three/single phase grid voltage;U_AC_1;0.1;0.0;V;4
+199;4;39;U16;;Three/single phase grid output current;I_AC_1;0.1;0.0;A;4
+200;4;40;U32;;Three/single phase grid output watt VA;S_AC_1;0.1;0.0;VA;4
+201;4;42;U16;;Three phase grid voltage 2;U_AC_2;0.1;0.0;V;4
+202;4;43;U16;;Three phase grid output current 2;I_AC_2;0.1;0.0;A;4
+203;4;44;U32;;Three phase grid output power 2;S_AC_2;0.1;0.0;VA;4
+204;4;46;U16;;Three phase grid voltage 3;U_AC_3;0.1;0.0;V;4
+205;4;47;U16;;Three phase grid output current 3;I_AC_3;0.1;0.0;A;4
+206;4;48;U32;;Three phase grid output power 3;S_AC_3;0.1;0.0;VA;4
+207;4;50;U16;;Three phase grid voltage (RS);U_AC_L1L2;0.1;0.0;V;4
+208;4;51;U16;;Three phase grid voltage (ST);U_AC_L2L3;0.1;0.0;V;4
+209;4;52;U16;;Three phase grid voltage (TR);U_AC_L3L1;0.1;0.0;V;4
+210;4;53;U32;;Today generate energy;E_DAY;0.1;0.0;kWh;4
+211;4;55;U32;;Total generate energy;E_TOT;0.1;0.0;kWh;4
+212;4;57;U32;;Work time total;TOT;0.5;0.0;s;4
+213;4;59;U32;;PV1 Energy today;;0.1;0.0;kWh;4
+214;4;61;U32;;PV1 Energy total;;0.1;0.0;kWh;4
+215;4;63;U32;;PV2 Energy today;;0.1;0.0;kWh;4
+216;4;65;U32;;PV2 Energy total;;0.1;0.0;kWh;4
+217;4;67;U32;;PV3 Energy today;;0.1;0.0;kWh;4
+218;4;69;U32;;PV3 Energy total;;0.1;0.0;kWh;4
+219;4;71;U32;;PV4 Energy today;;0.1;0.0;kWh;4
+220;4;73;U32;;PV4 Energy total;;0.1;0.0;kWh;4
+221;4;75;U32;;PV5 Energy today;;0.1;0.0;kWh;4
+222;4;77;U32;;PV5 Energy total;;0.1;0.0;kWh;4
+223;4;79;U32;;PV6 Energy today;;0.1;0.0;kWh;4
+224;4;81;U32;;PV6 Energy total;;0.1;0.0;kWh;4
+225;4;83;U32;;PV7 Energy today;;0.1;0.0;kWh;4
+226;4;85;U32;;PV7 Energy total;;0.1;0.0;kWh;4
+227;4;87;U32;;PV8 Energy today;;0.1;0.0;kWh;4
+228;4;89;U32;;PV8 Energy total;;0.1;0.0;kWh;4
+229;4;91;U32;;PV  Energy total;;0.1;0.0;kWh;4
+230;4;93;U16;;Temp1;TEMP_INT;0.1;0.0;°C;4
+231;4;94;U16;;Temp2;;0.1;0.0;°C;4
+232;4;95;U16;;Temp3;;0.1;0.0;°C;4
+233;4;97;U16;;BatVolt_DSP;;0.1;0.0;V;4
+234;4;98;U16;;P Bus Voltage;U_DC;0.1;0.0;V;4
+235;4;99;U16;;N Bus Voltage;;0.1;0.0;V;4
+236;4;100;U16;;Inverter output PF now;;1.0;0.0;;4
+237;4;101;U16;;Real Output power Percent;;1.0;0.0;%;4
+238;4;102;U32;;Output Maxpower Limited;CMD_P_AC_SET_ABS;0.1;0.0;W;1
+239;4;104;U16;;Derating Mode;;1.0;0.0;;4
+240;4;105;U16;;Fault Maincode;;1.0;0.0;;4
+241;4;107;U16;;Fault Subcode;;1.0;0.0;;4
+242;4;108;U16;;RemoteCtrlEn;;1.0;0.0;;4
+243;4;109;U16;;RemoteCtrlPow er;;1.0;0.0;;4
+244;4;110;U16;;Warning bitH;;1.0;0.0;;4
+245;4;111;U16;;Warn Subcode;;1.0;0.0;;4
+246;4;112;U16;;Warn Maincode;;1.0;0.0;;4
+247;4;113;U16;;real Power Percent;;1.0;0.0;;4
+248;4;114;U16;;inv start delay time;;1.0;0.0;;4
+249;4;115;U16;;INVAllFaultCode;;1.0;0.0;;4
+250;4;116;U32;;AC charge Power;;0.1;0.0;kWh;4
+251;4;118;U16;;Priority;;1.0;0.0;;4
+252;4;119;U16;;Battery Type;;1.0;0.0;;4
+253;4;120;U16;;AutoProofreadC MD;;1.0;0.0;;4
+254;4;125;U16;;PID PV1+ Voltage;U_DC_STRING_1;0.1;0.0;V;4
+255;4;126;I16;;PID PV1+ Current;I_DC_STRING_1;0.1;0.0;mA;4
+256;4;127;U16;;PID PV2+ Voltage;U_DC_STRING_2;0.1;0.0;V;4
+257;4;128;I16;;PID PV2+ Current;I_DC_STRING_2;0.1;0.0;mA;4
+258;4;129;U16;;PID PV3+ Voltage;U_DC_STRING_3;0.1;0.0;V;4
+259;4;130;I16;;PID PV3+ Current;I_DC_STRING_3;0.1;0.0;mA;4
+260;4;131;U16;;PID PV4+ Voltage;U_DC_STRING_4;0.1;0.0;V;4
+261;4;132;I16;;PID PV4+ Current;I_DC_STRING_4;0.1;0.0;mA;4
+262;4;133;U16;;PID PV5+ Voltage;U_DC_STRING_5;0.1;0.0;V;4
+263;4;134;I16;;PID PV5+ Current;I_DC_STRING_5;0.1;0.0;mA;4
+264;4;135;U16;;PID PV6+ Voltage;U_DC_STRING_6;0.1;0.0;V;4
+265;4;136;I16;;PID PV6+ Current;I_DC_STRING_6;0.1;0.0;mA;4
+266;4;137;U16;;PID PV7+ Voltage;U_DC_STRING_7;0.1;0.0;V;4
+267;4;138;I16;;PID PV7+ Current;I_DC_STRING_7;0.1;0.0;mA;4
+268;4;139;U16;;PID PV8+ Voltage;U_DC_STRING_8;0.1;0.0;V;4
+269;4;140;I16;;PID PV8+ Current;I_DC_STRING_8;0.1;0.0;mA;4
+270;4;141_0_8;BITS;;PID Status : PID Working Status;;1.0;0.0;;4
+271;4;142;U16;;PV String1 voltage;;0.1;0.0;V;4
+272;4;143;I16;;PV String1 current;;0.1;0.0;A;4
+273;4;144;U16;;PV String2 voltage;;0.1;0.0;V;4
+274;4;145;I16;;PV String2 current;;0.1;0.0;A;4
+275;4;146;U16;;PV String3 voltage;;0.1;0.0;V;4
+276;4;147;I16;;PV String3 current;;0.1;0.0;A;4
+277;4;148;U16;;PV String4 voltage;;0.1;0.0;V;4
+278;4;149;I16;;PV String4 current;;0.1;0.0;A;4
+279;4;150;U16;;PV String5 voltage;;0.1;0.0;V;4
+280;4;151;I16;;PV String5 current;;0.1;0.0;A;4
+281;4;152;U16;;PV String6 voltage;;0.1;0.0;V;4
+282;4;153;I16;;PV String6 current;;0.1;0.0;A;4
+283;4;154;U16;;PV String7 voltage;;0.1;0.0;V;4
+284;4;155;I16;;PV String7 current;;0.1;0.0;A;4
+285;4;156;U16;;PV String8 voltage;;0.1;0.0;V;4
+286;4;157;I16;;PV String8 current;;0.1;0.0;A;4
+287;4;158;U16;;PV String9 voltage;U_DC_STRING_9;0.1;0.0;V;4
+288;4;159;I16;;PV String9 current;I_DC_STRING_9;0.1;0.0;A;4
+289;4;160;U16;;PV String10 voltage;U_DC_STRING_10;0.1;0.0;V;4
+290;4;161;I16;;PV String10 current;I_DC_STRING_10;0.1;0.0;A;4
+291;4;162;U16;;PV String11 voltage;U_DC_STRING_11;0.1;0.0;V;4
+292;4;163;I16;;PV String11 current;I_DC_STRING_11;0.1;0.0;A;4
+293;4;164;U16;;PV String12 voltage;U_DC_STRING_12;0.1;0.0;V;4
+294;4;165;I16;;PV String12 current;I_DC_STRING_12;0.1;0.0;A;4
+295;4;166;U16;;PV String13 voltage;U_DC_STRING_13;0.1;0.0;V;4
+296;4;167;I16;;PV String13 current;I_DC_STRING_13;0.1;0.0;A;4
+297;4;168;U16;;PV String14 voltage;U_DC_STRING_14;0.1;0.0;V;4
+298;4;169;I16;;PV String14 current;I_DC_STRING_14;0.1;0.0;A;4
+299;4;170;U16;;PV String15 voltage;U_DC_STRING_15;0.1;0.0;V;4
+300;4;171;I16;;PV String15 current;I_DC_STRING_15;0.1;0.0;A;4
+301;4;172;U16;;PV String16 voltage;U_DC_STRING_16;0.1;0.0;V;4
+302;4;173;I16;;PV String16 current;I_DC_STRING_16;0.1;0.0;A;4
+303;4;177_0_1;BITS;;PIDFaultCode : Output over voltage;;1.0;0.0;;4
+304;4;177_1_1;BITS;;PIDFaultCode : ISO fault;;1.0;0.0;;4
+305;4;177_2_1;BITS;;PIDFaultCode : BUS voltage abnormal;;1.0;0.0;;4
+306;4;178_0_1;BITS;;StringPrompt : String Unmatch;;1.0;0.0;;4
+307;4;178_1_1;BITS;;StringPrompt : StrDisconnect;;1.0;0.0;;4
+308;4;178_2_1;BITS;;StringPrompt : StrCurrentUnblance;;1.0;0.0;;4
+309;4;179;U16;;PV Warning Value;;1.0;0.0;;4
+310;4;180;U16;;DSP075 Warning;;1.0;0.0;;4
+311;4;181;U16;;DSP075 Faul;;1.0;0.0;;4
+312;4;182;U16;;DSP067 Debug Data1;;1.0;0.0;;4
+313;4;183;U16;;DSP067 Debug Data2;;1.0;0.0;;4
+314;4;184;U16;;DSP067 Debug Data3;;1.0;0.0;;4
+315;4;185;U16;;DSP067 Debug Data4;;1.0;0.0;;4
+316;4;186;U16;;DSP067 Debug Data5;;1.0;0.0;;4
+317;4;187;U16;;DSP067 Debug Data6;;1.0;0.0;;4
+318;4;188;U16;;DSP067 Debug Data7;;1.0;0.0;;4
+319;4;189;U16;;DSP067 Debug Data8;;1.0;0.0;;4
+320;4;190;U16;;DSP075 Debug Data1;;1.0;0.0;;4
+321;4;191;U16;;DSP075 Debug Data2;;1.0;0.0;;4
+322;4;192;U16;;DSP075 Debug Data3;;1.0;0.0;;4
+323;4;193;U16;;DSP075 Debug Data4;;1.0;0.0;;4
+324;4;194;U16;;DSP075 Debug Data55;;1.0;0.0;;4
+325;4;195;U16;;DSP075 Debug Data6;;1.0;0.0;;4
+326;4;196;U16;;DSP075 Debug Data7;;1.0;0.0;;4
+327;4;197;U16;;DSP075 Debug Data8;;1.0;0.0;;4
+328;4;198;U16;;USBAgingTestOk Flag;;1.0;0.0;;4
+329;4;199;U16;;FlashEraseAging OkFlag;;1.0;0.0;;4
+330;4;200;U16;;PVISO;R_ISO;1.0;0.0;kOhm;4
+331;4;201;U16;;R_DCI;;0.1;0.0;mA;4
+332;4;202;U16;;S_DCI;;0.1;0.0;mA;4
+333;4;203;U16;;T_DCI;;0.1;0.0;mA;4
+334;4;204;U16;;PID_Bus;;0.1;0.0;V;4
+335;4;205;U16;;GFCI;;1.0;0.0;mA;4
+336;4;206;U16;;SVG_APF Status+SVGAPF Equal Ratio;;1.0;0.0;;4
+337;4;207;U16;;R phase load side current for SVG;;0.1;0.0;A;4
+338;4;208;U16;;S phase load side current for SVG;;0.1;0.0;A;4
+339;4;209;U16;;T phase load side current for SVG;;0.1;0.0;A;4
+340;4;210;U32;;R phase load side output reactive power for SVG;;0.1;0.0;Var;4
+341;4;212;U32;;S phase load side output reactive power for SVG;;0.1;0.0;Var;4
+342;4;214;U32;;T phase load side output reactive power for SVG;;0.1;0.0;Var;4
+343;4;216;U16;;R phase load side harmonic;;0.1;0.0;A;4
+344;4;217;U16;;S phase load side harmonic;;0.1;0.0;A;4
+345;4;218;U16;;T phase load side harmonic;;0.1;0.0;A;4
+346;4;219;U32;;R phase compensate reactive power for SVG;Q_AC_3;0.1;0.0;Var;4
+347;4;221;U32;;S phase compensate reactive power for SVG;;0.1;0.0;Var;4
+348;4;223;U32;;T phase compensate reactive power for SVG;;0.1;0.0;Var;4
+349;4;225;U16;;R phase compensate harmonic for SVG;;0.1;0.0;A;4
+350;4;226;U16;;S phase compensate harmonic for SVG;;0.1;0.0;A;4
+351;4;227;U16;;T phase compensate harmonic for SVG;;0.1;0.0;A;4
+352;4;228;U16;;RS232AgingTestOkFlag;;1.0;0.0;;4
+353;4;229_0_1;BITS;;FanFaultBit : Fan 1 fault;;1.0;0.0;;4
+354;4;229_1_1;BITS;;FanFaultBit : Fan 2 fault;;1.0;0.0;;4
+355;4;229_2_1;BITS;;FanFaultBit : Fan 3 fault;;1.0;0.0;;4
+356;4;229_3_1;BITS;;FanFaultBit : Fan 4 fault;;1.0;0.0;;4
+357;4;230;U32;;Output apparent power;S_AC;0.1;0.0;W;4
+358;4;232;I32;;Real Output Reactive Power;;0.1;0.0;W;4
+359;4;234;U32;;Nominal Output Reactive Power;Q_RATED;0.1;0.0;Var;4
+360;4;236;U32;;Reactive power generation;;0.1;0.0;kWh;4
+361;4;238;U16;;AfciStatus;;1.0;0.0;;4
+362;4;239;U16;;PresentFFTValue CHANNEL_A;;1.0;0.0;;4
+363;4;240;U16;;PresentFFTValue CHANNEL_B;;1.0;0.0;;4
+364;4;241;U16;;DSP067 Debug Data1_2;;1.0;0.0;;4
+365;4;242;U16;;DSP067 Debug Data2_2;;1.0;0.0;;4
+366;4;243;U16;;DSP067 Debug Data3_2;;1.0;0.0;;4
+367;4;244;U16;;DSP067 Debug Data4_2;;1.0;0.0;;4
+368;4;245;U16;;DSP067 Debug Data5_2;;1.0;0.0;;4
+369;4;246;U16;;DSP067 Debug Data6_2;;1.0;0.0;;4
+370;4;247;U16;;DSP067 Debug Data7_2;;1.0;0.0;;4
+371;4;248;U16;;DSP067 Debug Data8_2;;1.0;0.0;;4
+372;4;875;U16;;PV9 voltage;U_DC_MPPT_9;0.1;0.0;V;4
+373;4;876;U16;;PV9 input current;I_DC_MPPT_9;0.1;0.0;A;4
+374;4;877;U32;;PV9 input power;P_DC_MPPT_9;0.1;0.0;W;4
+375;4;879;U16;;PV10 voltage;U_DC_MPPT_10;0.1;0.0;V;4
+376;4;880;U16;;PV10 input current;I_DC_MPPT_10;0.1;0.0;A;4
+377;4;881;U32;;PV10 input power;P_DC_MPPT_10;0.1;0.0;W;4
+378;4;883;U16;;PV11 voltage;U_DC_MPPT_11;0.1;0.0;V;4
+379;4;884;U16;;PV11 input current;I_DC_MPPT_11;0.1;0.0;A;4
+380;4;885;U32;;PV11 input power;P_DC_MPPT_11;0.1;0.0;W;4
+381;4;887;U16;;PV12 voltage;U_DC_MPPT_12;0.1;0.0;V;4
+382;4;888;U16;;PV12 input current;I_DC_MPPT_12;0.1;0.0;A;4
+383;4;889;U32;;PV12 input power;P_DC_MPPT_12;0.1;0.0;W;4
+384;4;891;U16;;PV13 voltage;U_DC_MPPT_13;0.1;0.0;V;4
+385;4;892;U16;;PV13 input current;I_DC_MPPT_13;0.1;0.0;A;4
+386;4;893;U32;;PV13 input power;P_DC_MPPT_13;0.1;0.0;W;4
+387;4;895;U16;;PV14 voltage;U_DC_MPPT_14;0.1;0.0;V;4
+388;4;896;U16;;PV14 input current;I_DC_MPPT_14;0.1;0.0;A;4
+389;4;897;U32;;PV14 input power;P_DC_MPPT_14;0.1;0.0;W;4
+390;4;899;U16;;PV15 voltage;U_DC_MPPT_15;0.1;0.0;V;4
+391;4;900;U16;;PV15 input current;I_DC_MPPT_15;0.1;0.0;A;4
+392;4;901;U32;;PV15 input power;P_DC_MPPT_15;0.1;0.0;W;4
+393;4;903;U16;;PV16 voltage;U_DC_MPPT_16;0.1;0.0;V;4
+394;4;904;U16;;PV16 input current;I_DC_MPPT_16;0.1;0.0;A;4
+395;4;905;U32;;PV16 input power;P_DC_MPPT_16;0.1;0.0;W;4
+396;4;907;U32;;PV9 Energy today;;0.1;0.0;kWh;4
+397;4;909;U32;;PV9 Energy total;;0.1;0.0;kWh;4
+398;4;911;U32;;PV10 Energy today;;0.1;0.0;kWh;4
+399;4;913;U32;;PV10 Energy total;;0.1;0.0;kWh;4
+400;4;915;U32;;PV11 Energy today;;0.1;0.0;kWh;4
+401;4;917;U32;;PV11 Energy total;;0.1;0.0;kWh;4
+402;4;919;U32;;PV12 Energy today;;0.1;0.0;kWh;4
+403;4;921;U32;;PV12 Energy total;;0.1;0.0;kWh;4
+404;4;923;U32;;PV13 Energy today;;0.1;0.0;kWh;4
+405;4;925;U32;;PV13 Energy total;;0.1;0.0;kWh;4
+406;4;927;U32;;PV14 Energy today;;0.1;0.0;kWh;4
+407;4;929;U32;;PV14 Energy total;;0.1;0.0;kWh;4
+408;4;931;U32;;PV15 Energy today;;0.1;0.0;kWh;4
+409;4;933;U32;;PV15 Energy total;;0.1;0.0;kWh;4
+410;4;935;U32;;PV16 Energy today;;0.1;0.0;kWh;4
+411;4;937;U32;;PV16 Energy total;;0.1;0.0;kWh;4
+412;4;939;U16;;PID PV9+ Voltage;;0.1;0.0;V;4
+413;4;940;I16;;PID PV9+ Current;;0.1;0.0;mA;4
+414;4;941;U16;;PID PV10+ Voltage;;0.1;0.0;V;4
+415;4;942;I16;;PID PV10 Current;;0.1;0.0;mA;4
+416;4;943;U16;;PID PV11 Voltage;;0.1;0.0;V;4
+417;4;944;I16;;PID PV11 Current;;0.1;0.0;mA;4
+418;4;945;U16;;PID PV12 Voltage;;0.1;0.0;V;4
+419;4;946;I16;;PID PV12 Current;;0.1;0.0;mA;4
+420;4;947;U16;;PID PV13 Voltage;;0.1;0.0;V;4
+421;4;948;I16;;PID PV13 Current;;0.1;0.0;mA;4
+422;4;949;U16;;PID PV14 Voltage;;0.1;0.0;V;4
+423;4;950;I16;;PID PV14 Current;;0.1;0.0;mA;4
+424;4;951;U16;;PID PV15 Voltage;;0.1;0.0;V;4
+425;4;952;I16;;PID PV15 Current;;0.1;0.0;mA;4
+426;4;953;U16;;PID PV16 Voltage;;0.1;0.0;V;4
+427;4;954;I16;;PID PV16 Current;;0.1;0.0;mA;4
+428;4;955;U16;;PV String17 voltage;U_DC_STRING_17;0.1;0.0;V;4
+429;4;956;I16;;PV String17 current;I_DC_STRING_17;0.1;0.0;A;4
+430;4;957;U16;;PV String18 voltage;U_DC_STRING_18;0.1;0.0;V;4
+431;4;958;I16;;PV String18 current;I_DC_STRING_18;0.1;0.0;A;4
+432;4;959;U16;;PV String19 voltage;U_DC_STRING_19;0.1;0.0;V;4
+433;4;960;I16;;PV String19 current;I_DC_STRING_19;0.1;0.0;A;4
+434;4;961;U16;;PV String20 voltage;U_DC_STRING_20;0.1;0.0;V;4
+435;4;962;I16;;PV String20 current;I_DC_STRING_20;0.1;0.0;A;4
+436;4;963;U16;;PV String21 voltage;U_DC_STRING_21;0.1;0.0;V;4
+437;4;964;I16;;PV String21 current;I_DC_STRING_21;0.1;0.0;A;4
+438;4;965;U16;;PV String22 voltage;U_DC_STRING_22;0.1;0.0;V;4
+439;4;966;I16;;PV String22 current;I_DC_STRING_22;0.1;0.0;A;4
+440;4;967;U16;;PV String23 voltage;U_DC_STRING_23;0.1;0.0;V;4
+441;4;968;I16;;PV String23 current;I_DC_STRING_23;0.1;0.0;A;4
+442;4;969;U16;;PV String24 voltage;U_DC_STRING_24;0.1;0.0;V;4
+443;4;970;I16;;PV String24 current;I_DC_STRING_24;0.1;0.0;A;4
+444;4;971;U16;;PV String25 voltage;U_DC_STRING_25;0.1;0.0;V;4
+445;4;972;I16;;PV String25 current;I_DC_STRING_25;0.1;0.0;A;4
+446;4;973;U16;;PV String26 voltage;U_DC_STRING_26;0.1;0.0;V;4
+447;4;974;I16;;PV String26 current;I_DC_STRING_26;0.1;0.0;A;4
+448;4;975;U16;;PV String27 voltage;U_DC_STRING_27;0.1;0.0;V;4
+449;4;976;I16;;PV String27 current;I_DC_STRING_27;0.1;0.0;A;4
+450;4;977;U16;;PV String28 voltage;U_DC_STRING_28;0.1;0.0;V;4
+451;4;978;I16;;PV String28 current;I_DC_STRING_28;0.1;0.0;A;4
+452;4;979;U16;;PV String29 voltage;U_DC_STRING_29;0.1;0.0;V;4
+453;4;980;I16;;PV String29 current;I_DC_STRING_29;0.1;0.0;A;4
+454;4;981;U16;;PV String30 voltage;U_DC_STRING_30;0.1;0.0;V;4
+455;4;982;I16;;PV String30 current;I_DC_STRING_30;0.1;0.0;A;4
+456;4;983;U16;;PV String31 voltage;U_DC_STRING_31;0.1;0.0;V;4
+457;4;984;I16;;PV String31 current;I_DC_STRING_31;0.1;0.0;A;4
+458;4;985;U16;;PV String32 voltage;U_DC_STRING_32;0.1;0.0;V;4
+459;4;986;I16;;PV String32 current;I_DC_STRING_32;0.1;0.0;A;4
+460;4;987_0_16;BITS;;StrUnmatch2 : String;;1.0;0.0;;4
+461;4;988_0_15;BITS;;StrCurrentUnblance2 : String;;1.0;0.0;;4
+462;4;988_15_1;BITS;;StrCurrentUnblance2 : Current unbalance;;1.0;0.0;;4
+463;4;989_0_15;BITS;;StrDisconnect2 : String;;1.0;0.0;;4
+464;4;989_15_1;BITS;;StrDisconnect2 : Disconnect;;1.0;0.0;;4
+465;4;990;U16;;PV Warning Valu;;1.0;0.0;;4
+466;4;991;U16;;StrWaringvalue1;;1.0;0.0;;4
+467;4;992;U16;;StrWaringvalue2;;1.0;0.0;;4
+468;4;999;U16;;SystemCmd;;1.0;0.0;;4

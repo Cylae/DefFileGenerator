@@ -1,0 +1,106 @@
+﻿modbusRTU;Inverter;Webdyn;INV_SMA_STPCORE1_50-41;;;;;;;
+1;4;30001;U16;;Version number of the SMA Modbus profile;;1.0;0.0;;4
+2;4;30003;U16;;SUSy-ID;;1.0;0.0;;4
+3;4;30005;U16;;Serial number;SERIAL;1.0;0.0;;4
+4;4;30051;U16;;Device class;;1.0;0.0;;4
+5;4;30053;U16;;Numerical identification of the device type;;1.0;0.0;;4
+6;4;30055;U16;;Manufacturer specification;MANUFACTURER;1.0;0.0;;4
+7;4;30057;U16;;Serial number_1;;1.0;0.0;;4
+8;4;30059;U16;;Software package;;1.0;0.0;;4
+9;4;30201;U16;;Status of the device;alarm;1.0;0.0;;4
+10;4;30535;U16;;Metering.DyWhOut_1_AC;;1.0;0.0;;4
+11;4;30537;U16;;Metering.DyWhOut_2_AC;;1.0;0.0;;4
+12;4;30539;U16;;Metering.DyWhOut_3_AC;;1.0;0.0;;4
+13;4;31435;U16;;Metering_Courant du reseau phase L1_AC;;1.0;0.0;A;4
+14;4;31437;U16;;Metering_Courant du reseau phase L2_AC;;1.0;0.0;A;4
+15;4;31439;U16;;Metering_Courant du reseau phase L3_AC;;1.0;0.0;A;4
+16;4;31447;U16;;Metering_Frequence du reseau_AC;FREQ;1.0;0.0;Hz;4
+17;4;31253;U16;;Metering_Tension du reseau phase L1_AC;;1.0;0.0;;4
+18;4;31255;U16;;Metering_Tension du reseau phase L2_AC;;1.0;0.0;;4
+19;4;31257;U16;;Metering_Tension du reseau phase L3_AC;;1.0;0.0;;4
+20;4;31449;U16;;Metering_Tension de reseau phase L3 contre L1_AC;U_AC_3;1.0;0.0;;4
+21;4;31451;U16;;Metering_Tension de reseau phase L1 contre L2_AC;U_AC_1;1.0;0.0;;4
+22;4;31453;U16;;Metering_Tension de reseau phase L2 contre L3_AC;U_AC_2;1.0;0.0;;4
+23;4;31433;U16;;Metering_Facteur de dephasage_AC;;1.0;0.0;;4
+24;4;31499;U16;;Metering_Facteur de dephasage EEI_AC;;1.0;0.0;;4
+25;4;31455;U16;;Metering_Puissance apparente_AC;S_AC;1.0;0.0;;4
+26;4;31277;U16;;Metering_Puissance reactive_AC;Q_AC;1.0;0.0;;4
+27;4;30581;U16;;Metering_Énergie absorbee au point raccordement du reseau_AC;;1.0;0.0;;4
+28;4;30583;U16;;Metering_Rendement total_AC;;1.0;0.0;;4
+29;4;30865;U16;;Metering_Puissance absorbee_AC;;1.0;0.0;;4
+30;4;30867;U16;;Metering_Puissance injectee_AC;;1.0;0.0;;4
+31;4;32341;U16;;Metering_Puissance injectee_1_AC;;1.0;0.0;;4
+32;4;31441;U16;;Metering_Puissance apparente L1_AC;;1.0;0.0;;4
+33;4;31443;U16;;Metering_Puissance apparente L2_AC;;1.0;0.0;;4
+34;4;31445;U16;;Metering_Puissance apparente L3_AC;;1.0;0.0;;4
+35;4;31271;U16;;Metering_Puiss. react. d'injection dans le reseau phase L1_AC;;1.0;0.0;;4
+36;4;31273;U16;;Metering_Puiss. react. d'injection dans le reseau phase L2_AC;;1.0;0.0;;4
+37;4;31275;U16;;Metering_Puiss. react. d'injection dans le reseau phase L3_AC;;1.0;0.0;;4
+38;4;31259;U16;;Metering_Puissance d'injection dans le reseau L1;;1.0;0.0;;4
+39;4;31261;U16;;Metering_Puissance d'injection dans le reseau L2;;1.0;0.0;;4
+40;4;31263;U16;;Metering_Puissance d'injection dans le reseau L3;;1.0;0.0;;4
+41;4;31265;U16;;Metering_Puissance de prelevement sur le reseau phase L1;;1.0;0.0;;4
+42;4;31267;U16;;Metering_Puissance de prelevement sur le reseau phase L2;;1.0;0.0;;4
+43;4;31269;U16;;Metering_Puissance de prelevement sur le reseau phase L3;;1.0;0.0;;4
+44;4;30529;U16;;Metering_Rendement total_1_AC;;1.0;0.0;Wh;4
+45;4;30531;U16;;Metering_Rendement total_2_AC;;1.0;0.0;kWh;4
+46;4;30533;U16;;Metering_Rendement total_3_AC;;1.0;0.0;MWh;4
+47;4;32385;U16;;Etat onduleur;;1.0;0.0;;8
+48;4;30977;U16;;Grid_Courant du reseau phase L1_AC;;1.0;0.0;A;4
+49;4;30979;U16;;Grid_Courant du reseau phase L2_AC;;1.0;0.0;A;4
+50;4;30981;U16;;Grid_Courant du reseau phase L3_AC;;1.0;0.0;A;4
+51;4;30803;U16;;Grid_Frequence du reseau_AC;;1.0;0.0;Hz;4
+52;4;30783;U16;;Grid_Tension du reseau phase L1_AC;;1.0;0.0;A;4
+53;4;30785;U16;;Tension du reseau phase L2;;1.0;0.0;;4
+54;4;30787;U16;;Tension du reseau phase L3;;1.0;0.0;;4
+55;4;30789;U16;;Tension du reseau entre phase L1 et L2;;1.0;0.0;;4
+56;4;30791;U16;;Tension de reseau phase L2 contre L3;;1.0;0.0;;4
+57;4;30793;U16;;Tension de reseau phase L3 contre L1;;1.0;0.0;;4
+58;4;30795;U16;;Somme courant toutes phases;;1.0;0.0;;4
+59;4;31221;U16;;Facteur de dephasage EEI;;1.0;0.0;;4
+60;4;30949;U16;;Facteur de decalage;;1.0;0.0;;4
+61;4;30823;U16;;Type d'excitation du cos phi;PF;1.0;0.0;;4
+62;4;31497;U16;;Puissance reactive;;1.0;0.0;;4
+63;4;30813;U16;;Puissance apparente;;1.0;0.0;;4
+64;4;30775;U16;;Puissance;P_AC;1.0;0.0;;4
+65;4;30777;U16;;Puissance L1;;1.0;0.0;;4
+66;4;30779;U16;;Puissance L2;;1.0;0.0;;4
+67;4;30781;U16;;Puissance L3;;1.0;0.0;;4
+68;4;30815;U16;;Puissance apparente L1;S_AC_1;1.0;0.0;;4
+69;4;30817;U16;;Puissance apparente L2;S_AC_2;1.0;0.0;;4
+70;4;30819;U16;;Puissance apparente L3;S_AC_3;1.0;0.0;;4
+71;4;30807;U16;;Puissance reactive L1;Q_AC_1;1.0;0.0;;4
+72;4;30809;U16;;Puissance reactive L2;Q_AC_2;1.0;0.0;;4
+73;4;30811;U16;;Puissance reactive L3;Q_AC_3;1.0;0.0;;4
+74;4;31247;U16;;Courant de defaut;;1.0;0.0;;4
+75;4;30225;U16;;Resistance d'isolement;R_ISO;1.0;0.0;;4
+76;4;30953;U16;;Temperature interieure;;1.0;0.0;;4
+77;4;34113;U16;;Temperature interieure_1;;1.0;0.0;;4
+78;4;30975;U16;;Tension du circuit intermediaire;;1.0;0.0;;4
+79;4;30217;U16;;Etat du relais reseau;;1.0;0.0;;4
+80;4;30881;U16;;Connexion reseau de l'installation;;1.0;0.0;;4
+81;4;31793;U16;;Entree courant DC_1;I_DC;1.0;0.0;;4
+82;4;31795;U16;;Entree courant DC_2;;1.0;0.0;;4
+83;4;31797;U16;;Entree courant DC_3;;1.0;0.0;;4
+84;4;31799;U16;;Entree courant DC_4;;1.0;0.0;;4
+85;4;31801;U16;;Entree courant DC_5;;1.0;0.0;;4
+86;4;31803;U16;;Entree courant DC_6;;1.0;0.0;;4
+87;4;30769;U16;;Entree courant DC_7;;1.0;0.0;;4
+88;4;30771;U16;;Entree tension DC_1;U_DC;1.0;0.0;;4
+89;4;30773;U16;;Entree puissance DC_1;P_DC;1.0;0.0;;4
+90;4;30957;U16;;Entree courant DC_8;;1.0;0.0;;4
+91;4;30959;U16;;Entree tension DC_2;;1.0;0.0;;4
+92;4;30961;U16;;Entree puissance DC_2;;1.0;0.0;;4
+93;4;30963;U16;;Entree courant DC_9;;1.0;0.0;;4
+94;4;30965;U16;;Entree tension DC_3;;1.0;0.0;;4
+95;4;30967;U16;;Entree puissance DC_3;;1.0;0.0;;4
+96;4;30969;U16;;Entree courant DC_10;;1.0;0.0;;4
+97;4;30971;U16;;Entree tension DC_4;;1.0;0.0;;4
+98;4;30973;U16;;Entree puissance DC_4;;1.0;0.0;;4
+99;4;31209;U16;;Entree courant DC_11;;1.0;0.0;;4
+100;4;31211;U16;;Entree tension DC_5;;1.0;0.0;;4
+101;4;31213;U16;;Entree puissance DC_5;;1.0;0.0;;4
+102;4;31215;U16;;Entree courant DC_12;;1.0;0.0;;4
+103;4;31217;U16;;Entree tension DC_6;;1.0;0.0;;4
+104;4;31219;U16;;Entree puissance DC_6;;1.0;0.0;;4
+105;4;30251;U16;;Etat de verrouillage;lock;1.0;0.0;;4

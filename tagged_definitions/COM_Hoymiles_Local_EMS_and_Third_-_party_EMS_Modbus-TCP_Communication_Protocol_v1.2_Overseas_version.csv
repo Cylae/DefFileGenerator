@@ -1,0 +1,42 @@
+﻿modbusRTU;Other;Hoymiles;Local EMS and Third - party EM;;;;;;;
+1;4;1;U16;;Heartbeat Information;;1.0;0.0;/;4
+2;4;2;U16;;Current Control Mode;;1.0;0.0;/;4
+3;4;3;U16;;Current Operating Mode;;1.0;0.0;/;4
+4;4;4;U16;;System Operating Status;;1.0;0.0;/;9
+5;4;5;U16;;System Fault Status;;1.0;0.0;/;9
+6;4;6;U16;;Total SOC;SOC;1.0;0.0;%;4
+7;4;7;U16;;Total SOH;SOH;1.0;0.0;%;4
+8;4;8;U16;;Total Active Power;P_AC;1.0;0.0;kW;4
+9;4;10;U16;;Total Reactive Power;Q_AC;1.0;0.0;kVar;4
+10;4;12;U16;;Total Charging Energy;E_TOT;1.0;0.0;kWh;4
+11;4;14;U16;;Total Discharging Energy;;1.0;0.0;kWh;4
+12;4;16;U16;;Maximum Allowable Charging Power;;1.0;0.0;kW;4
+13;4;18;U16;;Maximum Allowable Discharging Power;;1.0;0.0;kW;4
+14;4;20;U16;;Maximum Allowable Charging Capacity;;1.0;0.0;kWh;4
+15;4;22;U16;;Maximum Allowable Discharging Capacity;;1.0;0.0;kWh;4
+16;4;24;U16;;Reserved;;1.0;0.0;;0
+17;4;101;U16;;Unit 1 Fault Status;;1.0;0.0;/;9
+18;4;102;U16;;Unit 1 Allowable Charge - Discharge Status;;1.0;0.0;/;9
+19;4;103;U16;;Unit 1 SOC;;1.0;0.0;%;4
+20;4;104;U16;;Unit 1 SOH;;1.0;0.0;%;4
+21;4;105;U16;;Unit 1 Active Power;;1.0;0.0;A;4
+22;4;106;U16;;Unit 1 Average Cell Voltage;;1.0;0.0;V;4
+23;4;107;U16;;Unit 1 Average Cell Temperature;TEMP_CELL;1.0;0.0;℃;4
+24;4;108;U16;;Reserved;;1.0;0.0;;0
+25;4;201;U16;;Unit 2 Fault Status;;1.0;0.0;/;9
+26;4;202;U16;;Unit 2 Allowable Charge - Discharge Status;;1.0;0.0;/;9
+27;4;203;U16;;Unit 2 SOC;;1.0;0.0;%;4
+28;4;204;U16;;Unit 2 SOH;;1.0;0.0;%;4
+29;4;205;U16;;Unit 2 Active Power;;1.0;0.0;A;4
+30;4;206;U16;;Unit 2 Average Cell Voltage;;1.0;0.0;V;4
+31;4;207;U16;;Unit 2 Average Cell Temperature;;1.0;0.0;℃;4
+32;4;208;U16;;Reserved;;1.0;0.0;None;0
+33;4;1;U16;;Control Mode Setting;;1.0;0.0;/;4
+34;4;2;U16;;Active Power Command;;1.0;0.0;kW;4
+35;4;3;U16;;Reactive Power Command;;1.0;0.0;kVar;4
+36;4;4;U16;;Operating Mode Setting;;1.0;0.0;None;4
+37;4;5;U16;;System Fault Reset Command;;1.0;0.0;None;9
+38;4;6;U16;;System Power On/Off Command;CMD_ON;1.0;0.0;None;1
+39;4;7;U16;;Off-Grid VF Mode Output Frequency Setting;FREQ;1.0;0.0;Hz;4
+40;4;8;U16;;Off-Grid VF Mode Output Line Voltage Setting;;1.0;0.0;V;4
+41;4;9;U16;;Reserved;;1.0;0.0;/;0

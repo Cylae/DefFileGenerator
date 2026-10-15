@@ -1,0 +1,65 @@
+﻿modbusRTU;Inverter;Sungrow;SUNGROW_PVCombinerBox;;;;;;;
+1;4;6999;U16;;Device type code;;1.0;0.0;;4
+2;4;7000;U16;;Max input numbers;;1.0;0.0;;4
+3;4;7005;U16;;DC bus voltage;U_DC;1.0;0.0;V;4
+4;4;7006;U16;;Internal temperature;TEMP_INT;1.0;0.0;Celsius;4
+5;4;7010;U16;;Max. current;;1.0;0.0;A;4
+6;4;7011;U16;;Average current;;1.0;0.0;A;4
+7;4;7012;U16;;Current of 1st input;;1.0;0.0;A;4
+8;4;7013;U16;;Current of 2nd input;;1.0;0.0;A;4
+9;4;7014;U16;;Current of 3rd input;;1.0;0.0;A;4
+10;4;7015;U16;;Current of 4th input;;1.0;0.0;A;4
+11;4;7016;U16;;Current of 5th input;;1.0;0.0;A;4
+12;4;7017;U16;;Current of 6th input;;1.0;0.0;A;4
+13;4;7018;U16;;Current of 7th input;;1.0;0.0;A;4
+14;4;7019;U16;;Current of 8th input;;1.0;0.0;A;4
+15;4;7020;U16;;Current of 9th input;;1.0;0.0;A;4
+16;4;7021;U16;;Current of 10th input;;1.0;0.0;A;4
+17;4;7022;U16;;Current of 11th input;;1.0;0.0;A;4
+18;4;7023;U16;;Current of 12th input;;1.0;0.0;A;4
+19;4;7024;U16;;Current of 13th input;;1.0;0.0;A;4
+20;4;7025;U16;;Current of 14th input;;1.0;0.0;A;4
+21;4;7026;U16;;Current of 15th input;;1.0;0.0;A;4
+22;4;7028;U16;;Current of 16th input;;1.0;0.0;A;4
+23;4;7030;U16;;Total current;I_AC;1.0;0.0;A;4
+24;4;7032;U16;;Total DC power;P_DC;1.0;0.0;W;4
+25;4;7036;U16;;Total Power yields;E_TOT;1.0;0.0;kWh;4
+26;4;7040;U16;;Work state;;1.0;0.0;W;4
+27;4;7042;U16;;Short circuit data;;1.0;0.0;;4
+28;4;7044;U16;;Reverse current data;;1.0;0.0;;4
+29;4;7046;U16;;High current data;;1.0;0.0;;4
+30;4;7048;U16;;Fuse blow;;1.0;0.0;;4
+31;4;7050;U16;;Low current data;;1.0;0.0;;4
+32;4;7054;U16;;Open circuit data;;1.0;0.0;;4
+33;4;7058;U16;;Power of 1st input;;1.0;0.0;W;4
+34;4;7059;U16;;Power of 2nd input;;1.0;0.0;W;4
+35;4;7060;U16;;Power of 3rd input;;1.0;0.0;W;4
+36;4;7061;U16;;Power of 4th input;;1.0;0.0;W;4
+37;4;7062;U16;;Power of 5th input;;1.0;0.0;W;4
+38;4;7063;U16;;Power of 6th input;;1.0;0.0;W;4
+39;4;7064;U16;;Power of 7th input;;1.0;0.0;W;4
+40;4;7065;U16;;Power of 8th input;;1.0;0.0;W;4
+41;4;7066;U16;;Power of 9th input;;1.0;0.0;W;4
+42;4;7067;U16;;Power of 10th input;;1.0;0.0;W;4
+43;4;7068;U16;;Power of 11th input;;1.0;0.0;W;4
+44;4;7069;U16;;Power of 12th input;;1.0;0.0;W;4
+45;4;7070;U16;;Power of 13th input;;1.0;0.0;W;4
+46;4;7071;U16;;Power of 14th input;;1.0;0.0;W;4
+47;4;7072;U16;;Power of 15th input;;1.0;0.0;W;4
+48;4;7073;U16;;Power of 16th input;;1.0;0.0;W;4
+49;4;7074;U16;;Power of 17th input;;1.0;0.0;W;4
+50;4;7075;U16;;Power of 18th input;;1.0;0.0;W;4
+51;4;7076;U16;;Power of 19th input;;1.0;0.0;W;4
+52;4;7077;U16;;Power of 20th input;;1.0;0.0;W;4
+53;4;7078;U16;;Power of 21th input;;1.0;0.0;W;4
+54;4;7079;U16;;Power of 22th input;;1.0;0.0;W;4
+55;4;7080;U16;;Power of 23th input;;1.0;0.0;W;4
+56;4;7081;U16;;Power of 24th input;;1.0;0.0;W;4
+57;4;7084;U16;;Current of 17th input;;1.0;0.0;A;4
+58;4;7085;U16;;Current of 18th input;;1.0;0.0;A;4
+59;4;7086;U16;;Current of 19th input;;1.0;0.0;A;4
+60;4;7087;U16;;Current of 20th input;;1.0;0.0;A;4
+61;4;7088;U16;;Current of 21th input;;1.0;0.0;A;4
+62;4;7089;U16;;Current of 22th input;;1.0;0.0;A;4
+63;4;7090;U16;;Current of 23th input;;1.0;0.0;A;4
+64;4;7091;U16;;Current of 24th input;;1.0;0.0;A;4

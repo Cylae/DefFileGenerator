@@ -1,0 +1,19 @@
+﻿modbusRTU;Other;SolarEdge;SolarEdge_EnhancedPowerControl;;;;;;;
+1;4;62208;U16;;Enable Dynamic Power Control;CMD_P_ENA;1.0;0.0;;1
+2;4;62212;U16;;Max Active Power;RatedPower;1.0;0.0;W;4
+3;4;62214;U16;;Max Reactive Power;Q_AC;1.0;0.0;VAR;4
+4;4;62216;U16;;Active/Reactive Preference;;1.0;0.0;;4
+5;4;62217;U16;;CosPhi/Q Preference;PF;1.0;0.0;;4
+6;4;62224;U16;;Command Timeout;;1.0;0.0;Sec;4
+7;4;62226;U16;;Fall-back Active Power Limit;CMD_P_AC_SET_ABS;1.0;0.0;%;1
+8;4;62228;U16;;Fall-back Reactive Power Limit;CMD_Q_MODE;1.0;0.0;%;1
+9;4;62230;U16;;Fall-back CosPhi;;1.0;0.0;;4
+10;4;62232;U16;;Active Power Ramp-up Rate;P_AC;1.0;0.0;%/min;4
+11;4;62234;U16;;Active Power Ramp-down Rate;;1.0;0.0;%/min;4
+12;4;62236;U16;;Reactive Power Ramp-up Rate;;1.0;0.0;%/min;4
+13;4;62238;U16;;Reactive Power Ramp-down Rate;;1.0;0.0;%/min;4
+14;4;62240;U16;;Phi Change Rate;;1.0;0.0;rad/min;4
+15;4;62242;U16;;Dynamic Active Power Limit;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
+16;4;62244;U16;;Dynamic Reactive Power Limit;;1.0;0.0;%;4
+17;4;62246;U16;;Dynamic CosPhi Limit;;1.0;0.0;;4
+18;4;61696;U16;;Commit Power Control Settings;CMD_COMMIT;1.0;0.0;;1

@@ -1,0 +1,56 @@
+﻿ModbusRTU;Meter;Schneider;IEM 3250;;;;;;;
+1;3;2003;U32;;OperationTimer;;1.0;0.0;s;4
+2;3;6500;U16;;Address;UNIT_ID;1.0;0.0;;4
+3;3;6501;U16;;vitesse;;1.0;0.0;;4
+4;3;6502;U16;;parity;;1.0;0.0;;4
+5;3;8904;U16;;Digital Input Status;;1.0;0.0;;4
+6;3;2999;F32;;phase 1 current;I_AC_1;1.0;0.0;A;4
+7;3;3001;F32;;phase 2 current;I_AC_2;1.0;0.0;A;4
+8;3;3003;F32;;phase 3 current;I_AC_3;1.0;0.0;A;4
+9;3;3009;F32;;Current Avg;;1.0;0.0;A;4
+10;3;3019;F32;;Voltage L1-L2;U_AC_L1L2;1.0;0.0;V;4
+11;3;3021;F32;;Voltage L2-L3;U_AC_L2L3;1.0;0.0;V;4
+12;3;3023;F32;;Voltage L3-L1;U_AC_L3L1;1.0;0.0;V;4
+13;3;3025;F32;;Voltage L-L Avg;;1.0;0.0;V;4
+14;3;3027;F32;;Voltage L1-N;U_AC_1;1.0;0.0;V;4
+15;3;3029;F32;;Voltage L2-N;U_AC_2;1.0;0.0;V;4
+16;3;3031;F32;;Voltage L3-N;U_AC_3;1.0;0.0;V;4
+17;3;3035;F32;;Voltage L-N Avg;;1.0;0.0;V;4
+18;3;3053;F32;;Active Power Phase 1;P_AC_1;1.0;0.0;kW;4
+19;3;3055;F32;;Active Power Phase 2;P_AC_2;1.0;0.0;kW;4
+20;3;3057;F32;;Active Power Phase 3;P_AC_3;1.0;0.0;kW;4
+21;3;3059;F32;;Total Active Power;P_AC;1.0;0.0;kW;4
+22;3;3067;F32;;Total Reactive Power;Q_AC;1.0;0.0;kVAR;4
+23;3;3075;F32;;Total Apparent Power;S_AC;1.0;0.0;kVA;4
+24;3;3083;F32;;Total Power Factor;PF;1.0;0.0;;4
+25;3;3109;F32;;Frequency;FREQ;1.0;0.0;Hz;4
+26;3;3251;U16;;Energy Reset Year;;1.0;0.0;;0
+27;3;3252_0;U8;;Energy Reset month;;1.0;0.0;;0
+28;3;3252_1;U8;;Energy Reset day;;1.0;0.0;;0
+29;3;3253_0;U8;;Energy Reset hour;;1.0;0.0;;0
+30;3;3253_1;U8;;Energy Reset min;;1.0;0.0;;0
+31;3;3254;U16;;Energy Reset ms;;1.0;0.0;;0
+32;3;3553;U16;;Input Accumulation Reset Year;;1.0;0.0;;0
+33;3;3554_0;U8;;Input Accumulation Reset month;;1.0;0.0;;0
+34;3;3554_1;U8;;Input Accumulation Reset day;;1.0;0.0;;0
+35;3;3555_0;U8;;Input Accumulation Reset hour;;1.0;0.0;;0
+36;3;3555_1;U8;;Input Accumulation Reset min;;1.0;0.0;;0
+37;3;3556;U16;;Input Accumulation Reset ms;;1.0;0.0;;0
+38;3;4190;U16;;MultiTariffs Energy Active Rate;;1.0;0.0;;0
+39;3;45099;F32;;Total Active Energy Import;E_IMP;1.0;0.0;Wh;4
+40;3;45101;F32;;Total Active Energy Export;E_EXP;1.0;0.0;Wh;4
+41;3;45103;F32;;Total Reactive Energy Import;;1.0;0.0;VARh;4
+42;3;45105;F32;;Total Reactive Energy Export;;1.0;0.0;VARh;4
+43;3;45107;F32;;Partial Active Energy Import;;1.0;0.0;Wh;4
+44;3;45109;F32;;Partial Reactive Energy Import;;1.0;0.0;VARh;4
+45;3;45111;F32;;Active Energy Import Phase 1;;1.0;0.0;Wh;4
+46;3;45113;F32;;Active Energy Import Phase 2;;1.0;0.0;Wh;4
+47;3;45115;F32;;Active Energy Import Phase 3;;1.0;0.0;Wh;4
+48;3;45117;F32;;Input Metering Accumulation;;1.0;0.0;unit;4
+49;3;45119;F32;;Rate A Active Energy Import;;1.0;0.0;Wh;0
+50;3;45121;F32;;Rate B Active Energy Import;;1.0;0.0;Wh;0
+51;3;45123;F32;;Rate C Active Energy Import;;1.0;0.0;Wh;0
+52;3;45125;F32;;Rate D Active Energy Import;;1.0;0.0;Wh;0
+53;3;45127;F32;;Reactive Energy Import Phase A;;1.0;0.0;KVARH;4
+54;3;45129;F32;;Reactive Energy Import Phase B;;1.0;0.0;KVARH;4
+55;3;45131;F32;;Reactive Energy Import Phase C;;1.0;0.0;KVARH;4

@@ -1,0 +1,13 @@
+﻿modbus;Inverter;MarsRenewable;LC_EMS_V7;;;;;;;
+1;4;0;U16;;LC Measurement Point Version Number;;1;0;;1
+2;4;1;U16;;LC PCS Number;;1;0;;1
+3;4;2;U16;;LC Bank Number;;1;0;;1
+4;4;3;U16;;LC Rack Number;;1;0;;1
+5;4;4;U16;;LC Meter Number;;1;0;;1
+6;3;0;U16;;EMS Working Mode (0=autonomous, 1=remote control);;1;0;;4
+7;3;1;I32;;Remote Control Duration;;1;0;min;4
+8;3;3;U16;;Energy Storage Working Mode (0=grid constant power, 1=off-grid constant voltage, 2=stop);;1;0;;4
+9;3;4;I32;;Energy Storage Active Power (<0 discharge, >0 charge);P_AC;1;0;W;4
+10;3;6;I32;;Energy Storage Reactive Power (not supported);Q_AC;1;0;Var;0
+11;3;8;U16;;AC Voltage (off-grid mode);;1;0;V;4
+12;3;9;U16;;AC Frequency (off-grid mode);FREQ;0.01;0;Hz;4

@@ -1,0 +1,37 @@
+﻿ModbusTCP;Other;SMA;33KW;;;;;;;
+1;4;30203;U32;;Nominal_power_in_ok_mode;P_RATED;1.0;0.0;;4
+2;4;30205;U32;;Nominal_power_in_warning_mode;;1.0;0.0;;4
+3;4;30207;U32;;Nominal power in Fault Mode;;1.0;0.0;;4
+4;4;30209;U32;;Recommended action;;1.0;0.0;;4
+5;4;30211;U32;;Message;;1.0;0.0;;4
+6;4;30213;U32;;Fault correction measure;;1.0;0.0;;4
+7;4;30215;U32;;Grid relay/contactor;;1.0;0.0;;4
+8;4;30217;U32;;Derating;;1.0;0.0;;4
+9;4;30531;U32;;total_yield;E_TOT;1.0;0.0;;4
+10;4;30533;U32;;Daily_yield;E_DAY;1.0;0.0;;4
+11;4;30541;U32;;Operating time;;1.0;0.0;;4
+12;4;30543;U32;;Feed-in time;;1.0;0.0;;4
+13;4;30545;U32;;Number of events for user;WIND_SPEED;1.0;0.0;;4
+14;4;30547;U32;;Number of events for installer;;1.0;0.0;;4
+15;4;30769;U32;;DC current input 1;I_DC;1.0;0.0;;4
+16;4;30771;U32;;DC voltage input 1;U_DC;1.0;0.0;;4
+17;4;30773;U32;;DC power input 1;P_DC;1.0;0.0;;4
+18;4;30775;U32;;Power;P_AC;1.0;0.0;;4
+19;4;30777;U32;;Power L1;;1.0;0.0;;4
+20;4;30779;U32;;Power L2;;1.0;0.0;;4
+21;4;30781;U32;;Power L3;;1.0;0.0;;4
+22;4;30783;U32;;Grid voltage phase L1;U_AC_1;1.0;0.0;;4
+23;4;30785;U32;;Grid voltage phase L2;U_AC_2;1.0;0.0;;4
+24;4;30787;U32;;Grid voltage phase L3;U_AC_3;1.0;0.0;;4
+25;4;30789;U32;;Grid current phase L1;I_AC_1;1.0;0.0;;4
+26;4;30791;U32;;Grid current phase L2;I_AC_2;1.0;0.0;;4
+27;4;30793;U32;;Grid current phase L3;I_AC_3;1.0;0.0;;4
+28;4;30795;U32;;Grid frequency;FREQ;1.0;0.0;;4
+29;4;30797;I32;;Reactive power;Q_AC;1.0;0.0;;4
+30;4;30949;U32;;Displacement power factor;PF;1.0;0.0;;4
+31;4;30951;I32;;DC current input 2;;1.0;0.0;;4
+32;4;30953;I32;;DC voltage input 2;;1.0;0.0;;4
+33;4;30955;I32;;DC power input 2;;1.0;0.0;;4
+34;4;30977;I32;;Grid current phase L1;;1.0;0.0;;4
+35;4;30979;I32;;Grid current phase L2;;1.0;0.0;;4
+36;4;30981;I32;;Grid current phase L3;;1.0;0.0;;4

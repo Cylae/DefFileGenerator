@@ -1,0 +1,6 @@
+﻿modbusRTU;Inverter;Webdyn;INV_Simu_TCP;;;;;;;
+1;4;0;U16;;Active Power;P_AC;1.0;0.0;KW;4
+2;4;2;U16;;Nominal Power;P_RATED;1.0;0.0;KW;4
+3;4;3;U16;;cmdPct;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
+4;4;4;U16;;Eac;E_TOT;1.0;0.0;KWh;4
+5;4;5;U16;;EacDay;E_DAY;1.0;0.0;KWh;4

@@ -1,0 +1,109 @@
+﻿modbusRTU;Other;Kehua;KEHUA_ThreePhase;;;;;;;
+1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
+2;4;4506;U16;;The capacity of power generation at the same day;;1.0;0.0;kWh;4
+3;4;4507;U16;;Total Grid generation capacity;;1.0;0.0;kWh;4
+4;4;4511;U16;;Grid Frequency;FREQ;1.0;0.0;Hz;4
+5;4;4512;U16;;U-phase grid voltage;;1.0;0.0;V;4
+6;4;4513;U16;;V-phase grid voltage;;1.0;0.0;V;4
+7;4;4514;U16;;W-phase grid voltage;;1.0;0.0;V;4
+8;4;4515;U16;;U-phase grid current;;1.0;0.0;A;4
+9;4;4516;U16;;V-phase grid current;;1.0;0.0;A;4
+10;4;4517;U16;;W-phase grid current;;1.0;0.0;A;4
+11;4;4518;U16;;Grid total active power;P_AC;1.0;0.0;kWh;4
+12;4;4519;U16;;Grid total reactive power;Q_AC;1.0;0.0;kVar;4
+13;4;4522;U16;;The total grid apparent power;S_AC;1.0;0.0;Kva;4
+14;4;4526;U16;;Output power factor;PF;1.0;0.0;;4
+15;4;4527;U16;;PV input total power;;1.0;0.0;kW;4
+16;4;4528;U16;;AC leakage current;;1.0;0.0;mA;4
+17;4;4529;U16;;Daily grid electricity consumption;;1.0;0.0;;4
+18;4;4530;U16;;Total grid electricity consumption;;1.0;0.0;;4
+19;4;4551;U16;;Battery status;;1.0;0.0;;4
+20;4;4552;U16;;Battery voltage;;1.0;0.0;V;4
+21;4;4553;U16;;Battery current;;1.0;0.0;A;4
+22;4;4554;U16;;Battery power;;1.0;0.0;kW;4
+23;4;4555;U16;;Battery maximum temperature;TEMP;1.0;0.0;;4
+24;4;4556;U16;;Battery minimum temperature;;1.0;0.0;;4
+25;4;4557;U16;;Single battery maximum voltage;;1.0;0.0;V;4
+26;4;4558;U16;;Single battery minimum voltage;;1.0;0.0;V;4
+27;4;4559;U16;;Battery capacity;;1.0;0.0;%;4
+28;4;4560;U16;;Battery daily charge capacity;;1.0;0.0;kWh;4
+29;4;4561;U16;;Battery daily discharge capacity;;1.0;0.0;kWh;4
+30;4;4562;U16;;Battery-related information reserved 1;;1.0;0.0;;4
+31;4;4563;U16;;Battery-related information reserved 2;;1.0;0.0;;4
+32;4;4564;U16;;Battery-related information reserved 3;;1.0;0.0;;4
+33;4;4565;U16;;Battery-related information reserved 4;;1.0;0.0;;4
+34;4;4566;U16;;Battery-related information reserved 5;;1.0;0.0;;4
+35;4;4567;U16;;Battery-related information reserved 6;;1.0;0.0;;4
+36;4;4568;U16;;Battery-related information reserved 7;;1.0;0.0;;4
+37;4;4569;U16;;Battery-related information reserved 8;;1.0;0.0;;4
+38;4;4570;U16;;Battery-related information reserved 9;;1.0;0.0;;4
+39;4;4571;U16;;Battery-related information reserved 10;;1.0;0.0;;4
+40;4;4572;U16;;Battery-related information reserved 11;;1.0;0.0;;4
+41;4;4573;U16;;Battery-related information reserved 12;;1.0;0.0;;4
+42;4;4574;U16;;Battery-related information reserved 13;;1.0;0.0;;4
+43;4;4575;U16;;Battery-related information reserved 14;;1.0;0.0;;4
+44;4;4576;U16;;Battery-related information reserved 15;;1.0;0.0;;4
+45;4;4577;U16;;Battery-related information reserved 16;;1.0;0.0;;4
+46;4;4578;U16;;Battery-related information reserved 17;;1.0;0.0;;4
+47;4;4579;U16;;Battery-related information reserved 18;;1.0;0.0;;4
+48;4;4580;U16;;Battery-related information reserved 19;;1.0;0.0;;4
+49;4;4581;U16;;Battery-related information reserved 20;;1.0;0.0;;4
+50;4;4582;U16;;Battery-related information reserved 21;;1.0;0.0;;4
+51;4;4583;U16;;Battery-related information reserved 22;;1.0;0.0;;4
+52;4;4584;U16;;Battery-related information reserved 23;;1.0;0.0;;4
+53;4;4585;U16;;Battery-related information reserved 24;;1.0;0.0;;4
+54;4;4586;U16;;Battery-related information reserved 25;;1.0;0.0;;4
+55;4;4587;U16;;Battery-related information reserved 26;;1.0;0.0;;4
+56;4;4588;U16;;Battery-related information reserved 27;;1.0;0.0;;4
+57;4;4589;U16;;Battery-related information reserved 28;;1.0;0.0;;4
+58;4;4590;U16;;Battery-related information reserved 29;;1.0;0.0;;4
+59;4;4591;U16;;Battery-related information reserved 30;;1.0;0.0;;4
+60;4;4592;U16;;Battery-related information reserved 31;;1.0;0.0;;4
+61;4;4593;U16;;Battery-related information reserved 32;;1.0;0.0;;4
+62;4;4594;U16;;Battery-related information reserved 33;;1.0;0.0;;4
+63;4;4595;U16;;Battery-related information reserved 34;;1.0;0.0;;4
+64;4;4596;U16;;Battery-related information reserved 35;;1.0;0.0;;4
+65;4;4597;U16;;Battery-related information reserved 36;;1.0;0.0;;4
+66;4;4598;U16;;Battery-related information reserved 37;;1.0;0.0;;4
+67;4;4599;U16;;Battery-related information reserved 38;;1.0;0.0;;4
+68;4;4600;U16;;Battery-related information reserved 39;;1.0;0.0;;4
+69;4;4601;U16;;U-phase load voltage;;1.0;0.0;V;4
+70;4;4602;U16;;V-phase load voltage;;1.0;0.0;V;4
+71;4;4603;U16;;W-phase load voltage;;1.0;0.0;V;4
+72;4;4604;U16;;U-phase load current;;1.0;0.0;A;4
+73;4;4605;U16;;V-phase load current;;1.0;0.0;A;4
+74;4;4606;U16;;W-phase load current;;1.0;0.0;A;4
+75;4;4607;U16;;Total load active power;;1.0;0.0;kW;4
+76;4;4608;U16;;Total load reactive power;;1.0;0.0;kVar;4
+77;4;4609;U16;;Total load apparent power;;1.0;0.0;kVA;4
+78;4;4610;U16;;U-phase load active power;;1.0;0.0;kW;4
+79;4;4611;U16;;V-phase load active power;;1.0;0.0;kW;4
+80;4;4612;U16;;W-phase load active power;;1.0;0.0;kW;4
+81;4;4613;U16;;U-phase load reactive power;;1.0;0.0;kW;4
+82;4;4614;U16;;V-phase load reactive power;;1.0;0.0;kW;4
+83;4;4615;U16;;W-phase load reactive power;;1.0;0.0;kW;4
+84;4;4616;U16;;U-phase load active power in kVA;;1.0;0.0;kVA;4
+85;4;4617;U16;;V-phase load active power in kVA;;1.0;0.0;kVA;4
+86;4;4618;U16;;W-phase load active power in kVA;;1.0;0.0;kVA;4
+87;4;4619;U16;;U-phase load power factor;;1.0;0.0;;4
+88;4;4620;U16;;V-phase load power factor;;1.0;0.0;;4
+89;4;4621;U16;;W-phase load power factor;;1.0;0.0;;4
+90;4;4622;U16;;Load power factor;;1.0;0.0;;4
+91;4;4623;U16;;Daily load power consumption;;1.0;0.0;kWh;4
+92;4;4624;U16;;Total load power consumption;;1.0;0.0;kWh;4
+93;4;4661;U16;;MPPT1 Voltage;U_DC_MPPT_1;1.0;0.0;V;4
+94;4;4662;U16;;MPPT2 Voltage;U_DC_MPPT_2;1.0;0.0;V;4
+95;4;4663;U16;;MPPT3 Voltage;U_DC_MPPT_3;1.0;0.0;V;4
+96;4;4664;U16;;MPPT4 Voltage;U_DC_MPPT_4;1.0;0.0;V;4
+97;4;4665;U16;;MPPT5 Voltage;U_DC_MPPT_5;1.0;0.0;V;4
+98;4;4666;U16;;MPPT6 Voltage;U_DC_MPPT_6;1.0;0.0;V;4
+99;4;4667;U16;;MPPT7 Voltage;U_DC_MPPT_7;1.0;0.0;V;4
+100;4;4668;U16;;MPPT8 Voltage;U_DC_MPPT_8;1.0;0.0;V;4
+101;4;4669;U16;;MPPT1 Current;I_DC_MPPT_1;1.0;0.0;A;4
+102;4;4670;U16;;MPPT2 Current;I_DC_MPPT_2;1.0;0.0;A;4
+103;4;4671;U16;;MPPT3 Current;I_DC_MPPT_3;1.0;0.0;A;4
+104;4;4672;U16;;MPPT4 Current;I_DC_MPPT_4;1.0;0.0;A;4
+105;4;4673;U16;;MPPT5 Current;I_DC_MPPT_5;1.0;0.0;A;4
+106;4;4674;U16;;MPPT6 Current;I_DC_MPPT_6;1.0;0.0;A;4
+107;4;4675;U16;;MPPT7 Current;I_DC_MPPT_7;1.0;0.0;A;4
+108;4;4676;U16;;MPPT8 Current;I_DC_MPPT_8;1.0;0.0;A;4

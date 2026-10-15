@@ -1,0 +1,124 @@
+﻿modbusRTU;Inverter;Goodwe;GoodWe_MT_series_customer_vers;;;;;;;
+1;4;0;U16;;Power on voltage;CMD_ON;1.0;0.0;V;1
+2;4;1;U16;;Reconnect time;;1.0;0.0;s;4
+3;4;2;U16;;Lower limit of grid voltage;;1.0;0.0;V;4
+4;4;3;U16;;Upper limit of grid voltage;;1.0;0.0;V;4
+5;4;4;U16;;Lower limit of grid frequency;FREQ;1.0;0.0;Hz;4
+6;4;5;U16;;Upper limit of grid frequency;;1.0;0.0;Hz;4
+7;4;16;U16;;Device RTC time Year/Month;;1.0;0.0;;4
+8;4;17;U16;;Device RTC time Day/Hour;;1.0;0.0;;4
+9;4;18;U16;;Device RTC time Minute/Second;;1.0;0.0;;4
+10;4;256;U16;;Active power adjust;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
+11;4;257;U16;;PF reactive power adjust;CMD_PF;1.0;0.0;%;1
+12;4;258;U16;;Reactive power adjust;;1.0;0.0;Var;4
+13;4;260;U16;;Max value of reactive power;Q_AC;1.0;0.0;Var;4
+14;4;262;U16;;Export Power Limit Adjust Range;CMD_P_AC_SET_ABS;1.0;0.0;%;1
+15;4;263;U16;;TaiWan Safety Vpset;;1.0;0.0;V;4
+16;4;264;U16;;TaiWan Safety PF adjust;;1.0;0.0;%;4
+17;4;265;U16;;TaiWan Safety reactive power adjust;;1.0;0.0;%;4
+18;4;266;U16;;TaiWan Safety active power adjust;P_AC;1.0;0.0;%;4
+19;4;267;U16;;Export power limit Communication Overtime set;;1.0;0.0;s;4
+20;4;268;U16;;TaiWan VPC curve switch;;1.0;0.0;;4
+21;4;288;U16;;Power On(Allow on grid self-test);CMD_OFF;1.0;0.0;;1
+22;4;289;U16;;Power Off(Not allow on grid self-test);;1.0;0.0;;4
+23;4;290;U16;;Restart;;1.0;0.0;;4
+24;4;291;U16;;On Grid Export Power Limit Switch;CMD_P_ENA;1.0;0.0;;1
+25;4;292;U16;;Set the Export power percentage(Need to turn on the limit switch);;1.0;0.0;%;4
+26;4;293;U16;;Set the Export power percentage(No need to turn on the limit switch);;1.0;0.0;%;4
+27;4;304;U16;;Automatic Reactive power Adjust;;1.0;0.0;;4
+28;4;305;U16;;Automatic Reactive power Adjust ID;;1.0;0.0;;4
+29;4;307;U16;;Battery Mode Switch(Brazil);;1.0;0.0;;4
+30;4;308;U16;;Battery Voltage set(Brazil);;1.0;0.0;V;4
+31;4;312;U16;;Shadow mode switch;;1.0;0.0;;4
+32;4;512;U16;;Device Serial Number;SERIAL;1.0;0.0;;4
+33;4;528;U16;;Device Type;MODEL;1.0;0.0;;4
+34;4;544;U16;;Error Message;;1.0;0.0;;4
+35;4;546;U16;;Total Feed Power to grid /Total power generation;E_TOT;1.0;0.0;KWH;4
+36;4;548;U16;;Total feeding hours/Hourly power generation;;1.0;0.0;Hr;4
+37;4;550;U16;;Vpv1 /PPV1 input voltage;;1.0;0.0;V;4
+38;4;551;U16;;Vpv2 /PV2 input voltage;U_DC_STRING_2;1.0;0.0;V;4
+39;4;552;U16;;Ipv1 /PV1 input current;I_DC_STRING_1;1.0;0.0;A;4
+40;4;553;U16;;Ipv2 /PV2 input current;I_DC_STRING_2;1.0;0.0;A;4
+41;4;554;U16;;Vac1 /L1 Phase voltage;U_AC_1;1.0;0.0;V;4
+42;4;555;U16;;Vac2 /L2 Phase voltage;U_AC_2;1.0;0.0;V;4
+43;4;556;U16;;Vac3 /L3 Phase voltage;U_AC_3;1.0;0.0;V;4
+44;4;557;U16;;Iac1 /L1 Phase current;I_AC_1;1.0;0.0;A;4
+45;4;558;U16;;Iac2 /L2 Phase current;I_AC_2;1.0;0.0;A;4
+46;4;559;U16;;Iac3 /L3 Phase current;I_AC_3;1.0;0.0;A;4
+47;4;560;U16;;Fac1 /L1 Phase frequency;FREQ_1;1.0;0.0;Hz;4
+48;4;561;U16;;Fac2 /L2 Phase frequency;FREQ_2;1.0;0.0;Hz;4
+49;4;562;U16;;Fac3 /L3 Phase frequency;FREQ_3;1.0;0.0;Hz;4
+50;4;563;U16;;Pac L /Inverter current output power;;1.0;0.0;W;4
+51;4;564;U16;;Work Mode;;1.0;0.0;;4
+52;4;565;U16;;Inverter internal temperature;TEMP_INT;1.0;0.0;C;4
+53;4;566;U16;;E-Day /Daily power generation;E_DAY;1.0;0.0;KWH;4
+54;4;768;U16;;Vpv1 /PV1 input voltage_1;U_DC_STRING_1;1.0;0.0;V;4
+55;4;769;U16;;Vpv2 /PV2 input voltage_1;U_DC_MPPT_2;1.0;0.0;V;4
+56;4;770;U16;;Ipv1 /PV1 input current_1;I_DC_MPPT_1;1.0;0.0;A;4
+57;4;771;U16;;Ipv2 /PV2 input current_1;I_DC_MPPT_2;1.0;0.0;A;4
+58;4;772;U16;;Vac1 /L1 Phase voltage_1;;1.0;0.0;V;4
+59;4;773;U16;;Vac2 /L2 Phase voltage_1;;1.0;0.0;V;4
+60;4;774;U16;;Vac3 /L3 Phase voltage_1;;1.0;0.0;V;4
+61;4;775;U16;;Iac1 /L1 Phase current_1;;1.0;0.0;A;4
+62;4;776;U16;;Iac2 /L2 Phase current_1;;1.0;0.0;A;4
+63;4;777;U16;;Iac3 /L3 Phase current_1;;1.0;0.0;A;4
+64;4;778;U16;;Fac1 /L1 Phase frequency_1;;1.0;0.0;Hz;4
+65;4;779;U16;;Fac2 /L2 Phase frequency_1;;1.0;0.0;Hz;4
+66;4;780;U16;;Fac3 /L3 Phase frequency_1;;1.0;0.0;Hz;4
+67;4;781;U16;;Pac L /Inverter current output power_1;;1.0;0.0;W;4
+68;4;782;U16;;Work Mode_1;;1.0;0.0;;4
+69;4;783;U16;;Inverter internal temperature_1;;1.0;0.0;C;4
+70;4;784;U16;;Error Message_1;;1.0;0.0;;4
+71;4;786;U16;;Total Feed Power to grid/Total power generation_1;;1.0;0.0;KWH;4
+72;4;788;U16;;Total feeding hours/Hourly power generation_1;;1.0;0.0;Hr;4
+73;4;790;U16;;Firmware Version;;1.0;0.0;;4
+74;4;791;U16;;Warning Code;;1.0;0.0;;4
+75;4;793;U16;;Function Status Bits;;1.0;0.0;;4
+76;4;796;U16;;BUS Voltage;U_DC;1.0;0.0;V;4
+77;4;797;U16;;NBUS Voltage;;1.0;0.0;V;4
+78;4;799;U16;;Safety Code;;1.0;0.0;1mA;4
+79;4;800;U16;;Feed Power to grid in today/ Daily power generation;;1.0;0.0;KWH;4
+80;4;804;U16;;Vpv5 /PV5 input voltage;U_DC_MPPT_5;1.0;0.0;V;4
+81;4;805;U16;;Ipv5 /PV5 input current;I_DC_MPPT_5;1.0;0.0;V;4
+82;4;806;U16;;Vpv6 /PV6 input voltage;U_DC_MPPT_6;1.0;0.0;A;4
+83;4;807;U16;;Ipv6 /PV6 input current;I_DC_MPPT_6;1.0;0.0;A;4
+84;4;827;U16;;Year :Month;;1.0;0.0;;4
+85;4;828;U16;;Date :Hour;;1.0;0.0;;4
+86;4;829;U16;;Minute :Second;;1.0;0.0;;4
+87;4;830;U16;;Manufacture ID;;1.0;0.0;;4
+88;4;831;U16;;Wireless signal strength;;1.0;0.0;%;4
+89;4;832;U16;;PV Mode (SMT only);;1.0;0.0;;4
+90;4;850;U16;;Power;;1.0;0.0;W;4
+91;4;852;U16;;Firmware Version of ARM;;1.0;0.0;;4
+92;4;853;U16;;GPRS Burn-in Mode;;1.0;0.0;;4
+93;4;854;U16;;Pac H /High Byte of Power;;1.0;0.0;W;4
+94;4;855;U16;;Vpv3 /PV3 input voltage;U_DC_MPPT_3;1.0;0.0;V;4
+95;4;856;U16;;Vpv4 /PV4 input voltage;U_DC_MPPT_4;1.0;0.0;V;4
+96;4;857;U16;;Ipv3 /PV3 input current;I_DC_MPPT_3;1.0;0.0;A;4
+97;4;858;U16;;Ipv4 /PV4 input current;I_DC_MPPT_4;1.0;0.0;A;4
+98;4;859;U16;;Istr1/PV String1 Current;;1.0;0.0;A;4
+99;4;860;U16;;Istr2/PV String2 Current;;1.0;0.0;A;4
+100;4;861;U16;;Istr3/PV String3 Current;I_DC_STRING_3;1.0;0.0;A;4
+101;4;862;U16;;Istr4/PV String4 Current;I_DC_STRING_4;1.0;0.0;A;4
+102;4;863;U16;;Istr5/PV String5 Current;I_DC_STRING_5;1.0;0.0;A;4
+103;4;864;U16;;Istr6/PV String6 Current;I_DC_STRING_6;1.0;0.0;A;4
+104;4;865;U16;;Istr7/PV String7 Current;I_DC_STRING_7;1.0;0.0;A;4
+105;4;866;U16;;Istr8/PV String8 Current;I_DC_STRING_8;1.0;0.0;A;4
+106;4;867;U16;;Istr9/PV String9 Current;I_DC_STRING_9;1.0;0.0;A;4
+107;4;868;U16;;Istr10/PV String10 Current;I_DC_STRING_10;1.0;0.0;A;4
+108;4;869;U16;;Istr11/PV String11 Current;I_DC_STRING_11;1.0;0.0;A;4
+109;4;870;U16;;Istr12/PV String12 Current;I_DC_STRING_12;1.0;0.0;A;4
+110;4;871;U16;;Istr13/PV String13 Current;I_DC_STRING_13;1.0;0.0;A;4
+111;4;872;U16;;Istr14/PV String14 Current;I_DC_STRING_14;1.0;0.0;A;4
+112;4;873;U16;;Istr15/PV String15 Current;I_DC_STRING_15;1.0;0.0;A;4
+113;4;874;U16;;Istr16/PV String16 Current;I_DC_STRING_16;1.0;0.0;A;4
+114;4;875;U16;;Istr17/PV String17 Current;I_DC_STRING_17;1.0;0.0;A;4
+115;4;876;U16;;Istr18/PV String18 Current;I_DC_STRING_18;1.0;0.0;A;4
+116;4;877;U16;;Istr19/PV String19 Current;I_DC_STRING_19;1.0;0.0;A;4
+117;4;878;U16;;Istr20/PV String20 Current;I_DC_STRING_20;1.0;0.0;A;4
+118;4;879;U16;;PID&SPD Status;;1.0;0.0;;4
+119;4;880;U16;;Output control state;;1.0;0.0;;4
+120;4;886;U16;;Power Factor;PF;1.0;0.0;;4
+121;4;893;U16;;AC reactive power;;1.0;0.0;kVar;4
+122;4;895;U16;;ISO detection value;R_ISO;1.0;0.0;K;4
+123;4;896;U16;;Leak current Value;;1.0;0.0;mA;4

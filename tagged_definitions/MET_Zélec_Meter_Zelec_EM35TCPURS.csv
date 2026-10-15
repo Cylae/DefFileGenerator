@@ -1,0 +1,172 @@
+﻿modbus;meter;Zelec;EM35TCPURS;;;;;;;
+1;4;0;F32;;Phase 1 L-N volts;;1;0;V;4
+2;4;2;F32;;Phase 2 L-N volts;;1;0;V;4
+3;4;4;F32;;Phase 3 L-N volts;;1;0;V;4
+4;4;6;F32;;Phase 1 current;I_AC_1;1;0;A;4
+5;4;8;F32;;Phase 2 current;I_AC_2;1;0;A;4
+6;4;10;F32;;Phase 3 current;I_AC_3;1;0;A;4
+7;4;12;F32;;Phase 1 active power;P_AC_1;0.001;0;kW;4
+8;4;14;F32;;Phase 2 active power;P_AC_2;0.001;0;kW;4
+9;4;16;F32;;Phase 3 active power;P_AC_3;0.001;0;kW;4
+10;4;18;F32;;Phase 1 apparent power;S_AC_1;1;0;VA;4
+11;4;20;F32;;Phase 2 apparent power;S_AC_2;1;0;VA;4
+12;4;22;F32;;Phase 3 apparent power;S_AC_3;1;0;VA;4
+13;4;24;F32;;Phase 1 reactive power;Q_AC_1;1;0;VAr;4
+14;4;26;F32;;Phase 2 reactive power;Q_AC_2;1;0;VAr;4
+15;4;28;F32;;Phase 3 reactive power;Q_AC_3;1;0;VAr;4
+16;4;30;F32;;Phase 1 power factor;PF_1;1;0;;4
+17;4;32;F32;;Phase 2 power factor;PF_2;1;0;;4
+18;4;34;F32;;Phase 3 power factor;PF_3;1;0;;4
+19;4;36;F32;;Phase 1 phase angle;;1;0;Degrees;4
+20;4;38;F32;;Phase 2 phase angle;;1;0;Degrees;4
+21;4;40;F32;;Phase 3 phase angle;;1;0;Degrees;4
+22;4;42;F32;;Average L-N volts;;1;0;V;4
+23;4;46;F32;;Average line current;;1;0;A;4
+24;4;48;F32;;Sum of line currents;;1;0;A;4
+25;4;52;F32;;Total system power;P_AC;0.001;0;W;4
+26;4;56;F32;;Total system volt amps;;1;0;VA;4
+27;4;60;F32;;Total system VAr;;1;0;VAr;4
+28;4;62;F32;;Total system power factor;PF;1;0;;4
+29;4;66;F32;;Total system phase angle;;1;0;Degrees;4
+30;4;70;F32;;Frequency of supply voltages;FREQ;1;0;Hz;4
+31;4;72;F32;;Import Wh since last reset;;1;0;kWh;4
+32;4;74;F32;;Export Wh since last reset;;1;0;kWh;4
+33;4;76;F32;;Import VArh since last reset;;1;0;kVArh;4
+34;4;78;F32;;Export VArh since last reset;;1;0;kVArh;4
+35;4;80;F32;;VAh since last reset;;1;0;kVAh;4
+36;4;82;F32;;Ah since last reset;;1;0;Ah;4
+37;4;84;F32;;Total system power demand;;1;0;W;4
+38;4;86;F32;;Maximum total system power demand;;1;0;W;4
+39;4;100;F32;;Total system VA demand;;1;0;VA;4
+40;4;102;F32;;Maximum total system VA demand;;1;0;VA;4
+41;4;104;F32;;Neutral current demand;;1;0;A;4
+42;4;106;F32;;Maximum neutral current demand;;1;0;A;4
+43;4;108;F32;;Total system reactive power demand;Q_AC;1;0;VAr;4
+44;4;110;F32;;Maximum total system reactive power demand;;1;0;VAr;4
+45;4;200;F32;;Line 1 to Line 2 volts;;1;0;V;4
+46;4;202;F32;;Line 2 to Line 3 volts;;1;0;V;4
+47;4;204;F32;;Line 3 to Line 1 volts;;1;0;V;4
+48;4;206;F32;;Average line to line volts;;1;0;V;4
+49;4;224;F32;;Neutral current;;1;0;A;4
+50;4;234;F32;;Phase 1 L/N volts THD;;1;0;%;4
+51;4;236;F32;;Phase 2 L/N volts THD;;1;0;%;4
+52;4;238;F32;;Phase 3 L/N volts THD;;1;0;%;4
+53;4;240;F32;;Phase 1 Current THD;;1;0;%;4
+54;4;242;F32;;Phase 2 Current THD;;1;0;%;4
+55;4;244;F32;;Phase 3 Current THD;;1;0;%;4
+56;4;248;F32;;Average L/N volts THD;;1;0;%;4
+57;4;250;F32;;Average line current THD;;1;0;%;4
+58;4;254;F32;;Total system power factor THD;;1;0;Degrees;4
+59;4;258;F32;;Phase 1 current demand;;1;0;A;4
+60;4;260;F32;;Phase 2 current demand;;1;0;A;4
+61;4;262;F32;;Phase 3 current demand;;1;0;A;4
+62;4;264;F32;;Max phase 1 current demand;;1;0;A;4
+63;4;266;F32;;Max phase 2 current demand;;1;0;A;4
+64;4;268;F32;;Max phase 3 current demand;;1;0;A;4
+65;4;334;F32;;Line 1 to line 2 volts THD;;1;0;%;4
+66;4;336;F32;;Line 2 to line 3 volts THD;;1;0;%;4
+67;4;338;F32;;Line 3 to line 1 volts THD;;1;0;%;4
+68;4;340;F32;;Average line to line volts THD;;1;0;%;4
+69;4;342;F32;;Total kWh;E_TOT;1;0;kWh;4
+70;4;344;F32;;Total kVArh;;1;0;kVArh;4
+71;4;346;F32;;L1 import kWh;;1;0;kWh;4
+72;4;348;F32;;L2 import kWh;;1;0;kWh;4
+73;4;350;F32;;L3 import kWh;;1;0;kWh;4
+74;4;352;F32;;L1 export kWh;;1;0;kWh;4
+75;4;354;F32;;L2 export kWh;;1;0;kWh;4
+76;4;356;F32;;L3 export kWh;;1;0;kWh;4
+77;4;358;F32;;L1 total kWh;;1;0;kWh;4
+78;4;360;F32;;L2 total kWh;;1;0;kWh;4
+79;4;362;F32;;L3 total kWh;;1;0;kWh;4
+80;4;364;F32;;L1 import kVArh;;1;0;kVArh;4
+81;4;366;F32;;L2 import kVArh;;1;0;kVArh;4
+82;4;368;F32;;L3 import kVArh;;1;0;kVArh;4
+83;4;370;F32;;L1 export kVArh;;1;0;kVArh;4
+84;4;372;F32;;L2 export kVArh;;1;0;kVArh;4
+85;4;374;F32;;L3 export kVArh;;1;0;kVArh;4
+86;4;376;F32;;L1 total kVArh;;1;0;kVArh;4
+87;4;378;F32;;L2 total kVArh;;1;0;kVArh;4
+88;4;380;F32;;L3 total kVArh;;1;0;kVArh;4
+89;4;4876;F32;;Total active Energy Rate 1;;1;0;kWh;4
+90;4;4878;F32;;Total active Energy Rate 2;;1;0;kWh;4
+91;4;4884;F32;;Import active Energy Rate 1;E_IMP;1;0;kWh;4
+92;4;4886;F32;;Import active Energy Rate 2;;1;0;kWh;4
+93;4;4892;F32;;Export active Energy Rate 1;E_EXP;1;0;kWh;4
+94;4;4894;F32;;Export active Energy Rate 2;;1;0;kWh;4
+95;4;4900;F32;;Total reactive Energy Rate 1;;1;0;kVArh;4
+96;4;4902;F32;;Total reactive Energy Rate 2;;1;0;kVArh;4
+97;4;4908;F32;;Import reactive Energy Rate 1;;1;0;kVArh;4
+98;4;4910;F32;;Import reactive Energy Rate 2;;1;0;kVArh;4
+99;4;4916;F32;;Export reactive Energy Rate 1;;1;0;kVArh;4
+100;4;4918;F32;;Export reactive Energy Rate 2;;1;0;kVArh;4
+101;4;4924;F32;;L1 import kWh of Tarrif 1;;1;0;kWh;4
+102;4;4926;F32;;L2 import kWh of Tarrif 1;;1;0;kWh;4
+103;4;4928;F32;;L3 import kWh of Tarrif 1;;1;0;kWh;4
+104;4;4930;F32;;L1 export kWh of Tarrif 1;;1;0;kWh;4
+105;4;4932;F32;;L2 export kWh of Tarrif 1;;1;0;kWh;4
+106;4;4934;F32;;L3 export kWh of Tarrif 1;;1;0;kWh;4
+107;4;4936;F32;;L1 total kWh of Tarrif 1;;1;0;kWh;4
+108;4;4938;F32;;L2 total kWh of Tarrif 1;;1;0;kWh;4
+109;4;4940;F32;;L3 total kWh of Tarrif 1;;1;0;kWh;4
+110;4;4942;F32;;L1 import kVArh of Tarrif 1;;1;0;kVArh;4
+111;4;4944;F32;;L2 import kVArh of Tarrif 1;;1;0;kVArh;4
+112;4;4946;F32;;L3 import kVArh of Tarrif 1;;1;0;kVArh;4
+113;4;4948;F32;;L1 export kVArh of Tarrif 1;;1;0;kVArh;4
+114;4;4950;F32;;L2 export kVArh of Tarrif 1;;1;0;kVArh;4
+115;4;4952;F32;;L3 export kVArh of Tarrif 1;;1;0;kVArh;4
+116;4;4954;F32;;L1 total kVArh of Tarrif 1;;1;0;kVArh;4
+117;4;4956;F32;;L2 total kVArh of Tarrif 1;;1;0;kVArh;4
+118;4;4958;F32;;L3 total kVArh of Tarrif 1;;1;0;kVArh;4
+119;4;4960;F32;;L1 import kWh of Tarrif 2;;1;0;kWh;4
+120;4;4962;F32;;L2 import kWh of Tarrif 2;;1;0;kWh;4
+121;4;4964;F32;;L3 import kWh of Tarrif 2;;1;0;kWh;4
+122;4;4966;F32;;L1 export kWh of Tarrif 2;;1;0;kWh;4
+123;4;4968;F32;;L2 export kWh of Tarrif 2;;1;0;kWh;4
+124;4;4970;F32;;L3 export kWh of Tarrif 2;;1;0;kWh;4
+125;4;4972;F32;;L1 total kWh of Tarrif 2;;1;0;kWh;4
+126;4;4974;F32;;L2 total kWh of Tarrif 2;;1;0;kWh;4
+127;4;4976;F32;;L3 total kWh of Tarrif 2;;1;0;kWh;4
+128;4;4978;F32;;L1 import kVArh of Tarrif 2;;1;0;kVArh;4
+129;4;4980;F32;;L2 import kVArh of Tarrif 2;;1;0;kVArh;4
+130;4;4982;F32;;L3 import kVArh of Tarrif 2;;1;0;kVArh;4
+131;4;4984;F32;;L1 export kVArh of Tarrif 2;;1;0;kVArh;4
+132;4;4986;F32;;L2 export kVArh of Tarrif 2;;1;0;kVArh;4
+133;4;4988;F32;;L3 export kVArh of Tarrif 2;;1;0;kVArh;4
+134;4;4990;F32;;L1 total kVArh of Tarrif 2;;1;0;kVArh;4
+135;4;4992;F32;;L2 total kVArh of Tarrif 2;;1;0;kVArh;4
+136;4;4994;F32;;L3 total kVArh of Tarrif 2;;1;0;kVArh;4
+137;4;5472;F32;;Tariff 1 total active Max Power Demand;;1;0;W;4
+138;4;5474;F32;;Tariff 1 total reactive Max Power Demand;;1;0;VAr;4
+139;4;5476;F32;;Tariff 1 total inst Max Power Demand;;1;0;VA;4
+140;4;5478;F32;;Tariff 1 L1 Max Current Demand;;1;0;A;4
+141;4;5480;F32;;Tariff 1 L2 Max Current Demand;;1;0;A;4
+142;4;5482;F32;;Tariff 1 L3 Max Current Demand;;1;0;A;4
+143;4;5484;F32;;Tariff 1 Neutral Max Current Demand;;1;0;A;4
+144;4;5486;F32;;Tariff 2 total active Max Power Demand;;1;0;W;4
+145;4;5488;F32;;Tariff 2 total reactive Max Power Demand;;1;0;VAr;4
+146;4;5490;F32;;Tariff 2 total inst Max Power Demand;;1;0;VA;4
+147;4;5492;F32;;Tariff 2 L1 Max Current Demand;;1;0;A;4
+148;4;5494;F32;;Tariff 2 L2 Max Current Demand;;1;0;A;4
+149;4;5496;F32;;Tariff 2 L3 Max Current Demand;;1;0;A;4
+150;4;5498;F32;;Tariff 2 Neutral Max Current Demand;;1;0;A;4
+151;3;0;F32;;Demand Time;;1;0;;1
+152;3;2;F32;;Demand Period;;1;0;;1
+153;3;6;F32;;System Volts;;1;0;V;1
+154;3;8;F32;;System Current;;1;0;A;1
+155;3;10;F32;;System Type;;1;0;;1
+156;3;12;F32;;Pulse output 1 Width;;1;0;;1
+157;3;14;F32;;Password Lock;;1;0;;1
+158;3;18;F32;;Network Parity Stop;;1;0;;1
+159;3;20;F32;;Network Node;;1;0;;1
+160;3;22;F32;;Pulse 1 Divisor;;1;0;;1
+161;3;24;F32;;Password;;1;0;;1
+162;3;28;F32;;Network Baud Rate;;1;0;;1
+163;3;32;F32;;CT Rate;;1;0;;1
+164;3;34;F32;;PT Rate;;1;0;;1
+165;3;48;F32;;PT2;;1;0;;1
+166;3;52;F32;;CT2;;1;0;;1
+167;3;86;F32;;Energy Type (Pulse 1);;1;0;;1
+168;3;88;F32;;Pulse 2 Energy Type;;1;0;;1
+169;3;61456;U16;;Reset historical data;;1;0;;1
+170;3;64512;U32;;Serial number;SERIAL;1;0;;1
+171;3;64514;U16;;Meter code;;1;0;;1

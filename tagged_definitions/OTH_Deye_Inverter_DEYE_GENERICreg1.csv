@@ -1,0 +1,87 @@
+﻿modbusRTU;Other;Deye Inverter;DEYE_GENERICreg1;;;;;;;
+1;3;61;I16;;DayActive PowerWh;dayactive_powerwh;0.100000;0.000000;kWh;4
+2;3;62;I16;;DayReactive PowerWh;dayreactive_powerwh;0.100000;0.000000;kVarh;4
+3;3;63;U16;;Day Grid Work Time;day_grid_work_time;1.000000;0.000000;s;4
+4;3;64;U32;;Total_Active_PowerWh;total_active_powerwh;0.100000;0.000000;kWh;4
+5;3;66;U16;;Total_Reactive_PowerWh;total_reactive_powerwh;0.100000;0.000000;kVarh;4
+6;3;71;U16;;Grid voltage AB;grid_voltage_ab;0.100000;0.000000;V;4
+7;3;72;U16;;Grid voltage BC;grid_voltage_bc;0.100000;0.000000;V;4
+8;3;73;U16;;Grid voltage AC;grid_voltage_ac;0.100000;0.000000;V;4
+9;3;74;U16;;Grid voltage A;grid_voltage_a;0.100000;0.000000;V;4
+10;3;75;U16;;Grid voltage B;grid_voltage_b;0.100000;0.000000;V;4
+11;3;76;U16;;Grid voltage C;grid_voltage_c;0.100000;0.000000;V;4
+12;3;77;U16;;Grid  current A;grid_current_a;0.100000;0.000000;A;4
+13;3;78;U16;;Grid  current B;grid_current_b;0.100000;0.000000;A;4
+14;3;79;U16;;Grid  current C;grid_current_c;0.100000;0.000000;A;4
+15;3;80;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+16;3;92;U16;;IGBT temperature;igbt_temperature;0.100000;0.000000;C;4
+17;3;94;U16;;power factor;PF;1.000000;0.000000;;4
+18;3;100;I16;;Limter power;limter_power;1.000000;0.000000;W;4
+19;3;109;I16;;Day PV PowerWh;day_pv_powerwh;0.100000;0.000000;kWh;4
+20;3;110;U16;;Dc voltage 1;dc_voltage_1;0.100000;0.000000;V;4
+21;3;111;U16;;Dc current 1;dc_current_1;0.100000;0.000000;A;4
+22;3;112;U16;;Dc voltage 2;dc_voltage_2;0.100000;0.000000;V;4
+23;3;113;U16;;Dc current 2;dc_current_2;0.100000;0.000000;A;4
+24;3;114;U16;;Dc voltage 3;dc_voltage_3;0.100000;0.000000;V;4
+25;3;115;U16;;Dc current 3;dc_current_3;0.100000;0.000000;A;4
+26;3;116;U16;;Dc voltage 4;dc_voltage_4;0.100000;0.000000;V;4
+27;3;117;U16;;Dc current 4;dc_current_4;0.100000;0.000000;A;4
+28;3;199;U32;;Load_power;load_power;1.000000;0.000000;W;4
+29;3;201;U16;;Day_Load_PowerWh;day_load_powerwh;0.010000;0.000000;kWh;4
+30;3;202;U32;;Total_Load_PowerWh;total_load_powerwh;0.100000;0.000000;kWh;4
+31;3;204;U32;;Meter power;meter_power;1.000000;0.000000;W;4
+32;3;206;U16;;Day_ Export _PowerWh;day_export_powerwh;0.010000;0.000000;kWh;4
+33;3;207;U32;;Total_Export _PowerWh;total_export_powerwh;0.100000;0.000000;kWh;4
+34;3;209;U16;;Day_ Import _PowerWh;day_import_powerwh;0.010000;0.000000;kWh;4
+35;3;210;U32;;Total_ Import _PowerWh;total_import_powerwh;0.100000;0.000000;kWh;4
+36;3;212;U16;;Dc voltage 5;dc_voltage_5;0.100000;0.000000;V;4
+37;3;213;U16;;Dc current 5;dc_current_5;0.100000;0.000000;A;4
+38;3;214;U16;;Dc voltage 6;dc_voltage_6;0.100000;0.000000;V;4
+39;3;215;U16;;Dc current 6;dc_current_6;0.100000;0.000000;A;4
+40;3;216;U16;;Dc voltage 7;dc_voltage_7;0.100000;0.000000;V;4
+41;3;217;U16;;Dc current 7;dc_current_7;0.100000;0.000000;A;4
+42;3;218;U16;;Dc voltage 8;dc_voltage_8;0.100000;0.000000;V;4
+43;3;219;U16;;Dc current 8;dc_current_8;0.100000;0.000000;A;4
+44;3;230;I16;;Phase A ActivePower;phase_a_activepower;1.000000;0.000000;W;4
+45;3;231;I16;;Phase A ActivePower_1;phase_a_activepower_1;1.000000;0.000000;W;4
+46;3;232;I16;;Phase B ActivePower;phase_b_activepower;1.000000;0.000000;W;4
+47;3;233;I16;;Phase B ActivePower_1;phase_b_activepower_1;1.000000;0.000000;W;4
+48;3;234;I16;;Phase C ActivePower;phase_c_activepower;1.000000;0.000000;W;4
+49;3;235;I16;;Phase C ActivePower_1;phase_c_activepower_1;1.000000;0.000000;W;4
+50;3;287;I32;;Meter_current power;meter_current_power;1.000000;0.000000;;4
+51;3;289_0_1;BITS;;Bit0;bit0;1.000000;0.000000;;4
+52;3;289_1_1;BITS;;Bit1;bit1;1.000000;0.000000;;4
+53;3;289_2_1;BITS;;Bit2;bit2;1.000000;0.000000;;4
+54;3;289_5_4;BITS;;Bit5-8;bit58;1.000000;0.000000;;4
+55;3;290_0_1;BITS;;Bit0_;bit0_1;1.000000;0.000000;;4
+56;3;290_1_1;BITS;;Bit1_;bit1_1;1.000000;0.000000;;4
+57;3;290_2_1;BITS;;Bit2_;bit2_1;1.000000;0.000000;;4
+58;3;290_3_1;BITS;;Bit3;bit3;1.000000;0.000000;;4
+59;3;291;U16;;Active power regulation for exteranl controller;active_power_regulation_for_exteranl_controller;1.000000;0.000000;'%;4
+60;3;292;U16;;Reactive power regulation for exteranl controller;reactive_power_regulation_for_exteranl_controller;1.000000;0.000000;'%;4
+61;3;301;U16;;Grid voltage Upper limit2;grid_voltage_upper_limit2;0.100000;0.000000;V;4
+62;3;302;U16;;Grid voltage Upper limit3;grid_voltage_upper_limit3;0.100000;0.000000;V;4
+63;3;303;U16;;Grid voltage Lower limit2;grid_voltage_lower_limit2;0.100000;0.000000;V;4
+64;3;304;U16;;Grid voltage Lower limit3;grid_voltage_lower_limit3;0.100000;0.000000;V;4
+65;3;305;I32;;Grid frequency upper limit2;grid_frequency_upper_limit2;0.010000;0.000000;Hz;4
+66;3;306;I32;;Grid frequency upper limit3;grid_frequency_upper_limit3;0.010000;0.000000;Hz;4
+67;3;307;I32;;Grid frequency lower limit2;grid_frequency_lower_limit2;0.010000;0.000000;Hz;4
+68;3;308;I32;;Grid frequency lower limit3;grid_frequency_lower_limit3;0.010000;0.000000;Hz;4
+69;3;309;I32;;Grid voltage Upper Tripping time1;grid_voltage_upper_tripping_time1;10.000000;0.000000;ms;4
+70;3;310;I32;;Grid voltage Upper Tripping time2;grid_voltage_upper_tripping_time2;10.000000;0.000000;ms;4
+71;3;311;I16;;Grid voltage Upper Tripping time3;grid_voltage_upper_tripping_time3;10.000000;0.000000;ms;4
+72;3;312;U16;;Grid voltage Lower Tripping time1;grid_voltage_lower_tripping_time1;10.000000;0.000000;ms;4
+73;3;313;U16;;Grid voltage Lower Tripping time2;grid_voltage_lower_tripping_time2;10.000000;0.000000;ms;4
+74;3;314;I16;;Grid voltage Lower Tripping time3;grid_voltage_lower_tripping_time3;10.000000;0.000000;ms;4
+75;3;315;U16;;Grid frequency Upper Tripping time1;grid_frequency_upper_tripping_time1;10.000000;0.000000;ms;4
+76;3;316;U16;;Grid frequency Upper Tripping time2;grid_frequency_upper_tripping_time2;10.000000;0.000000;ms;4
+77;3;317;U16;;Grid frequency Upper Tripping time3;grid_frequency_upper_tripping_time3;10.000000;0.000000;ms;4
+78;3;318;U32;;Grid frequency Lower Tripping time1;grid_frequency_lower_tripping_time1;10.000000;0.000000;ms;4
+79;3;319;U32;;Grid frequency Lower Tripping time2;grid_frequency_lower_tripping_time2;10.000000;0.000000;ms;4
+80;3;320;U32;;Grid frequency Lower Tripping time3;grid_frequency_lower_tripping_time3;10.000000;0.000000;ms;4
+81;3;601;U32;;Day_Load_Power_low word;day_load_power_low_word;0.010000;0.000000;kWh;4
+82;3;602;U32;;Day_Load_Power_high word_1;day_load_power_high_word_1;0.010000;0.000000;kWh;4
+83;3;603;U32;;Day_Load_Power_high word_2;day_load_power_high_word_2;0.010000;0.000000;kWh;4
+84;3;604;U32;;Day_Load_Power_high word_3;day_load_power_high_word_3;0.010000;0.000000;kWh;4
+85;3;605;U16;;Day_Load_Power_high word_4;day_load_power_high_word_4;0.010000;0.000000;kWh;4
+86;3;606;I16;;Day_Load_Power_high word_5;day_load_power_high_word_5;0.010000;0.000000;kWh;4

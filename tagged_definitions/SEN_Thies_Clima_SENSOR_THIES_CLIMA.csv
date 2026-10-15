@@ -1,0 +1,111 @@
+﻿modbusRTU;Sensor;Thies Clima;Clima Sensor;;;;;;;
+1;4;30003;U32;;Average wind speed;WIND_SPEED;0.1;0;m/s;4
+2;4;30011;U32;;Maximum value Wind velocity (gust);;0.1;0;m/s;4
+3;4;30019;U32;;Average wind speed (High Resolution);;0.01;0;m/s;4
+4;4;30021;U32;;True wind;;0.01;0;m/s;4
+5;4;30203;U32;;Average wind direction;WIND_BEARING;0.1;0;Degree;4
+6;4;30211;U32;;Wind direction of the gust;;0.1;0;Degree;4
+7;4;30213;U32;;True wind direction;;0.1;0;Degree;4
+8;4;30401;I32;;Air temperature;;0.1;0;°C;4
+9;4;30403;I32;;Internal temperature of housing;TEMP_INT;0.1;0;°C;4
+10;4;30405;I32;;Acoustic temperature;;0.1;0;°C;4
+11;4;30407;I32;;Air temperature uncorrected;;0.1;0;°C;4
+12;4;30409;I32;;Wind Chill Temperature;;0.1;0;°C;4
+13;4;30411;I32;;Heat Index Temperature;;0.1;0;°C;4
+14;4;30413;I32;;Rain temperature;RAIN;0.1;0;°C;4
+15;4;30601;U32;;Relative humidity;HUMIDITY;0.1;0;%rh;4
+16;4;30603;U32;;Absolute humidity;;0.01;0;g/m^3;4
+17;4;30605;I32;;Dew-point temperature;;0.1;0;°C;4
+18;4;30607;U32;;Rel. humidity uncorrected;;0.1;0;%r.h.;4
+19;4;30801;U32;;Absolute air pressure;PRESSURE;0.01;0;hPa;4
+20;4;30803;U32;;Relative air pressure referred to standard elevation zero (NHN);;0.01;0;hPa;4
+21;4;31001;I32;;Global radiation;;0.1;0;W/m^2;4
+22;4;31201;U32;;Brightness north;;0.1;0;klux;4
+23;4;31203;U32;;Brightness east;;0.1;0;klux;4
+24;4;31205;U32;;Brightness south;;0.1;0;klux;4
+25;4;31207;U32;;Brightness west;;0.1;0;klux;4
+26;4;31211;U32;;Direction of brightness;;1;0;Degree;4
+27;4;31213;U32;;Brightness, maximum value of 4 single sensors (klux);;0.1;0;klux;4
+28;4;31215;U32;;Brightness North (lux);;1;0;Lux;4
+29;4;31217;U32;;Brightness East (lux);;1;0;Lux;4
+30;4;31219;U32;;Brightness South (lux);;1;0;Lux;4
+31;4;31221;U32;;Brightness West (lux);;1;0;Lux;4
+32;4;31223;U32;;Brightness, maximum value of 4 single sensors (lux);;1;0;Lux;4
+33;4;31225;U32;;Brightness, vector sum;;1;0;Lux;4
+34;4;31401;U32;;Precipitation status;;1;0;;4
+35;4;31403;U32;;Precipitation intensity;;0.001;0;mm/h;4
+36;4;31405;U32;;Amount of precipitation (is reset at 24:00 h);;0.001;0;mm/d;4
+37;4;31407;U32;;Type of precipitation;;1;0;;4
+38;4;31409;U32;;Absolute precipitation;;0.001;0;mm;4
+39;4;31411;U32;;Advanced precipitation status;;1;0;;4
+40;4;34601;U32;;Date;;1;0;;4
+41;4;34603;U32;;Time of day;;1;0;;4
+42;4;34801;I32;;Degree of longitude;;0.000001;0;Degree;4
+43;4;34803;I32;;Degree of latitude;;0.000001;0;Degree;4
+44;4;34805;I32;;Position of the sun elevation;;0.1;0;Degree;4
+45;4;34807;I32;;Position of the sun azimuth;;0.1;0;Degree;4
+46;4;34809;I32;;Height above mean sea level;;1;0;m;4
+47;4;34811;U32;;Sensor status wind measurement;;1;0;;4
+48;4;34837;U32;;Magnetic compass Aspecular angle Instrument north marking to magnetic North Pole;;0.1;0;Degree;4
+49;4;34839;I32;;Pitch from magnetic compass angle between north-south to horizontal;GHI;0.1;0;Degree;4
+50;4;34841;I32;;Roll from the magnetic compass angle between west-east to horizontal;;0.1;0;Degree;4
+51;4;34847;U32;;Speed Over Ground from GPS;;0.01;0;m/s;4
+52;4;34849;U32;;Track Angle from GPS;;0.1;0;Degree;4
+53;4;34995;U32;;Sensor power supply;;0.1;0;V;4
+54;4;34997;U32;;Live Counter;;1;0;ms;4
+55;4;34999;U32;;Error status of last measured value;;1;0;;4
+56;4;35001;U32;;Average wind speed (contiguous block);;0.1;0;m/s;1
+57;4;35003;U32;;Average wind direction (contiguous block);;0.1;0;Degree;1
+58;4;35005;I32;;Air temperature (contiguous block);;0.1;0;°C;1
+59;4;35007;I32;;Internal temperature of housing (contiguous block);;0.1;0;°C;1
+60;4;35009;I32;;Acoustic temperature (contiguous block);;0.1;0;°C;1
+61;4;35011;I32;;Air temperature uncorrected (contiguous block);;0.1;0;°C;1
+62;4;35013;U32;;Relative humidity (contiguous block);;0.1;0;%rh;1
+63;4;35015;I32;;Dew-point temperature (contiguous block);;0.1;0;°C;1
+64;4;35017;U32;;Absolute air pressure (contiguous block);;0.01;0;hPa;1
+65;4;35019;U32;;Relative air pressure referred to sea level (contiguous block);;0.01;0;hPa;1
+66;4;35021;U32;;Brightness north (contiguous block);;0.1;0;klux;1
+67;4;35023;U32;;Brightness east (contiguous block);;0.1;0;klux;1
+68;4;35025;U32;;Brightness south (contiguous block);;0.1;0;klux;1
+69;4;35027;U32;;Brightness west (contiguous block);;0.1;0;klux;1
+70;4;35029;U32;;Brightness direction (contiguous block);;1;0;Degree;1
+71;4;35031;U32;;Brightness, maximum value of 4 single sensors (contiguous block);;0.1;0;klux;1
+72;4;35033;U32;;Precipitation status (contiguous block);;1;0;;1
+73;4;35035;U32;;Precipitation intensity (contiguous block);;0.001;0;mm/h;1
+74;4;35037;U32;;Amount of precipitation (contiguous block);;0.001;0;mm/d;1
+75;4;35039;U32;;Type of precipitation (contiguous block);;1;0;;1
+76;4;35041;U32;;Date (contiguous block);;1;0;;1
+77;4;35043;U32;;Time of day (contiguous block);;1;0;;1
+78;4;35045;I32;;Degree of longitude (contiguous block);;0.000001;0;Degree;1
+79;4;35047;I32;;Degree of latitude (contiguous block);;0.000001;0;Degree;1
+80;4;35049;I32;;Position of the sun elevation (contiguous block);;0.1;0;Degree;1
+81;4;35051;I32;;Position of the sun azimuth (contiguous block);;0.1;0;Degree;1
+82;4;35053;I32;;Height above mean sea level (contiguous block);;1;0;m;1
+83;4;35055;U32;;Sensor status wind measurement (contiguous block);;1;0;;1
+84;4;35057;U32;;Sensor power supply (contiguous block);;0.1;0;V;1
+85;4;35059;U32;;Live counter (contiguous block);;1;0;ms;1
+86;4;35061;U32;;Error status of last measured value (contiguous block);;1;0;;1
+87;4;35063;U32;;Brightness North (lux, contiguous block);;1;0;Lux;1
+88;4;35065;U32;;Brightness East (lux, contiguous block);;1;0;Lux;1
+89;4;35067;U32;;Brightness South (lux, contiguous block);;1;0;Lux;1
+90;4;35069;U32;;Brightness West (lux, contiguous block);;1;0;Lux;1
+91;4;35071;U32;;Brightness, maximum value of 4 single sensors (lux, contiguous block);;1;0;Lux;1
+92;4;35073;U32;;Maximum value of the wind velocity (gust, contiguous block);;0.1;0;m/s;1
+93;4;35075;U32;;Wind direction of the gust (contiguous block);;0.1;0;Degree;1
+94;4;35077;U32;;Absolute humidity (contiguous block);;0.01;0;g/m^3;1
+95;4;35079;U32;;Rel. humidity, uncorrected (contiguous block);;0.1;0;%r.h.;1
+96;4;35081;U32;;Magnetic compass Aspecular angle (contiguous block);;0.1;0;Degree;1
+97;4;35083;U32;;Brightness, vector sum (contiguous block);;1;0;Lux;1
+98;4;35085;I32;;Wind chill temperature (contiguous block);;0.1;0;°C;1
+99;4;35087;I32;;Heat index temperature (contiguous block);;0.1;0;°C;1
+100;4;35089;U32;;Absolute precipitation (contiguous block);;0.001;0;mm;1
+101;4;35091;I32;;Global radiation (contiguous block);;0.1;0;W/m^2;1
+102;4;35093;I32;;Pitch from magnetic compass (contiguous block);;0.1;0;Degree;1
+103;4;35095;I32;;Roll from magnetic compass (contiguous block);;0.1;0;Degree;1
+104;4;35097;I32;;Rain temperature (contiguous block);;0.1;0;°C;1
+105;4;35101;U32;;Average wind speed (high res, contiguous block);;0.01;0;m/s;1
+106;4;35105;U32;;True wind (contiguous block);;0.01;0;m/s;1
+107;4;35107;U32;;True wind direction (contiguous block);;0.1;0;Degree;1
+108;4;35109;U32;;Speed Over Ground from GPS (contiguous block);;0.01;0;m/s;1
+109;4;35111;U32;;Track Angle from GPS (contiguous block);;0.1;0;Degree;1
+110;4;35113;U32;;Advanced precipitation status (contiguous block);;1;0;;1

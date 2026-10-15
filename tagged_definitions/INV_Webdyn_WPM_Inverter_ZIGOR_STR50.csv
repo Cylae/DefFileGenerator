@@ -1,0 +1,55 @@
+﻿modbusRTU;Inverter;ZIGOR;STR50;;;;;;;
+1;3;3200_10;STRING;;Machine model;MODEL;1.000000;0.000000;;4
+2;3;3205;U8;;DSP version;;1.000000;0.000000;;0
+3;3;3205;U8;;ARM version;;1.000000;0.000000;;0
+4;3;3206_22;STRING;;Inverter SN;ControlCOM;1.000000;0.000000;;4
+5;3;3217_6;STRING;;PLC MACAddress;;1.000000;0.000000;;0
+6;3;3220;U8;;LCD Model Setting;;1.000000;0.000000;;0
+7;3;3220;U8;;Present identified model;;1.000000;0.000000;;4
+8;3;3221_16;STRING;;Inverter Model;;1.000000;0.000000;;4
+9;3;3229;U8;;DSP1Test version number;;1.000000;0.000000;;0
+10;3;3229;U8;;ARM1Test version number;;1.000000;0.000000;;0
+11;3;3230;U8;;DSP2version number;;1.000000;0.000000;;0
+12;3;3230;U8;;DSP2Test version number;;1.000000;0.000000;;0
+13;3;3196;I16;;Nominal Power read;P_RATED;1.000000;0.000000;;4
+14;3;4036;I16;;Active Power Increment (KW);CMD_P_AC_SET_PERCENT;1.000000;0.000000;KW;1
+15;3;4114;U16;;Nominal Power;;1.000000;0.000000;KW;4
+16;4;3014;U16;;RS-phase grid voltage;;0.100000;0.000000;V;4
+17;4;3015;U16;;ST-phase grid voltage;;0.100000;0.000000;V;4
+18;4;3016;U16;;TR-phase grid voltage;;0.100000;0.000000;V;4
+19;4;3017;U16;;RS-phase grid frequency;FREQ;0.010000;0.000000;Hz;4
+20;4;3018;U16;;ST-phase grid frequency;;0.010000;0.000000;Hz;4
+21;4;3019;U16;;TR-phase grid frequency;;0.010000;0.000000;Hz;4
+22;4;3020;U16;;R-phase grid-tied current;;0.010000;0.000000;A;4
+23;4;3021;U16;;S-phasegrid-tied current;;0.010000;0.000000;A;4
+24;4;3022;U16;;T-phase grid-tied current;;0.010000;0.000000;A;4
+25;4;3023;I32;;Grid-tied power;P_AC;1.000000;0.000000;W;4
+26;4;3025;U16;;Radiator temperature;;0.100000;0.000000;C;4
+27;4;3026;U16;;Module temperature;TEMP_CELL;0.100000;0.000000;C;4
+28;4;3027;U16;;DSP alarm code;;1.000000;0.000000;;4
+29;4;3028;U32;;DSP error code;;1.000000;0.000000;;4
+30;4;3030;U8;;Operating mode of the inverter;;1.000000;0.000000;;4
+31;4;3030;U8;;Inverter model;;1.000000;0.000000;;4
+32;4;3031;U16;;Rotational speed of fan A;;1.000000;0.000000;r/min;4
+33;4;3032;U16;;Rotational speed of fan B;;1.000000;0.000000;r/min;4
+34;4;3033;U16;;Rotational speed of fan C;;1.000000;0.000000;r/min;4
+35;4;3036;U8;;ARM alarm code;;1.000000;0.000000;;4
+36;4;3036;U8;;ARM error code;;1.000000;0.000000;;4
+37;4;3037;U8;;Input mode;;1.000000;0.000000;;4
+38;4;3037;U8;;Mains standard;;1.000000;0.000000;;4
+39;4;3038;U32;;Total energy yield;E_TOT;0.100000;0.000000;Kwh;4
+40;4;3040;U32;;Annual energy yield;;1.000000;0.000000;Kwh;4
+41;4;3042;U16;;Daily energy yield;E_DAY;1.000000;0.000000;Kwh;4
+42;4;3043;U16;;Power-on voltage;;0.100000;0.000000;V;4
+43;4;3044;U16;;Power-on delay;;1.000000;0.000000;s;4
+44;4;3045;U16;;Lower grid voltage threshold;;0.100000;0.000000;V;4
+45;4;3046;U16;;Upper grid voltage threshold;;0.100000;0.000000;V;4
+46;4;3047;U16;;Lower grid frequency threshold;;0.010000;0.000000;Hz;4
+47;4;3048;U16;;Upper grid frequency threshold;;0.010000;0.000000;Hz;4
+48;4;3049;U16;;Preset power factor;PF;1.000000;0.000000;;4
+49;4;3050;U16;;Preset active power;;1.000000;0.000000;%;4
+50;4;3051;I8;;Preset reactive power;Q_AC;1.000000;0.000000;Kvar;4
+51;4;3051;U8;;Reactive control mode;;1.000000;0.000000;;4
+52;4;3052;I32;;Apparent power;S_AC;1.000000;0.000000;VA;4
+53;4;3054;I32;;Reactive power;;1.000000;0.000000;Var;4
+54;4;3056;U16;;Power factor;;1.000000;0.000000;;4

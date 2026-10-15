@@ -1,0 +1,106 @@
+﻿ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
+1;3;30001;U32;;Version number of the SMA Modbus profile;;1.0;0.0;;4
+2;3;30003;U32;;SUSy-ID;;1.0;0.0;;4
+3;3;30005;U32;;Serial number;SERIAL;1.0;0.0;;4
+4;3;30051;U32;;Device class;;1.0;0.0;;4
+5;3;30053;U32;;Numerical identification of the device type;;1.0;0.0;;4
+6;3;30055;U32;;Manufacturer specification;MANUFACTURER;1.0;0.0;;4
+7;3;30057;U32;;Serial number_1;;1.0;0.0;;4
+8;3;30059;U32;;Software package;;1.0;0.0;;4
+9;3;30201;U32;;Status of the device;;1.0;0.0;;4
+10;3;30535;U32;;Metering.DyWhOut_1_AC;;1.0;0.0;;4
+11;3;30537;U32;;Metering.DyWhOut_2_AC;;1.0;0.0;;4
+12;3;30539;U32;;Metering.DyWhOut_3_AC;;1.0;0.0;;4
+13;3;31435;I32;;Metering_Courant du reseau phase L1_AC;;0.001;0.0;A;4
+14;3;31437;I32;;Metering_Courant du reseau phase L2_AC;;0.001;0.0;A;4
+15;3;31439;I32;;Metering_Courant du reseau phase L3_AC;;0.001;0.0;A;4
+16;3;31447;U32;;Metering_Frequence du reseau_AC;FREQ;0.01;0.0;Hz;4
+17;3;31253;U32;;Metering_Tension du reseau phase L1_AC;;0.01;0.0;;4
+18;3;31255;U32;;Metering_Tension du reseau phase L2_AC;;0.01;0.0;;4
+19;3;31257;U32;;Metering_Tension du reseau phase L3_AC;;0.01;0.0;;4
+20;3;31449;U32;;Metering_Tension de reseau phase L3 contre L1_AC;U_AC_3;0.01;0.0;;4
+21;3;31451;U32;;Metering_Tension de reseau phase L1 contre L2_AC;U_AC_1;0.01;0.0;;4
+22;3;31453;U32;;Metering_Tension de reseau phase L2 contre L3_AC;U_AC_2;0.01;0.0;;4
+23;3;31433;U32;;Metering_Facteur de dephasage_AC;;0.01;0.0;;4
+24;3;31499;I32;;Metering_Facteur de dephasage EEI_AC;;0.001;0.0;;4
+25;3;31455;I32;;Metering_Puissance apparente_AC;S_AC;1.0;0.0;;4
+26;3;31277;I32;;Metering_Puissance reactive_AC;Q_AC;1.0;0.0;;4
+27;3;30581;U32;;Metering_Énergie absorbee au point raccordement du reseau_AC;;1.0;0.0;;4
+28;3;30583;U32;;Metering_Rendement total_AC;;1.0;0.0;;4
+29;3;30865;I32;;Metering_Puissance absorbee_AC;;1.0;0.0;;4
+30;3;30867;I32;;Metering_Puissance injectee_AC;;1.0;0.0;;4
+31;3;32341;I32;;Metering_Puissance injectee_1_AC;;1.0;0.0;;4
+32;3;31441;I32;;Metering_Puissance apparente L1_AC;;1.0;0.0;;4
+33;3;31443;I32;;Metering_Puissance apparente L2_AC;;1.0;0.0;;4
+34;3;31445;I32;;Metering_Puissance apparente L3_AC;;1.0;0.0;;4
+35;3;31271;I32;;Metering_Puiss. react. d'injection dans le reseau phase L1_AC;;1.0;0.0;;4
+36;3;31273;I32;;Metering_Puiss. react. d'injection dans le reseau phase L2_AC;;1.0;0.0;;4
+37;3;31275;I32;;Metering_Puiss. react. d'injection dans le reseau phase L3_AC;;1.0;0.0;;4
+38;3;31259;U32;;Metering_Puissance d'injection dans le reseau L1;;1.0;0.0;;4
+39;3;31261;U32;;Metering_Puissance d'injection dans le reseau L2;;1.0;0.0;;4
+40;3;31263;U32;;Metering_Puissance d'injection dans le reseau L3;;1.0;0.0;;4
+41;3;31265;U32;;Metering_Puissance de prelevement sur le reseau phase L1;;1.0;0.0;;4
+42;3;31267;U32;;Metering_Puissance de prelevement sur le reseau phase L2;;1.0;0.0;;4
+43;3;31269;U32;;Metering_Puissance de prelevement sur le reseau phase L3;;1.0;0.0;;4
+44;3;30529;U32;;Metering_Rendement total_1_AC;;1.0;0.0;Wh;4
+45;3;30531;U32;;Metering_Rendement total_2_AC;;1.0;0.0;kWh;4
+46;3;30533;U32;;Metering_Rendement total_3_AC;;1.0;0.0;MWh;4
+47;3;32385;U32;;Etat onduleur;;1.0;0.0;;8
+48;3;30977;I32;;Grid_Courant du reseau phase L1_AC;;0.001;0.0;A;4
+49;3;30979;I32;;Grid_Courant du reseau phase L2_AC;;0.001;0.0;A;4
+50;3;30981;I32;;Grid_Courant du reseau phase L3_AC;;0.001;0.0;A;4
+51;3;30803;U32;;Grid_Frequence du reseau_AC;;0.01;0.0;Hz;4
+52;3;30783;U32;;Grid_Tension du reseau phase L1_AC;;0.01;0.0;A;4
+53;3;30785;U32;;Tension du reseau phase L2;;0.01;0.0;;4
+54;3;30787;U32;;Tension du reseau phase L3;;0.01;0.0;;4
+55;3;30789;U32;;Tension du reseau entre phase L1 et L2;;0.01;0.0;;4
+56;3;30791;U32;;Tension de reseau phase L2 contre L3;;0.01;0.0;;4
+57;3;30793;U32;;Tension de reseau phase L3 contre L1;;0.01;0.0;;4
+58;3;30795;U32;;Somme courant toutes phases;;0.001;0.0;;4
+59;3;31221;I32;;Facteur de dephasage EEI;;0.001;0.0;;4
+60;3;30949;U32;;Facteur de decalage;;0.001;0.0;;4
+61;3;30823;U32;;Type d'excitation du cos phi;PF;1.0;0.0;;4
+62;3;31497;I32;;Puissance reactive;;1.0;0.0;;4
+63;3;30813;I32;;Puissance apparente;;1.0;0.0;;4
+64;3;30775;I32;;Puissance;P_AC;1.0;0.0;;4
+65;3;30777;I32;;Puissance L1;;1.0;0.0;;4
+66;3;30779;I32;;Puissance L2;;1.0;0.0;;4
+67;3;30781;I32;;Puissance L3;;1.0;0.0;;4
+68;3;30815;I32;;Puissance apparente L1;S_AC_1;1.0;0.0;;4
+69;3;30817;I32;;Puissance apparente L2;S_AC_2;1.0;0.0;;4
+70;3;30819;I32;;Puissance apparente L3;S_AC_3;1.0;0.0;;4
+71;3;30807;I32;;Puissance reactive L1;Q_AC_1;1.0;0.0;;4
+72;3;30809;I32;;Puissance reactive L2;Q_AC_2;1.0;0.0;;4
+73;3;30811;I32;;Puissance reactive L3;Q_AC_3;1.0;0.0;;4
+74;3;31247;I32;;Courant de defaut;;0.001;0.0;;4
+75;3;30225;U32;;Resistance d'isolement;R_ISO;1.0;0.0;;4
+76;3;30953;I32;;Temperature interieure;;0.1;0.0;;4
+77;3;34113;I32;;Temperature interieure_1;;0.1;0.0;;4
+78;3;30975;I32;;Tension du circuit intermediaire;;0.01;0.0;;4
+79;3;30217;U32;;Etat du relais reseau;;1.0;0.0;;4
+80;3;30881;U32;;Connexion reseau de l'installation;;1.0;0.0;;4
+81;3;31793;I32;;Entree courant DC_1;I_DC;0.001;0.0;;4
+82;3;31795;I32;;Entree courant DC_2;;0.001;0.0;;4
+83;3;31797;I32;;Entree courant DC_3;;0.001;0.0;;4
+84;3;31799;I32;;Entree courant DC_4;;0.001;0.0;;4
+85;3;31801;I32;;Entree courant DC_5;;0.001;0.0;;4
+86;3;31803;I32;;Entree courant DC_6;;0.001;0.0;;4
+87;3;30769;I32;;Entree courant DC_7;;0.001;0.0;;4
+88;3;30771;I32;;Entree tension DC_1;U_DC;0.01;0.0;;4
+89;3;30773;I32;;Entree puissance DC_1;P_DC;1.0;0.0;;4
+90;3;30957;I32;;Entree courant DC_8;;0.001;0.0;;4
+91;3;30959;I32;;Entree tension DC_2;;0.01;0.0;;4
+92;3;30961;I32;;Entree puissance DC_2;;1.0;0.0;;4
+93;3;30963;I32;;Entree courant DC_9;;0.001;0.0;;4
+94;3;30965;I32;;Entree tension DC_3;;0.01;0.0;;4
+95;3;30967;I32;;Entree puissance DC_3;;1.0;0.0;;4
+96;3;30969;I32;;Entree courant DC_10;;0.001;0.0;;4
+97;3;30971;I32;;Entree tension DC_4;;0.01;0.0;;4
+98;3;30973;I32;;Entree puissance DC_4;;1.0;0.0;;4
+99;3;31209;I32;;Entree courant DC_11;;0.001;0.0;;4
+100;3;31211;I32;;Entree tension DC_5;;0.01;0.0;;4
+101;3;31213;I32;;Entree puissance DC_5;;1.0;0.0;;4
+102;3;31215;I32;;Entree courant DC_12;;0.001;0.0;;4
+103;3;31217;I32;;Entree tension DC_6;;0.01;0.0;;4
+104;3;31219;I32;;Entree puissance DC_6;;1.0;0.0;;4
+105;3;30251;U32;;Etat de verrouillage;;1;0;;4

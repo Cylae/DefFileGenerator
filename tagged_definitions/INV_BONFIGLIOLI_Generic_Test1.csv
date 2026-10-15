@@ -1,0 +1,33 @@
+﻿modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
+1;3;3841;I16;;Active Power;P_AC;1;0;kW;4
+2;3;3842;I16;;DC-Link Voltage;U_DC;1;0;V;4
+3;3;3843;I16;;Heat Sink Temperature;TEMP_INT;1;0;C;4
+4;3;3844;I16;;Inside Temperature;;1;0;C;4
+5;3;3845;U16;;Current Error;;1;0;;4
+6;3;3846;I16;;Power supply current;;1;0;A;4
+7;3;3847;I16;;Power supply voltage;;1;0;V;4
+8;3;3848;I16;;DC Power;P_DC;1;0;kW;4
+9;3;3849;I16;;Apparent Power;S_AC;1;0;kVA;4
+10;3;3850;U16;;Solar-Status;;1;0;;4
+11;3;3851;I16;;Frequency;FREQ;0.01;0;Hz;4
+12;3;3852;I16;;Digital Inputs;;1;0;;4
+13;3;3853;I16;;DC Current;I_DC;1;0;A;4
+14;3;3854;I16;;Active Energy, Positive;;1;0;MWh;4
+15;3;3855;I16;;Apparent Power Phase a;S_AC_1;1;0;kVA;4
+16;3;3856;I16;;Apparent Power Phase b;S_AC_2;1;0;kVA;4
+17;3;3857;I16;;Apparent Power Phase c;S_AC_3;1;0;kVA;4
+18;3;3858;I16;;Active Power Phase a;P_AC_1;1;0;kW;4
+19;3;3859;I16;;Active Power Phase b;P_AC_2;1;0;kW;4
+20;3;3860;I16;;Active Power Phase c;P_AC_3;1;0;kW;4
+21;3;3861;I16;;Current Phase a;I_AC_1;1;0;A;4
+22;3;3862;I16;;Current Phase b;I_AC_2;1;0;A;4
+23;3;3863;I16;;Current Phase c;I_AC_3;1;0;A;4
+24;3;3864;I16;;Power Supply Voltage Phase a;U_AC_1;1;0;V;4
+25;3;3865;I16;;Power Supply Voltage Phase b;U_AC_2;1;0;V;4
+26;3;3866;I16;;Power Supply Voltage Phase c;U_AC_3;1;0;V;4
+27;3;3867;I16;;Reactive power Phase a;Q_AC_1;1;0;kvar;4
+28;3;3868;I16;;Reactive power Phase b;Q_AC_2;1;0;kvar;4
+29;3;3869;I16;;Reactive power Phase c;Q_AC_3;1;0;kvar;4
+30;3;3870;I16;;Reactive Power;Q_AC;1;0;kVA;4
+31;3;3871;I16;;Reference value reactive power;;1;0;kVA;4
+32;3;3872;I16;;DC-Link Voltage_1;;1;0;V;4

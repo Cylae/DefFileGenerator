@@ -1,0 +1,44 @@
+﻿Modbus;meter;SOCOMEC;COUNTIS P44;;;;;;;
+1;3;50008;U16;;Serial_AA_SS;;1;0;;4
+2;3;50009;U16;;Serial_SST_L;;1;0;;4
+3;3;50010;U16;;Serial_order;;1;0;;4
+4;3;25987;U32;;Total Positive active Energy  Ea+;E_TOT;1;0;kWh;4
+5;3;25989;U16;;Total Residual positive active Energy  r Ea+;;0.1;0;Wh;4
+6;3;25990;U32;;Total Negative active Energy  Ea-;;1;0;kWh;4
+7;3;25992;U16;;Total Residual negative active Energy  r Ea-;;0.1;0;Wh;4
+8;3;25993;U32;;Total Positive reactive Energy  Er+;;1;0;kvarh;4
+9;3;25995;U16;;Total Residual positive reactive Energy  rEr+;;0.1;0;varh;4
+10;3;25996;U32;;Total Negative reactive Energy  Er-;;1;0;kvarh;4
+11;3;25998;U16;;Total Residual negative reactive Energy  rEr-;;0.1;0;varh;4
+12;3;25999;U32;;Total Apparent Energy  Eap;;1;0;kVAh;4
+13;3;26001;U16;;Total Residual apparent Energy  r Eap;;0.1;0;VAh;4
+14;3;50514;U32;;Phase to Phase Voltage U12;;0.01;0;V;4
+15;3;50516;U32;;Phase to Phase Voltage U23;;0.01;0;V;4
+16;3;50518;U32;;Phase to Phase Voltage U31;;0.01;0;V;4
+17;3;50520;U32;;Simple voltage  V1;;0.01;0;V;4
+18;3;50522;U32;;Simple voltage  V2;;0.01;0;V;4
+19;3;50524;U32;;Simple voltage  V3;;0.01;0;V;4
+20;3;50526;U32;;Frequency  F;FREQ;0.01;0;Hz;4
+21;3;50528;U32;;Current  I1;;1.0;0;mA;4
+22;3;50530;U32;;Current  I2;;1.0;0;mA;4
+23;3;50532;U32;;Current  I3;;1.0;0;mA;4
+24;3;50534;U32;;Neutral Current  In;;1.0;0;mA;4
+25;3;50536;I32;;Active Power +/-  P;P_AC;0.01;0;kW;4
+26;3;50538;I32;;Reactive Power +/-  Q;Q_AC;10.0;0;var;4
+27;3;50540;U32;;Apparent Power  S;S_AC;10.0;0;VA;4
+28;3;50542;I32;;Power Factor  - leading et +  lagging  PF;PF;0.001;0;;4
+29;3;50544;I32;;Active Power phase 1 +/-  P1;P_AC_1;0.01;0;kW;4
+30;3;50546;I32;;Active Power phase 2 +/-  P2;P_AC_2;0.01;0;kW;4
+31;3;50548;I32;;Active Power phase 3 +/-  P3;P_AC_3;0.01;0;kW;4
+32;3;50550;I32;;Reactive Power phase 1 +/-  Q1;Q_AC_1;10.0;0;var;4
+33;3;50552;I32;;Reactive Power phase 2 +/-  Q2;Q_AC_2;10.0;0;var;4
+34;3;50554;I32;;Reactive Power phase 3 +/-  Q3;Q_AC_3;10.0;0;var;4
+35;3;50556;U32;;Apparent Power phase 1  S1;S_AC_1;10.0;0;VA;4
+36;3;50558;U32;;Apparent Power phase 2  S2;S_AC_2;10.0;0;VA;4
+37;3;50560;U32;;Apparent Power phase 3  S3;S_AC_3;10.0;0;VA;4
+38;3;50562;I32;;Power Factor phase 1 - leading and +  lagging  PF1;PF_1;0.001;0;;4
+39;3;50564;I32;;Power Factor phase 2 - leading and +  lagging  PF2;PF_2;0.001;0;;4
+40;3;50566;I32;;Power Factor phase 3 - leading and +  lagging  PF3;PF_3;0.001;0;;4
+41;3;50568;U32;;System value I Sys  ( I1+I2+I3) / 3;;1.0;0;mA;4
+42;3;50570;U32;;System value U Sys  (U12 + U23 + U31 ) / 3;;0.01;0;V;4
+43;3;50572;U32;;System value V Sys  (V1 + V2 + V3 ) / 3;;0.01;0;V;4

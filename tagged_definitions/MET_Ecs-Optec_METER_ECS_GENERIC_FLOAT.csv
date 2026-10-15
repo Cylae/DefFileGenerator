@@ -1,0 +1,45 @@
+﻿ModbusRTU;Meter;ECS;GENERIC;;;;;;;
+1;3;4119;F32;;Energie active L1 T1 importee;E_IMP;1;0;kWh;4
+2;3;4123;F32;;Energie active L2 T1 importee;;1;0;kWh;4
+3;3;4127;F32;;Energie active L3 T1 importee;;1;0;kWh;4
+4;3;4131;F32;;Energie active totale T1 importee;;1;0;kWh;4
+5;3;4135;F32;;Energie active L1 T2 importee;;1;0;kWh;4
+6;3;4139;F32;;Energie active L2 T2 importee;;1;0;kWh;4
+7;3;4143;F32;;Energie active L3 T2 importee;;1;0;kWh;4
+8;3;4147;F32;;Energie active totale T2 importee;;1;0;kWh;4
+9;3;4151;F32;;Puissance active L1;P_AC_1;1;0;kW;4
+10;3;4153;F32;;Puissance active L2;P_AC_2;1;0;kW;4
+11;3;4155;F32;;Puissance active L3;P_AC_3;1;0;kW;4
+12;3;4157;F32;;Puissance active totale;P_AC;1;0;kW;4
+13;3;4161;F32;;Energie active L1 T1 exportee;E_EXP;1;0;kWh;4
+14;3;4165;F32;;Energie active L2 T1 exportee;;1;0;kWh;4
+15;3;4169;F32;;Energie active L3 T1 exportee;;1;0;kWh;4
+16;3;4173;F32;;Energie active totale T1 exportee;;1;0;kWh;4
+17;3;4177;F32;;Energie active L1 T2 exportee;;1;0;kWh;4
+18;3;4181;F32;;Energie active L2 T2 exportee;;1;0;kWh;4
+19;3;4185;F32;;Energie active L3 T2 exportee;;1;0;kWh;4
+20;3;4189;F32;;Energie active totale T2 exportee;;1;0;kWh;4
+21;3;4193;F32;;Energie reactive L1 T1 importee;;1;0;kvarh;4
+22;3;4197;F32;;Energie reactive L2 T1 importee;;1;0;kvarh;4
+23;3;4201;F32;;Energie reactive L3 T1 importee;;1;0;kvarh;4
+24;3;4205;F32;;Energie reactive totale T1 importee;;1;0;kvarh;4
+25;3;4209;F32;;Energie reactive L1 T2 importee;;1;0;kvarh;4
+26;3;4213;F32;;Energie reactive L2 T2 importee;;1;0;kvarh;4
+27;3;4217;F32;;Energie reactive L3 T2 importee;;1;0;kvarh;4
+28;3;4221;F32;;Energie reactive totale T2 importee;;1;0;kvarh;4
+29;3;4225;F32;;Energie reactive L1 T1 exportee;;1;0;kvarh;4
+30;3;4229;F32;;Energie reactive L2 T1 exportee;;1;0;kvarh;4
+31;3;4233;F32;;Energie reactive L3 T1 exportee;;1;0;kvarh;4
+32;3;4237;F32;;Energie reactive totale T1 exportee;;1;0;kvarh;4
+33;3;4241;F32;;Energie reactive L1 T2 exportee;;1;0;kvarh;4
+34;3;4245;F32;;Energie reactive L2 T2 exportee;;1;0;kvarh;4
+35;3;4249;F32;;Energie reactive L3 T2 exportee;;1;0;kvarh;4
+36;3;4253;F32;;Energie reactive totale T2 exportee;;1;0;kvarh;4
+37;3;4263;F32;;Puissance reactive totale;Q_AC;1;0;kvar;4
+38;3;4291;F32;;Puissance apparente totale;S_AC;1;0;kVA;4
+39;3;4319;F32;;Energie active totale T1+T2 importee;;1;0;kWh;4
+40;3;4323;F32;;Energie active totale T1+T2 exportee;;1;0;kWh;4
+41;3;4327;F32;;Energie active partielle T1 importee;;1;0;kWh;4
+42;3;4331;F32;;Energie active partielle T2 importee;;1;0;kWh;4
+43;3;4335;F32;;Energie active partielle T1 exportee;;1;0;kWh;4
+44;3;4339;F32;;Energie active partielle T2 exportee;;1;0;kWh;4

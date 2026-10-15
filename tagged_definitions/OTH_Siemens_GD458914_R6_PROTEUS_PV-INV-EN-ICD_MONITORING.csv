@@ -1,0 +1,503 @@
+﻿modbusRTU;Other;Siemens;GD458914_R6_PROTEUS PV-INV-EN-;;;;;;;
+1;4;0;U16;;Mn: Manufacturer Info;MANUFACTURER;1.0;0.0;None;4
+2;4;16;U16;;Md: Model & Options;MODEL;1.0;0.0;None;4
+3;4;32;U16;;GP: GP Code;;1.0;0.0;None;4
+4;4;36;U16;;Vr: Version;;1.0;0.0;None;4
+5;4;44;U16;;VrDt: Version date;;1.0;0.0;None;4
+6;4;48;U16;;SN: Serial Number;SERIAL;1.0;0.0;None;4
+7;4;64;U16;;DA: Device Address;;1.0;0.0;None;4
+8;4;65;U16;;ModbusVr: Version of Modbus TCP/IP protocol for monitoring;;-2;0.0;None;4
+9;4;66;U16;;OpSt: Operating State of the Inverter;;1.0;0.0;None;4
+10;4;67;U16;;Alrm: Active Alarms for the Inverter;;1.0;0.0;None;4
+11;4;68;U16;;P: Total Active Power Measurement;P_AC;1.0;0.0;kW;4
+12;4;69;U16;;S: Total Apparent Power Measurement;S_AC;1.0;0.0;kVA;4
+13;4;70;U16;;Q: Total Reactive Power Measurement;Q_AC;1.0;0.0;kVAr;4
+14;4;71;U16;;PF: Power Factor;PF;-4;0.0;None;4
+15;4;72;U16;;IL: Total AC Current;I_AC;-1;0.0;A;4
+16;4;73;U16;;UL: Line AC Voltage;U_AC_1;-1;0.0;V;4
+17;4;74;U16;;UPh: Phase AC Voltage;;-1;0.0;V;4
+18;4;75;U16;;f: AC Frequency;FREQ;-2;0.0;Hz;4
+19;4;76;U16;;EInj: Total Energy Injected;E_TOT;1.0;0.0;Wh;4
+20;4;77;U16;;None;;1.0;0.0;None;4
+21;4;78;U16;;None;;1.0;0.0;None;4
+22;4;79;U16;;None;;1.0;0.0;None;4
+23;4;80;U16;;EAbs: Total Energy Absorbed;;1.0;0.0;Wh;4
+24;4;81;U16;;None;;1.0;0.0;None;4
+25;4;82;U16;;None;;1.0;0.0;None;4
+26;4;83;U16;;None;;1.0;0.0;None;4
+27;4;84;U16;;REInj: Total Reactive Energy Injected;;1.0;0.0;VArh;4
+28;4;85;U16;;None;;1.0;0.0;None;4
+29;4;86;U16;;None;;1.0;0.0;None;4
+30;4;87;U16;;None;;1.0;0.0;None;4
+31;4;88;U16;;REAbs: Total Reactive Energy Absorbed;;1.0;0.0;VArh;4
+32;4;89;U16;;None;;1.0;0.0;None;4
+33;4;90;U16;;None;;1.0;0.0;None;4
+34;4;91;U16;;None;;1.0;0.0;None;4
+35;4;92;U16;;TAmb: Ambient temperature;TEMP_AMB;-1;0.0;ºC;4
+36;4;93;U16;;TCab: Cabinet temperature;TEMP_INT;-1;0.0;ºC;4
+37;4;94;U16;;TInd: Inductors temperature;;-1;0.0;ºC;4
+38;4;95;U16;;TFil: Filter temperature;;-1;0.0;ºC;4
+39;4;96;U16;;TIGBT: IGBT temperature;;-1;0.0;ºC;4
+40;4;97;U16;;TCool: Coolant temperature;;-1;0.0;ºC;4
+41;4;98;U16;;IL1: Current Measurement of Phase 1;I_AC_1;-1;0.0;A;4
+42;4;99;U16;;IL2: Current Measurement of Phase 2;I_AC_2;-1;0.0;A;4
+43;4;100;U16;;IL3: Current Measurement of Phase 3;I_AC_3;-1;0.0;A;4
+44;4;101;U16;;UL12: Line Voltage Measurement of line 1 to line 2;;-1;0.0;V;4
+45;4;102;U16;;UL23: Line Voltage Measurement of line 2 to line 3;U_AC_2;-1;0.0;V;4
+46;4;103;U16;;UL31: Line Voltage Measurement of line 3 to line 1;;-1;0.0;V;4
+47;4;104;U16;;UPh1: Phase Voltage Measurement of line 1 to neutral;;-1;0.0;V;4
+48;4;105;U16;;UPh2: Phase Voltage Measurement of line 2 to neutral;;-1;0.0;V;4
+49;4;106;U16;;UPh3: Phase Voltage Measurement of line 3 to neutral;U_AC_3;-1;0.0;V;4
+50;4;107;U16;;RunSt: Inverter Running State;;1.0;0.0;None;4
+51;4;108;U16;;HWSt: Inverter Hardware State;;1.0;0.0;None;4
+52;4;109;U16;;IDC: Total DC Current for all ports;I_DC;-1;0.0;A;4
+53;4;110;U16;;PDC: Total DC Power for all ports;P_DC;1.0;0.0;kW;4
+54;4;111;U16;;EDCInj: Total cumulative DC energy injected for all ports;;1.0;0.0;Wh;4
+55;4;112;U16;;None;;1.0;0.0;None;4
+56;4;113;U16;;None;;1.0;0.0;None;4
+57;4;114;U16;;None;;1.0;0.0;None;4
+58;4;115;U16;;Reserved;;1.0;0.0;None;4
+59;4;116;U16;;None;;1.0;0.0;None;4
+60;4;117;U16;;None;;1.0;0.0;None;4
+61;4;118;U16;;None;;1.0;0.0;None;4
+62;4;119;U16;;NPrt: Number of DC ports;;1.0;0.0;None;4
+63;4;120;U16;;PrtTyp 1: DC port type;;1.0;0.0;None;4
+64;4;121;U16;;PrtID 1: DC port ID;;1.0;0.0;None;4
+65;4;122;U16;;IDC 1: DC current for the port 1;;-1;0.0;A;4
+66;4;123;U16;;UDC 1: DC voltage for the port 1;U_DC;-1;0.0;V;4
+67;4;124;U16;;PDC 1: DC power for the port 1;;1.0;0.0;kW;4
+68;4;125;U16;;Reserved;;1.0;0.0;None;4
+69;4;126;U16;;None;;1.0;0.0;None;4
+70;4;127;U16;;None;;1.0;0.0;None;4
+71;4;128;U16;;None;;1.0;0.0;None;4
+72;4;129;U16;;Reserved;;1.0;0.0;None;4
+73;4;130;U16;;None;;1.0;0.0;None;4
+74;4;131;U16;;None;;1.0;0.0;None;4
+75;4;132;U16;;None;;1.0;0.0;None;4
+76;4;133;U16;;PrtAlrm 1: Active Alarms for the port 1;;1.0;0.0;None;4
+77;4;134;U16;;PrtTyp 2: DC port type;;1.0;0.0;None;4
+78;4;135;U16;;PrtID 2: DC port ID;;1.0;0.0;None;4
+79;4;136;U16;;IDC 2: DC current for the port 2;;-1;0.0;A;4
+80;4;137;U16;;UDC 2: DC voltage for the port 2;;-1;0.0;V;4
+81;4;138;U16;;PDC 2: DC power for the port 2;;1.0;0.0;kW;4
+82;4;139;U16;;Reserved;;1.0;0.0;None;4
+83;4;140;U16;;None;;1.0;0.0;None;4
+84;4;141;U16;;None;;1.0;0.0;None;4
+85;4;142;U16;;None;;1.0;0.0;None;4
+86;4;143;U16;;Reserved;;1.0;0.0;None;4
+87;4;144;U16;;None;;1.0;0.0;None;4
+88;4;145;U16;;None;;1.0;0.0;None;4
+89;4;146;U16;;None;;1.0;0.0;None;4
+90;4;147;U16;;PrtAlrm 2: Active Alarms for the port 2;;1.0;0.0;None;4
+91;4;148;U16;;PrtTyp 3: DC port type;;1.0;0.0;None;4
+92;4;149;U16;;PrtID 3: DC port ID;;1.0;0.0;None;4
+93;4;150;U16;;IDC 3: DC current for the port 3;;-1;0.0;A;4
+94;4;151;U16;;UDC 3: DC voltage for the port 3;;-1;0.0;V;4
+95;4;152;U16;;PDC 3: DC power for the port 3;;1.0;0.0;kW;4
+96;4;153;U16;;Reserved;;1.0;0.0;None;4
+97;4;154;U16;;None;;1.0;0.0;None;4
+98;4;155;U16;;None;;1.0;0.0;None;4
+99;4;156;U16;;None;;1.0;0.0;None;4
+100;4;157;U16;;Reserved;;1.0;0.0;None;4
+101;4;158;U16;;None;;1.0;0.0;None;4
+102;4;159;U16;;None;;1.0;0.0;None;4
+103;4;160;U16;;None;;1.0;0.0;None;4
+104;4;161;U16;;PrtAlrm 3: Active Alarms for the port 3;;1.0;0.0;None;4
+105;4;162;U16;;PrtTyp 4: DC port type;;1.0;0.0;None;4
+106;4;163;U16;;PrtID 4: DC port ID;;1.0;0.0;None;4
+107;4;164;U16;;IDC 4: DC current for the port 4;;-1;0.0;A;4
+108;4;165;U16;;UDC 4: DC voltage for the port 4;;-1;0.0;V;4
+109;4;166;U16;;PDC 4: DC power for the port 4;;1.0;0.0;kW;4
+110;4;167;U16;;Reserved;;1.0;0.0;None;4
+111;4;168;U16;;None;;1.0;0.0;None;4
+112;4;169;U16;;None;;1.0;0.0;None;4
+113;4;170;U16;;None;;1.0;0.0;None;4
+114;4;171;U16;;Reserved;;1.0;0.0;None;4
+115;4;172;U16;;None;;1.0;0.0;None;4
+116;4;173;U16;;None;;1.0;0.0;None;4
+117;4;174;U16;;None;;1.0;0.0;None;4
+118;4;175;U16;;PrtAlrm 4: Active Alarms for the port 4;;1.0;0.0;None;4
+119;4;176;U16;;PrtTyp 5: DC port type;;1.0;0.0;None;4
+120;4;177;U16;;PrtID 5: DC port ID;;1.0;0.0;None;4
+121;4;178;U16;;IDC 5: DC current for the port 5;;-1;0.0;A;4
+122;4;179;U16;;UDC 5: DC voltage for the port 5;;-1;0.0;V;4
+123;4;180;U16;;PDC 5: DC power for the port 5;;1.0;0.0;kW;4
+124;4;181;U16;;Reserved;;1.0;0.0;None;4
+125;4;182;U16;;None;;1.0;0.0;None;4
+126;4;183;U16;;None;;1.0;0.0;None;4
+127;4;184;U16;;None;;1.0;0.0;None;4
+128;4;185;U16;;Reserved;;1.0;0.0;None;4
+129;4;186;U16;;None;;1.0;0.0;None;4
+130;4;187;U16;;None;;1.0;0.0;None;4
+131;4;188;U16;;None;;1.0;0.0;None;4
+132;4;189;U16;;PrtAlrm 5: Active Alarms for the port 5;;1.0;0.0;None;4
+133;4;190;U16;;PrtTyp 6: DC port type;;1.0;0.0;None;4
+134;4;191;U16;;PrtID 6: DC port ID;;1.0;0.0;None;4
+135;4;192;U16;;IDC 6: DC current for the port 6;;-1;0.0;A;4
+136;4;193;U16;;UDC 6: DC voltage for the port 6;;-1;0.0;V;4
+137;4;194;U16;;PDC 6: DC power for the port 6;;1.0;0.0;kW;4
+138;4;195;U16;;Reserved;;1.0;0.0;None;4
+139;4;196;U16;;None;;1.0;0.0;None;4
+140;4;197;U16;;None;;1.0;0.0;None;4
+141;4;198;U16;;None;;1.0;0.0;None;4
+142;4;199;U16;;Reserved;;1.0;0.0;None;4
+143;4;200;U16;;None;;1.0;0.0;None;4
+144;4;201;U16;;None;;1.0;0.0;None;4
+145;4;202;U16;;None;;1.0;0.0;None;4
+146;4;203;U16;;PrtAlrm 6: Active Alarms for the port 6;;1.0;0.0;None;4
+147;4;204;U16;;PrtTyp 7: DC port type;;1.0;0.0;None;4
+148;4;205;U16;;PrtID 7: DC port ID;;1.0;0.0;None;4
+149;4;206;U16;;IDC 7: DC current for the port 7;;-1;0.0;A;4
+150;4;207;U16;;UDC 7: DC voltage for the port 7;;-1;0.0;V;4
+151;4;208;U16;;PDC 7: DC power for the port 7;;1.0;0.0;kW;4
+152;4;209;U16;;Reserved;;1.0;0.0;None;4
+153;4;210;U16;;None;;1.0;0.0;None;4
+154;4;211;U16;;None;;1.0;0.0;None;4
+155;4;212;U16;;None;;1.0;0.0;None;4
+156;4;213;U16;;Reserved;;1.0;0.0;None;4
+157;4;214;U16;;None;;1.0;0.0;None;4
+158;4;215;U16;;None;;1.0;0.0;None;4
+159;4;216;U16;;None;;1.0;0.0;None;4
+160;4;217;U16;;PrtAlrm 7: Active Alarms for the port 7;;1.0;0.0;None;4
+161;4;218;U16;;PrtTyp 8: DC port type;;1.0;0.0;None;4
+162;4;219;U16;;PrtID 8: DC port ID;;1.0;0.0;None;4
+163;4;220;U16;;IDC 8: DC current for the port 8;;-1;0.0;A;4
+164;4;221;U16;;UDC 8: DC voltage for the port 8;;-1;0.0;V;4
+165;4;222;U16;;PDC 8: DC power for the port 8;;1.0;0.0;kW;4
+166;4;223;U16;;Reserved;;1.0;0.0;None;4
+167;4;224;U16;;None;;1.0;0.0;None;4
+168;4;225;U16;;None;;1.0;0.0;None;4
+169;4;226;U16;;None;;1.0;0.0;None;4
+170;4;227;U16;;Reserved;;1.0;0.0;None;4
+171;4;228;U16;;None;;1.0;0.0;None;4
+172;4;229;U16;;None;;1.0;0.0;None;4
+173;4;230;U16;;None;;1.0;0.0;None;4
+174;4;231;U16;;PrtAlrm 8: Active Alarms for the port 8;;1.0;0.0;None;4
+175;4;232;U16;;PrtTyp 9: DC port type;;1.0;0.0;None;4
+176;4;233;U16;;PrtID 9: DC port ID;;1.0;0.0;None;4
+177;4;234;U16;;IDC 9: DC current for the port 9;;-1;0.0;A;4
+178;4;235;U16;;UDC 9: DC voltage for the port 9;;-1;0.0;V;4
+179;4;236;U16;;PDC 9: DC power for the port 9;;1.0;0.0;kW;4
+180;4;237;U16;;Reserved;;1.0;0.0;None;4
+181;4;238;U16;;None;;1.0;0.0;None;4
+182;4;239;U16;;None;;1.0;0.0;None;4
+183;4;240;U16;;None;;1.0;0.0;None;4
+184;4;241;U16;;Reserved;;1.0;0.0;None;4
+185;4;242;U16;;None;;1.0;0.0;None;4
+186;4;243;U16;;None;;1.0;0.0;None;4
+187;4;244;U16;;None;;1.0;0.0;None;4
+188;4;245;U16;;PrtAlrm 9: Active Alarms for the port 9;;1.0;0.0;None;4
+189;4;246;U16;;PrtTyp 10: DC port type;;1.0;0.0;None;4
+190;4;247;U16;;PrtID 10: DC port ID;;1.0;0.0;None;4
+191;4;248;U16;;IDC 10: DC current for the port 10;;-1;0.0;A;4
+192;4;249;U16;;UDC 10: DC voltage for the port 10;;-1;0.0;V;4
+193;4;250;U16;;PDC 10: DC power for the port 10;;1.0;0.0;kW;4
+194;4;251;U16;;Reserved;;1.0;0.0;None;4
+195;4;252;U16;;None;;1.0;0.0;None;4
+196;4;253;U16;;None;;1.0;0.0;None;4
+197;4;254;U16;;None;;1.0;0.0;None;4
+198;4;255;U16;;Reserved;;1.0;0.0;None;4
+199;4;256;U16;;None;;1.0;0.0;None;4
+200;4;257;U16;;None;;1.0;0.0;None;4
+201;4;258;U16;;None;;1.0;0.0;None;4
+202;4;259;U16;;PrtAlrm 10: Active Alarms for the port 10;;1.0;0.0;None;4
+203;4;260;U16;;PrtTyp 11: DC port type;;1.0;0.0;None;4
+204;4;261;U16;;PrtID 11: DC port ID;;1.0;0.0;None;4
+205;4;262;U16;;IDC 11: DC current for the port 11;;-1;0.0;A;4
+206;4;263;U16;;UDC 11: DC voltage for the port 11;;-1;0.0;V;4
+207;4;264;U16;;PDC 11: DC power for the port 11;;1.0;0.0;kW;4
+208;4;265;U16;;Reserved;;1.0;0.0;None;4
+209;4;266;U16;;None;;1.0;0.0;None;4
+210;4;267;U16;;None;;1.0;0.0;None;4
+211;4;268;U16;;None;;1.0;0.0;None;4
+212;4;269;U16;;Reserved;;1.0;0.0;None;4
+213;4;270;U16;;None;;1.0;0.0;None;4
+214;4;271;U16;;None;;1.0;0.0;None;4
+215;4;272;U16;;None;;1.0;0.0;None;4
+216;4;273;U16;;PrtAlrm 11: Active Alarms for the port 11;;1.0;0.0;None;4
+217;4;274;U16;;PrtTyp 12: DC port type;;1.0;0.0;None;4
+218;4;275;U16;;PrtID 12: DC port ID;;1.0;0.0;None;4
+219;4;276;U16;;IDC 12: DC current for the port 12;;-1;0.0;A;4
+220;4;277;U16;;UDC 12: DC voltage for the port 12;;-1;0.0;V;4
+221;4;278;U16;;PDC 12: DC power for the port 12;;1.0;0.0;kW;4
+222;4;279;U16;;Reserved;;1.0;0.0;None;4
+223;4;280;U16;;None;;1.0;0.0;None;4
+224;4;281;U16;;None;;1.0;0.0;None;4
+225;4;282;U16;;None;;1.0;0.0;None;4
+226;4;283;U16;;Reserved;;1.0;0.0;None;4
+227;4;284;U16;;None;;1.0;0.0;None;4
+228;4;285;U16;;None;;1.0;0.0;None;4
+229;4;286;U16;;None;;1.0;0.0;None;4
+230;4;287;U16;;PrtAlrm 12: Active Alarms for the port 12;;1.0;0.0;None;4
+231;4;288;U16;;PrtTyp 13: DC port type;;1.0;0.0;None;4
+232;4;289;U16;;PrtID 13: DC port ID;;1.0;0.0;None;4
+233;4;290;U16;;IDC 13: DC current for the port 13;;-1;0.0;A;4
+234;4;291;U16;;UDC 13: DC voltage for the port 13;;-1;0.0;V;4
+235;4;292;U16;;PDC 13: DC power for the port 13;;1.0;0.0;kW;4
+236;4;293;U16;;Reserved;;1.0;0.0;None;4
+237;4;294;U16;;None;;1.0;0.0;None;4
+238;4;295;U16;;None;;1.0;0.0;None;4
+239;4;296;U16;;None;;1.0;0.0;None;4
+240;4;297;U16;;Reserved;;1.0;0.0;None;4
+241;4;298;U16;;None;;1.0;0.0;None;4
+242;4;299;U16;;None;;1.0;0.0;None;4
+243;4;300;U16;;None;;1.0;0.0;None;4
+244;4;301;U16;;PrtAlrm 13: Active Alarms for the port 13;;1.0;0.0;None;4
+245;4;302;U16;;PrtTyp 14: DC port type;;1.0;0.0;None;4
+246;4;303;U16;;PrtID 14: DC port ID;;1.0;0.0;None;4
+247;4;304;U16;;IDC 14: DC current for the port 14;;-1;0.0;A;4
+248;4;305;U16;;UDC 14: DC voltage for the port 14;;-1;0.0;V;4
+249;4;306;U16;;PDC 14: DC power for the port 14;;1.0;0.0;kW;4
+250;4;307;U16;;Reserved;;1.0;0.0;None;4
+251;4;308;U16;;None;;1.0;0.0;None;4
+252;4;309;U16;;None;;1.0;0.0;None;4
+253;4;310;U16;;None;;1.0;0.0;None;4
+254;4;311;U16;;Reserved;;1.0;0.0;None;4
+255;4;312;U16;;None;;1.0;0.0;None;4
+256;4;313;U16;;None;;1.0;0.0;None;4
+257;4;314;U16;;None;;1.0;0.0;None;4
+258;4;315;U16;;PrtAlrm 14: Active Alarms for the port 14;;1.0;0.0;None;4
+259;4;316;U16;;PrtTyp 15: DC port type;;1.0;0.0;None;4
+260;4;317;U16;;PrtID 15: DC port ID;;1.0;0.0;None;4
+261;4;318;U16;;IDC 15: DC current for the port 15;;-1;0.0;A;4
+262;4;319;U16;;UDC 15: DC voltage for the port 15;;-1;0.0;V;4
+263;4;320;U16;;PDC 15: DC power for the port 15;;1.0;0.0;kW;4
+264;4;321;U16;;Reserved;;1.0;0.0;None;4
+265;4;322;U16;;None;;1.0;0.0;None;4
+266;4;323;U16;;None;;1.0;0.0;None;4
+267;4;324;U16;;None;;1.0;0.0;None;4
+268;4;325;U16;;Reserved;;1.0;0.0;None;4
+269;4;326;U16;;None;;1.0;0.0;None;4
+270;4;327;U16;;None;;1.0;0.0;None;4
+271;4;328;U16;;None;;1.0;0.0;None;4
+272;4;329;U16;;PrtAlrm 15: Active Alarms for the port 15;;1.0;0.0;None;4
+273;4;330;U16;;PrtTyp 16: DC port type;;1.0;0.0;None;4
+274;4;331;U16;;PrtID 16: DC port ID;;1.0;0.0;None;4
+275;4;332;U16;;IDC 16: DC current for the port 16;;-1;0.0;A;4
+276;4;333;U16;;UDC 16: DC voltage for the port 16;;-1;0.0;V;4
+277;4;334;U16;;PDC 16: DC power for the port 16;;1.0;0.0;kW;4
+278;4;335;U16;;Reserved;;1.0;0.0;None;4
+279;4;336;U16;;None;;1.0;0.0;None;4
+280;4;337;U16;;None;;1.0;0.0;None;4
+281;4;338;U16;;None;;1.0;0.0;None;4
+282;4;339;U16;;Reserved;;1.0;0.0;None;4
+283;4;340;U16;;None;;1.0;0.0;None;4
+284;4;341;U16;;None;;1.0;0.0;None;4
+285;4;342;U16;;None;;1.0;0.0;None;4
+286;4;343;U16;;PrtAlrm 16: Active Alarms for the port 16;;1.0;0.0;None;4
+287;4;344;U16;;PrtTyp 17: DC port type;;1.0;0.0;None;4
+288;4;345;U16;;PrtID 17: DC port ID;;1.0;0.0;None;4
+289;4;346;U16;;IDC 17: DC current for the port 17;;-1;0.0;A;4
+290;4;347;U16;;UDC 17: DC voltage for the port 17;;-1;0.0;V;4
+291;4;348;U16;;PDC 17: DC power for the port 17;;1.0;0.0;kW;4
+292;4;349;U16;;Reserved;;1.0;0.0;None;4
+293;4;350;U16;;None;;1.0;0.0;None;4
+294;4;351;U16;;None;;1.0;0.0;None;4
+295;4;352;U16;;None;;1.0;0.0;None;4
+296;4;353;U16;;Reserved;;1.0;0.0;None;4
+297;4;354;U16;;None;;1.0;0.0;None;4
+298;4;355;U16;;None;;1.0;0.0;None;4
+299;4;356;U16;;None;;1.0;0.0;None;4
+300;4;357;U16;;PrtAlrm 17: Active Alarms for the port 17;;1.0;0.0;None;4
+301;4;358;U16;;PrtTyp 18: DC port type;;1.0;0.0;None;4
+302;4;359;U16;;PrtID 18: DC port ID;;1.0;0.0;None;4
+303;4;360;U16;;IDC 18: DC current for the port 18;;-1;0.0;A;4
+304;4;361;U16;;UDC 18: DC voltage for the port 18;;-1;0.0;V;4
+305;4;362;U16;;PDC 18: DC power for the port 18;;1.0;0.0;kW;4
+306;4;363;U16;;Reserved;;1.0;0.0;None;4
+307;4;364;U16;;None;;1.0;0.0;None;4
+308;4;365;U16;;None;;1.0;0.0;None;4
+309;4;366;U16;;None;;1.0;0.0;None;4
+310;4;367;U16;;Reserved;;1.0;0.0;None;4
+311;4;368;U16;;None;;1.0;0.0;None;4
+312;4;369;U16;;None;;1.0;0.0;None;4
+313;4;370;U16;;None;;1.0;0.0;None;4
+314;4;371;U16;;PrtAlrm 18: Active Alarms for the port 18;;1.0;0.0;None;4
+315;4;372;U16;;PrtTyp 19: DC port type;;1.0;0.0;None;4
+316;4;373;U16;;PrtID 19: DC port ID;;1.0;0.0;None;4
+317;4;374;U16;;IDC 19: DC current for the port 19;;-1;0.0;A;4
+318;4;375;U16;;UDC 19: DC voltage for the port 19;;-1;0.0;V;4
+319;4;376;U16;;PDC 19: DC power for the port 19;;1.0;0.0;kW;4
+320;4;377;U16;;Reserved;;1.0;0.0;None;4
+321;4;378;U16;;None;;1.0;0.0;None;4
+322;4;379;U16;;None;;1.0;0.0;None;4
+323;4;380;U16;;None;;1.0;0.0;None;4
+324;4;381;U16;;Reserved;;1.0;0.0;None;4
+325;4;382;U16;;None;;1.0;0.0;None;4
+326;4;383;U16;;None;;1.0;0.0;None;4
+327;4;384;U16;;None;;1.0;0.0;None;4
+328;4;385;U16;;PrtAlrm 19: Active Alarms for the port 19;;1.0;0.0;None;4
+329;4;386;U16;;PrtTyp 20: DC port type;;1.0;0.0;None;4
+330;4;387;U16;;PrtID 20: DC port ID;;1.0;0.0;None;4
+331;4;388;U16;;IDC 20: DC current for the port 20;;-1;0.0;A;4
+332;4;389;U16;;UDC 20: DC voltage for the port 20;;-1;0.0;V;4
+333;4;390;U16;;PDC 20: DC power for the port 20;;1.0;0.0;kW;4
+334;4;391;U16;;Reserved;;1.0;0.0;None;4
+335;4;392;U16;;None;;1.0;0.0;None;4
+336;4;393;U16;;None;;1.0;0.0;None;4
+337;4;394;U16;;None;;1.0;0.0;None;4
+338;4;395;U16;;Reserved;;1.0;0.0;None;4
+339;4;396;U16;;None;;1.0;0.0;None;4
+340;4;397;U16;;None;;1.0;0.0;None;4
+341;4;398;U16;;None;;1.0;0.0;None;4
+342;4;399;U16;;PrtAlrm 20: Active Alarms for the port 20;;1.0;0.0;None;4
+343;4;400;U16;;PrtTyp 21: DC port type;;1.0;0.0;None;4
+344;4;401;U16;;PrtID 21: DC port ID;;1.0;0.0;None;4
+345;4;402;U16;;IDC 21: DC current for the port 21;;-1;0.0;A;4
+346;4;403;U16;;UDC 21: DC voltage for the port 21;;-1;0.0;V;4
+347;4;404;U16;;PDC 21: DC power for the port 21;;1.0;0.0;kW;4
+348;4;405;U16;;Reserved;;1.0;0.0;None;4
+349;4;406;U16;;None;;1.0;0.0;None;4
+350;4;407;U16;;None;;1.0;0.0;None;4
+351;4;408;U16;;None;;1.0;0.0;None;4
+352;4;409;U16;;Reserved;;1.0;0.0;None;4
+353;4;410;U16;;None;;1.0;0.0;None;4
+354;4;411;U16;;None;;1.0;0.0;None;4
+355;4;412;U16;;None;;1.0;0.0;None;4
+356;4;413;U16;;PrtAlrm 21: Active Alarms for the port 21;;1.0;0.0;None;4
+357;4;414;U16;;PrtTyp 22: DC port type;;1.0;0.0;None;4
+358;4;415;U16;;PrtID 22: DC port ID;;1.0;0.0;None;4
+359;4;416;U16;;IDC 22: DC current for the port 22;;-1;0.0;A;4
+360;4;417;U16;;UDC 22: DC voltage for the port 22;;-1;0.0;V;4
+361;4;418;U16;;PDC 22: DC power for the port 22;;1.0;0.0;kW;4
+362;4;419;U16;;Reserved;;1.0;0.0;None;4
+363;4;420;U16;;None;;1.0;0.0;None;4
+364;4;421;U16;;None;;1.0;0.0;None;4
+365;4;422;U16;;None;;1.0;0.0;None;4
+366;4;423;U16;;Reserved;;1.0;0.0;None;4
+367;4;424;U16;;None;;1.0;0.0;None;4
+368;4;425;U16;;None;;1.0;0.0;None;4
+369;4;426;U16;;None;;1.0;0.0;None;4
+370;4;427;U16;;PrtAlrm 22: Active Alarms for the port 22;;1.0;0.0;None;4
+371;4;428;U16;;PrtTyp 23: DC port type;;1.0;0.0;None;4
+372;4;429;U16;;PrtID 23: DC port ID;;1.0;0.0;None;4
+373;4;430;U16;;IDC 23: DC current for the port 23;;-1;0.0;A;4
+374;4;431;U16;;UDC 23: DC voltage for the port 23;;-1;0.0;V;4
+375;4;432;U16;;PDC 23: DC power for the port 23;;1.0;0.0;kW;4
+376;4;433;U16;;Reserved;;1.0;0.0;None;4
+377;4;434;U16;;None;;1.0;0.0;None;4
+378;4;435;U16;;None;;1.0;0.0;None;4
+379;4;436;U16;;None;;1.0;0.0;None;4
+380;4;437;U16;;Reserved;;1.0;0.0;None;4
+381;4;438;U16;;None;;1.0;0.0;None;4
+382;4;439;U16;;None;;1.0;0.0;None;4
+383;4;440;U16;;None;;1.0;0.0;None;4
+384;4;441;U16;;PrtAlrm 23: Active Alarms for the port 23;;1.0;0.0;None;4
+385;4;442;U16;;PrtTyp 24: DC port type;;1.0;0.0;None;4
+386;4;443;U16;;PrtID 24: DC port ID;;1.0;0.0;None;4
+387;4;444;U16;;IDC 24: DC current for the port 24;;-1;0.0;A;4
+388;4;445;U16;;UDC 24: DC voltage for the port 24;;-1;0.0;V;4
+389;4;446;U16;;PDC 24: DC power for the port 24;;1.0;0.0;kW;4
+390;4;447;U16;;Reserved;;1.0;0.0;None;4
+391;4;448;U16;;None;;1.0;0.0;None;4
+392;4;449;U16;;None;;1.0;0.0;None;4
+393;4;450;U16;;None;;1.0;0.0;None;4
+394;4;451;U16;;Reserved;;1.0;0.0;None;4
+395;4;452;U16;;None;;1.0;0.0;None;4
+396;4;453;U16;;None;;1.0;0.0;None;4
+397;4;454;U16;;None;;1.0;0.0;None;4
+398;4;455;U16;;PrtAlrm 24: Active Alarms for the port 24;;1.0;0.0;None;4
+399;4;8192;U16;;Alarm word 0;;1.0;0.0;None;4
+400;4;8193;U16;;Alarm word 1;;1.0;0.0;None;4
+401;4;8194;U16;;Alarm word 2;;1.0;0.0;None;4
+402;4;8195;U16;;Alarm word 3;;1.0;0.0;None;4
+403;4;8196;U16;;Alarm word 4;;1.0;0.0;None;4
+404;4;8197;U16;;Alarm word 5;;1.0;0.0;None;4
+405;4;8198;U16;;Alarm word 6;;1.0;0.0;None;4
+406;4;8199;U16;;Alarm word 7;;1.0;0.0;None;4
+407;4;8200;U16;;Alarm word 8;;1.0;0.0;None;4
+408;4;8201;U16;;Alarm word 9;;1.0;0.0;None;4
+409;4;8202;U16;;Alarm word 10;;1.0;0.0;None;4
+410;4;8203;U16;;Alarm word 11;;1.0;0.0;None;4
+411;4;8204;U16;;Alarm word 12;;1.0;0.0;None;4
+412;4;8205;U16;;Alarm word 13;;1.0;0.0;None;4
+413;4;8206;U16;;Alarm word 14;;1.0;0.0;None;4
+414;4;8207;U16;;Alarm word 15;;1.0;0.0;None;4
+415;4;8208;U16;;Alarm word 16;;1.0;0.0;None;4
+416;4;8209;U16;;Alarm word 17;;1.0;0.0;None;4
+417;4;8210;U16;;Alarm word 18;;1.0;0.0;None;4
+418;4;8211;U16;;Alarm word 19;;1.0;0.0;None;4
+419;4;8212;U16;;Alarm word 20;;1.0;0.0;None;4
+420;4;8213;U16;;Alarm word 21;;1.0;0.0;None;4
+421;4;8214;U16;;Alarm word 22;;1.0;0.0;None;4
+422;4;8215;U16;;Alarm word 23;;1.0;0.0;None;4
+423;4;8216;U16;;Alarm word 24;;1.0;0.0;None;4
+424;4;8217;U16;;Alarm word 25;;1.0;0.0;None;4
+425;4;8218;U16;;Alarm word 26;;1.0;0.0;None;4
+426;4;8219;U16;;Alarm word 27;;1.0;0.0;None;4
+427;4;8220;U16;;Alarm word 28;;1.0;0.0;None;4
+428;4;8221;U16;;Alarm word 29;;1.0;0.0;None;4
+429;4;8222;U16;;Alarm word 30;;1.0;0.0;None;4
+430;4;8223;U16;;Alarm word 31;;1.0;0.0;None;4
+431;4;20480;U16;;Text: External ambient temperature;;1.0;0.0;ºC;4
+432;4;20481;U16;;None;;1.0;0.0;None;4
+433;4;20482;U16;;Tair_in: Air Cooling temperature. Input;;1.0;0.0;ºC;4
+434;4;20483;U16;;None;;1.0;0.0;None;4
+435;4;20484;U16;;Tair_out: Air Cooling temperature. Output;;1.0;0.0;ºC;4
+436;4;20485;U16;;None;;1.0;0.0;None;4
+437;4;20486;U16;;Tfilter: Harmonic filter temperature of inductance;;1.0;0.0;ºC;4
+438;4;20487;U16;;None;;1.0;0.0;None;4
+439;4;20488;U16;;TDCswitch: DC cabinet switch area ambient temperature;;1.0;0.0;ºC;4
+440;4;20489;U16;;None;;1.0;0.0;None;4
+441;4;20490;U16;;TDCfuses: DC cabinet fuses area ambient temperature;;1.0;0.0;ºC;4
+442;4;20491;U16;;None;;1.0;0.0;None;4
+443;4;20492;U16;;T1pow: Section 1 power cabinet ambient temperature;;1.0;0.0;ºC;4
+444;4;20493;U16;;None;;1.0;0.0;None;4
+445;4;20494;U16;;T2pow: Section 2 power cabinet ambient temperature;;1.0;0.0;ºC;4
+446;4;20495;U16;;None;;1.0;0.0;None;4
+447;4;20496;U16;;T1Lcoil: Section 1 temperature of inductance. Coil;;1.0;0.0;ºC;4
+448;4;20497;U16;;None;;1.0;0.0;None;4
+449;4;20498;U16;;T2Lcoil: Section 2 temperature of inductance. Coil;;1.0;0.0;ºC;4
+450;4;20499;U16;;None;;1.0;0.0;None;4
+451;4;20500;U16;;T1Lcore: Section 1 temperature of inductance. Core;;1.0;0.0;ºC;4
+452;4;20501;U16;;None;;1.0;0.0;None;4
+453;4;20502;U16;;T2Lcore: Section 2 temperature of inductance. Core;;1.0;0.0;ºC;4
+454;4;20503;U16;;None;;1.0;0.0;None;4
+455;4;20504;U16;;TACswitch: AC cabinet switch area ambient temperature;;1.0;0.0;ºC;4
+456;4;20505;U16;;None;;1.0;0.0;None;4
+457;4;20506;U16;;Tcool_low: Liquid cooling temperature. Low.;;1.0;0.0;ºC;4
+458;4;20507;U16;;None;;1.0;0.0;None;4
+459;4;20508;U16;;Tcool_high: Liquid cooling temperature. High.;;1.0;0.0;ºC;4
+460;4;20509;U16;;None;;1.0;0.0;None;4
+461;4;20510;U16;;Pcool_low: Liquid cooling pressure. Low.;PRESSURE;1.0;0.0;mbar;4
+462;4;20511;U16;;None;;1.0;0.0;None;4
+463;4;20512;U16;;Pcool_high: Liquid cooling pressure. High.;;1.0;0.0;mbar;4
+464;4;20513;U16;;None;;1.0;0.0;None;4
+465;4;20514;U16;;Flow: Liquid cooling flow;;1.0;0.0;l/min;4
+466;4;20515;U16;;None;;1.0;0.0;None;4
+467;4;20516;U16;;T1mod1: Section 1 Phase 1 power module temperature;TEMP_CELL;1.0;0.0;ºC;4
+468;4;20517;U16;;None;;1.0;0.0;None;4
+469;4;20518;U16;;T1mod2: Section 1 Phase 2 power module temperature;;1.0;0.0;ºC;4
+470;4;20519;U16;;None;;1.0;0.0;None;4
+471;4;20520;U16;;T1mod3: Section 1 Phase 3 power module temperature;;1.0;0.0;ºC;4
+472;4;20521;U16;;None;;1.0;0.0;None;4
+473;4;20522;U16;;T2mod1: Section 2 Phase 1 power module temperature;;1.0;0.0;ºC;4
+474;4;20523;U16;;None;;1.0;0.0;None;4
+475;4;20524;U16;;T2mod2: Section 2 Phase 2 power module temperature;;1.0;0.0;ºC;4
+476;4;20525;U16;;None;;1.0;0.0;None;4
+477;4;20526;U16;;T2mod3: Section 2 Phase 3 power module temperature;;1.0;0.0;ºC;4
+478;4;20527;U16;;None;;1.0;0.0;None;4
+479;4;20528;U16;;Udc1: Section 1 DC Voltage Measurement (Udc1);;1.0;0.0;V;4
+480;4;20529;U16;;None;;1.0;0.0;None;4
+481;4;20530;U16;;Udc2: Section 2 DC Voltage Measurement (Udc2);;1.0;0.0;V;4
+482;4;20531;U16;;None;;1.0;0.0;None;4
+483;4;20532;U16;;Idc1: Section 1 DC Current Measurement (Idc1);;1.0;0.0;A;4
+484;4;20533;U16;;None;;1.0;0.0;None;4
+485;4;20534;U16;;Idc2: Section 2 DC Current Measurement (Idc2);;1.0;0.0;A;4
+486;4;20535;U16;;None;;1.0;0.0;None;4
+487;4;20536;U16;;v1_fbk: Liquid cooling heat exchange fan 1 speed;;1.0;0.0;%;4
+488;4;20537;U16;;None;;1.0;0.0;None;4
+489;4;20538;U16;;v2_fbk: Liquid cooling heat exchange fan 2 speed;;1.0;0.0;%;4
+490;4;20539;U16;;None;;1.0;0.0;None;4
+491;4;20540;U16;;v3_fbk: Liquid cooling heat exchange fan 3 speed;;1.0;0.0;%;4
+492;4;20541;U16;;None;;1.0;0.0;None;4
+493;4;20542;U16;;v4_fbk: Liquid cooling heat exchange fan 4 speed;;1.0;0.0;%;4
+494;4;20543;U16;;None;;1.0;0.0;None;4
+495;4;20544;U16;;vppal_fbk: Air cooling forced ventilation fan speed;WIND_SPEED;1.0;0.0;m3/h;4
+496;4;20545;U16;;None;;1.0;0.0;None;4
+497;4;20546;U16;;Tccu: CCU internal temperature;;1.0;0.0;ºC;4
+498;4;20547;U16;;None;;1.0;0.0;None;4
+499;4;20548;U16;;v1_setp: Speed setpoint for liquid cooling heat exchange fans;;1.0;0.0;%;4
+500;4;20549;U16;;None;;1.0;0.0;None;4
+501;4;20550;U16;;vppal_setp: Flow setpoint for air cooling forced ventilation fan;;1.0;0.0;m3/h;4
+502;4;20551;U16;;None;;1.0;0.0;None;4

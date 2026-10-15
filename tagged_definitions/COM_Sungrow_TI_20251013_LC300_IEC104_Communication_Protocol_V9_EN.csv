@@ -1,0 +1,1383 @@
+﻿modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
+1;4;1;U16;;Initial status;;1.0;0.0;;9
+2;4;2;U16;;Reserved;;1.0;0.0;;0
+3;4;3;U16;;Reserved;;1.0;0.0;;0
+4;4;4;U16;;Starting;;1.0;0.0;;4
+5;4;5;U16;;Running;;1.0;0.0;;4
+6;4;6;U16;;Alarm running;;1.0;0.0;;9
+7;4;7;U16;;Standby;;1.0;0.0;;4
+8;4;8;U16;;Shutdown;CMD_OFF;1.0;0.0;;1
+9;4;9;U16;;Shutdown;;1.0;0.0;;4
+10;4;10;U16;;Emergency shutdown;;1.0;0.0;;4
+11;4;11;U16;;Fault shutdown;;1.0;0.0;;9
+12;4;12;U16;;Reserved;;1.0;0.0;;0
+13;4;13;U16;;Reserved;;1.0;0.0;;0
+14;4;14;U16;;Reserved;;1.0;0.0;;0
+15;4;15;U16;;Reserved;;1.0;0.0;;0
+16;4;16;U16;;Reserved;;1.0;0.0;;0
+17;4;17;U16;;Forbid charge;;1.0;0.0;;4
+18;4;18;U16;;Forbid discharge;;1.0;0.0;;4
+19;4;19;U16;;Charge;;1.0;0.0;;4
+20;4;20;U16;;Discharge;;1.0;0.0;;4
+21;4;21;U16;;Non-working status;;1.0;0.0;;9
+22;4;22;U16;;Zero power status operation;;1.0;0.0;;9
+23;4;23;U16;;SVG;;1.0;0.0;;4
+24;4;24;U16;;PCS fault;;1.0;0.0;;9
+25;4;25;U16;;LC-PCS communication fault;;1.0;0.0;;9
+26;4;26;U16;;Reserved;;1.0;0.0;;0
+27;4;27;U16;;Reserved;;1.0;0.0;;0
+28;4;28;U16;;Upper computer communication fault;;1.0;0.0;;9
+29;4;29;U16;;Reserved;;1.0;0.0;;0
+30;4;30;U16;;Node fault;;1.0;0.0;;9
+31;4;31;U16;;System not ready fault;;1.0;0.0;;9
+32;4;32;U16;;Emergency shutdown;;1.0;0.0;;4
+33;4;33;U16;;CMU all fault;;1.0;0.0;;9
+34;4;34;U16;;LC-CMU communication fault;;1.0;0.0;;9
+35;4;35;U16;;Reserved;;1.0;0.0;;0
+36;4;36;U16;;Gas concentration and overtemperature fault;;1.0;0.0;;9
+37;4;37;U16;;Level 1 fault of Rack circulating current threshold-exceeding;;1.0;0.0;;9
+38;4;38;U16;;Reserved;;1.0;0.0;;0
+39;4;39;U16;;Reserved;;1.0;0.0;;0
+40;4;40;U16;;Reserved;;1.0;0.0;;0
+41;4;41;U16;;Reserved;;1.0;0.0;;0
+42;4;42;U16;;Reserved;;1.0;0.0;;0
+43;4;43;U16;;Reserved;;1.0;0.0;;0
+44;4;44;U16;;Reserved;;1.0;0.0;;0
+45;4;45;U16;;Reserved;;1.0;0.0;;0
+46;4;46;U16;;Reserved;;1.0;0.0;;0
+47;4;47;U16;;Reserved;;1.0;0.0;;0
+48;4;48;U16;;Reserved;;1.0;0.0;;0
+49;4;49;U16;;Reserved;;1.0;0.0;;0
+50;4;50;U16;;Reserved;;1.0;0.0;;0
+51;4;51;U16;;Reserved;;1.0;0.0;;0
+52;4;52;U16;;Reserved;;1.0;0.0;;0
+53;4;53;U16;;Reserved;;1.0;0.0;;0
+54;4;54;U16;;Reserved;;1.0;0.0;;0
+55;4;55;U16;;Reserved;;1.0;0.0;;0
+56;4;56;U16;;Reserved;;1.0;0.0;;0
+57;4;57;U16;;PCS alarm;;1.0;0.0;;9
+58;4;58;U16;;Reserved;;1.0;0.0;;0
+59;4;59;U16;;Reserved;;1.0;0.0;;0
+60;4;60;U16;;Reserved;;1.0;0.0;;0
+61;4;61;U16;;Reserved;;1.0;0.0;;0
+62;4;62;U16;;Node alarm;;1.0;0.0;;9
+63;4;63;U16;;Reserved;;1.0;0.0;;0
+64;4;64;U16;;Reserved;;1.0;0.0;;0
+65;4;65;U16;;Reserved;;1.0;0.0;;0
+66;4;66;U16;;Reserved;;1.0;0.0;;0
+67;4;67;U16;;Reserved;;1.0;0.0;;0
+68;4;68;U16;;CMU alarm;;1.0;0.0;;9
+69;4;69;U16;;Reserved;;1.0;0.0;;0
+70;4;70;U16;;Reserved;;1.0;0.0;;0
+71;4;71;U16;;Reserved;;1.0;0.0;;0
+72;4;72;U16;;Auxiliary sub-device alarm;;1.0;0.0;;9
+73;4;73;U16;;Reserved;;1.0;0.0;;0
+74;4;74;U16;;Reserved;;1.0;0.0;;0
+75;4;75;U16;;Reserved;;1.0;0.0;;0
+76;4;76;U16;;Reserved;;1.0;0.0;;0
+77;4;77;U16;;Reserved;;1.0;0.0;;0
+78;4;78;U16;;Anti-loss alarm;;1.0;0.0;;9
+79;4;79;U16;;Detector and gas release alarm;;1.0;0.0;;9
+80;4;80;U16;;Level 2 alarm of Rack circulating current threshold-exceeding;;1.0;0.0;;9
+81;4;81;U16;;Level 3 alarm of Rack circulating current threshold-exceeding;;1.0;0.0;;9
+82;4;82;U16;;Reserved;;1.0;0.0;;0
+83;4;83;U16;;Reserved;;1.0;0.0;;0
+84;4;84;U16;;Reserved;;1.0;0.0;;0
+85;4;85;U16;;Reserved;;1.0;0.0;;0
+86;4;86;U16;;Reserved;;1.0;0.0;;0
+87;4;87;U16;;Reserved;;1.0;0.0;;0
+88;4;88;U16;;Input dry node 1 fault;;1.0;0.0;;9
+89;4;89;U16;;Input dry node2 fault;;1.0;0.0;;9
+90;4;90;U16;;Input dry node 3 fault;;1.0;0.0;;9
+91;4;91;U16;;Input dry node 4 fault;;1.0;0.0;;9
+92;4;92;U16;;Input dry node 5 fault;;1.0;0.0;;9
+93;4;93;U16;;Input dry node 6 fault;;1.0;0.0;;9
+94;4;94;U16;;Input dry node 7 fault;;1.0;0.0;;9
+95;4;95;U16;;Input dry node 8 fault;;1.0;0.0;;9
+96;4;96;U16;;Input dry node 9 fault;;1.0;0.0;;9
+97;4;97;U16;;Input dry node 10 fault;;1.0;0.0;;9
+98;4;98;U16;;Input dry node 11 fault;;1.0;0.0;;9
+99;4;99;U16;;Input dry node 12 fault;;1.0;0.0;;9
+100;4;100;U16;;Input dry node 13 fault;;1.0;0.0;;9
+101;4;101;U16;;Input dry node 14 fault;;1.0;0.0;;9
+102;4;102;U16;;Input dry node 15 fault;;1.0;0.0;;9
+103;4;103;U16;;Input dry node 16 fault;;1.0;0.0;;9
+104;4;104;U16;;Input dry node 17 fault;;1.0;0.0;;9
+105;4;105;U16;;Input dry node 18 fault;;1.0;0.0;;9
+106;4;106;U16;;Input dry node 19 fault;;1.0;0.0;;9
+107;4;107;U16;;Input dry node 20 fault;;1.0;0.0;;9
+108;4;108;U16;;Input dry node 21 fault;;1.0;0.0;;9
+109;4;109;U16;;Input dry node 22 fault;;1.0;0.0;;9
+110;4;110;U16;;Input dry node 23 fault;;1.0;0.0;;9
+111;4;111;U16;;Input dry node 24 fault;;1.0;0.0;;9
+112;4;112;U16;;Input dry node 25 fault;;1.0;0.0;;9
+113;4;113;U16;;Input dry node 26 fault;;1.0;0.0;;9
+114;4;114;U16;;Input dry node 27 fault;;1.0;0.0;;9
+115;4;115;U16;;Input dry node 28 fault;;1.0;0.0;;9
+116;4;116;U16;;Input dry node 29 fault;;1.0;0.0;;9
+117;4;117;U16;;Input dry node 30 fault;;1.0;0.0;;9
+118;4;118;U16;;Input dry node 31 fault;;1.0;0.0;;9
+119;4;119;U16;;Input dry node 32 fault;;1.0;0.0;;9
+120;4;120;U16;;Input dry node 1 fault;;1.0;0.0;;9
+121;4;121;U16;;Input dry node2 fault;;1.0;0.0;;9
+122;4;122;U16;;Input dry node 3 fault;;1.0;0.0;;9
+123;4;123;U16;;Input dry node 4 fault;;1.0;0.0;;9
+124;4;124;U16;;Input dry node 5 fault;;1.0;0.0;;9
+125;4;125;U16;;Input dry node 6 fault;;1.0;0.0;;9
+126;4;126;U16;;Input dry node 7 fault;;1.0;0.0;;9
+127;4;127;U16;;Input dry node 8 fault;;1.0;0.0;;9
+128;4;128;U16;;Input dry node 9 fault;;1.0;0.0;;9
+129;4;129;U16;;Input dry node 10 fault;;1.0;0.0;;9
+130;4;130;U16;;Input dry node 11 fault;;1.0;0.0;;9
+131;4;131;U16;;Input dry node 12 fault;;1.0;0.0;;9
+132;4;132;U16;;Input dry node 13 fault;;1.0;0.0;;9
+133;4;133;U16;;Input dry node 14 fault;;1.0;0.0;;9
+134;4;134;U16;;Input dry node 15 fault;;1.0;0.0;;9
+135;4;135;U16;;Input dry node 16 fault;;1.0;0.0;;9
+136;4;136;U16;;Input dry node 17 fault;;1.0;0.0;;9
+137;4;137;U16;;Input dry node 18 fault;;1.0;0.0;;9
+138;4;138;U16;;Input dry node 19 fault;;1.0;0.0;;9
+139;4;139;U16;;Input dry node 20 fault;;1.0;0.0;;9
+140;4;140;U16;;Input dry node 21 fault;;1.0;0.0;;9
+141;4;141;U16;;Input dry node 22 fault;;1.0;0.0;;9
+142;4;142;U16;;Input dry node 23 fault;;1.0;0.0;;9
+143;4;143;U16;;Input dry node 24 fault;;1.0;0.0;;9
+144;4;144;U16;;Input dry node 25 fault;;1.0;0.0;;9
+145;4;145;U16;;Input dry node 26 fault;;1.0;0.0;;9
+146;4;146;U16;;Input dry node 27 fault;;1.0;0.0;;9
+147;4;147;U16;;Input dry node 28 fault;;1.0;0.0;;9
+148;4;148;U16;;Input dry node 29 fault;;1.0;0.0;;9
+149;4;149;U16;;Input dry node 30 fault;;1.0;0.0;;9
+150;4;150;U16;;Input dry node 31 fault;;1.0;0.0;;9
+151;4;151;U16;;Input dry node 32 fault;;1.0;0.0;;9
+152;4;152;U16;;Input dry node 1 alarm;;1.0;0.0;;9
+153;4;153;U16;;Input dry node 2 alarm;;1.0;0.0;;9
+154;4;154;U16;;Input dry node 3 alarm;;1.0;0.0;;9
+155;4;155;U16;;Input dry node 4 alarm;;1.0;0.0;;9
+156;4;156;U16;;Input dry node 5 alarm;;1.0;0.0;;9
+157;4;157;U16;;Input dry node 6 alarm;;1.0;0.0;;9
+158;4;158;U16;;Input dry node 7 alarm;;1.0;0.0;;9
+159;4;159;U16;;Input dry node 8 alarm;;1.0;0.0;;9
+160;4;160;U16;;Input dry node 9 alarm;;1.0;0.0;;9
+161;4;161;U16;;Input dry node 10 alarm;;1.0;0.0;;9
+162;4;162;U16;;Input dry node 11 alarm;;1.0;0.0;;9
+163;4;163;U16;;Input dry node 12 alarm;;1.0;0.0;;9
+164;4;164;U16;;Input dry node 13 alarm;;1.0;0.0;;9
+165;4;165;U16;;Input dry node 14 alarm;;1.0;0.0;;9
+166;4;166;U16;;Input dry node 15 alarm;;1.0;0.0;;9
+167;4;167;U16;;Input dry node 16 alarm;;1.0;0.0;;9
+168;4;168;U16;;Input dry node 17 alarm;;1.0;0.0;;9
+169;4;169;U16;;Input dry node 18 alarm;;1.0;0.0;;9
+170;4;170;U16;;Input dry node 19 alarm;;1.0;0.0;;9
+171;4;171;U16;;Input dry node 20 alarm;;1.0;0.0;;9
+172;4;172;U16;;Input dry node 21 alarm;;1.0;0.0;;9
+173;4;173;U16;;Input dry node 22 alarm;;1.0;0.0;;9
+174;4;174;U16;;Input dry node 23 alarm;;1.0;0.0;;9
+175;4;175;U16;;Input dry node 24 alarm;;1.0;0.0;;9
+176;4;176;U16;;Input dry node 25 alarm;;1.0;0.0;;9
+177;4;177;U16;;Input dry node 26 alarm;;1.0;0.0;;9
+178;4;178;U16;;Input dry node 27 alarm;;1.0;0.0;;9
+179;4;179;U16;;Input dry node 28 alarm;;1.0;0.0;;9
+180;4;180;U16;;Input dry node 29 alarm;;1.0;0.0;;9
+181;4;181;U16;;Input dry node 30 alarm;;1.0;0.0;;9
+182;4;182;U16;;Input dry node 31 alarm;;1.0;0.0;;9
+183;4;183;U16;;Input dry node 32 alarm;;1.0;0.0;;9
+184;4;184;U16;;Input dry node 1 alarm;;1.0;0.0;;9
+185;4;185;U16;;Input dry node 2 alarm;;1.0;0.0;;9
+186;4;186;U16;;Input dry node 3 alarm;;1.0;0.0;;9
+187;4;187;U16;;Input dry node 4 alarm;;1.0;0.0;;9
+188;4;188;U16;;Input dry node 5 alarm;;1.0;0.0;;9
+189;4;189;U16;;Input dry node 6 alarm;;1.0;0.0;;9
+190;4;190;U16;;Input dry node 7 alarm;;1.0;0.0;;9
+191;4;191;U16;;Input dry node 8 alarm;;1.0;0.0;;9
+192;4;192;U16;;Input dry node 9 alarm;;1.0;0.0;;9
+193;4;193;U16;;Input dry node 10 alarm;;1.0;0.0;;9
+194;4;194;U16;;Input dry node 11 alarm;;1.0;0.0;;9
+195;4;195;U16;;Input dry node 12 alarm;;1.0;0.0;;9
+196;4;196;U16;;Input dry node 13 alarm;;1.0;0.0;;9
+197;4;197;U16;;Input dry node 14 alarm;;1.0;0.0;;9
+198;4;198;U16;;Input dry node 15 alarm;;1.0;0.0;;9
+199;4;199;U16;;Input dry node 16 alarm;;1.0;0.0;;9
+200;4;200;U16;;Input dry node 17 alarm;;1.0;0.0;;9
+201;4;201;U16;;Input dry node 18 alarm;;1.0;0.0;;9
+202;4;202;U16;;Input dry node 19 alarm;;1.0;0.0;;9
+203;4;203;U16;;Input dry node 20 alarm;;1.0;0.0;;9
+204;4;204;U16;;Input dry node 21 alarm;;1.0;0.0;;9
+205;4;205;U16;;Input dry node 22 alarm;;1.0;0.0;;9
+206;4;206;U16;;Input dry node 23 alarm;;1.0;0.0;;9
+207;4;207;U16;;Input dry node 24 alarm;;1.0;0.0;;9
+208;4;208;U16;;Input dry node 25 alarm;;1.0;0.0;;9
+209;4;209;U16;;Input dry node 26 alarm;;1.0;0.0;;9
+210;4;210;U16;;Input dry node 27 alarm;;1.0;0.0;;9
+211;4;211;U16;;Input dry node 28 alarm;;1.0;0.0;;9
+212;4;212;U16;;Input dry node 29 alarm;;1.0;0.0;;9
+213;4;213;U16;;Input dry node 30 alarm;;1.0;0.0;;9
+214;4;214;U16;;Input dry node 31 alarm;;1.0;0.0;;9
+215;4;215;U16;;Input dry node 32 alarm;;1.0;0.0;;9
+216;4;216;U16;;Reserved;;1.0;0.0;;0
+217;4;217;U16;;Reserved;;1.0;0.0;;0
+218;4;218;U16;;Reserved;;1.0;0.0;;0
+219;4;219;U16;;System start;;1.0;0.0;;4
+220;4;220;U16;;System shutdown;;1.0;0.0;;4
+221;4;221;U16;;System standby;;1.0;0.0;;4
+222;4;222;U16;;Reactive regulation mode QP;;1.0;0.0;;4
+223;4;223;U16;;Reactive regulation mode PF;;1.0;0.0;;4
+224;4;224;U16;;Reactive regulation mode OFF;;1.0;0.0;;4
+225;4;225;U16;;Reserved;;1.0;0.0;;0
+226;4;226;U16;;Reserved;;1.0;0.0;;0
+227;4;227;U16;;LCU on;;1.0;0.0;;4
+228;4;228;U16;;LCU off;;1.0;0.0;;4
+229;4;229;U16;;Reserved;;1.0;0.0;;0
+230;4;230;U16;;Reserved;;1.0;0.0;;0
+231;4;231;U16;;Reserved;;1.0;0.0;;0
+232;4;232;U16;;Reserved;;1.0;0.0;;0
+233;4;233;U16;;Reserved;;1.0;0.0;;0
+234;4;234;U16;;Reserved;;1.0;0.0;;0
+235;4;235;U16;;Reserved;;1.0;0.0;;0
+236;4;236;U16;;Reserved;;1.0;0.0;;0
+237;4;237;U16;;Reserved;;1.0;0.0;;0
+238;4;238;U16;;Reserved;;1.0;0.0;;0
+239;4;239;U16;;Reserved;;1.0;0.0;;0
+240;4;240;U16;;Reserved;;1.0;0.0;;0
+241;4;241;U16;;Reserved;;1.0;0.0;;0
+242;4;242;U16;;Reserved;;1.0;0.0;;0
+243;4;243;U16;;Reserved;;1.0;0.0;;0
+244;4;244;U16;;Reserved;;1.0;0.0;;0
+245;4;245;U16;;Reserved;;1.0;0.0;;0
+246;4;246;U16;;Reserved;;1.0;0.0;;0
+247;4;247;U16;;Reserved;;1.0;0.0;;0
+248;4;248;U16;;Reserved;;1.0;0.0;;0
+249;4;249;U16;;Reserved;;1.0;0.0;;0
+250;4;250;U16;;Reserved;;1.0;0.0;;0
+251;4;251;U16;;Breathing light communication alarm;;1.0;0.0;;9
+252;4;252;U16;;LCU communication alarm;;1.0;0.0;;9
+253;4;253;U16;;Reserved;;1.0;0.0;;0
+254;4;254;U16;;Reserved;;1.0;0.0;;0
+255;4;255;U16;;Reserved;;1.0;0.0;;0
+256;4;256;U16;;Reserved;;1.0;0.0;;0
+257;4;257;U16;;Reserved;;1.0;0.0;;0
+258;4;258;U16;;Reserved;;1.0;0.0;;0
+259;4;259;U16;;Reserved;;1.0;0.0;;0
+260;4;260;U16;;LCU alarm;;1.0;0.0;;9
+261;4;261;U16;;Reserved;;1.0;0.0;;0
+262;4;262;U16;;Reserved;;1.0;0.0;;0
+263;4;263;U16;;Emergency ventilation system alarm;WIND_SPEED;1.0;0.0;;9
+264;4;264;U16;;Emergency ventilation system communication alarm;;1.0;0.0;;9
+265;4;265;U16;;Dehumidifier alarm;;1.0;0.0;;9
+266;4;266;U16;;Dehumidifier comm alarm;;1.0;0.0;;9
+267;4;267;U16;;Reserved;;1.0;0.0;;0
+268;4;268;U16;;Reserved;;1.0;0.0;;0
+269;4;269;U16;;Reserved;;1.0;0.0;;0
+270;4;270;U16;;Reserved;;1.0;0.0;;0
+271;4;271;U16;;Reserved;;1.0;0.0;;0
+272;4;272;U16;;Reserved;;1.0;0.0;;0
+273;4;273;U16;;Reserved;;1.0;0.0;;0
+274;4;274;U16;;Reserved;;1.0;0.0;;0
+275;4;275;U16;;Reserved;;1.0;0.0;;0
+276;4;276;U16;;Reserved;;1.0;0.0;;0
+277;4;277;U16;;Reserved;;1.0;0.0;;0
+278;4;278;U16;;Reserved;;1.0;0.0;;0
+279;4;279;U16;;Reserved;;1.0;0.0;;0
+280;4;280;U16;;SOC upper limit level 1 status;;1.0;0.0;;9
+281;4;281;U16;;SOC upper limit level 2 status;;1.0;0.0;;9
+282;4;282;U16;;SOC lower limit level 1 status;;1.0;0.0;;9
+283;4;283;U16;;SOC lower limit level 2 status;;1.0;0.0;;9
+284;4;284;U16;;Node status;;1.0;0.0;;9
+285;4;285;U16;;Reserved;;1.0;0.0;;0
+286;4;286;U16;;Reserved;;1.0;0.0;;0
+287;4;287;U16;;Reserved;;1.0;0.0;;0
+288;4;288;U16;;Reserved;;1.0;0.0;;0
+289;4;289;U16;;Reserved;;1.0;0.0;;0
+290;4;290;U16;;Reserved;;1.0;0.0;;0
+291;4;291;U16;;Reserved;;1.0;0.0;;0
+292;4;292;U16;;Reserved;;1.0;0.0;;0
+293;4;293;U16;;Reserved;;1.0;0.0;;0
+294;4;294;U16;;Reserved;;1.0;0.0;;0
+295;4;295;U16;;Reserved;;1.0;0.0;;0
+296;4;296;U16;;Reserved;;1.0;0.0;;0
+297;4;297;U16;;Reserved;;1.0;0.0;;0
+298;4;298;U16;;Reserved;;1.0;0.0;;0
+299;4;299;U16;;Reserved;;1.0;0.0;;0
+300;4;300;U16;;Reserved;;1.0;0.0;;0
+301;4;301;U16;;Reserved;;1.0;0.0;;0
+302;4;302;U16;;Reserved;;1.0;0.0;;0
+303;4;303;U16;;Reserved;;1.0;0.0;;0
+304;4;304;U16;;Reserved;;1.0;0.0;;0
+305;4;305;U16;;Reserved;;1.0;0.0;;0
+306;4;306;U16;;Reserved;;1.0;0.0;;0
+307;4;307;U16;;Reserved;;1.0;0.0;;0
+308;4;308;U16;;Reserved;;1.0;0.0;;0
+309;4;309;U16;;Reserved;;1.0;0.0;;0
+310;4;310;U16;;Reserved;;1.0;0.0;;0
+311;4;311;U16;;Reserved;;1.0;0.0;;0
+312;4;312;U16;;Input dry node 1 status;;1.0;0.0;;9
+313;4;313;U16;;Input dry node 2 status;;1.0;0.0;;9
+314;4;314;U16;;Input dry node 3 status;;1.0;0.0;;9
+315;4;315;U16;;Input dry node 4 status;;1.0;0.0;;9
+316;4;316;U16;;Input dry node 5 status;;1.0;0.0;;9
+317;4;317;U16;;Input dry node 6 status;;1.0;0.0;;9
+318;4;318;U16;;Input dry node 7 status;;1.0;0.0;;9
+319;4;319;U16;;Input dry node 8 status;;1.0;0.0;;9
+320;4;320;U16;;Input dry node 9 status;;1.0;0.0;;9
+321;4;321;U16;;Input dry node 10 status;;1.0;0.0;;9
+322;4;322;U16;;Input dry node 11 status;;1.0;0.0;;9
+323;4;323;U16;;Input dry node 12 status;;1.0;0.0;;9
+324;4;324;U16;;Input dry node 13 status;;1.0;0.0;;9
+325;4;325;U16;;Input dry node 14 status;;1.0;0.0;;9
+326;4;326;U16;;Input dry node 15 status;;1.0;0.0;;9
+327;4;327;U16;;Input dry node 16 status;;1.0;0.0;;9
+328;4;328;U16;;Input dry node 17 status;;1.0;0.0;;9
+329;4;329;U16;;Input dry node 18 status;;1.0;0.0;;9
+330;4;330;U16;;Input dry node 19 status;;1.0;0.0;;9
+331;4;331;U16;;Input dry node 20 status;;1.0;0.0;;9
+332;4;332;U16;;Input dry node 21 status;;1.0;0.0;;9
+333;4;333;U16;;Input dry node 22 status;;1.0;0.0;;9
+334;4;334;U16;;Input dry node 23 status;;1.0;0.0;;9
+335;4;335;U16;;Input dry node 24 status;;1.0;0.0;;9
+336;4;336;U16;;Input dry node 25 status;;1.0;0.0;;9
+337;4;337;U16;;Input dry node 26 status;;1.0;0.0;;9
+338;4;338;U16;;Input dry node 27 status;;1.0;0.0;;9
+339;4;339;U16;;Input dry node 28 status;;1.0;0.0;;9
+340;4;340;U16;;Input dry node 29 status;;1.0;0.0;;9
+341;4;341;U16;;Input dry node 30 status;;1.0;0.0;;9
+342;4;342;U16;;Input dry node 31 status;;1.0;0.0;;9
+343;4;343;U16;;Input dry node 32 status;;1.0;0.0;;9
+344;4;344;U16;;Input dry node 1 status;;1.0;0.0;;9
+345;4;345;U16;;Input dry node 2 status;;1.0;0.0;;9
+346;4;346;U16;;Input dry node 3 status;;1.0;0.0;;9
+347;4;347;U16;;Input dry node 4 status;;1.0;0.0;;9
+348;4;348;U16;;Input dry node 5 status;;1.0;0.0;;9
+349;4;349;U16;;Input dry node 6 status;;1.0;0.0;;9
+350;4;350;U16;;Input dry node 7 status;;1.0;0.0;;9
+351;4;351;U16;;Input dry node 8 status;;1.0;0.0;;9
+352;4;352;U16;;Input dry node 9 status;;1.0;0.0;;9
+353;4;353;U16;;Input dry node 10 status;;1.0;0.0;;9
+354;4;354;U16;;Input dry node 11 status;;1.0;0.0;;9
+355;4;355;U16;;Input dry node 12 status;;1.0;0.0;;9
+356;4;356;U16;;Input dry node 13 status;;1.0;0.0;;9
+357;4;357;U16;;Input dry node 14 status;;1.0;0.0;;9
+358;4;358;U16;;Input dry node 15 status;;1.0;0.0;;9
+359;4;359;U16;;Input dry node 16 status;;1.0;0.0;;9
+360;4;360;U16;;Input dry node 17 status;;1.0;0.0;;9
+361;4;361;U16;;Input dry node 18 status;;1.0;0.0;;9
+362;4;362;U16;;Input dry node 19 status;;1.0;0.0;;9
+363;4;363;U16;;Input dry node 20 status;;1.0;0.0;;9
+364;4;364;U16;;Input dry node 21 status;;1.0;0.0;;9
+365;4;365;U16;;Input dry node 22 status;;1.0;0.0;;9
+366;4;366;U16;;Input dry node 23 status;;1.0;0.0;;9
+367;4;367;U16;;Input dry node 24 status;;1.0;0.0;;9
+368;4;368;U16;;Input dry node 25 status;;1.0;0.0;;9
+369;4;369;U16;;Input dry node 26 status;;1.0;0.0;;9
+370;4;370;U16;;Input dry node 27 status;;1.0;0.0;;9
+371;4;371;U16;;Input dry node 28 status;;1.0;0.0;;9
+372;4;372;U16;;Input dry node 29 status;;1.0;0.0;;9
+373;4;373;U16;;Input dry node 30 status;;1.0;0.0;;9
+374;4;374;U16;;Input dry node 31 status;;1.0;0.0;;9
+375;4;375;U16;;Input dry node 32 status;;1.0;0.0;;9
+376;4;440;U16;;System water shortage alarm;;1.0;0.0;;9
+377;4;441;U16;;High condensing pressure alarm;PRESSURE;1.0;0.0;;9
+378;4;442;U16;;Reserved;;1.0;0.0;;0
+379;4;443;U16;;High outlet water pressure alarm;;1.0;0.0;;9
+380;4;444;U16;;Reserved;;1.0;0.0;;0
+381;4;445;U16;;Other alarm;;1.0;0.0;;9
+382;4;446;U16;;Reserved;;1.0;0.0;;0
+383;4;447;U16;;Reserved;;1.0;0.0;;0
+384;4;448;U16;;Reserved;;1.0;0.0;;0
+385;4;449;U16;;Reserved;;1.0;0.0;;0
+386;4;450;U16;;Reserved;;1.0;0.0;;0
+387;4;451;U16;;Reserved;;1.0;0.0;;0
+388;4;452;U16;;Reserved;;1.0;0.0;;0
+389;4;453;U16;;Reserved;;1.0;0.0;;0
+390;4;454;U16;;Reserved;;1.0;0.0;;0
+391;4;455;U16;;Reserved;;1.0;0.0;;0
+392;4;456;U16;;Level 1 alarm;;1.0;0.0;;9
+393;4;457;U16;;Level 2 alarm;;1.0;0.0;;9
+394;4;458;U16;;Reserved;;1.0;0.0;;0
+395;4;459;U16;;Reserved;;1.0;0.0;;0
+396;4;460;U16;;Device alarm;;1.0;0.0;;9
+397;4;461;U16;;Device fault;;1.0;0.0;;9
+398;4;462;U16;;Reserved;;1.0;0.0;;0
+399;4;463;U16;;Reserved;;1.0;0.0;;0
+400;4;464;U16;;Reserved;;1.0;0.0;;0
+401;4;465;U16;;Reserved;;1.0;0.0;;0
+402;4;466;U16;;Reserved;;1.0;0.0;;0
+403;4;467;U16;;Reserved;;1.0;0.0;;0
+404;4;468;U16;;Reserved;;1.0;0.0;;0
+405;4;469;U16;;Reserved;;1.0;0.0;;0
+406;4;470;U16;;Reserved;;1.0;0.0;;0
+407;4;471;U16;;Reserved;;1.0;0.0;;0
+408;4;488;U16;;1# Temperature sensor high temperature alarm/Cooler fault(cooler damage、disconnection)/Low temperature protection/Low temperature alarm;;1.0;0.0;;9
+409;4;489;U16;;1# Temperature sensor low temperature alarm/Humiture sensor fault/High temperature protection/High temperature alarm;;1.0;0.0;;9
+410;4;490;U16;;1# Temperature sensor fault alarm/Cooler cold junction temperature sensor fault/Coil fault/High humidity alarm;HUMIDITY;1.0;0.0;;9
+411;4;491;U16;;2# Temperature sensor high temperature alarm/Temperature sensor fault/Temperature sensor fault alarm;;1.0;0.0;;9
+412;4;492;U16;;2# Temperature sensor low temperature alarm/Ambient temperature sensor fault/Humidity sensor fault alarm;TEMP_AMB;1.0;0.0;;9
+413;4;493;U16;;2# Temperature sensor fault alarm/Dehumidification fault alarm;;1.0;0.0;;9
+414;4;494;U16;;High humidity alarm/Fan fault alarm;;1.0;0.0;;9
+415;4;495;U16;;Fan fault;;1.0;0.0;;9
+416;4;496;U16;;Humidity sensor fault alarm/Chilling plate overcurrent protection;;1.0;0.0;;9
+417;4;497;U16;;Parameter storage alarm/Fan overcurrent protection;;1.0;0.0;;9
+418;4;498;U16;;Dehumidification fault alarm;;1.0;0.0;;9
+419;4;499;U16;;Fan fault alarm;;1.0;0.0;;9
+420;4;500;U16;;Reserved;;1.0;0.0;;0
+421;4;501;U16;;Reserved;;1.0;0.0;;0
+422;4;502;U16;;Reserved;;1.0;0.0;;0
+423;4;503;U16;;Reserved;;1.0;0.0;;0
+424;4;1125;U16;;Reserved;;1.0;0.0;;0
+425;4;1126;U16;;Running mode;;1.0;0.0;;4
+426;4;1127;U16;;Reserved;;1.0;0.0;;0
+427;4;1128;U16;;Reserved;;1.0;0.0;;0
+428;4;1129;U16;;Fault mode;;1.0;0.0;;9
+429;4;1130;U16;;Reserved;;1.0;0.0;;0
+430;4;1131;U16;;Idle mode;;1.0;0.0;;4
+431;4;1132;U16;;Reserved;;1.0;0.0;;0
+432;4;1133;U16;;Reserved;;1.0;0.0;;0
+433;4;1134;U16;;Reserved;;1.0;0.0;;0
+434;4;1135;U16;;Reserved;;1.0;0.0;;0
+435;4;1136;U16;;Reserved;;1.0;0.0;;0
+436;4;1137;U16;;Reserved;;1.0;0.0;;0
+437;4;1138;U16;;Reserved;;1.0;0.0;;0
+438;4;1139;U16;;Reserved;;1.0;0.0;;0
+439;4;1140;U16;;Reserved;;1.0;0.0;;0
+440;4;1141;U16;;Reserved;;1.0;0.0;;0
+441;4;1142;U16;;Discharging;;1.0;0.0;;4
+442;4;1143;U16;;Charging status;;1.0;0.0;;9
+443;4;1144;U16;;Discharging status;;1.0;0.0;;9
+444;4;1145;U16;;Cell over voltage alarm;;1.0;0.0;;9
+445;4;1146;U16;;Cell under voltage alarm;;1.0;0.0;;9
+446;4;1147;U16;;Total  over voltage alarm;;1.0;0.0;;9
+447;4;1148;U16;;Total under voltage alarm;;1.0;0.0;;9
+448;4;1149;U16;;Cell voltage difference alarm;;1.0;0.0;;9
+449;4;1150;U16;;Cell over temperature alarm;TEMP_CELL;1.0;0.0;;9
+450;4;1151;U16;;Cell low temperature alarm;;1.0;0.0;;9
+451;4;1152;U16;;Cell temperature difference alarm;;1.0;0.0;;9
+452;4;1153;U16;;Insulation leakage alarm;R_ISO;1.0;0.0;;9
+453;4;1154;U16;;CMU-BMU comm alarm;;1.0;0.0;;9
+454;4;1155;U16;;Voltage sample alarm;;1.0;0.0;;9
+455;4;1156;U16;;Temperature sample alarm;;1.0;0.0;;9
+456;4;1157;U16;;Current sample alarm;;1.0;0.0;;9
+457;4;1158;U16;;Reserved;;1.0;0.0;;0
+458;4;1159;U16;;Reserved;;1.0;0.0;;0
+459;4;1160;U16;;Charge over current alarm;;1.0;0.0;;9
+460;4;1161;U16;;Discharge over current alarm;;1.0;0.0;;9
+461;4;1162;U16;;Short circuit alarm;;1.0;0.0;;9
+462;4;1163;U16;;Pack over voltage alarm;;1.0;0.0;;9
+463;4;1164;U16;;Pack under voltage alarm;;1.0;0.0;;9
+464;4;1165;U16;;Pack voltage difference alarm;;1.0;0.0;;9
+465;4;1166;U16;;Reserved;;1.0;0.0;;0
+466;4;1167;U16;;Reserved;;1.0;0.0;;0
+467;4;1168;U16;;Total voltage difference alarm;;1.0;0.0;;9
+468;4;1169;U16;;Reserved;;1.0;0.0;;0
+469;4;1170;U16;;Reserved;;1.0;0.0;;0
+470;4;1171;U16;;Reserved;;1.0;0.0;;0
+471;4;1172;U16;;Temperature rise alarm;;1.0;0.0;;9
+472;4;1173;U16;;Reserved;;1.0;0.0;;0
+473;4;1174;U16;;Reserved;;1.0;0.0;;0
+474;4;1175;U16;;Reserved;;1.0;0.0;;0
+475;4;1176;U16;;Reserved;;1.0;0.0;;0
+476;4;1177;U16;;Cell over voltage alarm;;1.0;0.0;;9
+477;4;1178;U16;;Cell under voltage alarm;;1.0;0.0;;9
+478;4;1179;U16;;Total  over voltage alarm;;1.0;0.0;;9
+479;4;1180;U16;;Total under voltage alarm;;1.0;0.0;;9
+480;4;1181;U16;;Cell voltage difference alarm;;1.0;0.0;;9
+481;4;1182;U16;;Cell over temperature alarm;;1.0;0.0;;9
+482;4;1183;U16;;Cell low temperature alarm;;1.0;0.0;;9
+483;4;1184;U16;;Cell temperature difference alarm;;1.0;0.0;;9
+484;4;1185;U16;;Insulation leakage alarm;;1.0;0.0;;9
+485;4;1186;U16;;CMU-BMU comm alarm;;1.0;0.0;;9
+486;4;1187;U16;;Voltage sample alarm;;1.0;0.0;;9
+487;4;1188;U16;;Temperature sample alarm;;1.0;0.0;;9
+488;4;1189;U16;;Current sample alarm;;1.0;0.0;;9
+489;4;1190;U16;;Reserved;;1.0;0.0;;0
+490;4;1191;U16;;Reserved;;1.0;0.0;;0
+491;4;1192;U16;;Charge over current alarm;;1.0;0.0;;9
+492;4;1193;U16;;Discharge over current alarm;;1.0;0.0;;9
+493;4;1194;U16;;Short circuit alarm;;1.0;0.0;;9
+494;4;1195;U16;;Pack over voltage alarm;;1.0;0.0;;9
+495;4;1196;U16;;Pack under voltage alarm;;1.0;0.0;;9
+496;4;1197;U16;;Pack voltage difference alarm;;1.0;0.0;;9
+497;4;1198;U16;;Reserved;;1.0;0.0;;0
+498;4;1199;U16;;Reserved;;1.0;0.0;;0
+499;4;1200;U16;;Total voltage difference alarm;;1.0;0.0;;9
+500;4;1201;U16;;Reserved;;1.0;0.0;;0
+501;4;1202;U16;;Reserved;;1.0;0.0;;0
+502;4;1203;U16;;Reserved;;1.0;0.0;;0
+503;4;1204;U16;;Temperature rise alarm;;1.0;0.0;;9
+504;4;1205;U16;;Reserved;;1.0;0.0;;0
+505;4;1206;U16;;Reserved;;1.0;0.0;;0
+506;4;1207;U16;;Reserved;;1.0;0.0;;0
+507;4;1208;U16;;Reserved;;1.0;0.0;;0
+508;4;1209;U16;;Cell over voltage fault;;1.0;0.0;;9
+509;4;1210;U16;;Cell under voltage fault;;1.0;0.0;;9
+510;4;1211;U16;;Total over voltage fault;;1.0;0.0;;9
+511;4;1212;U16;;Total under voltage fault;;1.0;0.0;;9
+512;4;1213;U16;;Cell voltage difference fault;;1.0;0.0;;9
+513;4;1214;U16;;Cell over temperature fault;;1.0;0.0;;9
+514;4;1215;U16;;Cell low temperature fault;;1.0;0.0;;9
+515;4;1216;U16;;Cell temperature difference fault;;1.0;0.0;;9
+516;4;1217;U16;;Insulation leakage fault;;1.0;0.0;;9
+517;4;1218;U16;;CMU-BMU comm fault;;1.0;0.0;;9
+518;4;1219;U16;;Voltage sample fault;;1.0;0.0;;9
+519;4;1220;U16;;Temperature sample fault;;1.0;0.0;;9
+520;4;1221;U16;;Current sample fault;;1.0;0.0;;9
+521;4;1222;U16;;Heartbeat fault;;1.0;0.0;;9
+522;4;1223;U16;;Software version fault;;1.0;0.0;;9
+523;4;1224;U16;;Charge over current fault;;1.0;0.0;;9
+524;4;1225;U16;;Discharge over current fault;;1.0;0.0;;9
+525;4;1226;U16;;Short circuit fault;;1.0;0.0;;9
+526;4;1227;U16;;Pack over voltage fault;;1.0;0.0;;9
+527;4;1228;U16;;Pack under voltage fault;;1.0;0.0;;9
+528;4;1229;U16;;Pack voltage difference fault;;1.0;0.0;;9
+529;4;1230;U16;;Reserved;;1.0;0.0;;0
+530;4;1231;U16;;Fuse fault;;1.0;0.0;;9
+531;4;1232;U16;;Total voltage difference fault;;1.0;0.0;;9
+532;4;1233;U16;;Polarity reversal fault;;1.0;0.0;;9
+533;4;1234;U16;;Reserved;;1.0;0.0;;0
+534;4;1235;U16;;CMU-ARM comm fault;;1.0;0.0;;9
+535;4;1236;U16;;Temperature rise fault;;1.0;0.0;;9
+536;4;1237;U16;;Reserved;;1.0;0.0;;0
+537;4;1238;U16;;Reserved;;1.0;0.0;;0
+538;4;1239;U16;;Temperature sensor abnormal fault;;1.0;0.0;;9
+539;4;1240;U16;;Reserved;;1.0;0.0;;0
+540;4;2325;U16;;Power on mode;CMD_ON;1.0;0.0;;1
+541;4;2326;U16;;Selfcheck mode;;1.0;0.0;;4
+542;4;2327;U16;;Working mode;;1.0;0.0;;4
+543;4;2328;U16;;Fault mode;;1.0;0.0;;9
+544;4;2329;U16;;Shutdown mode;;1.0;0.0;;4
+545;4;2330;U16;;Upgrade mode;;1.0;0.0;;4
+546;4;2331;U16;;ADC adjustment mode;;1.0;0.0;;4
+547;4;2332;U16;;Test mode;;1.0;0.0;;4
+548;4;2333;U16;;Maintain mode;;1.0;0.0;;4
+549;4;2334;U16;;Reserved;;1.0;0.0;;0
+550;4;2335;U16;;Reserved;;1.0;0.0;;0
+551;4;2336;U16;;Reserved;;1.0;0.0;;0
+552;4;2337;U16;;Reserved;;1.0;0.0;;0
+553;4;2338;U16;;Reserved;;1.0;0.0;;0
+554;4;2339;U16;;Reserved;;1.0;0.0;;0
+555;4;2340;U16;;Reserved;;1.0;0.0;;0
+556;4;2341;U16;;Cell over voltage alarm;;1.0;0.0;;9
+557;4;2342;U16;;Cell under voltage alarm;;1.0;0.0;;9
+558;4;2343;U16;;Total  over voltage alarm;;1.0;0.0;;9
+559;4;2344;U16;;Total under voltage alarm;;1.0;0.0;;9
+560;4;2345;U16;;Cell voltage difference alarm;;1.0;0.0;;9
+561;4;2346;U16;;Cell over temperature alarm;;1.0;0.0;;9
+562;4;2347;U16;;Cell low temperature alarm;;1.0;0.0;;9
+563;4;2348;U16;;Cell temperature difference alarm;;1.0;0.0;;9
+564;4;2349;U16;;Insulation leakage alarm;;1.0;0.0;;9
+565;4;2350;U16;;CMU-BMU comm alarm;;1.0;0.0;;9
+566;4;2351;U16;;Voltage sample alarm;;1.0;0.0;;9
+567;4;2352;U16;;Temperature sample alarm;;1.0;0.0;;9
+568;4;2353;U16;;Current sample alarm;;1.0;0.0;;9
+569;4;2354;U16;;Reserved;;1.0;0.0;;0
+570;4;2355;U16;;Reserved;;1.0;0.0;;0
+571;4;2356;U16;;Charge over current alarm;;1.0;0.0;;9
+572;4;2357;U16;;Discharge over current alarm;;1.0;0.0;;9
+573;4;2358;U16;;Short circuit alarm;;1.0;0.0;;9
+574;4;2359;U16;;Pack over voltage alarm;;1.0;0.0;;9
+575;4;2360;U16;;Pack under voltage alarm;;1.0;0.0;;9
+576;4;2361;U16;;Pack voltage difference alarm;;1.0;0.0;;9
+577;4;2362;U16;;Reserved;;1.0;0.0;;0
+578;4;2363;U16;;Reserved;;1.0;0.0;;0
+579;4;2364;U16;;Total voltage difference alarm;;1.0;0.0;;9
+580;4;2365;U16;;Reserved;;1.0;0.0;;0
+581;4;2366;U16;;Reserved;;1.0;0.0;;0
+582;4;2367;U16;;Reserved;;1.0;0.0;;0
+583;4;2368;U16;;Temperature rise alarm;;1.0;0.0;;9
+584;4;2369;U16;;Reserved;;1.0;0.0;;0
+585;4;2370;U16;;Reserved;;1.0;0.0;;0
+586;4;2371;U16;;Reserved;;1.0;0.0;;0
+587;4;2372;U16;;Reserved;;1.0;0.0;;0
+588;4;2373;U16;;Cell over voltage alarm;;1.0;0.0;;9
+589;4;2374;U16;;Cell under voltage alarm;;1.0;0.0;;9
+590;4;2375;U16;;Total  over voltage alarm;;1.0;0.0;;9
+591;4;2376;U16;;Total under voltage alarm;;1.0;0.0;;9
+592;4;2377;U16;;Cell voltage difference alarm;;1.0;0.0;;9
+593;4;2378;U16;;Cell over temperature alarm;;1.0;0.0;;9
+594;4;2379;U16;;Cell low temperature alarm;;1.0;0.0;;9
+595;4;2380;U16;;Cell temperature difference alarm;;1.0;0.0;;9
+596;4;2381;U16;;Insulation leakage alarm;;1.0;0.0;;9
+597;4;2382;U16;;CMU-BMU comm alarm;;1.0;0.0;;9
+598;4;2383;U16;;Voltage sample alarm;;1.0;0.0;;9
+599;4;2384;U16;;Temperature sample alarm;;1.0;0.0;;9
+600;4;2385;U16;;Current sample alarm;;1.0;0.0;;9
+601;4;2386;U16;;Reserved;;1.0;0.0;;0
+602;4;2387;U16;;Reserved;;1.0;0.0;;0
+603;4;2388;U16;;Charge over current alarm;;1.0;0.0;;9
+604;4;2389;U16;;Discharge over current alarm;;1.0;0.0;;9
+605;4;2390;U16;;Short circuit alarm;;1.0;0.0;;9
+606;4;2391;U16;;Pack over voltage alarm;;1.0;0.0;;9
+607;4;2392;U16;;Pack under voltage alarm;;1.0;0.0;;9
+608;4;2393;U16;;Pack voltage difference alarm;;1.0;0.0;;9
+609;4;2394;U16;;Reserved;;1.0;0.0;;0
+610;4;2395;U16;;Reserved;;1.0;0.0;;0
+611;4;2396;U16;;Total voltage difference alarm;;1.0;0.0;;9
+612;4;2397;U16;;Reserved;;1.0;0.0;;0
+613;4;2398;U16;;Reserved;;1.0;0.0;;0
+614;4;2399;U16;;Reserved;;1.0;0.0;;0
+615;4;2400;U16;;Temperature rise alarm;;1.0;0.0;;9
+616;4;2401;U16;;Reserved;;1.0;0.0;;0
+617;4;2402;U16;;Reserved;;1.0;0.0;;0
+618;4;2403;U16;;Reserved;;1.0;0.0;;0
+619;4;2404;U16;;Reserved;;1.0;0.0;;0
+620;4;2405;U16;;Cell over voltage fault;;1.0;0.0;;9
+621;4;2406;U16;;Cell under voltage fault;;1.0;0.0;;9
+622;4;2407;U16;;Total over voltage fault;;1.0;0.0;;9
+623;4;2408;U16;;Total under voltage fault;;1.0;0.0;;9
+624;4;2409;U16;;Cell voltage difference fault;;1.0;0.0;;9
+625;4;2410;U16;;Cell over temperature fault;;1.0;0.0;;9
+626;4;2411;U16;;Cell low temperature fault;;1.0;0.0;;9
+627;4;2412;U16;;Cell temperature difference fault;;1.0;0.0;;9
+628;4;2413;U16;;Insulation leakage fault;;1.0;0.0;;9
+629;4;2414;U16;;CMU-BMU comm fault;;1.0;0.0;;9
+630;4;2415;U16;;Voltage sample fault;;1.0;0.0;;9
+631;4;2416;U16;;Temperature sample fault;;1.0;0.0;;9
+632;4;2417;U16;;Current sample fault;;1.0;0.0;;9
+633;4;2418;U16;;Heartbeat fault;;1.0;0.0;;9
+634;4;2419;U16;;Software version fault;;1.0;0.0;;9
+635;4;2420;U16;;Charge over current fault;;1.0;0.0;;9
+636;4;2421;U16;;Discharge over current fault;;1.0;0.0;;9
+637;4;2422;U16;;Short circuit fault;;1.0;0.0;;9
+638;4;2423;U16;;Pack over voltage fault;;1.0;0.0;;9
+639;4;2424;U16;;Pack under voltage fault;;1.0;0.0;;9
+640;4;2425;U16;;Pack voltage difference fault;;1.0;0.0;;9
+641;4;2426;U16;;Reserved;;1.0;0.0;;0
+642;4;2427;U16;;Fuse fault;;1.0;0.0;;9
+643;4;2428;U16;;Total voltage difference fault;;1.0;0.0;;9
+644;4;2429;U16;;Polarity reversal fault;;1.0;0.0;;9
+645;4;2430;U16;;Reserved;;1.0;0.0;;0
+646;4;2431;U16;;CMU-ARM comm fault;;1.0;0.0;;9
+647;4;2432;U16;;Temperature rise fault;;1.0;0.0;;9
+648;4;2433;U16;;Reserved;;1.0;0.0;;0
+649;4;2434;U16;;Reserved;;1.0;0.0;;0
+650;4;2435;U16;;Temperature sensor abnormal fault;;1.0;0.0;;9
+651;4;2436;U16;;Reserved;;1.0;0.0;;0
+652;4;29001;U16;;On-grid constant current;;1.0;0.0;;4
+653;4;29002;U16;;On-grid constant voltage;;1.0;0.0;;4
+654;4;29003;U16;;On-grid constant power(AC);P_DC;1.0;0.0;;4
+655;4;29004;U16;;On-grid constant power(DC);;1.0;0.0;;4
+656;4;29005;U16;;Reserved;;1.0;0.0;;0
+657;4;29006;U16;;Reserved;;1.0;0.0;;0
+658;4;29007;U16;;Reserved;;1.0;0.0;;0
+659;4;29008;U16;;Reserved;;1.0;0.0;;0
+660;4;29009;U16;;Reserved;;1.0;0.0;;0
+661;4;29010;U16;;On-grid mode;;1.0;0.0;;4
+662;4;29011;U16;;Off-grid mode;;1.0;0.0;;4
+663;4;29012;U16;;VSG mode;;1.0;0.0;;4
+664;4;29013;U16;;Non-working status;;1.0;0.0;;9
+665;4;29014;U16;;Reserved;;1.0;0.0;;0
+666;4;29015;U16;;Reserved;;1.0;0.0;;0
+667;4;29016;U16;;Reserved;;1.0;0.0;;0
+668;4;29017;U16;;Initial standby;;1.0;0.0;;4
+669;4;29018;U16;;Starting;;1.0;0.0;;4
+670;4;29019;U16;;Alarm running;;1.0;0.0;;9
+671;4;29020;U16;;Derated running;;1.0;0.0;;4
+672;4;29021;U16;;Standby;;1.0;0.0;;4
+673;4;29022;U16;;Key stop;;1.0;0.0;;4
+674;4;29023;U16;;Fault shutdown;;1.0;0.0;;9
+675;4;29024;U16;;Emergency shutdown;;1.0;0.0;;4
+676;4;29025;U16;;On-grid running;;1.0;0.0;;4
+677;4;29026;U16;;Off-grid running;;1.0;0.0;;4
+678;4;29027;U16;;Running;;1.0;0.0;;4
+679;4;29028;U16;;Reserved;;1.0;0.0;;0
+680;4;29029;U16;;Reserved;;1.0;0.0;;0
+681;4;29030;U16;;Reserved;;1.0;0.0;;0
+682;4;29031;U16;;Reserved;;1.0;0.0;;0
+683;4;29032;U16;;Reserved;;1.0;0.0;;0
+684;4;29033;U16;;Reserved;;1.0;0.0;;0
+685;4;29034;U16;;Reserved;;1.0;0.0;;0
+686;4;29035;U16;;Reserved;;1.0;0.0;;0
+687;4;29036;U16;;Reserved;;1.0;0.0;;0
+688;4;29037;U16;;Reserved;;1.0;0.0;;0
+689;4;29038;U16;;Reserved;;1.0;0.0;;0
+690;4;29039;U16;;Reserved;;1.0;0.0;;0
+691;4;29040;U16;;Reserved;;1.0;0.0;;0
+692;4;29041;U16;;Reserved;;1.0;0.0;;0
+693;4;29042;U16;;Reserved;;1.0;0.0;;0
+694;4;29043;U16;;Reserved;;1.0;0.0;;0
+695;4;29044;U16;;Reserved;;1.0;0.0;;0
+696;4;29045;U16;;Reserved;;1.0;0.0;;0
+697;4;29046;U16;;Reserved;;1.0;0.0;;0
+698;4;29047;U16;;Reserved;;1.0;0.0;;0
+699;4;29048;U16;;Reserved;;1.0;0.0;;0
+700;4;29049;U16;;Bus average undervoltage;U_DC;1.0;0.0;;4
+701;4;29050;U16;;Bus voltage high;;1.0;0.0;;4
+702;4;29051;U16;;Grid undervoltage;;1.0;0.0;;4
+703;4;29052;U16;;Grid overvoltage;;1.0;0.0;;4
+704;4;29053;U16;;AC underfrequency;FREQ;1.0;0.0;;4
+705;4;29054;U16;;AC overfrequency;;1.0;0.0;;4
+706;4;29055;U16;;Contactor fault;;1.0;0.0;;9
+707;4;29056;U16;;Grid power outage;;1.0;0.0;;4
+708;4;29057;U16;;10 Minutes grid overvoltage;;1.0;0.0;;4
+709;4;29058;U16;;Module Temperature Too High;;1.0;0.0;;4
+710;4;29059;U16;;Leakage current over;;1.0;0.0;;4
+711;4;29060;U16;;Output overload;;1.0;0.0;;4
+712;4;29061;U16;;Fan fault;;1.0;0.0;;9
+713;4;29062;U16;;DC overcurrent;I_DC;1.0;0.0;;4
+714;4;29063;U16;;AC instantaneous overcurrent;;1.0;0.0;;4
+715;4;29064;U16;;Ambient temperature abnormal;;1.0;0.0;;4
+716;4;29065;U16;;Hardware fault;;1.0;0.0;;9
+717;4;29066;U16;;Overvoltage protection;;1.0;0.0;;4
+718;4;29067;U16;;Low voltage protection;;1.0;0.0;;4
+719;4;29068;U16;;Reserved;;1.0;0.0;;0
+720;4;29069;U16;;Reserved;;1.0;0.0;;0
+721;4;29070;U16;;Reserved;;1.0;0.0;;0
+722;4;29071;U16;;Reserved;;1.0;0.0;;0
+723;4;29072;U16;;Reserved;;1.0;0.0;;0
+724;4;29073;U16;;Reserved;;1.0;0.0;;0
+725;4;29074;U16;;Reserved;;1.0;0.0;;0
+726;4;29075;U16;;Reserved;;1.0;0.0;;0
+727;4;29076;U16;;Reserved;;1.0;0.0;;0
+728;4;29077;U16;;Reserved;;1.0;0.0;;0
+729;4;29078;U16;;Reserved;;1.0;0.0;;0
+730;4;29079;U16;;Reserved;;1.0;0.0;;0
+731;4;29080;U16;;Reserved;;1.0;0.0;;0
+732;4;29081;U16;;System low insulation impedance;;1.0;0.0;;4
+733;4;29082;U16;;AC SPD fault;;1.0;0.0;;9
+734;4;29083;U16;;Analog offset abnormal;;1.0;0.0;;4
+735;4;29084;U16;;Abnormal battery connection;;1.0;0.0;;4
+736;4;29085;U16;;AC current imbalance;I_AC;1.0;0.0;;4
+737;4;29086;U16;;DC contactor fault;;1.0;0.0;;9
+738;4;29087;U16;;DC SPD fault;;1.0;0.0;;9
+739;4;29088;U16;;DC soft start fault;;1.0;0.0;;9
+740;4;29089;U16;;DC component over;;1.0;0.0;;4
+741;4;29090;U16;;Address code duplication fault;;1.0;0.0;;9
+742;4;29091;U16;;Parallel communication fault;;1.0;0.0;;9
+743;4;29092;U16;;AC voltage imbalance fault;;1.0;0.0;;9
+744;4;29093;U16;;BMS communication abnormal;;1.0;0.0;;4
+745;4;29094;U16;;BMS and battery fault 1;;1.0;0.0;;9
+746;4;29095;U16;;Inverter open loop self-check fault;;1.0;0.0;;9
+747;4;29096;U16;;Bus voltage imbalance;;1.0;0.0;;4
+748;4;29097;U16;;Carrier synchronization fault;;1.0;0.0;;9
+749;4;29098;U16;;BMS and battery fault 2;;1.0;0.0;;9
+750;4;29099;U16;;N-wire current sampling channel failure;;1.0;0.0;;9
+751;4;29100;U16;;AC incoming line phase sequence error;;1.0;0.0;;9
+752;4;29101;U16;;Battery current sampling abnormal;;1.0;0.0;;4
+753;4;29102;U16;;AFCI abnormal;;1.0;0.0;;4
+754;4;29103;U16;;AFCI fault;;1.0;0.0;;9
+755;4;29104;U16;;Junction box temperature fault;;1.0;0.0;;9
+756;4;29105;U16;;Drain valve fault;RAIN;1.0;0.0;;9
+757;4;29106;U16;;Mismatched module version;;1.0;0.0;;4
+758;4;29107;U16;;Communication fault between ARM and DSP;;1.0;0.0;;9
+759;4;29108;U16;;AC voltage harmonic abnormal;;1.0;0.0;;4
+760;4;29109;U16;;Reserved;;1.0;0.0;;0
+761;4;29110;U16;;Reserved;;1.0;0.0;;0
+762;4;29111;U16;;Reserved;;1.0;0.0;;0
+763;4;29112;U16;;Reserved;;1.0;0.0;;0
+764;4;29113;U16;;Low insulation impedance alarm;;1.0;0.0;;9
+765;4;29114;U16;;DC contactor abnormal;;1.0;0.0;;4
+766;4;29115;U16;;GFRT running;;1.0;0.0;;4
+767;4;29116;U16;;Charging conditions are not met;;1.0;0.0;;4
+768;4;29117;U16;;Discharging conditions are not met;;1.0;0.0;;4
+769;4;29118;U16;;BMS internal alarm;;1.0;0.0;;9
+770;4;29119;U16;;Fan alarm;;1.0;0.0;;9
+771;4;29120;U16;;Voltage detection before on-grid connection is not met;;1.0;0.0;;4
+772;4;29121;U16;;Ambient temperature sensor open alarm;;1.0;0.0;;9
+773;4;29122;U16;;Reserved;;1.0;0.0;;0
+774;4;29123;U16;;Reserved;;1.0;0.0;;0
+775;4;29124;U16;;Reserved;;1.0;0.0;;0
+776;4;29125;U16;;Reserved;;1.0;0.0;;0
+777;4;29126;U16;;Reserved;;1.0;0.0;;0
+778;4;29127;U16;;Reserved;;1.0;0.0;;0
+779;4;29128;U16;;Reserved;;1.0;0.0;;0
+780;4;29129;U16;;Reserved;;1.0;0.0;;0
+781;4;29130;U16;;Reserved;;1.0;0.0;;0
+782;4;29131;U16;;Reserved;;1.0;0.0;;0
+783;4;29132;U16;;Reserved;;1.0;0.0;;0
+784;4;29133;U16;;Reserved;;1.0;0.0;;0
+785;4;29134;U16;;Reserved;;1.0;0.0;;0
+786;4;29135;U16;;Reserved;;1.0;0.0;;0
+787;4;29136;U16;;Reserved;;1.0;0.0;;0
+788;4;29137;U16;;Reserved;;1.0;0.0;;0
+789;4;29138;U16;;Reserved;;1.0;0.0;;0
+790;4;29139;U16;;Reserved;;1.0;0.0;;0
+791;4;29140;U16;;Reserved;;1.0;0.0;;0
+792;4;29141;U16;;Reserved;;1.0;0.0;;0
+793;4;29142;U16;;Reserved;;1.0;0.0;;0
+794;4;29143;U16;;Reserved;;1.0;0.0;;0
+795;4;29144;U16;;Reserved;;1.0;0.0;;0
+796;4;29145;U16;;Reserved;;1.0;0.0;;0
+797;4;29146;U16;;Branch 1 DC switch status;;1.0;0.0;;9
+798;4;29147;U16;;Branch 2 DC switch status;;1.0;0.0;;9
+799;4;29148;U16;;Reserved;;1.0;0.0;;0
+800;4;29149;U16;;Reserved;;1.0;0.0;;0
+801;4;29150;U16;;Reserved;;1.0;0.0;;0
+802;4;29151;U16;;Reserved;;1.0;0.0;;0
+803;4;29152;U16;;Reserved;;1.0;0.0;;0
+804;4;29153;U16;;Reserved;;1.0;0.0;;0
+805;4;29154;U16;;Reserved;;1.0;0.0;;0
+806;4;29155;U16;;Reserved;;1.0;0.0;;0
+807;4;29156;U16;;Reserved;;1.0;0.0;;0
+808;4;29157;U16;;Reserved;;1.0;0.0;;0
+809;4;29158;U16;;Reserved;;1.0;0.0;;0
+810;4;29159;U16;;Reserved;;1.0;0.0;;0
+811;4;29160;U16;;Reserved;;1.0;0.0;;0
+812;4;29161;U16;;Reserved;;1.0;0.0;;0
+813;4;29162;U16;;Reserved;;1.0;0.0;;0
+814;4;29163;U16;;Reserved;;1.0;0.0;;0
+815;4;29164;U16;;Reserved;;1.0;0.0;;0
+816;4;29165;U16;;Reserved;;1.0;0.0;;0
+817;4;29166;U16;;Reserved;;1.0;0.0;;0
+818;4;29167;U16;;Reserved;;1.0;0.0;;0
+819;4;29168;U16;;Reserved;;1.0;0.0;;0
+820;4;29169;U16;;Reserved;;1.0;0.0;;0
+821;4;29170;U16;;Reserved;;1.0;0.0;;0
+822;4;29171;U16;;Reserved;;1.0;0.0;;0
+823;4;29172;U16;;Reserved;;1.0;0.0;;0
+824;4;29173;U16;;Reserved;;1.0;0.0;;0
+825;4;29174;U16;;Reserved;;1.0;0.0;;0
+826;4;29175;U16;;Reserved;;1.0;0.0;;0
+827;4;29176;U16;;Reserved;;1.0;0.0;;0
+828;4;29177;U16;;PCS-LC communication status;;1.0;0.0;;9
+829;4;33301;U16;;Working mode;;1.0;0.0;/;4
+830;4;33302;U16;;Working status;;1.0;0.0;/;9
+831;4;33303;U16;;System available charge energy;;0;0.0;kWh;4
+832;4;33304;U16;;System available discharge energy;;0;0.0;kWh;4
+833;4;33305;U16;;System available charging power;;1;0.0;kW;4
+834;4;33306;U16;;System available discharging power;;1;0.0;kW;4
+835;4;33307;U16;;Active power;P_AC;0;0.0;kW;4
+836;4;33308;U16;;Reactive power;Q_AC;0;0.0;kvar;4
+837;4;33309;U16;;DC power;;0;0.0;kW;4
+838;4;33310;U16;;Total charge energy;E_TOT;1;0.0;kWh;4
+839;4;33311;U16;;Total discharge energy;;1;0.0;kWh;4
+840;4;33312;U16;;Daily charge energy;E_DAY;0;0.0;kWh;4
+841;4;33313;U16;;Daily discharge energy;;0;0.0;kWh;4
+842;4;33314;U16;;Energy compensation request;;1.0;0.0;/;4
+843;4;33315;U16;;Power reduction request;;1.0;0.0;/;4
+844;4;33316;U16;;Reserved;;1.0;0.0;None;0
+845;4;33317;U16;;Reserved;;1.0;0.0;None;0
+846;4;33318;U16;;Service SOC;;0;0.0;%;4
+847;4;33319;U16;;System SOC;;0;0.0;%;4
+848;4;33320;U16;;Max SOC;;0;0.0;%;4
+849;4;33321;U16;;Min SOC;;0;0.0;%;4
+850;4;33322;U16;;System SOH;;1;0.0;%;4
+851;4;33323;U16;;Max SOH;;1;0.0;%;4
+852;4;33324;U16;;Min SOH;;1;0.0;%;4
+853;4;33325;U16;;Rated active power;P_RATED;0;0.0;kW;4
+854;4;33326;U16;;System rated capacity;;0;0.0;kWh;4
+855;4;33327;U16;;System max active power;;1;0.0;kW;4
+856;4;33328;U16;;System max reactive power;;1;0.0;kvar;4
+857;4;33329;U16;;Reserved;;1.0;0.0;None;0
+858;4;33330;U16;;System charging/discharging status;;1.0;0.0;/;9
+859;4;33331;U16;;Reserved;;1.0;0.0;None;0
+860;4;33332;U16;;Input dry node fault status1;;1.0;0.0;/;9
+861;4;33333;U16;;Input dry node fault status2;;1.0;0.0;/;9
+862;4;33334;U16;;Input dry node alarm status1;;1.0;0.0;/;9
+863;4;33335;U16;;Input dry node alarm status2;;1.0;0.0;/;9
+864;4;33336;U16;;Input dry node status1;;1.0;0.0;/;9
+865;4;33337;U16;;Input dry node status2;;1.0;0.0;/;9
+866;4;33338;U16;;Power factor;PF;0;0.0;/;4
+867;4;33339;U16;;Reactive power feedback;;0;0.0;kvar;4
+868;4;33340;U16;;Active power feedback;;0;0.0;kW;4
+869;4;33341;U16;;Debugging mode;;1.0;0.0;/;4
+870;4;33342;U16;;Overload rate status;;1.0;0.0;/;9
+871;4;33343;U16;;Number of LCU;;1.0;0.0;/;4
+872;4;33344;U16;;Reserved;;1.0;0.0;None;0
+873;4;33345;U16;;Reserved;;1.0;0.0;None;0
+874;4;33346;U16;;Number of LED;;1.0;0.0;/;4
+875;4;33347;U16;;Reserved;;1.0;0.0;None;0
+876;4;33348;U16;;Local/Upper computer settings;;1.0;0.0;/;4
+877;4;33349;U16;;PCS number;;1.0;0.0;PCS;4
+878;4;33350;U16;;Reserved;;1.0;0.0;None;0
+879;4;33351;U16;;Reserved;;1.0;0.0;None;0
+880;4;33352;U16;;Reserved;;1.0;0.0;None;0
+881;4;33353;U16;;Reserved;;1.0;0.0;None;0
+882;4;33354;U16;;Reserved;;1.0;0.0;None;0
+883;4;33355;U16;;Reserved;;1.0;0.0;None;0
+884;4;33356;U16;;Reserved;;0;0.0;%;0
+885;4;33357;U16;;Master slave status;;1.0;0.0;None;9
+886;4;33358;U16;;Black start enable;;1.0;0.0;None;4
+887;4;33359;U16;;Black start flag;;1;0.0;None;4
+888;4;33360;U16;;Black start flag setpoint feedback;;1;0.0;None;4
+889;4;33361;U16;;Service available charging power;;1;0.0;kW;4
+890;4;33362;U16;;Service available discharging power;;1;0.0;kW;4
+891;4;33363;U16;;One button start is supported;;1;0.0;/;4
+892;4;33364;U16;;Security version1;;1.0;0.0;/;4
+893;4;33365;U16;;Security version2;;1.0;0.0;/;4
+894;4;33366;U16;;Security version3;;1.0;0.0;/;4
+895;4;33367;U16;;Security version4;;1.0;0.0;/;4
+896;4;33368;U16;;Security version5;;1.0;0.0;/;4
+897;4;33369;U16;;Security version6;;1.0;0.0;/;4
+898;4;33370;U16;;Security version7;;1.0;0.0;/;4
+899;4;33371;U16;;Security version8;;1.0;0.0;/;4
+900;4;33372;U16;;Security version9;;1.0;0.0;/;4
+901;4;33373;U16;;Security version10;;1.0;0.0;/;4
+902;4;33374;U16;;Security version11;;1.0;0.0;/;4
+903;4;33375;U16;;Security version12;;1.0;0.0;/;4
+904;4;33376;U16;;Network security service on/off feedback;;1.0;0.0;/;4
+905;4;33500;U16;;Reserved;;1.0;0.0;None;0
+906;4;33565;U16;;System fire status;;1.0;0.0;/;9
+907;4;33566;U16;;Temperature 1;;1;0.0;℃;4
+908;4;33567;U16;;Temperature 2;;1;0.0;℃;4
+909;4;33568;U16;;Carbon monoxide concentration;;1;0.0;ppm;4
+910;4;33569;U16;;Hydrogen concentration;;1;0.0;ppm;4
+911;4;33570;U16;;VOC concentration;;1;0.0;‰;4
+912;4;33571;U16;;Smoke concentration;;1;0.0;mg/m³;4
+913;4;33572;U16;;Number of composite detector;;1;0.0;/;4
+914;4;33573;U16;;Fault code;;1;0.0;/;9
+915;4;33574;U16;;Composite detector online flag;;1.0;0.0;None;4
+916;4;33575;U16;;Shielding status;;1;0.0;/;9
+917;4;33576;U16;;Reserved;;1.0;0.0;None;0
+918;4;33577;U16;;Reserved;;1.0;0.0;None;0
+919;4;33578;U16;;Reserved;;1.0;0.0;None;0
+920;4;33579;U16;;Reserved;;1.0;0.0;None;0
+921;4;33580;U16;;Control mode;;1;0.0;/;4
+922;4;33581;U16;;Pump running status;;1;0.0;%;9
+923;4;33582;U16;;Compressor status;;1;0.0;/;9
+924;4;33583;U16;;Reserved;;1.0;0.0;/;0
+925;4;33584;U16;;Heater running status;;1;0.0;/;9
+926;4;33585;U16;;Fan status;;1;0.0;/;9
+927;4;33586;U16;;Outlet water temperature;;0;0.0;℃;4
+928;4;33587;U16;;Inlet water temperature;;0;0.0;℃;4
+929;4;33588;U16;;Outlet water pressure;;0;0.0;Bar;4
+930;4;33589;U16;;Reserved;;1.0;0.0;/;0
+931;4;33590;U16;;Ambient temperature;;0;0.0;℃;4
+932;4;33591;U16;;Other alarm code;;1.0;0.0;/;9
+933;4;33592;U16;;None;;1.0;0.0;None;4
+934;4;33593;U16;;None;;1.0;0.0;None;4
+935;4;33594;U16;;None;;1.0;0.0;None;4
+936;4;33595;U16;;None;;1.0;0.0;None;4
+937;4;33596;U16;;None;;1.0;0.0;None;4
+938;4;33597;U16;;None;;1.0;0.0;None;4
+939;4;33598;U16;;LCU No.;;1.0;0.0;/;4
+940;4;33599;U16;;None;;1.0;0.0;None;4
+941;4;33600;U16;;None;;1.0;0.0;None;4
+942;4;33601;U16;;None;;1.0;0.0;None;4
+943;4;33602;U16;;None;;1.0;0.0;None;4
+944;4;33603;U16;;None;;1.0;0.0;None;4
+945;4;33604;U16;;None;;1.0;0.0;None;4
+946;4;33605;U16;;None;;1.0;0.0;None;4
+947;4;33606;U16;;LCU Online flag;;1.0;0.0;/;4
+948;4;33607;U16;;LCU control status;;1.0;0.0;/;9
+949;4;33608;U16;;Reserved;;1.0;0.0;/;0
+950;4;33609;U16;;Reserved;;1.0;0.0;/;0
+951;4;33610;U16;;Combustible gas detecting device number;;1;0.0;/;4
+952;4;33611;U16;;Combustible gas concentration;;1;0.0;%;4
+953;4;33612;U16;;Working status;;1.0;0.0;/;9
+954;4;33613;U16;;GAS Online flag;;1;0.0;/;4
+955;4;33614;U16;;Reserved;;1.0;0.0;None;0
+956;4;33615;U16;;Reserved;;1.0;0.0;None;0
+957;4;33616;U16;;Reserved;;1.0;0.0;None;0
+958;4;33617;U16;;Reserved;;1.0;0.0;None;0
+959;4;33618;U16;;Reserved;;1.0;0.0;None;0
+960;4;33619;U16;;Reserved;;1.0;0.0;None;0
+961;4;33620;U16;;Reserved;;1.0;0.0;None;0
+962;4;33631;U16;;Accident ventilation system number;;1;0.0;/;4
+963;4;33632;U16;;Working mode;;1.0;0.0;/;4
+964;4;33633;U16;;Exhaust louver status;;1.0;0.0;/;9
+965;4;33634;U16;;Entry-winding status;;1.0;0.0;/;9
+966;4;33635;U16;;Fan status;;1;0.0;mA;9
+967;4;33636;U16;;Fan current;;1.0;0.0;/;4
+968;4;33637;U16;;Comm status;;1;0.0;/;9
+969;4;33638;U16;;Self-check number;;1.0;0.0;/;4
+970;4;33639;U16;;Self-checking;;1.0;0.0;/;4
+971;4;33640;U16;;Software version;;1.0;0.0;/;4
+972;4;33668;U16;;Dehumidifier number;;1;0.0;/;4
+973;4;33669;U16;;Dehumidification status;;1.0;0.0;/;9
+974;4;33670;U16;;Temperature;TEMP;1.0;0.0;℃;4
+975;4;33671;U16;;Humidity;;1.0;0.0;%rh;4
+976;4;33672;U16;;Fan speed;;1.0;0.0;RPM;4
+977;4;33673;U16;;Comm status;;1.0;0.0;/;9
+978;4;33674;U16;;Alarm status;;1.0;0.0;/;9
+979;4;33675;U16;;Running Status;;1.0;0.0;/;9
+980;4;33676;U16;;Parts running Status;;1.0;0.0;/;9
+981;4;33677;U16;;Device  type;MODEL;1.0;0.0;/;4
+982;4;33678;U16;;Dew point temperature;;1.0;0.0;℃;4
+983;4;33679;U16;;Working status;;1.0;0.0;/;9
+984;4;33680;U16;;Device status;;1.0;0.0;/;9
+985;4;33681;U16;;Other alarm code;;1.0;0.0;/;9
+986;4;33682;U16;;Reserved;;1.0;0.0;/;0
+987;4;33683;U16;;Reserved;;1.0;0.0;/;0
+988;4;33684;U16;;Reserved;;1.0;0.0;/;0
+989;4;33821;U16;;Service voltage;;0;0.0;V;4
+990;4;33822;U16;;Service current;;0;0.0;A;4
+991;4;33823;U16;;System SOC;;0;0.0;%;4
+992;4;33824;U16;;System SOH;;1;0.0;%;4
+993;4;33825;U16;;Service SOC;;0;0.0;%;4
+994;4;33826;U16;;Service Rack number;;1.0;0.0;PCS;4
+995;4;33827;U16;;Total number of Racks;;1.0;0.0;PCS;4
+996;4;33828;U16;;Working status;;1.0;0.0;/;9
+997;4;33829;U16;;Reserved;;1.0;0.0;None;0
+998;4;33830;U16;;Reserved;;1.0;0.0;None;0
+999;4;33831;U16;;Max charge current;;0;0.0;A;4
+1000;4;33832;U16;;Max discharge current;;0;0.0;A;4
+1001;4;33833;U16;;Max cell voltage;;0;0.0;mV;4
+1002;4;33834;U16;;Min cell voltage;;0;0.0;mV;4
+1003;4;33835;U16;;Max cell temperature;;0;0.0;℃;4
+1004;4;33836;U16;;Min cell temperature;;0;0.0;℃;4
+1005;4;33837;U16;;Valid SOC difference;;0;0.0;%;4
+1006;4;33838;U16;;Reserved;;1.0;0.0;None;0
+1007;4;33839;U16;;Reserved;;1.0;0.0;None;0
+1008;4;33840;U16;;Max cell voltage position(#Rack);;1.0;0.0;/;4
+1009;4;33841;U16;;Max cell voltage position (#BMU);;1.0;0.0;/;4
+1010;4;33842;U16;;Max cell voltage position (#Cell);;1.0;0.0;/;4
+1011;4;33843;U16;;Min cell voltage position(#Rack);;1.0;0.0;/;4
+1012;4;33844;U16;;Min cell voltage position (#BMU);;1.0;0.0;/;4
+1013;4;33845;U16;;Min cell voltage position (#Cell);;1.0;0.0;/;4
+1014;4;33846;U16;;Max cell temperature position(#Rack);;1.0;0.0;/;4
+1015;4;33847;U16;;Max cell temperature position (#BMU);;1.0;0.0;/;4
+1016;4;33848;U16;;Max cell temperature position (#Cell);;1.0;0.0;/;4
+1017;4;33849;U16;;Min cell temperature position(#Rack);;1.0;0.0;/;4
+1018;4;33850;U16;;Min cell temperature position (#BMU);;1.0;0.0;/;4
+1019;4;33851;U16;;Min cell temperature position (#Cell);;1.0;0.0;/;4
+1020;4;33852;U16;;Max Rack voltage;;1;0.0;V;4
+1021;4;33853;U16;;Min Rack voltage;;1;0.0;V;4
+1022;4;33854;U16;;Max Rack voltage position;;1.0;0.0;/;4
+1023;4;33855;U16;;Min Rack voltage position;;1.0;0.0;/;4
+1024;4;33856;U16;;Reserved;;1.0;0.0;None;0
+1025;4;33857;U16;;Reserved;;1.0;0.0;None;0
+1026;4;33858;U16;;Charge and discharge cycles;;0;0.0;/;4
+1027;4;33859;U16;;Total charge energy;;0;0.0;MWh;4
+1028;4;33860;U16;;Total discharge energy;;0;0.0;MWh;4
+1029;4;33861;U16;;Total charge capacity;;0;0.0;kAh;4
+1030;4;33862;U16;;Total discharge capacity;;0;0.0;kAh;4
+1031;4;33863;U16;;System charging/discharging status;;1.0;0.0;/;9
+1032;4;33864;U16;;System SOE;;0;0.0;%;4
+1033;4;33865;U16;;Second high cell temperature;;0;0.0;℃;4
+1034;4;33866;U16;;Second low cell temperature;;0;0.0;℃;4
+1035;4;33867;U16;;Second high cell temperature position (#Rack);;1;0.0;/;4
+1036;4;33868;U16;;Second high cell temperature position (#BMU);;1;0.0;/;4
+1037;4;33869;U16;;Second high cell temperature position (#Cell);;1.0;0.0;None;4
+1038;4;33870;U16;;Second low cell temperature position (#Rack);;1;0.0;/;4
+1039;4;33871;U16;;Second low cell temperature position (#BMU);;1;0.0;/;4
+1040;4;33872;U16;;Second low cell temperature position (#Cell);;1.0;0.0;None;4
+1041;4;33873;U16;;Charging cut off voltage(LSB);;0;0.0;V;4
+1042;4;33874;U16;;Charging cut off voltage(MSB);;1.0;0.0;None;4
+1043;4;33875;U16;;Discharging cut off voltage(LSB);;0;0.0;V;4
+1044;4;33876;U16;;Discharging cut off voltage(MSB);;1.0;0.0;None;4
+1045;4;33877;U16;;Cell voltage difference;;0;0.0;mV;4
+1046;4;33878;U16;;Cell temperature difference;;0;0.0;℃;4
+1047;4;34541;U16;;Capacity;;0;0.0;Ah;4
+1048;4;34542;U16;;Voltage;;0;0.0;V;4
+1049;4;34543;U16;;Current;;0;0.0;A;4
+1050;4;34544;U16;;SOC;SOC;0;0.0;%;4
+1051;4;34545;U16;;SOH;SOH;0;0.0;%;4
+1052;4;34546;U16;;SOE;;0;0.0;%;4
+1053;4;34547;U16;;Service voltage;;0;0.0;V;4
+1054;4;34548;U16;;Working status;;1.0;0.0;/;9
+1055;4;34549;U16;;Max cell voltage;;0;0.0;mV;4
+1056;4;34550;U16;;Max cell voltage position(#BMU);;1.0;0.0;/;4
+1057;4;34551;U16;;Max cell voltage position(#Cell);;1.0;0.0;/;4
+1058;4;34552;U16;;Min cell voltage;;0;0.0;mV;4
+1059;4;34553;U16;;Min cell voltage position(#BMU);;1.0;0.0;/;4
+1060;4;34554;U16;;Min cell voltage position(#Cell);;1.0;0.0;/;4
+1061;4;34555;U16;;Max cell temperature;;0;0.0;℃;4
+1062;4;34556;U16;;Max cell temperature position(#BMU);;1.0;0.0;/;4
+1063;4;34557;U16;;Max cell temperature position(#Cell);;1.0;0.0;/;4
+1064;4;34558;U16;;Min cell temperature;;0;0.0;℃;4
+1065;4;34559;U16;;Min cell temperature position(#BMU);;1.0;0.0;/;4
+1066;4;34560;U16;;Min cell temperature position(#Cell);;1.0;0.0;/;4
+1067;4;34561;U16;;Average voltage;;0;0.0;mV;4
+1068;4;34562;U16;;Average temperature;;0;0.0;℃;4
+1069;4;34563;U16;;Positive contactor status;;1.0;0.0;/;9
+1070;4;34564;U16;;Reserved;;1.0;0.0;None;0
+1071;4;34565;U16;;Max charge current;;0;0.0;A;4
+1072;4;34566;U16;;Max discharge current;;0;0.0;A;4
+1073;4;34567;U16;;BMU fault position(#Pack);;1.0;0.0;/;9
+1074;4;34568;U16;;BMU fault position(#BMU);;1.0;0.0;/;9
+1075;4;34569;U16;;Voltage sample fault position(#BMU);;1.0;0.0;/;9
+1076;4;34570;U16;;Voltage sample fault position(#Cell);;1.0;0.0;/;9
+1077;4;34571;U16;;Temperature sample fault position(#BMU);;1.0;0.0;/;9
+1078;4;34572;U16;;Temperature sample fault position(#Cell);;1.0;0.0;/;9
+1079;4;34573;U16;;Total number of cells;;1.0;0.0;PCS;4
+1080;4;34574;U16;;Number of cell temperature;;1.0;0.0;PCS;4
+1081;4;34575;U16;;Charge and discharge cycles;;0;0.0;/;4
+1082;4;34576;U16;;Total charge energy;;1;0.0;Wh;4
+1083;4;34577;U16;;Total discharge energy;;1;0.0;Wh;4
+1084;4;34578;U16;;Total charge capacity;;0;0.0;Ah;4
+1085;4;34579;U16;;Total discharge capacity;;0;0.0;Ah;4
+1086;4;34580;U16;;Number of  onboard temperature;;1.0;0.0;PCS;4
+1087;4;34581;U16;;Number of BMUs;;1.0;0.0;PCS;4
+1088;4;34582;U16;;1#Number of cell voltage;;1.0;0.0;PCS;4
+1089;4;34583;U16;;1#Number of cell temperature;;1.0;0.0;PCS;4
+1090;4;34584;U16;;1#Number of  onboard temperature;;1.0;0.0;PCS;4
+1091;4;34609;U16;;20#Number of cell voltage;;1.0;0.0;PCS;4
+1092;4;34610;U16;;20#Number of cell temperature;;1.0;0.0;PCS;4
+1093;4;34611;U16;;20#Number of  onboard temperature;;1.0;0.0;PCS;4
+1094;4;34612;U16;;CMU Version;;1.0;0.0;/;4
+1095;4;34613;U16;;None;;1.0;0.0;None;4
+1096;4;34614;U16;;None;;1.0;0.0;None;4
+1097;4;34615;U16;;None;;1.0;0.0;None;4
+1098;4;34616;U16;;None;;1.0;0.0;None;4
+1099;4;34617;U16;;None;;1.0;0.0;None;4
+1100;4;34618;U16;;None;;1.0;0.0;None;4
+1101;4;34619;U16;;None;;1.0;0.0;None;4
+1102;4;34620;U16;;None;;1.0;0.0;None;4
+1103;4;34621;U16;;None;;1.0;0.0;None;4
+1104;4;34622;U16;;None;;1.0;0.0;None;4
+1105;4;34623;U16;;None;;1.0;0.0;None;4
+1106;4;34624;U16;;None;;1.0;0.0;None;4
+1107;4;34625;U16;;None;;1.0;0.0;None;4
+1108;4;34626;U16;;BATP Version;;1.0;0.0;/;4
+1109;4;34627;U16;;CMU Online flag;;1;0.0;/;4
+1110;4;34628;U16;;CMU Can be upgraded flag;;1;0.0;/;4
+1111;4;34629;U16;;Power loss protection flag;;1;0.0;/;4
+1112;4;34630;U16;;Second high cell temperature;;0;0.0;℃;4
+1113;4;34631;U16;;Second high cell temperature position(#BMU);;1.0;0.0;/;4
+1114;4;34632;U16;;Second high cell temperature position(#Cell);;1.0;0.0;/;4
+1115;4;34633;U16;;Second low cell temperature;;0;0.0;℃;4
+1116;4;34634;U16;;Second low cell temperature position(#BMU);;1.0;0.0;/;4
+1117;4;34635;U16;;Second low cell temperature position(#Cell);;1.0;0.0;/;4
+1118;4;34636;U16;;Balance status;;1;0.0;/;9
+1119;4;34637;U16;;Single pack cell number;;1;0.0;/;4
+1120;4;34641;U16;;1#Cell voltage;;0;0.0;mV;4
+1121;4;34642;U16;;2#Cell voltage;;0;0.0;mV;4
+1122;4;35139;U16;;499#Cell voltage;;0;0.0;mV;4
+1123;4;35140;U16;;500#Cell voltage;;0;0.0;mV;4
+1124;4;35141;U16;;1#Cell temperature;;0;0.0;℃;4
+1125;4;35142;U16;;2#Cell temperature;;0;0.0;℃;4
+1126;4;35639;U16;;499#Cell temperature;;0;0.0;℃;4
+1127;4;35640;U16;;500#Cell temperature;;0;0.0;℃;4
+1128;4;35641;U16;;1#Onboard temperature;;0;0.0;℃;4
+1129;4;35642;U16;;2#Onboard temperature;;0;0.0;℃;4
+1130;4;35739;U16;;99#Onboard temperature;;0;0.0;℃;4
+1131;4;35740;U16;;100#Onboard temperature;;0;0.0;℃;4
+1132;4;40001;U16;;Input node 1 name;;1.0;0.0;/;4
+1133;4;40002;U16;;Input node 2 name;;1.0;0.0;/;4
+1134;4;40003;U16;;Input node 3 name;;1.0;0.0;/;4
+1135;4;40004;U16;;Input node 4 name;;1.0;0.0;/;4
+1136;4;40005;U16;;Input node 5 name;;1.0;0.0;/;4
+1137;4;40006;U16;;Input node 6 name;;1.0;0.0;/;4
+1138;4;40007;U16;;Input node 7 name;;1.0;0.0;/;4
+1139;4;40008;U16;;Input node 8 name;;1.0;0.0;/;4
+1140;4;40009;U16;;Input node 9 name;;1.0;0.0;/;4
+1141;4;40010;U16;;Input node 10 name;;1.0;0.0;/;4
+1142;4;40011;U16;;Input node 11 name;;1.0;0.0;/;4
+1143;4;40012;U16;;Input node 12 name;;1.0;0.0;/;4
+1144;4;40013;U16;;Input node 13 name;;1.0;0.0;/;4
+1145;4;40014;U16;;Input node 14 name;;1.0;0.0;/;4
+1146;4;40015;U16;;Input node 15 name;;1.0;0.0;/;4
+1147;4;40016;U16;;Input node 16 name;;1.0;0.0;/;4
+1148;4;40017;U16;;Input node 17 name;;1.0;0.0;/;4
+1149;4;40018;U16;;Input node 18 name;;1.0;0.0;/;4
+1150;4;40019;U16;;Input node 19 name;;1.0;0.0;/;4
+1151;4;40020;U16;;Input node 20 name;;1.0;0.0;/;4
+1152;4;40021;U16;;Input node 21 name;;1.0;0.0;/;4
+1153;4;40022;U16;;Input node 22 name;;1.0;0.0;/;4
+1154;4;40023;U16;;Input node 23 name;;1.0;0.0;/;4
+1155;4;40024;U16;;Input node 24 name;;1.0;0.0;/;4
+1156;4;40025;U16;;Input node 25 name;;1.0;0.0;/;4
+1157;4;40026;U16;;Input node 26 name;;1.0;0.0;/;4
+1158;4;40027;U16;;Input node 27 name;;1.0;0.0;/;4
+1159;4;40028;U16;;Input node 28 name;;1.0;0.0;/;4
+1160;4;40029;U16;;Input node 29 name;;1.0;0.0;/;4
+1161;4;40030;U16;;Input node 30 name;;1.0;0.0;/;4
+1162;4;40031;U16;;Input node 31 name;;1.0;0.0;/;4
+1163;4;40032;U16;;Input node 32 name;;1.0;0.0;/;4
+1164;4;40033;U16;;Input node 33 name;;1.0;0.0;/;4
+1165;4;40034;U16;;Input node 34 name;;1.0;0.0;/;4
+1166;4;40035;U16;;Input node 35 name;;1.0;0.0;/;4
+1167;4;40036;U16;;Input node 36 name;;1.0;0.0;/;4
+1168;4;40037;U16;;Input node 37 name;;1.0;0.0;/;4
+1169;4;40038;U16;;Input node 38 name;;1.0;0.0;/;4
+1170;4;40039;U16;;Input node 39 name;;1.0;0.0;/;4
+1171;4;40040;U16;;Input node 40 name;;1.0;0.0;/;4
+1172;4;40041;U16;;Input node 41 name;;1.0;0.0;/;4
+1173;4;40042;U16;;Input node 42 name;;1.0;0.0;/;4
+1174;4;40043;U16;;Input node 43 name;;1.0;0.0;/;4
+1175;4;40044;U16;;Input node 44 name;;1.0;0.0;/;4
+1176;4;40045;U16;;Input node 45 name;;1.0;0.0;/;4
+1177;4;40046;U16;;Input node 46 name;;1.0;0.0;/;4
+1178;4;40047;U16;;Input node 47 name;;1.0;0.0;/;4
+1179;4;40048;U16;;Input node 48 name;;1.0;0.0;/;4
+1180;4;40049;U16;;Input node 49 name;;1.0;0.0;/;4
+1181;4;40050;U16;;Input node 50 name;;1.0;0.0;/;4
+1182;4;40051;U16;;Input node 51 name;;1.0;0.0;/;4
+1183;4;40052;U16;;Input node 52 name;;1.0;0.0;/;4
+1184;4;40053;U16;;Input node 53 name;;1.0;0.0;/;4
+1185;4;40054;U16;;Input node 54 name;;1.0;0.0;/;4
+1186;4;40055;U16;;Input node 55 name;;1.0;0.0;/;4
+1187;4;40056;U16;;Input node 56 name;;1.0;0.0;/;4
+1188;4;40057;U16;;Input node 57 name;;1.0;0.0;/;4
+1189;4;40058;U16;;Input node 58 name;;1.0;0.0;/;4
+1190;4;40059;U16;;Input node 59 name;;1.0;0.0;/;4
+1191;4;40060;U16;;Input node 60 name;;1.0;0.0;/;4
+1192;4;40061;U16;;Input node 61 name;;1.0;0.0;/;4
+1193;4;40062;U16;;Input node 62 name;;1.0;0.0;/;4
+1194;4;40063;U16;;Input node 63 name;;1.0;0.0;/;4
+1195;4;40064;U16;;Input node 64 name;;1.0;0.0;/;4
+1196;4;62001;U16;;Working status;;1.0;0.0;/;9
+1197;4;62002;U16;;Fault/Alarm code;;1.0;0.0;/;9
+1198;4;62003;U16;;Reserved;;1.0;0.0;None;0
+1199;4;62004;U16;;Reserved;;1.0;0.0;None;0
+1200;4;62005;U16;;Total run time;;1;0.0;h;4
+1201;4;62006;U16;;Reserved;;1.0;0.0;None;0
+1202;4;62007;U16;;Reserved;;1.0;0.0;None;0
+1203;4;62008;U16;;Reserved;;1.0;0.0;None;0
+1204;4;62009;U16;;Daily run time;;1;0.0;min;4
+1205;4;62010;U16;;Total power factor;;0;0.0;/;4
+1206;4;62011;U16;;Grid frequency;;0;0.0;Hz;4
+1207;4;62012;U16;;Reserved;;1.0;0.0;None;0
+1208;4;62013;U16;;Bus voltage;;0;0.0;V;4
+1209;4;62014;U16;;Internal air temperature;TEMP_INT;0;0.0;℃;4
+1210;4;62015;U16;;Reserved;;1.0;0.0;None;0
+1211;4;62016;U16;;A-B line voltage;;0;0.0;V;4
+1212;4;62017;U16;;B-C line voltage;;0;0.0;V;4
+1213;4;62018;U16;;C-A line voltage;;0;0.0;V;4
+1214;4;62019;U16;;Phase A current;I_AC_1;0;0.0;A;4
+1215;4;62020;U16;;Phase B current;I_AC_2;0;0.0;A;4
+1216;4;62021;U16;;Phase C current;I_AC_3;0;0.0;A;4
+1217;4;62022;U16;;Device type code;;1.0;0.0;/;4
+1218;4;62023;U16;;Rated active power;;0;0.0;kW;4
+1219;4;62024;U16;;Output type;;1.0;0.0;/;4
+1220;4;62025;U16;;Rated reactive power;;0;0.0;kvar;4
+1221;4;62026;U16;;Reserved;;1.0;0.0;None;0
+1222;4;62027;U16;;Active overload rate;;0;0.0;%;4
+1223;4;62028;U16;;Reserved;;1.0;0.0;None;0
+1224;4;62029;U16;;Reserved;;1.0;0.0;None;0
+1225;4;62030;U16;;Rated gird voltage;;0;0.0;V;4
+1226;4;62031;U16;;Rated Grid frequency;;0;0.0;Hz;4
+1227;4;62032;U16;;Initialized status;;1.0;0.0;/;9
+1228;4;62033;U16;;Grid type;;1.0;0.0;/;4
+1229;4;62034;U16;;Working mode;;1.0;0.0;/;4
+1230;4;62035;U16;;Charging/discharging status;;1.0;0.0;/;9
+1231;4;62036;U16;;Leakage current;;1;0.0;mA;4
+1232;4;62037;U16;;Current number of black start beats;;1;0.0;/;4
+1233;4;62038;U16;;Max charge power;;0;0.0;kW;4
+1234;4;62039;U16;;Max discharge power;;0;0.0;kW;4
+1235;4;62040;U16;;DC voltage;;0;0.0;V;4
+1236;4;62041;U16;;DC current;;0;0.0;S;4
+1237;4;62042;U16;;DC impedance to ground;;1;0.0;kΩ;4
+1238;4;62043;U16;;DC power;;0;0.0;kW;4
+1239;4;62044;U16;;Reserved;;1.0;0.0;None;0
+1240;4;62045;U16;;Active power;;0;0.0;kW;4
+1241;4;62046;U16;;Reserved;;1.0;0.0;None;0
+1242;4;62047;U16;;Reactive power;;0;0.0;kvar;4
+1243;4;62048;U16;;Reserved;;1.0;0.0;None;0
+1244;4;62049;U16;;Apparent power;S_AC;0;0.0;kVA;4
+1245;4;62050;U16;;Reserved;;1.0;0.0;None;0
+1246;4;62051;U16;;Phase N current;;0;0.0;A;4
+1247;4;62052;U16;;Daily charge energy;;0;0.0;kW;4
+1248;4;62053;U16;;Monthly charge energy;;0;0.0;kW;4
+1249;4;62054;U16;;Reserved;;1.0;0.0;None;0
+1250;4;62055;U16;;Annual charge energy;;0;0.0;kW;4
+1251;4;62056;U16;;Reserved;;1.0;0.0;None;0
+1252;4;62057;U16;;Total charge energy;;0;0.0;kW;4
+1253;4;62058;U16;;Reserved;;1.0;0.0;None;0
+1254;4;62059;U16;;Daily discharge energy;;0;0.0;kW;4
+1255;4;62060;U16;;Monthly discharge energy;;0;0.0;kW;4
+1256;4;62061;U16;;Reserved;;1.0;0.0;None;0
+1257;4;62062;U16;;Annual discharge energy;;0;0.0;kW;4
+1258;4;62063;U16;;Reserved;;1.0;0.0;None;0
+1259;4;62064;U16;;Total discharge energy;;0;0.0;kW;4
+1260;4;62065;U16;;Reserved;;1.0;0.0;None;0
+1261;4;62066;U16;;Daily charge time;;1;0.0;min;4
+1262;4;62067;U16;;Total charge time;;1;0.0;h;4
+1263;4;62068;U16;;Reserved;;1.0;0.0;None;0
+1264;4;62069;U16;;Daily discharge time;;1;0.0;min;4
+1265;4;62070;U16;;Total discharge time;;1;0.0;h;4
+1266;4;62071;U16;;Reserved;;1.0;0.0;None;0
+1267;4;62072;U16;;Power supply voltage level;;1.0;0.0;/;4
+1268;4;62073;U16;;Node status;;1.0;0.0;/;9
+1269;4;62074;U16;;Reserved;;1.0;0.0;None;0
+1270;4;62075;U16;;CMU communication status;;1.0;0.0;/;9
+1271;4;62076;U16;;Fault status 1;;1.0;0.0;/;9
+1272;4;62077;U16;;Reserved;;1.0;0.0;None;0
+1273;4;62078;U16;;Fault status 2;;1.0;0.0;/;9
+1274;4;62079;U16;;Reserved;;1.0;0.0;None;0
+1275;4;62080;U16;;Alarm running status 1;;1.0;0.0;/;9
+1276;4;62081;U16;;Alarm running status 2;;1.0;0.0;/;9
+1277;4;62082;U16;;Online flag;;1.0;0.0;/;4
+1278;4;62083;U16;;Can be upgraded flag;;1.0;0.0;/;4
+1279;4;62084;U16;;PCS ARM Version;;1.0;0.0;/;4
+1280;4;62094;U16;;None;;1.0;0.0;None;4
+1281;4;62095;U16;;PCS DSP Version;;1.0;0.0;/;4
+1282;4;62105;U16;;None;;1.0;0.0;None;4
+1283;4;62106;U16;;PCS CPLD Version;;1.0;0.0;/;4
+1284;4;62116;U16;;None;;1.0;0.0;None;4
+1285;4;62117;U16;;Serial Number;SERIAL;1.0;0.0;/;4
+1286;4;62126;U16;;None;;1.0;0.0;None;4
+1287;4;62127;U16;;PCS security certification version;;1.0;0.0;/;4
+1288;4;62138;U16;;None;;1.0;0.0;None;4
+1289;4;64901;U16;;Reserved;;1.0;0.0;None;0
+1290;4;64902;U16;;Reserved;;1.0;0.0;None;0
+1291;4;64903;U16;;Fault reset;;1.0;0.0;/;9
+1292;4;64904;U16;;System start;;1.0;0.0;/;4
+1293;4;64905;U16;;System shutdown;;1.0;0.0;/;4
+1294;4;64906;U16;;System standby;;1.0;0.0;/;4
+1295;4;64907;U16;;Reactive regulation mode QP;;1.0;0.0;/;4
+1296;4;64908;U16;;Reactive regulation mode PF;;1.0;0.0;/;4
+1297;4;64909;U16;;Reactive regulation mode OFF;;1.0;0.0;/;4
+1298;4;64910;U16;;Reserved;;1.0;0.0;None;0
+1299;4;64911;U16;;Reserved;;1.0;0.0;None;0
+1300;4;64912;U16;;LCU on;;1.0;0.0;/;4
+1301;4;64913;U16;;LCU off;;1.0;0.0;/;4
+1302;4;64914;U16;;Reserved;;1.0;0.0;None;0
+1303;4;64915;U16;;Reserved;;1.0;0.0;None;0
+1304;4;64916;U16;;Reserved;;1.0;0.0;None;0
+1305;4;64917;U16;;Reserved;;1.0;0.0;None;0
+1306;4;64918;U16;;Reserved;;1.0;0.0;None;0
+1307;4;64919;U16;;Output node 1 control close;;1.0;0.0;/;4
+1308;4;64920;U16;;Output node 1 control open;;1.0;0.0;/;4
+1309;4;64921;U16;;Output node 2 control close;;1.0;0.0;/;4
+1310;4;64922;U16;;Output node 2 control open;;1.0;0.0;/;4
+1311;4;64923;U16;;Output node 3 control close;;1.0;0.0;/;4
+1312;4;64924;U16;;Output node 3 control open;;1.0;0.0;/;4
+1313;4;64925;U16;;Output node 4 control close;;1.0;0.0;/;4
+1314;4;64926;U16;;Output node 4 control open;;1.0;0.0;/;4
+1315;4;64927;U16;;Output node 5 control close;;1.0;0.0;/;4
+1316;4;64928;U16;;Output node 5 control open;;1.0;0.0;/;4
+1317;4;64929;U16;;Output node 6 control close;;1.0;0.0;/;4
+1318;4;64930;U16;;Output node 6 control open;;1.0;0.0;/;4
+1319;4;64931;U16;;Output node 7 control close;;1.0;0.0;/;4
+1320;4;64932;U16;;Output node 7 control open;;1.0;0.0;/;4
+1321;4;64933;U16;;Output node 8 control close;;1.0;0.0;/;4
+1322;4;64934;U16;;Output node 8 control open;;1.0;0.0;/;4
+1323;4;64935;U16;;Output node 9 control close;;1.0;0.0;/;4
+1324;4;64936;U16;;Output node 9 control open;;1.0;0.0;/;4
+1325;4;64937;U16;;Output node 10 control close;;1.0;0.0;/;4
+1326;4;64938;U16;;Output node 10 control open;;1.0;0.0;/;4
+1327;4;64939;U16;;Output node 11 control close;;1.0;0.0;/;4
+1328;4;64940;U16;;Output node 11 control open;;1.0;0.0;/;4
+1329;4;64941;U16;;Output node 12 control close;;1.0;0.0;/;4
+1330;4;64942;U16;;Output node 12 control open;;1.0;0.0;/;4
+1331;4;64943;U16;;Output node 13 control close;;1.0;0.0;/;4
+1332;4;64944;U16;;Output node 13 control open;;1.0;0.0;/;4
+1333;4;64945;U16;;Output node 14 control close;;1.0;0.0;/;4
+1334;4;64946;U16;;Output node 14 control open;;1.0;0.0;/;4
+1335;4;64947;U16;;Reserved;;1.0;0.0;None;0
+1336;4;64948;U16;;Reserved;;1.0;0.0;None;0
+1337;4;64949;U16;;Reserved;;1.0;0.0;None;0
+1338;4;64950;U16;;Reserved;;1.0;0.0;None;0
+1339;4;65201;U16;;Power factor;;0;0.0;/;4
+1340;4;65202;U16;;Reactive power;;0;0.0;kvar;4
+1341;4;65203;U16;;Active power;;0;0.0;kW;4
+1342;4;65204;U16;;Working mode;;1.0;0.0;/;4
+1343;4;65205;U16;;Debug mode;;1.0;0.0;/;4
+1344;4;65206;U16;;Local/Upper computer settings;;1.0;0.0;/;4
+1345;4;65207;U16;;Overload rate status;;1;0.0;dec;9
+1346;4;65208;U16;;Network security service on/ off;;1.0;0.0;/;4
+1347;4;65209;U16;;The LC can be updated to the same version or a previous version;;1.0;0.0;/;4
+1348;4;65210;U16;;Reserved;;1.0;0.0;None;0
+1349;4;65211;U16;;Reserved;;1.0;0.0;None;0
+1350;4;65212;U16;;Reserved;;1.0;0.0;None;0
+1351;4;65213;U16;;Reserved;;1.0;0.0;None;0
+1352;4;65214;U16;;Reserved;;1.0;0.0;None;0
+1353;4;65215;U16;;Reserved;;1.0;0.0;None;0
+1354;4;65216;U16;;Reserved;;1.0;0.0;None;0
+1355;4;65217;U16;;Reserved;;1.0;0.0;None;0
+1356;4;65218;U16;;Reserved;;1.0;0.0;None;0
+1357;4;65219;U16;;Reserved;;1.0;0.0;None;0
+1358;4;65220;U16;;Reserved;;1.0;0.0;None;0
+1359;4;65221;U16;;Reserved;;1.0;0.0;None;0
+1360;4;65222;U16;;Reserved;;1.0;0.0;None;0
+1361;4;65223;U16;;Reserved;;1.0;0.0;None;0
+1362;4;65224;U16;;Reserved;;1.0;0.0;None;0
+1363;4;65225;U16;;Reserved;;1.0;0.0;None;0
+1364;4;65226;U16;;Reserved;;1.0;0.0;None;0
+1365;4;65227;U16;;Reserved;;1.0;0.0;None;0
+1366;4;65228;U16;;Reserved;;1.0;0.0;None;0
+1367;4;65229;U16;;Reserved;;1.0;0.0;None;0
+1368;4;65230;U16;;Reserved;;1.0;0.0;None;0
+1369;4;65231;U16;;Reserved;;1.0;0.0;None;0
+1370;4;65232;U16;;Reserved;;1.0;0.0;None;0
+1371;4;65241;U16;;High outlet water pressure set point;;0;0.0;Bar;4
+1372;4;65242;U16;;Reserved;;1.0;0.0;None;0
+1373;4;65243;U16;;Running max temperature1;;1;0.0;℃;4
+1374;4;65244;U16;;Running max temperature2;;1;0.0;℃;4
+1375;4;65245;U16;;Running min temperature1;;1;0.0;℃;4
+1376;4;65246;U16;;Running min temperature2;;1;0.0;℃;4
+1377;4;65247;U16;;Reserved;;1.0;0.0;None;0
+1378;4;65248;U16;;Non-running max temperature1;;1;0.0;℃;4
+1379;4;65249;U16;;Non-running max temperature2;;1;0.0;℃;4
+1380;4;65250;U16;;Non-running min temperature1;;1;0.0;℃;4
+1381;4;65251;U16;;Non-running min temperature2;;1;0.0;℃;4
+1382;4;65252;U16;;Reserved;;1.0;0.0;None;0

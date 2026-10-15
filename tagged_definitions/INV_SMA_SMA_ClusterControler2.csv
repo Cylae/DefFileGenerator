@@ -1,0 +1,42 @@
+﻿modbusRTU;Inverter;SMA;SMA_ClusterControler2;;;;;;;
+1;4;30193;U16;;Heure du systeme UTC (s);;1.0;0.0;s;4
+2;4;30513;U16;;Energie totale injectee;E_TOT;1.0;0.0;Wh;4
+3;4;30517;U16;;Energie injectee journaliere;E_DAY;1.0;0.0;W;4
+4;4;30775;U16;;Puissance totale active en W;;1.0;0.0;W;4
+5;4;30805;U16;;Puissance reactive totale en Var;Q_AC;1.0;0.0;Var;4
+6;4;31235;U16;;Valeur de consigne de la puissance active Digital I/O (%);P_AC;1.0;0.0;%;4
+7;4;31237;U16;;Valeur de consigne de la puissance active entree analogique (%);;1.0;0.0;%;4
+8;4;31239;U16;;Valeur de consigne de la puissance active (%), consigne Modbus fournisseur d electricite;;1.0;0.0;%;4
+9;4;31241;U16;;Valeur de consigne de la puissance active (%), consigne Modbus distribution directe;;1.0;0.0;%;4
+10;4;31243;U16;;Valeur de consigne en resultant (%) (valeur minimale obtenue à partir de toutes les valeurs de consigne);;1.0;0.0;%;4
+11;4;31249;U16;;Puissance active d exportation reseau actuelle P en W;;1.0;0.0;W;4
+12;4;31251;U16;;Puissance reactive d exportation reseau actuelle Q en var;;1.0;0.0;VAr;4
+13;4;34609;U16;;Temperature ambiante (C);TEMP_AMB;1.0;0.0;C;4
+14;4;34611;U16;;Temperature ambiante mesuree maximale (C);;1.0;0.0;C;4
+15;4;34613;U16;;Rayonnement total sur la surface du capteur (W/m2);;1.0;0.0;W/m2;4
+16;4;34615;U16;;Vitesse du vent (m/s);WIND_SPEED;1.0;0.0;m/s;0
+17;4;34617;U16;;Humidite de l air (%);;1.0;0.0;%;4
+18;4;34619;U16;;Pression d air (Pa);PRESSURE;1.0;0.0;Pa;4
+19;4;34621;U16;;Temperature des panneaux photovoltaïques (C);;1.0;0.0;C;4
+20;4;34623;U16;;Rayonnement total sur le capteur d irradiation externe (W/m2);;1.0;0.0;W/m2;4
+21;4;34625;U16;;Temperature ambiante (F);;1.0;0.0;F;4
+22;4;34627;U16;;Temperature ambiante (K);;1.0;0.0;K;4
+23;4;34629;U16;;Temperature des panneaux photovoltaïques (F);;1.0;0.0;F;4
+24;4;34631;U16;;Temperature des panneaux photovoltaïques (K);;1.0;0.0;K;4
+25;4;34633;U16;;Vitesse du vent (km/h);;1.0;0.0;km/h;0
+26;4;34635;U16;;Vitesse du vent (mph);;1.0;0.0;mph;0
+27;4;34637;U16;;Entree de courant analogique 1 (mA);;1.0;0.0;mA;4
+28;4;34639;U16;;Entree de courant analogique 2 (mA);;1.0;0.0;mA;4
+29;4;34641;U16;;Entree de courant analogique 3 (mA);;1.0;0.0;mA;4
+30;4;34643;U16;;Entree de courant analogique 4 (mA);;1.0;0.0;mA;4
+31;4;34645;U16;;Entree de tension analogique 1 (V);;1.0;0.0;V;4
+32;4;34647;U16;;Entree de tension analogique 2 (V);;1.0;0.0;V;4
+33;4;34649;U16;;Entree de tension analogique 3 (V);;1.0;0.0;V;4
+34;4;34651;U16;;Entree de tension analogique 4 (V);;1.0;0.0;V;4
+35;4;34653;U16;;Groupe d entree numerique 1;;1.0;0.0;ENUM;4
+36;4;34655;U16;;Groupe d entree numerique 2;;1.0;0.0;ENUM;4
+37;4;40001;U16;;Lecture et definition de l heure de l installation (UTC), en s;;1.0;0.0;s;4
+38;4;40003;U16;;Lecture et definition du fuseau horaire;;1.0;0.0;ENUM;4
+39;4;40005;U16;;Passage automatique a l heure d ete/d hiver;;1.0;0.0;ENUM;4
+40;4;40493;U16;;Valeur de consigne de la puissance active P, en % de la puissance active maximale (PMAX) de l installation PV;;1.0;0.0;%;4
+41;4;41167;U16;;Valeur de consigne de la puissance active (%), consigne manuelle;;1.0;0.0;%;4

@@ -1,0 +1,37 @@
+﻿ModbusTCP;Inverter;Goodwe;All;;;;;;;
+1;3;0;U16;;Lowest Feeding Voltage of PV;;0.1;0.0;V;4
+2;3;1;U16;;Reconnect Time;;1.0;0.0;s;4
+3;3;2;U16;;High limit of Grid Voltage;;0.1;0.0;V;4
+4;3;3;U16;;Low limit of Grid Voltage;;0.1;0.0;V;4
+5;3;4;U16;;High limit of Grid Frequency;FREQ;0.01;0.0;Hz;4
+6;3;5;U16;;Low limit of Grid Frequency;;0.01;0.0;Hz;4
+7;3;16_0_1;BITS;;RTC Date&Time : year;;1.0;0.0;year;4
+8;3;16_1_1;BITS;;RTC Date&Time: month;;1.0;0.0;month;4
+9;3;17_0_1;BITS;;RTC Date&Time: date;;1.0;0.0;date;4
+10;3;17_1_1;BITS;;RTC Date&Time: hour;;1.0;0.0;hour;4
+11;3;18_0_1;BITS;;RTC Date&Time: minute;;1.0;0.0;minute;4
+12;3;18_1_1;BITS;;RTC Date&Time: second;;1.0;0.0;s;4
+13;3;256;I16;;Range of real power adjust;P_AC;1.0;0.0;%;4
+14;3;257;I16;;Range of reactive power adjust;Q_AC;1.0;0.0;W;4
+15;3;512_16;STRING;;Serial Number Of Inverter;SERIAL;1.0;0.0;;4
+16;3;528_10;STRING;;Model Name Of Inverter;MODEL;1.0;0.0;;4
+17;3;544;I32;;Error Code;;1.0;0.0;;4
+18;3;546;I32;;E-Total;E_TOT;0.1;0.0;kWh;4
+19;3;548;I32;;H-Total;;0.1;0.0;h;4
+20;3;550;I16;;PV voltage of first tracker;;0.1;0.0;V;4
+21;3;551;I16;;PV voltage of second tracker;;0.1;0.0;V;4
+22;3;552;I16;;PV current of first tracker;;0.1;0.0;A;4
+23;3;553;I16;;PV current of second tracker;;0.1;0.0;A;4
+24;3;554;I16;;Grid voltage of Phase 1;U_AC_1;0.1;0.0;V;4
+25;3;555;I16;;Grid voltage of Phase 2;U_AC_2;0.1;0.0;V;4
+26;3;556;I16;;Grid voltage of Phase 3;U_AC_3;0.1;0.0;V;4
+27;3;557;I16;;Grid current of Phase 1;I_AC_1;0.1;0.0;A;4
+28;3;558;I16;;Grid current of Phase 2;I_AC_2;0.1;0.0;A;4
+29;3;559;I16;;Grid current of Phase 3;I_AC_3;0.1;0.0;A;4
+30;3;560;I16;;Grid frequency of Phase 1;FREQ_1;0.01;0.0;Hz;4
+31;3;561;I16;;Grid frequency of Phase 2;FREQ_2;0.01;0.0;Hz;4
+32;3;562;I16;;Grid frequency of Phase 3;FREQ_3;0.01;0.0;Hz;4
+33;3;563;I16;;Feeding power to grid;;0.01;0.0;W;4
+34;3;564;I16;;Running status;;1.0;0.0;;8
+35;3;565;I16;;Temperature of Heatsink;TEMP_INT;0.1;0.0;°C;4
+36;3;566;I16;;Eday;;0.1;0.0;kW;4

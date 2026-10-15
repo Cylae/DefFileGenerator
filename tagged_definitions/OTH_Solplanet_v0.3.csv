@@ -1,0 +1,492 @@
+﻿modbusRTU;Other;Solplanet;v0.3;;;;;;;
+1;4;1000_2;STRING;;Device Type;device_type;1.000000;0.000000;;4
+2;4;1001;U16;;Modbus Address RO;modbus_address_ro;1.000000;0.000000;;4
+3;4;1002_32;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+4;4;1018_16;STRING;;Model Name;MODEL;1.000000;0.000000;;4
+5;4;1026;U16;;Safety Standard;safety_standard;1.000000;0.000000;;4
+6;4;1027;U32;;Rated Power;P_RATED;1.000000;0.000000;W;4
+7;4;1029_14;STRING;;Master SW Version;master_sw_version;1.000000;0.000000;;4
+8;4;1036_14;STRING;;Slave SW Version;slave_sw_version;1.000000;0.000000;;4
+9;4;1043_14;STRING;;Safety SW Version;safety_sw_version;1.000000;0.000000;;4
+10;4;1050_12;STRING;;Protocol Version;protocol_version;1.000000;0.000000;;4
+11;4;1056_16;STRING;;Manufacturer;manufacturer;1.000000;0.000000;;4
+12;4;1064_16;STRING;;Brand Name;brand_name;1.000000;0.000000;;4
+13;4;1072;U16;;Machine Type;machine_type;1.000000;0.000000;;4
+14;4;1073;U16;;PV Channel Count;pv_channel_count;1.000000;0.000000;;4
+15;4;1074;U16;;STRING Count;string_count;1.000000;0.000000;;4
+16;4;1075_4;STRING;;Hardware Version;hardware_version;1.000000;0.000000;;4
+17;4;1077_6;STRING;;Master SW SubVer;master_sw_subver;1.000000;0.000000;;4
+18;4;1080_16;STRING;;PSDR Version;psdr_version;1.000000;0.000000;;4
+19;4;1088_16;STRING;;CNTL Version;cntl_version;1.000000;0.000000;;4
+20;4;1096_14;STRING;;Sub DSP Version;sub_dsp_version;1.000000;0.000000;;4
+21;4;1103_6;STRING;;Sub DSP SubVer;sub_dsp_subver;1.000000;0.000000;;4
+22;4;1106_14;STRING;;FPGA Version;fpga_version;1.000000;0.000000;;4
+23;4;1116;U16;;PV1 4 STRING Map;pv1_4_string_map;1.000000;0.000000;;4
+24;4;1117;U16;;PV5 8 STRING Map;pv5_8_string_map;1.000000;0.000000;;4
+25;4;1118;U16;;PV9 12 STRING Map;pv9_12_string_map;1.000000;0.000000;;4
+26;4;1119;U16;;PV13 16 STRING Map;pv13_16_string_map;1.000000;0.000000;;4
+27;4;1120;U16;;PV17 20 STRING Map;pv17_20_string_map;1.000000;0.000000;;4
+28;4;1121;U16;;PV21 24 STRING Map;pv21_24_string_map;1.000000;0.000000;;4
+29;4;1122;U16;;PV25 28 STRING Map;pv25_28_string_map;1.000000;0.000000;;4
+30;4;1123;U16;;PV29 32 STRING Map;pv29_32_string_map;1.000000;0.000000;;4
+31;4;1124;U16;;Battery Count;battery_count;1.000000;0.000000;;4
+32;4;1300;U16;;Grid Rated Voltage;grid_rated_voltage;0.100000;0.000000;V;4
+33;4;1301;U16;;Grid Rated Freq;grid_rated_freq;0.010000;0.000000;Hz;4
+34;4;1302;I32;;Daily Yield;daily_yield;0.100000;0.000000;kWh;4
+35;4;1304;I32;;Total Yield;total_yield;0.100000;0.000000;kWh;4
+36;4;1306;U32;;Total Run Time;total_run_time;1.000000;0.000000;h;4
+37;4;1308;U16;;Device State;device_state;1.000000;0.000000;;4
+38;4;1309;U16;;Check Time Left;check_time_left;1.000000;0.000000;s;4
+39;4;1310;I16;;Internal Temp;internal_temp;0.100000;0.000000;C;4
+40;4;1311;I16;;Temp Module U;temp_module_u;0.100000;0.000000;C;4
+41;4;1312;I16;;Temp Module V;temp_module_v;0.100000;0.000000;C;4
+42;4;1313;I16;;Temp Module W;temp_module_w;0.100000;0.000000;C;4
+43;4;1314;I16;;Temp Boost;temp_boost;0.100000;0.000000;C;4
+44;4;1315;I16;;Temp DCDC;temp_dcdc;0.100000;0.000000;C;4
+45;4;1316;U16;;Bus Voltage;bus_voltage;0.100000;0.000000;V;4
+46;4;1317;U16;;PV Conn Status;pv_conn_status;1.000000;0.000000;;4
+47;4;1318;U16;;Voltage PV1;voltage_pv1;0.100000;0.000000;V;4
+48;4;1319;U16;;Current PV1;current_pv1;0.010000;0.000000;A;4
+49;4;1320;U16;;Voltage PV2;voltage_pv2;0.100000;0.000000;V;4
+50;4;1321;U16;;Current PV2;current_pv2;0.010000;0.000000;A;4
+51;4;1322;U16;;Voltage PV3;voltage_pv3;0.100000;0.000000;V;4
+52;4;1323;U16;;Current PV3;current_pv3;0.010000;0.000000;A;4
+53;4;1324;U16;;Voltage PV4;voltage_pv4;0.100000;0.000000;V;4
+54;4;1325;U16;;Current PV4;current_pv4;0.010000;0.000000;A;4
+55;4;1326;U16;;Voltage PV5;voltage_pv5;0.100000;0.000000;V;4
+56;4;1327;U16;;Current PV5;current_pv5;0.010000;0.000000;A;4
+57;4;1328;U16;;Voltage PV6;voltage_pv6;0.100000;0.000000;V;4
+58;4;1329;U16;;Current PV6;current_pv6;0.010000;0.000000;A;4
+59;4;1330;U16;;Voltage PV7;voltage_pv7;0.100000;0.000000;V;4
+60;4;1331;U16;;Current PV7;current_pv7;0.010000;0.000000;A;4
+61;4;1332;U16;;Voltage PV8;voltage_pv8;0.100000;0.000000;V;4
+62;4;1333;U16;;Current PV8;current_pv8;0.010000;0.000000;A;4
+63;4;1334;U16;;Voltage PV9;voltage_pv9;0.100000;0.000000;V;4
+64;4;1335;U16;;Current PV9;current_pv9;0.010000;0.000000;A;4
+65;4;1336;U16;;Voltage PV10;voltage_pv10;0.100000;0.000000;V;4
+66;4;1337;U16;;Current PV10;current_pv10;0.010000;0.000000;A;4
+67;4;1338;U16;;STRING 1 Current;string_1_current;0.100000;0.000000;A;4
+68;4;1339;U16;;STRING 2 Current;string_2_current;0.100000;0.000000;A;4
+69;4;1340;U16;;STRING 3 Current;string_3_current;0.100000;0.000000;A;4
+70;4;1341;U16;;STRING 4 Current;string_4_current;0.100000;0.000000;A;4
+71;4;1342;U16;;STRING 5 Current;string_5_current;0.100000;0.000000;A;4
+72;4;1343;U16;;STRING 6 Current;string_6_current;0.100000;0.000000;A;4
+73;4;1344;U16;;STRING 7 Current;string_7_current;0.100000;0.000000;A;4
+74;4;1345;U16;;STRING 8 Current;string_8_current;0.100000;0.000000;A;4
+75;4;1346;U16;;STRING 9 Current;string_9_current;0.100000;0.000000;A;4
+76;4;1347;U16;;STRING 10 Current;string_10_current;0.100000;0.000000;A;4
+77;4;1348;U16;;STRING 11 Current;string_11_current;0.100000;0.000000;A;4
+78;4;1349;U16;;STRING 12 Current;string_12_current;0.100000;0.000000;A;4
+79;4;1350;U16;;STRING 13 Current;string_13_current;0.100000;0.000000;A;4
+80;4;1351;U16;;STRING 14 Current;string_14_current;0.100000;0.000000;A;4
+81;4;1352;U16;;STRING 15 Current;string_15_current;0.100000;0.000000;A;4
+82;4;1353;U16;;STRING 16 Current;string_16_current;0.100000;0.000000;A;4
+83;4;1354;U16;;STRING 17 Current;string_17_current;0.100000;0.000000;A;4
+84;4;1355;U16;;STRING 18 Current;string_18_current;0.100000;0.000000;A;4
+85;4;1356;U16;;STRING 19 Current;string_19_current;0.100000;0.000000;A;4
+86;4;1357;U16;;STRING 20 Current;string_20_current;0.100000;0.000000;A;4
+87;4;1358;U16;;Voltage L1;voltage_l1;0.100000;0.000000;V;4
+88;4;1359;U16;;Current L1;current_l1;0.100000;0.000000;A;4
+89;4;1360;U16;;Voltage L2;voltage_l2;0.100000;0.000000;V;4
+90;4;1361;U16;;Current L2;current_l2;0.100000;0.000000;A;4
+91;4;1362;U16;;Voltage L3;voltage_l3;0.100000;0.000000;V;4
+92;4;1363;U16;;Current L3;current_l3;0.100000;0.000000;A;4
+93;4;1364;U16;;Line Voltage RS;line_voltage_rs;0.100000;0.000000;V;4
+94;4;1365;U16;;Line Voltage RT;line_voltage_rt;0.100000;0.000000;V;4
+95;4;1366;U16;;Line Voltage ST;line_voltage_st;0.100000;0.000000;V;4
+96;4;1367;U16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;4
+97;4;1368;U32;;Apparent Power;apparent_power;1.000000;0.000000;VA;4
+98;4;1370;I32;;Active Power;P_AC;1.000000;0.000000;W;4
+99;4;1372;I32;;Reactive Power;reactive_power;1.000000;0.000000;Var;4
+100;4;1374;I16;;Power Factor;PF;0.010000;0.000000;;4
+101;4;1375;U16;;Power Limit Status;power_limit_status;1.000000;0.000000;;4
+102;4;1376;U16;;Internal Fault Status;internal_fault_status;1.000000;0.000000;;4
+103;4;1377;U16;;Error Code;error_code;1.000000;0.000000;;4
+104;4;1378;U16;;Warning Code 1;warning_code_1;1.000000;0.000000;;4
+105;4;1379;U16;;Warning Code 2;warning_code_2;1.000000;0.000000;;4
+106;4;1380;U16;;Warning Code 3;warning_code_3;1.000000;0.000000;;4
+107;4;1381;U16;;Warning Code 4;warning_code_4;1.000000;0.000000;;4
+108;4;1382;U16;;Warning Code 5;warning_code_5;1.000000;0.000000;;4
+109;4;1383;U16;;Warning Code 6;warning_code_6;1.000000;0.000000;;4
+110;4;1384;U16;;Warning Code 7;warning_code_7;1.000000;0.000000;;4
+111;4;1385;U16;;Warning Code 8;warning_code_8;1.000000;0.000000;;4
+112;4;1386;U16;;Warning Code 9;warning_code_9;1.000000;0.000000;;4
+113;4;1387;U16;;Warning Code 10;warning_code_10;1.000000;0.000000;;4
+114;4;1388;U16;;ISO Measurement;iso_measurement;1.000000;0.000000;kOhm;4
+115;4;1390;U16;;Grid Conn Status;grid_conn_status;1.000000;0.000000;;4
+116;4;1391;U32;;Total PV Power;total_pv_power;1.000000;0.000000;W;4
+117;4;1600;U32;;Total PV Power Bat;total_pv_power_bat;1.000000;0.000000;W;4
+118;4;1602;U32;;PV Daily Yield;pv_daily_yield;0.100000;0.000000;kWh;4
+119;4;1604;U32;;PV Total Yield;pv_total_yield;0.100000;0.000000;kWh;4
+120;4;1606;U16;;BMS1 Comm Status;bms1_comm_status;1.000000;0.000000;;4
+121;4;1607;U16;;BMS1 Status;bms1_status;1.000000;0.000000;;4
+122;4;1608;U16;;BMS1 Error 1;bms1_error_1;1.000000;0.000000;;4
+123;4;1609;U16;;BMS1 Error 2;bms1_error_2;1.000000;0.000000;;4
+124;4;1610;U16;;BMS1 Error 3;bms1_error_3;1.000000;0.000000;;4
+125;4;1611;U16;;BMS1 Error 4;bms1_error_4;1.000000;0.000000;;4
+126;4;1612;U16;;BMS1 Warning 1;bms1_warning_1;1.000000;0.000000;;4
+127;4;1613;U16;;BMS1 Warning 2;bms1_warning_2;1.000000;0.000000;;4
+128;4;1614;U16;;BMS1 Warning 3;bms1_warning_3;1.000000;0.000000;;4
+129;4;1615;U16;;BMS1 Warning 4;bms1_warning_4;1.000000;0.000000;;4
+130;4;1616;U16;;BMS1 Voltage;bms1_voltage;0.010000;0.000000;V;4
+131;4;1617;I16;;BMS1 Current;bms1_current;0.100000;0.000000;A;4
+132;4;1618;I32;;BMS1 Power;bms1_power;1.000000;0.000000;W;4
+133;4;1620;I16;;BMS1 Temp;bms1_temp;0.100000;0.000000;C;4
+134;4;1621;U16;;BMS1 SOC;bms1_soc;0.010000;0.000000;'%;4
+135;4;1622;U16;;BMS1 SOH;bms1_soh;0.010000;0.000000;'%;4
+136;4;1623;U16;;BMS1 Chg Limit;bms1_chg_limit;0.100000;0.000000;A;4
+137;4;1624;U16;;BMS1 Dischg Limit;bms1_dischg_limit;0.100000;0.000000;A;4
+138;4;1625;U32;;BMS1 Daily Charge;bms1_daily_charge;0.100000;0.000000;kWh;4
+139;4;1627;U32;;BMS1 Daily Dischg;bms1_daily_dischg;0.100000;0.000000;kWh;4
+140;4;1629;U32;;AC Daily Consumption;ac_daily_consumption;0.100000;0.000000;kWh;4
+141;4;1631;U32;;AC Daily FeedIn;ac_daily_feedin;0.100000;0.000000;kWh;4
+142;4;1633;U16;;EPS Voltage;eps_voltage;0.100000;0.000000;V;4
+143;4;1634;U16;;EPS Current;eps_current;0.100000;0.000000;A;4
+144;4;1635;U16;;EPS Frequency;eps_frequency;0.010000;0.000000;Hz;4
+145;4;1636;I32;;EPS Active Power;eps_active_power;1.000000;0.000000;W;4
+146;4;1638;I32;;EPS Reactive Power;eps_reactive_power;1.000000;0.000000;Var;4
+147;4;1640;U32;;EPS Daily Consumption;eps_daily_consumption;0.100000;0.000000;kWh;4
+148;4;1642;U32;;EPS Total Consumption;eps_total_consumption;0.100000;0.000000;kWh;4
+149;4;1644;U16;;EPS Volt L1;eps_volt_l1;0.100000;0.000000;V;4
+150;4;1645;U16;;EPS Curr L1;eps_curr_l1;0.100000;0.000000;A;4
+151;4;1646;U16;;EPS Volt L2;eps_volt_l2;0.100000;0.000000;V;4
+152;4;1647;U16;;EPS Curr L2;eps_curr_l2;0.100000;0.000000;A;4
+153;4;1648;U16;;EPS Volt L3;eps_volt_l3;0.100000;0.000000;V;4
+154;4;1649;U16;;EPS Curr L3;eps_curr_l3;0.100000;0.000000;A;4
+155;4;1650;I32;;EPS Power L1;eps_power_l1;1.000000;0.000000;W;4
+156;4;1652;I32;;EPS Reactive L1;eps_reactive_l1;1.000000;0.000000;Var;4
+157;4;1654;I32;;EPS Power L2;eps_power_l2;1.000000;0.000000;W;4
+158;4;1656;I32;;EPS Reactive L2;eps_reactive_l2;1.000000;0.000000;Var;4
+159;4;1658;I32;;EPS Power L3;eps_power_l3;1.000000;0.000000;W;4
+160;4;1660;I32;;EPS Reactive L3;eps_reactive_l3;1.000000;0.000000;Var;4
+161;4;1662;U32;;AC Power L1;ac_power_l1;1.000000;0.000000;W;4
+162;4;1664;I32;;AC Reactive L1;ac_reactive_l1;1.000000;0.000000;Var;4
+163;4;1666;U32;;AC Power L2;ac_power_l2;1.000000;0.000000;W;4
+164;4;1668;I32;;AC Reactive L2;ac_reactive_l2;1.000000;0.000000;Var;4
+165;4;1670;U32;;AC Power L3;ac_power_l3;1.000000;0.000000;W;4
+166;4;1672;I32;;AC Reactive L3;ac_reactive_l3;1.000000;0.000000;Var;4
+167;4;1674;U32;;AC Daily Charge;ac_daily_charge;0.100000;0.000000;kWh;4
+168;4;1676;U32;;AC Total Charge;ac_total_charge;0.100000;0.000000;kWh;4
+169;4;1678;U16;;BMS1 Insulation;bms1_insulation;1.000000;0.000000;kOhm;4
+170;4;1679;U16;;BMS1 Cycles;bms1_cycles;1.000000;0.000000;;4
+171;4;1680;U16;;BMS1 Humidity;bms1_humidity;0.100000;0.000000;'%;4
+172;4;1681;U16;;Batt Dischg V Min;batt_dischg_v_min;0.100000;0.000000;V;4
+173;4;1682;U16;;Grid Par Status;grid_par_status;1.000000;0.000000;;4
+174;4;1683;U16;;Gen Start Cmd DSP;gen_start_cmd_dsp;1.000000;0.000000;;4
+175;4;1684;I32;;Generator Power;generator_power;1.000000;0.000000;W;4
+176;4;1686;U32;;Gen Day Energy;gen_day_energy;0.100000;0.000000;kWh;4
+177;4;1688;U16;;Gen Port Mode;gen_port_mode;1.000000;0.000000;;4
+178;4;1689;U16;;BMS1 Capabilities;bms1_capabilities;1.000000;0.000000;;4
+179;4;1690;U16;;BMS1 Volt LowPrec;bms1_volt_lowprec;0.100000;0.000000;V;4
+180;4;1691;U32;;Storage Status;storage_status;1.000000;0.000000;;4
+181;4;1693;U16;;Inv Bat1 Volt;inv_bat1_volt;0.010000;0.000000;V;4
+182;4;1694;I16;;Inv Bat1 Curr;inv_bat1_curr;0.100000;0.000000;A;4
+183;4;1695;U16;;Reserved Bat1;reserved_bat1;1.000000;0.000000;;4
+184;4;1739;U16;;BMS2 Comm Status;bms2_comm_status;1.000000;0.000000;;4
+185;4;1740;U16;;BMS2 Status;bms2_status;1.000000;0.000000;;4
+186;4;1741;U16;;BMS2 Error 1;bms2_error_1;1.000000;0.000000;;4
+187;4;1742;U16;;BMS2 Error 2;bms2_error_2;1.000000;0.000000;;4
+188;4;1743;U16;;BMS2 Error 3;bms2_error_3;1.000000;0.000000;;4
+189;4;1744;U16;;BMS2 Error 4;bms2_error_4;1.000000;0.000000;;4
+190;4;1745;U16;;BMS2 Warn 1;bms2_warn_1;1.000000;0.000000;;4
+191;4;1746;U16;;BMS2 Warn 2;bms2_warn_2;1.000000;0.000000;;4
+192;4;1747;U16;;BMS2 Warn 3;bms2_warn_3;1.000000;0.000000;;4
+193;4;1748;U16;;BMS2 Warn 4;bms2_warn_4;1.000000;0.000000;;4
+194;4;1749;U16;;BMS2 Voltage;bms2_voltage;0.100000;0.000000;V;4
+195;4;1750;I16;;BMS2 Current;bms2_current;0.100000;0.000000;A;4
+196;4;1751;I32;;BMS2 Power;bms2_power;1.000000;0.000000;W;4
+197;4;1753;I16;;BMS2 Temp;bms2_temp;0.100000;0.000000;C;4
+198;4;1754;U16;;BMS2 SOC;bms2_soc;0.010000;0.000000;'%;4
+199;4;1755;U16;;BMS2 SOH;bms2_soh;0.010000;0.000000;'%;4
+200;4;1756;U16;;BMS2 Chg Limit;bms2_chg_limit;0.100000;0.000000;A;4
+201;4;1757;U16;;BMS2 Dischg Limit;bms2_dischg_limit;0.100000;0.000000;A;4
+202;4;1758;U32;;BMS2 Day Chg E;bms2_day_chg_e;0.100000;0.000000;kWh;4
+203;4;1760;U32;;BMS2 Day Dischg E;bms2_day_dischg_e;0.100000;0.000000;kWh;4
+204;4;1762;U16;;BMS2 Insulation;bms2_insulation;1.000000;0.000000;kOhm;4
+205;4;1763;U16;;BMS2 Cycles;bms2_cycles;1.000000;0.000000;;4
+206;4;1764;U16;;BMS2 Humidity;bms2_humidity;0.100000;0.000000;'%;4
+207;4;1765;U16;;BMS2 Dischg V Min;bms2_dischg_v_min;0.100000;0.000000;V;4
+208;4;1766;U16;;BMS2 Capabilities;bms2_capabilities;1.000000;0.000000;;4
+209;4;1767;U16;;Inv Bat2 Volt;inv_bat2_volt;0.010000;0.000000;V;4
+210;4;1768;I16;;Inv Bat2 Curr;inv_bat2_curr;0.100000;0.000000;A;4
+211;4;1900;I32;;Total Batt Power;total_batt_power;1.000000;0.000000;W;4
+212;4;1902;U32;;Total Batt Day Chg;total_batt_day_chg;0.100000;0.000000;kWh;4
+213;4;1904;U32;;Total Batt Day Dis;total_batt_day_dis;0.100000;0.000000;kWh;4
+214;4;1940;U16;;Gen Volt L1;gen_volt_l1;0.100000;0.000000;V;4
+215;4;1941;U16;;Gen Volt L2;gen_volt_l2;0.100000;0.000000;V;4
+216;4;1942;U16;;Gen Volt L3;gen_volt_l3;0.100000;0.000000;V;4
+217;4;1943;U16;;Gen Curr L1;gen_curr_l1;0.100000;0.000000;A;4
+218;4;1944;U16;;Gen Curr L2;gen_curr_l2;0.100000;0.000000;A;4
+219;4;1945;U16;;Gen Curr L3;gen_curr_l3;0.100000;0.000000;A;4
+220;4;1946;I32;;Gen Power L1;gen_power_l1;1.000000;0.000000;W;4
+221;4;1948;I32;;Gen Power L2;gen_power_l2;1.000000;0.000000;W;4
+222;4;1950;I32;;Gen Power L3;gen_power_l3;1.000000;0.000000;W;4
+223;4;1952;U16;;Gen Frequency;gen_frequency;0.010000;0.000000;Hz;4
+224;4;35000;U16;;Meter Volt L1;meter_volt_l1;0.100000;0.000000;V;4
+225;4;35001;U16;;Meter Volt L2;meter_volt_l2;0.100000;0.000000;V;4
+226;4;35002;U16;;Meter Volt L3;meter_volt_l3;0.100000;0.000000;V;4
+227;4;35003;U16;;Meter Volt Avg;meter_volt_avg;0.100000;0.000000;V;4
+228;4;35004;U16;;Meter Curr L1;meter_curr_l1;0.100000;0.000000;A;4
+229;4;35005;U16;;Meter Curr L2;meter_curr_l2;0.100000;0.000000;A;4
+230;4;35006;U16;;Meter Curr L3;meter_curr_l3;0.100000;0.000000;A;4
+231;4;35007;U16;;Meter Curr Avg;meter_curr_avg;0.100000;0.000000;A;4
+232;4;35008;U16;;Meter Curr Sum;meter_curr_sum;0.100000;0.000000;A;4
+233;4;35009;I32;;Meter P L1;meter_p_l1;1.000000;0.000000;W;4
+234;4;35011;I32;;Meter P L2;meter_p_l2;1.000000;0.000000;W;4
+235;4;35013;I32;;Meter P L3;meter_p_l3;1.000000;0.000000;W;4
+236;4;35015;I32;;Meter Total Power;meter_total_power;1.000000;0.000000;W;4
+237;4;35017;U32;;Meter Import Wh;meter_import_wh;0.100000;0.000000;kWh;4
+238;4;35019;U32;;Meter Export Wh;meter_export_wh;0.100000;0.000000;kWh;4
+239;4;35021;U32;;Meter Imp Varh;meter_imp_varh;0.100000;0.000000;kVarh;4
+240;4;35023;U32;;Meter Export Varh;meter_export_varh;0.100000;0.000000;kVarh;4
+241;4;35025;U32;;Meter VA L1;meter_va_l1;1.000000;0.000000;VA;4
+242;4;35027;U32;;Meter VA L2;meter_va_l2;1.000000;0.000000;VA;4
+243;4;35029;U32;;Meter VA L3;meter_va_l3;1.000000;0.000000;VA;4
+244;4;35031;U32;;Meter VA Tot;meter_va_tot;1.000000;0.000000;VA;4
+245;4;35033;I32;;Meter Q L1;meter_q_l1;1.000000;0.000000;Var;4
+246;4;35035;I32;;Meter Q L2;meter_q_l2;1.000000;0.000000;Var;4
+247;4;35037;I32;;Meter Q L3;meter_q_l3;1.000000;0.000000;Var;4
+248;4;35039;I32;;Meter Q Tot;meter_q_tot;1.000000;0.000000;Var;4
+249;4;35041;I16;;Meter PF L1;meter_pf_l1;0.010000;0.000000;;4
+250;4;35042;I16;;Meter PF L2;meter_pf_l2;0.010000;0.000000;;4
+251;4;35043;I16;;Meter PF L3;meter_pf_l3;0.010000;0.000000;;4
+252;4;35044;I16;;Meter PF Tot;meter_pf_tot;0.010000;0.000000;;4
+253;4;35045;U16;;Meter Ang L1;meter_ang_l1;1.000000;0.000000;deg;4
+254;4;35046;U16;;Meter Ang L2;meter_ang_l2;1.000000;0.000000;deg;4
+255;4;35047;U16;;Meter Ang L3;meter_ang_l3;1.000000;0.000000;deg;4
+256;4;35048;U16;;Meter Ang Tot;meter_ang_tot;1.000000;0.000000;deg;4
+257;4;35049;U16;;Meter Freq;meter_freq;0.010000;0.000000;Hz;4
+258;4;35050;U16;;Ext CT Status;ext_ct_status;1.000000;0.000000;;4
+259;3;200;U16;;CMD Power OnOff;cmd_power_onoff;1.000000;0.000000;;4
+260;3;203;U16;;CMD Str I Lim;cmd_str_i_lim;0.010000;0.000000;A;4
+261;3;205;U16;;Meter Calc Mode;meter_calc_mode;1.000000;0.000000;;4
+262;3;1000;U16;;RTC Year;rtc_year;1.000000;0.000000;;4
+263;3;1001;U16;;RTC Month;rtc_month;1.000000;0.000000;;4
+264;3;1002;U16;;RTC Day;rtc_day;1.000000;0.000000;;4
+265;3;1003;U16;;RTC Hour;rtc_hour;1.000000;0.000000;;4
+266;3;1004;U16;;RTC Minute;rtc_minute;1.000000;0.000000;;4
+267;3;1005;U16;;RTC Second;rtc_second;1.000000;0.000000;;4
+268;3;1102;U16;;Stor Type Sel;stor_type_sel;1.000000;0.000000;;4
+269;3;1103;U16;;Run Mode;run_mode;1.000000;0.000000;;4
+270;3;1104;U16;;Bat Make;bat_make;1.000000;0.000000;;4
+271;3;1105;U16;;Bat Model;bat_model;1.000000;0.000000;;4
+272;3;1106;U16;;Bat Qty;bat_qty;1.000000;0.000000;;4
+273;3;1114;U16;;Bat Wake Flag;bat_wake_flag;1.000000;0.000000;;4
+274;3;1115;U16;;Offgrid Mode;offgrid_mode;1.000000;0.000000;;4
+275;3;1152;I16;;Bat P Cmd;bat_p_cmd;1.000000;0.000000;W;4
+276;3;1153;U16;;Chg SOC Max;chg_soc_max;0.010000;0.000000;'%;4
+277;3;1154;U16;;Dischg SOC Min;dischg_soc_min;0.010000;0.000000;'%;4
+278;3;1196;U16;;Gen Start SOC;gen_start_soc;0.010000;0.000000;'%;4
+279;3;1197;U16;;Gen Chg En;gen_chg_en;1.000000;0.000000;;4
+280;3;1198;U16;;Gen Chg Curr;gen_chg_curr;0.100000;0.000000;A;4
+281;3;1199;U16;;Gen Stop Delta;gen_stop_delta;0.010000;0.000000;'%;4
+282;3;1200;U16;;Sld On SOC;sld_on_soc;0.010000;0.000000;'%;4
+283;3;1201;U16;;Sld Off SOC;sld_off_soc;0.010000;0.000000;'%;4
+284;3;1202;U16;;Gen Port Cfg;gen_port_cfg;1.000000;0.000000;;4
+285;3;1203;U32;;Gen Max P;gen_max_p;1.000000;0.000000;W;4
+286;3;1205;U16;;Gen Run Time;gen_run_time;0.100000;0.000000;h;4
+287;3;1206;U16;;Gen Stop Dly;gen_stop_dly;1.000000;0.000000;min;4
+288;3;1207;U16;;SmartLd Always;smartld_always;1.000000;0.000000;;4
+289;3;1208;U16;;Gen Man Ctrl;gen_man_ctrl;1.000000;0.000000;;4
+290;3;1209;U16;;Gen Chg P;gen_chg_p;1.000000;0.000000;W;4
+291;3;1211;I32;;Bat P Cmd Ext;bat_p_cmd_ext;1.000000;0.000000;W;4
+292;3;1300;U16;;BMS2 Wake Flag;bms2_wake_flag;1.000000;0.000000;;4
+293;3;1500;U16;;Bat OnOff;bat_onoff;1.000000;0.000000;;4
+294;3;1501;U16;;Bat Slp Wak;bat_slp_wak;1.000000;0.000000;;4
+295;3;1502;U16;;Bat LED Col;bat_led_col;1.000000;0.000000;;4
+296;3;1503;U16;;Bat LED Bri;bat_led_bri;1.000000;0.000000;'%;4
+297;3;1600;U16;;Ctrl Type;ctrl_type;1.000000;0.000000;;4
+298;3;1602;U16;;DRM0 En;drm0_en;1.000000;0.000000;;4
+299;3;1603;U16;;Rip Ctrl Cnt;rip_ctrl_cnt;1.000000;0.000000;;4
+300;3;1604;U16;;DI Comb 1;di_comb_1;1.000000;0.000000;;4
+301;3;1605;U16;;DI Comb 2;di_comb_2;1.000000;0.000000;;4
+302;3;1606;U16;;DI Comb 3;di_comb_3;1.000000;0.000000;;4
+303;3;1607;U16;;DI Comb 4;di_comb_4;1.000000;0.000000;;4
+304;3;1608;U16;;DI Comb 5;di_comb_5;1.000000;0.000000;;4
+305;3;1609;U16;;DI Comb 6;di_comb_6;1.000000;0.000000;;4
+306;3;1610;U16;;DI Comb 7;di_comb_7;1.000000;0.000000;;4
+307;3;1611;U16;;DI Comb 8;di_comb_8;1.000000;0.000000;;4
+308;3;1612;U16;;DI Comb 9;di_comb_9;1.000000;0.000000;;4
+309;3;1613;U16;;DI Comb 10;di_comb_10;1.000000;0.000000;;4
+310;3;1614;U16;;DI Comb 11;di_comb_11;1.000000;0.000000;;4
+311;3;1615;U16;;DI Comb 12;di_comb_12;1.000000;0.000000;;4
+312;3;1616;U16;;DI Comb 13;di_comb_13;1.000000;0.000000;;4
+313;3;1617;U16;;DI Comb 14;di_comb_14;1.000000;0.000000;;4
+314;3;1618;U16;;DI Comb 15;di_comb_15;1.000000;0.000000;;4
+315;3;1619;U16;;DI Comb 16;di_comb_16;1.000000;0.000000;;4
+316;3;1700;U16;;Lead Cap Set;lead_cap_set;0.100000;0.000000;Ah;4
+317;3;1701;U16;;Lead Float V;lead_float_v;0.010000;0.000000;V;4
+318;3;1702;U16;;Lead Const V;lead_const_v;0.010000;0.000000;V;4
+319;3;1703;U16;;Lead Ref Sel;lead_ref_sel;1.000000;0.000000;;4
+320;3;1704;U16;;Lead Stop Dis;lead_stop_dis;0.010000;0.000000;;4
+321;3;1705;U16;;Lead Low Warn;lead_low_warn;0.010000;0.000000;;4
+322;3;1706;U16;;Lead Recov Dis;lead_recov_dis;0.010000;0.000000;;4
+323;3;1707;I16;;Lead Temp Coeff;lead_temp_coeff;0.100000;0.000000;mV/C;4
+324;3;1708;U16;;Lead Int Res;lead_int_res;0.100000;0.000000;mOhm;4
+325;3;1709;I16;;Lead Temp;lead_temp;0.100000;0.000000;C;4
+326;3;1710;U16;;Lead Chg Max;lead_chg_max;0.100000;0.000000;A;4
+327;3;1711;U16;;Lead Dis Max;lead_dis_max;0.100000;0.000000;A;4
+328;3;2101;U16;;Set Mb Addr;set_mb_addr;1.000000;0.000000;;4
+329;3;4000;U16;;En Active P;en_active_p;1.000000;0.000000;;4
+330;3;4001;U16;;En EEG;en_eeg;1.000000;0.000000;;4
+331;3;4002;U16;;En Slope;en_slope;1.000000;0.000000;;4
+332;3;4003;U16;;En Volt Red;en_volt_red;1.000000;0.000000;;4
+333;3;4004;U16;;En Freq Red;en_freq_red;1.000000;0.000000;;4
+334;3;4005;U16;;En React P;en_react_p;1.000000;0.000000;;4
+335;3;4006;U16;;En LVRT;en_lvrt;1.000000;0.000000;;4
+336;3;4007;U16;;En HVRT;en_hvrt;1.000000;0.000000;;4
+337;3;4008;U16;;En 10m Volt;en_10m_volt;1.000000;0.000000;;4
+338;3;4009;U16;;En Island;en_island;1.000000;0.000000;;4
+339;3;4010;U16;;En Buzzer;en_buzzer;1.000000;0.000000;;4
+340;3;4011;U16;;En PE Chk;en_pe_chk;1.000000;0.000000;;4
+341;3;4012;U16;;En Line Gnd;en_line_gnd;1.000000;0.000000;;4
+342;3;4013;U16;;En AFCI;en_afci;1.000000;0.000000;;4
+343;3;4014;U16;;En Str Mon;en_str_mon;1.000000;0.000000;;4
+344;3;4015;U16;;En Zero Rel;en_zero_rel;1.000000;0.000000;;4
+345;3;4016;U16;;En Ovld;en_ovld;1.000000;0.000000;;4
+346;3;4017;U16;;En PV Par;en_pv_par;1.000000;0.000000;;4
+347;3;4018;U16;;En SPD;en_spd;1.000000;0.000000;;4
+348;3;4019;U16;;En UV Load;en_uv_load;1.000000;0.000000;;4
+349;3;4020;U16;;En UF Load;en_uf_load;1.000000;0.000000;;4
+350;3;4021;U16;;En CV Mode;en_cv_mode;1.000000;0.000000;;4
+351;3;4022;U16;;En Lvl1 Prot;en_lvl1_prot;1.000000;0.000000;;4
+352;3;4023;U16;;En Comm Loss;en_comm_loss;1.000000;0.000000;;4
+353;3;4024;U16;;En Shadow;en_shadow;1.000000;0.000000;;4
+354;3;4025;U16;;En Ext In;en_ext_in;1.000000;0.000000;;4
+355;3;4026;U16;;En Sunspec;en_sunspec;1.000000;0.000000;;4
+356;3;4027;U16;;En Gen;en_gen;1.000000;0.000000;;4
+357;3;4028;U16;;En Reflux;en_reflux;1.000000;0.000000;;4
+358;3;4029;U16;;En 3Ph4W;en_3ph4w;1.000000;0.000000;;4
+359;3;4030;U16;;En Fuse;en_fuse;1.000000;0.000000;;4
+360;3;4031;U16;;En PV Inh;en_pv_inh;1.000000;0.000000;;4
+361;3;4032;U16;;En ROCOF;en_rocof;1.000000;0.000000;;4
+362;3;4100;U16;;Shad Scan T;shad_scan_t;1.000000;0.000000;min;4
+363;3;5200;U16;;Grid Code;grid_code;1.000000;0.000000;;4
+364;3;5201;U16;;V Trip 1st;v_trip_1st;0.100000;0.000000;V;4
+365;3;5202;U16;;V Trip 1st L;v_trip_1st_l;0.100000;0.000000;V;4
+366;3;5203;U16;;F Trip 1st;f_trip_1st;0.010000;0.000000;Hz;4
+367;3;5204;U16;;F Trip 1st L;f_trip_1st_l;0.010000;0.000000;Hz;4
+368;3;5205;U16;;V Trip Hi3;v_trip_hi3;0.100000;0.000000;V;4
+369;3;5206;U32;;T Trip Hi3;t_trip_hi3;1.000000;0.000000;ms;4
+370;3;5208;U16;;V Trip Hi2;v_trip_hi2;0.100000;0.000000;V;4
+371;3;5209;U32;;T Trip Hi2;t_trip_hi2;1.000000;0.000000;ms;4
+372;3;5211;U16;;V Trip Hi1;v_trip_hi1;0.100000;0.000000;V;4
+373;3;5212;U32;;T Trip Hi1;t_trip_hi1;1.000000;0.000000;ms;4
+374;3;5214;U16;;V Trip Lo3;v_trip_lo3;0.100000;0.000000;V;4
+375;3;5215;U32;;T Trip Lo3;t_trip_lo3;1.000000;0.000000;ms;4
+376;3;5217;U16;;V Trip Lo2;v_trip_lo2;0.100000;0.000000;V;4
+377;3;5218;U32;;T Trip Lo2;t_trip_lo2;1.000000;0.000000;ms;4
+378;3;5220;U16;;V Trip Lo1;v_trip_lo1;0.100000;0.000000;V;4
+379;3;5221;U32;;T Trip Lo1;t_trip_lo1;1.000000;0.000000;ms;4
+380;3;5223;U16;;V Trip 10m;v_trip_10m;0.100000;0.000000;V;4
+381;3;5224;U16;;T Trip 10m;t_trip_10m;1.000000;0.000000;ms;4
+382;3;5225;U16;;V Recov Hi;v_recov_hi;0.100000;0.000000;V;4
+383;3;5226;U16;;V Recov Lo;v_recov_lo;0.100000;0.000000;V;4
+384;3;5227;U16;;F Trip Hi3;f_trip_hi3;0.010000;0.000000;Hz;4
+385;3;5228;U32;;T Trip Hi3 F;t_trip_hi3_f;1.000000;0.000000;ms;4
+386;3;5230;U16;;F Trip Hi2;f_trip_hi2;0.010000;0.000000;Hz;4
+387;3;5231;U32;;T Trip Hi2 F;t_trip_hi2_f;1.000000;0.000000;ms;4
+388;3;5233;U16;;F Trip Hi1;f_trip_hi1;0.010000;0.000000;Hz;4
+389;3;5234;U32;;T Trip Hi1 F;t_trip_hi1_f;1.000000;0.000000;ms;4
+390;3;5236;U16;;F Trip Lo3;f_trip_lo3;0.010000;0.000000;Hz;4
+391;3;5237;U32;;T Trip Lo3 F;t_trip_lo3_f;1.000000;0.000000;ms;4
+392;3;5239;U16;;F Trip Lo2;f_trip_lo2;0.010000;0.000000;Hz;4
+393;3;5240;U32;;T Trip Lo2 F;t_trip_lo2_f;1.000000;0.000000;ms;4
+394;3;5242;U16;;F Trip Lo1;f_trip_lo1;0.010000;0.000000;Hz;4
+395;3;5243;U32;;T Trip Lo1 F;t_trip_lo1_f;1.000000;0.000000;ms;4
+396;3;5245;U16;;ROCOF Val;rocof_val;0.010000;0.000000;Hz/s;4
+397;3;5246;U32;;ROCOF Time;rocof_time;1.000000;0.000000;ms;4
+398;3;5248;U16;;F Recov Hi;f_recov_hi;0.010000;0.000000;Hz;4
+399;3;5249;U16;;F Recov Lo;f_recov_lo;0.010000;0.000000;Hz;4
+400;3;5250;U16;;T Conn 1st;t_conn_1st;1.000000;0.000000;s;4
+401;3;5251;U16;;T Conn Re;t_conn_re;1.000000;0.000000;s;4
+402;3;5252;U16;;ISO Prot;iso_prot;1.000000;0.000000;kOhm;4
+403;3;5253;U16;;DCI Prot;dci_prot;1.000000;0.000000;mA;4
+404;3;5254;U16;;DCI Time;dci_time;1.000000;0.000000;ms;4
+405;3;5255;U16;;V Trip Hi5;v_trip_hi5;0.100000;0.000000;V;4
+406;3;5256;U32;;T Trip Hi5;t_trip_hi5;1.000000;0.000000;ms;4
+407;3;5258;U16;;V Trip Hi4;v_trip_hi4;0.100000;0.000000;V;4
+408;3;5259;U32;;T Trip Hi4;t_trip_hi4;1.000000;0.000000;ms;4
+409;3;5261;U16;;V Trip Lo5;v_trip_lo5;0.100000;0.000000;V;4
+410;3;5262;U32;;T Trip Lo5;t_trip_lo5;1.000000;0.000000;ms;4
+411;3;5264;U16;;V Trip Lo4;v_trip_lo4;0.100000;0.000000;V;4
+412;3;5265;U32;;T Trip Lo4;t_trip_lo4;1.000000;0.000000;ms;4
+413;3;5267;U16;;F Trip Hi5;f_trip_hi5;0.010000;0.000000;Hz;4
+414;3;5268;U32;;T Trip Hi5 F;t_trip_hi5_f;1.000000;0.000000;ms;4
+415;3;5270;U16;;F Trip Hi4;f_trip_hi4;0.010000;0.000000;Hz;4
+416;3;5271;U32;;T Trip Hi4 F;t_trip_hi4_f;1.000000;0.000000;ms;4
+417;3;5273;U16;;F Trip Lo5;f_trip_lo5;0.010000;0.000000;Hz;4
+418;3;5274;U32;;T Trip Lo5 F;t_trip_lo5_f;1.000000;0.000000;ms;4
+419;3;5276;U16;;F Trip Lo4;f_trip_lo4;0.010000;0.000000;Hz;4
+420;3;5277;U32;;T Trip Lo4 F;t_trip_lo4_f;1.000000;0.000000;ms;4
+421;3;5279;U16;;F Trip Sw Hi;f_trip_sw_hi;0.010000;0.000000;Hz;4
+422;3;5280;U32;;T Trip Sw Hi;t_trip_sw_hi;1.000000;0.000000;ms;4
+423;3;5282;U16;;F Trip Sw Lo;f_trip_sw_lo;0.010000;0.000000;Hz;4
+424;3;5283;U32;;T Trip Sw Lo;t_trip_sw_lo;1.000000;0.000000;ms;4
+425;3;5285;U16;;Safe SubCode;safe_subcode;1.000000;0.000000;;4
+426;3;5400;U16;;P Ramp 1st;p_ramp_1st;1.000000;0.000000;'%/min;4
+427;3;5401;U16;;P Ramp Re;p_ramp_re;1.000000;0.000000;'%/min;4
+428;3;5402;U16;;P Set Pct;p_set_pct;0.010000;0.000000;'%;4
+429;3;5403;U16;;P Ramp Up;p_ramp_up;0.010000;0.000000;'%/min;4
+430;3;5404;U16;;P Ramp Down;p_ramp_down;0.010000;0.000000;'%/min;4
+431;3;5456;I32;;P Set W;p_set_w;1.000000;0.000000;W;4
+432;3;5500;U16;;Q Mode;q_mode;1.000000;0.000000;;4
+433;3;5501;U16;;Q Time Const;q_time_const;1.000000;0.000000;s;4
+434;3;5502;I16;;PF Set;pf_set;0.000100;0.000000;;4
+435;3;5503;U16;;CosP P1;cosp_p1;0.010000;0.000000;'%;4
+436;3;5504;I16;;CosP C1;cosp_c1;0.000100;0.000000;;4
+437;3;5505;U16;;CosP P2;cosp_p2;0.010000;0.000000;'%;4
+438;3;5506;I16;;CosP C2;cosp_c2;0.000100;0.000000;;4
+439;3;5507;U16;;CosP P3;cosp_p3;0.010000;0.000000;'%;4
+440;3;5508;I16;;CosP C3;cosp_c3;0.000100;0.000000;;4
+441;3;5509;U16;;CosP P4;cosp_p4;0.010000;0.000000;'%;4
+442;3;5510;I16;;CosP C4;cosp_c4;0.000100;0.000000;;4
+443;3;5511;U16;;CosP Lock V;cosp_lock_v;0.010000;0.000000;'%;4
+444;3;5512;U16;;CosP Unlk V;cosp_unlk_v;0.010000;0.000000;'%;4
+445;3;5515;I16;;Q Set Pct;q_set_pct;0.010000;0.000000;'%;4
+446;3;5517;U16;;QU V1;qu_v1;0.010000;0.000000;'%;4
+447;3;5518;I16;;QU Q1;qu_q1;0.010000;0.000000;'%;4
+448;3;5519;U16;;QU V2;qu_v2;0.010000;0.000000;'%;4
+449;3;5520;I16;;QU Q2;qu_q2;0.010000;0.000000;'%;4
+450;3;5521;U16;;QU V3;qu_v3;0.010000;0.000000;'%;4
+451;3;5522;I16;;QU Q3;qu_q3;0.010000;0.000000;'%;4
+452;3;5523;U16;;QU V4;qu_v4;0.010000;0.000000;'%;4
+453;3;5524;I16;;QU Q4;qu_q4;0.010000;0.000000;'%;4
+454;3;5525;U16;;QU Lock P;qu_lock_p;0.010000;0.000000;'%;4
+455;3;5526;U16;;QU Unlk P;qu_unlk_p;0.010000;0.000000;'%;4
+456;3;5530;I32;;Q Set Var;q_set_var;1.000000;0.000000;Var;4
+457;3;6400;U16;;Meter V L1;meter_v_l1;0.100000;0.000000;V;4
+458;3;6401;U16;;Meter V L2;meter_v_l2;0.100000;0.000000;V;4
+459;3;6402;U16;;Meter V L3;meter_v_l3;0.100000;0.000000;V;4
+460;3;6403;U16;;Meter I L1;meter_i_l1;0.100000;0.000000;A;4
+461;3;6404;U16;;Meter I L2;meter_i_l2;0.100000;0.000000;A;4
+462;3;6405;U16;;Meter I L3;meter_i_l3;0.100000;0.000000;A;4
+463;3;6406;I32;;Meter P L1_1;meter_p_l1_1;1.000000;0.000000;W;4
+464;3;6408;I32;;Meter P L2_2;meter_p_l2_2;1.000000;0.000000;W;4
+465;3;6410;I32;;Meter P L3_3;meter_p_l3_3;1.000000;0.000000;W;4
+466;3;6500_14;STRING;;AFCI Ver;afci_ver;1.000000;0.000000;;4
+467;3;6519;U16;;AFCI Test;afci_test;1.000000;0.000000;;4
+468;3;6520;U16;;AFCI Sens;afci_sens;1.000000;0.000000;;4
+469;3;6521;U16;;AFCI Clear;afci_clear;1.000000;0.000000;;4
+470;3;6522;U16;;AFCI Man Clr;afci_man_clr;1.000000;0.000000;;4
+471;3;6523;U16;;AFCI Recon;afci_recon;1.000000;0.000000;min;4
+472;3;6600;U16;;HP Mode;hp_mode;1.000000;0.000000;;4
+473;3;6601;U16;;HP Test St;hp_test_st;1.000000;0.000000;;4
+474;3;6602;U16;;HP Test Ctl;hp_test_ctl;1.000000;0.000000;;4
+475;3;6603;U16;;HP Thr Type;hp_thr_type;1.000000;0.000000;;4
+476;3;6604;U32;;HP PV Thr;hp_pv_thr;0.100000;0.000000;W;4
+477;3;6606;U16;;HP Min Time;hp_min_time;1.000000;0.000000;min;4
+478;3;6607;U16;;HP Hold Time;hp_hold_time;1.000000;0.000000;min;4
+479;3;6700;U16;;DO1 Config;do1_config;1.000000;0.000000;;4
+480;3;6701;U16;;DO2 Config;do2_config;1.000000;0.000000;;4
+481;3;6702;U16;;DO1 Stat;do1_stat;1.000000;0.000000;;4
+482;3;6703;U16;;DO2 Stat;do2_stat;1.000000;0.000000;;4
+483;3;6800;U16;;TP P Pct;tp_p_pct;0.010000;0.000000;'%;4
+484;3;6801;I32;;TP P W;tp_p_w;1.000000;0.000000;W;4
+485;3;6850;I16;;TP PF;tp_pf;0.000100;0.000000;;4
+486;3;6851;I16;;TP Q Pct;tp_q_pct;0.010000;0.000000;'%;4
+487;3;6852;I32;;TP Q Var;tp_q_var;1.000000;0.000000;Var;4
+488;3;6900;U16;;Active P Imp Lim;active_p_imp_lim;0.010000;0.000000;'%;4
+489;3;6901;U16;;Run Mode Ext;run_mode_ext;1.000000;0.000000;;4
+490;3;6902;U16;;Chg SOC Max Ext;chg_soc_max_ext;0.010000;0.000000;'%;4
+491;3;6903;U16;;Dischg SOC Min Ext;dischg_soc_min_ext;0.010000;0.000000;'%;4

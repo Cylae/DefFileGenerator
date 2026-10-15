@@ -1,0 +1,84 @@
+﻿modbusRTU;Other;Vectron;Modbus_Vectron;;;;;;;
+1;4;211;U16;;R.m.s. Current;;1.0;0.0;A;4
+2;4;212;U16;;Output Voltage;;1.0;0.0;V;4
+3;4;213;U16;;Active Power;CMD_P_AC_SET_PERCENT;1.0;0.0;kW;1
+4;4;222;U16;;DC-Link Voltage;U_DC;1.0;0.0;V;4
+5;4;223;U16;;Modulation;;1.0;0.0;%;4
+6;4;229;U16;;Reference Percentage Value;;1.0;0.0;%;4
+7;4;231;U16;;Peak Value Long Term Ixt;;1.0;0.0;%;4
+8;4;232;U16;;Peak Value Short Term Ixt;;1.0;0.0;%;4
+9;4;243;U16;;Digital Inputs hardware;;1.0;0.0;;4
+10;4;244;U16;;Working Hours Counter/Operation Hours Counter;;1.0;0.0;h;4
+11;4;249;U16;;Active Data Set;;1.0;0.0;;4
+12;4;250;U16;;Digital Inputs;;1.0;0.0;;4
+13;4;251;U16;;Analog Input MFI1A;;1.0;0.0;%;4
+14;4;253;U16;;Analog Input EM-S1INA;;1.0;0.0;%;4
+15;4;254;U16;;Digital Outputs;;1.0;0.0;;4
+16;4;255;U16;;Heat Sink Temperature;TEMP_INT;1.0;0.0;°C;4
+17;4;256;U16;;Inside Temperature;;1.0;0.0;°C;4
+18;4;257;U16;;Analog Output MFO1A;;1.0;0.0;V;4
+19;4;260;U16;;Current Error;;1.0;0.0;;4
+20;4;266;U16;;Analog Output EM-S1OUTA;;1.0;0.0;V;4
+21;4;270;U16;;Warnings;;1.0;0.0;;4
+22;4;274;U16;;Application Warning;;1.0;0.0;;4
+23;4;277;U16;;STO Status;;1.0;0.0;;4
+24;4;287;U16;;Peak Value Udc;;1.0;0.0;V;4
+25;4;288;U16;;Average Value Udc;;1.0;0.0;V;4
+26;4;289;U16;;Peak Value Heat Sink Temp.;;1.0;0.0;°C;4
+27;4;290;U16;;Average Value Heat Sink Temp.;;1.0;0.0;°C;4
+28;4;291;U16;;Peak Value Inside Temperature;;1.0;0.0;°C;4
+29;4;292;U16;;Average Value Inside Temperature;;1.0;0.0;°C;4
+30;4;293;U16;;Peak Value Irms;;1.0;0.0;A;4
+31;4;294;U16;;Average Value Irms;;1.0;0.0;A;4
+32;4;295;U16;;Peak Value Active Power, Positive;P_AC;1.0;0.0;kW;4
+33;4;296;U16;;Peak Value Active Power, negative;;1.0;0.0;kW;4
+34;4;297;U16;;Average Value Active Power;;1.0;0.0;kW;4
+35;4;301;U16;;Active Energy, Positive/Active Energy, Negative;;1.0;0.0;kWh;4
+36;4;520;U16;;Reference value Cosphi/Q;PF;1.0;0.0;%;4
+37;4;850;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+38;4;852;U16;;Power supply current;;1.0;0.0;A;4
+39;4;853;U16;;Power supply voltage;;1.0;0.0;V;4
+40;4;855;U16;;DC Power;P_DC;1.0;0.0;kW;4
+41;4;856;U16;;Power Factor Phase a;PF_1;1.0;0.0;;4
+42;4;857;U16;;Power Factor Phase b;PF_2;1.0;0.0;;4
+43;4;858;U16;;Power Factor Phase c;PF_3;1.0;0.0;;4
+44;4;859;U16;;Power Factor Total;;1.0;0.0;;4
+45;4;860;U16;;DC Current;I_DC;1.0;0.0;A;4
+46;4;861;U16;;Active current;;1.0;0.0;A;4
+47;4;862;U16;;Reactive current;;1.0;0.0;A;4
+48;4;863;U16;;Current Phase a;I_AC_1;1.0;0.0;A;4
+49;4;864;U16;;Current Phase b;I_AC_2;1.0;0.0;A;4
+50;4;865;U16;;Current Phase c;I_AC_3;1.0;0.0;A;4
+51;4;866;U16;;Power Supply Voltage Phase a;U_AC_1;1.0;0.0;V;4
+52;4;867;U16;;Power Supply Voltage Phase b;U_AC_2;1.0;0.0;V;4
+53;4;868;U16;;Power Supply Voltage Phase c;U_AC_3;1.0;0.0;V;4
+54;4;869;U16;;Active Power Phase a;P_AC_1;1.0;0.0;kW;4
+55;4;870;U16;;Active Power Phase b;P_AC_2;1.0;0.0;kW;4
+56;4;871;U16;;Active Power Phase c;P_AC_3;1.0;0.0;kW;4
+57;4;872;U16;;Reactive power Phase a;Q_AC_1;1.0;0.0;kvar;4
+58;4;873;U16;;Reactive power Phase b;Q_AC_2;1.0;0.0;kvar;4
+59;4;874;U16;;Reactive power Phase c;Q_AC_3;1.0;0.0;kvar;4
+60;4;875;U16;;Apparent Power Phase a;S_AC_1;1.0;0.0;kVA;4
+61;4;876;U16;;Apparent Power Phase b;S_AC_2;1.0;0.0;kVA;4
+62;4;877;U16;;Apparent Power Phase c;S_AC_3;1.0;0.0;kVA;4
+63;4;878;U16;;Reactive Power;Q_AC;1.0;0.0;kVA;4
+64;4;879;U16;;Apparent Power;S_AC;1.0;0.0;kVA;4
+65;4;1020;U16;;Power reduction reference value;;1.0;0.0;%;4
+66;4;1090;U16;;Solar-Status;;1.0;0.0;;4
+67;4;1160;U16;;Reference value cos_phi;;1.0;0.0;;4
+68;4;1161;U16;;Reference value reactive power;;1.0;0.0;kVA;4
+69;4;1190;U16;;Angle cosphi;;1.0;0.0;deg;4
+70;4;1191;U16;;Cosphi;;1.0;0.0;;4
+71;4;1192;U16;;Isq_GF;;1.0;0.0;A;4
+72;4;1193;U16;;Isd_GF;;1.0;0.0;A;4
+73;4;1194;U16;;Usq_real_tot_GF;;1.0;0.0;V;4
+74;4;1233;U16;;Checksum;;1.0;0.0;;4
+75;4;1487;U16;;Controller Status;;1.0;0.0;;4
+76;4;2000;U16;;Active Energy High Word;;1.0;0.0;;4
+77;4;2001;U16;;Active Energy Low  Word;;1.0;0.0;;4
+78;4;3000;U16;;Working Hours Counter High;;1.0;0.0;;4
+79;4;3001;U16;;Working Hours Counter Low Word;;1.0;0.0;;4
+80;4;4000;U16;;Operation Hours Counter High  Word;;1.0;0.0;;4
+81;4;4001;U16;;Operation Hours Counter Low  Word;;1.0;0.0;;4
+82;4;5000;U16;;Energy Negative High  Word;;1.0;0.0;;4
+83;4;5001;U16;;Energy Negative Low  Word;;1.0;0.0;;4

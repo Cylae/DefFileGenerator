@@ -1,0 +1,74 @@
+﻿modbus;Inverter;SAJ;PLUS_R5;;;;;;;
+1;3;36608;U16;;Device Type;MODEL;1;0;;1
+2;3;36609;U16;;Subclass Machine Power;;1;0;;1
+3;3;36610;U16;;Comms Protocol Version;;0.001;0;;1
+4;3;36611;STRING;;Serial Number;SERIAL;1;0;;1
+5;3;36621;STRING;;Product Code;;1;0;;1
+6;3;36631;U16;;Display Software Version;;0.001;0;;1
+7;3;36632;U16;;Master Ctrl Software Version;;0.001;0;;1
+8;3;36633;U16;;Slave Ctrl Software Version;;0.001;0;;1
+9;3;36634;U16;;DispBoard Hardware Version;;0.001;0;;1
+10;3;36635;U16;;CtrlBoard Hardware Version;;0.001;0;;1
+11;3;36636;U16;;PowerBoard Hardware Version;;0.001;0;;1
+12;3;256;U16;;Inverter Operating Mode;;1;0;;1
+13;3;257;STRING;;Inverter Error Message (FaultMSG);;1;0;;1
+14;3;263;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;1
+15;3;264;U16;;PV1 Total Current;I_AC;0.01;0;A;1
+16;3;265;U16;;PV1 Power;;1;0;W;1
+17;3;266;U16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;1
+18;3;267;U16;;PV2 Total Current;;0.01;0;A;1
+19;3;268;U16;;PV2 Power;;1;0;W;1
+20;3;269;U16;;PV3 Voltage;U_DC_STRING_3;0.1;0;V;1
+21;3;270;U16;;PV3 Total Current;;0.01;0;A;1
+22;3;271;U16;;PV3 Power;;1;0;W;1
+23;3;272;U16;;BUS Voltage;U_DC;0.1;0;V;1
+24;3;273;I16;;Inverter Temperature;TEMP_INT;0.1;0;°C;1
+25;3;274;I16;;GFCI Ground Leakage Current;;1;0;mA;1
+26;3;275;U16;;Inverter Total Output Active Power;P_AC;0.001;0;kW;1
+27;3;276;I16;;Inverter Total Output Reactive Power;Q_AC;1;0;Var;1
+28;3;277;I16;;Inverter Total Power Factor;PF;0.001;0;;1
+29;3;278;U16;;L1 Phase Voltage;U_AC_1;0.1;0;V;1
+30;3;279;U16;;L1 Phase Current;I_AC_1;0.01;0;A;1
+31;3;280;U16;;L1 Phase Frequency;FREQ_1;0.01;0;Hz;1
+32;3;281;I16;;L1 Phase DC Component;;1;0;mA;1
+33;3;282;U16;;L1 Power;;0.001;0;kW;1
+34;3;283;I16;;L1 Power Factor;PF_1;0.001;0;;1
+35;3;284;U16;;L2 Phase Voltage;U_AC_2;0.1;0;V;1
+36;3;285;U16;;L2 Phase Current;I_AC_2;0.01;0;A;1
+37;3;286;U16;;L2 Phase Frequency;FREQ_2;0.01;0;Hz;1
+38;3;287;I16;;L2 DC Component;;1;0;mA;1
+39;3;288;U16;;L2 Power;;0.001;0;kW;1
+40;3;289;I16;;L2 Power Factor;PF_2;0.001;0;;1
+41;3;290;U16;;L3 Phase Voltage;U_AC_3;0.1;0;V;1
+42;3;291;U16;;L3 Phase Current;I_AC_3;0.01;0;A;1
+43;3;292;U16;;L3 Phase Frequency;FREQ_3;0.01;0;Hz;1
+44;3;293;I16;;L3 Phase DC Component;;1;0;mA;1
+45;3;294;U16;;L3 Power;;0.001;0;kW;1
+46;3;295;I16;;L3 Power Factor;PF_3;0.001;0;;1
+47;3;296;U16;;PV1+ ISO;;1;0;kOhm;1
+48;3;297;U16;;PV2+ ISO;;1;0;kOhm;1
+49;3;298;U16;;PV3+ ISO;;1;0;kOhm;1
+50;3;299;U16;;PV ISO;;1;0;kOhm;1
+51;3;300;U16;;Daily Power Generation;E_DAY;0.01;0;kWh;1
+52;3;301;U32;;Monthly Power Generation;;0.01;0;kWh;1
+53;3;303;U32;;Yearly Power Generation;;0.01;0;kWh;1
+54;3;305;U32;;Total Power Generation;E_TOT;0.01;0;kWh;1
+55;3;307;U16;;Daily Operating Hours;;0.1;0;h;1
+56;3;308;U32;;Total Operating Hours;;0.1;0;h;1
+57;3;310;U16;;Inverter Error Count;;1;0;;1
+58;3;311;STRING;;Inverter Current Time;;1;0;;1
+59;3;4104;U16;;Inverter Safety Standard Number;;1;0;;4
+60;3;4105;U16;;Inverter Function Word (FunMask);;1;0;;4
+61;3;4121;U16;;ISO Limit Value;;1;0;kOhm;4
+62;3;4124;U16;;Power Limit Value;CMD_P_AC_SET_ABS;0.1;0;%;1
+63;3;4125;U16;;Reactive Power Compensation Mode;;1;0;;4
+64;3;4126;U16;;Reactive Value Regulation;;0.001;0;;4
+65;3;4151;U16;;Remote On/Off Command;;1;0;;4
+66;3;4166;U16;;PV Input Mode;;1;0;;4
+67;3;32788;U16;;RS485 Baud Rate and Slave Address;UNIT_ID;1;0;;2
+68;3;32789;U16;;Clear Historical Faults;;1;0;;2
+69;3;32795;U16;;Clear Generated Energy;;1;0;;2
+70;3;32799;U16;;Real-time Power Limit (ATE);;0.1;0;%;4
+71;3;32800;STRING;;Device Time Set;;1;0;;2
+72;3;32804;U16;;Reactive Power Direction Mode (ATE);;1;0;;2
+73;3;32805;U16;;Power Factor Regulation Value (ATE);;0.001;0;;2

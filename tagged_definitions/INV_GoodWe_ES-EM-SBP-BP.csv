@@ -1,0 +1,396 @@
+﻿ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
+1;3;0;U16;;Lowest_Feeding_Voltage_of_PV;;0.1;0;V;4
+2;3;1;U16;;Reconnect_Time;;1;0;s;4
+3;3;2;U16;;High_limit_of_Grid_Voltage;;0.1;0;V;4
+4;3;3;U16;;Low_limit_of_Grid_Voltage;;0.1;0;V;4
+5;3;4;U16;;Low_limit_of_Grid_Frequency;FREQ;0.01;0;Hz;4
+6;3;5;U16;;High_limit_of_Grid_Frequency;;0.01;0;Hz;4
+7;3;16;U16;;RTC date&time Year+Month;;1;0;Year/Month;4
+8;3;17;U16;;RTC date&time Date+Hour;;1;0;Date/Hour;4
+9;3;18;U16;;RTC date&time Minute+Second;;1;0;Minute/Second;4
+10;3;256;U16;;Range of real power adjust;P_AC;1;0;%;4
+11;3;257;U16;;Range of reactive power adjust;Q_AC;1;0;;4
+12;3;512_16;STRING;;Serial Number of Inverter;SERIAL;1;0;;4
+13;3;520_4;STRING;;Model Name of Inverter;MODEL;1;0;;4
+14;3;522_6;STRING;;Firmware Version;;1;0;;4
+15;3;528_10;STRING;;Model Name of Inverter_1;;1;0;;4
+16;3;533_12;STRING;;DSP Internal Firmware Ver;;1;0;;4
+17;3;539_12;STRING;;ARM Internal Firmware Ver;;1;0;;4
+18;3;545_16;STRING;;Manufacturer Info;MANUFACTURER;1;0;;4
+19;3;553;U16;;Firmware Version(0x16);;1;0;;4
+20;3;554;U16;;ARM Updata Result;;1;0;;4
+21;3;555;U16;;DSP Updata Result;;1;0;;4
+22;3;1280;U16;;Vpv1;;0.1;0;V;4
+23;3;1281;U16;;Ipv1;;0.1;0;V;4
+24;3;1282;U16;;PV1 Mode;;1.0;0.0;;4
+25;3;1283;U16;;Vpv2;;0.1;0;A;4
+26;3;1284;U16;;Ipv2;;0.1;0;A;4
+27;3;1285;U16;;PV2 Mode;;1.0;0.0;;4
+28;3;1286;U16;;Vbattery1;;0.1;0;V;4
+29;3;1287;U16;;TBD;;1;0;;4
+30;3;1288;U16;;BMS Status;;1;0;;4
+31;3;1289;U16;;BMS Pack Temperature;;0.1;0;C;4
+32;3;1290;U16;;Ibattery1;;0.1;0;A;4
+33;3;1291;U16;;BMS Charge Imax;;1;0;A;4
+34;3;1292;U16;;BMS Discharge Imax;;1;0;A;4
+35;3;1293;U16;;BMS Error Code;;1;0;;4
+36;3;1294;U16;;SOC;SOC;1;0;%;4
+37;3;1295;U16;;Inverter Warning Code;;1;0;;8
+38;3;1296;U16;;TBD_1;;1;0;;4
+39;3;1297;U16;;BMS SOH;;1;0;%;4
+40;3;1298;U16;;Battery Mode;;1;0;;4
+41;3;1299;U16;;BMS Warning Code H;;1;0;;4
+42;3;1300;U16;;BMS Warning Code L;;1;0;;4
+43;3;1301;U16;;Meter Status;;1;0;;4
+44;3;1302;U16;;Vgrid;;0.1;0;V;4
+45;3;1303;U16;;Igrid;;0.1;0;A;4
+46;3;1304;I16;;Pgrid;;1;0;W;4
+47;3;1305;U16;;Fgrid;;0.01;0;Hz;4
+48;3;1306;U16;;Grid Mode;;1;0;;4
+49;3;1307;U16;;Vload;;0.1;0;V;4
+50;3;1308;U16;;Iload;;0.1;0;A;4
+51;3;1309;U16;;OnGrid Load Power;;1;0;W;4
+52;3;1310;U16;;Fload;;0.01;0;Hz;4
+53;3;1311;U16;;Load Mode;;1;0;;4
+54;3;1312;U16;;Work Mode;;1;0;;4
+55;3;1313;U16;;Temperature;TEMP;0.1;0;C;4
+56;3;1314;U16;;Error Message H;;1;0;;4
+57;3;1315;U16;;Error Message L;;1;0;;4
+58;3;1316;U16;;E-Total H;;0.1;0;KW.Hr;4
+59;3;1317;U16;;E-Total L;;0.1;0;KW.Hr;4
+60;3;1318;U16;;h-Total H;;1;0;Hr;4
+61;3;1319;U16;;h-Total L;;1;0;Hr;4
+62;3;1320;U16;;E-Day;;0.1;0;KW.Hr;4
+63;3;1321;U16;;E-Load-Day;;0.1;0;KW.Hr;4
+64;3;1322;U16;;E-Total-Load H;;0.1;0;KW.Hr;4
+65;3;1323;U16;;E-Total-Load L;;0.1;0;KW.Hr;4
+66;3;1324;I16;;Total Power;;1;0;W;4
+67;3;1325;U16;;E-PV-Total-H;;0.1;0;KW.Hr;4
+68;3;1326;U16;;E-PV-Total-L;;0.1;0;KW.Hr;4
+69;3;1327;U16;;Grid in-out flag;;1;0;;4
+70;3;1328;U16;;Back-up Load Power;;1;0;W;4
+71;3;1329;I16;;MeterPowerFactor;;1;0;%;4
+72;3;1330;U16;;DiagStatusH;;1;0;;4
+73;3;1331;U16;;DiagStatusL;;1;0;;4
+74;3;1332;U16;;DRMStatus;;1;0;;4
+75;3;1333;F32;;E-Total-Sell;;1;0;;4
+76;3;1335;F32;;E-Total-Buy;;1;0;;4
+77;3;1337;U16;;Vpv3;;0.1;0;V;4
+78;3;1338;U16;;Ipv3;;0.1;0;A;4
+79;3;1339;U16;;PV3 Mode;;1;0;;4
+80;3;1340;U16;;VgridUo;;0.1;0;V;4
+81;3;1341;U16;;IgridUo;;0.1;0;A;4
+82;3;1342;U16;;VgridWo;;0.1;0;V;4
+83;3;1343;U16;;IgridWo;;0.1;0;A;4
+84;3;1344;U16;;E-BatteryCharge H;;0.1;0;KwH;4
+85;3;1345;U16;;E-BatteryCharge L;;0.1;0;KwH;4
+86;3;1346;U16;;E-BatteryDischarge H;;0.1;0;KwH;4
+87;3;1347;U16;;E-BatteryDischarge L;;0.1;0;KwH;4
+88;3;1348;U16;;Ppv1;;1;0;W;4
+89;3;1349;U16;;Ppv2;;1;0;W;4
+90;3;1350;U16;;Ppv3;;1;0;W;4
+91;3;1351;U16;;BatteryPower;;1;0;W;4
+92;3;1352;U16;;INT E-Total-Sell H;;0.1;0;KwH;4
+93;3;1353;U16;;INT E-Total-Sell L;;0.1;0;KwH;4
+94;3;1354;U16;;INT E-Total-Buy H;;0.1;0;KwH;4
+95;3;1355;U16;;INT E-Total-Buy L;;0.1;0;KwH;4
+96;3;1356;U16;;E-BatCharge-Today;;0.1;0;KwH;4
+97;3;1357;U16;;E-BatDischarge-Today;;0.1;0;KwH;4
+98;3;1360;U16;;ChargerTimeStart;;1;0;HM;4
+99;3;1361;U16;;ChargerTimeEnd;;1;0;HM;4
+100;3;1362;U16;;BatChargePowerMax;;1;0;%;4
+101;3;1363;U16;;DisChargerTimeStart;;1;0;HM;4
+102;3;1364;U16;;DisChargerTimeEnd;;1;0;HM;4
+103;3;1365;U16;;BatDisPowerSet;;1;0;%;4
+104;3;1366;U16;;BackUpEnable;;1;0;;4
+105;3;1367;U16;;OffGridAutoCharge;;1;0;;4
+106;3;1368;U16;;EnableMPPT4Shadow;;1;0;;4
+107;3;1369;U16;;FeedPowerEnable;;1;0;;4
+108;3;1370;U16;;ManufacturerCode;;1;0;;4
+109;3;1371;U16;;LeadBatCapacity;;1;0;Ah;4
+110;3;1372;U16;;BattChargeVoltMax;;0.1;0;V;4
+111;3;1373;U16;;BattChargeCurrMax;;0.1;0;A;4
+112;3;1374;U16;;BattDisChgCurrMax;;0.1;0;A;4
+113;3;1375;U16;;BattVoltUnderMin;;0.1;0;V;4
+114;3;1376;U16;;BattSOCUnderMin;;1;0;%;4
+115;3;1377;U16;;BatActivePeriod;;1;0;Min;4
+116;3;1378;U16;;RPControlPara;;1;0;;4
+117;3;1379;U16;;BattFloatVolt;;0.1;0;V;4
+118;3;1380;U16;;BattFloatCurr;;0.1;0;A;4
+119;3;1381;U16;;BattToFloatTime;;1;0;Min;4
+120;3;1382;U16;;BattTypeIndex;;1;0;;4
+121;3;1383;U16;;FeedPowerPara;;1;0;W;4
+122;3;1384;U16;;AutoStartBackup;;1;0;;4
+123;3;1385;U16;;StopSocProtect;;1;0;;4
+124;3;1386;U16;;DCVoltOutput/ KeepBattVoltOn;;1;0;;4
+125;3;1387;U16;;BattAvgChgVolt;;0.1;0;V;4
+126;3;1388;U16;;BatAvgChgHours;;1;0;Hour;4
+127;3;1389;U16;;AS477Parameters;;1;0;;4
+128;3;1390;U16;;WgPowerMode;;1;0;;4
+129;3;1391;U16;;WgPowerSet;;1;0;W;4
+130;3;1393;U16;;NoGridChargeEnable;I_DC;1;0;;4
+131;3;1394;U16;;DisChgWithPVEnable;;1;0;;4
+132;3;1396;U16;;AppModeIndex;;1;0;;4
+133;3;1397;U16;;GridWaveCheckLevel;;1;0;;4
+134;3;1398;U16;;MeterCheckValue;;1;0;W;4
+135;3;1399;U16;;RapaidCutOff;;1;0;;4
+136;3;1400;U16;;GridVoltQualit;;0.1;0;V;4
+137;3;1401;U16;;GridVoltHighS2;;0.1;0;V;4
+138;3;1402;U16;;GridVoltLowS2;;0.1;0;V;4
+139;3;1403;U16;;GridVoltHighS2Time;;0.02;0;s;4
+140;3;1404;U16;;GridVoltLowS2Time;;0.02;0;s;4
+141;3;1405;U16;;GridVoltHighS1;;0.1;0;V;4
+142;3;1406;U16;;GridVoltLowS1;;0.1;0;V;4
+143;3;1407;U16;;GridVoltHighS1Time;;0.02;0;s;4
+144;3;1408;U16;;GridVoltLowS1Time;;0.02;0;s;4
+145;3;1409;U16;;GridFreqHighS2;;0.01;0;Hz;4
+146;3;1410;U16;;GridFreqLowS2;;0.01;0;Hz;4
+147;3;1411;U16;;GridFreqHighS2Time;;0.02;0;s;4
+148;3;1412;U16;;GridFreqLowS2Time;;0.02;0;s;4
+149;3;1413;U16;;GridFreqHighS1;;0.01;0;Hz;4
+150;3;1414;U16;;GridFreqLowS1;;0.01;0;Hz;4
+151;3;1415;U16;;GridFreqHighS1Time;;0.02;0;s;4
+152;3;1416;U16;;GridFreqLowS1Time;;0.02;0;s;4
+153;3;1417;U16;;GridVoltRecoverHigh;;0.1;0;V;4
+154;3;1418;U16;;GridVoltRecoverLow;;0.1;0;V;4
+155;3;1419;U16;;GridVoltRecoverTime;;0.02;0;s;4
+156;3;1420;U16;;GridFreqRecoverHigh;;0.01;0;Hz;4
+157;3;1421;U16;;GridFreqRecoverLow;;0.01;0;Hz;4
+158;3;1422;U16;;GridFreqRecoverTime;;0.02;0;s;4
+159;3;1423;U16;;PointBValue;;1;0;%;4
+160;3;1424;U16;;PointCValue;;0.01;0;;4
+161;3;1425;U16;;GridLimitByVolStartVol;;0.1;0;V;4
+162;3;1426;U16;;GridLimitByVolStartPer;;1;0;%;4
+163;3;1427;U16;;GridLimitByVolSlope;;1;0;%/V;4
+164;3;1428;U16;;ActiveCurveVolt;;0.1;0;V;4
+165;3;1429;U16;;DesactiveCurveVolt;S_AC;0.1;0;V;4
+166;3;1430;U16;;EnableCurve;;1;0;;4
+167;3;1431;U16;;BackupStartDly;;1;0;min;4
+168;3;1432;U16;;RecoverTimeEE;;1;0;%/min;4
+169;3;1433;U16;;SafetyCountry;;1;0;;4
+170;3;1434;U16;;Iso Limit;;10;0;ko;4
+171;3;1435;U16;;BatBMSCurrLmtCoff;;1;0;%;4
+172;3;1436;U16;;wMeterConnectCheckFlag;;1;0;;4
+173;3;1437;U16;;MeterConnectStatus;;1;0;;4
+174;3;1438;U16;;UpsStdVoltType;;1;0;;4
+175;3;1439;U16;;FunctionStatus;;1;0;;4
+176;3;1440;U16;;BattOfflineVoltUnderMin;;0.1;0;V;4
+177;3;1441;U16;;BattOfflineSOCUnderMin;;1;0;%;4
+178;3;1442;U16;;OnlyNightDisCharge;;1;0;;4
+179;3;1443;U16;;BMSProtocolCode;;1;0;;4
+180;3;1444;U16;;HVBatString;;1;0;;4
+181;3;1445;U16;;OfflineMPPTScan Enable;;1;0;;4
+182;3;1446;U16;;PVextendenable;;1;0;;4
+183;3;1447;U16;;PERelayCheckEn;;1;0;;4
+184;3;1448;U16;;BatteryModePVCharge;;1;0;;4
+185;3;1536;U16;;Control ES WiFi LED (For specific customers);;1;0;;4
+186;3;1792;U16;;ClrAllEcoEnable;;1;0;;4
+187;3;1793;U16;;StartTime_1;;1;0;Hour/Min;4
+188;3;1794;U16;;EndTime_1;;1;0;Hour/Min;4
+189;3;1795;I16;;BatPowerPercent_1;;1;0;%;4
+190;3;1796;U16;;WorkWeek_1;;1;0;;4
+191;3;1797;U16;;StartTime_2;;1;0;Hour/Min;4
+192;3;1798;U16;;EndTime_2;;1;0;Hour/Min;4
+193;3;1799;I16;;BatPowerPercent_2;;1;0;%;4
+194;3;1800;U16;;WorkWeek_2;;1;0;;4
+195;3;1801;U16;;StartTime_3;;1;0;Hour/Min;4
+196;3;1802;U16;;EndTime_3;;1;0;Hour/Min;4
+197;3;1803;I16;;BatPowerPercent_3;;1;0;%;4
+198;3;1804;U16;;WorkWeek_3;;1;0;;4
+199;3;1805;U16;;StartTime_4;;1;0;Hour/Min;4
+200;3;1806;U16;;EndTime_4;;1;0;Hour/Min;4
+201;3;1807;I16;;BatPowerPercent_4;;1;0;%;4
+202;3;1808;U16;;WorkWeek_4;;1;0;;4
+203;3;1920;U16;;BMSVersion;;1;0;;4
+204;3;1921;U16;;BattStrings;;1;0;Pcs;4
+205;3;1922;U16;;wBMSBatChargeVMax;;0.1;0;V;4
+206;3;1923;U16;;wBMSBatChargeIMax;;1;0;A;4
+207;3;1924;U16;;wBMSBatDisChargeVMin;;0.1;0;V;4
+208;3;1925;U16;;wBMSBatDisChargeIMax;;1;0;A;4
+209;3;1926;U16;;wBMSBatVoltage;;0.1;0;V;4
+210;3;1927;U16;;wBMSBatCurrent;;0.1;0;A;4
+211;3;1928;U16;;wBMSBatSOC;;0.1;0;%;4
+212;3;1929;U16;;wBMSBatSOH;;0.1;0;%;4
+213;3;1930;U16;;wBMSBatTemperature;;0.1;0;C;4
+214;3;1931;U16;;BMSWarningCodeH;;1;0;;4
+215;3;1932;U16;;BMSWarningCodeL;;1;0;;4
+216;3;1933;U16;;BMSAlarmCodeH;;1;0;;4
+217;3;1934;U16;;BMSAlarmCodeL;;1;0;;4
+218;3;1935;U16;;BMSStatus;;1;0;;4
+219;3;1952;U16;;BattStartChgSoc;;0.1;0;%;4
+220;3;1953;U16;;BattStopChgSoc;;0.1;0;%;4
+221;3;1954;U16;;GoodWeActiveEnable;;1;0;;4
+222;3;1968;U16;;BMS_ Reserved1;;1;0;;4
+223;3;1969;U16;;BMS_ Reserved2;;1;0;;4
+224;3;1970;U16;;BMS_ Reserved3;;1;0;;4
+225;3;1971;U16;;BMS_ Reserved4;;1;0;;4
+226;3;1972;U16;;BMS_ Reserved5;;1;0;;4
+227;3;1973;U16;;BMS_ Reserved6;;1;0;;4
+228;3;1974;U16;;BMS_ Reserved7;;1;0;;4
+229;3;1975;U16;;BMS_ Reserved8;;1;0;;4
+230;3;24576;U16;;ACRMeterType;;1;0;;4
+231;3;24577;U16;;MeterStatus;;1;0;;4
+232;3;24578;U16;;Phase A voltage;U_AC_1;0.1;0;V;4
+233;3;24579;U16;;Phase B voltage;U_AC_2;0.1;0;V;4
+234;3;24580;U16;;Phase C voltage;U_AC_3;0.1;0;V;4
+235;3;24581;U16;;Phase A current;I_AC_1;0.01;0;A;4
+236;3;24582;U16;;Phase B current;I_AC_2;0.01;0;A;4
+237;3;24583;U16;;Phase C current;I_AC_3;0.01;0;A;4
+238;3;24584;I16;;Phase A active power;P_AC_1;1;0;W;4
+239;3;24585;I16;;Phase B active power;P_AC_2;1;0;W;4
+240;3;24586;I16;;Phase C active power;P_AC_3;1;0;W;4
+241;3;24587;I16;;Total active power;;1;0;W;4
+242;3;24588;I16;;Phase A reactive power;Q_AC_1;1;0;Var;4
+243;3;24589;I16;;Phase B reactive power;Q_AC_2;1;0;Var;4
+244;3;24590;I16;;Phase C reactive power;Q_AC_3;1;0;Var;4
+245;3;24591;I16;;Total reactive power;;1;0;Var;4
+246;3;24592;I16;;Phase A apparent power;S_AC_1;1;0;VA;4
+247;3;24593;I16;;Phase B apparent power;S_AC_2;1;0;VA;4
+248;3;24594;I16;;Phase C apparent power;S_AC_3;1;0;VA;4
+249;3;24595;I16;;Total apparent power;;1;0;VA;4
+250;3;24596;I16;;Phase A power factor;PF_1;1;0;;4
+251;3;24597;I16;;Phase B power factor;PF_2;1;0;;4
+252;3;24598;I16;;Phase C power factor;PF_3;1;0;;4
+253;3;24599;I16;;Total power factor;PF;1;0;;4
+254;3;24600;U16;;Frequency;;0.01;0;Hz;4
+255;3;24601;F32;;E-Total-Sell_1;;1;0;W;4
+256;3;24603;F32;;E-Total-Buy_1;;1;0;W;4
+257;3;28928;U16;;Vac1;;0.1;0;V;4
+258;3;28929;U16;;Fac1;;0.01;0;Hz;4
+259;3;28930;U16;;Pac L;;1;0;W;4
+260;3;28931;U16;;Work Mode_1;;1;0;;4
+261;3;28932;U16;;Error Message H_1;;1;0;;4
+262;3;28933;U16;;Error Message L_1;;1;0;;4
+263;3;28934;U16;;Line1AvgFaultValue;;0.1;0;V;4
+264;3;28935;U16;;Line1AvgFaultTime;;1;0;s;4
+265;3;28936;U16;;Line1VHighfaultValue;;0.1;0;V;4
+266;3;28937;U16;;Line1VHighfaultTime;;1;0;ms;4
+267;3;28938;U16;;Line1VLowfaultValue;;0.1;0;V;4
+268;3;28939;U16;;Line1VLowfaultTime;;1;0;ms;4
+269;3;28940;U16;;Line1FHighfaultValueCom;;0.01;0;Hz;4
+270;3;28941;U16;;Line1FhighfaultTimeCom;;1;0;ms;4
+271;3;28942;U16;;Line1FlowfaultValueCom;;0.01;0;Hz;4
+272;3;28943;U16;;Line1FlowfaultTimeCom;;1;0;ms;4
+273;3;28944;U16;;Line1FHighfaultValue;;0.01;0;Hz;4
+274;3;28945;U16;;Line1FHighfaultTime;;1;0;ms;4
+275;3;28946;U16;;Line1FLowfaultValue;;0.01;0;Hz;4
+276;3;28947;U16;;Line1FLowfaultTime;;1;0;ms;4
+277;3;28948;U16;;SimVoltage;;0.1;0;V;4
+278;3;28949;U16;;SimFrequency;;0.01;0;Hz;4
+279;3;28950;U16;;TestResult;;1;0;;4
+280;3;28951;U16;;SelftestStep;;1;0;;4
+281;3;28952;U16;;Start Test;;1;0;;4
+282;3;28953;U16;;SetRemotesafety;;1;0;;4
+283;3;28954;U16;;Line1VlowfaultValueS2;;0.1;0;V;4
+284;3;28955;U16;;Line1VlowfaultTimeS2;;1;0;ms;4
+285;3;35250;U32;;ExtGridDetailedErrH;;1;0;;4
+286;3;35252;U32;;ExtGridDetailedErrL;;1;0;;4
+287;3;35254;U32;;ExtInvDetailedErrH;;1;0;;4
+288;3;35256;U32;;ExtInvDetailedErrL;;1;0;;4
+289;3;35258;U32;;ExtInvDetailedStatus H;;1;0;;4
+290;3;35260;U32;;ExtInvDetailedStatus L;;1;0;;4
+291;3;45400;U16;;GridVoltHighS1_1;;10;0;V;4
+292;3;45401;U16;;GridVoltHighS1Time_1;;1;0;periods;4
+293;3;45402;U16;;GridVoltLowS1_1;;10;0;V;4
+294;3;45403;U16;;GridVoltLowS1Time_1;;1;0;periods;4
+295;3;45404;U16;;GridVoltHighS2_1;;10;0;V;4
+296;3;45405;U16;;GridVoltHighS2Time_1;;1;0;periods;4
+297;3;45406;U16;;GridVoltLowS2_1;;10;0;V;4
+298;3;45407;U16;;GridVoltLowS2Time_1;;1;0;periods;4
+299;3;45408;U16;;GridVoltQualit_1;;10;0;V;4
+300;3;45409;U16;;GridFreqHighS1_1;;100;0;Hz;4
+301;3;45410;U16;;GridFreqHighS1Time_1;;1;0;periods;4
+302;3;45411;U16;;GridFreqLowS1_1;;100;0;Hz;4
+303;3;45412;U16;;GridFreqLowS1Time_1;;1;0;periods;4
+304;3;45413;U16;;GridFreqHighS2_1;;100;0;Hz;4
+305;3;45414;U16;;GridFreqHighS2Time_1;;1;0;periods;4
+306;3;45415;U16;;GridFreqLowS2_1;;100;0;Hz;4
+307;3;45416;U16;;GridFreqLowS2Time_1;;1;0;periods;4
+308;3;45417;U16;;GridVoltHigh;;10;0;V;4
+309;3;45418;U16;;GridVoltLow;;10;0;V;4
+310;3;45419;U16;;GridFreqHigh;;100;0;Hz;4
+311;3;45420;U16;;GridFreqLow;;100;0;Hz;4
+312;3;45421;U16;;GridStartTime;;1;0;s;4
+313;3;45422;U16;;GridVoltRecoverHigh_1;;10;0;V;4
+314;3;45423;U16;;GridVoltRecoverLow_1;;10;0;V;4
+315;3;45424;U16;;GridFreqRecoverHigh_1;;100;0;Hz;4
+316;3;45425;U16;;GridFreqRecoverLow_1;;100;0;Hz;4
+317;3;45426;U16;;GridRecoverTime;;1;0;s;4
+318;3;45428;U16;;Power rate limit (generate);;1;0;s;4
+319;3;45429;U16;;Power rate limit (reconnect);;1;0;s;4
+320;3;45430;U16;;Power rate limit (reduction);;1;0;s;4
+321;3;45431;U16;;GridProtect;;1;0;;4
+322;3;45432;U16;;power slope enable;;1;0;;4
+323;3;45433;U16;;Enable Curve;;1;0;;4
+324;3;45434;I16;;A point powerPerc;;0.1;0;%PN;4
+325;3;45435;I16;;A point cos phi;;100;0;;4
+326;3;45436;I16;;B point powerPerc;;0.1;0;%PN;4
+327;3;45437;I16;;B point cos phi;;100;0;;4
+328;3;45438;I16;;C pointpowerPerc;;0.1;0;%PN;4
+329;3;45439;I16;;C point cos phi;;100;0;;4
+330;3;45440;U16;;lock in voltage;;10;0;V;4
+331;3;45441;U16;;lock out voltage;;10;0;V;4
+332;3;45442;I16;;lock out powerPerc;;0.1;0;%PN;4
+333;3;45443;U16;;Power & frequency curve;;1;0;;4
+334;3;45444;U16;;Ffrozen-DCH (frequency of Pm);;100;0;Hz;4
+335;3;45445;U16;;Ffrozen-CH (frequency of Pm);;100;0;Hz;4
+336;3;45446;U16;;fstop-DCH;;100;0;Hz;4
+337;3;45447;U16;;fstop-CH;;100;0;Hz;4
+338;3;45448;U16;;Recovery waiting time;;1;0;s;4
+339;3;45449;U16;;Recovery frequency1;;100;0;Hz;4
+340;3;45450;U16;;Recovery frequency2;;100;0;Hz;4
+341;3;45451;U16;;RecoveryHoldTime;;1;0;s;4
+342;3;45452;U16;;Ffrozen-DCH (frequency of Pm) FP_Setting;;1;0;;4
+343;3;45453;I16;;Ffrozen-CH (frequency of Pm) Over frequency SlopePercHz;;0.1;0;%/Hz;4
+344;3;45454;I16;;down slope power reference Under frequency SlopePercHz;;0.1;0;%/Hz;4
+345;3;45455;I16;;down slope FP_RecoverPowerPerc;;0.1;0;%Pn/min;4
+346;3;45456;U16;;QU curve;;1;0;;4
+347;3;45457;I16;;QU lock in powerPerc;;0.1;0;%Pn;4
+348;3;45458;I16;;QU lock out powerPerc;;0.1;0;%Pn;4
+349;3;45459;U16;;QU V1 voltage;;10;0;V;4
+350;3;45460;I16;;QU V1 value (var per thousand rated VA);;0.1;0;%Pn;4
+351;3;45461;U16;;QU V2 voltage;;10;0;V;4
+352;3;45462;I16;;QU V2 value (var per thousand rated VA);;0.1;0;%Pn;4
+353;3;45463;U16;;QU V3 voltage;;10;0;V;4
+354;3;45464;I16;;QU V3 value (var per thousand rated VA);;0.1;0;%Pn;4
+355;3;45465;U16;;QU V4 voltage;;10;0;V;4
+356;3;45466;I16;;QU V4 value (var per thousand rated VA);;0.1;0;%Pn;4
+357;3;45467;I16;;QU K value (Select one set: K value or V2 value & V3 value);;1;0;Var;4
+358;3;45468;U16;;QU time constant;;1;0;;4
+359;3;45472;U16;;PU curve;;1;0;;4
+360;3;45473;U16;;Power change rate;;1;0;s;4
+361;3;45474;U16;;PU V1 voltage;;10;0;V;4
+362;3;45475;I16;;PU V1 value ((P/Pn));;0.1;0;%Pn;4
+363;3;45476;U16;;PU V2 voltage;;10;0;V;4
+364;3;45477;I16;;PU V2 value ((P/Pn));;0.1;0;%Pn;4
+365;3;45478;U16;;PU V3 voltage;;10;0;V;4
+366;3;45479;I16;;PU V3 value ((P/Pn));;0.1;0;%Pn;4
+367;3;45480;U16;;PU V4 voltage;;10;0;V;4
+368;3;45481;I16;;PU V4 value ((P/Pn));;0.1;0;%Pn;4
+369;3;45482;U16;;Fixed Power Factor;;100;0;;4
+370;3;45483;I16;;Fixed reactive power;;0.1;0;%Pn;4
+371;3;45484;U16;;Fixed active power;CMD_P_AC_SET_PERCENT;0.1;0;%Pn;1
+372;3;45488;U16;;Auto Test Enable;;1;0;;4
+373;3;45489;U16;;Auto Test step;;1;0;;4
+374;3;45490;U16;;uwItalyFreqMode;;1;0;;4
+375;3;45491;U16;;All Power Curve Disable;;1;0;;4
+376;3;45492;U16;;R phase fixed active power;;0.1;0;%;4
+377;3;45493;U16;;S phase fixed active power;;0.1;0;%;4
+378;3;45494;U16;;T phase fixed active power;;0.1;0;%;4
+379;3;45495;U16;;GridVoltHighS3;;10;0;V;4
+380;3;45496;U16;;GridVoltHighS3Time;;1;0;periods;4
+381;3;45497;U16;;GridVoltLowS3;;10;0;V;4
+382;3;45498;U16;;GridVoltLowS3Time;;1;0;periods;4
+383;3;45499;U16;;ZvrtConfig;;1;0;;4
+384;3;45500;U16;;LvrtStartVolt;;10;0;V;4
+385;3;45501;U16;;LvrtEndVolt;;10;0;V;4
+386;3;45502;U16;;LvrtStartTripTime;;1;0;periods;4
+387;3;45503;U16;;LvrtEndTripTime;;1;0;periods;4
+388;3;45504;U16;;LvrtTripLimitVolt;;10;0;V;4
+389;3;45505;U16;;HvrtStartVolt;;10;0;V;4
+390;3;45506;U16;;HvrtEndVolt;;10;0;V;4
+391;3;45507;U16;;HvrtStartTripTime;;1;0;periods;4
+392;3;45508;U16;;HvrtEndTripTime;;1;0;periods;4
+393;3;45509;U16;;HvrtTripLimitVolt;;10;0;V;4
+394;3;45510;U16;;PU time constant;;1;0;;4
+395;3;47010;U16;;Dred OffGrid Check;;1;0;;4

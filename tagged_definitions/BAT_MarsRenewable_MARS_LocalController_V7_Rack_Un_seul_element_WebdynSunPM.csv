@@ -1,0 +1,36 @@
+﻿modbusRTU;Other;MarsRenewable;MARS_LocalController_V7_Rack_U;;;;;;;
+1;4;0;U16;;Rack - Number of cells in Rack;;1.0;0.0;;4
+2;4;1;U16;;Rack - Rack Voltage;;1.0;0.0;V;4
+3;4;3;U16;;Rack - Rack Current;;1.0;0.0;A;4
+4;4;5;U16;;Rack - Rack SOC;;1.0;0.0;%;4
+5;4;7;U16;;Rack - Rack SOH;;1.0;0.0;%;4
+6;4;9;U16;;Rack - Rack Insulation Resistance;R_ISO;1.0;0.0;Ohm;4
+7;4;11;U16;;Rack - Maximum Allowable Charge Current;;1.0;0.0;A;4
+8;4;13;U16;;Rack - Maximum Allowable Discharge Current;;1.0;0.0;A;4
+9;4;15;U16;;Rack - Total Charge Energy;E_TOT;1.0;0.0;kWh;4
+10;4;17;U16;;Rack - Total Discharge Energy;;1.0;0.0;kWh;4
+11;4;19;U16;;Rack - Available Charge Energy;;1.0;0.0;kWh;4
+12;4;21;U16;;Rack - Available Discharge Energy;;1.0;0.0;kWh;4
+13;4;23;U16;;Rack - Average Cell Voltage;;1.0;0.0;V;4
+14;4;25;U16;;Rack - Average Cell Temperature;TEMP_CELL;1.0;0.0;Degr.Celsius;4
+15;4;27;U16;;Rack - Maximum Cell Voltage;;1.0;0.0;V;4
+16;4;29;U16;;Rack - Maximum Cell Voltage Cell Number;;1.0;0.0;;4
+17;4;31;U16;;Rack - Minimum Cell Voltage;;1.0;0.0;V;4
+18;4;33;U16;;Rack - Minimum Cell Voltage Cell Number;;1.0;0.0;;4
+19;4;35;U16;;Rack - Maximum Cell Temperature;;1.0;0.0;Degr.Celsius;4
+20;4;37;U16;;Rack - Maximum Cell Temperature Cell Number;;1.0;0.0;;4
+21;4;39;U16;;Rack - Minimum Cell Temperature;;1.0;0.0;Degr.Celsius;4
+22;4;41;U16;;Rack - Minimum Cell Temperature Cell Number;;1.0;0.0;;4
+23;4;43;U16;;Rack - Maximum Cell SOC;;1.0;0.0;%;4
+24;4;45;U16;;Rack - Maximum Cell SOC Cell Number;;1.0;0.0;;4
+25;4;47;U16;;Rack - Minimum Cell SOC;;1.0;0.0;%;4
+26;4;49;U16;;Rack - Minimum Cell SOC Cell Number;;1.0;0.0;;4
+27;4;51;U16;;Rack - Maximum Cell SOH;;1.0;0.0;%;4
+28;4;53;U16;;Rack - Maximum Cell SOH Cell Number;;1.0;0.0;;4
+29;4;55;U16;;Rack - Minimum Cell SOH;;1.0;0.0;%;4
+30;4;57;U16;;Rack - Minimum Cell SOH Cell Number;;1.0;0.0;;4
+31;4;100;U16;;1# Cell - Cell Voltage;;1.0;0.0;V;4
+32;4;102;U16;;1# Cell - Cell Temperature;;1.0;0.0;Degr.Celsius;4
+33;4;104;U16;;1# Cell - Cell SOC;;1.0;0.0;%;4
+34;4;106;U16;;1# Cell - Cell SOH;;1.0;0.0;%;4
+35;4;108;U16;;1# Cell - Cell Resistance;;1.0;0.0;Ohm;4

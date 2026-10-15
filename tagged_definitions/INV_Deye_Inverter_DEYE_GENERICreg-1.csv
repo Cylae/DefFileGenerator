@@ -1,0 +1,87 @@
+﻿modbusRTU;Inverter;DeYe;GENERIC;1;;;;;;
+1;3;59;I16;;DayActive PowerWh;;0.1;0;kWh;4
+2;3;60;I16;;DayReactive PowerWh;Q_AC;0.1;0;kVarh;4
+3;3;61;U16;;Day Grid Work Time;;1;0;s;4
+4;3;62;U32;;Total_Active_PowerWh;;0.1;0;kWh;4
+5;3;64;U16;;Total_Reactive_PowerWh;;0.1;0;kVarh;4
+6;3;69;U16;;Grid voltage AB;;0.1;0;V;4
+7;3;70;U16;;Grid voltage BC;;0.1;0;V;4
+8;3;71;U16;;Grid voltage AC;;0.1;0;V;4
+9;3;72;U16;;Grid voltage A;;0.1;0;V;4
+10;3;73;U16;;Grid voltage B;;0.1;0;V;4
+11;3;74;U16;;Grid voltage C;;0.1;0;V;4
+12;3;75;U16;;Grid  current A;;0.1;0;A;4
+13;3;76;U16;;Grid  current B;;0.1;0;A;4
+14;3;77;U16;;Grid  current C;;0.1;0;A;4
+15;3;78;U16;;Grid frequency;FREQ;0.01;0;Hz;4
+16;3;90;U16;;IGBT temperature;;0.1;0;C;4
+17;3;92;U16;;power factor;PF;1;0;;4
+18;3;98;I16;;Limter power;;1;0;W;4
+19;3;107;I16;;Day PV PowerWh;;0.1;0;kWh;4
+20;3;108;U16;;Dc voltage 1;U_DC;0.1;0;V;4
+21;3;109;U16;;Dc current 1;I_DC;0.1;0;A;4
+22;3;110;U16;;Dc voltage 2;;0.1;0;V;4
+23;3;111;U16;;Dc current 2;;0.1;0;A;4
+24;3;112;U16;;Dc voltage 3;;0.1;0;V;4
+25;3;113;U16;;Dc current 3;;0.1;0;A;4
+26;3;114;U16;;Dc voltage 4;;0.1;0;V;4
+27;3;115;U16;;Dc current 4;;0.1;0;A;4
+28;3;197;U32;;Load_power;;1;0;W;4
+29;3;199;U16;;Day_Load_PowerWh;;0.01;0;kWh;4
+30;3;200;U32;;Total_Load_PowerWh;;0.1;0;kWh;4
+31;3;202;U32;;Meter power;;1;0;W;4
+32;3;204;U16;;Day_ Export _PowerWh;;0.01;0;kWh;4
+33;3;205;U32;;Total_Export _PowerWh;;0.1;0;kWh;4
+34;3;207;U16;;Day_ Import _PowerWh;;0.01;0;kWh;4
+35;3;208;U32;;Total_ Import _PowerWh;;0.1;0;kWh;4
+36;3;210;U16;;Dc voltage 5;;0.1;0;V;4
+37;3;211;U16;;Dc current 5;;0.1;0;A;4
+38;3;212;U16;;Dc voltage 6;;0.1;0;V;4
+39;3;213;U16;;Dc current 6;;0.1;0;A;4
+40;3;214;U16;;Dc voltage 7;;0.1;0;V;4
+41;3;215;U16;;Dc current 7;;0.1;0;A;4
+42;3;216;U16;;Dc voltage 8;;0.1;0;V;4
+43;3;217;U16;;Dc current 8;;0.1;0;A;4
+44;3;228;I16;;Phase A ActivePower;P_AC_1;1;0;W;4
+45;3;229;I16;;Phase A ActivePower_1;;1;0;W;4
+46;3;230;I16;;Phase B ActivePower;P_AC_2;1;0;W;4
+47;3;231;I16;;Phase B ActivePower_1;;1;0;W;4
+48;3;232;I16;;Phase C ActivePower;P_AC_3;1;0;W;4
+49;3;233;I16;;Phase C ActivePower_1;;1;0;W;4
+50;3;285;I32;;Meter_current power;;1;0;;4
+51;3;287_0_1;BITS;;Bit0;;1;0;;4
+52;3;287_1_1;BITS;;Bit1;;1;0;;4
+53;3;287_2_1;BITS;;Bit2;;1;0;;4
+54;3;287_5_4;BITS;;Bit5-8;;1;0;;4
+55;3;288_0_1;BITS;;Bit0_;;1;0;;4
+56;3;288_1_1;BITS;;Bit1_;;1;0;;4
+57;3;288_2_1;BITS;;Bit2_;;1;0;;4
+58;3;288_3_1;BITS;;Bit3;;1;0;;4
+59;3;289;U16;;Active power regulation for exteranl controller;P_AC;1;0;%;4
+60;3;290;U16;;Reactive power regulation for exteranl controller;;1;0;%;4
+61;3;299;U16;;Grid voltage Upper limit2;;0.1;0;V;4
+62;3;300;U16;;Grid voltage Upper limit3;;0.1;0;V;4
+63;3;301;U16;;Grid voltage Lower limit2;;0.1;0;V;4
+64;3;302;U16;;Grid voltage Lower limit3;;0.1;0;V;4
+65;3;303;I32;;Grid frequency upper limit2;;0.01;0;Hz;4
+66;3;304;I32;;Grid frequency upper limit3;;0.01;0;Hz;4
+67;3;305;I32;;Grid frequency lower limit2;;0.01;0;Hz;4
+68;3;306;I32;;Grid frequency lower limit3;;0.01;0;Hz;4
+69;3;307;I32;;Grid voltage Upper Tripping time1;;10;0;ms;4
+70;3;308;I32;;Grid voltage Upper Tripping time2;;10;0;ms;4
+71;3;309;I16;;Grid voltage Upper Tripping time3;;10;0;ms;4
+72;3;310;U16;;Grid voltage Lower Tripping time1;;10;0;ms;4
+73;3;311;U16;;Grid voltage Lower Tripping time2;;10;0;ms;4
+74;3;312;I16;;Grid voltage Lower Tripping time3;;10;0;ms;4
+75;3;313;U16;;Grid frequency Upper Tripping time1;;10;0;ms;4
+76;3;314;U16;;Grid frequency Upper Tripping time2;;10;0;ms;4
+77;3;315;U16;;Grid frequency Upper Tripping time3;;10;0;ms;4
+78;3;316;U32;;Grid frequency Lower Tripping time1;;10;0;ms;4
+79;3;317;U32;;Grid frequency Lower Tripping time2;;10;0;ms;4
+80;3;318;U32;;Grid frequency Lower Tripping time3;;10;0;ms;4
+81;3;599;U32;;Day_Load_Power_low word;;0.01;0;kWh;4
+82;3;600;U32;;Day_Load_Power_high word_1;;0.01;0;kWh;4
+83;3;601;U32;;Day_Load_Power_high word_2;;0.01;0;kWh;4
+84;3;602;U32;;Day_Load_Power_high word_3;;0.01;0;kWh;4
+85;3;603;U16;;Day_Load_Power_high word_4;;0.01;0;kWh;4
+86;3;604;I16;;Day_Load_Power_high word_5;;0.01;0;kWh;4

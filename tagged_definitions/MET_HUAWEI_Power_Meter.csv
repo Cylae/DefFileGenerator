@@ -1,0 +1,45 @@
+﻿Modbus;Meter;HUAWEI;Power_Meter;;;;;;;
+1;3;32260;U32;;Phase A Voltage;U_AC_1;0.01;0.0;V;4
+2;3;32262;U32;;Phase B Voltage;U_AC_2;0.01;0.0;V;4
+3;3;32264;U32;;Phase C Voltage;U_AC_3;0.01;0.0;V;4
+4;3;32266;U32;;A-B line voltage;;0.01;0.0;V;4
+5;3;32268;U32;;B-C line voltage;;0.01;0.0;V;4
+6;3;32270;U32;;C-A line voltage;;0.01;0.0;V;4
+7;3;32272;I32;;Phase A current;I_AC_1;0.1;0.0;A;4
+8;3;32274;I32;;Phase B current;I_AC_2;0.1;0.0;A;4
+9;3;32276;I32;;Phase C current;I_AC_3;0.1;0.0;A;4
+10;3;32278;I32;;Active Power;P_AC;0.001;0.0;kW;4
+11;3;32280;I32;;Reactive Power;Q_AC;0.001;0.0;kVar;4
+12;3;32282;I32;;Active electricity (Reserved);;0.1;0.0;kWh;4
+13;3;32284;I16;;Power factor;PF;0.001;0.0;;4
+14;3;32285;I32;;Reactive electricity (Reserved);;0.1;0.0;kvarh;4
+15;3;32287;I32;;Apparent power;S_AC;0.001;0.0;kVA;4
+16;3;32289;I32;;Positive active electricity (Reserved);;0.01;0.0;kWh;4
+17;3;32291;I32;;Positive active electricity in kvarh (Reserved);;0.01;0.0;kvarh;4
+18;3;32299;I32;;Electricity in positive electricity price segment 1;;0.01;0.0;kWh;4
+19;3;32301;I32;;Electricity in positive electricity price segment 2;;0.01;0.0;kWh;4
+20;3;32303;I32;;Electricity in positive electricity price segment 3;;0.01;0.0;kWh;4
+21;3;32305;I32;;Electricity in positive electricity price segment 4;;0.01;0.0;kWh;4
+22;3;32307;I32;;Electricity in negative electricity price segment 1;;0.01;0.0;kWh;4
+23;3;32309;I32;;Electricity in negative electricity price segment 2;;0.01;0.0;kWh;4
+24;3;32311;I32;;Electricity in negative electricity price segment 3;;0.01;0.0;kWh;4
+25;3;32313;I32;;Electricity in negative electricity price segment 4;;0.01;0.0;kWh;4
+26;3;32315;I32;;Custom 1;;0.001;0.0;;4
+27;3;32317;I32;;Custom 2;;0.001;0.0;;4
+28;3;32319;I32;;Custom 3;;0.001;0.0;;4
+29;3;32321;I32;;Custom 4;;0.001;0.0;;4
+30;3;32323;I32;;Custom 5;;0.001;0.0;;4
+31;3;32325;I32;;Custom 6;;0.001;0.0;;4
+32;3;32327;I32;;Custom 7;;0.001;0.0;;4
+33;3;32329;I32;;Custom 8;;0.001;0.0;;4
+34;3;32331;I32;;Custom 9;;0.001;0.0;;4
+35;3;32333;I32;;Custom 10;;0.001;0.0;;4
+36;3;32335;I32;;Phase A active power;P_AC_1;0.001;0.0;kW;4
+37;3;32337;I32;;Phase B active power;P_AC_2;0.01;0.0;kW;4
+38;3;32339;I32;;Phase C active power;P_AC_3;0.01;0.0;kW;4
+39;3;32341;I64;;Total active electricity;;0.01;0.0;kWh;4
+40;3;32345;I64;;Total reactive electricity;;0.01;0.0;kvarh;4
+41;3;32349;I64;;Negative active electricity;;0.01;0.0;kWh;4
+42;3;32353;I64;;Negative active electricity in kvarh;;0.01;0.0;kvarh;4
+43;3;32357;I64;;Postive active electricity;;0.01;0.0;kWh;4
+44;3;32361;I64;;Positive reactive electricity in kvarh;;0.01;0.0;kvarh;4

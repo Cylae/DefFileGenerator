@@ -1,0 +1,20 @@
+﻿modbusRTU;Sensor;MEIER-NT;ADL-SR;;;;;;;
+1;4;30001;F32;;temperature 1 (internal solar cell/device temperature);TEMP_CELL;1;0;C;4
+2;4;30003;F32;;temperature 2 (external);;1;0;C;4
+3;4;30005;F32;;radiation;;1;0;W/m;4
+4;4;30007;F32;;radiation energy;;1;0;Wh/m;4
+5;4;30009;F32;;wind speed;WIND_SPEED;1;0;m/s;4
+6;4;30100;U16;;Cycle-Counter;;1;0;;4
+7;4;30102;U32;;yield in Wh;;1;0;Wh;4
+8;3;40201;U16;;Sensortype;;1;0;;1
+9;3;40202;U16;;Number of sensors;;1;0;;1
+10;3;40203;U16;;Serial number part 1;SERIAL;1;0;;1
+11;3;40204;U16;;Serial number part 2;;1;0;;1
+12;3;40205;U16;;Firmware revision;;1;0;;1
+13;3;40206;U16;;ModBus address;UNIT_ID;1;0;;1
+14;3;40207;U16;;all values are write protection ON except the Password: 0xA55A (hex) = 42330 (dec);;1;0;;1
+15;3;40208;U16;;RS485 - Response delay in ms;;1;0;ms;1
+16;3;40214;U16;;baud rate;;1;0;;1
+17;3;40219;I32;;Calibration time stamp;;1;0;;1
+18;3;40221;U16;;"0xF0 = RS485-Termination disabled 
+0x00 = RS485-Termination enabled";;1;0;;1

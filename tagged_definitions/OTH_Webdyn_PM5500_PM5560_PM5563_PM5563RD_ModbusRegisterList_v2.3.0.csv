@@ -1,0 +1,33 @@
+﻿modbusRTU;Other;Webdyn;PM5500_PM5560_PM5563_PM5563RD_;;;;;;;
+1;4;1;U16;;None;;1.0;0.0;---;4
+2;4;30;U16;;None;;1.0;0.0;---;4
+3;4;30;U16;;Meter Name;;1.0;0.0;---;4
+4;4;50;U16;;Meter Model;MODEL;1.0;0.0;---;4
+5;4;70;U16;;Manufacturer;MANUFACTURER;1.0;0.0;---;4
+6;4;90;U16;;Product ID Number;;1.0;0.0;---;4
+7;4;120;U16;;None;;1.0;0.0;---;4
+8;4;130;U16;;Serial Number;SERIAL;1.0;0.0;---;4
+9;4;132;U16;;Date of Manufacture;;1.0;0.0;---;4
+10;4;136;U16;;Hardware Revision;;1.0;0.0;---;4
+11;4;1637;U16;;None;;1.0;0.0;---;4
+12;4;1637;U16;;Present Firmware Version (DLF Format) X.Y.T;;1.0;0.0;---;4
+13;4;1638;U16;;X – Major;;1.0;0.0;---;4
+14;4;1639;U16;;Y – Minor;;1.0;0.0;---;4
+15;4;1640;U16;;Z – Quality;;1.0;0.0;---;4
+16;4;1642;U16;;Previous Firmware Version (DLF Format) X.Y.T;;1.0;0.0;---;4
+17;4;1643;U16;;X – Major;;1.0;0.0;---;4
+18;4;1644;U16;;Y – Minor;;1.0;0.0;---;4
+19;4;1645;U16;;Z – Quality;;1.0;0.0;---;4
+20;4;1647;U16;;Date/Time of Last Firmware Download;;1.0;0.0;---;4
+21;4;1669;U16;;None;;1.0;0.0;---;4
+22;4;1669;U16;;Present Firmware Version (DLF Format) X.Y.T;;1.0;0.0;---;4
+23;4;1701;U16;;None;;1.0;0.0;---;4
+24;4;1701;U16;;Present Firmware Version (DLF Format) X.Y.T;;1.0;0.0;---;4
+25;4;1822;U16;;None;;1.0;0.0;---;4
+26;4;1824;U16;;Last Unit Restart DateTime;;1.0;0.0;---;4
+27;4;1828;U16;;Number of Metering System Restarts;;1.0;0.0;---;4
+28;4;1829;U16;;Number of Control Power Failures;;1.0;0.0;---;4
+29;4;1830;U16;;Date/Time of Last Control Power Failure;;1.0;0.0;---;4
+30;4;1834;U16;;Duration of Last Control Power Failure;;1.0;0.0;seconds;4
+31;4;1836;U16;;Cause of Last Meter Reset;;1.0;0.0;---;4
+32;4;1837;U16;;None;;1.0;0.0;---;4

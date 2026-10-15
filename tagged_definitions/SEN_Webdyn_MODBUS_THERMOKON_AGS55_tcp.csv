@@ -1,0 +1,67 @@
+﻿modbusTCP;Sensor;Webdyn;Thermokon AGS55;;;;;;;
+1;3;0;I16;;Temperature 1;TEMP_CELL;0.1;0;°C;4
+2;3;1;I16;;Relative humidity;HUMIDITY;0.1;0;;4
+3;3;2;I16;;Absolute humidity;;0.01;0;g/m³;4
+4;3;3;I16;;Enthalpy;;0.1;0;kJ/kg;4
+5;3;4;I16;;Dew Point;;0.1;0;°C;4
+6;3;5;I16;;CO2;AVOIDED_CO2;1;0;;4
+7;3;6;I16;;VOC;;0.1;0;;4
+8;3;7;I16;;CO2 VOC Mix;;0.1;0;;4
+9;3;8;I16;;Differential pressure 1;PRESSURE;1;0;Pa;4
+10;3;9;U16;;Volume flow 1;;100;0;m³/h;4
+11;3;10;I16;;Differential pressure 2;;1;0;Pa;4
+12;3;11;U16;;Volume flow 2;;100;0;m³/h;4
+13;3;12;U16;;Atmospheric Pressure;;1;0;hPa;4
+14;3;13;I16;;Temperature2;;0.1;0;°C;4
+15;3;50;I32;;Low/high Volume flow 1 (32bit);;100;0;m³/h;4
+16;3;52;I32;;Low/high Volume flow 2 (32bit);;1;0;m³/h;4
+17;3;60;I32;;Low/High Illumination 1;;1;0;Lux;4
+18;3;62;I32;;Low/High Illumination 2;;1;0;Lux;4
+19;3;90;I16;;Input 1 -TemperatureNTC10k;;0.1;0;°C;4
+20;3;91;I16;;Input 2 -TemperatureNTC10k;;0.1;0;°C;4
+21;3;92;I16;;Input 1  Switch contact;;1;0;;4
+22;3;93;I16;;Input 2  Switch contact;;1;0;;4
+23;3;100;I16;;Offset Temperature1;;0.1;0;°C;4
+24;3;101;I16;;Offset relative humidity;;1;0;%rF;4
+25;3;102;I16;;Offset CO2;;1;0;ppm;4
+26;3;103;I16;;Offset VOC;;1;0;%;4
+27;3;104;I16;;Offset differential pressure 1;;1;0;Pa;4
+28;3;105;I16;;Offset differential pressure 2;;1;0;Pa;4
+29;3;106;I16;;Offset Illumination 1;;1;0;Lux;4
+30;3;107;I16;;Offset Illumination 2;;1;0;Lux;4
+31;3;108;I16;;Offset Atmospheric Pressure;;1;0;hPa;4
+32;3;109;I16;;Offset Temperature2;;0.1;0;°C;4
+33;3;150;U16;;Correction factor illumination 1;;0.001;0;;4
+34;3;151;U16;;Correction factor illumination 2;;0.001;0;;4
+35;3;200;I16;;Temperature1 lower limit;;1;0;°C;4
+36;3;201;I16;;Temperature1 upper limit;;1;0;°C;4
+37;3;202;I16;;Relative humidity lower limit;;1;0;;4
+38;3;203;I16;;Relative humidity upper limit;;1;0;;4
+39;3;204;I16;;Absolute humidity lower limit;;1;0;g/m³;4
+40;3;205;I16;;Absolute humidity upper limit;;1;0;g/m³;4
+41;3;206;I16;;Enthalpy lower limit;;1;0;kJ/kg;4
+42;3;207;I16;;Enthalpy upper limit;;1;0;kJ/kg;4
+43;3;208;I16;;Dew point lower limit;;1;0;°C;4
+44;3;209;I16;;Dew point upper limit;;1;0;°C;4
+45;3;210;I16;;CO2 lower limit;;1;0;;4
+46;3;211;I16;;CO2 upper limit;;1;0;;4
+47;3;212;I16;;VOC lower limit;;1;0;;4
+48;3;213;I16;;VOC upper limit;;1;0;;4
+49;3;214;I16;;CO2 VOC Mix lower limit;;1;0;;4
+50;3;215;I16;;CO2 VOC Mix upper limit;;1;0;;4
+51;3;218;U16;;Volume flow 1 lower limit;;100;0;m³/h;4
+52;3;219;U16;;Volume flow 1 upper limit;;100;0;m³/h;4
+53;3;222;U16;;Volume flow 2 lower limit;;100;0;m³/h;4
+54;3;223;U16;;Volume flow 2 upper limit;;100;0;m³/h;4
+55;3;224;U32;;Low/High Illumination 1 lower limit;;1;0;Lux;4
+56;3;226;U32;;Low/High Illumination 1 upper limit;;1;0;Lux;4
+57;3;228;U32;;Low/High Illumination 2 lower limit;;1;0;Lux;4
+58;3;230;U32;;Low/High Illumination 2 upper limit;;1;0;Lux;4
+59;3;232;I16;;Atmospheric Pressure Lower limit;;1;0;hPa;4
+60;3;233;I16;;Atmospheric Pressure upper limit;;1;0;hPa;4
+61;3;234;I16;;Temperature2 lower limit;;1;0;°C;4
+62;3;235;I16;;Temperature2 upper limit;;1;0;°C;4
+63;3;400;U16;;Selection of unit system;;1;0;;4
+64;3;500;U16;;Device identification;;1;0;;4
+65;3;501;U16;;Sensor identification;;1;0;;4
+66;3;600;U16;;LCD;;1;0;;4

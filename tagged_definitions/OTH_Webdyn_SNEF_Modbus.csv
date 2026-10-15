@@ -1,0 +1,17 @@
+﻿modbusRTU;Other;Webdyn;SNEF_Modbus;;;;;;;
+1;4;4120;U16;;ActivePower-Phase1;P_AC_1;1.0;0.0;mW;4
+2;4;4122;U16;;ActivePower-Phase2;P_AC_2;1.0;0.0;mW;4
+3;4;4124;U16;;ActivePower-Phase3;P_AC_3;1.0;0.0;mW;4
+4;4;0;U16;;Voltage-Phase1-N;U_AC_1;1.0;0.0;mV;4
+5;4;2;U16;;Voltage-Phase2-N;;1.0;0.0;mV;4
+6;4;4;U16;;Voltage-Phase3-N;;1.0;0.0;mV;4
+7;4;14;U16;;Current-Phase1;I_AC_1;1.0;0.0;mA;4
+8;4;16;U16;;Current-Phase2;I_AC_2;1.0;0.0;mA;4
+9;4;18;U16;;Current-Phase3;I_AC_3;1.0;0.0;mA;4
+10;4;4136;U16;;ReactivePower-Phase1;Q_AC_1;1.0;0.0;mvar;4
+11;4;4138;U16;;ReactivePower-Phase2;Q_AC_2;1.0;0.0;mvar;4
+12;4;4140;U16;;ReactivePower-Phase3;Q_AC_3;1.0;0.0;mvar;4
+13;4;5132;U16;;ActiveEnergy;;1.0;0.0;mWh;4
+14;4;72;U16;;CosPhi-Phase1;PF_1;1.0;0.0;;4
+15;4;74;U16;;CosPhi-Phase2;PF_2;1.0;0.0;;4
+16;4;76;U16;;CosPhi-Phase3;PF_3;1.0;0.0;;4

@@ -1,0 +1,43 @@
+﻿ModbusRTU;Meter;Lufft;WS600;;;;;;;
+1;4;0;I16;;Identification;;1;0;;4
+2;4;1;I16;;Device status;;1;0;;4
+3;4;2;I16;;Sensor status 1;;1;0;;4
+4;4;3;I16;;Sensor status 2;;1;0;;4
+5;4;4;I16;;Sensor status 3;;1;0;;4
+6;4;5;I16;;Sensor status 4;;1;0;;4
+7;4;6;I16;;Sensor status 5;;1;0;;4
+8;4;7;I16;;Sensor status 6;;1;0;;4
+9;4;13;I16;;Relative humidity (avg.);HUMIDITY;0.1;0;;4
+10;4;17;I16;;Relative air pressure (avg.);PRESSURE;0.1;0;;4
+11;4;19;I16;;Wind direction (min.);WIND_BEARING;0.1;0;;4
+12;4;20;I16;;Wind direction (max.);;0.1;0;;4
+13;4;24;I16;;Compass;;0.1;0;;4
+14;4;25;I16;;Precipitation type;;1;0;;4
+15;4;26;U16;;Wind measurement quality;WIND_SPEED;1;0;;4
+16;4;30;I16;;Global radiation (avg).;;0.1;0;;4
+17;4;34;I16;;Air Temperature Degr.C (avg.);;0.1;0.0;Degr.C;4
+18;4;39;I16;;Wind chill-temperature Degr.C;;0.1;0.0;Degr.C;4
+19;4;40;I16;;Heating temperature Wind Degr.C;;0.1;0.0;Degr.C;4
+20;4;41;I16;;Heating temperature R2S Degr.C;;0.1;0.0;Degr.C;4
+21;4;43;I16;;Wind Speed m/s (min.);;0.1;0.0;m/s;4
+22;4;44;I16;;Wind Speed m/s (max.);;0.1;0.0;m/s;4
+23;4;45;I16;;Wind Speed m/s (avg.);;0.1;0.0;m/s;4
+24;4;48;U16;;Precipitation absolute mm;;0.01;0.0;mm;4
+25;4;49;U16;;Precipitation different mm;;0.01;0.0;mm;4
+26;4;50;U16;;Precipitation intensive mm/h;;0.01;0.0;mm/h;4
+27;4;74;I16;;Absolute humidity (avg.);;0.1;0;;4
+28;4;78;I16;;Mixing rratio (avg.);;0.1;0;;4
+29;4;82;I16;;Absolute air pressure (avg.);;0.1;0;;4
+30;4;86;I16;;Wind speed km/h (avg.);;0.1;0;km/h;4
+31;4;89;I16;;Wind speed kts (min.);;0.1;0;;4
+32;4;90;I16;;Wind speed kts (max.);;0.1;0;;4
+33;4;91;I16;;Wind speed kts (avg.);;0.1;0;;4
+34;4;95;I16;;Wind speed standard deviation m/s;;0.01;0;m/s;4
+35;4;97;I16;;Wind direction standard deviation;;0.01;0;;4
+36;4;98;I16;;Wet bulb temperature Degr.C (act);;0.1;0;Degr.C;4
+37;4;99;I16;;Specific enthalpy (act);;0.1;0;;4
+38;4;100;I16;;Air density (act);;0.001;0;;4
+39;4;101;I16;;External temperature Degr.C (act);;0.1;0;Degr.C;4
+40;4;107;I16;;Wind value quality (fast);;1;0;;4
+41;4;110;U16;;Lightning events (minute);;1;0;;4
+42;4;111;U16;;Lightning Events (Intervall);;1;0;;4

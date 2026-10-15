@@ -1,0 +1,42 @@
+﻿modbusRTU;Other;INVT Solar;ModbusRTU_INVT_Generic;;;;;;;
+1;4;14353;U16;;RS grid line voltage;;1.0;0.0;V;4
+2;4;14354;U16;;ST grid Line Voltage;;1.0;0.0;V;4
+3;4;14355;U16;;TR grid line voltage;;1.0;0.0;V;4
+4;4;14356;U16;;R grid phase voltage;;1.0;0.0;V;4
+5;4;14357;U16;;S grid phase voltage;;1.0;0.0;V;4
+6;4;14358;U16;;T grid phase voltage;;1.0;0.0;V;4
+7;4;14359;U16;;R-phase  grid-connected current;;1.0;0.0;A;4
+8;4;14360;U16;;S  phase  grid-connected current;;1.0;0.0;A;4
+9;4;14361;U16;;T-phase   grid-connected current;;1.0;0.0;A;4
+10;4;14362;U16;;RS grid Frequency;FREQ;1.0;0.0;Hz;4
+11;4;14364;U16;;Load power;;1.0;0.0;kW;4
+12;4;14365;U16;;Active Power;P_AC;1.0;0.0;W;4
+13;4;14367;U16;;reactive power;Q_AC;1.0;0.0;VAR;4
+14;4;14369;U16;;Power Factor;PF;1.0;0.0;;4
+15;4;14383;U16;;Daily Generation;;1.0;0.0;kWh;4
+16;4;14384;U16;;Total  power  generation;E_TOT;1.0;0.0;kWh;4
+17;4;14390;U16;;PV1 input voltage;U_DC_STRING_1;1.0;0.0;V;4
+18;4;14391;U16;;PV1 input current;I_DC_MPPT_1;1.0;0.0;A;4
+19;4;14392;U16;;PV2 input voltage;U_DC_STRING_2;1.0;0.0;V;4
+20;4;14393;U16;;PV2 input current;I_DC_MPPT_2;1.0;0.0;A;4
+21;4;14394;U16;;PV3 input voltage;U_DC_STRING_3;1.0;0.0;V;4
+22;4;14395;U16;;PV3 input current;I_DC_MPPT_3;1.0;0.0;A;4
+23;4;14396;U16;;PV4 input voltage;U_DC_STRING_4;1.0;0.0;V;4
+24;4;14397;U16;;PV4 input current;I_DC_MPPT_4;1.0;0.0;A;4
+25;4;14398;U16;;PV5 input voltage;U_DC_STRING_5;1.0;0.0;V;4
+26;4;14399;U16;;PV5 input current;I_DC_MPPT_5;1.0;0.0;A;4
+27;4;14400;U16;;PV6 input voltage;U_DC_STRING_6;1.0;0.0;V;4
+28;4;14401;U16;;PV6 input current;I_DC_MPPT_6;1.0;0.0;A;4
+29;4;14402;U16;;PV7 input voltage;U_DC_STRING_7;1.0;0.0;V;4
+30;4;14403;U16;;PV7 input current;I_DC_MPPT_7;1.0;0.0;A;4
+31;4;14404;U16;;PV8 input voltage;U_DC_STRING_8;1.0;0.0;V;4
+32;4;14405;U16;;PV8 input current;I_DC_MPPT_8;1.0;0.0;A;4
+33;4;14406;U16;;PV9 input voltage;U_DC_STRING_9;1.0;0.0;V;4
+34;4;14407;U16;;PV9 input current;I_DC_MPPT_9;1.0;0.0;A;4
+35;4;14408;U16;;PV10 input voltage;U_DC_STRING_10;1.0;0.0;V;4
+36;4;14409;U16;;PV10 input current;I_DC_MPPT_10;1.0;0.0;A;4
+37;4;14410;U16;;PV11 input voltage;U_DC_STRING_11;1.0;0.0;V;4
+38;4;14411;U16;;PV11 input current;I_DC_MPPT_11;1.0;0.0;A;4
+39;4;14412;U16;;PV12 input voltage;U_DC_STRING_12;1.0;0.0;V;4
+40;4;14413;U16;;PV12 input current;I_DC_MPPT_12;1.0;0.0;A;4
+41;4;14466;U16;;Inverter Efficiency;;1.0;0.0;%;4

@@ -1,0 +1,177 @@
+﻿modbusRTU;Other;Kstar;KSTAR_HYBRID;;;;;;;
+1;4;3000;U16;;PV1 Input Vlot;pv1_input_vlot;0.100000;0.000000;;4
+2;4;3001;U16;;PV2 Input Vlot;pv2_input_vlot;0.100000;0.000000;;4
+3;4;3012;I16;;PV1 Input Curr;pv1_input_curr;1.000000;0.000000;A;4
+4;4;3013;I16;;PV2 Input Curr;pv2_input_curr;1.000000;0.000000;A;4
+5;4;3024;I16;;PV1 Input Power;pv1_input_power;1.000000;0.000000;W;4
+6;4;3025;I16;;PV2 Input Power;pv2_input_power;1.000000;0.000000;W;4
+7;4;3036;U16;;Day Energy (PV);day_energy_pv;0.100000;0.000000;;4
+8;4;3037;U32;;Month Energy (PV);month_energy_pv;1.000000;0.000000;;4
+9;4;3039;U32;;Year Energy (PV);year_energy_pv;1.000000;0.000000;;4
+10;4;3041;U32;;Total Energy (PV);total_energy_pv;0.100000;0.000000;;4
+11;4;3044;U16;;Inverter working mode;inverter_working_mode;1.000000;0.000000;;4
+12;4;3045;U16;;Inverter Model;inverter_model;1.000000;0.000000;;4
+13;4;3046;U16;;SYS_STATE;sys_state;1.000000;0.000000;;4
+14;4;3047;U16;;INV_STATE;inv_state;1.000000;0.000000;;4
+15;4;3048;U16;;DCDC_STATE;dcdc_state;1.000000;0.000000;;4
+16;4;3049;U32;;DSP alarm code;dsp_alarm_code;1.000000;0.000000;;4
+17;4;3051;U32;;DSP error code;dsp_error_code;1.000000;0.000000;;4
+18;4;3053;U16;;BUS Volt;bus_volt;0.100000;0.000000;;4
+19;4;3054;U16;;DCBUS Vlot;dcbus_vlot;0.100000;0.000000;;4
+20;4;3055;I16;;INV radiator temp;inv_radiator_temp;0.100000;0.000000;0;4
+21;4;3056;I16;;BAT radiator temp;bat_radiator_temp;0.100000;0.000000;0;4
+22;4;3057;I16;;Inside environment;inside_environment;1.000000;0.000000;0;4
+23;4;3059;U16;;Discharge Depth Enable;discharge_depth_enable;1.000000;0.000000;;4
+24;4;3060;U16;;BMS DOD Enable;bms_dod_enable;1.000000;0.000000;;4
+25;4;3061;U16;;OffGrid DOD;offgrid_dod;1.000000;0.000000;'%;4
+26;4;3062;U16;;BAT Type;bat_type;1.000000;0.000000;;4
+27;4;3063;U16;;BAT Volt;bat_volt;1.000000;0.000000;;4
+28;4;3064;I16;;BAT Current;bat_current;0.100000;0.000000;A;4
+29;4;3065;I16;;BAT CHG/DISCHG Power;bat_chgdischg_power;1.000000;0.000000;W;4
+30;4;3066;U16;;BAT_SOC;bat_soc;10.000000;0.000000;'%;4
+31;4;3067;I16;;BAT_Temp;bat_temp;0.100000;0.000000;;4
+32;4;3068;U16;;OnGrid DISC-DEPTH;ongrid_discdepth;1.000000;0.000000;'%;4
+33;4;3069;U16;;BAT_CHG_Volt;bat_chg_volt;0.100000;0.000000;;4
+34;4;3070;U16;;BAT_CHG_LIMIT_CURR;bat_chg_limit_curr;1.000000;0.000000;A;4
+35;4;3071;U16;;BAT_DISCHG_LIMIT_CURR;bat_dischg_limit_curr;1.000000;0.000000;A;4
+36;4;3072;U16;;Min Bat DisChg Volt;min_bat_dischg_volt;0.100000;0.000000;;4
+37;4;3073;U16;;Max Bat Chg Volt;max_bat_chg_volt;0.100000;0.000000;;4
+38;4;3074;U16;;BAT_CAP_AH;bat_cap_ah;1.000000;0.000000;AH;4
+39;4;3075;U16;;BAT Health;bat_health;0.100000;0.000000;'%;4
+40;4;3077;U16;;Number of battery packs;number_of_battery_packs;1.000000;0.000000;;4
+41;4;3078;U16;;BAT Dischg Power Set;bat_dischg_power_set;1.000000;0.000000;'%;4
+42;4;3079;U16;;BAT Charge Power Set;bat_charge_power_set;1.000000;0.000000;'%;4
+43;4;3080;U16;;BAT_SET_FLOAT_Volt;bat_set_float_volt;0.100000;0.000000;;4
+44;4;3081;U16;;BAT_SET_AVERA_Volt;bat_set_avera_volt;0.100000;0.000000;;4
+45;4;3082;U16;;BAT_SET_CHG_CURR;bat_set_chg_curr;1.000000;0.000000;A;4
+46;4;3083;U16;;Wake-up BMS Enb;wakeup_bms_enb;1.000000;0.000000;;4
+47;4;3084;U16;;Wake-up BMS Time;wakeup_bms_time;1.000000;0.000000;MIN;4
+48;4;3086;U16;;Force Chg/Dischg Enb;force_chgdischg_enb;1.000000;0.000000;;4
+49;4;3097;U16;;R Phase Grid Volt;r_phase_grid_volt;0.100000;0.000000;;4
+50;4;3098;U16;;R Phase Grid Freq;r_phase_grid_freq;1.000000;0.000000;;4
+51;4;3099;I16;;R Phase Meter Curr;r_phase_meter_curr;0.001000;0.000000;A;4
+52;4;3100;I16;;R Phase Meter Power;r_phase_meter_power;1.000000;0.000000;W;4
+53;4;3101;U16;;S Phase Grid Volt;s_phase_grid_volt;0.100000;0.000000;;4
+54;4;3102;U16;;S Phase Grid Freq;s_phase_grid_freq;1.000000;0.000000;;4
+55;4;3103;I16;;S Phase Meter Curr;s_phase_meter_curr;0.001000;0.000000;A;4
+56;4;3104;I16;;S Phase Meter Power;s_phase_meter_power;1.000000;0.000000;W;4
+57;4;3105;U16;;T Phase Grid Volt;t_phase_grid_volt;0.100000;0.000000;;4
+58;4;3106;U16;;T Phase Grid Freq;t_phase_grid_freq;1.000000;0.000000;;4
+59;4;3107;I16;;T Phase Meter Curr;t_phase_meter_curr;0.001000;0.000000;A;4
+60;4;3108;I16;;T Phase Meter Power;t_phase_meter_power;1.000000;0.000000;W;4
+61;4;3109;U16;;Day Energy (BUY);day_energy_buy;0.100000;0.000000;;4
+62;4;3110;U32;;Month Energy (BUY);month_energy_buy;1.000000;0.000000;;4
+63;4;3112;U32;;Year Energy (BUY);year_energy_buy;1.000000;0.000000;;4
+64;4;3114;U32;;Total Energy (BUY);total_energy_buy;0.100000;0.000000;;4
+65;4;3116;U16;;Day Energy (SELL);day_energy_sell;0.100000;0.000000;;4
+66;4;3117;U32;;Month Energy (SELL);month_energy_sell;1.000000;0.000000;;4
+67;4;3119;U32;;Year Energy (SELL);year_energy_sell;1.000000;0.000000;;4
+68;4;3121;U32;;Total Energy (SELL);total_energy_sell;0.100000;0.000000;;4
+69;4;3123;U16;;R-INV_VVlot;rinv_vvlot;0.100000;0.000000;;4
+70;4;3124;I16;;R-INV_Curr;rinv_curr;1.000000;0.000000;A;4
+71;4;3125;U16;;R-INV_Freq;rinv_freq;1.000000;0.000000;;4
+72;4;3126;I16;;R-INV_Power;rinv_power;1.000000;0.000000;W;4
+73;4;3127;U16;;S-INV_Vlot;sinv_vlot;0.100000;0.000000;;4
+74;4;3128;I16;;S-INV_Curr;sinv_curr;1.000000;0.000000;A;4
+75;4;3129;U16;;S-INV_Freq;sinv_freq;1.000000;0.000000;;4
+76;4;3130;I16;;S-INV_Power;sinv_power;1.000000;0.000000;W;4
+77;4;3131;U16;;T-INV_VVlot;tinv_vvlot;0.100000;0.000000;;4
+78;4;3132;I16;;T-INV_Curr;tinv_curr;1.000000;0.000000;A;4
+79;4;3133;U16;;T-INV_Freq;tinv_freq;1.000000;0.000000;;4
+80;4;3134;I16;;T-INV_Power;tinv_power;1.000000;0.000000;W;4
+81;4;3135;U16;;R-BackUp Volt;rbackup_volt;0.100000;0.000000;;4
+82;4;3136;U16;;R-BackUp Curr;rbackup_curr;1.000000;0.000000;A;4
+83;4;3137;U16;;R-BackUp Power;rbackup_power;1.000000;0.000000;W;4
+84;4;3138;U16;;S-BackUp Volt;sbackup_volt;0.100000;0.000000;;4
+85;4;3139;U16;;S-BackUp Curr;sbackup_curr;1.000000;0.000000;A;4
+86;4;3140;U16;;S-BackUp Power;sbackup_power;1.000000;0.000000;W;4
+87;4;3141;U16;;T-BackUp Volt;tbackup_volt;0.100000;0.000000;;4
+88;4;3142;U16;;T-BackUp Curr;tbackup_curr;1.000000;0.000000;A;4
+89;4;3143;U16;;T-BackUp Power;tbackup_power;1.000000;0.000000;W;4
+90;4;3144;U16;;R-Load Power;rload_power;1.000000;0.000000;W;4
+91;4;3145;U16;;S-Load Power;sload_power;1.000000;0.000000;W;4
+92;4;3146;U16;;T-Load Power;tload_power;1.000000;0.000000;W;4
+93;4;3147;U16;;Day Energy (LOAD);day_energy_load;0.100000;0.000000;;4
+94;4;3148;U32;;Month Energy (LOAD);month_energy_load;1.000000;0.000000;;4
+95;4;3150;U32;;Year Energy (LOAD);year_energy_load;1.000000;0.000000;;4
+96;4;3152;U32;;Total Energy (LOAD);total_energy_load;0.100000;0.000000;;4
+97;4;3154;U32;;On_GRID_COUNT;on_grid_count;1.000000;0.000000;;4
+98;4;3156;I16;;P Temperature;p_temperature;0.100000;0.000000;;4
+99;4;3157;I16;;LLC Temperature;llc_temperature;0.100000;0.000000;;4
+100;4;3160;U32;;Charge_START_TIME-1;charge_start_time1;1.000000;0.000000;;4
+101;4;3162;U32;;Charge_END_TIME-1;charge_end_time1;1.000000;0.000000;;4
+102;4;3164;U32;;Discharge_START_TIME-1;discharge_start_time1;1.000000;0.000000;;4
+103;4;3166;U32;;Discharge_END_TIME-1;discharge_end_time1;1.000000;0.000000;;4
+104;4;3168;U32;;Charge_START_TIME-2;charge_start_time2;1.000000;0.000000;;4
+105;4;3170;U32;;Charge_END_TIME-2;charge_end_time2;1.000000;0.000000;;4
+106;4;3172;U32;;Discharge_START_TIME-2;discharge_start_time2;1.000000;0.000000;;4
+107;4;3174;U32;;Discharge_END_TIME-2;discharge_end_time2;1.000000;0.000000;;4
+108;4;3176;U16;;Timing Charge/Discharge;timing_chargedischarge;1.000000;0.000000;;4
+109;4;3179;U16;;PV Input Mode;pv_input_mode;1.000000;0.000000;;4
+110;4;3180;U16;;PV Start VVolt;pv_start_vvolt;0.100000;0.000000;V;4
+111;4;3181;U16;;DRM Enable;drm_enable;1.000000;0.000000;;4
+112;4;3182;U16;;AntiReflux Enable;antireflux_enable;1.000000;0.000000;;4
+113;4;3183;U16;;AntiReflux Value;antireflux_value;1.000000;0.000000;;4
+114;4;3184;U16;;BackUp Output Enable;backup_output_enable;1.000000;0.000000;;4
+115;4;3185;U16;;Remote Enable;remote_enable;1.000000;0.000000;;4
+116;4;3186;U16;;Boot Delay;boot_delay;1.000000;0.000000;S;4
+117;4;3187;U16;;Remote off State;remote_off_state;1.000000;0.000000;;4
+118;4;3193;U16;;Grid Standard;grid_standard;1.000000;0.000000;;4
+119;4;3194;U16;;ARM error Code;arm_error_code;1.000000;0.000000;;4
+120;4;3195;I16;;Reactive power setting;reactive_power_setting;1.000000;0.000000;'%;4
+121;4;3197;U16;;Reactive power control;reactive_power_control;1.000000;0.000000;;4
+122;4;3199;I16;;Power factor setting;power_factor_setting;1.000000;0.000000;;4
+123;4;3200;U16;;Active power setting;active_power_setting;1.000000;0.000000;'%;4
+124;4;3201;U16;;Min Grid Voltage;min_grid_voltage;0.100000;0.000000;;4
+125;4;3202;U16;;Max Grid Vlot;max_grid_vlot;0.100000;0.000000;;4
+126;4;3203;U16;;Min Grid Freq;min_grid_freq;1.000000;0.000000;;4
+127;4;3204;U16;;Max Grid Freq;max_grid_freq;1.000000;0.000000;;4
+128;4;3205;U16;;Bypass Volt-Min;bypass_voltmin;0.100000;0.000000;;4
+129;4;3206;U16;;Bypass Volt-Max;bypass_voltmax;0.100000;0.000000;;4
+130;4;3207;U16;;Bypass Freq-Min;bypass_freqmin;1.000000;0.000000;;4
+131;4;3208;U16;;Bypass Freq-Max;bypass_freqmax;1.000000;0.000000;;4
+132;4;3209;U16;;Over Volt derate Enable;over_volt_derate_enable;1.000000;0.000000;;4
+133;4;3210;U16;;Over Freq derate Enable;over_freq_derate_enable;1.000000;0.000000;;4
+134;4;3211;U16;;Under Volt derate Enable;under_volt_derate_enable;1.000000;0.000000;;4
+135;4;3212;U16;;Under Freq derate Enable;under_freq_derate_enable;1.000000;0.000000;;4
+136;4;3213;U16;;VVolt Over derate Start;vvolt_over_derate_start;0.100000;0.000000;;4
+137;4;3214;U16;;Freq Over derate Start;freq_over_derate_start;1.000000;0.000000;;4
+138;4;3215;U16;;Under Volt derate Start (Charging);under_volt_derate_start_charging;0.100000;0.000000;;4
+139;4;3216;U16;;Under Frep derate Start (Charging);under_frep_derate_start_charging;1.000000;0.000000;;4
+140;4;3217;U16;;R-Voltage calibration factor;rvoltage_calibration_factor;1.000000;0.000000;;4
+141;4;3220;U16;;R-Current calibration factor;rcurrent_calibration_factor;1.000000;0.000000;;4
+142;4;3223;U16;;Battery/Voltage calibration factor;batteryvoltage_calibration_factor;1.000000;0.000000;;4
+143;4;3227;U8;;DSP version/ARM version;dsp_versionarm_version;1.000000;0.000000;;4
+144;4;3228_22;STRING;;Inverter SN Number;inverter_sn_number;1.000000;0.000000;;4
+145;4;3251;U16;;Generator mode is enabled;generator_mode_is_enabled;1.000000;0.000000;;4
+146;4;3252;U16;;Island effect enabled;island_effect_enabled;1.000000;0.000000;;4
+147;4;3253;U16;;Battery pack Forcibly wakes up;battery_pack_forcibly_wakes_up;1.000000;0.000000;;4
+148;4;3254;U16;;Manually open the heating film;manually_open_the_heating_film;1.000000;0.000000;;4
+149;4;3255;U16;;CT direction;ct_direction;1.000000;0.000000;;4
+150;4;3256;U16;;PV1CurrCalibrate;pv1currcalibrate;1.000000;0.000000;;4
+151;4;3257;U16;;PV2CurrCalibrate;pv2currcalibrate;1.000000;0.000000;;4
+152;4;3258;U16;;Grid Subdivide;grid_subdivide;1.000000;0.000000;;4
+153;4;3259;U16;;AC Couple;ac_couple;1.000000;0.000000;;4
+154;4;3260;U16;;Charge from grid MAX SOC;charge_from_grid_max_soc;1.000000;0.000000;;4
+155;4;3261;U16;;Maintain Minimum SOC Enable;maintain_minimum_soc_enable;1.000000;0.000000;;4
+156;4;3262;U16;;GFCI Check Enable;gfci_check_enable;1.000000;0.000000;;4
+157;4;3263;U16;;VRT Enable;vrt_enable;1.000000;0.000000;;4
+158;4;3264;U16;;CT Or Meter;ct_or_meter;1.000000;0.000000;;4
+159;4;3265;U16;;Meter Brand;meter_brand;1.000000;0.000000;;4
+160;4;3266;U16;;Modbus RS485 Timeout (Only for U.K.);modbus_rs485_timeout_only_for_uk;1.000000;0.000000;S;1
+161;4;3267;U16;;Real-time Inv power setting (not saved);realtime_inv_power_setting_not_saved;1.000000;0.000000;W;4
+162;4;3270;U16;;RS485 Power Control Enable;rs485_power_control_enable;1.000000;0.000000;;4
+163;4;3272;U16;;Real-time Charge Percent(not saved);realtime_charge_percentnot_saved;1.000000;0.000000;;4
+164;4;3273;U16;;Real-time Discharge Percent(not saved);realtime_discharge_percentnot_saved;1.000000;0.000000;;4
+165;4;3274;U16;;Parallel Enable;parallel_enable;1.000000;0.000000;;4
+166;4;3275;U16;;Parallel Address;parallel_address;1.000000;0.000000;;4
+167;4;3276;U16;;AFCI Enable;afci_enable;1.000000;0.000000;;4
+168;4;3277;U16;;AFCI Level;afci_level;1.000000;0.000000;;4
+169;4;3279;U16;;Silent Mode;silent_mode;1.000000;0.000000;;4
+170;4;3292;U32;;Total battery discharge;total_battery_discharge;1.000000;0.000000;;4
+171;4;3294;U16;;Daily battery discharge;daily_battery_discharge;0.100000;0.000000;;4
+172;4;3299;U32;;Total battery charge;total_battery_charge;1.000000;0.000000;;4
+173;4;3301;U16;;Daily battery charge;daily_battery_charge;0.100000;0.000000;;4
+174;4;3306;U16;;Battery Ready;battery_ready;1.000000;0.000000;;4
+175;4;3307;U16;;Bat SOC SelfCheck Enable;bat_soc_selfcheck_enable;1.000000;0.000000;;4
+176;4;3308;U16;;Bat SOC SelfCheck Time;bat_soc_selfcheck_time;1.000000;0.000000;;4

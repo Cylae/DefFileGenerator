@@ -1,0 +1,18 @@
+﻿modbusRTU;Other;Webdyn;MODBUS_EM6400NG_new;;;;;;;
+1;4;2699;U16;;Active energy;;1.0;0.0;kWh;4
+2;4;3059;U16;;Active Power;P_AC;1.0;0.0;kW;4
+3;4;3027;U16;;R-N Phase Voltage;;1.0;0.0;VLNr;4
+4;4;3029;U16;;Y-N Phase Voltage;;1.0;0.0;VLNy;4
+5;4;3031;U16;;B-N Phase Voltage;;1.0;0.0;VLNb;4
+6;4;3109;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+7;4;3019;U16;;R-Y Phase Voltage;;1.0;0.0;VRY;4
+8;4;3021;U16;;Y-B Phase Voltage;;1.0;0.0;VYB;4
+9;4;3023;U16;;B-R Phase Voltage;;1.0;0.0;VBR;4
+10;4;3083;U16;;Avg Power Factor;PF;1.0;0.0;;4
+11;4;2999;U16;;R Current;;1.0;0.0;Amp;4
+12;4;3001;U16;;Y Current;;1.0;0.0;Amp;4
+13;4;3003;U16;;B Current;;1.0;0.0;Amp;4
+14;4;3077;U16;;R Power Factor;;1.0;0.0;;4
+15;4;3079;U16;;Y Power Factor;;1.0;0.0;;4
+16;4;3081;U16;;B Power Factor;;1.0;0.0;;4
+17;4;3067;U16;;Reactive Power;Q_AC;1.0;0.0;kVAR;4

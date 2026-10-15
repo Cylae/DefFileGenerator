@@ -1,0 +1,86 @@
+﻿modbusRTU;Other;IME Meter;IME_GENERIC;;;;;;;
+1;4;20480;U16;;Phase 1 Current Value (R);I_AC_1;1.0;0.0;mA;4
+2;4;20482;U16;;Phase 2 Current Value (S);I_AC_2;1.0;0.0;mA;4
+3;4;20484;U16;;Phase 3 Current Value (T);I_AC_3;1.0;0.0;mA;4
+4;4;20509;U16;;1-N Voltage;;1.0;0.0;mV;4
+5;4;20511;U16;;2-N Voltage;;1.0;0.0;mV;4
+6;4;20513;U16;;3-N Voltage;;1.0;0.0;mV;4
+7;4;20515;U16;;1-2 Voltage;;1.0;0.0;mV;4
+8;4;20517;U16;;2-3 Voltage;;1.0;0.0;mV;4
+9;4;20519;U16;;3-1 Voltage;;1.0;0.0;mV;4
+10;4;20537;U16;;Three-phase frequency;FREQ;1.0;0.0;Hz;4
+11;4;20538;U16;;Three-phase Active Power;P_AC_1;1.0;0.0;W;4
+12;4;20540;U16;;Three-phase reactive power;Q_AC;1.0;0.0;W;4
+13;4;20544;U16;;Three-Phase Apparent Power;S_AC_1;1.0;0.0;W;4
+14;4;20548;U16;;Three-phase Power Factor (PF);PF;1.0;0.0;;4
+15;4;20550;U16;;Power Factor (PF) sector;;1.0;0.0;;4
+16;4;20551;U16;;Phase 1 Active Power;;1.0;0.0;kW/kvar/kVA;4
+17;4;20553;U16;;Phase 2 Active Power;P_AC_2;1.0;0.0;kW/kvar/kVA;4
+18;4;20555;U16;;Phase 3 Active Power;P_AC_3;1.0;0.0;kW/kvar/kVA;4
+19;4;20557;U16;;Phase 1 Reactive power;Q_AC_1;1.0;0.0;kW/kvar/kVA;4
+20;4;20559;U16;;Phase 2 Reactive power;Q_AC_2;1.0;0.0;kW/kvar/kVA;4
+21;4;20561;U16;;Phase 3 Reactive power;Q_AC_3;1.0;0.0;kW/kvar/kVA;4
+22;4;20569;U16;;Phase 1 Apparent Power;;1.0;0.0;kW/kvar/kVA;4
+23;4;20571;U16;;Phase 2 Apparent Power;S_AC_2;1.0;0.0;kW/kvar/kVA;4
+24;4;20573;U16;;Phase 3 Apparent Power;S_AC_3;1.0;0.0;kW/kvar/kVA;4
+25;4;20592;U16;;Positive Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
+26;4;20594;U16;;Negative Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
+27;4;20598;U16;;Positive Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
+28;4;20600;U16;;Negative Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
+29;4;20604;U16;;Positive Three-phase Active Energy (Tariff 1);;1.0;0.0;MWh/Mvarh;4
+30;4;20606;U16;;Negative Three-phase Active Energy (Tariff 1);;1.0;0.0;MWh/Mvarh;4
+31;4;20608;U16;;Positive Three-phase Reactive Energy (Tariff 1);;1.0;0.0;MWh/Mvarh;4
+32;4;20610;U16;;Negative Three-phase Reactive Energy (Tariff 1);;1.0;0.0;MWh/Mvarh;4
+33;4;20612;U16;;Positive Three-phase Active Energy (Tariff 2);;1.0;0.0;MWh/Mvarh;4
+34;4;20614;U16;;Negative Three-phase Active Energy (Tariff 2);;1.0;0.0;MWh/Mvarh;4
+35;4;20616;U16;;Positive Three-phase Reactive Energy (Tariff 2);;1.0;0.0;MWh/Mvarh;4
+36;4;20618;U16;;Negative Three-phase Reactive Energy (Tariff 2);;1.0;0.0;MWh/Mvarh;4
+37;4;20638;U16;;Positive Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
+38;4;20640;U16;;Negative Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
+39;4;20644;U16;;Positive Three-phase Reactive Energy (secondary);;1.0;0.0;kVarh;4
+40;4;20646;U16;;Negative Three-phase Reactive Energy (secondary);;1.0;0.0;kVarh;4
+41;4;20650;U16;;Positive Three-phase Active Energy (Tariff 1) (secondary);;1.0;0.0;kWh;4
+42;4;20652;U16;;Negative Three-phase Active Energy (Tariff 1) (secondary);;1.0;0.0;kWh;4
+43;4;20654;U16;;Positive Three-phase Reactive Energy (Tariff 1) (secondary);;1.0;0.0;kVarh;4
+44;4;20656;U16;;Negative Three-phase Reactive Energy (Tariff 1) (secondary);;1.0;0.0;kVarh;4
+45;4;20658;U16;;Positive Three-phase Active Energy (Tariff 2) (secondary);;1.0;0.0;kWh;4
+46;4;20660;U16;;Negative Three-phase Active Energy (Tariff 2) (secondary);;1.0;0.0;kWh;4
+47;4;20662;U16;;Positive Three-phase Reactive Energy (Tariff 2) (secondary);;1.0;0.0;kVarh;4
+48;4;20664;U16;;Negative Three-phase Reactive Energy (Tariff 2) (secondary);;1.0;0.0;kVarh;4
+49;4;20725;U16;;Phase shift between V1 - V2;;1.0;0.0;°;4
+50;4;20726;U16;;Phase shift between V2 - V3;;1.0;0.0;°;4
+51;4;20727;U16;;Phase shift between V3 - V1;;1.0;0.0;°;4
+52;4;20728;U16;;Phase shift between U12 - U23;;1.0;0.0;°;4
+53;4;20729;U16;;Phase shift between U23 - U31;;1.0;0.0;°;4
+54;4;20730;U16;;Phase shift between U31 - U12;;1.0;0.0;°;4
+55;4;20731;U16;;Phase shift between I1 - I2;;1.0;0.0;°;4
+56;4;20732;U16;;Phase shift between I2 - I3;;1.0;0.0;°;4
+57;4;20733;U16;;Phase shift between I3 - I1;;1.0;0.0;°;4
+58;4;20734;U16;;Phase shift between V1 - I1;;1.0;0.0;°;4
+59;4;20735;U16;;Phase shift between V2 - I2;;1.0;0.0;°;4
+60;4;20736;U16;;Phase shift between V3 - I3;;1.0;0.0;°;4
+61;4;0;U16;;Protocol type;;1.0;0.0;;4
+62;4;4097;U16;;Configuration of external input;;1.0;0.0;;4
+63;4;20480;U16;;Measurement System Features;;1.0;0.0;;4
+64;4;20481;U16;;Phase Currents Transformation Ratio (KTA);;1.0;0.0;;4
+65;4;20484;U16;;Voltage Transformation Ratio (KTV);;1.0;0.0;;4
+66;4;20485;U16;;Calculation Settings Requirement;;1.0;0.0;;4
+67;4;20558;U16;;Partial Positive Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
+68;4;20560;U16;;Partial Negative Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
+69;4;20564;U16;;Partial Positive Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
+70;4;20566;U16;;Partial Negative Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
+71;4;20572;U16;;Partial Positive Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
+72;4;20574;U16;;Partial Negative Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
+73;4;20578;U16;;Partial Positive Three-phase Reactive Energy (secondary);;1.0;0.0;kvarh;4
+74;4;20580;U16;;Partial Negative Three-phase Reactive Energy (secondary);;1.0;0.0;kvarh;4
+75;4;20636;U16;;Total Active Power Requirement (MD);P_AC;1.0;0.0;kW/kvar/kVA;4
+76;4;20638;U16;;Maximum Total Active Power Requirement (PMD);;1.0;0.0;kW/kvar/kVA;4
+77;4;20672;U16;;Maximum Total Active Power Requirement Tariff 1 (PMD T1);;1.0;0.0;kW/kvar/kVA;4
+78;4;20678;U16;;Maximum Total Active Power Requirement Tariff 2 (PMD T2);;1.0;0.0;kW/kvar/kVA;4
+79;4;20696;U16;;Run hour meter threshold;;1.0;0.0;%;4
+80;4;20697;U16;;Run hour meter (TOT);;1.0;0.0;s;4
+81;4;20699;U16;;Run hour meter (Tariff 1);;1.0;0.0;s;4
+82;4;20701;U16;;Run hour meter (Tariff 2);;1.0;0.0;s;4
+83;4;29696;U16;;Measurement unit input;;1.0;0.0;;4
+84;4;29697;U16;;Pulse weight input;;1.0;0.0;;4
+85;4;29698;U16;;Pulse pulse input;;1.0;0.0;;4

@@ -1,0 +1,25 @@
+﻿modbusRTU;Other;Inepro;PRO380-MOD-CT Inepro;;;;;;;
+1;4;20482;U16;;volt1;;1.0;0.0;V;4
+2;4;20484;U16;;volt2;;1.0;0.0;V;4
+3;4;20486;U16;;volt3;;1.0;0.0;V;4
+4;4;20492;U16;;current1;;1.0;0.0;A;4
+5;4;20494;U16;;current2;;1.0;0.0;A;4
+6;4;20496;U16;;current3;;1.0;0.0;A;4
+7;4;20490;U16;;current;;1.0;0.0;A;4
+8;4;20500;U16;;power1;P_AC_1;1.0;0.0;kW;4
+9;4;20502;U16;;power2;P_AC_2;1.0;0.0;kW;4
+10;4;20504;U16;;power3;P_AC_3;1.0;0.0;kW;4
+11;4;20498;U16;;power;P_AC;1.0;0.0;kW;4
+12;4;20516;U16;;apparent_power1;;1.0;0.0;kVA;4
+13;4;20518;U16;;apparent_power2;;1.0;0.0;kVA;4
+14;4;20520;U16;;apparent_power3;;1.0;0.0;kVA;4
+15;4;20514;U16;;apparent_power;S_AC;1.0;0.0;kVA;4
+16;4;20508;U16;;reactive_power1;;1.0;0.0;kvar;4
+17;4;20510;U16;;reactive_power2;;1.0;0.0;kvar;4
+18;4;20512;U16;;reactive_power3;;1.0;0.0;kvar;4
+19;4;20506;U16;;reactive_power;Q_AC;1.0;0.0;kvar;4
+20;4;20524;U16;;cosphi1;PF;1.0;0.0;;4
+21;4;20526;U16;;cosphi2;;1.0;0.0;;4
+22;4;20528;U16;;cosphi3;;1.0;0.0;;4
+23;4;20488;U16;;frequency;FREQ;1.0;0.0;Hz;4
+24;4;24576;U16;;energy_tot;;1.0;0.0;kWh;4

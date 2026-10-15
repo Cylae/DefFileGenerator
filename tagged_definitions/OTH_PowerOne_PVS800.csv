@@ -1,0 +1,1054 @@
+﻿modbusRTU;Other;PowerOne;PVS800;;;;;;;
+1;4;40202;U16;;DC voltage;U_DC;1.0;0.0;V;4
+2;4;40204;U16;;Line current;I_AC_3;1.0;0.0;A;4
+3;4;40206;U16;;Line current %;;1.0;0.0;%;4
+4;4;40208;U16;;Active current;;1.0;0.0;A;4
+5;4;40210;U16;;Active current %;;1.0;0.0;%;4
+6;4;40212;U16;;Reactive current;;1.0;0.0;A;4
+7;4;40214;U16;;Reactive current %;;1.0;0.0;%;4
+8;4;40216;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+9;4;40218;U16;;Grid voltage;;1.0;0.0;V;4
+10;4;40220;U16;;Apparent power;S_AC;1.0;0.0;kVA;4
+11;4;40222;U16;;Apparent power %;;1.0;0.0;%;4
+12;4;40224;U16;;Power;P_AC;1.0;0.0;kW;4
+13;4;40226;U16;;Power %;;1.0;0.0;%;4
+14;4;40228;U16;;Reactive power;Q_AC;1.0;0.0;kVAr;4
+15;4;40230;U16;;Reactive power %;;1.0;0.0;%;4
+16;4;40232;U16;;CosPhi;PF;1.0;0.0;;4
+17;4;40240;U16;;Converter current;;1.0;0.0;A;4
+18;4;40328;U16;;Nominal power;P_RATED;1.0;0.0;kW;4
+19;4;40802;U16;;Tripping fault;;1.0;0.0;;4
+20;4;40804;U16;;Active fault 2;;1.0;0.0;;4
+21;4;40806;U16;;Active fault 3;;1.0;0.0;;4
+22;4;40808;U16;;Active fault 4;;1.0;0.0;;4
+23;4;40810;U16;;Active fault 5;;1.0;0.0;;4
+24;4;40812;U16;;Active warning 1;;1.0;0.0;;4
+25;4;40814;U16;;Active warning 2;;1.0;0.0;;4
+26;4;40816;U16;;Active warning 3;;1.0;0.0;;4
+27;4;40818;U16;;Active warning 4;;1.0;0.0;;4
+28;4;40820;U16;;Active warning 5;;1.0;0.0;;4
+29;4;40822;U16;;Latest fault;;1.0;0.0;;4
+30;4;40824;U16;;2nd latest fault;;1.0;0.0;;4
+31;4;40826;U16;;3rd latest fault;;1.0;0.0;;4
+32;4;40828;U16;;4th latest fault;;1.0;0.0;;4
+33;4;40830;U16;;5th latest fault;;1.0;0.0;;4
+34;4;40832;U16;;Latest warning;;1.0;0.0;;4
+35;4;40834;U16;;2nd latest warning;;1.0;0.0;;4
+36;4;40836;U16;;3rd latest warning;;1.0;0.0;;4
+37;4;40838;U16;;4th latest warning;;1.0;0.0;;4
+38;4;40840;U16;;5th latest warning;;1.0;0.0;;4
+39;4;41406;U16;;Rating id;;1.0;0.0;;4
+40;4;41408;U16;;Firmware name;;1.0;0.0;;4
+41;4;41410;U16;;Firmware ver;;1.0;0.0;;4
+42;4;41412;U16;;Loading package name;;1.0;0.0;;4
+43;4;41414;U16;;Loading package version;;1.0;0.0;;4
+44;4;41416;U16;;Bootloader version;;1.0;0.0;;4
+45;4;41418;U16;;Preboot version;;1.0;0.0;;4
+46;4;41420;U16;;Safety critical hash;;1.0;0.0;;4
+47;4;41422;U16;;Cpu usage;;1.0;0.0;%;4
+48;4;41424;U16;;PU logic version name;;1.0;0.0;;4
+49;4;41426;U16;;PU logic version number;;1.0;0.0;;4
+50;4;41434;U16;;PLC HW variant;;1.0;0.0;;4
+51;4;41436;U16;;PLC SW version;;1.0;0.0;;4
+52;4;11002;U16;;DI delayed status;;1.0;0.0;;4
+53;4;11021;U16;;RO status;;1.0;0.0;;4
+54;4;42802;U16;;Module 1 type;;1.0;0.0;;4
+55;4;42804;U16;;Module 1 location;;1.0;0.0;;4
+56;4;42806;U16;;Module 1 status;;1.0;0.0;;4
+57;4;43002;U16;;Module 2 type;;1.0;0.0;;4
+58;4;43004;U16;;Module 2 location;;1.0;0.0;;4
+59;4;43006;U16;;Module 2 status;;1.0;0.0;;4
+60;4;43202;U16;;Module 3 type;;1.0;0.0;;4
+61;4;43204;U16;;Module 3 location;;1.0;0.0;;4
+62;4;43206;U16;;Module 3 status;;1.0;0.0;;4
+63;4;43802;U16;;Actual operation mode;;1.0;0.0;;4
+64;4;43822;U16;;Ext1/Ext2 sel;;1.0;0.0;;4
+65;4;43824;U16;;Ext1 ctrl mode1;;1.0;0.0;;4
+66;4;43828;U16;;Ext2 ctrl mode1;;1.0;0.0;;4
+67;4;43832;U16;;Local ctrl mode;;1.0;0.0;;4
+68;4;43834;U16;;Local ctrl disable;;1.0;0.0;;4
+69;4;44202;U16;;Fast power off mode;CMD_OFF;1.0;0.0;;1
+70;4;44204;U16;;Fast power off source;;1.0;0.0;;4
+71;4;44602;U16;;User DC voltage ref;;1.0;0.0;V;4
+72;4;44604;U16;;DC ref sel;;1.0;0.0;;4
+73;4;44606;U16;;DC voltage ref 1;;1.0;0.0;V;4
+74;4;44802;U16;;User Qref;;1.0;0.0;%;4
+75;4;44804;U16;;Q power ref selection;;1.0;0.0;;4
+76;4;44806;U16;;Qref 1;;1.0;0.0;kVAr;4
+77;4;44808;U16;;Q ref scale;;1.0;0.0;;4
+78;4;44810;U16;;Qref 2;;1.0;0.0;kVAr;4
+79;4;44812;U16;;Q power ref type;;1.0;0.0;;4
+80;4;44814;U16;;Ireact ref %;;1.0;0.0;%;4
+81;4;44816;U16;;Ireact ref;;1.0;0.0;A;4
+82;4;44818;U16;;Q power ref %;;1.0;0.0;%;4
+83;4;44820;U16;;Q power ref;;1.0;0.0;kVAr;4
+84;4;44822;U16;;Ireact ref max %;;1.0;0.0;%;4
+85;4;44824;U16;;Ireact ref min %;;1.0;0.0;%;4
+86;4;44826;U16;;Ireact ref lim %;;1.0;0.0;%;4
+87;4;44828;U16;;Ireact ref ramp up;;1.0;0.0;ms;4
+88;4;44830;U16;;Ireact ref ramp down;;1.0;0.0;ms;4
+89;4;44832;U16;;Ireact ref out %;;1.0;0.0;%;4
+90;4;44834;U16;;Ireact ref out;;1.0;0.0;A;4
+91;4;44836;U16;;Q power ref out %;;1.0;0.0;%;4
+92;4;44838;U16;;Q power ref out;;1.0;0.0;kVAr;4
+93;4;44840;U16;;AC control gain;;1.0;0.0;;4
+94;4;44842;U16;;AC control integ time;;1.0;0.0;ms;4
+95;4;44844;U16;;AC diff max %;;1.0;0.0;%;4
+96;4;44846;U16;;AC diff min %;;1.0;0.0;%;4
+97;4;44854;U16;;AC control base grid voltage;;1.0;0.0;V;4
+98;4;44860;U16;;Q(x) curve;;1.0;0.0;;4
+99;4;44862;U16;;Lock-in level;;1.0;0.0;%;4
+100;4;44864;U16;;Lock-out level;;1.0;0.0;%;4
+101;4;44866;U16;;Q(x) input level 1;;1.0;0.0;%;4
+102;4;44868;U16;;Q(x) input level 2;;1.0;0.0;%;4
+103;4;44870;U16;;Q(x) input level 3;;1.0;0.0;%;4
+104;4;44872;U16;;Q(x) input level 4;;1.0;0.0;%;4
+105;4;44874;U16;;Q(x) input level 5;;1.0;0.0;%;4
+106;4;44876;U16;;Q(x) input level 6;;1.0;0.0;%;4
+107;4;44878;U16;;Q(x) output level 1;;1.0;0.0;%;4
+108;4;44880;U16;;Q(x) output level 2;;1.0;0.0;%;4
+109;4;44882;U16;;Q(x) output level 3;;1.0;0.0;%;4
+110;4;44884;U16;;Q(x) output level 4;;1.0;0.0;%;4
+111;4;44886;U16;;Q(x) output level 5;;1.0;0.0;%;4
+112;4;44888;U16;;Q(x) output level 6;;1.0;0.0;%;4
+113;4;44890;U16;;Q(U) activation delay;;1.0;0.0;ms;4
+114;4;44892;U16;;Q(U) activation level low;;1.0;0.0;%;4
+115;4;44894;U16;;Q(U) activation level high;;1.0;0.0;%;4
+116;4;45002;U16;;Grid support;;1.0;0.0;;4
+117;4;45004;U16;;Gs symm sig;;1.0;0.0;;4
+118;4;45006;U16;;Gs asymm sig;;1.0;0.0;;4
+119;4;45008;U16;;Lv Gs trig U %;;1.0;0.0;%;4
+120;4;45010;U16;;Lv Gs K-factor;;1.0;0.0;;4
+121;4;45012;U16;;Lv Gs P1 volt %;;1.0;0.0;%;4
+122;4;45014;U16;;Lv Gs P1 cur %;;1.0;0.0;%;4
+123;4;45016;U16;;Lv Gs P2 volt %;;1.0;0.0;%;4
+124;4;45018;U16;;Lv Gs P2 cur %;;1.0;0.0;%;4
+125;4;45020;U16;;Lv Gs P3 volt %;;1.0;0.0;%;4
+126;4;45022;U16;;Lv Gs P3 cur %;;1.0;0.0;%;4
+127;4;45024;U16;;Lv Gs P4 volt %;;1.0;0.0;%;4
+128;4;45026;U16;;Lv Gs P4 cur %;;1.0;0.0;%;4
+129;4;45028;U16;;Lv Gs P5 volt %;;1.0;0.0;%;4
+130;4;45030;U16;;Lv Gs P5 cur %;;1.0;0.0;%;4
+131;4;45036;U16;;Hv Gs trig U %;;1.0;0.0;%;4
+132;4;45038;U16;;Hv Gs K-factor;;1.0;0.0;;4
+133;4;45040;U16;;Hv Gs P1 volt %;;1.0;0.0;%;4
+134;4;45042;U16;;Hv Gs P1 cur %;;1.0;0.0;%;4
+135;4;45044;U16;;Hv Gs P2 volt %;;1.0;0.0;%;4
+136;4;45046;U16;;Hv Gs P2 cur %;;1.0;0.0;%;4
+137;4;45048;U16;;Hv Gs P3 volt %;;1.0;0.0;%;4
+138;4;45050;U16;;Hv Gs P3 cur %;;1.0;0.0;%;4
+139;4;45056;U16;;Frt Ireact ref ramp up;;1.0;0.0;ms;4
+140;4;45058;U16;;Frt Ireact ref ramp down;;1.0;0.0;ms;4
+141;4;45060;U16;;Frt Ipow ref ramp up;;1.0;0.0;ms;4
+142;4;45062;U16;;Frt Ipow ref ramp down;;1.0;0.0;ms;4
+143;4;45064;U16;;Frt Ireact ref %;;1.0;0.0;%;4
+144;4;45066;U16;;Frt Ireact ref out %;;1.0;0.0;%;4
+145;4;45068;U16;;Frt Ipow ref %;;1.0;0.0;%;4
+146;4;45070;U16;;Frt Ipow ref out %;;1.0;0.0;%;4
+147;4;45072;U16;;Gs after dip time;;1.0;0.0;ms;4
+148;4;45074;U16;;Frt Imax %;;1.0;0.0;%;4
+149;4;45098;U16;;Gs prefault average time;;1.0;0.0;s;4
+150;4;45100;U16;;Gs base current;;1.0;0.0;;4
+151;4;45102;U16;;Gs reference voltage;;1.0;0.0;;4
+152;4;45104;U16;;Gs average voltage;;1.0;0.0;;4
+153;4;45106;U16;;Gs active power reserve;;1.0;0.0;%;4
+154;4;45108;U16;;Gs max reserve current;;1.0;0.0;%;4
+155;4;45202;U16;;FRT enable;;1.0;0.0;;4
+156;4;45204;U16;;Lv Rt symm sig;;1.0;0.0;;4
+157;4;45206;U16;;Lv Rt asymm sig;;1.0;0.0;;4
+158;4;45208;U16;;Hv Rt symm sig;;1.0;0.0;;4
+159;4;45210;U16;;Hv Rt asymm sig;;1.0;0.0;;4
+160;4;45212;U16;;Asymm/symm limit;;1.0;0.0;%;4
+161;4;45220;U16;;Lv Rt trig U %;;1.0;0.0;%;4
+162;4;45222;U16;;Lv Rt recover hyst U %;;1.0;0.0;%;4
+163;4;45224;U16;;Lv Rt sec 1 time;;1.0;0.0;ms;4
+164;4;45226;U16;;Lv Rt sec 2 time;;1.0;0.0;ms;4
+165;4;45228;U16;;Lv Rt sec 3 time;;1.0;0.0;ms;4
+166;4;45230;U16;;Lv Rt sec 4 time;;1.0;0.0;ms;4
+167;4;45232;U16;;Lv Rt sec 5 time;;1.0;0.0;ms;4
+168;4;45234;U16;;Lv Rt ext time;;1.0;0.0;ms;4
+169;4;45236;U16;;Lv Rt S1 start U %;;1.0;0.0;%;4
+170;4;45238;U16;;Lv Rt S1 end U %;;1.0;0.0;%;4
+171;4;45240;U16;;Lv Rt S2 start U %;;1.0;0.0;%;4
+172;4;45242;U16;;Lv Rt S2 end U %;;1.0;0.0;%;4
+173;4;45244;U16;;Lv Rt S3 start U %;;1.0;0.0;%;4
+174;4;45246;U16;;Lv Rt S3 end U %;;1.0;0.0;%;4
+175;4;45248;U16;;Lv Rt S4 start U %;;1.0;0.0;%;4
+176;4;45250;U16;;Lv Rt S4 end U %;;1.0;0.0;%;4
+177;4;45252;U16;;Lv Rt S5 start U %;;1.0;0.0;%;4
+178;4;45254;U16;;Lv Rt S5 end U %;;1.0;0.0;%;4
+179;4;45256;U16;;Lv Rt ext U %;;1.0;0.0;%;4
+180;4;45260;U16;;Hv Rt trig U %;;1.0;0.0;%;4
+181;4;45262;U16;;Hv Rt recover hyst U %;;1.0;0.0;%;4
+182;4;45264;U16;;Hv Rt sec 1 time;;1.0;0.0;ms;4
+183;4;45266;U16;;Hv Rt sec 2 time;;1.0;0.0;ms;4
+184;4;45268;U16;;Hv Rt sec 3 time;;1.0;0.0;ms;4
+185;4;45274;U16;;Hv Rt S1 start U %;;1.0;0.0;%;4
+186;4;45276;U16;;Hv Rt S1 end U %;;1.0;0.0;%;4
+187;4;45278;U16;;Hv Rt S2 start U %;;1.0;0.0;%;4
+188;4;45280;U16;;Hv Rt S2 end U %;;1.0;0.0;%;4
+189;4;45282;U16;;Hv Rt S3 start U %;;1.0;0.0;%;4
+190;4;45284;U16;;Hv Rt S3 end U %;;1.0;0.0;%;4
+191;4;13001;U16;;Limit word 1;;1.0;0.0;;4
+192;4;13002;U16;;Limit word 2;;1.0;0.0;;4
+193;4;13004;U16;;Limit word 4;;1.0;0.0;;4
+194;4;13005;U16;;Limit word 5;;1.0;0.0;;4
+195;4;13006;U16;;Limit word 6;;1.0;0.0;;4
+196;4;46022;U16;;Active power limit to grid;;1.0;0.0;kW;4
+197;4;46026;U16;;Reactive power limit;CMD_P_AC_SET_ABS;1.0;0.0;kVAr;1
+198;4;46124;U16;;P(f) limit type;;1.0;0.0;;4
+199;4;46126;U16;;P(f) corner frequency;;1.0;0.0;Hz;4
+200;4;46128;U16;;P(f) limit gradient;;1.0;0.0;%/Hz;4
+201;4;46130;U16;;P(f) release frequency;;1.0;0.0;Hz;4
+202;4;46132;U16;;P(f) release time;;1.0;0.0;s;4
+203;4;46134;U16;;P(f) release ramp;;1.0;0.0;%/min;4
+204;4;46136;U16;;P(f) release ramp ref;;1.0;0.0;;4
+205;4;46138;U16;;P(f) activation delay;;1.0;0.0;ms;4
+206;4;46140;U16;;Connect limit type;;1.0;0.0;;4
+207;4;46142;U16;;Connect limit ramp;;1.0;0.0;%/min;4
+208;4;46144;U16;;Grid fault ramp;;1.0;0.0;%/min;4
+209;4;46150;U16;;External power limit;cmdPwrPct;1.0;0.0;%;4
+210;4;46152;U16;;P(U) limiter;;1.0;0.0;;4
+211;4;46154;U16;;P(U) trigger level;;1.0;0.0;%;4
+212;4;46156;U16;;P(U) release level;;1.0;0.0;%;4
+213;4;46158;U16;;P(U) limit level;;1.0;0.0;%;4
+214;4;46160;U16;;P(U) limit ramp;;1.0;0.0;%/min;4
+215;4;46162;U16;;P(U) release ramp;;1.0;0.0;%/min;4
+216;4;46164;U16;;P(U) end level;;1.0;0.0;%;4
+217;4;46166;U16;;P(U) filtering time constant;;1.0;0.0;s;4
+218;4;46168;U16;;P(U) used power;;1.0;0.0;;4
+219;4;46180;U16;;Flat-top limit;;1.0;0.0;%;4
+220;4;46184;U16;;Active power ramping;;1.0;0.0;;4
+221;4;46186;U16;;Active power ramp;;1.0;0.0;%/min;4
+222;4;46188;U16;;Shut down ramp;;1.0;0.0;%/s;4
+223;4;46190;U16;;Active power margin;;1.0;0.0;%;4
+224;4;46196;U16;;External limit ramp up;;1.0;0.0;ms;4
+225;4;46198;U16;;External limit ramp down;CMD_RAMP_TIME_S;1.0;0.0;ms;1
+226;4;46202;U16;;Limit priority;;1.0;0.0;;4
+227;4;46402;U16;;Autoreset counter;;1.0;0.0;;4
+228;4;46406;U16;;Overcurrent trials;;1.0;0.0;;4
+229;4;46408;U16;;Overcurrent reset delay;;1.0;0.0;s;4
+230;4;46412;U16;;Short circuit current reset delay;;1.0;0.0;s;4
+231;4;46414;U16;;Ground impedance trials;;1.0;0.0;;4
+232;4;46416;U16;;Ground impedance reset delay;;1.0;0.0;s;4
+233;4;47002;U16;;Grid code;;1.0;0.0;;4
+234;4;47004;U16;;Nominal LL voltage;;1.0;0.0;V;4
+235;4;47008;U16;;Nominal frequency;;1.0;0.0;;4
+236;4;47020;U16;;Initial connection delay;;1.0;0.0;s;4
+237;4;47022;U16;;Reconnection delay;;1.0;0.0;s;4
+238;4;47024;U16;;Quick disturbance limit;;1.0;0.0;s;4
+239;4;47026;U16;;Quick reconnection delay;;1.0;0.0;s;4
+240;4;47032;U16;;External trip;;1.0;0.0;;4
+241;4;47038;U16;;Zero cross monitor enable;;1.0;0.0;;4
+242;4;47040;U16;;Connect underfrequency type;;1.0;0.0;;4
+243;4;47042;U16;;Connect underfrequency limit;;1.0;0.0;Hz;4
+244;4;47044;U16;;Connect overfrequency type;;1.0;0.0;;4
+245;4;47046;U16;;Connect overfrequency limit;;1.0;0.0;Hz;4
+246;4;47048;U16;;Connect undervoltage type;;1.0;0.0;;4
+247;4;47050;U16;;Connect undervoltage limit;;1.0;0.0;%;4
+248;4;47052;U16;;Connect overvoltage type;;1.0;0.0;;4
+249;4;47054;U16;;Connect overvoltage limit;;1.0;0.0;%;4
+250;4;47060;U16;;Underfrequency enable 1;;1.0;0.0;;4
+251;4;47062;U16;;Underfrequency limit 1;;1.0;0.0;Hz;4
+252;4;47064;U16;;Underfrequency time 1;;1.0;0.0;ms;4
+253;4;47066;U16;;Underfrequency enable 2;;1.0;0.0;;4
+254;4;47068;U16;;Underfrequency limit 2;;1.0;0.0;Hz;4
+255;4;47070;U16;;Underfrequency time 2;;1.0;0.0;ms;4
+256;4;47080;U16;;Overfrequency enable 1;;1.0;0.0;;4
+257;4;47082;U16;;Overfrequency limit 1;;1.0;0.0;Hz;4
+258;4;47084;U16;;Overfrequency time 1;;1.0;0.0;ms;4
+259;4;47086;U16;;Overfrequency enable 2;;1.0;0.0;;4
+260;4;47088;U16;;Overfrequency limit 2;;1.0;0.0;Hz;4
+261;4;47090;U16;;Overfrequency time 2;;1.0;0.0;ms;4
+262;4;47100;U16;;Undervoltage enable 1;;1.0;0.0;;4
+263;4;47102;U16;;Undervoltage limit 1;;1.0;0.0;%;4
+264;4;47104;U16;;Undervoltage time 1;;1.0;0.0;ms;4
+265;4;47106;U16;;Undervoltage enable 2;;1.0;0.0;;4
+266;4;47108;U16;;Undervoltage limit 2;;1.0;0.0;%;4
+267;4;47110;U16;;Undervoltage time 2;;1.0;0.0;ms;4
+268;4;47112;U16;;Undervoltage enable 3;;1.0;0.0;;4
+269;4;47114;U16;;Undervoltage limit 3;;1.0;0.0;%;4
+270;4;47116;U16;;Undervoltage time 3;;1.0;0.0;ms;4
+271;4;47118;U16;;Undervoltage enable 4;;1.0;0.0;;4
+272;4;47120;U16;;Undervoltage limit 4;;1.0;0.0;%;4
+273;4;47122;U16;;Undervoltage time 4;;1.0;0.0;ms;4
+274;4;47126;U16;;Overvoltage enable 1;;1.0;0.0;;4
+275;4;47128;U16;;Overvoltage limit 1;;1.0;0.0;%;4
+276;4;47130;U16;;Overvoltage time 1;;1.0;0.0;ms;4
+277;4;47132;U16;;Overvoltage enable 2;;1.0;0.0;;4
+278;4;47134;U16;;Overvoltage limit 2;;1.0;0.0;%;4
+279;4;47136;U16;;Overvoltage time 2;;1.0;0.0;ms;4
+280;4;47138;U16;;Overvoltage enable 3;;1.0;0.0;;4
+281;4;47140;U16;;Overvoltage limit 3;;1.0;0.0;%;4
+282;4;47142;U16;;Overvoltage time 3;;1.0;0.0;ms;4
+283;4;47144;U16;;Overvoltage enable 4;;1.0;0.0;;4
+284;4;47146;U16;;Overvoltage limit 4;;1.0;0.0;%;4
+285;4;47148;U16;;Overvoltage time 4;;1.0;0.0;ms;4
+286;4;47150;U16;;Sliding overvoltage enable;;1.0;0.0;;4
+287;4;47152;U16;;Sliding overvoltage limit;;1.0;0.0;%;4
+288;4;47154;U16;;Sliding overvoltage time;;1.0;0.0;ms;4
+289;4;47160;U16;;Combinatory trip;;1.0;0.0;;4
+290;4;47162;U16;;Combinatory trip time;;1.0;0.0;ms;4
+291;4;47168;U16;;Comb pos seq voltage limit;;1.0;0.0;%;4
+292;4;47170;U16;;Comb neg seq voltage limit;;1.0;0.0;%;4
+293;4;47172;U16;;Comb underfrequency limit;;1.0;0.0;Hz;4
+294;4;47174;U16;;Comb overfrequency limit;;1.0;0.0;Hz;4
+295;4;47200;U16;;Anti-islanding;;1.0;0.0;;4
+296;4;47202;U16;;AI underfrequency enable;;1.0;0.0;;4
+297;4;47204;U16;;AI underfrequency limit;;1.0;0.0;Hz;4
+298;4;47206;U16;;AI overfrequency enable;;1.0;0.0;;4
+299;4;47208;U16;;AI overfrequency limit;;1.0;0.0;Hz;4
+300;4;47210;U16;;AI undervoltage enable;;1.0;0.0;;4
+301;4;47212;U16;;AI undervoltage limit;;1.0;0.0;%;4
+302;4;47214;U16;;AI overvoltage enable;;1.0;0.0;;4
+303;4;47216;U16;;AI overvoltage limit;;1.0;0.0;%;4
+304;4;47220;U16;;Rate of change of freq enable;;1.0;0.0;;4
+305;4;47222;U16;;Rate of change of freq limit;;1.0;0.0;;4
+306;4;47262;U16;;Overfrequency enable 3;;1.0;0.0;;4
+307;4;47264;U16;;Overfrequency limit 3;;1.0;0.0;Hz;4
+308;4;47266;U16;;Overfrequency time 3;;1.0;0.0;ms;4
+309;4;47268;U16;;Overfrequency enable 4;;1.0;0.0;;4
+310;4;47270;U16;;Overfrequency limit 4;;1.0;0.0;Hz;4
+311;4;47272;U16;;Overfrequency time 4;;1.0;0.0;ms;4
+312;4;47274;U16;;Underfrequency enable 3;;1.0;0.0;;4
+313;4;47276;U16;;Underfrequency limit 3;;1.0;0.0;Hz;4
+314;4;47278;U16;;Underfrequency time 3;;1.0;0.0;ms;4
+315;4;47280;U16;;Underfrequency enable 4;;1.0;0.0;;4
+316;4;47282;U16;;Underfrequency limit 4;;1.0;0.0;Hz;4
+317;4;47284;U16;;Underfrequency time 4;;1.0;0.0;ms;4
+318;4;47286;U16;;Underfrequency enable 5;;1.0;0.0;;4
+319;4;47288;U16;;Underfrequency limit 5;;1.0;0.0;Hz;4
+320;4;47290;U16;;Underfrequency time 5;;1.0;0.0;ms;4
+321;4;47292;U16;;Underfrequency enable 6;;1.0;0.0;;4
+322;4;47294;U16;;Underfrequency limit 6;;1.0;0.0;Hz;4
+323;4;47296;U16;;Underfrequency time 6;;1.0;0.0;ms;4
+324;4;13750;U16;;Grid monitoring SW1;;1.0;0.0;;4
+325;4;13751;U16;;Grid monitoring SW2;;1.0;0.0;;4
+326;4;13752;U16;;Grid monitoring SW3;;1.0;0.0;;4
+327;4;49402;U16;;Data storage 1 real32;;1.0;0.0;;4
+328;4;49404;U16;;Data storage 2 real32;;1.0;0.0;;4
+329;4;49406;U16;;Data storage 3 real32;;1.0;0.0;;4
+330;4;49408;U16;;Data storage 4 real32;;1.0;0.0;;4
+331;4;49410;U16;;Data storage 5 real32;;1.0;0.0;;4
+332;4;49412;U16;;Data storage 6 real32;;1.0;0.0;;4
+333;4;49414;U16;;Data storage 7 real32;;1.0;0.0;;4
+334;4;49416;U16;;Data storage 8 real32;;1.0;0.0;;4
+335;4;49422;U16;;Data storage 1 int32;;1.0;0.0;;4
+336;4;49424;U16;;Data storage 2 int32;;1.0;0.0;;4
+337;4;49426;U16;;Data storage 3 int32;;1.0;0.0;;4
+338;4;49428;U16;;Data storage 4 int32;;1.0;0.0;;4
+339;4;49430;U16;;Data storage 5 int32;;1.0;0.0;;4
+340;4;49432;U16;;Data storage 6 int32;;1.0;0.0;;4
+341;4;49434;U16;;Data storage 7 int32;;1.0;0.0;;4
+342;4;49436;U16;;Data storage 8 int32;;1.0;0.0;;4
+343;4;14721;U16;;Data storage 1 int16;;1.0;0.0;;4
+344;4;14722;U16;;Data storage 2 int16;;1.0;0.0;;4
+345;4;14723;U16;;Data storage 3 int16;;1.0;0.0;;4
+346;4;14724;U16;;Data storage 4 int16;;1.0;0.0;;4
+347;4;14725;U16;;Data storage 5 int16;;1.0;0.0;;4
+348;4;14726;U16;;Data storage 6 int16;;1.0;0.0;;4
+349;4;14727;U16;;Data storage 7 int16;;1.0;0.0;;4
+350;4;14728;U16;;Data storage 8 int16;;1.0;0.0;;4
+351;4;49462;U16;;Data storage 1 real32 type;;1.0;0.0;;4
+352;4;49464;U16;;Data storage 2 real32 type;;1.0;0.0;;4
+353;4;49466;U16;;Data storage 3 real32 type;;1.0;0.0;;4
+354;4;49468;U16;;Data storage 4 real32 type;;1.0;0.0;;4
+355;4;49470;U16;;Data storage 5 real32 type;;1.0;0.0;;4
+356;4;49472;U16;;Data storage 6 real32 type;;1.0;0.0;;4
+357;4;49474;U16;;Data storage 7 real32 type;;1.0;0.0;;4
+358;4;49476;U16;;Data storage 8 real32 type;;1.0;0.0;;4
+359;4;49802;U16;;Node ID;;1.0;0.0;;4
+360;4;49806;U16;;Baud rate;;1.0;0.0;;4
+361;4;49812;U16;;Refresh settings;;1.0;0.0;;4
+362;4;50002;U16;;FBA A Enable;;1.0;0.0;;4
+363;4;50004;U16;;FBA A comm loss func;;1.0;0.0;;4
+364;4;50006;U16;;FBA A comm loss t out;;1.0;0.0;s;4
+365;4;50008;U16;;FBA A ref1 type;;1.0;0.0;;4
+366;4;50010;U16;;FBA A ref2 type;;1.0;0.0;;4
+367;4;50012;U16;;FBA A SW sel;;1.0;0.0;;4
+368;4;50014;U16;;FBA A act1 type;;1.0;0.0;;4
+369;4;50016;U16;;FBA A act2 type;;1.0;0.0;;4
+370;4;50018;U16;;FBA A SW tr src;;1.0;0.0;;4
+371;4;50020;U16;;FBA A act1 transparent source;;1.0;0.0;;4
+372;4;50022;U16;;FBA A act2 transparent source;;1.0;0.0;;4
+373;4;50024;U16;;FBA A debug mode;;1.0;0.0;;4
+374;4;50026;U16;;FBA A Control Word;;1.0;0.0;;4
+375;4;50028;U16;;FBA A Reference REF1;;1.0;0.0;;4
+376;4;50030;U16;;FBA A Reference REF2;;1.0;0.0;;4
+377;4;50032;U16;;FBA A Status Word;;1.0;0.0;;4
+378;4;50034;U16;;FBA A Actual value 1;;1.0;0.0;;4
+379;4;50036;U16;;FBA A Actual value 2;;1.0;0.0;;4
+380;4;50042;U16;;FBA A Timelevel sel;;1.0;0.0;;4
+381;4;50062;U16;;FBA B Enable;;1.0;0.0;;4
+382;4;50064;U16;;FBA B comm loss func;;1.0;0.0;;4
+383;4;50066;U16;;FBA B comm loss t out;;1.0;0.0;s;4
+384;4;50068;U16;;FBA B ref1 type;;1.0;0.0;;4
+385;4;50070;U16;;FBA B ref2 type;;1.0;0.0;;4
+386;4;50072;U16;;FBA B SW sel;;1.0;0.0;;4
+387;4;50074;U16;;FBA B act1 type;;1.0;0.0;;4
+388;4;50076;U16;;FBA B act2 type;;1.0;0.0;;4
+389;4;50078;U16;;FBA B SW tr src;;1.0;0.0;;4
+390;4;50080;U16;;FBA B act1 transparent source;;1.0;0.0;;4
+391;4;50082;U16;;FBA B act2 transparent source;;1.0;0.0;;4
+392;4;50084;U16;;FBA B debug mode;;1.0;0.0;;4
+393;4;50086;U16;;FBA B Control Word;;1.0;0.0;;4
+394;4;50088;U16;;FBA B Reference REF1;;1.0;0.0;;4
+395;4;50090;U16;;FBA B Reference REF2;;1.0;0.0;;4
+396;4;50092;U16;;FBA B Status Word;;1.0;0.0;;4
+397;4;50094;U16;;FBA B Actual value 1;;1.0;0.0;;4
+398;4;50096;U16;;FBA B Actual value 2;;1.0;0.0;;4
+399;4;50102;U16;;FBA B Timelevel sel;;1.0;0.0;;4
+400;4;50202;U16;;FBA type;;1.0;0.0;;4
+401;4;50204;U16;;FBA Par2;;1.0;0.0;;4
+402;4;50206;U16;;FBA Par3;;1.0;0.0;;4
+403;4;50208;U16;;FBA Par4;;1.0;0.0;;4
+404;4;50210;U16;;FBA Par5;;1.0;0.0;;4
+405;4;50212;U16;;FBA Par6;;1.0;0.0;;4
+406;4;50214;U16;;FBA Par7;;1.0;0.0;;4
+407;4;50216;U16;;FBA Par8;;1.0;0.0;;4
+408;4;50218;U16;;FBA Par9;;1.0;0.0;;4
+409;4;50220;U16;;FBA Par10;;1.0;0.0;;4
+410;4;50222;U16;;FBA Par11;;1.0;0.0;;4
+411;4;50224;U16;;FBA Par12;;1.0;0.0;;4
+412;4;50226;U16;;FBA Par13;;1.0;0.0;;4
+413;4;50228;U16;;FBA Par14;;1.0;0.0;;4
+414;4;50230;U16;;FBA Par15;;1.0;0.0;;4
+415;4;50232;U16;;FBA Par16;;1.0;0.0;;4
+416;4;50234;U16;;FBA Par17;;1.0;0.0;;4
+417;4;50236;U16;;FBA Par18;;1.0;0.0;;4
+418;4;50238;U16;;FBA Par19;;1.0;0.0;;4
+419;4;50240;U16;;FBA Par20;;1.0;0.0;;4
+420;4;50242;U16;;FBA Par21;;1.0;0.0;;4
+421;4;50244;U16;;FBA Par22;;1.0;0.0;;4
+422;4;50246;U16;;FBA Par23;;1.0;0.0;;4
+423;4;50248;U16;;FBA Par24;;1.0;0.0;;4
+424;4;50250;U16;;FBA Par25;;1.0;0.0;;4
+425;4;50252;U16;;FBA Par26;;1.0;0.0;;4
+426;4;50254;U16;;FBA par refresh;;1.0;0.0;;4
+427;4;50256;U16;;Par table ver;;1.0;0.0;;4
+428;4;50258;U16;;Drive type code;;1.0;0.0;;4
+429;4;50260;U16;;Mapping file ver;;1.0;0.0;;4
+430;4;50262;U16;;D2FBA comm sta;;1.0;0.0;;4
+431;4;50264;U16;;FBA comm SW ver;;1.0;0.0;;4
+432;4;50266;U16;;FBA appl SW ver;;1.0;0.0;;4
+433;4;50402;U16;;FBA data in1;;1.0;0.0;;4
+434;4;50404;U16;;FBA data in2;;1.0;0.0;;4
+435;4;50406;U16;;FBA data in3;;1.0;0.0;;4
+436;4;50408;U16;;FBA data in4;;1.0;0.0;;4
+437;4;50410;U16;;FBA data in5;;1.0;0.0;;4
+438;4;50412;U16;;FBA data in6;;1.0;0.0;;4
+439;4;50414;U16;;FBA data in7;;1.0;0.0;;4
+440;4;50416;U16;;FBA data in8;;1.0;0.0;;4
+441;4;50418;U16;;FBA data in9;;1.0;0.0;;4
+442;4;50420;U16;;FBA data in10;;1.0;0.0;;4
+443;4;50422;U16;;FBA data in11;;1.0;0.0;;4
+444;4;50424;U16;;FBA data in12;;1.0;0.0;;4
+445;4;50602;U16;;FBA data out1;;1.0;0.0;;4
+446;4;50604;U16;;FBA data out2;;1.0;0.0;;4
+447;4;50606;U16;;FBA data out3;;1.0;0.0;;4
+448;4;50608;U16;;FBA data out4;;1.0;0.0;;4
+449;4;50610;U16;;FBA data out5;;1.0;0.0;;4
+450;4;50612;U16;;FBA data out6;;1.0;0.0;;4
+451;4;50614;U16;;FBA data out7;;1.0;0.0;;4
+452;4;50616;U16;;FBA data out8;;1.0;0.0;;4
+453;4;50618;U16;;FBA data out9;;1.0;0.0;;4
+454;4;50620;U16;;FBA data out10;;1.0;0.0;;4
+455;4;50622;U16;;FBA data out11;;1.0;0.0;;4
+456;4;50624;U16;;FBA data out12;;1.0;0.0;;4
+457;4;50802;U16;;FBA type_1;;1.0;0.0;;4
+458;4;50804;U16;;FBA Par2_1;;1.0;0.0;;4
+459;4;50806;U16;;FBA Par3_1;;1.0;0.0;;4
+460;4;50808;U16;;FBA Par4_1;;1.0;0.0;;4
+461;4;50810;U16;;FBA Par5_1;;1.0;0.0;;4
+462;4;50812;U16;;FBA Par6_1;;1.0;0.0;;4
+463;4;50814;U16;;FBA Par7_1;;1.0;0.0;;4
+464;4;50816;U16;;FBA Par8_1;;1.0;0.0;;4
+465;4;50818;U16;;FBA Par9_1;;1.0;0.0;;4
+466;4;50820;U16;;FBA Par10_1;;1.0;0.0;;4
+467;4;50822;U16;;FBA Par11_1;;1.0;0.0;;4
+468;4;50824;U16;;FBA Par12_1;;1.0;0.0;;4
+469;4;50826;U16;;FBA Par13_1;;1.0;0.0;;4
+470;4;50828;U16;;FBA Par14_1;;1.0;0.0;;4
+471;4;50830;U16;;FBA Par15_1;;1.0;0.0;;4
+472;4;50832;U16;;FBA Par16_1;;1.0;0.0;;4
+473;4;50834;U16;;FBA Par17_1;;1.0;0.0;;4
+474;4;50836;U16;;FBA Par18_1;;1.0;0.0;;4
+475;4;50838;U16;;FBA Par19_1;;1.0;0.0;;4
+476;4;50840;U16;;FBA Par20_1;;1.0;0.0;;4
+477;4;50842;U16;;FBA Par21_1;;1.0;0.0;;4
+478;4;50844;U16;;FBA Par22_1;;1.0;0.0;;4
+479;4;50846;U16;;FBA Par23_1;;1.0;0.0;;4
+480;4;50848;U16;;FBA Par24_1;;1.0;0.0;;4
+481;4;50850;U16;;FBA Par25_1;;1.0;0.0;;4
+482;4;50852;U16;;FBA Par26_1;;1.0;0.0;;4
+483;4;50854;U16;;FBA par refresh_1;;1.0;0.0;;4
+484;4;50856;U16;;Par table ver _1;;1.0;0.0;;4
+485;4;50858;U16;;Drive type code_1;;1.0;0.0;;4
+486;4;50860;U16;;Mapping file ver_1;;1.0;0.0;;4
+487;4;50862;U16;;D2FBA comm sta_1;;1.0;0.0;;4
+488;4;50864;U16;;FBA comm SW ver_1;;1.0;0.0;;4
+489;4;50866;U16;;FBA appl SW ver_1;;1.0;0.0;;4
+490;4;51002;U16;;FBA data in1_1;;1.0;0.0;;4
+491;4;51004;U16;;FBA data in2_1;;1.0;0.0;;4
+492;4;51006;U16;;FBA data in3_1;;1.0;0.0;;4
+493;4;51008;U16;;FBA data in4_1;;1.0;0.0;;4
+494;4;51010;U16;;FBA data in5_1;;1.0;0.0;;4
+495;4;51012;U16;;FBA data in6_1;;1.0;0.0;;4
+496;4;51014;U16;;FBA data in7_1;;1.0;0.0;;4
+497;4;51016;U16;;FBA data in8_1;;1.0;0.0;;4
+498;4;51018;U16;;FBA data in9_1;;1.0;0.0;;4
+499;4;51020;U16;;FBA data in10_1;;1.0;0.0;;4
+500;4;51022;U16;;FBA data in11_1;;1.0;0.0;;4
+501;4;51024;U16;;FBA data in12_1;;1.0;0.0;;4
+502;4;51202;U16;;FBA B data out1;;1.0;0.0;;4
+503;4;51204;U16;;FBA B data out2;;1.0;0.0;;4
+504;4;51206;U16;;FBA B data out3;;1.0;0.0;;4
+505;4;51208;U16;;FBA B data out4;;1.0;0.0;;4
+506;4;51210;U16;;FBA B data out5;;1.0;0.0;;4
+507;4;51212;U16;;FBA B data out6;;1.0;0.0;;4
+508;4;51214;U16;;FBA B data out7;;1.0;0.0;;4
+509;4;51216;U16;;FBA B data out8;;1.0;0.0;;4
+510;4;51218;U16;;FBA B data out9;;1.0;0.0;;4
+511;4;51220;U16;;FBA B data out10;;1.0;0.0;;4
+512;4;51222;U16;;FBA B data out11;;1.0;0.0;;4
+513;4;51224;U16;;FBA B data out12;;1.0;0.0;;4
+514;4;52802;U16;;Enable;;1.0;0.0;;4
+515;4;52804;U16;;Profile;;1.0;0.0;;4
+516;4;52808;U16;;Power scale;;1.0;0.0;kW;4
+517;4;52820;U16;;Communication loss event;WIND_SPEED;1.0;0.0;;4
+518;4;52822;U16;;Communication loss timeout;;1.0;0.0;s;4
+519;4;52824;U16;;Heartbeat max interval;;1.0;0.0;s;4
+520;4;52826;U16;;First start delay;;1.0;0.0;s;4
+521;4;53002;U16;;Data in 1;;1.0;0.0;;4
+522;4;53004;U16;;Data in 2;;1.0;0.0;;4
+523;4;53006;U16;;Data in 3;;1.0;0.0;;4
+524;4;53008;U16;;Data in 4;;1.0;0.0;;4
+525;4;53010;U16;;Data in 5;;1.0;0.0;;4
+526;4;53012;U16;;Data in 6;;1.0;0.0;;4
+527;4;53014;U16;;Data in 7;;1.0;0.0;;4
+528;4;53016;U16;;Data in 8;;1.0;0.0;;4
+529;4;53018;U16;;Data in 9;;1.0;0.0;;4
+530;4;53020;U16;;Data in 10;;1.0;0.0;;4
+531;4;53022;U16;;Data in 11;;1.0;0.0;;4
+532;4;53024;U16;;Data in 12;;1.0;0.0;;4
+533;4;53026;U16;;Data in 13;;1.0;0.0;;4
+534;4;53028;U16;;Data in 14;;1.0;0.0;;4
+535;4;53030;U16;;Data in 15;;1.0;0.0;;4
+536;4;53100;U16;;Data in 50;;1.0;0.0;;4
+537;4;53102;U16;;Data in 51;;1.0;0.0;;4
+538;4;53104;U16;;Data in 52;;1.0;0.0;;4
+539;4;53106;U16;;Data in 53;;1.0;0.0;;4
+540;4;53108;U16;;Data in 54;;1.0;0.0;;4
+541;4;53110;U16;;Data in 55;;1.0;0.0;;4
+542;4;53112;U16;;Data in 56;;1.0;0.0;;4
+543;4;53202;U16;;Data out 1;;1.0;0.0;;4
+544;4;53204;U16;;Data out 2;;1.0;0.0;;4
+545;4;53206;U16;;Data out 3;;1.0;0.0;;4
+546;4;53208;U16;;Data out 4;;1.0;0.0;;4
+547;4;53210;U16;;Data out 5;;1.0;0.0;;4
+548;4;53212;U16;;Data out 6;;1.0;0.0;;4
+549;4;53214;U16;;Data out 7;;1.0;0.0;;4
+550;4;53216;U16;;Data out 8;;1.0;0.0;;4
+551;4;53218;U16;;Data out 9;;1.0;0.0;;4
+552;4;53220;U16;;Data out 10;;1.0;0.0;;4
+553;4;53222;U16;;Data out 11;;1.0;0.0;;4
+554;4;53300;U16;;Data out 50;;1.0;0.0;;4
+555;4;53302;U16;;Data out 51;;1.0;0.0;;4
+556;4;53304;U16;;Data out 52;;1.0;0.0;;4
+557;4;53306;U16;;Data out 53;;1.0;0.0;;4
+558;4;53308;U16;;Data out 54;;1.0;0.0;;4
+559;4;53310;U16;;Data out 55;;1.0;0.0;;4
+560;4;53312;U16;;Data out 56;;1.0;0.0;;4
+561;4;53314;U16;;Data out 57;;1.0;0.0;;4
+562;4;53316;U16;;Data out 58;;1.0;0.0;;4
+563;4;53318;U16;;Data out 59;;1.0;0.0;;4
+564;4;53320;U16;;Data out 60;;1.0;0.0;;4
+565;4;53322;U16;;Data out 61;;1.0;0.0;;4
+566;4;53324;U16;;Data out 62;;1.0;0.0;;4
+567;4;53326;U16;;Data out 63;;1.0;0.0;;4
+568;4;53328;U16;;Data out 64;;1.0;0.0;;4
+569;4;53330;U16;;Data out 65;;1.0;0.0;;4
+570;4;53332;U16;;Data out 66;;1.0;0.0;;4
+571;4;53334;U16;;Data out 67;;1.0;0.0;;4
+572;4;53336;U16;;Data out 68;;1.0;0.0;;4
+573;4;53338;U16;;Data out 69;;1.0;0.0;;4
+574;4;53340;U16;;Data out 70;;1.0;0.0;;4
+575;4;53342;U16;;Data out 71;;1.0;0.0;;4
+576;4;53344;U16;;Data out 72;;1.0;0.0;;4
+577;4;53346;U16;;Data out 73;;1.0;0.0;;4
+578;4;53348;U16;;Data out 74;;1.0;0.0;;4
+579;4;53350;U16;;Data out 75;;1.0;0.0;;4
+580;4;53352;U16;;Data out 76;;1.0;0.0;;4
+581;4;53354;U16;;Data out 77;;1.0;0.0;;4
+582;4;53356;U16;;Data out 78;;1.0;0.0;;4
+583;4;53358;U16;;Data out 79;;1.0;0.0;;4
+584;4;53360;U16;;Data out 80;;1.0;0.0;;4
+585;4;53362;U16;;Data out 81;;1.0;0.0;;4
+586;4;53364;U16;;Data out 82;;1.0;0.0;;4
+587;4;53366;U16;;Data out 83;;1.0;0.0;;4
+588;4;53368;U16;;Data out 84;;1.0;0.0;;4
+589;4;53370;U16;;Data out 85;;1.0;0.0;;4
+590;4;53372;U16;;Data out 86;;1.0;0.0;;4
+591;4;53374;U16;;Data out 87;;1.0;0.0;;4
+592;4;53376;U16;;Data out 88;;1.0;0.0;;4
+593;4;53378;U16;;Data out 89;;1.0;0.0;;4
+594;4;53380;U16;;Data out 90;;1.0;0.0;;4
+595;4;53382;U16;;Data out 91;;1.0;0.0;;4
+596;4;53384;U16;;Data out 92;;1.0;0.0;;4
+597;4;53386;U16;;Data out 93;;1.0;0.0;;4
+598;4;53388;U16;;Data out 94;;1.0;0.0;;4
+599;4;53390;U16;;Data out 95;;1.0;0.0;;4
+600;4;53392;U16;;Data out 96;;1.0;0.0;;4
+601;4;53394;U16;;Data out 97;;1.0;0.0;;4
+602;4;53396;U16;;Data out 98;;1.0;0.0;;4
+603;4;53398;U16;;Data out 99;;1.0;0.0;;4
+604;4;53400;U16;;Data out 100;;1.0;0.0;;4
+605;4;53402;U16;;Data out 101;;1.0;0.0;;4
+606;4;53404;U16;;Data out 102;;1.0;0.0;;4
+607;4;53406;U16;;Data out 103;;1.0;0.0;;4
+608;4;53408;U16;;Data out 104;;1.0;0.0;;4
+609;4;53410;U16;;Data out 105;;1.0;0.0;;4
+610;4;53412;U16;;Data out 106;;1.0;0.0;;4
+611;4;53414;U16;;Data out 107;;1.0;0.0;;4
+612;4;53416;U16;;Data out 108;;1.0;0.0;;4
+613;4;53418;U16;;Data out 109;;1.0;0.0;;4
+614;4;53420;U16;;Data out 110;;1.0;0.0;;4
+615;4;53422;U16;;Data out 111;;1.0;0.0;;4
+616;4;53424;U16;;Data out 112;;1.0;0.0;;4
+617;4;53426;U16;;Data out 113;;1.0;0.0;;4
+618;4;53428;U16;;Data out 114;;1.0;0.0;;4
+619;4;53430;U16;;Data out 115;;1.0;0.0;;4
+620;4;53432;U16;;Data out 116;;1.0;0.0;;4
+621;4;53434;U16;;Data out 117;;1.0;0.0;;4
+622;4;53436;U16;;Data out 118;;1.0;0.0;;4
+623;4;53438;U16;;Data out 119;;1.0;0.0;;4
+624;4;53440;U16;;Data out 120;;1.0;0.0;;4
+625;4;53442;U16;;Data out 121;;1.0;0.0;;4
+626;4;53444;U16;;Data out 122;;1.0;0.0;;4
+627;4;53446;U16;;Data out 123;;1.0;0.0;;4
+628;4;53448;U16;;Data out 124;;1.0;0.0;;4
+629;4;53450;U16;;Data out 125;;1.0;0.0;;4
+630;4;53452;U16;;Data out 126;;1.0;0.0;;4
+631;4;53454;U16;;Data out 127;;1.0;0.0;;4
+632;4;53456;U16;;Data out 128;;1.0;0.0;;4
+633;4;53458;U16;;Data out 129;;1.0;0.0;;4
+634;4;53460;U16;;Data out 130;;1.0;0.0;;4
+635;4;53462;U16;;Data out 131;;1.0;0.0;;4
+636;4;53464;U16;;Data out 132;;1.0;0.0;;4
+637;4;53466;U16;;Data out 133;;1.0;0.0;;4
+638;4;53468;U16;;Data out 134;;1.0;0.0;;4
+639;4;53470;U16;;Data out 135;;1.0;0.0;;4
+640;4;53472;U16;;Data out 136;;1.0;0.0;;4
+641;4;53474;U16;;Data out 137;;1.0;0.0;;4
+642;4;53476;U16;;Data out 138;;1.0;0.0;;4
+643;4;53478;U16;;Data out 139;;1.0;0.0;;4
+644;4;53480;U16;;Data out 140;;1.0;0.0;;4
+645;4;53482;U16;;Data out 141;;1.0;0.0;;4
+646;4;53484;U16;;Data out 142;;1.0;0.0;;4
+647;4;53486;U16;;Data out 143;;1.0;0.0;;4
+648;4;53488;U16;;Data out 144;;1.0;0.0;;4
+649;4;53490;U16;;Data out 145;;1.0;0.0;;4
+650;4;53492;U16;;Data out 146;;1.0;0.0;;4
+651;4;53494;U16;;Data out 147;;1.0;0.0;;4
+652;4;53496;U16;;Data out 148;;1.0;0.0;;4
+653;4;53498;U16;;Data out 149;;1.0;0.0;;4
+654;4;53500;U16;;Data out 150;;1.0;0.0;;4
+655;4;53502;U16;;Data out 151;;1.0;0.0;;4
+656;4;53504;U16;;Data out 152;;1.0;0.0;;4
+657;4;53506;U16;;Data out 153;;1.0;0.0;;4
+658;4;53508;U16;;Data out 154;;1.0;0.0;;4
+659;4;53510;U16;;Data out 155;;1.0;0.0;;4
+660;4;53512;U16;;Data out 156;;1.0;0.0;;4
+661;4;53514;U16;;Data out 157;;1.0;0.0;;4
+662;4;53516;U16;;Data out 158;;1.0;0.0;;4
+663;4;53518;U16;;Data out 159;;1.0;0.0;;4
+664;4;53520;U16;;Data out 160;;1.0;0.0;;4
+665;4;17301;U16;;Main status word;;1.0;0.0;;4
+666;4;54604;U16;;Inverter main state;;1.0;0.0;;4
+667;4;54606;U16;;MPPT unit state;;1.0;0.0;;4
+668;4;17304;U16;;Start command SW;;1.0;0.0;;4
+669;4;17305;U16;;Internal inverter inhibitors 1;;1.0;0.0;;4
+670;4;17306;U16;;Internal inverter inhibitors 2;;1.0;0.0;;4
+671;4;17307;U16;;Internal MPPT inhibitors;;1.0;0.0;;4
+672;4;54622;U16;;Output power status;;1.0;0.0;;4
+673;4;54624;U16;;Disconnect trigger;;1.0;0.0;;4
+674;4;54640;U16;;Grid monitoring ready in;;1.0;0.0;s;4
+675;4;54642;U16;;Start logic ready in;;1.0;0.0;s;4
+676;4;54646;U16;;PU ready in;;1.0;0.0;s;4
+677;4;54660;U16;;Start logic stopping in;;1.0;0.0;s;4
+678;4;17401;U16;;Connected DC inputs 1- 12;;1.0;0.0;;4
+679;4;17402;U16;;Connected DC inputs 13-24;;1.0;0.0;;4
+680;4;54810;U16;;Overcurrent detection;;1.0;0.0;;4
+681;4;54812;U16;;Overcurrent instant limit;;1.0;0.0;A;4
+682;4;54814;U16;;Overcurrent delayed limit;;1.0;0.0;A;4
+683;4;54816;U16;;Overcurrent time delay;;1.0;0.0;s;4
+684;4;54818;U16;;Reverse current detection;;1.0;0.0;;4
+685;4;54820;U16;;Delayed Reverse current limit;;1.0;0.0;A;4
+686;4;54822;U16;;Reverse current time delay;;1.0;0.0;s;4
+687;4;54828;U16;;Current deviation action;;1.0;0.0;;4
+688;4;54830;U16;;Current deviation delay;;1.0;0.0;min;4
+689;4;54832;U16;;Comparison mode;;1.0;0.0;;4
+690;4;54834;U16;;Reference type;;1.0;0.0;;4
+691;4;54838;U16;;Relative current limit;;1.0;0.0;%;4
+692;4;54840;U16;;Absolute current limit;;1.0;0.0;A;4
+693;4;54842;U16;;Relative threshold;;1.0;0.0;A;4
+694;4;54844;U16;;Fuse monitor action;;1.0;0.0;;4
+695;4;54846;U16;;Blown fuse tolerance;;1.0;0.0;A;4
+696;4;54848;U16;;Blown fuse active boundary;;1.0;0.0;A;4
+697;4;54850;U16;;Current sanity check action;;1.0;0.0;;4
+698;4;54852;U16;;Current meas range;;1.0;0.0;A;4
+699;4;17427;U16;;Current range selection 1-12;;1.0;0.0;;4
+700;4;17428;U16;;Current range selection 13-24;;1.0;0.0;;4
+701;4;54862;U16;;DC input 1 current;I_DC;1.0;0.0;A;4
+702;4;54864;U16;;DC input 2 current;;1.0;0.0;A;4
+703;4;54866;U16;;DC input 3 current;;1.0;0.0;A;4
+704;4;54868;U16;;DC input 4 current;;1.0;0.0;A;4
+705;4;54870;U16;;DC input 5 current;;1.0;0.0;A;4
+706;4;54872;U16;;DC input 6 current;;1.0;0.0;A;4
+707;4;54874;U16;;DC input 7 current;;1.0;0.0;A;4
+708;4;54876;U16;;DC input 8 current;;1.0;0.0;A;4
+709;4;54878;U16;;DC input 9 current;;1.0;0.0;A;4
+710;4;54880;U16;;DC input 10 current;;1.0;0.0;A;4
+711;4;54882;U16;;DC input 11 current;;1.0;0.0;A;4
+712;4;54884;U16;;DC input 12 current;;1.0;0.0;A;4
+713;4;54886;U16;;DC input 13 current;;1.0;0.0;A;4
+714;4;54888;U16;;DC input 14 current;;1.0;0.0;A;4
+715;4;54890;U16;;DC input 15 current;;1.0;0.0;A;4
+716;4;54892;U16;;DC input 16 current;;1.0;0.0;A;4
+717;4;54894;U16;;DC input 17 current;;1.0;0.0;A;4
+718;4;54896;U16;;DC input 18 current;;1.0;0.0;A;4
+719;4;54898;U16;;DC input 19 current;;1.0;0.0;A;4
+720;4;54900;U16;;DC input 20 current;;1.0;0.0;A;4
+721;4;54902;U16;;DC input 21 current;;1.0;0.0;A;4
+722;4;54904;U16;;DC input 22 current;;1.0;0.0;A;4
+723;4;54906;U16;;DC input 23 current;;1.0;0.0;A;4
+724;4;54908;U16;;DC input 24 current;;1.0;0.0;A;4
+725;4;17481;U16;;Current meas status 1- 12;;1.0;0.0;;4
+726;4;17482;U16;;Current meas status 13- 24;;1.0;0.0;;4
+727;4;55202;U16;;Spare AI1;;1.0;0.0;;4
+728;4;55222;U16;;PLC CPU RO 0 source;;1.0;0.0;;4
+729;4;55224;U16;;PCC CPU RO 1 source;;1.0;0.0;;4
+730;4;55242;U16;;External fault 1 source;;1.0;0.0;;4
+731;4;55244;U16;;External fault 1 action;;1.0;0.0;;4
+732;4;55246;U16;;External fault 1 action delay;;1.0;0.0;s;4
+733;4;55248;U16;;External fault 1 failure logic;;1.0;0.0;;4
+734;4;55252;U16;;External fault 2 source;;1.0;0.0;;4
+735;4;55254;U16;;External fault 2 action;;1.0;0.0;;4
+736;4;55256;U16;;External fault 2 action delay;;1.0;0.0;s;4
+737;4;55258;U16;;External fault 2 failure logic;;1.0;0.0;;4
+738;4;55262;U16;;External fault 3 source;;1.0;0.0;;4
+739;4;55264;U16;;External fault 3 action;;1.0;0.0;;4
+740;4;55266;U16;;External fault 3 action delay;;1.0;0.0;s;4
+741;4;55268;U16;;External fault 3 failure logic;;1.0;0.0;;4
+742;4;55422;U16;;MV temperature alarm source;;1.0;0.0;;4
+743;4;55424;U16;;Transformer temperature alarm action;;1.0;0.0;;4
+744;4;55426;U16;;Transformer temperature alarm delay;;1.0;0.0;s;4
+745;4;55428;U16;;Transformer temperature alarm current;;1.0;0.0;A;4
+746;4;55430;U16;;Transformer temperature alarm failure logic;;1.0;0.0;;4
+747;4;55432;U16;;MV temperature fault source;;1.0;0.0;;4
+748;4;55434;U16;;Transformer temperature fault action;;1.0;0.0;;4
+749;4;55436;U16;;Transformer temperature fault delay;;1.0;0.0;s;4
+750;4;55438;U16;;Transformer temperature fault current limit;;1.0;0.0;A;4
+751;4;55440;U16;;Transformer temperature fault failure logic;;1.0;0.0;;4
+752;4;55442;U16;;MV low oil level source;;1.0;0.0;;4
+753;4;55444;U16;;Transformer low oil level action;;1.0;0.0;;4
+754;4;55446;U16;;Transformer low oil level delay;;1.0;0.0;s;4
+755;4;55448;U16;;Transformer low oil level current limit;;1.0;0.0;A;4
+756;4;55450;U16;;Transformer low oil level failure logic;;1.0;0.0;;4
+757;4;55452;U16;;MV overpressure source;PRESSURE;1.0;0.0;;4
+758;4;55454;U16;;Transformer overpressure action;;1.0;0.0;;4
+759;4;55456;U16;;Transformer overpressure delay;;1.0;0.0;s;4
+760;4;55458;U16;;Transformer overpressure current limit;;1.0;0.0;A;4
+761;4;55460;U16;;Transformer overpressure failure logic;;1.0;0.0;;4
+762;4;55462;U16;;MV vacuum failure source;;1.0;0.0;;4
+763;4;55464;U16;;Transformer vacuum failure action;;1.0;0.0;;4
+764;4;55466;U16;;Transformer vacuum failure delay;;1.0;0.0;s;4
+765;4;55468;U16;;Transformer vacuum failure current limit;;1.0;0.0;A;4
+766;4;55470;U16;;Transformer vacuum failure logic;;1.0;0.0;;4
+767;4;55472;U16;;MV gas discharge source;;1.0;0.0;;4
+768;4;55474;U16;;Transformer gas discharge action;;1.0;0.0;;4
+769;4;55476;U16;;Transformer gas discharge delay;;1.0;0.0;s;4
+770;4;55478;U16;;Transformer gas discharge current limit;;1.0;0.0;A;4
+771;4;55480;U16;;Transformer gas discharge failure logic;;1.0;0.0;;4
+772;4;55482;U16;;MV breaker opening source;;1.0;0.0;;4
+773;4;55484;U16;;MV breaker feedback action;;1.0;0.0;;4
+774;4;55486;U16;;MV breaker feedback action delay;;1.0;0.0;s;4
+775;4;55488;U16;;MV breaker feedback power limit;;1.0;0.0;A;4
+776;4;55490;U16;;MV breaker feedback failure logic;;1.0;0.0;;4
+777;4;55492;U16;;MV side phase lost source;;1.0;0.0;;4
+778;4;55494;U16;;MV phase loss detection action;;1.0;0.0;;4
+779;4;55496;U16;;MV phase loss detection action delay;;1.0;0.0;s;4
+780;4;55498;U16;;MV phase loss detection power limit;;1.0;0.0;A;4
+781;4;55500;U16;;MV phase loss detection failure logic;;1.0;0.0;;4
+782;4;55502;U16;;Transformer coil temperature source;;1.0;0.0;;4
+783;4;55504;U16;;Transformer coil temperature;;1.0;0.0;°C;4
+784;4;55506;U16;;Transformer coil temperature at 4 mA current;;1.0;0.0;°C;4
+785;4;55508;U16;;Transformer coil temperature at 20 mA current;;1.0;0.0;°C;4
+786;4;55510;U16;;Transformer coil temperature warning limit;;1.0;0.0;°C;4
+787;4;55512;U16;;Transformer coil temperature fault limit;;1.0;0.0;°C;4
+788;4;55514;U16;;Transformer coil, current limit temperature 1;;1.0;0.0;°C;4
+789;4;55516;U16;;Transformer coil, current limit temperature 2;;1.0;0.0;°C;4
+790;4;55518;U16;;Transformer coil, current limit temperature 3;;1.0;0.0;°C;4
+791;4;55520;U16;;Transformer coil, current limit current 1;;1.0;0.0;A;4
+792;4;55522;U16;;Transformer coil, current limit current 2;;1.0;0.0;A;4
+793;4;55526;U16;;Transformer oil temperature source;;1.0;0.0;;4
+794;4;55528;U16;;Transformer oil temperature;;1.0;0.0;°C;4
+795;4;55530;U16;;Transformer oil temperature at 4 mA current;;1.0;0.0;°C;4
+796;4;55532;U16;;Transformer oil temperature at 20 mA current;;1.0;0.0;°C;4
+797;4;55534;U16;;Transformer oil temperature warning limit;;1.0;0.0;°C;4
+798;4;55536;U16;;Transformer oil temperature fault limit;;1.0;0.0;°C;4
+799;4;55538;U16;;Transformer oil, current limit temperature 1;;1.0;0.0;°C;4
+800;4;55540;U16;;Transformer oil, current limit temperature 2;;1.0;0.0;°C;4
+801;4;55542;U16;;Transformer oil, current limit temperature 3;;1.0;0.0;°C;4
+802;4;55544;U16;;Transformer oil, current limit current 1;;1.0;0.0;A;4
+803;4;55546;U16;;Transformer oil, current limit current 2;;1.0;0.0;A;4
+804;4;17781;U16;;MV breaker opening status;;1.0;0.0;;4
+805;4;56802;U16;;Startup date;;1.0;0.0;day;4
+806;4;56804;U16;;Last Boot Time, Days;;1.0;0.0;day;4
+807;4;56806;U16;;Last Boot Time, Ticks;;1.0;0.0;;4
+808;4;56812;U16;;Total energy;E_TOT;1.0;0.0;kWh;4
+809;4;56814;U16;;Total energy frac;;1.0;0.0;W;4
+810;4;56818;U16;;Total kVAh supplied;;1.0;0.0;kVAh;4
+811;4;56820;U16;;Total kVAh supplied Frac;;1.0;0.0;;4
+812;4;56824;U16;;Energy counter, resettable;;1.0;0.0;kWh;4
+813;4;56826;U16;;kVAh Energy counter, resettable;;1.0;0.0;kVAh;4
+814;4;56828;U16;;Daily kWh supplied;;1.0;0.0;kWh;4
+815;4;56830;U16;;Daily kVAh supplied;;1.0;0.0;kVAh;4
+816;4;18501;U16;;Main circuit SPD status;;1.0;0.0;;4
+817;4;18502;U16;;DC input fuse status;;1.0;0.0;;4
+818;4;18503;U16;;48 V power supply status;;1.0;0.0;;4
+819;4;18504;U16;;48 V buffer status;;1.0;0.0;;4
+820;4;18505;U16;;24 V buffer status;;1.0;0.0;;4
+821;4;18511;U16;;LCL overheat sensor status;;1.0;0.0;;4
+822;4;57048;U16;;24 V buffer action delay;;1.0;0.0;s;4
+823;4;57050;U16;;48 V power supply action delay;;1.0;0.0;s;4
+824;4;57052;U16;;48 V buffer action delay;;1.0;0.0;s;4
+825;4;57054;U16;;Buffer charge delay;;1.0;0.0;s;4
+826;4;57802;U16;;Inverter operation;;1.0;0.0;;4
+827;4;57804;U16;;Start switch source;;1.0;0.0;;4
+828;4;57806;U16;;IO transfer trip source;;1.0;0.0;;4
+829;4;57808;U16;;SCADA transfer trip;;1.0;0.0;;4
+830;4;57810;U16;;Transfer trip event;;1.0;0.0;;4
+831;4;57812;U16;;IO shutdown source;;1.0;0.0;;4
+832;4;57814;U16;;SCADA shutdown;;1.0;0.0;;4
+833;4;57816;U16;;Shutdown event;;1.0;0.0;;4
+834;4;57822;U16;;Reset active faults;;1.0;0.0;;4
+835;4;58002;U16;;Phase voltage U1;;1.0;0.0;V;4
+836;4;58004;U16;;Phase voltage V1;;1.0;0.0;V;4
+837;4;58006;U16;;Phase voltage W1;;1.0;0.0;V;4
+838;4;58008;U16;;Phase voltage 1 max;;1.0;0.0;V;4
+839;4;58010;U16;;Phase voltage 1 min;;1.0;0.0;V;4
+840;4;58012;U16;;Main voltage U1-V1;;1.0;0.0;V;4
+841;4;58014;U16;;Main voltage V1-W1;;1.0;0.0;V;4
+842;4;58016;U16;;Main voltage W1-U1;;1.0;0.0;V;4
+843;4;58018;U16;;Main voltage 1 max;;1.0;0.0;V;4
+844;4;58020;U16;;Main voltage 1 min;;1.0;0.0;V;4
+845;4;58022;U16;;Phase voltage 1 pos seq;;1.0;0.0;V;4
+846;4;58024;U16;;Phase voltage 1 neg seq;;1.0;0.0;V;4
+847;4;58026;U16;;Main voltage 1 pos seq;;1.0;0.0;V;4
+848;4;58028;U16;;Main voltage 1 neg seq;;1.0;0.0;V;4
+849;4;58030;U16;;Frequency 1;;1.0;0.0;Hz;4
+850;4;58040;U16;;Phase voltage U2;;1.0;0.0;V;4
+851;4;58042;U16;;Phase voltage V2;;1.0;0.0;V;4
+852;4;58044;U16;;Phase voltage W2;;1.0;0.0;V;4
+853;4;58050;U16;;Main voltage U2-V2;;1.0;0.0;V;4
+854;4;58052;U16;;Main voltage V2-W2;;1.0;0.0;V;4
+855;4;58054;U16;;Main voltage W2-U2;;1.0;0.0;V;4
+856;4;58060;U16;;Phase voltage 2 pos seq;;1.0;0.0;V;4
+857;4;58062;U16;;Phase voltage 2 neg seq;;1.0;0.0;V;4
+858;4;58064;U16;;Main voltage 2 pos seq;;1.0;0.0;V;4
+859;4;58066;U16;;Main voltage 2 neg seq;;1.0;0.0;V;4
+860;4;58068;U16;;Frequency 2;;1.0;0.0;Hz;4
+861;4;58080;U16;;Phase current U1;;1.0;0.0;A;4
+862;4;58082;U16;;Phase current V1;;1.0;0.0;A;4
+863;4;58084;U16;;Phase current W1;;1.0;0.0;A;4
+864;4;58086;U16;;Current 1 pos seq;;1.0;0.0;A;4
+865;4;58088;U16;;Current 1 neg seq;;1.0;0.0;A;4
+866;4;59008;U16;;Control board supply;;1.0;0.0;;4
+867;4;19514;U16;;Connected modules;;1.0;0.0;;4
+868;4;19520;U16;;HW options word 1;;1.0;0.0;;4
+869;4;59050;U16;;LCL filter parameter source;;1.0;0.0;;4
+870;4;59202;U16;;Language;;1.0;0.0;;4
+871;4;59204;U16;;Passcode;;1.0;0.0;;4
+872;4;19603;U16;;Access level status;;1.0;0.0;;4
+873;4;59212;U16;;Param restore;;1.0;0.0;;4
+874;4;59214;U16;;Param save;;1.0;0.0;;4
+875;4;59216;U16;;Control board boot;;1.0;0.0;;4
+876;4;59220;U16;;User set status;;1.0;0.0;;4
+877;4;59222;U16;;User set save/load;;1.0;0.0;;4
+878;4;59224;U16;;User set IO sel in1;;1.0;0.0;;4
+879;4;59226;U16;;User set IO sel in2;;1.0;0.0;;4
+880;4;59240;U16;;Time synchronization source;;1.0;0.0;;4
+881;4;59248;U16;;Full days since 1st Jan 1980;;1.0;0.0;days;4
+882;4;59250;U16;;Time in minutes within 24 h;;1.0;0.0;min;4
+883;4;59252;U16;;Time in ms within one minute;;1.0;0.0;ms;4
+884;4;19629;U16;;Time source status;;1.0;0.0;;4
+885;4;19661;U16;;User data logger status word;;1.0;0.0;;4
+886;4;59326;U16;;User data logger trigger;;1.0;0.0;;4
+887;4;59328;U16;;User data logger start;;1.0;0.0;;4
+888;4;59330;U16;;Factory data logger time level;;1.0;0.0;;4
+889;4;60402;U16;;DC door fan mode;;1.0;0.0;;4
+890;4;60404;U16;;AC door fan mode;;1.0;0.0;;4
+891;4;60406;U16;;Power module fan mode;;1.0;0.0;;4
+892;4;60440;U16;;Power module fan reference;;1.0;0.0;rpm;4
+893;4;60442;U16;;Power module 1 fan;;1.0;0.0;rpm;4
+894;4;60444;U16;;Power module 2 fan;;1.0;0.0;rpm;4
+895;4;60446;U16;;Power module 3 fan;;1.0;0.0;rpm;4
+896;4;60448;U16;;Power module 4 fan;;1.0;0.0;rpm;4
+897;4;60450;U16;;Expected grid rotation;;1.0;0.0;;4
+898;4;20401;U16;;PLC digital Inputs 1;;1.0;0.0;;4
+899;4;20402;U16;;PLC digital inputs 2;;1.0;0.0;;4
+900;4;20403;U16;;PLC digital inputs 3;;1.0;0.0;;4
+901;4;60808;U16;;Cabinet temperature;TEMP_INT;1.0;0.0;;4
+902;4;60810;U16;;Spare AI 0-10 V;;1.0;0.0;;4
+903;4;60812;U16;;PLC watchdog read;;1.0;0.0;;4
+904;4;61034;U16;;DC input current 1;;1.0;0.0;;4
+905;4;61036;U16;;DC input current 2;;1.0;0.0;;4
+906;4;61038;U16;;DC input current 3;;1.0;0.0;;4
+907;4;61040;U16;;DC input current 4;;1.0;0.0;;4
+908;4;61042;U16;;DC input current 5;;1.0;0.0;;4
+909;4;61044;U16;;DC input current 6;;1.0;0.0;;4
+910;4;61046;U16;;DC input current 7;;1.0;0.0;;4
+911;4;61048;U16;;DC input current 8;;1.0;0.0;;4
+912;4;61050;U16;;DC input current 9;;1.0;0.0;;4
+913;4;61052;U16;;DC input current 10;;1.0;0.0;;4
+914;4;61054;U16;;DC input current 11;;1.0;0.0;;4
+915;4;61056;U16;;DC input current 12;;1.0;0.0;;4
+916;4;61058;U16;;DC input current 13;;1.0;0.0;;4
+917;4;61060;U16;;DC input current 14;;1.0;0.0;;4
+918;4;61062;U16;;DC input current 15;;1.0;0.0;;4
+919;4;61064;U16;;DC input current 16;;1.0;0.0;;4
+920;4;61066;U16;;DC input current 17;;1.0;0.0;;4
+921;4;61068;U16;;DC input current 18;;1.0;0.0;;4
+922;4;61070;U16;;DC input current 19;;1.0;0.0;;4
+923;4;61072;U16;;DC input current 20;;1.0;0.0;;4
+924;4;61074;U16;;DC input current 21;;1.0;0.0;;4
+925;4;61076;U16;;DC input current 22;;1.0;0.0;;4
+926;4;61078;U16;;DC input current 23;;1.0;0.0;;4
+927;4;61080;U16;;DC input current 24;;1.0;0.0;;4
+928;4;61082;U16;;PLC error class;;1.0;0.0;;4
+929;4;61084;U16;;PLC error component;;1.0;0.0;;4
+930;4;61086;U16;;PLC error device;;1.0;0.0;;4
+931;4;61088;U16;;PLC error module;;1.0;0.0;;4
+932;4;61090;U16;;PLC error channel;;1.0;0.0;;4
+933;4;61092;U16;;PLC error identifier;;1.0;0.0;;4
+934;4;61094;U16;;PLC error state;;1.0;0.0;;4
+935;4;61096;U16;;PLC CPU load;;1.0;0.0;;4
+936;4;61202;U16;;PLC SW version, lower bits;;1.0;0.0;;4
+937;4;61204;U16;;PLC SW version, upper bits;;1.0;0.0;;4
+938;4;61206;U16;;PLC runtime system version;;1.0;0.0;;4
+939;4;61208;U16;;PLC bootcode version;;1.0;0.0;;4
+940;4;61210;U16;;PLC onboard I/O version;;1.0;0.0;;4
+941;4;61212;U16;;PLC software MD5 hash #1;;1.0;0.0;;4
+942;4;61214;U16;;PLC software MD5 hash #2;;1.0;0.0;;4
+943;4;61216;U16;;PLC software MD5 hash #3;;1.0;0.0;;4
+944;4;61218;U16;;PLC software MD5 hash #4;;1.0;0.0;;4
+945;4;61302;U16;;PLC error code;;1.0;0.0;;4
+946;4;20501;U16;;PLC Relay Outputs 1;;1.0;0.0;;4
+947;4;20502;U16;;PLC Relay Outputs 2;;1.0;0.0;;4
+948;4;20503;U16;;PLC Relay Outputs 3;;1.0;0.0;;4
+949;4;61008;U16;;PLC watchdog write;;1.0;0.0;;4
+950;4;61010;U16;;PLC diagnostics counter;;1.0;0.0;;4
+951;4;61012;U16;;PLC watchdog threshold;;1.0;0.0;ms;4
+952;4;61014;U16;;PLC CPU reboot;;1.0;0.0;;4
+953;4;61016;U16;;PLC error acknowledgement;;1.0;0.0;;4
+954;4;61018;U16;;PLC configuration code;;1.0;0.0;;4
+955;4;61518;U16;;Iout limit 1;;1.0;0.0;p.u.;4
+956;4;61520;U16;;Iout limit scaled;;1.0;0.0;p.u.;4
+957;4;61528;U16;;Relative limit IGBT;;1.0;0.0;%;4
+958;4;61542;U16;;Altitude;;1.0;0.0;;4
+959;4;61602;U16;;Input voltage;;1.0;0.0;V;4
+960;4;61606;U16;;Input power;P_DC;1.0;0.0;kW;4
+961;4;61608;U16;;Input current;;1.0;0.0;A;4
+962;4;61618;U16;;Input current monitoring;;1.0;0.0;;4
+963;4;61624;U16;;Reverse current limit;;1.0;0.0;A;4
+964;4;61626;U16;;Reverse current delay;;1.0;0.0;s;4
+965;4;62002;U16;;Grounding mode;;1.0;0.0;;4
+966;4;62004;U16;;Grounding device;;1.0;0.0;;4
+967;4;62006;U16;;Grounding state;;1.0;0.0;;4
+968;4;62008;U16;;Ignore insulation resistance;R_ISO;1.0;0.0;;4
+969;4;62010;U16;;Ungrounded operation;;1.0;0.0;;4
+970;4;62012;U16;;Unground on fault;;1.0;0.0;;4
+971;4;62014;U16;;Night grounding;;1.0;0.0;;4
+972;4;62016;U16;;Wake-up voltage;;1.0;0.0;V;4
+973;4;62018;U16;;Night mode voltage;;1.0;0.0;V;4
+974;4;62020;U16;;Grounding transient time;;1.0;0.0;s;4
+975;4;62022;U16;;Minimum grounding interval;;1.0;0.0;min;4
+976;4;62024;U16;;Grounding circuit voltage fail action;;1.0;0.0;;4
+977;4;62026;U16;;Grounding current limit;;1.0;0.0;A;4
+978;4;62028;U16;;Total grounding current;I_AC;1.0;0.0;A;4
+979;4;62030;U16;;Resistive grounding current;;1.0;0.0;A;4
+980;4;62032;U16;;Grounding current fault action;;1.0;0.0;;4
+981;4;62034;U16;;Grounding current time limit;;1.0;0.0;s;4
+982;4;62036;U16;;Sudden change current fault action;;1.0;0.0;;4
+983;4;62038;U16;;Step 1 current limit;;1.0;0.0;A;4
+984;4;62040;U16;;Step 2 current limit;;1.0;0.0;A;4
+985;4;62042;U16;;Step 3 current limit;;1.0;0.0;A;4
+986;4;62044;U16;;Step 1 time limit;;1.0;0.0;s;4
+987;4;62046;U16;;Step 2 time limit;;1.0;0.0;s;4
+988;4;62050;U16;;Insulation resistance measurement;;1.0;0.0;;4
+989;4;62052;U16;;Insulation resistance device;;1.0;0.0;;4
+990;4;62054;U16;;Insulation resistance device state;;1.0;0.0;;4
+991;4;62056;U16;;Insulation resistance limit;;1.0;0.0;Ohm;4
+992;4;62058;U16;;Insulation resistance;;1.0;0.0;;4
+993;4;62060;U16;;Insulation resistance fault action;;1.0;0.0;;4
+994;4;62062;U16;;Minimum Riso measurement time;;1.0;0.0;min;4
+995;4;62064;U16;;Maximum Riso measurement time;;1.0;0.0;min;4
+996;4;62066;U16;;MIRU self-test;;1.0;0.0;;4
+997;4;62068;U16;;Self-test voltage;;1.0;0.0;V;4
+998;4;21035;U16;;Status word;;1.0;0.0;;4
+999;4;62072;U16;;Sudden change warning indication time;;1.0;0.0;s;4
+1000;4;62202;U16;;Ambient temperature;TEMP_AMB;1.0;0.0;°C;4
+1001;4;62204;U16;;Control board temperature;;1.0;0.0;°C;4
+1002;4;62206;U16;;PU1 IGBT T1;;1.0;0.0;°C;4
+1003;4;62208;U16;;PU1 IGBT T2;;1.0;0.0;°C;4
+1004;4;62210;U16;;PU1 IGBT T3;;1.0;0.0;°C;4
+1005;4;62212;U16;;PU1 PSU temperature;;1.0;0.0;°C;4
+1006;4;62214;U16;;PU1 air temperature;;1.0;0.0;°C;4
+1007;4;62216;U16;;PU1 board temperature;;1.0;0.0;°C;4
+1008;4;62218;U16;;PU2 IGBT T1;;1.0;0.0;°C;4
+1009;4;62220;U16;;PU2 IGBT T2;;1.0;0.0;°C;4
+1010;4;62222;U16;;PU2 IGBT T3;;1.0;0.0;°C;4
+1011;4;62224;U16;;PU2 PSU temperature;;1.0;0.0;°C;4
+1012;4;62226;U16;;PU2 air temperature;;1.0;0.0;°C;4
+1013;4;62228;U16;;PU2 board temperature;;1.0;0.0;°C;4
+1014;4;62230;U16;;PU3 IGBT T1;;1.0;0.0;°C;4
+1015;4;62232;U16;;PU3 IGBT T2;;1.0;0.0;°C;4
+1016;4;62234;U16;;PU3 IGBT T3;;1.0;0.0;°C;4
+1017;4;62236;U16;;PU3 PSU temperature;;1.0;0.0;°C;4
+1018;4;62238;U16;;PU3 air temperature;;1.0;0.0;°C;4
+1019;4;62240;U16;;PU3 board temperature;;1.0;0.0;°C;4
+1020;4;62242;U16;;PU4 IGBT T1;;1.0;0.0;°C;4
+1021;4;62244;U16;;PU4 IGBT T2;;1.0;0.0;°C;4
+1022;4;62246;U16;;PU4 IGBT T3;;1.0;0.0;°C;4
+1023;4;62248;U16;;PU4 PSU temperature;;1.0;0.0;°C;4
+1024;4;62250;U16;;PU4 air temperature;;1.0;0.0;°C;4
+1025;4;62252;U16;;PU4 board temperature;;1.0;0.0;°C;4
+1026;4;62254;U16;;Estimated case temperature;;1.0;0.0;°C;4
+1027;4;62256;U16;;Estimated IGBT temperature;;1.0;0.0;°C;4
+1028;4;21141;U16;;Busbar thermal protection status;;1.0;0.0;;4
+1029;4;62604;U16;;Wake-up state;;1.0;0.0;;4
+1030;4;62608;U16;;Max daily connect attempts;;1.0;0.0;;4
+1031;4;62610;U16;;Min input voltage for wake-up;;1.0;0.0;%;4
+1032;4;62614;U16;;Delay for grid connection;;1.0;0.0;min;4
+1033;4;62616;U16;;Min input voltage for first start;;1.0;0.0;%;4
+1034;4;62620;U16;;Delay for first start;;1.0;0.0;min;4
+1035;4;62622;U16;;Time for wake-up completed;;1.0;0.0;min;4
+1036;4;62624;U16;;Min power for wake-up;;1.0;0.0;%;4
+1037;4;62626;U16;;Disconnection delay in wake-up;;1.0;0.0;min;4
+1038;4;62628;U16;;Reconnection delay_1;;1.0;0.0;min;4
+1039;4;62630;U16;;Timeout for exceeding daily connections;;1.0;0.0;h;4
+1040;4;62632;U16;;Min power for sleep;;1.0;0.0;%;4
+1041;4;62634;U16;;Disconnection delay for sleep-mode;;1.0;0.0;min;4
+1042;4;62636;U16;;Evening cool down delay;;1.0;0.0;min;4
+1043;4;62642;U16;;Min DC voltage for DC contactors to stay closed;;1.0;0.0;%;4
+1044;4;62702;U16;;Night Q production;;1.0;0.0;;4
+1045;4;62704;U16;;Night Q low power;;1.0;0.0;kVAr;4
+1046;4;62706;U16;;Night Q delay;;1.0;0.0;s;4
+1047;4;62708;U16;;Night Q reference;;1.0;0.0;kVAr;4
+1048;4;21401;U16;;Feedback status;;1.0;0.0;;4
+1049;4;62810;U16;;DC contactor 1 switchings;;1.0;0.0;;4
+1050;4;62812;U16;;DC contactor 2 switchings;;1.0;0.0;;4
+1051;4;62818;U16;;AC contactor 1 switchings;;1.0;0.0;;4
+1052;4;62820;U16;;AC contactor 2 switchings;;1.0;0.0;;4
+1053;4;62826;U16;;AC breaker 1 switchings;;1.0;0.0;;4

@@ -1,0 +1,132 @@
+﻿modbusRTU;Inverter;Ingeteam;Multi-Series;;;;;;;
+1;3;0;U16;;Actual Date Year;;1.000000;0.000000;;4
+2;3;1;U16;;Actual Date Month;;1.000000;0.000000;;4
+3;3;2;U16;;Actual Date Day;;1.000000;0.000000;;4
+4;3;3;U16;;Actual Date Hour;;1.000000;0.000000;;4
+5;3;4;U16;;Actual Date Minute;;1.000000;0.000000;;4
+6;3;5;U16;;Actual Date Second;;1.000000;0.000000;;4
+7;3;6;U32;;Total Energy delivered by the unit;E_TOT;1.000000;0.000000;kW*h;2
+8;3;8;U32;;Total hours of operation;;1.000000;0.000000;hours;2
+9;3;10;U32;;Total number of connections since launching;;1.000000;0.000000;n/a;2
+10;3;12;U32;;Partial Energy delivered by the unit since user reset;;1.000000;0.000000;kW*h;2
+11;3;14;U32;;Partial number of hours of operation;;1.000000;0.000000;hours;2
+12;3;16;U32;;Partial number of connection since user reset;;1.000000;0.000000;n/a;2
+13;3;18;U16;;Instantaneous alarm code 1;;1.000000;0.000000;;9
+14;3;19;U16;;Instantaneous alarm code 2;;1.000000;0.000000;;9
+15;3;20;U16;;Instantaneous alarm code 3;;1.000000;0.000000;;9
+16;3;21;U16;;Instantaneous alarm code 4;;1.000000;0.000000;;9
+17;3;22;U16;;Warning code;;1.000000;0.000000;;9
+18;3;23;U16;;Unit flags 1;;1.000000;0.000000;;9
+19;3;24;U16;;Unit flags 2;;1.000000;0.000000;;9
+20;3;25;U16;;Unit flags 3;;1.000000;0.000000;;9
+21;3;26;U16;;Status Unit 1;DeviceStatus;1.000000;0.000000;;9
+22;3;27;U16;;Status Unit 2;;1.000000;0.000000;;9
+23;3;28;U16;;Status Unit 3;;1.000000;0.000000;;9
+24;3;29;U16;;Output grid current RMS;;0.010000;0.000000;A;4
+25;3;30;U16;;Grid RMS voltage;;0.100000;0.000000;V;4
+26;3;31;U16;;Grid RMS voltage (Split-phase);;0.100000;0.000000;V;4
+27;3;32;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+28;3;33;I16;;Output apparent power;S_AC;0.100000;0.000000;VA;4
+29;3;34;I16;;Output active power;P_AC;0.100000;0.000000;W;4
+30;3;35;I16;;Output reactive power;Q_AC;0.100000;0.000000;VAr;4
+31;3;36;I16;;Cosine of Phi;;0.001000;0.000000;;4
+32;3;37;I16;;PV current;;0.010000;0.000000;A;4
+33;3;39;U16;;PV voltage;;1.000000;0.000000;Vdc;4
+34;3;41;I16;;PV power;;0.100000;0.000000;W;4
+35;3;44;U16;;Isolation resistance of PV field;R_ISO;1.000000;0.000000;kOhm;4
+36;3;45;I16;;Wattmeter measurement (Self-Consumption mode);;0.100000;0.000000;W;4
+37;3;46;U16;;Active Power Reduction rate;;1.000000;0.000000;%;4
+38;3;47;U16;;Active Power Reduction Reason;;1.000000;0.000000;;9
+39;3;48;U16;;Reactive Power Reference type;;1.000000;0.000000;;9
+40;3;49;U32;;Daily energy value;E_DAY;0.010000;0.000000;kWh;2
+41;3;51;U16;;Self Consumption ratio;;1.000000;0.000000;%;4
+42;3;52;U16;;Inverter Instantaneous Stop event;WIND_SPEED;1.000000;0.000000;;9
+43;3;53;U16;;Current of PV string 1;I_DC_STRING_1;0.100000;0.000000;A;4
+44;3;54;U16;;Current of PV string 2;I_DC_STRING_2;0.100000;0.000000;A;4
+45;3;55;U16;;Current of PV string 3;I_DC_STRING_3;0.100000;0.000000;A;4
+46;3;56;U16;;Current of PV string 4;I_DC_STRING_4;0.100000;0.000000;A;4
+47;3;57;U16;;Current of PV string 5;I_DC_STRING_5;0.100000;0.000000;A;4
+48;3;58;U16;;Current of PV string 6;I_DC_STRING_6;0.100000;0.000000;A;4
+49;3;59;U16;;Current of PV string 7;I_DC_STRING_7;0.100000;0.000000;A;4
+50;3;60;U16;;Current of PV string 8;I_DC_STRING_8;0.100000;0.000000;A;4
+51;3;61;U16;;Current of PV string 9;I_DC_STRING_9;0.100000;0.000000;A;4
+52;3;62;U16;;Current of PV string 10;I_DC_STRING_10;0.100000;0.000000;A;4
+53;3;63;U16;;Warning String kit code;;1.000000;0.000000;;9
+54;3;64;U32;;Daily energy value string kit;;0.010000;0.000000;kWh;2
+55;3;66;U16;;Self Consumption ratio (Direct Self-Consum);;1.000000;0.000000;%;4
+56;3;67;U16;;Inverter Instantaneous Stop event;;1.000000;0.000000;;9
+57;3;72;U16;;Connection waiting time;;1.000000;0.000000;sec;4
+58;3;73;U16;;Time left to connect;;1.000000;0.000000;sec;4
+59;3;78;U16;;Stop events;;1.000000;0.000000;;9
+60;3;82;U16;;Status Unit 1 (Power B);;1.000000;0.000000;;9
+61;3;85;U16;;Millisecond tick;;1.000000;0.000000;millisec;4
+62;3;86;U16;;Hardware Power rate;;0.010000;0.000000;%;4
+63;3;87;U16;;Operation mode;;1.000000;0.000000;;9
+64;3;88;U16;;General state;;1.000000;0.000000;;9
+65;3;89;U16;;Grid connection state;;1.000000;0.000000;;9
+66;3;90;U16;;DC side state;;1.000000;0.000000;;9
+67;3;91;U16;;Multi-inverter communication state;;1.000000;0.000000;;9
+68;3;94;I16;;GND BOARD Average Current;;0.100000;0.000000;mA;4
+69;3;97;U16;;Address of out of limit holding register;;1.000000;0.000000;;9
+70;3;860;U16;;Current of PV string 1 (string kit);;0.100000;0.000000;A;4
+71;3;861;U16;;Current of PV string 2 (string kit);;0.100000;0.000000;A;4
+72;3;862;U16;;Current of PV string 3 (string kit);;0.100000;0.000000;A;4
+73;3;863;U16;;Current of PV string 4 (string kit);;0.100000;0.000000;A;4
+74;3;864;U16;;Current of PV string 5 (string kit);;0.100000;0.000000;A;4
+75;3;865;U16;;Current of PV string 6 (string kit);;0.100000;0.000000;A;4
+76;3;866;U16;;Current of PV string 7 (string kit);;0.100000;0.000000;A;4
+77;3;867;U16;;Current of PV string 8 (string kit);;0.100000;0.000000;A;4
+78;3;868;U16;;Current of PV string 9 (string kit);;0.100000;0.000000;A;4
+79;3;869;U16;;Current of PV string 10 (string kit);;0.100000;0.000000;A;4
+80;3;870;U16;;Current of PV string 11 (string kit);I_DC_STRING_11;0.100000;0.000000;A;4
+81;3;871;U16;;Current of PV string 12 (string kit);I_DC_STRING_12;0.100000;0.000000;A;4
+82;3;872;U16;;Current of PV string 13 (string kit);I_DC_STRING_13;0.100000;0.000000;A;4
+83;3;873;U16;;Current of PV string 14 (string kit);I_DC_STRING_14;0.100000;0.000000;A;4
+84;3;874;U16;;Current of PV string 15 (string kit);I_DC_STRING_15;0.100000;0.000000;A;4
+85;3;875;U16;;Current of PV string 16 (string kit);I_DC_STRING_16;0.100000;0.000000;A;4
+86;3;876;U16;;Current of PV string 17 (string kit);I_DC_STRING_17;0.100000;0.000000;A;4
+87;3;877;U16;;Current of PV string 18 (string kit);I_DC_STRING_18;0.100000;0.000000;A;4
+88;3;878;U16;;Current of PV string 19 (string kit);I_DC_STRING_19;0.100000;0.000000;A;4
+89;3;879;U16;;Current of PV string 20 (string kit);I_DC_STRING_20;0.100000;0.000000;A;4
+90;3;880;U16;;Current of PV string 21 (string kit);I_DC_STRING_21;0.100000;0.000000;A;4
+91;3;881;U16;;Current of PV string 22 (string kit);I_DC_STRING_22;0.100000;0.000000;A;4
+92;3;882;U16;;Current of PV string 23 (string kit);I_DC_STRING_23;0.100000;0.000000;A;4
+93;3;883;U16;;Current of PV string 24 (string kit);I_DC_STRING_24;0.100000;0.000000;A;4
+94;3;30007;I16;;Output active power (Power B);;0.100000;0.000000;kW;4
+95;3;30008;I16;;Output reactive power (Power B);;0.100000;0.000000;kVar;4
+96;3;30009;I16;;Active Power rate (Power B);CMD_P_AC_SET_PERCENT;0.010000;0.000000;%;1
+97;3;30010;I16;;Reactive Power rate (Power B);CMD_Q_AC_SET_PERCENT;0.010000;0.000000;%;1
+98;3;30011;U16;;Active Power rate reason (Power B);;1.000000;0.000000;;9
+99;3;30012;U16;;Reactive Power rate reason (Power B);;1.000000;0.000000;;9
+100;3;30013;I16;;PV Power (Power B);;0.100000;0.000000;kW;4
+101;3;30014;I16;;Bus voltage (Power B);U_DC;1.000000;0.000000;V;4
+102;3;30015;I16;;PV current (Power B);;0.100000;0.000000;A;4
+103;3;30016;I16;;PV voltage (Power B);;1.000000;0.000000;V;4
+104;3;30017;I16;;Heatsink R temperature (Power B);TEMP_INT;0.100000;0.000000;°C;4
+105;3;30018;I16;;Heatsink S temperature (Power B);;0.100000;0.000000;°C;4
+106;3;30019;I16;;Heatsink T temperature (Power B);;0.100000;0.000000;°C;4
+107;3;30020;I16;;Inductor temperature (Power B);;0.100000;0.000000;°C;4
+108;3;30021;I16;;Power stack temperature (Power B);;0.100000;0.000000;°C;4
+109;3;30022;I16;;Ambient filtered temperature (Power B);TEMP_AMB;0.100000;0.000000;°C;4
+110;3;30023;I16;;Maximun IGBT NTC Temperature (Power B);;0.100000;0.000000;°C;4
+111;3;30024;I16;;Grid Voltage rms Phase R (Power B);;0.100000;0.000000;V;4
+112;3;30025;I16;;Grid Voltage rms Phase S (Power B);;0.100000;0.000000;V;4
+113;3;30026;I16;;Grid Voltage rms Phase T (Power B);;0.100000;0.000000;V;4
+114;3;30027;I16;;Grid Current rms Phase R (Power B);;0.100000;0.000000;A;4
+115;3;30028;I16;;Grid Current rms Phase S (Power B);;0.100000;0.000000;A;4
+116;3;30029;I16;;Grid Current rms Phase T (Power B);;0.100000;0.000000;A;4
+117;3;30030;I16;;Cosine of Phi (Power B);;0.001000;0.000000;;4
+118;3;30031;I16;;Sign of Cosine of Phi (Power B);;1.000000;0.000000;;4
+119;3;30032;I16;;Output apparent power (Power B);;0.100000;0.000000;kVA;4
+120;3;30033;I16;;Grid frequency (Power B);;0.010000;0.000000;Hz;4
+121;3;30034;I16;;Filter current rms Phase R (Power B);;0.100000;0.000000;A;4
+122;3;30035;I16;;Filter current rms Phase S (Power B);;0.100000;0.000000;A;4
+123;3;30036;I16;;VBUS Bus+ to earth (Power B);P_DC;1.000000;0.000000;V;4
+124;3;30037;I16;;VBUS earth to bus- (Power B);;1.000000;0.000000;V;4
+125;3;30040;U32;;Daily AC Energy Injected to grid (Power B);;0.010000;0.000000;kWh;2
+126;3;30048;U32;;Partial AC Energy injected to the grid since last reset (Power B);;1.000000;0.000000;kWh;2
+127;3;30056;U32;;Partial operating hours since last reset (Power B);;1.000000;0.000000;h;2
+128;3;30058;U32;;Partial number of connections since last reset (Power B);;1.000000;0.000000;times;2
+129;3;30060;U32;;Total AC Energy injected to the grid since launching (Power B);;1.000000;0.000000;kWh;2
+130;3;30068;U32;;Total operating hours since launching (Power B);;1.000000;0.000000;h;2
+131;3;30070;U32;;Total number of connections since launching (Power B);;1.000000;0.000000;times;2

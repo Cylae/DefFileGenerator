@@ -1,0 +1,109 @@
+﻿modbusRTU;Meter;Legrand;LEGRAND_Meter_EMSCX3;;;;;;;
+1;4;20480;U16;;Phase 1 : current (R);I_AC_1;1.0;0.0;A;4
+2;4;20481;U16;;Phase 2 : current (S);I_AC_2;1.0;0.0;A;4
+3;4;20482;U16;;Phase 3 : current (T);I_AC_3;1.0;0.0;A;4
+4;4;20483;U16;;Neutral current value;;1.0;0.0;A;4
+5;4;20494;U16;;1-N Voltage;;1.0;0.0;V;4
+6;4;20495;U16;;2-N Voltage;;1.0;0.0;V;4
+7;4;20496;U16;;3-N Voltage;;1.0;0.0;V;4
+8;4;20497;U16;;1-2 Voltage;;1.0;0.0;V;4
+9;4;20498;U16;;1-3 Voltage;;1.0;0.0;V;4
+10;4;20499;U16;;2-3 Voltage;;1.0;0.0;V;4
+11;4;20512;U16;;Phase 1 (R) phase current THD vs. fundamental;;1.0;0.0;Percent;4
+12;4;20513;U16;;Phase 2 (S) THD Current vs. fundamental;;1.0;0.0;Percent;4
+13;4;20514;U16;;Phase 3 (T) THD Current vs. fundamental;;1.0;0.0;Percent;4
+14;4;20515;U16;;Neutral Current THD vs. fundamental;;1.0;0.0;Percent;4
+15;4;20516;U16;;1-N Voltage THD vs. fundamental;;1.0;0.0;Percent;4
+16;4;20517;U16;;2-N Voltage THD vs. fundamental;;1.0;0.0;Percent;4
+17;4;20518;U16;;3-N Voltage THD vs. fundamental;;1.0;0.0;Percent;4
+18;4;20522;U16;;Three-phase Active Power;P_AC_1;1.0;0.0;kW;4
+19;4;20523;U16;;Three-phase reactive power;Q_AC;1.0;0.0;kvar;4
+20;4;20526;U16;;Threee-Phase Apparent Power;S_AC_1;1.0;0.0;kVA;4
+21;4;20527;U16;;Three-phase Power Factor (PF);PF;1.0;0.0;;4
+22;4;20529;U16;;Three-phase frequency;FREQ;1.0;0.0;Hz;4
+23;4;20532;U16;;Positive Three-phase Active Energy;;1.0;0.0;kWh;4
+24;4;20534;U16;;Negative Three-phase Active Energy;;1.0;0.0;kWh;4
+25;4;20538;U16;;Positive Three-phase Reactive Energy;;1.0;0.0;kvarh;4
+26;4;20540;U16;;Negative Three-phase Reactive Energy;;1.0;0.0;kvarh;4
+27;4;20544;U16;;Phase 1 Active Power;;1.0;0.0;kW;4
+28;4;20545;U16;;Phase 2 Active Power;P_AC_2;1.0;0.0;kW;4
+29;4;20546;U16;;Phase 3 Active Power;P_AC_3;1.0;0.0;kW;4
+30;4;20547;U16;;Phase 1 Reactive power;Q_AC_1;1.0;0.0;kvar;4
+31;4;20548;U16;;Phase 2 Reactive power;Q_AC_2;1.0;0.0;kvar;4
+32;4;20549;U16;;Phase 3 Reactive power;Q_AC_3;1.0;0.0;kvar;4
+33;4;20556;U16;;Phase 1 Apparent Power;;1.0;0.0;kVA;4
+34;4;20557;U16;;Phase 2 Apparent Power;S_AC_2;1.0;0.0;kVA;4
+35;4;20558;U16;;Phase 3 Apparent Power;S_AC_3;1.0;0.0;kVA;4
+36;4;20565;U16;;Phase 1 Positive Active Energy;;1.0;0.0;kWh;4
+37;4;20567;U16;;Phase 2 Positive Active Energy;;1.0;0.0;kWh;4
+38;4;20569;U16;;Phase 3 Positive Active Energy;;1.0;0.0;kWh;4
+39;4;20571;U16;;Phase 1 Negative Active Energy;;1.0;0.0;kWh;4
+40;4;20573;U16;;Phase 2 Negative Active Energy;;1.0;0.0;kWh;4
+41;4;20575;U16;;Phase 3 Negative Active Energy;;1.0;0.0;kWh;4
+42;4;20577;U16;;Phase 1 Positive Reactive Energy;;1.0;0.0;kvarh;4
+43;4;20579;U16;;Phase 2 Positive Reactive Energy;;1.0;0.0;kvarh;4
+44;4;20581;U16;;Phase 3 Positive Reactive Energy;;1.0;0.0;kvarh;4
+45;4;20583;U16;;Phase 1 Negative Reactive Energy;;1.0;0.0;kvarh;4
+46;4;20585;U16;;Phase 2 Negative Reactive Energy;;1.0;0.0;kvarh;4
+47;4;20587;U16;;Phase 3 Negative Reactive Energy;;1.0;0.0;kvarh;4
+48;4;20603;U16;;harmonic I1 row 3;;1.0;0.0;Percent;4
+49;4;20604;U16;;harmonic I2 row 3;;1.0;0.0;Percent;4
+50;4;20605;U16;;harmonic I3 row 3;;1.0;0.0;Percent;4
+51;4;20606;U16;;harmonic IN row 3;;1.0;0.0;Percent;4
+52;4;20607;U16;;harmonic I1 row 5;;1.0;0.0;Percent;4
+53;4;20608;U16;;harmonic I2 row 5;;1.0;0.0;Percent;4
+54;4;20609;U16;;harmonic I3 row 5;;1.0;0.0;Percent;4
+55;4;20610;U16;;harmonic IN row 5;;1.0;0.0;Percent;4
+56;4;20611;U16;;harmonic I1 row 7;;1.0;0.0;Percent;4
+57;4;20612;U16;;harmonic I2 row 7;;1.0;0.0;Percent;4
+58;4;20613;U16;;harmonic I3 row 7;;1.0;0.0;Percent;4
+59;4;20614;U16;;harmonic IN row 7;;1.0;0.0;Percent;4
+60;4;20615;U16;;harmonic I1 row 9;;1.0;0.0;Percent;4
+61;4;20616;U16;;harmonic I2 row 9;;1.0;0.0;Percent;4
+62;4;20617;U16;;harmonic I3 row 9;;1.0;0.0;Percent;4
+63;4;20618;U16;;harmonic IN row 9;;1.0;0.0;Percent;4
+64;4;20619;U16;;harmonic I1 row 11;;1.0;0.0;Percent;4
+65;4;20620;U16;;harmonic I2 row 11;;1.0;0.0;Percent;4
+66;4;20621;U16;;harmonic I3 row 11;;1.0;0.0;Percent;4
+67;4;20622;U16;;harmonic IN row 11;;1.0;0.0;Percent;4
+68;4;20623;U16;;harmonic I1 row 13;;1.0;0.0;Percent;4
+69;4;20624;U16;;harmonic I2 row 13;;1.0;0.0;Percent;4
+70;4;20625;U16;;harmonic I3 row 13;;1.0;0.0;Percent;4
+71;4;20626;U16;;harmonic IN row 13;;1.0;0.0;Percent;8
+72;4;20627;U16;;harmonic I1 row 15;;1.0;0.0;Percent;4
+73;4;20628;U16;;harmonic I2 row 15;;1.0;0.0;Percent;4
+74;4;20629;U16;;harmonic I3 row 15;;1.0;0.0;Percent;4
+75;4;20630;U16;;harmonic IN row 15;;1.0;0.0;Percent;4
+76;4;20687;U16;;harmonic V1 row 3;;1.0;0.0;Percent;4
+77;4;20688;U16;;harmonic V2 row 3;;1.0;0.0;Percent;4
+78;4;20689;U16;;harmonic V3 row 3;;1.0;0.0;Percent;4
+79;4;20690;U16;;harmonic V1 row 5;;1.0;0.0;Percent;4
+80;4;20691;U16;;harmonic V2 row 5;;1.0;0.0;Percent;4
+81;4;20692;U16;;harmonic V3 row 5;;1.0;0.0;Percent;4
+82;4;20693;U16;;harmonic V1 row 7;;1.0;0.0;Percent;4
+83;4;20694;U16;;harmonic V2 row 7;;1.0;0.0;Percent;4
+84;4;20695;U16;;harmonic V3 row 7;;1.0;0.0;Percent;4
+85;4;20696;U16;;harmonic V1 row 9;;1.0;0.0;Percent;4
+86;4;20697;U16;;harmonic V2 row 9;;1.0;0.0;Percent;4
+87;4;20698;U16;;harmonic V3 row 9;;1.0;0.0;Percent;4
+88;4;20699;U16;;harmonic V1 row 11;;1.0;0.0;Percent;4
+89;4;20700;U16;;harmonic V2 row 11;;1.0;0.0;Percent;4
+90;4;20701;U16;;harmonic V3 row 11;;1.0;0.0;Percent;4
+91;4;20702;U16;;harmonic V1 row 13;;1.0;0.0;Percent;4
+92;4;20703;U16;;harmonic V2 row 13;;1.0;0.0;Percent;4
+93;4;20704;U16;;harmonic V3 row 13;;1.0;0.0;Percent;4
+94;4;20705;U16;;harmonic V1 row 15;;1.0;0.0;Percent;4
+95;4;20706;U16;;harmonic V2 row 15;;1.0;0.0;Percent;4
+96;4;20707;U16;;harmonic V3 row 15;;1.0;0.0;Percent;4
+97;4;20480;U16;;Measure Type Configuration;;1.0;0.0;;4
+98;4;20487;U16;;Voltage multiplier factor;;1.0;0.0;;4
+99;4;20488;U16;;Current multiplier factor;;1.0;0.0;;4
+100;4;20489;U16;;Total power multiplier factor;;1.0;0.0;;4
+101;4;20490;U16;;Phase power multiplier factor;;1.0;0.0;;4
+102;4;20491;U16;;Total energy multiplier factor;E_TOT;1.0;0.0;;4
+103;4;20492;U16;;Phase energy multiplier factor;;1.0;0.0;;4
+104;4;20493;U16;;Alarm/event 1 value;WIND_SPEED;1.0;0.0;;4
+105;4;20494;U16;;Alarm/event 1 threshold;;1.0;0.0;;4
+106;4;20496;U16;;Alarm/event 1 delay;;1.0;0.0;seconds;4
+107;4;20497;U16;;Alarm/event 1 Hysteresis;;1.0;0.0;Percent;4
+108;4;20498;U16;;Event type;;1.0;0.0;;4

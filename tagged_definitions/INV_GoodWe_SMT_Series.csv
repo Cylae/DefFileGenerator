@@ -1,0 +1,199 @@
+﻿modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
+1;3;32016;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;4
+2;3;32017;I16;;PV1 Current;I_DC_STRING_1;0.01;0;A;4
+3;3;32018;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;4
+4;3;32019;I16;;PV2 Current;I_DC_STRING_2;0.01;0;A;4
+5;3;32020;I16;;PV3 Voltage;U_DC_STRING_3;0.1;0;V;4
+6;3;32021;I16;;PV3 Current;I_DC_STRING_3;0.01;0;A;4
+7;3;32022;I16;;PV4 Voltage;U_DC_STRING_4;0.1;0;V;4
+8;3;32023;I16;;PV4 Current;I_DC_STRING_4;0.01;0;A;4
+9;3;32024;I16;;PV5 Voltage;U_DC_STRING_5;0.1;0;V;4
+10;3;32025;I16;;PV5 Current;I_DC_STRING_5;0.01;0;A;4
+11;3;32026;I16;;PV6 Voltage;U_DC_STRING_6;0.1;0;V;4
+12;3;32027;I16;;PV6 Current;I_DC_STRING_6;0.01;0;A;4
+13;3;32028;I16;;PV7 Voltage;U_DC_STRING_7;0.1;0;V;4
+14;3;32029;I16;;PV7 Current;I_DC_STRING_7;0.01;0;A;4
+15;3;32030;I16;;PV8 Voltage;U_DC_STRING_8;0.1;0;V;4
+16;3;32031;I16;;PV8 Current;I_DC_STRING_8;0.01;0;A;4
+17;3;32032;I16;;PV9 Voltage;U_DC_STRING_9;0.1;0;V;4
+18;3;32033;I16;;PV9 Current;I_DC_STRING_9;0.01;0;A;4
+19;3;32034;I16;;PV10 Voltage;U_DC_STRING_10;0.1;0;V;4
+20;3;32035;I16;;PV10 Current;I_DC_STRING_10;0.01;0;A;4
+21;3;32036;I16;;PV11 Voltage;U_DC_STRING_11;0.1;0;V;4
+22;3;32037;I16;;PV11 Current;I_DC_STRING_11;0.01;0;A;4
+23;3;32038;I16;;PV12 Voltage;U_DC_STRING_12;0.1;0;V;4
+24;3;32039;I16;;PV12 Current;I_DC_STRING_12;0.01;0;A;4
+25;3;32040;I16;;PV13 Voltage;U_DC_STRING_13;0.1;0;V;4
+26;3;32041;I16;;PV13 Current;I_DC_STRING_13;0.01;0;A;4
+27;3;32042;I16;;PV14 Voltage;U_DC_STRING_14;0.1;0;V;4
+28;3;32043;I16;;PV14 Current;I_DC_STRING_14;0.01;0;A;4
+29;3;32044;I16;;PV15 Voltage;U_DC_STRING_15;0.1;0;V;4
+30;3;32045;I16;;PV15 Current;I_DC_STRING_15;0.01;0;A;4
+31;3;32046;I16;;PV16 Voltage;U_DC_STRING_16;0.1;0;V;4
+32;3;32047;I16;;PV16 Current;I_DC_STRING_16;0.01;0;A;4
+33;3;32048;I16;;PV17 Voltage;U_DC_STRING_17;0.1;0;V;4
+34;3;32049;I16;;PV17 Current;I_DC_STRING_17;0.01;0;A;4
+35;3;32050;I16;;PV18 Voltage;U_DC_STRING_18;0.1;0;V;4
+36;3;32051;I16;;PV18 Current;I_DC_STRING_18;0.01;0;A;4
+37;3;32052;I16;;PV19 Voltage;U_DC_STRING_19;0.1;0;V;4
+38;3;32053;I16;;PV19 Current;I_DC_STRING_19;0.01;0;A;4
+39;3;32054;I16;;PV20 Voltage;U_DC_STRING_20;0.1;0;V;4
+40;3;32055;I16;;PV20 Current;I_DC_STRING_20;0.01;0;A;4
+41;3;32064;I32;;Input Power (DC Power);P_DC;0.001;0;kW;4
+42;3;32066;U16;;Grid AB-Line Voltage;U_AC_L1L2;0.1;0;V;4
+43;3;32067;U16;;Grid BC-Line Voltage;U_AC_L2L3;0.1;0;V;4
+44;3;32068;U16;;Grid CA-Line Voltage;U_AC_L3L1;0.1;0;V;4
+45;3;32069;U16;;Grid A-phase voltage;U_AC_1;0.1;0;V;4
+46;3;32070;U16;;Grid B-phase voltage;U_AC_2;0.1;0;V;4
+47;3;32071;U16;;Grid C-phase voltage;U_AC_3;0.1;0;V;4
+48;3;32072;I32;;Grid A-phase current;I_AC_1;0.001;0;A;4
+49;3;32074;I32;;Grid B-phase current;I_AC_2;0.001;0;A;4
+50;3;32076;I32;;Grid C-phase current;I_AC_3;0.001;0;A;4
+51;3;32078;I32;;Peak active power of the day;P_AC;0.001;0;kW;4
+52;3;32080;I32;;Active Power;;0.001;0;kW;4
+53;3;32082;I32;;Reactive Power;Q_AC;0.001;0;kVar;4
+54;3;32084;I16;;Power Factor;PF;0.001;0;;4
+55;3;32085;U16;;Grid Frequency;FREQ;0.01;0;Hz;4
+56;3;32088;U16;;Insulation impedance value;R_ISO;1;0;KOhm;4
+57;3;32106;U32;;Cumulative power generation;E_TOT;0.01;0;kWh;4
+58;3;32114;U32;;Daily power generation;E_DAY;0.01;0;kWh;4
+59;3;32116;U32;;Monthly power generation;;0.01;0;kWh;4
+60;3;32118;U32;;Yearly power generation;;0.01;0;kWh;4
+61;3;32120;I32;;A-phase active Power;P_AC_1;0.001;0;kW;4
+62;3;32122;I32;;B-phase active Power;;0.001;0;kW;4
+63;3;32124;I32;;C-phase active Power;;0.001;0;kW;4
+64;3;32340;U16;;MPPT power 1;P_DC_MPPT_1;1;0;W;4
+65;3;32341;U16;;MPPT power 2;P_DC_MPPT_2;1;0;W;4
+66;3;32342;U16;;MPPT power 3;P_DC_MPPT_3;1;0;W;4
+67;3;32343;U16;;MPPT power 4;P_DC_MPPT_4;1;0;W;4
+68;3;32344;U16;;MPPT power 5;P_DC_MPPT_5;1;0;W;4
+69;3;32345;U16;;MPPT power 6;P_DC_MPPT_6;1;0;W;4
+70;3;32346;U16;;MPPT power 7;P_DC_MPPT_7;1;0;W;4
+71;3;32347;U16;;MPPT power 8;P_DC_MPPT_8;1;0;W;4
+72;3;32348;U16;;MPPT power 9;P_DC_MPPT_9;1;0;W;4
+73;3;32349;U16;;MPPT power 10;P_DC_MPPT_10;1;0;W;4
+74;3;32369;I16;;PV+_PE Voltage;;0.1;0;V;4
+75;3;32370;I16;;PV-_PE Voltage;;0.1;0;V;4
+76;3;35032;U16;;ARM software version;;1;0;;1
+77;3;35033;U16;;ARM SVN version;;1;0;;1
+78;3;35515;U16;;DSP1 software version;;1;0;;1
+79;3;35516;U16;;DSP2 software version;;1;0;;1
+80;3;35517;U16;;DSP1 SVN version;;1;0;;1
+81;3;35518;U16;;DSP2 SVN version;;1;0;;1
+82;3;35502_16;STRING;;Device serial number (DSP);SERIAL;1;0;;4
+83;3;35510_10;STRING;;Device model (DSP);MODEL;1;0;;4
+84;3;35749;U32;;Total generation time;TOT;1;0;h;1
+85;3;35751;U16;;Safety Country Code;;1;0;;1
+86;3;35758;U16;;Work Mode;;1;0;;4
+87;3;35768;I16;;Leak current Average Value;;1;0;mA;4
+88;3;35849;U16;;Current Derating Flag;;1;0;;4
+89;3;35851;U16;;Current Reactive Flag;;1;0;;4
+90;3;37100;U16;;Grid fault information 1;;1;0;;9
+91;3;37101;U16;;Grid fault information 2;;1;0;;9
+92;3;37102;U16;;System fault information 1;;1;0;;9
+93;3;37103;U16;;System fault information 2;;1;0;;9
+94;3;37104;U16;;Device fault information 1;;1;0;;9
+95;3;37105;U16;;Device fault information 2;;1;0;;9
+96;3;37106;U16;;DC side fault information 1;;1;0;;9
+97;3;37107;U16;;DC side fault information 2;;1;0;;9
+98;3;37108;U16;;DC side fault information 3;;1;0;;9
+99;3;37109;U16;;Batter side fault information;;1;0;;9
+100;3;37110;U16;;RSVD1;;1;0;;9
+101;3;37111;U16;;RSVD2;;1;0;;9
+102;3;37112;U16;;Internal fault information 1;;1;0;;9
+103;3;37113;U16;;Internal fault information 2;;1;0;;9
+104;3;37114;U16;;Internal fault information 3;;1;0;;9
+105;3;37115;U16;;Internal fault information 4;;1;0;;9
+106;3;37116;U16;;Warning1;;1;0;;9
+107;3;40264;U16;;European shutdown switch;;1;0;;1
+108;3;41144;U16;;Modbus address;UNIT_ID;1;0;;1
+109;3;41145;U16;;Modbus protocol type;;1;0;;1
+110;3;41150;U16;;External CT Ratio;;1;0;;1
+111;3;41313;U16;;Device RTC Time Year/Month;;1;0;;1
+112;3;41314;U16;;Device RTC Time Day/Hour;;1;0;;1
+113;3;41315;U16;;Device RTC Time Minute/Second;;1;0;;1
+114;3;41322;U16;;ISO threshold;;1;0;KOhm;1
+115;3;41323;U16;;LVRT Enable;;1;0;;1
+116;3;41324;U16;;HVRT Enable;;1;0;;1
+117;3;41325;U16;;Anti Islanding;;1;0;;1
+118;3;41326;U16;;Shadow mode switch;;1;0;;1
+119;3;41327;U16;;Export Power Limit Switch;CMD_P_ENA;1;0;;1
+120;3;41328;U32;;Export Power Limit Set;CMD_P_AC_LIM_ABS;1;0;;1
+121;3;41330;U16;;Power On;CMD_ON;1;0;;1
+122;3;41331;U16;;Power Off;CMD_OFF;1;0;;1
+123;3;41332;U16;;Restart;;1;0;;4
+124;3;41335;U16;;Grid Type;;1;0;;1
+125;3;41336;U16;;The power limit percentage for export to the grid;CMD_P_AC_SET_PERCENT;1;0;%Pn;1
+126;3;41347;U16;;Shadow Scan Period;;1;0;min;1
+127;3;41351;U16;;N-PE Fault Limit;;1;0;V;1
+128;3;41373;U16;;History fault clearing;;1;0;;1
+129;3;42008;U16;;Export Power Limit Switch (Alt);;1;0;;1
+130;3;42009;U16;;Three-phase Export Power Limit mode selection;CMD_P_AC_SET_ABS;1;0;;1
+131;3;42022;U16;;shadow mppt function 1;;1;0;;1
+132;3;42051;U16;;NPE Overvoltage fault detection switch;;1;0;;1
+133;3;42057;U16;;Lightning protection module detection switch;;1;0;;1
+134;3;42403;U16;;Active power control method;;1;0;;1
+135;3;42404;I32;;Active power fixed value derating;;1;0;W;1
+136;3;42407;I16;;Active power percentage derating(0.1%);;0.1;0;%Pn;1
+137;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1;0;Var;1
+138;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001;0;;1
+139;3;42414;I16;;Reactive power compensation(Q/S);;0.1;0;%Pn;1
+140;3;42415;I16;;Reactive power compensation(Q/Qn);;1;0;%Qn;1
+141;3;42416;U16;;Reactive power compensation method;;1;0;;1
+142;3;42427;U16;;Reactive power compensation response mode;;1;0;;1
+143;3;42428;U32;;Reactive power compensation LPF time parameter;;1;0;ms;1
+144;3;42430;U16;;Active power compensation response mode;;1;0;;1
+145;3;42431;U32;;Active power compensation LPF time parameter;;1;0;ms;1
+146;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.1;0;%Pn/min;1
+147;3;42435;U32;;Reactive power gradient;;0.1;0;%Pn/min;1
+148;3;42441;U16;;Night reactive power switch;;1;0;;1
+149;3;42442;U16;;Night reactive power parameters enable;;1;0;;1
+150;3;42444;I32;;Night reactive power compensation fixed value;;1;0;Var;1
+151;3;42446;I16;;Night reactive power compensation percentage derating;;0.1;0;%Pn;1
+152;3;42500;U16;;Safety code;;1;0;;1
+153;3;42531;U16;;Normal condition Grid connection waiting time;;1;0;s;1
+154;3;42532;U16;;Slope of normal condition grid-connected power;;0.1;0;%Pn/min;1
+155;3;42533;U16;;Normal condition upper limit of connection voltage(0.1%);;0.1;0;%Vn;1
+156;3;42534;U16;;Normal condition lowerer limit of connection voltage;;0.1;0;%Vn;1
+157;3;42535;U16;;Normal condition upper limit of connection frequency;;0.01;0;Hz;1
+158;3;42536;U16;;Normal condition lowerer limit of connection frequency;;0.01;0;Hz;1
+159;3;42537;U16;;Fault condition Grid connection waiting time;;1;0;s;1
+160;3;42538;U16;;Slope of Fault condition Grid-connected power slope;;0.1;0;%Pn/min;1
+161;3;42539;U16;;Fault condition upper limit of connection voltage;;0.1;0;%Vn;1
+162;3;42540;U16;;Fault condition lowerer limit of connection voltage;;0.1;0;%Vn;1
+163;3;42541;U16;;Fault condition upper limit of connection frequency;;0.01;0;Hz;1
+164;3;42542;U16;;Fault condition lowerer limit of connection frequency;;0.01;0;Hz;1
+165;3;42720;U16;;Undervoltage trigger first order value(0.1%);;0.1;0;%Vn;1
+166;3;42721;U32;;Undervoltage trigger first-order trip time;;1;0;ms;1
+167;3;42723;U16;;Overvoltage trigger first order value(0.1%);;0.1;0;%Vn;1
+168;3;42724;U32;;Overvoltage trigger first-order trip time;;1;0;ms;1
+169;3;42726;U16;;Undervoltage trigger second order value(0.1%);;0.1;0;%Vn;1
+170;3;42727;U32;;Undervoltage trigger second-order trip time;;1;0;ms;1
+171;3;42729;U16;;Overvoltage trigger second order value(0.1%);;0.1;0;%Vn;1
+172;3;42730;U32;;Overvoltage trigger second-order trip time;;1;0;ms;1
+173;3;42732;U16;;Undervoltage trigger third order value(0.1%);;0.1;0;%Vn;1
+174;3;42733;U32;;Undervoltage trigger third-order trip time;;1;0;ms;1
+175;3;42735;U16;;Overvoltage trigger third order value(0.1%);;0.1;0;%Vn;1
+176;3;42736;U32;;Overvoltage trigger third-order trip time;;1;0;ms;1
+177;3;42738;U16;;Undervoltage trigger fourth order value(0.1%);;0.1;0;%Vn;1
+178;3;42739;U32;;Undervoltage trigger fourth-order trip time;;1;0;ms;1
+179;3;42741;U16;;Overvoltage trigger fourth order value(0.1%);;0.1;0;%Vn;1
+180;3;42742;U32;;Overvoltage trigger fourth-order trip time;;1;0;ms;1
+181;3;42744;U16;;Underfrequency trigger first order value(0.1%);;0.01;0;Hz;1
+182;3;42745;U32;;Underfrequency trigger first-order trip time;;1;0;ms;1
+183;3;42747;U16;;Overfrequency trigger first order value(0.1%);;0.01;0;Hz;1
+184;3;42748;U32;;Overfrequency trigger first-order trip time;;1;0;ms;1
+185;3;42750;U16;;Underfrequency trigger second order value(0.1%);;0.01;0;Hz;1
+186;3;42751;U32;;Underfrequency trigger second-order trip time;;1;0;ms;1
+187;3;42753;U16;;Overfrequency trigger second order value(0.1%);;0.01;0;Hz;1
+188;3;42754;U32;;Overfrequency trigger second-order trip time;;1;0;ms;1
+189;3;42756;U16;;Underfrequency trigger third order value(0.1%);;0.01;0;Hz;1
+190;3;42757;U32;;Underfrequency trigger third-order trip time;;1;0;ms;1
+191;3;42759;U16;;Overfrequency trigger third order value(0.1%);;0.01;0;Hz;1
+192;3;42760;U32;;Overfrequency trigger third-order trip time;;1;0;ms;1
+193;3;42762;U16;;Underfrequency trigger fourth order value(0.1%);;0.01;0;Hz;1
+194;3;42763;U32;;Underfrequency trigger fourth order trip time;;1;0;ms;1
+195;3;42765;U16;;Overfrequency trigger fourth order value(0.1%);;0.01;0;Hz;1
+196;3;42766;U32;;Overfrequency trigger fourth order trip time;;1;0;ms;1
+197;3;42768;U16;;10min overvoltage trigger value(0.1%);;0.1;0;%Vn;1
+198;3;42769;U32;;10min trigger trip time;;1;0;ms;1

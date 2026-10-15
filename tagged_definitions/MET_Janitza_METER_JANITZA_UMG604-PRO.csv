@@ -1,0 +1,72 @@
+﻿ModbusRTU;Meter;Janitza;UMG604PRO;;;;;;;
+1;3;1317;F32;;Voltage L1-N (_ULN[0]);U_AC_1;1.0;0.0;V;4
+2;3;1319;F32;;Voltage L2-N (_ULN[1]);U_AC_2;1.0;0.0;V;4
+3;3;1321;F32;;Voltage L3-N (_ULN[2]);U_AC_3;1.0;0.0;V;4
+4;3;1323;F32;;Current L1 (_ILN[0]);I_AC_1;1.0;0.0;A;4
+5;3;1325;F32;;Current L2 (_ILN[1]);I_AC_2;1.0;0.0;A;4
+6;3;1327;F32;;Current L3 (_ILN[2]);I_AC_3;1.0;0.0;A;4
+7;3;1329;F32;;Real Power L1 (_PLN[0]);P_AC_1;1.0;0.0;W;4
+8;3;1331;F32;;Real Power L2 (_PLN[1]);P_AC_2;1.0;0.0;W;4
+9;3;1333;F32;;Real Power L3 (_PLN[2]);P_AC_3;1.0;0.0;W;4
+10;3;1335;F32;;Reactive Power L1 (_QLN[0]);Q_AC_1;1.0;0.0;VAr;4
+11;3;1337;F32;;Reactive Power L2 (_QLN[1]);Q_AC_2;1.0;0.0;VAr;4
+12;3;1339;F32;;Reactive Power L3 (_QLN[2]);Q_AC_3;1.0;0.0;VAr;4
+13;3;1341;F32;;Apparent Power L1 (_SLN[0]);S_AC_1;1.0;0.0;VA;4
+14;3;1343;F32;;Apparent Power L2 (_SLN[1]);S_AC_2;1.0;0.0;VA;4
+15;3;1345;F32;;Apparent Power L3 (_SLN[2]);S_AC_3;1.0;0.0;VA;4
+16;3;1347;F32;;Voltage UL1-L2 (_ULL[0]);U_AC_L1L2;1.0;0.0;V;4
+17;3;1349;F32;;Voltage UL2-L3 (_ULL[1]);U_AC_L2L3;1.0;0.0;V;4
+18;3;1351;F32;;Voltage UL3-L1 (_ULL[2]);U_AC_L3L1;1.0;0.0;V;4
+19;3;1353;F32;;Vector Sum IN, IL1 + IL2 + IL3 (_I_SUM3);;1.0;0.0;A;4
+20;3;1355;F32;;Vector Sum IN, IL1 + IL2 + IL3 + IL4(_I_SUM);;1.0;0.0;A;4
+21;3;1357;F32;;Sum SL1 + SL2 + SL3 (_S_SUM3);;1.0;0.0;VA;4
+22;3;1359;F32;;Sum PL1 + PL2 + PL3 (_P_SUM3);;1.0;0.0;W;4
+23;3;1361;F32;;Sum QL1 + QL2 + QL3 (_Q_SUM3);;1.0;0.0;VAr;4
+24;3;1363;F32;;PSUM3/ sqrt(P2SUM3+ Q2SUM3)(_COS_SUM3);;1.0;0.0;;4
+25;3;1365;F32;;Sum SL1 + SL2 + SL3 + SL4 (_S_SUM);;1.0;0.0;VA;4
+26;3;1367;F32;;Sum PL1 + PL2 + PL3 + PL4 (_P_SUM);;1.0;0.0;W;4
+27;3;1369;F32;;Sum QL1 + QL2 + QL3 + QL4 (_Q_SUM);;1.0;0.0;VAr;4
+28;3;1371;F32;;PSUM / sqrt(P2SUM+ Q2SUM) (_COS_SUM);;1.0;0.0;;4
+29;3;1423;F32;;CosPhi L1 (_COS_PHI[0]);PF_1;1.0;0.0;;4
+30;3;1425;F32;;CosPhi L2 (_COS_PHI[1]);PF_2;1.0;0.0;;4
+31;3;1427;F32;;CosPhi L3 (_COS_PHI[2]);PF_3;1.0;0.0;;4
+32;3;1439;F32;;Frequency (_FREQ);FREQ;1.0;0.0;Hz;4
+33;3;9807;F32;;Apparent energy, L1 (_WH_S[0]);;1.0;0.0;VAh;4
+34;3;9809;F32;;Apparent energy, L2 (_WH_S[1]);;1.0;0.0;VAh;4
+35;3;9811;F32;;Apparent energy, L3 (_WH_S[2]);;1.0;0.0;VAh;4
+36;3;9813;F32;;Apparent energy, L4 (_WH_S[3]);;1.0;0.0;VAh;4
+37;3;9815;F32;;Apparent energy, L1+L2+L3 (_WH_S[4]);;1.0;0.0;VAh;4
+38;3;9817;F32;;Apparent energy, L1+L2+L3+L4 (_WH_S[5]);;1.0;0.0;VAh;4
+39;3;9819;F32;;Real Energy, L1 (_WH[0]);;1.0;0.0;Wh;4
+40;3;9821;F32;;Real Energy, L2 (_WH[1]);;1.0;0.0;Wh;4
+41;3;9823;F32;;Real Energy, L3 (_WH[2]);;1.0;0.0;Wh;4
+42;3;9825;F32;;Real Energy, L4 (_WH[3]);;1.0;0.0;Wh;4
+43;3;9827;F32;;Real Energy, L1+L2+L3 (_WH[4]);;1.0;0.0;Wh;4
+44;3;9829;F32;;Real Energy, L1+L2+L3+L4 (_WH[5]);;1.0;0.0;Wh;4
+45;3;9831;F32;;Reactiv energy, L1 (_QH[0]);;1.0;0.0;VArh;4
+46;3;9833;F32;;Reactiv energy, L2 (_QH[1]);;1.0;0.0;VArh;4
+47;3;9835;F32;;Reactiv energy, L3 (_QH[2]);;1.0;0.0;VArh;4
+48;3;9837;F32;;Reactiv energy, L4 (_QH[3]);;1.0;0.0;VArh;4
+49;3;9839;F32;;Reactiv energy, L1+L2+L3 (_QH[4]);;1.0;0.0;VArh;4
+50;3;9841;F32;;Reactiv energy, L1+L2+L3+L4 (_QH[5]);;1.0;0.0;VArh;4
+51;3;9843;F32;;Real Energy, Consumption, L1 (_WH_V[0]);;1.0;0.0;Wh;4
+52;3;9845;F32;;Real Energy, Consumption, L2 (_WH_V[1]);;1.0;0.0;Wh;4
+53;3;9847;F32;;Real Energy, Consumption, L3 (_WH_V[2]);;1.0;0.0;Wh;4
+54;3;9849;F32;;Real Energy, Consumption, L4 (_WH_V[3]);;1.0;0.0;Wh;4
+55;3;9851;F32;;Real Energy, Con., L1+L2+L3 (_WH_V[4]);;1.0;0.0;Wh;4
+56;3;9853;F32;;Real Energy, Con., L1+L2+L3+L4 (_WH_V[5]);;1.0;0.0;Wh;4
+57;3;9855;F32;;Real Energy, Supply, L1 (_WH_Z[0]);;1.0;0.0;Wh;4
+58;3;9857;F32;;Real Energy, Supply, L2 (_WH_Z[1]);;1.0;0.0;Wh;4
+59;3;9859;F32;;Real Energy, Supply, L3 (_WH_Z[2]);;1.0;0.0;Wh;4
+60;3;9861;F32;;Real Energy, Supply, L4 (_WH_Z[3]);;1.0;0.0;Wh;4
+61;3;9863;F32;;Real Energy, Supply, L1+L2+L3 (_WH_Z[4]);;1.0;0.0;Wh;4
+62;3;9865;F32;;Real Energy, Supply, L1+L2+L3+L4 (_WH_Z[5]);;1.0;0.0;Wh;4
+63;3;10176;U32;;Serial-Number (_SERNR);;1.0;0.0;;4
+64;3;10178;U32;;Production Number (_PRODNR);;1.0;0.0;;4
+65;3;10180;U32;;Modbus Address (_MBUSADDR);UNIT_ID;1.0;0.0;;4
+66;3;10184;U32;;Baud Rate RS485 (_BAUD485);;1.0;0.0;;4
+67;3;10188;U32;;Protokoll, Modbus-RTU Slave (_MODE232);;1.0;0.0;;4
+68;3;10190;U32;;IP-Adresse (_IP_ADDR);;1.0;0.0;;4
+69;3;10192;U32;;IP-Maske (_IP_MASK);;1.0;0.0;;4
+70;3;10194;U32;;Gateway-Adresse (_IP_GATE);;1.0;0.0;;4
+71;3;10196;U32;;IP-Mode (_DHCPMODE);;1.0;0.0;;4

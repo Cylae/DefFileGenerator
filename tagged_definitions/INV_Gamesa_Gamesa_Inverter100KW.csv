@@ -1,0 +1,18 @@
+﻿modbusRTU;Inverter;Gamesa;Gamesa_Inverter100KW;;;;;;;
+1;4;50514;U16;;Vcc Paneles;;1.0;0.0;;4
+2;4;50516;U16;;Vcc Puente;;1.0;0.0;;4
+3;4;50518;U16;;Intensidad continua;;1.0;0.0;;4
+4;4;50520;U16;;Tension VRS;;1.0;0.0;;4
+5;4;50522;U16;;Tension VST;;1.0;0.0;;4
+6;4;50524;U16;;Tension VTR;;1.0;0.0;;4
+7;4;50526;U16;;Intensidad IR;;1.0;0.0;;4
+8;4;50528;U16;;Intensidad IS;;1.0;0.0;;4
+9;4;50530;U16;;Intensidad IT;;1.0;0.0;;4
+10;4;50532;U16;;Potencia Continua;;1.0;0.0;;4
+11;4;50534;U16;;Potencia Alterna;;1.0;0.0;;4
+12;4;50536;U16;;Factor de potencia;;1.0;0.0;;4
+13;4;50538;U16;;Frecuencia;;1.0;0.0;;4
+14;4;50540;U16;;Rsvrd;;1.0;0.0;;1
+15;4;50542;U16;;Rsvrd1;;1.0;0.0;;1
+16;4;50544;U16;;Rsvrd2;;1.0;0.0;;1
+17;4;50546;U16;;Alarms;;1.0;0.0;;8

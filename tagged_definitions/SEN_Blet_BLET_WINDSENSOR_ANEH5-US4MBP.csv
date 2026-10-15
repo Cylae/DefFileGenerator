@@ -1,0 +1,30 @@
+﻿modbusRTU;Sensor;Blet;BLET_WINDSENSOR_ANEH5-US4MBP;;;;;;;
+1;4;0;U16;;Device State;;1.0;0.0;;4
+2;4;1;U16;;Wind Direction;WIND_BEARING;1.0;0.0;°;4
+3;4;2;U16;;Wind Speed;WIND_SPEED;1.0;0.0;m/s;4
+4;4;4;U16;;Temperature;TEMP;1.0;0.0;?;4
+5;4;6;U16;;Humidity;HUMIDITY;1.0;0.0;%;4
+6;4;8;U16;;Air Pressure;PRESSURE;1.0;0.0;hPa;4
+7;4;10;U16;;Compass Heading;;1.0;0.0;°;4
+8;4;11;U16;;Precipitation Type;;1.0;0.0;Refer to Appendix II;4
+9;4;12;U16;;Precipitation Intensity;;1.0;0.0;Single-precision;4
+10;4;14;U16;;Accumulated Precipitation;;1.0;0.0;Single-precision;4
+11;4;16;U16;;UV Index;;1.0;0.0;UV index from 0 to 15;4
+12;4;17;U16;;GPS Status;;1.0;0.0;;4
+13;4;18;U16;;GPS Speed;;1.0;0.0;Km/h;4
+14;4;20;U16;;GPS Heading;;1.0;0.0;°;4
+15;4;21;U16;;Longitude;;1.0;0.0;East: positive West: negative;4
+16;4;23;U16;;Latitude;;1.0;0.0;North: positive South: negative;4
+17;4;25;U16;;PM2.5 concentration;;1.0;0.0;ug/m^3;4
+18;4;27;U16;;Visibility;;1.0;0.0;m;4
+19;4;29;U16;;Radiation Illuminance;;1.0;0.0;Lux;4
+20;4;31;U16;;Accumulated solar radiation;;1.0;0.0;Daily Solar Radiation KJ;4
+21;4;33;U16;;Solar Radiation Power;;1.0;0.0;W/m^2;4
+22;4;35;U16;;Compass Corrected (True) Wind Direction;;1.0;0.0;°;4
+23;4;37;U16;;Altitude;;1.0;0.0;m;4
+24;4;39;U16;;GPS Corrected(True) Wind Speed;;1.0;0.0;m/s;4
+25;4;41;U16;;Accumulated Snow Thickness;SERIAL;1.0;0.0;m;4
+26;4;43;U16;;UV Radiation;;1.0;0.0;W/m2;4
+27;4;45;U16;;PM1.0 concentration;;1.0;0.0;ug/m^3;4
+28;4;47;U16;;PM10 concentration;;1.0;0.0;ug/m^3;4
+29;4;49;U16;;Color Temp;;1.0;0.0;K;4

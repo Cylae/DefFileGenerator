@@ -1,0 +1,8 @@
+﻿modbusRTU;Other;Webdyn;MODBUS_EM1200;;;;;;;
+1;4;3200;U16;;Forward Apparent Energy;;1.0;0.0;FwdVAh;4
+2;4;3202;U16;;Forward Active Energy;;1.0;0.0;FwdWh;4
+3;4;3204;U16;;Forward Reactive Energy;;1.0;0.0;FwdVARh;4
+4;4;3048;U16;;Apparent Power Total;S_AC;1.0;0.0;VA;4
+5;4;3050;U16;;Active Power Total;P_AC;1.0;0.0;W;4
+6;4;3052;U16;;Reactive Power Total;Q_AC;1.0;0.0;VAR;4
+7;4;3054;U16;;Total Power Factor;PF;1.0;0.0;;4

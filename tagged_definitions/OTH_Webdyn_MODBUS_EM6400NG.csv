@@ -1,0 +1,4 @@
+﻿modbusRTU;Other;Webdyn;MODBUS_EM6400NG;;;;;;;
+1;4;2699;U16;;Active Energy Delivered (into load);;1.0;0.0;kWh;4
+2;4;3109;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+3;4;2701;U16;;Active Energy Delivered (out of load);;1.0;0.0;kWh;4
