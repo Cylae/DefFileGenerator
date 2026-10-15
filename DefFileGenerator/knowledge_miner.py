@@ -643,6 +643,10 @@ def infer_sunpm_tag(
         kb = knowledge if knowledge is not None else get_active_knowledge()
         if kb:
             learned = kb.get_learned_tag(variable_name)
+            if learned in ("CMD_P_AC_SET_PERCENT", "CMD_Q_AC_SET_PERCENT"):
+                low = variable_name.lower()
+                if any(u in low for u in ("kw", " w", "[w]", "(w)", "kvar", "var", "abs")):
+                    learned = ""
             if learned:
                 return learned
 

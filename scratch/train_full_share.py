@@ -62,9 +62,11 @@ for p in csv_files:
         continue
 
 elapsed = time.time() - parse_start
-print(f"Mined {knowledge.total_definitions_mined} definitions, {knowledge.total_registers_mined:,} registers in {elapsed:.2f}s.")
+print(
+    f"Mined {knowledge.total_definitions_mined} definitions, {knowledge.total_registers_mined:,} registers in {elapsed:.2f}s."
+)
 print(f"Learned variable-to-tag mappings: {len(knowledge.name_to_tag):,}")
-print(f"Top 20 SunPM tags learned:")
+print("Top 20 SunPM tags learned:")
 for t, c in knowledge.tag_counts.most_common(20):
     print(f"  {t:<25}: {c} occurrences")
 

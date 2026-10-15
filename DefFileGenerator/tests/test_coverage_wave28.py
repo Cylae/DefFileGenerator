@@ -1,5 +1,4 @@
 """
-<<<<<<< HEAD
 Targeted Unit & Integration Tests for Wave 28 Coverage & Real-World Dataset Intelligence.
 
 Tests covering:
@@ -11,17 +10,14 @@ Tests covering:
 - Multilingual and prefixed variable normalization (clean_variable_key).
 - Real-world manufacturer definition auditing from the network share (Acrel, SMA, Carlo Gavazzi, Legrand, Solax).
 - Auto-fixing legacy Webdyn tags to canonical SunPM tags.
-=======
-Targeted unit tests for DefFileGenerator/knowledge_miner.py covering edge branches,
-tag inference, action code, function code text parsing, and definition file/row enrichment.
->>>>>>> df40c50c8a13c155d59183bccbc0c4a0f8ec986c
+- Edge branches, tag inference, action codes, function code text parsing, and definition file/row enrichment.
 """
 
 from __future__ import annotations
 
-<<<<<<< HEAD
 import csv
 import os
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -33,9 +29,15 @@ from DefFileGenerator.knowledge_miner import (
     audit_definition_file,
     auto_fix_definition_file,
     clean_variable_key,
+    enrich_definition_file,
+    enrich_definition_rows,
     get_active_knowledge,
+    infer_action_code,
     infer_sunpm_tag,
+    infer_webdyn_tag,
     load_dataset_knowledge,
+    normalize_tag_to_sunpm,
+    parse_function_code_from_text,
     train_knowledge_from_definitions,
 )
 
@@ -229,19 +231,6 @@ def test_real_world_definitions_audit_from_share():
             report = audit_definition_file(full_path, strict_overlap=False)
             assert report.register_count > 0, f"{rel} should yield registers"
             assert report.filepath == str(full_path)
-=======
-import tempfile
-from pathlib import Path
-
-from DefFileGenerator.knowledge_miner import (
-    enrich_definition_file,
-    enrich_definition_rows,
-    infer_action_code,
-    infer_sunpm_tag,
-    infer_webdyn_tag,
-    normalize_tag_to_sunpm,
-    parse_function_code_from_text,
-)
 
 
 def test_normalize_tag_to_sunpm_edge_cases():
@@ -442,4 +431,3 @@ def test_parse_function_code_from_text():
     assert parse_function_code_from_text("FC 16 Write Multiple") == "3"
     assert parse_function_code_from_text("Code Fonction = 4") == "4"
     assert parse_function_code_from_text("No function code in this text") == "4"
->>>>>>> df40c50c8a13c155d59183bccbc0c4a0f8ec986c
