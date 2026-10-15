@@ -1,0 +1,19 @@
+﻿modbusTCP;Inverter;MarsRenewable;LiquidCooling;;;;;;;
+1;4;30000;U16;;LiquidCooling1 Operating Status;;1.000000;0.000000;;9
+2;4;30004;U16;;LiquidCooling1 Operating Mode;;1.000000;0.000000;;4
+3;4;30006;F32;;LiquidCooling1 Ambient Temperature;TEMP_AMB;0.100000;0.000000;°C;4
+4;4;30008;F32;;LiquidCooling1 Supply Water Temperature;;0.100000;0.000000;°C;4
+5;4;30010;F32;;LiquidCooling1 Inlet Water Temperature;;0.100000;0.000000;°C;4
+6;4;30012;F32;;LiquidCooling1 Supply Water Pressure;;1.000000;0.000000;;4
+7;4;30014;F32;;LiquidCooling1 Return Water Pressure;;1.000000;0.000000;;4
+8;4;30016;U16;;LiquidCooling1 Fan Operating Status;;1.000000;0.000000;;9
+9;4;30017;U16;;LiquidCooling1 Water Pump Operating Status;;1.000000;0.000000;;9
+10;4;30018;U16;;LiquidCooling1 Electric Heating Operating Status;;1.000000;0.000000;;9
+11;4;30019;U16;;LiquidCooling1 Refrigerant Operating Status;;1.000000;0.000000;;9
+12;4;30020;F32;;LiquidCooling1 Fan Output;;1.000000;0.000000;;4
+13;4;30022;F32;;LiquidCooling1 Water Pump Output;;1.000000;0.000000;;4
+14;4;30024;F32;;LiquidCooling1 Target Cooling Start Point;;0.100000;0.000000;°C;4
+15;4;30026;F32;;LiquidCooling1 Target Cooling Stop Point;;0.100000;0.000000;°C;4
+16;4;30028;F32;;LiquidCooling1 Target Heating Start Point;;0.100000;0.000000;°C;4
+17;4;30030;F32;;LiquidCooling1 Target Heating Stop Point;;0.100000;0.000000;°C;4
+18;4;30032;U16;;LiquidCooling1 EMS Control Mode Status;;1.000000;0.000000;;9

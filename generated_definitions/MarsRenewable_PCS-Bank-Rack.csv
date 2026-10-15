@@ -1,0 +1,81 @@
+﻿modbusTCP;Battery;MarsRenewable;PCS-Bank;;;;;;;
+1;2;0;U16;;LC Alarm Summary [0=normal, 1=alarm];;1.000000;0.000000;;9
+2;2;1;U16;;PCS Alarm Summary [0=normal, 1=alarm];;1.000000;0.000000;;9
+3;2;2;U16;;Bank Alarm Summary [0=normal, 1=alarm];;1.000000;0.000000;;9
+4;2;3;U16;;Air Conditioning Alarm Summary [0=normal, 1=alarm];;1.000000;0.000000;;9
+5;4;20006;U16;;DIO1 1#DI-1 (crash-stop);;1.000000;0.000000;;9
+6;4;20007;U16;;DIO1 1#DI-2 (Surge fault feedback);;1.000000;0.000000;;9
+7;4;20008;U16;;DIO1 1#DI-3 (PCS Discharge/Charge Status);;1.000000;0.000000;;9
+8;4;20009;U16;;DIO1 1#DI-4 (Water Cooling);;1.000000;0.000000;;4
+9;4;20010;U16;;DIO1 1#DI-5 (Aerosol spraying);;1.000000;0.000000;;4
+10;4;20011;U16;;DIO1 1#DI-6 (KA1-KA6 Contactor Monitoring);;1.000000;0.000000;;4
+11;4;20014;U16;;DIO1 1#DI-9 (Temperature feedback);;1.000000;0.000000;;9
+12;4;20015;U16;;DIO1 1#DI-10 (Smoke feedback);;1.000000;0.000000;;9
+13;4;20016;U16;;DIO1 1#DI-11 (AC side entrance guard);;1.000000;0.000000;;4
+14;4;20017;U16;;DIO1 1#DI-12 (DC side entrance guard);;1.000000;0.000000;;4
+15;4;20018;U16;;DIO1 1#DI-13 (Exhaust Fan Feedback);;1.000000;0.000000;;9
+16;4;20019;U16;;DIO1 1#DO-1 (Running Indicator);;1.000000;0.000000;;9
+17;4;20020;U16;;DIO1 1#DO-2 (Fault Indicator);;1.000000;0.000000;;9
+18;4;20021;U16;;DIO1 1#DO-3 (Intermediate relay);;1.000000;0.000000;;4
+19;4;0;U16;;PCS1 Operating Status;;1.000000;0.000000;;9
+20;4;2;F32;;PCS1 AC Uab Line Voltage;U_AC_L1L2;1.000000;0.000000;V;4
+21;4;4;F32;;PCS1 AC Ubc Line Voltage;U_AC_L2L3;1.000000;0.000000;V;4
+22;4;6;F32;;PCS1 AC Uca Line Voltage;U_AC_L3L1;1.000000;0.000000;V;4
+23;4;8;F32;;PCS1 AC Phase A Current;I_AC_1;1.000000;0.000000;A;4
+24;4;10;F32;;PCS1 AC Phase B Current;I_AC_2;1.000000;0.000000;A;4
+25;4;12;F32;;PCS1 AC Phase C Current;I_AC_3;1.000000;0.000000;A;4
+26;4;14;F32;;PCS1 AC Frequency;FREQ;1.000000;0.000000;Hz;4
+27;4;16;F32;;PCS1 Total AC Active Power;P_AC;1.000000;0.000000;kW;4
+28;4;18;F32;;PCS1 Total AC Reactive Power;Q_AC;1.000000;0.000000;kvar;4
+29;4;20;F32;;PCS1 Total AC Apparent Power;S_AC;1.000000;0.000000;kW;4
+30;4;22;F32;;PCS1 Total AC Power Factor;PF;1.000000;0.000000;;4
+31;4;24;F32;;PCS1 Phase A AC Active Power;P_AC_1;1.000000;0.000000;kW;4
+32;4;26;F32;;PCS1 Phase B AC Active Power;P_AC_2;1.000000;0.000000;kW;4
+33;4;28;F32;;PCS1 Phase C AC Active Power;P_AC_3;1.000000;0.000000;kW;4
+34;4;30;F32;;PCS1 Phase A AC Reactive Power;Q_AC_1;1.000000;0.000000;kvar;4
+35;4;32;F32;;PCS1 Phase B AC Reactive Power;Q_AC_2;1.000000;0.000000;kvar;4
+36;4;34;F32;;PCS1 Phase C AC Reactive Power;Q_AC_3;1.000000;0.000000;kvar;4
+37;4;36;F32;;PCS1 Phase A AC Apparent Power;S_AC_1;1.000000;0.000000;kVA;4
+38;4;38;F32;;PCS1 Phase B AC Apparent Power;S_AC_2;1.000000;0.000000;kVA;4
+39;4;40;F32;;PCS1 Phase C AC Apparent Power;S_AC_3;1.000000;0.000000;kVA;4
+40;4;42;F32;;PCS1 Phase A AC Power Factor;PF_1;1.000000;0.000000;;4
+41;4;44;F32;;PCS1 Phase B AC Power Factor;PF_2;1.000000;0.000000;;4
+42;4;46;F32;;PCS1 Phase C AC Power Factor;PF_3;1.000000;0.000000;;4
+43;4;48;F32;;PCS1 IGBT Module Temperature;TEMP_INT;1.000000;0.000000;°C;4
+44;4;50;F32;;PCS1 Ambient Temperature;TEMP_AMB;1.000000;0.000000;°C;4
+45;4;52;F32;;PCS1 Total  AC Charging Energy;;1.000000;0.000000;kWh;4
+46;4;54;F32;;PCS1 Total AC Discharging Energy;E_TOT;1.000000;0.000000;kWh;4
+47;4;56;F32;;PCS1 Daily AC Charging Energy;;1.000000;0.000000;kWh;4
+48;4;58;F32;;PCS1 Daily AC Discharging Energy;E_DAY;1.000000;0.000000;kWh;4
+49;4;60;U32;;PCS1 Number of branches;;1.000000;0.000000;;4
+50;4;62;F32;;PCS1 Branch 1 DC Power;;1.000000;0.000000;kW;4
+51;4;64;F32;;PCS1 Branch 1 DC Voltage;;1.000000;0.000000;V;4
+52;4;66;F32;;PCS1 Branch 1 DC Current;;1.000000;0.000000;A;4
+53;4;68;F32;;PCS1 Branch 2 DC Power;;1.000000;0.000000;kW;4
+54;4;70;F32;;PCS1 Branch 2 DC Voltage;;1.000000;0.000000;V;4
+55;4;72;F32;;PCS1 Branch 2 DC Current;;1.000000;0.000000;A;4
+56;4;74;F32;;PCS1 Branch 3 DC Power;;1.000000;0.000000;kW;4
+57;4;76;F32;;PCS1 Branch 3 DC Voltage;;1.000000;0.000000;V;4
+58;4;78;F32;;PCS1 Branch 3 DC Current;;1.000000;0.000000;A;4
+59;4;80;F32;;PCS1 Branch 4 DC Power;;1.000000;0.000000;kW;4
+60;4;82;F32;;PCS1 Branch 4 DC Voltage;;1.000000;0.000000;V;4
+61;4;84;F32;;PCS1 Branch 4 DC Current;;1.000000;0.000000;A;4
+62;4;86;F32;;PCS1 Branch 5 DC Power;;1.000000;0.000000;kW;4
+63;4;88;F32;;PCS1 Branch 5 DC Voltage;;1.000000;0.000000;V;4
+64;4;90;F32;;PCS1 Branch 5 DC Current;;1.000000;0.000000;A;4
+65;4;92;F32;;PCS1 Branch 6 DC Power;;1.000000;0.000000;kW;4
+66;4;94;F32;;PCS1 Branch 6 DC Voltage;;1.000000;0.000000;V;4
+67;4;96;F32;;PCS1 Branch 6 DC Current;;1.000000;0.000000;A;4
+68;4;5000;F32;;Bank1 Bank Voltage;U_DC;1.000000;0.000000;V;4
+69;4;5002;F32;;Bank1 Bank Current;I_DC;1.000000;0.000000;A;4
+70;4;5004;F32;;Bank1 Bank SOC;SOC;1.000000;0.000000;%;4
+71;4;5006;F32;;Bank1 Bank SOH;SOH;1.000000;0.000000;%;4
+72;4;5008;F32;;Bank1 Bank Insulation Resistance;R_ISO;1.000000;0.000000;Ω;4
+73;4;5010;F32;;Bank1 Bank Available Charge Energy;;1.000000;0.000000;kWh;4
+74;4;5012;F32;;Bank1 Bank Available Discharge Energy;;1.000000;0.000000;kWh;4
+75;4;5014;F32;;Bank1 System Allowed Maximum Charge Current;;1.000000;0.000000;A;4
+76;4;5016;F32;;Bank1 System Allowed Maximum Discharge Current;;1.000000;0.000000;A;4
+77;4;5018;F32;;Bank1 Today’s Charge Energy;;1.000000;0.000000;kWh;4
+78;4;5020;F32;;Bank1 Today’s Discharge Energy;;1.000000;0.000000;kWh;4
+79;4;5022;F32;;Bank1 Accumulated Charge Energy;;1.000000;0.000000;kWh;4
+80;4;5024;F32;;Bank1 Accumulated Discharge Energy;;1.000000;0.000000;kWh;4

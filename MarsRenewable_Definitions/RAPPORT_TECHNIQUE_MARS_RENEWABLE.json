@@ -1,0 +1,92 @@
+{
+  "manufacturer": "Mars Renewable",
+  "series": "Local Controller V7.0",
+  "source_document": "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+  "timestamp": "2026-10-15T15:37:00",
+  "definitions": [
+    {
+      "filename": "MarsRenewable_LocalControler.csv",
+      "is_valid": true,
+      "issues_count": 0,
+      "register_count": 12,
+      "tagged_count": 1,
+      "canonical_tag_count": 1,
+      "action_1_commands": 6,
+      "action_4_telemetry": 5,
+      "action_9_alarms": 0,
+      "category": "Inverter",
+      "model": "LocalControler",
+      "protocol": "modbusTCP"
+    },
+    {
+      "filename": "MarsRenewable_PCS-Bank-Rack.csv",
+      "is_valid": true,
+      "issues_count": 0,
+      "register_count": 80,
+      "tagged_count": 32,
+      "canonical_tag_count": 32,
+      "action_1_commands": 0,
+      "action_4_telemetry": 67,
+      "action_9_alarms": 13,
+      "category": "Battery",
+      "model": "PCS-Bank",
+      "protocol": "modbusTCP"
+    },
+    {
+      "filename": "MarsRenewable_Rack-Cell.csv",
+      "is_valid": true,
+      "issues_count": 0,
+      "register_count": 35,
+      "tagged_count": 6,
+      "canonical_tag_count": 6,
+      "action_1_commands": 0,
+      "action_4_telemetry": 35,
+      "action_9_alarms": 0,
+      "category": "Battery",
+      "model": "Rack-Cell",
+      "protocol": "modbusTCP"
+    },
+    {
+      "filename": "MarsRenewable_LC-AC.csv",
+      "is_valid": true,
+      "issues_count": 0,
+      "register_count": 34,
+      "tagged_count": 3,
+      "canonical_tag_count": 3,
+      "action_1_commands": 0,
+      "action_4_telemetry": 20,
+      "action_9_alarms": 14,
+      "category": "Inverter",
+      "model": "LC-AC",
+      "protocol": "modbusTCP"
+    },
+    {
+      "filename": "MarsRenewable_Meter.csv",
+      "is_valid": true,
+      "issues_count": 0,
+      "register_count": 11,
+      "tagged_count": 3,
+      "canonical_tag_count": 3,
+      "action_1_commands": 0,
+      "action_4_telemetry": 11,
+      "action_9_alarms": 0,
+      "category": "Meter",
+      "model": "Meter",
+      "protocol": "modbusTCP"
+    },
+    {
+      "filename": "MarsRenewable_PV.csv",
+      "is_valid": true,
+      "issues_count": 0,
+      "register_count": 49,
+      "tagged_count": 45,
+      "canonical_tag_count": 45,
+      "action_1_commands": 0,
+      "action_4_telemetry": 48,
+      "action_9_alarms": 1,
+      "category": "Inverter",
+      "model": "PV",
+      "protocol": "modbusTCP"
+    }
+  ]
+}

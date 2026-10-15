@@ -1,0 +1,17 @@
+﻿modbusTCP;Inverter;MarsRenewable;AirCooling;;;;;;;
+1;4;15000;U16;;AC1 Operating Status;;1.000000;0.000000;;9
+2;4;15004;F32;;AC1 Cooling Low Point;;0.100000;0.000000;°C;4
+3;4;15006;F32;;AC1 Cooling High Point;;0.100000;0.000000;°C;4
+4;4;15008;F32;;AC1 Heating Low Point;;0.100000;0.000000;°C;4
+5;4;15010;F32;;AC1 Heating High Point;;0.100000;0.000000;°C;4
+6;4;15012;F32;;AC1 Dehumidification High Point (Start Point);;0.100000;0.000000;;4
+7;4;15014;F32;;AC1 Dehumidification Low Point (Stop Point);;0.100000;0.000000;;4
+8;4;15016;F32;;AC1 High Temperature Alarm Point;;0.100000;0.000000;°C;9
+9;4;15018;F32;;AC1 Low Temperature Alarm Point;;0.100000;0.000000;°C;9
+10;4;15020;F32;;AC1 Temperature;TEMP;0.100000;0.000000;°C;4
+11;4;15022;U16;;AC1 Temperature Status;;1.000000;0.000000;;9
+12;4;15023;U16;;AC1 Voltage Status;;1.000000;0.000000;;9
+13;4;15024;U16;;AC1 Sensor Status;;1.000000;0.000000;;9
+14;4;15025;U16;;AC1 Compressor Status;;1.000000;0.000000;;9
+15;4;15026;U16;;AC1 Air Pressure Status;;1.000000;0.000000;;9
+16;4;15027;F32;;AC1 Relative Humidity;HUMIDITY;0.100000;0.000000;;4

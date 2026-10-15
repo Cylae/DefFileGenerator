@@ -1,0 +1,207 @@
+{
+  "manufacturer": "Fox ESS",
+  "range": "P3 Pro / H3 Pro",
+  "inverter": {
+    "filename": "INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\tagged_definitions\\INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv",
+    "prefix": "INV",
+    "category": "Inverter",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 285,
+    "tag_count": 111,
+    "canonical_tag_count": 111,
+    "custom_tag_count": 0,
+    "holding_count": 285,
+    "coil_count": 0,
+    "action_1_count": 43,
+    "action_4_count": 242,
+    "action_9_count": 0,
+    "other_action_count": 0,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 23,
+    "tag_density": 38.9,
+    "top_tags": [
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "P_RATED",
+        1
+      ],
+      [
+        "P_AC",
+        1
+      ],
+      [
+        "Q_AC",
+        1
+      ],
+      [
+        "FREQ",
+        1
+      ],
+      [
+        "I_DC",
+        1
+      ],
+      [
+        "R_ISO",
+        1
+      ],
+      [
+        "U_DC_MPPT_1",
+        1
+      ]
+    ]
+  },
+  "meter": {
+    "filename": "MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\tagged_definitions\\MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv",
+    "prefix": "MET",
+    "category": "Meter",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 61,
+    "tag_count": 27,
+    "canonical_tag_count": 26,
+    "custom_tag_count": 1,
+    "holding_count": 61,
+    "coil_count": 0,
+    "action_1_count": 3,
+    "action_4_count": 57,
+    "action_9_count": 1,
+    "other_action_count": 0,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "tag_density": 44.3,
+    "top_tags": [
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "U_AC_1",
+        1
+      ],
+      [
+        "U_AC_2",
+        1
+      ],
+      [
+        "U_AC_3",
+        1
+      ],
+      [
+        "I_AC_1",
+        1
+      ],
+      [
+        "I_AC_2",
+        1
+      ],
+      [
+        "I_AC_3",
+        1
+      ],
+      [
+        "P_AC",
+        1
+      ]
+    ]
+  },
+  "battery": {
+    "filename": "BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\tagged_definitions\\BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv",
+    "prefix": "BAT",
+    "category": "Battery",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 893,
+    "tag_count": 18,
+    "canonical_tag_count": 8,
+    "custom_tag_count": 10,
+    "holding_count": 893,
+    "coil_count": 0,
+    "action_1_count": 692,
+    "action_4_count": 190,
+    "action_9_count": 6,
+    "other_action_count": 5,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "tag_density": 2.0,
+    "top_tags": [
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "U_DC",
+        1
+      ],
+      [
+        "I_DC",
+        1
+      ],
+      [
+        "TEMP",
+        1
+      ],
+      [
+        "SOC",
+        1
+      ],
+      [
+        "TEMP_MAX",
+        1
+      ],
+      [
+        "TEMP_MIN",
+        1
+      ],
+      [
+        "U_CELL_MAX",
+        1
+      ]
+    ]
+  },
+  "summary": {
+    "total_registers": 1239,
+    "total_tags": 156,
+    "total_canonical_sunpm_tags": 145,
+    "total_write_commands": 738,
+    "total_alarms": 7,
+    "all_valid": true
+  }
+}

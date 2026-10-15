@@ -25,6 +25,9 @@ Do not stop at the first error. When something fails:
 
 Only ask the user when a decision genuinely requires information or authority that cannot be inferred safely from the repository.
 
+### Shared Network Storage (`\\WDN-FILES.WEBDYN.COM`)
+Toujours demander confirmation explicite à l'utilisateur avant d'écrire, modifier, écraser ou supprimer tout fichier situé sur le partage réseau commun (`\\WDN-FILES.WEBDYN.COM`).
+
 ## 2. Understand before modifying
 
 Before changing code:
