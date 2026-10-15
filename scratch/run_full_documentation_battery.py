@@ -24,7 +24,13 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger("FullDocBattery")
 
 WORKSPACE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-EQUIPEMENTIERS_DIR = r"G:\My Drive\08092026\Equipementiers"
+DEFAULT_EQUIPEMENTIERS_DIR = r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers"
+EQUIPEMENTIERS_DIR = os.environ.get(
+    "EQUIPEMENTIERS_DIR",
+    DEFAULT_EQUIPEMENTIERS_DIR
+    if os.path.exists(DEFAULT_EQUIPEMENTIERS_DIR)
+    else r"G:\My Drive\08092026\Equipementiers",
+)
 R_AND_D_DIR = r"G:\My Drive\08092026\DEF_PM_R&D"
 MARS_SOURCE = r"C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
 

@@ -5,7 +5,7 @@ Modbus;Inverter;CyberPower;GENERIC
 4;4;4558;I32_W;;Load Power (Phase C);;1.0;0.0;W;4
 5;4;8504;U32_W;;Today Energy (Wh);E_DAY;1.0;0.0;kWh;4
 6;4;8508;U32_W;;System Life Energy;E_TOT;1.0;0.0;Wh;4
-7;4;8508;U32_W;;System Life Runtime;;1.0;0.0;s;4
+7;4;8510;U32_W;;System Life Runtime;;1.0;0.0;s;4
 8;4;8512;U32_W;;PV1 today energy;;0.1;0.0;Wh;4
 9;4;8514;U32_W;;PV1 life energy;;0.1;0.0;Wh;4
 10;4;8516;U32_W;;PV2 today energy;;0.1;0.0;Wh;4

@@ -25,10 +25,10 @@ Modbus;Meter;POLIER;MTR5LMOD
 24;3;24586;U32;;PhaseA reactive power;;0.1;0.0;Var;4
 25;3;24588;U32;;PhaseB reactive power;;0.1;0.0;Var;4
 26;3;24590;U32;;PhaseC reactive power;;0.1;0.0;Var;4
-27;3;28672;U32;;Total active energy;P_AC;0.1;0.0;kWh;4
+27;3;28672;U32;;Total active energy;E_TOT;0.1;0.0;kWh;4
 28;3;28928;U32;;Total reactive energy;;0.1;0.0;kvarh;4
 29;3;32768;U16;;System Config.;;0.1;0.0;;4
 30;3;32771;U16;;Remote control output;;0.1;0.0;;4
-31;3;32773;U32;;CT rate;;0.1;0.0;;4
-32;3;32774;U32;;VT rate;;0.1;0.0;;4
+31;3;32773;U16;;CT rate;;0.1;0.0;;4
+32;3;32774;U16;;VT rate;;0.1;0.0;;4
 33;3;32786;U16;;Parity;;1.0;0.0;;4

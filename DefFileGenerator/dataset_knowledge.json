@@ -1,0 +1,3017 @@
+{
+  "name_to_tag": {
+    "power on": "CMD_ON",
+    "power off": "CMD_OFF",
+    "activeadjustment": "CMD_P_AC_SET_PERCENT",
+    "active power": "P_AC",
+    "power factor": "PF",
+    "total": "E_TOT",
+    "daily": "E_DAY",
+    "address": "UNIT_ID",
+    "pac": "P_AC",
+    "fac": "FREQ",
+    "cosphi": "PF",
+    "active power limit to grid": "P_AC",
+    "total energy": "E_TOT",
+    "remote on off": "CMD_ON",
+    "puissance active injectee": "P_AC",
+    "adresse rs485 de l onduleur": "UNIT_ID",
+    "energie journaliere": "E_DAY",
+    "energie totale": "E_TOT",
+    "frequence du reseau": "FREQ",
+    "cos phi": "PF_3",
+    "rs 485 address of module x": "UNIT_ID",
+    "daily energy module x": "E_DAY",
+    "total energy module x": "E_TOT",
+    "3 phases frequence module x": "FREQ",
+    "input power module x": "P_AC",
+    "on or off module x": "CMD_OFF",
+    "rs485 id": "UNIT_ID",
+    "serial number": "SERIAL",
+    "model name": "MODEL",
+    "today kwh": "E_DAY",
+    "system life kwh": "E_TOT",
+    "ac watt": "P_AC",
+    "ac freq": "FREQ",
+    "ac frequency": "FREQ",
+    "load today energy": "E_DAY",
+    "load life energy": "E_TOT",
+    "today energy": "E_DAY",
+    "system life energy": "E_TOT",
+    "grid frequency": "FREQ",
+    "grid output active power": "P_AC",
+    "total energy generated": "E_TOT",
+    "daily energy generated": "E_DAY",
+    "turnon command": "CMD_ON",
+    "turnoff command": "CMD_OFF",
+    "pv1 voltage": "U_DC_STRING_1",
+    "pv1 current": "I_DC_STRING_1",
+    "pv2 voltage": "U_DC_STRING_2",
+    "pv2 current": "I_DC_STRING_2",
+    "pv3 voltage": "U_DC_STRING_3",
+    "pv3 current": "I_DC_STRING_3",
+    "pv4 voltage": "U_DC_STRING_4",
+    "pv4 current": "I_DC_STRING_4",
+    "pv5 voltage": "U_DC_STRING_5",
+    "pv5 current": "I_DC_STRING_5",
+    "pv6 voltage": "U_DC_STRING_6",
+    "pv6 current": "I_DC_STRING_6",
+    "pv7 voltage": "U_DC_STRING_7",
+    "pv7 current": "I_DC_STRING_7",
+    "pv8 voltage": "U_DC_STRING_8",
+    "pv8 current": "I_DC_STRING_8",
+    "pv9 voltage": "U_DC_STRING_9",
+    "pv9 current": "I_DC_STRING_9",
+    "pv10 voltage": "U_DC_STRING_10",
+    "pv10 current": "I_DC_STRING_10",
+    "pv11 voltage": "U_DC_STRING_11",
+    "pv11 current": "I_DC_STRING_11",
+    "pv12 voltage": "U_DC_STRING_12",
+    "pv12 current": "I_DC_STRING_12",
+    "pv13 voltage": "U_DC_STRING_13",
+    "pv13 current": "I_DC_STRING_13",
+    "pv14 voltage": "U_DC_STRING_14",
+    "pv14 current": "I_DC_STRING_14",
+    "pv15 voltage": "U_DC_STRING_15",
+    "pv15 current": "I_DC_STRING_15",
+    "pv16 voltage": "U_DC_STRING_16",
+    "pv16 current": "I_DC_STRING_16",
+    "pv17 voltage": "U_DC_STRING_17",
+    "pv17 current": "I_DC_STRING_17",
+    "pv18 voltage": "U_DC_STRING_18",
+    "pv18 current": "I_DC_STRING_18",
+    "pv19 voltage": "U_DC_STRING_19",
+    "pv19 current": "I_DC_STRING_19",
+    "pv20 voltage": "U_DC_STRING_20",
+    "pv20 current": "I_DC_STRING_20",
+    "input power dc power": "P_DC",
+    "grid ab line voltage": "U_AC_L1L2",
+    "grid bc line voltage": "U_AC_L2L3",
+    "grid ca line voltage": "U_AC_L3L1",
+    "grid a phase voltage": "U_AC_1",
+    "grid b phase voltage": "U_AC_2",
+    "grid c phase voltage": "U_AC_3",
+    "grid a phase current": "I_AC_1",
+    "grid b phase current": "I_AC_2",
+    "grid c phase current": "I_AC_3",
+    "reactive power": "Q_AC",
+    "insulation impedance value": "R_ISO",
+    "cumulative power generation": "E_TOT",
+    "daily power generation": "E_DAY",
+    "phase active power": "P_AC",
+    "mppt power 1": "P_DC_MPPT_1",
+    "mppt power 2": "P_DC_MPPT_2",
+    "mppt power 3": "P_DC_MPPT_3",
+    "mppt power 4": "P_DC_MPPT_4",
+    "mppt power 5": "P_DC_MPPT_5",
+    "mppt power 6": "P_DC_MPPT_6",
+    "mppt power 7": "P_DC_MPPT_7",
+    "mppt power 8": "P_DC_MPPT_8",
+    "mppt power 9": "P_DC_MPPT_9",
+    "mppt power 10": "P_DC_MPPT_10",
+    "device serial number dsp": "SERIAL",
+    "device model dsp": "MODEL",
+    "total generation time": "TOT",
+    "export power limit switch": "CMD_P_ENA",
+    "export power limit set": "CMD_P_AC_LIM_ABS",
+    "reactive power compensation fixed value": "CMD_Q_AC_SET_ABS",
+    "reactive power compensation": "CMD_PF",
+    "active power gradient": "CMD_RAMP_TIME_S",
+    "pv21 voltage": "U_DC_STRING_21",
+    "pv21 current": "I_DC_STRING_21",
+    "pv22 voltage": "U_DC_STRING_22",
+    "pv22 current": "I_DC_STRING_22",
+    "pv23 voltage": "U_DC_STRING_23",
+    "pv23 current": "I_DC_STRING_23",
+    "pv24 voltage": "U_DC_STRING_24",
+    "pv24 current": "I_DC_STRING_24",
+    "internal temperature cavity temperature": "TEMP_INT",
+    "power generation of the day": "E_TOT",
+    "power generation of the month": "E_DAY",
+    "capacity": "P_RATED",
+    "iso values": "R_ISO",
+    "active control adjust": "CMD_P_AC_SET_PERCENT",
+    "pf reactive power adjust": "CMD_PF",
+    "reactive power adjust": "CMD_P_AC_SET_PERCENT",
+    "maximum active power limit": "CMD_P_AC_LIM_ABS",
+    "active power percentage derating command": "CMD_P_AC_SET_PERCENT",
+    "reactive power compensation command": "CMD_PF",
+    "active power adjust": "CMD_P_AC_SET_PERCENT",
+    "reactive power adjust 1": "CMD_Q_AC_SET_PERCENT",
+    "device serial number": "SERIAL",
+    "device type": "MODEL",
+    "total feed energy to grid 1": "E_TOT",
+    "total feeding hours 1": "TOT",
+    "vpv1 ppv1 input voltage 1": "U_DC_MPPT_1",
+    "vpv2 pv2 input voltage 1": "U_DC_MPPT_2",
+    "ipv1 pv1 input current 1": "I_DC_MPPT_1",
+    "ipv2 pv2 input current 1": "I_DC_MPPT_2",
+    "pac l inverter current output power": "P_AC",
+    "internal temperature 1": "TEMP_INT",
+    "day daily power generation": "E_DAY",
+    "active control adjust 1": "CMD_P_AC_SET_PERCENT",
+    "vpv1 pv1 input voltage 2": "U_DC_MPPT_1",
+    "vpv2 pv2 input voltage 2": "U_DC_MPPT_2",
+    "ipv1 pv1 input current 2": "I_DC_MPPT_1",
+    "ipv2 pv2 input current 2": "I_DC_MPPT_2",
+    "vac1 l1 phase voltage 2": "U_AC_1",
+    "vac2 l2 phase voltage 2": "U_AC_2",
+    "vac3 l3 phase voltage 2": "U_AC_3",
+    "iac1 l1 phase current 2": "I_AC_1",
+    "iac2 l2 phase current 2": "I_AC_2",
+    "iac3 l3 phase current 2": "I_AC_3",
+    "fac1 l1 phase frequency 2": "FREQ_1",
+    "fac2 l2 phase frequency 2": "FREQ_2",
+    "fac3 l3 phase frequency 2": "FREQ_3",
+    "internal temperature 2": "TEMP_INT",
+    "vpv3 pv3 input voltage": "U_DC_MPPT_3",
+    "vpv4 pv4 input voltage": "U_DC_MPPT_4",
+    "ipv3 pv3 input current": "I_DC_MPPT_3",
+    "ipv4 pv4 input current": "I_DC_MPPT_4",
+    "istr1 pv string1 current": "I_DC_STRING_1",
+    "istr2 pv string2 current": "I_DC_STRING_2",
+    "istr3 pv string3 current": "I_DC_STRING_3",
+    "istr4 pv string4 current": "I_DC_STRING_4",
+    "istr5 pv string5 current": "I_DC_STRING_5",
+    "istr6 pv string6 current": "I_DC_STRING_6",
+    "istr7 pv string7 current": "I_DC_STRING_7",
+    "istr8 pv string8 current": "I_DC_STRING_8",
+    "istr9 pv string9 current": "I_DC_STRING_9",
+    "istr10 pv string10 current": "I_DC_STRING_10",
+    "istr11 pv string11 current": "I_DC_STRING_11",
+    "istr12 pv string12 current": "I_DC_STRING_12",
+    "istr13 pv string13 current": "I_DC_STRING_13",
+    "istr14 pv string14 current": "I_DC_STRING_14",
+    "istr15 pv string15 current": "I_DC_STRING_15",
+    "istr16 pv string16 current": "I_DC_STRING_16",
+    "ac reactive power": "Q_AC",
+    "iso detection value": "R_ISO",
+    "frequency": "FREQ",
+    "on grid export power limit switch": "CMD_P_ENA",
+    "vpv5 pv5 input voltage": "U_DC_MPPT_5",
+    "ipv5 pv5 input current": "I_DC_MPPT_5",
+    "vpv6 pv6 input voltage": "U_DC_MPPT_6",
+    "ipv6 pv6 input current": "I_DC_MPPT_6",
+    "remote onoff": "CMD_ON",
+    "pf cmd memory state": "CMD_P_ENA",
+    "active power rate": "CMD_P_AC_SET_PERCENT",
+    "reactive power rate": "CMD_Q_AC_SET_PERCENT",
+    "power factor 1": "CMD_PF",
+    "pmax": "P_RATED",
+    "manufacturer info": "MANUFACTURER",
+    "setpffunctionmodel": "CMD_Q_MODE",
+    "reactive output priority enable": "CMD_Q_ENA",
+    "gridfrequency": "FREQ",
+    "output apparent power": "S_AC",
+    "nominal output reactive power": "Q_RATED",
+    "new serial number": "SERIAL",
+    "input power": "P_DC",
+    "pv1 input current": "I_DC_MPPT_1",
+    "pv1 input power": "P_DC_MPPT_1",
+    "pv2 input current": "I_DC_MPPT_2",
+    "pv2 input power": "P_DC_MPPT_2",
+    "pv3 input current": "I_DC_MPPT_3",
+    "pv3 input power": "P_DC_MPPT_3",
+    "pv4 input current": "I_DC_MPPT_4",
+    "pv4 input power": "P_DC_MPPT_4",
+    "pv5 input current": "I_DC_MPPT_5",
+    "pv5 input power": "P_DC_MPPT_5",
+    "pv6 input current": "I_DC_MPPT_6",
+    "pv6 input power": "P_DC_MPPT_6",
+    "pv7 input current": "I_DC_MPPT_7",
+    "pv7 input power": "P_DC_MPPT_7",
+    "pv8 input current": "I_DC_MPPT_8",
+    "pv8 input power": "P_DC_MPPT_8",
+    "outputpower": "P_AC",
+    "three single phase grid voltage": "U_AC_1",
+    "three single phase grid output current": "I_AC_1",
+    "three single phase grid output watt va": "S_AC_1",
+    "three phase grid voltage 2": "U_AC_2",
+    "three phase grid output current 2": "I_AC_2",
+    "three phase grid output power 2": "S_AC_2",
+    "three phase grid voltage 3": "U_AC_3",
+    "three phase grid output current 3": "I_AC_3",
+    "three phase grid output power 3": "S_AC_3",
+    "three phase grid voltage": "U_AC_L3L1",
+    "today generate energy": "E_DAY",
+    "work time total": "TOT",
+    "temp1": "TEMP_INT",
+    "output pf now": "PF",
+    "pv string1 voltage": "U_DC_STRING_1",
+    "pv string1 current": "I_DC_STRING_1",
+    "pv string2 voltage": "U_DC_STRING_2",
+    "pv string2 current": "I_DC_STRING_2",
+    "pv string3 voltage": "U_DC_STRING_3",
+    "pv string3 current": "I_DC_STRING_3",
+    "pv string4 voltage": "U_DC_STRING_4",
+    "pv string4 current": "I_DC_STRING_4",
+    "pv string5 voltage": "U_DC_STRING_5",
+    "pv string5 current": "I_DC_STRING_5",
+    "pv string6 voltage": "U_DC_STRING_6",
+    "pv string6 current": "I_DC_STRING_6",
+    "pv string7 voltage": "U_DC_STRING_7",
+    "pv string7 current": "I_DC_STRING_7",
+    "pv string8 voltage": "U_DC_STRING_8",
+    "pv string8 current": "I_DC_STRING_8",
+    "pv string9 voltage": "U_DC_STRING_9",
+    "pv string9 current": "I_DC_STRING_9",
+    "pv string10 voltage": "U_DC_STRING_10",
+    "pv string10 current": "I_DC_STRING_10",
+    "pv string11 voltage": "U_DC_STRING_11",
+    "pv string11 current": "I_DC_STRING_11",
+    "pv string12 voltage": "U_DC_STRING_12",
+    "pv string12 current": "I_DC_STRING_12",
+    "pv string13 voltage": "U_DC_STRING_13",
+    "pv string13 current": "I_DC_STRING_13",
+    "pv string14 voltage": "U_DC_STRING_14",
+    "pv string14 current": "I_DC_STRING_14",
+    "pv string15 voltage": "U_DC_STRING_15",
+    "pv string15 current": "I_DC_STRING_15",
+    "pv string16 voltage": "U_DC_STRING_16",
+    "pv string16 current": "I_DC_STRING_16",
+    "pviso": "R_ISO",
+    "real output reactive power": "Q_AC",
+    "pv9 input current": "I_DC_MPPT_9",
+    "pv9 input power": "P_DC_MPPT_9",
+    "pv10 input current": "I_DC_MPPT_10",
+    "pv10 input power": "P_DC_MPPT_10",
+    "pv11 input current": "I_DC_MPPT_11",
+    "pv11 input power": "P_DC_MPPT_11",
+    "pv12 input current": "I_DC_MPPT_12",
+    "pv12 input power": "P_DC_MPPT_12",
+    "pv13 input current": "I_DC_MPPT_13",
+    "pv13 input power": "P_DC_MPPT_13",
+    "pv14 input current": "I_DC_MPPT_14",
+    "pv14 input power": "P_DC_MPPT_14",
+    "pv15 input current": "I_DC_MPPT_15",
+    "pv15 input power": "P_DC_MPPT_15",
+    "pv16 input current": "I_DC_MPPT_16",
+    "pv16 input power": "P_DC_MPPT_16",
+    "pv string17 voltage": "U_DC_STRING_17",
+    "pv string17 current": "I_DC_STRING_17",
+    "pv string18 voltage": "U_DC_STRING_18",
+    "pv string18 current": "I_DC_STRING_18",
+    "pv string19 voltage": "U_DC_STRING_19",
+    "pv string19 current": "I_DC_STRING_19",
+    "pv string20 voltage": "U_DC_STRING_20",
+    "pv string20 current": "I_DC_STRING_20",
+    "pv string21 voltage": "U_DC_STRING_21",
+    "pv string21 current": "I_DC_STRING_21",
+    "pv string22 voltage": "U_DC_STRING_22",
+    "pv string22 current": "I_DC_STRING_22",
+    "pv string23 voltage": "U_DC_STRING_23",
+    "pv string23 current": "I_DC_STRING_23",
+    "pv string24 voltage": "U_DC_STRING_24",
+    "pv string24 current": "I_DC_STRING_24",
+    "pv string25 voltage": "U_DC_STRING_25",
+    "pv string25 current": "I_DC_STRING_25",
+    "pv string26 voltage": "U_DC_STRING_26",
+    "pv string26 current": "I_DC_STRING_26",
+    "pv string27 voltage": "U_DC_STRING_27",
+    "pv string27 current": "I_DC_STRING_27",
+    "pv string28 voltage": "U_DC_STRING_28",
+    "pv string28 current": "I_DC_STRING_28",
+    "pv string29 voltage": "U_DC_STRING_29",
+    "pv string29 current": "I_DC_STRING_29",
+    "pv string30 voltage": "U_DC_STRING_30",
+    "pv string30 current": "I_DC_STRING_30",
+    "pv string31 voltage": "U_DC_STRING_31",
+    "pv string31 current": "I_DC_STRING_31",
+    "pv string32 voltage": "U_DC_STRING_32",
+    "pv string32 current": "I_DC_STRING_32",
+    "new serial no serial no": "SERIAL",
+    "pv total power": "E_TOT",
+    "pv1 voltage 1": "U_DC_MPPT_1",
+    "pv1 input current 1": "I_DC_MPPT_1",
+    "pv1 power 1": "P_DC_MPPT_1",
+    "pv2 voltage 1": "U_DC_MPPT_2",
+    "pv2 input current 1": "I_DC_MPPT_2",
+    "pv2 power 1": "P_DC_MPPT_2",
+    "pv3 voltage 1": "U_DC_MPPT_3",
+    "pv3 input current 1": "I_DC_MPPT_3",
+    "pv3 power 1": "P_DC_MPPT_3",
+    "pv4 voltage 1": "U_DC_MPPT_4",
+    "pv4 input current 1": "I_DC_MPPT_4",
+    "pv4 power 1": "P_DC_MPPT_4",
+    "output power": "P_AC",
+    "three single phase grid voltage 1": "U_AC_1",
+    "three single phase grid output current 1": "I_AC_1",
+    "three single phase grid output watt 1": "S_AC_1",
+    "work time total 1": "TOT",
+    "today generate energy 1": "E_DAY",
+    "total generate energy 1": "E_TOT",
+    "pv iso value": "R_ISO",
+    "temperature": "TEMP",
+    "output maxpower limited 1": "CMD_P_AC_LIM_ABS",
+    "model id": "MODEL",
+    "sn": "SERIAL",
+    "line voltage between phases a and b": "U_AC_L1L2",
+    "line voltage between phases b and c": "U_AC_L2L3",
+    "line voltage between phases c and a": "U_AC_L3L1",
+    "phases a voltage": "U_AC_1",
+    "phases b voltage": "U_AC_2",
+    "phases c voltage": "U_AC_3",
+    "phases a current": "I_AC_1",
+    "phases b current": "I_AC_2",
+    "phases c current": "I_AC_3",
+    "internal temperature": "TEMP",
+    "daily energy yield": "E_DAY",
+    "accumulated energy yield": "E_TOT",
+    "insulation resistance": "R_ISO",
+    "mppt1 total input power": "P_DC_MPPT_1",
+    "mppt2 total input power": "P_DC_MPPT_2",
+    "mppt3 total input power": "P_DC_MPPT_3",
+    "mppt4 total input power": "P_DC_MPPT_4",
+    "active power control": "CMD_P_ENA",
+    "active power change gradient": "CMD_RAMP_TIME_S",
+    "startup": "CMD_ON",
+    "shutdown": "CMD_OFF",
+    "active power percentage derating 42320": "CMD_P_AC_SET_PERCENT",
+    "model": "MODEL",
+    "rated power": "P_RATED",
+    "maximum apparent power": "S_AC",
+    "power grid voltage line voltage between phases a and b": "U_AC_L1L2",
+    "phase a voltage": "U_AC_1",
+    "phase b voltage": "U_AC_2",
+    "phase c voltage": "U_AC_3",
+    "active power percentage derating": "CMD_P_AC_SET_PERCENT",
+    "fixed active power derated": "CMD_P_AC_SET_ABS",
+    "reactive power adjustment time": "CMD_RAMP_TIME_S",
+    "schedule instruction valid duration": "CMD_REVERT_TIME_S",
+    "ac side generated active power": "P_AC",
+    "today of inverter": "E_DAY",
+    "total of inverter": "E_TOT",
+    "remote switch command 0 power off 1 power on": "CMD_ON",
+    "active power set": "CMD_P_AC_SET_PERCENT",
+    "pv total generation": "E_TOT",
+    "on off setting": "CMD_OFF",
+    "daily energy": "E_DAY",
+    "output active power": "P_AC",
+    "on off": "CMD_ON",
+    "active power setting": "CMD_P_AC_SET_PERCENT",
+    "ac p total": "P_AC",
+    "cos": "PF",
+    "yield total": "E_TOT",
+    "yield day": "E_DAY",
+    "name": "MODEL",
+    "modbus unit id": "UNIT_ID",
+    "actual cosphi": "PF",
+    "total ac active power": "P_AC",
+    "total yield": "E_TOT",
+    "daily yield": "E_DAY",
+    "serial number 1": "SERIAL",
+    "tied power": "P_AC",
+    "total energy yield": "E_TOT",
+    "remote power off": "CMD_OFF",
+    "set the active power": "CMD_P_AC_SET_PERCENT",
+    "remote control enable": "CMD_P_ENA",
+    "set the active power 1": "CMD_P_AC_SET_ABS",
+    "today pvenergy": "E_DAY",
+    "total pvenergy": "E_TOT",
+    "power": "P_AC",
+    "l1freq": "FREQ_1",
+    "l2freq": "FREQ_2",
+    "l3freq": "FREQ_3",
+    "inverterstop": "CMD_OFF",
+    "limitpower": "CMD_P_AC_SET_PERCENT",
+    "output kw": "P_AC",
+    "total kwh": "E_TOT",
+    "rated output power": "P_RATED",
+    "nominal active power": "P_RATED",
+    "daily power yields": "E_DAY",
+    "total power yields": "E_TOT",
+    "total active power": "P_AC",
+    "power limitation settings": "CMD_P_AC_SET_PERCENT",
+    "user phase angle ref": "CMD_Q_ANGLE",
+    "user phase current limit": "CMD_P_AC_SET_PERCENT",
+    "energy": "P_AC",
+    "total ac energy fed in on all line conductors": "E_TOT",
+    "energy fed in on the current day on all line conductors": "E_DAY",
+    "power frequency of external grid connection": "FREQ",
+    "invms totw": "P_AC",
+    "grims hz": "FREQ",
+    "cnt totwhout": "E_TOT",
+    "cnt whout": "E_DAY",
+    "numero de serie 0": "SERIAL",
+    "type d appareil": "MODEL",
+    "puissance nominale en etat ok 0": "P_RATED",
+    "puissance": "P_AC",
+    "mode de fonctionnement consigne de puissance active rw": "CMD_P_ENA",
+    "limitation de la puissance active p configuration de la puissance active pct": "CMD_P_AC_SET_PERCENT",
+    "puissance totale de l installation": "E_TOT",
+    "active power output": "P_AC",
+    "total production": "E_TOT",
+    "the day generation": "E_DAY",
+    "enabled register for active remote on off control": "CMD_P_ENA",
+    "percentage of active power output": "CMD_P_AC_SET_PERCENT",
+    "activepower output total": "P_AC",
+    "pv generation today": "E_DAY",
+    "pv generation total": "E_TOT",
+    "remote on off control": "CMD_ON",
+    "power control": "CMD_P_ENA",
+    "active power export limit": "CMD_P_AC_SET_PERCENT",
+    "active power limit": "CMD_P_AC_SET_PERCENT",
+    "feedin power": "P_AC",
+    "energytoday": "E_DAY",
+    "energytotal": "E_TOT",
+    "activepower limit": "CMD_P_AC_SET_PERCENT",
+    "solarenergytotal": "E_TOT",
+    "solarenergytoday": "E_DAY",
+    "wactivepowerreal": "P_AC",
+    "energy today": "E_DAY",
+    "limit power actual value": "CMD_P_AC_SET_ABS",
+    "total running time": "TOT",
+    "total apparent power": "S_AC",
+    "mppt 1 voltage": "U_DC_MPPT_1",
+    "mppt 1 current": "I_DC_MPPT_1",
+    "mppt 2 voltage": "U_DC_MPPT_2",
+    "mppt 2 current": "I_DC_MPPT_2",
+    "mppt 3 voltage": "U_DC_MPPT_3",
+    "mppt 3 current": "I_DC_MPPT_3",
+    "total dc power": "P_DC",
+    "b line voltage phase a voltage": "U_AC_L1L2",
+    "c line voltage phase b voltage": "U_AC_L2L3",
+    "a line voltage phase c voltage": "U_AC_L3L1",
+    "phase a current": "I_AC_1",
+    "phase b current": "I_AC_2",
+    "phase c current": "I_AC_3",
+    "total reactive power": "Q_AC",
+    "nominal reactive power": "Q_RATED",
+    "array insulation resistance": "R_ISO",
+    "active power regulation setpoint": "CMD_P_AC_SET_ABS",
+    "mppt 4 voltage": "U_DC_MPPT_4",
+    "mppt 4 current": "I_DC_MPPT_4",
+    "mppt 5 voltage": "U_DC_MPPT_5",
+    "mppt 5 current": "I_DC_MPPT_5",
+    "mppt 6 voltage": "U_DC_MPPT_6",
+    "mppt 6 current": "I_DC_MPPT_6",
+    "mppt 7 voltage": "U_DC_MPPT_7",
+    "mppt 7 current": "I_DC_MPPT_7",
+    "mppt 8 voltage": "U_DC_MPPT_8",
+    "mppt 8 current": "I_DC_MPPT_8",
+    "mppt 9 voltage": "U_DC_MPPT_9",
+    "mppt 9 current": "I_DC_MPPT_9",
+    "mppt 10 voltage": "U_DC_MPPT_10",
+    "mppt 10 current": "I_DC_MPPT_10",
+    "mppt 11 voltage": "U_DC_MPPT_11",
+    "mppt 11 current": "I_DC_MPPT_11",
+    "mppt 12 voltage": "U_DC_MPPT_12",
+    "mppt 12 current": "I_DC_MPPT_12",
+    "bus voltage": "U_DC",
+    "grid frequency 2": "FREQ",
+    "string 1 current": "I_DC_STRING_1",
+    "string 2 current": "I_DC_STRING_2",
+    "string 3 current": "I_DC_STRING_3",
+    "string 4 current": "I_DC_STRING_4",
+    "string 5 current": "I_DC_STRING_5",
+    "string 6 current": "I_DC_STRING_6",
+    "string 7 current": "I_DC_STRING_7",
+    "string 8 current": "I_DC_STRING_8",
+    "string 9 current": "I_DC_STRING_9",
+    "string 10 current": "I_DC_STRING_10",
+    "string 11 current": "I_DC_STRING_11",
+    "string 12 current": "I_DC_STRING_12",
+    "string 13 current": "I_DC_STRING_13",
+    "string 14 current": "I_DC_STRING_14",
+    "string 15 current": "I_DC_STRING_15",
+    "string 16 current": "I_DC_STRING_16",
+    "string 17 current": "I_DC_STRING_17",
+    "string 18 current": "I_DC_STRING_18",
+    "string 19 current": "I_DC_STRING_19",
+    "string 20 current": "I_DC_STRING_20",
+    "string 21 current": "I_DC_STRING_21",
+    "string 22 current": "I_DC_STRING_22",
+    "string 23 current": "I_DC_STRING_23",
+    "string 24 current": "I_DC_STRING_24",
+    "start stop": "CMD_ON",
+    "power limitation switch": "CMD_P_ENA",
+    "power limitation setting": "CMD_P_AC_SET_PERCENT",
+    "pf setting": "CMD_PF",
+    "active power overload": "CMD_P_MODE",
+    "reactive power adjustment mode": "CMD_Q_MODE",
+    "reactive power percentage setting": "CMD_Q_AC_SET_PERCENT",
+    "power limitation adjustment": "CMD_P_AC_LIM_ABS",
+    "reactive power adjustment": "CMD_Q_AC_SET_ABS",
+    "today energy energy": "E_DAY",
+    "active power total": "P_AC",
+    "active power l1": "P_AC_1",
+    "active power l2": "P_AC_2",
+    "active power l3": "P_AC_3",
+    "phase system active power": "P_AC",
+    "active power line 1": "P_AC_1",
+    "active power line 2": "P_AC_2",
+    "active power line 3": "P_AC_3",
+    "phase 1 active power": "P_AC_1",
+    "phase 2 active power": "P_AC_2",
+    "phase 3 active power": "P_AC_3",
+    "system active power": "P_AC",
+    "power1": "P_AC_1",
+    "power2": "P_AC_2",
+    "power3": "P_AC_3",
+    "pwrphase1": "P_AC_1",
+    "pwrphase2": "P_AC_2",
+    "pwrphase3": "P_AC_3",
+    "pwrtotal": "P_AC",
+    "pt": "P_AC",
+    "pa": "P_AC_1",
+    "pb": "P_AC_2",
+    "pc": "P_AC_3",
+    "power active 1 0": "P_AC_1",
+    "power active 1 1": "P_AC_2",
+    "power active 1 2": "P_AC_3",
+    "ph a watts": "P_AC_1",
+    "ph b watts": "P_AC_2",
+    "ph c watts": "P_AC_3",
+    "inst kw": "P_AC",
+    "p": "P_AC_3",
+    "p 1": "P_AC",
+    "phase a active power": "P_AC_1",
+    "phase b active power": "P_AC_2",
+    "phase c active power": "P_AC_3",
+    "uln": "U_AC_3",
+    "ull": "U_AC_L3L1",
+    "iln": "I_AC_3",
+    "i sum3": "I_AC",
+    "pln": "P_AC_3",
+    "p sum3": "P_AC",
+    "sln": "S_AC_3",
+    "s sum3": "S_AC",
+    "qln": "Q_AC_3",
+    "q sum3": "Q_AC",
+    "freq": "FREQ",
+    "wh": "E_TOT_3",
+    "wh suml13": "E_TOT",
+    "l1 pa": "P_AC_1",
+    "l1 pb": "P_AC_2",
+    "l1 pc": "P_AC_3",
+    "l1 p": "P_AC",
+    "a phase active power": "P_AC_1",
+    "b phase active power": "P_AC_2",
+    "c phase active power": "P_AC_3",
+    "total system active power": "P_AC",
+    "phasea active power": "P_AC_1",
+    "phaseb active power": "P_AC_2",
+    "phasec active power": "P_AC_3",
+    "total active energy": "P_AC",
+    "w active power total": "P_AC",
+    "w1 active power phase 1": "P_AC_1",
+    "w2 active power phase 2": "P_AC_2",
+    "w3 active power phase 3": "P_AC_3",
+    "meter model": "MODEL",
+    "active power a": "P_AC_1",
+    "active power b": "P_AC_2",
+    "active power c": "P_AC_3",
+    "active power phase 1": "P_AC_1",
+    "active power phase 2": "P_AC_2",
+    "active power phase 3": "P_AC_3",
+    "active power phase a": "P_AC_1",
+    "active power phase b": "P_AC_2",
+    "active power phase c": "P_AC_3",
+    "active power p": "P_AC",
+    "active power phase 1 p1": "P_AC_1",
+    "active power phase 2 p2": "P_AC_2",
+    "active power phase 3 p3": "P_AC_3",
+    "tot active power p": "P_AC",
+    "active power p1": "P_AC_1",
+    "active power p2": "P_AC_2",
+    "active power p3": "P_AC_3",
+    "real power l1": "P_AC_1",
+    "real power l2": "P_AC_2",
+    "real power l3": "P_AC_3",
+    "module address": "UNIT_ID",
+    "puissance instantanee": "P_AC",
+    "energie cumulee": "E_TOT",
+    "device address": "UNIT_ID",
+    "product model": "MODEL",
+    "modbus address": "UNIT_ID",
+    "fl sensor1 data": "POA",
+    "fl body temperature": "TEMP_INT",
+    "f pvpanel temp k": "TEMP_CELL",
+    "1 md": "MODEL",
+    "1 sn": "SERIAL",
+    "modify slave address": "UNIT_ID",
+    "puissance active phase l1": "P_AC_1",
+    "puissance active phase l2": "P_AC_2",
+    "puissance active phase l3": "P_AC_3",
+    "puissance active totale": "P_AC",
+    "active power of a phase": "P_AC_1",
+    "active power of b phase": "P_AC_2",
+    "active power of c phase": "P_AC_3",
+    "123 wmaxlimpct": "CMD_P_AC_SET_PERCENT",
+    "123 wmaxlimpct rmptms": "CMD_RAMP_TIME_S",
+    "123 wmaxlim ena": "CMD_P_ENA",
+    "cmd code reset e total and h total record 50 apply parameters of power reducing": "CMD_P_ENA",
+    "pv daily power generation": "E_DAY",
+    "power limitation percentage": "CMD_P_AC_SET_PERCENT",
+    "nominal power inverter": "P_RATED",
+    "103 w": "P_AC",
+    "123 conn": "CMD_ON",
+    "123 wmaxlimpct rvrttms": "CMD_REVERT_TIME_S",
+    "wmaxlimpct": "CMD_P_AC_SET_PERCENT",
+    "123 varpct mod": "CMD_Q_MODE",
+    "puissance active l1": "P_AC_1",
+    "puissance active l2": "P_AC_2",
+    "puissance active l3": "P_AC_3",
+    "pmaxctrl": "CMD_P_ENA",
+    "curtspmw": "CMD_P_AC_SET_PERCENT",
+    "curtailment": "CMD_P_ENA",
+    "p1 phase 1 active power": "P_AC_1",
+    "p2 phase 2 active power": "P_AC_2",
+    "p3 phase 3 active power": "P_AC_3",
+    "psum system active power": "P_AC",
+    "active power l123": "P_AC",
+    "momentary active power phase l1": "P_AC_1",
+    "momentary active power phase l2": "P_AC_2",
+    "momentary active power phase l3": "P_AC_3",
+    "momentary active power total": "P_AC",
+    "total system power": "P_AC",
+    "phase a power": "P_AC_1",
+    "phase b power": "P_AC_2",
+    "phase c power": "P_AC_3",
+    "low insulation resistance": "R_ISO",
+    "shut down": "CMD_OFF",
+    "701 w": "P_AC",
+    "704 wmaxlimpctena": "CMD_P_ENA",
+    "704 wmaxlimpct": "CMD_P_AC_SET_PERCENT",
+    "113 dcw": "P_AC",
+    "113 w": "P_AC",
+    "limit active power adjustement rated power": "P_RATED",
+    "power limitation": "CMD_P_AC_SET_PERCENT",
+    "701 totwhinj": "E_TOT",
+    "rated active power": "P_RATED",
+    "slave address": "UNIT_ID",
+    "reactive power limitation set": "CMD_Q_PERCENT",
+    "reactive power switch": "CMD_Q_ENA",
+    "serial number of inverter": "SERIAL",
+    "model name of inverter": "MODEL",
+    "fixed power factor": "PF",
+    "fixed active power": "CMD_P_AC_SET_PERCENT",
+    "total power generation": "E_TOT",
+    "daily ac energy": "E_DAY",
+    "active power regulation": "CMD_P_AC_SET_PERCENT",
+    "power limit setting with": "CMD_P_AC_SET_PERCENT",
+    "grid frequency of phase 1": "FREQ_1",
+    "grid frequency of phase 2": "FREQ_2",
+    "grid frequency of phase 3": "FREQ_3",
+    "feeding power to grid": "P_AC",
+    "total feed power to grid total power generation": "E_TOT",
+    "epv total": "E_TOT",
+    "activepowreg": "CMD_P_AC_SET_PERCENT",
+    "memo": "CMD_P_ENA",
+    "soc": "SOC",
+    "charge discharge power": "P_AC",
+    "rated capacity": "P_RATED",
+    "total energy charged low": "E_TOT",
+    "bcu 1 energy discharged today": "E_DAY",
+    "energy total": "E_TOT",
+    "energy yield of current day": "E_DAY",
+    "power limitation pct": "CMD_P_AC_SET_PERCENT",
+    "active power control pct": "CMD_P_AC_SET_PERCENT",
+    "active power control enable": "CMD_P_ENA",
+    "grid active power": "P_AC",
+    "active pwr ctrl pct": "CMD_P_AC_SET_PERCENT",
+    "active pwr ctrl enable": "CMD_P_ENA",
+    "current transformer ratio": "MODEL",
+    "voltage transformer ratio": "SERIAL",
+    "current phase 1 25th harmonic": "CMD_ON",
+    "current phase 1 26th harmonic": "CMD_OFF",
+    "command code": "CMD_ON",
+    "total energy delivered by the unit": "E_TOT",
+    "real power l1 n": "P_AC_1",
+    "real power l2 n": "P_AC_2",
+    "real power l3 n": "P_AC_3",
+    "psum3 p1 p2 p3": "P_AC",
+    "positive three phase active energy": "P_AC",
+    "signed 3 ph active power": "P_AC",
+    "signed phase1 active power": "P_AC_1",
+    "signed phase2 active power": "P_AC_2",
+    "signed phase3 active power": "P_AC_3",
+    "puissance active phase a": "P_AC_1",
+    "puissance active phase b": "P_AC_2",
+    "puissance active phase c": "P_AC_3",
+    "puissance active phase 1": "P_AC_1",
+    "puissance active phase 2": "P_AC_2",
+    "puissance active phase 3": "P_AC_3",
+    "pv1 total ac active power": "P_AC",
+    "pv1 total ac reactive power": "Q_AC",
+    "kw1": "P_AC_1",
+    "kw2": "P_AC_2",
+    "kw3": "P_AC_3",
+    "total kw": "P_AC",
+    "total real power": "P_AC",
+    "p1 real power": "P_AC_1",
+    "p2 real power": "P_AC_2",
+    "p3 real power": "P_AC_3",
+    "phase l1 active power": "P_AC_1",
+    "phase l2 active power": "P_AC_2",
+    "phase l3 active power": "P_AC_3",
+    "l1 active power": "P_AC_1",
+    "l2 active power": "P_AC_2",
+    "l3 active power": "P_AC_3",
+    "grid power": "P_AC",
+    "power ramping interval 1": "CMD_RAMP_TIME_S",
+    "dynamic mode timeout 1": "CMD_REVERT_TIME_S",
+    "dynamic mode active power management 2": "CMD_P_AC_SET_PERCENT",
+    "energie journalire": "E_DAY",
+    "external limit ramp down": "CMD_RAMP_TIME_S",
+    "l1 active power p1": "P_AC_1",
+    "l2 active power p2": "P_AC_2",
+    "l3 active power p3": "P_AC_3",
+    "phase active power 3p": "P_AC",
+    "import active energy tariff t1": "P_AC_1",
+    "import active energy tariff t2": "P_AC_2",
+    "import active energy tariff t3": "P_AC_3",
+    "total export active energy": "P_AC",
+    "p ac": "P_AC",
+    "daily generating capacity": "E_DAY",
+    "total generation pv": "E_TOT",
+    "switch on off settings": "CMD_ON",
+    "active power limit percentage": "CMD_P_AC_SET_PERCENT",
+    "actual power": "P_AC",
+    "reactive power total": "Q_AC",
+    "commit modbus settings": "CMD_COMMIT",
+    "puissance active p": "P_AC",
+    "facteur de puissance cosphi": "PF",
+    "puissance instantane": "P_AC",
+    "energie cumule": "E_TOT",
+    "total active power measurement": "P_AC",
+    "dispatch mode": "CMD_P_ENA",
+    "p limit percentage": "CMD_P_AC_SET_PERCENT",
+    "cloud soc": "SOC",
+    "total pv power": "P_AC",
+    "active power percentage setting": "P_AC",
+    "grid total active power": "P_AC",
+    "active power degradation rate": "CMD_RAMP_TIME_S",
+    "active power rise rate": "CMD_REVERT_TIME_S",
+    "soh": "SOH",
+    "gridms totw": "P_AC",
+    "plnt dcwrtg": "P_RATED",
+    "puissance nominale en etat ok": "P_RATED",
+    "mode de fonctionnement consigne de puissance active 2": "CMD_P_ENA",
+    "limitation de la puissance active p configuration de la puissance active 4": "CMD_P_AC_SET_PERCENT",
+    "parameter nameplate model": "MODEL",
+    "parameter nameplate sernum 2": "SERIAL",
+    "measurement metering totwhout 2": "E_TOT",
+    "measurement gridms totw": "P_AC",
+    "parameter inverter wmodcfg wcnstcfg wnom 2": "CMD_P_AC_SET_PERCENT",
+    "parameter inverter wlim": "P_RATED",
+    "puissance active nominale wmaxoutrtg": "P_RATED",
+    "numro de srie 2": "SERIAL",
+    "cnt totacwhin": "E_TOT",
+    "cnt acwhin": "E_DAY",
+    "nameplate sernum 1": "SERIAL",
+    "nameplate model": "MODEL",
+    "operation healthstt ok 1": "P_RATED",
+    "wmodcfg wmod 2": "CMD_P_ENA",
+    "wmodcfg wcnstcfg wnom 2": "CMD_P_AC_SET_PERCENT",
+    "plnt wrtg": "E_TOT",
+    "1 mn": "MANUFACTURER",
+    "103 a": "I_AC",
+    "103 apha": "I_AC_1",
+    "103 aphb": "I_AC_2",
+    "103 aphc": "I_AC_3",
+    "103 ppvphab": "U_AC_L1L2",
+    "103 ppvphbc": "U_AC_L2L3",
+    "103 ppvphca": "U_AC_L3L1",
+    "103 phvpha": "U_AC_1",
+    "103 phvphb": "U_AC_2",
+    "103 phvphc": "U_AC_3",
+    "103 hz": "FREQ",
+    "103 va": "S_AC",
+    "103 var": "Q_AC",
+    "103 pf": "PF",
+    "103 wh": "E_TOT",
+    "103 dca": "I_DC",
+    "103 dcv": "U_DC",
+    "103 dcw": "P_DC",
+    "103 tmpcab": "TEMP_INT",
+    "120 wrtg": "P_RATED",
+    "120 vartg": "Q_RATED",
+    "121 wmax": "P_RATED",
+    "122 actwh": "E_TOT",
+    "122 ris": "R_ISO",
+    "123 outpfset": "CMD_PF",
+    "123 varwmaxpct": "CMD_Q_AC_SET_PERCENT",
+    "124 inoutwrte rmptms": "CMD_RAMP_TIME_S",
+    "160 dca 1": "I_DC_MPPT_1",
+    "160 dcv 1": "U_DC_MPPT_1",
+    "160 dcw 1": "P_DC_MPPT_1",
+    "160 dca 2": "I_DC_MPPT_2",
+    "160 dcv 2": "U_DC_MPPT_2",
+    "160 dcw 2": "P_DC_MPPT_2",
+    "160 dca 3": "I_DC_MPPT_3",
+    "160 dcv 3": "U_DC_MPPT_3",
+    "160 dcw 3": "P_DC_MPPT_3",
+    "160 dca 4": "I_DC_MPPT_4",
+    "160 dcv 4": "U_DC_MPPT_4",
+    "160 dcw 4": "P_DC_MPPT_4",
+    "160 dca 5": "I_DC_MPPT_5",
+    "160 dcv 5": "U_DC_MPPT_5",
+    "160 dcw 5": "P_DC_MPPT_5",
+    "160 dca 6": "I_DC_MPPT_6",
+    "160 dcv 6": "U_DC_MPPT_6",
+    "160 dcw 6": "P_DC_MPPT_6",
+    "wmaxlimpct rmptms": "CMD_RAMP_TIME_S",
+    "wmaxlim ena": "CMD_P_ENA",
+    "101 pf": "PF",
+    "sum active power": "P_AC",
+    "total active power p": "P_AC",
+    "sinsts": "P_AC",
+    "sinsts1": "P_AC_1",
+    "sinsts2": "P_AC_2",
+    "sinsts3": "P_AC_3",
+    "activeoutputlimit": "CMD_P_AC_SET_PERCENT",
+    "advancedpwrcontrolen": "CMD_P_ENA",
+    "powerreduce": "CMD_P_AC_SET_PERCENT",
+    "enable dynamic power control": "CMD_P_ENA",
+    "back reactive power limit": "CMD_Q_MODE",
+    "dynamic active power limit": "CMD_P_AC_SET_PERCENT",
+    "commit power control settings": "CMD_COMMIT",
+    "drive serial number or code": "SERIAL",
+    "pac consumption": "P_AC",
+    "active power limitation": "CMD_P_AC_SET_PERCENT",
+    "daily pv yield": "E_DAY",
+    "total pv yield": "E_TOT",
+    "pv power": "P_AC",
+    "battery soc": "SOC",
+    "power factor setting": "CMD_PF",
+    "pas1": "P_AC_1",
+    "pas2": "P_AC_2",
+    "pas3": "P_AC_3",
+    "pasi": "P_AC",
+    "puissance p1": "P_AC_1",
+    "puissance p2": "P_AC_2",
+    "puissance p3": "P_AC_3",
+    "puissance totale": "P_AC",
+    "203 w": "P_AC",
+    "203 wpha": "P_AC_1",
+    "203 wphb": "P_AC_2",
+    "203 wphc": "P_AC_3",
+    "nominal power read": "P_RATED",
+    "output adjusting": "CMD_P_AC_SET_ABS",
+    "active power increment": "CMD_P_AC_SET_PERCENT",
+    "cmdpf": "CMD_PF",
+    "w": "P_AC",
+    "var": "Q_AC",
+    "123 outpfset ena": "CMD_Q_ENA",
+    "nominal power": "P_RATED",
+    "cmdpct": "CMD_P_AC_SET_PERCENT",
+    "eac": "E_TOT",
+    "eacday": "E_DAY",
+    "phase1 power": "P_AC_1",
+    "phase2 power": "P_AC_2",
+    "phase3 power": "P_AC_3",
+    "p1": "P_AC_1",
+    "p2": "P_AC_2",
+    "p3": "P_AC_3"
+  },
+  "tag_counts": {
+    "CMD_ON": 71,
+    "CMD_OFF": 33,
+    "CMD_P_AC_SET_PERCENT": 171,
+    "P_AC": 252,
+    "PF": 34,
+    "E_TOT": 95,
+    "E_DAY": 79,
+    "UNIT_ID": 32,
+    "FREQ": 45,
+    "SERIAL": 153,
+    "MODEL": 132,
+    "U_DC_STRING_1": 8,
+    "I_DC_STRING_1": 14,
+    "U_DC_STRING_2": 8,
+    "I_DC_STRING_2": 14,
+    "U_DC_STRING_3": 8,
+    "I_DC_STRING_3": 14,
+    "U_DC_STRING_4": 8,
+    "I_DC_STRING_4": 14,
+    "U_DC_STRING_5": 8,
+    "I_DC_STRING_5": 14,
+    "U_DC_STRING_6": 8,
+    "I_DC_STRING_6": 14,
+    "U_DC_STRING_7": 8,
+    "I_DC_STRING_7": 14,
+    "U_DC_STRING_8": 8,
+    "I_DC_STRING_8": 14,
+    "U_DC_STRING_9": 8,
+    "I_DC_STRING_9": 14,
+    "U_DC_STRING_10": 8,
+    "I_DC_STRING_10": 14,
+    "U_DC_STRING_11": 8,
+    "I_DC_STRING_11": 14,
+    "U_DC_STRING_12": 8,
+    "I_DC_STRING_12": 14,
+    "U_DC_STRING_13": 8,
+    "I_DC_STRING_13": 14,
+    "U_DC_STRING_14": 8,
+    "I_DC_STRING_14": 14,
+    "U_DC_STRING_15": 8,
+    "I_DC_STRING_15": 14,
+    "U_DC_STRING_16": 8,
+    "I_DC_STRING_16": 14,
+    "U_DC_STRING_17": 7,
+    "I_DC_STRING_17": 8,
+    "U_DC_STRING_18": 7,
+    "I_DC_STRING_18": 8,
+    "U_DC_STRING_19": 7,
+    "I_DC_STRING_19": 8,
+    "U_DC_STRING_20": 7,
+    "I_DC_STRING_20": 8,
+    "P_DC": 14,
+    "U_AC_L1L2": 15,
+    "U_AC_L2L3": 15,
+    "U_AC_L3L1": 15,
+    "U_AC_1": 19,
+    "U_AC_2": 19,
+    "U_AC_3": 19,
+    "I_AC_1": 18,
+    "I_AC_2": 18,
+    "I_AC_3": 18,
+    "Q_AC": 35,
+    "R_ISO": 20,
+    "P_AC_1": 100,
+    "P_AC_2": 100,
+    "P_AC_3": 100,
+    "P_DC_MPPT_1": 7,
+    "P_DC_MPPT_2": 7,
+    "P_DC_MPPT_3": 7,
+    "P_DC_MPPT_4": 7,
+    "P_DC_MPPT_5": 4,
+    "P_DC_MPPT_6": 4,
+    "P_DC_MPPT_7": 3,
+    "P_DC_MPPT_8": 3,
+    "P_DC_MPPT_9": 2,
+    "P_DC_MPPT_10": 2,
+    "TOT": 11,
+    "CMD_P_ENA": 105,
+    "CMD_P_AC_LIM_ABS": 7,
+    "CMD_Q_AC_SET_ABS": 10,
+    "CMD_PF": 32,
+    "CMD_RAMP_TIME_S": 75,
+    "U_DC_STRING_21": 6,
+    "I_DC_STRING_21": 7,
+    "U_DC_STRING_22": 6,
+    "I_DC_STRING_22": 7,
+    "U_DC_STRING_23": 6,
+    "I_DC_STRING_23": 7,
+    "U_DC_STRING_24": 6,
+    "I_DC_STRING_24": 7,
+    "TEMP_INT": 19,
+    "P_RATED": 59,
+    "CMD_Q_AC_SET_PERCENT": 18,
+    "U_DC_MPPT_1": 12,
+    "U_DC_MPPT_2": 12,
+    "I_DC_MPPT_1": 12,
+    "I_DC_MPPT_2": 12,
+    "FREQ_1": 10,
+    "FREQ_2": 10,
+    "FREQ_3": 10,
+    "U_DC_MPPT_3": 11,
+    "U_DC_MPPT_4": 11,
+    "I_DC_MPPT_3": 11,
+    "I_DC_MPPT_4": 11,
+    "U_DC_MPPT_5": 6,
+    "I_DC_MPPT_5": 6,
+    "U_DC_MPPT_6": 6,
+    "I_DC_MPPT_6": 6,
+    "MANUFACTURER": 7,
+    "CMD_Q_MODE": 28,
+    "CMD_Q_ENA": 8,
+    "S_AC": 9,
+    "Q_RATED": 6,
+    "U_DC_MPPT_7": 3,
+    "I_DC_MPPT_7": 3,
+    "U_DC_MPPT_8": 3,
+    "I_DC_MPPT_8": 3,
+    "S_AC_1": 5,
+    "S_AC_2": 5,
+    "S_AC_3": 5,
+    "U_DC_MPPT_9": 2,
+    "I_DC_MPPT_9": 2,
+    "U_DC_MPPT_10": 2,
+    "I_DC_MPPT_10": 2,
+    "U_DC_MPPT_11": 2,
+    "I_DC_MPPT_11": 2,
+    "P_DC_MPPT_11": 1,
+    "U_DC_MPPT_12": 2,
+    "I_DC_MPPT_12": 2,
+    "P_DC_MPPT_12": 1,
+    "U_DC_MPPT_13": 1,
+    "I_DC_MPPT_13": 1,
+    "P_DC_MPPT_13": 1,
+    "U_DC_MPPT_14": 1,
+    "I_DC_MPPT_14": 1,
+    "P_DC_MPPT_14": 1,
+    "U_DC_MPPT_15": 1,
+    "I_DC_MPPT_15": 1,
+    "P_DC_MPPT_15": 1,
+    "U_DC_MPPT_16": 1,
+    "I_DC_MPPT_16": 1,
+    "P_DC_MPPT_16": 1,
+    "U_DC_STRING_25": 1,
+    "I_DC_STRING_25": 1,
+    "U_DC_STRING_26": 1,
+    "I_DC_STRING_26": 1,
+    "U_DC_STRING_27": 1,
+    "I_DC_STRING_27": 1,
+    "U_DC_STRING_28": 1,
+    "I_DC_STRING_28": 1,
+    "U_DC_STRING_29": 1,
+    "I_DC_STRING_29": 1,
+    "U_DC_STRING_30": 1,
+    "I_DC_STRING_30": 1,
+    "U_DC_STRING_31": 1,
+    "I_DC_STRING_31": 1,
+    "U_DC_STRING_32": 1,
+    "I_DC_STRING_32": 1,
+    "CMD_P_AC_SET_ABS": 9,
+    "CMD_REVERT_TIME_S": 19,
+    "CMD_Q_ANGLE": 3,
+    "U_DC": 2,
+    "CMD_P_AC_LIM_PERCENT": 2,
+    "CMD_P_MODE": 1,
+    "I_AC": 2,
+    "Q_AC_1": 1,
+    "Q_AC_2": 1,
+    "Q_AC_3": 1,
+    "PF_1": 1,
+    "PF_2": 1,
+    "PF_3": 1,
+    "E_TOT_1": 1,
+    "E_TOT_2": 1,
+    "E_TOT_3": 1,
+    "POA": 1,
+    "TEMP_CELL": 1,
+    "TEMP": 2,
+    "CMD_Q_PERCENT": 2,
+    "SOC": 5,
+    "CMD_COMMIT": 3,
+    "SOH": 1,
+    "I_DC": 1
+  },
+  "metric_units": {
+    "CMD_P_AC_SET_PERCENT": {
+      "kW": 3,
+      "%": 80,
+      "%Pn": 6,
+      "'%": 1,
+      "Percent": 5,
+      "pct": 6,
+      "W": 2,
+      "% WMax": 63,
+      "0-100% = %Pnom": 1,
+      "Pct": 1,
+      "%/1000": 1,
+      "KW": 1
+    },
+    "P_AC": {
+      "kW": 117,
+      "W": 109,
+      "KWh": 1,
+      "kWh": 3,
+      "KW": 5,
+      "%": 2,
+      "VA": 1
+    },
+    "E_TOT": {
+      "kWh": 58,
+      "Wh": 13,
+      "MWh": 3,
+      "Kwh": 1,
+      "kW": 4,
+      "W": 6,
+      "KWH": 1,
+      "kW*h": 1,
+      "MWH": 1,
+      "KWh": 2
+    },
+    "E_DAY": {
+      "kWh": 61,
+      "Wh": 9,
+      "Kwh": 1,
+      "MWh": 1,
+      "kW": 2,
+      "KWH": 1,
+      "MWH": 1,
+      "KWh": 2
+    },
+    "FREQ": {
+      "Hz": 45
+    },
+    "U_DC_STRING_1": {
+      "V": 8
+    },
+    "I_DC_STRING_1": {
+      "A": 14
+    },
+    "U_DC_STRING_2": {
+      "V": 8
+    },
+    "I_DC_STRING_2": {
+      "A": 14
+    },
+    "U_DC_STRING_3": {
+      "V": 8
+    },
+    "I_DC_STRING_3": {
+      "A": 14
+    },
+    "U_DC_STRING_4": {
+      "V": 8
+    },
+    "I_DC_STRING_4": {
+      "A": 14
+    },
+    "U_DC_STRING_5": {
+      "V": 8
+    },
+    "I_DC_STRING_5": {
+      "A": 14
+    },
+    "U_DC_STRING_6": {
+      "V": 8
+    },
+    "I_DC_STRING_6": {
+      "A": 14
+    },
+    "U_DC_STRING_7": {
+      "V": 8
+    },
+    "I_DC_STRING_7": {
+      "A": 14
+    },
+    "U_DC_STRING_8": {
+      "V": 8
+    },
+    "I_DC_STRING_8": {
+      "A": 14
+    },
+    "U_DC_STRING_9": {
+      "V": 8
+    },
+    "I_DC_STRING_9": {
+      "A": 14
+    },
+    "U_DC_STRING_10": {
+      "V": 8
+    },
+    "I_DC_STRING_10": {
+      "A": 14
+    },
+    "U_DC_STRING_11": {
+      "V": 8
+    },
+    "I_DC_STRING_11": {
+      "A": 14
+    },
+    "U_DC_STRING_12": {
+      "V": 8
+    },
+    "I_DC_STRING_12": {
+      "A": 14
+    },
+    "U_DC_STRING_13": {
+      "V": 8
+    },
+    "I_DC_STRING_13": {
+      "A": 14
+    },
+    "U_DC_STRING_14": {
+      "V": 8
+    },
+    "I_DC_STRING_14": {
+      "A": 14
+    },
+    "U_DC_STRING_15": {
+      "V": 8
+    },
+    "I_DC_STRING_15": {
+      "A": 14
+    },
+    "U_DC_STRING_16": {
+      "V": 8
+    },
+    "I_DC_STRING_16": {
+      "A": 14
+    },
+    "U_DC_STRING_17": {
+      "V": 7
+    },
+    "I_DC_STRING_17": {
+      "A": 8
+    },
+    "U_DC_STRING_18": {
+      "V": 7
+    },
+    "I_DC_STRING_18": {
+      "A": 8
+    },
+    "U_DC_STRING_19": {
+      "V": 7
+    },
+    "I_DC_STRING_19": {
+      "A": 8
+    },
+    "U_DC_STRING_20": {
+      "V": 7
+    },
+    "I_DC_STRING_20": {
+      "A": 8
+    },
+    "P_DC": {
+      "kW": 8,
+      "W": 6
+    },
+    "U_AC_L1L2": {
+      "V": 15
+    },
+    "U_AC_L2L3": {
+      "V": 15
+    },
+    "U_AC_L3L1": {
+      "V": 15
+    },
+    "U_AC_1": {
+      "V": 19
+    },
+    "U_AC_2": {
+      "V": 19
+    },
+    "U_AC_3": {
+      "V": 19
+    },
+    "I_AC_1": {
+      "A": 18
+    },
+    "I_AC_2": {
+      "A": 18
+    },
+    "I_AC_3": {
+      "A": 18
+    },
+    "Q_AC": {
+      "kVar": 15,
+      "W": 2,
+      "Var": 8,
+      "var": 4,
+      "kVAR": 3,
+      "kVAr": 3
+    },
+    "R_ISO": {
+      "kOhm": 10,
+      "K": 5,
+      "MOhm": 1,
+      "M/Ohm": 2,
+      "ohms": 1
+    },
+    "P_AC_1": {
+      "kW": 63,
+      "W": 25,
+      "KW": 5,
+      "Wh": 1,
+      "kWh": 1,
+      "VA": 1
+    },
+    "P_AC_2": {
+      "kW": 61,
+      "W": 27,
+      "KW": 5,
+      "Wh": 1,
+      "kWh": 1,
+      "VA": 1
+    },
+    "P_AC_3": {
+      "kW": 61,
+      "W": 27,
+      "KW": 5,
+      "Wh": 1,
+      "kWh": 1,
+      "VA": 1
+    },
+    "P_DC_MPPT_1": {
+      "W": 6,
+      "kW": 1
+    },
+    "P_DC_MPPT_2": {
+      "W": 6,
+      "kW": 1
+    },
+    "P_DC_MPPT_3": {
+      "W": 6,
+      "kW": 1
+    },
+    "P_DC_MPPT_4": {
+      "W": 6,
+      "kW": 1
+    },
+    "P_DC_MPPT_5": {
+      "W": 4
+    },
+    "P_DC_MPPT_6": {
+      "W": 4
+    },
+    "P_DC_MPPT_7": {
+      "W": 3
+    },
+    "P_DC_MPPT_8": {
+      "W": 3
+    },
+    "P_DC_MPPT_9": {
+      "W": 2
+    },
+    "P_DC_MPPT_10": {
+      "W": 2
+    },
+    "TOT": {
+      "h": 7,
+      "s": 4
+    },
+    "CMD_RAMP_TIME_S": {
+      "%Pn/min": 1,
+      "%/min": 5,
+      "%/s": 1,
+      "s": 3,
+      "Secs": 64,
+      "ms": 1
+    },
+    "U_DC_STRING_21": {
+      "V": 6
+    },
+    "I_DC_STRING_21": {
+      "A": 7
+    },
+    "U_DC_STRING_22": {
+      "V": 6
+    },
+    "I_DC_STRING_22": {
+      "A": 7
+    },
+    "U_DC_STRING_23": {
+      "V": 6
+    },
+    "I_DC_STRING_23": {
+      "A": 7
+    },
+    "U_DC_STRING_24": {
+      "V": 6
+    },
+    "I_DC_STRING_24": {
+      "A": 7
+    },
+    "TEMP_INT": {
+      "\ufffdC": 13,
+      "\u00b0C": 4,
+      "K": 1,
+      "C": 1
+    },
+    "P_RATED": {
+      "kW": 27,
+      "VA": 6,
+      "W": 16,
+      "kWh": 1,
+      "KW": 6
+    },
+    "CMD_PF": {
+      "%": 1,
+      "cos()": 3
+    },
+    "CMD_Q_AC_SET_ABS": {
+      "Var": 8,
+      "kVar": 1
+    },
+    "CMD_Q_AC_SET_PERCENT": {
+      "%": 7,
+      "%Pn": 3,
+      "Var": 6,
+      "'%": 1,
+      "% WMax": 1
+    },
+    "CMD_P_AC_LIM_ABS": {
+      "kW": 3,
+      "W": 3
+    },
+    "U_DC_MPPT_1": {
+      "V": 12
+    },
+    "U_DC_MPPT_2": {
+      "V": 12
+    },
+    "I_DC_MPPT_1": {
+      "A": 12
+    },
+    "I_DC_MPPT_2": {
+      "A": 12
+    },
+    "FREQ_1": {
+      "Hz": 10
+    },
+    "FREQ_2": {
+      "Hz": 10
+    },
+    "FREQ_3": {
+      "Hz": 10
+    },
+    "U_DC_MPPT_3": {
+      "V": 11
+    },
+    "U_DC_MPPT_4": {
+      "V": 11
+    },
+    "I_DC_MPPT_3": {
+      "A": 11
+    },
+    "I_DC_MPPT_4": {
+      "A": 11
+    },
+    "U_DC_MPPT_5": {
+      "V": 6
+    },
+    "I_DC_MPPT_5": {
+      "A": 6
+    },
+    "U_DC_MPPT_6": {
+      "V": 6
+    },
+    "I_DC_MPPT_6": {
+      "A": 6
+    },
+    "S_AC": {
+      "W": 4,
+      "kVA": 2,
+      "VA": 3
+    },
+    "Q_RATED": {
+      "Var": 4,
+      "kVar": 1,
+      "VA": 1
+    },
+    "U_DC_MPPT_7": {
+      "V": 3
+    },
+    "I_DC_MPPT_7": {
+      "A": 3
+    },
+    "U_DC_MPPT_8": {
+      "V": 3
+    },
+    "I_DC_MPPT_8": {
+      "A": 3
+    },
+    "S_AC_1": {
+      "VA": 5
+    },
+    "S_AC_2": {
+      "VA": 5
+    },
+    "S_AC_3": {
+      "VA": 5
+    },
+    "U_DC_MPPT_9": {
+      "V": 2
+    },
+    "I_DC_MPPT_9": {
+      "A": 2
+    },
+    "U_DC_MPPT_10": {
+      "V": 2
+    },
+    "I_DC_MPPT_10": {
+      "A": 2
+    },
+    "U_DC_MPPT_11": {
+      "V": 2
+    },
+    "I_DC_MPPT_11": {
+      "A": 2
+    },
+    "P_DC_MPPT_11": {
+      "W": 1
+    },
+    "U_DC_MPPT_12": {
+      "V": 2
+    },
+    "I_DC_MPPT_12": {
+      "A": 2
+    },
+    "P_DC_MPPT_12": {
+      "W": 1
+    },
+    "U_DC_MPPT_13": {
+      "V": 1
+    },
+    "I_DC_MPPT_13": {
+      "A": 1
+    },
+    "P_DC_MPPT_13": {
+      "W": 1
+    },
+    "U_DC_MPPT_14": {
+      "V": 1
+    },
+    "I_DC_MPPT_14": {
+      "A": 1
+    },
+    "P_DC_MPPT_14": {
+      "W": 1
+    },
+    "U_DC_MPPT_15": {
+      "V": 1
+    },
+    "I_DC_MPPT_15": {
+      "A": 1
+    },
+    "P_DC_MPPT_15": {
+      "W": 1
+    },
+    "U_DC_MPPT_16": {
+      "V": 1
+    },
+    "I_DC_MPPT_16": {
+      "A": 1
+    },
+    "P_DC_MPPT_16": {
+      "W": 1
+    },
+    "U_DC_STRING_25": {
+      "V": 1
+    },
+    "I_DC_STRING_25": {
+      "A": 1
+    },
+    "U_DC_STRING_26": {
+      "V": 1
+    },
+    "I_DC_STRING_26": {
+      "A": 1
+    },
+    "U_DC_STRING_27": {
+      "V": 1
+    },
+    "I_DC_STRING_27": {
+      "A": 1
+    },
+    "U_DC_STRING_28": {
+      "V": 1
+    },
+    "I_DC_STRING_28": {
+      "A": 1
+    },
+    "U_DC_STRING_29": {
+      "V": 1
+    },
+    "I_DC_STRING_29": {
+      "A": 1
+    },
+    "U_DC_STRING_30": {
+      "V": 1
+    },
+    "I_DC_STRING_30": {
+      "A": 1
+    },
+    "U_DC_STRING_31": {
+      "V": 1
+    },
+    "I_DC_STRING_31": {
+      "A": 1
+    },
+    "U_DC_STRING_32": {
+      "V": 1
+    },
+    "I_DC_STRING_32": {
+      "A": 1
+    },
+    "CMD_P_AC_SET_ABS": {
+      "W": 5,
+      "kW": 3,
+      "KW": 1
+    },
+    "CMD_REVERT_TIME_S": {
+      "s": 2,
+      "Secs": 15,
+      "min": 1,
+      "%/min": 1
+    },
+    "PF": {
+      "Hz": 2,
+      "Pct": 2
+    },
+    "CMD_Q_ANGLE": {
+      "Degree": 3
+    },
+    "U_DC": {
+      "V": 2
+    },
+    "CMD_P_AC_LIM_PERCENT": {
+      "%": 1,
+      "% WMax": 1
+    },
+    "I_AC": {
+      "A": 2
+    },
+    "Q_AC_1": {
+      "var": 1
+    },
+    "Q_AC_2": {
+      "var": 1
+    },
+    "Q_AC_3": {
+      "var": 1
+    },
+    "E_TOT_1": {
+      "Wh": 1
+    },
+    "E_TOT_2": {
+      "Wh": 1
+    },
+    "E_TOT_3": {
+      "Wh": 1
+    },
+    "POA": {
+      "W/m2": 1
+    },
+    "TEMP_CELL": {
+      "K": 1
+    },
+    "CMD_P_ENA": {
+      "0-1 DISABLE / ENABLE": 1,
+      "W": 2
+    },
+    "TEMP": {
+      "Degr.Celsius": 1,
+      "\u00b0C": 1
+    },
+    "CMD_Q_PERCENT": {
+      "%": 2
+    },
+    "SOC": {
+      "%": 5
+    },
+    "CMD_ON": {
+      "%": 1
+    },
+    "CMD_OFF": {
+      "%": 1
+    },
+    "SOH": {
+      "%": 1
+    },
+    "I_DC": {
+      "A": 1
+    },
+    "CMD_Q_MODE": {
+      "%": 1
+    },
+    "UNIT_ID": {
+      "-": 1
+    }
+  },
+  "metric_types": {
+    "CMD_ON": {
+      "U16": 69,
+      "BITS": 2
+    },
+    "CMD_OFF": {
+      "U16": 30,
+      "BITS": 3
+    },
+    "CMD_P_AC_SET_PERCENT": {
+      "U32": 15,
+      "U16": 138,
+      "I16": 11,
+      "F32": 4,
+      "U8": 3
+    },
+    "P_AC": {
+      "I32": 86,
+      "F32_W": 6,
+      "U32": 31,
+      "F32": 56,
+      "U16": 20,
+      "I16": 38,
+      "I32_W": 6,
+      "U32_W": 8,
+      "I64": 1
+    },
+    "PF": {
+      "I16": 24,
+      "I32": 1,
+      "F32_W": 1,
+      "F32": 4,
+      "U16": 4
+    },
+    "E_TOT": {
+      "U32": 60,
+      "F32_W": 2,
+      "F32": 8,
+      "U32_W": 13,
+      "I32": 4,
+      "U16": 3,
+      "U64": 4,
+      "I16": 1
+    },
+    "E_DAY": {
+      "U32": 31,
+      "F32_W": 2,
+      "F32": 6,
+      "U32_W": 3,
+      "U16": 33,
+      "I32": 3,
+      "U64": 1
+    },
+    "UNIT_ID": {
+      "U16": 29,
+      "U8": 2,
+      "I16": 1
+    },
+    "FREQ": {
+      "F32_W": 2,
+      "F32": 5,
+      "U16": 30,
+      "U32": 6,
+      "I32": 1,
+      "I16": 1
+    },
+    "SERIAL": {
+      "STRING": 130,
+      "U32": 21,
+      "U16": 1,
+      "STRING_12": 1
+    },
+    "MODEL": {
+      "STRING": 115,
+      "U16": 5,
+      "U32": 12
+    },
+    "U_DC_STRING_1": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_1": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_2": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_2": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_3": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_3": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_4": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_4": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_5": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_5": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_6": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_6": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_7": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_7": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_8": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_8": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_9": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_9": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_10": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_10": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_11": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_11": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_12": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_12": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_13": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_13": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_14": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_14": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_15": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_15": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_16": {
+      "I16": 6,
+      "U16": 2
+    },
+    "I_DC_STRING_16": {
+      "I16": 8,
+      "U16": 6
+    },
+    "U_DC_STRING_17": {
+      "I16": 6,
+      "U16": 1
+    },
+    "I_DC_STRING_17": {
+      "I16": 7,
+      "U16": 1
+    },
+    "U_DC_STRING_18": {
+      "I16": 6,
+      "U16": 1
+    },
+    "I_DC_STRING_18": {
+      "I16": 7,
+      "U16": 1
+    },
+    "U_DC_STRING_19": {
+      "I16": 6,
+      "U16": 1
+    },
+    "I_DC_STRING_19": {
+      "I16": 7,
+      "U16": 1
+    },
+    "U_DC_STRING_20": {
+      "I16": 6,
+      "U16": 1
+    },
+    "I_DC_STRING_20": {
+      "I16": 7,
+      "U16": 1
+    },
+    "P_DC": {
+      "I32": 7,
+      "U32": 5,
+      "U32_W": 1,
+      "I16": 1
+    },
+    "U_AC_L1L2": {
+      "U16": 14,
+      "F32": 1
+    },
+    "U_AC_L2L3": {
+      "U16": 14,
+      "F32": 1
+    },
+    "U_AC_L3L1": {
+      "U16": 14,
+      "F32": 1
+    },
+    "U_AC_1": {
+      "U16": 18,
+      "F32": 1
+    },
+    "U_AC_2": {
+      "U16": 18,
+      "F32": 1
+    },
+    "U_AC_3": {
+      "U16": 18,
+      "F32": 1
+    },
+    "I_AC_1": {
+      "I32": 5,
+      "U16": 12,
+      "F32": 1
+    },
+    "I_AC_2": {
+      "I32": 5,
+      "U16": 12,
+      "F32": 1
+    },
+    "I_AC_3": {
+      "I32": 5,
+      "U16": 12,
+      "F32": 1
+    },
+    "Q_AC": {
+      "I32": 22,
+      "I32_W": 1,
+      "F32": 8,
+      "U32": 1,
+      "I16": 3
+    },
+    "R_ISO": {
+      "U16": 19,
+      "BITS": 1
+    },
+    "P_AC_1": {
+      "I32": 37,
+      "F32": 45,
+      "U16": 2,
+      "U32": 9,
+      "F32_W": 2,
+      "I64": 1,
+      "I16": 4
+    },
+    "P_AC_2": {
+      "I32": 37,
+      "F32": 45,
+      "U16": 2,
+      "U32": 9,
+      "F32_W": 2,
+      "I64": 1,
+      "I16": 4
+    },
+    "P_AC_3": {
+      "I32": 37,
+      "F32": 45,
+      "U16": 2,
+      "U32": 9,
+      "F32_W": 2,
+      "I64": 1,
+      "I16": 4
+    },
+    "P_DC_MPPT_1": {
+      "U16": 2,
+      "U32": 5
+    },
+    "P_DC_MPPT_2": {
+      "U16": 2,
+      "U32": 5
+    },
+    "P_DC_MPPT_3": {
+      "U16": 2,
+      "U32": 5
+    },
+    "P_DC_MPPT_4": {
+      "U16": 2,
+      "U32": 5
+    },
+    "P_DC_MPPT_5": {
+      "U16": 2,
+      "U32": 2
+    },
+    "P_DC_MPPT_6": {
+      "U16": 2,
+      "U32": 2
+    },
+    "P_DC_MPPT_7": {
+      "U16": 1,
+      "U32": 2
+    },
+    "P_DC_MPPT_8": {
+      "U16": 1,
+      "U32": 2
+    },
+    "P_DC_MPPT_9": {
+      "U16": 1,
+      "U32": 1
+    },
+    "P_DC_MPPT_10": {
+      "U16": 1,
+      "U32": 1
+    },
+    "TOT": {
+      "U32": 10,
+      "U32_W": 1
+    },
+    "CMD_P_ENA": {
+      "U16": 92,
+      "U32": 11,
+      "I32": 2
+    },
+    "CMD_P_AC_LIM_ABS": {
+      "U32": 3,
+      "U16": 4
+    },
+    "CMD_Q_AC_SET_ABS": {
+      "I32": 5,
+      "U32": 4,
+      "I16": 1
+    },
+    "CMD_PF": {
+      "I16": 18,
+      "U16": 12,
+      "F32": 2
+    },
+    "CMD_RAMP_TIME_S": {
+      "U32": 2,
+      "U16": 73
+    },
+    "U_DC_STRING_21": {
+      "I16": 5,
+      "U16": 1
+    },
+    "I_DC_STRING_21": {
+      "I16": 6,
+      "U16": 1
+    },
+    "U_DC_STRING_22": {
+      "I16": 5,
+      "U16": 1
+    },
+    "I_DC_STRING_22": {
+      "I16": 6,
+      "U16": 1
+    },
+    "U_DC_STRING_23": {
+      "I16": 5,
+      "U16": 1
+    },
+    "I_DC_STRING_23": {
+      "I16": 6,
+      "U16": 1
+    },
+    "U_DC_STRING_24": {
+      "I16": 5,
+      "U16": 1
+    },
+    "I_DC_STRING_24": {
+      "I16": 6,
+      "U16": 1
+    },
+    "TEMP_INT": {
+      "I16": 9,
+      "U16": 9,
+      "F32": 1
+    },
+    "P_RATED": {
+      "U16": 19,
+      "U32": 34,
+      "I32": 3,
+      "U32_W": 2,
+      "I16": 1
+    },
+    "CMD_Q_AC_SET_PERCENT": {
+      "I16": 12,
+      "I32": 6
+    },
+    "U_DC_MPPT_1": {
+      "U16": 11,
+      "I16": 1
+    },
+    "U_DC_MPPT_2": {
+      "U16": 11,
+      "I16": 1
+    },
+    "I_DC_MPPT_1": {
+      "U16": 11,
+      "I16": 1
+    },
+    "I_DC_MPPT_2": {
+      "U16": 11,
+      "I16": 1
+    },
+    "FREQ_1": {
+      "U16": 10
+    },
+    "FREQ_2": {
+      "U16": 10
+    },
+    "FREQ_3": {
+      "U16": 10
+    },
+    "U_DC_MPPT_3": {
+      "U16": 10,
+      "I16": 1
+    },
+    "U_DC_MPPT_4": {
+      "U16": 10,
+      "I16": 1
+    },
+    "I_DC_MPPT_3": {
+      "U16": 10,
+      "I16": 1
+    },
+    "I_DC_MPPT_4": {
+      "U16": 10,
+      "I16": 1
+    },
+    "U_DC_MPPT_5": {
+      "U16": 5,
+      "I16": 1
+    },
+    "I_DC_MPPT_5": {
+      "U16": 5,
+      "I16": 1
+    },
+    "U_DC_MPPT_6": {
+      "U16": 5,
+      "I16": 1
+    },
+    "I_DC_MPPT_6": {
+      "U16": 5,
+      "I16": 1
+    },
+    "MANUFACTURER": {
+      "STRING": 7
+    },
+    "CMD_Q_MODE": {
+      "U16": 27,
+      "F32": 1
+    },
+    "CMD_Q_ENA": {
+      "U16": 8
+    },
+    "S_AC": {
+      "U32": 6,
+      "I32_W": 1,
+      "F32": 1,
+      "I16": 1
+    },
+    "Q_RATED": {
+      "U32": 4,
+      "U16": 2
+    },
+    "U_DC_MPPT_7": {
+      "U16": 3
+    },
+    "I_DC_MPPT_7": {
+      "U16": 3
+    },
+    "U_DC_MPPT_8": {
+      "U16": 3
+    },
+    "I_DC_MPPT_8": {
+      "U16": 3
+    },
+    "S_AC_1": {
+      "U32": 4,
+      "F32": 1
+    },
+    "S_AC_2": {
+      "U32": 4,
+      "F32": 1
+    },
+    "S_AC_3": {
+      "U32": 4,
+      "F32": 1
+    },
+    "U_DC_MPPT_9": {
+      "U16": 2
+    },
+    "I_DC_MPPT_9": {
+      "U16": 2
+    },
+    "U_DC_MPPT_10": {
+      "U16": 2
+    },
+    "I_DC_MPPT_10": {
+      "U16": 2
+    },
+    "U_DC_MPPT_11": {
+      "U16": 2
+    },
+    "I_DC_MPPT_11": {
+      "U16": 2
+    },
+    "P_DC_MPPT_11": {
+      "U32": 1
+    },
+    "U_DC_MPPT_12": {
+      "U16": 2
+    },
+    "I_DC_MPPT_12": {
+      "U16": 2
+    },
+    "P_DC_MPPT_12": {
+      "U32": 1
+    },
+    "U_DC_MPPT_13": {
+      "U16": 1
+    },
+    "I_DC_MPPT_13": {
+      "U16": 1
+    },
+    "P_DC_MPPT_13": {
+      "U32": 1
+    },
+    "U_DC_MPPT_14": {
+      "U16": 1
+    },
+    "I_DC_MPPT_14": {
+      "U16": 1
+    },
+    "P_DC_MPPT_14": {
+      "U32": 1
+    },
+    "U_DC_MPPT_15": {
+      "U16": 1
+    },
+    "I_DC_MPPT_15": {
+      "U16": 1
+    },
+    "P_DC_MPPT_15": {
+      "U32": 1
+    },
+    "U_DC_MPPT_16": {
+      "U16": 1
+    },
+    "I_DC_MPPT_16": {
+      "U16": 1
+    },
+    "P_DC_MPPT_16": {
+      "U32": 1
+    },
+    "U_DC_STRING_25": {
+      "U16": 1
+    },
+    "I_DC_STRING_25": {
+      "I16": 1
+    },
+    "U_DC_STRING_26": {
+      "U16": 1
+    },
+    "I_DC_STRING_26": {
+      "I16": 1
+    },
+    "U_DC_STRING_27": {
+      "U16": 1
+    },
+    "I_DC_STRING_27": {
+      "I16": 1
+    },
+    "U_DC_STRING_28": {
+      "U16": 1
+    },
+    "I_DC_STRING_28": {
+      "I16": 1
+    },
+    "U_DC_STRING_29": {
+      "U16": 1
+    },
+    "I_DC_STRING_29": {
+      "I16": 1
+    },
+    "U_DC_STRING_30": {
+      "U16": 1
+    },
+    "I_DC_STRING_30": {
+      "I16": 1
+    },
+    "U_DC_STRING_31": {
+      "U16": 1
+    },
+    "I_DC_STRING_31": {
+      "I16": 1
+    },
+    "U_DC_STRING_32": {
+      "U16": 1
+    },
+    "I_DC_STRING_32": {
+      "I16": 1
+    },
+    "CMD_P_AC_SET_ABS": {
+      "U32": 2,
+      "I16": 4,
+      "U16": 2,
+      "U32_W": 1
+    },
+    "CMD_REVERT_TIME_S": {
+      "U32": 2,
+      "U16": 17
+    },
+    "CMD_Q_ANGLE": {
+      "I16": 3
+    },
+    "U_DC": {
+      "U16": 2
+    },
+    "CMD_P_AC_LIM_PERCENT": {
+      "U16": 2
+    },
+    "CMD_P_MODE": {
+      "U16": 1
+    },
+    "I_AC": {
+      "F32": 1,
+      "U16": 1
+    },
+    "Q_AC_1": {
+      "F32": 1
+    },
+    "Q_AC_2": {
+      "F32": 1
+    },
+    "Q_AC_3": {
+      "F32": 1
+    },
+    "PF_1": {
+      "F32": 1
+    },
+    "PF_2": {
+      "F32": 1
+    },
+    "PF_3": {
+      "F32": 1
+    },
+    "E_TOT_1": {
+      "F32": 1
+    },
+    "E_TOT_2": {
+      "F32": 1
+    },
+    "E_TOT_3": {
+      "F32": 1
+    },
+    "POA": {
+      "F32": 1
+    },
+    "TEMP_CELL": {
+      "F32": 1
+    },
+    "TEMP": {
+      "I16": 1,
+      "F32": 1
+    },
+    "CMD_Q_PERCENT": {
+      "I16": 2
+    },
+    "SOC": {
+      "U16": 5
+    },
+    "CMD_COMMIT": {
+      "U16": 2,
+      "I16": 1
+    },
+    "SOH": {
+      "U16": 1
+    },
+    "I_DC": {
+      "U16": 1
+    }
+  },
+  "metric_actions": {
+    "CMD_ON": {
+      "4": 68,
+      "1": 2,
+      "0": 1
+    },
+    "CMD_OFF": {
+      "4": 31,
+      "1": 1,
+      "0": 1
+    },
+    "CMD_P_AC_SET_PERCENT": {
+      "4": 167,
+      "1": 2,
+      "17": 2
+    },
+    "P_AC": {
+      "4": 246,
+      "2": 4,
+      "1": 2
+    },
+    "PF": {
+      "4": 33,
+      "0": 1
+    },
+    "E_TOT": {
+      "4": 91,
+      "1": 3,
+      "2": 1
+    },
+    "E_DAY": {
+      "4": 79
+    },
+    "UNIT_ID": {
+      "4": 25,
+      "1": 7
+    },
+    "FREQ": {
+      "2": 3,
+      "4": 42
+    },
+    "SERIAL": {
+      "4": 89,
+      "1": 62,
+      "0": 2
+    },
+    "MODEL": {
+      "4": 63,
+      "1": 67,
+      "0": 2
+    },
+    "U_DC_STRING_1": {
+      "4": 8
+    },
+    "I_DC_STRING_1": {
+      "4": 14
+    },
+    "U_DC_STRING_2": {
+      "4": 8
+    },
+    "I_DC_STRING_2": {
+      "4": 14
+    },
+    "U_DC_STRING_3": {
+      "4": 8
+    },
+    "I_DC_STRING_3": {
+      "4": 14
+    },
+    "U_DC_STRING_4": {
+      "4": 8
+    },
+    "I_DC_STRING_4": {
+      "4": 14
+    },
+    "U_DC_STRING_5": {
+      "4": 8
+    },
+    "I_DC_STRING_5": {
+      "4": 14
+    },
+    "U_DC_STRING_6": {
+      "4": 8
+    },
+    "I_DC_STRING_6": {
+      "4": 14
+    },
+    "U_DC_STRING_7": {
+      "4": 8
+    },
+    "I_DC_STRING_7": {
+      "4": 14
+    },
+    "U_DC_STRING_8": {
+      "4": 8
+    },
+    "I_DC_STRING_8": {
+      "4": 14
+    },
+    "U_DC_STRING_9": {
+      "4": 8
+    },
+    "I_DC_STRING_9": {
+      "4": 14
+    },
+    "U_DC_STRING_10": {
+      "4": 8
+    },
+    "I_DC_STRING_10": {
+      "4": 14
+    },
+    "U_DC_STRING_11": {
+      "4": 8
+    },
+    "I_DC_STRING_11": {
+      "4": 14
+    },
+    "U_DC_STRING_12": {
+      "4": 8
+    },
+    "I_DC_STRING_12": {
+      "4": 14
+    },
+    "U_DC_STRING_13": {
+      "4": 8
+    },
+    "I_DC_STRING_13": {
+      "4": 14
+    },
+    "U_DC_STRING_14": {
+      "4": 8
+    },
+    "I_DC_STRING_14": {
+      "4": 14
+    },
+    "U_DC_STRING_15": {
+      "4": 8
+    },
+    "I_DC_STRING_15": {
+      "4": 14
+    },
+    "U_DC_STRING_16": {
+      "4": 8
+    },
+    "I_DC_STRING_16": {
+      "4": 14
+    },
+    "U_DC_STRING_17": {
+      "4": 7
+    },
+    "I_DC_STRING_17": {
+      "4": 8
+    },
+    "U_DC_STRING_18": {
+      "4": 7
+    },
+    "I_DC_STRING_18": {
+      "4": 8
+    },
+    "U_DC_STRING_19": {
+      "4": 7
+    },
+    "I_DC_STRING_19": {
+      "4": 8
+    },
+    "U_DC_STRING_20": {
+      "4": 7
+    },
+    "I_DC_STRING_20": {
+      "4": 8
+    },
+    "P_DC": {
+      "4": 14
+    },
+    "U_AC_L1L2": {
+      "4": 15
+    },
+    "U_AC_L2L3": {
+      "4": 15
+    },
+    "U_AC_L3L1": {
+      "4": 15
+    },
+    "U_AC_1": {
+      "4": 19
+    },
+    "U_AC_2": {
+      "4": 19
+    },
+    "U_AC_3": {
+      "4": 19
+    },
+    "I_AC_1": {
+      "4": 18
+    },
+    "I_AC_2": {
+      "4": 18
+    },
+    "I_AC_3": {
+      "4": 18
+    },
+    "Q_AC": {
+      "4": 35
+    },
+    "R_ISO": {
+      "4": 19,
+      "1": 1
+    },
+    "P_AC_1": {
+      "4": 98,
+      "2": 2
+    },
+    "P_AC_2": {
+      "4": 98,
+      "2": 2
+    },
+    "P_AC_3": {
+      "4": 98,
+      "2": 2
+    },
+    "P_DC_MPPT_1": {
+      "4": 7
+    },
+    "P_DC_MPPT_2": {
+      "4": 7
+    },
+    "P_DC_MPPT_3": {
+      "4": 7
+    },
+    "P_DC_MPPT_4": {
+      "4": 7
+    },
+    "P_DC_MPPT_5": {
+      "4": 4
+    },
+    "P_DC_MPPT_6": {
+      "4": 4
+    },
+    "P_DC_MPPT_7": {
+      "4": 3
+    },
+    "P_DC_MPPT_8": {
+      "4": 3
+    },
+    "P_DC_MPPT_9": {
+      "4": 2
+    },
+    "P_DC_MPPT_10": {
+      "4": 2
+    },
+    "TOT": {
+      "4": 11
+    },
+    "CMD_P_ENA": {
+      "4": 104,
+      "1": 1
+    },
+    "CMD_P_AC_LIM_ABS": {
+      "4": 6,
+      "1": 1
+    },
+    "CMD_Q_AC_SET_ABS": {
+      "4": 10
+    },
+    "CMD_PF": {
+      "4": 32
+    },
+    "CMD_RAMP_TIME_S": {
+      "4": 72,
+      "1": 2,
+      "0": 1
+    },
+    "U_DC_STRING_21": {
+      "4": 6
+    },
+    "I_DC_STRING_21": {
+      "4": 7
+    },
+    "U_DC_STRING_22": {
+      "4": 6
+    },
+    "I_DC_STRING_22": {
+      "4": 7
+    },
+    "U_DC_STRING_23": {
+      "4": 6
+    },
+    "I_DC_STRING_23": {
+      "4": 7
+    },
+    "U_DC_STRING_24": {
+      "4": 6
+    },
+    "I_DC_STRING_24": {
+      "4": 7
+    },
+    "TEMP_INT": {
+      "4": 19
+    },
+    "P_RATED": {
+      "4": 57,
+      "1": 2
+    },
+    "CMD_Q_AC_SET_PERCENT": {
+      "4": 18
+    },
+    "U_DC_MPPT_1": {
+      "4": 12
+    },
+    "U_DC_MPPT_2": {
+      "4": 12
+    },
+    "I_DC_MPPT_1": {
+      "4": 12
+    },
+    "I_DC_MPPT_2": {
+      "4": 12
+    },
+    "FREQ_1": {
+      "4": 10
+    },
+    "FREQ_2": {
+      "4": 10
+    },
+    "FREQ_3": {
+      "4": 10
+    },
+    "U_DC_MPPT_3": {
+      "4": 11
+    },
+    "U_DC_MPPT_4": {
+      "4": 11
+    },
+    "I_DC_MPPT_3": {
+      "4": 11
+    },
+    "I_DC_MPPT_4": {
+      "4": 11
+    },
+    "U_DC_MPPT_5": {
+      "4": 6
+    },
+    "I_DC_MPPT_5": {
+      "4": 6
+    },
+    "U_DC_MPPT_6": {
+      "4": 6
+    },
+    "I_DC_MPPT_6": {
+      "4": 6
+    },
+    "MANUFACTURER": {
+      "4": 6,
+      "1": 1
+    },
+    "CMD_Q_MODE": {
+      "4": 28
+    },
+    "CMD_Q_ENA": {
+      "4": 8
+    },
+    "S_AC": {
+      "4": 9
+    },
+    "Q_RATED": {
+      "4": 5,
+      "1": 1
+    },
+    "U_DC_MPPT_7": {
+      "4": 3
+    },
+    "I_DC_MPPT_7": {
+      "4": 3
+    },
+    "U_DC_MPPT_8": {
+      "4": 3
+    },
+    "I_DC_MPPT_8": {
+      "4": 3
+    },
+    "S_AC_1": {
+      "4": 5
+    },
+    "S_AC_2": {
+      "4": 5
+    },
+    "S_AC_3": {
+      "4": 5
+    },
+    "U_DC_MPPT_9": {
+      "4": 2
+    },
+    "I_DC_MPPT_9": {
+      "4": 2
+    },
+    "U_DC_MPPT_10": {
+      "4": 2
+    },
+    "I_DC_MPPT_10": {
+      "4": 2
+    },
+    "U_DC_MPPT_11": {
+      "4": 2
+    },
+    "I_DC_MPPT_11": {
+      "4": 2
+    },
+    "P_DC_MPPT_11": {
+      "4": 1
+    },
+    "U_DC_MPPT_12": {
+      "4": 2
+    },
+    "I_DC_MPPT_12": {
+      "4": 2
+    },
+    "P_DC_MPPT_12": {
+      "4": 1
+    },
+    "U_DC_MPPT_13": {
+      "4": 1
+    },
+    "I_DC_MPPT_13": {
+      "4": 1
+    },
+    "P_DC_MPPT_13": {
+      "4": 1
+    },
+    "U_DC_MPPT_14": {
+      "4": 1
+    },
+    "I_DC_MPPT_14": {
+      "4": 1
+    },
+    "P_DC_MPPT_14": {
+      "4": 1
+    },
+    "U_DC_MPPT_15": {
+      "4": 1
+    },
+    "I_DC_MPPT_15": {
+      "4": 1
+    },
+    "P_DC_MPPT_15": {
+      "4": 1
+    },
+    "U_DC_MPPT_16": {
+      "4": 1
+    },
+    "I_DC_MPPT_16": {
+      "4": 1
+    },
+    "P_DC_MPPT_16": {
+      "4": 1
+    },
+    "U_DC_STRING_25": {
+      "4": 1
+    },
+    "I_DC_STRING_25": {
+      "4": 1
+    },
+    "U_DC_STRING_26": {
+      "4": 1
+    },
+    "I_DC_STRING_26": {
+      "4": 1
+    },
+    "U_DC_STRING_27": {
+      "4": 1
+    },
+    "I_DC_STRING_27": {
+      "4": 1
+    },
+    "U_DC_STRING_28": {
+      "4": 1
+    },
+    "I_DC_STRING_28": {
+      "4": 1
+    },
+    "U_DC_STRING_29": {
+      "4": 1
+    },
+    "I_DC_STRING_29": {
+      "4": 1
+    },
+    "U_DC_STRING_30": {
+      "4": 1
+    },
+    "I_DC_STRING_30": {
+      "4": 1
+    },
+    "U_DC_STRING_31": {
+      "4": 1
+    },
+    "I_DC_STRING_31": {
+      "4": 1
+    },
+    "U_DC_STRING_32": {
+      "4": 1
+    },
+    "I_DC_STRING_32": {
+      "4": 1
+    },
+    "CMD_P_AC_SET_ABS": {
+      "4": 9
+    },
+    "CMD_REVERT_TIME_S": {
+      "4": 19
+    },
+    "CMD_Q_ANGLE": {
+      "4": 3
+    },
+    "U_DC": {
+      "4": 2
+    },
+    "CMD_P_AC_LIM_PERCENT": {
+      "4": 2
+    },
+    "CMD_P_MODE": {
+      "4": 1
+    },
+    "I_AC": {
+      "4": 2
+    },
+    "Q_AC_1": {
+      "4": 1
+    },
+    "Q_AC_2": {
+      "4": 1
+    },
+    "Q_AC_3": {
+      "4": 1
+    },
+    "PF_1": {
+      "4": 1
+    },
+    "PF_2": {
+      "4": 1
+    },
+    "PF_3": {
+      "4": 1
+    },
+    "E_TOT_1": {
+      "4": 1
+    },
+    "E_TOT_2": {
+      "4": 1
+    },
+    "E_TOT_3": {
+      "4": 1
+    },
+    "POA": {
+      "4": 1
+    },
+    "TEMP_CELL": {
+      "4": 1
+    },
+    "TEMP": {
+      "4": 2
+    },
+    "CMD_Q_PERCENT": {
+      "4": 2
+    },
+    "SOC": {
+      "4": 4,
+      "2": 1
+    },
+    "CMD_COMMIT": {
+      "4": 3
+    },
+    "SOH": {
+      "4": 1
+    },
+    "I_DC": {
+      "4": 1
+    }
+  },
+  "total_definitions_mined": 899,
+  "total_registers_mined": 222430
+}

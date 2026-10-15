@@ -40,11 +40,11 @@ Modbus;Io;ICPDAS;M7028
 39;3;262;U16;;Analog output type code of channel 6;ChannelConfig6;1.0;0.0;;4
 40;3;263;U16;;Analog output type code of channel 7;ChannelConfig7;1.0;0.0;;4
 41;3;288;U16;;Analog output slew rate of channel 0;;1.0;0.0;;4
-42;3;288;U16;;Analog output slew rate of channel 1;;1.0;0.0;;4
+42;3;289;U16;;Analog output slew rate of channel 1;;1.0;0.0;;4
 43;3;290;U16;;Analog output slew rate of channel 2;;1.0;0.0;;4
-44;3;290;U16;;Analog output slew rate of channel 3;;1.0;0.0;;4
-45;3;291;U16;;Analog output slew rate of channel 4;;1.0;0.0;;4
-46;3;292;U16;;Analog output slew rate of channel 5;;1.0;0.0;;4
+44;3;291;U16;;Analog output slew rate of channel 3;;1.0;0.0;;4
+45;3;292;U16;;Analog output slew rate of channel 4;;1.0;0.0;;4
+46;3;293;U16;;Analog output slew rate of channel 5;;1.0;0.0;;4
 47;3;294;U16;;Analog output slew rate of channel 6;;1.0;0.0;;4
 48;3;295;U16;;Analog output slew rate of channel 7;;1.0;0.0;;4
 49;3;480;U32;;Firmware version;;1.0;0.0;;4

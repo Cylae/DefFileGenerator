@@ -459,9 +459,9 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 458;4;985;U16;;PV String32 voltage;U_DC_STRING_32;0.1;0.0;V;4
 459;4;986;I16;;PV String32 current;I_DC_STRING_32;0.1;0.0;A;4
 460;4;987_0_16;Bits;;StrUnmatch2 : String;;1.0;0.0;;4
-461;4;988_0_16;Bits;;StrCurrentUnblance2 : String;;1.0;0.0;;4
+461;4;988_0_15;Bits;;StrCurrentUnblance2 : String;;1.0;0.0;;4
 462;4;988_15_1;Bits;;StrCurrentUnblance2 : Current unbalance;;1.0;0.0;;4
-463;4;989_0_16;Bits;;StrDisconnect2 : String;;1.0;0.0;;4
+463;4;989_0_15;Bits;;StrDisconnect2 : String;;1.0;0.0;;4
 464;4;989_15_1;Bits;;StrDisconnect2 : Disconnect;;1.0;0.0;;4
 465;4;990;U16;;PV Warning Valu;;1.0;0.0;;4
 466;4;991;U16;;StrWaringvalue1;;1.0;0.0;;4

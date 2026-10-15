@@ -356,7 +356,7 @@ launch_gui.bat
 
 ### 2. High-Performance CLI (`deffilegen`)
 
-The command-line suite offers 4 primary subcommands:
+The command-line suite offers unified subcommands:
 
 ```powershell
 # 1. Complete end-to-end workflow (Extract + Generate + Validate)
@@ -368,8 +368,20 @@ deffilegen extract "register_map.xlsx" --sheet "Holding Registers" -o raw_regist
 # 3. Generate a Webdyn definition from intermediate CSV data
 deffilegen generate raw_registers.csv --manufacturer "SMA" --model "STP-5000" -o sma_def.csv
 
-# 4. Audit an existing definition CSV for WebdynSunPM compliance
+# 4. Validate an existing definition CSV for Webdyn syntax compliance
 deffilegen validate sma_def.csv
+
+# 5. Enrich or normalize official Webdyn SunPM semantic tags
+deffilegen tag sma_def.csv --category Inverter
+
+# 6. Deep semantic audit (Modbus address overlaps, tag conformity, unit coherence)
+deffilegen audit Definitions/ --strict-overlap
+
+# 7. Auto-repair definitions (normalize legacy tags, fill known tags, deduplicate)
+deffilegen audit defective_def.csv --fix -o sanitized_def.csv
+
+# 8. Train semantic knowledge base from definition datasets
+deffilegen train --dir Definitions/ --summary --export-json learned_knowledge.json
 ```
 
 #### Helpful CLI Flags:

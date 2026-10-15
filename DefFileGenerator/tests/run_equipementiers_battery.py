@@ -20,7 +20,13 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../.
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
 
-EQUIPEMENTIERS_DIR = r"G:\My Drive\08092026\Equipementiers"
+DEFAULT_EQUIPEMENTIERS_DIR = r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers"
+EQUIPEMENTIERS_DIR = os.environ.get(
+    "EQUIPEMENTIERS_DIR",
+    DEFAULT_EQUIPEMENTIERS_DIR
+    if os.path.exists(DEFAULT_EQUIPEMENTIERS_DIR)
+    else r"G:\My Drive\08092026\Equipementiers",
+)
 
 
 def run_battery(max_files_per_type: int = 15) -> bool:

@@ -77,7 +77,7 @@ Modbus;Inverter;Goodwe;GT_Series;1
 76;3;35510_10;STRING;;Device model DSP;MODEL;1.0;0.0;;4
 77;3;35710;U32;;DSP fault code;;1.0;0.0;;4
 78;3;35718;U32;;Slave DSP fault code;;1.0;0.0;;4
-79;3;35719;U32;;Total generation time;TOT;1.0;0.0;h;4
+79;3;35749;U32;;Total generation time;TOT;1.0;0.0;h;4
 80;3;35751;U16;;Safety Country Code;;1.0;0.0;;4
 81;3;35758;U16;;Work Mode;;1.0;0.0;;4
 82;3;35768;U16;;leak current Average Value;;1.0;0.0;mA;4

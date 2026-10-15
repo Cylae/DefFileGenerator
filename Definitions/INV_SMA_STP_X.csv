@@ -20,11 +20,9 @@ Modbus;Inverter;SMA;STP_X
 19;3;30247;U32;;Numero d evenement actuel pour fabricant;;1.0;0.0;;4
 20;3;30251;U32;;Etat de verrouillage;;1.0;0.0;;4
 21;3;30513;U64;;Rendement total_0;;1.0;0.0;Wh;4
-22;3;30513;U64;;Rendement total_2;;1.0;0.0;Wh;4
 23;3;30521;U64;;Temps de service_0;;1.0;0.0;s;4
 24;3;30525;U64;;Temps d injection_1;;1.0;0.0;s;4
 25;3;30529;U32;;Rendement total_1;;1.0;0.0;Wh;4
-26;3;30529;U32;;Rendement total_3;;1.0;0.0;Wh;4
 27;3;30541;U32;;Temps de service_1;;1.0;0.0;s;4
 28;3;30543;U32;;Temps d injection_0;;1.0;0.0;s;4
 29;3;30559;U32;;Nombre evenements pour utilisateur_0;;1.0;0.0;;4

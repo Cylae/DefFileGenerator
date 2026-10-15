@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Lettel;MAP4-345M_Table;;;;;;;
+modbusRTU;Meter;Lettel;MAP4-345M_Table;;;;;;;
 1;3;3;U16;;Séquence des phases;squence_des_phases;1.000000;0.000000;/;4
 2;3;4;F32;;Angle de phase 1 entre tension et courant;angle_de_phase_1_entre_tension_et_courant;1.000000;0.000000;0.1º;4
 3;3;6;F32;;Angle de phase L2 entre tension et courant;angle_de_phase_l2_entre_tension_et_courant;1.000000;0.000000;0.1º;4
@@ -37,7 +37,7 @@
 36;3;72;F32;;Angle de phase de la tension L1;angle_de_phase_de_la_tension_l1;1.000000;0.000000;0.1º;4
 37;3;74;F32;;Angle de phase de la tension L2;angle_de_phase_de_la_tension_l2;1.000000;0.000000;0.1º;4
 38;3;76;F32;;Angle de phase de la tension L3;angle_de_phase_de_la_tension_l3;1.000000;0.000000;0.1º;4
-39;3;77;F32;;Réservé;rserv;1.000000;0.000000;/;4
+39;3;78;F32;;Réservé;rserv;1.000000;0.000000;/;4
 40;3;352;F32;;Énergie active;nergie_active;1.000000;0.000000;0.01kWh;4
 41;3;354;F32;;Énergie réactive;nergie_ractive;1.000000;0.000000;0.01kvarh;4
 42;3;356;F32;;Énergie apparente;nergie_apparente;1.000000;0.000000;0.01VAh;4
@@ -225,7 +225,7 @@
 224;3;4530;F32;;Tension L1-L3 min;tension_l1l3_min;1.000000;0.000000;0.1V;4
 225;3;4532;F32;;Tension L1-L3 moyenne;tension_l1l3_moyenne;1.000000;0.000000;0.1V;4
 226;3;4534;F32;;Instantané de la tension L1-L3;instantan_de_la_tension_l1l3;1.000000;0.000000;0.1V;4
-227;3;4535;F32;;Reservé;reserv_1;1.000000;0.000000;/;4
+227;3;4536;F32;;Reservé;reserv_1;1.000000;0.000000;/;4
 228;3;4608;F32;;Énergie active;nergie_active_6;1.000000;0.000000;0.01kWh;4
 229;3;4610;F32;;Énergie active;nergie_active_7;1.000000;0.000000;0.01kWh;4
 230;3;4612;F32;;Énergie active;nergie_active_8;1.000000;0.000000;0.01kWh;4
@@ -270,7 +270,7 @@
 269;3;4918;F32;;Demande maximale de puissance réactive du système;demande_maximale_de_puissance_ractive_du_systme;1.000000;0.000000;0.001kVAR;4
 270;3;4920;F32;;;;1.000000;0.000000;/;4
 271;3;12289;F32;;Heure du profil de charge Dernier 1 kWh actif total Dernier 1 kWh actif importé Dernier 1 kWh actif exporté;heure_du_profil_de_charge_dernier_1_kwh_actif_total_dernier_1_kwh_actif_importdernier_1_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
-272;3;12290;F32;;Heure de l'avant dernier profil de charge Dernier 2 kWh actif total Dernier 2 kWh actif importé Dernier 2 kWh actif exporté;heure_de_lavant_dernier_profil_de_chargedernier_2_kwh_actif_total_dernier_2_kwh_actif_importdernier_2_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
+272;3;12291;F32;;Heure de l'avant dernier profil de charge Dernier 2 kWh actif total Dernier 2 kWh actif importé Dernier 2 kWh actif exporté;heure_de_lavant_dernier_profil_de_chargedernier_2_kwh_actif_total_dernier_2_kwh_actif_importdernier_2_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
 273;3;16383;F32;;Dernier profil de charge 4095 temps Dernier 4095 kWh actif total Dernier 4095 kWh actif importé Dernier 4095 kWh actif exporté;dernier_profil_de_charge_4095_tempsdernier_4095_kwh_actif_total_dernier_4095_kwh_actif_importdernier_4095_kwh_actif_export;1.000000;0.000000;/ 0.01kWh 0.01kWh 0.01kWh;1
 274;3;1316;U16;;Identifiant Modbus;identifiant_modbus;1.000000;0.000000;HEX(0001);1
 275;3;1317;U16;;Débit en bauds;dbit_en_bauds;1.000000;0.000000;HEX(2580);1

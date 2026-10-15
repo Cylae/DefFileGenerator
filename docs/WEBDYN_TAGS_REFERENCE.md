@@ -235,24 +235,51 @@ When parsing or upgrading older definition files, `DefFileGenerator` automatical
 # Enrich an existing definition CSV with inferred SunPM tags
 deffilegen tag Definitions/INV_GoodWe_SMT_Series.csv -o enriched.csv
 
-# Normalize legacy tags to standard SunPM in-place
-deffilegen tag Definitions/INV_Growatt_Generic.csv --normalize --in-place
+# Audit a definition file for address overlaps, invalid tags, and unit mismatches
+deffilegen audit Definitions/INV_CyberPower_GENERIC.csv --strict-overlap
+
+# Batch audit all definitions in a directory
+deffilegen audit Definitions/
+
+# Automatically repair legacy tags, infer missing tags, and eliminate duplicates
+deffilegen audit defective_definition.csv --fix -o repaired_definition.csv
+
+# Train semantic knowledge base from definition datasets
+deffilegen train --dir Definitions/ --summary --export-json dataset_knowledge.json
 ```
 
 ### Python API
 
 ```python
-from DefFileGenerator.knowledge_miner import (
+from DefFileGenerator import (
+    audit_definition_file,
+    audit_definitions_directory,
+    auto_fix_definition_file,
     infer_sunpm_tag,
     normalize_tag_to_sunpm,
-    enrich_definition_rows,
+    train_knowledge_from_definitions,
 )
 
-# 1. Infer SunPM tag from register label
+# 1. Infer SunPM tag from register label using learned dataset & heuristics
 tag = infer_sunpm_tag("Phase A Voltage", equipment_type="Inverter")
 # Returns: "U_AC_1"
 
 # 2. Normalize legacy tags
 canonical = normalize_tag_to_sunpm("RealPower")
 # Returns: "P_AC"
+
+# 3. Train knowledge base dynamically from definition files
+knowledge = train_knowledge_from_definitions("Definitions")
+print(
+    f"Mined {knowledge.total_registers_mined} registers across {knowledge.total_definitions_mined} files"
+)
+
+# 4. Audit definition file
+report = audit_definition_file("Definitions/INV_CyberPower_GENERIC.csv", strict_overlap=True)
+if report.is_valid:
+    print("Zero errors detected!")
+
+# 5. Automatically repair definition defects
+stats = auto_fix_definition_file("input.csv", "sanitized.csv")
+print(f"Repaired: {stats}")
 ```

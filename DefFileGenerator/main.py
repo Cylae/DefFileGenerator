@@ -21,6 +21,7 @@ import re
 import sys
 from collections.abc import Iterator
 from contextlib import nullcontext
+from pathlib import Path
 from typing import Any
 
 # Ensure parent directory is in sys.path to support direct and packaged executions
@@ -237,6 +238,172 @@ def tag_command(args: argparse.Namespace) -> None:
     logging.info(
         f"SunPM Tag enrichment complete for {input_file}. Updated {count} tag(s). Saved to {output}"
     )
+
+
+def audit_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'audit': verifies syntax, address collisions, tags, and units.
+    Optionally applies automated non-destructive fixes.
+
+    Args:
+        args: Parsed command line arguments.
+    """
+    from dataclasses import asdict
+
+    from DefFileGenerator.knowledge_miner import (
+        audit_definition_file,
+        audit_definitions_directory,
+        auto_fix_definition_file,
+    )
+
+    target = getattr(args, "target", "Definitions")
+    strict = getattr(args, "strict", False)
+    strict_overlap = getattr(args, "strict_overlap", False)
+    do_fix = getattr(args, "fix", False)
+    as_json = getattr(args, "json", False)
+    output = getattr(args, "output", None)
+
+    if not os.path.exists(target):
+        logging.error(f"Target path not found: {target}")
+        sys.exit(1)
+
+    if os.path.isfile(target):
+        fix_stats = None
+        if do_fix:
+            fix_target = output or target
+            fix_stats = auto_fix_definition_file(target, output_path=fix_target)
+            logging.info(
+                f"Auto-fix applied to {target}: "
+                f"{fix_stats['tags_normalized']} normalized, "
+                f"{fix_stats['tags_inferred']} inferred, "
+                f"{fix_stats['duplicates_removed']} duplicates removed."
+            )
+            report_target = fix_target
+        else:
+            report_target = target
+
+        report = audit_definition_file(report_target, strict_overlap=strict_overlap)
+
+        if as_json:
+            out_data: dict[str, Any] = asdict(report)
+            if fix_stats:
+                out_data["fix_applied"] = fix_stats
+            print(json.dumps(out_data, indent=2))
+        else:
+            logging.info(f"Audited {report.filepath} ({report.register_count} registers)")
+            if report.errors:
+                logging.error(f"Found {len(report.errors)} ERROR(s):")
+                for err in report.errors:
+                    logging.error(f"  Line {err.line} [{err.code}]: {err.message}")
+            if report.warnings:
+                logging.warning(f"Found {len(report.warnings)} WARNING(s):")
+                for warn in report.warnings:
+                    logging.warning(f"  Line {warn.line} [{warn.code}]: {warn.message}")
+            if report.infos and getattr(args, "verbose", False):
+                logging.info(f"Found {len(report.infos)} INFO note(s):")
+                for inf in report.infos:
+                    logging.info(f"  Line {inf.line} [{inf.code}]: {inf.message}")
+
+        has_failed = bool(report.errors) or (strict and bool(report.warnings))
+        if has_failed:
+            sys.exit(1)
+
+    elif os.path.isdir(target):
+        fix_summary = {"tags_normalized": 0, "tags_inferred": 0, "duplicates_removed": 0}
+        if do_fix:
+            for p in sorted(Path(target).glob("*.csv")):
+                s = auto_fix_definition_file(p)
+                for k, v in s.items():
+                    fix_summary[k] += v
+            logging.info(
+                f"Batch auto-fix applied to {target}: "
+                f"{fix_summary['tags_normalized']} normalized, "
+                f"{fix_summary['tags_inferred']} inferred, "
+                f"{fix_summary['duplicates_removed']} duplicates removed."
+            )
+
+        reports = audit_definitions_directory(target, strict_overlap=strict_overlap)
+        total_files = len(reports)
+        total_regs = sum(r.register_count for r in reports.values())
+        total_errors = sum(len(r.errors) for r in reports.values())
+        total_warnings = sum(len(r.warnings) for r in reports.values())
+        total_infos = sum(len(r.infos) for r in reports.values())
+        invalid_files = [f for f, r in reports.items() if not r.is_valid]
+
+        if as_json:
+            payload: dict[str, Any] = {
+                "summary": {
+                    "total_files": total_files,
+                    "valid_files": total_files - len(invalid_files),
+                    "invalid_files": len(invalid_files),
+                    "total_registers": total_regs,
+                    "total_errors": total_errors,
+                    "total_warnings": total_warnings,
+                    "total_infos": total_infos,
+                },
+                "reports": {f: asdict(r) for f, r in reports.items()},
+            }
+            if do_fix:
+                payload["fix_applied"] = fix_summary
+            print(json.dumps(payload, indent=2))
+        else:
+            logging.info(
+                f"Audited {total_files} definition files ({total_regs:,} registers) in '{target}'."
+            )
+            logging.info(
+                f"Results: {total_files - len(invalid_files)}/{total_files} valid, "
+                f"{total_errors} error(s), {total_warnings} warning(s), {total_infos} info(s)."
+            )
+            if invalid_files:
+                logging.error(f"Files with errors ({len(invalid_files)}):")
+                for f in invalid_files:
+                    logging.error(f"  - {f}: {len(reports[f].errors)} error(s)")
+            if strict and total_warnings > 0:
+                logging.error(f"--strict enabled and {total_warnings} warning(s) found.")
+
+        has_failed = total_errors > 0 or (strict and total_warnings > 0)
+        if has_failed:
+            sys.exit(1)
+
+
+def train_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'train': learns empirical metrics, data types, units,
+    action codes, and official SunPM tags from definition CSVs.
+
+    Args:
+        args: Parsed command line arguments.
+    """
+    from DefFileGenerator.knowledge_miner import train_knowledge_from_definitions
+
+    definitions_dir = getattr(args, "dir", "Definitions")
+    export_json = getattr(args, "export_json", None)
+    summary = getattr(args, "summary", False)
+
+    if not os.path.exists(definitions_dir):
+        logging.error(f"Definitions directory not found: {definitions_dir}")
+        sys.exit(1)
+
+    knowledge = train_knowledge_from_definitions(directories=definitions_dir, force_retrain=True)
+
+    logging.info(
+        f"Knowledge training successful: "
+        f"{knowledge.total_definitions_mined} files, "
+        f"{knowledge.total_registers_mined:,} registers mined, "
+        f"{len(knowledge.name_to_tag):,} distinct variable-to-tag mappings learned."
+    )
+
+    if summary:
+        top_tags = sorted(knowledge.tag_counts.items(), key=lambda x: x[1], reverse=True)[:15]
+        logging.info("Top SunPM Tags in dataset:")
+        for tag, count in top_tags:
+            logging.info(f"  {tag:<15}: {count} occurrences")
+
+    if export_json:
+        data = knowledge.to_dict()
+        with staged_text_output(export_json) as f:
+            json.dump(data, f, indent=2)
+        logging.info(f"Exported learned dataset knowledge to {export_json}")
 
 
 def generate_command(args: argparse.Namespace) -> None:
@@ -491,6 +658,50 @@ def _run_cli(argv: list[str] | None = None) -> None:
         help="Do not normalize legacy tags to SunPM canonical standard",
     )
 
+    # Audit
+    parser_audit = subparsers.add_parser(
+        "audit", help="Audit definition file(s) for errors, overlaps, tags, and units"
+    )
+    add_common_flags(parser_audit)
+    parser_audit.add_argument(
+        "target",
+        nargs="?",
+        default="Definitions",
+        help="Definition file or directory to audit (default: Definitions)",
+    )
+    parser_audit.add_argument("--strict", action="store_true", help="Treat warnings as errors")
+    parser_audit.add_argument(
+        "--strict-overlap",
+        action="store_true",
+        help="Treat Modbus address overlaps as errors",
+    )
+    parser_audit.add_argument(
+        "--fix",
+        action="store_true",
+        help="Automatically repair legacy tags, fill known tags, and remove duplicates",
+    )
+    parser_audit.add_argument(
+        "-o", "--output", help="Output file when --fix is applied to a single file"
+    )
+    parser_audit.add_argument("--json", action="store_true", help="Output audit report as JSON")
+
+    # Train
+    parser_train = subparsers.add_parser(
+        "train", help="Train semantic knowledge base from definition CSVs"
+    )
+    add_common_flags(parser_train)
+    parser_train.add_argument(
+        "--dir",
+        default="Definitions",
+        help="Directory containing definition CSV files (default: Definitions)",
+    )
+    parser_train.add_argument("--export-json", help="Export learned knowledge to a JSON file")
+    parser_train.add_argument(
+        "--summary",
+        action="store_true",
+        help="Display summary of learned metrics and tag distribution",
+    )
+
     args = parser.parse_args(argv)
 
     if getattr(args, "gui", False) or args.command == "gui":
@@ -531,6 +742,10 @@ def _run_cli(argv: list[str] | None = None) -> None:
         run_command(args)
     elif args.command == "tag":
         tag_command(args)
+    elif args.command == "audit":
+        audit_command(args)
+    elif args.command == "train":
+        train_command(args)
 
 
 def main(args: list[str] | None = None) -> None:

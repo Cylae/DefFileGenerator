@@ -76,8 +76,8 @@ Modbus;Inverter;Schneider;CONEXT_CORE_XC
 78;3;64029;U16;;User Apparent Power Limit;;0.1;0.0;kVA;4
 79;3;64030;U16;;User Phase Current Limit;CMD_P_AC_SET_PERCENT;1.0;0.0;%;4
 80;3;64032;U16;;Language;;1.0;0.0;;4
-81;3;64033;I32;;Time (UTC) 1;;1.0;0.0;s;4
-82;3;64034;I32;;Time (UTC) 2;;1.0;0.0;s;4
+81;3;64033;U16;;Time (UTC) 1;;1.0;0.0;s;4
+82;3;64034;U16;;Time (UTC) 2;;1.0;0.0;s;4
 83;3;64036;U16;;Voltage Support Function;;1.0;0.0;;4
 84;3;64040;U16;;P(f) Control_ Reset Freq High;;0.01;0.0;Hz;4
 85;3;64041;U16;;P(f) Control_ Corner Freq;;0.1;0.0;Hz;4
@@ -154,8 +154,8 @@ Modbus;Inverter;Schneider;CONEXT_CORE_XC
 156;3;18182;U16;;Logger state;;1.0;0.0;;4
 157;3;18449;U16;;Timestamp High;;1.0;0.0;;4
 158;3;18450;U16;;Timestamp Low;;1.0;0.0;;4
-159;3;18451;U32;;kWh Energy High;;1.0;0.0;kWh;4
-160;3;18452;U32;;kWh Energy Low;;1.0;0.0;kWh;4
+159;3;18451;U16;;kWh Energy High;;1.0;0.0;kWh;4
+160;3;18452;U16;;kWh Energy Low;;1.0;0.0;kWh;4
 161;3;18453;I16;;Grid AC voltage phase A to phase B_ RMS;;0.1;0.0;V;4
 162;3;18454;I16;;Grid AC voltage phase B to phase C_ RMS;;0.1;0.0;V;4
 163;3;18455;I16;;Grid AC voltage phase C to phase A_ RMS;;0.1;0.0;V;4

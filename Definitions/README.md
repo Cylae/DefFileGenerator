@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **125 fichiers de définition** validés couvrant **18 131 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **125 fichiers de définition** validés couvrant **18 127 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,7 +8,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 66 | 13 940 | ABB, CyberPower, EFACEC, GoodWe, Goodwe (+21) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 66 | 13 936 | ABB, CyberPower, EFACEC, GoodWe, Goodwe (+21) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 31 | 3 394 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+14) |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
 | Passerelles & Loggers de Communication | `COM_` | 2 | 142 | GoodWe, Huawei |
@@ -60,8 +60,8 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Goodwe_SMT50K_SMT60K.csv`](./INV_Goodwe_SMT50K_SMT60K.csv) | Goodwe | SMT50K_SMT60K | Modbus | 119 |
 | [`INV_Growatt_Generic.csv`](./INV_Growatt_Generic.csv) | Growatt | Growatt_Generic | ﻿modbusRTU | 851 |
 | [`INV_Growatt_MAX1500V_MAX-XLV_Series.csv`](./INV_Growatt_MAX1500V_MAX-XLV_Series.csv) | Growatt | MAX1500V_MAX-XLV_Series | Modbus | 468 |
-| [`INV_Growatt_MOD_TL3-XH_Series.csv`](./INV_Growatt_MOD_TL3-XH_Series.csv) | Growatt | MOD_TL3-XH_Series | Modbus | 410 |
-| [`INV_Growatt_TL-X_TL-XH_Series.csv`](./INV_Growatt_TL-X_TL-XH_Series.csv) | Growatt | TL-X_TL-XH_Series | Modbus | 426 |
+| [`INV_Growatt_MOD_TL3-XH_Series.csv`](./INV_Growatt_MOD_TL3-XH_Series.csv) | Growatt | MOD_TL3-XH_Series | Modbus | 409 |
+| [`INV_Growatt_TL-X_TL-XH_Series.csv`](./INV_Growatt_TL-X_TL-XH_Series.csv) | Growatt | TL-X_TL-XH_Series | Modbus | 425 |
 | [`INV_Growatt_TL3-X_Series.csv`](./INV_Growatt_TL3-X_Series.csv) | Growatt | TL3-X_Series | Modbus | 371 |
 | [`INV_Huawei_V2.csv`](./INV_Huawei_V2.csv) | Huawei | V2 | Modbus | 214 |
 | [`INV_Huawei_V3.csv`](./INV_Huawei_V3.csv) | Huawei | V3 | Modbus | 182 |
@@ -91,7 +91,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_SIEL_WINDWAVE.csv`](./INV_SIEL_WINDWAVE.csv) | SIEL | WINDWAVE | Modbus | 21 |
 | [`INV_SMA_Generic.csv`](./INV_SMA_Generic.csv) | SMA | Generic | Modbus | 857 |
 | [`INV_SMA_SC2xxx.csv`](./INV_SMA_SC2xxx.csv) | SMA | SC2xxx | Modbus | 78 |
-| [`INV_SMA_STP_X.csv`](./INV_SMA_STP_X.csv) | SMA | STP_X | Modbus | 437 |
+| [`INV_SMA_STP_X.csv`](./INV_SMA_STP_X.csv) | SMA | STP_X | Modbus | 435 |
 | [`INV_SofarSolar_1-40KTL.csv`](./INV_SofarSolar_1-40KTL.csv) | SofarSolar | 1-40KTL | Modbus | 115 |
 | [`INV_SofarSolar_50-70KTL.csv`](./INV_SofarSolar_50-70KTL.csv) | SofarSolar | 50-70KTL | Modbus | 152 |
 | [`INV_SofarSolar_HYDG3.csv`](./INV_SofarSolar_HYDG3.csv) | SofarSolar | HYDG3 | Modbus | 538 |

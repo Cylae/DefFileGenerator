@@ -1,6 +1,6 @@
-﻿modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
-1;3;30000_30;STRING;;Model;DisplayModel;1.000000;0.000000;N/A;4
-2;3;30015_20;STRING;;SN;DisplaySerialNumber;1.000000;0.000000;N/A;4
+modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
+1;3;30000_30;STRING;;Model;MODEL;1.000000;0.000000;N/A;4
+2;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;N/A;4
 3;3;30025_20;STRING;;PN;pn;1.000000;0.000000;N/A;4
 4;3;30070;U16;;Model ID;model_id;1.000000;0.000000;N/A;4
 5;3;30071;U16;;Number of PV strings;number_of_pv_strings;1.000000;0.000000;N/A;4
@@ -47,17 +47,17 @@
 46;3;32074;I32;;Phase B current;phase_b_current;0.001000;0.000000;A;4
 47;3;32076;I32;;Phase C current;phase_c_current;0.001000;0.000000;A;4
 48;3;32078;I32;;Peak active power of current day;peak_active_power_of_current_day;0.001000;0.000000;kW;4
-49;3;32080;I32;;Active power;RealPower;0.001000;0.000000;kW;4
+49;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
 50;3;32082;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
-51;3;32084;I16;;Power factor;CosPhi;0.001000;0.000000;N/A;4
-52;3;32085;U16;;Grid frequency;GridFrequency;0.010000;0.000000;Hz;4
+51;3;32084;I16;;Power factor;PF;0.001000;0.000000;N/A;4
+52;3;32085;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
 53;3;32086;U16;;Efficiency;efficiency;0.010000;0.000000;'%;4
 54;3;32087;I16;;Internal temperature;internal_temperature;0.100000;0.000000;°C;4
 55;3;32088;U16;;Insulation resistance;insulation_resistance;0.001000;0.000000;MΩ;4
 56;3;32089;U16;;Device status;device_status;1.000000;0.000000;N/A;4
 57;3;32090;U16;;Fault code;fault_code;1.000000;0.000000;N/A;4
 58;3;32106;U32;;Accumulate d energy yield;accumulate_d_energy_yield;0.010000;0.000000;kWh;4
-59;3;32114;U32;;Daily energy yield;EnergyDay;0.010000;0.000000;kWh;4
+59;3;32114;U32;;Daily energy yield;E_DAY;0.010000;0.000000;kWh;4
 60;3;35127;U16;;[Manageme nt system] Managemen t system status;manageme_nt_system_managemen_t_system_status;1.000000;0.000000;N/A;4
 61;3;35138;U16;;[Smart I-V Curve Diagnosis] License status;smart_iv_curve_diagnosis_license_status;1.000000;0.000000;N/A;4
 62;3;35145_20;STRING;;License SN;license_sn;1.000000;0.000000;N/A;4

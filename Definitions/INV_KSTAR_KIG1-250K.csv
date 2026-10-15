@@ -6,7 +6,7 @@ Modbus;Inverter;KSTAR;KIG1-250K;1
 5;4;2969;I16;;PV11 input current;;0.01;0.0;A;4
 6;4;2970;U32;;PV11 input power;;1.0;0.0;W;4
 7;4;2972;U16;;PV10 input voltage;;0.1;0.0;V;4
-8;4;2973;U32;;PV10 input current;;0.01;0.0;A;4
+8;4;2973;U16;;PV10 input current;;0.01;0.0;A;4
 9;4;2974;U32;;PV10 input power;;1.0;0.0;W;4
 10;4;2976;U16;;PV9 input voltage;;0.1;0.0;V;4
 11;4;2977;U16;;PV9 input current;;0.01;0.0;A;4
@@ -62,11 +62,11 @@ Modbus;Inverter;KSTAR;KIG1-250K;1
 61;4;3037_1;U8;;Mains standard;;1.0;0.0;;4
 62;4;3038;U32;;Total energy yield;E_TOT;0.1;0.0;kWh;4
 63;4;3040;U32;;Annual energy yield;;1.0;0.0;kWh;4
-64;4;3042;U32;;Daily energy yield;E_DAY;1.0;0.0;kWh;4
+64;4;3042;U16;;Daily energy yield;E_DAY;1.0;0.0;kWh;4
 65;4;3043;U16;;Power-on voltage;;0.1;0.0;V;4
 66;4;3044;U16;;Power-on delay;;1.0;0.0;S;4
-67;4;3045;U32;;Lower grid voltage threshold;;0.1;0.0;V;4
-68;4;3046;U32;;Upper grid voltage threshold;;0.1;0.0;V;4
+67;4;3045;U16;;Lower grid voltage threshold;;0.1;0.0;V;4
+68;4;3046;U16;;Upper grid voltage threshold;;0.1;0.0;V;4
 69;4;3047;U16;;Lower grid frequency threshold;;0.01;0.0;Hz;4
 70;4;3048;I16;;Upper grid frequency threshold;;0.01;0.0;Hz;4
 71;4;3049;U16;;Preset power factor;;1.0;0.0;;4
@@ -179,7 +179,7 @@ Modbus;Inverter;KSTAR;KIG1-250K;1
 178;4;3222;U16;;PV9 current calibration coefficient;;1.0;0.0;;4
 179;4;3223;U16;;PV10 current calibration coefficient;;1.0;0.0;;4
 180;4;3224;U16;;PV11 current calibration coefficient;;1.0;0.0;;4
-181;4;3225;U32;;PV12 current calibration coefficient;;1.0;0.0;;4
+181;4;3225;U16;;PV12 current calibration coefficient;;1.0;0.0;;4
 182;4;3226;U16;;Power change rate;;1.0;0.0;%/s;4
 183;4;3227;U16;;Over temperature derating warning enable;;1.0;0.0;;4
 184;4;3228;U16;;Soft start time;;1.0;0.0;;4

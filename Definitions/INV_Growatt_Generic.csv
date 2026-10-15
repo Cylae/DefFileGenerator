@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
+modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 1;3;0;U16;;Remote OnOff;CMD_ON;1.000000;0.000000;;4
 2;3;1_0_1;BITS;;SaftyFuncEn : SPI enable;saftyfuncen_spi_enable;1.000000;0.000000;;4
 3;3;1_1_1;BITS;;SaftyFuncEn : AutoTestStart;saftyfuncen_autoteststart;1.000000;0.000000;;4
@@ -715,8 +715,8 @@
 714;4;3101;U16;;Real Output power Percent_1;real_output_power_percent_1;1.000000;0.000000;'%;4
 715;4;3102;U32;;Output Maxpower Limited_1;output_maxpower_limited_1;0.100000;0.000000;W;4
 716;4;3104_0_1;BITS;;Inverter standby : turn off;inverter_standby_turn_off;1.000000;0.000000;;4
-717;4;3103_1_1;BITS;;Inverter standby : PV low;inverter_standby_pv_low;1.000000;0.000000;;4
-718;4;3103_2_1;BITS;;Inverter standby : AC Volt/Freq out of scope;inverter_standby_ac_voltfreq_out_of_scope;1.000000;0.000000;;4
+717;4;3104_1_1;BITS;;Inverter standby : PV low;inverter_standby_pv_low;1.000000;0.000000;;4
+718;4;3104_2_1;BITS;;Inverter standby : AC Volt/Freq out of scope;inverter_standby_ac_voltfreq_out_of_scope;1.000000;0.000000;;4
 719;4;3105;U16;;Inverter fault maincode;inverter_fault_maincode;1.000000;0.000000;;4
 720;4;3106;U16;;Inverter Warning maincode;inverter_warning_maincode;1.000000;0.000000;;4
 721;4;3107;U16;;Inverter fault subcode;inverter_fault_subcode;1.000000;0.000000;;4
