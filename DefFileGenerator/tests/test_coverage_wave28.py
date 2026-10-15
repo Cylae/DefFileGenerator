@@ -41,16 +41,27 @@ def test_infer_webdyn_tag_prefix_stripping():
 
 def test_infer_sunpm_tag_existing_tag_branching():
     # Existing tag with normalize_existing=True (default)
-    assert infer_sunpm_tag("Active Power", existing_tag="RealPower", normalize_existing=True) == "P_AC"
+    assert (
+        infer_sunpm_tag("Active Power", existing_tag="RealPower", normalize_existing=True) == "P_AC"
+    )
     # Existing tag with normalize_existing=False
-    assert infer_sunpm_tag("Active Power", existing_tag="RealPower", normalize_existing=False) == "RealPower"
+    assert (
+        infer_sunpm_tag("Active Power", existing_tag="RealPower", normalize_existing=False)
+        == "RealPower"
+    )
     # Existing tag without normalization match
-    assert infer_sunpm_tag("Custom Name", existing_tag="CUSTOM_TAG", normalize_existing=True) == "CUSTOM_TAG"
+    assert (
+        infer_sunpm_tag("Custom Name", existing_tag="CUSTOM_TAG", normalize_existing=True)
+        == "CUSTOM_TAG"
+    )
 
 
 def test_infer_sunpm_tag_control_commands():
     assert infer_sunpm_tag("Control Power Enable (wmaxlim)") == "CMD_P_ENA"
-    assert infer_sunpm_tag("Reactive Power Setpoint", equipment_type="Inverter") == "CMD_Q_AC_SET_PERCENT"
+    assert (
+        infer_sunpm_tag("Reactive Power Setpoint", equipment_type="Inverter")
+        == "CMD_Q_AC_SET_PERCENT"
+    )
     assert infer_sunpm_tag("Reactive Power Setpoint (kVAR)") == "CMD_Q_AC_SET_ABS"
     assert infer_sunpm_tag("Reactive Power Setpoint (VAR)") == "CMD_Q_AC_SET_ABS"
     assert infer_sunpm_tag("Reactive Power Setpoint (abs)") == "CMD_Q_AC_SET_ABS"
@@ -130,9 +141,15 @@ def test_infer_sunpm_tag_mppt_strings_dc_and_sensors():
     assert infer_sunpm_tag("Modbus Slave Address") == "UNIT_ID"
 
     # Display / Public counters
-    assert infer_sunpm_tag("Daily Avoided CO2 Emissions", equipment_type="Display") == "AVOIDED_CO2_DAY"
+    assert (
+        infer_sunpm_tag("Daily Avoided CO2 Emissions", equipment_type="Display")
+        == "AVOIDED_CO2_DAY"
+    )
     assert infer_sunpm_tag("Avoided CO2 Emissions", equipment_type="Display") == "AVOIDED_CO2"
-    assert infer_sunpm_tag("Self-Consumption Rate", equipment_type="Display") == "SELF_CONSUMPTION_RATIO"
+    assert (
+        infer_sunpm_tag("Self-Consumption Rate", equipment_type="Display")
+        == "SELF_CONSUMPTION_RATIO"
+    )
     assert infer_sunpm_tag("Load Power Consumption", equipment_type="Display") == "LOAD_P_AC"
 
 
