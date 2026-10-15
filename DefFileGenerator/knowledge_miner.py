@@ -647,6 +647,47 @@ def infer_sunpm_tag(
                 low = variable_name.lower()
                 if any(u in low for u in ("kw", " w", "[w]", "(w)", "kvar", "var", "abs")):
                     learned = ""
+            if learned in ("S_AC", "P_AC", "Q_AC", "FREQ", "PF"):
+                low = variable_name.lower()
+                if any(
+                    ph in low
+                    for ph in (
+                        "phase a",
+                        "phase b",
+                        "phase c",
+                        "phase 1",
+                        "phase 2",
+                        "phase 3",
+                        "phasea",
+                        "phaseb",
+                        "phasec",
+                        "pac1",
+                        "pac2",
+                        "pac3",
+                        "qac1",
+                        "qac2",
+                        "qac3",
+                        "sac1",
+                        "sac2",
+                        "sac3",
+                        "line a",
+                        "line b",
+                        "line c",
+                        "line 1",
+                        "line 2",
+                        "line 3",
+                        " l1",
+                        " l2",
+                        " l3",
+                        "(l1)",
+                        "(l2)",
+                        "(l3)",
+                        "[l1]",
+                        "[l2]",
+                        "[l3]",
+                    )
+                ):
+                    learned = ""
             if learned:
                 return learned
 

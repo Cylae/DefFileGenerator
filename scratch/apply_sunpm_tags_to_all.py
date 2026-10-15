@@ -1,6 +1,6 @@
-import csv
 from pathlib import Path
-from DefFileGenerator.knowledge_miner import auto_fix_definition_file, normalize_tag_to_sunpm, infer_sunpm_tag
+
+from DefFileGenerator.knowledge_miner import auto_fix_definition_file
 
 GEN_DIR = Path("generated_definitions")
 files = list(GEN_DIR.glob("*.csv"))
@@ -11,7 +11,7 @@ total_dedup = 0
 
 print(f"Applying SunPM Tag Enrichment & Normalization across {len(files)} definition files...")
 
-for idx, f in enumerate(files, 1):
+for _idx, f in enumerate(files, 1):
     try:
         counts = auto_fix_definition_file(
             input_path=f,
@@ -26,7 +26,7 @@ for idx, f in enumerate(files, 1):
     except Exception as e:
         print(f"Error on {f.name}: {e}")
 
-print(f"Done!")
+print("Done!")
 print(f"Legacy tags normalized to new SunPM canonical tags: {total_normalized:,}")
 print(f"New SunPM tags inferred and added: {total_inferred:,}")
 print(f"Duplicates removed: {total_dedup:,}")

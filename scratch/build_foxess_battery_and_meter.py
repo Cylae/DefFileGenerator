@@ -13,8 +13,7 @@ from pathlib import Path
 WORKSPACE_DIR = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 sys.path.insert(0, str(WORKSPACE_DIR))
 
-from DefFileGenerator.def_gen import Generator
-from DefFileGenerator.knowledge_miner import auto_fix_definition_file
+from DefFileGenerator.def_gen import Generator  # noqa: E402
 
 FOX_DIR = Path(r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers\Fox ESS")
 SOURCE_BAT_CSV = FOX_DIR / "Battery" / "FoxESS_P3_H3_PRO.csv"
@@ -143,7 +142,11 @@ for idx, r in enumerate(meter_rows, 1):
     # Action code
     if not row11[10].strip():
         addr_int = int(row11[2].split("_")[0])
-        row11[10] = "1" if addr_int in (49207, 49208, 49248) else ("9" if "lost" in row11[5].lower() else "4")
+        row11[10] = (
+            "1"
+            if addr_int in (49207, 49208, 49248)
+            else ("9" if "lost" in row11[5].lower() else "4")
+        )
     clean_meter_rows.append(row11)
 
 meter_header = ["Modbus", "Meter", "FoxESS", "P3 Pro / H3 Pro", "", "", "", "", "", "", ""]
@@ -163,7 +166,12 @@ for r in all_rows:
     name = r[5]
 
     # Exclude meter registers
-    if (36100 <= addr <= 36248) or (38801 <= addr <= 38947) or addr in (39168, 49207, 49208, 49248) or "meter" in name.lower():
+    if (
+        (36100 <= addr <= 36248)
+        or (38801 <= addr <= 38947)
+        or addr in (39168, 49207, 49208, 49248)
+        or "meter" in name.lower()
+    ):
         continue
 
     # Include battery / BMS registers
@@ -238,6 +246,7 @@ for idx, r in enumerate(battery_rows, 1):
 
 bat_header = ["Modbus", "Battery", "FoxESS", "P3 Pro / H3 Pro", "", "", "", "", "", "", ""]
 
+
 # =========================================================================
 # 3. WRITE & VALIDATE FILES
 # =========================================================================
@@ -248,8 +257,13 @@ def write_and_audit(path: Path, header: list[str], rows: list[list[str]], name: 
         writer.writerow(header)
         writer.writerows(rows)
     report = generator.validate_csv_detailed(str(path), strict=False, strict_overlap=False)
-    print(f"[{name}] {path.name}: {len(rows)} registers, valid: {report.is_valid}, errors: {report.stats.get('errors', 0)}")
-    assert report.is_valid, f"Validation failed for {path}: {[iss.message for iss in report.issues if iss.severity == 'ERROR']}"
+    print(
+        f"[{name}] {path.name}: {len(rows)} registers, valid: {report.is_valid}, errors: {report.stats.get('errors', 0)}"
+    )
+    assert report.is_valid, (
+        f"Validation failed for {path}: {[iss.message for iss in report.issues if iss.severity == 'ERROR']}"
+    )
+
 
 # Write Meter definitions
 dest_meter_paths = [
