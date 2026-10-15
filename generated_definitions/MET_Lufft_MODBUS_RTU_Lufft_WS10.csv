@@ -1,0 +1,24 @@
+ModbusRTU;Meter;Lufft;WS10;;;;;;;
+1;4;19;I16;;Temprature de l'air ;;10;0.0;C;4
+2;4;23;I16;;Temprature du point de rose;;10;0.0;C;4
+3;4;29;U16;;Humidit relative  ;;10;0.0;%;4
+4;4;31;U16;;Humidit absolue ;;10;0.0;g/m3;4
+5;4;37;U16;;Pression atmosphrique absolue;PRESSURE;10;0.0;hPa;4
+6;4;39;U16;;Pression atmosphrique relative  ;;10;0.0;hPa ;4
+7;4;45;U16;;Vitesse du vent ms;WIND_SPEED;10;0.0;m/s;4
+8;4;49;U16;;Vitesse du vent kmh;;10;0.0;km/h;4
+9;4;53;U16;;Direction du vent  ;WIND_BEARING;10;0.0;deg;4
+10;4;54;U16;;Direction du vent  (corrig par la boussole);;10;0.0;deg;4
+11;4;55;U16;;Direction magntique;;10;0.0;deg;4
+12;4;59;U16;;Quantit de prcipitations;;100;0.0;mm;4
+13;4;60;U16;;Quantit de prcipitations, diff;;100;0.0;mm;4
+14;4;61;U16;;Type de prcipitations;;1;0.0;;4
+15;4;62;U16;;Intensit des prcipitations /h;;100;0.0;mm/h;4
+16;4;63;U16;;Intensit des prcipitations /min;;10000;0.0;mm/min;4
+17;4;64;U16;;Quantit de prcipitations, quotidienne;;100;0.0;mm;4
+18;4;68;U16;;Rayonnement global ;;10;0.0;W/m2;4
+19;4;70;U16;;Position du soleil azimut ;;10;0.0;deg;4
+20;4;71;U16;;Position du soleil lvation;;10;0.0;deg;4
+21;4;74;U16;;Indice UV;;1;0.0;;4
+22;4;75;U16;;Luminosit;;10;0.0;klx;4
+23;4;76;U16;;Crpuscule;;10;0.0;lx;4

@@ -1,0 +1,90 @@
+modbusRTU;Other;PowerOne;WPM_MODBUS_ABB_TRIO_200_276;;;;;;;
+1;3;179;U16;;Remote On/Off;CMD_ON;1.000000;0.000000;;4
+2;3;180;U16;;Alarm manual reset;alarm_manual_reset;1.000000;0.000000;;4
+3;3;189;U16;;Power ramping interval;power_ramping_interval;1.000000;0.000000;;4
+4;3;190;U16;;Mode dynamique - Tempo - Durée des consignes de puissance active ou réactive 1;mode_dynamique_tempo_dure_des_consignes_de_puissance_active_ou_ractive_1;1.000000;0.000000;min;4
+5;3;197;U16;;Définition du comportement transitoire 1;dfinition_du_comportement_transitoire_1;1.000000;0.000000;;4
+6;3;199;F32;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi);mode_dynamique_gestion_de_la_puissance_reactive_via_un_facteur_de_puissance_fixe_cos_phi;1.000000;0.000000;;4
+7;3;201;F32;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi);mode_permanent_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi;1.000000;0.000000;;4
+8;3;204;U16;;Mode permanent - facteur de puissance remis à 1;mode_permanent_facteur_de_puissance_remis_1;1.000000;0.000000;;4
+9;3;209;U16;;Mode dynamique - régulation de la puissance active maximale de sortie en pourcentage de la puissance nominale (P NOM ) par pas de 1%;mode_dynamique_rgulation_de_la_puissance_active_maximale_de_sortie_en_pourcentage_de_la_puissance_nominale_p_nom_par_pas_de_1;1.000000;0.000000;'%;4
+10;3;211;U16;;Mode permanent - régulation de la puissance active maximale de sortie en pourcentage de la puissance nominale (P NOM ) par pas de 1%;mode_permanent_rgulation_de_la_puissance_active_maximale_de_sortie_en_pourcentage_de_la_puissance_nominale_p_nom_par_pas_de_1;1.000000;0.000000;'%;4
+11;3;214;U16;;Mode permanent - Reset de la régulation de puissance active retour à 100%P NOM;mode_permanent_reset_de_la_rgulation_de_puissance_active_retour_100p_nom;1.000000;0.000000;;4
+12;3;219;F32;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi);mode_dynamique_gestion_de_la_puissance_reactive_via_un_facteur_de_puissance_fixe_cos_phi_1;1.000000;0.000000;;4
+13;3;221;F32;;Mode permanent - gestion de la puissance réactive via le facteur de puissance (cos phi);mode_permanent_gestion_de_la_puissance_ractive_via_le_facteur_de_puissance_cos_phi;1.000000;0.000000;;4
+14;3;224;I16;;Mode dynamique - gestion de la puissance réactive en pourcentage de la puissance apparente (P NOM ) par pas de 1%;mode_dynamique_gestion_de_la_puissance_ractive_en_pourcentage_de_la_puissance_apparente_p_nom_par_pas_de_1;1.000000;0.000000;'%;4
+15;3;226;I16;;Mode permanent - gestion de la puissance réactive en pourcentage de la puissance apparente (P NOM ) par pas de 1%;mode_permanent_gestion_de_la_puissance_ractive_en_pourcentage_de_la_puissance_apparente_p_nom_par_pas_de_1;1.000000;0.000000;'%;4
+16;3;298;U16;;Configuration des options transitoires;configuration_des_options_transitoires;1.000000;0.000000;;4
+17;3;299;U16;;Compteur “cardiaque”;compteur_cardiaque;1.000000;0.000000;;4
+18;3;300;F32;;Onduleur - Puissance reactive;onduleur_puissance_reactive;1.000000;0.000000;VAR;4
+19;3;302;F32;;Onduleur - Tension du réseau;onduleur_tension_du_rseau;1.000000;0.000000;V;4
+20;3;304;F32;;Onduleur - Puissance active injectée;onduleur_puissance_active_injecte;1.000000;0.000000;W;4
+21;3;306;F32;;Onduleur - Courant;onduleur_courant;1.000000;0.000000;A;4
+22;3;500;U16;;Définition de l’unité des registres (% ou ‰);dfinition_de_lunit_des_registres_ou;1.000000;0.000000;;4
+23;3;501;U16;;Définir le mode utilisé (permanent ou dynamique);dfinir_le_mode_utilis_permanent_ou_dynamique;1.000000;0.000000;;4
+24;3;502;U16;;Mode permanent et dynamique - Intervalle de temps pour la montée en puissance (reactif);mode_permanent_et_dynamique_intervalle_de_temps_pour_la_monte_en_puissance_reactif;1.000000;0.000000;;4
+25;3;503;U16;;Mode dynamique - Tempo - Durée des consignes de puissance active ou réactive 2;mode_dynamique_tempo_dure_des_consignes_de_puissance_active_ou_ractive_2;1.000000;0.000000;min;4
+26;3;504;U16;;Définition du comportement transitoire 2;dfinition_du_comportement_transitoire_2;1.000000;0.000000;;4
+27;3;505;U16;;Définition de la quantité de puissance reactive à fournir;dfinition_de_la_quantit_de_puissance_reactive_fournir;1.000000;0.000000;;4
+28;3;506;I16;;Mode dynamique - gestion de la puissance reactive en pourcentage de la puissance apparente (P NOM ) par pas de 1%;mode_dynamique_gestion_de_la_puissance_reactive_en_pourcentage_de_la_puissance_apparente_p_nom_par_pas_de_1;1.000000;0.000000;'%;4
+29;3;507;U16;;Mode dynamique - régulation de la puissance active maximale de sortie en pourcentage de la puissance nominale (P NOM ) par pas de 1% ou 1‰;mode_dynamique_rgulation_de_la_puissance_active_maximale_de_sortie_en_pourcentage_de_la_puissance_nominale_p_nom_par_pas_de_1_ou_1;1.000000;0.000000;;4
+30;3;508;F32;;Mode dynamique - gestion de la puissance reactive via le facteur de puissance (cos phi);mode_dynamique_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi;1.000000;0.000000;;4
+31;3;510;I16;;Mode permanent - gestion de la puissance reactive en pourcentage de la puissance apparente (P NOM ) par pas de 1% ou 1‰;mode_permanent_gestion_de_la_puissance_reactive_en_pourcentage_de_la_puissance_apparente_p_nom_par_pas_de_1_ou_1;1.000000;0.000000;;4
+32;3;511;U16;;Mode permanent - régulation de la puissance active maximale de sortie en pourcentage de la puissance nominale (P NOM ) par pas de 1% ou 1‰;mode_permanent_rgulation_de_la_puissance_active_maximale_de_sortie_en_pourcentage_de_la_puissance_nominale_p_nom_par_pas_de_1_ou_1;1.000000;0.000000;;4
+33;3;512;F32;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi)1;mode_permanent_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi1;1.000000;0.000000;;4
+34;3;514;U16;;Reset de la puissance active;reset_de_la_puissance_active;1.000000;0.000000;;4
+35;3;515;U16;;Reset de la puissance réactive - facteur de puissance remis à 1 ou Q-fixed remis à 0;reset_de_la_puissance_ractive_facteur_de_puissance_remis_1_ou_qfixed_remis_0;1.000000;0.000000;;4
+36;4;99;U16;;Onduleur - Start register;onduleur_start_register;1.000000;0.000000;;4
+37;4;100;U16;;Onduleur - Map size;onduleur_map_size;1.000000;0.000000;;4
+38;4;101;U16;;Onduleur - Version (majeur/mineure) de la table d’échange au format numérique;onduleur_version_majeurmineure_de_la_table_dchange_au_format_numrique;1.000000;0.000000;;4
+39;4;102;U16;;Addresse RS485 de l’onduleur;addresse_rs485_de_londuleur;1.000000;0.000000;;1
+40;4;103;U16;;SN0;sn0;1.000000;0.000000;;1
+41;4;104;U16;;SN1;sn1;1.000000;0.000000;;1
+42;4;105;U16;;SN2;sn2;1.000000;0.000000;;1
+43;4;106;U16;;SN3;sn3;1.000000;0.000000;;1
+44;4;107;U16;;SN4;sn4;1.000000;0.000000;;1
+45;4;108;U16;;SN5;sn5;1.000000;0.000000;;1
+46;4;109;U16;;PN0;pn0;1.000000;0.000000;;1
+47;4;110;U16;;PN1;pn1;1.000000;0.000000;;1
+48;4;111;U16;;PN2;pn2;1.000000;0.000000;;1
+49;4;112;U16;;PN3;pn3;1.000000;0.000000;;1
+50;4;113;U16;;PN4;pn4;1.000000;0.000000;;1
+51;4;114;U16;;PN5;pn5;1.000000;0.000000;;1
+52;4;115;U16;;Onduleur  Identifiant;onduleur_identifiant;1.000000;0.000000;;1
+53;4;116;U16;;Onduleur  Code pays;onduleur_code_pays;1.000000;0.000000;;1
+54;4;117;U16;;Onduleur  Isolation galvanique;onduleur_isolation_galvanique;1.000000;0.000000;;1
+55;4;118;U16;;Onduleur  Type;onduleur_type;1.000000;0.000000;;1
+56;4;119;U16;;Onduleur  Semaine de production – Octet fort;onduleur_semaine_de_production_octet_fort;1.000000;0.000000;;1
+57;4;120;U16;;Onduleur  Semaine de production – Octet faible;onduleur_semaine_de_production_octet_faible;1.000000;0.000000;;1
+58;4;121;U16;;Onduleur  Année de production – Octet fort;onduleur_anne_de_production_octet_fort;1.000000;0.000000;;1
+59;4;122;U16;;Onduleur  Année de production – Octet faible;onduleur_anne_de_production_octet_faible;1.000000;0.000000;;1
+60;4;123;U16;;global state;global_state;1.000000;0.000000;;1
+61;4;124;U16;;status;status;1.000000;0.000000;;4
+62;4;125;U16;;state 1 mppt;state_1_mppt;1.000000;0.000000;;1
+63;4;126;U16;;state 2 mppt;state_2_mppt;1.000000;0.000000;;1
+64;4;127;U16;;error;error;1.000000;0.000000;;8
+65;4;128;U16;;Carte de contrôle de l’afficheur  Etat;carte_de_contrle_de_lafficheur_etat;1.000000;0.000000;;4
+66;4;129;U16;;Carte de communication  Etat;carte_de_communication_etat;1.000000;0.000000;;4
+67;4;130;U16;;Carte porte-fusibles  Etat;carte_portefusibles_etat;1.000000;0.000000;;4
+68;4;131;F32;;Onduleur  Energie journalière;onduleur_energie_journalire;1.000000;0.000000;Wh;1
+69;4;133;F32;;energy_tot;energy_tot;1.000000;0.000000;kWh;4
+70;4;135;F32;;Onduleur  Energie partielle;onduleur_energie_partielle;1.000000;0.000000;kWh;1
+71;4;137;F32;;Onduleur  Energie hebdomadaire;onduleur_energie_hebdomadaire;1.000000;0.000000;kWh;1
+72;4;139;F32;;Onduleur  Energie mensuelle;onduleur_energie_mensuelle;1.000000;0.000000;kWh;1
+73;4;141;F32;;Onduleur  Energie annuelle;onduleur_energie_annuelle;1.000000;0.000000;kWh;1
+74;4;143;F32;;volt;volt;1.000000;0.000000;V;4
+75;4;145;F32;;current;current;1.000000;0.000000;A;4
+76;4;147;F32;;power;power;1.000000;0.000000;W;4
+77;4;149;F32;;frequency;FREQ;1.000000;0.000000;Hz;4
+78;4;151;F32;;power.mppt.1;powermppt1;1.000000;0.000000;W;4
+79;4;153;F32;;volt.mppt.1;voltmppt1;1.000000;0.000000;V;4
+80;4;155;F32;;current.mppt.1;currentmppt1;1.000000;0.000000;A;4
+81;4;157;F32;;power.mppt.2;powermppt2;1.000000;0.000000;W;4
+82;4;159;F32;;volt.mppt.2;voltmppt2;1.000000;0.000000;V;4
+83;4;161;F32;;current.mppt.2;currentmppt2;1.000000;0.000000;A;4
+84;4;163;F32;;temperature;temperature;1.000000;0.000000;;4
+85;4;165;F32;;booster temperature;booster_temperature;1.000000;0.000000;;4
+86;4;167;F32;;riso;riso;1.000000;0.000000;Mohm;4
+87;4;169;F32;;wind frequency;wind_frequency;1.000000;0.000000;Hz;4
+88;4;171;F32;;cosphi;PF;1.000000;0.000000;;4
+89;4;173;U16;;Onduleur - Présence - Indicates status of board to inverter;onduleur_prsence_indicates_status_of_board_to_inverter;1.000000;0.000000;;1

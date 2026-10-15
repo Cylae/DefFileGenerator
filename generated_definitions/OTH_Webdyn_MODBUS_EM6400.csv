@@ -1,0 +1,18 @@
+modbusRTU;Other;Webdyn;MODBUS_EM6400;;;;;;;
+1;3;3960;F32_W;;Forward active energy;forward_active_energy;1.000000;0.000000;Wh;4
+2;3;3902;F32_W;;Active Power;P_AC;1.000000;0.000000;W;4
+3;3;3926;F32_W;;R-N Phase Voltage;rn_phase_voltage;1.000000;0.000000;VLNr;4
+4;3;3940;F32_W;;Y-N Phase Voltage;yn_phase_voltage;1.000000;0.000000;VLNy;4
+5;3;3954;F32_W;;B-N Phase Voltage;bn_phase_voltage;1.000000;0.000000;VLNb;4
+6;3;3998;U32;;Interrupts;interrupts;1.000000;0.000000;Counts;4
+7;3;3914;F32_W;;Freuency;freuency;1.000000;0.000000;Hz;4
+8;3;3924;F32_W;;R-Y Phase Voltage;ry_phase_voltage;1.000000;0.000000;VRY;4
+9;3;3938;F32_W;;Y-B Phase Voltage;yb_phase_voltage;1.000000;0.000000;VYB;4
+10;3;3952;F32_W;;B-R Phase Voltage;br_phase_voltage;1.000000;0.000000;VBR;4
+11;3;3906;F32_W;;Avg Power Factor;avg_power_factor;1.000000;0.000000;;4
+12;3;3928;F32_W;;R Current;r_current;1.000000;0.000000;Amp;4
+13;3;3942;F32_W;;Y Current;y_current;1.000000;0.000000;Amp;4
+14;3;3956;F32_W;;B Current;b_current;1.000000;0.000000;Amp;4
+15;3;3922;F32_W;;R Power Factor;r_power_factor;1.000000;0.000000;;4
+16;3;3936;F32_W;;Y Power Factor;y_power_factor;1.000000;0.000000;;4
+17;3;3950;F32_W;;B Power Factor;b_power_factor;1.000000;0.000000;;4

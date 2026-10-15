@@ -1,0 +1,38 @@
+modbus;Meter;SOCOMEC;COUNTIS_P44;;;;;;;
+1;3;50042_8;STRING;;Vendor Name;;1;0;;4
+2;3;50050_8;STRING;;Product Name;;1;0;;4
+3;3;50514;U32;;Phase to Phase Voltage U12;;0.01;0;V;4
+4;3;50516;U32;;Phase to Phase Voltage U23;;0.01;0;V;4
+5;3;50518;U32;;Phase to Phase Voltage U31;;0.01;0;V;4
+6;3;50520;U32;;Simple Voltage V1;;0.01;0;V;4
+7;3;50522;U32;;Simple Voltage V2;;0.01;0;V;4
+8;3;50524;U32;;Simple Voltage V3;;0.01;0;V;4
+9;3;50526;U32;;Frequency;FREQ;0.01;0;Hz;4
+10;3;50528;U32;;Current I1;;0.001;0;A;4
+11;3;50530;U32;;Current I2;;0.001;0;A;4
+12;3;50532;U32;;Current I3;;0.001;0;A;4
+13;3;50534;U32;;Neutral Current In;;0.001;0;A;4
+14;3;50536;I32;;Total Active Power P;P_AC;0.01;0;kW;4
+15;3;50538;I32;;Total Reactive Power Q;Q_AC;0.01;0;kVar;4
+16;3;50540;U32;;Total Apparent Power S;S_AC;0.01;0;kVA;4
+17;3;50542;I32;;Total Power Factor;PF;0.001;0;;4
+18;3;50544;I32;;Active Power Phase 1;P_AC_1;0.01;0;kW;4
+19;3;50546;I32;;Active Power Phase 2;P_AC_2;0.01;0;kW;4
+20;3;50548;I32;;Active Power Phase 3;P_AC_3;0.01;0;kW;4
+21;3;50550;I32;;Reactive Power Phase 1;Q_AC_1;0.01;0;kVar;4
+22;3;50552;I32;;Reactive Power Phase 2;Q_AC_2;0.01;0;kVar;4
+23;3;50554;I32;;Reactive Power Phase 3;Q_AC_3;0.01;0;kVar;4
+24;3;50556;U32;;Apparent Power Phase 1;S_AC_1;0.01;0;kVA;4
+25;3;50558;U32;;Apparent Power Phase 2;S_AC_2;0.01;0;kVA;4
+26;3;50560;U32;;Apparent Power Phase 3;S_AC_3;0.01;0;kVA;4
+27;3;50562;I32;;Power Factor Phase 1;PF_1;0.001;0;;4
+28;3;50564;I32;;Power Factor Phase 2;PF_2;0.001;0;;4
+29;3;50566;I32;;Power Factor Phase 3;PF_3;0.001;0;;4
+30;3;25987;U32;;Total Positive Active Energy Ea+;E_TOT;1;0;kWh;4
+31;3;25990;U32;;Total Negative Active Energy Ea-;;1;0;kWh;4
+32;3;25993;U32;;Total Positive Reactive Energy Er+;;1;0;kVarh;4
+33;3;25996;U32;;Total Negative Reactive Energy Er-;;1;0;kVarh;4
+34;3;25999;U32;;Total Apparent Energy Eap;;1;0;kVAh;4
+35;3;19840;U32;;Line 1 Positive Active Energy;;1;0;kWh;4
+36;3;19855;U32;;Line 2 Positive Active Energy;;1;0;kWh;4
+37;3;19870;U32;;Line 3 Positive Active Energy;;1;0;kWh;4

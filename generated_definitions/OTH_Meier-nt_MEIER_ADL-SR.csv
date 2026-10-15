@@ -1,0 +1,19 @@
+modbusRTU;Other;Meier-nt;MEIER_ADL-SR;;;;;;;
+1;4;30001;F32;;temperature 1 (internal solar cell/device temperature);temperature_1_internal_solar_celldevice_temperature;1.000000;0.000000;°C;4
+2;4;30003;F32;;temperature 2 (external);temperature_2_external;1.000000;0.000000;°C;4
+3;4;30005;F32;;radiation;radiation;1.000000;0.000000;W/m²;4
+4;4;30007;F32;;radiation energy;radiation_energy;1.000000;0.000000;Wh/m²;4
+5;4;30009;F32;;wind speed;wind_speed;1.000000;0.000000;m/s;4
+6;4;30100;U16;;Cycle-Counter;cyclecounter;1.000000;0.000000;;4
+7;4;30102;U32;;yield in Wh;yield_in_wh;1.000000;0.000000;Wh;4
+8;3;40201;U16;;Sensortype;sensortype;1.000000;0.000000;;1
+9;3;40202;U16;;Number of sensors;number_of_sensors;1.000000;0.000000;;1
+10;3;40203;U16;;Serial number part 1;serial_number_part_1;1.000000;0.000000;;1
+11;3;40204;U16;;Serial number part 2;serial_number_part_2;1.000000;0.000000;;1
+12;3;40205;U16;;Firmware revision;firmware_revision;1.000000;0.000000;;1
+13;3;40206;U16;;ModBus address;modbus_address;1.000000;0.000000;;1
+14;3;40207;U16;;all values are write protection ON except the Password: 0xA55A (hex) = 42330 (dec);all_values_are_write_protection_on_except_the_password_0xa55a_hex_42330_dec;1.000000;0.000000;;1
+15;3;40208;U16;;RS485 - Response delay in ms;rs485_response_delay_in_ms;1.000000;0.000000;ms;1
+16;3;40214;U16;;baud rate;baud_rate;1.000000;0.000000;;1
+17;3;40219;I32;;Calibration time stamp;calibration_time_stamp;1.000000;0.000000;;1
+18;3;40221;U16;;0xF0 = RS485-Termination disabled 0x00 = RS485-Termination enabled;v_0xf0_rs485termination_disabled_0x00_rs485termination_enabled;1.000000;0.000000;;1

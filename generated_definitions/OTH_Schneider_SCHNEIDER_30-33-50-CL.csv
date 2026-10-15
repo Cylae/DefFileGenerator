@@ -1,0 +1,74 @@
+modbusRTU;Other;Schneider;SCHNEIDER_30-33-50-CL;;;;;;;
+1;4;4999;U16;;Device type code;device_type_code;1.000000;0.000000;;4
+2;4;5000;U16;;Nominal active power;P_RATED;1.000000;0.000000;;4
+3;4;5001;U16;;Output type;output_type;1.000000;0.000000;;4
+4;4;5002;U16;;Daily power yields;daily_power_yields;0.100000;0.000000;kWh;4
+5;4;5003;U32;;Total power yields;total_power_yields;1.000000;0.000000;kWh;4
+6;4;5005;U32;;Total running time;total_running_time;1.000000;0.000000;h;4
+7;4;5007;I16;;Internal temperature;internal_temperature;0.100000;0.000000;Deg.celsius;4
+8;4;5008;U32;;Total apparent power;total_apparent_power;1.000000;0.000000;VA;4
+9;4;5010;U16;;MPPT 1 voltage;mppt_1_voltage;0.100000;0.000000;V;4
+10;4;5011;U16;;MPPT 1 current;mppt_1_current;0.100000;0.000000;A;4
+11;4;5012;U16;;MPPT 2 voltage;mppt_2_voltage;0.100000;0.000000;V;4
+12;4;5013;U16;;MPPT 2 current;mppt_2_current;0.100000;0.000000;A;4
+13;4;5014;U16;;MPPT 3 voltage;mppt_3_voltage;0.100000;0.000000;V;4
+14;4;5015;U16;;MPPT 3 current;mppt_3_current;0.100000;0.000000;A;4
+15;4;5016;U32;;Total DC power;total_dc_power;1.000000;0.000000;W;4
+16;4;5018;U16;;A-B line voltage/phase A voltage;ab_line_voltagephase_a_voltage;0.100000;0.000000;V;4
+17;4;5019;U16;;B-C line voltage/phase B voltage;bc_line_voltagephase_b_voltage;0.100000;0.000000;V;4
+18;4;5020;U16;;C-A line voltage/ phase C voltage;ca_line_voltage_phase_c_voltage;0.100000;0.000000;V;4
+19;4;5021;U16;;Phase A current;phase_a_current;0.100000;0.000000;A;4
+20;4;5022;U16;;Phase B current;phase_b_current;0.100000;0.000000;A;4
+21;4;5023;U16;;Phase C current;phase_c_current;0.100000;0.000000;A;4
+22;4;5030;U32;;Total active power;P_AC;1.000000;0.000000;W;4
+23;4;5032;I32;;Total reactive power;total_reactive_power;1.000000;0.000000;var;4
+24;4;5034;I16;;Power factor;PF;0.001000;0.000000;;4
+25;4;5035;U16;;Grid frequency;FREQ;0.100000;0.000000;Hz;4
+26;4;5037;U16;;Operating state;operating_state;1.000000;0.000000;;8
+27;4;5038;U16;;Event/Alarm time : Year;eventalarm_time_year;1.000000;0.000000;;1
+28;4;5039;U16;;Event/Alarm time : Month;eventalarm_time_month;1.000000;0.000000;;1
+29;4;5040;U16;;Event/Alarm time : Day;eventalarm_time_day;1.000000;0.000000;;1
+30;4;5041;U16;;Event/Alarm time : Hour;eventalarm_time_hour;1.000000;0.000000;;1
+31;4;5042;U16;;Event/Alarm time : Minute;eventalarm_time_minute;1.000000;0.000000;;1
+32;4;5043;U16;;Event/Alarm time : Second;eventalarm_time_second;1.000000;0.000000;;1
+33;4;5044;U16;;Event/Alarm code;eventalarm_code;1.000000;0.000000;;8
+34;4;5048;U16;;Nominal reactive power;nominal_reactive_power;0.100000;0.000000;kvar;4
+35;4;5070;U16;;Daily running time;daily_running_time;1.000000;0.000000;kohm;4
+36;4;5112;U16;;MPPT 4 voltage;mppt_4_voltage;0.100000;0.000000;V;4
+37;4;5114;U16;;MPPT 4 current;mppt_4_current;0.100000;0.000000;A;4
+38;4;5115;U16;;MPPT 5 voltage;mppt_5_voltage;0.100000;0.000000;V;4
+39;4;5116;U16;;MPPT 5 current;mppt_5_current;0.100000;0.000000;A;4
+40;4;5117;U32;;Monthly power yields;monthly_power_yields;0.100000;0.000000;kWh;4
+41;4;5143;U32;;Total power yields_1;total_power_yields_1;0.100000;0.000000;kWh;4
+42;4;5145;I16;;Negative voltage to the ground;negative_voltage_to_the_ground;0.100000;0.000000;V;4
+43;4;5146;U16;;Bus voltage;bus_voltage;0.100000;0.000000;V;4
+44;4;5147;U16;;Grid frequency_1;grid_frequency_1;0.010000;0.000000;Hz;4
+45;4;5149;U16;;PID work state;pid_work_state;1.000000;0.000000;;4
+46;4;5150;U16;;PID alarm code;pid_alarm_code;1.000000;0.000000;;4
+47;4;7012;U16;;String 1 current;string_1_current;0.010000;0.000000;A;4
+48;4;7013;U16;;String 2 current;string_2_current;0.010000;0.000000;A;4
+49;4;7014;U16;;String 3 current;string_3_current;0.010000;0.000000;A;4
+50;4;7015;U16;;String 4 current;string_4_current;0.010000;0.000000;A;4
+51;4;7016;U16;;String 5 current;string_5_current;0.010000;0.000000;A;4
+52;4;7017;U16;;String 6 current;string_6_current;0.010000;0.000000;A;4
+53;4;7018;U16;;String 7 current;string_7_current;0.010000;0.000000;A;4
+54;4;7019;U16;;String 8 current;string_8_current;0.010000;0.000000;A;4
+55;4;7020;U16;;String 9 current;string_9_current;0.010000;0.000000;A;4
+56;4;7021;U16;;String 10 current;string_10_current;0.010000;0.000000;A;4
+57;3;4999;U16;;System clock Year;system_clock_year;1.000000;0.000000;;4
+58;3;5000;U16;;System clock Month;system_clock_month;1.000000;0.000000;;4
+59;3;5001;U16;;System clock Day;system_clock_day;1.000000;0.000000;;4
+60;3;5002;U16;;System clock Minute;system_clock_minute;1.000000;0.000000;;4
+61;3;5003;U16;;System clock Second;system_clock_second;1.000000;0.000000;;4
+62;3;5004;U16;;Start/Stop inverter;startstop_inverter;0.100000;0.000000;;4
+63;3;5005;U16;;Power limitation switch;power_limitation_switch;1.000000;0.000000;;4
+64;3;5006;U16;;Power limitation settings;power_limitation_settings;0.001000;0.000000;;4
+65;3;5018;U16;;Power factor setting;power_factor_setting;0.001000;0.000000;;4
+66;3;5034;U16;;Night SVG switch;night_svg_switch;1.000000;0.000000;;4
+67;3;5035;U16;;Reactive power adjustment mode;reactive_power_adjustment_mode;1.000000;0.000000;;4
+68;3;5036;I16;;Reactive power percentage setting;reactive_power_percentage_setting;0.001000;0.000000;Percent;4
+69;3;5038;U16;;Power limitation adjustment;power_limitation_adjustment;0.100000;0.000000;kW;4
+70;3;5039;I16;;Reactive power adjustment;reactive_power_adjustment;0.100000;0.000000;kVar;4
+71;3;5040;U16;;PID Recovery;pid_recovery;1.000000;0.000000;;4
+72;3;5115;U16;;Q(P) Curve;qp_curve;1.000000;0.000000;;4
+73;3;5134;U16;;Q(U) Curve;qu_curve;1.000000;0.000000;;4

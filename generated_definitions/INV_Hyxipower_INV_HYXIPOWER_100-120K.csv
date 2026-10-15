@@ -1,0 +1,134 @@
+modbusRTU;Inverter;Hyxipower;INV_HYXIPOWER_100-120K;;;;;;;
+1;4;1;U16;;Lower Bits DSP Version;lower_bits_dsp_version;1.000000;0.000000;;4
+2;4;2;U16;;High Bits DSP Version;high_bits_dsp_version;1.000000;0.000000;;4
+3;4;12;I16;;Ambient Temperature 1;ambient_temperature_1;0.100000;0.000000;Celsius;4
+4;4;13;I16;;Ambient Temperature 2;ambient_temperature_2;0.100000;0.000000;Celsius;4
+5;4;14;I16;;Inverter Phase A Module Temp;inverter_phase_a_module_temp;0.100000;0.000000;Celsius;4
+6;4;15;I16;;Inverter Phase B Module Temp;inverter_phase_b_module_temp;0.100000;0.000000;Celsius;4
+7;4;16;I16;;Inverter Phase C Module Temp;inverter_phase_c_module_temp;0.100000;0.000000;Celsius;4
+8;4;17;I16;;Boost Module 1 Temperature;boost_module_1_temperature;0.100000;0.000000;Celsius;4
+9;4;18;I16;;Boost Module 2 Temperature;boost_module_2_temperature;0.100000;0.000000;Celsius;4
+10;4;19;I16;;Boost Module 3 Temperature;boost_module_3_temperature;0.100000;0.000000;Celsius;4
+11;4;20;I16;;Boost Radiator Temperature;boost_radiator_temperature;0.100000;0.000000;Celsius;4
+12;4;21;U16;;System Status Machine;system_status_machine;1.000000;0.000000;;4
+13;4;25;U16;;Inverter Start/Stop Status;inverter_startstop_status;1.000000;0.000000;;4
+14;4;26;U16;;Inverter ISO Insulation;inverter_iso_insulation;1.000000;0.000000;kOhm;4
+15;4;27;U16;;Inverter Leakage Current;inverter_leakage_current;1.000000;0.000000;mA;4
+16;4;31;U16;;Fault Word L3-1;fault_word_l31;1.000000;0.000000;;4
+17;4;32;U16;;Fault Word L3-2;fault_word_l32;1.000000;0.000000;;4
+18;4;33;U16;;Fault Word L2-1;fault_word_l21;1.000000;0.000000;;4
+19;4;34;U16;;Fault Word L2-2;fault_word_l22;1.000000;0.000000;;4
+20;4;35;U16;;Fault Word L2-3;fault_word_l23;1.000000;0.000000;;4
+21;4;36;U16;;Fault Word L2-4;fault_word_l24;1.000000;0.000000;;4
+22;4;37;U16;;Fault Word L1-1;fault_word_l11;1.000000;0.000000;;4
+23;4;38;U16;;Fault Word L1-2;fault_word_l12;1.000000;0.000000;;4
+24;4;39;U16;;Fault Word L1-3;fault_word_l13;1.000000;0.000000;;4
+25;4;40;U16;;Fault Word L1-4;fault_word_l14;1.000000;0.000000;;4
+26;4;100;U16;;Phase A Grid Voltage RMS;phase_a_grid_voltage_rms;0.100000;0.000000;V;4
+27;4;101;U16;;Phase B Grid Voltage RMS;phase_b_grid_voltage_rms;0.100000;0.000000;V;4
+28;4;102;U16;;Phase C Grid Voltage RMS;phase_c_grid_voltage_rms;0.100000;0.000000;V;4
+29;4;103;U16;;Grid Voltage Frequency;grid_voltage_frequency;0.010000;0.000000;Hz;4
+30;4;111;U16;;AC Current Phase A RMS;ac_current_phase_a_rms;0.100000;0.000000;A;4
+31;4;112;U16;;AC Current Phase B RMS;ac_current_phase_b_rms;0.100000;0.000000;A;4
+32;4;113;U16;;AC Current Phase C RMS;ac_current_phase_c_rms;0.100000;0.000000;A;4
+33;4;116;I16;;Grid-side Active Power;gridside_active_power;0.010000;0.000000;kW;4
+34;4;117;I16;;Grid-side Reactive Power;gridside_reactive_power;0.010000;0.000000;kVar;4
+35;4;118;U16;;Grid-side Apparent Power;gridside_apparent_power;0.010000;0.000000;kVA;4
+36;4;435;U16;;Number of PV Channels;number_of_pv_channels;1.000000;0.000000;;4
+37;4;436;U16;;Total PV Power;total_pv_power;0.010000;0.000000;kW;4
+38;4;440;I16;;PV1 Current;pv1_current;0.100000;0.000000;A;4
+39;4;441;I16;;PV2 Current;pv2_current;0.100000;0.000000;A;4
+40;4;442;I16;;PV3 Current;pv3_current;0.100000;0.000000;A;4
+41;4;443;I16;;PV4 Current;pv4_current;0.100000;0.000000;A;4
+42;4;444;I16;;PV5 Current;pv5_current;0.100000;0.000000;A;4
+43;4;445;I16;;PV6 Current;pv6_current;0.100000;0.000000;A;4
+44;4;446;I16;;PV7 Current;pv7_current;0.100000;0.000000;A;4
+45;4;447;I16;;PV8 Current;pv8_current;0.100000;0.000000;A;4
+46;4;448;I16;;PV9 Current;pv9_current;0.100000;0.000000;A;4
+47;4;449;I16;;PV10 Current;pv10_current;0.100000;0.000000;A;4
+48;4;450;I16;;PV11 Current;pv11_current;0.100000;0.000000;A;4
+49;4;451;I16;;PV12 Current;pv12_current;0.100000;0.000000;A;4
+50;4;452;I16;;PV13 Current;pv13_current;0.100000;0.000000;A;4
+51;4;453;I16;;PV14 Current;pv14_current;0.100000;0.000000;A;4
+52;4;454;I16;;PV15 Current;pv15_current;0.100000;0.000000;A;4
+53;4;455;I16;;PV16 Current;pv16_current;0.100000;0.000000;A;4
+54;4;456;I16;;PV17 Current;pv17_current;0.100000;0.000000;A;4
+55;4;457;I16;;PV18 Current;pv18_current;0.100000;0.000000;A;4
+56;4;458;I16;;PV19 Current;pv19_current;0.100000;0.000000;A;4
+57;4;459;I16;;PV20 Current;pv20_current;0.100000;0.000000;A;4
+58;4;502;U16;;Boost1 Voltage;boost1_voltage;0.100000;0.000000;V;4
+59;4;503;I16;;Boost1 Current;boost1_current;0.100000;0.000000;A;4
+60;4;504;I16;;Boost1 Power;boost1_power;0.010000;0.000000;kW;4
+61;4;513;U16;;Boost2 Voltage;boost2_voltage;0.100000;0.000000;V;4
+62;4;514;I16;;Boost2 Current;boost2_current;0.100000;0.000000;A;4
+63;4;515;I16;;Boost2 Power;boost2_power;0.010000;0.000000;kW;4
+64;4;524;U16;;Boost3 Voltage;boost3_voltage;0.100000;0.000000;V;4
+65;4;525;I16;;Boost3 Current;boost3_current;0.100000;0.000000;A;4
+66;4;526;I16;;Boost3 Power;boost3_power;0.010000;0.000000;kW;4
+67;4;535;U16;;Boost4 Voltage;boost4_voltage;0.100000;0.000000;V;4
+68;4;536;I16;;Boost4 Current;boost4_current;0.100000;0.000000;A;4
+69;4;537;I16;;Boost4 Power;boost4_power;0.010000;0.000000;kW;4
+70;4;546;U16;;Boost5 Voltage;boost5_voltage;0.100000;0.000000;V;4
+71;4;547;I16;;Boost5 Current;boost5_current;0.100000;0.000000;A;4
+72;4;548;I16;;Boost5 Power;boost5_power;0.010000;0.000000;kW;4
+73;4;557;U16;;Boost6 Voltage;boost6_voltage;0.100000;0.000000;V;4
+74;4;558;I16;;Boost6 Current;boost6_current;0.100000;0.000000;A;4
+75;4;559;I16;;Boost6 Power;boost6_power;0.010000;0.000000;kW;4
+76;4;568;U16;;Boost7 Voltage;boost7_voltage;0.100000;0.000000;V;4
+77;4;569;I16;;Boost7 Current;boost7_current;0.100000;0.000000;A;4
+78;4;570;I16;;Boost7 Power;boost7_power;0.010000;0.000000;kW;4
+79;4;579;U16;;Boost8 Voltage;boost8_voltage;0.100000;0.000000;V;4
+80;4;580;I16;;Boost8 Current;boost8_current;0.100000;0.000000;A;4
+81;4;581;I16;;Boost8 Power;boost8_power;0.010000;0.000000;kW;4
+82;4;590;U16;;Boost9 Voltage;boost9_voltage;0.100000;0.000000;V;4
+83;4;591;I16;;Boost9 Current;boost9_current;0.100000;0.000000;A;4
+84;4;592;I16;;Boost9 Power;boost9_power;0.010000;0.000000;kW;4
+85;4;601;U16;;Boost10 Voltage;boost10_voltage;0.100000;0.000000;V;4
+86;4;602;I16;;Boost10 Current;boost10_current;0.100000;0.000000;A;4
+87;4;603;I16;;Boost10 Power;boost10_power;0.010000;0.000000;kW;4
+88;4;1001;U32_W;;Main Program Version;main_program_version;1.000000;0.000000;;4
+89;4;1011;U32_W;;System Time;system_time;1.000000;0.000000;s;1
+90;4;1047;U32_W;;Timestamp;timestamp;1.000000;0.000000;s;4
+91;4;1101;U16;;A Daily Output;a_daily_output;0.100000;0.000000;kWh;4
+92;4;1102;U16;;B Daily Output;b_daily_output;0.100000;0.000000;kWh;4
+93;4;1103;U16;;C Daily Output;c_daily_output;0.100000;0.000000;kWh;4
+94;4;1118;U16;;Daily Gen Boost1;daily_gen_boost1;0.100000;0.000000;kWh;4
+95;4;1119;U16;;Daily Gen Boost2;daily_gen_boost2;0.100000;0.000000;kWh;4
+96;4;1120;U16;;Daily Gen Boost3;daily_gen_boost3;0.100000;0.000000;kWh;4
+97;4;1194;U32_W;;Cumulative Generation;cumulative_generation;0.100000;0.000000;kWh;4
+98;4;1500;U32_W;;Uni Primary DSP Version;uni_primary_dsp_version;1.000000;0.000000;;4
+99;4;1502;U32_W;;Uni Slave DSP Version;uni_slave_dsp_version;1.000000;0.000000;;4
+100;4;1507;U16;;Uni Grid Frequency;uni_grid_frequency;0.010000;0.000000;Hz;4
+101;4;1514;F32_W;;Uni Grid Active Power;uni_grid_active_power;1.000000;0.000000;kW;4
+102;4;1516;F32_W;;Uni Grid Reactive Power;uni_grid_reactive_power;1.000000;0.000000;kVar;4
+103;4;1518;F32_W;;Uni Grid Apparent Power;uni_grid_apparent_power;1.000000;0.000000;kVA;4
+104;4;1520;F32_W;;Uni PV Total Power;uni_pv_total_power;1.000000;0.000000;kW;4
+105;4;1522;F32_W;;Uni Phase R Active Power;uni_phase_r_active_power;1.000000;0.000000;kW;4
+106;4;1524;F32_W;;Uni Phase S Active Power;uni_phase_s_active_power;1.000000;0.000000;kW;4
+107;4;1526;F32_W;;Uni Phase T Active Power;uni_phase_t_active_power;1.000000;0.000000;kW;4
+108;4;1531;U16;;Uni Daily Generation;uni_daily_generation;0.100000;0.000000;kWh;4
+109;4;1541;U16;;Uni Boost1 Voltage;uni_boost1_voltage;0.100000;0.000000;V;4
+110;4;1543;U32_W;;Uni Boost1 Power;uni_boost1_power;1.000000;0.000000;W;4
+111;4;1545;U16;;Uni Boost2 Voltage;uni_boost2_voltage;0.100000;0.000000;V;4
+112;4;1547;U32_W;;Uni Boost2 Power;uni_boost2_power;1.000000;0.000000;W;4
+113;4;1549;U16;;Uni Boost3 Voltage;uni_boost3_voltage;0.100000;0.000000;V;4
+114;4;1551;U32_W;;Uni Boost3 Power;uni_boost3_power;1.000000;0.000000;W;4
+115;4;1553;U16;;Uni Boost4 Voltage;uni_boost4_voltage;0.100000;0.000000;V;4
+116;4;1555;U32_W;;Uni Boost4 Power;uni_boost4_power;1.000000;0.000000;W;4
+117;4;1557;U16;;Uni Boost5 Voltage;uni_boost5_voltage;0.100000;0.000000;V;4
+118;4;1559;U32_W;;Uni Boost5 Power;uni_boost5_power;1.000000;0.000000;W;4
+119;4;1561;U16;;Uni Boost6 Voltage;uni_boost6_voltage;0.100000;0.000000;V;4
+120;4;1563;U32_W;;Uni Boost6 Power;uni_boost6_power;1.000000;0.000000;W;4
+121;4;1565;U16;;Uni Boost7 Voltage;uni_boost7_voltage;0.100000;0.000000;V;4
+122;4;1567;U32_W;;Uni Boost7 Power;uni_boost7_power;1.000000;0.000000;W;4
+123;4;1569;U16;;Uni Boost8 Voltage;uni_boost8_voltage;0.100000;0.000000;V;4
+124;4;1571;U32_W;;Uni Boost8 Power;uni_boost8_power;1.000000;0.000000;W;4
+125;4;1573;U16;;Uni Boost9 Voltage;uni_boost9_voltage;0.100000;0.000000;V;4
+126;4;1575;U32_W;;Uni Boost9 Power;uni_boost9_power;1.000000;0.000000;W;4
+127;4;1577;U16;;Uni Boost10 Voltage;uni_boost10_voltage;0.100000;0.000000;V;4
+128;4;1579;U32_W;;Uni Boost10 Power;uni_boost10_power;1.000000;0.000000;W;4
+129;3;3;U16;;DSP Start/Stop Command;dsp_startstop_command;1.000000;0.000000;;4
+130;3;1055;U16;;Mailing Address;mailing_address;1.000000;0.000000;;4
+131;3;1057;U16;;Baud Rate;baud_rate;1.000000;0.000000;;4
+132;3;1078;U16;;Active Power Control Pct;CMD_P_AC_SET_PERCENT;0.100000;0.000000;'%;4
+133;3;1079;U16;;Active Power Control Enable;CMD_P_ENA;1.000000;0.000000;;4

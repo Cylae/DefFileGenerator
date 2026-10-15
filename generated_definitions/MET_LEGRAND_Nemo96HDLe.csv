@@ -1,0 +1,152 @@
+modbusRTU;meter;Legrand;Nemo96HLe;;;;;;;
+1;3;256;U16;;Current transformer ratio (KTA);MODEL;1;0;;4
+2;3;258;U16;;Voltage transformer ratio (KTV);SERIAL;100;0;;4
+3;3;768;U16;;Device identifier;;1;0;0x1101;4
+4;3;4096;U32;;Phase 1 : phase voltage;U_AC_1;1;0;mV;4
+5;3;4098;U32;;Phase 2 : phase voltage;U_AC_2;1;0;mV;4
+6;3;4100;U32;;Phase 3 : phase voltage;U_AC_3;1;0;mV;4
+7;3;4102;U32;;Phase 1 : current;I_AC_1;1;0;mA;4
+8;3;4104;U32;;Phase 2 : current;I_AC_2;1;0;mA;4
+9;3;4106;U32;;Phase 3 : current;I_AC_3;1;0;mA;4
+10;3;4108;U32;;Neutral current;;1;0;mA;4
+11;3;4110;U32;;Chained voltage : L1-L2;U_AC_L1L2;1;0;mV;4
+12;3;4112;U32;;Chained voltage : L2-L3;U_AC_L2L3;1;0;mV;4
+13;3;4114;U32;;Chained voltage : L3-L1;U_AC_L3L1;1;0;mV;4
+14;3;4116;U32;;3-phase : active power;P_AC;1;0;;4
+15;3;4118;U32;;3-phase : reactive power;Q_AC;1;0;;4
+16;3;4120;U32;;3-phase : apparent power;S_AC;1;0;;4
+17;3;4122;U16;;3-phase : sign of active power;;1;0;;4
+18;3;4123;U16;;3-phase : sign of reactive power;;1;0;;4
+19;3;4124;U32;;3-phase : positive active energy;;1;0;;4
+20;3;4126;U32;;3-phase : positive reactive energy;;1;0;;4
+21;3;4128;U32;;3-phase : negative active energy;;1;0;;4
+22;3;4130;U32;;3-phase : negative reactive energy;;1;0;;4
+23;3;4132;I16;;3-phase : power factor;PF;0.01;0;;4
+24;3;4133;U16;;3-phase : sector of power factor (0:PF = 1  1:ind  2:cap);;1;0;;4
+25;3;4134;U16;;Frequency;FREQ;0.1;0;Hz;4
+26;3;4135;U32;;3-phase : average power;;1;0;;4
+27;3;4137;U32;;3-phase : peak maximum demand;;1;0;;4
+28;3;4139;U16;;Time counter for average power;;1;0;minutes;4
+29;3;4140;U32;;Phase 1 : active power;P_AC_1;1;0;;4
+30;3;4142;U32;;Phase 2 : active power;P_AC_2;1;0;;4
+31;3;4144;U32;;Phase 3 : active power;P_AC_3;1;0;;4
+32;3;4146;U16;;Phase 1 : sign of active power;;1;0;;4
+33;3;4147;U16;;Phase 2 : sign of active power;;1;0;;4
+34;3;4148;U16;;Phase 3 : sign of active power;;1;0;;4
+35;3;4149;U32;;Phase 1 : reactive power;Q_AC_1;1;0;;4
+36;3;4151;U32;;Phase 2 : reactive power;Q_AC_2;1;0;;4
+37;3;4153;U32;;Phase 3 : reactive power;Q_AC_3;1;0;;4
+38;3;4155;U16;;Phase 1 : sign of reactive power;;1;0;;4
+39;3;4156;U16;;Phase 2 : sign of reactive power;;1;0;;4
+40;3;4157;U16;;Phase 3 : sign of reactive power;;1;0;;4
+41;3;4158;U32;;Phase 1 : apparent power;S_AC_1;1;0;;4
+42;3;4160;U32;;Phase 2 : apparent power;S_AC_2;1;0;;4
+43;3;4162;U32;;Phase 3 : apparent power;S_AC_3;1;0;;4
+44;3;4164;I16;;Phase 1 : power factor;PF_1;0.01;0;;4
+45;3;4165;I16;;Phase 2 : power factor;PF_2;0.01;0;;4
+46;3;4166;I16;;Phase 3 : power factor;PF_3;0.01;0;;4
+47;3;4167;U16;;Phase 1 : power factor sector;;1;0;;4
+48;3;4168;U16;;Phase 2 : power factor sector;;1;0;;4
+49;3;4169;U16;;Phase 3 : power factor sector;;1;0;;4
+50;3;4170;U16;;Phase 1 : THD V1;;0.1;0;%;4
+51;3;4171;U16;;Phase 2 : THD V2;;0.1;0;%;4
+52;3;4172;U16;;Phase 3 : THD V3;;0.1;0;%;4
+53;3;4173;U16;;Phase 1 : THD I1;;0.1;0;%;4
+54;3;4174;U16;;Phase 2 : THD I2;;0.1;0;%;4
+55;3;4175;U16;;Phase 3 : THD I3;;0.1;0;%;4
+56;3;4176;U32;;Phase 1 : I1 average;;1;0;mA;4
+57;3;4178;U32;;Phase 2 : I2 average;;1;0;mA;4
+58;3;4180;U32;;Phase 3 : I3 average;;1;0;mA;4
+59;3;4182;U32;;Phase 1 : I1 peak maximum;;1;0;mA;4
+60;3;4184;U32;;Phase 2 : I2 peak maximum;;1;0;mA;4
+61;3;4186;U32;;Phase 3 : I3 peak maximum;;1;0;mA;4
+62;3;4188;U32;;(I1+I2+I3)/3;;1;0;mA;4
+63;3;4190;U32;;Phase 1 : V1 min;;1;0;mV;4
+64;3;4192;U32;;Phase 2 : V2 min;;1;0;mV;4
+65;3;4194;U32;;Phase 3 : V3 min;;1;0;mV;4
+66;3;4196;U32;;Phase 1 : V1 max;;1;0;mV;4
+67;3;4198;U32;;Phase 2 : V2 max;;1;0;mV;4
+68;3;4200;U32;;Phase 3 : V3 max;;1;0;mV;4
+69;3;4202;U32;;3-phase : active partial energy;;1;0;;4
+70;3;4204;U32;;3-phase : reactive partial energy;;1;0;;4
+71;3;4206;U16;;Run hour meter;;1;0;Hour;4
+72;3;4207;U16;;Not used;;1;0;;4
+73;3;4208;U32;;3-phase : active average power;;1;0;;4
+74;3;4210;U32;;3-phase : reactive average power;;1;0;;4
+75;3;4212;U32;;3-phase : apparent average power;;1;0;;4
+76;3;4214;U32;;3-phase : active PMD power;;1;0;;4
+77;3;4216;U32;;3-phase : reactive PMD power;;1;0;;4
+78;3;4218;U32;;3-phase : apparent PMD power;;1;0;;4
+79;3;4608;U16;;Current transformer ratio (KTA)-1;;1;0;;4
+80;3;4609;U16;;Voltage transformer ratio (KTV)-1;;10;0;;4
+81;3;4610;U32;;Device configuration;;1;0;;4
+82;3;4612;U16;;Device identifier-1;;1;0;0x1110;4
+83;3;4613;U16;;Voltages sequence diagnostic (1:OK 2:error);;1;0;;4
+84;3;5376;U32;;Positive Active Energy - Low;;1;0;Wh;4
+85;3;5378;U32;;Positive Active Energy - High;;1;0;MWh;4
+86;3;5380;U32;;Positive Reactive Energy - Low;;1;0;varh;4
+87;3;5382;U32;;Positive Reactive Energy - High;;1;0;Mvarh;4
+88;3;5384;U32;;Negative Active Energy - Low;;1;0;Wh;4
+89;3;5386;U32;;Negative Active Energy - High;;1;0;MWh;4
+90;3;5388;U32;;Negative Reactive Energy - Low;;1;0;varh;4
+91;3;5390;U32;;Negative Reactive Energy - High;;1;0;Mvarh;4
+92;3;5392;U32;;Partial Active Energy - Low;;1;0;Wh;4
+93;3;5394;U32;;Partial Active Energy - High;;1;0;MWh;4
+94;3;5396;U32;;Partial Reactive Energy - Low;;1;0;varh;4
+95;3;5398;U32;;Partial Reactive Energy - High;;1;0;Mvarh;4
+96;3;5400;I32;;Signed 3-ph Active Power;;0.001;0;KW;4
+97;3;5402;I32;;Signed 3-ph Reactive Power;;1;0;var;4
+98;3;5404;I32;;Signed Phase1 Active Power;;0.001;0;KW;4
+99;3;5406;I32;;Signed Phase2 Active Power;;0.001;0;KW;4
+100;3;5408;I32;;Signed Phase3 Active Power;;0.001;0;KW;4
+101;3;5410;I32;;Signed Phase1 Reactive Power;;1;0;var;4
+102;3;5412;I32;;Signed Phase2 Reactive Power;;1;0;var;4
+103;3;5414;I32;;Signed Phase3 Reactive Power;;1;0;var;4
+104;3;5416;I32;;Signed 3-ph Power Factor;;0.001;0;;4
+105;3;5418;I32;;Signed Phase1 Power Factor;;0.001;0;;4
+106;3;5420;I32;;Signed Phase2 Power Factor;;0.001;0;;4
+107;3;5422;I32;;Signed Phase3 Power Factor;;0.001;0;;4
+108;3;5424;U32;;Apparent power;;1;0;VA;4
+109;3;5426;U32;;3-phase : active average power-1;;1;0;W;4
+110;3;5428;U32;;3-phase : reactive average power-1;;1;0;Var;4
+111;3;5430;U32;;3-phase : apparent average power-1;;1;0;VA;4
+112;3;5432;U32;;3-phase : active PMD power-1;;1;0;W;4
+113;3;5434;U32;;3-phase : reactive PMD power-1;;1;0;Var;4
+114;3;5436;U32;;3-phase : apparent PMD power-1;;1;0;VA;4
+115;3;5504;U16;;Phase1 voltage crest factor;;0.001;0;;4
+116;3;5505;U16;;Phase2 voltage crest factor;;0.001;0;;4
+117;3;5506;U16;;Phase3 voltage crest factor;;0.001;0;;4
+118;3;5507;U16;;Phase1 current crest factor;;0.001;0;;4
+119;3;5508;U16;;Phase2 current crest factor;;0.001;0;;4
+120;3;5509;U16;;Phase3 current crest factor;;0.001;0;;4
+121;3;5510;U16;;Phase12 voltage crest factor;;0.001;0;;4
+122;3;5511;U16;;Phase23 voltage crest factor;;0.001;0;;4
+123;3;5512;U16;;Phase31 voltage crest factor;;0.001;0;;4
+124;3;5888;U32;;Positive Active Energy - Low-1;;1;0;Wh;4
+125;3;5890;U32;;Positive Active Energy - High-1;;1;0;MWh;4
+126;3;5892;U32;;Positive Reactive Energy - Low-1;;1;0;varh;4
+127;3;5894;U32;;Positive Reactive Energy - High-1;;1;0;Mvarh;4
+128;3;5896;U32;;Negative Active Energy - Low-1;;1;0;Wh;4
+129;3;5898;U32;;Negative Active Energy - High-1;;1;0;MWh;4
+130;3;5900;U32;;Negative Reactive Energy - Low-1;;1;0;varh;4
+131;3;5902;U32;;Negative Reactive Energy - High-1;;1;0;Mvarh;4
+132;3;5904;U32;;Partial+ Active Energy - Low;;1;0;Wh;4
+133;3;5906;U32;;Partial+ Active Energy - High;;1;0;MWh;4
+134;3;5908;U32;;Partial+ Reactive Energy - Low;;1;0;varh;4
+135;3;5910;U32;;Partial+ Reactive Energy - High;;1;0;Mvarh;4
+136;3;5912;U32;;Partial- Active Energy - Low;;1;0;Wh;4
+137;3;5914;U32;;Partial- Active Energy - High;;1;0;MWh;4
+138;3;5916;U32;;Partial- Reactive Energy - Low;;1;0;varh;4
+139;3;5918;U32;;Partial- Reactive Energy - High;;1;0;Mvarh;4
+140;3;5920;I32;;Signed 3-ph active power;;1;0;W;4
+141;3;5922;I32;;Signed 3-ph reactive power;;1;0;var;4
+142;3;5924;I32;;Signed phase1 active power;;1;0;W;4
+143;3;5926;I32;;Signed phase2 active power;;1;0;W;4
+144;3;5928;I32;;Signed phase3 active power;;1;0;W;4
+145;3;5930;I32;;Signed phase1 reactive power;;1;0;var;4
+146;3;5932;I32;;Signed phase2 reactive power;;1;0;var;4
+147;3;5934;I32;;Signed phase3 reactive power;;1;0;var;4
+148;3;5936;I32;;Signed 3-ph Power Factor-1;;0.01;0;;4
+149;3;5938;I32;;Signed phase1 Power Factor;;0.01;0;;4
+150;3;5940;I32;;Signed phase2 Power Factor;;0.01;0;;4
+151;3;5942;I32;;Signed phase3 Power Factor;;0.01;0;;4

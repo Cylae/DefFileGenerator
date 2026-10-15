@@ -1,0 +1,168 @@
+modbusRTU;Other;Legrand;LEGRAND_Nemo_Work;;;;;;;
+1;3;256;U16;;Current transformer ratio (KTA);current_transformer_ratio_kta;1.000000;0.000000;;4
+2;3;258;U16;;Voltage transformer ratio (KTV);voltage_transformer_ratio_ktv;0.500000;0.000000;;4
+3;3;768;U16;;Device identifier;device_identifier;0.333333;0.000000;;4
+4;3;4096;U32;;Phase 1 : phase voltage;phase_1_phase_voltage;1.000000;0.000000;;4
+5;3;4098;U32;;Phase 2 : phase voltage;phase_2_phase_voltage;1.000000;0.000000;;4
+6;3;4100;U32;;Phase 3 : phase voltage;phase_3_phase_voltage;1.000000;0.000000;;4
+7;3;4102;U32;;Phase 1 : current;phase_1_current;1.000000;0.000000;;4
+8;3;4104;U32;;Phase 2 : current;phase_2_current;1.000000;0.000000;;4
+9;3;4106;U32;;Phase 3 : current;phase_3_current;1.000000;0.000000;;4
+10;3;4108;U32;;Neutral current;neutral_current;1.000000;0.000000;;4
+11;3;4110;U32;;Chained voltage : L1-L2;chained_voltage_l1l2;1.000000;0.000000;;4
+12;3;4112;U32;;Chained voltage : L2-L3;chained_voltage_l2l3;1.000000;0.000000;;4
+13;3;4114;U32;;Chained voltage : L3-L1;chained_voltage_l3l1;1.000000;0.000000;;4
+14;3;4116;U32;;3-phase : active power;v_3phase_active_power;1.000000;0.000000;;4
+15;3;4118;U32;;3-phase : reactive power;v_3phase_reactive_power;1.000000;0.000000;;4
+16;3;4120;U32;;3-phase : apparent power;v_3phase_apparent_power;1.000000;0.000000;;4
+17;3;4122;U16;;3-phase : sign of active power;v_3phase_sign_of_active_power;1.000000;0.000000;;4
+18;3;4123;U16;;3-phase : sign of reactive power;v_3phase_sign_of_reactive_power;1.000000;0.000000;;4
+19;3;4124;U32;;3-phase : positive active energy;v_3phase_positive_active_energy;1.000000;0.000000;;4
+20;3;4126;U32;;3-phase : positive reactive energy;v_3phase_positive_reactive_energy;1.000000;0.000000;;4
+21;3;4128;U32;;3-phase : negative active energy;v_3phase_negative_active_energy;1.000000;0.000000;;4
+22;3;4130;U32;;3-phase : negative reactive energy;v_3phase_negative_reactive_energy;1.000000;0.000000;;4
+23;3;4132;I32;;3-phase : power factor;v_3phase_power_factor;1.000000;0.000000;;4
+24;3;4133;U16;;3-phase : sector of power factor (cap or ind);v_3phase_sector_of_power_factor_cap_or_ind;1.000000;0.000000;;4
+25;3;4134;U16;;Frequency;FREQ;1.000000;0.000000;;4
+26;3;4135;U32;;3-phase : average power;v_3phase_average_power;1.000000;0.000000;;4
+27;3;4137;U32;;3-phase : peak maximum demand;v_3phase_peak_maximum_demand;1.000000;0.000000;;4
+28;3;4139;U16;;Time counter for average power;time_counter_for_average_power;1.000000;0.000000;;4
+29;3;4140;U32;;Phase 1 : active power;phase_1_active_power;1.000000;0.000000;;4
+30;3;4142;U32;;Phase 2 : active power;phase_2_active_power;1.000000;0.000000;;4
+31;3;4144;U32;;Phase 3 : active power;phase_3_active_power;1.000000;0.000000;;4
+32;3;4146;U16;;Phase 1 : sign of active power;phase_1_sign_of_active_power;1.000000;0.000000;;4
+33;3;4147;U16;;Phase 2 : sign of active power;phase_2_sign_of_active_power;1.000000;0.000000;;4
+34;3;4148;U16;;Phase 3 : sign of active power;phase_3_sign_of_active_power;1.000000;0.000000;;4
+35;3;4149;U32;;Phase 1 : reactive power;phase_1_reactive_power;1.000000;0.000000;;4
+36;3;4151;U32;;Phase 2 : reactive power;phase_2_reactive_power;1.000000;0.000000;;4
+37;3;4153;U32;;Phase 3 : reactive power;phase_3_reactive_power;1.000000;0.000000;;4
+38;3;4155;U16;;Phase 1 : sign of reactive power;phase_1_sign_of_reactive_power;1.000000;0.000000;;4
+39;3;4156;U16;;Phase 2 : sign of reactive power;phase_2_sign_of_reactive_power;1.000000;0.000000;;4
+40;3;4157;U16;;Phase 3 : sign of reactive power;phase_3_sign_of_reactive_power;1.000000;0.000000;;4
+41;3;4158;U32;;Phase 1 : apparent power;phase_1_apparent_power;1.000000;0.000000;;4
+42;3;4160;U32;;Phase 2 : apparent power;phase_2_apparent_power;1.000000;0.000000;;4
+43;3;4162;U32;;Phase 3 : apparent power;phase_3_apparent_power;1.000000;0.000000;;4
+44;3;4164;I32;;Phase 1 : power factor;phase_1_power_factor;1.000000;0.000000;;4
+45;3;4165;I32;;Phase 2 : power factor;phase_2_power_factor;1.000000;0.000000;;4
+46;3;4166;I32;;Phase 3 : power factor;phase_3_power_factor;1.000000;0.000000;;4
+47;3;4167;U16;;Phase 1 : power factor sector;phase_1_power_factor_sector;1.000000;0.000000;;4
+48;3;4168;U16;;Phase 2 : power factor sector;phase_2_power_factor_sector;1.000000;0.000000;;4
+49;3;4169;U16;;Phase 3 : power factor sector;phase_3_power_factor_sector;1.000000;0.000000;;4
+50;3;4170;U16;;Phase 1 : THD V1;phase_1_thd_v1;1.000000;0.000000;;4
+51;3;4171;U16;;Phase 2 : THD V2;phase_2_thd_v2;1.000000;0.000000;;4
+52;3;4172;U16;;Phase 3 : THD V3;phase_3_thd_v3;1.000000;0.000000;;4
+53;3;4173;U16;;Phase 1 : THD I1;phase_1_thd_i1;1.000000;0.000000;;4
+54;3;4174;U16;;Phase 2 : THD I2;phase_2_thd_i2;1.000000;0.000000;;4
+55;3;4175;U16;;Phase 3 : THD I3;phase_3_thd_i3;1.000000;0.000000;;4
+56;3;4176;U32;;Phase 1 : I1 average;phase_1_i1_average;1.000000;0.000000;;4
+57;3;4178;U32;;Phase 2 : I2 average;phase_2_i2_average;1.000000;0.000000;;4
+58;3;4180;U32;;Phase 3 : I3 average;phase_3_i3_average;1.000000;0.000000;;4
+59;3;4182;U32;;Phase 1 : I1 peak maximum;phase_1_i1_peak_maximum;1.000000;0.000000;;4
+60;3;4184;U32;;Phase 2 : I2 peak maximum;phase_2_i2_peak_maximum;1.000000;0.000000;;4
+61;3;4186;U32;;Phase 3 : I3 peak maximum;phase_3_i3_peak_maximum;1.000000;0.000000;;4
+62;3;4188;U32;;(I1+I2+I3)/3;i1i2i33;1.000000;0.000000;;4
+63;3;4190;U32;;Phase 1 : V1 min;phase_1_v1_min;1.000000;0.000000;;4
+64;3;4192;U32;;Phase 2 : V2 min;phase_2_v2_min;1.000000;0.000000;;4
+65;3;4194;U32;;Phase 3 : V3 min;phase_3_v3_min;1.000000;0.000000;;4
+66;3;4196;U32;;Phase 1 : V1 max;phase_1_v1_max;1.000000;0.000000;;4
+67;3;4198;U32;;Phase 2 : V2 max;phase_2_v2_max;1.000000;0.000000;;4
+68;3;4200;U32;;Phase 3 : V3 max;phase_3_v3_max;1.000000;0.000000;;4
+69;3;4202;U32;;3-phase : active partial energy;v_3phase_active_partial_energy;1.000000;0.000000;;4
+70;3;4204;U32;;3-phase : reactive partial energy;v_3phase_reactive_partial_energy;1.000000;0.000000;;4
+71;3;4206;U16;;Run hour meter;run_hour_meter;1.000000;0.000000;;4
+72;3;4207;U16;;Not used;not_used;1.000000;0.000000;;4
+73;3;4208;U32;;3-phase : active average power;v_3phase_active_average_power;1.000000;0.000000;;4
+74;3;4210;U32;;3-phase : reactive average power;v_3phase_reactive_average_power;1.000000;0.000000;;4
+75;3;4212;U32;;3-phase : apparent average power;v_3phase_apparent_average_power;1.000000;0.000000;;4
+76;3;4214;U32;;3-phase : active PMD power;v_3phase_active_pmd_power;1.000000;0.000000;;4
+77;3;4216;U32;;3-phase : reactive PMD power;v_3phase_reactive_pmd_power;1.000000;0.000000;;4
+78;3;4218;U32;;3-phase : apparent PMD power;v_3phase_apparent_pmd_power;1.000000;0.000000;;4
+79;3;4608;U16;;Current transformer ratio (KTA);current_transformer_ratio_kta_1;1.000000;0.000000;;4
+80;3;4609;U16;;Voltage transformer ratio (KTV);voltage_transformer_ratio_ktv_1;1.000000;0.000000;;4
+81;3;4610;U32;;Device configuration;device_configuration;1.000000;0.000000;;4
+82;3;4612;U16;;Device identifier;device_identifier_1;1.000000;0.000000;;4
+83;3;4613;U16;;Voltages sequence diagnostic;voltages_sequence_diagnostic;1.000000;0.000000;;4
+84;3;5376;U32;;Positive Active Energy - Low;positive_active_energy_low;1.000000;0.000000;;4
+85;3;5378;U32;;Positive Active Energy – High;positive_active_energy_high;1.000000;0.000000;;4
+86;3;5380;U32;;Positive Reactive Energy - Low;positive_reactive_energy_low;1.000000;0.000000;;4
+87;3;5382;U32;;Positive Reactive Energy – High;positive_reactive_energy_high;1.000000;0.000000;;4
+88;3;5384;U32;;Negative Active Energy- Low;negative_active_energy_low;1.000000;0.000000;;4
+89;3;5386;U32;;Negative Active Energy - High;negative_active_energy_high;1.000000;0.000000;;4
+90;3;5388;U32;;Negative Reactive Energy - Low;negative_reactive_energy_low;1.000000;0.000000;;4
+91;3;5390;U32;;Negative Reactive Energy – High;negative_reactive_energy_high;1.000000;0.000000;;4
+92;3;5392;U32;;Partial Active Energy - Low;partial_active_energy_low;1.000000;0.000000;;4
+93;3;5394;U32;;Partial Active Energy - High;partial_active_energy_high;1.000000;0.000000;;4
+94;3;5396;U32;;Partial Reactive Energy - Low;partial_reactive_energy_low;1.000000;0.000000;;4
+95;3;5398;U32;;Partial Reactive Energy - High;partial_reactive_energy_high;1.000000;0.000000;;4
+96;3;5400;I32;;Signed 3-ph Active Power;signed_3ph_active_power;1.000000;0.000000;;4
+97;3;5402;I32;;Signed 3-ph Reactive Power;signed_3ph_reactive_power;1.000000;0.000000;;4
+98;3;5404;I32;;Signed Phase1 Active Power;signed_phase1_active_power;1.000000;0.000000;;4
+99;3;5406;I32;;Signed Phase2 Active Power;signed_phase2_active_power;1.000000;0.000000;;4
+100;3;5408;I32;;Signed Phase3 Active Power;signed_phase3_active_power;1.000000;0.000000;;4
+101;3;5410;I32;;Signed Phase1 Reactive Power;signed_phase1_reactive_power;1.000000;0.000000;;4
+102;3;5412;I32;;Signed Phase2 Reactive Power;signed_phase2_reactive_power;1.000000;0.000000;;4
+103;3;5414;I32;;Signed Phase3 Reactive Power;signed_phase3_reactive_power;1.000000;0.000000;;4
+104;3;5416;I32;;Signed 3-ph Power Factor;signed_3ph_power_factor;1.000000;0.000000;;4
+105;3;5418;I32;;Signed Phase1 Power Factor;signed_phase1_power_factor;1.000000;0.000000;;4
+106;3;5420;I32;;Signed Phase2 Power Factor;signed_phase2_power_factor;1.000000;0.000000;;4
+107;3;5422;I32;;Signed Phase3 Power Factor;signed_phase3_power_factor;1.000000;0.000000;;4
+108;3;5424;U32;;Apparent power;apparent_power;1.000000;0.000000;;4
+109;3;5426;U32;;3-phase : active average power;v_3phase_active_average_power_1;1.000000;0.000000;;4
+110;3;5428;U32;;3-phase : reactive average power;v_3phase_reactive_average_power_1;1.000000;0.000000;;4
+111;3;5430;U32;;3-phase : apparent average power;v_3phase_apparent_average_power_1;1.000000;0.000000;;4
+112;3;5432;U32;;3-phase : active PMD power;v_3phase_active_pmd_power_1;1.000000;0.000000;;4
+113;3;5434;U32;;3-phase : reactive PMD power;v_3phase_reactive_pmd_power_1;1.000000;0.000000;;4
+114;3;5436;U32;;3-phase : apparent PMD power;v_3phase_apparent_pmd_power_1;1.000000;0.000000;;4
+115;3;5504;U16;;Phase1 voltage crest factor;phase1_voltage_crest_factor;1.000000;0.000000;;4
+116;3;5505;U16;;Phase2 voltage crest factor;phase2_voltage_crest_factor;1.000000;0.000000;;4
+117;3;5506;U16;;Phase3 voltage crest factor;phase3_voltage_crest_factor;1.000000;0.000000;;4
+118;3;5507;U16;;Phase1 current crest factor;phase1_current_crest_factor;1.000000;0.000000;;4
+119;3;5508;U16;;Phase2 current crest factor;phase2_current_crest_factor;1.000000;0.000000;;4
+120;3;5509;U16;;Phase3 current crest factor;phase3_current_crest_factor;1.000000;0.000000;;4
+121;3;5510;U16;;Phase12 voltage crest factor;phase12_voltage_crest_factor;1.000000;0.000000;;4
+122;3;5511;U16;;Phase23 voltage crest factor;phase23_voltage_crest_factor;1.000000;0.000000;;4
+123;3;5512;U16;;Phase31 voltage crest factor;phase31_voltage_crest_factor;1.000000;0.000000;;4
+124;3;5888;U32;;Positive Active Energy - Low;positive_active_energy_low_1;1.000000;0.000000;;4
+125;3;5890;U32;;Positive Active Energy – High;positive_active_energy_high_1;1.000000;0.000000;;4
+126;3;5892;U32;;Positive Reactive Energy - Low;positive_reactive_energy_low_1;1.000000;0.000000;;4
+127;3;5894;U32;;Positive Reactive Energy – High;positive_reactive_energy_high_1;1.000000;0.000000;;4
+128;3;5896;U32;;Negative Active Energy - Low;negative_active_energy_low_1;1.000000;0.000000;;4
+129;3;5898;U32;;Negative Active Energy – High;negative_active_energy_high_1;1.000000;0.000000;;4
+130;3;5900;U32;;Negative Reactive Energy - Low;negative_reactive_energy_low_1;1.000000;0.000000;;4
+131;3;5902;U32;;Negative Reactive Energy – High;negative_reactive_energy_high_1;1.000000;0.000000;;4
+132;3;5904;U32;;Partial+ Active Energy - Low;partial_active_energy_low_1;1.000000;0.000000;;4
+133;3;5906;U32;;Partial+ Active Energy – High;partial_active_energy_high_1;1.000000;0.000000;;4
+134;3;5908;U32;;Partial+ Reactive Energy - Low;partial_reactive_energy_low_1;1.000000;0.000000;;4
+135;3;5910;U32;;Partial+ Reactive Energy - High;partial_reactive_energy_high_1;1.000000;0.000000;;4
+136;3;5912;U32;;Partial- Active Energy - Low;partial_active_energy_low_2;1.000000;0.000000;;4
+137;3;5914;U32;;Partial- Active Energy – High;partial_active_energy_high_2;1.000000;0.000000;;4
+138;3;5916;U32;;Partial- Reactive Energy – Low;partial_reactive_energy_low_2;1.000000;0.000000;;4
+139;3;5918;U32;;Partial- Reactive Energy - High;partial_reactive_energy_high_2;1.000000;0.000000;;4
+140;3;5920;I32;;Signed 3-ph active power;signed_3ph_active_power_1;1.000000;0.000000;;4
+141;3;5922;I32;;Signed 3-ph reactive power;signed_3ph_reactive_power_1;1.000000;0.000000;;4
+142;3;5924;I32;;Signed phase1 active power;signed_phase1_active_power_1;1.000000;0.000000;;4
+143;3;5926;I32;;Signed phase2 active power;signed_phase2_active_power_1;1.000000;0.000000;;4
+144;3;5928;I32;;Signed phase3 active power;signed_phase3_active_power_1;1.000000;0.000000;;4
+145;3;5930;I32;;Signed phase1 reactive power;signed_phase1_reactive_power_1;1.000000;0.000000;;4
+146;3;5932;I32;;Signed phase2 reactive power;signed_phase2_reactive_power_1;1.000000;0.000000;;4
+147;3;5934;I32;;Signed phase3 reactive power;signed_phase3_reactive_power_1;1.000000;0.000000;;4
+148;3;5936;I32;;Signed 3-ph Power Factor;signed_3ph_power_factor_1;1.000000;0.000000;;4
+149;3;5938;I32;;Signed phase1 Power Factor;signed_phase1_power_factor_1;1.000000;0.000000;;4
+150;3;5940;I32;;Signed phase2 Power Factor;signed_phase2_power_factor_1;1.000000;0.000000;;4
+151;3;5942;I32;;Signed phase3 Power Factor;signed_phase3_power_factor_1;1.000000;0.000000;;4
+152;3;8197;U16;;Run hour meter active on;run_hour_meter_active_on;1.000000;0.000000;;4
+153;3;8199;U16;;Rated current;rated_current;1.000000;0.000000;;4
+154;3;8200;U16;;Backlight intensity;backlight_intensity;1.000000;0.000000;;4
+155;3;8201;U16;;Display contrast;display_contrast;1.000000;0.000000;;4
+156;3;8202;U16;;Power Averaging time;power_averaging_time;1.000000;0.000000;;4
+157;3;8203;U16;;Insertion type;insertion_type;1.000000;0.000000;;4
+158;3;8204;U16;;Measure on line 3 of custom page;measure_on_line_3_of_custom_page;1.000000;0.000000;;4
+159;3;8205;U16;;Measure on line 2 of custom page;measure_on_line_2_of_custom_page;1.000000;0.000000;;4
+160;3;8206;U16;;Measure on line 1 of custom page;measure_on_line_1_of_custom_page;1.000000;0.000000;;4
+161;3;8725;U16;;Pulse duration;pulse_duration;1.000000;0.000000;;4
+162;3;8726;U16;;Pulse weight;pulse_weight;1.000000;0.000000;;4
+163;3;8727;U16;;Positive Energy type used for the pulse_x000D_ output;positive_energy_type_used_for_the_pulse_x000d_output;1.000000;0.000000;;4
+164;3;9216;U16;;Reset Hour Meter, Maximum Powers, Maximum Voltages,_x000D_ Maximum Currents, Minimum Voltages, Active Partial_x000D_ Energy, Reactive Partial Energy;reset_hour_meter_maximum_powers_maximum_voltages_x000d_maximum_currents_minimum_voltages_active_partial_x000d_energy_reactive_partial_energy;1.000000;0.000000;;4
+165;3;9728;U16;;Saving in EEPROM parameters changed by Remote commands;saving_in_eeprom_parameters_changed_by_remote_commands;1.000000;0.000000;;4
+166;3;9984;U16;;Enable Remote Writing Operation;enable_remote_writing_operation;1.000000;0.000000;;4
+167;3;10240;U16;;Load previous setup parameters stored in EEPROM;load_previous_setup_parameters_stored_in_eeprom;1.000000;0.000000;;4

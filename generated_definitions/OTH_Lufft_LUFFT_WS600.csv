@@ -1,0 +1,43 @@
+modbusRTU;Other;Lufft;LUFFT_WS600;;;;;;;
+1;4;0;I16;;Identification;identification;1.000000;0.000000;;4
+2;4;1;I16;;Device status;device_status;1.000000;0.000000;;4
+3;4;2;I16;;Sensor status 1;sensor_status_1;1.000000;0.000000;;4
+4;4;3;I16;;Sensor status 2;sensor_status_2;1.000000;0.000000;;4
+5;4;4;I16;;Sensor status 3;sensor_status_3;1.000000;0.000000;;4
+6;4;5;I16;;Sensor status 4;sensor_status_4;1.000000;0.000000;;4
+7;4;6;I16;;Sensor status 5;sensor_status_5;1.000000;0.000000;;4
+8;4;7;I16;;Sensor status 6;sensor_status_6;1.000000;0.000000;;4
+9;4;13;I16;;Relative humidity (avg.);relative_humidity_avg;0.100000;0.000000;;4
+10;4;17;I16;;Relative air pressure (avg.);relative_air_pressure_avg;0.100000;0.000000;;4
+11;4;19;I16;;Wind direction (min.);wind_direction_min;0.100000;0.000000;;4
+12;4;20;I16;;Wind direction (max.);wind_direction_max;0.100000;0.000000;;4
+13;4;24;I16;;Compass;compass;0.100000;0.000000;;4
+14;4;25;I16;;Precipitation type;precipitation_type;1.000000;0.000000;;4
+15;4;26;U16;;Wind measurement quality;wind_measurement_quality;1.000000;0.000000;;4
+16;4;30;I16;;Global radiation (avg).;global_radiation_avg;0.100000;0.000000;;4
+17;4;34;I16;;Air Temperature Degr.C (avg.);air_temperature_degrc_avg;0.100000;0.000000;Degr.C;4
+18;4;39;I16;;Wind chill-temperature Degr.C;wind_chilltemperature_degrc;0.100000;0.000000;Degr.C;4
+19;4;40;I16;;Heating temperature Wind Degr.C;heating_temperature_wind_degrc;0.100000;0.000000;Degr.C;4
+20;4;41;I16;;Heating temperature R2S Degr.C;heating_temperature_r2s_degrc;0.100000;0.000000;Degr.C;4
+21;4;43;I16;;Wind Speed m/s (min.);wind_speed_ms_min;0.100000;0.000000;m/s;4
+22;4;44;I16;;Wind Speed m/s (max.);wind_speed_ms_max;0.100000;0.000000;m/s;4
+23;4;45;I16;;Wind Speed m/s (avg.);wind_speed_ms_avg;0.100000;0.000000;m/s;4
+24;4;48;U16;;Precipitation absolute mm;precipitation_absolute_mm;0.010000;0.000000;mm;4
+25;4;49;U16;;Precipitation different mm;precipitation_different_mm;0.010000;0.000000;mm;4
+26;4;50;U16;;Precipitation intensive mm/h;precipitation_intensive_mmh;0.010000;0.000000;mm/h;4
+27;4;74;I16;;Absolute humidity (avg.);absolute_humidity_avg;0.100000;0.000000;;4
+28;4;78;I16;;Mixing rratio (avg.);mixing_rratio_avg;0.100000;0.000000;;4
+29;4;82;I16;;Absolute air pressure (avg.);absolute_air_pressure_avg;0.100000;0.000000;;4
+30;4;86;I16;;Wind speed km/h (avg.);wind_speed_kmh_avg;0.100000;0.000000;km/h;4
+31;4;89;I16;;Wind speed kts (min.);wind_speed_kts_min;0.100000;0.000000;;4
+32;4;90;I16;;Wind speed kts (max.);wind_speed_kts_max;0.100000;0.000000;;4
+33;4;91;I16;;Wind speed kts (avg.);wind_speed_kts_avg;0.100000;0.000000;;4
+34;4;95;I16;;Wind speed standard deviation m/s;wind_speed_standard_deviation_ms;0.010000;0.000000;m/s;4
+35;4;97;I16;;Wind direction standard deviation;wind_direction_standard_deviation;0.010000;0.000000;;4
+36;4;98;I16;;Wet bulb temperature Degr.C (act);wet_bulb_temperature_degrc_act;0.100000;0.000000;Degr.C;4
+37;4;99;I16;;Specific enthalpy (act);specific_enthalpy_act;0.100000;0.000000;;4
+38;4;100;I16;;Air density (act);air_density_act;0.001000;0.000000;;4
+39;4;101;I16;;External temperature Degr.C (act);external_temperature_degrc_act;0.100000;0.000000;Degr.C;4
+40;4;107;I16;;Wind value quality (fast);wind_value_quality_fast;1.000000;0.000000;;4
+41;4;110;U16;;Lightning events (minute);lightning_events_minute;1.000000;0.000000;;4
+42;4;111;U16;;Lightning Events (Intervall);lightning_events_intervall;1.000000;0.000000;;4

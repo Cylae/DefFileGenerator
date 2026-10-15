@@ -1,0 +1,59 @@
+Modbus;Inverter;EFACEC;Efasolar
+1;3;41001;F32;;DC_Current;I_DC;1.0;0.0;A;4
+2;3;41003;F32;;DC_Voltage;U_DC;1.0;0.0;V;4
+3;3;41005;F32;;PV_Voltage;;1.0;0.0;V;4
+4;3;41007;F32;;DC_Power;P_DC;1.0;0.0;kW;4
+5;3;41009;F32;;Phase_R_Current;;1.0;0.0;A;4
+6;3;41011;F32;;Phase_S_Current;;1.0;0.0;A;4
+7;3;41013;F32;;Phase_T_Current;;1.0;0.0;A;4
+8;3;41015;F32;;R-S Voltage;;1.0;0.0;V;4
+9;3;41017;F32;;S-T Voltage;;1.0;0.0;V;4
+10;3;41019;F32;;T-R Voltage;;1.0;0.0;V;4
+11;3;41021;F32;;Apparent Power;S_AC;1.0;0.0;kVa;4
+12;3;41023;F32;;Active Power;P_AC;1.0;0.0;kW;4
+13;3;41025;F32;;Reactive Power;Q_AC;1.0;0.0;kvar;4
+14;3;41027;F32;;Frequency;FREQ;1.0;0.0;Hz;4
+15;3;41029;F32;;Power Factor;PF;1.0;0.0;;4
+16;3;41031;F32;;Efficiency;;1.0;0.0;%;4
+17;3;41033;F32;;Total Energy Generated;E_TOT;1.0;0.0;MWh;4
+18;3;41035;F32;;Inverter Temperature;TEMP;1.0;0.0;C;4
+19;3;41037;F32;;Daily Energy generated;E_DAY;1.0;0.0;kWh;4
+20;3;41051;U16;;Alarm 1;;1.0;0.0;;8
+21;3;41052;U16;;Alarm 2;;1.0;0.0;;8
+22;3;41053;U16;;Alarm 3;;1.0;0.0;;8
+23;3;41054;U16;;Alarm 4;;1.0;0.0;;8
+24;3;41055;U16;;Status;;1.0;0.0;;4
+25;3;41059;F32;;DC_Current_Array_1;;1.0;0.0;A;4
+26;3;41061;F32;;DC_Current_Array_2;;1.0;0.0;A;4
+27;3;41063;F32;;DC_Current_Array_3;;1.0;0.0;A;4
+28;3;41065;F32;;DC_Current_Array_4;;1.0;0.0;A;4
+29;3;41067;F32;;DC_Current_Array_5;;1.0;0.0;A;4
+30;3;41069;F32;;DC_Current_Array_6;;1.0;0.0;A;4
+31;3;41071;F32;;DC_Current_Array_7;;1.0;0.0;A;4
+32;3;41073;F32;;DC_Current_Array_8;;1.0;0.0;A;4
+33;3;41075;F32;;DC_Current_Array_9;;1.0;0.0;A;4
+34;3;41077;F32;;DC_Current_Array_10;;1.0;0.0;A;4
+35;3;41079;F32;;DC_Current_Array_11;;1.0;0.0;A;4
+36;3;41081;F32;;DC_Current_Array_12;;1.0;0.0;A;4
+37;3;41083;F32;;DC_Current_Array_13;;1.0;0.0;A;4
+38;3;41085;F32;;DC_Current_Array_14;;1.0;0.0;A;4
+39;3;41087;F32;;DC_Current_Array_15;;1.0;0.0;A;4
+40;3;41089;F32;;DC_Current_Array_16;;1.0;0.0;A;4
+41;3;41093;F32;;Earth_insulation_resistance;R_ISO;1.0;0.0;kOhm;4
+42;3;41097;F32;;GFDI_ILeak;;1.0;0.0;A;4
+43;3;41959;F32;;GND_Ins (last_valid_measure);;1.0;0.0;kOhm;4
+44;3;41163;F32;;GND_Ins (Time_Since_Last_Meas);;1.0;0.0;h;4
+45;3;41701;U16;;QCtrlMode;;1.0;0.0;;4
+46;3;41702;U16;;QCtrlPreference;;1.0;0.0;;4
+47;3;41703;U16;;QFPF_SP;;1.0;0.0;;4
+48;3;41704;U16;;QFQ_SP__;;1.0;0.0;%;4
+49;3;41705;U16;;QFQ_SP_kVar;;1.0;0.0;kvar;4
+50;3;41706;U16;;QQuad_SP;;1.0;0.0;;4
+51;3;41707;U16;;PMaxCtrl;CMD_P_ENA;1.0;0.0;;4
+52;3;41708;U16;;PMax_SP__;;1.0;0.0;%;4
+53;3;41709;U16;;PMax_SP_kW;;1.0;0.0;kW;4
+54;3;41710;U16;;PRedFreq;;1.0;0.0;;4
+55;3;41711;U16;;PLimGrad;;1.0;0.0;;4
+56;3;41712;U16;;PLimGrad__;;1.0;0.0;;4
+57;3;41802_0_1;BITS;;TurnOn command;CMD_ON;1.0;0.0;;4
+58;3;41802_1_1;BITS;;TurnOff command;CMD_OFF;1.0;0.0;;4

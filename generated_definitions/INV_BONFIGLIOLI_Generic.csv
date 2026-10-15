@@ -1,0 +1,56 @@
+modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
+1;3;3841;I16;;Active Power;P_AC;1;0;kW;4
+2;3;3842;I16;;DC-Link Voltage;U_DC;1;0;V;4
+3;3;3843;I16;;Heat Sink Temperature;;1;0;C;4
+4;3;3844;I16;;Inside Temperature;;1;0;C;4
+5;3;3845;U16;;Current Error;;1;0;;4
+6;3;3846;I16;;Power supply current;;1;0;A;4
+7;3;3847;I16;;Power supply voltage;;1;0;V;4
+8;3;3848;I16;;DC Power;P_DC;1;0;kW;4
+9;3;3849;I16;;Apparent Power;S_AC;1;0;kVA;4
+10;3;3850;U16;;Solar-Status;;1;0;;4
+11;3;3851;I16;;Frequency ;FREQ;0.01;0;Hz;4
+12;3;3852;I16;;Digital Inputs;;1;0;;4
+13;3;3853;I16;;DC Current;I_DC;1;0;A;4
+14;3;3854;I16;;Active Energy, Positive;;1;0;MWh;4
+15;3;3855;I16;;Apparent Power Phase a ;S_AC_1;1;0;kVA;4
+16;3;3856;I16;;Apparent Power Phase b;S_AC_2;1;0;kVA;4
+17;3;3857;I16;;Apparent Power Phase c;S_AC_3;1;0;kVA;4
+18;3;3858;I16;;Active Power Phase a;P_AC_1;1;0;kW;4
+19;3;3859;I16;;Active Power Phase b;P_AC_2;1;0;kW;4
+20;3;3860;I16;;Active Power Phase c;P_AC_3;1;0;kW;4
+21;3;3861;I16;;Current Phase a;I_AC_1;1;0;A;4
+22;3;3862;I16;;Current Phase b;I_AC_2;1;0;A;4
+23;3;3863;I16;;Current Phase c;I_AC_3;1;0;A;4
+24;3;3864;I16;;Power Supply Voltage Phase a;U_AC_1;1;0;V;4
+25;3;3865;I16;;Power Supply Voltage Phase b;U_AC_2;1;0;V;4
+26;3;3866;I16;;Power Supply Voltage Phase c;U_AC_3;1;0;V;4
+27;3;3867;I16;;Reactive power Phase a;Q_AC_1;1;0;kvar;4
+28;3;3868;I16;;Reactive power Phase b;Q_AC_2;1;0;kvar;4
+29;3;3869;I16;;Reactive power Phase c;Q_AC_3;1;0;kvar;4
+30;3;3870;I16;;Reactive Power;Q_AC;1;0;kVA;4
+31;3;3871;I16;;Reference value reactive power;;1;0;kVA;4
+32;3;3872;I16;;DC-Link Voltage_1;;1;0;V;4
+33;3;3873;I16;;R.m.s. Current;;1;0;A;4
+34;3;3874;I16;;Modulation;;1;0;%;4
+35;3;3875;I16;;Reference Percentage Value;;1;0;%;4
+36;3;3876;I16;;Active Energy High Word;;1;0;;4
+37;3;3877;I16;;Active Energy Low  Word;;1;0;;4
+38;3;3878;I16;;Digital Inputs hardware;;1;0;;4
+39;3;3879;I16;;Active Data Set;;1;0;;4
+40;3;3880;I16;;Analog Input MFI1A;;1;0;%;4
+41;3;3881;I16;;Analog Input EM-S1INA;;1;0;%;4
+42;3;3882;I16;;Digital Outputs;;1;0;;4
+43;3;3883;I16;;Analog Output MFO1A;;1;0;V;4
+44;3;3884;I16;;Analog Output EM-S1OUTA;;1;0;V;4
+45;3;3885;I16;;STO Status;;1;0;;4
+46;3;3887;I16;;Working Hours Counter High;;1;0;;4
+47;3;3888;I16;;Working Hours Counter Low Word;;1;0;;4
+48;3;3889;I16;;Operation Hours Counter High  Word;;1;0;;4
+49;3;3890;I16;;Operation Hours Counter Low  Word;;1;0;;4
+50;3;3899;I16;;Power Factor Phase a;PF_1;1;0;;4
+51;3;3900;I16;;Power Factor Phase b;PF_2;1;0;;4
+52;3;3901;I16;;Power Factor Phase c;PF_3;1;0;;4
+53;3;3902;I16;;Power Factor Total;PF;1;0;;4
+54;3;3903;I16;;Active current;;1;0;A;4
+55;3;3904;I16;;Reactive current;;1;0;A;4

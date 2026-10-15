@@ -1,0 +1,48 @@
+modbusRTU;Other;Webdyn;Huawei_MODBUS_2345;;;;;;;
+1;3;30000_15;STRING;;1  Model Name;v_1_model_name;1.000000;0.000000;;4
+2;3;30015_10;STRING;;2  SN;v_2_sn;1.000000;0.000000;;4
+3;3;30025_10;STRING;;3  PN;v_3_pn;1.000000;0.000000;;4
+4;3;30070;U16;;4  Model ID;v_4_model_id;1.000000;0.000000;;4
+5;3;30071;U16;;5  String Number;v_5_string_number;1.000000;0.000000;;4
+6;3;30072;U16;;6  MPPT Number;v_6_mppt_number;1.000000;0.000000;;4
+7;3;30073;U32;;7  Rated power (Pn);v_7_rated_power_pn;0.001000;0.000000;kW;4
+8;3;30075;U32;;8  Maximum active power;v_8_maximum_active_power;0.001000;0.000000;kW;4
+9;3;30077;U32;;9  Maximum apparent power;v_9_maximum_apparent_power;0.001000;0.000000;kVA;4
+10;3;30079;I32;;10  Maximum reactive power;v_10_maximum_reactive_power;0.001000;0.000000;kVar;4
+11;3;30081;I32;;11  Maximum reactive power;v_11_maximum_reactive_power;0.001000;0.000000;kVar;4
+12;3;32000;U16;;12  Standalone teleindication;v_12_standalone_teleindication;1.000000;0.000000;;4
+13;3;32002;U16;;13  Operating status;v_13_operating_status;1.000000;0.000000;;4
+14;3;32008;U16;;14  Alarm 1;v_14_alarm_1;1.000000;0.000000;;4
+15;3;32009;U16;;15  Alarm 2;v_15_alarm_2;1.000000;0.000000;;4
+16;3;32016;I16;;17  PV1 Voltage;v_17_pv1_voltage;0.100000;0.000000;V;4
+17;3;32017;I16;;18  PV1 Current;v_18_pv1_current;0.010000;0.000000;A;4
+18;3;32018;I16;;19  PV2 Voltage;v_19_pv2_voltage;0.100000;0.000000;V;4
+19;3;32019;I16;;20  PV2 Current;v_20_pv2_current;0.010000;0.000000;A;4
+20;3;32020;I16;;21  PV3 Voltage;v_21_pv3_voltage;0.100000;0.000000;V;4
+21;3;32021;I16;;22  PV3 Current;v_22_pv3_current;0.010000;0.000000;A;4
+22;3;32022;I16;;23  PV4 Voltage;v_23_pv4_voltage;0.100000;0.000000;V;4
+23;3;32023;I16;;24  PV4 Current;v_24_pv4_current;0.010000;0.000000;A;4
+24;3;32064;I32;;41  Input power;v_41_input_power;0.001000;0.000000;kW;4
+25;3;32066;U16;;42 Grid Voltage;v_42_grid_voltage;0.100000;0.000000;V;4
+26;3;32072;I32;;48  Grid Current;v_48_grid_current;0.001000;0.000000;A;4
+27;3;32078;I32;;51  Active power peak of current day;v_51_active_power_peak_of_current_day;0.001000;0.000000;kW;4
+28;3;32080;I32;;52  Active power;v_52_active_power;0.001000;0.000000;kW;4
+29;3;32082;I32;;53  Reactive power;v_53_reactive_power;0.001000;0.000000;kVar;4
+30;3;32084;I16;;54  Power factor;v_54_power_factor;0.001000;0.000000;;4
+31;3;32085;U16;;55  Frequency;v_55_frequency;0.010000;0.000000;Hz;4
+32;3;32086;U16;;56  Inverter efficiency;v_56_inverter_efficiency;0.010000;0.000000;'%;4
+33;3;32087;I16;;57  Cabinet temperature;v_57_cabinet_temperature;0.100000;0.000000;°C;4
+34;3;32088;U16;;58  Insulation resistance;v_58_insulation_resistance;0.001000;0.000000;M;4
+35;3;32089;U16;;59  Device status;v_59_device_status;1.000000;0.000000;;4
+36;3;32090;U16;;60  Fault code;v_60_fault_code;1.000000;0.000000;;4
+37;3;32091;U32;;61  Startup time;v_61_startup_time;1.000000;0.000000;;4
+38;3;32093;U32;;62  Shutdown time;v_62_shutdown_time;1.000000;0.000000;;4
+39;3;32106;U32;;63  Total energy yield;v_63_total_energy_yield;0.010000;0.000000;kWh;4
+40;3;40000;U32;;67  System Time;v_67_system_time;1.000000;0.000000;;4
+41;3;40122;I16;;69  Reactive power compensation (PF);v_69_reactive_power_compensation_pf;0.001000;0.000000;;4
+42;3;40123;I16;;70  Reactive power compensation(Q/S);v_70_reactive_power_compensationqs;0.001000;0.000000;;4
+43;3;40125;U16;;71  Active power derating percent(0.1%);v_71_active_power_derating_percent01;0.100000;0.000000;'%;4
+44;3;40126;U32;;Active power derating (fixed value W);active_power_derating_fixed_value_w;1.000000;0.000000;W;4
+45;3;40200;U16;;72  Power on;v_72_power_on;1.000000;0.000000;;4
+46;3;40201;U16;;73  Power off;v_73_power_off;1.000000;0.000000;;4
+47;3;43006;I16;;Time zone;time_zone;1.000000;0.000000;;4

@@ -1,0 +1,158 @@
+ModbusRTU;Inverter;Growatt;Inv
+1;4;1;U16;;Input power (high);P_DC;1.0;0.0;;4
+2;4;2;U16;;Input power (low);;1.0;0.0;;4
+3;4;3;U16;;PV1 voltage;U_DC_STRING_1;1.0;0.0;;4
+4;4;4;U16;;PV1 input current;I_DC_MPPT_1;1.0;0.0;;4
+5;4;5;U16;;PV1 input power(high);P_DC_MPPT_1;1.0;0.0;;4
+6;4;6;U16;;PV1 input power(low);;1.0;0.0;;4
+7;4;7;U16;;PV2 voltage;U_DC_STRING_2;1.0;0.0;;4
+8;4;8;U16;;PV2 input current;I_DC_MPPT_2;1.0;0.0;;4
+9;4;9;U16;;PV2 input power (high);P_DC_MPPT_2;1.0;0.0;;4
+10;4;10;U16;;PV2 input power (low);;1.0;0.0;;4
+11;4;11;U16;;PV3 voltage;U_DC_STRING_3;1.0;0.0;;4
+12;4;12;U16;;PV3 input current;I_DC_MPPT_3;1.0;0.0;;4
+13;4;13;U16;;PV3 input power (high);P_DC_MPPT_3;1.0;0.0;;4
+14;4;14;U16;;PV3 input power (low);;1.0;0.0;;4
+15;4;15;U16;;PV4 voltage;U_DC_STRING_4;1.0;0.0;;4
+16;4;16;U16;;PV4 input current;I_DC_MPPT_4;1.0;0.0;;4
+17;4;17;U16;;PV4 input power (high);P_DC_MPPT_4;1.0;0.0;;4
+18;4;18;U16;;PV4 input power (low);;1.0;0.0;;4
+19;4;19;U16;;PV5 voltage;U_DC_STRING_5;1.0;0.0;;4
+20;4;20;U16;;PV5 input current;I_DC_MPPT_5;1.0;0.0;;4
+21;4;21;U16;;PV5 input power(high);P_DC_MPPT_5;1.0;0.0;;4
+22;4;22;U16;;PV5 input power(low);;1.0;0.0;;4
+23;4;23;U16;;PV6 voltage;U_DC_STRING_6;1.0;0.0;;4
+24;4;24;U16;;PV6 input current;I_DC_MPPT_6;1.0;0.0;;4
+25;4;25;U16;;PV6 input power (high);P_DC_MPPT_6;1.0;0.0;;4
+26;4;26;U16;;PV6 input power (low);;1.0;0.0;;4
+27;4;27;U16;;PV7 voltage;U_DC_STRING_7;1.0;0.0;;4
+28;4;28;U16;;PV7 input current;I_DC_MPPT_7;1.0;0.0;;4
+29;4;29;U16;;PV7 input power (high);P_DC_MPPT_7;1.0;0.0;;4
+30;4;30;U16;;PV7 input power (low);;1.0;0.0;;4
+31;4;31;U16;;PV8 voltage;U_DC_STRING_8;1.0;0.0;;4
+32;4;32;U16;;PV8 input current;I_DC_MPPT_8;1.0;0.0;;4
+33;4;33;U16;;PV8 input power (high);P_DC_MPPT_8;1.0;0.0;;4
+34;4;34;U16;;PV8 input power (low);;1.0;0.0;;4
+35;4;35;U16;;Output power (high);P_AC;1.0;0.0;;4
+36;4;36;U16;;Output power (low);;1.0;0.0;;4
+37;4;37;U16;;Grid frequency;FREQ;1.0;0.0;;4
+38;4;38;U16;;Three/single phase grid voltage;U_AC_1;1.0;0.0;;4
+39;4;39;U16;;Three/single phase grid output current;I_AC_1;1.0;0.0;;4
+40;4;40;U16;;Three/single phase grid output watt VA (high);S_AC_1;1.0;0.0;;4
+41;4;41;U16;;Three/single phase grid output watt VA(low);;1.0;0.0;;4
+42;4;42;U16;;Three phase grid voltage_1;;1.0;0.0;;4
+43;4;43;U16;;Three phase grid output current;;1.0;0.0;;4
+44;4;44;U16;;Three phase grid output power (high);;1.0;0.0;;4
+45;4;45;U16;;Three phase grid output power (low);;1.0;0.0;;4
+46;4;46;U16;;Three phase grid voltage_2;U_AC_2;1.0;0.0;;4
+47;4;47;U16;;Three phase grid output current_1;;1.0;0.0;;4
+48;4;48;U16;;Three phase grid output power (high)_1;;1.0;0.0;;4
+49;4;49;U16;;Three phase grid output power (low)_1;;1.0;0.0;;4
+50;4;50;U16;;Three phase grid voltage;U_AC_L3L1;1.0;0.0;;4
+51;4;51;U16;;Three phase grid voltage_3;U_AC_3;1.0;0.0;;4
+52;4;52;U16;;Three phase grid voltage_4;;1.0;0.0;;4
+53;4;53;U16;;Today generate energy (high);E_DAY;1.0;0.0;;4
+54;4;54;U16;;Today generate energy (low);;1.0;0.0;;4
+55;4;55;U16;;Total generate energy (high);E_TOT;1.0;0.0;;4
+56;4;56;U16;;Total generate energy (low);;1.0;0.0;;4
+57;4;104;U16;;DeratingMode;;1.0;0.0;;8
+58;4;105;U16;;Inverter fault code;;1.0;0.0;;8
+59;4;106;U16;;Inverter warning code;;1.0;0.0;;8
+60;4;0;U16;;Inverter_status;;1.0;0.0;;4
+61;4;142;U16;;String_1 voltage;;1.0;0.0;;4
+62;4;143;U16;;String_1 current;I_DC_STRING_1;1.0;0.0;;4
+63;4;144;U16;;String_2 voltage;;1.0;0.0;;4
+64;4;145;U16;;String_2 current;I_DC_STRING_2;1.0;0.0;;4
+65;4;146;U16;;String_3 voltage;;1.0;0.0;;4
+66;4;147;U16;;String_3 current;I_DC_STRING_3;1.0;0.0;;4
+67;4;148;U16;;String_4 voltage;;1.0;0.0;;4
+68;4;149;U16;;String_4 current;I_DC_STRING_4;1.0;0.0;;4
+69;4;150;U16;;String_5 voltage;;1.0;0.0;;4
+70;4;151;U16;;String_5 current;I_DC_STRING_5;1.0;0.0;;4
+71;4;152;U16;;String_6 voltage;;1.0;0.0;;4
+72;4;153;U16;;String_6 current;I_DC_STRING_6;1.0;0.0;;4
+73;4;154;U16;;String_7 voltage;;1.0;0.0;;4
+74;4;155;U16;;String_7 current;I_DC_STRING_7;1.0;0.0;;4
+75;4;156;U16;;String_8 voltage;;1.0;0.0;;4
+76;4;157;U16;;String_8 current;I_DC_STRING_8;1.0;0.0;;4
+77;4;158;U16;;String_9 voltage;;1.0;0.0;;4
+78;4;159;U16;;String_9 current;I_DC_STRING_9;1.0;0.0;;4
+79;4;160;U16;;String_10 voltage;;1.0;0.0;;4
+80;4;161;U16;;String_10 current;I_DC_STRING_10;1.0;0.0;;4
+81;4;162;U16;;String_11 voltage;;1.0;0.0;;4
+82;4;163;U16;;String_11 current;I_DC_STRING_11;1.0;0.0;;4
+83;4;164;U16;;String_12 voltage;;1.0;0.0;;4
+84;4;165;U16;;String_12 current;I_DC_STRING_12;1.0;0.0;;4
+85;4;166;U16;;String_13 voltage;;1.0;0.0;;4
+86;4;167;U16;;String_13 current;I_DC_STRING_13;1.0;0.0;;4
+87;4;168;U16;;String_14 voltage;;1.0;0.0;;4
+88;4;169;U16;;String_14 current;I_DC_STRING_14;1.0;0.0;;4
+89;4;170;U16;;String_15 voltage;;1.0;0.0;;4
+90;4;171;U16;;String_15 current;I_DC_STRING_15;1.0;0.0;;4
+91;4;172;U16;;String_16 voltage;;1.0;0.0;;4
+92;4;173;U16;;String_16 current;I_DC_STRING_16;1.0;0.0;;4
+93;4;955;U16;;String_17 voltage;;1.0;0.0;;4
+94;4;956;U16;;String_17 current;I_DC_STRING_17;1.0;0.0;;4
+95;4;957;U16;;String_18 voltage;;1.0;0.0;;4
+96;4;958;U16;;String_18 current;I_DC_STRING_18;1.0;0.0;;4
+97;4;959;U16;;String_19 voltage;;1.0;0.0;;4
+98;4;960;U16;;String_19 current;I_DC_STRING_19;1.0;0.0;;4
+99;4;961;U16;;String_20 voltage;;1.0;0.0;;4
+100;4;962;U16;;String_20 current;I_DC_STRING_20;1.0;0.0;;4
+101;4;963;U16;;String_21 voltage;;1.0;0.0;;4
+102;4;964;U16;;String_21 current;I_DC_STRING_21;1.0;0.0;;4
+103;4;965;U16;;String_22 voltage;;1.0;0.0;;4
+104;4;966;U16;;String_22 current;I_DC_STRING_22;1.0;0.0;;4
+105;4;967;U16;;String_23 voltage;;1.0;0.0;;4
+106;4;968;U16;;String_23 current;I_DC_STRING_23;1.0;0.0;;4
+107;4;969;U16;;String_24 voltage;;1.0;0.0;;4
+108;4;970;U16;;String_24 current;I_DC_STRING_24;1.0;0.0;;4
+109;4;971;U16;;String_25 voltage;;1.0;0.0;;4
+110;4;972;U16;;String_25 current;;1.0;0.0;;4
+111;4;973;U16;;String_26 voltage;;1.0;0.0;;4
+112;4;974;U16;;String_26 current;;1.0;0.0;;4
+113;4;975;U16;;String_27 voltage;;1.0;0.0;;4
+114;4;976;U16;;String_27 current;;1.0;0.0;;4
+115;4;977;U16;;String_28 voltage;;1.0;0.0;;4
+116;4;978;U16;;String_28 current;;1.0;0.0;;4
+117;4;979;U16;;String_29 voltage;;1.0;0.0;;4
+118;4;980;U16;;String_29 current;;1.0;0.0;;4
+119;4;981;U16;;String_30 voltage;;1.0;0.0;;4
+120;4;982;U16;;String_30 current;;1.0;0.0;;4
+121;4;983;U16;;String_31 voltage;;1.0;0.0;;4
+122;4;984;U16;;String_31 current;;1.0;0.0;;4
+123;4;985;U16;;String_32 voltage;;1.0;0.0;;4
+124;4;986;U16;;String_32 current;;1.0;0.0;;4
+125;4;875;U16;;PV9 voltage;U_DC_STRING_9;1.0;0.0;;4
+126;4;876;U16;;PV9 input current;I_DC_MPPT_9;1.0;0.0;;4
+127;4;877;U16;;PV9 input power(high);P_DC_MPPT_9;1.0;0.0;;4
+128;4;878;U16;;PV9 input power(low);;1.0;0.0;;4
+129;4;879;U16;;PV10 voltage;U_DC_STRING_10;1.0;0.0;;4
+130;4;880;U16;;PV10 input current;I_DC_MPPT_10;1.0;0.0;;4
+131;4;881;U16;;PV10 input power(high);P_DC_MPPT_10;1.0;0.0;;4
+132;4;882;U16;;PV10 input power(low);;1.0;0.0;;4
+133;4;883;U16;;PV11 voltage;U_DC_STRING_11;1.0;0.0;;4
+134;4;884;U16;;PV11 input current;I_DC_MPPT_11;1.0;0.0;;4
+135;4;885;U16;;PV11 input power(high);P_DC_MPPT_11;1.0;0.0;;4
+136;4;886;U16;;PV11 input power(low);;1.0;0.0;;4
+137;4;887;U16;;PV12 voltage;U_DC_STRING_12;1.0;0.0;;4
+138;4;888;U16;;PV12 input current;I_DC_MPPT_12;1.0;0.0;;4
+139;4;889;U16;;PV12 input power(high);P_DC_MPPT_12;1.0;0.0;;4
+140;4;890;U16;;PV12 input power(low);;1.0;0.0;;4
+141;4;891;U16;;PV13 voltage;U_DC_STRING_13;1.0;0.0;;4
+142;4;892;U16;;PV13 input current;I_DC_MPPT_13;1.0;0.0;;4
+143;4;893;U16;;PV13 input power(high);P_DC_MPPT_13;1.0;0.0;;4
+144;4;894;U16;;PV13 input power(low);;1.0;0.0;;4
+145;4;895;U16;;PV14 voltage;U_DC_STRING_14;1.0;0.0;;4
+146;4;896;U16;;PV14 input current;I_DC_MPPT_14;1.0;0.0;;4
+147;4;897;U16;;PV14 input power(high);P_DC_MPPT_14;1.0;0.0;;4
+148;4;898;U16;;PV14 input power(low);;1.0;0.0;;4
+149;4;899;U16;;PV15 voltage;U_DC_STRING_15;1.0;0.0;;4
+150;4;900;U16;;PV15 input current;I_DC_MPPT_15;1.0;0.0;;4
+151;4;901;U16;;PV15 input power(high);P_DC_MPPT_15;1.0;0.0;;4
+152;4;902;U16;;PV15 input power(low);;1.0;0.0;;4
+153;4;903;U16;;PV16 voltage;U_DC_STRING_16;1.0;0.0;;4
+154;4;904;U16;;PV16 input current;I_DC_MPPT_16;1.0;0.0;;4
+155;4;905;U16;;PV16 input power(high);P_DC_MPPT_16;1.0;0.0;;4
+156;4;906;U16;;PV16 input power(low);;1.0;0.0;;4
+157;3;3;U16;;Active power reduction;cmd;1.000000;0.000000;%;4

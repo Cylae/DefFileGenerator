@@ -1,0 +1,43 @@
+ModbusTCP;Inverter;LEGRAND;Trimod;;;;;;;
+1;3;100;U16;;Output Power phase L1;;1.0;0.0;%;4
+2;3;101;U16;;Output Power phase L2;;1.0;0.0;%;4
+3;3;102;U16;;Output Power phase L2;;1.0;0.0;%;4
+4;3;103;U16;;Battery charge Level;;1.0;0.0;%;4
+5;3;104;I16;;Input voltage phase L1;U_AC_1;1.0;0.0;V;4
+6;3;105;I16;;Input voltage phase L2;U_AC_2;1.0;0.0;V;4
+7;3;106;I16;;Input voltage phase L3;U_AC_3;1.0;0.0;V;4
+8;3;107;I16;;UPS Temperature;;1.0;0.0;C;4
+9;3;108;I16;;Autonomy Time;;1.0;0.0;Minute;4
+10;3;109_1;STRING;;UPS Status;;1.0;0.0;;8
+11;3;110;U16;;Battery Voltage;;1.0;0.0;V;4
+12;3;111;U16;;Input Frequency phase L1;FREQ_1;1.0;0.0;Hz;4
+13;3;112;U16;;Input Frequency phase L2;FREQ_2;1.0;0.0;Hz;4
+14;3;113;U16;;Input Frequency phase L3;FREQ_3;1.0;0.0;Hz;4
+15;3;114;U16;;Powerfail Counter;;1.0;0.0;;8
+16;3;115;U16;;Alarm Battery Bad;;1.0;0.0;;8
+17;3;116;U16;;Alarm On Battery;;1.0;0.0;;8
+18;3;117;U16;;Alarm Battery Low;;1.0;0.0;;8
+19;3;118;U16;;Alarm Over Temperature;;1.0;0.0;;8
+20;3;119;U16;;Alarm Input Bad;;1.0;0.0;;8
+21;3;120;U16;;Alarm Output Bad;;1.0;0.0;;8
+22;3;121;U16;;Alarm Outuput Overload;;1.0;0.0;;8
+23;3;122;U16;;Alarm On Bypass;;1.0;0.0;;8
+24;3;123;U16;;Alarm Bypass Bad;;1.0;0.0;;8
+25;3;124;U16;;Alarm Output Off as requested;;1.0;0.0;;8
+26;3;125;U16;;Alarm UPS Off as requested;;1.0;0.0;;8
+27;3;126;U16;;Alarm Charger Failed;;1.0;0.0;;8
+28;3;127;U16;;Alarm UPS Output Off;;1.0;0.0;;8
+29;3;128;U16;;Alarm UPS System Off;;1.0;0.0;;8
+30;3;132;U16;;Alarm General fault;;1.0;0.0;;8
+31;3;133;U16;;Alarm Diagnose test failed;;1.0;0.0;;8
+32;3;134;U16;;Alarm UPS Communication Lost;;1.0;0.0;;8
+33;3;135;U16;;Alarm Shutdown penting;;1.0;0.0;;8
+34;3;136;U16;;Alarm Shutdown imminent;;1.0;0.0;;8
+35;3;137;U16;;Alarm Test in progress;;1.0;0.0;;8
+36;3;138;U16;;Alarm Manual Bypass Switch Closed;;1.0;0.0;;8
+37;3;140;U16;;Output Voltage Phase L1;;1.0;0.0;V;4
+38;3;141;U16;;Output Voltage Phase L2;;1.0;0.0;V;4
+39;3;142;U16;;Output Voltage Phase L3;;1.0;0.0;V;4
+40;3;143;U16;;Output Current Phase L1;I_AC_1;10.0;0.0;A;4
+41;3;144;U16;;Output current Phase L2;I_AC_2;10.0;0.0;A;4
+42;3;145;U16;;Output current Phase L3;I_AC_3;10.0;0.0;A;4

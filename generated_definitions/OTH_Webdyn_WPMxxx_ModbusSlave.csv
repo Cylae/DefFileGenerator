@@ -1,0 +1,6 @@
+modbusRTU;Other;Webdyn;WPMxxx_ModbusSlave;;;;;;;
+1;3;0;U16;;;meterValueKW;1.000000;0.000000;;4
+2;3;1;U16;;;CmdStop;1.000000;0.000000;;4
+3;3;4;U16;;;Alarm;1.000000;0.000000;;4
+4;3;5;U16;;;inverterCommand;1.000000;0.000000;;4
+5;3;6;U16;;;variation;1.000000;0.000000;;4

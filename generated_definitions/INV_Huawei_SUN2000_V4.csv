@@ -1,11 +1,11 @@
-﻿modbusRTU;Inverter;Huawei;SUN2000;;;;;;;
-1;3;30000_30;STRING;;Model Name;DisplayModel;1.000000;0.000000;;4
-2;3;30015_20;STRING;;SN;DisplaySerialNumber;1.000000;0.000000;;4
+modbusRTU;Inverter;Huawei;SUN2000;;;;;;;
+1;3;30000_30;STRING;;Model Name;MODEL;1.000000;0.000000;;4
+2;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;;4
 3;3;30025_20;STRING;;PN;pn;1.000000;0.000000;;4
 4;3;30070;U16;;Model ID;model_id;1.000000;0.000000;;4
 5;3;30071;U16;;String Number;string_number;1.000000;0.000000;;4
 6;3;30072;U16;;MPPT Number;mppt_number;1.000000;0.000000;;4
-7;3;30073;U32;;Rated power (Pn);NominalPower;0.001000;0.000000;kW;4
+7;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
 8;3;30075;U32;;Maximum active power (Pmax);maximum_active_power_pmax;0.001000;0.000000;kW;4
 9;3;30077;U32;;Maximum apparent power (Smax);maximum_apparent_power_smax;0.001000;0.000000;kVA;4
 10;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);maximum_reactive_power_qmax_fed_to_the_power_grid;0.001000;0.000000;kVar;4
@@ -75,10 +75,10 @@
 74;3;32074;I32;;Current2_Ib;current2_ib;0.001000;0.000000;A;4
 75;3;32076;I32;;Current3_Ic;current3_ic;0.001000;0.000000;A;4
 76;3;32078;I32;;Active power peak of current day;active_power_peak_of_current_day;0.001000;0.000000;kW;4
-77;3;32080;I32;;Active power;RealPower;1.000000;0.000000;W;4
-78;3;32082;I32;;Reactive_power;ReactivePower;1.000000;0.000000;Var;4
-79;3;32084;I16;;Power factor;CosPhi;0.001000;0.000000;;4
-80;3;32085;U16;;Frequency;GridFrequency;0.010000;0.000000;Hz;4
+77;3;32080;I32;;Active power;P_AC;1.000000;0.000000;W;4
+78;3;32082;I32;;Reactive_power;Q_AC;1.000000;0.000000;Var;4
+79;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
+80;3;32085;U16;;Frequency;FREQ;0.010000;0.000000;Hz;4
 81;3;32086;U16;;Inverter efficiency;inverter_efficiency;0.010000;0.000000;'%;4
 82;3;32087;I16;;Cabinet temperature;cabinet_temperature;0.100000;0.000000;°C;4
 83;3;32088;U16;;Insulation resistance;insulation_resistance;0.001000;0.000000;M/Ohm;4
@@ -86,8 +86,8 @@
 85;3;32090;U16;;Fault code;fault_code;1.000000;0.000000;;4
 86;3;32091;U32;;Startup time;startup_time;1.000000;0.000000;s;4
 87;3;32093;U32;;Shutdown time;shutdown_time;1.000000;0.000000;s;4
-88;3;32106;U32;;Energy_total;EnergyTotal;0.010000;0.000000;kWh;4
-89;3;32114;U32;;Energy yield of current day;EnergyDay;0.010000;0.000000;kWh;4
+88;3;32106;U32;;Energy_total;E_TOT;0.010000;0.000000;kWh;4
+89;3;32114;U32;;Energy yield of current day;E_DAY;0.010000;0.000000;kWh;4
 90;3;32116;U32;;Energy yield of the month;energy_yield_of_the_month;0.010000;0.000000;kWh;4
 91;3;32118;U32;;Energy yield of the year;energy_yield_of_the_year;0.010000;0.000000;kWh;4
 92;3;35300;U16;;[Active] Adjusment mode;active_adjusment_mode;1.000000;0.000000;;4
@@ -104,9 +104,9 @@
 103;3;40037;U16;;[Power grid scheduling] Q-U characteristic curve mode;power_grid_scheduling_qu_characteristic_curve_mode;1.000000;0.000000;;4
 104;3;40038;U16;;[Power grid scheduling] Q-U dispatch trigger power (%);power_grid_scheduling_qu_dispatch_trigger_power;1.000000;0.000000;'%;4
 105;3;40120;U16;;Active power derating;active_power_derating;0.100000;0.000000;kW;4
-106;3;40122;I16;;Reactive power compensation (PF);cmdPF;0.001000;0.000000;;4
+106;3;40122;I16;;Reactive power compensation (PF);CMD_PF;0.001000;0.000000;;4
 107;3;40123;I16;;Reactive power compensation(Q/S);reactive_power_compensationqs;0.001000;0.000000;;4
-108;3;40125;U16;;Power_limitation_pct;cmdPwrPercent;0.100000;0.000000;'%;4
+108;3;40125;U16;;Power_limitation_pct;CMD_P_AC_SET_PERCENT;0.100000;0.000000;'%;4
 109;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);power_grid_scheduling_fixed_active_power_derated_w;1.000000;0.000000;W;4
 110;3;40129;I32;;[Power grid scheduling] Reactive power compensatio n at night (kVar);power_grid_scheduling_reactive_power_compensatio_n_at_night_kvar;0.001000;0.000000;kVar;4
 111;3;40133;U16;;Number of points_1;number_of_points_1;1.000000;0.000000;;0
@@ -174,8 +174,8 @@
 173;3;40195;I16;;PF value at point 10;pf_value_at_point_10;0.001000;0.000000;;4
 174;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;power_grid_scheduling_reactive_power_adjustment_time;1.000000;0.000000;s;4
 175;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;power_grid_scheduling_qu_power_percentage_to_exit_scheduling;1.000000;0.000000;'%;4
-176;3;40200;U16;;Power On;cmdOn;1.000000;0.000000;;4
-177;3;40201;U16;;Power Off;cmdOff;1.000000;0.000000;;4
+176;3;40200;U16;;Power On;CMD_ON;1.000000;0.000000;;4
+177;3;40201;U16;;Power Off;CMD_OFF;1.000000;0.000000;;4
 178;3;42000;U16;;Grid code;grid_code;0.001000;0.000000;;4
 179;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;power_grid_scheduling_reactive_power_change_gradient;0.001000;0.000000;'%/s;4
 180;3;42017;U32;;[Power grid scheduling] Active power change gradient;power_grid_scheduling_active_power_change_gradient;0.001000;0.000000;;4

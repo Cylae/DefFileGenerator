@@ -1,0 +1,18 @@
+modbusRTU;Other;Webdyn;ABB_Modbus_TRIO;;;;;;;
+1;4;104_6;STRING;;SN onduleur;sn_onduleur;1.000000;0.000000;;4
+2;4;132;F32;;energie journaliere;energie_journaliere;1.000000;0.000000;Wh;4
+3;4;134;F32;;Energie totale;E_TOT;1.000000;0.000000;kWh;4
+4;4;140;F32;;Energie mensuelle;energie_mensuelle;1.000000;0.000000;kWh;4
+5;4;142;F32;;Energie annuelle;energie_annuelle;1.000000;0.000000;kWh;4
+6;4;144;F32;;Tension reseau;tension_reseau;1.000000;0.000000;V;4
+7;4;146;F32;;Courant injecte;courant_injecte;1.000000;0.000000;A;4
+8;4;148;F32;;Puissance injectee;puissance_injectee;1.000000;0.000000;W;4
+9;4;150;F32;;Frequence du reseau;frequence_du_reseau;1.000000;0.000000;Hz;4
+10;4;152;F32;;Puissance MPP1;puissance_mpp1;1.000000;0.000000;W;4
+11;4;154;F32;;Tension MPP1;tension_mpp1;1.000000;0.000000;V;4
+12;4;156;F32;;Courant MPP1;courant_mpp1;1.000000;0.000000;A;4
+13;4;158;F32;;Puissance MPP2;puissance_mpp2;1.000000;0.000000;W;4
+14;4;160;F32;;Tension MPP2;tension_mpp2;1.000000;0.000000;V;4
+15;4;162;F32;;Courant MPP2;courant_mpp2;1.000000;0.000000;A;4
+16;4;164;F32;;Temperature onduleur;temperature_onduleur;1.000000;0.000000;°C;4
+17;4;168;F32;;Resistance isolement;resistance_isolement;1.000000;0.000000;mHoms;4

@@ -1,0 +1,43 @@
+modbusRTU;Sensor;SevenSensor;3S-IS;;;;;;;
+1;3;30000;I16;;Irradiance 1;POA;0.1;0;W/m;4
+2;3;30001;I16;;Irradiance 2;;0.1;0;W/m;4
+3;3;30002;I16;;Irradiance 3;;0.1;0;W/m;4
+4;3;30003;I16;;Irradiance 4;;0.1;0;W/m;4
+5;3;30006;I16;;Temperature Conpensated Irradiance 1;;0.1;0;W/m;4
+6;3;30007;I16;;Temperature Conpensated Irradiance 2;;0.1;0;W/m;4
+7;3;30008;I16;;Temperature Conpensated Irradiance 3;;0.1;0;W/m;4
+8;3;30009;I16;;Temperature Conpensated Irradiance 4;;0.1;0;W/m;4
+9;3;30012;I16;;Total Effective Temperature Compensated Irradiance;;0.1;0;W/m;4
+10;3;30014;I16;;Albedo;;0.01;0;;4
+11;3;30015;I16;;Internal Temperature 1;TEMP_INT;0.1;0;Celcius;4
+12;3;30016;I16;;Internal Temperature 2;;0.1;0;Celcius;4
+13;3;30017;I16;;Internal Temperature 3;;0.1;0;Celcius;4
+14;3;30018;I16;;Internal Temperature 4;;0.1;0;Celcius;4
+15;3;30021;I16;;Total Effective Module Temperature;TEMP_CELL;0.1;0;Celcius;4
+16;3;30022;I16;;External Temperature 1;;0.1;0;Celcius;4
+17;3;30023;I16;;External Temperature 2;;0.1;0;Celcius;4
+18;3;30024;I16;;External Temperature 3;;0.1;0;Celcius;4
+19;3;30025;I16;;External Temperature 4;;0.1;0;Celcius;4
+20;3;30026;I16;;External Temperature 5;;0.1;0;Celcius;4
+21;3;30027;I16;;External Temperature 6;;0.1;0;Celcius;4
+22;3;30028;I16;;External Temperature 7;;0.1;0;Celcius;4
+23;3;30029;I16;;External Temperature 8;;0.1;0;Celcius;4
+24;3;30032;I16;;Ambiant Temperature (SHT);;0.1;0;Celcius;4
+25;3;30033;I16;;Relative Humidity (SHT);HUMIDITY;0.1;0;%;4
+26;3;30035;I16;;Air Pressure;PRESSURE;0.1;0;hPa;4
+27;3;30036;I16;;Rainfall Intensity (Hour);RAIN;1;0;mm/h;4
+28;3;30037;I16;;Rainfall Intensity (Minute);;1;0;mm/min;4
+29;3;30038;I16;;Rainfall Intensity (Second);;1;0;mm/sec;4
+30;3;30040;I16;;Reserved;;;0;;4
+32;3;30042;I16;;Instant Soiling Ratio;;0.01;0;;4
+33;3;30043;I16;;Daily Average Soiling Ratio;;0.01;0;;4
+34;3;30044;I16;;Instant Soiling Level;;0.01;0;;4
+35;3;30045;I16;;Daily Average Soiling Level;;0.01;0;;4
+36;3;30046;I16;;Instant Soiling Level  Percentage;;0.1;0;%;4
+37;3;30047;I16;;Daily Average Soiling Level Percentage;;0.1;0;%;4
+38;3;30048;I16;;Soiling Rate;;0.1;0;%;4
+39;3;30050;I16;;Wash Tank Status;;1;0;;4
+40;3;30052;I16;;Wind Direction;WIND_BEARING;0.1;0;Deg;4
+41;3;30053;I16;;Wind Speed (m/s);WIND_SPEED;0.01;0;m/s;4
+42;3;30054;I16;;Wind Speed (knots);;0.01;0;knots;4
+43;3;30055;I16;;Wind Speed (km/h);;0.01;0;km/h;4

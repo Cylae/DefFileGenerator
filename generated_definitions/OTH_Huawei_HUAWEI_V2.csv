@@ -1,0 +1,215 @@
+modbusRTU;Other;Huawei;HUAWEI_V2;;;;;;;
+1;3;32001;U16;;Model ID;MODEL;1.000000;0.000000;;4
+2;3;32002;U16;;Output mode;output_mode;1.000000;0.000000;;4
+3;3;32003_20;STRING;;SN;SERIAL;1.000000;0.000000;;4
+4;3;32153_20;STRING;;PN;pn;1.000000;0.000000;;4
+5;3;32200;U32;;System time;system_time;1.000000;0.000000;epoch;0
+6;3;32262;I16;;PV1 Voltage;pv1_voltage;0.100000;0.000000;V;4
+7;3;32263;I16;;PV1 Current;pv1_current;0.100000;0.000000;A;4
+8;3;32264;I16;;PV2 Voltage;pv2_voltage;0.100000;0.000000;V;4
+9;3;32265;I16;;PV2 Current;pv2_current;0.100000;0.000000;A;4
+10;3;32266;I16;;PV3 Voltage;pv3_voltage;0.100000;0.000000;V;4
+11;3;32267;I16;;PV3 Current;pv3_current;0.100000;0.000000;A;4
+12;3;32268;I16;;PV4 Voltage;pv4_voltage;0.100000;0.000000;V;4
+13;3;32269;I16;;PV4 Current;pv4_current;0.100000;0.000000;A;4
+14;3;32270;I16;;PV5 Voltage;pv5_voltage;0.100000;0.000000;V;4
+15;3;32271;I16;;PV5 Current;pv5_current;0.100000;0.000000;A;4
+16;3;32272;I16;;PV6 Voltage;pv6_voltage;0.100000;0.000000;V;4
+17;3;32273;I16;;PV6 Current;pv6_current;0.100000;0.000000;A;4
+18;3;32274;U16;;Line voltage between phases A and B;line_voltage_between_phases_a_and_b;0.100000;0.000000;V;4
+19;3;32275;U16;;Line voltage between phases B and C;line_voltage_between_phases_b_and_c;0.100000;0.000000;V;4
+20;3;32276;U16;;Line voltage between phases C and A;line_voltage_between_phases_c_and_a;0.100000;0.000000;V;4
+21;3;32277;U16;;phases A voltage;phases_a_voltage;0.100000;0.000000;V;4
+22;3;32278;U16;;phases B voltage;phases_b_voltage;0.100000;0.000000;V;4
+23;3;32279;U16;;phases C voltage;phases_c_voltage;0.100000;0.000000;V;4
+24;3;32280;U16;;phases A current;phases_a_current;0.100000;0.000000;A;4
+25;3;32281;U16;;phases B current;phases_b_current;0.100000;0.000000;A;4
+26;3;32282;U16;;phases C current;phases_c_current;0.100000;0.000000;A;4
+27;3;32283;U16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;4
+28;3;32284;I16;;Power factor;PF;0.001000;0.000000;;4
+29;3;32285;U16;;Inverter efficiency;inverter_efficiency;0.010000;0.000000;'%;4
+30;3;32286;I16;;Internal temperature;internal_temperature;0.100000;0.000000;°C;4
+31;3;32287;U16;;Device status;device_status;1.000000;0.000000;epoch;8
+32;3;32288;I32;;Active power peak of current day;active_power_peak_of_current_day;0.001000;0.000000;kW;4
+33;3;32290;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+34;3;32292;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
+35;3;32294;U32;;Input power;input_power;0.001000;0.000000;kW;4
+36;3;32296;U32;;Current energy yield collection time;current_energy_yield_collection_time;1.000000;0.000000;epoch;0
+37;3;32298;U32;;Energy yield in current hour;energy_yield_in_current_hour;0.010000;0.000000;kWh;4
+38;3;32300;U32;;Daily energy yield;E_DAY;0.010000;0.000000;kWh;4
+39;3;32302;U32;;Monthly energy yield;monthly_energy_yield;0.010000;0.000000;kWh;4
+40;3;32304;U32;;Annual energy yield;annual_energy_yield;1.000000;0.000000;;4
+41;3;32306;U32;;Accumulated energy yield;accumulated_energy_yield;0.010000;0.000000;kWh;4
+42;3;32314;I16;;PV7 voltage;pv7_voltage;1.000000;0.000000;;4
+43;3;32315;I16;;PV7 current;pv7_current;1.000000;0.000000;;4
+44;3;32316;I16;;PV8 voltage;pv8_voltage;1.000000;0.000000;;4
+45;3;32317;I16;;PV8 current;pv8_current;1.000000;0.000000;;4
+46;3;32319_0_1;BITS;;State 1:Standby;state_1standby;1.000000;0.000000;;4
+47;3;32319_1_1;BITS;;State 1 : Grid-connected;state_1_gridconnected;1.000000;0.000000;;4
+48;3;32319_2_1;BITS;;State 1 : Grid-connected normally;state_1_gridconnected_normally;1.000000;0.000000;;4
+49;3;32319_3_1;BITS;;State 1 : Grid connection with derating due to power rationing;state_1_grid_connection_with_derating_due_to_power_rationing;1.000000;0.000000;;4
+50;3;32319_4_1;BITS;;State 1 : Grid connection with derating due to internal causes of the solar inverter;state_1_grid_connection_with_derating_due_to_internal_causes_of_the_solar_inverter;1.000000;0.000000;;4
+51;3;32319_5_1;BITS;;State 1 : Normal stop;state_1_normal_stop;1.000000;0.000000;;4
+52;3;32319_6_1;BITS;;State 1 : Stop due to faults;state_1_stop_due_to_faults;1.000000;0.000000;;4
+53;3;32319_7_1;BITS;;State 1 : Stop due to power rationing;state_1_stop_due_to_power_rationing;1.000000;0.000000;;4
+54;3;32319_8_1;BITS;;State 1 : shutdown;state_1_shutdown;1.000000;0.000000;;4
+55;3;32319_9_1;BITS;;State 1 : spot check;state_1_spot_check;1.000000;0.000000;;4
+56;3;32320_1_1;BITS;;State 2:Locking status;state_2locking_status;1.000000;0.000000;;4
+57;3;32321_0_1;BITS;;State 3:Zero voltage ride through protection;state_3zero_voltage_ride_through_protection;1.000000;0.000000;;4
+58;3;32321_1_1;BITS;;State 3:LVRT protection;state_3lvrt_protection;1.000000;0.000000;;4
+59;3;32321_2_1;BITS;;State 3:Anti-islanding;state_3antiislanding;1.000000;0.000000;;4
+60;3;32322_0_1;BITS;;State 4:grid connected;state_4grid_connected;1.000000;0.000000;;4
+61;3;32322_1_1;BITS;;State 4:grid connected(compatible and reserved);state_4grid_connectedcompatible_and_reserved;1.000000;0.000000;;4
+62;3;32323;U16;;Insulation resistance;insulation_resistance;0.001000;0.000000;Mohm;4
+63;3;32325;U32;;Startup time;startup_time;1.000000;0.000000;Epoch;4
+64;3;32327;U32;;shutdown time;shutdown_time;1.000000;0.000000;Epoch;4
+65;3;32343;U32;;Energy yield collection time for previous hour;energy_yield_collection_time_for_previous_hour;1.000000;0.000000;Epoch;4
+66;3;32345;U32;;Energy yield in previous hour;energy_yield_in_previous_hour;1.000000;0.000000;;4
+67;3;32347;U32;;Energy yield collection time for previous day;energy_yield_collection_time_for_previous_day;1.000000;0.000000;Epoch;4
+68;3;32349;U32;;Energy yieldon previous day;energy_yieldon_previous_day;1.000000;0.000000;;4
+69;3;32351;U32;;Energy yield collection time for previous month;energy_yield_collection_time_for_previous_month;1.000000;0.000000;Epoch;4
+70;3;32353;U32;;Energy yieldin previous month;energy_yieldin_previous_month;1.000000;0.000000;;4
+71;3;32355;U32;;Energy yield collection time for previous year;energy_yield_collection_time_for_previous_year;1.000000;0.000000;Epoch;4
+72;3;32357;U32;;Energy yield in previous year;energy_yield_in_previous_year;1.000000;0.000000;;4
+73;3;32402;U16;;[Active] Adjustment mode;active_adjustment_mode;1.000000;0.000000;;4
+74;3;32403;U32;;[Active] Adjustment value;active_adjustment_value;1.000000;0.000000;;4
+75;3;32405;U16;;[Active] Adjustment command;active_adjustment_command;1.000000;0.000000;;4
+76;3;32406;U16;;[Reactive] Adjustment mode;reactive_adjustment_mode;1.000000;0.000000;;4
+77;3;32407;U32;;[Reactive] Adjustment value;reactive_adjustment_value;1.000000;0.000000;;4
+78;3;32409;U16;;[Reactive] Adjustment command;reactive_adjustment_command;1.000000;0.000000;;4
+79;3;33022;U32;;MPPT1 total input power;mppt1_total_input_power;0.001000;0.000000;kW;4
+80;3;33024;U32;;MPPT2 total input power;mppt2_total_input_power;0.001000;0.000000;kW;4
+81;3;33026;U32;;MPPT3 total input power;mppt3_total_input_power;0.001000;0.000000;kW;4
+82;3;33070;U32;;MPPT4 total input power;mppt4_total_input_power;1.000000;0.000000;;4
+83;3;40000;U32;;Date and time;date_and_time;1.000000;0.000000;Epoch;4
+84;3;40117;U16;;[Power grid scheduling] Reactive power compensation;power_grid_scheduling_reactive_power_compensation;1.000000;0.000000;;4
+85;3;40118;U16;;[Power grid scheduling] Active power control;power_grid_scheduling_active_power_control;1.000000;0.000000;;4
+86;3;40119;U16;;[Power grid scheduling] Active power percentage derating 40119;power_grid_scheduling_active_power_percentage_derating_40119;1.000000;0.000000;'%;4
+87;3;40120;U16;;[Power grid scheduling] Fixed Active power derated;power_grid_scheduling_fixed_active_power_derated;0.100000;0.000000;kW;4
+88;3;40121;U16;;[Power grid scheduling] Active power change gradient;power_grid_scheduling_active_power_change_gradient;0.100000;0.000000;'%/s;4
+89;3;40122;U16;;[Power grid scheduling] Reactive power compensation (PF);power_grid_scheduling_reactive_power_compensation_pf;0.001000;0.000000;;4
+90;3;40123;U16;;[Power grid scheduling] Reactive power compensation(Q/S);power_grid_scheduling_reactive_power_compensationqs;0.001000;0.000000;;4
+91;3;40124;I16;;[Power grid scheduling] Reactive power adjustment time;power_grid_scheduling_reactive_power_adjustment_time;1.000000;0.000000;Sec;4
+92;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);power_grid_scheduling_active_power_percentage_derating_01;0.100000;0.000000;'%;4
+93;3;40133;U16;;[Power grid scheduling] cosphiPhi)-P/Pn characteristic curve;power_grid_scheduling_cosphiphippn_characteristic_curve;1.000000;0.000000;;4
+94;3;40134;U16;;P/Pn value of cosphi-P/Pn curve point 1;ppn_value_of_cosphippn_curve_point_1;0.100000;0.000000;'%;4
+95;3;40135;U16;;cosphi value of cosphi-P/Pn curve point 1;cosphi_value_of_cosphippn_curve_point_1;0.001000;0.000000;;4
+96;3;40136;U16;;P/Pn value of cosphi-P/Pn curve point 2;ppn_value_of_cosphippn_curve_point_2;0.100000;0.000000;'%;4
+97;3;40137;U16;;cosphi value of cosphi-P/Pn curve point 2;cosphi_value_of_cosphippn_curve_point_2;0.001000;0.000000;;4
+98;3;40138;U16;;P/Pn value of cosphi-P/Pn curve point 3;ppn_value_of_cosphippn_curve_point_3;0.100000;0.000000;'%;4
+99;3;40139;U16;;cosphi value of cosphi-P/Pn curve point 3;cosphi_value_of_cosphippn_curve_point_3;0.001000;0.000000;;4
+100;3;40140;U16;;P/Pn value of cosphi-P/Pn curve point 4;ppn_value_of_cosphippn_curve_point_4;0.100000;0.000000;'%;4
+101;3;40141;U16;;cosphi value of cosphi-P/Pn curve point 4;cosphi_value_of_cosphippn_curve_point_4;0.001000;0.000000;;4
+102;3;40142;U16;;P/Pn value of cosphi-P/Pn curve point 5;ppn_value_of_cosphippn_curve_point_5;0.100000;0.000000;'%;4
+103;3;40143;U16;;cosphi value of cosphi-P/Pn curve point 5;cosphi_value_of_cosphippn_curve_point_5;0.001000;0.000000;;4
+104;3;40144;U16;;P/Pn value of cosphi-P/Pn curve point 6;ppn_value_of_cosphippn_curve_point_6;0.100000;0.000000;'%;4
+105;3;40145;U16;;cosphi value of cosphi-P/Pn curve point 6;cosphi_value_of_cosphippn_curve_point_6;0.001000;0.000000;;4
+106;3;40146;U16;;P/Pn value of cosphi-P/Pn curve point 7;ppn_value_of_cosphippn_curve_point_7;0.100000;0.000000;'%;4
+107;3;40147;U16;;cosphi value of cosphi-P/Pn curve point 7;cosphi_value_of_cosphippn_curve_point_7;0.001000;0.000000;;4
+108;3;40148;U16;;P/Pn value of cosphi-P/Pn curve point 8;ppn_value_of_cosphippn_curve_point_8;0.100000;0.000000;'%;4
+109;3;40149;U16;;cosphi value of cosphi-P/Pn curve point 8;cosphi_value_of_cosphippn_curve_point_8;0.001000;0.000000;;4
+110;3;40150;U16;;P/Pn value of cosphi-P/Pn curve point 9;ppn_value_of_cosphippn_curve_point_9;0.100000;0.000000;'%;4
+111;3;40151;U16;;cosphi value of cosphi-P/Pn curve point 9;cosphi_value_of_cosphippn_curve_point_9;0.001000;0.000000;;4
+112;3;40152;U16;;P/Pn value of cosphi-P/Pn curve point 10;ppn_value_of_cosphippn_curve_point_10;0.100000;0.000000;'%;4
+113;3;40153;U16;;cosphi value of cosphi-P/Pn curve point 10;cosphi_value_of_cosphippn_curve_point_10;0.001000;0.000000;;4
+114;3;40154;U16;;60 Q-U characteristic curve;v_60_qu_characteristic_curve;1.000000;0.000000;;4
+115;3;40155;I16;;U/Un value of Q-U curve point 1;uun_value_of_qu_curve_point_1;0.100000;0.000000;'%;4
+116;3;40156;I16;;Q/S value of Q-U curve point 1;qs_value_of_qu_curve_point_1;0.001000;0.000000;;4
+117;3;40157;I16;;U/Un value of Q-U curve point 2;uun_value_of_qu_curve_point_2;0.100000;0.000000;'%;4
+118;3;40158;I16;;Q/S value of Q-U curve point 2;qs_value_of_qu_curve_point_2;0.001000;0.000000;;4
+119;3;40159;I16;;U/Un value of Q-U curve point 3;uun_value_of_qu_curve_point_3;0.100000;0.000000;'%;4
+120;3;40160;I16;;Q/S value of Q-U curve point 3;qs_value_of_qu_curve_point_3;0.001000;0.000000;;4
+121;3;40161;I16;;U/Un value of Q-U curve point 4;uun_value_of_qu_curve_point_4;0.100000;0.000000;'%;4
+122;3;40162;I16;;Q/S value of Q-U curve point 4;qs_value_of_qu_curve_point_4;0.001000;0.000000;;4
+123;3;40163;I16;;U/Un value of Q-U curve point 5;uun_value_of_qu_curve_point_5;0.100000;0.000000;'%;4
+124;3;40164;I16;;Q/S value of Q-U curve point 5;qs_value_of_qu_curve_point_5;0.001000;0.000000;;4
+125;3;40165;I16;;U/Un value of Q-U curve point 6;uun_value_of_qu_curve_point_6;0.100000;0.000000;'%;4
+126;3;40166;I16;;Q/S value of Q-U curve point 6;qs_value_of_qu_curve_point_6;0.001000;0.000000;;4
+127;3;40167;I16;;U/Un value of Q-U curve point 7;uun_value_of_qu_curve_point_7;0.100000;0.000000;'%;4
+128;3;40168;I16;;Q/S value of Q-U curve point 7;qs_value_of_qu_curve_point_7;0.001000;0.000000;;4
+129;3;40169;I16;;U/Un value of Q-U curve point 8;uun_value_of_qu_curve_point_8;0.100000;0.000000;'%;4
+130;3;40170;I16;;Q/S value of Q-U curve point 8;qs_value_of_qu_curve_point_8;0.001000;0.000000;;4
+131;3;40171;I16;;U/Un value of Q-U curve point 9;uun_value_of_qu_curve_point_9;0.100000;0.000000;'%;4
+132;3;40172;I16;;Q/S value of Q-U curve point 9;qs_value_of_qu_curve_point_9;0.001000;0.000000;;4
+133;3;40173;I16;;U/Un value of Q-U curve point 10;uun_value_of_qu_curve_point_10;0.100000;0.000000;'%;4
+134;3;40174;I16;;Q/S value of Q-U curve point 10;qs_value_of_qu_curve_point_10;0.001000;0.000000;;4
+135;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;power_grid_scheduling_qu_power_percentage_to_exit_scheduling;1.000000;0.000000;;4
+136;3;40200;U16;;Startup;startup;1.000000;0.000000;;4
+137;3;40201;U16;;Shutdown;shutdown;1.000000;0.000000;;4
+138;3;40232;U16;;[Power grid scheduling] Active power percentage derating command (0.1%);power_grid_scheduling_active_power_percentage_derating_command_01;1.000000;0.000000;'%;4
+139;3;40234;U16;;[Power grid scheduling] Fixed active power derating command (1%);power_grid_scheduling_fixed_active_power_derating_command_1;1.000000;0.000000;'%;4
+140;3;40235;U16;;[Power grid scheduling] Fixed active power derating command;power_grid_scheduling_fixed_active_power_derating_command;0.100000;0.000000;kW;4
+141;3;40236;I16;;[Power grid scheduling] Reactive power compensation command (Q/S);power_grid_scheduling_reactive_power_compensation_command_qs;0.001000;0.000000;;4
+142;3;40237;I16;;[Power grid scheduling] Reactive power compensation command (PF);power_grid_scheduling_reactive_power_compensation_command_pf;0.001000;0.000000;;4
+143;3;42045;U32;;Level-1 OV prot.time;level1_ov_prottime;1.000000;0.000000;ms;4
+144;3;42047;U32;;Level-2 OV prot.time;level2_ov_prottime;1.000000;0.000000;ms;4
+145;3;42049;U32;;Level-1 UV prot.time;level1_uv_prottime;1.000000;0.000000;ms;4
+146;3;42051;U32;;Level-2 UV prot.time;level2_uv_prottime;1.000000;0.000000;ms;4
+147;3;42053;U32;;Level-1 OF prot.time;level1_of_prottime;1.000000;0.000000;ms;4
+148;3;42055;U32;;Level-2 OF prot.time;level2_of_prottime;1.000000;0.000000;ms;4
+149;3;42057;U32;;Level-1 UF prot.time;level1_uf_prottime;1.000000;0.000000;ms;4
+150;3;42059;U32;;Level-2 UF prot.time;level2_uf_prottime;1.000000;0.000000;ms;4
+151;3;42061;U32;;10-min OV protec.time;v_10min_ov_protectime;1.000000;0.000000;ms;4
+152;3;42063;U16;;Level-1 OV prot.;level1_ov_prot;0.010000;0.000000;V;4
+153;3;42064;U16;;Level-2 OV prot.;level2_ov_prot;0.010000;0.000000;V;4
+154;3;42065;U16;;Level-1 UV prot.;level1_uv_prot;0.010000;0.000000;V;4
+155;3;42066;U16;;Level-2 UV prot.;level2_uv_prot;0.010000;0.000000;V;4
+156;3;42067;U16;;Level-1 OF prot.;level1_of_prot;0.010000;0.000000;Hz;4
+157;3;42068;U16;;Level-2 OF prot.;level2_of_prot;0.010000;0.000000;Hz;4
+158;3;42069;U16;;Level-1 UF prot.;level1_uf_prot;0.010000;0.000000;Hz;4
+159;3;42070;U16;;Level-2 UF prot.;level2_uf_prot;0.010000;0.000000;Hz;4
+160;3;42071;U16;;10-min OV protec.;v_10min_ov_protec;0.010000;0.000000;V;4
+161;3;42072;U16;;Grid code;grid_code;1.000000;0.000000;;4
+162;3;42074;U16;;Insulation res. protec.;insulation_res_protec;0.001000;0.000000;Mohm;4
+163;3;42075;U16;;Unbal.volt. protec.;unbalvolt_protec;0.100000;0.000000;'%;4
+164;3;42083;U16;;Soft startup time after grid failure;soft_startup_time_after_grid_failure;1.000000;0.000000;Sec;4
+165;3;42084;U16;;LVRT;lvrt;1.000000;0.000000;;4
+166;3;42085;U16;;Soft start time;soft_start_time;1.000000;0.000000;Sec;4
+167;3;42086;U16;;Grid connection duration after grid recovery;grid_connection_duration_after_grid_recovery;1.000000;0.000000;Sec;4
+168;3;42087;U16;;Active islanding protection;active_islanding_protection;1.000000;0.000000;;4
+169;3;42089;U16;;LVRT reactive power compensation factor;lvrt_reactive_power_compensation_factor;0.100000;0.000000;;4
+170;3;42090;U16;;Reactive power compensation (cosphi-P) trigger voltage;reactive_power_compensation_cosphip_trigger_voltage;1.000000;0.000000;'%;4
+171;3;42091;U16;;Reactive power compensation (cosphi-P) exit voltage;reactive_power_compensation_cosphip_exit_voltage;1.000000;0.000000;'%;4
+172;3;42092;U16;;Trigger frequency of overfrequency derating;trigger_frequency_of_overfrequency_derating;0.010000;0.000000;Hz;4
+173;3;42093;U16;;Quit frequency of overfrequency derating;quit_frequency_of_overfrequency_derating;0.010000;0.000000;Hz;4
+174;3;42094;U16;;Power recovery gradient of overfrequency derating;power_recovery_gradient_of_overfrequency_derating;1.000000;0.000000;'%/min;4
+175;3;42095;U16;;Q-U characteristic curve mode;qu_characteristic_curve_mode;1.000000;0.000000;;4
+176;3;42096;U16;;Q-U dispatch trigger power percent;qu_dispatch_trigger_power_percent;1.000000;0.000000;'%;4
+177;3;42097;U16;;MPPT multi-peak scanning;mppt_multipeak_scanning;1.000000;0.000000;;4
+178;3;42101;U16;;MPPT scanning interval;mppt_scanning_interval;1.000000;0.000000;min;4
+179;3;42125;U16;;AFCI;afci;1.000000;0.000000;;4
+180;3;42151;U16;;Level-3 OV protection;level3_ov_protection;1.000000;0.000000;V;4
+181;3;42152;U32;;Level-3 OV protection time;level3_ov_protection_time;1.000000;0.000000;ms;4
+182;3;42154;U16;;Level-4 OV protection;level4_ov_protection;1.000000;0.000000;V;4
+183;3;42155;U32;;Level-4 OV protection time;level4_ov_protection_time;1.000000;0.000000;ms;4
+184;3;42157;U16;;Level-3 UV protection;level3_uv_protection;1.000000;0.000000;V;4
+185;3;42158;U32;;Level-3 UV protection time;level3_uv_protection_time;1.000000;0.000000;ms;4
+186;3;42160;U16;;Level-4 UV protection;level4_uv_protection;1.000000;0.000000;V;4
+187;3;42161;U32;;Level-4 UV protection time;level4_uv_protection_time;1.000000;0.000000;ms;4
+188;3;42174;U16;;Shutdown at 0% power limit;shutdown_at_0_power_limit;1.000000;0.000000;;4
+189;3;42300;U16;;System time: year;system_time_year;1.000000;0.000000;Year;4
+190;3;42301;U16;;System time: month;system_time_month;1.000000;0.000000;Month;4
+191;3;42302;U16;;System time: day;system_time_day;1.000000;0.000000;Day;4
+192;3;42303;U16;;System time: hour;system_time_hour;1.000000;0.000000;Hour;4
+193;3;42304;U16;;System time: minute;system_time_minute;1.000000;0.000000;Minutes;4
+194;3;42305;U16;;System time: second;system_time_second;1.000000;0.000000;Sec;4
+195;3;42320;U16;;[Power grid scheduling] Active power percentage derating 42320;CMD_P_AC_SET_PERCENT;1.000000;0.000000;'%;4
+196;3;42321;U16;;[Power grid scheduling] Power factor;power_grid_scheduling_power_factor;0.001000;0.000000;;4
+197;3;42333;U16;;Remote power scheduling;remote_power_scheduling;1.000000;0.000000;;4
+198;3;50000;U16;;Alarm 1;alarm_1;1.000000;0.000000;;4
+199;3;50001;U16;;Alarm 2;alarm_2;1.000000;0.000000;;4
+200;3;50002;U16;;Alarm 3;alarm_3;1.000000;0.000000;;4
+201;3;50003;U16;;Alarm 4;alarm_4;1.000000;0.000000;;4
+202;3;50004;U16;;Alarm 5;alarm_5;1.000000;0.000000;;4
+203;3;50005;U16;;Alarm 6;alarm_6;1.000000;0.000000;;4
+204;3;50006;U16;;Alarm 7;alarm_7;1.000000;0.000000;;4
+205;3;50007;U16;;Alarm 8;alarm_8;1.000000;0.000000;;4
+206;3;50008;U16;;Alarm 9;alarm_9;1.000000;0.000000;;4
+207;3;50009;U16;;Alarm 10;alarm_10;1.000000;0.000000;;4
+208;3;50010;U16;;Alarm 11;alarm_11;1.000000;0.000000;;4
+209;3;50011;U16;;Alarm 12;alarm_12;1.000000;0.000000;;4
+210;3;50012;U16;;Alarm 13;alarm_13;1.000000;0.000000;;4
+211;3;50013;U16;;Alarm 14;alarm_14;1.000000;0.000000;;4
+212;3;50014;U16;;Alarm 15;alarm_15;1.000000;0.000000;;4
+213;3;50015;U16;;Alarm 16;alarm_16;1.000000;0.000000;;4
+214;3;50016;U16;;Alarm 17;alarm_17;1.000000;0.000000;;4

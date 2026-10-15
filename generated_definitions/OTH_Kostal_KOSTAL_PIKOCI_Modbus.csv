@@ -1,0 +1,79 @@
+modbusRTU;Other;Kostal;KOSTAL_PIKOCI_Modbus;;;;;;;
+1;3;4;U16;;Modbus Unit-ID;UNIT_ID;1.000000;0.000000;;4
+2;3;6_16;STRING;;Inverter article number;inverter_article_number;1.000000;0.000000;;4
+3;3;14_16;STRING;;Inverter serial number;inverter_serial_number;1.000000;0.000000;;4
+4;3;30;U16;;Number of bidirectional converter;number_of_bidirectional_converter;1.000000;0.000000;;4
+5;3;32;U16;;Number of AC Phases;number_of_ac_phases;1.000000;0.000000;;4
+6;3;34;U16;;Number of PV Strings;number_of_pv_strings;1.000000;0.000000;;4
+7;3;36;U16;;Hardware version;hardware_version;1.000000;0.000000;;4
+8;3;38_16;STRING;;Software-Version Maincontroller;softwareversion_maincontroller;1.000000;0.000000;;4
+9;3;46_16;STRING;;Software-Version IOcontroller;softwareversion_iocontroller;1.000000;0.000000;;4
+10;3;54;U16;;Power ID;power_id;1.000000;0.000000;;4
+11;3;56;U16;;Inverter State;inverter_state;1.000000;0.000000;;4
+12;3;100;F32;;Total DC Power;total_dc_power;1.000000;0.000000;W;4
+13;3;108;F32;;Home own comsumption from grid;home_own_comsumption_from_grid;1.000000;0.000000;W;4
+14;3;112;F32;;Total home consumption grid;total_home_consumption_grid;1.000000;0.000000;Wh;4
+15;3;114;F32;;Total home comsumption PV;total_home_comsumption_pv;1.000000;0.000000;Wh;4
+16;3;116;F32;;Home own comsumption from PV;home_own_comsumption_from_pv;1.000000;0.000000;W;4
+17;3;118;F32;;Total home consumption;total_home_consumption;1.000000;0.000000;Wh;4
+18;3;122;F32;;Power limit from EVU;power_limit_from_evu;1.000000;0.000000;'%;4
+19;3;124;F32;;Total home consumption rate;total_home_consumption_rate;1.000000;0.000000;'%;4
+20;3;144;F32;;Worktime;worktime;1.000000;0.000000;s;4
+21;3;150;F32;;Actual cosphi;PF;1.000000;0.000000;;4
+22;3;152;F32;;Grid frequency;FREQ;1.000000;0.000000;Hz;4
+23;3;154;F32;;Current phase 1;current_phase_1;1.000000;0.000000;A;4
+24;3;156;F32;;Active power phase 1;active_power_phase_1;1.000000;0.000000;W;4
+25;3;158;F32;;Voltage phase 1;voltage_phase_1;1.000000;0.000000;V;4
+26;3;160;F32;;Current phase 2;current_phase_2;1.000000;0.000000;A;4
+27;3;162;F32;;Active power phase 2;active_power_phase_2;1.000000;0.000000;W;4
+28;3;164;F32;;Voltage phase 2;voltage_phase_2;1.000000;0.000000;V;4
+29;3;166;F32;;Current phase 3;current_phase_3;1.000000;0.000000;A;4
+30;3;168;F32;;Active power phase 3;active_power_phase_3;1.000000;0.000000;W;4
+31;3;170;F32;;Voltage phase 3;voltage_phase_3;1.000000;0.000000;V;4
+32;3;172;F32;;Total AC active power;P_AC;1.000000;0.000000;W;4
+33;3;174;F32;;Total AC reactive power;total_ac_reactive_power;1.000000;0.000000;Var;4
+34;3;178;F32;;Total AC apparent power;total_ac_apparent_power;1.000000;0.000000;VA;4
+35;3;218;F32;;CosPhi (powermeter);cosphi_powermeter;1.000000;0.000000;;4
+36;3;220;F32;;Frequency (powermeter);frequency_powermeter;1.000000;0.000000;Hz;4
+37;3;222;F32;;Current phase 1 (powermeter);current_phase_1_powermeter;1.000000;0.000000;A;4
+38;3;224;F32;;Active power phase 1 (powermeter);active_power_phase_1_powermeter;1.000000;0.000000;W;4
+39;3;226;F32;;Reactive power phase 1 (powermeter);reactive_power_phase_1_powermeter;1.000000;0.000000;Var;4
+40;3;228;F32;;Apparent power phase 1 (powermeter);apparent_power_phase_1_powermeter;1.000000;0.000000;VA;4
+41;3;230;F32;;Voltage phase 1 (powermeter);voltage_phase_1_powermeter;1.000000;0.000000;V;4
+42;3;232;F32;;Current phase 2 (powermeter);current_phase_2_powermeter;1.000000;0.000000;A;4
+43;3;234;F32;;Active power phase 2 (powermeter);active_power_phase_2_powermeter;1.000000;0.000000;W;4
+44;3;236;F32;;Reactive power phase 2 (powermeter);reactive_power_phase_2_powermeter;1.000000;0.000000;Var;4
+45;3;238;F32;;Apparent power phase 2 (powermeter);apparent_power_phase_2_powermeter;1.000000;0.000000;VA;4
+46;3;240;F32;;Voltage phase 2 (powermeter);voltage_phase_2_powermeter;1.000000;0.000000;V;4
+47;3;242;F32;;Current phase 3 (powermeter);current_phase_3_powermeter;1.000000;0.000000;A;4
+48;3;244;F32;;Active power phase 3 (powermeter);active_power_phase_3_powermeter;1.000000;0.000000;W;4
+49;3;246;F32;;Reactive power phase 3 (powermeter);reactive_power_phase_3_powermeter;1.000000;0.000000;Var;4
+50;3;248;F32;;Apparent power phase 3 (powermeter);apparent_power_phase_3_powermeter;1.000000;0.000000;VA;4
+51;3;250;F32;;Voltage phase 3 (powermeter);voltage_phase_3_powermeter;1.000000;0.000000;V;4
+52;3;252;F32;;Total active power (powermeter);total_active_power_powermeter;1.000000;0.000000;W;4
+53;3;258;F32;;Current DC1;current_dc1;1.000000;0.000000;A;4
+54;3;260;F32;;Power DC1;power_dc1;1.000000;0.000000;W;4
+55;3;266;F32;;Voltage DC1;voltage_dc1;1.000000;0.000000;V;4
+56;3;268;F32;;Current DC2;current_dc2;1.000000;0.000000;A;4
+57;3;270;F32;;Power DC2;power_dc2;1.000000;0.000000;W;4
+58;3;276;F32;;Voltage DC2;voltage_dc2;1.000000;0.000000;V;4
+59;3;278;F32;;Current DC3;current_dc3;1.000000;0.000000;A;4
+60;3;280;F32;;Power DC3;power_dc3;1.000000;0.000000;W;4
+61;3;286;F32;;Voltage DC3;voltage_dc3;1.000000;0.000000;V;4
+62;3;300;F32;;Current DC4;current_dc4;1.000000;0.000000;A;4
+63;3;302;F32;;Power DC4;power_dc4;1.000000;0.000000;W;4
+64;3;308;F32;;Voltage DC4;voltage_dc4;1.000000;0.000000;V;4
+65;3;320;F32;;Total yield;WattHours;1.000000;0.000000;Wh;4
+66;3;322;F32;;Daily yield;daily_yield;1.000000;0.000000;Wh;4
+67;3;324;F32;;Yearly yield;yearly_yield;1.000000;0.000000;Wh;4
+68;3;326;F32;;Monthly yield;monthly_yield;1.000000;0.000000;Wh;4
+69;3;384_64;STRING;;Inverter network name;inverter_network_name;1.000000;0.000000;;4
+70;3;531;U16;;Inverter Max Power;inverter_max_power;1.000000;0.000000;W;4
+71;3;532;I16;;Inverter Peak Generation Power Scale Factor;inverter_peak_generation_power_scale_factor;1.000000;0.000000;;4
+72;3;535_32;STRING;;Inverter Manufacturer;inverter_manufacturer;1.000000;0.000000;;4
+73;3;551_16;STRING;;Inverter Model ID;MODEL;1.000000;0.000000;;4
+74;3;559_32;STRING;;Inverter serial number_1;SERIAL;1.000000;0.000000;;4
+75;3;575;I16;;Inverter Generation Power;inverter_generation_power;1.000000;0.000000;W;4
+76;3;576;I16;;Power Scale Factor;power_scale_factor;1.000000;0.000000;;4
+77;3;577;U32;;Generation Energy;generation_energy;1.000000;0.000000;Wh;4
+78;3;579;I16;;Energy Scale Factor;energy_scale_factor;1.000000;0.000000;;4

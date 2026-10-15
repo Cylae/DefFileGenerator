@@ -1,0 +1,44 @@
+ModbusTCP;Other;Inverter;Sening
+1;4;1050;U32;;Active power;P_AC;1.0;0.0;;4
+2;4;1052;U32;;Reactive power;Q_AC;1.0;0.0;;4
+3;4;1054;U16;;PF;;1.0;0.0;;4
+4;4;1055;U16;;voltage AB;;1.0;0.0;;4
+5;4;1056;U16;;voltage BC;;1.0;0.0;;4
+6;4;1057;U16;;voltage CA;;1.0;0.0;;4
+7;4;1058;U16;;Hz;;1.0;0.0;;4
+8;4;1059;U16;;A phase current;I_AC_3;1.0;0.0;;4
+9;4;1060;U16;;B phase current;;1.0;0.0;;4
+10;4;1061;U16;;C phase current;;1.0;0.0;;4
+11;4;1062;U16;;DC Bus Voltage;U_DC;1.0;0.0;;4
+12;4;1063;U16;;DC Current;I_DC;1.0;0.0;;4
+13;4;1064;U32;;DC Power;P_DC;1.0;0.0;;4
+14;4;1067;U32;;Apparent power;S_AC;1.0;0.0;;4
+15;4;1244;U16;;Module_1_IGBT-Temp;TEMP_CELL;1.0;0.0;;4
+16;4;1245;U16;;Module_2_IGBT-Temp;;1.0;0.0;;4
+17;4;1100;U32;;Daily_Generation;;1.0;0.0;;4
+18;4;1102;U32;;Total_Generation;;1.0;0.0;;4
+19;4;1104;U32;;Daily_CO2_Reduction;;1.0;0.0;;4
+20;4;1106;U32;;Total_CO2_Reduction;;1.0;0.0;;4
+21;4;3000;U16;;String_Current_1;;1.0;0.0;;4
+22;4;3001;U16;;String_Current_2;;1.0;0.0;;4
+23;4;3002;U16;;String_Current_3;;1.0;0.0;;4
+24;4;3003;U16;;String_Current_4;;1.0;0.0;;4
+25;4;3004;U16;;String_Current_5;;1.0;0.0;;4
+26;4;3005;U16;;String_Current_6;;1.0;0.0;;4
+27;4;3006;U16;;String_Current_7;;1.0;0.0;;4
+28;4;3007;U16;;String_Current_9;;1.0;0.0;;4
+29;4;3008;U16;;String_Current_10;;1.0;0.0;;4
+30;4;3009;U16;;String_Current_11;;1.0;0.0;;4
+31;4;3010;U16;;String_Current_12;;1.0;0.0;;4
+32;4;3011;U16;;String_Current_13;;1.0;0.0;;4
+33;4;3012;U16;;String_Current_14;;1.0;0.0;;4
+34;4;3013;U16;;String_Current_15;;1.0;0.0;;4
+35;4;3014;U16;;String_Current_16;;1.0;0.0;;4
+36;4;3015;U16;;String_Current_17;;1.0;0.0;;4
+37;4;3016;U16;;String_Current_18;;1.0;0.0;;4
+38;4;3017;U16;;String_Current_19;;1.0;0.0;;4
+39;4;3018;U16;;String_Current_20;;1.0;0.0;;4
+40;4;3019;U16;;String_Current_21;;1.0;0.0;;4
+41;4;3020;U16;;String_Current_22;;1.0;0.0;;4
+42;4;3021;U16;;String_Current_23;;1.0;0.0;;4
+43;4;3022;U16;;String_Current_24;;1.0;0.0;;4

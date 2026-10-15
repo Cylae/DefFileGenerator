@@ -1,0 +1,100 @@
+ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
+1;4;4989_8;STRING;;SN;SERIAL;1.0;0.0;;4
+2;4;4999;U16;;Device type code;;1.0;0.0;;4
+3;4;5000;U16;;Nominal active power;P_RATED;0.1;0.0;kW;4
+4;4;5001;U16;;Output type;;1.0;0.0;;4
+5;4;5002;U16;;Daily power yields;E_DAY;0.1;0.0;kWh;4
+6;4;5003;U32_W;;Total power yields;E_TOT;1.0;0.0;kWh;4
+7;4;5005;U32_W;;Total running time;TOT;1.0;0.0;h;4
+8;4;5007;I16;;Internal temperature;TEMP;0.1;0.0;C;2
+9;4;5008;I32_W;;Total apparent power;S_AC;1.0;0.0;VA;0
+10;4;5010;U16;;MPPT 1 voltage;U_DC_MPPT_1;0.1;0.0;V;2
+11;4;5011;U16;;MPPT 1 current ;I_DC_MPPT_1;0.1;0.0;A;2
+12;4;5012;U16;;MPPT 2 voltage;U_DC_MPPT_2;0.1;0.0;V;2
+13;4;5013;U16;;MPPT 2 current;I_DC_MPPT_2;0.1;0.0;A;2
+14;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.1;0.0;V;2
+15;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.1;0.0;A;2
+16;4;5016;U32_W;;Total DC power;P_DC;1.0;0.0;W;4
+17;4;5018;U16;;A-B line voltage/phase A voltage;U_AC_L1L2;0.1;0.0;V;2
+18;4;5019;U16;;B-C line voltage/phase B voltage;U_AC_L2L3;0.1;0.0;V;2
+19;4;5020;U16;;C-A line voltage/phase C voltage;U_AC_L3L1;0.1;0.0;V;2
+20;4;5021;U16;;Phase A current;I_AC_1;0.1;0.0;A;2
+21;4;5022;U16;;Phase B current;I_AC_2;0.1;0.0;A;2
+22;4;5023;U16;;Phase C current;I_AC_3;0.1;0.0;A;2
+23;4;5030;U32_W;;Total active power;P_AC;1.0;0.0;W;4
+24;4;5032;I32_W;;Total reactive power;Q_AC;1.0;0.0;VAR;2
+25;4;5034;I16;;Power factor;PF;0.001;0.0;;2
+26;4;5035;U16;;Grid frequency;FREQ;0.1;0.0;Hz;2
+27;4;5037;U16;;Work state;;1.0;0.0;;8
+28;4;5038;U16;;Fault/Alarm time:1;;1.0;0.0;;4
+29;4;5039;U16;;Fault/Alarm time:2;;1.0;0.0;;4
+30;4;5040;U16;;Fault/Alarm time:3;;1.0;0.0;;4
+31;4;5041;U16;;Fault/Alarm time:4;;1.0;0.0;;4
+32;4;5042;U16;;Fault/Alarm time:5;;1.0;0.0;;4
+33;4;5043;U16;;Fault/Alarm time:6;;1.0;0.0;;4
+34;4;5044;U16;;Fault/Alarm code;;1.0;0.0;;4
+35;4;5048;U16;;Nominal reactive power;Q_RATED;0.1;0.0;kVAR;4
+36;4;5070;U16;;Impedance to the ground in parallel connection;;1.0;0.0;kOhm;4
+37;4;5080;U32_W;;Work state_1;;1.0;0.0;W;8
+38;4;5082;I32_W;;Meter power;;1.0;0.0;W;4
+39;4;5084;I32_W;;Meter A phase power;;1.0;0.0;W;4
+40;4;5086;I32_W;;Meter B phase power;;1.0;0.0;W;4
+41;4;5088;I32_W;;Meter C phase power;;1.0;0.0;W;4
+42;4;5090;I32_W;;Load power;;1.0;0.0;W;4
+43;4;5092;U32_W;;Daily export energy;;0.1;0.0;kWh;4
+44;4;5094;U32_W;;Total export energy;E_EXP;0.1;0.0;kWh;4
+45;4;5096;U32_W;;Daily import energy;;0.1;0.0;kWh;4
+46;4;5098;U32_W;;Total import energy;E_IMP;0.1;0.0;kWh;4
+47;4;5100;U32_W;;Daily direct energy consumption;;0.1;0.0;kWh;4
+48;4;5102;U32_W;;Total direct energy consumption;;0.1;0.0;kWh;4
+49;4;5112;U16;;Daily running time;;1.0;0.0;min;4
+50;4;5113;U16;;Present country;;1.0;0.0;;4
+51;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;0.1;0.0;V;4
+52;4;5115;U16;;MPPT 4 current ;I_DC_MPPT_4;0.1;0.0;A;4
+53;4;5116;U16;;MPPT 5 voltage;U_DC_MPPT_5;0.1;0.0;V;4
+54;4;5117;U16;;MPPT 5 current;I_DC_MPPT_5;0.1;0.0;A;4
+55;4;5118;U16;;MPPT 6 voltage;U_DC_MPPT_6;0.1;0.0;V;4
+56;4;5119;U16;;MPPT 6 current;I_DC_MPPT_6;0.1;0.0;A;4
+57;4;5120;U16;;MPPT 7 voltage;U_DC_MPPT_7;0.1;0.0;V;4
+58;4;5121;U16;;MPPT 7 current ;I_DC_MPPT_7;0.1;0.0;A;4
+59;4;5122;U16;;MPPT 8 voltage;U_DC_MPPT_8;0.1;0.0;V;4
+60;4;5123;U16;;MPPT 8 current;I_DC_MPPT_8;0.1;0.0;A;4
+61;4;5127;U32_W;;Monthly power yields;;0.1;0.0;kWh;4
+62;4;5129;U16;;MPPT 9 voltage;U_DC_MPPT_9;0.1;0.0;V;4
+63;4;5130;U16;;MPPT 9 current;I_DC_MPPT_9;0.1;0.0;A;4
+64;4;5131;U16;;MPPT 10 voltage;U_DC_MPPT_10;0.1;0.0;V;4
+65;4;5132;U16;;MPPT 10 current;I_DC_MPPT_10;0.1;0.0;A;4
+66;4;5133;U16;;MPPT 11 voltage;U_DC_MPPT_11;0.1;0.0;V;4
+67;4;5134;U16;;MPPT 11 current;I_DC_MPPT_11;0.1;0.0;A;4
+68;4;5135;U16;;MPPT 12 voltage;U_DC_MPPT_12;0.1;0.0;V;4
+69;4;5136;U16;;MPPT 12 current;I_DC_MPPT_12;0.1;0.0;A;4
+70;4;5143;U32_W;;Total power yields_1;;0.1;0.0;kWh;4
+71;4;5145;I16;;Negative voltage to the ground;;0.1;0.0;V;4
+72;4;5146;U16;;Bus voltage;U_DC;0.1;0.0;V;4
+73;4;5147;U16;;Grid frequency_1;;0.01;0.0;Hz;4
+74;4;5149;U16;;PID work state;;1.0;0.0;;4
+75;4;5150;U16;;PID alarm code ;;1.0;0.0;;4
+76;4;7012;U16;;String 1 current;I_DC_STRING_1;0.01;0.0;A;4
+77;4;7013;U16;;String 2 current;I_DC_STRING_2;0.01;0.0;A;4
+78;4;7014;U16;;String 3 current;I_DC_STRING_3;0.01;0.0;A;4
+79;4;7015;U16;;String 4 current;I_DC_STRING_4;0.01;0.0;A;4
+80;4;7016;U16;;String 5 current;I_DC_STRING_5;0.01;0.0;A;4
+81;4;7017;U16;;String 6 current;I_DC_STRING_6;0.01;0.0;A;4
+82;4;7018;U16;;String 7 current;I_DC_STRING_7;0.01;0.0;A;4
+83;4;7019;U16;;String 8 current;I_DC_STRING_8;0.01;0.0;A;4
+84;4;7020;U16;;String 9 current;I_DC_STRING_9;0.01;0.0;A;4
+85;4;7021;U16;;String 10 current;I_DC_STRING_10;0.01;0.0;A;4
+86;4;7022;U16;;String 11 current;I_DC_STRING_11;0.01;0.0;A;4
+87;4;7023;U16;;String 12 current;I_DC_STRING_12;0.01;0.0;A;4
+88;4;7024;U16;;String 13 current;I_DC_STRING_13;0.01;0.0;A;4
+89;4;7025;U16;;String 14 current;I_DC_STRING_14;0.01;0.0;A;4
+90;4;7026;U16;;String 15 current;I_DC_STRING_15;0.01;0.0;A;4
+91;4;7027;U16;;String 16 current;I_DC_STRING_16;0.01;0.0;A;4
+92;4;7028;U16;;String 17 current;I_DC_STRING_17;0.01;0.0;A;4
+93;4;7029;U16;;String 18 current;I_DC_STRING_18;0.01;0.0;A;4
+94;4;7030;U16;;String 19 current;I_DC_STRING_19;0.01;0.0;A;4
+95;4;7031;U16;;String 20 current;I_DC_STRING_20;0.01;0.0;A;4
+96;4;7032;U16;;String 21 current;I_DC_STRING_21;0.01;0.0;A;4
+97;4;7033;U16;;String 22 current;I_DC_STRING_22;0.01;0.0;A;4
+98;4;7034;U16;;String 23 current;I_DC_STRING_23;0.01;0.0;A;4
+99;4;7035;U16;;String 24 current;I_DC_STRING_24;0.01;0.0;A;4

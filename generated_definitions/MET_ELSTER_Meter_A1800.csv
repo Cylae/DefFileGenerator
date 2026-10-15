@@ -1,0 +1,99 @@
+modbusRTU;Meter;ELSTER;A1800;;;;;;;
+1;3;40001;U16;;Frequency;FREQ;0.01;0;Hz;4
+2;3;40002;U16;;Line 1 current;I_AC_1;0.01;0;A;4
+3;3;40003;U16;;Line 2 current;I_AC_2;0.01;0;A;4
+4;3;40004;U16;;Line 3 curent;;0.01;0;A;4
+5;3;40005;U16;;Line 1 voltage;U_AC_1;0.01;0;V;4
+6;3;40006;U16;;Line 2 voltage;U_AC_2;0.01;0;V;4
+7;3;40007;U16;;Line 3 voltage;U_AC_3;0.01;0;V;4
+8;3;40008;U16;;Line 1 Current Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
+9;3;40009;U16;;Line 2 Current Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
+10;3;40010;U16;;Line 3 Current Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
+11;3;40011;U16;;Line 1 Voltage Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
+12;3;40012;U16;;Line 2 Voltage Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
+13;3;40013;U16;;Line 3 Voltage Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
+14;3;40014;I32;;Line 1 Watts;;0.01;0;W;4
+15;3;40016;I32;;Line 2 Watts;;0.01;0;W;4
+16;3;40018;I32;;Line 3 Watts;;0.01;0;W;4
+17;3;40020;I32;;Total (System) Watts;;0.01;0;W;4
+18;3;40022;I32;;Line 1 VARs;;0.01;0;VARs;4
+19;3;40024;I32;;Line 2 VARs;;0.01;0;VARs;4
+20;3;40026;I32;;Line 3 VARs;;0.01;0;VARs;4
+21;3;40028;I32;;Total (System) VARs;;0.01;0;VARs;4
+22;3;40030;I32;;Line 1 VAs;;0.01;0;VAs;4
+23;3;40032;I32;;Line 2 VAs;;0.01;0;VAs;4
+24;3;40034;I32;;Line 3 VAs;;0.01;0;VAs;4
+25;3;40036;I32;;Total (System) VAs;;0.01;0;VAs;4
+26;3;40038;I16;;Line 1 Power Factor;PF;0.0001;0;;4
+27;3;40039;I16;;Line 2 Power Factor;;0.0001;0;;4
+28;3;40040;I16;;Line 3 Power Factor;;0.0001;0;;4
+29;3;40041;I16;;Total (System) Power;;0.0001;0;;4
+30;3;40042;I32;;Watt-hours, delivered;;1;0;Wh;4
+31;3;40044;I16;;Watt-hours, delivered_1;;1;0;Wh;4
+32;3;40045;I32;;Watt-hours, received;;1;0;Wh;4
+33;3;40047;I16;;Watt-hours, received_1;;1;0;Wh;4
+34;3;40048;I32;;VAR-hours, delivered;;1;0;VARHr;4
+35;3;40050;I16;;VAR-hours, delivered_1;;1;0;VARHr;4
+36;3;40051;I32;;VAR-hours, received;;1;0;VARHr;4
+37;3;40053;I16;;VAR-hours, received_1;;1;0;VARHr;4
+38;3;40054;I32;;VA-hours, delivered;;1;0;VAHr;4
+39;3;40056;I16;;VA-hours, delivered_1;;1;0;VAHr;4
+40;3;40057;I32;;VA-hours, received;;1;0;VAHr;4
+41;3;40059;I16;;VA-hours, received_1;;1;0;VAHr;4
+42;3;41000_4;STRING;;Manufacture String;;1;0;;4
+43;3;41002_8;STRING;;Model String;MODEL;1;0;;4
+44;3;41006;I16;;Hardware Version;;1;0;;4
+45;3;41007;I16;;Hardware Revision;;1;0;;4
+46;3;41008;I16;;Firmware Version;;1;0;;4
+47;3;41009;I16;;Firmware Revision;;1;0;;4
+48;3;41010_16;STRING;;Serial Number String;SERIAL;1;0;;4
+49;3;41018_4;STRING;;Manufacture String (ACB Option Board);;1;0;;1
+50;3;41020_8;STRING;;Model String (ACB Option Board);;1;0;;1
+51;3;41024;U16;;Hardware Version (ACB Option Board);;1;0;;1
+52;3;41025;U16;;Hardware Revision (ACB Option Board);;1;0;;1
+53;3;41026;U16;;Firmware Version (ACB Option Board);;1;0;;1
+54;3;41027;U16;;Firmware Revision (ACB Option Board);;1;0;;1
+55;3;41028_16;STRING;;Serial Number String (ACB Option Board);;1;0;;1
+56;3;41036_11;STRING;;Smart Style Number;;1;0;;1
+57;3;41044_2;STRING;;DSP Version;;1;0;;1
+58;3;41045;U16;;DSP Revision;;1;0;;1
+59;3;41046;U16;;SM Version;;1;0;;1
+60;3;41047;U16;;SM Revision;;1;0;;1
+61;3;41048_2;STRING;;TRueQ Version;;1;0;;1
+62;3;41049;U16;;TRueQ Revision;;1;0;;1
+63;3;41050_2;STRING;;Service Handler Version;;1;0;;1
+64;3;41051;U16;;Service Handler Revision;;1;0;;1
+65;3;41052;U32;;Current Key Configuration;;1;0;;1
+66;3;41054_2;STRING;;Option Board 1 Type;;1;0;;1
+67;3;41057;U16;;Option Board 1 FW Group;;1;0;;1
+68;3;41058;U16;;Option Board 1 Revision;;1;0;;1
+69;3;41059_2;STRING;;Option Board 2 Type;;1;0;;1
+70;3;41062;U16;;Option Board 2 FW Group;;1;0;;1
+71;3;41063;U16;;Option Board 2 Revision;;1;0;;1
+72;3;41064_2;STRING;;Option Board 3 Type;;1;0;;1
+73;3;41067;U16;;Option Board 3 FW Group;;1;0;;1
+74;3;41068;U16;;Option Board 3 Revision;;1;0;;1
+75;3;41069_2;STRING;;Option Board 4 Type;;1;0;;1
+76;3;41072;U16;;Option Board 4 FW Group;;1;0;;1
+77;3;41073;U16;;Option Board 4 Revision;;1;0;;1
+78;3;41074_2;STRING;;Option Board 5 Type;;1;0;;1
+79;3;41077;U16;;Option Board 5 FW Group;;1;0;;1
+80;3;41078;U16;;Option Board 5 Revision;;1;0;;1
+81;3;41079_2;STRING;;Option Board 6 Type;;1;0;;1
+82;3;41082;U16;;Option Board 6 FW Group;;1;0;;1
+83;3;41083;U16;;Option Board 6 Revision;;1;0;;1
+84;3;41084_2;STRING;;Option Board 7 Type;;1;0;;1
+85;3;41087;U16;;Option Board 7 FW Group;;1;0;;1
+86;3;41088;U16;;Option Board 7 Revision;;1;0;;1
+87;3;41089_2;STRING;;Option Board 8 Type;;1;0;;1
+88;3;41092;U16;;Option Board 8 FW Group;;1;0;;1
+89;3;41093;U16;;Option Board 8 Revision;;1;0;;1
+90;3;41094;U16;;Mode;;1;0;;1
+91;3;41095;U16;;Status word 1 ;;1;0;;1
+92;3;41096;U16;;Status word 2;;1;0;;1
+93;3;41097;U16;;Occurrences;;1;0;;1
+94;3;41098;U16;;Current State of Resource Errors;;1;0;;1
+95;3;41099;U16;;Current State of Latched Errors;;1;0;;1
+96;3;41100;U32;;Current State of Latched Warnings;;1;0;;1
+97;3;41102;U32;;Current State of Latched TRueQ Warnings;;1;0;;1
+98;3;41104;U16;;Non-latches Warnings;;1;0;;1

@@ -1,0 +1,127 @@
+modbusRTU;Other;PQ plus;14178-PM_MODBUS_RTU_CPT_PQPLUS;;;;;;;
+1;3;516;U64_B;;GMT Time;gmt_time;1.000000;0.000000;;4
+2;3;520;U16;;PROPS_TYPE;props_type;1.000000;0.000000;;4
+3;3;521;U16;;DEVICE_TYPE;device_type;1.000000;0.000000;;4
+4;3;528;U32;;DEVICE_NUMBER;device_number;1.000000;0.000000;;4
+5;3;532;U16;;SW build version;sw_build_version;1.000000;0.000000;;4
+6;3;538;U64_B;;SW version;sw_version;1.000000;0.000000;;4
+7;3;2080;U16;;Device Address (COM2);device_address_com2;1.000000;0.000000;;4
+8;3;2081;U16;;Remote Baud Rate;remote_baud_rate;1.000000;0.000000;;4
+9;3;2083;U16;;Parity;parity;1.000000;0.000000;;4
+10;3;2084;U16;;Data  Bit;data_bit;1.000000;0.000000;;4
+11;3;2085;U16;;Stop  Bit;stop_bit;1.000000;0.000000;;4
+12;3;2112;U16;;DHCP;dhcp;1.000000;0.000000;;4
+13;3;2113;IP;;IP Address;ip_address;1.000000;0.000000;;4
+14;3;2115;IP;;Netmask;netmask;1.000000;0.000000;;4
+15;3;2117;IP;;Gateway;gateway;1.000000;0.000000;;4
+16;3;2119;U16;;KMB Port;kmb_port;1.000000;0.000000;;4
+17;3;2120;U16;;Modbus Port;modbus_port;1.000000;0.000000;;4
+18;3;2121;U16;;Webserver Port;webserver_port;1.000000;0.000000;;4
+19;3;2122;MAC;;MAC;mac;1.000000;0.000000;;4
+20;3;4097;U32;;Error Code;error_code;1.000000;0.000000;;4
+21;4;4100;F32;;Actual frequency;actual_frequency;1.000000;0.000000;Hz;4
+22;4;4102;F32;;10-second frequency;v_10second_frequency;1.000000;0.000000;Hz;4
+23;3;4104;U16;;Sample Overflow/Underflow Flags;sample_overflowunderflow_flags;1.000000;0.000000;;4
+24;3;4105;U32;;Flags;flags;1.000000;0.000000;;4
+25;3;8192;U64_B;;3-phase imported active Energy - 3EP;v_3phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+26;3;8196;U64_B;;3-phase exported active Energy - 3EP-;v_3phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+27;3;8200;U64_B;;3-phase inductive reactive Energy - 3EQL;v_3phase_inductive_reactive_energy_3eql;1.000000;0.000000;kVArh;4
+28;3;8204;U64_B;;3-phase  capacitive reactive Energy - 3EQC;v_3phase_capacitive_reactive_energy_3eqc;1.000000;0.000000;kVArh;4
+29;3;8208;U64_B;;L1 imported active Energy - EP1;l1_imported_active_energy_ep1;1.000000;0.000000;kWh;4
+30;3;8212;U64_B;;L2 imported active Energy - EP2;l2_imported_active_energy_ep2;1.000000;0.000000;kWh;4
+31;3;8216;U64_B;;L3 imported active Energy - EP3;l3_imported_active_energy_ep3;1.000000;0.000000;kWh;4
+32;3;8220;U64_B;;L4 imported active Energy - EP4;l4_imported_active_energy_ep4;1.000000;0.000000;kWh;4
+33;3;8224;U64_B;;L1 exported active Energy - EP1-;l1_exported_active_energy_ep1;1.000000;0.000000;kWh;4
+34;3;8228;U64_B;;L2 exported active Energy - EP2-;l2_exported_active_energy_ep2;1.000000;0.000000;kWh;4
+35;3;8232;U64_B;;L3 exported active Energy - EP3-;l3_exported_active_energy_ep3;1.000000;0.000000;kWh;4
+36;3;8236;U64_B;;L4 exported active Energy - EP4-;l4_exported_active_energy_ep4;1.000000;0.000000;kWh;4
+37;3;8240;U64_B;;L1 inductive reactive Energy - EQL1;l1_inductive_reactive_energy_eql1;1.000000;0.000000;kVArh;4
+38;3;8244;U64_B;;L2 inductive reactive Energy - EQL2;l2_inductive_reactive_energy_eql2;1.000000;0.000000;kVArh;4
+39;3;8248;U64_B;;L3 inductive reactive Energy - EQL3;l3_inductive_reactive_energy_eql3;1.000000;0.000000;kVArh;4
+40;3;8252;U64_B;;L4 inductive reactive Energy - EQL4;l4_inductive_reactive_energy_eql4;1.000000;0.000000;kVArh;4
+41;3;8256;U64_B;;L1 capacitive reactive Energy - EQC1;l1_capacitive_reactive_energy_eqc1;1.000000;0.000000;kVArh;4
+42;3;8260;U64_B;;L2 capacitive reactive Energy - EQC2;l2_capacitive_reactive_energy_eqc2;1.000000;0.000000;kVArh;4
+43;3;8264;U64_B;;L3 capacitive reactive Energy - EQC3;l3_capacitive_reactive_energy_eqc3;1.000000;0.000000;kVArh;4
+44;3;8268;U64_B;;L4 capacitive reactive Energy - EQC4;l4_capacitive_reactive_energy_eqc4;1.000000;0.000000;kVArh;4
+45;3;9216;U64_B;;3-phase imported inductive reactive Energy - 3EQL;v_3phase_imported_inductive_reactive_energy_3eql;1.000000;0.000000;kVArh;4
+46;3;9220;U64_B;;3-phase exported  inductive reactive Energy - 3EQL-;v_3phase_exported_inductive_reactive_energy_3eql;1.000000;0.000000;kVArh;4
+47;3;9224;U64_B;;3-phase imported  capacitive reactive Energy - 3EQC;v_3phase_imported_capacitive_reactive_energy_3eqc;1.000000;0.000000;kVArh;4
+48;3;9228;U64_B;;3-phase imported inductive reactive Energy - 3EQC-;v_3phase_imported_inductive_reactive_energy_3eqc;1.000000;0.000000;kVArh;4
+49;4;19000;F32;;L1 voltage - U1;l1_voltage_u1;1.000000;0.000000;V;4
+50;4;19002;F32;;L2 voltage - U2;l2_voltage_u2;1.000000;0.000000;V;4
+51;4;19004;F32;;L3 voltage - U3;l3_voltage_u3;1.000000;0.000000;V;4
+52;4;19006;F32;;L1-L2 voltage - U12;l1l2_voltage_u12;1.000000;0.000000;V;4
+53;4;19008;F32;;L2-L3 voltage - U23;l2l3_voltage_u23;1.000000;0.000000;V;4
+54;4;19010;F32;;L3L1 voltage - U31;l3l1_voltage_u31;1.000000;0.000000;V;4
+55;4;19012;F32;;L1 current - I1;l1_current_i1;1.000000;0.000000;A;4
+56;4;19014;F32;;L2 current - I2;l2_current_i2;1.000000;0.000000;A;4
+57;4;19016;F32;;L3 current - I3;l3_current_i3;1.000000;0.000000;A;4
+58;4;19018;F32;;Sum of current - IN=I1+I2+I3;sum_of_current_ini1i2i3;1.000000;0.000000;A;4
+59;4;19020;F32;;L1 active power - P1;P_AC_1;0.001000;0.000000;KW;4
+60;4;19022;F32;;L2 active power - P2;P_AC_2;0.001000;0.000000;KW;4
+61;4;19024;F32;;L3 active power - P3;P_AC_3;0.001000;0.000000;KW;4
+62;4;19026;F32;;3-phase active power - 3P;P_AC;0.001000;0.000000;KW;4
+63;4;19028;F32;;L1 apparent power - S1;l1_apparent_power_s1;1.000000;0.000000;VA;4
+64;4;19030;F32;;L2 apparent power - S2;l2_apparent_power_s2;1.000000;0.000000;VA;4
+65;4;19032;F32;;L3 apparent power - S3;l3_apparent_power_s3;1.000000;0.000000;VA;4
+66;4;19034;F32;;3-phase apparent power - 3S;v_3phase_apparent_power_3s;1.000000;0.000000;VA;4
+67;4;19036;F32;;L1 reactive power - Q1;l1_reactive_power_q1;1.000000;0.000000;var;4
+68;4;19038;F32;;L2 reactive power - Q2;l2_reactive_power_q2;1.000000;0.000000;var;4
+69;4;19040;F32;;L3 reactive power - Q3;l3_reactive_power_q3;1.000000;0.000000;var;4
+70;4;19042;F32;;3-phase reactive power - 3Q;v_3phase_reactive_power_3q;1.000000;0.000000;var;4
+71;4;19044;F32;;CosPhi1;cosphi1;1.000000;0.000000;'-;4
+72;4;19046;F32;;CosPhi2;cosphi2;1.000000;0.000000;'-;4
+73;4;19048;F32;;CosPhi3;cosphi3;1.000000;0.000000;'-;4
+74;4;19050;F32;;Frequency;FREQ;1.000000;0.000000;Hz;4
+75;4;19052;F32;;Phase order;phase_order;1.000000;0.000000;'-;4
+76;4;19054;F32;;L1 total active energy - EP1 total;l1_total_active_energy_ep1_total;1.000000;0.000000;Wh;4
+77;4;19056;F32;;L2 total active energy - EP2 total;l2_total_active_energy_ep2_total;1.000000;0.000000;Wh;4
+78;4;19058;F32;;L3 total active energy - EP3 total;l3_total_active_energy_ep3_total;1.000000;0.000000;Wh;4
+79;4;19060;F32;;3-phase total active energy - 3EP total;v_3phase_total_active_energy_3ep_total;1.000000;0.000000;Wh;4
+80;4;19062;F32;;L1 imported active energy - EP1 consumed;l1_imported_active_energy_ep1_consumed;1.000000;0.000000;Wh;4
+81;4;19064;F32;;L2 imported active energy - EP2 consumed;l2_imported_active_energy_ep2_consumed;1.000000;0.000000;Wh;4
+82;4;19066;F32;;L3 imported active energy - EP3 consumed;l3_imported_active_energy_ep3_consumed;1.000000;0.000000;Wh;4
+83;4;19068;F32;;3-phase imported active energy - 3EP consumed;v_3phase_imported_active_energy_3ep_consumed;1.000000;0.000000;Wh;4
+84;4;19070;F32;;L1 exported active energy - EP1 delivered;l1_exported_active_energy_ep1_delivered;1.000000;0.000000;Wh;4
+85;4;19072;F32;;L2 exported active energy - EP2 delivered;l2_exported_active_energy_ep2_delivered;1.000000;0.000000;Wh;4
+86;4;19074;F32;;L3 exported active energy - EP3 delivered;l3_exported_active_energy_ep3_delivered;1.000000;0.000000;Wh;4
+87;4;19076;F32;;3-phase exported active energy - 3EP delivered;v_3phase_exported_active_energy_3ep_delivered;1.000000;0.000000;Wh;4
+88;4;19078;F32;;L1 apparent energy - ES1;l1_apparent_energy_es1;1.000000;0.000000;VAh;4
+89;4;19080;F32;;L2 apparent energy - ES2;l2_apparent_energy_es2;1.000000;0.000000;VAh;4
+90;4;19082;F32;;L3 apparent energy - ES3;l3_apparent_energy_es3;1.000000;0.000000;VAh;4
+91;4;19084;F32;;3-phase apparent energy - 3ES;v_3phase_apparent_energy_3es;1.000000;0.000000;VAh;4
+92;4;19086;F32;;L1 réactive energy - EQ1;l1_ractive_energy_eq1;1.000000;0.000000;varh;4
+93;4;19088;F32;;L2 réactive energy - EQ2;l2_ractive_energy_eq2;1.000000;0.000000;varh;4
+94;4;19090;F32;;L3 réactive energy - EQ3;l3_ractive_energy_eq3;1.000000;0.000000;varh;4
+95;4;19092;F32;;3-phase réactive energy - 3EQ;v_3phase_ractive_energy_3eq;1.000000;0.000000;varh;4
+96;4;19094;F32;;L1 inductive réactive energy - EQL1;l1_inductive_ractive_energy_eql1;1.000000;0.000000;varh;4
+97;4;19096;F32;;L2 inductive réactive energy - EQL2;l2_inductive_ractive_energy_eql2;1.000000;0.000000;varh;4
+98;4;19098;F32;;L3 inductive réactive energy - EQL3;l3_inductive_ractive_energy_eql3;1.000000;0.000000;varh;4
+99;4;19100;F32;;3-phase inductive réactive energy - 3EQL;v_3phase_inductive_ractive_energy_3eql;1.000000;0.000000;varh;4
+100;4;19102;F32;;L1 capacitive réactive energy - EQC1;l1_capacitive_ractive_energy_eqc1;1.000000;0.000000;varh;4
+101;4;19104;F32;;L2 capacitive réactive energy - EQC2;l2_capacitive_ractive_energy_eqc2;1.000000;0.000000;varh;4
+102;4;19106;F32;;L3 capacitive réactive energy - EQC3;l3_capacitive_ractive_energy_eqc3;1.000000;0.000000;varh;4
+103;4;19108;F32;;3-phase capacitive réactive energy - 3EQC;v_3phase_capacitive_ractive_energy_3eqc;1.000000;0.000000;varh;4
+104;4;19110;F32;;Harmonic Distotion U1N - THD U1;harmonic_distotion_u1n_thd_u1;1.000000;0.000000;'%;4
+105;4;19112;F32;;Harmonic Distotion U2N - THD U2;harmonic_distotion_u2n_thd_u2;1.000000;0.000000;'%;4
+106;4;19114;F32;;Harmonic Distotion U3N - THD U3;harmonic_distotion_u3n_thd_u3;1.000000;0.000000;'%;4
+107;4;19116;F32;;Harmonic Distotion I1 - THD I1;harmonic_distotion_i1_thd_i1;1.000000;0.000000;'%;4
+108;4;19118;F32;;Harmonic Distotion I2 - THD I2;harmonic_distotion_i2_thd_i2;1.000000;0.000000;'%;4
+109;4;19120;F32;;Harmonic Distotion I3 - THD I3;harmonic_distotion_i3_thd_i3;1.000000;0.000000;'%;4
+110;4;37056;F32;;Internal temperature(Ti);internal_temperatureti;1.000000;0.000000;°C;4
+111;3;8192;U64;;1-3-phase imported active Energy - 3EP;v_13phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+112;3;8196;U64;;2-3-phase exported active Energy - 3EP-;v_23phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+113;3;8192;U64_W;;3-3-phase imported active Energy - 3EP;v_33phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+114;3;8196;U64_W;;4-3-phase exported active Energy - 3EP-;v_43phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+115;3;8192;U64_B;;5-3-phase imported active Energy - 3EP;v_53phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+116;3;8196;U64_B;;6-3-phase exported active Energy - 3EP-;v_63phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+117;3;8192;U64_WB;;7-3-phase imported active Energy - 3EP;v_73phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+118;3;8196;U64_WB;;8-3-phase exported active Energy - 3EP-;v_83phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+119;3;8192;I64;;9-3-phase imported active Energy - 3EP;v_93phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+120;3;8196;I64;;10-3-phase exported active Energy - 3EP-;v_103phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+121;3;8192;I64_W;;11-3-phase imported active Energy - 3EP;v_113phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+122;3;8196;I64_W;;12-3-phase exported active Energy - 3EP-;v_123phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+123;3;8192;I64_B;;13-3-phase imported active Energy - 3EP;v_133phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+124;3;8196;I64_B;;14-3-phase exported active Energy - 3EP-;v_143phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4
+125;3;8192;I64_WB;;15-3-phase imported active Energy - 3EP;v_153phase_imported_active_energy_3ep;1.000000;0.000000;kWh;4
+126;3;8196;I64_WB;;16-3-phase exported active Energy - 3EP-;v_163phase_exported_active_energy_3ep;1.000000;0.000000;kWh;4

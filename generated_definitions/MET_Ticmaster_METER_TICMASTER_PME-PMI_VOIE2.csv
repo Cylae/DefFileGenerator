@@ -1,0 +1,7 @@
+Modbus;Meter;TicMaster;PME-PMI;;;;;;;
+1;3;4624;U32;;PAS - Puissance soutiree;;0.001;0;kW;4
+2;3;4626;U32;;PAI -Puissance injectee;;0.001;0;kW;4
+3;3;4628;I32;;PAS1 -Puissance P1;P_AC_1;0.001;0;kW;4
+4;3;4630;I32;;PAS2 - Puissance P2;P_AC_2;0.001;0;kW;4
+5;3;4632;I32;;PAS3 - Puissance P3;P_AC_3;0.001;0;kW;4
+6;3;4658;I32;;PASI - Puissance totale;P_AC;0.001;0;kW;4

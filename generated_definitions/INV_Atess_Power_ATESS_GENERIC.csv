@@ -1,0 +1,244 @@
+ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
+1;3;180_12;STRING;;Device Serial Number;SERIAL;1;0;;4
+2;4;270_20;STRING;;Hardware Version;;1;0;;4
+3;4;280_18;STRING;;Software Version;;1;0;;4
+4;3;0;U16;;On/Off;CMD_ON;1;0;;4
+5;3;26;U16;;Mode Selection Setting;;1;0;;4
+6;3;190;U16;;Running state;;1;0;;4
+7;4;0;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;4
+8;4;1;U16;;Battery voltage;;0.1;0;V;4
+9;4;2;I16;;Battery current;;0.1;0;A;4
+10;4;3;I16;;PV1 DC current;I_DC_STRING_1;0.1;0;A;4
+11;4;4;U16;;Output voltage UV;;0.1;0;V;4
+12;4;5;U16;;Output voltage VW;;0.1;0;V;4
+13;4;6;U16;;Output voltage WU;;0.1;0;V;4
+14;4;7;I16;;Bypass current U;;0.1;0;A;4
+15;4;8;I16;;Bypass current V;;0.1;0;A;4
+16;4;9;I16;;Bypass current W;;0.1;0;A;4
+17;4;10;I16;;Inductance 1 Current A;;0.1;0;A;4
+18;4;11;I16;;Inductance 1 Current B;;0.1;0;A;4
+19;4;12;I16;;Inductance 1 Current C;;0.1;0;A;4
+20;4;13;U16;;Grid bypass voltageUV;;0.1;0;V;4
+21;4;14;U16;;Grid bypass voltageVW;;0.1;0;V;4
+22;4;15;U16;;Grid bypass voltageWU;;0.1;0;V;4
+23;4;16;U16;;Output frequency;FREQ;0.01;0;Hz;4
+24;4;17;I16;;Battery power;;0.1;0;kW;4
+25;4;18;U16;;Bypass apparent power;S_AC;0.1;0;kVA;4
+26;4;19;I16;;Bypass active power;P_AC;0.1;0;kW;4
+27;4;20;I16;;Bypass reactive power;Q_AC;0.1;0;kVar;4
+28;4;21;U16;;Grid frequency;;0.01;0;Hz;4
+29;4;22;U16;;Power factor symbol;PF;1;0;;4
+30;4;23;I16;;Power factor;;0.001;0;;4
+31;4;24;U16;;Battery daily discharge capacity;;0.1;0;kWh;4
+32;4;25;U16;;Battery daily discharge time;;0.1;0;Min;4
+33;4;26;U16;;Battery daily charge capacity;;0.1;0;kWh;4
+34;4;27;U16;;Battery daily charge time;;0.1;0;Min;4
+35;4;28;U16;;PV2 insulation test positive;R_ISO;0.1;0;kOhm;4
+36;4;29;U16;;PV2 insulation test negative;;0.1;0;kOhm;4
+37;4;30;I16;;Temperature of heat sink of converter;;0.1;0;C;4
+38;4;31;I16;;Buck fin temperature;;0.1;0;C;4
+39;4;32;I16;;Inductance temperature of converter;;0.1;0;C;4
+40;4;33;I16;;Buck inductance temperature;;0.1;0;C;4
+41;4;34;I16;;Temperature of DC radiator;;0.1;0;C;4
+42;4;35;I16;;Transformer temperature;;0.1;0;C;4
+43;4;36;I16;;Ambient temperature;TEMP_AMB;0.1;0;C;4
+44;4;37;I16;;Balance plate current;;0.1;0;A;4
+45;4;38;U16;;PV1 positive insulation impedance;;0.1;0;kOhm;4
+46;4;39;U16;;PV1 negative insulation impedance;;0.1;0;kOhm;4
+47;4;40;U16;;Battery positive insulation impedance;;0.1;0;kOhm;4
+48;4;41;U16;;Battery negative insulation impedance;;0.1;0;kOhm;4
+49;4;42;U16;;GFDI1 Leakage current;;0.1;0;A;4
+50;4;43;U16;;GFDI2 Leakage current;;0.1;0;A;4
+51;4;44;U16;;Efficiency;;0.1;0;%;4
+52;4;45;U16;;Post time;;1;0;S;4
+53;4;46;U16;;Unit battery voltage;;0.001;0;V;4
+54;4;47;U16;;Battery percentage;;1;0;%;4
+55;4;48;U16;;Apparent power of load;;0.1;0;kVA;4
+56;4;49;I16;;Load active power;;0.1;0;kW;4
+57;4;50;I16;;Load reactive power;;0.1;0;kVar;4
+58;4;51;U16;;PV1 power;;0.1;0;kW;4
+59;4;52;I16;;Load power factor;;0.001;0;;4
+60;4;53;I16;;Load current A;;0.1;0;A;4
+61;4;54;I16;;Load current B;;0.1;0;A;4
+62;4;55;I16;;Load current C;;0.1;0;A;4
+63;4;56;U16;;Output voltage U;;0.1;0;V;4
+64;4;57;U16;;Output voltage V;;0.1;0;V;4
+65;4;58;U16;;Output voltage W;;0.1;0;V;4
+66;4;59;I16;;Busbar voltage;U_DC;0.1;0;V;4
+67;4;60;I16;;Busbar voltage positive;;0.1;0;V;4
+68;4;61;I16;;Busbar voltage negative;;0.1;0;V;4
+69;4;62;U16;;PV daily power generation;E_DAY;0.1;0;kWh;4
+70;4;63;U16;;PV daily power generation time;;0.1;0;Min;4
+71;4;64;U32;;PV totalpower generation High/low;;0.1;0;kWh;4
+72;4;66;U32;;PV total power generation time High/Low;;0.1;0;h;4
+73;4;68;U32;;Total discharge capacity of battery High/Low;;0.1;0;kWh;4
+74;4;70;U32;;Total battery discharge time High/Low;;0.1;0;h;4
+75;4;72;U32;;Total charge capacity of battery High/low;;0.1;0;kWh;4
+76;4;74;U32;;Total battery charge time High/low;;0.1;0;h;4
+77;4;76;I16;;PV1 inductance current;;0.1;0;A;4
+78;4;77;I16;;PV2 inductance current;I_DC_STRING_2;0.1;0;A;4
+79;4;78;U16;;Output apparent power;;0.1;0;kVA;4
+80;4;79;I16;;Output active power;;0.1;0;kW;4
+81;4;80;I16;;Output reactive power;;0.1;0;kVar;4
+82;4;81;U16;;Bypass frequency;;0.01;0;Hz;4
+83;4;82;U16;;Daily power consumption of load;;0.1;0;kWh;4
+84;4;83;U16;;Daily power time of load;;0.1;0;Min;4
+85;4;84;U32;;Total load consumption High/Low;;0.1;0;kWh;4
+86;4;86;U32;;Total power consumption time of load High/low;;0.1;0;h;4
+87;4;88;U16;;Daily power intake from grid;;0.1;0;kWh;4
+88;4;89;U16;;Daily power intake time from grid;;0.1;0;Min;4
+89;4;90;U32;;Total power intake from grid High/Low;;0.1;0;kWh;4
+90;4;92;U32;;Total power intake time from grid High/Low;;0.1;0;h;4
+91;4;94;U16;;Daily power fed to grid;;0.1;0;kWh;4
+92;4;95;U16;;Daily power fed to grid time;;0.1;0;Min;4
+93;4;96;U32;;Total power fed to grid High/Low;;0.1;0;kWh;4
+94;4;98;U32;;Total power fed to grid time High/Low;;0.1;0;h;4
+95;4;100;U16;;BMS Max.Charge current;;0.1;0;A;4
+96;4;101;U16;;BMSMax.Discharge current;;0.1;0;A;4
+97;4;102;U16;;Invert Phase voltage U;;0.1;0;V;4
+98;4;103;U16;;Invert Phase voltage V;;0.1;0;V;4
+99;4;104;U16;;Invert Phase voltage W;;0.1;0;V;4
+100;4;105;I16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
+101;4;106;I16;;PV2 DC current;;0.1;0;A;4
+102;4;107;I16;;PV2 power;;0.1;0;kW;4
+103;4;108;I16;;PV total power;E_TOT;0.1;0;kW;4
+104;4;109;U16;;Output voltage;;0.1;0;V;4
+105;4;110;I16;;Output current;;0.1;0;A;4
+106;4;111;I16;;Output inductance 1 current;;0.1;0;A;4
+107;4;112;I16;;Output inductance 2 current;;0.1;0;A;4
+108;4;113;I16;;Output power;;0.1;0;kW;4
+109;4;114;I16;;PV Module temperature;TEMP_CELL;0.1;0;C;4
+110;4;115;I16;;OUT Module temperature;;0.1;0;C;4
+111;4;116;I16;;PV inductance temperature;;0.1;0;C;4
+112;4;117;I16;;OUT inductance temperature;;0.1;0;C;4
+113;4;118;U16;;Bus positive insulation impedance;;0.1;0;kOhm;4
+114;4;119;U16;;Bus negative insulation impedance;;0.1;0;kOhm;4
+115;4;120;U16;;Output daily discharge;;0.1;0;kWh;4
+116;4;121;U32;;Output total discharge High/Low;;0.1;0;kWh;4
+117;4;123;I16;;PV3 voltage;U_DC_STRING_3;0.1;0;V;4
+118;4;124;I16;;PV4 voltage;U_DC_STRING_4;0.1;0;V;4
+119;4;125;I16;;PV5 voltage;U_DC_STRING_5;0.1;0;V;4
+120;4;126;I16;;PV3 DC current;I_DC_STRING_3;0.1;0;A;4
+121;4;127;I16;;PV4 DC current;I_DC_STRING_4;0.1;0;A;4
+122;4;128;I16;;PV5 DC current;I_DC_STRING_5;0.1;0;A;4
+123;4;129;I16;;PV3inductance current;;0.1;0;A;4
+124;4;130;I16;;PV4inductance current;;0.1;0;A;4
+125;4;131;I16;;PV5 inductance current;;0.1;0;A;4
+126;4;132;I16;;PV3 power;;0.1;0;kW;4
+127;4;133;I16;;PV4 power;;0.1;0;kW;4
+128;4;134;I16;;PV5 power;;0.1;0;kW;4
+129;4;135;I16;;Output current U;;0.1;0;A;4
+130;4;136;I16;;Output current V;;0.1;0;A;4
+131;4;137;I16;;Output current W;;0.1;0;A;4
+132;4;138;U16;;Battery inductance current;;0.1;0;A;4
+133;4;139;U16;;BMS Status display;;1;0;;4
+134;4;140;I16;;SCR temperature;;0.1;0;C;4
+135;4;141;U16;;BAT charge and discharge cycles;;1;0;;4
+136;4;142;U16;;Bat full load discharge time;;0.1;0;;4
+137;4;143;U16;;Judgement symbol of parallel operation;;1;0;;4
+138;4;144;I16;;Battery inductance current 1;;0.1;0;A;4
+139;4;145;I16;;Battery inductance current 2;;0.1;0;A;4
+140;4;146;I16;;Busbar current;I_DC;0.1;0;A;4
+141;4;147;I16;;BAT mode temperature;;0.1;0;C;4
+142;4;148;I16;;Balance board mode temperature;;0.1;0;C;4
+143;4;149;U16;;SCR state;;1;0;;4
+144;4;150;I16;;PCS battery charging power;;0.1;0;kW;4
+145;4;151;I16;;PCS output power;;0.1;0;kW;4
+146;4;152;I16;;PBD output power;;0.1;0;kW;4
+147;4;153;I16;;HPS Charge power limit;CMD_P_AC_SET_ABS;0.1;0;kW;4
+148;4;154;I16;;CP current U;;0.1;0;A;4
+149;4;155;I16;;CP current V;;0.1;0;A;4
+150;4;156;I16;;CP current W;;0.1;0;A;4
+151;4;157;I16;;CP active power;;0.1;0;kW;4
+152;4;158;I16;;INV active power;;0.1;0;kW;4
+153;4;159;I16;;INV reactive power;;0.1;0;kW;4
+154;4;160;I16;;INV apparent power;;0.1;0;kW;4
+155;4;161;U16;;Bypass Type setting;;1;0;;4
+156;4;162;I16;;System battery current;;0.1;0;A;4
+157;4;163;U16;;Dry contact state;;1;0;;4
+158;4;164;U16;;BMS total voltage;;0.1;0;V;4
+159;4;165;I16;;BMS total current;I_AC;0.1;0;A;4
+160;4;166;U16;;SOH;SOH;1;0;%;4
+161;4;167;U16;;BMS max/min temperature group number;;1;0;;4
+162;4;168;U16;;Max/min voltage Group BMS No.;;1;0;;4
+163;4;169;U16;;BMS high voltage relay status;;1;0;;4
+164;4;170;U16;;BMS Max/Min temperature group number;;1;0;;4
+165;4;171;I16;;BMS temperature max/min;;0.1;0;C;4
+166;4;172;U16;;BMS Max/Min voltage group number;;1;0;;4
+167;4;173;U16;;BMS unit max/min voltage;;0.001;0;V;4
+168;4;174;U16;;Maximum unit voltage;;0.001;0;V;4
+169;4;175;U16;;Maximum cell voltage;;0.001;0;V;4
+170;4;176;U16;;BMS battery status;;1;0;;4
+171;4;177;U16;;BMS level I alarm;;1;0;;4
+172;4;178;U16;;BMS level II alarm;;1;0;;4
+173;4;179;U16;;BMS level III Protection;;1;0;;4
+174;4;180;U16;;Running state_2;;1;0;;4
+175;4;181;U16;;Fault alarm bit information1;;1;0;;4
+176;4;182;U16;;Fault alarm bit information2 ;;1;0;;4
+177;4;183;U16;;Fault alarm bit information3 ;;1;0;;4
+178;4;184;U16;;Fault alarm bit information4 ;;1;0;;4
+179;4;185;U16;;Fault alarm bit information5 ;;1;0;;4
+180;4;186;U16;;Fault alarm bit information6 ;;1;0;;4
+181;4;187;U16;;Fault alarm bit information7 ;;1;0;;4
+182;4;188;U16;;Fault alarm bit information8 ;;1;0;;4
+183;4;191;U16;;Running state  Bitwise;;1;0;;4
+184;4;192;U16;;Operation mode;;1;0;;4
+185;4;193;U16;;Running state_3;;1;0;;4
+186;4;194;U16;;Fault alarm bit information1_2;;1;0;;4
+187;4;195;U16;;Fault alarm bit information2_2;;1;0;;4
+188;4;196;U16;;Fault alarm bit information3_2;;1;0;;4
+189;4;197;U16;;Fault alarm bit information4_2;;1;0;;4
+190;4;198;U16;;Fault alarm bit information5_2;;1;0;;4
+191;4;199;U16;;Fault alarm bit information6_2;;1;0;;4
+192;4;200;U16;;Fault alarm bit information7_2;;1;0;;4
+193;4;201;U16;;Fault alarm bit information8_2;;1;0;;4
+194;4;203;U16;;Running state  Bitwise_2;;1;0;;4
+195;4;205;U16;;Operation mode_2;;1;0;;4
+196;4;206;U16;;Running state_4;;1;0;;4
+197;4;207;U16;;Fault alarm bit information1_3;;1;0;;4
+198;4;208;U16;;Fault alarm bit information2_3;;1;0;;4
+199;4;209;U16;;Fault alarm bit information3_3;;1;0;;4
+200;4;210;U16;;Fault alarm bit information4_3;;1;0;;4
+201;4;211;U16;;Fault alarm bit information5_3;;1;0;;4
+202;4;212;U16;;Fault alarm bit information6_3;;1;0;;4
+203;4;213;U16;;Running state_5;;1;0;;4
+204;4;215;U16;;Operation mode_3;;1;0;;4
+205;4;216;I16;;DG current U;;0.1;0;A;4
+206;4;217;I16;;DG current V;;0.1;0;A;4
+207;4;218;I16;;DG current W;;0.1;0;A;4
+208;4;219;U16;;DG apparent power;;0.1;0;kVA;4
+209;4;220;I16;;DG active power;;0.1;0;kW;4
+210;4;221;I16;;DG reactive power;;0.1;0;kVar;4
+211;4;222;U16;;Daily power intake from DG;;0.1;0;kWh;4
+212;4;223;U16;;Daily power intake time from DG;;0.1;0;Min;4
+213;4;224;U32;;Total power intake from DG High/Low;;0.1;0;kWh;4
+214;4;226;U32;;Total power intake time from DG High/Low;;0.1;0;h;4
+215;4;228;I16;;System battery power;;0.1;0;kW;4
+216;4;229;I16;;CP power limit;;0.1;0;kW;4
+217;4;230;I16;;Max charge power;;0.1;0;kW;4
+218;4;231;I16;;Max discharge power;;0.1;0;kW;4
+219;4;232;I16;;Charging pile max power;;0.1;0;kW;4
+220;4;233;U16;;Diesel generator demand power;;0.1;0;kW;4
+221;4;234;U16;;HPS start request;;1;0;;4
+222;4;235;U16;;Bypass communication number;;1;0;;4
+223;4;236;U16;;Insulation detection positive;;0.1;0;kOhm;4
+224;4;237;U16;;Insulation detection negative;;0.1;0;kOhm;4
+225;4;238;U16;;GEN voltage U;;0.1;0;V;4
+226;4;239;U16;;Non-critical Load Power;;0.1;0;kW;4
+227;4;240;U16;;Daily power generation of grid connected inverter;;0.1;0;kWh;4
+228;4;241;U32;;Total power generation of grid connected inverter High/Lowbit;;0.1;0;kWh;4
+229;4;243;U16;;Daily Energy From Meter;;0.1;0;kWh;4
+230;4;244;U32;;Total Energy From MeterHigh/low bit;;0.1;0;kWh;4
+231;4;246;U16;;Daily Energy To Meter;;0.1;0;kWh;4
+232;4;247;U32;;Total Energy To MeterHigh/Low bit;;0.1;0;kWh;4
+233;4;249;I16;;Meter Power;;0.1;0;kW;4
+234;4;250;U16;;ATS/Bypass;;1;0;;4
+235;4;251;U16;;DG grid select;;1;0;;4
+236;4;252;I16;;DG/ gridpower;;0.1;0;kW;4
+237;4;253;U16;;MASTER_SLAVE Switching Signal;;1;0;;4
+238;4;254;U16;;Parallel PLL Signal;;1;0;;4
+239;4;255;U16;;Parallel Switch Signal;;1;0;;4
+240;4;256;U16;;Bypass CANA Baud rate;;1;0;;4
+241;4;256;U16;;ATS CANA Baud rate;;1;0;;4
+242;4;257;I16;;Rectifier power;;0.1;0;kW;4
+243;4;258;I16;;Rectifier Demand power;;0.1;0;kW;4

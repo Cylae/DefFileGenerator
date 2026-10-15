@@ -1,0 +1,37 @@
+modbus;io;ADAM;6224;;;;;;;
+1;1;0_0_1;BITS;;DI Value channel 0;;1.000000;0.000000;;4
+2;1;1_0_1;BITS;;DI Value channel 1;;1.000000;0.000000;;4
+3;1;2_0_1;BITS;;DI Value channel 2;;1.000000;0.000000;;4
+4;1;3_0_1;BITS;;DI Value channel 3;;1.000000;0.000000;;4
+5;3;0;U16;;AO value channel 0;;1.000000;0.000000;Output0;4
+6;3;1;U16;;AO value channel 1;;1.000000;0.000000;Output1;4
+7;3;2;U16;;AO value channel 2;;1.000000;0.000000;Output2;4
+8;3;3;U16;;AO value channel 3;;1.000000;0.000000;Output3;4
+9;4;101;U32;;AO status channel 0;;1.000000;0.000000;;4
+10;4;103;U32;;AO status channel 1;;1.000000;0.000000;;4
+11;4;105;U32;;AO status channel 2;;1.000000;0.000000;;4
+12;4;107;U32;;AO status channel 3;;1.000000;0.000000;;4
+13;4;110;U16;;DI Event Status channel 0;WIND_SPEED;1.000000;0.000000;;4
+14;4;111;U16;;DI Event Status channel 1;;1.000000;0.000000;;4
+15;4;112;U16;;DI Event Status channel 2;;1.000000;0.000000;;4
+16;4;113;U16;;DI Event Status channel 3;;1.000000;0.000000;;4
+17;3;200;U16;;Type code channel 0;;1.000000;0.000000;;4
+18;3;201;U16;;Type code channel 1;;1.000000;0.000000;;4
+19;3;202;U16;;Type code channel 2;;1.000000;0.000000;;4
+20;3;203;U16;;Type code channel 3;;1.000000;0.000000;;4
+21;3;301;U16;;Clear GCL counter channel 0;;1.000000;0.000000;;4
+22;3;302;U16;;Clear GCL counter channel 1;;1.000000;0.000000;;4
+23;3;303;U16;;Clear GCL counter channel 2;;1.000000;0.000000;;4
+24;3;304;U16;;Clear GCL counter channel 3;;1.000000;0.000000;;4
+25;3;305;U16;;Clear GCL counter channel 4;;1.000000;0.000000;;4
+26;3;306;U16;;Clear GCL counter channel 5;;1.000000;0.000000;;4
+27;3;307;U16;;Clear GCL counter channel 6;;1.000000;0.000000;;4
+28;3;308;U16;;Clear GCL counter channel 7;;1.000000;0.000000;;4
+29;3;400;U16;;Startup value channel 0;;1.000000;0.000000;;4
+30;3;401;U16;;Startup value channel 1;;1.000000;0.000000;;4
+31;3;402;U16;;Startup value channel 2;;1.000000;0.000000;;4
+32;3;403;U16;;Startup value channel 3;;1.000000;0.000000;;4
+33;3;410;U16;;Safety value channel 0;;1.000000;0.000000;;4
+34;3;411;U16;;Safety value channel 1;;1.000000;0.000000;;4
+35;3;412;U16;;Safety value channel 2;;1.000000;0.000000;;4
+36;3;413;U16;;Safety value channel 3;;1.000000;0.000000;;4

@@ -1,0 +1,18 @@
+modbusRTU;Inverter;Gamesa;Gamesa_Inverter100KW;;;;;;;
+1;4;50514;U32_W;;Vcc Paneles;vcc_paneles;1.000000;0.000000;;4
+2;4;50516;U32_W;;Vcc Puente;vcc_puente;1.000000;0.000000;;4
+3;4;50518;U32_W;;Intensidad continua;intensidad_continua;0.100000;0.000000;;4
+4;4;50520;U32_W;;Tension VRS;tension_vrs;1.000000;0.000000;;4
+5;4;50522;U32_W;;Tension VST;tension_vst;1.000000;0.000000;;4
+6;4;50524;U32_W;;Tension VTR;tension_vtr;1.000000;0.000000;;4
+7;4;50526;U32_W;;Intensidad IR;intensidad_ir;0.100000;0.000000;;4
+8;4;50528;U32_W;;Intensidad IS;intensidad_is;0.100000;0.000000;;4
+9;4;50530;U32_W;;Intensidad IT;intensidad_it;0.100000;0.000000;;4
+10;4;50532;U32_W;;Potencia Continua;potencia_continua;0.100000;0.000000;;4
+11;4;50534;U32_W;;Potencia Alterna;potencia_alterna;0.100000;0.000000;;4
+12;4;50536;U32_W;;Factor de potencia;factor_de_potencia;0.010000;0.000000;;4
+13;4;50538;U32_W;;Frecuencia;frecuencia;0.010000;0.000000;;4
+14;4;50540;U32_W;;Rsvrd;rsvrd;1.000000;0.000000;;1
+15;4;50542;U32_W;;Rsvrd1;rsvrd1;1.000000;0.000000;;1
+16;4;50544;U32_W;;Rsvrd2;rsvrd2;1.000000;0.000000;;1
+17;4;50546;U32_W;;Alarms;alarms;1.000000;0.000000;;8

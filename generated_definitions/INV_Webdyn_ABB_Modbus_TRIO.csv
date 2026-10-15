@@ -1,0 +1,18 @@
+ModbusRTU;Inverter;ABB;TRIO;;;;;;;
+1;4;104_6;STRING;;SN onduleur;SERIAL;1.0;0.0;;4
+2;4;132;F32;;energie journaliere;E_DAY;1.0;0.0;Wh;4
+3;4;134;F32;;Energie totale;E_TOT;1.0;0.0;kWh;4
+4;4;140;F32;;Energie mensuelle;;1.0;0.0;kWh;4
+5;4;142;F32;;Energie annuelle;;1.0;0.0;kWh;4
+6;4;144;F32;;Tension reseau;;1.0;0.0;V;4
+7;4;146;F32;;Courant injecte;;1.0;0.0;A;4
+8;4;148;F32;;Puissance injectee;;1.0;0.0;W;4
+9;4;150;F32;;Frequence du reseau;FREQ;1.0;0.0;Hz;4
+10;4;152;F32;;Puissance MPP1;;1.0;0.0;W;4
+11;4;154;F32;;Tension MPP1;;1.0;0.0;V;4
+12;4;156;F32;;Courant MPP1;;1.0;0.0;A;4
+13;4;158;F32;;Puissance MPP2;;1.0;0.0;W;4
+14;4;160;F32;;Tension MPP2;;1.0;0.0;V;4
+15;4;162;F32;;Courant MPP2;;1.0;0.0;A;4
+16;4;164;F32;;Temperature onduleur;;1.0;0.0;°C;4
+17;4;168;F32;;Resistance isolement;R_ISO;1.0;0.0;mHoms;4

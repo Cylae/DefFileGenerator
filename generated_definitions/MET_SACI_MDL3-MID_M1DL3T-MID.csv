@@ -1,0 +1,87 @@
+ModbusRTU;Meter;SACI;MDL3-MID_M1DL3T-MID;;;;;;;
+1;3;256;I32;;Voltage;;0.001;0;V;4
+2;3;258;I32;;Current;;0.001;0;A;4
+3;3;260;I32;;Active power;P_AC;1;0;W;4
+4;3;262;I32;;Apparent power;S_AC;;0;va;4
+5;3;264;I32;;Reactive power;Q_AC;;0;var;4
+6;3;266;I16;;Frequency;FREQ;0.1;0;Hz;4
+7;3;267;I16;;Power factor;PF;0.001;0;;4
+8;3;270;I32;;Total import active energy;E_IMP;0.01;0;kWh;4
+9;3;272;I32;;Import active energy tariff T1;P_AC_1;0.01;0;kWh;4
+10;3;274;I32;;Import active energy tariff T2;P_AC_2;0.01;0;kWh;4
+11;3;276;I32;;Import active energy tariff T3;P_AC_3;0.01;0;kWh;4
+12;3;278;I32;;Import active energy tariff T4;;0.01;0;kWh;4
+13;3;280;I32;;Total export active energy;;0.01;0;kWh;4
+14;3;282;I32;;Export active energy tariff T1;E_EXP;0.01;0;kWh;4
+15;3;284;I32;;Export active energy tariff T2;;0.01;0;kWh;4
+16;3;286;I32;;Export active energy tariff T3;;0.01;0;kWh;4
+17;3;288;I32;;Export active energy tariff T4;;0.01;0;kWh;4
+18;3;300;I32;;Total import reactive energy;;0.01;0;kvarh;4
+19;3;302;I32;;Import reactive energy tariff T1;;0.01;0;kvarh;4
+20;3;304;I32;;Import reactive energy tariff T2;;0.01;0;kvarh;4
+21;3;306;I32;;Import reactive energy tariff T3;;0.01;0;kvarh;4
+22;3;308;I32;;Import reactive energy tariff T4;;0.01;0;kvarh;4
+23;3;310;I32;;Total export reactive energy;;0.01;0;kvarh;4
+24;3;312;I32;;Export reactive energy tariff T1;;0.01;0;kvarh;4
+25;3;314;I32;;Export reactive energy tariff T2;;0.01;0;kvarh;4
+26;3;316;I32;;Export reactive energy tariff T3;;0.01;0;kvarh;4
+27;3;318;I32;;Export reactive energy tariff T4;;0.01;0;kvarh;4
+28;3;330;I32;;Reactive energy Quadrant 1 total;E_TOT;0.01;0;kvarh;4
+29;3;332;I32;;Reactive energy Q1 tariff 1;;0.01;0;kvarh;4
+30;3;334;I32;;Reactive energy Q1 tariff 2;;0.01;0;kvarh;4
+31;3;336;I32;;Reactive energy Q1 tariff 3;;0.01;0;kvarh;4
+32;3;338;I32;;Reactive energy Q1 tariff 4;;0.01;0;kvarh;4
+33;3;340;I32;;Reactive energy Quadrant 2 total;;0.01;0;kvarh;4
+34;3;342;I32;;Reactive energy Q2 tariff 1;;0.01;0;kvarh;4
+35;3;344;I32;;Reactive energy Q2 tariff 2;;0.01;0;kvarh;4
+36;3;346;I32;;Reactive energy Q2 tariff 3;;0.01;0;kvarh;4
+37;3;348;I32;;Reactive energy Q2 tariff 4;;0.01;0;kvarh;4
+38;3;350;I32;;Reactive energy Quadrant 3 total;;0.01;0;kvarh;4
+39;3;352;I32;;Reactive energy Q3 tariff 1;;0.01;0;kvarh;4
+40;3;354;I32;;Reactive energy Q3 tariff 2;;0.01;0;kvarh;4
+41;3;356;I32;;Reactive energy Q3 tariff 3;;0.01;0;kvarh;4
+42;3;358;I32;;Reactive energy Q3 tariff 4;;0.01;0;kvarh;4
+43;3;360;I32;;Reactive energy Quadrant 4 total;;0.01;0;kvarh;4
+44;3;362;I32;;Reactive energy Q4 tariff 1;;0.01;0;kvarh;4
+45;3;364;I32;;Reactive energy Q4 tariff 2;;0.01;0;kvarh;4
+46;3;366;I32;;Reactive energy Q4 tariff 3;;0.01;0;kvarh;4
+47;3;368;I32;;Reactive energy Q4 tariff 4;;0.01;0;kvarh;4
+48;3;370;I32;;Resettable active energy;;0.01;0;kvarh;4
+49;3;372;I32;;Resettable reactive energy;;0.01;0;kvarh;4
+50;3;374;I32;;Forward active demand;;0.01;0;W;4
+51;3;376;I32;;Maximum forward active demand;;0.01;0;W;4
+52;3;378;I32;;Reverse active demand;;0.01;0;W;4
+53;3;380;I32;;Maximum reverse active demand;;0.01;0;W;4
+54;3;382;I32;;Forward reactive demand;;0.01;0;var;4
+55;3;384;I32;;Maximum forward reactive demand;;0.01;0;var;4
+56;3;386;I32;;Reverse reactive demand;;0.01;0;var;4
+57;3;388;I32;;Maximum reverse reactive demand;;0.01;0;var;4
+58;3;4096_6;STRING;;Serial number;SERIAL;1;0;;4
+59;3;4099;I16;;MODBUS ID;;1;0;;4
+60;3;4100;I16;;Firmware version;;1;0;;4
+61;3;4101;I16;;Hardware version;;1;0;;4
+62;3;4102;I16;;Checksum;;1;0;;4
+63;3;4103;I64;;Time;;1;0;;4
+64;3;4107;I16;;Scrolling time;;1;0;;4
+65;3;4108;I16;;Baud rate;;1;0;;4
+66;3;4109;I16;;Parity;;1;0;;4
+67;3;4110;I16;;Stop bits;;1;0;;4
+68;3;4111;I16;;Combined code;;1;0;;4
+69;3;4112;I16;;Demand mode;;1;0;;4
+70;3;4113;I16;;Demand cycle;;1;0;;4
+71;3;4114;I64;;Display contents;;1;0;;4
+72;3;4118;I16;;Password;;1;0;;4
+73;3;4120;I32;;meter running time;;1;0;;4
+74;3;4122;I32;;Unit mA;;1;0;;4
+75;3;8193;I16;;Clear resettable energy registers;;1;0;;4
+76;3;8194;I16;;Clear demand;;1;0;;4
+77;3;5888;I32;;Daily profile 1;;1;0;;4
+78;3;5900;I32;;Daily profile 2;;1;0;;4
+79;3;5912;I32;;Daily profile 3;;1;0;;4
+80;3;5924;I32;;Daily profile 4;;1;0;;4
+81;3;5936;I32;;Daily profile 5;;1;0;;4
+82;3;5948;I32;;Daily profile 6;;1;0;;4
+83;3;5960;I32;;Daily profile 7;;1;0;;4
+84;3;5972;I32;;Daily profile 8;;1;0;;4
+85;3;5984;I32;;Season table;;1;0;;4
+86;3;5996;U16;;Holydays table;;1;0;;4

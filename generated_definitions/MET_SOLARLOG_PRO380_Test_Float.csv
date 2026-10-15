@@ -1,0 +1,75 @@
+modbusRTU;Meter;SOLARLOG;PRO380;;;;;;;
+1;3;4096;F32;;Serial number;SERIAL;1;0;;4
+2;3;4112;F32;;Meter code;;1;0;;4
+3;3;4120;F32;;Meter ID (Mbus/Modbus);;1;0;;4
+4;3;4128;F32;;Baud Rate;;1;0;;4
+5;3;4176;F32;;Protocol Version;;1;0;;4
+6;3;4180;F32;;Software Version;;1;0;;4
+7;3;4184;F32;;Hardware Version;;1;0;;4
+8;3;4192;F32;;Meter Amps;;1;0;;4
+9;3;4194;F32;;CT rate;;1;0;;4
+10;3;4198;F32;;S0 output rate;;1;0;;4
+11;3;4218;F32;;Combined Code;;1;0;;4
+12;3;5392;F32;;LCD cycle time;;1;0;;4
+13;3;5408;F32;;Parity setting;;1;0;;4
+14;3;8200;F32;;L1 Voltage;U_AC_1;1;0;;4
+15;3;8204;F32;;L2 Voltage;U_AC_2;1;0;;4
+16;3;8208;F32;;L3 Voltage;U_AC_3;1;0;;4
+17;3;8224;F32;;Grid Frequency;FREQ;1;0;;4
+18;3;8288;F32;;Current;;1;0;;4
+19;3;8296;F32;;L1 Current;I_AC_1;1;0;;4
+20;3;8300;F32;;L2 Current;I_AC_2;1;0;;4
+21;3;8304;F32;;L3 Current;I_AC_3;1;0;;4
+22;3;8320;F32;;Total Active Power;P_AC;1;0;;4
+23;3;8328;F32;;L1 Active Power;P_AC_1;1;0;;4
+24;3;8332;F32;;L2 Active Power;P_AC_2;1;0;;4
+25;3;8336;F32;;L3 Active Power;P_AC_3;1;0;;4
+26;3;8352;F32;;Total reactive power;Q_AC;1;0;;4
+27;3;8360;F32;;L1 reactive power;Q_AC_1;1;0;;4
+28;3;8364;F32;;L2 reactive power;Q_AC_2;1;0;;4
+29;3;8368;F32;;L3 reactive power;Q_AC_3;1;0;;4
+30;3;8384;F32;;Total Apparent Power;S_AC;1;0;;4
+31;3;8392;F32;;L1 Apparent Power;S_AC_1;1;0;;4
+32;3;8396;F32;;L2 Apparent Power;S_AC_2;1;0;;4
+33;3;8400;F32;;L3 Apparent Power;S_AC_3;1;0;;4
+34;3;8416;F32;;Power Factor;PF;1;0;;4
+35;3;8424;F32;;L1 Power Factor;PF_1;1;0;;4
+36;3;8428;F32;;L2 Power Factor;PF_2;1;0;;4
+37;3;8432;F32;;L3 Power Factor;PF_3;1;0;;4
+38;3;8704;F32;;Tariff;;1;0;;4
+39;3;12288;F32;;Total Active Energy;;1;0;;4
+40;3;12544;F32;;T1 Total Active Energy;E_TOT;1;0;;4
+41;3;12800;F32;;T2 Total Active Energy;;1;0;;4
+42;3;12296;F32;;L1 Total Active Energy;E_TOT_1;1;0;;4
+43;3;12300;F32;;L2 Total Active Energy;E_TOT_2;1;0;;4
+44;3;12304;F32;;L3 Total Active Energy;E_TOT_3;1;0;;4
+45;3;12320;F32;;Forward Active Energy;;1;0;;4
+46;3;12576;F32;;T1 Forward Active Energy;;1;0;;4
+47;3;12832;F32;;T2 Forward Active Energy;;1;0;;4
+48;3;12328;F32;;L1 Forward Active Energy;;1;0;;4
+49;3;12332;F32;;L2 Forward Active Energy;;1;0;;4
+50;3;12336;F32;;L3 Forward Active Energy;;1;0;;4
+51;3;12352;F32;;Reverse Active Energy;;1;0;;4
+52;3;12608;F32;;T1 Reverse Active Energy;;1;0;;4
+53;3;12864;F32;;T2 Reverse Active Energy;;1;0;;4
+54;3;12360;F32;;L1 Reverse Active Energy;;1;0;;4
+55;3;12364;F32;;L2 Reverse Active Energy;;1;0;;4
+56;3;12368;F32;;L3 Reverse Active Energy;;1;0;;4
+57;3;12384;F32;;Total Reactive Energy;;1;0;;4
+58;3;12640;F32;;T1 Total Reactive Energy;;1;0;;4
+59;3;12896;F32;;T2 Total Reactive Energy;;1;0;;4
+60;3;12392;F32;;L1 Total Reactive Energy;;1;0;;4
+61;3;12396;F32;;L2 Total Reactive Energy;;1;0;;4
+62;3;12400;F32;;L3 Total Reactive Energy;;1;0;;4
+63;3;12416;F32;;Forward Reactive Energy;;1;0;;4
+64;3;12672;F32;;T1 Forward Reactive Energy;;1;0;;4
+65;3;12928;F32;;T2 Forward Reactive Energy;;1;0;;4
+66;3;12424;F32;;L1 Forward Reactive Energy;;1;0;;4
+67;3;12428;F32;;L2 Forward Reactive Energy;;1;0;;4
+68;3;12432;F32;;L3 Forward Reactive Energy;;1;0;;4
+69;3;12448;F32;;Reverse Reactive Energy;;1;0;;4
+70;3;12704;F32;;T1 Reverse Reactive Energy;;1;0;;4
+71;3;12960;F32;;T2 Reverse Reactive Energy;;1;0;;4
+72;3;12456;F32;;L1 Reverse Reactive Energy;;1;0;;4
+73;3;12460;F32;;L2 Reverse Reactive Energy;;1;0;;4
+74;3;12464;F32;;L3 Reverse Reactive Energy;;1;0;;4

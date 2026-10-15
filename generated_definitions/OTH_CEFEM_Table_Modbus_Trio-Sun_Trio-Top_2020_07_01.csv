@@ -1,0 +1,63 @@
+modbusRTU;Other;CEFEM;Table Modbus Trio-Sun Trio-Top;;;;;;;
+1;4;0;U16;;Numéro de fabrication;numro_de_fabrication;1.000000;0.000000;;4
+2;4;1;U16;;Numéro d'ordre;numro_dordre;1.000000;0.000000;;4
+3;4;2;U16;;Modèle;MODEL;1.000000;0.000000;;4
+4;4;3;U16;;Version de soft convertisseur DC1;version_de_soft_convertisseur_dc1;1.000000;0.000000;;4
+5;4;4;U16;;Version de soft convertisseur DC2;version_de_soft_convertisseur_dc2;1.000000;0.000000;;4
+6;4;5;U16;;Version de Soft Onduleur;version_de_soft_onduleur;1.000000;0.000000;;4
+7;4;6;U16;;Version de Soft IHM;version_de_soft_ihm;1.000000;0.000000;;4
+8;4;7;U16;;Registre de status;registre_de_status;1.000000;0.000000;;4
+9;4;8;U16;;Registre de défauts;registre_de_dfauts;1.000000;0.000000;;4
+10;4;9;U16;;Tension panneaux DC1;tension_panneaux_dc1;1.000000;0.000000;;4
+11;4;10;U16;;Puissance panneaux DC1;puissance_panneaux_dc1;1.000000;0.000000;;4
+12;4;11;U16;;Tension panneaux DC2;tension_panneaux_dc2;1.000000;0.000000;;4
+13;4;12;U16;;Puissance panneaux DC2;puissance_panneaux_dc2;1.000000;0.000000;;4
+14;4;13;U16;;Tension Phase A;tension_phase_a;1.000000;0.000000;;4
+15;4;14;U16;;Tension Phase B;tension_phase_b;1.000000;0.000000;;4
+16;4;15;U16;;Tension Phase C;tension_phase_c;1.000000;0.000000;;4
+17;4;16;U16;;Facteur de puissance;PF;1.000000;0.000000;;4
+18;4;17;U16;;Puissance de sortie de l'onduleur;puissance_de_sortie_de_londuleur;1.000000;0.000000;;4
+19;4;18;U16;;Production journalière;production_journalire;1.000000;0.000000;;4
+20;4;19;U16;;Secondes et minutes;secondes_et_minutes;1.000000;0.000000;;4
+21;4;20;U16;;Heures et jour de la semaine;heures_et_jour_de_la_semaine;1.000000;0.000000;;4
+22;4;21;U16;;Mois et jour du mois;mois_et_jour_du_mois;1.000000;0.000000;;4
+23;4;22;U16;;Années;annes;1.000000;0.000000;;4
+24;4;23;U16;;Température ambiante et DC1;temprature_ambiante_et_dc1;1.000000;0.000000;;4
+25;4;24;U16;;Température DC2 et Onduleur;temprature_dc2_et_onduleur;1.000000;0.000000;;4
+26;4;25;U16;;Entrée analogique 1;entre_analogique_1;1.000000;0.000000;;4
+27;4;26;U16;;Entrée analogique 2;entre_analogique_2;1.000000;0.000000;;4
+28;4;27;U16;;Registre de défauts 2;registre_de_dfauts_2;1.000000;0.000000;;4
+29;4;28;U16;;Production journalière ( En Wh);production_journalire_en_wh;1.000000;0.000000;;4
+30;4;29;U16;;Production journalière ( En Wh);production_journalire_en_wh_1;1.000000;0.000000;;4
+31;4;30;U16;;Numéro de fabrication 2;numro_de_fabrication_2;1.000000;0.000000;;4
+32;4;31;U16;;Limitationde puissance de l'onduleur  (En Watts);limitationde_puissance_de_londuleur_en_watts;1.000000;0.000000;;4
+33;3;0;U16;;Numéro de fabrication;numro_de_fabrication_1;1.000000;0.000000;;1
+34;3;1;U16;;Numéro d'ordre;numro_dordre_1;1.000000;0.000000;;1
+35;3;2;U16;;Modèle;modle;1.000000;0.000000;;1
+36;3;3;U16;;Version de soft convertisseur DC1;version_de_soft_convertisseur_dc1_1;1.000000;0.000000;;1
+37;3;4;U16;;Version de soft convertisseur DC2;version_de_soft_convertisseur_dc2_1;1.000000;0.000000;;1
+38;3;5;U16;;Version de Soft Onduleur;version_de_soft_onduleur_1;1.000000;0.000000;;1
+39;3;6;U16;;Version de Soft IHM;version_de_soft_ihm_1;1.000000;0.000000;;1
+40;3;7;U16;;Registre de status;registre_de_status_1;1.000000;0.000000;;1
+41;3;8;U16;;Registre de défauts;registre_de_dfauts_1;1.000000;0.000000;;1
+42;3;9;U16;;Tension panneaux DC1;tension_panneaux_dc1_1;1.000000;0.000000;;1
+43;3;10;U16;;Puissance panneaux DC1;puissance_panneaux_dc1_1;1.000000;0.000000;;1
+44;3;11;U16;;Tension panneaux DC2;tension_panneaux_dc2_1;1.000000;0.000000;;1
+45;3;12;U16;;Puissance panneaux DC2;puissance_panneaux_dc2_1;1.000000;0.000000;;1
+46;3;13;U16;;Tension Phase A;tension_phase_a_1;1.000000;0.000000;;1
+47;3;14;U16;;Tension Phase B;tension_phase_b_1;1.000000;0.000000;;1
+48;3;15;U16;;Tension Phase C;tension_phase_c_1;1.000000;0.000000;;1
+49;3;16;U16;;Facteur de puissance;facteur_de_puissance;1.000000;0.000000;;1
+50;3;17;U16;;Puissance de sortie de l'onduleur;puissance_de_sortie_de_londuleur_1;1.000000;0.000000;;1
+51;3;18;U16;;Production journalière;production_journalire_1;1.000000;0.000000;;1
+52;3;19;U16;;Secondes et minutes;secondes_et_minutes_1;1.000000;0.000000;;1
+53;3;20;U16;;Heures et jour de la semaine;heures_et_jour_de_la_semaine_1;1.000000;0.000000;;1
+54;3;21;U16;;Mois et jour du mois;mois_et_jour_du_mois_1;1.000000;0.000000;;1
+55;3;22;U16;;Années;annes_1;1.000000;0.000000;;1
+56;3;23;U16;;Température ambiante et DC1;temprature_ambiante_et_dc1_1;1.000000;0.000000;;1
+57;3;24;U16;;Température DC2 et Onduleur;temprature_dc2_et_onduleur_1;1.000000;0.000000;;1
+58;3;25;U16;;Entrée analogique 1;entre_analogique_1_1;1.000000;0.000000;;1
+59;3;26;U16;;Entrée analogique 2;entre_analogique_2_1;1.000000;0.000000;;1
+60;3;27;U16;;Registre de défauts 2;registre_de_dfauts_2_1;1.000000;0.000000;;1
+61;3;28;U16;;Production journalière ( En Wh);production_journalire_en_wh_2;1.000000;0.000000;;1
+62;3;29;U16;;Production journalière ( En Wh);production_journalire_en_wh_3;1.000000;0.000000;;1

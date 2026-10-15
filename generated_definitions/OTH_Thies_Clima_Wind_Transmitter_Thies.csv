@@ -1,0 +1,92 @@
+modbusRTU;Other;Thies Clima;Wind_Transmitter_Thies;;;;;;;
+1;4;30001;U32;;Instantaneous value of the wind velocity;instantaneous_value_of_the_wind_velocity;0.100000;0.000000;m/s;4
+2;4;30003;U32;;Current average value of the wind velocity;current_average_value_of_the_wind_velocity;0.100000;0.000000;m/s;4
+3;4;30005;U32;;Instantaneous value of the wind velocity, calculated with the standard curve;instantaneous_value_of_the_wind_velocity_calculated_with_the_standard_curve;0.100000;0.000000;m/s;4
+4;4;30007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (35007) 1;current_standard_deviation_of_the_wind_velocity_calculated_with_the_current_calibration_table_35007_1;0.100000;0.000000;m/s;4
+5;4;30009;U32;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (35009) 1;current_minimum_value_of_the_wind_velocity_of_the_last_1min_calculated_with_the_current_calibration_table_35009_1;0.100000;0.000000;m/s;4
+6;4;30011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table (35011)1;current_gust_of_the_wind_velocity_of_the_last_1min_calculated_with_the_current_calibration_table_350111;0.100000;0.000000;m/s;4
+7;4;30013;U32;;Wind velocity8  (compensated for air pressure) (35013)1;wind_velocity8_compensated_for_air_pressure_350131;0.010000;0.000000;m/s;4
+8;4;30403;I32;;Housing interior temperature of the wind transmitter (35019) 1;housing_interior_temperature_of_the_wind_transmitter_35019_1;0.100000;0.000000;°C;4
+9;4;30801;U32;;Absolute air pressure (35021)1;absolute_air_pressure_350211;0.010000;0.000000;hPa;4
+10;4;30803;U32;;Relative air pressure (35023)1;relative_air_pressure_350231;0.010000;0.000000;hPa;4
+11;4;34811;U32;;32-bit sensor status in hexadecimal representation;v_32bit_sensor_status_in_hexadecimal_representation;1.000000;0.000000;;4
+12;4;34813;U32;;Main loop run per 1s (35027)1;main_loop_run_per_1s_350271;1.000000;0.000000;1/s;4
+13;4;34815;U32;;Operating time (35029) 1;operating_time_35029_1;1.000000;0.000000;s;4
+14;4;34819;I32;;Inclination value ? Angle between the Z-axis and the vertical (35031)1;inclination_value_angle_between_the_zaxis_and_the_vertical_350311;0.100000;0.000000;°;4
+15;4;34821;I32;;Inclination value ? Angle between the X-axis and the horizontal;inclination_value_angle_between_the_xaxis_and_the_horizontal;0.100000;0.000000;°;4
+16;4;34823;I32;;Inclination value ? Angle between the Y-axis and the horizontal;inclination_value_angle_between_the_yaxis_and_the_horizontal;0.100000;0.000000;°;4
+17;4;34825;U32;;Frequency vibration measurement, X-axis (35037) 1;frequency_vibration_measurement_xaxis_35037_1;0.010000;0.000000;Hz;4
+18;4;34827;U32;;Acceleration vibration measurement, X-axis (35039) 1;acceleration_vibration_measurement_xaxis_35039_1;1.000000;0.000000;mg;4
+19;4;34829;U32;;Frequency vibration measurement, Y-axis (35041) 1;frequency_vibration_measurement_yaxis_35041_1;0.010000;0.000000;Hz;4
+20;4;34831;U32;;Acceleration vibration measurement, Y-axis (35043) 1;acceleration_vibration_measurement_yaxis_35043_1;1.000000;0.000000;mg;4
+21;4;34833;U32;;Frequency vibration measurement, Z-axis (35045) 1;frequency_vibration_measurement_zaxis_35045_1;0.010000;0.000000;Hz;4
+22;4;34835;U32;;Acceleration vibration measurement, Z-axis (35047)1;acceleration_vibration_measurement_zaxis_350471;1.000000;0.000000;mg;4
+23;4;35001;U32;;Instantaneous value of the wind velocity, calculated with the current calibration table. When there is no calibration table existing the calculated measuring value of the standard characteristic curve is output. (30001)1;instantaneous_value_of_the_wind_velocity_calculated_with_the_current_calibration_table_when_there_is_no_calibration_table_existing_the_calculated_measuring_value_of_the_standard_characteristic_curve_is_output_300011;0.100000;0.000000;m/s;4
+24;4;35003;U32;;Current average value of the wind velocity, calculated according command MS;current_average_value_of_the_wind_velocity_calculated_according_command_ms;0.100000;0.000000;m/s;4
+25;4;35005;U32;;Instantaneous value of the wind velocity, calculated with the standard curve (30005) 1;instantaneous_value_of_the_wind_velocity_calculated_with_the_standard_curve_30005_1;0.100000;0.000000;m/s;4
+26;4;35007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (30007) 1;current_standard_deviation_of_the_wind_velocity_calculated_with_the_current_calibration_table_30007_1;0.100000;0.000000;m/s;4
+27;4;35009;U32;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (30009) 1;current_minimum_value_of_the_wind_velocity_of_the_last_1min_calculated_with_the_current_calibration_table_30009_1;0.100000;0.000000;m/s;4
+28;4;35011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table;current_gust_of_the_wind_velocity_of_the_last_1min_calculated_with_the_current_calibration_table;0.100000;0.000000;m/s;4
+29;4;35013;U32;;Wind velocity8  (compensated for air pressure);wind_velocity8_compensated_for_air_pressure;0.010000;0.000000;m/s;4
+30;4;35019;I32;;Housing interior temperature of the wind transmitter;housing_interior_temperature_of_the_wind_transmitter;0.100000;0.000000;°C;4
+31;4;35021;U32;;Absolute air pressure;absolute_air_pressure;0.010000;0.000000;hPa;4
+32;4;35023;U32;;Relative air pressure (30803) 1;relative_air_pressure_30803_1;0.010000;0.000000;hPa;4
+33;4;35025;U32;;Sensor status_2;sensor_status_2;1.000000;0.000000;;4
+34;4;35027;U32;;Main loop run per 1s;main_loop_run_per_1s;1.000000;0.000000;1/s;4
+35;4;35029;U32;;Operating time after reset;operating_time_after_reset;1.000000;0.000000;s;4
+36;4;35031;I32;;Inclination value ? Angle between the Z-axis and the vertical (34819) 1;inclination_value_angle_between_the_zaxis_and_the_vertical_34819_1;0.100000;0.000000;°;4
+37;4;35033;I32;;Angle between the X-axis and the horizontal;angle_between_the_xaxis_and_the_horizontal;0.100000;0.000000;°;4
+38;4;35035;I32;;Angle between the Y-axis and the horizontal;angle_between_the_yaxis_and_the_horizontal;0.100000;0.000000;°;4
+39;4;35037;U32;;Frequency vibration measurement, X-axis (34825) 1;frequency_vibration_measurement_xaxis_34825_1;0.100000;0.000000;Hz;4
+40;4;35039;U32;;Acceleration vibration measurement, X-axis;acceleration_vibration_measurement_xaxis;1.000000;0.000000;mg;4
+41;4;35041;U32;;Frequency vibration measurement, Y-axis;frequency_vibration_measurement_yaxis;0.100000;0.000000;Hz;4
+42;4;35043;U32;;Acceleration vibration measurement, Y-axis (34831) 1;acceleration_vibration_measurement_yaxis_34831_1;1.000000;0.000000;mg;4
+43;4;35045;U32;;Frequency vibration measurement, Z-axis (34833) 1;frequency_vibration_measurement_zaxis_34833_1;0.100000;0.000000;Hz;4
+44;4;35047;U32;;Acceleration vibration measurement, Z-axis (34835)1;acceleration_vibration_measurement_zaxis_348351;1.000000;0.000000;mg;4
+45;4;35049;U32;;Measured frequency9;measured_frequency9;0.100000;0.000000;Hz;4
+46;4;35051;U64;;Number of revolutions of the cup star;number_of_revolutions_of_the_cup_star;1.000000;0.000000;;4
+47;4;35055;U32;;Operating hours;operating_hours;1.000000;0.000000;h;4
+48;4;35057;U32;;Degree of turbulence;degree_of_turbulence;0.010000;0.000000;;4
+49;4;35059;I32;;Temperature of the pressure sensor;temperature_of_the_pressure_sensor;0.100000;0.000000;°C;4
+50;4;35100;U32;;Time since the last measured value query;time_since_the_last_measured_value_query;1.000000;0.000000;ms;4
+51;4;35102;U16;;Measured value2  [0] (most recent) according to UC;measured_value2_0_most_recent_according_to_uc;0.100000;0.000000;m/s;4
+52;4;35103;U16;;Measured value2  [1] according to UC;measured_value2_1_according_to_uc;0.100000;0.000000;m/s;4
+53;4;35104;U16;;Measured value2  [2] according to UC;measured_value2_2_according_to_uc;0.100000;0.000000;m/s;4
+54;4;35105;U16;;Measured value2  [3] according to UC;measured_value2_3_according_to_uc;0.100000;0.000000;m/s;4
+55;4;35106;U16;;Measured value2  [4] according to UC;measured_value2_4_according_to_uc;0.100000;0.000000;m/s;4
+56;4;35107;U16;;Measured value2  [5] according to UC;measured_value2_5_according_to_uc;0.100000;0.000000;m/s;4
+57;4;35108;U16;;Measured value2  [6] according to UC;measured_value2_6_according_to_uc;0.100000;0.000000;m/s;4
+58;4;35109;U16;;Measured value2  [7] according to UC;measured_value2_7_according_to_uc;0.100000;0.000000;m/s;4
+59;4;35110;U16;;Measured value2  [8] according to UC;measured_value2_8_according_to_uc;0.100000;0.000000;m/s;4
+60;4;35111;U16;;Measured value2  [9] according to UC;measured_value2_9_according_to_uc;0.100000;0.000000;m/s;4
+61;4;35112;U16;;Measured value2  [10] according to UC;measured_value2_10_according_to_uc;0.100000;0.000000;m/s;4
+62;4;35113;U16;;Measured value2  [11] according to UC;measured_value2_11_according_to_uc;0.100000;0.000000;m/s;4
+63;4;35114;U16;;Measured value2  [12] according to UC;measured_value2_12_according_to_uc;0.100000;0.000000;m/s;4
+64;4;35115;U16;;Measured value2  [13] according to UC;measured_value2_13_according_to_uc;0.100000;0.000000;m/s;4
+65;4;35116;U16;;Measured value2  [14] according to UC;measured_value2_14_according_to_uc;0.100000;0.000000;m/s;4
+66;4;35117;U16;;Measured value2  [15] (oldest) ac- cording to UC;measured_value2_15_oldest_ac_cording_to_uc;0.100000;0.000000;m/s;4
+67;4;36001;U32;;Wind speed Uncorrected5  (30005) 1;wind_speed_uncorrected5_30005_1;0.100000;0.000000;m/s;4
+68;4;36003;U32;;Wind speed 3;wind_speed_3;0.100000;0.000000;m/s;4
+69;4;36005;U32;;Wind speed 8  (compensated for air pressure, 30013)1;wind_speed_8_compensated_for_air_pressure_300131;0.010000;0.000000;m/s;4
+70;4;36007;U32;;Sensor status (34811)1;sensor_status_348111;1.000000;0.000000;;4
+71;4;36101;U32;;Wind speed 5;wind_speed_5;0.100000;0.000000;m/s;4
+72;4;36103;U32;;Wind speed 3_1;wind_speed_3_1;0.100000;0.000000;m/s;4
+73;4;36105;U32;;Wind speed 8  (compensated for air pressure, 300131);wind_speed_8_compensated_for_air_pressure_300131_1;0.010000;0.000000;m/s;4
+74;4;36107;U32;;Absolute air pressure_1;absolute_air_pressure_1;0.010000;0.000000;hPa;4
+75;4;36109;U32;;Sensor status_1;sensor_status_1;1.000000;0.000000;;4
+76;4;36201;U32;;Wind speed 5_1;wind_speed_5_1;0.100000;0.000000;m/s;4
+77;4;36203;U32;;Wind speed 3_2;wind_speed_3_2;0.100000;0.000000;m/s;4
+78;4;36205;U32;;Wind speed 8  (compensated for air pressure);wind_speed_8_compensated_for_air_pressure;0.010000;0.000000;m/s;4
+79;4;36207;U32;;Absolute air pressure (30801) 1;absolute_air_pressure_30801_1;0.010000;0.000000;hPa;4
+80;4;36209;I32;;Inclination angle ? Angle be- tween the Z-axis and the vertical (34819)1;inclination_angle_angle_be_tween_the_zaxis_and_the_vertical_348191;0.100000;0.000000;°;4
+81;4;36211;I32;;Inclination angle ?;inclination_angle;0.100000;0.000000;°;4
+82;4;36213;I32;;Angle between the Y-axis and the horizontal plane;angle_between_the_yaxis_and_the_horizontal_plane;0.100000;0.000000;°;4
+83;4;36215;U32;;Frequency vibration measure- ment, x-axis;frequency_vibration_measure_ment_xaxis;0.010000;0.000000;Hz;4
+84;4;36217;U32;;Acceleration, x-axis;acceleration_xaxis;1.000000;0.000000;mg;4
+85;4;36219;U32;;Frequency vibration measure- ment, y-axis;frequency_vibration_measure_ment_yaxis;0.010000;0.000000;Hz;4
+86;4;36221;U32;;Acceleration, y-axis;acceleration_yaxis;1.000000;0.000000;mg;4
+87;4;36223;U32;;Frequency vibration measure- ment, z-axis;frequency_vibration_measure_ment_zaxis;0.010000;0.000000;Hz;4
+88;4;36225;U32;;Acceleration, z-axis;acceleration_zaxis;1.000000;0.000000;mg;4
+89;4;36227;U32;;Sensor status;sensor_status;1.000000;0.000000;;4
+90;3;40005;U32;;Set Baud Rate;set_baud_rate;1.000000;0.000000;;4
+91;3;40009;U32;;Set password;set_password;1.000000;0.000000;;4

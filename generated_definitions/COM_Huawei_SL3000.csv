@@ -1,0 +1,83 @@
+Modbus;Logger;Huawei;SL3000
+1;3;40000;U32;;Date_Time;;1.0;0.0;Epoch;4
+2;3;40002;U32;;City;;1.0;0.0;;4
+3;3;40004;U16;;Daylight Saving Time (DST;;1.0;0.0;;4
+4;3;40005;I32;;Time Zone;;1.0;0.0;s;4
+5;3;40007;U16;;DST state;;1.0;0.0;;4
+6;3;40008;U16;;DST offset;;1.0;0.0;;4
+7;3;40009;U32;;The Local Time;;1.0;0.0;Epoch;4
+8;3;40200;U16;;Power On;CMD_ON;1.0;0.0;;4
+9;3;40201;U16;;Power Off;CMD_OFF;1.0;0.0;;4
+10;3;40204;U16;;Transfer trip;;1.0;0.0;;4
+11;3;40205;U16;;Array reset;;1.0;0.0;;4
+12;3;40420;U32;;ActiveAdjustment;CMD_P_AC_SET_PERCENT;0.1;0.0;kW;4
+13;3;40422;I32;;ReactiveAdjustment;;0.1;0.0;kVar;4
+14;3;40424;U32;;ActiveAdjustment_2;;0.1;0.0;kW;4
+15;3;40426;I32;;ReactiveAdjustment_2;;0.1;0.0;kVar;4
+16;3;40428;U16;;Active power adjustment by percentage;P_AC;0.1;0.0;%;4
+17;3;40429;I16;;Power factor adjustment;PF;0.001;0.0;;4
+18;3;40500;I16;;DC Current;I_DC;0.1;0.0;A;4
+19;3;40521;U32;;Input power;P_DC;0.001;0.0;kW;4
+20;3;40523;U32;;CO2 reduction;;0.1;0.0;kg;4
+21;3;40525;I32;;Active power;;0.001;0.0;kW;4
+22;3;40532;I16;;Power Factor;;0.001;0.0;;4
+23;3;40543;U16;;Plant status;;1.0;0.0;;4
+24;3;40544;I32;;Reactive power;Q_AC;0.001;0.0;;4
+25;3;40550;U64;;CO2 reduction_1;;0.01;0.0;kg;4
+26;3;40554;I32;;DC Current 2;;0.1;0.0;A;4
+27;3;40560;U32;;E-Total;E_TOT;0.1;0.0;kWh;4
+28;3;40562;U32;;E-Daily;E_DAY;0.1;0.0;kWh;4
+29;3;40564;U32;;Duration of daily power generation;;0.1;0.0;h;4
+30;3;40566;U16;;Plant status_1;;1.0;0.0;;4
+31;3;40567;U16;;Plant status_2;;1.0;0.0;;4
+32;3;40568;U32;;Active alarm sequence number;;1.0;0.0;;4
+33;3;40570;U32;;Historical alarm sequence number;;1.0;0.0;;4
+34;3;40572;I16;;Phase A current;I_AC_1;0.001;0.0;A;4
+35;3;40573;I16;;Phase B current;I_AC_2;0.001;0.0;A;4
+36;3;40574;I16;;Phase C current;I_AC_3;0.001;0.0;A;4
+37;3;40575;U16;;Uab;;0.1;0.0;V;4
+38;3;40576;U16;;Ubc;;0.1;0.0;V;4
+39;3;40577;U16;;Uca;;0.1;0.0;V;4
+40;3;40685;U16;;Inverter efficiency;;0.01;0.0;%;4
+41;3;40693;U32;;Max. reactive adjustment;;0.01;0.0;kVar;4
+42;3;40695;I32;;Min. reactive adjustment;;0.01;0.0;kVar;4
+43;3;40697;U32;;Max. active adjustment;;0.01;0.0;kW;4
+44;3;40699;U16;;Locked;;1.0;0.0;;4
+45;3;40700_0_1;BITS;;DI Status _ DI 1;;1.0;0.0;;4
+46;3;40700_1_1;BITS;;DI Status _ DI 2;;1.0;0.0;;4
+47;3;40700_2_1;BITS;;DI Status _ DI 3;;1.0;0.0;;4
+48;3;40700_3_1;BITS;;DI Status _ DI 4;;1.0;0.0;;4
+49;3;40700_4_1;BITS;;DI Status _ DI 5;;1.0;0.0;;4
+50;3;40700_5_1;BITS;;DI Status _ DI 6;;1.0;0.0;;4
+51;3;40700_6_1;BITS;;DI Status _ DI 7;;1.0;0.0;;4
+52;3;40700_7_1;BITS;;DI Status _ DI 8;;1.0;0.0;;4
+53;3;40713_10;STRING;;ESN;SERIAL;1.0;0.0;;4
+54;3;40723;U16;;System reset;;1.0;0.0;;4
+55;3;40724;U16;;Fast device access;;1.0;0.0;;4
+56;3;40736;U16;;Device access status;;1.0;0.0;;4
+57;3;40737;U16;;Active power control mode;;1.0;0.0;;4
+58;3;40738;U32;;Active power scheduling target value;;0.1;0.0;kW;4
+59;3;40740;U16;;Reactive power control mode;;1.0;0.0;;4
+60;3;40741;U16;;Reactive power scheduling curve mode;;1.0;0.0;;4
+61;3;40742;I32;;Reactive power scheduling target value;;0.1;0.0;kVar;4
+62;3;40802;U32;;Active scheduling percentage;;1.0;0.0;%;4
+63;3;41124;U16;;CO2 emission reduction coefficient;;0.001;0.0;kg/kWh;4
+64;3;41934;U32;;PV module capacity;;0.001;0.0;kW;4
+65;3;41936;U32;;Rated plant capacity;P_RATED;0.001;0.0;kW;4
+66;3;41938;U32;;Total rated capacity of grid connected inverters;;0.001;0.0;kW;4
+67;3;41940;U32;;Conversion coefficient;;0.001;0.0;;4
+68;3;41942;U16;;Communication status;;1.0;0.0;;4
+69;3;41947;U16;;Communication abnormal shutdown;;1.0;0.0;;4
+70;3;41948;U16;;Communication abnormal detection time;;1.0;0.0;s;4
+71;3;41949;U16;;Auto start upon communication recovery;;1.0;0.0;;4
+72;3;42017;U16;;The SystemTime_ year;;1.0;0.0;year;4
+73;3;42018;U16;;The SystemTime_ month;;1.0;0.0;month;4
+74;3;42019;U16;;The SystemTime_ day;;1.0;0.0;day;4
+75;3;42020;U16;;The SystemTime_ hour;;1.0;0.0;hours;4
+76;3;42021;U16;;The SystemTime_ minute;;1.0;0.0;minute;4
+77;3;42022;U16;;The SystemTime_ second;;1.0;0.0;s;4
+78;3;42150;U16;;Current error during scanning;;0.001;0.0;;4
+79;3;42730;U16;;Inspection;;1.0;0.0;;4
+80;3;42779;U16;;IV curve scanning;;1.0;0.0;;4
+81;3;50000;U16;;Alarm Info 1;;1.0;0.0;;4
+82;3;50001;U16;;Alarm Info 2;;1.0;0.0;;4

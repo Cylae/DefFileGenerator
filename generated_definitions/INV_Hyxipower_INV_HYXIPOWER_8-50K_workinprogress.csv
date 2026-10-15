@@ -1,0 +1,184 @@
+modbusRTU;Inverter;Hyxipower;INV_HYXIPOWER_8-50K_workinprog;;;;;;;
+1;4;1;U16;;Main DSP Version Low;main_dsp_version_low;1.000000;0.000000;;4
+2;4;2;U16;;Master DSP Version High;master_dsp_version_high;1.000000;0.000000;;4
+3;4;10;U16;;Slave DSP Version Low;slave_dsp_version_low;1.000000;0.000000;;4
+4;4;11;U16;;Slave DSP Version High;slave_dsp_version_high;1.000000;0.000000;;4
+5;4;19;I16;;Inverter Side Temperature;inverter_side_temperature;0.100000;0.000000;Degr.Celsius;4
+6;4;20;I16;;Boost Temperature;boost_temperature;0.100000;0.000000;Degr.Celsius;4
+7;4;21;I16;;DSP Temperature;dsp_temperature;0.100000;0.000000;Degr.Celsius;4
+8;4;22;U16;;System Operating Status;system_operating_status;1.000000;0.000000;;4
+9;4;27;U16;;Iso Insulation Resistance;iso_insulation_resistance;1.000000;0.000000;k/ohm;4
+10;4;28;U16;;Leakage Current Value;leakage_current_value;1.000000;0.000000;mA;4
+11;4;35;U16;;Shutdown Error;shutdown_error;1.000000;0.000000;;4
+12;4;36;U16;;Hardware Fault Word 1;hardware_fault_word_1;1.000000;0.000000;;4
+13;4;37;U16;;Hardware Fault Word 2;hardware_fault_word_2;1.000000;0.000000;;4
+14;4;38;U16;;Software Fault Word 1;software_fault_word_1;1.000000;0.000000;;4
+15;4;39;U16;;Software Fault Word 2;software_fault_word_2;1.000000;0.000000;;4
+16;4;40;U16;;Software Fault Word 3;software_fault_word_3;1.000000;0.000000;;4
+17;4;41;U16;;Software Fault Word 4;software_fault_word_4;1.000000;0.000000;;4
+18;4;43;U16;;Software Fault Word 6;software_fault_word_6;1.000000;0.000000;;4
+19;4;44;U16;;Software Alarm Word 1;software_alarm_word_1;1.000000;0.000000;;4
+20;4;45;U16;;Software Alarm Word 2;software_alarm_word_2;1.000000;0.000000;;4
+21;4;46;U16;;Software Alarm Word 3;software_alarm_word_3;1.000000;0.000000;;4
+22;4;300;U16;;Phase A Grid Voltage;phase_a_grid_voltage;0.010000;0.000000;V;4
+23;4;301;U16;;Phase B Grid Voltage;phase_b_grid_voltage;0.010000;0.000000;V;4
+24;4;302;U16;;Phase C Grid Voltage;phase_c_grid_voltage;0.010000;0.000000;V;4
+25;4;303;U16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;4
+26;4;311;U16;;Phase A Current;phase_a_current;0.010000;0.000000;A;4
+27;4;312;U16;;Phase B Current;phase_b_current;0.010000;0.000000;A;4
+28;4;313;U16;;Phase C Current;phase_c_current;0.010000;0.000000;A;4
+29;4;316;U16;;Grid Active Power;P_AC;1.000000;0.000000;W;4
+30;4;317;I16;;Grid Reactive Power;grid_reactive_power;1.000000;0.000000;Var;4
+31;4;318;U16;;Grid Apparent Power;grid_apparent_power;1.000000;0.000000;kVA;4
+32;4;319;I16;;Grid Power Factor;grid_power_factor;0.001000;0.000000;;4
+33;4;604;I16;;PV1 Voltage;pv1_voltage;0.100000;0.000000;V;4
+34;4;605;I16;;PV1 Current;pv1_current;0.100000;0.000000;A;4
+35;4;606;U16;;PV1 Power;pv1_power;1.000000;0.000000;W;4
+36;4;610;I16;;PV2 Voltage;pv2_voltage;0.100000;0.000000;V;4
+37;4;611;I16;;PV2 Current;pv2_current;0.100000;0.000000;A;4
+38;4;612;U16;;PV2 Power;pv2_power;1.000000;0.000000;W;4
+39;4;616;I16;;PV3 Voltage;pv3_voltage;0.100000;0.000000;V;4
+40;4;617;I16;;PV3 Current;pv3_current;0.100000;0.000000;A;4
+41;4;618;U16;;PV3 Power;pv3_power;1.000000;0.000000;W;4
+42;4;622;I16;;PV4 Voltage;pv4_voltage;0.100000;0.000000;V;4
+43;4;623;I16;;PV4 Current;pv4_current;0.100000;0.000000;A;4
+44;4;624;U16;;PV4 Power;pv4_power;1.000000;0.000000;W;4
+45;4;628;I16;;PV5 Voltage;pv5_voltage;0.100000;0.000000;V;4
+46;4;629;I16;;PV5 Current;pv5_current;0.100000;0.000000;A;4
+47;4;630;U16;;PV5 Power;pv5_power;1.000000;0.000000;W;4
+48;4;634;I16;;PV6 Voltage;pv6_voltage;0.100000;0.000000;V;4
+49;4;635;I16;;PV6 Current;pv6_current;0.100000;0.000000;A;4
+50;4;636;U16;;PV6 Power;pv6_power;1.000000;0.000000;W;4
+51;4;640;I16;;PV7 Voltage;pv7_voltage;0.100000;0.000000;V;4
+52;4;641;I16;;PV7 Current;pv7_current;0.100000;0.000000;A;4
+53;4;642;U16;;PV7 Power;pv7_power;1.000000;0.000000;W;4
+54;4;646;I16;;PV8 Voltage;pv8_voltage;0.100000;0.000000;V;4
+55;4;647;I16;;PV8 Current;pv8_current;0.100000;0.000000;A;4
+56;4;648;U16;;PV8 Power;pv8_power;1.000000;0.000000;W;4
+57;4;685;U16;;PV Quantity;pv_quantity;1.000000;0.000000;;4
+58;4;1000;U16;;BL Program Version;bl_program_version;1.000000;0.000000;;4
+59;4;1001;U32;;Main Program Version;main_program_version;1.000000;0.000000;;4
+60;4;1007_8;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+61;4;1011;U32;;System Time;system_time;1.000000;0.000000;s;1
+62;4;1042;U16;;Fault Bit Device;fault_bit_device;1.000000;0.000000;;4
+63;4;1044;U16;;AFCI Version Number;afci_version_number;1.000000;0.000000;;4
+64;4;1118;U16;;Daily Energy PV1;daily_energy_pv1;0.100000;0.000000;kWh;4
+65;4;1119;U16;;Daily Energy PV2;daily_energy_pv2;0.100000;0.000000;kWh;4
+66;4;1120;U16;;Daily Energy PV3;daily_energy_pv3;0.100000;0.000000;kWh;4
+67;4;1121;U16;;Daily Energy PV4;daily_energy_pv4;0.100000;0.000000;kWh;4
+68;4;1122;U16;;Daily Energy PV5;daily_energy_pv5;0.100000;0.000000;kWh;4
+69;4;1123;U16;;Daily Energy PV6;daily_energy_pv6;0.100000;0.000000;kWh;4
+70;4;1124;U16;;Daily Energy PV7;daily_energy_pv7;0.100000;0.000000;kWh;4
+71;4;1125;U16;;Daily Energy PV8;daily_energy_pv8;0.100000;0.000000;kWh;4
+72;4;1126;U16;;Daily Energy PV9;daily_energy_pv9;0.100000;0.000000;kWh;4
+73;4;1127;U16;;Daily Energy PV10;daily_energy_pv10;0.100000;0.000000;kWh;4
+74;4;1128;U32;;Phase A Cumul Energy;phase_a_cumul_energy;0.100000;0.000000;kWh;4
+75;4;1130;U32;;Phase B Cumul Energy;phase_b_cumul_energy;0.100000;0.000000;kWh;4
+76;4;1132;U32;;Phase C Cumul Energy;phase_c_cumul_energy;0.100000;0.000000;kWh;4
+77;4;1194;U32;;Total Cumul Energy;total_cumul_energy;0.100000;0.000000;kWh;4
+78;4;1500;U32;;Uni Main DSP Version;uni_main_dsp_version;1.000000;0.000000;;4
+79;4;1502;U32;;Uni Slave DSP Version;uni_slave_dsp_version;1.000000;0.000000;;4
+80;4;1504;I16;;Max Ambient Temp;max_ambient_temp;0.100000;0.000000;Degr.Celsius;4
+81;4;1505;I16;;Max AC Temp;max_ac_temp;0.100000;0.000000;Degr.Celsius;4
+82;4;1506;I16;;Max DC Temp;max_dc_temp;0.100000;0.000000;Degr.Celsius;4
+83;4;1507;U16;;Grid Voltage Frequency;grid_voltage_frequency;0.010000;0.000000;Hz;4
+84;4;1508;U16;;A Phase Grid Voltage RMS;a_phase_grid_voltage_rms;0.100000;0.000000;V;4
+85;4;1509;U16;;B Phase Grid Voltage RMS;b_phase_grid_voltage_rms;0.100000;0.000000;V;4
+86;4;1510;U16;;C Phase Grid Voltage RMS;c_phase_grid_voltage_rms;0.100000;0.000000;V;4
+87;4;1511;U16;;AC Current A Phase RMS;ac_current_a_phase_rms;0.100000;0.000000;A;4
+88;4;1512;U16;;AC Current B Phase RMS;ac_current_b_phase_rms;0.100000;0.000000;A;4
+89;4;1513;U16;;AC Current C Phase RMS;ac_current_c_phase_rms;0.100000;0.000000;A;4
+90;4;1514;F32;;Grid Side Active Power;grid_side_active_power;1.000000;0.000000;kW;4
+91;4;1516;F32;;Grid Side Reactive Power;grid_side_reactive_power;1.000000;0.000000;kVar;4
+92;4;1518;F32;;Grid-side Apparent Power;gridside_apparent_power;1.000000;0.000000;kV;4
+93;4;1520;F32;;PV total power;E_TOT;1.000000;0.000000;kW;4
+94;4;1522;F32;;R-phase active power;rphase_active_power;1.000000;0.000000;kW;4
+95;4;1524;F32;;S-phase active power;sphase_active_power;1.000000;0.000000;kW;4
+96;4;1526;F32;;T-phase active power;tphase_active_power;1.000000;0.000000;kW;4
+97;4;1528;I16;;Grid-side Power Factor;gridside_power_factor;0.010000;0.000000;;4
+98;4;1529;U16;;DC Bus Voltage;dc_bus_voltage;0.100000;0.000000;V;4
+99;4;1530;U16;;System overall state machine;system_overall_state_machine;1.000000;0.000000;;4
+100;4;1531;U16;;Daily Power Generation;E_DAY;0.100000;0.000000;kWh;4
+101;4;1532;U16;;Phase A Daily Output;phase_a_daily_output;0.100000;0.000000;kWh;4
+102;4;1533;U16;;Phase B Daily Output;phase_b_daily_output;0.100000;0.000000;kWh;4
+103;4;1534;U16;;Phase C Daily Output;phase_c_daily_output;0.100000;0.000000;kWh;4
+104;4;1535;U16;;Rated Power;P_RATED;1.000000;0.000000;kW;4
+105;4;1536;U16;;Rated Frequency;rated_frequency;0.010000;0.000000;Hz;4
+106;4;1537;U16;;Rated Voltage;rated_voltage;1.000000;0.000000;V;4
+107;4;1538;U16;;Max Reactive Power;max_reactive_power;1.000000;0.000000;kVar;4
+108;4;1539;U16;;Country Code;country_code;1.000000;0.000000;;4
+109;4;1540;U16;;Protection File Ver;protection_file_ver;1.000000;0.000000;;4
+110;4;1541;U16;;Boost1 Voltage;boost1_voltage;0.100000;0.000000;V;4
+111;4;1542;I16;;Boost1 Current;boost1_current;0.100000;0.000000;A;4
+112;4;1543;U32;;Boost1 Power;boost1_power;1.000000;0.000000;W;4
+113;4;1545;U16;;Boost2 Voltage;boost2_voltage;0.100000;0.000000;V;4
+114;4;1546;I16;;Boost2 Current;boost2_current;0.100000;0.000000;A;4
+115;4;1547;U32;;Boost2 Power;boost2_power;1.000000;0.000000;W;4
+116;4;1549;U16;;Boost3 Voltage;boost3_voltage;0.100000;0.000000;V;4
+117;4;1550;I16;;Boost3 Current;boost3_current;0.100000;0.000000;A;4
+118;4;1551;U32;;Boost3 Power;boost3_power;1.000000;0.000000;W;4
+119;4;1553;U16;;Boost4 Voltage;boost4_voltage;0.100000;0.000000;V;4
+120;4;1554;I16;;Boost4 Current;boost4_current;0.100000;0.000000;A;4
+121;4;1555;U32;;Boost4 Power;boost4_power;1.000000;0.000000;W;4
+122;4;1557;U16;;Boost5 Voltage;boost5_voltage;0.100000;0.000000;V;4
+123;4;1558;I16;;Boost5 Current;boost5_current;0.100000;0.000000;A;4
+124;4;1559;U32;;Boost5 Power;boost5_power;1.000000;0.000000;W;4
+125;4;1561;U16;;Boost6 Voltage;boost6_voltage;0.100000;0.000000;V;4
+126;4;1562;I16;;Boost6 Current;boost6_current;0.100000;0.000000;A;4
+127;4;1563;U32;;Boost6 Power;boost6_power;1.000000;0.000000;W;4
+128;4;1565;U16;;Boost7 Voltage;boost7_voltage;0.100000;0.000000;V;4
+129;4;1566;I16;;Boost7 Current;boost7_current;0.100000;0.000000;A;4
+130;4;1567;U32;;Boost7 Power;boost7_power;1.000000;0.000000;W;4
+131;4;1569;U16;;Boost8 Voltage;boost8_voltage;0.100000;0.000000;V;4
+132;4;1570;I16;;Boost8 Current;boost8_current;0.100000;0.000000;A;4
+133;4;1571;U32;;Boost8 Power;boost8_power;1.000000;0.000000;W;4
+134;4;1573;U16;;Boost9 Voltage;boost9_voltage;0.100000;0.000000;V;4
+135;4;1574;I16;;Boost9 Current;boost9_current;0.100000;0.000000;A;4
+136;4;1575;U32;;Boost9 Power;boost9_power;1.000000;0.000000;W;4
+137;4;1577;U16;;Boost10 Voltage;boost10_voltage;0.100000;0.000000;V;4
+138;4;1578;I16;;Boost10 Current;boost10_current;0.100000;0.000000;A;4
+139;4;1579;U32;;Boost10 Power;boost10_power;1.000000;0.000000;W;4
+140;4;1581;U16;;Map Hardware Fault 1;map_hardware_fault_1;1.000000;0.000000;;4
+141;4;1582;U16;;Map Hardware Fault 2;map_hardware_fault_2;1.000000;0.000000;;4
+142;4;1583;U16;;Map Software Fault 1;map_software_fault_1;1.000000;0.000000;;4
+143;4;1584;U16;;Map Software Fault 2;map_software_fault_2;1.000000;0.000000;;4
+144;4;1585;U16;;Map Software Fault 3;map_software_fault_3;1.000000;0.000000;;4
+145;4;1586;U16;;Map Software Fault 4;map_software_fault_4;1.000000;0.000000;;4
+146;4;1587;U16;;Map Software Fault 5;map_software_fault_5;1.000000;0.000000;;4
+147;4;1588;U16;;Map Software Fault 6;map_software_fault_6;1.000000;0.000000;;4
+148;4;1589;U16;;Map Soft Alarm 1;map_soft_alarm_1;1.000000;0.000000;;4
+149;4;1590;U16;;Map Soft Alarm 2;map_soft_alarm_2;1.000000;0.000000;;4
+150;4;1591;U16;;Map Soft Alarm 3;map_soft_alarm_3;1.000000;0.000000;;4
+151;4;1592;U16;;Map System L3 Fault 1;map_system_l3_fault_1;1.000000;0.000000;;4
+152;4;1593;U16;;Map System L3 Fault 2;map_system_l3_fault_2;1.000000;0.000000;;4
+153;4;1594;U16;;Map System L2 Fault 1;map_system_l2_fault_1;1.000000;0.000000;;4
+154;4;1595;U16;;Map System L2 Fault 2;map_system_l2_fault_2;1.000000;0.000000;;4
+155;4;1596;U16;;Map System L2 Fault 3;map_system_l2_fault_3;1.000000;0.000000;;4
+156;4;1597;U16;;Map System L2 Fault 4;map_system_l2_fault_4;1.000000;0.000000;;4
+157;4;1598;U16;;Map System L1 Fault 1;map_system_l1_fault_1;1.000000;0.000000;;4
+158;4;1599;U16;;Map System L1 Fault 2;map_system_l1_fault_2;1.000000;0.000000;;4
+159;4;1600;U16;;Map System L1 Fault 3;map_system_l1_fault_3;1.000000;0.000000;;4
+160;4;1601;U16;;Map System L1 Fault 4;map_system_l1_fault_4;1.000000;0.000000;;4
+161;4;1602;U16;;Map System L1 Fault 5;map_system_l1_fault_5;1.000000;0.000000;;4
+162;4;1603;U16;;Map System L0 Fault 1;map_system_l0_fault_1;1.000000;0.000000;;4
+163;4;1604;U16;;Map System L0 Fault 2;map_system_l0_fault_2;1.000000;0.000000;;4
+164;4;1605;U16;;CPLD Fault Word 1;cpld_fault_word_1;1.000000;0.000000;;4
+165;4;1606;U16;;CPLD Fault Word 2;cpld_fault_word_2;1.000000;0.000000;;4
+166;4;1607;U16;;PV Side L3 Fault 1;pv_side_l3_fault_1;1.000000;0.000000;;4
+167;4;1608;U16;;PV Side L3 Fault 2;pv_side_l3_fault_2;1.000000;0.000000;;4
+168;4;1609;U16;;PV Side L2 Fault 1;pv_side_l2_fault_1;1.000000;0.000000;;4
+169;4;1610;U16;;PV Side L2 Fault 2;pv_side_l2_fault_2;1.000000;0.000000;;4
+170;4;1611;U16;;PV Side L2 Fault 3;pv_side_l2_fault_3;1.000000;0.000000;;4
+171;4;1612;U16;;PV Side L2 Fault 4;pv_side_l2_fault_4;1.000000;0.000000;;4
+172;4;1613;U16;;PV Side L2 Fault 5;pv_side_l2_fault_5;1.000000;0.000000;;4
+173;4;1614;U16;;System L1 Fault 1;system_l1_fault_1;1.000000;0.000000;;4
+174;4;1615;U16;;System L1 Fault 2;system_l1_fault_2;1.000000;0.000000;;4
+175;4;1616;U16;;System L0 Fault 1;system_l0_fault_1;1.000000;0.000000;;4
+176;4;1617;U16;;System L0 Fault 2;system_l0_fault_2;1.000000;0.000000;;4
+177;4;1618;U16;;System L0 Fault 3;system_l0_fault_3;1.000000;0.000000;;4
+178;4;1619;U16;;System L0 Fault 4;system_l0_fault_4;1.000000;0.000000;;4
+179;3;5;U16;;Start/Stop Command;startstop_command;1.000000;0.000000;;4
+180;3;1055;U16;;Communication Address;communication_address;1.000000;0.000000;;4
+181;3;1057;U16;;Baud Rate;baud_rate;1.000000;0.000000;;4
+182;3;1078;U16;;Active Pwr Ctrl Pct;CMD_P_AC_SET_PERCENT;0.100000;0.000000;Percent;4
+183;3;1079;U16;;Active Pwr Ctrl Enable;CMD_P_ENA;1.000000;0.000000;;4

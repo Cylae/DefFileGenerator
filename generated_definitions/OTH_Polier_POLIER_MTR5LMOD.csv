@@ -1,0 +1,34 @@
+modbusRTU;Other;Polier;POLIER_MTR5LMOD;;;;;;;
+1;3;0;U16;;Com address;com_address;1.000000;0.000000;;4
+2;3;32784;U16;;Com address_1;com_address_1;0.000000;0.000000;;4
+3;3;1;U16;;Baudrate;baudrate;1.000000;0.000000;;4
+4;3;32785;U16;;Baudrate_1;baudrate_1;0.000000;0.000000;;4
+5;3;2;U16;;Frequency;FREQ;1.000000;0.000000;Hz;4
+6;3;3;U16;;Password;password;1.000000;0.000000;;4
+7;3;4;U16;;Serial number;SERIAL;1.000000;0.000000;;4
+8;3;5;U16;;Serial number_1;serial_number_1;1.000000;0.000000;;4
+9;3;4096;U32;;L1-N   PhaseA voltage;l1n_phasea_voltage;0.010000;0.000000;V;4
+10;3;4098;U32;;L2-N   PhaseB voltage;l2n_phaseb_voltage;0.010000;0.000000;V;4
+11;3;4100;U32;;L3-N   PhaseC voltage;l3n_phasec_voltage;0.010000;0.000000;V;4
+12;3;4108;U32;;PhaseA current;phasea_current;0.001000;0.000000;A;4
+13;3;4110;U32;;PhaseB current;phaseb_current;0.001000;0.000000;A;4
+14;3;4112;U32;;PhaseC current;phasec_current;0.001000;0.000000;A;4
+15;3;4114;U16;;ABC PF;abc_pf;0.001000;0.000000;;8
+16;3;4115;U16;;PhaseA PF;phasea_pf;0.001000;0.000000;;8
+17;3;4116;U16;;PhaseB PF;phaseb_pf;0.001000;0.000000;;8
+18;3;4117;U16;;PhaseC PF;phasec_pf;0.001000;0.000000;;4
+19;3;24576;U32;;ABC active power;abc_active_power;0.001000;0.000000;W;4
+20;3;24578;U32;;PhaseA active power;P_AC_1;0.100000;0.000000;W;4
+21;3;24580;U32;;PhaseB active power;P_AC_2;0.100000;0.000000;W;4
+22;3;24582;U32;;PhaseC active power;P_AC_3;0.100000;0.000000;W;4
+23;3;24584;U32;;ABC reactive power;abc_reactive_power;0.100000;0.000000;Var;4
+24;3;24586;U32;;PhaseA reactive power;phasea_reactive_power;0.100000;0.000000;Var;4
+25;3;24588;U32;;PhaseB reactive power;phaseb_reactive_power;0.100000;0.000000;Var;4
+26;3;24590;U32;;PhaseC reactive power;phasec_reactive_power;0.100000;0.000000;Var;4
+27;3;28672;U32;;Total active energy;P_AC;0.100000;0.000000;kWh;4
+28;3;28928;U32;;Total reactive energy;total_reactive_energy;0.100000;0.000000;kvarh;4
+29;3;32768;U16;;System Config.;system_config;0.100000;0.000000;;4
+30;3;32771;U16;;Remote control output;remote_control_output;0.100000;0.000000;;4
+31;3;32773;U32;;CT rate;ct_rate;0.100000;0.000000;;4
+32;3;32774;U32;;VT rate;vt_rate;0.100000;0.000000;;4
+33;3;32786;U16;;Parity;parity;1.000000;0.000000;;4

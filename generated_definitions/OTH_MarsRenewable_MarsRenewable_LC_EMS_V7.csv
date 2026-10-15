@@ -1,0 +1,13 @@
+modbusRTU;Other;MarsRenewable;MarsRenewable_LC_EMS_V7;;;;;;;
+1;4;0;U16;;LC Measurement Point Version Number;lc_measurement_point_version_number;1.000000;0.000000;;1
+2;4;1;U16;;LC PCS Number;lc_pcs_number;1.000000;0.000000;;1
+3;4;2;U16;;LC Bank Number;lc_bank_number;1.000000;0.000000;;1
+4;4;3;U16;;LC Rack Number;lc_rack_number;1.000000;0.000000;;1
+5;4;4;U16;;LC Meter Number;lc_meter_number;1.000000;0.000000;;1
+6;3;0;U16;;EMS Working Mode (0=autonomous, 1=remote control);ems_working_mode_0autonomous_1remote_control;1.000000;0.000000;;4
+7;3;1;I32;;Remote Control Duration;remote_control_duration;1.000000;0.000000;min;4
+8;3;3;U16;;Energy Storage Working Mode (0=grid constant power, 1=off-grid constant voltage, 2=stop);energy_storage_working_mode_0grid_constant_power_1offgrid_constant_voltage_2stop;1.000000;0.000000;;4
+9;3;4;I32;;Energy Storage Active Power (<0 discharge, >0 charge);energy_storage_active_power_0_discharge_0_charge;1.000000;0.000000;W;4
+10;3;6;I32;;Energy Storage Reactive Power (not supported);energy_storage_reactive_power_not_supported;1.000000;0.000000;Var;0
+11;3;8;U16;;AC Voltage (off-grid mode);ac_voltage_offgrid_mode;1.000000;0.000000;V;4
+12;3;9;U16;;AC Frequency (off-grid mode);ac_frequency_offgrid_mode;0.010000;0.000000;Hz;4

@@ -1,0 +1,41 @@
+modbusRTU;Other;EKO;MS80;;;;;;;
+1;3;0;U16;;Model;MODEL;1.000000;0.000000;;4
+2;3;2;F32;;Comp.Irr;compirr;1.000000;0.000000;W/m²;4
+3;3;14;F32;;X-axis tilt angle;xaxis_tilt_angle;1.000000;0.000000;degree;4
+4;3;16;F32;;Y-axis tilt angle;yaxis_tilt_angle;1.000000;0.000000;degree;4
+5;3;18;F32;;Raw.Irr;rawirr;1.000000;0.000000;W/m²;4
+6;3;20;F32;;ADmV;admv;1.000000;0.000000;mV;4
+7;3;22;F32;;Internal temperature;internal_temperature;1.000000;0.000000;C;4
+8;3;24;F32;;Internal humidity;internal_humidity;1.000000;0.000000;RH%;4
+9;3;96_4;STRING;;EKO;eko;1.000000;0.000000;;4
+10;3;98;U16;;Firmware version;firmware_version;1.000000;0.000000;;4
+11;3;99;U16;;Hardware version;hardware_version;1.000000;0.000000;;4
+12;3;100;U16;;Model;model;1.000000;0.000000;;4
+13;3;101;U16;;Modbus Address;modbus_address;1.000000;0.000000;;4
+14;3;102;U16;;Serial  communication setting;serial_communication_setting;1.000000;0.000000;;4
+15;3;103;U16;;Register Type;register_type;1.000000;0.000000;;4
+16;3;106;U16;;Setting  the  analog outputs;setting_the_analog_outputs;1.000000;0.000000;;4
+17;3;131;F32;;0-1V loading resistor;v_01v_loading_resistor;1.000000;0.000000;Ohm;4
+18;3;133;F32;;Irradiance (0-1Vmode 0V);irradiance_01vmode_0v;1.000000;0.000000;W/m 2;4
+19;3;135;F32;;Irradiance (0-1Vmode 1V);irradiance_01vmode_1v;1.000000;0.000000;W/m 2;4
+20;3;137;F32;;Irradiance (4-20mode 4mA);irradiance_420mode_4ma;1.000000;0.000000;W/m 2;4
+21;3;139;F32;;Irradiance (4-20mode 20mA);irradiance_420mode_20ma;1.000000;0.000000;W/m 2;4
+22;3;162;U32;;Date of manufacture;date_of_manufacture;1.000000;0.000000;;4
+23;3;164;U32;;Serial number;SERIAL;1.000000;0.000000;;4
+24;3;166_15;STRING;;Sensor name;sensor_name;1.000000;0.000000;;4
+25;3;182;F32;;L.Coeff.k1;lcoeffk1;1.000000;0.000000;;4
+26;3;184;F32;;L.Coeff.k2;lcoeffk2;1.000000;0.000000;;4
+27;3;186;F32;;L.Coeff.k3;lcoeffk3;1.000000;0.000000;;4
+28;3;188;F32;;L.Coeff.k4;lcoeffk4;1.000000;0.000000;;4
+29;3;190;U32;;Cal.Date;caldate;1.000000;0.000000;;4
+30;3;192;F32;;Cal.Value;calvalue;1.000000;0.000000;V/W*m-2;4
+31;3;200;U32;;Cal.Date history0;caldate_history0;1.000000;0.000000;;4
+32;3;202;F32;;Cal.Value history0;calvalue_history0;1.000000;0.000000;;4
+33;3;204;U32;;Cal.Date history1;caldate_history1;1.000000;0.000000;;4
+34;3;206;F32;;Cal.Value history1;calvalue_history1;1.000000;0.000000;;4
+35;3;208;U32;;Cal.Date history2;caldate_history2;1.000000;0.000000;;4
+36;3;210;F32;;Cal.Value history2;calvalue_history2;1.000000;0.000000;;4
+37;3;212;U32;;Cal.Date history3;caldate_history3;1.000000;0.000000;;4
+38;3;214;F32;;Cal.Value history3;calvalue_history3;1.000000;0.000000;;4
+39;3;216;U32;;Cal.Date history4;caldate_history4;1.000000;0.000000;;4
+40;3;218;F32;;Cal.Value history4;calvalue_history4;1.000000;0.000000;;4

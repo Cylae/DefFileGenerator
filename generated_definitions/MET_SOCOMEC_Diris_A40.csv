@@ -1,0 +1,36 @@
+Modbus;Meter;SOCOMEC;Diris_A40
+1;3;50512;U32;;Hour Meter;;0.01;0.0;h;0
+2;3;50514;U32;;Phase to Phase Voltage _ U12;;0.01;0.0;V;4
+3;3;50516;U32;;Phase to Phase Voltage _ U23;;0.01;0.0;V;4
+4;3;50518;U32;;Phase to Phase Voltage _ U31;;0.01;0.0;V;4
+5;3;50520;U32;;Simple voltage _ V1;;0.01;0.0;V;4
+6;3;50522;U32;;Simple voltage _ V2;;0.01;0.0;V;4
+7;3;50524;U32;;Simple voltage _ V3;;0.01;0.0;V;4
+8;3;50526;U32;;Frequency _ F;FREQ;0.01;0.0;Hz;4
+9;3;50528;U32;;Current _ I1;;1.0;0.0;mA;4
+10;3;50530;U32;;Current _ I2;;1.0;0.0;mA;4
+11;3;50532;U32;;Current _ I3;;1.0;0.0;mA;4
+12;3;50534;U32;;Neutral Current _ In;;1.0;0.0;mA;4
+13;3;50536;I32;;Tot Active Power __- _ P;P_AC;0.001;0.0;kW;4
+14;3;50538;I32;;Tot reactive Power __- _ Q;Q_AC;0.1;0.0;var;4
+15;3;50540;U32;;Tot apparent power _ S;S_AC;0.1;0.0;VA;4
+16;3;50542;I32;;Tot power factor _  -_ leading et _ _ lagging _ PF;PF;0.001;0.0;;4
+17;3;50544;I32;;Active Power phase 1 __- _ P1;P_AC_1;0.001;0.0;kW;4
+18;3;50546;I32;;Active Power phase 2 __- _ P2;P_AC_2;0.001;0.0;kW;4
+19;3;50548;I32;;Active Power phase 3 __- _ P3;P_AC_3;0.001;0.0;kW;4
+20;3;50550;I32;;Reactive Power phase 1 __- _ Q1;Q_AC_1;0.1;0.0;var;4
+21;3;50552;I32;;Reactive Power phase 2 __- _ Q2;Q_AC_2;0.1;0.0;var;4
+22;3;50554;I32;;Reactive Power phase 3 __- _ Q3;Q_AC_3;0.1;0.0;var;4
+23;3;50556;U32;;Apparent power phase 1 _ S1;S_AC_1;0.1;0.0;VA;4
+24;3;50558;U32;;Apparent power phase 2 _ S2;S_AC_2;0.1;0.0;VA;4
+25;3;50560;U32;;Apparent power phase 3 _ S3;S_AC_3;0.1;0.0;VA;4
+26;3;50562;I32;;Power Factor phase 1  -_ leading and _ _ lagging  _ PF1;PF_1;0.001;0.0;;4
+27;3;50564;I32;;Power Factor phase 2  -_ leading and _ _ lagging  _ PF2;PF_2;0.001;0.0;;4
+28;3;50566;I32;;Power Factor phase 3  -_ leading and _ _ lagging  _ PF3;PF_3;0.001;0.0;;4
+29;3;50780;U32;;Number of pulse counters;;1.0;0.0;;4
+30;3;50782;U32;;Pulse counter 1;;1.0;0.0;;4
+31;3;50784;U32;;Pulse counter 2;;1.0;0.0;;4
+32;3;50786;U32;;Pulse counter 3;;1.0;0.0;;4
+33;3;50788;U32;;Pulse counter 4;;1.0;0.0;;4
+34;3;50790;U32;;Pulse counter 5;;1.0;0.0;;4
+35;3;50792;U32;;Pulse counter 6;;1.0;0.0;;4

@@ -1,0 +1,26 @@
+modbusRTU;Other;Schneider;SE_EVSE_EVLink-Parking-City-Wa;;;;;;;
+1;3;6;U16;;CPW State;cpw_state;1.000000;0.000000;;4
+2;3;360;U32;;Stn Meter L1_L2 Voltage;stn_meter_l1_l2_voltage;1.000000;0.000000;V;4
+3;3;932;U16;;Remote controller life bit: operable only on master board;remote_controller_life_bit_operable_only_on_master_board;1.000000;0.000000;;4
+4;3;933;U16;;Degraded mode: operable only on master board;degraded_mode_operable_only_on_master_board;1.000000;0.000000;;4
+5;3;934;U16;;Remote authent Manager lifebit;remote_authent_manager_lifebit;1.000000;0.000000;;4
+6;3;935;U16;;Remote authent Manager status;remote_authent_manager_status;1.000000;0.000000;;4
+7;3;1520_16;STRING;;Remote Authent UID;remote_authent_uid;1.000000;0.000000;;4
+8;3;1528;U16;;Remote user type;remote_user_type;1.000000;0.000000;;4
+9;3;1600;U16;;PreviousError0 start time;previouserror0_start_time;1.000000;0.000000;s;4
+10;3;1602;U16;;PreviousError0 end time;previouserror0_end_time;1.000000;0.000000;s;4
+11;3;1604;U16;;PreviousError0 code;previouserror0_code;1.000000;0.000000;;4
+12;3;1615;U16;;PreviousError1 start time;previouserror1_start_time;1.000000;0.000000;s;4
+13;3;1617;U16;;PreviousError1 end time;previouserror1_end_time;1.000000;0.000000;s;4
+14;3;1619;U16;;PreviousError1 code;previouserror1_code;1.000000;0.000000;;4
+15;3;1630;U16;;PreviousError2 start time;previouserror2_start_time;1.000000;0.000000;s;4
+16;3;1632;U16;;PreviousError2 end time;previouserror2_end_time;1.000000;0.000000;s;4
+17;3;1634;U16;;PreviousError2 code;previouserror2_code;1.000000;0.000000;;4
+18;3;1645;U16;;PreviousError3 start time;previouserror3_start_time;1.000000;0.000000;s;4
+19;3;1647;U16;;PreviousError3 end time;previouserror3_end_time;1.000000;0.000000;s;4
+20;3;1649;U16;;PreviousError3 code;previouserror3_code;1.000000;0.000000;;4
+21;3;1660;U16;;PreviousError4 start time;previouserror4_start_time;1.000000;0.000000;s;4
+22;3;1662;U16;;PreviousError4 end time;previouserror4_end_time;1.000000;0.000000;s;4
+23;3;1664;U16;;PreviousError4 code;previouserror4_code;1.000000;0.000000;;4
+24;3;2004;U16;;Session Time;session_time;1.000000;0.000000;s;4
+25;3;2005;U16;;Session Time;session_time_1;1.000000;0.000000;s;4

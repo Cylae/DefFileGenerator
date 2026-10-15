@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
+modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 1;3;0;U16;;The Inverter On/Off state and the auto start state, The low byte is the on/off(1/0), the high byte is the auto start state or not(1/0).;the_inverter_onoff_state_and_the_auto_start_state_the_low_byte_is_the_onoff10_the_high_byte_is_the_auto_start_state_or_not10;1.000000;0.000000;;4
 2;3;1;U16;;SPI(system protection interface) function enable;spisystem_protection_interface_function_enable;1.000000;0.000000;;4
 3;3;2;U16;;Set the following 3,4,5,99 CMD will be memory or not(1/0), if not, these settings are the initial value.;set_the_following_34599_cmd_will_be_memory_or_not10_if_not_these_settings_are_the_initial_value;1.000000;0.000000;;4

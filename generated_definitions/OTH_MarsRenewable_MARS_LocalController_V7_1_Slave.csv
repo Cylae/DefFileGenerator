@@ -1,0 +1,208 @@
+modbusRTU;Other;MarsRenewable;MARS_LocalController_V7_1_Slav;;;;;;;
+1;4;0;U16;;Unit1_PCS1_Operating Status;unit1_pcs1_operating_status;1.000000;0.000000;;4
+2;4;1;U16;;Unit1_PCS1_Reserve;unit1_pcs1_reserve;1.000000;0.000000;;0
+3;4;2;F32;;Unit1_PCS1_AC Uab Line Voltage;unit1_pcs1_ac_uab_line_voltage;1.000000;0.000000;V;4
+4;4;4;F32;;Unit1_PCS1_AC Ubc Line Voltage;unit1_pcs1_ac_ubc_line_voltage;1.000000;0.000000;V;4
+5;4;6;F32;;Unit1_PCS1_AC Uca Line Voltage;unit1_pcs1_ac_uca_line_voltage;1.000000;0.000000;V;4
+6;4;8;F32;;Unit1_PCS1_AC Phase A Current;unit1_pcs1_ac_phase_a_current;1.000000;0.000000;A;4
+7;4;10;F32;;Unit1_PCS1_AC Phase B Current;unit1_pcs1_ac_phase_b_current;1.000000;0.000000;A;4
+8;4;12;F32;;Unit1_PCS1_AC Phase C Current;unit1_pcs1_ac_phase_c_current;1.000000;0.000000;A;4
+9;4;14;F32;;Unit1_PCS1_AC Frequency;unit1_pcs1_ac_frequency;1.000000;0.000000;Hz;4
+10;4;16;F32;;Unit1_PCS1_Total AC Active Power;unit1_pcs1_total_ac_active_power;1.000000;0.000000;kW;4
+11;4;18;F32;;Unit1_PCS1_Total AC Reactive Power;unit1_pcs1_total_ac_reactive_power;1.000000;0.000000;kvar;4
+12;4;20;F32;;Unit1_PCS1_Total AC Apparent Power;unit1_pcs1_total_ac_apparent_power;1.000000;0.000000;kW;4
+13;4;22;F32;;Unit1_PCS1_Total AC Power Factor;unit1_pcs1_total_ac_power_factor;1.000000;0.000000;;4
+14;4;24;F32;;Unit1_PCS1_Phase A AC Active Power;unit1_pcs1_phase_a_ac_active_power;1.000000;0.000000;kW;0
+15;4;26;F32;;Unit1_PCS1_Phase B AC Active Power;unit1_pcs1_phase_b_ac_active_power;1.000000;0.000000;kW;4
+16;4;28;F32;;Unit1_PCS1_Phase C AC Active Power;unit1_pcs1_phase_c_ac_active_power;1.000000;0.000000;kW;4
+17;4;30;F32;;Unit1_PCS1_Phase A AC Reactive Power;unit1_pcs1_phase_a_ac_reactive_power;1.000000;0.000000;kvar;4
+18;4;32;F32;;Unit1_PCS1_Phase B AC Reactive Power;unit1_pcs1_phase_b_ac_reactive_power;1.000000;0.000000;kvar;4
+19;4;34;F32;;Unit1_PCS1_Phase C AC Reactive Power;unit1_pcs1_phase_c_ac_reactive_power;1.000000;0.000000;kvar;4
+20;4;36;F32;;Unit1_PCS1_Phase A AC Apparent Power;unit1_pcs1_phase_a_ac_apparent_power;1.000000;0.000000;kVA;4
+21;4;38;F32;;Unit1_PCS1_Phase B AC Apparent Power;unit1_pcs1_phase_b_ac_apparent_power;1.000000;0.000000;kVA;4
+22;4;40;F32;;Unit1_PCS1_Phase C AC Apparent Power;unit1_pcs1_phase_c_ac_apparent_power;1.000000;0.000000;kVA;4
+23;4;42;F32;;Unit1_PCS1_Phase A AC Power Factor;unit1_pcs1_phase_a_ac_power_factor;1.000000;0.000000;;4
+24;4;44;F32;;Unit1_PCS1_Phase B AC Power Factor;unit1_pcs1_phase_b_ac_power_factor;1.000000;0.000000;;4
+25;4;46;F32;;Unit1_PCS1_Phase C AC Power Factor;unit1_pcs1_phase_c_ac_power_factor;1.000000;0.000000;;4
+26;4;48;F32;;Unit1_PCS1_IGBT Module Temperature;unit1_pcs1_igbt_module_temperature;1.000000;0.000000;Degr.Celsius;4
+27;4;50;F32;;Unit1_PCS1_Ambient Temperature;unit1_pcs1_ambient_temperature;1.000000;0.000000;Degr.Celsius;4
+28;4;52;F32;;Unit1_PCS1_Total AC Charging Energy;unit1_pcs1_total_ac_charging_energy;1.000000;0.000000;kWh;4
+29;4;54;F32;;Unit1_PCS1_Total AC Discharging Energy;unit1_pcs1_total_ac_discharging_energy;1.000000;0.000000;kWh;4
+30;4;56;F32;;Unit1_PCS1_Daily AC Charging Energy;unit1_pcs1_daily_ac_charging_energy;1.000000;0.000000;kWh;4
+31;4;58;F32;;Unit1_PCS1_Daily AC Discharging Energy;unit1_pcs1_daily_ac_discharging_energy;1.000000;0.000000;kWh;4
+32;4;60;U32;;Unit1_PCS1_Number of branches;unit1_pcs1_number_of_branches;1.000000;0.000000;;4
+33;4;62;F32;;Unit1_PCS1_Branch 1 DC Power;unit1_pcs1_branch_1_dc_power;1.000000;0.000000;kW;4
+34;4;64;F32;;Unit1_PCS1_Branch 1 DC Voltage;unit1_pcs1_branch_1_dc_voltage;1.000000;0.000000;V;4
+35;4;66;F32;;Unit1_PCS1_Branch 1 DC Current;unit1_pcs1_branch_1_dc_current;1.000000;0.000000;A;4
+36;4;5000;F32;;Unit1_Bank1_Bank Voltage;unit1_bank1_bank_voltage;1.000000;0.000000;V;4
+37;4;5002;F32;;Unit1_Bank1_Bank Current;unit1_bank1_bank_current;1.000000;0.000000;A;4
+38;4;5004;F32;;Unit1_Bank1_Bank SOC;unit1_bank1_bank_soc;1.000000;0.000000;'%;4
+39;4;5006;F32;;Unit1_Bank1_Bank SOH;unit1_bank1_bank_soh;1.000000;0.000000;'%;4
+40;4;5008;F32;;Unit1_Bank1_Bank Insulation Resistance;unit1_bank1_bank_insulation_resistance;1.000000;0.000000;Ohm;0
+41;4;5010;F32;;Unit1_Bank1_Bank Available Charge Energy;unit1_bank1_bank_available_charge_energy;1.000000;0.000000;kWh;4
+42;4;5012;F32;;Unit1_Bank1_Bank Available Discharge Energy;unit1_bank1_bank_available_discharge_energy;1.000000;0.000000;kWh;4
+43;4;5014;F32;;Unit1_Bank1_System Allowed Maximum Charge Current;unit1_bank1_system_allowed_maximum_charge_current;1.000000;0.000000;A;4
+44;4;5016;F32;;Unit1_Bank1_System Allowed Maximum Discharge Current;unit1_bank1_system_allowed_maximum_discharge_current;1.000000;0.000000;A;4
+45;4;5018;F32;;Unit1_Bank1_Today’s Charge Energy;unit1_bank1_todays_charge_energy;1.000000;0.000000;kWh;4
+46;4;5020;F32;;Unit1_Bank1_Today’s Discharge Energy;unit1_bank1_todays_discharge_energy;1.000000;0.000000;kWh;4
+47;4;5022;F32;;Unit1_Bank1_Accumulated Charge Energy;unit1_bank1_accumulated_charge_energy;1.000000;0.000000;kWh;4
+48;4;5024;F32;;Unit1_Bank1_Accumulated Discharge Energy;unit1_bank1_accumulated_discharge_energy;1.000000;0.000000;kWh;4
+49;4;10000;F32;;Unit1_Meter1_Total Forward Active Energy;unit1_meter1_total_forward_active_energy;1.000000;0.000000;kWh;0
+50;4;10002;F32;;Unit1_Meter1_Total Forward Sharp Energy;unit1_meter1_total_forward_sharp_energy;1.000000;0.000000;kWh;4
+51;4;10004;F32;;Unit1_Meter1_Total Forward Peak Energy;unit1_meter1_total_forward_peak_energy;1.000000;0.000000;kWh;4
+52;4;10006;F32;;Unit1_Meter1_Total Forward Flat Energy;unit1_meter1_total_forward_flat_energy;1.000000;0.000000;kWh;4
+53;4;10008;F32;;Unit1_Meter1_Total Forward Valley Energy;unit1_meter1_total_forward_valley_energy;1.000000;0.000000;kWh;4
+54;4;10010;F32;;Unit1_Meter1_Total Reverse Active Energy;unit1_meter1_total_reverse_active_energy;1.000000;0.000000;kWh;4
+55;4;10012;F32;;Unit1_Meter1_Total Reverse Sharp Energy;unit1_meter1_total_reverse_sharp_energy;1.000000;0.000000;kWh;4
+56;4;10014;F32;;Unit1_Meter1_Total Reverse Peak Energy;unit1_meter1_total_reverse_peak_energy;1.000000;0.000000;kWh;4
+57;4;10016;F32;;Unit1_Meter1_Total Reverse Flat Energy;unit1_meter1_total_reverse_flat_energy;1.000000;0.000000;kWh;4
+58;4;10018;F32;;Unit1_Meter1_Total Reverse Valley Energy;unit1_meter1_total_reverse_valley_energy;1.000000;0.000000;kWh;4
+59;4;10020;F32;;Unit1_Meter1_Total Active Power;unit1_meter1_total_active_power;1.000000;0.000000;kW;4
+60;4;15000;U16;;Unit1_AirConditioning1_Operating Status;unit1_airconditioning1_operating_status;1.000000;0.000000;;4
+61;4;15001;U16;;Unit1_AirConditioning1_Reserve;unit1_airconditioning1_reserve;1.000000;0.000000;;0
+62;4;15002;U16;;Unit1_AirConditioning1_Reserve_2;unit1_airconditioning1_reserve_2;1.000000;0.000000;;0
+63;4;15003;U16;;Unit1_AirConditioning1_Reserve_3;unit1_airconditioning1_reserve_3;1.000000;0.000000;;0
+64;4;15004;F32;;Unit1_AirConditioning1_Cooling Low Point;unit1_airconditioning1_cooling_low_point;1.000000;0.000000;Degr.Celsius;4
+65;4;15006;F32;;Unit1_AirConditioning1_Cooling High Point;unit1_airconditioning1_cooling_high_point;1.000000;0.000000;Degr.Celsius;4
+66;4;15008;F32;;Unit1_AirConditioning1_Heating Low Point;unit1_airconditioning1_heating_low_point;1.000000;0.000000;Degr.Celsius;4
+67;4;15010;F32;;Unit1_AirConditioning1_Heating High Point;unit1_airconditioning1_heating_high_point;1.000000;0.000000;Degr.Celsius;4
+68;4;15012;F32;;Unit1_AirConditioning1_Dehumidification High Point (Start Point);unit1_airconditioning1_dehumidification_high_point_start_point;1.000000;0.000000;;4
+69;4;15014;F32;;Unit1_AirConditioning1_Dehumidification Low Point (Stop Point);unit1_airconditioning1_dehumidification_low_point_stop_point;1.000000;0.000000;;4
+70;4;15016;F32;;Unit1_AirConditioning1_High Temperature Alarm Point;unit1_airconditioning1_high_temperature_alarm_point;1.000000;0.000000;Degr.Celsius;4
+71;4;15018;F32;;Unit1_AirConditioning1_Low Temperature Alarm Point;unit1_airconditioning1_low_temperature_alarm_point;1.000000;0.000000;Degr.Celsius;4
+72;4;15020;F32;;Unit1_AirConditioning1_Temperature;unit1_airconditioning1_temperature;1.000000;0.000000;Degr.Celsius;4
+73;4;15022;U16;;Unit1_AirConditioning1_Temperature Status;unit1_airconditioning1_temperature_status;1.000000;0.000000;;4
+74;4;15023;U16;;Unit1_AirConditioning1_Voltage Status;unit1_airconditioning1_voltage_status;1.000000;0.000000;;4
+75;4;15024;U16;;Unit1_AirConditioning1_Sensor Status;unit1_airconditioning1_sensor_status;1.000000;0.000000;;4
+76;4;15025;U16;;Unit1_AirConditioning1_Compressor Status;unit1_airconditioning1_compressor_status;1.000000;0.000000;;4
+77;4;15026;U16;;Unit1_AirConditioning1_Air Pressure Status;unit1_airconditioning1_air_pressure_status;1.000000;0.000000;;4
+78;4;15027;F32;;Unit1_AirConditioning1_Relative Humidity;unit1_airconditioning1_relative_humidity;1.000000;0.000000;;4
+79;4;20000;U16;;Unit1_1DIO_Reserve;unit1_1dio_reserve;1.000000;0.000000;;0
+80;4;20001;U16;;Unit1_1DIO_Reserve_2;unit1_1dio_reserve_2;1.000000;0.000000;;0
+81;4;20002;U16;;Unit1_1DIO_Reserve_3;unit1_1dio_reserve_3;1.000000;0.000000;;0
+82;4;20003;U16;;Unit1_1DIO_Reserve_4;unit1_1dio_reserve_4;1.000000;0.000000;;0
+83;4;20004;U16;;Unit1_1DIO_Reserve_5;unit1_1dio_reserve_5;1.000000;0.000000;;0
+84;4;20005;U16;;Unit1_1DIO_Reserve_6;unit1_1dio_reserve_6;1.000000;0.000000;;0
+85;4;20006;U16;;Unit1_1DIO_1#DI-1 ( crash-stop );unit1_1dio_1di1_crashstop;1.000000;0.000000;;4
+86;4;20007;U16;;Unit1_1DIO_1#DI-2 ( Surge fault feedback );unit1_1dio_1di2_surge_fault_feedback;1.000000;0.000000;;4
+87;4;20008;U16;;Unit1_1DIO_1#DI-3 ( PCS Discharge/Charge Status );unit1_1dio_1di3_pcs_dischargecharge_status;1.000000;0.000000;;4
+88;4;20009;U16;;Unit1_1DIO_1#DI-4 ( Water Cooling );unit1_1dio_1di4_water_cooling;1.000000;0.000000;;4
+89;4;20010;U16;;Unit1_1DIO_1#DI-5 ( Aerosol spraying );unit1_1dio_1di5_aerosol_spraying;1.000000;0.000000;;4
+90;4;20011;U16;;Unit1_1DIO_1#DI-6 ( KA1-KA6 Contactor Monitoring );unit1_1dio_1di6_ka1ka6_contactor_monitoring;1.000000;0.000000;;4
+91;4;20012;U16;;Unit1_1DIO_1#DI-7 ( Reserve );unit1_1dio_1di7_reserve;1.000000;0.000000;;0
+92;4;20013;U16;;Unit1_1DIO_1#DI-8 ( Reserve );unit1_1dio_1di8_reserve;1.000000;0.000000;;0
+93;4;20014;U16;;Unit1_1DIO_1#DI-9 ( Temperature feedback );unit1_1dio_1di9_temperature_feedback;1.000000;0.000000;;4
+94;4;20015;U16;;Unit1_1DIO_1#DI-10 ( Smoke feedback );unit1_1dio_1di10_smoke_feedback;1.000000;0.000000;;4
+95;4;20016;U16;;Unit1_1DIO_1#DI-11 ( AC side entrance guard );unit1_1dio_1di11_ac_side_entrance_guard;1.000000;0.000000;;4
+96;4;20017;U16;;Unit1_1DIO_1#DI-12 ( DC side entrance guard );unit1_1dio_1di12_dc_side_entrance_guard;1.000000;0.000000;;4
+97;4;20018;U16;;Unit1_1DIO_1#DI-13 ( Exhaust Fan Feedback );unit1_1dio_1di13_exhaust_fan_feedback;1.000000;0.000000;;4
+98;4;20019;U16;;Unit1_1DIO_1#DO-1 ( Running Indicator );unit1_1dio_1do1_running_indicator;1.000000;0.000000;;4
+99;4;20020;U16;;Unit1_1DIO_1#DO-2 ( Fault Indicator );unit1_1dio_1do2_fault_indicator;1.000000;0.000000;;4
+100;4;20021;U16;;Unit1_1DIO_1#DO-3 ( Intermediate relay );unit1_1dio_1do3_intermediate_relay;1.000000;0.000000;;4
+101;4;25000;U16;;Unit1_PV1_Operating Status;unit1_pv1_operating_status;1.000000;0.000000;;4
+102;4;25001;U16;;Unit1_PV1_Reserve;unit1_pv1_reserve;1.000000;0.000000;;0
+103;4;25002;F32;;Unit1_PV1_AC Phase A Voltage;unit1_pv1_ac_phase_a_voltage;1.000000;0.000000;V;4
+104;4;25004;F32;;Unit1_PV1_AC Phase B Voltage;unit1_pv1_ac_phase_b_voltage;1.000000;0.000000;V;4
+105;4;25006;F32;;Unit1_PV1_AC Phase C Voltage;unit1_pv1_ac_phase_c_voltage;1.000000;0.000000;V;4
+106;4;25008;F32;;Unit1_PV1_AC Phase A Current;unit1_pv1_ac_phase_a_current;1.000000;0.000000;A;4
+107;4;25010;F32;;Unit1_PV1_AC Phase B Current;unit1_pv1_ac_phase_b_current;1.000000;0.000000;A;4
+108;4;25012;F32;;Unit1_PV1_AC Phase C Current;unit1_pv1_ac_phase_c_current;1.000000;0.000000;A;4
+109;4;25014;F32;;Unit1_PV1_AC Frequency;unit1_pv1_ac_frequency;1.000000;0.000000;Hz;4
+110;4;25016;F32;;Unit1_PV1_Total AC Active Power;unit1_pv1_total_ac_active_power;1.000000;0.000000;kW;4
+111;4;25018;F32;;Unit1_PV1_Total AC Reactive Power;unit1_pv1_total_ac_reactive_power;1.000000;0.000000;kvar;4
+112;4;25020;F32;;Unit1_PV1_Total AC Apparent Power;unit1_pv1_total_ac_apparent_power;1.000000;0.000000;kvar;4
+113;4;25022;F32;;Unit1_PV1_Total AC Power Factor;unit1_pv1_total_ac_power_factor;1.000000;0.000000;;4
+114;4;25024;F32;;Unit1_PV1_Phase A AC Active Power;unit1_pv1_phase_a_ac_active_power;1.000000;0.000000;kW;4
+115;4;25026;F32;;Unit1_PV1_Phase B AC Active Power;unit1_pv1_phase_b_ac_active_power;1.000000;0.000000;kW;4
+116;4;25028;F32;;Unit1_PV1_Phase C AC Active Power;unit1_pv1_phase_c_ac_active_power;1.000000;0.000000;kW;4
+117;4;25030;F32;;Unit1_PV1_Phase A AC Reactive Power;unit1_pv1_phase_a_ac_reactive_power;1.000000;0.000000;kvar;4
+118;4;25032;F32;;Unit1_PV1_Phase B AC Reactive Power;unit1_pv1_phase_b_ac_reactive_power;1.000000;0.000000;kvar;4
+119;4;25034;F32;;Unit1_PV1_Phase C AC Reactive Power;unit1_pv1_phase_c_ac_reactive_power;1.000000;0.000000;kvar;4
+120;4;25036;F32;;Unit1_PV1_Phase A AC Apparent Power;unit1_pv1_phase_a_ac_apparent_power;1.000000;0.000000;kVA;4
+121;4;25038;F32;;Unit1_PV1_Phase B AC Apparent Power;unit1_pv1_phase_b_ac_apparent_power;1.000000;0.000000;kVA;4
+122;4;25040;F32;;Unit1_PV1_Phase C AC Apparent Power;unit1_pv1_phase_c_ac_apparent_power;1.000000;0.000000;kVA;4
+123;4;25042;F32;;Unit1_PV1_Phase A AC Power Factor;unit1_pv1_phase_a_ac_power_factor;1.000000;0.000000;;4
+124;4;25044;F32;;Unit1_PV1_Phase B AC Power Factor;unit1_pv1_phase_b_ac_power_factor;1.000000;0.000000;;4
+125;4;25046;F32;;Unit1_PV1_Phase C AC Power Factor;unit1_pv1_phase_c_ac_power_factor;1.000000;0.000000;;4
+126;4;25048;F32;;Unit1_PV1_IGBT Module Temperature;unit1_pv1_igbt_module_temperature;1.000000;0.000000;Degr.Celsius;4
+127;4;25050;F32;;Unit1_PV1_Ambient Temperature;unit1_pv1_ambient_temperature;1.000000;0.000000;Degr.Celsius;4
+128;4;25052;F32;;Unit1_PV1_Total AC Charging Energy;unit1_pv1_total_ac_charging_energy;1.000000;0.000000;kWh;4
+129;4;25054;F32;;Unit1_PV1_Total AC Discharging Energy;unit1_pv1_total_ac_discharging_energy;1.000000;0.000000;kWh;4
+130;4;25056;F32;;Unit1_PV1_Daily AC Charging Energy;unit1_pv1_daily_ac_charging_energy;1.000000;0.000000;kWh;4
+131;4;25058;F32;;Unit1_PV1_Daily AC Discharging Energy;unit1_pv1_daily_ac_discharging_energy;1.000000;0.000000;kWh;4
+132;4;25060;U32;;Unit1_PV1_Number of branches;unit1_pv1_number_of_branches;1.000000;0.000000;;4
+133;4;25062;F32;;Unit1_PV1_Branch 1 DC Power;unit1_pv1_branch_1_dc_power;1.000000;0.000000;kW;4
+134;4;25064;F32;;Unit1_PV1_Branch 1 DC Voltage;unit1_pv1_branch_1_dc_voltage;1.000000;0.000000;V;4
+135;4;25066;F32;;Unit1_PV1_Branch 1 DC Current;unit1_pv1_branch_1_dc_current;1.000000;0.000000;A;4
+136;4;30000;U16;;Unit1_LiquidCooling1_Operating Status;unit1_liquidcooling1_operating_status;1.000000;0.000000;;4
+137;4;30001;U16;;Unit1_LiquidCooling1_Reserve;unit1_liquidcooling1_reserve;1.000000;0.000000;;0
+138;4;30002;U16;;Unit1_LiquidCooling1_Reserve_2;unit1_liquidcooling1_reserve_2;1.000000;0.000000;;0
+139;4;30003;U16;;Unit1_LiquidCooling1_Reserve_3;unit1_liquidcooling1_reserve_3;1.000000;0.000000;;0
+140;4;30004;U16;;Unit1_LiquidCooling1_Operating Mode;unit1_liquidcooling1_operating_mode;1.000000;0.000000;;4
+141;4;30006;F32;;Unit1_LiquidCooling1_Ambient Temperature;unit1_liquidcooling1_ambient_temperature;1.000000;0.000000;Degr.Celsius;4
+142;4;30008;F32;;Unit1_LiquidCooling1_Supply Water Temperature;unit1_liquidcooling1_supply_water_temperature;1.000000;0.000000;Degr.Celsius;4
+143;4;30010;F32;;Unit1_LiquidCooling1_Inlet Water Temperature;unit1_liquidcooling1_inlet_water_temperature;1.000000;0.000000;Degr.Celsius;4
+144;4;30012;F32;;Unit1_LiquidCooling1_Supply Water Pressure;unit1_liquidcooling1_supply_water_pressure;1.000000;0.000000;;4
+145;4;30014;F32;;Unit1_LiquidCooling1_Return Water Pressure;unit1_liquidcooling1_return_water_pressure;1.000000;0.000000;;4
+146;4;30016;U16;;Unit1_LiquidCooling1_Fan Operating Status;unit1_liquidcooling1_fan_operating_status;1.000000;0.000000;;4
+147;4;30017;U16;;Unit1_LiquidCooling1_Water Pump Operating Status;unit1_liquidcooling1_water_pump_operating_status;1.000000;0.000000;;4
+148;4;30018;U16;;Unit1_LiquidCooling1_Electric Heating Operating Status;unit1_liquidcooling1_electric_heating_operating_status;1.000000;0.000000;;4
+149;4;30019;U16;;Unit1_LiquidCooling1_Refrigerant Operating Status;unit1_liquidcooling1_refrigerant_operating_status;1.000000;0.000000;;4
+150;4;30020;F32;;Unit1_LiquidCooling1_Fan Output;unit1_liquidcooling1_fan_output;1.000000;0.000000;;0
+151;4;30022;F32;;Unit1_LiquidCooling1_Water Pump Output;unit1_liquidcooling1_water_pump_output;1.000000;0.000000;;4
+152;4;30024;F32;;Unit1_LiquidCooling1_Target Cooling Start Point;unit1_liquidcooling1_target_cooling_start_point;1.000000;0.000000;Degr.Celsius;4
+153;4;30026;F32;;Unit1_LiquidCooling1_Target Cooling Stop Point;unit1_liquidcooling1_target_cooling_stop_point;1.000000;0.000000;Degr.Celsius;4
+154;4;30028;F32;;Unit1_LiquidCooling1_Target Heating Start Point;unit1_liquidcooling1_target_heating_start_point;1.000000;0.000000;Degr.Celsius;4
+155;4;30030;F32;;Unit1_LiquidCooling1_Target Heating Stop Point;unit1_liquidcooling1_target_heating_stop_point;1.000000;0.000000;Degr.Celsius;4
+156;4;30032;U16;;Unit1_LiquidCooling1_EMS Control Mode Status;unit1_liquidcooling1_ems_control_mode_status;1.000000;0.000000;;4
+157;4;0;U16;;Unit247_LC_Measurement point version number;unit247_lc_measurement_point_version_number;1.000000;0.000000;;0
+158;4;1;U16;;Unit247_LC_PCS Number;unit247_lc_pcs_number;1.000000;0.000000;;0
+159;4;2;U16;;Unit247_LC_Bank Number;unit247_lc_bank_number;1.000000;0.000000;;0
+160;4;3;U16;;Unit247_LC_Rack Number;unit247_lc_rack_number;1.000000;0.000000;;0
+161;4;4;U16;;Unit247_LC_Meter Number;unit247_lc_meter_number;1.000000;0.000000;;0
+162;4;0;U16;;Rack(N+1)_Number of cells in Rack;rackn1_number_of_cells_in_rack;1.000000;0.000000;;0
+163;4;1;F32;;Rack(N+1)_Rack Voltage;rackn1_rack_voltage;1.000000;0.000000;V;0
+164;4;3;F32;;Rack(N+1)_Rack Current;rackn1_rack_current;1.000000;0.000000;A;0
+165;4;5;F32;;Rack(N+1)_Rack SOC;rackn1_rack_soc;1.000000;0.000000;'%;0
+166;4;7;F32;;Rack(N+1)_Rack SOH;rackn1_rack_soh;1.000000;0.000000;'%;0
+167;4;9;F32;;Rack(N+1)_Rack Insulation Resistance;rackn1_rack_insulation_resistance;1.000000;0.000000;Ohm;0
+168;4;11;F32;;Rack(N+1)_Maximum Allowable Charge Current;rackn1_maximum_allowable_charge_current;1.000000;0.000000;A;0
+169;4;13;F32;;Rack(N+1)_Maximum Allowable Discharge Current;rackn1_maximum_allowable_discharge_current;1.000000;0.000000;A;0
+170;4;15;F32;;Rack(N+1)_Total Charge Energy;rackn1_total_charge_energy;1.000000;0.000000;kWh;0
+171;4;17;F32;;Rack(N+1)_Total Discharge Energy;rackn1_total_discharge_energy;1.000000;0.000000;kWh;0
+172;4;19;F32;;Rack(N+1)_Available Charge Energy;rackn1_available_charge_energy;1.000000;0.000000;kWh;0
+173;4;21;F32;;Rack(N+1)_Available Discharge Energy;rackn1_available_discharge_energy;1.000000;0.000000;kWh;0
+174;4;23;F32;;Rack(N+1)_Average Cell Voltage;rackn1_average_cell_voltage;1.000000;0.000000;V;0
+175;4;25;F32;;Rack(N+1)_Average Cell Temperature;rackn1_average_cell_temperature;1.000000;0.000000;Degr.Celsius;0
+176;4;27;F32;;Rack(N+1)_Maximum Cell Voltage;rackn1_maximum_cell_voltage;1.000000;0.000000;V;0
+177;4;29;F32;;Rack(N+1)_Maximum Cell Voltage Cell Number;rackn1_maximum_cell_voltage_cell_number;1.000000;0.000000;;0
+178;4;31;F32;;Rack(N+1)_Minimum Cell Voltage;rackn1_minimum_cell_voltage;1.000000;0.000000;V;0
+179;4;33;F32;;Rack(N+1)_Minimum Cell Voltage Cell Number;rackn1_minimum_cell_voltage_cell_number;1.000000;0.000000;;0
+180;4;35;F32;;Rack(N+1)_Maximum Cell Temperature;rackn1_maximum_cell_temperature;1.000000;0.000000;Degr.Celsius;0
+181;4;37;F32;;Rack(N+1)_Maximum Cell Temperature Cell Number;rackn1_maximum_cell_temperature_cell_number;1.000000;0.000000;;0
+182;4;39;F32;;Rack(N+1)_Minimum Cell Temperature;rackn1_minimum_cell_temperature;1.000000;0.000000;Degr.Celsius;0
+183;4;41;F32;;Rack(N+1)_Minimum Cell Temperature Cell Number;rackn1_minimum_cell_temperature_cell_number;1.000000;0.000000;;0
+184;4;43;F32;;Rack(N+1)_Maximum Cell SOC;rackn1_maximum_cell_soc;1.000000;0.000000;'%;0
+185;4;45;F32;;Rack(N+1)_Maximum Cell SOC Cell Number;rackn1_maximum_cell_soc_cell_number;1.000000;0.000000;;0
+186;4;47;F32;;Rack(N+1)_Minimum Cell SOC;rackn1_minimum_cell_soc;1.000000;0.000000;'%;0
+187;4;49;F32;;Rack(N+1)_Minimum Cell SOC Cell Number;rackn1_minimum_cell_soc_cell_number;1.000000;0.000000;;0
+188;4;51;F32;;Rack(N+1)_Maximum Cell SOH;rackn1_maximum_cell_soh;1.000000;0.000000;'%;0
+189;4;53;F32;;Rack(N+1)_Maximum Cell SOH Cell Number;rackn1_maximum_cell_soh_cell_number;1.000000;0.000000;;0
+190;4;55;F32;;Rack(N+1)_Minimum Cell SOH;rackn1_minimum_cell_soh;1.000000;0.000000;'%;0
+191;4;57;F32;;Rack(N+1)_Minimum Cell SOH Cell Number;rackn1_minimum_cell_soh_cell_number;1.000000;0.000000;;0
+192;4;100;F32;;Rack(N+1)_Cell1_Cell Voltage;rackn1_cell1_cell_voltage;1.000000;0.000000;V;0
+193;4;102;F32;;Rack(N+1)_Cell1_Cell Temperature;rackn1_cell1_cell_temperature;1.000000;0.000000;Degr.Celsius;0
+194;4;104;F32;;Rack(N+1)_Cell1_Cell SOC;rackn1_cell1_cell_soc;1.000000;0.000000;'%;0
+195;4;106;F32;;Rack(N+1)_Cell1_Cell SOH;rackn1_cell1_cell_soh;1.000000;0.000000;'%;0
+196;4;108;F32;;Rack(N+1)_Cell1_Cell Resistance;rackn1_cell1_cell_resistance;1.000000;0.000000;Ohm;0
+197;4;0;U16;;Unit247_Commande_SansLectureFC4_EMS Working Mode;unit247_commande_sanslecturefc4_ems_working_mode;1.000000;0.000000;;0
+198;4;1;I32;;Unit247_Commande_SansLectureFC4_Remote Control Duration;unit247_commande_sanslecturefc4_remote_control_duration;1.000000;0.000000;min;0
+199;4;3;U16;;Unit247_Commande_SansLectureFC4_Energy Storage Working Mode;unit247_commande_sanslecturefc4_energy_storage_working_mode;1.000000;0.000000;;0
+200;4;4;I32;;Unit247_Commande_SansLectureFC4_Energy Storage Active Power;unit247_commande_sanslecturefc4_energy_storage_active_power;1.000000;0.000000;W;0
+201;4;6;I32;;Unit247_Commande_SansLectureFC4_Energy Storage Reactive Power;unit247_commande_sanslecturefc4_energy_storage_reactive_power;1.000000;0.000000;Var;0
+202;4;8;U16;;Unit247_Commande_SansLectureFC4_AC Voltage;unit247_commande_sanslecturefc4_ac_voltage;1.000000;0.000000;V;0
+203;4;9;U16;;Unit247_Commande_SansLectureFC4_AC Frequency;unit247_commande_sanslecturefc4_ac_frequency;0.010000;0.000000;Hz;0
+204;4;0_0_1;BITS;;Unit1_Alarme_SourceFC2_LC Alarm Summary;unit1_alarme_sourcefc2_lc_alarm_summary;1.000000;0.000000;;0
+205;4;1_0_1;BITS;;Unit1_Alarme_SourceFC2_PCS Alarm Summary;unit1_alarme_sourcefc2_pcs_alarm_summary;1.000000;0.000000;;0
+206;4;2_0_1;BITS;;Unit1_Alarme_SourceFC2_Bank Alarm Summary;unit1_alarme_sourcefc2_bank_alarm_summary;1.000000;0.000000;;0
+207;4;3_0_1;BITS;;Unit1_Alarme_SourceFC2_Air Conditioning Alarm Summary;unit1_alarme_sourcefc2_air_conditioning_alarm_summary;1.000000;0.000000;;0

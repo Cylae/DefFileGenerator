@@ -1,0 +1,32 @@
+ModbusRTU;Inverter;INGETEAM;PowerMax(centraux);;;;;;;
+1;4;0;U32;;Ah_Total;;1;0;;4
+2;4;2;U32;;Operating Time;;1;0;;4
+3;4;4_0;I8;;Current from Strings 1;;1;0;;4
+4;4;4_1;I8;;Current from Strings 2;;1;0;;4
+5;4;5_0;I8;;Current from Strings 3;;1;0;;4
+6;4;5_1;I8;;Current from Strings 4;;1;0;;4
+7;4;6_0;I8;;Current from Strings 5;;1;0;;4
+8;4;6_1;I8;;Current from Strings 6;;1;0; ;4
+9;4;7_0;I8;;Current from Strings 7;;1;0;;4
+10;4;7_1;I8;;Current from Strings 8;;1;0;;4
+11;4;8_0;I8;;Current from Strings 9;;1;0;;4
+12;4;8_1;I8;;Current from Strings 10;;1;0;;4
+13;4;9_0;I8;;Current from Strings 11;;1;0;;4
+14;4;9_1;I8;;Current from Strings 12;;1;0;;4
+15;4;10_0;I8;;Current from Strings 13;;1;0;;4
+16;4;10_1;I8;;Current from Strings 14;;1;0;;4
+17;4;11_0;I8;;Current from Strings 15;;1;0;;4
+18;4;11_1;I8;;Current from Strings 16;;1;0;;4
+19;4;12;I16;;Sum of instant currents;I_AC;1;0;;4
+20;4;13;U16;;Temperature;TEMP;1;0;;4
+21;4;14;U16;;String current alarms;;1;0;;4
+22;4;15;U16;;Fuse alarms;;1;0;;4
+23;4;16;U16;;Reserved;;1;0;;0
+24;4;17;U16;;Reserved_1;;1;0;;0
+25;4;18;U16;;General alarms;;1;0;;4
+26;4;19;U16;;Year;;100;0;;4
+27;4;20;U16;;Month;;10;0;;4
+28;4;21;U16;;Day;;10;0;;4
+29;4;22;U16;;Hour;;10;0;;4
+30;4;23;U16;;Minute;;100;0;;4
+31;4;24;I16;;Second;;0.1;0;;4

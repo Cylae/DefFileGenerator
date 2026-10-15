@@ -1,0 +1,48 @@
+modbusRTU;Other;Atmoce;ATMOCE_MC100_MC100-T_MG100;;;;;;;
+1;3;60000_20;STRING;;SN;SERIAL;1.000000;0.000000;;4
+2;3;60010;U16;;Hardware Version;hardware_version;1.000000;0.000000;;4
+3;3;60011_30;STRING;;Firmware Version;firmware_version;1.000000;0.000000;;4
+4;3;60026;U16;;Protocol Version;protocol_version;1.000000;0.000000;;4
+5;3;60027;U32;;Rated Photovoltaic Power;rated_photovoltaic_power;0.001000;0.000000;kW;4
+6;3;60029;U32;;Rated Energy Storage Power;rated_energy_storage_power;0.001000;0.000000;kW;4
+7;3;60031;U32;;Energy Storage Capacity;energy_storage_capacity;0.001000;0.000000;kWh;4
+8;3;60060;U32;;System Time;system_time;1.000000;0.000000;;4
+9;3;60062;I32;;System Time Zone;system_time_zone;1.000000;0.000000;;4
+10;3;60064;U32;;System Local Time;system_local_time;1.000000;0.000000;;4
+11;3;60066;U16;;Power Station Status;power_station_status;1.000000;0.000000;;4
+12;3;60067;U16;;EnergyStorage Status;energystorage_status;1.000000;0.000000;;4
+13;3;60068;U16;;Energy Storage Operating Mode;energy_storage_operating_mode;1.000000;0.000000;;4
+14;3;60069;U32;;Photovoltaic Power Output;photovoltaic_power_output;0.001000;0.000000;kW;4
+15;3;60071;I32;;Energy Storage Charging/Discharging Power;energy_storage_chargingdischarging_power;0.001000;0.000000;kW;4
+16;3;60073;I32;;Grid Active Power;grid_active_power;0.001000;0.000000;kW;4
+17;3;60075;I32;;Photovoltaic Reactive Power;photovoltaic_reactive_power;0.001000;0.000000;kVar;4
+18;3;60077;I32;;Energy Storage Reactive Power;energy_storage_reactive_power;0.001000;0.000000;kVar;4
+19;3;60089;U16;;Phase AGridVoltage / Grid Voltage (Single Phase);phase_agridvoltage_grid_voltage_single_phase;0.100000;0.000000;V;4
+20;3;60090;I16;;Phase AGridCurrent / Grid Current (Single Phase);phase_agridcurrent_grid_current_single_phase;0.010000;0.000000;A;4
+21;3;60091;U16;;Phase B Grid Voltage;phase_b_grid_voltage;0.100000;0.000000;V;4
+22;3;60092;I16;;Phase B Grid Current;phase_b_grid_current;0.010000;0.000000;A;4
+23;3;60093;U16;;Phase C Grid Voltage;phase_c_grid_voltage;0.100000;0.000000;V;4
+24;3;60094;I16;;Phase C Grid Current;phase_c_grid_current;0.010000;0.000000;A;4
+25;3;60095;U16;;Energy Storage SOC;energy_storage_soc;1.000000;0.000000;'%;4
+26;3;60160;U64;;Cumulative Photovoltaic Power Generation;cumulative_photovoltaic_power_generation;0.010000;0.000000;kWh;4
+27;3;60164;U32;;Daily Photovoltaic Power Generation;daily_photovoltaic_power_generation;0.010000;0.000000;kWh;4
+28;3;60166;U64;;Cumulative Energy Storage Charging Capacity;cumulative_energy_storage_charging_capacity;0.010000;0.000000;kWh;4
+29;3;60170;U32;;Daily Energy Storage Charging Capacity;daily_energy_storage_charging_capacity;0.010000;0.000000;kWh;4
+30;3;60172;U64;;Cumulative Energy Storage Discharging Capacity;cumulative_energy_storage_discharging_capacity;0.010000;0.000000;kWh;4
+31;3;60176;U32;;Daily Energy Storage Discharging Capacity;daily_energy_storage_discharging_capacity;0.010000;0.000000;kWh;4
+32;3;60178;U64;;Cumulative Electricity Sales Volume;cumulative_electricity_sales_volume;0.010000;0.000000;kWh;4
+33;3;60182;U32;;Daily Electricity Sales Volume;daily_electricity_sales_volume;0.010000;0.000000;kWh;4
+34;3;60184;U64;;Cumulative Electricity Purchase Volume;cumulative_electricity_purchase_volume;0.010000;0.000000;kWh;4
+35;3;60188;U32;;Daily Electricity Purchase Volume;daily_electricity_purchase_volume;0.010000;0.000000;kWh;4
+36;3;60200;U32;;Energy Storage Maximum Charging Power Limit;energy_storage_maximum_charging_power_limit;0.010000;0.000000;kW;4
+37;3;60202;U32;;Energy Storage Maximum Discharging Power Limit;energy_storage_maximum_discharging_power_limit;0.010000;0.000000;kW;4
+38;3;60301;U16;;Energy Storage Communication Control Mode;energy_storage_communication_control_mode;1.000000;0.000000;;4
+39;3;60302;U32;;Active Power Fixed Value Regulation;active_power_fixed_value_regulation;0.001000;0.000000;kW;4
+40;3;60304;U16;;Active Power Percentage Regulation;active_power_percentage_regulation;0.100000;0.000000;'%;4
+41;3;60310;U16;;EnergyStorage Forced Charging/Discharging;energystorage_forced_chargingdischarging;1.000000;0.000000;;4
+42;3;60311;U16;;Energy Storage Forced Charging/Discharging Mode;energy_storage_forced_chargingdischarging_mode;1.000000;0.000000;;4
+43;3;60312;U16;;Energy Storage Forced Charging/Discharging Target SOC;energy_storage_forced_chargingdischarging_target_soc;1.000000;0.000000;'%;4
+44;3;60313;U16;;Energy Storage Forced Charging/Discharging Duration;energy_storage_forced_chargingdischarging_duration;1.000000;0.000000;mins;4
+45;3;60314;U32;;Energy Storage Forced Charging/Discharging Power;energy_storage_forced_chargingdischarging_power;0.001000;0.000000;kW;4
+46;3;60316;I32;;Energy Storage Dispatch Charging/Discharging Power;energy_storage_dispatch_chargingdischarging_power;0.001000;0.000000;kW;4
+47;3;60400;U16;;Reset;reset;1.000000;0.000000;;0

@@ -1,0 +1,155 @@
+modbusRTU;Inverter;SofarSolar;SofarSolar_50-70KTL;;;;;;;
+1;3;8193_7;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+2;3;4097;U16;;Grid power increasingRate;grid_power_increasingrate;1.000000;0.000000;'%;4
+3;3;4098;U16;;Grid connection waiting time after grid fault recovery;grid_connection_waiting_time_after_grid_fault_recovery;1.000000;0.000000;s;4
+4;3;4099;U16;;Grid power increasing after grid fault recovery;grid_power_increasing_after_grid_fault_recovery;1.000000;0.000000;'%;4
+5;3;4100;U16;;Over voltage protection value before grid connection;over_voltage_protection_value_before_grid_connection;0.100000;0.000000;V;4
+6;3;4101;U16;;Under voltage protection value before grid connection;under_voltage_protection_value_before_grid_connection;0.100000;0.000000;V;4
+7;3;4102;U16;;Over frequency protection value before grid connection;over_frequency_protection_value_before_grid_connection;0.010000;0.000000;Hz;4
+8;3;4103;U16;;Under frequency protection value before grid connection;under_frequency_protection_value_before_grid_connection;0.010000;0.000000;Hz;4
+9;3;1;U16;;Fault 1;fault_1;1.000000;0.000000;;4
+10;3;2;U16;;Fault 2;fault_2;1.000000;0.000000;;4
+11;3;3;U16;;Fault 3;fault_3;1.000000;0.000000;;4
+12;3;4;U16;;Fault 4;fault_4;1.000000;0.000000;;4
+13;3;5;U16;;Fault 5;fault_5;1.000000;0.000000;;4
+14;3;6;U16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+15;3;7;U16;;PV1 current;pv1_current;0.010000;0.000000;A;4
+16;3;8;U16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+17;3;9;U16;;PV2 current;pv2_current;0.010000;0.000000;A;4
+18;3;10;U16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+19;3;11;U16;;PV3 current;pv3_current;0.010000;0.000000;A;4
+20;3;12;U16;;PV1 power;pv1_power;0.010000;0.000000;kW;4
+21;3;13;U16;;PV2 power;pv2_power;0.010000;0.000000;kW;4
+22;3;14;U16;;PV3 power;pv3_power;0.010000;0.000000;kW;4
+23;3;15;U16;;Active power (output);active_power_output;0.010000;0.000000;kW;4
+24;3;16;U16;;Reactive power (output);reactive_power_output;0.010000;0.000000;kVar;4
+25;3;17;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+26;3;18;U16;;A-phase voltage;aphase_voltage;0.100000;0.000000;V;4
+27;3;19;U16;;A-phase current;aphase_current;0.010000;0.000000;A;4
+28;3;20;U16;;B-phase voltage;bphase_voltage;0.100000;0.000000;V;4
+29;3;21;U16;;B-phase current;bphase_current;0.010000;0.000000;A;4
+30;3;22;U16;;C-phase voltage;cphase_voltage;0.100000;0.000000;V;4
+31;3;23;U16;;C-phase current;cphase_current;0.010000;0.000000;A;4
+32;3;24;U32;;Total production;total_production;1.000000;0.000000;kWh;4
+33;3;26;U32;;Total generation time;total_generation_time;1.000000;0.000000;Hour;4
+34;3;28;U16;;The day generation;the_day_generation;0.100000;0.000000;kWh;4
+35;3;29;U16;;The day generation time;the_day_generation_time;1.000000;0.000000;Min;4
+36;3;30;I16;;Inverter heat sink temperature;inverter_heat_sink_temperature;1.000000;0.000000;Deg. Celsius;4
+37;3;31;I16;;Inverter inner temperature;inverter_inner_temperature;1.000000;0.000000;Deg. Celsius;4
+38;3;32;U16;;Inverter bus voltage;inverter_bus_voltage;0.010000;0.000000;V;4
+39;3;33;U16;;PV1 input voltage sampling by slave CPU;pv1_input_voltage_sampling_by_slave_cpu;0.010000;0.000000;V;4
+40;3;34;U16;;PV2 input voltage sampling by slave CPU;pv2_input_voltage_sampling_by_slave_cpu;0.010000;0.000000;V;4
+41;3;35;U16;;PV3 input voltage sampling by slave CPU;pv3_input_voltage_sampling_by_slave_cpu;0.010000;0.000000;V;4
+42;3;36;U16;;Count-down time;countdown_time;1.000000;0.000000;s;4
+43;3;37;U16;;Inverter alert message;inverter_alert_message;1.000000;0.000000;;8
+44;3;38;U16;;Input mode;input_mode;0.000000;0.000000;;4
+45;3;39;U16;;Insulation of PV to ground;insulation_of_pv_to_ground;1.000000;0.000000;Kohm;4
+46;3;40;U16;;Reserved;reserved;1.000000;0.000000;;4
+47;3;41;U16;;Reserved1;reserved1;1.000000;0.000000;;4
+48;3;42;U16;;Country code;country_code;1.000000;0.000000;;4
+49;3;43;I16;;Temp of R-phase module in the inverter;temp_of_rphase_module_in_the_inverter;1.000000;0.000000;Deg. Celsius;4
+50;3;44;I16;;Temp of S-phase module in the inverter;temp_of_sphase_module_in_the_inverter;1.000000;0.000000;Deg. Celsius;4
+51;3;45;I16;;Temp of T-phase module in the inverter;temp_of_tphase_module_in_the_inverter;1.000000;0.000000;Deg. Celsius;4
+52;3;256;U16;;Fault1_1;fault1_1;1.000000;0.000000;;4
+53;3;257;U16;;Fault2_2;fault2_2;1.000000;0.000000;;4
+54;3;258;U16;;Fault3_3;fault3_3;1.000000;0.000000;;4
+55;3;259;U16;;Fault4_4;fault4_4;1.000000;0.000000;;4
+56;3;260;U16;;Fault5_5;fault5_5;1.000000;0.000000;;4
+57;3;261;U16;;String 1 Voltage;string_1_voltage;0.100000;0.000000;V;4
+58;3;262;I16;;String 1 Current;string_1_current;0.010000;0.000000;A;4
+59;3;263;U16;;String 2 Voltage;string_2_voltage;0.100000;0.000000;V;4
+60;3;264;I16;;String 2 Current;string_2_current;0.010000;0.000000;A;4
+61;3;265;U16;;String 3 Voltage;string_3_voltage;0.100000;0.000000;V;4
+62;3;266;I16;;String 3 Current;string_3_current;0.010000;0.000000;A;4
+63;3;267;U16;;String 4 Voltage;string_4_voltage;0.100000;0.000000;V;4
+64;3;268;I16;;String 4 Current;string_4_current;0.010000;0.000000;A;4
+65;3;269;U16;;String 5 Voltage;string_5_voltage;0.100000;0.000000;V;4
+66;3;270;I16;;String 5 Current;string_5_current;0.010000;0.000000;A;4
+67;3;271;U16;;String 6 Voltage;string_6_voltage;0.100000;0.000000;V;4
+68;3;272;I16;;String 6 Current;string_6_current;0.010000;0.000000;A;4
+69;3;273;U16;;String 7 Voltage;string_7_voltage;0.100000;0.000000;V;4
+70;3;274;I16;;String 7 Current;string_7_current;0.010000;0.000000;A;4
+71;3;275;U16;;String 8 Voltage;string_8_voltage;0.100000;0.000000;V;4
+72;3;276;I16;;String 8 Current;string_8_current;0.010000;0.000000;A;4
+73;3;277;U16;;String 9 Voltage;string_9_voltage;0.100000;0.000000;V;4
+74;3;278;I16;;String 9 Current;string_9_current;0.010000;0.000000;A;4
+75;3;279;U16;;String 10 Voltage;string_10_voltage;0.100000;0.000000;V;4
+76;3;280;I16;;String 10 Current;string_10_current;0.010000;0.000000;A;4
+77;3;281;U16;;String 11 Voltage;string_11_voltage;0.100000;0.000000;V;4
+78;3;282;I16;;String 11 Current;string_11_current;0.010000;0.000000;A;4
+79;3;283;U16;;String 12 Voltage;string_12_voltage;0.100000;0.000000;V;4
+80;3;284;I16;;String 12 Current;string_12_current;0.010000;0.000000;A;4
+81;3;4112;U16;;Enabled register for grid voltage protection;enabled_register_for_grid_voltage_protection;1.000000;0.000000;;4
+82;3;4113;U16;;Class 1 over voltage protection value;class_1_over_voltage_protection_value;0.100000;0.000000;V;4
+83;3;4114;U16;;Trigger time for class 1 over voltage protection;trigger_time_for_class_1_over_voltage_protection;10.000000;0.000000;ms;4
+84;3;4115;U16;;Class 2 over voltage protection value;class_2_over_voltage_protection_value;0.010000;0.000000;A;4
+85;3;4116;U16;;Trigger time for class 1 over voltage protection_1;trigger_time_for_class_1_over_voltage_protection_1;10.000000;0.000000;ms;4
+86;3;4117;U16;;Class 1 under voltage protection value;class_1_under_voltage_protection_value;0.010000;0.000000;A;4
+87;3;4118;U16;;Trigger time for class 1 under voltage protection;trigger_time_for_class_1_under_voltage_protection;10.000000;0.000000;ms;4
+88;3;4119;U16;;Class 2 under voltage protection value;class_2_under_voltage_protection_value;0.010000;0.000000;A;4
+89;3;4120;U16;;Trigger time for class 2 under voltage protection;trigger_time_for_class_2_under_voltage_protection;10.000000;0.000000;ms;4
+90;3;4121;U16;;10-Min Over voltage protection value;v_10min_over_voltage_protection_value;0.010000;0.000000;A;4
+91;3;4128;U16;;Enabled register for frequency Protection;enabled_register_for_frequency_protection;1.000000;0.000000;;4
+92;3;4129;U16;;Class 1 over frequency protection value;class_1_over_frequency_protection_value;0.010000;0.000000;Hz;4
+93;3;4130;U16;;Trigger time for class 1 over frequency protection;trigger_time_for_class_1_over_frequency_protection;10.000000;0.000000;ms;4
+94;3;4131;U16;;Class 2 over frequency protection value;class_2_over_frequency_protection_value;0.010000;0.000000;Hz;4
+95;3;4132;U16;;Trigger time for class 2 over frequency protection;trigger_time_for_class_2_over_frequency_protection;10.000000;0.000000;ms;4
+96;3;4133;U16;;Class 1 under frequency protection value;class_1_under_frequency_protection_value;0.010000;0.000000;Hz;4
+97;3;4134;U16;;Trigger time for class 1 under frequency protection;trigger_time_for_class_1_under_frequency_protection;10.000000;0.000000;ms;4
+98;3;4135;U16;;Class 2 under frequency protection value;class_2_under_frequency_protection_value;0.010000;0.000000;Hz;4
+99;3;4136;U16;;Trigger time for class 2 under frequency protection;trigger_time_for_class_2_under_frequency_protection;10.000000;0.000000;ms;4
+100;3;4145;U16;;Class 1 DCI protection value;class_1_dci_protection_value;1.000000;0.000000;mA;4
+101;3;4146;U16;;Trigger time for class 1 DCI protection;trigger_time_for_class_1_dci_protection;10.000000;0.000000;ms;4
+102;3;4147;U16;;Class 2 DCI protection value;class_2_dci_protection_value;1.000000;0.000000;mA;4
+103;3;4148;U16;;Trigger time for class 2 DCI protection;trigger_time_for_class_2_dci_protection;10.000000;0.000000;ms;4
+104;3;4149;U16;;DCI injection test value;dci_injection_test_value;1.000000;0.000000;mA;4
+105;3;4160;U16;;Enabled register for active&remote on/off control;enabled_register_for_activeremote_onoff_control;1.000000;0.000000;;4
+106;3;4161;U16;;Percentage of active power output;percentage_of_active_power_output;0.100000;0.000000;'%;4
+107;3;4162;U16;;Remote on/off (0x55 on / 0x66 off);remote_onoff_0x55_on_0x66_off;1.000000;0.000000;;4
+108;3;4163;U16;;Staring point for power derate cause by grid voltage;staring_point_for_power_derate_cause_by_grid_voltage;0.100000;0.000000;V;4
+109;3;4164;U16;;Ending point for power derate cause by grid voltage;ending_point_for_power_derate_cause_by_grid_voltage;0.100000;0.000000;V;4
+110;3;4176;U16;;Enable & Working mode selection register;enable_working_mode_selection_register;1.000000;0.000000;;4
+111;3;4177;U16;;Staring rate for power derate;staring_rate_for_power_derate;0.010000;0.000000;Hz;4
+112;3;4178;U16;;Power derate rate;power_derate_rate;1.000000;0.000000;'%;4
+113;3;4179;U16;;After over frequency power derate restore, maximum rate for power recovery;after_over_frequency_power_derate_restore_maximum_rate_for_power_recovery;0.010000;0.000000;Hz;4
+114;3;4180;U16;;After over frequency power derate restore, minimum rate of power recovery;after_over_frequency_power_derate_restore_minimum_rate_of_power_recovery;0.010000;0.000000;Hz;4
+115;3;4181;U16;;Waiting time after over frequency power derate restore;waiting_time_after_over_frequency_power_derate_restore;0.020000;0.000000;s;4
+116;3;4182;U16;;Derate recovery rate;derate_recovery_rate;1.000000;0.000000;'%;4
+117;3;4192;U16;;Enable & Working mode register;enable_working_mode_register;1.000000;0.000000;;4
+118;3;4193;U16;;Power Factor;PF;1.000000;0.000000;;4
+119;3;4194;U16;;Regular reactive power percentage;regular_reactive_power_percentage;1.000000;0.000000;'%;4
+120;3;4195;I16;;P-cos Curve mode first point power factor;pcos_curve_mode_first_point_power_factor;1.000000;0.000000;'%;4
+121;3;4196;I16;;P-cos Curve mode first point power percentage;pcos_curve_mode_first_point_power_percentage;1.000000;0.000000;'%;4
+122;3;4197;I16;;P-cos Curve mode second point power factor;pcos_curve_mode_second_point_power_factor;1.000000;0.000000;'%;4
+123;3;4198;I16;;P-cos Curve mode second point power percentage;pcos_curve_mode_second_point_power_percentage;1.000000;0.000000;'%;4
+124;3;4199;I16;;P-cos Curve mode third point power factor;pcos_curve_mode_third_point_power_factor;1.000000;0.000000;'%;4
+125;3;4200;I16;;P-cos Curve mode third point power percentage;pcos_curve_mode_third_point_power_percentage;1.000000;0.000000;'%;4
+126;3;4201;I16;;P-cos Curve mode fourth point power factor;pcos_curve_mode_fourth_point_power_factor;1.000000;0.000000;'%;4
+127;3;4202;I16;;Q-cos Curve mode fourth point power percentage;qcos_curve_mode_fourth_point_power_percentage;1.000000;0.000000;'%;4
+128;3;4203;U16;;Q-cos Curve mode lockin voltage value;qcos_curve_mode_lockin_voltage_value;1.000000;0.000000;'%;4
+129;3;4204;U16;;P-cos curve mode lockout voltage value;pcos_curve_mode_lockout_voltage_value;1.000000;0.000000;'%;4
+130;3;4205;U16;;Starting voltage of Q-U curve mode 1 (high voltage);starting_voltage_of_qu_curve_mode_1_high_voltage;1.000000;0.000000;'%;4
+131;3;4206;U16;;Ending voltage of Q-U curve mode 1 (high voltage);ending_voltage_of_qu_curve_mode_1_high_voltage;1.000000;0.000000;'%;4
+132;3;4207;U16;;Starting voltage of Q-U curve mode 1 (low voltage);starting_voltage_of_qu_curve_mode_1_low_voltage;1.000000;0.000000;'%;4
+133;3;4208;U16;;P-Ending voltage of Q-U curve mode 1 (low voltage);pending_voltage_of_qu_curve_mode_1_low_voltage;1.000000;0.000000;'%;4
+134;3;4209;U16;;Lockin power from Q-U curve mode;lockin_power_from_qu_curve_mode;1.000000;0.000000;'%;4
+135;3;4210;U16;;Lockout power from R-U curve mode;lockout_power_from_ru_curve_mode;1.000000;0.000000;'%;4
+136;3;4211;U16;;Max reactive power of Q-U curve mode 1;max_reactive_power_of_qu_curve_mode_1;1.000000;0.000000;'%;4
+137;3;4212;U16;;Response time for reactive power from R-U curve mode 1;response_time_for_reactive_power_from_ru_curve_mode_1;1.000000;0.000000;s;4
+138;3;4224;U16;;LVRT Enable Register;lvrt_enable_register;1.000000;0.000000;;4
+139;3;4225;U16;;Enter the value of LVRT voltage;enter_the_value_of_lvrt_voltage;1.000000;0.000000;'%;4
+140;3;4226;U16;;Voltage for first point (LVRT curve);voltage_for_first_point_lvrt_curve;1.000000;0.000000;'%;4
+141;3;4227;U16;;Time for first point (LVRT curve);time_for_first_point_lvrt_curve;1.000000;0.000000;ms;4
+142;3;4228;U16;;Voltage for second point (LVRT curve);voltage_for_second_point_lvrt_curve;1.000000;0.000000;'%;4
+143;3;4229;U16;;Time for second point (LVRT curve);time_for_second_point_lvrt_curve;1.000000;0.000000;ms;4
+144;3;4230;U16;;Voltage for third point (LVRT curve);voltage_for_third_point_lvrt_curve;1.000000;0.000000;'%;4
+145;3;4231;U16;;Time for third point (LVRT curve);time_for_third_point_lvrt_curve;1.000000;0.000000;ms;4
+146;3;4232;U16;;Voltage for fourth point (LVRT curve);voltage_for_fourth_point_lvrt_curve;1.000000;0.000000;'%;4
+147;3;4233;U16;;Time for fourth point (LVRT curve);time_for_fourth_point_lvrt_curve;1.000000;0.000000;ms;4
+148;3;4234;U16;;Reactive current coefficient k;reactive_current_coefficient_k;1.000000;0.000000;;4
+149;3;4235;U16;;Waiting time for voltage recovery;waiting_time_for_voltage_recovery;1.000000;0.000000;ms;4
+150;3;4236;U16;;Power recovery rate;power_recovery_rate;1.000000;0.000000;;4
+151;3;4256;U16;;Is-landing enable register;islanding_enable_register;1.000000;0.000000;;4
+152;3;4257;U16;;GFCI enable register;gfci_enable_register;1.000000;0.000000;;4
+153;3;4258;U16;;Isolation resistor enable register;isolation_resistor_enable_register;1.000000;0.000000;;4
+154;3;4259;U16;;Insulation resistance protection value;insulation_resistance_protection_value;1.000000;0.000000;;4

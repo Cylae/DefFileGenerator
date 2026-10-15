@@ -1,0 +1,10 @@
+modbusRTU;Other;IngenieurBuro;MODBUS_Tx-RS485-MB;;;;;;;
+1;4;0;U16;;reserved;reserved;1.000000;0.000000;;0
+2;4;1;U16;;Module temperature;module_temperature;0.100000;-25.000000;C;4
+3;4;2;U16;;Ambiant temperature;ambiant_temperature;0.100000;-25.000000;C;4
+4;4;3;U16;;reserved;reserved_1;1.000000;0.000000;;0
+5;4;4;U16;;reserved;reserved_2;1.000000;4.000000;;0
+6;4;5;U16;;Module temperature;module_temperature_1;0.100000;-100.000000;;4
+7;4;6;U16;;Ambiant temperature;ambiant_temperature_1;0.100000;-100.000000;;4
+8;4;7;I16;;Module Temperature in °C;module_temperature_in_c;0.100000;0.000000;;0
+9;4;8;I16;;Module Temperature in °C;module_temperature_in_c_1;0.100000;0.000000;;0

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Growatt;Growatt_RTU_Protocol_II;;;;;;;
+modbusRTU;Inverter;Growatt;Growatt_RTU_Protocol_II;;;;;;;
 1;3;0;U16;;Remote On/Off . On（1）；Off（0）;remote_onoff_on1off0;1.000000;0.000000;;4
 2;3;1;U16;;Bit0: SPI enable Bit1: AutoTestStart Bit2: LVFRT enable Bit3: FreqDeratingEnable Bit4: Softstart enable Bit5: DRMS enable Bit6:PowerVoltFunc En Bit7~15:reserved;bit0_spi_enable_bit1_autoteststart_bit2_lvfrt_enable_bit3_freqderatingenable_bit4_softstart_enable_bit5_drms_enable_bit6powervoltfunc_en_bit715reserved;1.000000;0.000000;;0
 3;3;2;U16;;Set Holding register 3,4,5,99 CMD will be memory or not(1/0), if not, these settings are the initial value.;set_holding_register_34599_cmd_will_be_memory_or_not10_if_not_these_settings_are_the_initial_value;1.000000;0.000000;;4

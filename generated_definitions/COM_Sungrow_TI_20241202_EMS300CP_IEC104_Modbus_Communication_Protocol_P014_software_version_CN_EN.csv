@@ -1,0 +1,695 @@
+modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_IEC104&Mo;;;;;;;
+1;4;1;U16;;充电完成 Charging Complete;charging_complete;1.000000;0.000000;;4
+2;4;2;U16;;放电完成 Discharge Completed;discharge_completed;1.000000;0.000000;;4
+3;4;3;U16;;充电闭锁 Charge Locked;charge_locked;1.000000;0.000000;;4
+4;4;4;U16;;放电闭锁 Discharge Locked;discharge_locked;1.000000;0.000000;;4
+5;4;5;U16;;通讯中断 Communication Status;communication_status;1.000000;0.000000;;9
+6;4;6;U16;;DI1触发信号 Triggering Signal of Stable Control 1;di1triggering_signal_of_stable_control_1;1.000000;0.000000;;4
+7;4;7;U16;;DI2触发信号 Triggering Signal of Stable Control 2;di2triggering_signal_of_stable_control_2;1.000000;0.000000;;4
+8;4;8;U16;;有功控制运行标识 Active Power Control Running Status;active_power_control_running_status;1.000000;0.000000;;9
+9;4;9;U16;;无功控制运行标识 Reactive Power Control Running Status;reactive_power_control_running_status;1.000000;0.000000;;9
+10;4;10;U16;;AGC允许控制信号 AGC Allow Control;agcagc_allow_control;1.000000;0.000000;;4
+11;4;11;U16;;AGC远方/就地状态 AGC Remote/Local Status;agcagc_remotelocal_status;1.000000;0.000000;;9
+12;4;12;U16;;AVC上调节闭锁 AVC Turn Up Lock;avcavc_turn_up_lock;1.000000;0.000000;;4
+13;4;13;U16;;AVC下调节闭锁 AVC Turn Down Lock;avcavc_turn_down_lock;1.000000;0.000000;;4
+14;4;14;U16;;AVC允许控制信号 AVC Allow Control;avcavc_allow_control;1.000000;0.000000;;4
+15;4;15;U16;;AVC远方/就地状态 AVC Remote/Local Status;avcavc_remotelocal_status;1.000000;0.000000;;9
+16;4;16;U16;;装置告警 Device Alarm;device_alarm;1.000000;0.000000;;9
+17;4;17;U16;;装置故障告警 Device Fault;device_fault;1.000000;0.000000;;9
+18;4;18;U16;;电站运行状态停机 Plant Stop in Running Status;plant_stop_in_running_status;1.000000;0.000000;;9
+19;4;19;U16;;电站运行状态待机 Plant Standby in Running Status;plant_standby_in_running_status;1.000000;0.000000;;9
+20;4;20;U16;;电站运行状态放电 Plant Discharge in Running Status;plant_discharge_in_running_status;1.000000;0.000000;;9
+21;4;21;U16;;电站运行状态充电 Plant Charge in Running Status;plant_charge_in_running_status;1.000000;0.000000;;9
+22;4;22;U16;;电站运行状态故障 Plant Fault in Running Status;plant_fault_in_running_status;1.000000;0.000000;;9
+23;4;23;U16;;频率控制运行标识 Frequency Control Running Flag;frequency_control_running_flag;1.000000;0.000000;;4
+24;4;24;U32;;一次调频动作 Primary Frequency Regulation Control;primary_frequency_regulation_control;1.000000;0.000000;;4
+25;4;25;U16;;一次调频退出信号 Primary Frequency Regulation Exit Signal;primary_frequency_regulation_exit_signal;1.000000;0.000000;;4
+26;4;16385;F32;;储能总额定功率 Total Rated Power of Energy Storage;total_rated_power_of_energy_storage;1.000000;0.000000;kW;4
+27;4;16386;I32;;储能有功功率 Active Power of Energy Storage;active_power_of_energy_storage;1.000000;0.000000;kW;4
+28;4;16387;I32;;储能无功功率 Reactive Power of Energy Storage;reactive_power_of_energy_storage;1.000000;0.000000;kvar;4
+29;4;16388;U32;;最高SOC Maximum SOC;socmaximum_soc;1.000000;0.000000;'%;4
+30;4;16389;U32;;实际SOC Actual SOC;socactual_soc;1.000000;0.000000;'%;4
+31;4;16390;U32;;最低SOC Minimum SOC;socminimum_soc;1.000000;0.000000;'%;4
+32;4;16391;U32;;SOC上限 SOC Upper Limit;socsoc_upper_limit;1.000000;0.000000;'%;4
+33;4;16392;U32;;SOC下限 SOC Lower Limit;socsoc_lower_limit;1.000000;0.000000;'%;4
+34;4;16393;U32;;SOC上限一级保护 SOC Upper Limit Level 1 Protection;socsoc_upper_limit_level_1_protection;1.000000;0.000000;'%;4
+35;4;16394;U32;;SOC下限一级保护 SOC Lower Limit Level 1 Protection;socsoc_lower_limit_level_1_protection;1.000000;0.000000;'%;4
+36;4;16395;U32;;母线电压 BusVoltage;busvoltage;1.000000;0.000000;V;4
+37;4;16396;U32;;电网频率 Grid Frequency;grid_frequency;1.000000;0.000000;Hz;4
+38;4;16397;I32;;功率因数 Power Factor;power_factor;1.000000;0.000000;/;4
+39;4;16398;U32;;最大充电功率允许值 Maximum Charging Power Allowed;maximum_charging_power_allowed;1.000000;0.000000;kW;4
+40;4;16399;U32;;最大放电功率允许值 Maximum Discharging Power;maximum_discharging_power;1.000000;0.000000;kW;4
+41;4;16400;U32;;最大功率充电可用时间 Available Time for Maximum Power Charging;available_time_for_maximum_power_charging;1.000000;0.000000;min;4
+42;4;16401;U32;;最大功率放电可用时间 Available Time for Maximum Power Discharging;available_time_for_maximum_power_discharging;1.000000;0.000000;min;4
+43;4;16402;U32;;全场总充电量 Total Field Charge Capacity;total_field_charge_capacity;1.000000;0.000000;kWh;4
+44;4;16403;U32;;全场总放电量 Total Field Discharge Capacity;total_field_discharge_capacity;1.000000;0.000000;kWh;4
+45;4;16404;U32;;全场日充电量 Total Field Daily Charge;total_field_daily_charge;1.000000;0.000000;kWh;4
+46;4;16405;U32;;全场日放电量 Total Field Daily Discharge;total_field_daily_discharge;1.000000;0.000000;kWh;4
+47;4;16406;U32;;系统可放电量 System Dischargeable Energy;system_dischargeable_energy;1.000000;0.000000;kWh;4
+48;4;16407;U32;;系统可充电量 System Chargeable Capacity;system_chargeable_capacity;1.000000;0.000000;kWh;4
+49;4;16408;I32;;储能可用无功功率 Energy Storage Power;energy_storage_power;1.000000;0.000000;kvar;4
+50;4;16409;I32;;电站有功功率 Plant Active Power;plant_active_power;1.000000;0.000000;kW;4
+51;4;16410;I32;;电站无功功率 Plant Reactive Power;plant_reactive_power;1.000000;0.000000;kvar;4
+52;4;16412;I32;;光伏额定功率 Photovoltaic Power Rating;photovoltaic_power_rating;1.000000;0.000000;kW;4
+53;4;16413;I32;;光伏可用无功功率 PV Available Reactive Power;pv_available_reactive_power;1.000000;0.000000;kvar;4
+54;4;16414;I32;;光伏有功功率 PV Active Power;pv_active_power;1.000000;0.000000;kW;4
+55;4;16415;I32;;光伏无功功率 PV Reactive Power;pv_reactive_power;1.000000;0.000000;kvar;4
+56;4;16416;U32;;光伏子阵个数 PV Subarray Number;pv_subarray_number;1.000000;0.000000;/;4
+57;4;16417;U32;;LC总台数 LC Total Number;lclc_total_number;1.000000;0.000000;/;4
+58;4;16418;U32;;可用LC总台数 Total Number of Available LC;lctotal_number_of_available_lc;1.000000;0.000000;/;4
+59;4;16419;I32;;本地有功功率设定值 Local Setting Value of Active Power;local_setting_value_of_active_power;1.000000;0.000000;kW;4
+60;4;16420;I32;;本地无功功率设定值 Local Setting Value of Reactive Power;local_setting_value_of_reactive_power;1.000000;0.000000;kvar;4
+61;4;16421;I32;;本地功率因数设定值 Local Power Factor Set Value;local_power_factor_set_value;1.000000;0.000000;/;4
+62;4;16422;U32;;实时充电可用时间 Available Time of Real-time Charging;available_time_of_realtime_charging;1.000000;0.000000;min;4
+63;4;16423;U32;;实时放电可用时间 Available Time of Real-time Discharging;available_time_of_realtime_discharging;1.000000;0.000000;min;4
+64;4;16424;U32;;AGC_PLAN_001;agc_plan_001;1.000000;0.000000;kW;4
+65;4;16425;U32;;AGC_PLAN_002;agc_plan_002;1.000000;0.000000;kW;4
+66;4;16426;U32;;AGC_PLAN_003;agc_plan_003;1.000000;0.000000;kW;4
+67;4;16427;U32;;AGC_PLAN_004;agc_plan_004;1.000000;0.000000;kW;4
+68;4;16428;U32;;AGC_PLAN_005;agc_plan_005;1.000000;0.000000;kW;4
+69;4;16429;U32;;AGC_PLAN_006;agc_plan_006;1.000000;0.000000;kW;4
+70;4;16430;U32;;AGC_PLAN_007;agc_plan_007;1.000000;0.000000;kW;4
+71;4;16431;U32;;AGC_PLAN_008;agc_plan_008;1.000000;0.000000;kW;4
+72;4;16432;U32;;AGC_PLAN_009;agc_plan_009;1.000000;0.000000;kW;4
+73;4;16433;U32;;AGC_PLAN_010;agc_plan_010;1.000000;0.000000;kW;4
+74;4;16434;U32;;AGC_PLAN_011;agc_plan_011;1.000000;0.000000;kW;4
+75;4;16435;U32;;AGC_PLAN_012;agc_plan_012;1.000000;0.000000;kW;4
+76;4;16436;U32;;AGC_PLAN_013;agc_plan_013;1.000000;0.000000;kW;4
+77;4;16437;U32;;AGC_PLAN_014;agc_plan_014;1.000000;0.000000;kW;4
+78;4;16438;U32;;AGC_PLAN_015;agc_plan_015;1.000000;0.000000;kW;4
+79;4;16439;U32;;AGC_PLAN_016;agc_plan_016;1.000000;0.000000;kW;4
+80;4;16440;U32;;AGC_PLAN_017;agc_plan_017;1.000000;0.000000;kW;4
+81;4;16441;U32;;AGC_PLAN_018;agc_plan_018;1.000000;0.000000;kW;4
+82;4;16442;U32;;AGC_PLAN_019;agc_plan_019;1.000000;0.000000;kW;4
+83;4;16443;U32;;AGC_PLAN_020;agc_plan_020;1.000000;0.000000;kW;4
+84;4;16444;U32;;AGC_PLAN_021;agc_plan_021;1.000000;0.000000;kW;4
+85;4;16445;U32;;AGC_PLAN_022;agc_plan_022;1.000000;0.000000;kW;4
+86;4;16446;U32;;AGC_PLAN_023;agc_plan_023;1.000000;0.000000;kW;4
+87;4;16447;U32;;AGC_PLAN_024;agc_plan_024;1.000000;0.000000;kW;4
+88;4;16448;U32;;AGC_PLAN_025;agc_plan_025;1.000000;0.000000;kW;4
+89;4;16449;U32;;AGC_PLAN_026;agc_plan_026;1.000000;0.000000;kW;4
+90;4;16450;U32;;AGC_PLAN_027;agc_plan_027;1.000000;0.000000;kW;4
+91;4;16451;U32;;AGC_PLAN_028;agc_plan_028;1.000000;0.000000;kW;4
+92;4;16452;U32;;AGC_PLAN_029;agc_plan_029;1.000000;0.000000;kW;4
+93;4;16453;U32;;AGC_PLAN_030;agc_plan_030;1.000000;0.000000;kW;4
+94;4;16454;U32;;AGC_PLAN_031;agc_plan_031;1.000000;0.000000;kW;4
+95;4;16455;U32;;AGC_PLAN_032;agc_plan_032;1.000000;0.000000;kW;4
+96;4;16456;U32;;AGC_PLAN_033;agc_plan_033;1.000000;0.000000;kW;4
+97;4;16457;U32;;AGC_PLAN_034;agc_plan_034;1.000000;0.000000;kW;4
+98;4;16458;U32;;AGC_PLAN_035;agc_plan_035;1.000000;0.000000;kW;4
+99;4;16459;U32;;AGC_PLAN_036;agc_plan_036;1.000000;0.000000;kW;4
+100;4;16460;U32;;AGC_PLAN_037;agc_plan_037;1.000000;0.000000;kW;4
+101;4;16461;U32;;AGC_PLAN_038;agc_plan_038;1.000000;0.000000;kW;4
+102;4;16462;U32;;AGC_PLAN_039;agc_plan_039;1.000000;0.000000;kW;4
+103;4;16463;U32;;AGC_PLAN_040;agc_plan_040;1.000000;0.000000;kW;4
+104;4;16464;U32;;AGC_PLAN_041;agc_plan_041;1.000000;0.000000;kW;4
+105;4;16465;U32;;AGC_PLAN_042;agc_plan_042;1.000000;0.000000;kW;4
+106;4;16466;U32;;AGC_PLAN_043;agc_plan_043;1.000000;0.000000;kW;4
+107;4;16467;U32;;AGC_PLAN_044;agc_plan_044;1.000000;0.000000;kW;4
+108;4;16468;U32;;AGC_PLAN_045;agc_plan_045;1.000000;0.000000;kW;4
+109;4;16469;U32;;AGC_PLAN_046;agc_plan_046;1.000000;0.000000;kW;4
+110;4;16470;U32;;AGC_PLAN_047;agc_plan_047;1.000000;0.000000;kW;4
+111;4;16471;U32;;AGC_PLAN_048;agc_plan_048;1.000000;0.000000;kW;4
+112;4;16472;U32;;AGC_PLAN_049;agc_plan_049;1.000000;0.000000;kW;4
+113;4;16473;U32;;AGC_PLAN_050;agc_plan_050;1.000000;0.000000;kW;4
+114;4;16474;U32;;AGC_PLAN_051;agc_plan_051;1.000000;0.000000;kW;4
+115;4;16475;U32;;AGC_PLAN_052;agc_plan_052;1.000000;0.000000;kW;4
+116;4;16476;U32;;AGC_PLAN_053;agc_plan_053;1.000000;0.000000;kW;4
+117;4;16477;U32;;AGC_PLAN_054;agc_plan_054;1.000000;0.000000;kW;4
+118;4;16478;U32;;AGC_PLAN_055;agc_plan_055;1.000000;0.000000;kW;4
+119;4;16479;U32;;AGC_PLAN_056;agc_plan_056;1.000000;0.000000;kW;4
+120;4;16480;U32;;AGC_PLAN_057;agc_plan_057;1.000000;0.000000;kW;4
+121;4;16481;U32;;AGC_PLAN_058;agc_plan_058;1.000000;0.000000;kW;4
+122;4;16482;U32;;AGC_PLAN_059;agc_plan_059;1.000000;0.000000;kW;4
+123;4;16483;U32;;AGC_PLAN_060;agc_plan_060;1.000000;0.000000;kW;4
+124;4;16484;U32;;AGC_PLAN_061;agc_plan_061;1.000000;0.000000;kW;4
+125;4;16485;U32;;AGC_PLAN_062;agc_plan_062;1.000000;0.000000;kW;4
+126;4;16486;U32;;AGC_PLAN_063;agc_plan_063;1.000000;0.000000;kW;4
+127;4;16487;U32;;AGC_PLAN_064;agc_plan_064;1.000000;0.000000;kW;4
+128;4;16488;U32;;AGC_PLAN_065;agc_plan_065;1.000000;0.000000;kW;4
+129;4;16489;U32;;AGC_PLAN_066;agc_plan_066;1.000000;0.000000;kW;4
+130;4;16490;U32;;AGC_PLAN_067;agc_plan_067;1.000000;0.000000;kW;4
+131;4;16491;U32;;AGC_PLAN_068;agc_plan_068;1.000000;0.000000;kW;4
+132;4;16492;U32;;AGC_PLAN_069;agc_plan_069;1.000000;0.000000;kW;4
+133;4;16493;U32;;AGC_PLAN_070;agc_plan_070;1.000000;0.000000;kW;4
+134;4;16494;U32;;AGC_PLAN_071;agc_plan_071;1.000000;0.000000;kW;4
+135;4;16495;U32;;AGC_PLAN_072;agc_plan_072;1.000000;0.000000;kW;4
+136;4;16496;U32;;AGC_PLAN_073;agc_plan_073;1.000000;0.000000;kW;4
+137;4;16497;U32;;AGC_PLAN_074;agc_plan_074;1.000000;0.000000;kW;4
+138;4;16498;U32;;AGC_PLAN_075;agc_plan_075;1.000000;0.000000;kW;4
+139;4;16499;U32;;AGC_PLAN_076;agc_plan_076;1.000000;0.000000;kW;4
+140;4;16500;U32;;AGC_PLAN_077;agc_plan_077;1.000000;0.000000;kW;4
+141;4;16501;U32;;AGC_PLAN_078;agc_plan_078;1.000000;0.000000;kW;4
+142;4;16502;U32;;AGC_PLAN_079;agc_plan_079;1.000000;0.000000;kW;4
+143;4;16503;U32;;AGC_PLAN_080;agc_plan_080;1.000000;0.000000;kW;4
+144;4;16504;U32;;AGC_PLAN_081;agc_plan_081;1.000000;0.000000;kW;4
+145;4;16505;U32;;AGC_PLAN_082;agc_plan_082;1.000000;0.000000;kW;4
+146;4;16506;U32;;AGC_PLAN_083;agc_plan_083;1.000000;0.000000;kW;4
+147;4;16507;U32;;AGC_PLAN_084;agc_plan_084;1.000000;0.000000;kW;4
+148;4;16508;U32;;AGC_PLAN_085;agc_plan_085;1.000000;0.000000;kW;4
+149;4;16509;U32;;AGC_PLAN_086;agc_plan_086;1.000000;0.000000;kW;4
+150;4;16510;U32;;AGC_PLAN_087;agc_plan_087;1.000000;0.000000;kW;4
+151;4;16511;U32;;AGC_PLAN_088;agc_plan_088;1.000000;0.000000;kW;4
+152;4;16512;U32;;AGC_PLAN_089;agc_plan_089;1.000000;0.000000;kW;4
+153;4;16513;U32;;AGC_PLAN_090;agc_plan_090;1.000000;0.000000;kW;4
+154;4;16514;U32;;AGC_PLAN_091;agc_plan_091;1.000000;0.000000;kW;4
+155;4;16515;U32;;AGC_PLAN_092;agc_plan_092;1.000000;0.000000;kW;4
+156;4;16516;U32;;AGC_PLAN_093;agc_plan_093;1.000000;0.000000;kW;4
+157;4;16517;U32;;AGC_PLAN_094;agc_plan_094;1.000000;0.000000;kW;4
+158;4;16518;U32;;AGC_PLAN_095;agc_plan_095;1.000000;0.000000;kW;4
+159;4;16519;U32;;AGC_PLAN_096;agc_plan_096;1.000000;0.000000;kW;4
+160;4;16520;U32;;变压器容量 Transformer Capacity;transformer_capacity;1.000000;0.000000;kVA;4
+161;4;16521;F32;;有功折算系数 Active Power Conversion Coefficient;active_power_conversion_coefficient;1.000000;0.000000;/;4
+162;4;16522;F32;;日发电量 Daily Yield;daily_yield;1.000000;0.000000;kWh;4
+163;4;16523;F32;;总发电量 Total Power Yield;total_power_yield;1.000000;0.000000;kWh;4
+164;4;16524;F32;;光伏装机容量 PV Installed Capacity;pv_installed_capacity;1.000000;0.000000;kWp;4
+165;4;16525;U16;;调频算法段数 Number of FM Algorithm Segments;number_of_fm_algorithm_segments;1.000000;0.000000;/;4
+166;4;16526;U32;;并网点额定频率 Rated Frequency of Grid-connection Point;rated_frequency_of_gridconnection_point;1.000000;0.000000;Hz;4
+167;4;16527;U32;;频率调差系数 Frequency Regulation Coefficient;frequency_regulation_coefficient;1.000000;0.000000;/;4
+168;4;16528;U32;;调频死区 Frequency Regulation Dead Zone;frequency_regulation_dead_zone;1.000000;0.000000;/;4
+169;4;16529;U32;;最大输出有功功率 Maximum Active Power Output;maximum_active_power_output;1.000000;0.000000;kW;4
+170;4;16530;U32;;最大吸收有功功率 Maximum Active Power Absorbed;maximum_active_power_absorbed;1.000000;0.000000;kW;4
+171;4;16531;U32;;有功功率限幅系数下限 Lower Limit of Active Power Limit Coefficient;lower_limit_of_active_power_limit_coefficient;1.000000;0.000000;/;4
+172;4;16532;U32;;有功功率限幅系数上限 Upper Limit of Active Power Limit Coefficient;upper_limit_of_active_power_limit_coefficient;1.000000;0.000000;/;4
+173;4;16533;U32;;调频二段调差系数 Frequency Regulation II Regulation Coefficient;frequency_regulation_ii_regulation_coefficient;1.000000;0.000000;/;4
+174;4;16534;U32;;调频二段死区 Frequency Regulation II Dead Zone;frequency_regulation_ii_dead_zone;1.000000;0.000000;Hz;4
+175;4;16535;U32;;一次调频动作前有功功率 Active Power Before Primary Frequency Regulation;active_power_before_primary_frequency_regulation;1.000000;0.000000;kW;4
+176;4;16536;U32;;一次调频动作后有功功率 Active Power After Primary Frequency Regulation;active_power_after_primary_frequency_regulation;1.000000;0.000000;kW;4
+177;4;16537;F32;;储能剩余电量 Residual Capacity of Energy Storage;residual_capacity_of_energy_storage;1.000000;0.000000;kWh;4
+178;4;16538;U16;;电池电压 Battery Voltage;battery_voltage;1.000000;0.000000;V;4
+179;4;16539;F32;;有功负载 Active Load;active_load;1.000000;0.000000;kW;4
+180;4;16540;F32;;储能额定容量 Rated Capacity of Energy Storage;rated_capacity_of_energy_storage;1.000000;0.000000;kWh;4
+181;4;16541;U16;;系统运行状态 System Operating Status;system_operating_status;1.000000;0.000000;/;9
+182;4;16543;U16;;分时功率时间段1开始时间 Start Time of Time of Use Power Period 1;v_1start_time_of_time_of_use_power_period_1;1.000000;0.000000;Min;4
+183;4;16544;U16;;分时功率时间段1结束时间 End Time of Time of Use Power Period 1;v_1end_time_of_time_of_use_power_period_1;1.000000;0.000000;Min;4
+184;4;16545;F32;;分时功率时间段1设置功率 Power Setting of Time of Use Power Period 1;v_1power_setting_of_time_of_use_power_period_1;1.000000;0.000000;kW;4
+185;4;16547;U16;;分时功率时间段2开始时间 Start Time of Time of Use Power Period 2;v_2start_time_of_time_of_use_power_period_2;1.000000;0.000000;Min;4
+186;4;16548;U16;;分时功率时间段2结束时间 End Time of Time of Use Power Period 2;v_2end_time_of_time_of_use_power_period_2;1.000000;0.000000;Min;4
+187;4;16549;F32;;分时功率时间段2设置功率 Power Setting of Time of Use Power Period 2;v_2power_setting_of_time_of_use_power_period_2;1.000000;0.000000;kW;4
+188;4;16551;U16;;分时功率时间段3开始时间 Start Time of Time of Use Power Period 3;v_3start_time_of_time_of_use_power_period_3;1.000000;0.000000;Min;4
+189;4;16552;U16;;分时功率时间段3结束时间 End Time of Time of Use Power Period 3;v_3end_time_of_time_of_use_power_period_3;1.000000;0.000000;Min;4
+190;4;16553;F32;;分时功率时间段3设置功率 Power Setting of Time of Use Power Period 3;v_3power_setting_of_time_of_use_power_period_3;1.000000;0.000000;kW;4
+191;4;16555;U16;;分时功率时间段4开始时间 Start Time of Time of Use Power Period 4;v_4start_time_of_time_of_use_power_period_4;1.000000;0.000000;Min;4
+192;4;16556;U16;;分时功率时间段4结束时间 End Time of Time of Use Power Period 4;v_4end_time_of_time_of_use_power_period_4;1.000000;0.000000;Min;4
+193;4;16557;F32;;分时功率时间段4设置功率 Power Setting of Time of Use Power Period 4;v_4power_setting_of_time_of_use_power_period_4;1.000000;0.000000;kW;4
+194;4;16559;U16;;分时功率时间段5开始时间 Start Time of Time of Use Power Period 5;v_5start_time_of_time_of_use_power_period_5;1.000000;0.000000;Min;4
+195;4;16560;U16;;分时功率时间段5结束时间 End Time of Time of Use Power Period 5;v_5end_time_of_time_of_use_power_period_5;1.000000;0.000000;Min;4
+196;4;16561;F32;;分时功率时间段5设置功率 Power Setting of Time of Use Power Period 5;v_5power_setting_of_time_of_use_power_period_5;1.000000;0.000000;kW;4
+197;4;16563;U16;;分时功率时间段6开始时间 Start Time of Time of Use Power Period 6;v_6start_time_of_time_of_use_power_period_6;1.000000;0.000000;Min;4
+198;4;16564;U16;;分时功率时间段6结束时间 End Time of Time of Use Power Period 6;v_6end_time_of_time_of_use_power_period_6;1.000000;0.000000;Min;4
+199;4;16565;F32;;分时功率时间段6设置功率 Power Setting of Time of Use Power Period 6;v_6power_setting_of_time_of_use_power_period_6;1.000000;0.000000;kW;4
+200;4;16567;U16;;分时功率时间段7开始时间 Start Time of Time of Use Power Period 7;v_7start_time_of_time_of_use_power_period_7;1.000000;0.000000;Min;4
+201;4;16568;U16;;分时功率时间段7结束时间 End Time of Time of Use Power Period 7;v_7end_time_of_time_of_use_power_period_7;1.000000;0.000000;Min;4
+202;4;16569;F32;;分时功率时间段7设置功率 Power Setting of Time of Use Power Period 7;v_7power_setting_of_time_of_use_power_period_7;1.000000;0.000000;kW;4
+203;4;16571;U16;;分时功率时间段8开始时间 Start Time of Time of Use Power Period 8;v_8start_time_of_time_of_use_power_period_8;1.000000;0.000000;Min;4
+204;4;16572;U16;;分时功率时间段8结束时间 End Time of Time of Use Power Period 8;v_8end_time_of_time_of_use_power_period_8;1.000000;0.000000;Min;4
+205;4;16573;F32;;分时功率时间段8设置功率 Power Setting of Time of Use Power Period 8;v_8power_setting_of_time_of_use_power_period_8;1.000000;0.000000;kW;4
+206;4;16575;U16;;分时功率时间段9开始时间 Start Time of Time of Use Power Period 9;v_9start_time_of_time_of_use_power_period_9;1.000000;0.000000;Min;4
+207;4;16576;U16;;分时功率时间段9结束时间 End Time of Time of Use Power Period 9;v_9end_time_of_time_of_use_power_period_9;1.000000;0.000000;Min;4
+208;4;16577;F32;;分时功率时间段9设置功率 Power Setting of Time of Use Power Period 9;v_9power_setting_of_time_of_use_power_period_9;1.000000;0.000000;kW;4
+209;4;16579;U16;;分时功率时间段10开始时间 Start Time of Time of Use Power Period 10;v_10start_time_of_time_of_use_power_period_10;1.000000;0.000000;Min;4
+210;4;16580;U16;;分时功率时间段10结束时间 End Time of Time of Use Power Period 10;v_10end_time_of_time_of_use_power_period_10;1.000000;0.000000;Min;4
+211;4;16581;F32;;分时功率时间段10设置功率 Power Setting of Time of Use Power Period 10;v_10power_setting_of_time_of_use_power_period_10;1.000000;0.000000;kW;4
+212;3;24577;U16;;有功控制 Active Power Control;active_power_control;1.000000;0.000000;;4
+213;3;24578;U16;;无功控制 Reactive Power Control;reactive_power_control;1.000000;0.000000;;4
+214;3;24579;U16;;频率下垂控制功能投入控制字 Frequency Droop Control Function Activated;frequency_droop_control_function_activated;1.000000;0.000000;;4
+215;3;24580;U16;;分时功率功能投入控制字 Time of Use Power Function Activated;time_of_use_power_function_activated;1.000000;0.000000;;4
+216;3;25089;F32;;有功功率目标值 Active Power Target Value;active_power_target_value;1.000000;0.000000;kW;4
+217;3;25090;F32;;无功功率目标值 Reactive Power Target Value;reactive_power_target_value;1.000000;0.000000;kvar;4
+218;3;25091;U16;;AGC_PLAN_001;agc_plan_001_1;1.000000;0.000000;kW;4
+219;3;25092;U16;;AGC_PLAN_001;agc_plan_001_2;1.000000;0.000000;kW;4
+220;3;25093;U16;;AGC_PLAN_001;agc_plan_001_3;1.000000;0.000000;kW;4
+221;3;25094;U16;;AGC_PLAN_001;agc_plan_001_4;1.000000;0.000000;kW;4
+222;3;25095;U16;;AGC_PLAN_001;agc_plan_001_5;1.000000;0.000000;kW;4
+223;3;25096;U16;;AGC_PLAN_001;agc_plan_001_6;1.000000;0.000000;kW;4
+224;3;25097;U16;;AGC_PLAN_001;agc_plan_001_7;1.000000;0.000000;kW;4
+225;3;25098;U16;;AGC_PLAN_001;agc_plan_001_8;1.000000;0.000000;kW;4
+226;3;25099;U16;;AGC_PLAN_001;agc_plan_001_9;1.000000;0.000000;kW;4
+227;3;25100;U16;;AGC_PLAN_001;agc_plan_001_10;1.000000;0.000000;kW;4
+228;3;25101;U16;;AGC_PLAN_001;agc_plan_001_11;1.000000;0.000000;kW;4
+229;3;25102;U16;;AGC_PLAN_001;agc_plan_001_12;1.000000;0.000000;kW;4
+230;3;25103;U16;;AGC_PLAN_001;agc_plan_001_13;1.000000;0.000000;kW;4
+231;3;25104;U16;;AGC_PLAN_001;agc_plan_001_14;1.000000;0.000000;kW;4
+232;3;25105;U16;;AGC_PLAN_001;agc_plan_001_15;1.000000;0.000000;kW;4
+233;3;25106;U16;;AGC_PLAN_001;agc_plan_001_16;1.000000;0.000000;kW;4
+234;3;25107;U16;;AGC_PLAN_001;agc_plan_001_17;1.000000;0.000000;kW;4
+235;3;25108;U16;;AGC_PLAN_001;agc_plan_001_18;1.000000;0.000000;kW;4
+236;3;25109;U16;;AGC_PLAN_001;agc_plan_001_19;1.000000;0.000000;kW;4
+237;3;25110;U16;;AGC_PLAN_001;agc_plan_001_20;1.000000;0.000000;kW;4
+238;3;25111;U16;;AGC_PLAN_001;agc_plan_001_21;1.000000;0.000000;kW;4
+239;3;25112;U16;;AGC_PLAN_001;agc_plan_001_22;1.000000;0.000000;kW;4
+240;3;25113;U16;;AGC_PLAN_001;agc_plan_001_23;1.000000;0.000000;kW;4
+241;3;25114;U16;;AGC_PLAN_001;agc_plan_001_24;1.000000;0.000000;kW;4
+242;3;25115;U16;;AGC_PLAN_001;agc_plan_001_25;1.000000;0.000000;kW;4
+243;3;25116;U16;;AGC_PLAN_001;agc_plan_001_26;1.000000;0.000000;kW;4
+244;3;25117;U16;;AGC_PLAN_001;agc_plan_001_27;1.000000;0.000000;kW;4
+245;3;25118;U16;;AGC_PLAN_001;agc_plan_001_28;1.000000;0.000000;kW;4
+246;3;25119;U16;;AGC_PLAN_001;agc_plan_001_29;1.000000;0.000000;kW;4
+247;3;25120;U16;;AGC_PLAN_001;agc_plan_001_30;1.000000;0.000000;kW;4
+248;3;25121;U16;;AGC_PLAN_001;agc_plan_001_31;1.000000;0.000000;kW;4
+249;3;25122;U16;;AGC_PLAN_001;agc_plan_001_32;1.000000;0.000000;kW;4
+250;3;25123;U16;;AGC_PLAN_001;agc_plan_001_33;1.000000;0.000000;kW;4
+251;3;25124;U16;;AGC_PLAN_001;agc_plan_001_34;1.000000;0.000000;kW;4
+252;3;25125;U16;;AGC_PLAN_001;agc_plan_001_35;1.000000;0.000000;kW;4
+253;3;25126;U16;;AGC_PLAN_001;agc_plan_001_36;1.000000;0.000000;kW;4
+254;3;25127;U16;;AGC_PLAN_001;agc_plan_001_37;1.000000;0.000000;kW;4
+255;3;25128;U16;;AGC_PLAN_001;agc_plan_001_38;1.000000;0.000000;kW;4
+256;3;25129;U16;;AGC_PLAN_001;agc_plan_001_39;1.000000;0.000000;kW;4
+257;3;25130;U16;;AGC_PLAN_001;agc_plan_001_40;1.000000;0.000000;kW;4
+258;3;25131;U16;;AGC_PLAN_001;agc_plan_001_41;1.000000;0.000000;kW;4
+259;3;25132;U16;;AGC_PLAN_001;agc_plan_001_42;1.000000;0.000000;kW;4
+260;3;25133;U16;;AGC_PLAN_001;agc_plan_001_43;1.000000;0.000000;kW;4
+261;3;25134;U16;;AGC_PLAN_001;agc_plan_001_44;1.000000;0.000000;kW;4
+262;3;25135;U16;;AGC_PLAN_001;agc_plan_001_45;1.000000;0.000000;kW;4
+263;3;25136;U16;;AGC_PLAN_001;agc_plan_001_46;1.000000;0.000000;kW;4
+264;3;25137;U16;;AGC_PLAN_001;agc_plan_001_47;1.000000;0.000000;kW;4
+265;3;25138;U16;;AGC_PLAN_001;agc_plan_001_48;1.000000;0.000000;kW;4
+266;3;25139;U16;;AGC_PLAN_001;agc_plan_001_49;1.000000;0.000000;kW;4
+267;3;25140;U16;;AGC_PLAN_001;agc_plan_001_50;1.000000;0.000000;kW;4
+268;3;25141;U16;;AGC_PLAN_001;agc_plan_001_51;1.000000;0.000000;kW;4
+269;3;25142;U16;;AGC_PLAN_001;agc_plan_001_52;1.000000;0.000000;kW;4
+270;3;25143;U16;;AGC_PLAN_001;agc_plan_001_53;1.000000;0.000000;kW;4
+271;3;25144;U16;;AGC_PLAN_001;agc_plan_001_54;1.000000;0.000000;kW;4
+272;3;25145;U16;;AGC_PLAN_001;agc_plan_001_55;1.000000;0.000000;kW;4
+273;3;25146;U16;;AGC_PLAN_001;agc_plan_001_56;1.000000;0.000000;kW;4
+274;3;25147;U16;;AGC_PLAN_001;agc_plan_001_57;1.000000;0.000000;kW;4
+275;3;25148;U16;;AGC_PLAN_001;agc_plan_001_58;1.000000;0.000000;kW;4
+276;3;25149;U16;;AGC_PLAN_001;agc_plan_001_59;1.000000;0.000000;kW;4
+277;3;25150;U16;;AGC_PLAN_001;agc_plan_001_60;1.000000;0.000000;kW;4
+278;3;25151;U16;;AGC_PLAN_001;agc_plan_001_61;1.000000;0.000000;kW;4
+279;3;25152;U16;;AGC_PLAN_001;agc_plan_001_62;1.000000;0.000000;kW;4
+280;3;25153;U16;;AGC_PLAN_001;agc_plan_001_63;1.000000;0.000000;kW;4
+281;3;25154;U16;;AGC_PLAN_001;agc_plan_001_64;1.000000;0.000000;kW;4
+282;3;25155;U16;;AGC_PLAN_001;agc_plan_001_65;1.000000;0.000000;kW;4
+283;3;25156;U16;;AGC_PLAN_001;agc_plan_001_66;1.000000;0.000000;kW;4
+284;3;25157;U16;;AGC_PLAN_001;agc_plan_001_67;1.000000;0.000000;kW;4
+285;3;25158;U16;;AGC_PLAN_001;agc_plan_001_68;1.000000;0.000000;kW;4
+286;3;25159;U16;;AGC_PLAN_001;agc_plan_001_69;1.000000;0.000000;kW;4
+287;3;25160;U16;;AGC_PLAN_001;agc_plan_001_70;1.000000;0.000000;kW;4
+288;3;25161;U16;;AGC_PLAN_001;agc_plan_001_71;1.000000;0.000000;kW;4
+289;3;25162;U16;;AGC_PLAN_001;agc_plan_001_72;1.000000;0.000000;kW;4
+290;3;25163;U16;;AGC_PLAN_001;agc_plan_001_73;1.000000;0.000000;kW;4
+291;3;25164;U16;;AGC_PLAN_001;agc_plan_001_74;1.000000;0.000000;kW;4
+292;3;25165;U16;;AGC_PLAN_001;agc_plan_001_75;1.000000;0.000000;kW;4
+293;3;25166;U16;;AGC_PLAN_001;agc_plan_001_76;1.000000;0.000000;kW;4
+294;3;25167;U16;;AGC_PLAN_001;agc_plan_001_77;1.000000;0.000000;kW;4
+295;3;25168;U16;;AGC_PLAN_001;agc_plan_001_78;1.000000;0.000000;kW;4
+296;3;25169;U16;;AGC_PLAN_001;agc_plan_001_79;1.000000;0.000000;kW;4
+297;3;25170;U16;;AGC_PLAN_001;agc_plan_001_80;1.000000;0.000000;kW;4
+298;3;25171;U16;;AGC_PLAN_001;agc_plan_001_81;1.000000;0.000000;kW;4
+299;3;25172;U16;;AGC_PLAN_001;agc_plan_001_82;1.000000;0.000000;kW;4
+300;3;25173;U16;;AGC_PLAN_001;agc_plan_001_83;1.000000;0.000000;kW;4
+301;3;25174;U16;;AGC_PLAN_001;agc_plan_001_84;1.000000;0.000000;kW;4
+302;3;25175;U16;;AGC_PLAN_001;agc_plan_001_85;1.000000;0.000000;kW;4
+303;3;25176;U16;;AGC_PLAN_001;agc_plan_001_86;1.000000;0.000000;kW;4
+304;3;25177;U16;;AGC_PLAN_001;agc_plan_001_87;1.000000;0.000000;kW;4
+305;3;25178;U16;;AGC_PLAN_001;agc_plan_001_88;1.000000;0.000000;kW;4
+306;3;25179;U16;;AGC_PLAN_001;agc_plan_001_89;1.000000;0.000000;kW;4
+307;3;25180;U16;;AGC_PLAN_001;agc_plan_001_90;1.000000;0.000000;kW;4
+308;3;25181;U16;;AGC_PLAN_001;agc_plan_001_91;1.000000;0.000000;kW;4
+309;3;25182;U16;;AGC_PLAN_001;agc_plan_001_92;1.000000;0.000000;kW;4
+310;3;25183;U16;;AGC_PLAN_001;agc_plan_001_93;1.000000;0.000000;kW;4
+311;3;25184;U16;;AGC_PLAN_001;agc_plan_001_94;1.000000;0.000000;kW;4
+312;3;25185;U16;;AGC_PLAN_001;agc_plan_001_95;1.000000;0.000000;kW;4
+313;3;25186;U16;;AGC_PLAN_001;agc_plan_001_96;1.000000;0.000000;kW;4
+314;3;25187;U16;;段数 调频算法段数 Segment Number, Frequency Regulation Algorithm Segment Number;segment_number_frequency_regulation_algorithm_segment_number;1.000000;0.000000;/;4
+315;3;25188;U32;;并网点额定频率 Rated Frequency of Grid-connection Point;rated_frequency_of_gridconnection_point_1;1.000000;0.000000;Hz;4
+316;3;25189;U32;;频率调差系数 Frequency Regulation Coefficient;frequency_regulation_coefficient_1;1.000000;0.000000;/;4
+317;3;25190;U32;;调频死区 Frequency Regulation Dead Zone;frequency_regulation_dead_zone_1;1.000000;0.000000;Hz;4
+318;3;25191;U32;;最大输出有功功率 Maximum Active Power Output;maximum_active_power_output_1;1.000000;0.000000;kW;4
+319;3;25192;U32;;最大吸收有功功率  Maximum Active Power Absorbed;maximum_active_power_absorbed_1;1.000000;0.000000;kW;4
+320;3;25193;U32;;有功功率限幅系数下限  Lower Limit of Active Power Limit Coefficient;lower_limit_of_active_power_limit_coefficient_1;1.000000;0.000000;/;4
+321;3;25194;U32;;有功功率限幅系数上限  Upper Limit of Active Power Limit Coefficient;upper_limit_of_active_power_limit_coefficient_1;1.000000;0.000000;/;4
+322;3;25195;U32;;调频二段调差系数 Frequency Regulation II Regulation Coefficient;frequency_regulation_ii_regulation_coefficient_1;1.000000;0.000000;/;4
+323;3;25196;U32;;调频二段死区 Frequency Regulation II Dead Zone;frequency_regulation_ii_dead_zone_1;1.000000;0.000000;Hz;4
+324;3;25197;U16;;并离网启动控制字 And Off-network Start Control Word;and_offnetwork_start_control_word;1.000000;0.000000;/;4
+325;3;25198;U16;;主从机状态 Status of Master and Slave Servers;status_of_master_and_slave_servers;1.000000;0.000000;/;9
+326;3;25199;U16;;级联控制字 Cascading Control Word;cascading_control_word;1.000000;0.000000;/;4
+327;3;25200;F32;;SOC上限 Control Unit SOC Maximum Allowed;soccontrol_unit_soc_maximum_allowed;1.000000;0.000000;'%;4
+328;3;25201;F32;;SOC下限 Control Unit SOC Minimum Allowable;soccontrol_unit_soc_minimum_allowable;1.000000;0.000000;'%;4
+329;3;25202;F32;;有功控制死区 Active Power Control Dead Zone;active_power_control_dead_zone;1.000000;0.000000;kW;4
+330;3;25203;F32;;无功控制死区 Reactive Power Control Dead Zone;reactive_power_control_dead_zone;1.000000;0.000000;kW;4
+331;3;25205;U16;;分时功率时间段1开始时间 Start Time of Time of Use Power Period 1;v_1start_time_of_time_of_use_power_period_1_1;1.000000;0.000000;Min;4
+332;3;25206;U16;;分时功率时间段1结束时间 End Time of Time of Use Power Period 1;v_1end_time_of_time_of_use_power_period_1_1;1.000000;0.000000;Min;4
+333;3;25207;F32;;分时功率时间段1设置功率 Power Setting of Time of Use Power Period 1;v_1power_setting_of_time_of_use_power_period_1_1;1.000000;0.000000;kW;4
+334;3;25209;U16;;分时功率时间段2开始时间 Start Time of Time of Use Power Period 2;v_2start_time_of_time_of_use_power_period_2_1;1.000000;0.000000;Min;4
+335;3;25210;U16;;分时功率时间段2结束时间 End Time of Time of Use Power Period 2;v_2end_time_of_time_of_use_power_period_2_1;1.000000;0.000000;Min;4
+336;3;25211;F32;;分时功率时间段2设置功率 Power Setting of Time of Use Power Period 2;v_2power_setting_of_time_of_use_power_period_2_1;1.000000;0.000000;kW;4
+337;3;25213;U16;;分时功率时间段3开始时间 Start Time of Time of Use Power Period 3;v_3start_time_of_time_of_use_power_period_3_1;1.000000;0.000000;Min;4
+338;3;25214;U16;;分时功率时间段3结束时间 End Time of Time of Use Power Period 3;v_3end_time_of_time_of_use_power_period_3_1;1.000000;0.000000;Min;4
+339;3;25215;F32;;分时功率时间段3设置功率 Power Setting of Time of Use Power Period 3;v_3power_setting_of_time_of_use_power_period_3_1;1.000000;0.000000;kW;4
+340;3;25217;U16;;分时功率时间段4开始时间 Start Time of Time of Use Power Period 4;v_4start_time_of_time_of_use_power_period_4_1;1.000000;0.000000;Min;4
+341;3;25218;U16;;分时功率时间段4结束时间 End Time of Time of Use Power Period 4;v_4end_time_of_time_of_use_power_period_4_1;1.000000;0.000000;Min;4
+342;3;25219;F32;;分时功率时间段4设置功率 Power Setting of Time of Use Power Period 4;v_4power_setting_of_time_of_use_power_period_4_1;1.000000;0.000000;kW;4
+343;3;25221;U16;;分时功率时间段5开始时间 Start Time of Time of Use Power Period 5;v_5start_time_of_time_of_use_power_period_5_1;1.000000;0.000000;Min;4
+344;3;25222;U16;;分时功率时间段5结束时间 End Time of Time of Use Power Period 5;v_5end_time_of_time_of_use_power_period_5_1;1.000000;0.000000;Min;4
+345;3;25223;F32;;分时功率时间段5设置功率 Power Setting of Time of Use Power Period 5;v_5power_setting_of_time_of_use_power_period_5_1;1.000000;0.000000;kW;4
+346;3;25225;U16;;分时功率时间段6开始时间 Start Time of Time of Use Power Period 6;v_6start_time_of_time_of_use_power_period_6_1;1.000000;0.000000;Min;4
+347;3;25226;U16;;分时功率时间段6结束时间 End Time of Time of Use Power Period 6;v_6end_time_of_time_of_use_power_period_6_1;1.000000;0.000000;Min;4
+348;3;25227;F32;;分时功率时间段6设置功率 Power Setting of Time of Use Power Period 6;v_6power_setting_of_time_of_use_power_period_6_1;1.000000;0.000000;kW;4
+349;3;25229;U16;;分时功率时间段7开始时间 Start Time of Time of Use Power Period 7;v_7start_time_of_time_of_use_power_period_7_1;1.000000;0.000000;Min;4
+350;3;25230;U16;;分时功率时间段7结束时间 End Time of Time of Use Power Period 7;v_7end_time_of_time_of_use_power_period_7_1;1.000000;0.000000;Min;4
+351;3;25231;F32;;分时功率时间段7设置功率 Power Setting of Time of Use Power Period 7;v_7power_setting_of_time_of_use_power_period_7_1;1.000000;0.000000;kW;4
+352;3;25233;U16;;分时功率时间段8开始时间 Start Time of Time of Use Power Period 8;v_8start_time_of_time_of_use_power_period_8_1;1.000000;0.000000;Min;4
+353;3;25234;U16;;分时功率时间段8结束时间 End Time of Time of Use Power Period 8;v_8end_time_of_time_of_use_power_period_8_1;1.000000;0.000000;Min;4
+354;3;25235;F32;;分时功率时间段8设置功率 Power Setting of Time of Use Power Period 8;v_8power_setting_of_time_of_use_power_period_8_1;1.000000;0.000000;kW;4
+355;3;25237;U16;;分时功率时间段9开始时间 Start Time of Time of Use Power Period 9;v_9start_time_of_time_of_use_power_period_9_1;1.000000;0.000000;Min;4
+356;3;25238;U16;;分时功率时间段9结束时间 End Time of Time of Use Power Period 9;v_9end_time_of_time_of_use_power_period_9_1;1.000000;0.000000;Min;4
+357;3;25239;F32;;分时功率时间段9设置功率 Power Setting of Time of Use Power Period 9;v_9power_setting_of_time_of_use_power_period_9_1;1.000000;0.000000;kW;4
+358;3;25241;U16;;分时功率时间段10开始时间 Start Time of Time of Use Power Period 10;v_10start_time_of_time_of_use_power_period_10_1;1.000000;0.000000;Min;4
+359;3;25242;U16;;分时功率时间段10结束时间 End Time of Time of Use Power Period 10;v_10end_time_of_time_of_use_power_period_10_1;1.000000;0.000000;Min;4
+360;3;25243;F32;;分时功率时间段10设置功率 Power Setting of Time of Use Power Period 10;v_10power_setting_of_time_of_use_power_period_10_1;1.000000;0.000000;kW;4
+361;3;25244;U32;;通信异常时间 Communication Interruption Time;communication_interruption_time;1.000000;0.000000;ms;4
+362;3;25245;U32;;通信异常计数时间 Communication Interruption Counting Period;communication_interruption_counting_period;1.000000;0.000000;s;4
+363;3;25246;U16;;通信异常次数 Communication Interruption Counts;communication_interruption_counts;1.000000;0.000000;/;4
+364;3;25247;U16;;调度方式 Scheduling Mode;scheduling_mode;1.000000;0.000000;/;4
+365;4;16861;U16;;遥测 (Telemetry);telemetry;1.000000;0.000000;/;4
+366;4;16862;U16;;;;1.000000;0.000000;/;4
+367;4;16863;U32;;;;1.000000;0.000000;kWh;4
+368;4;16864;U32;;;;1.000000;0.000000;kWh;4
+369;4;16865;U32;;;;1.000000;0.000000;kW;4
+370;4;16866;U32;;;;1.000000;0.000000;kW;4
+371;4;16867;I32;;;;1.000000;0.000000;kW;4
+372;4;16868;I32;;;;1.000000;0.000000;kvar;4
+373;4;16869;I32;;;;1.000000;0.000000;kW;4
+374;4;16870;U32;;;;1.000000;0.000000;kWh;4
+375;4;16871;U32;;;;1.000000;0.000000;kWh;4
+376;4;16872;U32;;;;1.000000;0.000000;kWh;4
+377;4;16873;U32;;;;1.000000;0.000000;kWh;4
+378;4;16874;U16;;;;1.000000;0.000000;'%;4
+379;4;16875;U32;;;;1.000000;0.000000;kW;4
+380;4;16876;U32;;;;1.000000;0.000000;kvar;4
+381;4;16877;U32;;;;1.000000;0.000000;/;4
+382;4;16878;U32;;;;1.000000;0.000000;/;4
+383;4;16879;U32;;;;1.000000;0.000000;/;4
+384;4;16880;U32;;;;1.000000;0.000000;/;4
+385;4;16881;U16;;;;1.000000;0.000000;/;4
+386;4;16542;U16;;;;1.000000;0.000000;/;4
+387;4;16546;U16;;;;1.000000;0.000000;/;4
+388;4;16550;I16;;;;1.000000;0.000000;℃;4
+389;4;16554;U16;;;;1.000000;0.000000;/;4
+390;4;16558;I16;;;;1.000000;0.000000;A;4
+391;4;16562;U16;;;;1.000000;0.000000;/;4
+392;4;16566;U16;;;;1.000000;0.000000;'%;4
+393;4;16570;U16;;;;1.000000;0.000000;mV;4
+394;4;16574;U16;;;;1.000000;0.000000;kW;4
+395;4;16578;U16;;;;1.000000;0.000000;/;4
+396;4;16582;U16;;;;1.000000;0.000000;/;4
+397;4;16583;U16;;;;1.000000;0.000000;/;4
+398;4;16584;U32;;;;1.000000;0.000000;kWh;4
+399;4;16585;U32;;;;1.000000;0.000000;kWh;4
+400;4;16586;U32;;;;1.000000;0.000000;/;4
+401;4;16587;U32;;;;1.000000;0.000000;/;4
+402;4;16588;U32;;;;1.000000;0.000000;/;4
+403;4;16589;U16;;;;1.000000;0.000000;GWh;4
+404;4;16590;U16;;;;1.000000;0.000000;MWh;4
+405;4;16591;U16;;;;1.000000;0.000000;kWh;4
+406;4;16592;U16;;;;1.000000;0.000000;GWh;4
+407;4;16593;U16;;;;1.000000;0.000000;MWh;4
+408;4;16594;U16;;;;1.000000;0.000000;kWh;4
+409;4;16595;U16;;;;1.000000;0.000000;MAh;4
+410;4;16596;U16;;;;1.000000;0.000000;kAh;4
+411;4;16597;U16;;;;1.000000;0.000000;Ah;4
+412;4;16598;U16;;;;1.000000;0.000000;MAh;4
+413;4;16599;U16;;;;1.000000;0.000000;kAh;4
+414;4;16600;U16;;;;1.000000;0.000000;Ah;4
+415;4;16601;U16;;;;1.000000;0.000000;V;4
+416;4;16602;I16;;;;1.000000;0.000000;A;4
+417;4;16603;I16;;;;1.000000;0.000000;kW;4
+418;4;16604;U16;;;;1.000000;0.000000;V;4
+419;4;16605;U16;;;;1.000000;0.000000;A;4
+420;4;16606;U16;;;;1.000000;0.000000;V;4
+421;4;16607;U16;;;;1.000000;0.000000;A;4
+422;4;16608;U16;;;;1.000000;0.000000;V;4
+423;4;16609;U16;;;;1.000000;0.000000;A;4
+424;4;16610;I32;;;;1.000000;0.000000;kW;4
+425;4;16611;I32;;;;1.000000;0.000000;kvar;4
+426;4;16612;U32;;;;1.000000;0.000000;kΩ;4
+427;4;16613;U32;;;;1.000000;0.000000;kΩ;4
+428;4;16614;U16;;;;1.000000;0.000000;/;4
+429;4;16615;U16;;;;1.000000;0.000000;/;4
+430;4;16616;U32;;;;1.000000;0.000000;/;4
+431;4;16617;U32;;;;1.000000;0.000000;/;4
+432;4;16618;U16;;;;1.000000;0.000000;/;4
+433;4;16619;U32;;;;1.000000;0.000000;kWh;4
+434;4;16620;U32;;;;1.000000;0.000000;kWh;4
+435;4;16621;U32;;;;1.000000;0.000000;kWh;4
+436;4;16622;U32;;;;1.000000;0.000000;kWh;4
+437;4;16623;U32;;;;1.000000;0.000000;/;4
+438;4;16624;U16;;;;1.000000;0.000000;/;4
+439;4;16625;U16;;;;1.000000;0.000000;min;4
+440;4;16626;U32;;;;1.000000;0.000000;h;4
+441;4;16627;U16;;;;1.000000;0.000000;kW;4
+442;4;16628;U16;;;;1.000000;0.000000;kvar;4
+443;4;16629;U16;;;;1.000000;0.000000;A;4
+444;4;16630;U16;;;;1.000000;0.000000;/;4
+445;4;16631;U16;;;;1.000000;0.000000;Hz;4
+446;4;16632;U16;;;;1.000000;0.000000;/;4
+447;4;16633;I16;;;;1.000000;0.000000;℃;4
+448;4;16634;U32;;;;1.000000;0.000000;/;4
+449;4;16635;U16;;;;1.000000;0.000000;min;4
+450;4;16636;U16;;;;1.000000;0.000000;min;4
+451;4;16637;U32;;;;1.000000;0.000000;h;4
+452;4;16638;U32;;;;1.000000;0.000000;h;4
+453;4;16639;U32;;;;1.000000;0.000000;kΩ;4
+454;4;16640;U16;;;;1.000000;0.000000;A;4
+455;4;16641;U16;;;;1.000000;0.000000;A;4
+456;4;16642;U16;;;;1.000000;0.000000;A;4
+457;4;16643;U16;;;;1.000000;0.000000;/;4
+458;4;16644;U16;;;;1.000000;0.000000;kVA;4
+459;4;16645;U16;;;;1.000000;0.000000;kWh;4
+460;4;16646;U16;;;;1.000000;0.000000;kWh;4
+461;4;16647;U16;;;;1.000000;0.000000;r/min;4
+462;4;16648;U16;;;;1.000000;0.000000;/;4
+463;4;16649;U16;;;;1.000000;0.000000;/;4
+464;4;16650;U16;;;;1.000000;0.000000;V;4
+465;4;16651;U16;;;;1.000000;0.000000;V;4
+466;4;16652;U16;;;;1.000000;0.000000;V;4
+467;4;26;U16;;遥信 (Telesignalling);telesignalling;1.000000;0.000000;/;4
+468;4;16653;U32;;;;1.000000;0.000000;/;4
+469;4;16654;U32;;;;1.000000;0.000000;/;4
+470;4;16655;U16;;;;1.000000;0.000000;/;4
+471;4;16656;U16;;;;1.000000;0.000000;/;4
+472;4;16657;U16;;;;1.000000;0.000000;V;4
+473;4;16658;I16;;;;1.000000;0.000000;A;4
+474;4;16659;U16;;;;1.000000;0.000000;'%;4
+475;4;16660;U16;;;;1.000000;0.000000;'%;4
+476;4;16661;U16;;;;1.000000;0.000000;'%;4
+477;4;16662;U16;;;;1.000000;0.000000;'%;4
+478;4;16663;U16;;;;1.000000;0.000000;'%;4
+479;4;16664;U16;;;;1.000000;0.000000;A;4
+480;4;16665;U16;;;;1.000000;0.000000;A;4
+481;4;16666;U16;;;;1.000000;0.000000;V;4
+482;4;16667;U16;;;;1.000000;0.000000;V;4
+483;4;16668;U16;;;;1.000000;0.000000;mV;4
+484;4;16669;U16;;;;1.000000;0.000000;mV;4
+485;4;16670;U16;;;;1.000000;0.000000;MWh;4
+486;4;16671;U16;;;;1.000000;0.000000;MWh;4
+487;4;16672;U16;;;;1.000000;0.000000;kAh;4
+488;4;16673;U16;;;;1.000000;0.000000;kAh;4
+489;4;16674;I16;;;;1.000000;0.000000;℃;4
+490;4;16675;I16;;;;1.000000;0.000000;℃;4
+491;4;16676;U16;;;;1.000000;0.000000;/;4
+492;4;16677;U16;;;;1.000000;0.000000;/;4
+493;4;16678;U16;;;;1.000000;0.000000;/;4
+494;4;16679;U16;;;;1.000000;0.000000;/;4
+495;4;16680;U16;;;;1.000000;0.000000;/;4
+496;4;16681;U16;;;;1.000000;0.000000;/;4
+497;4;16682;U16;;;;1.000000;0.000000;/;4
+498;4;16683;U16;;;;1.000000;0.000000;/;4
+499;4;16684;U16;;;;1.000000;0.000000;/;4
+500;4;16685;U16;;;;1.000000;0.000000;/;4
+501;4;16686;U16;;;;1.000000;0.000000;/;4
+502;4;16687;U16;;;;1.000000;0.000000;/;4
+503;4;16688;U16;;;;1.000000;0.000000;/;4
+504;4;16689;U32;;;;1.000000;0.000000;/;4
+505;4;16690;U32;;;;1.000000;0.000000;/;4
+506;4;16691;U16;;;;1.000000;0.000000;/;4
+507;4;16692;U16;;;;1.000000;0.000000;'%;4
+508;4;16693;U16;;;;1.000000;0.000000;/;4
+509;4;16694;U16;;;;1.000000;0.000000;/;4
+510;4;16695;U16;;;;1.000000;0.000000;/;4
+511;4;16696;U16;;;;1.000000;0.000000;℃;4
+512;4;16697;U16;;;;1.000000;0.000000;℃;4
+513;4;16698;U16;;;;1.000000;0.000000;Bar;4
+514;4;16699;U16;;;;1.000000;0.000000;℃;4
+515;4;16700;U16;;;;1.000000;0.000000;/;4
+516;4;16773;U16;;遥测(Telemetry);telemetry_1;1.000000;0.000000;/;4
+517;4;16774;U16;;;;1.000000;0.000000;/;4
+518;4;16775;U32;;;;1.000000;0.000000;kWh;4
+519;4;16776;U32;;;;1.000000;0.000000;kWh;4
+520;4;16777;U32;;;;1.000000;0.000000;kW;4
+521;4;16778;U32;;;;1.000000;0.000000;kW;4
+522;4;16779;I32;;;;1.000000;0.000000;kW;4
+523;4;16780;I32;;;;1.000000;0.000000;kvar;4
+524;4;16781;I32;;;;1.000000;0.000000;kW;4
+525;4;16782;U32;;;;1.000000;0.000000;kWh;4
+526;4;16783;U32;;;;1.000000;0.000000;kWh;4
+527;4;16784;U32;;;;1.000000;0.000000;kWh;4
+528;4;16785;U32;;;;1.000000;0.000000;kWh;4
+529;4;16786;U16;;;;1.000000;0.000000;'%;4
+530;4;16787;U32;;;;1.000000;0.000000;kW;4
+531;4;16788;U32;;;;1.000000;0.000000;/;4
+532;4;16789;U32;;;;1.000000;0.000000;/;4
+533;4;16790;U32;;;;1.000000;0.000000;/;4
+534;4;16791;U32;;;;1.000000;0.000000;/;4
+535;4;16792;U16;;;;1.000000;0.000000;/;4
+536;4;16701;U32;;;;1.000000;0.000000;kWh;4
+537;4;16702;U32;;;;1.000000;0.000000;kWh;4
+538;4;16703;U32;;;;1.000000;0.000000;kWh;4
+539;4;16704;U32;;;;1.000000;0.000000;/;4
+540;4;16705;U16;;;;1.000000;0.000000;/;4
+541;4;16706;U16;;;;1.000000;0.000000;min;4
+542;4;16707;U32;;;;1.000000;0.000000;h;4
+543;4;16708;U16;;;;1.000000;0.000000;kW;4
+544;4;16709;U16;;;;1.000000;0.000000;kvar;4
+545;4;16710;U16;;;;1.000000;0.000000;Hz;4
+546;4;16711;U16;;;;1.000000;0.000000;/;4
+547;4;16712;U32;;;;1.000000;0.000000;/;4
+548;4;16713;I16;;;;1.000000;0.000000;kW;4
+549;4;16714;I16;;;;1.000000;0.000000;kW;4
+550;4;16715;I16;;;;1.000000;0.000000;kvar;4
+551;4;16716;I16;;;;1.000000;0.000000;kvar;4
+552;4;16717;U16;;;;1.000000;0.000000;/;4
+553;4;16718;I16;;;;1.000000;0.000000;℃;4
+554;4;16719;I16;;;;1.000000;0.000000;℃;4
+555;4;16720;I16;;;;1.000000;0.000000;℃;4
+556;4;16721;I16;;;;1.000000;0.000000;V;4
+557;4;16722;I16;;;;1.000000;0.000000;A;4
+558;4;16723;I16;;;;1.000000;0.000000;kW;4
+559;4;16724;U16;;;;1.000000;0.000000;V;4
+560;4;16725;U16;;;;1.000000;0.000000;V;4
+561;4;16726;U16;;;;1.000000;0.000000;V;4
+562;4;16727;U16;;;;1.000000;0.000000;A;4
+563;4;16728;U16;;;;1.000000;0.000000;A;4
+564;4;16729;U16;;;;1.000000;0.000000;A;4
+565;4;16730;I32;;;;1.000000;0.000000;kW;4
+566;4;16731;I32;;;;1.000000;0.000000;kvar;4
+567;4;16732;U16;;;;1.000000;0.000000;/;4
+568;4;16733;U16;;;;1.000000;0.000000;/;4
+569;4;16734;U32;;;;1.000000;0.000000;/;4
+570;4;16735;U32;;;;1.000000;0.000000;/;4
+571;4;16736;U16;;;;1.000000;0.000000;/;4
+572;4;16737;U32;;;;1.000000;0.000000;kWh;4
+573;4;16738;U32;;;;1.000000;0.000000;kWh;4
+574;4;16739;U32;;;;1.000000;0.000000;kWh;4
+575;4;16740;U32;;;;1.000000;0.000000;kWh;4
+576;4;16741;U32;;;;1.000000;0.000000;/;4
+577;4;16742;U16;;;;1.000000;0.000000;/;4
+578;4;16743;U16;;;;1.000000;0.000000;min;4
+579;4;16744;U32;;;;1.000000;0.000000;h;4
+580;4;16745;U16;;;;1.000000;0.000000;kW;4
+581;4;16746;U16;;;;1.000000;0.000000;kvar;4
+582;4;16747;U16;;;;1.000000;0.000000;Hz;4
+583;4;16748;U16;;;;1.000000;0.000000;/;4
+584;4;16749;U32;;;;1.000000;0.000000;/;4
+585;4;16750;I16;;;;1.000000;0.000000;kW;4
+586;4;16751;I16;;;;1.000000;0.000000;kW;4
+587;4;16752;I16;;;;1.000000;0.000000;kvar;4
+588;4;16753;I16;;;;1.000000;0.000000;kvar;4
+589;4;16754;U16;;;;1.000000;0.000000;/;4
+590;4;16755;I16;;;;1.000000;0.000000;℃;4
+591;4;16756;I16;;;;1.000000;0.000000;℃;4
+592;4;16757;I16;;;;1.000000;0.000000;℃;4
+593;4;16758;U16;;;;1.000000;0.000000;'%;4
+594;4;16759;U16;;;;1.000000;0.000000;'%;4
+595;4;16760;U16;;;;1.000000;0.000000;'%;4
+596;4;16761;I32;;;;1.000000;0.000000;kW;4
+597;4;16762;I32;;;;1.000000;0.000000;kW;4
+598;4;16763;U16;;;;1.000000;0.000000;'%;4
+599;4;16764;I32;;;;1.000000;0.000000;kW;4
+600;4;16765;I32;;;;1.000000;0.000000;kW;4
+601;4;16766;I32;;;;1.000000;0.000000;kvar;4
+602;4;16767;I32;;;;1.000000;0.000000;kVA;4
+603;4;16768;U32;;;;1.000000;0.000000;/;4
+604;4;16769;U32;;;;1.000000;0.000000;/;4
+605;4;16770;U32;;;;1.000000;0.000000;kW;4
+606;4;16771;U32;;;;1.000000;0.000000;kvar;4
+607;4;16772;U32;;;;1.000000;0.000000;/;4
+608;4;16983;I16;;;;1.000000;0.000000;℃;4
+609;4;16984;I16;;;;1.000000;0.000000;℃;4
+610;4;16985;I16;;;;1.000000;0.000000;Bar;4
+611;4;16986;I16;;;;1.000000;0.000000;Bar;4
+612;4;70;U16;;;;1.000000;0.000000;/;4
+613;4;71;U16;;;;1.000000;0.000000;/;4
+614;4;72;U16;;;;1.000000;0.000000;/;4
+615;4;73;U16;;;;1.000000;0.000000;/;4
+616;4;16987;U16;;;;1.000000;0.000000;/;4
+617;4;16988;U16;;;;1.000000;0.000000;/;4
+618;4;16989;U16;;;;1.000000;0.000000;/;4
+619;4;16990;U16;;;;1.000000;0.000000;/;4
+620;4;74;U16;;;;1.000000;0.000000;/;4
+621;4;75;U16;;;;1.000000;0.000000;/;4
+622;4;76;U16;;;;1.000000;0.000000;/;4
+623;4;77;U16;;;;1.000000;0.000000;/;4
+624;4;17109;U16;;;;1.000000;0.000000;/;4
+625;4;17110;U16;;;;1.000000;0.000000;/;4
+626;4;17111;U16;;;;1.000000;0.000000;/;4
+627;4;17112;U16;;;;1.000000;0.000000;/;4
+628;4;17113;U16;;;;1.000000;0.000000;mA;4
+629;4;17114;U16;;;;1.000000;0.000000;/;4
+630;4;17115;U16;;;;1.000000;0.000000;/;4
+631;4;17116;U16;;;;1.000000;0.000000;/;4
+632;4;17043;U16;;;;1.000000;0.000000;/;4
+633;4;17044;U16;;;;1.000000;0.000000;'%;4
+634;4;17045;U16;;;;1.000000;0.000000;/;4
+635;4;17015;U32;;;;1.000000;0.000000;V;4
+636;4;17016;U32;;;;1.000000;0.000000;V;4
+637;4;17017;U32;;;;1.000000;0.000000;V;4
+638;4;17018;I32;;;;1.000000;0.000000;A;4
+639;4;17019;I32;;;;1.000000;0.000000;A;4
+640;4;17020;I32;;;;1.000000;0.000000;A;4
+641;4;17021;U16;;;;1.000000;0.000000;Hz;4
+642;4;17022;I32;;;;1.000000;0.000000;kW;4
+643;4;17023;I32;;;;1.000000;0.000000;kvar;4
+644;4;17024;I16;;;;1.000000;0.000000;/;4
+645;4;17025;U32;;;;1.000000;0.000000;kWh;4
+646;4;17026;U32;;;;1.000000;0.000000;kWh;4
+647;4;17027;U32;;;;1.000000;0.000000;kvarh;4
+648;4;17028;U32;;;;1.000000;0.000000;kvarh;4
+649;4;16882;U16;;;;1.000000;0.000000;/;4
+650;4;16883;U32;;;;1.000000;0.000000;/;4
+651;4;16793;U16;;;;1.000000;0.000000;V;4
+652;4;16794;U16;;;;1.000000;0.000000;V;4
+653;4;16795;U16;;;;1.000000;0.000000;/;4
+654;4;16796;U32;;;;1.000000;0.000000;/;4
+655;4;16797;U32;;;;1.000000;0.000000;/;4
+656;4;16798;U32;;;;1.000000;0.000000;/;4
+657;4;16799;U32;;;;1.000000;0.000000;/;4
+658;4;16800;U32;;;;1.000000;0.000000;/;4
+659;4;16801;U32;;;;1.000000;0.000000;/;4
+660;4;16802;U32;;;;1.000000;0.000000;/;4
+661;4;16803;U32;;;;1.000000;0.000000;/;4
+662;4;16804;U16;;;;1.000000;0.000000;/;4
+663;4;16805;U16;;;;1.000000;0.000000;/;4
+664;4;16806;U32;;;;1.000000;0.000000;/;4
+665;4;16807;U16;;;;1.000000;0.000000;/;4
+666;4;16808;U16;;;;1.000000;0.000000;/;4
+667;4;16809;U16;;;;1.000000;0.000000;/;4
+668;4;16810;U16;;;;1.000000;0.000000;/;4
+669;4;16811;I16;;;;1.000000;0.000000;℃;4
+670;4;16812;I16;;;;1.000000;0.000000;℃;4
+671;4;16813;I16;;;;1.000000;0.000000;Bar;4
+672;4;16814;I16;;;;1.000000;0.000000;Bar;4
+673;4;16815;U16;;;;1.000000;0.000000;/;4
+674;4;16838;U16;;;;1.000000;0.000000;'%;4
+675;4;16839;U16;;;;1.000000;0.000000;/;4
+676;4;16840;U16;;;;1.000000;0.000000;/;4
+677;4;16841;U16;;;;1.000000;0.000000;/;4
+678;4;27;U16;;;;1.000000;0.000000;/;4
+679;4;28;U16;;;;1.000000;0.000000;/;4
+680;4;29;U16;;;;1.000000;0.000000;/;4
+681;4;30;U16;;;;1.000000;0.000000;/;4
+682;4;31;U16;;;;1.000000;0.000000;/;4
+683;4;32;U16;;;;1.000000;0.000000;/;4
+684;4;33;U16;;;;1.000000;0.000000;/;4
+685;4;34;U16;;;;1.000000;0.000000;/;4
+686;4;16884;U32;;;;1.000000;0.000000;kvarh;4
+687;4;16885;U16;;;;10.000000;0.000000;/;4
+688;4;16886;U16;;;;10.000000;0.000000;/;4
+689;4;16887;U16;;;;10.000000;0.000000;/;4
+690;4;16888;U16;;;;10.000000;0.000000;/;4
+691;4;16889;I16;;;;1.000000;0.000000;℃;4
+692;4;16890;I16;;;;1.000000;0.000000;'%rh;4
+693;4;16891;U16;;;;10.000000;0.000000;/;4
+694;4;16892;U32;;;;10.000000;0.000000;/;4

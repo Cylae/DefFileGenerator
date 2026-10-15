@@ -1,0 +1,397 @@
+modbusRTU;Inverter;SMA;SMA_Modbus-TI-en-23;;;;;;;
+1;3;30051;U16;;Device class;device_class;1.000000;0.000000;ENUM;4
+2;3;30053;U16;;Device type;device_type;1.000000;0.000000;ENUM;4
+3;3;30057;U16;;Serial number;SERIAL;1.000000;0.000000;RAW;4
+4;3;30059;U16;;Software package;software_package;1.000000;0.000000;FW;4
+5;3;30197;U16;;Current event number;current_event_number;1.000000;0.000000;FIX0;4
+6;3;30201;U16;;Condition;condition;1.000000;0.000000;ENUM;4
+7;3;30211;U16;;Recommended action;recommended_action;1.000000;0.000000;ENUM;4
+8;3;30213;U16;;Message;message;1.000000;0.000000;ENUM;4
+9;3;30215;U16;;Fault correction measure;fault_correction_measure;1.000000;0.000000;ENUM;9
+10;3;30217;U16;;Grid relay/contactor;grid_relaycontactor;1.000000;0.000000;ENUM;4
+11;3;30219;U16;;Derating;derating;1.000000;0.000000;ENUM;4
+12;3;30247;U16;;Current event number for manufacturer;current_event_number_for_manufacturer;1.000000;0.000000;FIX0;4
+13;3;30559;U16;;Number of events for user;number_of_events_for_user;1.000000;0.000000;FIX0;4
+14;3;30561;U16;;Number of events for installer;number_of_events_for_installer;1.000000;0.000000;FIX0;4
+15;3;30563;U16;;Number of events for service;number_of_events_for_service;1.000000;0.000000;FIX0;4
+16;3;30599;U16;;Number of grid connections;number_of_grid_connections;1.000000;0.000000;FIX0;4
+17;3;30825;U16;;Operating mode of stat.V stab., stat.V stab. config.;operating_mode_of_statv_stab_statv_stab_config;1.000000;0.000000;ENUM;4
+18;3;30829;U16;;Reactive power set value as a %;reactive_power_set_value_as_a;1.000000;0.000000;FIX1;4
+19;3;30831;U16;;cosPhi setpoint, cosPhi config., direct specif.;cosphi_setpoint_cosphi_config_direct_specif;1.000000;0.000000;FIX2;4
+20;3;30833;U16;;cosPhi excit.type, cosPhi config., direct spec.;cosphi_excittype_cosphi_config_direct_spec;1.000000;0.000000;ENUM;4
+21;3;30835;U16;;Operating mode of feed-in management;operating_mode_of_feedin_management;1.000000;0.000000;ENUM;4
+22;3;30839;U16;;Active power limitation P, active power configuration;active_power_limitation_p_active_power_configuration;1.000000;0.000000;FIX0;4
+23;3;30919;U16;;Oper.mode vol.maint.at Q on Dem., st.vol.maint.conf.;opermode_volmaintat_q_on_dem_stvolmaintconf;1.000000;0.000000;ENUM;4
+24;3;30925;U16;;Connection speed of SMACOM A;connection_speed_of_smacom_a;1.000000;0.000000;ENUM;4
+25;3;30927;U16;;Duplex mode of SMACOM A;duplex_mode_of_smacom_a;1.000000;0.000000;ENUM;4
+26;3;30929;U16;;Speedwire connection status of SMACOM A;speedwire_connection_status_of_smacom_a;1.000000;0.000000;ENUM;9
+27;3;30931;U16;;Connection speed of SMACOM B;connection_speed_of_smacom_b;1.000000;0.000000;ENUM;4
+28;3;30933;U16;;Duplex mode of SMACOM B;duplex_mode_of_smacom_b;1.000000;0.000000;ENUM;4
+29;3;30935;U16;;Speedwire connection status of SMACOM B;speedwire_connection_status_of_smacom_b;1.000000;0.000000;ENUM;9
+30;3;30949;U16;;Displacement power factor;displacement_power_factor;1.000000;0.000000;FIX3;4
+31;3;31017;U16;;Current speedwire IP address;current_speedwire_ip_address;1.000000;0.000000;UTF8;4
+32;3;31025;U16;;Current speedwire subnet mask;current_speedwire_subnet_mask;1.000000;0.000000;UTF8;4
+33;3;31033;U16;;Current speedwire gateway address;current_speedwire_gateway_address;1.000000;0.000000;UTF8;4
+34;3;31041;U16;;Current speedwire DNS server address;current_speedwire_dns_server_address;1.000000;0.000000;UTF8;4
+35;3;35377;U16;;Number of events for user;number_of_events_for_user_1;1.000000;0.000000;FIX0;4
+36;3;35381;U16;;Number of events for installer;number_of_events_for_installer_1;1.000000;0.000000;FIX0;4
+37;3;35385;U16;;Number of events for service;number_of_events_for_service_1;1.000000;0.000000;FIX0;4
+38;3;40009;U16;;Operating condition;operating_condition;1.000000;0.000000;ENUM;1
+39;3;40013;U16;;Language of the user interface;language_of_the_user_interface;1.000000;0.000000;ENUM;1
+40;3;40015;U16;;Normalized reactive power limitation by PV system ctrl;normalized_reactive_power_limitation_by_pv_system_ctrl;1.000000;0.000000;FIX1;1
+41;3;40016;U16;;Normalized active power limitation by PV system ctrl;normalized_active_power_limitation_by_pv_system_ctrl;1.000000;0.000000;FIX0;1
+42;3;40024;U16;;Dis.pow.factor that can be changed via PV system ctrl;dispowfactor_that_can_be_changed_via_pv_system_ctrl;1.000000;0.000000;FIX4;1
+43;3;40025;U16;;Excitation type that can be changed by PV system ctrl 1041 = Capacitive 1042 = Inductive;excitation_type_that_can_be_changed_by_pv_system_ctrl1041_capacitive1042_inductive;1.000000;0.000000;ENUM;1
+44;3;40063;U16;;Firmware version of the main processor;firmware_version_of_the_main_processor;1.000000;0.000000;FW;4
+45;3;40065;U16;;Firmware version of the logic component;firmware_version_of_the_logic_component;1.000000;0.000000;FW;4
+46;3;40067;U16;;Serial number;serial_number;1.000000;0.000000;RAW;4
+47;3;40109;U16;;Country standard set;country_standard_set;1.000000;0.000000;ENUM;4
+48;3;40157;U16;;Automatic speedwire configureation switched on;automatic_speedwire_configureation_switched_on;1.000000;0.000000;ENUM;1
+49;3;40159;U16;;Speedwire IP address;speedwire_ip_address;1.000000;0.000000;IP4;1
+50;3;40167;U16;;Speedwire subnet mask;speedwire_subnet_mask;1.000000;0.000000;IP4;1
+51;3;40175;U16;;Speedwire gateway address;speedwire_gateway_address;1.000000;0.000000;IP4;1
+52;3;40200;U16;;Operating mode of stat.V stab., stat.V stab. config.;operating_mode_of_statv_stab_statv_stab_config_1;1.000000;0.000000;ENUM;1
+53;3;40204;U16;;Reactive power set value as a %;reactive_power_set_value_as_a_1;1.000000;0.000000;FIX1;1
+54;3;40206;U16;;cosPhi setpoint, cosPhi config., direct specif.;cosphi_setpoint_cosphi_config_direct_specif_1;1.000000;0.000000;FIX2;1
+55;3;40208;U16;;cosPhi excit.type, cosPhi config., direct spec.;cosphi_excittype_cosphi_config_direct_spec_1;1.000000;0.000000;ENUM;1
+56;3;40210;U16;;Operating mode of feed-in management;operating_mode_of_feedin_management_1;1.000000;0.000000;ENUM;1
+57;3;40214;U16;;Active power limitation P, active power configuration;active_power_limitation_p_active_power_configuration_1;1.000000;0.000000;FIX0;1
+58;3;40216;U16;;Operating mode of active power reduction in case of overfrequency P(f);operating_mode_of_active_power_reduction_in_case_of_overfrequency_pf;1.000000;0.000000;ENUM;1
+59;3;40222;U16;;cosPhi at start point, cosPhi(P) char. config.;cosphi_at_start_point_cosphip_char_config;1.000000;0.000000;FIX2;1
+60;3;40224;U16;;Excit. type at start point, cosPhi(P) char. conf.;excit_type_at_start_point_cosphip_char_conf;1.000000;0.000000;ENUM;1
+61;3;40226;U16;;cosPhi at end point, cosPhi(P) char. config.;cosphi_at_end_point_cosphip_char_config;1.000000;0.000000;FIX2;1
+62;3;40228;U16;;Excit. type at end point, cosPhi(P) char. config.;excit_type_at_end_point_cosphip_char_config;1.000000;0.000000;ENUM;1
+63;3;40230;U16;;Act. power at start point, cosPhi(P) char. config.;act_power_at_start_point_cosphip_char_config;1.000000;0.000000;FIX0;1
+64;3;40232;U16;;Act. power at end point, cosPhi(P) char. config.;act_power_at_end_point_cosphip_char_config;1.000000;0.000000;FIX0;1
+65;3;40234;U16;;Active power gradient;active_power_gradient;1.000000;0.000000;FIX0;1
+66;3;40238;U16;;Active power gradient, linear instantaneous power gradient configuration;active_power_gradient_linear_instantaneous_power_gradient_configuration;1.000000;0.000000;FIX0;1
+67;3;40240;U16;;Activation of stay-set indicator function, linear instantaneous power gradient configuration;activation_of_stayset_indicator_function_linear_instantaneous_power_gradient_configuration;1.000000;0.000000;ENUM;1
+68;3;40242;U16;;Active power gradient after reset frequency, linear instantaneous power gradient configuration;active_power_gradient_after_reset_frequency_linear_instantaneous_power_gradient_configuration;1.000000;0.000000;FIX0;1
+69;3;40244;U16;;Reactive current droop, full dynamic grid support configuration;reactive_current_droop_full_dynamic_grid_support_configuration;1.000000;0.000000;ENUM;1
+70;3;40250;U16;;Operating mode of dynamic grid support, dynamic grid support configuration;operating_mode_of_dynamic_grid_support_dynamic_grid_support_configuration;1.000000;0.000000;ENUM;1
+71;3;40252;U16;;Lower limit, voltage dead band, full dynamic grid support configuration;lower_limit_voltage_dead_band_full_dynamic_grid_support_configuration;1.000000;0.000000;FIX0;1
+72;3;40254;U16;;Upper limit, voltage dead band, full dynamic support configuration;upper_limit_voltage_dead_band_full_dynamic_support_configuration;1.000000;0.000000;FIX0;1
+73;3;40256;U16;;PWM inverse voltage, dynamic grid support configuration;pwm_inverse_voltage_dynamic_grid_support_configuration;1.000000;0.000000;FIX0;1
+74;3;40260;U16;;Characteristic curve number of the PV system control procedure P(U);characteristic_curve_number_of_the_pv_system_control_procedure_pu;1.000000;0.000000;FIX0;1
+75;3;40482;U16;;Reactive power gradient;reactive_power_gradient;1.000000;0.000000;FIX0;1
+76;3;40484;U16;;Activation of active power gradient;activation_of_active_power_gradient;1.000000;0.000000;ENUM;1
+77;3;40490;U16;;Reactive power gradient, reactive power/voltage characteristic curve configuration Q(U);reactive_power_gradient_reactive_powervoltage_characteristic_curve_configuration_qu;1.000000;0.000000;FIX1;1
+78;3;40497;U16;;MAC address;mac_address;1.000000;0.000000;UTF8;4
+79;3;40513;U16;;Speedwire DNX server address;speedwire_dnx_server_address;1.000000;0.000000;IP4;1
+80;3;40575;U16;;Operating mode of multifunction relay [1];operating_mode_of_multifunction_relay_1;1.000000;0.000000;ENUM;1
+81;3;40577;U16;;Operating mode of multifunction relay [2];operating_mode_of_multifunction_relay_2;1.000000;0.000000;ENUM;1
+82;3;40579;U16;;Operating mode of multifunction relay [3];operating_mode_of_multifunction_relay_3;1.000000;0.000000;ENUM;1
+83;3;40581;U16;;Operating mode of multifunction relay [4];operating_mode_of_multifunction_relay_4;1.000000;0.000000;ENUM;1
+84;3;40583;U16;;Operating mode of multifunction relay [5];operating_mode_of_multifunction_relay_5;1.000000;0.000000;ENUM;1
+85;3;40585;U16;;Operating mode of multifunction relay [6];operating_mode_of_multifunction_relay_6;1.000000;0.000000;ENUM;1
+86;3;40631;U16;;Device name;device_name;1.000000;0.000000;UTF8;1
+87;3;40789;U16;;Communication version;communication_version;1.000000;0.000000;REV;4
+88;3;40809;U16;;Revision status of the logic component;revision_status_of_the_logic_component;1.000000;0.000000;FIX0;9
+89;3;43090;U32;;Login with Grid Guard-Code;login_with_grid_guardcode;1.000000;0.000000;;1
+90;3;30881;U16;;PV mains connection: 1779 = Separated 1780 = Public electricity mains 1781 = Island mains;pv_mains_connection1779_separated1780_public_electricity_mains1781_island_mains;1.000000;0.000000;ENUM;4
+91;3;40018;U16;;Fast shut-down;fast_shutdown;1.000000;0.000000;ENUM;1
+92;3;40022;U16;;Normalized reactive power limitation by PV system ctrl;normalized_reactive_power_limitation_by_pv_system_ctrl_1;1.000000;0.000000;FIX2;1
+93;3;40023;U16;;Normalized active power limitation by PV system ctrl;normalized_active_power_limitation_by_pv_system_ctrl_1;1.000000;0.000000;FIX2;1
+94;3;40029;U16;;Operating status: 295 = MPP 1467 = Start 381 = Stop 2119 = Derating 1469 = Shut down 1392 = Fault 1480 = Waiting for utilities company 1393 = Waiting for PV voltage 443 = Constant voltage 1855 = Stand-alone operation;operating_status295_mpp1467_start381_stop2119_derating1469_shut_down1392_fault1480_waiting_for_utilities_company1393_waiting_for_pv_voltage443_constant_voltage1855_standalone_operation;1.000000;0.000000;ENUM;9
+95;3;40155;U16;;MAC address;mac_address_1;1.000000;0.000000;UTF8;4
+96;3;40183;U16;;Phase assignment: 325 = Phase L1 327 = Phase L2 329 = Phase L3;phase_assignment325_phase_l1327_phase_l2329_phase_l3;1.000000;0.000000;ENUM;1
+97;3;40997;U16;;Hysteresis voltage, dynamic grid support configuration;hysteresis_voltage_dynamic_grid_support_configuration;1.000000;0.000000;FIX0;1
+98;3;40999;U16;;Setpoint cos(phi) as per EEI convention;setpoint_cosphi_as_per_eei_convention;1.000000;0.000000;FIX4;1
+99;3;41009;U16;;Minimum achievable cos(phi) quadrant 1;minimum_achievable_cosphi_quadrant_1;1.000000;0.000000;FIX3;4
+100;3;41015;U16;;Minimum achievable cos(phi) quadrant 4;minimum_achievable_cosphi_quadrant_4;1.000000;0.000000;FIX3;4
+101;3;41019;U16;;Decrease ramp, conf. of grid integr. char. 1;decrease_ramp_conf_of_grid_integr_char_1;1.000000;0.000000;FIX1;1
+102;3;41021;U16;;Increase ramp, conf. of grid integr. char. 1;increase_ramp_conf_of_grid_integr_char_1;1.000000;0.000000;FIX1;1
+103;3;41023;U16;;Number of points to be used, conf. of grid integr. char. 1;number_of_points_to_be_used_conf_of_grid_integr_char_1;1.000000;0.000000;FIX0;1
+104;3;41025;U16;;X-axes reference, conf. of grid integration char. 1: 1975 = Voltage in V 1976 = Voltage in percentages of Un;xaxes_reference_conf_of_grid_integration_char_11975_voltage_in_v1976_voltage_in_percentages_of_un;1.000000;0.000000;ENUM;1
+105;3;41027;U16;;Y-axes reference, conf. of grid integration char. 1: 1977 = Var in percentages of Pmax 1978 = Power in percentages of Pmax 1979 = Power in percentages of frozen active power 3565 = VAr as percentage of available reactive power;yaxes_reference_conf_of_grid_integration_char_11977_var_in_percentages_of_pmax1978_power_in_percentages_of_pmax1979_power_in_percentages_of_frozen_active_power3565_var_as_percentage_of_available_reactive_power;1.000000;0.000000;ENUM;1
+106;3;41029;U16;;X value 1, conf. of grid integr. char. 1;x_value_1_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+107;3;41031;U16;;Y value 1, conf. of grid integr. char. 1;y_value_1_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+108;3;41033;U16;;X value 2, conf. of grid integr. char. 1;x_value_2_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+109;3;41035;U16;;Y value 2, conf. of grid integr. char. 1;y_value_2_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+110;3;41037;U16;;X value 3, conf. of grid integr. char. 1;x_value_3_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+111;3;41039;U16;;Y value 3, conf. of grid integr. char. 1;y_value_3_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+112;3;41041;U16;;X value 4, conf. of grid integr. char. 1;x_value_4_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+113;3;41043;U16;;Y value 4, conf. of grid integr. char. 1;y_value_4_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+114;3;41045;U16;;X value 5, conf. of grid integr. char. 1;x_value_5_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+115;3;41047;U16;;Y value 5, conf. of grid integr. char. 1;y_value_5_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+116;3;41049;U16;;X value 6, conf. of grid integr. char. 1;x_value_6_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+117;3;41051;U16;;Y value 6, conf. of grid integr. char. 1;y_value_6_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+118;3;41053;U16;;X value 7, conf. of grid integr. char. 1;x_value_7_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+119;3;41055;U16;;Y value 7, conf. of grid integr. char. 1;y_value_7_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+120;3;41057;U16;;X value 8, conf. of grid integr. char. 1;x_value_8_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+121;3;41059;U16;;Y value 8, conf. of grid integr. char. 1;y_value_8_conf_of_grid_integr_char_1;1.000000;0.000000;FIX3;1
+122;3;41067;U16;;Decrease ramp, conf. of grid integration char. 2;decrease_ramp_conf_of_grid_integration_char_2;1.000000;0.000000;FIX1;1
+123;3;41069;U16;;Increase ramp, conf. of grid integration char. 2;increase_ramp_conf_of_grid_integration_char_2;1.000000;0.000000;FIX1;1
+124;3;41071;U16;;Number of points to be used, conf. of grid integr. char. 2;number_of_points_to_be_used_conf_of_grid_integr_char_2;1.000000;0.000000;FIX0;1
+125;3;41073;U16;;Input unit, conf. of grid integration char. 2: 1975 = Voltage in V 1976 = Voltage in percentages of Un;input_unit_conf_of_grid_integration_char_21975_voltage_in_v1976_voltage_in_percentages_of_un;1.000000;0.000000;ENUM;1
+126;3;41075;U16;;Output frequency, conf. of grid integration char. 2: 1977 = Var in percentages of Pmax 1978 = Power in percentages of Pmax 1979 = Power in percentages of frozen active power 3565 = VAr as percentage of available reactive power;output_frequency_conf_of_grid_integration_char_21977_var_in_percentages_of_pmax1978_power_in_percentages_of_pmax1979_power_in_percentages_of_frozen_active_power3565_var_as_percentage_of_available_reactive_power;1.000000;0.000000;ENUM;1
+127;3;41077;U16;;X value 1, conf. of grid integr. char. 2;x_value_1_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+128;3;41079;U16;;Y value 1, conf. of grid integr. char. 2;y_value_1_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+129;3;41081;U16;;X value 2, conf. of grid integr. char. 2;x_value_2_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+130;3;41083;U16;;Y value 2, conf. of grid integr. char. 2;y_value_2_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+131;3;41085;U16;;X value 3, conf. of grid integr. char. 2;x_value_3_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+132;3;41087;U16;;Y value 3, conf. of grid integr. char. 2;y_value_3_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+133;3;41089;U16;;X value 4, conf. of grid integr. char. 2;x_value_4_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+134;3;41091;U16;;Y value 4, conf. of grid integr. char. 2;y_value_4_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+135;3;41093;U16;;X value 5, conf. of grid integr. char. 2;x_value_5_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+136;3;41095;U16;;Y value 5, conf. of grid integr. char. 2;y_value_5_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+137;3;41097;U16;;X value 6, conf. of grid integr. char. 2;x_value_6_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+138;3;41099;U16;;Y value 6, conf. of grid integr. char. 2;y_value_6_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+139;3;41101;U16;;X value 7, conf. of grid integr. char. 2;x_value_7_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+140;3;41103;U16;;Y value 7, conf. of grid integr. char. 2;y_value_7_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+141;3;41105;U16;;X value 8, conf. of grid integr. char. 2;x_value_8_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+142;3;41107;U16;;Y value 8, conf. of grid integr. char. 2;y_value_8_conf_of_grid_integr_char_2;1.000000;0.000000;FIX3;1
+143;3;41121;U16;;Set country standard: 42 = AS4777.3 306 = Island mode 60 Hz 313 = Island mode 50 Hz 333 = PPC 438 = VDE0126-1-1 560 = EN50438 561 = EN50438-CZ 1013 = Other standard 1199 = PPDS 7501 = RD1663/661-A 7506 = VDE0126-1-1/UTE 7510 = VDE-AR-N4105 7513 = VDE-AR-N4105-MP 7514 = VDE-AR-N4105-HP 7517 = CEI 0-21 internal 7518 = CEI 0-21 external 7522 = NEN-EN50438 7523 = C10/11/2012 7524 = RD1699 7525 = G83/2 7526 = VFR2013 7527 = VFR2014 7528 = G59/3 7529 = SI4777_HS131_Pf 7530 = MEA2013 7531 = PEA2013 7532 = EN50438:2013 7533 = NEN-EN50438:2013 7549 = AS4777.2_2015;set_country_standard42_as47773306_island_mode_60_hz313_island_mode_50_hz333_ppc438_vde012611560_en50438561_en50438cz1013_other_standard1199_ppds7501_rd1663661a7506_vde012611ute7510_vdearn41057513_vdearn4105mp7514_vdearn4105hp7517_cei_021_internal7518_cei_021_external7522_nenen504387523_c101120127524_rd16997525_g8327526_vfr20137527_vfr20147528_g5937529_si4777_hs131_pf7530_mea20137531_pea20137532_en5043820137533_nenen5043820137549_as47772_2015;1.000000;0.000000;FUNKTION_SEC;1
+144;3;41193;U16;;Operating mode for absent active power limitation: 2506 = Values maintained 2507 = Use fallback setting;operating_mode_for_absent_active_power_limitation2506_values_maintained2507_use_fallback_setting;1.000000;0.000000;ENUM;1
+145;3;41197;U16;;Fallback act power lmt P in % of WMax for absent act power lmt;fallback_act_power_lmt_p_in_of_wmax_for_absent_act_power_lmt;1.000000;0.000000;FIX2;1
+146;3;41219;U16;;Operating mode for absent reactive power control: 2506 = Values maintained 2507 = Use fallback setting;operating_mode_for_absent_reactive_power_control2506_values_maintained2507_use_fallback_setting;1.000000;0.000000;ENUM;1
+147;3;41223;U16;;Fallback react power Q in % of WMax for absent react power ctr;fallback_react_power_q_in_of_wmax_for_absent_react_power_ctr;1.000000;0.000000;FIX2;1
+148;3;41225;U16;;Operating mode for absent cos Phi spec: 2506 = Values maintained 2507 = Use fallback setting;operating_mode_for_absent_cos_phi_spec2506_values_maintained2507_use_fallback_setting;1.000000;0.000000;ENUM;1
+149;3;41229;U16;;Fallback cos Phi for absent cos Phi spec;fallback_cos_phi_for_absent_cos_phi_spec;1.000000;0.000000;FIX4;1
+150;3;30235;U16;;Backup mode status: 1440 = Grid mode 1441 = Separate network mode 16777213 = Information not available;backup_mode_status1440_grid_mode1441_separate_network_mode16777213_information_not_available;1.000000;0.000000;ENUM;9
+151;3;40917;U16;;Characteristic curve number, configuration of characteristic curve mode [1];characteristic_curve_number_configuration_of_characteristic_curve_mode_1;1.000000;0.000000;FIX0;1
+152;3;40937;U16;;Activation of the characteristic curve, configuration of characteristic curve mode: [1] 303 = Off 308 = On;activation_of_the_characteristic_curve_configuration_of_characteristic_curve_mode_1303_off308_on;1.000000;0.000000;ENUM;1
+153;3;41061;U16;;2nd characteristic curve number, configuration of characteristic curve mode;v_2nd_characteristic_curve_number_configuration_of_characteristic_curve_mode;1.000000;0.000000;FIX0;1
+154;3;41063;U16;;2nd activation of the characteristic curve, configuration of characteristic curve mode: 303 = Off 308 = On;v_2nd_activation_of_the_characteristic_curve_configuration_of_characteristic_curve_mode303_off308_on;1.000000;0.000000;ENUM;1
+155;3;30565;U32;;Number of generator starts;number_of_generator_starts;1.000000;0.000000;;4
+156;3;30567;U32;;Amp hours counter for battery charge;amp_hours_counter_for_battery_charge;1.000000;0.000000;Ah;4
+157;3;30569;U32;;Amp hours counter for battery discharge;amp_hours_counter_for_battery_discharge;1.000000;0.000000;Ah;4
+158;3;30571;U32;;Meter reading consumption meter;meter_reading_consumption_meter;1.000000;0.000000;Wh;4
+159;3;30577;U32;;Energy consumed from grid (today);energy_consumed_from_grid_today;1.000000;0.000000;Wh;4
+160;3;30579;U32;;Energy fed into grid (today);energy_fed_into_grid_today;1.000000;0.000000;Wh;4
+161;3;30581;U32;;Grid reference counter reading;grid_reference_counter_reading;1.000000;0.000000;Wh;4
+162;3;30585;U32;;Power outage;power_outage;100.000000;0.000000;s;4
+163;3;30587;U32;;PV generation counter reading;pv_generation_counter_reading;1.000000;0.000000;Wh;4
+164;3;30589;U32;;Rise in self-consumption;rise_in_selfconsumption;1.000000;0.000000;Wh;4
+165;3;30591;U32;;Rise in self-consumption today;rise_in_selfconsumption_today;1.000000;0.000000;Wh;4
+166;3;30593;U32;;Energy consumed internally;energy_consumed_internally;1.000000;0.000000;Wh;4
+167;3;30595;U32;;Absorbed energy;absorbed_energy;1.000000;0.000000;Wh;4
+168;3;30597;U32;;Released energy;released_energy;1.000000;0.000000;Wh;4
+169;3;30843;I32;;Battery current;battery_current;1.000000;0.000000;A;4
+170;3;30845;U32;;Current battery state of charge;current_battery_state_of_charge;1.000000;0.000000;'%;4
+171;3;30847;U32;;Current battery capacity;current_battery_capacity;1.000000;0.000000;'%;4
+172;3;30849;I32;;Battery temperature;battery_temperature;10.000000;0.000000;°C;4
+173;3;30851;U32;;Battery voltage;battery_voltage;1.000000;0.000000;V;4
+174;3;30853;U32;;Active battery charging mode;active_battery_charging_mode;1.000000;0.000000;;4
+175;3;30855;U32;;Current battery charging set voltage;current_battery_charging_set_voltage;1.000000;0.000000;V;4
+176;3;30857;I32;;Number of battery charge throughputs;number_of_battery_charge_throughputs;1.000000;0.000000;;4
+177;3;30859;U32;;Battery maint. state of charge;battery_maint_state_of_charge;1.000000;0.000000;;4
+178;3;30861;I32;;Load power;load_power;1.000000;0.000000;W;4
+179;3;30865;I32;;Power grid reference;power_grid_reference;1.000000;0.000000;W;4
+180;3;30867;I32;;Power grid feed-in;power_grid_feedin;1.000000;0.000000;W;4
+181;3;30869;I32;;PV power generated;pv_power_generated;1.000000;0.000000;W;4
+182;3;30871;U32;;Current self-consumption;current_selfconsumption;1.000000;0.000000;W;4
+183;3;30873;I32;;Current rise in self-consumption;current_rise_in_selfconsumption;1.000000;0.000000;W;4
+184;3;30875;U32;;Multifunction relay status;multifunction_relay_status;1.000000;0.000000;;9
+185;3;30877;U32;;Power supply status;power_supply_status;1.000000;0.000000;;9
+186;3;30879;U32;;Reason for generator request;reason_for_generator_request;1.000000;0.000000;;4
+187;3;30883;U32;;Status of utility grid;status_of_utility_grid;1.000000;0.000000;;9
+188;3;30885;U32;;Output external power connection;output_external_power_connection;1.000000;0.000000;W;4
+189;3;30887;U32;;Output external power connection phase A;output_external_power_connection_phase_a;1.000000;0.000000;W;4
+190;3;30889;U32;;Output external power connection phase B;output_external_power_connection_phase_b;1.000000;0.000000;W;4
+191;3;30891;U32;;Output external power connection phase C;output_external_power_connection_phase_c;1.000000;0.000000;W;4
+192;3;30893;U32;;Reactive power external power connection;reactive_power_external_power_connection;1.000000;0.000000;VAr;4
+193;3;30895;U32;;Reactive power external power connection phase A;reactive_power_external_power_connection_phase_a;1.000000;0.000000;VAr;4
+194;3;30897;U32;;Reactive power external power connection phase B;reactive_power_external_power_connection_phase_b;1.000000;0.000000;VAr;4
+195;3;30899;U32;;Reactive power external power connection phase C;reactive_power_external_power_connection_phase_c;1.000000;0.000000;VAr;4
+196;3;30901;U32;;Grid frequency of external power connection;grid_frequency_of_external_power_connection;1.000000;0.000000;Hz;4
+197;3;30903;U32;;Voltage external power connection phase A;voltage_external_power_connection_phase_a;1.000000;0.000000;V;4
+198;3;30905;U32;;Voltage external power connection phase B;voltage_external_power_connection_phase_b;1.000000;0.000000;V;4
+199;3;30907;U32;;Voltage external power connection phase C;voltage_external_power_connection_phase_c;1.000000;0.000000;V;4
+200;3;30909;I32;;Electricity external power connection phase A;electricity_external_power_connection_phase_a;1.000000;0.000000;A;4
+201;3;30911;I32;;Electricity external power connection phase B;electricity_external_power_connection_phase_b;1.000000;0.000000;A;4
+202;3;30913;I32;;Electricity external power connection phase C;electricity_external_power_connection_phase_c;1.000000;0.000000;A;4
+203;3;30915;U32;;Power supply status;power_supply_status_1;1.000000;0.000000;;9
+204;3;30917;U32;;Generator status;generator_status;1.000000;0.000000;;9
+205;3;30983;U32;;Output of photovoltaics;output_of_photovoltaics;1.000000;0.000000;W;4
+206;3;30985;I32;;Total current external network connection;total_current_external_network_connection;1.000000;0.000000;A;4
+207;3;30987;U32;;Fault battery state of charge;fault_battery_state_of_charge;1.000000;0.000000;'%;9
+208;3;30989;U32;;Maximum battery current in charge direction;maximum_battery_current_in_charge_direction;1.000000;0.000000;A;4
+209;3;30991;U32;;Maximum battery current in discharge direction;maximum_battery_current_in_discharge_direction;1.000000;0.000000;A;4
+210;3;30993;U32;;Charge factor: ratio of battery charge/discharge;charge_factor_ratio_of_battery_chargedischarge;1.000000;0.000000;;4
+211;3;30995;U32;;Operating time of battery statistics counter;operating_time_of_battery_statistics_counter;1000.000000;0.000000;s;4
+212;3;30997;I32;;Lowest measured battery temperature;lowest_measured_battery_temperature;10.000000;0.000000;°C;4
+213;3;30999;I32;;Highest measured battery temperature;highest_measured_battery_temperature;100.000000;0.000000;°C;4
+214;3;31001;U32;;Max. occurred battery voltage;max_occurred_battery_voltage;1.000000;0.000000;V;4
+215;3;31003;U32;;Remaining time until full charge;remaining_time_until_full_charge;100.000000;0.000000;s;4
+216;3;31005;U32;;Remaining time until equalization charge;remaining_time_until_equalization_charge;10.000000;0.000000;s;4
+217;3;31007;U32;;Remaining absorption time;remaining_absorption_time;100.000000;0.000000;s;4
+218;3;31009;U32;;Lower discharge limit for private consumption range;lower_discharge_limit_for_private_consumption_range;1.000000;0.000000;'%;4
+219;3;31011;U32;;Total output current of solar charger;total_output_current_of_solar_charger;1.000000;0.000000;A;4
+220;3;31013;U32;;Remaining min. operating time of generator;remaining_min_operating_time_of_generator;1000.000000;0.000000;s;4
+221;3;31015;U32;;Operating status Master (Phase L1);operating_status_master_phase_l1;1.000000;0.000000;;9
+222;3;31053;U32;;Operating status Slave1 (Phase L2);operating_status_slave1_phase_l2;1.000000;0.000000;;9
+223;3;31055;U32;;Operating status Slave2 (Phase L3);operating_status_slave2_phase_l3;1.000000;0.000000;;9
+224;3;31057;U32;;Status battery application area;status_battery_application_area;1.000000;0.000000;;9
+225;3;31059;U32;;Absorption phase active;absorption_phase_active;1.000000;0.000000;;4
+226;3;31061;U32;;Control of battery charging via communication available;control_of_battery_charging_via_communication_available;1.000000;0.000000;;4
+227;3;31063;U32;;Total energy of photovoltaics;total_energy_of_photovoltaics;1.000000;0.000000;kWh;4
+228;3;31065;U32;;Total energy of photovoltaics current day;total_energy_of_photovoltaics_current_day;1.000000;0.000000;Wh;4
+229;3;31067;U32;;Number of battery equalization charges;number_of_battery_equalization_charges;1.000000;0.000000;kWh;4
+230;3;31069;U32;;Number of battery full charges;number_of_battery_full_charges;1.000000;0.000000;;4
+231;3;31071;U32;;Relative battery discharge since last full charge;relative_battery_discharge_since_last_full_charge;1.000000;0.000000;'%;4
+232;3;31073;U32;;Relative battery discharge since last equalization charge;relative_battery_discharge_since_last_equalization_charge;1.000000;0.000000;'%;4
+233;3;31075;U32;;Operating time energy count;operating_time_energy_count;100.000000;0.000000;s;4
+234;3;31077;U32;;Photovoltaic energy in solar charger [1];photovoltaic_energy_in_solar_charger_1;1.000000;0.000000;Wh;4
+235;3;34657;U32;;Status digital input;status_digital_input;1.000000;0.000000;;9
+236;3;40031;U32;;Rated battery capacity;rated_battery_capacity;1.000000;0.000000;Ah;4
+237;3;40033;U32;;Max. battery temperature;max_battery_temperature;100.000000;0.000000;°C;1
+238;3;40035;U32;;Battery type;battery_type;1.000000;0.000000;;4
+239;3;40037;U32;;Rated battery voltage;rated_battery_voltage;1.000000;0.000000;V;4
+240;3;40039;U32;;Battery boost charge time;battery_boost_charge_time;100.000000;0.000000;min;1
+241;3;40041;U32;;Battery equalization charge time;battery_equalization_charge_time;100.000000;0.000000;h;1
+242;3;40043;U32;;Battery full charge time;battery_full_charge_time;100.000000;0.000000;h;1
+243;3;40045;U32;;Max. battery charging current;max_battery_charging_current;1.000000;0.000000;A;1
+244;3;40047;U32;;Rated generator current;rated_generator_current;1.000000;0.000000;A;1
+245;3;40049;U32;;Automatic generator start;automatic_generator_start;1.000000;0.000000;;1
+246;3;40055;U32;;Manual generator control;manual_generator_control;1.000000;0.000000;;1
+247;3;40057;U32;;Generator request via power on;generator_request_via_power_on;1.000000;0.000000;;1
+248;3;40059;U32;;Generator shutdown load limit;generator_shutdown_load_limit;1.000000;0.000000;W;1
+249;3;40061;U32;;Generator startup load limit;generator_startup_load_limit;1.000000;0.000000;W;1
+250;3;40071;U32;;Grid creating generator;grid_creating_generator;1.000000;0.000000;;1
+251;3;40075;U32;;Rise in self-consumption switched on;rise_in_selfconsumption_switched_on;1.000000;0.000000;;1
+252;3;40077;U32;;Initiate device restart;initiate_device_restart;1.000000;0.000000;;1
+253;3;40085;U32;;Cell charge nominal voltage for boost charge;cell_charge_nominal_voltage_for_boost_charge;1.000000;0.000000;V;1
+254;3;40087;U32;;Cell charge nominal voltage for full charging;cell_charge_nominal_voltage_for_full_charging;1.000000;0.000000;V;1
+255;3;40089;U32;;Cell charge nominal voltage for equalization charge;cell_charge_nominal_voltage_for_equalization_charge;1.000000;0.000000;V;1
+256;3;40091;U32;;Cell charge nominal voltage for float charge;cell_charge_nominal_voltage_for_float_charge;1.000000;0.000000;V;1
+257;3;40093;U32;;Voltage monitoring upper minimum threshold;voltage_monitoring_upper_minimum_threshold;1.000000;0.000000;V;1
+258;3;40097;U32;;Voltage monitoring hysteresis minimum threshold;voltage_monitoring_hysteresis_minimum_threshold;1.000000;0.000000;V;1
+259;3;40099;U32;;Voltage monitoring hysteresis maximum threshold;voltage_monitoring_hysteresis_maximum_threshold;1.000000;0.000000;V;1
+260;3;40105;U32;;Frequency monitoring hysteresis minimum threshold;frequency_monitoring_hysteresis_minimum_threshold;1.000000;0.000000;Hz;1
+261;3;40107;U32;;Frequency monitoring hysteresis maximum threshold;frequency_monitoring_hysteresis_maximum_threshold;1.000000;0.000000;Hz;1
+262;3;40111;U32;;Voltage monit. gener. lower minimum threshold;voltage_monit_gener_lower_minimum_threshold;1.000000;0.000000;V;1
+263;3;40113;U32;;Voltage monit. gener. upper maximum threshold;voltage_monit_gener_upper_maximum_threshold;1.000000;0.000000;V;1
+264;3;40119;U32;;Frequency monit. generator lower minimum threshold;frequency_monit_generator_lower_minimum_threshold;1.000000;0.000000;Hz;1
+265;3;40121;U32;;Frequency monit. generator without max. threshold;frequency_monit_generator_without_max_threshold;1.000000;0.000000;Hz;1
+266;3;40127;U32;;Voltage monitoring generator maximum reverse power;voltage_monitoring_generator_maximum_reverse_power;1.000000;0.000000;W;1
+267;3;40129;U32;;Volt. monit. gener. max. reverse power trip. time;volt_monit_gener_max_reverse_power_trip_time;100.000000;0.000000;s;1
+268;3;40137;U32;;Acknowledge generator errors;acknowledge_generator_errors;1.000000;0.000000;;1
+269;3;40149;I32;;Active power setpoint;active_power_setpoint;1.000000;0.000000;W;1
+270;3;40151;U32;;Eff./reac. pow. contr. via comm.;effreac_pow_contr_via_comm;1.000000;0.000000;;1
+271;3;40153;I32;;Reactive power setpoint;reactive_power_setpoint;1.000000;0.000000;VAr;1
+272;3;40187;U32;;Battery nominal capacity;battery_nominal_capacity;1.000000;0.000000;Wh;4
+273;3;40189;U32;;Batt. manuf's max. charge capac.;batt_manufs_max_charge_capac;1.000000;0.000000;W;4
+274;3;40191;U32;;Batt. manuf's max. disch. capac.;batt_manufs_max_disch_capac;1.000000;0.000000;W;4
+275;3;40236;U32;;BMS operating mode;bms_operating_mode;1.000000;0.000000;;1
+276;3;40521;U32;;Network request via power switched on;network_request_via_power_switched_on;1.000000;0.000000;;1
+277;3;40523;U32;;Network request switch-on power limit;network_request_switchon_power_limit;1.000000;0.000000;W;1
+278;3;40525;U32;;Network request switch-off power limit;network_request_switchoff_power_limit;1.000000;0.000000;W;1
+279;3;40527;U32;;Manual control of network connection;manual_control_of_network_connection;1.000000;0.000000;;1
+280;3;40529;U32;;Network request via charge type;network_request_via_charge_type;1.000000;0.000000;;1
+281;3;40531;U32;;Type of AC subdistribution;type_of_ac_subdistribution;1.000000;0.000000;;4
+282;3;40533;U32;;Manual equalization charge;manual_equalization_charge;1.000000;0.000000;;1
+283;3;40535;U32;;Generator request;generator_request;1.000000;0.000000;;1
+284;3;40537;U32;;Limit battery state of charge generator start in time range;limit_battery_state_of_charge_generator_start_in_time_range;1.000000;0.000000;'%;1
+285;3;40539;U32;;Limit battery state of charge gen. shutdown in time range;limit_battery_state_of_charge_gen_shutdown_in_time_range;1.000000;0.000000;'%;1
+286;3;40541;U32;;Start time additional time range generator request;start_time_additional_time_range_generator_request;1.000000;0.000000;;1
+287;3;40543;U32;;Start time range for generator request;start_time_range_for_generator_request;1.000000;0.000000;;1
+288;3;40545;U32;;Limit battery state of charge generator stop in add time range;limit_battery_state_of_charge_generator_stop_in_add_time_range;1.000000;0.000000;'%;1
+289;3;40547;U32;;Limit battery state of charge generator start in add time range;limit_battery_state_of_charge_generator_start_in_add_time_range;1.000000;0.000000;'%;1
+290;3;40549;U32;;Time-controlled generator operation;timecontrolled_generator_operation;1.000000;0.000000;;1
+291;3;40551;U32;;Start time for time-controlled generator op.;start_time_for_timecontrolled_generator_op;1.000000;0.000000;;1
+292;3;40553;U32;;Operating time for time-controlled generator op.;operating_time_for_timecontrolled_generator_op;100.000000;0.000000;s;1
+293;3;40555;U32;;Repeat cycle of time-controlled generator op.;repeat_cycle_of_timecontrolled_generator_op;1.000000;0.000000;;1
+294;3;40557;U32;;Generator request with set charge type;generator_request_with_set_charge_type;1.000000;0.000000;;1
+295;3;40559;U32;;Reaction to digital input of generator request;reaction_to_digital_input_of_generator_request;1.000000;0.000000;;1
+296;3;40561;U32;;Average time for generator request via power;average_time_for_generator_request_via_power;100.000000;0.000000;s;1
+297;3;40563;U32;;Average operating time of generator;average_operating_time_of_generator;100.000000;0.000000;s;1
+298;3;40565;U32;;Average idle period of generator;average_idle_period_of_generator;100.000000;0.000000;s;1
+299;3;40567;U32;;Cooling down time of generator;cooling_down_time_of_generator;100.000000;0.000000;s;1
+300;3;40569;U32;;Idle period after generator fault;idle_period_after_generator_fault;100.000000;0.000000;s;1
+301;3;40571;U32;;Warm-up time of generator;warmup_time_of_generator;100.000000;0.000000;s;1
+302;3;40573;U32;;Generator nominal frequency;generator_nominal_frequency;1.000000;0.000000;Hz;1
+303;3;40587;U32;;Slave 1: Operating mode of multifunction relay [1];slave_1_operating_mode_of_multifunction_relay_1;1.000000;0.000000;;1
+304;3;40599;U32;;Slave 2: Operating mode of multifunction relay [1];slave_2_operating_mode_of_multifunction_relay_1;1.000000;0.000000;;1
+305;3;40611;U32;;Repeat cycle time of relay control for timer [1];repeat_cycle_time_of_relay_control_for_timer_1;1.000000;0.000000;;1
+306;3;40615;U32;;Duration for which multifunction relay is activated for timer [1];duration_for_which_multifunction_relay_is_activated_for_timer_1;100.000000;0.000000;s;1
+307;3;40619;U32;;Start date of relay control for timer [1];start_date_of_relay_control_for_timer_1;1.000000;0.000000;;1
+308;3;40623;U32;;Time-controlled inverter operation;timecontrolled_inverter_operation;1.000000;0.000000;;1
+309;3;40625;U32;;Start date for time-controlled inverter operation;start_date_for_timecontrolled_inverter_operation;1.000000;0.000000;;1
+310;3;40627;U32;;Operating time for time-controlled inverter op.;operating_time_for_timecontrolled_inverter_op;100.000000;0.000000;s;1
+311;3;40629;U32;;Repeat cycle for time-controlled inverter op.;repeat_cycle_for_timecontrolled_inverter_op;1.000000;0.000000;;1
+312;3;40647;U32;;Automatic updates activated;automatic_updates_activated;1.000000;0.000000;;1
+313;3;40649;U32;;Time of the automatic update;time_of_the_automatic_update;1.000000;0.000000;;1
+314;3;40651;U32;;Conn. point of counter on measuring interface 1;conn_point_of_counter_on_measuring_interface_1;1.000000;0.000000;;1
+315;3;40653;U32;;Conn. point of counter on measuring interface 2;conn_point_of_counter_on_measuring_interface_2;1.000000;0.000000;;1
+316;3;40657;U32;;Serial number of the counter on meas. interface 1;serial_number_of_the_counter_on_meas_interface_1;1.000000;0.000000;;1
+317;3;40659;U32;;Serial number of the counter on meas. interface 2;serial_number_of_the_counter_on_meas_interface_2;1.000000;0.000000;;1
+318;3;40663;U32;;Grid Guard version;grid_guard_version;1.000000;0.000000;;4
+319;3;40665;U32;;Memory card status;memory_card_status;1.000000;0.000000;;9
+320;3;40667;U32;;Update version of the main processor;update_version_of_the_main_processor;1.000000;0.000000;;4
+321;3;40669;U32;;Start feed-in PV;start_feedin_pv;1.000000;0.000000;;1
+322;3;40671;U32;;Stop feed-in PV;stop_feedin_pv;1.000000;0.000000;;1
+323;3;40673;U32;;Cut-off time until connection to external network;cutoff_time_until_connection_to_external_network;100.000000;0.000000;s;1
+324;3;40675;U32;;Automatic frequency regulation;automatic_frequency_regulation;1.000000;0.000000;;1
+325;3;40677;U32;;Maximum current from public grid;maximum_current_from_public_grid;1.000000;0.000000;A;1
+326;3;40679;U32;;Power feedback to public grid allowed;power_feedback_to_public_grid_allowed;1.000000;0.000000;;1
+327;3;40681;U32;;Network request via battery state of charge switched on;network_request_via_battery_state_of_charge_switched_on;1.000000;0.000000;;1
+328;3;40683;U32;;Lmt battery state of charge for connection to grid;lmt_battery_state_of_charge_for_connection_to_grid;1.000000;0.000000;'%;1
+329;3;40685;U32;;Lmt battery state of charge for disconnection from grid;lmt_battery_state_of_charge_for_disconnection_from_grid;1.000000;0.000000;'%;1
+330;3;40687;U32;;Start time additional time range grid request;start_time_additional_time_range_grid_request;1.000000;0.000000;;1
+331;3;40689;U32;;Start interval for network request;start_interval_for_network_request;1.000000;0.000000;;1
+332;3;40691;U32;;Limit battery state of charge for connect to grid in add time range;limit_battery_state_of_charge_for_connect_to_grid_in_add_time_range;1.000000;0.000000;'%;1
+333;3;40693;U32;;Limit battery state of charge for disconnect from grid in add time range;limit_battery_state_of_charge_for_disconnect_from_grid_in_add_time_range;1.000000;0.000000;'%;1
+334;3;40695;U32;;Energy saving mode switched on;energy_saving_mode_switched_on;1.000000;0.000000;;1
+335;3;40697;U32;;Maximum network reverse power;maximum_network_reverse_power;1.000000;0.000000;W;1
+336;3;40699;U32;;Maximum network reverse power tripping time;maximum_network_reverse_power_tripping_time;100.000000;0.000000;s;1
+337;3;40701;U32;;Time until change-over to energy saving mode;time_until_changeover_to_energy_saving_mode;100.000000;0.000000;s;1
+338;3;40703;U32;;Maximum duration of energy saving mode;maximum_duration_of_energy_saving_mode;100.000000;0.000000;s;1
+339;3;40705;U32;;Upper state of charge for reactivating feed-in;upper_state_of_charge_for_reactivating_feedin;1.000000;0.000000;'%;1
+340;3;40707;U32;;Lower state of charge for locking feed-in;lower_state_of_charge_for_locking_feedin;1.000000;0.000000;'%;1
+341;3;40709;U32;;Start time of battery protection mode level;start_time_of_battery_protection_mode_level;1.000000;0.000000;;1
+342;3;40711;U32;;End time of battery protection mode level;end_time_of_battery_protection_mode_level;1.000000;0.000000;;1
+343;3;40713;U32;;Battery state of charge for protection mode;battery_state_of_charge_for_protection_mode;1.000000;0.000000;'%;1
+344;3;40715;I32;;Battery switch-on limit after overtemp. shutdown;battery_switchon_limit_after_overtemp_shutdown;10.000000;0.000000;°C;1
+345;3;40717;U32;;Output resistance of battery connection;output_resistance_of_battery_connection;1.000000;0.000000;Ohms;1
+346;3;40719;U32;;Lower lmt deep disch. protect area prior shutdown;lower_lmt_deep_disch_protect_area_prior_shutdown;1.000000;0.000000;'%;1
+347;3;40721;U32;;Minimum width of deep discharge protection area;minimum_width_of_deep_discharge_protection_area;1.000000;0.000000;'%;1
+348;3;40723;U32;;Minimum width of backup power area;minimum_width_of_backup_power_area;1.000000;0.000000;'%;1
+349;3;40725;U32;;Area width for conserving battery state of charge;area_width_for_conserving_battery_state_of_charge;1.000000;0.000000;'%;1
+350;3;40727;U32;;Minimum width of own consumption area;minimum_width_of_own_consumption_area;1.000000;0.000000;'%;1
+351;3;40729;U32;;Most productive month for battery usage range;most_productive_month_for_battery_usage_range;1.000000;0.000000;;1
+352;3;40731;U32;;Season operation active;season_operation_active;1.000000;0.000000;;1
+353;3;40733;U32;;Voltage setpoint with deactivated battery mgmt;voltage_setpoint_with_deactivated_battery_mgmt;1.000000;0.000000;V;1
+354;3;40735;U32;;Cycle time full charge;cycle_time_full_charge;100.000000;0.000000;s;1
+355;3;40737;U32;;Cycle time equalization charge;cycle_time_equalization_charge;100.000000;0.000000;s;1
+356;3;40739;I32;;Battery temperature compensation;battery_temperature_compensation;1.000000;0.000000;V/°C;1
+357;3;40741;U32;;Automatic equalization charge;automatic_equalization_charge;1.000000;0.000000;;1
+358;3;40743;U32;;Type of additional DC sources;type_of_additional_dc_sources;1.000000;0.000000;;1
+359;3;40745;U32;;Limitation type of generator current;limitation_type_of_generator_current;1.000000;0.000000;;1
+360;3;40747;U32;;Sensitivity of generator failure detection;sensitivity_of_generator_failure_detection;1.000000;0.000000;;1
+361;3;40749;U32;;Status digital input;status_digital_input_1;1.000000;0.000000;;9
+362;3;40751;U32;;Inverter nominal voltage;inverter_nominal_voltage;1.000000;0.000000;V;1
+363;3;40753;U32;;Inverter nominal frequency;inverter_nominal_frequency;1.000000;0.000000;Hz;1
+364;3;40755;U32;;Maximum AC battery charge current;maximum_ac_battery_charge_current;1.000000;0.000000;A;1
+365;3;40757;U32;;Lmt value battery state of charge for start load shedding 1;lmt_value_battery_state_of_charge_for_start_load_shedding_1;1.000000;0.000000;'%;1
+366;3;40759;U32;;Lmt value battery state of charge for stop load shedding 1;lmt_value_battery_state_of_charge_for_stop_load_shedding_1;1.000000;0.000000;'%;1
+367;3;40761;U32;;Start time additional time range load shedding 1;start_time_additional_time_range_load_shedding_1;1.000000;0.000000;;1
+368;3;40763;U32;;Time load shedding 1;time_load_shedding_1;1.000000;0.000000;;1
+369;3;40765;U32;;Limit battery state of charge for start load shedding 1 in add time range;limit_battery_state_of_charge_for_start_load_shedding_1_in_add_time_range;1.000000;0.000000;'%;1
+370;3;40767;U32;;Limit battery state of charge for stop load shedding 1 in add time range;limit_battery_state_of_charge_for_stop_load_shedding_1_in_add_time_range;1.000000;0.000000;'%;1
+371;3;40769;U32;;Lmt value battery state of charge for start load shedding 2;lmt_value_battery_state_of_charge_for_start_load_shedding_2;1.000000;0.000000;'%;1
+372;3;40771;U32;;Lmt value battery state of charge for stop load shedding 2;lmt_value_battery_state_of_charge_for_stop_load_shedding_2;1.000000;0.000000;'%;1
+373;3;40773;U32;;Start time additional time range load shedding 2;start_time_additional_time_range_load_shedding_2;1.000000;0.000000;;1
+374;3;40775;U32;;Time load shedding 2;time_load_shedding_2;1.000000;0.000000;;1
+375;3;40777;U32;;Limit battery state of charge for start load shedding 2 in add time range;limit_battery_state_of_charge_for_start_load_shedding_2_in_add_time_range;1.000000;0.000000;'%;1
+376;3;40779;U32;;Limit battery state of charge for stop load shedding 2 in add time range;limit_battery_state_of_charge_for_stop_load_shedding_2_in_add_time_range;1.000000;0.000000;'%;1
+377;3;40781;I32;;Temp lmt for multifunct. relay with batt comp fan;temp_lmt_for_multifunct_relay_with_batt_comp_fan;10.000000;0.000000;°C;1
+378;3;40783;U32;;Serial no. Slave1 (Phase L2);serial_no_slave1_phase_l2;1.000000;0.000000;;4
+379;3;40785;U32;;Serial no. Slave2 (Phase L3);serial_no_slave2_phase_l3;1.000000;0.000000;;4
+380;3;40787;U32;;Cluster behaviour when a device fails;cluster_behaviour_when_a_device_fails;1.000000;0.000000;;1
+381;3;40795;U32;;Max. battery charge capac.;max_battery_charge_capac;1.000000;0.000000;W;1
+382;3;40799;U32;;Max. battery discharge capac.;max_battery_discharge_capac;1.000000;0.000000;W;1
+383;3;40805;U32;;Energy saving mode;energy_saving_mode;1.000000;0.000000;;1
+384;3;40811;U32;;Update version of the logic component;update_version_of_the_logic_component;1.000000;0.000000;;4
+385;3;40819;U32;;Firmware version of protocol converter;firmware_version_of_protocol_converter;1.000000;0.000000;;4
+386;3;40821;U32;;Hardware version of protocol converter;hardware_version_of_protocol_converter;1.000000;0.000000;;4
+387;3;40827;U32;;Serial number of the protocol converter;serial_number_of_the_protocol_converter;1.000000;0.000000;;4
+388;3;40829;U32;;SUSyID of protocol converter;susyid_of_protocol_converter;1.000000;0.000000;;4
+389;3;30955;U32;;Battery oper. status;battery_oper_status;1.000000;0.000000;0;9
+390;3;40073;U32;;Lower discharge limit for rise in self-consumption;lower_discharge_limit_for_rise_in_selfconsumption;1.000000;0.000000;'%;1
+391;3;40793;U32;;Min. battery charge capac.;min_battery_charge_capac;1.000000;0.000000;W;1
+392;3;40797;U32;;Min. battery discharge capac.;min_battery_discharge_capac;1.000000;0.000000;W;1
+393;3;40801;I32;;Mains exch. capac. target value;mains_exch_capac_target_value;1.000000;0.000000;W;1
+394;3;30251;U32;;Restart block status;restart_block_status;1.000000;0.000000;;9
+395;3;30823;U16;;Excitation type of cosPhi: 1041 = Overexcited 1042 = Underexcited 16777213 = Information not available;excitation_type_of_cosphi1041_overexcited1042_underexcited16777213_information_not_available;1.000000;0.000000;ENUM;4
+396;3;41201;U16;;Active power gradient in feeding operation;active_power_gradient_in_feeding_operation;1.000000;0.000000;FIX0;1

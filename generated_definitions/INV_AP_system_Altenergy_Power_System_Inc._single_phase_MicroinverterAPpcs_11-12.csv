@@ -1,0 +1,114 @@
+modbusRTU;Inverter;AP system;Altenergy_Power_System_Inc.___;;;;;;;
+1;3;40002;U16;;ID;id;1.000000;0.000000;;4
+2;3;40003;U16;;L;l;1.000000;0.000000;;4
+3;3;40004;U16;;Manufacturer (Mn);manufacturer_mn;1.000000;0.000000;;4
+4;3;40020;U16;;Model (Md);model_md;1.000000;0.000000;;4
+5;3;40036;U16;;Options (Opt);options_opt;1.000000;0.000000;;4
+6;3;40044;U16;;Version (Vr);version_vr;1.000000;0.000000;;4
+7;3;40052;U16;;Serial Number (SN);serial_number_sn;1.000000;0.000000;;4
+8;3;40068;U16;;Device Address (DA);device_address_da;1.000000;0.000000;;1
+9;3;40069;U16;;Pad;pad;1.000000;0.000000;;4
+10;3;40070;U16;;ID;id_1;1.000000;0.000000;;4
+11;3;40071;U16;;L;l_1;1.000000;0.000000;;4
+12;3;40072;U16;;Amps (A);amps_a;1.000000;0.000000;;4
+13;3;40073;U16;;Amps PhaseA (AphA);amps_phasea_apha;1.000000;0.000000;;4
+14;3;40074;U16;;Amps PhaseB (AphB);amps_phaseb_aphb;1.000000;0.000000;;4
+15;3;40075;U16;;Amps PhaseC (AphC);amps_phasec_aphc;1.000000;0.000000;;4
+16;3;40076;U16;;A_SF;a_sf;1.000000;0.000000;;4
+17;3;40077;U16;;Phase Voltage AB (PPVphAB);phase_voltage_ab_ppvphab;1.000000;0.000000;;4
+18;3;40078;U16;;Phase Voltage BC (PPVphBC);phase_voltage_bc_ppvphbc;1.000000;0.000000;;4
+19;3;40079;U16;;Phase Voltage CA (PPVphCA);phase_voltage_ca_ppvphca;1.000000;0.000000;;4
+20;3;40080;U16;;Phase Voltage AN (PhVphA);phase_voltage_an_phvpha;1.000000;0.000000;;4
+21;3;40081;U16;;Phase Voltage BN (PhVphB);phase_voltage_bn_phvphb;1.000000;0.000000;;4
+22;3;40082;U16;;Phase Voltage CN (PhVphC);phase_voltage_cn_phvphc;1.000000;0.000000;;4
+23;3;40083;U16;;V_SF;v_sf;1.000000;0.000000;;4
+24;3;40084;U16;;Watts (W);watts_w;1.000000;0.000000;;4
+25;3;40085;U16;;W_SF;w_sf;1.000000;0.000000;;4
+26;3;40086;U16;;Hz;hz;1.000000;0.000000;;4
+27;3;40087;U16;;Hz_SF;hz_sf;1.000000;0.000000;;4
+28;3;40088;U16;;VA;va;1.000000;0.000000;;4
+29;3;40089;U16;;VA_SF;va_sf;1.000000;0.000000;;4
+30;3;40090;U16;;VAr;var;1.000000;0.000000;;4
+31;3;40091;U16;;VAr_SF;var_sf;1.000000;0.000000;;4
+32;3;40092;U16;;PF;PF;1.000000;0.000000;;4
+33;3;40093;U16;;PF_SF;pf_sf;1.000000;0.000000;;4
+34;3;40094;U16;;WattHours (WH);watthours_wh;1.000000;0.000000;;4
+35;3;40096;U16;;WH_SF;wh_sf;1.000000;0.000000;;4
+36;3;40097;U16;;DC Amps (DCA);dc_amps_dca;1.000000;0.000000;;4
+37;3;40098;U16;;DCA_SF;dca_sf;1.000000;0.000000;;4
+38;3;40099;U16;;DC Voltage (DCV);dc_voltage_dcv;1.000000;0.000000;;4
+39;3;40100;U16;;DCV_SF;dcv_sf;1.000000;0.000000;;4
+40;3;40101;U16;;DC Watts (DCW);dc_watts_dcw;1.000000;0.000000;;4
+41;3;40102;U16;;DCW_SF;dcw_sf;1.000000;0.000000;;4
+42;3;40103;U16;;Cabinet Temperature (TmpCab);cabinet_temperature_tmpcab;1.000000;0.000000;;4
+43;3;40104;U16;;Heat Sink Temperature (TmpSnk);heat_sink_temperature_tmpsnk;1.000000;0.000000;;4
+44;3;40105;U16;;Transformer Temperature (TmpTrns);transformer_temperature_tmptrns;1.000000;0.000000;;4
+45;3;40106;U16;;Other Temperature (TmpOt);other_temperature_tmpot;1.000000;0.000000;;4
+46;3;40107;U16;;Tmp_SF;tmp_sf;1.000000;0.000000;;4
+47;3;40108;U16;;Operating State (St);operating_state_st;1.000000;0.000000;;4
+48;3;40109;U16;;Vendor Operating State (StVnd);vendor_operating_state_stvnd;1.000000;0.000000;;4
+49;3;40110;U16;;Event1 (Evt1);event1_evt1;1.000000;0.000000;;4
+50;3;40112;U16;;Event Bitfield 2 (Evt2);event_bitfield_2_evt2;1.000000;0.000000;;4
+51;3;40114;U16;;Vendor Event Bitfield 1 (EvtVnd1);vendor_event_bitfield_1_evtvnd1;1.000000;0.000000;;4
+52;3;40116;U16;;Vendor Event Bitfield 2 (EvtVnd2);vendor_event_bitfield_2_evtvnd2;1.000000;0.000000;;4
+53;3;40118;U16;;Vendor Event Bitfield 3 (EvtVnd3);vendor_event_bitfield_3_evtvnd3;1.000000;0.000000;;4
+54;3;40120;U16;;Vendor Event Bitfield 4 (EvtVnd4);vendor_event_bitfield_4_evtvnd4;1.000000;0.000000;;4
+55;3;40122;U16;;ID;id_2;1.000000;0.000000;;4
+56;3;40123;U16;;L;l_2;1.000000;0.000000;;4
+57;3;40124;U16;;Amps (A);amps_a_1;1.000000;0.000000;;4
+58;3;40126;U16;;Amps PhaseA (AphA);amps_phasea_apha_1;1.000000;0.000000;;4
+59;3;40128;U16;;Amps PhaseB (AphB);amps_phaseb_aphb_1;1.000000;0.000000;;4
+60;3;40130;U16;;Amps PhaseC (AphC);amps_phasec_aphc_1;1.000000;0.000000;;4
+61;3;40132;U16;;Phase Voltage AB (PPVphAB);phase_voltage_ab_ppvphab_1;1.000000;0.000000;;4
+62;3;40134;U16;;Phase Voltage BC (PPVphBC);phase_voltage_bc_ppvphbc_1;1.000000;0.000000;;4
+63;3;40136;U16;;Phase Voltage CA (PPVphCA);phase_voltage_ca_ppvphca_1;1.000000;0.000000;;4
+64;3;40138;U16;;Phase Voltage AN (PhVphA);phase_voltage_an_phvpha_1;1.000000;0.000000;;4
+65;3;40140;U16;;Phase Voltage BN (PhVphB);phase_voltage_bn_phvphb_1;1.000000;0.000000;;4
+66;3;40142;U16;;Phase Voltage CN (PhVphC);phase_voltage_cn_phvphc_1;1.000000;0.000000;;4
+67;3;40144;U16;;Watts (W);watts_w_1;1.000000;0.000000;;4
+68;3;40146;U16;;Hz;hz_1;1.000000;0.000000;;4
+69;3;40148;U16;;VA;va_1;1.000000;0.000000;;4
+70;3;40150;U16;;VAr;var_1;1.000000;0.000000;;4
+71;3;40152;U16;;PF;pf;1.000000;0.000000;;4
+72;3;40154;U16;;WattHours (WH);watthours_wh_1;1.000000;0.000000;;4
+73;3;40156;U16;;DC Amps (DCA);dc_amps_dca_1;1.000000;0.000000;;4
+74;3;40158;U16;;DC Voltage (DCV);dc_voltage_dcv_1;1.000000;0.000000;;4
+75;3;40160;U16;;DC Watts (DCW);dc_watts_dcw_1;1.000000;0.000000;;4
+76;3;40162;U16;;Cabinet Temperature (TmpCab);cabinet_temperature_tmpcab_1;1.000000;0.000000;;4
+77;3;40164;U16;;Heat Sink Temperature (TmpSnk);heat_sink_temperature_tmpsnk_1;1.000000;0.000000;;4
+78;3;40166;U16;;Transformer Temperature (TmpTrns);transformer_temperature_tmptrns_1;1.000000;0.000000;;4
+79;3;40168;U16;;Other Temperature (TmpOt);other_temperature_tmpot_1;1.000000;0.000000;;4
+80;3;40170;U16;;Operating State (St);operating_state_st_1;1.000000;0.000000;;4
+81;3;40171;U16;;Vendor Operating State (StVnd);vendor_operating_state_stvnd_1;1.000000;0.000000;;4
+82;3;40172;U16;;Event1 (Evt1);event1_evt1_1;1.000000;0.000000;;4
+83;3;40174;U16;;Event Bitfield 2 (Evt2);event_bitfield_2_evt2_1;1.000000;0.000000;;4
+84;3;40176;U16;;Vendor Event Bitfield 1 (EvtVnd1);vendor_event_bitfield_1_evtvnd1_1;1.000000;0.000000;;4
+85;3;40178;U16;;Vendor Event Bitfield 2 (EvtVnd2);vendor_event_bitfield_2_evtvnd2_1;1.000000;0.000000;;4
+86;3;40180;U16;;Vendor Event Bitfield 3 (EvtVnd3);vendor_event_bitfield_3_evtvnd3_1;1.000000;0.000000;;4
+87;3;40182;U16;;Vendor Event Bitfield 4 (EvtVnd4);vendor_event_bitfield_4_evtvnd4_1;1.000000;0.000000;;4
+88;3;40184;U16;;ID;id_3;1.000000;0.000000;;4
+89;3;40185;U16;;L;l_3;1.000000;0.000000;;4
+90;3;40186;U16;;Conn_WinTms;conn_wintms;1.000000;0.000000;;1
+91;3;40187;U16;;Conn_RvrtTms;conn_rvrttms;1.000000;0.000000;;1
+92;3;40188;U16;;Conn;conn;1.000000;0.000000;;1
+93;3;40189;U16;;WMaxLimPct;wmaxlimpct;1.000000;0.000000;;1
+94;3;40190;U16;;WMaxLimPct_WinTms;wmaxlimpct_wintms;1.000000;0.000000;;1
+95;3;40191;U16;;WMaxLimPct_RvrtTms;CMD_REVERT_TIME_S;1.000000;0.000000;;1
+96;3;40192;U16;;WMaxLimPct_RmpTms;CMD_RAMP_TIME_S;1.000000;0.000000;;1
+97;3;40193;U16;;WMaxLim_Ena;CMD_P_ENA;1.000000;0.000000;;1
+98;3;40194;U16;;OutPFSet;CMD_PF;1.000000;0.000000;;1
+99;3;40195;U16;;OutPFSet_WinTms;outpfset_wintms;1.000000;0.000000;;1
+100;3;40196;U16;;OutPFSet_RvrtTms;CMD_PF_REVERT_TIME_S;1.000000;0.000000;;1
+101;3;40197;U16;;OutPFSet_RmpTms;CMD_PF_RAMP_TIME_S;1.000000;0.000000;;1
+102;3;40198;U16;;OutPFSet_Ena;CMD_PF_ENA;1.000000;0.000000;;1
+103;3;40199;U16;;VArWMaxPct;varwmaxpct;1.000000;0.000000;;1
+104;3;40200;U16;;VArMaxPct;varmaxpct;1.000000;0.000000;;1
+105;3;40201;U16;;VArAvalPct;varavalpct;1.000000;0.000000;;1
+106;3;40202;U16;;VArPct_WinTms;varpct_wintms;1.000000;0.000000;;1
+107;3;40203;U16;;VArPct_RvrtTms;CMD_Q_REVERT_TIME_S;1.000000;0.000000;;1
+108;3;40204;U16;;VArPct_RmpTms;CMD_Q_RAMP_TIME_S;1.000000;0.000000;;1
+109;3;40205;U16;;VArPct_Mod;CMD_Q_MODE;1.000000;0.000000;;1
+110;3;40206;U16;;VArPct_Ena;CMD_Q_ENA;1.000000;0.000000;;1
+111;3;40207;U16;;WMaxLimPct_SF;wmaxlimpct_sf;1.000000;0.000000;;4
+112;3;40208;U16;;OutPFSet_SF;outpfset_sf;1.000000;0.000000;;4
+113;3;40209;U16;;VArPct_SF;varpct_sf;1.000000;0.000000;;4

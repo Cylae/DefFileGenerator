@@ -1,0 +1,31 @@
+modbusRTU;Other;LSI LASTEM SRL;LSILASTEM_DPA870-873;;;;;;;
+1;3;0;F32;;Irradiance Instantaneous;irradiance_instantaneous;1.000000;0.000000;W/m2;4
+2;3;2;F32;;Irradiance Mean;irradiance_mean;1.000000;0.000000;W/m2;4
+3;3;4;F32;;Irradiance Minimum;irradiance_minimum;1.000000;0.000000;W/m2;4
+4;3;6;F32;;Irradiance Maximum;irradiance_maximum;1.000000;0.000000;W/m2;4
+5;3;8;F32;;Irradiance Total;irradiance_total;1.000000;0.000000;W/m2;4
+6;3;10;F32;;Ext. Temperature Instantaneous;ext_temperature_instantaneous;1.000000;0.000000;Degree.Celsius;4
+7;3;12;F32;;Ext. Temperature Mean;ext_temperature_mean;1.000000;0.000000;Degree.Celsius;4
+8;3;14;F32;;Ext. Temperature Minimum;ext_temperature_minimum;1.000000;0.000000;Degree.Celsius;4
+9;3;16;F32;;Ext. Temperature Maximum;ext_temperature_maximum;1.000000;0.000000;Degree.Celsius;4
+10;3;18;F32;;Ext. Temperature Total;ext_temperature_total;1.000000;0.000000;Degree.Celsius;4
+11;3;20;F32;;Int. Temperature Instantaneous;int_temperature_instantaneous;1.000000;0.000000;Degree.Celsius;4
+12;3;22;F32;;Int. Temperature Mean;int_temperature_mean;1.000000;0.000000;Degree.Celsius;4
+13;3;24;F32;;Int. Temperature Minimum;int_temperature_minimum;1.000000;0.000000;Degree.Celsius;4
+14;3;26;F32;;Int. Temperature Maximum;int_temperature_maximum;1.000000;0.000000;Degree.Celsius;4
+15;3;28;F32;;Int. Temperature Total;int_temperature_total;1.000000;0.000000;Degree.Celsius;4
+16;3;1000;I16;;Irradiance Instantaneous_1;irradiance_instantaneous_1;1.000000;0.000000;W/m2;4
+17;3;1001;I16;;Irradiance Mean_1;irradiance_mean_1;1.000000;0.000000;W/m2;4
+18;3;1002;I16;;Irradiance Minimum_1;irradiance_minimum_1;1.000000;0.000000;W/m2;4
+19;3;1003;I16;;Irradiance Maximum_1;irradiance_maximum_1;1.000000;0.000000;W/m2;4
+20;3;1004;I16;;Irradiance Total_1;irradiance_total_1;1.000000;0.000000;W/m2;4
+21;3;1005;I16;;Ext. Temperature Instantaneous_1;ext_temperature_instantaneous_1;1.000000;0.000000;Degree.Celsius;4
+22;3;1006;I16;;Ext. Temperature Mean_1;ext_temperature_mean_1;1.000000;0.000000;Degree.Celsius;4
+23;3;1007;I16;;Ext. Temperature Minimum_1;ext_temperature_minimum_1;1.000000;0.000000;Degree.Celsius;4
+24;3;1008;I16;;Ext. Temperature Maximum_1;ext_temperature_maximum_1;1.000000;0.000000;Degree.Celsius;4
+25;3;1009;I16;;Ext. Temperature Total_1;ext_temperature_total_1;1.000000;0.000000;Degree.Celsius;4
+26;3;1010;I16;;Int. Temperature Instantaneous_1;int_temperature_instantaneous_1;1.000000;0.000000;Degree.Celsius;4
+27;3;1011;I16;;Int. Temperature Mean_1;int_temperature_mean_1;1.000000;0.000000;Degree.Celsius;4
+28;3;1012;I16;;Int. Temperature Minimum_1;int_temperature_minimum_1;1.000000;0.000000;Degree.Celsius;4
+29;3;1013;I16;;Int. Temperature Maximum_1;int_temperature_maximum_1;1.000000;0.000000;Degree.Celsius;4
+30;3;1014;I16;;Int. Temperature Total_1;int_temperature_total_1;1.000000;0.000000;Degree.Celsius;4

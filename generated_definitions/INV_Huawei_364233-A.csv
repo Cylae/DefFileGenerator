@@ -1,0 +1,193 @@
+ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
+1;3;32001;U16;;Rated inverter power;;1.0;0.0;;4
+2;3;32002;U16;;Output mode ;;1.0;0.0;;4
+3;3;32003_20;STRING;;ESN ;SERIAL;1.0;0.0;;4
+4;3;32262;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
+5;3;32263;I16;;PV1 Current;I_DC_STRING_1;0.1;0.0;A;4
+6;3;32264;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0.0;V;4
+7;3;32265;I16;;PV2 Current;I_DC_STRING_2;0.1;0.0;A;4
+8;3;32266;I16;;PV3 Voltage;U_DC_STRING_3;0.1;0.0;V;4
+9;3;32267;I16;;PV3 Current;I_DC_STRING_3;0.1;0.0;A;4
+10;3;32268;I16;;PV4 Voltage;U_DC_STRING_4;0.1;0.0;V;4
+11;3;32269;I16;;PV4 Current;I_DC_STRING_4;0.1;0.0;A;4
+12;3;32270;I16;;PV5 Voltage;U_DC_STRING_5;0.1;0.0;V;4
+13;3;32271;I16;;PV5 Current;I_DC_STRING_5;0.1;0.0;A;4
+14;3;32272;I16;;PV6 Voltage;U_DC_STRING_6;0.1;0.0;V;4
+15;3;32273;I16;;PV6 Current;I_DC_STRING_6;0.1;0.0;A;4
+16;3;32274;U16;;Uab;;0.1;0.0;V;4
+17;3;32275;U16;;Ubc;;0.1;0.0;V;4
+18;3;32276;U16;;Uca;;0.1;0.0;V;4
+19;3;32277;U16;;Ua;;0.1;0.0;V;4
+20;3;32278;U16;;Ub;;0.1;0.0;V;4
+21;3;32279;U16;;Uc;;0.1;0.0;V;4
+22;3;32280;U16;;Ia;;0.1;0.0;A;4
+23;3;32281;U16;;Ib;;0.1;0.0;A;4
+24;3;32282;U16;;Ic;;0.1;0.0;A;4
+25;3;32283;U16;;Frequency;FREQ;0.01;0.0;Hz;4
+26;3;32284;I16;;Power factor;PF;0.001;0.0;;4
+27;3;32285;U16;;Inverter efficiency;;0.01;0.0;%;4
+28;3;32286;I16;;Cabinet temperature;TEMP_INT;0.1;0.0;Deg.Celsius ;4
+29;3;32287;U16;;Inverter status;;1.0;0.0;;8
+30;3;32288;I32;; Active power peak of current day;P_AC;0.001;0.0;kW;4
+31;3;32290;I32;; Active power ;;0.001;0.0;kW;4
+32;3;32292;I32;;Reactive power;Q_AC;0.001;0.0;kVar;4
+33;3;32294;U32;; Total input power ;;0.001;0.0;;4
+34;3;32296;U32;;Current electricity yield collection time;;1.0;0.0;;4
+35;3;32298;U32;;E-Hour ;;0.01;0.0;kWh;4
+36;3;32300;U32;;E-Day ;;0.01;0.0;kWh;4
+37;3;32302;U32;;E-Month ;;0.01;0.0;kWh;4
+38;3;32304;U32;;E-Year ;;0.01;0.0;kWh;4
+39;3;32306;U32;;E-Total ;E_TOT;0.01;0.0;kWh;4
+40;3;32314;I16;;PV7 voltage ;U_DC_STRING_7;0.1;0.0;V;4
+41;3;32315;I16;;PV7 current ;I_DC_STRING_7;0.1;0.0;A;4
+42;3;32316;I16;;PV8 voltage ;U_DC_STRING_8;0.1;0.0;V;4
+43;3;32317;I16;;PV8 current ;I_DC_STRING_8;0.1;0.0;A;4
+44;3;32320;U16;;Locking;;1.0;0.0;;4
+45;3;32321_0_1;BITS;;39 Zero voltage ride through protection;;1.0;0.0;;4
+46;3;32322_0_1;BITS;;40 LVRT protection ;;1.0;0.0;;4
+47;3;32323_0_1;BITS;;41 Anti-islanding;;1.0;0.0;;4
+48;3;32324_0_1;BITS;;BitOffset:4;;1.0;0.0;;4
+49;3;32325_0_1;BITS;;BitOffset:5;;1.0;0.0;;4
+50;3;32326_0_1;BITS;;BitOffset:6;;1.0;0.0;;4
+51;3;32327_0_1;BITS;;BitOffset:7;;1.0;0.0;;4
+52;3;32328_0_1;BITS;;BitOffset:8;;1.0;0.0;;4
+53;3;32329;U16;;Inverter on-grid ;;1.0;0.0;;4
+54;3;32330;U16;;Insulation resistance;R_ISO;0.001;0.0;M ohm;4
+55;3;32325;U16;;Start time;;1.0;0.0;s;4
+56;3;32326;U32;;Shutdown time;;1.0;0.0;s;4
+57;3;32343;U32;;Electricity yield collection time for previous hour;;1.0;0.0;;4
+58;3;32345;U32;;Electricity yield in previous hour;;0.01;0.0;kWh;4
+59;3;32347;U32;;Electricity yield collection time for previous day;;1.0;0.0;;4
+60;3;32349;U32;;Electricity yield on previous day;;0.01;0.0;kWh;4
+61;3;32351;U32;;Electricity yield collection time for previous month ;;1.0;0.0;;4
+62;3;32353;U32;;Electricity yield in previous month;;0.01;0.0;kWh;4
+63;3;32355;U32;;Electricity yield collection time for previous year;;1.0;0.0;;4
+64;3;32357;U32;;Electricity yield in previous year;;0.01;0.0;kWh;4
+65;3;33022;U32;;MPPT1 total input power;P_DC_MPPT_1;0.001;0.0;kW;4
+66;3;33024;U32;;MPPT2 total input power;P_DC_MPPT_2;0.001;0.0; kW;4
+67;3;33026;U32;;MPPT3 total input power;P_DC_MPPT_3;0.001;0.0; kW;4
+68;3;33070;U32;;MPPT4 total input power;P_DC_MPPT_4;0.001;0.0; kW;4
+69;3;40000;U32;;System time ;;1.0;0.0;;4
+70;3;40117;U16;;Reactive power compensation;CMD_PF;1.0;0.0;;4
+71;3;40118;U16;;Active power control;CMD_P_ENA;1.0;0.0;;4
+72;3;40119;U16;;Active power derating ( %);;1.0;0.0; % ;4
+73;3;40120;U16;;Active power derating (fixed value);;0.1;0.0;kW;4
+74;3;40121;U16;;Active power deration gradient;;0.1;0.0;%/s;4
+75;3;40122;I16;;Reactive power compensation (PF);;0.001;0.0;;4
+76;3;40123;I16;;Reactive power compensation(Q/S);;0.001;0.0;;4
+77;3;40124;U16;;Reactive power adjustment time;CMD_RAMP_TIME_S;1.0;0.0;s;4
+78;3;40125;U16;;Active power derating percent(0.1%);;0.1;0.0;%;4
+79;3;40133;U16;;cos(Phi)-P/Pn characteristic curve;;1.0;0.0;;4
+80;3;40134;U16;;P/Pn value of cos?-P/Pn curve point 1;;0.1;0.0;%;4
+81;3;40135;U16;;cos? value of cos?-P/Pn curve point 1;;0.001;0.0;;4
+82;3;40136;U16;;P/Pn value of cos?-P/Pn curve point 2;;0.1;0.0;%;4
+83;3;40137;U16;;cos? value of cos?-P/Pn curve point 2;;0.001;0.0;;4
+84;3;40138;U16;;P/Pn value of cos?-P/Pn curve point 3;;0.1;0.0;%;4
+85;3;40139;U16;;cos? value of cos?-P/Pn curve point 3;;0.001;0.0;;4
+86;3;40140;U16;;P/Pn value of cos?-P/Pn curve point 4;;0.1;0.0;%;4
+87;3;40141;U16;;cos? value of cos?-P/Pn curve point 4;;0.001;0.0;;4
+88;3;40142;U16;;P/Pn value of cos?-P/Pn curve point 5;;0.1;0.0;%;4
+89;3;40143;U16;;cos? value of cos?-P/Pn curve point 5;;0.001;0.0;;4
+90;3;40144;U16;;P/Pn value of cos?-P/Pn curve point 6;;0.1;0.0;%;4
+91;3;40145;U16;;cos? value of cos?-P/Pn curve point 6;;0.001;0.0;;4
+92;3;40146;U16;;P/Pn value of cos?-P/Pn curve point 7;;0.1;0.0;%;4
+93;3;40147;U16;;cos? value of cos?-P/Pn curve point 7;;0.001;0.0;;4
+94;3;40148;U16;;P/Pn value of cos?-P/Pn curve point 8;;0.1;0.0;%;4
+95;3;40149;U16;;cos? value of cos?-P/Pn curve point 8;;0.001;0.0;;4
+96;3;40150;U16;;P/Pn value of cos?-P/Pn curve point 9;;0.1;0.0;%;4
+97;3;40151;U16;;cos? value of cos?-P/Pn curve point 9;;0.001;0.0;;4
+98;3;40152;U16;;P/Pn value of cos?-P/Pn curve point 10;;0.1;0.0;%;4
+99;3;40153;U16;;cos? value of cos?-P/Pn curve point 10;;0.001;0.0;;4
+100;3;40154;U16;;60 Q-U characteristic curve;;1.0;0.0;;4
+101;3;40155;U16;;U/Un value of Q-U curve point 1;;0.1;0.0;%;4
+102;3;40156;U16;;Q/S value of Q-U curve point 1;;0.001;0.0;;4
+103;3;40157;U16;;U/Un value of Q-U curve point 2;;0.1;0.0;%;4
+104;3;40158;U16;;Q/S value of Q-U curve point 2;;0.001;0.0;;4
+105;3;40159;U16;;U/Un value of Q-U curve point 3;;0.1;0.0;%;4
+106;3;40160;U16;;Q/S value of Q-U curve point 3;;0.001;0.0;;4
+107;3;40161;U16;;U/Un value of Q-U curve point 4;;0.1;0.0;%;4
+108;3;40162;U16;;Q/S value of Q-U curve point 4;;0.001;0.0;;4
+109;3;40163;U16;;U/Un value of Q-U curve point 5;;0.1;0.0;%;4
+110;3;40164;U16;;Q/S value of Q-U curve point 5;;0.001;0.0;;4
+111;3;40165;U16;;U/Un value of Q-U curve point 6;;0.1;0.0;%;4
+112;3;40166;U16;;Q/S value of Q-U curve point 6;;0.001;0.0;;4
+113;3;40167;U16;;U/Un value of Q-U curve point 7;;0.1;0.0;%;4
+114;3;40168;U16;;Q/S value of Q-U curve point 7;;0.001;0.0;;4
+115;3;40169;U16;;U/Un value of Q-U curve point 8;;0.1;0.0;%;4
+116;3;40170;U16;;Q/S value of Q-U curve point 8;;0.001;0.0;;4
+117;3;40171;U16;;U/Un value of Q-U curve point 9;;0.1;0.0;%;4
+118;3;40172;U16;;Q/S value of Q-U curve point 9;;0.001;0.0;;4
+119;3;40173;U16;;U/Un value of Q-U curve point 10;;0.1;0.0;%;4
+120;3;40174;U16;;Q/S value of Q-U curve point 10;;0.001;0.0;;4
+121;3;40200;U16;;Power on ;CMD_ON;1.0;0.0;;4
+122;3;40201;U16;;Power off ;CMD_OFF;1.0;0.0;;4
+123;3;40232;U16;;Active power derating percent(0.1%)_1;;1.0;0.0;%;4
+124;3;40234;U16;;Active power deration percent(1%);;1.0;0.0;%;4
+125;3;40235;U16;;Active power deration fixed value;;0.1;0.0;kW;4
+126;3;40236;I16;;Reactive power compensation Q/S;;0.001;0.0;;4
+127;3;40237;I16;;Reactive power compensation factor instruction(PF);;0.001;0.0;;4
+128;3;42045;U32;;Level-1 OV prot.time;;1.0;0.0;ms;4
+129;3;42047;U32;;Level-2 OV prot.time;;1.0;0.0;ms;4
+130;3;42049;U32;;Level-1 UV prot.time;;1.0;0.0;ms;4
+131;3;42051;U32;;Level-2 UV prot.time;;1.0;0.0;ms;4
+132;3;42053;U32;;Level-1 OF prot.time;;1.0;0.0;ms;4
+133;3;42055;U32;;Level-2 OF prot.time;;1.0;0.0;ms;4
+134;3;42057;U32;;Level-1 UF prot.time;;1.0;0.0;ms;4
+135;3;42059;U32;;Level-2 UF prot.time;;1.0;0.0;ms;4
+136;3;42061;U32;;10-min OV protec.time;;1.0;0.0;ms;4
+137;3;42063;U16;;Level-1 OV prot.;;0.1;0.0;V;4
+138;3;42064;U16;;Level-2 OV prot. ;;0.1;0.0;V;4
+139;3;42065;U16;;Level-1 UV prot. ;;0.1;0.0;V;4
+140;3;42066;U16;;Level-2 UV prot. ;;0.1;0.0;V;4
+141;3;42067;U16;;Level-1 OF prot. ;;0.01;0.0;Hz;4
+142;3;42068;U16;;Level-2 OF prot. ;;0.01;0.0;Hz;4
+143;3;42069;U16;;Level-1 UF prot. ;;0.01;0.0;Hz;4
+144;3;42070;U16;;Level-2 UF prot. ;;0.01;0.0;Hz;4
+145;3;42071;U16;;10-min OV protec.;;0.1;0.0;V;4
+146;3;42072;U16;;Grid code ;;1.0;0.0;;4
+147;3;42074;U16;;Insulation res.protec.;;0.001;0.0;M ohm;4
+148;3;42075;U16;;Unbal.volt.protec.;;0.1;0.0;%;4
+149;3;42083;U16;;Soft startup time after grid failure;;1.0;0.0;s;4
+150;3;42084;U16;;LVRT ;;1.0;0.0;;4
+151;3;42085;U16;;Soft start time ;;1.0;0.0;s;4
+152;3;42086;U16;;Feed grid recovery time;;1.0;0.0;s;4
+153;3;42087;U16;;Islanding protection;;1.0;0.0;;4
+154;3;42089;U16;;LVRT reactive power compensation factor;;0.1;0.0;;4
+155;3;42090;U16;;Reactive power compensation (cos?-P) trigger voltage;;1.0;0.0;%;4
+156;3;42091;U16;;Reactive power compensation (cos?-P) exit voltage;;1.0;0.0;%;4
+157;3;42092;U16;;Overfrequency deration trigger threshold;;0.01;0.0;Hz;4
+158;3;42093;U16;;Overfrequency deration exit threshold;;0.01;0.0;Hz;4
+159;3;42094;U16;;Overfrequency deration recovery gradient;;1.0;0.0;%/min;4
+160;3;42095;U16;;Q-U characteristic curve mode;;1.0;0.0;;4
+161;3;42096;U16;;Q-U dispatch trigger power percent;;1.0;0.0;%;4
+162;3;42097;U16;;MPPT multi-peak scanning;;1.0;0.0;;4
+163;3;42101;U16;;MPPT scanning interval;;1.0;0.0;min;4
+164;3;42151;U16;;Level-3 OV prot. ;;0.1;0.0;V;4
+165;3;42152;U32;;Level-3 OV prot.time;;1.0;0.0;ms;4
+166;3;42154;U16;;Level-4 OV prot. ;;0.1;0.0;V;4
+167;3;42155;U32;;Level-4 OV prot.time;;1.0;0.0;ms;4
+168;3;42157;U16;;Level-3 UV prot.;;0.1;0.0;V;4
+169;3;42158;U32;;Level-3 UV prot.time;;1.0;0.0;ms;4
+170;3;42160;U16;;Level-4 UV prot. ;;0.1;0.0;V;4
+171;3;42161;U32;;Level-4 UV prot.time;;1.0;0.0;ms;4
+172;3;42174;U16;;Shutdown at 0% power limit;CMD_P_AC_SET_PERCENT;1.0;0.0;;4
+173;3;42300;U16;;System time: year ;;1.0;0.0;;4
+174;3;42301;U16;;System time: month;;1.0;0.0;;4
+175;3;42302;U16;;System time: day ;;1.0;0.0;;4
+176;3;42303;U16;;System time: hour ;;1.0;0.0;;4
+177;3;42304;U16;;System time: minute;;1.0;0.0;;4
+178;3;42305;U16;;System time: second;;1.0;0.0;;4
+179;3;42320;U16;;Active power derating;;1.0;0.0;%;4
+180;3;42321;I16;;Reactive power compensation_1;;0.001;0.0;;4
+181;3;42333;U16;;Remote power schedule;;1.0;0.0;;4
+182;3;50000;U16;;Upgrade Failed;;1.0;0.0;;0
+183;3;50001;U16;;System Fault0;;1.0;0.0;;0
+184;3;50002;U16;;Low Insulation Res.;;1.0;0.0;;4
+185;3;50003;U16;;String;;1.0;0.0;;0
+186;3;50004;U16;;String1;;1.0;0.0;;0
+187;3;50005;U16;;Abnormal DC Circuit;;1.0;0.0;;0
+188;3;50006;U16;;System Fault;;1.0;0.0;;0
+189;3;50007;U16;;System Fault1;;1.0;0.0;;0
+190;3;50008;U16;;Abnormal Grid Volt.;;1.0;0.0;;4
+191;3;50009;U16;;Abnormal Grid Volt 1;;1.0;0.0;;4
+192;3;50016;U16;;Abnormal String 1;;1.0;0.0;;4

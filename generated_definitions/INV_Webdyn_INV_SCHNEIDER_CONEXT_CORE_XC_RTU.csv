@@ -1,0 +1,211 @@
+modbusRTU;Inverter;Webdyn;INV_SCHNEIDER_CONEXT_CORE_XC_R;;;;;;;
+1;3;1_18;STRING;;Product Model Designation;product_model_designation;1.000000;0.000000;;4
+2;3;10_20;STRING;;Product Finished Goods Assembly Number 1;product_finished_goods_assembly_number_1;1.000000;0.000000;;4
+3;3;20_20;STRING;;Product Serial Number 1;product_serial_number_1;1.000000;0.000000;;4
+4;3;30_40;STRING;;Software Part Number 1;software_part_number_1;1.000000;0.000000;;4
+5;3;2050;U32;;kWh Energy Produced 1;kwh_energy_produced_1;0.100000;0.000000;kWh;4
+6;3;2051;U32;;kWh Energy Produced 2;kwh_energy_produced_2;0.100000;0.000000;kWh;4
+7;3;2052;U32;;Energy Today 1;energy_today_1;0.100000;0.000000;kWh;4
+8;3;2053;U32;;Energy Today 2;energy_today_2;0.100000;0.000000;kWh;4
+9;3;2078;U32;;Operating Hours 1;operating_hours_1;1.000000;0.000000;Hz;4
+10;3;2079;U32;;Operating Hours 2;operating_hours_2;1.000000;0.000000;Hz;4
+11;3;5888;U16;;Operation Mode State;operation_mode_state;1.000000;0.000000;;4
+12;3;5889;I16;;Temperature Power Board;temperature_power_board;0.100000;0.000000;;4
+13;3;5890;I16;;Temperature Heatsink 1;temperature_heatsink_1;0.100000;0.000000;;4
+14;3;5891;I16;;Temperature Heatsink 2;temperature_heatsink_2;0.100000;0.000000;;4
+15;3;5892;I16;;Temperature Heatsink 3;temperature_heatsink_3;0.100000;0.000000;;4
+16;3;5893;I16;;Grid Current;grid_current;0.100000;0.000000;Arms;4
+17;3;6129;U16;;Apparent Power;apparent_power;0.100000;0.000000;kVA;4
+18;3;6133;I16;;Reactive Power;reactive_power;0.100000;0.000000;kVAr;4
+19;3;6136;I16;;Grid Voltage V12;grid_voltage_v12;0.100000;0.000000;Vrms;4
+20;3;6137;I16;;Grid Voltage V23;grid_voltage_v23;0.100000;0.000000;Vrms;4
+21;3;6138;I16;;Grid Voltage V31;grid_voltage_v31;0.100000;0.000000;Vrms;4
+22;3;6139;I16;;Grid Current Line 1;grid_current_line_1;0.100000;0.000000;Arms;4
+23;3;6140;I16;;Grid Current Line 2;grid_current_line_2;0.100000;0.000000;Arms;4
+24;3;6141;I16;;Grid Current Line 3;grid_current_line_3;0.100000;0.000000;Arms;4
+25;3;6142;I16;;Active Power;P_AC;0.100000;0.000000;kW;4
+26;3;6143;I16;;PV Voltage;pv_voltage;0.100000;0.000000;VDC;4
+27;3;6144;I16;;PV Current;pv_current;0.100000;0.000000;ADC;4
+28;3;6145;I16;;PV Power;pv_power;0.100000;0.000000;kW;4
+29;3;6146;U16;;Grid Frequency;FREQ;0.100000;0.000000;KHz;4
+30;3;6157;I16;;DC Voltage;dc_voltage;0.100000;0.000000;VDC;4
+31;3;6158;U16;;Thermal Loading;thermal_loading;0.100000;0.000000;'%;4
+32;3;6168;U16;;Phase A Frequency;phase_a_frequency;0.100000;0.000000;Hz;4
+33;3;6169;U16;;Phase B Frequency;phase_b_frequency;0.100000;0.000000;Hz;4
+34;3;6170;U16;;Phase C Frequency;phase_c_frequency;0.100000;0.000000;Hz;4
+35;3;6171;I16;;Phase A Real Power;phase_a_real_power;0.100000;0.000000;kW;4
+36;3;6172;I16;;Phase B Real Power;phase_b_real_power;0.100000;0.000000;kW;4
+37;3;6173;I16;;Phase C Real Power;phase_c_real_power;0.100000;0.000000;kW;4
+38;3;6174;I16;;Phase A Reactive Power;phase_a_reactive_power;0.100000;0.000000;kVar;4
+39;3;6175;I16;;Phase B Reactive Power;phase_b_reactive_power;0.100000;0.000000;kVar;4
+40;3;6176;I16;;Phase C Reactive Power;phase_c_reactive_power;0.100000;0.000000;kVar;4
+41;3;6177;U16;;Phase A Apparent Power;phase_a_apparent_power;0.100000;0.000000;kVA;4
+42;3;6178;U16;;Phase B Apparent Power;phase_b_apparent_power;0.100000;0.000000;kVA;4
+43;3;6179;U16;;Phase C Apparent Power;phase_c_apparent_power;0.100000;0.000000;kVA;4
+44;3;6182;U16;;Event Code;event_code;1.000000;0.000000;;4
+45;3;6183;U16;;System State;system_state;1.000000;0.000000;;4
+46;3;6184;U16;;Alarm Code;alarm_code;1.000000;0.000000;;4
+47;3;64264;U16;;DC Cap Surge Accum;dc_cap_surge_accum;1.000000;0.000000;Min;4
+48;3;64305;U16;;DC Switch Open Count;dc_switch_open_count;1.000000;0.000000;;4
+49;3;64306;U16;;AC Switch Open Count;ac_switch_open_count;1.000000;0.000000;;4
+50;3;64474;U16;;Fan Speed;fan_speed;0.100000;0.000000;V;4
+51;3;32771;U16;;Modbus Unit ID;modbus_unit_id;1.000000;0.000000;;4
+52;3;32784;U16;;Baud Rate;baud_rate;1.000000;0.000000;Baud;4
+53;3;57568;U16;;Parameter Control Station;ControlStation;1.000000;0.000000;;4
+54;3;57569;U16;;Commit Modbus Settings;CMD_COMMIT;1.000000;0.000000;;4
+55;3;61439;U16;;Clear Service Mode;clear_service_mode;1.000000;0.000000;;4
+56;3;63491;U16;;Max Tracking Volt;max_tracking_volt;1.000000;0.000000;V;4
+57;3;63492;U16;;Min Tracking Volt;min_tracking_volt;1.000000;0.000000;V;4
+58;3;63990;U16;;P(f) Control Function;pf_control_function;1.000000;0.000000;;4
+59;3;63994;U16;;Reconn HV Threshold;reconn_hv_threshold;1.000000;0.000000;'%;4
+60;3;63995;I16;;User Phase Angle Ref;CMD_Q_ANGLE;1.000000;0.000000;Degree;4
+61;3;64002;U16;;PV noP Disconn Delay;pv_nop_disconn_delay;1.000000;0.000000;s;4
+62;3;64005;U16;;Disconn HV Delay;disconn_hv_delay;1.000000;0.000000;ms;4
+63;3;64006;U16;;Disconn LV Delay;disconn_lv_delay;1.000000;0.000000;ms;4
+64;3;64007;U16;;Disconn HF Delay;disconn_hf_delay;1.000000;0.000000;ms;4
+65;3;64008;U16;;Disconn LF Delay;disconn_lf_delay;0.010000;0.000000;s;4
+66;3;64009;U16;;Grid Reconnection Delay;grid_reconnection_delay;1.000000;0.000000;s;4
+67;3;64010;U16;;PV Reconn Delay;pv_reconn_delay;1.000000;0.000000;s;4
+68;3;64013;U16;;User PV Voltage Ref;user_pv_voltage_ref;1.000000;0.000000;V;4
+69;3;64014;U16;;PV OC Start Voltage;pv_oc_start_voltage;1.000000;0.000000;V;4
+70;3;64018;U16;;MPPT Occurrence Factor;mppt_occurrence_factor;1.000000;0.000000;;4
+71;3;64019;I16;;Perturb Voltage Step;perturb_voltage_step;0.100000;0.000000;V;4
+72;3;64021;U16;;LP PV Voltage Reference;lp_pv_voltage_reference;1.000000;0.000000;V;4
+73;3;64022;U16;;LP Threshold;lp_threshold;1.000000;0.000000;'%;4
+74;3;64023;U16;;PV noP Disconn Threshold;pv_nop_disconn_threshold;0.100000;0.000000;'%;4
+75;3;64025;I16;;User Active Power Limit;user_active_power_limit;0.100000;0.000000;kW;4
+76;3;64027;I16;;User Reactive Power Reference;user_reactive_power_reference;0.100000;0.000000;kVAr;4
+77;3;64028;U16;;PV noP Disconn Delay Factor;pv_nop_disconn_delay_factor;1.000000;0.000000;;4
+78;3;64029;U16;;User Apparent Power Limit;user_apparent_power_limit;0.100000;0.000000;kVA;4
+79;3;64030;U16;;User Phase Current Limit;CMD_P_AC_SET_PERCENT;1.000000;0.000000;'%;4
+80;3;64032;U16;;Language;language;1.000000;0.000000;;4
+81;3;64033;I32;;Time (UTC) 1;time_utc_1;1.000000;0.000000;s;4
+82;3;64034;I32;;Time (UTC) 2;time_utc_2;1.000000;0.000000;s;4
+83;3;64036;U16;;Voltage Support Function;voltage_support_function;1.000000;0.000000;;4
+84;3;64040;U16;;P(f) Control, Reset Freq High;pf_control_reset_freq_high;0.010000;0.000000;Hz;4
+85;3;64041;U16;;P(f) Control, Corner Freq;pf_control_corner_freq;0.100000;0.000000;Hz;4
+86;3;64047;U16;;LP Transition Delay;lp_transition_delay;1.000000;0.000000;s;4
+87;3;64048;U16;;Sweep Enable;sweep_enable;1.000000;0.000000;;4
+88;3;64049;U16;;Sweep Occurrence;sweep_occurrence;1.000000;0.000000;s;4
+89;3;64050;U16;;Sweep Duration;sweep_duration;0.100000;0.000000;s;4
+90;3;64051;U16;;MPPT Type;mppt_type;1.000000;0.000000;;4
+91;3;64052;U16;;P(f) Control, Slope;pf_control_slope;1.000000;0.000000;Hz;4
+92;3;64053;U16;;Power Ramp Time;power_ramp_time;1.000000;0.000000;ms;4
+93;3;64057;U16;;Disconn very HV Delay;disconn_very_hv_delay;1.000000;0.000000;ms;4
+94;3;64060;U16;;Disconn very LV Delay;disconn_very_lv_delay;1.000000;0.000000;ms;4
+95;3;64063;U16;;Disconn very LF Delay;disconn_very_lf_delay;1.000000;0.000000;ms;4
+96;3;64066;U16;;Disconn very HF Delay;disconn_very_hf_delay;1.000000;0.000000;ms;4
+97;3;64067;U16;;Reconn LF Threshold;reconn_lf_threshold;0.010000;0.000000;Hz;4
+98;3;64068;U16;;Reconn HF Threshold;reconn_hf_threshold;0.010000;0.000000;Hz;4
+99;3;64069;U16;;Reconn LV Threshold;reconn_lv_threshold;1.000000;0.000000;'%;4
+100;3;64070;U16;;Reconn Power Ramp Time;reconn_power_ramp_time;1.000000;0.000000;s;4
+101;3;64071;U16;;Service Code;service_code;1.000000;0.000000;;4
+102;3;64072;U16;;Power Reference Selection;power_reference_selection;1.000000;0.000000;;4
+103;3;64073;U16;;Voltage Support Factor;voltage_support_factor;0.200000;0.000000;;4
+104;3;64074;U16;;Access Code;access_code;1.000000;0.000000;;4
+105;3;64075;U16;;MPPT Offset Factor;mppt_offset_factor;1.000000;0.000000;;4
+106;3;64076;U16;;MPPT Offset Maximum;mppt_offset_maximum;1.000000;0.000000;W;4
+107;3;64077;U16;;MPPT Offset Minimum;mppt_offset_minimum;1.000000;0.000000;W;4
+108;3;64078;U16;;MPPT Sampling Interval;mppt_sampling_interval;1.000000;0.000000;ms;4
+109;3;64079;U16;;MPPT Reset Factor;mppt_reset_factor;0.010000;0.000000;;4
+110;3;64080;U16;;MPPT Sweep Trigger;mppt_sweep_trigger;1.000000;0.000000;;4
+111;3;64081;U16;;Sweep Start Voltage;sweep_start_voltage;1.000000;0.000000;V;4
+112;3;64082;U16;;Sweep Stop Voltage;sweep_stop_voltage;1.000000;0.000000;V;4
+113;3;64083;U16;;Sweep Range Voltage;sweep_range_voltage;1.000000;0.000000;V;4
+114;3;64088;U16;;P(f) Control, Reset Time;pf_control_reset_time;1.000000;0.000000;s;4
+115;3;64089;U16;;V-Support Low Threshold;vsupport_low_threshold;1.000000;0.000000;'%;4
+116;3;64090;U16;;V-Support High Threshold;vsupport_high_threshold;1.000000;0.000000;'%;4
+117;3;64330;U16;;GFD Reconn Delay;gfd_reconn_delay;1.000000;0.000000;Min;4
+118;3;64331;U16;;GFD Max Daily Count;gfd_max_daily_count;1.000000;0.000000;;4
+119;3;64406;U16;;P(f) Control, Reset Freq Low;pf_control_reset_freq_low;0.010000;0.000000;Hz;4
+120;3;64407;U16;;P(f) Control, Reset Delay;pf_control_reset_delay;1.000000;0.000000;s;4
+121;3;64413;U16;;CQ Mode;cq_mode;1.000000;0.000000;;4
+122;3;64414;U16;;Software Reset;software_reset;1.000000;0.000000;;4
+123;4;16393;U16;;Day Log Rate;day_log_rate;1.000000;0.000000;Min;4
+124;4;16394;U16;;First Daytime Hour;first_daytime_hour;1.000000;0.000000;H;4
+125;4;16395;U16;;Night Log Rate;night_log_rate;1.000000;0.000000;Min;4
+126;4;16396;U16;;First Nighttime Hour;first_nighttime_hour;1.000000;0.000000;H;4
+127;4;63489;U16;;Rated Input (PV) Current;rated_input_pv_current;1.000000;0.000000;A;4
+128;4;63490;U16;;Maximum Input (PV) Voltage;maximum_input_pv_voltage;1.000000;0.000000;VDC;4
+129;4;63493;U16;;Max PV OC Voltage;max_pv_oc_voltage;1.000000;0.000000;VDC;4
+130;4;63494;U16;;Max STC PV-SC Current;max_stc_pvsc_current;1.000000;0.000000;ADC;4
+131;4;63495;U16;;Rated Apparent Power;rated_apparent_power;0.100000;0.000000;kVA;4
+132;4;63496;I16;;Rated Power at Unity PF;rated_power_at_unity_pf;0.100000;0.000000;kW;4
+133;4;63497;U16;;Min Input (PV) Voltage;min_input_pv_voltage;1.000000;0.000000;VDC;4
+134;4;63499;U16;;Nominal Line Current;nominal_line_current;1.000000;0.000000;Arms;4
+135;4;63500;I16;;Rated Reactive Power;rated_reactive_power;0.100000;0.000000;kVAr;4
+136;4;64011;U16;;Disconn HV Threshold;disconn_hv_threshold;1.000000;0.000000;'%;4
+137;4;64012;U16;;Disconn LV Threshold;disconn_lv_threshold;1.000000;0.000000;'%;4
+138;4;64015;U16;;Disconn HF Threshold;disconn_hf_threshold;0.100000;0.000000;Hz;4
+139;4;64016;U16;;Disconn LF Threshold;disconn_lf_threshold;0.100000;0.000000;Hz;4
+140;4;64026;U16;;Anti-Islanding Function;antiislanding_function;1.000000;0.000000;;4
+141;4;64031;U16;;Utility Region;utility_region;1.000000;0.000000;;4
+142;4;64054;U16;;System L-to-L Voltage;system_ltol_voltage;1.000000;0.000000;Vrms;4
+143;4;64055;U16;;Disconn very HV Threshold;disconn_very_hv_threshold;1.000000;0.000000;'%;4
+144;4;64058;U16;;Disconn very LV Threshold;disconn_very_lv_threshold;1.000000;0.000000;'%;4
+145;4;64061;U16;;Disconn very LF Threshold;disconn_very_lf_threshold;0.100000;0.000000;Hz;4
+146;4;64064;U16;;Disconn very HF Threshold;disconn_very_hf_threshold;0.100000;0.000000;Hz;4
+147;4;64415;U16;;Device Active Status;device_active_status;1.000000;0.000000;;4
+148;4;64272;U16;;Voltage Envelope Threshold;voltage_envelope_threshold;1.000000;0.000000;'%;4
+149;4;64273;U16;;Voltage Envelope Delay;voltage_envelope_delay;1.000000;0.000000;Samples;4
+150;3;18176;U16;;Number of Data Log Records;number_of_data_log_records;1.000000;0.000000;;4
+151;3;18177;U16;;Number of Event Log Records;number_of_event_log_records;1.000000;0.000000;;4
+152;3;18178;U16;;Number of Fault Log Records;number_of_fault_log_records;1.000000;0.000000;;4
+153;3;18179;U16;;Log Request Index;log_request_index;1.000000;0.000000;;4
+154;3;18180;U16;;Log Response Index;log_response_index;1.000000;0.000000;;4
+155;3;18181;U16;;Logger mode;logger_mode;1.000000;0.000000;;4
+156;3;18182;U16;;Logger state;logger_state;1.000000;0.000000;;4
+157;3;18449;U16;;Timestamp High;timestamp_high;1.000000;0.000000;;4
+158;3;18450;U16;;Timestamp Low;timestamp_low;1.000000;0.000000;;4
+159;3;18451;U32;;kWh Energy High;kwh_energy_high;1.000000;0.000000;kWh;4
+160;3;18452;U32;;kWh Energy Low;kwh_energy_low;1.000000;0.000000;kWh;4
+161;3;18453;I16;;Grid AC voltage phase A to phase B, RMS;grid_ac_voltage_phase_a_to_phase_b_rms;0.100000;0.000000;V;4
+162;3;18454;I16;;Grid AC voltage phase B to phase C, RMS;grid_ac_voltage_phase_b_to_phase_c_rms;0.100000;0.000000;V;4
+163;3;18455;I16;;Grid AC voltage phase C to phase A, RMS;grid_ac_voltage_phase_c_to_phase_a_rms;0.100000;0.000000;V;4
+164;3;18456;I16;;Inverter AC Current Phase A, RMS;inverter_ac_current_phase_a_rms;0.100000;0.000000;A;4
+165;3;18457;I16;;Inverter AC Current Phase B, RMS;inverter_ac_current_phase_b_rms;0.100000;0.000000;A;4
+166;3;18458;I16;;Inverter AC Current Phase C, RMS;inverter_ac_current_phase_c_rms;0.100000;0.000000;A;4
+167;3;18459;I16;;Grid frequency;grid_frequency;0.100000;0.000000;Hz;4
+168;3;18460;I16;;Real power;real_power;0.100000;0.000000;kWh;4
+169;3;18461;I16;;Reactive power;reactive_power_1;0.100000;0.000000;kVAr;4
+170;3;18462;I16;;DC bus voltage;dc_bus_voltage;0.100000;0.000000;V;4
+171;3;18463;I16;;PV voltage;pv_voltage_1;0.100000;0.000000;V;4
+172;3;18464;I16;;PV current;pv_current_1;0.100000;0.000000;A;4
+173;3;18465;I16;;PV power;pv_power_1;0.100000;0.000000;kW;4
+174;3;18466;I16;;Ground current;ground_current;0.100000;0.000000;A;4
+175;3;18467;U16;;Normalized thermal numbers;normalized_thermal_numbers;1.000000;0.000000;'%;4
+176;3;18468;U16;;APP-Info1;appinfo1;1.000000;0.000000;;4
+177;3;18469;U16;;APP-Info 2;appinfo_2;1.000000;0.000000;;4
+178;3;18470;U16;;APP-Info 3;appinfo_3;1.000000;0.000000;;4
+179;3;18471;U16;;APP-Info 4;appinfo_4;1.000000;0.000000;;4
+180;4;18471_2_1;BITS;;AC_CircuitBreaker_NotReadyToClose;ac_circuitbreaker_notreadytoclose;1.000000;0.000000;;4
+181;4;18471_3_1;BITS;;AC_CircuitBreaker_NoTrip;ac_circuitbreaker_notrip;1.000000;0.000000;;4
+182;4;18471_4_1;BITS;;AC_CircuitBreaker_Closed;ac_circuitbreaker_closed;1.000000;0.000000;;4
+183;4;18471_5_1;BITS;;CabinetDoorClosed;cabinetdoorclosed;1.000000;0.000000;;4
+184;4;18471_6_1;BITS;;LocalEnable;localenable;1.000000;0.000000;;4
+185;4;18471_7_1;BITS;;RemoteEnable (Hardware);remoteenable_hardware;1.000000;0.000000;;4
+186;4;18471_8_1;BITS;;DC_CircuitBreaker_NotReadyToClose;dc_circuitbreaker_notreadytoclose;1.000000;0.000000;;4
+187;4;18471_9_1;BITS;;DC_CircuitBreaker_NoTrip;dc_circuitbreaker_notrip;1.000000;0.000000;;4
+188;4;18471_10_1;BITS;;DC_CircuitBreaker_Closed;dc_circuitbreaker_closed;1.000000;0.000000;;4
+189;4;18471_11_1;BITS;;FanBlock;fanblock;1.000000;0.000000;;4
+190;4;18471_12_1;BITS;;AC_Caps;ac_caps;1.000000;0.000000;;4
+191;4;18471_13_1;BITS;;MSContactorOpen;mscontactoropen;1.000000;0.000000;;4
+192;4;18471_14_1;BITS;;IsolationFault;isolationfault;1.000000;0.000000;;4
+193;4;18471_15_1;BITS;;CombineIN;combinein;1.000000;0.000000;;4
+194;3;18472;I16;;DC voltage reference;dc_voltage_reference;0.100000;0.000000;V;4
+195;3;18473;I16;;Power reference;power_reference;1.000000;0.000000;kW;4
+196;3;18474;I16;;Reactive power reference;reactive_power_reference;1.000000;0.000000;kVAr;4
+197;3;18475;I16;;PV power by slave 1;pv_power_by_slave_1;1.000000;0.000000;kW;4
+198;3;18476;I16;;PV power by slave 2;pv_power_by_slave_2;1.000000;0.000000;kW;4
+199;3;18477;U16;;Highest priority event code;highest_priority_event_code;1.000000;0.000000;;4
+200;3;18478;U16;;Power Point Shifting Flag;power_point_shifting_flag;1.000000;0.000000;;4
+201;3;17990;I16;;Oscillography Item 1 (Vab);oscillography_item_1_vab;0.100000;0.000000;V;4
+202;3;17991;I16;;Oscillography Item 2 (Vbc);oscillography_item_2_vbc;0.100000;0.000000;V;4
+203;3;17992;I16;;Oscillography Item 3 (Vca);oscillography_item_3_vca;0.100000;0.000000;V;4
+204;3;17993;I16;;Oscillography Item 4 (Ia);oscillography_item_4_ia;0.100000;0.000000;A;4
+205;3;17994;I16;;Oscillography Item 5 (Ib);oscillography_item_5_ib;0.100000;0.000000;A;4
+206;3;17995;I16;;Oscillography Item 6 (Ic);oscillography_item_6_ic;0.100000;0.000000;A;4
+207;3;17996;I16;;Oscillography Item 7 (Vpv);oscillography_item_7_vpv;0.100000;0.000000;V;4
+208;3;17997;I16;;Oscillography Item 8 (Ipv);oscillography_item_8_ipv;0.100000;0.000000;A;4
+209;3;17998;I16;;Oscillography Item 9 (Ignd);oscillography_item_9_ignd;0.100000;0.000000;A;4
+210;3;17999;I16;;Oscillography Item 10 (Vdc);oscillography_item_10_vdc;0.100000;0.000000;V;4

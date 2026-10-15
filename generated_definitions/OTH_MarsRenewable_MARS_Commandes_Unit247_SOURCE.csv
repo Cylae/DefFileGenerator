@@ -1,0 +1,8 @@
+modbusRTU;Other;MarsRenewable;MARS_Commandes_Unit247_SOURCE;;;;;;;
+1;3;0;U16;;EMS Working Mode;ems_working_mode;1.000000;0.000000;247;4
+2;3;1;I32;;Remote Control Duration;remote_control_duration;1.000000;0.000000;247;4
+3;3;3;U16;;Energy Storage Working Mode;energy_storage_working_mode;1.000000;0.000000;247;4
+4;3;4;I32;;Energy Storage Active Power;energy_storage_active_power;1.000000;0.000000;247;4
+5;3;6;I32;;Energy Storage Reactive Power;energy_storage_reactive_power;1.000000;0.000000;247;4
+6;3;8;U16;;AC Voltage;ac_voltage;1.000000;0.000000;247;4
+7;3;9;U16;;AC Frequency;ac_frequency;1.000000;0.000000;247;4

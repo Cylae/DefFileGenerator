@@ -1,0 +1,52 @@
+modbusRTU;Other;Sungrow;MODBUS_SUNGROW_Logger1000-3000;;;;;;;
+1;4;7999;U16;;Device type code;device_type_code;1.000000;0.000000;;4
+2;4;8000;U32;;Protocol Number;protocol_number;1.000000;0.000000;;4
+3;4;8002;U32;;Communication protocol version;communication_protocol_version;1.000000;0.000000;;4
+4;4;8004;U16;;Total devices connected;total_devices_connected;1.000000;0.000000;;4
+5;4;8005;U16;;Total faulty devices;total_faulty_devices;1.000000;0.000000;;4
+6;4;8020;U32;;Digital input state;digital_input_state;1.000000;0.000000;;4
+7;4;8026;I16;;PT100-1;pt1001;1.000000;0.000000;;4
+8;4;8027;I16;;PT100-2;pt1002;1.000000;0.000000;;4
+9;4;8028;I16;;ADC1 voltage;adc1_voltage;0.010000;0.000000;V;4
+10;4;8029;I16;;ADC1 current;adc1_current;0.010000;0.000000;mA;4
+11;4;8030;I16;;ADC2 voltage;adc2_voltage;0.010000;0.000000;V;4
+12;4;8031;I16;;ADC2 current;adc2_current;0.010000;0.000000;mA;4
+13;4;8032;I16;;ADC3 voltage;adc3_voltage;1.000000;0.000000;;4
+14;4;8033;I16;;ADC4 voltage;adc4_voltage;1.000000;0.000000;;4
+15;4;8034;I16;;ADC3 current;adc3_current;0.010000;0.000000;mA;4
+16;4;8035;I16;;ADC4 current;adc4_current;0.010000;0.000000;mA;4
+17;4;8053;I32;;Longitude;longitude;0.000100;0.000000;°;4
+18;4;8055;I32;;Latitude;latitude;0.000100;0.000000;°;4
+19;4;8057;U16;;Max. total nominal active power;max_total_nominal_active_power;1.000000;0.000000;kW;4
+20;4;8058;U16;;Min. total nominal active power;min_total_nominal_active_power;1.000000;0.000000;kW;4
+21;4;8059;U16;;Max. total nominal reactive power;max_total_nominal_reactive_power;1.000000;0.000000;kvar;4
+22;4;8060;I16;;Min. total nominal reactive power;min_total_nominal_reactive_power;1.000000;0.000000;kvar;4
+23;4;8065;U16;;Inverter preset total active power;inverter_preset_total_active_power;1.000000;0.000000;kW;4
+24;4;8066;I16;;Inverter preset total reactive power;inverter_preset_total_reactive_power;1.000000;0.000000;kvar;4
+25;4;8067;U16;;Logger on/off state;logger_onoff_state;1.000000;0.000000;;4
+26;4;8068;U16;;Logger unlactch state;logger_unlactch_state;1.000000;0.000000;;4
+27;4;8069;U64;;Total active power;P_AC;1.000000;0.000000;W;4
+28;4;8073;U32;;Daily power yield;daily_power_yield;0.100000;0.000000;kWh;4
+29;4;8074;I64;;Total reactive power;total_reactive_power;1.000000;0.000000;var;4
+30;4;8079;U64;;Total power yield;total_power_yield;0.100000;0.000000;kWh;4
+31;4;8083;U32;;Min. adjustable active power;min_adjustable_active_power;0.100000;0.000000;kW;4
+32;4;8084;U32;;Max. adjustable active power;max_adjustable_active_power;0.100000;0.000000;kW;4
+33;4;8087;I32;;Min. adjustable reactive power;min_adjustable_reactive_power;0.100000;0.000000;kvar;4
+34;4;8089;I32;;Max. adjustable reactive power;max_adjustable_reactive_power;0.100000;0.000000;kvar;4
+35;4;8092;U32;;Nominal active power;P_RATED;0.100000;0.000000;kvar;4
+36;4;8093;U32;;Nominal reactive power;nominal_reactive_power;0.100000;0.000000;kvar;4
+37;4;8095;U16;;Grid-connected devices;gridconnected_devices;1.000000;0.000000;;4
+38;4;8096;U16;;Off-grid devices;offgrid_devices;1.000000;0.000000;;4
+39;4;8097;U64;;Monthly yield of array;monthly_yield_of_array;0.100000;0.000000;kWh;4
+40;4;8101;U64;;Annual yield of array;annual_yield_of_array;0.100000;0.000000;kWh;4
+41;4;8105;U64;;Apparent power of array;apparent_power_of_array;1.000000;0.000000;VA;4
+42;3;8001;U16;;Set On/Off for subarray inverter;set_onoff_for_subarray_inverter;1.000000;0.000000;;4
+43;3;8003;U32;;Set the active power value for subaray inverter;set_the_active_power_value_for_subaray_inverter;0.100000;0.000000;kW;4
+44;3;8004;U32;;Set the active power ratio for subarray inverter;set_the_active_power_ratio_for_subarray_inverter;0.100000;0.000000;'%;4
+45;3;8006;I32;;Set the reactive power value for subarray inverter;set_the_reactive_power_value_for_subarray_inverter;0.100000;0.000000;kvar;4
+46;3;8008;I32;;Set the reactive power ratio for subarray inverter;set_the_reactive_power_ratio_for_subarray_inverter;0.100000;0.000000;'%;4
+47;3;8010;I32;;Set the power factor for subarray inverter;set_the_power_factor_for_subarray_inverter;0.001000;0.000000;;4
+48;3;8012;U16;;D01;d01;1.000000;0.000000;;4
+49;3;8013;U16;;D02;d02;1.000000;0.000000;;4
+50;3;8014;U16;;D03;d03;1.000000;0.000000;;4
+51;3;8015;U16;;D04;d04;1.000000;0.000000;;4

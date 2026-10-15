@@ -1,0 +1,29 @@
+Modbus;Sensor;EKO;MS40
+1;3;0;U16;;Serial number;SERIAL;1.0;0.0;;4
+2;3;1;U16;;Serial number_1;;1.0;0.0;;4
+3;3;2;U16;;Serial number_2;;1.0;0.0;;4
+4;3;3;U16;;Serial number_3;;1.0;0.0;;4
+5;3;4;U16;;Serial number_4;;1.0;0.0;;4
+6;3;5;U16;;Serial number_5;;1.0;0.0;;4
+7;3;6;U16;;Serial number_6;;1.0;0.0;;4
+8;3;7;U16;;Serial number_7;;1.0;0.0;;4
+9;3;8;U16;;Model Number;MODEL;1.0;0.0;;4
+10;3;9;U16;;Model Number_1;;1.0;0.0;;4
+11;3;10;U16;;Model Number_2;;1.0;0.0;;4
+12;3;11;U16;;Model Number_3;;1.0;0.0;;4
+13;3;12;U16;;Model Number_4;;1.0;0.0;;4
+14;3;13;U16;;Minimum solar radiation intensity;;1.0;0.0;;4
+15;3;14;U16;;Maximum solar radiation intensity;;1.0;0.0;;4
+16;3;15;U16;;Measurement mode;;1.0;0.0;;4
+17;3;16;F32;;Sensitivity;;1.0;0.0;(micro V/W /m -2);4
+18;3;18;U16;;Temperature unit;;1.0;0.0;Deg.Celsius;4
+19;3;19;F32;;AD(mV);;1.0;0.0;mV;4
+20;3;21;F32;;Comp.Irr(W_m2);;1.0;0.0;W/m2;4
+21;3;25;F32;;Password;;1.0;0.0;;4
+22;3;34;F32;;L.Coeff. K1;;1.0;0.0;;4
+23;3;36;F32;;L.Coeff. K2;;1.0;0.0;;4
+24;3;38;F32;;L.Coeff. K3;;1.0;0.0;;4
+25;3;40;F32;;L.Coeff. K4;;1.0;0.0;;4
+26;3;42;U16;;Addr;;1.0;0.0;;4
+27;3;43;F32;;BPS;;1.0;0.0;;4
+28;3;45;U16;;Parity;;1.0;0.0;;4

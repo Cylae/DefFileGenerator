@@ -1,0 +1,24 @@
+modbusRTU;Other;Lufft;MODBUS_RTU_Lufft_WS10;;;;;;;
+1;4;19;I16;;Température de l'air;temprature_de_lair;10.000000;0.000000;°C;4
+2;4;23;I16;;Température du point de rosée;temprature_du_point_de_rose;10.000000;0.000000;°C;4
+3;4;29;U16;;Humidité relative;humidit_relative;10.000000;0.000000;'%;4
+4;4;31;U16;;Humidité absolue;humidit_absolue;10.000000;0.000000;g/m3;4
+5;4;37;U16;;Pression atmosphérique absolue;pression_atmosphrique_absolue;10.000000;0.000000;hPa;4
+6;4;39;U16;;Pression atmosphérique relative;pression_atmosphrique_relative;10.000000;0.000000;hPa;4
+7;4;45;U16;;Vitesse du vent ms;vitesse_du_vent_ms;10.000000;0.000000;m/s;4
+8;4;49;U16;;Vitesse du vent kmh;vitesse_du_vent_kmh;10.000000;0.000000;km/h;4
+9;4;53;U16;;Direction du vent;direction_du_vent;10.000000;0.000000;deg;4
+10;4;54;U16;;Direction du vent  (corrigé par la boussole);direction_du_vent_corrig_par_la_boussole;10.000000;0.000000;deg;4
+11;4;55;U16;;Direction magnétique;direction_magntique;10.000000;0.000000;deg;4
+12;4;59;U16;;Quantité de précipitations;quantit_de_prcipitations;100.000000;0.000000;mm;4
+13;4;60;U16;;Quantité de précipitations, diff;quantit_de_prcipitations_diff;100.000000;0.000000;mm;4
+14;4;61;U16;;Type de précipitations;type_de_prcipitations;1.000000;0.000000;;4
+15;4;62;U16;;Intensité des précipitations /h;intensit_des_prcipitations_h;100.000000;0.000000;mm/h;4
+16;4;63;U16;;Intensité des précipitations /min;intensit_des_prcipitations_min;10000.000000;0.000000;mm/min;4
+17;4;64;U16;;Quantité de précipitations, quotidienne;quantit_de_prcipitations_quotidienne;100.000000;0.000000;mm;4
+18;4;68;U16;;Rayonnement global;rayonnement_global;10.000000;0.000000;W/m2;4
+19;4;70;U16;;Position du soleil azimut;position_du_soleil_azimut;10.000000;0.000000;deg;4
+20;4;71;U16;;Position du soleil élévation;position_du_soleil_lvation;10.000000;0.000000;deg;4
+21;4;74;U16;;Indice UV;indice_uv;1.000000;0.000000;;4
+22;4;75;U16;;Luminosité;luminosit;10.000000;0.000000;klx;4
+23;4;76;U16;;Crépuscule;crpuscule;10.000000;0.000000;lx;4

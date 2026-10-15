@@ -1,0 +1,65 @@
+Modbus;Meter;Enerfox;FXM-210-XXX;;;;;;;
+1;3;512;U16;;Meter address;;1;0;;4
+2;3;513;U16;;RS485 baud rate;;1;0;bps;4
+3;3;514;U16;;RS485 parity setting;;1;0;;4
+4;3;529;U16;;Wiring mode;;1;0;;4
+5;3;530;U16;;CT2;;1;0;;4
+6;3;531;U16;;CT1;;1;0;;4
+7;3;8194;F32;;Phase A current;I_AC_1;1;0;A;4
+8;3;8196;F32;;Phase B current;I_AC_2;1;0;A;4
+9;3;8198;F32;;Phase C current;I_AC_3;1;0;A;4
+10;3;8202;F32;;Phase 1 voltage;U_AC_1;1;0;V;4
+11;3;8204;F32;;Phase 2 voltage;U_AC_2;1;0;V;4
+12;3;8206;F32;;Phase 3 voltage;U_AC_3;1;0;V;4
+13;3;8210;F32;;Line voltage 1-2;;1;0;V;4
+14;3;8212;F32;;Line voltage 2-3;;1;0;V;4
+15;3;8214;F32;;Line voltage 3-1;;1;0;V;4
+16;3;8216;F32;;Frequency;FREQ;1;0;Hz;4
+17;3;8218;F32;;Total system power;P_AC;0.001;0;kW;4
+18;3;8220;F32;;Phase A power;P_AC_1;0.001;0;kW;4
+19;3;8222;F32;;Phase B power;P_AC_2;0.001;0;kW;4
+20;3;8224;F32;;Phase C power;P_AC_3;0.001;0;kW;4
+21;3;8226;F32;;Total apparent power;S_AC;0.001;0;kVA;4
+22;3;8228;F32;;Phase A apparent power;S_AC_1;0.001;0;kVA;4
+23;3;8230;F32;;Phase B apparent power;S_AC_2;0.001;0;kVA;4
+24;3;8232;F32;;Phase C apparent power;S_AC_3;0.001;0;kVA;4
+25;3;8234;F32;;Total reactive power;Q_AC;0.001;0;kvar;4
+26;3;8236;F32;;Phase A reactive power;Q_AC_1;0.001;0;kvar;4
+27;3;8238;F32;;Phase B reactive power;Q_AC_2;0.001;0;kvar;4
+28;3;8240;F32;;Phase C reactive power;Q_AC_3;0.001;0;kvar;4
+29;3;8242;F32;;Total power factor;PF;1;0;;4
+30;3;8244;F32;;Phase A power factor;PF_1;1;0;;4
+31;3;8246;F32;;Phase B power factor;PF_2;1;0;;4
+32;3;8248;F32;;Phase C power factor;PF_3;1;0;;4
+33;3;8262;U32;;Generated energy;;1;0;kWh;4
+34;3;8264;U32;;Phase A generated energy;;1;0;kWh;4
+35;3;8266;U32;;Phase B generated energy;;1;0;kWh;4
+36;3;8268;U32;;Phase C generated energy;;1;0;kWh;4
+37;3;8270;U32;;Consumed energy;;1;0;kWh;4
+38;3;8272;U32;;Phase A consumed energy;;1;0;kWh;4
+39;3;8274;U32;;Phase B consumed energy;;1;0;kWh;4
+40;3;8276;U32;;Phase C consumed energy;;1;0;kWh;4
+41;3;8278;U32;;Generated apparent energy;;1;0;kVAh;4
+42;3;8280;U32;;Phase A generated apparent energy;;1;0;kVAh;4
+43;3;8282;U32;;Phase B generated apparent energy;;1;0;kVAh;4
+44;3;8284;U32;;Phase C generated apparent energy;;1;0;kVAh;4
+45;3;8286;U32;;Consumed apparent energy;;1;0;kVAh;4
+46;3;8288;U32;;Phase A consumed apparent energy;;1;0;kVAh;4
+47;3;8290;U32;;Phase B consumed apparent energy;;1;0;kVAh;4
+48;3;8292;U32;;Phase C consumed apparent energy;;1;0;kVAh;4
+49;3;8294;U32;;Consumed reactive energy Q1;;1;0;kvarh;4
+50;3;8296;U32;;Phase A consumed reactive energy Q1;;1;0;kvarh;4
+51;3;8298;U32;;Phase B consumed reactive energy Q1;;1;0;kvarh;4
+52;3;8300;U32;;Phase C consumed reactive energy Q1;;1;0;kvarh;4
+53;3;8302;U32;;Consumed reactive energy Q2;;1;0;kvarh;4
+54;3;8304;U32;;Phase A consumed reactive energy Q2;;1;0;kvarh;4
+55;3;8306;U32;;Phase B consumed reactive energy Q2;;1;0;kvarh;4
+56;3;8308;U32;;Phase C consumed reactive energy Q2;;1;0;kvarh;4
+57;3;8310;U32;;Consumed reactive energy Q3;;1;0;kvarh;4
+58;3;8312;U32;;Phase A consumed reactive energy Q3;;1;0;kvarh;4
+59;3;8314;U32;;Phase B consumed reactive energy Q3;;1;0;kvarh;4
+60;3;8316;U32;;Phase C consumed reactive energy Q3;;1;0;kvarh;4
+61;3;8318;U32;;Consumed reactive energy Q4;;1;0;kvarh;4
+62;3;8320;U32;;Phase A consumed reactive energy Q4;;1;0;kvarh;4
+63;3;8322;U32;;Phase B consumed reactive energy Q4;;1;0;kvarh;4
+64;3;8324;U32;;Phase C consumed reactive energy Q4;;1;0;kvarh;4

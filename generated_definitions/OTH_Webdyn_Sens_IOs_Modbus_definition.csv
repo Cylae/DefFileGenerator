@@ -1,0 +1,29 @@
+ModbusRTU;Other;Webdyn;Sens'8 digital inputs 6 digital outputs
+1;3;0;I16;;Serial Number;SERIAL;0.0;0.0;-;4
+2;3;4;I16;;Firmware Version;;0.0;0.0;-;4
+3;3;6;I16;;Device Address;UNIT_ID;0.0;0.0;-;4
+4;3;7;I16;;Product Model;MODEL;0.0;0.0;-;4
+5;3;8;I16;;Hardware Version;;0.0;0.0;-;4
+6;3;9;I16;;Baudrate Setting;;0.0;0.0;-;4
+7;1;16;I16;;Status digital Input channel 1;;0.0;0.0;-;4
+8;4;101;I16;;Open collector output 0;;0.0;0.0;-;4
+9;4;102;I16;;High word  for counter input 1;;0.0;0.0;-;4
+10;4;103;I16;;Low word for counter input 1;;0.0;0.0;-;4
+11;4;104;I16;;High word  for counter input 2;;0.0;0.0;-;4
+12;4;105;I16;;Low word for counter input 2;;0.0;0.0;-;4
+13;4;106;I16;;High word for counter input 3;;0.0;0.0;-;4
+14;4;107;I16;;Low word for counter input 3;;0.0;0.0;-;4
+15;4;108;I16;;High word for counter input 4;;0.0;0.0;-;4
+16;4;109;I16;;Low word for counter input 4;;0.0;0.0;-;4
+17;4;110;I16;;High word for counter input 5;;0.0;0.0;-;4
+18;4;111;I16;;Low word for counter input 5;;0.0;0.0;-;4
+19;4;112;I16;;High word for counter input 6;;0.0;0.0;-;4
+20;4;113;I16;;Low word for counter input 6;;0.0;0.0;-;4
+21;4;114;I16;;High word for counter input 7;;0.0;0.0;-;4
+22;4;115;I16;;Low word for counter input 7;;0.0;0.0;-;4
+23;4;116;I16;;High word for counter input 8;;0.0;0.0;-;4
+24;4;117;I16;;Low word for counter input 8;;0.0;0.0;-;4
+25;4;118;I16;;Response delay for serial communication;;0.0;0.0;-;4
+26;4;119;I16;;Filter time for counter input;;0.0;0.0;-;4
+27;4;120;I16;;Disable/Enable input;;0.0;0.0;-;4
+28;4;121;I16;;Input status selection;;0.0;0.0;-;4

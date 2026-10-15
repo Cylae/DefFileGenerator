@@ -1,0 +1,1121 @@
+modbusRTU;Other;Alro Solar;EMS软件通讯协议.zh-CN.en;;;;;;;
+1;3;31000;U16;;DIDO serial number SN0;dido_serial_number_sn0;1.000000;0.000000;'---;4
+2;3;31001;U16;;DIDO serial number SN1;dido_serial_number_sn1;1.000000;0.000000;'---;4
+3;3;31002;U16;;DIDO serial number SN2;dido_serial_number_sn2;1.000000;0.000000;'---;4
+4;3;31003;U16;;DIDO serial number SN3;dido_serial_number_sn3;1.000000;0.000000;'---;4
+5;3;31004;U16;;DIDO serial number SN4;dido_serial_number_sn4;1.000000;0.000000;'---;4
+6;3;31005;U16;;DIDO serial number SN5;dido_serial_number_sn5;1.000000;0.000000;'---;4
+7;3;31006;U16;;DIDO serial number SN6;dido_serial_number_sn6;1.000000;0.000000;'---;4
+8;3;31007;U16;;DIDO serial number SN7;dido_serial_number_sn7;1.000000;0.000000;'---;4
+9;3;31008;U16;;DIDO serial number SN8;dido_serial_number_sn8;1.000000;0.000000;'---;4
+10;3;31009;U16;;DIDO serial number SN9;dido_serial_number_sn9;1.000000;0.000000;;4
+11;3;31010;U16;;reserve;reserve;1.000000;0.000000;;0
+12;3;31011;U16;;Limit switch signal;limit_switch_signal;1.000000;0.000000;;4
+13;3;31012;U16;;AC SPD1 signal;ac_spd1_signal;1.000000;0.000000;;4
+14;3;31013;U16;;Water immersion signal;water_immersion_signal;1.000000;0.000000;;4
+15;3;31014;U16;;Firefighting agent signals;firefighting_agent_signals;1.000000;0.000000;;4
+16;3;31015;U16;;Grid-connected circuit breaker signal;gridconnected_circuit_breaker_signal;1.000000;0.000000;;4
+17;3;31016;U16;;Auxiliary circuit breaker signal;auxiliary_circuit_breaker_signal;1.000000;0.000000;;4
+18;3;31017;U16;;Fault signal of reverse mixing;fault_signal_of_reverse_mixing;1.000000;0.000000;;9
+19;3;31018;U16;;Smoke detector signal;smoke_detector_signal;1.000000;0.000000;;4
+20;3;31019;U16;;temperature signal;temperature_signal;1.000000;0.000000;;4
+21;3;31020;U16;;fan;fan;1.000000;0.000000;;4
+22;3;31021;U16;;Aerosol Feedback;aerosol_feedback;1.000000;0.000000;;4
+23;3;31022;U16;;Fire signal;fire_signal;1.000000;0.000000;;4
+24;3;31100;U16;;Cabinet door light panel;cabinet_door_light_panel;1.000000;0.000000;;1
+25;3;31101;U16;;Emergency stop;emergency_stop;1.000000;0.000000;;1
+26;3;29980;U16;;Dehumidifier serial number SN0;dehumidifier_serial_number_sn0;1.000000;0.000000;'---;4
+27;3;29981;U16;;Dehumidifier serial number SN1;dehumidifier_serial_number_sn1;1.000000;0.000000;'---;4
+28;3;29982;U16;;Dehumidifier serial number SN2;dehumidifier_serial_number_sn2;1.000000;0.000000;'---;4
+29;3;29983;U16;;Dehumidifier serial number SN3;dehumidifier_serial_number_sn3;1.000000;0.000000;'---;4
+30;3;29984;U16;;Dehumidifier serial number SN4;dehumidifier_serial_number_sn4;1.000000;0.000000;'---;4
+31;3;29985;U16;;Dehumidifier serial number SN5;dehumidifier_serial_number_sn5;1.000000;0.000000;'---;4
+32;3;29986;U16;;Dehumidifier serial number SN6;dehumidifier_serial_number_sn6;1.000000;0.000000;'---;4
+33;3;29987;U16;;Dehumidifier serial number SN7;dehumidifier_serial_number_sn7;1.000000;0.000000;'---;4
+34;3;29988;U16;;Dehumidifier serial number SN8;dehumidifier_serial_number_sn8;1.000000;0.000000;'---;4
+35;3;29989;U16;;Dehumidifier serial number SN9;dehumidifier_serial_number_sn9;1.000000;0.000000;;4
+36;3;30000;U16;;Current temperature;current_temperature;1.000000;0.000000;℃;4
+37;3;30001;U16;;Current humidity;current_humidity;1.000000;0.000000;'%RH;4
+38;3;30002;U16;;Temperature alarm value;temperature_alarm_value;1.000000;0.000000;℃;9
+39;3;30003;U16;;Humidity alarm value;humidity_alarm_value;1.000000;0.000000;;9
+40;3;30004;U16;;Heating state;heating_state;1.000000;0.000000;;4
+41;3;30005;U16;;Dehumidifier working status;dehumidifier_working_status;1.000000;0.000000;;9
+42;3;30006;U16;;Manual output humidifier;manual_output_humidifier;1.000000;0.000000;;4
+43;3;30007;U16;;Manual output heating;manual_output_heating;1.000000;0.000000;;4
+44;3;30008;U16;;Overheat warning;overheat_warning;1.000000;0.000000;;9
+45;3;30009;U16;;Extremely humid warning;extremely_humid_warning;1.000000;0.000000;;9
+46;3;30100;U16;;Humidity start value;humidity_start_value;1.000000;0.000000;'%RH;1
+47;3;30101;U16;;Humidity stop value;humidity_stop_value;1.000000;0.000000;'%RH;1
+48;3;30102;U16;;Heating start value;heating_start_value;1.000000;0.000000;;1
+49;3;30109;U16;;Dehumidifier manual/automatic switching;dehumidifier_manualautomatic_switching;1.000000;0.000000;;1
+50;3;30180;U16;;Liquid cooling serial number SN0;liquid_cooling_serial_number_sn0;1.000000;0.000000;'---;4
+51;3;30181;U16;;Liquid cooling serial number SN1;liquid_cooling_serial_number_sn1;1.000000;0.000000;'---;4
+52;3;30182;U16;;Liquid cooling serial number SN2;liquid_cooling_serial_number_sn2;1.000000;0.000000;'---;4
+53;3;30183;U16;;Liquid cooling serial number SN3;liquid_cooling_serial_number_sn3;1.000000;0.000000;'---;4
+54;3;30184;U16;;Liquid cooling serial number SN4;liquid_cooling_serial_number_sn4;1.000000;0.000000;'---;4
+55;3;30185;U16;;Liquid cooling serial number SN5;liquid_cooling_serial_number_sn5;1.000000;0.000000;'---;4
+56;3;30186;U16;;Liquid cooling serial number SN6;liquid_cooling_serial_number_sn6;1.000000;0.000000;'---;4
+57;3;30187;U16;;Liquid cooling serial number SN7;liquid_cooling_serial_number_sn7;1.000000;0.000000;'---;4
+58;3;30188;U16;;Liquid cooling serial number SN8;liquid_cooling_serial_number_sn8;1.000000;0.000000;'---;4
+59;3;30189;U16;;Liquid cooling serial number SN9;liquid_cooling_serial_number_sn9;1.000000;0.000000;;4
+60;3;30200;U16;;water outlet temperature;water_outlet_temperature;1.000000;0.000000;℃;4
+61;3;30201;U16;;Return water temperature;return_water_temperature;1.000000;0.000000;℃;4
+62;3;30202;U16;;Exhaust temperature;exhaust_temperature;1.000000;0.000000;℃;4
+63;3;30203;U16;;Ambient temperature;ambient_temperature;1.000000;0.000000;℃;4
+64;3;30204;U16;;Inlet water pressure;inlet_water_pressure;1.000000;0.000000;Bar;4
+65;3;30205;U16;;Water pressure;water_pressure;1.000000;0.000000;Bar;4
+66;3;30206;U16;;High water temperature;high_water_temperature;1.000000;0.000000;;4
+67;3;30207;U16;;Low water temperature;low_water_temperature;1.000000;0.000000;;4
+68;3;30208;U16;;Water temperature sensor malfunction;water_temperature_sensor_malfunction;1.000000;0.000000;;4
+69;3;30209;U16;;Return water temperature sensor malfunction;return_water_temperature_sensor_malfunction;1.000000;0.000000;;4
+70;3;30210;U16;;reserve;reserve_1;1.000000;0.000000;;0
+71;3;30211;U16;;Inverter communication failure;inverter_communication_failure;1.000000;0.000000;;9
+72;3;30212;U16;;System high-pressure lockout;system_highpressure_lockout;1.000000;0.000000;;4
+73;3;30213;U16;;System low-pressure lockout;system_lowpressure_lockout;1.000000;0.000000;;4
+74;3;30214;U16;;Exhaust temperature too high lock;exhaust_temperature_too_high_lock;1.000000;0.000000;;4
+75;3;30215;U16;;Inverter overcurrent lockout;inverter_overcurrent_lockout;1.000000;0.000000;;4
+76;3;30216;U16;;Inverter over-temperature lockout;inverter_overtemperature_lockout;1.000000;0.000000;;4
+77;3;30217;U16;;Inverter overvoltage lockout;inverter_overvoltage_lockout;1.000000;0.000000;;4
+78;3;30218;U16;;undervoltage lockout of frequency converter;undervoltage_lockout_of_frequency_converter;1.000000;0.000000;;4
+79;3;30219;U16;;Inverter phase loss lockout;inverter_phase_loss_lockout;1.000000;0.000000;;4
+80;3;30220;U16;;Other fault lockouts in frequency converter;other_fault_lockouts_in_frequency_converter;1.000000;0.000000;;9
+81;3;30221;U16;;reserve;reserve_2;1.000000;0.000000;;0
+82;3;30222;U16;;Current highest alarm level;current_highest_alarm_level;1.000000;0.000000;;9
+83;3;30223;U16;;Hydration warning;hydration_warning;1.000000;0.000000;;9
+84;3;30224;U16;;System overload alarm;system_overload_alarm;1.000000;0.000000;;9
+85;3;30225;U16;;Excessive water pressure alarm;excessive_water_pressure_alarm;1.000000;0.000000;;9
+86;3;30226;U16;;Current speed of water pump;current_speed_of_water_pump;1.000000;0.000000;'%;4
+87;3;30227;U16;;Water pump status;water_pump_status;1.000000;0.000000;;9
+88;3;30228;U16;;Heartbeat;heartbeat;1.000000;0.000000;;4
+89;3;30229;U16;;Compressor status;compressor_status;1.000000;0.000000;;9
+90;3;30230;U16;;Software coding;software_coding;1.000000;0.000000;;4
+91;3;30231;U16;;Software version;software_version;1.000000;0.000000;;4
+92;3;30232;U16;;Low bytes of total compressor running time;low_bytes_of_total_compressor_running_time;1.000000;0.000000;Hour;4
+93;3;30233;U16;;High byte of total compressor running time;high_byte_of_total_compressor_running_time;1.000000;0.000000;Hour;4
+94;3;30234;U16;;Low number of compressor start-up bytes;low_number_of_compressor_startup_bytes;1.000000;0.000000;Second-rate;4
+95;3;30235;U16;;High number of compressor start-up bytes;high_number_of_compressor_startup_bytes;1.000000;0.000000;Second-rate;4
+96;3;30236;U16;;Low byte of total electric heating running time;low_byte_of_total_electric_heating_running_time;1.000000;0.000000;Hour;4
+97;3;30237;U16;;High byte of total electric heating running time;high_byte_of_total_electric_heating_running_time;1.000000;0.000000;Hour;4
+98;3;30238;U16;;Low number of times electric heating is turned on;low_number_of_times_electric_heating_is_turned_on;1.000000;0.000000;Second-rate;4
+99;3;30239;U16;;High number of times electric heating is turned on;high_number_of_times_electric_heating_is_turned_on;1.000000;0.000000;Second-rate;4
+100;3;30240;U16;;Low byte of total pump running time;low_byte_of_total_pump_running_time;1.000000;0.000000;Hour;4
+101;3;30241;U16;;High byte of total pump running time;high_byte_of_total_pump_running_time;1.000000;0.000000;Hour;4
+102;3;30242;U16;;Low number of times the water pump is turned on;low_number_of_times_the_water_pump_is_turned_on;1.000000;0.000000;Second-rate;4
+103;3;30243;U16;;High number of times the water pump is turned on;high_number_of_times_the_water_pump_is_turned_on;1.000000;0.000000;Second-rate;4
+104;3;30244;U16;;Low byte of total outdoor fan running time;low_byte_of_total_outdoor_fan_running_time;1.000000;0.000000;Hour;4
+105;3;30245;U16;;High byte of total outdoor fan running time;high_byte_of_total_outdoor_fan_running_time;1.000000;0.000000;Hour;4
+106;3;30246;U16;;Low number of times the external fan is turned on;low_number_of_times_the_external_fan_is_turned_on;1.000000;0.000000;Second-rate;4
+107;3;30247;U16;;High number of times the external fan is turned on;high_number_of_times_the_external_fan_is_turned_on;1.000000;0.000000;Second-rate;4
+108;3;30248;U16;;Current system mode;current_system_mode;1.000000;0.000000;;4
+109;3;30249;U16;;Current protocol control mode;current_protocol_control_mode;1.000000;0.000000;;4
+110;3;30300;U16;;System power on/off;system_power_onoff;1.000000;0.000000;;1
+111;3;30301;U16;;Mode settings;mode_settings;1.000000;0.000000;;1
+112;3;30302;U16;;Temperature control selection;temperature_control_selection;1.000000;0.000000;;1
+113;3;30311;U16;;Maximum cell temperature;maximum_cell_temperature;1.000000;0.000000;;1
+114;3;30312;U16;;Minimum cell temperature;minimum_cell_temperature;1.000000;0.000000;;1
+115;3;30313;U16;;Average cell temperature (optional);average_cell_temperature_optional;1.000000;0.000000;;1
+116;3;30314;U16;;Battery operating status;battery_operating_status;1.000000;0.000000;;1
+117;3;30360;U16;;Water temperature cooling point;water_temperature_cooling_point;1.000000;0.000000;℃;1
+118;3;30361;U16;;Water heating point;water_heating_point;1.000000;0.000000;℃;1
+119;3;30362;U16;;Refrigeration Hysteresis;refrigeration_hysteresis;1.000000;0.000000;℃;1
+120;3;30363;U16;;Heating Hysteresis;heating_hysteresis;1.000000;0.000000;℃;1
+121;3;30364;U16;;Water pump speed selection;water_pump_speed_selection;1.000000;0.000000;;1
+122;3;30365;U16;;ID;id;1.000000;0.000000;;1
+123;3;30366;U16;;baud rate;baud_rate;1.000000;0.000000;;1
+124;3;30367;U16;;reserve;reserve_3;1.000000;0.000000;;0
+125;3;30368;U16;;Compressor speed selection;compressor_speed_selection;1.000000;0.000000;;1
+126;3;30369;U16;;reserve;reserve_4;1.000000;0.000000;;0
+127;3;30370;U16;;Protocol control mode selection;protocol_control_mode_selection;1.000000;0.000000;;1
+128;3;30371;U16;;;;1.000000;0.000000;;1
+129;3;30372;U16;;Cell operating temperature cooling point;cell_operating_temperature_cooling_point;1.000000;0.000000;℃;1
+130;3;30373;U16;;Cell temperature cooling stop point;cell_temperature_cooling_stop_point;1.000000;0.000000;℃;1
+131;3;30374;U16;;Cell temperature control hotspot;cell_temperature_control_hotspot;1.000000;0.000000;℃;1
+132;3;30375;U16;;Cell temperature heating stop point;cell_temperature_heating_stop_point;1.000000;0.000000;℃;1
+133;3;30376;U16;;Battery static temperature cooling point;battery_static_temperature_cooling_point;1.000000;0.000000;℃;1
+134;3;30377;U16;;Cell temperature self-circulation start-up difference;cell_temperature_selfcirculation_startup_difference;1.000000;0.000000;℃;1
+135;3;30378;U16;;Cell temperature self-circulation stop difference;cell_temperature_selfcirculation_stop_difference;1.000000;0.000000;℃;1
+136;3;30379;U16;;Minimum allowable temperature of battery cell;minimum_allowable_temperature_of_battery_cell;1.000000;0.000000;℃;1
+137;3;30380;U16;;Maximum permissible temperature of battery cell;maximum_permissible_temperature_of_battery_cell;1.000000;0.000000;℃;1
+138;3;30381;U16;;Silent mode enable switch;silent_mode_enable_switch;1.000000;0.000000;;1
+139;3;30382;U16;;Maximum speed of external fan in silent mode;maximum_speed_of_external_fan_in_silent_mode;1.000000;0.000000;'%;1
+140;3;31500;U16;;Detector serial number SN0;detector_serial_number_sn0;1.000000;0.000000;;4
+141;3;31501;U16;;Detector serial number SN1;detector_serial_number_sn1;1.000000;0.000000;;4
+142;3;31502;U16;;Detector serial number SN2;detector_serial_number_sn2;1.000000;0.000000;;4
+143;3;31503;U16;;Detector serial number SN3;detector_serial_number_sn3;1.000000;0.000000;;4
+144;3;31504;U16;;Detector serial number SN4;detector_serial_number_sn4;1.000000;0.000000;;4
+145;3;31505;U16;;Detector serial number SN5;detector_serial_number_sn5;1.000000;0.000000;;4
+146;3;31506;U16;;Detector serial number SN6;detector_serial_number_sn6;1.000000;0.000000;;4
+147;3;31507;U16;;Detector serial number SN7;detector_serial_number_sn7;1.000000;0.000000;;4
+148;3;31508;U16;;Detector serial number SN8;detector_serial_number_sn8;1.000000;0.000000;;4
+149;3;31509;U16;;Detector serial number SN9;detector_serial_number_sn9;1.000000;0.000000;;4
+150;3;31520;U16;;Temperature sensor 1;temperature_sensor_1;1.000000;0.000000;℃;4
+151;3;31521;U16;;Temperature sensor 2;temperature_sensor_2;1.000000;0.000000;℃;4
+152;3;31522;U16;;CO concentration;co_concentration;1.000000;0.000000;;4
+153;3;31523;U16;;VOC label;voc_label;1.000000;0.000000;;4
+154;3;31524;U16;;H2 logo;h2_logo;1.000000;0.000000;;4
+155;3;31525;U16;;Smoke sign;smoke_sign;1.000000;0.000000;;4
+156;3;31526;U16;;Fire level;fire_level;1.000000;0.000000;;4
+157;3;31527;U16;;Fault codes;fault_codes;1.000000;0.000000;;9
+158;3;31528;U16;;Temperature sensor 1 status;temperature_sensor_1_status;1.000000;0.000000;;9
+159;3;31529;U16;;Temperature sensor 2 status;temperature_sensor_2_status;1.000000;0.000000;;9
+160;3;31530;U16;;VOC sensor status;voc_sensor_status;1.000000;0.000000;;9
+161;3;31531;U16;;CO sensor status;co_sensor_status;1.000000;0.000000;;9
+162;3;31532;U16;;Smoke sensor status;smoke_sensor_status;1.000000;0.000000;;9
+163;3;31533;U16;;Hydrogen sensor status;hydrogen_sensor_status;1.000000;0.000000;;9
+164;3;31534;U16;;Fire extinguisher status;fire_extinguisher_status;1.000000;0.000000;;9
+165;3;31535;U16;;Valve status;valve_status;1.000000;0.000000;;9
+166;3;31536;U16;;H2 concentration value;h2_concentration_value;1.000000;0.000000;;4
+167;3;31560;U16;;Power consumption mode;power_consumption_mode;1.000000;0.000000;;1
+168;3;10000;U16;;Communication protocol version number;communication_protocol_version_number;1.000000;0.000000;'---;4
+169;3;10001;U16;;Main DSP version number;main_dsp_version_number;1.000000;0.000000;'---;4
+170;3;10002;U16;;Auxiliary DSP version number;auxiliary_dsp_version_number;1.000000;0.000000;'---;4
+171;3;10003;U16;;ARM version number;arm_version_number;1.000000;0.000000;'---;4
+172;3;10004;U16;;CPLD version number;cpld_version_number;1.000000;0.000000;'---;4
+173;3;10005;U16;;CPU1 software version number;cpu1_software_version_number;1.000000;0.000000;'---;4
+174;3;10008;U16;;Serial number SN0;serial_number_sn0;1.000000;0.000000;'---;4
+175;3;10009;U16;;Serial Number SN1;serial_number_sn1;1.000000;0.000000;'---;4
+176;3;10010;U16;;Serial number SN2;serial_number_sn2;1.000000;0.000000;'---;4
+177;3;10011;U16;;Serial number SN3;serial_number_sn3;1.000000;0.000000;'---;4
+178;3;10012;U16;;Serial number SN4;serial_number_sn4;1.000000;0.000000;'---;4
+179;3;10013;U16;;Serial number SN5;serial_number_sn5;1.000000;0.000000;'---;4
+180;3;10014;U16;;Serial number SN6;serial_number_sn6;1.000000;0.000000;'---;4
+181;3;10015;U16;;Serial number SN7;serial_number_sn7;1.000000;0.000000;'---;4
+182;3;10016;U16;;Serial number SN8;serial_number_sn8;1.000000;0.000000;'---;4
+183;3;10017;U16;;Product Code;product_code;1.000000;0.000000;'---;4
+184;3;10018;U16;;Equipment Information;equipment_information;1.000000;0.000000;'---;4
+185;3;10019;U16;;Parallel operation information;parallel_operation_information;1.000000;0.000000;'---;4
+186;3;10020;U16;;Rated power;P_RATED;1.000000;0.000000;0.1kW;4
+187;3;10021;U16;;MPPT count / number of strings;mppt_count_number_of_strings;1.000000;0.000000;'---;4
+188;3;10022;U16;;Grid voltage type;grid_voltage_type;1.000000;0.000000;'---;4
+189;3;10023;U16;;Battery Information;battery_information;1.000000;0.000000;'---;4
+190;3;10024;U16;;Battery operating type;battery_operating_type;1.000000;0.000000;'---;4
+191;3;10025;U16;;Number of batteries connected in series and parallel;number_of_batteries_connected_in_series_and_parallel;1.000000;0.000000;'---;4
+192;3;10026;U16;;Special Function Register 1;special_function_register_1;1.000000;0.000000;'---;4
+193;3;10027;U16;;Generator input as load output enable;generator_input_as_load_output_enable;1.000000;0.000000;'---;4
+194;3;10028;U16;;Firmware Scope;firmware_scope;1.000000;0.000000;'---;4
+195;3;10034;U16;;Energy distribution pattern;energy_distribution_pattern;1.000000;0.000000;'---;4
+196;3;10035;U16;;Running status;running_status;1.000000;0.000000;'---;9
+197;3;10036;U16;;Grid connection countdown;grid_connection_countdown;1.000000;0.000000;1S;4
+198;3;10037;U16;;Total BUS voltage;total_bus_voltage;1.000000;0.000000;0.1V;4
+199;3;10038;U16;;NBUS voltage;nbus_voltage;1.000000;0.000000;0.1V;4
+200;3;10039;U16;;DC insulation resistance;dc_insulation_resistance;1.000000;0.000000;1KΩ;4
+201;3;10040;U16;;Leakage current;leakage_current;1.000000;0.000000;0.1mA;4
+202;3;10041;I32;;Derating power_H16;derating_power_h16;1.000000;0.000000;1W;4
+203;3;10042;U16;;Derating power_L16;derating_power_l16;1.000000;0.000000;;4
+204;3;10043;U16;;Power limiting mode;power_limiting_mode;1.000000;0.000000;'---;4
+205;3;10044;I16;;N-line voltage to ground;nline_voltage_to_ground;1.000000;0.000000;0.1V;4
+206;3;10050;I16;;INV module R temperature;inv_module_r_temperature;1.000000;0.000000;0.1℃;4
+207;3;10051;I16;;INV module temperature;inv_module_temperature;1.000000;0.000000;0.1℃;4
+208;3;10052;I16;;INV module temperature;inv_module_temperature_1;1.000000;0.000000;0.1℃;4
+209;3;10053;I16;;Ambient temperature;ambient_temperature_1;1.000000;0.000000;0.1℃;4
+210;3;10054;I16;;Radiator temperature;radiator_temperature;1.000000;0.000000;0.1℃;4
+211;3;10055;I16;;Boost1 temperature;boost1_temperature;1.000000;0.000000;0.1℃;4
+212;3;10056;I16;;Boost2 temperature;boost2_temperature;1.000000;0.000000;0.1℃;4
+213;3;10057;I16;;Boost3 temperature;boost3_temperature;1.000000;0.000000;0.1℃;4
+214;3;10058;I16;;Boost4 temperature;boost4_temperature;1.000000;0.000000;0.1℃;4
+215;3;10063;U16;;Main fault code;main_fault_code;1.000000;0.000000;'---;9
+216;3;10064;U16;;Sub-fault codes;subfault_codes;1.000000;0.000000;'---;9
+217;3;10065;U16;;Main alarm code;main_alarm_code;1.000000;0.000000;'---;9
+218;3;10066;U16;;Sub-alarm code;subalarm_code;1.000000;0.000000;'---;9
+219;3;10440;U16;;reserve;reserve_5;1.000000;0.000000;;0
+220;3;10441;U16;;;;1.000000;0.000000;;4
+221;3;10442;U16;;;;1.000000;0.000000;;4
+222;3;10443;I16;;R-phase current / Inverter current;rphase_current_inverter_current;1.000000;0.000000;0.1A;4
+223;3;10444;I16;;S-phase current;sphase_current;1.000000;0.000000;0.1A;4
+224;3;10445;I16;;T-phase current;tphase_current;1.000000;0.000000;0.1A;4
+225;3;10446;U16;;reserve;reserve_6;1.000000;0.000000;;0
+226;3;10447;U16;;;;1.000000;0.000000;;4
+227;3;10448;U16;;;;1.000000;0.000000;;4
+228;3;10449;I32;;Total active power_H16;total_active_power_h16;1.000000;0.000000;1W;4
+229;3;10450;U16;;Total active power_L16;total_active_power_l16;1.000000;0.000000;;4
+230;3;10451;U16;;reserve;reserve_7;1.000000;0.000000;;0
+231;3;10452;U16;;;;1.000000;0.000000;;4
+232;3;10453;U16;;;;1.000000;0.000000;;4
+233;3;10454;U16;;;;1.000000;0.000000;;4
+234;3;10455;I32;;R-phase active power_H16;rphase_active_power_h16;1.000000;0.000000;1W;4
+235;3;10456;U16;;R-phase active power_L16;rphase_active_power_l16;1.000000;0.000000;;4
+236;3;10457;I32;;S-phase active power_H16;sphase_active_power_h16;1.000000;0.000000;1W;4
+237;3;10458;U16;;S-phase active power_L16;sphase_active_power_l16;1.000000;0.000000;;4
+238;3;10459;I32;;T-phase active power_H16;tphase_active_power_h16;1.000000;0.000000;1W;4
+239;3;10460;U16;;T-phase active power_L16;tphase_active_power_l16;1.000000;0.000000;;4
+240;3;10461;I16;;Daily power generation;E_DAY;1.000000;0.000000;0.1 kWh;4
+241;3;10462;I32;;Cumulative power generation_H16;cumulative_power_generation_h16;1.000000;0.000000;0.1 kWh;4
+242;3;10463;U16;;Cumulative power generation_L16;cumulative_power_generation_l16;1.000000;0.000000;;4
+243;3;10500;U16;;Phase R voltage / Mains voltage;phase_r_voltage_mains_voltage;1.000000;0.000000;0.1V;4
+244;3;10501;U16;;S-phase voltage;sphase_voltage;1.000000;0.000000;0.1V;4
+245;3;10502;U16;;Phase T voltage;phase_t_voltage;1.000000;0.000000;0.1V;4
+246;3;10503;I16;;Phase R current / grid current;phase_r_current_grid_current;1.000000;0.000000;0.1A;4
+247;3;10504;I16;;S-phase current;sphase_current_1;1.000000;0.000000;0.1A;4
+248;3;10505;I16;;T-phase current;tphase_current_1;1.000000;0.000000;0.1A;4
+249;3;10506;U16;;R-phase frequency / grid frequency;rphase_frequency_grid_frequency;1.000000;0.000000;0.01Hz;4
+250;3;10507;U16;;S-phase frequency;sphase_frequency;1.000000;0.000000;0.01Hz;4
+251;3;10508;U16;;T-phase frequency;tphase_frequency;1.000000;0.000000;0.01Hz;4
+252;3;10509;I32;;Total active power_H16;total_active_power_h16_1;1.000000;0.000000;1W;4
+253;3;10510;U16;;Total active power_L16;total_active_power_l16_1;1.000000;0.000000;;4
+254;3;10511;I32;;Total reactive power_H16;total_reactive_power_h16;1.000000;0.000000;1Var;4
+255;3;10512;U16;;Total reactive power_L16;total_reactive_power_l16;1.000000;0.000000;;4
+256;3;10513;I32;;Total Apparent Power_H16;total_apparent_power_h16;1.000000;0.000000;1Va;4
+257;3;10514;U16;;Total Apparent Power_L16;total_apparent_power_l16;1.000000;0.000000;;4
+258;3;10515;I32;;R-phase active power_H16;rphase_active_power_h16_1;1.000000;0.000000;1W;4
+259;3;10516;U16;;R-phase active power_L16;rphase_active_power_l16_1;1.000000;0.000000;;4
+260;3;10517;I32;;S-phase active power_H16;sphase_active_power_h16_1;1.000000;0.000000;1W;4
+261;3;10518;U16;;S-phase active power_L16;sphase_active_power_l16_1;1.000000;0.000000;;4
+262;3;10519;I32;;T-phase active power_H16;tphase_active_power_h16_1;1.000000;0.000000;1W;4
+263;3;10520;U16;;T-phase active power_L16;tphase_active_power_l16_1;1.000000;0.000000;;4
+264;3;10521;I32;;R-phase reactive power_H16;rphase_reactive_power_h16;1.000000;0.000000;1Var;4
+265;3;10522;U16;;R-phase reactive power_L16;rphase_reactive_power_l16;1.000000;0.000000;;4
+266;3;10523;I32;;S-phase reactive power_H16;sphase_reactive_power_h16;1.000000;0.000000;1Var;4
+267;3;10524;U16;;S-phase reactive power_L16;sphase_reactive_power_l16;1.000000;0.000000;;4
+268;3;10525;I32;;T-phase reactive power_H16;tphase_reactive_power_h16;1.000000;0.000000;1Var;4
+269;3;10526;U16;;T-phase reactive power_L16;tphase_reactive_power_l16;1.000000;0.000000;;4
+270;3;10527;I32;;R-phase apparent power_H16;rphase_apparent_power_h16;1.000000;0.000000;1Va;4
+271;3;10528;U16;;R-phase apparent power_L16;rphase_apparent_power_l16;1.000000;0.000000;;4
+272;3;10529;I32;;S-phase apparent power_H16;sphase_apparent_power_h16;1.000000;0.000000;1Va;4
+273;3;10530;U16;;S-phase apparent power_L16;sphase_apparent_power_l16;1.000000;0.000000;;4
+274;3;10531;I32;;T-phase apparent power_H16;tphase_apparent_power_h16;1.000000;0.000000;1Va;4
+275;3;10532;U16;;T-phase apparent power_L16;tphase_apparent_power_l16;1.000000;0.000000;;4
+276;3;10533;U16;;RS grid line voltage;rs_grid_line_voltage;1.000000;0.000000;0.1V;4
+277;3;10534;U16;;ST power line voltage;st_power_line_voltage;1.000000;0.000000;0.1V;4
+278;3;10535;U16;;TR grid line voltage;tr_grid_line_voltage;1.000000;0.000000;0.1V;4
+279;3;10536;I16;;Power factor;PF;1.000000;0.000000;0.001;4
+280;3;10537;U16;;Grid connection and power generation time on that day;grid_connection_and_power_generation_time_on_that_day;1.000000;0.000000;0.1H;4
+281;3;10538;U32;;Cumulative grid-connected power generation time_H16;cumulative_gridconnected_power_generation_time_h16;1.000000;0.000000;0.1H;4
+282;3;10539;U16;;Cumulative grid-connected power generation time_L16;cumulative_gridconnected_power_generation_time_l16;1.000000;0.000000;;4
+283;3;10540;I16;;Grid-connected power generation on that day;gridconnected_power_generation_on_that_day;1.000000;0.000000;0.1 kWh;4
+284;3;10541;I32;;Cumulative grid-connected power generation_H16;cumulative_gridconnected_power_generation_h16;1.000000;0.000000;0.1 kWh;4
+285;3;10542;U16;;Cumulative grid-connected power generation_L16;cumulative_gridconnected_power_generation_l16;1.000000;0.000000;;4
+286;3;10543;U16;;Inverter efficiency;inverter_efficiency;1.000000;0.000000;0.001;4
+287;3;10544;I16;;R-phase DCI;rphase_dci;1.000000;0.000000;0.1mA;4
+288;3;10545;I16;;S-phase DCI;sphase_dci;1.000000;0.000000;0.1mA;4
+289;3;10546;I16;;T-phase DCI;tphase_dci;1.000000;0.000000;0.1mA;4
+290;3;10547;I16;;Power factor S;power_factor_s;1.000000;0.000000;0.001;4
+291;3;10548;I16;;Power factor T;power_factor_t;1.000000;0.000000;0.001;4
+292;3;10549;I32;;S-phase forward and reverse current power_H16;sphase_forward_and_reverse_current_power_h16;1.000000;0.000000;1W;4
+293;3;10550;U16;;S-phase forward and reverse current power_L16;sphase_forward_and_reverse_current_power_l16;1.000000;0.000000;;4
+294;3;10551;I32;;T-phase forward and reverse current power_H16;tphase_forward_and_reverse_current_power_h16;1.000000;0.000000;1W;4
+295;3;10552;U16;;T-phase forward and reverse current power_L16;tphase_forward_and_reverse_current_power_l16;1.000000;0.000000;;4
+296;3;10560;U32;;Total PV power_H16;total_pv_power_h16;1.000000;0.000000;1W;4
+297;3;10561;U16;;Total PV power_L16;total_pv_power_l16;1.000000;0.000000;;4
+298;3;10562;U16;;PV1 voltage;pv1_voltage;1.000000;0.000000;0.1V;4
+299;3;10563;U16;;PV1 current;pv1_current;1.000000;0.000000;0.1A;4
+300;3;10564;U16;;PV1 power;pv1_power;1.000000;0.000000;1W;4
+301;3;10565;U16;;PV2 voltage;pv2_voltage;1.000000;0.000000;0.1V;4
+302;3;10566;U16;;PV2 current;pv2_current;1.000000;0.000000;0.1A;4
+303;3;10567;U16;;PV2 power;pv2_power;1.000000;0.000000;1W;4
+304;3;10568;U16;;PV3 voltage;pv3_voltage;1.000000;0.000000;0.1V;4
+305;3;10569;U16;;PV3 current;pv3_current;1.000000;0.000000;0.1A;4
+306;3;10570;U16;;PV3 power;pv3_power;1.000000;0.000000;1W;4
+307;3;10571;U16;;PV4 voltage;pv4_voltage;1.000000;0.000000;0.1V;4
+308;3;10572;U16;;PV4 current;pv4_current;1.000000;0.000000;0.1A;4
+309;3;10573;U16;;PV4 power;pv4_power;1.000000;0.000000;1W;4
+310;3;10631;U16;;PV24 voltage;pv24_voltage;1.000000;0.000000;0.1V;4
+311;3;10632;U16;;PV24 current;pv24_current;1.000000;0.000000;0.1A;4
+312;3;10633;U16;;PV24 power;pv24_power;1.000000;0.000000;1W;4
+313;3;10634;U16;;reserve;reserve_8;1.000000;0.000000;'---;0
+314;3;10635;I16;;String 1 current;string_1_current;1.000000;0.000000;0.01A;4
+315;3;10636;I16;;String 2 current;string_2_current;1.000000;0.000000;0.01A;4
+316;3;10637;I16;;String 3 current;string_3_current;1.000000;0.000000;0.01A;4
+317;3;10638;I16;;String 4 current;string_4_current;1.000000;0.000000;0.01A;4
+318;3;10639;I16;;String 5 current;string_5_current;1.000000;0.000000;0.01A;4
+319;3;10640;I16;;String 6 current;string_6_current;1.000000;0.000000;0.01A;4
+320;3;10641;I16;;String 7 current;string_7_current;1.000000;0.000000;0.01A;4
+321;3;10642;I16;;String 8 current;string_8_current;1.000000;0.000000;0.01A;4
+322;3;10643;I16;;String 9 current;string_9_current;1.000000;0.000000;0.01A;4
+323;3;10644;I16;;String 10 current;string_10_current;1.000000;0.000000;0.01A;4
+324;3;10645;I16;;String 11 current;string_11_current;1.000000;0.000000;0.01A;4
+325;3;10646;I16;;12-channel current;v_12channel_current;1.000000;0.000000;0.01A;4
+326;3;10682;I16;;String 48 current;string_48_current;1.000000;0.000000;0.01A;4
+327;3;10683;U16;;Daily PV-side power generation;daily_pvside_power_generation;1.000000;0.000000;0.1 kWh;4
+328;3;10684;U32;;PV side cumulative power generation_H16;pv_side_cumulative_power_generation_h16;1.000000;0.000000;0.1 kWh;4
+329;3;10685;U16;;PV side cumulative power generation_L16;pv_side_cumulative_power_generation_l16;1.000000;0.000000;;4
+330;3;10686;U32;;PV power generation in the current month_H16;pv_power_generation_in_the_current_month_h16;1.000000;0.000000;0.1 kWh;4
+331;3;10687;U16;;PV power generation in the current month_L16;pv_power_generation_in_the_current_month_l16;1.000000;0.000000;;4
+332;3;10688;U32;;PV side power generation in that year_H16;pv_side_power_generation_in_that_year_h16;1.000000;0.000000;0.1 kWh;4
+333;3;10689;U16;;PV side power generation in that year_L16;pv_side_power_generation_in_that_year_l16;1.000000;0.000000;;4
+334;3;10800;I32;;Total active power of load_H16;total_active_power_of_load_h16;1.000000;0.000000;1W;4
+335;3;10801;U16;;Total active power of load_L16;total_active_power_of_load_l16;1.000000;0.000000;;4
+336;3;10802;I32;;Load R-phase active power_H16;load_rphase_active_power_h16;1.000000;0.000000;1W;4
+337;3;10803;U16;;Load R-phase active power_L16;load_rphase_active_power_l16;1.000000;0.000000;;4
+338;3;10804;I32;;Load S-phase active power_H16;load_sphase_active_power_h16;1.000000;0.000000;1W;4
+339;3;10805;U16;;Load S-phase active power_L16;load_sphase_active_power_l16;1.000000;0.000000;;4
+340;3;10806;I32;;Load T-phase active power_H16;load_tphase_active_power_h16;1.000000;0.000000;1W;4
+341;3;10807;U16;;Load T-phase active power_L16;load_tphase_active_power_l16;1.000000;0.000000;;4
+342;3;11000;U16;;Electricity purchased by the power grid on the same day;electricity_purchased_by_the_power_grid_on_the_same_day;1.000000;0.000000;0.1 kWh;4
+343;3;11001;U32;;Electricity Purchased by Power Grid in the Current Month_H16;electricity_purchased_by_power_grid_in_the_current_month_h16;1.000000;0.000000;0.1 kWh;4
+344;3;11002;U16;;Electricity Purchased by Power Grid in the Current Month_L16;electricity_purchased_by_power_grid_in_the_current_month_l16;1.000000;0.000000;;4
+345;3;11003;U32;;Electricity purchased by the power grid in the current year_H16;electricity_purchased_by_the_power_grid_in_the_current_year_h16;1.000000;0.000000;0.1 kWh;4
+346;3;11004;U16;;Electricity Purchased by the Power Grid in the Current Year_L16;electricity_purchased_by_the_power_grid_in_the_current_year_l16;1.000000;0.000000;;4
+347;3;11005;U32;;Grid cumulative electricity purchases_H16;grid_cumulative_electricity_purchases_h16;1.000000;0.000000;0.1 kWh;4
+348;3;11006;U16;;Cumulative Electricity Purchased by the Power Grid_L16;cumulative_electricity_purchased_by_the_power_grid_l16;1.000000;0.000000;;4
+349;3;11007;U16;;Electricity sold by the power grid on the same day;electricity_sold_by_the_power_grid_on_the_same_day;1.000000;0.000000;0.1 kWh;4
+350;3;11008;U32;;Electricity sales by power grid in the current month_H16;electricity_sales_by_power_grid_in_the_current_month_h16;1.000000;0.000000;0.1 kWh;4
+351;3;11009;U16;;Electricity sold by the power grid in the current month_L16;electricity_sold_by_the_power_grid_in_the_current_month_l16;1.000000;0.000000;;4
+352;3;11010;U32;;Electricity sold by the power grid in the past year_H16;electricity_sold_by_the_power_grid_in_the_past_year_h16;1.000000;0.000000;0.1 kWh;4
+353;3;11011;U16;;Electricity sold by the power grid that year_L16;electricity_sold_by_the_power_grid_that_year_l16;1.000000;0.000000;;4
+354;3;11012;U32;;Electricity sales by power grid in H16;electricity_sales_by_power_grid_in_h16;1.000000;0.000000;0.1 kWh;4
+355;3;11013;U16;;Cumulative Electricity Sales by the Power Grid_L16;cumulative_electricity_sales_by_the_power_grid_l16;1.000000;0.000000;;4
+356;3;11014;U16;;Electricity consumption of the day;electricity_consumption_of_the_day;1.000000;0.000000;0.1 kWh;4
+357;3;11015;U32;;Electricity consumption this month_H16;electricity_consumption_this_month_h16;1.000000;0.000000;0.1 kWh;4
+358;3;11016;U16;;Electricity consumption this month_L16;electricity_consumption_this_month_l16;1.000000;0.000000;;4
+359;3;11017;U32;;Electricity consumption in that year_H16;electricity_consumption_in_that_year_h16;1.000000;0.000000;0.1 kWh;4
+360;3;11018;U16;;Electricity consumption in that year_L16;electricity_consumption_in_that_year_l16;1.000000;0.000000;;4
+361;3;11019;U32;;Cumulative Electricity Consumption_H16;cumulative_electricity_consumption_h16;1.000000;0.000000;0.1 kWh;4
+362;3;11020;U16;;Cumulative electricity consumption_L16;cumulative_electricity_consumption_l16;1.000000;0.000000;;4
+363;3;11040;U16;;R-phase voltage;rphase_voltage;1.000000;0.000000;0.1V;4
+364;3;11041;U16;;S-phase voltage;sphase_voltage_1;1.000000;0.000000;0.1V;4
+365;3;11042;U16;;Phase T voltage;phase_t_voltage_1;1.000000;0.000000;0.1V;4
+366;3;11043;I16;;R-phase current;rphase_current;1.000000;0.000000;0.1A;4
+367;3;11044;I16;;S-phase current;sphase_current_2;1.000000;0.000000;0.1A;4
+368;3;11045;I16;;T-phase current;tphase_current_2;1.000000;0.000000;0.1A;4
+369;3;11046;U16;;R-phase frequency;rphase_frequency;1.000000;0.000000;0.01Hz;4
+370;3;11047;U16;;S-phase frequency;sphase_frequency_1;1.000000;0.000000;0.01Hz;4
+371;3;11048;U16;;T-phase frequency;tphase_frequency_1;1.000000;0.000000;0.01Hz;4
+372;3;11049;I32;;Total power_H16;total_power_h16;1.000000;0.000000;1W;4
+373;3;11050;U16;;Total power_L16;total_power_l16;1.000000;0.000000;;4
+374;3;11051;I32;;R-phase power_H16;rphase_power_h16;1.000000;0.000000;1W;4
+375;3;11052;U16;;R-phase power_L16;rphase_power_l16;1.000000;0.000000;;4
+376;3;11053;I32;;S-phase power_H16;sphase_power_h16;1.000000;0.000000;1W;4
+377;3;11054;U16;;S-phase power_L16;sphase_power_l16;1.000000;0.000000;;4
+378;3;11055;I32;;T-phase power_H16;tphase_power_h16;1.000000;0.000000;1W;4
+379;3;11056;U16;;T-phase power_L16;tphase_power_l16;1.000000;0.000000;;4
+380;3;11057;I16;;Daily power generation of generator;daily_power_generation_of_generator;1.000000;0.000000;0.1 kWh;4
+381;3;11058;I32;;Generator cumulative power generation_H16;generator_cumulative_power_generation_h16;1.000000;0.000000;0.1 kWh;4
+382;3;11059;U16;;Generator cumulative power generation_L16;generator_cumulative_power_generation_l16;1.000000;0.000000;;4
+383;3;11060;U16;;Generator daily working hours;generator_daily_working_hours;1.000000;0.000000;0.1H;4
+384;3;11070;U16;;R-phase voltage;rphase_voltage_1;1.000000;0.000000;0.1V;4
+385;3;11071;U16;;S-phase voltage;sphase_voltage_2;1.000000;0.000000;0.1V;4
+386;3;11072;U16;;Phase T voltage;phase_t_voltage_2;1.000000;0.000000;0.1V;4
+387;3;11073;I16;;R-phase current;rphase_current_1;1.000000;0.000000;0.1A;4
+388;3;11074;I16;;S-phase current;sphase_current_3;1.000000;0.000000;0.1A;4
+389;3;11075;I16;;T-phase current;tphase_current_3;1.000000;0.000000;0.1A;4
+390;3;11076;U16;;R-phase frequency;rphase_frequency_1;1.000000;0.000000;0.01Hz;4
+391;3;11077;U16;;S-phase frequency;sphase_frequency_2;1.000000;0.000000;0.01Hz;4
+392;3;11078;U16;;T-phase frequency;tphase_frequency_2;1.000000;0.000000;0.01Hz;4
+393;3;11079;I32;;Total active power_H16;total_active_power_h16_2;1.000000;0.000000;1W;4
+394;3;11080;U16;;Total active power_L16;total_active_power_l16_2;1.000000;0.000000;;4
+395;3;11081;I32;;Total reactive power_H16;total_reactive_power_h16_1;1.000000;0.000000;1Var;4
+396;3;11082;U16;;Total reactive power_L16;total_reactive_power_l16_1;1.000000;0.000000;;4
+397;3;11083;I32;;Total Apparent Power_H16;total_apparent_power_h16_1;1.000000;0.000000;1Va;4
+398;3;11084;U16;;Total Apparent Power_L16;total_apparent_power_l16_1;1.000000;0.000000;;4
+399;3;11085;I32;;R-phase active power_H16;rphase_active_power_h16_2;1.000000;0.000000;1W;4
+400;3;11086;U16;;R-phase active power_L16;rphase_active_power_l16_2;1.000000;0.000000;;4
+401;3;11087;I32;;S-phase active power_H16;sphase_active_power_h16_2;1.000000;0.000000;1W;4
+402;3;11088;U16;;S-phase active power_L16;sphase_active_power_l16_2;1.000000;0.000000;;4
+403;3;11089;I32;;T-phase active power_H16;tphase_active_power_h16_2;1.000000;0.000000;1W;4
+404;3;11090;U16;;T-phase active power_L16;tphase_active_power_l16_2;1.000000;0.000000;;4
+405;3;11091;I32;;R-phase reactive power_H16;rphase_reactive_power_h16_1;1.000000;0.000000;1Var;4
+406;3;11092;U16;;R-phase reactive power_L16;rphase_reactive_power_l16_1;1.000000;0.000000;;4
+407;3;11093;I32;;S-phase reactive power_H16;sphase_reactive_power_h16_1;1.000000;0.000000;1Var;4
+408;3;11094;U16;;S-phase reactive power_L16;sphase_reactive_power_l16_1;1.000000;0.000000;;4
+409;3;11095;I32;;T-phase reactive power_H16;tphase_reactive_power_h16_1;1.000000;0.000000;1Var;4
+410;3;11096;U16;;T-phase reactive power_L16;tphase_reactive_power_l16_1;1.000000;0.000000;;4
+411;3;11097;I32;;R-phase apparent power_H16;rphase_apparent_power_h16_1;1.000000;0.000000;1Va;4
+412;3;11098;U16;;R-phase apparent power_L16;rphase_apparent_power_l16_1;1.000000;0.000000;;4
+413;3;11099;I32;;S-phase apparent power_H16;sphase_apparent_power_h16_1;1.000000;0.000000;1Va;4
+414;3;11100;U16;;S-phase apparent power_L16;sphase_apparent_power_l16_1;1.000000;0.000000;;4
+415;3;11101;I32;;T-phase apparent power_H16;tphase_apparent_power_h16_1;1.000000;0.000000;1Va;4
+416;3;11102;U16;;T-phase apparent power_L16;tphase_apparent_power_l16_1;1.000000;0.000000;;4
+417;3;11103;U16;;RS grid line voltage;rs_grid_line_voltage_1;1.000000;0.000000;0.1V;4
+418;3;11104;U16;;ST power line voltage;st_power_line_voltage_1;1.000000;0.000000;0.1V;4
+419;3;11105;U16;;TR grid line voltage;tr_grid_line_voltage_1;1.000000;0.000000;0.1V;4
+420;3;11106;I16;;Power factor;power_factor;1.000000;0.000000;0.001;4
+421;3;11107;I16;;Off-grid power generation on that day;offgrid_power_generation_on_that_day;1.000000;0.000000;0.1 kWh;4
+422;3;11108;I32;;Cumulative off-grid power generation_H16;cumulative_offgrid_power_generation_h16;1.000000;0.000000;0.1 kWh;4
+423;3;11109;U16;;Cumulative off-grid power generation_L16;cumulative_offgrid_power_generation_l16;1.000000;0.000000;;4
+424;3;11110;I16;;R-phase off-grid DCV;rphase_offgrid_dcv;1.000000;0.000000;0.1mV;4
+425;3;11111;I16;;S-phase off-grid DCV;sphase_offgrid_dcv;1.000000;0.000000;0.1mV;4
+426;3;11112;I16;;T-phase off-grid DCV;tphase_offgrid_dcv;1.000000;0.000000;0.1mV;4
+427;3;11113;I32;;Off-grid power generation in the current month_H16;offgrid_power_generation_in_the_current_month_h16;1.000000;0.000000;0.1 kWh;4
+428;3;11114;U16;;Off-grid power generation in the current month_L16;offgrid_power_generation_in_the_current_month_l16;1.000000;0.000000;;4
+429;3;11115;I32;;Off-grid power generation in that year_H16;offgrid_power_generation_in_that_year_h16;1.000000;0.000000;0.1 kWh;4
+430;3;11116;U16;;Off-grid power generation in that year_L16;offgrid_power_generation_in_that_year_l16;1.000000;0.000000;;4
+431;3;11125;I32;;Battery power_H16;battery_power_h16;1.000000;0.000000;1W;4
+432;3;11126;U16;;Battery power_L16;battery_power_l16;1.000000;0.000000;;4
+433;3;11127;U16;;Minimum unit voltage;minimum_unit_voltage;1.000000;0.000000;0.1V;4
+434;3;11128;U16;;Maximum single-cell voltage;maximum_singlecell_voltage;1.000000;0.000000;0.1V;4
+435;3;11129;U16;;Total number of loops;total_number_of_loops;1.000000;0.000000;;4
+436;3;11130;U16;;Battery voltage;battery_voltage;1.000000;0.000000;0.1V;4
+437;3;11131;I16;;Battery discharge current;battery_discharge_current;1.000000;0.000000;0.1A;4
+438;3;11132;I16;;Battery charging current;battery_charging_current;1.000000;0.000000;0.1A;4
+439;3;11133;I16;;Battery temperature;battery_temperature;1.000000;0.000000;0.1℃;4
+440;3;11134;U16;;Discharge cutoff voltage;discharge_cutoff_voltage;1.000000;0.000000;0.1V;4
+441;3;11135;U16;;SOC;soc;1.000000;0.000000;0.01;4
+442;3;11136;U16;;SOH;soh;1.000000;0.000000;0.01;4
+443;3;11137;I16;;Maximum discharge current;maximum_discharge_current;1.000000;0.000000;0.1A;4
+444;3;11138;I16;;Maximum charging current;maximum_charging_current;1.000000;0.000000;0.1A;4
+445;3;11139;U16;;Maximum charging voltage;maximum_charging_voltage;1.000000;0.000000;0.1V;4
+446;3;11140;U16;;Battery status;battery_status;1.000000;0.000000;'---;9
+447;3;11141;I16;;Battery charge capacity for the day;battery_charge_capacity_for_the_day;1.000000;0.000000;0.1 kWh;4
+448;3;11142;I32;;Battery cumulative charge amount_H16;battery_cumulative_charge_amount_h16;1.000000;0.000000;0.1 kWh;4
+449;3;11143;U16;;Battery cumulative charge amount_L16;battery_cumulative_charge_amount_l16;1.000000;0.000000;;4
+450;3;11144;I16;;Battery daily discharge capacity;battery_daily_discharge_capacity;1.000000;0.000000;0.1 kWh;4
+451;3;11145;I32;;Battery cumulative discharge amount_H16;battery_cumulative_discharge_amount_h16;1.000000;0.000000;0.1 kWh;4
+452;3;11146;U16;;Battery cumulative discharge amount_L16;battery_cumulative_discharge_amount_l16;1.000000;0.000000;;4
+453;3;11147;I32;;Battery monthly charge amount_H16;battery_monthly_charge_amount_h16;1.000000;0.000000;0.1 kWh;4
+454;3;11148;U16;;Battery monthly charge amount_L16;battery_monthly_charge_amount_l16;1.000000;0.000000;;4
+455;3;11149;I32;;Battery charge volume in the current year_H16;battery_charge_volume_in_the_current_year_h16;1.000000;0.000000;0.1 kWh;4
+456;3;11150;U16;;Battery annual charge amount_L16;battery_annual_charge_amount_l16;1.000000;0.000000;;4
+457;3;11151;I32;;Battery discharge amount for the current month_H16;battery_discharge_amount_for_the_current_month_h16;1.000000;0.000000;0.1 kWh;4
+458;3;11152;U16;;Battery discharge amount for the current month_L16;battery_discharge_amount_for_the_current_month_l16;1.000000;0.000000;;4
+459;3;11153;I32;;Battery discharge capacity in one year_H16;battery_discharge_capacity_in_one_year_h16;1.000000;0.000000;0.1 kWh;4
+460;3;11154;U16;;Battery annual discharge capacity_L16;battery_annual_discharge_capacity_l16;1.000000;0.000000;;4
+461;3;11170;U16;;Main alarm code;main_alarm_code_1;1.000000;0.000000;'---;9
+462;3;11171;U16;;Sub-alarm code;subalarm_code_1;1.000000;0.000000;'---;9
+463;3;11172;U16;;Master protection code;master_protection_code;1.000000;0.000000;'---;4
+464;3;11173;U16;;Sub-protection code;subprotection_code;1.000000;0.000000;'---;4
+465;3;11174;U16;;Main fault code;main_fault_code_1;1.000000;0.000000;'---;9
+466;3;11175;U16;;Sub-fault codes;subfault_codes_1;1.000000;0.000000;'---;9
+467;3;14000;I32;;Combined phase active power_H16;combined_phase_active_power_h16;1.000000;0.000000;0.1W;4
+468;3;14001;U16;;Combined phase active power_L16;combined_phase_active_power_l16;1.000000;0.000000;;4
+469;3;14002;I32;;R-phase active power_H16;rphase_active_power_h16_3;1.000000;0.000000;0.1W;4
+470;3;14003;U16;;R-phase active power_L16;rphase_active_power_l16_3;1.000000;0.000000;;4
+471;3;14004;I32;;S-phase active power_H16;sphase_active_power_h16_3;1.000000;0.000000;0.1W;4
+472;3;14005;U16;;S-phase active power_L16;sphase_active_power_l16_3;1.000000;0.000000;;4
+473;3;14006;I32;;T-phase active power_H16;tphase_active_power_h16_3;1.000000;0.000000;0.1W;4
+474;3;14007;U16;;T-phase active power_L16;tphase_active_power_l16_3;1.000000;0.000000;;4
+475;3;14008;I32;;Combined phase reactive power_H16;combined_phase_reactive_power_h16;1.000000;0.000000;0.1Var;4
+476;3;14009;U16;;Combined phase reactive power_L16;combined_phase_reactive_power_l16;1.000000;0.000000;;4
+477;3;14010;I32;;Combined phase power factor_H16;combined_phase_power_factor_h16;1.000000;0.000000;0.001;4
+478;3;14011;U16;;Combined phase power factor_L16;combined_phase_power_factor_l16;1.000000;0.000000;;4
+479;3;14012;I32;;Total active power of the day_H16;total_active_power_of_the_day_h16;1.000000;0.000000;0.1 kWh;4
+480;3;14013;U16;;Total active power of daytime_L16;total_active_power_of_daytime_l16;1.000000;0.000000;;4
+481;3;14014;I32;;Total positive active power_H16;total_positive_active_power_h16;1.000000;0.000000;0.1 kWh;4
+482;3;14015;U16;;Total positive active power_L16;total_positive_active_power_l16;1.000000;0.000000;;4
+483;3;14016;I32;;Total active power in reverse direction on day_H16;total_active_power_in_reverse_direction_on_day_h16;1.000000;0.000000;0.1 kWh;4
+484;3;14017;U16;;Total active power in reverse direction_L16;total_active_power_in_reverse_direction_l16;1.000000;0.000000;;4
+485;3;14018;I32;;Total reverse active power_H16;total_reverse_active_power_h16;1.000000;0.000000;0.1 kWh;4
+486;3;14019;U16;;Total reverse active power_L16;total_reverse_active_power_l16;1.000000;0.000000;;4
+487;3;14025;I16;;R-phase current;rphase_current_2;1.000000;0.000000;0.1A;4
+488;3;14026;I16;;S-phase current;sphase_current_4;1.000000;0.000000;0.1A;4
+489;3;14027;I16;;T-phase current;tphase_current_4;1.000000;0.000000;0.1A;4
+490;3;14035;U16;;Debugging Information 1;debugging_information_1;1.000000;0.000000;'---;4
+491;3;14036;U16;;Debugging Information 2;debugging_information_2;1.000000;0.000000;'---;4
+492;3;14037;U16;;Debugging Information 3;debugging_information_3;1.000000;0.000000;'---;4
+493;3;14038;U16;;Debugging Information 4;debugging_information_4;1.000000;0.000000;'---;4
+494;3;14039;U16;;Debugging Information 5;debugging_information_5;1.000000;0.000000;'---;4
+495;3;14040;U16;;Debugging Information 6;debugging_information_6;1.000000;0.000000;'---;4
+496;3;14041;U16;;Debugging Information 7;debugging_information_7;1.000000;0.000000;'---;4
+497;3;14042;U16;;Debugging Information 8;debugging_information_8;1.000000;0.000000;'---;4
+498;3;14043;U16;;Debugging Information 9;debugging_information_9;1.000000;0.000000;'---;4
+499;3;14044;U16;;Debugging Information 10;debugging_information_10;1.000000;0.000000;'---;4
+500;3;14045;U16;;Debugging Information 11;debugging_information_11;1.000000;0.000000;'---;4
+501;3;14046;U16;;Debugging Information 12;debugging_information_12;1.000000;0.000000;'---;4
+502;3;14047;U16;;Debugging Information 13;debugging_information_13;1.000000;0.000000;'---;4
+503;3;14048;U16;;Debugging Information 14;debugging_information_14;1.000000;0.000000;'---;4
+504;3;14049;U16;;Debugging Information 15;debugging_information_15;1.000000;0.000000;'---;4
+505;3;14050;U16;;Debugging Information 16;debugging_information_16;1.000000;0.000000;'---;4
+506;3;14051;U16;;Debugging Information 17;debugging_information_17;1.000000;0.000000;'---;4
+507;3;14052;U16;;Debugging Information 18;debugging_information_18;1.000000;0.000000;'---;4
+508;3;14053;U16;;Debugging Information 19;debugging_information_19;1.000000;0.000000;'---;4
+509;3;14054;U16;;Debugging Information 20;debugging_information_20;1.000000;0.000000;'---;4
+510;3;14055;U16;;Debugging Information 21;debugging_information_21;1.000000;0.000000;'---;4
+511;3;14056;U16;;Debugging Information 22;debugging_information_22;1.000000;0.000000;'---;4
+512;3;14057;U16;;Debugging Information 23;debugging_information_23;1.000000;0.000000;'---;4
+513;3;14060;U16;;Communication interface status;communication_interface_status;1.000000;0.000000;'---;9
+514;3;14061;U16;;AutoTest status;autotest_status;1.000000;0.000000;'---;9
+515;3;14062;U16;;AutoTest Steps;autotest_steps;1.000000;0.000000;'---;4
+516;3;14063;U16;;AutoTest Limitations;autotest_limitations;1.000000;0.000000;0.1V/0.01Hz;4
+517;3;14064;U16;;AutoTest default time;autotest_default_time;1.000000;0.000000;1ms;9
+518;3;14065;U16;;AutoTest round trip value;autotest_round_trip_value;1.000000;0.000000;0.1V/0.01Hz;9
+519;3;14066;U16;;AutoTest round trip time;autotest_round_trip_time;1.000000;0.000000;1ms;9
+520;3;14070;U16;;PID operating status;pid_operating_status;1.000000;0.000000;'---;9
+521;3;14071;U16;;PID_BUS voltage;pid_bus_voltage;1.000000;0.000000;0.1V;4
+522;3;14072;U16;;PV1_PE voltage;pv1_pe_voltage;1.000000;0.000000;0.1V;4
+523;3;14073;U16;;PV2_PE voltage;pv2_pe_voltage;1.000000;0.000000;0.1V;4
+524;3;14160;U16;;AutoTest status;autotest_status_1;1.000000;0.000000;'---;9
+525;3;14161;U16;;Testing progress;testing_progress;1.000000;0.000000;'---;4
+526;3;14162;U16;;Test results;test_results;1.000000;0.000000;'---;4
+527;3;14168;U16;;AutoTest status;autotest_status_2;1.000000;0.000000;'---;9
+528;3;14169;U16;;AutoTest detection progress;autotest_detection_progress;1.000000;0.000000;'---;4
+529;3;14170;U16;;AutoTest trigger value 0;autotest_trigger_value_0;1.000000;0.000000;0.1V;4
+530;3;14171;U16;;AutoTest trigger value 1;autotest_trigger_value_1;1.000000;0.000000;0.1V;4
+531;3;14172;U16;;AutoTest trigger value 2;autotest_trigger_value_2;1.000000;0.000000;0.1V;4
+532;3;14173;U16;;AutoTest trigger value 3;autotest_trigger_value_3;1.000000;0.000000;0.1V;4
+533;3;14174;U16;;AutoTest trigger value 4;autotest_trigger_value_4;1.000000;0.000000;0.01Hz;4
+534;3;14175;U16;;AutoTest trigger value 5;autotest_trigger_value_5;1.000000;0.000000;0.01Hz;4
+535;3;14176;U16;;AutoTest trigger value 6;autotest_trigger_value_6;1.000000;0.000000;0.01Hz;4
+536;3;14177;U16;;AutoTest trigger value 7;autotest_trigger_value_7;1.000000;0.000000;0.01Hz;4
+537;3;14178;U16;;AutoTest trigger time 0;autotest_trigger_time_0;1.000000;0.000000;0.01s;4
+538;3;14179;U16;;AutoTest trigger time 1;autotest_trigger_time_1;1.000000;0.000000;0.01s;4
+539;3;14180;U16;;AutoTest trigger time 2;autotest_trigger_time_2;1.000000;0.000000;0.01s;4
+540;3;14181;U16;;AutoTest trigger time 3;autotest_trigger_time_3;1.000000;0.000000;0.01s;4
+541;3;14182;U16;;AutoTest trigger time 4;autotest_trigger_time_4;1.000000;0.000000;0.01s;4
+542;3;14183;U16;;AutoTest trigger time 5;autotest_trigger_time_5;1.000000;0.000000;0.01s;4
+543;3;14184;U16;;AutoTest trigger time 6;autotest_trigger_time_6;1.000000;0.000000;0.01s;4
+544;3;14185;U16;;AutoTest trigger time 7;autotest_trigger_time_7;1.000000;0.000000;0.01s;4
+545;3;14200;U16;;Article 1 Fault Year/Month;article_1_fault_yearmonth;1.000000;0.000000;'---;9
+546;3;14201;U16;;Article 1 Fault Day/Hour;article_1_fault_dayhour;1.000000;0.000000;'---;9
+547;3;14202;U16;;Fault 1 (minutes/seconds);fault_1_minutesseconds;1.000000;0.000000;'---;9
+548;3;14203;U16;;Fault Code 1;fault_code_1;1.000000;0.000000;'---;9
+549;3;15396;U16;;Article 300 Fault Year/Month;article_300_fault_yearmonth;1.000000;0.000000;'---;9
+550;3;15397;U16;;Article 300 Fault Day/Hour;article_300_fault_dayhour;1.000000;0.000000;'---;9
+551;3;15398;U16;;300th fault per minute/second;v_300th_fault_per_minutesecond;1.000000;0.000000;'---;9
+552;3;15399;U16;;Fault Code 300;fault_code_300;1.000000;0.000000;'---;9
+553;3;15400;U16;;Article 1 BMS Failure Year/Month;article_1_bms_failure_yearmonth;1.000000;0.000000;'---;9
+554;3;15401;U16;;Article 1 BMS Failure Day/Hour;article_1_bms_failure_dayhour;1.000000;0.000000;'---;9
+555;3;15402;U16;;BMS Fault Item 1 (minutes/seconds);bms_fault_item_1_minutesseconds;1.000000;0.000000;'---;9
+556;3;15403;U16;;BMS fault code #1;bms_fault_code_1;1.000000;0.000000;'---;9
+557;3;15796;U16;;Item 100: BMS Fault (Year/Month);item_100_bms_fault_yearmonth;1.000000;0.000000;'---;9
+558;3;15797;U16;;Article 100 BMS Fault Day/Hour;article_100_bms_fault_dayhour;1.000000;0.000000;'---;9
+559;3;15798;U16;;100th BMS fault (minutes/seconds);v_100th_bms_fault_minutesseconds;1.000000;0.000000;'---;9
+560;3;15799;U16;;BMS fault code 100;bms_fault_code_100;1.000000;0.000000;'---;9
+561;3;20000;I16;;Channel 1 Real-time Waveform Recording Data 1;channel_1_realtime_waveform_recording_data_1;1.000000;0.000000;;4
+562;3;25000;I16;;Channel 1 fault recording data 1;channel_1_fault_recording_data_1;1.000000;0.000000;;9
+563;3;40000;U16;;RS485 slave address (connected to the data acquisition device port);rs485_slave_address_connected_to_the_data_acquisition_device_port;1.000000;0.000000;'---;1
+564;3;40001;U16;;RS485 baud rate (connected to data acquisition device port);rs485_baud_rate_connected_to_data_acquisition_device_port;1.000000;0.000000;'---;1
+565;3;40002;U16;;RS485 slave address (connected to host computer port)or third-party data collector);rs485_slave_address_connected_to_host_computer_portor_thirdparty_data_collector;1.000000;0.000000;'---;1
+566;3;40003;U16;;RS485 baud rate (connected to host computer port)or third-party data collector);rs485_baud_rate_connected_to_host_computer_portor_thirdparty_data_collector;1.000000;0.000000;'---;1
+567;3;40006;U16;;years;years;1.000000;0.000000;'---;1
+568;3;40007;U16;;Day Hour;day_hour;1.000000;0.000000;'---;1
+569;3;40008;U16;;minutes and seconds;minutes_and_seconds;1.000000;0.000000;'---;1
+570;3;40009;U16;;LCD language;lcd_language;1.000000;0.000000;'---;1
+571;3;40010;U16;;Standby startup time;standby_startup_time;1.000000;0.000000;1s;1
+572;3;40011;U16;;Fault recovery time;fault_recovery_time;1.000000;0.000000;1s;1
+573;3;40012;U16;;Parallel operation setting 1;parallel_operation_setting_1;1.000000;0.000000;'---;1
+574;3;40013;U16;;reserve;reserve_9;1.000000;0.000000;;0
+575;3;40014;U16;;LCD Homepage Display Style;lcd_homepage_display_style;1.000000;0.000000;'---;4
+576;3;40020;U16;;PV connection method;pv_connection_method;1.000000;0.000000;'---;1
+577;3;40021;U16;;PV start-up voltage;pv_startup_voltage;1.000000;0.000000;0.1V;1
+578;3;40022;U16;;MPPT quantity;mppt_quantity;1.000000;0.000000;'---;1
+579;3;40023;U16;;Enable string monitoring;enable_string_monitoring;1.000000;0.000000;'---;1
+580;3;40024;U16;;String detection threshold setting;string_detection_threshold_setting;1.000000;0.000000;1A;1
+581;3;40030;U16;;AC starting high voltage (reconnection condition);ac_starting_high_voltage_reconnection_condition;1.000000;0.000000;0.1V;1
+582;3;40031;U16;;AC startup low voltage (reconnection condition);ac_startup_low_voltage_reconnection_condition;1.000000;0.000000;0.1V;1
+583;3;40032;U16;;AC starts at high frequency (reconnection condition);ac_starts_at_high_frequency_reconnection_condition;1.000000;0.000000;0.01Hz;1
+584;3;40033;U16;;AC starts at low frequency (reconnection condition);ac_starts_at_low_frequency_reconnection_condition;1.000000;0.000000;0.01Hz;1
+585;3;40034;U16;;Grid voltage type;grid_voltage_type_1;1.000000;0.000000;'---;1
+586;3;40035;U16;;Power Grid Type Selection;power_grid_type_selection;1.000000;0.000000;'---;1
+587;3;40040;U16;;AC power measurement methods;ac_power_measurement_methods;1.000000;0.000000;'---;1
+588;3;40041;U16;;Electricity meter settings;electricity_meter_settings;1.000000;0.000000;'---;1
+589;3;40042;U16;;CT related settings;ct_related_settings;1.000000;0.000000;'---;1
+590;3;40043;U16;;External CT transformer ratio;external_ct_transformer_ratio;1.000000;0.000000;'---;1
+591;3;40046;U16;;Loading slope enable;loading_slope_enable;1.000000;0.000000;'---;1
+592;3;40047;U16;;Start-up slope;startup_slope;1.000000;0.000000;X%Pn/min;1
+593;3;40048;U16;;Restart slope;restart_slope;1.000000;0.000000;X%Pn/min;1
+594;3;40049;U16;;Shutdown and load reduction enable;shutdown_and_load_reduction_enable;1.000000;0.000000;'---;1
+595;3;40050;U16;;Shutdown load reduction slope;shutdown_load_reduction_slope;1.000000;0.000000;X%Pn/min;1
+596;3;40051;U16;;Inverter remote lock (not for external use);inverter_remote_lock_not_for_external_use;1.000000;0.000000;'---;1
+597;3;40052;U16;;Grid-connected operation switch (inverter on/off);gridconnected_operation_switch_inverter_onoff;1.000000;0.000000;'---;1
+598;3;40053;U16;;Buzzer Enable;buzzer_enable;1.000000;0.000000;'---;1
+599;3;40054;U16;;Zero-ground detection enabled;zeroground_detection_enabled;1.000000;0.000000;'---;1
+600;3;40055;U16;;Enable DC surge protection detection;enable_dc_surge_protection_detection;1.000000;0.000000;'---;1
+601;3;40056;U16;;Enable AC surge protection detection;enable_ac_surge_protection_detection;1.000000;0.000000;'---;1
+602;3;40057;U16;;Virtual N-line enable;virtual_nline_enable;1.000000;0.000000;'---;1
+603;3;40058;U16;;1.1x Overpower Enable;v_11x_overpower_enable;1.000000;0.000000;'---;1
+604;3;40059;U16;;GFCI Enable;gfci_enable;1.000000;0.000000;'---;1
+605;3;40060;U16;;GFCI_30mA protection value;gfci_30ma_protection_value;1.000000;0.000000;1mA;1
+606;3;40061;U16;;GFCI_30mA protection time;gfci_30ma_protection_time;1.000000;0.000000;1mS;1
+607;3;40062;U16;;GFCI_60mA protection value;gfci_60ma_protection_value;1.000000;0.000000;1mA;1
+608;3;40063;U16;;GFCI_60mA protection time;gfci_60ma_protection_time;1.000000;0.000000;1mS;1
+609;3;40064;U16;;GFCI_150mA protection value;gfci_150ma_protection_value;1.000000;0.000000;1mA;1
+610;3;40065;U16;;GFCI_150mA protection time;gfci_150ma_protection_time;1.000000;0.000000;1mS;1
+611;3;40066;U16;;GFCI static protection value;gfci_static_protection_value;1.000000;0.000000;1mA;1
+612;3;40067;U16;;GFCI static protection time;gfci_static_protection_time;1.000000;0.000000;1mS;1
+613;3;40068;U16;;Ground relay enable;ground_relay_enable;1.000000;0.000000;'---;1
+614;3;40069;U16;;Enable non-standard protection;enable_nonstandard_protection;1.000000;0.000000;'---;1
+615;3;40070;U16;;Anti-islanding enable;antiislanding_enable;1.000000;0.000000;'---;1
+616;3;40071;U16;;Island protection time;island_protection_time;1.000000;0.000000;1mS;1
+617;3;40075;U16;;Enable PID;enable_pid;1.000000;0.000000;'---;1
+618;3;40076;U16;;PID working mode;pid_working_mode;1.000000;0.000000;'---;1
+619;3;40077;U16;;PID output voltage;pid_output_voltage;1.000000;0.000000;0.1V;1
+620;3;40078;U16;;Solar panel type settings;solar_panel_type_settings;1.000000;0.000000;'---;1
+621;3;40080;U16;;ISO Enabled;iso_enabled;1.000000;0.000000;'---;1
+622;3;40081;U16;;ISO protection value;iso_protection_value;1.000000;0.000000;1kOhm;1
+623;3;40085;U16;;Enable backflow prevention;enable_backflow_prevention;1.000000;0.000000;'---;1
+624;3;40086;I16;;Allowable reverse power;allowable_reverse_power;1.000000;0.000000;0.1KW;1
+625;3;40087;U16;;Restricting the backflow method;restricting_the_backflow_method;1.000000;0.000000;'---;1
+626;3;40088;U16;;Failure protection active power limit;failure_protection_active_power_limit;1.000000;0.000000;0.1KW;1
+627;3;40089;U16;;Communication link failure detection time;communication_link_failure_detection_time;1.000000;0.000000;1s;1
+628;3;40095;U16;;AFCI Enable;afci_enable;1.000000;0.000000;'---;1
+629;3;40096;U16;;Active imbalance enable;active_imbalance_enable;1.000000;0.000000;'---;1
+630;3;40100;U16;;DCI Enabled;dci_enabled;1.000000;0.000000;'---;1
+631;3;40101;U16;;DCI protection value;dci_protection_value;1.000000;0.000000;1mA;1
+632;3;40102;U16;;DCI protection time;dci_protection_time;1.000000;0.000000;0.01S;1
+633;3;40105;U16;;DRM Enabled;drm_enabled;1.000000;0.000000;'---;1
+634;3;40106;U16;;DRM model;drm_model;1.000000;0.000000;'---;1
+635;3;40107;U16;;DRM input power limit;drm_input_power_limit;1.000000;0.000000;0.1%;1
+636;3;40108;U16;;DRM output power limit;drm_output_power_limit;1.000000;0.000000;0.1%;1
+637;3;40109;U16;;DRM PF;drm_pf;1.000000;0.000000;0.001;1
+638;3;40112;U16;;Inverter restart enable;inverter_restart_enable;1.000000;0.000000;'---;1
+639;3;40113;U16;;Inverter restart delay time;inverter_restart_delay_time;1.000000;0.000000;1s;1
+640;3;40114;U16;;RCR Enable;rcr_enable;1.000000;0.000000;'---;1
+641;3;40116;U16;;Enable ETU;enable_etu;1.000000;0.000000;'---;1
+642;3;40117;U16;;DRM/RCR Interface Multiplexing DI Enable;drmrcr_interface_multiplexing_di_enable;1.000000;0.000000;'---;1
+643;3;40118;U16;;STS type;sts_type;1.000000;0.000000;'---;1
+644;3;40296;U16;;Country/Regulations Selection;countryregulations_selection;1.000000;0.000000;'---;1
+645;3;40297;U16;;Protection level settings;protection_level_settings;1.000000;0.000000;'---;1
+646;3;40298;U16;;Undervoltage protection recovery value;undervoltage_protection_recovery_value;1.000000;0.000000;0.1V;1
+647;3;40299;U16;;Overvoltage protection recovery value;overvoltage_protection_recovery_value;1.000000;0.000000;0.1V;1
+648;3;40300;U16;;Underfrequency protection recovery value;underfrequency_protection_recovery_value;1.000000;0.000000;0.01Hz;1
+649;3;40301;U16;;Over-frequency protection recovery value;overfrequency_protection_recovery_value;1.000000;0.000000;0.01Hz;1
+650;3;40302;U16;;Undervoltage recovery time;undervoltage_recovery_time;1.000000;0.000000;20ms;1
+651;3;40303;U16;;Overvoltage recovery time;overvoltage_recovery_time;1.000000;0.000000;20ms;1
+652;3;40304;U16;;Underfrequency recovery time;underfrequency_recovery_time;1.000000;0.000000;20ms;1
+653;3;40305;U16;;Over-frequency recovery time;overfrequency_recovery_time;1.000000;0.000000;20ms;1
+654;3;40306;U16;;Undervoltage protection level 1 (single level);undervoltage_protection_level_1_single_level;1.000000;0.000000;0.1V;1
+655;3;40307;U16;;Overvoltage protection level 1 (single level);overvoltage_protection_level_1_single_level;1.000000;0.000000;0.1V;1
+656;3;40308;U16;;Underfrequency protection level 1 (single level);underfrequency_protection_level_1_single_level;1.000000;0.000000;0.01Hz;1
+657;3;40309;U16;;Over-frequency protection level 1 (single level);overfrequency_protection_level_1_single_level;1.000000;0.000000;0.01Hz;1
+658;3;40310;U16;;Undervoltage protection level 1 time (single level);undervoltage_protection_level_1_time_single_level;1.000000;0.000000;20ms;1
+659;3;40311;U16;;Overvoltage protection level 1 time (single level);overvoltage_protection_level_1_time_single_level;1.000000;0.000000;20ms;1
+660;3;40312;U16;;Underfrequency protection level 1 (single level);underfrequency_protection_level_1_single_level_1;1.000000;0.000000;20ms;1
+661;3;40313;U16;;Over-frequency protection level 1 (single level);overfrequency_protection_level_1_single_level_1;1.000000;0.000000;20ms;1
+662;3;40314;U16;;Undervoltage Level 2 Protection Value;undervoltage_level_2_protection_value;1.000000;0.000000;0.1V;1
+663;3;40315;U16;;Overvoltage level 2 protection value;overvoltage_level_2_protection_value;1.000000;0.000000;0.1V;1
+664;3;40316;U16;;Underfrequency protection level 2 value;underfrequency_protection_level_2_value;1.000000;0.000000;0.01Hz;1
+665;3;40317;U16;;Overfrequency protection level 2 value;overfrequency_protection_level_2_value;1.000000;0.000000;0.01Hz;1
+666;3;40318;U16;;Undervoltage Level 2 Protection Time;undervoltage_level_2_protection_time;1.000000;0.000000;20ms;1
+667;3;40319;U16;;Overvoltage level 2 protection time;overvoltage_level_2_protection_time;1.000000;0.000000;20ms;1
+668;3;40320;U16;;Underfrequency Level 2 Protection Time;underfrequency_level_2_protection_time;1.000000;0.000000;20ms;1
+669;3;40321;U16;;Over-frequency protection level 2 time;overfrequency_protection_level_2_time;1.000000;0.000000;20ms;1
+670;3;40322;U16;;Undervoltage protection level 3 value;undervoltage_protection_level_3_value;1.000000;0.000000;0.1V;1
+671;3;40323;U16;;Overvoltage level 3 protection value;overvoltage_level_3_protection_value;1.000000;0.000000;0.1V;1
+672;3;40324;U16;;Underfrequency protection level 3;underfrequency_protection_level_3;1.000000;0.000000;0.01Hz;1
+673;3;40325;U16;;Over-frequency protection level 3 value;overfrequency_protection_level_3_value;1.000000;0.000000;0.01Hz;1
+674;3;40326;U16;;Undervoltage Level 3 Protection Time;undervoltage_level_3_protection_time;1.000000;0.000000;20ms;1
+675;3;40327;U16;;Overvoltage level 3 protection time;overvoltage_level_3_protection_time;1.000000;0.000000;20ms;1
+676;3;40328;U16;;Underfrequency Level 3 Protection Time;underfrequency_level_3_protection_time;1.000000;0.000000;20ms;1
+677;3;40329;U16;;Over-frequency protection level 3 time;overfrequency_protection_level_3_time;1.000000;0.000000;20ms;1
+678;3;40330;U16;;Undervoltage protection level 4;undervoltage_protection_level_4;1.000000;0.000000;0.1V;1
+679;3;40331;U16;;Overvoltage protection level 4;overvoltage_protection_level_4;1.000000;0.000000;0.1V;1
+680;3;40332;U16;;Underfrequency protection level 4;underfrequency_protection_level_4;1.000000;0.000000;0.01Hz;1
+681;3;40333;U16;;Over-frequency protection level 4 value;overfrequency_protection_level_4_value;1.000000;0.000000;0.01Hz;1
+682;3;40334;U16;;Undervoltage Level 4 Protection Time;undervoltage_level_4_protection_time;1.000000;0.000000;20ms;1
+683;3;40335;U16;;Overvoltage level 4 protection time;overvoltage_level_4_protection_time;1.000000;0.000000;20ms;1
+684;3;40336;U16;;Underfrequency Level 4 Protection Time;underfrequency_level_4_protection_time;1.000000;0.000000;20ms;1
+685;3;40337;U16;;Over-frequency protection level 4 time;overfrequency_protection_level_4_time;1.000000;0.000000;20ms;1
+686;3;40338;U16;;Undervoltage protection level 5;undervoltage_protection_level_5;1.000000;0.000000;0.1V;1
+687;3;40339;U16;;Overvoltage protection level 5;overvoltage_protection_level_5;1.000000;0.000000;0.1V;1
+688;3;40340;U16;;Underfrequency protection level 5;underfrequency_protection_level_5;1.000000;0.000000;0.01Hz;1
+689;3;40341;U16;;Over-frequency protection level 5 value;overfrequency_protection_level_5_value;1.000000;0.000000;0.01Hz;1
+690;3;40342;U16;;Undervoltage level 5 protection time;undervoltage_level_5_protection_time;1.000000;0.000000;20ms;1
+691;3;40343;U16;;Overvoltage level 5 protection time;overvoltage_level_5_protection_time;1.000000;0.000000;20ms;1
+692;3;40344;U16;;Underfrequency protection level 5 time;underfrequency_protection_level_5_time;1.000000;0.000000;20ms;1
+693;3;40345;U16;;Over-frequency protection level 5 time;overfrequency_protection_level_5_time;1.000000;0.000000;20ms;1
+694;3;40346;U16;;10-minute overvoltage protection;v_10minute_overvoltage_protection;1.000000;0.000000;'---;1
+695;3;40347;U16;;10-minute overvoltage protection value;v_10minute_overvoltage_protection_value;1.000000;0.000000;0.1V;1
+696;3;40348;U16;;10-minute overpressure recovery value;v_10minute_overpressure_recovery_value;1.000000;0.000000;0.1V;1
+697;3;40360;U16;;LVRT protection levels;lvrt_protection_levels;1.000000;0.000000;'---;1
+698;3;40361;U16;;LVRT grid imbalance support switch;lvrt_grid_imbalance_support_switch;1.000000;0.000000;'---;1
+699;3;40362;U16;;LVRT zero-power mode;lvrt_zeropower_mode;1.000000;0.000000;'---;1
+700;3;40363;U16;;LVRT Enable;lvrt_enable;1.000000;0.000000;'---;1
+701;3;40364;U16;;LVRT K coefficient;lvrt_k_coefficient;1.000000;0.000000;'---;1
+702;3;40365;U16;;LVRT voltage 1;lvrt_voltage_1;1.000000;0.000000;0.1V;1
+703;3;40366;U16;;LVRT voltage 2;lvrt_voltage_2;1.000000;0.000000;0.1V;1
+704;3;40367;U16;;LVRT voltage 3;lvrt_voltage_3;1.000000;0.000000;0.1V;1
+705;3;40368;U16;;LVRT voltage 4;lvrt_voltage_4;1.000000;0.000000;0.1V;1
+706;3;40369;U16;;LVRT voltage 5;lvrt_voltage_5;1.000000;0.000000;0.1V;1
+707;3;40370;U32;;LVRT time 1;lvrt_time_1;1.000000;0.000000;0.01S;1
+708;3;40371;U16;;;;1.000000;0.000000;;1
+709;3;40372;U32;;LVRT time 2;lvrt_time_2;1.000000;0.000000;0.01S;1
+710;3;40373;U16;;;;1.000000;0.000000;;1
+711;3;40374;U32;;LVRT time 3;lvrt_time_3;1.000000;0.000000;0.01S;1
+712;3;40375;U16;;;;1.000000;0.000000;;1
+713;3;40376;U32;;LVRT time 4;lvrt_time_4;1.000000;0.000000;0.01S;1
+714;3;40377;U16;;;;1.000000;0.000000;;1
+715;3;40378;U32;;LVRT time 5;lvrt_time_5;1.000000;0.000000;0.01S;1
+716;3;40379;U16;;;;1.000000;0.000000;;1
+717;3;40380;U16;;Reactive power response time constant;reactive_power_response_time_constant;1.000000;0.000000;0.1s;1
+718;3;40390;U16;;HVRT protection levels;hvrt_protection_levels;1.000000;0.000000;'---;1
+719;3;40391;U16;;HVRT grid imbalance supports switching;hvrt_grid_imbalance_supports_switching;1.000000;0.000000;'---;1
+720;3;40392;U16;;HVRT zero-power mode;hvrt_zeropower_mode;1.000000;0.000000;'---;1
+721;3;40393;U16;;HVRT Enable;hvrt_enable;1.000000;0.000000;'---;1
+722;3;40394;U16;;HVRT K coefficient;hvrt_k_coefficient;1.000000;0.000000;'---;1
+723;3;40395;U16;;HVRT voltage 1;hvrt_voltage_1;1.000000;0.000000;0.1V;1
+724;3;40396;U16;;HVRT voltage 2;hvrt_voltage_2;1.000000;0.000000;0.1V;1
+725;3;40397;U16;;HVRT voltage 3;hvrt_voltage_3;1.000000;0.000000;0.1V;1
+726;3;40398;U16;;HVRT voltage 4;hvrt_voltage_4;1.000000;0.000000;0.1V;1
+727;3;40399;U16;;HVRT voltage 5;hvrt_voltage_5;1.000000;0.000000;0.1V;1
+728;3;40400;U32;;HVRT time 1;hvrt_time_1;1.000000;0.000000;0.01S;1
+729;3;40401;U16;;;;1.000000;0.000000;;1
+730;3;40402;U32;;HVRT time 2;hvrt_time_2;1.000000;0.000000;0.01S;1
+731;3;40403;U16;;;;1.000000;0.000000;;1
+732;3;40404;U32;;HVRT time 3;hvrt_time_3;1.000000;0.000000;0.01S;1
+733;3;40405;U16;;;;1.000000;0.000000;;1
+734;3;40406;U32;;HVRT time 4;hvrt_time_4;1.000000;0.000000;0.01S;1
+735;3;40407;U16;;;;1.000000;0.000000;;1
+736;3;40408;U32;;HVRT time 5;hvrt_time_5;1.000000;0.000000;0.01S;1
+737;3;40409;U16;;;;1.000000;0.000000;;1
+738;3;40410;U16;;Reactive power response time constant;reactive_power_response_time_constant_1;1.000000;0.000000;0.1s;1
+739;3;40420;U16;;Over-frequency derating switch;overfrequency_derating_switch;1.000000;0.000000;'---;1
+740;3;40421;U16;;Over-frequency derating curve type;overfrequency_derating_curve_type;1.000000;0.000000;'---;1
+741;3;40422;U16;;Over-frequency derating frequency point F1 (starting point);overfrequency_derating_frequency_point_f1_starting_point;1.000000;0.000000;0.01Hz;1
+742;3;40423;U16;;Over-frequency derating frequency point F2 (end point);overfrequency_derating_frequency_point_f2_end_point;1.000000;0.000000;0.01Hz;1
+743;3;40424;U16;;Frequency derating point F3 (reserved);frequency_derating_point_f3_reserved;1.000000;0.000000;0.01Hz;0
+744;3;40425;U16;;Power setting at frequency F1;power_setting_at_frequency_f1;1.000000;0.000000;0.1%;1
+745;3;40426;U16;;Power setting value at frequency F2;power_setting_value_at_frequency_f2;1.000000;0.000000;0.1%;1
+746;3;40427;U16;;Power setting at frequency F3;power_setting_at_frequency_f3;1.000000;0.000000;0.1%;1
+747;3;40428;U16;;Frequency point for over-frequency derating power recovery;frequency_point_for_overfrequency_derating_power_recovery;1.000000;0.000000;0.01Hz;1
+748;3;40429;U16;;Over-frequency derating power slope;overfrequency_derating_power_slope;1.000000;0.000000;1%/min;1
+749;3;40430;U16;;Recovery time for excessive derating;recovery_time_for_excessive_derating;1.000000;0.000000;0.1s;1
+750;3;40431;U16;;Over-frequency derating recovery slope;overfrequency_derating_recovery_slope;1.000000;0.000000;1%/min;1
+751;3;40440;U16;;Underfrequency derating switch;underfrequency_derating_switch;1.000000;0.000000;'---;1
+752;3;40441;U16;;Type of underfrequency rise curve;type_of_underfrequency_rise_curve;1.000000;0.000000;'---;1
+753;3;40442;U16;;Under-frequency derating frequency point F1 (starting point);underfrequency_derating_frequency_point_f1_starting_point;1.000000;0.000000;0.01Hz;1
+754;3;40443;U16;;Under-frequency derating frequency point F2 (end point);underfrequency_derating_frequency_point_f2_end_point;1.000000;0.000000;0.01Hz;1
+755;3;40444;U16;;Under-frequency derating frequency point F3 (reserved);underfrequency_derating_frequency_point_f3_reserved;1.000000;0.000000;0.01Hz;0
+756;3;40445;U16;;Power setting at frequency F1;power_setting_at_frequency_f1_1;1.000000;0.000000;0.1%;1
+757;3;40446;U16;;Power setting value at frequency F2;power_setting_value_at_frequency_f2_1;1.000000;0.000000;0.1%;1
+758;3;40447;U16;;Power setting at frequency F3;power_setting_at_frequency_f3_1;1.000000;0.000000;0.1%;1
+759;3;40448;U16;;Frequency point for under-frequency derating power recovery;frequency_point_for_underfrequency_derating_power_recovery;1.000000;0.000000;0.01Hz;1
+760;3;40449;U16;;Under-frequency derating power slope;underfrequency_derating_power_slope;1.000000;0.000000;1%/min;1
+761;3;40450;U16;;Recovery time for underfrequency increase;recovery_time_for_underfrequency_increase;1.000000;0.000000;0.1s;1
+762;3;40451;U16;;Underfrequency increase recovery slope;underfrequency_increase_recovery_slope;1.000000;0.000000;1%/min;1
+763;3;40460;U16;;Overvoltage power regulating switch;overvoltage_power_regulating_switch;1.000000;0.000000;'---;1
+764;3;40461;U16;;Overvoltage power regulation voltage point 1;overvoltage_power_regulation_voltage_point_1;1.000000;0.000000;0.1V;1
+765;3;40462;U16;;Grid overvoltage power adjustment voltage point 2;grid_overvoltage_power_adjustment_voltage_point_2;1.000000;0.000000;0.1V;1
+766;3;40463;U16;;Grid overvoltage power adjustment voltage point 3;grid_overvoltage_power_adjustment_voltage_point_3;1.000000;0.000000;0.1V;1
+767;3;40464;U16;;Grid overvoltage power adjustment voltage point 4;grid_overvoltage_power_adjustment_voltage_point_4;1.000000;0.000000;0.1V;1
+768;3;40465;U16;;Overvoltage power regulation voltage point 1 power;overvoltage_power_regulation_voltage_point_1_power;1.000000;0.000000;0.1%;1
+769;3;40466;U16;;Overvoltage power regulation voltage point 2 power;overvoltage_power_regulation_voltage_point_2_power;1.000000;0.000000;0.1%;1
+770;3;40467;U16;;Overvoltage power regulation voltage point 3 power;overvoltage_power_regulation_voltage_point_3_power;1.000000;0.000000;0.1%;1
+771;3;40468;U16;;Overvoltage power regulation voltage point 4 power;overvoltage_power_regulation_voltage_point_4_power;1.000000;0.000000;0.1%;1
+772;3;40469;U16;;Overvoltage power adjustment time of power grid;overvoltage_power_adjustment_time_of_power_grid;1.000000;0.000000;0.1s;1
+773;3;40480;U16;;Power grid undervoltage power adjustment switch;power_grid_undervoltage_power_adjustment_switch;1.000000;0.000000;'---;1
+774;3;40481;U16;;Grid undervoltage power adjustment voltage point 1;grid_undervoltage_power_adjustment_voltage_point_1;1.000000;0.000000;0.1V;1
+775;3;40482;U16;;Grid undervoltage power adjustment voltage point 2;grid_undervoltage_power_adjustment_voltage_point_2;1.000000;0.000000;0.1V;1
+776;3;40483;U16;;Power grid undervoltage power adjustment voltage point 3;power_grid_undervoltage_power_adjustment_voltage_point_3;1.000000;0.000000;0.1V;1
+777;3;40484;U16;;Grid undervoltage power adjustment voltage point 4;grid_undervoltage_power_adjustment_voltage_point_4;1.000000;0.000000;0.1V;1
+778;3;40485;U16;;Power grid undervoltage power adjustment voltage point 1 power;power_grid_undervoltage_power_adjustment_voltage_point_1_power;1.000000;0.000000;0.1%;1
+779;3;40486;U16;;Power grid undervoltage power adjustment voltage point 2 power;power_grid_undervoltage_power_adjustment_voltage_point_2_power;1.000000;0.000000;0.1%;1
+780;3;40487;U16;;Power grid undervoltage power adjustment voltage point 3 power;power_grid_undervoltage_power_adjustment_voltage_point_3_power;1.000000;0.000000;0.1%;1
+781;3;40488;U16;;Power grid undervoltage power adjustment voltage point 4 power;power_grid_undervoltage_power_adjustment_voltage_point_4_power;1.000000;0.000000;0.1%;1
+782;3;40489;U16;;Power grid undervoltage power adjustment time;power_grid_undervoltage_power_adjustment_time;1.000000;0.000000;0.1s;1
+783;3;40500;U16;;Active power control;active_power_control;1.000000;0.000000;'---;1
+784;3;40501;U16;;Active power degradation rate;active_power_degradation_rate;1.000000;0.000000;1%/min;1
+785;3;40502;U16;;Active power rise rate;active_power_rise_rate;1.000000;0.000000;1%/min;1
+786;3;40503;U16;;Active power percentage setting;active_power_percentage_setting;1.000000;0.000000;0.1%;1
+787;3;40504;U16;;Reactive power regulation;reactive_power_regulation;1.000000;0.000000;'---;1
+788;3;40505;I16;;Reactive power percentage setting;reactive_power_percentage_setting;1.000000;0.000000;0.1%;1
+789;3;40506;I16;;Power factor setting value;power_factor_setting_value;1.000000;0.000000;0.001;1
+790;3;40507;U16;;Power response switch;power_response_switch;1.000000;0.000000;'---;1
+791;3;40508;U16;;Power response time constant;power_response_time_constant;1.000000;0.000000;0.1s;1
+792;3;40520;U16;;Q(P) curve type selection;qp_curve_type_selection;1.000000;0.000000;'---;1
+793;3;40521;U16;;Active power percentage point A;active_power_percentage_point_a;1.000000;0.000000;0.1%;1
+794;3;40522;U16;;Active power percentage B;active_power_percentage_b;1.000000;0.000000;0.1%;1
+795;3;40523;U16;;Active power percentage C;active_power_percentage_c;1.000000;0.000000;0.1%;1
+796;3;40524;I16;;Power factor at active power percentage point A;power_factor_at_active_power_percentage_point_a;1.000000;0.000000;0.001;1
+797;3;40525;I16;;Power factor at active power percentage point B;power_factor_at_active_power_percentage_point_b;1.000000;0.000000;0.001;1
+798;3;40526;I16;;Power factor at active power percentage point C;power_factor_at_active_power_percentage_point_c;1.000000;0.000000;0.001;1
+799;3;40527;U16;;Enable Q(P) voltage percentage setpoint;enable_qp_voltage_percentage_setpoint;1.000000;0.000000;0.1%;1
+800;3;40528;U16;;Disable Q(P) voltage percentage setpoint;disable_qp_voltage_percentage_setpoint;1.000000;0.000000;0.1%;1
+801;3;40529;U16;;Disable Q(P) active power percentage setpoint;disable_qp_active_power_percentage_setpoint;1.000000;0.000000;0.1%;1
+802;3;40530;U16;;Q(P) is enabled unconditionally.;qp_is_enabled_unconditionally;1.000000;0.000000;'---;1
+803;3;40531;U16;;Reactive power response time constant;reactive_power_response_time_constant_2;1.000000;0.000000;0.1s;1
+804;3;40532;U16;;Active power percentage point D;active_power_percentage_point_d;1.000000;0.000000;0.1%;1
+805;3;40533;I16;;Power factor at active power percentage point D;power_factor_at_active_power_percentage_point_d;1.000000;0.000000;0.001;1
+806;3;40540;U16;;Q(U) curve;qu_curve;1.000000;0.000000;'---;1
+807;3;40541;U16;;Lag ratio;lag_ratio;1.000000;0.000000;0.1%;1
+808;3;40542;U16;;Voltage ratio U1;voltage_ratio_u1;1.000000;0.000000;0.1%;1
+809;3;40543;I16;;Voltage ratio corresponding to the percentage of reactive power at point U1;voltage_ratio_corresponding_to_the_percentage_of_reactive_power_at_point_u1;1.000000;0.000000;0.1%;1
+810;3;40544;U16;;Voltage ratio U2;voltage_ratio_u2;1.000000;0.000000;0.1%;1
+811;3;40545;I16;;Voltage ratio corresponding to the percentage of reactive power at point U2;voltage_ratio_corresponding_to_the_percentage_of_reactive_power_at_point_u2;1.000000;0.000000;0.1%;1
+812;3;40546;U16;;Voltage ratio U3;voltage_ratio_u3;1.000000;0.000000;0.1%;1
+813;3;40547;I16;;Voltage ratio corresponding to reactive power percentage at point U3;voltage_ratio_corresponding_to_reactive_power_percentage_at_point_u3;1.000000;0.000000;0.1%;1
+814;3;40548;U16;;Voltage ratio U4;voltage_ratio_u4;1.000000;0.000000;0.1%;1
+815;3;40549;I16;;Voltage ratio corresponding to reactive power percentage at point U4;voltage_ratio_corresponding_to_reactive_power_percentage_at_point_u4;1.000000;0.000000;0.1%;1
+816;3;40550;U16;;Enable Q(U) power percentage setpoint;enable_qu_power_percentage_setpoint;1.000000;0.000000;0.1%;1
+817;3;40551;U16;;Disable Q(U) power percentage setpoint;disable_qu_power_percentage_setpoint;1.000000;0.000000;0.1%;1
+818;3;40552;U16;;Unconditionally enable and disable Q(U) function;unconditionally_enable_and_disable_qu_function;1.000000;0.000000;'---;1
+819;3;40553;U16;;Reactive power response time constant;reactive_power_response_time_constant_3;1.000000;0.000000;0.1s;1
+820;3;40560;U16;;Correction coefficients restored to default values;correction_coefficients_restored_to_default_values;1.000000;0.000000;'---;1
+821;3;40561;U16;;Clear inverter fault logs;clear_inverter_fault_logs;1.000000;0.000000;'---;1
+822;3;40562;U16;;System settings information restored to default values;system_settings_information_restored_to_default_values;1.000000;0.000000;'---;1
+823;3;40563;U16;;Reset battery level and running time;reset_battery_level_and_running_time;1.000000;0.000000;'---;1
+824;3;40564;U16;;Factory reset;factory_reset;1.000000;0.000000;'---;1
+825;3;40565;U16;;Clear BMS fault logs;clear_bms_fault_logs;1.000000;0.000000;'---;1
+826;3;40570;U16;;Inverter serial number SN0;inverter_serial_number_sn0;1.000000;0.000000;'---;1
+827;3;40571;U16;;Inverter serial number SN1;inverter_serial_number_sn1;1.000000;0.000000;'---;1
+828;3;40572;U16;;Inverter serial number SN2;inverter_serial_number_sn2;1.000000;0.000000;'---;1
+829;3;40573;U16;;Inverter serial number SN3;inverter_serial_number_sn3;1.000000;0.000000;'---;1
+830;3;40574;U16;;Inverter serial number SN4;inverter_serial_number_sn4;1.000000;0.000000;'---;1
+831;3;40575;U16;;Inverter serial number SN5;inverter_serial_number_sn5;1.000000;0.000000;'---;1
+832;3;40576;U16;;Inverter serial number SN6;inverter_serial_number_sn6;1.000000;0.000000;'---;1
+833;3;40577;U16;;Inverter serial number SN7;inverter_serial_number_sn7;1.000000;0.000000;'---;1
+834;3;40578;U16;;Inverter serial number SN8;inverter_serial_number_sn8;1.000000;0.000000;'---;1
+835;3;40579;U16;;Equipment Information;equipment_information_1;1.000000;0.000000;'---;1
+836;3;40580;U16;;Rated power setting;rated_power_setting;1.000000;0.000000;0.1KW;1
+837;3;40581;U16;;Buzzer self-test;buzzer_selftest;1.000000;0.000000;'---;1
+838;3;40582;U16;;LCD self-test;lcd_selftest;1.000000;0.000000;'---;1
+839;3;40583;U16;;LED self-test;led_selftest;1.000000;0.000000;'---;1
+840;3;40584;U16;;Inverter fan self-test;inverter_fan_selftest;1.000000;0.000000;'---;1
+841;3;40585;U16;;Aging correction mode;aging_correction_mode;1.000000;0.000000;'---;1
+842;3;40586;U16;;Open-loop instructions;openloop_instructions;1.000000;0.000000;'---;1
+843;3;40587;U16;;Enabling the lithium battery CAN communication interface test;enabling_the_lithium_battery_can_communication_interface_test;1.000000;0.000000;'---;1
+844;3;40588;U16;;Enabling the lithium battery RS485 communication interface test;enabling_the_lithium_battery_rs485_communication_interface_test;1.000000;0.000000;'---;1
+845;3;40589;U16;;Enable Gen signal relay self-test;enable_gen_signal_relay_selftest;1.000000;0.000000;'---;1
+846;3;40590;U16;;Start parallel communication test;start_parallel_communication_test;1.000000;0.000000;'---;1
+847;3;40591;U16;;Start whole machine aging test;start_whole_machine_aging_test;1.000000;0.000000;'---;1
+848;3;40592;U16;;Firmware Scope;firmware_scope_1;1.000000;0.000000;'---;1
+849;3;40593;U16;;Inductor type selection;inductor_type_selection;1.000000;0.000000;'---;1
+850;3;40600;U16;;AutoTest Enable;autotest_enable;1.000000;0.000000;'---;1
+851;3;40601;U16;;AutoTest round trip value 0;autotest_round_trip_value_0;1.000000;0.000000;0.1V/0.01Hz;1
+852;3;40602;U16;;AutoTest round trip value 1;autotest_round_trip_value_1;1.000000;0.000000;0.1V/0.01Hz;1
+853;3;40603;U16;;AutoTest round trip value 2;autotest_round_trip_value_2;1.000000;0.000000;0.1V/0.01Hz;1
+854;3;40604;U16;;AutoTest round trip value 3;autotest_round_trip_value_3;1.000000;0.000000;0.1V/0.01Hz;1
+855;3;40605;U16;;AutoTest round trip value 4;autotest_round_trip_value_4;1.000000;0.000000;0.1V/0.01Hz;1
+856;3;40606;U16;;AutoTest round trip value 5;autotest_round_trip_value_5;1.000000;0.000000;0.1V/0.01Hz;1
+857;3;40607;U16;;AutoTest round trip value 6;autotest_round_trip_value_6;1.000000;0.000000;0.1V/0.01Hz;1
+858;3;40608;U16;;AutoTest round trip value 7;autotest_round_trip_value_7;1.000000;0.000000;0.1V/0.01Hz;1
+859;3;40609;U16;;AutoTest round trip time 0;autotest_round_trip_time_0;1.000000;0.000000;1ms;1
+860;3;40610;U16;;AutoTest round trip time 1;autotest_round_trip_time_1;1.000000;0.000000;1ms;1
+861;3;40611;U16;;AutoTest round trip time 2;autotest_round_trip_time_2;1.000000;0.000000;1ms;1
+862;3;40612;U16;;AutoTest round trip time 3;autotest_round_trip_time_3;1.000000;0.000000;1ms;1
+863;3;40613;U16;;AutoTest round trip time 4;autotest_round_trip_time_4;1.000000;0.000000;1ms;1
+864;3;40614;U16;;AutoTest round trip time 5;autotest_round_trip_time_5;1.000000;0.000000;1ms;1
+865;3;40615;U16;;AutoTest round trip time 6;autotest_round_trip_time_6;1.000000;0.000000;1ms;1
+866;3;40616;U16;;AutoTest round trip time 7;autotest_round_trip_time_7;1.000000;0.000000;1ms;1
+867;3;40620;U16;;Fault waveform recording - Nth record;fault_waveform_recording_nth_record;1.000000;0.000000;;1
+868;3;40621;U16;;Wave recording-points;wave_recordingpoints;1.000000;0.000000;;1
+869;3;40622;U16;;Waveform recording - frequency;FREQ;1.000000;0.000000;;1
+870;3;40623;U16;;Waveform Recording - Number 1;waveform_recording_number_1;1.000000;0.000000;;1
+871;3;40624;U16;;Waveform Recording - Number 2;waveform_recording_number_2;1.000000;0.000000;;1
+872;3;40625;U16;;Waveform Recording - Number 3;waveform_recording_number_3;1.000000;0.000000;;1
+873;3;40626;U16;;Waveform Recording - Number 4;waveform_recording_number_4;1.000000;0.000000;;1
+874;3;40635;U16;;PV-VI curve enabled (reserved);pvvi_curve_enabled_reserved;1.000000;0.000000;'---;0
+875;3;41958;U16;;Grid restoration power gradual change enablement;grid_restoration_power_gradual_change_enablement;1.000000;0.000000;'---;1
+876;3;41959;U16;;Zero-current mode enable;zerocurrent_mode_enable;1.000000;0.000000;'---;1
+877;3;41960;U16;;Charging Enable;charging_enable;1.000000;0.000000;'---;1
+878;3;41961;U16;;Main grid connection switch enable;main_grid_connection_switch_enable;1.000000;0.000000;'---;1
+879;3;41962;U16;;Battery grid connection enabled;battery_grid_connection_enabled;1.000000;0.000000;'---;1
+880;3;41963;U16;;Enabled by weak grid mode;enabled_by_weak_grid_mode;1.000000;0.000000;'---;1
+881;3;41964;U16;;Power-on activation control enable;poweron_activation_control_enable;1.000000;0.000000;'---;1
+882;3;41968;U16;;Energy distribution pattern;energy_distribution_pattern_1;1.000000;0.000000;'---;1
+883;3;41969;U16;;UPS mode enable;ups_mode_enable;1.000000;0.000000;'---;1
+884;3;41970;U16;;Power limiting control;power_limiting_control;1.000000;0.000000;'---;1
+885;3;41971;U16;;Max Solar Power;max_solar_power;1.000000;0.000000;1W;1
+886;3;41972;U16;;Max Sell Power;max_sell_power;1.000000;0.000000;1W;1
+887;3;41973;U16;;Zero-Export power;zeroexport_power;1.000000;0.000000;1W;1
+888;3;41974;U16;;Rated Power;rated_power;1.000000;0.000000;1W;1
+889;3;41975;U16;;Power;power;1.000000;0.000000;1W;1
+890;3;41976;U16;;External Relay;external_relay;1.000000;0.000000;'---;1
+891;3;41977;U16;;AC Couple on grid side;ac_couple_on_grid_side;1.000000;0.000000;'---;1
+892;3;41978;U16;;AC Couple on load side;ac_couple_on_load_side;1.000000;0.000000;'---;1
+893;3;41979;U16;;AC Couple frequency upper limit setting;ac_couple_frequency_upper_limit_setting;1.000000;0.000000;0.01Hz;1
+894;3;41980;U16;;Off Grid Immediately Off;off_grid_immediately_off;1.000000;0.000000;'---;1
+895;3;41983;U16;;Generator input as load output enable;generator_input_as_load_output_enable_1;1.000000;0.000000;'---;1
+896;3;41984;U16;;Generator input rated power;generator_input_rated_power;1.000000;0.000000;1W;1
+897;3;41985;U16;;Generator connected to grid input;generator_connected_to_grid_input;1.000000;0.000000;'---;1
+898;3;41986;U16;;Intelligent load output power;intelligent_load_output_power;1.000000;0.000000;1W;1
+899;3;41987;U16;;Keep it on the power grid.;keep_it_on_the_power_grid;1.000000;0.000000;'---;1
+900;3;41988;U16;;Generator load OFF voltage;generator_load_off_voltage;1.000000;0.000000;0.1V;1
+901;3;41989;U16;;Generator load ON voltage;generator_load_on_voltage;1.000000;0.000000;0.1V;1
+902;3;41990;U16;;Generator load OFF SOC;generator_load_off_soc;1.000000;0.000000;1%;1
+903;3;41991;U16;;Generator load ON SOC;generator_load_on_soc;1.000000;0.000000;1%;1
+904;3;41992;U16;;Generator peak shaving enable;generator_peak_shaving_enable;1.000000;0.000000;'---;1
+905;3;41993;U16;;Generator peak shaving power;generator_peak_shaving_power;1.000000;0.000000;1W;1
+906;3;41994;U16;;Grid peak shaving enablement;grid_peak_shaving_enablement;1.000000;0.000000;'---;1
+907;3;41995;U16;;Grid peak shaving power;grid_peak_shaving_power;1.000000;0.000000;1W;1
+908;3;41999;U16;;Grid Signal;grid_signal;1.000000;0.000000;'---;1
+909;3;42000;U16;;Grid charging enable;grid_charging_enable;1.000000;0.000000;'---;1
+910;3;42001;I16;;The charging current of the power grid to the battery;the_charging_current_of_the_power_grid_to_the_battery;1.000000;0.000000;1A;1
+911;3;42002;U16;;Grid charging start-up voltage point;grid_charging_startup_voltage_point;1.000000;0.000000;0.1V;1
+912;3;42003;U16;;Grid charging stop voltage point;grid_charging_stop_voltage_point;1.000000;0.000000;0.1V;1
+913;3;42004;U16;;SOC value during grid charging start;soc_value_during_grid_charging_start;1.000000;0.000000;1%;1
+914;3;42005;U16;;SOC value when grid charging stops;soc_value_when_grid_charging_stops;1.000000;0.000000;1%;1
+915;3;42007;U16;;Gen Signal;gen_signal;1.000000;0.000000;'---;1
+916;3;42008;U16;;Generator charging enable;generator_charging_enable;1.000000;0.000000;'---;1
+917;3;42009;I16;;Generator charging current to battery;generator_charging_current_to_battery;1.000000;0.000000;1A;1
+918;3;42010;U16;;Generator charging starting voltage point;generator_charging_starting_voltage_point;1.000000;0.000000;0.1V;1
+919;3;42011;U16;;Generator charging stop voltage point;generator_charging_stop_voltage_point;1.000000;0.000000;0.1V;1
+920;3;42012;U16;;Generator charging start-up SOC value;generator_charging_startup_soc_value;1.000000;0.000000;1%;1
+921;3;42013;U16;;Generator charging stops at SOC value;generator_charging_stops_at_soc_value;1.000000;0.000000;1%;1
+922;3;42016;U16;;Maximum operating time of generator;maximum_operating_time_of_generator;1.000000;0.000000;0.1H;1
+923;3;42017;U16;;Generator cooling time;generator_cooling_time;1.000000;0.000000;0.1H;1
+924;3;42018;U16;;Force start generator;force_start_generator;1.000000;0.000000;'---;1
+925;3;42020;U16;;Electricity sales enable;electricity_sales_enable;1.000000;0.000000;'---;1
+926;3;42021;U16;;Set time-based charge/discharge enable;set_timebased_chargedischarge_enable;1.000000;0.000000;'---;1
+927;3;42022;U16;;Time Period 1 Charging Enable;time_period_1_charging_enable;1.000000;0.000000;'---;1
+928;3;42023;U16;;Time period 1ChargeStart time;time_period_1chargestart_time;1.000000;0.000000;H, Min;1
+929;3;42024;U16;;Time period 1ChargeEnd time;time_period_1chargeend_time;1.000000;0.000000;H, Min;1
+930;3;42025;U16;;Maximum discharge power during time period 1;maximum_discharge_power_during_time_period_1;1.000000;0.000000;0.1kW;1
+931;3;42026;U16;;Time period 1Start chargingvoltage value;time_period_1start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+932;3;42027;U16;;Time period 1Start chargingSOC value;time_period_1start_chargingsoc_value;1.000000;0.000000;1%;1
+933;3;42028;U16;;Time period 2 charging enable;time_period_2_charging_enable;1.000000;0.000000;'---;1
+934;3;42029;U16;;Time period 2ChargeStart time;time_period_2chargestart_time;1.000000;0.000000;H, Min;1
+935;3;42030;U16;;Time period 2ChargeEnd time;time_period_2chargeend_time;1.000000;0.000000;H, Min;1
+936;3;42031;U16;;Maximum discharge power during time period 2;maximum_discharge_power_during_time_period_2;1.000000;0.000000;0.1kW;1
+937;3;42032;U16;;Time period 2Start chargingvoltage value;time_period_2start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+938;3;42033;U16;;Time period 2Start chargingSOC value;time_period_2start_chargingsoc_value;1.000000;0.000000;1%;1
+939;3;42034;U16;;Time period 3 charging enable;time_period_3_charging_enable;1.000000;0.000000;'---;1
+940;3;42035;U16;;Time period 3ChargeStart time;time_period_3chargestart_time;1.000000;0.000000;H, Min;1
+941;3;42036;U16;;Time period 3ChargeEnd time;time_period_3chargeend_time;1.000000;0.000000;H, Min;1
+942;3;42037;U16;;Maximum discharge power during time period 3;maximum_discharge_power_during_time_period_3;1.000000;0.000000;0.1kW;1
+943;3;42038;U16;;Time period 3Start chargingvoltage value;time_period_3start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+944;3;42039;U16;;Time period 3Start chargingSOC value;time_period_3start_chargingsoc_value;1.000000;0.000000;1%;1
+945;3;42040;U16;;Time period 4: Charging enable;time_period_4_charging_enable;1.000000;0.000000;'---;1
+946;3;42041;U16;;Time period 4ChargeStart time;time_period_4chargestart_time;1.000000;0.000000;H, Min;1
+947;3;42042;U16;;Time period 4ChargeEnd time;time_period_4chargeend_time;1.000000;0.000000;H, Min;1
+948;3;42043;U16;;Maximum discharge power during time period 4;maximum_discharge_power_during_time_period_4;1.000000;0.000000;0.1kW;1
+949;3;42044;U16;;Time period 4Start chargingvoltage value;time_period_4start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+950;3;42045;U16;;Time period 4Start chargingSOC value;time_period_4start_chargingsoc_value;1.000000;0.000000;1%;1
+951;3;42046;U16;;Time period 5 charging enable;time_period_5_charging_enable;1.000000;0.000000;'---;1
+952;3;42047;U16;;Time period 5ChargeStart time;time_period_5chargestart_time;1.000000;0.000000;H, Min;1
+953;3;42048;U16;;Time period 5ChargeEnd time;time_period_5chargeend_time;1.000000;0.000000;H, Min;1
+954;3;42049;U16;;Maximum discharge power during time period 5;maximum_discharge_power_during_time_period_5;1.000000;0.000000;0.1kW;1
+955;3;42050;U16;;Time period 5Start chargingvoltage value;time_period_5start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+956;3;42051;U16;;Time period 5Start chargingSOC value;time_period_5start_chargingsoc_value;1.000000;0.000000;1%;1
+957;3;42052;U16;;Time period 6 charging enable;time_period_6_charging_enable;1.000000;0.000000;'---;1
+958;3;42053;U16;;Time period 6ChargeStart time;time_period_6chargestart_time;1.000000;0.000000;H, Min;1
+959;3;42054;U16;;Time period 6ChargeEnd time;time_period_6chargeend_time;1.000000;0.000000;H, Min;1
+960;3;42055;U16;;Maximum discharge power during time period 6;maximum_discharge_power_during_time_period_6;1.000000;0.000000;0.1kW;1
+961;3;42056;U16;;Time period 6Start chargingvoltage value;time_period_6start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+962;3;42057;U16;;Time period 6Start chargingSOC value;time_period_6start_chargingsoc_value;1.000000;0.000000;1%;1
+963;3;42085;U16;;Off-grid operation switch;offgrid_operation_switch;1.000000;0.000000;'---;1
+964;3;42086;U16;;Off-grid output voltage setting;offgrid_output_voltage_setting;1.000000;0.000000;0.1V;1
+965;3;42087;U16;;Off-grid output frequency settings;offgrid_output_frequency_settings;1.000000;0.000000;0.01Hz;1
+966;3;42088;U16;;Energy flow priority setting;energy_flow_priority_setting;1.000000;0.000000;'---;1
+967;3;42091;I16;;Battery power settings;battery_power_settings;1.000000;0.000000;0.1KW;1
+968;3;42092;U16;;SOC forced calibration enabled;soc_forced_calibration_enabled;1.000000;0.000000;'---;1
+969;3;42093;U16;;SOC mandatory calibration cycle;soc_mandatory_calibration_cycle;1.000000;0.000000;'---;1
+970;3;42094;U16;;Battery port information;battery_port_information;1.000000;0.000000;'---;1
+971;3;42095;U16;;Battery Information;battery_information_1;1.000000;0.000000;'---;1
+972;3;42096;U16;;Battery operating type;battery_operating_type_1;1.000000;0.000000;'---;1
+973;3;42097;U16;;Number of batteries connected in series and parallel;number_of_batteries_connected_in_series_and_parallel_1;1.000000;0.000000;'---;1
+974;3;42098;U16;;Battery charge/discharge slope enable;battery_chargedischarge_slope_enable;1.000000;0.000000;'---;1
+975;3;42099;U16;;Battery charge/discharge slope;battery_chargedischarge_slope;1.000000;0.000000;X%Pn/Min;1
+976;3;42100;U16;;Battery charging power settings;battery_charging_power_settings;1.000000;0.000000;0.1kW;1
+977;3;42101;U16;;Battery discharge power setting;battery_discharge_power_setting;1.000000;0.000000;0.1kW;1
+978;3;42105;U16;;CV charging voltage;cv_charging_voltage;1.000000;0.000000;0.1V;1
+979;3;42106;U16;;float voltage;float_voltage;1.000000;0.000000;0.1V;1
+980;3;42107;U16;;Battery equalization enable;battery_equalization_enable;1.000000;0.000000;'---;1
+981;3;42108;U16;;Battery equalization voltage;battery_equalization_voltage;1.000000;0.000000;0.1V;1
+982;3;42109;U16;;Battery equalization interval;battery_equalization_interval;1.000000;0.000000;1Day;1
+983;3;42110;U16;;Battery equalization time;battery_equalization_time;1.000000;0.000000;1 Hour;1
+984;3;42111;U16;;Battery overvoltage alarm value;battery_overvoltage_alarm_value;1.000000;0.000000;0.1V;1
+985;3;42112;U16;;Battery overvoltage alarm recovery value;battery_overvoltage_alarm_recovery_value;1.000000;0.000000;0.1V;1
+986;3;42113;U16;;Battery overvoltage protection value;battery_overvoltage_protection_value;1.000000;0.000000;0.1V;1
+987;3;42114;U16;;Battery overvoltage protection recovery value;battery_overvoltage_protection_recovery_value;1.000000;0.000000;0.1V;1
+988;3;42115;U16;;Battery low voltage alarm voltage value;battery_low_voltage_alarm_voltage_value;1.000000;0.000000;0.1V;1
+989;3;42116;U16;;Battery undervoltage alarm recovery voltage value;battery_undervoltage_alarm_recovery_voltage_value;1.000000;0.000000;0.1V;1
+990;3;42117;U16;;Battery discharge cutoff voltage value;battery_discharge_cutoff_voltage_value;1.000000;0.000000;0.1V;1
+991;3;42118;U16;;Battery discharge cutoff recovery voltage value;battery_discharge_cutoff_recovery_voltage_value;1.000000;0.000000;0.1V;1
+992;3;42119;I16;;Battery temperature;battery_temperature_1;1.000000;0.000000;0.1℃;1
+993;3;42120;I16;;Temperature compensation value;temperature_compensation_value;1.000000;0.000000;1mV/℃;1
+994;3;42121;U16;;Battery internal resistance;battery_internal_resistance;1.000000;0.000000;1mΩ;1
+995;3;42122;U16;;Battery capacity;battery_capacity;1.000000;0.000000;1Ah;1
+996;3;42123;I16;;Maximum total charging current of battery;maximum_total_charging_current_of_battery;1.000000;0.000000;1A;1
+997;3;42124;I16;;Maximum total discharge current of battery;maximum_total_discharge_current_of_battery;1.000000;0.000000;1A;1
+998;3;42125;U16;;Battery discharge cutoff voltage in hybrid mode;battery_discharge_cutoff_voltage_in_hybrid_mode;1.000000;0.000000;0.1V;1
+999;3;42126;U16;;Battery discharge cutoff SOC in hybrid mode;battery_discharge_cutoff_soc_in_hybrid_mode;1.000000;0.000000;1%;1
+1000;3;42127;U16;;Cutoff recovery voltage in hybrid mode;cutoff_recovery_voltage_in_hybrid_mode;1.000000;0.000000;0.1V;1
+1001;3;42128;U16;;Cut-off recovery of SOC in hybrid mode;cutoff_recovery_of_soc_in_hybrid_mode;1.000000;0.000000;1%;1
+1002;3;42130;U16;;Battery/BMS manufacturers;batterybms_manufacturers;1.000000;0.000000;'---;1
+1003;3;42131;U16;;reserve;reserve_10;1.000000;0.000000;;0
+1004;3;42132;U16;;Battery low voltage alarm SOC value;battery_low_voltage_alarm_soc_value;1.000000;0.000000;1%;1
+1005;3;42133;U16;;Battery undervoltage alarm restores SOC value;battery_undervoltage_alarm_restores_soc_value;1.000000;0.000000;1%;1
+1006;3;42134;U16;;Battery discharge cutoff SOC value;battery_discharge_cutoff_soc_value;1.000000;0.000000;1%;1
+1007;3;42135;U16;;Battery discharge cut-off restores SOC value;battery_discharge_cutoff_restores_soc_value;1.000000;0.000000;1%;1
+1008;3;42136;U16;;SOC value at charging stop;soc_value_at_charging_stop;1.000000;0.000000;1%;1
+1009;3;42137;U16;;Lithium battery wake-up enable (activate pack);lithium_battery_wakeup_enable_activate_pack;1.000000;0.000000;'---;1
+1010;3;42138;U16;;Communication with BMS failed, energy storage unit shut down, fault enable bit reported.;communication_with_bms_failed_energy_storage_unit_shut_down_fault_enable_bit_reported;1.000000;0.000000;'---;1
+1011;3;42139;U16;;Charging stops and SOC value is restored;charging_stops_and_soc_value_is_restored;1.000000;0.000000;1%;1
+1012;3;42150;U16;;Battery Information;battery_information_2;1.000000;0.000000;;1
+1013;3;42194;U16;;Charging stops and SOC value is restored;charging_stops_and_soc_value_is_restored_1;1.000000;0.000000;;1
+1014;3;42205;U16;;Battery Information;battery_information_3;1.000000;0.000000;;1
+1015;3;42249;U16;;Charging stops and SOC value is restored;charging_stops_and_soc_value_is_restored_2;1.000000;0.000000;;1
+1016;3;20010;U16;;Total battery pack voltage (PCS);total_battery_pack_voltage_pcs;1.000000;0.000000;0.1V;4
+1017;3;20011;I16;;Total battery pack current (PCS);total_battery_pack_current_pcs;1.000000;0.000000;0.1A;4
+1018;3;20013;U16;;Main control temperature;main_control_temperature;1.000000;0.000000;0.1℃;4
+1019;3;20014;U16;;SOC;soc_1;1.000000;0.000000;0.001;4
+1020;3;20015;U16;;SOH;soh_1;1.000000;0.000000;'%;4
+1021;3;20016;U16;;SOE;soe;1.000000;0.000000;0.001;4
+1022;3;20017;U16;;Charging cutoff voltage;charging_cutoff_voltage;1.000000;0.000000;0.1V;4
+1023;3;20018;U16;;Discharge cutoff voltage;discharge_cutoff_voltage_1;1.000000;0.000000;0.1V;4
+1024;3;20019;U16;;Maximum charging current;maximum_charging_current_1;1.000000;0.000000;0.1A;4
+1025;3;20020;U16;;Maximum discharge current;maximum_discharge_current_1;1.000000;0.000000;0.1A;4
+1026;3;20021;I32;;Cumulative charging power (high bytes);cumulative_charging_power_high_bytes;1.000000;0.000000;0.1 kWh;4
+1027;3;20022;U16;;Lowest cumulative charging capacity;lowest_cumulative_charging_capacity;1.000000;0.000000;;4
+1028;3;20023;I32;;High byte of cumulative discharge capacity;high_byte_of_cumulative_discharge_capacity;1.000000;0.000000;0.1 kWh;4
+1029;3;20024;U16;;Low byte of cumulative discharge capacity;low_byte_of_cumulative_discharge_capacity;1.000000;0.000000;;4
+1030;3;20025;I16;;Daily charging volume;daily_charging_volume;1.000000;0.000000;0.1 kWh;4
+1031;3;20026;I16;;Daily discharge volume;daily_discharge_volume;1.000000;0.000000;0.1 kWh;4
+1032;3;20027;I32;;Battery pack total power (high bytes);battery_pack_total_power_high_bytes;1.000000;0.000000;W;4
+1033;3;20028;U16;;Battery pack total power (low bytes);battery_pack_total_power_low_bytes;1.000000;0.000000;;4
+1034;3;20029;I16;;tooling status;tooling_status;1.000000;0.000000;;9
+1035;3;20030;I16;;Cell type;cell_type;1.000000;0.000000;;4
+1036;3;20031;U16;;Total battery pack voltage;total_battery_pack_voltage;1.000000;0.000000;0.1V;4
+1037;3;20032;I16;;Total current of battery pack;total_current_of_battery_pack;1.000000;0.000000;0.1A;4
+1038;3;20033;I32;;Battery pack total power high bytes;battery_pack_total_power_high_bytes_1;1.000000;0.000000;W;4
+1039;3;20034;U16;;Battery pack total power low bytes;battery_pack_total_power_low_bytes_1;1.000000;0.000000;;4
+1040;3;20200;U16;;highest single-unit voltage;highest_singleunit_voltage;1.000000;0.000000;1mV;4
+1041;3;20201;U16;;Minimum unit voltage;minimum_unit_voltage_1;1.000000;0.000000;1mV;4
+1042;3;20202;U16;;Highest single-unit voltage group number;highest_singleunit_voltage_group_number;1.000000;0.000000;;4
+1043;3;20203;U16;;Highest single-unit voltage serial number;highest_singleunit_voltage_serial_number;1.000000;0.000000;;4
+1044;3;20204;U16;;Lowest unit voltage group number;lowest_unit_voltage_group_number;1.000000;0.000000;;4
+1045;3;20205;U16;;Lowest single-unit voltage serial number;lowest_singleunit_voltage_serial_number;1.000000;0.000000;;4
+1046;3;20206;I16;;Maximum single-unit temperature;maximum_singleunit_temperature;1.000000;0.000000;0.1℃;4
+1047;3;20207;I16;;Minimum monomer temperature;minimum_monomer_temperature;1.000000;0.000000;0.1℃;4
+1048;3;20208;U16;;Highest single-unit temperature group number;highest_singleunit_temperature_group_number;1.000000;0.000000;;4
+1049;3;20209;U16;;Highest single-unit temperature serial number;highest_singleunit_temperature_serial_number;1.000000;0.000000;;4
+1050;3;20210;U16;;Lowest unit temperature group number;lowest_unit_temperature_group_number;1.000000;0.000000;;4
+1051;3;20211;U16;;Lowest monomer temperature serial number;lowest_monomer_temperature_serial_number;1.000000;0.000000;;4
+1052;3;20301;U16;;Slave DI signal status;slave_di_signal_status;1.000000;0.000000;;9
+1053;3;20302;U16;;Slave power supply voltage;slave_power_supply_voltage;1.000000;0.000000;V;4
+1054;3;20303;U16;;Slave version number;slave_version_number;1.000000;0.000000;;4
+1055;3;20311;U16;;Slave DI signal status;slave_di_signal_status_1;1.000000;0.000000;;9
+1056;3;20312;U16;;Slave power supply voltage;slave_power_supply_voltage_1;1.000000;0.000000;V;4
+1057;3;20313;U16;;Slave version number;slave_version_number_1;1.000000;0.000000;;4
+1058;3;20321;U16;;Slave DI signal status;slave_di_signal_status_2;1.000000;0.000000;;9
+1059;3;20322;U16;;Slave power supply voltage;slave_power_supply_voltage_2;1.000000;0.000000;V;4
+1060;3;20323;U16;;Slave version number;slave_version_number_2;1.000000;0.000000;;4
+1061;3;20331;U16;;Slave DI signal status;slave_di_signal_status_3;1.000000;0.000000;;9
+1062;3;20332;U16;;Slave power supply voltage;slave_power_supply_voltage_3;1.000000;0.000000;V;4
+1063;3;20333;U16;;Slave version number;slave_version_number_3;1.000000;0.000000;;4
+1064;3;20400;U16;;Battery status;battery_status_1;1.000000;0.000000;;9
+1065;3;20401;U16;;DRY drive control status;dry_drive_control_status;1.000000;0.000000;;9
+1066;3;20402;U16;;DI signal status;di_signal_status;1.000000;0.000000;;9
+1067;3;20403;U16;;Output positive terminal voltage;output_positive_terminal_voltage;1.000000;0.000000;0.1V;4
+1068;3;20404;U16;;Output negative terminal voltage;output_negative_terminal_voltage;1.000000;0.000000;0.1V;4
+1069;3;20405;U16;;Precharge relay status;precharge_relay_status;1.000000;0.000000;;9
+1070;3;20406;U16;;Total positive contactor status;total_positive_contactor_status;1.000000;0.000000;;9
+1071;3;20407;U16;;Total negative contactor status;total_negative_contactor_status;1.000000;0.000000;;9
+1072;3;20408;U16;;Loop count;loop_count;1.000000;0.000000;;4
+1073;3;20500;U16;;Active balancing current;active_balancing_current;1.000000;0.000000;0.1A;4
+1074;3;20501;U16;;Relay front voltage;relay_front_voltage;1.000000;0.000000;0.1V;4
+1075;3;20502;U16;;Relay voltage;relay_voltage;1.000000;0.000000;0.1V;4
+1076;3;20503;U16;;Resistance to ground;resistance_to_ground;1.000000;0.000000;KΩ;4
+1077;3;20504;U16;;negative resistance to ground;negative_resistance_to_ground;1.000000;0.000000;KΩ;4
+1078;3;20505;U16;;Number of online individual voltages;number_of_online_individual_voltages;1.000000;0.000000;;4
+1079;3;20506;U16;;Online number of individual unit temperatures;online_number_of_individual_unit_temperatures;1.000000;0.000000;;4
+1080;3;20507;U16;;Number of online modules;number_of_online_modules;1.000000;0.000000;;4
+1081;3;20508;U16;;From the addressing state;from_the_addressing_state;1.000000;0.000000;;4
+1082;3;20509;U16;;Average voltage;average_voltage;1.000000;0.000000;mV;4
+1083;3;20510;I16;;Average temperature;average_temperature;1.000000;0.000000;0.1℃;4
+1084;3;20511;U16;;Single cell voltage difference;single_cell_voltage_difference;1.000000;0.000000;mV;4
+1085;3;20512;I16;;Individual cell temperature difference;individual_cell_temperature_difference;1.000000;0.000000;0.1℃;4
+1086;3;20600;U16;;Number of alarm codes;number_of_alarm_codes;1.000000;0.000000;;9
+1087;3;20601;U16;;Main alarm code 1;main_alarm_code_1_1;1.000000;0.000000;;9
+1088;3;20602;U16;;Child alarm code 1;child_alarm_code_1;1.000000;0.000000;;9
+1089;3;20603;U16;;Main alarm code 2;main_alarm_code_2;1.000000;0.000000;;9
+1090;3;20604;U16;;Sub-alarm code 2;subalarm_code_2;1.000000;0.000000;;9
+1091;3;20619;U16;;Main alarm code 10;main_alarm_code_10;1.000000;0.000000;;9
+1092;3;20620;U16;;Child alarm code 10;child_alarm_code_10;1.000000;0.000000;;9
+1093;3;20640;U16;;Number of protection codes;number_of_protection_codes;1.000000;0.000000;;4
+1094;3;20641;U16;;Master protection code 1;master_protection_code_1;1.000000;0.000000;;4
+1095;3;20642;U16;;Sub-protection code 1;subprotection_code_1;1.000000;0.000000;;4
+1096;3;20643;U16;;Master protection code 2;master_protection_code_2;1.000000;0.000000;;4
+1097;3;20644;U16;;Sub-protection code 2;subprotection_code_2;1.000000;0.000000;;4
+1098;3;20659;U16;;Master protection code 10;master_protection_code_10;1.000000;0.000000;;4
+1099;3;20660;U16;;Sub-protection code 10;subprotection_code_10;1.000000;0.000000;;4
+1100;3;20680;U16;;Number of fault codes;number_of_fault_codes;1.000000;0.000000;;9
+1101;3;20681;U16;;Main fault code 1;main_fault_code_1_1;1.000000;0.000000;;9
+1102;3;20682;U16;;Sub-fault code 1;subfault_code_1;1.000000;0.000000;;9
+1103;3;20683;U16;;Main fault code 2;main_fault_code_2;1.000000;0.000000;;9
+1104;3;20684;U16;;Sub-fault code 2;subfault_code_2;1.000000;0.000000;;9
+1105;3;20699;U16;;Main fault code 10;main_fault_code_10;1.000000;0.000000;;9
+1106;3;20700;U16;;Sub-fault code 10;subfault_code_10;1.000000;0.000000;;9
+1107;3;20001;U16;;BMS serial number SN0;bms_serial_number_sn0;1.000000;0.000000;'---;4
+1108;3;20002;U16;;BMS serial number SN1;bms_serial_number_sn1;1.000000;0.000000;'---;4
+1109;3;20003;U16;;BMS serial number SN2;bms_serial_number_sn2;1.000000;0.000000;'---;4
+1110;3;20004;U16;;BMS serial number SN3;bms_serial_number_sn3;1.000000;0.000000;'---;4
+1111;3;20005;U16;;BMS serial number SN4;bms_serial_number_sn4;1.000000;0.000000;'---;4
+1112;3;20006;U16;;BMS serial number SN5;bms_serial_number_sn5;1.000000;0.000000;'---;4
+1113;3;20007;U16;;BMS serial number SN6;bms_serial_number_sn6;1.000000;0.000000;'---;4
+1114;3;20008;U16;;BMS serial number SN7;bms_serial_number_sn7;1.000000;0.000000;'---;1
+1115;3;20009;U16;;BMS serial number SN8;bms_serial_number_sn8;1.000000;0.000000;'---;1
+1116;3;23009;U16;;Change of working mode;change_of_working_mode;1.000000;0.000000;'---;4
+1117;3;23011;U16;;Parameter processing;parameter_processing;1.000000;0.000000;'---;4
+1118;3;23020;U16;;years;years_1;1.000000;0.000000;'---;1
+1119;3;23021;U16;;Day Hour;day_hour_1;1.000000;0.000000;'---;1
+1120;3;23022;U16;;minutes and seconds;minutes_and_seconds_1;1.000000;0.000000;'---;1

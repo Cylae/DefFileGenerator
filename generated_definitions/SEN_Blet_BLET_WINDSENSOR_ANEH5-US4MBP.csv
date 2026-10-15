@@ -1,0 +1,30 @@
+modbusRTU;Sensor;Blet;BLET_WINDSENSOR_ANEH5-US4MBP;;;;;;;
+1;3;0;I16;;Device State;device_state;1.000000;0.000000;;4
+2;3;1;I16;;Wind Direction;wind_direction;1.000000;0.000000;°;4
+3;3;2;F32;;Wind Speed;wind_speed;1.000000;0.000000;m/s;4
+4;3;4;F32;;Temperature;temperature;1.000000;0.000000;?;4
+5;3;6;F32;;Humidity;humidity;1.000000;0.000000;'%;4
+6;3;8;F32;;Air Pressure;air_pressure;1.000000;0.000000;hPa;4
+7;3;10;I16;;Compass Heading;compass_heading;1.000000;0.000000;°;4
+8;3;11;I16;;Precipitation Type;precipitation_type;1.000000;0.000000;Refer to Appendix II;4
+9;3;12;F32;;Precipitation Intensity;precipitation_intensity;1.000000;0.000000;Single-precision;4
+10;3;14;F32;;Accumulated Precipitation;accumulated_precipitation;1.000000;0.000000;Single-precision;4
+11;3;16;I16;;UV Index;uv_index;1.000000;0.000000;UV index from 0 to 15;4
+12;3;17;I16;;GPS Status;gps_status;1.000000;0.000000;;4
+13;3;18;F32;;GPS Speed;gps_speed;1.000000;0.000000;Km/h;4
+14;3;20;I16;;GPS Heading;gps_heading;1.000000;0.000000;°;4
+15;3;21;F32;;Longitude;longitude;1.000000;0.000000;East: positive West: negative;4
+16;3;23;F32;;Latitude;latitude;1.000000;0.000000;North: positive South: negative;4
+17;3;25;F32;;PM2.5 concentration;pm25_concentration;1.000000;0.000000;ug/m^3;4
+18;3;27;F32;;Visibility;visibility;1.000000;0.000000;m;4
+19;3;29;F32;;Radiation Illuminance;radiation_illuminance;1.000000;0.000000;Lux;4
+20;3;31;F32;;Accumulated solar radiation;accumulated_solar_radiation;1.000000;0.000000;Daily Solar Radiation KJ;4
+21;3;33;F32;;Solar Radiation Power;solar_radiation_power;1.000000;0.000000;W/m^2;4
+22;3;35;F32;;Compass Corrected (True) Wind Direction;compass_corrected_true_wind_direction;1.000000;0.000000;°;4
+23;3;37;F32;;Altitude;altitude;1.000000;0.000000;m;4
+24;3;39;F32;;GPS Corrected(True) Wind Speed;gps_correctedtrue_wind_speed;1.000000;0.000000;m/s;4
+25;3;41;F32;;Accumulated Snow Thickness;accumulated_snow_thickness;1.000000;0.000000;m;4
+26;3;43;F32;;UV Radiation;uv_radiation;1.000000;0.000000;W/m2;4
+27;3;45;F32;;PM1.0 concentration;pm10_concentration;1.000000;0.000000;ug/m^3;4
+28;3;47;F32;;PM10 concentration;pm10_concentration_1;1.000000;0.000000;ug/m^3;4
+29;3;49;F32;;Color Temp;color_temp;1.000000;0.000000;K;4

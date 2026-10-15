@@ -1,0 +1,77 @@
+modbusRTU;Inverter;Solargate;INV_SOLARGATE_2009_WebdynSunPM;;;;;;;
+1;3;356_16;STRING;;Drive serial number or code;SERIAL;1.000000;0.000000;;1
+2;3;0;U16;;PKW1_1;pkw1_1;1.000000;0.000000;;0
+3;3;1;U16;;PKW2_1;pkw2_1;1.000000;0.000000;;0
+4;3;2;U16;;PKW3_1;pkw3_1;1.000000;0.000000;;0
+5;3;3;U16;;PKW4_1;pkw4_1;1.000000;0.000000;;0
+6;3;5;U16;;Auxiliary Command Word (AuxCommWord);auxiliary_command_word_auxcommword;1.000000;0.000000;;0
+7;3;9;U16;;Digital output command: Microprocessor Board DI/DO Exp Board;digital_output_command_microprocessor_board_dido_exp_board;1.000000;0.000000;;0
+8;3;15;I16;;Value to be sent on analog output AO1;value_to_be_sent_on_analog_output_ao1;0.000381;0.000000;V;0
+9;3;16;I16;;Value to be sent on analog output AO2;value_to_be_sent_on_analog_output_ao2;0.000381;0.000000;V;0
+10;3;17;I16;;Value to be sent on analog output AO3;value_to_be_sent_on_analog_output_ao3;0.000381;0.000000;V;0
+11;3;18;I16;;Value to be sent on analog output AO4;value_to_be_sent_on_analog_output_ao4;0.000381;0.000000;V;0
+12;3;21;U16;;Command Word (Asi or Standard);command_word_asi_or_standard;1.000000;0.000000;;0
+13;3;200;U16;;PKW1_2;pkw1_2;1.000000;0.000000;;4
+14;3;201;U16;;PKW2_2;pkw2_2;1.000000;0.000000;;4
+15;3;202;U16;;PKW3_2;pkw3_2;1.000000;0.000000;;4
+16;3;203;U16;;PKW4_2;pkw4_2;1.000000;0.000000;;4
+17;3;204;U16;;Status Word;status_word;1.000000;0.000000;;4
+18;3;205;U16;;DC bus voltage (Vdc)_1;dc_bus_voltage_vdc_1;1.000000;0.000000;;4
+19;3;206;U16;;RMS AcLine current (Is);rms_acline_current_is;1.000000;0.000000;;4
+20;3;207;I16;;Active converter current (Isd);active_converter_current_isd;1.000000;0.000000;;4
+21;3;208;I16;;Reactive converter current (Isq);reactive_converter_current_isq;1.000000;0.000000;;4
+22;3;209;I16;;RMS AcLine reactive current;rms_acline_reactive_current;1.000000;0.000000;;4
+23;3;210;I16;;AC Line Power Factor (cosφ);ac_line_power_factor_cos;0.000031;0.000000;;4
+24;3;211;U16;;DC bus voltage (Vdc)_2;dc_bus_voltage_vdc_2;1.000000;0.000000;;4
+25;3;212;U16;;AC Line Voltage_1;ac_line_voltage_1;1.000000;0.000000;;4
+26;3;213;U16;;AC Line frequency;ac_line_frequency;1.000000;0.000000;;4
+27;3;214;U16;;Converter output voltage;converter_output_voltage;1.000000;0.000000;;4
+28;3;215;U16;;RMS converter current;rms_converter_current;1.000000;0.000000;;4
+29;3;216;I16;;AC Line Active Power;ac_line_active_power;1.000000;0.000000;;4
+30;3;217;I16;;AC Line Reactive Power;ac_line_reactive_power;1.000000;0.000000;;4
+31;3;218;U16;;Phase sequence;phase_sequence;1.000000;0.000000;;4
+32;3;219;I16;;Analog imput voltage 1 (VsyncUV);analog_imput_voltage_1_vsyncuv;0.000381;0.000000;V;4
+33;3;220;I16;;Analog imput voltage 2 (VsyncWU);analog_imput_voltage_2_vsyncwu;0.000381;0.000000;V;4
+34;3;221;I16;;Analog output (AO 1) command from network;analog_output_ao_1_command_from_network;0.000381;0.000000;V;4
+35;3;222;I16;;Analog output (AO 2) command from network;analog_output_ao_2_command_from_network;0.000381;0.000000;V;4
+36;3;223;I16;;Analog output (AO 3) command from network;analog_output_ao_3_command_from_network;0.000381;0.000000;V;4
+37;3;224;I16;;Analog output (AO 4) command from network;analog_output_ao_4_command_from_network;0.000381;0.000000;V;4
+38;3;255;U16;;Modbus comunication state;modbus_comunication_state;1.000000;0.000000;;4
+39;3;307;U16;;Status for PC;status_for_pc;1.000000;0.000000;;4
+40;3;308;U16;;DC current;dc_current;0.100000;0.000000;A;4
+41;3;309;U16;;DC voltage;dc_voltage;0.100000;0.000000;V;4
+42;3;310;U16;;DC link power;dc_link_power;0.100000;0.000000;kW;4
+43;3;311;U16;;Output Frequency;output_frequency;0.100000;0.000000;Hz;4
+44;3;312;U16;;AC line current;ac_line_current;0.100000;0.000000;A;4
+45;3;313;U16;;AC line voltage_2;ac_line_voltage_2;0.100000;0.000000;V;4
+46;3;314;I16;;CPU temperature;cpu_temperature;0.100000;0.000000;Degr.Celsius;4
+47;3;315;I16;;Active Power;P_AC;0.100000;0.000000;kW;4
+48;3;316;U16;;Daily Peak Power;daily_peak_power;0.100000;0.000000;kW;4
+49;3;317;U16;;Maximum absolute power;maximum_absolute_power;0.100000;0.000000;kW;4
+50;3;318;U16;;Daily energy;daily_energy;0.100000;0.000000;kWh;4
+51;3;319;U32_W;;Weekly energy;weekly_energy;0.100000;0.000000;kWh;4
+52;3;321;U32_W;;Monthly energy;monthly_energy;0.100000;0.000000;kWh;4
+53;3;323;U32_W;;Yearly energy;yearly_energy;0.100000;0.000000;kWh;4
+54;3;325;U32_W;;Total energy;E_TOT;0.100000;0.000000;kWh;4
+55;3;327;U16;;FieldNet Bitword: Last protection/alarm encoding;fieldnet_bitword_last_protectionalarm_encoding;1.000000;0.000000;;4
+56;3;328;U16;;FieldNet Bitword: Trip hardware (TripsHW);fieldnet_bitword_trip_hardware_tripshw;1.000000;0.000000;;4
+57;3;329;U16;;FieldNet Bitword: Trip software 1 (TripsSW 1);fieldnet_bitword_trip_software_1_tripssw_1;1.000000;0.000000;;4
+58;3;330;U16;;FieldNet Bitword: Alarms (Alarm);fieldnet_bitword_alarms_alarm;1.000000;0.000000;;4
+59;3;331;U16;;FieldNet Bitword: Terminal block status (TBStatus);fieldnet_bitword_terminal_block_status_tbstatus;1.000000;0.000000;;4
+60;3;332;U16;;FieldNet Bitword: Auxiliary protection word (AuxTrip);fieldnet_bitword_auxiliary_protection_word_auxtrip;1.000000;0.000000;;4
+61;3;333;U16;;FieldNet Bitword: DI expansion board status (InputStatus);fieldnet_bitword_di_expansion_board_status_inputstatus;1.000000;0.000000;;4
+62;3;334;U16;;FieldNet Bitword: Saturation regulator word (SatRegWord);fieldnet_bitword_saturation_regulator_word_satregword;1.000000;0.000000;;4
+63;3;335;U16;;FieldNet Bitword: Echo back Command Word (ExecCommand);fieldnet_bitword_echo_back_command_word_execcommand;1.000000;0.000000;;4
+64;3;336;U16;;FieldNet Bitword: Drive Status Word (Status Word);fieldnet_bitword_drive_status_word_status_word;1.000000;0.000000;;4
+65;3;337;U16;;FieldNet Bitword: Trip software 2 (TripSW 2);fieldnet_bitword_trip_software_2_tripsw_2;1.000000;0.000000;;4
+66;3;338;U16;;Last protection and/or alarm occurred;last_protection_andor_alarm_occurred;1.000000;0.000000;;4
+67;3;341_12;STRING;;Drive size;drive_size;1.000000;0.000000;;1
+68;3;347_12;STRING;;Software release;software_release;1.000000;0.000000;;1
+69;3;353_2;STRING;;Software date: day;software_date_day;1.000000;0.000000;;1
+70;3;354_2;STRING;;Software date: month;software_date_month;1.000000;0.000000;;1
+71;3;355_2;STRING;;Software date: year;software_date_year;1.000000;0.000000;;1
+72;3;364_16;STRING;;Cabinet serial number or code;cabinet_serial_number_or_code;1.000000;0.000000;;1
+73;3;432;U16;;PKW1 monitor;pkw1_monitor;1.000000;0.000000;;4
+74;3;433;U16;;PKW2 monitor;pkw2_monitor;1.000000;0.000000;;4
+75;3;434;U16;;PKW3 monitor;pkw3_monitor;1.000000;0.000000;;4
+76;3;435;U16;;PKW4 monitor;pkw4_monitor;1.000000;0.000000;;4

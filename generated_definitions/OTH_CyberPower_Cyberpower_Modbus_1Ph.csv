@@ -1,0 +1,86 @@
+modbusRTU;Other;CyberPower;Cyberpower_Modbus_1Ph;;;;;;;
+1;4;4096;U32_W;;Product_ID;product_id;1.000000;0.000000;;4
+2;4;4098;U16;;Inverter_Rated_Power;inverter_rated_power;1.000000;0.000000;;4
+3;4;4099;U16;;Peak Panel_Power;peak_panel_power;1.000000;0.000000;;4
+4;4;4100;U16;;Installation_Year;installation_year;1.000000;0.000000;;4
+5;4;4101;U16;;Installation_Month;installation_month;1.000000;0.000000;;4
+6;4;4102;U16;;Installation_Day;installation_day;1.000000;0.000000;;4
+7;4;4103;U16;;RS485_ID;UNIT_ID;1.000000;0.000000;;4
+8;4;4104_16;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+9;4;4112_16;STRING;;Model Name;MODEL;1.000000;0.000000;;4
+10;4;4120;U16;;Processor1 FW Version;processor1_fw_version;1.000000;0.000000;;4
+11;4;4121;U16;;Processor1 FW Date;processor1_fw_date;1.000000;0.000000;;4
+12;4;4122;U16;;Processor1 HW Version;processor1_hw_version;1.000000;0.000000;;4
+13;4;4123;U16;;Processor2 FW Version;processor2_fw_version;1.000000;0.000000;;4
+14;4;4124;U16;;Processor2 FW Date;processor2_fw_date;1.000000;0.000000;;4
+15;4;4125;U16;;Processor2 HW Version;processor2_hw_version;1.000000;0.000000;;4
+16;4;4126;U16;;Processor3 FW Version;processor3_fw_version;1.000000;0.000000;;4
+17;4;4127;U16;;Processor3 FW Date;processor3_fw_date;1.000000;0.000000;;4
+18;4;4128;U16;;Processor3 HW Version;processor3_hw_version;1.000000;0.000000;;4
+19;4;4129;U16;;Processor4 FW Version;processor4_fw_version;1.000000;0.000000;;4
+20;4;4130;U16;;Processor4 FW Date;processor4_fw_date;1.000000;0.000000;;4
+21;4;4131;U16;;Processor4 HW Version;processor4_hw_version;1.000000;0.000000;;4
+22;4;4132;U16;;Processor5 FW Version;processor5_fw_version;1.000000;0.000000;;4
+23;4;4133;U16;;Processor5 FW Date;processor5_fw_date;1.000000;0.000000;;4
+24;4;4134;U16;;Processor5 HW Version;processor5_hw_version;1.000000;0.000000;;4
+25;4;4135;U16;;Processor6 FW Version;processor6_fw_version;1.000000;0.000000;;4
+26;4;4136;U16;;Processor6 FW Date;processor6_fw_date;1.000000;0.000000;;4
+27;4;4137;U16;;Processor6 HW Version;processor6_hw_version;1.000000;0.000000;;4
+28;4;4138;U16;;Grid code (Country);grid_code_country;1.000000;0.000000;;4
+29;4;4139;U16;;Custom flag;custom_flag;1.000000;0.000000;;4
+30;4;4140;U16;;DC Connection Detection;dc_connection_detection;1.000000;0.000000;;4
+31;4;4141;U16;;DC Connection Status;dc_connection_status;1.000000;0.000000;;4
+32;4;4142;U16;;Language;language;1.000000;0.000000;;4
+33;4;4143;U16;;System Structure;system_structure;1.000000;0.000000;;4
+34;4;4144;U16;;Inverter Status;inverter_status;1.000000;0.000000;;4
+35;4;4145;U16;;CPS_PV_Status;cps_pv_status;1.000000;0.000000;;4
+36;4;4146;U16;;Function Status Counter;function_status_counter;1.000000;0.000000;;4
+37;4;4147;U16;;Reconnected Time;reconnected_time;1.000000;0.000000;;4
+38;4;4148;U16;;Event Index Start;event_index_start;1.000000;0.000000;;4
+39;4;4149;U16;;Event Index End;event_index_end;1.000000;0.000000;;4
+40;4;4150;U16;;Input1 R Leakage;input1_r_leakage;1.000000;0.000000;kOhm;4
+41;4;4151;U16;;Input2 R Leakage;input2_r_leakage;1.000000;0.000000;kOhm;4
+42;4;4152;U32_W;;Today kWh;today_kwh;1.000000;0.000000;Wh;4
+43;4;4154;U32_W;;Today Runtime;today_runtime;1.000000;0.000000;s;4
+44;4;4156;U32_W;;System Life kWh;WattHours;1.000000;0.000000;Wh;4
+45;4;4158;U32_W;;System Life Runtime;system_life_runtime;1.000000;0.000000;s;4
+46;4;4160;U32_W;;Input1 Today kWh;input1_today_kwh;1.000000;0.000000;Wh;4
+47;4;4162;U32_W;;Input1 Today Runtime;input1_today_runtime;1.000000;0.000000;s;4
+48;4;4164;U32_W;;Input1 Life kWh;input1_life_kwh;1.000000;0.000000;Wh;4
+49;4;4166;U32_W;;Input1 Life Runtime;input1_life_runtime;1.000000;0.000000;s;4
+50;4;4168;U32_W;;Input2 Today kWh;input2_today_kwh;1.000000;0.000000;Wh;4
+51;4;4170;U32_W;;Input2 Today Runtime;input2_today_runtime;1.000000;0.000000;s;4
+52;4;4172;U32_W;;Input2 Life kWh;input2_life_kwh;1.000000;0.000000;Wh;4
+53;4;4174;U32_W;;Input2 Life Runtime;input2_life_runtime;1.000000;0.000000;s;4
+54;4;4176;U16;;Input1 Volt (average);input1_volt_average;0.100000;0.000000;V;4
+55;4;4177;U16;;Input1 Curr (average);input1_curr_average;0.010000;0.000000;A;4
+56;4;4178;U16;;Input1 Watt (average);input1_watt_average;1.000000;0.000000;W;4
+57;4;4179;U16;;Input2 Volt (average);input2_volt_average;0.100000;0.000000;V;4
+58;4;4180;U16;;Input2 Curr (average);input2_curr_average;0.010000;0.000000;A;4
+59;4;4181;U16;;Input2 Watt (average);input2_watt_average;1.000000;0.000000;W;4
+60;4;4182;U16;;Bus Volt (Pos), (average);bus_volt_pos_average;0.100000;0.000000;V;4
+61;4;4183;U16;;Bus Volt (Neg), (average);bus_volt_neg_average;0.100000;0.000000;V;4
+62;4;4184;U16;;AC Volt (average);ac_volt_average;0.100000;0.000000;V;4
+63;4;4185;U16;;AC Curr (average);ac_curr_average;0.010000;0.000000;A;4
+64;4;4186;U16;;AC Watt (average);ac_watt_average;1.000000;0.000000;W;4
+65;4;4187;U16;;AC Freq (average);ac_freq_average;0.010000;0.000000;Hz;4
+66;4;4188;U16;;AC Volt (redundant) (average);ac_volt_redundant_average;0.100000;0.000000;V;4
+67;4;4189;U16;;AC Freq (redundant) (average);ac_freq_redundant_average;0.010000;0.000000;Hz;4
+68;4;4190;U16;;Temperature (Ambient);temperature_ambient;1.000000;0.000000;K;4
+69;4;4191;U16;;Temperature (Heatsink);temperature_heatsink;1.000000;0.000000;K;4
+70;4;4192;U16;;Input1 Volt;input1_volt;0.100000;0.000000;V;4
+71;4;4193;U16;;Input1 Curr;input1_curr;0.010000;0.000000;A;4
+72;4;4194;U16;;Input1 Watt;input1_watt;1.000000;0.000000;W;4
+73;4;4195;U16;;Input2 Volt;input2_volt;0.100000;0.000000;V;4
+74;4;4196;U16;;Input2 Curr;input2_curr;0.010000;0.000000;A;4
+75;4;4197;U16;;Input2 Watt;input2_watt;1.000000;0.000000;W;4
+76;4;4198;U16;;Bus Volt (Pos);bus_volt_pos;0.100000;0.000000;V;4
+77;4;4199;U16;;Bus Volt (Neg);bus_volt_neg;0.100000;0.000000;V;4
+78;4;4200;U16;;AC Volt;ac_volt;0.100000;0.000000;V;4
+79;4;4201;U16;;AC Curr;ac_curr;0.010000;0.000000;A;4
+80;4;4202;U16;;AC Watt;Watts;1.000000;0.000000;W;4
+81;4;4203;U16;;AC Freq;FREQ;0.010000;0.000000;Hz;4
+82;4;4204;U16;;AC Volt (redundant);ac_volt_redundant;0.100000;0.000000;V;4
+83;4;4205;U16;;AC Freq (redundant);ac_freq_redundant;0.010000;0.000000;Hz;4
+84;4;4206;U16;;Input1 R Leakage_1;input1_r_leakage_1;1.000000;0.000000;kOhm;4
+85;4;4207;U16;;Input2 R Leakage_1;input2_r_leakage_1;1.000000;0.000000;kOhm;4

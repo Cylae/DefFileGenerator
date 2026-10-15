@@ -1,0 +1,6 @@
+Modbus;Sensor;ATERSA;DATASOLMET
+1;3;96;U16;;solarimeter-Irra1.irradiation;;1.0;0.0;W/m2;4
+2;3;97;U16;;solarimeter-Irra2.irradiation;;1.0;0.0;W/m2;4
+3;3;98;U16;;solarimeter-Irra3.irradiation;;1.0;0.0;W/m2;4
+4;3;106;I16;;thermometer-Temp1.temperature;;0.1;0.0;Deg.Celsius;4
+5;3;107;I16;;thermometer-Temp1.module_temp;TEMP_CELL;0.1;0.0;Deg.Celsius;4

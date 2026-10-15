@@ -1,0 +1,12 @@
+modbusRTU;Meter;LEGRAND ;GENERIC;;;;;;;
+1;3;0;F32;;Numro de srie;;1;0;;4
+2;3;2;F32;;Index Energie;;1;0;kWh;4
+3;3;4;F32;;Volume;;1;0;Litre;4
+4;3;6;F32;;Puissance instantane;P_AC;0.1;0;kW;4
+5;3;8;F32;;Dbit instantan;;1;0;Litre/h;4
+6;3;10;F32;;Temprature Aller ;;0.1;0;C;4
+7;3;12;F32;;Temprature Retour;;0.1;0;C;4
+8;3;14;F32;;Diffrence de Temprature;;0.01;0;K;4
+9;3;16;F32;;Index Energie Climatisation;;1;0;kWh;4
+10;3;18;F32;;Entre compteur deau 1;;1;0;Litre;4
+11;3;20;F32;;Entre compteur deau 2;;1;0;Litre;4

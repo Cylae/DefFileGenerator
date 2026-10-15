@@ -1,0 +1,121 @@
+modbus;Inverter;GoodWe;G3;;;;;;;
+1;3;256;U16;;Active power (%);P_AC;1;0;%;4
+2;3;257;U16;;Power factor;PF;1;0;%;4
+3;3;258;U32;;Reactive power;Q_AC;1;0;Var;4
+4;3;265;I16;;Reactive power (%);;1;0;%;4
+5;3;288;U16;;Inverter on;;1;0;;4
+6;3;289;U16;;Inverter off;;1;0;;4
+7;3;290;U16;;Inverter reboot;;1;0;;4
+8;3;546;U32;;Total power generation;E_TOT;0.1;0;kWh;4
+9;3;554;U16;;Grid A phase voltage;U_AC_1;0.1;0;V;4
+10;3;557;U16;;Grid A phase current;I_AC_1;0.1;0;A;4
+11;3;560;U16;;Grid frequency;FREQ;0.01;0;Hz;4
+12;3;563;U16;;Active power;;1;0;W;4
+13;3;565;U16;;Internal temperature;TEMP;0.1;0;DegC;4
+14;3;566;U16;;Daily power generation;E_DAY;0.1;0;kWh;4
+15;3;886;I16;;Power factor_2;;0.001;0;;4
+16;3;893;I32;;AC reactive power;;0.001;0;kVAR;4
+17;3;30004_16;STRING;;Device Serial Number;SERIAL;1;0;;1
+18;3;30034;U16;;DSP1 software version;;1;0;;1
+19;3;30035;U16;;DSP2 software version;;1;0;;1
+20;3;30100;U16;;Device RTC year and month;;1;0;;1
+21;3;30101;U16;;Device RTC day and hour;;1;0;;1
+22;3;30102;U16;;Device RTC minute and seconds;;1;0;;1
+23;3;30103;U16;;PV1 voltage;U_DC_STRING_1;0.1;0;V;4
+24;3;30104;U16;;PV1 current;I_DC_STRING_1;0.1;0;A;4
+25;3;30105;U16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
+26;3;30106;U16;;PV2 current;I_DC_STRING_2;0.1;0;A;4
+27;3;30107;U16;;PV3 voltage;U_DC_STRING_3;0.1;0;V;4
+28;3;30108;U16;;PV3 current;I_DC_STRING_3;0.1;0;A;4
+29;3;30109;U16;;PV4 voltage;U_DC_STRING_4;0.1;0;V;4
+30;3;30110;U16;;PV4 current;I_DC_STRING_4;0.1;0;A;4
+31;3;30115;U16;;Phase voltage AB;;0.1;0;V;4
+32;3;30116;U16;;Phase voltage BC;;0.1;0;V;4
+33;3;30117;U16;;Phase voltage CA;;0.1;0;V;4
+34;3;30118;U16;;Phase voltage AN;;0.1;0;V;4
+35;3;30119;U16;;Phase voltage BN;;0.1;0;V;4
+36;3;30120;U16;;Phase voltage CN;;0.1;0;V;4
+37;3;30121;U16;;Phase A current;;0.1;0;A;4
+38;3;30122;U16;;Phase B current;I_AC_2;0.1;0;A;4
+39;3;30123;U16;;Phase C current;I_AC_3;0.1;0;A;4
+40;3;30124;U16;;Phase A frequency;FREQ_1;0.01;0;Hz;4
+41;3;30125;U16;;Phase B frequency;FREQ_2;0.01;0;Hz;4
+42;3;30126;U16;;Phase C frequency;FREQ_3;0.01;0;Hz;4
+43;3;30127;U32;;AC active power;;1;0;W;4
+44;3;30129;U16;;Inverter present status;;1;0;;4
+45;3;30130;U32;;Fault code;;1;0;;4
+46;3;30132;U16;;Warning code;;1;0;;4
+47;3;30133;U32;;AC apparent power;S_AC;1;0;kVA;4
+48;3;30135;I32;;AC reactive power (telemetry);;1;0;Var;4
+49;3;30137;I32;;Total input power;;1;0;W;4
+50;3;30141;I16;;Cabinet Temperature;TEMP_INT;0.1;0;DegC;4
+51;3;30144;U16;;Daily AC energy;;0.1;0;kWh;4
+52;3;30145;U32;;Gross AC energy;;0.1;0;kWh;4
+53;3;30147;U32;;Total generation time;TOT;1;0;H;4
+54;3;30149;U16;;Safety Country Code;;1;0;;1
+55;3;30163;U16;;BUS Voltage;U_DC;0.1;0;V;4
+56;3;30164;U16;;NBUS Voltage;;0.1;0;V;4
+57;3;30165;U32;;Derating Mode;;1;0;;4
+58;3;30175;U16;;String current 1;;0.1;0;A;4
+59;3;30176;U16;;String current 2;;0.1;0;A;4
+60;3;30177;U16;;String current 3;;0.1;0;A;4
+61;3;30178;U16;;String current 4;;0.1;0;A;4
+62;3;30179;U16;;String current 5;;0.1;0;A;4
+63;3;30180;U16;;String current 6;;0.1;0;A;4
+64;3;30181;U16;;String current 7;;0.1;0;A;4
+65;3;30182;U16;;String current 8;;0.1;0;A;4
+66;3;33050;I16;;SpecOverExtPowerFactor;;0.01;0;;4
+67;3;33051;U16;;SpecOverExtPower;;1;0;W;4
+68;3;33052;I16;;SpecUnderExtPowerFactor;;0.01;0;;4
+69;3;33053;U16;;SpecUnderExtPower;;1;0;W;4
+70;3;33054;U16;;ApparentPowerRate;;1;0;W;4
+71;3;33055_16;STRING;;NormOperaCategory;;1;0;;1
+72;3;33063_16;STRING;;AbnormOperaCategory;;1;0;;1
+73;3;33071;I16;;ReactiveInjectPowerRate;;1;0;VA;4
+74;3;33072;I16;;ReactiveAbsorbPowerRate;;1;0;VA;4
+75;3;33073;U16;;ActivePowerRate;;1;0;W;4
+76;3;33074;U16;;ApparentPowerRate (alt);;1;0;VA;4
+77;3;33075;U16;;ACVoltNormRate;;0.1;0;V;4
+78;3;33076;U16;;ACVoltMaxRate;;0.1;0;V;4
+79;3;33077;U16;;ACVoltMinRate;;0.1;0;V;4
+80;3;33078;U32;;SupportedControlMode;;1;0;;1
+81;3;33080_16;STRING;;Manufacturers;MANUFACTURER;1;0;;1
+82;3;33088;U16;;ReactiveSusceptance;;1;0;;4
+83;3;37102;U16;;System error 1;;1;0;;4
+84;3;37107;U16;;DCside error2;;1;0;;4
+85;3;37202;U16;;Operation indicator 2;;1;0;;4
+86;3;37207;U16;;Operation indicator 7;;1;0;;4
+87;3;40173_32;STRING;;Device Model;MODEL;1;0;;1
+88;3;40313;U16;;Device RTC Time Year/Month;;1;0;;1
+89;3;40314;U16;;Device RTC Time Day/Hour;;1;0;;1
+90;3;40315;U16;;Device RTC Time Minute/Second;;1;0;;1
+91;3;40323;U16;;LVRT switch;;1;0;;1
+92;3;40324;U16;;HVRT switch;;1;0;;1
+93;3;40325;U16;;Islanding Disable;;1;0;;1
+94;3;40326;U16;;Shadow mode switch;;1;0;;1
+95;3;40327;U16;;Software ARP Switch;;1;0;;1
+96;3;40328;U32;;Arp Load Limit Set;;1;0;W;1
+97;3;40330;U16;;Power On;CMD_ON;1;0;;4
+98;3;40331;U16;;Power Off;CMD_OFF;1;0;;4
+99;3;40332;U16;;Restart;;1;0;;4
+100;3;40336;U16;;Set the ARP power percentage;;1;0;%;1
+101;3;40345;U16;;Hardware ARP Switch;;1;0;;1
+102;3;40350;U16;;N-PE Detector Switch;;1;0;;1
+103;3;40351;U16;;N-PE Fault Limit;;0.1;0;V;1
+104;3;40352;U16;;Shadow mode switch (alt);;1;0;;1
+105;3;40362;U16;;Shadow mode switch (alt 2);;1;0;;1
+106;3;40365;U16;;GFCI Fault Clear Enable;;1;0;;1
+107;3;40480;U16;;Active Control adjust;CMD_P_AC_SET_PERCENT;1;0;%;1
+108;3;40481;U16;;PF reactive power adjust;CMD_PF;1;0;;1
+109;3;40482;I32;;Reactive power adjust;;1;0;Var;1
+110;3;40484;I16;;Reactive power adjust (percentage);;1;0;%;1
+111;3;40500;U16;;Safety Country Code (Settings);;1;0;;1
+112;3;42400;U16;;Fix Q switch;;1;0;;1
+113;3;42401;U16;;Fix PF switch;;1;0;;1
+114;3;42402;U16;;Fix PF Lead/Lag;;1;0;;1
+115;3;42404;U32;;Active power fixed value derating;;1;0;W;1
+116;3;42407;U16;;Active power percentage derating;;0.1;0;%;1
+117;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1;0;Var;1
+118;3;42413;I16;;Reactive power compensation (PF);;0.001;0;;1
+119;3;42414;I16;;Reactive power compensation (Q/S);;0.1;0;%;1
+120;3;42415;I16;;Reactive power compensation (Q/Qn);;0.1;0;%;1

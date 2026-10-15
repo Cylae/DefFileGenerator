@@ -1,0 +1,88 @@
+modbusRTU;Other;Mci Elec;RI-D140-C;;;;;;;
+1;4;0;F32_W;;Voltage 1st Phase;voltage_1st_phase;1.000000;0.000000;V;2
+2;4;2;F32_W;;Voltage 2nd Phase;voltage_2nd_phase;1.000000;0.000000;V;2
+3;4;4;F32_W;;Voltage 3rd Phase;voltage_3rd_phase;1.000000;0.000000;V;2
+4;4;6;F32_W;;Average Voltage LN;average_voltage_ln;1.000000;0.000000;V;2
+5;4;8;F32_W;;Voltage V12;voltage_v12;1.000000;0.000000;V;2
+6;4;10;F32_W;;Voltage V23;voltage_v23;1.000000;0.000000;V;2
+7;4;12;F32_W;;Voltage V31;voltage_v31;1.000000;0.000000;V;2
+8;4;14;F32_W;;Average Voltage LL;average_voltage_ll;1.000000;0.000000;V;2
+9;4;16;F32_W;;Current I1;current_i1;1.000000;0.000000;A;2
+10;4;18;F32_W;;Current I2;current_i2;1.000000;0.000000;A;2
+11;4;20;F32_W;;Current I3;current_i3;1.000000;0.000000;A;2
+12;4;22;F32_W;;Average Current;average_current;1.000000;0.000000;A;2
+13;4;24;F32_W;;kW1;P_AC_1;1.000000;0.000000;kW;2
+14;4;26;F32_W;;kW2;P_AC_2;1.000000;0.000000;kW;2
+15;4;28;F32_W;;kW3;P_AC_3;1.000000;0.000000;kW;2
+16;4;30;F32_W;;kVA1;kva1;1.000000;0.000000;kVA;2
+17;4;32;F32_W;;kVA2;kva2;1.000000;0.000000;kVA;2
+18;4;34;F32_W;;kVA3;kva3;1.000000;0.000000;kVA;2
+19;4;36;F32_W;;kVAr1;kvar1;1.000000;0.000000;kVAr;2
+20;4;38;F32_W;;kVAr2;kvar2;1.000000;0.000000;kVAr;2
+21;4;40;F32_W;;kVAr3;kvar3;1.000000;0.000000;kVAr;2
+22;4;42;F32_W;;Total kW;P_AC;1.000000;0.000000;kW;2
+23;4;44;F32_W;;Total kVA;total_kva;1.000000;0.000000;kVA;2
+24;4;46;F32_W;;Total kVAr;total_kvar;1.000000;0.000000;kVAr;2
+25;4;48;F32_W;;PF1;pf1;1.000000;0.000000;;2
+26;4;50;F32_W;;PF2;pf2;1.000000;0.000000;;2
+27;4;52;F32_W;;PF3;pf3;1.000000;0.000000;;2
+28;4;54;F32_W;;Average PF;average_pf;1.000000;0.000000;;2
+29;4;56;F32_W;;Frequency;FREQ;1.000000;0.000000;Hz;2
+30;4;58;F32_W;;Import kWh;import_kwh;1.000000;0.000000;kWh;4
+31;4;60;F32_W;;Import kVah;import_kvah;1.000000;0.000000;kVAh;4
+32;4;62;F32_W;;Import kVarh;import_kvarh;1.000000;0.000000;kVArh;4
+33;4;64;F32_W;;kW MAX Active Power;kw_max_active_power;1.000000;0.000000;kW;4
+34;4;66;F32_W;;kW MIN Active Power;kw_min_active_power;1.000000;0.000000;kW;4
+35;4;68;F32_W;;kVar MAX Reactive Power;kvar_max_reactive_power;1.000000;0.000000;kVAr;4
+36;4;70;F32_W;;kVar MIN Reactive Power;kvar_min_reactive_power;1.000000;0.000000;kVAr;4
+37;4;72;F32_W;;kVa MAX Apparent Power;kva_max_apparent_power;1.000000;0.000000;kVA;4
+38;4;74;F32_W;;Export kWh;export_kwh;1.000000;0.000000;kWh;4
+39;4;76;F32_W;;Export kVarh;export_kvarh;1.000000;0.000000;kVArh;4
+40;4;132;U32_W;;Serial no;serial_no;1.000000;0.000000;;1
+41;4;134;F32_W;;Existing MAX active power;existing_max_active_power;1.000000;0.000000;kW;4
+42;4;136;F32_W;;Existing MIN active power;existing_min_active_power;1.000000;0.000000;kW;4
+43;4;138;F32_W;;Existing MAX reactive power;existing_max_reactive_power;1.000000;0.000000;kVAr;4
+44;4;140;F32_W;;Existing MIN reactive power;existing_min_reactive_power;1.000000;0.000000;kVAr;4
+45;4;142;F32_W;;Existing MAX apparent power;existing_max_apparent_power;1.000000;0.000000;kVA;4
+46;3;0;U16;;Password;password;1.000000;0.000000;;0
+47;3;1;U16;;NW selection;nw_selection;1.000000;0.000000;;1
+48;3;2;U16;;CT Secondary;ct_secondary;1.000000;0.000000;A;1
+49;3;3;U16;;CT primary;ct_primary;1.000000;0.000000;A;1
+50;3;4;U16;;PT Secondary;pt_secondary;1.000000;0.000000;V;1
+51;3;5;U32_W;;PT primary;pt_primary;1.000000;0.000000;V;1
+52;3;7;U16;;Slave id;slave_id;1.000000;0.000000;;1
+53;3;8;U16;;Baud rate;baud_rate;1.000000;0.000000;;1
+54;3;9;U16;;Parity;parity;1.000000;0.000000;;1
+55;3;10;U16;;Stop bit;stop_bit;1.000000;0.000000;;1
+56;3;11;U16;;Backlight OFF;backlight_off;1.000000;0.000000;s;1
+57;3;12;U16;;Factory Default;factory_default;1.000000;0.000000;;0
+58;3;13;U16;;Reset kWh;reset_kwh;1.000000;0.000000;;0
+59;3;14;U16;;Reset kVah;reset_kvah;1.000000;0.000000;;0
+60;3;15;U16;;Reset kVArh;reset_kvarh;1.000000;0.000000;;0
+61;3;16;U16;;Auto mode sequence;auto_mode_sequence;1.000000;0.000000;;0
+62;3;17;U16;;Page address sequence 1;page_address_sequence_1;1.000000;0.000000;;0
+63;3;18;U16;;Page address sequence 2;page_address_sequence_2;1.000000;0.000000;;0
+64;3;19;U16;;Page address sequence 3;page_address_sequence_3;1.000000;0.000000;;0
+65;3;20;U16;;Page address sequence 4;page_address_sequence_4;1.000000;0.000000;;0
+66;3;21;U16;;Page address sequence 5;page_address_sequence_5;1.000000;0.000000;;0
+67;3;22;U16;;Page address sequence 6;page_address_sequence_6;1.000000;0.000000;;0
+68;3;23;U16;;Page address sequence 7;page_address_sequence_7;1.000000;0.000000;;0
+69;3;24;U16;;Page address sequence 8;page_address_sequence_8;1.000000;0.000000;;0
+70;3;25;U16;;Page address sequence 9;page_address_sequence_9;1.000000;0.000000;;0
+71;3;26;U16;;Page address sequence 10;page_address_sequence_10;1.000000;0.000000;;0
+72;3;27;U16;;Page address sequence 11;page_address_sequence_11;1.000000;0.000000;;0
+73;3;28;U16;;Page address sequence 12;page_address_sequence_12;1.000000;0.000000;;0
+74;3;29;U16;;Page address sequence 13;page_address_sequence_13;1.000000;0.000000;;0
+75;3;30;U16;;Page address sequence 14;page_address_sequence_14;1.000000;0.000000;;0
+76;3;31;U16;;Page address sequence 15;page_address_sequence_15;1.000000;0.000000;;0
+77;3;32;U16;;Page address sequence 16;page_address_sequence_16;1.000000;0.000000;;0
+78;3;33;U16;;Page address sequence 17;page_address_sequence_17;1.000000;0.000000;;0
+79;3;34;U16;;Demand Interval Method;demand_interval_method;1.000000;0.000000;;1
+80;3;35;U16;;Demand Interval Duration;demand_interval_duration;1.000000;0.000000;;1
+81;3;36;U16;;Demand Interval Length;demand_interval_length;1.000000;0.000000;min;1
+82;3;37;U16;;Reset MAX kW;reset_max_kw;1.000000;0.000000;;0
+83;3;38;U16;;Reset MIN kW;reset_min_kw;1.000000;0.000000;;0
+84;3;39;U16;;Reset MAX kVar;reset_max_kvar;1.000000;0.000000;;0
+85;3;40;U16;;Reset MIN kVar;reset_min_kvar;1.000000;0.000000;;0
+86;3;41;U16;;Reset MAX kVA;reset_max_kva;1.000000;0.000000;;0
+87;3;54;U16;;Page address sequence 18;page_address_sequence_18;1.000000;0.000000;;0

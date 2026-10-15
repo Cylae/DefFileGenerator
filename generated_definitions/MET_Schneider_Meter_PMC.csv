@@ -1,0 +1,518 @@
+modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, PM1120H, EM6438H, PM1130H;;;;;;;
+1;3;30_20;STRING;;Meter Name;;1;0;;4
+2;3;50_20;STRING;;Meter Model;MODEL;1;0;;4
+3;3;70_20;STRING;;Manufacturer;MANUFACTURER;1;0;;4
+4;3;90;U16;;Product ID Number;;1;0;;4
+5;3;91;U16;;Hardware Detected;;1;0;;4
+6;3;95;U16;;Supported Features;;1;0;;4
+7;3;116;U16;;Production Track Id;;1;0;;4
+8;3;117_12;STRING;;ASCII Serial Number;SERIAL;1;0;;4
+9;3;129;U16;;Manufacturing Unit Id;;1;0;;4
+10;3;130;U32;;Serial Number;;1;0;;4
+11;3;132;U64;;Date of Manufacture;;1;0;DATETIME;4
+12;3;136_5;STRING;;Hardware Revision;;1;0;;4
+13;3;141;U16;;Production History 01;;1;0;;0
+14;3;142;U16;;Production History 02;;1;0;;0
+15;3;143;U16;;Production History 03;;1;0;;0
+16;3;144;U16;;Production History 04;;1;0;;0
+17;3;145;U16;;Production History 05;;1;0;;0
+18;3;146;U16;;Production History 06;;1;0;;0
+19;3;147;U16;;Production History 07;;1;0;;0
+20;3;148;U16;;Production History 08;;1;0;;0
+21;3;149;U16;;Production History 09;;1;0;;0
+22;3;150;U16;;Production History 10;;1;0;;0
+23;3;151;U16;;Production History 11;;1;0;;0
+24;3;152;U16;;Production History 12;;1;0;;0
+25;3;153;U16;;Production History 13;;1;0;;0
+26;3;154;U16;;Production History 14;;1;0;;0
+27;3;155;U16;;Production History 15;;1;0;;0
+28;3;156;U16;;Production History 16;;1;0;;0
+29;3;157;U16;;Production History 17;;1;0;;0
+30;3;158;U16;;Production History 18;;1;0;;0
+31;3;159;U16;;Production History 19;;1;0;;0
+32;3;160;U16;;Production History 20;;1;0;;0
+33;3;161;U16;;Checksum;;1;0;;0
+34;3;1637;U16;;Present Firmware Version (DLF Format) X.Y.T;;1;0;;4
+35;3;1638;U16;;X - Major;;1;0;;4
+36;3;1639;U16;;Y - Minor;;1;0;;4
+37;3;1640;U16;;Z - Quality;;1;0;;4
+38;3;1641;U16;;T - Internal evolutions;;1;0;;4
+39;3;1642;U16;;Previous Firmware Version (DLF Format) X.Y.T;;1;0;;4
+40;3;1643;U16;;X - Major_1;;1;0;;4
+41;3;1644;U16;;Y - Minor_1;;1;0;;4
+42;3;1645;U16;;Z - Quality_1;;1;0;;4
+43;3;1646;U16;;T - Internal evolutions_1;;1;0;;4
+44;3;1669;U16;;Present Firmware Version (DLF Format) X.Y.T_1;;1;0;;4
+45;3;1670;U16;;X - Major_2;;1;0;;4
+46;3;1671;U16;;Y - Minor_2;;1;0;;4
+47;3;1672;U16;;Z - Quality_2;;1;0;;4
+48;3;1673;U16;;T - Internal evolutions_2;;1;0;;4
+49;3;1674;U16;;Previous Firmware Version (DLF Format) X.Y.T_1;;1;0;;4
+50;3;1675;U16;;X - Major_3;;1;0;;4
+51;3;1676;U16;;Y - Minor_3;;1;0;;4
+52;3;1677;U16;;Z - Quality_3;;1;0;;4
+53;3;1678;U16;;T - Internal evolutions_3;;1;0;;4
+54;3;1747;U16;;Download - CRC of Last FW Download;;1;0;;4
+55;3;1748;U16;;Download - Flash Write Failure;;1;0;;4
+56;3;1749;U16;;Download - % Complete;;1;0;;4
+57;3;1750;U16;;Reserved For Download Software Use;;1;0;;4
+58;3;1829;U16;;Number of Control Power Failures;;1;0;;4
+59;3;1836;U16;;Cause of Last Meter Reset;;1;0;;4
+60;3;1880_4;STRING;;Setup Password;;1;0;;4
+61;3;1884_4;STRING;;Energy Reset Password;;1;0;;4
+62;3;1888_4;STRING;;Demand  Reset Password;;1;0;;4
+63;3;2004;U32;;Meter Operation Timer;;1;0;seconds;4
+64;3;2014;U16;;Number of Phases;;1;0;;4
+65;3;2015;U16;;Number of Wires;;1;0;;4
+66;3;2016;U16;;Power System Configuration;;1;0;;4
+67;3;2017;U16;;Nominal Frequency;FREQ;1;0;Hz;4
+68;3;2018;F32;;Nominal Voltage;;1;0;V;4
+69;3;2020;F32;;Nominal Current;;1;0;A;4
+70;3;2022;U32;;Nominal Power Factor;PF;1;0;4Q_FP_PF;4
+71;3;2024;U16;;Normal Phase Rotation;;1;0;;4
+72;3;2025;U16;;Number VTs;;1;0;;4
+73;3;2026;F32;;VT Primary;;1;0;V;4
+74;3;2028;U16;;VT Secondary;;1;0;V;4
+75;3;2029;U16;;Number CTs;;1;0;;4
+76;3;2030;U16;;CT Primary;;1;0;A;4
+77;3;2031;U16;;CT Secondary;;1;0;A;4
+78;3;2032;U16;;CT Primary N;;1;0;A;4
+79;3;2033;U16;;CT Secondary N;;1;0;A;4
+80;3;2034;U16;;CT Location for 1  or 2 CT Metering;;1;0;;4
+81;3;2035;U16;;VT Location for 1  or 2 VT Metering;;1;0;;4
+82;3;2036;U16;;VT Connection Type;;1;0;;4
+83;3;2126;U16;;Alarm / Energy LED Mode;;1;0;;4
+84;3;2130;U16;;Energy Channel;;1;0;;4
+85;3;2131;U16;;Digital Output Association;;1;0;;4
+86;3;2132;U32;;Pulse Weight;;1;0;;4
+87;3;2700;F32;;Active Energy Delivered (Into Load);;1;0;kWh;4
+88;3;2702;F32;;Active Energy Received (Out of Load);;1;0;kWh;4
+89;3;2704;F32;;Active Energy Delivered + Received;;1;0;kWh;4
+90;3;2706;F32;;Active Energy Delivered- Received_1;;1;0;kWh;4
+91;3;2708;F32;;Reactive Energy Delivered;;1;0;kVARh;4
+92;3;2710;F32;;Reactive Energy Received;;1;0;kVARh;4
+93;3;2712;F32;;Reactive Energy Delivered + Received_1;;1;0;kVARh;4
+94;3;2714;F32;;Reactive Energy Delivered - Received_1;;1;0;kVARh;4
+95;3;2716;F32;;Apparent Energy Delivered;;1;0;kVAh;4
+96;3;2718;F32;;Apparent Energy Received;;1;0;kVAh;4
+97;3;2720;F32;;Apparent Energy Delivered + Received_2;;1;0;kVAh;4
+98;3;2722;F32;;Apparent Energy Delivered - Received_2;;1;0;kVAh;4
+99;3;2732;F32;;Reactive Energy in Quadrant I;;1;0;kVARh;4
+100;3;2734;F32;;Reactive Energy in Quadrant II;;1;0;kVARh;4
+101;3;2736;F32;;Reactive Energy in Quadrant III;;1;0;kVARh;4
+102;3;2738;F32;;Reactive Energy in Quadrant IV;;1;0;kVARh;4
+103;3;3000;F32;;Current A;;1;0;A;4
+104;3;3002;F32;;Current B;;1;0;A;4
+105;3;3004;F32;;Current C;;1;0;A;4
+106;3;3006;F32;;Current N;;1;0;A;4
+107;3;3008;F32;;Current G;;1;0;A;4
+108;3;3010;F32;;Current Avg;;1;0;A;4
+109;3;3012;F32;;Current Unbalance A;;1;0;%;4
+110;3;3014;F32;;Current Unbalance B;;1;0;%;4
+111;3;3016;F32;;Current Unbalance C;;1;0;%;4
+112;3;3018;F32;;Current Unbalance Worst;;1;0;%;4
+113;3;3020;F32;;Voltage A-B;;1;0;V;4
+114;3;3022;F32;;Voltage B-C;;1;0;V;4
+115;3;3024;F32;;Voltage C-A;;1;0;V;4
+116;3;3026;F32;;Voltage L-L Avg;;1;0;V;4
+117;3;3028;F32;;Voltage A-N;;1;0;V;4
+118;3;3030;F32;;Voltage B-N;;1;0;V;4
+119;3;3032;F32;;Voltage C-N;;1;0;V;4
+120;3;3034;F32;;Voltage N-G ;;1;0;V;4
+121;3;3036;F32;;Voltage L-N Avg;;1;0;V;4
+122;3;3038;F32;;Voltage Unbalance A-B;;1;0;%;4
+123;3;3040;F32;;Voltage Unbalance B-C;;1;0;%;4
+124;3;3042;F32;;Voltage Unbalance C-A;;1;0;%;4
+125;3;3044;F32;;Voltage Unbalance L-L Worst;;1;0;%;4
+126;3;3046;F32;;Voltage Unbalance A-N;;1;0;%;4
+127;3;3048;F32;;Voltage Unbalance B-N;;1;0;%;4
+128;3;3050;F32;;Voltage Unbalance C-N;;1;0;%;4
+129;3;3052;F32;;Voltage Unbalance L-N Worst;;1;0;%;4
+130;3;3054;F32;;Active Power A;P_AC_1;1;0;kW;4
+131;3;3056;F32;;Active Power B;P_AC_2;1;0;kW;4
+132;3;3058;F32;;Active Power C;P_AC_3;1;0;kW;4
+133;3;3060;F32;;Active Power Total;P_AC;1;0;kW;4
+134;3;3062;F32;;Reactive Power A;Q_AC;1;0;kVAR;4
+135;3;3064;F32;;Reactive Power B;;1;0;kVAR;4
+136;3;3066;F32;;Reactive Power C;;1;0;kVAR;4
+137;3;3068;F32;;Reactive Power Total;;1;0;kVAR;4
+138;3;3070;F32;;Apparent Power A;S_AC;1;0;kVA;4
+139;3;3072;F32;;Apparent Power B;;1;0;kVA;4
+140;3;3074;F32;;Apparent Power C;;1;0;kVA;4
+141;3;3076;F32;;Apparent Power Total;;1;0;kVA;4
+142;3;3078;U32;;Power Factor A;;1;0;4Q_FP_PF;4
+143;3;3080;U32;;Power Factor B;;1;0;4Q_FP_PF;4
+144;3;3082;U32;;Power Factor C;;1;0;4Q_FP_PF;4
+145;3;3084;U32;;Power Factor Total;;1;0;4Q_FP_PF;4
+146;3;3110;F32;;Frequency;;1;0;Hz;4
+147;3;3192;F32;;Power Factor Total IEC;;1;0;;4
+148;3;3194;F32;;Power Factor Total Lead Lag;;1;0;;4
+149;3;3196;U16;;Power Factor Total IEC_1;;1;0;;4
+150;3;3197;U16;;Power Factor Total Lead Lag_1;;1;0;;4
+151;3;3200;U64;;Accumulated Energy Reset Date/Time;;1;0;DATETIME;4
+152;3;3204;I64;;Active Energy Delivered (Into Load)_1;;1;0;Wh;4
+153;3;3208;I64;;Active Energy Received (Out of Load)_1;;1;0;Wh;4
+154;3;3212;I64;;Active Energy Delivered + Received_1;;1;0;Wh;4
+155;3;3216;I64;;Active Energy Delivered- Received_2;;1;0;Wh;4
+156;3;3220;I64;;Reactive Energy Delivered_1;;1;0;VARh;4
+157;3;3224;I64;;Reactive Energy Received_1;;1;0;VARh;4
+158;3;3228;I64;;Reactive Energy Delivered + Received_2;;1;0;VARh;4
+159;3;3232;I64;;Reactive Energy Delivered - Received_2;;1;0;VARh;4
+160;3;3236;I64;;Apparent Energy Delivered_1;;1;0;VAh;4
+161;3;3240;I64;;Apparent Energy Received_1;;1;0;VAh;4
+162;3;3244;I64;;Apparent Energy Delivered + Received_1;;1;0;VAh;4
+163;3;3248;I64;;Apparent Energy Delivered - Received_1;;1;0;VAh;4
+164;3;3272;I64;;Reactive Energy in Quadrant I_1;;1;0;VARh;4
+165;3;3276;I64;;Reactive Energy in Quadrant II_1;;1;0;VARh;4
+166;3;3280;I64;;Reactive Energy in Quadrant III_1;;1;0;VARh;4
+167;3;3284;I64;;Reactive Energy in Quadrant IV_1;;1;0;VARh;4
+168;3;3701;U16;;Power Demand Method;;1;0;;4
+169;3;3702;U16;;Power Demand Interval Duration;;1;0;minutes;4
+170;3;3703;U16;;Power Demand Subinterval Duration;;1;0;minutes;4
+171;3;3764;F32;;Last Demand;;1;0;kW;4
+172;3;3766;F32;;Present Demand;;1;0;kW;4
+173;3;3768;F32;;Predicted Demand;;1;0;kW;4
+174;3;3770;F32;;Peak Demand;;1;0;kW;4
+175;3;3772;U64;;Peak Demand DateTime;;1;0;DATETIME;4
+176;3;3780;F32;;Last Demand_1;;1;0;kVAR;4
+177;3;3782;F32;;Present Demand_1;;1;0;kVAR;4
+178;3;3784;F32;;Predicted Demand_1;;1;0;kVAR;4
+179;3;3786;F32;;Peak Demand_1;;1;0;kVAR;4
+180;3;3788;U64;;Peak Demand DateTime_1;;1;0;DATETIME;4
+181;3;3796;F32;;Last Demand_2;;1;0;kVA;4
+182;3;3798;F32;;Present Demand_2;;1;0;kVA;4
+183;3;3800;F32;;Predicted Demand_2;;1;0;kVA;4
+184;3;3802;F32;;Peak Demand_2;;1;0;kVA;4
+185;3;3804;U64;;Peak Demand DateTime_2;;1;0;DATETIME;4
+186;3;4148;U16;;Time Remaining for DM;;1;0;Minutes;4
+187;3;4149;F32;;Peak demand Activet Power - Gen;;1;0;;4
+188;3;4155;F32;;Peak demand Reactive Power- Gen;;1;0;;4
+189;3;4161;F32;;Peak demand Apparent Power - Gen;;1;0;;4
+190;3;5000;U16;;Requested Command;;1;0;;0
+191;3;5001;U16;;Command Semaphore;;1;0;;0
+192;3;5002;U16;;Command Parameter 001;;1;0;;0
+193;3;5003;U16;;Command Parameter 002;;1;0;;0
+194;3;5004;U16;;Command Parameter 003;;1;0;;0
+195;3;5005;U16;;Command Parameter 004;;1;0;;0
+196;3;5006;U16;;Command Parameter 005;;1;0;;0
+197;3;5007;U16;;Command Parameter 006;;1;0;;0
+198;3;5008;U16;;Command Parameter 007;;1;0;;0
+199;3;5009;U16;;Command Parameter 008;;1;0;;0
+200;3;5010;U16;;Command Parameter 009;;1;0;;0
+201;3;5011;U16;;Command Parameter 010;;1;0;;0
+202;3;5012;U16;;Command Parameter 011;;1;0;;0
+203;3;5013;U16;;Command Parameter 012;;1;0;;0
+204;3;5014;U16;;Command Parameter 013;;1;0;;0
+205;3;5015;U16;;Command Parameter 014;;1;0;;0
+206;3;5016;U16;;Command Parameter 015;;1;0;;0
+207;3;5017;U16;;Command Parameter 016;;1;0;;0
+208;3;5018;U16;;Command Parameter 017;;1;0;;0
+209;3;5019;U16;;Command Parameter 018;;1;0;;0
+210;3;5020;U16;;Command Parameter 019;;1;0;;0
+211;3;5021;U16;;Command Parameter 020;;1;0;;0
+212;3;5022;U16;;Command Parameter 021;;1;0;;0
+213;3;5023;U16;;Command Parameter 022;;1;0;;0
+214;3;5024;U16;;Command Parameter 023;;1;0;;0
+215;3;5025;U16;;Command Parameter 024;;1;0;;0
+216;3;5026;U16;;Command Parameter 025;;1;0;;0
+217;3;5027;U16;;Command Parameter 026;;1;0;;0
+218;3;5028;U16;;Command Parameter 027;;1;0;;0
+219;3;5029;U16;;Command Parameter 028;;1;0;;0
+220;3;5030;U16;;Command Parameter 029;;1;0;;0
+221;3;5031;U16;;Command Parameter 030;;1;0;;0
+222;3;5032;U16;;Command Parameter 031;;1;0;;0
+223;3;5033;U16;;Command Parameter 032;;1;0;;0
+224;3;5034;U16;;Command Parameter 033;;1;0;;0
+225;3;5035;U16;;Command Parameter 034;;1;0;;0
+226;3;5036;U16;;Command Parameter 035;;1;0;;0
+227;3;5037;U16;;Command Parameter 036;;1;0;;0
+228;3;5038;U16;;Command Parameter 037;;1;0;;0
+229;3;5039;U16;;Command Parameter 038;;1;0;;0
+230;3;5040;U16;;Command Parameter 039;;1;0;;0
+231;3;5041;U16;;Command Parameter 040;;1;0;;0
+232;3;5042;U16;;Command Parameter 041;;1;0;;0
+233;3;5043;U16;;Command Parameter 042;;1;0;;0
+234;3;5044;U16;;Command Parameter 043;;1;0;;0
+235;3;5045;U16;;Command Parameter 044;;1;0;;0
+236;3;5046;U16;;Command Parameter 045;;1;0;;0
+237;3;5047;U16;;Command Parameter 046;;1;0;;0
+238;3;5048;U16;;Command Parameter 047;;1;0;;0
+239;3;5049;U16;;Command Parameter 048;;1;0;;0
+240;3;5050;U16;;Command Parameter 049;;1;0;;0
+241;3;5051;U16;;Command Parameter 050;;1;0;;0
+242;3;5052;U16;;Command Parameter 051;;1;0;;0
+243;3;5053;U16;;Command Parameter 052;;1;0;;0
+244;3;5054;U16;;Command Parameter 053;;1;0;;0
+245;3;5055;U16;;Command Parameter 054;;1;0;;0
+246;3;5056;U16;;Command Parameter 055;;1;0;;0
+247;3;5057;U16;;Command Parameter 056;;1;0;;0
+248;3;5058;U16;;Command Parameter 057;;1;0;;0
+249;3;5059;U16;;Command Parameter 058;;1;0;;0
+250;3;5060;U16;;Command Parameter 059;;1;0;;0
+251;3;5061;U16;;Command Parameter 060;;1;0;;0
+252;3;5062;U16;;Command Parameter 061;;1;0;;0
+253;3;5063;U16;;Command Parameter 062;;1;0;;0
+254;3;5064;U16;;Command Parameter 063;;1;0;;0
+255;3;5065;U16;;Command Parameter 064;;1;0;;0
+256;3;5066;U16;;Command Parameter 065;;1;0;;0
+257;3;5067;U16;;Command Parameter 066;;1;0;;0
+258;3;5068;U16;;Command Parameter 067;;1;0;;0
+259;3;5069;U16;;Command Parameter 068;;1;0;;0
+260;3;5070;U16;;Command Parameter 069;;1;0;;0
+261;3;5071;U16;;Command Parameter 070;;1;0;;0
+262;3;5072;U16;;Command Parameter 071;;1;0;;0
+263;3;5073;U16;;Command Parameter 072;;1;0;;0
+264;3;5074;U16;;Command Parameter 073;;1;0;;0
+265;3;5075;U16;;Command Parameter 074;;1;0;;0
+266;3;5076;U16;;Command Parameter 075;;1;0;;0
+267;3;5077;U16;;Command Parameter 076;;1;0;;0
+268;3;5078;U16;;Command Parameter 077;;1;0;;0
+269;3;5079;U16;;Command Parameter 078;;1;0;;0
+270;3;5080;U16;;Command Parameter 079;;1;0;;0
+271;3;5081;U16;;Command Parameter 080;;1;0;;0
+272;3;5082;U16;;Command Parameter 081;;1;0;;0
+273;3;5083;U16;;Command Parameter 082;;1;0;;0
+274;3;5084;U16;;Command Parameter 083;;1;0;;0
+275;3;5085;U16;;Command Parameter 084;;1;0;;0
+276;3;5086;U16;;Command Parameter 085;;1;0;;0
+277;3;5087;U16;;Command Parameter 086;;1;0;;0
+278;3;5088;U16;;Command Parameter 087;;1;0;;0
+279;3;5089;U16;;Command Parameter 088;;1;0;;0
+280;3;5090;U16;;Command Parameter 089;;1;0;;0
+281;3;5091;U16;;Command Parameter 090;;1;0;;0
+282;3;5092;U16;;Command Parameter 091;;1;0;;0
+283;3;5093;U16;;Command Parameter 092;;1;0;;0
+284;3;5094;U16;;Command Parameter 093;;1;0;;0
+285;3;5095;U16;;Command Parameter 094;;1;0;;0
+286;3;5096;U16;;Command Parameter 095;;1;0;;0
+287;3;5097;U16;;Command Parameter 096;;1;0;;0
+288;3;5098;U16;;Command Parameter 097;;1;0;;0
+289;3;5099;U16;;Command Parameter 098;;1;0;;0
+290;3;5100;U16;;Command Parameter 099;;1;0;;0
+291;3;5101;U16;;Command Parameter 100;;1;0;;0
+292;3;5102;U16;;Command Parameter 101;;1;0;;0
+293;3;5103;U16;;Command Parameter 102;;1;0;;0
+294;3;5104;U16;;Command Parameter 103;;1;0;;0
+295;3;5105;U16;;Command Parameter 104;;1;0;;0
+296;3;5106;U16;;Command Parameter 105;;1;0;;0
+297;3;5107;U16;;Command Parameter 106;;1;0;;0
+298;3;5108;U16;;Command Parameter 107;;1;0;;0
+299;3;5109;U16;;Command Parameter 108;;1;0;;0
+300;3;5110;U16;;Command Parameter 109;;1;0;;0
+301;3;5111;U16;;Command Parameter 110;;1;0;;0
+302;3;5112;U16;;Command Parameter 111;;1;0;;0
+303;3;5113;U16;;Command Parameter 112;;1;0;;0
+304;3;5114;U16;;Command Parameter 113;;1;0;;0
+305;3;5115;U16;;Command Parameter 114;;1;0;;0
+306;3;5116;U16;;Command Parameter 115;;1;0;;0
+307;3;5117;U16;;Command Parameter 116;;1;0;;0
+308;3;5118;U16;;Command Parameter 117;;1;0;;0
+309;3;5119;U16;;Command Parameter 118;;1;0;;0
+310;3;5120;U16;;Command Parameter 119;;1;0;;0
+311;3;5121;U16;;Command Parameter 120;;1;0;;0
+312;3;5122;U16;;Command Parameter 121;;1;0;;0
+313;3;5123;U16;;Command Parameter 122;;1;0;;0
+314;3;5124;U16;;Command Parameter 123;;1;0;;0
+315;3;5125;U16;;Command Status;;1;0;;0
+316;3;5126;U16;;Command Result;;1;0;;0
+317;3;5127;U16;;Command Data 001;;1;0;;0
+318;3;5128;U16;;Command Data 002;;1;0;;0
+319;3;5129;U16;;Command Data 003;;1;0;;0
+320;3;5130;U16;;Command Data 004;;1;0;;0
+321;3;5131;U16;;Command Data 005;;1;0;;0
+322;3;5132;U16;;Command Data 006;;1;0;;0
+323;3;5133;U16;;Command Data 007;;1;0;;0
+324;3;5134;U16;;Command Data 008;;1;0;;0
+325;3;5135;U16;;Command Data 009;;1;0;;0
+326;3;5136;U16;;Command Data 010;;1;0;;0
+327;3;5137;U16;;Command Data 011;;1;0;;0
+328;3;5138;U16;;Command Data 012;;1;0;;0
+329;3;5139;U16;;Command Data 013;;1;0;;0
+330;3;5140;U16;;Command Data 014;;1;0;;0
+331;3;5141;U16;;Command Data 015;;1;0;;0
+332;3;5142;U16;;Command Data 016;;1;0;;0
+333;3;5143;U16;;Command Data 017;;1;0;;0
+334;3;5144;U16;;Command Data 018;;1;0;;0
+335;3;5145;U16;;Command Data 019;;1;0;;0
+336;3;5146;U16;;Command Data 020;;1;0;;0
+337;3;5147;U16;;Command Data 021;;1;0;;0
+338;3;5148;U16;;Command Data 022;;1;0;;0
+339;3;5149;U16;;Command Data 023;;1;0;;0
+340;3;5150;U16;;Command Data 024;;1;0;;0
+341;3;5151;U16;;Command Data 025;;1;0;;0
+342;3;5152;U16;;Command Data 026;;1;0;;0
+343;3;5153;U16;;Command Data 027;;1;0;;0
+344;3;5154;U16;;Command Data 028;;1;0;;0
+345;3;5155;U16;;Command Data 029;;1;0;;0
+346;3;5156;U16;;Command Data 030;;1;0;;0
+347;3;5157;U16;;Command Data 031;;1;0;;0
+348;3;5158;U16;;Command Data 032;;1;0;;0
+349;3;5159;U16;;Command Data 033;;1;0;;0
+350;3;5160;U16;;Command Data 034;;1;0;;0
+351;3;5161;U16;;Command Data 035;;1;0;;0
+352;3;5162;U16;;Command Data 036;;1;0;;0
+353;3;5163;U16;;Command Data 037;;1;0;;0
+354;3;5164;U16;;Command Data 038;;1;0;;0
+355;3;5165;U16;;Command Data 039;;1;0;;0
+356;3;5166;U16;;Command Data 040;;1;0;;0
+357;3;5167;U16;;Command Data 041;;1;0;;0
+358;3;5168;U16;;Command Data 042;;1;0;;0
+359;3;5169;U16;;Command Data 043;;1;0;;0
+360;3;5170;U16;;Command Data 044;;1;0;;0
+361;3;5171;U16;;Command Data 045;;1;0;;0
+362;3;5172;U16;;Command Data 046;;1;0;;0
+363;3;5173;U16;;Command Data 047;;1;0;;0
+364;3;5174;U16;;Command Data 048;;1;0;;0
+365;3;5175;U16;;Command Data 049;;1;0;;0
+366;3;5176;U16;;Command Data 050;;1;0;;0
+367;3;5177;U16;;Command Data 051;;1;0;;0
+368;3;5178;U16;;Command Data 052;;1;0;;0
+369;3;5179;U16;;Command Data 053;;1;0;;0
+370;3;5180;U16;;Command Data 054;;1;0;;0
+371;3;5181;U16;;Command Data 055;;1;0;;0
+372;3;5182;U16;;Command Data 056;;1;0;;0
+373;3;5183;U16;;Command Data 057;;1;0;;0
+374;3;5184;U16;;Command Data 058;;1;0;;0
+375;3;5185;U16;;Command Data 059;;1;0;;0
+376;3;5186;U16;;Command Data 060;;1;0;;0
+377;3;5187;U16;;Command Data 061;;1;0;;0
+378;3;5188;U16;;Command Data 062;;1;0;;0
+379;3;5189;U16;;Command Data 063;;1;0;;0
+380;3;5190;U16;;Command Data 064;;1;0;;0
+381;3;5191;U16;;Command Data 065;;1;0;;0
+382;3;5192;U16;;Command Data 066;;1;0;;0
+383;3;5193;U16;;Command Data 067;;1;0;;0
+384;3;5194;U16;;Command Data 068;;1;0;;0
+385;3;5195;U16;;Command Data 069;;1;0;;0
+386;3;5196;U16;;Command Data 070;;1;0;;0
+387;3;5197;U16;;Command Data 071;;1;0;;0
+388;3;5198;U16;;Command Data 072;;1;0;;0
+389;3;5199;U16;;Command Data 073;;1;0;;0
+390;3;5200;U16;;Command Data 074;;1;0;;0
+391;3;5201;U16;;Command Data 075;;1;0;;0
+392;3;5202;U16;;Command Data 076;;1;0;;0
+393;3;5203;U16;;Command Data 077;;1;0;;0
+394;3;5204;U16;;Command Data 078;;1;0;;0
+395;3;5205;U16;;Command Data 079;;1;0;;0
+396;3;5206;U16;;Command Data 080;;1;0;;0
+397;3;5207;U16;;Command Data 081;;1;0;;0
+398;3;5208;U16;;Command Data 082;;1;0;;0
+399;3;5209;U16;;Command Data 083;;1;0;;0
+400;3;5210;U16;;Command Data 084;;1;0;;0
+401;3;5211;U16;;Command Data 085;;1;0;;0
+402;3;5212;U16;;Command Data 086;;1;0;;0
+403;3;5213;U16;;Command Data 087;;1;0;;0
+404;3;5214;U16;;Command Data 088;;1;0;;0
+405;3;5215;U16;;Command Data 089;;1;0;;0
+406;3;5216;U16;;Command Data 090;;1;0;;0
+407;3;5217;U16;;Command Data 091;;1;0;;0
+408;3;5218;U16;;Command Data 092;;1;0;;0
+409;3;5219;U16;;Command Data 093;;1;0;;0
+410;3;5220;U16;;Command Data 094;;1;0;;0
+411;3;5221;U16;;Command Data 095;;1;0;;0
+412;3;5222;U16;;Command Data 096;;1;0;;0
+413;3;5223;U16;;Command Data 097;;1;0;;0
+414;3;5224;U16;;Command Data 098;;1;0;;0
+415;3;5225;U16;;Command Data 099;;1;0;;0
+416;3;5226;U16;;Command Data 100;;1;0;;0
+417;3;5227;U16;;Command Data 101;;1;0;;0
+418;3;5228;U16;;Command Data 102;;1;0;;0
+419;3;5229;U16;;Command Data 103;;1;0;;0
+420;3;5230;U16;;Command Data 104;;1;0;;0
+421;3;5231;U16;;Command Data 105;;1;0;;0
+422;3;5232;U16;;Command Data 106;;1;0;;0
+423;3;5233;U16;;Command Data 107;;1;0;;0
+424;3;5234;U16;;Command Data 108;;1;0;;0
+425;3;5235;U16;;Command Data 109;;1;0;;0
+426;3;5236;U16;;Command Data 110;;1;0;;0
+427;3;5237;U16;;Command Data 111;;1;0;;0
+428;3;5238;U16;;Command Data 112;;1;0;;0
+429;3;5239;U16;;Command Data 113;;1;0;;0
+430;3;5240;U16;;Command Data 114;;1;0;;0
+431;3;5241;U16;;Command Data 115;;1;0;;0
+432;3;5242;U16;;Command Data 116;;1;0;;0
+433;3;5243;U16;;Command Data 117;;1;0;;0
+434;3;5244;U16;;Command Data 118;;1;0;;0
+435;3;5245;U16;;Command Data 119;;1;0;;0
+436;3;5246;U16;;Command Data 120;;1;0;;0
+437;3;5247;U16;;Command Data 121;;1;0;;0
+438;3;5248;U16;;Command Data 122;;1;0;;0
+439;3;5249;U16;;Command Data 123;;1;0;;0
+440;3;6100;U16;;Parameter1 address;;1;0;;0
+441;3;6101;U16;;Parameter2 address;;1;0;;0
+442;3;6102;U16;;Parameter3 address;;1;0;;0
+443;3;6103;U16;;Parameter4 address;;1;0;;0
+444;3;6500;U16;;RS-485 Comm Port (M/S) Protocol;;1;0;;4
+445;3;6501;U16;;RS-485 Comm Port (M/S) Address;;1;0;;4
+446;3;6502;U16;;RS-485 Comm Port (M/S) Baud Rate;;1;0;;4
+447;3;6503;U16;;RS-485 Comm Port (M/S) Parity;;1;0;;4
+448;3;9600;U16;;DO1(Relay1) Status;;1;0;;4
+449;3;9601;U16;;Type;;1;0;;4
+450;3;9602;U16;;Source;;1;0;;4
+451;3;9603;U16;;Parameter caused by Relay1 ON ;;1;0;;4
+452;3;9610;U16;;Parameter1 associated to DO1;;1;0;;4
+453;3;9611;U16;;Source_1;;1;0;;4
+454;3;9612;F32;;Upper Limit;;1;0;;4
+455;3;9614;F32;;Lower Limit;;1;0;;4
+456;3;9616;U16;;Time Delay;;1;0;Sec;4
+457;3;9617;U16;;Parameter2 Associated to DO1;;1;0;;4
+458;3;9618;U16;;Source_2;;1;0;;4
+459;3;9619;F32;;Upper Limit_1;;1;0;;4
+460;3;9621;F32;;Lower Limit_1;;1;0;;4
+461;3;9623;U16;;Time Delay_1;;1;0;Sec;4
+462;3;9638;F32;;Prepaid Energy Balance;;1;0;k_h;4
+463;3;21300;F32;;THD Current A;;1;0;%;4
+464;3;21302;F32;;THD Current B;;1;0;%;4
+465;3;21304;F32;;THD Current C;;1;0;%;4
+466;3;21322;F32;;THD Voltage A-B;;1;0;%;4
+467;3;21324;F32;;THD Voltage B-C;;1;0;%;4
+468;3;21326;F32;;THD Voltage C-A;;1;0;%;4
+469;3;21330;F32;;THD Voltage A-N;;1;0;%;4
+470;3;21332;F32;;THD Voltage B-N;;1;0;%;4
+471;3;21334;F32;;THD Voltage C-N;;1;0;%;4
+472;3;42283;U16;;A.Suppression;PRESSURE;1;0;mA;4
+473;3;42284;U16;;FS%;;1;0;;4
+474;3;42285;U16;;Parameter selection (Power);;1;0;;4
+475;3;42286;U16;;Demand Parameter selection;;1;0;;4
+476;3;42287;U16;;Poles;;1;0;;4
+477;3;42288;U16;;Label;;1;0;;4
+478;3;42289;U16;;Source1 name;;1;0;;4
+479;3;42290;U16;;Source2 name;;1;0;;4
+480;3;42976;F32;;Active Energy Delivered (Into Load)_2;;1;0;kWh;4
+481;3;42978;F32;;Active Energy Received (Out of Load)_2;;1;0;kWh;4
+482;3;42980;F32;;Active Energy Delivered + Received_2;;1;0;kWh;4
+483;3;42982;F32;;Active Energy Delivered - Received_2;;1;0;kWh;4
+484;3;42984;F32;;Reactive Energy Delivered_2;;1;0;kVARh;4
+485;3;42986;F32;;Reactive Energy Received_2;;1;0;kVARh;4
+486;3;42988;F32;;Reactive Energy Delivered + Received_3;;1;0;kVARh;4
+487;3;42990;F32;;Reactive Energy Delivered - Received;;1;0;kVARh;4
+488;3;42992;F32;;Apparent Energy Delivered_2;;1;0;kVAh;4
+489;3;42994;F32;;Apparent Energy Received_3;;1;0;kVAh;4
+490;3;42996;F32;;Apparent Energy Delivered + Received_3;;1;0;kVAh;4
+491;3;42998;F32;;Apparent Energy Delivered - Received_3;;1;0;kVAh;4
+492;3;43500;F32;;Current A load %;;1;0;%;4
+493;3;43502;F32;;Current B load %;;1;0;%;4
+494;3;43504;F32;;Current C load %;;1;0;%;4
+495;3;43506;F32;;Current avg load %;;1;0;%;4
+496;3;43508;F32;;Phase angle between Voltage A and Current A;U_AC_1;1;0;;4
+497;3;43510;F32;;Phase angle between Voltage B and Current B;;1;0;;4
+498;3;43512;F32;;Phase angle between Voltage C and Current C;;1;0;;4
+499;3;43520;F32;;RPM;;1;0;;4
+500;3;43546;U32;;Run sec Delivered (Into Load);;1;0;seconds;4
+501;3;43548;U32;;Run sec Received (Out of Load);;1;0;seconds;4
+502;3;43558;U32;;Run sec Total;;1;0;;4
+503;3;43600;U64;;Active Energy Delivered (Into Load)_3;;1;0;Wh;4
+504;3;43604;U64;;Active Energy Received (Out of Load)_3;;1;0;Wh;4
+505;3;43608;U64;;Active Energy Delivered + Received_3;;1;0;Wh;4
+506;3;43612;U64;;Active Energy Delivered - Received;;1;0;Wh;4
+507;3;43616;U64;;Reactive Energy Delivered_3;;1;0;VARh;4
+508;3;43620;U64;;Reactive Energy Received_3;;1;0;VARh;4
+509;3;43624;U64;;Reactive Energy Delivered + Received_4;;1;0;VARh;4
+510;3;43628;U64;;Reactive Energy Delivered - Received_3;;1;0;VARh;4
+511;3;43632;U64;;Apparent Energy Delivered_3;;1;0;VAh;4
+512;3;43636;U64;;Apparent Energy Received_2;;1;0;VAh;4
+513;3;43640;U64;;Apparent Energy Delivered + Received_4;;1;0;VAh;4
+514;3;43644;U64;;Apparent Energy Delivered - Received_4;;1;0;VAh;4
+515;3;43672;U32;;Run sec Delivered (Into Load)_1;;1;0;seconds;4
+516;3;43674;U32;;Run sec Received (Out of Load)_1;;1;0;seconds;4
+517;3;43684;U32;;Run sec total;;1;0;;4

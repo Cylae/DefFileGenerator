@@ -1,0 +1,62 @@
+Modbus;Inverter;Schneider;Conext_CL_30-33-50
+1;4;4989_10;STRING;;Serial Number;SERIAL;1.0;0.0;;4
+2;4;4999;U16;;Device type code;;1.0;0.0;;4
+3;4;5000;U16;;Nominal active power;P_RATED;0.1;0.0;kW;4
+4;4;5001;U16;;Output type;;1.0;0.0;;4
+5;4;5002;U16;;Daily Power Yields;E_DAY;0.1;0.0;kWh;4
+6;4;5003;U32;;Total power yields;E_TOT;1.0;0.0;kWh;4
+7;4;5005;U32;;Total running time;TOT;1.0;0.0;h;4
+8;4;5007;I16;;Internal temperature;TEMP;0.1;0.0;C;4
+9;4;5008;U32;;Total apparent power;S_AC;1.0;0.0;VA;4
+10;4;5010;U16;;MPPT1 voltage;U_DC_MPPT_1;0.1;0.0;V;4
+11;4;5011;U16;;MPPT 1 current;I_DC_MPPT_1;0.1;0.0;A;4
+12;4;5012;U16;;MPPT 2 voltage;U_DC_MPPT_2;0.1;0.0;V;4
+13;4;5013;U16;;MPPT 2 current;I_DC_MPPT_2;0.1;0.0;A;4
+14;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.1;0.0;V;4
+15;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.1;0.0;A;4
+16;4;5016;U32;;Total DC power;P_DC;1.0;0.0;W;4
+17;4;5018;U16;;A-B Line Voltage_Phase A voltage;U_AC_L1L2;0.1;0.0;V;4
+18;4;5019;U16;;B-C Line Voltage_Phase B voltage;U_AC_L2L3;0.1;0.0;V;4
+19;4;5020;U16;;C-A Line Voltage_Phase C voltage;U_AC_L3L1;0.1;0.0;V;4
+20;4;5021;U16;;Phase A current;I_AC_1;0.1;0.0;A;4
+21;4;5022;U16;;Phase B current;I_AC_2;0.1;0.0;A;4
+22;4;5023;U16;;Phase C current;I_AC_3;0.1;0.0;A;4
+23;4;5030;U32;;Total active power;P_AC;0.001;0.0;kW;4
+24;4;5032;I32;;Total reactive power;Q_AC;1.0;0.0;var;4
+25;4;5034;I16;;Power factor;PF;0.001;0.0;;4
+26;4;5035;U16;;Grid Frequency;FREQ;0.1;0.0;Hz;4
+27;4;5037;U16;;Operating State;;1.0;0.0;;4
+28;4;5038;U16;;Event_Alarm time _ Year;WIND_SPEED;1.0;0.0;;4
+29;4;5039;U16;;Event_Alarm time _ Month;;1.0;0.0;;4
+30;4;5040;U16;;Event_Alarm time _ Day;;1.0;0.0;;4
+31;4;5041;U16;;Event_Alarm time _ Hour;;1.0;0.0;;4
+32;4;5042;U16;;Event_Alarm time _ Minute;;1.0;0.0;;4
+33;4;5043;U16;;Event_Alarm time _ Second;;1.0;0.0;;4
+34;4;5044;U16;;Event_Alarm time code;;1.0;0.0;;4
+35;4;5048;U16;;Nominal reactive power;Q_RATED;0.1;0.0;kVar;4
+36;4;5070;U16;;Array insulation resistance;R_ISO;1.0;0.0;kOhm;4
+37;4;5112;U16;;Daily running time;;1.0;0.0;minute;4
+38;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;0.1;0.0;V;4
+39;4;5115;U16;;MPPT 4 current;I_DC_MPPT_4;0.1;0.0;A;4
+40;4;5116;U16;;MPPT 5 voltage;U_DC_MPPT_5;0.1;0.0;V;4
+41;4;5117;U16;;MPPT 5 current;I_DC_MPPT_5;0.1;0.0;A;4
+42;4;5127;U32;;Monthly power Yields;;0.1;0.0;kWh;4
+43;4;5143;U32;;Total Power yields_1;;0.1;0.0;kWh;4
+44;4;5145;I16;;Negative voltage to the ground;;0.1;0.0;V;4
+45;4;5146;U16;;Bus voltage;U_DC;0.1;0.0;V;4
+46;4;5147;U16;;Grid Frequency_1;;0.01;0.0;Hz;4
+47;4;5149;U16;;PID work state;;1.0;0.0;;4
+48;4;5150;U16;;PID alarm code;;1.0;0.0;;4
+49;4;7012;U16;;String 1 current;I_DC_STRING_1;0.01;0.0;A;4
+50;4;7013;U16;;String 2 current;I_DC_STRING_2;0.01;0.0;A;4
+51;4;7014;U16;;String 3 current;I_DC_STRING_3;0.01;0.0;A;4
+52;4;7015;U16;;String 4 current;I_DC_STRING_4;0.01;0.0;A;4
+53;4;7016;U16;;String 5 current;I_DC_STRING_5;0.01;0.0;A;4
+54;4;7017;U16;;String 6 current;I_DC_STRING_6;0.01;0.0;A;4
+55;4;7018;U16;;String 7 current;I_DC_STRING_7;0.01;0.0;A;4
+56;4;7019;U16;;String 8 current;I_DC_STRING_8;0.01;0.0;A;4
+57;4;7020;U16;;String 9 current;I_DC_STRING_9;0.01;0.0;A;4
+58;4;7021;U16;;String 10 current;I_DC_STRING_10;0.01;0.0;A;4
+59;3;5005;U16;;Start_Stop Inverter;CMD_OFF;1.0;0.0;;4
+60;3;5006;U16;;Power limitation switch;CMD_P_ENA;1.0;0.0;;4
+61;3;5007;U16;;Power limitation settings (0-1100);CMD_P_AC_SET_PERCENT;0.001;0.0;%;4

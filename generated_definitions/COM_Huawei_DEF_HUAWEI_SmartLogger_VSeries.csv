@@ -1,0 +1,177 @@
+modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
+1;3;30050;U32;;Electricity charged in the current month;;0.01;0;kWh;4
+2;3;30052;U32;;Discharged electricity in the current month;;0.01;0;kWh;4
+3;3;30054;I64;;Electricity charged in the current year;;0.01;0;kWh;4
+4;3;30058;I64;;Discharge power of the year;;0.01;0;kWh;4
+5;3;30062;U32;;Electricity discharged on the current day;;0.01;0;kWh;4
+6;3;30064;U32;;Electricity discharged in the current month;;0.01;0;kWh;4
+7;3;30066;U32;;Electricity released in the current year;;0.01;0;kWh;4
+8;3;30068;I64;;Accumulated discharged electricity;;0.01;0;kWh;4
+9;3;38000;U32;;Current annual energy yield;;0.01;0;kWh;4
+10;3;38002;U32;;Current Monthly Energy Yield;;0.01;0;kWh;4
+11;3;38004;U32;;Current daily energy yield;E_DAY;0.01;0;kWh;4
+12;3;38006;U32;;Current Hourly Energy Yield;;0.01;0;kWh;4
+13;3;38008;U32;;Statistical time of current annual energy yield;;1;0;s;4
+14;3;38010;U32;;Current Monthly Energy Yield Statistics Time;;1;0;s;4
+15;3;38012;U32;;Current daily energy yield statistics time;;1;0;s;4
+16;3;38014;U32;;Current Hour Energy Yield Statistic Time;;1;0;s;4
+17;3;38100;I16;;Total DC current;I_DC;0.01;0;A;4
+18;3;38101;U32;;Major alarm;;1;0;;9
+19;3;38103;U32;;Minor alarm;;1;0;;9
+20;3;38105;U32;;Warning alarm;;1;0;;9
+21;3;40000;U32;;Date&Time;;1;0;;1
+22;3;40002;U32;;City;;1;0;;1
+23;3;40004;U16;;Daylight Saving Time (DST);;1;0;;1
+24;3;40005;I32;;Time Zone;;1;0;s;4
+25;3;40007;U16;;DST state;;1;0;;4
+26;3;40008;U16;;DST offset;;1;0;mins;4
+27;3;40009;U32;;Local time;;1;0;;4
+28;3;40196;U16;;PV inverter shutdown;;1;0;;0
+29;3;40197;U16;;PV inverter startup;;1;0;;0
+30;3;40198;U16;;ESS shutdown;;1;0;;0
+31;3;40199;U16;;ESS startup;;1;0;;0
+32;3;40200;U16;;Startup;CMD_ON;1;0;;0
+33;3;40201;U16;;Shutdown;CMD_OFF;1;0;;0
+34;3;40202;U16;;Startup/Shutdown_1;;1;0;;0
+35;3;40203;U16;;Startup/Shutdown_2;;1;0;;0
+36;3;40204;U16;;Transfer trip;;1;0;;1
+37;3;40205;U16;;Array reset;;1;0;;0
+38;3;40206;U16;;Quantity of running PV inverters;;1;0;;4
+39;3;40207;U16;;Quantity of running ESS PCSs;;1;0;;4
+40;3;40217;U16;;ESS end-of-discharge SOC;;0.1;0;%;4
+41;3;40218;U16;;ESS end-of-charge SOC;;0.1;0;%;4
+42;3;40378;U32;;Active PV power adjustment in fixed value;;0.1;0;kW;1
+43;3;40380;U16;;Active PV power adjustment in percentage;;0.1;0;%;1
+44;3;40381;I32;;Active ESS power adjustment in fixed value;;0.1;0;kW;1
+45;3;40383;I16;;Active ESS power adjustment in percentage;;0.1;0;%;1
+46;3;40384;I32;;Reactive PV power adjustment in fixed value;;0.1;0;kVar;1
+47;3;40386;I32;;Reactive ESS power adjustment in fixed value;;0.1;0;kVar;1
+48;3;40388;U32;;Active PV power;;0.001;0;kW;4
+49;3;40390;I32;;Reactive PV power;;0.001;0;kVar;4
+50;3;40392;I32;;Active ESS power;;0.001;0;kW;4
+51;3;40394;I32;;Reactive ESS power;;0.001;0;kVar;4
+52;3;40396;U32;;Rated PV power;;0.001;0;kW;4
+53;3;40398;U32;;Rated ESS power;;0.001;0;kW;4
+54;3;40400;U32;;Maximum active PV power adjustment value;;0.001;0;kW;4
+55;3;40402;U32;;Maximum reactive PV power adjustment value;;0.001;0;kVar;4
+56;3;40404;I32;;Minimum reactive PV power adjustment value;;0.001;0;kVar;4
+57;3;40406;U32;;Maximum reactive ESS power adjustment value;;0.001;0;kVar;4
+58;3;40408;I32;;Minimum reactive ESS power adjustment value;;0.001;0;kVar;4
+59;3;40412;I32;;Minimum active power adjustment value;P_AC;0.1;0;kW;4
+60;3;40420;I32;;Active power adjustment_1;;0.1;0;kW;1
+61;3;40422;I32;;Reactive power adjustment_1;Q_AC;0.1;0;kVar;1
+62;3;40424;U32;;Active power adjustment_2;;0.1;0;kW;1
+63;3;40426;I32;;Reactive power adjustment_2;;0.1;0;kVar;1
+64;3;40428;I16;;Active power adjustment in percentage;;0.1;0;%;1
+65;3;40429;I16;;Power factor adjustment;PF;0.001;0;;1
+66;3;40430;I32;;Active power adjustment (highest-priority);;0.001;0;kW;1
+67;3;40432;I32;;Reactive power adjustment (highest-priority);CMD_Q_AC_SET_ABS;0.001;0;kVar;1
+68;3;40438;U32;;Power supply from grid today;;0.01;0;kWh;4
+69;3;40464;I64;;Total power supply from grid;;0.01;0;kWh;4
+70;3;40468;U32;;Energy charged today;;0.01;0;kWh;4
+71;3;40470;U32;;Energy discharged today;;0.01;0;kWh;4
+72;3;40472;I64;;Total energy charged;E_TOT;0.01;0;kWh;4
+73;3;40476;I64;;Total energy discharged;;0.01;0;kWh;4
+74;3;40480;U32;;Chargeable capacity;;0.001;0;kWh;4
+75;3;40482;U32;;Dischargeable capacity;;0.001;0;kWh;4
+76;3;40484;U32;;Rated ESS capacity;;0.001;0;kWh;4
+77;3;40490;U32;;Maximum ESS charge power;;0.001;0;kW;4
+78;3;40492;U32;;Maximum ESS discharge power;;0.001;0;kW;4
+79;3;40494;U32;;Highest stable charge power of ESS;;0.001;0;kW;4
+80;3;40496;U32;;Highest stable discharge power of ESS;;0.001;0;kW;4
+81;3;40500;I16;;DC current;;0.1;0;A;4
+82;3;40507;I32;;Battery charge and discharge power;;0.001;0;kW;4
+83;3;40515;U16;;SOC;SOC;0.1;0;%;4
+84;3;40516;U16;;SOH;SOH;0.1;0;%;4
+85;3;40517;U16;;SOE;;0.1;0;%;4
+86;3;40518;U32;;Rated ESS capacity in Ah;;0.1;0;Ah;4
+87;3;40521;U32;;Input power;P_DC;0.001;0;kW;4
+88;3;40523;U32;;CO2 reduced_1;;0.1;0;kg;4
+89;3;40525;I32;;Active power;;0.001;0;kW;4
+90;3;40532;I16;;Power factor;;0.001;0;;4
+91;3;40535;U16;;Array in operation;;1;0;;4
+92;3;40536;U16;;Array shut down;;1;0;;4
+93;3;40537;U16;;PV inverter in operation;;1;0;;4
+94;3;40538;U16;;PV inverter shut down;;1;0;;4
+95;3;40539;U16;;ESS PCS in operation;;1;0;;4
+96;3;40540;U16;;ESS PCS shut down;;1;0;;4
+97;3;40541;U16;;Plant status_1;;1;0;;4
+98;3;40542;U16;;Plant status_2;;1;0;;4
+99;3;40543;U16;;Plant status_3;;1;0;;4
+100;3;40544;I32;;Reactive power;;0.001;0;kVar;4
+101;3;40550;U64;;CO2 reduced_2;;0.01;0;kg;4
+102;3;40554;I32;;DC current 2;;0.1;0;A;4
+103;3;40560;U32;;Total energy yield;;0.1;0;kWh;4
+104;3;40562;U32;;Yield today;;0.1;0;kWh;4
+105;3;40564;U32;;Today's power generation hours;;0.1;0;h;4
+106;3;40566;U16;;Plant status_4;;1;0;;4
+107;3;40567;U16;;Plant status_5;;1;0;;4
+108;3;40568;U32;;Active alarm sequence number;;1;0;;4
+109;3;40570;U32;;Historical alarm sequence number;;1;0;;4
+110;3;40572;I16;;Phase A current of grid;I_AC_1;1;0;A;4
+111;3;40573;I16;;Phase B current of grid;I_AC_2;1;0;A;4
+112;3;40574;I16;;Phase C current of grid;I_AC_3;1;0;A;4
+113;3;40575;U16;;A-B line voltage of grid;;0.1;0;V;4
+114;3;40576;U16;;B-C line voltage of grid;;0.1;0;V;4
+115;3;40577;U16;;C-A line voltage of grid;;0.1;0;V;4
+116;3;40578;U16;;Status information;;1;0;;4
+117;3;40685;U16;;Inverter efficiency;;0.01;0;%;4
+118;3;40693;U32;;Maximum reactive power adjustment value;;0.1;0;kVar;4
+119;3;40695;I32;;Minimum reactive power adjustment value;;0.1;0;kVar;4
+120;3;40697;I32;;Maximum active power adjustment value;;0.1;0;kW;4
+121;3;40699;U16;;Locking status;;1;0;;4
+122;3;40700;U16;;DI group state;;1;0;;4
+123;3;40713_20;STRING;;Equipment serial number (ESN);SERIAL;1;0;;4
+124;3;40723;U16;;System reset;;1;0;;0
+125;3;40724;U16;;Fast device access;;1;0;;0
+126;3;40725_22;RAW;;Device operation;;1;0;;0
+127;3;40736;U16;;Device access status;;1;0;;4
+128;3;40737;U16;;Active power control mode_1;;1;0;;4
+129;3;40738;I32;;Active power scheduling target value;;0.1;0;kW;4
+130;3;40740;U16;;Reactive power control mode_1;;1;0;;4
+131;3;40741;U16;;Reactive power scheduling curve mode;;1;0;;4
+132;3;40742;I32;;Reactive power scheduling target value;;1;0;;4
+133;3;40802;I32;;Active power scheduling in percentage;;1;0;%;4
+134;3;41124;U16;;CO2 emission reduction coefficient;;0.001;0;kg/kWh;1
+135;3;41889;U16;;Active power control mode_2;;1;0;;1
+136;3;41934;U32;;PV module capacity;;0.001;0;kW;4
+137;3;41936;U32;;Rated plant capacity;P_RATED;0.001;0;kW;4
+138;3;41938;U32;;Total rated capacity of grid-tied inverters;;0.001;0;kW;4
+139;3;41940;U32;;Conversion coefficient;;0.001;0;;4
+140;3;41942;U16;;Communication status;;1;0;;4
+141;3;41947;U16;;Shut down array upon communication timeout;;1;0;;1
+142;3;41948;U16;;Time for communication exception detection;;1;0;s;1
+143;3;41949;U16;;Start up array upon communication recovery;;1;0;;1
+144;3;42017;U16;;System time: year;;1;0;;1
+145;3;42018;U16;;System time: month;;1;0;;1
+146;3;42019;U16;;System time: day;;1;0;;1
+147;3;42020;U16;;System time: hour;;1;0;;1
+148;3;42021;U16;;System time: minute;;1;0;;1
+149;3;42022;U16;;System time: second;;1;0;;1
+150;3;42150;U16;;Current error during scanning;;0.01;0;;1
+151;3;42256;U16;;Working mode;;1;0;;1
+152;3;42728;U32;;The active power gradient register;;0.001;0;%/s;0
+153;3;42730;U16;;Inspection control;;1;0;;0
+154;3;42779;U16;;I-V curve scanning;;1;0;;0
+155;3;44165;U16;;Reactive power control mode_2;;1;0;;1
+156;3;44360;U16;;Array black start;;1;0;;1
+157;3;44361;U16;;Array black start status;;1;0;;4
+158;3;44362;U16;;Array one-click black start;;1;0;;1
+159;3;44364_2;RAW;;PV array PCS working mode_1;;1;0;;0
+160;3;44365;U16;;PV array PCS working mode_2;;1;0;;4
+161;3;44365;U16;;PCS working mode;;1;0;;0
+162;3;44366;I16;;Voltage adjustment value for VSG synchronous control;;0.01;0;%;1
+163;3;44367;I16;;Frequency adjustment value for VSG synchronous control;FREQ;0.01;0;%;1
+164;3;44373;U16;;Power on the PCS of the Subarray;;1;0;;0
+165;3;44374;U16;;Shut down the PCS of the Subarray;;1;0;;0
+166;3;44375;U16;;Subarray PV inverter microgrid adaptability;;1;0;;0
+167;3;44376;U16;;Grid connection switch status;;1;0;;0
+168;3;45282;U16;;Modbus TCP fast scheduling;;1;0;;4
+169;3;50000;U16;;Alarm 1;;1;0;;9
+170;3;50001;U16;;Alarm 2;;1;0;;9
+171;3;50002;U16;;Alarm 3;;1;0;;9
+172;3;50003;U16;;Alarm 4;;1;0;;9
+173;3;50004;U16;;Alarm 5;;1;0;;9
+174;3;50005;U16;;Alarm 6;;1;0;;9
+175;3;50006;U16;;Alarm 7;;1;0;;9
+176;3;50007;U16;;Alarm 8;;1;0;;9

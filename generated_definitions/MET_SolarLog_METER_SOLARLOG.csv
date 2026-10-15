@@ -1,0 +1,18 @@
+ModbusTCP;Meter;POLIER;PRO 380;;;;;;;
+1;4;3500;U32;;lastUpdateTime;;1;0;Sec;4
+2;4;3502;U32;;Pac;P_AC;1;0;W;4
+3;4;3504;U32;;Pdc;P_DC;1;0;W;4
+4;4;3506;U16;;Uac;;1;0;V;4
+5;4;3507;U16;;Udc;U_DC;1;0;Wh;4
+6;4;3508;U32;;Daily yield;E_DAY;1;0;Wh;4
+7;4;3510;U32;;Yesterday yield;;1;0;Wh;4
+8;4;3512;U32;;Monthly yield;;1;0;Wh;4
+9;4;3514;U32;;Yearly yield;;1;0;Wh;4
+10;4;3516;U32;;Total yield;E_TOT;1;0;Wh;4
+11;4;3518;U32;;Pac consumption;;1;0;W;4
+12;4;3520;U32;;Daily yield cons.;;1;0;Wh;4
+13;4;3522;U32;;Yesterday yield cons.;;1;0;Wh;4
+14;4;3524;U32;;Monthly yield cons.;;1;0;Wh;4
+15;4;3526;U32;;Yearly yield cons.;;1;0;Wh;4
+16;4;3528;U32;;Total yield cons;;1;0;Wh;4
+17;4;3530;U32;;TotalPower;;1;0;Wh/Wp;4

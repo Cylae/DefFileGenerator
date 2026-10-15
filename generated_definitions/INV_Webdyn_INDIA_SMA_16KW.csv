@@ -1,0 +1,31 @@
+modbusRTU;Inverter;Webdyn INDIA;SMA_16KW;;;;;;;
+1;4;30241;U32;;Operating state;operating_state;1.000000;0.000000;;8
+2;4;30243;U32;;Error;error;1.000000;0.000000;;8
+3;4;30249;U32;;Status of the GFDI relay;status_of_the_gfdi_relay;1.000000;0.000000;;8
+4;4;30251;U32;;Status of current restart interlock;status_of_current_restart_interlock;1.000000;0.000000;;8
+5;4;30529;U32;;Total yield (Wh);total_yield_wh;1.000000;0.000000;;4
+6;4;30531;U32;;Total yield (kWh);total_yield_kwh;1.000000;0.000000;;4
+7;4;30533;U32;;Total yield (MWh);total_yield_mwh;1.000000;0.000000;;4
+8;4;30535;U32;;Daily yield (Wh);daily_yield_wh;1.000000;0.000000;;4
+9;4;30537;U32;;Daily yield (kWh);daily_yield_kwh;1.000000;0.000000;;4
+10;4;30539;U32;;Daily yield (MWh);daily_yield_mwh;1.000000;0.000000;;4
+11;4;30541;U32;;Operating time (s);operating_time_s;1.000000;0.000000;;4
+12;4;30543;U32;;Feed-in time (s);feedin_time_s;1.000000;0.000000;;4
+13;4;30545;U32;;Operating time of interior fan 1 (s);operating_time_of_interior_fan_1_s;1.000000;0.000000;;4
+14;4;30547;U32;;Operating time of interior fan 2 (s);operating_time_of_interior_fan_2_s;1.000000;0.000000;;4
+15;4;30549;U32;;Operating time of heat sink fan (s);operating_time_of_heat_sink_fan_s;1.000000;0.000000;;4
+16;4;30769;U32;;DC current input (A);dc_current_input_a;1.000000;0.000000;;4
+17;4;30771;U32;;DC voltage input (V);dc_voltage_input_v;1.000000;0.000000;;4
+18;4;30773;U32;;DC power input (W);dc_power_input_w;1.000000;0.000000;;4
+19;4;30775;U32;;AC active power across all phases (W);ac_active_power_across_all_phases_w;1.000000;0.000000;;4
+20;4;30789;U32;;Grid voltage phase AB (V);grid_voltage_phase_ab_v;1.000000;0.000000;;4
+21;4;30791;U32;;Grid voltage phase BC (V);grid_voltage_phase_bc_v;1.000000;0.000000;;4
+22;4;30793;U32;;Grid voltage phase CA (V);grid_voltage_phase_ca_v;1.000000;0.000000;;4
+23;4;30795;U32;;Grid current AC (A);grid_current_ac_a;1.000000;0.000000;;4
+24;4;30797;U32;;Grid current L1 (A);grid_current_l1_a;1.000000;0.000000;;4
+25;4;30799;U32;;Grid current L2 (A);grid_current_l2_a;1.000000;0.000000;;4
+26;4;30801;U32;;Grid current L3 (A);grid_current_l3_a;1.000000;0.000000;;4
+27;4;30803;U32;;Power frequency (Hz);power_frequency_hz;1.000000;0.000000;;4
+28;4;30805;U32;;Reactive power (var);reactive_power_var;1.000000;0.000000;;4
+29;4;30814;U32;;Apparent power 1 (VA);apparent_power_1_va;1.000000;0.000000;;4
+30;4;30822;U32;;Power factor all phases;power_factor_all_phases;1.000000;0.000000;;4

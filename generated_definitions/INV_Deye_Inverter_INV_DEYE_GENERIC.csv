@@ -1,0 +1,328 @@
+modbusRTU;Inverter;Deye Inverter;INV_DEYE_GENERIC;;;;;;;
+1;3;16;U32_W;;Rated power;P_RATED;0.100000;0.000000;W;4
+2;3;19;U16;;Rated Grid Voltage;rated_grid_voltage;1.000000;0.000000;;4
+3;3;20;U16;;Remote Lock;remote_lock;1.000000;0.000000;;4
+4;3;21;U16;;Self-check time;selfcheck_time;1.000000;0.000000;s;4
+5;3;22;U16;;System Time Year Month;system_time_year_month;1.000000;0.000000;Year/Month;4
+6;3;23;U16;;System Time Day Hour;system_time_day_hour;1.000000;0.000000;Day/Hour;4
+7;3;24;U16;;System Time Minute Second;system_time_minute_second;1.000000;0.000000;Minute/Second;4
+8;3;25;U16;;Minimum insulation impedance;minimum_insulation_impedance;0.100000;0.000000;KΩ;4
+9;3;26;U16;;Dc voltage upper limit;dc_voltage_upper_limit;0.100000;0.000000;V;4
+10;3;27;U16;;Grid voltage Upper limit;grid_voltage_upper_limit;0.100000;0.000000;V;4
+11;3;28;U16;;Grid voltage Lower limit;grid_voltage_lower_limit;0.100000;0.000000;V;4
+12;3;29;U16;;Grid frequency upper limit;grid_frequency_upper_limit;0.010000;0.000000;Hz;4
+13;3;30;U16;;Grid frequency lower limit;grid_frequency_lower_limit;0.010000;0.000000;Hz;4
+14;3;31;U16;;Grid current Upper limit;grid_current_upper_limit;0.100000;0.000000;A;4
+15;3;32;U16;;Starting voltage upper limit;starting_voltage_upper_limit;0.100000;0.000000;V;4
+16;3;33;U16;;Starting voltage lower limit;starting_voltage_lower_limit;0.100000;0.000000;V;4
+17;3;34;U16;;ID Standard;id_standard;1.000000;0.000000;;4
+18;3;36;U16;;Internal temperature upper limit;internal_temperature_upper_limit;0.100000;0.000000;°C;4
+19;3;39;U16;;Power factor regulation;power_factor_regulation;0.001000;0.000000;;4
+20;3;40;U16;;Active power regulation;active_power_regulation;0.100000;0.000000;'%;4
+21;3;41;U16;;Reactive power regulation;reactive_power_regulation;0.001000;0.000000;;4
+22;3;42;U16;;Apparent power regulation;apparent_power_regulation;0.001000;0.000000;;4
+23;3;43;U16;;Switch on and off enable;switch_on_and_off_enable;1.000000;0.000000;;4
+24;3;44;U16;;Feed-in power regulation;feedin_power_regulation;1.000000;0.000000;;4
+25;3;45;U16;;Self-checking time;selfchecking_time;1.000000;0.000000;;4
+26;3;46;U16;;Island protection enable;island_protection_enable;1.000000;0.000000;;4
+27;3;47;U16;;MPPT number;mppt_number;1.000000;0.000000;;4
+28;3;48;U16;;GFDI enable;gfdi_enable;1.000000;0.000000;;4
+29;3;49;U16;;RCD enable;rcd_enable;1.000000;0.000000;;4
+30;3;50;U16;;RISO enable;riso_enable;1.000000;0.000000;;4
+31;3;51;U16;;Grid Standard;grid_standard;1.000000;0.000000;;4
+32;3;52;U16;;PV curve enable;pv_curve_enable;1.000000;0.000000;;4
+33;3;53;U16;;Max Solar Power;max_solar_power;1.000000;0.000000;;4
+34;3;54;U16;;EEPROM initial enabled;eeprom_initial_enabled;1.000000;0.000000;;4
+35;3;56;U16;;Limter function enable;limter_function_enable;1.000000;0.000000;;4
+36;3;57;U16;;PowerWH Factor;powerwh_factor;0.010000;0.000000;;4
+37;3;58;U16;;RSD enable;rsd_enable;1.000000;0.000000;;4
+38;3;59;U16;;Run state;run_state;1.000000;0.000000;;4
+39;3;60;I16;;DayActive PowerWh;dayactive_powerwh;0.100000;0.000000;kWh;4
+40;3;61;I16;;DayReactive PowerWh;dayreactive_powerwh;0.100000;0.000000;kVarh;4
+41;3;62;U16;;Day Grid Work Time;day_grid_work_time;1.000000;0.000000;s;4
+42;3;63;U32_W;;Total Active PowerWh;total_active_powerwh;0.100000;0.000000;kWh;4
+43;3;65;U32_W;;Total Reactive PowerWh;total_reactive_powerwh;0.100000;0.000000;kVarh;4
+44;3;67;U32_W;;Total Work time;total_work_time;0.100000;0.000000;h;4
+45;3;69;U16;;Inverter efficiency;inverter_efficiency;0.001000;0.000000;;4
+46;3;70;U16;;Grid voltage AB;grid_voltage_ab;0.100000;0.000000;V;4
+47;3;71;U16;;Grid voltage BC;grid_voltage_bc;0.100000;0.000000;V;4
+48;3;72;U16;;Grid voltage AC;grid_voltage_ac;0.100000;0.000000;V;4
+49;3;73;U16;;Grid voltage A;grid_voltage_a;0.100000;0.000000;V;4
+50;3;74;U16;;Grid voltage B;grid_voltage_b;0.100000;0.000000;V;4
+51;3;75;U16;;Grid voltage C;grid_voltage_c;0.100000;0.000000;V;4
+52;3;76;U16;;Grid current A;grid_current_a;0.100000;0.000000;A;4
+53;3;77;U16;;Grid current B;grid_current_b;0.100000;0.000000;A;4
+54;3;78;U16;;Grid current C;grid_current_c;0.100000;0.000000;A;4
+55;3;79;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+56;3;80;U16;;Displays low power bytes;displays_low_power_bytes;0.100000;0.000000;W;4
+57;3;81;U16;;Displays high power bytes;displays_high_power_bytes;0.100000;0.000000;W;4
+58;3;82;U32_W;;Input active power;input_active_power;0.100000;0.000000;W;4
+59;3;84;U32_W;;output apparent power;output_apparent_power;0.100000;0.000000;VA;4
+60;3;86;U32_W;;Output active power;P_AC;0.100000;0.000000;W;4
+61;3;88;U32_W;;Output reactive power;output_reactive_power;0.100000;0.000000;var;4
+62;3;90;U16;;Radiator temperature;radiator_temperature;0.100000;0.000000;°C;4
+63;3;91;U16;;IGBT temperature;igbt_temperature;0.100000;0.000000;°C;4
+64;3;92;U16;;Inductance 1 temperature (Void);inductance_1_temperature_void;0.100000;0.000000;°C;4
+65;3;93;U16;;power factor;PF;1.000000;0.000000;;4
+66;3;96;U32_W;;PV Instantaneous Power;pv_instantaneous_power;0.100000;0.000000;W;4
+67;3;98;U16;;RCD leak current;rcd_leak_current;0.010000;0.000000;A;4
+68;3;99;U16;;Limter power;limter_power;1.000000;0.000000;W;4
+69;3;107;U16;;Corrected_AH;corrected_ah;1.000000;0.000000;AH;4
+70;3;108;U16;;Day PV PowerWh;day_pv_powerwh;0.100000;0.000000;kWh;4
+71;3;109;U16;;Dc voltage 1;dc_voltage_1;0.100000;0.000000;V;4
+72;3;110;U16;;Dc current 1;dc_current_1;0.100000;0.000000;A;4
+73;3;111;U16;;Dc voltage 2;dc_voltage_2;0.100000;0.000000;V;4
+74;3;112;U16;;Dc current 2;dc_current_2;0.100000;0.000000;A;4
+75;3;113;U16;;Dc voltage 3;dc_voltage_3;0.100000;0.000000;V;4
+76;3;114;U16;;Dc current 3;dc_current_3;0.100000;0.000000;A;4
+77;3;115;U16;;Dc voltage 4;dc_voltage_4;0.100000;0.000000;V;4
+78;3;116;U16;;Dc current 4;dc_current_4;0.100000;0.000000;A;4
+79;3;150;U16;;Branch 1 current;branch_1_current;0.100000;0.000000;A;4
+80;3;151;U16;;Branch 2 current;branch_2_current;0.100000;0.000000;A;4
+81;3;152;U16;;Branch 3 current;branch_3_current;0.100000;0.000000;A;4
+82;3;153;U16;;Branch 4 current;branch_4_current;0.100000;0.000000;A;4
+83;3;154;U16;;Branch 5 current;branch_5_current;0.100000;0.000000;A;4
+84;3;155;U16;;Branch 6 current;branch_6_current;0.100000;0.000000;A;4
+85;3;156;U16;;Branch 7 current;branch_7_current;0.100000;0.000000;A;4
+86;3;157;U16;;Branch 8 current;branch_8_current;0.100000;0.000000;A;4
+87;3;158;U16;;Branch 9 current;branch_9_current;0.100000;0.000000;A;4
+88;3;159;U16;;Branch 10 current;branch_10_current;0.100000;0.000000;A;4
+89;3;160;U16;;Branch 11 current;branch_11_current;0.100000;0.000000;A;4
+90;3;161;U16;;Branch 12 current;branch_12_current;0.100000;0.000000;A;4
+91;3;162;U16;;Branch 13 current;branch_13_current;0.100000;0.000000;A;4
+92;3;163;U16;;Branch 14 current;branch_14_current;0.100000;0.000000;A;4
+93;3;164;U16;;Branch 15 current;branch_15_current;0.100000;0.000000;A;4
+94;3;165;U16;;Branch 16 current;branch_16_current;0.100000;0.000000;A;4
+95;3;166;U32_W;;Branch 1 PowerWH;branch_1_powerwh;0.100000;0.000000;kWh;4
+96;3;168;U32_W;;Branch 2 PowerWH;branch_2_powerwh;0.100000;0.000000;kWh;4
+97;3;170;U32_W;;Branch 3 PowerWH;branch_3_powerwh;0.100000;0.000000;kWh;4
+98;3;172;U32_W;;Branch 4 PowerWH;branch_4_powerwh;0.100000;0.000000;kWh;4
+99;3;174;U32_W;;Branch 5 PowerWH;branch_5_powerwh;0.100000;0.000000;kWh;4
+100;3;176;U32_W;;Branch 6 PowerWH;branch_6_powerwh;0.100000;0.000000;kWh;4
+101;3;178;U32_W;;Branch7 PowerWH;branch7_powerwh;0.100000;0.000000;kWh;4
+102;3;180;U32_W;;Branch 8 PowerWH;branch_8_powerwh;0.100000;0.000000;kWh;4
+103;3;182;U32_W;;Branch 9 PowerWH;branch_9_powerwh;0.100000;0.000000;kWh;4
+104;3;184;U32_W;;Branch 10 PowerWH;branch_10_powerwh;0.100000;0.000000;kWh;4
+105;3;186;U32_W;;Branch 11 PowerWH;branch_11_powerwh;0.100000;0.000000;kWh;4
+106;3;188;U32_W;;Branch 12 PowerWH;branch_12_powerwh;0.100000;0.000000;kWh;4
+107;3;190;U32_W;;Branch 13 PowerWH;branch_13_powerwh;0.100000;0.000000;kWh;4
+108;3;192;U32_W;;Branch 14 PowerWH;branch_14_powerwh;0.100000;0.000000;kWh;4
+109;3;194;U32_W;;Branch 15 PowerWH;branch_15_powerwh;0.100000;0.000000;kWh;4
+110;3;196;U32_W;;Branch 16 PowerWH;branch_16_powerwh;0.100000;0.000000;kWh;4
+111;3;198;U32_W;;Load power;load_power;1.000000;0.000000;W;4
+112;3;200;U16;;Day_Load_PowerWh;day_load_powerwh;0.010000;0.000000;kWh;4
+113;3;201;U32_W;;Total Load PowerWh;total_load_powerwh;0.100000;0.000000;kWh;4
+114;3;203;U32_W;;Meter power;meter_power;1.000000;0.000000;W;4
+115;3;205;U16;;Day_ Export _PowerWh;day_export_powerwh;0.010000;0.000000;kWh;4
+116;3;206;U32_W;;Total Export PowerWh;total_export_powerwh;0.100000;0.000000;kWh;4
+117;3;208;U16;;Day_ Import _PowerWh;day_import_powerwh;0.010000;0.000000;kWh;4
+118;3;209;U32_W;;Total Import PowerWh;total_import_powerwh;0.100000;0.000000;kWh;4
+119;3;211;U16;;Dc voltage 5;dc_voltage_5;0.100000;0.000000;V;4
+120;3;212;U16;;Dc current 5;dc_current_5;0.100000;0.000000;A;4
+121;3;213;U16;;Dc voltage 6;dc_voltage_6;0.100000;0.000000;V;4
+122;3;214;U16;;Dc current 6;dc_current_6;0.100000;0.000000;A;4
+123;3;215;U16;;Dc voltage 7;dc_voltage_7;0.100000;0.000000;V;4
+124;3;216;U16;;Dc current 7;dc_current_7;0.100000;0.000000;A;4
+125;3;217;U16;;Dc voltage 8;dc_voltage_8;0.100000;0.000000;V;4
+126;3;218;U16;;Dc current 8;dc_current_8;0.100000;0.000000;A;4
+127;3;229;I16;;Phase A ActivePower;phase_a_activepower;1.000000;0.000000;W;4
+128;3;230;I16;;Phase B ActivePower_1;phase_b_activepower_1;1.000000;0.000000;W;4
+129;3;231;I16;;Phase B ActivePower_2;phase_b_activepower_2;1.000000;0.000000;W;4
+130;3;232;I16;;Phase B ActivePower_3;phase_b_activepower_3;1.000000;0.000000;W;4
+131;3;233;I16;;Phase C ActivePower_1;phase_c_activepower_1;1.000000;0.000000;W;4
+132;3;234;I16;;Phase C ActivePower_2;phase_c_activepower_2;1.000000;0.000000;W;4
+133;3;235;U16;;Branch 17 current;branch_17_current;0.100000;0.000000;A;4
+134;3;236;U16;;Branch 18 current;branch_18_current;0.100000;0.000000;A;4
+135;3;237;U16;;Branch 19 current;branch_19_current;0.100000;0.000000;A;4
+136;3;238;U16;;Branch 20 current;branch_20_current;0.100000;0.000000;A;4
+137;3;239;U16;;Branch 21 current;branch_21_current;0.100000;0.000000;A;4
+138;3;240;U16;;Branch 22 current;branch_22_current;0.100000;0.000000;A;4
+139;3;241;U16;;Branch 23 current;branch_23_current;0.100000;0.000000;A;4
+140;3;242;U16;;Branch 24 current;branch_24_current;0.100000;0.000000;A;4
+141;3;243;U16;;Branch 25 current;branch_25_current;0.100000;0.000000;A;4
+142;3;244;U16;;Branch 26 current;branch_26_current;0.100000;0.000000;A;4
+143;3;245;U16;;Branch 27 current;branch_27_current;0.100000;0.000000;A;4
+144;3;246;U16;;Branch 28 current;branch_28_current;0.100000;0.000000;A;4
+145;3;247;U16;;Branch 29 current;branch_29_current;0.100000;0.000000;A;4
+146;3;248;U16;;Branch 30 current;branch_30_current;0.100000;0.000000;A;4
+147;3;249;U16;;Branch 31 current;branch_31_current;0.100000;0.000000;A;4
+148;3;250;U16;;Branch 32 current;branch_32_current;0.100000;0.000000;A;4
+149;3;251;U32_W;;Branch 17 PowerWH;branch_17_powerwh;0.100000;0.000000;kWh;4
+150;3;253;U32_W;;Branch 18 PowerWH;branch_18_powerwh;0.100000;0.000000;kWh;4
+151;3;255;U32_W;;Branch 19 PowerWH;branch_19_powerwh;0.100000;0.000000;kWh;4
+152;3;257;U32_W;;Branch 20 PowerWH;branch_20_powerwh;0.100000;0.000000;kWh;4
+153;3;259;U32_W;;Branch 21 PowerWH;branch_21_powerwh;0.100000;0.000000;kWh;4
+154;3;261;U32_W;;Branch 22 PowerWH;branch_22_powerwh;0.100000;0.000000;kWh;4
+155;3;263;U32_W;;Branch 23 PowerWH;branch_23_powerwh;0.100000;0.000000;kWh;4
+156;3;265;U32_W;;Branch 24 PowerWH;branch_24_powerwh;0.100000;0.000000;kWh;4
+157;3;267;U32_W;;Branch 25 PowerWH;branch_25_powerwh;0.100000;0.000000;kWh;4
+158;3;269;U32_W;;Branch 26 PowerWH;branch_26_powerwh;0.100000;0.000000;kWh;4
+159;3;271;U32_W;;Branch 27 PowerWH;branch_27_powerwh;0.100000;0.000000;kWh;4
+160;3;273;U32_W;;Branch 28 PowerWH;branch_28_powerwh;0.100000;0.000000;kWh;4
+161;3;275;U32_W;;Branch 29 PowerWH;branch_29_powerwh;0.100000;0.000000;kWh;4
+162;3;277;U32_W;;Branch 30 PowerWH;branch_30_powerwh;0.100000;0.000000;kWh;4
+163;3;279;U32_W;;Branch 31 PowerWH;branch_31_powerwh;0.100000;0.000000;kWh;4
+164;3;281;U32_W;;Branch 32 PowerWH;branch_32_powerwh;0.100000;0.000000;kWh;4
+165;3;285;I16;;Internal Current Parallel Anti Reverse Flow Power;internal_current_parallel_anti_reverse_flow_power;0.100000;0.000000;kW;4
+166;3;289;U16;;External Function Control Setting;external_function_control_setting;1.000000;0.000000;;4
+167;3;290;U16;;Active power regulation for exteranl controller;active_power_regulation_for_exteranl_controller;1.000000;0.000000;'%;4
+168;3;291;I16;;Reactive power regulation for exteranl controller;reactive_power_regulation_for_exteranl_controller;0.100000;0.000000;'%;4
+169;3;292;U16;;Current Anti Reverse Flow Mode Setting;current_anti_reverse_flow_mode_setting;1.000000;0.000000;;4
+170;3;293;U16;;Registers 290 and 291 Timeout Setting;registers_290_and_291_timeout_setting;1.000000;0.000000;s;4
+171;3;300;U16;;Grid voltage Upper limit2;grid_voltage_upper_limit2;0.100000;0.000000;V;4
+172;3;301;U16;;Grid voltage Upper limit3;grid_voltage_upper_limit3;0.100000;0.000000;V;4
+173;3;302;U16;;Grid voltage Lower limit2;grid_voltage_lower_limit2;0.100000;0.000000;V;4
+174;3;303;U16;;Grid voltage Lower limit3;grid_voltage_lower_limit3;0.100000;0.000000;V;4
+175;3;304;U16;;Grid frequency upper limit2;grid_frequency_upper_limit2;0.010000;0.000000;Hz;4
+176;3;305;U16;;Grid frequency upper limit3;grid_frequency_upper_limit3;0.010000;0.000000;Hz;4
+177;3;306;U16;;Grid frequency lower limit2;grid_frequency_lower_limit2;0.010000;0.000000;Hz;4
+178;3;307;U16;;Grid frequency lower limit3;grid_frequency_lower_limit3;0.010000;0.000000;Hz;4
+179;3;308;U16;;Grid voltage Upper Tripping time1;grid_voltage_upper_tripping_time1;10.000000;0.000000;ms;4
+180;3;309;U16;;Grid voltage Upper Tripping time2;grid_voltage_upper_tripping_time2;10.000000;0.000000;ms;4
+181;3;310;U16;;Grid voltage Upper Tripping time3;grid_voltage_upper_tripping_time3;10.000000;0.000000;ms;4
+182;3;311;U16;;Grid voltage Lower Tripping time1;grid_voltage_lower_tripping_time1;10.000000;0.000000;ms;4
+183;3;312;U16;;Grid voltage Lower Tripping time2;grid_voltage_lower_tripping_time2;10.000000;0.000000;ms;4
+184;3;313;U16;;Grid voltage Lower Tripping time3;grid_voltage_lower_tripping_time3;10.000000;0.000000;ms;4
+185;3;314;U16;;Grid frequency Upper Tripping time1;grid_frequency_upper_tripping_time1;10.000000;0.000000;ms;4
+186;3;315;U16;;Grid frequency Upper Tripping time2;grid_frequency_upper_tripping_time2;10.000000;0.000000;ms;4
+187;3;316;U16;;Grid frequency Upper Tripping time3;grid_frequency_upper_tripping_time3;10.000000;0.000000;ms;4
+188;3;317;U16;;Grid frequency Lower Tripping time1;grid_frequency_lower_tripping_time1;10.000000;0.000000;ms;4
+189;3;318;U16;;Grid frequency Lower Tripping time2;grid_frequency_lower_tripping_time2;10.000000;0.000000;ms;4
+190;3;319;U16;;Grid frequency Lower Tripping time3;grid_frequency_lower_tripping_time3;10.000000;0.000000;ms;4
+191;3;320;U16;;Vg_uplmt;vg_uplmt;0.100000;0.000000;V;4
+192;3;321;U16;;Vg_dnlmt;vg_dnlmt;0.100000;0.000000;V;4
+193;3;322;U16;;fg_uplmt;fg_uplmt;0.010000;0.000000;Hz;4
+194;3;323;U16;;fg_dnlmt;fg_dnlmt;0.010000;0.000000;Hz;4
+195;3;348;U16;;control board function setting 1;control_board_function_setting_1;1.000000;0.000000;;4
+196;3;349;U16;;control board function setting 2;control_board_function_setting_2;1.000000;0.000000;;4
+197;3;350;U16;;control board function setting 3_1;control_board_function_setting_3_1;1.000000;0.000000;;4
+198;3;351;U16;;control board function setting 3_2;control_board_function_setting_3_2;1.000000;0.000000;;4
+199;3;353;U16;;Wgra_Start;wgra_start;1.000000;0.000000;;4
+200;3;354;U16;;Vgrid_Reference;vgrid_reference;0.100000;0.000000;V;4
+201;3;355;U16;;10 Minute Overvoltage Point;v_10_minute_overvoltage_point;0.000100;0.000000;;4
+202;3;356;U16;;Wgra;wgra;0.000010;0.000000;;4
+203;3;357;U16;;Underfrequency Load Recovery Delay;underfrequency_load_recovery_delay;1.000000;0.000000;s;4
+204;3;358;U16;;Overfrequency Load Recovery Delay;overfrequency_load_recovery_delay;1.000000;0.000000;s;4
+205;3;359;U16;;Underfrequency Load Start Point;underfrequency_load_start_point;0.010000;0.000000;Hz;4
+206;3;360;U16;;Underfrequency Load End Point;underfrequency_load_end_point;0.010000;0.000000;Hz;4
+207;3;361;U16;;Underfrequency Load Recovery Point;underfrequency_load_recovery_point;0.010000;0.000000;Hz;4
+208;3;362;U16;;Underfrequency Load Recovery Slope;underfrequency_load_recovery_slope;0.100000;0.000000;'%;4
+209;3;363;U16;;Freq_watt_HzStr_1;freq_watt_hzstr_1;0.010000;0.000000;Hz;4
+210;3;364;U16;;Freq_watt_HzStr_2;freq_watt_hzstr_2;0.010000;0.000000;Hz;4
+211;3;365;U16;;Freq_watt_HzStop;freq_watt_hzstop;0.010000;0.000000;Hz;4
+212;3;366;U16;;Freq_watt_HzStopWGra;freq_watt_hzstopwgra;0.100000;0.000000;'%;4
+213;3;367;U16;;QU_Str;qu_str;0.000100;0.000000;;4
+214;3;368;U16;;QU_Stop;qu_stop;0.000100;0.000000;;4
+215;3;369;U16;;Volt1;volt1;0.000100;0.000000;;4
+216;3;370;I16;;Var1;var1;0.000100;0.000000;;4
+217;3;371;U16;;Volt2;volt2;0.000100;0.000000;;4
+218;3;372;I16;;Var2;var2;0.000100;0.000000;;4
+219;3;373;U16;;Volt3;volt3;0.000100;0.000000;;4
+220;3;374;I16;;Var3;var3;0.000100;0.000000;;4
+221;3;375;U16;;Volt4_1;volt4_1;0.000100;0.000000;;4
+222;3;376;I16;;Var4_1;var4_1;0.000100;0.000000;;4
+223;3;377;U16;;Volt4_2;volt4_2;0.000100;0.000000;;4
+224;3;378;I16;;Var4_2;var4_2;0.000100;0.000000;;4
+225;3;379;U16;;Volt4_3;volt4_3;0.000100;0.000000;;4
+226;3;380;I16;;Var4_3;var4_3;0.000100;0.000000;;4
+227;3;381;U16;;RmpPt;rmppt;1.000000;0.000000;s;4
+228;3;382;U16;;RmpPt_Uref;rmppt_uref;1.000000;0.000000;s;4
+229;3;383;U16;;Td_Poverfre;td_poverfre;0.100000;0.000000;s;4
+230;3;384;U16;;Td_Punderfre;td_punderfre;0.100000;0.000000;s;4
+231;3;385;U16;;TmsRmp_1;tmsrmp_1;0.100000;0.000000;s;4
+232;3;386;U16;;Overfrequency Derating Reference Power;overfrequency_derating_reference_power;1.000000;0.000000;;4
+233;3;387;U16;;Overfrequency Derating End Point Power Minimum Power;overfrequency_derating_end_point_power_minimum_power;0.001000;0.000000;;4
+234;3;390;U16;;Solar1 do Wind Input can make;solar1_do_wind_input_can_make;1.000000;0.000000;;4
+235;3;391;U16;;Solar2 do Wind Input can make;solar2_do_wind_input_can_make;1.000000;0.000000;;4
+236;3;392;U16;;Voltage 1;voltage_1;0.100000;0.000000;V;4
+237;3;393;U16;;Voltage 2;voltage_2;0.100000;0.000000;V;4
+238;3;394;U16;;Voltage 3;voltage_3;0.100000;0.000000;V;4
+239;3;395;U16;;Voltage 4;voltage_4;0.100000;0.000000;V;4
+240;3;396;U16;;Voltage 5;voltage_5;0.100000;0.000000;V;4
+241;3;397;U16;;Voltage 6;voltage_6;0.100000;0.000000;V;4
+242;3;398;U16;;Voltage 7;voltage_7;0.100000;0.000000;V;4
+243;3;399;U16;;Voltage 8;voltage_8;0.100000;0.000000;V;4
+244;3;400;U16;;Voltage 9;voltage_9;0.100000;0.000000;V;4
+245;3;401;U16;;Voltage 10;voltage_10;0.100000;0.000000;V;4
+246;3;402;U16;;Voltage 11;voltage_11;0.100000;0.000000;V;4
+247;3;403;U16;;Voltage 12;voltage_12;0.100000;0.000000;V;4
+248;3;404;U16;;Current 1;current_1;0.100000;0.000000;A;4
+249;3;405;U16;;Current 2;current_2;0.100000;0.000000;A;4
+250;3;406;U16;;Current 3;current_3;0.100000;0.000000;A;4
+251;3;407;U16;;Current 4;current_4;0.100000;0.000000;A;4
+252;3;408;U16;;Current 5;current_5;0.100000;0.000000;A;4
+253;3;409;U16;;Current 6;current_6;0.100000;0.000000;A;4
+254;3;410;U16;;Current 7;current_7;0.100000;0.000000;A;4
+255;3;411;U16;;Current 8;current_8;0.100000;0.000000;A;4
+256;3;412;U16;;Current 9;current_9;0.100000;0.000000;A;4
+257;3;413;U16;;Current 10;current_10;0.100000;0.000000;A;4
+258;3;414;U16;;Current 11;current_11;0.100000;0.000000;A;4
+259;3;415;U16;;Current 12;current_12;0.100000;0.000000;A;4
+260;3;428;I16;;Coefficient Correction Output Power Zero Offset;coefficient_correction_output_power_zero_offset;0.000100;0.000000;;4
+261;3;430;I16;;Coefficient Correction Limiter Power Zero Offset;coefficient_correction_limiter_power_zero_offset;0.000100;0.000000;;4
+262;3;435;U16;;PU Voltage Active Power Voltage Point 1;pu_voltage_active_power_voltage_point_1;0.000100;0.000000;;4
+263;3;436;U16;;PU Voltage Active Power Power Point 1;pu_voltage_active_power_power_point_1;0.000100;0.000000;;4
+264;3;437;U16;;PU Voltage Active Power Voltage Point 2;pu_voltage_active_power_voltage_point_2;0.000100;0.000000;;4
+265;3;438;U16;;PU Voltage Active Power Power Point 2;pu_voltage_active_power_power_point_2;0.000100;0.000000;;4
+266;3;439;U16;;PU Voltage Active Power Voltage Point 3;pu_voltage_active_power_voltage_point_3;0.000100;0.000000;;4
+267;3;440;U16;;PU Voltage Active Power Power Point 3;pu_voltage_active_power_power_point_3;0.000100;0.000000;;4
+268;3;441;U16;;PU Voltage Active Power Voltage Point 4;pu_voltage_active_power_voltage_point_4;0.000100;0.000000;;4
+269;3;442;U16;;PU Voltage Active Power Power Point 4;pu_voltage_active_power_power_point_4;0.000100;0.000000;;4
+270;3;443;U16;;TmsRmp_2;tmsrmp_2;1.000000;0.000000;s;4
+271;3;450;U16;;V_lockin;v_lockin;0.000000;0.000000;'%;4
+272;3;451;U16;;V_lockout;v_lockout;0.000000;0.000000;'%;4
+273;3;452;U16;;P1_1;p1_1;0.000000;0.000000;'%;4
+274;3;453;U16;;PF1;pf1;0.000000;0.000000;;4
+275;3;454;U16;;P2_1;p2_1;0.000000;0.000000;'%;4
+276;3;455;U16;;PF2;pf2;0.000000;0.000000;;4
+277;3;456;U16;;P3_1;p3_1;0.000000;0.000000;'%;4
+278;3;457;U16;;PF3;pf3;0.000000;0.000000;;4
+279;3;458;U16;;P4_1;p4_1;0.000000;0.000000;'%;4
+280;3;459;U16;;PF4;pf4;0.000000;0.000000;;4
+281;3;460;U16;;P5_1;p5_1;0.000000;0.000000;'%;4
+282;3;461;U16;;PF5;pf5;0.000000;0.000000;;4
+283;3;462;U16;;P6_1;p6_1;0.000000;0.000000;'%;4
+284;3;463;U16;;PF6;pf6;0.000000;0.000000;;4
+285;3;464;U16;;TmsRmp_3;tmsrmp_3;1.000000;0.000000;s;4
+286;3;465;U16;;Xin;xin;1.000000;0.000000;;4
+287;3;466;U16;;Xout;xout;1.000000;0.000000;;4
+288;3;467;U16;;P1_2;p1_2;0.000000;0.000000;'%;4
+289;3;468;I16;;Q1;q1;0.010000;0.000000;'%;4
+290;3;469;U16;;P2_2;p2_2;0.000000;0.000000;'%;4
+291;3;470;I16;;Q2;q2;0.010000;0.000000;'%;4
+292;3;471;U16;;P3_2;p3_2;0.000000;0.000000;'%;4
+293;3;472;I16;;Q3;q3;0.010000;0.000000;'%;4
+294;3;473;U16;;P4_2;p4_2;0.000000;0.000000;'%;4
+295;3;474;I16;;Q4;q4;0.010000;0.000000;'%;4
+296;3;475;U16;;P5_2;p5_2;0.000000;0.000000;'%;4
+297;3;476;I16;;Q5;q5;0.010000;0.000000;'%;4
+298;3;477;U16;;P6_2;p6_2;0.000000;0.000000;'%;4
+299;3;478;I16;;Q6;q6;0.010000;0.000000;'%;4
+300;3;480;U16;;Vstr_1;vstr_1;1.000000;0.000000;'%;4
+301;3;481;U16;;Vstop_1;vstop_1;1.000000;0.000000;'%;4
+302;3;482;U16;;Cur_Reactive_1;cur_reactive_1;1.000000;0.000000;'%;4
+303;3;483;U16;;Cur_Active_1;cur_active_1;1.000000;0.000000;'%;4
+304;3;484;U16;;WGra_1;wgra_1;0.100000;0.000000;'%;4
+305;3;487;U16;;Vstr_2;vstr_2;1.000000;0.000000;'%;4
+306;3;488;U16;;Vstop_2;vstop_2;1.000000;0.000000;'%;4
+307;3;489;U16;;Cur_Reactive_2;cur_reactive_2;1.000000;0.000000;'%;4
+308;3;490;U16;;Cur_Active_2;cur_active_2;1.000000;0.000000;'%;4
+309;3;491;U16;;WGra_2;wgra_2;0.100000;0.000000;'%;4
+310;3;494;U16;;Zero Crossing Enable Switch;zero_crossing_enable_switch;1.000000;0.000000;;4
+311;3;496;U16;;ShuntModeDeviceQuantity;shuntmodedevicequantity;1.000000;0.000000;pcs;4
+312;3;497;U16;;CT Generator;ct_generator;1.000000;0.000000;x;4
+313;3;498;U16;;Data Collector Grid Parallel Reverse Flow Power;data_collector_grid_parallel_reverse_flow_power;0.100000;0.000000;kW;4
+314;3;499;U16;;Data Collector Generator Reverse Flow Ratio;data_collector_generator_reverse_flow_ratio;0.010000;0.000000;;4
+315;3;500;U16;;Data Collector Generator Capacity;data_collector_generator_capacity;0.100000;0.000000;kW;4
+316;3;501;U16;;Soft Limit Power Setting;soft_limit_power_setting;0.000100;0.000000;;4
+317;3;502;U16;;Hard Limit Power Setting;hard_limit_power_setting;0.000100;0.000000;;4
+318;3;503;U16;;Output Power Setting When Meter Offline;output_power_setting_when_meter_offline;0.001000;0.000000;;4
+319;3;504;U16;;Hard Limit Protection Delay;hard_limit_protection_delay;1.000000;0.000000;s;4
+320;3;600;U32_W;;Day Load Power;day_load_power;0.010000;0.000000;kWh;4
+321;3;602;U16;;Day_Load_Power_high word_2;day_load_power_high_word_2;0.010000;0.000000;kWh;4
+322;3;603;U16;;Day_Load_Power_high word_3;day_load_power_high_word_3;0.010000;0.000000;kWh;4
+323;3;604;U16;;Day_Load_Power_high word_4;day_load_power_high_word_4;0.010000;0.000000;kWh;4
+324;3;605;U16;;Day_Load_Power_high word_5;day_load_power_high_word_5;0.010000;0.000000;kWh;4
+325;3;622;U16;;485-out-2 Port Meter 485 Switch;v_485out2_port_meter_485_switch;1.000000;0.000000;;4
+326;3;623;U16;;485-out-2 Baud Rate;v_485out2_baud_rate;1.000000;0.000000;;4
+327;3;624;U16;;485-out-2 Communication Address;v_485out2_communication_address;1.000000;0.000000;;4

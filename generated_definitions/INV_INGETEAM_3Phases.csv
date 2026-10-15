@@ -1,0 +1,112 @@
+modbusTCP;Inverter;INGETEAM;3phases;1;;;;;;
+1;4;0;I32;;Total AC Energy;E_TOT;1;0;kWh;4
+2;4;2;U32;;Hours up and running;;1;0;hour;4
+3;4;4;U32;;Number of connections to grid;;1;0;;4
+4;4;6;U16;;Inverter alarms;;1;0;;4
+5;4;7;U16;;Inverter alarms_1;;1;0;;4
+6;4;8;U16;;Vdc;U_DC;1;0;V;4
+7;4;9;U16;;Idc;I_DC;1;0;A;4
+8;4;10;U16;;Vac1;;1;0;V;4
+9;4;11;U16;;Vac2;;1;0;V;4
+10;4;12;U16;;Vac3;;1;0;V;4
+11;4;13;U16;;Iac1;I_AC_1;1;0;A;4
+12;4;14;U16;;Iac2;I_AC_2;1;0;A;4
+13;4;15;U16;;Iac3;I_AC_3;1;0;A;4
+14;4;16;I16;;Cos(phi);PF;1;0;;4
+15;4;17;I16;;Sign of Sin phi;;1;0;;4
+16;4;18;I16;;Active Power;P_AC;0.1;0;W;4
+17;4;19;U16;;Grid frequency;FREQ;0.001;0;Hz;4
+18;4;20;U16;;Current year;;1;0;yy;4
+19;4;21;U16;;Current month;;1;0;mm;4
+20;4;22;U16;;Current day;;1;0;dd;4
+21;4;23;U16;;Current hour;;1;0;hh;4
+22;4;24;U16;;Current minute;;1;0;mm;4
+23;4;25;U16;;Current sec;;1;0;ss;4
+24;4;26;U16;;Sun position;;0.1;0;degree;4
+25;4;27;U16;;Suntracker 1, mode;;1;0;;4
+26;4;28;U16;;Suntracker 1, motor state  ;;1;0;;4
+27;4;29;U16;;Suntracker 1, motor position;;0.1;0;degree;4
+28;4;30;U16;;Suntracker 1, motor position command;;0.1;0;degree;4
+29;4;31;U16;;Suntracker 1, alarms;;1;0;;4
+30;4;32;U16;;Suntracker 1, automatic tracking offset;;0.1;0;degree;4
+31;4;33;U16;;Suntracker 1, automatic step;;0.1;0;degree;4
+32;4;34;U16;;Suntracker 2, mode ;;1;0;;4
+33;4;35;U16;;Suntracker 2, motor state  ;;1;0;;4
+34;4;36;U16;;Suntracker 2, motor position;;0.1;0;degree;4
+35;4;37;U16;;Suntracker 2, motor position command;;0.1;0;degree;4
+36;4;38;U16;;Suntracker 2, alarms;;1;0;;4
+37;4;39;U16;;Suntracker 2, automatic tracking offset;;0.1;0;degree;4
+38;4;40;U16;;Suntracker 2, automatic step;;0.1;0;degree;4
+39;4;41;U16;;Analog Input 1;;1;0;;4
+40;4;42;U16;;Analog Input 2;;1;0;;4
+41;4;43;U16;;Analog Input 3;;1;0;;4
+42;4;44;U16;;Analog Input 4;;1;0;;4
+43;4;45;U16;;Analog Input 5;;1;0;;4
+44;4;46;U16;;Analog Input 6;;1;0;;4
+45;4;53;U16;;Tracker alarms;;1;0;;4
+46;4;58;I16;;Energy Resetable Counter;;1;0;kWh;4
+47;4;60;U32;;Hours up and running_1;;1;0;hour;4
+48;4;62;U32;;Number of connections to grid ;;1;0;;4
+49;4;64;U32;;Instantaneous inverter alarms;;1;0;;4
+50;4;66;U32;;Inverter alarms mainteined;;1;0;;4
+51;4;68;I16;;Reactive Power;Q_AC;1;0;;4
+52;4;69;U16;;Zpos;;0.001;0;Ohm;4
+53;4;70;U16;;Zneg;;0.001;0;Ohm;4
+54;4;71;I16;;Power electronics temperature;;1;0;;4
+55;4;72;I16;;Control electronics temperature;;1;0;;4
+56;4;73;U16;;Inverter state;;1;0;;4
+57;4;74;U16;;VpvN: Voltage NEGATIVE- EARTH;;1;0;;4
+58;4;75;U16;;VpvP: Voltage POSITIVE- EARTH;;1;0;;4
+59;4;76;U16;;Nominal power;P_RATED;0.1;0;;4
+60;4;77;U16;;newest stop reason;;1;0;;4
+61;4;78;U16;;Year stop reason 0;;1;0;;4
+62;4;79;U16;;Month stop reason 0  ;;1;0;;4
+63;4;80;U16;;Day stop reason 0;;1;0;;4
+64;4;81;U16;;Hour stop reason 0  ;;1;0;;4
+65;4;82;U16;;Minute stop reason 0;;1;0;;4
+66;4;83;U16;;Stop reason 0;;1;0;;4
+67;4;84;U16;;Year stop reason 1;;1;0;;4
+68;4;85;U16;;Month stop reason 1;;1;0;;4
+69;4;86;U16;;Day stop reason 1;;1;0;;4
+70;4;87;U16;;Hour stop reason 1;;1;0;;4
+71;4;88;U16;;Minute stop reason 1;;1;0;;4
+72;4;89;U16;;Stop reason 1;;1;0;;4
+73;4;90;U16;;Year stop reason 2;;1;0;;4
+74;4;91;U16;;Month stop reason 2;;1;0;;4
+75;4;92;U16;;Day stop reason 2;;1;0;;4
+76;4;93;U16;;Hour stop reason 2;;1;0;;4
+77;4;94;U16;;Minute stop reason 2;;1;0;;4
+78;4;95;U16;;Stop reason 2;;1;0;;4
+79;4;96;U16;;Year stop reason 3;;1;0;;4
+80;4;97;U16;;Month stop reason 3;;1;0;;4
+81;4;98;U16;;Day stop reason 3;;1;0;;4
+82;4;99;U16;;Hour stop reason 3;;1;0;;4
+83;4;100;U16;;Minute stop reason 3;;1;0;;4
+84;4;101;U16;;Stop reason 3;;1;0;;4
+85;4;102;U16;;Year stop reason 4;;1;0;;4
+86;4;103;U16;;Month stop reason 4;;1;0;;4
+87;4;104;U16;;Day stop reason 4;;1;0;;4
+88;4;105;U16;;Hour stop reason 4;;1;0;;4
+89;4;106;U16;;Minute stop reason 4;;1;0;;4
+90;4;107;U16;;Stop reason 4;;1;0;;4
+91;4;108;U16;;Remaining time to connect;;1;0;s;4
+92;4;109;U16;;Total time to connect;;1;0;s;4
+93;4;110;U16;;Inverter state_1;;1;0;;4
+94;4;111;I16;;Cos(Phi);;1;0;;4
+95;4;112;I16;;Sign of sin(j);;1;0;;4
+96;4;113;I16;;Active Power_1;;0.1;0;W;4
+97;4;114;I16;;Reactive Power_1;;0.1;0;Var;4
+98;4;116;U16;;Power reduction cause;;1;0;;4
+99;4;117;U16;;pct of reduction;;1;0;pct;4
+100;4;118;I32;;Total Dc Energy;;1;0;kWh;4
+101;4;120;I32;;Partial Dc Energy;;1;0;kWh;4
+102;4;122;U16;;Display FW Version;;1;0;;4
+103;4;123;U16;;Smart grounding system State;;1;0;;4
+104;4;124;U16;;Smart grounding system Alarm;;1;0;;4
+105;4;125;U16;;Smart grounding system Average current;;0.1;0;mA;4
+106;4;126;U16;;Smart grounding system RMS current;;0.1;0;mA;4
+107;4;127;U16;;Qnight Status;;1;0;;4
+108;4;128;U16;;Qnight Counter;;1;0;;4
+109;3;1000;U16;;Command code;CMD_ON;1;5;;4
+110;3;1001;U16;;Command Data 1;;1;0;;4
+111;3;1002;U16;;Command Data 2;;1;0;;4

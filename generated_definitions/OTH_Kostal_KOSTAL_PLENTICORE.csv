@@ -1,0 +1,155 @@
+modbusRTU;Other;Kostal;KOSTAL_PLENTICORE;;;;;;;
+1;3;2;U16;;MODBUS Enable;modbus_enable;1.000000;0.000000;;4
+2;3;4;U16;;MODBUS Unit-ID;modbus_unitid;1.000000;0.000000;;4
+3;3;5;U16;;MODBUS Byte Order Note;modbus_byte_order_note;1.000000;0.000000;;4
+4;3;6_8;STRING;;Inverter article number;inverter_article_number;1.000000;0.000000;;4
+5;3;14_8;STRING;;Inverter serial number;SERIAL;1.000000;0.000000;;4
+6;3;30;U16;;Number of bidirectional converter;number_of_bidirectional_converter;1.000000;0.000000;;4
+7;3;32;U16;;Number of AC phases;number_of_ac_phases;1.000000;0.000000;;4
+8;3;34;U16;;Number of PV strings;number_of_pv_strings;1.000000;0.000000;;4
+9;3;36;U16;;Hardware-Version;hardwareversion;1.000000;0.000000;;4
+10;3;38_8;STRING;;Software-Version Maincontroller (MC);softwareversion_maincontroller_mc;1.000000;0.000000;;4
+11;3;46_8;STRING;;Software-Version IO-Controller (IOC);softwareversion_iocontroller_ioc;1.000000;0.000000;;4
+12;3;54;U32;;Power-ID;powerid;1.000000;0.000000;;4
+13;3;56;U32;;Inverter state;inverter_state;1.000000;0.000000;;4
+14;3;58_13;STRING;;Overall software version (UI / SW);overall_software_version_ui_sw;1.000000;0.000000;;4
+15;3;98;F32;;Temperature of controller PCB;temperature_of_controller_pcb;1.000000;0.000000;°C;4
+16;3;100;F32;;Total DC power;total_dc_power;1.000000;0.000000;W;4
+17;3;104;U32;;State of energy manager;state_of_energy_manager;1.000000;0.000000;;4
+18;3;106;F32;;Home own consumption from battery;home_own_consumption_from_battery;1.000000;0.000000;W;4
+19;3;108;F32;;Home own consumption from grid;home_own_consumption_from_grid;1.000000;0.000000;W;4
+20;3;110;F32;;Total home consumption Battery;total_home_consumption_battery;1.000000;0.000000;Wh;4
+21;3;112;F32;;Total home consumption Grid;total_home_consumption_grid;1.000000;0.000000;Wh;4
+22;3;114;F32;;Total home consumption PV;total_home_consumption_pv;1.000000;0.000000;Wh;4
+23;3;116;F32;;Home own consumption from PV;home_own_consumption_from_pv;1.000000;0.000000;W;4
+24;3;118;F32;;Total home consumption;total_home_consumption;1.000000;0.000000;Wh;4
+25;3;120;F32;;Isolation resistance;isolation_resistance;1.000000;0.000000;Ohm;4
+26;3;122;F32;;Power limit from EVU;power_limit_from_evu;1.000000;0.000000;'%;4
+27;3;124;F32;;Total home consumption rate;total_home_consumption_rate;1.000000;0.000000;'%;4
+28;3;144;F32;;Worktime;worktime;1.000000;0.000000;s;4
+29;3;150;F32;;Actual cos phi;actual_cos_phi;1.000000;0.000000;;4
+30;3;152;F32;;Grid frequency;FREQ;1.000000;0.000000;Hz;4
+31;3;154;F32;;Current Phase 1;current_phase_1;1.000000;0.000000;A;4
+32;3;156;F32;;Active power Phase 1;active_power_phase_1;1.000000;0.000000;W;4
+33;3;158;F32;;Voltage Phase 1;voltage_phase_1;1.000000;0.000000;V;4
+34;3;160;F32;;Current Phase 2;current_phase_2;1.000000;0.000000;A;4
+35;3;162;F32;;Active power Phase 2;active_power_phase_2;1.000000;0.000000;W;4
+36;3;164;F32;;Voltage Phase 2;voltage_phase_2;1.000000;0.000000;V;4
+37;3;166;F32;;Current Phase 3;current_phase_3;1.000000;0.000000;A;4
+38;3;168;F32;;Active power Phase 3;active_power_phase_3;1.000000;0.000000;W;4
+39;3;170;F32;;Voltage Phase 3;voltage_phase_3;1.000000;0.000000;V;4
+40;3;172;F32;;Total AC active power;P_AC;1.000000;0.000000;W;4
+41;3;174;F32;;Total AC reactive power;total_ac_reactive_power;1.000000;0.000000;Var;4
+42;3;178;F32;;Total AC apparent power;total_ac_apparent_power;1.000000;0.000000;VA;4
+43;3;190;F32;;Battery charge current;battery_charge_current;1.000000;0.000000;A;1
+44;3;194;F32;;Number of battery cycles;number_of_battery_cycles;1.000000;0.000000;;1
+45;3;200;F32;;Actual battery charge (-) discharge (+) current;actual_battery_charge_discharge_current;1.000000;0.000000;A;1
+46;3;202;F32;;PSSB fuse state;pssb_fuse_state;1.000000;0.000000;;4
+47;3;208;F32;;Battery ready flag;battery_ready_flag;1.000000;0.000000;;1
+48;3;210;F32;;Act. state of charge;act_state_of_charge;1.000000;0.000000;'%;1
+49;3;214;F32;;Battery temperature;battery_temperature;1.000000;0.000000;°C;1
+50;3;216;F32;;Battery voltage;battery_voltage;1.000000;0.000000;V;1
+51;3;218;F32;;Cos phi (powermeter);cos_phi_powermeter;1.000000;0.000000;;4
+52;3;220;F32;;Frequency (powermeter);frequency_powermeter;1.000000;0.000000;Hz;4
+53;3;222;F32;;Current phase 1 (powermeter);current_phase_1_powermeter;1.000000;0.000000;A;4
+54;3;224;F32;;Active power phase 1 (powermeter);active_power_phase_1_powermeter;1.000000;0.000000;W;4
+55;3;226;F32;;Reactive power phase 1 (powermeter);reactive_power_phase_1_powermeter;1.000000;0.000000;Var;4
+56;3;228;F32;;Apparent power phase 1 (powermeter);apparent_power_phase_1_powermeter;1.000000;0.000000;VA;4
+57;3;230;F32;;Voltage phase 1 (powermeter);voltage_phase_1_powermeter;1.000000;0.000000;V;4
+58;3;232;F32;;Current phase 2 (powermeter);current_phase_2_powermeter;1.000000;0.000000;A;4
+59;3;234;F32;;Active power phase 2 (powermeter);active_power_phase_2_powermeter;1.000000;0.000000;W;4
+60;3;236;F32;;Reactive power phase 2 (powermeter);reactive_power_phase_2_powermeter;1.000000;0.000000;Var;4
+61;3;238;F32;;Apparent power phase 2 (powermeter);apparent_power_phase_2_powermeter;1.000000;0.000000;VA;4
+62;3;240;F32;;Voltage phase 2 (powermeter);voltage_phase_2_powermeter;1.000000;0.000000;V;4
+63;3;242;F32;;Current phase 3 (powermeter);current_phase_3_powermeter;1.000000;0.000000;A;4
+64;3;244;F32;;Active power phase 3 (powermeter);active_power_phase_3_powermeter;1.000000;0.000000;W;4
+65;3;246;F32;;Reactive power phase 3 (powermeter);reactive_power_phase_3_powermeter;1.000000;0.000000;Var;4
+66;3;248;F32;;Apparent power phase 3 (powermeter);apparent_power_phase_3_powermeter;1.000000;0.000000;VA;4
+67;3;250;F32;;Voltage phase 3 (powermeter);voltage_phase_3_powermeter;1.000000;0.000000;V;4
+68;3;252;F32;;Total active power (powermeter);total_active_power_powermeter;1.000000;0.000000;W;4
+69;3;254;F32;;Total reactive power (powermeter);total_reactive_power_powermeter;1.000000;0.000000;Var;4
+70;3;256;F32;;Total apparent power (powermeter);total_apparent_power_powermeter;1.000000;0.000000;VA;4
+71;3;258;F32;;Current DC1;current_dc1;1.000000;0.000000;A;4
+72;3;260;F32;;Power DC1;power_dc1;1.000000;0.000000;W;4
+73;3;266;F32;;Voltage DC1;voltage_dc1;1.000000;0.000000;V;4
+74;3;268;F32;;Current DC2;current_dc2;1.000000;0.000000;A;4
+75;3;270;F32;;Power DC2;power_dc2;1.000000;0.000000;W;4
+76;3;276;F32;;Voltage DC2;voltage_dc2;1.000000;0.000000;V;4
+77;3;278;F32;;Current DC3;current_dc3;1.000000;0.000000;A;4
+78;3;280;F32;;Power DC3;power_dc3;1.000000;0.000000;W;4
+79;3;286;F32;;Voltage DC3;voltage_dc3;1.000000;0.000000;V;4
+80;3;320;F32;;Total yield;E_TOT;1.000000;0.000000;Wh;4
+81;3;322;F32;;Daily yield;E_DAY;1.000000;0.000000;Wh;4
+82;3;324;F32;;Yearly yield;yearly_yield;1.000000;0.000000;Wh;4
+83;3;326;F32;;Monthly yield;monthly_yield;1.000000;0.000000;Wh;4
+84;3;384_32;STRING;;Inverter network name;inverter_network_name;1.000000;0.000000;;4
+85;3;416;U16;;IP enable;ip_enable;1.000000;0.000000;;4
+86;3;418;U16;;Manual IP / Auto-IP;manual_ip_autoip;1.000000;0.000000;;4
+87;3;420_8;STRING;;IP-address;ipaddress;1.000000;0.000000;;4
+88;3;428_8;STRING;;IP-subnetmask;ipsubnetmask;1.000000;0.000000;;4
+89;3;436_8;STRING;;IP-gateway;ipgateway;1.000000;0.000000;;4
+90;3;444;U16;;IP-auto-DNS;ipautodns;1.000000;0.000000;;4
+91;3;446_8;STRING;;IP-DNS1;ipdns1;1.000000;0.000000;;4
+92;3;454_8;STRING;;IP-DNS2;ipdns2;1.000000;0.000000;;4
+93;3;512;U32;;Battery gross capacity;battery_gross_capacity;1.000000;0.000000;Ah;1
+94;3;514;U16;;Battery actual SOC;battery_actual_soc;1.000000;0.000000;'%;1
+95;3;515;U32;;Firmware Maincontroller (MC);firmware_maincontroller_mc;1.000000;0.000000;;4
+96;3;517_8;STRING;;Battery Manufacturer;battery_manufacturer;1.000000;0.000000;;1
+97;3;525;U32;;Battery Model ID;battery_model_id;1.000000;0.000000;;1
+98;3;527;U32;;Battery Serial Number;battery_serial_number;1.000000;0.000000;;1
+99;3;529;U32;;Work Capacity;work_capacity;1.000000;0.000000;Wh;1
+100;3;531;U16;;Inverter Max Power;inverter_max_power;1.000000;0.000000;W;4
+101;3;532;I16;;Inverter Max Power Scale Factor;inverter_max_power_scale_factor;1.000000;0.000000;;4
+102;3;533;U16;;Active Power Setpoint;active_power_setpoint;1.000000;0.000000;'%;4
+103;3;535_16;STRING;;Inverter Manufacturer;inverter_manufacturer;1.000000;0.000000;;4
+104;3;559_16;STRING;;Inverter Serial Number;inverter_serial_number;1.000000;0.000000;;4
+105;3;575;I16;;Inverter Generation Power (actual);inverter_generation_power_actual;1.000000;0.000000;W;4
+106;3;576;I16;;Power Scale Factor;power_scale_factor;1.000000;0.000000;;4
+107;3;577;U32;;Generation Energy;generation_energy;1.000000;0.000000;Wh;4
+108;3;579;I16;;Energy Scale Factor;energy_scale_factor;1.000000;0.000000;;4
+109;3;582;I16;;Actual battery charge/discharge power;actual_battery_chargedischarge_power;1.000000;0.000000;W;1
+110;3;583;I16;;Reactive Power Setpoint;reactive_power_setpoint;1.000000;0.000000;'%;4
+111;3;585;I16;;Delta-cos phi Setpoint;deltacos_phi_setpoint;1.000000;0.000000;;4
+112;3;586;U32;;Battery Firmware;battery_firmware;1.000000;0.000000;;1
+113;3;588;U16;;Battery Type;battery_type;1.000000;0.000000;;1
+114;3;608;U16;;I/O-Board Switched Output 1;ioboard_switched_output_1;1.000000;0.000000;;4
+115;3;609;U16;;I/O-Board Switched Output 2;ioboard_switched_output_2;1.000000;0.000000;;4
+116;3;610;U16;;I/O-Board Switched Output 3;ioboard_switched_output_3;1.000000;0.000000;;4
+117;3;611;U16;;I/O-Board Switched Output 4;ioboard_switched_output_4;1.000000;0.000000;;4
+118;3;768_32;STRING;;Productname;productname;1.000000;0.000000;;4
+119;3;800_32;STRING;;Power class;power_class;1.000000;0.000000;;4
+120;3;832;U16;;Low-Priority Active power setpoint;lowpriority_active_power_setpoint;1.000000;0.000000;W;4
+121;3;1024;I16;;Battery charge power (AC) setpoint;battery_charge_power_ac_setpoint;1.000000;0.000000;W;1
+122;3;1025;I16;;Power Scale Factor Note;power_scale_factor_note;1.000000;0.000000;;1
+123;3;1026;F32;;Battery charge power (AC) absolute;battery_charge_power_ac_absolute;1.000000;0.000000;W;1
+124;3;1028;F32;;Battery charge current (DC) relative;battery_charge_current_dc_relative;1.000000;0.000000;'%;1
+125;3;1030;F32;;Battery charge power (AC) relative;battery_charge_power_ac_relative;1.000000;0.000000;'%;1
+126;3;1032;F32;;Battery charge current (DC) absolute;battery_charge_current_dc_absolute;1.000000;0.000000;A;1
+127;3;1034;F32;;Battery charge power (DC) absolute;battery_charge_power_dc_absolute;1.000000;0.000000;W;1
+128;3;1036;F32;;Battery charge power (DC) relative;battery_charge_power_dc_relative;1.000000;0.000000;'%;1
+129;3;1038;F32;;Battery max. charge power limit absolute;battery_max_charge_power_limit_absolute;1.000000;0.000000;W;1
+130;3;1040;F32;;Battery max. discharge power limit absolute;battery_max_discharge_power_limit_absolute;1.000000;0.000000;W;1
+131;3;1042;F32;;Minimum SOC;minimum_soc;1.000000;0.000000;'%;1
+132;3;1044;F32;;Maximum SOC;maximum_soc;1.000000;0.000000;'%;1
+133;3;1046;F32;;Total DC charge energy (DC-battery);total_dc_charge_energy_dcbattery;1.000000;0.000000;Wh;1
+134;3;1048;F32;;Total DC discharge energy (DC-battery);total_dc_discharge_energy_dcbattery;1.000000;0.000000;Wh;1
+135;3;1050;F32;;Total AC charge energy (AC-battery);total_ac_charge_energy_acbattery;1.000000;0.000000;Wh;1
+136;3;1052;F32;;Total AC discharge energy (battery-grid);total_ac_discharge_energy_batterygrid;1.000000;0.000000;Wh;1
+137;3;1054;F32;;Total AC charge energy (grid-battery);total_ac_charge_energy_gridbattery;1.000000;0.000000;Wh;1
+138;3;1056;F32;;Total DC PV energy (sum all);total_dc_pv_energy_sum_all;1.000000;0.000000;Wh;4
+139;3;1058;F32;;Total DC energy from PV1;total_dc_energy_from_pv1;1.000000;0.000000;Wh;4
+140;3;1060;F32;;Total DC energy from PV2;total_dc_energy_from_pv2;1.000000;0.000000;Wh;4
+141;3;1062;F32;;Total DC energy from PV3;total_dc_energy_from_pv3;1.000000;0.000000;Wh;4
+142;3;1064;F32;;Total energy AC-side to grid;total_energy_acside_to_grid;1.000000;0.000000;Wh;4
+143;3;1066;F32;;Total DC power (sum PV inputs);total_dc_power_sum_pv_inputs;1.000000;0.000000;W;4
+144;3;1068;F32;;Battery work capacity;battery_work_capacity;1.000000;0.000000;Wh;1
+145;3;1070;U32;;Battery serial number;battery_serial_number_1;1.000000;0.000000;;1
+146;3;1076;F32;;Maximum charge power limit (read-out);maximum_charge_power_limit_readout;1.000000;0.000000;W;1
+147;3;1078;F32;;Maximum discharge power limit (read-out);maximum_discharge_power_limit_readout;1.000000;0.000000;W;1
+148;3;1280;F32;;Max battery charge power (G3);max_battery_charge_power_g3;1.000000;0.000000;W;1
+149;3;1282;F32;;Max battery discharge power (G3);max_battery_discharge_power_g3;1.000000;0.000000;W;1
+150;3;1284;F32;;Max battery charge power fallback (G3);max_battery_charge_power_fallback_g3;1.000000;0.000000;W;1
+151;3;1286;F32;;Max battery discharge power fallback (G3);max_battery_discharge_power_fallback_g3;1.000000;0.000000;W;1
+152;3;1288;U32;;Time until fallback;time_until_fallback;1.000000;0.000000;s;1
+153;3;40346;U32;;Total Real Energy Exported;total_real_energy_exported;1.000000;0.000000;Wh;4
+154;3;40354;U32;;Total Real Energy Imported;total_real_energy_imported;1.000000;0.000000;Wh;4

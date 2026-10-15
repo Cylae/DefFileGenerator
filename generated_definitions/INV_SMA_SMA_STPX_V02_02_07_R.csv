@@ -1,0 +1,446 @@
+modbusRTU;Inverter;SMA;SMA_STPX_V02_02_07_R;;;;;;;
+1;3;30051;U32;;Classe d?appareil;classe_dappareil;1.000000;0.000000;;4
+2;3;30053;U32;;Type d?appareil;MODEL;1.000000;0.000000;;4
+3;3;30055;U32;;Fabricant;fabricant;1.000000;0.000000;;4
+4;3;30057;U32;;Numero de serie_0;SERIAL;1.000000;0.000000;;4
+5;3;30059;U32;;Progiciel;progiciel;1.000000;0.000000;;4
+6;3;30201;U32;;etat;etat;1.000000;0.000000;;4
+7;3;30203;U32;;Puissance nominale en ‚tat OK_0;puissance_nominale_en_tat_ok_0;1.000000;0.000000;W;4
+8;3;30205;U32;;Puissance nominale en ‚tat avertissement;puissance_nominale_en_tat_avertissement;1.000000;0.000000;W;4
+9;3;30207;U32;;Puissance nominale en ‚tat erreur;puissance_nominale_en_tat_erreur;1.000000;0.000000;W;4
+10;3;30217;U32;;Relais/Contacteur r‚seau;relaiscontacteur_rseau;1.000000;0.000000;;4
+11;3;30219;U32;;Cause de la r‚duction de puissance;cause_de_la_rduction_de_puissance;1.000000;0.000000;;4
+12;3;30225;U32;;R‚sistance d?isolement;rsistance_disolement;1.000000;0.000000;Ohm;4
+13;3;30231;U32;;Puissance active assign‚e WMaxOutRtg;puissance_active_assigne_wmaxoutrtg;1.000000;0.000000;W;4
+14;3;30233;U32;;Lim. de puiss. active r‚gl‚e_RO;lim_de_puiss_active_rgle_ro;1.000000;0.000000;W;4
+15;3;30235;U32;;Etat du mode de sauvegarde;etat_du_mode_de_sauvegarde;1.000000;0.000000;;4
+16;3;30251;U32;;�tat de verrouillage;tat_de_verrouillage;1.000000;0.000000;;4
+17;3;30775;I32;;Puissance;P_AC;1.000000;0.000000;W;4
+18;3;30777;I32;;Puissance L1;puissance_l1;1.000000;0.000000;W;4
+19;3;30779;I32;;Puissance L2;puissance_l2;1.000000;0.000000;W;4
+20;3;30781;I32;;Puissance L3;puissance_l3;1.000000;0.000000;W;4
+21;3;30783;U32;;Tension du r‚seau phase L1;tension_du_rseau_phase_l1;0.010000;0.000000;V;4
+22;3;30785;U32;;Tension du r‚seau phase L2;tension_du_rseau_phase_l2;0.010000;0.000000;V;4
+23;3;30787;U32;;Tension du r‚seau phase L3;tension_du_rseau_phase_l3;0.010000;0.000000;V;4
+24;3;30789;U32;;Tension di r‚seau entre phase L1 et L2;tension_di_rseau_entre_phase_l1_et_l2;0.010000;0.000000;V;4
+25;3;30791;U32;;Tension de r‚seau phase L2 contre L3;tension_de_rseau_phase_l2_contre_l3;0.010000;0.000000;V;4
+26;3;30793;U32;;Tension de r‚seau phase L3 contre L1;tension_de_rseau_phase_l3_contre_l1;0.010000;0.000000;V;4
+27;3;30795;U32;;Courant du r‚seau;courant_du_rseau;0.001000;0.000000;A;4
+28;3;30797;U32;;Courant du r‚seau phase L1_0;courant_du_rseau_phase_l1_0;0.001000;0.000000;A;4
+29;3;30799;U32;;Courant du r‚seau phase L2_0;courant_du_rseau_phase_l2_0;0.001000;0.000000;A;4
+30;3;30801;U32;;Courant du r‚seau phase L3_0;courant_du_rseau_phase_l3_0;0.001000;0.000000;A;4
+31;3;30803;U32;;Fr‚quence du r‚seau;frquence_du_rseau;0.010000;0.000000;Hz;4
+32;3;30805;I32;;Puissance r‚active;puissance_ractive;0.010000;0.000000;VAr;4
+33;3;30807;I32;;Puissance r‚active L1;puissance_ractive_l1;1.000000;0.000000;VAr;4
+34;3;30809;I32;;Puissance r‚active L2;puissance_ractive_l2;1.000000;0.000000;VAr;4
+35;3;30811;I32;;Puissance r‚active L3;puissance_ractive_l3;1.000000;0.000000;VAr;4
+36;3;30813;I32;;Puissance apparente;puissance_apparente;1.000000;0.000000;VA;4
+37;3;30815;I32;;Puissance apparente L1;puissance_apparente_l1;1.000000;0.000000;VA;4
+38;3;30817;I32;;Puissance apparente L2;puissance_apparente_l2;1.000000;0.000000;VA;4
+39;3;30819;I32;;Puissance apparente L3;puissance_apparente_l3;1.000000;0.000000;VA;4
+40;3;30823;U32;;Type d?excitation du cos ?;type_dexcitation_du_cos;1.000000;0.000000;;4
+41;3;30827;I32;;Consigne de puissance r‚active manuelle en cas de puissance active d‚livr‚e_0;consigne_de_puissance_ractive_manuelle_en_cas_de_puissance_active_dlivre_0;1.000000;0.000000;VAr;4
+42;3;30829;I32;;Consigne de puissance r‚active manuelle en cas de puissance active d‚livr‚e_1;consigne_de_puissance_ractive_manuelle_en_cas_de_puissance_active_dlivre_1;0.100000;0.000000;;4
+43;3;30835;U32;;Mode de fonctionnement consigne de puissance active_RO;mode_de_fonctionnement_consigne_de_puissance_active_ro;1.000000;0.000000;;4
+44;3;30837;U32;;Limitation de la puissance active P, configuration de la puissance active_RO_0;limitation_de_la_puissance_active_p_configuration_de_la_puissance_active_ro_0;1.000000;0.000000;W;4
+45;3;30839;U32;;Limitation de la puissance active P, configuration de la puissance active_RO_1;limitation_de_la_puissance_active_p_configuration_de_la_puissance_active_ro_1;1.000000;0.000000;pct;4
+46;3;30881;U32;;Connexion r‚seau de l'installation;connexion_rseau_de_linstallation;1.000000;0.000000;;4
+47;3;30921;I32;;Consigne de puissance r‚active manuelle avec puissance active nulle_0;consigne_de_puissance_ractive_manuelle_avec_puissance_active_nulle_0;1.000000;0.000000;VAr;4
+48;3;30923;I32;;Consigne de puissance r‚active manuelle avec puissance active nulle_1;consigne_de_puissance_ractive_manuelle_avec_puissance_active_nulle_1;0.100000;0.000000;;4
+49;3;30949;U32;;Facteur de d‚calage;facteur_de_dcalage;0.001000;0.000000;;4
+50;3;30957;I32;;Entr‚e courant DC_0;entre_courant_dc_0;0.001000;0.000000;A;4
+51;3;30959;I32;;Entr‚e tension DC_0;entre_tension_dc_0;0.010000;0.000000;V;4
+52;3;30961;I32;;Entr‚e puissance DC_0;entre_puissance_dc_0;1.000000;0.000000;W;4
+53;3;30963;I32;;Entr‚e courant DC_1;entre_courant_dc_1;0.001000;0.000000;A;4
+54;3;30965;I32;;Entr‚e tension DC_1;entre_tension_dc_1;0.010000;0.000000;V;4
+55;3;30967;I32;;Entr‚e puissance DC_1;entre_puissance_dc_1;1.000000;0.000000;W;4
+56;3;30969;I32;;Entr‚e courant DC_2;entre_courant_dc_2;0.001000;0.000000;A;4
+57;3;30971;I32;;Entr‚e tension DC_2;entre_tension_dc_2;0.010000;0.000000;V;4
+58;3;30973;I32;;Entr‚e puissance DC_2;entre_puissance_dc_2;1.000000;0.000000;W;4
+59;3;30975;I32;;Tension du circuit interm‚diaire;tension_du_circuit_intermdiaire;0.010000;0.000000;V;4
+60;3;30977;I32;;Courant du r‚seau phase L1_1;courant_du_rseau_phase_l1_1;0.001000;0.000000;A;4
+61;3;30979;I32;;Courant du r‚seau phase L2_1;courant_du_rseau_phase_l2_1;0.001000;0.000000;A;4
+62;3;30981;I32;;Courant du r‚seau phase L3_1;courant_du_rseau_phase_l3_1;0.001000;0.000000;A;4
+63;3;31085;U32;;Puissance nominale en ‚tat OK_1;puissance_nominale_en_tat_ok_1;1.000000;0.000000;W;4
+64;3;31209;I32;;Entr‚e courant DC_3;entre_courant_dc_3;0.001000;0.000000;A;4
+65;3;31211;I32;;Entr‚e tension DC_3;entre_tension_dc_3;0.010000;0.000000;V;4
+66;3;31213;I32;;Entr‚e puissance DC_3;entre_puissance_dc_3;1.000000;0.000000;W;4
+67;3;31215;I32;;Entr‚e courant DC_4;entre_courant_dc_4;0.001000;0.000000;A;4
+68;3;31217;I32;;Entr‚e tension DC_4;entre_tension_dc_4;0.010000;0.000000;V;4
+69;3;31219;I32;;Entr‚e puissance DC_4;entre_puissance_dc_4;1.000000;0.000000;W;4
+70;3;31221;I32;;Facteur de d‚phasage EEI;facteur_de_dphasage_eei;0.001000;0.000000;;4
+71;3;31247;I32;;Courant de d‚faut;courant_de_dfaut;0.001000;0.000000;;4
+72;3;31249;I32;;Puiss. effective au pt de raccordement au r‚seau;puiss_effective_au_pt_de_raccordement_au_rseau;1.000000;0.000000;;4
+73;3;31251;I32;;Puiss. r‚active au pt de raccordement au r‚seau;puiss_ractive_au_pt_de_raccordement_au_rseau;1.000000;0.000000;;4
+74;3;31503;I32;;Puissance injection r‚seau conducteur de ligne L1 au niveau du point de raccordement au r‚seau;puissance_injection_rseau_conducteur_de_ligne_l1_au_niveau_du_point_de_raccordement_au_rseau;1.000000;0.000000;;4
+75;3;31505;I32;;Puissance injection r‚seau conducteur de ligne L2 au niveau du point de raccordement au r‚seau;puissance_injection_rseau_conducteur_de_ligne_l2_au_niveau_du_point_de_raccordement_au_rseau;1.000000;0.000000;;4
+76;3;31507;I32;;Puissance injection r‚seau conducteur de ligne L3 au niveau du point de raccordement au r‚seau;puissance_injection_rseau_conducteur_de_ligne_l3_au_niveau_du_point_de_raccordement_au_rseau;1.000000;0.000000;;4
+77;3;31509;I32;;Puissance r‚active injection r‚seau conducteur de ligne L1 au niveau du point de raccordement au r‚seau;puissance_ractive_injection_rseau_conducteur_de_ligne_l1_au_niveau_du_point_de_raccordement_au_rseau;1.000000;0.000000;;4
+78;3;31511;I32;;Puissance r‚active injection r‚seau conducteur de ligne L2 au niveau du point de raccordement au r‚seau;puissance_ractive_injection_rseau_conducteur_de_ligne_l2_au_niveau_du_point_de_raccordement_au_rseau;1.000000;0.000000;;4
+79;3;31513;I32;;Puissance r‚active injection r‚seau conducteur de ligne L3 au niveau du point de raccordement au r‚seau;puissance_ractive_injection_rseau_conducteur_de_ligne_l3_au_niveau_du_point_de_raccordement_au_rseau;1.000000;0.000000;;4
+80;3;31525;I32;;Facteur de d‚phasage au niveau du point de raccordement au r‚seau;facteur_de_dphasage_au_niveau_du_point_de_raccordement_au_rseau;0.010000;0.000000;;4
+81;3;31527;U32;;Fr‚quence du r‚seau au niveau du point de raccordement au r‚seau;frquence_du_rseau_au_niveau_du_point_de_raccordement_au_rseau;0.010000;0.000000;;4
+82;3;31529;U32;;Tension de l'installation Phase L1;tension_de_linstallation_phase_l1;0.010000;0.000000;;4
+83;3;31531;U32;;Tension de l'installation Phase L2;tension_de_linstallation_phase_l2;0.010000;0.000000;;4
+84;3;31533;U32;;Tension de l'installation Phase L3;tension_de_linstallation_phase_l3;0.010000;0.000000;;4
+85;3;31535;I32;;Courant de sortie injection r‚seau conducteur de ligne L1 au niveau du point de raccordement au r‚seau;courant_de_sortie_injection_rseau_conducteur_de_ligne_l1_au_niveau_du_point_de_raccordement_au_rseau;0.001000;0.000000;;4
+86;3;31537;I32;;Courant de sortie injection r‚seau conducteur de ligne L2 au niveau du point de raccordement au r‚seau;courant_de_sortie_injection_rseau_conducteur_de_ligne_l2_au_niveau_du_point_de_raccordement_au_rseau;0.001000;0.000000;;4
+87;3;31539;I32;;Courant de sortie injection r‚seau conducteur de ligne L3 au niveau du point de raccordement au r‚seau;courant_de_sortie_injection_rseau_conducteur_de_ligne_l3_au_niveau_du_point_de_raccordement_au_rseau;0.001000;0.000000;;4
+88;3;31795;I32;;Entr‚e courant DC_5;entre_courant_dc_5;0.001000;0.000000;A;4
+89;3;31797;I32;;Entr‚e courant DC_6;entre_courant_dc_6;0.001000;0.000000;A;4
+90;3;31799;I32;;Entr‚e courant DC_7;entre_courant_dc_7;0.001000;0.000000;A;4
+91;3;31801;I32;;Entr‚e courant DC_8;entre_courant_dc_8;0.001000;0.000000;A;4
+92;3;31803;I32;;Entr‚e courant DC_9;entre_courant_dc_9;0.001000;0.000000;A;4
+93;3;33001;U32;;�tat de veille;tat_de_veille;1.000000;0.000000;;4
+94;3;33003;U32;;�tat de fonctionnement;tat_de_fonctionnement;1.000000;0.000000;;4
+95;3;33007;U32;;Domaine de puissance r‚active actif;domaine_de_puissance_ractive_actif;1.000000;0.000000;;4
+96;3;33009;U32;;cos ?(U), ‚tat;cos_u_tat;1.000000;0.000000;;4
+97;3;33017;I32;;Puissance active nominale WMaxOutRtg;P_RATED;1.000000;0.000000;W;4
+98;3;33019;I32;;Puissance active nominale WMaxInRtg;puissance_active_nominale_wmaxinrtg;1.000000;0.000000;W;4
+99;3;33025;U32;;Puissance apparente nominale VAMaxOutRtg;puissance_apparente_nominale_vamaxoutrtg;1.000000;0.000000;VA;4
+100;3;33027;U32;;Puissance apparente nominale VAMaxInRtg;puissance_apparente_nominale_vamaxinrtg;1.000000;0.000000;VA;4
+101;3;33029;I32;;Puissance active nominale VArMaxQ1Rtg;puissance_active_nominale_varmaxq1rtg;1.000000;0.000000;VAr;4
+102;3;33031;I32;;Puissance active nominale VArMaxQ2Rtg;puissance_active_nominale_varmaxq2rtg;1.000000;0.000000;VAr;4
+103;3;33033;I32;;Puissance active nominale VArMaxQ3Rtg;puissance_active_nominale_varmaxq3rtg;1.000000;0.000000;VAr;4
+104;3;33035;I32;;Puissance active nominale VArMaxQ4Rtg;puissance_active_nominale_varmaxq4rtg;1.000000;0.000000;VAr;4
+105;3;33037;U32;;cos ? nominal PFMinQ1Rtg;cos_nominal_pfminq1rtg;0.000100;0.000000;;4
+106;3;33039;U32;;cos ? nominal PFMinQ2Rtg;cos_nominal_pfminq2rtg;0.000100;0.000000;;4
+107;3;33041;U32;;cos ? nominal PFMinQ3Rtg;cos_nominal_pfminq3rtg;0.000100;0.000000;;4
+108;3;33043;U32;;cos ? nominal PFMinQ4Rtg;cos_nominal_pfminq4rtg;0.000100;0.000000;;4
+109;3;40007;U32;;Type de r‚gulation de tension DC;type_de_rgulation_de_tension_dc;1.000000;0.000000;;4
+110;3;40009;U32;;Mode de fonctionnement g‚n‚ral;mode_de_fonctionnement_gnral;1.000000;0.000000;;4
+111;3;40015;I16;;Lim. puis. r‚act. normalis‚e via cde install.;lim_puis_ract_normalise_via_cde_install;0.100000;0.000000;;4
+112;3;40016;I16;;Limite puissance alim normalis‚e via cde install.WO_0;limite_puissance_alim_normalise_via_cde_installwo_0;1.000000;0.000000;pct;4
+113;3;40018;U32;;Mise hors service rapide_WO;mise_hors_service_rapide_wo;1.000000;0.000000;;4
+114;3;40023;I16;;Limite puissance alim normalis‚e via cde install.WO_1;limite_puissance_alim_normalise_via_cde_installwo_1;0.010000;0.000000;;4
+115;3;40024;U16;;Consigne externe cos ?, consigne de cos ? avec puissance active d‚livr‚e;consigne_externe_cos_consigne_de_cos_avec_puissance_active_dlivre;0.000100;0.000000;;4
+116;3;40025;U32;;Consigne externe cos ?, type d?excitation avec puissance active d‚livr‚e;consigne_externe_cos_type_dexcitation_avec_puissance_active_dlivre;1.000000;0.000000;;4
+117;3;40029;U32;;�tat de fonctionnement g‚n‚ral;tat_de_fonctionnement_gnral;1.000000;0.000000;;4
+118;3;40063;U32;;Version de logiciel du processeur principal;version_de_logiciel_du_processeur_principal;1.000000;0.000000;;4
+119;3;40067;U32;;Num‚ro de s‚rie_1;numro_de_srie_1;1.000000;0.000000;;4
+120;3;40077;U32;;D‚clencher le red‚marrage de l?appareil;dclencher_le_redmarrage_de_lappareil;1.000000;0.000000;;4
+121;3;40101;U32;;Surveillance de fr‚quence, seuil minimum inf‚rieur;surveillance_de_frquence_seuil_minimum_infrieur;0.010000;0.000000;Hz;4
+122;3;40103;U32;;Surveillance de fr‚quence, seuil maximum sup‚rieur;surveillance_de_frquence_seuil_maximum_suprieur;0.010000;0.000000;Hz;4
+123;3;40109;U32;;Jeu de donn‚es r‚gionales r‚gl‚;jeu_de_donnes_rgionales_rgl;1.000000;0.000000;;4
+124;3;40135;U32;;Fr‚quence nominale;frquence_nominale;0.010000;0.000000;Hz;4
+125;3;40157;U32;;Configuration automatique de Speedwire activ‚e;configuration_automatique_de_speedwire_active;1.000000;0.000000;;4
+126;3;40183;U32;;Attribution des phases;attribution_des_phases;1.000000;0.000000;;4
+127;3;40202;I32;;Consigne de puissance r‚active manuelle en cas de puissance active d‚livr‚e_2;consigne_de_puissance_ractive_manuelle_en_cas_de_puissance_active_dlivre_2;1.000000;0.000000;VAr;4
+128;3;40204;I32;;Consigne de puissance r‚active manuelle en cas de puissance active d‚livr‚e_3;consigne_de_puissance_ractive_manuelle_en_cas_de_puissance_active_dlivre_3;0.100000;0.000000;;4
+129;3;40210;U32;;Mode de fonctionnement consigne de puissance active_RW;CMD_P_ENA;1.000000;0.000000;;4
+130;3;40212;U32;;Limitation de la puissance active P, configuration de la puissance active_W;limitation_de_la_puissance_active_p_configuration_de_la_puissance_active_w;1.000000;0.000000;W;4
+131;3;40214;U32;;Limitation de la puissance active P, configuration de la puissance active_pct;CMD_P_AC_SET_PERCENT;1.000000;0.000000;pct;4
+132;3;40242;U32;;P(f), taux de modification de la puissance active aprŠs la fin du d‚faut;pf_taux_de_modification_de_la_puissance_active_aprs_la_fin_du_dfaut;1.000000;0.000000;pct/min;4
+133;3;40244;U32;;Soutien dynamique du r‚seau, mode statique de courant r‚actif;soutien_dynamique_du_rseau_mode_statique_de_courant_ractif;1.000000;0.000000;;4
+134;3;40246;U32;;Soutien dynamique du r‚seau, facteur k du mode statique de courant r‚actif en cas de sous-tension;soutien_dynamique_du_rseau_facteur_k_du_mode_statique_de_courant_ractif_en_cas_de_soustension;0.010000;0.000000;pct;4
+135;3;40248;U32;;Soutien dynamique du r‚seau, facteur k du mode statique de courant r‚actif en cas de surtension;soutien_dynamique_du_rseau_facteur_k_du_mode_statique_de_courant_ractif_en_cas_de_surtension;0.010000;0.000000;pct;4
+136;3;40250;U32;;Soutien dynamique du r‚seau, mode de fonctionnement;soutien_dynamique_du_rseau_mode_de_fonctionnement;1.000000;0.000000;;4
+137;3;40426;U32;;Surveillance de fr‚quence, temps de d‚clenchement seuil maximum sup‚rieur;surveillance_de_frquence_temps_de_dclenchement_seuil_maximum_suprieur;1.000000;0.000000;ms;4
+138;3;40432;U32;;Surveillance de fr‚quence, seuil maximum inf‚rieur;surveillance_de_frquence_seuil_maximum_infrieur;0.010000;0.000000;Hz;4
+139;3;40434;U32;;Surveillance de fr‚quence, temps de d‚clenchement seuil maximum inf‚rieur;surveillance_de_frquence_temps_de_dclenchement_seuil_maximum_infrieur;1.000000;0.000000;ms;4
+140;3;40436;U32;;Surveillance de fr‚quence, seuil minimum sup‚rieur;surveillance_de_frquence_seuil_minimum_suprieur;0.010000;0.000000;Hz;4
+141;3;40438;U32;;Surveillance de fr‚quence, temps de d‚clenchement seuil minimum sup‚rieur;surveillance_de_frquence_temps_de_dclenchement_seuil_minimum_suprieur;1.000000;0.000000;ms;4
+142;3;40444;U32;;Surveillance de fr‚quence, temps de d‚clenchement seuil minimum inf‚rieur;surveillance_de_frquence_temps_de_dclenchement_seuil_minimum_infrieur;1.000000;0.000000;ms;4
+143;3;40450;U32;;Surveillance de tension, temps de d‚clenchement seuil maximum moyen;surveillance_de_tension_temps_de_dclenchement_seuil_maximum_moyen;1.000000;0.000000;ms;4
+144;3;40456;U32;;Surveillance de tension, temps de d‚clenchement seuil maximum inf‚rieur;surveillance_de_tension_temps_de_dclenchement_seuil_maximum_infrieur;1.000000;0.000000;ms;4
+145;3;40462;U32;;Surveillance de tension, temps de d‚clenchement seuil minimum sup‚rieur;surveillance_de_tension_temps_de_dclenchement_seuil_minimum_suprieur;1.000000;0.000000;ms;4
+146;3;40466;U32;;Surveillance de tension, temps de d‚clenchement seuil minimum moyen;surveillance_de_tension_temps_de_dclenchement_seuil_minimum_moyen;1.000000;0.000000;ms;4
+147;3;40468;U32;;Surveillance de tension, temps de d‚clenchement seuil minimum inf‚rieur;surveillance_de_tension_temps_de_dclenchement_seuil_minimum_infrieur;1.000000;0.000000;ms;4
+148;3;40472;U32;;Tension nominale de r‚seau;tension_nominale_de_rseau;1.000000;0.000000;V;4
+149;3;40480;U32;;Cour.nom. toutes les phases;cournom_toutes_les_phases;0.001000;0.000000;A;4
+150;3;40631_4;STRING;;Nom de l?appareil;nom_de_lappareil;1.000000;0.000000;;4
+151;3;40647;U32;;Mises … jour automatiques activ‚es;mises_jour_automatiques_actives;1.000000;0.000000;;4
+152;3;40751;U32;;Tension nominale onduleur;tension_nominale_onduleur;1.000000;0.000000;V;4
+153;3;40915;U32;;Lim. de puiss. active r‚gl‚e_RW;lim_de_puiss_active_rgle_rw;1.000000;0.000000;W;4
+154;3;41121;U32;;D‚finition du jeu de donn‚es r‚gionales;dfinition_du_jeu_de_donnes_rgionales;1.000000;0.000000;;4
+155;3;41127;U32;;Fr‚quence de reconnexion minimum;frquence_de_reconnexion_minimum;0.010000;0.000000;Hz;4
+156;3;41129;U32;;Fr‚quence de reconnexion maximum;frquence_de_reconnexion_maximum;0.010000;0.000000;Hz;4
+157;3;41133;U32;;Entr‚e tension minimale_0;entre_tension_minimale_0;0.010000;0.000000;V;4
+158;3;41135;U32;;Entr‚e tension minimale_1;entre_tension_minimale_1;0.010000;0.000000;V;4
+159;3;41137;U32;;Entr‚e tension minimale_2;entre_tension_minimale_2;0.010000;0.000000;V;4
+160;3;41139;U32;;Entr‚e tension minimale_3;entre_tension_minimale_3;0.010000;0.000000;V;4
+161;3;41141;U32;;Entr‚e tension minimale_4;entre_tension_minimale_4;0.010000;0.000000;V;4
+162;3;41145;U32;;Tension limite pour terminer l?injection_0;tension_limite_pour_terminer_linjection_0;0.010000;0.000000;V;4
+163;3;41147;U32;;Tension limite pour terminer l?injection_1;tension_limite_pour_terminer_linjection_1;0.010000;0.000000;V;4
+164;3;41149;U32;;Tension limite pour terminer l?injection_2;tension_limite_pour_terminer_linjection_2;0.010000;0.000000;V;4
+165;3;41151;U32;;Tension limite pour terminer l?injection_3;tension_limite_pour_terminer_linjection_3;0.010000;0.000000;V;4
+166;3;41153;U32;;Tension limite pour terminer l?injection_4;tension_limite_pour_terminer_linjection_4;0.010000;0.000000;V;4
+167;3;41155;U32;;Retard de d‚marrage entr‚e_0;retard_de_dmarrage_entre_0;1.000000;0.000000;s;4
+168;3;41157;U32;;Retard de d‚marrage entr‚e_1;retard_de_dmarrage_entre_1;1.000000;0.000000;s;4
+169;3;41159;U32;;Retard de d‚marrage entr‚e_2;retard_de_dmarrage_entre_2;1.000000;0.000000;s;4
+170;3;41161;U32;;Retard de d‚marrage entr‚e_3;retard_de_dmarrage_entre_3;1.000000;0.000000;s;4
+171;3;41163;U32;;Retard de d‚marrage entr‚e_4;retard_de_dmarrage_entre_4;1.000000;0.000000;s;4
+172;3;41165;U32;;Retard de d‚marrage entr‚e_5;retard_de_dmarrage_entre_5;1.000000;0.000000;s;4
+173;3;41169;U32;;R‚sistance d?isolement minimale;rsistance_disolement_minimale;1.000000;0.000000;Ohm;4
+174;3;41171;U32;;R‚glage ‚nergie tot. d‚gag‚e point rac. r‚seau;rglage_nergie_tot_dgage_point_rac_rseau;1.000000;0.000000;kWh;4
+175;3;41173;U32;;R‚glage temps serv. tot. au point raccord. r‚seau;rglage_temps_serv_tot_au_point_raccord_rseau;1.000000;0.000000;Hz;4
+176;3;41193;U32;;Consigne de puissance active externe, comportement de retomb‚e;consigne_de_puissance_active_externe_comportement_de_retombe;1.000000;0.000000;;4
+177;3;41195;U32;;Consigne de puissance active externe, Timeout;consigne_de_puissance_active_externe_timeout;1.000000;0.000000;s;4
+178;3;41201;U32;;Taux d'augmentation du changement de rayonnement_0;taux_daugmentation_du_changement_de_rayonnement_0;1.000000;0.000000;pct/min;4
+179;3;41219;U32;;Consigne de puissance r‚active externe, comportement de retomb‚e;consigne_de_puissance_ractive_externe_comportement_de_retombe;1.000000;0.000000;;4
+180;3;41221;U32;;Consigne de puissance r‚active externe, Timeout;consigne_de_puissance_ractive_externe_timeout;1.000000;0.000000;s;4
+181;3;41223;I32;;Consigne de puissance r‚active externe, valeur de retomb‚e;consigne_de_puissance_ractive_externe_valeur_de_retombe;0.010000;0.000000;;4
+182;3;41225;U32;;Consigne cos ? externe, comportement de retombee_0;consigne_cos_externe_comportement_de_retombee_0;1.000000;0.000000;;4
+183;3;41227;U32;;Consigne cos ? externe, Timeout_0;consigne_cos_externe_timeout_0;1.000000;0.000000;s;4
+184;3;41229;I32;;Consigne externe cos ?, valeur de retomb‚e de cos ? avec puiss. active d‚livr‚e;consigne_externe_cos_valeur_de_retombe_de_cos_avec_puiss_active_dlivre;0.000100;0.000000;;4
+185;3;41249;I32;;Limitation de puissance active absorb‚e en %;limitation_de_puissance_active_absorbe_en;0.010000;0.000000;pct;4
+186;3;41251;I32;;Limitation de puissance absorb‚e en W;limitation_de_puissance_absorbe_en_w;1.000000;0.000000;W;4
+187;3;41253;U32;;Mise hors service rapide_RW;mise_hors_service_rapide_rw;1.000000;0.000000;;4
+188;3;41255;I16;;Limite puissance alim normalis‚e via cde install._RW;limite_puissance_alim_normalise_via_cde_install_rw;0.010000;0.000000;;4
+189;3;41265;U32;;AFCI activ‚;afci_activ;1.000000;0.000000;;4
+190;3;41311;U32;;Q(U), mode de fonctionnement de l'adaptation de la tension de r‚f‚rence;qu_mode_de_fonctionnement_de_ladaptation_de_la_tension_de_rfrence;1.000000;0.000000;;4
+191;3;41313;U32;;Q(U), temps de r‚glage de l'adaptation de la tension de r‚f‚rence;qu_temps_de_rglage_de_ladaptation_de_la_tension_de_rfrence;1.000000;0.000000;s;4
+192;3;41315;U32;;Mode de fonctionnement r‚gulateur de puissance active;mode_de_fonctionnement_rgulateur_de_puissance_active;1.000000;0.000000;;4
+193;3;41317;U32;;Mode de fonctionnement pour limiteur puissance r‚active;mode_de_fonctionnement_pour_limiteur_puissance_ractive;1.000000;0.000000;;4
+194;3;41319;U32;;Proc‚dure de puissance r‚active en cas de puissance active d‚livr‚e;procdure_de_puissance_ractive_en_cas_de_puissance_active_dlivre;1.000000;0.000000;;4
+195;3;41321;U32;;Proc‚dure de puissance r‚active en cas de puissance active absorb‚e;procdure_de_puissance_ractive_en_cas_de_puissance_active_absorbe;1.000000;0.000000;;4
+196;3;41323;U32;;Proc‚dure de puissance r‚active en cas de puissance active nulle;procdure_de_puissance_ractive_en_cas_de_puissance_active_nulle;1.000000;0.000000;;4
+197;3;41327;U32;;Q(U), valeur de tension_0;qu_valeur_de_tension_0;0.001000;0.000000;p.u.;4
+198;3;41329;U32;;Q(U), valeur de tension_1;qu_valeur_de_tension_1;0.001000;0.000000;p.u.;4
+199;3;41331;U32;;Q(U), valeur de tension_2;qu_valeur_de_tension_2;0.001000;0.000000;p.u.;4
+200;3;41333;U32;;Q(U), valeur de tension_3;qu_valeur_de_tension_3;0.001000;0.000000;p.u.;4
+201;3;41335;U32;;Q(U), valeur de tension_4;qu_valeur_de_tension_4;0.001000;0.000000;p.u.;4
+202;3;41337;U32;;Q(U), valeur de tension_5;qu_valeur_de_tension_5;0.001000;0.000000;p.u.;4
+203;3;41339;U32;;Q(U), valeur de tension_6;qu_valeur_de_tension_6;0.001000;0.000000;p.u.;4
+204;3;41343;I32;;Q(U), valeur de puissance r‚active_0;qu_valeur_de_puissance_ractive_0;0.001000;0.000000;;4
+205;3;41345;I32;;Q(U), valeur de puissance r‚active_1;qu_valeur_de_puissance_ractive_1;0.001000;0.000000;;4
+206;3;41347;I32;;Q(U), valeur de puissance r‚active_2;qu_valeur_de_puissance_ractive_2;0.001000;0.000000;;4
+207;3;41349;I32;;Q(U), valeur de puissance r‚active_3;qu_valeur_de_puissance_ractive_3;0.001000;0.000000;;4
+208;3;41351;I32;;Q(U), valeur de puissance r‚active_4;qu_valeur_de_puissance_ractive_4;0.001000;0.000000;;4
+209;3;41353;I32;;Q(U), valeur de puissance r‚active_5;qu_valeur_de_puissance_ractive_5;0.001000;0.000000;;4
+210;3;41355;I32;;Q(U), valeur de puissance r‚active_6;qu_valeur_de_puissance_ractive_6;0.001000;0.000000;;4
+211;3;41367;U32;;PFMinQ1-Q4 Limitation pour tous les modes de puissance r‚active;pfminq1q4_limitation_pour_tous_les_modes_de_puissance_ractive;1.000000;0.000000;;4
+212;3;41369;I32;;Seuil d?activation en cas de puissance active d‚livr‚e;seuil_dactivation_en_cas_de_puissance_active_dlivre;0.001000;0.000000;pct;4
+213;3;41371;I32;;Seuil de d‚sactivation en cas de puissance active d‚livr‚e;seuil_de_dsactivation_en_cas_de_puissance_active_dlivre;0.001000;0.000000;pct;4
+214;3;41373;I32;;Seuil d?activation en cas de puissance active absorb‚e;seuil_dactivation_en_cas_de_puissance_active_absorbe;0.001000;0.000000;pct;4
+215;3;41375;I32;;Seuil de d‚sactivation en cas de puissance active absorb‚e;seuil_de_dsactivation_en_cas_de_puissance_active_absorbe;0.001000;0.000000;pct;4
+216;3;41377;U32;;Consigne de puissance r‚active avec limitation de tension;consigne_de_puissance_ractive_avec_limitation_de_tension;1.000000;0.000000;;4
+217;3;41383;U32;;Consigne de puissance active externe;consigne_de_puissance_active_externe;1.000000;0.000000;;4
+218;3;41417;U32;;Consigne de puissance r‚active avec limitation de tension, valeur de tension_1;consigne_de_puissance_ractive_avec_limitation_de_tension_valeur_de_tension_1;0.010000;0.000000;p.u.;4
+219;3;41419;U32;;Consigne de puissance r‚active avec limitation de tension, valeur de tension_2;consigne_de_puissance_ractive_avec_limitation_de_tension_valeur_de_tension_2;0.010000;0.000000;p.u.;4
+220;3;41421;U32;;Consigne de puissance r‚active avec limitation de tension, valeur de tension_3;consigne_de_puissance_ractive_avec_limitation_de_tension_valeur_de_tension_3;0.010000;0.000000;p.u.;4
+221;3;41425;I32;;Consigne de puissance r‚active avec limitation de tension, valeur de puissance r‚active_1;consigne_de_puissance_ractive_avec_limitation_de_tension_valeur_de_puissance_ractive_1;0.010000;0.000000;;4
+222;3;41427;I32;;Consigne de puissance r‚active avec limitation de tension, valeur de puissance r‚active_2;consigne_de_puissance_ractive_avec_limitation_de_tension_valeur_de_puissance_ractive_2;0.010000;0.000000;;4
+223;3;41429;I32;;Consigne de puissance r‚active avec limitation de tension, valeur de puissance r‚active_3;consigne_de_puissance_ractive_avec_limitation_de_tension_valeur_de_puissance_ractive_3;0.010000;0.000000;;4
+224;3;41431;I32;;Puissance active maximum_0;puissance_active_maximum_0;1.000000;0.000000;W;4
+225;3;41433;I32;;Puissance active minimum_0;puissance_active_minimum_0;1.000000;0.000000;W;4
+226;3;41435;U32;;Consigne externe cos ?, valeur de retomb‚e du type d?excitation avec puiss. active d‚livr‚e;consigne_externe_cos_valeur_de_retombe_du_type_dexcitation_avec_puiss_active_dlivre;1.000000;0.000000;;4
+227;3;41445;U32;;Consigne de puissance active externe 2, comportement de retomb‚e;consigne_de_puissance_active_externe_2_comportement_de_retombe;1.000000;0.000000;;4
+228;3;41447;I32;;Consigne de puissance active externe 2, valeur de retomb‚e de la puissance active minimum_1;consigne_de_puissance_active_externe_2_valeur_de_retombe_de_la_puissance_active_minimum_1;0.010000;0.000000;;4
+229;3;41449;I32;;Consigne de puissance active externe 2, valeur de retomb‚e de la puissance active maximum_0;consigne_de_puissance_active_externe_2_valeur_de_retombe_de_la_puissance_active_maximum_0;0.010000;0.000000;;4
+230;3;41451;U32;;Consigne de puissance active externe 2, Timeout;consigne_de_puissance_active_externe_2_timeout;1.000000;0.000000;s;4
+231;3;41453;U32;;Consigne de puissance active externe 2;consigne_de_puissance_active_externe_2;1.000000;0.000000;;4
+232;3;41455;U32;;Fr‚quence locale int‚grale, activation via Modbus;frquence_locale_intgrale_activation_via_modbus;1.000000;0.000000;;4
+233;3;41463;U32;;Puissance totale de l?installation;puissance_totale_de_linstallation;1.000000;0.000000;W;4
+234;3;44001;U32;;Taux de d‚marrage progressif P;taux_de_dmarrage_progressif_p;1.000000;0.000000;pct/min;4
+235;3;44003;U32;;D‚marrage progressif P;dmarrage_progressif_p;1.000000;0.000000;;4
+236;3;44005;U32;;Taux de d‚marrage progressif Q;taux_de_dmarrage_progressif_q;1.000000;0.000000;pct/min;4
+237;3;44007;U32;;D‚marrage progressif Q;dmarrage_progressif_q;1.000000;0.000000;;4
+238;3;44009;U32;;Temps de connexion aprŠs r‚initialisation;temps_de_connexion_aprs_rinitialisation;0.001000;0.000000;s;4
+239;3;44011;U32;;Taux de d‚marrage progressif P aprŠs d‚rangement r‚seau;taux_de_dmarrage_progressif_p_aprs_drangement_rseau;1.000000;0.000000;pct/min;4
+240;3;44013;U32;;D‚marrage progressif P aprŠs d‚rangement r‚seau;dmarrage_progressif_p_aprs_drangement_rseau;1.000000;0.000000;;4
+241;3;44015;U32;;Temps de connexion aprŠs erreur de r‚seau;temps_de_connexion_aprs_erreur_de_rseau;0.001000;0.000000;s;4
+242;3;44017;U32;;Temps de connexion rapide aprŠs interruption brŠve;temps_de_connexion_rapide_aprs_interruption_brve;0.001000;0.000000;s;4
+243;3;44019;U32;;Dur‚e maximale d?une interruption brŠve;dure_maximale_dune_interruption_brve;0.001000;0.000000;s;4
+244;3;44021;U32;;R‚initialiser les donn‚es de service;rinitialiser_les_donnes_de_service;1.000000;0.000000;;4
+245;3;44023;U32;;Taux d'augmentation du changement de rayonnement_1;taux_daugmentation_du_changement_de_rayonnement_1;1.000000;0.000000;pct/min;4
+246;3;44025;U32;;Consigne de puissance active externe, filtre de valeur de consigne;consigne_de_puissance_active_externe_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+247;3;44027;U32;;Consigne de puissance active externe, temps de r‚glage du filtre de valeur de consigne;consigne_de_puissance_active_externe_temps_de_rglage_du_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+248;3;44029;U32;;Consigne de puissance active externe, limitation du taux de changement;TauxChg_Ena;1.000000;0.000000;;4
+249;3;44031;U32;;Consigne de puissance active externe, taux d'augmentation;TauxAugment;0.010000;0.000000;pct/s;4
+250;3;44033;U32;;Consigne de puissance active externe, taux de r‚duction;TauxReduc;0.010000;0.000000;pct/s;4
+251;3;44035;I32;;Consigne de puissance active externe, valeur de retomb‚e de la puissance active minimum;consigne_de_puissance_active_externe_valeur_de_retombe_de_la_puissance_active_minimum;0.010000;0.000000;;4
+252;3;44037;I32;;Consigne de puissance active externe, valeur de retomb‚e de la puissance active maximum;consigne_de_puissance_active_externe_valeur_de_retombe_de_la_puissance_active_maximum;0.010000;0.000000;;4
+253;3;44039;I32;;Puissance active maximum_1;puissance_active_maximum_1;0.010000;0.000000;pct;4
+254;3;44039;I32;;Puissance active maximum_2;puissance_active_maximum_2;0.010000;0.000000;pct;4
+255;3;44041;I32;;Puissance active minimum_1;puissance_active_minimum_1;0.010000;0.000000;pct;4
+256;3;44041;I32;;Puissance active minimum_2;puissance_active_minimum_2;0.010000;0.000000;pct;4
+257;3;44043;U32;;P(U), activation;pu_activation;1.000000;0.000000;;4
+258;3;44045;U32;;P(U), type de tension de r‚f‚rence;pu_type_de_tension_de_rfrence;1.000000;0.000000;;4
+259;3;44047;U32;;P(U), type de puissance active de r‚f‚rence;pu_type_de_puissance_active_de_rfrence;1.000000;0.000000;;4
+260;3;44049;U32;;P(U), nombre de points utilis‚s;pu_nombre_de_points_utiliss;1.000000;0.000000;;4
+261;3;44053;U32;;P(U), valeur de tension_0;pu_valeur_de_tension_0;0.001000;0.000000;p.u.;4
+262;3;44055;U32;;P(U), valeur de tension_1;pu_valeur_de_tension_1;0.001000;0.000000;p.u.;4
+263;3;44057;U32;;P(U), valeur de tension_2;pu_valeur_de_tension_2;0.001000;0.000000;p.u.;4
+264;3;44059;U32;;P(U), valeur de tension_3;pu_valeur_de_tension_3;0.001000;0.000000;p.u.;4
+265;3;44061;U32;;P(U), valeur de tension_4;pu_valeur_de_tension_4;0.001000;0.000000;p.u.;4
+266;3;44063;U32;;P(U), valeur de tension_5;pu_valeur_de_tension_5;0.001000;0.000000;p.u.;4
+267;3;44065;U32;;P(U), valeur de tension_6;pu_valeur_de_tension_6;0.001000;0.000000;p.u.;4
+268;3;44069;I32;;P(U), valeur de puissance active_0;pu_valeur_de_puissance_active_0;0.001000;0.000000;;4
+269;3;44071;I32;;P(U), valeur de puissance active_1;pu_valeur_de_puissance_active_1;0.001000;0.000000;;4
+270;3;44073;I32;;P(U), valeur de puissance active_2;pu_valeur_de_puissance_active_2;0.001000;0.000000;;4
+271;3;44075;I32;;P(U), valeur de puissance active_3;pu_valeur_de_puissance_active_3;0.001000;0.000000;;4
+272;3;44077;I32;;P(U), valeur de puissance active_4;pu_valeur_de_puissance_active_4;0.001000;0.000000;;4
+273;3;44079;I32;;P(U), valeur de puissance active_5;pu_valeur_de_puissance_active_5;0.001000;0.000000;;4
+274;3;44081;I32;;P(U), valeur de puissance active_6;pu_valeur_de_puissance_active_6;0.001000;0.000000;;4
+275;3;44083;U32;;P(U), filtre de valeur de consigne;pu_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+276;3;44085;U32;;P(U), temps de r‚glage filtre de valeur de consigne;pu_temps_de_rglage_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+277;3;44087;U32;;P(U), limitation du taux de changement;pu_limitation_du_taux_de_changement;1.000000;0.000000;;4
+278;3;44089;U32;;P(U), taux d'augmentation;pu_taux_daugmentation;0.010000;0.000000;pct/s;4
+279;3;44091;U32;;P(U), taux de r‚duction;pu_taux_de_rduction;0.010000;0.000000;pct/s;4
+280;3;44093;U32;;P(U), retart au d‚clenchement;pu_retart_au_dclenchement;1.000000;0.000000;s;4
+281;3;44095;U32;;Proc‚dure de puissance r‚active, grandeur de r‚f‚rence pour consigne de puissance r‚active;procdure_de_puissance_ractive_grandeur_de_rfrence_pour_consigne_de_puissance_ractive;1.000000;0.000000;;4
+282;3;44097;U32;;Consigne cos ? externe, comportement de retombee_1;consigne_cos_externe_comportement_de_retombee_1;1.000000;0.000000;;4
+283;3;44099;U32;;Consigne cos ? externe, Timeout_1;consigne_cos_externe_timeout_1;1.000000;0.000000;s;4
+284;3;44101;U32;;Consigne de puissance r‚active, filtre de valeur de consigne;consigne_de_puissance_ractive_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+285;3;44103;U32;;Consigne de puissance r‚active, temps de r‚glage filtre de valeur de consigne;consigne_de_puissance_ractive_temps_de_rglage_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+286;3;44105;U32;;Consigne de puissance r‚active, limitation du taux de changement;consigne_de_puissance_ractive_limitation_du_taux_de_changement;1.000000;0.000000;;4
+287;3;44107;U32;;Consigne de puissance r‚active, taux d'augmentation;consigne_de_puissance_ractive_taux_daugmentation;0.010000;0.000000;pct/s;4
+288;3;44109;U32;;Consigne de puissance r‚active, taux de r‚duction;consigne_de_puissance_ractive_taux_de_rduction;0.010000;0.000000;pct/s;4
+289;3;44111;U32;;Consigne cos ? externe, valeur de retomb‚e du cos ? en cas de puissance active d‚livr‚e;consigne_cos_externe_valeur_de_retombe_du_cos_en_cas_de_puissance_active_dlivre;0.000100;0.000000;;4
+290;3;44113;U32;;Consigne cos ? externe, valeur de retomb‚e du type d'excitation en cas de puissance active d‚livr‚e;consigne_cos_externe_valeur_de_retombe_du_type_dexcitation_en_cas_de_puissance_active_dlivre;1.000000;0.000000;;4
+291;3;44115;U32;;Consigne cos ? externe, valeur de retomb‚e du cos ? en cas de puissance active absorb‚e;consigne_cos_externe_valeur_de_retombe_du_cos_en_cas_de_puissance_active_absorbe;0.000100;0.000000;;4
+292;3;44117;U32;;Consigne cos ? externe, valeur de retomb‚e du type d'excitation en cas de puissance active absorb‚e;consigne_cos_externe_valeur_de_retombe_du_type_dexcitation_en_cas_de_puissance_active_absorbe;1.000000;0.000000;;4
+293;3;44119;U32;;Consigne cos ? manuelle, valeur de consigne cos ? en cas de consommation de puissance active;consigne_cos_manuelle_valeur_de_consigne_cos_en_cas_de_consommation_de_puissance_active;0.000100;0.000000;;4
+294;3;44121;U32;;Consigne cos ? manuelle, type d'excitation en cas de consommation de puissance active;consigne_cos_manuelle_type_dexcitation_en_cas_de_consommation_de_puissance_active;1.000000;0.000000;;4
+295;3;44123;U32;;Consigne cos ?, filtre de valeur r‚elle pour valeur de mesure de puissance active_0;consigne_cos_filtre_de_valeur_relle_pour_valeur_de_mesure_de_puissance_active_0;1.000000;0.000000;;4
+296;3;44125;U32;;Consigne cos ?, filtre de valeur r‚elle pour valeur de mesure de puissance active_1;consigne_cos_filtre_de_valeur_relle_pour_valeur_de_mesure_de_puissance_active_1;0.010000;0.000000;s;4
+297;3;44127;U32;;Consigne cos ?, filtre de valeur de consigne;consigne_cos_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+298;3;44129;U32;;Consigne cos ?, temps de r‚glage filtre de valeur de consigne;consigne_cos_temps_de_rglage_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+299;3;44131;U32;;Consigne cos ?, limitation du taux de changement;consigne_cos_limitation_du_taux_de_changement;1.000000;0.000000;;4
+300;3;44133;U32;;Consigne cos ?, taux d'augmentation;consigne_cos_taux_daugmentation;0.010000;0.000000;pct/s;4
+301;3;44135;U32;;Consigne cos ?, taux de r‚duction;consigne_cos_taux_de_rduction;0.010000;0.000000;pct/s;4
+302;3;44141;U32;;Consigne cos ? externe, valeur de consigne cos ? en cas de puissance active absorb‚e;consigne_cos_externe_valeur_de_consigne_cos_en_cas_de_puissance_active_absorbe;0.000100;0.000000;;4
+303;3;44143;U32;;Consigne cos ? externe, type d'excitation en cas de puissance active absorb‚e;consigne_cos_externe_type_dexcitation_en_cas_de_puissance_active_absorbe;1.000000;0.000000;;4
+304;3;44145;U32;;Q(P), nombre de points de r‚f‚rence utilis‚s;qp_nombre_de_points_de_rfrence_utiliss;1.000000;0.000000;;4
+305;3;44149;I32;;Q(P), valeur de puissance active_0;qp_valeur_de_puissance_active_0;0.001000;0.000000;;4
+306;3;44151;I32;;Q(P), valeur de puissance active_1;qp_valeur_de_puissance_active_1;0.001000;0.000000;;4
+307;3;44153;I32;;Q(P), valeur de puissance active_2;qp_valeur_de_puissance_active_2;0.001000;0.000000;;4
+308;3;44155;I32;;Q(P), valeur de puissance active_3;qp_valeur_de_puissance_active_3;0.001000;0.000000;;4
+309;3;44157;I32;;Q(P), valeur de puissance active_4;qp_valeur_de_puissance_active_4;0.001000;0.000000;;4
+310;3;44159;I32;;Q(P), valeur de puissance active_5;qp_valeur_de_puissance_active_5;0.001000;0.000000;;4
+311;3;44161;I32;;Q(P), valeur de puissance active_6;qp_valeur_de_puissance_active_6;0.001000;0.000000;;4
+312;3;44165;I32;;Q(P), valeur de puissance r‚active_0;qp_valeur_de_puissance_ractive_0;0.001000;0.000000;;4
+313;3;44167;I32;;Q(P), valeur de puissance r‚active_1;qp_valeur_de_puissance_ractive_1;0.001000;0.000000;;4
+314;3;44169;I32;;Q(P), valeur de puissance r‚active_2;qp_valeur_de_puissance_ractive_2;0.001000;0.000000;;4
+315;3;44171;I32;;Q(P), valeur de puissance r‚active_3;qp_valeur_de_puissance_ractive_3;0.001000;0.000000;;4
+316;3;44173;I32;;Q(P), valeur de puissance r‚active_4;qp_valeur_de_puissance_ractive_4;0.001000;0.000000;;4
+317;3;44175;I32;;Q(P), valeur de puissance r‚active_5;qp_valeur_de_puissance_ractive_5;0.001000;0.000000;;4
+318;3;44177;I32;;Q(P), valeur de puissance r‚active_6;qp_valeur_de_puissance_ractive_6;0.001000;0.000000;;4
+319;3;44179;U32;;Q(P), filtre de valeur de consigne;qp_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+320;3;44181;U32;;Q(P), temps de r‚glage du filtre de valeur de consigne;qp_temps_de_rglage_du_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+321;3;44183;U32;;Q(P), limitation du taux de changement;qp_limitation_du_taux_de_changement;1.000000;0.000000;;4
+322;3;44185;U32;;Q(P), taux d'augmentation;qp_taux_daugmentation;0.010000;0.000000;pct/s;4
+323;3;44187;U32;;Q(P), taux de r‚duction;qp_taux_de_rduction;0.010000;0.000000;pct/s;4
+324;3;44189;U32;;Q(P), retart au d‚clenchement;qp_retart_au_dclenchement;1.000000;0.000000;s;4
+325;3;44191;U32;;Q(U), nombre de points de r‚f‚rence utilis‚s;qu_nombre_de_points_de_rfrence_utiliss;1.000000;0.000000;;4
+326;3;44193;U32;;Q(U), comportement de retomb‚e en cas de consigne de tension de r‚f‚rence manquante;qu_comportement_de_retombe_en_cas_de_consigne_de_tension_de_rfrence_manquante;1.000000;0.000000;;4
+327;3;44195;U32;;Q(U), tension de r‚f‚rence de retomb‚e;qu_tension_de_rfrence_de_retombe;0.010000;0.000000;p.u.;4
+328;3;44197;U32;;Q(U), Timeout pour consigne de tension de r‚f‚rence manquante;qu_timeout_pour_consigne_de_tension_de_rfrence_manquante;1.000000;0.000000;s;4
+329;3;44199;U32;;Q(U), filtre de valeur de consigne;qu_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+330;3;44201;U32;;Q(U), temps de r‚glage filtre de valeur de consigne;qu_temps_de_rglage_filtre_de_valeur_de_consigne;1.000000;0.000000;s;4
+331;3;44203;U32;;Q(U), limitation du taux de changement;qu_limitation_du_taux_de_changement;1.000000;0.000000;;4
+332;3;44205;U32;;Q(U), taux d'augmentation;qu_taux_daugmentation;0.010000;0.000000;pct/s;4
+333;3;44207;U32;;Q(U), taux de r‚duction;qu_taux_de_rduction;0.010000;0.000000;pct/s;4
+334;3;44209;U32;;Q(U), retart au d‚clenchement;qu_retart_au_dclenchement;1.000000;0.000000;s;4
+335;3;44211;U32;;Q(U), Valeur prescrite externe de la tension de r‚f‚rence par unit‚_0;qu_valeur_prescrite_externe_de_la_tension_de_rfrence_par_unit_0;0.001000;0.000000;p.u.;4
+336;3;44213;U32;;cos ?(P), nombre de points de r‚f‚rence utilis‚s;cos_p_nombre_de_points_de_rfrence_utiliss;1.000000;0.000000;;4
+337;3;44217;U32;;cos ?(P), type d'excitation_0;cos_p_type_dexcitation_0;1.000000;0.000000;;4
+338;3;44219;U32;;cos ?(P), type d'excitation_1;cos_p_type_dexcitation_1;1.000000;0.000000;;4
+339;3;44221;U32;;cos ?(P), type d'excitation_2;cos_p_type_dexcitation_2;1.000000;0.000000;;4
+340;3;44225;U32;;cos ?(P), valeur de consigne cos ?_0;cos_p_valeur_de_consigne_cos_0;0.000100;0.000000;;4
+341;3;44227;U32;;cos ?(P), valeur de consigne cos ?_1;cos_p_valeur_de_consigne_cos_1;0.000100;0.000000;;4
+342;3;44229;U32;;cos ?(P), valeur de consigne cos ?_2;cos_p_valeur_de_consigne_cos_2;0.000100;0.000000;;4
+343;3;44233;I32;;cos ?(P), puissance active_0;cos_p_puissance_active_0;1.000000;0.000000;;4
+344;3;44235;I32;;cos ?(P), puissance active_1;cos_p_puissance_active_1;1.000000;0.000000;;4
+345;3;44237;I32;;cos ?(P), puissance active_2;cos_p_puissance_active_2;1.000000;0.000000;;4
+346;3;44239;U32;;cos ?(P), filtre de valeur r‚elle pour la valeur de mesure de puissance active;cos_p_filtre_de_valeur_relle_pour_la_valeur_de_mesure_de_puissance_active;1.000000;0.000000;;4
+347;3;44241;U32;;cos ?(P), temps de r‚glage du filtre de valeur r‚elle;cos_p_temps_de_rglage_du_filtre_de_valeur_relle;0.010000;0.000000;s;4
+348;3;44243;U32;;cos ?(P), filtre de valeur de consigne;cos_p_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+349;3;44245;U32;;cos ?(P), temps de r‚glage filtre de valeur de consigne;cos_p_temps_de_rglage_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+350;3;44247;U32;;cos ?(P), limitation du taux de changement;cos_p_limitation_du_taux_de_changement;1.000000;0.000000;;4
+351;3;44249;U32;;cos ?(P), taux d'augmentation;cos_p_taux_daugmentation;0.010000;0.000000;pct/s;4
+352;3;44251;U32;;cos ?(P), taux de r‚duction;cos_p_taux_de_rduction;0.010000;0.000000;pct/s;4
+353;3;44253;U32;;cos ?(P), retart au d‚clenchement;cos_p_retart_au_dclenchement;1.000000;0.000000;s;4
+354;3;44255;U32;;cos ?(U), nombre de points de r‚f‚rence utilis‚s;cos_u_nombre_de_points_de_rfrence_utiliss;1.000000;0.000000;;4
+355;3;44259;U32;;cos ?(U), valeur de tension_0;cos_u_valeur_de_tension_0;0.001000;0.000000;p.u.;4
+356;3;44261;U32;;cos ?(U), valeur de tension_1;cos_u_valeur_de_tension_1;0.001000;0.000000;p.u.;4
+357;3;44263;U32;;cos ?(U), valeur de tension_2;cos_u_valeur_de_tension_2;0.001000;0.000000;p.u.;4
+358;3;44267;U32;;cos ?(U), type d'excitation_0;cos_u_type_dexcitation_0;1.000000;0.000000;;4
+359;3;44269;U32;;cos ?(U), type d'excitation_1;cos_u_type_dexcitation_1;1.000000;0.000000;;4
+360;3;44271;U32;;cos ?(U), type d'excitation_2;cos_u_type_dexcitation_2;1.000000;0.000000;;4
+361;3;44275;U32;;cos ?(U), valeur de consigne cos ?_0;cos_u_valeur_de_consigne_cos_0;0.010000;0.000000;;4
+362;3;44277;U32;;cos ?(U), valeur de consigne cos ?_1;cos_u_valeur_de_consigne_cos_1;0.010000;0.000000;;4
+363;3;44279;U32;;cos ?(U), valeur de consigne cos ?_2;cos_u_valeur_de_consigne_cos_2;0.010000;0.000000;;4
+364;3;44281;U32;;cos ?(U), filtre de valeur r‚elle pour la valeur de mesure de puissance active;cos_u_filtre_de_valeur_relle_pour_la_valeur_de_mesure_de_puissance_active;1.000000;0.000000;;4
+365;3;44283;U32;;cos ?(U), temps de r‚glage du filtre de valeur r‚elle;cos_u_temps_de_rglage_du_filtre_de_valeur_relle;0.010000;0.000000;s;4
+366;3;44285;U32;;cos ?(U), filtre de valeur de consigne;cos_u_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+367;3;44287;U32;;cos ?(U), temps de r‚glage du filtre de valeur de consigne;cos_u_temps_de_rglage_du_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+368;3;44289;U32;;cos ?(U), limitation du taux de changement;cos_u_limitation_du_taux_de_changement;1.000000;0.000000;;4
+369;3;44291;U32;;cos ?(U), taux d'augmentation;cos_u_taux_daugmentation;0.010000;0.000000;pct/s;4
+370;3;44293;U32;;cos ?(U), taux de r‚duction;cos_u_taux_de_rduction;0.010000;0.000000;pct/s;4
+371;3;44295;U32;;cos ?(U), retart au d‚clenchement;cos_u_retart_au_dclenchement;1.000000;0.000000;s;4
+372;3;44297;U32;;Surveillance de tension, seuil maximum sup‚rieur;surveillance_de_tension_seuil_maximum_suprieur;0.001000;0.000000;p.u.;4
+373;3;44299;U32;;Surveillance de tension, seuil maximum moyen;surveillance_de_tension_seuil_maximum_moyen;0.001000;0.000000;p.u.;4
+374;3;44301;U32;;Surveillance de tension, seuil maximum inf‚rieur;surveillance_de_tension_seuil_maximum_infrieur;0.001000;0.000000;p.u.;4
+375;3;44303;U32;;Surveillance de tension, temps de d‚clenchement seuil maximum sup‚rieur;surveillance_de_tension_temps_de_dclenchement_seuil_maximum_suprieur;1.000000;0.000000;ms;4
+376;3;44305;U32;;Surveillance de tension, seuil minimum inf‚rieur;surveillance_de_tension_seuil_minimum_infrieur;0.001000;0.000000;p.u.;4
+377;3;44307;U32;;Surveillance de tension, seuil minimum moyen;surveillance_de_tension_seuil_minimum_moyen;0.001000;0.000000;p.u.;4
+378;3;44309;U32;;Surveillance de tension, seuil minimum sup‚rieur;surveillance_de_tension_seuil_minimum_suprieur;0.001000;0.000000;p.u.;4
+379;3;44311;U32;;Tension maximum de reconnexion;tension_maximum_de_reconnexion;0.001000;0.000000;p.u.;4
+380;3;44313;U32;;Tension minimum de reconnexion;tension_minimum_de_reconnexion;0.001000;0.000000;p.u.;4
+381;3;44315;U32;;Surveillance de tension, seuil de tension de crˆte;surveillance_de_tension_seuil_de_tension_de_crte;0.001000;0.000000;p.u.;4
+382;3;44317;U32;;Surveillance de tension, temps de d‚clenchement seuil de tension de crˆte;surveillance_de_tension_temps_de_dclenchement_seuil_de_tension_de_crte;0.001000;0.000000;ms;4
+383;3;44319;U32;;Soutien dynamique du r‚seau, seuil de surtension pour courant nul;soutien_dynamique_du_rseau_seuil_de_surtension_pour_courant_nul;0.010000;0.000000;p.u.;4
+384;3;44321;U32;;Soutien dynamique du r‚seau, seuil de sous-tension pour courant nul;soutien_dynamique_du_rseau_seuil_de_soustension_pour_courant_nul;0.010000;0.000000;p.u.;4
+385;3;44323;U32;;Soutien dynamique du r‚seau, tension d?hyst‚r‚sis;soutien_dynamique_du_rseau_tension_dhystrsis;0.010000;0.000000;p.u.;4
+386;3;44325;U32;;Soutien dynamique du r‚seau, moyennage pour le mode statique de courant r‚actif;soutien_dynamique_du_rseau_moyennage_pour_le_mode_statique_de_courant_ractif;1.000000;0.000000;;4
+387;3;44327;U32;;Soutien dynamique du r‚seau, seuil de surtension pour courant r‚actif;soutien_dynamique_du_rseau_seuil_de_surtension_pour_courant_ractif;0.010000;0.000000;p.u.;4
+388;3;44329;U32;;Soutien dynamique du r‚seau, seuil de sous-tension pour courant r‚actif;soutien_dynamique_du_rseau_seuil_de_soustension_pour_courant_ractif;0.010000;0.000000;p.u.;4
+389;3;44331;U32;;Soutien dynamique du r‚seau, hauteur de saut de tension;soutien_dynamique_du_rseau_hauteur_de_saut_de_tension;0.010000;0.000000;p.u.;4
+390;3;44333;U32;;Courbe caract. P(f);courbe_caract_pf;1.000000;0.000000;;4
+391;3;44335;U32;;P(f), grandeur de r‚f‚rence pour puissance active en cas de surfr‚quence;pf_grandeur_de_rfrence_pour_puissance_active_en_cas_de_surfrquence;1.000000;0.000000;;4
+392;3;44337;U32;;P(f), grandeur de r‚f‚rence pour puissance active en cas de sous-fr‚quence;pf_grandeur_de_rfrence_pour_puissance_active_en_cas_de_sousfrquence;1.000000;0.000000;;4
+393;3;44339;U32;;P(f), temps de r‚glage;pf_temps_de_rglage;0.010000;0.000000;s;4
+394;3;44341;U32;;P(f), hyst‚r‚sis en cas de surfr‚quence;pf_hystrsis_en_cas_de_surfrquence;1.000000;0.000000;;4
+395;3;44343;U32;;P(f), hyst‚r‚sis en cas de sous-fr‚quence;pf_hystrsis_en_cas_de_sousfrquence;1.000000;0.000000;;4
+396;3;44347;U32;;P(f), surfr‚quence de coude_0;pf_surfrquence_de_coude_0;0.001000;0.000000;Hz;4
+397;3;44349;U32;;P(f), surfr‚quence de coude_1;pf_surfrquence_de_coude_1;0.001000;0.000000;Hz;4
+398;3;44353;I32;;P(f), modification de la puissance active par Hz en cas de surfr‚quence_0;pf_modification_de_la_puissance_active_par_hz_en_cas_de_surfrquence_0;0.001000;0.000000;;4
+399;3;44355;I32;;P(f), modification de la puissance active par Hz en cas de surfr‚quence_1;pf_modification_de_la_puissance_active_par_hz_en_cas_de_surfrquence_1;0.001000;0.000000;;4
+400;3;44357;I32;;P(f), surfr‚quence de r‚initialisation;pf_surfrquence_de_rinitialisation;0.001000;0.000000;Hz;4
+401;3;44361;I32;;P(f), sous-fr‚quence de coude_0;pf_sousfrquence_de_coude_0;0.001000;0.000000;Hz;4
+402;3;44363;I32;;P(f), sous-fr‚quence de coude_1;pf_sousfrquence_de_coude_1;0.001000;0.000000;Hz;4
+403;3;44367;I32;;P(f), modification de la puissance active par Hz en cas de sous-fr‚quence_0;pf_modification_de_la_puissance_active_par_hz_en_cas_de_sousfrquence_0;0.001000;0.000000;;4
+404;3;44369;I32;;P(f), modification de la puissance active par Hz en cas de sous-fr‚quence_1;pf_modification_de_la_puissance_active_par_hz_en_cas_de_sousfrquence_1;0.001000;0.000000;;4
+405;3;44371;I32;;P(f), sous-fr‚quence de r‚initialisation;pf_sousfrquence_de_rinitialisation;0.001000;0.000000;Hz;4
+406;3;44373;U32;;P(f), retart au d‚clenchement;pf_retart_au_dclenchement;1.000000;0.000000;ms;4
+407;3;44375;U32;;P(f), temps de poursuite;pf_temps_de_poursuite;1.000000;0.000000;s;4
+408;3;44377;U32;;D‚tection de r‚seau en Œlotage, ‚tat de la surveillance de fr‚quence;dtection_de_rseau_en_lotage_tat_de_la_surveillance_de_frquence;1.000000;0.000000;;4
+409;3;44379;U32;;D‚tection de r‚seau en Œlotage, temps de d‚clenchement de la surveillance de fr‚quence;dtection_de_rseau_en_lotage_temps_de_dclenchement_de_la_surveillance_de_frquence;1.000000;0.000000;ms;4
+410;3;44381;I32;;Puissance active nominale WMaxOut;puissance_active_nominale_wmaxout;1.000000;0.000000;W;4
+411;3;44383;I32;;Puissance active nominale WMaxIn;puissance_active_nominale_wmaxin;1.000000;0.000000;W;4
+412;3;44389;U32;;Puissance apparente nominale VAMaxOut;puissance_apparente_nominale_vamaxout;1.000000;0.000000;VA;4
+413;3;44391;U32;;Puissance apparente nominale VAMaxIn;puissance_apparente_nominale_vamaxin;1.000000;0.000000;VA;4
+414;3;44393;I32;;Puissance r‚active nominale VArMaxQ1;puissance_ractive_nominale_varmaxq1;1.000000;0.000000;VAr;4
+415;3;44395;I32;;Puissance r‚active nominale VArMaxQ2;puissance_ractive_nominale_varmaxq2;1.000000;0.000000;VAr;4
+416;3;44397;I32;;Puissance r‚active nominale VArMaxQ3;puissance_ractive_nominale_varmaxq3;1.000000;0.000000;VAr;4
+417;3;44399;I32;;Puissance r‚active nominale VArMaxQ4;puissance_ractive_nominale_varmaxq4;1.000000;0.000000;VAr;4
+418;3;44401;I32;;Puissance r‚active nominale VArMaxZerWQ1;puissance_ractive_nominale_varmaxzerwq1;1.000000;0.000000;VAr;4
+419;3;44403;I32;;Puissance r‚active nominale VArMaxZerWQ2;puissance_ractive_nominale_varmaxzerwq2;1.000000;0.000000;VAr;4
+420;3;44405;I32;;Puissance r‚active nominale VArMaxZerWQ3;puissance_ractive_nominale_varmaxzerwq3;1.000000;0.000000;VAr;4
+421;3;44407;I32;;Puissance r‚active nominale VArMaxZerWQ4;puissance_ractive_nominale_varmaxzerwq4;1.000000;0.000000;VAr;4
+422;3;44409;U32;;cos ? nominal PFMinQ1;cos_nominal_pfminq1;0.000100;0.000000;;4
+423;3;44411;U32;;cos ? nominal PFMinQ2;cos_nominal_pfminq2;0.000100;0.000000;;4
+424;3;44413;U32;;cos ? nominal PFMinQ3;cos_nominal_pfminq3;0.000100;0.000000;;4
+425;3;44415;U32;;cos ? nominal PFMinQ4;cos_nominal_pfminq4;0.000100;0.000000;;4
+426;3;44417;U32;;D‚tection de r‚seau en Œlotage, ‚tat de la d‚tection d?asym‚trie;dtection_de_rseau_en_lotage_tat_de_la_dtection_dasymtrie;1.000000;0.000000;;4
+427;3;44419;U32;;D‚tection de r‚seau en Œlotage, sym‚trie admissible du r‚seau;dtection_de_rseau_en_lotage_symtrie_admissible_du_rseau;1.000000;0.000000;pct;4
+428;3;44421;U32;;D‚tection de r‚seau en Œlotage, temps de d‚clenchement de la d‚tection d'asym‚trie;dtection_de_rseau_en_lotage_temps_de_dclenchement_de_la_dtection_dasymtrie;1.000000;0.000000;ms;4
+429;3;44459;U32;;Q(U), Valeur prescrite externe de la tension de r‚f‚rence par unit‚_1;qu_valeur_prescrite_externe_de_la_tension_de_rfrence_par_unit_1;0.001000;0.000000;p.u.;4
+430;3;44461;U32;;Consigne de puissance active externe 2, filtre de valeur de consigne;consigne_de_puissance_active_externe_2_filtre_de_valeur_de_consigne;1.000000;0.000000;;4
+431;3;44463;U32;;Consigne de puissance active externe 2, limitation du taux de changement;consigne_de_puissance_active_externe_2_limitation_du_taux_de_changement;1.000000;0.000000;;4
+432;3;44465;U32;;Consigne de puissance active externe 2, taux d'augmentation;consigne_de_puissance_active_externe_2_taux_daugmentation;0.010000;0.000000;pct/s;4
+433;3;44467;U32;;Consigne de puissance active externe 2, taux de r‚duction;consigne_de_puissance_active_externe_2_taux_de_rduction;0.010000;0.000000;pct/s;4
+434;3;44469;I32;;Q(P), valeur de puissance active_7;qp_valeur_de_puissance_active_7;0.001000;0.000000;;4
+435;3;44473;I32;;Q(P), valeur de puissance r‚active_7;qp_valeur_de_puissance_ractive_7;0.001000;0.000000;;4
+436;3;44477;U32;;Q(U), Temps de r‚glage du filtre de valeur de consigne;qu_temps_de_rglage_du_filtre_de_valeur_de_consigne;0.010000;0.000000;s;4
+437;3;44479;U32;;Mode de sensibilit‚ … la fr‚quence (FSM);mode_de_sensibilit_la_frquence_fsm;1.000000;0.000000;;4
+438;3;44493;I32;;Limite puissance alimentation via cde install._0;limite_puissance_alimentation_via_cde_install_0;1.000000;0.000000;W;4
+439;3;44493;I32;;Limite puissance alimentation via cde install._1;limite_puissance_alimentation_via_cde_install_1;1.000000;0.000000;;4
+440;3;44495;U32;;Tension d?activation maximale aprŠs red‚marrage;tension_dactivation_maximale_aprs_redmarrage;0.001000;0.000000;p.u.;4
+441;3;44497;U32;;Tension d?activation minimale aprŠs red‚marrage;tension_dactivation_minimale_aprs_redmarrage;0.001000;0.000000;p.u.;4
+442;3;44499;U32;;Fr‚quence d?activation maximale aprŠs red‚marrage;frquence_dactivation_maximale_aprs_redmarrage;0.010000;0.000000;Hz;4
+443;3;44501;U32;;Fr‚quence d?activation minimale aprŠs red‚marrage;frquence_dactivation_minimale_aprs_redmarrage;0.010000;0.000000;Hz;4
+444;3;44503;U32;;Fr‚quence d?activation maximale aprŠs coupure par surfr‚quence;frquence_dactivation_maximale_aprs_coupure_par_surfrquence;0.010000;0.000000;Hz;4
+445;3;44511;U32;;Pr‚r‚glage de la courbe caract‚ristique Q(U);prrglage_de_la_courbe_caractristique_qu;1.000000;0.000000;;4

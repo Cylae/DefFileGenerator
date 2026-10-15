@@ -1,0 +1,32 @@
+modbusRTU;Other;Ingeteam;INGETEAM_PowerMax(centraux);;;;;;;
+1;4;0;U32;;Ah_Total;ah_total;1.000000;0.000000;;4
+2;4;2;U32;;Operating Time;operating_time;1.000000;0.000000;;4
+3;4;4_0;I8;;Current from Strings 1;current_from_strings_1;1.000000;0.000000;;4
+4;4;4_1;I8;;Current from Strings 2;current_from_strings_2;1.000000;0.000000;;4
+5;4;5_0;I8;;Current from Strings 3;current_from_strings_3;1.000000;0.000000;;4
+6;4;5_1;I8;;Current from Strings 4;current_from_strings_4;1.000000;0.000000;;4
+7;4;6_0;I8;;Current from Strings 5;current_from_strings_5;1.000000;0.000000;;4
+8;4;6_1;I8;;Current from Strings 6;current_from_strings_6;1.000000;0.000000;;4
+9;4;7_0;I8;;Current from Strings 7;current_from_strings_7;1.000000;0.000000;;4
+10;4;7_1;I8;;Current from Strings 8;current_from_strings_8;1.000000;0.000000;;4
+11;4;8_0;I8;;Current from Strings 9;current_from_strings_9;1.000000;0.000000;;4
+12;4;8_1;I8;;Current from Strings 10;current_from_strings_10;1.000000;0.000000;;4
+13;4;9_0;I8;;Current from Strings 11;current_from_strings_11;1.000000;0.000000;;4
+14;4;9_1;I8;;Current from Strings 12;current_from_strings_12;1.000000;0.000000;;4
+15;4;10_0;I8;;Current from Strings 13;current_from_strings_13;1.000000;0.000000;;4
+16;4;10_1;I8;;Current from Strings 14;current_from_strings_14;1.000000;0.000000;;4
+17;4;11_0;I8;;Current from Strings 15;current_from_strings_15;1.000000;0.000000;;4
+18;4;11_1;I8;;Current from Strings 16;current_from_strings_16;1.000000;0.000000;;4
+19;4;12;I16;;Sum of instant currents;sum_of_instant_currents;1.000000;0.000000;;4
+20;4;13;U16;;Temperature;temperature;1.000000;0.000000;;4
+21;4;14;U16;;String current alarms;string_current_alarms;1.000000;0.000000;;4
+22;4;15;U16;;Fuse alarms;fuse_alarms;1.000000;0.000000;;4
+23;4;16;U16;;Reserved;reserved;1.000000;0.000000;;0
+24;4;17;U16;;Reserved_1;reserved_1;1.000000;0.000000;;0
+25;4;18;U16;;General alarms;general_alarms;1.000000;0.000000;;4
+26;4;19;U16;;Year;year;100.000000;0.000000;;4
+27;4;20;U16;;Month;month;10.000000;0.000000;;4
+28;4;21;U16;;Day;day;10.000000;0.000000;;4
+29;4;22;U16;;Hour;hour;10.000000;0.000000;;4
+30;4;23;U16;;Minute;minute;100.000000;0.000000;;4
+31;4;24;I16;;Second;second;0.100000;0.000000;;4

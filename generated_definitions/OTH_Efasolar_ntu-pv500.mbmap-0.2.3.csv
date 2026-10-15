@@ -1,0 +1,185 @@
+modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
+1;3;0;F32;;Input Voltage;input_voltage;1.000000;0.000000;Vrms;4
+2;3;1;U16;;;;1.000000;0.000000;;1
+3;3;2;F32;;Input Current;input_current;1.000000;0.000000;Arms;4
+4;3;3;U16;;;;1.000000;0.000000;;1
+5;3;4;F32;;Input power;input_power;1.000000;0.000000;KW;4
+6;3;5;U16;;;;1.000000;0.000000;;1
+7;3;6;F32;;Grid Voltage;grid_voltage;1.000000;0.000000;Vrms;4
+8;3;7;U16;;;;1.000000;0.000000;;1
+9;3;8;F32;;;;1.000000;0.000000;Vrms;1
+10;3;9;U16;;;;1.000000;0.000000;;1
+11;3;10;F32;;;;1.000000;0.000000;Vrms;1
+12;3;11;U16;;;;1.000000;0.000000;;1
+13;3;12;F32;;Output grid current;output_grid_current;1.000000;0.000000;Arms;4
+14;3;13;U16;;;;1.000000;0.000000;;1
+15;3;14;F32;;;;1.000000;0.000000;Arms;1
+16;3;15;U16;;;;1.000000;0.000000;;1
+17;3;16;F32;;;;1.000000;0.000000;Arms;1
+18;3;17;U16;;;;1.000000;0.000000;;1
+19;3;18;F32;;Output active power;P_AC;1.000000;0.000000;KW;4
+20;3;19;U16;;;;1.000000;0.000000;;1
+21;3;20;F32;;Power Factor;PF;1.000000;0.000000;'-;4
+22;3;21;U16;;;;1.000000;0.000000;;1
+23;3;22;F32;;Power Electronic Temperature;power_electronic_temperature;1.000000;0.000000;ºC;4
+24;3;23;U16;;;;1.000000;0.000000;;1
+25;3;24;F32;;Grid Frecuency;grid_frecuency;1.000000;0.000000;Hz;4
+26;3;25;U16;;;;1.000000;0.000000;;1
+27;3;26;U16;;Not Used;not_used;1.000000;0.000000;'-;4
+28;3;27;U16;;Not Used;not_used_1;1.000000;0.000000;'-;4
+29;3;28;U16;;Not Used;not_used_2;1.000000;0.000000;'-;4
+30;3;29;U16;;Not Used;not_used_3;1.000000;0.000000;'-;4
+31;3;30;U16;;Not Used;not_used_4;1.000000;0.000000;'-;4
+32;3;31;U16;;Not Used;not_used_5;1.000000;0.000000;'-;4
+33;3;32;U16;;Not Used;not_used_6;1.000000;0.000000;'-;4
+34;3;33;U16;;Not Used;not_used_7;1.000000;0.000000;'-;4
+35;3;34;F32;;Estimated active power counter;estimated_active_power_counter;1.000000;0.000000;kWh;4
+36;3;35;U16;;;;1.000000;0.000000;;1
+37;3;36;F32;;Estimated reactive power counter;estimated_reactive_power_counter;1.000000;0.000000;kVArh;4
+38;3;37;U16;;;;1.000000;0.000000;;1
+39;3;38;I16;;Cosine reference for reactive power control escaled by 100;cosine_reference_for_reactive_power_control_escaled_by_100;100.000000;0.000000;'-;4
+40;3;39;U16;;Inverter halted;inverter_halted;1.000000;0.000000;'-;4
+41;3;40;U32;;Inverter Error code 1;inverter_error_code_1;1.000000;0.000000;See Errors table;9
+42;3;41;U16;;;;1.000000;0.000000;;1
+43;3;42;U32;;Inverter Error code 2;inverter_error_code_2;1.000000;0.000000;See Errors table;9
+44;3;43;U16;;;;1.000000;0.000000;;1
+45;3;44;U16;;Inverter command:;inverter_command;1.000000;0.000000;See Commands table;4
+46;3;45;U16;;Summer Start Day;summer_start_day;1.000000;0.000000;[1,31];4
+47;3;46;U16;;Summer Start Month;summer_start_month;1.000000;0.000000;[1,12];4
+48;3;47;U16;;Peak Start Hour;peak_start_hour;1.000000;0.000000;[0,24] h.;4
+49;3;48;U16;;Peak Start Minute;peak_start_minute;1.000000;0.000000;[0,60] min.;4
+50;3;49;U16;;Peak End Hour;peak_end_hour;1.000000;0.000000;[0,24] h.;4
+51;3;50;U16;;Peak End Minute;peak_end_minute;1.000000;0.000000;[0,60] min.;4
+52;3;51;I16;;Peak cosine reference;peak_cosine_reference;100.000000;0.000000;[-100,100] * cos(phi);4
+53;3;52;U16;;Valley Start Hour;valley_start_hour;1.000000;0.000000;[0,24] h.;4
+54;3;53;U16;;Valley Start Minute;valley_start_minute;1.000000;0.000000;[0,60] min.;4
+55;3;54;U16;;Valley End Hour;valley_end_hour;1.000000;0.000000;[0,24] h.;4
+56;3;55;U16;;Valley End Minute;valley_end_minute;1.000000;0.000000;[0,60] min.;4
+57;3;56;I16;;Valley cosine reference;valley_cosine_reference;1.000000;0.000000;[-100,100] * cos(phi);4
+58;3;57;U16;;Reserved;reserved;1.000000;0.000000;'-;0
+59;3;58;U16;;Reserved;reserved_1;1.000000;0.000000;'-;0
+60;3;59;U16;;Reserved;reserved_2;1.000000;0.000000;'-;0
+61;3;60;U16;;Reserved;reserved_3;1.000000;0.000000;'-;0
+62;3;61;I16;;Cosine referece rest of the day;cosine_referece_rest_of_the_day;100.000000;0.000000;[-100,100] * cos(phi);4
+63;3;62;U16;;Winter Start Day;winter_start_day;1.000000;0.000000;[1,31];4
+64;3;63;U16;;Winter Start Month;winter_start_month;1.000000;0.000000;[1,12];4
+65;3;64;U16;;Peak Start Hour;peak_start_hour_1;1.000000;0.000000;[0,24] h.;4
+66;3;65;U16;;Peak Start Minute;peak_start_minute_1;1.000000;0.000000;[0,60] min.;4
+67;3;66;U16;;Peak End Hour;peak_end_hour_1;1.000000;0.000000;[0,24] h.;4
+68;3;67;U16;;Peak End Minute;peak_end_minute_1;1.000000;0.000000;[0,60] min.;4
+69;3;68;I16;;Peak cosine reference;peak_cosine_reference_1;100.000000;0.000000;[-100,100] * cos(phi);4
+70;3;69;U16;;Valley Start Hour;valley_start_hour_1;1.000000;0.000000;[0,24] h.;4
+71;3;70;U16;;Valley Start Minute;valley_start_minute_1;1.000000;0.000000;[0,60] min.;4
+72;3;71;U16;;Valley End Hour;valley_end_hour_1;1.000000;0.000000;[0,24] h.;4
+73;3;72;U16;;Valley End Minute;valley_end_minute_1;1.000000;0.000000;[0,60] min.;4
+74;3;73;I16;;Valley cosine reference;valley_cosine_reference_1;100.000000;0.000000;[-100,100] * cos(phi);4
+75;3;74;U16;;Reserved;reserved_4;1.000000;0.000000;'-;0
+76;3;75;U16;;Reserved;reserved_5;1.000000;0.000000;'-;0
+77;3;76;U16;;Reserved;reserved_6;1.000000;0.000000;'-;0
+78;3;77;U16;;Reserved;reserved_7;1.000000;0.000000;'-;0
+79;3;78;I16;;Cosine referece rest of the day;cosine_referece_rest_of_the_day_1;100.000000;0.000000;[-100,100] * cos(phi);4
+80;3;79;U16;;Not Used;not_used_8;1.000000;0.000000;'-;4
+81;3;80;U16;;Not Used;not_used_9;1.000000;0.000000;'-;4
+82;3;81;U16;;NTU time: Seconds;ntu_time_seconds;1.000000;0.000000;s;4
+83;3;82;U16;;NTU time: Minutes;ntu_time_minutes;1.000000;0.000000;min;4
+84;3;83;U16;;NTU time: Hour;ntu_time_hour;1.000000;0.000000;hour;4
+85;3;84;U16;;NTU Date: Day;ntu_date_day;1.000000;0.000000;Day;4
+86;3;85;U16;;NTU Date: Month;ntu_date_month;1.000000;0.000000;Month;4
+87;3;86;U16;;NTU Date: Year;ntu_date_year;1.000000;0.000000;Year;4
+88;3;87;U16;;NTU Date: Day of the week;ntu_date_day_of_the_week;1.000000;0.000000;'-;4
+89;3;88;U16;;DSP Communications status;dsp_communications_status;1.000000;0.000000;'-;9
+90;3;89;U16;;HMI Communcations status;hmi_communcations_status;1.000000;0.000000;'-;9
+91;3;90;U16;;Major SW version;major_sw_version;1.000000;0.000000;'-;4
+92;3;91;U16;;Minor SW version;minor_sw_version;1.000000;0.000000;'-;4
+93;3;92;U16;;Revision SW Version;revision_sw_version;1.000000;0.000000;'-;4
+94;3;93;I16;;DSPFrames received;dspframes_received;1.000000;0.000000;Debugger only;4
+95;3;94;I16;;OP Frames received;op_frames_received;1.000000;0.000000;Debugger only;4
+96;3;100;I16;;Internal Capacitor voltage;internal_capacitor_voltage;10.000000;0.000000;Vrms;4
+97;3;101;I16;;Grid Voltage;grid_voltage_1;10.000000;0.000000;Vrms;4
+98;3;102;I16;;Grid Voltage;grid_voltage_2;10.000000;0.000000;Vrms;4
+99;3;103;I16;;Grid Voltage;grid_voltage_3;10.000000;0.000000;Vrms;4
+100;3;104;I16;;Grid Voltage;grid_voltage_4;10.000000;0.000000;Vrms;4
+101;3;105;I16;;Grid Voltage;grid_voltage_5;10.000000;0.000000;Vrms;4
+102;3;106;I16;;Grid Voltage;grid_voltage_6;10.000000;0.000000;Vrms;4
+103;3;107;I16;;Panel Voltage;panel_voltage;10.000000;0.000000;Vrms;4
+104;3;112;I16;;DC Input current;dc_input_current;10.000000;0.000000;Irms;4
+105;3;113;I16;;AC Output Current;ac_output_current;10.000000;0.000000;Irms;4
+106;3;114;I16;;AC Output Current;ac_output_current_1;10.000000;0.000000;Irms;4
+107;3;115;I16;;AC Output Current;ac_output_current_2;10.000000;0.000000;Irms;4
+108;3;122;I16;;DC Input Power;dc_input_power;10.000000;0.000000;KW;4
+109;3;123;I16;;AC Active Output Power;ac_active_output_power;10.000000;0.000000;KW;4
+110;3;124;I16;;AC Reactive power output;ac_reactive_power_output;10.000000;0.000000;KVAR;4
+111;3;125;I16;;AC Aparent power output;ac_aparent_power_output;10.000000;0.000000;KVA;4
+112;3;126;I16;;Phase R Active Power;phase_r_active_power;10.000000;0.000000;KW;4
+113;3;127;I16;;Phase S Active Power;phase_s_active_power;10.000000;0.000000;KW;4
+114;3;128;I16;;Phase T Active Power;phase_t_active_power;10.000000;0.000000;KW;4
+115;3;129;I16;;Phase R Reactive Power;phase_r_reactive_power;10.000000;0.000000;KVAR;4
+116;3;130;I16;;Phase S Reactive Power;phase_s_reactive_power;10.000000;0.000000;KVAR;4
+117;3;131;I16;;Phase T Reactive Power;phase_t_reactive_power;10.000000;0.000000;KVAR;4
+118;3;138;U32;;Estimated produced active power counter;estimated_produced_active_power_counter;10.000000;0.000000;KWh;4
+119;3;139;U16;;;;1.000000;0.000000;;1
+120;3;140;U32;;Estimated produced capacitive  power counter;estimated_produced_capacitive_power_counter;10.000000;0.000000;KVArh;4
+121;3;141;U16;;;;1.000000;0.000000;;1
+122;3;142;U32;;Estimated produced inductive power counter;estimated_produced_inductive_power_counter;10.000000;0.000000;KVArh;4
+123;3;143;U16;;;;1.000000;0.000000;;1
+124;3;144;U32;;Estimated consumed active power counter;estimated_consumed_active_power_counter;10.000000;0.000000;KWh;4
+125;3;145;U16;;;;1.000000;0.000000;;1
+126;3;146;U32;;Estimated consumed capacitive  power counter;estimated_consumed_capacitive_power_counter;10.000000;0.000000;KVArh;4
+127;3;147;U16;;;;1.000000;0.000000;;1
+128;3;148;U32;;Estimated consumed inductive power counter;estimated_consumed_inductive_power_counter;10.000000;0.000000;KVArh;4
+129;3;149;U16;;;;1.000000;0.000000;;1
+130;3;156;U16;;Inverter Status;inverter_status;1.000000;0.000000;See Inverter Status table;9
+131;3;157;U16;;DSP Digital I/O Status;dsp_digital_io_status;1.000000;0.000000;Debugger only;9
+132;3;158;U16;;DSP Digital I/O Status;dsp_digital_io_status_1;1.000000;0.000000;Debugger only;9
+133;3;159;U16;;DSP Digital I/O Status;dsp_digital_io_status_2;1.000000;0.000000;Debugger only;9
+134;3;160;U16;;Not used;not_used_10;1.000000;0.000000;Debugger only;4
+135;3;161;U16;;Internal DSP Reactive control mode;internal_dsp_reactive_control_mode;1.000000;0.000000;Debugger only;4
+136;3;162;U16;;Internal DSP Reactive control mode;internal_dsp_reactive_control_mode_1;1.000000;0.000000;Debugger only;4
+137;3;169;U32;;Inverter Error code 1;inverter_error_code_1_1;1.000000;0.000000;See Errors table;9
+138;3;170;U16;;;;1.000000;0.000000;;1
+139;3;171;U32;;Inverter Error code 2;inverter_error_code_2_1;1.000000;0.000000;See Errors table;9
+140;3;172;U16;;;;1.000000;0.000000;;1
+141;3;177;U32;;Interver Alarms code;interver_alarms_code;1.000000;0.000000;See Alarms table;9
+142;3;178;U16;;;;1.000000;0.000000;;1
+143;3;179;U32;;Inverter Alarms code;inverter_alarms_code;1.000000;0.000000;Not Used;9
+144;3;180;U16;;;;1.000000;0.000000;;1
+145;3;185;I16;;Grid frecuency;grid_frecuency_1;100.000000;0.000000;;4
+146;3;186;I16;;Inverter efficiency;inverter_efficiency;1000.000000;0.000000;;4
+147;3;187;I16;;Power Electronic Temperature;power_electronic_temperature_1;100.000000;0.000000;[100*temp] ºC;4
+148;3;188;I16;;Phase R current overload;phase_r_current_overload;100.000000;0.000000;'%;4
+149;3;189;I16;;Phase S current overload;phase_s_current_overload;100.000000;0.000000;'%;4
+150;3;190;I16;;Phase T current overload;phase_t_current_overload;100.000000;0.000000;[100*Value] %;4
+151;3;191;U32;;Inverter start up timer after failure;inverter_start_up_timer_after_failure;1.000000;0.000000;Seconds;9
+152;3;192;U16;;;;1.000000;0.000000;;1
+153;3;193;I16;;Not used;not_used_11;1.000000;0.000000;'-;4
+154;3;194;I16;;Not used;not_used_12;1.000000;0.000000;'-;4
+155;3;195;I16;;Internal DSP Reactive power reference;internal_dsp_reactive_power_reference;10.000000;0.000000;'-;4
+156;3;196;U16;;Reserved;reserved_8;1.000000;0.000000;'-;0
+157;3;256;U16;;Modbus Identifier;modbus_identifier;1.000000;0.000000;'-;4
+158;3;257;U16;;NTU Communications Protocol (Modbus RTU or Modbus TCP);ntu_communications_protocol_modbus_rtu_or_modbus_tcp;1.000000;0.000000;[(0) RTU,(1) TCP];4
+159;3;258;U16;;Commands to setup the modbus configuration;commands_to_setup_the_modbus_configuration;1.000000;0.000000;See Modbus Commands table;4
+160;3;259;U32;;Modbus RTU Speed;modbus_rtu_speed;1.000000;0.000000;[9600, 19200,38400] bds;4
+161;3;260;U16;;;;1.000000;0.000000;;1
+162;3;261;U16;;Modbus RTU Data bits;modbus_rtu_data_bits;1.000000;0.000000;[7, 8] bits;4
+163;3;262;U16;;Modbus RTU parity;modbus_rtu_parity;1.000000;0.000000;[0 (None), 1 (odd), 2 (even) ];4
+164;3;263;U16;;Modbus RTU Stop Bits;modbus_rtu_stop_bits;1.000000;0.000000;[1, 2];4
+165;3;264;U16;;NTU IP Address First octec;ntu_ip_address_first_octec;1.000000;0.000000;[0, 255];4
+166;3;265;U16;;NTU IP Address Second octec;ntu_ip_address_second_octec;1.000000;0.000000;[0, 255];4
+167;3;266;U16;;NTU IP Address Third octec;ntu_ip_address_third_octec;1.000000;0.000000;[0, 255];4
+168;3;267;U16;;NTU IP Address Fourth octec;ntu_ip_address_fourth_octec;1.000000;0.000000;[0, 255];4
+169;3;268;U16;;NTU Gateway Address First octec;ntu_gateway_address_first_octec;1.000000;0.000000;[0, 255];4
+170;3;269;U16;;NTU Gateway Address Second octec;ntu_gateway_address_second_octec;1.000000;0.000000;[0, 255];4
+171;3;270;U16;;NTU Gateway Address Third octec;ntu_gateway_address_third_octec;1.000000;0.000000;[0, 255];4
+172;3;271;U16;;NTU Gateway Address Fourth octec;ntu_gateway_address_fourth_octec;1.000000;0.000000;[0, 255];4
+173;3;272;U16;;NTU Mask Address First octec;ntu_mask_address_first_octec;1.000000;0.000000;[0, 255];4
+174;3;273;U16;;NTU Mask Address Second octec;ntu_mask_address_second_octec;1.000000;0.000000;[0, 255];4
+175;3;274;U16;;NTU Mask Address Third octec;ntu_mask_address_third_octec;1.000000;0.000000;[0, 255];4
+176;3;275;U16;;NTU Mask Address Fourth octec;ntu_mask_address_fourth_octec;1.000000;0.000000;[0, 255];4
+177;3;276;U16;;Modbus TCP Port;modbus_tcp_port;1.000000;0.000000;'-;4
+178;3;512;U16;;Porcentage;porcentage;1.000000;0.000000;[0-100]% = %Pnom;4
+179;3;513;U16;;Curtailment enable or disable option;curtailment_enable_or_disable_option;1.000000;0.000000;[0-1] DISABLE / ENABLE;4
+180;3;514;U16;;Power Output increase Ramp up;power_output_increase_ramp_up;1.000000;0.000000;[0-1000] = 6*Pref/Pnom;4
+181;3;515;U16;;Power Output decrease Ramp up;power_output_decrease_ramp_up;1.000000;0.000000;[0-1000] = 6*Pref/Pnom;4
+182;3;516;U16;;Statcom Mode;statcom_mode;1.000000;0.000000;[0-1] DISABLE / ENABLE;4
+183;3;517;I16;;Reactive power referece;reactive_power_referece;1.000000;0.000000;[-1000,1000]  Snom *Qref/ 1000;4
+184;3;518;I16;;Not used;not_used_13;1.000000;0.000000;'-;4

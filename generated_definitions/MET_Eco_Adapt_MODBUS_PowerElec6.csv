@@ -1,0 +1,222 @@
+ModbusTCP;Meter;ECO ADAPT;POWERELEC 6;;;;;;;
+1;3;0;U16;;Software version;;1.0;0.0;;4
+2;3;1;U16;;Modbus version;;1.0;0.0;;4
+3;3;2;U16;;Adresse MAC_1;;1.0;0.0;;4
+4;3;3;U16;;Adresse MAC_2;;1.0;0.0;;4
+5;3;4;U16;;Adresse MAC_3;;1.0;0.0;;4
+6;3;28;U32;;Index energie active import_1_0;E_IMP;1.0;0.0;;4
+7;3;30;U32;;Index energie active import_1_1;;1.0;0.0;;4
+8;3;32;U32;;Index energie active import_1_2;;1.0;0.0;;4
+9;3;34;U32;;Index energie active import_2_3;;1.0;0.0;;4
+10;3;36;U32;;Index energie active import_2_4;;1.0;0.0;;4
+11;3;38;U32;;Index energie active import_2_5;;1.0;0.0;;4
+12;3;40;U32;;Index energie active import_3_6;;1.0;0.0;;4
+13;3;42;U32;;Index energie active import_3_7;;1.0;0.0;;4
+14;3;44;U32;;Index energie active import_3_8;;1.0;0.0;;4
+15;3;46;U32;;Index energie active import_4_9;;1.0;0.0;;4
+16;3;48;U32;;Index energie active import_4_10;;1.0;0.0;;4
+17;3;50;U32;;Index energie active import_4_11;;1.0;0.0;;4
+18;3;52;U32;;Index energie active import_5_12;;1.0;0.0;;4
+19;3;54;U32;;Index energie active import_5_13;;1.0;0.0;;4
+20;3;56;U32;;Index energie active import_5_14;;1.0;0.0;;4
+21;3;58;U32;;Index energie active import_6_15;;1.0;0.0;;4
+22;3;60;U32;;Index energie active import_6_16;;1.0;0.0;;4
+23;3;62;U32;;Index energie active import_6_17;;1.0;0.0;;4
+24;3;64;U32;;Index energie reactive import_1_0;;1.0;0.0;;4
+25;3;66;U32;;Index energie reactive import_1_1;;1.0;0.0;;4
+26;3;68;U32;;Index energie reactive import_1_2;;1.0;0.0;;4
+27;3;70;U32;;Index energie reactive import_2_3;;1.0;0.0;;4
+28;3;72;U32;;Index energie reactive import_2_4;;1.0;0.0;;4
+29;3;74;U32;;Index energie reactive import_2_5;;1.0;0.0;;4
+30;3;76;U32;;Index energie reactive import_3_6;;1.0;0.0;;4
+31;3;78;U32;;Index energie reactive import_3_7;;1.0;0.0;;4
+32;3;80;U32;;Index energie reactive import_3_8;;1.0;0.0;;4
+33;3;82;U32;;Index energie reactive import_4_9;;1.0;0.0;;4
+34;3;84;U32;;Index energie reactive import_4_10;;1.0;0.0;;4
+35;3;86;U32;;Index energie reactive import_4_11;;1.0;0.0;;4
+36;3;88;U32;;Index energie reactive import_5_12;;1.0;0.0;;4
+37;3;90;U32;;Index energie reactive import_5_13;;1.0;0.0;;4
+38;3;92;U32;;Index energie reactive import_5_14;;1.0;0.0;;4
+39;3;94;U32;;Index energie reactive import_6_15;;1.0;0.0;;4
+40;3;96;U32;;Index energie reactive import_6_16;;1.0;0.0;;4
+41;3;98;U32;;Index energie reactive import_6_17;;1.0;0.0;;4
+42;3;100;U32;;Index energie active export_1_0;E_EXP;1.0;0.0;;4
+43;3;102;U32;;Index energie active export_1_1;;1.0;0.0;;4
+44;3;104;U32;;Index energie active export_1_2;;1.0;0.0;;4
+45;3;106;U32;;Index energie active export_2_3;;1.0;0.0;;4
+46;3;108;U32;;Index energie active export_2_4;;1.0;0.0;;4
+47;3;110;U32;;Index energie active export_2_5;;1.0;0.0;;4
+48;3;112;U32;;Index energie active export_3_6;;1.0;0.0;;4
+49;3;114;U32;;Index energie active export_3_7;;1.0;0.0;;4
+50;3;116;U32;;Index energie active export_3_8;;1.0;0.0;;4
+51;3;118;U32;;Index energie active export_4_9;;1.0;0.0;;4
+52;3;120;U32;;Index energie active export_4_10;;1.0;0.0;;4
+53;3;122;U32;;Index energie active export_4_11;;1.0;0.0;;4
+54;3;124;U32;;Index energie active export_5_12;;1.0;0.0;;4
+55;3;126;U32;;Index energie active export_5_13;;1.0;0.0;;4
+56;3;128;U32;;Index energie active export_5_14;;1.0;0.0;;4
+57;3;130;U32;;Index energie active export_6_15;;1.0;0.0;;4
+58;3;132;U32;;Index energie active export_6_16;;1.0;0.0;;4
+59;3;134;U32;;Index energie active export_6_17;;1.0;0.0;;4
+60;3;136;U32;;Index energie reactive export_1_0;;1.0;0.0;;4
+61;3;138;U32;;Index energie reactive export_1_1;;1.0;0.0;;4
+62;3;140;U32;;Index energie reactive export_1_2;;1.0;0.0;;4
+63;3;142;U32;;Index energie reactive export_2_3;;1.0;0.0;;4
+64;3;144;U32;;Index energie reactive export_2_4;;1.0;0.0;;4
+65;3;146;U32;;Index energie reactive export_2_5;;1.0;0.0;;4
+66;3;148;U32;;Index energie reactive export_3_6;;1.0;0.0;;4
+67;3;150;U32;;Index energie reactive export_3_7;;1.0;0.0;;4
+68;3;152;U32;;Index energie reactive export_3_8;;1.0;0.0;;4
+69;3;154;U32;;Index energie reactive export_4_9;;1.0;0.0;;4
+70;3;156;U32;;Index energie reactive export_4_10;;1.0;0.0;;4
+71;3;158;U32;;Index energie reactive export_4_11;;1.0;0.0;;4
+72;3;160;U32;;Index energie reactive export_5_12;;1.0;0.0;;4
+73;3;162;U32;;Index energie reactive export_5_13;;1.0;0.0;;4
+74;3;164;U32;;Index energie reactive export_5_14;;1.0;0.0;;4
+75;3;166;U32;;Index energie reactive export_6_15;;1.0;0.0;;4
+76;3;168;U32;;Index energie reactive export_6_16;;1.0;0.0;;4
+77;3;170;U32;;Index energie reactive export_6_17;;1.0;0.0;;4
+78;3;172;I32;;Power active_1_0;P_AC_1;1.0;0.0;;4
+79;3;174;I32;;Power active_1_1;P_AC_2;1.0;0.0;;4
+80;3;176;I32;;Power active_1_2;P_AC_3;1.0;0.0;;4
+81;3;178;I32;;Power active_2_3;;1.0;0.0;;4
+82;3;180;I32;;Power active_2_4;;1.0;0.0;;4
+83;3;182;I32;;Power active_2_5;;1.0;0.0;;4
+84;3;184;I32;;Power active_3_6;;1.0;0.0;;4
+85;3;186;I32;;Power active_3_7;;1.0;0.0;;4
+86;3;188;I32;;Power active_3_8;;1.0;0.0;;4
+87;3;190;I32;;Power active_4_9;;1.0;0.0;;4
+88;3;192;I32;;Power active_4_10;;1.0;0.0;;4
+89;3;194;I32;;Power active_4_11;;1.0;0.0;;4
+90;3;196;I32;;Power active_5_12;;1.0;0.0;;4
+91;3;198;I32;;Power active_5_13;;1.0;0.0;;4
+92;3;200;I32;;Power active_5_14;;1.0;0.0;;4
+93;3;202;I32;;Power active_6_15;;1.0;0.0;;4
+94;3;204;I32;;Power active_6_16;;1.0;0.0;;4
+95;3;206;I32;;Power active_6_17;;1.0;0.0;;4
+96;3;208;I32;;Power reactive_1_0;;1.0;0.0;;4
+97;3;210;I32;;Power reactive_1_1;;1.0;0.0;;4
+98;3;212;I32;;Power reactive_1_2;;1.0;0.0;;4
+99;3;214;I32;;Power reactive_2_3;;1.0;0.0;;4
+100;3;216;I32;;Power reactive_2_4;;1.0;0.0;;4
+101;3;218;I32;;Power reactive_2_5;;1.0;0.0;;4
+102;3;220;I32;;Power reactive_3_6;;1.0;0.0;;4
+103;3;222;I32;;Power reactive_3_7;;1.0;0.0;;4
+104;3;224;I32;;Power reactive_3_8;;1.0;0.0;;4
+105;3;226;I32;;Power reactive_4_9;;1.0;0.0;;4
+106;3;228;I32;;Power reactive_4_10;;1.0;0.0;;4
+107;3;230;I32;;Power reactive_4_11;;1.0;0.0;;4
+108;3;232;I32;;Power reactive_5_12;;1.0;0.0;;4
+109;3;234;I32;;Power reactive_5_13;;1.0;0.0;;4
+110;3;236;I32;;Power reactive_5_14;;1.0;0.0;;4
+111;3;238;I32;;Power reactive_6_15;;1.0;0.0;;4
+112;3;240;I32;;Power reactive_6_16;;1.0;0.0;;4
+113;3;242;I32;;Power reactive_6_17;;1.0;0.0;;4
+114;3;244;I32;;Power factor_1_0;PF;1.0;0.0;;4
+115;3;246;I32;;Power factor_1_1;;1.0;0.0;;4
+116;3;248;I32;;Power factor_1_2;;1.0;0.0;;4
+117;3;250;I32;;Power factor_2_3;;1.0;0.0;;4
+118;3;252;I32;;Power factor_2_4;;1.0;0.0;;4
+119;3;254;I32;;Power factor_2_5;;1.0;0.0;;4
+120;3;256;I32;;Power factor_3_6;;1.0;0.0;;4
+121;3;258;I32;;Power factor_3_7;;1.0;0.0;;4
+122;3;260;I32;;Power factor_3_8;;1.0;0.0;;4
+123;3;262;I32;;Power factor_4_9;;1.0;0.0;;4
+124;3;264;I32;;Power factor_4_10;;1.0;0.0;;4
+125;3;266;I32;;Power factor_4_11;;1.0;0.0;;4
+126;3;268;I32;;Power factor_5_12;;1.0;0.0;;4
+127;3;270;I32;;Power factor_5_13;;1.0;0.0;;4
+128;3;272;I32;;Power factor_5_14;;1.0;0.0;;4
+129;3;274;I32;;Power factor_6_15;;1.0;0.0;;4
+130;3;276;I32;;Power factor_6_16;;1.0;0.0;;4
+131;3;278;I32;;Power factor_6_17;;1.0;0.0;;4
+132;3;280;U32;;RMS current_1_0;;1.0;0.0;;4
+133;3;282;U32;;RMS current_1_1;;1.0;0.0;;4
+134;3;284;U32;;RMS current_1_2;;1.0;0.0;;4
+135;3;286;U32;;RMS current_2_3;;1.0;0.0;;4
+136;3;288;U32;;RMS current_2_4;;1.0;0.0;;4
+137;3;290;U32;;RMS current_2_5;;1.0;0.0;;4
+138;3;292;U32;;RMS current_3_6;;1.0;0.0;;4
+139;3;294;U32;;RMS current_3_7;;1.0;0.0;;4
+140;3;296;U32;;RMS current_3_8;;1.0;0.0;;4
+141;3;298;U32;;RMS current_4_9;;1.0;0.0;;4
+142;3;300;U32;;RMS current_4_10;;1.0;0.0;;4
+143;3;302;U32;;RMS current_4_11;;1.0;0.0;;4
+144;3;304;U32;;RMS current_5_12;;1.0;0.0;;4
+145;3;306;U32;;RMS current_5_13;;1.0;0.0;;4
+146;3;308;U32;;RMS current_5_14;;1.0;0.0;;4
+147;3;310;U32;;RMS current_6_15;;1.0;0.0;;4
+148;3;312;U32;;RMS current_6_16;;1.0;0.0;;4
+149;3;314;U32;;RMS current_6_17;;1.0;0.0;;4
+150;3;316;U32;;RMS current average_1_0;;1.0;0.0;;4
+151;3;318;U32;;RMS current average_1_1;;1.0;0.0;;4
+152;3;320;U32;;RMS current average_1_2;;1.0;0.0;;4
+153;3;322;U32;;RMS current average_2_3;;1.0;0.0;;4
+154;3;324;U32;;RMS current average_2_4;;1.0;0.0;;4
+155;3;326;U32;;RMS current average_2_5;;1.0;0.0;;4
+156;3;328;U32;;RMS current average_3_6;;1.0;0.0;;4
+157;3;330;U32;;RMS current average_3_7;;1.0;0.0;;4
+158;3;332;U32;;RMS current average_3_8;;1.0;0.0;;4
+159;3;334;U32;;RMS current average_4_9;;1.0;0.0;;4
+160;3;336;U32;;RMS current average_4_10;;1.0;0.0;;4
+161;3;338;U32;;RMS current average_4_11;;1.0;0.0;;4
+162;3;340;U32;;RMS current average_5_12;;1.0;0.0;;4
+163;3;342;U32;;RMS current average_5_13;;1.0;0.0;;4
+164;3;344;U32;;RMS current average_5_14;;1.0;0.0;;4
+165;3;346;U32;;RMS current average_6_15;;1.0;0.0;;4
+166;3;348;U32;;RMS current average_6_16;;1.0;0.0;;4
+167;3;350;U32;;RMS current average_6_17;;1.0;0.0;;4
+168;3;352;U32;;RMS voltage_1_0;;1.0;0.0;;4
+169;3;354;U32;;RMS voltage_1_1;;1.0;0.0;;4
+170;3;356;U32;;RMS voltage_1_2;;1.0;0.0;;4
+171;3;358;U32;;RMS voltage_2_3;;1.0;0.0;;4
+172;3;360;U32;;RMS voltage_2_4;;1.0;0.0;;4
+173;3;362;U32;;RMS voltage_2_5;;1.0;0.0;;4
+174;3;364;U32;;RMS voltage_3_6;;1.0;0.0;;4
+175;3;366;U32;;RMS voltage_3_7;;1.0;0.0;;4
+176;3;368;U32;;RMS voltage_3_8;;1.0;0.0;;4
+177;3;370;U32;;RMS voltage_4_9;;1.0;0.0;;4
+178;3;372;U32;;RMS voltage_4_10;;1.0;0.0;;4
+179;3;374;U32;;RMS voltage_4_11;;1.0;0.0;;4
+180;3;376;U32;;RMS voltage_5_12;;1.0;0.0;;4
+181;3;378;U32;;RMS voltage_5_13;;1.0;0.0;;4
+182;3;380;U32;;RMS voltage_5_14;;1.0;0.0;;4
+183;3;382;U32;;RMS voltage_6_15;;1.0;0.0;;4
+184;3;384;U32;;RMS voltage_6_16;;1.0;0.0;;4
+185;3;386;U32;;RMS voltage_6_17;;1.0;0.0;;4
+186;3;388;U32;;RMS voltage average_1_0;;1.0;0.0;;4
+187;3;390;U32;;RMS voltage average_1_1;;1.0;0.0;;4
+188;3;392;U32;;RMS voltage average_1_2;;1.0;0.0;;4
+189;3;394;U32;;RMS voltage average_2_3;;1.0;0.0;;4
+190;3;396;U32;;RMS voltage average_2_4;;1.0;0.0;;4
+191;3;398;U32;;RMS voltage average_2_5;;1.0;0.0;;4
+192;3;400;U32;;RMS voltage average_3_6;;1.0;0.0;;4
+193;3;402;U32;;RMS voltage average_3_7;;1.0;0.0;;4
+194;3;404;U32;;RMS voltage average_3_8;;1.0;0.0;;4
+195;3;406;U32;;RMS voltage average_4_9;;1.0;0.0;;4
+196;3;408;U32;;RMS voltage average_4_10;;1.0;0.0;;4
+197;3;410;U32;;RMS voltage average_4_11;;1.0;0.0;;4
+198;3;412;U32;;RMS voltage average_5_12;;1.0;0.0;;4
+199;3;414;U32;;RMS voltage average_5_13;;1.0;0.0;;4
+200;3;416;U32;;RMS voltage average_5_14;;1.0;0.0;;4
+201;3;418;U32;;RMS voltage average_6_15;;1.0;0.0;;4
+202;3;420;U32;;RMS voltage average_6_16;;1.0;0.0;;4
+203;3;422;U32;;RMS voltage average_6_17;;1.0;0.0;;4
+204;3;424;U32;;Frequency Line_1_0;FREQ;1.0;0.0;;4
+205;3;426;U32;;Frequency Line_1_1;;1.0;0.0;;4
+206;3;428;U32;;Frequency Line_1_2;;1.0;0.0;;4
+207;3;430;U32;;Frequency Line_2_3;;1.0;0.0;;4
+208;3;432;U32;;Frequency Line_2_4;;1.0;0.0;;4
+209;3;434;U32;;Frequency Line_2_5;;1.0;0.0;;4
+210;3;436;U32;;Frequency Line_3_6;;1.0;0.0;;4
+211;3;438;U32;;Frequency Line_3_7;;1.0;0.0;;4
+212;3;440;U32;;Frequency Line_3_8;;1.0;0.0;;4
+213;3;442;U32;;Frequency Line_4_9;;1.0;0.0;;4
+214;3;444;U32;;Frequency Line_4_10;;1.0;0.0;;4
+215;3;446;U32;;Frequency Line_4_11;;1.0;0.0;;4
+216;3;448;U32;;Frequency Line_5_12;;1.0;0.0;;4
+217;3;450;U32;;Frequency Line_5_13;;1.0;0.0;;4
+218;3;452;U32;;Frequency Line_5_14;;1.0;0.0;;4
+219;3;454;U32;;Frequency Line_6_15;;1.0;0.0;;4
+220;3;456;U32;;Frequency Line_6_16;;1.0;0.0;;4
+221;3;458;U32;;Frequency Line_6_17;;1.0;0.0;;4

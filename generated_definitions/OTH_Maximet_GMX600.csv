@@ -1,0 +1,12 @@
+modbusRTU;Other;Maximet;GMX600;;;;;;;
+1;3;0;F32;;Pressure;PRESS;1.000000;0.000000;mbar;4
+2;3;2;F32;;Relative humidity;RH;1.000000;0.000000;'%;4
+3;3;4;F32;;Temperature;TEMP;1.000000;0.000000;°C;4
+4;3;6;F32;;Wind Direction;DIR;1.000000;0.000000;°;4
+5;3;8;F32;;Wind Speed;SPEED;1.000000;0.000000;mps;4
+6;3;10;F32;;Precipitation Total;PRECIPT;1.000000;0.000000;mm;4
+7;3;12;F32;;Precipitation intensity;PRECIPI;1.000000;0.000000;mm/h;4
+8;3;14;F32;;Xtilt;XTILT;1.000000;0.000000;°;4
+9;3;16;F32;;Ytilt;YTILT;1.000000;0.000000;°;4
+10;3;18;F32;;Compass_heading;COMPASSH;1.000000;0.000000;°;4
+11;3;20;F32;;System Status;STATUS;1.000000;0.000000;;4

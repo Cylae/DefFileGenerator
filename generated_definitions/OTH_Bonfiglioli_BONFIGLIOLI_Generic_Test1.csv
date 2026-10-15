@@ -1,0 +1,33 @@
+modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic_Test1;;;;;;;
+1;3;3841;I16;;Active Power;P_AC;1.000000;0.000000;kW;4
+2;3;3842;I16;;DC-Link Voltage;dclink_voltage;1.000000;0.000000;V;4
+3;3;3843;I16;;Heat Sink Temperature;heat_sink_temperature;1.000000;0.000000;°C;4
+4;3;3844;I16;;Inside Temperature;inside_temperature;1.000000;0.000000;°C;4
+5;3;3845;U16;;Current Error;current_error;1.000000;0.000000;;4
+6;3;3846;I16;;Power supply current;power_supply_current;1.000000;0.000000;A;4
+7;3;3847;I16;;Power supply voltage;power_supply_voltage;1.000000;0.000000;V;4
+8;3;3848;I16;;DC Power;dc_power;1.000000;0.000000;kW;4
+9;3;3849;I16;;Apparent Power;apparent_power;1.000000;0.000000;kVA;4
+10;3;3850;U16;;Solar-Status;solarstatus;1.000000;0.000000;;4
+11;3;3851;I16;;Frequency;FREQ;0.010000;0.000000;Hz;4
+12;3;3852;I16;;Digital Inputs;digital_inputs;1.000000;0.000000;;4
+13;3;3853;I16;;DC Current;dc_current;1.000000;0.000000;A;4
+14;3;3854;I16;;Active Energy, Positive;active_energy_positive;1.000000;0.000000;MWh;4
+15;3;3855;I16;;Apparent Power Phase a;apparent_power_phase_a;1.000000;0.000000;kVA;4
+16;3;3856;I16;;Apparent Power Phase b;apparent_power_phase_b;1.000000;0.000000;kVA;4
+17;3;3857;I16;;Apparent Power Phase c;apparent_power_phase_c;1.000000;0.000000;kVA;4
+18;3;3858;I16;;Active Power Phase a;active_power_phase_a;1.000000;0.000000;kW;4
+19;3;3859;I16;;Active Power Phase b;active_power_phase_b;1.000000;0.000000;kW;4
+20;3;3860;I16;;Active Power Phase c;active_power_phase_c;1.000000;0.000000;kW;4
+21;3;3861;I16;;Current Phase a;current_phase_a;1.000000;0.000000;A;4
+22;3;3862;I16;;Current Phase b;current_phase_b;1.000000;0.000000;A;4
+23;3;3863;I16;;Current Phase c;current_phase_c;1.000000;0.000000;A;4
+24;3;3864;I16;;Power Supply Voltage Phase a;power_supply_voltage_phase_a;1.000000;0.000000;V;4
+25;3;3865;I16;;Power Supply Voltage Phase b;power_supply_voltage_phase_b;1.000000;0.000000;V;4
+26;3;3866;I16;;Power Supply Voltage Phase c;power_supply_voltage_phase_c;1.000000;0.000000;V;4
+27;3;3867;I16;;Reactive power Phase a;reactive_power_phase_a;1.000000;0.000000;kvar;4
+28;3;3868;I16;;Reactive power Phase b;reactive_power_phase_b;1.000000;0.000000;kvar;4
+29;3;3869;I16;;Reactive power Phase c;reactive_power_phase_c;1.000000;0.000000;kvar;4
+30;3;3870;I16;;Reactive Power;reactive_power;1.000000;0.000000;kVA;4
+31;3;3871;I16;;Reference value reactive power;reference_value_reactive_power;1.000000;0.000000;kVA;4
+32;3;3872;I16;;DC-Link Voltage_1;dclink_voltage_1;1.000000;0.000000;V;4

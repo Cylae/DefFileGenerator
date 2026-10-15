@@ -1,0 +1,222 @@
+modbusRTU;Inverter;SAJ;R6;;;;;;;
+1;3;36608;U16;;Device Type;MODEL;1;0;;1
+2;3;36609;U16;;Subclass Machine Power;;1;0;;1
+3;3;36610;U16;;Comms Protocol Version;;0.001;0;;1
+4;3;36611;STRING;;Serial Number;SERIAL;1;0;;1
+5;3;36621;STRING;;Product Code;;1;0;;1
+6;3;36631;U16;;Display Software Version;;0.001;0;;1
+7;3;36632;U16;;Master Ctrl Software Version;;0.001;0;;1
+8;3;36633;U16;;Slave Ctrl Software Version;;0.001;0;;1
+9;3;16384;STRING;;Inverter Current Time;;1;0;;1
+10;3;16388;U16;;Inverter Operating Mode;;1;0;;1
+11;3;16389;U32;;Display Panel / Slave Error Message (HFaultMSG);;1;0;;1
+12;3;16391;U32;;Main Controller Error Message (MFaultMSG);;1;0;;1
+13;3;16393;U32;;Main Controller Error Message 2 (MFaultMSG2);;1;0;;1
+14;3;16395;U32;;BMS Error Message (BMSFaultMSG);;1;0;;1
+15;3;16399;U16;;Inverter Error Warning Count;;1;0;;1
+16;3;16400;I16;;Heatsink Temperature;TEMP_INT;0.1;0;C;1
+17;3;16401;I16;;Ambient Temperature;TEMP_AMB;0.1;0;C;1
+18;3;16402;I16;;Ground Leakage Current (GFCI);;1;0;mA;1
+19;3;16403;U16;;PV1+ ISO;;1;0;kOhm;1
+20;3;16404;U16;;PV2+ ISO;;1;0;kOhm;1
+21;3;16405;U16;;PV3+ ISO;;1;0;kOhm;1
+22;3;16406;U16;;PV ISO;;1;0;kOhm;1
+23;3;16407;U16;;DRM Hardware Status Bit;;1;0;;1
+24;3;16408;U16;;DRM Software Status Bit;;1;0;;1
+25;3;16409;U16;;Grid-connected Countdown;;1;0;s;1
+26;3;16410;U16;;Fault Record Area Serial Number;;1;0;;1
+27;3;16411;U16;;Setting Parameters Area Serial Number;;1;0;;1
+28;3;16412;U16;;FCAS Trigger Flag;;1;0;;1
+29;3;16418;I16;;Inverter Setting Application Mode;;1;0;;1
+30;3;16419;I16;;Inverter Set Discharge Power;;1;0;W;1
+31;3;16420;I16;;Inverter Set Charge Power;;1;0;W;1
+32;3;16421;I16;;Inverter Set Battery Discharge Current;;0.1;0;A;1
+33;3;16422;I16;;Inverter Set Battery Charge Current;;0.1;0;A;1
+34;3;16423;U16;;Battery Operating Status Display;;1;0;;1
+35;3;16424;I16;;Battery Protocol Set;;1;0;;1
+36;3;16425;I16;;Set Battery SOC_H Up Limit;SOC;1;0;%;1
+37;3;16426;I16;;Set Battery SOC_L Down Limit;;1;0;%;1
+38;3;16427;I16;;Set Battery DOD;;1;0;%;1
+39;3;16428;I16;;Set Battery Reserved SOC Value;;1;0;%;1
+40;3;16429;I16;;BMS Set Charging Voltage;;0.1;0;V;1
+41;3;16430;I16;;BMS Set Discharging Power;;1;0;A;1
+42;3;16431;I16;;BMS Set Charging Power;;1;0;A;1
+43;3;16432;I16;;Set Meter Mode;;1;0;;1
+44;3;16433;U16;;R Phase Grid Voltage;;0.1;0;V;1
+45;3;16434;I16;;R Phase Grid Current;;0.01;0;A;1
+46;3;16435;U16;;R Phase Grid Frequency;FREQ;0.01;0;Hz;1
+47;3;16436;I16;;R Phase Grid DC Component;;1;0;mA;1
+48;3;16437;I16;;R Phase Grid Active Power;P_AC;1;0;W;1
+49;3;16438;U16;;R Phase Grid Apparent Power;S_AC;1;0;VA;1
+50;3;16439;I16;;R Phase Grid Power Factor;PF;0.001;0;;1
+51;3;16440;U16;;S Phase Grid Voltage;;0.1;0;V;1
+52;3;16441;I16;;S Phase Grid Current;;0.01;0;A;1
+53;3;16442;U16;;S Phase Grid Frequency;;0.01;0;Hz;1
+54;3;16443;I16;;S Phase Grid DC Component;;1;0;mA;1
+55;3;16444;I16;;S Phase Grid Active Power;;1;0;W;1
+56;3;16445;U16;;S Phase Grid Apparent Power;;1;0;VA;1
+57;3;16446;I16;;S Phase Grid Power Factor;;0.001;0;;1
+58;3;16447;U16;;T Phase Grid Voltage;;0.1;0;V;1
+59;3;16448;I16;;T Phase Grid Current;;0.01;0;A;1
+60;3;16449;U16;;T Phase Grid Frequency;;0.01;0;Hz;1
+61;3;16450;I16;;T Phase Grid DC Component;;1;0;mA;1
+62;3;16451;I16;;T Phase Grid Active Power;;1;0;W;1
+63;3;16452;U16;;T Phase Grid Apparent Power;;1;0;VA;1
+64;3;16453;I16;;T Phase Grid Power Factor;;0.001;0;;1
+65;3;16454;U16;;R Phase Inverter Voltage;;0.1;0;V;1
+66;3;16455;I16;;R Phase Inverter Current;;0.01;0;A;1
+67;3;16456;U16;;R Phase Inverter Frequency;;0.01;0;Hz;1
+68;3;16457;I16;;R Phase Inverter Active Power;;1;0;W;1
+69;3;16458;U16;;R Phase Inverter Apparent Power;;1;0;VA;1
+70;3;16459;U16;;S Phase Inverter Voltage;;0.1;0;V;1
+71;3;16460;I16;;S Phase Inverter Current;;0.01;0;A;1
+72;3;16461;U16;;S Phase Inverter Frequency;;0.01;0;Hz;1
+73;3;16462;I16;;S Phase Inverter Active Power;;1;0;W;1
+74;3;16463;U16;;S Phase Inverter Apparent Power;;1;0;VA;1
+75;3;16464;U16;;T Phase Inverter Voltage;;0.1;0;V;1
+76;3;16465;I16;;T Phase Inverter Current;;0.01;0;A;1
+77;3;16466;U16;;T Phase Inverter Frequency;;0.01;0;Hz;1
+78;3;16467;I16;;T Phase Inverter Active Power;;1;0;W;1
+79;3;16468;U16;;T Phase Inverter Apparent Power;;1;0;VA;1
+80;3;16469;U16;;R Phase Output Voltage;;0.1;0;V;1
+81;3;16470;U16;;R Phase Output Current;;0.01;0;A;1
+82;3;16471;U16;;R Phase Output Frequency;;0.01;0;Hz;1
+83;3;16472;I16;;R Phase Output Voltage DC Component;U_DC;1;0;mV;1
+84;3;16473;U16;;R Phase Output Active Power;;1;0;W;1
+85;3;16474;U16;;R Phase Output Apparent Power;;1;0;VA;1
+86;3;16475;U16;;S Phase Output Voltage;;0.1;0;V;1
+87;3;16476;U16;;S Phase Output Current;;0.01;0;A;1
+88;3;16477;U16;;S Phase Output Frequency;;0.01;0;Hz;1
+89;3;16478;I16;;S Phase Output Voltage DC Component;;1;0;mV;1
+90;3;16479;U16;;S Phase Output Active Power;;1;0;W;1
+91;3;16480;U16;;S Phase Output Apparent Power;;1;0;VA;1
+92;3;16481;U16;;T Phase Output Voltage;;0.1;0;V;1
+93;3;16482;U16;;T Phase Output Current;;0.01;0;A;1
+94;3;16483;U16;;T Phase Output Frequency;;0.01;0;Hz;1
+95;3;16484;I16;;T Phase Output Voltage DC Component;;1;0;mV;1
+96;3;16485;U16;;T Phase Output Active Power;;1;0;W;1
+97;3;16486;U16;;T Phase Output Apparent Power;;1;0;VA;1
+98;3;16487;U16;;Master BUS Voltage;;0.1;0;V;1
+99;3;16488;U16;;Slave BUS Voltage;;0.1;0;V;1
+100;3;16489;U16;;Battery Voltage;;0.1;0;V;1
+101;3;16490;I16;;Battery Current;;0.01;0;A;1
+102;3;16491;I16;;Battery Controller 1 Current;;0.01;0;A;1
+103;3;16492;I16;;Battery Controller 2 Current;;0.01;0;A;1
+104;3;16493;I16;;Battery Power;;1;0;W;1
+105;3;16494;I16;;Battery Temperature;TEMP;0.1;0;C;1
+106;3;16495;U16;;Battery State of Charge;;0.01;0;%;1
+107;3;16497;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;1
+108;3;16498;U16;;PV1 Total Current;I_AC;0.01;0;A;1
+109;3;16499;U16;;PV1 Power;;1;0;W;1
+110;3;16500;U16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;1
+111;3;16501;U16;;PV2 Total Current;;0.01;0;A;1
+112;3;16502;U16;;PV2 Power;;1;0;W;1
+113;3;16503;U16;;PV3 Voltage;U_DC_STRING_3;0.1;0;V;1
+114;3;16504;U16;;PV3 Total Current;;0.01;0;A;1
+115;3;16505;U16;;PV3 Power;;1;0;W;1
+116;3;16506;U16;;PV4 Voltage;U_DC_STRING_4;0.1;0;V;1
+117;3;16507;U16;;PV4 Total Current;;0.01;0;A;1
+118;3;16508;U16;;PV4 Power;;1;0;W;1
+119;3;16509;U16;;PV1 String Current 1;I_DC_STRING_1;0.01;0;A;1
+120;3;16510;U16;;PV1 String Current 2;;0.01;0;A;1
+121;3;16511;U16;;PV1 String Current 3;;0.01;0;A;1
+122;3;16512;U16;;PV1 String Current 4;;0.01;0;A;1
+123;3;16513;U16;;PV2 String Current 1;I_DC_STRING_2;0.01;0;A;1
+124;3;16514;U16;;PV2 String Current 2;;0.01;0;A;1
+125;3;16515;U16;;PV2 String Current 3;;0.01;0;A;1
+126;3;16516;U16;;PV2 String Current 4;;0.01;0;A;1
+127;3;16517;U16;;PV3 String Current 1;I_DC_STRING_3;0.01;0;A;1
+128;3;16518;U16;;PV3 String Current 2;;0.01;0;A;1
+129;3;16519;U16;;PV3 String Current 3;;0.01;0;A;1
+130;3;16520;U16;;PV3 String Current 4;;0.01;0;A;1
+131;3;16521;U16;;PV4 String Current 1;I_DC_STRING_4;0.01;0;A;1
+132;3;16522;U16;;PV4 String Current 2;;0.01;0;A;1
+133;3;16523;U16;;PV4 String Current 3;;0.01;0;A;1
+134;3;16524;U16;;PV4 String Current 4;;0.01;0;A;1
+135;3;16525;U16;;R Phase Grid-Side Voltage;;0.1;0;V;1
+136;3;16526;U16;;R Phase Grid-Side Current;;0.01;0;A;1
+137;3;16527;U16;;R Phase Grid-Side Frequency;;0.01;0;Hz;1
+138;3;16528;U16;;R Phase Grid-Side Active Power;;1;0;W;1
+139;3;16529;U16;;S Phase Grid-Side Voltage;;0.01;0;V;1
+140;3;16530;U16;;S Phase Grid-Side Active Power;;1;0;W;1
+141;3;16531;U16;;T Phase Grid-Side Voltage;;0.01;0;V;1
+142;3;16532;U16;;T Phase Grid-Side Active Power;;1;0;W;1
+143;3;16533;U16;;PV Energy Flow Direction;;1;0;;1
+144;3;16534;I16;;Battery Energy Flow Direction;;1;0;;1
+145;3;16535;I16;;Grid Energy Flow Direction;;1;0;;1
+146;3;16536;U16;;Energy Flow Direction To Load Output;;1;0;;1
+147;3;16537;I16;;From PV Power Flowing To Load;;1;0;W;1
+148;3;16538;I16;;Power Flowing From Grid To Load;;1;0;W;1
+149;3;16539;I16;;Power Flowing From PV To Grid;;1;0;W;1
+150;3;16540;I16;;Power Flowing From Battery To Grid;;1;0;W;1
+151;3;16541;I16;;Power Flowing From Battery To Load;;1;0;W;1
+152;3;16542;I16;;PV Charging Power To Battery;;1;0;W;1
+153;3;16543;I16;;Grid Charging Power To Battery;;1;0;W;1
+154;3;16544;I16;;Total System Load Consumption Power;;1;0;W;1
+155;3;16545;I16;;CT Grid Active Power;;1;0;W;1
+156;3;16546;I16;;CT Grid Apparent Power;;1;0;VA;1
+157;3;16547;I16;;CT PV Active Power;;1;0;W;1
+158;3;16548;I16;;CT PV Apparent Power;;1;0;VA;1
+159;3;16549;I16;;PV Total Power;E_TOT;1;0;W;1
+160;3;16550;I16;;Battery Total Power;;1;0;W;1
+161;3;16551;I16;;Grid Total Active Power;;1;0;W;1
+162;3;16552;I16;;Grid Total Apparent Power;;1;0;VA;1
+163;3;16553;I16;;Inverter Total Active Power;;0.001;0;kW;1
+164;3;16554;I16;;Inverter Total Apparent Power;;1;0;VA;1
+165;3;16555;U16;;Backup Total Load Active Power Rate;;1;0;W;1
+166;3;16556;U16;;Backup Total Load Apparent Power Rate;;1;0;VA;1
+167;3;16557;I16;;Grid Active Power (SysGridPowerWatt);;1;0;W;1
+168;3;16558;U16;;Input AVG Power 5Min Max;;1;0;W;1
+169;3;16559;U16;;Output AVG Power 5Min Max;;1;0;W;1
+170;3;16560;U16;;R Phase Intelligent Load Power;;1;0;W;1
+171;3;16561;U16;;S Phase Intelligent Load Power;;1;0;W;1
+172;3;16562;U16;;T Phase Intelligent Load Power;;1;0;W;1
+173;3;16572;U16;;PV Grid-Connected Daily Generation Time;;0.1;0;h;1
+174;3;16573;U32;;PV Grid-Connected Total Generation Time;;0.1;0;h;1
+175;3;16575;U32;;Daily PV Generation;;0.01;0;kWh;1
+176;3;16577;U32;;Monthly PV Generation;;0.01;0;kWh;1
+177;3;16579;U32;;Yearly PV Generation;;0.01;0;kWh;1
+178;3;16581;U32;;Total PV Generation;;0.01;0;kWh;1
+179;3;16583;U32;;Daily Battery Charging Energy;E_DAY;0.01;0;kWh;1
+180;3;16585;U32;;Monthly Battery Charging Energy;;0.01;0;kWh;1
+181;3;16587;U32;;Yearly Battery Charging Energy;;0.01;0;kWh;1
+182;3;16589;U32;;Total Battery Charging Energy;;0.01;0;kWh;1
+183;3;16591;U32;;Daily Battery Discharge Energy;;0.01;0;kWh;1
+184;3;16593;U32;;Monthly Battery Discharge Energy;;0.01;0;kWh;1
+185;3;16595;U32;;Annual Battery Discharge Energy;;0.01;0;kWh;1
+186;3;16597;U32;;Total Battery Discharge Energy;;0.01;0;kWh;1
+187;3;16599;U32;;Daily Inverter Energy;;0.01;0;kWh;1
+188;3;16601;U32;;Monthly Inverter Energy;;0.01;0;kWh;1
+189;3;16603;U32;;Annual Inverter Energy;;0.01;0;kWh;1
+190;3;16605;U32;;Total Inverter Energy;;0.01;0;kWh;1
+191;3;16607;U32;;Daily Total Load Consumption Energy;;0.01;0;kWh;1
+192;3;16609;U32;;Monthly Total Load Consumption Energy;;0.01;0;kWh;1
+193;3;16611;U32;;Annual Total Load Consumption Energy;;0.01;0;kWh;1
+194;3;16613;U32;;Total Total Load Consumption Energy;;0.01;0;kWh;1
+195;3;16615;U32;;Daily BackUp Load Consumption Energy;;0.01;0;kWh;1
+196;3;16617;U32;;Monthly BackUp Load Consumption Energy;;0.01;0;kWh;1
+197;3;16619;U32;;Annual BackUp Load Consumption Energy;;0.01;0;kWh;1
+198;3;16621;U32;;Total BackUp Load Consumption Energy;;0.01;0;kWh;1
+199;3;16623;U32;;Daily System Sold Energy;;0.01;0;kWh;1
+200;3;16625;U32;;Monthly System Electricity Sold;;0.01;0;kWh;1
+201;3;16627;U32;;Annual System Electricity Sold;;0.01;0;kWh;1
+202;3;16629;U32;;Total System Electricity Sold;;0.01;0;kWh;1
+203;3;16631;U32;;Daily System Electricity Purchased;;0.01;0;kWh;1
+204;3;16633;U32;;Monthly System Electricity Purchased;;0.01;0;kWh;1
+205;3;16635;U32;;Annual System Electricity Purchased;;0.01;0;kWh;1
+206;3;16637;U32;;Total System Electricity Purchased;;0.01;0;kWh;1
+207;3;13320;U16;;Inverter Function Word (FunMask);;1;0;;4
+208;3;13323;U16;;Power Limit Value;CMD_P_AC_SET_ABS;0.1;0;%;4
+209;3;13324;U16;;Inverter Stop Command;;1;0;;4
+210;3;13328;U16;;ISO Limit Value;;1;0;kOhm;4
+211;3;13334;U16;;Reactive Power Compensation Mode;Q_AC;1;0;;4
+212;3;13335;U16;;Reactive Compensation Value;;0.001;0;;4
+213;3;13345;U16;;Inverter Safety Standard Number;;1;0;;4
+214;3;13370;U16;;PV Input Mode;;1;0;;4
+215;3;32788;U16;;RS485 Baud Rate and Slave Address;UNIT_ID;1;0;;2
+216;3;32789;U16;;Clear Historical Faults;;1;0;;2
+217;3;32795;U16;;Clear Generated Energy;;1;0;;2
+218;3;32799;U16;;Real-time Power Limit (ATE);;0.1;0;%;4
+219;3;32800;STRING;;Device Time Set;;1;0;;2
+220;3;32804;U16;;Reactive Power Direction Mode (ATE);;1;0;;2
+221;3;32805;U16;;Power Factor Regulation Value (ATE);;0.001;0;;2

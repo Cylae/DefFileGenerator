@@ -1,0 +1,105 @@
+modbusRTU;Inverter;PowerOne;INV_ABB_PVI50-60;;;;;;;
+1;3;179;U16;;Remote On/Off;CMD_ON;1.000000;0.000000;;1
+2;3;180;U16;;Alarm manual reset;alarm_manual_reset;1.000000;0.000000;;1
+3;3;189;I16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance;mode_permanent_et_dynamique_intervalle_de_temps_pour_la_montee_en_puissance;1.000000;0.000000;s;1
+4;3;190;U16;;Mode dynamique - Tempo - Duree des consignes;mode_dynamique_tempo_duree_des_consignes;1.000000;0.000000;min;1
+5;3;197;U16;;Definition du comportement transitoire;definition_du_comportement_transitoire;1.000000;0.000000;;1
+6;3;199;F32_W;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi);mode_dynamique_gestion_de_la_puissance_reactive_via_un_facteur_de_puissance_fixe_cos_phi;1.000000;0.000000;;1
+7;3;201;F32_W;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi);mode_permanent_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi;1.000000;0.000000;;1
+8;3;204;U16;;Mode permanent - facteur de puissance remis à  1;mode_permanent_facteur_de_puissance_remis_1;1.000000;0.000000;;1
+9;3;209;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en %;mode_dynamique_regulation_de_la_puissance_active_maximale_de_sortie_en;1.000000;0.000000;'%;1
+10;3;211;U16;;Mode permanent - regulation de la puissance active maximale de sortie en %;mode_permanent_regulation_de_la_puissance_active_maximale_de_sortie_en;1.000000;0.000000;'%;1
+11;3;214;U16;;Mode permanent - Reset de la regulation de puissance active;mode_permanent_reset_de_la_regulation_de_puissance_active;1.000000;0.000000;;1
+12;3;219;F32_W;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi) 2;mode_dynamique_gestion_de_la_puissance_reactive_via_un_facteur_de_puissance_fixe_cos_phi_2;1.000000;0.000000;;1
+13;3;221;F32_W;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;mode_permanent_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi_2;1.000000;0.000000;;1
+14;3;224;I16;;Mode dynamique - gestion de la puissance reactive en % de la puissance apparente;mode_dynamique_gestion_de_la_puissance_reactive_en_de_la_puissance_apparente;1.000000;0.000000;'%;1
+15;3;226;I16;;Mode permanent - gestion de la puissance reactive en % de la puissance apparente;mode_permanent_gestion_de_la_puissance_reactive_en_de_la_puissance_apparente;1.000000;0.000000;'%;1
+16;3;299;U16;;Compteur cardiaque;compteur_cardiaque;1.000000;0.000000;;4
+17;3;300;F32_W;;Onduleur - Puissance reactive;onduleur_puissance_reactive;1.000000;0.000000;VAR;4
+18;3;302;F32_W;;Onduleur - Tension du reseau;onduleur_tension_du_reseau;1.000000;0.000000;V;4
+19;3;304;F32_W;;Onduleur - Puissance active injectee;P_AC;1.000000;0.000000;W;4
+20;3;306;F32_W;;Onduleur - Courant;onduleur_courant;1.000000;0.000000;A;4
+21;3;500;U16;;Definition de l'unite des registres (% ou ‰);definition_de_lunite_des_registres_ou;1.000000;0.000000;;1
+22;3;501;U16;;Definir le mode utilise (permanent ou dynamique);definir_le_mode_utilise_permanent_ou_dynamique;1.000000;0.000000;;1
+23;3;502;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance (reactif);mode_permanent_et_dynamique_intervalle_de_temps_pour_la_montee_en_puissance_reactif;1.000000;0.000000;s;1
+24;3;503;U16;;Mode dynamique - Tempo - Duree des consignes 2;mode_dynamique_tempo_duree_des_consignes_2;1.000000;0.000000;min;1
+25;3;504;U16;;Definition du comportement transitoire 2;definition_du_comportement_transitoire_2;1.000000;0.000000;;1
+26;3;505;U16;;Definition de la quantite de puissance reactive à  fournir;definition_de_la_quantite_de_puissance_reactive_fournir;1.000000;0.000000;;1
+27;3;506;I16;;Mode dynamique - gestion de la puissance reactive en %;mode_dynamique_gestion_de_la_puissance_reactive_en;1.000000;0.000000;'%;1
+28;3;507;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en % ou ‰;mode_dynamique_regulation_de_la_puissance_active_maximale_de_sortie_en_ou;1.000000;0.000000;'%;1
+29;3;508;F32_W;;Mode dynamique - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;mode_dynamique_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi_2;1.000000;0.000000;;1
+30;3;510;I16;;Mode permanent - gestion de la puissance reactive en % ou ‰;mode_permanent_gestion_de_la_puissance_reactive_en_ou;1.000000;0.000000;'%;1
+31;3;511;U16;;Mode permanent - regulation de la puissance active maximale de sortie en % ou ‰;mode_permanent_regulation_de_la_puissance_active_maximale_de_sortie_en_ou;1.000000;0.000000;'%;1
+32;3;512;F32_W;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi) 2;mode_permanent_gestion_de_la_puissance_reactive_via_le_facteur_de_puissance_cos_phi_2_1;1.000000;0.000000;;1
+33;3;514;U16;;Reset de la puissance active;reset_de_la_puissance_active;1.000000;0.000000;;1
+34;3;515;U16;;Reset de la puissance reactive;reset_de_la_puissance_reactive;1.000000;0.000000;;1
+35;4;99;U16;;Onduleur - Start register;onduleur_start_register;1.000000;0.000000;;4
+36;4;100;U16;;Onduleur - Map size;onduleur_map_size;1.000000;0.000000;;4
+37;4;101;U16;;Onduleur - Version de la table d'echange;onduleur_version_de_la_table_dechange;1.000000;0.000000;;4
+38;4;102;U16;;Addresse RS485 de l'onduleur;addresse_rs485_de_londuleur;1.000000;0.000000;;4
+39;4;103_12;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+40;4;109_12;STRING;;Part Number;part_number;1.000000;0.000000;;4
+41;4;115;U16;;Onduleur Identifiant;onduleur_identifiant;1.000000;0.000000;;4
+42;4;116;U16;;Onduleur Code pays;onduleur_code_pays;1.000000;0.000000;;4
+43;4;117;U16;;Onduleur Isolation galvanique;onduleur_isolation_galvanique;1.000000;0.000000;;4
+44;4;118;U16;;Onduleur Type;onduleur_type;1.000000;0.000000;;4
+45;4;119;U16;;Onduleur Semaine de production;onduleur_semaine_de_production;1.000000;0.000000;;4
+46;4;121;U16;;Onduleur Annee de production;onduleur_annee_de_production;1.000000;0.000000;;4
+47;4;123;U16;;Onduleur Etats - Etat general;onduleur_etats_etat_general;1.000000;0.000000;;9
+48;4;124;U16;;Onduleur Etats - Etat onduleur;onduleur_etats_etat_onduleur;1.000000;0.000000;;9
+49;4;125;U16;;Onduleur Etats - Etat canal (MPPT) 1;onduleur_etats_etat_canal_mppt_1;1.000000;0.000000;;9
+50;4;126;U16;;Onduleur Etats - Etat canal (MPPT) 2;onduleur_etats_etat_canal_mppt_2;1.000000;0.000000;;9
+51;4;127;U16;;Onduleur Etats - Etat alarmes;onduleur_etats_etat_alarmes;1.000000;0.000000;;9
+52;4;128;U16;;Carte de contrà´le de l'afficheur Etat;carte_de_contrle_de_lafficheur_etat;1.000000;0.000000;;9
+53;4;129;U16;;Carte de communication Etat;carte_de_communication_etat;1.000000;0.000000;;9
+54;4;130;U16;;Carte porte-fusibles Etat;carte_portefusibles_etat;1.000000;0.000000;;9
+55;4;131;F32_W;;Onduleur Energie journalià¨re;E_DAY;1.000000;0.000000;Wh;4
+56;4;133;F32_W;;Onduleur Energie totale;E_TOT;1.000000;0.000000;kWh;4
+57;4;135;F32_W;;Onduleur Energie partielle;onduleur_energie_partielle;1.000000;0.000000;kWh;4
+58;4;137;F32_W;;Onduleur Energie hebdomadaire;onduleur_energie_hebdomadaire;1.000000;0.000000;kWh;4
+59;4;139;F32_W;;Onduleur Energie mensuelle;onduleur_energie_mensuelle;1.000000;0.000000;kWh;4
+60;4;141;F32_W;;Onduleur Energie annuelle;onduleur_energie_annuelle;1.000000;0.000000;kWh;4
+61;4;143;F32_W;;Onduleur Tension du reseau 2;onduleur_tension_du_reseau_2;1.000000;0.000000;V;4
+62;4;145;F32_W;;Onduleur Courant injecte;onduleur_courant_injecte;1.000000;0.000000;A;4
+63;4;147;F32_W;;Onduleur Puissance d'injection;onduleur_puissance_dinjection;1.000000;0.000000;W;4
+64;4;149;F32_W;;Onduleur Frequence du reseau;onduleur_frequence_du_reseau;1.000000;0.000000;Hz;4
+65;4;151;F32_W;;Onduleur Puissance MPPT1;onduleur_puissance_mppt1;1.000000;0.000000;W;4
+66;4;153;F32_W;;Onduleur Tension MPPT1;onduleur_tension_mppt1;1.000000;0.000000;V;4
+67;4;155;F32_W;;Onduleur Courant MPPT1;onduleur_courant_mppt1;1.000000;0.000000;A;4
+68;4;157;F32_W;;Onduleur Puissance MPPT2;onduleur_puissance_mppt2;1.000000;0.000000;W;4
+69;4;159;F32_W;;Onduleur Tension MPPT2;onduleur_tension_mppt2;1.000000;0.000000;V;4
+70;4;161;F32_W;;Onduleur Courant MPPT2;onduleur_courant_mppt2;1.000000;0.000000;A;4
+71;4;163;F32_W;;Onduleur Temperature onduleur;onduleur_temperature_onduleur;1.000000;0.000000;Â°C;4
+72;4;165;F32_W;;Onduleur Temperature booster;onduleur_temperature_booster;1.000000;0.000000;Â°C;4
+73;4;167;F32_W;;Onduleur Resistance d'isolement (Riso);onduleur_resistance_disolement_riso;1.000000;0.000000;MOhm;4
+74;4;169;F32_W;;Onduleur Frequence (eolien uniquement);onduleur_frequence_eolien_uniquement;1.000000;0.000000;Hz;4
+75;4;171;F32_W;;Onduleur Cos(phi);onduleur_cosphi;1.000000;0.000000;;4
+76;4;173;U16;;Onduleur - Presence;onduleur_presence;1.000000;0.000000;;4
+77;4;1049;U16;;Global State;global_state;1.000000;0.000000;;9
+78;4;1050;U16;;Alarm State;alarm_state;1.000000;0.000000;;9
+79;4;1051;U16;;DC/DC Converter State;dcdc_converter_state;1.000000;0.000000;;9
+80;4;1052;U16;;DC/AC Converter State;dcac_converter_state;1.000000;0.000000;;9
+81;4;1053;U16;;Derating State;derating_state;1.000000;0.000000;;9
+82;4;1093;F32_W;;Output Active Power Instantaneous;output_active_power_instantaneous;1.000000;0.000000;W;4
+83;4;1095;F32_W;;Output Active Power Absolute Peak;output_active_power_absolute_peak;1.000000;0.000000;W;4
+84;4;1097;F32_W;;Output Active Power Daily Peak;output_active_power_daily_peak;1.000000;0.000000;W;4
+85;4;1099;F32_W;;Output Active Power Feedback on Curtailment applied;output_active_power_feedback_on_curtailment_applied;1.000000;0.000000;W;4
+86;4;1101;F32_W;;Reactive Power Feedback on Set Point applied;reactive_power_feedback_on_set_point_applied;1.000000;0.000000;VAr;4
+87;4;1103;F32_W;;Power Factor Feedback on Set Point applied;power_factor_feedback_on_set_point_applied;1.000000;0.000000;;4
+88;4;1107;F32_W;;Active Power on DC Input #1;active_power_on_dc_input_1;1.000000;0.000000;W;4
+89;4;1109;F32_W;;Voltage on DC Input #1;voltage_on_dc_input_1;1.000000;0.000000;V;4
+90;4;1111;F32_W;;Current on DC Input #1;current_on_dc_input_1;1.000000;0.000000;A;4
+91;4;1113;F32_W;;Active Power on DC Input #2;active_power_on_dc_input_2;1.000000;0.000000;W;4
+92;4;1115;F32_W;;Voltage on DC Input #2;voltage_on_dc_input_2;1.000000;0.000000;V;4
+93;4;1117;F32_W;;Current on DC Input #2;current_on_dc_input_2;1.000000;0.000000;A;4
+94;4;1119;F32_W;;Internal Temperature (DC Box);internal_temperature_dc_box;1.000000;0.000000;Â°C;4
+95;4;1125;F32_W;;Isolation Resistance;isolation_resistance;1.000000;0.000000;MOhm;4
+96;4;1127;F32_W;;Max Leakage Current;max_leakage_current;1.000000;0.000000;A;4
+97;4;1129;F32_W;;Active Power on DC Input #3;active_power_on_dc_input_3;1.000000;0.000000;W;4
+98;4;1131;F32_W;;Voltage on DC Input #3;voltage_on_dc_input_3;1.000000;0.000000;V;4
+99;4;1133;F32_W;;Current on DC Input #3;current_on_dc_input_3;1.000000;0.000000;A;4
+100;4;3649_2;STRING;;Family product;family_product;1.000000;0.000000;;4
+101;4;3650_2;STRING;;Product model;MODEL;1.000000;0.000000;;4
+102;4;3651_2;STRING;;Major release;major_release;1.000000;0.000000;;4
+103;4;3652_2;STRING;;Minor release;minor_release;1.000000;0.000000;;4
+104;4;3653;U16;;Build version;build_version;1.000000;0.000000;;4

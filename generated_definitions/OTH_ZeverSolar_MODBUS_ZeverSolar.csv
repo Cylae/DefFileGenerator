@@ -1,0 +1,83 @@
+modbusRTU;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
+1;4;0_2;STRING;;Device Type;device_type;1.000000;0.000000;;4
+2;4;1;U32;;E-today;etoday;0.100000;0.000000;kWh;4
+3;4;3;U32;;E-total;etotal;0.100000;0.000000;kWh;4
+4;4;5;U32;;H-total;htotal;1.000000;0.000000;H;4
+5;4;11;U16;;State;state;1.000000;0.000000;;8
+6;4;12;U16;;Error Code;error_code;1.000000;0.000000;;4
+7;4;13;U16;;Connect Time;connect_time;1.000000;0.000000;s;4
+8;4;14;I16;;Temperature;temperature;0.100000;0.000000;°C;4
+9;4;15;U16;;Connected PV Strings;connected_pv_strings;1.000000;0.000000;;4
+10;4;16;U16;;BUS Voltage;bus_voltage;0.100000;0.000000;V;4
+11;4;17;U16;;PV Voltage 1;pv_voltage_1;0.100000;0.000000;V;4
+12;4;18;U16;;PV Current 1;pv_current_1;0.100000;0.000000;A;4
+13;4;19;U16;;PV Voltage 2;pv_voltage_2;0.100000;0.000000;V;4
+14;4;20;U16;;PV Current 2;pv_current_2;0.100000;0.000000;A;4
+15;4;21;U16;;PV Voltage 3;pv_voltage_3;0.100000;0.000000;V;4
+16;4;22;U16;;PV Current 3;pv_current_3;0.100000;0.000000;A;4
+17;4;28;U16;;L1 Phase Voltage;l1_phase_voltage;0.100000;0.000000;V;4
+18;4;29;U16;;L1 Phase Current;l1_phase_current;0.100000;0.000000;A;4
+19;4;30;U16;;L2 Phase Voltage;l2_phase_voltage;0.100000;0.000000;V;4
+20;4;31;U16;;L2 Phase Current;l2_phase_current;0.100000;0.000000;A;4
+21;4;32;U16;;L3 Phase Voltage;l3_phase_voltage;0.100000;0.000000;V;4
+22;4;33;U16;;L3 Phase Current;l3_phase_current;0.100000;0.000000;A;4
+23;4;34;U16;;Grid Freq;grid_freq;0.010000;0.000000;Hz;4
+24;4;37;U32;;Pac;P_AC;1.000000;0.000000;W;4
+25;4;39;I32;;Qac;qac;1.000000;0.000000;Var;4
+26;4;41;I16;;PF;PF;0.010000;0.000000;;4
+27;4;42;U16;;Reactive Power Mode;reactive_power_mode;1.000000;0.000000;;4
+28;4;43;U16;;Active Power Mode;active_power_mode;1.000000;0.000000;;4
+29;4;44;U16;;OverLoad;overload;1.000000;0.000000;;4
+30;4;45;U16;;EEG70;eeg70;1.000000;0.000000;;4
+31;4;46;U16;;Version of Protocol;version_of_protocol;1.000000;0.000000;;4
+32;4;47;U16;;String Current 1;string_current_1;0.100000;0.000000;A;4
+33;4;48;U16;;String Current 2;string_current_2;0.100000;0.000000;A;4
+34;4;49;U16;;String Current 3;string_current_3;0.100000;0.000000;A;4
+35;4;50;U16;;String Current 4;string_current_4;0.100000;0.000000;A;4
+36;4;51;U16;;String Current 5;string_current_5;0.100000;0.000000;A;4
+37;4;52;U16;;String Current 6;string_current_6;0.100000;0.000000;A;4
+38;4;53;U16;;String Current 7;string_current_7;0.100000;0.000000;A;4
+39;4;54;U16;;String Current 8;string_current_8;0.100000;0.000000;A;4
+40;4;55;U16;;String Current 9;string_current_9;0.100000;0.000000;A;4
+41;4;56;U16;;String Current 10;string_current_10;0.100000;0.000000;A;4
+42;4;57;U16;;String Current 11;string_current_11;0.100000;0.000000;A;4
+43;4;58;U16;;String Current 12;string_current_12;0.100000;0.000000;A;4
+44;3;12;U16;;Power ON/OFF;power_onoff;1.000000;0.000000;;4
+45;3;5000;U16;;Safety type;safety_type;1.000000;0.000000;;4
+46;3;5006;U16;;Grid voltage high limit2;grid_voltage_high_limit2;0.100000;0.000000;V;4
+47;3;5007;U16;;Grid voltage high limit time2;grid_voltage_high_limit_time2;1.000000;0.000000;ms;4
+48;3;5008;U16;;Grid voltage high limit1;grid_voltage_high_limit1;0.100000;0.000000;V;4
+49;3;5009;U16;;Grid voltage high limit time1;grid_voltage_high_limit_time1;1.000000;0.000000;ms;4
+50;3;5010;U16;;Grid voltage low limit2;grid_voltage_low_limit2;0.100000;0.000000;V;4
+51;3;5011;U16;;Grid voltage low limit time2;grid_voltage_low_limit_time2;1.000000;0.000000;ms;4
+52;3;5012;U16;;Grid voltage low limit1;grid_voltage_low_limit1;0.100000;0.000000;V;4
+53;3;5013;U16;;Grid voltage low limit time1;grid_voltage_low_limit_time1;1.000000;0.000000;ms;4
+54;3;5014;U16;;Grid voltage high recovery value;grid_voltage_high_recovery_value;0.100000;0.000000;V;4
+55;3;5015;U16;;Grid voltage low recovery value;grid_voltage_low_recovery_value;0.100000;0.000000;V;4
+56;3;5016;U16;;Grid frequency high limit2;grid_frequency_high_limit2;0.010000;0.000000;Hz;4
+57;3;5017;U16;;Grid frequency high limit time2;grid_frequency_high_limit_time2;1.000000;0.000000;ms;4
+58;3;5018;U16;;Grid frequency high limit1;grid_frequency_high_limit1;0.010000;0.000000;Hz;4
+59;3;5019;U16;;Grid frequency high limit time1;grid_frequency_high_limit_time1;1.000000;0.000000;ms;4
+60;3;5020;U16;;Grid frequency low limit2;grid_frequency_low_limit2;0.010000;0.000000;Hz;4
+61;3;5021;U16;;Grid frequency low limit time2;grid_frequency_low_limit_time2;1.000000;0.000000;ms;4
+62;3;5022;U16;;Grid frequency low limit1;grid_frequency_low_limit1;0.010000;0.000000;Hz;4
+63;3;5023;U16;;Grid frequency low limit time1;grid_frequency_low_limit_time1;1.000000;0.000000;ms;4
+64;3;5024;U16;;Grid frequency high recovery value;grid_frequency_high_recovery_value;0.010000;0.000000;Hz;4
+65;3;5025;U16;;Grid frequency low recovery value;grid_frequency_low_recovery_value;0.010000;0.000000;Hz;4
+66;3;5026;U16;;10 minutes average over voltage threshold;v_10_minutes_average_over_voltage_threshold;0.100000;0.000000;V;4
+67;3;5027;U16;;ISO fault threshold;iso_fault_threshold;1.000000;0.000000;kOhm;4
+68;3;5028;U16;;DCI fault threshold;dci_fault_threshold;1.000000;0.000000;mA;4
+69;3;5029;U16;;Active power set;cmdPwrPct;1.000000;0.000000;'%Pn;4
+70;3;5030;U16;;Active power control response time;active_power_control_response_time;1.000000;0.000000;S;4
+71;3;5036;U16;;Reactive power control mode;reactive_power_control_mode;1.000000;0.000000;;4
+72;3;5037;I16;;Power factor;power_factor;0.010000;0.000000;;4
+73;3;5038;U16;;CosPhi(P)curve First point of active power;cosphipcurve_first_point_of_active_power;1.000000;0.000000;'%Pn;4
+74;3;5039;I16;;CosPhi(P)curve First point of CosPhi;cosphipcurve_first_point_of_cosphi;0.010000;0.000000;;4
+75;3;5040;U16;;CosPhi(P)curve Second point of active power;cosphipcurve_second_point_of_active_power;1.000000;0.000000;'%Pn;4
+76;3;5041;I16;;CosPhi(P)curve Second point of CosPhi;cosphipcurve_second_point_of_cosphi;0.010000;0.000000;;4
+77;3;5042;I16;;Q command mode set value;q_command_mode_set_value;1.000000;0.000000;'%Pn;4
+78;3;5043;U16;;Q(U) curve First point of U;qu_curve_first_point_of_u;1.000000;0.000000;'%Un;4
+79;3;5044;I16;;Q(U) curve First point of Q;qu_curve_first_point_of_q;1.000000;0.000000;'%Pn;4
+80;3;5045;U16;;Q(U) curve second point of U;qu_curve_second_point_of_u;1.000000;0.000000;'%Un;4
+81;3;5046;I16;;Q(U) curve second point of Q;qu_curve_second_point_of_q;1.000000;0.000000;'%Pn;4
+82;3;5051;U16;;Q(U) curve response time;qu_curve_response_time;1.000000;0.000000;s;4

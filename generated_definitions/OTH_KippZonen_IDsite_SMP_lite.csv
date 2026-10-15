@@ -1,0 +1,6 @@
+modbusRTU;Other;KippZonen;IDsite_SMP_lite;;;;;;;
+1;4;5;I16;;IO_SENSOR1_DATA;io_sensor1_data;1.000000;0.000000;W/m2;4
+2;4;6;I16;;IO_RAW_SENSOR1_DATA;io_raw_sensor1_data;1.000000;0.000000;W/m2;4
+3;4;7;I16;;IO_STDEV_SENSOR1;io_stdev_sensor1;0.100000;0.000000;W/m2;4
+4;4;8;I16;;IO_BODY_TEMPERATURE;io_body_temperature;0.100000;0.000000;C;4
+5;4;9;I16;;IO_EXT_POWER_SENSOR;io_ext_power_sensor;1.000000;0.000000;V;4

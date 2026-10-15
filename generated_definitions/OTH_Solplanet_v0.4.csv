@@ -1,0 +1,299 @@
+modbusRTU;Other;Solplanet;v0.4;;;;;;;
+1;4;1000_2;STRING;;Device Type;device_type;1.000000;0.000000;;1
+2;4;1001;U16;;Modbus address;modbus_address;1.000000;0.000000;;1
+3;4;1002_32;STRING;;Serial Number;SERIAL;1.000000;0.000000;;1
+4;4;1018_16;STRING;;Machine type;machine_type;1.000000;0.000000;;1
+5;4;1026;U16;;Current grid code;current_grid_code;1.000000;0.000000;;1
+6;4;1027;U32;;Rated Power;P_RATED;1.000000;0.000000;W;1
+7;4;1029_14;STRING;;Master Software Version;master_software_version;1.000000;0.000000;;1
+8;4;1036_14;STRING;;Slave Software Version;slave_software_version;1.000000;0.000000;;1
+9;4;1043_14;STRING;;Safety Version;safety_version;1.000000;0.000000;;1
+10;4;1056_16;STRING;;Manufacturer name;manufacturer_name;1.000000;0.000000;;1
+11;4;1064_16;STRING;;Brand name;brand_name;1.000000;0.000000;;1
+12;4;1300;U16;;Grid rated voltage;grid_rated_voltage;0.100000;0.000000;V;1
+13;4;1301;U16;;Grid rated frequency;grid_rated_frequency;0.010000;0.000000;Hz;1
+14;4;1302;U32;;E Today of inverter;e_today_of_inverter;0.100000;0.000000;kWh;4
+15;4;1304;U32;;E Total of inverter;e_total_of_inverter;0.100000;0.000000;kWh;4
+16;4;1306;U32;;H Total;h_total;1.000000;0.000000;H;4
+17;4;1308;U16;;Device State;device_state;1.000000;0.000000;;4
+18;4;1309;U16;;Connect time;connect_time;1.000000;0.000000;s;4
+19;4;1310;I16;;Air temperature;air_temperature;0.100000;0.000000;C;4
+20;4;1311;I16;;Inverter U phase temperature;inverter_u_phase_temperature;0.100000;0.000000;C;4
+21;4;1312;I16;;Inverter V phase temperature;inverter_v_phase_temperature;0.100000;0.000000;C;4
+22;4;1313;I16;;Inverter W phase temperature;inverter_w_phase_temperature;0.100000;0.000000;C;4
+23;4;1314;I16;;Boost temperature;boost_temperature;0.100000;0.000000;C;4
+24;4;1315;I16;;Bidirectional DC DC Converter temperature;bidirectional_dc_dc_converter_temperature;0.100000;0.000000;C;4
+25;4;1316;U16;;Bus voltage;bus_voltage;0.100000;0.000000;V;4
+26;4;1318;U16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+27;4;1319;U16;;PV1 current;pv1_current;0.010000;0.000000;A;4
+28;4;1320;U16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+29;4;1321;U16;;PV2 current;pv2_current;0.010000;0.000000;A;4
+30;4;1322;U16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+31;4;1323;U16;;PV3 current;pv3_current;0.010000;0.000000;A;4
+32;4;1324;U16;;PV4 voltage;pv4_voltage;0.100000;0.000000;V;4
+33;4;1325;U16;;PV4 current;pv4_current;0.010000;0.000000;A;4
+34;4;1326;U16;;PV5 voltage;pv5_voltage;0.100000;0.000000;V;4
+35;4;1327;U16;;PV5 current;pv5_current;0.010000;0.000000;A;4
+36;4;1328;U16;;PV6 voltage;pv6_voltage;0.100000;0.000000;V;4
+37;4;1329;U16;;PV6 current;pv6_current;0.010000;0.000000;A;4
+38;4;1330;U16;;PV7 voltage;pv7_voltage;0.100000;0.000000;V;4
+39;4;1331;U16;;PV7 current;pv7_current;0.010000;0.000000;A;4
+40;4;1332;U16;;PV8 voltage;pv8_voltage;0.100000;0.000000;V;4
+41;4;1333;U16;;PV8 current;pv8_current;0.010000;0.000000;A;4
+42;4;1334;U16;;PV9 voltage;pv9_voltage;0.100000;0.000000;V;4
+43;4;1335;U16;;PV9 current;pv9_current;0.010000;0.000000;A;4
+44;4;1336;U16;;PV10 voltage;pv10_voltage;0.100000;0.000000;V;4
+45;4;1337;U16;;PV10 current;pv10_current;0.010000;0.000000;A;4
+46;4;1338;U16;;String 1 current;string_1_current;0.100000;0.000000;A;4
+47;4;1339;U16;;String 2 current;string_2_current;0.100000;0.000000;A;4
+48;4;1340;U16;;String 3 current;string_3_current;0.100000;0.000000;A;4
+49;4;1341;U16;;String 4 current;string_4_current;0.100000;0.000000;A;4
+50;4;1342;U16;;String 5 current;string_5_current;0.100000;0.000000;A;4
+51;4;1343;U16;;String 6 current;string_6_current;0.100000;0.000000;A;4
+52;4;1344;U16;;String 7 current;string_7_current;0.100000;0.000000;A;4
+53;4;1345;U16;;String 8 current;string_8_current;0.100000;0.000000;A;4
+54;4;1346;U16;;String 9 current;string_9_current;0.100000;0.000000;A;4
+55;4;1347;U16;;String 10 current;string_10_current;0.100000;0.000000;A;4
+56;4;1348;U16;;String 11 current;string_11_current;0.100000;0.000000;A;4
+57;4;1349;U16;;String 12 current;string_12_current;0.100000;0.000000;A;4
+58;4;1350;U16;;String 13 current;string_13_current;0.100000;0.000000;A;4
+59;4;1351;U16;;String 14 current;string_14_current;0.100000;0.000000;A;4
+60;4;1352;U16;;String 15 current;string_15_current;0.100000;0.000000;A;4
+61;4;1353;U16;;String 16 current;string_16_current;0.100000;0.000000;A;4
+62;4;1354;U16;;String 17 current;string_17_current;0.100000;0.000000;A;4
+63;4;1355;U16;;String 18 current;string_18_current;0.100000;0.000000;A;4
+64;4;1356;U16;;String 19 current;string_19_current;0.100000;0.000000;A;4
+65;4;1357;U16;;String 20 current;string_20_current;0.100000;0.000000;A;4
+66;4;1358;U16;;L1 Phase voltage;l1_phase_voltage;0.100000;0.000000;V;4
+67;4;1359;U16;;L1 Phase current;l1_phase_current;0.100000;0.000000;A;4
+68;4;1360;U16;;L2 Phase voltage;l2_phase_voltage;0.100000;0.000000;V;4
+69;4;1361;U16;;L2 Phase current;l2_phase_current;0.100000;0.000000;A;4
+70;4;1362;U16;;L3 Phase voltage;l3_phase_voltage;0.100000;0.000000;V;4
+71;4;1363;U16;;L3 Phase current;l3_phase_current;0.100000;0.000000;A;4
+72;4;1364;U16;;RS Line voltage;rs_line_voltage;0.100000;0.000000;V;4
+73;4;1365;U16;;RT Line voltage;rt_line_voltage;0.100000;0.000000;V;4
+74;4;1366;U16;;ST Line voltage;st_line_voltage;0.100000;0.000000;V;4
+75;4;1367;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+76;4;1368;U32;;Apparent power;apparent_power;1.000000;0.000000;VA;4
+77;4;1370;I32;;Active power;P_AC;1.000000;0.000000;W;4
+78;4;1372;I32;;Reactive power;reactive_power;1.000000;0.000000;Var;4
+79;4;1374;I16;;Power factor;PF;0.010000;0.000000;;4
+80;4;1376;U16;;Fault state of inverter itself;fault_state_of_inverter_itself;1.000000;0.000000;;4
+81;4;1377;U16;;Error message;error_message;1.000000;0.000000;;4
+82;4;1378;U16;;Warning message;warning_message;1.000000;0.000000;;4
+83;4;1600;U32;;PV total power;pv_total_power;1.000000;0.000000;W;4
+84;4;1602;U32;;PV E Today;pv_e_today;0.100000;0.000000;kWh;4
+85;4;1604;U32;;PV E Total;pv_e_total;0.100000;0.000000;kWh;4
+86;4;1606;U16;;Battery communication status;battery_communication_status;1.000000;0.000000;;4
+87;4;1607;U16;;Battery status;battery_status;1.000000;0.000000;;4
+88;4;1608;U16;;Battery Error Status 1;battery_error_status_1;1.000000;0.000000;;4
+89;4;1609;U16;;Battery Error Status 2;battery_error_status_2;1.000000;0.000000;;4
+90;4;1610;U16;;Battery Error Status 3;battery_error_status_3;1.000000;0.000000;;4
+91;4;1611;U16;;Battery Error Status 4;battery_error_status_4;1.000000;0.000000;;4
+92;4;1612;U16;;Battery warning status 1;battery_warning_status_1;1.000000;0.000000;;4
+93;4;1613;U16;;Battery warning status 2;battery_warning_status_2;1.000000;0.000000;;4
+94;4;1614;U16;;Battery warning status 3;battery_warning_status_3;1.000000;0.000000;;4
+95;4;1615;U16;;Battery warning status 4;battery_warning_status_4;1.000000;0.000000;;4
+96;4;1616;U16;;Battery voltage;battery_voltage;0.010000;0.000000;V;4
+97;4;1617;I16;;Battery current;battery_current;0.100000;0.000000;A;4
+98;4;1618;I32;;Battery power;battery_power;1.000000;0.000000;w;4
+99;4;1620;I16;;Battery temperature;battery_temperature;0.100000;0.000000;C;4
+100;4;1621;U16;;Battery SOC;battery_soc;0.010000;0.000000;;4
+101;4;1622;U16;;Battery SOH;battery_soh;0.010000;0.000000;;4
+102;4;1623;U16;;Battery charging current limit;battery_charging_current_limit;0.100000;0.000000;A;4
+103;4;1624;U16;;Battery discharge current limit;battery_discharge_current_limit;0.100000;0.000000;A;4
+104;4;1625;U32;;Battery E Charge Today;battery_e_charge_today;0.100000;0.000000;kWh;4
+105;4;1627;U32;;Battery E Discharge Today;battery_e_discharge_today;0.100000;0.000000;kWh;4
+106;4;1629;U32;;E Consumption Today at AC side;e_consumption_today_at_ac_side;0.100000;0.000000;kWh;4
+107;4;1631;U32;;E Generation Today at AC side;e_generation_today_at_ac_side;0.100000;0.000000;kWh;4
+108;4;1633;U16;;EPS load voltage;eps_load_voltage;0.100000;0.000000;V;4
+109;4;1634;U16;;EPS load current;eps_load_current;0.100000;0.000000;A;4
+110;4;1635;U16;;EPS load frequency;eps_load_frequency;0.010000;0.000000;Hz;4
+111;4;1636;U32;;EPS load active power;eps_load_active_power;1.000000;0.000000;w;4
+112;4;1638;U32;;EPS load reactive power;eps_load_reactive_power;1.000000;0.000000;Var;4
+113;4;1640;U32;;E Consumption Today at EPS load side;e_consumption_today_at_eps_load_side;0.100000;0.000000;kWh;4
+114;4;1642;U32;;E Consumption Total at EPS load side;e_consumption_total_at_eps_load_side;0.100000;0.000000;kWh;4
+115;4;1644;U16;;Phase 1 voltage for EPS Load;phase_1_voltage_for_eps_load;0.100000;0.000000;V;4
+116;4;1645;U16;;Phase 1 cuurent for EPS Load;phase_1_cuurent_for_eps_load;0.100000;0.000000;A;4
+117;4;1646;U16;;Phase 2 voltage for EPS Load;phase_2_voltage_for_eps_load;0.100000;0.000000;V;4
+118;4;1647;U16;;Phase 2 cuurent for EPS Load;phase_2_cuurent_for_eps_load;0.100000;0.000000;A;4
+119;4;1648;U16;;Phase 3 voltage for EPS Load;phase_3_voltage_for_eps_load;0.100000;0.000000;V;4
+120;4;1649;U16;;Phase 3 cuurent for EPS Load;phase_3_cuurent_for_eps_load;0.100000;0.000000;A;4
+121;4;1650;I32;;Phase 1 active power for EPS Load;phase_1_active_power_for_eps_load;1.000000;0.000000;w;4
+122;4;1652;I32;;Phase 1 reactive power for EPS Load;phase_1_reactive_power_for_eps_load;1.000000;0.000000;Var;4
+123;4;1654;I32;;Phase 2 active power for EPS Load;phase_2_active_power_for_eps_load;1.000000;0.000000;w;4
+124;4;1656;I32;;Phase 2 reactive power for EPS Load;phase_2_reactive_power_for_eps_load;1.000000;0.000000;Var;4
+125;4;1658;I32;;Phase 3 active power for EPS Load;phase_3_active_power_for_eps_load;1.000000;0.000000;w;4
+126;4;1660;I32;;Phase 3 reactive power for EPS Load;phase_3_reactive_power_for_eps_load;1.000000;0.000000;Var;4
+127;4;1662;U32;;Phase 1 active power for Grid;phase_1_active_power_for_grid;1.000000;0.000000;w;4
+128;4;1664;I32;;Phase 1 reactive power for Grid;phase_1_reactive_power_for_grid;1.000000;0.000000;Var;4
+129;4;1666;U32;;Phase 2 active power for Grid;phase_2_active_power_for_grid;1.000000;0.000000;w;4
+130;4;1668;I32;;Phase 2 reactive power for Grid;phase_2_reactive_power_for_grid;1.000000;0.000000;Var;4
+131;4;1670;U32;;Phase 3 active power for Grid;phase_3_active_power_for_grid;1.000000;0.000000;w;4
+132;4;1672;I32;;Phase 3 reactive power for Grid;phase_3_reactive_power_for_grid;1.000000;0.000000;Var;4
+133;4;1674;U32;;Energy charge today for Grid;energy_charge_today_for_grid;0.100000;0.000000;kWh;4
+134;4;1676;U32;;Energy charge total for Grid;energy_charge_total_for_grid;0.100000;0.000000;kWh;4
+135;4;1678;U16;;Battery insulation resistance;battery_insulation_resistance;1.000000;0.000000;kOhm;4
+136;4;1679;U16;;Battery charge discharge cycles;battery_charge_discharge_cycles;1.000000;0.000000;;4
+137;4;1680;U16;;Environment temperature;environment_temperature;0.100000;0.000000;'%;4
+138;3;200;U16;;Remote switch command;remote_switch_command;1.000000;0.000000;;1
+139;3;1000;U16;;RTC Year;rtc_year;1.000000;0.000000;;1
+140;3;1001;U16;;RTC Month;rtc_month;1.000000;0.000000;;1
+141;3;1002;U16;;RTC Day;rtc_day;1.000000;0.000000;;1
+142;3;1003;U16;;RTC Hour;rtc_hour;1.000000;0.000000;;1
+143;3;1004;U16;;RTC Minute;rtc_minute;1.000000;0.000000;;1
+144;3;1005;U16;;RTC Seconds;rtc_seconds;1.000000;0.000000;;1
+145;3;1101;U16;;Storage Inverter Switch;storage_inverter_switch;1.000000;0.000000;;1
+146;3;1102;U16;;Type selection of energy storage machine;type_selection_of_energy_storage_machine;1.000000;0.000000;;1
+147;3;1103;U16;;Run mode;run_mode;1.000000;0.000000;;1
+148;3;1104;U16;;Battery manufacturer;battery_manufacturer;1.000000;0.000000;;1
+149;3;1107;U16;;Smart meter status;smart_meter_status;1.000000;0.000000;;1
+150;3;1108;U16;;Smart meter adjustment flag bit;smart_meter_adjustment_flag_bit;1.000000;0.000000;;1
+151;3;1109;I32;;Set target power value;set_target_power_value;1.000000;0.000000;w;1
+152;3;1111;I32;;Current power value of smart meter;current_power_value_of_smart_meter;1.000000;0.000000;w;1
+153;3;1113;U16;;Anti reverse current flag;anti_reverse_current_flag;1.000000;0.000000;;1
+154;3;1114;U16;;Battery wake up Force charge sign;battery_wake_up_force_charge_sign;1.000000;0.000000;;1
+155;3;1115;U16;;UPS function;ups_function;1.000000;0.000000;;1
+156;3;1150;U16;;Commbox and cloud communication status;commbox_and_cloud_communication_status;1.000000;0.000000;;1
+157;3;1151;U16;;Charge discharge flag bit;charge_discharge_flag_bit;1.000000;0.000000;;1
+158;3;1152;I16;;Charge and discharge power command;charge_and_discharge_power_command;1.000000;0.000000;W;1
+159;3;1153;U16;;Charging SOC upper limit;charging_soc_upper_limit;0.010000;0.000000;'%;1
+160;3;1154;U16;;Discharge SOC lower limit;discharge_soc_lower_limit;0.010000;0.000000;'%;1
+161;3;1155;U16;;Obtaining power ratio of power grid;obtaining_power_ratio_of_power_grid;0.010000;0.000000;'%;1
+162;3;4000;U16;;Active power control function;active_power_control_function;1.000000;0.000000;;1
+163;3;4001;U16;;EEG control function;eeg_control_function;1.000000;0.000000;;1
+164;3;4002;U16;;Slope load function;slope_load_function;1.000000;0.000000;;1
+165;3;4003;U16;;Overvoltage reduce power function;overvoltage_reduce_power_function;1.000000;0.000000;;1
+166;3;4004;U16;;Overfrequency reduce power function;overfrequency_reduce_power_function;1.000000;0.000000;;1
+167;3;4005;U16;;Reactive power control fucntion;reactive_power_control_fucntion;1.000000;0.000000;;1
+168;3;4006;U16;;LVRT Function;lvrt_function;1.000000;0.000000;;1
+169;3;4007;U16;;HVRT Function;hvrt_function;1.000000;0.000000;;1
+170;3;4008;U16;;10 Minutes Average Overvoltage protect fucntion;v_10_minutes_average_overvoltage_protect_fucntion;1.000000;0.000000;;1
+171;3;4009;U16;;Islanding protect function;islanding_protect_function;1.000000;0.000000;;1
+172;3;4011;U16;;PE connnection check function;pe_connnection_check_function;1.000000;0.000000;;1
+173;3;4013;U16;;AFCI function;afci_function;1.000000;0.000000;;1
+174;3;4014;U16;;PV string current monitoring function;pv_string_current_monitoring_function;1.000000;0.000000;;1
+175;3;4016;U16;;Overload function;overload_function;1.000000;0.000000;;1
+176;3;4018;U16;;SPD detection function;spd_detection_function;1.000000;0.000000;;1
+177;3;4019;U16;;Low voltage increase power function;low_voltage_increase_power_function;1.000000;0.000000;;1
+178;3;4020;U16;;Low frequency increase power function;low_frequency_increase_power_function;1.000000;0.000000;;1
+179;3;4022;U16;;Primary low frequency function;primary_low_frequency_function;1.000000;0.000000;;1
+180;3;4023;U16;;Communication loss detection function;communication_loss_detection_function;1.000000;0.000000;;1
+181;3;4024;U16;;Shadow MPPT function;shadow_mppt_function;1.000000;0.000000;;1
+182;3;4025;U16;;External input signal function;external_input_signal_function;1.000000;0.000000;;1
+183;3;4026;U16;;Sunspec write function;sunspec_write_function;1.000000;0.000000;;1
+184;3;5200;U16;;Grid code;grid_code;1.000000;0.000000;;1
+185;3;5201;U16;;Overvoltage protection value of the first grid connection;overvoltage_protection_value_of_the_first_grid_connection;0.100000;0.000000;V;1
+186;3;5202;U16;;Overvoltage protection value of the first grid connection 2;overvoltage_protection_value_of_the_first_grid_connection_2;0.100000;0.000000;V;1
+187;3;5203;U16;;Overvoltage protection value of the first grid connection 3;overvoltage_protection_value_of_the_first_grid_connection_3;0.010000;0.000000;Hz;1
+188;3;5204;U16;;Underfrequency protection value for first grid connection;underfrequency_protection_value_for_first_grid_connection;0.010000;0.000000;Hz;1
+189;3;5205;U16;;Grid Voltage High Limit3;grid_voltage_high_limit3;0.100000;0.000000;V;1
+190;3;5206;U32;;Grid Voltage High Limit Time3;grid_voltage_high_limit_time3;1.000000;0.000000;ms;1
+191;3;5208;U16;;Grid Voltage High Limit2;grid_voltage_high_limit2;0.100000;0.000000;V;1
+192;3;5209;U32;;Grid Voltage High Limit Time2;grid_voltage_high_limit_time2;1.000000;0.000000;ms;1
+193;3;5211;U16;;Grid Voltage High Limit1;grid_voltage_high_limit1;0.100000;0.000000;V;1
+194;3;5212;U32;;Grid Voltage High Limit Time1;grid_voltage_high_limit_time1;1.000000;0.000000;ms;1
+195;3;5214;U16;;Grid Voltage Low Limit3;grid_voltage_low_limit3;0.100000;0.000000;V;1
+196;3;5215;U32;;Grid Voltage Low Limit Time3;grid_voltage_low_limit_time3;1.000000;0.000000;ms;1
+197;3;5217;U16;;Grid Voltage Low Limit2;grid_voltage_low_limit2;0.100000;0.000000;V;1
+198;3;5218;U32;;Grid Voltage Low Limit Time2;grid_voltage_low_limit_time2;1.000000;0.000000;ms;1
+199;3;5220;U16;;Grid Voltage Low Limit1;grid_voltage_low_limit1;0.100000;0.000000;V;1
+200;3;5221;U32;;Grid Voltage Low Limit Time1;grid_voltage_low_limit_time1;1.000000;0.000000;ms;1
+201;3;5223;U16;;10 Minutes Average Overvoltage Threshold;v_10_minutes_average_overvoltage_threshold;0.100000;0.000000;V;1
+202;3;5224;U16;;10 Minutes Average Overvoltage Portect Time;v_10_minutes_average_overvoltage_portect_time;1.000000;0.000000;ms;1
+203;3;5225;U16;;Overvoltage recover value;overvoltage_recover_value;0.100000;0.000000;V;1
+204;3;5226;U16;;Undervoltage recover value;undervoltage_recover_value;0.100000;0.000000;V;1
+205;3;5227;U16;;Grid Frequency High Limit3;grid_frequency_high_limit3;0.010000;0.000000;Hz;1
+206;3;5228;U32;;Grid Frequency High Limit Time3;grid_frequency_high_limit_time3;1.000000;0.000000;ms;1
+207;3;5230;U16;;Grid Frequency High Limit2;grid_frequency_high_limit2;0.010000;0.000000;Hz;1
+208;3;5231;U32;;Grid Frequency High Limit Time2;grid_frequency_high_limit_time2;1.000000;0.000000;ms;1
+209;3;5233;U16;;Grid Frequency High Limit1;grid_frequency_high_limit1;0.010000;0.000000;Hz;1
+210;3;5234;U32;;Grid Frequency High Limit Time1;grid_frequency_high_limit_time1;1.000000;0.000000;ms;1
+211;3;5236;U16;;Grid Frequency Low Limit3;grid_frequency_low_limit3;0.010000;0.000000;Hz;1
+212;3;5237;U32;;Grid Frequency Low Limit Time3;grid_frequency_low_limit_time3;1.000000;0.000000;ms;1
+213;3;5239;U16;;Grid Frequency Low Limit2;grid_frequency_low_limit2;0.010000;0.000000;Hz;1
+214;3;5240;U32;;Grid Frequency Low Limit Time2;grid_frequency_low_limit_time2;1.000000;0.000000;ms;1
+215;3;5242;U16;;Grid Frequency Low Limit1;grid_frequency_low_limit1;0.010000;0.000000;Hz;1
+216;3;5243;U32;;Grid Frequency Low Limit Time1;grid_frequency_low_limit_time1;1.000000;0.000000;ms;1
+217;3;5245;U16;;Vary rate of Frequecny protect value;vary_rate_of_frequecny_protect_value;0.010000;0.000000;Hz/s;1
+218;3;5246;U32;;Vary rate of Frequecny protect time;vary_rate_of_frequecny_protect_time;1.000000;0.000000;ms;1
+219;3;5248;U16;;Overfrequency recover value;overfrequency_recover_value;0.010000;0.000000;Hz;1
+220;3;5249;U16;;Underfrequency recover value;underfrequency_recover_value;0.010000;0.000000;Hz;1
+221;3;5250;U16;;Time of first connection to grid;time_of_first_connection_to_grid;1.000000;0.000000;s;1
+222;3;5251;U16;;Time of re connection to grid;time_of_re_connection_to_grid;1.000000;0.000000;s;1
+223;3;5252;U16;;ISO protect threshold;iso_protect_threshold;1.000000;0.000000;kOhm;1
+224;3;5253;U16;;DCI protect threshold;dci_protect_threshold;1.000000;0.000000;mA;1
+225;3;5254;U16;;DCI protect time;dci_protect_time;1.000000;0.000000;ms;1
+226;3;5400;U16;;Load rate of first connection to grid;load_rate_of_first_connection_to_grid;1.000000;0.000000;'%Pn/min;1
+227;3;5401;U16;;Load rate of re connection to grid;load_rate_of_re_connection_to_grid;1.000000;0.000000;'%Pn/min;1
+228;3;5402;U16;;Active Power Set;active_power_set;0.010000;0.000000;'%Pn;1
+229;3;5403;U16;;Increase rate of active power;increase_rate_of_active_power;0.010000;0.000000;'%Pn/min;1
+230;3;5404;U16;;Decrease rate of active power;decrease_rate_of_active_power;0.010000;0.000000;'%Pn/min;1
+231;3;5408;U16;;Over frequency reduce power Start frequency;over_frequency_reduce_power_start_frequency;0.010000;0.000000;Hz;1
+232;3;5409;U16;;Over frequency reduce power Stop frequecny;over_frequency_reduce_power_stop_frequecny;0.010000;0.000000;Hz;1
+233;3;5410;U16;;Over frequency reduce power Back frequency;over_frequency_reduce_power_back_frequency;0.010000;0.000000;Hz;1
+234;3;5411;U16;;The reduce ratio of over frequency reduce power;the_reduce_ratio_of_over_frequency_reduce_power;0.010000;0.000000;'%Pnor%Pm;1
+235;3;5412;U16;;Over frequency reduce power reduce power delay time;over_frequency_reduce_power_reduce_power_delay_time;0.100000;0.000000;s;1
+236;3;5413;U16;;Over frequency reduce power recover power delay time;over_frequency_reduce_power_recover_power_delay_time;0.100000;0.000000;s;1
+237;3;5415;U16;;Speed of Over frequency recover to Pn;speed_of_over_frequency_recover_to_pn;0.010000;0.000000;'%Pn/min;1
+238;3;5416;U16;;Over frequency reduce power 0 power frequency point;over_frequency_reduce_power_0_power_frequency_point;0.010000;0.000000;Hz;1
+239;3;5419;U16;;Over voltage reduce power Start voltage;over_voltage_reduce_power_start_voltage;0.010000;0.000000;'%Un;1
+240;3;5421;U16;;Over voltage reduce power Stop voltage;over_voltage_reduce_power_stop_voltage;0.010000;0.000000;'%Un;1
+241;3;5423;U16;;Over voltage reduce power Back voltage;over_voltage_reduce_power_back_voltage;0.010000;0.000000;'%Un;1
+242;3;5425;U16;;The reduce ratio of over voltage reduce power;the_reduce_ratio_of_over_voltage_reduce_power;0.010000;0.000000;'%Pnor%Pm;1
+243;3;5426;U16;;Over voltage reduce power delay time;over_voltage_reduce_power_delay_time;0.100000;0.000000;s;1
+244;3;5427;U16;;Over voltage recover power delay time;over_voltage_recover_power_delay_time;0.100000;0.000000;s;1
+245;3;5428;U16;;Speed of Over voltage recover to Pn;speed_of_over_voltage_recover_to_pn;0.010000;0.000000;'%Pn/min;1
+246;3;5432;U16;;Under frequency increase power Start frequency;under_frequency_increase_power_start_frequency;0.010000;0.000000;Hz;1
+247;3;5433;U16;;Under frequency increase power Stop frequecny;under_frequency_increase_power_stop_frequecny;0.010000;0.000000;Hz;1
+248;3;5434;U16;;Under frequency increase power Back frequency;under_frequency_increase_power_back_frequency;0.010000;0.000000;Hz;1
+249;3;5435;U16;;The increase ratio of under frequency increase power;the_increase_ratio_of_under_frequency_increase_power;0.010000;0.000000;'%Pnor%Pm;1
+250;3;5436;U16;;Under frequency increase power delay time;under_frequency_increase_power_delay_time;0.100000;0.000000;s;1
+251;3;5437;U16;;Under frequency recover power delay time;under_frequency_recover_power_delay_time;0.100000;0.000000;s;1
+252;3;5439;U16;;Speed of Under frequency recover to Pn;speed_of_under_frequency_recover_to_pn;0.010000;0.000000;'%Pn/min;1
+253;3;5440;U16;;Under frequency increase power 0 power frequency point;under_frequency_increase_power_0_power_frequency_point;0.010000;0.000000;Hz;1
+254;3;5443;U16;;Under voltage increase power Start voltage;under_voltage_increase_power_start_voltage;0.010000;0.000000;'%Un;1
+255;3;5444;U16;;Under voltage increase power Stop voltage;under_voltage_increase_power_stop_voltage;0.010000;0.000000;'%Un;1
+256;3;5445;U16;;Under voltage increase power Back voltage;under_voltage_increase_power_back_voltage;0.010000;0.000000;'%Un;1
+257;3;5446;U16;;The increase ratio of under voltage increase power;the_increase_ratio_of_under_voltage_increase_power;0.010000;0.000000;'%Pnor%Pm;1
+258;3;5447;U16;;Under voltage increase power delay time;under_voltage_increase_power_delay_time;0.100000;0.000000;s;1
+259;3;5448;U16;;Under voltage increase power delay time 2;under_voltage_increase_power_delay_time_2;0.100000;0.000000;s;1
+260;3;5449;U16;;Speed of under voltage recover to Pn;speed_of_under_voltage_recover_to_pn;0.010000;0.000000;'%Pn/min;1
+261;3;5450;I16;;Pav;pav;0.010000;0.000000;'%Pn;1
+262;3;5451;U16;;DRMs Pval;drms_pval;0.010000;0.000000;'%Pn;1
+263;3;5501;U16;;Time constant of reactive power curve;time_constant_of_reactive_power_curve;1.000000;0.000000;s;1
+264;3;5502;I16;;Power factor;power_factor;0.000100;0.000000;;1
+265;3;5503;U16;;cos phi P curve Active power of the first point;cos_phi_p_curve_active_power_of_the_first_point;0.010000;0.000000;'%Pn;1
+266;3;5504;I16;;cos phi P curve cos phi of the first point;cos_phi_p_curve_cos_phi_of_the_first_point;0.000100;0.000000;;1
+267;3;5505;U16;;cos phi P curve Active power of the second point;cos_phi_p_curve_active_power_of_the_second_point;0.010000;0.000000;'%Pn;1
+268;3;5506;I16;;cos phi P curve cos phi of the second point;cos_phi_p_curve_cos_phi_of_the_second_point;0.000100;0.000000;;1
+269;3;5507;U16;;cos phi P curve Active power of the third point;cos_phi_p_curve_active_power_of_the_third_point;0.010000;0.000000;'%Pn;1
+270;3;5508;I16;;cos phi P curve cos phi of the third point;cos_phi_p_curve_cos_phi_of_the_third_point;0.000100;0.000000;;1
+271;3;5509;U16;;cos phi P curve Active power of the fourth point;cos_phi_p_curve_active_power_of_the_fourth_point;0.010000;0.000000;'%Pn;1
+272;3;5510;I16;;cos phi P curve cos phi of the fourth point;cos_phi_p_curve_cos_phi_of_the_fourth_point;0.000100;0.000000;;1
+273;3;5511;U16;;Lock in voltage for cos phi P curve;lock_in_voltage_for_cos_phi_p_curve;0.010000;0.000000;'%Un;1
+274;3;5512;U16;;Lock out voltage for cos phi P curve;lock_out_voltage_for_cos_phi_p_curve;0.010000;0.000000;'%Un;1
+275;3;5515;I16;;Q Set Value;q_set_value;0.010000;0.000000;'%Sn;1
+276;3;5517;U16;;QU curve U of the first point;qu_curve_u_of_the_first_point;0.010000;0.000000;'%Un;1
+277;3;5518;I16;;QU curve Q of the first point;qu_curve_q_of_the_first_point;0.010000;0.000000;'%Sn;1
+278;3;5519;U16;;QU curve U of the second point;qu_curve_u_of_the_second_point;0.010000;0.000000;'%Un;1
+279;3;5520;I16;;QU curve Q of the second point;qu_curve_q_of_the_second_point;0.010000;0.000000;'%Sn;1
+280;3;5521;U16;;QU curve U of the third point;qu_curve_u_of_the_third_point;0.010000;0.000000;'%Un;1
+281;3;5522;I16;;QU curve Q of the third point;qu_curve_q_of_the_third_point;0.010000;0.000000;'%Sn;1
+282;3;5523;U16;;QU curve U of the fourth point;qu_curve_u_of_the_fourth_point;0.010000;0.000000;'%Un;1
+283;3;5524;I16;;QU curve Q of the fourth point;qu_curve_q_of_the_fourth_point;0.010000;0.000000;'%Sn;1
+284;3;5525;U16;;Lock in power for QU curve;lock_in_power_for_qu_curve;0.010000;0.000000;'%Pn;1
+285;3;5526;U16;;Lock outpower for QU curve;lock_outpower_for_qu_curve;0.010000;0.000000;'%Pn;1
+286;3;5601;U16;;LVRT three phase fault reactive current limit;lvrt_three_phase_fault_reactive_current_limit;0.010000;0.000000;'%In;1
+287;3;5602;U16;;LVRT single double phase fault reactive current limit;lvrt_single_double_phase_fault_reactive_current_limit;0.010000;0.000000;'%In;1
+288;3;5604;U16;;Threshold of insensitive area of positive sequence voltage jump;threshold_of_insensitive_area_of_positive_sequence_voltage_jump;0.100000;0.000000;'%Un;1
+289;3;5605;U16;;LVRT Trigger voltage;lvrt_trigger_voltage;0.010000;0.000000;'%Un;1
+290;3;5606;U16;;K factor of positive sequence reactive current;k_factor_of_positive_sequence_reactive_current;0.010000;0.000000;;1
+291;3;5607;U16;;reactive power maintenance after LVRT voltage recovery;reactive_power_maintenance_after_lvrt_voltage_recovery;1.000000;0.000000;ms;1
+292;3;5610;U16;;HVRT three phase fault reactive current limit;hvrt_three_phase_fault_reactive_current_limit;0.010000;0.000000;'%In;1
+293;3;5611;U16;;HVRT single double phase fault reactive current limit;hvrt_single_double_phase_fault_reactive_current_limit;0.010000;0.000000;'%In;1
+294;3;5613;U16;;Threshold of insensitive area of negative sequence voltage jump;threshold_of_insensitive_area_of_negative_sequence_voltage_jump;0.100000;0.000000;'%Un;1
+295;3;5614;U16;;HVRT Trigger voltage;hvrt_trigger_voltage;0.010000;0.000000;'%Un;1
+296;3;5615;U16;;K factor of negative sequence reactive current;k_factor_of_negative_sequence_reactive_current;0.010000;0.000000;;1
+297;3;5616;U16;;reactive power maintenance after HVRT voltage recovery;reactive_power_maintenance_after_hvrt_voltage_recovery;1.000000;0.000000;ms;1
+298;3;5618;U16;;Zero current threshold;zero_current_threshold;0.010000;0.000000;'%Un;1

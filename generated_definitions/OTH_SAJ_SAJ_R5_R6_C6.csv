@@ -1,0 +1,384 @@
+modbusRTU;Other;SAJ;SAJ_R5_R6_C6;;;;;;;
+1;3;36608;U16;;Device Type;device_type;1.000000;0.000000;;1
+2;3;36609;U16;;Subclass Machine Power;subclass_machine_power;1.000000;0.000000;;1
+3;3;36610;U16;;Comms Protocol Version;comms_protocol_version;0.001000;0.000000;;1
+4;3;36631;U16;;Display Software Version;display_software_version;0.001000;0.000000;;1
+5;3;36632;U16;;Master Ctrl Software Version;master_ctrl_software_version;0.001000;0.000000;;1
+6;3;36633;U16;;Slave Ctrl Software Version;slave_ctrl_software_version;0.001000;0.000000;;1
+7;3;36634;U16;;DispBoard Hardware Version;dispboard_hardware_version;0.001000;0.000000;;1
+8;3;36635;U16;;CtrlBoard Hardware Version;ctrlboard_hardware_version;0.001000;0.000000;;1
+9;3;36636;U16;;PowerBoard Hardware Version;powerboard_hardware_version;0.001000;0.000000;;1
+10;3;256;U16;;PLUS/R5 Inverter Operating Mode;plusr5_inverter_operating_mode;1.000000;0.000000;;1
+11;3;263;U16;;PLUS/R5 PV1 Voltage;plusr5_pv1_voltage;0.100000;0.000000;V;1
+12;3;264;U16;;PLUS/R5 PV1 Total Current;plusr5_pv1_total_current;0.010000;0.000000;A;1
+13;3;265;U16;;PLUS/R5 PV1 Power;plusr5_pv1_power;1.000000;0.000000;W;1
+14;3;266;U16;;PLUS/R5 PV2 Voltage;plusr5_pv2_voltage;0.100000;0.000000;V;1
+15;3;267;U16;;PLUS/R5 PV2 Total Current;plusr5_pv2_total_current;0.010000;0.000000;A;1
+16;3;268;U16;;PLUS/R5 PV2 Power;plusr5_pv2_power;1.000000;0.000000;W;1
+17;3;269;U16;;PLUS/R5 PV3 Voltage;plusr5_pv3_voltage;0.100000;0.000000;V;1
+18;3;270;U16;;PLUS/R5 PV3 Total Current;plusr5_pv3_total_current;0.010000;0.000000;A;1
+19;3;271;U16;;PLUS/R5 PV3 Power;plusr5_pv3_power;1.000000;0.000000;W;1
+20;3;272;U16;;PLUS/R5 BUS Voltage;plusr5_bus_voltage;0.100000;0.000000;V;1
+21;3;273;I16;;PLUS/R5 Inverter Temperature;plusr5_inverter_temperature;0.100000;0.000000;°C;1
+22;3;274;I16;;PLUS/R5 GFCI;plusr5_gfci;1.000000;0.000000;mA;1
+23;3;275;U16;;PLUS/R5 Total Active Power;plusr5_total_active_power;0.001000;0.000000;kW;1
+24;3;276;I16;;PLUS/R5 Total Reactive Power;plusr5_total_reactive_power;1.000000;0.000000;Var;1
+25;3;277;I16;;PLUS/R5 Total Power Factor;plusr5_total_power_factor;0.001000;0.000000;;1
+26;3;278;U16;;PLUS/R5 L1 Phase Voltage;plusr5_l1_phase_voltage;0.100000;0.000000;V;1
+27;3;279;U16;;PLUS/R5 L1 Phase Current;plusr5_l1_phase_current;0.010000;0.000000;A;1
+28;3;280;U16;;PLUS/R5 L1 Phase Frequency;plusr5_l1_phase_frequency;0.010000;0.000000;Hz;1
+29;3;281;I16;;PLUS/R5 L1 DC Component;plusr5_l1_dc_component;1.000000;0.000000;mA;1
+30;3;282;U16;;PLUS/R5 L1 Power;plusr5_l1_power;0.001000;0.000000;kW;1
+31;3;283;I16;;PLUS/R5 L1 Power Factor;plusr5_l1_power_factor;0.001000;0.000000;;1
+32;3;284;U16;;PLUS/R5 L2 Phase Voltage;plusr5_l2_phase_voltage;0.100000;0.000000;V;1
+33;3;285;U16;;PLUS/R5 L2 Phase Current;plusr5_l2_phase_current;0.010000;0.000000;A;1
+34;3;286;U16;;PLUS/R5 L2 Phase Frequency;plusr5_l2_phase_frequency;0.010000;0.000000;Hz;1
+35;3;287;I16;;PLUS/R5 L2 DC Component;plusr5_l2_dc_component;1.000000;0.000000;mA;1
+36;3;288;U16;;PLUS/R5 L2 Power;plusr5_l2_power;0.001000;0.000000;kW;1
+37;3;289;I16;;PLUS/R5 L2 Power Factor;plusr5_l2_power_factor;0.001000;0.000000;;1
+38;3;290;U16;;PLUS/R5 L3 Phase Voltage;plusr5_l3_phase_voltage;0.100000;0.000000;V;1
+39;3;291;U16;;PLUS/R5 L3 Phase Current;plusr5_l3_phase_current;0.010000;0.000000;A;1
+40;3;292;U16;;PLUS/R5 L3 Phase Frequency;plusr5_l3_phase_frequency;0.010000;0.000000;Hz;1
+41;3;293;I16;;PLUS/R5 L3 DC Component;plusr5_l3_dc_component;1.000000;0.000000;mA;1
+42;3;294;U16;;PLUS/R5 L3 Power;plusr5_l3_power;0.001000;0.000000;kW;1
+43;3;295;I16;;PLUS/R5 L3 Power Factor;plusr5_l3_power_factor;0.001000;0.000000;;1
+44;3;296;U16;;PLUS/R5 ISO1;plusr5_iso1;1.000000;0.000000;kOhm;1
+45;3;297;U16;;PLUS/R5 ISO2;plusr5_iso2;1.000000;0.000000;kOhm;1
+46;3;298;U16;;PLUS/R5 ISO3;plusr5_iso3;1.000000;0.000000;kOhm;1
+47;3;299;U16;;PLUS/R5 ISO4;plusr5_iso4;1.000000;0.000000;kOhm;1
+48;3;300;U16;;PLUS/R5 Daily Power Generation;plusr5_daily_power_generation;0.010000;0.000000;kWh;1
+49;3;301;U32;;PLUS/R5 Monthly Power Generation;plusr5_monthly_power_generation;0.010000;0.000000;kWh;1
+50;3;303;U32;;PLUS/R5 Yearly Power Generation;plusr5_yearly_power_generation;0.010000;0.000000;kWh;1
+51;3;305;U32;;PLUS/R5 Total Power Generation;plusr5_total_power_generation;0.010000;0.000000;kWh;1
+52;3;307;U16;;PLUS/R5 Daily Operating Hours;plusr5_daily_operating_hours;0.100000;0.000000;h;1
+53;3;308;U32;;PLUS/R5 Total Operating Hours;plusr5_total_operating_hours;0.100000;0.000000;h;1
+54;3;310;U16;;PLUS/R5 Error Count;plusr5_error_count;1.000000;0.000000;;1
+55;3;16388;U16;;R6 3-15K Operating Mode;r6_315k_operating_mode;1.000000;0.000000;;1
+56;3;16389;U32;;R6 3-15K Display Panel Fault MSG;r6_315k_display_panel_fault_msg;1.000000;0.000000;;1
+57;3;16391;U32;;R6 3-15K Main Controller Fault MSG;r6_315k_main_controller_fault_msg;1.000000;0.000000;;1
+58;3;16393;U32;;R6 3-15K Main Controller Fault MSG2;r6_315k_main_controller_fault_msg2;1.000000;0.000000;;1
+59;3;16395;U32;;R6 3-15K BMS Fault MSG;r6_315k_bms_fault_msg;1.000000;0.000000;;1
+60;3;16399;U16;;R6 3-15K Error Count;r6_315k_error_count;1.000000;0.000000;;1
+61;3;16400;I16;;R6 3-15K Sink TempC;r6_315k_sink_tempc;0.100000;0.000000;°C;1
+62;3;16401;I16;;R6 3-15K AmbTempC;r6_315k_ambtempc;0.100000;0.000000;°C;1
+63;3;16402;I16;;R6 3-15K GFCI;r6_315k_gfci;1.000000;0.000000;mA;1
+64;3;16403;U16;;R6 3-15K ISO1;r6_315k_iso1;1.000000;0.000000;kOhm;1
+65;3;16404;U16;;R6 3-15K ISO2;r6_315k_iso2;1.000000;0.000000;kOhm;1
+66;3;16405;U16;;R6 3-15K ISO3;r6_315k_iso3;1.000000;0.000000;kOhm;1
+67;3;16406;U16;;R6 3-15K ISO4;r6_315k_iso4;1.000000;0.000000;kOhm;1
+68;3;16407;U16;;R6 3-15K DRM Hardware Status;r6_315k_drm_hardware_status;1.000000;0.000000;;1
+69;3;16408;U16;;R6 3-15K DRM Software Status;r6_315k_drm_software_status;1.000000;0.000000;;1
+70;3;16409;U16;;R6 3-15K Grid Conn Time Countdown;r6_315k_grid_conn_time_countdown;1.000000;0.000000;s;1
+71;3;16410;U16;;R6 3-15K Fault Record Area SN;r6_315k_fault_record_area_sn;1.000000;0.000000;;1
+72;3;16411;U16;;R6 3-15K Setting Parameters Area SN;r6_315k_setting_parameters_area_sn;1.000000;0.000000;;1
+73;3;16412;U16;;R6 3-15K FCAS Trigger Flag;r6_315k_fcas_trigger_flag;1.000000;0.000000;;1
+74;3;16418;I16;;R6 3-15K Set App Mode;r6_315k_set_app_mode;1.000000;0.000000;;1
+75;3;16419;I16;;R6 3-15K Inv Set Discharge Power;r6_315k_inv_set_discharge_power;1.000000;0.000000;W;1
+76;3;16420;I16;;R6 3-15K Inv Set Charge Power;r6_315k_inv_set_charge_power;1.000000;0.000000;W;1
+77;3;16421;I16;;R6 3-15K Bat Set Discharge Current;r6_315k_bat_set_discharge_current;0.100000;0.000000;A;1
+78;3;16422;I16;;R6 3-15K Bat Set Charge Current;r6_315k_bat_set_charge_current;0.100000;0.000000;A;1
+79;3;16423;U16;;R6 3-15K Bat Status Disp;r6_315k_bat_status_disp;1.000000;0.000000;;1
+80;3;16424;I16;;R6 3-15K Bat Protocol Set;r6_315k_bat_protocol_set;1.000000;0.000000;;1
+81;3;16425;I16;;R6 3-15K Bat Set SOC_H;r6_315k_bat_set_soc_h;1.000000;0.000000;'%;1
+82;3;16426;I16;;R6 3-15K Bat Set SOC_L;r6_315k_bat_set_soc_l;1.000000;0.000000;'%;1
+83;3;16427;I16;;R6 3-15K Bat Set DOD;r6_315k_bat_set_dod;1.000000;0.000000;'%;1
+84;3;16428;I16;;R6 3-15K Bat Set Reserved SOC;r6_315k_bat_set_reserved_soc;1.000000;0.000000;'%;1
+85;3;16429;I16;;R6 3-15K BMS Set Charging Voltage;r6_315k_bms_set_charging_voltage;0.100000;0.000000;V;1
+86;3;16430;I16;;R6 3-15K BMS Set Discharging Power;r6_315k_bms_set_discharging_power;1.000000;0.000000;A;1
+87;3;16431;I16;;R6 3-15K BMS Set Charging Power;r6_315k_bms_set_charging_power;1.000000;0.000000;A;1
+88;3;16432;I16;;R6 3-15K Set Meter Mode;r6_315k_set_meter_mode;1.000000;0.000000;;1
+89;3;16433;U16;;R6 3-15K R Phase Grid Volt;r6_315k_r_phase_grid_volt;0.100000;0.000000;V;1
+90;3;16434;I16;;R6 3-15K R Phase Grid Curr;r6_315k_r_phase_grid_curr;0.010000;0.000000;A;1
+91;3;16435;U16;;R6 3-15K R Phase Grid Freq;r6_315k_r_phase_grid_freq;0.010000;0.000000;Hz;1
+92;3;16436;I16;;R6 3-15K R Phase Grid DCI;r6_315k_r_phase_grid_dci;1.000000;0.000000;mA;1
+93;3;16437;I16;;R6 3-15K R Phase Grid Active Power;r6_315k_r_phase_grid_active_power;1.000000;0.000000;W;1
+94;3;16438;U16;;R6 3-15K R Phase Grid Apparent Power;r6_315k_r_phase_grid_apparent_power;1.000000;0.000000;VA;1
+95;3;16439;I16;;R6 3-15K R Phase Grid Power Factor;r6_315k_r_phase_grid_power_factor;0.001000;0.000000;;1
+96;3;16440;U16;;R6 3-15K S Phase Grid Volt;r6_315k_s_phase_grid_volt;0.100000;0.000000;V;1
+97;3;16441;I16;;R6 3-15K S Phase Grid Curr;r6_315k_s_phase_grid_curr;0.010000;0.000000;A;1
+98;3;16442;U16;;R6 3-15K S Phase Grid Freq;r6_315k_s_phase_grid_freq;0.010000;0.000000;Hz;1
+99;3;16443;I16;;R6 3-15K S Phase Grid DCI;r6_315k_s_phase_grid_dci;1.000000;0.000000;mA;1
+100;3;16444;I16;;R6 3-15K S Phase Grid Active Power;r6_315k_s_phase_grid_active_power;1.000000;0.000000;W;1
+101;3;16445;U16;;R6 3-15K S Phase Grid Apparent Power;r6_315k_s_phase_grid_apparent_power;1.000000;0.000000;VA;1
+102;3;16446;I16;;R6 3-15K S Phase Grid Power Factor;r6_315k_s_phase_grid_power_factor;0.001000;0.000000;;1
+103;3;16447;U16;;R6 3-15K T Phase Grid Volt;r6_315k_t_phase_grid_volt;0.100000;0.000000;V;1
+104;3;16448;I16;;R6 3-15K T Phase Grid Curr;r6_315k_t_phase_grid_curr;0.010000;0.000000;A;1
+105;3;16449;U16;;R6 3-15K T Phase Grid Freq;r6_315k_t_phase_grid_freq;0.010000;0.000000;Hz;1
+106;3;16450;I16;;R6 3-15K T Phase Grid DCI;r6_315k_t_phase_grid_dci;1.000000;0.000000;mA;1
+107;3;16451;I16;;R6 3-15K T Phase Grid Active Power;r6_315k_t_phase_grid_active_power;1.000000;0.000000;W;1
+108;3;16452;U16;;R6 3-15K T Phase Grid Apparent Power;r6_315k_t_phase_grid_apparent_power;1.000000;0.000000;VA;1
+109;3;16453;I16;;R6 3-15K T Phase Grid Power Factor;r6_315k_t_phase_grid_power_factor;0.001000;0.000000;;1
+110;3;16454;U16;;R6 3-15K R Phase Inverter Volt;r6_315k_r_phase_inverter_volt;0.100000;0.000000;V;1
+111;3;16455;I16;;R6 3-15K R Phase Inverter Curr;r6_315k_r_phase_inverter_curr;0.010000;0.000000;A;1
+112;3;16456;U16;;R6 3-15K R Phase Inverter Freq;r6_315k_r_phase_inverter_freq;0.010000;0.000000;Hz;1
+113;3;16457;I16;;R6 3-15K R Phase Inverter Active Power;r6_315k_r_phase_inverter_active_power;1.000000;0.000000;W;1
+114;3;16458;U16;;R6 3-15K R Phase Inverter Apparent Power;r6_315k_r_phase_inverter_apparent_power;1.000000;0.000000;VA;1
+115;3;16459;U16;;R6 3-15K S Phase Inverter Volt;r6_315k_s_phase_inverter_volt;0.100000;0.000000;V;1
+116;3;16460;I16;;R6 3-15K S Phase Inverter Curr;r6_315k_s_phase_inverter_curr;0.010000;0.000000;A;1
+117;3;16461;U16;;R6 3-15K S Phase Inverter Freq;r6_315k_s_phase_inverter_freq;0.010000;0.000000;Hz;1
+118;3;16462;I16;;R6 3-15K S Phase Inverter Active Power;r6_315k_s_phase_inverter_active_power;1.000000;0.000000;W;1
+119;3;16463;U16;;R6 3-15K S Phase Inverter Apparent Power;r6_315k_s_phase_inverter_apparent_power;1.000000;0.000000;VA;1
+120;3;16464;U16;;R6 3-15K T Phase Inverter Volt;r6_315k_t_phase_inverter_volt;0.100000;0.000000;V;1
+121;3;16465;I16;;R6 3-15K T Phase Inverter Curr;r6_315k_t_phase_inverter_curr;0.010000;0.000000;A;1
+122;3;16466;U16;;R6 3-15K T Phase Inverter Freq;r6_315k_t_phase_inverter_freq;0.010000;0.000000;Hz;1
+123;3;16467;I16;;R6 3-15K T Phase Inverter Active Power;r6_315k_t_phase_inverter_active_power;1.000000;0.000000;W;1
+124;3;16468;U16;;R6 3-15K T Phase Inverter Apparent Power;r6_315k_t_phase_inverter_apparent_power;1.000000;0.000000;VA;1
+125;3;16469;U16;;R6 3-15K R Phase Output Volt;r6_315k_r_phase_output_volt;0.100000;0.000000;V;1
+126;3;16470;U16;;R6 3-15K R Phase Output Curr;r6_315k_r_phase_output_curr;0.010000;0.000000;A;1
+127;3;16471;U16;;R6 3-15K R Phase Output Freq;r6_315k_r_phase_output_freq;0.010000;0.000000;Hz;1
+128;3;16472;I16;;R6 3-15K R Phase Output Volt DVI;r6_315k_r_phase_output_volt_dvi;1.000000;0.000000;mV;1
+129;3;16473;U16;;R6 3-15K R Phase Output Active Power;r6_315k_r_phase_output_active_power;1.000000;0.000000;W;1
+130;3;16474;U16;;R6 3-15K R Phase Output Apparent Power;r6_315k_r_phase_output_apparent_power;1.000000;0.000000;VA;1
+131;3;16475;U16;;R6 3-15K S Phase Output Volt;r6_315k_s_phase_output_volt;0.100000;0.000000;V;1
+132;3;16476;U16;;R6 3-15K S Phase Output Curr;r6_315k_s_phase_output_curr;0.010000;0.000000;A;1
+133;3;16477;U16;;R6 3-15K S Phase Output Freq;r6_315k_s_phase_output_freq;0.010000;0.000000;Hz;1
+134;3;16478;I16;;R6 3-15K S Phase Output Volt DVI;r6_315k_s_phase_output_volt_dvi;1.000000;0.000000;mV;1
+135;3;16479;U16;;R6 3-15K S Phase Output Active Power;r6_315k_s_phase_output_active_power;1.000000;0.000000;W;1
+136;3;16480;U16;;R6 3-15K S Phase Output Apparent Power;r6_315k_s_phase_output_apparent_power;1.000000;0.000000;VA;1
+137;3;16481;U16;;R6 3-15K T Phase Output Volt;r6_315k_t_phase_output_volt;0.100000;0.000000;V;1
+138;3;16482;U16;;R6 3-15K T Phase Output Curr;r6_315k_t_phase_output_curr;0.010000;0.000000;A;1
+139;3;16483;U16;;R6 3-15K T Phase Output Freq;r6_315k_t_phase_output_freq;0.010000;0.000000;Hz;1
+140;3;16484;I16;;R6 3-15K T Phase Output Volt DVI;r6_315k_t_phase_output_volt_dvi;1.000000;0.000000;mV;1
+141;3;16485;U16;;R6 3-15K T Phase Output Active Power;r6_315k_t_phase_output_active_power;1.000000;0.000000;W;1
+142;3;16486;U16;;R6 3-15K T Phase Output Apparent Power;r6_315k_t_phase_output_apparent_power;1.000000;0.000000;VA;1
+143;3;16487;U16;;R6 3-15K Master BUS Voltage;r6_315k_master_bus_voltage;0.100000;0.000000;V;1
+144;3;16488;U16;;R6 3-15K Slave BUS Voltage;r6_315k_slave_bus_voltage;0.100000;0.000000;V;1
+145;3;16489;U16;;R6 3-15K Battery Voltage;r6_315k_battery_voltage;0.100000;0.000000;V;1
+146;3;16490;I16;;R6 3-15K Battery Current;r6_315k_battery_current;0.010000;0.000000;A;1
+147;3;16491;I16;;R6 3-15K Battery Controller 1 Current;r6_315k_battery_controller_1_current;0.010000;0.000000;A;1
+148;3;16492;I16;;R6 3-15K Battery Controller 2 Current;r6_315k_battery_controller_2_current;0.010000;0.000000;A;1
+149;3;16493;I16;;R6 3-15K Battery Power;r6_315k_battery_power;1.000000;0.000000;W;1
+150;3;16494;I16;;R6 3-15K Battery Temperature;r6_315k_battery_temperature;0.100000;0.000000;°C;1
+151;3;16495;U16;;R6 3-15K Battery State of Charge;r6_315k_battery_state_of_charge;0.010000;0.000000;'%;1
+152;3;16497;U16;;R6 3-15K PV1 Voltage;r6_315k_pv1_voltage;0.100000;0.000000;V;1
+153;3;16498;U16;;R6 3-15K PV1 Current;r6_315k_pv1_current;0.010000;0.000000;A;1
+154;3;16499;U16;;R6 3-15K PV1 Power;r6_315k_pv1_power;1.000000;0.000000;W;1
+155;3;16500;U16;;R6 3-15K PV2 Voltage;r6_315k_pv2_voltage;0.100000;0.000000;V;1
+156;3;16501;U16;;R6 3-15K PV2 Current;r6_315k_pv2_current;0.010000;0.000000;A;1
+157;3;16502;U16;;R6 3-15K PV2 Power;r6_315k_pv2_power;1.000000;0.000000;W;1
+158;3;16503;U16;;R6 3-15K PV3 Voltage;r6_315k_pv3_voltage;0.100000;0.000000;V;1
+159;3;16504;U16;;R6 3-15K PV3 Current;r6_315k_pv3_current;0.010000;0.000000;A;1
+160;3;16505;U16;;R6 3-15K PV3 Power;r6_315k_pv3_power;1.000000;0.000000;W;1
+161;3;16506;U16;;R6 3-15K PV4 Voltage;r6_315k_pv4_voltage;0.100000;0.000000;V;1
+162;3;16507;U16;;R6 3-15K PV4 Current;r6_315k_pv4_current;0.010000;0.000000;A;1
+163;3;16508;U16;;R6 3-15K PV4 Power;r6_315k_pv4_power;1.000000;0.000000;W;1
+164;3;16509;U16;;R6 3-15K PV1 String Current 1;r6_315k_pv1_string_current_1;0.010000;0.000000;A;1
+165;3;16510;U16;;R6 3-15K PV1 String Current 2;r6_315k_pv1_string_current_2;0.010000;0.000000;A;1
+166;3;16511;U16;;R6 3-15K PV1 String Current 3;r6_315k_pv1_string_current_3;0.010000;0.000000;A;1
+167;3;16512;U16;;R6 3-15K PV1 String Current 4;r6_315k_pv1_string_current_4;0.010000;0.000000;A;1
+168;3;16513;U16;;R6 3-15K PV2 String Current 1;r6_315k_pv2_string_current_1;0.010000;0.000000;A;1
+169;3;16514;U16;;R6 3-15K PV2 String Current 2;r6_315k_pv2_string_current_2;0.010000;0.000000;A;1
+170;3;16515;U16;;R6 3-15K PV2 String Current 3;r6_315k_pv2_string_current_3;0.010000;0.000000;A;1
+171;3;16516;U16;;R6 3-15K PV2 String Current 4;r6_315k_pv2_string_current_4;0.010000;0.000000;A;1
+172;3;16517;U16;;R6 3-15K PV3 String Current 1;r6_315k_pv3_string_current_1;0.010000;0.000000;A;1
+173;3;16518;U16;;R6 3-15K PV3 String Current 2;r6_315k_pv3_string_current_2;0.010000;0.000000;A;1
+174;3;16519;U16;;R6 3-15K PV3 String Current 3;r6_315k_pv3_string_current_3;0.010000;0.000000;A;1
+175;3;16520;U16;;R6 3-15K PV3 String Current 4;r6_315k_pv3_string_current_4;0.010000;0.000000;A;1
+176;3;16521;U16;;R6 3-15K PV4 String Current 1;r6_315k_pv4_string_current_1;0.010000;0.000000;A;1
+177;3;16522;U16;;R6 3-15K PV4 String Current 2;r6_315k_pv4_string_current_2;0.010000;0.000000;A;1
+178;3;16523;U16;;R6 3-15K PV4 String Current 3;r6_315k_pv4_string_current_3;0.010000;0.000000;A;1
+179;3;16524;U16;;R6 3-15K PV4 String Current 4;r6_315k_pv4_string_current_4;0.010000;0.000000;A;1
+180;3;16525;U16;;R6 3-15K R Phase Grid-Side Volt;r6_315k_r_phase_gridside_volt;0.100000;0.000000;V;1
+181;3;16526;U16;;R6 3-15K R Phase Grid-Side Curr;r6_315k_r_phase_gridside_curr;0.010000;0.000000;A;1
+182;3;16527;U16;;R6 3-15K R Phase Grid-Side Freq;r6_315k_r_phase_gridside_freq;0.010000;0.000000;Hz;1
+183;3;16528;U16;;R6 3-15K R Phase Grid-Side Active Power;r6_315k_r_phase_gridside_active_power;1.000000;0.000000;W;1
+184;3;16529;U16;;R6 3-15K S Phase Grid-Side Volt;r6_315k_s_phase_gridside_volt;0.010000;0.000000;V;1
+185;3;16530;U16;;R6 3-15K S Phase Grid-Side Active Power;r6_315k_s_phase_gridside_active_power;1.000000;0.000000;W;1
+186;3;16531;U16;;R6 3-15K T Phase Grid-Side Volt;r6_315k_t_phase_gridside_volt;0.010000;0.000000;V;1
+187;3;16532;U16;;R6 3-15K T Phase Grid-Side Active Power;r6_315k_t_phase_gridside_active_power;1.000000;0.000000;W;1
+188;3;16533;U16;;R6 3-15K PV Direction;r6_315k_pv_direction;1.000000;0.000000;;1
+189;3;16534;I16;;R6 3-15K Battery Direction;r6_315k_battery_direction;1.000000;0.000000;;1
+190;3;16535;I16;;R6 3-15K Grid Direction;r6_315k_grid_direction;1.000000;0.000000;;1
+191;3;16536;U16;;R6 3-15K Output Direction;r6_315k_output_direction;1.000000;0.000000;;1
+192;3;16537;I16;;R6 3-15K PV Consumption Power;r6_315k_pv_consumption_power;1.000000;0.000000;W;1
+193;3;16538;I16;;R6 3-15K Grid Consumption Power;r6_315k_grid_consumption_power;1.000000;0.000000;W;1
+194;3;16539;I16;;R6 3-15K Grid FeedIn PV Power;r6_315k_grid_feedin_pv_power;1.000000;0.000000;W;1
+195;3;16540;I16;;R6 3-15K Grid FeedIn Bat Power;r6_315k_grid_feedin_bat_power;1.000000;0.000000;W;1
+196;3;16541;I16;;R6 3-15K Bat Consumption Power;r6_315k_bat_consumption_power;1.000000;0.000000;W;1
+197;3;16542;I16;;R6 3-15K Bat Charge PV Power;r6_315k_bat_charge_pv_power;1.000000;0.000000;W;1
+198;3;16543;I16;;R6 3-15K Bat Charge Grid Power;r6_315k_bat_charge_grid_power;1.000000;0.000000;W;1
+199;3;16544;I16;;R6 3-15K System Total Load Power;r6_315k_system_total_load_power;1.000000;0.000000;W;1
+200;3;16545;I16;;R6 3-15K CT Grid Active Power;r6_315k_ct_grid_active_power;1.000000;0.000000;W;1
+201;3;16546;I16;;R6 3-15K CT Grid Apparent Power;r6_315k_ct_grid_apparent_power;1.000000;0.000000;VA;1
+202;3;16547;I16;;R6 3-15K CT PV Active Power;r6_315k_ct_pv_active_power;1.000000;0.000000;W;1
+203;3;16548;I16;;R6 3-15K CT PV Apparent Power;r6_315k_ct_pv_apparent_power;1.000000;0.000000;VA;1
+204;3;16549;I16;;R6 3-15K Total PV Power;r6_315k_total_pv_power;1.000000;0.000000;W;1
+205;3;16550;I16;;R6 3-15K Total Battery Power;r6_315k_total_battery_power;1.000000;0.000000;W;1
+206;3;16551;I16;;R6 3-15K Total Grid Active Power;r6_315k_total_grid_active_power;1.000000;0.000000;W;1
+207;3;16552;I16;;R6 3-15K Total Grid Apparent Power;r6_315k_total_grid_apparent_power;1.000000;0.000000;VA;1
+208;3;16553;I16;;R6 3-15K Total Inverter Active Power;r6_315k_total_inverter_active_power;1.000000;0.000000;W;1
+209;3;16554;I16;;R6 3-15K Total Inverter Apparent Power;r6_315k_total_inverter_apparent_power;1.000000;0.000000;VA;1
+210;3;16555;U16;;R6 3-15K Backup Total Load PowerWatt;r6_315k_backup_total_load_powerwatt;1.000000;0.000000;W;1
+211;3;16556;U16;;R6 3-15K Backup Total Load PowerVA;r6_315k_backup_total_load_powerva;1.000000;0.000000;VA;1
+212;3;16557;I16;;R6 3-15K System Grid PowerWatt;r6_315k_system_grid_powerwatt;1.000000;0.000000;W;1
+213;3;16558;U16;;R6 3-15K Input AVG Power 5Min Max;r6_315k_input_avg_power_5min_max;1.000000;0.000000;W;1
+214;3;16559;U16;;R6 3-15K Output AVG Power 5Min Max;r6_315k_output_avg_power_5min_max;1.000000;0.000000;W;1
+215;3;16560;U16;;R6 3-15K R Phase Intelligent Load Power;r6_315k_r_phase_intelligent_load_power;1.000000;0.000000;W;1
+216;3;16561;U16;;R6 3-15K S Phase Intelligent Load Power;r6_315k_s_phase_intelligent_load_power;1.000000;0.000000;W;1
+217;3;16562;U16;;R6 3-15K T Phase Intelligent Load Power;r6_315k_t_phase_intelligent_load_power;1.000000;0.000000;W;1
+218;3;16572;U16;;R6 3-15K Today Hour;r6_315k_today_hour;0.100000;0.000000;h;1
+219;3;16573;U32;;R6 3-15K Total Hour;r6_315k_total_hour;0.100000;0.000000;h;1
+220;3;16575;U32;;R6 3-15K Today PV Energy;r6_315k_today_pv_energy;0.010000;0.000000;kWh;1
+221;3;16577;U32;;R6 3-15K Month PV Energy;r6_315k_month_pv_energy;0.010000;0.000000;kWh;1
+222;3;16579;U32;;R6 3-15K Year PV Energy;r6_315k_year_pv_energy;0.010000;0.000000;kWh;1
+223;3;16581;U32;;R6 3-15K Total PV Energy;r6_315k_total_pv_energy;0.010000;0.000000;kWh;1
+224;3;16583;U32;;R6 3-15K Today Bat Chg Energy;r6_315k_today_bat_chg_energy;0.010000;0.000000;kWh;1
+225;3;16585;U32;;R6 3-15K Month Bat Chg Energy;r6_315k_month_bat_chg_energy;0.010000;0.000000;kWh;1
+226;3;16587;U32;;R6 3-15K Year Bat Chg Energy;r6_315k_year_bat_chg_energy;0.010000;0.000000;kWh;1
+227;3;16589;U32;;R6 3-15K Total Bat Chg Energy;r6_315k_total_bat_chg_energy;0.010000;0.000000;kWh;1
+228;3;16591;U32;;R6 3-15K Today Bat Dis Energy;r6_315k_today_bat_dis_energy;0.010000;0.000000;kWh;1
+229;3;16593;U32;;R6 3-15K Month Bat Dis Energy;r6_315k_month_bat_dis_energy;0.010000;0.000000;kWh;1
+230;3;16595;U32;;R6 3-15K Year Bat Dis Energy;r6_315k_year_bat_dis_energy;0.010000;0.000000;kWh;1
+231;3;16597;U32;;R6 3-15K Total Bat Dis Energy;r6_315k_total_bat_dis_energy;0.010000;0.000000;kWh;1
+232;3;16599;U32;;R6 3-15K Today Inv Gen Energy;r6_315k_today_inv_gen_energy;0.010000;0.000000;kWh;1
+233;3;16601;U32;;R6 3-15K Month Inv Gen Energy;r6_315k_month_inv_gen_energy;0.010000;0.000000;kWh;1
+234;3;16603;U32;;R6 3-15K Year Inv Gen Energy;r6_315k_year_inv_gen_energy;0.010000;0.000000;kWh;1
+235;3;16605;U32;;R6 3-15K Total Inv Gen Energy;r6_315k_total_inv_gen_energy;0.010000;0.000000;kWh;1
+236;3;16607;U32;;R6 3-15K Today Total Load Energy;r6_315k_today_total_load_energy;0.010000;0.000000;kWh;1
+237;3;16609;U32;;R6 3-15K Month Total Load Energy;r6_315k_month_total_load_energy;0.010000;0.000000;kWh;1
+238;3;16611;U32;;R6 3-15K Year Total Load Energy;r6_315k_year_total_load_energy;0.010000;0.000000;kWh;1
+239;3;16613;U32;;R6 3-15K Total Total Load Energy;r6_315k_total_total_load_energy;0.010000;0.000000;kWh;1
+240;3;16615;U32;;R6 3-15K Today Backup Load Energy;r6_315k_today_backup_load_energy;0.010000;0.000000;kWh;1
+241;3;16617;U32;;R6 3-15K Month Backup Load Energy;r6_315k_month_backup_load_energy;0.010000;0.000000;kWh;1
+242;3;16619;U32;;R6 3-15K Year Backup Load Energy;r6_315k_year_backup_load_energy;0.010000;0.000000;kWh;1
+243;3;16621;U32;;R6 3-15K Total Backup Load Energy;r6_315k_total_backup_load_energy;0.010000;0.000000;kWh;1
+244;3;16623;U32;;R6 3-15K Today Sell Energy;r6_315k_today_sell_energy;0.010000;0.000000;kWh;1
+245;3;16625;U32;;R6 3-15K Month Sell Energy;r6_315k_month_sell_energy;0.010000;0.000000;kWh;1
+246;3;16627;U32;;R6 3-15K Year Sell Energy;r6_315k_year_sell_energy;0.010000;0.000000;kWh;1
+247;3;16629;U32;;R6 3-15K Total Sell Energy;r6_315k_total_sell_energy;0.010000;0.000000;kWh;1
+248;3;16631;U32;;R6 3-15K Today FeedIn Energy;r6_315k_today_feedin_energy;0.010000;0.000000;kWh;1
+249;3;16633;U32;;R6 3-15K Month FeedIn Energy;r6_315k_month_feedin_energy;0.010000;0.000000;kWh;1
+250;3;16635;U32;;R6 3-15K Year FeedIn Energy;r6_315k_year_feedin_energy;0.010000;0.000000;kWh;1
+251;3;16637;U32;;R6 3-15K Total FeedIn Energy;r6_315k_total_feedin_energy;0.010000;0.000000;kWh;1
+252;3;24580;U32;;R6/C6 Total Power Generation;r6c6_total_power_generation;0.010000;0.000000;kWh;1
+253;3;24582;U32;;R6/C6 Yearly Power Generation;r6c6_yearly_power_generation;0.010000;0.000000;kWh;1
+254;3;24584;U32;;R6/C6 Monthly Power Generation;r6c6_monthly_power_generation;0.010000;0.000000;kWh;1
+255;3;24586;U32;;R6/C6 Daily Power Generation;r6c6_daily_power_generation;0.010000;0.000000;kWh;1
+256;3;24588;U32;;R6/C6 Total Operating Hours;r6c6_total_operating_hours;0.100000;0.000000;h;1
+257;3;24590;U16;;R6/C6 Daily Operating Hours;r6c6_daily_operating_hours;0.100000;0.000000;h;1
+258;3;24591;U16;;R6/C6 Error Count;r6c6_error_count;1.000000;0.000000;;1
+259;3;24592;U16;;R6/C6 Historical Error Fault SN;r6c6_historical_error_fault_sn;1.000000;0.000000;;1
+260;3;24593;U16;;R6/C6 Setting Parameters Area SN;r6c6_setting_parameters_area_sn;1.000000;0.000000;;1
+261;3;24595;U16;;R6/C6 Operating Mode;r6c6_operating_mode;1.000000;0.000000;;1
+262;3;24602;U16;;R6/C6 Countdown Seconds;r6c6_countdown_seconds;1.000000;0.000000;s;1
+263;3;24603;U32;;R6/C6 Cumulative Generation Value;r6c6_cumulative_generation_value;0.010000;0.000000;kWh;1
+264;3;24605;U32;;R6/C6 Output Active Power;r6c6_output_active_power;0.001000;0.000000;kW;1
+265;3;24607;I32;;R6/C6 Output Reactive Power;r6c6_output_reactive_power;1.000000;0.000000;Var;1
+266;3;24609;I16;;R6/C6 Output Power Factor;r6c6_output_power_factor;0.001000;0.000000;;1
+267;3;24610;U16;;R6/C6 L1 Phase Voltage;r6c6_l1_phase_voltage;0.100000;0.000000;V;1
+268;3;24611;U16;;R6/C6 L1 Phase Current;r6c6_l1_phase_current;0.010000;0.000000;A;1
+269;3;24612;U16;;R6/C6 L1 Phase Frequency;r6c6_l1_phase_frequency;0.010000;0.000000;Hz;1
+270;3;24613;I16;;R6/C6 L1 Phase DC Component;r6c6_l1_phase_dc_component;1.000000;0.000000;mA;1
+271;3;24614;U16;;R6/C6 L1 Power;r6c6_l1_power;0.001000;0.000000;kW;1
+272;3;24615;I16;;R6/C6 L1 Power Factor;r6c6_l1_power_factor;0.001000;0.000000;;1
+273;3;24616;U16;;R6/C6 L2 Phase Voltage;r6c6_l2_phase_voltage;0.100000;0.000000;V;1
+274;3;24617;U16;;R6/C6 L2 Phase Current;r6c6_l2_phase_current;0.010000;0.000000;A;1
+275;3;24618;U16;;R6/C6 L2 Phase Frequency;r6c6_l2_phase_frequency;0.010000;0.000000;Hz;1
+276;3;24619;I16;;R6/C6 L2 Phase DC Component;r6c6_l2_phase_dc_component;1.000000;0.000000;mA;1
+277;3;24620;U16;;R6/C6 L2 Power;r6c6_l2_power;0.001000;0.000000;kW;1
+278;3;24621;I16;;R6/C6 L2 Power Factor;r6c6_l2_power_factor;0.001000;0.000000;;1
+279;3;24622;U16;;R6/C6 L3 Phase Voltage;r6c6_l3_phase_voltage;0.100000;0.000000;V;1
+280;3;24623;U16;;R6/C6 L3 Phase Current;r6c6_l3_phase_current;0.010000;0.000000;A;1
+281;3;24624;U16;;R6/C6 L3 Phase Frequency;r6c6_l3_phase_frequency;0.010000;0.000000;Hz;1
+282;3;24625;I16;;R6/C6 L3 Phase DC Component;r6c6_l3_phase_dc_component;1.000000;0.000000;mA;1
+283;3;24626;U16;;R6/C6 L3 Power;r6c6_l3_power;0.001000;0.000000;kW;1
+284;3;24627;I16;;R6/C6 L3 Power Factor;r6c6_l3_power_factor;0.001000;0.000000;;1
+285;3;24628;U16;;R6/C6 Neutral to Ground Voltage;r6c6_neutral_to_ground_voltage;0.100000;0.000000;V;1
+286;3;24629;I16;;R6/C6 Ground Leakage Current;r6c6_ground_leakage_current;1.000000;0.000000;mA;1
+287;3;24630;U16;;R6/C6 BUS Voltage;r6c6_bus_voltage;0.100000;0.000000;V;1
+288;3;24631;U16;;R6/C6 BUS Neutral Point Voltage;r6c6_bus_neutral_point_voltage;0.100000;0.000000;V;1
+289;3;24632;I16;;R6/C6 Heatsink Temperature;r6c6_heatsink_temperature;0.100000;0.000000;°C;1
+290;3;24633;I16;;R6/C6 L1 Phase Temperature;r6c6_l1_phase_temperature;0.100000;0.000000;°C;1
+291;3;24634;I16;;R6/C6 L2 Phase Temperature;r6c6_l2_phase_temperature;0.100000;0.000000;°C;1
+292;3;24635;I16;;R6/C6 L3 Phase Temperature;r6c6_l3_phase_temperature;0.100000;0.000000;°C;1
+293;3;24636;I16;;R6/C6 Chamber Temperature;r6c6_chamber_temperature;0.100000;0.000000;°C;1
+294;3;24637;I16;;R6/C6 Boost Module Temp 1;r6c6_boost_module_temp_1;0.100000;0.000000;°C;1
+295;3;24638;I16;;R6/C6 Boost Module Temp 2;r6c6_boost_module_temp_2;0.100000;0.000000;°C;1
+296;3;24639;I16;;R6/C6 Boost Module Temp 3;r6c6_boost_module_temp_3;0.100000;0.000000;°C;1
+297;3;24640;I16;;R6/C6 Boost Module Temp 4;r6c6_boost_module_temp_4;0.100000;0.000000;°C;1
+298;3;24641;U16;;R6/C6 PV1+ ISO;r6c6_pv1_iso;1.000000;0.000000;kOhm;1
+299;3;24642;U16;;R6/C6 PV2+ ISO;r6c6_pv2_iso;1.000000;0.000000;kOhm;1
+300;3;24643;U16;;R6/C6 PV3+ ISO;r6c6_pv3_iso;1.000000;0.000000;kOhm;1
+301;3;24644;U16;;R6/C6 PV ISO;r6c6_pv_iso;1.000000;0.000000;kOhm;1
+302;3;24645;U16;;R6/C6 PV1 Voltage;r6c6_pv1_voltage;0.100000;0.000000;V;1
+303;3;24646;U16;;R6/C6 PV1 Current;r6c6_pv1_current;0.010000;0.000000;A;1
+304;3;24647;U16;;R6/C6 PV1 Power;r6c6_pv1_power;1.000000;0.000000;W;1
+305;3;24648;U16;;R6/C6 PV2 Voltage;r6c6_pv2_voltage;0.100000;0.000000;V;1
+306;3;24649;U16;;R6/C6 PV2 Current;r6c6_pv2_current;0.010000;0.000000;A;1
+307;3;24650;U16;;R6/C6 PV2 Power;r6c6_pv2_power;1.000000;0.000000;W;1
+308;3;24651;U16;;R6/C6 PV3 Voltage;r6c6_pv3_voltage;0.100000;0.000000;V;1
+309;3;24652;U16;;R6/C6 PV3 Current;r6c6_pv3_current;0.010000;0.000000;A;1
+310;3;24653;U16;;R6/C6 PV3 Power;r6c6_pv3_power;1.000000;0.000000;W;1
+311;3;24654;U16;;R6/C6 PV4 Voltage;r6c6_pv4_voltage;0.100000;0.000000;V;1
+312;3;24655;U16;;R6/C6 PV4 Current;r6c6_pv4_current;0.010000;0.000000;A;1
+313;3;24656;U16;;R6/C6 PV4 Power;r6c6_pv4_power;1.000000;0.000000;W;1
+314;3;24657;U16;;R6/C6 PV5 Voltage;r6c6_pv5_voltage;0.100000;0.000000;V;1
+315;3;24658;U16;;R6/C6 PV5 Current;r6c6_pv5_current;0.010000;0.000000;A;1
+316;3;24659;U16;;R6/C6 PV5 Power;r6c6_pv5_power;1.000000;0.000000;W;1
+317;3;24660;U16;;R6/C6 PV6 Voltage;r6c6_pv6_voltage;0.100000;0.000000;V;1
+318;3;24661;U16;;R6/C6 PV6 Current;r6c6_pv6_current;0.010000;0.000000;A;1
+319;3;24662;U16;;R6/C6 PV6 Power;r6c6_pv6_power;1.000000;0.000000;W;1
+320;3;24663;U16;;R6/C6 PV1 String Current 1;r6c6_pv1_string_current_1;0.010000;0.000000;A;1
+321;3;24664;U16;;R6/C6 PV1 String Current 2;r6c6_pv1_string_current_2;0.010000;0.000000;A;1
+322;3;24665;U16;;R6/C6 PV2 String Current 1;r6c6_pv2_string_current_1;0.010000;0.000000;A;1
+323;3;24666;U16;;R6/C6 PV2 String Current 2;r6c6_pv2_string_current_2;0.010000;0.000000;A;1
+324;3;24667;U16;;R6/C6 PV3 String Current 1;r6c6_pv3_string_current_1;0.010000;0.000000;A;1
+325;3;24668;U16;;R6/C6 PV3 String Current 2;r6c6_pv3_string_current_2;0.010000;0.000000;A;1
+326;3;24669;U16;;R6/C6 PV4 String Current 1;r6c6_pv4_string_current_1;0.010000;0.000000;A;1
+327;3;24670;U16;;R6/C6 PV4 String Current 2;r6c6_pv4_string_current_2;0.010000;0.000000;A;1
+328;3;24671;U16;;R6/C6 PV5 String Current 1;r6c6_pv5_string_current_1;0.010000;0.000000;A;1
+329;3;24672;U16;;R6/C6 PV5 String Current 2;r6c6_pv5_string_current_2;0.010000;0.000000;A;1
+330;3;24673;U16;;R6/C6 PV6 String Current 1;r6c6_pv6_string_current_1;0.010000;0.000000;A;1
+331;3;24674;U16;;R6/C6 PV6 String Current 2;r6c6_pv6_string_current_2;0.010000;0.000000;A;1
+332;3;24675;U16;;R6/C6 PV7 Voltage;r6c6_pv7_voltage;0.100000;0.000000;V;1
+333;3;24676;U16;;R6/C6 PV7 Current;r6c6_pv7_current;0.010000;0.000000;A;1
+334;3;24677;U16;;R6/C6 PV7 Power;r6c6_pv7_power;1.000000;0.000000;W;1
+335;3;24678;U16;;R6/C6 PV8 Voltage;r6c6_pv8_voltage;0.100000;0.000000;V;1
+336;3;24679;U16;;R6/C6 PV8 Current;r6c6_pv8_current;0.010000;0.000000;A;1
+337;3;24680;U16;;R6/C6 PV8 Power;r6c6_pv8_power;1.000000;0.000000;W;1
+338;3;24681;U16;;R6/C6 PV9 Voltage;r6c6_pv9_voltage;0.100000;0.000000;V;1
+339;3;24682;U16;;R6/C6 PV9 Current;r6c6_pv9_current;0.010000;0.000000;A;1
+340;3;24683;U16;;R6/C6 PV9 Power;r6c6_pv9_power;1.000000;0.000000;W;1
+341;3;24684;U16;;R6/C6 PV10 Voltage;r6c6_pv10_voltage;0.100000;0.000000;V;1
+342;3;24685;U16;;R6/C6 PV10 Current;r6c6_pv10_current;0.010000;0.000000;A;1
+343;3;24686;U16;;R6/C6 PV10 Power;r6c6_pv10_power;1.000000;0.000000;W;1
+344;3;24687;U16;;R6/C6 PV11 Voltage;r6c6_pv11_voltage;0.100000;0.000000;V;1
+345;3;24688;U16;;R6/C6 PV11 Current;r6c6_pv11_current;0.010000;0.000000;A;1
+346;3;24689;U16;;R6/C6 PV11 Power;r6c6_pv11_power;1.000000;0.000000;W;1
+347;3;24690;U16;;R6/C6 PV12 Voltage;r6c6_pv12_voltage;0.100000;0.000000;V;1
+348;3;24691;U16;;R6/C6 PV12 Current;r6c6_pv12_current;0.010000;0.000000;A;1
+349;3;24692;U16;;R6/C6 PV12 Power;r6c6_pv12_power;1.000000;0.000000;W;1
+350;3;24693;U16;;R6/C6 PV7 String Current 1;r6c6_pv7_string_current_1;0.010000;0.000000;A;1
+351;3;24694;U16;;R6/C6 PV7 String Current 2;r6c6_pv7_string_current_2;0.010000;0.000000;A;1
+352;3;24695;U16;;R6/C6 PV8 String Current 1;r6c6_pv8_string_current_1;0.010000;0.000000;A;1
+353;3;24696;U16;;R6/C6 PV8 String Current 2;r6c6_pv8_string_current_2;0.010000;0.000000;A;1
+354;3;24697;U16;;R6/C6 PV9 String Current 1;r6c6_pv9_string_current_1;0.010000;0.000000;A;1
+355;3;24698;U16;;R6/C6 PV9 String Current 2;r6c6_pv9_string_current_2;0.010000;0.000000;A;1
+356;3;24699;U16;;R6/C6 PV10 String Current 1;r6c6_pv10_string_current_1;0.010000;0.000000;A;1
+357;3;24700;U16;;R6/C6 PV10 String Current 2;r6c6_pv10_string_current_2;0.010000;0.000000;A;1
+358;3;24701;U16;;R6/C6 PV11 String Current 1;r6c6_pv11_string_current_1;0.010000;0.000000;A;1
+359;3;24702;U16;;R6/C6 PV11 String Current 2;r6c6_pv11_string_current_2;0.010000;0.000000;A;1
+360;3;24703;U16;;R6/C6 PV12 String Current 1;r6c6_pv12_string_current_1;0.010000;0.000000;A;1
+361;3;24704;U16;;R6/C6 PV12 String Current 2;r6c6_pv12_string_current_2;0.010000;0.000000;A;1
+362;3;4104;U16;;Safety Standard Number;safety_standard_number;1.000000;0.000000;;4
+363;3;4105;U16;;Function Word (FunMask);function_word_funmask;1.000000;0.000000;;4
+364;3;4121;U16;;ISO Limit Value;iso_limit_value;1.000000;0.000000;kOhm;4
+365;3;4124;U16;;Power Limit Value;power_limit_value;0.100000;0.000000;'%;4
+366;3;4125;U16;;Reactive Power Compensation Mode;reactive_power_compensation_mode;1.000000;0.000000;;4
+367;3;4126;U16;;Reactive Value Regulation;reactive_value_regulation;0.001000;0.000000;;4
+368;3;4151;U16;;Remote On/Off Command;remote_onoff_command;1.000000;0.000000;;4
+369;3;4166;U16;;PV Input Mode;pv_input_mode;1.000000;0.000000;;4
+370;3;13320;U16;;R6 3-15K Function Word (FunMask);r6_315k_function_word_funmask;1.000000;0.000000;;4
+371;3;13323;U16;;R6 3-15K Power Limit Value;r6_315k_power_limit_value;0.100000;0.000000;'%;4
+372;3;13324;U16;;R6 3-15K Inverter Stop Command;r6_315k_inverter_stop_command;1.000000;0.000000;;4
+373;3;13328;U16;;R6 3-15K ISO Limit Value;r6_315k_iso_limit_value;1.000000;0.000000;kOhm;4
+374;3;13334;U16;;R6 3-15K Reactive Power Mode;r6_315k_reactive_power_mode;1.000000;0.000000;;4
+375;3;13335;U16;;R6 3-15K Reactive Value;r6_315k_reactive_value;0.001000;0.000000;;4
+376;3;13345;U16;;R6 3-15K Safety Standard Number;r6_315k_safety_standard_number;1.000000;0.000000;;4
+377;3;13370;U16;;R6 3-15K PV Input Mode;r6_315k_pv_input_mode;1.000000;0.000000;;4
+378;3;32788;U16;;RS485 Communication Baud & Address;rs485_communication_baud_address;1.000000;0.000000;;2
+379;3;32789;U16;;Clear Historical Faults;clear_historical_faults;1.000000;0.000000;;2
+380;3;32795;U16;;Clear Generated Energy;clear_generated_energy;1.000000;0.000000;;2
+381;3;32799;U16;;Real-time Power Limit (ATE);realtime_power_limit_ate;0.100000;0.000000;'%;4
+382;3;32804;U16;;Reactive Power Direction Mode (ATE);reactive_power_direction_mode_ate;1.000000;0.000000;;2
+383;3;32805;U16;;Power Factor Regulation Value (ATE);power_factor_regulation_value_ate;0.001000;0.000000;;2

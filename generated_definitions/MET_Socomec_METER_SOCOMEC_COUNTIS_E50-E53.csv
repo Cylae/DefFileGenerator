@@ -1,0 +1,142 @@
+modbusRTU;Meter;Socomec;Countis E5x;;;;;;;
+1;3;256_1;U8;;Option Type;;1;0;;1
+2;3;258_1;U8;;Option Slot 1;;1;0;;1
+3;3;259_1;U8;;Option Slot 2;;1;0;;1
+4;3;512_1;U8;;Network Type Config;;1;0;;1
+5;3;513_1;U8;;CT Secondary Config;;1;0;A;1
+6;3;514;U16;;CT Primary Config;;1;0;A;1
+7;3;515;U16;;VT Primary Config;;1;0;V;1
+8;3;517;U16;;VT Secondary Config;;1;0;V;1
+9;3;519_1;U8;;Reserved Setup 1;;1;0;;1
+10;3;520_1;U8;;Pmax Integration Time Config;;1;0;min;1
+11;3;521_1;U8;;OUT Type Config;;1;0;;1
+12;3;522_1;U8;;OUT Pulse Weight Config;;1;0;;1
+13;3;523_1;U8;;OUT Pulse Duration Config;;1;0;ms;1
+14;3;768;U32;;Current I1 CT VT;;0.001;0;A;4
+15;3;770;U32;;Current I2 CT VT;;0.001;0;A;4
+16;3;772;U32;;Current I3 CT VT;;0.001;0;A;4
+17;3;776;U32;;Voltage U12 CT VT;;0.01;0;V;4
+18;3;778;U32;;Voltage U23 CT VT;;0.01;0;V;4
+19;3;780;U32;;Voltage U31 CT VT;;0.01;0;V;4
+20;3;782;U32;;Simple voltage V1 CT VT;;0.01;0;V;4
+21;3;784;U32;;Simple voltage V2 CT VT;;0.01;0;V;4
+22;3;786;U32;;Simple voltage V3 CT VT;;0.01;0;V;4
+23;3;790;I32;;Total Active Power P CT VT;P_AC;0.1;0;W;4
+24;3;792;I32;;Total Reactive Power Q CT VT;Q_AC;0.1;0;var;4
+25;3;794;U32;;Total Apparent Power S CT VT;S_AC;0.1;0;VA;4
+26;3;796;I32;;Total Power Factor PF CT VT;PF;0.001;0;;4
+27;3;844;U32;;P plus AVG MAX;;0.1;0;W;4
+28;3;856;U32;;Active Energy Total Legacy;E_TOT;1;0;kWh;4
+29;3;858;U32;;Reactive Energy Total Legacy;;1;0;kvarh;4
+30;3;1024_1;U8;;Reset Action;;1;0;;1
+31;3;1792_1;U8;;Current I1 No Tx;;0.001;0;A;4
+32;3;1793_1;U8;;Current I2 No Tx;;0.001;0;A;4
+33;3;1794_1;U8;;Current I3 No Tx;;0.001;0;A;4
+34;3;1796_1;U8;;Voltage U12 No Tx;;0.01;0;V;4
+35;3;1797_1;U8;;Voltage U23 No Tx;;0.01;0;V;4
+36;3;1798_1;U8;;Voltage U31 No Tx;;0.01;0;V;4
+37;3;1799_1;U8;;Voltage V1 No Tx;;0.01;0;V;4
+38;3;1800_1;U8;;Voltage V2 No Tx;;0.01;0;V;4
+39;3;1801_1;U8;;Voltage V3 No Tx;;0.01;0;V;4
+40;3;1803_1;I8;;Total Active Power P No Tx;;0.1;0;W;4
+41;3;1804_1;I8;;Total Reactive Power Q No Tx;;0.1;0;var;4
+42;3;1805_1;U8;;Total Apparent Power S No Tx;;0.1;0;VA;4
+43;3;1806_1;I8;;Total Power Factor PF No Tx;;0.001;0;;4
+44;3;1830_1;U8;;P plus AVG MAX No Tx;;0.1;0;W;4
+45;3;36864;U32;;Overflow Value;;1;0;kWh;4
+46;3;36866_1;U8;;Nb Overflow Total Ea pos;;1;0;;4
+47;3;36867_1;U8;;Nb Overflow Total Er pos;;1;0;;4
+48;3;36868_1;U8;;Nb Overflow Total Ea neg;;1;0;;4
+49;3;36871_1;U8;;Nb Overflow Total Ea T1;;1;0;;4
+50;3;36872_1;U8;;Nb Overflow Total Ea T2;;1;0;;4
+51;3;36873_1;U8;;Nb Overflow Total Ea T3;;1;0;;4
+52;3;36874_1;U8;;Nb Overflow Total Ea T4;;1;0;;4
+53;3;40192_1;U8;;Option Type Mirror;;1;0;;1
+54;3;40194_1;U8;;Option Slot 1 Mirror;;1;0;;1
+55;3;40195_1;U8;;Option Slot 2 Mirror;;1;0;;1
+56;3;40448_1;U8;;Network Type Config 2;;1;0;;1
+57;3;40449_1;U8;;CT Secondary Config 2;;1;0;A;1
+58;3;40450_1;U8;;CT Primary Config 2;;1;0;A;1
+59;3;40453_1;U8;;P Sync Config 2;;1;0;min;1
+60;3;40455_1;U8;;Pulse Output Value Config 2;;1;0;;1
+61;3;40456_1;U8;;Pulse Output Duration Config 2;;1;0;ms;1
+62;3;40480_1;U8;;Set Tariff Number Action;;1;0;;1
+63;3;40481_1;U8;;Tariff Number To Set Action;;1;0;;1
+64;3;40512;U16;;Partial Energies Reset Action;;1;0;;1
+65;3;50000_8;STRING;;Header SOCO;;1;0;;1
+66;3;50004;U16;;Product Order ID;;1;0;;1
+67;3;50005;U16;;Product ID;;1;0;;1
+68;3;50006;U16;;JBUS Table Version;;1;0;;1
+69;3;50007;U16;;Software Version;;1;0;;1
+70;3;50008;U16;;Serial AA SS;;1;0;;1
+71;3;50009;U16;;Serial SST L;;1;0;;1
+72;3;50010;U16;;Serial Order;;1;0;;1
+73;3;50011;U32;;Serial Reserve;;1;0;;1
+74;3;50013;U64;;Product Code;;1;0;;1
+75;3;50017_1;U8;;Customization Loaded;;1;0;;1
+76;3;50018;U16;;Product Version Major;;1;0;;1
+77;3;50019;U16;;Product Version Minor;;1;0;;1
+78;3;50020;U16;;Product Version Revision;;1;0;;1
+79;3;50021;U16;;Product Version Build;;1;0;;1
+80;3;50025;U16;;SW Base Version Major;;1;0;;1
+81;3;50026;U16;;SW Base Version Minor;;1;0;;1
+82;3;50027;U16;;SW Base Version Revision;;1;0;;1
+83;3;50028;U16;;Custom Version Major;;1;0;;1
+84;3;50029;U16;;Custom Version Minor;;1;0;;1
+85;3;50030_8;STRING;;Product VLO;;1;0;;1
+86;3;50034_8;STRING;;Customization VLO;;1;0;;1
+87;3;50038_8;STRING;;SW Base VLO;;1;0;;1
+88;3;50042_16;STRING;;Vendor Name;;1;0;;1
+89;3;50050_16;STRING;;Product Name;;1;0;;1
+90;3;50058_16;STRING;;Extended Name;;1;0;;1
+91;3;50512;U32;;Hour Meter;;0.01;0;h;4
+92;3;50514;U32;;Phase to Phase Voltage U12;;0.01;0;V;4
+93;3;50516;U32;;Phase to Phase Voltage U23;;0.01;0;V;4
+94;3;50518;U32;;Phase to Phase Voltage U31;;0.01;0;V;4
+95;3;50520;U32;;Simple voltage V1;;0.01;0;V;4
+96;3;50522;U32;;Simple voltage V2;;0.01;0;V;4
+97;3;50524;U32;;Simple voltage V3;;0.01;0;V;4
+98;3;50528;U32;;Current I1;;0.001;0;A;4
+99;3;50530;U32;;Current I2;;0.001;0;A;4
+100;3;50532;U32;;Current I3;;0.001;0;A;4
+101;3;50536;I32;;Total Active Power P;;0.1;0;W;4
+102;3;50538;I32;;Total Reactive Power Q;;0.1;0;var;4
+103;3;50540;U32;;Total Apparent Power S;;0.1;0;VA;4
+104;3;50542;I32;;Power Factor PF;;0.001;0;;4
+105;3;50544;I32;;Active Power phase 1 P1;P_AC_1;0.1;0;W;4
+106;3;50546;I32;;Active Power phase 2 P2;P_AC_2;0.1;0;W;4
+107;3;50548;I32;;Active Power phase 3 P3;P_AC_3;0.1;0;W;4
+108;3;50550;I32;;Reactive Power phase 1 Q1;Q_AC_1;0.1;0;var;4
+109;3;50552;I32;;Reactive Power phase 2 Q2;Q_AC_2;0.1;0;var;4
+110;3;50554;I32;;Reactive Power phase 3 Q3;Q_AC_3;0.1;0;var;4
+111;3;50556;U32;;Apparent Power phase 1 S1;S_AC_1;0.1;0;VA;4
+112;3;50558;U32;;Apparent Power phase 2 S2;S_AC_2;0.1;0;VA;4
+113;3;50560;U32;;Apparent Power phase 3 S3;S_AC_3;0.1;0;VA;4
+114;3;50562;I32;;Power Factor phase 1 PF1;PF_1;0.001;0;;4
+115;3;50564;I32;;Power Factor phase 2 PF2;PF_2;0.001;0;;4
+116;3;50566;I32;;Power Factor phase 3 PF3;PF_3;0.001;0;;4
+117;3;50770;U32;;Total Positive Active Energy Ea+;;1;0;kWh;4
+118;3;50772;U32;;Total Positive Reactive Energy Er+;;1;0;kvarh;4
+119;3;50774;U32;;Total Apparent Energy Es;;1;0;kVAh;4
+120;3;50776;U32;;Total Negative Active Energy Ea-;;1;0;kWh;4
+121;3;50778;U32;;Total Negative Reactive Energy Er-;;1;0;kvarh;4
+122;3;50780;U32;;Partial Positive Active Energy Ea+;;1;0;kWh;4
+123;3;50782;U32;;Partial Positive Reactive Energy Er+;;1;0;kvarh;4
+124;3;50784;U32;;Partial Apparent Energy Es;;1;0;kVAh;4
+125;3;50786;U32;;Partial Negative Active Energy Ea-;;1;0;kWh;4
+126;3;50788;U32;;Partial Negative Reactive Energy Er-;;1;0;kvarh;4
+127;3;50848_1;U8;;Tariff Number Selection;;1;0;;4
+128;3;50849_1;U8;;Current Tariff Nb;;1;0;;4
+129;3;50850;U32;;Positive Active Energies 1;;1;0;kWh;4
+130;3;50852;U32;;Positive Active Energies 2;;1;0;kWh;4
+131;3;50854;U32;;Positive Active Energies 3;;1;0;kWh;4
+132;3;50856;U32;;Positive Active Energies 4;;1;0;kWh;4
+133;3;57344_1;U8;;Network Type Config 3;;1;0;;1
+134;3;57345_1;U8;;CT Secondary Config 3;;1;0;A;1
+135;3;57346;U16;;CT Primary Config 3;;1;0;A;1
+136;3;57856_1;U8;;System Action 2;;1;0;;1
+137;3;57888;U16;;MinMax Reset Action 2;;1;0;;1
+138;3;57889;U16;;Reset Instantaneous Min Max Values;;1;0;;1
+139;3;57890;U16;;Reset Energies and Counters;;1;0;;1
+140;3;57891;U16;;Reset Input Pulse Counters;;1;0;;1
+141;3;57892;U16;;Reset Tariff Counters;;1;0;;1

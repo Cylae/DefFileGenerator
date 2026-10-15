@@ -1,0 +1,160 @@
+Modbus;Inverter;Kehua;SinglePhase
+1;4;4501;U16;;Device status;;1.0;0.0;;8
+2;4;4502;U16;;Grid voltage;;0.1;0.0;V;4
+3;4;4503;U16;;Grid current;;0.1;0.0;A;4
+4;4;4504;U16;;Grid frequency;FREQ;0.1;0.0;Hz;4
+5;4;4505;U16;;Daily power generation;E_DAY;0.1;0.0;kWh;4
+6;4;4506;U16;;Daily On-grid generation;;0.1;0.0;kWh;4
+7;4;4507;I16;;On-grid apparent power;S_AC;1.0;0.0;VA;4
+8;4;4508;I16;;On-grid active power;P_AC;1.0;0.0;W;4
+9;4;4509;I16;;On-grid reactive power;Q_AC;1.0;0.0;Var;4
+10;4;4510;U16;;Inverter voltage;;0.1;0.0;V;4
+11;4;4511;U16;;Inverter current;;0.1;0.0;A;4
+12;4;4512;U16;;Inverter frequency;;0.1;0.0;Hz;4
+13;4;4513;U16;;load voltage;;0.1;0.0;V;4
+14;4;4514;U16;;load current;;0.1;0.0;A;4
+15;4;4515;U16;;Daily load power consumption;;0.1;0.0;kWh;4
+16;4;4516;U16;;Load apparent power;;1.0;0.0;VA;4
+17;4;4517;U16;;Load active power;;1.0;0.0;W;4
+18;4;4518;U16;;Load reactive power;;1.0;0.0;Var;4
+19;4;4519;I16;;Power factor;PF;0.01;0.0;;4
+20;4;4520;U16;;PV1 voltage;U_DC_STRING_1;0.1;0.0;V;4
+21;4;4521;I16;;PV1 current;I_DC_STRING_1;0.1;0.0;A;4
+22;4;4522;I16;;PV1 power;;1.0;0.0;W;4
+23;4;4523;U16;;PV2 voltage;U_DC_STRING_2;0.1;0.0;V;4
+24;4;4524;I16;;PV2 current;I_DC_STRING_2;0.1;0.0;A;4
+25;4;4525;I16;;PV2 power;;1.0;0.0;W;4
+26;4;4526;U16;;PV daily power generation;;0.1;0.0;kWh;4
+27;4;4527;U16;;Battery status;;1.0;0.0;;4
+28;4;4528;U16;;Battery voltage;;0.1;0.0;V;4
+29;4;4529;I16;;Battery current;;0.1;0.0;A;4
+30;4;4530;I16;;Battery maximum temperature;TEMP;0.1;0.0;C;4
+31;4;4531;I16;;Battery minimum temperature;;0.1;0.0;C;4
+32;4;4532;U16;;Battery daily charging amount;;0.1;0.0;kWh;4
+33;4;4533;U16;;Battery daily discharging amount;;0.1;0.0;kWh;4
+34;4;4534;I16;;internal temperature;;0.1;0.0;C;4
+35;4;4535;U16;;Battery discharging power;;1.0;0.0;W;4
+36;4;4536;U16;;Battery charging power;;1.0;0.0;W;4
+37;4;4537;U16;;PV total power;E_TOT;1.0;0.0;W;4
+38;4;4538;U32;;Grid-connected power total generation (Grid output electric quantity);;0.1;0.0;kWh;4
+40;4;4540;U32;;PV total generation;;0.1;0.0;kWh;4
+42;4;4542;U32;;Running time (on-grid-off-grid);;0.1;0.0;h;4
+44;4;4544;U16;;Battery SOC;SOC;0.1;0.0;%;4
+45;4;4545;U16;;Maximum single battery voltage;;0.001;0.0;V;4
+46;4;4546;U16;;Minimum single battery voltage;;0.001;0.0;V;4
+47;4;4547;U16;;Battery SOH;SOH;0.1;0.0;%;4
+48;4;4551;U32;;Load total power consumption;;0.01;0.0;kWh;4
+50;4;4553;U32;;Grid-connected total power consumption (Grid input);;0.01;0.0;kWh;4
+52;4;4555;U16;;Secondary load voltage;;0.1;0.0;V;4
+53;4;4556;U16;;Secondary load current;;0.1;0.0;A;4
+54;4;4557;U16;;Secondary load active power;;1.0;0.0;W;4
+55;4;4558;I16;;Secondary load reactive power;;1.0;0.0;Var;4
+56;4;4559;U16;;Secondary load apparent power;;1.0;0.0;VA;4
+57;4;4560;U16;;PV3 voltage;U_DC_STRING_3;0.1;0.0;V;4
+58;4;4561;I16;;PV3 current;I_DC_STRING_3;0.1;0.0;A;4
+59;4;4562;I16;;PV3 power;;1.0;0.0;W;4
+60;4;4563;U16;;PV4 voltage;U_DC_STRING_4;0.1;0.0;V;4
+61;4;4564;I16;;PV4 current;I_DC_STRING_4;0.1;0.0;A;4
+62;4;4565;I16;;PV4 power;;1.0;0.0;W;4
+63;4;4850;U16;;Device type;MODEL;1.0;0.0;;4
+64;4;4851;U16;;MPPT quantity;;1.0;0.0;;4
+65;4;4852;U16;;Protocol type;;1.0;0.0;;4
+66;4;4853_10;STRING;;Protocol version(ASCII);;1.0;0.0;;4
+67;4;4858_30;STRING;;Manufacturer information(ASCII);MANUFACTURER;1.0;0.0;;4
+68;4;4874;U16;;Remaining time of probation;;1.0;0.0;h;4
+69;4;4901_20;STRING;;Battery model;;1.0;0.0;;4
+70;4;4911;U16;;BMS alarm code 1;;1.0;0.0;;4
+71;4;4912;U16;;BMS alarm code 2;;1.0;0.0;;4
+72;4;4913;U16;;BMS alarm code 3;;1.0;0.0;;4
+73;4;4914;U16;;BMS alarm code 4;;1.0;0.0;;4
+74;4;4915;U16;;BMS alarm code 1_1;;1.0;0.0;;4
+75;4;4916;U16;;BMS alarm code 2_1;;1.0;0.0;;4
+76;4;4917;U16;;BMS alarm code 3_1;;1.0;0.0;;4
+77;4;4918;U16;;BMS alarm code 4_1;;1.0;0.0;;4
+78;4;4919;U16;;BMS status code;;1.0;0.0;s;4
+79;4;4920;U16;;BMS battery voltage;;0.1;0.0;V;4
+80;4;4921;I16;;BMS battery current;;0.1;0.0;A;4
+81;4;4922;U16;;BMS charging limiting current;;0.1;0.0;A;4
+82;4;4923;U16;;BMS discharging limiting current;;0.1;0.0;A;4
+83;4;4924;U16;;BMS charging limiting voltage;;0.1;0.0;V;4
+84;4;4925;U16;;BMS discharging limiting voltage;;0.1;0.0;V;4
+85;4;5500;I16;;DC component of the inverter voltage;U_DC;0.1;0.0;mV;4
+86;4;5501;I16;;DC component of the inverter current;I_DC;0.1;0.0;mA;4
+87;4;5502;U16;;Busbar voltage;;0.1;0.0;V;4
+88;4;5503;I16;;Battery up and down voltage inductive current;;0.1;0.0;A;4
+89;4;5504;I16;;Radiator temperature;;0.1;0.0;C;4
+90;4;5505;U16;;AC leakage current;;0.1;0.0;mA;4
+91;4;5506;U16;;Insulation resistance;R_ISO;0.1;0.0;k/Ohm;4
+92;3;6000;I16;;Power factor_1;CMD_PF;0.01;0.0;;4
+93;3;6001;I16;;Reactive power;;1.0;0.0;Var;4
+94;3;6002;U16;;PV output power;;1.0;0.0;%;4
+95;3;6003;U16;;MPPT perturbation step;;1.0;0.0;V/s Range;4
+96;3;6006;U16;;Maximum charging current of battery;;0.1;0.0;A;4
+97;3;6007;U16;;Maximum discharging current of battery;;0.1;0.0;A;4
+98;3;6008;U16;;Maximum charging power of battery;;1.0;0.0;W;4
+99;3;6009;U16;;Maximum discharging power of battery;;1.0;0.0;W;4
+100;3;6010;I16;;Battery charge and discharge power;;1.0;0.0;W;4
+101;3;6011;I16;;Grid control power;;1.0;0.0;W;4
+102;3;6200;U16;;Work mode;;1.0;0.0;;4
+103;3;6201;U16;;Maximum backflow power;;1.0;0.0;%;4
+104;3;6202;I16;;Active power;;1.0;0.0;W;4
+105;3;6203;U16;;Active power slow start rate;;0.01;0.0;%/s;4
+106;3;6204;U16;;Battery temperature compensation factor;;1.0;0.0;mV/C/2V;4
+107;3;6300;U16;;Standard type;;1.0;0.0;;4
+108;3;6302;U16;;Grid-connected recovery time;;1.0;0.0;s;4
+109;3;6308;U16;;Battery type;;1.0;0.0;;4
+110;3;6309;U16;;Number of parallel batteries;;1.0;0.0;;4
+111;3;6310;U16;;Battery capacity setting;;1.0;0.0;AH;4
+112;3;6311;U16;;Discharge cut-off voltage;;0.1;0.0;V;4
+113;3;6312;U16;;Charging rate;;0.1;0.0;C;4
+114;3;6313;U16;;Equalized charging pressure point;PRESSURE;0.1;0.0;V;4
+115;3;6314;U16;;Floating charging pressure point;;0.1;0.0;V;4
+116;3;6315;U16;;Battery over-voltage protection point;;0.1;0.0;V;4
+117;3;6316;U16;;Battery under-voltage protection point;;0.1;0.0;V;4
+118;3;6317;U16;;Single battery overpressure point;;1.0;0.0;mV;4
+119;3;6318;U16;;Single battery under-pressure point;;1.0;0.0;mV;4
+120;3;6319;U16;;Intelligent meter address;;1.0;0.0;;4
+121;3;6320;U16;;External sensor;;1.0;0.0;;4
+122;3;6321;U16;;CT ratio;;1.0;0.0;;4
+123;3;6400;U16;;Power grid primary under-voltage protection point;;0.1;0.0;%;4
+124;3;6403;U16;;Power grid primary Over-voltage protection point;;0.1;0.0;%;4
+125;3;6405;U16;;Power grid primary under-voltage protection time;;0.01;0.0;s;4
+126;3;6408;U16;;Power grid primary Over-voltage protection time;;0.01;0.0;s;4
+127;3;6410;U16;;Power grid under-voltage protection recovery point;;0.1;0.0;%;4
+128;3;6411;U16;;Power grid over-voltage protection recovery point;;0.1;0.0;%;4
+129;3;6412;U16;;Power grid primary under-frequency protection point;;0.01;0.0;Hz;4
+130;3;6414;U16;;Power grid primary over-frequency protection point;;0.01;0.0;Hz;4
+131;3;6416;U16;;Power grid primary under-frequency protection time;;0.01;0.0;s;4
+132;3;6418;U16;;Power grid primary over-frequency protection time;;0.01;0.0;s;4
+133;3;6420;U16;;Power grid under-frequency protection recovery point;;0.01;0.0;Hz;4
+134;3;6421;U16;;Power grid over-frequency protection recovery point;;0.01;0.0;Hz;4
+135;3;6426;U16;;L_HVRTmode;;1.0;0.0;;4
+136;3;6437;U16;;L_HFRTmode;;1.0;0.0;;4
+137;3;6446;U16;;P-V mode;;1.0;0.0;;4
+138;3;6447;U16;;P-V modeV1(Discharge);;0.1;0.0;%;4
+139;3;6448;U16;;P-V modeP1(Discharge);;1.0;0.0;%;4
+140;3;6449;U16;;P-V modeV2(Discharge);;0.1;0.0;%;4
+141;3;6450;U16;;P-V modeP2(Discharge);;1.0;0.0;%;4
+142;3;6451;U16;;P-V modeV3(Discharge);;0.1;0.0;%;4
+143;3;6452;U16;;P-V modeP3(Discharge);;1.0;0.0;%;4
+144;3;6459;U16;;P-F mode;;1.0;0.0;;4
+145;3;6472;U16;;Q-V mode;;1.0;0.0;;4
+146;3;6480;U16;;SPF mode;;1.0;0.0;;4
+147;3;6487;U16;;10min grid voltage point;;0.1;0.0;%;4
+148;3;6490;U16;;Soft start rate of ON_OFF;;0.01;0.0;%;4
+149;3;6492;U16;;P-LF mode;;1.0;0.0;;4
+150;1;5000_0_1;BITS;;ON_OFF setting;CMD_OFF;1.0;0.0;;4
+151;1;5001_0_1;BITS;;Buzzer enable;;1.0;0.0;;4
+152;1;5002_0_1;BITS;;Battery alarm function enable;;1.0;0.0;;4
+153;1;5003_0_1;BITS;;Input abnormal alarm function enable;;1.0;0.0;;4
+154;1;5004_0_1;BITS;;Counter Curr mode;;1.0;0.0;;4
+155;1;5008_0_1;BITS;;External control mode enable;;1.0;0.0;;4
+156;1;5009_0_1;BITS;;power control strategy;;1.0;0.0;;4
+157;1;5010_0_1;BITS;;island active enable;;1.0;0.0;;4
+158;1;5011_0_1;BITS;;PV on-grid mode;;1.0;0.0;;4
+159;1;5012_0_1;BITS;;DRM enable;;1.0;0.0;;4
+160;1;5013_0_1;BITS;;Battery temperature compensation function;;1.0;0.0;;4
+161;1;5014_0_1;BITS;;Battery activation enable;;1.0;0.0;;4
+162;1;5015_0_1;BITS;;Grounding detection enable;;1.0;0.0;;4
+163;1;5016_0_1;BITS;;Grid quick check function;;1.0;0.0;;4
+164;1;5017_0_1;BITS;;Restore factory setting;;1.0;0.0;;4

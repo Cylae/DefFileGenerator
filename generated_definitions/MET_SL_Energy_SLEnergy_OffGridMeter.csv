@@ -1,0 +1,34 @@
+modbus;OffGridMeter;SL Energy;OffGridMeter;;;;;;;
+1;3;11070;U16;;EPS_Voltage_R;;0.1;0;V;4
+2;3;11071;U16;;EPS_Voltage_S;;0.1;0;V;4
+3;3;11072;U16;;EPS_Voltage_T;;0.1;0;V;4
+4;3;11073;I16;;EPS_Current_R;;0.1;0;A;4
+5;3;11074;I16;;EPS_Current_S;;0.1;0;A;4
+6;3;11075;I16;;EPS_Current_T;;0.1;0;A;4
+7;3;11076;U16;;EPS_Frequency_R;FREQ;0.01;0;Hz;4
+8;3;11077;U16;;EPS_Frequency_S;;0.01;0;Hz;4
+9;3;11078;U16;;EPS_Frequency_T;;0.01;0;Hz;4
+10;3;11079;I32;;EPS_Total_Active_Power;;1;0;W;4
+11;3;11081;I32;;EPS_Total_Reactive_Power;;1;0;Var;4
+12;3;11083;I32;;EPS_Total_Apparent_Power;;1;0;Va;4
+13;3;11085;I32;;EPS_Active_Power_R;;1;0;W;4
+14;3;11087;I32;;EPS_Active_Power_S;;1;0;W;4
+15;3;11089;I32;;EPS_Active_Power_T;;1;0;W;4
+16;3;11091;I32;;EPS_Reactive_Power_R;;1;0;Var;4
+17;3;11093;I32;;EPS_Reactive_Power_S;;1;0;Var;4
+18;3;11095;I32;;EPS_Reactive_Power_T;;1;0;Var;4
+19;3;11097;I32;;EPS_Apparent_Power_R;;1;0;Va;4
+20;3;11099;I32;;EPS_Apparent_Power_S;;1;0;Va;4
+21;3;11101;I32;;EPS_Apparent_Power_T;;1;0;Va;4
+22;3;11106;I16;;EPS_Power_Factor;;0.001;0;;4
+23;3;11107;I16;;EPS_Daily_Generation;;0.1;0;kWh;4
+24;3;11108;I32;;EPS_Cumulative_Generation;;0.1;0;kWh;4
+25;3;11110;I16;;R-phase off-grid DCV;;0.1;0;mV;4
+26;3;11111;I16;;S-phase off-grid DCV;;0.1;0;mV;4
+27;3;11112;I16;;T-phase off-grid DCV;;0.1;0;mV;4
+28;3;11113;I32;;Off-grid power generation in the current month;;0.1;0;kWh;4
+29;3;11115;I32;;Off-grid power generation in that year;;0.1;0;kWh;4
+30;3;42085;U16;;Off_Grid_Operation_Switch;;1;0;;4
+31;3;42086;U16;;Off_Grid_Output_Voltage_Setting;;0.1;0;V;4
+32;3;42087;U16;;Off_Grid_Output_Frequency_Settings;;0.01;0;Hz;4
+33;3;42088;U16;;Energy_Flow_Priority_Setting;;1;0;;4

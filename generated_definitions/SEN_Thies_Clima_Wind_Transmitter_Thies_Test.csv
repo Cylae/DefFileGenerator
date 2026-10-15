@@ -1,0 +1,92 @@
+modbusRTU;Sensor;THIES;Wind Transmitter;;;;;;;
+1;4;30000;U32;;Instantaneous value of the wind velocity;WIND_SPEED;0.1;0;m/s;4
+2;3;30003;U32;;Current average value of the wind velocity;;0.1;0;m/s;4
+3;3;30005;U32;;Instantaneous value of the wind velocity, calculated with the standard curve;;0.1;0;m/s;4
+4;3;30007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (35007) 1;;0.1;0;m/s;4
+5;3;30009;U32;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (35009) 1;;0.1;0;m/s;4
+6;3;30011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table (35011)1;;0.1;0;m/s;4
+7;3;30013;U32;;Wind velocity8  (compensated for air pressure) (35013)1;;0.01;0;m/s;4
+8;3;30403;I32;;Housing interior temperature of the wind transmitter (35019) 1;;0.1;0;C;4
+9;3;30801;U32;;Absolute air pressure (35021)1;PRESSURE;0.01;0;hPa;4
+10;3;30803;U32;;Relative air pressure (35023)1;;0.01;0;hPa;4
+11;3;34811;U32;;32-bit sensor status in hexadecimal representation;;1;0;;4
+12;3;34813;U32;;Main loop run per 1s (35027)1;;1;0;1/s;4
+13;3;34815;U32;;Operating time (35029) 1;;1;0;s;4
+14;3;34819;I32;;Inclination value ? Angle between the Z-axis and the vertical (35031)1;;0.1;0;;4
+15;3;34821;I32;;Inclination value ? Angle between the X-axis and the horizontal;GHI;0.1;0;;4
+16;3;34823;I32;;Inclination value ? Angle between the Y-axis and the horizontal;;0.1;0;;4
+17;3;34825;U32;;Frequency vibration measurement, X-axis (35037) 1;FREQ;0.01;0;Hz;4
+18;3;34827;U32;;Acceleration vibration measurement, X-axis (35039) 1;;1;0;mg;4
+19;3;34829;U32;;Frequency vibration measurement, Y-axis (35041) 1;;0.01;0;Hz;4
+20;3;34831;U32;;Acceleration vibration measurement, Y-axis (35043) 1;;1;0;mg;4
+21;3;34833;U32;;Frequency vibration measurement, Z-axis (35045) 1;;0.01;0;Hz;4
+22;3;34835;U32;;Acceleration vibration measurement, Z-axis (35047)1;;1;0;mg;4
+23;3;35001;U32;;Instantaneous value of the wind velocity, calculated with the current calibration table. When there is no calibration table existing the calculated measuring value of the standard characteristic curve is output. (30001)1;;0.1;0;m/s;4
+24;3;35003;U32;;Current average value of the wind velocity, calculated according command MS;;0.1;0;m/s;4
+25;3;35005;U32;;Instantaneous value of the wind velocity, calculated with the standard curve (30005) 1;;0.1;0;m/s;4
+26;3;35007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (30007) 1;;0.1;0;m/s;4
+27;3;35009;U32;;Current minimum value of the wind velocity of the last 1min., calculated with the current calibration table (30009) 1;;0.1;0;m/s;4
+28;3;35011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table;;0.1;0;m/s;4
+29;3;35013;U32;;Wind velocity8  (compensated for air pressure);;0.01;0;m/s;4
+30;3;35019;I32;;Housing interior temperature of the wind transmitter;;0.1;0;C;4
+31;3;35021;U32;;Absolute air pressure;;0.01;0;hPa;4
+32;3;35023;U32;;Relative air pressure (30803) 1;;0.01;0;hPa;4
+33;3;35025;U32;;Sensor status_2;;1;0;;4
+34;3;35027;U32;;Main loop run per 1s;;1;0;1/s;4
+35;3;35029;U32;;Operating time after reset ;;1;0;s;4
+36;3;35031;I32;;Inclination value ? Angle between the Z-axis and the vertical (34819) 1;;0.1;0;;4
+37;3;35033;I32;;Angle between the X-axis and the horizontal;;0.1;0;;4
+38;3;35035;I32;;Angle between the Y-axis and the horizontal;;0.1;0;;4
+39;3;35037;U32;;Frequency vibration measurement, X-axis (34825) 1;;0.1;0;Hz;4
+40;3;35039;U32;;Acceleration vibration measurement, X-axis;;1;0;mg;4
+41;3;35041;U32;;Frequency vibration measurement, Y-axis;;0.1;0;Hz;4
+42;3;35043;U32;;Acceleration vibration measurement, Y-axis (34831) 1;;1;0;mg;4
+43;3;35045;U32;;Frequency vibration measurement, Z-axis (34833) 1;;0.1;0;Hz;4
+44;3;35047;U32;;Acceleration vibration measurement, Z-axis (34835)1;;1;0;mg;4
+45;3;35049;U32;;Measured frequency9;;0.1;0;Hz;4
+46;3;35051;U64;;Number of revolutions of the cup star;;1;0;;4
+47;3;35055;U32;;Operating hours;;1;0;h;4
+48;3;35057;U32;;Degree of turbulence;;0.01;0;;4
+49;3;35059;I32;;Temperature of the pressure sensor;;0.1;0;C;4
+50;3;35100;U32;;Time since the last measured value query;;1;0;ms;4
+51;3;35102;U16;;Measured value2  [0] (most recent) according to UC;;0.1;0;m/s;4
+52;3;35103;U16;;Measured value2  [1] according to UC;;0.1;0;m/s;4
+53;3;35104;U16;;Measured value2  [2] according to UC;;0.1;0;m/s;4
+54;3;35105;U16;;Measured value2  [3] according to UC;;0.1;0;m/s;4
+55;3;35106;U16;;Measured value2  [4] according to UC;;0.1;0;m/s;4
+56;3;35107;U16;;Measured value2  [5] according to UC;;0.1;0;m/s;4
+57;3;35108;U16;;Measured value2  [6] according to UC;;0.1;0;m/s;4
+58;3;35109;U16;;Measured value2  [7] according to UC;;0.1;0;m/s;4
+59;3;35110;U16;;Measured value2  [8] according to UC;;0.1;0;m/s;4
+60;3;35111;U16;;Measured value2  [9] according to UC;;0.1;0;m/s;4
+61;3;35112;U16;;Measured value2  [10] according to UC;;0.1;0;m/s;4
+62;3;35113;U16;;Measured value2  [11] according to UC;;0.1;0;m/s;4
+63;3;35114;U16;;Measured value2  [12] according to UC;;0.1;0;m/s;4
+64;3;35115;U16;;Measured value2  [13] according to UC;;0.1;0;m/s;4
+65;3;35116;U16;;Measured value2  [14] according to UC;;0.1;0;m/s;4
+66;3;35117;U16;;Measured value2  [15] (oldest) ac- cording to UC;;0.1;0;m/s;4
+67;3;36001;U32;;Wind speed Uncorrected5  (30005) 1;;0.1;0;m/s;4
+68;3;36003;U32;;Wind speed 3;;0.1;0;m/s;4
+69;3;36005;U32;;Wind speed 8  (compensated for air pressure, 30013)1;;0.01;0;m/s;4
+70;3;36007;U32;;Sensor status (34811)1;;1;0;;4
+71;3;36101;U32;;Wind speed 5;;0.1;0;m/s;4
+72;3;36103;U32;;Wind speed 3_1;;0.1;0;m/s;4
+73;3;36105;U32;;Wind speed 8  (compensated for air pressure, 300131);;0.01;0;m/s;4
+74;3;36107;U32;;Absolute air pressure_1;;0.01;0;hPa;4
+75;3;36109;U32;;Sensor status_1;;1;0;;4
+76;3;36201;U32;;Wind speed 5_1;;0.1;0;m/s;4
+77;3;36203;U32;;Wind speed 3_2;;0.1;0;m/s;4
+78;3;36205;U32;;Wind speed 8  (compensated for air pressure);;0.01;0;m/s;4
+79;3;36207;U32;;Absolute air pressure (30801) 1;;0.01;0;hPa;4
+80;3;36209;I32;;Inclination angle ? Angle be- tween the Z-axis and the vertical (34819)1;;0.1;0;;4
+81;3;36211;I32;;Inclination angle ?;;0.1;0;;4
+82;3;36213;I32;;Angle between the Y-axis and the horizontal plane;;0.1;0;;4
+83;3;36215;U32;;Frequency vibration measure- ment, x-axis;;0.01;0;Hz;4
+84;3;36217;U32;;Acceleration, x-axis;;1;0;mg;4
+85;3;36219;U32;;Frequency vibration measure- ment, y-axis;;0.01;0;Hz;4
+86;3;36221;U32;;Acceleration, y-axis;;1;0;mg;4
+87;3;36223;U32;;Frequency vibration measure- ment, z-axis;;0.01;0;Hz;4
+88;3;36225;U32;;Acceleration, z-axis;;1;0;mg;4
+89;3;36227;U32;;Sensor status;;1;0;;4
+90;3;40005;U32;;Set Baud Rate;;1;0;;4
+91;3;40009;U32;;Set password;;1;0;;4

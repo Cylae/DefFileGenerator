@@ -1,0 +1,163 @@
+modbusRTU;Meter;SOCOMEC;Countis_E27;0;;;;;;
+1;3;50004;U16;;Product order ID;;1;0;;4
+2;3;50005;U16;;Product ID;;1;0;;4
+3;3;50006;U16;;JBUS Table Version;;1;0;;4
+4;3;50007;U16;;Product software version;;1;0;;4
+5;3;50008;U16;;Serial AA SS;;1;0;;4
+6;3;50009;U16;;Serial SST L;;1;0;;4
+7;3;50010;U16;;Serial order;;1;0;;4
+8;3;50011;U32;;Serial Reserve;;1;0;;4
+9;3;50013;U64;;Code Table Details;;1;0;;4
+10;3;50018;U16;;Product version Major;;1;0;;4
+11;3;50019;U16;;Product version Minor;;1;0;;4
+12;3;50030_8;STRING;;Product VLO;;1;0;;4
+13;3;50042_16;STRING;;Vendor name;;1;0;;4
+14;3;50050_16;STRING;;Product name;;1;0;;4
+15;3;50058_16;STRING;;Extended name;;1;0;;4
+16;3;57344;U8;;Slave Address;UNIT_ID;1;0;;1
+17;3;57345;U16;;Baudrate;;1;0;;1
+18;3;57346;U16;;Stop bit;;1;0;;1
+19;3;57347;U16;;Parity;;1;0;;1
+20;3;57856;U8;;Action system;;1;0;;1
+21;3;57890;U16;;Reset Partial Energies;;1;0;;1
+22;3;57892;U16;;Reset Tariff Counter;;1;0;;1
+23;3;50514;U32;;Phase to Phase Voltage U12;;0.01;0;V;4
+24;3;50516;U32;;Phase to Phase Voltage U23;;0.01;0;V;4
+25;3;50518;U32;;Phase to Phase Voltage U31;;0.01;0;V;4
+26;3;50520;U32;;Simple voltage V1;;0.01;0;V;4
+27;3;50522;U32;;Simple voltage V2;;0.01;0;V;4
+28;3;50524;U32;;Simple voltage V3;;0.01;0;V;4
+29;3;50526;U32;;Frequency;FREQ;0.001;0;Hz;4
+30;3;50528;U32;;Current I1;;0.001;0;A;4
+31;3;50530;U32;;Current I2;;0.001;0;A;4
+32;3;50532;U32;;Current I3;;0.001;0;A;4
+33;3;50534;U32;;Neutral Current;;0.001;0;A;4
+34;3;50536;I32;;Sum Active Power;P_AC;0.001;0;kW;4
+35;3;50538;I32;;Sum Reactive Power;ReactivePowSUM;0.1;0;var;4
+36;3;50540;U32;;Sum Apparent Power;S_AC;0.1;0;VA;4
+37;3;50542;I32;;Sum Power Factor;PF;0.001;0;;4
+38;3;50544;I32;;Active Power phase 1;P_AC_1;0.001;0;kW;4
+39;3;50546;I32;;Active Power phase 2;P_AC_2;0.001;0;W;4
+40;3;50548;I32;;Active Power phase 3;P_AC_3;0.001;0;W;4
+41;3;50550;I32;;Reactive Power phase 1;ReactivePow1;0.001;0;var;4
+42;3;50552;I32;;Reactive Power phase 2;ReactivePow2;0.001;0;var;4
+43;3;50554;I32;;Reactive Power phase 3;ReactivePow3;0.001;0;var;4
+44;3;50556;U32;;Apparent Power phase 1;S_AC_1;0.001;0;VA;4
+45;3;50558;U32;;Apparent Power phase 2;S_AC_2;0.001;0;VA;4
+46;3;50560;U32;;Apparent Power phase 3;S_AC_3;0.001;0;VA;4
+47;3;50562;I32;;Power Factor phase 1;PF_1;0.001;0;;4
+48;3;50564;I32;;Power Factor phase 2;PF_2;0.001;0;;4
+49;3;50566;I32;;Power Factor phase 3;PF_3;0.001;0;;4
+50;3;50568;U32;;System value I Sys;;0.001;0;A;4
+51;3;50570;U32;;System value U Sys;;0.01;0;V;4
+52;3;50572;U32;;System value V Sys;;0.01;0;V;4
+53;3;51281;U16;;Phase to Phase Voltage U12 No CT;;0.01;0;V;4
+54;3;51282;U16;;Phase to Phase Voltage U23 No CT;;0.01;0;V;4
+55;3;51283;U16;;Phase to Phase Voltage U31 No CT;;0.01;0;V;4
+56;3;51284;U16;;Simple voltage V1 No CT;;0.01;0;V;4
+57;3;51285;U16;;Simple voltage V2 No CT;;0.01;0;V;4
+58;3;51286;U16;;Simple voltage V3 No CT;;0.01;0;V;4
+59;3;51287;U16;;Frequency No CT;;0.001;0;Hz;4
+60;3;51295;I16;;Sum power factor No CT;;0.001;0;;4
+61;3;51305;I16;;Power Factor phase 1 No CT;;0.001;0;;4
+62;3;51306;I16;;Power Factor phase 2 No CT;;0.001;0;;4
+63;3;51307;I16;;Power Factor phase 3 No CT;;0.001;0;;4
+64;3;51308;U16;;System value I Sys No CT;;0.001;0;A;4
+65;3;51309;U16;;System value U Sys No CT;;0.01;0;V;4
+66;3;51310;U16;;System value V Sys No CT;;0.01;0;V;4
+67;3;51311;U16;;Total Positive Active Energy No CT;E_TOT;0.001;0;Wh;4
+68;3;51312;U16;;Total Positive Reactive Energy No CT;;0.001;0;varh;4
+69;3;51313;U16;;Total Negative Active Energy No CT;;0.001;0;Wh;4
+70;3;51314;U16;;Total Negative Reactive Energy No CT;;0.001;0;varh;4
+71;3;51315;U16;;Phase sequence;;1;0;;4
+72;3;50770;U32;;Total Positive Active Energy;;0.001;0;Wh;4
+73;3;50772;U32;;Total Positive Reactive Energy;;0.001;0;varh;4
+74;3;50774;U32;;Total Apparent Energy;;0.001;0;VAh;4
+75;3;50776;U32;;Total Negative Active Energy;;0.001;0;Wh;4
+76;3;50778;U32;;Total Negative Reactive Energy;;0.001;0;varh;4
+77;3;50780;U32;;Partial Positive Active Energy;;0.001;0;Wh;4
+78;3;50782;U32;;Partial Positive Reactive Energy;;0.001;0;varh;4
+79;3;50784;U32;;Partial Apparent Energy;;0.001;0;VAh;4
+80;3;50786;U32;;Partial Negative Active Energy;;0.001;0;Wh;4
+81;3;50788;U32;;Partial Negative Reactive Energy;;0.001;0;varh;4
+82;3;50848;U8;;Tariff Number Max;;1;0;;4
+83;3;50849;U8;;Tariff in progress;;1;0;;4
+84;3;50850;U32;;Positive Active Energies T1;;0.001;0;Wh;4
+85;3;50852;U32;;Positive Active Energies T2;;0.001;0;Wh;4
+86;3;50866;U32;;Positive Reactive Energies T1;;0.001;0;varh;4
+87;3;50868;U32;;Positive Reactive Energies T2;;0.001;0;varh;4
+88;3;50882;U32;;Time Counter T1;;0.01;0;h;4
+89;3;50884;U32;;Time Counter T2;;0.01;0;h;4
+90;3;20224;U16;;Tariff in progress Line 1;;1;0;;4
+91;3;20225;U32;;T1 Ea+ Line 1;;0.001;0;Wh;4
+92;3;20227;U32;;T2 Ea+ Line 1;;0.001;0;Wh;4
+93;3;20241;U32;;T1 Ea- Line 1;;0.001;0;Wh;4
+94;3;20243;U32;;T2 Ea- Line 1;;0.001;0;Wh;4
+95;3;20273;U32;;T1 Er+ Lagging Line 1;;0.001;0;varh;4
+96;3;20275;U32;;T2 Er+ Lagging Line 1;;0.001;0;varh;4
+97;3;20289;U32;;T1 Er+ Leading Line 1;;0.001;0;varh;4
+98;3;20291;U32;;T2 Er+ Leading Line 1;;0.001;0;varh;4
+99;3;20321;U32;;T1 Er- Lagging Line 1;;0.001;0;varh;4
+100;3;20323;U32;;T2 Er- Lagging Line 1;;0.001;0;varh;4
+101;3;20337;U32;;T1 Er- Leading Line 1;;0.001;0;varh;4
+102;3;20339;U32;;T2 Er- Leading Line 1;;0.001;0;varh;4
+103;3;20353;U32;;T1 Eap Line 1;;0.001;0;VAh;4
+104;3;20355;U32;;T2 Eap Line 1;;0.001;0;VAh;4
+105;3;22272;U16;;Tariff in progress Line 2;;1;0;;4
+106;3;22273;U32;;T1 Ea+ Line 2;;0.001;0;Wh;4
+107;3;22275;U32;;T2 Ea+ Line 2;;0.001;0;Wh;4
+108;3;22289;U32;;T1 Ea- Line 2;;0.001;0;Wh;4
+109;3;22291;U32;;T2 Ea- Line 2;;0.001;0;Wh;4
+110;3;22321;U32;;T1 Er+ Lagging Line 2;;0.001;0;varh;4
+111;3;22323;U32;;T2 Er+ Lagging Line 2;;0.001;0;varh;4
+112;3;22337;U32;;T1 Er+ Leading Line 2;;0.001;0;varh;4
+113;3;22339;U32;;T2 Er+ Leading Line 2;;0.001;0;varh;4
+114;3;22369;U32;;T1 Er- Lagging Line 2;;0.001;0;varh;4
+115;3;22371;U32;;T2 Er- Lagging Line 2;;0.001;0;varh;4
+116;3;22385;U32;;T1 Er- Leading Line 2;;0.001;0;varh;4
+117;3;22387;U32;;T2 Er- Leading Line 2;;0.001;0;varh;4
+118;3;22401;U32;;T1 Eap Line 2;;0.001;0;VAh;4
+119;3;22403;U32;;T2 Eap Line 2;;0.001;0;VAh;4
+120;3;24320;U16;;Tariff in progress Line 3;;1;0;;4
+121;3;24321;U32;;T1 Ea+ Line 3;;0.001;0;Wh;4
+122;3;24323;U32;;T2 Ea+ Line 3;;0.001;0;Wh;4
+123;3;24337;U32;;T1 Ea- Line 3;;0.001;0;Wh;4
+124;3;24339;U32;;T2 Ea- Line 3;;0.001;0;Wh;4
+125;3;24369;U32;;T1 Er+ Lagging Line 3;;0.001;0;varh;4
+126;3;24371;U32;;T2 Er+ Lagging Line 3;;0.001;0;varh;4
+127;3;24385;U32;;T1 Er+ Leading Line 3;;0.001;0;varh;4
+128;3;24387;U32;;T2 Er+ Leading Line 3;;0.001;0;varh;4
+129;3;24417;U32;;T1 Er- Lagging Line 3;;0.001;0;varh;4
+130;3;24419;U32;;T2 Er- Lagging Line 3;;0.001;0;varh;4
+131;3;24433;U32;;T1 Er- Leading Line 3;;0.001;0;varh;4
+132;3;24435;U32;;T2 Er- Leading Line 3;;0.001;0;varh;4
+133;3;24449;U32;;T1 Eap Line 3;;0.001;0;VAh;4
+134;3;24451;U32;;T2 Eap Line 3;;0.001;0;VAh;4
+135;3;25987;U32;;Total Positive Active Energy Total;;0.001;0;Wh;4
+136;3;25989;U16;;Total Residual positive active Energy Total;;0.1;0;Wh;4
+137;3;25990;U32;;Total Negative Active Energy Total;;0.001;0;Wh;4
+138;3;25992;U16;;Total Residual negative active Energy Total;;0.1;0;Wh;4
+139;3;25993;U32;;Total Positive Reactive Energy Total;;0.001;0;varh;4
+140;3;25995;U16;;Total Residual positive reactive Energy Total;;0.1;0;varh;4
+141;3;25996;U32;;Total Negative Reactive Energy Total;;0.001;0;varh;4
+142;3;25998;U16;;Total Residual negative reactive Energy Total;;0.1;0;varh;4
+143;3;25999;U32;;Total Apparent Energy Total;;0.001;0;VAh;4
+144;3;26001;U16;;Total Residual apparent Energy Total;;0.1;0;VAh;4
+145;3;26002;U32;;Total positive lagging reactive Energy Total;;0.001;0;varh;4
+146;3;26004;U16;;Total residual positive lagging reactive Energy Total;;0.1;0;varh;4
+147;3;26005;U32;;Total negative lagging reactive Energy Total;;0.001;0;varh;4
+148;3;26007;U16;;Total residual negative lagging reactive Energy Total;;0.1;0;varh;4
+149;3;26008;U32;;Total positive leading reactive Energy Total;;0.001;0;varh;4
+150;3;26010;U16;;Total residual positive leading reactive Energy Total;;0.1;0;varh;4
+151;3;26011;U32;;Total negative leading reactive Energy Total;;0.001;0;varh;4
+152;3;26013;U16;;Total residual negative leading reactive Energy Total;;0.1;0;varh;4
+153;3;33024;U32;;Net active energy balance;;0.001;0;Wh;4
+154;3;33026;U16;;Net Residual active energy balance;;0.1;0;Wh;4
+155;3;33027;U32;;Net reactive energy balance;;0.001;0;Wh;4
+156;3;33029;U16;;Net Residual reactive energy balance;;0.1;0;Wh;4
+157;3;40544;U8;;Indus Mode;;1;0;;4
+158;3;40545;U8;;MID status;;1;0;;4
+159;3;40576;U32;;Current I1 without CT;;0.001;0;A;4
+160;3;40578;U32;;Current I2 without CT;;0.001;0;A;4
+161;3;40580;U32;;Current I3 without CT;;0.001;0;A;4
+162;3;40608;U8;;COM Board Product ID;;1;0;;4

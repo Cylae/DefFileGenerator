@@ -1,0 +1,195 @@
+modbusRTU;Other;Sigen;SIGENERGY_Generic;;;;;;;
+1;3;30000;U32;;System time;system_time;1.000000;0.000000;s;4
+2;3;30002;I16;;System time zone;system_time_zone;1.000000;0.000000;min;4
+3;3;30003;U16;;EMS work mode;ems_work_mode;1.000000;0.000000;;4
+4;3;30004;U16;;[Grid Sensor] Status;grid_sensor_status;1.000000;0.000000;;4
+5;3;30005;I32;;[Grid sensor] Active power;grid_sensor_active_power;0.001000;0.000000;kW;4
+6;3;30007;I32;;[Grid sensor] reactive power;grid_sensor_reactive_power;0.001000;0.000000;kVar;4
+7;3;30009;U16;;On/Off Grid status;onoff_grid_status;1.000000;0.000000;;4
+8;3;30010;U32;;Max active power;max_active_power;0.001000;0.000000;kW;4
+9;3;30012;U32;;Max apparent power;max_apparent_power;0.001000;0.000000;kVar;4
+10;3;30014;U16;;[ESS] SOC;ess_soc;0.100000;0.000000;'%;4
+11;3;30015;I32;;Plant phase A active power;plant_phase_a_active_power;0.001000;0.000000;kW;4
+12;3;30017;I32;;Plant phase B active power;plant_phase_b_active_power;0.001000;0.000000;kW;4
+13;3;30019;I32;;Plant phase C active power;plant_phase_c_active_power;0.001000;0.000000;kW;4
+14;3;30021;I32;;Plant phase A reactive power;plant_phase_a_reactive_power;0.001000;0.000000;kVar;4
+15;3;30023;I32;;Plant phase B reactive power;plant_phase_b_reactive_power;0.001000;0.000000;kVar;4
+16;3;30025;I32;;Plant phase C reactive power;plant_phase_c_reactive_power;0.001000;0.000000;kVar;4
+17;3;30027;U16;;General Alarm1;general_alarm1;1.000000;0.000000;;4
+18;3;30028;U16;;General Alarm2;general_alarm2;1.000000;0.000000;;4
+19;3;30029;U16;;General Alarm3;general_alarm3;1.000000;0.000000;;4
+20;3;30030;U16;;General Alarm4;general_alarm4;1.000000;0.000000;;4
+21;3;30031;I32;;Plant active power;plant_active_power;0.001000;0.000000;kW;4
+22;3;30033;I32;;Plant reactive power;plant_reactive_power;0.001000;0.000000;kVar;4
+23;3;30035;I32;;Photovoltaic power;photovoltaic_power;0.001000;0.000000;kW;4
+24;3;30037;I32;;[ESS] power;ess_power;0.001000;0.000000;kW;4
+25;3;30039;U32;;Available max active power;available_max_active_power;0.001000;0.000000;kW;4
+26;3;30041;U32;;Available min active power;available_min_active_power;0.001000;0.000000;kW;4
+27;3;30043;U32;;Available max reactive power;available_max_reactive_power;0.001000;0.000000;kVar;4
+28;3;30045;U32;;Available min reactive power;available_min_reactive_power;0.001000;0.000000;kVar;4
+29;3;30047;U32;;[ESS]Available max charging power;essavailable_max_charging_power;0.001000;0.000000;kW;4
+30;3;30049;U32;;[ESS]Available max discharging power;essavailable_max_discharging_power;0.001000;0.000000;kW;4
+31;3;30051;U16;;Plant running state;plant_running_state;1.000000;0.000000;;4
+32;3;30052;I32;;[Grid sensor] Phase A active power;grid_sensor_phase_a_active_power;0.001000;0.000000;kW;4
+33;3;30054;I32;;[Grid sensor] Phase B active power;grid_sensor_phase_b_active_power;0.001000;0.000000;kW;4
+34;3;30056;I32;;[Grid sensor] Phase C active power;grid_sensor_phase_c_active_power;0.001000;0.000000;kW;4
+35;3;30058;I32;;[Grid sensor] Phase A reactive power;grid_sensor_phase_a_reactive_power;0.001000;0.000000;kVar;4
+36;3;30060;I32;;[Grid sensor] Phase B reactive power;grid_sensor_phase_b_reactive_power;0.001000;0.000000;kVar;4
+37;3;30062;I32;;[Grid sensor] Phase C reactive power;grid_sensor_phase_c_reactive_power;0.001000;0.000000;kVar;4
+38;3;30064;U32;;[ESS]Available max charging capacity;essavailable_max_charging_capacity;0.010000;0.000000;kWh;4
+39;3;30066;U32;;[ESS]Available max discharging capacity;essavailable_max_discharging_capacity;0.010000;0.000000;kWh;4
+40;3;30068;U32;;[ESS] Rated charging power;ess_rated_charging_power;0.001000;0.000000;kW;4
+41;3;30070;U32;;[ESS] Rated discharging power;ess_rated_discharging_power;0.001000;0.000000;kW;4
+42;3;30072;U16;;General Alarm5;general_alarm5;1.000000;0.000000;;4
+43;3;30083;U32;;[ESS] rated energy capacity;ess_rated_energy_capacity;0.010000;0.000000;kWh;4
+44;3;30085;U16;;[ESS] charge Cut-Off SOC;ess_charge_cutoff_soc;0.100000;0.000000;'%;4
+45;3;30086;U16;;[ESS] discharge Cut-Off SOC;ess_discharge_cutoff_soc;0.100000;0.000000;'%;4
+46;3;30087;U16;;[ESS] SOH;ess_soh;0.100000;0.000000;'%;4
+47;4;40000;U16;;Start/Stop_1;startstop_1;1.000000;0.000000;;4
+48;4;40001;I32;;Active power fixed adjustment target value;active_power_fixed_adjustment_target_value;0.001000;0.000000;kW;4
+49;4;40003;I32;;Reactive power fixed adjustment target value;reactive_power_fixed_adjustment_target_value;0.001000;0.000000;kVar;4
+50;4;40005;I16;;Active power percentage adjustment target value;active_power_percentage_adjustment_target_value;0.010000;0.000000;'%;4
+51;4;40006;I16;;Q/S adjustment target value;qs_adjustment_target_value;0.010000;0.000000;'%;4
+52;4;40007;I16;;Power factor adjustment target value;power_factor_adjustment_target_value;0.001000;0.000000;;4
+53;4;40008;I32;;Phase A active power fixed adjustment target value;phase_a_active_power_fixed_adjustment_target_value;0.001000;0.000000;kW;4
+54;4;40010;I32;;Phase B active power fixed adjustment target value;phase_b_active_power_fixed_adjustment_target_value;0.001000;0.000000;kW;4
+55;4;40012;I32;;Phase C active power fixed adjustment target value;phase_c_active_power_fixed_adjustment_target_value;0.001000;0.000000;kW;4
+56;4;40014;I32;;Phase A reactive power fixed adjustment target value;phase_a_reactive_power_fixed_adjustment_target_value;0.001000;0.000000;kVar;4
+57;4;40016;I32;;Phase B reactive power fixed adjustment target value;phase_b_reactive_power_fixed_adjustment_target_value;0.001000;0.000000;kVar;4
+58;4;40018;I32;;Phase C reactive power fixed adjustment target value;phase_c_reactive_power_fixed_adjustment_target_value;0.001000;0.000000;kVar;4
+59;4;40020;I16;;Phase A Active power percentage adjustment target value;phase_a_active_power_percentage_adjustment_target_value;0.010000;0.000000;'%;4
+60;4;40021;I16;;Phase B Active power percentage adjustment target value;phase_b_active_power_percentage_adjustment_target_value;0.010000;0.000000;'%;4
+61;4;40022;I16;;Phase C Active power percentage adjustment target value;phase_c_active_power_percentage_adjustment_target_value;0.010000;0.000000;'%;4
+62;4;40023;I16;;Phase A Q/S fixed adjustment target value;phase_a_qs_fixed_adjustment_target_value;0.010000;0.000000;'%;4
+63;4;40024;I16;;Phase B Q/S fixed adjustment target value;phase_b_qs_fixed_adjustment_target_value;0.010000;0.000000;'%;4
+64;4;40025;I16;;Phase C Q/S fixed adjustment target value;phase_c_qs_fixed_adjustment_target_value;0.010000;0.000000;'%;4
+65;4;40029;U16;;Remote EMS enable;remote_ems_enable;1.000000;0.000000;;4
+66;4;40030;U16;;Independent phase power control enable;independent_phase_power_control_enable;1.000000;0.000000;;4
+67;4;40031;U16;;Remote EMS control mode;remote_ems_control_mode;1.000000;0.000000;;4
+68;4;40032;U32;;ESS max charging limit;ess_max_charging_limit;0.001000;0.000000;kW;4
+69;4;40034;U32;;ESS max discharging limit;ess_max_discharging_limit;0.001000;0.000000;kW;4
+70;4;40036;U32;;PV max power limit;pv_max_power_limit;0.001000;0.000000;kW;4
+71;4;40038;U32;;[Grid Point]Maximum export limitation;grid_pointmaximum_export_limitation;0.001000;0.000000;kW;4
+72;4;40040;U32;;[Grid Point] Maximum import limitation;grid_point_maximum_import_limitation;0.001000;0.000000;kW;4
+73;4;40042;U32;;PCS maximum export limitation;pcs_maximum_export_limitation;0.001000;0.000000;kW;4
+74;4;40044;U32;;PCS maximum import limitation;pcs_maximum_import_limitation;0.001000;0.000000;kW;4
+75;3;30500_30;STRING;;Model type;model_type;1.000000;0.000000;;4
+76;3;30515_20;STRING;;Serial number;SERIAL;1.000000;0.000000;;4
+77;3;30525_30;STRING;;Machine firmware version;machine_firmware_version;1.000000;0.000000;;4
+78;3;30540;U32;;Rated active power;rated_active_power;0.001000;0.000000;kW;4
+79;3;30542;U32;;Max. apparent power;max_apparent_power_1;0.001000;0.000000;kVA;4
+80;3;30544;U32;;Max. active power;max_active_power_1;0.001000;0.000000;kW;4
+81;3;30546;U32;;Max. absorption power;max_absorption_power;0.001000;0.000000;kW;4
+82;3;30548;U32;;Rated battery capacity;rated_battery_capacity;0.010000;0.000000;kWh;4
+83;3;30550;U32;;[ESS]Rated charge power;essrated_charge_power;0.001000;0.000000;kW;4
+84;3;30552;U32;;[ESS]Rated discharge power;essrated_discharge_power;0.001000;0.000000;kW;4
+85;3;30566;U32;;[ESS]Daily charge energy;essdaily_charge_energy;0.010000;0.000000;kWh;4
+86;3;30568;U64;;[ESS]Accumulated charge energy;essaccumulated_charge_energy;0.010000;0.000000;kWh;4
+87;3;30572;U32;;[ESS]Daily discharge energy;essdaily_discharge_energy;0.010000;0.000000;kWh;4
+88;3;30574;U64;;[ESS]Accumulated discharge energy;essaccumulated_discharge_energy;0.010000;0.000000;kWh;4
+89;3;30578;U16;;Running state;running_state;1.000000;0.000000;;4
+90;3;30579;I32;;Max.active power adjustment value;maxactive_power_adjustment_value;0.001000;0.000000;kW;4
+91;3;30581;I32;;Min. active power adjustment value;min_active_power_adjustment_value;0.001000;0.000000;kW;4
+92;3;30583;U32;;Max. reactive power adjustment value fed to AC;max_reactive_power_adjustment_value_fed_to_ac;0.001000;0.000000;kVar;4
+93;3;30585;U32;;Max. reactive power adjustment value absorbed from AC;max_reactive_power_adjustment_value_absorbed_from_ac;0.001000;0.000000;kVar;4
+94;3;30587;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+95;3;30589;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
+96;3;30591;U32;;[ESS]Max. battery charge power;essmax_battery_charge_power;0.001000;0.000000;kW;4
+97;3;30593;U32;;[ESS]Max. battery discharge power;essmax_battery_discharge_power;0.001000;0.000000;kW;4
+98;3;30595;U32;;[ESS]Available battery charge Energy;essavailable_battery_charge_energy;0.010000;0.000000;kWh;4
+99;3;30597;U32;;[ESS]Available battery discharge Energy;essavailable_battery_discharge_energy;0.010000;0.000000;kWh;4
+100;3;30599;I32;;[ESS] Charge / discharge power;ess_charge_discharge_power;0.001000;0.000000;kW;4
+101;3;30601;U16;;[ESS]Battery SOC;essbattery_soc;0.100000;0.000000;'%;4
+102;3;30602;U16;;[ESS]Battery SOH;essbattery_soh;0.100000;0.000000;'%;4
+103;3;30603;I16;;[ESS]Average cell temperature;essaverage_cell_temperature;0.100000;0.000000;DegC;4
+104;3;30604;U16;;[ESS] Average cell voltage;ess_average_cell_voltage;0.001000;0.000000;V;4
+105;3;30605;U16;;Alarm1_1;alarm1_1;1.000000;0.000000;;4
+106;3;30606;U16;;Alarm2_1;alarm2_1;1.000000;0.000000;;4
+107;3;30607;U16;;Alarm3_1;alarm3_1;1.000000;0.000000;;4
+108;3;30608;U16;;Alarm4;alarm4;1.000000;0.000000;;4
+109;3;30609;U16;;Alarm5;alarm5;1.000000;0.000000;;4
+110;3;30620;I16;;[ESS]Maximum battery temperature;essmaximum_battery_temperature;0.100000;0.000000;DegC;4
+111;3;30621;I16;;[ESS]Minimum battery temperature;essminimum_battery_temperature;0.100000;0.000000;DegC;4
+112;3;30622;U16;;[ESS] Maximum battery cell voltage;ess_maximum_battery_cell_voltage;0.001000;0.000000;V;4
+113;3;30623;U16;;[ESS] Minimum battery cell voltage;ess_minimum_battery_cell_voltage;0.001000;0.000000;V;4
+114;3;31000;U16;;Rated grid voltage;rated_grid_voltage;0.100000;0.000000;V;4
+115;3;31001;U16;;Rated grid frequency;rated_grid_frequency;0.010000;0.000000;Hz;4
+116;3;31002;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+117;3;31003;I16;;[PCS] Internal temperature;pcs_internal_temperature;0.100000;0.000000;DegC;4
+118;3;31004;U16;;Output type;output_type;1.000000;0.000000;;4
+119;3;31005;U32;;A-B line voltage;ab_line_voltage;0.010000;0.000000;V;4
+120;3;31007;U32;;B-C line voltage;bc_line_voltage;0.010000;0.000000;V;4
+121;3;31009;U32;;C-A line voltage;ca_line_voltage;0.010000;0.000000;V;4
+122;3;31011;U32;;Phase A voltage;phase_a_voltage;0.010000;0.000000;V;4
+123;3;31013;U32;;Phase B voltage;phase_b_voltage;0.010000;0.000000;V;4
+124;3;31015;U32;;Phase C voltage;phase_c_voltage;0.010000;0.000000;V;4
+125;3;31017;I32;;Phase A current;phase_a_current;0.010000;0.000000;A;4
+126;3;31019;I32;;Phase B current;phase_b_current;0.010000;0.000000;A;4
+127;3;31021;I32;;Phase C current;phase_c_current;0.010000;0.000000;A;4
+128;3;31023;U16;;Power factor;PF;0.001000;0.000000;;4
+129;3;31024;U16;;PACK count;pack_count;1.000000;0.000000;;4
+130;3;31025;U16;;PV string count;pv_string_count;1.000000;0.000000;;4
+131;3;31026;U16;;MPPT count;mppt_count;1.000000;0.000000;;4
+132;3;31027;I16;;PV1 voltage;pv1_voltage;0.100000;0.000000;V;4
+133;3;31028;I16;;PV1 current;pv1_current;0.010000;0.000000;A;4
+134;3;31029;I16;;PV2 voltage;pv2_voltage;0.100000;0.000000;V;4
+135;3;31030;I16;;PV2 current;pv2_current;0.010000;0.000000;A;4
+136;3;31031;I16;;PV3 voltage;pv3_voltage;0.100000;0.000000;V;4
+137;3;31032;I16;;PV3 current;pv3_current;0.010000;0.000000;A;4
+138;3;31033;I16;;PV4 voltage;pv4_voltage;0.100000;0.000000;V;4
+139;3;31034;I16;;PV4 current;pv4_current;0.010000;0.000000;A;4
+140;3;31035;I32;;PV power;pv_power;0.001000;0.000000;kW;4
+141;3;31037;U16;;Insulation resistance;insulation_resistance;0.001000;0.000000;MOhm;4
+142;3;31038;U32;;Startup time;startup_time;1.000000;0.000000;s;4
+143;3;31040;U32;;Shutdown time;shutdown_time;1.000000;0.000000;s;4
+144;3;31042;I16;;PV5 voltage;pv5_voltage;0.100000;0.000000;V;4
+145;3;31043;I16;;PV5 current;pv5_current;0.010000;0.000000;A;4
+146;3;31044;I16;;PV6 voltage;pv6_voltage;0.100000;0.000000;V;4
+147;3;31045;I16;;PV6 current;pv6_current;0.010000;0.000000;A;4
+148;3;31046;I16;;PV7 voltage;pv7_voltage;0.100000;0.000000;V;4
+149;3;31047;I16;;PV7 current;pv7_current;0.010000;0.000000;A;4
+150;3;31048;I16;;PV8 voltage;pv8_voltage;0.100000;0.000000;V;4
+151;3;31049;I16;;PV8 current_2;pv8_current_2;0.010000;0.000000;A;4
+152;3;31050;I16;;PV9 voltage;pv9_voltage;0.100000;0.000000;V;4
+153;3;31051;I16;;PV9 current;pv9_current;0.010000;0.000000;A;4
+154;3;31052;I16;;PV10 voltage;pv10_voltage;0.100000;0.000000;V;4
+155;3;31053;I16;;PV10 current;pv10_current;0.010000;0.000000;A;4
+156;3;31054;I16;;PV11 voltage;pv11_voltage;0.100000;0.000000;V;4
+157;3;31055;I16;;PV11 current;pv11_current;0.010000;0.000000;A;4
+158;3;31056;I16;;PV12 voltage;pv12_voltage;0.100000;0.000000;V;4
+159;3;31057;I16;;PV12 current;pv12_current;0.010000;0.000000;A;4
+160;3;31058;I16;;PV13 voltage;pv13_voltage;0.100000;0.000000;V;4
+161;3;31059;I16;;PV13 current;pv13_current;0.010000;0.000000;A;4
+162;3;31060;I16;;PV14 voltage;pv14_voltage;0.100000;0.000000;V;4
+163;3;31061;I16;;PV14 current;pv14_current;0.010000;0.000000;A;4
+164;3;31062;I16;;PV15 voltage;pv15_voltage;0.100000;0.000000;V;4
+165;3;31063;I16;;PV15 current;pv15_current;0.010000;0.000000;A;4
+166;3;31064;I16;;PV16 voltage;pv16_voltage;0.100000;0.000000;V;4
+167;3;31065;I16;;PV16 current;pv16_current;0.010000;0.000000;A;4
+168;3;31500;U16;;[DC Charger] Vehicle battery voltage;dc_charger_vehicle_battery_voltage;0.100000;0.000000;V;4
+169;3;31501;U16;;[DC Charger] Charging current;dc_charger_charging_current;0.010000;0.000000;A;4
+170;3;31502;I32;;[DC Charger] Output power;dc_charger_output_power;0.001000;0.000000;kW;4
+171;3;31504;U16;;[DC Charger] Vehicle SOC;dc_charger_vehicle_soc;0.100000;0.000000;'%;4
+172;3;31505;U32;;[DC Charger] Current charging capacity;dc_charger_current_charging_capacity;0.010000;0.000000;kWh;4
+173;3;31507;U32;;[DC Charger] Current charging duration;dc_charger_current_charging_duration;1.000000;0.000000;s;4
+174;4;40500;U16;;Start/Stop_2;startstop_2;1.000000;0.000000;;4
+175;4;40501;U16;;Grid code;grid_code;1.000000;0.000000;;4
+176;4;41000;U16;;[DC Charger] Start/Stop_3;dc_charger_startstop_3;1.000000;0.000000;;4
+177;4;41500;U16;;Remote EMS dispatch enable;remote_ems_dispatch_enable;1.000000;0.000000;;4
+178;4;41501;I32;;Active power fixed value adjustment;active_power_fixed_value_adjustment;0.001000;0.000000;kW;4
+179;4;41503;I32;;Reactive power fixed value adjustment;reactive_power_fixed_value_adjustment;0.001000;0.000000;kVar;4
+180;4;41505;I16;;Active power percentage adjustment;active_power_percentage_adjustment;0.010000;0.000000;'%;4
+181;4;41506;I16;;Reactive power Q/S adjustment;reactive_power_qs_adjustment;0.010000;0.000000;'%;4
+182;4;41507;I16;;Power factor adjustment;power_factor_adjustment;0.001000;0.000000;;4
+183;3;32000;U16;;System state;system_state;1.000000;0.000000;;4
+184;3;32001;U32;;Total energy consumed;total_energy_consumed;0.010000;0.000000;kWh;4
+185;3;32003;I32;;Charging power;charging_power;0.001000;0.000000;kW;4
+186;3;32005;U32;;Rated power;P_RATED;0.001000;0.000000;kW;4
+187;3;32007;I32;;Rated current;rated_current;0.010000;0.000000;A;4
+188;3;32009;U16;;Rated voltage;rated_voltage;0.100000;0.000000;V;4
+189;3;32010;I32;;AC-Charger input breaker rated current;accharger_input_breaker_rated_current;0.010000;0.000000;A;4
+190;3;32012;U16;;Alarm1_2;alarm1_2;1.000000;0.000000;;4
+191;3;32013;U16;;Alarm2_2;alarm2_2;1.000000;0.000000;;4
+192;3;32014;U16;;Alarm3_2;alarm3_2;1.000000;0.000000;;4
+193;4;42000;U16;;Start/Stop_4;startstop_4;1.000000;0.000000;;4
+194;4;42001;U32;;Charger output current;charger_output_current;0.010000;0.000000;A;4

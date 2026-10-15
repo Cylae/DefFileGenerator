@@ -1,0 +1,32 @@
+modbusRTU;Other;Schneider;SCHNEIDER_SEPAM_S48;;;;;;;
+1;3;275;U16;;Courant phase I1;courant_phase_i1;0.100000;0.000000;A;4
+2;3;276;U16;;Courant phase I2;courant_phase_i2;0.100000;0.000000;A;4
+3;3;277;U16;;Courant phase I3;courant_phase_i3;0.100000;0.000000;A;4
+4;3;278;U16;;Courant residuel I0 Somme;courant_residuel_i0_somme;0.100000;0.000000;A;4
+5;3;279;U16;;Courant residuel mesure;courant_residuel_mesure;0.100000;0.000000;A;4
+6;3;280;U16;;Courant moyen phase Im1;courant_moyen_phase_im1;0.100000;0.000000;A;4
+7;3;281;U16;;Courant moyen phase Im2;courant_moyen_phase_im2;0.100000;0.000000;A;4
+8;3;282;U16;;Courant moyen phase Im3;courant_moyen_phase_im3;0.100000;0.000000;A;4
+9;3;283;U16;;Maximetre courant phase IM1;maximetre_courant_phase_im1;0.100000;0.000000;A;4
+10;3;284;U16;;Maximetre courant phase IM2;maximetre_courant_phase_im2;0.100000;0.000000;A;4
+11;3;285;U16;;Maximetre courant phase IM3;maximetre_courant_phase_im3;0.100000;0.000000;A;4
+12;3;286;U16;;Tension composee U21;tension_composee_u21;1.000000;0.000000;V;4
+13;3;287;U16;;Tension composee U32;tension_composee_u32;1.000000;0.000000;V;4
+14;3;288;U16;;Tension composee U13;tension_composee_u13;1.000000;0.000000;V;4
+15;3;289;U16;;Tension simple V1;tension_simple_v1;1.000000;0.000000;V;4
+16;3;290;U16;;Tension simple V2;tension_simple_v2;1.000000;0.000000;V;4
+17;3;291;U16;;Tension simple V3;tension_simple_v3;1.000000;0.000000;V;4
+18;3;292;U16;;Tension residuelle V0;tension_residuelle_v0;1.000000;0.000000;V;4
+19;3;293;U16;;Tension directe Vd;tension_directe_vd;1.000000;0.000000;V;4
+20;3;294;U16;;Tension inverse Vi;tension_inverse_vi;1.000000;0.000000;V;4
+21;3;295;U16;;Frequence;frequence;0.010000;0.000000;Hz;4
+22;3;296;I16;;Puissance active P;P_AC;1.000000;0.000000;kW;4
+23;3;297;I16;;Puissance reactive Q;ReactivePowSum;1.000000;0.000000;kvar;4
+24;3;298;I16;;Puissance apparente S;ApparentPowSum;1.000000;0.000000;kVA;4
+25;3;299;I16;;Maximetre puissance active Pm;maximetre_puissance_active_pm;1.000000;0.000000;kW;4
+26;3;300;I16;;Maximetre puissance reactive Qm;maximetre_puissance_reactive_qm;1.000000;0.000000;kvar;4
+27;3;301;I16;;Facteur de puissance cosphi;PF;0.010000;0.000000;;4
+28;3;302;I32;;Energie active positive Ea+;energie_active_positive_ea;100.000000;0.000000;kW.h;4
+29;3;304;I32;;Energie active negative Ea-;energie_active_negative_ea;100.000000;0.000000;kW.h;4
+30;3;306;I32;;Energie reactive positive Er+;energie_reactive_positive_er;100.000000;0.000000;kvar.h;4
+31;3;308;I32;;Energie reactive negative Er-;energie_reactive_negative_er;100.000000;0.000000;kvar.h;4

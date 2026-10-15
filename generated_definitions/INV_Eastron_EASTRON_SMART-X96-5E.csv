@@ -1,0 +1,124 @@
+modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
+1;4;30001;F32;;Phase 1 line to neutral volts;phase_1_line_to_neutral_volts;1.000000;0.000000;V;4
+2;4;30003;F32;;Phase 2 line to neutral volts;phase_2_line_to_neutral_volts;1.000000;0.000000;V;4
+3;4;30005;F32;;Phase 3 line to neutral volts;phase_3_line_to_neutral_volts;1.000000;0.000000;V;4
+4;4;30007;F32;;Phase 1 current;phase_1_current;1.000000;0.000000;A;4
+5;4;30009;F32;;Phase 2 current;phase_2_current;1.000000;0.000000;A;4
+6;4;30011;F32;;Phase 3 current;phase_3_current;1.000000;0.000000;A;4
+7;4;30013;F32;;Phase 1 active power;phase_1_active_power;1.000000;0.000000;W;4
+8;4;30015;F32;;Phase 2 active power;phase_2_active_power;1.000000;0.000000;W;4
+9;4;30017;F32;;Phase 3 active power;phase_3_active_power;1.000000;0.000000;W;4
+10;4;30019;F32;;Phase 1 apparent power;phase_1_apparent_power;1.000000;0.000000;VA;4
+11;4;30021;F32;;Phase 2 apparent power;phase_2_apparent_power;1.000000;0.000000;VA;4
+12;4;30023;F32;;Phase 3 apparent power;phase_3_apparent_power;1.000000;0.000000;VA;4
+13;4;30025;F32;;Phase 1 reactive power;phase_1_reactive_power;1.000000;0.000000;VAr;4
+14;4;30027;F32;;Phase 2 reactive power;phase_2_reactive_power;1.000000;0.000000;VAr;4
+15;4;30029;F32;;Phase 3 reactive power;phase_3_reactive_power;1.000000;0.000000;VAr;4
+16;4;30031;F32;;Phase 1 power factor (1);phase_1_power_factor_1;1.000000;0.000000;;4
+17;4;30033;F32;;Phase 2 power factor (1);phase_2_power_factor_1;1.000000;0.000000;;4
+18;4;30035;F32;;Phase 3 power factor (1);phase_3_power_factor_1;1.000000;0.000000;;4
+19;4;30037;F32;;Phase 1 phase angle;phase_1_phase_angle;1.000000;0.000000;Degrees;4
+20;4;30039;F32;;Phase 2 phase angle;phase_2_phase_angle;1.000000;0.000000;Degrees;4
+21;4;30041;F32;;Phase 3 phase angle;phase_3_phase_angle;1.000000;0.000000;Degrees;4
+22;4;30043;F32;;Average line to neutral volts;average_line_to_neutral_volts;1.000000;0.000000;V;4
+23;4;30047;F32;;Average line current;average_line_current;1.000000;0.000000;A;4
+24;4;30049;F32;;Sum of line currents;sum_of_line_currents;1.000000;0.000000;A;4
+25;4;30053;F32;;Total system power;total_system_power;1.000000;0.000000;W;4
+26;4;30057;F32;;Total system volt amps;total_system_volt_amps;1.000000;0.000000;VA;4
+27;4;30061;F32;;Total system VAr;total_system_var;1.000000;0.000000;VAr;4
+28;4;30063;F32;;Total system power factor (1);total_system_power_factor_1;1.000000;0.000000;;4
+29;4;30067;F32;;Total system phase angle;total_system_phase_angle;1.000000;0.000000;Degrees;4
+30;4;30071;F32;;Frequency of supply voltages;frequency_of_supply_voltages;1.000000;0.000000;Hz;4
+31;4;30073;F32;;Import Wh since last reset;import_wh_since_last_reset;1.000000;0.000000;kWh;4
+32;4;30075;F32;;Export Wh since last reset;export_wh_since_last_reset;1.000000;0.000000;kWh;4
+33;4;30077;F32;;Import VArh since last reset;import_varh_since_last_reset;1.000000;0.000000;kVArh;4
+34;4;30079;F32;;Export VArh since last reset;export_varh_since_last_reset;1.000000;0.000000;kVArh;4
+35;4;30081;F32;;VAh since last reset;vah_since_last_reset;1.000000;0.000000;kVAh;4
+36;4;30083;F32;;Ah since last reset;ah_since_last_reset;1.000000;0.000000;Ah;4
+37;4;30085;F32;;Total system power demand (2);total_system_power_demand_2;1.000000;0.000000;W;4
+38;4;30087;F32;;Maximum total system power demand (2);maximum_total_system_power_demand_2;1.000000;0.000000;W;4
+39;4;30089;F32;;Import active power demand;import_active_power_demand;1.000000;0.000000;W;4
+40;4;30091;F32;;Import active power max. demand;import_active_power_max_demand;1.000000;0.000000;W;4
+41;4;30093;F32;;Export active power demand;export_active_power_demand;1.000000;0.000000;W;4
+42;4;30095;F32;;Export active power max. demand;export_active_power_max_demand;1.000000;0.000000;W;4
+43;4;30101;F32;;Total system VA demand;total_system_va_demand;1.000000;0.000000;VA;4
+44;4;30103;F32;;Maximum total system VA demand;maximum_total_system_va_demand;1.000000;0.000000;VA;4
+45;4;30105;F32;;Neutral current demand;neutral_current_demand;1.000000;0.000000;Amps;4
+46;4;30107;F32;;Maximum neutral current demand;maximum_neutral_current_demand;1.000000;0.000000;Amps;4
+47;4;30109;F32;;Total system reactive power demand (2);total_system_reactive_power_demand_2;1.000000;0.000000;VAr;4
+48;4;30111;F32;;Maximum total system reactive power demand(2);maximum_total_system_reactive_power_demand2;1.000000;0.000000;VAr;4
+49;4;30161;F32;;Voltage phase sequence / (normal=1 , reverse=2);voltage_phase_sequence_normal1_reverse2;1.000000;0.000000;;4
+50;4;30163;F32;;Current phase sequence / (normal=1 , reverse=2);current_phase_sequence_normal1_reverse2;1.000000;0.000000;;4
+51;4;30193;F32;;Nature of the load / Resistive =1 , inductive=2 , capacitive=3);nature_of_the_load_resistive_1_inductive2_capacitive3;1.000000;0.000000;;4
+52;4;30195;F32;;Nature of L1 load / Resistive =1 , inductive=2 , capacitive=3);nature_of_l1_load_resistive_1_inductive2_capacitive3;1.000000;0.000000;;4
+53;4;30197;F32;;Nature of L2 load / Resistive =1 , inductive=2  , capacitive=3 );nature_of_l2_load_resistive_1_inductive2_capacitive3;1.000000;0.000000;;4
+54;4;30199;F32;;Nature of L3 load / Resistive =1 , inductive=2  , capacitive=3 );nature_of_l3_load_resistive_1_inductive2_capacitive3;1.000000;0.000000;;4
+55;4;30201;F32;;Line 1 to Line 2 volts;line_1_to_line_2_volts;1.000000;0.000000;V;4
+56;4;30203;F32;;Line 2 to Line 3 volts;line_2_to_line_3_volts;1.000000;0.000000;V;4
+57;4;30205;F32;;Line 3 to Line 1 volts;line_3_to_line_1_volts;1.000000;0.000000;V;4
+58;4;30207;F32;;Average line to line volts;average_line_to_line_volts;1.000000;0.000000;V;4
+59;4;30225;F32;;Neutral current;neutral_current;1.000000;0.000000;A;4
+60;4;30235;F32;;Phase 1 L/N volts THD;phase_1_ln_volts_thd;1.000000;0.000000;Percent;4
+61;4;30237;F32;;Phase 2 L/N volts THD;phase_2_ln_volts_thd;1.000000;0.000000;Percent;4
+62;4;30239;F32;;Phase 3 L/N volts THD;phase_3_ln_volts_thd;1.000000;0.000000;Percent;4
+63;4;30241;F32;;Phase 1 Current THD;phase_1_current_thd;1.000000;0.000000;Percent;4
+64;4;30243;F32;;Phase 2 Current THD;phase_2_current_thd;1.000000;0.000000;Percent;4
+65;4;30245;F32;;Phase 3 Current THD;phase_3_current_thd;1.000000;0.000000;Percent;4
+66;4;30249;F32;;Average line to neutral volts THD;average_line_to_neutral_volts_thd;1.000000;0.000000;Percent;4
+67;4;30251;F32;;Average line current THD;average_line_current_thd;1.000000;0.000000;Percent;4
+68;4;30259;F32;;Phase 1 current demand;phase_1_current_demand;1.000000;0.000000;A;4
+69;4;30261;F32;;Phase 2 current demand;phase_2_current_demand;1.000000;0.000000;A;4
+70;4;30263;F32;;Phase 3 current demand;phase_3_current_demand;1.000000;0.000000;A;4
+71;4;30265;F32;;Maximum phase 1 current demand;maximum_phase_1_current_demand;1.000000;0.000000;A;4
+72;4;30267;F32;;Maximum phase 2 current demand;maximum_phase_2_current_demand;1.000000;0.000000;A;4
+73;4;30269;F32;;Maximum phase 3 current demand;maximum_phase_3_current_demand;1.000000;0.000000;A;4
+74;4;30335;F32;;Line 1 to line 2 volts THD;line_1_to_line_2_volts_thd;1.000000;0.000000;Percent;4
+75;4;30337;F32;;Line 2 to line 3 volts THD;line_2_to_line_3_volts_thd;1.000000;0.000000;Percent;4
+76;4;30339;F32;;Line 3 to line 1 volts THD;line_3_to_line_1_volts_thd;1.000000;0.000000;Percent;4
+77;4;30341;F32;;Average line to line volts THD;average_line_to_line_volts_thd;1.000000;0.000000;Percent;4
+78;4;30343;F32;;Total kwh (3);total_kwh_3;1.000000;0.000000;kWh;4
+79;4;30345;F32;;Total kvarh (3);total_kvarh_3;1.000000;0.000000;kVArh;4
+80;4;30347;F32;;L1 import kwh;l1_import_kwh;1.000000;0.000000;kWh;4
+81;4;30349;F32;;L2 import kwh;l2_import_kwh;1.000000;0.000000;kWh;4
+82;4;30351;F32;;L3 import kWh;l3_import_kwh;1.000000;0.000000;kWh;4
+83;4;30353;F32;;L1 export kWh;l1_export_kwh;1.000000;0.000000;kWh;4
+84;4;30355;F32;;L2 export kwh;l2_export_kwh;1.000000;0.000000;kWh;4
+85;4;30357;F32;;L3 export kWh;l3_export_kwh;1.000000;0.000000;kWh;4
+86;4;30359;F32;;L1 total kwh;l1_total_kwh;1.000000;0.000000;kWh;4
+87;4;30361;F32;;L2 total kWh;l2_total_kwh;1.000000;0.000000;kWh;4
+88;4;30363;F32;;L3 total kwh;l3_total_kwh;1.000000;0.000000;kWh;4
+89;4;30365;F32;;L1 import kvarh;l1_import_kvarh;1.000000;0.000000;kVArh;4
+90;4;30367;F32;;L2 import kvarh;l2_import_kvarh;1.000000;0.000000;kVArh;4
+91;4;30369;F32;;L3 import kvarh;l3_import_kvarh;1.000000;0.000000;kVArh;4
+92;4;30371;F32;;L1 export kvarh;l1_export_kvarh;1.000000;0.000000;kVArh;4
+93;4;30373;F32;;L2 export kvarh;l2_export_kvarh;1.000000;0.000000;kVArh;4
+94;4;30375;F32;;L3 export kvarh;l3_export_kvarh;1.000000;0.000000;kVArh;4
+95;4;30377;F32;;L1 total kvarh;l1_total_kvarh;1.000000;0.000000;kVArh;4
+96;4;30379;F32;;L2 total kvarh;l2_total_kvarh;1.000000;0.000000;kVArh;4
+97;4;30381;F32;;L3 total kvarh;l3_total_kvarh;1.000000;0.000000;kVArh;4
+98;4;31147;F32;;Voltage Total Harmonic L1;voltage_total_harmonic_l1;1.000000;0.000000;Percent;4
+99;4;31149;F32;;Voltage Total Harmonic L2;voltage_total_harmonic_l2;1.000000;0.000000;Percent;4
+100;4;31151;F32;;Voltage Total Harmonic L3;voltage_total_harmonic_l3;1.000000;0.000000;Percent;4
+101;4;31153;F32;;Current Total Harmonic L1;current_total_harmonic_l1;1.000000;0.000000;Percent;4
+102;4;31155;F32;;Current Total Harmonic L2;current_total_harmonic_l2;1.000000;0.000000;Percent;4
+103;4;31157;F32;;Current Total Harmonic L3;current_total_harmonic_l3;1.000000;0.000000;Percent;4
+104;3;40001;F32;;Demand Time;demand_time;1.000000;0.000000;;4
+105;3;40003;F32;;Demand Period;demand_period;1.000000;0.000000;;4
+106;3;40005;F32;;Slide time;slide_time;1.000000;0.000000;;4
+107;3;40007;F32;;Demand Calculation Method;demand_calculation_method;1.000000;0.000000;;4
+108;3;40011;F32;;System Type;system_type;1.000000;0.000000;;4
+109;3;40013;F32;;Pulse 1 Width;pulse_1_width;1.000000;0.000000;;4
+110;3;40015;F32;;Key Parameter Programming Authorization (KPPA);key_parameter_programming_authorization_kppa;1.000000;0.000000;;4
+111;3;40019;F32;;Parity and Stop bits;parity_and_stop_bits;1.000000;0.000000;;4
+112;3;40021;F32;;Modbus Address;modbus_address;1.000000;0.000000;;4
+113;3;40023;F32;;Pulse 1 Rate;pulse_1_rate;1.000000;0.000000;;4
+114;3;40025;F32;;Password;password;1.000000;0.000000;;4
+115;3;40029;F32;;Network Baud Rate;network_baud_rate;1.000000;0.000000;;4
+116;3;40047;F32;;PT1;pt1;1.000000;0.000000;;4
+117;3;40049;F32;;PT2;pt2;1.000000;0.000000;;4
+118;3;40051;F32;;CT1;ct1;1.000000;0.000000;;4
+119;3;40053;F32;;CT2;ct2;1.000000;0.000000;;4
+120;3;40057;F32;;Current Direction correction (when the external CT is connected reversely);current_direction_correction_when_the_external_ct_is_connected_reversely;1.000000;0.000000;;4
+121;3;40059;F32;;Automatic Scroll Display Time;automatic_scroll_display_time;1.000000;0.000000;;4
+122;3;40061;F32;;Backlit time;backlit_time;1.000000;0.000000;;4
+123;3;40087;F32;;Pulse 1 Energy;pulse_1_energy;1.000000;0.000000;;4

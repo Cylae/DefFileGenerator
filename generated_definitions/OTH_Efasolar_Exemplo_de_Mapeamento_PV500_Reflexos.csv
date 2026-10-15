@@ -1,0 +1,28 @@
+modbusRTU;Other;Efasolar;Exemplo de Mapeamento PV500 Re;;;;;;;
+1;3;40040;U16;;Estado do Inversor;estado_do_inversor;1.000000;0.000000;;4
+2;3;40041;U16;;Tensao de Rede;tensao_de_rede;1.000000;0.000000;;4
+3;3;40042;U16;;DSP;dsp;1.000000;0.000000;;4
+4;3;40043;U16;;Fuga Terra TN;fuga_terra_tn;1.000000;0.000000;;4
+5;3;40001;F32;;Tensao Condensadores Entrada CC (Vdc);tensao_condensadores_entrada_cc_vdc;1.000000;0.000000;;4
+6;3;40003;F32;;Corrente Barramento CC (Idc);corrente_barramento_cc_idc;1.000000;0.000000;;4
+7;3;40005;F32;;Potencia Entrada CC (Pdc);potencia_entrada_cc_pdc;1.000000;0.000000;;4
+8;3;40007;F32;;Tensao Saida (Vrs);tensao_saida_vrs;1.000000;0.000000;;4
+9;3;40009;F32;;Tensao Saida (Vst);tensao_saida_vst;1.000000;0.000000;;4
+10;3;40011;F32;;Tensao Saida (Vtr);tensao_saida_vtr;1.000000;0.000000;;4
+11;3;40013;F32;;Corrente Saida (Ir);corrente_saida_ir;1.000000;0.000000;;4
+12;3;40015;F32;;Corrente Saida (Is);corrente_saida_is;1.000000;0.000000;;4
+13;3;40017;F32;;Corrente Saida (It);corrente_saida_it;1.000000;0.000000;;4
+14;3;40019;F32;;Potencia Saida;potencia_saida;1.000000;0.000000;;4
+15;3;40021;F32;;Factor de Potencia;factor_de_potencia;1.000000;0.000000;;4
+16;3;40023;F32;;Temperatura;temperatura;1.000000;0.000000;;4
+17;3;40025;F32;;Frequencia;frequencia;1.000000;0.000000;;4
+18;3;40027;U16;;Alarme Tensao de Rede;alarme_tensao_de_rede;1.000000;0.000000;;9
+19;3;40028;U16;;Alarme Frequencia;alarme_frequencia;1.000000;0.000000;;9
+20;3;40029;U16;;Alarme Fusiveis;alarme_fusiveis;1.000000;0.000000;;9
+21;3;40030;U16;;Alarme Fuga de Isolamento;alarme_fuga_de_isolamento;1.000000;0.000000;;9
+22;3;40031;U16;;Alarme Proteccao Interna;alarme_proteccao_interna;1.000000;0.000000;;9
+23;3;40032;U16;;Alarme Sobretemperatura;alarme_sobretemperatura;1.000000;0.000000;;9
+24;3;40033;U16;;Pré-Alarme Sobretemperatura;pralarme_sobretemperatura;1.000000;0.000000;;9
+25;3;40034;U16;;Alarme Ventilação Inversor;alarme_ventilao_inversor;1.000000;0.000000;;9
+26;3;40035;F32;;Contador de Energia Activa;contador_de_energia_activa;1.000000;0.000000;;4
+27;3;40037;F32;;Contador de Energia Reactiva;contador_de_energia_reactiva;1.000000;0.000000;;4

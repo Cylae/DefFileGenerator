@@ -1,0 +1,38 @@
+modbusRTU;Inverter;k_star;Inv
+1;4;3000;U16;;PV1 input voltage;U_DC_STRING_1;1.000000;0.000000;;4
+2;4;3001;U16;;PV2 input voltage;U_DC_STRING_2;1.000000;0.000000;;4
+3;4;3002;U16;;PV3 input voltage;U_DC_STRING_3;1.000000;0.000000;;4
+4;4;3003;U16;;PV1 input current;I_DC_MPPT_1;1.000000;0.000000;;4
+5;4;3004;U16;;PV2 input current;I_DC_MPPT_2;1.000000;0.000000;;4
+6;4;3005;U16;;PV3 input current;I_DC_MPPT_3;1.000000;0.000000;;4
+7;4;3006;I32;;PV1 input power;P_DC_MPPT_1;1.000000;0.000000;;4
+8;4;3008;I32;;PV2 input power;P_DC_MPPT_2;1.000000;0.000000;;4
+9;4;3010;I32;;PV3 input power;P_DC_MPPT_3;1.000000;0.000000;;4
+10;4;3014;U16;;RS-phase grid voltage;;1.000000;0.000000;;4
+11;4;3015;U16;;ST-phase grid voltage;;1.000000;0.000000;;4
+12;4;3016;U16;;TS-phase grid voltage;;1.000000;0.000000;;4
+13;4;3017;U16;;RS-phase grid frequency;FREQ;1.000000;0.000000;;4
+14;4;3018;U16;;ST-phase grid frequency;;1.000000;0.000000;;4
+15;4;3019;U16;;TR-phase grid frequency;;1.000000;0.000000;;4
+16;4;3020;U16;;R-phase grid current;;1.000000;0.000000;;4
+17;4;3021;U16;;S-phase grid current;;1.000000;0.000000;;4
+18;4;3022;U16;;T-phase grid current;;1.000000;0.000000;;4
+19;4;3023;I32;;Grid-tied power;Metercond;1.000000;0.000000;;4
+20;4;3027;U16;;DSP alarm code;;1.000000;0.000000;;4
+21;4;3028;U32;;DSP error code;;2.000000;0.000000;;4
+22;4;3036;U16;;ARM alarm code;;1.000000;0.000000;;8
+23;4;3038;U32;;Total energy yield;E_TOT;1.000000;0.000000;;4
+24;4;3040;U32;;Annual energy yield;;1.000000;0.000000;4;0
+25;4;3042;U16;;Daily energy yield;E_DAY;1.000000;0.000000;4;0
+26;4;3043;U16;;power-on voltage;;1.000000;0.000000;;4
+27;4;3044;U16;;power-on delay;;1.000000;0.000000;;4
+28;4;3045;U16;;Lower grid voltage threshold;;1.000000;0.000000;;4
+29;4;3046;U16;;Upper grid voltage threshold;;1.000000;0.000000;;4
+30;4;3047;U16;;Lower grid frequency threshold;;1.000000;0.000000;;4
+31;4;3048;U16;;Upper grid frequency threshold;;1.000000;0.000000;;4
+32;4;3049;U16;;Preset power factor;PF;1.000000;0.000000;;4
+33;4;3050;U16;;Preset active power;P_AC;1.000000;0.000000;;4
+34;4;3052;I32;;Apparent power;S_AC;1.000000;0.000000;;4
+35;4;3054;I32;;Reactive power;Q_AC;1.000000;0.000000;;4
+36;4;3056;U16;;power factor;;1.000000;0.000000;;4
+37;3;4004;U16;;Power Reduction Setpoint;cmd;1.000000;0.000000;%;4

@@ -1,0 +1,112 @@
+modbusRTU;Other;MarsRenewable;MarsRenewable_LocalControler_P;;;;;;;
+1;4;0;U16;;Operating Status;operating_status;1.000000;0.000000;;4
+2;4;2;F32;;AC Uab Line Voltage;ac_uab_line_voltage;1.000000;0.000000;V;4
+3;4;4;F32;;AC Ubc Line Voltage;ac_ubc_line_voltage;1.000000;0.000000;V;4
+4;4;6;F32;;AC Uca Line Voltage;ac_uca_line_voltage;1.000000;0.000000;V;4
+5;4;8;F32;;AC Phase A Current;ac_phase_a_current;1.000000;0.000000;A;4
+6;4;10;F32;;AC Phase B Current;ac_phase_b_current;1.000000;0.000000;A;4
+7;4;12;F32;;AC Phase C Current;ac_phase_c_current;1.000000;0.000000;A;4
+8;4;14;F32;;AC Frequency;ac_frequency;1.000000;0.000000;Hz;4
+9;4;16;F32;;Total AC Active Power;P_AC;1.000000;0.000000;kW;4
+10;4;18;F32;;Total AC Reactive Power;total_ac_reactive_power;1.000000;0.000000;kvar;4
+11;4;20;F32;;Total AC Apparent Power;total_ac_apparent_power;1.000000;0.000000;kW;4
+12;4;22;F32;;Total AC Power Factor;total_ac_power_factor;1.000000;0.000000;;4
+13;4;24;F32;;Phase A AC Active Power;phase_a_ac_active_power;1.000000;0.000000;kW;4
+14;4;26;F32;;Phase B AC Active Power;phase_b_ac_active_power;1.000000;0.000000;kW;4
+15;4;28;F32;;Phase C AC Active Power;phase_c_ac_active_power;1.000000;0.000000;kW;4
+16;4;30;F32;;Phase A AC Reactive Power;phase_a_ac_reactive_power;1.000000;0.000000;kvar;4
+17;4;32;F32;;Phase B AC Reactive Power;phase_b_ac_reactive_power;1.000000;0.000000;kvar;4
+18;4;34;F32;;Phase C AC Reactive Power;phase_c_ac_reactive_power;1.000000;0.000000;kvar;4
+19;4;36;F32;;Phase A AC Apparent Power;phase_a_ac_apparent_power;1.000000;0.000000;kVA;4
+20;4;38;F32;;Phase B AC Apparent Power;phase_b_ac_apparent_power;1.000000;0.000000;kVA;4
+21;4;40;F32;;Phase C AC Apparent Power;phase_c_ac_apparent_power;1.000000;0.000000;kVA;4
+22;4;42;F32;;Phase A AC Power Factor;phase_a_ac_power_factor;1.000000;0.000000;;4
+23;4;44;F32;;Phase B AC Power Factor;phase_b_ac_power_factor;1.000000;0.000000;;4
+24;4;46;F32;;Phase C AC Power Factor;phase_c_ac_power_factor;1.000000;0.000000;;4
+25;4;48;F32;;IGBT Module Temperature;igbt_module_temperature;1.000000;0.000000;Degr.Celsius;4
+26;4;50;F32;;Ambient Temperature;ambient_temperature;1.000000;0.000000;Degr.Celsius;4
+27;4;52;F32;;Total AC Charging Energy;total_ac_charging_energy;1.000000;0.000000;kWh;4
+28;4;54;F32;;Total AC Discharging Energy;E_TOT;1.000000;0.000000;kWh;4
+29;4;56;F32;;Daily AC Charging Energy;daily_ac_charging_energy;1.000000;0.000000;kWh;4
+30;4;58;F32;;Daily AC Discharging Energy;daily_ac_discharging_energy;1.000000;0.000000;kWh;4
+31;4;60;U32;;Number of branches;number_of_branches;1.000000;0.000000;Branch(es);4
+32;4;62;F32;;Branch 1 DC Power;branch_1_dc_power;1.000000;0.000000;kW;4
+33;4;64;F32;;Branch 1 DC Voltage;branch_1_dc_voltage;1.000000;0.000000;V;4
+34;4;66;F32;;Branch 1 DC Current;branch_1_dc_current;1.000000;0.000000;A;4
+35;4;68;F32;;Branch 2~n DC Power;branch_2n_dc_power;1.000000;0.000000;kW;4
+36;4;70;F32;;Branch 2~n DC Voltage;branch_2n_dc_voltage;1.000000;0.000000;V;4
+37;4;71;F32;;Branch 2~n DC Current;branch_2n_dc_current;1.000000;0.000000;A;0
+38;4;100;U16;;Operating Status 2;operating_status_2;1.000000;0.000000;;4
+39;4;102;F32;;AC Phase A Voltage;ac_phase_a_voltage;1.000000;0.000000;V;4
+40;4;104;F32;;AC Ubc Line Voltage 2;ac_ubc_line_voltage_2;1.000000;0.000000;V;4
+41;4;106;F32;;AC Uca Line Voltage 2;ac_uca_line_voltage_2;1.000000;0.000000;V;4
+42;4;108;F32;;AC Phase A Current 2;ac_phase_a_current_2;1.000000;0.000000;A;4
+43;4;110;F32;;AC Phase B Current 2;ac_phase_b_current_2;1.000000;0.000000;A;4
+44;4;112;F32;;AC Phase C Current 2;ac_phase_c_current_2;1.000000;0.000000;A;4
+45;4;114;F32;;AC Frequency 2;ac_frequency_2;1.000000;0.000000;Hz;4
+46;4;116;F32;;Total AC Active Power 2;total_ac_active_power_2;1.000000;0.000000;kW;4
+47;4;118;F32;;Total AC Reactive Power 2;total_ac_reactive_power_2;1.000000;0.000000;kvar;4
+48;4;120;F32;;Total AC Apparent Power 2;total_ac_apparent_power_2;1.000000;0.000000;kW;4
+49;4;122;F32;;Total AC Power Factor 2;total_ac_power_factor_2;1.000000;0.000000;;4
+50;4;124;F32;;Phase A AC Active Power 2;phase_a_ac_active_power_2;1.000000;0.000000;kW;4
+51;4;126;F32;;Phase B AC Active Power 2;phase_b_ac_active_power_2;1.000000;0.000000;kW;4
+52;4;128;F32;;Phase C AC Active Power 2;phase_c_ac_active_power_2;1.000000;0.000000;kW;4
+53;4;130;F32;;Phase A AC Reactive Power 2;phase_a_ac_reactive_power_2;1.000000;0.000000;kvar;4
+54;4;132;F32;;Phase B AC Reactive Power 2;phase_b_ac_reactive_power_2;1.000000;0.000000;kvar;4
+55;4;134;F32;;Phase C AC Reactive Power 2;phase_c_ac_reactive_power_2;1.000000;0.000000;kvar;4
+56;4;136;F32;;Phase A AC Apparent Power 2;phase_a_ac_apparent_power_2;1.000000;0.000000;kVA;4
+57;4;138;F32;;Phase B AC Apparent Power 2;phase_b_ac_apparent_power_2;1.000000;0.000000;kVA;4
+58;4;140;F32;;Phase C AC Apparent Power 2;phase_c_ac_apparent_power_2;1.000000;0.000000;kVA;4
+59;4;142;F32;;Phase A AC Power Factor 2;phase_a_ac_power_factor_2;1.000000;0.000000;;4
+60;4;144;F32;;Phase B AC Power Factor 2;phase_b_ac_power_factor_2;1.000000;0.000000;;4
+61;4;146;F32;;Phase C AC Power Factor 2;phase_c_ac_power_factor_2;1.000000;0.000000;;4
+62;4;148;F32;;IGBT Module Temperature 2;igbt_module_temperature_2;1.000000;0.000000;Degr.Celsius;4
+63;4;150;F32;;Ambient Temperature 2;ambient_temperature_2;1.000000;0.000000;Degr.Celsius;4
+64;4;152;F32;;Total AC Charging Energy 2;total_ac_charging_energy_2;1.000000;0.000000;kWh;4
+65;4;154;F32;;Total AC Discharging Energy 2;total_ac_discharging_energy_2;1.000000;0.000000;kWh;4
+66;4;156;F32;;Daily AC Charging Energy 2;daily_ac_charging_energy_2;1.000000;0.000000;kWh;4
+67;4;158;F32;;Daily AC Discharging Energy 2;daily_ac_discharging_energy_2;1.000000;0.000000;kWh;4
+68;4;160;U32;;Number of branches 2;number_of_branches_2;1.000000;0.000000;Branch(es);4
+69;4;162;F32;;Branch 1 DC Power 2;branch_1_dc_power_2;1.000000;0.000000;kW;4
+70;4;164;F32;;Branch 1 DC Voltage 2;branch_1_dc_voltage_2;1.000000;0.000000;V;4
+71;4;166;F32;;Branch 1 DC Current 2;branch_1_dc_current_2;1.000000;0.000000;A;4
+72;4;168;F32;;Branch 2~n DC Power 2;branch_2n_dc_power_2;1.000000;0.000000;kW;4
+73;4;170;F32;;Branch 2~n DC Voltage 2;branch_2n_dc_voltage_2;1.000000;0.000000;V;4
+74;4;171;F32;;Branch 2~n DC Current 2;branch_2n_dc_current_2;1.000000;0.000000;A;4
+75;4;200;U16;;Operating Status 3;operating_status_3;1.000000;0.000000;;4
+76;4;202;F32;;AC Uab Line Voltage 2;ac_uab_line_voltage_2;1.000000;0.000000;V;4
+77;4;204;F32;;AC Ubc Line Voltage 3;ac_ubc_line_voltage_3;1.000000;0.000000;V;4
+78;4;206;F32;;AC Uca Line Voltage 3;ac_uca_line_voltage_3;1.000000;0.000000;V;4
+79;4;208;F32;;AC Phase A Current 3;ac_phase_a_current_3;1.000000;0.000000;A;4
+80;4;210;F32;;AC Phase B Current 3;ac_phase_b_current_3;1.000000;0.000000;A;4
+81;4;212;F32;;AC Phase C Current 3;ac_phase_c_current_3;1.000000;0.000000;A;4
+82;4;214;F32;;AC Frequency 3;ac_frequency_3;1.000000;0.000000;Hz;4
+83;4;216;F32;;Total AC Active Power 3;total_ac_active_power_3;1.000000;0.000000;kW;4
+84;4;218;F32;;Total AC Reactive Power 3;total_ac_reactive_power_3;1.000000;0.000000;kvar;4
+85;4;220;F32;;Total AC Apparent Power 3;total_ac_apparent_power_3;1.000000;0.000000;kW;4
+86;4;222;F32;;Total AC Power Factor 3;total_ac_power_factor_3;1.000000;0.000000;;4
+87;4;224;F32;;Phase A AC Active Power 3;phase_a_ac_active_power_3;1.000000;0.000000;kW;4
+88;4;226;F32;;Phase B AC Active Power 3;phase_b_ac_active_power_3;1.000000;0.000000;kW;4
+89;4;228;F32;;Phase C AC Active Power 3;phase_c_ac_active_power_3;1.000000;0.000000;kW;4
+90;4;230;F32;;Phase A AC Reactive Power 3;phase_a_ac_reactive_power_3;1.000000;0.000000;kvar;4
+91;4;232;F32;;Phase B AC Reactive Power 3;phase_b_ac_reactive_power_3;1.000000;0.000000;kvar;4
+92;4;234;F32;;Phase C AC Reactive Power 3;phase_c_ac_reactive_power_3;1.000000;0.000000;kvar;4
+93;4;236;F32;;Phase A AC Apparent Power 3;phase_a_ac_apparent_power_3;1.000000;0.000000;kVA;4
+94;4;238;F32;;Phase B AC Apparent Power 3;phase_b_ac_apparent_power_3;1.000000;0.000000;kVA;4
+95;4;240;F32;;Phase C AC Apparent Power 3;phase_c_ac_apparent_power_3;1.000000;0.000000;kVA;4
+96;4;242;F32;;Phase A AC Power Factor 3;phase_a_ac_power_factor_3;1.000000;0.000000;;4
+97;4;244;F32;;Phase B AC Power Factor 3;phase_b_ac_power_factor_3;1.000000;0.000000;;4
+98;4;246;F32;;Phase C AC Power Factor 3;phase_c_ac_power_factor_3;1.000000;0.000000;;4
+99;4;248;F32;;IGBT Module Temperature 3;igbt_module_temperature_3;1.000000;0.000000;Degr.Celsius;4
+100;4;250;F32;;Ambient Temperature 3;ambient_temperature_3;1.000000;0.000000;Degr.Celsius;4
+101;4;252;F32;;Total AC Charging Energy 3;total_ac_charging_energy_3;1.000000;0.000000;kWh;4
+102;4;254;F32;;Total AC Discharging Energy 3;total_ac_discharging_energy_3;1.000000;0.000000;kWh;4
+103;4;256;F32;;Daily AC Charging Energy 3;daily_ac_charging_energy_3;1.000000;0.000000;kWh;4
+104;4;258;F32;;Daily AC Discharging Energy 3;daily_ac_discharging_energy_3;1.000000;0.000000;kWh;4
+105;4;260;U32;;Number of branches 3;number_of_branches_3;1.000000;0.000000;Branch(es);4
+106;4;262;F32;;Branch 1 DC Power 3;branch_1_dc_power_3;1.000000;0.000000;kW;4
+107;4;264;F32;;Branch 1 DC Voltage 3;branch_1_dc_voltage_3;1.000000;0.000000;V;4
+108;4;266;F32;;Branch 1 DC Current 3;branch_1_dc_current_3;1.000000;0.000000;A;4
+109;4;268;F32;;Branch 2~n DC Power 3;branch_2n_dc_power_3;1.000000;0.000000;kW;4
+110;4;270;F32;;Branch 2~n DC Voltage 3;branch_2n_dc_voltage_3;1.000000;0.000000;V;4
+111;4;271;F32;;Branch 2~n DC Current 3;branch_2n_dc_current_3;1.000000;0.000000;A;0

@@ -1,0 +1,48 @@
+modbusRTU;Inverter;Solis;50
+1;4;3000;U16;;inverter 1;;1.000000;0.000000;;4
+2;4;3001;U16;;DSP software version;;1.000000;0.000000;;4
+3;4;3002;U16;;LCD software version;;1.000000;0.000000;;4
+4;4;3003;U16;;AC output type;;1.000000;0.000000;;4
+5;4;3004;U16;;DC output type;;1.000000;0.000000;;4
+6;4;3004;U32;;Active power_Real time power;;0.001000;0.000000;;4
+7;4;3006;U32;;Total DC output power;P_DC;1.000000;0.000000;;4
+8;4;3008;U32;;Total energy;E_TOT;1.000000;0.000000;;4
+9;4;3010;U32;;Energy this month;;1.000000;0.000000;;4
+10;4;3012;U32;;Energy last month;;1.000000;0.000000;;4
+11;4;3014;U16;;Energy today;E_DAY;0.100000;0.000000;;4
+12;4;3015;U16;;Energy yesterday;;0.100000;0.000000;kwh;4
+13;4;3016;U32_W;;Energy this year ;;1.000000;0.000000;A;4
+14;4;3018;U32_W;;Energy last year ;;1.000000;0.000000;A;4
+15;4;3021;U16;;DC voltage 1;U_DC;0.100000;0.000000;V;4
+16;4;3022;U16;;DC current 1;I_DC;1.000000;0.000000;A;4
+17;4;3023;U16;;DC voltage 2;;0.100000;0.000000;V;4
+18;4;3024;U16;;DC current 2;;1.000000;0.000000;A;4
+19;4;3025;U16;;DC voltage 3;;0.100000;0.000000;V;4
+20;4;3026;U16;;DC current 3;;1.000000;0.000000;A;4
+21;4;3027;U16;;DC voltage 4;;0.100000;0.000000;V;4
+22;4;3028;U16;;DC current 4;;1.000000;0.000000;A;4
+23;4;3029;U16;;Reserved;;1.000000;0.000000;Hz;4
+24;4;3030;U16;;Reserved_1;;1.000000;0.000000;VA;4
+25;4;3031;U16;;DC busbar voltage;;1.000000;0.000000;VAr;4
+26;4;3032;U16;;DC half-busbar voltage;;1.000000;0.000000;%;4
+27;4;3033;U16;;AB line voltage / A phase voltage;;1.000000;0.000000;Wh;4
+28;4;3034;U16;;BC line voltage / B phase voltage;;1.000000;0.000000;A;4
+29;4;3035;U16;;CA line voltage / C phase voltage;;1.000000;0.000000;V;4
+30;4;3036;U16;;A phase current;I_AC_3;1.000000;0.000000;W;4
+31;4;3037;U16;;B phase current;;1.000000;0.000000;°C;4
+32;4;3038;U16;;C phase current;;1.000000;0.000000;°C;4
+33;4;3039;U16;;Reserved_2;;1.000000;0.000000;°C;4
+34;4;3040;U16;;Reserved_3;;1.000000;0.000000;°C;4
+35;4;3041;U16;;Inverter temperature;TEMP;1.000000;0.000000;°C;4
+36;4;3042;U16;;Grid Frequency;FREQ;1.000000;0.000000;°C;4
+37;4;3043;U16;;Inverter status;;1.000000;0.000000;°C;8
+38;4;3055;U32;;Reactive power;Q_AC;1.000000;0.000000;kva;4
+39;4;3057;U32;;Apparent power;S_AC;1.000000;0.000000;kva;4
+40;4;3059;U16;;Real time power factor;PF;1.000000;0.000000;kva;4
+41;4;3060;U16;;Inverter SN_1;SERIAL;1.000000;0.000000;;4
+42;4;3061;U16;;Inverter SN_2;;1.000000;0.000000;;4
+43;4;3062;U16;;Inverter SN_3;;1.000000;0.000000;;4
+44;4;3063;U16;;Inverter SN_4;;1.000000;0.000000;;4
+45;3;3051;U16;;Limited active power;cmd;1.000000;0.000000;%;4
+46;4;3049;U16;;Reduced Percentage;;1.000000;0.000000;%;4
+47;3;3069;U16;;Power down Save function ;;1.000000;0.000000;;4

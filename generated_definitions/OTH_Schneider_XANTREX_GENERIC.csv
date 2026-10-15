@@ -1,0 +1,236 @@
+modbusRTU;Other;Schneider;XANTREX_GENERIC;;;;;;;
+1;3;288_20;STRING;;Product Model Designation;product_model_designation;1.000000;0.000000;;4
+2;3;298_20;STRING;;Finished Goods Assembly (FGA) Number;finished_goods_assembly_fga_number;1.000000;0.000000;;4
+3;3;308_20;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+4;3;322_20;STRING;;Software Part Number;software_part_number;1.000000;0.000000;;4
+5;3;383;U16;;Change Counter;change_counter;1.000000;0.000000;;9
+6;3;384;U16;;Active Faults;active_faults;1.000000;0.000000;;9
+7;3;385;U16;;Active Fault N;active_fault_n;1.000000;0.000000;;9
+8;3;386;U16;;Active Fault Type;active_fault_type;1.000000;0.000000;;9
+9;3;387;U16;;Active Fault Identifier;active_fault_identifier;1.000000;0.000000;;9
+10;3;388;U32;;Active Fault Time;active_fault_time;1.000000;0.000000;Secs;4
+11;3;390_40;STRING;;Active Fault String;active_fault_string;1.000000;0.000000;;4
+12;3;416;U16;;Active Warnings;active_warnings;1.000000;0.000000;;9
+13;3;417;U16;;Active Warn N;active_warn_n;1.000000;0.000000;;9
+14;3;418;U16;;Active Warn Type;active_warn_type;1.000000;0.000000;;9
+15;3;419;U16;;Active Warn Identifier;active_warn_identifier;1.000000;0.000000;;9
+16;3;420;U32;;Active Warn Time;active_warn_time;1.000000;0.000000;Secs;4
+17;3;422_40;STRING;;Active Warn String;active_warn_string;1.000000;0.000000;;4
+18;3;463;U16;;Device State;device_state;1.000000;0.000000;;9
+19;3;464;U16;;System State;system_state;1.000000;0.000000;;9
+20;3;512;U16;;Proxied Devices;proxied_devices;1.000000;0.000000;;4
+21;3;513;U16;;Proxied Device N;proxied_device_n;1.000000;0.000000;;4
+22;3;514;U16;;Device Type ID;device_type_id;1.000000;0.000000;;4
+23;3;515;U16;;Modbus Virtual Unit ID;modbus_virtual_unit_id;1.000000;0.000000;;4
+24;3;516_20;STRING;;Device Name;device_name;1.000000;0.000000;;4
+25;3;528;U16;;Connections;connections;1.000000;0.000000;;4
+26;3;529;U16;;Connection N;connection_n;1.000000;0.000000;;4
+27;3;530;U16;;Connection ID;connection_id;1.000000;0.000000;;4
+28;3;531_20;STRING;;Connection Name;connection_name;1.000000;0.000000;;4
+29;3;640;U16;;Total Devices (History);total_devices_history;1.000000;0.000000;;4
+30;3;641;U16;;Device N (History);device_n_history;1.000000;0.000000;;4
+31;3;642;U16;;Device Type ID (History);device_type_id_history;1.000000;0.000000;;4
+32;3;643;U16;;Device Serial ID (History);device_serial_id_history;1.000000;0.000000;;4
+33;3;768;U16;;DC Input Connection ID;dc_input_connection_id;1.000000;0.000000;;4
+34;3;769;U32;;DC Input Voltage;dc_input_voltage;0.010000;0.000000;VDC;4
+35;3;771;U32;;DC Input Current;dc_input_current;0.010000;0.000000;ADC;4
+36;3;773;U32;;DC Input Power;dc_input_power;1.000000;0.000000;W;4
+37;3;1024;U16;;DC Source Connection ID;dc_source_connection_id;1.000000;0.000000;;4
+38;3;1025;I16;;DC Source Temperature;dc_source_temperature;0.100000;0.000000;C;4
+39;3;1026;U16;;DC Source State of Charge;dc_source_state_of_charge;1.000000;0.000000;'%;4
+40;3;1027;U16;;DC Source State of Health;dc_source_state_of_health;1.000000;0.000000;'%;4
+41;3;1028;U16;;DC Source Time Remaining;dc_source_time_remaining;1.000000;0.000000;Min;4
+42;3;1029;U16;;DC Source Capacity Remaining;dc_source_capacity_remaining;1.000000;0.000000;AHr;4
+43;3;1280;U16;;DC Output Connection ID;dc_output_connection_id;1.000000;0.000000;;4
+44;3;1281;U32;;DC Output Voltage;dc_output_voltage;0.010000;0.000000;VDC;4
+45;3;1283;U32;;DC Output Current;dc_output_current;0.010000;0.000000;ADC;4
+46;3;1285;U32;;DC Output Power;dc_output_power;1.000000;0.000000;W;4
+47;3;1287;U16;;DC Output % of Maximum;dc_output_of_maximum;1.000000;0.000000;'%;4
+48;3;1536;U16;;AC Input Connection ID;ac_input_connection_id;1.000000;0.000000;;4
+49;3;1537;U32;;AC Input Voltage;ac_input_voltage;0.010000;0.000000;Vrms;4
+50;3;1539;U32;;AC Input Current;ac_input_current;0.010000;0.000000;Arms;4
+51;3;1541;U16;;AC Input Frequency;ac_input_frequency;0.100000;0.000000;Hz;4
+52;3;1542;U32;;AC Input Real Power;ac_input_real_power;1.000000;0.000000;Watts;4
+53;3;1544;U32;;AC Input Reactive Power;ac_input_reactive_power;1.000000;0.000000;Vars;4
+54;3;1546;U32;;AC Input Apparent Power;ac_input_apparent_power;1.000000;0.000000;VAs;4
+55;3;1548;I16;;AC Input Power Factor;ac_input_power_factor;0.010000;0.000000;;4
+56;3;1792;U16;;AC Source Connection ID;ac_source_connection_id;1.000000;0.000000;;4
+57;3;1793;U16;;AC Level Qualification;ac_level_qualification;1.000000;0.000000;;9
+58;3;1794;U16;;AC Freq Qualification;ac_freq_qualification;1.000000;0.000000;;9
+59;3;1795;U32;;Elapsed AC Qualified Time;elapsed_ac_qualified_time;1.000000;0.000000;Sec;4
+60;3;2048;U16;;AC Output Connection ID;ac_output_connection_id;1.000000;0.000000;;4
+61;3;2049;U32;;AC Output Voltage;ac_output_voltage;0.010000;0.000000;Vrms;4
+62;3;2051;U32;;AC Output Current;ac_output_current;0.010000;0.000000;Arms;4
+63;3;2053;U16;;AC Output Frequency;ac_output_frequency;0.100000;0.000000;Hz;4
+64;3;2054;U32;;AC Output Real Power;ac_output_real_power;1.000000;0.000000;Watts;4
+65;3;2056;U32;;AC Output Reactive Power;ac_output_reactive_power;1.000000;0.000000;Vars;4
+66;3;2058;U32;;AC Output Apparent Power;ac_output_apparent_power;1.000000;0.000000;VAs;4
+67;3;2060;I16;;AC Output Power Factor;ac_output_power_factor;0.010000;0.000000;;4
+68;3;2304;U16;;Internal Sensor Temperature;internal_sensor_temperature;0.100000;0.000000;C;4
+69;3;2561;U16;;Aux Trigger State;aux_trigger_state;1.000000;0.000000;;9
+70;3;2562;U16;;Aux Trigger Reason;aux_trigger_reason;1.000000;0.000000;;9
+71;3;2563;U32;;Aux Trigger Output Voltage;aux_trigger_output_voltage;0.010000;0.000000;VDC;4
+72;3;2565;U32;;Aux Trigger Output Current;aux_trigger_output_current;0.010000;0.000000;ADC;4
+73;3;2816;U16;;Generator Connection ID;generator_connection_id;1.000000;0.000000;;4
+74;3;2817;U16;;DC Connection ID;dc_connection_id;1.000000;0.000000;;4
+75;3;2818;U16;;Generator Operation State;generator_operation_state;1.000000;0.000000;;9
+76;3;2819;U16;;Generator Status;generator_status;1.000000;0.000000;;9
+77;3;2820;U16;;Generator On/Off Reason;generator_onoff_reason;1.000000;0.000000;;9
+78;3;2821;U16;;Generator Runtime;generator_runtime;0.100000;0.000000;Hrs;4
+79;3;4096;U16;;Logged Faults;logged_faults;1.000000;0.000000;;4
+80;3;4097;U16;;Logged Fault N;logged_fault_n;1.000000;0.000000;;4
+81;3;4098;U16;;Logged Fault Type;logged_fault_type;1.000000;0.000000;;4
+82;3;4099;U16;;Logged Fault Identifier;logged_fault_identifier;1.000000;0.000000;;4
+83;3;4100;U32;;Logged Fault Time;logged_fault_time;1.000000;0.000000;Secs;4
+84;3;4102_40;STRING;;Logged Fault String;logged_fault_string;1.000000;0.000000;;4
+85;3;4128;U16;;Logged Warnings;logged_warnings;1.000000;0.000000;;4
+86;3;4129;U16;;Logged Warn N;logged_warn_n;1.000000;0.000000;;4
+87;3;4130;U16;;Logged Warn Type;logged_warn_type;1.000000;0.000000;;4
+88;3;4131;U16;;Logged Warn Identifier;logged_warn_identifier;1.000000;0.000000;;4
+89;3;4132;U32;;Logged Warn Time;logged_warn_time;1.000000;0.000000;Secs;4
+90;3;4134_40;STRING;;Logged Warn String;logged_warn_string;1.000000;0.000000;;4
+91;3;4160;U16;;Logged States;logged_states;1.000000;0.000000;;4
+92;3;4161;U16;;Logged State N;logged_state_n;1.000000;0.000000;;4
+93;3;4162;U16;;Logged Operating State;logged_operating_state;1.000000;0.000000;;4
+94;3;4163;U32;;Logged State Time;logged_state_time;1.000000;0.000000;Secs;4
+95;3;4165_40;STRING;;Logged State String;logged_state_string;1.000000;0.000000;;4
+96;3;4352_20;STRING;;Loader version String;loader_version_string;1.000000;0.000000;;4
+97;3;4362_20;STRING;;Application software version;application_software_version;1.000000;0.000000;;4
+98;3;61440;U16;;Reset Controller;reset_controller;1.000000;0.000000;;1
+99;3;61440;U16;;Reset Type;reset_type;1.000000;0.000000;;1
+100;3;61441;U16;;System Control Command;system_control_command;1.000000;0.000000;;1
+101;3;61442;U16;;Clear Log;clear_log;1.000000;0.000000;;1
+102;3;61443;U16;;Clear Specific Fault ID;clear_specific_fault_id;1.000000;0.000000;;1
+103;3;61444;U16;;Clear Specific Warning ID;clear_specific_warning_id;1.000000;0.000000;;1
+104;3;61445;U16;;Button pushed;button_pushed;1.000000;0.000000;;1
+105;3;61456;U16;;Calibration Selection;calibration_selection;1.000000;0.000000;;1
+106;3;61457;I32;;Measured Low Value;measured_low_value;1.000000;0.000000;;1
+107;3;61459;I32;;Measured High Value;measured_high_value;1.000000;0.000000;;1
+108;3;61696;U16;;Charger Connection ID;charger_connection_id;1.000000;0.000000;;1
+109;3;61697;U16;;Charger Enable;charger_enable;1.000000;0.000000;;1
+110;3;61698;U16;;Equalize Activate;equalize_activate;1.000000;0.000000;;1
+111;3;61699;U16;;Force to Charge State;force_to_charge_state;1.000000;0.000000;;1
+112;3;61952;U16;;Inverter Connection ID;inverter_connection_id;1.000000;0.000000;;1
+113;3;61953;U16;;Inverter Enable;inverter_enable;1.000000;0.000000;;1
+114;3;61954;U16;;Search Mode Enable;search_mode_enable;1.000000;0.000000;;1
+115;3;61955;U16;;Grid-Tie Enable;gridtie_enable;1.000000;0.000000;;1
+116;3;61956;U16;;Sell Enable;sell_enable;1.000000;0.000000;;1
+117;3;61957;U16;;Force Sell Enable;force_sell_enable;1.000000;0.000000;;1
+118;3;62208;U16;;Generator Connection ID (AGS);generator_connection_id_ags;1.000000;0.000000;;1
+119;3;62209;U16;;DC Connection ID (AGS);dc_connection_id_ags;1.000000;0.000000;;1
+120;3;62210;U16;;Generator Mode;generator_mode;1.000000;0.000000;;1
+121;3;62211;U16;;Relay 3 Usage;relay_3_usage;1.000000;0.000000;;1
+122;3;62213;U16;;Preheat Time;preheat_time;1.000000;0.000000;Sec;1
+123;3;62214;U16;;Generator Warm up Time;generator_warm_up_time;1.000000;0.000000;Sec;1
+124;3;62215;U16;;Maximum Run Time;maximum_run_time;1.000000;0.000000;Min;1
+125;3;62216;U16;;Generator Cool Down Time;generator_cool_down_time;1.000000;0.000000;Sec;1
+126;3;62217;U16;;Run Hold Time;run_hold_time;1.000000;0.000000;Sec;1
+127;3;62218;U16;;Crank Time;crank_time;1.000000;0.000000;Sec;1
+128;3;62219;U16;;Crank Retry Time;crank_retry_time;1.000000;0.000000;Sec;1
+129;3;62220;U16;;Starter Cool Down Time;starter_cool_down_time;1.000000;0.000000;Sec;1
+130;3;62221;U16;;Start Retries;start_retries;1.000000;0.000000;;1
+131;3;62224;U16;;Exercise Period;exercise_period;1.000000;0.000000;Days;1
+132;3;62225;U16;;Exercise Duration;exercise_duration;1.000000;0.000000;Mins;1
+133;3;62226;U16;;Exercise Time of Day;exercise_time_of_day;1.000000;0.000000;Mins;1
+134;3;62227;U16;;Quiet Time Enable;quiet_time_enable;1.000000;0.000000;;1
+135;3;62228;U16;;Quiet Time Begin;quiet_time_begin;1.000000;0.000000;Min;1
+136;3;62229;U16;;Quiet Time End;quiet_time_end;1.000000;0.000000;Min;1
+137;3;62230;U16;;Start SOC Enable;start_soc_enable;1.000000;0.000000;;1
+138;3;62231;U16;;Start SOC;start_soc;0.100000;0.000000;'%;1
+139;3;62232;U16;;Stop SOC Enable;stop_soc_enable;1.000000;0.000000;;1
+140;3;62233;U16;;Stop SOC;stop_soc;0.100000;0.000000;'%;1
+141;3;62240;U16;;Start DC Voltage Enable;start_dc_voltage_enable;1.000000;0.000000;;1
+142;3;62241;U32;;Start DC Voltage 30sec;start_dc_voltage_30sec;0.010000;0.000000;VDC;1
+143;3;62243;U32;;Start DC Voltage 15min;start_dc_voltage_15min;0.010000;0.000000;VDC;1
+144;3;62245;U32;;Start DC Voltage 2Hr;start_dc_voltage_2hr;0.010000;0.000000;VDC;1
+145;3;62247;U32;;Start DC Voltage 24Hr;start_dc_voltage_24hr;0.010000;0.000000;VDC;1
+146;3;62249;U16;;Stop DC Voltage Enable;stop_dc_voltage_enable;1.000000;0.000000;;1
+147;3;62250;U32;;Stop DC Voltage;stop_dc_voltage;0.010000;0.000000;VDC;1
+148;3;62252;U16;;AC Load Start Enable;ac_load_start_enable;1.000000;0.000000;;1
+149;3;62253;U32;;Start AC Current Level;start_ac_current_level;0.001000;0.000000;Arms;1
+150;3;62255;U16;;Current Level Start Delay;current_level_start_delay;0.100000;0.000000;Min;1
+151;3;62256;U16;;AC Load Stop Enable;ac_load_stop_enable;1.000000;0.000000;;1
+152;3;62257;U32;;Stop AC Current Level;stop_ac_current_level;0.001000;0.000000;Arms;1
+153;3;62259;U16;;Current Level Stop Delay;current_level_stop_delay;0.100000;0.000000;Min;1
+154;3;62260;U16;;Stop on Absorption;stop_on_absorption;1.000000;0.000000;;1
+155;3;62261;U16;;Stop on Float;stop_on_float;1.000000;0.000000;;1
+156;3;62262;U16;;Thermostat 1 Start Enable;thermostat_1_start_enable;1.000000;0.000000;;1
+157;3;62263;U16;;Thermostat 2 Start Enable;thermostat_2_start_enable;1.000000;0.000000;;1
+158;3;62464;U16;;MPPT Connection ID;mppt_connection_id;1.000000;0.000000;;1
+159;3;62465;U16;;MPPT Enable;mppt_enable;1.000000;0.000000;;1
+160;3;62466;U16;;MPPT Power Max Percentage;mppt_power_max_percentage;1.000000;0.000000;'%;1
+161;3;62467;U32;;MPPT Voltage Reference;mppt_voltage_reference;0.010000;0.000000;VDC;1
+162;3;62469;U32;;MPPT Voltage Reference Minimum;mppt_voltage_reference_minimum;0.010000;0.000000;VDC;1
+163;3;62471;U32;;MPPT Voltage Reference Maximum;mppt_voltage_reference_maximum;0.010000;0.000000;VDC;1
+164;3;62473;U16;;MPP Tracker Rate;mpp_tracker_rate;0.100000;0.000000;Secs;1
+165;3;62474;U32;;MPP Tracker Step Size;mpp_tracker_step_size;0.010000;0.000000;VDC;1
+166;3;32768;U16;;Protocol;protocol;1.000000;0.000000;;1
+167;3;32769;U32;;Modbus Turn Around Delay;modbus_turn_around_delay;1.000000;0.000000;mS;1
+168;3;32771;U16;;Modbus Unit ID;modbus_unit_id;1.000000;0.000000;;1
+169;3;32772;U16;;Baud Rate;baud_rate;1.000000;0.000000;;1
+170;3;32773;U16;;Parity;parity;1.000000;0.000000;;1
+171;3;32774;U16;;Data Bits;data_bits;1.000000;0.000000;;1
+172;3;32775;U16;;Stop Bits;stop_bits;1.000000;0.000000;;1
+173;3;32776;U16;;Bus Polarization;bus_polarization;1.000000;0.000000;;1
+174;3;32777;U16;;Bus Termination;bus_termination;1.000000;0.000000;;1
+175;3;32784;U32;;UTC Seconds;utc_seconds;1.000000;0.000000;Secs;1
+176;3;32786;I16;;Local Offset;local_offset;1.000000;0.000000;Mins;1
+177;3;32787;U16;;Start Day of Month;start_day_of_month;1.000000;0.000000;;1
+178;3;32788;U16;;Start Day of Week;start_day_of_week;1.000000;0.000000;;1
+179;3;32800;U16;;Localization;localization;1.000000;0.000000;;1
+180;3;32801_20;STRING;;Device Alias;device_alias;1.000000;0.000000;;1
+181;3;32811_40;STRING;;Device Memo 1;device_memo_1;1.000000;0.000000;;1
+182;3;32831_40;STRING;;Device Memo 2;device_memo_2;1.000000;0.000000;;1
+183;3;32944;U16;;Register Aliases;register_aliases;1.000000;0.000000;;1
+184;3;32945;U16;;Alias N;alias_n;1.000000;0.000000;;1
+185;3;32946;U16;;Fixed Register Address;fixed_register_address;1.000000;0.000000;;1
+186;3;32947;U16;;Alias Register Address;alias_register_address;1.000000;0.000000;;1
+187;3;33024;U16;;AC Input Config Type;ac_input_config_type;1.000000;0.000000;;1
+188;3;33025;U16;;AC Input Connection ID;ac_input_connection_id_1;1.000000;0.000000;;1
+189;3;33026;U16;;Low AC Volts Transfer Limit;low_ac_volts_transfer_limit;0.100000;0.000000;Vrms;1
+190;3;33027;U16;;Low AC Frequency Transfer Limit;low_ac_frequency_transfer_limit;0.100000;0.000000;Hz;1
+191;3;33028;U16;;High AC Volts Transfer Limit;high_ac_volts_transfer_limit;0.100000;0.000000;Vrms;1
+192;3;33029;U16;;High AC Frequency Transfer Limit;high_ac_frequency_transfer_limit;0.100000;0.000000;Hz;1
+193;3;33280;U16;;Battery Config Type;battery_config_type;1.000000;0.000000;;1
+194;3;33281;U16;;Battery Connection ID;battery_connection_id;1.000000;0.000000;;1
+195;3;33282;U16;;Battery Type;battery_type;1.000000;0.000000;;1
+196;3;33283;U16;;Battery Nominal Voltage;battery_nominal_voltage;1.000000;0.000000;;1
+197;3;33284;U16;;Battery Bank Capacity;battery_bank_capacity;1.000000;0.000000;AHr;1
+198;3;33285;I16;;Battery Temp Coefficient;battery_temp_coefficient;0.100000;0.000000;mV/DegC;1
+199;3;33286;U16;;Battery Peukert Exponent;battery_peukert_exponent;0.100000;0.000000;;1
+200;3;33287;I16;;Charge Efficiency Factor;charge_efficiency_factor;0.100000;0.000000;'%;1
+201;3;33288;U16;;Battery Temp Without Sensor;battery_temp_without_sensor;1.000000;0.000000;;1
+202;3;33289;U32;;Battery Bulk Voltage Setpoint;battery_bulk_voltage_setpoint;0.010000;0.000000;VDC;1
+203;3;33291;U32;;Battery Float Voltage Setpoint;battery_float_voltage_setpoint;0.010000;0.000000;VDC;1
+204;3;33293;U32;;Battery Equalize Voltage Setpoint;battery_equalize_voltage_setpoint;0.010000;0.000000;VDC;1
+205;3;33295;U16;;Battery Equalize Time;battery_equalize_time;1.000000;0.000000;Min;1
+206;3;33296;U16;;Battery Absorption CV Time;battery_absorption_cv_time;1.000000;0.000000;Min;1
+207;3;33536;U16;;Charger Config Type;charger_config_type;1.000000;0.000000;;1
+208;3;33537;U16;;Charger Connection ID;charger_connection_id_1;1.000000;0.000000;;1
+209;3;33538;U16;;Maximum Charge Rate;maximum_charge_rate;1.000000;0.000000;A;1
+210;3;33539;U16;;Charger Algorithm;charger_algorithm;1.000000;0.000000;;1
+211;3;33540;U16;;Charge Time Begin;charge_time_begin;1.000000;0.000000;Min;1
+212;3;33541;U16;;Charge Time End;charge_time_end;1.000000;0.000000;Min;1
+213;3;33792;U16;;Inverter Config Type;inverter_config_type;1.000000;0.000000;;1
+214;3;33793;U16;;Inverter Connection ID;inverter_connection_id_1;1.000000;0.000000;;1
+215;3;33794;U32;;Low Battery Cut-out;low_battery_cutout;0.010000;0.000000;VDC;1
+216;3;33796;U16;;Low Battery Cut-Out Delay;low_battery_cutout_delay;1.000000;0.000000;Sec;1
+217;3;33797;U32;;Low Battery Cut-in;low_battery_cutin;0.010000;0.000000;VDC;1
+218;3;33799;U32;;Inverter High Battery Cut-out;inverter_high_battery_cutout;0.010000;0.000000;VDC;1
+219;3;33801;U16;;Search Watts;search_watts;1.000000;0.000000;W;1
+220;3;33802;U16;;Search Spacing;search_spacing;1.000000;0.000000;Sec;1
+221;3;33803;U32;;Grid-tie High Battery Cut-out;gridtie_high_battery_cutout;0.010000;0.000000;VDC;1
+222;3;33805;U32;;Battery Sell Volts;battery_sell_volts;0.010000;0.000000;VDC;1
+223;3;33807;U32;;Grid-tie Low Battery Transfer;gridtie_low_battery_transfer;0.010000;0.000000;VDC;1
+224;3;33809;U16;;Max Sell Amp;max_sell_amp;0.100000;0.000000;ADC;1
+225;3;33810;U16;;Grid Amps AC;grid_amps_ac;0.100000;0.000000;ADC;1
+226;3;33811;U16;;Sell Duration;sell_duration;1.000000;0.000000;Minutes;1
+227;3;34048;U16;;Aux Output Config Type;aux_output_config_type;1.000000;0.000000;;1
+228;3;34049;U16;;Aux Output Connection ID;aux_output_connection_id;1.000000;0.000000;;1
+229;3;34050;U32;;Aux Out Voltage;aux_out_voltage;0.010000;0.000000;VDC;1
+230;3;34052;U32;;Aux Out Current;aux_out_current;0.010000;0.000000;ADC;1
+231;3;34054;U16;;Trigger Active Level;trigger_active_level;1.000000;0.000000;;1
+232;3;34055;U16;;Trigger Source;trigger_source;1.000000;0.000000;;1
+233;3;34056;U16;;Trigger Enable;trigger_enable;1.000000;0.000000;;1
+234;3;34057;U32;;Trigger Level;trigger_level;1.000000;0.000000;;1
+235;3;34059;U16;;Trigger Delay;trigger_delay;1.000000;0.000000;Sec;1

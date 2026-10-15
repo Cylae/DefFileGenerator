@@ -1,0 +1,144 @@
+modbusRTU;Other;Efasolar;EFACEC_PV250HE_PV375HE_PV500HE;;;;;;;
+1;3;41001;F32;;DC_Current;dc_current;1.000000;0.000000;A;4
+2;3;41003;F32;;DC_Voltage;dc_voltage;1.000000;0.000000;V;4
+3;3;41005;F32;;PV_Voltage;pv_voltage;1.000000;0.000000;V;4
+4;3;41007;F32;;DC_Power;dc_power;1.000000;0.000000;kW;4
+5;3;41009;F32;;Phase_R_Current;phase_r_current;1.000000;0.000000;A;4
+6;3;41011;F32;;Phase_S_Current;phase_s_current;1.000000;0.000000;A;4
+7;3;41013;F32;;Phase_T_Current;phase_t_current;1.000000;0.000000;A;4
+8;3;41015;F32;;R-S Voltage;rs_voltage;1.000000;0.000000;V;4
+9;3;41017;F32;;S-T Voltage;st_voltage;1.000000;0.000000;V;4
+10;3;41019;F32;;T-R Voltage;tr_voltage;1.000000;0.000000;V;4
+11;3;41021;F32;;Apparent Power;apparent_power;1.000000;0.000000;kVa;4
+12;3;41023;F32;;Active Power;P_AC;1.000000;0.000000;kW;4
+13;3;41025;F32;;Reactive Power;Reactive Power;1.000000;0.000000;kvar;4
+14;3;41027;F32;;Frequency;FREQ;1.000000;0.000000;Hz;4
+15;3;41029;F32;;Power Factor;PF;1.000000;0.000000;;4
+16;3;41031;F32;;Efficiency;efficiency;1.000000;0.000000;'%;4
+17;3;41033;F32;;Total Energy Generated;E_TOT;1.000000;0.000000;MWh;4
+18;3;41035;F32;;Inverter Temperature;inverter_temperature;1.000000;0.000000;C;4
+19;3;41037;F32;;Daily Energy generated;E_DAY;1.000000;0.000000;kWh;4
+20;3;41051;U16;;Alarm 1;alarm_1;1.000000;0.000000;;8
+21;3;41051_0_1;BITS;;Any Alarm Active;any_alarm_active;1.000000;0.000000;;4
+22;3;41051_1_1;BITS;;High Panels Voltage;high_panels_voltage;1.000000;0.000000;;4
+23;3;41051_2_1;BITS;;Low Panels Voltage;low_panels_voltage;1.000000;0.000000;;4
+24;3;41051_3_1;BITS;;DC Current Peak;dc_current_peak;1.000000;0.000000;;4
+25;3;41051_4_1;BITS;;Low DC Current;low_dc_current;1.000000;0.000000;;4
+26;3;41051_5_1;BITS;;Low Power;low_power;1.000000;0.000000;;4
+27;3;41051_6_1;BITS;;Low Pre-load Panels Voltage;low_preload_panels_voltage;1.000000;0.000000;;4
+28;3;41051_7_1;BITS;;High Grid Voltage;high_grid_voltage;1.000000;0.000000;;4
+29;3;41051_8_1;BITS;;Low Grid Voltage;low_grid_voltage;1.000000;0.000000;;4
+30;3;41051_9_1;BITS;;Grid Voltage Peak;grid_voltage_peak;1.000000;0.000000;;4
+31;3;41051_10_1;BITS;;Grid Current Peak;grid_current_peak;1.000000;0.000000;;4
+32;3;41051_11_1;BITS;;High Frequency;high_frequency;1.000000;0.000000;;4
+33;3;41051_12_1;BITS;;Low Frequency;low_frequency;1.000000;0.000000;;4
+34;3;41051_13_1;BITS;;Asymmetric Voltage;asymmetric_voltage;1.000000;0.000000;;4
+35;3;41051_14_1;BITS;;Asymmetric Current;asymmetric_current;1.000000;0.000000;;4
+36;3;41051_15_1;BITS;;Overload;overload;1.000000;0.000000;;4
+37;3;41052;U16;;Alarm 2;alarm_2;1.000000;0.000000;;8
+38;3;41052_0_1;BITS;;Over Temperature Alarm;over_temperature_alarm;1.000000;0.000000;;4
+39;3;41052_1_1;BITS;;Internal Error 1;internal_error_1;1.000000;0.000000;;4
+40;3;41052_2_1;BITS;;Stack Drivers;stack_drivers;1.000000;0.000000;;4
+41;3;41052_3_1;BITS;;Internal Error 2;internal_error_2;1.000000;0.000000;;4
+42;3;41052_4_1;BITS;;Surge Protection;surge_protection;1.000000;0.000000;;4
+43;3;41052_5_1;BITS;;Earth Leakage;earth_leakage;1.000000;0.000000;;4
+44;3;41052_6_1;BITS;;Fan Failure;fan_failure;1.000000;0.000000;;4
+45;3;41052_7_1;BITS;;Input contactor error;input_contactor_error;1.000000;0.000000;;4
+46;3;41052_8_1;BITS;;Pre-load Contactor Error;preload_contactor_error;1.000000;0.000000;;4
+47;3;41052_9_1;BITS;;Output contactor error;output_contactor_error;1.000000;0.000000;;4
+48;3;41052_10_1;BITS;;Over Temperature Error;over_temperature_error;1.000000;0.000000;;4
+49;3;41052_11_1;BITS;;Stack Driver R;stack_driver_r;1.000000;0.000000;;4
+50;3;41052_12_1;BITS;;Stack Driver S;stack_driver_s;1.000000;0.000000;;4
+51;3;41052_13_1;BITS;;Stack Driver T;stack_driver_t;1.000000;0.000000;;4
+52;3;41052_14_1;BITS;;Reserve;reserve;1.000000;0.000000;;4
+53;3;41052_15_1;BITS;;Low Pre-load Capacitors Voltage;low_preload_capacitors_voltage;1.000000;0.000000;;4
+54;3;41053;U16;;Alarm 3;alarm_3;1.000000;0.000000;;8
+55;3;41053_0_1;BITS;;High DC Bus Voltage;high_dc_bus_voltage;1.000000;0.000000;;4
+56;3;41053_1_1;BITS;;Low DC Bus Voltage;low_dc_bus_voltage;1.000000;0.000000;;4
+57;3;41053_2_1;BITS;;High Grid Current;high_grid_current;1.000000;0.000000;;4
+58;3;41053_3_1;BITS;;Internal Error 3;internal_error_3;1.000000;0.000000;;4
+59;3;41053_4_1;BITS;;Internal Error 4;internal_error_4;1.000000;0.000000;;4
+60;3;41053_5_1;BITS;;Aux. Power Supply Fail;aux_power_supply_fail;1.000000;0.000000;;4
+61;3;41053_6_1;BITS;;UPS Fail;ups_fail;1.000000;0.000000;;4
+62;3;41053_7_1;BITS;;DC Surge Protection;dc_surge_protection;1.000000;0.000000;;4
+63;3;41053_8_1;BITS;;DC Fuses;dc_fuses;1.000000;0.000000;;4
+64;3;41053_9_1;BITS;;Jammed;jammed;1.000000;0.000000;;4
+65;3;41053_10_1;BITS;;Locked;locked;1.000000;0.000000;;4
+66;3;41053_11_1;BITS;;Internal Error 5;internal_error_5;1.000000;0.000000;;4
+67;3;41053_12_1;BITS;;Reserve (Self Cons. comm.);reserve_self_cons_comm;1.000000;0.000000;;4
+68;3;41053_13_1;BITS;;Reserve (Self Cons. analog power);reserve_self_cons_analog_power;1.000000;0.000000;;4
+69;3;41053_14_1;BITS;;Reserve (Hybrid control. Comm.);reserve_hybrid_control_comm;1.000000;0.000000;;4
+70;3;41053_15_1;BITS;;Array current monitor communication;array_current_monitor_communication;1.000000;0.000000;;4
+71;3;41054;U16;;Alarm 4;alarm_4;1.000000;0.000000;;8
+72;3;41054_0_1;BITS;;Energy analyzer communication;energy_analyzer_communication;1.000000;0.000000;;4
+73;3;41055;U16;;Status;status;1.000000;0.000000;;4
+74;3;41055_0_1;BITS;;Inverter status;inverter_status;1.000000;0.000000;;4
+75;3;41055_1_1;BITS;;DC Contactor;dc_contactor;1.000000;0.000000;;4
+76;3;41055_2_1;BITS;;AC Contactor;ac_contactor;1.000000;0.000000;;4
+77;3;41055_3_1;BITS;;Grid Injection;grid_injection;1.000000;0.000000;;4
+78;3;41059;F32;;DC_Current_Array_1;dc_current_array_1;1.000000;0.000000;A;4
+79;3;41061;F32;;DC_Current_Array_2;dc_current_array_2;1.000000;0.000000;A;4
+80;3;41063;F32;;DC_Current_Array_3;dc_current_array_3;1.000000;0.000000;A;4
+81;3;41065;F32;;DC_Current_Array_4;dc_current_array_4;1.000000;0.000000;A;4
+82;3;41067;F32;;DC_Current_Array_5;dc_current_array_5;1.000000;0.000000;A;4
+83;3;41069;F32;;DC_Current_Array_6;dc_current_array_6;1.000000;0.000000;A;4
+84;3;41071;F32;;DC_Current_Array_7;dc_current_array_7;1.000000;0.000000;A;4
+85;3;41073;F32;;DC_Current_Array_8;dc_current_array_8;1.000000;0.000000;A;4
+86;3;41075;F32;;DC_Current_Array_9;dc_current_array_9;1.000000;0.000000;A;4
+87;3;41077;F32;;DC_Current_Array_10;dc_current_array_10;1.000000;0.000000;A;4
+88;3;41079;F32;;DC_Current_Array_11;dc_current_array_11;1.000000;0.000000;A;4
+89;3;41081;F32;;DC_Current_Array_12;dc_current_array_12;1.000000;0.000000;A;4
+90;3;41083;F32;;DC_Current_Array_13;dc_current_array_13;1.000000;0.000000;A;4
+91;3;41085;F32;;DC_Current_Array_14;dc_current_array_14;1.000000;0.000000;A;4
+92;3;41087;F32;;DC_Current_Array_15;dc_current_array_15;1.000000;0.000000;A;4
+93;3;41089;F32;;DC_Current_Array_16;dc_current_array_16;1.000000;0.000000;A;4
+94;3;41093;F32;;Earth_insulation_resistance;earth_insulation_resistance;1.000000;0.000000;kOhm;0
+95;3;41097;F32;;GFDI_ILeak;gfdi_ileak;1.000000;0.000000;A;0
+96;3;41959;F32;;[optionalGFDI] GND_Ins (last_valid_measure);optionalgfdi_gnd_ins_last_valid_measure;1.000000;0.000000;kOhm;0
+97;3;41163;F32;;[optionalGFDI] GND_Ins (Time_Since_Last_Meas);optionalgfdi_gnd_ins_time_since_last_meas;1.000000;0.000000;h;0
+98;3;41701;U16;;QCtrlMode;QCtrlMode;1.000000;0.000000;;4
+99;3;41702;U16;;QCtrlPreference;qctrlpreference;1.000000;0.000000;;4
+100;3;41703;U16;;QFPF_SP;QFPF_SP;1.000000;0.000000;;4
+101;3;41704;U16;;QFQ_SP_%;QFQ_SP_%;1.000000;0.000000;'%;4
+102;3;41705;U16;;QFQ_SP_kVar;QFQ_SP_kVar;1.000000;0.000000;kvar;4
+103;3;41706;U16;;QQuad_SP;signSinPhi;1.000000;0.000000;;4
+104;3;41707;U16;;PMaxCtrl;CMD_P_ENA;1.000000;0.000000;;4
+105;3;41708;U16;;PMax_SP_%;CmdPowerPct;1.000000;0.000000;'%;4
+106;3;41709;U16;;PMax_SP_kW;CmdPower;1.000000;0.000000;kW;4
+107;3;41710;U16;;PRedFreq;predfreq;1.000000;0.000000;;4
+108;3;41711;U16;;PLimGrad;plimgrad;1.000000;0.000000;;4
+109;3;41712;U16;;PLimGrad_%;plimgrad_1;1.000000;0.000000;;4
+110;3;41802_0_1;BITS;;TurnOn command;CMD_ON;1.000000;0.000000;;4
+111;3;41802_1_1;BITS;;TurnOff command;CMD_OFF;1.000000;0.000000;;4
+112;3;41831;I32;;Total real power +/-;total_real_power;1.000000;0.000000;;4
+113;3;41833;I32;;Total reactive power +/-;total_reactive_power;1.000000;0.000000;;4
+114;3;41835;I32;;Total apparent power;total_apparent_power;1.000000;0.000000;;4
+115;3;41837;I32;;Real power phase 1 +/-;real_power_phase_1;1.000000;0.000000;;4
+116;3;41839;I32;;Real power phase 2;real_power_phase_2;1.000000;0.000000;;4
+117;3;41841;I32;;Real power phase 3;real_power_phase_3;1.000000;0.000000;;4
+118;3;41843;I32;;Reserved1;reserved1;1.000000;0.000000;;4
+119;3;41845;I32;;Reserved2;reserved2;1.000000;0.000000;;4
+120;3;41847;I32;;Reactive power phase 1;reactive_power_phase_1;1.000000;0.000000;;4
+121;3;41849;I32;;Reactive power phase 2;reactive_power_phase_2;1.000000;0.000000;;4
+122;3;41851;I32;;Reactive power phase 3;reactive_power_phase_3;1.000000;0.000000;;4
+123;3;41853;I32;;Apparent power phase 1;apparent_power_phase_1;1.000000;0.000000;;4
+124;3;41855;I32;;Apparent power phase 2;apparent_power_phase_2;1.000000;0.000000;;4
+125;3;41857;I32;;Apparent power phase 3;apparent_power_phase_3;1.000000;0.000000;;4
+126;3;41859;I32;;Reserved3;reserved3;1.000000;0.000000;;4
+127;3;41861;I32;;Reserved4;reserved4;1.000000;0.000000;;4
+128;3;41863;I32;;Operating Hours Counter;operating_hours_counter;1.000000;0.000000;;4
+129;3;41865;I32;;Conductor voltage (1-2);conductor_voltage_12;1.000000;0.000000;;4
+130;3;41867;I32;;Conductor voltage (2-3);conductor_voltage_23;1.000000;0.000000;;4
+131;3;41869;I32;;Conductor voltage (3-1);conductor_voltage_31;1.000000;0.000000;;4
+132;3;41871;I32;;Conductor voltage 1 to N;conductor_voltage_1_to_n;1.000000;0.000000;;4
+133;3;41873;I32;;Conductor voltage 2 to N;conductor_voltage_2_to_n;1.000000;0.000000;;4
+134;3;41875;I32;;Conductor voltage 3 to N;conductor_voltage_3_to_n;1.000000;0.000000;;4
+135;3;41877;I32;;Frequency;frequency;1.000000;0.000000;;4
+136;3;41879;I32;;Current phase 1;current_phase_1;1.000000;0.000000;;4
+137;3;41881;I32;;Current phase 2;current_phase_2;1.000000;0.000000;;4
+138;3;41883;I32;;Current phase 3;current_phase_3;1.000000;0.000000;;4
+139;3;41885;I32;;Current neutral;current_neutral;1.000000;0.000000;;4
+140;3;41887;I32;;Total power factor;;1.000000;0.000000;;4
+141;3;41889;I32;;Power factor phase 1;power_factor_phase_1;1.000000;0.000000;;4
+142;3;41891;I32;;Power factor phase 2;power_factor_phase_2;1.000000;0.000000;;4
+143;3;41893;I32;;Power factor phase 3;power_factor_phase_3;1.000000;0.000000;;4

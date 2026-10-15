@@ -1,0 +1,8 @@
+modbusRTU;Other;IngenieurBuro;INGENIEURBURO_Si-RS485-TC-2T-v;;;;;;;
+1;4;0;U16;;Irradiance;POA;0.100000;0.000000;W/m;4
+2;4;1;U16;;Cell temperature;cell_temperature;0.100000;-25.000000;C;4
+3;4;2;U16;;External temperature;external_temperature;0.100000;-25.000000;C;4
+4;4;3;U16;;Wind speed measurement;wind_speed_measurement;1.000000;0.000000;m/s;4
+5;4;4;I16;;reserved;reserved;0.000000;1.000000;;0
+6;4;5;U16;;Cell temperature measurement T_cell;cell_temperature_measurement_t_cell;1.000000;4.000000;;0
+7;4;6;U16;;External temperature measurement T_ext;external_temperature_measurement_t_ext;1.000000;4.000000;;0

@@ -1,0 +1,182 @@
+Modbus;Inverter;FOX ESS;G-MAX BMS;;;;;;;
+1;4;200;U16;;Stack SOC;;1;0;%;4
+2;4;201;U16;;Heap SOH;;1;0;%;4
+3;4;202;U16;;Stack status 0 Stop-1 Charge-2 Discharge-3 Standby-4 Fault;;1;0;;4
+4;4;203;I16;;Stack voltage;;0.1;0;V;4
+5;4;204;I16;;Stack current;;0.1;0;A;4
+6;4;205;I16;;Maximum single cell voltage;;0.001;0;V;4
+7;4;206;I16;;Minimum single cell voltage;;0.001;0;V;4
+8;4;207;I16;;Maximum monomer temperature;;1;0;Degr.Celsius;4
+9;4;208;I16;;Minimum monomer temperature;;1;0;Degr.Celsius;4
+10;4;209;U16;;Maximum single cell SOC value;;1;0;%;4
+11;4;210;U16;;Minimum single cell SOC value;;1;0;%;4
+12;4;211;U16;;Maximum cell voltage cluster number;;1;0;;4
+13;4;212;U16;;Maximum cell voltage Cell number;;1;0;;4
+14;4;213;U16;;Minimum cell voltage cluster number;;1;0;;4
+15;4;214;U16;;Minimum cell voltage Cell number;;1;0;;4
+16;4;215;U16;;Maximum cell temperature cluster number;TEMP_CELL;1;0;;4
+17;4;216;U16;;Maximum monomer temperature monomer number;;1;0;;4
+18;4;217;U16;;Minimum cell temperature cluster number;;1;0;;4
+19;4;218;U16;;Minimum monomer temperature monomer number;;1;0;;4
+20;4;223;U16;;Maximum pressure difference of monomer;PRESSURE;1;0;mV;4
+21;4;224;I16;;Stack power;;1;0;KW;4
+22;4;227;U32;;Cumulative cluster charging capacity;;1;0;KWh;4
+23;4;229;U32;;Cumulative cluster discharge capacity;;1;0;KWh;4
+24;4;231;U32;;Rechargeable capacity;;0.1;0;KWh;4
+25;4;233;U32;;Dischargeable capacity;;0.1;0;KWh;4
+26;4;6200;I16;;Monomer temperature;;1;0;Degr.Celsius;4
+27;4;6600;U16;;Single cell voltage;;0.001;0;V;4
+28;4;7000;U16;;Single SOC;;1;0;%;4
+29;4;2200;U16;;Cluster SOC;;1;0;%;4
+30;4;2201;U16;;Cluster SOH;;1;0;%;4
+31;4;2202;U16;;Cluster status 0 Stop-1 Charging-2 Discharging-3 Standby-4 Fault;;1;0;;4
+32;4;2203;I16;;Cluster voltage;;0.1;0;V;4
+33;4;2204;I16;;Cluster current;;0.1;0;A;4
+34;4;2205;I16;;Maximum single cell voltage 2;;0.001;0;V;4
+35;4;2206;I16;;Minimum single cell voltage 2;;0.001;0;V;4
+36;4;2207;I16;;Maximum monomer temperature 2;;1;0;Degr.Celsius;4
+37;4;2208;I16;;Minimum monomer temperature 2;;1;0;Degr.Celsius;4
+38;4;2209;U16;;Maximum single cell SOC value 2;;1;0;%;4
+39;4;2210;U16;;Minimum single cell SOC value 2;;1;0;%;4
+40;4;2212;U16;;Maximum cell voltage Cell number 2;;1;0;;4
+41;4;2214;U16;;Minimum cell voltage Cell number 2;;1;0;;4
+42;4;2216;U16;;Maximum monomer temperature monomer number 2;;1;0;;4
+43;4;2218;U16;;Minimum monomer temperature monomer number 2;;1;0;;4
+44;4;2221;U16;;Number of cluster batteries;;1;0;;4
+45;4;2222;U16;;Number of cluster temperatures;;1;0;;4
+46;4;2224;I16;;Cluster Power;;1;0;KW;4
+47;4;2227;U32;;Cumulative cluster charging capacity 2;;1;0;KWh;4
+48;4;2229;U32;;Cumulative cluster discharge capacity 2;;1;0;KWh;4
+49;4;200;U16;;Negative bus insulation slight alarm;R_ISO;1;0;;4
+50;4;201;U16;;Negative bus insulation moderate alarm;;1;0;;4
+51;4;202;U16;;Negative bus insulation serious alarm;;1;0;;4
+52;4;206;U16;;Cluster terminal voltage overvoltage slight alarm;;1;0;;4
+53;4;207;U16;;Cluster terminal voltage overvoltage moderate alarm;;1;0;;4
+54;4;208;U16;;Cluster terminal voltage overvoltage severe alarm;;1;0;;4
+55;4;209;U16;;Cluster end voltage undervoltage slight alarm;;1;0;;4
+56;4;210;U16;;Cluster terminal voltage undervoltage moderate alarm;;1;0;;4
+57;4;211;U16;;Cluster end voltage undervoltage severe alarm;;1;0;;4
+58;4;212;U16;;Cluster side overcurrent minor alarm;;1;0;;4
+59;4;213;U16;;Cluster side overcurrent moderate alarm;;1;0;;4
+60;4;214;U16;;Cluster side overcurrent severe alarm;;1;0;;4
+61;4;215;U16;;Cluster end discharge overcurrent slight alarm;;1;0;;4
+62;4;216;U16;;Cluster end discharge overcurrent moderate alarm;;1;0;;4
+63;4;217;U16;;Cluster end discharge overcurrent severe alarm;;1;0;;4
+64;4;218;U16;;Single cell overvoltage slight alarm;;1;0;;4
+65;4;219;U16;;Single cell overpressure moderate alarm;;1;0;;4
+66;4;220;U16;;Single cell overpressure severe alarm;;1;0;;4
+67;4;221;U16;;Single cell undervoltage slight alarm;;1;0;;4
+68;4;222;U16;;Single cell undervoltage moderate alarm;;1;0;;4
+69;4;223;U16;;Single cell undervoltage severe alarm;;1;0;;4
+70;4;224;U16;;Single cell over temperature slight alarm;;1;0;;4
+71;4;225;U16;;Moderate over temperature alarm;;1;0;;4
+72;4;226;U16;;Single cell overtemperature severe alarm;;1;0;;4
+73;4;227;U16;;Single cell undertemperature slight alarm;;1;0;;4
+74;4;228;U16;;Moderate alarm for cell undertemperature;;1;0;;4
+75;4;229;U16;;Serious alarm for cell undertemperature;;1;0;;4
+76;4;230;U16;;Single cell discharge overtemperature slight alarm;;1;0;;4
+77;4;231;U16;;Monomer discharge overtemperature moderate alarm;;1;0;;4
+78;4;232;U16;;Single cell discharge over temperature severe alarm;;1;0;;4
+79;4;233;U16;;Single cell discharge undertemperature slight alarm;;1;0;;4
+80;4;234;U16;;Monomer discharge undertemperature moderate alarm;;1;0;;4
+81;4;235;U16;;Single cell discharge undertemperature severe alarm;;1;0;;4
+82;4;236;U16;;Single cell SOC low mild warning;;1;0;;4
+83;4;237;U16;;Single SOC low to moderate warning;;1;0;;4
+84;4;238;U16;;Single cell SOC low severe alarm;;1;0;;4
+85;4;239;U16;;Single SOC high mild warning;;1;0;;4
+86;4;240;U16;;Single SOC high moderate alarm;;1;0;;4
+87;4;241;U16;;Single SOC high serious alarm;;1;0;;4
+88;4;242;U16;;Single cell SOC difference mild warning;;1;0;;4
+89;4;243;U16;;Single cell SOC difference moderate warning;;1;0;;4
+90;4;244;U16;;Single cell SOC difference serious alarm;;1;0;;4
+91;4;245;U16;;Single cell temperature difference slight alarm;;1;0;;4
+92;4;246;U16;;Moderate temperature difference alarm;;1;0;;4
+93;4;247;U16;;Serious temperature difference alarm;;1;0;;4
+94;4;248;U16;;The temperature in the pile rises too fast severe;;1;0;;4
+95;4;250;U16;;Prohibit charging protection;;1;0;;4
+96;4;251;U16;;Prohibited protection;;1;0;;4
+97;4;252;U16;;BMS system alarm;;1;0;;4
+98;4;253;U16;;BMS system fault summary;;1;0;;4
+99;4;254;U16;;Extreme single cell overvoltage action alarm;;1;0;;4
+100;4;255;U16;;Limit single cell undervoltage action alarm;;1;0;;4
+101;4;256;U16;;Extreme single cell over temperature action alarm;;1;0;;4
+102;4;4200;U16;;Cluster end negative insulation alarm mild;;1;0;;4
+103;4;4201;U16;;Cluster end negative insulation alarm medium;;1;0;;4
+104;4;4202;U16;;Cluster end negative insulation alarm serious;;1;0;;4
+105;4;4203;U16;;Cluster end SOC low mild;;1;0;;4
+106;4;4204;U16;;Cluster end SOC low medium;;1;0;;4
+107;4;4205;U16;;Cluster end SOC low severe;;1;0;;4
+108;4;4206;U16;;Cluster end overvoltage alarm minor;;1;0;;4
+109;4;4207;U16;;Cluster end overvoltage alarm moderate;;1;0;;4
+110;4;4208;U16;;Cluster end overvoltage alarm serious;;1;0;;4
+111;4;4209;U16;;Cluster end undervoltage alarm minor;;1;0;;4
+112;4;4210;U16;;Cluster end undervoltage alarm moderate;;1;0;;4
+113;4;4211;U16;;Cluster end undervoltage alarm serious;;1;0;;4
+114;4;4212;U16;;Charging cluster end overcurrent alarm mild;;1;0;;4
+115;4;4213;U16;;Charging cluster end overcurrent alarm moderate;;1;0;;4
+116;4;4214;U16;;Charging cluster end overcurrent alarm severe;;1;0;;4
+117;4;4215;U16;;Discharge cluster end overcurrent alarm mild;;1;0;;4
+118;4;4216;U16;;Discharge cluster end overcurrent alarm moderate;;1;0;;4
+119;4;4217;U16;;Discharge cluster end overcurrent alarm severe;;1;0;;4
+120;4;4218;U16;;Single cell overpressure mild;;1;0;;4
+121;4;4219;U16;;Monomer overpressure moderate;;1;0;;4
+122;4;4220;U16;;Single cell overpressure severe;;1;0;;4
+123;4;4221;U16;;Single cell undervoltage mild;;1;0;;4
+124;4;4222;U16;;Monomer undervoltage moderate;;1;0;;4
+125;4;4223;U16;;Single cell underpressure severe;;1;0;;4
+126;4;4224;U16;;Charging cell overheating mild;;1;0;;4
+127;4;4225;U16;;Charging cell overtemperature moderate;;1;0;;4
+128;4;4226;U16;;Charging cell overtemperature severe;;1;0;;4
+129;4;4227;U16;;Charging cell undertemperature mild;;1;0;;4
+130;4;4228;U16;;Charging cell undertemperature moderate;;1;0;;4
+131;4;4229;U16;;Charging cell undertemperature severe;;1;0;;4
+132;4;4230;U16;;Discharge cell overheating mild;;1;0;;4
+133;4;4231;U16;;Discharge cell overtemperature moderate;;1;0;;4
+134;4;4232;U16;;Discharge cell overtemperature severe;;1;0;;4
+135;4;4233;U16;;Discharge cell undertemperature mild;;1;0;;4
+136;4;4234;U16;;Discharge cell undertemperature moderate;;1;0;;4
+137;4;4235;U16;;Discharge cell undertemperature severe;;1;0;;4
+138;4;4236;U16;;Low SOC of monomer mild;;1;0;;4
+139;4;4237;U16;;Monomer SOC low moderate;;1;0;;4
+140;4;4238;U16;;Low SOC of single cell severe;;1;0;;4
+141;4;4239;U16;;Single SOC high mild;;1;0;;4
+142;4;4240;U16;;Single SOC high medium;;1;0;;4
+143;4;4241;U16;;Single SOC high severe;;1;0;;4
+144;4;4242;U16;;Single pressure difference mild;;1;0;;4
+145;4;4243;U16;;Single pressure difference medium;;1;0;;4
+146;4;4244;U16;;Single pressure difference heavy;;1;0;;4
+147;4;4245;U16;;Temperature difference between cells mild;;1;0;;4
+148;4;4246;U16;;Single temperature difference moderate;;1;0;;4
+149;4;4247;U16;;Single temperature difference heavy;;1;0;;4
+150;4;4249;U16;;Positive contactor;;1;0;;4
+151;4;4250;U16;;Cluster charging prohibited;;1;0;;4
+152;4;4251;U16;;Burst Discharge Inhibit;;1;0;;4
+153;4;4252;U16;;Alarm Summary Moderate;;1;0;;4
+154;4;4253;U16;;Alarm Summary Serious;;1;0;;4
+155;4;4254;U16;;BCM communication failure;;1;0;;4
+156;4;4255;U16;;Battery module overvoltage severe alarm;;1;0;;4
+157;4;4256;U16;;Battery module overvoltage moderate alarm;;1;0;;4
+158;4;4257;U16;;Battery module overvoltage slight alarm;;1;0;;4
+159;4;4258;U16;;Battery module undervoltage severe alarm;;1;0;;4
+160;4;4259;U16;;Battery module undervoltage moderate alarm;;1;0;;4
+161;4;4260;U16;;Battery module undervoltage slight alarm;;1;0;;4
+162;4;4261;U16;;Insulation detection fault;;1;0;;4
+163;4;4262;U16;;Serious alarm for over high power supply voltage;;1;0;;4
+164;4;4263;U16;;Power supply voltage is too high moderate alarm;;1;0;;4
+165;4;4264;U16;;Power supply voltage is too high slight warning;;1;0;;4
+166;4;4265;U16;;Serious low power supply voltage alarm;;1;0;;4
+167;4;4266;U16;;Moderate low power supply voltage warning;;1;0;;4
+168;4;4267;U16;;Low power supply voltage warning;;1;0;;4
+169;4;4268;U16;;Insulation detection fault 2;;1;0;;4
+170;4;4269;U16;;Current collection line fault;;1;0;;4
+171;4;4270;U16;;Battery cell temperature detection module failure;;1;0;;4
+172;4;4271;U16;;Battery total voltage detection circuit failure;;1;0;;4
+173;4;4272;U16;;The copper busbars connecting the battery cluster charging and discharging circuits are loosely connected;;1;0;;4
+174;4;4273;U16;;Positive and negative contactor overtemperature;;1;0;;4
+175;4;4274;U16;;Cascade addressing failed;;1;0;;4
+176;4;4275;U16;;MSD not connected fault;;1;0;;4
+177;4;4276;U16;;Serious alarm for excessive pressure difference of a single cell;;1;0;;4
+178;4;4277;U16;;The single cell pressure difference is too large medium alarm;;1;0;;4
+179;4;4278;U16;;The pressure difference of the single cell is too large a slight alarm;;1;0;;4
+180;3;2203;I16;;Actual allowed charging power of the stack maximum;;1;0;KW;4
+181;3;2204;I16;;Actual allowable discharge power of the stack maximum;;1;0;KW;4

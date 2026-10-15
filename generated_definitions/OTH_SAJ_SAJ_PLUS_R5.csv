@@ -1,0 +1,69 @@
+modbusRTU;Other;SAJ;SAJ_PLUS_R5;;;;;;;
+1;3;36608;U16;;Device Type;device_type;1.000000;0.000000;;1
+2;3;36609;U16;;Subclass Machine Power;subclass_machine_power;1.000000;0.000000;;1
+3;3;36610;U16;;Comms Protocol Version;comms_protocol_version;0.001000;0.000000;;1
+4;3;36631;U16;;Display Software Version;display_software_version;0.001000;0.000000;;1
+5;3;36632;U16;;Master Ctrl Software Version;master_ctrl_software_version;0.001000;0.000000;;1
+6;3;36633;U16;;Slave Ctrl Software Version;slave_ctrl_software_version;0.001000;0.000000;;1
+7;3;36634;U16;;DispBoard Hardware Version;dispboard_hardware_version;0.001000;0.000000;;1
+8;3;36635;U16;;CtrlBoard Hardware Version;ctrlboard_hardware_version;0.001000;0.000000;;1
+9;3;36636;U16;;PowerBoard Hardware Version;powerboard_hardware_version;0.001000;0.000000;;1
+10;3;256;U16;;Inverter Operating Mode;inverter_operating_mode;1.000000;0.000000;;1
+11;3;263;U16;;PV1 Voltage;pv1_voltage;0.100000;0.000000;V;1
+12;3;264;U16;;PV1 Total Current;pv1_total_current;0.010000;0.000000;A;1
+13;3;265;U16;;PV1 Power;pv1_power;1.000000;0.000000;W;1
+14;3;266;U16;;PV2 Voltage;pv2_voltage;0.100000;0.000000;V;1
+15;3;267;U16;;PV2 Total Current;pv2_total_current;0.010000;0.000000;A;1
+16;3;268;U16;;PV2 Power;pv2_power;1.000000;0.000000;W;1
+17;3;269;U16;;PV3 Voltage;pv3_voltage;0.100000;0.000000;V;1
+18;3;270;U16;;PV3 Total Current;pv3_total_current;0.010000;0.000000;A;1
+19;3;271;U16;;PV3 Power;pv3_power;1.000000;0.000000;W;1
+20;3;272;U16;;BUS Voltage;bus_voltage;0.100000;0.000000;V;1
+21;3;273;I16;;Inverter Temperature;inverter_temperature;0.100000;0.000000;°C;1
+22;3;274;I16;;GFCI Ground Leakage Current;gfci_ground_leakage_current;1.000000;0.000000;mA;1
+23;3;275;U16;;Inverter Total Output Active Power;inverter_total_output_active_power;0.001000;0.000000;kW;1
+24;3;276;I16;;Inverter Total Output Reactive Power;inverter_total_output_reactive_power;1.000000;0.000000;Var;1
+25;3;277;I16;;Inverter Total Power Factor;inverter_total_power_factor;0.001000;0.000000;;1
+26;3;278;U16;;L1 Phase Voltage;l1_phase_voltage;0.100000;0.000000;V;1
+27;3;279;U16;;L1 Phase Current;l1_phase_current;0.010000;0.000000;A;1
+28;3;280;U16;;L1 Phase Frequency;l1_phase_frequency;0.010000;0.000000;Hz;1
+29;3;281;I16;;L1 Phase DC Component;l1_phase_dc_component;1.000000;0.000000;mA;1
+30;3;282;U16;;L1 Power;l1_power;0.001000;0.000000;kW;1
+31;3;283;I16;;L1 Power Factor;l1_power_factor;0.001000;0.000000;;1
+32;3;284;U16;;L2 Phase Voltage;l2_phase_voltage;0.100000;0.000000;V;1
+33;3;285;U16;;L2 Phase Current;l2_phase_current;0.010000;0.000000;A;1
+34;3;286;U16;;L2 Phase Frequency;l2_phase_frequency;0.010000;0.000000;Hz;1
+35;3;287;I16;;L2 DC Component;l2_dc_component;1.000000;0.000000;mA;1
+36;3;288;U16;;L2 Power;l2_power;0.001000;0.000000;kW;1
+37;3;289;I16;;L2 Power Factor;l2_power_factor;0.001000;0.000000;;1
+38;3;290;U16;;L3 Phase Voltage;l3_phase_voltage;0.100000;0.000000;V;1
+39;3;291;U16;;L3 Phase Current;l3_phase_current;0.010000;0.000000;A;1
+40;3;292;U16;;L3 Phase Frequency;l3_phase_frequency;0.010000;0.000000;Hz;1
+41;3;293;I16;;L3 Phase DC Component;l3_phase_dc_component;1.000000;0.000000;mA;1
+42;3;294;U16;;L3 Power;l3_power;0.001000;0.000000;kW;1
+43;3;295;I16;;L3 Power Factor;l3_power_factor;0.001000;0.000000;;1
+44;3;296;U16;;PV1+ ISO;pv1_iso;1.000000;0.000000;kOhm;1
+45;3;297;U16;;PV2+ ISO;pv2_iso;1.000000;0.000000;kOhm;1
+46;3;298;U16;;PV3+ ISO;pv3_iso;1.000000;0.000000;kOhm;1
+47;3;299;U16;;PV ISO;pv_iso;1.000000;0.000000;kOhm;1
+48;3;300;U16;;Daily Power Generation;E_DAY;0.010000;0.000000;kWh;1
+49;3;301;U32;;Monthly Power Generation;monthly_power_generation;0.010000;0.000000;kWh;1
+50;3;303;U32;;Yearly Power Generation;yearly_power_generation;0.010000;0.000000;kWh;1
+51;3;305;U32;;Total Power Generation;total_power_generation;0.010000;0.000000;kWh;1
+52;3;307;U16;;Daily Operating Hours;daily_operating_hours;0.100000;0.000000;h;1
+53;3;308;U32;;Total Operating Hours;total_operating_hours;0.100000;0.000000;h;1
+54;3;310;U16;;Inverter Error Count;inverter_error_count;1.000000;0.000000;;1
+55;3;4104;U16;;Inverter Safety Standard Number;inverter_safety_standard_number;1.000000;0.000000;;4
+56;3;4105;U16;;Inverter Function Word (FunMask);inverter_function_word_funmask;1.000000;0.000000;;4
+57;3;4121;U16;;ISO Limit Value;iso_limit_value;1.000000;0.000000;kOhm;4
+58;3;4124;U16;;Power Limit Value;power_limit_value;0.100000;0.000000;'%;4
+59;3;4125;U16;;Reactive Power Compensation Mode;reactive_power_compensation_mode;1.000000;0.000000;;4
+60;3;4126;U16;;Reactive Value Regulation;reactive_value_regulation;0.001000;0.000000;;4
+61;3;4151;U16;;Remote On/Off Command;remote_onoff_command;1.000000;0.000000;;4
+62;3;4166;U16;;PV Input Mode;pv_input_mode;1.000000;0.000000;;4
+63;3;32788;U16;;RS485 Baud Rate and Slave Address;rs485_baud_rate_and_slave_address;1.000000;0.000000;;2
+64;3;32789;U16;;Clear Historical Faults;clear_historical_faults;1.000000;0.000000;;2
+65;3;32795;U16;;Clear Generated Energy;clear_generated_energy;1.000000;0.000000;;2
+66;3;32799;U16;;Real-time Power Limit (ATE);realtime_power_limit_ate;0.100000;0.000000;'%;4
+67;3;32804;U16;;Reactive Power Direction Mode (ATE);reactive_power_direction_mode_ate;1.000000;0.000000;;2
+68;3;32805;U16;;Power Factor Regulation Value (ATE);power_factor_regulation_value_ate;0.001000;0.000000;;2

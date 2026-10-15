@@ -1,0 +1,174 @@
+ModbusRTU;Inverter;Sungrow;Generic;;;;;;;
+1;4;4989_16;STRING;;SN;SERIAL;1.0;0.0;;1
+2;4;4999;U16;;Device type code;;1.0;0.0;;1
+3;4;5000;U16;;Nominal active power;P_RATED;0.1;0.0;kW;1
+4;4;5001;U16;;Output type;;1.0;0.0;;1
+5;4;5002;U16;;Daily power yields;E_DAY;0.1;0.0;kWh;4
+6;4;5003;U32_W;;Total power yields;E_TOT;1.0;0.0;kWh;4
+7;4;5005;U32_W;;Total running time;TOT;1.0;0.0;h;4
+8;4;5007;I16;;Internal temperature;TEMP;0.1;0.0;C;4
+9;4;5008;I32_W;;Total apparent power;S_AC;1.0;0.0;VA;4
+10;4;5010;U16;;MPPT 1 voltage;U_DC_MPPT_1;0.1;0.0;V;4
+11;4;5011;U16;;MPPT 1 current ;I_DC_MPPT_1;0.1;0.0;A;4
+12;4;5012;U16;;MPPT 2 voltage;U_DC_MPPT_2;0.1;0.0;V;4
+13;4;5013;U16;;MPPT 2 current;I_DC_MPPT_2;0.1;0.0;A;4
+14;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.1;0.0;V;4
+15;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.1;0.0;A;4
+16;4;5016;U32_W;;Total DC power;P_DC;1.0;0.0;W;4
+17;4;5018;U16;;A-B line voltage/phase A voltage;U_AC_L1L2;0.1;0.0;V;4
+18;4;5019;U16;;B-C line voltage/phase B voltage;U_AC_L2L3;0.1;0.0;V;4
+19;4;5020;U16;;C-A line voltage/phase C voltage;U_AC_L3L1;0.1;0.0;V;4
+20;4;5021;U16;;Phase A current;I_AC_1;0.1;0.0;A;4
+21;4;5022;U16;;Phase B current;I_AC_2;0.1;0.0;A;4
+22;4;5023;U16;;Phase C current;I_AC_3;0.1;0.0;A;4
+23;4;5030;U32_W;;Total active power;P_AC;1.0;0.0;W;4
+24;4;5032;I32_W;;Total reactive power;Q_AC;1.0;0.0;VAR;4
+25;4;5034;I16;;Power factor;PF;0.001;0.0;;4
+26;4;5035;U16;;Grid frequency;FREQ;0.1;0.0;Hz;4
+27;4;5037;U16;;Work state;;1.0;0.0;;8
+28;4;5038;U16;;Fault/Alarm time:1;;1.0;0.0;;0
+29;4;5039;U16;;Fault/Alarm time:2;;1.0;0.0;;0
+30;4;5040;U16;;Fault/Alarm time:3;;1.0;0.0;;0
+31;4;5041;U16;;Fault/Alarm time:4;;1.0;0.0;;0
+32;4;5042;U16;;Fault/Alarm time:5;;1.0;0.0;;0
+33;4;5043;U16;;Fault/Alarm time:6;;1.0;0.0;;0
+34;4;5044;U16;;Fault/Alarm code;;1.0;0.0;;8
+35;4;5048;U16;;Nominal reactive power;Q_RATED;0.1;0.0;kVAR;0
+36;4;5070;U16;;Impedance to the ground in parallel connection;;1.0;0.0;kOhm;0
+37;4;5080;U32_W;;Work state_1;;1.0;0.0;W;8
+38;4;5082;I32_W;;Meter power;;1.0;0.0;W;0
+39;4;5084;I32_W;;Meter A phase power;;1.0;0.0;W;0
+40;4;5086;I32_W;;Meter B phase power;;1.0;0.0;W;0
+41;4;5088;I32_W;;Meter C phase power;;1.0;0.0;W;0
+42;4;5090;I32_W;;Load power;;1.0;0.0;W;0
+43;4;5092;U32_W;;Daily export energy;;0.1;0.0;kWh;0
+44;4;5094;U32_W;;Total export energy;E_EXP;0.1;0.0;kWh;0
+45;4;5096;U32_W;;Daily import energy;;0.1;0.0;kWh;0
+46;4;5098;U32_W;;Total import energy;E_IMP;0.1;0.0;kWh;0
+47;4;5100;U32_W;;Daily direct energy consumption;;0.1;0.0;kWh;0
+48;4;5102;U32_W;;Total direct energy consumption;;0.1;0.0;kWh;0
+49;4;5112;U16;;Daily running time;;1.0;0.0;min;0
+50;4;5113;U16;;Present country;;1.0;0.0;;0
+51;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;0.1;0.0;V;4
+52;4;5115;U16;;MPPT 4 current ;I_DC_MPPT_4;0.1;0.0;A;4
+53;4;5116;U16;;MPPT 5 voltage;U_DC_MPPT_5;0.1;0.0;V;4
+54;4;5117;U16;;MPPT 5 current;I_DC_MPPT_5;0.1;0.0;A;4
+55;4;5118;U16;;MPPT 6 voltage;U_DC_MPPT_6;0.1;0.0;V;4
+56;4;5119;U16;;MPPT 6 current;I_DC_MPPT_6;0.1;0.0;A;4
+57;4;5120;U16;;MPPT 7 voltage;U_DC_MPPT_7;0.1;0.0;V;4
+58;4;5121;U16;;MPPT 7 current ;I_DC_MPPT_7;0.1;0.0;A;4
+59;4;5122;U16;;MPPT 8 voltage;U_DC_MPPT_8;0.1;0.0;V;4
+60;4;5123;U16;;MPPT 8 current;I_DC_MPPT_8;0.1;0.0;A;4
+61;4;5127;U32_W;;Monthly power yields;;0.1;0.0;kWh;0
+62;4;5129;U16;;MPPT 9 voltage;U_DC_MPPT_9;0.1;0.0;V;4
+63;4;5130;U16;;MPPT 9 current;I_DC_MPPT_9;0.1;0.0;A;4
+64;4;5131;U16;;MPPT 10 voltage;U_DC_MPPT_10;0.1;0.0;V;4
+65;4;5132;U16;;MPPT 10 current;I_DC_MPPT_10;0.1;0.0;A;4
+66;4;5133;U16;;MPPT 11 voltage;U_DC_MPPT_11;0.1;0.0;V;4
+67;4;5134;U16;;MPPT 11 current;I_DC_MPPT_11;0.1;0.0;A;4
+68;4;5135;U16;;MPPT 12 voltage;U_DC_MPPT_12;0.1;0.0;V;4
+69;4;5136;U16;;MPPT 12 current;I_DC_MPPT_12;0.1;0.0;A;4
+70;4;5143;U32_W;;Total power yields_1;;0.1;0.0;kWh;4
+71;4;5145;I16;;Negative voltage to the ground;;0.1;0.0;V;0
+72;4;5146;U16;;Bus voltage;U_DC;0.1;0.0;V;0
+73;4;5147;U16;;Grid frequency_1;;0.01;0.0;Hz;0
+74;4;5149;U16;;PID work state;;1.0;0.0;;0
+75;4;5150;U16;;PID alarm code ;;1.0;0.0;;0
+76;4;7012;U16;;String 1 current;I_DC_STRING_1;0.01;0.0;A;0
+77;4;7013;U16;;String 2 current;I_DC_STRING_2;0.01;0.0;A;0
+78;4;7014;U16;;String 3 current;I_DC_STRING_3;0.01;0.0;A;0
+79;4;7015;U16;;String 4 current;I_DC_STRING_4;0.01;0.0;A;0
+80;4;7016;U16;;String 5 current;I_DC_STRING_5;0.01;0.0;A;0
+81;4;7017;U16;;String 6 current;I_DC_STRING_6;0.01;0.0;A;0
+82;4;7018;U16;;String 7 current;I_DC_STRING_7;0.01;0.0;A;0
+83;4;7019;U16;;String 8 current;I_DC_STRING_8;0.01;0.0;A;0
+84;4;7020;U16;;String 9 current;I_DC_STRING_9;0.01;0.0;A;0
+85;4;7021;U16;;String 10 current;I_DC_STRING_10;0.01;0.0;A;0
+86;4;7022;U16;;String 11 current;I_DC_STRING_11;0.01;0.0;A;0
+87;4;7023;U16;;String 12 current;I_DC_STRING_12;0.01;0.0;A;0
+88;4;7024;U16;;String 13 current;I_DC_STRING_13;0.01;0.0;A;0
+89;4;7025;U16;;String 14 current;I_DC_STRING_14;0.01;0.0;A;0
+90;4;7026;U16;;String 15 current;I_DC_STRING_15;0.01;0.0;A;0
+91;4;7027;U16;;String 16 current;I_DC_STRING_16;0.01;0.0;A;0
+92;4;7028;U16;;String 17 current;I_DC_STRING_17;0.01;0.0;A;0
+93;4;7029;U16;;String 18 current;I_DC_STRING_18;0.01;0.0;A;0
+94;4;7030;U16;;String 19 current;I_DC_STRING_19;0.01;0.0;A;0
+95;4;7031;U16;;String 20 current;I_DC_STRING_20;0.01;0.0;A;0
+96;4;7032;U16;;String 21 current;I_DC_STRING_21;0.01;0.0;A;0
+97;4;7033;U16;;String 22 current;I_DC_STRING_22;0.01;0.0;A;0
+98;4;7034;U16;;String 23 current;I_DC_STRING_23;0.01;0.0;A;0
+99;4;7035;U16;;String 24 current;I_DC_STRING_24;0.01;0.0;A;0
+100;3;4999;U16;;System clock: Year;;1.0;0.0;;1
+101;3;5000;U16;;System clock: Month;;1.0;0.0;;1
+102;3;5001;U16;;System clock: Day;;1.0;0.0;;1
+103;3;5002;U16;;System clock: Hour;;1.0;0.0;;1
+104;3;5003;U16;;System clock: Minute;;1.0;0.0;;1
+105;3;5004;U16;;System clock: Second;;1.0;0.0;;1
+106;3;5005;U16;;Start/Stop;CMD_ON;1.0;0.0;;1
+107;3;5006;U16;;Power limitation switch;CMD_P_ENA;1.0;0.0;;1
+108;3;5007;U16;;Power limitation setting;CMD_P_AC_SET_PERCENT;0.1;0.0;%;1
+109;3;5009;U16;;Export power limitation;CMD_P_AC_SET_ABS;1.0;0.0;;1
+110;3;5010;U16;;Export power limitation value;;1.0;0.0;;1
+111;3;5011;U16;;Current transformer output current;;1.0;0.0;A;1
+112;3;5012;U16;;Current transformer range;;1.0;0.0;A;1
+113;3;5013;U16;;Current transformer;;1.0;0.0;;1
+114;3;5014;U16;;Export power limitation percentage;;0.1;0.0;%;1
+115;3;5015;U16;;Installed PV Power;;0.01;0.0;kW;1
+116;3;5018;I16;;Power Factor setting;CMD_PF;0.001;0.0;;1
+117;3;5019;U16;;100% Scheduling to Achieve Active Overload;;1.0;0.0;;1
+118;3;5034;U16;;Night SVG Switch;;1.0;0.0;;1
+119;3;5035;U16;;Reactive power adjustment mode;CMD_Q_MODE;1.0;0.0;;1
+120;3;5036;I16;;Reactive power percentage setting;CMD_Q_AC_SET_PERCENT;0.1;0.0;%;1
+121;3;5038;U16;;Power limitation adjustment;CMD_P_AC_LIM_ABS;0.1;0.0;kW;1
+122;3;5039;I16;;Reactive power adjustment;CMD_Q_AC_SET_ABS;0.1;0.0;kVAR;1
+123;3;5040;U16;;PID Recovery;;1.0;0.0;;1
+124;3;5041;U16;;Anti PID;;1.0;0.0;;1
+125;3;5042;U16;;Full-Day PID Suppression;PRESSURE;1.0;0.0;;1
+126;3;5047;U16;;Q(P) Curve 1 - Curve;;1.0;0.0;;0
+127;3;5048;U16;;Q(P) Curve 1 - PB;;0.1;0.0;%;0
+128;3;5049;I16;;Q(P) Curve 1 - KB;;0.001;0.0;;0
+129;3;5050;U16;;Q(P) Curve 1 - PA (Lower Power);;0.1;0.0;%;0
+130;3;5051;U16;;Q(P) Curve 1 - PC (Upper Power);;1.0;0.0;;0
+131;3;5052;I16;;Q(P) Curve 1 - KA (Upperlimit-PF);;0.001;0.0;;0
+132;3;5053;I16;;Q(P) Curve 1 - KC (Lower limit-PF);;0.001;0.0;;0
+133;3;5064;U16;;Q(P) Curve 1 - powerA;;0.1;0.0;%;0
+134;3;5065;U16;;Q(P) Curve 1 - powerB;;0.1;0.0;%;0
+135;3;5066;U16;;Q(P) Curve 1 - powerC;;0.1;0.0;%;0
+136;3;5067;U16;;Q(P) Curve 1 - pf_max;;0.001;0.0;;0
+137;3;5068;U16;;Q(P) Curve 1 - Uin;;0.1;0.0;%;0
+138;3;5069;U16;;Q(P) Curve 1 - Uout;;0.1;0.0;%;0
+139;3;5077;U16;;Q(U) Curve 1 - Curve;;1.0;0.0;;0
+140;3;5078;I16;;Q(U) Curve 1 - Q_U1;;0.1;0.0;%;0
+141;3;5079;I16;;Q(U) Curve 1 - Q_U2;;0.1;0.0;%;0
+142;3;5080;U16;;Q(U) Curve 1 - Lower Ulimit;;0.1;0.0;%;0
+143;3;5081;U16;;Q(U) Curve 1 - Upper Ulimit;;0.1;0.0;%;0
+144;3;5082;U16;;Q(U) Curve 1 - U1 Limit;;0.1;0.0;%;0
+145;3;5083;U16;;Q(U) Curve 1 - U2 Limit;;0.1;0.0;%;0
+146;3;5084;U16;;Q(U) Curve 1 - Hysteresis;;0.1;0.0;%;0
+147;3;5085;U16;;Q(U) Curve 1 - Lower Q/Sn;;0.1;0.0;%;0
+148;3;5086;U16;;Q(U) Curve 1 - Upper Q/Sn;;0.1;0.0;%;0
+149;3;5115;U16;;Q(P) Curve 2 - Q(P) Curve;;1.0;0.0;;0
+150;3;5116;U16;;Q(P) Curve 2 - QP_P1;;0.1;0.0;%;0
+151;3;5117;U16;;Q(P) Curve 2 - QP_P2;;0.1;0.0;%;0
+152;3;5118;U16;;Q(P) Curve 2 - QP_P3;;0.1;0.0;%;0
+153;3;5119;I16;;Q(P) Curve 2 - QP_K1;;0.001;0.0;;0
+154;3;5120;I16;;Q(P) Curve 2 - QP_K2;;0.001;0.0;;0
+155;3;5121;I16;;Q(P) Curve 2 - QP_K3;;0.001;0.0;;0
+156;3;5122;U16;;Q(P) Curve 2 - QP_EnterVoltageRatio;;0.1;0.0;%;0
+157;3;5123;U16;;Q(P) Curve 2 - QP_ExitVoltageRatio;;0.1;0.0;%;0
+158;3;5124;U16;;Q(P) Curve 2 - QP_ExitPowerRatio;;0.1;0.0;%;0
+159;3;5125;U16;;Q(P) Curve 2 - QP_EnableMode;;1.0;0.0;;0
+160;3;5134;U16;;Q(U) Curve 2 - Q(U) Curve;;1.0;0.0;;0
+161;3;5135;U16;;Q(U) Curve 2 - Q(U) Hysteresis;;0.1;0.0;%;0
+162;3;5136;U16;;Q(U) Curve 2 - QU_V1;;0.1;0.0;%;0
+163;3;5137;U16;;Q(U) Curve 2 - QU_Q1;;0.1;0.0;%;0
+164;3;5138;U16;;Q(U) Curve 2 - QU_V2;;0.1;0.0;%;0
+165;3;5139;U16;;Q(U) Curve 2 - QU_Q2;;0.1;0.0;%;0
+166;3;5140;U16;;Q(U) Curve 2 - QU_V3;;0.1;0.0;%;0
+167;3;5141;U16;;Q(U) Curve 2 - QU_Q3;;0.1;0.0;%;0
+168;3;5142;U16;;Q(U) Curve 2 - QU_V4;;0.1;0.0;%;0
+169;3;5143;U16;;Q(U) Curve 2 - QU_Q4;;0.1;0.0;%;0
+170;3;5144;U16;;Q(U) Curve 2 - QU_EnterPower;;0.1;0.0;%;0
+171;3;5145;U16;;Q(U) Curve 2 - QU_ExitPower;;0.1;0.0;%;0
+172;3;5146;U16;;Q(U) Curve 2 - QU_EnableMode;;1.0;0.0;;0
+173;3;5147;U16;;Q(U) Curve 2 - QU_LimitPFValue;;0.01;0.0;;0

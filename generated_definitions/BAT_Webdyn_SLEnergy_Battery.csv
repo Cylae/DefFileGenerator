@@ -1,0 +1,189 @@
+modbus;Battery;SL Energy;Battery;;;;;;;
+1;3;11000;U16;;Grid_Buy_Day;;0.1;0;kWh;4
+2;3;11001;U32;;Grid_Buy_Month;;0.1;0;kWh;4
+3;3;11003;U32;;Grid_Buy_Year;;0.1;0;kWh;4
+4;3;11005;U32;;Grid_Buy_Total;;0.1;0;kWh;4
+5;3;11007;U16;;Grid_Sell_Day;;0.1;0;kWh;4
+6;3;11008;U32;;Grid_Sell_Month;;0.1;0;kWh;4
+7;3;11010;U32;;Grid_Sell_Year;;0.1;0;kWh;4
+8;3;11012;U32;;Grid_Sell_Total;;0.1;0;kWh;4
+9;3;11014;U16;;Consumption_Day;;0.1;0;kWh;4
+10;3;11015;U32;;Consumption_Month;;0.1;0;kWh;4
+11;3;11017;U32;;Consumption_Year;;0.1;0;kWh;4
+12;3;11019;U32;;Consumption_Total;;0.1;0;kWh;4
+13;3;11125;I32;;Battery_Power;;1;0;W;4
+14;3;11127;U16;;Minimum unit voltage;;0.1;0;V;4
+15;3;11128;U16;;Maximum single-cell voltage;;0.1;0;V;4
+16;3;11129;U16;;Total number of loops;;1;0;;4
+17;3;11130;U16;;Battery_Voltage;;0.1;0;V;4
+18;3;11131;I16;;Battery_Discharge_Current;;0.1;0;A;4
+19;3;11132;I16;;Battery_Charging_Current;;0.1;0;A;4
+20;3;11133;I16;;Battery temperature;TEMP;0.1;;C;4
+21;3;11134;U16;;Discharge cutoff voltage;;0.1;;V;4
+22;3;11135;U16;;SOC;SOC;1;0;pct;4
+23;3;11136;U16;;SOH;SOH;1;0;pct;4
+24;3;11137;I16;;Maximum discharge current;;0.1;;A;4
+25;3;11138;I16;;Maximum charging current;;0.1;;A;4
+26;3;11139;U16;;Maximum charging voltage;;0.1;;V;4
+27;3;11140;U16;;Battery_Status;;1;0;;4
+28;3;11141;I16;;Bat_Daily_Charge;;0.1;0;kWh;4
+29;3;11142;I32;;Bat_Cumulative_Charge;;0.1;0;kWh;4
+30;3;11144;I16;;Bat_Daily_Discharge;;0.1;0;kWh;4
+31;3;11145;I32;;Battery cumulative discharge amount;;0.1;0;kWh;4
+32;3;11147;I32;;Battery monthly charge amount;;0.1;0;kWh;4
+33;3;11149;I32;;Battery charge volume in the current year;;0.1;0;kWh;4
+34;3;11151;I32;;Battery discharge amount for the current month;;0.1;0;kWh;4
+35;3;11153;I32;;Battery discharge capacity in one yea;;0.1;0;kWh;4
+36;3;20000;U16;;Cloud_Battery software version;;1;0;;4
+37;3;20010;U16;;Cloud_Total battery pack voltage (PCS);;0.1;0;V;4
+38;3;20011;I16;;Cloud_Total battery pack current (PCS);;0.1;0;A;4
+39;3;20013;U16;;Cloud_Main control temperature;;0.1;0;C;4
+40;3;20014;U16;;Cloud_SOC;;0.1;0;%;4
+41;3;20015;U16;;Cloud_SOH;;1;0;%;4
+42;3;20016;U16;;Cloud_SOE;;0.1;0;%;4
+43;3;20017;U16;;Cloud_Charging cutoff voltage;;0.1;0;V;4
+44;3;20018;U16;;Cloud_Discharge cutoff voltage;;0.1;0;V;4
+45;3;20019;U16;;Cloud_Maximum charging current;;0.1;0;A;4
+46;3;20020;U16;;Cloud_Maximum discharge current;;0.1;0;A;4
+47;3;20021;I32;;Cloud_Cumulative charging power;;0.1;0;kWh;4
+48;3;20023;I32;;Cloud_Cumulative discharge capacity;;0.1;0;kWh;4
+49;3;20025;I16;;Cloud_Daily charging volume;;0.1;0;kWh;4
+50;3;20026;I16;;Cloud_Daily discharge volume;;0.1;0;kWh;4
+51;3;20027;I32;;Cloud_Battery pack total power;;1;0;W;4
+52;3;20029;I16;;Cloud_tooling status;;1;0;;4
+53;3;20030;I16;;Cloud_Cell type;;1;0;;4
+54;3;20031;U16;;Cloud_Total battery pack voltage;;0.1;0;V;4
+55;3;20032;I16;;Cloud_Total current of battery pack;;0.1;0;A;4
+56;3;20033;I32;;Cloud_Battery pack total power_2;;1;0;W;4
+57;3;41958;U16;;Grid_Restoration_Power_Gradual_Change_Enablement;;1;0;;4
+58;3;41959;U16;;Zero_Current_Mode_Enable;;1;0;;4
+59;3;41960;U16;;Charging_Enable;;1;0;;4
+60;3;41961;U16;;Main_Grid_Connection_Switch_Enable;;1;0;;4
+61;3;41962;U16;;Battery_Grid_Connection_Enabled;;1;0;;4
+62;3;41963;U16;;Enabled_By_Weak_Grid_Mode;;1;0;;4
+63;3;41964;U16;;Power_On_Activation_Control_Enable;;1;0;;4
+64;3;41968;U16;;Energy_Distribution_Pattern_2;;1;0;;4
+65;3;41969;U16;;UPS_Mode_Enable;;1;0;;4
+66;3;41970;U16;;Power_Limiting_Control;;1;0;;4
+67;3;41971;U16;;Max_Solar_Power;;1;0;W;4
+68;3;41972;U16;;Max_Sell_Power;;1;0;W;4
+69;3;41973;U16;;Zero_Export_Power;;1;0;W;4
+70;3;41974;U16;;Rated_Power_2;;1;0;W;4
+71;3;41975;U16;;Power;P_AC;1;0;W;4
+72;3;41976;U16;;External_Relay;;1;0;;4
+73;3;41977;U16;;AC_Couple_On_Grid_Side;;1;0;;4
+74;3;41978;U16;;AC_Couple_On_Load_Side;;1;0;;4
+75;3;41979;U16;;AC_Couple_Frequency_Upper_Limit_Setting;FREQ;0.01;0;Hz;4
+76;3;41980;U16;;Off_Grid_Immediately_Off;;1;0;;4
+77;3;41983;U16;;Generator_Input_As_Load_Output_Enable;;1;0;;4
+78;3;41984;U16;;Generator_Input_Rated_Power;;1;0;W;4
+79;3;41985;U16;;Generator_Connected_To_Grid_Input;;1;0;;4
+80;3;41986;U16;;Intelligent_Load_Output_Power;;1;0;W;4
+81;3;41987;U16;;Keep_It_On_The_Power_Grid;;1;0;;4
+82;3;41988;U16;;Generator_Load_OFF_Voltage;;0.1;0;V;4
+83;3;41989;U16;;Generator_Load_ON_Voltage;;0.1;0;V;4
+84;3;41990;U16;;Generator_Load_OFF_SOC;;1;0;%;4
+85;3;41991;U16;;Generator_Load_ON_SOC;;1;0;%;4
+86;3;41992;U16;;Generator_Peak_Shaving_Enable;;1;0;;4
+87;3;41993;U16;;Generator_Peak_Shaving_Power;;1;0;W;4
+88;3;41994;U16;;Grid_Peak_Shaving_Enablement;;1;0;;4
+89;3;41995;U16;;Grid_Peak_Shaving_Power;;1;0;W;4
+90;3;41999;U16;;Grid_Signal;;1;0;;4
+91;3;42000;U16;;Grid_Charging_Enable;;1;0;;4
+92;3;42001;I16;;The_Charging_Current_Of_The_Power_Grid_To_The_Battery;;1;0;A;4
+93;3;42002;U16;;Grid_Charging_Start_Up_Voltage_Point;;0.1;0;V;4
+94;3;42003;U16;;Grid_Charging_Stop_Voltage_Point;;0.1;0;V;4
+95;3;42004;U16;;SOC_Value_During_Grid_Charging_Start;;1;0;%;4
+96;3;42005;U16;;SOC_Value_When_Grid_Charging_Stops;;1;0;%;4
+97;3;42007;U16;;Gen_Signal;;1;0;;4
+98;3;42008;U16;;Generator_Charging_Enable;;1;0;;4
+99;3;42009;I16;;Generator_Charging_Current_To_Battery;;1;0;A;4
+100;3;42010;U16;;Generator_Charging_Starting_Voltage_Point;;0.1;0;V;4
+101;3;42011;U16;;Generator_Charging_Stop_Voltage_Point;;0.1;0;V;4
+102;3;42012;U16;;Generator_Charging_Start_Up_SOC_Value;;1;0;%;4
+103;3;42013;U16;;Generator_Charging_Stops_At_SOC_Value;;1;0;%;4
+104;3;42016;U16;;Maximum_Operating_Time_Of_Generator;;0.1;0;H;4
+105;3;42017;U16;;Generator_Cooling_Time;;0.1;0;H;4
+106;3;42018;U16;;Force_Start_Generator;;1;0;;4
+107;3;42020;U16;;Electricity_Sales_Enable;;1;0;;4
+108;3;42021;U16;;Set_Time_Based_Charge_Discharge_Enable;;1;0;;4
+109;3;42022;U16;;Time_Period_1_Charging_Enable;;1;0;;4
+110;3;42023;U16;;Time_Period_1ChargeStart_Time;;1;0;Min;4
+111;3;42024;U16;;Time_Period_1ChargeEnd_Time;;1;0;Min;4
+112;3;42025;U16;;Maximum_Discharge_Power_During_Time_Period_1;;0.1;0;kW;4
+113;3;42026;U16;;Time_Period_1Start_Chargingvoltage_Value;;0.1;0;V;4
+114;3;42027;U16;;Time_Period_1Start_ChargingSOC_Value;;1;0;%;4
+115;3;42028;U16;;Time_Period_2_Charging_Enable;;1;0;;4
+116;3;42029;U16;;Time_Period_2ChargeStart_Time;;1;0;Min;4
+117;3;42030;U16;;Time_Period_2ChargeEnd_Time;;1;0;Min;4
+118;3;42031;U16;;Maximum_Discharge_Power_During_Time_Period_2;;0.1;0;kW;4
+119;3;42032;U16;;Time_Period_2Start_Chargingvoltage_Value;;0.1;0;V;4
+120;3;42033;U16;;Time_Period_2Start_ChargingSOC_Value;;1;0;%;4
+121;3;42034;U16;;Time_Period_3_Charging_Enable;;1;0;;4
+122;3;42035;U16;;Time_Period_3ChargeStart_Time;;1;0;Min;4
+123;3;42036;U16;;Time_Period_3ChargeEnd_Time;;1;0;Min;4
+124;3;42037;U16;;Maximum_Discharge_Power_During_Time_Period_3;;0.1;0;kW;4
+125;3;42038;U16;;Time_Period_3Start_Chargingvoltage_Value;;0.1;0;V;4
+126;3;42039;U16;;Time_Period_3Start_ChargingSOC_Value;;1;0;%;4
+127;3;42040;U16;;Time_Period_4_Charging_Enable;;1;0;;4
+128;3;42041;U16;;Time_Period_4ChargeStart_Time;;1;0;Min;4
+129;3;42042;U16;;Time_Period_4ChargeEnd_Time;;1;0;Min;4
+130;3;42043;U16;;Maximum_Discharge_Power_During_Time_Period_4;;0.1;0;kW;4
+131;3;42044;U16;;Time_Period_4Start_Chargingvoltage_Value;;0.1;0;V;4
+132;3;42045;U16;;Time_Period_4Start_ChargingSOC_Value;;1;0;%;4
+133;3;42046;U16;;Time_Period_5_Charging_Enable;;1;0;;4
+134;3;42047;U16;;Time_Period_5ChargeStart_Time;;1;0;Min;4
+135;3;42048;U16;;Time_Period_5ChargeEnd_Time;;1;0;Min;4
+136;3;42049;U16;;Maximum_Discharge_Power_During_Time_Period_5;;0.1;0;kW;4
+137;3;42050;U16;;Time_Period_5Start_Chargingvoltage_Value;;0.1;0;V;4
+138;3;42051;U16;;Time_Period_5Start_ChargingSOC_Value;;1;0;%;4
+139;3;42052;U16;;Time_Period_6_Charging_Enable;;1;0;;4
+140;3;42053;U16;;Time_Period_6ChargeStart_Time;;1;0;Min;4
+141;3;42054;U16;;Time_Period_6ChargeEnd_Time;;1;0;Min;4
+142;3;42055;U16;;Maximum_Discharge_Power_During_Time_Period_6;;0.1;0;kW;4
+143;3;42056;U16;;Time_Period_6Start_Chargingvoltage_Value;;0.1;0;V;4
+144;3;42057;U16;;Time_Period_6Start_ChargingSOC_Value;;1;0;%;4
+145;3;42091;I16;;Battery power settings;BatteryCmd;0.1;0;kW;4
+146;3;42092;I16;;SOC forced calibration enabled;;1;0;;4
+147;3;42093;U16;;SOC mandatory calibration cycle;;1;0;;4
+148;3;42094;U16;;Battery port information;;1;0;;4
+149;3;42095;U16;;Battery information;;1;0;;4
+150;3;42096;U16;;Battery operating type;;1;0;;4
+151;3;42097;U16;;Number of batteries connected in series and parallel;;1;0;;4
+152;3;42098;U16;;Battery charge/discharge slope enable;;1;0;;4
+153;3;42099;U16;;Battery charge/discharge slope;;1;0;;4
+154;3;42100;U16;;Battery charging power settings;;1;0;%Pn/Mn;4
+155;3;42101;U16;;Battery discharge power settings;;0.1;0;kW;4
+156;3;42105;U16;;CV charging voltage;;0.1;0;V;4
+157;3;42106;U16;;float voltage;;0.1;0;V;4
+158;3;42107;U16;;Battery equalization enable;;0;0;V;4
+159;3;42108;U16;;Battery equalization voltage;;0.1;0;V;4
+160;3;42109;U16;;Battery equalization interval;;1;0;Day;4
+161;3;42110;U16;;Battery equalization time;;1;0;Hour;4
+162;3;42111;U16;;Battery overvoltage alarm value;;0.1;0;V;4
+163;3;42112;U16;;Battery overvoltage alarm recovery value;;0.1;0;V;4
+164;3;42113;U16;;Battery overvoltage protection value;;0.1;0;V;4
+165;3;42114;U16;;Battery overvoltage protection recovery value;;0.1;0;V;4
+166;3;42115;U16;;Battery low voltage alarm voltage value;;0.1;0;V;4
+167;3;42116;U16;;Battery undervoltage alarm recovery voltage value;;0.1;0;V;4
+168;3;42117;U16;;Battery discharge cutoff voltage value;;0.1;0;V;4
+169;3;42118;U16;;Battery discharge cutoff recovery voltage value;;0.1;0;V;4
+170;3;42119;I16;;Battery temperature_Compensation;;0.1;0;V;4
+171;3;42120;I16;;Temperature compensation value;;1;0;mV/C;4
+172;3;42121;U16;;Battery internal resistance;;1;0;mOhm;4
+173;3;42122;U16;;Battery capacity;;1;0;Ah;4
+174;3;42123;I16;;Maximum total charging current of battery;I_AC;1;0;A;4
+175;3;42124;I16;;Maximum total discharge current of battery;;1;0;A;4
+176;3;42125;U16;;Battery discharge cutoff voltage in hybrid mode;;0.1;0;V;4
+177;3;42126;U16;;Battery discharge cutoff SOC in hybrid mode;;1;0;%;4
+178;3;42127;U16;;Cutoff recovery voltage in hybrid mode;;0.1;0;V;4
+179;3;42128;U16;;Cut-off recovery of SOC in hybrid mode;;1;0;%;4
+180;3;42130;U16;;Battery/BMS manufacturers;MANUFACTURER;1;0;;4
+181;3;42132;U16;;Battery low voltage alarm SOC value;;1;0;%;4
+182;3;42133;U16;;Battery undervoltage alarm restores SOC value;;1;0;%;4
+183;3;42134;U16;;Battery discharge cutoff SOC value;;1;0;%;4
+184;3;42135;U16;;Battery discharge cut-off restores SOC value;;1;0;%;4
+185;3;42136;U16;;SOC value at charging stop;;1;0;%;4
+186;3;42137;U16;;Lithium battery wake-up enable (activate pack);;1;0;;4
+187;3;42138;U16;;Communication with BMS failed, energy storage unit shut down, fault enable bit reported.;;1;0;;4
+188;3;42139;U16;;Charging stops and SOC value is restored;;1;0;%;4

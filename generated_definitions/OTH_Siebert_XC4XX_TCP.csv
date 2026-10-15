@@ -1,4 +1,4 @@
-﻿modbusTCP;Other;Siebert;XC4XX_TCP;;;;;;;
-1;3;1;U32_W;;Puissance instantanée;Pac-Tag;1.000000;0.000000;;4
+modbusTCP;Other;Siebert;XC4XX_TCP;;;;;;;
+1;3;1;U32_W;;Puissance instantanée;P_AC;1.000000;0.000000;;4
 2;3;3;U32_W;;Energie journalière;energie_journalire;1.000000;0.000000;;4
-3;3;5;U32_W;;Energie cumulée;Eac-Tag;1.000000;0.000000;;4
+3;3;5;U32_W;;Energie cumulée;E_TOT;1.000000;0.000000;;4

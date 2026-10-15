@@ -1,0 +1,31 @@
+ModbusTCP;Other;Inverter;SMA
+1;4;30241;U32;;Operating state;;1.0;0.0;;8
+2;4;30243;U32;;Error;;1.0;0.0;;8
+3;4;30249;U32;;Status of the GFDI relay;;1.0;0.0;;8
+4;4;30251;U32;;Status of current restart interlock;;1.0;0.0;;8
+5;4;30529;U32;;Total yield (Wh);E_TOT;1.0;0.0;;4
+6;4;30531;U32;;Total yield (kWh);;1.0;0.0;;4
+7;4;30533;U32;;Total yield (MWh) ;;1.0;0.0;;4
+8;4;30535;U32;;Daily yield (Wh);E_DAY;1.0;0.0;;4
+9;4;30537;U32;;Daily yield (kWh);;1.0;0.0;;4
+10;4;30539;U32;;Daily yield (MWh);;1.0;0.0;;4
+11;4;30541;U32;;Operating time (s);;1.0;0.0;;4
+12;4;30543;U32;;Feed-in time (s);;1.0;0.0;;4
+13;4;30545;U32;;Operating time of interior fan 1 (s);;1.0;0.0;;4
+14;4;30547;U32;;Operating time of interior fan 2 (s);;1.0;0.0;;4
+15;4;30549;U32;;Operating time of heat sink fan (s);;1.0;0.0;;4
+16;4;30769;U32;;DC current input (A);I_DC;1.0;0.0;;4
+17;4;30771;U32;;DC voltage input (V);U_DC;1.0;0.0;;4
+18;4;30773;U32;;DC power input (W);P_DC;1.0;0.0;;4
+19;4;30775;U32;;AC active power across all phases (W);P_AC;1.0;0.0;;4
+20;4;30789;U32;;Grid voltage phase AB (V);U_AC_1;1.0;0.0;;4
+21;4;30791;U32;;Grid voltage phase BC (V);U_AC_2;1.0;0.0;;4
+22;4;30793;U32;;Grid voltage phase CA (V);U_AC_3;1.0;0.0;;4
+23;4;30795;U32;;Grid current AC (A);;1.0;0.0;;4
+24;4;30797;U32;;Grid current L1 (A);I_AC_1;1.0;0.0;;4
+25;4;30799;U32;;Grid current L2 (A);I_AC_2;1.0;0.0;;4
+26;4;30801;U32;;Grid current L3 (A);I_AC_3;1.0;0.0;;4
+27;4;30803;U32;;Power frequency (Hz);FREQ;1.0;0.0;;4
+28;4;30805;U32;;Reactive power (var);Q_AC;1.0;0.0;;4
+29;4;30814;U32;;Apparent power 1 (VA);S_AC;1.0;0.0;;4
+30;4;30822;U32;;Power factor all phases;PF;1.0;0.0;;4

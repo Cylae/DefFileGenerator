@@ -1,0 +1,63 @@
+ModbusRTU;Inverter;ABB;PRO33
+1;3;3644_14;STRING;;PN;;1.0;0.0;;1
+2;3;3664_14;STRING;;SN;SERIAL;1.0;0.0;;1
+3;3;0;U16;;Inverter operation;;1.0;0.0;;8
+4;3;1;U16;;External power limit;CMD_P_AC_SET_ABS;1.0;0.0;;4
+5;3;2;U16;;User Qref;;1.0;0.0;;4
+6;3;3;U16;;DC voltage;U_DC;0.0;0.0;;4
+7;3;4;U16;;Line current;I_AC_3;0.0;0.0;;4
+8;3;5;U16;;Frequency ;FREQ;0.0;0.0;;4
+9;3;6;U16;;Apparent power;S_AC;0.0;0.0;;4
+10;3;7;U16;;Power;P_AC;0.0;0.0;;4
+11;3;8;U16;;Reactive power;Q_AC;0.0;0.0;;4
+12;3;9;U16;;CosPhi;PF;0.0;0.0;;4
+13;3;10;U16;;Input current;;0.0;0.0;;4
+14;3;11;U16;;Tripping fault;;1.0;0.0;;4
+15;3;12;U16;;Active warning 1;;1.0;0.0;;4
+16;3;13;U16;;Active warning 2;;1.0;0.0;;4
+17;3;14;U16;;Active warning 3;;1.0;0.0;;4
+18;3;15;U16;;Active warning 4;;1.0;0.0;;4
+19;3;16;U16;;Active warning 5;;1.0;0.0;;4
+20;3;17;U16;;Latest warning;;1.0;0.0;;4
+21;3;18;U16;;Main status word ;;1.0;0.0;;8
+22;3;19;U16;;Cpu usage;;1.0;0.0;;4
+23;3;20;U32;;Connection status;;1.0;0.0;;4
+24;3;22;U32;;Disconnect diagnostic;;1.0;0.0;;4
+25;3;24;U32;;Output power diagnostic;;1.0;0.0;;4
+26;3;26;U32;;Uptime;;1.0;0.0;;4
+27;3;28;U16;;Operation time ;;1.0;0.0;;4
+28;3;29;U16;;Internal fan speed;;1.0;0.0;;4
+29;3;30;U16;;External fan 1 speed;;1.0;0.0;;4
+30;3;31;U16;;External fan 2 speed;;1.0;0.0;;4
+31;3;32;U32;;Grid connections ;;1.0;0.0;;4
+32;3;34;U16;;Control board temperature;;1.0;0.0;;4
+33;3;35;U16;;Inverter temperature A;TEMP_INT;1.0;0.0;;4
+34;3;36;U16;;Inverter temperature B;;1.0;0.0;;4
+35;3;37;U16;;Inverter temperature C;;1.0;0.0;;4
+36;3;38;U16;;Current[1];;0.0;0.0;;4
+37;3;39;U16;;Current[2];;0.0;0.0;;4
+38;3;40;U16;;Current[3];;0.0;0.0;;4
+39;3;41;U16;;Current[4];;0.0;0.0;;4
+40;3;42;U16;;Current[5];;0.0;0.0;;4
+41;3;43;U16;;Current[6];;0.0;0.0;;4
+42;3;44;U16;;Current[7];;0.0;0.0;;4
+43;3;45;U16;;Current[8];;0.0;0.0;;4
+44;3;46;U32;;Total energy;E_TOT;1.0;0.0;;4
+45;3;48;U16;;Phase voltage U1;;1.0;0.0;;4
+46;3;49;U16;;Phase voltage V1;;1.0;0.0;;4
+47;3;50;U16;;Phase voltage W1;;1.0;0.0;;4
+48;3;51;U16;;Main voltage U1-V1;;1.0;0.0;;4
+49;3;52;U16;;Main voltage V1-W1;;1.0;0.0;;4
+50;3;53;U16;;Main voltage W1-U1;;1.0;0.0;;4
+51;3;54;U16;;PT sensor temperature;;0.0;0.0;;4
+52;3;55;U16;;Temperature 2;;0.0;0.0;;4
+53;3;56;U16;;Irradiation 1;;1.0;0.0;;4
+54;3;57;U16;;Irradiation 2;;1.0;0.0;;4
+55;3;58;U16;;Fault reset;;1.0;0.0;;4
+56;3;59;U16;;Control board boot;;1.0;0.0;;4
+57;3;89;U16;;Reset Error Registers;;1.0;0.0;;4
+58;3;90;U16;;Error Function Code;;1.0;0.0;;4
+59;3;91;U16;;Error Code ;;1.0;0.0;;8
+60;3;92;U16;;Failed Register;;1.0;0.0;;4
+61;3;93;U16;;Last Register Written Successfully;;1.0;0.0;;4
+62;3;94;U16;;Last Register Read Successfully;;1.0;0.0;;4

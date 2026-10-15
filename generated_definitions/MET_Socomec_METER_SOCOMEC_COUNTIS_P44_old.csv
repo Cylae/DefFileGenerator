@@ -1,0 +1,168 @@
+modbusRTU;Meter;Socomec;Countis P44;;;;;;;
+1;3;50000_16;STRING;;SOCO;;1;0;;1
+2;3;50004;U16;;Product order ID (Countis:100, Protection:200, Atys:300, Diris:400);;1;0;;1
+3;3;50005;U16;;Product ID (EX: 1000 ATS3);;1;0;;1
+4;3;50006;U16;;JBUS Table Version (EX: 101 Version 1.01);;1;0;;1
+5;3;50007;U16;;Product software version (EX: 100 Version 1.00);;1;0;;1
+6;3;50008;U16;;Serial_AA_SS;;1;0;;1
+7;3;50009;U16;;Serial_SST_L;;1;0;;1
+8;3;50010;U16;;Serial_order;;1;0;;1
+9;3;50011;U32;;Serial_Reserve (LOT number);;1;0;;4
+10;3;50018;U16;;Product version (Major);;1;0;;1
+11;3;50019;U16;;Product version (Minor);;1;0;;1
+12;3;50020;U16;;Product version (Revision);;1;0;;1
+13;3;50021;U16;;Product version (Build);;1;0;;1
+14;3;50022;U16;;Product build date;;1;0;;6
+15;3;50030_8;STRING;;Product VLO (EX : 880100);;1;0;;1
+16;3;50042_8;STRING;;Vendor name (EX : SOCOMEC);;1;0;;1
+17;3;50050_8;STRING;;Product name (EX : DIRIS A40R);;1;0;;1
+18;3;50058_8;STRING;;Extended name;;1;0;;1
+19;3;50066;U16;;Ressource version (Build 2);;1;0;;1
+20;3;50067;U32;;Net ID;;1;0;;4
+21;3;50514;U32;;Phase to Phase Voltage: U12;;0.01;0;V;4
+22;3;50516;U32;;Phase to Phase Voltage: U23;;0.01;0;V;4
+23;3;50518;U32;;Phase to Phase Voltage: U31;;0.01;0;V;4
+24;3;50520;U32;;Simple voltage : V1;;0.01;0;V;4
+25;3;50522;U32;;Simple voltage : V2;;0.01;0;V;4
+26;3;50524;U32;;Simple voltage : V3;;0.01;0;V;4
+27;3;50526;U32;;Frequency : F;FREQ;0.01;0;Hz;4
+28;3;50528;U32;;Current : I1;;0.001;0;A;4
+29;3;50530;U32;;Current : I2;;0.001;0;A;4
+30;3;50532;U32;;Current : I3;;0.001;0;A;4
+31;3;50534;U32;;Neutral Current : In;;0.001;0;A;4
+32;3;50536;I32;;Active Power +/- : P;P_AC;10;0;W;4
+33;3;50538;I32;;Reactive Power +/- : Q;Q_AC;10;0;var;4
+34;3;50540;U32;;Apparent Power : S;S_AC;10;0;VA;4
+35;3;50542;I32;;Power Factor : -: leading et + : lagging : PF;PF;0.001;0;;4
+36;3;50544;I32;;Active Power phase 1 +/- : P1;P_AC_1;10;0;W;4
+37;3;50546;I32;;Active Power phase 2 +/- : P2;P_AC_2;10;0;W;4
+38;3;50548;I32;;Active Power phase 3 +/- : P3;P_AC_3;10;0;W;4
+39;3;50550;I32;;Reactive Power phase 1 +/- : Q1;Q_AC_1;10;0;var;4
+40;3;50552;I32;;Reactive Power phase 2 +/- : Q2;Q_AC_2;10;0;var;4
+41;3;50554;I32;;Reactive Power phase 3 +/- : Q3;Q_AC_3;10;0;var;4
+42;3;50556;U32;;Apparent Power phase 1 : S1;S_AC_1;10;0;VA;4
+43;3;50558;U32;;Apparent Power phase 2 : S2;S_AC_2;10;0;VA;4
+44;3;50560;U32;;Apparent Power phase 3 : S3;S_AC_3;10;0;VA;4
+45;3;50562;I32;;Power Factor phase 1 -: leading and + : lagging : PF1;PF_1;0.001;0;;4
+46;3;50564;I32;;Power Factor phase 2 -: leading and + : lagging : PF2;PF_2;0.001;0;;4
+47;3;50566;I32;;Power Factor phase 3 -: leading and + : lagging : PF3;PF_3;0.001;0;;4
+48;3;50568;U32;;System value I Sys : ( I1+I2+I3) / 3;;0.001;0;A;4
+49;3;50570;U32;;System value U Sys : (U12 + U23 + U31 ) / 3;;0.01;0;V;4
+50;3;50572;U32;;System value V Sys : (V1 + V2 + V3 ) / 3;;0.01;0;V;4
+51;3;50848;U8;;Number of supported tariff 1 : 1 Tariff 2 : 2 Tariffs 3 : 3 Tariffs 4 : 4 Tariffs;;1;0;;1
+52;3;50849;U16;;Tariff number in progress1 : Tariff 12 : Tariff 23 : Tariff 34 : Tariff 4;;1;0;;1
+53;3;19840;U32;;Total Line 1 Positive active Energy : Ea+;E_TOT;1;0;kWh;4
+54;3;19842;U16;;Total Line 1 Residual positive active Energy : rEa+;;0.1;0;Wh;1
+55;3;19843;U32;;Total Line 1 Negative active Energy : Ea-;;1;0;kWh;4
+56;3;19845;U16;;Total Line 1 Residual negative active Energy : rEa-;;0.1;0;Wh;1
+57;3;19846;U32;;Total Line 1 Positive reactive Energy : Er+;;1;0;kvarh;4
+58;3;19848;U16;;Total Line 1 Residual positive reactive Energy : rEr+;;0.1;0;varh;1
+59;3;19849;U32;;Total Line 1 Negative reactive Energy : Er-;;1;0;kvarh;4
+60;3;19851;U16;;Total Line 1 Residual negative reactive Energy : rEr-;;0.1;0;varh;1
+61;3;19852;U32;;Total Line 1 Apparent Energy : Eap;;1;0;kVAh;4
+62;3;19854;U16;;Total Line 1 Residual apparent Energy : rEap;;0.1;0;VAh;1
+63;3;19855;U32;;Total Line 2 Positive active Energy : Ea+;;1;0;kWh;4
+64;3;19857;U16;;Total Line 2 Residual positive active Energy : rEa+;;0.1;0;Wh;1
+65;3;19858;U32;;Total Line 2 Negative active Energy : Ea-;;1;0;kWh;4
+66;3;19860;U16;;Total Line 2 Residual negative active Energy : rEa-;;0.1;0;Wh;1
+67;3;19861;U32;;Total Line 2 Positive reactive Energy : Er+;;1;0;kvarh;4
+68;3;19863;U16;;Total Line 2 Residual positive reactive Energy : rEr+;;0.1;0;varh;1
+69;3;19864;U32;;Total Line 2 Negative reactive Energy : Er-;;1;0;kvarh;4
+70;3;19866;U16;;Total Line 2 Residual negative reactive Energy : rEr-;;0.1;0;varh;1
+71;3;19867;U32;;Total Line 2 Apparent Energy : Eap;;1;0;kVAh;4
+72;3;19869;U16;;Total Line 2 Residual apparent Energy : rEap;;0.1;0;VAh;1
+73;3;19870;U32;;Total Line 3 Positive active Energy : Ea+;;1;0;kWh;4
+74;3;19872;U16;;Total Line 3 Residual positive active Energy : rEa+;;0.1;0;Wh;1
+75;3;19873;U32;;Total Line 3 Negative active Energy : Ea-;;1;0;kWh;4
+76;3;19875;U16;;Total Line 3 Residual negative active Energy : rEa-;;0.1;0;Wh;1
+77;3;19876;U32;;Total Line 3 Positive reactive Energy : Er+;;1;0;kvarh;4
+78;3;19878;U16;;Total Line 3 Residual positive reactive Energy : rEr+;;0.1;0;varh;1
+79;3;19879;U32;;Total Line 3 Negative reactive Energy : Er-;;1;0;kvarh;4
+80;3;19881;U16;;Total Line 3 Residual negative reactive Energy : rEr-;;0.1;0;varh;1
+81;3;19882;U32;;Total Line 3 Apparent Energy : Eap;;1;0;kVAh;4
+82;3;19884;U16;;Total Line 3 Residual apparent Energy : rEap;;0.1;0;VAh;1
+83;3;25987;U32;;Total Positive active Energy : Ea+;;1;0;kWh;4
+84;3;25989;U16;;Total Residual positive active Energy : rEa+;;0.1;0;Wh;1
+85;3;25990;U32;;Total Negative active Energy : Ea-;;1;0;kWh;4
+86;3;25992;U16;;Total Residual negative active Energy : rEa-;;0.1;0;Wh;1
+87;3;25993;U32;;Total Positive reactive Energy : Er+;;1;0;kvarh;4
+88;3;25995;U16;;Total Residual positive reactive Energy : rEr+;;0.1;0;varh;1
+89;3;25996;U32;;Total Negative reactive Energy : Er-;;1;0;kvarh;4
+90;3;25998;U16;;Total Residual negative reactive Energy : rEr-;;0.1;0;varh;1
+91;3;25999;U32;;Total Apparent Energy : Eap;;1;0;kVAh;4
+92;3;26001;U16;;Total Residual apparent Energy : rEap;;0.1;0;VAh;1
+93;3;26016;U32;;Partial positive active Energy : Ea+;;1;0;kWh;4
+94;3;26018;U16;;Partial residual positive active Energy : rEa+;;0.1;0;Wh;1
+95;3;26019;U32;;Partial negative active Energy : Ea-;;1;0;kWh;4
+96;3;26021;U16;;Partial residual negative active Energy : rEa-;;0.1;0;Wh;1
+97;3;26022;U32;;Partial positive reactive Energy : Er+;;1;0;kvarh;4
+98;3;26024;U16;;Partial residual positive reactive Energy : rEr+;;0.1;0;varh;1
+99;3;26025;U32;;Partial negative reactive Energy : Er-;;1;0;kvarh;4
+100;3;26027;U16;;Partial residual negative reactive Energy : rEr-;;0.1;0;varh;1
+101;3;26028;U32;;Partial Apparent Energy : Eap;;1;0;kVAh;4
+102;3;26030;U16;;Partial residual apparent Energy : rEap;;0.1;0;VAh;1
+103;3;26368;U16;;Tariff number in progress1 : Tariff 12 : Tariff 23 : Tariff 34 : Tariff 4;;1;0;;1
+104;3;26369;U32;;T1 - Ea+;;1;0;kWh;4
+105;3;26371;U32;;T2 - Ea+;;1;0;kWh;4
+106;3;26373;U32;;T3 - Ea+;;1;0;kWh;4
+107;3;26375;U32;;T4 - Ea+;;1;0;kWh;4
+108;3;26385;U32;;T1 - Ea-;;1;0;kWh;4
+109;3;26387;U32;;T2 - Ea-;;1;0;kWh;4
+110;3;26389;U32;;T3 - Ea-;;1;0;kWh;4
+111;3;26391;U32;;T4 - Ea-;;1;0;kWh;4
+112;3;26401;U32;;T1 - Er+;;1;0;kvarh;4
+113;3;26403;U32;;T2 - Er+;;1;0;kvarh;4
+114;3;26405;U32;;T3 - Er+;;1;0;kvarh;4
+115;3;26407;U32;;T4 - Er+;;1;0;kvarh;4
+116;3;26449;U32;;T1 - Er-;;1;0;kvarh;4
+117;3;26451;U32;;T2 - Er-;;1;0;kvarh;4
+118;3;26453;U32;;T3 - Er-;;1;0;kvarh;4
+119;3;26455;U32;;T4 - Er-;;1;0;kvarh;4
+120;3;26497;U32;;T1 - Eap;;1;0;kVAh;4
+121;3;26499;U32;;T2 - Eap;;1;0;kVAh;4
+122;3;26501;U32;;T3 - Eap;;1;0;kVAh;4
+123;3;26503;U32;;T4 - Eap;;1;0;kVAh;4
+124;3;12288;U16;;Integration time;;1;0;s;1
+125;3;12289;U32;;Current I1 Average;;0.001;0;A;4
+126;3;12291;U32;;Current I2 Average;;0.001;0;A;4
+127;3;12293;U32;;Current I3 Average;;0.001;0;A;4
+128;3;12295;U32;;Current In Average;;0.001;0;A;4
+129;3;12305;I32;;Total active power Average;;1;0;W;4
+130;3;12307;I32;;Total reactive power Average;;1;0;var;4
+131;3;12309;U32;;Total apparent power Average;;1;0;VA;4
+132;3;12311;U32;;Maximum Current I1 Average;;0.001;0;A;4
+133;3;12313;U32;;Maximum Current I2 Average;;0.001;0;A;4
+134;3;12315;U32;;Maximum Current I3 Average;;0.001;0;A;4
+135;3;12317;U32;;Maximum Current In Average;;0.001;0;A;4
+136;3;12323;I32;;Maximum Total active power Average;;1;0;W;4
+137;3;12325;I32;;Maximum Total reactive power Average;;1;0;var;4
+138;3;12327;U32;;Maximum Total apparent power Average;;1;0;VA;4
+139;3;12329;I16;;phi current voltage: phiI1h1V1h1;;0.1;0;Deg. Celcius;1
+140;3;12330;I16;;phi current voltage: phiI2h1V2h1;;0.1;0;Deg. Celcius;1
+141;3;12331;I16;;phi current voltage: phiI3h1V3h1;;0.1;0;Deg. Celcius;1
+142;3;11105;U8;;Mode1 : Out Mode Pulse;;1;0;;1
+143;3;11106;U16;;Pulse length60 : 60 ms100 : 100 ms200 : 200 ms;;1;0;ms;1
+144;3;43265;U16;;Output :0 : Output 1;;1;0;;1
+145;3;43266;U16;;Load selected for output pulse :0 : Load 1;;1;0;;1
+146;3;43267;U16;;Energy associated to output pulse :0 : Positive active energy Ea+1 : Negative active energy Ea-2 : Positive reactive ...;;1;0;;1
+147;3;43268;U16;;Pulse weight :1 : 0,01 kWh/kvar 2 : 0,1 kWh/kvar 3 : 1 kWh/kvar 4 : 10 kWh/kvar 5 : 100 kWh/kvar 6 : 1000 kWh/kvar;;1;0;;1
+148;3;57344;U16;;Slave Address;UNIT_ID;1;0;;1
+149;3;57345;U16;;Baudrate :1 : 24002 : 48003 : 96004 : 192005 : 38400;;1;0;;1
+150;3;57346;U16;;Stop bit :0 : 1 stop bit 1 : 2 stop bits;;1;0;;1
+151;3;57347;U16;;Parity :0 : None1 : Odd2 : Even;;1;0;;1
+152;3;28930;U16;;Backlight timeout0 : Always ON 1 : 1 Min 5 : 5 Min10 : 10 Min30 : 30 Min60 : 60 Min120 : 120 Min;;1;0;min;1
+153;3;29440;U8;;Network Type :1 : 1P+N 1CT (1.2.1)5 : 3P - 2CT (3.3.2)8 : 3P+N - 3CT (3.4.3);;1;0;;1
+154;3;29441;U8;;Current Transformer secondary :1 : 1 A 5 : 5 A;;1;0;;1
+155;3;29442;U16;;Current Transformer primary;;1;0;A;1
+156;3;29447;U8;;Voltage Transformersecondary :;;1;0;V;1
+157;3;29448;U32;;Voltage Transformer primary;;1;0;V;4
+158;3;29450;U8;;Current transformer Line 1 Way0 : Positive (+)1 : Negative (-);I_AC_1;1;0;;1
+159;3;29451;U8;;Current transformer Line 2 Way0 : Positive (+)1 : Negative (-);I_AC_2;1;0;;1
+160;3;29452;U8;;Current transformer Line 3 Way0 : Positive (+)1 : Negative (-);I_AC_3;1;0;;1
+161;3;34817;U16;;Integration time for average 5 : 5 minutes 8 : 8 minutes10 : 10 minutes15 : 15 minutes20 : 20 minutes30 : 30 minutes6...;;1;0;min;1
+162;6;40481;U8;;Tariff Number to set1 : Tariff 12 : Tariff 23 : Tariff 34 : Tariff 4;;1;0;;1
+163;6;57856;U8;;Action :0xA1 : Product Configuration storage0xB2 : Product reset;;1;0;;1
+164;6;57888;U16;;Reset Min/Max and AVG0xFFFF : Reset All;;1;0;;1
+165;6;57890;U16;;Reset Partial Energies0x0000 : None0x0001 : Partial Ea+0x0002 : Partial Er+0x0004 : Partial Eap0x0008 : Partial Ea-0x...;;1;0;;1
+166;6;40512;U8;;Reset0x20 : Partial Energies;;1;0;;1
+167;3;40545;U8;;MID status (0: non-MID product, 1: MID product;;1;0;;1

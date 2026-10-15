@@ -1,0 +1,6 @@
+ModbusRTU;Sensor;LP PYRA;03;;;;;;;
+1;4;0;U16;;Temperature in degree;;1;0;C;4
+2;4;1;U16;;Temperature in fahrenheit;;1;0;F;4
+3;4;2;U16;;Status register;;1;0;;4
+4;4;3;U16;;Average solar radiation in W/m2;;1;0;W/m2;4
+5;4;4;U16;;Signal in mV ;;0.01;0;mV;4

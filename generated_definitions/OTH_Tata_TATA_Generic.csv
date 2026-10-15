@@ -1,0 +1,21 @@
+modbusRTU;Other;Tata;TATA_Generic;;;;;;;
+1;4;30000;U16;;AC_Voltage(V);ac_voltagev;1.000000;0.000000;;4
+2;4;30001;U16;;AC_Current(I);ac_currenti;1.000000;0.000000;;4
+3;4;30002;U16;;Frequency(F);frequencyf;1.000000;0.000000;;4
+4;4;30003;U16;;Active Power(AP);active_powerap;1.000000;0.000000;;4
+5;4;30004;U16;;Reactive Power(RP);reactive_powerrp;1.000000;0.000000;;4
+6;4;30005;U16;;PV_Voltage(PVV);pv_voltagepvv;1.000000;0.000000;;4
+7;4;30006;U16;;PV_Current(PVI);pv_currentpvi;1.000000;0.000000;;4
+8;4;30007;U16;;PV_Power(PVP);pv_powerpvp;1.000000;0.000000;;4
+9;4;30008;U32;;Cumulative Energy High(CEHi);cumulative_energy_highcehi;1.000000;0.000000;;4
+10;4;30010;U16;;Today_Energy Energy(TE);today_energy_energyte;1.000000;0.000000;;4
+11;4;30011;U16;;Faults(F);faultsf;1.000000;0.000000;;8
+12;4;30012;U16;;Temperature(T1);temperaturet1;1.000000;0.000000;;4
+13;4;30013;U16;;Temperature(T2);temperaturet2;1.000000;0.000000;;4
+14;4;40000;U16;;Maximum current limit;maximum_current_limit;1.000000;0.000000;;1
+15;4;40001;U16;;Minimum current limit;minimum_current_limit;1.000000;0.000000;;1
+16;4;40002;U16;;Maximum frequency set;maximum_frequency_set;1.000000;0.000000;;1
+17;4;40003;U16;;Minimum frequency set;minimum_frequency_set;1.000000;0.000000;;1
+18;4;40004;U16;;Maximum voltage set;maximum_voltage_set;1.000000;0.000000;;1
+19;4;40005;U16;;Minimum voltage set;minimum_voltage_set;1.000000;0.000000;;1
+20;4;40006;U16;;Address set;address_set;1.000000;0.000000;;1

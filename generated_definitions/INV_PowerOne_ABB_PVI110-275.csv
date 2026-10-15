@@ -1,0 +1,442 @@
+ModbusRTU;Inverter;PowerOne;PVI 110-275;;;;;;;
+1;3;1;U16;;Modbus Address;UNIT_ID;1;0;;1
+2;3;2;U16;;Modbus Reset;;1;0;;1
+3;4;1;U16;;Number Modules Present;;1;0;;4
+4;4;2;U16;;Module 01 Presence;;1;0;;4
+5;4;3;U16;;Module 02 Presence;;1;0;;4
+6;4;4;U16;;Module 03 Presence;;1;0;;4
+7;4;5;U16;;Module 04 Presence;;1;0;;4
+8;4;6;U16;;Module 05 Presence;;1;0;;4
+9;4;7;U16;;Module 06 Presence;;1;0;;4
+10;4;8;U16;;Module 07 Presence;;1;0;;4
+11;4;9;U16;;Module 08 Presence;;1;0;;4
+12;4;10;U16;;Module 09 Presence;;1;0;;4
+13;4;11;U16;;Module 10 Presence;;1;0;;4
+14;4;12;U16;;Module 11 Presence;;1;0;;4
+15;4;13;U16;;Module 12 Presence;;1;0;;4
+16;4;14;U16;;Module 13 Presence;;1;0;;4
+17;4;15;U16;;Module 14 Presence;;1;0;;4
+18;4;16;U16;;Module 15 Presence;;1;0;;4
+19;4;17;U16;;Module 16 Presence;;1;0;;4
+20;4;18;U16;;Module 17 Presence;;1;0;;4
+21;4;19;U16;;Module 18 Presence;;1;0;;4
+22;4;20;U16;;Module 19 Presence;;1;0;;4
+23;4;21;U16;;Module 20 Presence;;1;0;;4
+24;4;22;U16;;Module 21 Presence;;1;0;;4
+25;4;23;U16;;Module 22 Presence;;1;0;;4
+26;4;24;U16;;Module 23 Presence;;1;0;;4
+27;4;25;U16;;Module 24 Presence;;1;0;;4
+28;4;26;U16;;Module 25 Presence;;1;0;;4
+29;4;27;U16;;Module 26 Presence;;1;0;;4
+30;4;28;U16;;Module 27 Presence;;1;0;;4
+31;4;29;U16;;Module 28 Presence;;1;0;;4
+32;4;30;U16;;Module 29 Presence;;1;0;;4
+33;4;31;U16;;Module 30 Presence;;1;0;;4
+34;4;32;U16;;Module 31 Presence;;1;0;;4
+35;4;33;U16;;Module 32 Presence;;1;0;;4
+36;4;34;U16;;Module 01 Status;;1;0;;4
+37;4;35;U16;;Module 02 Status;;1;0;;4
+38;4;36;U16;;Module 03 Status;;1;0;;4
+39;4;37;U16;;Module 04 Status;;1;0;;4
+40;4;38;U16;;Module 05 Status;;1;0;;4
+41;4;39;U16;;Module 06 Status;;1;0;;4
+42;4;40;U16;;Module 07 Status;;1;0;;4
+43;4;41;U16;;Module 08 Status;;1;0;;4
+44;4;42;U16;;Module 09 Status;;1;0;;4
+45;4;43;U16;;Module 10 Status;;1;0;;4
+46;4;44;U16;;Module 11 Status;;1;0;;4
+47;4;45;U16;;Module 12 Status;;1;0;;4
+48;4;46;U16;;Module 13 Status;;1;0;;4
+49;4;47;U16;;Module 14 Status;;1;0;;4
+50;4;48;U16;;Module 15 Status;;1;0;;4
+51;4;49;U16;;Module 16 Status;;1;0;;4
+52;4;50;U16;;Module 17 Status;;1;0;;4
+53;4;51;U16;;Module 18 Status;;1;0;;4
+54;4;52;U16;;Module 19 Status;;1;0;;4
+55;4;53;U16;;Module 20 Status;;1;0;;4
+56;4;54;U16;;Module 21 Status;;1;0;;4
+57;4;55;U16;;Module 22 Status;;1;0;;4
+58;4;56;U16;;Module 23 Status;;1;0;;4
+59;4;57;U16;;Module 24 Status;;1;0;;4
+60;4;58;U16;;Module 25 Status;;1;0;;4
+61;4;59;U16;;Module 26 Status;;1;0;;4
+62;4;60;U16;;Module 27 Status;;1;0;;4
+63;4;61;U16;;Module 28 Status;;1;0;;4
+64;4;62;U16;;Module 29 Status;;1;0;;4
+65;4;63;U16;;Module 30 Status;;1;0;;4
+66;4;64;U16;;Module 31 Status;;1;0;;4
+67;4;65;U16;;Module 32 Status;;1;0;;4
+68;4;98;U16;;Modbus Interface Status;;1;0;;4
+69;4;3500;U16;;Module 01 Aurora Type Code;;1;0;;1
+70;4;3501;U16;;Module 01 Grid Type Code;;1;0;;1
+71;4;3502;U16;;Module 01 Trafo Type Code;;1;0;;1
+72;4;3503;U16;;Module 01 Wind Type Code;WIND_SPEED;1;0;;1
+73;4;3504;U16;;Module 02 Aurora Type Code;;1;0;;1
+74;4;3505;U16;;Module 02 Grid Type Code;;1;0;;1
+75;4;3506;U16;;Module 02 Trafo Type Code;;1;0;;1
+76;4;3507;U16;;Module 02 Wind Type Code;;1;0;;1
+77;4;3508;U16;;Module 03 Aurora Type Code;;1;0;;1
+78;4;3509;U16;;Module 03 Grid Type Code;;1;0;;1
+79;4;3510;U16;;Module 03 Trafo Type Code;;1;0;;1
+80;4;3511;U16;;Module 03 Wind Type Code;;1;0;;1
+81;4;3512;U16;;Module 04 Aurora Type Code;;1;0;;1
+82;4;3513;U16;;Module 04 Grid Type Code;;1;0;;1
+83;4;3514;U16;;Module 04 Trafo Type Code;;1;0;;1
+84;4;3515;U16;;Module 04 Wind Type Code;;1;0;;1
+85;4;3516;U16;;Module 05 Aurora Type Code;;1;0;;1
+86;4;3517;U16;;Module 05 Grid Type Code;;1;0;;1
+87;4;3518;U16;;Module 05 Trafo Type Code;;1;0;;1
+88;4;3519;U16;;Module 05 Wind Type Code;;1;0;;1
+89;4;3520;U16;;Module 06 Aurora Type Code;;1;0;;1
+90;4;3521;U16;;Module 06 Grid Type Code;;1;0;;1
+91;4;3522;U16;;Module 06 Trafo Type Code;;1;0;;1
+92;4;3523;U16;;Module 06 Wind Type Code;;1;0;;1
+93;4;3524;U16;;Module 07 Aurora Type Code;;1;0;;1
+94;4;3525;U16;;Module 07 Grid Type Code;;1;0;;1
+95;4;3526;U16;;Module 07 Trafo Type Code;;1;0;;1
+96;4;3527;U16;;Module 07 Wind Type Code;;1;0;;1
+97;4;3528;U16;;Module 08 Aurora Type Code;;1;0;;1
+98;4;3529;U16;;Module 08 Grid Type Code;;1;0;;1
+99;4;3530;U16;;Module 08 Trafo Type Code;;1;0;;1
+100;4;3531;U16;;Module 08 Wind Type Code;;1;0;;1
+101;4;3532;U16;;Module 09 Aurora Type Code;;1;0;;1
+102;4;3533;U16;;Module 09 Grid Type Code;;1;0;;1
+103;4;3534;U16;;Module 09 Trafo Type Code;;1;0;;1
+104;4;3535;U16;;Module 09 Wind Type Code;;1;0;;1
+105;4;3536;U16;;Module 10 Aurora Type Code;;1;0;;1
+106;4;3537;U16;;Module 10 Grid Type Code;;1;0;;1
+107;4;3538;U16;;Module 10 Trafo Type Code;;1;0;;1
+108;4;3539;U16;;Module 10 Wind Type Code;;1;0;;1
+109;4;3540;U16;;Module 11 Aurora Type Code;;1;0;;1
+110;4;3541;U16;;Module 11 Grid Type Code;;1;0;;1
+111;4;3542;U16;;Module 11 Trafo Type Code;;1;0;;1
+112;4;3543;U16;;Module 11 Wind Type Code;;1;0;;1
+113;4;3544;U16;;Module 12 Aurora Type Code;;1;0;;1
+114;4;3545;U16;;Module 12 Grid Type Code;;1;0;;1
+115;4;3546;U16;;Module 12 Trafo Type Code;;1;0;;1
+116;4;3547;U16;;Module 12 Wind Type Code;;1;0;;1
+117;4;3548;U16;;Module 13 Aurora Type Code;;1;0;;1
+118;4;3549;U16;;Module 13 Grid Type Code;;1;0;;1
+119;4;3550;U16;;Module 13 Trafo Type Code;;1;0;;1
+120;4;3551;U16;;Module 13 Wind Type Code;;1;0;;1
+121;4;3552;U16;;Module 14 Aurora Type Code;;1;0;;1
+122;4;3553;U16;;Module 14 Grid Type Code;;1;0;;1
+123;4;3554;U16;;Module 14 Trafo Type Code;;1;0;;1
+124;4;3555;U16;;Module 14 Wind Type Code;;1;0;;1
+125;4;3556;U16;;Module 15 Aurora Type Code;;1;0;;1
+126;4;3557;U16;;Module 15 Grid Type Code;;1;0;;1
+127;4;3558;U16;;Module 15 Trafo Type Code;;1;0;;1
+128;4;3559;U16;;Module 15 Wind Type Code;;1;0;;1
+129;4;3560;U16;;Module 16 Aurora Type Code;;1;0;;1
+130;4;3561;U16;;Module 16 Grid Type Code;;1;0;;1
+131;4;3562;U16;;Module 16 Trafo Type Code;;1;0;;1
+132;4;3563;U16;;Module 16 Wind Type Code;;1;0;;1
+133;4;3564;U16;;Module 17 Aurora Type Code;;1;0;;1
+134;4;3565;U16;;Module 17 Grid Type Code;;1;0;;1
+135;4;3566;U16;;Module 17 Trafo Type Code;;1;0;;1
+136;4;3567;U16;;Module 17 Wind Type Code;;1;0;;1
+137;4;3568;U16;;Module 18 Aurora Type Code;;1;0;;1
+138;4;3569;U16;;Module 18 Grid Type Code;;1;0;;1
+139;4;3570;U16;;Module 18 Trafo Type Code;;1;0;;1
+140;4;3571;U16;;Module 18 Wind Type Code;;1;0;;1
+141;4;3572;U16;;Module 19 Aurora Type Code;;1;0;;1
+142;4;3573;U16;;Module 19 Grid Type Code;;1;0;;1
+143;4;3574;U16;;Module 19 Trafo Type Code;;1;0;;1
+144;4;3575;U16;;Module 19 Wind Type Code;;1;0;;1
+145;4;3576;U16;;Module 20 Aurora Type Code;;1;0;;1
+146;4;3577;U16;;Module 20 Grid Type Code;;1;0;;1
+147;4;3578;U16;;Module 20 Trafo Type Code;;1;0;;1
+148;4;3579;U16;;Module 20 Wind Type Code;;1;0;;1
+149;4;3580;U16;;Module 21 Aurora Type Code;;1;0;;1
+150;4;3581;U16;;Module 21 Grid Type Code;;1;0;;1
+151;4;3582;U16;;Module 21 Trafo Type Code;;1;0;;1
+152;4;3583;U16;;Module 21 Wind Type Code;;1;0;;1
+153;4;3584;U16;;Module 22 Aurora Type Code;;1;0;;1
+154;4;3585;U16;;Module 22 Grid Type Code;;1;0;;1
+155;4;3586;U16;;Module 22 Trafo Type Code;;1;0;;1
+156;4;3587;U16;;Module 22 Wind Type Code;;1;0;;1
+157;4;3588;U16;;Module 23 Aurora Type Code;;1;0;;1
+158;4;3589;U16;;Module 23 Grid Type Code;;1;0;;1
+159;4;3590;U16;;Module 23 Trafo Type Code;;1;0;;1
+160;4;3591;U16;;Module 23 Wind Type Code;;1;0;;1
+161;4;3592;U16;;Module 24 Aurora Type Code;;1;0;;1
+162;4;3593;U16;;Module 24 Grid Type Code;;1;0;;1
+163;4;3594;U16;;Module 24 Trafo Type Code;;1;0;;1
+164;4;3595;U16;;Module 24 Wind Type Code;;1;0;;1
+165;4;3596;U16;;Module 25 Aurora Type Code;;1;0;;1
+166;4;3597;U16;;Module 25 Grid Type Code;;1;0;;1
+167;4;3598;U16;;Module 25 Trafo Type Code;;1;0;;1
+168;4;3599;U16;;Module 25 Wind Type Code;;1;0;;1
+169;4;3600;U16;;Module 26 Aurora Type Code;;1;0;;1
+170;4;3601;U16;;Module 26 Grid Type Code;;1;0;;1
+171;4;3602;U16;;Module 26 Trafo Type Code;;1;0;;1
+172;4;3603;U16;;Module 26 Wind Type Code;;1;0;;1
+173;4;3604;U16;;Module 27 Aurora Type Code;;1;0;;1
+174;4;3605;U16;;Module 27 Grid Type Code;;1;0;;1
+175;4;3606;U16;;Module 27 Trafo Type Code;;1;0;;1
+176;4;3607;U16;;Module 27 Wind Type Code;;1;0;;1
+177;4;3608;U16;;Module 28 Aurora Type Code;;1;0;;1
+178;4;3609;U16;;Module 28 Grid Type Code;;1;0;;1
+179;4;3610;U16;;Module 28 Trafo Type Code;;1;0;;1
+180;4;3611;U16;;Module 28 Wind Type Code;;1;0;;1
+181;4;3612;U16;;Module 29 Aurora Type Code;;1;0;;1
+182;4;3613;U16;;Module 29 Grid Type Code;;1;0;;1
+183;4;3614;U16;;Module 29 Trafo Type Code;;1;0;;1
+184;4;3615;U16;;Module 29 Wind Type Code;;1;0;;1
+185;4;3616;U16;;Module 30 Aurora Type Code;;1;0;;1
+186;4;3617;U16;;Module 30 Grid Type Code;;1;0;;1
+187;4;3618;U16;;Module 30 Trafo Type Code;;1;0;;1
+188;4;3619;U16;;Module 30 Wind Type Code;;1;0;;1
+189;4;3620;U16;;Module 31 Aurora Type Code;;1;0;;1
+190;4;3621;U16;;Module 31 Grid Type Code;;1;0;;1
+191;4;3622;U16;;Module 31 Trafo Type Code;;1;0;;1
+192;4;3623;U16;;Module 31 Wind Type Code;;1;0;;1
+193;4;3624;U16;;Module 32 Aurora Type Code;;1;0;;1
+194;4;3625;U16;;Module 32 Grid Type Code;;1;0;;1
+195;4;3626;U16;;Module 32 Trafo Type Code;;1;0;;1
+196;4;3627;U16;;Module 32 Wind Type Code;;1;0;;1
+197;4;3650;U16;;Modbus Interface Type Code;;1;0;;1
+198;4;3651;U16;;Firmware Major Release Code;;1;0;;1
+199;4;3652;U16;;Firmware Minor Release Code;;1;0;;1
+200;4;3653;U16;;Firmware Build Release Code;;1;0;;1
+201;4;3700;F32;;Daily Energy All Modules;E_DAY;1;0;kWh;4
+202;4;3702;F32;;Total Energy All Modules;E_TOT;1;0;kWh;4
+203;4;3704;F32;;Partial Energy All Modules;;1;0;kWh;4
+204;4;3706;F32;;Week Energy All Modules;;1;0;kWh;4
+205;4;3708;F32;;Monthly Energy All Modules;;1;0;kWh;4
+206;4;3710;F32;;Yearly Energy All Modules;;1;0;kWh;4
+207;4;3712;F32;;Input Power All Modules;;1;0;kW;4
+208;4;3714;F32;;Output Power All Modules;;1;0;kW;4
+209;4;3800;U16;;Module 01 Last Error 1 Code;;1;0;;4
+210;4;3801;U16;;Module 01 Last Error 2 Code;;1;0;;4
+211;4;3802;U16;;Module 01 Last Error 3 Code;;1;0;;4
+212;4;3803;U16;;Module 01 Last Error 4 Code;;1;0;;4
+213;4;3804;U16;;Module 02 Last Error 1 Code;;1;0;;4
+214;4;3805;U16;;Module 02 Last Error 2 Code;;1;0;;4
+215;4;3806;U16;;Module 02 Last Error 3 Code;;1;0;;4
+216;4;3807;U16;;Module 02 Last Error 4 Code;;1;0;;4
+217;4;3808;U16;;Module 03 Last Error 1 Code;;1;0;;4
+218;4;3809;U16;;Module 03 Last Error 2 Code;;1;0;;4
+219;4;3810;U16;;Module 03 Last Error 3 Code;;1;0;;4
+220;4;3811;U16;;Module 03 Last Error 4 Code;;1;0;;4
+221;4;3812;U16;;Module 04 Last Error 1 Code;;1;0;;4
+222;4;3813;U16;;Module 04 Last Error 2 Code;;1;0;;4
+223;4;3814;U16;;Module 04 Last Error 3 Code;;1;0;;4
+224;4;3815;U16;;Module 04 Last Error 4 Code;;1;0;;4
+225;4;3816;U16;;Module 05 Last Error 1 Code;;1;0;;4
+226;4;3817;U16;;Module 05 Last Error 2 Code;;1;0;;4
+227;4;3818;U16;;Module 05 Last Error 3 Code;;1;0;;4
+228;4;3819;U16;;Module 05 Last Error 4 Code;;1;0;;4
+229;4;3820;U16;;Module 06 Last Error 1 Code;;1;0;;4
+230;4;3821;U16;;Module 06 Last Error 2 Code;;1;0;;4
+231;4;3822;U16;;Module 06 Last Error 3 Code;;1;0;;4
+232;4;3823;U16;;Module 06 Last Error 4 Code;;1;0;;4
+233;4;3824;U16;;Module 07 Last Error 1 Code;;1;0;;4
+234;4;3825;U16;;Module 07 Last Error 2 Code;;1;0;;4
+235;4;3826;U16;;Module 07 Last Error 3 Code;;1;0;;4
+236;4;3827;U16;;Module 07 Last Error 4 Code;;1;0;;4
+237;4;3828;U16;;Module 08 Last Error 1 Code;;1;0;;4
+238;4;3829;U16;;Module 08 Last Error 2 Code;;1;0;;4
+239;4;3830;U16;;Module 08 Last Error 3 Code;;1;0;;4
+240;4;3831;U16;;Module 08 Last Error 4 Code;;1;0;;4
+241;4;3832;U16;;Module 09 Last Error 1 Code;;1;0;;4
+242;4;3833;U16;;Module 09 Last Error 2 Code;;1;0;;4
+243;4;3834;U16;;Module 09 Last Error 3 Code;;1;0;;4
+244;4;3835;U16;;Module 09 Last Error 4 Code;;1;0;;4
+245;4;3836;U16;;Module 10 Last Error 1 Code;;1;0;;4
+246;4;3837;U16;;Module 10 Last Error 2 Code;;1;0;;4
+247;4;3838;U16;;Module 10 Last Error 3 Code;;1;0;;4
+248;4;3839;U16;;Module 10 Last Error 4 Code;;1;0;;4
+249;4;3840;U16;;Module 11 Last Error 1 Code;;1;0;;4
+250;4;3841;U16;;Module 11 Last Error 2 Code;;1;0;;4
+251;4;3842;U16;;Module 11 Last Error 3 Code;;1;0;;4
+252;4;3843;U16;;Module 11 Last Error 4 Code;;1;0;;4
+253;4;3844;U16;;Module 12 Last Error 1 Code;;1;0;;4
+254;4;3845;U16;;Module 12 Last Error 2 Code;;1;0;;4
+255;4;3846;U16;;Module 12 Last Error 3 Code;;1;0;;4
+256;4;3847;U16;;Module 12 Last Error 4 Code;;1;0;;4
+257;4;3848;U16;;Module 13 Last Error 1 Code;;1;0;;4
+258;4;3849;U16;;Module 13 Last Error 2 Code;;1;0;;4
+259;4;3850;U16;;Module 13 Last Error 3 Code;;1;0;;4
+260;4;3851;U16;;Module 13 Last Error 4 Code;;1;0;;4
+261;4;3852;U16;;Module 14 Last Error 1 Code;;1;0;;4
+262;4;3853;U16;;Module 14 Last Error 2 Code;;1;0;;4
+263;4;3854;U16;;Module 14 Last Error 3 Code;;1;0;;4
+264;4;3855;U16;;Module 14 Last Error 4 Code;;1;0;;4
+265;4;3856;U16;;Module 15 Last Error 1 Code;;1;0;;4
+266;4;3857;U16;;Module 15 Last Error 2 Code;;1;0;;4
+267;4;3858;U16;;Module 15 Last Error 3 Code;;1;0;;4
+268;4;3859;U16;;Module 15 Last Error 4 Code;;1;0;;4
+269;4;3860;U16;;Module 16 Last Error 1 Code;;1;0;;4
+270;4;3861;U16;;Module 16 Last Error 2 Code;;1;0;;4
+271;4;3862;U16;;Module 16 Last Error 3 Code;;1;0;;4
+272;4;3863;U16;;Module 16 Last Error 4 Code;;1;0;;4
+273;4;3864;U16;;Module 17 Last Error 1 Code;;1;0;;4
+274;4;3865;U16;;Module 17 Last Error 2 Code;;1;0;;4
+275;4;3866;U16;;Module 17 Last Error 3 Code;;1;0;;4
+276;4;3867;U16;;Module 17 Last Error 4 Code;;1;0;;4
+277;4;3868;U16;;Module 18 Last Error 1 Code;;1;0;;4
+278;4;3869;U16;;Module 18 Last Error 2 Code;;1;0;;4
+279;4;3870;U16;;Module 18 Last Error 3 Code;;1;0;;4
+280;4;3871;U16;;Module 18 Last Error 4 Code;;1;0;;4
+281;4;3872;U16;;Module 19 Last Error 1 Code;;1;0;;4
+282;4;3873;U16;;Module 19 Last Error 2 Code;;1;0;;4
+283;4;3874;U16;;Module 19 Last Error 3 Code;;1;0;;4
+284;4;3875;U16;;Module 19 Last Error 4 Code;;1;0;;4
+285;4;3876;U16;;Module 20 Last Error 1 Code;;1;0;;4
+286;4;3877;U16;;Module 20 Last Error 2 Code;;1;0;;4
+287;4;3878;U16;;Module 20 Last Error 3 Code;;1;0;;4
+288;4;3879;U16;;Module 20 Last Error 4 Code;;1;0;;4
+289;4;3880;U16;;Module 21 Last Error 1 Code;;1;0;;4
+290;4;3881;U16;;Module 21 Last Error 2 Code;;1;0;;4
+291;4;3882;U16;;Module 21 Last Error 3 Code;;1;0;;4
+292;4;3883;U16;;Module 21 Last Error 4 Code;;1;0;;4
+293;4;3884;U16;;Module 22 Last Error 1 Code;;1;0;;4
+294;4;3885;U16;;Module 22 Last Error 2 Code;;1;0;;4
+295;4;3886;U16;;Module 22 Last Error 3 Code;;1;0;;4
+296;4;3887;U16;;Module 22 Last Error 4 Code;;1;0;;4
+297;4;3888;U16;;Module 23 Last Error 1 Code;;1;0;;4
+298;4;3889;U16;;Module 23 Last Error 2 Code;;1;0;;4
+299;4;3890;U16;;Module 23 Last Error 3 Code;;1;0;;4
+300;4;3891;U16;;Module 23 Last Error 4 Code;;1;0;;4
+301;4;3892;U16;;Module 24 Last Error 1 Code;;1;0;;4
+302;4;3893;U16;;Module 24 Last Error 2 Code;;1;0;;4
+303;4;3894;U16;;Module 24 Last Error 3 Code;;1;0;;4
+304;4;3895;U16;;Module 24 Last Error 4 Code;;1;0;;4
+305;4;3896;U16;;Module 25 Last Error 1 Code;;1;0;;4
+306;4;3897;U16;;Module 25 Last Error 2 Code;;1;0;;4
+307;4;3898;U16;;Module 25 Last Error 3 Code;;1;0;;4
+308;4;3899;U16;;Module 25 Last Error 4 Code;;1;0;;4
+309;4;3900;U16;;Module 26 Last Error 1 Code;;1;0;;4
+310;4;3901;U16;;Module 26 Last Error 2 Code;;1;0;;4
+311;4;3902;U16;;Module 26 Last Error 3 Code;;1;0;;4
+312;4;3903;U16;;Module 26 Last Error 4 Code;;1;0;;4
+313;4;3904;U16;;Module 27 Last Error 1 Code;;1;0;;4
+314;4;3905;U16;;Module 27 Last Error 2 Code;;1;0;;4
+315;4;3906;U16;;Module 27 Last Error 3 Code;;1;0;;4
+316;4;3907;U16;;Module 27 Last Error 4 Code;;1;0;;4
+317;4;3908;U16;;Module 28 Last Error 1 Code;;1;0;;4
+318;4;3909;U16;;Module 28 Last Error 2 Code;;1;0;;4
+319;4;3910;U16;;Module 28 Last Error 3 Code;;1;0;;4
+320;4;3911;U16;;Module 28 Last Error 4 Code;;1;0;;4
+321;4;3912;U16;;Module 29 Last Error 1 Code;;1;0;;4
+322;4;3913;U16;;Module 29 Last Error 2 Code;;1;0;;4
+323;4;3914;U16;;Module 29 Last Error 3 Code;;1;0;;4
+324;4;3915;U16;;Module 29 Last Error 4 Code;;1;0;;4
+325;4;3916;U16;;Module 30 Last Error 1 Code;;1;0;;4
+326;4;3917;U16;;Module 30 Last Error 2 Code;;1;0;;4
+327;4;3918;U16;;Module 30 Last Error 3 Code;;1;0;;4
+328;4;3919;U16;;Module 30 Last Error 4 Code;;1;0;;4
+329;4;3920;U16;;Module 31 Last Error 1 Code;;1;0;;4
+330;4;3921;U16;;Module 31 Last Error 2 Code;;1;0;;4
+331;4;3922;U16;;Module 31 Last Error 3 Code;;1;0;;4
+332;4;3923;U16;;Module 31 Last Error 4 Code;;1;0;;4
+333;4;3924;U16;;Module 32 Last Error 1 Code;;1;0;;4
+334;4;3925;U16;;Module 32 Last Error 2 Code;;1;0;;4
+335;4;3926;U16;;Module 32 Last Error 3 Code;;1;0;;4
+336;4;3927;U16;;Module 32 Last Error 4 Code;;1;0;;4
+337;4;20100;U16;;Step;;1;0;;4
+338;4;20101;U16;;SN0 Module 01;SERIAL;1;0;;4
+339;4;20102;U16;;SN1 Module 01;;1;0;;4
+340;4;20103;U16;;SN3 Module 01;;1;0;;4
+341;4;20104;U16;;SN4 Module 01;;1;0;;4
+342;4;20105;U16;;SN5 Module 01;;1;0;;4
+343;4;20106;U16;;PN0 Module 01;;1;0;;4
+344;4;20107;U16;;PN0 Module 01;;1;0;;4
+345;4;20108;U16;;PN1 Module 01;;1;0;;4
+346;4;20109;U16;;PN2 Module 01 ;;1;0;;4
+347;4;20110;U16;;PN3 Module 01 ;;1;0;;4
+348;4;20111;U16;;PN4 Module 01 ;;1;0;;4
+349;4;20112;U16;;PN5 Module 01;;1;0;;4
+350;4;20113;U16;;Status0 Module 01;;1;0;;4
+351;4;20114;U16;;Status1 Module 01;;1;0;;4
+352;4;20115;U16;;Status2 Module 01;;1;0;;4
+353;4;20116;U16;;Status3 Module 01;;1;0;;4
+354;4;20117;U16;;Status4 Module 01;;1;0;;4
+355;4;20118;U16;;High Week Manufacture;;1;0;;4
+356;4;20119;U16;;Low Week Manufacture;;1;0;;4
+357;4;20120;U16;;High Year Manufacture;;1;0;;4
+358;4;20121;U16;;Low Year Manufacture;;1;0;;4
+359;4;20130;F32;;Daily Energy Module 01;;1;0;Wh;4
+360;4;20132;F32;;Total Energy Module 01;;1;0;kWh;4
+361;4;20134;F32;;Partial Energy Module 01;;1;0;kWh;4
+362;4;20136;F32;;Week Energy Module 01 ;;1;0;kWh;4
+363;4;20138;F32;;Month Energy Module 01;;1;0;kWh;4
+364;4;20140;F32;;Yearly Energy Module 01;;1;0;kWh;4
+365;4;20142;F32;;3 phases Grid Voltage Module 01;;1;0;V;4
+366;4;20144;F32;;3 phases Grid Current Module 01;;1;0;A;4
+367;4;20146;F32;;3 phases Grid power Module 01;;1;0;W;4
+368;4;20148;F32;;3 phases Frequence Module 01;FREQ;1;0;Hz;4
+369;4;20150;F32;;Input 1 Power Module 01;;1;0;W;4
+370;4;20152;F32;;Input1 Voltage Module 01;;1;0;V;4
+371;4;20154;F32;;Input1 Current Module 01;;1;0;A;4
+372;4;20156;F32;;Input 2 Power Module 01;;1;0;W;4
+373;4;20158;F32;;Input2 Voltage Module 01;;1;0;V;4
+374;4;20160;F32;;Input2 Current Module 01;;1;0;A;4
+375;4;20162;F32;;Inverter Temperature Module 01;TEMP_CELL;1;0;C;4
+376;4;20164;F32;;Booster Temperature Module 01;;1;0;C;4
+377;4;20166;F32;;Isolation Resistance Module 01;;1;0;Mohm;4
+378;4;20168;F32;;Wind generator Frequency Module 01;;1;0;Hz;4
+379;4;24100;U16;;Presence Auxiliary Board Module 01;;1;0;;4
+380;4;24101;U16;;SN0 Inverter Module 01;;1;0;;4
+381;4;24102;U16;;SN1 Inverter Module 01;;1;0;;4
+382;4;24103;U16;;SN2 Inverter Module 01;;1;0;;4
+383;4;24104;U16;;SN3 Inverter Module 01;;1;0;;4
+384;4;24105;U16;;SN4 Inverter Module 01;;1;0;;4
+385;4;24106;U16;;SN5 Inverter Module 01;;1;0;;4
+386;4;24107;U16;;SN0 Auxiliary Communication Board Module 01;;1;0;;4
+387;4;24108;U16;;SN1 Auxiliary Communication Board Module 01;;1;0;;4
+388;4;24109;U16;;SN2 Auxiliary Communication Board Module 01;;1;0;;4
+389;4;24110;U16;;SN3 Auxiliary Communication Board Module 01;;1;0;;4
+390;4;24111;U16;;SN4 Auxiliary Communication Board Module 01;;1;0;;4
+391;4;24112;U16;;SN5 Auxiliary Communication Board Module 01;;1;0;;4
+392;4;24113;U16;;PN0 Auxiliary Board Communication;;1;0;;4
+393;4;24114;U16;;PN1 Auxiliary Board Communication;;1;0;;4
+394;4;24115;U16;;PN2 Auxiliary Board Communication;;1;0;;4
+395;4;24116;U16;;PN3 Auxiliary Board Communication;;1;0;;4
+396;4;24117;U16;;PN4 Auxiliary Board Communication;;1;0;;4
+397;4;24118;U16;;PN5 Auxiliary Communication Board;;1;0;;4
+398;4;24119;U16;;Week Production (High) Communication Board;;1;0;;4
+399;4;24120;U16;;Week Production(Low) Communication Board;;1;0;;4
+400;4;24121;U16;;Year Production (High) Communication Board;;1;0;;4
+401;4;24122;U16;;Year Production(Low) Communication Board;;1;0;;4
+402;4;24123;U16;;SN0 Auxiliary Fuse Control Board;;1;0;;4
+403;4;24124;U16;;SN1 Auxiliary Fuse Control Board;;1;0;;4
+404;4;24125;U16;;SN2 Auxiliary Fuse Control Board;;1;0;;4
+405;4;24126;U16;;SN3 Auxiliary Fuse Control Board;;1;0;;4
+406;4;24127;U16;;SN4 Auxiliary Fuse Control Board;;1;0;;4
+407;4;24128;U16;;SN5 Auxiliary Fuse Control Board;;1;0;;4
+408;4;24129;U16;;PN0 Auxiliary Fuse Control Board;;1;0;;4
+409;4;24130;U16;;PN1 Auxiliary Fuse Control Board;;1;0;;4
+410;4;24131;U16;;PN2 Auxiliary Fuse Control Board;;1;0;;4
+411;4;24132;U16;;PN3 Auxiliary Fuse Control Board;;1;0;;4
+412;4;24133;U16;;PN4 Auxiliary Fuse Control Board;;1;0;;4
+413;4;24134;U16;;PN5 Auxiliary Fuse Control Board;;1;0;;4
+414;4;24135;U16;;Week Production (High) Fuse Control Board;;1;0;;4
+415;4;24136;U16;;Week Production(Low) Fuse Control Board;;1;0;;4
+416;4;24137;U16;;Year Production (High) Fuse Control Board;;1;0;;4
+417;4;24138;U16;;Year Production(Low) Fuse Control Board;;1;0;;4
+418;4;24139;U16;;State Communication Board Byte 4;;1;0;;4
+419;4;24140;U16;;State Communication Board Byte 5;;1;0;;4
+420;4;24141;U16;;State Fuse Control Board Byte 0;;1;0;;4
+421;4;24142;U16;;State Fuse Control Board Byte 1;;1;0;;4
+422;4;24143;U16;;State Fuse Control Board Byte 2;;1;0;;4
+423;4;24144;U16;;State Fuse Control Board Byte 3;;1;0;;4
+424;4;24145;U16;;State Fuse Control Board Byte 4;;1;0;;4
+425;4;24146;F32;;PT100 Communication Board;;1;0;C;4
+426;4;24148;F32;;PT1000 Communication Board;;1;0;C;4
+427;4;24150;F32;;Analog Input 1 Communication Board;;1;0;;4
+428;4;24152;F32;;Analog Input 2 Communication Board;;1;0;;4
+429;4;24154;F32;;NTC Communication Board;;1;0;C;4
+430;4;24156;F32;;Voltage Ch1 Fuse Control Board;;1;0;V;4
+431;4;24158;F32;;Voltage Ch2 Fuse Control Board;;1;0;V;4
+432;4;24160;F32;;Current 1A Fuse Control Board;;1;0;A;4
+433;4;24162;F32;;Current 1B Fuse Control Board;;1;0;A;4
+434;4;24164;F32;;Current 1C Fuse Control Board;;1;0;A;4
+435;4;24166;F32;;Current 1D Fuse Control Board;;1;0;A;4
+436;4;24168;F32;;Current 1E Fuse Control Board;;1;0;A;4
+437;4;24170;F32;;Current 2A Fuse Control Board;;1;0;A;4
+438;4;24172;F32;;Current 2B Fuse Control Board;;1;0;A;4
+439;4;24174;F32;;Current 2C Fuse Control Board;;1;0;A;4
+440;4;24176;F32;;Current 2D Fuse Control Board;;1;0;A;4
+441;4;24178;F32;;Current 2E Fuse Control Board;;1;0;A;4

@@ -1,0 +1,348 @@
+modbusRTU;Inverter;Solax;SOLAX_EMS1000-PRO;;;;;;;
+1;4;0_30;STRING;;EMS1000 PRO SN;DeviceSerialNumber;1.000000;0.000000;;4
+2;4;15_10;STRING;;EMS1000 PRO Version Number;FirmwareVersion;1.000000;0.000000;;4
+3;4;20;U16;;Year Month;year_month;1.000000;0.000000;;4
+4;4;21;U16;;Day Hour;day_hour;1.000000;0.000000;;4
+5;4;22;U16;;Minute Second;minute_second;1.000000;0.000000;;4
+6;4;23;U16;;Current plants time zone;current_plants_time_zone;1.000000;0.000000;;4
+7;4;24;U16;;Plant system;plant_system;1.000000;0.000000;;4
+8;4;25_2;STRING;;Plants country/region;plants_countryregion;1.000000;0.000000;;4
+9;4;66;U32;;Daily PV Yield;E_DAY;0.100000;0.000000;kWh;4
+10;4;68;U64;;Total PV Yield;E_TOT;0.100000;0.000000;kWh;4
+11;4;72;U32;;Daily charged;daily_charged;0.100000;0.000000;kWh;4
+12;4;74;U64;;Total charged;total_charged;0.100000;0.000000;kWh;4
+13;4;78;U32;;Daily discharged;daily_discharged;0.100000;0.000000;kWh;4
+14;4;80;U64;;Total discharged;total_discharged;0.100000;0.000000;kWh;4
+15;4;84;I32;;Daily loads consumed;daily_loads_consumed;0.100000;0.000000;kWh;4
+16;4;86;I64;;Total loads consumed;total_loads_consumed;0.100000;0.000000;kWh;4
+17;4;90;I32;;Grid power;GridPower;0.010000;0.000000;kW;4
+18;4;92;U32;;PV Power;P_AC;0.010000;0.000000;kW;4
+19;4;94;I32;;Load power;load_power;0.010000;0.000000;kW;4
+20;4;96;I32;;Battery power;BatteryPower;0.010000;0.000000;kW;4
+21;4;98;U16;;Battery SOC;BatterySOC;0.100000;0.000000;'%;4
+22;4;202;U16;;Meter communication status;meter_communication_status;1.000000;0.000000;;4
+23;4;203;U16;;Meter type;meter_type;1.000000;0.000000;;4
+24;4;204;U32;;Positive active energy;positive_active_energy;0.100000;0.000000;kWh;4
+25;4;206;U32;;Negative active energy;negative_active_energy;0.100000;0.000000;kWh;4
+26;4;208;I32;;Active power;active_power;0.010000;0.000000;kW;4
+27;4;210;I32;;Reactive power;reactive_power;0.010000;0.000000;kVar;4
+28;4;212;I16;;Power factor;PF;0.001000;0.000000;;4
+29;4;213;I32;;Phase A active power;phase_a_active_power;0.010000;0.000000;kW;4
+30;4;215;I32;;Phase B active power;phase_b_active_power;0.010000;0.000000;kW;4
+31;4;217;I32;;Phase C active power;phase_c_active_power;0.010000;0.000000;kW;4
+32;4;219;U16;;Phase A voltage;phase_a_voltage;0.100000;0.000000;V;4
+33;4;220;U16;;Phase B voltage;phase_b_voltage;0.100000;0.000000;V;4
+34;4;221;U16;;Phase C voltage;phase_c_voltage;0.100000;0.000000;V;4
+35;4;222;I16;;Phase A current;phase_a_current;0.100000;0.000000;A;4
+36;4;223;I16;;Phase B current;phase_b_current;0.100000;0.000000;A;4
+37;4;224;I16;;Phase C current;phase_c_current;0.100000;0.000000;A;4
+38;4;225;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+39;4;226;I32;;Phase A reactive power;phase_a_reactive_power;0.010000;0.000000;kVar;4
+40;4;228;I32;;Phase B reactive power;phase_b_reactive_power;0.010000;0.000000;kVar;4
+41;4;230;I32;;Phase C reactive power;phase_c_reactive_power;0.010000;0.000000;kVar;4
+42;4;232;I16;;Phase A power factor;phase_a_power_factor;0.001000;0.000000;;4
+43;4;233;I16;;Phase B power factor;phase_b_power_factor;0.001000;0.000000;;4
+44;4;234;I16;;Phase C power factor;phase_c_power_factor;0.001000;0.000000;;4
+45;4;240;U16;;PCAB Communication Status_0;pcab_communication_status_0;1.000000;0.000000;;1
+46;4;241;U16;;PCAB Alarm Status_0;pcab_alarm_status_0;1.000000;0.000000;;1
+47;4;242_30;STRING;;PCAB SN_0;pcab_sn_0;1.000000;0.000000;;1
+48;4;257;U16;;PCAB Model_0;pcab_model_0;1.000000;0.000000;;1
+49;4;258_10;STRING;;PCAB Software  Version_0;pcab_software_version_0;1.000000;0.000000;;1
+50;4;263_10;STRING;;PCAB Hardware Version_0;pcab_hardware_version_0;1.000000;0.000000;;1
+51;4;268;U16;;Inverter L1 Voltage_0;inverter_l1_voltage_0;0.100000;0.000000;V;4
+52;4;269;U16;;Inverter L2 Voltage_0;inverter_l2_voltage_0;0.100000;0.000000;V;4
+53;4;270;U16;;Inverter L3 Voltage_0;inverter_l3_voltage_0;0.100000;0.000000;V;4
+54;4;271;U16;;Grid L1 Voltage_0;grid_l1_voltage_0;0.100000;0.000000;V;4
+55;4;272;U16;;Grid L2 Voltage_0;grid_l2_voltage_0;0.100000;0.000000;V;4
+56;4;273;U16;;Grid L3 Voltage_0;grid_l3_voltage_0;0.100000;0.000000;V;4
+57;4;274;U16;;Grid L1 Current_0;grid_l1_current_0;0.100000;0.000000;A;4
+58;4;275;U16;;Grid L2 Current_0;grid_l2_current_0;0.100000;0.000000;A;4
+59;4;276;U16;;Grid L3 Current_0;grid_l3_current_0;0.100000;0.000000;A;4
+60;4;277;U16;;Grid L1 Frequency_0;grid_l1_frequency_0;0.010000;0.000000;Hz;4
+61;4;278;U16;;Grid L2 Frequency_0;grid_l2_frequency_0;0.010000;0.000000;Hz;4
+62;4;279;U16;;Grid L3 Frequency_0;grid_l3_frequency_0;0.010000;0.000000;Hz;4
+63;4;280;U16;;Ambient temperature_0;ambient_temperature_0;0.100000;0.000000;C;4
+64;4;281;U16;;Ambient humidity_0;ambient_humidity_0;0.100000;0.000000;'%RH;4
+65;4;282;U16;;QF1 Status_0;qf1_status_0;1.000000;0.000000;;4
+66;4;283;U16;;QF2 Status_0;qf2_status_0;1.000000;0.000000;;4
+67;4;284;U16;;Emergency stop status_0;emergency_stop_status_0;1.000000;0.000000;;8
+68;4;285;U16;;Water immersion status_0;water_immersion_status_0;1.000000;0.000000;;8
+69;4;286;U16;;Access control status_0;access_control_status_0;1.000000;0.000000;;4
+70;4;287;U16;;SPD Status_0;spd_status_0;1.000000;0.000000;;4
+71;4;300;U16;;PCAB Communication Status_1;pcab_communication_status_1;1.000000;0.000000;;1
+72;4;301;U16;;PCAB Alarm Status_1;pcab_alarm_status_1;1.000000;0.000000;;1
+73;4;302_30;STRING;;PCAB SN_1;pcab_sn_1;1.000000;0.000000;;1
+74;4;317;U16;;PCAB Model_1;pcab_model_1;1.000000;0.000000;;1
+75;4;318_10;STRING;;PCAB Software  Version_1;pcab_software_version_1;1.000000;0.000000;;1
+76;4;323_10;STRING;;PCAB Hardware Version_1;pcab_hardware_version_1;1.000000;0.000000;;1
+77;4;328;U16;;Inverter L1 Voltage_1;inverter_l1_voltage_1;0.100000;0.000000;V;4
+78;4;329;U16;;Inverter L2 Voltage_1;inverter_l2_voltage_1;0.100000;0.000000;V;4
+79;4;330;U16;;Inverter L3 Voltage_1;inverter_l3_voltage_1;0.100000;0.000000;V;4
+80;4;331;U16;;Grid L1 Voltage_1;grid_l1_voltage_1;0.100000;0.000000;V;4
+81;4;332;U16;;Grid L2 Voltage_1;grid_l2_voltage_1;0.100000;0.000000;V;4
+82;4;333;U16;;Grid L3 Voltage_1;grid_l3_voltage_1;0.100000;0.000000;V;4
+83;4;334;U16;;Grid L1 Current_1;grid_l1_current_1;0.100000;0.000000;A;4
+84;4;335;U16;;Grid L2 Current_1;grid_l2_current_1;0.100000;0.000000;A;4
+85;4;336;U16;;Grid L3 Current_1;grid_l3_current_1;0.100000;0.000000;A;4
+86;4;337;U16;;Grid L1 Frequency_1;grid_l1_frequency_1;0.010000;0.000000;Hz;4
+87;4;338;U16;;Grid L2 Frequency_1;grid_l2_frequency_1;0.010000;0.000000;Hz;4
+88;4;339;U16;;Grid L3 Frequency_1;grid_l3_frequency_1;0.010000;0.000000;Hz;4
+89;4;340;U16;;Ambient temperature_1;ambient_temperature_1;0.100000;0.000000;C;4
+90;4;341;U16;;Ambient humidity_1;ambient_humidity_1;0.100000;0.000000;'%RH;4
+91;4;342;U16;;QF1 Status_1;qf1_status_1;1.000000;0.000000;;4
+92;4;343;U16;;QF2 Status_1;qf2_status_1;1.000000;0.000000;;4
+93;4;344;U16;;Emergency stop status_1;emergency_stop_status_1;1.000000;0.000000;;8
+94;4;345;U16;;Water immersion status_1;water_immersion_status_1;1.000000;0.000000;;8
+95;4;346;U16;;Access control status_1;access_control_status_1;1.000000;0.000000;;4
+96;4;347;U16;;SPD Status_1;spd_status_1;1.000000;0.000000;;4
+97;4;360;U16;;PCAB Communication Status_2;pcab_communication_status_2;1.000000;0.000000;;1
+98;4;361;U16;;PCAB Alarm Status_2;pcab_alarm_status_2;1.000000;0.000000;;1
+99;4;362_30;STRING;;PCAB SN_2;pcab_sn_2;1.000000;0.000000;;1
+100;4;377;U16;;PCAB Model_2;pcab_model_2;1.000000;0.000000;;1
+101;4;378_10;STRING;;PCAB Software  Version_2;pcab_software_version_2;1.000000;0.000000;;1
+102;4;383_10;STRING;;PCAB Hardware Version_2;pcab_hardware_version_2;1.000000;0.000000;;1
+103;4;388;U16;;Inverter L1 Voltage_2;inverter_l1_voltage_2;0.100000;0.000000;V;4
+104;4;389;U16;;Inverter L2 Voltage_2;inverter_l2_voltage_2;0.100000;0.000000;V;4
+105;4;390;U16;;Inverter L3 Voltage_2;inverter_l3_voltage_2;0.100000;0.000000;V;4
+106;4;391;U16;;Grid L1 Voltage_2;grid_l1_voltage_2;0.100000;0.000000;V;4
+107;4;392;U16;;Grid L2 Voltage_2;grid_l2_voltage_2;0.100000;0.000000;V;4
+108;4;393;U16;;Grid L3 Voltage_2;grid_l3_voltage_2;0.100000;0.000000;V;4
+109;4;394;U16;;Grid L1 Current_2;grid_l1_current_2;0.100000;0.000000;A;4
+110;4;395;U16;;Grid L2 Current_2;grid_l2_current_2;0.100000;0.000000;A;4
+111;4;396;U16;;Grid L3 Current_2;grid_l3_current_2;0.100000;0.000000;A;4
+112;4;397;U16;;Grid L1 Frequency_2;grid_l1_frequency_2;0.010000;0.000000;Hz;4
+113;4;398;U16;;Grid L2 Frequency_2;grid_l2_frequency_2;0.010000;0.000000;Hz;4
+114;4;399;U16;;Grid L3 Frequency_2;grid_l3_frequency_2;0.010000;0.000000;Hz;4
+115;4;400;U16;;Ambient temperature_2;ambient_temperature_2;0.100000;0.000000;C;4
+116;4;401;U16;;Ambient humidity_2;ambient_humidity_2;0.100000;0.000000;'%RH;4
+117;4;402;U16;;QF1 Status_2;qf1_status_2;1.000000;0.000000;;4
+118;4;403;U16;;QF2 Status_2;qf2_status_2;1.000000;0.000000;;4
+119;4;404;U16;;Emergency stop status_2;emergency_stop_status_2;1.000000;0.000000;;8
+120;4;405;U16;;Water immersion status_2;water_immersion_status_2;1.000000;0.000000;;8
+121;4;406;U16;;Access control status_2;access_control_status_2;1.000000;0.000000;;4
+122;4;407;U16;;SPD Status_2;spd_status_2;1.000000;0.000000;;4
+123;4;420;U16;;PCAB Communication Status_3;pcab_communication_status_3;1.000000;0.000000;;1
+124;4;421;U16;;PCAB Alarm Status_3;pcab_alarm_status_3;1.000000;0.000000;;1
+125;4;422_30;STRING;;PCAB SN_3;pcab_sn_3;1.000000;0.000000;;1
+126;4;437;U16;;PCAB Model_3;pcab_model_3;1.000000;0.000000;;1
+127;4;438_10;STRING;;PCAB Software  Version_3;pcab_software_version_3;1.000000;0.000000;;1
+128;4;443_10;STRING;;PCAB Hardware Version_3;pcab_hardware_version_3;1.000000;0.000000;;1
+129;4;448;U16;;Inverter L1 Voltage_3;inverter_l1_voltage_3;0.100000;0.000000;V;4
+130;4;449;U16;;Inverter L2 Voltage_3;inverter_l2_voltage_3;0.100000;0.000000;V;4
+131;4;450;U16;;Inverter L3 Voltage_3;inverter_l3_voltage_3;0.100000;0.000000;V;4
+132;4;451;U16;;Grid L1 Voltage_3;grid_l1_voltage_3;0.100000;0.000000;V;4
+133;4;452;U16;;Grid L2 Voltage_3;grid_l2_voltage_3;0.100000;0.000000;V;4
+134;4;453;U16;;Grid L3 Voltage_3;grid_l3_voltage_3;0.100000;0.000000;V;4
+135;4;454;U16;;Grid L1 Current_3;grid_l1_current_3;0.100000;0.000000;A;4
+136;4;455;U16;;Grid L2 Current_3;grid_l2_current_3;0.100000;0.000000;A;4
+137;4;456;U16;;Grid L3 Current_3;grid_l3_current_3;0.100000;0.000000;A;4
+138;4;457;U16;;Grid L1 Frequency_3;grid_l1_frequency_3;0.010000;0.000000;Hz;4
+139;4;458;U16;;Grid L2 Frequency_3;grid_l2_frequency_3;0.010000;0.000000;Hz;4
+140;4;459;U16;;Grid L3 Frequency_3;grid_l3_frequency_3;0.010000;0.000000;Hz;4
+141;4;460;U16;;Ambient temperature_3;ambient_temperature_3;0.100000;0.000000;C;4
+142;4;461;U16;;Ambient humidity_3;ambient_humidity_3;0.100000;0.000000;'%RH;4
+143;4;462;U16;;QF1 Status_3;qf1_status_3;1.000000;0.000000;;4
+144;4;463;U16;;QF2 Status_3;qf2_status_3;1.000000;0.000000;;4
+145;4;464;U16;;Emergency stop status_3;emergency_stop_status_3;1.000000;0.000000;;8
+146;4;465;U16;;Water immersion status_3;water_immersion_status_3;1.000000;0.000000;;8
+147;4;466;U16;;Access control status_3;access_control_status_3;1.000000;0.000000;;4
+148;4;467;U16;;SPD Status_3;spd_status_3;1.000000;0.000000;;4
+149;4;480;U16;;PCAB Communication Status_4;pcab_communication_status_4;1.000000;0.000000;;1
+150;4;481;U16;;PCAB Alarm Status_4;pcab_alarm_status_4;1.000000;0.000000;;1
+151;4;482_30;STRING;;PCAB SN_4;pcab_sn_4;1.000000;0.000000;;1
+152;4;497;U16;;PCAB Model_4;pcab_model_4;1.000000;0.000000;;1
+153;4;498_10;STRING;;PCAB Software  Version_4;pcab_software_version_4;1.000000;0.000000;;1
+154;4;503_10;STRING;;PCAB Hardware Version_4;pcab_hardware_version_4;1.000000;0.000000;;1
+155;4;508;U16;;Inverter L1 Voltage_4;inverter_l1_voltage_4;0.100000;0.000000;V;4
+156;4;509;U16;;Inverter L2 Voltage_4;inverter_l2_voltage_4;0.100000;0.000000;V;4
+157;4;510;U16;;Inverter L3 Voltage_4;inverter_l3_voltage_4;0.100000;0.000000;V;4
+158;4;511;U16;;Grid L1 Voltage_4;grid_l1_voltage_4;0.100000;0.000000;V;4
+159;4;512;U16;;Grid L2 Voltage_4;grid_l2_voltage_4;0.100000;0.000000;V;4
+160;4;513;U16;;Grid L3 Voltage_4;grid_l3_voltage_4;0.100000;0.000000;V;4
+161;4;514;U16;;Grid L1 Current_4;grid_l1_current_4;0.100000;0.000000;A;4
+162;4;515;U16;;Grid L2 Current_4;grid_l2_current_4;0.100000;0.000000;A;4
+163;4;516;U16;;Grid L3 Current_4;grid_l3_current_4;0.100000;0.000000;A;4
+164;4;517;U16;;Grid L1 Frequency_4;grid_l1_frequency_4;0.010000;0.000000;Hz;4
+165;4;518;U16;;Grid L2 Frequency_4;grid_l2_frequency_4;0.010000;0.000000;Hz;4
+166;4;519;U16;;Grid L3 Frequency_4;grid_l3_frequency_4;0.010000;0.000000;Hz;4
+167;4;520;U16;;Ambient temperature_4;ambient_temperature_4;0.100000;0.000000;C;4
+168;4;521;U16;;Ambient humidity_4;ambient_humidity_4;0.100000;0.000000;'%RH;4
+169;4;522;U16;;QF1 Status_4;qf1_status_4;1.000000;0.000000;;4
+170;4;523;U16;;QF2 Status_4;qf2_status_4;1.000000;0.000000;;4
+171;4;524;U16;;Emergency stop status_4;emergency_stop_status_4;1.000000;0.000000;;8
+172;4;525;U16;;Water immersion status_4;water_immersion_status_4;1.000000;0.000000;;8
+173;4;526;U16;;Access control status_4;access_control_status_4;1.000000;0.000000;;4
+174;4;527;U16;;SPD Status_4;spd_status_4;1.000000;0.000000;;4
+175;4;540;U16;;PCAB Communication Status_5;pcab_communication_status_5;1.000000;0.000000;;1
+176;4;541;U16;;PCAB Alarm Status_5;pcab_alarm_status_5;1.000000;0.000000;;1
+177;4;542_30;STRING;;PCAB SN_5;pcab_sn_5;1.000000;0.000000;;1
+178;4;557;U16;;PCAB Model_5;pcab_model_5;1.000000;0.000000;;1
+179;4;558_10;STRING;;PCAB Software  Version_5;pcab_software_version_5;1.000000;0.000000;;1
+180;4;563_10;STRING;;PCAB Hardware Version_5;pcab_hardware_version_5;1.000000;0.000000;;1
+181;4;568;U16;;Inverter L1 Voltage_5;inverter_l1_voltage_5;0.100000;0.000000;V;4
+182;4;569;U16;;Inverter L2 Voltage_5;inverter_l2_voltage_5;0.100000;0.000000;V;4
+183;4;570;U16;;Inverter L3 Voltage_5;inverter_l3_voltage_5;0.100000;0.000000;V;4
+184;4;571;U16;;Grid L1 Voltage_5;grid_l1_voltage_5;0.100000;0.000000;V;4
+185;4;572;U16;;Grid L2 Voltage_5;grid_l2_voltage_5;0.100000;0.000000;V;4
+186;4;573;U16;;Grid L3 Voltage_5;grid_l3_voltage_5;0.100000;0.000000;V;4
+187;4;574;U16;;Grid L1 Current_5;grid_l1_current_5;0.100000;0.000000;A;4
+188;4;575;U16;;Grid L2 Current_5;grid_l2_current_5;0.100000;0.000000;A;4
+189;4;576;U16;;Grid L3 Current_5;grid_l3_current_5;0.100000;0.000000;A;4
+190;4;577;U16;;Grid L1 Frequency_5;grid_l1_frequency_5;0.010000;0.000000;Hz;4
+191;4;578;U16;;Grid L2 Frequency_5;grid_l2_frequency_5;0.010000;0.000000;Hz;4
+192;4;579;U16;;Grid L3 Frequency_5;grid_l3_frequency_5;0.010000;0.000000;Hz;4
+193;4;580;U16;;Ambient temperature_5;ambient_temperature_5;0.100000;0.000000;C;4
+194;4;581;U16;;Ambient humidity_5;ambient_humidity_5;0.100000;0.000000;'%RH;4
+195;4;582;U16;;QF1 Status_5;qf1_status_5;1.000000;0.000000;;4
+196;4;583;U16;;QF2 Status_5;qf2_status_5;1.000000;0.000000;;4
+197;4;584;U16;;Emergency stop status_5;emergency_stop_status_5;1.000000;0.000000;;8
+198;4;585;U16;;Water immersion status_5;water_immersion_status_5;1.000000;0.000000;;8
+199;4;586;U16;;Access control status_5;access_control_status_5;1.000000;0.000000;;4
+200;4;587;U16;;SPD Status_5;spd_status_5;1.000000;0.000000;;4
+201;4;600;U16;;PCAB Communication Status_6;pcab_communication_status_6;1.000000;0.000000;;1
+202;4;601;U16;;PCAB Alarm Status_6;pcab_alarm_status_6;1.000000;0.000000;;1
+203;4;602_30;STRING;;PCAB SN_6;pcab_sn_6;1.000000;0.000000;;1
+204;4;617;U16;;PCAB Model_6;pcab_model_6;1.000000;0.000000;;1
+205;4;618_10;STRING;;PCAB Software  Version_6;pcab_software_version_6;1.000000;0.000000;;1
+206;4;623_10;STRING;;PCAB Hardware Version_6;pcab_hardware_version_6;1.000000;0.000000;;1
+207;4;628;U16;;Inverter L1 Voltage_6;inverter_l1_voltage_6;0.100000;0.000000;V;4
+208;4;629;U16;;Inverter L2 Voltage_6;inverter_l2_voltage_6;0.100000;0.000000;V;4
+209;4;630;U16;;Inverter L3 Voltage_6;inverter_l3_voltage_6;0.100000;0.000000;V;4
+210;4;631;U16;;Grid L1 Voltage_6;grid_l1_voltage_6;0.100000;0.000000;V;4
+211;4;632;U16;;Grid L2 Voltage_6;grid_l2_voltage_6;0.100000;0.000000;V;4
+212;4;633;U16;;Grid L3 Voltage_6;grid_l3_voltage_6;0.100000;0.000000;V;4
+213;4;634;U16;;Grid L1 Current_6;grid_l1_current_6;0.100000;0.000000;A;4
+214;4;635;U16;;Grid L2 Current_6;grid_l2_current_6;0.100000;0.000000;A;4
+215;4;636;U16;;Grid L3 Current_6;grid_l3_current_6;0.100000;0.000000;A;4
+216;4;637;U16;;Grid L1 Frequency_6;grid_l1_frequency_6;0.010000;0.000000;Hz;4
+217;4;638;U16;;Grid L2 Frequency_6;grid_l2_frequency_6;0.010000;0.000000;Hz;4
+218;4;639;U16;;Grid L3 Frequency_6;grid_l3_frequency_6;0.010000;0.000000;Hz;4
+219;4;640;U16;;Ambient temperature_6;ambient_temperature_6;0.100000;0.000000;C;4
+220;4;641;U16;;Ambient humidity_6;ambient_humidity_6;0.100000;0.000000;'%RH;4
+221;4;642;U16;;QF1 Status_6;qf1_status_6;1.000000;0.000000;;4
+222;4;643;U16;;QF2 Status_6;qf2_status_6;1.000000;0.000000;;4
+223;4;644;U16;;Emergency stop status_6;emergency_stop_status_6;1.000000;0.000000;;8
+224;4;645;U16;;Water immersion status_6;water_immersion_status_6;1.000000;0.000000;;8
+225;4;646;U16;;Access control status_6;access_control_status_6;1.000000;0.000000;;4
+226;4;647;U16;;SPD Status_6;spd_status_6;1.000000;0.000000;;4
+227;4;660;U16;;PCAB Communication Status_7;pcab_communication_status_7;1.000000;0.000000;;1
+228;4;661;U16;;PCAB Alarm Status_7;pcab_alarm_status_7;1.000000;0.000000;;1
+229;4;662_30;STRING;;PCAB SN_7;pcab_sn_7;1.000000;0.000000;;1
+230;4;677;U16;;PCAB Model_7;pcab_model_7;1.000000;0.000000;;1
+231;4;678_10;STRING;;PCAB Software  Version_7;pcab_software_version_7;1.000000;0.000000;;1
+232;4;683_10;STRING;;PCAB Hardware Version_7;pcab_hardware_version_7;1.000000;0.000000;;1
+233;4;688;U16;;Inverter L1 Voltage_7;inverter_l1_voltage_7;0.100000;0.000000;V;4
+234;4;689;U16;;Inverter L2 Voltage_7;inverter_l2_voltage_7;0.100000;0.000000;V;4
+235;4;690;U16;;Inverter L3 Voltage_7;inverter_l3_voltage_7;0.100000;0.000000;V;4
+236;4;691;U16;;Grid L1 Voltage_7;grid_l1_voltage_7;0.100000;0.000000;V;4
+237;4;692;U16;;Grid L2 Voltage_7;grid_l2_voltage_7;0.100000;0.000000;V;4
+238;4;693;U16;;Grid L3 Voltage_7;grid_l3_voltage_7;0.100000;0.000000;V;4
+239;4;694;U16;;Grid L1 Current_7;grid_l1_current_7;0.100000;0.000000;A;4
+240;4;695;U16;;Grid L2 Current_7;grid_l2_current_7;0.100000;0.000000;A;4
+241;4;696;U16;;Grid L3 Current_7;grid_l3_current_7;0.100000;0.000000;A;4
+242;4;697;U16;;Grid L1 Frequency_7;grid_l1_frequency_7;0.010000;0.000000;Hz;4
+243;4;698;U16;;Grid L2 Frequency_7;grid_l2_frequency_7;0.010000;0.000000;Hz;4
+244;4;699;U16;;Grid L3 Frequency_7;grid_l3_frequency_7;0.010000;0.000000;Hz;4
+245;4;700;U16;;Ambient temperature_7;ambient_temperature_7;0.100000;0.000000;C;4
+246;4;701;U16;;Ambient humidity_7;ambient_humidity_7;0.100000;0.000000;'%RH;4
+247;4;702;U16;;QF1 Status_7;qf1_status_7;1.000000;0.000000;;4
+248;4;703;U16;;QF2 Status_7;qf2_status_7;1.000000;0.000000;;4
+249;4;704;U16;;Emergency stop status_7;emergency_stop_status_7;1.000000;0.000000;;8
+250;4;705;U16;;Water immersion status_7;water_immersion_status_7;1.000000;0.000000;;8
+251;4;706;U16;;Access control status_7;access_control_status_7;1.000000;0.000000;;4
+252;4;707;U16;;SPD Status_7;spd_status_7;1.000000;0.000000;;4
+253;4;720;U16;;PCAB Communication Status_8;pcab_communication_status_8;1.000000;0.000000;;1
+254;4;721;U16;;PCAB Alarm Status_8;pcab_alarm_status_8;1.000000;0.000000;;1
+255;4;722_30;STRING;;PCAB SN_8;pcab_sn_8;1.000000;0.000000;;1
+256;4;737;U16;;PCAB Model_8;pcab_model_8;1.000000;0.000000;;1
+257;4;738_10;STRING;;PCAB Software  Version_8;pcab_software_version_8;1.000000;0.000000;;1
+258;4;743_10;STRING;;PCAB Hardware Version_8;pcab_hardware_version_8;1.000000;0.000000;;1
+259;4;748;U16;;Inverter L1 Voltage_8;inverter_l1_voltage_8;0.100000;0.000000;V;4
+260;4;749;U16;;Inverter L2 Voltage_8;inverter_l2_voltage_8;0.100000;0.000000;V;4
+261;4;750;U16;;Inverter L3 Voltage_8;inverter_l3_voltage_8;0.100000;0.000000;V;4
+262;4;751;U16;;Grid L1 Voltage_8;grid_l1_voltage_8;0.100000;0.000000;V;4
+263;4;752;U16;;Grid L2 Voltage_8;grid_l2_voltage_8;0.100000;0.000000;V;4
+264;4;753;U16;;Grid L3 Voltage_8;grid_l3_voltage_8;0.100000;0.000000;V;4
+265;4;754;U16;;Grid L1 Current_8;grid_l1_current_8;0.100000;0.000000;A;4
+266;4;755;U16;;Grid L2 Current_8;grid_l2_current_8;0.100000;0.000000;A;4
+267;4;756;U16;;Grid L3 Current_8;grid_l3_current_8;0.100000;0.000000;A;4
+268;4;757;U16;;Grid L1 Frequency_8;grid_l1_frequency_8;0.010000;0.000000;Hz;4
+269;4;758;U16;;Grid L2 Frequency_8;grid_l2_frequency_8;0.010000;0.000000;Hz;4
+270;4;759;U16;;Grid L3 Frequency_8;grid_l3_frequency_8;0.010000;0.000000;Hz;4
+271;4;760;U16;;Ambient temperature_8;ambient_temperature_8;0.100000;0.000000;C;4
+272;4;761;U16;;Ambient humidity_8;ambient_humidity_8;0.100000;0.000000;'%RH;4
+273;4;762;U16;;QF1 Status_8;qf1_status_8;1.000000;0.000000;;4
+274;4;763;U16;;QF2 Status_8;qf2_status_8;1.000000;0.000000;;4
+275;4;764;U16;;Emergency stop status_8;emergency_stop_status_8;1.000000;0.000000;;8
+276;4;765;U16;;Water immersion status_8;water_immersion_status_8;1.000000;0.000000;;8
+277;4;766;U16;;Access control status_8;access_control_status_8;1.000000;0.000000;;4
+278;4;767;U16;;SPD Status_8;spd_status_8;1.000000;0.000000;;4
+279;4;780;U16;;PCAB Communication Status_9;pcab_communication_status_9;1.000000;0.000000;;1
+280;4;781;U16;;PCAB Alarm Status_9;pcab_alarm_status_9;1.000000;0.000000;;1
+281;4;782_30;STRING;;PCAB SN_9;pcab_sn_9;1.000000;0.000000;;1
+282;4;797;U16;;PCAB Model_9;pcab_model_9;1.000000;0.000000;;1
+283;4;798_10;STRING;;PCAB Software  Version_9;pcab_software_version_9;1.000000;0.000000;;1
+284;4;803_10;STRING;;PCAB Hardware Version_9;pcab_hardware_version_9;1.000000;0.000000;;1
+285;4;808;U16;;Inverter L1 Voltage_9;inverter_l1_voltage_9;0.100000;0.000000;V;4
+286;4;809;U16;;Inverter L2 Voltage_9;inverter_l2_voltage_9;0.100000;0.000000;V;4
+287;4;810;U16;;Inverter L3 Voltage_9;inverter_l3_voltage_9;0.100000;0.000000;V;4
+288;4;811;U16;;Grid L1 Voltage_9;grid_l1_voltage_9;0.100000;0.000000;V;4
+289;4;812;U16;;Grid L2 Voltage_9;grid_l2_voltage_9;0.100000;0.000000;V;4
+290;4;813;U16;;Grid L3 Voltage_9;grid_l3_voltage_9;0.100000;0.000000;V;4
+291;4;814;U16;;Grid L1 Current_9;grid_l1_current_9;0.100000;0.000000;A;4
+292;4;815;U16;;Grid L2 Current_9;grid_l2_current_9;0.100000;0.000000;A;4
+293;4;816;U16;;Grid L3 Current_9;grid_l3_current_9;0.100000;0.000000;A;4
+294;4;817;U16;;Grid L1 Frequency_9;grid_l1_frequency_9;0.010000;0.000000;Hz;4
+295;4;818;U16;;Grid L2 Frequency_9;grid_l2_frequency_9;0.010000;0.000000;Hz;4
+296;4;819;U16;;Grid L3 Frequency_9;grid_l3_frequency_9;0.010000;0.000000;Hz;4
+297;4;820;U16;;Ambient temperature_9;ambient_temperature_9;0.100000;0.000000;C;4
+298;4;821;U16;;Ambient humidity_9;ambient_humidity_9;0.100000;0.000000;'%RH;4
+299;4;822;U16;;QF1 Status_9;qf1_status_9;1.000000;0.000000;;4
+300;4;823;U16;;QF2 Status_9;qf2_status_9;1.000000;0.000000;;4
+301;4;824;U16;;Emergency stop status_9;emergency_stop_status_9;1.000000;0.000000;;8
+302;4;825;U16;;Water immersion status_9;water_immersion_status_9;1.000000;0.000000;;8
+303;4;826;U16;;Access control status_9;access_control_status_9;1.000000;0.000000;;4
+304;4;827;U16;;SPD Status_9;spd_status_9;1.000000;0.000000;;4
+305;3;0;I16;;System manual charge and discharge power;system_manual_charge_and_discharge_power;1.000000;0.000000;kW;4
+306;3;1;U16;;System manual charging SOC target;system_manual_charging_soc_target;1.000000;0.000000;'%;4
+307;3;2;U16;;System manuel discharge SOC target;system_manuel_discharge_soc_target;1.000000;0.000000;;4
+308;3;3;U16;;System reactive power control mode;system_reactive_power_control_mode;1.000000;0.000000;;4
+309;3;4;U16;;System reactive power factor;system_reactive_power_factor;1.000000;0.000000;'%;4
+310;3;5;U16;;System control;system_control;1.000000;0.000000;;4
+311;3;6;U16;;System power on/off;system_power_onoff;1.000000;0.000000;;4
+312;3;7;U16;;System work mode;system_work_mode;1.000000;0.000000;;4
+313;3;8;U16;;Discharge Cutoff SOC;discharge_cutoff_soc;1.000000;0.000000;;4
+314;3;9;U16;;Discharge period 1 start time;discharge_period_1_start_time;1.000000;0.000000;'%;4
+315;3;10;U16;;Discharge period 1 stop time;discharge_period_1_stop_time;1.000000;0.000000;;4
+316;3;11;U16;;Discharge period 1 peak limit value;discharge_period_1_peak_limit_value;1.000000;0.000000;kW;4
+317;3;12;U16;;Discharge period 1 charge from the grid enable;discharge_period_1_charge_from_the_grid_enable;1.000000;0.000000;;4
+318;3;13;U16;;Discharge period 1 charge power limit;discharge_period_1_charge_power_limit;1.000000;0.000000;kW;4
+319;3;14;U16;;Discharge period 1 charge cutoff SOC;discharge_period_1_charge_cutoff_soc;1.000000;0.000000;'%;4
+320;3;15;U16;;Discharge period 2 enable;discharge_period_2_enable;1.000000;0.000000;;4
+321;3;16;U16;;Discharge period 2 start time;discharge_period_2_start_time;1.000000;0.000000;;4
+322;3;17;U16;;Discharge period 2 stop time;discharge_period_2_stop_time;1.000000;0.000000;;4
+323;3;18;U16;;Discharge period 2 peak limit value;discharge_period_2_peak_limit_value;1.000000;0.000000;kW;4
+324;3;19;U16;;Discharge period 2 charge from the grid enable;discharge_period_2_charge_from_the_grid_enable;1.000000;0.000000;;4
+325;3;20;U16;;Discharge period 2 charge power limit;discharge_period_2_charge_power_limit;1.000000;0.000000;kW;4
+326;3;21;U16;;Discharge period 2 charge cutoff SOC;discharge_period_2_charge_cutoff_soc;1.000000;0.000000;;4
+327;3;22;U16;;Charge period 1 charge from the grid enable;charge_period_1_charge_from_the_grid_enable;1.000000;0.000000;;4
+328;3;23;U16;;Charge period 1 charge power limit;charge_period_1_charge_power_limit;1.000000;0.000000;kW;4
+329;3;24;U16;;Charge period 1 charge cutoff SOC;charge_period_1_charge_cutoff_soc;1.000000;0.000000;'%;4
+330;3;25;U16;;Charge period 2 charge reverse SOC;charge_period_2_charge_reverse_soc;1.000000;0.000000;'%;4
+331;3;26;U16;;Reserve;reserve;1.000000;0.000000;;4
+332;3;27;U16;;Enable;enable;1.000000;0.000000;kW;4
+333;3;28;U16;;Demand limit value;demand_limit_value;1.000000;0.000000;kW;4
+334;3;29;U16;;Reverse;reverse;1.000000;0.000000;;4
+335;3;30;U16;;Enable_2;enable_2;1.000000;0.000000;;4
+336;3;31;U16;;Control mode;control_mode;1.000000;0.000000;;4
+337;3;32;U16;;Control type;control_type;1.000000;0.000000;;4
+338;3;33;U16;;Control value;control_value;1.000000;0.000000;;4
+339;3;34;U16;;Reserve_2;reserve_2;1.000000;0.000000;;4
+340;3;35;U16;;Communication timout standby enable;communication_timout_standby_enable;1.000000;0.000000;;4
+341;3;36;U16;;Communication timeout time;communication_timeout_time;1.000000;0.000000;s;4
+342;3;37;U16;;Off-grid voltage;offgrid_voltage;1.000000;0.000000;V;4
+343;3;38;U16;;Off-grid frequency;offgrid_frequency;1.000000;0.000000;Hz;4
+344;3;39;U16;;Current system operation status;current_system_operation_status;1.000000;0.000000;;4
+345;3;40;U16;;Manual grid switching;manual_grid_switching;1.000000;0.000000;;4
+346;3;41;I16;;Active power value;active_power_value;1.000000;0.000000;'%;4
+347;3;42;I16;;Reactive power value;reactive_power_value;1.000000;0.000000;kVar;4

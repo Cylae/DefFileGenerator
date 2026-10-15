@@ -1,0 +1,895 @@
+modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
+1;4;101;U16;;PCS actual total active power (summary);pcs_actual_total_active_power_summary;10.000000;0.000000;KW;4
+2;4;102;U16;;PCS actual total reactive power (summary);pcs_actual_total_reactive_power_summary;10.000000;0.000000;Kvar;4
+3;4;103;U16;;Total voltage (summary);total_voltage_summary;10.000000;0.000000;V;4
+4;4;104;U16;;Total current (summary);total_current_summary;10.000000;0.000000;A;4
+5;4;105;U16;;Total soc (summary);total_soc_summary;1.000000;0.000000;'%;4
+6;4;106;U16;;Battery status (summary);battery_status_summary;1.000000;0.000000;;9
+7;4;107;U16;;Total number of batteries (summary);total_number_of_batteries_summary;1.000000;0.000000;;4
+8;4;108;U16;;Average battery temperature (summary);average_battery_temperature_summary;1.000000;0.000000;℃;4
+9;4;109;U16;;Maximum battery temperature difference (summary);maximum_battery_temperature_difference_summary;1.000000;0.000000;℃;4
+10;4;110;U16;;Maximum single cell voltage value (summary);maximum_single_cell_voltage_value_summary;1000.000000;0.000000;V;4
+11;4;111;U16;;Minimum single cell voltage value (summary);minimum_single_cell_voltage_value_summary;1000.000000;0.000000;V;4
+12;4;114;U16;;System Status;system_status;1.000000;0.000000;;9
+13;4;136;U16;;Heartbeat Point;heartbeat_point;1.000000;0.000000;;4
+14;4;32024;U16;;Battery Pack Serial Number 1;battery_pack_serial_number_1;1.000000;0.000000;;4
+15;4;32048;U16;;Battery pack serial number 2;battery_pack_serial_number_2;1.000000;0.000000;;4
+16;4;32072;U16;;Battery pack serial number 3;battery_pack_serial_number_3;1.000000;0.000000;;4
+17;4;32096;U16;;Battery pack serial number 4;battery_pack_serial_number_4;1.000000;0.000000;;4
+18;4;32120;U16;;Software Version;software_version;1.000000;0.000000;;4
+19;4;32144;U16;;Hardware version;hardware_version;1.000000;0.000000;;4
+20;4;32168;U16;;Manufacturer Name;manufacturer_name;1.000000;0.000000;;4
+21;4;32192;U16;;Date of manufacture;date_of_manufacture;1.000000;0.000000;;4
+22;4;31048;U16;;System ID;system_id;1.000000;0.000000;;4
+23;4;31072;U16;;System Model;system_model;1.000000;0.000000;;4
+24;4;31096;U16;;System version;system_version;1.000000;0.000000;;4
+25;4;31120;U16;;CPLD Version;cpld_version;1.000000;0.000000;;4
+26;4;31144;U16;;DSP1 version;dsp1_version;1.000000;0.000000;;4
+27;4;31168;U16;;devName;devname;1.000000;0.000000;;4
+28;3;2001;U16;;System on-grid and off-grid instructions;system_ongrid_and_offgrid_instructions;1.000000;0.000000;;1
+29;3;90;U16;;Schedule automatic mode switching;schedule_automatic_mode_switching;1.000000;0.000000;;1
+30;3;91;U16;;Subsystem control mode 1 (when the three functions are activated at the same time, local demand side response > peak-valley arbitrage > local 24-hour plan);subsystem_control_mode_1_when_the_three_functions_are_activated_at_the_same_time_local_demand_side_response_peakvalley_arbitrage_local_24hour_plan;1.000000;0.000000;;1
+31;3;92;U16;;Subsystem control mode 0 (when the three functions are activated at the same time, local demand side response > peak-valley arbitrage > local 24-hour plan);subsystem_control_mode_0_when_the_three_functions_are_activated_at_the_same_time_local_demand_side_response_peakvalley_arbitrage_local_24hour_plan;1.000000;0.000000;;1
+32;3;93;U16;;modbus disconnect timeout;modbus_disconnect_timeout;1.000000;0.000000;s;1
+33;3;94;U16;;Modbus fault recovery;modbus_fault_recovery;1.000000;0.000000;;1
+34;3;95;U16;;ModbusTCP communication loss strategy enable;modbustcp_communication_loss_strategy_enable;1.000000;0.000000;;1
+35;3;102;U16;;Instruction mode (0 subsystem/1 plan/2 total instructions);instruction_mode_0_subsystem1_plan2_total_instructions;1.000000;0.000000;;1
+36;3;103;U16;;;;1.000000;0.000000;;1
+37;3;104;U16;;Control source (local 0/remote 1/other);control_source_local_0remote_1other;1.000000;0.000000;;1
+38;3;105;U16;;Total active power command;total_active_power_command;10.000000;0.000000;kW;1
+39;3;106;U16;;Total reactive power command;total_reactive_power_command;10.000000;0.000000;kVar;1
+40;3;107;U16;;Season table A: 0:00~0:15;season_table_a_000015;10.000000;0.000000;kW;1
+41;3;108;U16;;Seasonal table A: 0:15~0:30;seasonal_table_a_015030;10.000000;0.000000;kW;1
+42;3;109;U16;;Seasonal table A: 0:30~0:45;seasonal_table_a_030045;10.000000;0.000000;kW;1
+43;3;110;U16;;Seasonal table A: 0:45~1:00;seasonal_table_a_045100;10.000000;0.000000;kW;1
+44;3;111;U16;;Seasonal table A: 1:00~1:15;seasonal_table_a_100115;10.000000;0.000000;kW;1
+45;3;112;U16;;Seasonal table A: 1:15~1:30;seasonal_table_a_115130;10.000000;0.000000;kW;1
+46;3;113;U16;;Seasonal table A: 1:30~1:45;seasonal_table_a_130145;10.000000;0.000000;kW;1
+47;3;114;U16;;Seasonal table A: 1:45~2:00;seasonal_table_a_145200;10.000000;0.000000;kW;1
+48;3;115;U16;;Seasonal table A: 2:00~2:15;seasonal_table_a_200215;10.000000;0.000000;kW;1
+49;3;116;U16;;Seasonal table A: 2:15~2:30;seasonal_table_a_215230;10.000000;0.000000;kW;1
+50;3;117;U16;;Seasonal table A: 2:30~2:45;seasonal_table_a_230245;10.000000;0.000000;kW;1
+51;3;118;U16;;Seasonal table A: 2:45~3:00;seasonal_table_a_245300;10.000000;0.000000;kW;1
+52;3;119;U16;;Seasonal table A: 3:00~3:15;seasonal_table_a_300315;10.000000;0.000000;kW;1
+53;3;120;U16;;Seasonal table A: 3:15~3:30;seasonal_table_a_315330;10.000000;0.000000;kW;1
+54;3;121;U16;;Seasonal table A: 3:30~3:45;seasonal_table_a_330345;10.000000;0.000000;kW;1
+55;3;122;U16;;Seasonal table A: 3:45~4:0;seasonal_table_a_34540;10.000000;0.000000;kW;1
+56;3;123;U16;;Seasonal table A: 4:00~4:15;seasonal_table_a_400415;10.000000;0.000000;kW;1
+57;3;124;U16;;Seasonal table A: 4:15~4:30;seasonal_table_a_415430;10.000000;0.000000;kW;1
+58;3;125;U16;;Seasonal table A: 4:30~4:45;seasonal_table_a_430445;10.000000;0.000000;kW;1
+59;3;126;U16;;Seasonal table A: 4:45~4:00;seasonal_table_a_445400;10.000000;0.000000;kW;1
+60;3;127;U16;;Seasonal table A: 5:00~5:15;seasonal_table_a_500515;10.000000;0.000000;kW;1
+61;3;128;U16;;Seasonal Schedule A: 5:15~5:30;seasonal_schedule_a_515530;10.000000;0.000000;kW;1
+62;3;129;U16;;Seasonal table A: 5:30~5:45;seasonal_table_a_530545;10.000000;0.000000;kW;1
+63;3;130;U16;;Seasonal table A: 5:45~6:00;seasonal_table_a_545600;10.000000;0.000000;kW;1
+64;3;131;U16;;Seasonal Schedule A: 6:00~6:15;seasonal_schedule_a_600615;10.000000;0.000000;kW;1
+65;3;132;U16;;Seasonal Schedule A: 6:15~6:30;seasonal_schedule_a_615630;10.000000;0.000000;kW;1
+66;3;133;U16;;Seasonal table A: 6:30~6:45;seasonal_table_a_630645;10.000000;0.000000;kW;1
+67;3;134;U16;;Seasonal table A: 6:45~7:00;seasonal_table_a_645700;10.000000;0.000000;kW;1
+68;3;135;U16;;Seasonal Schedule A:7:00~7:15;seasonal_schedule_a700715;10.000000;0.000000;kW;1
+69;3;136;U16;;Seasonal Schedule A: 7:15~7:30;seasonal_schedule_a_715730;10.000000;0.000000;kW;1
+70;3;137;U16;;Seasonal table A:7:30~7:45;seasonal_table_a730745;10.000000;0.000000;kW;1
+71;3;138;U16;;Seasonal table A:7:45~8:00;seasonal_table_a745800;10.000000;0.000000;kW;1
+72;3;139;U16;;Seasonal Schedule A: 8:00~8:15;seasonal_schedule_a_800815;10.000000;0.000000;kW;1
+73;3;140;U16;;Seasonal Schedule A: 8:15~8:30;seasonal_schedule_a_815830;10.000000;0.000000;kW;1
+74;3;141;U16;;Seasonal table A: 8:30~8:45;seasonal_table_a_830845;10.000000;0.000000;kW;1
+75;3;142;U16;;Seasonal table A: 8:45~9:00;seasonal_table_a_845900;10.000000;0.000000;kW;1
+76;3;143;U16;;Seasonal Schedule A: 9:00~9:15;seasonal_schedule_a_900915;10.000000;0.000000;kW;1
+77;3;144;U16;;Seasonal Schedule A: 9:15~9:30;seasonal_schedule_a_915930;10.000000;0.000000;kW;1
+78;3;145;U16;;Seasonal table A: 9:30~9:45;seasonal_table_a_930945;10.000000;0.000000;kW;1
+79;3;146;U16;;Seasonal table A: 9:45~10:00;seasonal_table_a_9451000;10.000000;0.000000;kW;1
+80;3;147;U16;;Seasonal Schedule A: 10:00~10:15;seasonal_schedule_a_10001015;10.000000;0.000000;kW;1
+81;3;148;U16;;Seasonal table A: 10:15~10:30;seasonal_table_a_10151030;10.000000;0.000000;kW;1
+82;3;149;U16;;Seasonal table A: 10:30~10:45;seasonal_table_a_10301045;10.000000;0.000000;kW;1
+83;3;150;U16;;Seasonal Schedule A: 10:45~11:00;seasonal_schedule_a_10451100;10.000000;0.000000;kW;1
+84;3;151;U16;;Seasonal Schedule A: 11:00~11:15;seasonal_schedule_a_11001115;10.000000;0.000000;kW;1
+85;3;152;U16;;Seasonal Schedule A: 11:15~11:30;seasonal_schedule_a_11151130;10.000000;0.000000;kW;1
+86;3;153;U16;;Seasonal Schedule A: 11:30~11:45;seasonal_schedule_a_11301145;10.000000;0.000000;kW;1
+87;3;154;U16;;Seasonal Schedule A: 11:45~12:00;seasonal_schedule_a_11451200;10.000000;0.000000;kW;1
+88;3;155;U16;;Seasonal Schedule A: 12:00~12:15;seasonal_schedule_a_12001215;10.000000;0.000000;kW;1
+89;3;156;U16;;Seasonal Schedule A: 12:15~12:30;seasonal_schedule_a_12151230;10.000000;0.000000;kW;1
+90;3;157;U16;;Seasonal table A: 12:30~12:45;seasonal_table_a_12301245;10.000000;0.000000;kW;1
+91;3;158;U16;;Seasonal table A: 12:45~13:00;seasonal_table_a_12451300;10.000000;0.000000;kW;1
+92;3;159;U16;;Seasonal table A: 13:00~13:15;seasonal_table_a_13001315;10.000000;0.000000;kW;1
+93;3;160;U16;;Seasonal table A: 13:15~13:30;seasonal_table_a_13151330;10.000000;0.000000;kW;1
+94;3;161;U16;;Seasonal table A: 13:30~13:45;seasonal_table_a_13301345;10.000000;0.000000;kW;1
+95;3;162;U16;;Seasonal table A: 13:45~14:00;seasonal_table_a_13451400;10.000000;0.000000;kW;1
+96;3;163;U16;;Seasonal table A: 14:00~14:15;seasonal_table_a_14001415;10.000000;0.000000;kW;1
+97;3;164;U16;;Seasonal table A: 14:15~14:30;seasonal_table_a_14151430;10.000000;0.000000;kW;1
+98;3;165;U16;;Seasonal table A: 14:30~14:45;seasonal_table_a_14301445;10.000000;0.000000;kW;1
+99;3;166;U16;;Seasonal table A: 14:45~15:00;seasonal_table_a_14451500;10.000000;0.000000;kW;1
+100;3;167;U16;;Seasonal table A: 15:00~15:15;seasonal_table_a_15001515;10.000000;0.000000;kW;1
+101;3;168;U16;;Seasonal table A: 15:15~15:30;seasonal_table_a_15151530;10.000000;0.000000;kW;1
+102;3;169;U16;;Seasonal table A: 15:30~15:45;seasonal_table_a_15301545;10.000000;0.000000;kW;1
+103;3;170;U16;;Seasonal table A: 15:45~16:00;seasonal_table_a_15451600;10.000000;0.000000;kW;1
+104;3;171;U16;;Seasonal table A: 16:00~16:15;seasonal_table_a_16001615;10.000000;0.000000;kW;1
+105;3;172;U16;;Seasonal table A: 16:15~16:30;seasonal_table_a_16151630;10.000000;0.000000;kW;1
+106;3;173;U16;;Seasonal table A: 16:30~16:45;seasonal_table_a_16301645;10.000000;0.000000;kW;1
+107;3;174;U16;;Seasonal table A: 16:45~17:00;seasonal_table_a_16451700;10.000000;0.000000;kW;1
+108;3;175;U16;;Seasonal table A: 17:00~17:15;seasonal_table_a_17001715;10.000000;0.000000;kW;1
+109;3;176;U16;;Seasonal table A: 17:15~17:30;seasonal_table_a_17151730;10.000000;0.000000;kW;1
+110;3;177;U16;;Seasonal table A: 17:30~17:45;seasonal_table_a_17301745;10.000000;0.000000;kW;1
+111;3;178;U16;;Seasonal table A: 17:45~18:00;seasonal_table_a_17451800;10.000000;0.000000;kW;1
+112;3;179;U16;;Seasonal table A: 18:00~18:15;seasonal_table_a_18001815;10.000000;0.000000;kW;1
+113;3;180;U16;;Seasonal table A: 18:15~18:30;seasonal_table_a_18151830;10.000000;0.000000;kW;1
+114;3;181;U16;;Seasonal table A: 18:30~18:45;seasonal_table_a_18301845;10.000000;0.000000;kW;1
+115;3;182;U16;;Seasonal table A: 18:45~19:00;seasonal_table_a_18451900;10.000000;0.000000;kW;1
+116;3;183;U16;;Seasonal table A: 19:00~19:15;seasonal_table_a_19001915;10.000000;0.000000;kW;1
+117;3;184;U16;;Seasonal table A: 19:15~19:30;seasonal_table_a_19151930;10.000000;0.000000;kW;1
+118;3;185;U16;;Seasonal table A: 19:30~19:45;seasonal_table_a_19301945;10.000000;0.000000;kW;1
+119;3;186;U16;;Seasonal table A: 19:45~20:00;seasonal_table_a_19452000;10.000000;0.000000;kW;1
+120;3;187;U16;;Seasonal table A: 20:00~20:15;seasonal_table_a_20002015;10.000000;0.000000;kW;1
+121;3;188;U16;;Seasonal table A: 20:15~20:30;seasonal_table_a_20152030;10.000000;0.000000;kW;1
+122;3;189;U16;;Seasonal table A: 20:30~20:45;seasonal_table_a_20302045;10.000000;0.000000;kW;1
+123;3;190;U16;;Seasonal table A: 20:45~21:00;seasonal_table_a_20452100;10.000000;0.000000;kW;1
+124;3;191;U16;;Seasonal table A: 21:00~21:15;seasonal_table_a_21002115;10.000000;0.000000;kW;1
+125;3;192;U16;;Seasonal table A: 21:15~21:30;seasonal_table_a_21152130;10.000000;0.000000;kW;1
+126;3;193;U16;;Seasonal table A: 21:30~21:45;seasonal_table_a_21302145;10.000000;0.000000;kW;1
+127;3;194;U16;;Seasonal table A: 21:45~22:00;seasonal_table_a_21452200;10.000000;0.000000;kW;1
+128;3;195;U16;;Seasonal table A: 22:00~22:15;seasonal_table_a_22002215;10.000000;0.000000;kW;1
+129;3;196;U16;;Seasonal table A: 22:15~22:30;seasonal_table_a_22152230;10.000000;0.000000;kW;1
+130;3;197;U16;;Seasonal table A: 22:30~22:45;seasonal_table_a_22302245;10.000000;0.000000;kW;1
+131;3;198;U16;;Seasonal table A: 22:45~23:00;seasonal_table_a_22452300;10.000000;0.000000;kW;1
+132;3;199;U16;;Seasonal table A: 23:00~23:15;seasonal_table_a_23002315;10.000000;0.000000;kW;1
+133;3;200;U16;;Seasonal table A: 23:15~23:30;seasonal_table_a_23152330;10.000000;0.000000;kW;1
+134;3;201;U16;;Seasonal table A: 23:30~23:45;seasonal_table_a_23302345;10.000000;0.000000;kW;1
+135;3;202;U16;;Seasonal table A: 23:45~00:00;seasonal_table_a_23450000;10.000000;0.000000;kW;1
+136;3;204;U16;;Season table B: 0:00~0:15;season_table_b_000015;10.000000;0.000000;kW;1
+137;3;205;U16;;Seasonal table B: 0:15~0:30;seasonal_table_b_015030;10.000000;0.000000;kW;1
+138;3;206;U16;;Seasonal table B: 0:30~0:45;seasonal_table_b_030045;10.000000;0.000000;kW;1
+139;3;207;U16;;Seasonal table B: 0:45~1:00;seasonal_table_b_045100;10.000000;0.000000;kW;1
+140;3;208;U16;;Seasonal table B: 1:00~1:15;seasonal_table_b_100115;10.000000;0.000000;kW;1
+141;3;209;U16;;Seasonal table B: 1:15~1:30;seasonal_table_b_115130;10.000000;0.000000;kW;1
+142;3;210;U16;;Seasonal table B: 1:30~1:45;seasonal_table_b_130145;10.000000;0.000000;kW;1
+143;3;211;U16;;Seasonal table B: 1:45~2:00;seasonal_table_b_145200;10.000000;0.000000;kW;1
+144;3;212;U16;;Seasonal table B: 2:00~2:15;seasonal_table_b_200215;10.000000;0.000000;kW;1
+145;3;213;U16;;Seasonal table B: 2:15~2:30;seasonal_table_b_215230;10.000000;0.000000;kW;1
+146;3;214;U16;;Seasonal table B: 2:30~2:45;seasonal_table_b_230245;10.000000;0.000000;kW;1
+147;3;215;U16;;Seasonal table B: 2:45~3:00;seasonal_table_b_245300;10.000000;0.000000;kW;1
+148;3;216;U16;;Seasonal table B: 3:00~3:15;seasonal_table_b_300315;10.000000;0.000000;kW;1
+149;3;217;U16;;Seasonal table B: 3:15~3:30;seasonal_table_b_315330;10.000000;0.000000;kW;1
+150;3;218;U16;;Seasonal table B: 3:30~3:45;seasonal_table_b_330345;10.000000;0.000000;kW;1
+151;3;219;U16;;Seasonal table B: 3:45~4:0;seasonal_table_b_34540;10.000000;0.000000;kW;1
+152;3;220;U16;;Seasonal table B: 4:00~4:15;seasonal_table_b_400415;10.000000;0.000000;kW;1
+153;3;221;U16;;Seasonal table B: 4:15~4:30;seasonal_table_b_415430;10.000000;0.000000;kW;1
+154;3;222;U16;;Seasonal table B: 4:30~4:45;seasonal_table_b_430445;10.000000;0.000000;kW;1
+155;3;223;U16;;Seasonal table B: 4:45~4:00;seasonal_table_b_445400;10.000000;0.000000;kW;1
+156;3;224;U16;;Seasonal table B: 5:00~5:15;seasonal_table_b_500515;10.000000;0.000000;kW;1
+157;3;225;U16;;Seasonal table B: 5:15~5:30;seasonal_table_b_515530;10.000000;0.000000;kW;1
+158;3;226;U16;;Seasonal table B: 5:30~5:45;seasonal_table_b_530545;10.000000;0.000000;kW;1
+159;3;227;U16;;Seasonal table B: 5:45~6:00;seasonal_table_b_545600;10.000000;0.000000;kW;1
+160;3;228;U16;;Seasonal table B: 6:00~6:15;seasonal_table_b_600615;10.000000;0.000000;kW;1
+161;3;229;U16;;Seasonal table B: 6:15~6:30;seasonal_table_b_615630;10.000000;0.000000;kW;1
+162;3;230;U16;;Seasonal table B: 6:30~6:45;seasonal_table_b_630645;10.000000;0.000000;kW;1
+163;3;231;U16;;Seasonal table B: 6:45~7:00;seasonal_table_b_645700;10.000000;0.000000;kW;1
+164;3;232;U16;;Seasonal table B:7:00~7:15;seasonal_table_b700715;10.000000;0.000000;kW;1
+165;3;233;U16;;Seasonal table B: 7:15~7:30;seasonal_table_b_715730;10.000000;0.000000;kW;1
+166;3;234;U16;;Seasonal table B: 7:30~7:45;seasonal_table_b_730745;10.000000;0.000000;kW;1
+167;3;235;U16;;Seasonal table B:7:45~8:00;seasonal_table_b745800;10.000000;0.000000;kW;1
+168;3;236;U16;;Seasonal table B: 8:00~8:15;seasonal_table_b_800815;10.000000;0.000000;kW;1
+169;3;237;U16;;Seasonal table B: 8:15~8:30;seasonal_table_b_815830;10.000000;0.000000;kW;1
+170;3;238;U16;;Seasonal table B: 8:30~8:45;seasonal_table_b_830845;10.000000;0.000000;kW;1
+171;3;239;U16;;Seasonal table B: 8:45~9:00;seasonal_table_b_845900;10.000000;0.000000;kW;1
+172;3;240;U16;;Seasonal table B: 9:00~9:15;seasonal_table_b_900915;10.000000;0.000000;kW;1
+173;3;241;U16;;Seasonal table B: 9:15~9:30;seasonal_table_b_915930;10.000000;0.000000;kW;1
+174;3;242;U16;;Seasonal table B: 9:30~9:45;seasonal_table_b_930945;10.000000;0.000000;kW;1
+175;3;243;U16;;Seasonal table B: 9:45~10:00;seasonal_table_b_9451000;10.000000;0.000000;kW;1
+176;3;244;U16;;Seasonal table B: 10:00~10:15;seasonal_table_b_10001015;10.000000;0.000000;kW;1
+177;3;245;U16;;Seasonal table B: 10:15~10:30;seasonal_table_b_10151030;10.000000;0.000000;kW;1
+178;3;246;U16;;Seasonal table B: 10:30~10:45;seasonal_table_b_10301045;10.000000;0.000000;kW;1
+179;3;247;U16;;Seasonal table B: 10:45~11:00;seasonal_table_b_10451100;10.000000;0.000000;kW;1
+180;3;248;U16;;Seasonal table B: 11:00~11:15;seasonal_table_b_11001115;10.000000;0.000000;kW;1
+181;3;249;U16;;Seasonal table B: 11:15~11:30;seasonal_table_b_11151130;10.000000;0.000000;kW;1
+182;3;250;U16;;Seasonal table B: 11:30~11:45;seasonal_table_b_11301145;10.000000;0.000000;kW;1
+183;3;251;U16;;Seasonal table B: 11:45~12:00;seasonal_table_b_11451200;10.000000;0.000000;kW;1
+184;3;252;U16;;Seasonal table B: 12:00~12:15;seasonal_table_b_12001215;10.000000;0.000000;kW;1
+185;3;253;U16;;Seasonal table B: 12:15~12:30;seasonal_table_b_12151230;10.000000;0.000000;kW;1
+186;3;254;U16;;Seasonal table B: 12:30~12:45;seasonal_table_b_12301245;10.000000;0.000000;kW;1
+187;3;255;U16;;Seasonal table B: 12:45~13:00;seasonal_table_b_12451300;10.000000;0.000000;kW;1
+188;3;256;U16;;Seasonal table B: 13:00~13:15;seasonal_table_b_13001315;10.000000;0.000000;kW;1
+189;3;257;U16;;Seasonal table B: 13:15~13:30;seasonal_table_b_13151330;10.000000;0.000000;kW;1
+190;3;258;U16;;Seasonal table B: 13:30~13:45;seasonal_table_b_13301345;10.000000;0.000000;kW;1
+191;3;259;U16;;Seasonal table B: 13:45~14:00;seasonal_table_b_13451400;10.000000;0.000000;kW;1
+192;3;260;U16;;Seasonal table B: 14:00~14:15;seasonal_table_b_14001415;10.000000;0.000000;kW;1
+193;3;261;U16;;Seasonal table B: 14:15~14:30;seasonal_table_b_14151430;10.000000;0.000000;kW;1
+194;3;262;U16;;Seasonal table B: 14:30~14:45;seasonal_table_b_14301445;10.000000;0.000000;kW;1
+195;3;263;U16;;Seasonal table B: 14:45~15:00;seasonal_table_b_14451500;10.000000;0.000000;kW;1
+196;3;264;U16;;Seasonal table B: 15:00~15:15;seasonal_table_b_15001515;10.000000;0.000000;kW;1
+197;3;265;U16;;Seasonal table B: 15:15~15:30;seasonal_table_b_15151530;10.000000;0.000000;kW;1
+198;3;266;U16;;Seasonal table B: 15:30~15:45;seasonal_table_b_15301545;10.000000;0.000000;kW;1
+199;3;267;U16;;Seasonal table B: 15:45~16:00;seasonal_table_b_15451600;10.000000;0.000000;kW;1
+200;3;268;U16;;Seasonal table B: 16:00~16:15;seasonal_table_b_16001615;10.000000;0.000000;kW;1
+201;3;269;U16;;Seasonal table B: 16:15~16:30;seasonal_table_b_16151630;10.000000;0.000000;kW;1
+202;3;270;U16;;Seasonal table B: 16:30~16:45;seasonal_table_b_16301645;10.000000;0.000000;kW;1
+203;3;271;U16;;Seasonal table B: 16:45~17:00;seasonal_table_b_16451700;10.000000;0.000000;kW;1
+204;3;272;U16;;Seasonal table B: 17:00~17:15;seasonal_table_b_17001715;10.000000;0.000000;kW;1
+205;3;273;U16;;Seasonal table B: 17:15~17:30;seasonal_table_b_17151730;10.000000;0.000000;kW;1
+206;3;274;U16;;Seasonal table B: 17:30~17:45;seasonal_table_b_17301745;10.000000;0.000000;kW;1
+207;3;275;U16;;Seasonal table B: 17:45~18:00;seasonal_table_b_17451800;10.000000;0.000000;kW;1
+208;3;276;U16;;Seasonal table B: 18:00~18:15;seasonal_table_b_18001815;10.000000;0.000000;kW;1
+209;3;277;U16;;Seasonal table B: 18:15~18:30;seasonal_table_b_18151830;10.000000;0.000000;kW;1
+210;3;278;U16;;Seasonal table B: 18:30~18:45;seasonal_table_b_18301845;10.000000;0.000000;kW;1
+211;3;279;U16;;Seasonal table B: 18:45~19:00;seasonal_table_b_18451900;10.000000;0.000000;kW;1
+212;3;280;U16;;Seasonal table B: 19:00~19:15;seasonal_table_b_19001915;10.000000;0.000000;kW;1
+213;3;281;U16;;Seasonal table B: 19:15~19:30;seasonal_table_b_19151930;10.000000;0.000000;kW;1
+214;3;282;U16;;Seasonal table B: 19:30~19:45;seasonal_table_b_19301945;10.000000;0.000000;kW;1
+215;3;283;U16;;Seasonal table B: 19:45~20:00;seasonal_table_b_19452000;10.000000;0.000000;kW;1
+216;3;284;U16;;Seasonal table B: 20:00~20:15;seasonal_table_b_20002015;10.000000;0.000000;kW;1
+217;3;285;U16;;Seasonal table B: 20:15~20:30;seasonal_table_b_20152030;10.000000;0.000000;kW;1
+218;3;286;U16;;Seasonal table B: 20:30~20:45;seasonal_table_b_20302045;10.000000;0.000000;kW;1
+219;3;287;U16;;Seasonal table B: 20:45~21:00;seasonal_table_b_20452100;10.000000;0.000000;kW;1
+220;3;288;U16;;Seasonal table B: 21:00~21:15;seasonal_table_b_21002115;10.000000;0.000000;kW;1
+221;3;289;U16;;Seasonal table B: 21:15~21:30;seasonal_table_b_21152130;10.000000;0.000000;kW;1
+222;3;290;U16;;Seasonal table B: 21:30~21:45;seasonal_table_b_21302145;10.000000;0.000000;kW;1
+223;3;291;U16;;Seasonal table B: 21:45~22:00;seasonal_table_b_21452200;10.000000;0.000000;kW;1
+224;3;292;U16;;Seasonal table B: 22:00~22:15;seasonal_table_b_22002215;10.000000;0.000000;kW;1
+225;3;293;U16;;Seasonal table B: 22:15~22:30;seasonal_table_b_22152230;10.000000;0.000000;kW;1
+226;3;294;U16;;Seasonal table B: 22:30~22:45;seasonal_table_b_22302245;10.000000;0.000000;kW;1
+227;3;295;U16;;Seasonal table B: 22:45~23:00;seasonal_table_b_22452300;10.000000;0.000000;kW;1
+228;3;296;U16;;Seasonal table B: 23:00~23:15;seasonal_table_b_23002315;10.000000;0.000000;kW;1
+229;3;297;U16;;Seasonal table B: 23:15~23:30;seasonal_table_b_23152330;10.000000;0.000000;kW;1
+230;3;298;U16;;Seasonal table B: 23:30~23:45;seasonal_table_b_23302345;10.000000;0.000000;kW;1
+231;3;299;U16;;Seasonal table B: 23:45~00:00;seasonal_table_b_23450000;10.000000;0.000000;kW;1
+232;3;300;U16;;Season A starting month;season_a_starting_month;1.000000;0.000000;;1
+233;3;301;U16;;Season B starting month;season_b_starting_month;1.000000;0.000000;;1
+234;3;336;U16;;Max temperature limit power working temperature point [0];max_temperature_limit_power_working_temperature_point_0;1.000000;0.000000;℃;1
+235;3;337;U16;;Max temperature limit power working temperature point [1];max_temperature_limit_power_working_temperature_point_1;1.000000;0.000000;℃;1
+236;3;338;U16;;Max temperature limit power working temperature point [2];max_temperature_limit_power_working_temperature_point_2;1.000000;0.000000;℃;1
+237;3;339;U16;;Max temperature limit power working temperature point [3];max_temperature_limit_power_working_temperature_point_3;1.000000;0.000000;℃;1
+238;3;340;U16;;Max temperature limit power working temperature point [4];max_temperature_limit_power_working_temperature_point_4;1.000000;0.000000;℃;1
+239;3;341;U16;;Max temperature limit power working temperature point [5];max_temperature_limit_power_working_temperature_point_5;1.000000;0.000000;℃;1
+240;3;342;U16;;Max temperature limit power working temperature point [6];max_temperature_limit_power_working_temperature_point_6;1.000000;0.000000;℃;1
+241;3;343;U16;;Max temperature limit power working temperature point [7];max_temperature_limit_power_working_temperature_point_7;1.000000;0.000000;℃;1
+242;3;344;U16;;Max temperature limit power working temperature point [8];max_temperature_limit_power_working_temperature_point_8;1.000000;0.000000;℃;1
+243;3;345;U16;;Max temperature limit power discharge power point [0] (+kw);max_temperature_limit_power_discharge_power_point_0_kw;10.000000;0.000000;kW;1
+244;3;346;U16;;Max temperature limit power discharge power point [1] (+kw);max_temperature_limit_power_discharge_power_point_1_kw;10.000000;0.000000;kW;1
+245;3;347;U16;;Max temperature limit power discharge power point [2] (+kw);max_temperature_limit_power_discharge_power_point_2_kw;10.000000;0.000000;kW;1
+246;3;348;U16;;Max temperature limit power discharge power point [3] (+kw);max_temperature_limit_power_discharge_power_point_3_kw;10.000000;0.000000;kW;1
+247;3;349;U16;;Max temperature limit power discharge power point [4] (+kw);max_temperature_limit_power_discharge_power_point_4_kw;10.000000;0.000000;kW;1
+248;3;350;U16;;Max temperature limit power discharge power point [5] (+kw);max_temperature_limit_power_discharge_power_point_5_kw;10.000000;0.000000;kW;1
+249;3;351;U16;;Max temperature limit power discharge power point [6] (+kw);max_temperature_limit_power_discharge_power_point_6_kw;10.000000;0.000000;kW;1
+250;3;352;U16;;Max temperature limit power discharge power point [7] (+kw);max_temperature_limit_power_discharge_power_point_7_kw;10.000000;0.000000;kW;1
+251;3;353;U16;;Max temperature limit power discharge power point [8] (+kw);max_temperature_limit_power_discharge_power_point_8_kw;10.000000;0.000000;kW;1
+252;3;354;U16;;Max temperature limit power discharge power point [9] (+kw);max_temperature_limit_power_discharge_power_point_9_kw;10.000000;0.000000;kW;1
+253;3;355;U16;;Max temperature limit power charging power point [0] (-kw);max_temperature_limit_power_charging_power_point_0_kw;10.000000;0.000000;kW;1
+254;3;356;U16;;Max temperature limit power charging power point [1] (-kw);max_temperature_limit_power_charging_power_point_1_kw;10.000000;0.000000;kW;1
+255;3;357;U16;;Max temperature limit power charging power point [2] (-kw);max_temperature_limit_power_charging_power_point_2_kw;10.000000;0.000000;kW;1
+256;3;358;U16;;Max temperature limit power charging power point [3] (-kw);max_temperature_limit_power_charging_power_point_3_kw;10.000000;0.000000;kW;1
+257;3;359;U16;;Max temperature limit power charging power point [4] (-kw);max_temperature_limit_power_charging_power_point_4_kw;10.000000;0.000000;kW;1
+258;3;360;U16;;Max temperature limit power charging power point [5] (-kw);max_temperature_limit_power_charging_power_point_5_kw;10.000000;0.000000;kW;1
+259;3;361;U16;;Max temperature limit power charging power point [6] (-kw);max_temperature_limit_power_charging_power_point_6_kw;10.000000;0.000000;kW;1
+260;3;362;U16;;Max temperature limit power charging power point [7] (-kw);max_temperature_limit_power_charging_power_point_7_kw;10.000000;0.000000;kW;1
+261;3;363;U16;;Max temperature limit power charging power point [8] (-kw);max_temperature_limit_power_charging_power_point_8_kw;10.000000;0.000000;kW;1
+262;3;364;U16;;Max temperature limit power charging power point [9] (-kw);max_temperature_limit_power_charging_power_point_9_kw;10.000000;0.000000;kW;1
+263;3;365;U16;;PCS maximum discharge power;pcs_maximum_discharge_power;10.000000;0.000000;kW;1
+264;3;366;U16;;PCS charging maximum power;pcs_charging_maximum_power;10.000000;0.000000;kW;1
+265;3;367;U16;;Stop charging single cell voltage;stop_charging_single_cell_voltage;1000.000000;0.000000;V;1
+266;3;368;U16;;Stop charging single cell voltage return difference;stop_charging_single_cell_voltage_return_difference;1000.000000;0.000000;V;1
+267;3;369;U16;;Parking cell voltage;parking_cell_voltage;1000.000000;0.000000;V;1
+268;3;370;U16;;Parking single cell voltage hysteresis value;parking_single_cell_voltage_hysteresis_value;1000.000000;0.000000;V;1
+269;3;371;U16;;Reverse flow - rated power (kW);reverse_flow_rated_power_kw;10.000000;0.000000;kW;1
+270;3;375;U16;;Reverse flow-power differential value;reverse_flowpower_differential_value;10.000000;0.000000;kW;1
+271;3;376;U16;;Backflow-adjustment frequency(s);backflowadjustment_frequencys;1.000000;0.000000;s;1
+272;3;377;U16;;Single cell voltage limit power voltage point [0] (v);single_cell_voltage_limit_power_voltage_point_0_v;1000.000000;0.000000;V;1
+273;3;378;U16;;Single cell voltage limit power voltage point [1] (v);single_cell_voltage_limit_power_voltage_point_1_v;1000.000000;0.000000;V;1
+274;3;379;U16;;Single cell voltage limit power voltage point [2] (v);single_cell_voltage_limit_power_voltage_point_2_v;1000.000000;0.000000;V;1
+275;3;380;U16;;Single cell voltage limit power voltage point [3] (v);single_cell_voltage_limit_power_voltage_point_3_v;1000.000000;0.000000;V;1
+276;3;381;U16;;Single cell voltage limit power voltage point [4] (v);single_cell_voltage_limit_power_voltage_point_4_v;1000.000000;0.000000;V;1
+277;3;382;U16;;Single cell voltage limit power voltage point [5] (v);single_cell_voltage_limit_power_voltage_point_5_v;1000.000000;0.000000;V;1
+278;3;383;U16;;Single cell voltage limit power voltage point [6] (v);single_cell_voltage_limit_power_voltage_point_6_v;1000.000000;0.000000;V;1
+279;3;384;U16;;Single cell voltage limit power voltage point [7] (v);single_cell_voltage_limit_power_voltage_point_7_v;1000.000000;0.000000;V;1
+280;3;385;U16;;Single cell voltage limit power voltage point [8] (v);single_cell_voltage_limit_power_voltage_point_8_v;1000.000000;0.000000;V;1
+281;3;386;U16;;Single cell voltage limited power discharge power point [0] (+kw);single_cell_voltage_limited_power_discharge_power_point_0_kw;10.000000;0.000000;kW;1
+282;3;387;U16;;Single cell voltage limited power discharge power point [1] (+kw);single_cell_voltage_limited_power_discharge_power_point_1_kw;10.000000;0.000000;kW;1
+283;3;388;U16;;Single cell voltage limited power discharge power point [2] (+kw);single_cell_voltage_limited_power_discharge_power_point_2_kw;10.000000;0.000000;kW;1
+284;3;389;U16;;Single cell voltage limited power discharge power point [3] (+kw);single_cell_voltage_limited_power_discharge_power_point_3_kw;10.000000;0.000000;kW;1
+285;3;390;U16;;Single cell voltage limit power discharge power point [4] (+kw);single_cell_voltage_limit_power_discharge_power_point_4_kw;10.000000;0.000000;kW;1
+286;3;391;U16;;Single cell voltage limited power discharge power point [5] (+kw);single_cell_voltage_limited_power_discharge_power_point_5_kw;10.000000;0.000000;kW;1
+287;3;392;U16;;Single cell voltage limit power discharge power point [6] (+kw);single_cell_voltage_limit_power_discharge_power_point_6_kw;10.000000;0.000000;kW;1
+288;3;393;U16;;Single cell voltage limited power discharge power point [7] (+kw);single_cell_voltage_limited_power_discharge_power_point_7_kw;10.000000;0.000000;kW;1
+289;3;394;U16;;Single cell voltage limited power discharge power point [8] (+kw);single_cell_voltage_limited_power_discharge_power_point_8_kw;10.000000;0.000000;kW;1
+290;3;395;U16;;Single cell voltage limit power discharge power point [9] (+kw);single_cell_voltage_limit_power_discharge_power_point_9_kw;10.000000;0.000000;kW;1
+291;3;396;U16;;Single cell voltage limited power charging power point [0] (-kw);single_cell_voltage_limited_power_charging_power_point_0_kw;10.000000;0.000000;kW;1
+292;3;397;U16;;Single cell voltage limited power charging power point [1] (-kw);single_cell_voltage_limited_power_charging_power_point_1_kw;10.000000;0.000000;kW;1
+293;3;398;U16;;Single cell voltage limited power charging power point [2] (-kw);single_cell_voltage_limited_power_charging_power_point_2_kw;10.000000;0.000000;kW;1
+294;3;399;U16;;Single cell voltage limited power charging power point [3] (-kw);single_cell_voltage_limited_power_charging_power_point_3_kw;10.000000;0.000000;kW;1
+295;3;400;U16;;Single cell voltage limited power charging power point [4] (-kw);single_cell_voltage_limited_power_charging_power_point_4_kw;10.000000;0.000000;kW;1
+296;3;401;U16;;Single cell voltage limited power charging power point [5] (-kw);single_cell_voltage_limited_power_charging_power_point_5_kw;10.000000;0.000000;kW;1
+297;3;402;U16;;Single cell voltage limited power charging power point [6] (-kw);single_cell_voltage_limited_power_charging_power_point_6_kw;10.000000;0.000000;kW;1
+298;3;403;U16;;Single cell voltage limited power charging power point [7] (-kw);single_cell_voltage_limited_power_charging_power_point_7_kw;10.000000;0.000000;kW;1
+299;3;404;U16;;Single cell voltage limited power charging power point [8] (-kw);single_cell_voltage_limited_power_charging_power_point_8_kw;10.000000;0.000000;kW;1
+300;3;405;U16;;Single cell voltage limited power charging power point [9] (-kw);single_cell_voltage_limited_power_charging_power_point_9_kw;10.000000;0.000000;kW;1
+301;3;406;U16;;Demand-rated power (month) (kw);demandrated_power_month_kw;10.000000;0.000000;kW;1
+302;3;407;U16;;Demand-rated power (February) (kw);demandrated_power_february_kw;10.000000;0.000000;kW;1
+303;3;408;U16;;Demand-rated power (March) (kw);demandrated_power_march_kw;10.000000;0.000000;kW;1
+304;3;409;U16;;Demand-rated power (April) (kw);demandrated_power_april_kw;10.000000;0.000000;kW;1
+305;3;410;U16;;Demand-rated power (May) (kw);demandrated_power_may_kw;10.000000;0.000000;kW;1
+306;3;411;U16;;Demand-rated power (June) (kw);demandrated_power_june_kw;10.000000;0.000000;kW;1
+307;3;412;U16;;Demand-rated power (July) (kw);demandrated_power_july_kw;10.000000;0.000000;kW;1
+308;3;413;U16;;Demand-rated power (August) (kw);demandrated_power_august_kw;10.000000;0.000000;kW;1
+309;3;414;U16;;Demand-rated power (September) (kw);demandrated_power_september_kw;10.000000;0.000000;kW;1
+310;3;415;U16;;Demand-rated power (October) (kw);demandrated_power_october_kw;10.000000;0.000000;kW;1
+311;3;416;U16;;Demand-rated power (November) (kw);demandrated_power_november_kw;10.000000;0.000000;kW;1
+312;3;417;U16;;Demand-rated power (December) (kw);demandrated_power_december_kw;10.000000;0.000000;kW;1
+313;3;421;U16;;Demand-power hysteresis value (must be less than the hysteresis value);demandpower_hysteresis_value_must_be_less_than_the_hysteresis_value;10.000000;0.000000;kW;1
+314;3;422;U16;;Demand-adjustment frequency(s);demandadjustment_frequencys;1.000000;0.000000;s;1
+315;3;423;U16;;Planned power reverse flow enable switch;planned_power_reverse_flow_enable_switch;1.000000;0.000000;;1
+316;3;424;U16;;Planned power 1 start time year month day;planned_power_1_start_time_year_month_day;1.000000;0.000000;;1
+317;3;426;U16;;Planned power 1 end time year month day;planned_power_1_end_time_year_month_day;1.000000;0.000000;;1
+318;3;428;U16;;Planned power 1 start time hours minutes seconds;planned_power_1_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+319;3;430;U16;;Planned power 1 end time hours, minutes, seconds;planned_power_1_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+320;3;432;U16;;Planned power 1 Active power;planned_power_1_active_power;10.000000;0.000000;kW;1
+321;3;433;U16;;Planned power 1 reactive power;planned_power_1_reactive_power;10.000000;0.000000;kVar;1
+322;3;434;U16;;Planned power 1 usage indicator;planned_power_1_usage_indicator;1.000000;0.000000;;1
+323;3;435;U16;;Planned power 2 start time year month day;planned_power_2_start_time_year_month_day;1.000000;0.000000;;1
+324;3;437;U16;;Planned power 2 end time year month day;planned_power_2_end_time_year_month_day;1.000000;0.000000;;1
+325;3;439;U16;;Planned power 2 start time hours minutes seconds;planned_power_2_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+326;3;441;U16;;Planned power 2 end time hours, minutes, seconds;planned_power_2_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+327;3;443;U16;;Planned power 2 active power;planned_power_2_active_power;10.000000;0.000000;kW;1
+328;3;444;U16;;Planned power 2 reactive power;planned_power_2_reactive_power;10.000000;0.000000;kVar;1
+329;3;445;U16;;Planned Power 2 Usage Logo;planned_power_2_usage_logo;1.000000;0.000000;;1
+330;3;446;U16;;Planned power 3 start time year month day;planned_power_3_start_time_year_month_day;1.000000;0.000000;;1
+331;3;448;U16;;Planned power 3 end time year month day;planned_power_3_end_time_year_month_day;1.000000;0.000000;;1
+332;3;450;U16;;Planned power 3 start time hours minutes seconds;planned_power_3_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+333;3;452;U16;;Planned power 3 end time hours, minutes, seconds;planned_power_3_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+334;3;454;U16;;Planned power 3 active power;planned_power_3_active_power;10.000000;0.000000;kW;1
+335;3;455;U16;;Planned power 3 reactive power;planned_power_3_reactive_power;10.000000;0.000000;kVar;1
+336;3;456;U16;;Planned power 3 usage logo;planned_power_3_usage_logo;1.000000;0.000000;;1
+337;3;457;U16;;Planned power 4 start time year month day;planned_power_4_start_time_year_month_day;1.000000;0.000000;;1
+338;3;459;U16;;Planned power 4 end time year month day;planned_power_4_end_time_year_month_day;1.000000;0.000000;;1
+339;3;461;U16;;Planned power 4 start time hours minutes seconds;planned_power_4_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+340;3;463;U16;;Planned power 4 end time hours, minutes, seconds;planned_power_4_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+341;3;465;U16;;Planned power 4 active power;planned_power_4_active_power;10.000000;0.000000;kW;1
+342;3;466;U16;;Planned power 4 reactive power;planned_power_4_reactive_power;10.000000;0.000000;kVar;1
+343;3;467;U16;;Planned Power 4 Use Logo;planned_power_4_use_logo;1.000000;0.000000;;1
+344;3;468;U16;;Planned power 5 start time year month day;planned_power_5_start_time_year_month_day;1.000000;0.000000;;1
+345;3;470;U16;;Planned power 5 end time year month day;planned_power_5_end_time_year_month_day;1.000000;0.000000;;1
+346;3;472;U16;;Planned power 5 start time hours minutes seconds;planned_power_5_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+347;3;474;U16;;Planned power 5 end time hours, minutes, seconds;planned_power_5_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+348;3;476;U16;;Planned power 5 active power;planned_power_5_active_power;10.000000;0.000000;kW;1
+349;3;477;U16;;Planned power 5 reactive power;planned_power_5_reactive_power;10.000000;0.000000;kVar;1
+350;3;478;U16;;Planned power 5 use logo;planned_power_5_use_logo;1.000000;0.000000;;1
+351;3;479;U16;;Planned power 6 start time year month day;planned_power_6_start_time_year_month_day;1.000000;0.000000;;1
+352;3;481;U16;;Planned power 6 end time year month day;planned_power_6_end_time_year_month_day;1.000000;0.000000;;1
+353;3;483;U16;;Planned power 6 start time hours minutes seconds;planned_power_6_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+354;3;485;U16;;Planned power 6 end time hours, minutes, seconds;planned_power_6_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+355;3;487;U16;;Planned power 6 active power;planned_power_6_active_power;10.000000;0.000000;kW;1
+356;3;488;U16;;Planned power 6 reactive power;planned_power_6_reactive_power;10.000000;0.000000;kVar;1
+357;3;489;U16;;Planned power 6 use logo;planned_power_6_use_logo;1.000000;0.000000;;1
+358;3;490;U16;;Planned power 7 start time year month day;planned_power_7_start_time_year_month_day;1.000000;0.000000;;1
+359;3;492;U16;;Planned power 7 end time year month day;planned_power_7_end_time_year_month_day;1.000000;0.000000;;1
+360;3;494;U16;;Planned power 7 start time hours minutes seconds;planned_power_7_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+361;3;496;U16;;Planned power 7 end time hours, minutes, seconds;planned_power_7_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+362;3;498;U16;;Planned power 7 Active power;planned_power_7_active_power;10.000000;0.000000;kW;1
+363;3;499;U16;;Planned power 7 reactive power;planned_power_7_reactive_power;10.000000;0.000000;kVar;1
+364;3;500;U16;;Planned power 7 use logo;planned_power_7_use_logo;1.000000;0.000000;;1
+365;3;501;U16;;Planned power 8 start time year month day;planned_power_8_start_time_year_month_day;1.000000;0.000000;;1
+366;3;503;U16;;Planned power 8 end time year month day;planned_power_8_end_time_year_month_day;1.000000;0.000000;;1
+367;3;505;U16;;Planned power 8 start time hours minutes seconds;planned_power_8_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+368;3;507;U16;;Planned power 8 end time hours, minutes, seconds;planned_power_8_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+369;3;509;U16;;Planned power 8 active power;planned_power_8_active_power;10.000000;0.000000;kW;1
+370;3;510;U16;;Planned power 8 reactive power;planned_power_8_reactive_power;10.000000;0.000000;kVar;1
+371;3;511;U16;;Planned power 8 use logo;planned_power_8_use_logo;1.000000;0.000000;;1
+372;3;512;U16;;Planned power 9 start time year month day;planned_power_9_start_time_year_month_day;1.000000;0.000000;;1
+373;3;514;U16;;Planned power 9 end time year month day;planned_power_9_end_time_year_month_day;1.000000;0.000000;;1
+374;3;516;U16;;Planned power 9 start time hours minutes seconds;planned_power_9_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+375;3;518;U16;;Planned power 9 end time hours, minutes, seconds;planned_power_9_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+376;3;520;U16;;Planned power 9 Active power;planned_power_9_active_power;10.000000;0.000000;kW;1
+377;3;521;U16;;Planned power 9 reactive power;planned_power_9_reactive_power;10.000000;0.000000;kVar;1
+378;3;522;U16;;Planned power 9 use logo;planned_power_9_use_logo;1.000000;0.000000;;1
+379;3;523;U16;;Planned power 10 start time year month day;planned_power_10_start_time_year_month_day;1.000000;0.000000;;1
+380;3;525;U16;;Planned power 10 end time year month day;planned_power_10_end_time_year_month_day;1.000000;0.000000;;1
+381;3;527;U16;;Planned power 10 start time hours minutes seconds;planned_power_10_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+382;3;529;U16;;Planned power 10 end time hours minutes seconds;planned_power_10_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+383;3;531;U16;;Planned power 10 active power;planned_power_10_active_power;10.000000;0.000000;kW;1
+384;3;532;U16;;Planned power 10 reactive power;planned_power_10_reactive_power;10.000000;0.000000;kVar;1
+385;3;533;U16;;Planned power 10 use logo;planned_power_10_use_logo;1.000000;0.000000;;1
+386;3;534;U16;;Planned power 11 start time year month day;planned_power_11_start_time_year_month_day;1.000000;0.000000;;1
+387;3;536;U16;;Planned power 11 end time year month day;planned_power_11_end_time_year_month_day;1.000000;0.000000;;1
+388;3;538;U16;;Planned power 11 start time hours minutes seconds;planned_power_11_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+389;3;540;U16;;Planned power 11 end time hours, minutes, seconds;planned_power_11_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+390;3;542;U16;;Planned power 11 Active power;planned_power_11_active_power;10.000000;0.000000;kW;1
+391;3;543;U16;;Planned power 11 reactive power;planned_power_11_reactive_power;10.000000;0.000000;kVar;1
+392;3;544;U16;;Planned power 11 use logo;planned_power_11_use_logo;1.000000;0.000000;;1
+393;3;545;U16;;Planned power 12 start time year month day;planned_power_12_start_time_year_month_day;1.000000;0.000000;;1
+394;3;547;U16;;Planned power 12 end time year month day;planned_power_12_end_time_year_month_day;1.000000;0.000000;;1
+395;3;549;U16;;Planned power 12 start time hours minutes seconds;planned_power_12_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+396;3;551;U16;;Planned power 12 end time hours, minutes, seconds;planned_power_12_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+397;3;553;U16;;Planned power 12 Active power;planned_power_12_active_power;10.000000;0.000000;kW;1
+398;3;554;U16;;Planned power 12 reactive power;planned_power_12_reactive_power;10.000000;0.000000;kVar;1
+399;3;555;U16;;Planned power 12 use logo;planned_power_12_use_logo;1.000000;0.000000;;1
+400;3;556;U16;;Planned power 13 start time year month day;planned_power_13_start_time_year_month_day;1.000000;0.000000;;1
+401;3;558;U16;;Planned power 13 end time year month day;planned_power_13_end_time_year_month_day;1.000000;0.000000;;1
+402;3;560;U16;;Planned power 13 start time hours minutes seconds;planned_power_13_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+403;3;562;U16;;Planned power 13 end time hours, minutes, seconds;planned_power_13_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+404;3;564;U16;;Planned power 13 Active power;planned_power_13_active_power;10.000000;0.000000;kW;1
+405;3;565;U16;;Planned power 13 reactive power;planned_power_13_reactive_power;10.000000;0.000000;kVar;1
+406;3;566;U16;;Planned power 13 use logo;planned_power_13_use_logo;1.000000;0.000000;;1
+407;3;567;U16;;Planned power 14 start time year month day;planned_power_14_start_time_year_month_day;1.000000;0.000000;;1
+408;3;569;U16;;Planned power 14 end time year month day;planned_power_14_end_time_year_month_day;1.000000;0.000000;;1
+409;3;571;U16;;Planned power 14 start time hours minutes seconds;planned_power_14_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+410;3;573;U16;;Planned power 14 end time hours, minutes, seconds;planned_power_14_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+411;3;575;U16;;Planned power 14 Active power;planned_power_14_active_power;10.000000;0.000000;kW;1
+412;3;576;U16;;Planned power 14 reactive power;planned_power_14_reactive_power;10.000000;0.000000;kVar;1
+413;3;577;U16;;Planned power 14 use logo;planned_power_14_use_logo;1.000000;0.000000;;1
+414;3;578;U16;;Planned power 15 start time year month day;planned_power_15_start_time_year_month_day;1.000000;0.000000;;1
+415;3;580;U16;;Planned power 15 end time year month day;planned_power_15_end_time_year_month_day;1.000000;0.000000;;1
+416;3;582;U16;;Planned power 15 start time hours minutes seconds;planned_power_15_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+417;3;584;U16;;Planned power 15 end time hours, minutes, seconds;planned_power_15_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+418;3;586;U16;;Planned power 15 Active power;planned_power_15_active_power;10.000000;0.000000;kW;1
+419;3;587;U16;;Planned power 15 reactive power;planned_power_15_reactive_power;10.000000;0.000000;kVar;1
+420;3;588;U16;;Planned power 15 use logo;planned_power_15_use_logo;1.000000;0.000000;;1
+421;3;589;U16;;Planned power 16 start time year month day;planned_power_16_start_time_year_month_day;1.000000;0.000000;;1
+422;3;591;U16;;Planned power 16 end time year month day;planned_power_16_end_time_year_month_day;1.000000;0.000000;;1
+423;3;593;U16;;Planned power 16 start time hours minutes seconds;planned_power_16_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+424;3;595;U16;;Planned power 16 end time hours, minutes, seconds;planned_power_16_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+425;3;597;U16;;Planned power 16 Active power;planned_power_16_active_power;10.000000;0.000000;kW;1
+426;3;598;U16;;Planned power 16 reactive power;planned_power_16_reactive_power;10.000000;0.000000;kVar;1
+427;3;599;U16;;Planned power 16 usage logo;planned_power_16_usage_logo;1.000000;0.000000;;1
+428;3;600;U16;;Planned power 17 start time year month day;planned_power_17_start_time_year_month_day;1.000000;0.000000;;1
+429;3;602;U16;;Planned power 17 end time year month day;planned_power_17_end_time_year_month_day;1.000000;0.000000;;1
+430;3;604;U16;;Planned power 17 start time hours minutes seconds;planned_power_17_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+431;3;606;U16;;Planned power 17 end time hours, minutes, seconds;planned_power_17_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+432;3;608;U16;;Planned power 17 Active power;planned_power_17_active_power;10.000000;0.000000;kW;1
+433;3;609;U16;;Planned power 17 reactive power;planned_power_17_reactive_power;10.000000;0.000000;kVar;1
+434;3;610;U16;;Planned power 17 use logo;planned_power_17_use_logo;1.000000;0.000000;;1
+435;3;611;U16;;Planned power 18 start time year month day;planned_power_18_start_time_year_month_day;1.000000;0.000000;;1
+436;3;613;U16;;Planned power 18 end time year month day;planned_power_18_end_time_year_month_day;1.000000;0.000000;;1
+437;3;615;U16;;Planned power 18 start time hours minutes seconds;planned_power_18_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+438;3;617;U16;;Planned power 18 end time hours, minutes, seconds;planned_power_18_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+439;3;619;U16;;Planned power 18 Active power;planned_power_18_active_power;10.000000;0.000000;kW;1
+440;3;620;U16;;Planned power 18 reactive power;planned_power_18_reactive_power;10.000000;0.000000;kVar;1
+441;3;621;U16;;Planned power 18 use logo;planned_power_18_use_logo;1.000000;0.000000;;1
+442;3;622;U16;;Planned power 19 start time year month day;planned_power_19_start_time_year_month_day;1.000000;0.000000;;1
+443;3;624;U16;;Planned power 19 end time year month day;planned_power_19_end_time_year_month_day;1.000000;0.000000;;1
+444;3;626;U16;;Planned power 19 start time hours minutes seconds;planned_power_19_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+445;3;628;U16;;Planned power 19 end time hours, minutes, seconds;planned_power_19_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+446;3;630;U16;;Planned power 19 Active power;planned_power_19_active_power;10.000000;0.000000;kW;1
+447;3;631;U16;;Planned power 19 reactive power;planned_power_19_reactive_power;10.000000;0.000000;kVar;1
+448;3;632;U16;;Planned power 19 use logo;planned_power_19_use_logo;1.000000;0.000000;;1
+449;3;633;U16;;Planned power 20 start time year month day;planned_power_20_start_time_year_month_day;1.000000;0.000000;;1
+450;3;635;U16;;Planned power 20 end time year month day;planned_power_20_end_time_year_month_day;1.000000;0.000000;;1
+451;3;637;U16;;Planned power 20 start time hours minutes seconds;planned_power_20_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+452;3;639;U16;;Planned power 20 end time hours, minutes, seconds;planned_power_20_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+453;3;641;U16;;Planned power 20 Active power;planned_power_20_active_power;10.000000;0.000000;kW;1
+454;3;642;U16;;Planned power 20 reactive power;planned_power_20_reactive_power;10.000000;0.000000;kVar;1
+455;3;643;U16;;Planned power 20 use logo;planned_power_20_use_logo;1.000000;0.000000;;1
+456;3;644;U16;;Planned power 21 start time year month day;planned_power_21_start_time_year_month_day;1.000000;0.000000;;1
+457;3;646;U16;;Planned power 21 end time year month day;planned_power_21_end_time_year_month_day;1.000000;0.000000;;1
+458;3;648;U16;;Planned power 21 start time hours minutes seconds;planned_power_21_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+459;3;650;U16;;Planned power 21 end time hours, minutes, seconds;planned_power_21_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+460;3;652;U16;;Planned power 21 Active power;planned_power_21_active_power;10.000000;0.000000;kW;1
+461;3;653;U16;;Planned power 21 reactive power;planned_power_21_reactive_power;10.000000;0.000000;kVar;1
+462;3;654;U16;;Planned Power 21 Use Logo;planned_power_21_use_logo;1.000000;0.000000;;1
+463;3;655;U16;;Planned power 22 start time year month day;planned_power_22_start_time_year_month_day;1.000000;0.000000;;1
+464;3;657;U16;;Planned power 22 end time year month day;planned_power_22_end_time_year_month_day;1.000000;0.000000;;1
+465;3;659;U16;;Planned power 22 start time hours minutes seconds;planned_power_22_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+466;3;661;U16;;Planned power 22 end time hours, minutes, seconds;planned_power_22_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+467;3;663;U16;;Planned power 22 Active power;planned_power_22_active_power;10.000000;0.000000;kW;1
+468;3;664;U16;;Planned power 22 reactive power;planned_power_22_reactive_power;10.000000;0.000000;kVar;1
+469;3;665;U16;;Planned power 22 use logo;planned_power_22_use_logo;1.000000;0.000000;;1
+470;3;666;U16;;Planned power 23 start time year month day;planned_power_23_start_time_year_month_day;1.000000;0.000000;;1
+471;3;668;U16;;Planned power 23 end time year month day;planned_power_23_end_time_year_month_day;1.000000;0.000000;;1
+472;3;670;U16;;Planned power 23 start time hours minutes seconds;planned_power_23_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+473;3;672;U16;;Planned power 23 end time hours, minutes, seconds;planned_power_23_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+474;3;674;U16;;Planned power 23 Active power;planned_power_23_active_power;10.000000;0.000000;kW;1
+475;3;675;U16;;Planned power 23 reactive power;planned_power_23_reactive_power;10.000000;0.000000;kVar;1
+476;3;676;U16;;Planned power 23 use logo;planned_power_23_use_logo;1.000000;0.000000;;1
+477;3;677;U16;;Planned power 24 start time year month day;planned_power_24_start_time_year_month_day;1.000000;0.000000;;1
+478;3;679;U16;;Planned power 24 end time year month day;planned_power_24_end_time_year_month_day;1.000000;0.000000;;1
+479;3;681;U16;;Planned power 24 start time hours minutes seconds;planned_power_24_start_time_hours_minutes_seconds;1.000000;0.000000;;1
+480;3;683;U16;;Planned power 24 end time hours, minutes, seconds;planned_power_24_end_time_hours_minutes_seconds;1.000000;0.000000;;1
+481;3;685;U16;;Planned power 24 Active power;planned_power_24_active_power;10.000000;0.000000;kW;1
+482;3;686;U16;;Planned power 24 reactive power;planned_power_24_reactive_power;10.000000;0.000000;kVar;1
+483;3;687;U16;;Planned power 24 use logo;planned_power_24_use_logo;1.000000;0.000000;;1
+484;3;714;U16;;Min temperature limit power point [0];min_temperature_limit_power_point_0;1.000000;0.000000;℃;1
+485;3;715;U16;;Minimum temperature limit power point [1];minimum_temperature_limit_power_point_1;1.000000;0.000000;℃;1
+486;3;716;U16;;Minimum temperature limit power working temperature point [2];minimum_temperature_limit_power_working_temperature_point_2;1.000000;0.000000;℃;1
+487;3;717;U16;;Min temperature limit power working temperature point [3];min_temperature_limit_power_working_temperature_point_3;1.000000;0.000000;℃;1
+488;3;718;U16;;Min temperature limit power point [4];min_temperature_limit_power_point_4;1.000000;0.000000;℃;1
+489;3;719;U16;;Min temperature limit power working temperature point [5];min_temperature_limit_power_working_temperature_point_5;1.000000;0.000000;℃;1
+490;3;720;U16;;Minimum temperature limit power working temperature point [6];minimum_temperature_limit_power_working_temperature_point_6;1.000000;0.000000;℃;1
+491;3;721;U16;;Min temperature limit power working temperature point [7];min_temperature_limit_power_working_temperature_point_7;1.000000;0.000000;℃;1
+492;3;722;U16;;Min temperature limit power working temperature point [8];min_temperature_limit_power_working_temperature_point_8;1.000000;0.000000;℃;1
+493;3;723;U16;;min temperature limit power discharge power point [0] (+kw);min_temperature_limit_power_discharge_power_point_0_kw;10.000000;0.000000;kW;1
+494;3;724;U16;;min temperature limit power discharge power point [1] (+kw);min_temperature_limit_power_discharge_power_point_1_kw;10.000000;0.000000;kW;1
+495;3;725;U16;;min temperature limit power discharge power point [2] (+kw);min_temperature_limit_power_discharge_power_point_2_kw;10.000000;0.000000;kW;1
+496;3;726;U16;;min temperature limit power discharge power point [3] (+kw);min_temperature_limit_power_discharge_power_point_3_kw;10.000000;0.000000;kW;1
+497;3;727;U16;;min temperature limit power discharge power point [4] (+kw);min_temperature_limit_power_discharge_power_point_4_kw;10.000000;0.000000;kW;1
+498;3;728;U16;;min temperature limit power discharge power point [5] (+kw);min_temperature_limit_power_discharge_power_point_5_kw;10.000000;0.000000;kW;1
+499;3;729;U16;;min temperature limit power discharge power point [6] (+kw);min_temperature_limit_power_discharge_power_point_6_kw;10.000000;0.000000;kW;1
+500;3;730;U16;;min temperature limit power discharge power point [7] (+kw);min_temperature_limit_power_discharge_power_point_7_kw;10.000000;0.000000;kW;1
+501;3;731;U16;;min temperature limit power discharge power point [8] (+kw);min_temperature_limit_power_discharge_power_point_8_kw;10.000000;0.000000;kW;1
+502;3;732;U16;;min temperature limit power discharge power point [9] (+kw);min_temperature_limit_power_discharge_power_point_9_kw;10.000000;0.000000;kW;1
+503;3;733;U16;;Min temperature limit power charging power point [0] (-kw);min_temperature_limit_power_charging_power_point_0_kw;10.000000;0.000000;kW;1
+504;3;734;U16;;Min temperature limit power charging power point [1] (-kw);min_temperature_limit_power_charging_power_point_1_kw;10.000000;0.000000;kW;1
+505;3;735;U16;;Min temperature limit power charging power point [2] (-kw);min_temperature_limit_power_charging_power_point_2_kw;10.000000;0.000000;kW;1
+506;3;736;U16;;Min temperature limit power charging power point [3] (-kw);min_temperature_limit_power_charging_power_point_3_kw;10.000000;0.000000;kW;1
+507;3;737;U16;;Min temperature limit power charging power point [4] (-kw);min_temperature_limit_power_charging_power_point_4_kw;10.000000;0.000000;kW;1
+508;3;738;U16;;Min temperature limit power charging power point [5] (-kw);min_temperature_limit_power_charging_power_point_5_kw;10.000000;0.000000;kW;1
+509;3;739;U16;;Min temperature limit power charging power point [6] (-kw);min_temperature_limit_power_charging_power_point_6_kw;10.000000;0.000000;kW;1
+510;3;740;U16;;Min temperature limit power charging power point [7] (-kw);min_temperature_limit_power_charging_power_point_7_kw;10.000000;0.000000;kW;1
+511;3;741;U16;;Min temperature limit power charging power point [8] (-kw);min_temperature_limit_power_charging_power_point_8_kw;10.000000;0.000000;kW;1
+512;3;742;U16;;Min temperature limit power charging power point [9] (-kw);min_temperature_limit_power_charging_power_point_9_kw;10.000000;0.000000;kW;1
+513;3;743;U16;;lems backflow threshold;lems_backflow_threshold;1.000000;0.000000;;1
+514;3;744;U16;;lems reverse power differential value;lems_reverse_power_differential_value;1.000000;0.000000;;1
+515;3;745;U16;;lems backflow adjustment time step;lems_backflow_adjustment_time_step;1.000000;0.000000;;1
+516;3;746;U16;;lems static demand-rated power (month) (kw);lems_static_demandrated_power_month_kw;1.000000;0.000000;;1
+517;3;747;U16;;lems static demand-rated power (February) (kw);lems_static_demandrated_power_february_kw;1.000000;0.000000;;1
+518;3;748;U16;;lems static demand-rated power (March) (kw);lems_static_demandrated_power_march_kw;1.000000;0.000000;;1
+519;3;749;U16;;lems static demand-rated power (April) (kw);lems_static_demandrated_power_april_kw;1.000000;0.000000;;1
+520;3;750;U16;;lems static demand-rated power (may) (kw);lems_static_demandrated_power_may_kw;1.000000;0.000000;;1
+521;3;751;U16;;lems static demand-rated power (June) (kw);lems_static_demandrated_power_june_kw;1.000000;0.000000;;1
+522;3;752;U16;;lems static demand-rated power (July) (kw);lems_static_demandrated_power_july_kw;1.000000;0.000000;;1
+523;3;753;U16;;lems static demand-rated power (August) (kw);lems_static_demandrated_power_august_kw;1.000000;0.000000;;1
+524;3;754;U16;;lems static demand-rated power (September) (kw);lems_static_demandrated_power_september_kw;1.000000;0.000000;;1
+525;3;755;U16;;lems static demand-rated power (Oct)(kw);lems_static_demandrated_power_octkw;1.000000;0.000000;;1
+526;3;756;U16;;lems static demand-rated power (November) (kw);lems_static_demandrated_power_november_kw;1.000000;0.000000;;1
+527;3;757;U16;;lems static demand-rated power (December) (kw);lems_static_demandrated_power_december_kw;1.000000;0.000000;;1
+528;3;758;U16;;lems static demand-power hysteresis value (must be less than the hysteresis value);lems_static_demandpower_hysteresis_value_must_be_less_than_the_hysteresis_value;1.000000;0.000000;;1
+529;3;759;U16;;lems static demand-power adjustment step;lems_static_demandpower_adjustment_step;1.000000;0.000000;;1
+530;3;760;U16;;aems reverse power differential value;aems_reverse_power_differential_value;1.000000;0.000000;;1
+531;3;761;U16;;AEMS countercurrent adjustment time step;aems_countercurrent_adjustment_time_step;1.000000;0.000000;;1
+532;3;762;U16;;aems backflow threshold;aems_backflow_threshold;1.000000;0.000000;;1
+533;3;763;U16;;aems static demand-rated power (one month) (kw);aems_static_demandrated_power_one_month_kw;1.000000;0.000000;;1
+534;3;764;U16;;aems static demand-rated power (February) (kw);aems_static_demandrated_power_february_kw;1.000000;0.000000;;1
+535;3;765;U16;;aems static demand-rated power (March) (kw);aems_static_demandrated_power_march_kw;1.000000;0.000000;;1
+536;3;766;U16;;aems static demand-rated power (April) (kw);aems_static_demandrated_power_april_kw;1.000000;0.000000;;1
+537;3;767;U16;;aems static demand-rated power (May) (kw);aems_static_demandrated_power_may_kw;1.000000;0.000000;;1
+538;3;768;U16;;aems static demand-rated power (June) (kw);aems_static_demandrated_power_june_kw;1.000000;0.000000;;1
+539;3;769;U16;;aems static demand-rated power (July) (kw);aems_static_demandrated_power_july_kw;1.000000;0.000000;;1
+540;3;770;U16;;aems static demand-rated power (August) (kw);aems_static_demandrated_power_august_kw;1.000000;0.000000;;1
+541;3;771;U16;;aems static demand-rated power (September) (kw);aems_static_demandrated_power_september_kw;1.000000;0.000000;;1
+542;3;772;U16;;aems static demand-rated power (October) (kw);aems_static_demandrated_power_october_kw;1.000000;0.000000;;1
+543;3;773;U16;;aems static demand-rated power (November) (kw);aems_static_demandrated_power_november_kw;1.000000;0.000000;;1
+544;3;774;U16;;aems static demand-rated power (December) (kw);aems_static_demandrated_power_december_kw;1.000000;0.000000;;1
+545;3;775;U16;;aems static demand-power hysteresis value (must be less than the hysteresis value);aems_static_demandpower_hysteresis_value_must_be_less_than_the_hysteresis_value;1.000000;0.000000;;1
+546;3;776;U16;;aems static demand-power adjustment step;aems_static_demandpower_adjustment_step;1.000000;0.000000;;1
+547;3;777;U16;;Peak-valley arbitrage-discharge enable 1;peakvalley_arbitragedischarge_enable_1;1.000000;0.000000;;1
+548;3;778;U16;;Peak-valley arbitrage-start time 1 (discharge);peakvalley_arbitragestart_time_1_discharge;1.000000;0.000000;;1
+549;3;780;U16;;Peak-valley arbitrage-end time 1 (discharge);peakvalley_arbitrageend_time_1_discharge;1.000000;0.000000;;1
+550;3;782;U16;;Peak-valley arbitrage-set power 1 (discharge);peakvalley_arbitrageset_power_1_discharge;1.000000;0.000000;kW;1
+551;3;783;U16;;Peak-valley arbitrage-discharge cutoff soc1 (discharge);peakvalley_arbitragedischarge_cutoff_soc1_discharge;1.000000;0.000000;'%;1
+552;3;784;U16;;Peak-valley arbitrage-discharge enable 2;peakvalley_arbitragedischarge_enable_2;1.000000;0.000000;;1
+553;3;785;U16;;Peak-valley arbitrage-start time 2 (discharge);peakvalley_arbitragestart_time_2_discharge;1.000000;0.000000;;1
+554;3;787;U16;;Peak-valley arbitrage-end time 2 (discharge);peakvalley_arbitrageend_time_2_discharge;1.000000;0.000000;;1
+555;3;789;U16;;Peak-valley arbitrage-set power 2 (discharge);peakvalley_arbitrageset_power_2_discharge;1.000000;0.000000;kW;1
+556;3;790;U16;;Peak-valley arbitrage-discharge cutoff soc2 (discharge);peakvalley_arbitragedischarge_cutoff_soc2_discharge;1.000000;0.000000;'%;1
+557;3;791;U16;;Peak-valley arbitrage-discharge enable 3;peakvalley_arbitragedischarge_enable_3;1.000000;0.000000;;1
+558;3;792;U16;;Peak-valley arbitrage-start time 3 (discharge);peakvalley_arbitragestart_time_3_discharge;1.000000;0.000000;;1
+559;3;794;U16;;Peak-valley arbitrage-end time 3 (discharge);peakvalley_arbitrageend_time_3_discharge;1.000000;0.000000;;1
+560;3;796;U16;;Peak-valley arbitrage-set power 3 (discharge);peakvalley_arbitrageset_power_3_discharge;1.000000;0.000000;kW;1
+561;3;797;U16;;Peak-valley arbitrage-discharge cutoff soc3 (discharge);peakvalley_arbitragedischarge_cutoff_soc3_discharge;1.000000;0.000000;'%;1
+562;3;798;U16;;Peak-valley arbitrage-discharge enable 4;peakvalley_arbitragedischarge_enable_4;1.000000;0.000000;;1
+563;3;799;U16;;Peak-valley arbitrage-start time 4 (discharge);peakvalley_arbitragestart_time_4_discharge;1.000000;0.000000;;1
+564;3;801;U16;;Peak-valley arbitrage-end time 4 (discharge);peakvalley_arbitrageend_time_4_discharge;1.000000;0.000000;;1
+565;3;803;U16;;Peak-valley arbitrage-set power 4 (discharge);peakvalley_arbitrageset_power_4_discharge;1.000000;0.000000;kW;1
+566;3;804;U16;;Peak-valley arbitrage-discharge cutoff soc4 (discharge);peakvalley_arbitragedischarge_cutoff_soc4_discharge;1.000000;0.000000;'%;1
+567;3;805;U16;;Peak-valley arbitrage-charging enablement 1;peakvalley_arbitragecharging_enablement_1;1.000000;0.000000;;1
+568;3;806;U16;;Peak-valley arbitrage-start time 1 (charging);peakvalley_arbitragestart_time_1_charging;1.000000;0.000000;;1
+569;3;808;U16;;Peak-Valley Arbitrage-End Time 1 (Charging);peakvalley_arbitrageend_time_1_charging;1.000000;0.000000;;1
+570;3;810;U16;;Peak-valley arbitrage-set power 1 (charging);peakvalley_arbitrageset_power_1_charging;1.000000;0.000000;kW;1
+571;3;811;U16;;Peak-valley arbitrage-discharge cutoff soc1 (charging);peakvalley_arbitragedischarge_cutoff_soc1_charging;1.000000;0.000000;'%;1
+572;3;812;U16;;Peak-valley arbitrage-charging enablement 2;peakvalley_arbitragecharging_enablement_2;1.000000;0.000000;;1
+573;3;813;U16;;Peak-valley arbitrage-start time 2 (charging);peakvalley_arbitragestart_time_2_charging;1.000000;0.000000;;1
+574;3;815;U16;;Peak-Valley Arbitrage-End Time 2 (Charging);peakvalley_arbitrageend_time_2_charging;1.000000;0.000000;;1
+575;3;817;U16;;Peak-valley arbitrage-set power 2 (charging);peakvalley_arbitrageset_power_2_charging;1.000000;0.000000;kW;1
+576;3;818;U16;;Peak-valley arbitrage-discharge cutoff soc2 (charging);peakvalley_arbitragedischarge_cutoff_soc2_charging;1.000000;0.000000;'%;1
+577;3;819;U16;;Peak-valley arbitrage-charging enablement 3;peakvalley_arbitragecharging_enablement_3;1.000000;0.000000;;1
+578;3;820;U16;;Peak-valley arbitrage-start time 3 (charging);peakvalley_arbitragestart_time_3_charging;1.000000;0.000000;;1
+579;3;822;U16;;Peak-Valley Arbitrage-End Time 3 (Charging);peakvalley_arbitrageend_time_3_charging;1.000000;0.000000;;1
+580;3;824;U16;;Peak-valley arbitrage-set power 3 (charging);peakvalley_arbitrageset_power_3_charging;1.000000;0.000000;kW;1
+581;3;825;U16;;Peak-valley arbitrage-discharge cutoff soc3 (charging);peakvalley_arbitragedischarge_cutoff_soc3_charging;1.000000;0.000000;'%;1
+582;3;826;U16;;Peak-valley arbitrage-charging enablement 4;peakvalley_arbitragecharging_enablement_4;1.000000;0.000000;;1
+583;3;827;U16;;Peak-valley arbitrage-start time 4 (charging);peakvalley_arbitragestart_time_4_charging;1.000000;0.000000;;1
+584;3;829;U16;;Peak-Valley Arbitrage-End Time 4 (Charging);peakvalley_arbitrageend_time_4_charging;1.000000;0.000000;;1
+585;3;831;U16;;Peak-valley arbitrage-set power 4 (charging);peakvalley_arbitrageset_power_4_charging;1.000000;0.000000;kW;1
+586;3;832;U16;;Peak-valley arbitrage-discharge cutoff soc4 (charging);peakvalley_arbitragedischarge_cutoff_soc4_charging;1.000000;0.000000;'%;1
+587;4;201;U16;;Heap SOH;heap_soh;1.000000;0.000000;'%;4
+588;4;202;U16;;Stack status (0: Stop 1: Charge 2: Discharge 3: Standby 4 Fault);stack_status_0_stop_1_charge_2_discharge_3_standby_4_fault;1.000000;0.000000;;9
+589;4;203;U16;;Stack voltage;stack_voltage;10.000000;0.000000;V;4
+590;4;204;U16;;Stack current;stack_current;10.000000;0.000000;A;4
+591;4;205;U16;;Maximum single cell voltage;maximum_single_cell_voltage;1000.000000;0.000000;V;4
+592;4;206;U16;;Minimum single cell voltage;minimum_single_cell_voltage;1000.000000;0.000000;V;4
+593;4;207;U16;;Maximum monomer temperature;maximum_monomer_temperature;1.000000;0.000000;℃;4
+594;4;208;U16;;Minimum monomer temperature;minimum_monomer_temperature;1.000000;0.000000;℃;4
+595;4;209;U16;;Maximum single cell SOC value;maximum_single_cell_soc_value;1.000000;0.000000;'%;4
+596;4;210;U16;;Minimum single cell SOC value;minimum_single_cell_soc_value;1.000000;0.000000;'%;4
+597;4;211;U16;;Maximum cell voltage cluster number;maximum_cell_voltage_cluster_number;1.000000;0.000000;;4
+598;4;212;U16;;Maximum cell voltage Cell number;maximum_cell_voltage_cell_number;1.000000;0.000000;;4
+599;4;213;U16;;Minimum cell voltage cluster number;minimum_cell_voltage_cluster_number;1.000000;0.000000;;4
+600;4;214;U16;;Minimum cell voltage Cell number;minimum_cell_voltage_cell_number;1.000000;0.000000;;4
+601;4;215;U16;;Maximum cell temperature cluster number;maximum_cell_temperature_cluster_number;1.000000;0.000000;;4
+602;4;216;U16;;Maximum monomer temperature monomer number;maximum_monomer_temperature_monomer_number;1.000000;0.000000;;4
+603;4;217;U16;;Minimum cell temperature cluster number;minimum_cell_temperature_cluster_number;1.000000;0.000000;;4
+604;4;218;U16;;Minimum monomer temperature monomer number;minimum_monomer_temperature_monomer_number;1.000000;0.000000;;4
+605;4;219;U16;;;;10.000000;0.000000;A;4
+606;4;220;U16;;;;10.000000;0.000000;A;4
+607;4;223;U16;;Maximum pressure difference of monomer;maximum_pressure_difference_of_monomer;1.000000;0.000000;mV;4
+608;4;224;U16;;Stack power;stack_power;1.000000;0.000000;KW;4
+609;4;227;U16;;Cumulative cluster charging capacity;cumulative_cluster_charging_capacity;1.000000;0.000000;KWh;4
+610;4;229;U16;;Cumulative cluster discharge capacity;cumulative_cluster_discharge_capacity;1.000000;0.000000;KWh;4
+611;4;231;U16;;Rechargeable capacity;rechargeable_capacity;10.000000;0.000000;KWh;4
+612;4;233;U16;;Dischargeable capacity;dischargeable_capacity;10.000000;0.000000;KWh;4
+613;4;6600;U16;;Single cell voltage;single_cell_voltage;1000.000000;0.000000;V;4
+614;4;7000;U16;;Single SOC;single_soc;1.000000;0.000000;'%;4
+615;4;2201;U16;;Cluster SOH;cluster_soh;1.000000;0.000000;'%;4
+616;4;2202;U16;;Cluster status 0: Stop 1: Charging 2: Discharging 3: Standby 4 Fault;cluster_status_0_stop_1_charging_2_discharging_3_standby_4_fault;1.000000;0.000000;;9
+617;4;2203;U16;;Cluster voltage;cluster_voltage;10.000000;0.000000;V;4
+618;4;2204;U16;;Cluster current;cluster_current;10.000000;0.000000;A;4
+619;4;2205;U16;;Maximum single cell voltage;maximum_single_cell_voltage_1;1000.000000;0.000000;V;4
+620;4;2206;U16;;Minimum single cell voltage;minimum_single_cell_voltage_1;1000.000000;0.000000;V;4
+621;4;2207;U16;;Maximum monomer temperature;maximum_monomer_temperature_1;1.000000;0.000000;℃;4
+622;4;2208;U16;;Minimum monomer temperature;minimum_monomer_temperature_1;1.000000;0.000000;℃;4
+623;4;2209;U16;;Maximum single cell SOC value;maximum_single_cell_soc_value_1;1.000000;0.000000;'%;4
+624;4;2210;U16;;Minimum single cell SOC value;minimum_single_cell_soc_value_1;1.000000;0.000000;'%;4
+625;4;2212;U16;;Maximum cell voltage Cell number;maximum_cell_voltage_cell_number_1;1.000000;0.000000;;4
+626;4;2214;U16;;Minimum cell voltage Cell number;minimum_cell_voltage_cell_number_1;1.000000;0.000000;;4
+627;4;2216;U16;;Maximum monomer temperature monomer number;maximum_monomer_temperature_monomer_number_1;1.000000;0.000000;;4
+628;4;2218;U16;;Minimum monomer temperature monomer number;minimum_monomer_temperature_monomer_number_1;1.000000;0.000000;;4
+629;4;2219;U16;;;;10.000000;0.000000;A;4
+630;4;2220;U16;;;;10.000000;0.000000;A;4
+631;4;2221;U16;;Number of cluster batteries;number_of_cluster_batteries;1.000000;0.000000;;4
+632;4;2222;U16;;Number of cluster temperatures;number_of_cluster_temperatures;1.000000;0.000000;;4
+633;4;2223;U16;;;;1.000000;0.000000;mV;4
+634;4;2224;U16;;Cluster Power;cluster_power;1.000000;0.000000;KW;4
+635;4;2225;U16;;;;1.000000;0.000000;;4
+636;4;2226;U16;;;;1.000000;0.000000;;4
+637;4;2227;U16;;Cumulative cluster charging capacity;cumulative_cluster_charging_capacity_1;1.000000;0.000000;KWh;4
+638;4;2229;U16;;Cumulative cluster discharge capacity;cumulative_cluster_discharge_capacity_1;1.000000;0.000000;KWh;4
+639;2;201;U16;;Negative bus insulation moderate alarm;negative_bus_insulation_moderate_alarm;1.000000;0.000000;;9
+640;2;202;U16;;Negative bus insulation serious alarm;negative_bus_insulation_serious_alarm;1.000000;0.000000;;9
+641;2;206;U16;;Cluster terminal voltage overvoltage slight alarm;cluster_terminal_voltage_overvoltage_slight_alarm;1.000000;0.000000;;9
+642;2;207;U16;;Cluster terminal voltage overvoltage moderate alarm;cluster_terminal_voltage_overvoltage_moderate_alarm;1.000000;0.000000;;9
+643;2;208;U16;;Cluster terminal voltage overvoltage severe alarm;cluster_terminal_voltage_overvoltage_severe_alarm;1.000000;0.000000;;9
+644;2;209;U16;;Cluster end voltage undervoltage slight alarm;cluster_end_voltage_undervoltage_slight_alarm;1.000000;0.000000;;9
+645;2;210;U16;;Cluster terminal voltage undervoltage moderate alarm;cluster_terminal_voltage_undervoltage_moderate_alarm;1.000000;0.000000;;9
+646;2;211;U16;;Cluster end voltage undervoltage severe alarm;cluster_end_voltage_undervoltage_severe_alarm;1.000000;0.000000;;9
+647;2;212;U16;;Cluster-side overcurrent minor alarm;clusterside_overcurrent_minor_alarm;1.000000;0.000000;;9
+648;2;213;U16;;Cluster-side overcurrent moderate alarm;clusterside_overcurrent_moderate_alarm;1.000000;0.000000;;9
+649;2;214;U16;;Cluster-side overcurrent severe alarm;clusterside_overcurrent_severe_alarm;1.000000;0.000000;;9
+650;2;215;U16;;Cluster end discharge overcurrent slight alarm;cluster_end_discharge_overcurrent_slight_alarm;1.000000;0.000000;;9
+651;2;216;U16;;Cluster end discharge overcurrent moderate alarm;cluster_end_discharge_overcurrent_moderate_alarm;1.000000;0.000000;;9
+652;2;217;U16;;Cluster end discharge overcurrent severe alarm;cluster_end_discharge_overcurrent_severe_alarm;1.000000;0.000000;;9
+653;2;218;U16;;Single cell overvoltage slight alarm;single_cell_overvoltage_slight_alarm;1.000000;0.000000;;9
+654;2;219;U16;;Single cell overpressure moderate alarm;single_cell_overpressure_moderate_alarm;1.000000;0.000000;;9
+655;2;220;U16;;Single cell overpressure severe alarm;single_cell_overpressure_severe_alarm;1.000000;0.000000;;9
+656;2;221;U16;;Single cell undervoltage slight alarm;single_cell_undervoltage_slight_alarm;1.000000;0.000000;;9
+657;2;222;U16;;Single cell undervoltage moderate alarm;single_cell_undervoltage_moderate_alarm;1.000000;0.000000;;9
+658;2;223;U16;;Single cell undervoltage severe alarm;single_cell_undervoltage_severe_alarm;1.000000;0.000000;;9
+659;2;224;U16;;Single cell over temperature slight alarm;single_cell_over_temperature_slight_alarm;1.000000;0.000000;;9
+660;2;225;U16;;Moderate over-temperature alarm;moderate_overtemperature_alarm;1.000000;0.000000;;9
+661;2;226;U16;;Single cell overtemperature severe alarm;single_cell_overtemperature_severe_alarm;1.000000;0.000000;;9
+662;2;227;U16;;Single cell undertemperature slight alarm;single_cell_undertemperature_slight_alarm;1.000000;0.000000;;9
+663;2;228;U16;;Moderate alarm for cell undertemperature;moderate_alarm_for_cell_undertemperature;1.000000;0.000000;;9
+664;2;229;U16;;Serious alarm for cell undertemperature;serious_alarm_for_cell_undertemperature;1.000000;0.000000;;9
+665;2;230;U16;;Single cell discharge overtemperature slight alarm;single_cell_discharge_overtemperature_slight_alarm;1.000000;0.000000;;9
+666;2;231;U16;;Monomer discharge overtemperature moderate alarm;monomer_discharge_overtemperature_moderate_alarm;1.000000;0.000000;;9
+667;2;232;U16;;Single cell discharge over temperature severe alarm;single_cell_discharge_over_temperature_severe_alarm;1.000000;0.000000;;9
+668;2;233;U16;;Single cell discharge undertemperature slight alarm;single_cell_discharge_undertemperature_slight_alarm;1.000000;0.000000;;9
+669;2;234;U16;;Monomer discharge undertemperature moderate alarm;monomer_discharge_undertemperature_moderate_alarm;1.000000;0.000000;;9
+670;2;235;U16;;Single cell discharge undertemperature severe alarm;single_cell_discharge_undertemperature_severe_alarm;1.000000;0.000000;;9
+671;2;236;U16;;Single cell SOC low mild warning;single_cell_soc_low_mild_warning;1.000000;0.000000;;9
+672;2;237;U16;;Single SOC low to moderate warning;single_soc_low_to_moderate_warning;1.000000;0.000000;;9
+673;2;238;U16;;Single cell SOC low severe alarm;single_cell_soc_low_severe_alarm;1.000000;0.000000;;9
+674;2;239;U16;;Single SOC high mild warning;single_soc_high_mild_warning;1.000000;0.000000;;9
+675;2;240;U16;;Single SOC high moderate alarm;single_soc_high_moderate_alarm;1.000000;0.000000;;9
+676;2;241;U16;;Single SOC high serious alarm;single_soc_high_serious_alarm;1.000000;0.000000;;9
+677;2;242;U16;;Single cell SOC difference mild warning;single_cell_soc_difference_mild_warning;1.000000;0.000000;;9
+678;2;243;U16;;Single cell SOC difference moderate warning;single_cell_soc_difference_moderate_warning;1.000000;0.000000;;9
+679;2;244;U16;;Single cell SOC difference serious alarm;single_cell_soc_difference_serious_alarm;1.000000;0.000000;;9
+680;2;245;U16;;Single cell temperature difference slight alarm;single_cell_temperature_difference_slight_alarm;1.000000;0.000000;;9
+681;2;246;U16;;Moderate temperature difference alarm;moderate_temperature_difference_alarm;1.000000;0.000000;;9
+682;2;247;U16;;Serious temperature difference alarm;serious_temperature_difference_alarm;1.000000;0.000000;;9
+683;2;248;U16;;The temperature in the pile rises too fast (severe);the_temperature_in_the_pile_rises_too_fast_severe;1.000000;0.000000;;4
+684;2;250;U16;;Prohibit charging (protection);prohibit_charging_protection;1.000000;0.000000;;4
+685;2;251;U16;;Prohibited (protection);prohibited_protection;1.000000;0.000000;;4
+686;2;252;U16;;BMS system alarm;bms_system_alarm;1.000000;0.000000;;9
+687;2;253;U16;;BMS system fault summary;bms_system_fault_summary;1.000000;0.000000;;9
+688;2;254;U16;;Extreme single-cell overvoltage action alarm;extreme_singlecell_overvoltage_action_alarm;1.000000;0.000000;;9
+689;2;255;U16;;Limit single cell undervoltage action alarm;limit_single_cell_undervoltage_action_alarm;1.000000;0.000000;;9
+690;2;256;U16;;Extreme single cell over-temperature action alarm;extreme_single_cell_overtemperature_action_alarm;1.000000;0.000000;;9
+691;2;4201;U16;;Cluster end negative insulation alarm (medium);cluster_end_negative_insulation_alarm_medium;1.000000;0.000000;;9
+692;2;4202;U16;;Cluster end negative insulation alarm (serious);cluster_end_negative_insulation_alarm_serious;1.000000;0.000000;;9
+693;2;4203;U16;;Cluster-end SOC low (mild);clusterend_soc_low_mild;1.000000;0.000000;;4
+694;2;4204;U16;;Cluster-end SOC low (medium);clusterend_soc_low_medium;1.000000;0.000000;;4
+695;2;4205;U16;;Cluster-end SOC low (severe);clusterend_soc_low_severe;1.000000;0.000000;;4
+696;2;4206;U16;;Cluster end overvoltage alarm (minor);cluster_end_overvoltage_alarm_minor;1.000000;0.000000;;9
+697;2;4207;U16;;Cluster end overvoltage alarm (moderate);cluster_end_overvoltage_alarm_moderate;1.000000;0.000000;;9
+698;2;4208;U16;;Cluster end overvoltage alarm (serious);cluster_end_overvoltage_alarm_serious;1.000000;0.000000;;9
+699;2;4209;U16;;Cluster end undervoltage alarm (minor);cluster_end_undervoltage_alarm_minor;1.000000;0.000000;;9
+700;2;4210;U16;;Cluster end undervoltage alarm (moderate);cluster_end_undervoltage_alarm_moderate;1.000000;0.000000;;9
+701;2;4211;U16;;Cluster end undervoltage alarm (serious);cluster_end_undervoltage_alarm_serious;1.000000;0.000000;;9
+702;2;4212;U16;;Charging cluster end overcurrent alarm (mild);charging_cluster_end_overcurrent_alarm_mild;1.000000;0.000000;;9
+703;2;4213;U16;;Charging cluster end overcurrent alarm (moderate);charging_cluster_end_overcurrent_alarm_moderate;1.000000;0.000000;;9
+704;2;4214;U16;;Charging cluster end overcurrent alarm (severe);charging_cluster_end_overcurrent_alarm_severe;1.000000;0.000000;;9
+705;2;4215;U16;;Discharge cluster end overcurrent alarm (mild);discharge_cluster_end_overcurrent_alarm_mild;1.000000;0.000000;;9
+706;2;4216;U16;;Discharge cluster end overcurrent alarm (moderate);discharge_cluster_end_overcurrent_alarm_moderate;1.000000;0.000000;;9
+707;2;4217;U16;;Discharge cluster end overcurrent alarm (severe);discharge_cluster_end_overcurrent_alarm_severe;1.000000;0.000000;;9
+708;2;4218;U16;;Single cell overpressure (mild);single_cell_overpressure_mild;1.000000;0.000000;;4
+709;2;4219;U16;;Monomer overpressure (moderate);monomer_overpressure_moderate;1.000000;0.000000;;4
+710;2;4220;U16;;Single cell overpressure (severe);single_cell_overpressure_severe;1.000000;0.000000;;4
+711;2;4221;U16;;Single cell undervoltage (mild);single_cell_undervoltage_mild;1.000000;0.000000;;4
+712;2;4222;U16;;Monomer undervoltage (moderate);monomer_undervoltage_moderate;1.000000;0.000000;;4
+713;2;4223;U16;;Single cell underpressure (severe);single_cell_underpressure_severe;1.000000;0.000000;;4
+714;2;4224;U16;;Charging cell overheating (mild);charging_cell_overheating_mild;1.000000;0.000000;;4
+715;2;4225;U16;;Charging cell overtemperature (moderate);charging_cell_overtemperature_moderate;1.000000;0.000000;;4
+716;2;4226;U16;;Charging cell overtemperature (severe);charging_cell_overtemperature_severe;1.000000;0.000000;;4
+717;2;4227;U16;;Charging cell undertemperature (mild);charging_cell_undertemperature_mild;1.000000;0.000000;;4
+718;2;4228;U16;;Charging cell undertemperature (moderate);charging_cell_undertemperature_moderate;1.000000;0.000000;;4
+719;2;4229;U16;;Charging cell undertemperature (severe);charging_cell_undertemperature_severe;1.000000;0.000000;;4
+720;2;4230;U16;;Discharge cell overheating (mild);discharge_cell_overheating_mild;1.000000;0.000000;;4
+721;2;4231;U16;;Discharge cell overtemperature (moderate);discharge_cell_overtemperature_moderate;1.000000;0.000000;;4
+722;2;4232;U16;;Discharge cell overtemperature (severe);discharge_cell_overtemperature_severe;1.000000;0.000000;;4
+723;2;4233;U16;;Discharge cell undertemperature (mild);discharge_cell_undertemperature_mild;1.000000;0.000000;;4
+724;2;4234;U16;;Discharge cell undertemperature (moderate);discharge_cell_undertemperature_moderate;1.000000;0.000000;;4
+725;2;4235;U16;;Discharge cell undertemperature (severe);discharge_cell_undertemperature_severe;1.000000;0.000000;;4
+726;2;4236;U16;;Low SOC of monomer (mild);low_soc_of_monomer_mild;1.000000;0.000000;;4
+727;2;4237;U16;;Monomer SOC low (moderate);monomer_soc_low_moderate;1.000000;0.000000;;4
+728;2;4238;U16;;Low SOC of single cell (severe);low_soc_of_single_cell_severe;1.000000;0.000000;;4
+729;2;4239;U16;;Single SOC high (mild);single_soc_high_mild;1.000000;0.000000;;4
+730;2;4240;U16;;Single SOC high (medium);single_soc_high_medium;1.000000;0.000000;;4
+731;2;4241;U16;;Single SOC high (severe);single_soc_high_severe;1.000000;0.000000;;4
+732;2;4242;U16;;Single pressure difference (mild);single_pressure_difference_mild;1.000000;0.000000;;4
+733;2;4243;U16;;Single pressure difference (medium);single_pressure_difference_medium;1.000000;0.000000;;4
+734;2;4244;U16;;Single pressure difference (heavy);single_pressure_difference_heavy;1.000000;0.000000;;4
+735;2;4245;U16;;Temperature difference between cells (mild);temperature_difference_between_cells_mild;1.000000;0.000000;;4
+736;2;4246;U16;;Single temperature difference (moderate);single_temperature_difference_moderate;1.000000;0.000000;;4
+737;2;4247;U16;;Single temperature difference (heavy);single_temperature_difference_heavy;1.000000;0.000000;;4
+738;2;4249;U16;;Positive contactor;positive_contactor;1.000000;0.000000;;4
+739;2;4250;U16;;Cluster charging prohibited;cluster_charging_prohibited;1.000000;0.000000;;4
+740;2;4251;U16;;Burst Discharge Inhibit;burst_discharge_inhibit;1.000000;0.000000;;4
+741;2;4252;U16;;Alarm Summary Moderate;alarm_summary_moderate;1.000000;0.000000;;9
+742;2;4253;U16;;Alarm Summary Serious;alarm_summary_serious;1.000000;0.000000;;9
+743;2;4254;U16;;BCM communication failure;bcm_communication_failure;1.000000;0.000000;;9
+744;2;4255;U16;;Battery module overvoltage severe alarm;battery_module_overvoltage_severe_alarm;1.000000;0.000000;;9
+745;2;4256;U16;;Battery module overvoltage moderate alarm;battery_module_overvoltage_moderate_alarm;1.000000;0.000000;;9
+746;2;4257;U16;;Battery module overvoltage slight alarm;battery_module_overvoltage_slight_alarm;1.000000;0.000000;;9
+747;2;4258;U16;;Battery module undervoltage severe alarm;battery_module_undervoltage_severe_alarm;1.000000;0.000000;;9
+748;2;4259;U16;;Battery module undervoltage moderate alarm;battery_module_undervoltage_moderate_alarm;1.000000;0.000000;;9
+749;2;4260;U16;;Battery module undervoltage slight alarm;battery_module_undervoltage_slight_alarm;1.000000;0.000000;;9
+750;2;4261;U16;;Insulation detection fault;insulation_detection_fault;1.000000;0.000000;;9
+751;2;4262;U16;;Serious alarm for over-high power supply voltage;serious_alarm_for_overhigh_power_supply_voltage;1.000000;0.000000;;9
+752;2;4263;U16;;Power supply voltage is too high, moderate alarm;power_supply_voltage_is_too_high_moderate_alarm;1.000000;0.000000;;9
+753;2;4264;U16;;Power supply voltage is too high, slight warning;power_supply_voltage_is_too_high_slight_warning;1.000000;0.000000;;9
+754;2;4265;U16;;Serious low power supply voltage alarm;serious_low_power_supply_voltage_alarm;1.000000;0.000000;;9
+755;2;4266;U16;;Moderate low power supply voltage warning;moderate_low_power_supply_voltage_warning;1.000000;0.000000;;9
+756;2;4267;U16;;Low power supply voltage warning;low_power_supply_voltage_warning;1.000000;0.000000;;9
+757;2;4268;U16;;Insulation detection fault;insulation_detection_fault_1;1.000000;0.000000;;9
+758;2;4269;U16;;Current collection line fault;current_collection_line_fault;1.000000;0.000000;;9
+759;2;4270;U16;;Battery cell temperature detection module failure;battery_cell_temperature_detection_module_failure;1.000000;0.000000;;9
+760;2;4271;U16;;Battery total voltage detection circuit failure;battery_total_voltage_detection_circuit_failure;1.000000;0.000000;;9
+761;2;4272;U16;;The copper busbars connecting the battery cluster charging and discharging circuits are loosely connected;the_copper_busbars_connecting_the_battery_cluster_charging_and_discharging_circuits_are_loosely_connected;1.000000;0.000000;;4
+762;2;4273;U16;;Positive and negative contactor overtemperature;positive_and_negative_contactor_overtemperature;1.000000;0.000000;;4
+763;2;4274;U16;;Cascade addressing failed;cascade_addressing_failed;1.000000;0.000000;;9
+764;2;4275;U16;;MSD not connected fault;msd_not_connected_fault;1.000000;0.000000;;9
+765;2;4276;U16;;Serious alarm for excessive pressure difference of a single cell;serious_alarm_for_excessive_pressure_difference_of_a_single_cell;1.000000;0.000000;;9
+766;2;4277;U16;;The single cell pressure difference is too large, medium alarm;the_single_cell_pressure_difference_is_too_large_medium_alarm;1.000000;0.000000;;9
+767;2;4278;U16;;The pressure difference of the single cell is too large, a slight alarm;the_pressure_difference_of_the_single_cell_is_too_large_a_slight_alarm;1.000000;0.000000;;9
+768;3;2203;U16;;Actual allowed charging power of the stack (maximum);actual_allowed_charging_power_of_the_stack_maximum;1.000000;0.000000;KW;4
+769;3;2204;U16;;Actual allowable discharge power of the stack (maximum);actual_allowable_discharge_power_of_the_stack_maximum;1.000000;0.000000;KW;4
+770;4;55101;U16;;Ub phase voltage;ub_phase_voltage;1.000000;0.000000;V;4
+771;4;55102;U16;;Uc phase voltage;uc_phase_voltage;1.000000;0.000000;V;4
+772;4;55103;U16;;Ia phase current;ia_phase_current;1.000000;0.000000;A;4
+773;4;55104;U16;;Ib phase current;ib_phase_current;1.000000;0.000000;A;4
+774;4;55105;U16;;Ic phase current;ic_phase_current;1.000000;0.000000;A;4
+775;4;55106;U16;;Uab line voltage;uab_line_voltage;1.000000;0.000000;V;4
+776;4;55107;U16;;Ubc line voltage;ubc_line_voltage;1.000000;0.000000;V;4
+777;4;55108;U16;;Uca line voltage;uca_line_voltage;1.000000;0.000000;V;4
+778;4;55109;U16;;Phase A active power;phase_a_active_power;1.000000;0.000000;kw;4
+779;4;55110;U16;;Phase B active power;phase_b_active_power;1.000000;0.000000;kw;4
+780;4;55111;U16;;Phase C active power;phase_c_active_power;1.000000;0.000000;kw;4
+781;4;55112;U16;;Total active power;P_AC;1.000000;0.000000;kw;4
+782;4;55113;U16;;Phase A reactive power;phase_a_reactive_power;1.000000;0.000000;kvar;4
+783;4;55114;U16;;B phase reactive power;b_phase_reactive_power;1.000000;0.000000;kvar;4
+784;4;55115;U16;;Phase C reactive power;phase_c_reactive_power;1.000000;0.000000;kvar;4
+785;4;55116;U16;;Total reactive power;total_reactive_power;1.000000;0.000000;kvar;4
+786;4;55117;U16;;spare;spare;1.000000;0.000000;VA;4
+787;4;55118;U16;;spare;spare_1;1.000000;0.000000;VA;4
+788;4;55119;U16;;spare;spare_2;1.000000;0.000000;VA;4
+789;4;55120;U16;;spare;spare_3;1.000000;0.000000;VA;4
+790;4;55121;U16;;Phase A power factor;phase_a_power_factor;100.000000;0.000000;;4
+791;4;55122;U16;;Phase B power factor;phase_b_power_factor;100.000000;0.000000;;4
+792;4;55123;U16;;Phase C power factor;phase_c_power_factor;100.000000;0.000000;;4
+793;4;55124;U16;;Total power factor;PF;100.000000;0.000000;;4
+794;4;55125;U16;;frequency;FREQ;1.000000;0.000000;Hz;4
+795;4;55126;U16;;Current forward total peak active energy;current_forward_total_peak_active_energy;1.000000;0.000000;KWh;4
+796;4;55127;U16;;Current total forward peak active energy;current_total_forward_peak_active_energy;1.000000;0.000000;KWh;4
+797;4;55128;U16;;Current forward total active energy;current_forward_total_active_energy;1.000000;0.000000;KWh;4
+798;4;55129;U16;;Current forward total valley active energy;current_forward_total_valley_active_energy;1.000000;0.000000;KWh;4
+799;4;55130;U16;;Current total reverse peak active energy;current_total_reverse_peak_active_energy;1.000000;0.000000;KWh;4
+800;4;55131;U16;;Current total reverse peak active energy;current_total_reverse_peak_active_energy_1;1.000000;0.000000;KWh;4
+801;4;55132;U16;;Current total reverse active energy;current_total_reverse_active_energy;1.000000;0.000000;KWh;4
+802;4;55133;U16;;Current total reverse active energy;current_total_reverse_active_energy_1;1.000000;0.000000;KWh;4
+803;4;55134;U16;;spare;spare_4;1.000000;0.000000;;4
+804;4;55135;U16;;spare;spare_5;1.000000;0.000000;;4
+805;4;55151;U16;;Ub phase voltage;ub_phase_voltage_1;1.000000;0.000000;V;4
+806;4;55152;U16;;Uc phase voltage;uc_phase_voltage_1;1.000000;0.000000;V;4
+807;4;55153;U16;;Ia phase current;ia_phase_current_1;1.000000;0.000000;A;4
+808;4;55154;U16;;Ib phase current;ib_phase_current_1;1.000000;0.000000;A;4
+809;4;55155;U16;;Ic phase current;ic_phase_current_1;1.000000;0.000000;A;4
+810;4;55156;U16;;Uab line voltage;uab_line_voltage_1;1.000000;0.000000;V;4
+811;4;55157;U16;;Ubc line voltage;ubc_line_voltage_1;1.000000;0.000000;V;4
+812;4;55158;U16;;Uca line voltage;uca_line_voltage_1;1.000000;0.000000;V;4
+813;4;55159;U16;;Phase A active power;phase_a_active_power_1;1.000000;0.000000;kw;4
+814;4;55160;U16;;Phase B active power;phase_b_active_power_1;1.000000;0.000000;kw;4
+815;4;55161;U16;;Phase C active power;phase_c_active_power_1;1.000000;0.000000;kw;4
+816;4;55162;U16;;Total active power;total_active_power;1.000000;0.000000;kw;4
+817;4;55163;U16;;Phase A reactive power;phase_a_reactive_power_1;1.000000;0.000000;kvar;4
+818;4;55164;U16;;B phase reactive power;b_phase_reactive_power_1;1.000000;0.000000;kvar;4
+819;4;55165;U16;;Phase C reactive power;phase_c_reactive_power_1;1.000000;0.000000;kvar;4
+820;4;55166;U16;;Total reactive power;total_reactive_power_1;1.000000;0.000000;kvar;4
+821;4;55167;U16;;spare;spare_6;1.000000;0.000000;VA;4
+822;4;55168;U16;;spare;spare_7;1.000000;0.000000;VA;4
+823;4;55169;U16;;spare;spare_8;1.000000;0.000000;VA;4
+824;4;55170;U16;;spare;spare_9;1.000000;0.000000;VA;4
+825;4;55171;U16;;Phase A power factor;phase_a_power_factor_1;100.000000;0.000000;;4
+826;4;55172;U16;;Phase B power factor;phase_b_power_factor_1;100.000000;0.000000;;4
+827;4;55173;U16;;Phase C power factor;phase_c_power_factor_1;100.000000;0.000000;;4
+828;4;55174;U16;;Total power factor;total_power_factor;100.000000;0.000000;;4
+829;4;55175;U16;;frequency;frequency;1.000000;0.000000;;4
+830;4;55176;U16;;Current forward total peak active energy;current_forward_total_peak_active_energy_1;1.000000;0.000000;KWh;4
+831;4;55177;U16;;Current total forward peak active energy;current_total_forward_peak_active_energy_1;1.000000;0.000000;KWh;4
+832;4;55178;U16;;Current forward total active energy;current_forward_total_active_energy_1;1.000000;0.000000;KWh;4
+833;4;55179;U16;;Current forward total valley active energy;current_forward_total_valley_active_energy_1;1.000000;0.000000;KWh;4
+834;4;55180;U16;;Current total reverse peak active energy;current_total_reverse_peak_active_energy_2;1.000000;0.000000;KWh;4
+835;4;55181;U16;;Current total reverse peak active energy;current_total_reverse_peak_active_energy_3;1.000000;0.000000;KWh;4
+836;4;55182;U16;;Current total reverse active energy;current_total_reverse_active_energy_2;1.000000;0.000000;KWh;4
+837;4;55183;U16;;Current total reverse active energy;current_total_reverse_active_energy_3;1.000000;0.000000;KWh;4
+838;4;55184;U16;;spare;spare_10;1.000000;0.000000;;4
+839;4;55185;U16;;spare;spare_11;1.000000;0.000000;;4
+840;4;55301;U16;;Refrigeration block on state;refrigeration_block_on_state;1.000000;0.000000;;4
+841;4;55302;U16;;Heating output status;heating_output_status;1.000000;0.000000;;9
+842;4;55303;U16;;Ambient temperature;ambient_temperature;1.000000;0.000000;;4
+843;4;55304;U16;;Manual automatic state;manual_automatic_state;1.000000;0.000000;;4
+844;4;55305;U16;;Ambient humidity;ambient_humidity;1.000000;0.000000;'%RH;4
+845;4;55306;U16;;Refrigeration block temperature;refrigeration_block_temperature;1.000000;0.000000;℃;4
+846;4;56001;U16;;Outlet water temperature;outlet_water_temperature;10.000000;0.000000;℃;4
+847;4;56002;U16;;Inlet water temperature;inlet_water_temperature;10.000000;0.000000;℃;4
+848;4;56003;U16;;Water outlet pressure;water_outlet_pressure;10.000000;0.000000;Bar;4
+849;4;56004;U16;;Return water pressure;return_water_pressure;10.000000;0.000000;Bar;4
+850;4;56007;U16;;Liquid cooling unit communication failure;liquid_cooling_unit_communication_failure;1.000000;0.000000;;9
+851;4;55751;U16;;spare;spare_12;1.000000;0.000000;;4
+852;4;55752;U16;;DC Current;dc_current;1.000000;0.000000;A;4
+853;4;55753;U16;;DC voltage;dc_voltage;1.000000;0.000000;V;4
+854;4;55754;U16;;DC Power;dc_power;1.000000;0.000000;KW;4
+855;4;55755;U16;;AC A phase voltage;ac_a_phase_voltage;1.000000;0.000000;V;4
+856;4;55756;U16;;AC B phase voltage;ac_b_phase_voltage;1.000000;0.000000;V;4
+857;4;55757;U16;;AC C phase voltage;ac_c_phase_voltage;1.000000;0.000000;V;4
+858;4;55758;U16;;AC A phase current;ac_a_phase_current;1.000000;0.000000;A;4
+859;4;55759;U16;;AC B phase current;ac_b_phase_current;1.000000;0.000000;A;4
+860;4;55760;U16;;AC phase C current;ac_phase_c_current;1.000000;0.000000;A;4
+861;4;55761;U16;;AC phase A active power;ac_phase_a_active_power;1.000000;0.000000;A;4
+862;4;55762;U16;;AC B phase active power;ac_b_phase_active_power;1.000000;0.000000;kw;4
+863;4;55763;U16;;AC phase C active power;ac_phase_c_active_power;1.000000;0.000000;kw;4
+864;4;55764;U16;;Total AC active power;total_ac_active_power;1.000000;0.000000;kW;4
+865;4;55765;U16;;spare;spare_13;1.000000;0.000000;;4
+866;4;55766;U16;;spare;spare_14;1.000000;0.000000;;4
+867;4;55767;U16;;spare;spare_15;1.000000;0.000000;;4
+868;4;55768;U16;;spare;spare_16;1.000000;0.000000;;4
+869;4;55769;U16;;Total AC reactive power;total_ac_reactive_power;1.000000;0.000000;;4
+870;4;55770;U16;;spare;spare_17;1.000000;0.000000;;4
+871;4;55771;U16;;spare;spare_18;1.000000;0.000000;;4
+872;4;55772;U16;;spare;spare_19;1.000000;0.000000;;4
+873;4;55773;U16;;Total AC apparent power;total_ac_apparent_power;1.000000;0.000000;;4
+874;4;55774;U16;;Power Factor;power_factor;1.000000;0.000000;;4
+875;4;55775;U16;;spare;spare_20;1.000000;0.000000;;4
+876;4;55776;U16;;Warning word 1;warning_word_1;1.000000;0.000000;;9
+877;4;55778;U16;;Warning word 2;warning_word_2;1.000000;0.000000;;9
+878;4;55780;U16;;Warning word 3;warning_word_3;1.000000;0.000000;;9
+879;4;55782;U16;;Warning word 4;warning_word_4;1.000000;0.000000;;9
+880;2;55101;U16;;reserve;reserve;1.000000;0.000000;;0
+881;2;55102;U16;;reserve;reserve_1;1.000000;0.000000;;0
+882;2;55103;U16;;reserve;reserve_2;1.000000;0.000000;;0
+883;2;55151;U16;;reserve;reserve_3;1.000000;0.000000;;0
+884;2;55152;U16;;reserve;reserve_4;1.000000;0.000000;;0
+885;2;55153;U16;;reserve;reserve_5;1.000000;0.000000;;0
+886;2;54201;U16;;surge;surge;1.000000;0.000000;;4
+887;2;54202;U16;;Water immersion feedback;water_immersion_feedback;1.000000;0.000000;;4
+888;2;54203;U16;;Fire Extinguisher Feedback;fire_extinguisher_feedback;1.000000;0.000000;;4
+889;2;54204;U16;;Smoke feedback;smoke_feedback;1.000000;0.000000;;4
+890;2;54205;U16;;Access control feedback;access_control_feedback;1.000000;0.000000;;4
+891;2;56001;U16;;spare;spare_21;1.000000;0.000000;;4
+892;2;56002;U16;;spare;spare_22;1.000000;0.000000;;4
+893;2;56003;U16;;spare;spare_23;1.000000;0.000000;;4
+894;3;60121;U16;;Control temperature setpoint;control_temperature_setpoint;1.000000;0.000000;;1

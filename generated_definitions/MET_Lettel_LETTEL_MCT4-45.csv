@@ -1,0 +1,83 @@
+modbusRTU;Meter;Lettel;LETTEL_MCT4-45;;;;;;;
+1;4;262;I32;;Positive Active Energy;positive_active_energy;0.100000;0.000000;Wh;4
+2;4;264;I32;;Reverse Active Energy;reverse_active_energy;0.100000;0.000000;Wh;4
+3;4;266;I32;;Positive reactive Energy;positive_reactive_energy;0.100000;0.000000;Varh;4
+4;4;268;I32;;Reverse reactive Energy;reverse_reactive_energy;0.100000;0.000000;Varh;4
+5;4;270;I32;;Sight electrical Energy;sight_electrical_energy;0.100000;0.000000;Vah;4
+6;4;272;I32;;First quadrant reactive Energy;first_quadrant_reactive_energy;0.100000;0.000000;Varh;4
+7;4;274;I32;;Second quadrant reactive Energy;second_quadrant_reactive_energy;0.100000;0.000000;Varh;4
+8;4;276;I32;;Third quadrant reactive Energy;third_quadrant_reactive_energy;0.100000;0.000000;Varh;4
+9;4;278;I32;;Fourth quadrant reactive Energy;fourth_quadrant_reactive_energy;0.100000;0.000000;Varh;4
+10;4;280;I32;;Active Energy [Total];active_energy_total;0.100000;0.000000;Wh;4
+11;4;282;I32;;Active Energy [tip];active_energy_tip;0.100000;0.000000;Wh;4
+12;4;284;I32;;Active Energy [peak];active_energy_peak;0.100000;0.000000;Wh;4
+13;4;286;I32;;Active Energy [Flat];active_energy_flat;0.100000;0.000000;Wh;4
+14;4;288;I32;;Active Energy [Valley];active_energy_valley;0.100000;0.000000;Wh;4
+15;4;290;I32;;Active Energy this month [Total];active_energy_this_month_total;0.100000;0.000000;Wh;4
+16;4;292;I32;;Active Energy this month[tip];active_energy_this_monthtip;0.100000;0.000000;Wh;4
+17;4;294;I32;;Active Energy this month[Peak];active_energy_this_monthpeak;0.100000;0.000000;Wh;4
+18;4;296;I32;;Active Energy this month[Flat];active_energy_this_monthflat;0.100000;0.000000;Wh;4
+19;4;298;I32;;Active Energy this month[Valley];active_energy_this_monthvalley;0.100000;0.000000;Wh;4
+20;4;300;I32;;Active Energy Last month[total];active_energy_last_monthtotal;0.100000;0.000000;Wh;4
+21;4;302;I32;;Active Energy last month[tip];active_energy_last_monthtip;0.100000;0.000000;Wh;4
+22;4;304;I32;;Active Energy last month[Peak];active_energy_last_monthpeak;0.100000;0.000000;Wh;4
+23;4;306;I32;;Active Power last month[Flat];active_power_last_monthflat;0.100000;0.000000;Wh;4
+24;4;308;I32;;Active Power last month[Valley];active_power_last_monthvalley;0.100000;0.000000;Wh;4
+25;4;310;I32;;Active Energy the month before last month;active_energy_the_month_before_last_month;0.100000;0.000000;Wh;4
+26;4;312;I32;;Active Energy the month before last month[T];active_energy_the_month_before_last_montht;0.100000;0.000000;Wh;4
+27;4;314;I32;;Active Energy the month before last month[P];active_energy_the_month_before_last_monthp;0.100000;0.000000;Wh;4
+28;4;316;I32;;Active Energy the month before last month[F];active_energy_the_month_before_last_monthf;0.100000;0.000000;Wh;4
+29;4;318;I32;;Active Energy the month before last month[V];active_energy_the_month_before_last_monthv;0.100000;0.000000;Wh;4
+30;4;512;I16;;A phase voltage;a_phase_voltage;0.100000;0.000000;V;4
+31;4;513;I16;;B phase voltage;b_phase_voltage;0.100000;0.000000;V;4
+32;4;514;I16;;C phase voltage;c_phase_voltage;0.100000;0.000000;V;4
+33;4;515;I16;;AB line voltage;ab_line_voltage;0.100000;0.000000;V;4
+34;4;516;I16;;BC line voltage;bc_line_voltage;0.100000;0.000000;V;4
+35;4;517;I16;;CA line voltage;ca_line_voltage;0.100000;0.000000;V;4
+36;4;518;I16;;A phase current;a_phase_current;0.010000;0.000000;A;4
+37;4;519;I16;;B phase current;b_phase_current;0.010000;0.000000;A;4
+38;4;520;I16;;C phase current;c_phase_current;0.010000;0.000000;A;4
+39;4;521;I16;;A Phase active power;P_AC_1;0.100000;0.000000;W;4
+40;4;522;I16;;B Phase active power;P_AC_2;0.100000;0.000000;W;4
+41;4;523;I16;;C Phase active power;P_AC_3;0.100000;0.000000;W;4
+42;4;524;I16;;Total active power;P_AC;0.100000;0.000000;W;4
+43;4;525;I16;;A Active power;a_active_power;0.100000;0.000000;var;4
+44;4;526;I16;;B Active power;b_active_power;0.100000;0.000000;var;4
+45;4;527;I16;;C Active power;c_active_power;0.100000;0.000000;var;4
+46;4;528;I16;;Total reactive power;total_reactive_power;0.100000;0.000000;var;4
+47;4;529;I16;;A Phase view power;a_phase_view_power;0.100000;0.000000;VA;4
+48;4;530;I16;;B Phase view power;b_phase_view_power;0.100000;0.000000;VA;4
+49;4;531;I16;;C Phase view power;c_phase_view_power;0.100000;0.000000;VA;4
+50;4;532;I16;;Total apparent power;total_apparent_power;0.100000;0.000000;VA;4
+51;4;533;I16;;A Phase power factor;a_phase_power_factor;1.000000;0.000000;;4
+52;4;534;I16;;B Phase power factor;b_phase_power_factor;1.000000;0.000000;;4
+53;4;535;I16;;C Phase power factor;c_phase_power_factor;1.000000;0.000000;;4
+54;4;536;I16;;Total power factor;PF;1.000000;0.000000;;4
+55;4;537;I16;;Frequency;FREQ;0.010000;0.000000;Hz;4
+56;4;1536;I16;;Maximum phase voltage;maximum_phase_voltage;0.100000;0.000000;V;4
+57;4;1537;I16;;Maximum line voltage;maximum_line_voltage;0.100000;0.000000;V;4
+58;4;1538;I16;;Maximum current;maximum_current;0.010000;0.000000;A;4
+59;4;1539;I16;;Maximum active power;maximum_active_power;0.100000;0.000000;W;4
+60;4;1540;I16;;Maximum reactive power;maximum_reactive_power;0.100000;0.000000;var;4
+61;4;1541;I16;;Maximum apparent power;maximum_apparent_power;0.100000;0.000000;VA;4
+62;4;1542;I16;;Maximum active power requirement;maximum_active_power_requirement;0.100000;0.000000;W;4
+63;4;1543;I16;;Maximum reactive power requirement;maximum_reactive_power_requirement;0.100000;0.000000;var;4
+64;4;1544;I16;;Maximum apparent power requirement;maximum_apparent_power_requirement;0.100000;0.000000;VA;4
+65;4;1545;I16;;Maximum phase voltage this month;maximum_phase_voltage_this_month;0.100000;0.000000;V;4
+66;4;1546;I16;;Maximum line voltage this month;maximum_line_voltage_this_month;0.100000;0.000000;V;4
+67;4;1547;I16;;Maximum current this month;maximum_current_this_month;0.010000;0.000000;A;4
+68;4;1548;I16;;Maximum active power this month;maximum_active_power_this_month;0.100000;0.000000;W;4
+69;4;1549;I16;;Maximum reactive power this month;maximum_reactive_power_this_month;0.100000;0.000000;var;4
+70;4;1550;I16;;Maximum power available this month;maximum_power_available_this_month;0.100000;0.000000;VA;4
+71;4;1551;I16;;Maximum active power requirement this month;maximum_active_power_requirement_this_month;0.100000;0.000000;W;4
+72;4;1552;I16;;Maximum reactive power requirement this month;maximum_reactive_power_requirement_this_month;0.100000;0.000000;var;4
+73;4;1553;I16;;Maximum power requirement this month;maximum_power_requirement_this_month;0.100000;0.000000;VA;4
+74;4;1554;I16;;Current active power requirements;current_active_power_requirements;0.100000;0.000000;W;4
+75;4;1555;I16;;Current reactive power requirements;current_reactive_power_requirements;0.100000;0.000000;var;4
+76;4;1556;I16;;Current apparent power requirement;current_apparent_power_requirement;0.100000;0.000000;VA;4
+77;4;1557;I16;;Average phase voltage;average_phase_voltage;0.100000;0.000000;V;4
+78;4;1558;I16;;Average line voltage;average_line_voltage;0.100000;0.000000;V;4
+79;4;1559;I16;;Current average;current_average;0.010000;0.000000;A;4
+80;4;1560;I16;;Average active power;average_active_power;0.100000;0.000000;W;4
+81;4;1561;I16;;Average reactive power;average_reactive_power;0.100000;0.000000;var;4
+82;4;1562;I16;;Average apparent power;average_apparent_power;0.100000;0.000000;VA;4

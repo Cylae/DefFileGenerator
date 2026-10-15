@@ -1,0 +1,60 @@
+modbusRTU;Other;Webdyn;Ingeteam_Modbus_3play(ABS1004);;;;;;;
+1;4;0;U16;;Actual Date.Year;actual_dateyear;1.000000;0.000000;Year;4
+2;4;1;U16;;Actual Date.Month of the Year;actual_datemonth_of_the_year;1.000000;0.000000;Month;4
+3;4;2;U16;;Actual Date.Day of the month;actual_dateday_of_the_month;1.000000;0.000000;Day;4
+4;4;3;U16;;Actual Date.Hour of the day;actual_datehour_of_the_day;1.000000;0.000000;Hour;4
+5;4;4;U16;;Actual Date.Minute;actual_dateminute;1.000000;0.000000;Minute;4
+6;4;5;U16;;Actual Date.Second;actual_datesecond;1.000000;0.000000;Second;4
+7;4;6;U32;;Total Energy delivered by the unit;total_energy_delivered_by_the_unit;1.000000;0.000000;kW*h;4
+8;4;8;U32;;Total hours of operation. hours;total_hours_of_operation_hours;1.000000;0.000000;Hours;4
+9;4;10;U32;;Total number of connections since launching;total_number_of_connections_since_launching;1.000000;0.000000;;4
+10;4;12;U32;;Partial Energy delivered by the unit since user reset;partial_energy_delivered_by_the_unit_since_user_reset;1.000000;0.000000;kW*h.;4
+11;4;14;U32;;Partial number of hours of operation. hours;partial_number_of_hours_of_operation_hours;1.000000;0.000000;hours;4
+12;4;16;U32;;Partial number of connection since user reset.;partial_number_of_connection_since_user_reset;1.000000;0.000000;;4
+13;4;18;U16;;Instantaneous alarm code 1;instantaneous_alarm_code_1;1.000000;0.000000;Flag bits;4
+14;4;19;U16;;Instantaneous alarm code 2;instantaneous_alarm_code_2;1.000000;0.000000;Flag bits;4
+15;4;20;U16;;Instantaneous alarm code 3;instantaneous_alarm_code_3;1.000000;0.000000;Flag bits;4
+16;4;21;U16;;Instantaneous alarm code 4;instantaneous_alarm_code_4;1.000000;0.000000;Flag bits;4
+17;4;22;U16;;Warning code;warning_code;1.000000;0.000000;Flag bits;4
+18;4;23;U16;;Unit flags 1;unit_flags_1;1.000000;0.000000;Flag bits;4
+19;4;24;U16;;Unit flags 2;unit_flags_2;1.000000;0.000000;Flag bits;4
+20;4;25;U16;;Unit flags 3;unit_flags_3;1.000000;0.000000;Flag bits;4
+21;4;26;U16;;Status Unit1;status_unit1;1.000000;0.000000;States;4
+22;4;27;U16;;Status Unit2;status_unit2;1.000000;0.000000;States;4
+23;4;28;U16;;Status Unit3;status_unit3;1.000000;0.000000;States;4
+24;4;29;U16;;Output grid RMS current of phase 1;output_grid_rms_current_of_phase_1;100.000000;0.000000;Amps;4
+25;4;30;U16;;Output grid RMS current of phase 2;output_grid_rms_current_of_phase_2;100.000000;0.000000;Amps;4
+26;4;31;U16;;Output grid RMS current of phase 3;output_grid_rms_current_of_phase_3;100.000000;0.000000;Amps;4
+27;4;32;U16;;Grid RMS voltage of phase 1;grid_rms_voltage_of_phase_1;10.000000;0.000000;Vrms;4
+28;4;33;U16;;Grid RMS voltage of phase 2;grid_rms_voltage_of_phase_2;10.000000;0.000000;Vrms;4
+29;4;34;U16;;Grid RMS voltage of phase 3;grid_rms_voltage_of_phase_3;10.000000;0.000000;Vrms;4
+30;4;35;U16;;Grid frequency;FREQ;100.000000;0.000000;Hz;4
+31;4;36;I16;;Output apparent power;output_apparent_power;0.100000;0.000000;VA;4
+32;4;37;I16;;Output active power;P_AC;0.100000;0.000000;Watt;4
+33;4;38;I16;;Output reactive power;output_reactive_power;0.100000;0.000000;Var;4
+34;4;39;I16;;Cosine of Phi;cosine_of_phi;1000.000000;0.000000;;4
+35;4;40;I16;;PV1 current;pv1_current;100.000000;0.000000;Amps;4
+36;4;41;I16;;PV2 current;pv2_current;100.000000;0.000000;Amps;4
+37;4;42;I16;;PV1 voltage;pv1_voltage;1.000000;0.000000;Vdc;4
+38;4;43;I16;;PV2 voltage;pv2_voltage;1.000000;0.000000;Vdc;4
+39;4;44;I16;;PV power;pv_power;0.100000;0.000000;Wat;4
+40;4;45;I16;;PV1 power;pv1_power;0.100000;0.000000;Wat;4
+41;4;46;I16;;PV2 power;pv2_power;0.100000;0.000000;Wat;4
+42;4;47;U16;;Isolation resistance of PV field;isolation_resistance_of_pv_field;1.000000;0.000000;kOhm;4
+43;4;48;I16;;Wattmeter measurement (Self-Consumption mode);wattmeter_measurement_selfconsumption_mode;0.100000;0.000000;Watt;4
+44;4;49;U16;;Active Power Reduction rate;active_power_reduction_rate;1.000000;0.000000;'%;4
+45;4;50;U16;;Active Power Reduction Reason;active_power_reduction_reason;1.000000;0.000000;Reason;4
+46;4;51;U16;;Reactive Power Reference type;reactive_power_reference_type;1.000000;0.000000;Reason;4
+47;4;52;I16;;Current of PV string 1;current_of_pv_string_1;10.000000;0.000000;Amps;4
+48;4;53;I16;;Current of PV string 2;current_of_pv_string_2;10.000000;0.000000;Amps;4
+49;4;54;I16;;Current of PV string 3;current_of_pv_string_3;10.000000;0.000000;Amps;4
+50;4;55;I16;;Current of PV string 4;current_of_pv_string_4;10.000000;0.000000;Amps;4
+51;4;56;I16;;Current of PV string 5;current_of_pv_string_5;10.000000;0.000000;Amps;4
+52;4;57;I16;;Current of PV string 6;current_of_pv_string_6;10.000000;0.000000;Amps;4
+53;4;58;I16;;Current of PV string 7;current_of_pv_string_7;10.000000;0.000000;Amps;4
+54;4;59;I16;;Current of PV string 8;current_of_pv_string_8;10.000000;0.000000;Amps;4
+55;4;60;I16;;Current of PV string 9;current_of_pv_string_9;10.000000;0.000000;Amps;4
+56;4;61;I16;;Current of PV string 10;current_of_pv_string_10;10.000000;0.000000;Amps;4
+57;4;62;U16;;Warning String kit code;warning_string_kit_code;1.000000;0.000000;Code;4
+58;4;63;U32;;Daily energy value;daily_energy_value;100.000000;0.000000;KWh;4
+59;4;65;U16;;Self Consumption ratio;self_consumption_ratio;1.000000;0.000000;'%;4

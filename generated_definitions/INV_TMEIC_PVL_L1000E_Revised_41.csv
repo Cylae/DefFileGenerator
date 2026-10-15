@@ -1,0 +1,61 @@
+modbus;Inverter;TMEIC;L1000E;1;;;;;;
+1;4;26;U32;;Active Energy;;0.1;0.000000;kWh;4
+2;4;30;I16;;Active power P;P_AC;0.1;0.000000;kW;4
+3;4;31;I16;;Reactive power Q;Q_AC;0.1;0.000000;kVAr;4
+4;4;32;I16;;Power factor;PF;0.01;0.000000;u;4
+5;4;33;I16;;Grid frequency;FREQ;0.1;0.000000;Hz;4
+6;4;34;I16;;Grid voltage UV;;0.1;0.000000;V;4
+7;4;35;I16;;Grid voltage VW;;0.1;0.000000;V;4
+8;4;36;I16;;Grid voltage WU;;0.1;0.000000;V;4
+9;4;37;I16;;Inverter output current U;;0.1;0.000000;A;4
+10;4;38;I16;;Inverter output current V;;0.1;0.000000;A;4
+11;4;39;I16;;Inverter output current W;;0.1;0.000000;A;4
+12;4;40;I16;;DC input power;P_DC;0.1;0.000000;kW;4
+13;4;41;I16;;DC input voltage;U_DC;0.1;0.000000;V;4
+14;4;42;I16;;DC input current;I_DC;0.1;0.000000;A;4
+15;4;43;I16;;Potential to ground PE;;0.1;0.000000;V;4
+16;4;44;I16;;Potential to ground EN;;0.1;0.000000;V;4
+17;4;0;I16;;Data status;;1.000000;0.000000;;4
+18;4;1;I32;;Time stamp (YYMMDD)1;;1.000000;0.000000;;4
+19;4;3;I32;;Time stamp (hhmmss)2;;1.000000;0.000000;;4
+20;4;7;U16;;Alarm flag;;1.000000;0.000000;;8
+21;4;8;U32;;Operation Status;;1.000000;0.000000;;8
+22;4;10;U32;;Status bit 3 Word-0;;1.000000;0.000000;;8
+23;4;12;U32;;Status bit 3 Word-1;;1.000000;0.000000;;8
+24;4;14;U32;;Status bit 3 Word-2;;1.000000;0.000000;;8
+25;4;16;U32;;Status bit 3 Word-3;;1.000000;0.000000;;8
+26;4;18;U32;;Status bit 3 Word-4;;1.000000;0.000000;;8
+27;4;20;U32;;Status bit 3 Word-5;;1.000000;0.000000;;8
+28;4;22;U32;;Status bit 3 Word-6;;1.000000;0.000000;;8
+29;4;24;U32;;Status bit 3 Word-7;;1.000000;0.000000;;8
+30;4;46;I16;;Cabinet temperature;TEMP_INT;0.1;0.000000;C;8
+31;4;47;U16;;Daily Active Energy Integrated;E_DAY;1.000000;0.000000;kWh;8
+32;3;10001;U16;;P limit enable/disable;ctrl;1.000000;0.000000;;4
+33;3;10002;U16;;Active power P limit;cmd;1.000000;0.000000;;4
+34;4;59;I16;;DC current 1;;0.1;0.000000;A;4
+35;4;60;I16;;DC current 2;;0.1;0.000000;A;4
+36;4;61;I16;;DC current 3;;0.1;0.000000;A;4
+37;4;62;I16;;DC current 4;;0.1;0.000000;A;4
+38;4;63;I16;;DC current 5;;0.1;0.000000;A;4
+39;4;64;I16;;DC current 6;;0.1;0.000000;A;4
+40;4;65;I16;;DC current 7;;0.1;0.000000;A;4
+41;4;66;I16;;DC current 8;;0.1;0.000000;A;4
+42;3;10000;U16;;Operation Command;on;1.000000;0.000000;;4
+43;3;10003;U16;;Writing Read_1;on1;1.000000;0.000000;;4
+44;3;10004;U16;;Writing Read_2;on2;1.000000;0.000000;;4
+45;3;10005;U16;;Writing Read_3;on3;1.000000;0.000000;;4
+46;3;10006;U16;;Writing Read_4;on4;1.000000;0.000000;;4
+47;3;10007;U16;;Writing Read_5;on5;1.000000;0.000000;;4
+48;3;10008;U16;;Writing Read_6;on6;1.000000;0.000000;;4
+49;3;10009;U16;;Writing Read_7;on7;1.000000;0.000000;;4
+50;3;10010;U16;;Writing Read_8;on8;1.000000;0.000000;;4
+51;3;10011;U16;;Writing Read_9;on9;1.000000;0.000000;;4
+52;3;10012;U16;;Writing Read_10;on10;1.000000;0.000000;;4
+53;3;10013;U16;;Writing Read_11;on11;1.000000;0.000000;;4
+54;3;10014;U16;;Writing Read_12;on12;1.000000;0.000000;;4
+55;3;10015;U16;;Writing Read_13;on13;1.000000;0.000000;;4
+56;3;10016;U16;;Writing Read_14;on14;1.000000;0.000000;;4
+57;3;10017;U16;;Writing Read_15;on15;1.000000;0.000000;;4
+58;3;10018;U16;;Writing Read_16;on16;1.000000;0.000000;;4
+59;3;10019;U16;;Writing Read_17;on17;1.000000;0.000000;;4
+60;3;10000_40;RAW;;Block;Block;1.000000;0.000000;;4

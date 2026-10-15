@@ -1,0 +1,23 @@
+modbusRTU;Meter;Huawei;HUAWEI_V4 (METER);;;;;;;
+1;3;37100;U16;;Meter status;meter_status;1.000000;0.000000;;4
+2;3;37101;I32;;Grid voltage (A phase) / Meter;grid_voltage_a_phase_meter;0.100000;0.000000;V;4
+3;3;37103;I32;;B phase voltage / Meter;b_phase_voltage_meter;0.100000;0.000000;V;4
+4;3;37105;I32;;C phase voltage / Meter;c_phase_voltage_meter;0.100000;0.000000;V;4
+5;3;37107;I32;;Grid current(A phase) / Meter;grid_currenta_phase_meter;0.010000;0.000000;A;4
+6;3;37109;I32;;B phase current / Meter;b_phase_current_meter;0.010000;0.000000;A;4
+7;3;37111;I32;;C phase current / Meter;c_phase_current_meter;0.010000;0.000000;A;4
+8;3;37113;I32;;Active power / Meter;active_power_meter;1.000000;0.000000;W;4
+9;3;37115;I32;;Reactive power / Meter;reactive_power_meter;1.000000;0.000000;Var;4
+10;3;37117;I16;;Power factor / Meter;power_factor_meter;0.001000;0.000000;NA;4
+11;3;37118;I16;;Grid frequency / Meter;grid_frequency_meter;0.010000;0.000000;Hz;4
+12;3;37119;I32;;Positive active electricity / Meter;positive_active_electricity_meter;0.010000;0.000000;kWh;4
+13;3;37121;I32;;Reverse active power / Meter;reverse_active_power_meter;0.010000;0.000000;kWh;4
+14;3;37123;I32;;Accumulated reactive power / Meter;accumulated_reactive_power_meter;0.010000;0.000000;kVarh;4
+15;3;37125;U16;;Meter type;meter_type;1.000000;0.000000;;4
+16;3;37126;I32;;A-B line voltage / Meter;ab_line_voltage_meter;0.100000;0.000000;V;4
+17;3;37128;I32;;B-C line voltage / Meter;bc_line_voltage_meter;0.100000;0.000000;V;4
+18;3;37130;I32;;CA line voltage / Meter;ca_line_voltage_meter;0.010000;0.000000;V;4
+19;3;37132;I32;;A phase active power / Meter;a_phase_active_power_meter;1.000000;0.000000;W;4
+20;3;37134;I32;;B phase active power / Meter;b_phase_active_power_meter;1.000000;0.000000;W;4
+21;3;37136;I32;;C phase active power / Meter;c_phase_active_power_meter;1.000000;0.000000;W;4
+22;3;37138;U16;;Meter model detection result;meter_model_detection_result;1.000000;0.000000;;4

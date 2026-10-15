@@ -1,0 +1,4 @@
+modbusRTU;Other;Kostal;PIKO CI events code-V1.1-20240;;;;;;;
+1;3;4126;U16;;High DC component of output current;high_dc_component_of_output_current;1.000000;0.000000;;4
+2;3;4127;U16;;Grid over voltage;grid_over_voltage;1.000000;0.000000;;4
+3;3;4128;U16;;Reserved;reserved;1.000000;0.000000;;0

@@ -1,0 +1,81 @@
+modbusRTU;Other;CyberPower;Cyberpower3Ph_50000ETL;;;;;;;
+1;4;8504;U32_W;;Today Energy (Wh);today_energy_wh;1.000000;0.000000;Wh;4
+2;4;8508;U32_W;;Total Energy (Wh);WattHours;1.000000;0.000000;Wh;4
+3;4;8596;U16;;Udc1;udc1;0.100000;0.000000;V;2
+4;4;8597;U16;;Idc1;idc1;0.010000;0.000000;A;2
+5;4;8598;U16;;Pdc1;pdc1;1.000000;0.000000;W;2
+6;4;8599;U16;;Udc2;udc2;0.100000;0.000000;V;2
+7;4;8600;U16;;Idc2;idc2;0.010000;0.000000;A;2
+8;4;8601;U16;;Pdc2;pdc2;1.000000;0.000000;W;2
+9;4;8602;U16;;Udc3;udc3;0.100000;0.000000;V;2
+10;4;8603;U16;;Idc3;idc3;0.010000;0.000000;A;2
+11;4;8604;U16;;Pdc3;pdc3;1.000000;0.000000;W;2
+12;4;8605;U16;;Udc4;udc4;0.100000;0.000000;V;2
+13;4;8606;U16;;Idc4;idc4;0.010000;0.000000;A;2
+14;4;8607;U16;;Pdc4;pdc4;1.000000;0.000000;W;2
+15;4;8608;U16;;Uac1;uac1;0.100000;0.000000;V;2
+16;4;8609;U16;;Uac2;uac2;0.100000;0.000000;V;2
+17;4;8610;U16;;Uac3;uac3;0.100000;0.000000;V;2
+18;4;8611;U16;;Iac1;iac1;0.010000;0.000000;A;2
+19;4;8612;U16;;Iac2;iac2;0.010000;0.000000;A;2
+20;4;8613;U16;;Iac3;iac3;0.010000;0.000000;A;2
+21;4;8617;U16;;Grid phase-AB voltage;grid_phaseab_voltage;0.100000;0.000000;V;2
+22;4;8618;U16;;Grid phase-BC voltage;grid_phasebc_voltage;0.100000;0.000000;V;2
+23;4;8619;U16;;Grid phase-CA voltage;grid_phaseca_voltage;0.100000;0.000000;V;2
+24;4;8620;U16;;Fac;FREQ;0.010000;0.000000;Hz;2
+25;4;8621;U16;;Pac;Watts;1.000000;0.000000;W;2
+26;4;8633;U16;;BUS1_Voltage;bus1_voltage;0.100000;0.000000;V;4
+27;4;8634;U16;;BUS2_Voltage;bus2_voltage;0.100000;0.000000;V;4
+28;4;8635;U16;;Riso;riso;1.000000;0.000000;kohm;4
+29;4;8636;I16;;Temp;temp;0.100000;0.000000;C;4
+30;4;8640;U16;;CPS_PV_Status;cps_pv_status;1.000000;0.000000;;8
+31;4;8641;U16;;Reconnection Time;reconnection_time;1.000000;0.000000;s;1
+32;4;8642;U32_W;;I_Event_flags1;i_event_flags1;1.000000;0.000000;Bitfield;8
+33;4;8644;U32_W;;I_Event_flags2;i_event_flags2;1.000000;0.000000;Bitfield;8
+34;4;8646;U16;;I_Event_1_Vendor;i_event_1_vendor;1.000000;0.000000;Bitfield;8
+35;4;8647;U16;;I_Event_2_Vendor;i_event_2_vendor;1.000000;0.000000;Bitfield;8
+36;4;8648;U16;;I_Event_3_Vendor;i_event_3_vendor;1.000000;0.000000;Bitfield;8
+37;4;8649;U16;;I_Event_4_Vendor;i_event_4_vendor;1.000000;0.000000;Bitfield;8
+38;4;8650;U16;;I_Event_5_Vendor;i_event_5_vendor;1.000000;0.000000;Bitfield;8
+39;4;8651;U16;;I_Event_6_Vendor;i_event_6_vendor;1.000000;0.000000;Bitfield;8
+40;4;8652;U16;;I_Event_7_Vendor;i_event_7_vendor;1.000000;0.000000;Bitfield;8
+41;4;8653;U16;;I_Event_8_Vendor;i_event_8_vendor;1.000000;0.000000;Bitfield;8
+42;4;8193;U16;;String connection setting;string_connection_setting;1.000000;0.000000;Bitfield;1
+43;4;8199;U16;;String Positive fuse flags;string_positive_fuse_flags;1.000000;0.000000;Bitfield;8
+44;4;8200;U16;;String Negative fuse flags;string_negative_fuse_flags;1.000000;0.000000;Bitfield;8
+45;4;8208;U16;;PV1 String 1 voltage;pv1_string_1_voltage;0.100000;0.000000;V;1
+46;4;8209;U16;;PV1 String 1 current;pv1_string_1_current;0.010000;0.000000;A;2
+47;4;8210;U16;;PV1 String 1 power;pv1_string_1_power;1.000000;0.000000;W;2
+48;4;8211;U16;;PV1 String 2 voltage;pv1_string_2_voltage;0.100000;0.000000;V;1
+49;4;8212;U16;;PV1 String 2 current;pv1_string_2_current;0.010000;0.000000;A;2
+50;4;8213;U16;;PV1 String 2 power;pv1_string_2_power;1.000000;0.000000;W;2
+51;4;8214;U16;;PV1 String 3 voltage;pv1_string_3_voltage;0.100000;0.000000;V;1
+52;4;8215;U16;;PV1 String 3 current;pv1_string_3_current;0.010000;0.000000;A;2
+53;4;8216;U16;;PV1 String 3 power;pv1_string_3_power;1.000000;0.000000;W;2
+54;4;8217;U16;;PV1 String 4 voltage;pv1_string_4_voltage;0.100000;0.000000;V;1
+55;4;8218;U16;;PV1 String 4 current;pv1_string_4_current;0.010000;0.000000;A;2
+56;4;8219;U16;;PV1 String 4 power;pv1_string_4_power;1.000000;0.000000;W;2
+57;4;8220;U16;;PV2 String 1 voltage;pv2_string_1_voltage;0.100000;0.000000;V;1
+58;4;8221;U16;;PV2 String 1 current;pv2_string_1_current;0.010000;0.000000;A;2
+59;4;8222;U16;;PV2 String 1 power;pv2_string_1_power;1.000000;0.000000;W;0
+60;4;8223;U16;;PV2 String 2 voltage;pv2_string_2_voltage;0.100000;0.000000;V;1
+61;4;8224;U16;;PV2 String 2 current;pv2_string_2_current;0.010000;0.000000;A;2
+62;4;8225;U16;;PV2 String 2 power;pv2_string_2_power;1.000000;0.000000;W;2
+63;4;8226;U16;;PV2 String 3 voltage;pv2_string_3_voltage;0.100000;0.000000;V;1
+64;4;8227;U16;;PV2 String 3 current;pv2_string_3_current;0.010000;0.000000;A;2
+65;4;8228;U16;;PV2 String 3 power;pv2_string_3_power;1.000000;0.000000;W;2
+66;4;8229;U16;;PV2 String 4 voltage;pv2_string_4_voltage;0.100000;0.000000;V;1
+67;4;8230;U16;;PV2 String 4 current;pv2_string_4_current;0.010000;0.000000;A;2
+68;4;8231;U16;;PV2 String 4 power;pv2_string_4_power;1.000000;0.000000;W;2
+69;4;8232;U16;;PV3 String 1 voltage;pv3_string_1_voltage;0.100000;0.000000;V;1
+70;4;8233;U16;;PV3 String 1 current;pv3_string_1_current;0.010000;0.000000;A;2
+71;4;8234;U16;;PV3 String 1 power;pv3_string_1_power;1.000000;0.000000;W;2
+72;4;8235;U16;;PV3 String 2 voltage;pv3_string_2_voltage;0.100000;0.000000;V;1
+73;4;8236;U16;;PV3 String 2 current;pv3_string_2_current;0.010000;0.000000;A;2
+74;4;8237;U16;;PV3 String 2 power;pv3_string_2_power;1.000000;0.000000;W;2
+75;4;8238;U16;;PV3 String 3 voltage;pv3_string_3_voltage;0.100000;0.000000;V;1
+76;4;8239;U16;;PV3 String 3 current;pv3_string_3_current;0.010000;0.000000;A;2
+77;4;8240;U16;;PV3 String 3 power;pv3_string_3_power;1.000000;0.000000;W;2
+78;4;8241;U16;;PV3 String 4 voltage;pv3_string_4_voltage;0.100000;0.000000;V;1
+79;4;8242;U16;;PV3 String 4 current;pv3_string_4_current;0.010000;0.000000;A;2
+80;4;8243;U16;;PV3 String 4 power;pv3_string_4_power;1.000000;0.000000;W;2

@@ -1,0 +1,141 @@
+Modbus;Inverter;HUAWEI;V4;;;;;;;
+1;3;37000;U16;;[Energy storage unit 1] Running status;;1;0;;4
+2;3;37001;I32;;[Energy storage unit 1] Charge and discharge power;;1;0;W;4
+3;3;37003;U16;;[Energy storage unit 1] Bus voltage;U_DC;0.1;0;V;4
+4;3;37004;U16;;[Energy storage unit 1] Battery SOC;SOC;0.1;0;%;4
+5;3;37006;U16;;[Energy storage unit 1] Working mode;;1;0;;4
+6;3;37007;U32;;[Energy storage unit 1] Rated charge power;;1;0;W;4
+7;3;37009;U32;;[Energy storage unit 1] Rated discharge power;;1;0;;4
+8;3;37014;U16;;[Energy storage unit 1] Fault ID;;1;0;;4
+9;3;37015;U32;;[Energy storage unit 1] Currentday charge capacity;;0.01;0;kWh;4
+10;3;37017;U32;;[Energy storage unit 1] Currentday discharge capacity;;0.01;0;kWh;4
+11;3;37021;I16;;[Energy storage unit 1] Bus current;I_DC;0.1;0;A;4
+12;3;37022;I16;;[Energy storage unit 1] battery temperature;TEMP;0.1;0;Deg. Celsius;4
+13;3;37025;U16;;[Energy storage unit 1] Remaining charge/ discharge time;;1;0;min/s;4
+14;3;37026_20;STRING;;[Energy storage unit 1] DCDCversion;;1;0;;4
+15;3;37036_20;STRING;;[Energy storage unit 1] BMSversion;;1;0;;4
+16;3;37046;U32;;[Energy storage]Maximum charge power;;1;0;W;4
+17;3;37048;U32;;[Energy storage] Maximum discharge power;;1;0;W;4
+18;3;37052_20;STRING;;[Energy storage unit 1] SN;SERIAL;1;0;;4
+19;3;37066;U32;;[Energy storage unit 1] Total charge;E_TOT;0.01;0;kWh;4
+20;3;37068;U32;;[Energy storage unit 1] Total discharge;;0.01;0;kWh;4
+21;3;37738;U16;;[Energy storage unit 2] Battery SOC;;0.1;0;%;4
+22;3;37741;U16;;[Energy storage unit 2] Running status;;1;0;;4
+23;3;37743;I32;;[Energy storage unit 2] Charge and discharge power;;1;0;W;4
+24;3;37746;U32;;[Energy storage unit 2] Currentday charge capacity;;0.01;0;kWh;4
+25;3;37748;U32;;[Energy storage unit 2] Currentday discharge capacity;;0.01;0;kWh;4
+26;3;37750;U16;;[Energy storage unit 2] Bus voltage;;0.1;0;V;4
+27;3;37751;I16;;[Energy storage unit 2] Bus current;;0.1;0;A;4
+28;3;37752;I16;;[Energy storage unit 2] Battery temperature;;0.1;0;Deg. Celsius;4
+29;3;37753;U32;;[Energy storage unit 2] Total charge;;0.01;0;kWh;4
+30;3;37755;U32;;[Energy storage unit 2] Total discharge;;0.01;0;kWh;4
+31;3;37758;U32;;[Energy storage]Rated capacity;P_RATED;1;0;Wh;4
+32;3;37760;U16;;[Energy storage]SOC;;0.1;0;%;4
+33;3;37762;U16;;[Energy storage]Running status;;1;0;;4
+34;3;37763;U16;;[Energy storage]Bus voltage;;0.1;0;V;4
+35;3;37764;I16;;[Energy storage]Bus current;;0.1;0;A;4
+36;3;37765;I32;;[Energy storage]Charge/ Discharge power;P_AC;1;0;W;4
+37;3;37780;U32;;[Energy storage]Total charge;;0.01;0;kWh;4
+38;3;37782;U32;;[Energy storage]Total discharge;;0.01;0;kWh;4
+39;3;37784;U32;;[Energy storage] Current-day charge capacity;;0.01;0;kWh;4
+40;3;37786;U32;;[Energy storage] Current-day discharge capacity;;0.01;0;kWh;4
+41;3;37799_30;STRING;;[Energy storage unit 2] software version;;1;0;;4
+42;3;37814_30;STRING;;[Energy storage unit 1] software version;;1;0;;4
+43;3;38200_20;STRING;;[Energy storage unit 1] [Battery pack1]SN;;1;0;;4
+44;3;38210_30;STRING;;[Energy storage unit 1] [Battery pack1]Firmware version;;1;0;;4
+45;3;38228;U16;;[Energy storage unit 1] [Battery pack1]Working status;;1;0;;4
+46;3;38229;U16;;[Energy storage unit 1] [Battery pack1]SOC;;0.1;0;%;4
+47;3;38233;I32;;[Energy storage unit 1] [Battery pack1]Charge/Discharge power;;0.001;0;kW;4
+48;3;38235;U16;;[Energy storage unit 1] [Battery pack1]Voltage;;0.1;0;V;4
+49;3;38236;I16;;[Energy storage unit 1] [Battery pack1]Current;;0.1;0;A;4
+50;3;38238;U32;;[Energy storage unit 1] [Battery pack1]Total charge;;0.01;0;kWh;4
+51;3;38240;U32;;[Energy storage unit 1] [Battery pack1]Total discharge;;0.01;0;kWh;4
+52;3;38242_20;STRING;;[Energy storage unit 1] [Battery pack2]SN;;1;0;;4
+53;3;38252_30;STRING;;[Energy storage unit 1] [Battery pack2]Firmware version;;1;0;;4
+54;3;38270;U16;;[Energy storage unit 1] [Battery pack2]Working status;;1;0;;4
+55;3;38271;U16;;[Energy storage unit 1] [Battery pack2]SOC;;0.1;0;%;4
+56;3;38275;I32;;[Energy storage unit 1] [Battery pack2]Charge/Discharge power;;0.001;0;kW;4
+57;3;38277;U16;;[Energy storage unit 1] [Battery pack2]Voltage;;0.1;0;;4
+58;3;38278;I16;;[Energy storage unit 1] [Battery pack2]Current;;0.1;0;A;4
+59;3;38280;U32;;[Energy storage unit 1] [Battery pack2]Total charge;;0.01;0;kWh;4
+60;3;38282;U32;;[Energy storage unit 1] [Battery pack2]Total discharge;;0.01;0;kWh;4
+61;3;38284_20;STRING;;[Energy storage unit 1] [Battery pack3]SN;;1;0;;4
+62;3;38294_30;STRING;;[Energy storage unit 1] [Battery pack3]Firmware version;;1;0;;4
+63;3;38312;U16;;[Energy storage unit 1] [Battery pack3]Working status;;1;0;;4
+64;3;38313;U16;;[Energy storage unit 1] [Battery pack3]SOC;;0.1;0;%;4
+65;3;38317;I32;;[Energy storage unit 1] [Battery pack3]Charge/Discharge power;;0.001;0;kW;4
+66;3;38319;U16;;[Energy storage unit 1] [Battery pack3]Voltage;;0.1;0;V;4
+67;3;38320;I16;;[Energy storage unit 1] [Battery pack3]Current;;0.1;0;A;4
+68;3;38322;U32;;[Energy storage unit 1] [Battery pack3]Total charge;;0.01;0;kWh;4
+69;3;38324;U32;;[Energy storage unit 1] [Battery pack3]Total discharge;;0.01;0;kWh;4
+70;3;38326_20;STRING;;[Energy storage unit 2] [Battery pack1]SN;;1;0;;4
+71;3;38336_30;STRING;;[Energy storage unit 2] [Battery pack1]Firmware version;;1;0;;4
+72;3;38354;U16;;[Energy storage unit 2] [Battery pack1]Working status;;1;0;;4
+73;3;38355;U16;;[Energy storage unit 2] [Battery pack1]SOC;;0.1;0;%;4
+74;3;38359;I32;;[Energy storage unit 2] [Battery pack1]Charge/Discharge power;;0.001;0;kW;4
+75;3;38361;U16;;[Energy storage unit 2] [Battery pack1]Voltage;;0.1;0;V;4
+76;3;38362;I16;;[Energy storage unit 2] [Battery pack1]Current;;0.1;0;A;4
+77;3;38364;U32;;[Energy storage unit 2] [Battery pack1]Total charge;;0.01;0;kWh;4
+78;3;38366;U32;;[Energy storage unit 2] [Battery pack1]Total discharge;;0.01;0;kWh;4
+79;3;38368_20;STRING;;[Energy storage unit 2] [Battery pack2]SN;;1;0;;4
+80;3;38378_30;STRING;;[Energy storage unit 2] [Battery pack2]Firmware version;;1;0;;4
+81;3;38396;U16;;[Energy storage unit 2] [Battery pack2]Working status;;1;0;;4
+82;3;38397;U16;;[Energy storage unit 2] [Battery pack2]SOC;;0.1;0;%;4
+83;3;38401;I32;;[Energy storage unit 2] [Battery pack2]Charge/Discharge power;;0.001;0;kW;4
+84;3;38403;U16;;[Energy storage unit 2] [Battery pack2]Voltage;;0.1;0;V;4
+85;3;38404;I16;;[Energy storage unit 2] [Battery pack2]Current;;0.1;0;A;4
+86;3;38406;U32;;[Energy storage unit 2] [Battery pack2]Total charge;;0.01;0;kWh;4
+87;3;38408;U32;;[Energy storage unit 2] [Battery pack2]Total discharge;;0.01;0;kWh;4
+88;3;38410_20;STRING;;[Energy storage unit 2] [Battery pack3]SN;;1;0;;4
+89;3;38420_30;STRING;;[Energy storage unit 2] [Battery pack3]Firmware version;;1;0;;4
+90;3;38438;U16;;[Energy storage unit 2] [Battery pack3]Working status;;1;0;;4
+91;3;38439;U16;;[Energy storage unit 2] [Battery pack3]SOC;;0.1;0;%;4
+92;3;38443;I32;;[Energy storage unit 2] [Battery pack3]Charge/Discharge power;;0.001;0;kW;4
+93;3;38445;U16;;[Energy storage unit 2] [Battery pack3]Voltage;;0.1;0;V;4
+94;3;38446;I16;;[Energy storage unit 2] [Battery pack3]Current;;0.1;0;A;4
+95;3;38448;U32;;[Energy storage unit 2] [Battery pack3]Total charge;;0.01;0;kWh;4
+96;3;38450;U32;;[Energy storage unit 2] [Battery pack3]Total discharge;;0.01;0;Deg. Celsius;4
+97;3;38452;I16;;[Energy storage unit 1] [Battery pack1]Maximum temperature;;0.1;0;Deg. Celsius;4
+98;3;38453;I16;;[Energy storage unit 1] [Battery pack1]Minimum temperature;;0.1;0;Deg. Celsius;4
+99;3;38454;I16;;[Energy storage unit 1] [Battery pack2]Maximum temperature;;0.1;0;Deg. Celsius;4
+100;3;38455;I16;;[Energy storage unit 1] [Battery pack2]Minimum temperature;;0.1;0;Deg. Celsius;4
+101;3;38456;I16;;[Energy storage unit 1] [Battery pack3]Maximum temperature;;0.1;0;Deg. Celsius;4
+102;3;38457;I16;;[Energy storage unit 1] [Battery pack3]Minimum temperature;;0.1;0;Deg. Celsius;4
+103;3;38458;I16;;[Energy storage unit 2] [Battery pack1]Maximum temperature;;0.1;0;Deg. Celsius;4
+104;3;38459;I16;;[Energy storage unit 2] [Battery pack1]Minimum temperature;;0.1;0;Deg. Celsius;4
+105;3;38460;I16;;[Energy storage unit 2] [Battery pack2]Maximum temperature;;0.1;0;Deg. Celsius;4
+106;3;38461;I16;;[Energy storage unit 2] [Battery pack2]Minimum temperature;;0.1;0;Deg. Celsius;4
+107;3;38462;I16;;[Energy storage unit 2] [Battery pack3]Maximum temperature;;0.1;0;Deg. Celsius;4
+108;3;38463;I16;;[Energy storage unit 2] [Battery pack3]Minimum temperature;;0.1;0;Deg. Celsius;4
+109;3;47000;U16;;[Energy storage unit 1] Product mode;;1;0;;4
+110;3;47075;U32;;[Energy storage]Maximum charging power;;1;0;W;4
+111;3;47077;U32;;[Energy storage]Maximum discharging power;;1;0;W;4
+112;3;47081;U16;;[Energy storage]Charging cutoff capacity;;0.1;0;%;4
+113;3;47082;U16;;[Energy storage] Discharge cutoff capacity;;0.1;0;%;4
+114;3;47083;U16;;[Energy storage]Forced charging and discharging period;;1;0;min/s;4
+115;3;47086;U16;;[Energy storage]Working mode settings;;1;0;;4
+116;3;47087;U16;;[Energy storage] Charge from grid Function;;1;0;;4
+117;3;47088;U16;;[Energy storage] Grid charge cutoff SOC;;0.1;0;%;4
+118;3;47089;U16;;[Energy storage unit 2] Product model;MODEL;1;0;;4
+119;3;47100;U16;;[Energy storage] Forcible charge/ discharge;;1;0;;4
+120;3;47102;U16;;[Energy storage] Backup power SOC;;0.1;0;%;4
+121;3;47107;U16;;[Energy storage unit 1] No.;;1;0;;4
+122;3;47108;U16;;[Energy storage unit 2] No.;;1;0;;4
+123;3;47242;U32;;[Energy storage] Power of charge from grid;;0.001;0;;4
+124;3;47244;U32;;[Energy storage]Maximum power of charge from grid;;0.001;0;;4
+125;3;47246;U16;;[Energy storage]Forcible charge/ discharge setting mode;;1;0;;4
+126;3;47247;U32;;[Energy storage] Forcible charge power;;0.001;0;kW;4
+127;3;47249;U32;;[Energy storage] Forcible discharge power;;0.001;0;kW;4
+128;3;47299;U16;;[Energy storage] Excess PV energy use in TOU;;1;0;;4
+129;3;47415;U16;;Active power control mode;;1;0;;4
+130;3;47416;I32;;Maximum Feed Grid Power (kW);;0.001;0;kW;4
+131;3;47418;I16;;Maximum Feed Grid Power (%);;0.1;0;%;4
+132;3;47590;U32;;[Dongle] [Plant]maximum charge from-grid power;;0.001;0;kW;4
+133;3;47604;U16;;[Backup]Switch to Off-grid;;1;0;V;4
+134;3;47605;U16;;[Backup] Voltage in independent operation;;1;0;;4
+135;3;47750;U16;;[Energy storage unit 1] [Battery pack1]No.;;1;0;;4
+136;3;47751;U16;;[Energy storage unit 1] [Battery pack2]No.;;1;0;;4
+137;3;47752;U16;;[Energy storage unit 1] [Battery pack3]No.;;1;0;;4
+138;3;47753;U16;;[Energy storage unit 2] [Battery pack1]No.;;1;0;;4
+139;3;47754;U16;;[Energy storage unit 2] [Battery pack2]No.;;1;0;;4
+140;3;47755;U16;;[Energy storage unit 2] [Battery pack3]No.;;1;0;;4

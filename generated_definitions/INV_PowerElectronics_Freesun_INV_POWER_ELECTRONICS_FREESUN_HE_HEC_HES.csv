@@ -1,0 +1,247 @@
+modbusRTU;Inverter;PowerElectronics Freesun;INV_POWER_ELECTRONICS_FREESUN_;;;;;;;
+1;3;139;U16;;Host Reset Control;host_reset_control;1.000000;0.000000;;0
+2;3;750;U32;;Fault Timestamp 1 (raw);fault_timestamp_1_raw;1.000000;0.000000;;4
+3;3;752;U32;;Fault Timestamp 2 (raw);fault_timestamp_2_raw;1.000000;0.000000;;4
+4;3;754;U32;;Fault Timestamp 3 (raw);fault_timestamp_3_raw;1.000000;0.000000;;4
+5;3;756;U32;;Fault Timestamp 4 (raw);fault_timestamp_4_raw;1.000000;0.000000;;4
+6;3;758;U32;;Fault Timestamp 5 (raw);fault_timestamp_5_raw;1.000000;0.000000;;4
+7;3;760;U32;;Fault Timestamp 6 (raw);fault_timestamp_6_raw;1.000000;0.000000;;4
+8;3;762;U32;;Fault Timestamp 7 (raw);fault_timestamp_7_raw;1.000000;0.000000;;4
+9;3;764;U32;;Fault Timestamp 8 (raw);fault_timestamp_8_raw;1.000000;0.000000;;4
+10;3;766;U32;;Fault Timestamp 9 (raw);fault_timestamp_9_raw;1.000000;0.000000;;4
+11;3;768;U32;;Fault Timestamp 10 (raw);fault_timestamp_10_raw;1.000000;0.000000;;4
+12;3;1100;U16;;Net Voltage L1;net_voltage_l1;1.000000;0.000000;V;4
+13;3;1101;U16;;Net Voltage L2;net_voltage_l2;1.000000;0.000000;V;4
+14;3;1102;U16;;Net Voltage L3;net_voltage_l3;1.000000;0.000000;V;4
+15;3;1103;U16;;Net Frequency;net_frequency;0.100000;0.000000;Hz;4
+16;3;1106;U16;;Net Current L1 (% nominal);net_current_l1_nominal;0.012207;0.000000;'%;4
+17;3;1107;U16;;Net Current L2 (% nominal);net_current_l2_nominal;0.012207;0.000000;'%;4
+18;3;1108;U16;;Net Current L3 (% nominal);net_current_l3_nominal;0.012207;0.000000;'%;4
+19;3;1109;U16;;Net Power;net_power;0.100000;0.000000;kW;4
+20;3;1110;I16;;Power Factor;PF;0.010000;0.000000;;4
+21;3;1126;U16;;Input Voltage;input_voltage;1.000000;0.000000;Vdc;4
+22;3;1127;U16;;Input Current (% nominal);input_current_nominal;0.012207;0.000000;'%;4
+23;3;1128;U16;;Input Power;input_power;0.100000;0.000000;kW;4
+24;3;1129;U16;;Last Input Voltage;last_input_voltage;1.000000;0.000000;Vdc;4
+25;3;1145;U16;;Inverter Power;inverter_power;0.100000;0.000000;kW;4
+26;3;1146;U16;;Inverter Voltage;inverter_voltage;1.000000;0.000000;V;4
+27;3;1147;U16;;Micro Software Version;micro_software_version;0.010000;0.000000;;1
+28;3;1148;U16;;DSP Software Version;dsp_software_version;0.010000;0.000000;;1
+29;3;1149;U16;;Display Software Version;display_software_version;0.010000;0.000000;;1
+30;3;1150;U16;;Hardware Version;hardware_version;1.000000;0.000000;;1
+31;3;1151;I16;;Inverter Temperature;inverter_temperature;0.010000;0.000000;Degr.Celsius;4
+32;3;1152;I16;;Power Circuit Temperature;power_circuit_temperature;1.000000;0.000000;Degr.Celsius;4
+33;3;1166;I16;;PT100 Temperature;pt100_temperature;1.000000;0.000000;Degr.Celsius;4
+34;3;1167;U16;;Digital Input / Main Switch Status;digital_input_main_switch_status;1.000000;0.000000;;4
+35;3;1169;U16;;Output Relay Status;output_relay_status;1.000000;0.000000;;4
+36;3;1171;I16;;Analog Input 1;analog_input_1;1.000000;0.000000;;4
+37;3;1172;I16;;Analog Input 1 Sensor;analog_input_1_sensor;1.000000;0.000000;;4
+38;3;1173;I16;;Analog Input 2;analog_input_2;1.000000;0.000000;;4
+39;3;1174;I16;;Analog Input 2 Sensor;analog_input_2_sensor;1.000000;0.000000;;4
+40;3;1175;I16;;User PT100 Value;user_pt100_value;1.000000;0.000000;Degr.Celsius;4
+41;3;1176;I16;;Analog Output 1;analog_output_1;0.001000;0.000000;;4
+42;3;1177;U16;;Analog Output 1 Percent;analog_output_1_percent;0.012207;0.000000;'%;4
+43;3;1193;U32;;Daily Energy;daily_energy;1.000000;0.000000;MWh;4
+44;3;1195;U32;;Total Energy;E_TOT;1.000000;0.000000;MWh;4
+45;3;1197;U32;;Partial Energy;partial_energy;1.000000;0.000000;MWh;4
+46;3;1199;U16;;Reset Partial Energy;reset_partial_energy;1.000000;0.000000;;0
+47;3;1200;U16;;Total Start Counter;total_start_counter;1.000000;0.000000;;4
+48;3;1201;U16;;Partial Start Counter;partial_start_counter;1.000000;0.000000;;4
+49;3;1202;U16;;Reset Partial Start;reset_partial_start;1.000000;0.000000;;0
+50;3;1203;U16;;Fault Counter;fault_counter;1.000000;0.000000;;4
+51;3;1204;U16;;Warning Counter;warning_counter;1.000000;0.000000;;4
+52;3;1205;U16;;Total Run Time Years;total_run_time_years;1.000000;0.000000;year;4
+53;3;1206;U16;;Total Run Time Days;total_run_time_days;1.000000;0.000000;d;4
+54;3;1207;U16;;Total Run Time Hours;total_run_time_hours;0.100000;0.000000;h;4
+55;3;1208;U16;;Partial Run Time Years;partial_run_time_years;1.000000;0.000000;year;4
+56;3;1209;U16;;Partial Run Time Days;partial_run_time_days;1.000000;0.000000;d;4
+57;3;1210;U16;;Partial Run Time Hours;partial_run_time_hours;0.100000;0.000000;h;4
+58;3;1211;U16;;Clear Partial Run Time Counter;clear_partial_run_time_counter;1.000000;0.000000;;0
+59;3;1212;U16;;Master Mode;master_mode;1.000000;0.000000;;4
+60;3;1213;U16;;Output Current (% nominal);output_current_nominal;0.012207;0.000000;'%;4
+61;3;1222;U16;;Last Fault;last_fault;1.000000;0.000000;;4
+62;3;1223;U16;;9th Fault;v_9th_fault;1.000000;0.000000;;4
+63;3;1224;U16;;8th Fault;v_8th_fault;1.000000;0.000000;;4
+64;3;1225;U16;;7th Fault;v_7th_fault;1.000000;0.000000;;4
+65;3;1226;U16;;6th Fault;v_6th_fault;1.000000;0.000000;;4
+66;3;1227;U16;;5th Fault;v_5th_fault;1.000000;0.000000;;4
+67;3;1228;U16;;4th Fault;v_4th_fault;1.000000;0.000000;;4
+68;3;1229;U16;;3rd Fault;v_3rd_fault;1.000000;0.000000;;4
+69;3;1232;U16;;Clear Fault History;clear_fault_history;1.000000;0.000000;;0
+70;3;1248;U16;;Last Warning;last_warning;1.000000;0.000000;;4
+71;3;1249;U16;;9th Warning;v_9th_warning;1.000000;0.000000;;4
+72;3;1250;U16;;8th Warning;v_8th_warning;1.000000;0.000000;;4
+73;3;1251;U16;;7th Warning;v_7th_warning;1.000000;0.000000;;4
+74;3;1252;U16;;6th Warning;v_6th_warning;1.000000;0.000000;;4
+75;3;1253;U16;;5th Warning;v_5th_warning;1.000000;0.000000;;4
+76;3;1254;U16;;4th Warning;v_4th_warning;1.000000;0.000000;;4
+77;3;1255;U16;;3rd Warning;v_3rd_warning;1.000000;0.000000;;4
+78;3;1256;U16;;2nd Warning;v_2nd_warning;1.000000;0.000000;;4
+79;3;1257;U16;;1st Warning;v_1st_warning;1.000000;0.000000;;4
+80;3;1258;U16;;Clear Warning History;clear_warning_history;1.000000;0.000000;;0
+81;3;1274;U16;;Current Status;current_status;1.000000;0.000000;;4
+82;3;1275;U16;;Current Fault;current_fault;1.000000;0.000000;;4
+83;3;1276;U16;;Current Warning;current_warning;1.000000;0.000000;;4
+84;3;1290;U16;;Output Voltage U;output_voltage_u;1.000000;0.000000;V;4
+85;3;1291;U16;;Output Voltage V;output_voltage_v;1.000000;0.000000;V;4
+86;3;1292;U16;;Output Voltage W;output_voltage_w;1.000000;0.000000;V;4
+87;3;1293;U16;;Starting Delay;starting_delay;0.100000;0.000000;s;4
+88;3;1294;U16;;DI Start Stop;di_start_stop;1.000000;0.000000;;4
+89;3;1295;U16;;DI Door Open;di_door_open;1.000000;0.000000;;4
+90;3;1296;U16;;DI Transformer Thermal;di_transformer_thermal;1.000000;0.000000;;4
+91;3;1297;U16;;DI Inductance Thermal;di_inductance_thermal;1.000000;0.000000;;4
+92;3;1298;U16;;DI Emergency Stop;di_emergency_stop;1.000000;0.000000;;4
+93;3;1299;U16;;DI Leakage Detector;di_leakage_detector;1.000000;0.000000;;4
+94;3;1300;U16;;DI Feedback DC Relay;di_feedback_dc_relay;1.000000;0.000000;;4
+95;3;1301;U16;;DI Feedback AC Relay;di_feedback_ac_relay;1.000000;0.000000;;4
+96;3;1302;U16;;DI Feedback CS Relay;di_feedback_cs_relay;1.000000;0.000000;;4
+97;3;1303;U16;;AC Overvoltage Protector Status;ac_overvoltage_protector_status;1.000000;0.000000;;4
+98;3;1304;U16;;DC Overvoltage Protector Status;dc_overvoltage_protector_status;1.000000;0.000000;;4
+99;3;1330;U16;;2nd Fault;v_2nd_fault;1.000000;0.000000;;4
+100;3;1331;U16;;1st Fault;v_1st_fault;1.000000;0.000000;;4
+101;3;4000;U32;;Global Energy;global_energy;0.000100;0.000000;MWh;4
+102;3;4002;U32;;Daily Global Energy;daily_global_energy;0.000100;0.000000;MWh;4
+103;3;4004;U32;;Yesterday Daily Global Energy;yesterday_daily_global_energy;0.000100;0.000000;MWh;4
+104;3;4006;U32;;Last Month Global Energy;last_month_global_energy;0.000100;0.000000;MWh;4
+105;3;4008;U32;;Total Injection Time;total_injection_time;0.000100;0.000000;d;4
+106;3;4010;U16;;System Current Output;system_current_output;0.100000;0.000000;A;4
+107;3;4011;U16;;System Current U;system_current_u;0.100000;0.000000;A;4
+108;3;4012;U16;;System Current V;system_current_v;0.100000;0.000000;A;4
+109;3;4013;U16;;System Current W;system_current_w;0.100000;0.000000;A;4
+110;3;4014;U16;;System Phase Voltage U;system_phase_voltage_u;1.000000;0.000000;V;4
+111;3;4015;U16;;System Phase Voltage V;system_phase_voltage_v;1.000000;0.000000;V;4
+112;3;4016;U16;;System Phase Voltage W;system_phase_voltage_w;1.000000;0.000000;V;4
+113;3;4017;U16;;Master Phase Net Frequency;master_phase_net_frequency;1.000000;0.000000;Hz;4
+114;3;4018;U16;;Master Start Counter;master_start_counter;1.000000;0.000000;;4
+115;3;4019;U16;;Actual Fault Number;actual_fault_number;1.000000;0.000000;;4
+116;3;4020;U16;;Actual Warning Number;actual_warning_number;1.000000;0.000000;;4
+117;3;4100;U16;;Module Command 1;module_command_1;1.000000;0.000000;;0
+118;3;4102;U16;;Module Status 1;module_status_1;1.000000;0.000000;;4
+119;3;4103;U32;;Module Total Energy 1;module_total_energy_1;0.000100;0.000000;MWh;4
+120;3;4105;U32;;Module Daily Energy 1;module_daily_energy_1;0.000100;0.000000;MWh;4
+121;3;4107;U32;;Module Yesterday Energy 1;module_yesterday_energy_1;0.000100;0.000000;MWh;4
+122;3;4109;U32;;Module Last Month Energy 1;module_last_month_energy_1;0.000100;0.000000;MWh;4
+123;3;4111;U16;;Module Current Output 1;module_current_output_1;0.100000;0.000000;A;4
+124;3;4112;U16;;Module Phase U Current 1;module_phase_u_current_1;0.100000;0.000000;A;4
+125;3;4113;U16;;Module Phase V Current 1;module_phase_v_current_1;0.100000;0.000000;A;4
+126;3;4114;U16;;Module Phase W Current 1;module_phase_w_current_1;0.100000;0.000000;A;4
+127;3;4115;I16;;Module Internal Temperature 1;module_internal_temperature_1;0.010000;0.000000;Degr.Celsius;4
+128;3;4116;I16;;Module IGBT Temperature 1;module_igbt_temperature_1;1.000000;0.000000;Degr.Celsius;4
+129;3;4122;U16;;Module Power Output 1;module_power_output_1;0.100000;0.000000;kW;4
+130;3;4200;U16;;Module Command 2;module_command_2;1.000000;0.000000;;0
+131;3;4202;U16;;Module Status 2;module_status_2;1.000000;0.000000;;4
+132;3;4203;U32;;Module Total Energy 2;module_total_energy_2;0.000100;0.000000;MWh;4
+133;3;4205;U32;;Module Daily Energy 2;module_daily_energy_2;0.000100;0.000000;MWh;4
+134;3;4207;U32;;Module Yesterday Energy 2;module_yesterday_energy_2;0.000100;0.000000;MWh;4
+135;3;4209;U32;;Module Last Month Energy 2;module_last_month_energy_2;0.000100;0.000000;MWh;4
+136;3;4211;U16;;Module Current Output 2;module_current_output_2;0.100000;0.000000;A;4
+137;3;4212;U16;;Module Phase U Current 2;module_phase_u_current_2;0.100000;0.000000;A;4
+138;3;4213;U16;;Module Phase V Current 2;module_phase_v_current_2;0.100000;0.000000;A;4
+139;3;4214;U16;;Module Phase W Current 2;module_phase_w_current_2;0.100000;0.000000;A;4
+140;3;4215;I16;;Module Internal Temperature 2;module_internal_temperature_2;0.010000;0.000000;Degr.Celsius;4
+141;3;4216;I16;;Module IGBT Temperature 2;module_igbt_temperature_2;1.000000;0.000000;Degr.Celsius;4
+142;3;4222;U16;;Module Power Output 2;module_power_output_2;0.100000;0.000000;kW;4
+143;3;4300;U16;;Module Command 3;module_command_3;1.000000;0.000000;;0
+144;3;4302;U16;;Module Status 3;module_status_3;1.000000;0.000000;;4
+145;3;4303;U32;;Module Total Energy 3;module_total_energy_3;0.000100;0.000000;MWh;4
+146;3;4305;U32;;Module Daily Energy 3;module_daily_energy_3;0.000100;0.000000;MWh;4
+147;3;4307;U32;;Module Yesterday Energy 3;module_yesterday_energy_3;0.000100;0.000000;MWh;4
+148;3;4309;U32;;Module Last Month Energy 3;module_last_month_energy_3;0.000100;0.000000;MWh;4
+149;3;4311;U16;;Module Current Output 3;module_current_output_3;0.100000;0.000000;A;4
+150;3;4312;U16;;Module Phase U Current 3;module_phase_u_current_3;0.100000;0.000000;A;4
+151;3;4313;U16;;Module Phase V Current 3;module_phase_v_current_3;0.100000;0.000000;A;4
+152;3;4314;U16;;Module Phase W Current 3;module_phase_w_current_3;0.100000;0.000000;A;4
+153;3;4315;I16;;Module Internal Temperature 3;module_internal_temperature_3;0.010000;0.000000;Degr.Celsius;4
+154;3;4316;I16;;Module IGBT Temperature 3;module_igbt_temperature_3;1.000000;0.000000;Degr.Celsius;4
+155;3;4322;U16;;Module Power Output 3;module_power_output_3;0.100000;0.000000;kW;4
+156;3;4400;U16;;Module Command 4;module_command_4;1.000000;0.000000;;0
+157;3;4402;U16;;Module Status 4;module_status_4;1.000000;0.000000;;4
+158;3;4403;U32;;Module Total Energy 4;module_total_energy_4;0.000100;0.000000;MWh;4
+159;3;4405;U32;;Module Daily Energy 4;module_daily_energy_4;0.000100;0.000000;MWh;4
+160;3;4407;U32;;Module Yesterday Energy 4;module_yesterday_energy_4;0.000100;0.000000;MWh;4
+161;3;4409;U32;;Module Last Month Energy 4;module_last_month_energy_4;0.000100;0.000000;MWh;4
+162;3;4411;U16;;Module Current Output 4;module_current_output_4;0.100000;0.000000;A;4
+163;3;4412;U16;;Module Phase U Current 4;module_phase_u_current_4;0.100000;0.000000;A;4
+164;3;4413;U16;;Module Phase V Current 4;module_phase_v_current_4;0.100000;0.000000;A;4
+165;3;4414;U16;;Module Phase W Current 4;module_phase_w_current_4;0.100000;0.000000;A;4
+166;3;4415;I16;;Module Internal Temperature 4;module_internal_temperature_4;0.010000;0.000000;Degr.Celsius;4
+167;3;4416;I16;;Module IGBT Temperature 4;module_igbt_temperature_4;1.000000;0.000000;Degr.Celsius;4
+168;3;4422;U16;;Module Power Output 4;module_power_output_4;0.100000;0.000000;kW;4
+169;3;4500;U16;;Module Command 5;module_command_5;1.000000;0.000000;;0
+170;3;4502;U16;;Module Status 5;module_status_5;1.000000;0.000000;;4
+171;3;4503;U32;;Module Total Energy 5;module_total_energy_5;0.000100;0.000000;MWh;4
+172;3;4505;U32;;Module Daily Energy 5;module_daily_energy_5;0.000100;0.000000;MWh;4
+173;3;4507;U32;;Module Yesterday Energy 5;module_yesterday_energy_5;0.000100;0.000000;MWh;4
+174;3;4509;U32;;Module Last Month Energy 5;module_last_month_energy_5;0.000100;0.000000;MWh;4
+175;3;4511;U16;;Module Current Output 5;module_current_output_5;0.100000;0.000000;A;4
+176;3;4512;U16;;Module Phase U Current 5;module_phase_u_current_5;0.100000;0.000000;A;4
+177;3;4513;U16;;Module Phase V Current 5;module_phase_v_current_5;0.100000;0.000000;A;4
+178;3;4514;U16;;Module Phase W Current 5;module_phase_w_current_5;0.100000;0.000000;A;4
+179;3;4515;I16;;Module Internal Temperature 5;module_internal_temperature_5;0.010000;0.000000;Degr.Celsius;4
+180;3;4516;I16;;Module IGBT Temperature 5;module_igbt_temperature_5;1.000000;0.000000;Degr.Celsius;4
+181;3;4522;U16;;Module Power Output 5;module_power_output_5;0.100000;0.000000;kW;4
+182;3;4600;U16;;Module Command 6;module_command_6;1.000000;0.000000;;0
+183;3;4602;U16;;Module Status 6;module_status_6;1.000000;0.000000;;4
+184;3;4603;U32;;Module Total Energy 6;module_total_energy_6;0.000100;0.000000;MWh;4
+185;3;4605;U32;;Module Daily Energy 6;module_daily_energy_6;0.000100;0.000000;MWh;4
+186;3;4607;U32;;Module Yesterday Energy 6;module_yesterday_energy_6;0.000100;0.000000;MWh;4
+187;3;4609;U32;;Module Last Month Energy 6;module_last_month_energy_6;0.000100;0.000000;MWh;4
+188;3;4611;U16;;Module Current Output 6;module_current_output_6;0.100000;0.000000;A;4
+189;3;4612;U16;;Module Phase U Current 6;module_phase_u_current_6;0.100000;0.000000;A;4
+190;3;4613;U16;;Module Phase V Current 6;module_phase_v_current_6;0.100000;0.000000;A;4
+191;3;4614;U16;;Module Phase W Current 6;module_phase_w_current_6;0.100000;0.000000;A;4
+192;3;4615;I16;;Module Internal Temperature 6;module_internal_temperature_6;0.010000;0.000000;Degr.Celsius;4
+193;3;4616;I16;;Module IGBT Temperature 6;module_igbt_temperature_6;1.000000;0.000000;Degr.Celsius;4
+194;3;4622;U16;;Module Power Output 6;module_power_output_6;0.100000;0.000000;kW;4
+195;3;4700;U16;;Module Command 7;module_command_7;1.000000;0.000000;;0
+196;3;4702;U16;;Module Status 7;module_status_7;1.000000;0.000000;;4
+197;3;4703;U32;;Module Total Energy 7;module_total_energy_7;0.000100;0.000000;MWh;4
+198;3;4705;U32;;Module Daily Energy 7;module_daily_energy_7;0.000100;0.000000;MWh;4
+199;3;4707;U32;;Module Yesterday Energy 7;module_yesterday_energy_7;0.000100;0.000000;MWh;4
+200;3;4709;U32;;Module Last Month Energy 7;module_last_month_energy_7;0.000100;0.000000;MWh;4
+201;3;4711;U16;;Module Current Output 7;module_current_output_7;0.100000;0.000000;A;4
+202;3;4712;U16;;Module Phase U Current 7;module_phase_u_current_7;0.100000;0.000000;A;4
+203;3;4713;U16;;Module Phase V Current 7;module_phase_v_current_7;0.100000;0.000000;A;4
+204;3;4714;U16;;Module Phase W Current 7;module_phase_w_current_7;0.100000;0.000000;A;4
+205;3;4715;I16;;Module Internal Temperature 7;module_internal_temperature_7;0.010000;0.000000;Degr.Celsius;4
+206;3;4716;I16;;Module IGBT Temperature 7;module_igbt_temperature_7;1.000000;0.000000;Degr.Celsius;4
+207;3;4722;U16;;Module Power Output 7;module_power_output_7;0.100000;0.000000;kW;4
+208;3;4800;U16;;Module Command 8;module_command_8;1.000000;0.000000;;0
+209;3;4802;U16;;Module Status 8;module_status_8;1.000000;0.000000;;4
+210;3;4803;U32;;Module Total Energy 8;module_total_energy_8;0.000100;0.000000;MWh;4
+211;3;4805;U32;;Module Daily Energy 8;module_daily_energy_8;0.000100;0.000000;MWh;4
+212;3;4807;U32;;Module Yesterday Energy 8;module_yesterday_energy_8;0.000100;0.000000;MWh;4
+213;3;4809;U32;;Module Last Month Energy 8;module_last_month_energy_8;0.000100;0.000000;MWh;4
+214;3;4811;U16;;Module Current Output 8;module_current_output_8;0.100000;0.000000;A;4
+215;3;4812;U16;;Module Phase U Current 8;module_phase_u_current_8;0.100000;0.000000;A;4
+216;3;4813;U16;;Module Phase V Current 8;module_phase_v_current_8;0.100000;0.000000;A;4
+217;3;4814;U16;;Module Phase W Current 8;module_phase_w_current_8;0.100000;0.000000;A;4
+218;3;4815;I16;;Module Internal Temperature 8;module_internal_temperature_8;0.010000;0.000000;Degr.Celsius;4
+219;3;4816;I16;;Module IGBT Temperature 8;module_igbt_temperature_8;1.000000;0.000000;Degr.Celsius;4
+220;3;4822;U16;;Module Power Output 8;module_power_output_8;0.100000;0.000000;kW;4
+221;3;4900;U16;;Module Command 9;module_command_9;1.000000;0.000000;;0
+222;3;4902;U16;;Module Status 9;module_status_9;1.000000;0.000000;;4
+223;3;4903;U32;;Module Total Energy 9;module_total_energy_9;0.000100;0.000000;MWh;4
+224;3;4905;U32;;Module Daily Energy 9;module_daily_energy_9;0.000100;0.000000;MWh;4
+225;3;4907;U32;;Module Yesterday Energy 9;module_yesterday_energy_9;0.000100;0.000000;MWh;4
+226;3;4909;U32;;Module Last Month Energy 9;module_last_month_energy_9;0.000100;0.000000;MWh;4
+227;3;4911;U16;;Module Current Output 9;module_current_output_9;0.100000;0.000000;A;4
+228;3;4912;U16;;Module Phase U Current 9;module_phase_u_current_9;0.100000;0.000000;A;4
+229;3;4913;U16;;Module Phase V Current 9;module_phase_v_current_9;0.100000;0.000000;A;4
+230;3;4914;U16;;Module Phase W Current 9;module_phase_w_current_9;0.100000;0.000000;A;4
+231;3;4915;I16;;Module Internal Temperature 9;module_internal_temperature_9;0.010000;0.000000;Degr.Celsius;4
+232;3;4916;I16;;Module IGBT Temperature 9;module_igbt_temperature_9;1.000000;0.000000;Degr.Celsius;4
+233;3;4922;U16;;Module Power Output 9;module_power_output_9;0.100000;0.000000;kW;4
+234;3;5000;U16;;Module Command 10;module_command_10;1.000000;0.000000;;0
+235;3;5002;U16;;Module Status 10;module_status_10;1.000000;0.000000;;4
+236;3;5003;U32;;Module Total Energy 10;module_total_energy_10;0.000100;0.000000;MWh;4
+237;3;5005;U32;;Module Daily Energy 10;module_daily_energy_10;0.000100;0.000000;MWh;4
+238;3;5007;U32;;Module Yesterday Energy 10;module_yesterday_energy_10;0.000100;0.000000;MWh;4
+239;3;5009;U32;;Module Last Month Energy 10;module_last_month_energy_10;0.000100;0.000000;MWh;4
+240;3;5011;U16;;Module Current Output 10;module_current_output_10;0.100000;0.000000;A;4
+241;3;5012;U16;;Module Phase U Current 10;module_phase_u_current_10;0.100000;0.000000;A;4
+242;3;5013;U16;;Module Phase V Current 10;module_phase_v_current_10;0.100000;0.000000;A;4
+243;3;5014;U16;;Module Phase W Current 10;module_phase_w_current_10;0.100000;0.000000;A;4
+244;3;5015;I16;;Module Internal Temperature 10;module_internal_temperature_10;0.010000;0.000000;Degr.Celsius;4
+245;3;5016;I16;;Module IGBT Temperature 10;module_igbt_temperature_10;1.000000;0.000000;Degr.Celsius;4
+246;3;5022;U16;;Module Power Output 10;module_power_output_10;0.100000;0.000000;kW;4

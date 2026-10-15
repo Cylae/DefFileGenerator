@@ -1,5 +1,5 @@
-﻿modbusRTU;Sensor;Hukseflux;SR05_Pyranometer;;;;;;;
-1;3;0;U16;;Modbus address;DeviceAddr;1.000000;0.000000;;4
+modbusRTU;Sensor;Hukseflux;SR05_Pyranometer;;;;;;;
+1;3;0;U16;;Modbus address;UNIT_ID;1.000000;0.000000;;4
 2;3;1;U16;;Serial communication settings;serial_communication_settings;1.000000;0.000000;;4
 3;3;2;I32;;Irradiance (temperature compensated signal);irradiance_temperature_compensated_signal;0.010000;0.000000;W/m2;4
 4;3;4;I32;;Irradiance (uncompensated signal);irradiance_uncompensated_signal;0.010000;0.000000;W/m2;4

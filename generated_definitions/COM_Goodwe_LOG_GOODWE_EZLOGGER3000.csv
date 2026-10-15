@@ -1,0 +1,61 @@
+ModbusTCP;Logger;GoodWe;Ezlogger3000;1;;;;;;
+1;3;20000;U32;;System Time;;1.0;0.0;;4
+2;3;20002;U32;;City;;1.0;0.0;;4
+3;3;20004;I32;;Time Zone;;1.0;0.0;S;4
+4;3;20006;U32;;Local Time;;1.0;0.0;;4
+5;3;20008;U16;;Start-up;;1.0;0.0;;4
+6;3;20009;U16;;Shutdown;CMD_OFF;1.0;0.0;;4
+7;3;20010;U16;;Switch On/Off;;1.0;0.0;;4
+8;3;20011;U16;;Switch On/Off_1;;1.0;0.0;;4
+9;3;20012;U16;;Array Reset;;1.0;0.0;;4
+10;3;20013;U32;;Active power adjustment;P_AC;0.1;0.0;kW;4
+11;3;20015;I32;;Reactive power adjustment;CMD_Q_AC_SET_ABS;0.1;0.0;kVAR;4
+12;3;20017;U32;;Active power adjustment_1;;0.1;0.0;kW;4
+13;3;20019;I32;;Reactive power adjustment_1;Q_AC;0.1;0.0;kVAR;4
+14;3;20021;U16;;Set Active Power (percentage);;0.1;0.0;%;4
+15;3;20022;I16;;Set PF/Reactive Power;;1;0.0;;4
+16;3;20023;I32;;Total Input Power;;0.001;0.0;kW;4
+17;3;20025;I32;;Total Active Power;;0.001;0.0;kW;4
+18;3;20027;I16;;Power Factor;PF;0.001;0.0;;4
+19;3;20028;I32;;Total Reactive Power;;0.001;0.0;kVar;4
+20;3;20030;I32;;Total DC Current;I_DC;0.1;0.0;A;4
+21;3;20032;U32;;Total Cumulative Generation;;0.01;0.0;kWh;4
+22;3;20034;U32;;Total Daily Generation;;0.1;0.0;kWh;4
+23;3;20036;U32;;Total Generation Hour;;1;0.0;h;4
+24;3;20038;U16;;Plants Status;;1;0.0;;4
+25;3;20039;I16;;Total A- Phase-current;I_AC;0.1;0.0;A;4
+26;3;20040;I16;;Total B- Phase current;I_AC_3;0.1;0.0;A;4
+27;3;20041;I16;;Total C- Phase current;;0.1;0.0;A;4
+28;3;20042;U16;;Vab;;0.1;0.0;V;4
+29;3;20043;U16;;Vbc;;0.1;0.0;V;4
+30;3;20044;U16;;Vca;;0.1;0.0;V;4
+31;3;20055;U16;;Inverter efficiency;;0.01;0.0;%;4
+32;3;20056;U32;;Maximum value of reactive power regulation;;0.001;0.0;kVar;4
+33;3;20058;I32;;Minimum value of reactive power regulation;;0.001;0.0;kVar;4
+34;3;20060;U32;;Maximum value of active power regulation;;0.001;0.0;k;4
+35;3;20062;U16;;Locked status;;1;0.0;;4
+36;3;20063;U16;;DI Status;;1;0.0;;4
+37;3;20064_16;STRING;;ESN;SERIAL;1;0.0;;4
+38;3;20074;U16;;System Reset;;1;0.0;;4
+39;3;20075;U32;;Target value of power dispatch;;0.1;0.0;kW;4
+40;3;20077;I32;;Target value of reactive power dispatch;;0.1;0.0;kVar;4
+41;3;20079;U32;;Percentage of active dispatch;;1;0.0;%;4
+42;3;20081;U16;;System time: Year;;1;0.0;;4
+43;3;20082;U16;;System time: month;;1;0.0;;4
+44;3;20083;U16;;System time: day;;1;0.0;;4
+45;3;20084;U16;;System time: hour;;1;0.0;;4
+46;3;20085;U16;;System time: minutes;;1;0.0;;4
+47;3;20086;U16;;System Time: Seconds;;1;0.0;;4
+48;3;20100;U16;;Quantity of inverters connected to grid;;1;0.0;;4
+49;3;20101;U16;;Quantity of inverters in standby mode;;1;0.0;;4
+50;3;20102;U16;;Quantity of inverters off;;1;0.0;;4
+51;3;50000_0_1;BITS;;Device Address Conflict ;;1;0.0;;8
+52;3;50000_1_1;BITS;;EzIO communication failure;;1;0.0;;8
+53;3;50001_0_1;BITS;;DI1 custom alarm;;1;0.0;;8
+54;3;50001_1_1;BITS;;DI2 custom alarm;;1;0.0;;8
+55;3;50001_2_1;BITS;;DI3 custom alarm;;1;0.0;;8
+56;3;50001_3_1;BITS;;DI4 custom alarm;;1;0.0;;8
+57;3;50001_4_1;BITS;;DI5 custom alarm;;1;0.0;;8
+58;3;50001_5_1;BITS;;DI6 custom alarm;;1;0.0;;8
+59;3;50001_6_1;BITS;;DI7 custom alarm;;1;0.0;;8
+60;3;50001_7_1;BITS;;DI8 custom alarm;;1;0.0;;8

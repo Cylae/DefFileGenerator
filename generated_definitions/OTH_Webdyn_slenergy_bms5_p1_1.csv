@@ -1,0 +1,214 @@
+Modbus;BMS;SLEnergy;Generic12_test
+1;3;11125;I32;;Battery power;;1.000000;0.000000;W;4
+2;3;11127;U16;;Minimum unit voltage;;0.100000;0.000000;V;4
+3;3;11128;U16;;Maximum single-cell voltage;;0.100000;0.000000;V;4
+4;3;11129;U16;;Total number of loops;;0.100000;0.000000;;4
+5;3;11130;U16;;Battery voltage;;0.100000;0.000000;V;4
+6;3;11131;I16;;Battery discharge current;;0.100000;0.000000;A;4
+7;3;11132;I16;;Battery charging current;;0.100000;0.000000;A;4
+8;3;11133;I16;;Battery temperature;TEMP;0.100000;0.000000;degC;4
+9;3;11134;U16;;Discharge cutoff voltage;;0.100000;0.000000;V;4
+10;3;20014;U16;;SOC;SOC;0.100000;0.000000;%;4
+11;3;20015;U16;;SOH;SOH;1.000000;0.000000;%;4
+12;3;20020;I16;;Maximum discharge current;;0.100000;0.000000;A;4
+13;3;20019;I16;;Maximum charging current;;0.100000;0.000000;A;4
+14;3;11139;U16;;Maximum charging voltage;;0.100000;0.000000;V;4
+15;3;11140;U16;;Battery status;;1.000000;0.000000;;4
+16;3;11141;I16;;Battery charge capacity for the day;;0.100000;0.000000; kWh;4
+17;3;11142;I32;;Battery cumulative charge amount;;0.100000;0.000000; kWh;4
+18;3;11144;I16;;Battery daily discharge capacity;;0.100000;0.000000; kWh;4
+19;3;11145;I32;;Battery cumulative discharge amount;;0.100000;0.000000; kWh;4
+20;3;11147;I32;;Battery monthly charge amount;;0.100000;0.000000; kWh;4
+21;3;11149;I32;;Battery charge volume in the current year;;0.100000;0.000000; kWh;4
+22;3;11151;I32;;Battery discharge amount for the current month;;0.100000;0.000000; kWh;4
+23;3;11153;I32;;Battery discharge capacity in one year;;0.100000;0.000000; kWh;4
+24;3;11170;U16;;Main alarm code;;1.000000;0.000000;;4
+25;3;11171;U16;;Sub-alarm code;;1.000000;0.000000;;4
+26;3;11172;U16;;Master protection code;;1.000000;0.000000;;4
+27;3;11173;U16;;Sub-protection code;;1.000000;0.000000;;4
+28;3;11174;U16;;Main fault code;;1.000000;0.000000;;4
+29;3;11175;U16;;Sub-fault codes;;1.000000;0.000000;;4
+30;3;42091;I16;;Battery power settings;;0.100000;0.000000;kW;4
+31;3;42092;U16;;SOC forced calibration enabled;;1.000000;0.000000;;4
+32;3;42093;U16;;SOC mandatory calibration cycle;;1.000000;0.000000;;4
+33;3;42094;U16;;Battery port information;;1.000000;0.000000;;4
+34;3;42095;U16;;Battery Information;;1.000000;0.000000;;4
+35;3;42096;U16;;Battery operating type;;1.000000;0.000000;;4
+36;3;42097;U16;;Number of batteries connected in series and parallel;;1.000000;0.000000;;4
+37;3;42098;U16;;Battery charge/discharge slope enable;;1.000000;0.000000;;4
+38;3;42099;U16;;Battery charge/discharge slope;;1.000000;0.000000;%xmin;4
+39;3;42100;U16;;Battery charging power settings;;0.100000;0.000000;kW;4
+40;3;42101;U16;;Battery discharge power setting;;0.100000;0.000000;kW;4
+41;3;42105;U16;;CV charging voltage;;0.100000;0.000000;V;4
+42;3;42106;U16;;float voltage;;0.100000;0.000000;V;4
+43;3;42107;U16;;Battery equalization enable;;1.000000;0.000000;;4
+44;3;42108;U16;;Battery equalization voltage;;0.100000;0.000000;V;4
+45;3;42109;U16;;Battery equalization interval;;1.000000;0.000000;Day;4
+46;3;42110;U16;;Battery equalization time;;1.000000;0.000000;Hour;4
+47;3;42111;U16;;Battery overvoltage alarm value;;0.100000;0.000000;V;4
+48;3;42112;U16;;Battery overvoltage alarm recovery value;;0.100000;0.000000;V;4
+49;3;42113;U16;;Battery overvoltage protection value;;0.100000;0.000000;V;4
+50;3;42114;U16;;Battery overvoltage protection recovery value;;0.100000;0.000000;V;4
+51;3;42115;U16;;Battery low voltage alarm voltage value;;0.100000;0.000000;V;4
+52;3;42116;U16;;Battery undervoltage alarm recovery voltage value;;0.100000;0.000000;V;4
+53;3;42117;U16;;Battery discharge cutoff voltage value;;0.100000;0.000000;V;4
+54;3;42118;U16;;Battery discharge cutoff recovery voltage value;;0.100000;0.000000;V;4
+55;3;42119;I16;;Battery temperature2;;0.100000;0.000000;degC;4
+56;3;42120;I16;;Temperature compensation value;;1.000000;0.000000;mV/degC;4
+57;3;42121;U16;;Battery internal resistance;;1.000000;0.000000;mohm;4
+58;3;42122;U16;;Battery capacity;;1.000000;0.000000;Ah;4
+59;3;42123;I16;;Maximum total charging current of battery;I_AC;1.000000;0.000000;A;4
+60;3;42124;I16;;Maximum total discharge current of battery;;1.000000;0.000000;A;4
+61;3;42125;U16;;Battery discharge cutoff voltage in hybrid mode;;0.100000;0.000000;V;4
+62;3;42126;U16;;Battery discharge cutoff SOC in hybrid mode;;1.000000;0.000000;%;4
+63;3;42127;U16;;Cutoff recovery voltage in hybrid mode;;0.100000;0.000000;V;4
+64;3;42128;U16;;Cut-off recovery of SOC in hybrid mode;;1.000000;0.000000;%;4
+65;3;42130;U16;;Battery/BMS manufacturers;MANUFACTURER;1.000000;0.000000;;4
+66;3;42132;U16;;Battery low voltage alarm SOC value;;1.000000;0.000000;%;4
+67;3;42133;U16;;Battery undervoltage alarm restores SOC value;;1.000000;0.000000;%;4
+68;3;42134;U16;;Battery discharge cutoff SOC value;;1.000000;0.000000;%;4
+69;3;42135;U16;;Battery discharge cut-off restores SOC value;;1.000000;0.000000;%;4
+70;3;42136;U16;;SOC value at charging stop;;1.000000;0.000000;%;4
+71;3;42137;U16;;Lithium battery wake-up enable (activate pack);;1.000000;0.000000;;4
+72;3;42138;U16;;Communication with BMS failed, energy storage unit shut down, fault enable bit reported.;;1.000000;0.000000;;4
+73;3;42139;U16;;Charging stops and SOC value is restored1;;1.000000;0.000000;%;4
+74;3;42150;U16;;Battery Information1;;1.000000;0.000000;;4
+75;3;42194;U16;;Charging stops and SOC value is restored2;;1.000000;0.000000;;4
+76;3;42205;U16;;Battery Information2;;1.000000;0.000000;;4
+77;3;42249;U16;;Charging stops and SOC value is restored3;;1.000000;0.000000;;4
+78;3;45479;U16;;AC charging target power1;;0.100000;0.000000;kW;4
+79;3;45480;U16;;AC charging target voltage1;;0.100000;0.000000;V;4
+80;3;45481;U16;;AC charging target SOC1;;1.000000;0.000000;%;4
+81;3;45482;U16;;AC charging current1;;1.000000;0.000000;A;4
+82;3;45486;U16;;AC charging target power2;;0.100000;0.000000;kW;4
+83;3;45487;U16;;AC charging target voltage2;;0.100000;0.000000;V;4
+84;3;45488;U16;;AC charging target SOC2;;1.000000;0.000000;%;4
+85;3;45489;U16;;AC charging current2;;1.000000;0.000000;A;4
+86;3;45493;U16;;AC charging target power3;;0.100000;0.000000;kW;4
+87;3;45494;U16;;AC charging target voltage3;;0.100000;0.000000;V;4
+88;3;45495;U16;;AC charging target SOC3;;1.000000;0.000000;%;4
+89;3;45496;U16;;AC charging current3;;1.000000;0.000000;A;4
+90;3;45500;U16;;AC charging time period group;;1.000000;0.000000;;4
+91;3;45501;U16;;AC charging time period 1 start time;;1.000000;0.000000;H, Min;4
+92;3;45502;U16;;AC charging time period 1 end time;;1.000000;0.000000;H, Min;4
+93;3;45503;U16;;AC charging time period 1 Charging power;;0.100000;0.000000;kW;4
+94;3;45504;U16;;AC charging time period 1 Charging cutoff voltage;;0.100000;0.000000;V;4
+95;3;45505;U16;;AC charging time period 1: Charging ends at SOC;;1.000000;0.000000;%;4
+96;3;45506;U16;;AC charging time period 1 Enable;;1.000000;0.000000;;4
+97;3;45510;U16;;AC charging time period 2 start time;;1.000000;0.000000;H, Min;4
+98;3;45511;U16;;AC charging time period 2 end time;;1.000000;0.000000;H, Min;4
+99;3;45512;U16;;AC charging time period 2 Charging power;;0.100000;0.000000;kW;4
+100;3;45513;U16;;AC charging time period 2 Charging cutoff voltage;;0.100000;0.000000;V;4
+101;3;45514;U16;;AC charging time period 2: Charging ends at SOC;;1.000000;0.000000;%;4
+102;3;45515;U16;;AC charging time period 2 enable;;1.000000;0.000000;;4
+103;3;45519;U16;;AC charging time period 3 starts time;;1.000000;0.000000;H, Min;4
+104;3;45520;U16;;AC charging time period 3 end time;;1.000000;0.000000;H, Min;4
+105;3;45521;U16;;AC charging time period 3 charging power;;0.100000;0.000000;kW;4
+106;3;45522;U16;;AC charging time period 3 Charging cutoff voltage;;0.100000;0.000000;V;4
+107;3;45523;U16;;AC charging time period 3, charging ends at SOC.;;1.000000;0.000000;%;4
+108;3;45524;U16;;AC charging time period 3 enable;;1.000000;0.000000;;4
+109;3;45546;U16;;Number of peak charging time periods;;1.000000;0.000000;;4
+110;3;45547;U16;;Peak charging period 1 start time;;1.000000;0.000000;H, Min;4
+111;3;45548;U16;;End time of peak charging period 1;;1.000000;0.000000;H, Min;4
+112;3;45549;U16;;Peak charging period 1 charging power;;0.100000;0.000000;kW;4
+113;3;45550;U16;;Peak charging period 1 charging cutoff voltage;;0.100000;0.000000;V;4
+114;3;45551;U16;;Peak charging period 1: Charging cutoff SOC;;1.000000;0.000000;%;4
+115;3;45552;U16;;Peak charging period 1 enabled;;1.000000;0.000000;;4
+116;3;45556;U16;;Peak charging period 2 start time;;1.000000;0.000000;H, Min;4
+117;3;45557;U16;;End time of peak charging period 2;;1.000000;0.000000;H, Min;4
+118;3;45558;U16;;Peak charging period 2 charging power;;0.100000;0.000000;kW;4
+119;3;45559;U16;;Peak charging period 2 charging cutoff voltage;;0.100000;0.000000;V;4
+120;3;45560;U16;;Peak charging period 2: Charging cutoff SOC;;1.000000;0.000000;%;4
+121;3;45561;U16;;Peak charging period 2 enabled;;1.000000;0.000000;;4
+122;3;45565;U16;;Peak charging period 3 start time;;1.000000;0.000000;H, Min;4
+123;3;45566;U16;;Peak charging period 3 end time;;1.000000;0.000000;H, Min;4
+124;3;45567;U16;;Peak charging period 3 charging power;;0.100000;0.000000;kW;4
+125;3;45568;U16;;Peak charging period 3 charging cutoff voltage;;0.100000;0.000000;V;4
+126;3;45569;U16;;Peak charging period 3, charging cutoff SOC;;1.000000;0.000000;%;4
+127;3;45570;U16;;Peak charging period 3 enable;;1.000000;0.000000;;4
+128;3;45592;U16;;Number of peak-shaving discharge time periods;;1.000000;0.000000;;4
+129;3;45593;U16;;Start time of peak shaving discharge period 1;;1.000000;0.000000;H, Min;4
+130;3;45594;U16;;End time of peak shaving discharge period 1;;1.000000;0.000000;H, Min;4
+131;3;45595;U16;;Peak-shaving discharge time period 1 discharge power;;0.100000;0.000000;kW;4
+132;3;45596;U16;;Peak shaving discharge time period 1 Discharge cutoff voltage;;0.100000;0.000000;V;4
+133;3;45597;U16;;Peak shaving discharge period 1 discharge cutoff SOC;;1.000000;0.000000;%;4
+134;3;45598;U16;;Enable during peak discharge period 1;;1.000000;0.000000;;4
+135;3;45602;U16;;Start time of peak discharge period 2;;1.000000;0.000000;H, Min;4
+136;3;45603;U16;;End time of peak discharge period 2;;1.000000;0.000000;H, Min;4
+137;3;45604;U16;;Peak-shaving discharge time period 2 discharge power;;0.100000;0.000000;kW;4
+138;3;45605;U16;;Peak shaving discharge time period 2 discharge cutoff voltage;;0.100000;0.000000;V;4
+139;3;45606;U16;;Peak-shaving discharge period 2 discharge cutoff SOC;;1.000000;0.000000;%;4
+140;3;45607;U16;;Enable during peak discharge period 2;;1.000000;0.000000;;4
+141;3;45611;U16;;Peak shaving discharge period 3 start time;;1.000000;0.000000;H, Min;4
+142;3;45612;U16;;End time of peak shaving discharge period 3;;1.000000;0.000000;H, Min;4
+143;3;45613;U16;;Peak-shaving discharge time period 3 discharge power;;0.100000;0.000000;kW;4
+144;3;45614;U16;;Peak shaving discharge time period 3 Discharge cutoff voltage;;0.100000;0.000000;V;4
+145;3;45615;U16;;Peak shaving discharge period 3 discharge cutoff SOC;;1.000000;0.000000;%;4
+146;3;45616;U16;;Peak shaving discharge time period 3 enable;;1.000000;0.000000;;4
+147;3;45638;U16;;Offline output time period group number;;1.000000;0.000000;;4
+148;3;45639;U16;;Offline output time period 1 start time;;1.000000;0.000000;H, Min;4
+149;3;45640;U16;;Offline output time period 1 end time;;1.000000;0.000000;H, Min;4
+150;3;45644;U16;;Offline output time period 1 enabled;;1.000000;0.000000;;4
+151;3;45648;U16;;Offline output time period 2 start time;;1.000000;0.000000;H, Min;4
+152;3;45649;U16;;Offline output time period 2 end time;;1.000000;0.000000;H, Min;4
+153;3;45653;U16;;Offline output time period 2 enable;;1.000000;0.000000;;4
+154;3;45657;U16;;Offline output time period 3 start time;;1.000000;0.000000;H, Min;4
+155;3;45658;U16;;Offline output time period 3 end time;;1.000000;0.000000;H, Min;4
+156;3;45662;U16;;Off-grid output time period 3 enable;;1.000000;0.000000;;4
+157;3;45684;U16;;Number of forced charging time periods;;1.000000;0.000000;;4
+158;3;45685;U16;;Forced charging period 1 start time;;1.000000;0.000000;H, Min;4
+159;3;45686;U16;;Forced charging period 1 end time;;1.000000;0.000000;H, Min;4
+160;3;45687;U16;;Forced charging period 1 charging power;;0.100000;0.000000;kW;4
+161;3;45688;U16;;Forced charging period 1 charging cutoff voltage;;0.100000;0.000000;V;4
+162;3;45689;U16;;Forced charging period 1: Charging ends at SOC;;1.000000;0.000000;%;4
+163;3;45690;U16;;Forced charging period 1 enabled;;1.000000;0.000000;;4
+164;3;45694;U16;;Forced charging period 2 start time;;1.000000;0.000000;H, Min;4
+165;3;45695;U16;;Forced charging period 2 end time;;1.000000;0.000000;H, Min;4
+166;3;45696;U16;;Forced charging period 2 charging power;;0.100000;0.000000;kW;4
+167;3;45697;U16;;Forced charging period 2 charging cutoff voltage;;0.100000;0.000000;V;4
+168;3;45698;U16;;Forced charging period 2: Charging cutoff SOC;;1.000000;0.000000;%;4
+169;3;45699;U16;;Forced charging period 2 enabled;;1.000000;0.000000;;4
+170;3;45703;U16;;Forced charging period 3 start time;;1.000000;0.000000;H, Min;4
+171;3;45704;U16;;Forced charging period 3 end time;;1.000000;0.000000;H, Min;4
+172;3;45705;U16;;Forced charging period 3 charging power;;0.100000;0.000000;kW;4
+173;3;45706;U16;;Forced charging period 3 charging cutoff voltage;;0.100000;0.000000;V;4
+174;3;45707;U16;;Forced charging period 3: Charging cutoff SOC;;1.000000;0.000000;%;4
+175;3;45708;U16;;Forced charging period 3 enable;;1.000000;0.000000;;4
+176;3;45750;U16;;Heat pump function mode selection;;1.000000;0.000000;;4
+177;3;45751;U16;;Heat pump relay output status;;1.000000;0.000000;;4
+178;3;45752;U16;;Intelligent mode working mode selection;;1.000000;0.000000;;4
+179;3;45753;U16;;Uplink powerControl uplink power threshold;;1.000000;0.000000;W;4
+180;3;45754;U16;;Uplink powerControl minimum running time;;1.000000;0.000000; Min;4
+181;3;45755;U16;;Uplink powerControl the maximum running time per day;;1.000000;0.000000; Min;4
+182;3;45756;U16;;Uplink powerControl downlink power threshold;;1.000000;0.000000;W;4
+183;3;45757;U16;;Uplink powerControl SOC end threshold;;1.000000;0.000000;%;4
+184;3;45758;U16;;BatterySOC control start-up threshold;;1.000000;0.000000;%;4
+185;3;45759;U16;;BatterySOC controls minimum running time;;1.000000;0.000000; Min;4
+186;3;45760;U16;;BatterySOC controls maximum daily running time;;1.000000;0.000000; Min;4
+187;3;45761;U16;;BatterySOC controls downlink power threshold;;1.000000;0.000000;W;4
+188;3;45762;U16;;BatterySOC control end threshold;;1.000000;0.000000;%;4
+189;3;45763;U16;;Number of heat pump operating time periods;;1.000000;0.000000;;4
+190;3;45764;U16;;Time period control enables each time period.;;1.000000;0.000000;;4
+191;3;45765;U16;;timingControl start time period 1;;1.000000;0.000000;H, Min;4
+192;3;45766;U16;;timingControl End Time Period 1;;1.000000;0.000000;H, Min;4
+193;3;45767;U16;;timingControl the start time period 2;;1.000000;0.000000;H, Min;4
+194;3;45768;U16;;timingControl End Time Period 2;;1.000000;0.000000;H, Min;4
+195;3;45769;U16;;timingControl the start time period 3;;1.000000;0.000000;H, Min;4
+196;3;45770;U16;;timingControl end time period 3;;1.000000;0.000000;H, Min;4
+197;3;45790;U16;;ETU mode selection;;1.000000;0.000000;;4
+198;3;45791;I32;;Active power-voltage sensitivity coefficient (Cp) ;P_AC;0.000001;0.000000;V/W;4
+199;3;45793;I32;;Reactive power-voltage sensitivity coefficient (Cq) ;Q_AC;0.000001;0.000000;V/Var;4
+200;3;45795;U16;;Voltage regulation hysteresis voltage;;0.100000;0.000000;V;4
+201;3;45796;U16;;Lower limit of voltage regulation dead zone;;0.100000;0.000000;V;4
+202;3;45797;U16;;Voltage regulation dead zone upper limit;;0.100000;0.000000;V;4
+203;3;45798;U16;;Forced battery charging power;;0.100000;0.000000;kW;4
+204;3;45799;U16;;Voltage regulation cycle;;0.100000;0.000000;s;4
+205;3;45800;U16;;Cq calculates the upper limit of reactive power.;;0.100000;0.000000;Kvar;4
+206;3;45801;U16;;Intelligent Power-Saving SOC;;1.000000;0.000000;%;4
+207;3;45802;U16;;Smart power protection enablement;;1.000000;0.000000;;4
+208;3;45803;U16;;Intelligent power protection;;0.100000;0.000000;kW;4
+209;3;45804;U16;;Forced power supply enable;;1.000000;0.000000;;4
+210;3;45805;U16;;Forced power supply start time;;1.000000;0.000000;H, Min;4
+211;3;45806;U16;;Forced power supply end time;;1.000000;0.000000;H, Min;4
+212;3;45807;U16;;SOC Automatic Calibration;;1.000000;0.000000;;4
+213;3;45808;U16;;Automatic power calibration;;0.100000;0.000000;kW;4

@@ -1,0 +1,96 @@
+ModbusTCP;Inverter;SATCON;PowerGate;;;;;;;
+1;4;30070;U16;;Slave Address;UNIT_ID;1;0;;4
+2;4;30075;U16;;Fault 1;;1;0;;8
+3;4;30076;U16;;Fault 2;;1;0;;8
+4;4;30077;U16;;Fault 3;;1;0;;8
+5;4;30078;U16;;Fault 4 (DC Faults);;1;0;;8
+6;4;30079;U16;;Fault 5 (AC Line Faults);;1;0;;8
+7;4;30080;U16;;Status Word 6;;1;0;;8
+8;4;30081;U16;;Status Word 7;;1;0;;8
+9;4;30082;U16;;PCS State;;1;0;;4
+10;4;30083;U16;;DC Input Power;P_DC;1;0;;4
+11;4;30084;U16;;DC Link Voltage;U_DC;1;0;Vdc;4
+12;4;30085;U16;;DC Input Voltage;;1;0;Vdc;4
+13;4;30086;U16;;DC Input Current;I_DC;1;0;;4
+14;4;30087;U16;;Output kvar;;1;0;kVA;4
+15;4;30088;U16;;Output kw;P_AC;1;0;kW;4
+16;4;30089;U16;;Output kva;;1;0;kVA;4
+17;4;30090;U16;;Line Voltage A;;1;0;V;4
+18;4;30091;U16;;Line Voltage B;;1;0;V;4
+19;4;30092;U16;;Line Voltage C;;1;0;V;4
+20;4;30093;U16;;Line Current A;I_AC_3;1;0;A;4
+21;4;30094;U16;;Line Current B;;1;0;A;4
+22;4;30095;U16;;Line Current C;;1;0;A;4
+23;4;30096;U16;;Neutral Current;;1;0;A;4
+24;4;30097;U16;;Stop code;;1;0;;4
+25;4;30099;U32;;Total kwh;E_TOT;0.01;0;kWh;4
+26;4;30101;I16;;Line Power factor;PF;1;0;%;4
+27;4;30102;U16;;Line Frequency;FREQ;1;0;Hz;4
+28;4;30103;U16;;Output Power Limit;CMD_P_AC_SET_ABS;1;0;;4
+29;4;30107;U16;;Strings Current 1;;1;0;Adc;4
+30;4;30108;U16;;Strings Current 2;;1;0;Adc;4
+31;4;30109;U16;;Strings Current 3;;1;0;Adc;4
+32;4;30110;U16;;Strings Current 4;;1;0;Adc;4
+33;4;30111;U16;;Strings Current 5;;1;0;Adc;4
+34;4;30112;U16;;Strings Current 6;;1;0;Adc;4
+35;4;30113;U16;;Strings Current 7;;1;0;Adc;4
+36;4;30114;U16;;Strings Current 8;;1;0;Adc;4
+37;4;30115;U16;;Strings Current 9;;1;0;Adc;4
+38;4;30116;U16;;Strings Current 10;;1;0;Adc;4
+39;4;30117;U16;;Strings Current 11;;1;0;Adc;4
+40;4;30118;U16;;Strings Current 12;;1;0;Adc;4
+41;4;30119;U16;;Strings Current 13;;1;0;Adc;4
+42;4;30120;U16;;Strings Current 14;;1;0;Adc;4
+43;4;30121;U16;;Strings Current 15;;1;0;Adc;4
+44;4;30122;U16;;Strings Current 16;;1;0;Adc;4
+45;4;30123;U16;;Strings Current 17;;1;0;Adc;4
+46;4;30124;U16;;Strings Current 18;;1;0;Adc;4
+47;4;30125;U16;;Strings Current 19;;1;0;Adc;4
+48;4;30126;U16;;Strings Current 20;;1;0;Adc;4
+49;4;30127;U16;;Strings Current 21;;1;0;Adc;4
+50;4;30128;U16;;Strings Current 22;;1;0;Adc;4
+51;4;30129;U16;;Strings Current 23;;1;0;Adc;4
+52;4;30130;U16;;Strings Current 24;;1;0;Adc;4
+53;4;30131;U16;;Strings Current 25;;1;0;Adc;4
+54;4;30132;U16;;Strings Current 26;;1;0;Adc;4
+55;4;30133;U16;;Strings Current 27;;1;0;Adc;4
+56;4;30134;U16;;Strings Current 28;;1;0;Adc;4
+57;4;30135;U16;;Strings Current 29;;1;0;Adc;4
+58;4;30136;U16;;Strings Current 30;;1;0;Adc;4
+59;4;30137;U16;;Strings Current 31;;1;0;Adc;4
+60;4;30138;U16;;Strings Current 32;;1;0;Adc;4
+61;4;30139;U16;;String Amp Hours 1;;1;0;Ah;4
+62;4;30140;U16;;String Amp Hours 2;;1;0;Ah;4
+63;4;30141;U16;;String Amp Hours 3;;1;0;Ah;4
+64;4;30142;U16;;String Amp Hours 4;;1;0;Ah;4
+65;4;30143;U16;;String Amp Hours 5;;1;0;Ah;4
+66;4;30144;U16;;String Amp Hours 6;;1;0;Ah;4
+67;4;30145;U16;;String Amp Hours 7;;1;0;Ah;4
+68;4;30146;U16;;String Amp Hours 8;;1;0;Ah;4
+69;4;30147;U16;;String Amp Hours 9;;1;0;Ah;4
+70;4;30148;U16;;String Amp Hours 10;;1;0;Ah;4
+71;4;30149;U16;;String Amp Hours 11;;1;0;Ah;4
+72;4;30150;U16;;String Amp Hours 12;;1;0;Ah;4
+73;4;30151;U16;;String Amp Hours 13;;1;0;Ah;4
+74;4;30152;U16;;String Amp Hours 14;;1;0;Ah;4
+75;4;30153;U16;;String Amp Hours 15;;1;0;Ah;4
+76;4;30154;U16;;String Amp Hours 16;;1;0;Ah;4
+77;4;30155;U16;;String Amp Hours 17;;1;0;Ah;4
+78;4;30156;U16;;String Amp Hours 18;;1;0;Ah;4
+79;4;30157;U16;;String Amp Hours 19;;1;0;Ah;4
+80;4;30158;U16;;String Amp Hours 20;;1;0;Ah;4
+81;4;30159;U16;;String Amp Hours 21;;1;0;Ah;4
+82;4;30160;U16;;String Amp Hours 22;;1;0;Ah;4
+83;4;30161;U16;;String Amp Hours 23;;1;0;Ah;4
+84;4;30162;U16;;String Amp Hours 24;;1;0;Ah;4
+85;4;30163;U16;;String Amp Hours 25;;1;0;Ah;4
+86;4;30164;U16;;String Amp Hours 26;;1;0;Ah;4
+87;4;30165;U16;;String Amp Hours 27;;1;0;Ah;4
+88;4;30166;U16;;String Amp Hours 28;;1;0;Ah;4
+89;4;30167;U16;;String Amp Hours 29;;1;0;Ah;4
+90;4;30168;U16;;String Amp Hours 30;;1;0;Ah;4
+91;4;30169;U16;;String Amp Hours 31;;1;0;Ah;4
+92;4;30170;U16;;String Amp Hours 32;;1;0;Ah;4
+93;4;40209;U16;;Remote command;;1;0;;4
+94;4;40210;U16;;Reactive power command;Q_AC;1;0;kVA;4
+95;4;40211;U16;;Reactive Current command;;1;0;;4

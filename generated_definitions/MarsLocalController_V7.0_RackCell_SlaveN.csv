@@ -1,18 +1,18 @@
-﻿modbusTCP;BatteryRack;Mars Energy;MarsLocalController Rack V7.0;;;;;;;
+modbusTCP;BatteryRack;Mars Energy;MarsLocalController Rack V7.0;;;;;;;
 1;4;0;U16;;Rack - Number of cells in Rack;;1.000000;0.000000;;4
 2;4;1;F32;;Rack - Rack Voltage;;1.000000;0.000000;V;4
 3;4;3;F32;;Rack - Rack Current;;1.000000;0.000000;A;4
 4;4;5;F32;;Rack - Rack SOC;;1.000000;0.000000;%;4
 5;4;7;F32;;Rack - Rack SOH;;1.000000;0.000000;%;4
-6;4;9;F32;;Rack - Rack Insulation Resistance;;1.000000;0.000000;Ω;4
+6;4;9;F32;;Rack - Rack Insulation Resistance;R_ISO;1.000000;0.000000;Ω;4
 7;4;11;F32;;Rack - Maximum Allowable Charge Current;;1.000000;0.000000;A;4
 8;4;13;F32;;Rack - Maximum Allowable Discharge Current;;1.000000;0.000000;A;4
-9;4;15;F32;;Rack - Total Charge Energy;;1.000000;0.000000;kWh;4
+9;4;15;F32;;Rack - Total Charge Energy;E_TOT;1.000000;0.000000;kWh;4
 10;4;17;F32;;Rack - Total Discharge Energy;;1.000000;0.000000;kWh;4
 11;4;19;F32;;Rack - Available Charge Energy;;1.000000;0.000000;kWh;4
 12;4;21;F32;;Rack - Available Discharge Energy;;1.000000;0.000000;kWh;4
 13;4;23;F32;;Rack - Average Cell Voltage;;1.000000;0.000000;V;4
-14;4;25;F32;;Rack - Average Cell Temperature;;1.000000;0.000000;°C;4
+14;4;25;F32;;Rack - Average Cell Temperature;TEMP_CELL;1.000000;0.000000;°C;4
 15;4;27;F32;;Rack - Maximum Cell Voltage;;1.000000;0.000000;V;4
 16;4;29;F32;;Rack - Maximum Cell Voltage Cell Number;;1.000000;0.000000;;4
 17;4;31;F32;;Rack - Minimum Cell Voltage;;1.000000;0.000000;V;4

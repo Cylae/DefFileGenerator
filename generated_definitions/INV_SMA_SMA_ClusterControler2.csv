@@ -1,0 +1,42 @@
+modbusRTU;Inverter;SMA;SMA_ClusterControler2;;;;;;;
+1;3;30193;U32;;Heure du systeme UTC (s);heure_du_systeme_utc_s;1.000000;0.000000;s;4
+2;3;30513;U64;;Energie totale injectee;energie_totale_injectee;1.000000;0.000000;Wh;4
+3;3;30517;U64;;Energie injectee journaliere;energie_injectee_journaliere;1.000000;0.000000;W;4
+4;3;30775;I32;;Puissance totale active en W;puissance_totale_active_en_w;1.000000;0.000000;W;4
+5;3;30805;I32;;Puissance reactive totale en Var;puissance_reactive_totale_en_var;1.000000;0.000000;Var;4
+6;3;31235;U32;;Valeur de consigne de la puissance active Digital I/O (%);valeur_de_consigne_de_la_puissance_active_digital_io;0.010000;0.000000;'%;4
+7;3;31237;U32;;Valeur de consigne de la puissance active entree analogique (%);valeur_de_consigne_de_la_puissance_active_entree_analogique;0.010000;0.000000;'%;4
+8;3;31239;U32;;Valeur de consigne de la puissance active (%), consigne Modbus fournisseur d electricite;valeur_de_consigne_de_la_puissance_active_consigne_modbus_fournisseur_d_electricite;0.010000;0.000000;'%;4
+9;3;31241;U32;;Valeur de consigne de la puissance active (%), consigne Modbus distribution directe;valeur_de_consigne_de_la_puissance_active_consigne_modbus_distribution_directe;0.010000;0.000000;'%;4
+10;3;31243;U32;;Valeur de consigne en resultant (%) (valeur minimale obtenue à partir de toutes les valeurs de consigne);valeur_de_consigne_en_resultant_valeur_minimale_obtenue_partir_de_toutes_les_valeurs_de_consigne;0.010000;0.000000;'%;4
+11;3;31249;I32;;Puissance active d exportation reseau actuelle P en W;puissance_active_d_exportation_reseau_actuelle_p_en_w;1.000000;0.000000;W;4
+12;3;31251;I32;;Puissance reactive d exportation reseau actuelle Q en var;puissance_reactive_d_exportation_reseau_actuelle_q_en_var;1.000000;0.000000;VAr;4
+13;3;34609;I32;;Temperature ambiante (C);temperature_ambiante_c;0.100000;0.000000;C;4
+14;3;34611;I32;;Temperature ambiante mesuree maximale (C);temperature_ambiante_mesuree_maximale_c;0.100000;0.000000;C;4
+15;3;34613;U32;;Rayonnement total sur la surface du capteur (W/m2);rayonnement_total_sur_la_surface_du_capteur_wm2;1.000000;0.000000;W/m2;4
+16;3;34615;U32;;Vitesse du vent (m/s);vitesse_du_vent_ms;0.100000;0.000000;m/s;0
+17;3;34617;U32;;Humidite de l air (%);humidite_de_l_air;0.010000;0.000000;'%;4
+18;3;34619;U32;;Pression d air (Pa);pression_d_air_pa;0.010000;0.000000;Pa;4
+19;3;34621;I32;;Temperature des panneaux photovoltaïques (C);temperature_des_panneaux_photovoltaques_c;0.100000;0.000000;C;4
+20;3;34623;U32;;Rayonnement total sur le capteur d irradiation externe (W/m2);rayonnement_total_sur_le_capteur_d_irradiation_externe_wm2;1.000000;0.000000;W/m2;4
+21;3;34625;I32;;Temperature ambiante (F);temperature_ambiante_f;0.100000;0.000000;F;4
+22;3;34627;I32;;Temperature ambiante (K);temperature_ambiante_k;0.100000;0.000000;K;4
+23;3;34629;I32;;Temperature des panneaux photovoltaïques (F);temperature_des_panneaux_photovoltaques_f;0.100000;0.000000;F;4
+24;3;34631;I32;;Temperature des panneaux photovoltaïques (K);temperature_des_panneaux_photovoltaques_k;0.100000;0.000000;K;4
+25;3;34633;U32;;Vitesse du vent (km/h);vitesse_du_vent_kmh;0.100000;0.000000;km/h;0
+26;3;34635;U32;;Vitesse du vent (mph);vitesse_du_vent_mph;0.100000;0.000000;mph;0
+27;3;34637;I32;;Entree de courant analogique 1 (mA);entree_de_courant_analogique_1_ma;0.010000;0.000000;mA;4
+28;3;34639;I32;;Entree de courant analogique 2 (mA);entree_de_courant_analogique_2_ma;0.010000;0.000000;mA;4
+29;3;34641;I32;;Entree de courant analogique 3 (mA);entree_de_courant_analogique_3_ma;0.010000;0.000000;mA;4
+30;3;34643;I32;;Entree de courant analogique 4 (mA);entree_de_courant_analogique_4_ma;0.010000;0.000000;mA;4
+31;3;34645;I32;;Entree de tension analogique 1 (V);entree_de_tension_analogique_1_v;0.010000;0.000000;V;4
+32;3;34647;I32;;Entree de tension analogique 2 (V);entree_de_tension_analogique_2_v;0.010000;0.000000;V;4
+33;3;34649;I32;;Entree de tension analogique 3 (V);entree_de_tension_analogique_3_v;0.010000;0.000000;V;4
+34;3;34651;I32;;Entree de tension analogique 4 (V);entree_de_tension_analogique_4_v;0.010000;0.000000;V;4
+35;3;34653;U32;;Groupe d entree numerique 1;groupe_d_entree_numerique_1;1.000000;0.000000;ENUM;4
+36;3;34655;U32;;Groupe d entree numerique 2;groupe_d_entree_numerique_2;1.000000;0.000000;ENUM;4
+37;3;40001;U32;;Lecture et definition de l heure de l installation (UTC), en s;lecture_et_definition_de_l_heure_de_l_installation_utc_en_s;1.000000;0.000000;s;4
+38;3;40003;U32;;Lecture et definition du fuseau horaire;lecture_et_definition_du_fuseau_horaire;1.000000;0.000000;ENUM;4
+39;3;40005;U32;;Passage automatique a l heure d ete/d hiver;passage_automatique_a_l_heure_d_eted_hiver;1.000000;0.000000;ENUM;4
+40;3;40493;I16;;Valeur de consigne de la puissance active P, en % de la puissance active maximale (PMAX) de l installation PV;valeur_de_consigne_de_la_puissance_active_p_en_de_la_puissance_active_maximale_pmax_de_l_installation_pv;0.010000;0.000000;'%;4
+41;3;41167;U32;;Valeur de consigne de la puissance active (%), consigne manuelle;valeur_de_consigne_de_la_puissance_active_consigne_manuelle;0.010000;0.000000;'%;4

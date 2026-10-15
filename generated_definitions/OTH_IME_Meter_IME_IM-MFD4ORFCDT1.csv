@@ -1,0 +1,74 @@
+modbusRTU;Other;IME Meter;IME_IM-MFD4ORFCDT1;;;;;;;
+1;4;20480;U32;;Phase 1 Current Value (R);phase_1_current_value_r;1.000000;0.000000;mA;4
+2;4;20482;U32;;Phase 2 Current Value (S);phase_2_current_value_s;1.000000;0.000000;mA;4
+3;4;20484;U32;;Phase 3 Current Value (T);phase_3_current_value_t;1.000000;0.000000;mA;4
+4;4;20486;U32;;Neutral Current Value;neutral_current_value;1.000000;0.000000;mA;4
+5;4;20492;U32;;Medium value Im=(R+sec.+T)/3;medium_value_imrsect3;1.000000;0.000000;mA;4
+6;4;20498;U32;;Medium thermal value 1 (R);medium_thermal_value_1_r;1.000000;0.000000;mA;4
+7;4;20500;U32;;Medium thermal value 2 (S);medium_thermal_value_2_s;1.000000;0.000000;mA;4
+8;4;20502;U32;;Medium thermal value 3 (T);medium_thermal_value_3_t;1.000000;0.000000;mA;4
+9;4;20509;U32;;1-N Voltage;v_1n_voltage;1.000000;0.000000;mV;4
+10;4;20511;U32;;2-N Voltage;v_2n_voltage;1.000000;0.000000;mV;4
+11;4;20513;U32;;3-N Voltage;v_3n_voltage;1.000000;0.000000;mV;4
+12;4;20515;U32;;1-2 Voltage;v_12_voltage;1.000000;0.000000;mV;4
+13;4;20517;U32;;2-3 Voltage;v_23_voltage;1.000000;0.000000;mV;4
+14;4;20519;U32;;3-1 Voltage;v_31_voltage;1.000000;0.000000;mV;4
+15;4;20537;U16;;Three-phase frequency;threephase_frequency;0.010000;0.000000;Hz;4
+16;4;20538;I32;;Three-phase Active Power;P_AC;0.010000;0.000000;;4
+17;4;20540;I32;;Three-phase reactive power;threephase_reactive_power;0.010000;0.000000;;4
+18;4;20544;I32;;Threee-Phase Apparent Power;threeephase_apparent_power;0.010000;0.000000;;4
+19;4;20546;I32;;Three-phase Power Distortion;threephase_power_distortion;0.010000;0.000000;;4
+20;4;20548;I16;;Three-phase Power Factor (PF);threephase_power_factor_pf;0.001000;0.000000;;4
+21;4;20550;U16;;Power Factor Sector;power_factor_sector;1.000000;0.000000;;4
+22;4;20551;I32;;Phase 1 Active Power;P_AC_1;0.010000;0.000000;;4
+23;4;20553;I32;;Phase 2 Active Power;P_AC_2;0.010000;0.000000;;4
+24;4;20555;I32;;Phase 3 Active Power;P_AC_3;0.010000;0.000000;;4
+25;4;20557;I32;;Phase 1 Reactive power;phase_1_reactive_power;0.010000;0.000000;;4
+26;4;20559;I32;;Phase 2 Reactive power;phase_2_reactive_power;0.010000;0.000000;;4
+27;4;20561;I32;;Phase 3 Reactive power;phase_3_reactive_power;0.010000;0.000000;;4
+28;4;20569;U32;;Phase 1 Apparent Power;phase_1_apparent_power;0.010000;0.000000;;4
+29;4;20571;U32;;Phase 2 Apparent Power;phase_2_apparent_power;0.010000;0.000000;;4
+30;4;20573;U32;;Phase 3 Apparent Power;phase_3_apparent_power;0.010000;0.000000;;4
+31;4;20581;I16;;Power Factor Phase 1 (R);power_factor_phase_1_r;0.001000;0.000000;;4
+32;4;20582;I16;;Power Factor Phase 2 (S);power_factor_phase_2_s;0.001000;0.000000;;4
+33;4;20583;I16;;Power Factor Phase 3 (T);power_factor_phase_3_t;0.001000;0.000000;;4
+34;4;20587;U16;;Power Factor Sector Phase 1 (R);power_factor_sector_phase_1_r;1.000000;0.000000;;4
+35;4;20588;U16;;Power Factor Sector Phase 2 (S);power_factor_sector_phase_2_s;1.000000;0.000000;;4
+36;4;20589;U16;;Power Factor Sector Phase 3 (T);power_factor_sector_phase_3_t;1.000000;0.000000;;4
+37;4;20592;U32;;Positive Three-phase Active Energy;positive_threephase_active_energy;1.000000;0.000000;;4
+38;4;20594;U32;;Negative Three-phase Active Energy;negative_threephase_active_energy;1.000000;0.000000;;4
+39;4;20598;U32;;Positive Three-phase Reactive Energy;positive_threephase_reactive_energy;1.000000;0.000000;;4
+40;4;20600;U32;;Negative Three-phase Reactive Energy;negative_threephase_reactive_energy;1.000000;0.000000;;4
+41;4;20604;U32;;Positive Three-phase Active Energy (Tariff 1);positive_threephase_active_energy_tariff_1;1.000000;0.000000;;4
+42;4;20612;U32;;Positive Three-phase Active Energy (Tariff 2);positive_threephase_active_energy_tariff_2;1.000000;0.000000;;4
+43;4;20706;U16;;THD Phase 1 (R) vs. fundamental;thd_phase_1_r_vs_fundamental;0.100000;0.000000;'%;4
+44;4;20707;U16;;THD Phase 2 (S) vs. fundamental;thd_phase_2_s_vs_fundamental;0.100000;0.000000;'%;4
+45;4;20708;U16;;THD Phase 3 (T) vs. fundamental;thd_phase_3_t_vs_fundamental;0.100000;0.000000;'%;4
+46;4;20710;U16;;THD Voltage 1-N vs. fundamental;thd_voltage_1n_vs_fundamental;0.100000;0.000000;'%;4
+47;4;20711;U16;;THD Voltage 2-N vs. fundamental;thd_voltage_2n_vs_fundamental;0.100000;0.000000;'%;4
+48;4;20712;U16;;THD Voltage 3-N vs. fundamental;thd_voltage_3n_vs_fundamental;0.100000;0.000000;'%;4
+49;4;20738;U16;;Wrap round total positive active energy;wrap_round_total_positive_active_energy;1.000000;0.000000;;4
+50;4;20739;U16;;Wrap round total positive reactive energy;wrap_round_total_positive_reactive_energy;1.000000;0.000000;;4
+51;4;20740;U16;;Wrap round total negative active energy;wrap_round_total_negative_active_energy;1.000000;0.000000;;4
+52;4;20741;U16;;Wrap round total negative reactive energy;wrap_round_total_negative_reactive_energy;1.000000;0.000000;;4
+53;3;20480;U16;;Measurement System Features;measurement_system_features;1.000000;0.000000;;1
+54;3;20481;U16;;Phase Current Transformation Ratio;phase_current_transformation_ratio;1.000000;0.000000;;1
+55;3;20484;U16;;Voltage Transformation Ratio;voltage_transformation_ratio;0.010000;0.000000;;1
+56;3;20485;U32;;Calculation Settings Requirement;calculation_settings_requirement;1.000000;0.000000;;1
+57;3;20608;U32;;Minimum value V1-N;minimum_value_v1n;1.000000;0.000000;mV;4
+58;3;20610;U32;;Minimum value V2-N;minimum_value_v2n;1.000000;0.000000;mV;4
+59;3;20612;U32;;Minimum value V3-N;minimum_value_v3n;1.000000;0.000000;mV;4
+60;3;20614;U32;;Maximum value V1-N;maximum_value_v1n;1.000000;0.000000;mV;4
+61;3;20616;U32;;Maximum value V2-N;maximum_value_v2n;1.000000;0.000000;mV;4
+62;3;20618;U32;;Maximum value V3-N;maximum_value_v3n;1.000000;0.000000;mV;4
+63;3;20628;U32;;Maximum Phase 1 Current Requirement (R);maximum_phase_1_current_requirement_r;1.000000;0.000000;mA;4
+64;3;20630;U32;;Maximum Phase 2 Current Requirement (S);maximum_phase_2_current_requirement_s;1.000000;0.000000;mA;4
+65;3;20632;U32;;Maximum Phase 3 Current Requirement (T);maximum_phase_3_current_requirement_t;1.000000;0.000000;mA;4
+66;3;20672;I32;;Maximum Total Active Power Requirement Tariff 1;maximum_total_active_power_requirement_tariff_1;0.010000;0.000000;;4
+67;3;20674;I32;;Maximum Total Reactive Power Requirement Tariff 1;maximum_total_reactive_power_requirement_tariff_1;0.010000;0.000000;;4
+68;3;20676;I32;;Maximum Total Apparent Power Requirement Tariff 1;maximum_total_apparent_power_requirement_tariff_1;0.010000;0.000000;;4
+69;3;20678;I32;;Maximum Total Active Power Requirement Tariff 2;maximum_total_active_power_requirement_tariff_2;0.010000;0.000000;;4
+70;3;20680;I32;;Maximum Total Reactive Power Requirement Tariff 2;maximum_total_reactive_power_requirement_tariff_2;0.010000;0.000000;;4
+71;3;20682;I32;;Maximum Total Apparent Power Requirement Tariff 2;maximum_total_apparent_power_requirement_tariff_2;0.010000;0.000000;;4
+72;3;20696;U16;;Run hour meter threshold;run_hour_meter_threshold;0.010000;0.000000;'%;1
+73;3;20697;U32;;Run hour meter (TOT);run_hour_meter_tot;1.000000;0.000000;minutes;1

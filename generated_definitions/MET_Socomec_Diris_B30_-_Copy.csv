@@ -1,0 +1,46 @@
+ModbusRTU;Meter;Socomec;DirisB30;;;;;;;
+1;4;18444;U32;;Tension Phase1;U_AC_1;0.0;0.0;;4
+2;4;18446;U32;;Tension Phase2;U_AC_2;0.0;0.0;;4
+3;4;18448;U32;;Tension Phase3;U_AC_3;0.0;0.0;;4
+4;4;18458;U32;;Courant Phase1;I_AC_1;0.0;0.0;;4
+5;4;18460;U32;;Courant Phase2;I_AC_2;0.0;0.0;;4
+6;4;18462;U32;;Courant Phase3;I_AC_3;0.0;0.0;;4
+7;4;18464;U32;;Courant N;;0.0;0.0;;4
+8;4;18488;U32;;P reactif Phase1;;0.0;0.0;;4
+9;4;18490;U32;;P actif Phase1;;0.0;0.0;;4
+10;4;18492;U32;;P reactif Phase2;;0.0;0.0;;4
+11;4;18494;U32;;P actif Phase2;;0.0;0.0;;4
+12;4;18496;U32;;P reactif Phase3;;0.0;0.0;;4
+13;4;18498;U32;;P actif Phase3;;0.0;0.0;;4
+14;4;18442;U32;;Frquence;;0.0;0.0;;4
+15;4;18476;U32;;P_tot;;0.0;0.0;W;4
+16;4;19817;U16;;harmonic I1;;1.0;0.0;%;4
+17;4;19818;U16;;harmonic I2;;1.0;0.0;%;4
+18;4;19819;U16;;harmonic I3;;1.0;0.0;%;4
+19;4;19820;U16;;harmonic I4;;1.0;0.0;%;4
+20;4;21865;U16;;harmonic I1;;1.0;0.0;%;4
+21;4;21866;U16;;harmonic I2;;1.0;0.0;%;4
+22;4;21867;U16;;harmonic I3;;1.0;0.0;%;4
+23;4;21868;U16;;harmonic I4;;1.0;0.0;%;4
+24;4;23913;U16;;harmonic I1;;1.0;0.0;%;4
+25;4;23914;U16;;harmonic I2;;1.0;0.0;%;4
+26;4;23915;U16;;harmonic I3;;1.0;0.0;%;4
+27;4;23916;U16;;harmonic I4;;1.0;0.0;%;4
+28;4;25960;U16;;harmonic I1;;1.0;0.0;%;4
+29;4;25961;U16;;harmonic I2;;1.0;0.0;%;4
+30;4;25962;U16;;harmonic I3;;1.0;0.0;%;4
+31;4;25963;U16;;harmonic I4;;1.0;0.0;%;4
+32;4;37144;U16;;THD V1;;1.0;0.0;%;4
+33;4;37145;U16;;THD V2;;1.0;0.0;%;4
+34;4;37146;U16;;THD V3;;1.0;0.0;%;4
+35;4;37147;U16;;THD U12;;1.0;0.0;%;4
+36;4;37148;U16;;THD U23;;1.0;0.0;%;4
+37;4;37149;U16;;THD U31;;1.0;0.0;%;4
+38;4;37582;U16;;harmonic V1;;1.0;0.0;%;4
+39;4;37583;U16;;harmonic V2;;1.0;0.0;%;4
+40;4;37584;U16;;harmonic V3;;1.0;0.0;%;4
+41;4;19843;U32;;Total Positive active Energy : Ea+;E_TOT;0.001;0;Wh;4
+42;4;19846;U32;;Total Negative active Energy : Ea-;;0.001;0;Wh;4
+43;4;19849;U32;;Total Positive reactive Energy : Er+;;0.001;0;Varh;4
+44;4;19852;U32;;Total Negative reactive Energy : Er-;;0.001;0;Varh;4
+45;4;19855;U32;;Total Apparent Energy : Eap;;0.001;0;Vah;4

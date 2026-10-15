@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Fox ESS;Modbus Protocol;;;;;;;
+modbusRTU;Inverter;Fox ESS;Modbus Protocol;;;;;;;
 1;3;36001;U16;;Master Version;master_version;1.000000;0.000000;N/A;4
 2;3;36002;U16;;Slave Version;slave_version;1.000000;0.000000;N/A;4
 3;3;36003;U16;;Manager Version;manager_version;1.000000;0.000000;N/A;4
@@ -108,7 +108,7 @@
 107;3;39050;U16;;Model ID;model_id;1.000000;0.000000;N/A;4
 108;3;39051;U16;;Number of strings;number_of_strings;1.000000;0.000000;N/A;4
 109;3;39052;U16;;Number of MPPTs;number_of_mppts;1.000000;0.000000;N/A;4
-110;3;39053;I32;;Rated power (Pn);NominalPower;0.001000;0.000000;kW;4
+110;3;39053;I32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
 111;3;39055;I32;;Maximum active power (Pmax);maximum_active_power_pmax;0.001000;0.000000;kW;4
 112;3;39057;I32;;Maximum apparent value (Smax);maximum_apparent_value_smax;0.001000;0.000000;kVA;4
 113;3;39059;I32;;Maximum reactive power;maximum_reactive_power;0.001000;0.000000;kVar;4
@@ -138,10 +138,10 @@
 137;3;39128;I32;;Inverter S Phase Current;inverter_s_phase_current;0.001000;0.000000;A;4
 138;3;39130;I32;;Inverter T Phase Current;inverter_t_phase_current;0.001000;0.000000;A;4
 139;3;39132;U32;;reserve;reserve_6;1.000000;0.000000;;0
-140;3;39134;I32;;Active power;RealPower;0.001000;0.000000;kW;4
+140;3;39134;I32;;Active power;P_AC;0.001000;0.000000;kW;4
 141;3;39136;I32;;Reactive power;reactive_power;0.001000;0.000000;kVar;4
-142;3;39138;I16;;Power Factor;CosPhi;0.001000;0.000000;N/A;4
-143;3;39139;I16;;Grid Frequency;GridFrequency;0.010000;0.000000;Hz;4
+142;3;39138;I16;;Power Factor;PF;0.001000;0.000000;N/A;4
+143;3;39139;I16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;4
 144;3;39140;U16;;reserve;reserve_7;1.000000;0.000000;;0
 145;3;39141;I16;;Internal temperature;internal_temperature;0.100000;0.000000;;4
 146;3;39142;U16;;reserve;reserve_8;1.000000;0.000000;;0
@@ -319,7 +319,7 @@
 318;3;49010;I32;;[Power grid dispatch] Night Reactive power compensatio n (kVar);power_grid_dispatch_night_reactive_power_compensatio_n_kvar;0.001000;0.000000;kVar;1
 319;3;49075;U16;;reserve;reserve_58;1.000000;0.000000;;0
 320;3;49076;U16;;reserve;reserve_59;1.000000;0.000000;;0
-321;3;49077;U16;;Power on;cmdOn;1.000000;0.000000;N/A;1
+321;3;49077;U16;;Power on;CMD_ON;1.000000;0.000000;N/A;1
 322;3;49078;U16;;Shut down;shut_down;1.000000;0.000000;N/A;1
 323;3;49079;U16;;Grid standard code;grid_standard_code;1.000000;0.000000;N/A;1
 324;3;49080;U32;;reserve;reserve_60;1.000000;0.000000;;0

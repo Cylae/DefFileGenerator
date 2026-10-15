@@ -1,0 +1,37 @@
+modbusRTU;Other;Webdyn;KEHUA_Modbus_SinglePhase;;;;;;;
+1;4;4501;U16;;System Operations Status;system_operations_status;1.000000;0.000000;;4
+2;4;4502;U16;;Power Voltage;power_voltage;0.100000;0.000000;V;4
+3;4;4503;U16;;Grid Current;grid_current;0.100000;0.000000;A;4
+4;4;4504;U16;;Grid Frequency;FREQ;0.100000;0.000000;Hz;4
+5;4;4505;U16;;Daily Power Consumption;daily_power_consumption;0.100000;0.000000;kWh;4
+6;4;4506;U16;;Daily Power Generation;E_DAY;0.100000;0.000000;kWh;4
+7;4;4507;I16;;Grid as apparent power;grid_as_apparent_power;0.000000;0.000000;VA;4
+8;4;4508;I16;;Grid active power;grid_active_power;0.000000;0.000000;W;4
+9;4;4509;I16;;Grid reactive Power;grid_reactive_power;0.000000;0.000000;Var;4
+10;4;4510;U16;;Inverter voltage;inverter_voltage;0.100000;0.000000;V;4
+11;4;4511;U16;;Inverter current;inverter_current;0.100000;0.000000;A;4
+12;4;4512;U16;;Inverter frequency;inverter_frequency;0.100000;0.000000;Hz;4
+13;4;4513;U16;;Load Voltage;load_voltage;0.100000;0.000000;V;4
+14;4;4514;U16;;Load Current;load_current;0.100000;0.000000;A;4
+15;4;4515;U16;;Daily load Power comsumption;daily_load_power_comsumption;0.100000;0.000000;kWh;4
+16;4;4516;U16;;Apparent load power;apparent_load_power;0.000000;0.000000;VA;4
+17;4;4517;U16;;Load active power;load_active_power;0.000000;0.000000;W;4
+18;4;4518;U16;;Load reactive power;load_reactive_power;0.000000;0.000000;Var;4
+19;4;4519;I16;;Power Factor;PF;0.010000;0.000000;;4
+20;4;4520;U16;;PV1 Voltage;pv1_voltage;0.100000;0.000000;V;4
+21;4;4521;U16;;PV1 Current;pv1_current;0.100000;0.000000;A;4
+22;4;4522;U16;;PV1 Power;pv1_power;0.000000;0.000000;W;4
+23;4;4523;U16;;PV2 Voltage;pv2_voltage;0.100000;0.000000;V;4
+24;4;4524;U16;;PV2 Current;pv2_current;0.100000;0.000000;A;4
+25;4;4525;U16;;PV2 Power;pv2_power;0.000000;0.000000;W;4
+26;4;4526;U16;;PV Day Power generation;pv_day_power_generation;0.100000;0.000000;kWh;4
+27;4;4537;U16;;Total PV Power;total_pv_power;1.000000;0.000000;W;4
+28;4;4560;U16;;PV3 Voltage;pv3_voltage;0.100000;0.000000;V;4
+29;4;4561;U16;;PV3 Current;pv3_current;0.100000;0.000000;A;4
+30;4;4562;U16;;PV3 Power;pv3_power;0.000000;0.000000;W;4
+31;4;4563;U16;;PV4 Voltage;pv4_voltage;0.100000;0.000000;V;4
+32;4;4564;U16;;PV4 Current;pv4_current;0.100000;0.000000;A;4
+33;4;4565;U16;;PV4 Power;pv4_power;0.000000;0.000000;W;4
+34;3;6000;I16;;Power factor;power_factor;0.010000;0.000000;;4
+35;3;6001;I16;;Reactive Power;reactive_power;1.000000;0.000000;Var;4
+36;3;6002;U16;;PV Output Power;pv_output_power;1.000000;0.000000;'%;4

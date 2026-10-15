@@ -1,0 +1,13 @@
+modbus;Meter;PQ PLUS;GENERIC;;;;;;;
+1;3;25946;F32_W;;Puissance active Phase L1;P_AC_1;0.001;0;kW;4
+3;3;25948;F32_W;;Puissance ractive Phase L1;;1;0;var;4
+4;3;25950;F32_W;;Puissance apparente Phase L1;S_AC_1;1;0;VA;4
+5;3;25952;F32_W;;Puissance active Phase L2;P_AC_2;0.001;0;kW;4
+6;3;25954;F32_W;;Puissance ractive Phase L2;;1;0;var;4
+7;3;25956;F32_W;;Puissance apparente Phase L2;S_AC_2;1;0;VA;4
+8;3;25958;F32_W;;Puissance active Phase L3;P_AC_3;0.001;0;kW;4
+9;3;25960;F32_W;;Puissance ractive Phase L3;;1;0;var;4
+10;3;25962;F32_W;;Puissance apparente Phase L3;S_AC_3;1;0;VA;4
+11;3;25964;F32_W;;Puissance active totale;P_AC;0.001;0;kW;4
+12;3;25966;F32_W;;Puissance ractive totale;;1;0;var;4
+13;3;25968;F32_W;;Puissance apparente totale;S_AC;1;0;VA;4

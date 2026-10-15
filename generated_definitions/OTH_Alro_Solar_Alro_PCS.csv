@@ -1,0 +1,454 @@
+modbusRTU;Other;Alro Solar;Alro_PCS;;;;;;;
+1;3;40000;U16;;RS485 slave address (connected to the data acquisition device port);rs485_slave_address_connected_to_the_data_acquisition_device_port;1.000000;0.000000;'---;1
+2;3;40001;U16;;RS485 baud rate (connected to data acquisition device port);rs485_baud_rate_connected_to_data_acquisition_device_port;1.000000;0.000000;'---;1
+3;3;40002;U16;;RS485 slave address (connected to host computer port)or third-party data collector);rs485_slave_address_connected_to_host_computer_portor_thirdparty_data_collector;1.000000;0.000000;'---;1
+4;3;40003;U16;;RS485 baud rate (connected to host computer port)or third-party data collector);rs485_baud_rate_connected_to_host_computer_portor_thirdparty_data_collector;1.000000;0.000000;'---;1
+5;3;40006;U16;;years;years;1.000000;0.000000;'---;1
+6;3;40007;U16;;Day Hour;day_hour;1.000000;0.000000;'---;1
+7;3;40008;U16;;minutes and seconds;minutes_and_seconds;1.000000;0.000000;'---;1
+8;3;40009;U16;;LCD language;lcd_language;1.000000;0.000000;'---;1
+9;3;40010;U16;;Standby startup time;standby_startup_time;1.000000;0.000000;1s;1
+10;3;40011;U16;;Fault recovery time;fault_recovery_time;1.000000;0.000000;1s;1
+11;3;40012;U16;;Parallel operation setting 1;parallel_operation_setting_1;1.000000;0.000000;'---;1
+12;3;40013;U16;;reserve;reserve;1.000000;0.000000;;0
+13;3;40014;U16;;LCD Homepage Display Style;lcd_homepage_display_style;1.000000;0.000000;'---;4
+14;3;40020;U16;;PV connection method;pv_connection_method;1.000000;0.000000;'---;1
+15;3;40021;U16;;PV start-up voltage;pv_startup_voltage;1.000000;0.000000;0.1V;1
+16;3;40022;U16;;MPPT quantity;mppt_quantity;1.000000;0.000000;'---;1
+17;3;40023;U16;;Enable string monitoring;enable_string_monitoring;1.000000;0.000000;'---;1
+18;3;40024;U16;;String detection threshold setting;string_detection_threshold_setting;1.000000;0.000000;1A;1
+19;3;40030;U16;;AC starting high voltage (reconnection condition);ac_starting_high_voltage_reconnection_condition;1.000000;0.000000;0.1V;1
+20;3;40031;U16;;AC startup low voltage (reconnection condition);ac_startup_low_voltage_reconnection_condition;1.000000;0.000000;0.1V;1
+21;3;40032;U16;;AC starts at high frequency (reconnection condition);ac_starts_at_high_frequency_reconnection_condition;1.000000;0.000000;0.01Hz;1
+22;3;40033;U16;;AC starts at low frequency (reconnection condition);ac_starts_at_low_frequency_reconnection_condition;1.000000;0.000000;0.01Hz;1
+23;3;40034;U16;;Grid voltage type;grid_voltage_type;1.000000;0.000000;'---;1
+24;3;40035;U16;;Power Grid Type Selection;power_grid_type_selection;1.000000;0.000000;'---;1
+25;3;40040;U16;;AC power measurement methods;ac_power_measurement_methods;1.000000;0.000000;'---;1
+26;3;40041;U16;;Electricity meter settings;electricity_meter_settings;1.000000;0.000000;'---;1
+27;3;40042;U16;;CT related settings;ct_related_settings;1.000000;0.000000;'---;1
+28;3;40043;U16;;External CT transformer ratio;external_ct_transformer_ratio;1.000000;0.000000;'---;1
+29;3;40046;U16;;Loading slope enable;loading_slope_enable;1.000000;0.000000;'---;1
+30;3;40047;U16;;Start-up slope;startup_slope;1.000000;0.000000;X%Pn/min;1
+31;3;40048;U16;;Restart slope;restart_slope;1.000000;0.000000;X%Pn/min;1
+32;3;40049;U16;;Shutdown and load reduction enable;shutdown_and_load_reduction_enable;1.000000;0.000000;'---;1
+33;3;40050;U16;;Shutdown load reduction slope;shutdown_load_reduction_slope;1.000000;0.000000;X%Pn/min;1
+34;3;40051;U16;;Inverter remote lock (not for external use);inverter_remote_lock_not_for_external_use;1.000000;0.000000;'---;1
+35;3;40052;U16;;Grid-connected operation switch (inverter on/off);gridconnected_operation_switch_inverter_onoff;1.000000;0.000000;'---;1
+36;3;40053;U16;;Buzzer Enable;buzzer_enable;1.000000;0.000000;'---;1
+37;3;40054;U16;;Zero-ground detection enabled;zeroground_detection_enabled;1.000000;0.000000;'---;1
+38;3;40055;U16;;Enable DC surge protection detection;enable_dc_surge_protection_detection;1.000000;0.000000;'---;1
+39;3;40056;U16;;Enable AC surge protection detection;enable_ac_surge_protection_detection;1.000000;0.000000;'---;1
+40;3;40057;U16;;Virtual N-line enable;virtual_nline_enable;1.000000;0.000000;'---;1
+41;3;40058;U16;;1.1x Overpower Enable;v_11x_overpower_enable;1.000000;0.000000;'---;1
+42;3;40059;U16;;GFCI Enable;gfci_enable;1.000000;0.000000;'---;1
+43;3;40060;U16;;GFCI_30mA protection value;gfci_30ma_protection_value;1.000000;0.000000;1mA;1
+44;3;40061;U16;;GFCI_30mA protection time;gfci_30ma_protection_time;1.000000;0.000000;1mS;1
+45;3;40062;U16;;GFCI_60mA protection value;gfci_60ma_protection_value;1.000000;0.000000;1mA;1
+46;3;40063;U16;;GFCI_60mA protection time;gfci_60ma_protection_time;1.000000;0.000000;1mS;1
+47;3;40064;U16;;GFCI_150mA protection value;gfci_150ma_protection_value;1.000000;0.000000;1mA;1
+48;3;40065;U16;;GFCI_150mA protection time;gfci_150ma_protection_time;1.000000;0.000000;1mS;1
+49;3;40066;U16;;GFCI static protection value;gfci_static_protection_value;1.000000;0.000000;1mA;1
+50;3;40067;U16;;GFCI static protection time;gfci_static_protection_time;1.000000;0.000000;1mS;1
+51;3;40068;U16;;Ground relay enable;ground_relay_enable;1.000000;0.000000;'---;1
+52;3;40069;U16;;Enable non-standard protection;enable_nonstandard_protection;1.000000;0.000000;'---;1
+53;3;40070;U16;;Anti-islanding enable;antiislanding_enable;1.000000;0.000000;'---;1
+54;3;40071;U16;;Island protection time;island_protection_time;1.000000;0.000000;1mS;1
+55;3;40075;U16;;Enable PID;enable_pid;1.000000;0.000000;'---;1
+56;3;40076;U16;;PID working mode;pid_working_mode;1.000000;0.000000;'---;1
+57;3;40077;U16;;PID output voltage;pid_output_voltage;1.000000;0.000000;0.1V;1
+58;3;40078;U16;;Solar panel type settings;solar_panel_type_settings;1.000000;0.000000;'---;1
+59;3;40080;U16;;ISO Enabled;iso_enabled;1.000000;0.000000;'---;1
+60;3;40081;U16;;ISO protection value;iso_protection_value;1.000000;0.000000;1kOhm;1
+61;3;40085;U16;;Enable backflow prevention;enable_backflow_prevention;1.000000;0.000000;'---;1
+62;3;40086;I16;;Allowable reverse power;allowable_reverse_power;1.000000;0.000000;0.1KW;1
+63;3;40087;U16;;Restricting the backflow method;restricting_the_backflow_method;1.000000;0.000000;'---;1
+64;3;40088;U16;;Failure protection active power limit;failure_protection_active_power_limit;1.000000;0.000000;0.1KW;1
+65;3;40089;U16;;Communication link failure detection time;communication_link_failure_detection_time;1.000000;0.000000;1s;1
+66;3;40095;U16;;AFCI Enable;afci_enable;1.000000;0.000000;'---;1
+67;3;40096;U16;;Active imbalance enable;active_imbalance_enable;1.000000;0.000000;'---;1
+68;3;40100;U16;;DCI Enabled;dci_enabled;1.000000;0.000000;'---;1
+69;3;40101;U16;;DCI protection value;dci_protection_value;1.000000;0.000000;1mA;1
+70;3;40102;U16;;DCI protection time;dci_protection_time;1.000000;0.000000;0.01S;1
+71;3;40105;U16;;DRM Enabled;drm_enabled;1.000000;0.000000;'---;1
+72;3;40106;U16;;DRM model;drm_model;1.000000;0.000000;'---;1
+73;3;40107;U16;;DRM input power limit;drm_input_power_limit;1.000000;0.000000;0.1%;1
+74;3;40108;U16;;DRM output power limit;drm_output_power_limit;1.000000;0.000000;0.1%;1
+75;3;40109;U16;;DRM PF;drm_pf;1.000000;0.000000;0.001;1
+76;3;40112;U16;;Inverter restart enable;inverter_restart_enable;1.000000;0.000000;'---;1
+77;3;40113;U16;;Inverter restart delay time;inverter_restart_delay_time;1.000000;0.000000;1s;1
+78;3;40114;U16;;RCR Enable;rcr_enable;1.000000;0.000000;'---;1
+79;3;40116;U16;;Enable ETU;enable_etu;1.000000;0.000000;'---;1
+80;3;40117;U16;;DRM/RCR Interface Multiplexing DI Enable;drmrcr_interface_multiplexing_di_enable;1.000000;0.000000;'---;1
+81;3;40118;U16;;STS type;sts_type;1.000000;0.000000;'---;1
+82;3;40296;U16;;Country/Regulations Selection;countryregulations_selection;1.000000;0.000000;'---;1
+83;3;40297;U16;;Protection level settings;protection_level_settings;1.000000;0.000000;'---;1
+84;3;40298;U16;;Undervoltage protection recovery value;undervoltage_protection_recovery_value;1.000000;0.000000;0.1V;1
+85;3;40299;U16;;Overvoltage protection recovery value;overvoltage_protection_recovery_value;1.000000;0.000000;0.1V;1
+86;3;40300;U16;;Underfrequency protection recovery value;underfrequency_protection_recovery_value;1.000000;0.000000;0.01Hz;1
+87;3;40301;U16;;Over-frequency protection recovery value;overfrequency_protection_recovery_value;1.000000;0.000000;0.01Hz;1
+88;3;40302;U16;;Undervoltage recovery time;undervoltage_recovery_time;1.000000;0.000000;20ms;1
+89;3;40303;U16;;Overvoltage recovery time;overvoltage_recovery_time;1.000000;0.000000;20ms;1
+90;3;40304;U16;;Underfrequency recovery time;underfrequency_recovery_time;1.000000;0.000000;20ms;1
+91;3;40305;U16;;Over-frequency recovery time;overfrequency_recovery_time;1.000000;0.000000;20ms;1
+92;3;40306;U16;;Undervoltage protection level 1 (single level);undervoltage_protection_level_1_single_level;1.000000;0.000000;0.1V;1
+93;3;40307;U16;;Overvoltage protection level 1 (single level);overvoltage_protection_level_1_single_level;1.000000;0.000000;0.1V;1
+94;3;40308;U16;;Underfrequency protection level 1 (single level);underfrequency_protection_level_1_single_level;1.000000;0.000000;0.01Hz;1
+95;3;40309;U16;;Over-frequency protection level 1 (single level);overfrequency_protection_level_1_single_level;1.000000;0.000000;0.01Hz;1
+96;3;40310;U16;;Undervoltage protection level 1 time (single level);undervoltage_protection_level_1_time_single_level;1.000000;0.000000;20ms;1
+97;3;40311;U16;;Overvoltage protection level 1 time (single level);overvoltage_protection_level_1_time_single_level;1.000000;0.000000;20ms;1
+98;3;40312;U16;;Underfrequency protection level 1 (single level);underfrequency_protection_level_1_single_level_1;1.000000;0.000000;20ms;1
+99;3;40313;U16;;Over-frequency protection level 1 (single level);overfrequency_protection_level_1_single_level_1;1.000000;0.000000;20ms;1
+100;3;40314;U16;;Undervoltage Level 2 Protection Value;undervoltage_level_2_protection_value;1.000000;0.000000;0.1V;1
+101;3;40315;U16;;Overvoltage level 2 protection value;overvoltage_level_2_protection_value;1.000000;0.000000;0.1V;1
+102;3;40316;U16;;Underfrequency protection level 2 value;underfrequency_protection_level_2_value;1.000000;0.000000;0.01Hz;1
+103;3;40317;U16;;Overfrequency protection level 2 value;overfrequency_protection_level_2_value;1.000000;0.000000;0.01Hz;1
+104;3;40318;U16;;Undervoltage Level 2 Protection Time;undervoltage_level_2_protection_time;1.000000;0.000000;20ms;1
+105;3;40319;U16;;Overvoltage level 2 protection time;overvoltage_level_2_protection_time;1.000000;0.000000;20ms;1
+106;3;40320;U16;;Underfrequency Level 2 Protection Time;underfrequency_level_2_protection_time;1.000000;0.000000;20ms;1
+107;3;40321;U16;;Over-frequency protection level 2 time;overfrequency_protection_level_2_time;1.000000;0.000000;20ms;1
+108;3;40322;U16;;Undervoltage protection level 3 value;undervoltage_protection_level_3_value;1.000000;0.000000;0.1V;1
+109;3;40323;U16;;Overvoltage level 3 protection value;overvoltage_level_3_protection_value;1.000000;0.000000;0.1V;1
+110;3;40324;U16;;Underfrequency protection level 3;underfrequency_protection_level_3;1.000000;0.000000;0.01Hz;1
+111;3;40325;U16;;Over-frequency protection level 3 value;overfrequency_protection_level_3_value;1.000000;0.000000;0.01Hz;1
+112;3;40326;U16;;Undervoltage Level 3 Protection Time;undervoltage_level_3_protection_time;1.000000;0.000000;20ms;1
+113;3;40327;U16;;Overvoltage level 3 protection time;overvoltage_level_3_protection_time;1.000000;0.000000;20ms;1
+114;3;40328;U16;;Underfrequency Level 3 Protection Time;underfrequency_level_3_protection_time;1.000000;0.000000;20ms;1
+115;3;40329;U16;;Over-frequency protection level 3 time;overfrequency_protection_level_3_time;1.000000;0.000000;20ms;1
+116;3;40330;U16;;Undervoltage protection level 4;undervoltage_protection_level_4;1.000000;0.000000;0.1V;1
+117;3;40331;U16;;Overvoltage protection level 4;overvoltage_protection_level_4;1.000000;0.000000;0.1V;1
+118;3;40332;U16;;Underfrequency protection level 4;underfrequency_protection_level_4;1.000000;0.000000;0.01Hz;1
+119;3;40333;U16;;Over-frequency protection level 4 value;overfrequency_protection_level_4_value;1.000000;0.000000;0.01Hz;1
+120;3;40334;U16;;Undervoltage Level 4 Protection Time;undervoltage_level_4_protection_time;1.000000;0.000000;20ms;1
+121;3;40335;U16;;Overvoltage level 4 protection time;overvoltage_level_4_protection_time;1.000000;0.000000;20ms;1
+122;3;40336;U16;;Underfrequency Level 4 Protection Time;underfrequency_level_4_protection_time;1.000000;0.000000;20ms;1
+123;3;40337;U16;;Over-frequency protection level 4 time;overfrequency_protection_level_4_time;1.000000;0.000000;20ms;1
+124;3;40338;U16;;Undervoltage protection level 5;undervoltage_protection_level_5;1.000000;0.000000;0.1V;1
+125;3;40339;U16;;Overvoltage protection level 5;overvoltage_protection_level_5;1.000000;0.000000;0.1V;1
+126;3;40340;U16;;Underfrequency protection level 5;underfrequency_protection_level_5;1.000000;0.000000;0.01Hz;1
+127;3;40341;U16;;Over-frequency protection level 5 value;overfrequency_protection_level_5_value;1.000000;0.000000;0.01Hz;1
+128;3;40342;U16;;Undervoltage level 5 protection time;undervoltage_level_5_protection_time;1.000000;0.000000;20ms;1
+129;3;40343;U16;;Overvoltage level 5 protection time;overvoltage_level_5_protection_time;1.000000;0.000000;20ms;1
+130;3;40344;U16;;Underfrequency protection level 5 time;underfrequency_protection_level_5_time;1.000000;0.000000;20ms;1
+131;3;40345;U16;;Over-frequency protection level 5 time;overfrequency_protection_level_5_time;1.000000;0.000000;20ms;1
+132;3;40346;U16;;10-minute overvoltage protection;v_10minute_overvoltage_protection;1.000000;0.000000;'---;1
+133;3;40347;U16;;10-minute overvoltage protection value;v_10minute_overvoltage_protection_value;1.000000;0.000000;0.1V;1
+134;3;40348;U16;;10-minute overpressure recovery value;v_10minute_overpressure_recovery_value;1.000000;0.000000;0.1V;1
+135;3;40360;U16;;LVRT protection levels;lvrt_protection_levels;1.000000;0.000000;'---;1
+136;3;40361;U16;;LVRT grid imbalance support switch;lvrt_grid_imbalance_support_switch;1.000000;0.000000;'---;1
+137;3;40362;U16;;LVRT zero-power mode;lvrt_zeropower_mode;1.000000;0.000000;'---;1
+138;3;40363;U16;;LVRT Enable;lvrt_enable;1.000000;0.000000;'---;1
+139;3;40364;U16;;LVRT K coefficient;lvrt_k_coefficient;1.000000;0.000000;'---;1
+140;3;40365;U16;;LVRT voltage 1;lvrt_voltage_1;1.000000;0.000000;0.1V;1
+141;3;40366;U16;;LVRT voltage 2;lvrt_voltage_2;1.000000;0.000000;0.1V;1
+142;3;40367;U16;;LVRT voltage 3;lvrt_voltage_3;1.000000;0.000000;0.1V;1
+143;3;40368;U16;;LVRT voltage 4;lvrt_voltage_4;1.000000;0.000000;0.1V;1
+144;3;40369;U16;;LVRT voltage 5;lvrt_voltage_5;1.000000;0.000000;0.1V;1
+145;3;40370;U32;;LVRT time 1;lvrt_time_1;1.000000;0.000000;0.01S;1
+146;3;40371;U16;;;;1.000000;0.000000;;1
+147;3;40372;U32;;LVRT time 2;lvrt_time_2;1.000000;0.000000;0.01S;1
+148;3;40373;U16;;;;1.000000;0.000000;;1
+149;3;40374;U32;;LVRT time 3;lvrt_time_3;1.000000;0.000000;0.01S;1
+150;3;40375;U16;;;;1.000000;0.000000;;1
+151;3;40376;U32;;LVRT time 4;lvrt_time_4;1.000000;0.000000;0.01S;1
+152;3;40377;U16;;;;1.000000;0.000000;;1
+153;3;40378;U32;;LVRT time 5;lvrt_time_5;1.000000;0.000000;0.01S;1
+154;3;40379;U16;;;;1.000000;0.000000;;1
+155;3;40380;U16;;Reactive power response time constant;reactive_power_response_time_constant;1.000000;0.000000;0.1s;1
+156;3;40390;U16;;HVRT protection levels;hvrt_protection_levels;1.000000;0.000000;'---;1
+157;3;40391;U16;;HVRT grid imbalance supports switching;hvrt_grid_imbalance_supports_switching;1.000000;0.000000;'---;1
+158;3;40392;U16;;HVRT zero-power mode;hvrt_zeropower_mode;1.000000;0.000000;'---;1
+159;3;40393;U16;;HVRT Enable;hvrt_enable;1.000000;0.000000;'---;1
+160;3;40394;U16;;HVRT K coefficient;hvrt_k_coefficient;1.000000;0.000000;'---;1
+161;3;40395;U16;;HVRT voltage 1;hvrt_voltage_1;1.000000;0.000000;0.1V;1
+162;3;40396;U16;;HVRT voltage 2;hvrt_voltage_2;1.000000;0.000000;0.1V;1
+163;3;40397;U16;;HVRT voltage 3;hvrt_voltage_3;1.000000;0.000000;0.1V;1
+164;3;40398;U16;;HVRT voltage 4;hvrt_voltage_4;1.000000;0.000000;0.1V;1
+165;3;40399;U16;;HVRT voltage 5;hvrt_voltage_5;1.000000;0.000000;0.1V;1
+166;3;40400;U32;;HVRT time 1;hvrt_time_1;1.000000;0.000000;0.01S;1
+167;3;40401;U16;;;;1.000000;0.000000;;1
+168;3;40402;U32;;HVRT time 2;hvrt_time_2;1.000000;0.000000;0.01S;1
+169;3;40403;U16;;;;1.000000;0.000000;;1
+170;3;40404;U32;;HVRT time 3;hvrt_time_3;1.000000;0.000000;0.01S;1
+171;3;40405;U16;;;;1.000000;0.000000;;1
+172;3;40406;U32;;HVRT time 4;hvrt_time_4;1.000000;0.000000;0.01S;1
+173;3;40407;U16;;;;1.000000;0.000000;;1
+174;3;40408;U32;;HVRT time 5;hvrt_time_5;1.000000;0.000000;0.01S;1
+175;3;40409;U16;;;;1.000000;0.000000;;1
+176;3;40410;U16;;Reactive power response time constant;reactive_power_response_time_constant_1;1.000000;0.000000;0.1s;1
+177;3;40420;U16;;Over-frequency derating switch;overfrequency_derating_switch;1.000000;0.000000;'---;1
+178;3;40421;U16;;Over-frequency derating curve type;overfrequency_derating_curve_type;1.000000;0.000000;'---;1
+179;3;40422;U16;;Over-frequency derating frequency point F1 (starting point);overfrequency_derating_frequency_point_f1_starting_point;1.000000;0.000000;0.01Hz;1
+180;3;40423;U16;;Over-frequency derating frequency point F2 (end point);overfrequency_derating_frequency_point_f2_end_point;1.000000;0.000000;0.01Hz;1
+181;3;40424;U16;;Frequency derating point F3 (reserved);frequency_derating_point_f3_reserved;1.000000;0.000000;0.01Hz;0
+182;3;40425;U16;;Power setting at frequency F1;power_setting_at_frequency_f1;1.000000;0.000000;0.1%;1
+183;3;40426;U16;;Power setting value at frequency F2;power_setting_value_at_frequency_f2;1.000000;0.000000;0.1%;1
+184;3;40427;U16;;Power setting at frequency F3;power_setting_at_frequency_f3;1.000000;0.000000;0.1%;1
+185;3;40428;U16;;Frequency point for over-frequency derating power recovery;frequency_point_for_overfrequency_derating_power_recovery;1.000000;0.000000;0.01Hz;1
+186;3;40429;U16;;Over-frequency derating power slope;overfrequency_derating_power_slope;1.000000;0.000000;1%/min;1
+187;3;40430;U16;;Recovery time for excessive derating;recovery_time_for_excessive_derating;1.000000;0.000000;0.1s;1
+188;3;40431;U16;;Over-frequency derating recovery slope;overfrequency_derating_recovery_slope;1.000000;0.000000;1%/min;1
+189;3;40440;U16;;Underfrequency derating switch;underfrequency_derating_switch;1.000000;0.000000;'---;1
+190;3;40441;U16;;Type of underfrequency rise curve;type_of_underfrequency_rise_curve;1.000000;0.000000;'---;1
+191;3;40442;U16;;Under-frequency derating frequency point F1 (starting point);underfrequency_derating_frequency_point_f1_starting_point;1.000000;0.000000;0.01Hz;1
+192;3;40443;U16;;Under-frequency derating frequency point F2 (end point);underfrequency_derating_frequency_point_f2_end_point;1.000000;0.000000;0.01Hz;1
+193;3;40444;U16;;Under-frequency derating frequency point F3 (reserved);underfrequency_derating_frequency_point_f3_reserved;1.000000;0.000000;0.01Hz;0
+194;3;40445;U16;;Power setting at frequency F1;power_setting_at_frequency_f1_1;1.000000;0.000000;0.1%;1
+195;3;40446;U16;;Power setting value at frequency F2;power_setting_value_at_frequency_f2_1;1.000000;0.000000;0.1%;1
+196;3;40447;U16;;Power setting at frequency F3;power_setting_at_frequency_f3_1;1.000000;0.000000;0.1%;1
+197;3;40448;U16;;Frequency point for under-frequency derating power recovery;frequency_point_for_underfrequency_derating_power_recovery;1.000000;0.000000;0.01Hz;1
+198;3;40449;U16;;Under-frequency derating power slope;underfrequency_derating_power_slope;1.000000;0.000000;1%/min;1
+199;3;40450;U16;;Recovery time for underfrequency increase;recovery_time_for_underfrequency_increase;1.000000;0.000000;0.1s;1
+200;3;40451;U16;;Underfrequency increase recovery slope;underfrequency_increase_recovery_slope;1.000000;0.000000;1%/min;1
+201;3;40460;U16;;Overvoltage power regulating switch;overvoltage_power_regulating_switch;1.000000;0.000000;'---;1
+202;3;40461;U16;;Overvoltage power regulation voltage point 1;overvoltage_power_regulation_voltage_point_1;1.000000;0.000000;0.1V;1
+203;3;40462;U16;;Grid overvoltage power adjustment voltage point 2;grid_overvoltage_power_adjustment_voltage_point_2;1.000000;0.000000;0.1V;1
+204;3;40463;U16;;Grid overvoltage power adjustment voltage point 3;grid_overvoltage_power_adjustment_voltage_point_3;1.000000;0.000000;0.1V;1
+205;3;40464;U16;;Grid overvoltage power adjustment voltage point 4;grid_overvoltage_power_adjustment_voltage_point_4;1.000000;0.000000;0.1V;1
+206;3;40465;U16;;Overvoltage power regulation voltage point 1 power;overvoltage_power_regulation_voltage_point_1_power;1.000000;0.000000;0.1%;1
+207;3;40466;U16;;Overvoltage power regulation voltage point 2 power;overvoltage_power_regulation_voltage_point_2_power;1.000000;0.000000;0.1%;1
+208;3;40467;U16;;Overvoltage power regulation voltage point 3 power;overvoltage_power_regulation_voltage_point_3_power;1.000000;0.000000;0.1%;1
+209;3;40468;U16;;Overvoltage power regulation voltage point 4 power;overvoltage_power_regulation_voltage_point_4_power;1.000000;0.000000;0.1%;1
+210;3;40469;U16;;Overvoltage power adjustment time of power grid;overvoltage_power_adjustment_time_of_power_grid;1.000000;0.000000;0.1s;1
+211;3;40480;U16;;Power grid undervoltage power adjustment switch;power_grid_undervoltage_power_adjustment_switch;1.000000;0.000000;'---;1
+212;3;40481;U16;;Grid undervoltage power adjustment voltage point 1;grid_undervoltage_power_adjustment_voltage_point_1;1.000000;0.000000;0.1V;1
+213;3;40482;U16;;Grid undervoltage power adjustment voltage point 2;grid_undervoltage_power_adjustment_voltage_point_2;1.000000;0.000000;0.1V;1
+214;3;40483;U16;;Power grid undervoltage power adjustment voltage point 3;power_grid_undervoltage_power_adjustment_voltage_point_3;1.000000;0.000000;0.1V;1
+215;3;40484;U16;;Grid undervoltage power adjustment voltage point 4;grid_undervoltage_power_adjustment_voltage_point_4;1.000000;0.000000;0.1V;1
+216;3;40485;U16;;Power grid undervoltage power adjustment voltage point 1 power;power_grid_undervoltage_power_adjustment_voltage_point_1_power;1.000000;0.000000;0.1%;1
+217;3;40486;U16;;Power grid undervoltage power adjustment voltage point 2 power;power_grid_undervoltage_power_adjustment_voltage_point_2_power;1.000000;0.000000;0.1%;1
+218;3;40487;U16;;Power grid undervoltage power adjustment voltage point 3 power;power_grid_undervoltage_power_adjustment_voltage_point_3_power;1.000000;0.000000;0.1%;1
+219;3;40488;U16;;Power grid undervoltage power adjustment voltage point 4 power;power_grid_undervoltage_power_adjustment_voltage_point_4_power;1.000000;0.000000;0.1%;1
+220;3;40489;U16;;Power grid undervoltage power adjustment time;power_grid_undervoltage_power_adjustment_time;1.000000;0.000000;0.1s;1
+221;3;40500;U16;;Active power control;active_power_control;1.000000;0.000000;'---;1
+222;3;40501;U16;;Active power degradation rate;active_power_degradation_rate;1.000000;0.000000;1%/min;1
+223;3;40502;U16;;Active power rise rate;active_power_rise_rate;1.000000;0.000000;1%/min;1
+224;3;40503;U16;;Active power percentage setting;active_power_percentage_setting;1.000000;0.000000;0.1%;1
+225;3;40504;U16;;Reactive power regulation;reactive_power_regulation;1.000000;0.000000;'---;1
+226;3;40505;I16;;Reactive power percentage setting;reactive_power_percentage_setting;1.000000;0.000000;0.1%;1
+227;3;40506;I16;;Power factor setting value;power_factor_setting_value;1.000000;0.000000;0.001;1
+228;3;40507;U16;;Power response switch;power_response_switch;1.000000;0.000000;'---;1
+229;3;40508;U16;;Power response time constant;power_response_time_constant;1.000000;0.000000;0.1s;1
+230;3;40520;U16;;Q(P) curve type selection;qp_curve_type_selection;1.000000;0.000000;'---;1
+231;3;40521;U16;;Active power percentage point A;active_power_percentage_point_a;1.000000;0.000000;0.1%;1
+232;3;40522;U16;;Active power percentage B;active_power_percentage_b;1.000000;0.000000;0.1%;1
+233;3;40523;U16;;Active power percentage C;active_power_percentage_c;1.000000;0.000000;0.1%;1
+234;3;40524;I16;;Power factor at active power percentage point A;power_factor_at_active_power_percentage_point_a;1.000000;0.000000;0.001;1
+235;3;40525;I16;;Power factor at active power percentage point B;power_factor_at_active_power_percentage_point_b;1.000000;0.000000;0.001;1
+236;3;40526;I16;;Power factor at active power percentage point C;power_factor_at_active_power_percentage_point_c;1.000000;0.000000;0.001;1
+237;3;40527;U16;;Enable Q(P) voltage percentage setpoint;enable_qp_voltage_percentage_setpoint;1.000000;0.000000;0.1%;1
+238;3;40528;U16;;Disable Q(P) voltage percentage setpoint;disable_qp_voltage_percentage_setpoint;1.000000;0.000000;0.1%;1
+239;3;40529;U16;;Disable Q(P) active power percentage setpoint;disable_qp_active_power_percentage_setpoint;1.000000;0.000000;0.1%;1
+240;3;40530;U16;;Q(P) is enabled unconditionally.;qp_is_enabled_unconditionally;1.000000;0.000000;'---;1
+241;3;40531;U16;;Reactive power response time constant;reactive_power_response_time_constant_2;1.000000;0.000000;0.1s;1
+242;3;40532;U16;;Active power percentage point D;active_power_percentage_point_d;1.000000;0.000000;0.1%;1
+243;3;40533;I16;;Power factor at active power percentage point D;power_factor_at_active_power_percentage_point_d;1.000000;0.000000;0.001;1
+244;3;40540;U16;;Q(U) curve;qu_curve;1.000000;0.000000;'---;1
+245;3;40541;U16;;Lag ratio;lag_ratio;1.000000;0.000000;0.1%;1
+246;3;40542;U16;;Voltage ratio U1;voltage_ratio_u1;1.000000;0.000000;0.1%;1
+247;3;40543;I16;;Voltage ratio corresponding to the percentage of reactive power at point U1;voltage_ratio_corresponding_to_the_percentage_of_reactive_power_at_point_u1;1.000000;0.000000;0.1%;1
+248;3;40544;U16;;Voltage ratio U2;voltage_ratio_u2;1.000000;0.000000;0.1%;1
+249;3;40545;I16;;Voltage ratio corresponding to the percentage of reactive power at point U2;voltage_ratio_corresponding_to_the_percentage_of_reactive_power_at_point_u2;1.000000;0.000000;0.1%;1
+250;3;40546;U16;;Voltage ratio U3;voltage_ratio_u3;1.000000;0.000000;0.1%;1
+251;3;40547;I16;;Voltage ratio corresponding to reactive power percentage at point U3;voltage_ratio_corresponding_to_reactive_power_percentage_at_point_u3;1.000000;0.000000;0.1%;1
+252;3;40548;U16;;Voltage ratio U4;voltage_ratio_u4;1.000000;0.000000;0.1%;1
+253;3;40549;I16;;Voltage ratio corresponding to reactive power percentage at point U4;voltage_ratio_corresponding_to_reactive_power_percentage_at_point_u4;1.000000;0.000000;0.1%;1
+254;3;40550;U16;;Enable Q(U) power percentage setpoint;enable_qu_power_percentage_setpoint;1.000000;0.000000;0.1%;1
+255;3;40551;U16;;Disable Q(U) power percentage setpoint;disable_qu_power_percentage_setpoint;1.000000;0.000000;0.1%;1
+256;3;40552;U16;;Unconditionally enable and disable Q(U) function;unconditionally_enable_and_disable_qu_function;1.000000;0.000000;'---;1
+257;3;40553;U16;;Reactive power response time constant;reactive_power_response_time_constant_3;1.000000;0.000000;0.1s;1
+258;3;40560;U16;;Correction coefficients restored to default values;correction_coefficients_restored_to_default_values;1.000000;0.000000;'---;1
+259;3;40561;U16;;Clear inverter fault logs;clear_inverter_fault_logs;1.000000;0.000000;'---;1
+260;3;40562;U16;;System settings information restored to default values;system_settings_information_restored_to_default_values;1.000000;0.000000;'---;1
+261;3;40563;U16;;Reset battery level and running time;reset_battery_level_and_running_time;1.000000;0.000000;'---;1
+262;3;40564;U16;;Factory reset;factory_reset;1.000000;0.000000;'---;1
+263;3;40565;U16;;Clear BMS fault logs;clear_bms_fault_logs;1.000000;0.000000;'---;1
+264;3;40570;U16;;Inverter serial number SN0;inverter_serial_number_sn0;1.000000;0.000000;'---;1
+265;3;40571;U16;;Inverter serial number SN1;inverter_serial_number_sn1;1.000000;0.000000;'---;1
+266;3;40572;U16;;Inverter serial number SN2;inverter_serial_number_sn2;1.000000;0.000000;'---;1
+267;3;40573;U16;;Inverter serial number SN3;inverter_serial_number_sn3;1.000000;0.000000;'---;1
+268;3;40574;U16;;Inverter serial number SN4;inverter_serial_number_sn4;1.000000;0.000000;'---;1
+269;3;40575;U16;;Inverter serial number SN5;inverter_serial_number_sn5;1.000000;0.000000;'---;1
+270;3;40576;U16;;Inverter serial number SN6;inverter_serial_number_sn6;1.000000;0.000000;'---;1
+271;3;40577;U16;;Inverter serial number SN7;inverter_serial_number_sn7;1.000000;0.000000;'---;1
+272;3;40578;U16;;Inverter serial number SN8;inverter_serial_number_sn8;1.000000;0.000000;'---;1
+273;3;40579;U16;;Equipment Information;equipment_information;1.000000;0.000000;'---;1
+274;3;40580;U16;;Rated power setting;rated_power_setting;1.000000;0.000000;0.1KW;1
+275;3;40581;U16;;Buzzer self-test;buzzer_selftest;1.000000;0.000000;'---;1
+276;3;40582;U16;;LCD self-test;lcd_selftest;1.000000;0.000000;'---;1
+277;3;40583;U16;;LED self-test;led_selftest;1.000000;0.000000;'---;1
+278;3;40584;U16;;Inverter fan self-test;inverter_fan_selftest;1.000000;0.000000;'---;1
+279;3;40585;U16;;Aging correction mode;aging_correction_mode;1.000000;0.000000;'---;1
+280;3;40586;U16;;Open-loop instructions;openloop_instructions;1.000000;0.000000;'---;1
+281;3;40587;U16;;Enabling the lithium battery CAN communication interface test;enabling_the_lithium_battery_can_communication_interface_test;1.000000;0.000000;'---;1
+282;3;40588;U16;;Enabling the lithium battery RS485 communication interface test;enabling_the_lithium_battery_rs485_communication_interface_test;1.000000;0.000000;'---;1
+283;3;40589;U16;;Enable Gen signal relay self-test;enable_gen_signal_relay_selftest;1.000000;0.000000;'---;1
+284;3;40590;U16;;Start parallel communication test;start_parallel_communication_test;1.000000;0.000000;'---;1
+285;3;40591;U16;;Start whole machine aging test;start_whole_machine_aging_test;1.000000;0.000000;'---;1
+286;3;40592;U16;;Firmware Scope;firmware_scope;1.000000;0.000000;'---;1
+287;3;40593;U16;;Inductor type selection;inductor_type_selection;1.000000;0.000000;'---;1
+288;3;40600;U16;;AutoTest Enable;autotest_enable;1.000000;0.000000;'---;1
+289;3;40601;U16;;AutoTest round trip value 0;autotest_round_trip_value_0;1.000000;0.000000;0.1V/0.01Hz;1
+290;3;40602;U16;;AutoTest round trip value 1;autotest_round_trip_value_1;1.000000;0.000000;0.1V/0.01Hz;1
+291;3;40603;U16;;AutoTest round trip value 2;autotest_round_trip_value_2;1.000000;0.000000;0.1V/0.01Hz;1
+292;3;40604;U16;;AutoTest round trip value 3;autotest_round_trip_value_3;1.000000;0.000000;0.1V/0.01Hz;1
+293;3;40605;U16;;AutoTest round trip value 4;autotest_round_trip_value_4;1.000000;0.000000;0.1V/0.01Hz;1
+294;3;40606;U16;;AutoTest round trip value 5;autotest_round_trip_value_5;1.000000;0.000000;0.1V/0.01Hz;1
+295;3;40607;U16;;AutoTest round trip value 6;autotest_round_trip_value_6;1.000000;0.000000;0.1V/0.01Hz;1
+296;3;40608;U16;;AutoTest round trip value 7;autotest_round_trip_value_7;1.000000;0.000000;0.1V/0.01Hz;1
+297;3;40609;U16;;AutoTest round trip time 0;autotest_round_trip_time_0;1.000000;0.000000;1ms;1
+298;3;40610;U16;;AutoTest round trip time 1;autotest_round_trip_time_1;1.000000;0.000000;1ms;1
+299;3;40611;U16;;AutoTest round trip time 2;autotest_round_trip_time_2;1.000000;0.000000;1ms;1
+300;3;40612;U16;;AutoTest round trip time 3;autotest_round_trip_time_3;1.000000;0.000000;1ms;1
+301;3;40613;U16;;AutoTest round trip time 4;autotest_round_trip_time_4;1.000000;0.000000;1ms;1
+302;3;40614;U16;;AutoTest round trip time 5;autotest_round_trip_time_5;1.000000;0.000000;1ms;1
+303;3;40615;U16;;AutoTest round trip time 6;autotest_round_trip_time_6;1.000000;0.000000;1ms;1
+304;3;40616;U16;;AutoTest round trip time 7;autotest_round_trip_time_7;1.000000;0.000000;1ms;1
+305;3;40620;U16;;Fault waveform recording - Nth record;fault_waveform_recording_nth_record;1.000000;0.000000;;1
+306;3;40621;U16;;Wave recording-points;wave_recordingpoints;1.000000;0.000000;;1
+307;3;40622;U16;;Waveform recording - frequency;FREQ;1.000000;0.000000;;1
+308;3;40623;U16;;Waveform Recording - Number 1;waveform_recording_number_1;1.000000;0.000000;;1
+309;3;40624;U16;;Waveform Recording - Number 2;waveform_recording_number_2;1.000000;0.000000;;1
+310;3;40625;U16;;Waveform Recording - Number 3;waveform_recording_number_3;1.000000;0.000000;;1
+311;3;40626;U16;;Waveform Recording - Number 4;waveform_recording_number_4;1.000000;0.000000;;1
+312;3;40635;U16;;PV-VI curve enabled (reserved);pvvi_curve_enabled_reserved;1.000000;0.000000;'---;0
+313;3;41958;U16;;Grid restoration power gradual change enablement;grid_restoration_power_gradual_change_enablement;1.000000;0.000000;'---;1
+314;3;41959;U16;;Zero-current mode enable;zerocurrent_mode_enable;1.000000;0.000000;'---;1
+315;3;41960;U16;;Charging Enable;charging_enable;1.000000;0.000000;'---;1
+316;3;41961;U16;;Main grid connection switch enable;main_grid_connection_switch_enable;1.000000;0.000000;'---;1
+317;3;41962;U16;;Battery grid connection enabled;battery_grid_connection_enabled;1.000000;0.000000;'---;1
+318;3;41963;U16;;Enabled by weak grid mode;enabled_by_weak_grid_mode;1.000000;0.000000;'---;1
+319;3;41964;U16;;Power-on activation control enable;poweron_activation_control_enable;1.000000;0.000000;'---;1
+320;3;41968;U16;;Energy distribution pattern;energy_distribution_pattern;1.000000;0.000000;'---;1
+321;3;41969;U16;;UPS mode enable;ups_mode_enable;1.000000;0.000000;'---;1
+322;3;41970;U16;;Power limiting control;power_limiting_control;1.000000;0.000000;'---;1
+323;3;41971;U16;;Max Solar Power;max_solar_power;1.000000;0.000000;1W;1
+324;3;41972;U16;;Max Sell Power;max_sell_power;1.000000;0.000000;1W;1
+325;3;41973;U16;;Zero-Export power;zeroexport_power;1.000000;0.000000;1W;1
+326;3;41974;U16;;Rated Power;P_RATED;1.000000;0.000000;1W;1
+327;3;41975;U16;;Power;power;1.000000;0.000000;1W;1
+328;3;41976;U16;;External Relay;external_relay;1.000000;0.000000;'---;1
+329;3;41977;U16;;AC Couple on grid side;ac_couple_on_grid_side;1.000000;0.000000;'---;1
+330;3;41978;U16;;AC Couple on load side;ac_couple_on_load_side;1.000000;0.000000;'---;1
+331;3;41979;U16;;AC Couple frequency upper limit setting;ac_couple_frequency_upper_limit_setting;1.000000;0.000000;0.01Hz;1
+332;3;41980;U16;;Off Grid Immediately Off;off_grid_immediately_off;1.000000;0.000000;'---;1
+333;3;41983;U16;;Generator input as load output enable;generator_input_as_load_output_enable;1.000000;0.000000;'---;1
+334;3;41984;U16;;Generator input rated power;generator_input_rated_power;1.000000;0.000000;1W;1
+335;3;41985;U16;;Generator connected to grid input;generator_connected_to_grid_input;1.000000;0.000000;'---;1
+336;3;41986;U16;;Intelligent load output power;intelligent_load_output_power;1.000000;0.000000;1W;1
+337;3;41987;U16;;Keep it on the power grid.;keep_it_on_the_power_grid;1.000000;0.000000;'---;1
+338;3;41988;U16;;Generator load OFF voltage;generator_load_off_voltage;1.000000;0.000000;0.1V;1
+339;3;41989;U16;;Generator load ON voltage;generator_load_on_voltage;1.000000;0.000000;0.1V;1
+340;3;41990;U16;;Generator load OFF SOC;generator_load_off_soc;1.000000;0.000000;1%;1
+341;3;41991;U16;;Generator load ON SOC;generator_load_on_soc;1.000000;0.000000;1%;1
+342;3;41992;U16;;Generator peak shaving enable;generator_peak_shaving_enable;1.000000;0.000000;'---;1
+343;3;41993;U16;;Generator peak shaving power;generator_peak_shaving_power;1.000000;0.000000;1W;1
+344;3;41994;U16;;Grid peak shaving enablement;grid_peak_shaving_enablement;1.000000;0.000000;'---;1
+345;3;41995;U16;;Grid peak shaving power;grid_peak_shaving_power;1.000000;0.000000;1W;1
+346;3;41999;U16;;Grid Signal;grid_signal;1.000000;0.000000;'---;1
+347;3;42000;U16;;Grid charging enable;grid_charging_enable;1.000000;0.000000;'---;1
+348;3;42001;I16;;The charging current of the power grid to the battery;the_charging_current_of_the_power_grid_to_the_battery;1.000000;0.000000;1A;1
+349;3;42002;U16;;Grid charging start-up voltage point;grid_charging_startup_voltage_point;1.000000;0.000000;0.1V;1
+350;3;42003;U16;;Grid charging stop voltage point;grid_charging_stop_voltage_point;1.000000;0.000000;0.1V;1
+351;3;42004;U16;;SOC value during grid charging start;soc_value_during_grid_charging_start;1.000000;0.000000;1%;1
+352;3;42005;U16;;SOC value when grid charging stops;soc_value_when_grid_charging_stops;1.000000;0.000000;1%;1
+353;3;42007;U16;;Gen Signal;gen_signal;1.000000;0.000000;'---;1
+354;3;42008;U16;;Generator charging enable;generator_charging_enable;1.000000;0.000000;'---;1
+355;3;42009;I16;;Generator charging current to battery;generator_charging_current_to_battery;1.000000;0.000000;1A;1
+356;3;42010;U16;;Generator charging starting voltage point;generator_charging_starting_voltage_point;1.000000;0.000000;0.1V;1
+357;3;42011;U16;;Generator charging stop voltage point;generator_charging_stop_voltage_point;1.000000;0.000000;0.1V;1
+358;3;42012;U16;;Generator charging start-up SOC value;generator_charging_startup_soc_value;1.000000;0.000000;1%;1
+359;3;42013;U16;;Generator charging stops at SOC value;generator_charging_stops_at_soc_value;1.000000;0.000000;1%;1
+360;3;42016;U16;;Maximum operating time of generator;maximum_operating_time_of_generator;1.000000;0.000000;0.1H;1
+361;3;42017;U16;;Generator cooling time;generator_cooling_time;1.000000;0.000000;0.1H;1
+362;3;42018;U16;;Force start generator;force_start_generator;1.000000;0.000000;'---;1
+363;3;42020;U16;;Electricity sales enable;electricity_sales_enable;1.000000;0.000000;'---;1
+364;3;42021;U16;;Set time-based charge/discharge enable;set_timebased_chargedischarge_enable;1.000000;0.000000;'---;1
+365;3;42022;U16;;Time Period 1 Charging Enable;time_period_1_charging_enable;1.000000;0.000000;'---;1
+366;3;42023;U16;;Time period 1ChargeStart time;time_period_1chargestart_time;1.000000;0.000000;H, Min;1
+367;3;42024;U16;;Time period 1ChargeEnd time;time_period_1chargeend_time;1.000000;0.000000;H, Min;1
+368;3;42025;U16;;Maximum discharge power during time period 1;maximum_discharge_power_during_time_period_1;1.000000;0.000000;0.1kW;1
+369;3;42026;U16;;Time period 1Start chargingvoltage value;time_period_1start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+370;3;42027;U16;;Time period 1Start chargingSOC value;time_period_1start_chargingsoc_value;1.000000;0.000000;1%;1
+371;3;42028;U16;;Time period 2 charging enable;time_period_2_charging_enable;1.000000;0.000000;'---;1
+372;3;42029;U16;;Time period 2ChargeStart time;time_period_2chargestart_time;1.000000;0.000000;H, Min;1
+373;3;42030;U16;;Time period 2ChargeEnd time;time_period_2chargeend_time;1.000000;0.000000;H, Min;1
+374;3;42031;U16;;Maximum discharge power during time period 2;maximum_discharge_power_during_time_period_2;1.000000;0.000000;0.1kW;1
+375;3;42032;U16;;Time period 2Start chargingvoltage value;time_period_2start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+376;3;42033;U16;;Time period 2Start chargingSOC value;time_period_2start_chargingsoc_value;1.000000;0.000000;1%;1
+377;3;42034;U16;;Time period 3 charging enable;time_period_3_charging_enable;1.000000;0.000000;'---;1
+378;3;42035;U16;;Time period 3ChargeStart time;time_period_3chargestart_time;1.000000;0.000000;H, Min;1
+379;3;42036;U16;;Time period 3ChargeEnd time;time_period_3chargeend_time;1.000000;0.000000;H, Min;1
+380;3;42037;U16;;Maximum discharge power during time period 3;maximum_discharge_power_during_time_period_3;1.000000;0.000000;0.1kW;1
+381;3;42038;U16;;Time period 3Start chargingvoltage value;time_period_3start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+382;3;42039;U16;;Time period 3Start chargingSOC value;time_period_3start_chargingsoc_value;1.000000;0.000000;1%;1
+383;3;42040;U16;;Time period 4: Charging enable;time_period_4_charging_enable;1.000000;0.000000;'---;1
+384;3;42041;U16;;Time period 4ChargeStart time;time_period_4chargestart_time;1.000000;0.000000;H, Min;1
+385;3;42042;U16;;Time period 4ChargeEnd time;time_period_4chargeend_time;1.000000;0.000000;H, Min;1
+386;3;42043;U16;;Maximum discharge power during time period 4;maximum_discharge_power_during_time_period_4;1.000000;0.000000;0.1kW;1
+387;3;42044;U16;;Time period 4Start chargingvoltage value;time_period_4start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+388;3;42045;U16;;Time period 4Start chargingSOC value;time_period_4start_chargingsoc_value;1.000000;0.000000;1%;1
+389;3;42046;U16;;Time period 5 charging enable;time_period_5_charging_enable;1.000000;0.000000;'---;1
+390;3;42047;U16;;Time period 5ChargeStart time;time_period_5chargestart_time;1.000000;0.000000;H, Min;1
+391;3;42048;U16;;Time period 5ChargeEnd time;time_period_5chargeend_time;1.000000;0.000000;H, Min;1
+392;3;42049;U16;;Maximum discharge power during time period 5;maximum_discharge_power_during_time_period_5;1.000000;0.000000;0.1kW;1
+393;3;42050;U16;;Time period 5Start chargingvoltage value;time_period_5start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+394;3;42051;U16;;Time period 5Start chargingSOC value;time_period_5start_chargingsoc_value;1.000000;0.000000;1%;1
+395;3;42052;U16;;Time period 6 charging enable;time_period_6_charging_enable;1.000000;0.000000;'---;1
+396;3;42053;U16;;Time period 6ChargeStart time;time_period_6chargestart_time;1.000000;0.000000;H, Min;1
+397;3;42054;U16;;Time period 6ChargeEnd time;time_period_6chargeend_time;1.000000;0.000000;H, Min;1
+398;3;42055;U16;;Maximum discharge power during time period 6;maximum_discharge_power_during_time_period_6;1.000000;0.000000;0.1kW;1
+399;3;42056;U16;;Time period 6Start chargingvoltage value;time_period_6start_chargingvoltage_value;1.000000;0.000000;0.1V;1
+400;3;42057;U16;;Time period 6Start chargingSOC value;time_period_6start_chargingsoc_value;1.000000;0.000000;1%;1
+401;3;42085;U16;;Off-grid operation switch;offgrid_operation_switch;1.000000;0.000000;'---;1
+402;3;42086;U16;;Off-grid output voltage setting;offgrid_output_voltage_setting;1.000000;0.000000;0.1V;1
+403;3;42087;U16;;Off-grid output frequency settings;offgrid_output_frequency_settings;1.000000;0.000000;0.01Hz;1
+404;3;42088;U16;;Energy flow priority setting;energy_flow_priority_setting;1.000000;0.000000;'---;1
+405;3;42091;I16;;Battery power settings;battery_power_settings;1.000000;0.000000;0.1KW;1
+406;3;42092;U16;;SOC forced calibration enabled;soc_forced_calibration_enabled;1.000000;0.000000;'---;1
+407;3;42093;U16;;SOC mandatory calibration cycle;soc_mandatory_calibration_cycle;1.000000;0.000000;'---;1
+408;3;42094;U16;;Battery port information;battery_port_information;1.000000;0.000000;'---;1
+409;3;42095;U16;;Battery Information;battery_information;1.000000;0.000000;'---;1
+410;3;42096;U16;;Battery operating type;battery_operating_type;1.000000;0.000000;'---;1
+411;3;42097;U16;;Number of batteries connected in series and parallel;number_of_batteries_connected_in_series_and_parallel;1.000000;0.000000;'---;1
+412;3;42098;U16;;Battery charge/discharge slope enable;battery_chargedischarge_slope_enable;1.000000;0.000000;'---;1
+413;3;42099;U16;;Battery charge/discharge slope;battery_chargedischarge_slope;1.000000;0.000000;X%Pn/Min;1
+414;3;42100;U16;;Battery charging power settings;battery_charging_power_settings;1.000000;0.000000;0.1kW;1
+415;3;42101;U16;;Battery discharge power setting;battery_discharge_power_setting;1.000000;0.000000;0.1kW;1
+416;3;42105;U16;;CV charging voltage;cv_charging_voltage;1.000000;0.000000;0.1V;1
+417;3;42106;U16;;float voltage;float_voltage;1.000000;0.000000;0.1V;1
+418;3;42107;U16;;Battery equalization enable;battery_equalization_enable;1.000000;0.000000;'---;1
+419;3;42108;U16;;Battery equalization voltage;battery_equalization_voltage;1.000000;0.000000;0.1V;1
+420;3;42109;U16;;Battery equalization interval;battery_equalization_interval;1.000000;0.000000;1Day;1
+421;3;42110;U16;;Battery equalization time;battery_equalization_time;1.000000;0.000000;1 Hour;1
+422;3;42111;U16;;Battery overvoltage alarm value;battery_overvoltage_alarm_value;1.000000;0.000000;0.1V;1
+423;3;42112;U16;;Battery overvoltage alarm recovery value;battery_overvoltage_alarm_recovery_value;1.000000;0.000000;0.1V;1
+424;3;42113;U16;;Battery overvoltage protection value;battery_overvoltage_protection_value;1.000000;0.000000;0.1V;1
+425;3;42114;U16;;Battery overvoltage protection recovery value;battery_overvoltage_protection_recovery_value;1.000000;0.000000;0.1V;1
+426;3;42115;U16;;Battery low voltage alarm voltage value;battery_low_voltage_alarm_voltage_value;1.000000;0.000000;0.1V;1
+427;3;42116;U16;;Battery undervoltage alarm recovery voltage value;battery_undervoltage_alarm_recovery_voltage_value;1.000000;0.000000;0.1V;1
+428;3;42117;U16;;Battery discharge cutoff voltage value;battery_discharge_cutoff_voltage_value;1.000000;0.000000;0.1V;1
+429;3;42118;U16;;Battery discharge cutoff recovery voltage value;battery_discharge_cutoff_recovery_voltage_value;1.000000;0.000000;0.1V;1
+430;3;42119;I16;;Battery temperature;battery_temperature;1.000000;0.000000;0.1℃;1
+431;3;42120;I16;;Temperature compensation value;temperature_compensation_value;1.000000;0.000000;1mV/℃;1
+432;3;42121;U16;;Battery internal resistance;battery_internal_resistance;1.000000;0.000000;1mΩ;1
+433;3;42122;U16;;Battery capacity;battery_capacity;1.000000;0.000000;1Ah;1
+434;3;42123;I16;;Maximum total charging current of battery;maximum_total_charging_current_of_battery;1.000000;0.000000;1A;1
+435;3;42124;I16;;Maximum total discharge current of battery;maximum_total_discharge_current_of_battery;1.000000;0.000000;1A;1
+436;3;42125;U16;;Battery discharge cutoff voltage in hybrid mode;battery_discharge_cutoff_voltage_in_hybrid_mode;1.000000;0.000000;0.1V;1
+437;3;42126;U16;;Battery discharge cutoff SOC in hybrid mode;battery_discharge_cutoff_soc_in_hybrid_mode;1.000000;0.000000;1%;1
+438;3;42127;U16;;Cutoff recovery voltage in hybrid mode;cutoff_recovery_voltage_in_hybrid_mode;1.000000;0.000000;0.1V;1
+439;3;42128;U16;;Cut-off recovery of SOC in hybrid mode;cutoff_recovery_of_soc_in_hybrid_mode;1.000000;0.000000;1%;1
+440;3;42130;U16;;Battery/BMS manufacturers;batterybms_manufacturers;1.000000;0.000000;'---;1
+441;3;42131;U16;;reserve;reserve_1;1.000000;0.000000;;0
+442;3;42132;U16;;Battery low voltage alarm SOC value;battery_low_voltage_alarm_soc_value;1.000000;0.000000;1%;1
+443;3;42133;U16;;Battery undervoltage alarm restores SOC value;battery_undervoltage_alarm_restores_soc_value;1.000000;0.000000;1%;1
+444;3;42134;U16;;Battery discharge cutoff SOC value;battery_discharge_cutoff_soc_value;1.000000;0.000000;1%;1
+445;3;42135;U16;;Battery discharge cut-off restores SOC value;battery_discharge_cutoff_restores_soc_value;1.000000;0.000000;1%;1
+446;3;42136;U16;;SOC value at charging stop;soc_value_at_charging_stop;1.000000;0.000000;1%;1
+447;3;42137;U16;;Lithium battery wake-up enable (activate pack);lithium_battery_wakeup_enable_activate_pack;1.000000;0.000000;'---;1
+448;3;42138;U16;;Communication with BMS failed, energy storage unit shut down, fault enable bit reported.;communication_with_bms_failed_energy_storage_unit_shut_down_fault_enable_bit_reported;1.000000;0.000000;'---;1
+449;3;42139;U16;;Charging stops and SOC value is restored;charging_stops_and_soc_value_is_restored;1.000000;0.000000;1%;1
+450;3;42150;U16;;Battery Information;battery_information_1;1.000000;0.000000;;1
+451;3;42194;U16;;Charging stops and SOC value is restored;charging_stops_and_soc_value_is_restored_1;1.000000;0.000000;;1
+452;3;42205;U16;;Battery Information;battery_information_2;1.000000;0.000000;;1
+453;3;42249;U16;;Charging stops and SOC value is restored;charging_stops_and_soc_value_is_restored_2;1.000000;0.000000;;1

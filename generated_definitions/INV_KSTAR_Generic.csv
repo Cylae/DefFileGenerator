@@ -1,0 +1,53 @@
+Modbus;Inverter;KSTAR;Generic
+1;4;3000;U16;;PV1 input voltage;U_DC_STRING_1;0.1;0.0;V;4
+2;4;3001;U16;;PV2 input voltage;U_DC_STRING_2;0.1;0.0;V;4
+3;4;3002;U16;;PV3 input voltage;U_DC_STRING_3;0.1;0.0;V;4
+4;4;3003;U16;;PV1 input current;I_DC_MPPT_1;0.01;0.0;A;4
+5;4;3004;U16;;PV2 input current;I_DC_MPPT_2;0.01;0.0;A;4
+6;4;3005;U16;;PV3 input current;I_DC_MPPT_3;0.01;0.0;A;4
+7;4;3006;I32;;PV1 input power;P_DC_MPPT_1;1.0;0.0;W;4
+8;4;3008;I32;;PV2 input power;P_DC_MPPT_2;1.0;0.0;W;4
+9;4;3010;I32;;PV3 input power;P_DC_MPPT_3;1.0;0.0;W;4
+10;4;3014;U16;;RS-phase grid voltage;;0.1;0.0;V;4
+11;4;3015;U16;;ST-phase grid voltage;;0.1;0.0;V;4
+12;4;3016;U16;;TS-phase grid voltage;;0.1;0.0;V;4
+13;4;3017;U16;;RS-phase grid frequency;FREQ;0.01;0.0;Hz;4
+14;4;3018;U16;;ST-phase grid frequency;;0.01;0.0;Hz;4
+15;4;3019;U16;;TR-phase grid frequency;;0.01;0.0;Hz;4
+16;4;3020;U16;;R-phase grid current;;0.01;0.0;A;4
+17;4;3021;U16;;S-phase grid current;;0.01;0.0;A;4
+18;4;3022;U16;;T-phase grid current;;0.01;0.0;A;4
+19;4;3023;I32;;Grid-tied power;P_AC;1.0;0.0;W;4
+20;4;3027;U16;;DSP alarm code;;1.0;0.0;;4
+21;4;3028;U32;;DSP error code;;2.0;0.0;;4
+22;4;3036;U16;;ARM alarm code;;1.0;0.0;;8
+23;4;3038;U32;;Total energy yield;E_TOT;0.1;0.0;Kwh;4
+24;4;3040;U32;;Annual energy yield;;1.0;0.0;Kwh;4
+25;4;3042;U16;;Daily energy yield;E_DAY;1.0;0.0;Kwh;4
+26;4;3043;U16;;power-on voltage;;0.1;0.0;V;4
+27;4;3044;U16;;power-on delay;;1.0;0.0;S;4
+28;4;3045;U16;;Lower grid voltage threshold;;0.1;0.0;V;4
+29;4;3046;U16;;Upper grid voltage threshold;;0.1;0.0;V;4
+30;4;3047;U16;;Lower grid frequency threshold;;0.01;0.0;Hz;4
+31;4;3048;U16;;Upper grid frequency threshold;;0.01;0.0;Hz;4
+32;4;3049;U16;;Preset power factor;PF;1.0;0.0;;4
+33;4;3050;U16;;Preset active power;;1.0;0.0;%;4
+34;4;3052;I32;;Apparent power;S_AC;1.0;0.0;VA;4
+35;4;3054;I32;;Reactive power;Q_AC;1.0;0.0;Var;4
+36;4;3056;U16;;Power factor;;0.001;0.0;;4
+37;4;3057;U16;;DC Insulation resistance;R_ISO;1.0;0.0;kOhm;4
+38;4;3058;U16;;Overfrequency derating;;1.0;0.0;;4
+39;4;3059;U16;;Overfrequency derating threshold;;1.0;0.0;;4
+40;4;3060;U16;;High voltage of the QV curve;;1.0;0.0;;4
+41;4;3061;U16;;High voltage power factor of the QV curve;;1.0;0.0;;4
+42;4;3062;U16;;Low voltage of the QV curve;;1.0;0.0;;4
+43;4;3063;U16;;Low voltage power factor of the QV curve;;1.0;0.0;;4
+44;4;4000;U16;;Clear statistical information;;1.0;0.0;;1
+45;4;4001;U16;;Remote power-off;CMD_OFF;1.0;0.0;;4
+46;4;4002;U16;;Revoke remote power-off;;1.0;0.0;;1
+47;4;4003;U16;;Set the power factor;;1.0;0.0;;1
+48;4;4004;U16;;Set the active power;CMD_P_AC_SET_PERCENT;1.0;0.0;%;4
+49;4;4005;I16;;Set the reactive power;;1.0;0.0;kVar;1
+50;4;4006;U16;;Set the reactive control mode;;1.0;0.0;;1
+51;4;4007;U16;;Overfrequency derating_1;;1.0;0.0;;1
+52;4;4008;U16;;Overfrequency derating threshold_1;;0.01;0.0;Hz;1

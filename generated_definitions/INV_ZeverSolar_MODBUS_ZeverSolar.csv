@@ -1,0 +1,83 @@
+ModbusRTU;Inverter;ZEVERSOLAR;Generic;;;;;;;
+1;4;0_2;STRING;;Device Type;MODEL;1;0;;4
+2;4;1;U32;;E-today;;0.1;0;kWh;4
+3;4;3;U32;;E-total ;E_TOT;0.1;0;kWh;4
+4;4;5;U32;;H-total  ;;1;0;H;4
+5;4;11;U16;;State  ;;1;0; ;8
+6;4;12;U16;;Error Code ;;1;0; ;4
+7;4;13;U16;;Connect Time;;1;0;s;4
+8;4;14;I16;;Temperature;TEMP;0.1;0;C;4
+9;4;15;U16;;Connected PV Strings;;1;0; ;4
+10;4;16;U16;;BUS Voltage ;U_DC;0.1;0;V;4
+11;4;17;U16;;PV Voltage 1;;0.1;0;V;4
+12;4;18;U16;;PV Current 1;;0.1;0;A;4
+13;4;19;U16;;PV Voltage 2;;0.1;0;V;4
+14;4;20;U16;;PV Current 2;;0.1;0;A;4
+15;4;21;U16;;PV Voltage 3;;0.1;0;V;4
+16;4;22;U16;;PV Current 3;;0.1;0;A;4
+17;4;28;U16;;L1 Phase Voltage;U_AC_1;0.1;0;V;4
+18;4;29;U16;;L1 Phase Current;I_AC_1;0.1;0;A;4
+19;4;30;U16;;L2 Phase Voltage;U_AC_2;0.1;0;V;4
+20;4;31;U16;;L2 Phase Current;I_AC_2;0.1;0;A;4
+21;4;32;U16;;L3 Phase Voltage;U_AC_3;0.1;0;V;4
+22;4;33;U16;;L3 Phase Current;I_AC_3;0.1;0;A;4
+23;4;34;U16;;Grid Freq;;0.01;0;Hz;4
+24;4;37;U32;;Pac;P_AC;1;0;W;4
+25;4;39;I32;;Qac;Q_AC;1;0;Var;4
+26;4;41;I16;;PF;;0.01;0; ;4
+27;4;42;U16;;Reactive Power Mode;;1;0; ;4
+28;4;43;U16;;Active Power Mode;;1;0; ;4
+29;4;44;U16;;OverLoad;;1;0; ;4
+30;4;45;U16;;EEG70 ;;1;0; ;4
+31;4;46;U16;;Version of Protocol ;;1;0; ;4
+32;4;47;U16;;String Current 1;;0.1;0;A;4
+33;4;48;U16;;String Current 2;;0.1;0;A;4
+34;4;49;U16;;String Current 3;;0.1;0;A;4
+35;4;50;U16;;String Current 4;;0.1;0;A;4
+36;4;51;U16;;String Current 5;;0.1;0;A;4
+37;4;52;U16;;String Current 6;;0.1;0;A;4
+38;4;53;U16;;String Current 7;;0.1;0;A;4
+39;4;54;U16;;String Current 8;;0.1;0;A;4
+40;4;55;U16;;String Current 9;;0.1;0;A;4
+41;4;56;U16;;String Current 10;;0.1;0;A;4
+42;4;57;U16;;String Current 11;;0.1;0;A;4
+43;4;58;U16;;String Current 12;;0.1;0;A;4
+44;3;12;U16;;Power ON/OFF;CMD_ON;1;0; ;4
+45;3;5000;U16;;Safety type;;1;0; ;4
+46;3;5006;U16;;Grid voltage high limit2;;0.1;0;V;4
+47;3;5007;U16;;Grid voltage high limit time2;;1;0;ms;4
+48;3;5008;U16;;Grid voltage high limit1;;0.1;0;V;4
+49;3;5009;U16;;Grid voltage high limit time1;;1;0;ms;4
+50;3;5010;U16;;Grid voltage low limit2;;0.1;0;V;4
+51;3;5011;U16;;Grid voltage low limit time2;;1;0;ms;4
+52;3;5012;U16;;Grid voltage low limit1;;0.1;0;V;4
+53;3;5013;U16;;Grid voltage low limit time1;;1;0;ms;4
+54;3;5014;U16;;Grid voltage high recovery value;;0.1;0;V;4
+55;3;5015;U16;;Grid voltage low recovery value;;0.1;0;V;4
+56;3;5016;U16;;Grid frequency high limit2;FREQ;0.01;0;Hz;4
+57;3;5017;U16;;Grid frequency high limit time2;;1;0;ms;4
+58;3;5018;U16;;Grid frequency high limit1;;0.01;0;Hz;4
+59;3;5019;U16;;Grid frequency high limit time1;;1;0;ms;4
+60;3;5020;U16;;Grid frequency low limit2;;0.01;0;Hz;4
+61;3;5021;U16;;Grid frequency low limit time2;;1;0;ms;4
+62;3;5022;U16;;Grid frequency low limit1;;0.01;0;Hz;4
+63;3;5023;U16;;Grid frequency low limit time1;;1;0;ms;4
+64;3;5024;U16;;Grid frequency high recovery value;;0.01;0;Hz;4
+65;3;5025;U16;;Grid frequency low recovery value;;0.01;0;Hz;4
+66;3;5026;U16;;10 minutes average over voltage threshold;;0.1;0;V;4
+67;3;5027;U16;;ISO fault threshold  ;;1;0;kOhm;4
+68;3;5028;U16;;DCI fault threshold;;1;0;mA;4
+69;3;5029;U16;;Active power set;cmdPwrPct;1;0;%Pn;4
+70;3;5030;U16;;Active power control response time;;1;0;S;4
+71;3;5036;U16;;Reactive power control mode;;1;0;;4
+72;3;5037;I16;;Power factor;PF;0.01;0;;4
+73;3;5038;U16;;CosPhi(P)curve First point of active power;;1;0;%Pn;4
+74;3;5039;I16;;CosPhi(P)curve First point of CosPhi;;0.01;0;;4
+75;3;5040;U16;;CosPhi(P)curve Second point of active power;;1;0;%Pn;4
+76;3;5041;I16;;CosPhi(P)curve Second point of CosPhi;;0.01;0;;4
+77;3;5042;I16;;Q command mode set value;;1;0;%Pn;4
+78;3;5043;U16;;Q(U) curve First point of U;;1;0;%Un;4
+79;3;5044;I16;;Q(U) curve First point of Q;;1;0;%Pn;4
+80;3;5045;U16;;Q(U) curve second point of U;;1;0;%Un;4
+81;3;5046;I16;;Q(U) curve second point of Q;;1;0;%Pn;4
+82;3;5051;U16;;Q(U) curve response time;;1;0;s;4

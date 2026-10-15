@@ -1,0 +1,57 @@
+ModbusRTU;Inverter;ABB;Ultra
+1;4;99;U16;;Start Parameter Module x;;1.0;0.0;;1
+2;4;100;U16;;Length Parameter Module x;;1.0;0.0;;1
+3;4;101;U16;;ModBus numerical Map Version;;1.0;0.0;;1
+4;4;102;U16;;RS 485 Address of Module x;UNIT_ID;1.0;0.0;;1
+5;4;103;U16;;Rack N of Module x;;1.0;0.0;;1
+6;4;104;U16;;JB Master;;1.0;0.0;;1
+7;4;105;U16;;JB Managed;;1.0;0.0;;1
+8;4;106;U16;;JA_H;;1.0;0.0;;1
+9;4;107;U16;;JA_L;;1.0;0.0;;1
+10;4;108_6;STRING;;Rack SN Module x;SERIAL;1.0;0.0;;1
+11;4;114_6;STRING;;Rack PN Module x;;1.0;0.0;;1
+12;4;120_6;STRING;;SN Module x;;1.0;0.0;;1
+13;4;126_6;STRING;;PN Module x;;1.0;0.0;;1
+14;4;132_1;STRING;;Type Module x;;1.0;0.0;;1
+15;4;133_1;STRING;;Grid Type Module x;;1.0;0.0;;1
+16;4;134_1;STRING;;Trafo Type Module x;;1.0;0.0;;1
+17;4;135_1;STRING;;Wind Type Module x;WIND_SPEED;1.0;0.0;;1
+18;4;136_4;STRING;;Date Production Module x;;1.0;0.0;;1
+19;4;140;U16;;Status0 Module x (Global State);;1.0;0.0;;8
+20;4;141;U16;;Status1 Module x (Inverter State);;1.0;0.0;;8
+21;4;142;U16;;Status2 Module x (Dc/Dc Ch1);;1.0;0.0;;8
+22;4;143;U16;;Status3 Module x (Dc/Dc Ch2);;1.0;0.0;;8
+23;4;144;U16;;Status4 Module x (Alarm State);;1.0;0.0;;8
+24;4;145;U16;;Type MPPT Module x;;1.0;0.0;;1
+25;4;146;F32;;Daily Energy Module x;E_DAY;1.0;0.0;Wh;4
+26;4;148;F32;;Total Energy Module x;E_TOT;1.0;0.0;Wh;4
+27;4;150;F32;;Partial Energy Module x;;1.0;0.0;Wh;4
+28;4;152;F32;;Week Energy Module x;;1.0;0.0;Wh;4
+29;4;154;F32;;Monthly Energy Module x;;1.0;0.0;Wh;4
+30;4;156;F32;;Yearly Energy Module x;;1.0;0.0;Wh;4
+31;4;158;F32;;Rack Collection Daily Energy;;1.0;0.0;Wh;4
+32;4;160;F32;;Rack Collection Total Energy;;1.0;0.0;Wh;4
+33;4;162;F32;;Rack Collection Partial Energy;;1.0;0.0;Wh;4
+34;4;164;F32;;Rack Collection Week Energy;;1.0;0.0;Wh;4
+35;4;166;F32;;Rack Collection Monthly Energy;;1.0;0.0;Wh;4
+36;4;168;F32;;Rack Collection Yearly Energy;;1.0;0.0;Wh;4
+37;4;170;F32;;3 phases Frequence Module x;FREQ;1.0;0.0;Hz;4
+38;4;172;F32;;Input Power Module x;P_AC;1.0;0.0;W;4
+39;4;174;F32;;Input Voltage Module x;;1.0;0.0;V;4
+40;4;176;F32;;Input Current Module x;;1.0;0.0;A;4
+41;4;178;F32;;Supervisor Temperature Module x;TEMP_CELL;1.0;0.0;°C;4
+42;4;180;F32;;Power SupplyTemperature Module x;;1.0;0.0;°C;4
+43;4;182;F32;;Input Headsink Temperature Module x;;1.0;0.0;°C;4
+44;4;184;F32;;Output Headsink Temperature Module x;;1.0;0.0;°C;4
+45;4;186;F32;;Input Air Temperature Module x;;1.0;0.0;°C;4
+46;4;188;F32;;Grid Voltage Phase R Module x;;1.0;0.0;V;4
+47;4;190;F32;;Grid Voltage Phase S Module x;;1.0;0.0;V;4
+48;4;192;F32;;Grid Voltage Phase T Module x;;1.0;0.0;V;4
+49;4;194;F32;;Grid Current Phase R Module x;;1.0;0.0;A;4
+50;4;196;F32;;Grid Current Phase S Module x;;1.0;0.0;A;4
+51;4;198;F32;;Grid Current Phase T Module x;;1.0;0.0;A;4
+52;4;200;F32;;3 phases Grid Voltage Module x;;1.0;0.0;V;4
+53;4;202;F32;;3 phases Grid Current Module x;;1.0;0.0;A;4
+54;4;204;F32;;3 phases Grid Power Module x;;1.0;0.0;W;4
+55;4;206;F32;;3 phases Grid Reactive Power Module x;Q_AC;1.0;0.0;VAR;4
+56;4;208;F32;;Ground Leakage Current Module x;;1.0;0.0;A;4

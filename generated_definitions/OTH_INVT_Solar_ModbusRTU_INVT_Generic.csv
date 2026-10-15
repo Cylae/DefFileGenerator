@@ -1,0 +1,42 @@
+modbusRTU;Other;INVT Solar;ModbusRTU_INVT_Generic;;;;;;;
+1;3;14353;U16;;RS grid line voltage;rs_grid_line_voltage;0.100000;0.000000;V;4
+2;3;14354;U16;;ST grid Line Voltage;st_grid_line_voltage;0.100000;0.000000;V;4
+3;3;14355;U16;;TR grid line voltage;tr_grid_line_voltage;0.100000;0.000000;V;4
+4;3;14356;U16;;R grid phase voltage;r_grid_phase_voltage;0.100000;0.000000;V;4
+5;3;14357;U16;;S grid phase voltage;s_grid_phase_voltage;0.100000;0.000000;V;4
+6;3;14358;U16;;T grid phase voltage;t_grid_phase_voltage;0.100000;0.000000;V;4
+7;3;14359;I16;;R-phase  grid-connected current;rphase_gridconnected_current;0.010000;0.000000;A;4
+8;3;14360;I16;;S  phase  grid-connected current;s_phase_gridconnected_current;0.010000;0.000000;A;4
+9;3;14361;I16;;T-phase   grid-connected current;tphase_gridconnected_current;0.010000;0.000000;A;4
+10;3;14362;U16;;RS grid Frequency;rs_grid_frequency;0.010000;0.000000;Hz;4
+11;3;14364;U16;;Load power;load_power;0.100000;0.000000;kW;4
+12;3;14365;I32;;Active Power;P_AC;0.100000;0.000000;W;4
+13;3;14367;I32;;reactive power;reactive_power;0.100000;0.000000;VAR;4
+14;3;14369;I16;;Power Factor;PF;0.001000;0.000000;;4
+15;3;14383;U16;;Daily Generation;daily_generation;0.100000;0.000000;kWh;4
+16;3;14384;U32;;Total  power  generation;total_power_generation;0.100000;0.000000;kWh;4
+17;3;14390;U16;;PV1 input voltage;pv1_input_voltage;0.100000;0.000000;V;4
+18;3;14391;I16;;PV1 input current;pv1_input_current;0.010000;0.000000;A;4
+19;3;14392;U16;;PV2 input voltage;pv2_input_voltage;0.100000;0.000000;V;4
+20;3;14393;I16;;PV2 input current;pv2_input_current;0.010000;0.000000;A;4
+21;3;14394;U16;;PV3 input voltage;pv3_input_voltage;0.100000;0.000000;V;4
+22;3;14395;I16;;PV3 input current;pv3_input_current;0.010000;0.000000;A;4
+23;3;14396;U16;;PV4 input voltage;pv4_input_voltage;0.100000;0.000000;V;4
+24;3;14397;I16;;PV4 input current;pv4_input_current;0.010000;0.000000;A;4
+25;3;14398;U16;;PV5 input voltage;pv5_input_voltage;0.100000;0.000000;V;4
+26;3;14399;I16;;PV5 input current;pv5_input_current;0.010000;0.000000;A;4
+27;3;14400;U16;;PV6 input voltage;pv6_input_voltage;0.100000;0.000000;V;4
+28;3;14401;I16;;PV6 input current;pv6_input_current;0.010000;0.000000;A;4
+29;3;14402;U16;;PV7 input voltage;pv7_input_voltage;0.100000;0.000000;V;4
+30;3;14403;I16;;PV7 input current;pv7_input_current;0.010000;0.000000;A;4
+31;3;14404;U16;;PV8 input voltage;pv8_input_voltage;0.100000;0.000000;V;4
+32;3;14405;I16;;PV8 input current;pv8_input_current;0.010000;0.000000;A;4
+33;3;14406;U16;;PV9 input voltage;pv9_input_voltage;0.100000;0.000000;V;4
+34;3;14407;I16;;PV9 input current;pv9_input_current;0.010000;0.000000;A;4
+35;3;14408;U16;;PV10 input voltage;pv10_input_voltage;0.100000;0.000000;V;4
+36;3;14409;I16;;PV10 input current;pv10_input_current;0.010000;0.000000;A;4
+37;3;14410;U16;;PV11 input voltage;pv11_input_voltage;0.100000;0.000000;V;4
+38;3;14411;I16;;PV11 input current;pv11_input_current;0.010000;0.000000;A;4
+39;3;14412;U16;;PV12 input voltage;pv12_input_voltage;0.100000;0.000000;V;4
+40;3;14413;I16;;PV12 input current;pv12_input_current;0.010000;0.000000;A;4
+41;3;14466;U16;;Inverter Efficiency;inverter_efficiency;0.100000;0.000000;'%;4

@@ -1,0 +1,150 @@
+modbusRTU;Other;Kehua;KEHUA_SinglePhase_Work;;;;;;;
+1;3;4501;U16;;Device status;device_status;1.000000;0.000000;;9
+2;3;4502;U16;;Grid voltage;grid_voltage;0.500000;0.000000;;4
+3;3;4503;U16;;Grid current;grid_current;0.333333;0.000000;;4
+4;3;4504;U16;;Grid frequency;FREQ;0.250000;0.000000;;4
+5;3;4505;U16;;Daily power generation;E_DAY;0.200000;0.000000;;4
+6;3;4506;U16;;Daily On-grid generation;daily_ongrid_generation;0.166667;0.000000;;4
+7;3;4507;I16;;On-grid apparent power;ongrid_apparent_power;0.142857;0.000000;;4
+8;3;4508;I16;;On-grid active power;ongrid_active_power;0.125000;0.000000;;4
+9;3;4509;I16;;On-grid reactive power;ongrid_reactive_power;0.111111;0.000000;;4
+10;3;4510;U16;;Inverter voltage;inverter_voltage;0.100000;0.000000;;4
+11;3;4511;U16;;Inverter current;inverter_current;0.090909;0.000000;;4
+12;3;4512;U16;;Inverter frequency;inverter_frequency;0.083333;0.000000;;4
+13;3;4513;U16;;load voltage;load_voltage;0.076923;0.000000;;4
+14;3;4514;U16;;load current;load_current;0.071429;0.000000;;4
+15;3;4515;U16;;Daily load power consumption;daily_load_power_consumption;0.066667;0.000000;;4
+16;3;4516;U16;;Load apparent power;load_apparent_power;0.062500;0.000000;;4
+17;3;4517;U16;;Load active power;load_active_power;0.058824;0.000000;;4
+18;3;4518;U16;;Load reactive power;load_reactive_power;0.055556;0.000000;;4
+19;3;4519;I16;;Power factor;PF;0.052632;0.000000;;4
+20;3;4520;U16;;PV1 voltage;pv1_voltage;0.050000;0.000000;;4
+21;3;4521;I16;;PV1 current;pv1_current;0.047619;0.000000;;4
+22;3;4522;I16;;PV1 power;pv1_power;0.045455;0.000000;;4
+23;3;4523;U16;;PV2 voltage;pv2_voltage;0.043478;0.000000;;4
+24;3;4524;I16;;PV2 current;pv2_current;0.041667;0.000000;;4
+25;3;4525;I16;;PV2 power;pv2_power;0.040000;0.000000;;4
+26;3;4526;U16;;PV daily power generation;pv_daily_power_generation;0.038462;0.000000;;4
+27;3;4527;U16;;Battery status;battery_status;0.037037;0.000000;;9
+28;3;4528;U16;;Battery voltage;battery_voltage;0.035714;0.000000;;4
+29;3;4529;I16;;Battery current;battery_current;0.034483;0.000000;;4
+30;3;4530;I16;;Battery maximum temperature;battery_maximum_temperature;0.033333;0.000000;;4
+31;3;4531;I16;;Battery minimum temperature;battery_minimum_temperature;0.032258;0.000000;;4
+32;3;4532;U16;;Battery daily charging amount;battery_daily_charging_amount;0.031250;0.000000;;4
+33;3;4533;U16;;Battery daily discharging amount;battery_daily_discharging_amount;0.030303;0.000000;;4
+34;3;4534;I16;;internal temperature;internal_temperature;0.029412;0.000000;;4
+35;3;4535;U16;;Battery discharging power;battery_discharging_power;0.028571;0.000000;;4
+36;3;4536;U16;;Battery charging power;battery_charging_power;0.027778;0.000000;;4
+37;3;4537;U16;;PV total power;pv_total_power;0.027027;0.000000;;4
+38;3;4538;U16;;Grid-connected power total generation high word;gridconnected_power_totalgeneration_high_word;0.026316;0.000000;;4
+39;3;4539;U16;;Grid-connected power total generation low word (Grid output electric quantity);gridconnected_power_total_generation_low_word_grid_output_electricquantity;0.025641;0.000000;;4
+40;3;4540;U16;;PV total generation high word;pv_total_generation_high_word;0.025000;0.000000;;4
+41;3;4541;U16;;PV total generation low word;pv_total_generation_low_word;0.024390;0.000000;;4
+42;3;4542;U16;;Running time high word (on-grid、 off-grid);running_time_highword_ongrid_offgrid;0.023810;0.000000;;4
+43;3;4543;U16;;Running time low word;running_time_low_word;0.023256;0.000000;;4
+44;3;4544;U16;;Battery SOC;battery_soc;0.022727;0.000000;;4
+45;3;4545;U16;;Maximum single battery voltage;maximum_single_battery_voltage;0.022222;0.000000;;4
+46;3;4546;U16;;Minimum single battery voltage;minimum_single_battery_voltage;0.021739;0.000000;;4
+47;3;4547;U16;;Battery SOH;battery_soh;0.021277;0.000000;;4
+48;3;4551;U16;;Load total power consumption high word;load_total_powerconsumption_high_word;0.020833;0.000000;;4
+49;3;4552;U16;;Load total power consumption low word;load_total_power_consumption_low_word;0.020408;0.000000;;4
+50;3;4553;U16;;Grid-connected total power consumption high word;gridconnected_total_power_consumption_high_word;0.020000;0.000000;;4
+51;3;4554;U16;;Grid-connected total power consumption low word (Grid input);gridconnected_total_power_consumptionlow_word_grid_input;0.019608;0.000000;;4
+52;3;4555;U16;;Secondary load voltage;secondary_load_voltage;0.019231;0.000000;;4
+53;3;4556;U16;;Secondary load current;secondary_load_current;0.018868;0.000000;;4
+54;3;4557;U16;;Secondary load active power;secondary_load_active_power;0.018519;0.000000;;4
+55;3;4558;I16;;Secondary load reactive power;secondary_load_reactive_power;0.018182;0.000000;;4
+56;3;4559;U16;;Secondary load apparent power;secondary_load_apparent_power;0.017857;0.000000;;4
+57;3;4560;U16;;PV3 voltage;pv3_voltage;0.017544;0.000000;;4
+58;3;4561;I16;;PV3 current;pv3_current;0.017241;0.000000;;4
+59;3;4562;I16;;PV3 power;pv3_power;0.016949;0.000000;;4
+60;3;4563;U16;;PV4 voltage;pv4_voltage;0.016667;0.000000;;4
+61;3;4564;I16;;PV4 current;pv4_current;0.016393;0.000000;;4
+62;3;4565;I16;;PV4 power;pv4_power;0.016129;0.000000;;4
+63;3;4850;U16;;Device type;device_type;0.015873;0.000000;;4
+64;3;4851;U16;;MPPT quantity;mppt_quantity;0.015625;0.000000;;4
+65;3;4852;U16;;Protocol type;protocol_type;0.015385;0.000000;;4
+66;3;4853;U8;;Protocol version(ASCII);protocol_versionascii;0.015152;0.000000;;4
+67;3;4858;U8;;Manufacturer information(ASCII);manufacturer_informationascii;0.014925;0.000000;;4
+68;3;4874;U16;;Remaining time of probation;remaining_time_of_probation;0.014706;0.000000;;4
+69;3;4901;U8;;Battery model;battery_model;0.014493;0.000000;;4
+70;3;4911;U16;;BMS alarm code 1;bms_alarm_code_1;0.014286;0.000000;;9
+71;3;4912;U16;;BMS alarm code 2;bms_alarm_code_2;0.014085;0.000000;;9
+72;3;4913;U16;;BMS alarm code 3;bms_alarm_code_3;0.013889;0.000000;;9
+73;3;4914;U16;;BMS alarm code 4;bms_alarm_code_4;0.013699;0.000000;;9
+74;3;4915;U16;;BMS alarm code 1;bms_alarm_code_1_1;0.013514;0.000000;;9
+75;3;4916;U16;;BMS alarm code 2;bms_alarm_code_2_1;0.013333;0.000000;;9
+76;3;4917;U16;;BMS alarm code 3;bms_alarm_code_3_1;0.013158;0.000000;;9
+77;3;4918;U16;;BMS alarm code 4;bms_alarm_code_4_1;0.012987;0.000000;;9
+78;3;4919;U16;;BMS status code;bms_status_code;0.012821;0.000000;;9
+79;3;4920;U16;;BMS battery voltage;bms_battery_voltage;0.012658;0.000000;;4
+80;3;4921;I16;;BMS battery current;bms_battery_current;0.012500;0.000000;;4
+81;3;4922;U16;;BMS charging limiting current;bms_charging_limiting_current;0.012346;0.000000;;4
+82;3;4923;U16;;BMS discharging limiting current;bms_discharging_limiting_current;0.012195;0.000000;;4
+83;3;4924;U16;;BMS charging limiting voltage;bms_charging_limiting_voltage;0.012048;0.000000;;4
+84;3;4925;U16;;BMS discharging limiting voltage;bms_discharging_limiting_voltage;0.011905;0.000000;;4
+85;3;5500;I16;;DC component of the inverter voltage;dc_component_of_the_inverter_voltage;0.011765;0.000000;;4
+86;3;5501;I16;;DC component of the inverter current;dc_component_of_the_inverter_current;0.011628;0.000000;;4
+87;3;5502;U16;;Busbar voltage;busbar_voltage;0.011494;0.000000;;4
+88;3;5503;I16;;battery up and down voltage inductive current;battery_up_and_downvoltage_inductive_current;0.011364;0.000000;;4
+89;3;5504;I16;;Radiator temperature;radiator_temperature;0.011236;0.000000;;4
+90;3;5505;U16;;AC leakage current;ac_leakage_current;0.011111;0.000000;;4
+91;3;5506;U16;;Insulation resistance;insulation_resistance;0.010989;0.000000;;4
+92;3;6000;I16;;Power factor;power_factor;0.010870;0.000000;;4
+93;3;6001;I16;;Reactive power;reactive_power;0.010753;0.000000;;4
+94;3;6002;U16;;PV output power;pv_output_power;0.010638;0.000000;;4
+95;3;6003;U16;;MPPT perturbation step;mppt_perturbation_step;0.010526;0.000000;;4
+96;3;6006;U16;;Maximum charging current of battery;maximum_charging_current_of_battery;0.010417;0.000000;;4
+97;3;6007;U16;;Maximum discharging current of battery;maximum_discharging_current_of_battery;0.010309;0.000000;;4
+98;3;6008;U16;;Maximum charging power of battery;maximum_charging_power_of_battery;0.010204;0.000000;;4
+99;3;6009;U16;;Maximum discharging power of battery;maximum_discharging_power_of_battery;0.010101;0.000000;;4
+100;3;6010;I16;;Battery charge and discharge power;battery_charge_and_discharge_power;0.010000;0.000000;;4
+101;3;6011;I16;;Grid control power;grid_control_power;0.009901;0.000000;;4
+102;3;6200;U16;;Work mode;work_mode;0.009804;0.000000;;4
+103;3;6201;U16;;Maximum backflow power;maximum_backflow_power;0.009709;0.000000;;4
+104;3;6202;I16;;Active power;P_AC;0.009615;0.000000;;4
+105;3;6203;U16;;Active power slow start rate;active_power_slow_start_rate;0.009524;0.000000;;4
+106;3;6204;U16;;Battery temperature compensation factor;battery_temperature_compensation_factor;0.009434;0.000000;;4
+107;3;6300;U16;;Standard type;standard_type;0.009346;0.000000;;4
+108;3;6302;U16;;;;0.009259;0.000000;;1
+109;3;6308;U16;;;;0.009174;0.000000;;1
+110;3;6309;U16;;;;0.009091;0.000000;;1
+111;3;6310;U16;;;;0.009009;0.000000;;1
+112;3;6311;U16;;;;0.008929;0.000000;;1
+113;3;6312;U16;;;;0.008850;0.000000;;1
+114;3;6313;U16;;;;0.008772;0.000000;;1
+115;3;6314;U16;;;;0.008696;0.000000;;1
+116;3;6315;U16;;;;0.008621;0.000000;;1
+117;3;6316;U16;;;;0.008547;0.000000;;1
+118;3;6317;U16;;;;0.008475;0.000000;;1
+119;3;6318;U16;;;;0.008403;0.000000;;1
+120;3;6319;U16;;;;0.008333;0.000000;;1
+121;3;6320;U16;;;;0.008264;0.000000;;1
+122;3;6321;U16;;;;0.008197;0.000000;;1
+123;3;6400;U16;;;;0.008130;0.000000;;1
+124;3;6403;U16;;;;0.008065;0.000000;;1
+125;3;6405;U16;;;;0.008000;0.000000;;1
+126;3;6408;U16;;;;0.007937;0.000000;;1
+127;3;6410;U16;;;;0.007874;0.000000;;1
+128;3;6411;U16;;;;0.007812;0.000000;;1
+129;3;6412;U16;;;;0.007752;0.000000;;1
+130;3;6414;U16;;;;0.007692;0.000000;;1
+131;3;6416;U16;;;;0.007634;0.000000;;1
+132;3;6418;U16;;;;0.007576;0.000000;;1
+133;3;6420;U16;;;;0.007519;0.000000;;1
+134;3;6421;U16;;;;0.007463;0.000000;;1
+135;3;6426;U16;;;;0.007407;0.000000;;1
+136;3;6437;U16;;;;0.007353;0.000000;;1
+137;3;6446;U16;;;;0.007299;0.000000;;1
+138;3;6447;U16;;;;0.007246;0.000000;;1
+139;3;6448;U16;;;;0.007194;0.000000;;1
+140;3;6449;U16;;;;0.007143;0.000000;;1
+141;3;6450;U16;;;;0.007092;0.000000;;1
+142;3;6451;U16;;;;0.007042;0.000000;;1
+143;3;6452;U16;;;;0.006993;0.000000;;1
+144;3;6459;U16;;;;0.006944;0.000000;;1
+145;3;6472;U16;;;;0.006897;0.000000;;1
+146;3;6480;U16;;;;0.006849;0.000000;;1
+147;3;6487;U16;;;;0.006803;0.000000;;1
+148;3;6490;U16;;;;0.006757;0.000000;;1
+149;3;6492;U16;;;;0.006711;0.000000;;1

@@ -1,0 +1,98 @@
+modbusRTU;Inverter;Huawei;V3
+1;3;30000_30;STRING;;Model Name;MODEL;1.000000;0.000000;;0
+2;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;;0
+3;3;30025_20;STRING;;PN;;1.000000;0.000000;;0
+4;3;30070;U16;;Model ID;;1.000000;0.000000;;0
+5;3;30071;U16;;String Number;;1.000000;0.000000;;0
+6;3;30072;U16;;MPPT Number;;1.000000;0.000000;;0
+7;3;30073;U32;;Rated power (Pn);P_RATED;0.001100;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001000;0.000000;kW;0
+9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001000;0.000000;kVA;0
+10;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);Q_AC;0.001000;0.000000;kVar;0
+11;3;30081;I32;;Maximum reactive power (Qmax, absorbed from the power grid);;0.001000;0.000000;kVar;0
+12;3;32000;U16;;Standalone teleindication;;1.000000;0.000000;;0
+13;3;32002;U16;;Operating status;;1.000000;0.000000;;0
+14;3;32008;U16;;Errors Alarm 1;;1.000000;0.000000;;0
+15;3;32009;U16;;Errors Alarm 2;;1.000000;0.000000;;0
+16;3;32010;U16;;Errors Alarm 3;;1.000000;0.000000;;0
+17;3;32016;I16;;Volt inverter_entry 1;;0.100000;0.000000;V;0
+18;3;32017;I16;;Current inverter_entry 1;;0.010000;0.000000;A;0
+19;3;32018;I16;;Volt inverter_entry 2;;0.100000;0.000000;V;0
+20;3;32019;I16;;Current inverter_entry 2;;0.010000;0.000000;A;0
+21;3;32020;I16;;Volt inverter_entry 3;;0.100000;0.000000;V;0
+22;3;32021;I16;;Current inverter_entry 3;;0.010000;0.000000;A;0
+23;3;32022;I16;;Volt inverter_entry 4;;0.100000;0.000000;V;0
+24;3;32023;I16;;Current inverter_entry 4;;0.010000;0.000000;A;0
+25;3;32024;I16;;Volt inverter_entry 5;;0.100000;0.000000;V;0
+26;3;32025;I16;;Current inverter_entry 5;;0.010000;0.000000;A;0
+27;3;32026;I16;;Volt inverter_entry 6;;0.100000;0.000000;V;0
+28;3;32027;I16;;Current inverter_entry 6;;0.010000;0.000000;A;0
+29;3;32028;I16;;Volt inverter_entry 7;;0.100000;0.000000;V;0
+30;3;32029;I16;;Current inverter_entry 7;;0.010000;0.000000;A;0
+31;3;32030;I16;;Volt inverter_entry 8;;0.100000;0.000000;V;0
+32;3;32031;I16;;Current inverter_entry 8;;0.010000;0.000000;A;0
+33;3;32032;I16;;Volt inverter_entry 9;;0.100000;0.000000;V;0
+34;3;32033;I16;;Current inverter_entry 9;;0.010000;0.000000;A;0
+35;3;32034;I16;;Volt inverter_entry 10;;0.100000;0.000000;V;0
+36;3;32035;I16;;Current inverter_entry 10;;0.010000;0.000000;A;0
+37;3;32036;I16;;Volt inverter_entry 11;;0.100000;0.000000;V;0
+38;3;32037;I16;;Current inverter_entry 11;;0.010000;0.000000;A;0
+39;3;32038;I16;;Volt inverter_entry 12;;0.100000;0.000000;V;0
+40;3;32039;I16;;Current inverter_entry 12;;0.010000;0.000000;A;0
+41;3;32040;I16;;Volt inverter_entry 13;;0.100000;0.000000;V;0
+42;3;32041;I16;;Current inverter_entry 13;;0.010000;0.000000;A;0
+43;3;32042;I16;;Volt inverter_entry 14;;0.100000;0.000000;V;0
+44;3;32043;I16;;Current inverter_entry 14;;0.010000;0.000000;A;0
+45;3;32044;I16;;Volt inverter_entry 15;;0.100000;0.000000;V;0
+46;3;32045;I16;;Current inverter_entry 15;;0.010000;0.000000;A;0
+47;3;32046;I16;;Volt inverter_entry 16;;0.100000;0.000000;V;0
+48;3;32047;I16;;Current inverter_entry 16;;0.010000;0.000000;A;0
+49;3;32048;I16;;Volt inverter_entry 17;;0.100000;0.000000;V;0
+50;3;32049;I16;;Current inverter_entry 17;;0.010000;0.000000;A;0
+51;3;32050;I16;;Volt inverter_entry 18;;0.100000;0.000000;V;0
+52;3;32051;I16;;Current inverter_entry 18;;0.010000;0.000000;A;0
+53;3;32052;I16;;Volt inverter_entry 19;;0.100000;0.000000;V;0
+54;3;32053;I16;;Current inverter_entry 19;;0.010000;0.000000;A;0
+55;3;32054;I16;;Volt inverter_entry 20;;0.100000;0.000000;V;0
+56;3;32055;I16;;Current inverter_entry 20;;0.010000;0.000000;A;0
+57;3;32056;I16;;Volt inverter_entry 21;;0.100000;0.000000;V;0
+58;3;32057;I16;;Current inverter_entry 21;;0.010000;0.000000;A;0
+59;3;32058;I16;;Volt inverter_entry 22;;0.100000;0.000000;V;0
+60;3;32059;I16;;Current inverter_entry 22;;0.010000;0.000000;A;0
+61;3;32060;I16;;Volt inverter_entry 23;;0.100000;0.000000;V;0
+62;3;32061;I16;;Current inverter_entry 23;;0.010000;0.000000;A;0
+63;3;32062;I16;;Volt inverter_entry 24;;0.100000;0.000000;V;0
+64;3;32063;I16;;Current inverter_entry 24;;0.010000;0.000000;A;0
+65;3;32064;I32;;Power IN;;0.001000;0.000000;kW;0
+66;3;32066;U16;;Volt L1 to 2_Uab;;0.100000;0.000000;V;0
+67;3;32067;U16;;Volt L2 to 3_Ubc;;0.100000;0.000000;V;0
+68;3;32068;U16;;Volt L3 to 1_Uca;;0.100000;0.000000;V;0
+69;3;32069;U16;;Volt 1_Ua;;0.100000;0.000000;V;0
+70;3;32070;U16;;Volt 2_Ub;;0.100000;0.000000;V;0
+71;3;32071;U16;;Volt 3_Uc;;0.100000;0.000000;V;0
+72;3;32072;I32;;Current1_Ia;;0.001000;0.000000;A;0
+73;3;32074;I32;;Current2_Ib;;0.001000;0.000000;A;0
+74;3;32076;I32;;Current3_Ic;;0.001000;0.000000;A;0
+75;3;32078;I32;;Active power peak of current day;;0.001000;0.000000;kW;0
+76;3;32080;I32;;Active power;;0.001000;0.000000;kW;4
+77;3;32082;I32;;Reactive_power;;1.000000;0.000000;Var;0
+78;3;32084;I16;;Power factor;PF;0.001000;0.000000;;0
+79;3;32085;U16;;Frequency;FREQ;0.010000;0.000000;Hz;0
+80;3;32086;U16;;Inverter efficiency;;0.010000;0.000000;%;0
+81;3;32087;I16;;Cabinet temperature;TEMP_INT;0.100000;0.000000;°C;0
+82;3;32088;U16;;Insulation resistance;R_ISO;0.001000;0.000000;;0
+83;3;32089;U16;;Device status;;1.000000;0.000000;;0
+84;3;32090;U16;;Fault code;;1.000000;0.000000;;0
+85;3;32091;U32;;Startup time;;1.000000;0.000000;s;0
+86;3;32093;U32;;Shutdown time;;1.000000;0.000000;s;0
+87;3;32106;U32;;Energy_total;WattHours;0.010000;0.000000;kWh;0
+88;3;32114;U32;;Energy yield of current day;E_DAY;0.010000;0.000000;kWh;0
+89;3;32116;U32;;Energy yield of current month;;0.010000;0.000000;kWh;0
+90;3;32118;U32;;Energy yield of current year;;0.010000;0.000000;kWh;0
+91;3;40000;U32;;System Time;;1.000000;0.000000;s;0
+92;3;40120;U16;;Active power derating;;0.100000;0.000000;kW;0
+93;3;40122;I16;;Reactive power compensation (PF);CMD_PF;0.001000;0.000000;;0
+94;3;40123;I16;;Reactive power compensation(Q/S);;0.001000;0.000000;;0
+95;3;40125;U16;;Power_limitation_pct;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
+96;3;40200;U16;;Power On;CMD_ON;1.000000;0.000000;;0
+97;3;40201;U16;;Power Off;CMD_OFF;1.000000;0.000000;;0

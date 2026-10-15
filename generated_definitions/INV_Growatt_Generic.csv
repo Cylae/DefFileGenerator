@@ -376,7 +376,7 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 375;4;32;U16;;PV8 input current;pv8_input_current;0.100000;0.000000;A;4
 376;4;33;U32;;PV8 input power;pv8_input_power;0.100000;0.000000;W;4
 377;4;35;U32;;Outputpower;outputpower;0.100000;0.000000;W;4
-378;4;37;U16;;Gridfrequency;GridFrequency;0.010000;0.000000;Hz;4
+378;4;37;U16;;Gridfrequency;FREQ;0.010000;0.000000;Hz;4
 379;4;38;U16;;Three/single phase grid voltage;threesingle_phase_grid_voltage;0.100000;0.000000;V;4
 380;4;39;U16;;Three/single phase grid output current;threesingle_phase_grid_output_current;0.100000;0.000000;A;4
 381;4;40;U32;;Three/single phase grid output watt VA;threesingle_phase_grid_output_watt_va;0.100000;0.000000;VA;4

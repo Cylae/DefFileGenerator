@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;Hukseflux;SR20-D2_Doc_FR;;;;;;;
+modbusRTU;Sensor;Hukseflux;SR20-D2_Doc_FR;;;;;;;
 1;3;0;U16;;Adresse Modbus du capteur;adresse_modbus_du_capteur;1.000000;0.000000;;4
 2;3;1;U16;;Paramètres de communication série;paramtres_de_communication_srie;1.000000;0.000000;;4
 3;3;2;I32;;Irradiance (compensée en température) [x 0.01 W/m²];irradiance_compense_en_temprature_x_001_wm;1.000000;0.000000;;4
@@ -8,7 +8,7 @@
 7;3;8;I16;;Facteur d'échelle d'irradiance;facteur_dchelle_dirradiance;1.000000;0.000000;;4
 8;3;9;I16;;Facteur d'échelle de température;facteur_dchelle_de_temprature;1.000000;0.000000;;4
 9;3;10;I32;;Tension de sortie du capteur [nV];tension_de_sortie_du_capteur_nv;1.000000;0.000000;;4
-10;3;40;I16;;Numéro de série;DisplaySerialNumber;1.000000;0.000000;;4
+10;3;40;I16;;Numéro de série;SERIAL;1.000000;0.000000;;4
 11;3;41;F32;;Sensibilité du capteur [µV/W/m²];sensibilit_du_capteur_vwm;1.000000;0.000000;;4
 12;3;46;I32;;Date de calibration [AAAAMMJJ];date_de_calibration_aaaammjj;1.000000;0.000000;;4
 13;3;98;I16;;Humidité relative interne [x 0.01 %];humidit_relative_interne_x_001;1.000000;0.000000;;4

@@ -1,0 +1,272 @@
+modbusRTU;Meter;Socomec;SOCOMEC_DIRIS_B10;;;;;;;
+1;3;18432;U16;;Load_1 - Load status (0: Disabled;load_1_load_status_0_disabled;1.000000;0.000000;;4
+2;3;18433;U32;;Load_1 - Date of last instance;load_1_date_of_last_instance;1.000000;0.000000;s;4
+3;3;18435;U16;;Load_1 - Integration time;load_1_integration_time;0.200000;0.000000;s;4
+4;3;18436;U32;;Load_1 - System Ph-N Voltage;load_1_system_phn_voltage;0.010000;0.000000;V;4
+5;3;18438;U32;;Load_1 - System Ph-Ph Voltage;load_1_system_phph_voltage;0.010000;0.000000;V;4
+6;3;18440;U32;;Load_1 - System Current;load_1_system_current;1.000000;0.000000;mA;4
+7;3;18442;U32;;Load_1 - Frequency;FREQ;1.000000;0.000000;mHz;4
+8;3;18444;U32;;Load_1 - Ph-N Voltage : V1;load_1_phn_voltage_v1;0.010000;0.000000;V;4
+9;3;18446;U32;;Load_1 - Ph-N Voltage : V2;load_1_phn_voltage_v2;0.010000;0.000000;V;4
+10;3;18448;U32;;Load_1 - Ph-N Voltage : V3;load_1_phn_voltage_v3;0.010000;0.000000;V;4
+11;3;18450;U32;;Load_1 - Ph-N Voltage : Vn;load_1_phn_voltage_vn;0.010000;0.000000;V;4
+12;3;18452;U32;;Load_1 - Ph-Ph Voltage : U12;load_1_phph_voltage_u12;0.010000;0.000000;V;4
+13;3;18454;U32;;Load_1 - Ph-Ph Voltage : U23;load_1_phph_voltage_u23;0.010000;0.000000;V;4
+14;3;18456;U32;;Load_1 - Ph-Ph Voltage : U31;load_1_phph_voltage_u31;0.010000;0.000000;V;4
+15;3;18458;U32;;Load_1 - Current : I1;load_1_current_i1;1.000000;0.000000;mA;4
+16;3;18460;U32;;Load_1 - Current : I2;load_1_current_i2;1.000000;0.000000;mA;4
+17;3;18462;U32;;Load_1 - Current : I3;load_1_current_i3;1.000000;0.000000;mA;4
+18;3;18464;U32;;Load_1 - Current : In;load_1_current_in;1.000000;0.000000;mA;4
+19;3;18466;U16;;Load_1 - Inba;load_1_inba;0.010000;0.000000;'%;4
+20;3;18467;U32;;Load_1 - Idir;load_1_idir;1.000000;0.000000;mA;4
+21;3;18469;U32;;Load_1 - Iinv;load_1_iinv;1.000000;0.000000;mA;4
+22;3;18471;U32;;Load_1 - Ihom;load_1_ihom;1.000000;0.000000;mA;4
+23;3;18473;U16;;Load_1 - Inb;load_1_inb;0.010000;0.000000;'%;4
+24;3;18474;U32;;Load_1 - Snom;load_1_snom;1.000000;0.000000;VA;4
+25;3;18476;I32;;Load_1 - Total active power;P_AC;1.000000;0.000000;W;4
+26;3;18478;I32;;Load_1 - Total reactive power;load_1_total_reactive_power;1.000000;0.000000;var;4
+27;3;18480;I32;;Load_1 - Total lagging reactive power;load_1_total_lagging_reactive_power;1.000000;0.000000;var;4
+28;3;18482;I32;;Load_1 - Total leading reactive power;load_1_total_leading_reactive_power;1.000000;0.000000;var;4
+29;3;18484;U32;;Load_1 - Total apparent power;load_1_total_apparent_power;1.000000;0.000000;VA;4
+30;3;18486;I16;;Load_1 - Total power factor;PF;0.001000;0.000000;;4
+31;3;18487;U16;;Load_1 - Total Power factor type (0: undefined  1: leading  2: lagging);load_1_total_power_factor_type_0_undefined_1_leading_2_lagging;1.000000;0.000000;;4
+32;3;18488;I32;;Load_1 - Active power : P1;load_1_active_power_p1;1.000000;0.000000;W;4
+33;3;18490;I32;;Load_1 - Active power : P2;load_1_active_power_p2;1.000000;0.000000;W;4
+34;3;18492;I32;;Load_1 - Active power : P3;load_1_active_power_p3;1.000000;0.000000;W;4
+35;3;18494;I32;;Load_1 - Reactive power : Q1;load_1_reactive_power_q1;1.000000;0.000000;var;4
+36;3;18496;I32;;Load_1 - Reactive power : Q2;load_1_reactive_power_q2;1.000000;0.000000;var;4
+37;3;18498;I32;;Load_1 - Reactive power : Q3;load_1_reactive_power_q3;1.000000;0.000000;var;4
+38;3;18500;I32;;Load_1 - Lagging reactive power : Q1_lagg;load_1_lagging_reactive_power_q1_lagg;1.000000;0.000000;var;4
+39;3;18502;I32;;Load_1 - Lagging reactive power : Q2_lagg;load_1_lagging_reactive_power_q2_lagg;1.000000;0.000000;var;4
+40;3;18504;I32;;Load_1 - Lagging reactive power : Q3_lagg;load_1_lagging_reactive_power_q3_lagg;1.000000;0.000000;var;4
+41;3;18506;I32;;Load_1 - Leading reactive power : Q1_lead;load_1_leading_reactive_power_q1_lead;1.000000;0.000000;var;4
+42;3;18508;I32;;Load_1 - Leading reactive power : Q2_lead;load_1_leading_reactive_power_q2_lead;1.000000;0.000000;var;4
+43;3;18510;I32;;Load_1 - Leading reactive power : Q3_lead;load_1_leading_reactive_power_q3_lead;1.000000;0.000000;var;4
+44;3;18512;U32;;Load_1 - Apparent power : S1;load_1_apparent_power_s1;1.000000;0.000000;VA;4
+45;3;18514;U32;;Load_1 - Apparent power : S2;load_1_apparent_power_s2;1.000000;0.000000;VA;4
+46;3;18516;U32;;Load_1 - Apparent power : S3;load_1_apparent_power_s3;1.000000;0.000000;VA;4
+47;3;18518;I16;;Load_1 - Power factor : PF1;load_1_power_factor_pf1;0.001000;0.000000;;4
+48;3;18519;I16;;Load_1 - Power factor : PF2;load_1_power_factor_pf2;0.001000;0.000000;;4
+49;3;18520;I16;;Load_1 - Power factor : PF3;load_1_power_factor_pf3;0.001000;0.000000;;4
+50;3;18521;U16;;Load_1 - Power factor type : sPF1 (0: undefined;load_1_power_factor_type_spf1_0_undefined;1.000000;0.000000;;4
+51;3;18522;U16;;Load_1 - Power factor type : sPF2 (0: undefined;load_1_power_factor_type_spf2_0_undefined;1.000000;0.000000;;4
+52;3;18523;U16;;Load_1 - Power factor type : sPF3 (0: undefined;load_1_power_factor_type_spf3_0_undefined;1.000000;0.000000;;4
+53;3;20480;U16;;Load_2 - Load status (0: Disabled;load_2_load_status_0_disabled;1.000000;0.000000;;4
+54;3;20481;U32;;Load_2 - Date of last instance;load_2_date_of_last_instance;1.000000;0.000000;s;4
+55;3;20483;U16;;Load_2 - Integration time;load_2_integration_time;0.200000;0.000000;s;4
+56;3;20484;U32;;Load_2 - System Ph-N Voltage;load_2_system_phn_voltage;0.010000;0.000000;V;4
+57;3;20486;U32;;Load_2 - System Ph-Ph Voltage;load_2_system_phph_voltage;0.010000;0.000000;V;4
+58;3;20488;U32;;Load_2 - System Current;load_2_system_current;1.000000;0.000000;mA;4
+59;3;20490;U32;;Load_2 - Frequency;load_2_frequency;1.000000;0.000000;mHz;4
+60;3;20492;U32;;Load_2 - Ph-N Voltage : V1;load_2_phn_voltage_v1;0.010000;0.000000;V;4
+61;3;20494;U32;;Load_2 - Ph-N Voltage : V2;load_2_phn_voltage_v2;0.010000;0.000000;V;4
+62;3;20496;U32;;Load_2 - Ph-N Voltage : V3;load_2_phn_voltage_v3;0.010000;0.000000;V;4
+63;3;20498;U32;;Load_2 - Ph-N Voltage : Vn;load_2_phn_voltage_vn;0.010000;0.000000;V;4
+64;3;20500;U32;;Load_2 - Ph-Ph Voltage : U12;load_2_phph_voltage_u12;0.010000;0.000000;V;4
+65;3;20502;U32;;Load_2 - Ph-Ph Voltage : U23;load_2_phph_voltage_u23;0.010000;0.000000;V;4
+66;3;20504;U32;;Load_2 - Ph-Ph Voltage : U31;load_2_phph_voltage_u31;0.010000;0.000000;V;4
+67;3;20506;U32;;Load_2 - Current : I1;load_2_current_i1;1.000000;0.000000;mA;4
+68;3;20508;U32;;Load_2 - Current : I2;load_2_current_i2;1.000000;0.000000;mA;4
+69;3;20510;U32;;Load_2 - Current : I3;load_2_current_i3;1.000000;0.000000;mA;4
+70;3;20512;U32;;Load_2 - Current : In;load_2_current_in;1.000000;0.000000;mA;4
+71;3;20514;U16;;Load_2 - Inba;load_2_inba;0.010000;0.000000;'%;4
+72;3;20515;U32;;Load_2 - Idir;load_2_idir;1.000000;0.000000;mA;4
+73;3;20517;U32;;Load_2 - Iinv;load_2_iinv;1.000000;0.000000;mA;4
+74;3;20519;U32;;Load_2 - Ihom;load_2_ihom;1.000000;0.000000;mA;4
+75;3;20521;U16;;Load_2 - Inb;load_2_inb;0.010000;0.000000;'%;4
+76;3;20522;U32;;Load_2 - Snom;load_2_snom;1.000000;0.000000;VA;4
+77;3;20524;I32;;Load_2 - Total active power;load_2_total_active_power;1.000000;0.000000;W;4
+78;3;20526;I32;;Load_2 - Total reactive power;load_2_total_reactive_power;1.000000;0.000000;var;4
+79;3;20528;I32;;Load_2 - Total lagging reactive power;load_2_total_lagging_reactive_power;1.000000;0.000000;var;4
+80;3;20530;I32;;Load_2 - Total leading reactive power;load_2_total_leading_reactive_power;1.000000;0.000000;var;4
+81;3;20532;U32;;Load_2 - Total apparent power;load_2_total_apparent_power;1.000000;0.000000;VA;4
+82;3;20534;I16;;Load_2 - Total power factor;load_2_total_power_factor;0.001000;0.000000;;4
+83;3;20535;U16;;Load_2 - Total Power factor type (0: undefined;load_2_total_power_factor_type_0_undefined;1.000000;0.000000;;4
+84;3;20536;I32;;Load_2 - Active power : P1;load_2_active_power_p1;1.000000;0.000000;W;4
+85;3;20538;I32;;Load_2 - Active power : P2;load_2_active_power_p2;1.000000;0.000000;W;4
+86;3;20540;I32;;Load_2 - Active power : P3;load_2_active_power_p3;1.000000;0.000000;W;4
+87;3;20542;I32;;Load_2 - Reactive power : Q1;load_2_reactive_power_q1;1.000000;0.000000;var;4
+88;3;20544;I32;;Load_2 - Reactive power : Q2;load_2_reactive_power_q2;1.000000;0.000000;var;4
+89;3;20546;I32;;Load_2 - Reactive power : Q3;load_2_reactive_power_q3;1.000000;0.000000;var;4
+90;3;20548;I32;;Load_2 - Lagging reactive power : Q1_lagg;load_2_lagging_reactive_power_q1_lagg;1.000000;0.000000;var;4
+91;3;20550;I32;;Load_2 - Lagging reactive power : Q2_lagg;load_2_lagging_reactive_power_q2_lagg;1.000000;0.000000;var;4
+92;3;20552;I32;;Load_2 - Lagging reactive power : Q3_lagg;load_2_lagging_reactive_power_q3_lagg;1.000000;0.000000;var;4
+93;3;20554;I32;;Load_2 - Leading reactive power : Q1_lead;load_2_leading_reactive_power_q1_lead;1.000000;0.000000;var;4
+94;3;20556;I32;;Load_2 - Leading reactive power : Q2_lead;load_2_leading_reactive_power_q2_lead;1.000000;0.000000;var;4
+95;3;20558;I32;;Load_2 - Leading reactive power : Q3_lead;load_2_leading_reactive_power_q3_lead;1.000000;0.000000;var;4
+96;3;20560;U32;;Load_2 - Apparent power : S1;load_2_apparent_power_s1;1.000000;0.000000;VA;4
+97;3;20562;U32;;Load_2 - Apparent power : S2;load_2_apparent_power_s2;1.000000;0.000000;VA;4
+98;3;20564;U32;;Load_2 - Apparent power : S3;load_2_apparent_power_s3;1.000000;0.000000;VA;4
+99;3;20566;I16;;Load_2 - Power factor : PF1;load_2_power_factor_pf1;0.001000;0.000000;;4
+100;3;20567;I16;;Load_2 - Power factor : PF2;load_2_power_factor_pf2;0.001000;0.000000;;4
+101;3;20568;I16;;Load_2 - Power factor : PF3;load_2_power_factor_pf3;0.001000;0.000000;;4
+102;3;20569;U16;;Load_2 - Power factor type : sPF1 (0: undefined;load_2_power_factor_type_spf1_0_undefined;1.000000;0.000000;;4
+103;3;20570;U16;;Load_2 - Power factor type : sPF2 (0: undefined;load_2_power_factor_type_spf2_0_undefined;1.000000;0.000000;;4
+104;3;20571;U16;;Load_2 - Power factor type : sPF3 (0: undefined;load_2_power_factor_type_spf3_0_undefined;1.000000;0.000000;;4
+105;3;22528;U16;;Load_3 - Load status (0: Disabled;load_3_load_status_0_disabled;1.000000;0.000000;;4
+106;3;22529;U32;;Load_3 - Date of last instance;load_3_date_of_last_instance;1.000000;0.000000;s;4
+107;3;22531;U16;;Load_3 - Integration time;load_3_integration_time;0.200000;0.000000;s;4
+108;3;22532;U32;;Load_3 - System Ph-N Voltage;load_3_system_phn_voltage;0.010000;0.000000;V;4
+109;3;22534;U32;;Load_3 - System Ph-Ph Voltage;load_3_system_phph_voltage;0.010000;0.000000;V;4
+110;3;22536;U32;;Load_3 - System Current;load_3_system_current;1.000000;0.000000;mA;4
+111;3;22538;U32;;Load_3 - Frequency;load_3_frequency;1.000000;0.000000;mHz;4
+112;3;22540;U32;;Load_3 - Ph-N Voltage : V1;load_3_phn_voltage_v1;0.010000;0.000000;V;4
+113;3;22542;U32;;Load_3 - Ph-N Voltage : V2;load_3_phn_voltage_v2;0.010000;0.000000;V;4
+114;3;22544;U32;;Load_3 - Ph-N Voltage : V3;load_3_phn_voltage_v3;0.010000;0.000000;V;4
+115;3;22546;U32;;Load_3 - Ph-N Voltage : Vn;load_3_phn_voltage_vn;0.010000;0.000000;V;4
+116;3;22548;U32;;Load_3 - Ph-Ph Voltage : U12;load_3_phph_voltage_u12;0.010000;0.000000;V;4
+117;3;22550;U32;;Load_3 - Ph-Ph Voltage : U23;load_3_phph_voltage_u23;0.010000;0.000000;V;4
+118;3;22552;U32;;Load_3 - Ph-Ph Voltage : U31;load_3_phph_voltage_u31;0.010000;0.000000;V;4
+119;3;22554;U32;;Load_3 - Current : I1;load_3_current_i1;1.000000;0.000000;mA;4
+120;3;22556;U32;;Load_3 - Current : I2;load_3_current_i2;1.000000;0.000000;mA;4
+121;3;22558;U32;;Load_3 - Current : I3;load_3_current_i3;1.000000;0.000000;mA;4
+122;3;22560;U32;;Load_3 - Current : In;load_3_current_in;1.000000;0.000000;mA;4
+123;3;22562;U16;;Load_3 - Inba;load_3_inba;0.010000;0.000000;'%;4
+124;3;22563;U32;;Load_3 - Idir;load_3_idir;1.000000;0.000000;mA;4
+125;3;22565;U32;;Load_3 - Iinv;load_3_iinv;1.000000;0.000000;mA;4
+126;3;22567;U32;;Load_3 - Ihom;load_3_ihom;1.000000;0.000000;mA;4
+127;3;22569;U16;;Load_3 - Inb;load_3_inb;0.010000;0.000000;'%;4
+128;3;22570;U32;;Load_3 - Snom;load_3_snom;1.000000;0.000000;VA;4
+129;3;22572;I32;;Load_3 - Total active power;load_3_total_active_power;1.000000;0.000000;W;4
+130;3;22574;I32;;Load_3 - Total reactive power;load_3_total_reactive_power;1.000000;0.000000;var;4
+131;3;22576;I32;;Load_3 - Total lagging reactive power;load_3_total_lagging_reactive_power;1.000000;0.000000;var;4
+132;3;22578;I32;;Load_3 - Total leading reactive power;load_3_total_leading_reactive_power;1.000000;0.000000;var;4
+133;3;22580;U32;;Load_3 - Total apparent power;load_3_total_apparent_power;1.000000;0.000000;VA;4
+134;3;22582;I16;;Load_3 - Total power factor;load_3_total_power_factor;0.001000;0.000000;;4
+135;3;22583;U16;;Load_3 - Total Power factor type (0: undefined;load_3_total_power_factor_type_0_undefined;1.000000;0.000000;;4
+136;3;22584;I32;;Load_3 - Active power : P1;load_3_active_power_p1;1.000000;0.000000;W;4
+137;3;22586;I32;;Load_3 - Active power : P2;load_3_active_power_p2;1.000000;0.000000;W;4
+138;3;22588;I32;;Load_3 - Active power : P3;load_3_active_power_p3;1.000000;0.000000;W;4
+139;3;22590;I32;;Load_3 - Reactive power : Q1;load_3_reactive_power_q1;1.000000;0.000000;var;4
+140;3;22592;I32;;Load_3 - Reactive power : Q2;load_3_reactive_power_q2;1.000000;0.000000;var;4
+141;3;22594;I32;;Load_3 - Reactive power : Q3;load_3_reactive_power_q3;1.000000;0.000000;var;4
+142;3;22596;I32;;Load_3 - Lagging reactive power : Q1_lagg;load_3_lagging_reactive_power_q1_lagg;1.000000;0.000000;var;4
+143;3;22598;I32;;Load_3 - Lagging reactive power : Q2_lagg;load_3_lagging_reactive_power_q2_lagg;1.000000;0.000000;var;4
+144;3;22600;I32;;Load_3 - Lagging reactive power : Q3_lagg;load_3_lagging_reactive_power_q3_lagg;1.000000;0.000000;var;4
+145;3;22602;I32;;Load_3 - Leading reactive power : Q1_lead;load_3_leading_reactive_power_q1_lead;1.000000;0.000000;var;4
+146;3;22604;I32;;Load_3 - Leading reactive power : Q2_lead;load_3_leading_reactive_power_q2_lead;1.000000;0.000000;var;4
+147;3;22606;I32;;Load_3 - Leading reactive power : Q3_lead;load_3_leading_reactive_power_q3_lead;1.000000;0.000000;var;4
+148;3;22608;U32;;Load_3 - Apparent power : S1;load_3_apparent_power_s1;1.000000;0.000000;VA;4
+149;3;22610;U32;;Load_3 - Apparent power : S2;load_3_apparent_power_s2;1.000000;0.000000;VA;4
+150;3;22612;U32;;Load_3 - Apparent power : S3;load_3_apparent_power_s3;1.000000;0.000000;VA;4
+151;3;22614;I16;;Load_3 - Power factor : PF1;load_3_power_factor_pf1;0.001000;0.000000;;4
+152;3;22615;I16;;Load_3 - Power factor : PF2;load_3_power_factor_pf2;0.001000;0.000000;;4
+153;3;22616;I16;;Load_3 - Power factor : PF3;load_3_power_factor_pf3;0.001000;0.000000;;4
+154;3;22617;U16;;Load_3 - Power factor type : sPF1 (0: undefined;load_3_power_factor_type_spf1_0_undefined;1.000000;0.000000;;4
+155;3;22618;U16;;Load_3 - Power factor type : sPF2 (0: undefined;load_3_power_factor_type_spf2_0_undefined;1.000000;0.000000;;4
+156;3;22619;U16;;Load_3 - Power factor type : sPF3 (0: undefined;load_3_power_factor_type_spf3_0_undefined;1.000000;0.000000;;4
+157;3;24576;U16;;Load_4 - Load status (0: Disabled;load_4_load_status_0_disabled;1.000000;0.000000;;4
+158;3;24577;U32;;Load_4 - Date of last instance;load_4_date_of_last_instance;1.000000;0.000000;s;4
+159;3;24579;U16;;Load_4 - Integration time;load_4_integration_time;0.200000;0.000000;s;4
+160;3;24580;U32;;Load_4 - System Ph-N Voltage;load_4_system_phn_voltage;0.010000;0.000000;V;4
+161;3;24582;U32;;Load_4 - System Ph-Ph Voltage;load_4_system_phph_voltage;0.010000;0.000000;V;4
+162;3;24584;U32;;Load_4 - System Current;load_4_system_current;1.000000;0.000000;mA;4
+163;3;24586;U32;;Load_4 - Frequency;load_4_frequency;1.000000;0.000000;mHz;4
+164;3;24588;U32;;Load_4 - Ph-N Voltage : V1;load_4_phn_voltage_v1;0.010000;0.000000;V;4
+165;3;24590;U32;;Load_4 - Ph-N Voltage : V2;load_4_phn_voltage_v2;0.010000;0.000000;V;4
+166;3;24592;U32;;Load_4 - Ph-N Voltage : V3;load_4_phn_voltage_v3;0.010000;0.000000;V;4
+167;3;24594;U32;;Load_4 - Ph-N Voltage : Vn;load_4_phn_voltage_vn;0.010000;0.000000;V;4
+168;3;24596;U32;;Load_4 - Ph-Ph Voltage : U12;load_4_phph_voltage_u12;0.010000;0.000000;V;4
+169;3;24598;U32;;Load_4 - Ph-Ph Voltage : U23;load_4_phph_voltage_u23;0.010000;0.000000;V;4
+170;3;24600;U32;;Load_4 - Ph-Ph Voltage : U31;load_4_phph_voltage_u31;0.010000;0.000000;V;4
+171;3;24602;U32;;Load_4 - Current : I1;load_4_current_i1;1.000000;0.000000;mA;4
+172;3;24604;U32;;Load_4 - Current : I2;load_4_current_i2;1.000000;0.000000;mA;4
+173;3;24606;U32;;Load_4 - Current : I3;load_4_current_i3;1.000000;0.000000;mA;4
+174;3;24608;U32;;Load_4 - Current : In;load_4_current_in;1.000000;0.000000;mA;4
+175;3;24610;U16;;Load_4 - Inba;load_4_inba;0.010000;0.000000;'%;4
+176;3;24611;U32;;Load_4 - Idir;load_4_idir;1.000000;0.000000;mA;4
+177;3;24613;U32;;Load_4 - Iinv;load_4_iinv;1.000000;0.000000;mA;4
+178;3;24615;U32;;Load_4 - Ihom;load_4_ihom;1.000000;0.000000;mA;4
+179;3;24617;U16;;Load_4 - Inb;load_4_inb;0.010000;0.000000;'%;4
+180;3;24618;U32;;Load_4 - Snom;load_4_snom;1.000000;0.000000;VA;4
+181;3;24620;I32;;Load_4 - Total active power;load_4_total_active_power;1.000000;0.000000;W;4
+182;3;24622;I32;;Load_4 - Total reactive power;load_4_total_reactive_power;1.000000;0.000000;var;4
+183;3;24624;I32;;Load_4 - Total lagging reactive power;load_4_total_lagging_reactive_power;1.000000;0.000000;var;4
+184;3;24626;I32;;Load_4 - Total leading reactive power;load_4_total_leading_reactive_power;1.000000;0.000000;var;4
+185;3;24628;U32;;Load_4 - Total apparent power;load_4_total_apparent_power;1.000000;0.000000;VA;4
+186;3;24630;I16;;Load_4 - Total power factor;load_4_total_power_factor;0.001000;0.000000;;4
+187;3;24631;U16;;Load_4 - Total Power factor type (0: undefined;load_4_total_power_factor_type_0_undefined;1.000000;0.000000;;4
+188;3;24632;I32;;Load_4 - Active power : P1;load_4_active_power_p1;1.000000;0.000000;W;4
+189;3;24634;I32;;Load_4 - Active power : P2;load_4_active_power_p2;1.000000;0.000000;W;4
+190;3;24636;I32;;Load_4 - Active power : P3;load_4_active_power_p3;1.000000;0.000000;W;4
+191;3;24638;I32;;Load_4 - Reactive power : Q1;load_4_reactive_power_q1;1.000000;0.000000;var;4
+192;3;24640;I32;;Load_4 - Reactive power : Q2;load_4_reactive_power_q2;1.000000;0.000000;var;4
+193;3;24642;I32;;Load_4 - Reactive power : Q3;load_4_reactive_power_q3;1.000000;0.000000;var;4
+194;3;24644;I32;;Load_4 - Lagging reactive power : Q1_lagg;load_4_lagging_reactive_power_q1_lagg;1.000000;0.000000;var;4
+195;3;24646;I32;;Load_4 - Lagging reactive power : Q2_lagg;load_4_lagging_reactive_power_q2_lagg;1.000000;0.000000;var;4
+196;3;24648;I32;;Load_4 - Lagging reactive power : Q3_lagg;load_4_lagging_reactive_power_q3_lagg;1.000000;0.000000;var;4
+197;3;24650;I32;;Load_4 - Leading reactive power : Q1_lead;load_4_leading_reactive_power_q1_lead;1.000000;0.000000;var;4
+198;3;24652;I32;;Load_4 - Leading reactive power : Q2_lead;load_4_leading_reactive_power_q2_lead;1.000000;0.000000;var;4
+199;3;24654;I32;;Load_4 - Leading reactive power : Q3_lead;load_4_leading_reactive_power_q3_lead;1.000000;0.000000;var;4
+200;3;24656;U32;;Load_4 - Apparent power : S1;load_4_apparent_power_s1;1.000000;0.000000;VA;4
+201;3;24658;U32;;Load_4 - Apparent power : S2;load_4_apparent_power_s2;1.000000;0.000000;VA;4
+202;3;24660;U32;;Load_4 - Apparent power : S3;load_4_apparent_power_s3;1.000000;0.000000;VA;4
+203;3;24662;I16;;Load_4 - Power factor : PF1;load_4_power_factor_pf1;0.001000;0.000000;;4
+204;3;24663;I16;;Load_4 - Power factor : PF2;load_4_power_factor_pf2;0.001000;0.000000;;4
+205;3;24664;I16;;Load_4 - Power factor : PF3;load_4_power_factor_pf3;0.001000;0.000000;;4
+206;3;24665;U16;;Load_4 - Power factor type : sPF1 (0: undefined;load_4_power_factor_type_spf1_0_undefined;1.000000;0.000000;;4
+207;3;24666;U16;;Load_4 - Power factor type : sPF2 (0: undefined;load_4_power_factor_type_spf2_0_undefined;1.000000;0.000000;;4
+208;3;24667;U16;;Load_4 - Power factor type : sPF3 (0: undefined;load_4_power_factor_type_spf3_0_undefined;1.000000;0.000000;;4
+209;3;36864;U32;;Network - Date of last instance;network_date_of_last_instance;1.000000;0.000000;s;4
+210;3;36866;U16;;Network - Integration time;network_integration_time;0.200000;0.000000;s;4
+211;3;36867;U32;;Network - System Ph-N Voltage;network_system_phn_voltage;0.010000;0.000000;V;4
+212;3;36869;U32;;Network - System Ph-Ph Voltage;network_system_phph_voltage;0.010000;0.000000;V;4
+213;3;36871;U32;;Network - Frequency;network_frequency;1.000000;0.000000;mHz;4
+214;3;36873;U32;;Network - Ph-N Voltage : V1;network_phn_voltage_v1;0.010000;0.000000;V;4
+215;3;36875;U32;;Network - Ph-N Voltage : V2;network_phn_voltage_v2;0.010000;0.000000;V;4
+216;3;36877;U32;;Network - Ph-N Voltage : V3;network_phn_voltage_v3;0.010000;0.000000;V;4
+217;3;36879;U32;;Network - Ph-N Voltage : Vn;network_phn_voltage_vn;0.010000;0.000000;V;4
+218;3;36881;U32;;Network - Ph-Ph Voltage : U12;network_phph_voltage_u12;0.010000;0.000000;V;4
+219;3;36883;U32;;Network - Ph-Ph Voltage : U23;network_phph_voltage_u23;0.010000;0.000000;V;4
+220;3;36885;U32;;Network - Ph-Ph Voltage : U31;network_phph_voltage_u31;0.010000;0.000000;V;4
+221;3;36887;U32;;Network - Vdir;network_vdir;0.010000;0.000000;V;4
+222;3;36889;U32;;Network - Vinv;network_vinv;0.010000;0.000000;V;4
+223;3;36891;U32;;Network - Vhom;network_vhom;0.010000;0.000000;V;4
+224;3;36893;U16;;Network - Vnb;network_vnb;0.010000;0.000000;'%;4
+225;3;36894;U32;;Network - Udir;network_udir;0.010000;0.000000;V;4
+226;3;36896;U32;;Network - Uinv;network_uinv;0.010000;0.000000;V;4
+227;3;36898;U16;;Network - Unb;network_unb;0.010000;0.000000;'%;4
+228;3;36899;U16;;Network - Vnba;network_vnba;0.010000;0.000000;'%;4
+229;3;36900;U16;;Network - Unba;network_unba;0.010000;0.000000;'%;4
+230;3;50004;U16;;Identification - Product order ID;identification_product_order_id;1.000000;0.000000;;4
+231;3;50005;U16;;Identification - Product ID;identification_product_id;1.000000;0.000000;;4
+232;3;50006;U16;;Identification - MODBUS Table Version;identification_modbus_table_version;1.000000;0.000000;;4
+233;3;50007;U16;;Identification - Product software version;identification_product_software_version;1.000000;0.000000;;4
+234;3;50008;U16;;Identification - Serial_AA_SS;identification_serial_aa_ss;1.000000;0.000000;;4
+235;3;50009;U16;;Identification - Serial_SST_L;identification_serial_sst_l;1.000000;0.000000;;4
+236;3;50010;U16;;Identification - Serial_order;identification_serial_order;1.000000;0.000000;;4
+237;3;50011;U32;;Identification - Serial_Reserve;identification_serial_reserve;1.000000;0.000000;;4
+238;3;50013;U64;;Identification - Code table details;identification_code_table_details;1.000000;0.000000;;4
+239;3;50017;U16;;Identification - Customization data loaded;identification_customization_data_loaded;1.000000;0.000000;;4
+240;3;50018;U16;;Identification - Product version Major;identification_product_version_major;1.000000;0.000000;;4
+241;3;50019;U16;;Identification - Product version Minor;identification_product_version_minor;1.000000;0.000000;;4
+242;3;50020;U16;;Identification - Product version Revision;identification_product_version_revision;1.000000;0.000000;;4
+243;3;50021;U16;;Identification - Product version Build;identification_product_version_build;1.000000;0.000000;;4
+244;3;50025;U16;;Identification - Software technical base version Major;identification_software_technical_base_version_major;1.000000;0.000000;;4
+245;3;50026;U16;;Identification - Software technical base version Minor;identification_software_technical_base_version_minor;1.000000;0.000000;;4
+246;3;50027;U16;;Identification - Software technical base version Revision;identification_software_technical_base_version_revision;1.000000;0.000000;;4
+247;3;50028;U16;;Identification - Customization version Major;identification_customization_version_major;1.000000;0.000000;;4
+248;3;50029;U16;;Identification - Customization version Minor;identification_customization_version_minor;1.000000;0.000000;;4
+249;3;50066;U16;;Identification - Ressource version Build 2;identification_ressource_version_build_2;1.000000;0.000000;;4
+250;3;50067;U32;;Identification - Net ID;identification_net_id;1.000000;0.000000;;4
+251;3;49936;U16;;Identification - Option module ID on slot 1;identification_option_module_id_on_slot_1;1.000000;0.000000;;4
+252;3;49937;U16;;Identification - Option module ID on slot 2;identification_option_module_id_on_slot_2;1.000000;0.000000;;4
+253;3;49938;U16;;Identification - Option module ID on slot 3;identification_option_module_id_on_slot_3;1.000000;0.000000;;4
+254;3;49939;U16;;Identification - Option module ID on slot 4;identification_option_module_id_on_slot_4;1.000000;0.000000;;4
+255;3;49984;U16;;Identification - RF board connected;identification_rf_board_connected;1.000000;0.000000;;4
+256;3;512;U32;;Maintenance - Total operating hours counter;maintenance_total_operating_hours_counter;1.000000;0.000000;s;4
+257;3;514;U32;;Maintenance - Partial operating hours counter;maintenance_partial_operating_hours_counter;1.000000;0.000000;s;4
+258;3;34912;U16;;Load_curves - Command start record number;load_curves_command_start_record_number;1.000000;0.000000;;4
+259;3;34913;U16;;Load_curves - Command load number;load_curves_command_load_number;1.000000;0.000000;;4
+260;3;34914;U16;;Load_curves - Command power type;load_curves_command_power_type;1.000000;0.000000;;4
+261;3;34928;U16;;Load_curves - Header next record number;load_curves_header_next_record_number;1.000000;0.000000;;4
+262;3;34929;U16;;Load_curves - Header items count;load_curves_header_items_count;1.000000;0.000000;;4
+263;3;34930;U16;;Load_curves - Header item size;load_curves_header_item_size;1.000000;0.000000;;4
+264;3;34931;U16;;Load_curves - Header load number;load_curves_header_load_number;1.000000;0.000000;;4
+265;3;34932;U16;;Load_curves - Header power type;load_curves_header_power_type;1.000000;0.000000;;4
+266;3;34933;U16;;Load_curves - Header integration period duration;load_curves_header_integration_period_duration;1.000000;0.000000;s;4
+267;3;34934;U16;;Load_curves - Header numerator rate;load_curves_header_numerator_rate;1.000000;0.000000;;4
+268;3;34935;U16;;Load_curves - Header denominator rate;load_curves_header_denominator_rate;1.000000;0.000000;;4
+269;3;34936;U32;;Load_curves - Data date;load_curves_data_date;1.000000;0.000000;s;4
+270;3;34938;U16;;Load_curves - Data flags;load_curves_data_flags;1.000000;0.000000;;4
+271;3;34939;U16;;Load_curves - Data point value;load_curves_data_point_value;1.000000;0.000000;min;4

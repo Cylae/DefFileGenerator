@@ -1,0 +1,38 @@
+modbusRTU;Other;Webdyn INDIA;Modbus_k_star_power_reduction;;;;;;;
+1;4;3000;U16;;PV1 input voltage;pv1_input_voltage;1.000000;0.000000;;4
+2;4;3001;U16;;PV2 input voltage;pv2_input_voltage;1.000000;0.000000;;4
+3;4;3002;U16;;PV3 input voltage;pv3_input_voltage;1.000000;0.000000;;4
+4;4;3003;U16;;PV1 input current;pv1_input_current;1.000000;0.000000;;4
+5;4;3004;U16;;PV2 input current;pv2_input_current;1.000000;0.000000;;4
+6;4;3005;U16;;PV3 input current;pv3_input_current;1.000000;0.000000;;4
+7;4;3006;I32;;PV1 input power;pv1_input_power;1.000000;0.000000;;4
+8;4;3008;I32;;PV2 input power;pv2_input_power;1.000000;0.000000;;4
+9;4;3010;I32;;PV3 input power;pv3_input_power;1.000000;0.000000;;4
+10;4;3014;U16;;RS-phase grid voltage;rsphase_grid_voltage;1.000000;0.000000;;4
+11;4;3015;U16;;ST-phase grid voltage;stphase_grid_voltage;1.000000;0.000000;;4
+12;4;3016;U16;;TS-phase grid voltage;tsphase_grid_voltage;1.000000;0.000000;;4
+13;4;3017;U16;;RS-phase grid frequency;rsphase_grid_frequency;1.000000;0.000000;;4
+14;4;3018;U16;;ST-phase grid frequency;stphase_grid_frequency;1.000000;0.000000;;4
+15;4;3019;U16;;TR-phase grid frequency;trphase_grid_frequency;1.000000;0.000000;;4
+16;4;3020;U16;;R-phase grid current;rphase_grid_current;1.000000;0.000000;;4
+17;4;3021;U16;;S-phase grid current;sphase_grid_current;1.000000;0.000000;;4
+18;4;3022;U16;;T-phase grid current;tphase_grid_current;1.000000;0.000000;;4
+19;4;3023;I32;;Grid-tied power;Metercond;1.000000;0.000000;;4
+20;4;3027;U16;;DSP alarm code;dsp_alarm_code;1.000000;0.000000;;4
+21;4;3028;U32;;DSP error code;dsp_error_code;2.000000;0.000000;;4
+22;4;3036;U16;;ARM alarm code;arm_alarm_code;1.000000;0.000000;;8
+23;4;3038;U32;;Total energy yield;E_TOT;1.000000;0.000000;;4
+24;4;3040;U32;;Annual energy yield;annual_energy_yield;1.000000;0.000000;4;0
+25;4;3042;U16;;Daily energy yield;E_DAY;1.000000;0.000000;4;0
+26;4;3043;U16;;power-on voltage;poweron_voltage;1.000000;0.000000;;4
+27;4;3044;U16;;power-on delay;poweron_delay;1.000000;0.000000;;4
+28;4;3045;U16;;Lower grid voltage threshold;lower_grid_voltage_threshold;1.000000;0.000000;;4
+29;4;3046;U16;;Upper grid voltage threshold;upper_grid_voltage_threshold;1.000000;0.000000;;4
+30;4;3047;U16;;Lower grid frequency threshold;lower_grid_frequency_threshold;1.000000;0.000000;;4
+31;4;3048;U16;;Upper grid frequency threshold;upper_grid_frequency_threshold;1.000000;0.000000;;4
+32;4;3049;U16;;Preset power factor;preset_power_factor;1.000000;0.000000;;4
+33;4;3050;U16;;Preset active power;preset_active_power;1.000000;0.000000;;4
+34;4;3052;I32;;Apparent power;apparent_power;1.000000;0.000000;;4
+35;4;3054;I32;;Reactive power;reactive_power;1.000000;0.000000;;4
+36;4;3056;U16;;power factor;PF;1.000000;0.000000;;4
+37;3;4004;U16;;Power Reduction Setpoint;cmd;1.000000;0.000000;'%;4

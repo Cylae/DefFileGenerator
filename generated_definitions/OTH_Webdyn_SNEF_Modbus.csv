@@ -1,0 +1,17 @@
+modbusRTU;Other;Webdyn;SNEF_Modbus;;;;;;;
+1;3;4120;F32;;ActivePower-Phase1;activepowerphase1;1.000000;0.000000;mW;4
+2;3;4122;F32;;ActivePower-Phase2;activepowerphase2;1.000000;0.000000;mW;4
+3;3;4124;F32;;ActivePower-Phase3;activepowerphase3;1.000000;0.000000;mW;4
+4;3;0;I32;;Voltage-Phase1-N;voltagephase1n;1.000000;0.000000;mV;4
+5;3;2;I32;;Voltage-Phase2-N;voltagephase2n;1.000000;0.000000;mV;4
+6;3;4;I32;;Voltage-Phase3-N;voltagephase3n;1.000000;0.000000;mV;4
+7;3;14;I32;;Current-Phase1;currentphase1;1.000000;0.000000;mA;4
+8;3;16;I32;;Current-Phase2;currentphase2;1.000000;0.000000;mA;4
+9;3;18;I32;;Current-Phase3;currentphase3;1.000000;0.000000;mA;4
+10;3;4136;F32;;ReactivePower-Phase1;reactivepowerphase1;1.000000;0.000000;mvar;4
+11;3;4138;F32;;ReactivePower-Phase2;reactivepowerphase2;1.000000;0.000000;mvar;4
+12;3;4140;F32;;ReactivePower-Phase3;reactivepowerphase3;1.000000;0.000000;mvar;4
+13;3;5132;F32;;ActiveEnergy;activeenergy;1.000000;0.000000;mWh;4
+14;3;72;F32;;CosPhi-Phase1;cosphiphase1;0.001000;0.000000;;4
+15;3;74;F32;;CosPhi-Phase2;cosphiphase2;0.001000;0.000000;;4
+16;3;76;F32;;CosPhi-Phase3;cosphiphase3;0.001000;0.000000;;4

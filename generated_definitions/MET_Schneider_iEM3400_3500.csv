@@ -1,0 +1,141 @@
+modbus;Meter;Schneider Electric;iEM3400_3500;;;;;;;
+1;3;30_40;STRING;;Nom de l'appareil;;1;0;;1
+2;3;50_40;STRING;;Modle de l'appareil;;1;0;;1
+3;3;70_40;STRING;;Fabricant;MANUFACTURER;1;0;;1
+4;3;130;U32;;Numro de srie;;1;0;;1
+5;3;132;U64;;Date de fabrication;;1;0;;1
+6;3;136_10;STRING;;Rvision du matriel;;1;0;;1
+7;3;1637;U16;;Version actuelle du logiciel embarqu;;1;0;;1
+8;3;1845;U16;;Date Heure - Anne;;1;0;;1
+9;3;1846;U16;;Date Heure - Mois et Jour;;1;0;;1
+10;3;1847;U16;;Date Heure - Heures et Minutes;;1;0;;1
+11;3;1848;U16;;Date Heure - Millisecondes;;1;0;;1
+12;3;45000;U16;;Etat d'erreur de diagnostic;;1;0;;4
+13;3;2004;U32;;Compteur temporel de fonctionnement;;1;0;seconds;4
+14;3;2014;U16;;Nombre de phases;;1;0;;1
+15;3;2015;U16;;Nombre de fils;;1;0;;1
+16;3;2016;U16;;Rseau lectrique;;1;0;;1
+17;3;2017;U16;;Frquence nominale;;1;0;Hz;1
+18;3;2025;U16;;Nombre de TT;;1;0;;1
+19;3;2026;F32;;Primaire TT;;1;0;V;1
+20;3;2028;U16;;Secondaire TT;;1;0;V;1
+21;3;2029;U16;;Nombre de TC;;1;0;;1
+22;3;2030;U16;;Primaire TC;;1;0;A;1
+23;3;2031;U16;;Secondaire TC;;1;0;A;1
+24;3;2036;U16;;Type de connexion TT;;1;0;;1
+25;3;2129;U16;;Dure des impulsions d'nergie;;1;0;ms;1
+26;3;2131;U16;;Association de sortie logique;;1;0;;1
+27;3;2132;F32;;Poids impulsion;;1;0;impulsions/kWh;1
+28;3;5250;U16;;Commande demande;;1;0;;1
+29;3;5375;U16;;tat de commande;;1;0;;4
+30;3;5376;U16;;Code de rsultat de commande;;1;0;;4
+31;3;6500;U16;;Protocole;;1;0;;1
+32;3;6501;U16;;Adresse Modbus;UNIT_ID;1;0;;1
+33;3;6502;U16;;Vitesse de transmission;;1;0;;1
+34;3;6503;U16;;Parit;;1;0;;1
+35;3;7032_40;STRING;;tiquette mesures d'entre;;1;0;;1
+36;3;7052;F32;;Constante d'impulsion mesures d'entre;;1;0;impulsions/unit;1
+37;3;7055;U16;;Association d'entre logique;;1;0;;1
+38;3;7274;U16;;Mode de commande des entres logiques;;1;0;;1
+39;3;8905;U32;;tat d'entre logique;;1;0;;4
+40;3;9673;U16;;tat du mode de commande des sorties logiques;;1;0;;1
+41;3;3000;F32;;I1 : Courant phase 1;I_AC_1;1;0;A;4
+42;3;3002;F32;;I2 : Courant phase 2;I_AC_2;1;0;A;4
+43;3;3004;F32;;I3 : Courant phase 3;I_AC_3;1;0;A;4
+44;3;3010;F32;;Courant Avg;;1;0;A;4
+45;3;3020;F32;;Tension L1-L2;U_AC_L1L2;1;0;V;4
+46;3;3022;F32;;Tension L2-L3;U_AC_L2L3;1;0;V;4
+47;3;3024;F32;;Tension L3-L1;U_AC_L3L1;1;0;V;4
+48;3;3026;F32;;Tension L-L Avg;;1;0;V;4
+49;3;3028;F32;;Tension L1-N;U_AC_1;1;0;V;4
+50;3;3030;F32;;Tension L2-N;U_AC_2;1;0;V;4
+51;3;3032;F32;;Tension L3-N;U_AC_3;1;0;V;4
+52;3;3036;F32;;Tension L-N Avg;;1;0;V;4
+53;3;3054;F32;;Puissance active phase 1;P_AC_1;1;0;kW;4
+54;3;3056;F32;;Puissance active phase 2;P_AC_2;1;0;kW;4
+55;3;3058;F32;;Puissance active phase 3;P_AC_3;1;0;kW;4
+56;3;3060;F32;;Puissance active totale;P_AC;1;0;kW;4
+57;3;3068;F32;;Puissance ractive totale;;1;0;kVAR;4
+58;3;3076;F32;;Puissance apparente totale;S_AC;1;0;kVA;4
+59;3;3084;F32;;Facteur de puissance total;PF;1;0;;4
+60;3;3110;F32;;Frquence;;1;0;Hz;4
+61;3;3252;U64;;Date heure de rinitialisation d'nergie;;1;0;;1
+62;3;3554;U64;;Date heure de rinitialisation des mesures d'entre;;1;0;;1
+63;3;4191;U16;;Tarif d'nergie actif pour mode multi-tarif;;1;0;;4
+64;3;3204;I64;;nergie active totale - import;;1;0;Wh;4
+65;3;3208;I64;;nergie active totale - export;;1;0;Wh;4
+66;3;3220;I64;;nergie ractive totale - import;;1;0;VARh;4
+67;3;3224;I64;;nergie ractive totale - export;;1;0;VARh;4
+68;3;3256;I64;;nergie active partielle - import;;1;0;Wh;4
+69;3;3272;I64;;nergie ractive partielle - import;;1;0;VARh;4
+70;3;3518;I64;;nergie active phase 1 - import;;1;0;Wh;4
+71;3;3522;I64;;nergie active phase 2 - import;;1;0;Wh;4
+72;3;3526;I64;;nergie active phase 3 - import;;1;0;Wh;4
+73;3;3558;I64;;Accumulation de mesures d'entre;;1;0;;4
+74;3;3701;U16;;Mthode de calcul de la valeur moyenne;;1;0;;1
+75;3;3702;U16;;Dure de l'intervalle de calcul de la valeur moyenne;;1;0;min;1
+76;3;3706;U64;;Date heure de rinitialisation du maximum de valeur moyenne;;1;0;;1
+77;3;3766;F32;;Valeur moyenne de puissance active;;1;0;kW;4
+78;3;3770;F32;;Maximum de valeur moyenne de puissance active;;1;0;kW;4
+79;3;3772;U64;;Date heure du maximum de valeur moyenne de puissance active;;1;0;;1
+80;3;3782;F32;;Valeur moyenne de puissance ractive;;1;0;kVAR;4
+81;3;3786;F32;;Maximum de valeur moyenne de puissance ractive;;1;0;kVAR;4
+82;3;3788;U64;;Date heure du maximum de valeur moyenne de puissance ractive;;1;0;;1
+83;3;3798;F32;;Valeur moyenne de puissance apparente;;1;0;kVA;4
+84;3;3802;F32;;Maximum de valeur moyenne de puissance apparente;;1;0;kVA;4
+85;3;3804;U64;;Date heure du maximum de valeur moyenne de puissance apparente;;1;0;;1
+86;3;3814;F32;;Valeur moyenne de courant I1;;1;0;A;4
+87;3;3818;F32;;Maximum de valeur moyenne de courant I1;;1;0;A;4
+88;3;3820;U64;;Date heure du maximum de valeur moyenne de courant I1;;1;0;;1
+89;3;3830;F32;;Valeur moyenne de courant I2;;1;0;A;4
+90;3;3834;F32;;Maximum de valeur moyenne de courant I2;;1;0;A;4
+91;3;3836;U64;;Date heure du maximum de valeur moyenne de courant I2;;1;0;;1
+92;3;3846;F32;;Valeur moyenne de courant I3;;1;0;A;4
+93;3;3850;F32;;Maximum de valeur moyenne de courant I3;;1;0;A;4
+94;3;3852;U64;;Date heure du maximum de valeur moyenne de courant I3;;1;0;;1
+95;3;3878;F32;;Valeur moyenne de courant moyenne;;1;0;A;4
+96;3;3882;F32;;Maximum de valeur moyenne de courant moyenne;;1;0;A;4
+97;3;3884;U64;;Date heure du maximum de valeur moyenne de courant moyenne;;1;0;;1
+98;3;40201;U16;;Mthode de calcul de la valeur moyenne;;1;0;;1
+99;3;40202;U16;;Dure de l'intervalle de calcul de la valeur moyenne;;1;0;minutes;1
+100;3;40204;U64;;Date heure de rinitialisation du maximum;;1;0;;1
+101;3;40208;F32;;Valeur moyenne de puissance active;;1;0;kW;4
+102;3;40210;F32;;Maximum de valeur moyenne de puissance active;;1;0;kW;4
+103;3;40212;U64;;Date heure du maximum de valeur moyenne de puissance active;;1;0;;1
+104;3;40216;F32;;Valeur moyenne de puissance ractive;;1;0;kVAR;4
+105;3;40218;F32;;Maximum de valeur moyenne de puissance ractive;;1;0;kVAR;4
+106;3;40220;U64;;Date heure du maximum de puissance ractive;;1;0;;1
+107;3;40224;F32;;Valeur moyenne de puissance apparente;;1;0;kVA;4
+108;3;40226;F32;;Maximum de puissance apparente;;1;0;kVA;4
+109;3;40228;U64;;Date heure du maximum de puissance apparente;;1;0;;1
+110;3;40232;F32;;Valeur moyenne de courant I1;;1;0;A;4
+111;3;40234;F32;;Maximum de valeur moyenne de courant I1;;1;0;A;4
+112;3;40236;U64;;Date heure du maximum de courant I1;;1;0;;1
+113;3;40240;F32;;Valeur moyenne de courant I2;;1;0;A;4
+114;3;40242;F32;;Maximum de valeur moyenne de courant I2;;1;0;A;4
+115;3;40244;U64;;Date heure du maximum de courant I2;;1;0;;1
+116;3;40248;F32;;Valeur moyenne de courant I3;;1;0;A;4
+117;3;40250;F32;;Maximum de valeur moyenne de courant I3;;1;0;A;4
+118;3;40252;U64;;Date heure du maximum de courant I3;;1;0;;1
+119;3;40264;F32;;Valeur moyenne de courant moyenne;;1;0;A;4
+120;3;40266;F32;;Maximum de valeur moyenne de courant moyenne;;1;0;A;4
+121;3;40268;U64;;Date heure du maximum de courant moyenn;;1;0;;1
+122;3;45100;F32;;nergie active totale - import;;1;0;kWh;4
+123;3;45102;F32;;nergie active totale - export;;1;0;kWh;4
+124;3;45104;F32;;nergie ractive totale - import;;1;0;kVARh;4
+125;3;45106;F32;;nergie ractive totale - export;;1;0;kVARh;4
+126;3;45108;F32;;nergie active partielle - import;;1;0;kWh;4
+127;3;45110;F32;;nergie ractive partielle - import;;1;0;kVARh;4
+128;3;45112;F32;;nergie active phase 1 - import;;1;0;kWh;4
+129;3;45114;F32;;nergie active phase 2 - import;;1;0;kWh;4
+130;3;45116;F32;;nergie active phase 3 - import;;1;0;kWh;4
+131;3;45118;F32;;Accumulation de mesures d'entre;;1;0;;4
+132;3;45001;U16;;Configuration de l'alarme de surcharge;;1;0;;1
+133;3;45002;F32;;Seuil d'activation alarme de surcharge;;1;0;kW;1
+134;3;45004;U16;;Sortie logique associe à l'alarme;;1;0;;1
+135;3;45005;U16;;tat d'activation de l'alarme;;1;0;;4
+136;3;45006;U16;;tat non acquitt de l'alarme;;1;0;;4
+137;3;45007;U64;;Horodatage de la dernire alarme;;1;0;;4
+138;3;45011;F32;;Valeur de la dernire alarme;;1;0;kW;4
+139;3;57015;F32;;Compensation d'angle;;1;0;rad;1
+140;3;57017;F32;;Compensation de rapport;;1;0;;1

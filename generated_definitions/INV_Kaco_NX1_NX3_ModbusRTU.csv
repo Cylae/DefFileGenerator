@@ -1,10 +1,10 @@
-﻿modbusRTU;Inverter;Kaco;NX1_NX3_ModbusRTU;;;;;;;
+modbusRTU;Inverter;Kaco;NX1_NX3_ModbusRTU;;;;;;;
 1;4;31001_2;STRING;;Device Type: 1=Single phase / 3=Three pahse;device_type_1single_phase_3three_pahse;1.000000;0.000000;;4
 2;4;31002;U16;;Modbus address;modbus_address;1.000000;0.000000;;4
-3;4;31003_32;STRING;;Serial Number;DisplaySerialNumber;1.000000;0.000000;;4
+3;4;31003_32;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
 4;4;31019_16;STRING;;Machine type;machine_type;1.000000;0.000000;;4
 5;4;31027;U16;;Current grid code;current_grid_code;1.000000;0.000000;;4
-6;4;31028;U32;;Rated Power;NominalPower;1.000000;0.000000;W;4
+6;4;31028;U32;;Rated Power;P_RATED;1.000000;0.000000;W;4
 7;4;31030_14;STRING;;Software Version;software_version;1.000000;0.000000;;4
 8;4;31044_14;STRING;;Safety Version;safety_version;1.000000;0.000000;;4
 9;4;31057_16;STRING;;Manufacturer's name;manufacturers_name;1.000000;0.000000;;4
@@ -47,11 +47,11 @@
 46;4;31365;U16;;RS Line voltage;rs_line_voltage;0.100000;0.000000;V;4
 47;4;31366;U16;;RT Line voltage;rt_line_voltage;0.100000;0.000000;V;4
 48;4;31367;U16;;ST Line voltage;st_line_voltage;0.100000;0.000000;V;4
-49;4;31368;U16;;Grid frequency;GridFrequency;0.010000;0.000000;Hz;4
+49;4;31368;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
 50;4;31369;U32;;Apparent power;apparent_power;1.000000;0.000000;VA;4
 51;4;31371;U32;;Active power;Watts;1.000000;0.000000;W;4
 52;4;31373;I32;;Reactive power;reactive_power;1.000000;0.000000;Var;4
-53;4;31375;I16;;Power factor;CosPhi;0.010000;0.000000;;4
+53;4;31375;I16;;Power factor;PF;0.010000;0.000000;;4
 54;4;31378;U16;;Error message;error_message;1.000000;0.000000;;4
 55;4;31379;U16;;Warning message;warning_message;1.000000;0.000000;;4
 56;3;40201;U16;;Remote switch command: 0 = POWER OFF 1 = POWER ON;remote_switch_command_0_power_off_1_power_on;1.000000;0.000000;;4
@@ -117,7 +117,7 @@
 116;3;45255;U16;;DCI protect time;dci_protect_time;1.000000;0.000000;ms;4
 117;3;45401;U16;;Load rate of first connection to grid;load_rate_of_first_connection_to_grid;1.000000;0.000000;'%Pn/min;4
 118;3;45402;U16;;Load rate of re-connection to grid;load_rate_of_reconnection_to_grid;1.000000;0.000000;'%Pn/min;4
-119;3;45403;U16;;Active Power Set;cmdPwrPercent;0.010000;0.000000;'%Pn;4
+119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.010000;0.000000;'%Pn;4
 120;3;45404;U16;;Increase rate of active power;increase_rate_of_active_power;0.010000;0.000000;'%Pn/min;4
 121;3;45405;U16;;Decrease rate of active power;decrease_rate_of_active_power;0.010000;0.000000;'%Pn/min;4
 122;3;45408;U16;;Over frequency reduce power mode;over_frequency_reduce_power_mode;1.000000;0.000000;;4

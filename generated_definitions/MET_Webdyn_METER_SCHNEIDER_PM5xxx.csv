@@ -1,0 +1,876 @@
+modbus;Meter;Schneider Electric;PM5xxx;;;;;;;
+1;3;30_40;STRING;;Meter Name;;1;0;;1
+2;3;50_40;STRING;;Meter Model;MODEL;1;0;;1
+3;3;70_40;STRING;;Manufacturer;MANUFACTURER;1;0;;1
+4;3;90;U16;;Product ID Number;;1;0;;1
+5;3;91;U16;;Hardware Detected Bitmap;;1;0;;1
+6;3;95;U16;;Supported Features Bitmap;;1;0;;1
+7;3;129;U16;;Manufacturing Unit Id;;1;0;;1
+8;3;130;U32;;Serial Number;SERIAL;1;0;;1
+9;3;132;U64;;Date of Manufacture;;1;0;;1
+10;3;136_10;STRING;;Hardware Revision;;1;0;;1
+11;3;161;U16;;Manufacturing Checksum;;1;0;;1
+12;3;1637;U16;;Present OS Version;;1;0;;1
+13;3;1638;U16;;OS Major;;1;0;;1
+14;3;1639;U16;;OS Minor;;1;0;;1
+15;3;1640;U16;;OS Quality;;1;0;;1
+16;3;1641;U16;;OS Internal evolutions;;1;0;;1
+17;3;1642;U16;;Previous OS Version;;1;0;;1
+18;3;1643;U16;;Prev OS Major;;1;0;;1
+19;3;1644;U16;;Prev OS Minor;;1;0;;1
+20;3;1645;U16;;Prev OS Quality;;1;0;;1
+21;3;1646;U16;;Prev OS Internal evolutions;;1;0;;1
+22;3;1647;U64;;Last OS Download DateTime;;1;0;;1
+23;3;1651;U16;;OS Checksum;;1;0;;1
+24;3;1652;U16;;Bridge Code Version;;1;0;;1
+25;3;1701;U16;;Present Language Version;;1;0;;1
+26;3;1702;U16;;Lang Major;;1;0;;1
+27;3;1703;U16;;Lang Minor;;1;0;;1
+28;3;1704;U16;;Lang Quality;;1;0;;1
+29;3;1705;U16;;Lang Internal evolutions;;1;0;;1
+30;3;1706;U16;;Previous Language Version;;1;0;;1
+31;3;1707;U16;;Prev Lang Major;;1;0;;1
+32;3;1708;U16;;Prev Lang Minor;;1;0;;1
+33;3;1709;U16;;Prev Lang Quality;;1;0;;1
+34;3;1710;U16;;Prev Lang Internal evolutions;;1;0;;1
+35;3;1711;U64;;Last Lang Download DateTime;;1;0;;1
+36;3;1715;U16;;Lang Checksum;;1;0;;1
+37;3;1716;U16;;Lang Bridge Code Version;;1;0;;1
+38;3;1821;U16;;OS Download Counter;;1;0;;1
+39;3;1824;U64;;Last Unit Restart DateTime;;1;0;;1
+40;3;1828;U16;;Number of Metering Restarts;;1;0;;1
+41;3;1829;U16;;Number of Control Power Failures;;1;0;;1
+42;3;1830;U64;;Last Control Power Failure DateTime;;1;0;;1
+43;3;1834;U32;;Duration of Last Power Failure;;1;0;seconds;1
+44;3;1836;U16;;Cause of Last Meter Reset;;1;0;;1
+45;3;1837;U16;;Timekeeping Year;;1;0;year;1
+46;3;1838;U16;;Timekeeping Month;;1;0;month;1
+47;3;1839;U16;;Timekeeping Day;;1;0;days;1
+48;3;1840;U16;;Timekeeping Hour;;1;0;hours;1
+49;3;1841;U16;;Timekeeping Minute;;1;0;minutes;1
+50;3;1842;U16;;Timekeeping Second;;1;0;seconds;1
+51;3;1843;U16;;Timekeeping Millisecond;;1;0;msec;1
+52;3;1844;U16;;Day of Week;;1;0;;1
+53;3;1845;U16;;Present Year (4-reg);;1;0;;1
+54;3;1846;U16;;Present Month and Day (4-reg);;1;0;;1
+55;3;1847;U16;;Present Hour and Minute (4-reg);;1;0;;1
+56;3;1848;U16;;Present Milliseconds (4-reg);;1;0;;1
+57;3;1880_8;STRING;;Setup Password;;1;0;;1
+58;3;1884_8;STRING;;Energy Reset Password;;1;0;;1
+59;3;1888_8;STRING;;Demand Reset Password;;1;0;;1
+60;3;1892_8;STRING;;Min/Max Reset Password;;1;0;;1
+61;3;1921;U16;;Revenue Security Status;;1;0;;1
+62;3;2002;U32;;Active Load Timer;;1;0;seconds;1
+63;3;2004;U32;;Meter Operation Timer;;1;0;seconds;1
+64;3;2006;U32;;Cycle Count;;1;0;;1
+65;3;2014;U16;;Number of Phases;;1;0;;1
+66;3;2015;U16;;Number of Wires;;1;0;;1
+67;3;2016;U16;;Power System Configuration;;1;0;;1
+68;3;2017;U16;;Nominal Frequency;FREQ;1;0;Hz;1
+69;3;2018;F32;;Nominal Voltage;;1;0;V;1
+70;3;2020;F32;;Nominal Current;;1;0;A;1
+71;3;2022;F32;;Nominal Power Factor;PF;1;0;;1
+72;3;2024;U16;;Normal Phase Rotation;;1;0;;1
+73;3;2025;U16;;Number of VTs;;1;0;;1
+74;3;2026;F32;;VT Primary;;1;0;V;1
+75;3;2028;U16;;VT Secondary;;1;0;V;1
+76;3;2029;U16;;Number of CTs;;1;0;;1
+77;3;2030;U16;;CT Primary;;1;0;A;1
+78;3;2031;U16;;CT Secondary;;1;0;A;1
+79;3;2032;U16;;CT Primary N;;1;0;A;1
+80;3;2033;U16;;CT Secondary N;;1;0;A;1
+81;3;2034;U16;;CT Location for 1 or 2 CT Metering;;1;0;;1
+82;3;2035;U16;;VT Location for 1 or 2 VT Metering;;1;0;;1
+83;3;2036;U16;;VT Connection Type;;1;0;;1
+84;3;2048;F32;;Peak Current Demand Last Year;;1;0;A;1
+85;3;2050;F32;;Active Load Timer Setpoint;;1;0;A;1
+86;3;2126;U16;;Alarm / Energy LED Mode;;1;0;;1
+87;3;2130;U16;;Energy Pulse Output Channel 01;;1;0;;1
+88;3;2131;U16;;DO Association Channel 01;;1;0;;1
+89;3;2132;U32;;Pulse Weight Channel 01;;1;0;kWh;1
+90;3;2134;U16;;Energy Pulse Output Channel 02;;1;0;;1
+91;3;2135;U16;;DO Association Channel 02;;1;0;;1
+92;3;2136;U32;;Pulse Weight Channel 02;;1;0;kWh;1
+93;3;2138;U16;;Energy Pulse Output Channel 03;;1;0;;1
+94;3;2139;U16;;DO Association Channel 03;;1;0;;1
+95;3;2140;U32;;Pulse Weight Channel 03;;1;0;kWh;1
+96;3;2400;U16;;Digital Input Validity Base Unit;DI1;1;0;;4
+97;3;2401;U16;;Digital Input Status Base Unit;DI2;1;0;;4
+98;3;2402;U16;;Digital Output Status Validity Base Unit;;1;0;;4
+99;3;2403;U16;;Digital Output Status Base Unit;;1;0;;4
+100;3;2420;U16;;Standard 1-sec Group 1 Validity;;1;0;;4
+101;3;2421;U16;;Standard 1-sec Group 1 Bitmap;;1;0;;4
+102;3;2422;U16;;Standard 1-sec Group 2 Validity;;1;0;;4
+103;3;2423;U16;;Standard 1-sec Group 2 Bitmap;;1;0;;4
+104;3;2440;U16;;Unary Validity;;1;0;;4
+105;3;2441;U16;;Unary Alarm Bitmap;;1;0;;4
+106;3;2442;U16;;Digital Group 1 Validity;;1;0;;4
+107;3;2443;U16;;Digital Group 1 Alarm Bitmap;;1;0;;4
+108;3;2700;F32;;Active Energy Delivered;;1;0;kWh;4
+109;3;2702;F32;;Active Energy Received;;1;0;kWh;4
+110;3;2704;F32;;Active Energy Delivered + Received;;1;0;kWh;4
+111;3;2706;F32;;Active Energy Delivered - Received;;1;0;kWh;4
+112;3;2708;F32;;Reactive Energy Delivered;;1;0;kVARh;4
+113;3;2710;F32;;Reactive Energy Received;;1;0;kVARh;4
+114;3;2712;F32;;Reactive Energy Delivered + Received;;1;0;kVARh;4
+115;3;2714;F32;;Reactive Energy Delivered - Received;;1;0;kVARh;4
+116;3;2716;F32;;Apparent Energy Delivered;;1;0;kVAh;4
+117;3;2718;F32;;Apparent Energy Received;;1;0;kVAh;4
+118;3;2720;F32;;Apparent Energy Delivered + Received;;1;0;kVAh;4
+119;3;2722;F32;;Apparent Energy Delivered - Received;;1;0;kVAh;4
+120;3;3000;F32;;Current Phase A;I_AC_1;1;0;A;4
+121;3;3002;F32;;Current Phase B;I_AC_2;1;0;A;4
+122;3;3004;F32;;Current Phase C;I_AC_3;1;0;A;4
+123;3;3006;F32;;Current Neutral;;1;0;A;4
+124;3;3008;F32;;Current Ground;;1;0;A;4
+125;3;3010;F32;;Current Average;;1;0;A;4
+126;3;3012;F32;;Current Unbalance A;;1;0;%;4
+127;3;3014;F32;;Current Unbalance B;;1;0;%;4
+128;3;3016;F32;;Current Unbalance C;;1;0;%;4
+129;3;3018;F32;;Current Unbalance Worst;;1;0;%;4
+130;3;3020;F32;;Voltage Phase A-B;U_AC_L1L2;1;0;V;4
+131;3;3022;F32;;Voltage Phase B-C;U_AC_L2L3;1;0;V;4
+132;3;3024;F32;;Voltage Phase C-A;U_AC_L3L1;1;0;V;4
+133;3;3026;F32;;Voltage L-L Avg;;1;0;V;4
+134;3;3028;F32;;Voltage Phase A-N;U_AC_1;1;0;V;4
+135;3;3030;F32;;Voltage Phase B-N;U_AC_2;1;0;V;4
+136;3;3032;F32;;Voltage Phase C-N;U_AC_3;1;0;V;4
+137;3;3034;F32;;Voltage Neutral to Ground;;1;0;V;4
+138;3;3036;F32;;Voltage L-N Avg;;1;0;V;4
+139;3;3038;F32;;Voltage Unbalance A-B;;1;0;%;1
+140;3;3040;F32;;Voltage Unbalance B-C;;1;0;%;1
+141;3;3042;F32;;Voltage Unbalance C-A;;1;0;%;1
+142;3;3044;F32;;Voltage Unbalance L-L Worst;;1;0;%;1
+143;3;3046;F32;;Voltage Unbalance A-N;;1;0;%;1
+144;3;3048;F32;;Voltage Unbalance B-N;;1;0;%;1
+145;3;3050;F32;;Voltage Unbalance C-N;;1;0;%;1
+146;3;3052;F32;;Voltage Unbalance L-N Worst;;1;0;%;1
+147;3;3054;F32;;Active Power Phase A;P_AC_1;1;0;kW;4
+148;3;3056;F32;;Active Power Phase B;P_AC_2;1;0;kW;4
+149;3;3058;F32;;Active Power Phase C;P_AC_3;1;0;kW;4
+150;3;3060;F32;;Active Power Total;P_AC;1;0;kW;4
+151;3;3062;F32;;Reactive Power Phase A;Q_AC_1;1;0;kVAR;4
+152;3;3064;F32;;Reactive Power Phase B;Q_AC_2;1;0;kVAR;4
+153;3;3066;F32;;Reactive Power Phase C;Q_AC_3;1;0;kVAR;4
+154;3;3068;F32;;Reactive Power Total;Q_AC;1;0;kVAR;4
+155;3;3070;F32;;Apparent Power Phase A;S_AC_1;1;0;kVA;4
+156;3;3072;F32;;Apparent Power Phase B;S_AC_2;1;0;kVA;4
+157;3;3074;F32;;Apparent Power Phase C;S_AC_3;1;0;kVA;4
+158;3;3076;F32;;Apparent Power Total;S_AC;1;0;kVA;4
+159;3;3078;F32;;Power Factor Phase A;PF_1;1;0;;4
+160;3;3080;F32;;Power Factor Phase B;PF_2;1;0;;4
+161;3;3082;F32;;Power Factor Phase C;PF_3;1;0;;4
+162;3;3084;F32;;Power Factor Total;;1;0;;4
+163;3;3086;F32;;Displacement PF Phase A;;1;0;;4
+164;3;3088;F32;;Displacement PF Phase B;;1;0;;4
+165;3;3090;F32;;Displacement PF Phase C;;1;0;;4
+166;3;3092;F32;;Displacement PF Total;;1;0;;4
+167;3;3110;F32;;Frequency;;1;0;Hz;4
+168;3;3192;F32;;Power Factor Total IEC;;1;0;;1
+169;3;3194;F32;;Power Factor Total Lead Lag;;1;0;;1
+170;3;3196;U16;;Power Factor Total IEC (alt);;1;0;;1
+171;3;3197;U16;;Power Factor Total Lead Lag (alt);;1;0;;1
+172;3;3200;U64;;Accumulated Energy Reset DateTime;;1;0;;1
+173;3;3204;I64;;Active Energy Delivered;;1;0;Wh;1
+174;3;3208;I64;;Active Energy Received;;1;0;Wh;1
+175;3;3212;I64;;Active Energy Del + Rec;;1;0;Wh;1
+176;3;3216;I64;;Active Energy Del - Rec;;1;0;Wh;1
+177;3;3220;I64;;Reactive Energy Delivered;;1;0;VARh;1
+178;3;3224;I64;;Reactive Energy Received;;1;0;VARh;1
+179;3;3228;I64;;Reactive Energy Del + Rec;;1;0;VARh;1
+180;3;3232;I64;;Reactive Energy Del - Rec;;1;0;VARh;1
+181;3;3236;I64;;Apparent Energy Delivered;;1;0;VAh;1
+182;3;3240;I64;;Apparent Energy Received;;1;0;VAh;1
+183;3;3244;I64;;Apparent Energy Del + Rec;;1;0;VAh;1
+184;3;3248;I64;;Apparent Energy Del - Rec;;1;0;VAh;1
+185;3;3701;U16;;Power Demand Method;;1;0;;1
+186;3;3702;U16;;Power Demand Interval Duration;;1;0;minutes;1
+187;3;3703;U16;;Power Demand Subinterval Duration;;1;0;minutes;1
+188;3;3704;U16;;Power Demand Elapsed Time in Interval;;1;0;seconds;1
+189;3;3705;U16;;Power Demand Elapsed Time in Subinterval;;1;0;seconds;1
+190;3;3706;U64;;Power Demand Peak Reset DateTime;;1;0;;1
+191;3;3711;U16;;Current Demand Method;;1;0;;1
+192;3;3712;U16;;Current Demand Interval Duration;;1;0;minutes;1
+193;3;3713;U16;;Current Demand Subinterval Duration;;1;0;minutes;1
+194;3;3714;U16;;Current Demand Elapsed Time in Interval;;1;0;seconds;1
+195;3;3715;U16;;Current Demand Elapsed Time in Subinterval;;1;0;seconds;1
+196;3;3716;U64;;Current Demand Peak Reset DateTime;;1;0;;1
+197;3;3761;U16;;Demand Channel 1 System Assignment;;1;0;;1
+198;3;3762;U16;;Dmd Chan 1 Register of Metered Quantity;;1;0;;1
+199;3;3763;U16;;Demand Channel 1 Units Code;;1;0;;1
+200;3;3764;F32;;Dmd Chan 1 Last Demand;;1;0;kW;1
+201;3;3766;F32;;Dmd Chan 1 Present Demand;;1;0;kW;1
+202;3;3768;F32;;Dmd Chan 1 Predicted Demand;;1;0;kW;1
+203;3;3770;F32;;Dmd Chan 1 Peak Demand;;1;0;kW;1
+204;3;3772;U64;;Dmd Chan 1 Peak Demand DateTime;;1;0;;1
+205;3;3777;U16;;Demand Channel 2 System Assignment;;1;0;;1
+206;3;3778;U16;;Dmd Chan 2 Register of Metered Quantity;;1;0;;1
+207;3;3779;U16;;Demand Channel 2 Units Code;;1;0;;1
+208;3;3780;F32;;Dmd Chan 2 Last Demand;;1;0;kVAR;1
+209;3;3782;F32;;Dmd Chan 2 Present Demand;;1;0;kVAR;1
+210;3;3784;F32;;Dmd Chan 2 Predicted Demand;;1;0;kVAR;1
+211;3;3786;F32;;Dmd Chan 2 Peak Demand;;1;0;kVAR;1
+212;3;3788;U64;;Dmd Chan 2 Peak Demand DateTime;;1;0;;1
+213;3;3793;U16;;Demand Channel 3 System Assignment;;1;0;;1
+214;3;3794;U16;;Dmd Chan 3 Register of Metered Quantity;;1;0;;1
+215;3;3795;U16;;Demand Channel 3 Units Code;;1;0;;1
+216;3;3796;F32;;Dmd Chan 3 Last Demand;;1;0;kVA;1
+217;3;3798;F32;;Dmd Chan 3 Present Demand;;1;0;kVA;1
+218;3;3800;F32;;Dmd Chan 3 Predicted Demand;;1;0;kVA;1
+219;3;3802;F32;;Dmd Chan 3 Peak Demand;;1;0;kVA;1
+220;3;3804;U64;;Dmd Chan 3 Peak Demand DateTime;;1;0;;1
+221;3;3873;U16;;Demand Channel 8 System Assignment;;1;0;;1
+222;3;3874;U16;;Dmd Chan 8 Register of Metered Quantity;;1;0;;1
+223;3;3875;U16;;Demand Channel 8 Units Code;;1;0;;1
+224;3;3876;F32;;Dmd Chan 8 Last Demand;;1;0;A;1
+225;3;3878;F32;;Dmd Chan 8 Present Demand;;1;0;A;1
+226;3;3880;F32;;Dmd Chan 8 Predicted Demand;;1;0;A;1
+227;3;3882;F32;;Dmd Chan 8 Peak Demand;;1;0;A;1
+228;3;3884;U64;;Dmd Chan 8 Peak Demand DateTime;;1;0;;1
+229;3;4190;U16;;TOU/MT Mode;;1;0;;1
+230;3;4191;U16;;TOU/MT Energy Active Rate;;1;0;;1
+231;3;4192;U64;;TOU/MT Energy Reset DateTime;;1;0;;1
+232;3;4196;I64;;MT Active Energy Delivered Rate 1;;1;0;Wh;1
+233;3;4200;I64;;MT Active Energy Delivered Rate 2;;1;0;Wh;1
+234;3;4204;I64;;MT Active Energy Delivered Rate 3;;1;0;Wh;1
+235;3;4208;I64;;MT Active Energy Delivered Rate 4;;1;0;Wh;1
+236;3;4228;I64;;MT Active Energy Received Rate 1;;1;0;Wh;1
+237;3;4232;I64;;MT Active Energy Received Rate 2;;1;0;Wh;1
+238;3;4236;I64;;MT Active Energy Received Rate 3;;1;0;Wh;1
+239;3;4240;I64;;MT Active Energy Received Rate 4;;1;0;Wh;1
+240;3;4260;I64;;MT Reactive Energy Delivered Rate 1;;1;0;VARh;1
+241;3;4264;I64;;MT Reactive Energy Delivered Rate 2;;1;0;VARh;1
+242;3;4268;I64;;MT Reactive Energy Delivered Rate 3;;1;0;VARh;1
+243;3;4272;I64;;MT Reactive Energy Delivered Rate 4;;1;0;VARh;1
+244;3;4292;I64;;MT Reactive Energy Received Rate 1;;1;0;VARh;1
+245;3;4296;I64;;MT Reactive Energy Received Rate 2;;1;0;VARh;1
+246;3;4300;I64;;MT Reactive Energy Received Rate 3;;1;0;VARh;1
+247;3;4304;I64;;MT Reactive Energy Received Rate 4;;1;0;VARh;1
+248;3;4324;I64;;MT Apparent Energy Delivered Rate 1;;1;0;VAh;1
+249;3;4328;I64;;MT Apparent Energy Delivered Rate 2;;1;0;VAh;1
+250;3;4332;I64;;MT Apparent Energy Delivered Rate 3;;1;0;VAh;1
+251;3;4336;I64;;MT Apparent Energy Delivered Rate 4;;1;0;VAh;1
+252;3;4356;I64;;MT Apparent Energy Received Rate 1;;1;0;VAh;1
+253;3;4360;I64;;MT Apparent Energy Received Rate 2;;1;0;VAh;1
+254;3;4364;I64;;MT Apparent Energy Received Rate 3;;1;0;VAh;1
+255;3;4368;I64;;MT Apparent Energy Received Rate 4;;1;0;VAh;1
+256;3;4516;U16;;MT Day Type Rate 1;;1;0;;1
+257;3;4517;U16;;MT Start Time Rate 1;;1;0;;1
+258;3;4518;U16;;MT End Time Rate 1;;1;0;;1
+259;3;4519;U16;;MT Start Month Rate 1;;1;0;;1
+260;3;4520;U16;;MT Start Day Rate 1;;1;0;;1
+261;3;4521;U16;;MT End Month Rate 1;;1;0;;1
+262;3;4522;U16;;MT End Day Rate 1;;1;0;;1
+263;3;4523;U16;;MT Day Type Rate 2;;1;0;;1
+264;3;4524;U16;;MT Start Time Rate 2;;1;0;;1
+265;3;4525;U16;;MT End Time Rate 2;;1;0;;1
+266;3;4526;U16;;MT Start Month Rate 2;;1;0;;1
+267;3;4527;U16;;MT Start Day Rate 2;;1;0;;1
+268;3;4528;U16;;MT End Month Rate 2;;1;0;;1
+269;3;4529;U16;;MT End Day Rate 2;;1;0;;1
+270;3;4530;U16;;MT Day Type Rate 3;;1;0;;1
+271;3;4531;U16;;MT Start Time Rate 3;;1;0;;1
+272;3;4532;U16;;MT End Time Rate 3;;1;0;;1
+273;3;4533;U16;;MT Start Month Rate 3;;1;0;;1
+274;3;4534;U16;;MT Start Day Rate 3;;1;0;;1
+275;3;4535;U16;;MT End Month Rate 3;;1;0;;1
+276;3;4536;U16;;MT End Day Rate 3;;1;0;;1
+277;3;4537;U16;;MT Day Type Rate 4;;1;0;;1
+278;3;4538;U16;;MT Start Time Rate 4;;1;0;;1
+279;3;4539;U16;;MT End Time Rate 4;;1;0;;1
+280;3;4540;U16;;MT Start Month Rate 4;;1;0;;1
+281;3;4541;U16;;MT Start Day Rate 4;;1;0;;1
+282;3;4542;U16;;MT End Month Rate 4;;1;0;;1
+283;3;4543;U16;;MT End Day Rate 4;;1;0;;1
+284;3;4800;F32;;MT Active Energy Delivered Rate 1;;1;0;kWh;1
+285;3;4802;F32;;MT Active Energy Delivered Rate 2;;1;0;kWh;1
+286;3;4804;F32;;MT Active Energy Delivered Rate 3;;1;0;kWh;1
+287;3;4806;F32;;MT Active Energy Delivered Rate 4;;1;0;kWh;1
+288;3;4816;F32;;MT Active Energy Received Rate 1;;1;0;kWh;1
+289;3;4818;F32;;MT Active Energy Received Rate 2;;1;0;kWh;1
+290;3;4820;F32;;MT Active Energy Received Rate 3;;1;0;kWh;1
+291;3;4822;F32;;MT Active Energy Received Rate 4;;1;0;kWh;1
+292;3;4832;F32;;MT Reactive Energy Delivered Rate 1;;1;0;kVARh;1
+293;3;4834;F32;;MT Reactive Energy Delivered Rate 2;;1;0;kVARh;1
+294;3;4836;F32;;MT Reactive Energy Delivered Rate 3;;1;0;kVARh;1
+295;3;4838;F32;;MT Reactive Energy Delivered Rate 4;;1;0;kVARh;1
+296;3;4848;F32;;MT Reactive Energy Received Rate 1;;1;0;kVARh;1
+297;3;4850;F32;;MT Reactive Energy Received Rate 2;;1;0;kVARh;1
+298;3;4852;F32;;MT Reactive Energy Received Rate 3;;1;0;kVARh;1
+299;3;4854;F32;;MT Reactive Energy Received Rate 4;;1;0;kVARh;1
+300;3;4864;F32;;MT Apparent Energy Delivered Rate 1;;1;0;kVAh;1
+301;3;4866;F32;;MT Apparent Energy Delivered Rate 2;;1;0;kVAh;1
+302;3;4868;F32;;MT Apparent Energy Delivered Rate 3;;1;0;kVAh;1
+303;3;4870;F32;;MT Apparent Energy Delivered Rate 4;;1;0;kVAh;1
+304;3;4880;F32;;MT Apparent Energy Received Rate 1;;1;0;kVAh;1
+305;3;4882;F32;;MT Apparent Energy Received Rate 2;;1;0;kVAh;1
+306;3;4884;F32;;MT Apparent Energy Received Rate 3;;1;0;kVAh;1
+307;3;4886;F32;;MT Apparent Energy Received Rate 4;;1;0;kVAh;1
+308;3;5000;U16;;Protected Requested Command;;1;0;;1
+309;3;5001;U16;;Protected Command Semaphore;;1;0;;1
+310;3;5002;U16;;Protected Command Parameter 001;;1;0;;1
+311;3;5003;U16;;Protected Command Parameter 002;;1;0;;1
+312;3;5004;U16;;Protected Command Parameter 003;;1;0;;1
+313;3;5005;U16;;Protected Command Parameter 004;;1;0;;1
+314;3;5006;U16;;Protected Command Parameter 005;;1;0;;1
+315;3;5007;U16;;Protected Command Parameter 006;;1;0;;1
+316;3;5008;U16;;Protected Command Parameter 007;;1;0;;1
+317;3;5009;U16;;Protected Command Parameter 008;;1;0;;1
+318;3;5010;U16;;Protected Command Parameter 009;;1;0;;1
+319;3;5011;U16;;Protected Command Parameter 010;;1;0;;1
+320;3;5125;U16;;Protected Command Status;;1;0;;1
+321;3;5126;U16;;Protected Command Result;;1;0;;1
+322;3;5250;U16;;Unprotected Requested Command;;1;0;;1
+323;3;5251;U16;;Unprotected Command Semaphore;;1;0;;1
+324;3;5375;U16;;Unprotected Command Status;;1;0;;1
+325;3;5376;U16;;Unprotected Command Result;;1;0;;1
+326;3;5680;U16;;Command Semaphore;;1;0;;1
+327;3;6000;U16;;HMI Model Present;;1;0;;1
+328;3;6001;U16;;HMI Contrast Setting;;1;0;;1
+329;3;6002;U16;;HMI Brightness Setting;;1;0;;1
+330;3;6003;U16;;HMI Language;;1;0;;1
+331;3;6004;U16;;HMI Date Format;;1;0;;1
+332;3;6005;U16;;HMI Time Format;;1;0;;1
+333;3;6006;U16;;HMI IEC/IEEE Mode;;1;0;;1
+334;3;6007;U16;;HMI Screen Timeout;;1;0;minutes;1
+335;3;6008;U16;;HMI Backlight Timeout;;1;0;minutes;1
+336;3;6079;U16;;HMI Language 01;;1;0;;1
+337;3;6080;U16;;HMI Language 02;;1;0;;1
+338;3;6081;U16;;HMI Language 03;;1;0;;1
+339;3;6082;U16;;HMI Language 04;;1;0;;1
+340;3;6083;U16;;HMI Language 05;;1;0;;1
+341;3;6084;U16;;HMI Language 06;;1;0;;1
+342;3;6085;U16;;HMI Language 07;;1;0;;1
+343;3;6086;U16;;HMI Language 08;;1;0;;1
+344;3;6099;U16;;HMI QR Code Screen Enable;;1;0;;1
+345;3;6500;U16;;RS-485 Comm Port Protocol;;1;0;;1
+346;3;6501;U16;;RS-485 Comm Port Address;;1;0;;1
+347;3;6502;U16;;RS-485 Comm Port Baud Rate;;1;0;;1
+348;3;6503;U16;;RS-485 Comm Port Parity;;1;0;;1
+349;3;7012;U16;;Number of Multi-tariff Rates Active;;1;0;;1
+350;3;7013;U16;;Number of DIs for Multi-tariff;;1;0;;1
+351;3;7020;U16;;Demand System 1 DI Association;;1;0;;1
+352;3;7021;U16;;Demand System 2 DI Association;;1;0;;1
+353;3;7026;U16;;Demand System 1 DO Association;;1;0;;1
+354;3;7027;U16;;Demand System 2 DO Association;;1;0;;1
+355;3;7273;U16;;Digital Input DI1 Type;;1;0;;1
+356;3;7274;U16;;Digital Input DI1 Control Mode;;1;0;;1
+357;3;7275_40;STRING;;Digital Input DI1 Label;;1;0;;1
+358;3;7295;U16;;Digital Input DI1 Debounce Time;;1;0;msec;1
+359;3;7297;U16;;Digital Input DI2 Type;;1;0;;1
+360;3;7298;U16;;Digital Input DI2 Control Mode;;1;0;;1
+361;3;7299_40;STRING;;Digital Input DI2 Label;;1;0;;1
+362;3;7319;U16;;Digital Input DI2 Debounce Time;;1;0;msec;1
+363;3;8905;U32;;Digital Input Status Base Unit_1;;1;0;;1
+364;3;8915;U32;;Digital Input DI1 Pulse Count;;1;0;;1
+365;3;8917;U32;;Digital Input DI1 On Time;;1;0;seconds;1
+366;3;8919;U32;;Digital Input DI2 Pulse Count;;1;0;;1
+367;3;8921;U32;;Digital Input DI2 On Time;;1;0;seconds;1
+368;3;9187;U16;;Digital Output DO1 Type;;1;0;;1
+369;3;9188_40;STRING;;Digital Output DO1 Label;;1;0;;1
+370;3;9208;U16;;Digital Output DO1 Enable;;1;0;;1
+371;3;9209;U16;;Digital Output DO1 Behavioral Mode;;1;0;;1
+372;3;9210;U16;;Digital Output DO1 Timed Mode On Time;;1;0;seconds;1
+373;3;9211;U16;;Digital Output DO2 Type;;1;0;;1
+374;3;9212_40;STRING;;Digital Output DO2 Label;;1;0;;1
+375;3;9232;U16;;Digital Output DO2 Enable;;1;0;;1
+376;3;9233;U16;;Digital Output DO2 Behavioral Mode;;1;0;;1
+377;3;9234;U16;;Digital Output DO2 Timed Mode On Time;;1;0;seconds;1
+378;3;9235;U16;;Digital Output DO3 Type;;1;0;;1
+379;3;9236_40;STRING;;Digital Output DO3 Label;;1;0;;1
+380;3;9256;U16;;Digital Output DO3 Enable;;1;0;;1
+381;3;9257;U16;;Digital Output DO3 Behavioral Mode;;1;0;;1
+382;3;9258;U16;;Digital Output DO3 Timed Mode On Time;;1;0;seconds;1
+383;3;9259;U16;;Digital Output DO4 Type;;1;0;;1
+384;3;9260_40;STRING;;Digital Output DO4 Label;;1;0;;1
+385;3;9280;U16;;Digital Output DO4 Enable;;1;0;;1
+386;3;9281;U16;;Digital Output DO4 Behavioral Mode;;1;0;;1
+387;3;9282;U16;;Digital Output DO4 Timed Mode On Time;;1;0;seconds;1
+388;3;9667;U16;;Digital Output Status Base Unit_1;;1;0;;1
+389;3;9668;U16;;Digital Output Status Validity;;1;0;;1
+390;3;9672;U16;;Digital Output DO1 Operating Mode Status;;1;0;;1
+391;3;9673;U16;;Digital Output DO1 Control Mode Status;;1;0;;1
+392;3;9674;U16;;Digital Output DO1 Behavioral Mode Status;;1;0;;1
+393;3;9675;U32;;Digital Output DO1 Operations Count;;1;0;;1
+394;3;9677;U32;;Digital Output DO1 Cumulative On Time;;1;0;seconds;1
+395;3;9680;U16;;Digital Output DO2 Operating Mode Status;;1;0;;1
+396;3;9681;U16;;Digital Output DO2 Control Mode Status;;1;0;;1
+397;3;9682;U16;;Digital Output DO2 Behavioral Mode Status;;1;0;;1
+398;3;9683;U32;;Digital Output DO2 Operations Count;;1;0;;1
+399;3;9685;U32;;Digital Output DO2 Cumulative On Time;;1;0;seconds;1
+400;3;9688;U16;;Digital Output DO3 Operating Mode Status;;1;0;;1
+401;3;9689;U16;;Digital Output DO3 Control Mode Status;;1;0;;1
+402;3;9690;U16;;Digital Output DO3 Behavioral Mode Status;;1;0;;1
+403;3;9691;U32;;Digital Output DO3 Operations Count;;1;0;;1
+404;3;9693;U32;;Digital Output DO3 Cumulative On Time;;1;0;seconds;1
+405;3;9696;U16;;Digital Output DO4 Operating Mode Status;;1;0;;1
+406;3;9697;U16;;Digital Output DO4 Control Mode Status;;1;0;;1
+407;3;9698;U16;;Digital Output DO4 Behavioral Mode Status;;1;0;;1
+408;3;9699;U32;;Digital Output DO4 Operations Count;;1;0;;1
+409;3;9701;U32;;Digital Output DO4 Cumulative On Time;;1;0;seconds;1
+410;3;11010;U16;;Detected Priority Status Bitmap;;1;0;;1
+411;3;11040;U16;;Standard 1-second 1 Enabled Alarms;;1;0;;1
+412;3;11041;U16;;Standard 1-second 2 Enabled Alarms;;1;0;;1
+413;3;11042;U16;;Standard 1-second 3 Enabled Alarms;;1;0;;1
+414;3;11043;U16;;Custom 1-second Enabled Alarms;;1;0;;1
+415;3;11044;U16;;Standard High Speed 1 Enabled Alarms;;1;0;;1
+416;3;11045;U16;;Standard High Speed 2 Enabled Alarms;;1;0;;1
+417;3;11046;U16;;Custom High Speed Enabled Alarms;;1;0;;1
+418;3;11047;U16;;Disturbance Enabled Alarms;;1;0;;1
+419;3;11048;U16;;Transient Enabled Alarms;;1;0;;1
+420;3;11049;U16;;Waveshape Enabled Alarms;;1;0;;1
+421;3;11050;U16;;Unary Enabled Alarms;;1;0;;1
+422;3;11051;U16;;Digital 1 Enabled Alarms;;1;0;;1
+423;3;11052;U16;;Digital 2 Enabled Alarms;;1;0;;1
+424;3;11053;U16;;Digital 3 Enabled Alarms;;1;0;;1
+425;3;11054;U16;;Digital 4 Enabled Alarms;;1;0;;1
+426;3;11055;U16;;Digital 5 Enabled Alarms;;1;0;;1
+427;3;11056;U16;;Binary Enabled Alarms;;1;0;;1
+428;3;11057;U16;;Time of Day Enabled Alarms;;1;0;;1
+429;3;11058;U16;;Logic Enabled Alarms;;1;0;;1
+430;3;11059;U16;;Standard 1-second Group 1 Detected Alarms;;1;0;;1
+431;3;11060;U16;;Standard 1-second Group 2 Detected Alarms;;1;0;;1
+432;3;11061;U16;;Standard 1-second Group 3 Detected Alarms;;1;0;;1
+433;3;11062;U16;;Custom 1-second Detected Alarms;;1;0;;1
+434;3;11063;U16;;Standard High Speed Group 1 Detected Alarms;;1;0;;1
+435;3;11064;U16;;Standard High Speed Group 2 Detected Alarms;;1;0;;1
+436;3;11065;U16;;Custom High Speed Detected Alarms;;1;0;;1
+437;3;11066;U16;;Disturbance Detected Alarms;;1;0;;1
+438;3;11067;U16;;Transient Detected Alarms;;1;0;;1
+439;3;11068;U16;;Waveshape Detected Alarms;;1;0;;1
+440;3;11069;U16;;Unary Detected Alarms;;1;0;;1
+441;3;11070;U16;;Digital Group 1 Detected Alarms;;1;0;;1
+442;3;11071;U16;;Digital Group 2 Detected Alarms;;1;0;;1
+443;3;11072;U16;;Digital Group 3 Detected Alarms;;1;0;;1
+444;3;11073;U16;;Digital Group 4 Detected Alarms;;1;0;;1
+445;3;11074;U16;;Digital Group 5 Detected Alarms;;1;0;;1
+446;3;11075;U16;;Binary Detected Alarms;;1;0;;1
+447;3;11076;U16;;Time of Day Detected Alarms;;1;0;;1
+448;3;11077;U16;;Logic Detected Alarms;;1;0;;1
+449;3;11078;U16;;Standard 1-second 1 Unacknowledged Alarms;;1;0;;1
+450;3;11079;U16;;Standard 1-second 2 Unacknowledged Alarms;;1;0;;1
+451;3;11080;U16;;Standard 1-second 3 Unacknowledged Alarms;;1;0;;1
+452;3;11081;U16;;Custom 1-second Unacknowledged Alarms;;1;0;;1
+453;3;11082;U16;;Standard High Speed 1 Unacknowledged Alarms;;1;0;;1
+454;3;11083;U16;;Standard High Speed 2 Unacknowledged Alarms;;1;0;;1
+455;3;11084;U16;;Custom High Speed Unacknowledged Alarms;;1;0;;1
+456;3;11085;U16;;Disturbance Unacknowledged Alarms;;1;0;;1
+457;3;11086;U16;;Transient Unacknowledged Alarms;;1;0;;1
+458;3;11087;U16;;Waveshape Unacknowledged Alarms;;1;0;;1
+459;3;11088;U16;;Unary Unacknowledged Alarms;;1;0;;1
+460;3;11089;U16;;Digital 1 Unacknowledged Alarms;;1;0;;1
+461;3;11090;U16;;Digital 2 Unacknowledged Alarms;;1;0;;1
+462;3;11091;U16;;Digital 3 Unacknowledged Alarms;;1;0;;1
+463;3;11092;U16;;Digital 4 Unacknowledged Alarms;;1;0;;1
+464;3;11093;U16;;Digital 5 Unacknowledged Alarms;;1;0;;1
+465;3;11094;U16;;Binary Unacknowledged Alarms;;1;0;;1
+466;3;11095;U16;;Time of Day Unacknowledged Alarms;;1;0;;1
+467;3;11096;U16;;Logic Unacknowledged Alarms;;1;0;;1
+468;3;11111;U16;;Version of Event Queue;WIND_SPEED;1;0;;1
+469;3;11112;U16;;Event Types to Log;;1;0;;1
+470;3;11113;U16;;Size of Event Queue;;1;0;;1
+471;3;11114;U16;;Number of Entries in Event Queue;;1;0;;1
+472;3;11115;U16;;Entry Number of Most Recent Event;;1;0;;1
+473;3;12316;U16;;Size of History Log;;1;0;;1
+474;3;12317;U16;;Number of Entries in History Log;;1;0;;1
+475;3;12318;U16;;Entry Number of Most Recent History Event;;1;0;;1
+476;3;13519;U16;;Total Alarm Counter Summary;;1;0;;1
+477;3;13520;U16;;Low Priority Alarm Counter;;1;0;;1
+478;3;13521;U16;;Medium Priority Alarm Counter;;1;0;;1
+479;3;13522;U16;;High Priority Alarm Counter;;1;0;;1
+480;3;13523;U16;;Over Current Phase Alarm Counter;;1;0;;1
+481;3;13524;U16;;Under Current Phase Alarm Counter;;1;0;;1
+482;3;13525;U16;;Over Current Neutral Alarm Counter;;1;0;;1
+483;3;13526;U16;;Over Current Ground Alarm Counter;;1;0;;1
+484;3;13527;U16;;Over Voltage L-L Alarm Counter;;1;0;;1
+485;3;13528;U16;;Under Voltage L-L Alarm Counter;;1;0;;1
+486;3;13529;U16;;Over Voltage L-N Alarm Counter;;1;0;;1
+487;3;13530;U16;;Under Voltage L-N Alarm Counter;;1;0;;1
+488;3;13531;U16;;Over Power Active Alarm Counter;;1;0;;1
+489;3;13532;U16;;Over Power Reactive Alarm Counter;;1;0;;1
+490;3;13533;U16;;Over Power Apparent Alarm Counter;;1;0;;1
+491;3;13534;U16;;Lead Power Factor True Alarm Counter;;1;0;;1
+492;3;13535;U16;;Lag Power Factor True Alarm Counter;;1;0;;1
+493;3;13536;U16;;Lead PF Displacement Alarm Counter;;1;0;;1
+494;3;13537;U16;;Lag PF Displacement Alarm Counter;;1;0;;1
+495;3;13538;U16;;Over Demand Active Power Pres Alarm Counter;;1;0;;1
+496;3;13539;U16;;Over Demand Active Power Last Alarm Counter;;1;0;;1
+497;3;13540;U16;;Over Demand Active Power Pred Alarm Counter;;1;0;;1
+498;3;13541;U16;;Over Demand Reactive Power Pres Alarm Counter;;1;0;;1
+499;3;13542;U16;;Over Demand Reactive Power Last Alarm Counter;;1;0;;1
+500;3;13543;U16;;Over Demand Reactive Power Pred Alarm Counter;;1;0;;1
+501;3;13544;U16;;Over Demand Apparent Power Pres Alarm Counter;;1;0;;1
+502;3;13545;U16;;Over Demand Apparent Power Last Alarm Counter;;1;0;;1
+503;3;13546;U16;;Over Demand Apparent Power Pred Alarm Counter;;1;0;;1
+504;3;13547;U16;;Over Frequency Alarm Counter;;1;0;;1
+505;3;13548;U16;;Under Frequency Alarm Counter;;1;0;;1
+506;3;13549;U16;;Over Voltage Unbalance Alarm Counter;;1;0;;1
+507;3;13550;U16;;Over Voltage THD Alarm Counter;;1;0;;1
+508;3;13551;U16;;Phase Loss Alarm Counter;;1;0;;1
+509;3;13623;U16;;Meter Powerup Alarm Counter;;1;0;;1
+510;3;13624;U16;;Meter Reset Alarm Counter;;1;0;;1
+511;3;13625;U16;;Meter Diagnostic Alarm Counter;;1;0;;1
+512;3;13626;U16;;Phase Reversal Alarm Counter;;1;0;;1
+513;3;13633;U16;;Digital Alarm DI1 Counter;;1;0;;1
+514;3;13634;U16;;Digital Alarm DI2 Counter;;1;0;;1
+515;3;14005;F32;;Over Current Phase Pickup Setpoint;;1;0;A;1
+516;3;14007;U32;;Over Current Phase Pickup Time Delay;;1;0;seconds;1
+517;3;14009;F32;;Over Current Phase Dropout Setpoint;;1;0;A;1
+518;3;14011;U32;;Over Current Phase Dropout Time Delay;;1;0;seconds;1
+519;3;14013;U16;;Over Current Phase Associated DOs;;1;0;;1
+520;3;14025;F32;;Under Current Phase Pickup Setpoint;;1;0;A;1
+521;3;14027;U32;;Under Current Phase Pickup Time Delay;;1;0;seconds;1
+522;3;14029;F32;;Under Current Phase Dropout Setpoint;;1;0;A;1
+523;3;14031;U32;;Under Current Phase Dropout Time Delay;;1;0;seconds;1
+524;3;14033;U16;;Under Current Phase Associated DOs;;1;0;;1
+525;3;14045;F32;;Over Current Neutral Pickup Setpoint;;1;0;A;1
+526;3;14047;U32;;Over Current Neutral Pickup Time Delay;;1;0;seconds;1
+527;3;14049;F32;;Over Current Neutral Dropout Setpoint;;1;0;A;1
+528;3;14051;U32;;Over Current Neutral Dropout Time Delay;;1;0;seconds;1
+529;3;14053;U16;;Over Current Neutral Associated DOs;;1;0;;1
+530;3;14065;F32;;Over Current Ground Pickup Setpoint;;1;0;A;1
+531;3;14067;U32;;Over Current Ground Pickup Time Delay;;1;0;seconds;1
+532;3;14069;F32;;Over Current Ground Dropout Setpoint;;1;0;A;1
+533;3;14071;U32;;Over Current Ground Dropout Time Delay;;1;0;seconds;1
+534;3;14073;U16;;Over Current Ground Associated DOs;;1;0;;1
+535;3;14085;F32;;Over Voltage L-L Pickup Setpoint;;1;0;V;1
+536;3;14087;U32;;Over Voltage L-L Pickup Time Delay;;1;0;seconds;1
+537;3;14089;F32;;Over Voltage L-L Dropout Setpoint;;1;0;V;1
+538;3;14091;U32;;Over Voltage L-L Dropout Time Delay;;1;0;seconds;1
+539;3;14093;U16;;Over Voltage L-L Associated DOs;;1;0;;1
+540;3;14105;F32;;Under Voltage L-L Pickup Setpoint;;1;0;V;1
+541;3;14107;U32;;Under Voltage L-L Pickup Time Delay;;1;0;seconds;1
+542;3;14109;F32;;Under Voltage L-L Dropout Setpoint;;1;0;V;1
+543;3;14111;U32;;Under Voltage L-L Dropout Time Delay;;1;0;seconds;1
+544;3;14113;U16;;Under Voltage L-L Associated DOs;;1;0;;1
+545;3;14125;F32;;Over Voltage L-N Pickup Setpoint;;1;0;V;1
+546;3;14127;U32;;Over Voltage L-N Pickup Time Delay;;1;0;seconds;1
+547;3;14129;F32;;Over Voltage L-N Dropout Setpoint;;1;0;V;1
+548;3;14131;U32;;Over Voltage L-N Dropout Time Delay;;1;0;seconds;1
+549;3;14133;U16;;Over Voltage L-N Associated DOs;;1;0;;1
+550;3;14145;F32;;Under Voltage L-N Pickup Setpoint;;1;0;V;1
+551;3;14147;U32;;Under Voltage L-N Pickup Time Delay;;1;0;seconds;1
+552;3;14149;F32;;Under Voltage L-N Dropout Setpoint;;1;0;V;1
+553;3;14151;U32;;Under Voltage L-N Dropout Time Delay;;1;0;seconds;1
+554;3;14153;U16;;Under Voltage L-N Associated DOs;;1;0;;1
+555;3;14165;F32;;Over Power Active Pickup Setpoint;;1;0;kW;1
+556;3;14167;U32;;Over Power Active Pickup Time Delay;;1;0;seconds;1
+557;3;14169;F32;;Over Power Active Dropout Setpoint;;1;0;kW;1
+558;3;14171;U32;;Over Power Active Dropout Time Delay;;1;0;seconds;1
+559;3;14173;U16;;Over Power Active Associated DOs;;1;0;;1
+560;3;14185;F32;;Over Power Reactive Pickup Setpoint;;1;0;kVAR;1
+561;3;14187;U32;;Over Power Reactive Pickup Time Delay;;1;0;seconds;1
+562;3;14189;F32;;Over Power Reactive Dropout Setpoint;;1;0;kVAR;1
+563;3;14191;U32;;Over Power Reactive Dropout Time Delay;;1;0;seconds;1
+564;3;14193;U16;;Over Power Reactive Associated DOs;;1;0;;1
+565;3;14205;F32;;Over Power Apparent Pickup Setpoint;;1;0;kVA;1
+566;3;14207;U32;;Over Power Apparent Pickup Time Delay;;1;0;seconds;1
+567;3;14209;F32;;Over Power Apparent Dropout Setpoint;;1;0;kVA;1
+568;3;14211;U32;;Over Power Apparent Dropout Time Delay;;1;0;seconds;1
+569;3;14213;U16;;Over Power Apparent Associated DOs;;1;0;;1
+570;3;14225;F32;;Leading PF True Pickup Setpoint;;1;0;;1
+571;3;14227;U32;;Leading PF True Pickup Time Delay;;1;0;seconds;1
+572;3;14229;F32;;Leading PF True Dropout Setpoint;;1;0;;1
+573;3;14231;U32;;Leading PF True Dropout Time Delay;;1;0;seconds;1
+574;3;14233;U16;;Leading PF True Associated DOs;;1;0;;1
+575;3;14245;F32;;Lagging PF True Pickup Setpoint;;1;0;;1
+576;3;14247;U32;;Lagging PF True Pickup Time Delay;;1;0;seconds;1
+577;3;14249;F32;;Lagging PF True Dropout Setpoint;;1;0;;1
+578;3;14251;U32;;Lagging PF True Dropout Time Delay;;1;0;seconds;1
+579;3;14253;U16;;Lagging PF True Associated DOs;;1;0;;1
+580;3;14265;F32;;Leading PF Disp Pickup Setpoint;;1;0;;1
+581;3;14267;U32;;Leading PF Disp Pickup Time Delay;;1;0;seconds;1
+582;3;14269;F32;;Leading PF Disp Dropout Setpoint;;1;0;;1
+583;3;14271;U32;;Leading PF Disp Dropout Time Delay;;1;0;seconds;1
+584;3;14273;U16;;Leading PF Disp Associated DOs;;1;0;;1
+585;3;14285;F32;;Lagging PF Disp Pickup Setpoint;;1;0;;1
+586;3;14287;U32;;Lagging PF Disp Pickup Time Delay;;1;0;seconds;1
+587;3;14289;F32;;Lagging PF Disp Dropout Setpoint;;1;0;;1
+588;3;14291;U32;;Lagging PF Disp Dropout Time Delay;;1;0;seconds;1
+589;3;14293;U16;;Lagging PF Disp Associated DOs;;1;0;;1
+590;3;14305;F32;;Over Dmd Active Power Pres Pickup Setpoint;;1;0;kW;1
+591;3;14307;U32;;Over Dmd Active Power Pres Pickup Delay;;1;0;seconds;1
+592;3;14309;F32;;Over Dmd Active Power Pres Dropout Setpoint;;1;0;kW;1
+593;3;14311;U32;;Over Dmd Active Power Pres Dropout Delay;;1;0;seconds;1
+594;3;14313;U16;;Over Dmd Active Power Pres Associated DOs;;1;0;;1
+595;3;14325;F32;;Over Dmd Active Power Last Pickup Setpoint;;1;0;kW;1
+596;3;14327;U32;;Over Dmd Active Power Last Pickup Delay;;1;0;seconds;1
+597;3;14329;F32;;Over Dmd Active Power Last Dropout Setpoint;;1;0;kW;1
+598;3;14331;U32;;Over Dmd Active Power Last Dropout Delay;;1;0;seconds;1
+599;3;14333;U16;;Over Dmd Active Power Last Associated DOs;;1;0;;1
+600;3;14345;F32;;Over Dmd Active Power Pred Pickup Setpoint;;1;0;kW;1
+601;3;14347;U32;;Over Dmd Active Power Pred Pickup Delay;;1;0;seconds;1
+602;3;14349;F32;;Over Dmd Active Power Pred Dropout Setpoint;;1;0;kW;1
+603;3;14351;U32;;Over Dmd Active Power Pred Dropout Delay;;1;0;seconds;1
+604;3;14353;U16;;Over Dmd Active Power Pred Associated DOs;;1;0;;1
+605;3;14365;F32;;Over Dmd Reactive Power Pres Pickup Setpoint;;1;0;kVAR;1
+606;3;14367;U32;;Over Dmd Reactive Power Pres Pickup Delay;;1;0;seconds;1
+607;3;14369;F32;;Over Dmd Reactive Power Pres Dropout Setpoint;;1;0;kVAR;1
+608;3;14371;U32;;Over Dmd Reactive Power Pres Dropout Delay;;1;0;seconds;1
+609;3;14373;U16;;Over Dmd Reactive Power Pres Associated DOs;;1;0;;1
+610;3;14385;F32;;Over Dmd Reactive Power Last Pickup Setpoint;;1;0;kVAR;1
+611;3;14387;U32;;Over Dmd Reactive Power Last Pickup Delay;;1;0;seconds;1
+612;3;14389;F32;;Over Dmd Reactive Power Last Dropout Setpoint;;1;0;kVAR;1
+613;3;14391;U32;;Over Dmd Reactive Power Last Dropout Delay;;1;0;seconds;1
+614;3;14393;U16;;Over Dmd Reactive Power Last Associated DOs;;1;0;;1
+615;3;14405;F32;;Over Dmd Reactive Power Pred Pickup Setpoint;;1;0;kVAR;1
+616;3;14407;U32;;Over Dmd Reactive Power Pred Pickup Delay;;1;0;seconds;1
+617;3;14409;F32;;Over Dmd Reactive Power Pred Dropout Setpoint;;1;0;kVAR;1
+618;3;14411;U32;;Over Dmd Reactive Power Pred Dropout Delay;;1;0;seconds;1
+619;3;14413;U16;;Over Dmd Reactive Power Pred Associated DOs;;1;0;;1
+620;3;14425;F32;;Over Dmd Apparent Power Pres Pickup Setpoint;;1;0;kVA;1
+621;3;14427;U32;;Over Dmd Apparent Power Pres Pickup Delay;;1;0;seconds;1
+622;3;14429;F32;;Over Dmd Apparent Power Pres Dropout Setpoint;;1;0;kVA;1
+623;3;14431;U32;;Over Dmd Apparent Power Pres Dropout Delay;;1;0;seconds;1
+624;3;14433;U16;;Over Dmd Apparent Power Pres Associated DOs;;1;0;;1
+625;3;14445;F32;;Over Dmd Apparent Power Last Pickup Setpoint;;1;0;kVA;1
+626;3;14447;U32;;Over Dmd Apparent Power Last Pickup Delay;;1;0;seconds;1
+627;3;14449;F32;;Over Dmd Apparent Power Last Dropout Setpoint;;1;0;kVA;1
+628;3;14451;U32;;Over Dmd Apparent Power Last Dropout Delay;;1;0;seconds;1
+629;3;14453;U16;;Over Dmd Apparent Power Last Associated DOs;;1;0;;1
+630;3;14465;F32;;Over Dmd Apparent Power Pred Pickup Setpoint;;1;0;kVA;1
+631;3;14467;U32;;Over Dmd Apparent Power Pred Pickup Delay;;1;0;seconds;1
+632;3;14469;F32;;Over Dmd Apparent Power Pred Dropout Setpoint;;1;0;kVA;1
+633;3;14471;U32;;Over Dmd Apparent Power Pred Dropout Delay;;1;0;seconds;1
+634;3;14473;U16;;Over Dmd Apparent Power Pred Associated DOs;;1;0;;1
+635;3;14485;F32;;Over Frequency Pickup Setpoint;;1;0;Hz;1
+636;3;14487;U32;;Over Frequency Pickup Time Delay;;1;0;seconds;1
+637;3;14489;F32;;Over Frequency Dropout Setpoint;;1;0;Hz;1
+638;3;14491;U32;;Over Frequency Dropout Time Delay;;1;0;seconds;1
+639;3;14493;U16;;Over Frequency Associated DOs;;1;0;;1
+640;3;14505;F32;;Under Frequency Pickup Setpoint;;1;0;Hz;1
+641;3;14507;U32;;Under Frequency Pickup Time Delay;;1;0;seconds;1
+642;3;14509;F32;;Under Frequency Dropout Setpoint;;1;0;Hz;1
+643;3;14511;U32;;Under Frequency Dropout Time Delay;;1;0;seconds;1
+644;3;14513;U16;;Under Frequency Associated DOs;;1;0;;1
+645;3;14525;F32;;Over Voltage Unbalance Pickup Setpoint;;1;0;%;1
+646;3;14527;U32;;Over Voltage Unbalance Pickup Delay;;1;0;seconds;1
+647;3;14529;F32;;Over Voltage Unbalance Dropout Setpoint;;1;0;%;1
+648;3;14531;U32;;Over Voltage Unbalance Dropout Delay;;1;0;seconds;1
+649;3;14533;U16;;Over Voltage Unbalance Associated DOs;;1;0;;1
+650;3;14545;F32;;Over Voltage THD Pickup Setpoint;;1;0;%;1
+651;3;14547;U32;;Over Voltage THD Pickup Time Delay;;1;0;seconds;1
+652;3;14549;F32;;Over Voltage THD Dropout Setpoint;;1;0;%;1
+653;3;14551;U32;;Over Voltage THD Dropout Time Delay;;1;0;seconds;1
+654;3;14553;U16;;Over Voltage THD Associated DOs;;1;0;;1
+655;3;14565;F32;;Phase Loss Pickup Setpoint;;1;0;V;1
+656;3;14567;U32;;Phase Loss Pickup Time Delay;;1;0;seconds;1
+657;3;14569;F32;;Phase Loss Dropout Setpoint;;1;0;V;1
+658;3;14571;U32;;Phase Loss Dropout Time Delay;;1;0;seconds;1
+659;3;14573;U16;;Phase Loss Associated DOs;;1;0;;1
+660;3;16200;U32;;Meter Power Up Alarm Attributes;;1;0;;1
+661;3;16202;U16;;Meter Power Up Associated DOs;;1;0;;1
+662;3;16210;U32;;Meter Reset Alarm Attributes;;1;0;;1
+663;3;16212;U16;;Meter Reset Associated DOs;;1;0;;1
+664;3;16220;U32;;Meter Diagnostic Alarm Attributes;;1;0;;1
+665;3;16222;U16;;Meter Diagnostic Associated DOs;;1;0;;1
+666;3;16230;U32;;Phase Reversal Alarm Attributes;;1;0;;1
+667;3;16232;U16;;Phase Reversal Associated DOs;;1;0;;1
+668;3;16300;U32;;Digital Alarm DI1 Attributes;;1;0;;1
+669;3;16302;U32;;Digital Alarm DI1 Pickup Delay;;1;0;seconds;1
+670;3;16304;U32;;Digital Alarm DI1 Dropout Delay;;1;0;seconds;1
+671;3;16306;U16;;Digital Alarm DI1 Associated DOs;;1;0;;1
+672;3;16314;U32;;Digital Alarm DI2 Attributes;;1;0;;1
+673;3;16316;U32;;Digital Alarm DI2 Pickup Delay;;1;0;seconds;1
+674;3;16318;U32;;Digital Alarm DI2 Dropout Delay;;1;0;seconds;1
+675;3;16320;U16;;Digital Alarm DI2 Associated DOs;;1;0;;1
+676;3;19000;U16;;Logging Status;;1;0;;1
+677;3;19001;U16;;Allocated File Size;;1;0;;1
+678;3;19002;U16;;Allocated Record Size;;1;0;;1
+679;3;19003;U16;;Record Management Method;;1;0;;1
+680;3;19004;U16;;File Status;;1;0;;1
+681;3;19005;U16;;Number of records in file;;1;0;;1
+682;3;19006;U16;;First Record Sequence Number;;1;0;;1
+683;3;19007;U16;;Last Record Sequence Number;;1;0;;1
+684;3;19008;U16;;Topic Mode;;1;0;;1
+685;3;19011;U16;;Interval Control Minutes;;1;0;minutes;1
+686;3;19012;U16;;Interval Control Seconds;;1;0;seconds;1
+687;3;19013;U64;;Last Clear DateTime;;1;0;;1
+688;3;19017;U16;;Record Item 1;;1;0;;1
+689;3;19018;U16;;Record Item 2;;1;0;;1
+690;3;20000;U16;;Processor Loading;;1;0;%;1
+691;3;20003;U16;;Meter Self-Test Bitmap;;1;0;;1
+692;3;21016;F32;;HS Frequency;;1;0;Hz;1
+693;3;21300;F32;;THD Current Phase A;;1;0;%;1
+694;3;21302;F32;;THD Current Phase B;;1;0;%;1
+695;3;21304;F32;;THD Current Phase C;;1;0;%;1
+696;3;21306;F32;;THD Current Phase N;;1;0;%;1
+697;3;21308;F32;;THD Current Phase G;;1;0;%;1
+698;3;21310;F32;;thd Current Phase A (alt);;1;0;%;1
+699;3;21312;F32;;thd Current Phase B (alt);;1;0;%;1
+700;3;21314;F32;;thd Current Phase C (alt);;1;0;%;1
+701;3;21316;F32;;thd Current Phase N (alt);;1;0;%;1
+702;3;21318;F32;;thd Current Phase G (alt);;1;0;%;1
+703;3;21320;F32;;Total Demand Distortion;;1;0;%;1
+704;3;21322;F32;;THD Voltage Phase A-B;;1;0;%;1
+705;3;21324;F32;;THD Voltage Phase B-C;;1;0;%;1
+706;3;21326;F32;;THD Voltage Phase C-A;;1;0;%;1
+707;3;21328;F32;;THD Voltage L-L;;1;0;%;1
+708;3;21330;F32;;THD Voltage Phase A-N;;1;0;%;1
+709;3;21332;F32;;THD Voltage Phase B-N;;1;0;%;1
+710;3;21334;F32;;THD Voltage Phase C-N;;1;0;%;1
+711;3;21336;F32;;THD Voltage Neutral-to-Ground;;1;0;%;1
+712;3;21338;F32;;THD Voltage L-N;;1;0;%;1
+713;3;21340;F32;;thd Voltage Phase A-B (alt);;1;0;%;1
+714;3;21342;F32;;thd Voltage Phase B-C (alt);;1;0;%;1
+715;3;21344;F32;;thd Voltage Phase C-A (alt);;1;0;%;1
+716;3;21346;F32;;thd Voltage L-L (alt);;1;0;%;1
+717;3;21348;F32;;thd Voltage Phase A-N (alt);;1;0;%;1
+718;3;21350;F32;;thd Voltage Phase B-N (alt);;1;0;%;1
+719;3;21352;F32;;thd Voltage Phase C-N (alt);;1;0;%;1
+720;3;21354;F32;;thd Voltage Neutral-to-Ground (alt);;1;0;%;1
+721;3;21356;F32;;thd Voltage L-N (alt);;1;0;%;1
+722;3;27214;U64;;Min/Max Reset DateTime;;1;0;;1
+723;3;27218;F32;;Min Current Phase A;;1;0;A;1
+724;3;27220;F32;;Min Current Phase B;;1;0;A;1
+725;3;27222;F32;;Min Current Phase C;;1;0;A;1
+726;3;27224;F32;;Min Current Neutral;;1;0;A;1
+727;3;27226;F32;;Min Current Ground;;1;0;A;1
+728;3;27228;F32;;Min Current Average;;1;0;A;1
+729;3;27230;F32;;Min Current Unbalance A;;1;0;%;1
+730;3;27232;F32;;Min Current Unbalance B;;1;0;%;1
+731;3;27234;F32;;Min Current Unbalance C;;1;0;%;1
+732;3;27236;F32;;Min Current Unbalance Worst;;1;0;%;1
+733;3;27238;F32;;Min Voltage Phase A-B;;1;0;V;1
+734;3;27240;F32;;Min Voltage Phase B-C;;1;0;V;1
+735;3;27242;F32;;Min Voltage Phase C-A;;1;0;V;1
+736;3;27244;F32;;Min Voltage L-L Average;;1;0;V;1
+737;3;27246;F32;;Min Voltage Phase A-N;;1;0;V;1
+738;3;27248;F32;;Min Voltage Phase B-N;;1;0;V;1
+739;3;27250;F32;;Min Voltage Phase C-N;;1;0;V;1
+740;3;27252;F32;;Min Voltage Neutral-to-Ground;;1;0;V;1
+741;3;27254;F32;;Min Voltage L-N Average;;1;0;V;1
+742;3;27256;F32;;Min Voltage Unbalance Phase A-B;;1;0;%;1
+743;3;27258;F32;;Min Voltage Unbalance Phase B-C;;1;0;%;1
+744;3;27260;F32;;Min Voltage Unbalance Phase C-A;;1;0;%;1
+745;3;27262;F32;;Min Voltage Unbalance L-L Worst;;1;0;%;1
+746;3;27264;F32;;Min Voltage Unbalance Phase A-N;;1;0;%;1
+747;3;27266;F32;;Min Voltage Unbalance Phase B-N;;1;0;%;1
+748;3;27268;F32;;Min Voltage Unbalance Phase C-N;;1;0;%;1
+749;3;27270;F32;;Min Voltage Unbalance L-N Worst;;1;0;%;1
+750;3;27272;F32;;Min Active Power Phase A;;1;0;kW;1
+751;3;27274;F32;;Min Active Power Phase B;;1;0;kW;1
+752;3;27276;F32;;Min Active Power Phase C;;1;0;kW;1
+753;3;27278;F32;;Min Active Power Total;;1;0;kW;1
+754;3;27280;F32;;Min Reactive Power Phase A;;1;0;kVAR;1
+755;3;27284;F32;;Min Reactive Power Phase C;;1;0;kVAR;1
+756;3;27286;F32;;Min Reactive Power Total;;1;0;kVAR;1
+757;3;27288;F32;;Min Apparent Power Phase A;;1;0;kVA;1
+758;3;27290;F32;;Min Apparent Power Phase B;;1;0;kVA;1
+759;3;27292;F32;;Min Apparent Power Phase C;;1;0;kVA;1
+760;3;27294;F32;;Min Apparent Power Total;;1;0;kVA;1
+761;3;27306;F32;;Min Power Factor Phase A;;1;0;;1
+762;3;27308;F32;;Min Power Factor Phase B;;1;0;;1
+763;3;27310;F32;;Min Power Factor Phase C;;1;0;;1
+764;3;27312;F32;;Min Power Factor Total;;1;0;;1
+765;3;27314;F32;;Min Displacement PF Phase A;;1;0;;1
+766;3;27316;F32;;Min Displacement PF Phase B;;1;0;;1
+767;3;27318;F32;;Min Displacement PF Phase C;;1;0;;1
+768;3;27320;F32;;Min Displacement PF Total;;1;0;;1
+769;3;27338;F32;;Min THD Current Phase A;;1;0;%;1
+770;3;27340;F32;;Min THD Current Phase B;;1;0;%;1
+771;3;27342;F32;;Min THD Current Phase C;;1;0;%;1
+772;3;27344;F32;;Min THD Current Phase N;;1;0;%;1
+773;3;27346;F32;;Min THD Current Phase G;;1;0;%;1
+774;3;27348;F32;;Min thd Current Phase A (alt);;1;0;%;1
+775;3;27350;F32;;Min thd Current Phase B (alt);;1;0;%;1
+776;3;27352;F32;;Min thd Current Phase C (alt);;1;0;%;1
+777;3;27354;F32;;Min thd Current Phase N (alt);;1;0;%;1
+778;3;27356;F32;;Min thd Current Phase G (alt);;1;0;%;1
+779;3;27358;F32;;Min Total Demand Distortion;;1;0;%;1
+780;3;27360;F32;;Min THD Voltage Phase A-B;;1;0;%;1
+781;3;27362;F32;;Min THD Voltage Phase B-C;;1;0;%;1
+782;3;27364;F32;;Min THD Voltage Phase C-A;;1;0;%;1
+783;3;27366;F32;;Min THD Voltage L-L Average;;1;0;%;1
+784;3;27368;F32;;Min THD Voltage Phase A-N;;1;0;%;1
+785;3;27370;F32;;Min THD Voltage Phase B-N;;1;0;%;1
+786;3;27372;F32;;Min THD Voltage Phase C-N;;1;0;%;1
+787;3;27374;F32;;Min THD Voltage Neutral-to-Ground;;1;0;%;1
+788;3;27376;F32;;Min THD Voltage L-N Average;;1;0;%;1
+789;3;27378;F32;;Min thd Voltage Phase A-B (alt);;1;0;%;1
+790;3;27380;F32;;Min thd Voltage Phase B-C (alt);;1;0;%;1
+791;3;27382;F32;;Min thd Voltage Phase C-A (alt);;1;0;%;1
+792;3;27384;F32;;Min thd Voltage L-L Average (alt);;1;0;%;1
+793;3;27386;F32;;Min thd Voltage Phase A-N (alt);;1;0;%;1
+794;3;27388;F32;;Min thd Voltage Phase B-N (alt);;1;0;%;1
+795;3;27390;F32;;Min thd Voltage Phase C-N (alt);;1;0;%;1
+796;3;27392;F32;;Min thd Voltage Neutral-to-Ground (alt);;1;0;%;1
+797;3;27394;F32;;Min thd Voltage L-N Average (alt);;1;0;%;1
+798;3;27616;F32;;Min Frequency;;1;0;Hz;1
+799;3;27694;F32;;Max Current Phase A;;1;0;A;1
+800;3;27696;F32;;Max Current Phase B;;1;0;A;1
+801;3;27698;F32;;Max Current Phase C;;1;0;A;1
+802;3;27700;F32;;Max Current Neutral;;1;0;A;1
+803;3;27702;F32;;Max Current Ground;;1;0;A;1
+804;3;27704;F32;;Max Current Average;;1;0;A;1
+805;3;27706;F32;;Max Current Unbalance A;;1;0;%;1
+806;3;27708;F32;;Max Current Unbalance B;;1;0;%;1
+807;3;27710;F32;;Max Current Unbalance C;;1;0;%;1
+808;3;27712;F32;;Max Current Unbalance Worst;;1;0;%;1
+809;3;27714;F32;;Max Voltage Phase A-B;;1;0;V;1
+810;3;27716;F32;;Max Voltage Phase B-C;;1;0;V;1
+811;3;27718;F32;;Max Voltage Phase C-A;;1;0;V;1
+812;3;27720;F32;;Max Voltage L-L Average;;1;0;V;1
+813;3;27722;F32;;Max Voltage Phase A-N;;1;0;V;1
+814;3;27724;F32;;Max Voltage Phase B-N;;1;0;V;1
+815;3;27726;F32;;Max Voltage Phase C-N;;1;0;V;1
+816;3;27728;F32;;Max Voltage Neutral-to-Ground;;1;0;V;1
+817;3;27730;F32;;Max Voltage L-N Average;;1;0;V;1
+818;3;27732;F32;;Max Voltage Unbalance Phase A-B;;1;0;%;1
+819;3;27734;F32;;Max Voltage Unbalance Phase B-C;;1;0;%;1
+820;3;27736;F32;;Max Voltage Unbalance Phase C-A;;1;0;%;1
+821;3;27738;F32;;Max Voltage Unbalance L-L Worst;;1;0;%;1
+822;3;27740;F32;;Max Voltage Unbalance Phase A-N;;1;0;%;1
+823;3;27742;F32;;Max Voltage Unbalance Phase B-N;;1;0;%;1
+824;3;27744;F32;;Max Voltage Unbalance Phase C-N;;1;0;%;1
+825;3;27746;F32;;Max Voltage Unbalance L-N Worst;;1;0;%;1
+826;3;27748;F32;;Max Active Power Phase A;;1;0;kW;1
+827;3;27750;F32;;Max Active Power Phase B;;1;0;kW;1
+828;3;27752;F32;;Max Active Power Phase C;;1;0;kW;1
+829;3;27754;F32;;Max Active Power Total;;1;0;kW;1
+830;3;27756;F32;;Max Reactive Power Phase A;;1;0;kVAR;1
+831;3;27758;F32;;Max Reactive Power Phase B;;1;0;kVAR;1
+832;3;27760;F32;;Max Reactive Power Phase C;;1;0;kVAR;1
+833;3;27762;F32;;Max Reactive Power Total;;1;0;kVAR;1
+834;3;27764;F32;;Max Apparent Power Phase A;;1;0;kVA;1
+835;3;27766;F32;;Max Apparent Power Phase B;;1;0;kVA;1
+836;3;27768;F32;;Max Apparent Power Phase C;;1;0;kVA;1
+837;3;27770;F32;;Max Apparent Power Total;;1;0;kVA;1
+838;3;27782;F32;;Max Power Factor Phase A;;1;0;;1
+839;3;27784;F32;;Max Power Factor Phase B;;1;0;;1
+840;3;27786;F32;;Max Power Factor Phase C;;1;0;;1
+841;3;27788;F32;;Max Power Factor Total;;1;0;;1
+842;3;27790;F32;;Max Displacement PF Phase A;;1;0;;1
+843;3;27792;F32;;Max Displacement PF Phase B;;1;0;;1
+844;3;27794;F32;;Max Displacement PF Phase C;;1;0;;1
+845;3;27796;F32;;Max Displacement PF Total;;1;0;;1
+846;3;27814;F32;;Max THD Current Phase A;;1;0;%;1
+847;3;27816;F32;;Max THD Current Phase B;;1;0;%;1
+848;3;27818;F32;;Max THD Current Phase C;;1;0;%;1
+849;3;27820;F32;;Max THD Current Phase N;;1;0;%;1
+850;3;27822;F32;;Max THD Current Phase G;;1;0;%;1
+851;3;27824;F32;;Max thd Current Phase A (alt);;1;0;%;1
+852;3;27826;F32;;Max thd Current Phase B (alt);;1;0;%;1
+853;3;27828;F32;;Max thd Current Phase C (alt);;1;0;%;1
+854;3;27830;F32;;Max thd Current Phase N (alt);;1;0;%;1
+855;3;27832;F32;;Max thd Current Phase G (alt);;1;0;%;1
+856;3;27834;F32;;Max Total Demand Distortion;;1;0;%;1
+857;3;27836;F32;;Max THD Voltage Phase A-B;;1;0;%;1
+858;3;27838;F32;;Max THD Voltage Phase B-C;;1;0;%;1
+859;3;27840;F32;;Max THD Voltage Phase C-A;;1;0;%;1
+860;3;27842;F32;;Max THD Voltage L-L Average;;1;0;%;1
+861;3;27844;F32;;Max THD Voltage Phase A-N;;1;0;%;1
+862;3;27846;F32;;Max THD Voltage Phase B-N;;1;0;%;1
+863;3;27848;F32;;Max THD Voltage Phase C-N;;1;0;%;1
+864;3;27850;F32;;Max THD Voltage Neutral-to-Ground;;1;0;%;1
+865;3;27852;F32;;Max THD Voltage L-N Average;;1;0;%;1
+866;3;27854;F32;;Max thd Voltage Phase A-B (alt);;1;0;%;1
+867;3;27856;F32;;Max thd Voltage Phase B-C (alt);;1;0;%;1
+868;3;27858;F32;;Max thd Voltage Phase C-A (alt);;1;0;%;1
+869;3;27860;F32;;Max thd Voltage L-L Average (alt);;1;0;%;1
+870;3;27862;F32;;Max thd Voltage Phase A-N (alt);;1;0;%;1
+871;3;27864;F32;;Max thd Voltage Phase B-N (alt);;1;0;%;1
+872;3;27866;F32;;Max thd Voltage Phase C-N (alt);;1;0;%;1
+873;3;27868;F32;;Max thd Voltage Neutral-to-Ground (alt);;1;0;%;1
+874;3;27870;F32;;Max thd Voltage L-N Average (alt);;1;0;%;1
+875;3;28092;F32;;Max Frequency;;1;0;Hz;1

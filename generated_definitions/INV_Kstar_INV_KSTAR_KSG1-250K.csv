@@ -1,0 +1,255 @@
+modbusRTU;Inverter;Kstar;INV_KSTAR_KSG1-250K;;;;;;;
+1;4;2964;U16;;PV12 input voltage;pv12_input_voltage;0.100000;0.000000;V;4
+2;4;2965;U16;;PV12 input current;pv12_input_current;0.010000;0.000000;A;4
+3;4;2966;U32;;PV12 input power;pv12_input_power;1.000000;0.000000;W;4
+4;4;2968;I16;;PV11 input voltage;pv11_input_voltage;0.100000;0.000000;V;4
+5;4;2969;I16;;PV11 input current;pv11_input_current;0.010000;0.000000;A;4
+6;4;2970;U32;;PV11 input power;pv11_input_power;1.000000;0.000000;W;4
+7;4;2972;U16;;PV10 input voltage;pv10_input_voltage;0.100000;0.000000;V;4
+8;4;2973;U32;;PV10 input current;pv10_input_current;0.010000;0.000000;A;4
+9;4;2974;U32;;PV10 input power;pv10_input_power;1.000000;0.000000;W;4
+10;4;2976;U16;;PV9 input voltage;pv9_input_voltage;0.100000;0.000000;V;4
+11;4;2977;U16;;PV9 input current;pv9_input_current;0.010000;0.000000;A;4
+12;4;2978;U32;;PV9 input power;pv9_input_power;1.000000;0.000000;W;4
+13;4;2980;U16;;PV8 input voltage;pv8_input_voltage;0.100000;0.000000;V;4
+14;4;2981;U16;;PV8 input current;pv8_input_current;0.010000;0.000000;A;4
+15;4;2982;I32;;PV8 input power;pv8_input_power;1.000000;0.000000;W;4
+16;4;2984;U16;;PV7 input voltage;pv7_input_voltage;0.100000;0.000000;V;4
+17;4;2985;I16;;PV7 input current;pv7_input_current;0.010000;0.000000;A;4
+18;4;2986;I32;;PV7 input power;pv7_input_power;1.000000;0.000000;W;4
+19;4;2988;U16;;PV6 input voltage;pv6_input_voltage;0.100000;0.000000;V;4
+20;4;2989;I16;;PV6 input current;pv6_input_current;0.010000;0.000000;A;4
+21;4;2990;I32;;PV6 input power;pv6_input_power;1.000000;0.000000;W;4
+22;4;2992;U16;;PV5 input voltage;pv5_input_voltage;0.100000;0.000000;V;4
+23;4;2993;I16;;PV5 input current;pv5_input_current;0.010000;0.000000;A;4
+24;4;2994;I32;;PV5 input power;pv5_input_power;1.000000;0.000000;W;4
+25;4;2996;U16;;PV4 input voltage;pv4_input_voltage;0.100000;0.000000;V;4
+26;4;2997;U16;;PV4 input current;pv4_input_current;0.010000;0.000000;A;4
+27;4;2998;I32;;PV4 input power;pv4_input_power;1.000000;0.000000;W;4
+28;4;3000;I16;;PV1 input voltage;pv1_input_voltage;0.100000;0.000000;V;4
+29;4;3001;I16;;PV2 input voltage;pv2_input_voltage;0.100000;0.000000;V;4
+30;4;3002;U16;;PV3 input voltage;pv3_input_voltage;0.100000;0.000000;V;4
+31;4;3003;I16;;PV1 input current;pv1_input_current;0.010000;0.000000;A;4
+32;4;3004;U16;;PV2 input current;pv2_input_current;0.010000;0.000000;A;4
+33;4;3005;U16;;PV3 input current;pv3_input_current;0.010000;0.000000;A;4
+34;4;3006;I32;;PV1 input power;pv1_input_power;1.000000;0.000000;W;4
+35;4;3008;I32;;PV2 input power;pv2_input_power;1.000000;0.000000;W;4
+36;4;3010;I32;;PV3 input power;pv3_input_power;1.000000;0.000000;W;4
+37;4;3012;U16;;PBUS voltage;pbus_voltage;0.100000;0.000000;V;4
+38;4;3013;U16;;NBUS voltage;nbus_voltage;0.100000;0.000000;V;4
+39;4;3014;U16;;RS-phase grid voltage;rsphase_grid_voltage;0.100000;0.000000;V;4
+40;4;3015;U16;;ST-phase grid voltage;stphase_grid_voltage;0.100000;0.000000;V;4
+41;4;3016;U16;;TR-phase grid voltage;trphase_grid_voltage;0.100000;0.000000;V;4
+42;4;3017;U16;;RS-phase grid frequency;rsphase_grid_frequency;0.010000;0.000000;Hz;4
+43;4;3018;U16;;ST-phase grid frequency;stphase_grid_frequency;0.010000;0.000000;Hz;4
+44;4;3019;U16;;TR-phase grid frequency;trphase_grid_frequency;0.010000;0.000000;Hz;4
+45;4;3020;U16;;R-phase grid-tied current;rphase_gridtied_current;0.010000;0.000000;A;4
+46;4;3021;U16;;S-phase grid-tied current;sphase_gridtied_current;0.010000;0.000000;A;4
+47;4;3022;U16;;T-phase grid-tied current;tphase_gridtied_current;0.010000;0.000000;A;4
+48;4;3023;I32;;Grid-tied power;P_AC;1.000000;0.000000;W;4
+49;4;3025;U16;;Radiator temperature;radiator_temperature;0.100000;0.000000;Deg.celsius;4
+50;4;3026;U16;;Module temperature;module_temperature;0.100000;0.000000;Deg.celsius;4
+51;4;3027;I16;;DSP alarm code;dsp_alarm_code;1.000000;0.000000;;4
+52;4;3028;U32;;DSP error code;dsp_error_code;1.000000;0.000000;;4
+53;4;3030_0;U8;;Operating mode of the inverter;operating_mode_of_the_inverter;1.000000;0.000000;;4
+54;4;3030_1;U8;;Inverter model;inverter_model;1.000000;0.000000;;4
+55;4;3031;I16;;Rotational speed of fan A;rotational_speed_of_fan_a;1.000000;0.000000;r/min;4
+56;4;3032;I16;;Rotational speed of fan B;rotational_speed_of_fan_b;1.000000;0.000000;r/min;4
+57;4;3033;U16;;Rotational speed of fan C;rotational_speed_of_fan_c;1.000000;0.000000;r/min;4
+58;4;3036_0;U8;;ARM alarm code;arm_alarm_code;1.000000;0.000000;;4
+59;4;3036_1;U8;;ARM error code;arm_error_code;1.000000;0.000000;;4
+60;4;3037_0;U8;;Input mode;input_mode;1.000000;0.000000;;4
+61;4;3037_1;U8;;Mains standard;mains_standard;1.000000;0.000000;;4
+62;4;3038;U32;;Total energy yield;E_TOT;0.100000;0.000000;kWh;4
+63;4;3040;U32;;Annual energy yield;annual_energy_yield;1.000000;0.000000;kWh;4
+64;4;3042;U32;;Daily energy yield;E_DAY;1.000000;0.000000;kWh;4
+65;4;3043;U16;;Power-on voltage;poweron_voltage;0.100000;0.000000;V;4
+66;4;3044;U16;;Power-on delay;poweron_delay;1.000000;0.000000;S;4
+67;4;3045;U32;;Lower grid voltage threshold;lower_grid_voltage_threshold;0.100000;0.000000;V;4
+68;4;3046;U32;;Upper grid voltage threshold;upper_grid_voltage_threshold;0.100000;0.000000;V;4
+69;4;3047;U16;;Lower grid frequency threshold;lower_grid_frequency_threshold;0.010000;0.000000;Hz;4
+70;4;3048;I16;;Upper grid frequency threshold;upper_grid_frequency_threshold;0.010000;0.000000;Hz;4
+71;4;3049;U16;;Preset power factor;preset_power_factor;1.000000;0.000000;;4
+72;4;3050;U16;;Preset active power;preset_active_power;1.000000;0.000000;'%;4
+73;4;3051_0;I8;;Preset reactive power;preset_reactive_power;1.000000;0.000000;kVAR;4
+74;4;3051_1;U8;;Reactive control mode;reactive_control_mode;1.000000;0.000000;;4
+75;4;3052;I32;;Apparent power;apparent_power;1.000000;0.000000;VA;4
+76;4;3054;I32;;Reactive power;reactive_power;1.000000;0.000000;Var;4
+77;4;3056;U16;;Power factor;PF;1.000000;0.000000;;4
+78;4;3057;U16;;DC insulation resistance;dc_insulation_resistance;1.000000;0.000000;Kohm;4
+79;4;3058;U16;;Overfrequency derating;overfrequency_derating;1.000000;0.000000;;4
+80;4;3059;U16;;Overfrequency derating threshold;overfrequency_derating_threshold;1.000000;0.000000;;4
+81;4;3060;I16;;Derating rate;derating_rate;0.010000;0.000000;Hz;4
+82;4;3064;I16;;PV1 String current 1;pv1_string_current_1;0.010000;0.000000;A;4
+83;4;3065;I16;;PV1 String current 2;pv1_string_current_2;0.010000;0.000000;A;4
+84;4;3066;I16;;PV1 String current 3;pv1_string_current_3;0.010000;0.000000;A;4
+85;4;3067;I16;;PV1 String current 4;pv1_string_current_4;0.010000;0.000000;A;4
+86;4;3068;I16;;PV2 String current 1;pv2_string_current_1;0.010000;0.000000;A;4
+87;4;3069;I16;;PV2 String current 2;pv2_string_current_2;0.010000;0.000000;A;4
+88;4;3070;I16;;PV2 String current 3;pv2_string_current_3;0.010000;0.000000;A;4
+89;4;3071;I16;;PV2 String current 4;pv2_string_current_4;0.010000;0.000000;A;4
+90;4;3072;I16;;PV3 String current 1;pv3_string_current_1;0.010000;0.000000;A;4
+91;4;3073;I16;;PV3 String current 2;pv3_string_current_2;0.010000;0.000000;A;4
+92;4;3074;I16;;PV3 String current 3;pv3_string_current_3;0.010000;0.000000;A;4
+93;4;3075;I16;;PV3 String current 4;pv3_string_current_4;0.010000;0.000000;A;4
+94;4;3076;I16;;PV4 String current 1;pv4_string_current_1;0.010000;0.000000;A;4
+95;4;3077;I16;;PV4 String current 2;pv4_string_current_2;0.010000;0.000000;A;4
+96;4;3078;I16;;PV4 String current 3;pv4_string_current_3;0.010000;0.000000;A;4
+97;4;3079;I16;;PV4 String current 4;pv4_string_current_4;0.010000;0.000000;A;4
+98;4;3080;I16;;PV5 String current 1;pv5_string_current_1;0.010000;0.000000;A;4
+99;4;3081;I16;;PV5 String current 2;pv5_string_current_2;0.010000;0.000000;A;4
+100;4;3082;I16;;PV5 String current 3;pv5_string_current_3;0.010000;0.000000;A;4
+101;4;3083;I16;;PV5 String current 4;pv5_string_current_4;0.010000;0.000000;A;4
+102;4;3084;I16;;PV6 String current 1;pv6_string_current_1;0.010000;0.000000;A;4
+103;4;3085;I16;;PV6 String current 2;pv6_string_current_2;0.010000;0.000000;A;4
+104;4;3086;I16;;PV6 String current 3;pv6_string_current_3;0.010000;0.000000;A;4
+105;4;3087;I16;;PV6 String current 4;pv6_string_current_4;0.010000;0.000000;A;4
+106;4;3090;U32;;Running Time;running_time;1.000000;0.000000;Hour;1
+107;4;3092;U32;;Generating Time;generating_time;1.000000;0.000000;Hour;1
+108;4;3094;U32;;Number of grid connection;number_of_grid_connection;1.000000;0.000000;;1
+109;4;3096;U32;;Power Peak After Starting;power_peak_after_starting;1.000000;0.000000;W;1
+110;4;3098;U32;;Day Generation;day_generation;1.000000;0.000000;W;4
+111;4;3100;U32;;Week Generation;week_generation;1.000000;0.000000;Kwh;4
+112;4;3102;U32;;Month Generation;month_generation;1.000000;0.000000;Kwh;4
+113;4;3104;U16;;Last N days Generation;last_n_days_generation;1.000000;0.000000;Kwh;4
+114;4;3106;U16;;Value of N;value_of_n;1.000000;0.000000;;4
+115;4;3107;U16;;Year;year;1.000000;0.000000;;1
+116;4;3108;U16;;Month;month;1.000000;0.000000;;1
+117;4;3109;U16;;Date;date;1.000000;0.000000;;1
+118;4;3110;U16;;Hour;hour;1.000000;0.000000;;1
+119;4;3111;U16;;Minute;minute;1.000000;0.000000;;1
+120;4;3112;I16;;Second;second;1.000000;0.000000;;1
+121;4;3113;U16;;Week;week;1.000000;0.000000;;1
+122;4;3114;I16;;Back-current  Power  Limit Setting;backcurrent_power_limit_setting;1.000000;0.000000;W;4
+123;4;3115;U16;;Active Power of Soft Start Change Rate;active_power_of_soft_start_change_rate;1.000000;0.000000;'%/min;4
+124;4;3117;U16;;485Address(2);v_485address2;1.000000;0.000000;;4
+125;4;3118;U16;;485 Baud Rate (2);v_485_baud_rate_2;1.000000;0.000000;;4
+126;4;3119;U16;;485 Agreement;v_485_agreement;1.000000;0.000000;;4
+127;4;3120;U16;;485 Address(1);v_485_address1;1.000000;0.000000;;4
+128;4;3121;U16;;485Baud Rate(1);v_485baud_rate1;1.000000;0.000000;;4
+129;4;3122;U16;;Three-phase System;threephase_system;0.100000;0.000000;;4
+130;4;3123;U16;;Remote Control Enable;CMD_P_ENA;1.000000;0.000000;;4
+131;4;3124;U16;;String Test Threshold;string_test_threshold;1.000000;0.000000;A;1
+132;4;3125;U16;;Setting Value of Self-check;setting_value_of_selfcheck;1.000000;0.000000;;4
+133;4;3126;U16;;I/V Scan-status;iv_scanstatus;1.000000;0.000000;;4
+134;4;3127;U16;;QV Curve;qv_curve;1.000000;0.000000;;4
+135;4;3128;U16;;QV Curve_1;qv_curve_1;1.000000;0.000000;;4
+136;4;3129;U16;;QV Curve_2;qv_curve_2;0.100000;0.000000;;4
+137;4;3130;U16;;QV Curve_3;qv_curve_3;1.000000;0.000000;;4
+138;4;3131;U16;;QV Curve_4;qv_curve_4;0.100000;0.000000;;4
+139;4;3132;U16;;QV Curve_5;qv_curve_5;1.000000;0.000000;;4
+140;4;3133;U16;;R-phase Voltage Calibration Factor;rphase_voltage_calibration_factor;1.000000;0.000000;;4
+141;4;3134;U16;;S-phase Voltage Calibration Factor;sphase_voltage_calibration_factor;1.000000;0.000000;;4
+142;4;3135;U16;;T-phase Voltage Calibration Factor;tphase_voltage_calibration_factor;1.000000;0.000000;;4
+143;4;3136;U16;;R-phase Current Calibration Factor;rphase_current_calibration_factor;1.000000;0.000000;;4
+144;4;3137;U16;;S-phase Calibration Factor;sphase_calibration_factor;1.000000;0.000000;;4
+145;4;3138;U16;;T-phase Current Calibration Factor;tphase_current_calibration_factor;1.000000;0.000000;;4
+146;4;3139;U16;;Battery Voltage Calibration Factor;battery_voltage_calibration_factor;1.000000;0.000000;;4
+147;4;3140;U16;;Bluetooth enable;bluetooth_enable;1.000000;0.000000;;4
+148;4;3146;U16;;Under frequency increase slope;under_frequency_increase_slope;1.000000;0.000000;'%;4
+149;4;3147;U16;;Under frequency increase enable/disable;under_frequency_increase_enabledisable;1.000000;0.000000;;4
+150;4;3148;U16;;FrozenUpFreq Underfrequency increase threshold;frozenupfreq_underfrequency_increase_threshold;0.010000;0.000000;Hz;4
+151;4;3149;U16;;Slow increase in power;slow_increase_in_power;1.000000;0.000000;S;4
+152;4;3150;U16;;Overfrequency power reduction percentage;overfrequency_power_reduction_percentage;0.000100;0.000000;Pref/Hz;4
+153;4;3151;U16;;FrozenUpVoltStart Starting value of overvoltage derating;frozenupvoltstart_starting_value_of_overvoltage_derating;0.100000;0.000000;V;4
+154;4;3152;U16;;FrozenUpVoltEnd End value of overvoltage derating;frozenupvoltend_end_value_of_overvoltage_derating;0.100000;0.000000;V;4
+155;4;3153;U16;;NPEVoltSet Zero line to ground voltage detection threshold;npevoltset_zero_line_to_ground_voltage_detection_threshold;0.100000;0.000000;V;4
+156;4;3194;U16;;PLC area code;plc_area_code;1.000000;0.000000;;4
+157;4;3195;U16;;Bluetooth name format;bluetooth_name_format;1.000000;0.000000;;4
+158;4;3196;U16;;Setting value of rated power for anti backflow;setting_value_of_rated_power_for_anti_backflow;1.000000;0.000000;;4
+159;4;3197;U16;;Upper limit of fuse detection;upper_limit_of_fuse_detection;0.010000;0.000000;A;4
+160;4;3198;U16;;Lower limit of  fuse detection;lower_limit_of_fuse_detection;0.010000;0.000000;A;4
+161;4;3199;U32;;Fuse detection enable;fuse_detection_enable;1.000000;0.000000;;4
+162;4;3201;U32;;Fuse alarm information;fuse_alarm_information;1.000000;0.000000;;4
+163;4;3203;U16;;Anti  backflow  meter configuration;anti_backflow_meter_configuration;1.000000;0.000000;;4
+164;4;3204;U16;;Correction value of anti reverse current meter;correction_value_of_anti_reverse_current_meter;1.000000;0.000000;;4
+165;4;3205;U16;;CT ratio;ct_ratio;1.000000;0.000000;;4
+166;4;3206;U32;;Inverter power;inverter_power;1.000000;0.000000;W;4
+167;4;3208;U32;;Load power;load_power;1.000000;0.000000;W;4
+168;4;3210;U32;;Current grid side grid connected electricity consumption;current_grid_side_grid_connected_electricity_consumption;0.100000;0.000000;kWh;4
+169;4;3212;U32;;Accumulated grid connected electricity;accumulated_grid_connected_electricity;1.000000;0.000000;kWh;4
+170;4;3214;U16;;PV1 current calibration coefficient;pv1_current_calibration_coefficient;1.000000;0.000000;;4
+171;4;3215;U16;;PV2 current calibration coefficient;pv2_current_calibration_coefficient;1.000000;0.000000;;4
+172;4;3216;U16;;PV3 current calibration coefficient;pv3_current_calibration_coefficient;1.000000;0.000000;;4
+173;4;3217;U16;;PV4 current calibration coefficient;pv4_current_calibration_coefficient;1.000000;0.000000;;4
+174;4;3218;U16;;PV5 current calibration coefficient;pv5_current_calibration_coefficient;1.000000;0.000000;;4
+175;4;3219;U16;;PV6 current calibration coefficient;pv6_current_calibration_coefficient;1.000000;0.000000;;4
+176;4;3220;U16;;PV7 current calibration coefficient;pv7_current_calibration_coefficient;1.000000;0.000000;;4
+177;4;3221;U16;;PV8 current calibration coefficient;pv8_current_calibration_coefficient;1.000000;0.000000;;4
+178;4;3222;U16;;PV9 current calibration coefficient;pv9_current_calibration_coefficient;1.000000;0.000000;;4
+179;4;3223;U16;;PV10 current calibration coefficient;pv10_current_calibration_coefficient;1.000000;0.000000;;4
+180;4;3224;U16;;PV11 current calibration coefficient;pv11_current_calibration_coefficient;1.000000;0.000000;;4
+181;4;3225;U32;;PV12 current calibration coefficient;pv12_current_calibration_coefficient;1.000000;0.000000;;4
+182;4;3226;U16;;Power change rate;power_change_rate;1.000000;0.000000;'%/s;4
+183;4;3227;U16;;Over temperature derating warning enable;over_temperature_derating_warning_enable;1.000000;0.000000;;4
+184;4;3228;U16;;Soft start time;soft_start_time;1.000000;0.000000;;4
+185;4;3229;U16;;Low penetration coefficient;low_penetration_coefficient;1.000000;0.000000;;4
+186;4;3230;U16;;High penetration coefficient;high_penetration_coefficient;1.000000;0.000000;;4
+187;4;3231;U16;;Upper limit of frequency response dead band;upper_limit_of_frequency_response_dead_band;0.010000;0.000000;Hz;4
+188;4;3232;U16;;Lower limit of frequency response dead band;lower_limit_of_frequency_response_dead_band;0.010000;0.000000;Hz;4
+189;4;3233;U16;;Over frequency derating coefficient;over_frequency_derating_coefficient;1.000000;0.000000;Pn%/Hz;4
+190;4;3234;U16;;Underfrequency amplification coefficient;underfrequency_amplification_coefficient;1.000000;0.000000;Pn%/Hz;4
+191;4;3235;U16;;Maximum Derating;maximum_derating;1.000000;0.000000;'%;4
+192;4;3236;U16;;Maximum increase;maximum_increase;1.000000;0.000000;'%;4
+193;4;3237;I16;;Debugging  coefficient 1;debugging_coefficient_1;1.000000;0.000000;;4
+194;4;3238;I16;;Debugging  coefficient 2;debugging_coefficient_2;1.000000;0.000000;;4
+195;4;3239;I16;;Debugging  coefficient 3;debugging_coefficient_3;1.000000;0.000000;;4
+196;4;3240;I16;;Debugging  coefficient 4;debugging_coefficient_4;1.000000;0.000000;;4
+197;4;3241;U16;;Daily power generation;daily_power_generation;0.100000;0.000000;kWh;4
+198;4;3242;U32;;Accumulated load electricity consumption on the grid side;accumulated_load_electricity_consumption_on_the_grid_side;1.000000;0.000000;kWh;4
+199;4;3244;U16;;Frequency response hysteresis function;frequency_response_hysteresis_function;1.000000;0.000000;;4
+200;4;3245;U16;;Active reactive curve;active_reactive_curve;1.000000;0.000000;;4
+201;4;3246;U16;;Grid protected mode;grid_protected_mode;1.000000;0.000000;;4
+202;4;3247;U16;;Grid type;grid_type;1.000000;0.000000;;4
+203;4;3248;U16;;Fault recovery time;fault_recovery_time;1.000000;0.000000;;4
+204;4;3249;U16;;Night SVG function;night_svg_function;1.000000;0.000000;;4
+205;4;3250;U16;;IV curve scanning function;iv_curve_scanning_function;1.000000;0.000000;;4
+206;4;3251;U16;;R-phase voltage calibration coefficient 2;rphase_voltage_calibration_coefficient_2;1.000000;0.000000;;4
+207;3;4000;U16;;Clear statistical information;clear_statistical_information;1.000000;0.000000;;4
+208;3;4001;U16;;Remote power-off;remote_poweroff;1.000000;0.000000;;4
+209;3;4002;U16;;Revoke remote power-off;revoke_remote_poweroff;1.000000;0.000000;;4
+210;3;4003;U16;;Set the power factor;set_the_power_factor;1.000000;0.000000;;4
+211;3;4004;U16;;Set the active power;CMD_P_AC_SET_PERCENT;1.000000;0.000000;Percent;4
+212;3;4005;I16;;Set the reactive power;set_the_reactive_power;1.000000;0.000000;KVAR;4
+213;3;4006;U16;;Set the reactive control mode;set_the_reactive_control_mode;1.000000;0.000000;;4
+214;3;4007;U16;;Overfrequency derating_1;overfrequency_derating_1;1.000000;0.000000;;4
+215;3;4008;U16;;Overfrequency derating threshold_1;overfrequency_derating_threshold_1;0.010000;0.000000;Hz;4
+216;3;4009;U16;;Set the derating rate;set_the_derating_rate;0.100000;0.000000;Percent/0.1 Hz;4
+217;3;4010;U16;;Set the active power_1;CMD_P_AC_SET_ABS;1.000000;0.000000;kW;4
+218;3;4011;U16;;LOGO Settings;logo_settings;1.000000;0.000000;;4
+219;3;4012;U16;;Input Mode Settings;input_mode_settings;1.000000;0.000000;;4
+220;3;4013;U16;;Grid Connection Standard Settings;grid_connection_standard_settings;1.000000;0.000000;;4
+221;3;4014;U16;;Start Voltage Settings;start_voltage_settings;1.000000;0.000000;;4
+222;3;4015;U16;;Start Delay Settings;start_delay_settings;1.000000;0.000000;;4
+223;3;4016;U16;;Grid Voltage Lower Limit Settings;grid_voltage_lower_limit_settings;1.000000;0.000000;;4
+224;3;4017;U16;;Grid Voltage Upper Limit Settings;grid_voltage_upper_limit_settings;1.000000;0.000000;;4
+225;3;4018;U16;;Grid Frequency Lower Limit Settings;grid_frequency_lower_limit_settings;1.000000;0.000000;;4
+226;3;4019;U16;;Grid Frequency Upper Limit Settings;grid_frequency_upper_limit_settings;1.000000;0.000000;;4
+227;3;4020;U16;;Back Current Power Limit Settings;back_current_power_limit_settings;1.000000;0.000000;W;4
+228;3;4021;U16;;Overvoltage Derating Threshold Value;overvoltage_derating_threshold_value;0.100000;0.000000;Percent;4
+229;3;4023;U16;;485 Address Settings(U2);v_485_address_settingsu2;1.000000;0.000000;;4
+230;3;4024;U16;;485 Baud Rate Settings(U2);v_485_baud_rate_settingsu2;1.000000;0.000000;;4
+231;3;4025;U16;;485 Protocol Settings;v_485_protocol_settings;1.000000;0.000000;;4
+232;3;4026;U16;;485 Address Settings(U4);v_485_address_settingsu4;1.000000;0.000000;;4
+233;3;4027;U16;;485 Baud Rate Settings (U4);v_485_baud_rate_settings_u4;1.000000;0.000000;;4
+234;3;4028;U16;;Three-phase Settings;threephase_settings;1.000000;0.000000;;4
+235;3;4029;U16;;Remote Control Settings;remote_control_settings;1.000000;0.000000;;4
+236;3;4030;U16;;String Test Threshold Value Settings;string_test_threshold_value_settings;1.000000;0.000000;A;4
+237;3;4031;U16;;Self-check (Enable);selfcheck_enable;1.000000;0.000000;;4
+238;3;4032;U16;;Self-check (Disable);selfcheck_disable;1.000000;0.000000;;4
+239;3;4033;U16;;Clear Fault Record;clear_fault_record;1.000000;0.000000;;4
+240;3;4034;U16;;Factory Data Reset;factory_data_reset;1.000000;0.000000;;4
+241;3;4035;U16;;Start I/V Scan;start_iv_scan;1.000000;0.000000;;4
+242;3;4036;I16;;Active Power Increment (KW);active_power_increment_kw;1.000000;0.000000;kW;4
+243;3;4037;I16;;Active Power Increment (W);active_power_increment_w;1.000000;0.000000;W;4
+244;3;4038;I16;;Soft Start Active Power Change Rate;soft_start_active_power_change_rate;1.000000;0.000000;Percent/min;4
+245;3;4039;U16;;Active Power Settings (Decimals);active_power_settings_decimals;0.100000;0.000000;Percent;4
+246;3;4040;U16;;R-phase Voltage Calibration Factor_1;rphase_voltage_calibration_factor_1;1.000000;0.000000;;4
+247;3;4041;U16;;S-phase Voltage Calibration Factor_1;sphase_voltage_calibration_factor_1;1.000000;0.000000;;4
+248;3;4042;U16;;T-phase Voltage Calibration Factor_1;tphase_voltage_calibration_factor_1;1.000000;0.000000;;4
+249;3;4043;U16;;R-phase Current Calibration Factor_1;rphase_current_calibration_factor_1;1.000000;0.000000;;4
+250;3;4044;U16;;S-phase Calibration Factor_1;sphase_calibration_factor_1;1.000000;0.000000;;4
+251;3;4045;U16;;T-phase Current Calibration Factor_1;tphase_current_calibration_factor_1;1.000000;0.000000;;4
+252;3;4046;U16;;Battery Voltage Calibration Factor_1;battery_voltage_calibration_factor_1;1.000000;0.000000;;4
+253;3;4099;U16;;Record Position Pointer;record_position_pointer;1.000000;0.000000;;4
+254;3;9000;U16;;Aging Enable;aging_enable;1.000000;0.000000;;4

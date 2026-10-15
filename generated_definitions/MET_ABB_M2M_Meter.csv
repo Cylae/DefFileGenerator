@@ -1,0 +1,127 @@
+Modbus;Meter;ABB;M2M_Meter
+1;3;4096;U32;;Three-phase system voltage;;1.0;0.0;V;4
+2;3;4098;U32;;Rated Voltage L1;U_AC_1;1.0;0.0;V;4
+3;3;4100;U32;;Rated Voltage L2;U_AC_2;1.0;0.0;V;4
+4;3;4102;U32;;Rated Voltage L3;U_AC_3;1.0;0.0;V;4
+5;3;4104;U32;;Linked Voltage L12;;1.0;0.0;V;4
+6;3;4106;U32;;Linked Voltage L23;;1.0;0.0;V;4
+7;3;4108;U32;;Linked Voltage L31;;1.0;0.0;V;4
+8;3;4110;U32;;Three-phase system current;;1.0;0.0;mA;4
+9;3;4112;U32;;Line Current 1;I_AC_3;1.0;0.0;mA;4
+10;3;4114;U32;;Line Current 2;;1.0;0.0;mA;4
+11;3;4116;U32;;Line Current 3;;1.0;0.0;mA;4
+12;3;4118;I32;;Three-phase system Power Factor;PF;1000.0;0.0;;4
+13;3;4120;I32;;Power Factor Line 1;;1000.0;0.0;;4
+14;3;4122;I32;;Power Factor Line 2;;1000.0;0.0;;4
+15;3;4124;I32;;Power Factor Line 3;;1000.0;0.0;;4
+16;3;4134;U32;;Three-phase system Apparent Power;S_AC;1.0;0.0;VA;4
+17;3;4136;U32;;Apparent Power Line 1;;1.0;0.0;VA;4
+18;3;4138;U32;;Apparent Power Line 2;;1.0;0.0;VA;4
+19;3;4140;U32;;Apparent Power Line 3;;1.0;0.0;VA;4
+20;3;4142;I32;;Three-phase system Active Power;P_AC;1.0;0.0;W;4
+21;3;4144;I32;;Active Power Line 1;P_AC_1;1.0;0.0;W;4
+22;3;4146;I32;;Active Power Line 2;P_AC_2;1.0;0.0;W;4
+23;3;4148;I32;;Active Power Line 3;P_AC_3;1.0;0.0;W;4
+24;3;4150;I32;;Three-phase Reactive Power;Q_AC;1.0;0.0;Var;4
+25;3;4152;I32;;Reactive Power Line 1;Q_AC_1;1.0;0.0;Var;4
+26;3;4154;I32;;Reactive Power Line 2;Q_AC_2;1.0;0.0;Var;4
+27;3;4156;I32;;Reactive Power Line 3;Q_AC_3;1.0;0.0;Var;4
+28;3;4158;U32;;Three-phase active energy;;100.0;0.0;Wh;4
+29;3;4160;U32;;Three-phase reactive energy;;100.0;0.0;Varh;4
+30;3;4166;U32;;Frequency;FREQ;1.0;0.0;mHz;4
+31;3;4192;U32;;Max. Current L1;I_AC_1;1.0;0.0;mA;4
+32;3;4194;U32;;Max. Current L2;I_AC_2;1.0;0.0;mA;4
+33;3;4196;U32;;Max. Current L3;;1.0;0.0;mA;4
+34;3;4198;I32;;Max. Three-phase Active Power;;1.0;0.0;W;4
+35;3;4200;U32;;Max. Three-phase Apparent Power;S_AC_1;1.0;0.0;VA;4
+36;3;4208;I32;;Aver. Three-phase Active Power;;1.0;0.0;W;4
+37;3;4210;U32;;Aver. Three-phase Apparent Power;;1.0;0.0;VA;4
+38;3;4212;U32;;Active Energy L1;;100.0;0.0;Wh;4
+39;3;4214;U32;;Active Energy L2;;100.0;0.0;Wh;4
+40;3;4216;U32;;Active Energy L3;;100.0;0.0;Wh;4
+41;3;4218;U32;;Reactive Energy L1;;100.0;0.0;Varh;4
+42;3;4220;U32;;Reactive Energy L2;;100.0;0.0;Varh;4
+43;3;4222;U32;;Reactive Energy L3;;100.0;0.0;Varh;4
+44;3;4224;I32;;Max. of three-phase average Active Power;;1.0;0.0;W;4
+45;3;4226;U32;;Voltage THDF of Line1;;100.0;0.0;;4
+46;3;4228;U32;;Voltage THDF of Line2;;100.0;0.0;;4
+47;3;4230;U32;;Voltage THDF of Line3;;100.0;0.0;;4
+48;3;4232;U32;;Current THDF of Line 1;;100.0;0.0;;4
+49;3;4234;U32;;Current THDF of Line 2;;100.0;0.0;;4
+50;3;4236;U32;;Current THDF of Line 3;;100.0;0.0;;4
+51;3;4238;I32;;Maximum active power demand Line 1;;1.0;0.0;W;4
+52;3;4240;I32;;Maximum active power demand Line 2;;1.0;0.0;W;4
+53;3;4242;I32;;Maximum active power demand Line 3;;1.0;0.0;W;4
+54;3;4244;U32;;Maximum threephase apparent power demand;;1.0;0.0;VA;4
+55;3;4246;U32;;Maximum apparent power demand Line 1;;1.0;0.0;VA;4
+56;3;4248;U32;;Maximum apparent power demand Line 2;;1.0;0.0;VA;4
+57;3;4250;U32;;Maximum apparent power demand Line 3;;1.0;0.0;VA;4
+58;3;4252;U32;;Aver. Active Power from pulse input CH1;;1.0;0.0;W;4
+59;3;4254;U32;;Aver. Reactive Power from pulse input CH2;;1.0;0.0;VA;4
+60;3;4256;U32;;Active Energy from pulse input CH1;;100.0;0.0;Wh;4
+61;3;4258;U32;;Reactive Energy from pulse input CH2;;100.0;0.0;Varh;4
+62;3;4260;U32;;Current threshold for timer 2 activation;;1.0;0.0;mA;4
+63;3;4262;U32;;Three-phase Apparent Energy;;100.0;0.0;VAh ;4
+64;3;4264;U32;;Apparent Energy Line 1;;100.0;0.0;VAh ;4
+65;3;4266;U32;;Apparent Energy Line 2;;100.0;0.0;VAh ;4
+66;3;4268;U32;;Apparent Energy Line 3;;100.0;0.0;VAh ;4
+67;3;4270;U32;;Generated three-phase Active Energy;;100.0;0.0;Wh;4
+68;3;4272;U32;;Generated Active Energy Line 1;;100.0;0.0;Wh;4
+69;3;4274;U32;;Generated Active Energy Line 2;;100.0;0.0;Wh;4
+70;3;4276;U32;;Generated Active Energy Line 3;;100.0;0.0;Wh;4
+71;3;4278;U32;;Generated three-phase Reactive Energy;;100.0;0.0;Varh ;4
+72;3;4280;U32;;Generated Reactive Energy Line 1;;100.0;0.0;Varh ;4
+73;3;4282;U32;;Generated Reactive Energy Line 2;;100.0;0.0;Varh ;4
+74;3;4284;U32;;Generated Reactive Energy Line 3;;100.0;0.0;Varh ;4
+75;3;4286;U32;;Generated three-phase Apparent Energy;;100.0;0.0;VAh ;4
+76;3;4288;U32;;Generated Apparent Energy Line 1;;100.0;0.0;VAh ;4
+77;3;4290;U32;;Generated Apparent Energy Line 2;;100.0;0.0;VAh ;4
+78;3;4292;U32;;Generated Apparent Energy Line 3;;100.0;0.0;VAh ;4
+79;3;4512;U32;;Current Transform. ratio;;1.0;0.0;Units (range 1-2000);4
+80;3;4514;U32;;Voltage Transform. ratio;;1.0;0.0;Units (range 1-600);4
+81;3;4516;U32;;Output pulses weight;;1.0;0.0;Units (range 1-4);4
+82;3;4608;I32;;Partial active energy balance;;100.0;0.0;Wh;4
+83;3;4610;I32;;Partial reactive energy balance;;100.0;0.0;Varh;4
+84;3;4612;I32;;Partial apparent energy balance;;100.0;0.0;Vah;4
+85;3;4614;U32;;Euros_energy factor;;1.0;0.0;Cents euro/kWh;4
+86;3;4616;U32;;CO2_energy factor;;1.0;0.0;CO2 * 100/kWh;4
+87;3;4618;U32;;Timer 1 free running;;1.0;0.0;hh*100 + mm;4
+88;3;4620;I32;;Timer 2 count-down;;1.0;0.0;hh*100 + mm;4
+89;3;4622;I32;;Aver. Active Power Line 1;;1.0;0.0;W;4
+90;3;4624;I32;;Aver. Active Power Line 2;;1.0;0.0;W;4
+91;3;4626;I32;;Aver. Active Power Line 3;;1.0;0.0;W;4
+92;3;4628;I32;;Aver. 3-phase system reactive power;;1.0;0.0;Var;4
+93;3;4630;I32;;Aver. Reactive Power Line 1;;1.0;0.0;Var;4
+94;3;4632;I32;;Aver. Reactive Power Line 2;;1.0;0.0;Var;4
+95;3;4634;I32;;Aver. Reactive Power Line 3;;1.0;0.0;Var;4
+96;3;4636;U32;;Aver. Apparent Power Line 1;;1.0;0.0;VA;4
+97;3;4638;U32;;Aver. Apparent Power Line 2;;1.0;0.0;VA;4
+98;3;4640;U32;;Aver. Apparent Power Line 3;;1.0;0.0;VA;4
+99;3;4642;I32;;Max. Active Power Line 1;;1.0;0.0;W;4
+100;3;4644;I32;;Max. Active Power Line 2;;1.0;0.0;W;4
+101;3;4646;I32;;Max. Active Power Line 3;;1.0;0.0;W;4
+102;3;4648;U32;;Max. Apparent Power Line 1;;1.0;0.0;VA;4
+103;3;4650;U32;;Max. Apparent Power Line 2;;1.0;0.0;VA;4
+104;3;4652;U32;;Max. Apparent Power Line 3;;1.0;0.0;VA;4
+105;3;4654;U32;;Wiring configuration;;1.0;0.0;Units (range 1-4);4
+106;3;4656;U32;;Status;;1.0;0.0;;8
+107;3;4658;U32;;IP address;;1.0;0.0;;1
+108;3;4660;U32;;Host Name;;1.0;0.0;;1
+109;3;4662;U32;;Slave-ID _ Ver. FW;;1.0;0.0;;1
+110;3;4664;U32;;Max. three-phase current;;1.0;0.0;mA;1
+111;3;4666;U32;;Minimum three-phase current;;1.0;0.0;mA;1
+112;3;4668;U32;;Min. Current L1;;1.0;0.0;mA;1
+113;3;4670;U32;;Min. Current L2;;1.0;0.0;mA;1
+114;3;4672;U32;;Min. Current L3;;1.0;0.0;mA;1
+115;3;4674;U32;;Maximum three-phase system voltage;;1.0;0.0;V;1
+116;3;4676;U32;;Max. Voltage L1;;1.0;0.0;V;1
+117;3;4678;U32;;Max. Voltage L2;;1.0;0.0;V;1
+118;3;4680;U32;;Max. Voltage L3;;1.0;0.0;V;1
+119;3;4682;U32;;Min. three-phase system voltage;;1.0;0.0;V;1
+120;3;4684;U32;;Min. Voltage L1;;1.0;0.0;V;1
+121;3;4686;U32;;Min. Voltage L2;;1.0;0.0;V;1
+122;3;4688;U32;;Min. Voltage L3;;1.0;0.0;V;1
+123;3;4528;U32;;Energy Reset Control;;1.0;0.0;;0
+124;3;4530;U32;;Min_max Peak Reset Control;;1.0;0.0;;0
+125;3;4532;U32;;Average Reset Control;;1.0;0.0;;0
+126;3;4544;U32;;Output status Set Control;;1.0;0.0;;1

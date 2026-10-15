@@ -1,0 +1,77 @@
+modbusRTU;Inverter;Webdyn INDIA;MODBUS_SUNGROW_Updated;;;;;;;
+1;4;4999;U16;;Device type code;device_type_code;1.000000;0.000000;;4
+2;4;5000;U16;;Nominal Active Power;P_RATED;1.000000;0.000000;0.1kW;4
+3;4;5001;U16;;Output type;output_type;1.000000;0.000000;;4
+4;4;5002;U16;;Daily power yields;daily_power_yields;1.000000;0.000000;0.1 kWh;4
+5;4;5003;U32_W;;Total power yields;total_power_yields;1.000000;0.000000;kWh;4
+6;4;5005;U32_W;;Total running time;total_running_time;1.000000;0.000000;h;4
+7;4;5007;U16;;Internal temperature;internal_temperature;1.000000;0.000000;0.1 deg cel;4
+8;4;5008;U32_W;;Total apparent power;total_apparent_power;1.000000;0.000000;VA;4
+9;4;5010;U16;;MPPT 1 voltage;mppt_1_voltage;1.000000;0.000000;0.1V;4
+10;4;5011;U16;;MPPT 1 current;mppt_1_current;1.000000;0.000000;0.1A;4
+11;4;5012;U16;;MPPT 2 voltage;mppt_2_voltage;1.000000;0.000000;0.1V;4
+12;4;5013;U16;;MPPT 2 current;mppt_2_current;1.000000;0.000000;0.1A;4
+13;4;5014;U16;;MPPT 3 voltage;mppt_3_voltage;1.000000;0.000000;0.1V;4
+14;4;5015;U16;;MPPT 3 current;mppt_3_current;1.000000;0.000000;0.1A;4
+15;4;5016;U32_W;;Total DC power;total_dc_power;1.000000;0.000000;W;4
+16;4;5018;U16;;Phase A Voltage;phase_a_voltage;1.000000;0.000000;0.1V;4
+17;4;5019;U16;;Phase B Voltage;phase_b_voltage;1.000000;0.000000;0.1V;4
+18;4;5020;U16;;Phase C Voltage;phase_c_voltage;1.000000;0.000000;0.1V;4
+19;4;5021;U16;;Phase A current;phase_a_current;1.000000;0.000000;0.1 A;4
+20;4;5022;U16;;Phase B current;phase_b_current;1.000000;0.000000;0.1 A;4
+21;4;5023;U16;;Phase C current;phase_c_current;1.000000;0.000000;0.1 A;4
+22;4;5024;U32_W;;Reserved;reserved;1.000000;0.000000;W;4
+23;4;5026;U32_W;;Reserved_1;reserved_1;1.000000;0.000000;W;4
+24;4;5028;U32_W;;Reserved_2;reserved_2;1.000000;0.000000;W;4
+25;4;5030;U32_W;;Total active power;P_AC;1.000000;0.000000;W;4
+26;4;5032;U32_W;;Total reactive power;total_reactive_power;1.000000;0.000000;var;4
+27;4;5034;I16;;Power factor;PF;1.000000;0.000000;0.001;4
+28;4;5035;U16;;Grid frequency;FREQ;1.000000;0.000000;0.1 Hz;4
+29;4;5036;U16;;Reserved_3;reserved_3;1.000000;0.000000;;4
+30;4;5037;U16;;Work state;work_state;1.000000;0.000000;;8
+31;4;5044;U16;;Alaram Code;alaram_code;1.000000;0.000000;;8
+32;4;5114;U16;;MPPT 4 voltage;mppt_4_voltage;1.000000;0.000000;0.1V;4
+33;4;5115;U16;;MPPT 4 current;mppt_4_current;1.000000;0.000000;0.1A;4
+34;4;5116;U16;;MPPT 5 voltage;mppt_5_voltage;1.000000;0.000000;0.1V;4
+35;4;5117;U16;;MPPT 5 current;mppt_5_current;1.000000;0.000000;0.1A;4
+36;4;5118;U16;;MPPT 6 voltage;mppt_6_voltage;1.000000;0.000000;0.1V;4
+37;4;5119;U16;;MPPT 6 current;mppt_6_current;1.000000;0.000000;0.1A;4
+38;4;5120;U16;;MPPT 7 voltage;mppt_7_voltage;1.000000;0.000000;0.1V;4
+39;4;5121;U16;;MPPT 7 current;mppt_7_current;1.000000;0.000000;0.1A;4
+40;4;5122;U16;;MPPT 8 voltage;mppt_8_voltage;1.000000;0.000000;0.1V;4
+41;4;5123;U16;;MPPT 8 current;mppt_8_current;1.000000;0.000000;0.1A;4
+42;4;5124;U16;;Reserved_4;reserved_4;1.000000;0.000000;;4
+43;4;5125;U32_W;;Reserved_5;reserved_5;1.000000;0.000000;;4
+44;4;5127;U32_W;;Monthly Power yields;monthly_power_yields;1.000000;0.000000;0.1kWh;4
+45;4;5129;U16;;MPPT 9 voltage;mppt_9_voltage;1.000000;0.000000;0.1V;4
+46;4;5130;U16;;MPPT 9 current;mppt_9_current;1.000000;0.000000;0.1A;4
+47;4;5131;U16;;MPPT 10 voltage;mppt_10_voltage;1.000000;0.000000;0.1V;4
+48;4;5132;U16;;MPPT 10 current;mppt_10_current;1.000000;0.000000;0.1A;4
+49;4;5133;U16;;MPPT 11 voltage;mppt_11_voltage;1.000000;0.000000;0.1V;4
+50;4;5134;U16;;MPPT 11 current;mppt_11_current;1.000000;0.000000;0.1A;4
+51;4;5135;U16;;MPPT 12 voltage;mppt_12_voltage;1.000000;0.000000;0.1V;4
+52;4;5136;U16;;MPPT 12 current;mppt_12_current;1.000000;0.000000;0.1A;4
+53;4;7013;U16;;Current of string 1;current_of_string_1;1.000000;0.000000;0.01A;4
+54;4;7014;U16;;Current of string 2;current_of_string_2;1.000000;0.000000;0.01A;4
+55;4;7015;U16;;Current of string 3;current_of_string_3;1.000000;0.000000;0.01A;4
+56;4;7016;U16;;Current of string 4;current_of_string_4;1.000000;0.000000;0.01A;4
+57;4;7017;U16;;Current of string 5;current_of_string_5;1.000000;0.000000;0.01A;4
+58;4;7018;U16;;Current of string 6;current_of_string_6;1.000000;0.000000;0.01A;4
+59;4;7019;U16;;Current of string 7;current_of_string_7;1.000000;0.000000;0.01A;4
+60;4;7020;U16;;Current of string 8;current_of_string_8;1.000000;0.000000;0.01A;4
+61;4;7021;U16;;Current of string 9;current_of_string_9;1.000000;0.000000;0.01A;4
+62;4;7022;U16;;Current of string 10;current_of_string_10;1.000000;0.000000;0.01A;4
+63;4;7023;U16;;Current of string 11;current_of_string_11;1.000000;0.000000;0.01A;4
+64;4;7024;U16;;Current of string 12;current_of_string_12;1.000000;0.000000;0.01A;4
+65;4;7025;U16;;Current of string 13;current_of_string_13;1.000000;0.000000;0.01A;4
+66;4;7026;U16;;Current of string 14;current_of_string_14;1.000000;0.000000;0.01A;4
+67;4;7027;U16;;Current of string 15;current_of_string_15;1.000000;0.000000;0.01A;4
+68;4;7028;U16;;Current of string 16;current_of_string_16;1.000000;0.000000;0.01A;4
+69;4;7029;U16;;Current of string 17;current_of_string_17;1.000000;0.000000;0.01A;4
+70;4;7030;U16;;Current of string 18;current_of_string_18;1.000000;0.000000;0.01A;4
+71;4;7031;U16;;Current of string 19;current_of_string_19;1.000000;0.000000;0.01A;4
+72;4;7032;U16;;Current of string 20;current_of_string_20;1.000000;0.000000;0.01A;4
+73;4;7033;U16;;Current of string 21;current_of_string_21;1.000000;0.000000;0.01A;4
+74;4;7034;U16;;Current of string 22;current_of_string_22;1.000000;0.000000;0.01A;4
+75;4;7035;U16;;Current of string 23;current_of_string_23;1.000000;0.000000;0.01A;4
+76;4;7036;U16;;Current of string 24;current_of_string_24;1.000000;0.000000;0.01A;4

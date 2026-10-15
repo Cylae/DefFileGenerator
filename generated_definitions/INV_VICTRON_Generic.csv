@@ -1,0 +1,13 @@
+Modbus;Inverter;VICTRON;Generic
+1;4;3;U16;;Input voltage phase 1;U_AC_1;0.1;0.0;VAC;4
+2;4;6;I16;;Input current phase 1;I_AC_1;0.1;0.0;AAC;4
+3;4;9;I16;;Input frequency 1;FREQ;0.01;0.0;Hz;0
+4;4;12;I16;;Input power 1;;10.0;0.0;VA_or_Watts;4
+5;4;15;U16;;Output voltage phase 1;;0.1;0.0;VAC;4
+6;4;18;I16;;Output current phase 1;;0.1;0.0;AAC;4
+7;4;21;I16;;Output frequency;;0.01;0.0;Hz;4
+8;4;23;I16;;Output power 1;;10.0;0.0;VA_or_Watts;4
+9;4;26;U16;;Battery voltage;;0.01;0.0;VDC;4
+10;4;27;I16;;Battery current;;0.1;0.0;ADC;4
+11;4;30;U16;;VE.BUS state of charge;;0.1;0.0;%;4
+12;4;1030;U16;;L1 Energy;;0.01;0.0;kWh;4

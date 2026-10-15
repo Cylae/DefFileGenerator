@@ -1,4 +1,4 @@
-﻿modbusTCP;Meter;Janitza;UMG604-PRO;;;;;;;
+modbusTCP;Meter;Janitza;UMG604-PRO;;;;;;;
 1;3;1317;F32;;Voltage L1-N (_ULN[0]);voltage_l1n_uln0;1.000000;0.000000;V;4
 2;3;1319;F32;;Voltage L2-N (_ULN[1]);voltage_l2n_uln1;1.000000;0.000000;V;4
 3;3;1321;F32;;Voltage L3-N (_ULN[2]);voltage_l3n_uln2;1.000000;0.000000;V;4

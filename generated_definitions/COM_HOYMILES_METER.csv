@@ -1,0 +1,292 @@
+modbus;Logger;HOYMILES;METER;;;;;;;
+1;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
+2;4;12640_6;STRING;;Meter 1: Serial Number;SERIAL;1.000000;0.000000;;4
+3;4;12643;U32;;Meter 1: Total Active Power;P_AC;0.010000;0.000000;kW;4
+4;4;12645;U32;;Meter 1: Phase A Active Power;P_AC_1;0.010000;0.000000;kW;4
+5;4;12647;U32;;Meter 1: Phase B Active Power;P_AC_2;0.010000;0.000000;kW;4
+6;4;12649;U32;;Meter 1: Phase C Active Power;P_AC_3;0.010000;0.000000;kW;4
+7;4;12651;U32;;Meter 1: Power Factor;PF;0.001000;0.000000;;4
+8;4;12653;U32;;Meter 1: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+9;4;12655;U32;;Meter 1: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+10;4;12657;U32;;Meter 1: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+11;4;12659;U32;;Meter 1: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+12;4;12661;U32;;Meter 1: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+13;4;12663;U32;;Meter 1: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+14;4;12665;U32;;Meter 1: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+15;4;12667;U32;;Meter 1: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+16;4;12669;U32;;Meter 1: Phase A Voltage;U_AC_1;0.010000;0.000000;V;4
+17;4;12671;U32;;Meter 1: Phase B Voltage;U_AC_2;0.010000;0.000000;V;4
+18;4;12673;U32;;Meter 1: Phase C Voltage;U_AC_3;0.010000;0.000000;V;4
+19;4;12675;U32;;Meter 1: Phase A Current;I_AC_1;0.010000;0.000000;A;4
+20;4;12677;U32;;Meter 1: Phase B Current;I_AC_2;0.010000;0.000000;A;4
+21;4;12679;U32;;Meter 1: Phase C Current;I_AC_3;0.010000;0.000000;A;4
+22;4;12681;U32;;Meter 1: Phase A Power Factor;PF_1;0.001000;0.000000;;4
+23;4;12683;U32;;Meter 1: Phase B Power Factor;PF_2;0.001000;0.000000;;4
+24;4;12685;U32;;Meter 1: Phase C Power Factor;PF_3;0.001000;0.000000;;4
+25;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0;;4
+26;4;12688;U32;;Meter 1: Uab Line Voltage;U_AC_L1L2;0.010000;0.000000;V;4
+27;4;12690;U32;;Meter 1: Ubc Line Voltage;U_AC_L2L3;0.010000;0.000000;V;4
+28;4;12692;U32;;Meter 1: Uca Line Voltage;U_AC_L3L1;0.010000;0.000000;V;4
+29;4;12768_6;STRING;;Meter 2: Serial Number;;1.000000;0.000000;;4
+30;4;12771;U32;;Meter 2: Total Active Power;;0.010000;0.000000;kW;4
+31;4;12773;U32;;Meter 2: Phase A Active Power;;0.010000;0.000000;kW;4
+32;4;12775;U32;;Meter 2: Phase B Active Power;;0.010000;0.000000;kW;4
+33;4;12777;U32;;Meter 2: Phase C Active Power;;0.010000;0.000000;kW;4
+34;4;12779;U32;;Meter 2: Power Factor;;0.001000;0.000000;;4
+35;4;12781;U32;;Meter 2: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+36;4;12783;U32;;Meter 2: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+37;4;12785;U32;;Meter 2: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+38;4;12787;U32;;Meter 2: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+39;4;12789;U32;;Meter 2: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+40;4;12791;U32;;Meter 2: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+41;4;12793;U32;;Meter 2: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+42;4;12795;U32;;Meter 2: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+43;4;12797;U32;;Meter 2: Phase A Voltage;;0.010000;0.000000;V;4
+44;4;12799;U32;;Meter 2: Phase B Voltage;;0.010000;0.000000;V;4
+45;4;12801;U32;;Meter 2: Phase C Voltage;;0.010000;0.000000;V;4
+46;4;12803;U32;;Meter 2: Phase A Current;;0.010000;0.000000;A;4
+47;4;12805;U32;;Meter 2: Phase B Current;;0.010000;0.000000;A;4
+48;4;12807;U32;;Meter 2: Phase C Current;;0.010000;0.000000;A;4
+49;4;12809;U32;;Meter 2: Phase A Power Factor;;0.001000;0.000000;;4
+50;4;12811;U32;;Meter 2: Phase B Power Factor;;0.001000;0.000000;;4
+51;4;12813;U32;;Meter 2: Phase C Power Factor;;0.001000;0.000000;;4
+52;4;12815;U16;;"Meter 2: Status (0: Offline; 1: Online)";;1.000000;0;;4
+53;4;12816;U32;;Meter 2: Uab Line Voltage;;0.010000;0.000000;V;4
+54;4;12818;U32;;Meter 2: Ubc Line Voltage;;0.010000;0.000000;V;4
+55;4;12820;U32;;Meter 2: Uca Line Voltage;;0.010000;0.000000;V;4
+56;4;12896_6;STRING;;Meter 3: Serial Number;;1.000000;0.000000;;4
+57;4;12899;U32;;Meter 3: Total Active Power;;0.010000;0.000000;kW;4
+58;4;12901;U32;;Meter 3: Phase A Active Power;;0.010000;0.000000;kW;4
+59;4;12903;U32;;Meter 3: Phase B Active Power;;0.010000;0.000000;kW;4
+60;4;12905;U32;;Meter 3: Phase C Active Power;;0.010000;0.000000;kW;4
+61;4;12907;U32;;Meter 3: Power Factor;;0.001000;0.000000;;4
+62;4;12909;U32;;Meter 3: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+63;4;12911;U32;;Meter 3: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+64;4;12913;U32;;Meter 3: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+65;4;12915;U32;;Meter 3: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+66;4;12917;U32;;Meter 3: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+67;4;12919;U32;;Meter 3: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+68;4;12921;U32;;Meter 3: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+69;4;12923;U32;;Meter 3: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+70;4;12925;U32;;Meter 3: Phase A Voltage;;0.010000;0.000000;V;4
+71;4;12927;U32;;Meter 3: Phase B Voltage;;0.010000;0.000000;V;4
+72;4;12929;U32;;Meter 3: Phase C Voltage;;0.010000;0.000000;V;4
+73;4;12931;U32;;Meter 3: Phase A Current;;0.010000;0.000000;A;4
+74;4;12933;U32;;Meter 3: Phase B Current;;0.010000;0.000000;A;4
+75;4;12935;U32;;Meter 3: Phase C Current;;0.010000;0.000000;A;4
+76;4;12937;U32;;Meter 3: Phase A Power Factor;;0.001000;0.000000;;4
+77;4;12939;U32;;Meter 3: Phase B Power Factor;;0.001000;0.000000;;4
+78;4;12941;U32;;Meter 3: Phase C Power Factor;;0.001000;0.000000;;4
+79;4;12943;U16;;"Meter 3: Status (0: Offline; 1: Online)";;1.000000;0;;4
+80;4;12944;U32;;Meter 3: Uab Line Voltage;;0.010000;0.000000;V;4
+81;4;12946;U32;;Meter 3: Ubc Line Voltage;;0.010000;0.000000;V;4
+82;4;12948;U32;;Meter 3: Uca Line Voltage;;0.010000;0.000000;V;4
+83;4;13024_6;STRING;;Meter 4: Serial Number;;1.000000;0.000000;;4
+84;4;13027;U32;;Meter 4: Total Active Power;;0.010000;0.000000;kW;4
+85;4;13029;U32;;Meter 4: Phase A Active Power;;0.010000;0.000000;kW;4
+86;4;13031;U32;;Meter 4: Phase B Active Power;;0.010000;0.000000;kW;4
+87;4;13033;U32;;Meter 4: Phase C Active Power;;0.010000;0.000000;kW;4
+88;4;13035;U32;;Meter 4: Power Factor;;0.001000;0.000000;;4
+89;4;13037;U32;;Meter 4: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+90;4;13039;U32;;Meter 4: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+91;4;13041;U32;;Meter 4: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+92;4;13043;U32;;Meter 4: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+93;4;13045;U32;;Meter 4: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+94;4;13047;U32;;Meter 4: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+95;4;13049;U32;;Meter 4: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+96;4;13051;U32;;Meter 4: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+97;4;13053;U32;;Meter 4: Phase A Voltage;;0.010000;0.000000;V;4
+98;4;13055;U32;;Meter 4: Phase B Voltage;;0.010000;0.000000;V;4
+99;4;13057;U32;;Meter 4: Phase C Voltage;;0.010000;0.000000;V;4
+100;4;13059;U32;;Meter 4: Phase A Current;;0.010000;0.000000;A;4
+101;4;13061;U32;;Meter 4: Phase B Current;;0.010000;0.000000;A;4
+102;4;13063;U32;;Meter 4: Phase C Current;;0.010000;0.000000;A;4
+103;4;13065;U32;;Meter 4: Phase A Power Factor;;0.001000;0.000000;;4
+104;4;13067;U32;;Meter 4: Phase B Power Factor;;0.001000;0.000000;;4
+105;4;13069;U32;;Meter 4: Phase C Power Factor;;0.001000;0.000000;;4
+106;4;13071;U16;;"Meter 4: Status (0: Offline; 1: Online)";;1.000000;0;;4
+107;4;13072;U32;;Meter 4: Uab Line Voltage;;0.010000;0.000000;V;4
+108;4;13074;U32;;Meter 4: Ubc Line Voltage;;0.010000;0.000000;V;4
+109;4;13076;U32;;Meter 4: Uca Line Voltage;;0.010000;0.000000;V;4
+110;4;13152_6;STRING;;Meter 5: Serial Number;;1.000000;0.000000;;4
+111;4;13155;U32;;Meter 5: Total Active Power;;0.010000;0.000000;kW;4
+112;4;13157;U32;;Meter 5: Phase A Active Power;;0.010000;0.000000;kW;4
+113;4;13159;U32;;Meter 5: Phase B Active Power;;0.010000;0.000000;kW;4
+114;4;13161;U32;;Meter 5: Phase C Active Power;;0.010000;0.000000;kW;4
+115;4;13163;U32;;Meter 5: Power Factor;;0.001000;0.000000;;4
+116;4;13165;U32;;Meter 5: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+117;4;13167;U32;;Meter 5: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+118;4;13169;U32;;Meter 5: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+119;4;13171;U32;;Meter 5: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+120;4;13173;U32;;Meter 5: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+121;4;13175;U32;;Meter 5: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+122;4;13177;U32;;Meter 5: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+123;4;13179;U32;;Meter 5: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+124;4;13181;U32;;Meter 5: Phase A Voltage;;0.010000;0.000000;V;4
+125;4;13183;U32;;Meter 5: Phase B Voltage;;0.010000;0.000000;V;4
+126;4;13185;U32;;Meter 5: Phase C Voltage;;0.010000;0.000000;V;4
+127;4;13187;U32;;Meter 5: Phase A Current;;0.010000;0.000000;A;4
+128;4;13189;U32;;Meter 5: Phase B Current;;0.010000;0.000000;A;4
+129;4;13191;U32;;Meter 5: Phase C Current;;0.010000;0.000000;A;4
+130;4;13193;U32;;Meter 5: Phase A Power Factor;;0.001000;0.000000;;4
+131;4;13195;U32;;Meter 5: Phase B Power Factor;;0.001000;0.000000;;4
+132;4;13197;U32;;Meter 5: Phase C Power Factor;;0.001000;0.000000;;4
+133;4;13199;U16;;"Meter 5: Status (0: Offline; 1: Online)";;1.000000;0;;4
+134;4;13200;U32;;Meter 5: Uab Line Voltage;;0.010000;0.000000;V;4
+135;4;13202;U32;;Meter 5: Ubc Line Voltage;;0.010000;0.000000;V;4
+136;4;13204;U32;;Meter 5: Uca Line Voltage;;0.010000;0.000000;V;4
+137;4;13280_6;STRING;;Meter 6: Serial Number;;1.000000;0.000000;;4
+138;4;13283;U32;;Meter 6: Total Active Power;;0.010000;0.000000;kW;4
+139;4;13285;U32;;Meter 6: Phase A Active Power;;0.010000;0.000000;kW;4
+140;4;13287;U32;;Meter 6: Phase B Active Power;;0.010000;0.000000;kW;4
+141;4;13289;U32;;Meter 6: Phase C Active Power;;0.010000;0.000000;kW;4
+142;4;13291;U32;;Meter 6: Power Factor;;0.001000;0.000000;;4
+143;4;13293;U32;;Meter 6: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+144;4;13295;U32;;Meter 6: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+145;4;13297;U32;;Meter 6: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+146;4;13299;U32;;Meter 6: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+147;4;13301;U32;;Meter 6: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+148;4;13303;U32;;Meter 6: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+149;4;13305;U32;;Meter 6: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+150;4;13307;U32;;Meter 6: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+151;4;13309;U32;;Meter 6: Phase A Voltage;;0.010000;0.000000;V;4
+152;4;13311;U32;;Meter 6: Phase B Voltage;;0.010000;0.000000;V;4
+153;4;13313;U32;;Meter 6: Phase C Voltage;;0.010000;0.000000;V;4
+154;4;13315;U32;;Meter 6: Phase A Current;;0.010000;0.000000;A;4
+155;4;13317;U32;;Meter 6: Phase B Current;;0.010000;0.000000;A;4
+156;4;13319;U32;;Meter 6: Phase C Current;;0.010000;0.000000;A;4
+157;4;13321;U32;;Meter 6: Phase A Power Factor;;0.001000;0.000000;;4
+158;4;13323;U32;;Meter 6: Phase B Power Factor;;0.001000;0.000000;;4
+159;4;13325;U32;;Meter 6: Phase C Power Factor;;0.001000;0.000000;;4
+160;4;13327;U16;;"Meter 6: Status (0: Offline; 1: Online)";;1.000000;0;;4
+161;4;13328;U32;;Meter 6: Uab Line Voltage;;0.010000;0.000000;V;4
+162;4;13330;U32;;Meter 6: Ubc Line Voltage;;0.010000;0.000000;V;4
+163;4;13332;U32;;Meter 6: Uca Line Voltage;;0.010000;0.000000;V;4
+164;4;13408_6;STRING;;Meter 7: Serial Number;;1.000000;0.000000;;4
+165;4;13411;U32;;Meter 7: Total Active Power;;0.010000;0.000000;kW;4
+166;4;13413;U32;;Meter 7: Phase A Active Power;;0.010000;0.000000;kW;4
+167;4;13415;U32;;Meter 7: Phase B Active Power;;0.010000;0.000000;kW;4
+168;4;13417;U32;;Meter 7: Phase C Active Power;;0.010000;0.000000;kW;4
+169;4;13419;U32;;Meter 7: Power Factor;;0.001000;0.000000;;4
+170;4;13421;U32;;Meter 7: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+171;4;13423;U32;;Meter 7: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+172;4;13425;U32;;Meter 7: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+173;4;13427;U32;;Meter 7: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+174;4;13429;U32;;Meter 7: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+175;4;13431;U32;;Meter 7: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+176;4;13433;U32;;Meter 7: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+177;4;13435;U32;;Meter 7: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+178;4;13437;U32;;Meter 7: Phase A Voltage;;0.010000;0.000000;V;4
+179;4;13439;U32;;Meter 7: Phase B Voltage;;0.010000;0.000000;V;4
+180;4;13441;U32;;Meter 7: Phase C Voltage;;0.010000;0.000000;V;4
+181;4;13443;U32;;Meter 7: Phase A Current;;0.010000;0.000000;A;4
+182;4;13445;U32;;Meter 7: Phase B Current;;0.010000;0.000000;A;4
+183;4;13447;U32;;Meter 7: Phase C Current;;0.010000;0.000000;A;4
+184;4;13449;U32;;Meter 7: Phase A Power Factor;;0.001000;0.000000;;4
+185;4;13451;U32;;Meter 7: Phase B Power Factor;;0.001000;0.000000;;4
+186;4;13453;U32;;Meter 7: Phase C Power Factor;;0.001000;0.000000;;4
+187;4;13455;U16;;"Meter 7: Status (0: Offline; 1: Online)";;1.000000;0;;4
+188;4;13456;U32;;Meter 7: Uab Line Voltage;;0.010000;0.000000;V;4
+189;4;13458;U32;;Meter 7: Ubc Line Voltage;;0.010000;0.000000;V;4
+190;4;13460;U32;;Meter 7: Uca Line Voltage;;0.010000;0.000000;V;4
+191;4;13536_6;STRING;;Meter 8: Serial Number;;1.000000;0.000000;;4
+192;4;13539;U32;;Meter 8: Total Active Power;;0.010000;0.000000;kW;4
+193;4;13541;U32;;Meter 8: Phase A Active Power;;0.010000;0.000000;kW;4
+194;4;13543;U32;;Meter 8: Phase B Active Power;;0.010000;0.000000;kW;4
+195;4;13545;U32;;Meter 8: Phase C Active Power;;0.010000;0.000000;kW;4
+196;4;13547;U32;;Meter 8: Power Factor;;0.001000;0.000000;;4
+197;4;13549;U32;;Meter 8: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+198;4;13551;U32;;Meter 8: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+199;4;13553;U32;;Meter 8: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+200;4;13555;U32;;Meter 8: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+201;4;13557;U32;;Meter 8: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+202;4;13559;U32;;Meter 8: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+203;4;13561;U32;;Meter 8: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+204;4;13563;U32;;Meter 8: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+205;4;13565;U32;;Meter 8: Phase A Voltage;;0.010000;0.000000;V;4
+206;4;13567;U32;;Meter 8: Phase B Voltage;;0.010000;0.000000;V;4
+207;4;13569;U32;;Meter 8: Phase C Voltage;;0.010000;0.000000;V;4
+208;4;13571;U32;;Meter 8: Phase A Current;;0.010000;0.000000;A;4
+209;4;13573;U32;;Meter 8: Phase B Current;;0.010000;0.000000;A;4
+210;4;13575;U32;;Meter 8: Phase C Current;;0.010000;0.000000;A;4
+211;4;13577;U32;;Meter 8: Phase A Power Factor;;0.001000;0.000000;;4
+212;4;13579;U32;;Meter 8: Phase B Power Factor;;0.001000;0.000000;;4
+213;4;13581;U32;;Meter 8: Phase C Power Factor;;0.001000;0.000000;;4
+214;4;13583;U16;;"Meter 8: Status (0: Offline; 1: Online)";;1.000000;0;;4
+215;4;13584;U32;;Meter 8: Uab Line Voltage;;0.010000;0.000000;V;4
+216;4;13586;U32;;Meter 8: Ubc Line Voltage;;0.010000;0.000000;V;4
+217;4;13588;U32;;Meter 8: Uca Line Voltage;;0.010000;0.000000;V;4
+218;4;13664_6;STRING;;Meter 9: Serial Number;;1.000000;0.000000;;4
+219;4;13667;U32;;Meter 9: Total Active Power;;0.010000;0.000000;kW;4
+220;4;13669;U32;;Meter 9: Phase A Active Power;;0.010000;0.000000;kW;4
+221;4;13671;U32;;Meter 9: Phase B Active Power;;0.010000;0.000000;kW;4
+222;4;13673;U32;;Meter 9: Phase C Active Power;;0.010000;0.000000;kW;4
+223;4;13675;U32;;Meter 9: Power Factor;;0.001000;0.000000;;4
+224;4;13677;U32;;Meter 9: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+225;4;13679;U32;;Meter 9: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+226;4;13681;U32;;Meter 9: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+227;4;13683;U32;;Meter 9: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+228;4;13685;U32;;Meter 9: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+229;4;13687;U32;;Meter 9: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+230;4;13689;U32;;Meter 9: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+231;4;13691;U32;;Meter 9: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+232;4;13693;U32;;Meter 9: Phase A Voltage;;0.010000;0.000000;V;4
+233;4;13695;U32;;Meter 9: Phase B Voltage;;0.010000;0.000000;V;4
+234;4;13697;U32;;Meter 9: Phase C Voltage;;0.010000;0.000000;V;4
+235;4;13699;U32;;Meter 9: Phase A Current;;0.010000;0.000000;A;4
+236;4;13701;U32;;Meter 9: Phase B Current;;0.010000;0.000000;A;4
+237;4;13703;U32;;Meter 9: Phase C Current;;0.010000;0.000000;A;4
+238;4;13705;U32;;Meter 9: Phase A Power Factor;;0.001000;0.000000;;4
+239;4;13707;U32;;Meter 9: Phase B Power Factor;;0.001000;0.000000;;4
+240;4;13709;U32;;Meter 9: Phase C Power Factor;;0.001000;0.000000;;4
+241;4;13711;U16;;"Meter 9: Status (0: Offline; 1: Online)";;1.000000;0;;4
+242;4;13712;U32;;Meter 9: Uab Line Voltage;;0.010000;0.000000;V;4
+243;4;13714;U32;;Meter 9: Ubc Line Voltage;;0.010000;0.000000;V;4
+244;4;13716;U32;;Meter 9: Uca Line Voltage;;0.010000;0.000000;V;4
+245;4;13792_6;STRING;;Meter 10: Serial Number;;1.000000;0.000000;;4
+246;4;13795;U32;;Meter 10: Total Active Power;;0.010000;0.000000;kW;4
+247;4;13797;U32;;Meter 10: Phase A Active Power;;0.010000;0.000000;kW;4
+248;4;13799;U32;;Meter 10: Phase B Active Power;;0.010000;0.000000;kW;4
+249;4;13801;U32;;Meter 10: Phase C Active Power;;0.010000;0.000000;kW;4
+250;4;13803;U32;;Meter 10: Power Factor;;0.001000;0.000000;;4
+251;4;13805;U32;;Meter 10: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+252;4;13807;U32;;Meter 10: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+253;4;13809;U32;;Meter 10: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+254;4;13811;U32;;Meter 10: Phase C Total Electricity Positive Import;;0.010000;0.000000;kWh;4
+255;4;13813;U32;;Meter 10: Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+256;4;13815;U32;;Meter 10: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+257;4;13817;U32;;Meter 10: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+258;4;13819;U32;;Meter 10: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
+259;4;13821;U32;;Meter 10: Phase A Voltage;;0.010000;0.000000;V;4
+260;4;13823;U32;;Meter 10: Phase B Voltage;;0.010000;0.000000;V;4
+261;4;13825;U32;;Meter 10: Phase C Voltage;;0.010000;0.000000;V;4
+262;4;13827;U32;;Meter 10: Phase A Current;;0.010000;0.000000;A;4
+263;4;13829;U32;;Meter 10: Phase B Current;;0.010000;0.000000;A;4
+264;4;13831;U32;;Meter 10: Phase C Current;;0.010000;0.000000;A;4
+265;4;13833;U32;;Meter 10: Phase A Power Factor;;0.001000;0.000000;;4
+266;4;13835;U32;;Meter 10: Phase B Power Factor;;0.001000;0.000000;;4
+267;4;13837;U32;;Meter 10: Phase C Power Factor;;0.001000;0.000000;;4
+268;4;13839;U16;;"Meter 10: Status (0: Offline; 1: Online)";;1.000000;0;;4
+269;4;13840;U32;;Meter 10: Uab Line Voltage;;0.010000;0.000000;V;4
+270;4;13842;U32;;Meter 10: Ubc Line Voltage;;0.010000;0.000000;V;4
+271;4;13844;U32;;Meter 10: Uca Line Voltage;;0.010000;0.000000;V;4
+272;3;20483_6;STRING;;Meter 1: SN;;1.000000;0.000000;;1
+273;3;20486;U16;;Meter 1: CT Setting;;1.000000;0.000000;;1
+274;3;20487_6;STRING;;Meter 2: SN;;1.000000;0.000000;;1
+275;3;20490;U16;;Meter 2: CT Setting;;1.000000;0.000000;;1
+276;3;20491_6;STRING;;Meter 3: SN;;1.000000;0.000000;;1
+277;3;20494;U16;;Meter 3: CT Setting;;1.000000;0.000000;;1
+278;3;20495_6;STRING;;Meter 4: SN;;1.000000;0.000000;;1
+279;3;20498;U16;;Meter 4: CT Setting;;1.000000;0.000000;;1
+280;3;20499_6;STRING;;Meter 5: SN;;1.000000;0.000000;;1
+281;3;20502;U16;;Meter 5: CT Setting;;1.000000;0.000000;;1
+282;3;20503_6;STRING;;Meter 6: SN;;1.000000;0.000000;;1
+283;3;20506;U16;;Meter 6: CT Setting;;1.000000;0.000000;;1
+284;3;20507_6;STRING;;Meter 7: SN;;1.000000;0.000000;;1
+285;3;20510;U16;;Meter 7: CT Setting;;1.000000;0.000000;;1
+286;3;20511_6;STRING;;Meter 8: SN;;1.000000;0.000000;;1
+287;3;20514;U16;;Meter 8: CT Setting;;1.000000;0.000000;;1
+288;3;20515_6;STRING;;Meter 9: SN;;1.000000;0.000000;;1
+289;3;20518;U16;;Meter 9: CT Setting;;1.000000;0.000000;;1
+290;3;20519_6;STRING;;Meter 10: SN;;1.000000;0.000000;;1
+291;3;20522;U16;;Meter 10: CT Setting;;1.000000;0.000000;;1

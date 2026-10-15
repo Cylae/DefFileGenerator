@@ -1,0 +1,76 @@
+modbusRTU;Other;Autarco;Modbus Table;;;;;;;
+1;3;3000;U16;;Product model;MODEL;1.000000;0.000000;;4
+2;3;3001;U16;;DSP software version;dsp_software_version;1.000000;0.000000;;4
+3;3;3002;U16;;LCD software version;lcd_software_version;1.000000;0.000000;;4
+4;3;3003;U16;;AC output type;ac_output_type;1.000000;0.000000;;4
+5;3;3004;U16;;DC output type;dc_output_type;1.000000;0.000000;;4
+6;3;3005;U32;;Active power;P_AC;1.000000;0.000000;1W;4
+7;3;3007;U32;;Total DC output power;total_dc_output_power;1.000000;0.000000;1W;4
+8;3;3009;U32;;Total energy;E_TOT;1.000000;0.000000;1kWh;4
+9;3;3011;U32;;Energy this month;energy_this_month;1.000000;0.000000;1kWh;4
+10;3;3013;U32;;Energy last month;energy_last_month;1.000000;0.000000;1kWh;4
+11;3;3015;U16;;Energy today;E_DAY;1.000000;0.000000;1kWh;4
+12;3;3016;U16;;Energy yesterday;energy_yesterday;1.000000;0.000000;1kWh;4
+13;3;3017;U32;;Energy this year;energy_this_year;1.000000;0.000000;1kWh;4
+14;3;3019;U32;;Energy last year;energy_last_year;1.000000;0.000000;1kWh;4
+15;3;3021;U16;;Reserved;reserved;1.000000;0.000000;;0
+16;3;3022;U16;;DC voltage 1;dc_voltage_1;1.000000;0.000000;0.1V;4
+17;3;3023;U16;;DC current 1;dc_current_1;1.000000;0.000000;0.1A;4
+18;3;3024;U16;;DC voltage 2;dc_voltage_2;1.000000;0.000000;0.1V;4
+19;3;3025;U16;;DC current 2;dc_current_2;1.000000;0.000000;0.1A;4
+20;3;3026;U16;;DC voltage 3;dc_voltage_3;1.000000;0.000000;0.1V;4
+21;3;3027;U16;;DC current 3;dc_current_3;1.000000;0.000000;0.1A;4
+22;3;3028;U16;;DC voltage 4;dc_voltage_4;1.000000;0.000000;0.1V;4
+23;3;3029;U16;;DC current 4;dc_current_4;1.000000;0.000000;0.1A;4
+24;3;3030;U16;;Reserved;reserved_1;1.000000;0.000000;;0
+25;3;3031;U16;;Reserved;reserved_2;1.000000;0.000000;;0
+26;3;3032;U16;;DC busbar voltage;dc_busbar_voltage;1.000000;0.000000;0.1V;4
+27;3;3033;U16;;DC half-busbar voltage;dc_halfbusbar_voltage;1.000000;0.000000;0.1V;4
+28;3;3034;U16;;AB line voltage / A phase voltage;ab_line_voltage_a_phase_voltage;1.000000;0.000000;0.1V;4
+29;3;3035;U16;;BC line voltage / B phase voltage;bc_line_voltage_b_phase_voltage;1.000000;0.000000;0.1V;4
+30;3;3036;U16;;CA line voltage / C phase voltage;ca_line_voltage_c_phase_voltage;1.000000;0.000000;0.1V;4
+31;3;3037;U16;;A phase current;a_phase_current;1.000000;0.000000;0.1A;4
+32;3;3038;U16;;B phase current;b_phase_current;1.000000;0.000000;0.1A;4
+33;3;3039;U16;;C phase current;c_phase_current;1.000000;0.000000;0.1A;4
+34;3;3040;U16;;Reserved;reserved_3;1.000000;0.000000;;0
+35;3;3041;U16;;Reserved;reserved_4;1.000000;0.000000;;0
+36;3;3042;U16;;Inverter temperature;inverter_temperature;1.000000;0.000000;0.1℃;4
+37;3;3043;U16;;Grid Frequency;FREQ;1.000000;0.000000;0.01Hz;4
+38;3;3044;U16;;Inverter status;inverter_status;1.000000;0.000000;;9
+39;3;3045;U16;;Reserved;reserved_5;1.000000;0.000000;;0
+40;3;3046;U16;;Reserved;reserved_6;1.000000;0.000000;;0
+41;3;3047;U16;;Reserved;reserved_7;1.000000;0.000000;;0
+42;3;3048;U16;;Reserved;reserved_8;1.000000;0.000000;;0
+43;3;3049;U16;;Reserved;reserved_9;1.000000;0.000000;;0
+44;3;3050;U16;;Actual value of limited Active  power;actual_value_of_limited_active_power;1.000000;0.000000;0.01;4
+45;3;3051;I16;;Actual adjust value of power factor;actual_adjust_value_of_power_factor;1.000000;0.000000;0.01;4
+46;3;3052;U16;;Reserved;reserved_10;1.000000;0.000000;;0
+47;3;3053;U16;;Reserved;reserved_11;1.000000;0.000000;;0
+48;3;3054;U16;;Country standard code;country_standard_code;1.000000;0.000000;;4
+49;3;3055;U16;;Power curve code;power_curve_code;1.000000;0.000000;;4
+50;3;3056;U32;;Reactive power;reactive_power;1.000000;0.000000;1Var;4
+51;3;3058;U32;;Apparent power;apparent_power;1.000000;0.000000;1VA;4
+52;3;3060;U16;;Real time power factor;real_time_power_factor;1.000000;0.000000;0.001;4
+53;3;3061;U16;;Inverter SN_1;inverter_sn_1;1.000000;0.000000;;4
+54;3;3062;U16;;Inverter SN_2;inverter_sn_2;1.000000;0.000000;;4
+55;3;3063;U16;;Inverter SN_3;inverter_sn_3;1.000000;0.000000;;4
+56;3;3064;U16;;Inverter SN_4;inverter_sn_4;1.000000;0.000000;;4
+57;3;3065;U16;;Reserved;reserved_12;1.000000;0.000000;;0
+58;3;3066;U16;;Reserved;reserved_13;1.000000;0.000000;;0
+59;3;3067;U16;;Fault Word 00;fault_word_00;1.000000;0.000000;;9
+60;3;3068;U16;;Fault Word 01;fault_word_01;1.000000;0.000000;;9
+61;3;3069;U16;;Fault Word 02;fault_word_02;1.000000;0.000000;;9
+62;3;3070;U16;;Fault Word 03;fault_word_03;1.000000;0.000000;;9
+63;3;3071;U16;;Fault Word 04;fault_word_04;1.000000;0.000000;;9
+64;3;3072;U16;;Fault Word 05;fault_word_05;1.000000;0.000000;;9
+65;3;3073;U16;;System Time(Year);system_timeyear;1.000000;0.000000;;4
+66;3;3074;U16;;System Time(Month);system_timemonth;1.000000;0.000000;;4
+67;3;3075;U16;;System Time(day);system_timeday;1.000000;0.000000;;4
+68;3;3076;U16;;System Time(hour);system_timehour;1.000000;0.000000;;4
+69;3;3077;U16;;System Time(min);system_timemin;1.000000;0.000000;;4
+70;3;3078;U16;;System Time(sec);system_timesec;1.000000;0.000000;;4
+71;3;3079;U16;;Reserved;reserved_14;1.000000;0.000000;;0
+72;3;3080;U16;;Reserved;reserved_15;1.000000;0.000000;;0
+73;3;3081;U16;;Reserved;reserved_16;1.000000;0.000000;;0
+74;3;3082;U16;;Reserved;reserved_17;1.000000;0.000000;;0
+75;3;3083;U16;;Reserved;reserved_18;1.000000;0.000000;;0

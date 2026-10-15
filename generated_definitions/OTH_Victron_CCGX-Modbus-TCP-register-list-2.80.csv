@@ -1,0 +1,561 @@
+modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
+1;4;800_6;STRING;;Serial (System);serial_system;100.000000;0.000000;;4
+2;4;806;U16;;CCGX Relay 1 state;ccgx_relay_1_state;100.000000;0.000000;"0=Open;1=Closed";4
+3;4;807;U16;;CCGX Relay 2 state;ccgx_relay_2_state;100.000000;0.000000;"0=Open;1=Closed";4
+4;4;808;U16;;PV - AC-coupled on output L1;pv_accoupled_on_output_l1;100.000000;0.000000;W;4
+5;4;809;U16;;PV - AC-coupled on output L2;pv_accoupled_on_output_l2;100.000000;0.000000;W;4
+6;4;810;U16;;PV - AC-coupled on output L3;pv_accoupled_on_output_l3;100.000000;0.000000;W;4
+7;4;811;U16;;PV - AC-coupled on input L1;pv_accoupled_on_input_l1;100.000000;0.000000;W;4
+8;4;812;U16;;PV - AC-coupled on input L2;pv_accoupled_on_input_l2;100.000000;0.000000;W;4
+9;4;813;U16;;PV - AC-coupled on input L3;pv_accoupled_on_input_l3;100.000000;0.000000;W;4
+10;4;814;U16;;PV - AC-coupled on generator L1;pv_accoupled_on_generator_l1;100.000000;0.000000;W;4
+11;4;815;U16;;PV - AC-coupled on generator L2;pv_accoupled_on_generator_l2;100.000000;0.000000;W;4
+12;4;816;U16;;PV - AC-coupled on generator L3;pv_accoupled_on_generator_l3;100.000000;0.000000;W;4
+13;4;817;U16;;AC Consumption L1;ac_consumption_l1;100.000000;0.000000;W;4
+14;4;818;U16;;AC Consumption L2;ac_consumption_l2;100.000000;0.000000;W;4
+15;4;819;U16;;AC Consumption L3;ac_consumption_l3;100.000000;0.000000;W;4
+16;4;820;I16;;Grid L1;grid_l1;100.000000;0.000000;W;4
+17;4;821;I16;;Grid L2;grid_l2;100.000000;0.000000;W;4
+18;4;822;I16;;Grid L3;grid_l3;100.000000;0.000000;W;4
+19;4;823;I16;;Genset L1;genset_l1;100.000000;0.000000;W;4
+20;4;824;I16;;Genset L2;genset_l2;100.000000;0.000000;W;4
+21;4;825;I16;;Genset L3;genset_l3;100.000000;0.000000;W;4
+22;4;826;I16;;Active input source;active_input_source;100.000000;0.000000;"0=Unknown;1=Grid;2=Generator;3=Shore power;240=Not connected";4
+23;4;840;U16;;Battery Voltage (System);battery_voltage_system;0.100000;0.000000;V DC;4
+24;4;841;I16;;Battery Current (System);battery_current_system;0.100000;0.000000;A DC;4
+25;4;842;I16;;Battery Power (System);battery_power_system;100.000000;0.000000;W;4
+26;4;843;U16;;Battery State of Charge (System);battery_state_of_charge_system;100.000000;0.000000;'%;4
+27;4;844;U16;;Battery state (System);battery_state_system;100.000000;0.000000;"0=idle;1=charging;2=discharging";4
+28;4;845;U16;;Battery Consumed Amphours (System);battery_consumed_amphours_system;-0.100000;0.000000;Ah;4
+29;4;846;U16;;Battery Time to Go (System);battery_time_to_go_system;100.000000;0.000000;s;4
+30;4;850;U16;;PV - DC-coupled power;pv_dccoupled_power;100.000000;0.000000;W;4
+31;4;851;I16;;PV - DC-coupled current;pv_dccoupled_current;0.100000;0.000000;A DC;4
+32;4;855;U16;;Charger power;charger_power;100.000000;0.000000;W;4
+33;4;860;I16;;DC System Power;dc_system_power;100.000000;0.000000;W;4
+34;4;865;I16;;VE.Bus charge current (System);vebus_charge_current_system;0.100000;0.000000;A DC;4
+35;4;866;I16;;VE.Bus charge power (System);vebus_charge_power_system;100.000000;0.000000;W;4
+36;4;3;U16;;Input voltage phase 1;input_voltage_phase_1;0.100000;0.000000;V AC;4
+37;4;4;U16;;Input voltage phase 2;input_voltage_phase_2;0.100000;0.000000;V AC;4
+38;4;5;U16;;Input voltage phase 3;input_voltage_phase_3;0.100000;0.000000;V AC;4
+39;4;6;I16;;Input current phase 1;input_current_phase_1;0.100000;0.000000;A AC;4
+40;4;7;I16;;Input current phase 2;input_current_phase_2;0.100000;0.000000;A AC;4
+41;4;8;I16;;Input current phase 3;input_current_phase_3;0.100000;0.000000;A AC;4
+42;4;9;I16;;Input frequency 1;input_frequency_1;0.010000;0.000000;Hz;4
+43;4;10;I16;;Input frequency 2;input_frequency_2;0.010000;0.000000;Hz;4
+44;4;11;I16;;Input frequency 3;input_frequency_3;0.010000;0.000000;Hz;4
+45;4;12;I16;;Input power 1;input_power_1;10.000000;0.000000;VA or Watts;4
+46;4;13;I16;;Input power 2;input_power_2;10.000000;0.000000;VA or Watts;4
+47;4;14;I16;;Input power 3;input_power_3;10.000000;0.000000;VA or Watts;4
+48;4;15;U16;;Output voltage phase 1;output_voltage_phase_1;0.100000;0.000000;V AC;4
+49;4;16;U16;;Output voltage phase 2;output_voltage_phase_2;0.100000;0.000000;V AC;4
+50;4;17;U16;;Output voltage phase 3;output_voltage_phase_3;0.100000;0.000000;V AC;4
+51;4;18;I16;;Output current phase 1;output_current_phase_1;0.100000;0.000000;A AC;4
+52;4;19;I16;;Output current phase 2;output_current_phase_2;0.100000;0.000000;A AC;4
+53;4;20;I16;;Output current phase 3;output_current_phase_3;0.100000;0.000000;A AC;4
+54;4;21;I16;;Output frequency;output_frequency;0.010000;0.000000;Hz;4
+55;4;22;I16;;Active input current limit;active_input_current_limit;0.100000;0.000000;A;4
+56;4;23;I16;;Output power 1;output_power_1;10.000000;0.000000;VA or Watts;4
+57;4;24;I16;;Output power 2;output_power_2;10.000000;0.000000;VA or Watts;4
+58;4;25;I16;;Output power 3;output_power_3;10.000000;0.000000;VA or Watts;4
+59;4;26;U16;;Battery voltage;battery_voltage;0.010000;0.000000;V DC;4
+60;4;27;I16;;Battery current;battery_current;0.100000;0.000000;A DC;4
+61;4;28;U16;;Phase count;phase_count;100.000000;0.000000;count;4
+62;4;29;U16;;Active input;active_input;100.000000;0.000000;"0=AC Input 1;1=AC Input 2;240=Disconnected";4
+63;4;30;U16;;VE.Bus state of charge;vebus_state_of_charge;0.100000;0.000000;'%;4
+64;4;31;U16;;VE.Bus state;vebus_state;100.000000;0.000000;"0=Off;1=Low Power;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;8=Passthru;9=Inverting;10=Power assist;11=Power supply;252=Bulk protection";4
+65;4;32;U16;;VE.Bus Error;vebus_error;100.000000;0.000000;"0=No error;1=VE.Bus Error 1: Device is switched off because one of the other phases in the system has switched off;2=VE.Bus Error 2: New and old types MK2 are mixed in the system;3=VE.Bus Error 3: Not all- or more than- the expected devices were found in the system;4=VE.Bus Error 4: No other device whatsoever detected;5=VE.Bus Error 5: Overvoltage on AC-out;6=VE.Bus Error 6: Error in DDC Program;7=VE.Bus BMS connected- which requires an Assistant- but no assistant found;10=VE.Bus Error 10: System time synchronisation problem occurred;14=VE.Bus Error 14: Device cannot transmit data;16=VE.Bus Error 16: Dongle missing;17=VE.Bus Error 17: One of the devices assumed master status because the original master failed;18=VE.Bus Error 18: AC Overvoltage on the output of a slave has occurred while already switched off;22=VE.Bus Error 22: This device cannot function as slave;24=VE.Bus Error 24: Switch-over system protection initiated;25=VE.Bus Error 25: Firmware incompatibility. The firmware of one of the connected device is not sufficiently up to date to operate in conjunction with this device;26=VE.Bus Error 26: Internal error";9
+66;4;33;U16;;Switch Position;switch_position;100.000000;0.000000;"1=Charger Only;2=Inverter Only;3=On;4=Off";4
+67;4;34;U16;;Temperature alarm;temperature_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+68;4;35;U16;;Low battery alarm;low_battery_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+69;4;36;U16;;Overload alarm;overload_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+70;4;37;I16;;ESS power setpoint phase 1;ess_power_setpoint_phase_1;100.000000;0.000000;W;4
+71;4;38;U16;;ESS disable charge flag phase;ess_disable_charge_flag_phase;100.000000;0.000000;"0=Charge allowed;1=Charge disabled";4
+72;4;39;U16;;ESS disable feedback flag phase;ess_disable_feedback_flag_phase;100.000000;0.000000;"0=Feed in allowed;1=Feed in disabled";4
+73;4;40;I16;;ESS power setpoint phase 2;ess_power_setpoint_phase_2;100.000000;0.000000;W;4
+74;4;41;I16;;ESS power setpoint phase 3;ess_power_setpoint_phase_3;100.000000;0.000000;W;4
+75;4;42;U16;;Temperatur sensor alarm;temperatur_sensor_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+76;4;43;U16;;Voltage sensor alarm;voltage_sensor_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+77;4;44;U16;;Temperature alarm L1;temperature_alarm_l1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+78;4;45;U16;;Low battery alarm L1;low_battery_alarm_l1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+79;4;46;U16;;Overload alarm L1;overload_alarm_l1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+80;4;47;U16;;Ripple alarm L1;ripple_alarm_l1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+81;4;48;U16;;Temperature alarm L2;temperature_alarm_l2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+82;4;49;U16;;Low battery alarm L2;low_battery_alarm_l2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+83;4;50;U16;;Overload alarm L2;overload_alarm_l2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+84;4;51;U16;;Ripple alarm L2;ripple_alarm_l2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+85;4;52;U16;;Temperature alarm L3;temperature_alarm_l3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+86;4;53;U16;;Low battery alarm L3;low_battery_alarm_l3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+87;4;54;U16;;Overload alarm L3;overload_alarm_l3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+88;4;55;U16;;Ripple alarm L3;ripple_alarm_l3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+89;4;56;U16;;Disable PV inverter;disable_pv_inverter;100.000000;0.000000;"0=PV enabled;1=PV disabled";4
+90;4;57;U16;;VE.Bus BMS allows battery to be charged;vebus_bms_allows_battery_to_be_charged;100.000000;0.000000;"0=No;1=Yes";4
+91;4;58;U16;;VE.Bus BMS allows battery to be discharged;vebus_bms_allows_battery_to_be_discharged;100.000000;0.000000;"0=No;1=Yes";4
+92;4;59;U16;;VE.Bus BMS is expected;vebus_bms_is_expected;100.000000;0.000000;"0=No;1=Yes";4
+93;4;60;U16;;VE.Bus BMS error;vebus_bms_error;100.000000;0.000000;"0=No;1=Yes";9
+94;4;61;I16;;Battery temperature;battery_temperature;0.100000;0.000000;Degrees celsius;4
+95;4;62;U16;;VE.Bus Reset;vebus_reset;100.000000;0.000000;1=VE.Bus reset;4
+96;4;63;U16;;Phase rotation warning;phase_rotation_warning;100.000000;0.000000;"0=Ok;1=Warning";9
+97;4;64;U16;;Grid lost alarm;grid_lost_alarm;100.000000;0.000000;"0=Ok;2=Alarm";9
+98;4;65;U16;;Feed DC overvoltage into grid;feed_dc_overvoltage_into_grid;100.000000;0.000000;"0=Feed in overvoltage;1=Do not feed in overvoltage";4
+99;4;66;U16;;Maximum overvoltage feed-in power L1;maximum_overvoltage_feedin_power_l1;100.000000;0.000000;W;4
+100;4;67;U16;;Maximum overvoltage feed-in power L2;maximum_overvoltage_feedin_power_l2;100.000000;0.000000;W;4
+101;4;68;U16;;Maximum overvoltage feed-in power L3;maximum_overvoltage_feedin_power_l3;100.000000;0.000000;W;4
+102;4;69;U16;;AC input 1 ignored;ac_input_1_ignored;100.000000;0.000000;"0=AC input not ignored;1=AC input ignored";4
+103;4;70;U16;;AC input 2 ignored;ac_input_2_ignored;100.000000;0.000000;"0=AC input not ignored;1=AC input ignored";4
+104;4;71;U16;;AcPowerSetpoint acts as feed-in limit;acpowersetpoint_acts_as_feedin_limit;100.000000;0.000000;"0=AcPowerSetpoint interpreted normally; 1=AcPowerSetpoint is OvervoltageFeedIn limit";4
+105;4;72;U16;;Solar offset voltage;solar_offset_voltage;100.000000;0.000000;"0=OvervoltageFeedIn uses 1V offset; 1=OvervoltageFeedIn uses 0.1V offset";4
+106;4;259;U16;;Battery voltage;battery_voltage_1;0.010000;0.000000;V DC;4
+107;4;260;U16;;Starter battery voltage;starter_battery_voltage;0.010000;0.000000;V DC;4
+108;4;261;I16;;Current;current;0.100000;0.000000;A DC;4
+109;4;262;I16;;Battery temperature;battery_temperature_1;0.100000;0.000000;Degrees celsius;4
+110;4;263;U16;;Mid-point voltage of the battery bank;midpoint_voltage_of_the_battery_bank;0.010000;0.000000;V DC;4
+111;4;264;U16;;Mid-point deviation of the battery bank;midpoint_deviation_of_the_battery_bank;0.010000;0.000000;'%;4
+112;4;265;U16;;Consumed Amphours;consumed_amphours;-0.100000;0.000000;Ah;4
+113;4;266;U16;;State of charge;state_of_charge;0.100000;0.000000;'%;4
+114;4;267;U16;;Alarm;alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+115;4;268;U16;;Low voltage alarm;low_voltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+116;4;269;U16;;High voltage alarm;high_voltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+117;4;270;U16;;Low starter-voltage alarm;low_startervoltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+118;4;271;U16;;High starter-voltage alarm;high_startervoltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+119;4;272;U16;;Low State-of-charge alarm;low_stateofcharge_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+120;4;273;U16;;Low temperature alarm;low_temperature_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+121;4;274;U16;;High temperature alarm;high_temperature_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+122;4;275;U16;;Mid-voltage alarm;midvoltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+123;4;276;U16;;Low fused-voltage alarm;low_fusedvoltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+124;4;277;U16;;High fused-voltage alarm;high_fusedvoltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+125;4;278;U16;;Fuse blown alarm;fuse_blown_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+126;4;279;U16;;High internal-temperature alarm;high_internaltemperature_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+127;4;280;U16;;Relay status;relay_status;100.000000;0.000000;"0=Open;1=Closed";9
+128;4;281;U16;;Deepest discharge;deepest_discharge;-0.100000;0.000000;Ah;4
+129;4;282;U16;;Last discharge;last_discharge;-0.100000;0.000000;Ah;4
+130;4;283;U16;;Average discharge;average_discharge;-0.100000;0.000000;Ah;4
+131;4;284;U16;;Charge cycles;charge_cycles;100.000000;0.000000;count;4
+132;4;285;U16;;Full discharges;full_discharges;100.000000;0.000000;count;4
+133;4;286;U16;;Total Ah drawn;total_ah_drawn;-0.100000;0.000000;Ah;4
+134;4;287;U16;;Minimum voltage;minimum_voltage;0.010000;0.000000;V DC;4
+135;4;288;U16;;Maximum voltage;maximum_voltage;0.010000;0.000000;V DC;4
+136;4;289;U16;;Time since last full charge;time_since_last_full_charge;100.000000;0.000000;seconds;4
+137;4;290;U16;;Automatic syncs;automatic_syncs;100.000000;0.000000;count;4
+138;4;291;U16;;Low voltage alarms;low_voltage_alarms;100.000000;0.000000;count;9
+139;4;292;U16;;High voltage alarms;high_voltage_alarms;100.000000;0.000000;count;9
+140;4;293;U16;;Low starter voltage alarms;low_starter_voltage_alarms;100.000000;0.000000;count;9
+141;4;294;U16;;High starter voltage alarms;high_starter_voltage_alarms;100.000000;0.000000;count;9
+142;4;295;U16;;Minimum starter voltage;minimum_starter_voltage;0.010000;0.000000;V DC;4
+143;4;296;U16;;Maximum starter voltage;maximum_starter_voltage;0.010000;0.000000;V DC;4
+144;4;297;U16;;Low fused-voltage alarms;low_fusedvoltage_alarms;100.000000;0.000000;count;9
+145;4;298;U16;;High fused-voltage alarms;high_fusedvoltage_alarms;100.000000;0.000000;count;9
+146;4;299;U16;;Minimum fused voltage;minimum_fused_voltage;0.010000;0.000000;V DC;4
+147;4;300;U16;;Maximum fused voltage;maximum_fused_voltage;0.010000;0.000000;V DC;4
+148;4;301;U16;;Discharged Energy;discharged_energy;0.100000;0.000000;kWh;4
+149;4;302;U16;;Charged Energy;charged_energy;0.100000;0.000000;kWh;4
+150;4;303;U16;;Time to go;time_to_go;100.000000;0.000000;seconds;4
+151;4;304;U16;;State of health;state_of_health;0.100000;0.000000;'%;4
+152;4;305;U16;;Max charge voltage;max_charge_voltage;0.100000;0.000000;V DC;4
+153;4;306;U16;;Min discharge voltage;min_discharge_voltage;0.100000;0.000000;V DC;4
+154;4;307;U16;;Max charge current;max_charge_current;0.100000;0.000000;A DC;4
+155;4;308;U16;;Max discharge current;max_discharge_current;0.100000;0.000000;A DC;4
+156;4;309;U16;;Capacity;capacity;0.100000;0.000000;Ah;4
+157;4;310;I32;;"Diagnostics; 1st last error timestamp";diagnostics_1st_last_error_timestamp;100.000000;0.000000;;9
+158;4;312;I32;;"Diagnostics; 2nd last error timestamp";diagnostics_2nd_last_error_timestamp;100.000000;0.000000;;9
+159;4;314;I32;;"Diagnostics; 3rd last error timestamp";diagnostics_3rd_last_error_timestamp;100.000000;0.000000;;9
+160;4;316;I32;;"Diagnostics; 4th last error timestamp";diagnostics_4th_last_error_timestamp;100.000000;0.000000;;9
+161;4;318;I16;;Minimum cell temperature;minimum_cell_temperature;0.100000;0.000000;Degrees celsius;4
+162;4;319;I16;;Maximum cell temperature;maximum_cell_temperature;0.100000;0.000000;Degrees celsius;4
+163;4;320;U16;;High charge current alarm;high_charge_current_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+164;4;321;U16;;High discharge current alarm;high_discharge_current_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+165;4;322;U16;;Cell imbalance alarm;cell_imbalance_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+166;4;323;U16;;Internal failure alarm;internal_failure_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+167;4;324;U16;;High charge temperature alarm;high_charge_temperature_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+168;4;325;U16;;Low charge temperature alarm;low_charge_temperature_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+169;4;326;U16;;Low cell voltage alarm;low_cell_voltage_alarm;100.000000;0.000000;"0=No alarm;1=Almost discharged;2=Alarm";9
+170;4;771;U16;;Battery voltage;battery_voltage_2;0.010000;0.000000;V DC;4
+171;4;772;I16;;Battery current;battery_current_1;0.100000;0.000000;A DC;4
+172;4;773;I16;;Battery temperature;battery_temperature_2;0.100000;0.000000;Degrees celsius;4
+173;4;774;U16;;Charger on/off;charger_onoff;100.000000;0.000000;"1=On;4=Off";4
+174;4;775;U16;;Charge state;charge_state;100.000000;0.000000;"0=Off;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;11=Other (Hub-1);252=External control";4
+175;4;776;U16;;PV voltage;pv_voltage;0.010000;0.000000;V DC;4
+176;4;778;U16;;Equalization pending;equalization_pending;100.000000;0.000000;"0=No;1=Yes;2=Error;3=Unavailable- Unknown";4
+177;4;779;U16;;Equalization time remaining;equalization_time_remaining;0.100000;0.000000;seconds;4
+178;4;780;U16;;Relay on the charger;relay_on_the_charger;100.000000;0.000000;"0=Open;1=Closed";4
+179;4;781;U16;;;;100.000000;0.000000;"0=No alarm;2=Alarm";4
+180;4;782;U16;;Low batt. voltage alarm;low_batt_voltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+181;4;783;U16;;High batt. voltage alarm;high_batt_voltage_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+182;4;784;U16;;Yield today;yield_today;0.100000;0.000000;kWh;4
+183;4;785;U16;;Maximum charge power today;maximum_charge_power_today;100.000000;0.000000;W;4
+184;4;786;U16;;Yield yesterday;yield_yesterday;0.100000;0.000000;kWh;4
+185;4;787;U16;;Maximum charge power yesterday;maximum_charge_power_yesterday;100.000000;0.000000;W;4
+186;4;788;U16;;Error code;error_code;100.000000;0.000000;"0=No error;1=Battery temperature too high;2=Battery voltage too high;3=Battery temperature sensor miswired (+);4=Battery temperature sensor miswired (-);5=Battery temperature sensor disconnected;6=Battery voltage sense miswired (+);7=Battery voltage sense miswired (-);8=Battery voltage sense disconnected;9=Battery voltage wire losses too high;17=Charger temperature too high;18=Charger over-current;19=Charger current polarity reversed;20=Bulk time limit reached;22=Charger temperature sensor miswired;23=Charger temperature sensor disconnected;34=Input current too high";9
+187;4;789;U16;;PV power;pv_power;0.100000;0.000000;W;4
+188;4;790;U16;;User yield;user_yield;0.100000;0.000000;kWh;4
+189;4;791;U16;;MPP operation mode;mpp_operation_mode;100.000000;0.000000;"0=Off;1=Voltage/current limited;2=MPPT active;255=Not available";4
+190;4;3700;U16;;PV voltage for tracker 0;pv_voltage_for_tracker_0;0.010000;0.000000;V DC;4
+191;4;3701;U16;;PV voltage for tracker 1;pv_voltage_for_tracker_1;0.010000;0.000000;V DC;4
+192;4;3702;U16;;PV voltage for tracker 2;pv_voltage_for_tracker_2;0.010000;0.000000;V DC;4
+193;4;3703;U16;;PV voltage for tracker 3;pv_voltage_for_tracker_3;0.010000;0.000000;V DC;4
+194;4;3708;U16;;Yield today for tracker 0;yield_today_for_tracker_0;0.100000;0.000000;kWh;4
+195;4;3709;U16;;Yield today for tracker 1;yield_today_for_tracker_1;0.100000;0.000000;kWh;4
+196;4;3710;U16;;Yield today for tracker 2;yield_today_for_tracker_2;0.100000;0.000000;kWh;4
+197;4;3711;U16;;Yield today for tracker 3;yield_today_for_tracker_3;0.100000;0.000000;kWh;4
+198;4;3712;U16;;Yield yesterday for tracker 0;yield_yesterday_for_tracker_0;0.100000;0.000000;kWh;4
+199;4;3713;U16;;Yield yesterday for tracker 1;yield_yesterday_for_tracker_1;0.100000;0.000000;kWh;4
+200;4;3714;U16;;Yield yesterday for tracker 2;yield_yesterday_for_tracker_2;0.100000;0.000000;kWh;4
+201;4;3715;U16;;Yield yesterday for tracker 3;yield_yesterday_for_tracker_3;0.100000;0.000000;kWh;4
+202;4;3716;U16;;Maximum charge power today for tracker 0;maximum_charge_power_today_for_tracker_0;100.000000;0.000000;W;4
+203;4;3717;U16;;Maximum charge power today for tracker 1;maximum_charge_power_today_for_tracker_1;100.000000;0.000000;W;4
+204;4;3718;U16;;Maximum charge power today for tracker 2;maximum_charge_power_today_for_tracker_2;100.000000;0.000000;W;4
+205;4;3719;U16;;Maximum charge power today for tracker 3;maximum_charge_power_today_for_tracker_3;100.000000;0.000000;W;4
+206;4;3720;U16;;Maximum charge power yesterday tracker 0;maximum_charge_power_yesterday_tracker_0;100.000000;0.000000;W;4
+207;4;3721;U16;;Maximum charge power yesterday tracker 1;maximum_charge_power_yesterday_tracker_1;100.000000;0.000000;W;4
+208;4;3722;U16;;Maximum charge power yesterday tracker 2;maximum_charge_power_yesterday_tracker_2;100.000000;0.000000;W;4
+209;4;3723;U16;;Maximum charge power yesterday tracker 3;maximum_charge_power_yesterday_tracker_3;100.000000;0.000000;W;4
+210;4;3725;U16;;PV power for tracker 0;pv_power_for_tracker_0;100.000000;0.000000;W;4
+211;4;3726;U16;;PV power for tracker 2;pv_power_for_tracker_2;100.000000;0.000000;W;4
+212;4;3727;U16;;PV power for tracker 3;pv_power_for_tracker_3;100.000000;0.000000;W;4
+213;4;1026;U16;;Position;position;100.000000;0.000000;"0=AC input 1;1=AC output;2=AC input 2";4
+214;4;1027;U16;;L1 Voltage;l1_voltage;0.100000;0.000000;V AC;4
+215;4;1028;I16;;L1 Current;l1_current;0.100000;0.000000;A AC;4
+216;4;1029;U16;;L1 Power;l1_power;100.000000;0.000000;W;4
+217;4;1030;U16;;L1 Energy;l1_energy;0.010000;0.000000;kWh;4
+218;4;1031;U16;;L2 Voltage;l2_voltage;0.100000;0.000000;V AC;4
+219;4;1032;I16;;L2 Current;l2_current;0.100000;0.000000;A AC;4
+220;4;1033;U16;;L2 Power;l2_power;100.000000;0.000000;W;4
+221;4;1034;U16;;L2 Energy;l2_energy;0.010000;0.000000;kWh;4
+222;4;1035;U16;;L3 Voltage;l3_voltage;0.100000;0.000000;V AC;4
+223;4;1036;I16;;L3 Current;l3_current;0.100000;0.000000;A AC;4
+224;4;1037;U16;;L3 Power;l3_power;100.000000;0.000000;W;4
+225;4;1038;U16;;L3 Energy;l3_energy;0.010000;0.000000;kWh;4
+226;4;1039_7;STRING;;Serial;serial;100.000000;0.000000;;4
+227;4;1046;U32;;L1 Energy;l1_energy_1;0.010000;0.000000;kWh;4
+228;4;1048;U32;;L2 Energy;l2_energy_1;0.010000;0.000000;kWh;4
+229;4;1050;U32;;L3 Energy;l3_energy_1;0.010000;0.000000;kWh;4
+230;4;1052;I32;;Total Power;total_power;100.000000;0.000000;kW;4
+231;4;1054;U32;;Maximum Power Capacity;maximum_power_capacity;100.000000;0.000000;kW;4
+232;4;1056;U32;;Power limit;power_limit;100.000000;0.000000;kW;4
+233;4;1282;U16;;State;state;100.000000;0.000000;"0=Initializing (Wait start);1=Initializing (before boot);2=Initializing (Before boot delay);3=Initializing (Wait boot);4=Initializing;5=Initializing (Measure battery voltage);6=Initializing (Calculate battery voltage);7=Initializing (Wait bus voltage);8=Initializing (Wait for lynx shunt);9=Running;10=Error (10);11=Unused (11);12=Shutdown;13=Slave updating;14=Standby;15=Going to run;16=Pre-charging";4
+234;4;1283;U16;;Error;error;100.000000;0.000000;"0=No error;1=Battery initialization error;2=No batteries connected;3=Unknown battery connected;4=Different battery type;5=Number of batteries incorrect;6=Lynx Shunt not found;7=Battery measure error;8=Internal calculation error;9=Batteries in series not ok;10=Number of batteries incorrect;11=Hardware error;12=Watchdog error;13=Over voltage;14=Under voltage;15=Over temperature;16=Under temperature;17=Hardware fault;18=Standby shutdown;19=Pre-charge charge error;20=Safety contactor check error;21=Pre-charge discharge error;22=ADC error;23=Slave error;24=Slave warning;25=Pre-charge error;26=Safety contactor error;27=Over current;28=Slave update failed;29=Slave update unavailable;30=Calibration data lost;31=Settings invalid;32=BMS cable;33=Reference failure;34=Wrong system voltage;35=Pre-charge timeout";9
+235;4;1284;U16;;System-switch;systemswitch;100.000000;0.000000;"0=Disabled;1=Enabled";4
+236;4;1285;U16;;Balancing;balancing;100.000000;0.000000;"0=Inactive;1=Active";4
+237;4;1286;U16;;"System; number of batteries";system_number_of_batteries;100.000000;0.000000;count;4
+238;4;1287;U16;;"System; batteries parallel";system_batteries_parallel;100.000000;0.000000;count;4
+239;4;1288;U16;;"System; batteries series";system_batteries_series;100.000000;0.000000;count;4
+240;4;1289;U16;;"System; number of cells per battery";system_number_of_cells_per_battery;100.000000;0.000000;count;4
+241;4;1290;U16;;"System; minimum cell voltage";system_minimum_cell_voltage;0.010000;0.000000;V DC;4
+242;4;1291;U16;;"System; maximum cell voltage";system_maximum_cell_voltage;0.010000;0.000000;V DC;4
+243;4;1292;U16;;"Diagnostics; shutdowns due to error";diagnostics_shutdowns_due_to_error;100.000000;0.000000;count;9
+244;4;1293;U16;;"Diagnostics; 1st last error";diagnostics_1st_last_error;100.000000;0.000000;"0=No error;1=Battery initialization error;2=No batteries connected;3=Unknown battery connected;4=Different battery type;5=Number of batteries incorrect;6=Lynx Shunt not found;7=Battery measure error;8=Internal calculation error;9=Batteries in series not ok;10=Number of batteries incorrect;11=Hardware error;12=Watchdog error;13=Over voltage;14=Under voltage;15=Over temperature;16=Under temperature;17=Hardware fault;18=Standby shutdown;19=Pre-charge charge error;20=Safety contactor check error;21=Pre-charge discharge error;22=ADC error;23=Slave error;24=Slave warning;25=Pre-charge error;26=Safety contactor error;27=Over current;28=Slave update failed;29=Slave update unavailable;30=Calibration data lost;31=Settings invalid;32=BMS cable;33=Reference failure;34=Wrong system voltage;35=Pre-charge timeout";9
+245;4;1294;U16;;"Diagnostics; 2nd last error";diagnostics_2nd_last_error;100.000000;0.000000;"0=No error;1=Battery initialization error;2=No batteries connected;3=Unknown battery connected;4=Different battery type;5=Number of batteries incorrect;6=Lynx Shunt not found;7=Battery measure error;8=Internal calculation error;9=Batteries in series not ok;10=Number of batteries incorrect;11=Hardware error;12=Watchdog error;13=Over voltage;14=Under voltage;15=Over temperature;16=Under temperature;17=Hardware fault;18=Standby shutdown;19=Pre-charge charge error;20=Safety contactor check error;21=Pre-charge discharge error;22=ADC error;23=Slave error;24=Slave warning;25=Pre-charge error;26=Safety contactor error;27=Over current;28=Slave update failed;29=Slave update unavailable;30=Calibration data lost;31=Settings invalid;32=BMS cable;33=Reference failure;34=Wrong system voltage;35=Pre-charge timeout";9
+246;4;1295;U16;;"Diagnostics; 3rd last error";diagnostics_3rd_last_error;100.000000;0.000000;"0=No error;1=Battery initialization error;2=No batteries connected;3=Unknown battery connected;4=Different battery type;5=Number of batteries incorrect;6=Lynx Shunt not found;7=Battery measure error;8=Internal calculation error;9=Batteries in series not ok;10=Number of batteries incorrect;11=Hardware error;12=Watchdog error;13=Over voltage;14=Under voltage;15=Over temperature;16=Under temperature;17=Hardware fault;18=Standby shutdown;19=Pre-charge charge error;20=Safety contactor check error;21=Pre-charge discharge error;22=ADC error;23=Slave error;24=Slave warning;25=Pre-charge error;26=Safety contactor error;27=Over current;28=Slave update failed;29=Slave update unavailable;30=Calibration data lost;31=Settings invalid;32=BMS cable;33=Reference failure;34=Wrong system voltage;35=Pre-charge timeout";9
+247;4;1296;U16;;"Diagnostics; 4th last error";diagnostics_4th_last_error;100.000000;0.000000;"0=No error;1=Battery initialization error;2=No batteries connected;3=Unknown battery connected;4=Different battery type;5=Number of batteries incorrect;6=Lynx Shunt not found;7=Battery measure error;8=Internal calculation error;9=Batteries in series not ok;10=Number of batteries incorrect;11=Hardware error;12=Watchdog error;13=Over voltage;14=Under voltage;15=Over temperature;16=Under temperature;17=Hardware fault;18=Standby shutdown;19=Pre-charge charge error;20=Safety contactor check error;21=Pre-charge discharge error;22=ADC error;23=Slave error;24=Slave warning;25=Pre-charge error;26=Safety contactor error;27=Over current;28=Slave update failed;29=Slave update unavailable;30=Calibration data lost;31=Settings invalid;32=BMS cable;33=Reference failure;34=Wrong system voltage;35=Pre-charge timeout";9
+248;4;1297;U16;;"IO; allow to charge";io_allow_to_charge;100.000000;0.000000;"0=No;1=Yes";4
+249;4;1298;U16;;"IO; allow to discharge";io_allow_to_discharge;100.000000;0.000000;"0=No;1=Yes";4
+250;4;1299;U16;;"IO; external relay";io_external_relay;100.000000;0.000000;"0=Inactive;1=Active";4
+251;4;1300;U16;;"History; Min cell-voltage";history_min_cellvoltage;0.010000;0.000000;V DC;4
+252;4;1301;U16;;"History; Max cell-voltage";history_max_cellvoltage;0.010000;0.000000;V DC;4
+253;4;2048;I16;;Motor RPM;motor_rpm;100.000000;0.000000;RPM;4
+254;4;2049;I16;;Motor temperature;motor_temperature;0.100000;0.000000;Degrees celsius;4
+255;4;2050;U16;;Controller DC Voltage;controller_dc_voltage;0.010000;0.000000;V DC;4
+256;4;2051;I16;;Controller DC Current;controller_dc_current;0.100000;0.000000;A DC;4
+257;4;2052;I16;;Controller DC Power;controller_dc_power;0.100000;0.000000;W;4
+258;4;2053;I16;;Controller Temperature;controller_temperature;0.100000;0.000000;Degrees celsius;4
+259;4;2307;U16;;Output 1 - voltage;output_1_voltage;0.010000;0.000000;V DC;4
+260;4;2308;I16;;Output 1 - current;output_1_current;0.100000;0.000000;A DC;4
+261;4;2309;I16;;Output 1 - temperature;output_1_temperature;0.100000;0.000000;Degrees celsius;4
+262;4;2310;U16;;Output 2 - voltage;output_2_voltage;0.010000;0.000000;V DC;4
+263;4;2311;I16;;Output 2 - current;output_2_current;0.100000;0.000000;A DC;4
+264;4;2312;U16;;Output 3 - voltage;output_3_voltage;0.010000;0.000000;V DC;4
+265;4;2313;I16;;Output 3 - current;output_3_current;0.100000;0.000000;A DC;4
+266;4;2314;I16;;AC Current;ac_current;0.100000;0.000000;A AC;4
+267;4;2315;U16;;AC Power;ac_power;100.000000;0.000000;W DC;4
+268;4;2316;I16;;AC Current limit;ac_current_limit;0.100000;0.000000;A AC;4
+269;4;2317;U16;;Charger on/off;charger_onoff_1;100.000000;0.000000;"0=Off;1=On;2=Error;3=Unavailable- Unknown";4
+270;4;2318;U16;;Charge state;charge_state_1;100.000000;0.000000;"0=Off;1=Low Power Mode;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;8=Passthru;9=Inverting;10=Power assist;11=Power supply mode;252=Bulk protection";4
+271;4;2319;U16;;Error code;error_code_1;100.000000;0.000000;"0=No error;1=Battery temperature too high;2=Battery voltage too high;3=Battery temperature sensor miswired (+);4=Battery temperature sensor miswired (-);5=Battery temperature sensor disconnected;6=Battery voltage sense miswired (+);7=Battery voltage sense miswired (-);8=Battery voltage sense disconnected;9=Battery voltage wire losses too high;17=Charger temperature too high;18=Charger over-current;19=Charger current polarity reversed;20=Bulk time limit reached;22=Charger temperature sensor miswired;23=Charger temperature sensor disconnected;34=Input current too high";9
+272;4;2320;U16;;Relay on the charger;relay_on_the_charger_1;100.000000;0.000000;"0=Open;1=Closed";4
+273;4;2321;U16;;Low voltage alarm;low_voltage_alarm_1;100.000000;0.000000;"0=No alarm;2=Alarm";9
+274;4;2322;U16;;High voltage alarm;high_voltage_alarm_1;100.000000;0.000000;"0=No alarm;2=Alarm";9
+275;4;2600;I16;;Grid L1 - Power;grid_l1_power;100.000000;0.000000;W;4
+276;4;2601;I16;;Grid L2 - Power;grid_l2_power;100.000000;0.000000;W;4
+277;4;2602;I16;;Grid L3 - Power;grid_l3_power;100.000000;0.000000;W;4
+278;4;2603;U16;;Grid L1 - Energy from net;grid_l1_energy_from_net;0.010000;0.000000;kWh;4
+279;4;2604;U16;;Grid L2 - Energy from net;grid_l2_energy_from_net;0.010000;0.000000;kWh;4
+280;4;2605;U16;;Grid L3 - Energy from net;grid_l3_energy_from_net;0.010000;0.000000;kWh;4
+281;4;2606;U16;;Grid L1 - Energy to net;grid_l1_energy_to_net;0.010000;0.000000;kWh;4
+282;4;2607;U16;;Grid L2 - Energy to net;grid_l2_energy_to_net;0.010000;0.000000;kWh;4
+283;4;2608;U16;;Grid L3 - Energy to net;grid_l3_energy_to_net;0.010000;0.000000;kWh;4
+284;4;2609_7;STRING;;Serial;serial_1;1.000000;0.000000;;4
+285;4;2616;U16;;Grid L1 – Voltage;grid_l1_voltage;0.100000;0.000000;V AC;4
+286;4;2617;I16;;Grid L1 – Current;grid_l1_current;0.100000;0.000000;A AC;4
+287;4;2618;U16;;Grid L2 – Voltage;grid_l2_voltage;0.100000;0.000000;V AC;4
+288;4;2619;I16;;Grid L2 – Current;grid_l2_current;0.100000;0.000000;A AC;4
+289;4;2620;U16;;Grid L3 – Voltage;grid_l3_voltage;0.100000;0.000000;V AC;4
+290;4;2621;I16;;Grid L3 – Current;grid_l3_current;0.100000;0.000000;A AC;4
+291;4;2622;U32;;Grid L1 - Energy from net;grid_l1_energy_from_net_1;0.010000;0.000000;kWh;4
+292;4;2624;U32;;Grid L2 - Energy from net;grid_l2_energy_from_net_1;0.010000;0.000000;kWh;4
+293;4;2626;U32;;Grid L3 - Energy from net;grid_l3_energy_from_net_1;0.010000;0.000000;kWh;4
+294;4;2628;U32;;Grid L1 - Energy to net;grid_l1_energy_to_net_1;0.010000;0.000000;kWh;4
+295;4;2630;U32;;Grid L2 - Energy to net;grid_l2_energy_to_net_1;0.010000;0.000000;kWh;4
+296;4;2632;U32;;Grid L3 - Energy to net;grid_l3_energy_to_net_1;0.010000;0.000000;kWh;4
+297;4;2634;U32;;Total Energy from net;total_energy_from_net;0.010000;0.000000;kWh;4
+298;4;2636;U32;;Total Energy to net;total_energy_to_net;0.010000;0.000000;kWh;4
+299;4;2700;I16;;ESS control loop setpoint;ess_control_loop_setpoint;100.000000;0.000000;W;4
+300;4;2701;U16;;ESS max charge current (fractional);ess_max_charge_current_fractional;100.000000;0.000000;'%;4
+301;4;2702;U16;;ESS max discharge current (fractional);ess_max_discharge_current_fractional;100.000000;0.000000;'%;4
+302;4;2703;I16;;ESS control loop setpoint;ess_control_loop_setpoint_1;100.000000;0.000000;W;4
+303;4;2704;U16;;ESS max discharge current;ess_max_discharge_current;10.000000;0.000000;W;4
+304;4;2705;I16;;DVCC system max charge current;dvcc_system_max_charge_current;100.000000;0.000000;A DC;4
+305;4;2706;I16;;Maximum System Grid Feed In;maximum_system_grid_feed_in;100.000000;0.000000;W;4
+306;4;2707;I16;;Feed excess DC-coupled PV into grid;feed_excess_dccoupled_pv_into_grid;100.000000;0.000000;"0=Don’t feed excess DC-tied PV into grid; 1=Feed excess DC-tied PV into the grid";4
+307;4;2708;I16;;Don’t feed excess AC-coupled PV into grid;dont_feed_excess_accoupled_pv_into_grid;100.000000;0.000000;"0=Feed excess AC-tied PV into grid; 1=Don’t feed excess AC-tied PV into the grid";4
+308;4;2709;I16;;Grid limiting status;grid_limiting_status;100.000000;0.000000;"0=Feed-in limiting is inactive; 1=Feed-in limiting is active";9
+309;4;2710;U16;;Limit managed battery voltage;limit_managed_battery_voltage;0.100000;0.000000;V DC;4
+310;4;2800;I32;;Latitude;latitude;0.000000;0.000000;Decimal degrees;4
+311;4;2802;I32;;Longitude;longitude;0.000000;0.000000;Decimal degrees;4
+312;4;2804;U16;;Course;course;0.010000;0.000000;Degrees;4
+313;4;2805;U16;;Speed;speed;0.010000;0.000000;m/s;4
+314;4;2806;U16;;GPS fix;gps_fix;100.000000;0.000000;;4
+315;4;2807;U16;;GPS number of satellites;gps_number_of_satellites;100.000000;0.000000;;4
+316;4;2808;I32;;Altitude;altitude;0.100000;0.000000;m/s;4
+317;4;2900;U16;;ESS BatteryLife state;ess_batterylife_state;100.000000;0.000000;"0=Unused, BL disabled;1=Restarting;2=Self-consumption;3=Self-consumption;4=Self-consumption;5=Discharge disabled;6=Force charge;7=Sustain;9=Keep batteries charged;10=BL Disabled;11=BL Disabled (Low SoC)";4
+318;4;2901;U16;;ESS Minimum SoC (unless grid fails);ess_minimum_soc_unless_grid_fails;0.100000;0.000000;'%;9
+319;4;2902;U16;;ESS Mode;ess_mode;100.000000;0.000000;"1=ESS with Phase Compensation;2=ESS without phase compensation;3=Disabled/External Control";4
+320;4;2903;U16;;ESS active SoC (read only);ess_active_soc_read_only;0.100000;0.000000;'%;4
+321;4;3000;U16;;Product ID;product_id;100.000000;0.000000;;4
+322;4;3001;U32;;Tank capacity;tank_capacity;0.000100;0.000000;m3;4
+323;4;3003;U16;;Tank fluid type;tank_fluid_type;100.000000;0.000000;"0=Fuel;1=Fresh water;2=Waste water;3=Live well;4=Oil;5=Black water (sewage)";4
+324;4;3004;U16;;Tank level;tank_level;0.100000;0.000000;'%;4
+325;4;3005;U32;;Tank remaining fluid;tank_remaining_fluid;0.000100;0.000000;m3;4
+326;4;3007;U16;;Tank status;tank_status;100.000000;0.000000;"0=OK;1=Disconnected;2=Short circuited;3=Reverse Polarity;4=Unknown";9
+327;4;3100;I16;;Output current;output_current;0.100000;0.000000;A AC;4
+328;4;3101;U16;;Output voltage;output_voltage;0.100000;0.000000;V AC;4
+329;4;3102;I16;;Output power;output_power;10.000000;0.000000;W AC;4
+330;4;3105;U16;;Battery voltage;battery_voltage_3;0.010000;0.000000;V DC;4
+331;4;3106;I16;;Battery current;battery_current_2;0.100000;0.000000;A DC;4
+332;4;3110;U16;;High temperature alarm;high_temperature_alarm_1;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+333;4;3111;U16;;High battery voltage alarm;high_battery_voltage_alarm;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+334;4;3112;U16;;High AC-Out voltage alarm;high_acout_voltage_alarm;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+335;4;3113;U16;;Low temperature alarm;low_temperature_alarm_1;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+336;4;3114;U16;;Low battery voltage alarm;low_battery_voltage_alarm;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+337;4;3115;U16;;Low AC-Out voltage alarm;low_acout_voltage_alarm;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+338;4;3116;U16;;Overload alarm;overload_alarm_1;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+339;4;3117;U16;;Ripple alarm;ripple_alarm;100.000000;0.000000;"0=No alarm;1=Warning;2=Alarm";9
+340;4;3125;U16;;Firmware version;firmware_version;100.000000;0.000000;;4
+341;4;3126;U16;;Inverter on/off/eco;inverter_onoffeco;100.000000;0.000000;"2=On;4=Off;5=Eco";4
+342;4;3127;U16;;Inverter model;inverter_model;100.000000;0.000000;;4
+343;4;3128;U16;;Inverter state;inverter_state;100.000000;0.000000;"0=Off;1=Low power mode (search mode);2=Fault;9=Inverting (on)";4
+344;4;3130;U32;;Energy from battery to AC-out;energy_from_battery_to_acout;0.010000;0.000000;kWh;4
+345;4;3132;U32;;Energy from AC-out to battery;energy_from_acout_to_battery;0.010000;0.000000;kWh;4
+346;4;3134;U32;;Energy from solar to AC-out;energy_from_solar_to_acout;0.010000;0.000000;kWh;4
+347;4;3136;U32;;Energy from solar to battery;energy_from_solar_to_battery;0.010000;0.000000;kWh;4
+348;4;3138;U16;;PV voltage (for single tracker units);pv_voltage_for_single_tracker_units;0.100000;0.000000;V DC;4
+349;4;3140;U16;;PV voltage for tracker 0;pv_voltage_for_tracker_0_1;0.100000;0.000000;V DC;4
+350;4;3141;U16;;PV voltage for tracker 1;pv_voltage_for_tracker_1_1;0.100000;0.000000;V DC;4
+351;4;3142;U16;;PV voltage for tracker 2;pv_voltage_for_tracker_2_1;0.100000;0.000000;V DC;4
+352;4;3143;U16;;PV voltage for tracker 3;pv_voltage_for_tracker_3_1;0.100000;0.000000;V DC;4
+353;4;3148;U16;;Yield today for today on tracker 0;yield_today_for_today_on_tracker_0;0.100000;0.000000;kWh;4
+354;4;3149;U16;;Yield today for today on tracker 1;yield_today_for_today_on_tracker_1;0.100000;0.000000;kWh;4
+355;4;3150;U16;;Yield today for today on tracker 2;yield_today_for_today_on_tracker_2;0.100000;0.000000;kWh;4
+356;4;3151;U16;;Yield today for today on tracker 3;yield_today_for_today_on_tracker_3;0.100000;0.000000;kWh;4
+357;4;3152;U16;;Yield today for yesterday on tracker 0;yield_today_for_yesterday_on_tracker_0;0.100000;0.000000;kWh;4
+358;4;3153;U16;;Yield today for yesterday on tracker 1;yield_today_for_yesterday_on_tracker_1;0.100000;0.000000;kWh;4
+359;4;3154;U16;;Yield today for yesterday on tracker 2;yield_today_for_yesterday_on_tracker_2;0.100000;0.000000;kWh;4
+360;4;3155;U16;;Yield today for yesterday on tracker 3;yield_today_for_yesterday_on_tracker_3;0.100000;0.000000;kWh;4
+361;4;3156;U16;;Maximum power for today on tracker 0;maximum_power_for_today_on_tracker_0;100.000000;0.000000;W;4
+362;4;3157;U16;;Maximum power for today on tracker 1;maximum_power_for_today_on_tracker_1;100.000000;0.000000;W;4
+363;4;3158;U16;;Maximum power for today on tracker 2;maximum_power_for_today_on_tracker_2;100.000000;0.000000;W;4
+364;4;3159;U16;;Maximum power for today on tracker 3;maximum_power_for_today_on_tracker_3;100.000000;0.000000;W;4
+365;4;3160;U16;;Maximum power for yesterday on tracker 0;maximum_power_for_yesterday_on_tracker_0;100.000000;0.000000;W;4
+366;4;3161;U16;;Maximum power for yesterday on tracker 1;maximum_power_for_yesterday_on_tracker_1;100.000000;0.000000;W;4
+367;4;3162;U16;;Maximum power for yesterday on tracker 2;maximum_power_for_yesterday_on_tracker_2;100.000000;0.000000;W;4
+368;4;3163;U16;;Maximum power for yesterday on tracker 3;maximum_power_for_yesterday_on_tracker_3;100.000000;0.000000;W;4
+369;4;3164;U16;;PV power for tracker 0;pv_power_for_tracker_0_1;100.000000;0.000000;W;4
+370;4;3165;U16;;PV power for tracker 1;pv_power_for_tracker_1;100.000000;0.000000;W;4
+371;4;3166;U16;;PV power for tracker 2;pv_power_for_tracker_2_1;100.000000;0.000000;W;4
+372;4;3167;U16;;PV power for tracker 3;pv_power_for_tracker_3_1;100.000000;0.000000;W;4
+373;4;3200;U16;;Phase 1 voltage;phase_1_voltage;0.100000;0.000000;V AC;4
+374;4;3201;U16;;Phase 2 voltage;phase_2_voltage;0.100000;0.000000;V AC;4
+375;4;3202;U16;;Phase 3 voltage;phase_3_voltage;0.100000;0.000000;V AC;4
+376;4;3203;I16;;Phase 1 current;phase_1_current;0.100000;0.000000;A AC;4
+377;4;3204;I16;;Phase 2 current;phase_2_current;0.100000;0.000000;A AC;4
+378;4;3205;I16;;Phase 3 current;phase_3_current;0.100000;0.000000;A AC;4
+379;4;3206;I16;;Phase 1 power;phase_1_power;100.000000;0.000000;W;4
+380;4;3207;I16;;Phase 2 power;phase_2_power;100.000000;0.000000;W;4
+381;4;3208;I16;;Phase 3 power;phase_3_power;100.000000;0.000000;W;4
+382;4;3209;U16;;Phase 1 frequency;phase_1_frequency;0.010000;0.000000;Hz;4
+383;4;3210;U16;;Phase 2 frequency;phase_2_frequency;0.010000;0.000000;Hz;4
+384;4;3211;U16;;Phase 3 frequency;phase_3_frequency;0.010000;0.000000;Hz;4
+385;4;3212;U16;;Generator model;generator_model;100.000000;0.000000;;4
+386;4;3213;U16;;Status;status;100.000000;0.000000;"0=Standby;1=Startup 1;2=Startup 2;3=Startup 3;4=Startup 4;5=Startup 5;6=Startup 6;7=Startup 7;8=Running;9=Stopping;10=Error";9
+387;4;3214;U16;;Error;error_1;100.000000;0.000000;"0=No error;1=AC voltage L1 too low;2=AC frequency L1 too low;3=AC current too low;4=AC power too low;5=Emergency stop;6=Servo current too low;7=Oil pressure too low;8=Engine temperature too low;9=Winding temperature too low;10=Exhaust temperature too low;13=Starter current too low;14=Glow current too low;15=Glow current too low;16=Fuel holding magnet current too low;17=Stop solenoid hold coil current too low;18=Stop solenoid pull coil current too low;19=Optional DC out current too low;20=5V output voltage too low;21=Boost output current too low;22=Panel supply current too high;25=Starter battery voltage too low;26=Startup aborted (rotation too low);28=Rotation too low;29=Power contactor current too low;30=AC voltage L2 too low;31=AC frequency L2 too low;32=AC current L2 too low;33=AC power L2 too low;34=AC voltage L3 too low;35=AC frequency L3 too low;36=AC current L3 too low;37=AC power L3 too low;62=Fuel temperature too low;63=Fuel level too low;65=AC voltage L1 too high;66=AC frequency too high;67=AC current too high;68=AC power too high;70=Servo current too high;71=Oil pressure too high;72=Engine temperature too high;73=Winding temperature too high;74=Exhaust temperature too low;77=Starter current too low;78=Glow current too high;79=Glow current too high;80=Fuel holding magnet current too high;81=Stop solenoid hold coil current too high;82=Stop solenoid pull coil current too high;83=Optional DC out current too high;84=5V output voltage too high;85=Boost output current too high;89=Starter battery voltage too high;90=Startup aborted (rotation too high);92=Rotation too high;93=Power contactor current too high;94=AC voltage L2 too high;95=AC frequency L2 too high;96=AC current L2 too high;97=AC power L2 too high;98=AC voltage L3 too high;99=AC frequency L3 too high;100=AC current L3 too high;101=AC power L3 too high;126=Fuel temperature too high;127=Fuel level too high;130=Lost control unit;131=Lost panel;132=Service needed;133=Lost 3-phase module;134=Lost AGT module;135=Synchronization failure;137=Intake airfilter;139=Lost sync. module;140=Load-balance failed;141=Sync-mode deactivated;142=Engine controller;148=Rotating field wrong;149=Fuel level sensor lost;150=Init failed;151=Watchdog;152=Out: winding;153=Out: exhaust;154=Out: Cyl. head;155=Inverter over temperature;156=Inverter overload;157=Inverter communication lost;158=Inverter sync failed;159=CAN communication lost;160=L1 overload;161=L2 overload;162=L3 overload;163=DC overload;164=DC overvoltage;165=Emergency stop;166=No connection";9
+388;4;3215;U16;;Auto start;auto_start;100.000000;0.000000;"0=Disabled;1=Enabled";4
+389;4;3216;U16;;Engine load;engine_load;100.000000;0.000000;'%;4
+390;4;3217;U16;;Engine speed;engine_speed;100.000000;0.000000;RPM;4
+391;4;3218;U16;;Engine operating hours;engine_operating_hours;100.000000;0.000000;s;4
+392;4;3219;I16;;Engine coolant temperature;engine_coolant_temperature;0.100000;0.000000;Degrees celsius;4
+393;4;3220;I16;;Engine winding temperature;engine_winding_temperature;0.100000;0.000000;Degrees celsius;4
+394;4;3221;I16;;Engine exhaust temperature;engine_exhaust_temperature;0.100000;0.000000;Degrees celsius;4
+395;4;3222;U16;;Starter voltage;starter_voltage;0.010000;0.000000;V DC;4
+396;4;3223;U16;;Start generator;start_generator;100.000000;0.000000;"0=Stop;1=Start";4
+397;4;3300;U16;;Product ID;product_id_1;100.000000;0.000000;;4
+398;4;3301;U16;;Temperature scale factor;temperature_scale_factor;0.010000;0.000000;;4
+399;4;3302;I16;;Temperature offset;temperature_offset;0.010000;0.000000;;4
+400;4;3303;U16;;Temperature type;temperature_type;100.000000;0.000000;"0=Battery;1=Fridge;2=Generic";4
+401;4;3304;I16;;Temperature;temperature;0.010000;0.000000;Degrees celsius;4
+402;4;3305;U16;;Temperature status;temperature_status;100.000000;0.000000;"0=OK;1=Disconnected;2=Short circuited;3=Reverse Polarity;4=Unknown";9
+403;4;3400;U32;;Aggregate (measured value);aggregate_measured_value;100.000000;0.000000;m3;4
+404;4;3402;U32;;Count (number of pulses on meter);count_number_of_pulses_on_meter;100.000000;0.000000;;4
+405;4;3420;U32;;Count;count;100.000000;0.000000;;4
+406;4;3422;U16;;State;state_1;100.000000;0.000000;"0=Low;1=High;2=Off;3=On;4=No;5=Yes;6=Open;7=Closed;8=Alarm;9=OK;10=Running;11=Stopped";4
+407;4;3423;U16;;Alarm;alarm_1;100.000000;0.000000;"0=No alarm;2=Alarm";9
+408;4;3424;U16;;Type;type;100.000000;0.000000;"2=Door;3=Bilge pump;4=Bilge alarm;5=Burglar alarm;6=Smoke alarm;7=Fire alarm;8=CO2 alarm";4
+409;4;3500;U16;;Manual Start;manual_start;100.000000;0.000000;"0=Stop generator; 1=Start generator";4
+410;4;3501;U16;;Condition that started the generator;condition_that_started_the_generator;100.000000;0.000000;"0=Stopped;1=Manual;2=TestRun;3=LossOfComms;4=Soc;5=AcLoad;6=BatteryCurrent;7=BatteryVoltage;8=InverterTemperatur;9=InverterOverload;10=StopOnAc1";4
+411;4;3502;U16;;Runtime in seconds;runtime_in_seconds;100.000000;0.000000;seconds;4
+412;4;3504;U32;;Runtime in seconds;runtime_in_seconds_1;100.000000;0.000000;seconds;4
+413;4;3506;U16;;Generator start/stop state;generator_startstop_state;100.000000;0.000000;"0=Stopped;1=Running;10=Error";4
+414;4;3507;U16;;Generator remote error;generator_remote_error;100.000000;0.000000;"0=No Error;1=Remote disabled;2=Remote fault";9
+415;4;3508;U16;;Generator not detected at AC input alarm;generator_not_detected_at_ac_input_alarm;100.000000;0.000000;"0=No alarm;2=Alarm";9
+416;4;3600;U16;;Solar irradiance;solar_irradiance;0.100000;0.000000;W/m^2;4
+417;4;3601;U16;;Wind speed;wind_speed;0.100000;0.000000;m/s;4
+418;4;3602;I16;;Cell temperature of sensor;cell_temperature_of_sensor;0.100000;0.000000;Degrees celsius;4
+419;4;3603;I16;;External temperature;external_temperature;0.100000;0.000000;Degrees celsius;4
+420;4;3800;U16;;Product ID;product_id_2;100.000000;0.000000;;4
+421;4;3802;U32;;Firmware version;firmware_version_1;100.000000;0.000000;;4
+422;4;3804_6;STRING;;Serial;serial_2;100.000000;0.000000;;4
+423;4;3810_4;STRING;;Model;MODEL;100.000000;0.000000;;4
+424;4;3814;U16;;Maximum charge current;maximum_charge_current;100.000000;0.000000;A;4
+425;4;3815;U16;;Mode;mode;100.000000;0.000000;"0=Manual;1=Auto";4
+426;4;3816;U32;;Energy consumed by charger;energy_consumed_by_charger;0.010000;0.000000;kWh;4
+427;4;3818;U16;;L1 Power;l1_power_1;100.000000;0.000000;W;4
+428;4;3819;U16;;L2 Power;l2_power_1;100.000000;0.000000;W;4
+429;4;3820;U16;;L3 Power;l3_power_1;100.000000;0.000000;W;4
+430;4;3821;U16;;Total power;total_power_1;100.000000;0.000000;W;4
+431;4;3822;U16;;Charging time;charging_time;100.000000;0.000000;seconds;4
+432;4;3823;U16;;Charge current;charge_current;100.000000;0.000000;A;4
+433;4;3824;U16;;Status;status_1;100.000000;0.000000;"0=Disconnected; 1=Connected; 2=Charging; 3=Charged; 4=Waiting for sun; 5=Waiting for RFID; 6=Waiting for start; 7=Low SOC; 8=Ground fault; 9=Welded contacts; 10=CP Input shorted; 11=Residual current detected; 12=Under voltage detected; 13=Overvoltage detected; 14=Overheating detected";9
+434;4;3825;U16;;Set charge current (manual mode);set_charge_current_manual_mode;100.000000;0.000000;A;4
+435;4;3826;U16;;Start/stop charging (manual mode);startstop_charging_manual_mode;100.000000;0.000000;"0=Stop;1=Start";4
+436;4;3900;U16;;L1 Power;l1_power_2;100.000000;0.000000;W;4
+437;4;3901;U16;;L2 Power;l2_power_2;100.000000;0.000000;W;4
+438;4;3902;U16;;L3 Power;l3_power_2;100.000000;0.000000;W;4
+439;4;3910;U16;;L1 Voltage;l1_voltage_1;0.100000;0.000000;V AC;4
+440;4;3912;U16;;L2 Voltage;l2_voltage_1;0.100000;0.000000;V AC;4
+441;4;3914;U16;;L3 Voltage;l3_voltage_1;0.100000;0.000000;V AC;4
+442;4;3916;U32;;L1 Energy;l1_energy_2;0.010000;0.000000;kWh;4
+443;4;3918;U32;;L2 Energy;l2_energy_2;0.010000;0.000000;kWh;4
+444;4;3920;U32;;L3 Energy;l3_energy_2;0.010000;0.000000;kWh;4
+445;4;4000;U16;;Battery voltage;battery_voltage_4;0.010000;0.000000;V DC;4
+446;4;4001;I16;;Battery current;battery_current_3;0.100000;0.000000;A;4
+447;4;4002;U16;;Auxiliary voltage;auxiliary_voltage;0.010000;0.000000;V DC;4
+448;4;4003;I16;;Temperature;temperature_1;0.100000;0.000000;Degrees celsius;4
+449;4;4004;U32;;Total energy produced;total_energy_produced;0.010000;0.000000;kWh;4
+450;4;4006;U16;;Low voltage alarm;low_voltage_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+451;4;4007;U16;;High voltage alarm;high_voltage_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+452;4;4008;U16;;Low auxiliary voltage alarm;low_auxiliary_voltage_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+453;4;4009;U16;;High auxiliary voltage alarm;high_auxiliary_voltage_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+454;4;4010;U16;;Low temperature alarm;low_temperature_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+455;4;4011;U16;;High temperature alarm;high_temperature_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+456;4;4100;U16;;Battery voltage;battery_voltage_5;0.010000;0.000000;V DC;4
+457;4;4101;I16;;Battery current;battery_current_4;0.100000;0.000000;A;4
+458;4;4102;U16;;Auxiliary voltage;auxiliary_voltage_1;0.010000;0.000000;V DC;4
+459;4;4103;I16;;Temperature;temperature_2;0.100000;0.000000;Degrees celsius;4
+460;4;4104;U32;;Total energy produced;total_energy_produced_1;0.010000;0.000000;kWh;4
+461;4;4106;U16;;Low voltage alarm;low_voltage_alarm_3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+462;4;4107;U16;;High voltage alarm;high_voltage_alarm_3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+463;4;4108;U16;;Low auxiliary voltage alarm;low_auxiliary_voltage_alarm_1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+464;4;4109;U16;;High auxiliary voltage alarm;high_auxiliary_voltage_alarm_1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+465;4;4110;U16;;Low temperature alarm;low_temperature_alarm_3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+466;4;4111;U16;;High temperature alarm;high_temperature_alarm_3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+467;4;4200;U16;;Battery voltage;battery_voltage_6;0.010000;0.000000;V DC;4
+468;4;4201;I16;;Battery current;battery_current_5;0.100000;0.000000;A;4
+469;4;4202;U16;;Auxiliary voltage;auxiliary_voltage_2;0.010000;0.000000;V DC;4
+470;4;4203;I16;;Temperature;temperature_3;0.100000;0.000000;Degrees celsius;4
+471;4;4204;U32;;Total energy produced;total_energy_produced_2;0.010000;0.000000;kWh;4
+472;4;4206;U16;;Low voltage alarm;low_voltage_alarm_4;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+473;4;4207;U16;;High voltage alarm;high_voltage_alarm_4;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+474;4;4208;U16;;Low auxiliary voltage alarm;low_auxiliary_voltage_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+475;4;4209;U16;;High auxiliary voltage alarm;high_auxiliary_voltage_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+476;4;4210;U16;;Low temperature alarm;low_temperature_alarm_4;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+477;4;4211;U16;;High temperature alarm;high_temperature_alarm_4;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+478;4;4300;U16;;Battery voltage;battery_voltage_7;0.010000;0.000000;V DC;4
+479;4;4301;I16;;Battery current;battery_current_6;0.100000;0.000000;A;4
+480;4;4302;U16;;Auxiliary voltage;auxiliary_voltage_3;0.010000;0.000000;V DC;4
+481;4;4303;I16;;Temperature;temperature_4;0.100000;0.000000;Degrees celsius;4
+482;4;4304;U32;;Total energy consumed;total_energy_consumed;0.010000;0.000000;kWh;4
+483;4;4306;U16;;Low voltage alarm;low_voltage_alarm_5;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+484;4;4307;U16;;High voltage alarm;high_voltage_alarm_5;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+485;4;4308;U16;;Low auxiliary voltage alarm;low_auxiliary_voltage_alarm_3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+486;4;4309;U16;;High auxiliary voltage alarm;high_auxiliary_voltage_alarm_3;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+487;4;4310;U16;;Low temperature alarm;low_temperature_alarm_5;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+488;4;4311;U16;;High temperature alarm;high_temperature_alarm_5;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+489;4;4400;U16;;Battery voltage;battery_voltage_8;0.010000;0.000000;V DC;4
+490;4;4401;I16;;Battery current;battery_current_7;0.100000;0.000000;A;4
+491;4;4402;U16;;Auxiliary voltage;auxiliary_voltage_4;0.010000;0.000000;V DC;4
+492;4;4403;I16;;Temperature;temperature_5;0.100000;0.000000;Degrees celsius;4
+493;4;4404;U32;;Total energy produced;total_energy_produced_3;0.010000;0.000000;kWh;4
+494;4;4406;U32;;Total energy consumed;total_energy_consumed_1;0.010000;0.000000;kWh;4
+495;4;4408;U16;;Low voltage alarm;low_voltage_alarm_6;100.000000;0.000000;"0=No alarm;1=Warning; 2=Alarm";9
+496;4;4409;U16;;High voltage alarm;high_voltage_alarm_6;100.000000;0.000000;"0=No alarm;1=Warning; 2=Alarm";9
+497;4;4410;U16;;Low auxiliary voltage alarm;low_auxiliary_voltage_alarm_4;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+498;4;4411;U16;;High auxiliary voltage alarm;high_auxiliary_voltage_alarm_4;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+499;4;4412;U16;;Low temperature alarm;low_temperature_alarm_6;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+500;4;4413;U16;;High temperature alarm;high_temperature_alarm_6;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+501;4;4500;U16;;Input voltage phase 1;input_voltage_phase_1_1;0.100000;0.000000;V AC;4
+502;4;4501;U16;;Input voltage phase 2;input_voltage_phase_2_1;0.100000;0.000000;V AC;4
+503;4;4502;U16;;Input voltage phase 3;input_voltage_phase_3_1;0.100000;0.000000;V AC;4
+504;4;4503;U16;;Input current phase 1;input_current_phase_1_1;0.100000;0.000000;A AC;4
+505;4;4504;U16;;Input current phase 2;input_current_phase_2_1;0.100000;0.000000;A AC;4
+506;4;4505;U16;;Input current phase 3;input_current_phase_3_1;0.100000;0.000000;A AC;4
+507;4;4506;I16;;Input power phase 1;input_power_phase_1;10.000000;0.000000;W;4
+508;4;4507;I16;;Input power phase 2;input_power_phase_2;10.000000;0.000000;W;4
+509;4;4508;I16;;Input power phase 3;input_power_phase_3;10.000000;0.000000;W;4
+510;4;4509;U16;;Input frequency;input_frequency;0.010000;0.000000;Hz;4
+511;4;4510;U16;;Output voltage phase 1;output_voltage_phase_1_1;0.100000;0.000000;V AC;4
+512;4;4511;U16;;Output voltage phase 2;output_voltage_phase_2_1;0.100000;0.000000;V AC;4
+513;4;4512;U16;;Output voltage phase 3;output_voltage_phase_3_1;0.100000;0.000000;V AC;4
+514;4;4513;U16;;Output current phase 1;output_current_phase_1_1;0.100000;0.000000;A AC;4
+515;4;4514;U16;;Output current phase 2;output_current_phase_2_1;0.100000;0.000000;A AC;4
+516;4;4515;U16;;Output current phase 3;output_current_phase_3_1;0.100000;0.000000;A AC;4
+517;4;4516;I16;;Output power phase 1;output_power_phase_1;10.000000;0.000000;W;4
+518;4;4517;I16;;Output power phase 2;output_power_phase_2;10.000000;0.000000;W;4
+519;4;4518;I16;;Output power phase 3;output_power_phase_3;10.000000;0.000000;W;4
+520;4;4519;U16;;Output frequency;output_frequency_1;0.010000;0.000000;Hz;4
+521;4;4520;U16;;AC input 1 source type;ac_input_1_source_type;100.000000;0.000000;"0=Unused;1=Grid;2=Genset;3=Shore";4
+522;4;4521;U16;;AC input 2 source type;ac_input_2_source_type;100.000000;0.000000;"0=Unused;1=Grid;2=Genset;3=Shore";4
+523;4;4522;U16;;Ac input 1 current limit;ac_input_1_current_limit;0.100000;0.000000;A;4
+524;4;4523;U16;;Ac input 2 current limit;ac_input_2_current_limit;0.100000;0.000000;A;4
+525;4;4524;U16;;Phase count;phase_count_1;100.000000;0.000000;count;4
+526;4;4525;U16;;Active AC input;active_ac_input;100.000000;0.000000;"0=AC Input 1;1=AC Input 2;240=Disconnected";4
+527;4;4526;U16;;Battery voltage;battery_voltage_9;0.010000;0.000000;V DC;4
+528;4;4527;I16;;Battery current;battery_current_8;0.100000;0.000000;A DC;4
+529;4;4528;I16;;Battery temperature;battery_temperature_3;0.100000;0.000000;Degrees celsius;4
+530;4;4529;U16;;Battery State of Charge;battery_state_of_charge;0.100000;0.000000;'%;4
+531;4;4530;U16;;Inverter/Charger state;invertercharger_state;100.000000;0.000000;"0=Off;1=Low Power;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;8=Passthru;9=Inverting;10=Power assist;11=Power supply;252=Bulk protection";4
+532;4;4531;U16;;Switch position;switch_position_1;100.000000;0.000000;"1=Charger Only;2=Inverter Only;3=On;4=Off";4
+533;4;4532;U16;;Temperature alarm;temperature_alarm_1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+534;4;4533;U16;;High voltage alarm;high_voltage_alarm_7;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+535;4;4534;U16;;High AC-Out voltage alarm;high_acout_voltage_alarm_1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+536;4;4535;U16;;Low battery temperature alarm;low_battery_temperature_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+537;4;4536;U16;;Low voltage alarm;low_voltage_alarm_7;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+538;4;4537;U16;;Low AC-Out voltage alarm;low_acout_voltage_alarm_1;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+539;4;4538;U16;;Overload alarm;overload_alarm_2;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+540;4;4539;U16;;High DC ripple alarm;high_dc_ripple_alarm;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9
+541;4;4540;U16;;PV power;pv_power_1;100.000000;0.000000;W;4
+542;4;4541;U16;;User yield;user_yield_1;0.100000;0.000000;kWh;4
+543;4;4542;U16;;Relay on the Multi RS;relay_on_the_multi_rs;100.000000;0.000000;"0=Open;1=Closed";4
+544;4;4543;U16;;MPP operation mode;mpp_operation_mode_1;100.000000;0.000000;"0=Off;1=Voltage/current limited;2=MPPT active;255=Not available";4
+545;4;4544;U16;;PV voltage;pv_voltage_1;0.100000;0.000000;V DC;4
+546;4;4545;U16;;Error code;error_code_2;100.000000;0.000000;"0=No error;1=Battery temperature too high;2=Battery voltage too high;3=Battery temperature sensor miswired (+);4=Battery temperature sensor miswired (-);5=Battery temperature sensor disconnected;6=Battery voltage sense miswired (+);7=Battery voltage sense miswired (-);8=Battery voltage sense disconnected;9=Battery voltage wire losses too high;17=Charger temperature too high;18=Charger over-current;19=Charger current polarity reversed;20=Bulk time limit reached;22=Charger temperature sensor miswired;23=Charger temperature sensor disconnected;34=Input current too high";9
+547;4;4546;U32;;Energy from AC-in-1 to AC-out;energy_from_acin1_to_acout;0.010000;0.000000;kWh;4
+548;4;4548;U32;;Energy from AC-in-1 to battery;energy_from_acin1_to_battery;0.010000;0.000000;kWh;4
+549;4;4550;U32;;Energy from AC-in-2 to AC-out;energy_from_acin2_to_acout;0.010000;0.000000;kWh;4
+550;4;4552;U32;;Energy from AC-in-2 to battery;energy_from_acin2_to_battery;0.010000;0.000000;kWh;4
+551;4;4554;U32;;Energy from AC-out to AC-in-1;energy_from_acout_to_acin1;0.010000;0.000000;kWh;4
+552;4;4556;U32;;Energy from AC-out to AC-in-2;energy_from_acout_to_acin2;0.010000;0.000000;kWh;4
+553;4;4558;U32;;Energy from battery to AC-in-1;energy_from_battery_to_acin1;0.010000;0.000000;kWh;4
+554;4;4560;U32;;Energy from battery to AC-in-2;energy_from_battery_to_acin2;0.010000;0.000000;kWh;4
+555;4;4562;U32;;Energy from battery to AC-out;energy_from_battery_to_acout_1;0.010000;0.000000;kWh;4
+556;4;4564;U32;;Energy from AC-out to battery;energy_from_acout_to_battery_1;0.010000;0.000000;kWh;4
+557;4;4566;U32;;Energy from solar to AC-in-1;energy_from_solar_to_acin1;0.010000;0.000000;kWh;4
+558;4;4568;U32;;Energy from solar to AC-in-2;energy_from_solar_to_acin2;0.010000;0.000000;kWh;4
+559;4;4570;U32;;Energy from solar to AC-out;energy_from_solar_to_acout_1;0.010000;0.000000;kWh;4
+560;4;4572;U32;;Energy from solar to battery;energy_from_solar_to_battery_1;0.010000;0.000000;kWh;4

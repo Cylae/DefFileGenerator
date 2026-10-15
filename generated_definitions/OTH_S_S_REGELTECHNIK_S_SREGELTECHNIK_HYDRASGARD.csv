@@ -1,0 +1,9 @@
+modbusRTU;Other;S+S REGELTECHNIK;S+SREGELTECHNIK_HYDRASGARD;;;;;;;
+1;4;1;I16;;Temperature Sampling;temperature_sampling;1.000000;0.000000;Deg. Celsius;4
+2;4;2;I16;;Temperature Filtering;temperature_filtering;1.000000;0.000000;Deg. Celsius;4
+3;4;3;I16;;Relative humidity sampling;relative_humidity_sampling;1.000000;0.000000;Percent/r.H;4
+4;4;4;I16;;Relative humidity Filtering;relative_humidity_filtering;1.000000;0.000000;Percent/r.H;4
+5;4;5;I16;;Dew point;dew_point;1.000000;0.000000;Deg. Celsius;4
+6;4;6;I16;;Absolute humidity;absolute_humidity;1.000000;0.000000;g/m3;4
+7;4;7;I16;;Mixing ratio;mixing_ratio;1.000000;0.000000;g/kg;4
+8;4;8;I16;;Enthalpy;enthalpy;1.000000;0.000000;kJ/kg;4

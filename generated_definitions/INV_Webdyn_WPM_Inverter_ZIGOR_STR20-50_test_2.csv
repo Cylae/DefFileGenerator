@@ -1,0 +1,144 @@
+modbusRTU;Inverter;ZIGOR;STR20-50
+1;3;3200_10;STRING;;Machine model;MODEL;1.000000;0.000000;;4
+2;3;3205;U8;;DSP version;;1.000000;0.000000;;4
+3;3;3205;U8;;ARM version;;1.000000;0.000000;;4
+4;3;3206_22;STRING;;Inverter SN;SERIAL;1.000000;0.000000;;4
+5;3;4000;U16;;Clear  statistical information;;1.000000;0.000000;;4
+6;3;4001;U16;;Remote power-off;CMD_OFF;1.000000;0.000000;;4
+7;3;4002;U16;;Revoke remote power-off;;1.000000;0.000000;;4
+8;3;4003;U16;;Set the power factor;PF;1.000000;0.000000;;4
+9;3;4004;U16;;Set the active power;CMD_P_AC_SET_PERCENT;1.000000;0.000000;%;4
+10;3;4005;I16;;Set the reactive power;Q_AC;1.000000;0.000000;Kvar;4
+11;3;4006;U16;;Set the reactive control mode;;1.000000;0.000000;;4
+12;3;4007;U16;;Overfrequency derating;FREQ;1.000000;0.000000;;4
+13;3;4008;U16;;Overfrequency derating Threshold;;0.010000;0.000000;Hz;4
+14;3;4011;U16;;LOGO Settings;;1.000000;0.000000;;4
+15;3;4012;U16;;Input Mode Settings;;1.000000;0.000000;;4
+16;3;4013;U16;;Grid Connection Standard Settings;;1.000000;0.000000;;4
+17;3;4014;U16;;StartVoltageSettings;;1.000000;0.000000;;4
+18;3;4015;U16;;Start Delay Settings;;1.000000;0.000000;;4
+19;3;4016;U16;;Grid Voltage  Lower Limit Settings;;1.000000;0.000000;;4
+20;3;4017;U16;;Grid Voltage  Upper Limit;;1.000000;0.000000;;4
+21;3;4018;U16;;Grid Frequency  Lower Limit Settings;;1.000000;0.000000;;4
+22;3;4019;U16;;Grid  Frequency   Upper Limit Settings;;1.000000;0.000000;;4
+23;3;4020;U16;;Back Current Power Limit Settings;CMD_P_AC_SET_ABS;1.000000;0.000000;W;4
+24;3;4021;U16;;Overvoltage Derating Threshold Value;;0.001000;0.000000;;4
+25;3;4023;U16;;485Address Settings (U2);;1.000000;0.000000;;4
+26;3;4024;U16;;485Baud RateSettings(U2);;1.000000;0.000000;;4
+27;3;4025;U16;;485ProtocolSettings;;1.000000;0.000000;;4
+28;3;4026;U16;;485Address Settings(U4);;1.000000;0.000000;;4
+29;3;4027;U16;;485Baud RateSettings (U4);;1.000000;0.000000;;4
+30;3;4028;U16;;Three-phase Settings;;1.000000;0.000000;;4
+31;3;4029;U16;;Remote Control Settings;;1.000000;0.000000;;4
+32;3;4030;U16;;String Test Threshold Value Settings;;1.000000;0.000000;A;4
+33;3;4031;U16;;Self-check (Enable);;1.000000;0.000000;;4
+34;3;4032;U16;;Self-check (Disable);;1.000000;0.000000;;4
+35;3;4033;U16;;Clear Fault Record;;1.000000;0.000000;;4
+36;3;4034;U16;;Factory Data Reset;;1.000000;0.000000;;4
+37;3;4035;U16;;Start I/VScan;;1.000000;0.000000;;4
+38;3;4036;I16;;OUTPUT ADJUSTING (20/50KW);;1.000000;0.000000;KW;4
+39;3;4037;I16;;Active PowerIncrement (W);;1.000000;0.000000;W;4
+40;3;4038;I16;;Soft Start Active Power Change Rate;P_AC;1.000000;0.000000;%/min;4
+41;3;4039;U16;;Active Power Settings;;0.001000;0.000000;;4
+42;3;4040;U16;;R-phase Voltage Calibration Factor;;1.000000;0.000000;;4
+43;3;4041;U16;;S-phase Voltage Calibration Factor;;1.000000;0.000000;;4
+44;3;4042;U16;;T-phase Voltage Calibration Factor;;1.000000;0.000000;;4
+45;3;4043;U16;;R-phase Current Calibration Factor;I_AC_3;1.000000;0.000000;;4
+46;3;4044;U16;;S-phase Calibration;;1.000000;0.000000;;4
+47;3;4045;U16;;T-phase Current Calibration Factor;;1.000000;0.000000;;4
+48;3;4046;U16;;BatteryVoltage Calibration Factor;;1.000000;0.000000;;4
+49;3;4113;U16;;OUTPUT ADJUSTING (120/250KW);;1.000000;0.000000;KW;4
+50;3;4114;U16;;Nominal Power write;P_RATED;1.000000;0.000000;KW;4
+51;4;3006;I32;;PV1 input power;P_DC_MPPT_1;1.000000;0.000000;W;4
+52;4;3008;I32;;PV2 input power;P_DC_MPPT_2;1.000000;0.000000;W;4
+53;4;3010;I32;;PV3 input power;P_DC_MPPT_3;1.000000;0.000000;W;4
+54;4;3012;U16;;PBUS voltage;U_DC;0.100000;0.000000;V;4
+55;4;3013;U16;;NBUS voltage;;0.100000;0.000000;V;4
+56;4;3014;U16;;RS-phase grid voltage;;0.100000;0.000000;V;4
+57;4;3015;U16;;ST-phase grid voltage;;0.100000;0.000000;V;4
+58;4;3016;U16;;TR-phase grid voltage;;0.100000;0.000000;V;4
+59;4;3017;U16;;RS-phase grid frequency;;0.010000;0.000000;Hz;4
+60;4;3018;U16;;ST-phase grid frequency;;0.010000;0.000000;Hz;4
+61;4;3019;U16;;TR-phase grid frequency;;0.010000;0.000000;Hz;4
+62;4;3020;U16;;R-phase grid-tied current;;0.010000;0.000000;A;4
+63;4;3021;U16;;S-phasegrid-tied current;;0.010000;0.000000;A;4
+64;4;3022;U16;;T-phase grid-tied current;;0.010000;0.000000;A;4
+65;4;3023;I32;;Grid-tied power;;1.000000;0.000000;W;4
+66;4;3025;U16;;Radiator temperature;;0.100000;0.000000;C;4
+67;4;3026;U16;;Module temperature;TEMP_CELL;0.100000;0.000000;C;4
+68;4;3027;U16;;DSP alarm code;;1.000000;0.000000;;4
+69;4;3028;U32;;DSP error code;;1.000000;0.000000;;4
+70;4;3030;U8;;Operating mode of the inverter;;1.000000;0.000000;;4
+71;4;3030;U8;;Inverter model;;1.000000;0.000000;;4
+72;4;3031;U16;;Rotational speed of fan A;;1.000000;0.000000;r/min;4
+73;4;3032;U16;;Rotational speed of fan B;;1.000000;0.000000;r/min;4
+74;4;3033;U16;;Rotational speed of fan C;;1.000000;0.000000;r/min;4
+75;4;3036;U8;;ARM alarm code;;1.000000;0.000000;;4
+76;4;3036;U8;;ARM error code;;1.000000;0.000000;;4
+77;4;3037;U8;;Input mode;;1.000000;0.000000;;4
+78;4;3037;U8;;Mains standard;;1.000000;0.000000;;4
+79;4;3038;U32;;Total energy yield;E_TOT;0.100000;0.000000;Kwh;4
+80;4;3040;U32;;Annual energy yield;;1.000000;0.000000;Kwh;4
+81;4;3042;U16;;Daily energy yield;E_DAY;1.000000;0.000000;Kwh;4
+82;4;3043;U16;;Power-on voltage;;0.100000;0.000000;V;4
+83;4;3044;U16;;Power-on delay;;1.000000;0.000000;s;4
+84;4;3045;U16;;Lower grid voltage threshold;;0.100000;0.000000;V;4
+85;4;3046;U16;;Upper grid voltage threshold;;0.100000;0.000000;V;4
+86;4;3047;U16;;Lower grid frequency threshold;;0.010000;0.000000;Hz;4
+87;4;3048;U16;;Upper grid frequency threshold;;0.010000;0.000000;Hz;4
+88;4;3049;U16;;Preset power factor;;1.000000;0.000000;;4
+89;4;3050;U16;;Preset active power;;1.000000;0.000000;%;4
+90;4;3051;I8;;Preset reactive power;;1.000000;0.000000;Kvar;4
+91;4;3051;U8;;Reactive control mode;;1.000000;0.000000;;4
+92;4;3052;I32;;Apparent power;S_AC;1.000000;0.000000;VA;4
+93;4;3054;I32;;Reactive power;;1.000000;0.000000;Var;4
+94;4;3056;U16;;Power factor;;1.000000;0.000000;;4
+95;4;3057;U16;;DC insulation resistance;R_ISO;1.000000;0.000000;Kohm;4
+96;4;3058;U16;;Overfrequency derating_1;;1.000000;0.000000;;4
+97;4;3059;U16;;Overfrequency derating threshold_1;;1.000000;0.000000;;4
+98;4;3060;U16;;High voltage of the QV curve;;1.000000;0.000000;;4
+99;4;3061;U16;;High-voltage power;;1.000000;0.000000;;4
+100;4;3062;U16;;Low voltage of the QV curve;;1.000000;0.000000;;4
+101;4;3063;U16;;Low-voltage power;;1.000000;0.000000;;4
+102;4;3090;U32;;Running Time;;1.000000;0.000000;Hour;4
+103;4;3092;U32;;Generating Time;;1.000000;0.000000;;4
+104;4;3094;U32;;Number of grid connection;;1.000000;0.000000;W;4
+105;4;3096;U32;;Power Peak After;;1.000000;0.000000;W;4
+106;4;3098;U32;;Day Generation;;1.000000;0.000000;W;4
+107;4;3100;U32;;Week Generation;;1.000000;0.000000;Kwh;4
+108;4;3102;U32;;Month Generation;;1.000000;0.000000;Kwh;4
+109;4;3104;U32;;Last N days Generation;;1.000000;0.000000;Kwh;4
+110;4;3106;U16;;Value of N;;1.000000;0.000000;;4
+111;4;3107;U16;;Year;;1.000000;0.000000;;4
+112;4;3108;U16;;Month;;1.000000;0.000000;;4
+113;4;3109;U16;;Date;;1.000000;0.000000;;4
+114;4;3110;U16;;Hour;;1.000000;0.000000;;4
+115;4;3111;U16;;Minute;;1.000000;0.000000;;4
+116;4;3112;U16;;Second;;1.000000;0.000000;;4
+117;4;3113;U16;;Week;;1.000000;0.000000;;4
+118;4;3114;U16;;Back-current Power Limit Setting;;1.000000;0.000000;;4
+119;4;3115;U16;;Active Power of Soft Start Change Rate;;1.000000;0.000000;;4
+120;4;3117;U16;;485Address(2);;1.000000;0.000000;;4
+121;4;3118;U16;;485 Baud Rate (2);;1.000000;0.000000;;4
+122;4;3119;U16;;485 Agreement;;1.000000;0.000000;;4
+123;4;3120;U16;;485 Address(1);;1.000000;0.000000;;4
+124;4;3121;U16;;485Baud Rate(1);;1.000000;0.000000;;4
+125;4;3122;U16;;Three-phase System;;1.000000;0.000000;;4
+126;4;3123;U16;;Remote Control Enable;CMD_P_ENA;1.000000;0.000000;;4
+127;4;3124;U16;;String Test Threshold;;1.000000;0.000000;A;4
+128;4;3125;U16;;Setting Value of Self- check;;1.000000;0.000000;;4
+129;4;3126;U16;;I/V Scan-status;;1.000000;0.000000;;4
+130;4;3127;U16;;QVCurve Reactive Power Overvoltage End Value;;0.100000;0.000000;%;4
+131;4;3128;U16;;QV Curve Reactive Power;;0.100000;0.000000;%;4
+132;4;3129;U16;;QV Curve Max Reactive Power ?Negtive?;;1.000000;0.000000;%;4
+133;4;3130;U16;;QV Curve Reactive Power Undervoltage End Value;;0.100000;0.000000;%;4
+134;4;3131;U16;;QV Curve Reactive Power Undervoltage Start Value;;0.100000;0.000000;%;4
+135;4;3132;U16;;QV Curve Max Reactive Power ?Positive?;;1.000000;0.000000;%;4
+136;4;3133;U16;;R-phase Voltage Calibration Factor_1;;1.000000;0.000000;;4
+137;4;3134;U16;;S-phase Voltage Calibration Factor_1;;1.000000;0.000000;;4
+138;4;3135;U16;;T-phase Voltage Calibration Factor_1;;1.000000;0.000000;;4
+139;4;3136;U16;;R-phase Current Calibration Factor_1;;1.000000;0.000000;;4
+140;4;3137;U16;;S-phase Calibration Factor_1;;1.000000;0.000000;;4
+141;4;3138;U16;;T-phase Current Calibration Factor_1;;1.000000;0.000000;;4
+142;4;3139;U16;;Battery Voltage Calibration Factor_1;;1.000000;0.000000;;4
+143;4;3196;U32_W;;Nominal Power read;;1.000000;0.000000;KW;4

@@ -1,0 +1,34 @@
+ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
+1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
+2;4;4506;U16;;The capacity of power generation at the same day;;0.1;0.0;kWh;4
+3;4;4507;U16;;Total Grid generation capacity;;0.1;0.0;kWh;4
+4;4;4511;U16;;Grid Frequency;FREQ;0.01;0.0;Hz;4
+5;4;4512;U16;;U-phase grid voltage;;0.1;0.0;V;4
+6;4;4513;U16;;V-phase grid voltage;;0.1;0.0;V;4
+7;4;4514;U16;;W-phase grid voltage;;0.1;0.0;V;4
+8;4;4515;U16;;U-phase grid current;;0.1;0.0;A;4
+9;4;4516;U16;;V-phase grid current;;0.1;0.0;A;4
+10;4;4517;U16;;W-phase grid current;;0.1;0.0;A;4
+11;4;4518;I16;;Grid total active power;P_AC;0.1;0.0;kWh;4
+12;4;4519;I16;;Grid total reactive power;Q_AC;0.1;0.0;kVar;4
+13;4;4522;U16;;The total grid apparent power;S_AC;0.1;0.0;Kva;4
+14;4;4526;I16;;Output power factor;PF;0.01;0.0;;4
+15;4;4527;U16;;PV input total power ;;0.1;0.0;kW;4
+16;4;4528;U16;;AC leakage current;;0.1;0.0;mA;4
+17;4;4529;U16;;Daily grid electricity consumption;;1.0;0.0;;4
+18;4;4661;U16;;MPPT1 Voltage;U_DC_MPPT_1;0.1;0.0;V;4
+19;4;4662;U16;;MPPT2 Voltage;U_DC_MPPT_2;0.1;0.0;V;4
+20;4;4663;U16;;MPPT3 Voltage;U_DC_MPPT_3;0.1;0.0;V;4
+21;4;4664;U16;;MPPT4 Voltage;U_DC_MPPT_4;0.1;0.0;V;4
+22;4;4665;U16;;MPPT5 Voltage;U_DC_MPPT_5;0.1;0.0;V;4
+23;4;4666;U16;;MPPT6 Voltage;U_DC_MPPT_6;0.1;0.0;V;4
+24;4;4667;U16;;MPPT7 Voltage;U_DC_MPPT_7;0.1;0.0;V;4
+25;4;4668;U16;;MPPT8 Voltage;U_DC_MPPT_8;0.1;0.0;V;4
+26;4;4669;I16;;MPPT1 Current;I_DC_MPPT_1;0.1;0.0;A;4
+27;4;4670;I16;;MPPT2 Current;I_DC_MPPT_2;0.1;0.0;A;4
+28;4;4671;I16;;MPPT3 Current;I_DC_MPPT_3;0.1;0.0;A;4
+29;4;4672;I16;;MPPT4 Current;I_DC_MPPT_4;0.1;0.0;A;4
+30;4;4673;I16;;MPPT5 Current;I_DC_MPPT_5;0.1;0.0;A;4
+31;4;4674;I16;;MPPT6 Current;I_DC_MPPT_6;0.1;0.0;A;4
+32;4;4675;I16;;MPPT7 Current;I_DC_MPPT_7;0.1;0.0;A;4
+33;4;4676;I16;;MPPT8 Current;I_DC_MPPT_8;0.1;0.0;A;4

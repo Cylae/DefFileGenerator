@@ -1,0 +1,5 @@
+modbusRTU;Other;Webdyn;WPM0117B5_ModbusSlave(EMS);;;;;;;
+1;3;0;U16;;;EnergyPrice;1.000000;0.000000;;4
+2;3;1;U16;;;LevelA;1.000000;0.000000;;4
+3;3;2;U16;;;LevelB;1.000000;0.000000;;4
+4;3;3;U16;;;LevelC;1.000000;0.000000;;4

@@ -1,4 +1,4 @@
-﻿modbusTCP;BESS;Mars Energy;MarsLocalController All-In-One V7.0;;;;;;;
+modbusTCP;BESS;Mars Energy;MarsLocalController All-In-One V7.0;;;;;;;
 1;4;0;U16;;LC Overview - Measurement point version number;;1.000000;0.000000;;4
 2;4;1;U16;;LC Overview - PCS Number;;1.000000;0.000000;;4
 3;4;2;U16;;LC Overview - Bank Number;;1.000000;0.000000;;4
@@ -7,49 +7,49 @@
 6;3;0;U16;;EMS Consigne - EMS Working Mode;;1.000000;0.000000;;1
 7;3;1;I32;;EMS Consigne - Remote Control Duration;;1.000000;0.000000;min;1
 8;3;3;U16;;EMS Consigne - Energy Storage Working Mode;;1.000000;0.000000;;1
-9;3;4;I32;;EMS Consigne - Energy Storage Active Power;;1.000000;0.000000;W;1
-10;3;6;I32;;EMS Consigne - Energy Storage Reactive Power;;1.000000;0.000000;Var;1
+9;3;4;I32;;EMS Consigne - Energy Storage Active Power;P_AC;1.000000;0.000000;W;1
+10;3;6;I32;;EMS Consigne - Energy Storage Reactive Power;Q_AC;1.000000;0.000000;Var;1
 11;3;8;U16;;EMS Consigne - AC Voltage;;1.000000;0.000000;V;1
-12;3;9;U16;;EMS Consigne - AC Frequency;;0.010000;0.000000;Hz;1
+12;3;9;U16;;EMS Consigne - AC Frequency;FREQ;0.010000;0.000000;Hz;1
 13;2;0;U16;;LC Alarm - LC Alarm Summary;;1.000000;0.000000;;9
 14;2;1;U16;;LC Alarm - PCS Alarm Summary;;1.000000;0.000000;;9
 15;2;2;U16;;LC Alarm - Bank Alarm Summary;;1.000000;0.000000;;9
 16;2;3;U16;;LC Alarm - Air Conditioning Alarm Summary;;1.000000;0.000000;;9
 17;4;0;U16;;1#PCS - Operating Status;;1.000000;0.000000;;9
 18;4;1;U16;;1#PCS - Reserve;;1.000000;0.000000;;0
-19;4;2;F32;;1#PCS - AC Uab Line Voltage;;1.000000;0.000000;V;4
-20;4;4;F32;;1#PCS - AC Ubc Line Voltage;;1.000000;0.000000;V;4
-21;4;6;F32;;1#PCS - AC Uca Line Voltage;;1.000000;0.000000;V;4
-22;4;8;F32;;1#PCS - AC Phase A Current;;1.000000;0.000000;A;4
-23;4;10;F32;;1#PCS - AC Phase B Current;;1.000000;0.000000;A;4
-24;4;12;F32;;1#PCS - AC Phase C Current;;1.000000;0.000000;A;4
-25;4;14;F32;;1#PCS - AC Frequency;GridFrequency;1.000000;0.000000;Hz;4
-26;4;16;F32;;1#PCS - Total AC Active Power;RealPower;1.000000;0.000000;kW;4
+19;4;2;F32;;1#PCS - AC Uab Line Voltage;U_AC_L1L2;1.000000;0.000000;V;4
+20;4;4;F32;;1#PCS - AC Ubc Line Voltage;U_AC_L2L3;1.000000;0.000000;V;4
+21;4;6;F32;;1#PCS - AC Uca Line Voltage;U_AC_L3L1;1.000000;0.000000;V;4
+22;4;8;F32;;1#PCS - AC Phase A Current;I_AC_1;1.000000;0.000000;A;4
+23;4;10;F32;;1#PCS - AC Phase B Current;I_AC_2;1.000000;0.000000;A;4
+24;4;12;F32;;1#PCS - AC Phase C Current;I_AC_3;1.000000;0.000000;A;4
+25;4;14;F32;;1#PCS - AC Frequency;;1.000000;0.000000;Hz;4
+26;4;16;F32;;1#PCS - Total AC Active Power;;1.000000;0.000000;kW;4
 27;4;18;F32;;1#PCS - Total AC Reactive Power;;1.000000;0.000000;kvar;4
-28;4;20;F32;;1#PCS - Total AC Apparent Power;;1.000000;0.000000;kW;4
-29;4;22;F32;;1#PCS - Total AC Power Factor;;1.000000;0.000000;;4
-30;4;24;F32;;1#PCS - Phase A AC Active Power;;1.000000;0.000000;kW;4
-31;4;26;F32;;1#PCS - Phase B AC Active Power;;1.000000;0.000000;kW;4
-32;4;28;F32;;1#PCS - Phase C AC Active Power;;1.000000;0.000000;kW;4
-33;4;30;F32;;1#PCS - Phase A AC Reactive Power;;1.000000;0.000000;kvar;4
-34;4;32;F32;;1#PCS - Phase B AC Reactive Power;;1.000000;0.000000;kvar;4
-35;4;34;F32;;1#PCS - Phase C AC Reactive Power;;1.000000;0.000000;kvar;4
-36;4;36;F32;;1#PCS - Phase A AC Apparent Power;;1.000000;0.000000;kVA;4
-37;4;38;F32;;1#PCS - Phase B AC Apparent Power;;1.000000;0.000000;kVA;4
-38;4;40;F32;;1#PCS - Phase C AC Apparent Power;;1.000000;0.000000;kVA;4
-39;4;42;F32;;1#PCS - Phase A AC Power Factor;;1.000000;0.000000;;4
-40;4;44;F32;;1#PCS - Phase B AC Power Factor;;1.000000;0.000000;;4
-41;4;46;F32;;1#PCS - Phase C AC Power Factor;;1.000000;0.000000;;4
-42;4;48;F32;;1#PCS - IGBT Module Temperature;;1.000000;0.000000;°C;4
-43;4;50;F32;;1#PCS - Ambient Temperature;;1.000000;0.000000;°C;4
-44;4;52;F32;;1#PCS - Total  AC Charging Energy;;1.000000;0.000000;kWh;4
-45;4;54;F32;;1#PCS - Total AC Discharging Energy;EnergyTotal;1.000000;0.000000;kWh;4
-46;4;56;F32;;1#PCS - Daily AC Charging Energy;;1.000000;0.000000;kWh;4
-47;4;58;F32;;1#PCS - Daily AC Discharging Energy;EnergyDay;1.000000;0.000000;kWh;4
+28;4;20;F32;;1#PCS - Total AC Apparent Power;S_AC;1.000000;0.000000;kW;4
+29;4;22;F32;;1#PCS - Total AC Power Factor;PF;1.000000;0.000000;;4
+30;4;24;F32;;1#PCS - Phase A AC Active Power;P_AC_1;1.000000;0.000000;kW;4
+31;4;26;F32;;1#PCS - Phase B AC Active Power;P_AC_2;1.000000;0.000000;kW;4
+32;4;28;F32;;1#PCS - Phase C AC Active Power;P_AC_3;1.000000;0.000000;kW;4
+33;4;30;F32;;1#PCS - Phase A AC Reactive Power;Q_AC_1;1.000000;0.000000;kvar;4
+34;4;32;F32;;1#PCS - Phase B AC Reactive Power;Q_AC_2;1.000000;0.000000;kvar;4
+35;4;34;F32;;1#PCS - Phase C AC Reactive Power;Q_AC_3;1.000000;0.000000;kvar;4
+36;4;36;F32;;1#PCS - Phase A AC Apparent Power;S_AC_1;1.000000;0.000000;kVA;4
+37;4;38;F32;;1#PCS - Phase B AC Apparent Power;S_AC_2;1.000000;0.000000;kVA;4
+38;4;40;F32;;1#PCS - Phase C AC Apparent Power;S_AC_3;1.000000;0.000000;kVA;4
+39;4;42;F32;;1#PCS - Phase A AC Power Factor;PF_1;1.000000;0.000000;;4
+40;4;44;F32;;1#PCS - Phase B AC Power Factor;PF_2;1.000000;0.000000;;4
+41;4;46;F32;;1#PCS - Phase C AC Power Factor;PF_3;1.000000;0.000000;;4
+42;4;48;F32;;1#PCS - IGBT Module Temperature;TEMP_CELL;1.000000;0.000000;°C;4
+43;4;50;F32;;1#PCS - Ambient Temperature;TEMP_AMB;1.000000;0.000000;°C;4
+44;4;52;F32;;1#PCS - Total  AC Charging Energy;E_TOT;1.000000;0.000000;kWh;4
+45;4;54;F32;;1#PCS - Total AC Discharging Energy;;1.000000;0.000000;kWh;4
+46;4;56;F32;;1#PCS - Daily AC Charging Energy;E_DAY;1.000000;0.000000;kWh;4
+47;4;58;F32;;1#PCS - Daily AC Discharging Energy;;1.000000;0.000000;kWh;4
 48;4;60;U32;;1#PCS - Number of branches;;1.000000;0.000000;;4
-49;4;62;F32;;1#PCS - Branch 1 DC Power;;1.000000;0.000000;kW;4
-50;4;64;F32;;1#PCS - Branch 1 DC Voltage;;1.000000;0.000000;V;4
-51;4;66;F32;;1#PCS - Branch 1 DC Current;;1.000000;0.000000;A;4
+49;4;62;F32;;1#PCS - Branch 1 DC Power;P_DC;1.000000;0.000000;kW;4
+50;4;64;F32;;1#PCS - Branch 1 DC Voltage;U_DC;1.000000;0.000000;V;4
+51;4;66;F32;;1#PCS - Branch 1 DC Current;I_DC;1.000000;0.000000;A;4
 52;4;68;F32;;1#PCS - Branch 2~n DC Power;;1.000000;0.000000;kW;4
 53;4;70;F32;;1#PCS - Branch 2~n DC Voltage;;1.000000;0.000000;V;4
 54;4;72;F32;;1#PCS - Branch 2~n DC Current;;1.000000;0.000000;A;4
@@ -1917,9 +1917,9 @@
 1916;4;4972;F32;;50#PCS - Branch 2~n DC Current;;1.000000;0.000000;A;4
 1917;4;5000;F32;;1#battery bank - Bank Voltage;;1.000000;0.000000;V;4
 1918;4;5002;F32;;1#battery bank - Bank Current;;1.000000;0.000000;A;4
-1919;4;5004;F32;;1#battery bank - Bank SOC;;1.000000;0.000000;%;4
-1920;4;5006;F32;;1#battery bank - Bank SOH;;1.000000;0.000000;%;4
-1921;4;5008;F32;;1#battery bank - Bank Insulation Resistance;;1.000000;0.000000;Ω;4
+1919;4;5004;F32;;1#battery bank - Bank SOC;SOC;1.000000;0.000000;%;4
+1920;4;5006;F32;;1#battery bank - Bank SOH;SOH;1.000000;0.000000;%;4
+1921;4;5008;F32;;1#battery bank - Bank Insulation Resistance;R_ISO;1.000000;0.000000;Ω;4
 1922;4;5010;F32;;1#battery bank - Bank Available Charge Energy;;1.000000;0.000000;kWh;4
 1923;4;5012;F32;;1#battery bank - Bank Available Discharge Energy;;1.000000;0.000000;kWh;4
 1924;4;5014;F32;;1#battery bank - System Allowed Maximum Charge Current;;1.000000;0.000000;A;4
@@ -3675,15 +3675,15 @@
 3674;4;15010;F32;;1#AC - Heating High Point;;0.100000;0.000000;°C;4
 3675;4;15012;F32;;1#AC - Dehumidification High Point (Start Point);;0.100000;0.000000;;4
 3676;4;15014;F32;;1#AC - Dehumidification Low Point (Stop Point);;0.100000;0.000000;;4
-3677;4;15016;F32;;1#AC - High Temperature Alarm Point;;0.100000;0.000000;°C;9
+3677;4;15016;F32;;1#AC - High Temperature Alarm Point;TEMP;0.100000;0.000000;°C;9
 3678;4;15018;F32;;1#AC - Low Temperature Alarm Point;;0.100000;0.000000;°C;9
 3679;4;15020;F32;;1#AC - Temperature;;0.100000;0.000000;°C;4
 3680;4;15022;U16;;1#AC - Temperature Status;;1.000000;0.000000;;9
 3681;4;15023;U16;;1#AC - Voltage Status;;1.000000;0.000000;;9
 3682;4;15024;U16;;1#AC - Sensor Status;;1.000000;0.000000;;9
 3683;4;15025;U16;;1#AC - Compressor Status;;1.000000;0.000000;;9
-3684;4;15026;U16;;1#AC - Air Pressure Status;;1.000000;0.000000;;9
-3685;4;15027;F32;;1#AC - Relative Humidity;;0.100000;0.000000;;4
+3684;4;15026;U16;;1#AC - Air Pressure Status;PRESSURE;1.000000;0.000000;;9
+3685;4;15027;F32;;1#AC - Relative Humidity;HUMIDITY;0.100000;0.000000;;4
 3686;4;15050;U16;;2#AC - Operating Status;;1.000000;0.000000;;9
 3687;4;15051;U16;;2#AC - Reserve;;1.000000;0.000000;;0
 3688;4;15052;U16;;2#AC - Reserve;;1.000000;0.000000;;0
@@ -7717,9 +7717,9 @@
 7716;4;24943;U16;;50#DIO - 50#DI-1;;1.000000;0.000000;;4
 7717;4;25000;U16;;1#PV - Operating Status;;1.000000;0.000000;;9
 7718;4;25001;U16;;1#PV - Reserve;;1.000000;0.000000;;0
-7719;4;25002;F32;;1#PV - AC Phase A Voltage;;0.100000;0.000000;V;4
-7720;4;25004;F32;;1#PV - AC Phase B Voltage;;0.100000;0.000000;V;4
-7721;4;25006;F32;;1#PV - AC Phase C Voltage;;0.100000;0.000000;V;4
+7719;4;25002;F32;;1#PV - AC Phase A Voltage;U_AC_1;0.100000;0.000000;V;4
+7720;4;25004;F32;;1#PV - AC Phase B Voltage;U_AC_2;0.100000;0.000000;V;4
+7721;4;25006;F32;;1#PV - AC Phase C Voltage;U_AC_3;0.100000;0.000000;V;4
 7722;4;25008;F32;;1#PV - AC Phase A Current;;0.100000;0.000000;A;4
 7723;4;25010;F32;;1#PV - AC Phase B Current;;0.100000;0.000000;A;4
 7724;4;25012;F32;;1#PV - AC Phase C Current;;0.100000;0.000000;A;4

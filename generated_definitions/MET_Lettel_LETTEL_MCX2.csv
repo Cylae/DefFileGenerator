@@ -1,0 +1,55 @@
+modbusRTU;Meter;Lettel;LETTEL_MCX2;;;;;;;
+1;4;0;F32;;Tension_Float;tension_float;0.010000;0.000000;V;4
+2;4;6;F32;;Courant_Float;courant_float;0.001000;0.000000;A;4
+3;4;12;F32;;Puissance active_Float;puissance_active_float;0.001000;0.000000;Kw;4
+4;4;18;F32;;Puissance reactive_Float;puissance_reactive_float;0.001000;0.000000;kvar;4
+5;4;24;F32;;Puissance apparente_Float;puissance_apparente_float;0.001000;0.000000;Kva;4
+6;4;30;F32;;Facteur de puissance_Float;facteur_de_puissance_float;0.001000;0.000000;;4
+7;4;36;F32;;Angle de phase_Float;angle_de_phase_float;0.010000;0.000000;Degres;4
+8;4;48;F32;;Frequence des entrees tensons du circuit mesure_Float;frequence_des_entrees_tensons_du_circuit_mesure_float;0.010000;0.000000;Hz;4
+9;4;78;F32;;Type de charge (Resistive=1, inductive=2, capacitive =3, Sans charge=4_Float;type_de_charge_resistive1_inductive2_capacitive_3_sans_charge4_float;1.000000;0.000000;;4
+10;4;140;F32;;Demande puissance active_Float;demande_puissance_active_float;0.001000;0.000000;kW;4
+11;4;142;F32;;Demande puissance reactive_Float;demande_puissance_reactive_float;0.001000;0.000000;kvar;4
+12;4;144;F32;;Demande puissance apparente_Float;demande_puissance_apparente_float;0.001000;0.000000;Kva;4
+13;4;146;F32;;Demande courant_Float;demande_courant_float;0.001000;0.000000;A;4
+14;4;154;F32;;Demande puissance active importee_Float;demande_puissance_active_importee_float;0.001000;0.000000;kW;4
+15;4;156;F32;;Demande puissance active exportee_Float;demande_puissance_active_exportee_float;0.001000;0.000000;kW;4
+16;4;162;F32;;Demande maxi puissance active_Float;demande_maxi_puissance_active_float;0.001000;0.000000;kW;4
+17;4;164;F32;;Demande maxi puissance reactive_Float;demande_maxi_puissance_reactive_float;0.001000;0.000000;kvar;4
+18;4;166;F32;;Demande maxi puissance apparente_Float;demande_maxi_puissance_apparente_float;0.001000;0.000000;Kva;4
+19;4;168;F32;;Demande maxi courant_Float;demande_maxi_courant_float;0.001000;0.000000;A;4
+20;4;176;F32;;Demande maxi puissance active importee_Float;demande_maxi_puissance_active_importee_float;0.001000;0.000000;kW;4
+21;4;178;F32;;Demande maxi puissance active exportee_Float;demande_maxi_puissance_active_exportee_float;0.001000;0.000000;kW;4
+22;4;1280;F32;;energie active importee totale_Float;energie_active_importee_totale_float;0.010000;0.000000;kWh;4
+23;4;1282;F32;;energie active exportee totale_Float;energie_active_exportee_totale_float;0.010000;0.000000;kWh;4
+24;4;1284;F32;;energie active totale_Float;energie_active_totale_float;0.010000;0.000000;kWh;4
+25;4;1288;F32;;energie reactive importee totale_Float;energie_reactive_importee_totale_float;0.010000;0.000000;kvarh;4
+26;4;1290;F32;;energie reactive exportee totale_Float;energie_reactive_exportee_totale_float;0.010000;0.000000;kvarh;4
+27;4;1292;F32;;energie reactive totale_Float;energie_reactive_totale_float;0.010000;0.000000;kvarh;4
+28;3;0;U32;;Tension;tension;0.010000;0.000000;V;4
+29;3;6;U32;;Courant;courant;0.001000;0.000000;A;4
+30;3;12;I32;;Puissance active;puissance_active;0.001000;0.000000;Kw;4
+31;3;18;I32;;Puissance reactive;puissance_reactive;0.001000;0.000000;kvar;4
+32;3;24;U32;;Puissance apparente;puissance_apparente;0.001000;0.000000;Kva;4
+33;3;30;I16;;Facteur de puissance;PF;0.001000;0.000000;;4
+34;3;33;I16;;Angle de phase;angle_de_phase;0.010000;0.000000;Degres;4
+35;3;42;U16;;Frequence des entrees tensons du circuit mesure;frequence_des_entrees_tensons_du_circuit_mesure;0.010000;0.000000;Hz;4
+36;3;70;U16;;Type de charge (Resistive=1, inductive=2, capacitive =3, Sans charge=4;type_de_charge_resistive1_inductive2_capacitive_3_sans_charge4;1.000000;0.000000;;4
+37;3;102;I32;;Demande puissance active;demande_puissance_active;0.001000;0.000000;kW;4
+38;3;104;I32;;Demande puissance reactive;demande_puissance_reactive;0.001000;0.000000;kvar;4
+39;3;106;U32;;Demande puissance apparente;demande_puissance_apparente;0.001000;0.000000;Kva;4
+40;3;108;U32;;Demande courant;demande_courant;0.001000;0.000000;A;4
+41;3;116;U32;;Demande puissance active importee;demande_puissance_active_importee;0.001000;0.000000;kW;4
+42;3;118;I32;;Demande puissance active exportee;demande_puissance_active_exportee;0.001000;0.000000;kW;4
+43;3;124;I32;;Demande maxi puissance active;demande_maxi_puissance_active;0.001000;0.000000;kW;4
+44;3;126;U32;;Demande maxi puissance reactive;demande_maxi_puissance_reactive;0.001000;0.000000;kvar;4
+45;3;128;U32;;Demande maxi puissance apparente;demande_maxi_puissance_apparente;0.001000;0.000000;Kva;4
+46;3;130;U32;;Demande maxi courant;demande_maxi_courant;0.001000;0.000000;A;4
+47;3;138;U32;;Demande maxi puissance active importee;demande_maxi_puissance_active_importee;0.001000;0.000000;kW;4
+48;3;140;U32;;Demande maxi puissance active exportee;demande_maxi_puissance_active_exportee;0.001000;0.000000;kW;4
+49;3;1024;U32;;energie active importee totale;energie_active_importee_totale;0.010000;0.000000;kWh;4
+50;3;1026;U32;;energie active exportee totale;energie_active_exportee_totale;0.010000;0.000000;kWh;4
+51;3;1028;U32;;energie active totale;energie_active_totale;0.010000;0.000000;kWh;4
+52;3;1032;U32;;energie reactive importee totale;energie_reactive_importee_totale;0.010000;0.000000;kvarh;4
+53;3;1034;U32;;energie reactive exportee totale;energie_reactive_exportee_totale;0.010000;0.000000;kvarh;4
+54;3;1036;U32;;energie reactive totale;energie_reactive_totale;0.010000;0.000000;kvarh;4

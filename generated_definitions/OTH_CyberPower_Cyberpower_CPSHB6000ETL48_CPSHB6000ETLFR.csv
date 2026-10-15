@@ -1,0 +1,104 @@
+modbusRTU;Other;CyberPower;Cyberpower_CPSHB6000ETL48_CPSH;;;;;;;
+1;4;8456_16;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
+2;4;8464_16;STRING;;Model Name;MODEL;1.000000;0.000000;;4
+3;4;8502;U32;;FeedInGrid Life energy;feedingrid_life_energy;0.100000;0.000000;kWh;4
+4;4;8504;U32;;Inv. OP today energy;inv_op_today_energy;0.100000;0.000000;kWh;4
+5;4;8508;U32;;Inv. OP life energy;inv_op_life_energy;0.100000;0.000000;kWh;4
+6;4;8512;U32;;PV1 today energy;pv1_today_energy;0.100000;0.000000;kWh;4
+7;4;8514;U32;;PV1 life energy;pv1_life_energy;0.100000;0.000000;kWh;4
+8;4;8516;U32;;PV2 today energy;pv2_today_energy;0.100000;0.000000;kWh;4
+9;4;8518;U32;;PV2 life energy;pv2_life_energy;0.100000;0.000000;kWh;4
+10;4;8520;U32;;PV3 today energy;pv3_today_energy;0.100000;0.000000;kWh;4
+11;4;8522;U32;;PV3 life energy;pv3_life_energy;0.100000;0.000000;kWh;4
+12;4;8524;U32;;PV4 today energy;pv4_today_energy;0.100000;0.000000;kWh;4
+13;4;8526;U32;;PV4 life energy;pv4_life_energy;0.100000;0.000000;kWh;4
+14;4;8528;U32;;Feed In Grid today energy;feed_in_grid_today_energy;0.100000;0.000000;kWh;4
+15;4;8530;U32;;Grid to Load today energy;grid_to_load_today_energy;0.100000;0.000000;kWh;4
+16;4;8532;U32;;Grid to Load life energy;grid_to_load_life_energy;0.100000;0.000000;kWh;4
+17;4;8534;U32;;EPS today energy;eps_today_energy;0.100000;0.000000;kWh;4
+18;4;8536;U32;;EPS life energy;eps_life_energy;0.100000;0.000000;kWh;4
+19;4;8540;U32;;Battery charge today energy;battery_charge_today_energy;0.100000;0.000000;kWh;4
+20;4;8542;U32;;Battery discharge today energy;battery_discharge_today_energy;0.100000;0.000000;kWh;4
+21;4;8544;U16;;Veps_A;veps_a;0.100000;0.000000;V;4
+22;4;8547;U16;;Ieps_A;ieps_a;0.010000;0.000000;A;4
+23;4;8550;U16;;Peps_A;peps_a;1.000000;0.000000;W;4
+24;4;8553;U16;;VAeps_A;vaeps_a;1.000000;0.000000;VA;4
+25;4;8559;U16;;Feps_A;feps_a;0.010000;0.000000;Hz;4
+26;4;8566;U32;;Battery Charge life energy;battery_charge_life_energy;0.100000;0.000000;kWh;4
+27;4;8568;U32;;Battery discharge life energy;battery_discharge_life_energy;0.100000;0.000000;kWh;4
+28;4;8570;U16;;Vbat;vbat;0.100000;0.000000;V;4
+29;4;8573;I16;;Ibat;ibat;0.010000;0.000000;A;4
+30;4;8574;I16;;Pbat;pbat;1.000000;0.000000;W;4
+31;4;8575;U16;;Bat SOC;bat_soc;1.000000;0.000000;Percent;4
+32;4;8576;U16;;Bat SOH;bat_soh;1.000000;0.000000;Percent;4
+33;4;8578;U16;;Vgrid_A;vgrid_a;0.100000;0.000000;V;4
+34;4;8581;U16;;Igrid_A;igrid_a;0.010000;0.000000;A;4
+35;4;8584;I32;;Pgrid_A;pgrid_a;1.000000;0.000000;W;4
+36;4;8596;U16;;PV1 Voltage;pv1_voltage;0.100000;0.000000;V;4
+37;4;8597;U16;;PV1 Current;pv1_current;0.010000;0.000000;A;4
+38;4;8598;U16;;PV1 Power;pv1_power;1.000000;0.000000;W;4
+39;4;8599;U16;;PV2 Voltage;pv2_voltage;0.100000;0.000000;V;4
+40;4;8600;U16;;PV2 Current;pv2_current;0.010000;0.000000;A;4
+41;4;8601;U16;;PV2 Power;pv2_power;1.000000;0.000000;W;4
+42;4;8602;U16;;PV3 Voltage;pv3_voltage;0.100000;0.000000;V;4
+43;4;8603;U16;;PV3 Current;pv3_current;0.010000;0.000000;A;4
+44;4;8604;U16;;PV3 Power;pv3_power;1.000000;0.000000;W;4
+45;4;8605;U16;;PV4 Voltage;pv4_voltage;0.100000;0.000000;V;4
+46;4;8606;U16;;PV4 Current;pv4_current;0.010000;0.000000;A;4
+47;4;8607;U16;;PV4 Power;pv4_power;1.000000;0.000000;W;4
+48;4;8608;U16;;Inv phase-A voltage;inv_phasea_voltage;0.100000;0.000000;V;4
+49;4;8609;U16;;Inv phase-B voltage;inv_phaseb_voltage;0.100000;0.000000;V;4
+50;4;8610;U16;;Inv phase-C voltage;inv_phasec_voltage;0.100000;0.000000;V;4
+51;4;8611;U16;;Inv phase-A output current;inv_phasea_output_current;0.010000;0.000000;A;4
+52;4;8612;U16;;Inv phase-B output current;inv_phaseb_output_current;0.010000;0.000000;A;4
+53;4;8613;U16;;Inv phase-C output current;inv_phasec_output_current;0.010000;0.000000;A;4
+54;4;8614;U16;;Inv phase-A output power;inv_phasea_output_power;1.000000;0.000000;W;4
+55;4;8615;U16;;Inv phase-B output power;inv_phaseb_output_power;1.000000;0.000000;W;4
+56;4;8616;U16;;Inv phase-C output power;inv_phasec_output_power;1.000000;0.000000;W;4
+57;4;8617;U16;;Inv phase-AB voltage;inv_phaseab_voltage;0.100000;0.000000;V;4
+58;4;8618;U16;;Inv phase-BC voltage;inv_phasebc_voltage;0.100000;0.000000;V;4
+59;4;8619;U16;;Inv phase-CA voltage;inv_phaseca_voltage;0.100000;0.000000;V;4
+60;4;8620;U16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;4
+61;4;8626;U16;;Pload;pload;1.000000;0.000000;W;4
+62;4;8628;U32;;Load today energy;E_DAY;0.100000;0.000000;kWh;4
+63;4;8630;U32;;Load life energy;E_TOT;0.100000;0.000000;kWh;4
+64;4;8633;U16;;BUS1_Voltage;bus1_voltage;0.100000;0.000000;V;4
+65;4;8634;U16;;BUS2_Voltage;bus2_voltage;0.100000;0.000000;V;4
+66;4;8635;U16;;PV Rleakage;pv_rleakage;1.000000;0.000000;kOhm;4
+67;4;8636;I16;;Temperature (air inside around power stage);temperature_air_inside_around_power_stage;0.100000;0.000000;Deg.Celsius;4
+68;4;8637;I16;;Temperature (air inside of wiring box);temperature_air_inside_of_wiring_box;0.100000;0.000000;Deg.Celsius;4
+69;4;8638;I16;;Highest inverter temperature;highest_inverter_temperature;0.100000;0.000000;Deg.Celsius;4
+70;4;8639;I16;;Highest D/D temperature;highest_dd_temperature;0.100000;0.000000;Deg.Celsius;4
+71;4;8641;U16;;Reconnection Time;reconnection_time;1.000000;0.000000;seconds;4
+72;4;8642;U32;;I_Event_flags1;i_event_flags1;1.000000;0.000000;Bitfield;4
+73;4;8644;U32;;I_Event_flags2;i_event_flags2;1.000000;0.000000;Bitfield;4
+74;4;8646;U16;;I_Event_1_Vendor;i_event_1_vendor;1.000000;0.000000;Bitfield;4
+75;4;8647;U16;;I_Event_2_Vendor;i_event_2_vendor;1.000000;0.000000;Bitfield;4
+76;4;8648;U16;;I_Event_3_Vendor;i_event_3_vendor;1.000000;0.000000;Bitfield;4
+77;4;8649;U16;;I_Event_4_Vendor;i_event_4_vendor;1.000000;0.000000;Bitfield;4
+78;4;8650;U16;;I_Event_5_Vendor;i_event_5_vendor;1.000000;0.000000;Bitfield;4
+79;4;8651;U16;;I_Event_6_Vendor;i_event_6_vendor;1.000000;0.000000;Bitfield;4
+80;4;8652;U16;;I_Event_7_Vendor;i_event_7_vendor;1.000000;0.000000;Bitfield;4
+81;4;8653;U16;;I_Event_8_Vendor;i_event_8_vendor;1.000000;0.000000;Bitfield;4
+82;4;8654;U16;;I_Event_9_Vendor;i_event_9_vendor;1.000000;0.000000;Bitfield;4
+83;4;8656;U16;;Vbms;vbms;1.000000;0.000000;;4
+84;4;8657;I16;;Ibms;ibms;1.000000;0.000000;;4
+85;4;8658;I16;;Pbms;pbms;1.000000;0.000000;;4
+86;4;8659;I16;;Tbms;tbms;1.000000;0.000000;;4
+87;4;8660;U16;;Bms charge Volt reference;bms_charge_volt_reference;1.000000;0.000000;;4
+88;4;8661;U16;;Bms charge Curr reference;bms_charge_curr_reference;1.000000;0.000000;;4
+89;4;8662;U16;;Bms discharge Curr reference;bms_discharge_curr_reference;1.000000;0.000000;;4
+90;4;8663;U16;;Bms charge status;bms_charge_status;1.000000;0.000000;;4
+91;4;8664;U16;;Bms Warning_1;bms_warning_1;1.000000;0.000000;;4
+92;4;8665;U16;;Bms Warning _2;bms_warning_2;1.000000;0.000000;;4
+93;4;8666;U16;;Bms Fault_1;bms_fault_1;1.000000;0.000000;;4
+94;4;8667;U16;;Bms Fault_2;bms_fault_2;1.000000;0.000000;;4
+95;4;8672;U16;;I_Event_1_Vendor_1;i_event_1_vendor_1;1.000000;0.000000;Bitfield;4
+96;4;8673;U16;;I_Event_2_Vendor_1;i_event_2_vendor_1;1.000000;0.000000;Bitfield;4
+97;4;8674;U16;;I_Event_3_Vendor_1;i_event_3_vendor_1;1.000000;0.000000;Bitfield;4
+98;4;8675;U16;;I_Event_4_Vendor_1;i_event_4_vendor_1;1.000000;0.000000;Bitfield;4
+99;4;8676;U16;;I_Event_5_Vendor_1;i_event_5_vendor_1;1.000000;0.000000;Bitfield;4
+100;4;8677;U16;;I_Event_6_Vendor_1;i_event_6_vendor_1;1.000000;0.000000;Bitfield;4
+101;4;8678;U16;;I_Event_7_Vendor_1;i_event_7_vendor_1;1.000000;0.000000;Bitfield;4
+102;4;8679;U16;;I_Event_8_Vendor_1;i_event_8_vendor_1;1.000000;0.000000;Bitfield;4
+103;4;8680;U16;;I_Event_9_Vendor_1;i_event_9_vendor_1;1.000000;0.000000;Bitfield;4

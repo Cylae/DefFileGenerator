@@ -1,0 +1,247 @@
+modbusRTU;Meter;SOLAREDGE;SE-MTR-3Y-400V-A;;;;;;;
+1;3;40121;U16;;C_SunSpec_DID;;1;0;;4
+2;3;40122;U16;;C_SunSpec_Length;;1;0;;4
+3;3;40123_32;STRING;;C_Manufacturer;MANUFACTURER;1;0;;4
+4;3;40139_32;STRING;;C_Model;MODEL;1;0;;4
+5;3;40155_16;STRING;;C_Option;;1;0;;4
+6;3;40163_16;STRING;;C_Version;;1;0;;4
+7;3;40171_32;STRING;;C_SerialNumber;;1;0;;4
+8;3;40187;U16;;C_DeviceAddress;;1;0;;4
+9;3;40188;U16;;C_SunSpec_DID__;;1;0;;4
+10;3;40189;U16;;C_SunSpec_Length__;;1;0;Registers;4
+11;3;40190;I16;M_AC_Current_S F;M_AC_Current;;1;0;Amps;4
+12;3;40191;I16;M_AC_Current_S F;M_AC_Current_A;;1;0;Amps;4
+13;3;40192;I16;M_AC_Current_S F;M_AC_Current_B;;1;0;Amps;4
+14;3;40193;I16;M_AC_Current_S F;M_AC_Current_C;;1;0;Amps;4
+15;3;40194;I16;;M_AC_Current_S F;;1;0;SF;4
+16;3;40195;I16;;M_AC_Voltage_L N;;1;0;Volts;4
+17;3;40196;I16;;M_AC_Voltage_A N;;1;0;Volts;4
+18;3;40197;I16;;M_AC_Voltage_B N;;1;0;Volts;4
+19;3;40198;I16;;M_AC_Voltage_C N;;1;0;Volts;4
+20;3;40199;I16;;M_AC_Voltage_L L;;1;0;Volts;4
+21;3;40200;I16;;M_AC_Voltage_A B;;1;0;Volts;4
+22;3;40201;I16;;M_AC_Voltage_B C;;1;0;Volts;4
+23;3;40202;I16;;M_AC_Voltage_C A;;1;0;Volts;4
+24;3;40203;I16;;M_AC_Voltage_S F;;1;0;SF;4
+25;3;40204;I16;;M_AC_Freq;;1;0;Herts;4
+26;3;40205;I16;;M_AC_Freq_SF;;1;0;SF;4
+27;3;40206;I16;;M_AC_Power;;1;0;Watts;4
+28;3;40207;I16;;M_AC_Power_A;;1;0;Watts;4
+29;3;40208;I16;;M_AC_Power_B;;1;0;Watts;4
+30;3;40209;I16;;M_AC_Power_C;;1;0;Watts;4
+31;3;40210;I16;;M_AC_Power_SF;;1;0;SF;4
+32;3;40211;I16;;M_AC_VA;;1;0;Volt- Amps;4
+33;3;40212;I16;;M_AC_VA_A;;1;0;Volt- Amps;4
+34;3;40213;I16;;M_AC_VA_B;;1;0;Volt- Amps;4
+35;3;40214;I16;;M_AC_VA_C;;1;0;Volt- Amps;4
+36;3;40215;I16;;M_AC_VA_SF;;1;0;SF;4
+37;3;40216;I16;;M_AC_VAR;;1;0;VAR;4
+38;3;40217;I16;;M_AC_VAR_A;;1;0;VAR;4
+39;3;40218;I16;;M_AC_VAR_B;;1;0;VAR;4
+40;3;40219;I16;;M_AC_VAR_C;;1;0;VAR;4
+41;3;40220;I16;;M_AC_VAR_SF;;1;0;SF;4
+42;3;40221;I16;;M_AC_PF;;1;0;%;4
+43;3;40222;I16;;M_AC_PF_A;;1;0;%;4
+44;3;40223;I16;;M_AC_PF_B;;1;0;%;4
+45;3;40224;I16;;M_AC_PF_C;;1;0;%;4
+46;3;40225;I16;;M_AC_PF_SF;;1;0;SF;4
+47;3;40226;U32;;M_Exported;;1;0;Watt- hours;4
+48;3;40228;U32;;M_Exported_A;;1;0;Watt- hours;4
+49;3;40230;U32;;M_Exported_B;;1;0;Watt- hours;4
+50;3;40232;U32;;M_Exported_C;;1;0;Watt- hours;4
+51;3;40234;U32;;M_Imported;;1;0;Watt- hours;4
+52;3;40236;U32;;M_Imported_A;;1;0;Watt- hours;4
+53;3;40238;U32;;M_Imported_B;;1;0;Watt- hours;4
+54;3;40240;U32;;M_Imported_C;;1;0;Watt- hours;4
+55;3;40242;I16;;M_Energy_W_SF;;1;0;SF;4
+56;3;40243;U32;;M_Exported_VA;;1;0;VA-hours;4
+57;3;40245;U32;;M_Exported_VA_ A;;1;0;VA-hours;4
+58;3;40247;U32;;M_Exported_VA_ B;;1;0;VA-hours;4
+59;3;40249;U32;;M_Exported_VA_ C;;1;0;VA-hours;4
+60;3;40251;U32;;M_Imported_VA;;1;0;VA-hours;4
+61;3;40253;U32;;M_Imported_VA_ A;;1;0;VA-hours;4
+62;3;40255;U32;;M_Imported_VA_ B;;1;0;VA-hours;4
+63;3;40257;U32;;M_Imported_VA_ C;;1;0;VA-hours;4
+64;3;40259;I16;;M_Energy_VA_S F;;1;0;SF;4
+65;3;40260;U32;;M_Import_VARh_ Q1;;1;0;VAR-hours;4
+66;3;40262;U32;;M_Import_VARh_ Q1A;;1;0;VAR-hours;4
+67;3;40264;U32;;M_Import_VARh_ Q1B;;1;0;VAR-hours;4
+68;3;40266;U32;;M_Import_VARh_ Q1C;;1;0;VAR-hours;4
+69;3;40268;U32;;M_Import_VARh_ Q2;;1;0;VAR-hours;4
+70;3;40270;U32;;M_Import_VARh_ Q2A;;1;0;VAR-hours;4
+71;3;40272;U32;;M_Import_VARh_ Q2B;;1;0;VAR-hours;4
+72;3;40274;U32;;M_Import_VARh_ Q2C;;1;0;VAR-hours;4
+73;3;40276;U32;;M_Export_VARh_ Q3;;1;0;VAR-hours;4
+74;3;40278;U32;;M_Export_VARh_ Q3A;;1;0;VAR-hours;4
+75;3;40280;U32;;M_Export_VARh_ Q3B;;1;0;VAR-hours;4
+76;3;40282;U32;;M_Export_VARh_ Q3C;;1;0;VAR-hours;4
+77;3;40284;U32;;M_Export_VARh_ Q4;;1;0;VAR-hours;4
+78;3;40286;U32;;M_Export_VARh_ Q4A;;1;0;VAR-hours;4
+79;3;40288;U32;;M_Export_VARh_ Q4B;;1;0;VAR-hours;4
+80;3;40290;U32;;M_Export_VARh_ Q4C;;1;0;VAR-hours;4
+81;3;40292;I16;;M_Energy_VAR_ SF;;1;0;SF;4
+82;3;40293;U32;;M_Events;WIND_SPEED;1;0;Flags;4
+83;3;40295;U16;;C_SunSpec_DID_1;;1;0;;4
+84;3;40296;U16;;C_SunSpec_Length_1;;1;0;;4
+85;3;40297_32;STRING;;C_Manufacturer_1;;1;0;;4
+86;3;40313_32;STRING;;C_Model_1;;1;0;;4
+87;3;40329_16;STRING;;C_Option_1;;1;0;;4
+88;3;40337_16;STRING;;C_Version_1;;1;0;;4
+89;3;40345_32;STRING;;C_SerialNumber_1;;1;0;;4
+90;3;40361;U16;;C_DeviceAddress_1;;1;0;;4
+91;3;40362;U16;;C_SunSpec_DID_1__;;1;0;;4
+92;3;40363;U16;;C_SunSpec_Length_1__;;1;0;Registers;4
+93;3;40364;I16;;M_AC_Current_1;;1;0;Amps;4
+94;3;40365;I16;;M_AC_Current_A_1;;1;0;Amps;4
+95;3;40366;I16;;M_AC_Current_B_1;;1;0;Amps;4
+96;3;40367;I16;;M_AC_Current_C_1;;1;0;Amps;4
+97;3;40368;I16;;M_AC_Current_S F_1;;1;0;SF;4
+98;3;40369;I16;;M_AC_Voltage_L N_1;;1;0;Volts;4
+99;3;40370;I16;;M_AC_Voltage_A N_1;;1;0;Volts;4
+100;3;40371;I16;;M_AC_Voltage_B N_1;;1;0;Volts;4
+101;3;40372;I16;;M_AC_Voltage_C N_1;;1;0;Volts;4
+102;3;40373;I16;;M_AC_Voltage_L L_1;;1;0;Volts;4
+103;3;40374;I16;;M_AC_Voltage_A B_1;;1;0;Volts;4
+104;3;40375;I16;;M_AC_Voltage_B C_1;;1;0;Volts;4
+105;3;40376;I16;;M_AC_Voltage_C A_1;;1;0;Volts;4
+106;3;40377;I16;;M_AC_Voltage_S F_1;;1;0;SF;4
+107;3;40378;I16;;M_AC_Freq_1;;1;0;Herts;4
+108;3;40379;I16;;M_AC_Freq_SF_1;;1;0;SF;4
+109;3;40380;I16;;M_AC_Power_1;;1;0;Watts;4
+110;3;40381;I16;;M_AC_Power_A_1;;1;0;Watts;4
+111;3;40382;I16;;M_AC_Power_B_1;;1;0;Watts;4
+112;3;40383;I16;;M_AC_Power_C_1;;1;0;Watts;4
+113;3;40384;I16;;M_AC_Power_SF_1;;1;0;SF;4
+114;3;40385;I16;;M_AC_VA_1;;1;0;Volt- Amps;4
+115;3;40386;I16;;M_AC_VA_A_1;;1;0;Volt- Amps;4
+116;3;40387;I16;;M_AC_VA_B_1;;1;0;Volt- Amps;4
+117;3;40388;I16;;M_AC_VA_C_1;;1;0;Volt- Amps;4
+118;3;40389;I16;;M_AC_VA_SF_1;;1;0;SF;4
+119;3;40390;I16;;M_AC_VAR_1;;1;0;VAR;4
+120;3;40391;I16;;M_AC_VAR_A_1;;1;0;VAR;4
+121;3;40392;I16;;M_AC_VAR_B_1;;1;0;VAR;4
+122;3;40393;I16;;M_AC_VAR_C_1;;1;0;VAR;4
+123;3;40394;I16;;M_AC_VAR_SF_1;;1;0;SF;4
+124;3;40395;I16;;M_AC_PF_1;;1;0;%;4
+125;3;40396;I16;;M_AC_PF_A_1;;1;0;%;4
+126;3;40397;I16;;M_AC_PF_B_1;;1;0;%;4
+127;3;40398;I16;;M_AC_PF_C_1;;1;0;%;4
+128;3;40399;I16;;M_AC_PF_SF_1;;1;0;SF;4
+129;3;40400;U32;;M_Exported_1;;1;0;Watt- hours;4
+130;3;40402;U32;;M_Exported_A_1;;1;0;Watt- hours;4
+131;3;40404;U32;;M_Exported_B_1;;1;0;Watt- hours;4
+132;3;40406;U32;;M_Exported_C_1;;1;0;Watt- hours;4
+133;3;40408;U32;;M_Imported_1;;1;0;Watt- hours;4
+134;3;40410;U32;;M_Imported_A_1;;1;0;Watt- hours;4
+135;3;40412;U32;;M_Imported_B_1;;1;0;Watt- hours;4
+136;3;40414;U32;;M_Imported_C_1;;1;0;Watt- hours;4
+137;3;40416;I16;;M_Energy_W_SF_1;;1;0;SF;4
+138;3;40417;U32;;M_Exported_VA_1;;1;0;VA-hours;4
+139;3;40419;U32;;M_Exported_VA_ A_1;;1;0;VA-hours;4
+140;3;40421;U32;;M_Exported_VA_ B_1;;1;0;VA-hours;4
+141;3;40423;U32;;M_Exported_VA_ C_1;;1;0;VA-hours;4
+142;3;40425;U32;;M_Imported_VA_1;;1;0;VA-hours;4
+143;3;40427;U32;;M_Imported_VA_ A_1;;1;0;VA-hours;4
+144;3;40429;U32;;M_Imported_VA_ B_1;;1;0;VA-hours;4
+145;3;40431;U32;;M_Imported_VA_ C_1;;1;0;VA-hours;4
+146;3;40433;I16;;M_Energy_VA_S F_1;;1;0;SF;4
+147;3;40434;U32;;M_Import_VARh_ Q1_1;;1;0;VAR-hours;4
+148;3;40436;U32;;M_Import_VARh_ Q1A_1;;1;0;VAR-hours;4
+149;3;40438;U32;;M_Import_VARh_ Q1B_1;;1;0;VAR-hours;4
+150;3;40440;U32;;M_Import_VARh_ Q1C_1;;1;0;VAR-hours;4
+151;3;40442;U32;;M_Import_VARh_ Q2_1;;1;0;VAR-hours;4
+152;3;40444;U32;;M_Import_VARh_ Q2A_1;;1;0;VAR-hours;4
+153;3;40446;U32;;M_Import_VARh_ Q2B_1;;1;0;VAR-hours;4
+154;3;40448;U32;;M_Import_VARh_ Q2C_1;;1;0;VAR-hours;4
+155;3;40450;U32;;M_Export_VARh_ Q3_1;;1;0;VAR-hours;4
+156;3;40452;U32;;M_Export_VARh_ Q3A_1;;1;0;VAR-hours;4
+157;3;40454;U32;;M_Export_VARh_ Q3B_1;;1;0;VAR-hours;4
+158;3;40456;U32;;M_Export_VARh_ Q3C_1;;1;0;VAR-hours;4
+159;3;40458;U32;;M_Export_VARh_ Q4_1;;1;0;VAR-hours;4
+160;3;40460;U32;;M_Export_VARh_ Q4A_1;;1;0;VAR-hours;4
+161;3;40462;U32;;M_Export_VARh_ Q4B_1;;1;0;VAR-hours;4
+162;3;40464;U32;;M_Export_VARh_ Q4C_1;;1;0;VAR-hours;4
+163;3;40466;I16;;M_Energy_VAR_ SF_1;;1;0;SF;4
+164;3;40467;U32;;M_Events_1;;1;0;Flags;4
+165;3;40469;U16;;C_SunSpec_DID_2;;1;0;;4
+166;3;40470;U16;;C_SunSpec_Length_2;;1;0;;4
+167;3;40472_32;STRING;;C_Manufacturer_2;;1;0;;4
+168;3;40488_32;STRING;;C_Model_2;;1;0;;4
+169;3;40504_16;STRING;;C_Option_2;;1;0;;4
+170;3;40512_16;STRING;;C_Version_2;;1;0;;4
+171;3;40520_32;STRING;;C_SerialNumber_2;;1;0;;4
+172;3;40536;U16;;C_DeviceAddress_2;;1;0;;4
+173;3;40537;U16;;C_SunSpec_DID_2__;;1;0;;4
+174;3;40538;U16;;C_SunSpec_Length_2__;;1;0;Registers;4
+175;3;40539;I16;;M_AC_Current_2;;1;0;Amps;4
+176;3;40540;I16;;M_AC_Current_A_2;;1;0;Amps;4
+177;3;40541;I16;;M_AC_Current_B_2;;1;0;Amps;4
+178;3;40542;I16;;M_AC_Current_C_2;;1;0;Amps;4
+179;3;40543;I16;;M_AC_Current_S F_2;;1;0;SF;4
+180;3;40544;I16;;M_AC_Voltage_L N_2;;1;0;Volts;4
+181;3;40545;I16;;M_AC_Voltage_A N_2;;1;0;Volts;4
+182;3;40546;I16;;M_AC_Voltage_B N_2;;1;0;Volts;4
+183;3;40547;I16;;M_AC_Voltage_C N_2;;1;0;Volts;4
+184;3;40548;I16;;M_AC_Voltage_L L_2;;1;0;Volts;4
+185;3;40549;I16;;M_AC_Voltage_A B_2;;1;0;Volts;4
+186;3;40550;I16;;M_AC_Voltage_B C_2;;1;0;Volts;4
+187;3;40551;I16;;M_AC_Voltage_C A_2;;1;0;Volts;4
+188;3;40552;I16;;M_AC_Voltage_S F_2;;1;0;SF;4
+189;3;40553;I16;;M_AC_Freq_2;;1;0;Herts;4
+190;3;40554;I16;;M_AC_Freq_SF_2;;1;0;SF;4
+191;3;40555;I16;;M_AC_Power_2;;1;0;Watts;4
+192;3;40556;I16;;M_AC_Power_A_2;;1;0;Watts;4
+193;3;40557;I16;;M_AC_Power_B_2;;1;0;Watts;4
+194;3;40558;I16;;M_AC_Power_C_2;;1;0;Watts;4
+195;3;40559;I16;;M_AC_Power_SF_2;;1;0;SF;4
+196;3;40560;I16;;M_AC_VA_2;;1;0;Volt- Amps;4
+197;3;40561;I16;;M_AC_VA_A_2;;1;0;Volt- Amps;4
+198;3;40562;I16;;M_AC_VA_B_2;;1;0;Volt- Amps;4
+199;3;40563;I16;;M_AC_VA_C_2;;1;0;Volt- Amps;4
+200;3;40564;I16;;M_AC_VA_SF_2;;1;0;SF;4
+201;3;40565;I16;;M_AC_VAR_2;;1;0;VAR;4
+202;3;40566;I16;;M_AC_VAR_A_2;;1;0;VAR;4
+203;3;40567;I16;;M_AC_VAR_B_2;;1;0;VAR;4
+204;3;40568;I16;;M_AC_VAR_C_2;;1;0;VAR;4
+205;3;40569;I16;;M_AC_VAR_SF_2;;1;0;SF;4
+206;3;40570;I16;;M_AC_PF_2;;1;0;%;4
+207;3;40571;I16;;M_AC_PF_A_2;;1;0;%;4
+208;3;40572;I16;;M_AC_PF_B_2;;1;0;%;4
+209;3;40573;I16;;M_AC_PF_C_2;;1;0;%;4
+210;3;40574;I16;;M_AC_PF_SF_2;;1;0;SF;4
+211;3;40575;U32;;M_Exported_2;;1;0;Watt- hours;4
+212;3;40577;U32;;M_Exported_A_2;;1;0;Watt- hours;4
+213;3;40579;U32;;M_Exported_B_2;;1;0;Watt- hours;4
+214;3;40581;U32;;M_Exported_C_2;;1;0;Watt- hours;4
+215;3;40583;U32;;M_Imported_2;;1;0;Watt- hours;4
+216;3;40585;U32;;M_Imported_A_2;;1;0;Watt- hours;4
+217;3;40587;U32;;M_Imported_B_2;;1;0;Watt- hours;4
+218;3;40589;U32;;M_Imported_C_2;;1;0;Watt- hours;4
+219;3;40591;I16;;M_Energy_W_SF_2;;1;0;SF;4
+220;3;40592;U32;;M_Exported_VA_2;;1;0;VA-hours;4
+221;3;40594;U32;;M_Exported_VA_ A_2;;1;0;VA-hours;4
+222;3;40596;U32;;M_Exported_VA_ B_2;;1;0;VA-hours;4
+223;3;40598;U32;;M_Exported_VA_ C_2;;1;0;VA-hours;4
+224;3;40600;U32;;M_Imported_VA_2;;1;0;VA-hours;4
+225;3;40602;U32;;M_Imported_VA_ A_2;;1;0;VA-hours;4
+226;3;40604;U32;;M_Imported_VA_ B_2;;1;0;VA-hours;4
+227;3;40606;U32;;M_Imported_VA_ C_2;;1;0;VA-hours;4
+228;3;40608;I16;;M_Energy_VA_S F_2;;1;0;SF;4
+229;3;40610;U32;;M_Import_VARh_ Q1_2;;1;0;VAR-hours;4
+230;3;40612;U32;;M_Import_VARh_ Q1A_2;;1;0;VAR-hours;4
+231;3;40614;U32;;M_Import_VARh_ Q1B_2;;1;0;VAR-hours;4
+232;3;40616;U32;;M_Import_VARh_ Q1C_2;;1;0;VAR-hours;4
+233;3;40618;U32;;M_Import_VARh_ Q2_2;;1;0;VAR-hours;4
+234;3;40620;U32;;M_Import_VARh_ Q2A_2;;1;0;VAR-hours;4
+235;3;40622;U32;;M_Import_VARh_ Q2B_2;;1;0;VAR-hours;4
+236;3;40624;U32;;M_Import_VARh_ Q2C_2;;1;0;VAR-hours;4
+237;3;40626;U32;;M_Export_VARh_ Q3_2;;1;0;VAR-hours;4
+238;3;40628;U32;;M_Export_VARh_ Q3A_2;;1;0;VAR-hours;4
+239;3;40630;U32;;M_Export_VARh_ Q3B_2;;1;0;VAR-hours;4
+240;3;40632;U32;;M_Export_VARh_ Q3C_2;;1;0;VAR-hours;4
+241;3;40634;U32;;M_Export_VARh_ Q4_2;;1;0;VAR-hours;4
+242;3;40636;U32;;M_Export_VARh_ Q4A_2;;1;0;VAR-hours;4
+243;3;40638;U32;;M_Export_VARh_ Q4B_2;;1;0;VAR-hours;4
+244;3;40640;U32;;M_Export_VARh_ Q4C_2;;1;0;VAR-hours;4
+245;3;40642;I16;;M_Energy_VAR_ SF_2;;1;0;SF;4
+246;3;40643;U32;;M_Events_2;;1;0;Flags;4

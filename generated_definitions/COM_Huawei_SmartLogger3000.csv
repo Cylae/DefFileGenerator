@@ -1,4 +1,4 @@
-﻿modbusTCP;Communication;Huawei;SmartLogger3000;;;;;;;
+modbusTCP;Communication;Huawei;SmartLogger3000;;;;;;;
 1;3;40000;U32;;Date&Time;datetime;1.000000;0.000000;Epoch;4
 2;3;40002;U32;;City;city;1.000000;0.000000;;4
 3;3;40004;U16;;Daylight Saving Time (DST;daylight_saving_time_dst;1.000000;0.000000;;4
@@ -6,11 +6,11 @@
 5;3;40007;U16;;DST state;dst_state;1.000000;0.000000;;4
 6;3;40008;U16;;DST offset;dst_offset;1.000000;0.000000;;4
 7;3;40009;U32;;The Local Time;the_local_time;1.000000;0.000000;Epoch;4
-8;3;40200;U16;;Power On;cmdOn;1.000000;0.000000;;4
-9;3;40201;U16;;Power Off;cmdOff;1.000000;0.000000;;4
+8;3;40200;U16;;Power On;CMD_ON;1.000000;0.000000;;4
+9;3;40201;U16;;Power Off;CMD_OFF;1.000000;0.000000;;4
 10;3;40204;U16;;Transfer trip;transfer_trip;1.000000;0.000000;;4
 11;3;40205;U16;;Array reset;array_reset;1.000000;0.000000;;4
-12;3;40420;U32;;ActiveAdjustment;cmdPwrPercent;0.100000;0.000000;kW;4
+12;3;40420;U32;;ActiveAdjustment;CMD_P_AC_SET_PERCENT;0.100000;0.000000;kW;4
 13;3;40422;I32;;ReactiveAdjustment;reactiveadjustment;0.100000;0.000000;kVar;4
 14;3;40424;U32;;ActiveAdjustment_2;activeadjustment_2;0.100000;0.000000;kW;4
 15;3;40426;I32;;ReactiveAdjustment_2;reactiveadjustment_2;0.100000;0.000000;kVar;4
@@ -19,8 +19,8 @@
 18;3;40500;I16;;DC Current;dc_current;0.100000;0.000000;A;4
 19;3;40521;U32;;Input power;input_power;0.001000;0.000000;kW;4
 20;3;40523;U32;;CO2 reduction;co2_reduction;0.100000;0.000000;kg;4
-21;3;40525;I32;;Active power;RealPower;0.001000;0.000000;kW;4
-22;3;40532;I16;;Power Factor;CosPhi;0.001000;0.000000;;4
+21;3;40525;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+22;3;40532;I16;;Power Factor;PF;0.001000;0.000000;;4
 23;3;40543;U16;;Plant status;plant_status;1.000000;0.000000;;4
 24;3;40544;I32;;Reactive power;reactive_power;0.001000;0.000000;;4
 25;3;40550;U64;;CO2 reduction_1;co2_reduction_1;0.010000;0.000000;kg;4

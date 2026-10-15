@@ -1,0 +1,15 @@
+modbusRTU;Meter;Anexo;ANEXO_METER;;;;;;;
+1;3;0;I32;;0.0.1 modbus adres (modbus adres  1);v_001_modbus_adres_modbus_adres_1;1.000000;0.000000;;4
+2;3;2;I32;;32.25 Voltage L1 (230V);v_3225_voltage_l1_230v;1.000000;0.000000;V;4
+3;3;4;I32;;52.25 Voltage L2 (230V);v_5225_voltage_l2_230v;1.000000;0.000000;V;4
+4;3;6;I32;;72.25 Voltage L3 (230V);v_7225_voltage_l3_230v;1.000000;0.000000;V;4
+5;3;8;I32;;31.25 Stroom L1 (25A);v_3125_stroom_l1_25a;1.000000;0.000000;A;4
+6;3;10;I32;;51.25 Stroom L2 (25A);v_5125_stroom_l2_25a;1.000000;0.000000;A;4
+7;3;12;I32;;71.25 Stroom L3 (25A);v_7125_stroom_l3_25a;1.000000;0.000000;A;4
+8;3;14;I32;;1.25 Werkelijk vermogen (17 kW);v_125_werkelijk_vermogen_17_kw;1.000000;0.000000;kW;4
+9;3;16;I32;;3.25 Blind vermogen (0 kVAR);v_325_blind_vermogen_0_kvar;1.000000;0.000000;KVAR;4
+10;3;18;I32;;9.25 Schijnbaar vermogen (17 kW);v_925_schijnbaar_vermogen_17_kw;1.000000;0.000000;Kw;4
+11;3;20;I32;;14.25 Frequentie (50.00 Hz);v_1425_frequentie_5000_hz;1.000000;0.000000;Hz;4
+12;3;22;I32;;13.25 Arbeidsfactor (1.00);v_1325_arbeidsfactor_100;1.000000;0.000000;;4
+13;3;24;I32;;1.8.0 meterstand leveren cumulatief (70000 kWh);v_180_meterstand_leveren_cumulatief_70000_kwh;1.000000;0.000000;kWh;4
+14;3;26;I32;;2.8.0 meterstand terugleveren cumulatief (125000 kWh);v_280_meterstand_terugleveren_cumulatief_125000_kwh;1.000000;0.000000;kWh;4

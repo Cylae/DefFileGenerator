@@ -1,0 +1,36 @@
+Modbus;Meter;Schneider;PM5xxx
+1;3;2004;U32;;OperationTimer;;1.0;0.0;s;4
+2;3;6501;U16;;Address;UNIT_ID;1.0;0.0;;4
+3;3;6502;U16;;baudrate;;1.0;0.0;;4
+4;3;6503;U16;;parity;;1.0;0.0;;4
+5;3;8905;U16;;Digital Input Status;;1.0;0.0;;4
+6;3;2999;F32;;phase 1 current;I_AC_1;1.0;0.0;A;4
+7;3;3001;F32;;phase 2 current;I_AC_2;1.0;0.0;A;4
+8;3;3003;F32;;phase 3 current;I_AC_3;1.0;0.0;A;4
+9;3;3009;F32;;Current Avg;;1.0;0.0;A;4
+10;3;3019;F32;;Voltage L1-L2;U_AC_L1L2;1.0;0.0;V;4
+11;3;3021;F32;;Voltage L2-L3;U_AC_L2L3;1.0;0.0;V;4
+12;3;3023;F32;;Voltage L3-L1;U_AC_L3L1;1.0;0.0;V;4
+13;3;3025;F32;;Voltage L-L Avg;;1.0;0.0;V;4
+14;3;3027;F32;;Voltage L1-N;U_AC_1;1.0;0.0;V;4
+15;3;3029;F32;;Voltage L2-N;U_AC_2;1.0;0.0;V;4
+16;3;3031;F32;;Voltage L3-N;U_AC_3;1.0;0.0;V;4
+17;3;3035;F32;;Voltage L-N Avg;;1.0;0.0;V;4
+18;3;3053;F32;;Active Power Phase A;P_AC_1;1.0;0.0;kW;4
+19;3;3055;F32;;Active Power Phase B;P_AC_2;1.0;0.0;kW;4
+20;3;3057;F32;;Active Power Phase C;P_AC_3;1.0;0.0;kW;4
+21;3;3059;F32;;Active Power Total;P_AC;1.0;0.0;kW;4
+22;3;3067;F32;;Reactive Power Total;Q_AC;1.0;0.0;kVAR;4
+23;3;3075;F32;;Apparent Power Total;S_AC;1.0;0.0;kVA;4
+24;3;3083;F32;;Power Factor Total;PF;1.0;0.0;;4
+25;3;3109;F32;;Frequency;FREQ;1.0;0.0;Hz;4
+26;3;27703;F32;;Max current Avg;;1.0;0.0;A;4
+27;3;27711;F32;;Max current Unbalance Worst;;1.0;0.0;%;4
+28;3;27719;F32;;Max Voltage L-L Avg;;1.0;0.0;V;4
+29;3;27729;F32;;Max Voltage L-N Avg;;1.0;0.0;V;4
+30;3;27737;F32;;Max Voltage Unbalance L-L Worst;;1.0;0.0;%;4
+31;3;27745;F32;;Max Voltage Unbalance L-N Worst;;1.0;0.0;%;4
+32;3;27753;F32;;Max Active Power Total;;1.0;0.0;kW;4
+33;3;27761;F32;;Max Reactive Power Total;;1.0;0.0;kVAR;4
+34;3;27769;F32;;Max Apparent Power Total;;1.0;0.0;kVA;4
+35;3;28091;F32;;Max Frequency;;1.0;0.0;Hz;4

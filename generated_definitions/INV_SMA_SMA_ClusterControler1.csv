@@ -1,0 +1,198 @@
+modbusRTU;Inverter;SMA;SMA_ClusterControler1;;;;;;;
+1;3;30001;U32;;Numéro de version du profil Modbus SMA;numro_de_version_du_profil_modbus_sma;1.000000;0.000000;;1
+2;3;30003;U32;;SUSy-ID (du Cluster Controller);susyid_du_cluster_controller;1.000000;0.000000;;1
+3;3;30005;U32;;Numéro de série (du Cluster Controller);numro_de_srie_du_cluster_controller;1.000000;0.000000;;1
+4;3;30007;U32;;Modification des données Modbus;modification_des_donnes_modbus;1.000000;0.000000;;1
+5;3;30051;U32;;Groupe d’appareils;groupe_dappareils;1.000000;0.000000;ENUM;1
+6;3;30193;U32;;Heure du systeme UTC (s);heure_du_systeme_utc_s;1.000000;0.000000;s;1
+7;3;30775;I32;;Puissance active actuelle;puissance_active_actuelle;1.000000;0.000000;W;1
+8;3;30805;I32;;Puissance réactive;puissance_ractive;1.000000;0.000000;var;1
+9;3;34653;U32;;Groupe d’entrée numérique 1;groupe_dentre_numrique_1;1.000000;0.000000;ENUM;1
+10;3;34655;U32;;Groupe d’entrée numérique 2;groupe_dentre_numrique_2;1.000000;0.000000;ENUM;1
+11;3;40001;U32;;Mettre l’installation à l’heure UTC, en s;mettre_linstallation_lheure_utc_en_s;1.000000;0.000000;s;1
+12;3;42109;U16;;SUSy-ID Appareil 1;susyid_appareil_1;1.000000;0.000000;;1
+13;3;42110;U32;;SN Appareil 1;sn_appareil_1;1.000000;0.000000;;1
+14;3;42112;U16;;Unit ID Appareil 1;unit_id_appareil_1;1.000000;0.000000;;1
+15;3;42113;U16;;SUSy-ID Appareil 2;susyid_appareil_2;1.000000;0.000000;;1
+16;3;42114;U32;;SN Appareil 2;sn_appareil_2;1.000000;0.000000;;1
+17;3;42116;U16;;Unit ID Appareil 2;unit_id_appareil_2;1.000000;0.000000;;1
+18;3;42117;U16;;SUSy-ID Appareil 3;susyid_appareil_3;1.000000;0.000000;;1
+19;3;42118;U32;;SN Appareil 3;sn_appareil_3;1.000000;0.000000;;1
+20;3;42120;U16;;Unit ID Appareil 3;unit_id_appareil_3;1.000000;0.000000;;1
+21;3;42121;U16;;SUSy-ID Appareil 4;susyid_appareil_4;1.000000;0.000000;;1
+22;3;42122;U32;;SN Appareil 4;sn_appareil_4;1.000000;0.000000;;1
+23;3;42124;U16;;Unit ID Appareil 4;unit_id_appareil_4;1.000000;0.000000;;1
+24;3;42125;U16;;SUSy-ID Appareil 5;susyid_appareil_5;1.000000;0.000000;;1
+25;3;42126;U32;;SN Appareil 5;sn_appareil_5;1.000000;0.000000;;1
+26;3;42128;U16;;Unit ID Appareil 5;unit_id_appareil_5;1.000000;0.000000;;1
+27;3;42129;U16;;SUSy-ID Appareil 6;susyid_appareil_6;1.000000;0.000000;;1
+28;3;42130;U32;;SN Appareil 6;sn_appareil_6;1.000000;0.000000;;1
+29;3;42132;U16;;Unit ID Appareil 6;unit_id_appareil_6;1.000000;0.000000;;1
+30;3;42133;U16;;SUSy-ID Appareil 7;susyid_appareil_7;1.000000;0.000000;;1
+31;3;42134;U32;;SN Appareil 7;sn_appareil_7;1.000000;0.000000;;1
+32;3;42136;U16;;Unit ID Appareil 7;unit_id_appareil_7;1.000000;0.000000;;1
+33;3;42137;U16;;SUSy-ID Appareil 8;susyid_appareil_8;1.000000;0.000000;;1
+34;3;42138;U32;;SN Appareil 8;sn_appareil_8;1.000000;0.000000;;1
+35;3;42140;U16;;Unit ID Appareil 8;unit_id_appareil_8;1.000000;0.000000;;1
+36;3;42141;U16;;SUSy-ID Appareil 9;susyid_appareil_9;1.000000;0.000000;;1
+37;3;42142;U32;;SN Appareil 9;sn_appareil_9;1.000000;0.000000;;1
+38;3;42144;U16;;Unit ID Appareil 9;unit_id_appareil_9;1.000000;0.000000;;1
+39;3;42145;U16;;SUSy-ID Appareil 10;susyid_appareil_10;1.000000;0.000000;;1
+40;3;42146;U32;;SN Appareil 10;sn_appareil_10;1.000000;0.000000;;1
+41;3;42148;U16;;Unit ID Appareil 10;unit_id_appareil_10;1.000000;0.000000;;1
+42;3;42149;U16;;SUSy-ID Appareil 11;susyid_appareil_11;1.000000;0.000000;;1
+43;3;42150;U32;;SN Appareil 11;sn_appareil_11;1.000000;0.000000;;1
+44;3;42152;U16;;Unit ID Appareil 11;unit_id_appareil_11;1.000000;0.000000;;1
+45;3;42153;U16;;SUSy-ID Appareil 12;susyid_appareil_12;1.000000;0.000000;;1
+46;3;42154;U32;;SN Appareil 12;sn_appareil_12;1.000000;0.000000;;1
+47;3;42156;U16;;Unit ID Appareil 12;unit_id_appareil_12;1.000000;0.000000;;1
+48;3;42157;U16;;SUSy-ID Appareil 13;susyid_appareil_13;1.000000;0.000000;;1
+49;3;42158;U32;;SN Appareil 13;sn_appareil_13;1.000000;0.000000;;1
+50;3;42160;U16;;Unit ID Appareil 13;unit_id_appareil_13;1.000000;0.000000;;1
+51;3;42161;U16;;SUSy-ID Appareil 14;susyid_appareil_14;1.000000;0.000000;;1
+52;3;42162;U32;;SN Appareil 14;sn_appareil_14;1.000000;0.000000;;1
+53;3;42164;U16;;Unit ID Appareil 14;unit_id_appareil_14;1.000000;0.000000;;1
+54;3;42165;U16;;SUSy-ID Appareil 15;susyid_appareil_15;1.000000;0.000000;;1
+55;3;42166;U32;;SN Appareil 15;sn_appareil_15;1.000000;0.000000;;1
+56;3;42168;U16;;Unit ID Appareil 15;unit_id_appareil_15;1.000000;0.000000;;1
+57;3;42169;U16;;SUSy-ID Appareil 16;susyid_appareil_16;1.000000;0.000000;;1
+58;3;42170;U32;;SN Appareil 16;sn_appareil_16;1.000000;0.000000;;1
+59;3;42172;U16;;Unit ID Appareil 16;unit_id_appareil_16;1.000000;0.000000;;1
+60;3;42173;U16;;SUSy-ID Appareil 17;susyid_appareil_17;1.000000;0.000000;;1
+61;3;42174;U32;;SN Appareil 17;sn_appareil_17;1.000000;0.000000;;1
+62;3;42176;U16;;Unit ID Appareil 17;unit_id_appareil_17;1.000000;0.000000;;1
+63;3;42177;U16;;SUSy-ID Appareil 18;susyid_appareil_18;1.000000;0.000000;;1
+64;3;42178;U32;;SN Appareil 18;sn_appareil_18;1.000000;0.000000;;1
+65;3;42180;U16;;Unit ID Appareil 18;unit_id_appareil_18;1.000000;0.000000;;1
+66;3;42181;U16;;SUSy-ID Appareil 19;susyid_appareil_19;1.000000;0.000000;;1
+67;3;42182;U32;;SN Appareil 19;sn_appareil_19;1.000000;0.000000;;1
+68;3;42184;U16;;Unit ID Appareil 19;unit_id_appareil_19;1.000000;0.000000;;1
+69;3;42185;U16;;SUSy-ID Appareil 20;susyid_appareil_20;1.000000;0.000000;;1
+70;3;42186;U32;;SN Appareil 20;sn_appareil_20;1.000000;0.000000;;1
+71;3;42188;U16;;Unit ID Appareil 20;unit_id_appareil_20;1.000000;0.000000;;1
+72;3;42189;U16;;SUSy-ID Appareil 21;susyid_appareil_21;1.000000;0.000000;;1
+73;3;42190;U32;;SN Appareil 21;sn_appareil_21;1.000000;0.000000;;1
+74;3;42192;U16;;Unit ID Appareil 21;unit_id_appareil_21;1.000000;0.000000;;1
+75;3;42193;U16;;SUSy-ID Appareil 22;susyid_appareil_22;1.000000;0.000000;;1
+76;3;42194;U32;;SN Appareil 22;sn_appareil_22;1.000000;0.000000;;1
+77;3;42196;U16;;Unit ID Appareil 22;unit_id_appareil_22;1.000000;0.000000;;1
+78;3;42197;U16;;SUSy-ID Appareil 23;susyid_appareil_23;1.000000;0.000000;;1
+79;3;42198;U32;;SN Appareil 23;sn_appareil_23;1.000000;0.000000;;1
+80;3;42200;U16;;Unit ID Appareil 23;unit_id_appareil_23;1.000000;0.000000;;1
+81;3;42201;U16;;SUSy-ID Appareil 24;susyid_appareil_24;1.000000;0.000000;;1
+82;3;42202;U32;;SN Appareil 24;sn_appareil_24;1.000000;0.000000;;1
+83;3;42204;U16;;Unit ID Appareil 24;unit_id_appareil_24;1.000000;0.000000;;1
+84;3;42205;U16;;SUSy-ID Appareil 25;susyid_appareil_25;1.000000;0.000000;;1
+85;3;42206;U32;;SN Appareil 25;sn_appareil_25;1.000000;0.000000;;1
+86;3;42208;U16;;Unit ID Appareil 25;unit_id_appareil_25;1.000000;0.000000;;1
+87;3;42209;U16;;SUSy-ID Appareil 26;susyid_appareil_26;1.000000;0.000000;;1
+88;3;42210;U32;;SN Appareil 26;sn_appareil_26;1.000000;0.000000;;1
+89;3;42212;U16;;Unit ID Appareil 26;unit_id_appareil_26;1.000000;0.000000;;1
+90;3;42213;U16;;SUSy-ID Appareil 27;susyid_appareil_27;1.000000;0.000000;;1
+91;3;42214;U32;;SN Appareil 27;sn_appareil_27;1.000000;0.000000;;1
+92;3;42216;U16;;Unit ID Appareil 27;unit_id_appareil_27;1.000000;0.000000;;1
+93;3;42217;U16;;SUSy-ID Appareil 28;susyid_appareil_28;1.000000;0.000000;;1
+94;3;42218;U32;;SN Appareil 28;sn_appareil_28;1.000000;0.000000;;1
+95;3;42220;U16;;Unit ID Appareil 28;unit_id_appareil_28;1.000000;0.000000;;1
+96;3;42221;U16;;SUSy-ID Appareil 29;susyid_appareil_29;1.000000;0.000000;;1
+97;3;42222;U32;;SN Appareil 29;sn_appareil_29;1.000000;0.000000;;1
+98;3;42224;U16;;Unit ID Appareil 29;unit_id_appareil_29;1.000000;0.000000;;1
+99;3;42225;U16;;SUSy-ID Appareil 30;susyid_appareil_30;1.000000;0.000000;;1
+100;3;42226;U32;;SN Appareil 30;sn_appareil_30;1.000000;0.000000;;1
+101;3;42228;U16;;Unit ID Appareil 30;unit_id_appareil_30;1.000000;0.000000;;1
+102;3;42229;U16;;SUSy-ID Appareil 31;susyid_appareil_31;1.000000;0.000000;;1
+103;3;42230;U32;;SN Appareil 31;sn_appareil_31;1.000000;0.000000;;1
+104;3;42232;U16;;Unit ID Appareil 31;unit_id_appareil_31;1.000000;0.000000;;1
+105;3;42233;U16;;SUSy-ID Appareil 32;susyid_appareil_32;1.000000;0.000000;;1
+106;3;42234;U32;;SN Appareil 32;sn_appareil_32;1.000000;0.000000;;1
+107;3;42236;U16;;Unit ID Appareil 32;unit_id_appareil_32;1.000000;0.000000;;1
+108;3;42237;U16;;SUSy-ID Appareil 33;susyid_appareil_33;1.000000;0.000000;;1
+109;3;42238;U32;;SN Appareil 33;sn_appareil_33;1.000000;0.000000;;1
+110;3;42240;U16;;Unit ID Appareil 33;unit_id_appareil_33;1.000000;0.000000;;1
+111;3;42241;U16;;SUSy-ID Appareil 34;susyid_appareil_34;1.000000;0.000000;;1
+112;3;42242;U32;;SN Appareil 34;sn_appareil_34;1.000000;0.000000;;1
+113;3;42244;U16;;Unit ID Appareil 34;unit_id_appareil_34;1.000000;0.000000;;1
+114;3;42245;U16;;SUSy-ID Appareil 35;susyid_appareil_35;1.000000;0.000000;;1
+115;3;42246;U32;;SN Appareil 35;sn_appareil_35;1.000000;0.000000;;1
+116;3;42248;U16;;Unit ID Appareil 35;unit_id_appareil_35;1.000000;0.000000;;1
+117;3;42249;U16;;SUSy-ID Appareil 36;susyid_appareil_36;1.000000;0.000000;;1
+118;3;42250;U32;;SN Appareil 36;sn_appareil_36;1.000000;0.000000;;1
+119;3;42252;U16;;Unit ID Appareil 36;unit_id_appareil_36;1.000000;0.000000;;1
+120;3;42253;U16;;SUSy-ID Appareil 37;susyid_appareil_37;1.000000;0.000000;;1
+121;3;42254;U32;;SN Appareil 37;sn_appareil_37;1.000000;0.000000;;1
+122;3;42256;U16;;Unit ID Appareil 37;unit_id_appareil_37;1.000000;0.000000;;1
+123;3;42257;U16;;SUSy-ID Appareil 38;susyid_appareil_38;1.000000;0.000000;;1
+124;3;42258;U32;;SN Appareil 38;sn_appareil_38;1.000000;0.000000;;1
+125;3;42260;U16;;Unit ID Appareil 38;unit_id_appareil_38;1.000000;0.000000;;1
+126;3;42261;U16;;SUSy-ID Appareil 39;susyid_appareil_39;1.000000;0.000000;;1
+127;3;42262;U32;;SN Appareil 39;sn_appareil_39;1.000000;0.000000;;1
+128;3;42264;U16;;Unit ID Appareil 39;unit_id_appareil_39;1.000000;0.000000;;1
+129;3;42265;U16;;SUSy-ID Appareil 40;susyid_appareil_40;1.000000;0.000000;;1
+130;3;42266;U32;;SN Appareil 40;sn_appareil_40;1.000000;0.000000;;1
+131;3;42268;U16;;Unit ID Appareil 40;unit_id_appareil_40;1.000000;0.000000;;1
+132;3;42269;U16;;SUSy-ID Appareil 41;susyid_appareil_41;1.000000;0.000000;;1
+133;3;42270;U32;;SN Appareil 41;sn_appareil_41;1.000000;0.000000;;1
+134;3;42272;U16;;Unit ID Appareil 41;unit_id_appareil_41;1.000000;0.000000;;1
+135;3;42273;U16;;SUSy-ID Appareil 42;susyid_appareil_42;1.000000;0.000000;;1
+136;3;42274;U32;;SN Appareil 42;sn_appareil_42;1.000000;0.000000;;1
+137;3;42276;U16;;Unit ID Appareil 42;unit_id_appareil_42;1.000000;0.000000;;1
+138;3;42277;U16;;SUSy-ID Appareil 43;susyid_appareil_43;1.000000;0.000000;;1
+139;3;42278;U32;;SN Appareil 43;sn_appareil_43;1.000000;0.000000;;1
+140;3;42280;U16;;Unit ID Appareil 43;unit_id_appareil_43;1.000000;0.000000;;1
+141;3;42281;U16;;SUSy-ID Appareil 44;susyid_appareil_44;1.000000;0.000000;;1
+142;3;42282;U32;;SN Appareil 44;sn_appareil_44;1.000000;0.000000;;1
+143;3;42284;U16;;Unit ID Appareil 44;unit_id_appareil_44;1.000000;0.000000;;1
+144;3;42285;U16;;SUSy-ID Appareil 45;susyid_appareil_45;1.000000;0.000000;;1
+145;3;42286;U32;;SN Appareil 45;sn_appareil_45;1.000000;0.000000;;1
+146;3;42288;U16;;Unit ID Appareil 45;unit_id_appareil_45;1.000000;0.000000;;1
+147;3;42289;U16;;SUSy-ID Appareil 46;susyid_appareil_46;1.000000;0.000000;;1
+148;3;42290;U32;;SN Appareil 46;sn_appareil_46;1.000000;0.000000;;1
+149;3;42292;U16;;Unit ID Appareil 46;unit_id_appareil_46;1.000000;0.000000;;1
+150;3;42293;U16;;SUSy-ID Appareil 47;susyid_appareil_47;1.000000;0.000000;;1
+151;3;42294;U32;;SN Appareil 47;sn_appareil_47;1.000000;0.000000;;1
+152;3;42296;U16;;Unit ID Appareil 47;unit_id_appareil_47;1.000000;0.000000;;1
+153;3;42297;U16;;SUSy-ID Appareil 48;susyid_appareil_48;1.000000;0.000000;;1
+154;3;42298;U32;;SN Appareil 48;sn_appareil_48;1.000000;0.000000;;1
+155;3;42300;U16;;Unit ID Appareil 48;unit_id_appareil_48;1.000000;0.000000;;1
+156;3;42301;U16;;SUSy-ID Appareil 49;susyid_appareil_49;1.000000;0.000000;;1
+157;3;42302;U32;;SN Appareil 49;sn_appareil_49;1.000000;0.000000;;1
+158;3;42304;U16;;Unit ID Appareil 49;unit_id_appareil_49;1.000000;0.000000;;1
+159;3;42305;U16;;SUSy-ID Appareil 50;susyid_appareil_50;1.000000;0.000000;;1
+160;3;42306;U32;;SN Appareil 50;sn_appareil_50;1.000000;0.000000;;1
+161;3;42308;U16;;Unit ID Appareil 50;unit_id_appareil_50;1.000000;0.000000;;1
+162;3;42309;U16;;SUSy-ID Appareil 51;susyid_appareil_51;1.000000;0.000000;;1
+163;3;42310;U32;;SN Appareil 51;sn_appareil_51;1.000000;0.000000;;1
+164;3;42312;U16;;Unit ID Appareil 51;unit_id_appareil_51;1.000000;0.000000;;1
+165;3;42313;U16;;SUSy-ID Appareil 52;susyid_appareil_52;1.000000;0.000000;;1
+166;3;42314;U32;;SN Appareil 52;sn_appareil_52;1.000000;0.000000;;1
+167;3;42316;U16;;Unit ID Appareil 52;unit_id_appareil_52;1.000000;0.000000;;1
+168;3;42317;U16;;SUSy-ID Appareil 53;susyid_appareil_53;1.000000;0.000000;;1
+169;3;42318;U32;;SN Appareil 53;sn_appareil_53;1.000000;0.000000;;1
+170;3;42320;U16;;Unit ID Appareil 53;unit_id_appareil_53;1.000000;0.000000;;1
+171;3;42321;U16;;SUSy-ID Appareil 54;susyid_appareil_54;1.000000;0.000000;;1
+172;3;42322;U32;;SN Appareil 54;sn_appareil_54;1.000000;0.000000;;1
+173;3;42324;U16;;Unit ID Appareil 54;unit_id_appareil_54;1.000000;0.000000;;1
+174;3;42325;U16;;SUSy-ID Appareil 55;susyid_appareil_55;1.000000;0.000000;;1
+175;3;42326;U32;;SN Appareil 55;sn_appareil_55;1.000000;0.000000;;1
+176;3;42328;U16;;Unit ID Appareil 55;unit_id_appareil_55;1.000000;0.000000;;1
+177;3;42329;U16;;SUSy-ID Appareil 56;susyid_appareil_56;1.000000;0.000000;;1
+178;3;42330;U32;;SN Appareil 56;sn_appareil_56;1.000000;0.000000;;1
+179;3;42332;U16;;Unit ID Appareil 56;unit_id_appareil_56;1.000000;0.000000;;1
+180;3;42333;U16;;SUSy-ID Appareil 57;susyid_appareil_57;1.000000;0.000000;;1
+181;3;42334;U32;;SN Appareil 57;sn_appareil_57;1.000000;0.000000;;1
+182;3;42336;U16;;Unit ID Appareil 57;unit_id_appareil_57;1.000000;0.000000;;1
+183;3;42337;U16;;SUSy-ID Appareil 58;susyid_appareil_58;1.000000;0.000000;;1
+184;3;42338;U32;;SN Appareil 58;sn_appareil_58;1.000000;0.000000;;1
+185;3;42340;U16;;Unit ID Appareil 58;unit_id_appareil_58;1.000000;0.000000;;1
+186;3;42341;U16;;SUSy-ID Appareil 59;susyid_appareil_59;1.000000;0.000000;;1
+187;3;42342;U32;;SN Appareil 59;sn_appareil_59;1.000000;0.000000;;1
+188;3;42344;U16;;Unit ID Appareil 59;unit_id_appareil_59;1.000000;0.000000;;1
+189;3;42345;U16;;SUSy-ID Appareil 60;susyid_appareil_60;1.000000;0.000000;;1
+190;3;42346;U32;;SN Appareil 60;sn_appareil_60;1.000000;0.000000;;1
+191;3;42348;U16;;Unit ID Appareil 60;unit_id_appareil_60;1.000000;0.000000;;1
+192;3;42349;U16;;SUSy-ID Appareil 61;susyid_appareil_61;1.000000;0.000000;;1
+193;3;42350;U32;;SN Appareil 61;sn_appareil_61;1.000000;0.000000;;1
+194;3;42352;U16;;Unit ID Appareil 61;unit_id_appareil_61;1.000000;0.000000;;1
+195;3;42353;U16;;SUSy-ID Appareil 62;susyid_appareil_62;1.000000;0.000000;;1
+196;3;42354;U32;;SN Appareil 62;sn_appareil_62;1.000000;0.000000;;1
+197;3;42356;U16;;Unit ID Appareil 62;unit_id_appareil_62;1.000000;0.000000;;1

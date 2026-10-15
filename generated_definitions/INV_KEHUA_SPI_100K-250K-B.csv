@@ -1,0 +1,239 @@
+Modbus;Inverter;KEHUA;SPI_100K-250K-B
+1;4;4800;F32_W;;Model;MODEL;1.0;0.0;;4
+2;4;4820;F32_W;;HMI software version;;1.0;0.0;;4
+3;4;4825;F32_W;;Serial Number;SERIAL;1.0;0.0;;4
+4;4;4835;F32_W;;Version of control software 1;;1.0;0.0;;4
+5;4;4840;F32_W;;Version of control software 2;;1.0;0.0;;4
+6;4;4845;F32_W;;Version of control software 3;;1.0;0.0;;4
+7;4;4850;U16;;Device type;;1.0;0.0;;4
+8;4;4851;U16;;MPPT Number;;1.0;0.0;;4
+9;4;4852;U16;;Protocol type;;1.0;0.0;;4
+10;4;4853;F32_W;;Protocol version;;1.0;0.0;;4
+11;4;4858;F32_W;;Manufacturer info;MANUFACTURER;1.0;0.0;;4
+12;4;4873;U16;;Total PV array quantity;;1.0;0.0;;4
+13;4;4874;U16;;Probation remaining;;1.0;0.0;;4
+14;4;5000;U16;;Inverter running status;;1.0;0.0;;4
+15;4;5002;U16;;Bus voltage;U_DC;0.1;0.0;V;4
+16;3;10000;F32_W;;Manufacturer info_1;;1.0;0.0;;4
+17;3;10015;F32_W;;Model_1;;1.0;0.0;;4
+18;3;10025;F32_W;;Serial Number_1;;1.0;0.0;;4
+19;3;10070;U16;;Device type_1;;1.0;0.0;;4
+20;3;10071;U16;;Protocol type_1;;1.0;0.0;;4
+21;3;10072;F32_W;;Protocol version_1;;1.0;0.0;;4
+22;3;10077;U16;;Total PV array quantity_1;;1.0;0.0;;4
+23;3;10078;U16;;MPPT Number_1;;1.0;0.0;;4
+24;3;10079;U16;;Probation remaining_1;;1.0;0.0;hour;4
+25;3;10080;U16;;Rated Power;P_RATED;0.1;0.0;kW;4
+26;3;10081;U16;;Max. apparent power (max. scheduling value);S_AC;0.1;0.0;kVA;4
+27;3;10082;U16;;Max. active power (max. scheduling value);P_AC;0.1;0.0;kW;4
+28;3;10083;U16;;Max. reactive power (min. scheduling value);Q_AC;0.1;0.0;kVar;4
+29;3;10084;U16;;Min. power factor (min. scheduling value);PF;0.001;0.0;;4
+30;3;11016;U16;;Running status;;1.0;0.0;;8
+31;3;11017;U16;;Daily Energy;E_DAY;0.1;0.0;kWh;4
+32;3;11018;U32;;Total Energy;E_TOT;0.1;0.0;kWh;4
+33;3;11020;U16;;Grid frequency;FREQ;0.01;0.0;Hz;4
+34;3;11021;U32;;Output apparent power;;1.0;0.0;VA;4
+35;3;11023;U32;;Output active power;;1.0;0.0;W;4
+36;3;11025;I32;;Output reactive power;;1.0;0.0;Var;4
+37;3;11027;I16;;Total power factor;;0.001;0.0;;4
+38;3;11028;U16;;Grid voltage (U_UV);;0.1;0.0;V;4
+39;3;11029;U16;;Grid voltage (V_VW);;0.1;0.0;V;4
+40;3;11030;U16;;Grid voltage (W_WU);;0.1;0.0;V;4
+41;3;11031;U16;;Grid current (U);;0.1;0.0;A;4
+42;3;11032;U16;;Grid current (V);;0.1;0.0;A;4
+43;3;11033;U16;;Grid current (W);;0.1;0.0;A;4
+44;3;11034;U16;;AC Residual current;;0.1;0.0;mA;4
+45;3;11035;I16;;Temperature of heat sink (boost);;0.1;0.0;Deg.Celsius;4
+46;3;11036;I16;;Temperature of heat sink (inverter);TEMP_INT;0.1;0.0;Deg.Celsius;4
+47;3;11037;I16;;Temperature of power module (boost);TEMP_CELL;0.1;0.0;Deg.Celsius;4
+48;3;11038;I16;;Temperature of power module (inverter);;0.1;0.0;Deg.Celsius;4
+49;3;11039;I16;;Inner temperature;;0.1;0.0;Deg.Celsius;4
+50;3;11040;U16;;Bus voltage (inverter);;0.1;0.0;V;4
+51;3;11041;U16;;Insulation resistance;R_ISO;0.1;0.0;Kohm;4
+52;3;11042;U16;;PV input power;;0.1;0.0;kW;4
+53;3;11043;U16;;Bus cap value;;1.0;0.0;uF;4
+54;3;11044;U16;;PID running status;;1.0;0.0;;4
+55;3;11045;U16;;PID repair voltage;;0.1;0.0;V;4
+56;3;11064;U16;;Voltage MPPT1;U_DC_MPPT_1;0.1;0.0;V;4
+57;3;11065;U16;;Voltage MPPT2;U_DC_MPPT_2;0.1;0.0;V;4
+58;3;11066;U16;;Voltage MPPT3;U_DC_MPPT_3;0.1;0.0;V;4
+59;3;11067;U16;;Voltage MPPT4;U_DC_MPPT_4;0.1;0.0;V;4
+60;3;11068;U16;;Voltage MPPT5;U_DC_MPPT_5;0.1;0.0;V;4
+61;3;11069;U16;;Voltage MPPT6;U_DC_MPPT_6;0.1;0.0;V;4
+62;3;11070;U16;;Voltage MPPT7;U_DC_MPPT_7;0.1;0.0;V;4
+63;3;11071;U16;;Voltage MPPT8;U_DC_MPPT_8;0.1;0.0;V;4
+64;3;11072;U16;;Voltage MPPT9;U_DC_MPPT_9;0.1;0.0;V;4
+65;3;11073;U16;;Voltage MPPT10;U_DC_MPPT_10;0.1;0.0;V;4
+66;3;11074;U16;;Voltage MPPT11;U_DC_MPPT_11;0.1;0.0;V;4
+67;3;11075;U16;;Voltage MPPT12;U_DC_MPPT_12;0.1;0.0;V;4
+68;3;11076;U16;;Voltage MPPT13;U_DC_MPPT_13;0.1;0.0;V;4
+69;3;11077;U16;;Voltage MPPT14;U_DC_MPPT_14;0.1;0.0;V;4
+70;3;11078;U16;;Voltage MPPT15;U_DC_MPPT_15;0.1;0.0;V;4
+71;3;11079;U16;;Voltage MPPT16;U_DC_MPPT_16;0.1;0.0;V;4
+72;3;11080;I16;;Current MPPT1;I_DC_MPPT_1;0.1;0.0;A;4
+73;3;11081;I16;;Current MPPT2;I_DC_MPPT_2;0.1;0.0;A;4
+74;3;11082;I16;;Current MPPT3;I_DC_MPPT_3;0.1;0.0;A;4
+75;3;11083;I16;;Current MPPT4;I_DC_MPPT_4;0.1;0.0;A;4
+76;3;11084;I16;;Current MPPT5;I_DC_MPPT_5;0.1;0.0;A;4
+77;3;11085;I16;;Current MPPT6;I_DC_MPPT_6;0.1;0.0;A;4
+78;3;11086;I16;;Current MPPT7;I_DC_MPPT_7;0.1;0.0;A;4
+79;3;11087;I16;;Current MPPT8;I_DC_MPPT_8;0.1;0.0;A;4
+80;3;11088;I16;;Current MPPT9;I_DC_MPPT_9;0.1;0.0;A;4
+81;3;11089;I16;;Current MPPT10;I_DC_MPPT_10;0.1;0.0;A;4
+82;3;11090;I16;;Current MPPT11;I_DC_MPPT_11;0.1;0.0;A;4
+83;3;11091;I16;;Current MPPT12;I_DC_MPPT_12;0.1;0.0;A;4
+84;3;11092;I16;;Current MPPT13;I_DC_MPPT_13;0.1;0.0;A;4
+85;3;11093;I16;;Current MPPT14;I_DC_MPPT_14;0.1;0.0;A;4
+86;3;11094;I16;;Current MPPT15;I_DC_MPPT_15;0.1;0.0;A;4
+87;3;11095;I16;;Current MPPT16;I_DC_MPPT_16;0.1;0.0;A;4
+88;3;11104;U16;;Voltage of PV 1;U_DC_STRING_1;0.1;0.0;V;4
+89;3;11105;U16;;Voltage of PV2;U_DC_STRING_2;0.1;0.0;V;4
+90;3;11106;U16;;Voltage of PV 3;U_DC_STRING_3;0.1;0.0;V;4
+91;3;11107;U16;;Voltage of PV 4;U_DC_STRING_4;0.1;0.0;V;4
+92;3;11108;U16;;Voltage of PV 5;U_DC_STRING_5;0.1;0.0;V;4
+93;3;11109;U16;;Voltage of PV 6;U_DC_STRING_6;0.1;0.0;V;4
+94;3;11110;U16;;Voltage of PV 7;U_DC_STRING_7;0.1;0.0;V;4
+95;3;11111;U16;;Voltage of PV 8;U_DC_STRING_8;0.1;0.0;V;4
+96;3;11112;U16;;Voltage of PV 9;U_DC_STRING_9;0.1;0.0;V;4
+97;3;11113;U16;;Voltage of PV 10;U_DC_STRING_10;0.1;0.0;V;4
+98;3;11114;U16;;Voltage of PV 11;U_DC_STRING_11;0.1;0.0;V;4
+99;3;11115;U16;;Voltage of PV 12;U_DC_STRING_12;0.1;0.0;V;4
+100;3;11116;U16;;Voltage of PV 13;U_DC_STRING_13;0.1;0.0;V;4
+101;3;11117;U16;;Voltage of PV 14;U_DC_STRING_14;0.1;0.0;V;4
+102;3;11118;U16;;Voltage of PV 15;U_DC_STRING_15;0.1;0.0;V;4
+103;3;11119;U16;;Voltage of PV 16;U_DC_STRING_16;0.1;0.0;V;4
+104;3;11120;U16;;Voltage of PV 17;U_DC_STRING_17;0.1;0.0;V;4
+105;3;11121;U16;;Voltage of PV 18;U_DC_STRING_18;0.1;0.0;V;4
+106;3;11122;U16;;Voltage of PV 19;U_DC_STRING_19;0.1;0.0;V;4
+107;3;11123;U16;;Voltage of PV 20;U_DC_STRING_20;0.1;0.0;V;4
+108;3;11124;U16;;Voltage of PV 21;U_DC_STRING_21;0.1;0.0;V;4
+109;3;11125;U16;;Voltage of PV 22;U_DC_STRING_22;0.1;0.0;V;4
+110;3;11126;U16;;Voltage of PV 23;U_DC_STRING_23;0.1;0.0;V;4
+111;3;11127;U16;;Voltage of PV 24;U_DC_STRING_24;0.1;0.0;V;4
+112;3;11128;U16;;Voltage of PV 25;U_DC_STRING_25;0.1;0.0;V;4
+113;3;11129;U16;;Voltage of PV 26;U_DC_STRING_26;0.1;0.0;V;4
+114;3;11130;U16;;Voltage of PV 27;U_DC_STRING_27;0.1;0.0;V;4
+115;3;11131;U16;;Voltage of PV 28;U_DC_STRING_28;0.1;0.0;V;4
+116;3;11132;U16;;Voltage of PV 29;U_DC_STRING_29;0.1;0.0;V;4
+117;3;11133;U16;;Voltage of PV 30;U_DC_STRING_30;0.1;0.0;V;4
+118;3;11134;U16;;Voltage of PV 31;U_DC_STRING_31;0.1;0.0;V;4
+119;3;11135;U16;;Voltage of PV 32;U_DC_STRING_32;0.1;0.0;V;4
+120;3;11136;I16;;Current of PV 1;I_DC_STRING_1;0.1;0.0;A;4
+121;3;11137;I16;;Current of PV 2;I_DC_STRING_2;0.1;0.0;A;4
+122;3;11138;I16;;Current of PV 3;I_DC_STRING_3;0.1;0.0;A;4
+123;3;11139;I16;;Current of PV 4;I_DC_STRING_4;0.1;0.0;A;4
+124;3;11140;I16;;Current of PV 5;I_DC_STRING_5;0.1;0.0;A;4
+125;3;11141;I16;;Current of PV 6;I_DC_STRING_6;0.1;0.0;A;4
+126;3;11142;I16;;Current of PV 7;I_DC_STRING_7;0.1;0.0;A;4
+127;3;11143;I16;;Current of PV 8;I_DC_STRING_8;0.1;0.0;A;4
+128;3;11144;I16;;Current of PV 9;I_DC_STRING_9;0.1;0.0;A;4
+129;3;11145;I16;;Current of PV 10;I_DC_STRING_10;0.1;0.0;A;4
+130;3;11146;I16;;Current of PV 11;I_DC_STRING_11;0.1;0.0;A;4
+131;3;11147;I16;;Current of PV 12;I_DC_STRING_12;0.1;0.0;A;4
+132;3;11148;I16;;Current of PV 13;I_DC_STRING_13;0.1;0.0;A;4
+133;3;11149;I16;;Current of PV 14;I_DC_STRING_14;0.1;0.0;A;4
+134;3;11150;I16;;Current of PV 15;I_DC_STRING_15;0.1;0.0;A;4
+135;3;11151;I16;;Current of PV 16;I_DC_STRING_16;0.1;0.0;A;4
+136;3;11152;I16;;Current of PV 17;I_DC_STRING_17;0.1;0.0;A;4
+137;3;11153;I16;;Current of PV 18;I_DC_STRING_18;0.1;0.0;A;4
+138;3;11154;I16;;Current of PV 19;I_DC_STRING_19;0.1;0.0;A;4
+139;3;11155;I16;;Current of PV 20;I_DC_STRING_20;0.1;0.0;A;4
+140;3;11156;I16;;Current of PV 21;I_DC_STRING_21;0.1;0.0;A;4
+141;3;11157;I16;;Current of PV 22;I_DC_STRING_22;0.1;0.0;A;4
+142;3;11158;I16;;Current of PV 23;I_DC_STRING_23;0.1;0.0;A;4
+143;3;11159;I16;;Current of PV 24;I_DC_STRING_24;0.1;0.0;A;4
+144;3;11160;I16;;Current of PV 25;I_DC_STRING_25;0.1;0.0;A;4
+145;3;11161;I16;;Current of PV 26;I_DC_STRING_26;0.1;0.0;A;4
+146;3;11162;I16;;Current of PV 27;I_DC_STRING_27;0.1;0.0;A;4
+147;3;11163;I16;;Current of PV 28;I_DC_STRING_28;0.1;0.0;A;4
+148;3;11164;I16;;Current of PV 29;I_DC_STRING_29;0.1;0.0;A;4
+149;3;11165;I16;;Current of PV 30;I_DC_STRING_30;0.1;0.0;A;4
+150;3;11166;I16;;Current of PV 31;I_DC_STRING_31;0.1;0.0;A;4
+151;3;11167;I16;;Current of PV 32;I_DC_STRING_32;0.1;0.0;A;4
+152;3;11168;I16;;Power of PV 1;;0.1;0.0;kW;4
+153;3;11169;I16;;Power of PV 2;;0.1;0.0;kW;4
+154;3;11170;I16;;Power of PV 3;;0.1;0.0;kW;4
+155;3;11171;I16;;Power of PV 4;;0.1;0.0;kW;4
+156;3;11172;I16;;Power of PV 5;;0.1;0.0;kW;4
+157;3;11173;I16;;Power of PV 6;;0.1;0.0;kW;4
+158;3;11174;I16;;Power of PV 7;;0.1;0.0;kW;4
+159;3;11175;I16;;Power of PV 8;;0.1;0.0;kW;4
+160;3;11176;I16;;Power of PV 9;;0.1;0.0;kW;4
+161;3;11177;I16;;Power of PV 10;;0.1;0.0;kW;4
+162;3;11178;I16;;Power of PV 11;;0.1;0.0;kW;4
+163;3;11179;I16;;Power of PV 12;;0.1;0.0;kW;4
+164;3;11180;I16;;Power of PV 13;;0.1;0.0;kW;4
+165;3;11181;I16;;Power of PV 14;;0.1;0.0;kW;4
+166;3;11182;I16;;Power of PV 15;;0.1;0.0;kW;4
+167;3;11183;I16;;Power of PV 16;;0.1;0.0;kW;4
+168;3;11184;I16;;Power of PV 17;;0.1;0.0;kW;4
+169;3;11185;I16;;Power of PV 18;;0.1;0.0;kW;4
+170;3;11186;I16;;Power of PV 19;;0.1;0.0;kW;4
+171;3;11187;I16;;Power of PV 20;;0.1;0.0;kW;4
+172;3;11188;I16;;Power of PV 21;;0.1;0.0;kW;4
+173;3;11189;I16;;Power of PV 22;;0.1;0.0;kW;4
+174;3;11190;I16;;Power of PV 23;;0.1;0.0;kW;4
+175;3;11191;I16;;Power of PV 24;;0.1;0.0;kW;4
+176;3;11192;I16;;Power of PV 25;;0.1;0.0;kW;4
+177;3;11193;I16;;Power of PV 26;;0.1;0.0;kW;4
+178;3;11194;I16;;Power of PV 27;;0.1;0.0;kW;4
+179;3;11195;I16;;Power of PV 28;;0.1;0.0;kW;4
+180;3;11196;I16;;Power of PV 29;;0.1;0.0;kW;4
+181;3;11197;I16;;Power of PV 30;;0.1;0.0;kW;4
+182;3;11198;I16;;Power of PV 31;;0.1;0.0;kW;4
+183;3;11199;I16;;Power of PV 32;;0.1;0.0;kW;4
+184;3;12000;U16;;ON_OFF;CMD_ON;1.0;0.0;;4
+185;3;12001;U16;;Self-start after power on;;1.0;0.0;;4
+186;3;12002;U16;;Recover grid-tied;;1.0;0.0;;4
+187;3;12003;U16;;Self-recover once grid abnormal;;1.0;0.0;;4
+188;3;12004;U16;;H_LVRT;;1.0;0.0;;4
+189;3;12005;U16;;Initiative islanding;;1.0;0.0;;4
+190;3;12006;U16;;Insulation resistance detection;;1.0;0.0;;4
+191;3;12007;U16;;Phase self-adapt;;1.0;0.0;;4
+192;3;12008;U16;;Night SVG;;1.0;0.0;;4
+193;3;12009;U16;;Reactive first;;1.0;0.0;;4
+194;3;12010;U16;;Rated grid frequency;;1.0;0.0;;4
+195;3;12011;U16;;SPD abnormal alarm;;1.0;0.0;;4
+196;3;12012;U16;;PID repair function;;1.0;0.0;;4
+197;3;12013;U16;;DC arc detection;;1.0;0.0;;4
+198;3;12014;U16;;Clear the alarm of DC arc;;1.0;0.0;;4
+199;3;12015;U16;;Recover default setting;;1.0;0.0;;4
+200;3;12016;U16;;Active power mode;;1.0;0.0;;4
+201;3;12017;U16;;Active power setting (SI value);CMD_P_AC_SET_PERCENT;0.1;0.0;kW;4
+202;3;12018;U16;;Active power setting (p.u.);;0.1;0.0;Percent;4
+203;3;12019;U16;;Reactive power mode;;1.0;0.0;;4
+204;3;12020;I16;;Reactive power (SI value);;0.1;0.0;kVar;4
+205;3;12021;I16;;Reactive power (p.u. value);;0.1;0.0;Percent;4
+206;3;12022;I16;;Power factor;;0.001;0.0;;4
+207;3;12023;U16;;Grid-tied recover time;;1.0;0.0;seconds;4
+208;3;12024;U16;;Power rate;;0.01;0.0;Percent/s;4
+209;3;12025;U16;;ON_OFF soft-start rate;;0.01;0.0;Percent/s;4
+210;3;12026;U16;;Standard type;;1.0;0.0;;4
+211;3;12027;U32;;PV alarm enable;;1.0;0.0;;8
+212;3;12029;U16;;Anti-countercurrent function;;1.0;0.0;;4
+213;3;12030;I16;;Power of backflow control;;0.1;0.0;Percent;4
+214;3;12031;I16;;Power of backflow protection;;0.1;0.0;Percent;4
+215;3;12034;U16;;PV Type;;1.0;0.0;;4
+216;3;12035;U16;;PID repairing voltage setting;;0.1;0.0;V;4
+217;3;12036;U16;;PID repairing time;;1.0;0.0;min;4
+218;3;12037;U16;;Bus cap value detect;;1.0;0.0;;4
+219;3;12092;U32;;Total energy calibration;;0.1;0.0;kWh;4
+220;3;11516;U16;;Grid voltage (U_UV)(DSP);;0.1;0.0;V;4
+221;3;11517;U16;;Grid voltage (V_VW)(DSP);;0.1;0.0;V;4
+222;3;11518;U16;;Grid voltage (W_WU)(DSP);;0.1;0.0;V;4
+223;3;11519;U16;;Inverter voltage (U_UV);;0.1;0.0;V;4
+224;3;11520;U16;;Inverter voltage (V_VW);;0.1;0.0;V;4
+225;3;11521;U16;;Inverter voltage (W_WU);;0.1;0.0;V;4
+226;3;11522;U16;;Inverter current (U);;0.1;0.0;A;4
+227;3;11523;U16;;Inverter current (V);;0.1;0.0;A;4
+228;3;11524;U16;;Inverter current (W);;0.1;0.0;A;4
+229;3;11525;I16;;Current DC component (U);I_DC;0.1;0.0;A;4
+230;3;11526;I16;;Current DC component (V);;0.1;0.0;A;4
+231;3;11527;I16;;Current DC component (W);;0.1;0.0;A;4
+232;3;11528;U16;;Negative Bus voltage;;0.1;0.0;V;4
+233;3;11529;U16;;Bus neutral point voltage P;;0.1;0.0;V;4
+234;3;11530;U16;;Bus neutral point voltage N;;0.1;0.0;V;4
+235;3;11531;I16;;Insulation voltage;;0.1;0.0;V;4
+236;3;12500;U16;;Rated grid voltage;;1.0;0.0;V;4
+237;3;12501;U16;;Rated apparent power;;0.1;0.0;kVA;4
+238;3;12502;U16;;Rated power_1;;0.1;0.0;kW;4

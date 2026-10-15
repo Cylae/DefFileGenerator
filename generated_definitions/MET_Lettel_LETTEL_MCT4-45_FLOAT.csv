@@ -1,0 +1,31 @@
+modbusRTU;Meter;Lettel;LETTEL_MCT4-45_FLOAT;;;;;;;
+1;4;0;F32;;A phase voltage;a_phase_voltage;1.000000;0.000000;V;4
+2;4;2;F32;;B phase voltage;b_phase_voltage;1.000000;0.000000;V;4
+3;4;4;F32;;C phase voltage;c_phase_voltage;1.000000;0.000000;V;4
+4;4;6;F32;;AB line voltage;ab_line_voltage;1.000000;0.000000;V;4
+5;4;8;F32;;BC line voltage;bc_line_voltage;1.000000;0.000000;V;4
+6;4;10;F32;;CA line voltage;ca_line_voltage;1.000000;0.000000;V;4
+7;4;12;F32;;A phase current;a_phase_current;1.000000;0.000000;A;4
+8;4;14;F32;;B phase current;b_phase_current;1.000000;0.000000;A;4
+9;4;16;F32;;C phase current;c_phase_current;1.000000;0.000000;A;4
+10;4;18;F32;;A Phase active power;P_AC_1;1.000000;0.000000;kW;4
+11;4;20;F32;;B Phase active power;P_AC_2;1.000000;0.000000;kW;4
+12;4;22;F32;;C Phase active power;P_AC_3;1.000000;0.000000;kW;4
+13;4;24;F32;;Total active power;P_AC;1.000000;0.000000;kW;4
+14;4;26;F32;;A Active power;a_active_power;1.000000;0.000000;kvar;4
+15;4;28;F32;;B Active power;b_active_power;1.000000;0.000000;kvar;4
+16;4;30;F32;;C Active power;c_active_power;1.000000;0.000000;kvar;4
+17;4;32;F32;;Total reactive power;total_reactive_power;1.000000;0.000000;kvar;4
+18;4;34;F32;;A Phase view power;a_phase_view_power;1.000000;0.000000;kVA;4
+19;4;36;F32;;B Phase view power;b_phase_view_power;1.000000;0.000000;kVA;4
+20;4;38;F32;;C Phase view power;c_phase_view_power;1.000000;0.000000;kVA;4
+21;4;40;F32;;Total apparent power;total_apparent_power;1.000000;0.000000;kVA;4
+22;4;42;F32;;A Phase power factor;a_phase_power_factor;1.000000;0.000000;;4
+23;4;44;F32;;B Phase power factor;b_phase_power_factor;1.000000;0.000000;;4
+24;4;46;F32;;C Phase power factor;c_phase_power_factor;1.000000;0.000000;;4
+25;4;48;F32;;Total power factor;PF;1.000000;0.000000;;4
+26;4;50;F32;;Frequency;FREQ;1.000000;0.000000;Hz;4
+27;4;52;F32;;Positive Active Energy;positive_active_energy;1.000000;0.000000;kWh;4
+28;4;54;F32;;Reverse Active Energy;reverse_active_energy;1.000000;0.000000;kWh;4
+29;4;56;F32;;Positive reactive Energy;positive_reactive_energy;1.000000;0.000000;kvarh;4
+30;4;58;F32;;Reverse reactive Energy;reverse_reactive_energy;1.000000;0.000000;kvarh;4
