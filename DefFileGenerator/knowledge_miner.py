@@ -913,7 +913,7 @@ def infer_sunpm_tag(
     # 19. Displays & Public Counters
     if eq_lower in ("display", "afficheur") or "display" in n_lower:
         if "avoided" in n_lower or "évité" in n_lower or "co2" in n_lower:
-            if "day" in n_lower or "jour" in n_lower:
+            if any(k in n_lower for k in ("day", "daily", "jour")):
                 return "AVOIDED_CO2_DAY"
             return "AVOIDED_CO2"
         if "self-consumption" in n_lower or "autoconso" in n_lower:
