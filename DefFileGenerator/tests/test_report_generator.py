@@ -12,12 +12,10 @@ Tests cover:
 """
 
 import json
-import os
 import tempfile
 import unittest
 from pathlib import Path
 
-from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.report_generator import (
     DefinitionFileStats,
     DirectoryReportStats,
@@ -130,7 +128,7 @@ class TestReportGenerator(unittest.TestCase):
         export_report_json(dir_stats, json_path)
 
         self.assertTrue(json_path.is_file())
-        with open(json_path, "r", encoding="utf-8") as f:
+        with open(json_path, encoding="utf-8") as f:
             data = json.load(f)
 
         self.assertEqual(data["total_files"], 2)
@@ -180,7 +178,7 @@ class TestReportGenerator(unittest.TestCase):
         self.assertTrue(output_csv.is_file())
         self.assertTrue(report_md.is_file())
 
-        with open(report_md, "r", encoding="utf-8") as f:
+        with open(report_md, encoding="utf-8") as f:
             rep_text = f.read()
         self.assertIn("RAPPORT TECHNIQUE DE DÉFINITION", rep_text)
         self.assertIn("TestBrand", rep_text)

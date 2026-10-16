@@ -27,7 +27,6 @@ from DefFileGenerator.knowledge_miner import (
     normalize_tag_to_sunpm,
     train_knowledge_from_definitions,
 )
-
 from DefFileGenerator.report_generator import (
     DefinitionFileStats,
     DirectoryReportStats,

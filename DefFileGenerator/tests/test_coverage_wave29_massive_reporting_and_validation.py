@@ -14,8 +14,6 @@ Executes hundreds of automated tests covering:
 
 import csv
 import json
-import os
-import random
 import tempfile
 import threading
 import unittest
@@ -23,21 +21,16 @@ from pathlib import Path
 
 from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.knowledge_miner import (
-    SUNPM_CANONICAL_TAGS,
     DatasetKnowledge,
     get_active_knowledge,
     infer_sunpm_tag,
     is_canonical_sunpm_tag,
-    normalize_tag_to_sunpm,
 )
 from DefFileGenerator.report_generator import (
-    DefinitionFileStats,
-    DirectoryReportStats,
     analyze_definition_file,
     analyze_definitions_directory,
     export_report_json,
     generate_directory_technical_report,
-    generate_single_definition_report,
 )
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -99,7 +92,7 @@ class TestWave29MassiveReportingAndValidation(unittest.TestCase):
         for f_path in sample_files:
             with self.subTest(file=f_path.name):
                 seen_tags: set[str] = set()
-                with open(f_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+                with open(f_path, encoding="utf-8-sig", errors="ignore") as f:
                     reader = csv.reader(f, delimiter=";")
                     next(reader, None)  # header
                     for line_num, row in enumerate(reader, start=2):
@@ -121,7 +114,7 @@ class TestWave29MassiveReportingAndValidation(unittest.TestCase):
         sample_files = self.tagged_files[::15]
         for f_path in sample_files:
             with self.subTest(file=f_path.name):
-                with open(f_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+                with open(f_path, encoding="utf-8-sig", errors="ignore") as f:
                     reader = csv.reader(f, delimiter=";")
                     next(reader, None)
                     for line_num, row in enumerate(reader, start=2):
@@ -325,7 +318,7 @@ class TestWave29MassiveReportingAndValidation(unittest.TestCase):
         json_file = self.test_dir / "metrics.json"
         export_report_json(stats, json_file)
 
-        with open(json_file, "r", encoding="utf-8") as f:
+        with open(json_file, encoding="utf-8") as f:
             data = json.load(f)
 
         self.assertEqual(data["total_files"], 3)

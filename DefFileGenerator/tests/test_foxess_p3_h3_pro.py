@@ -12,7 +12,6 @@ import unittest
 from pathlib import Path
 
 from DefFileGenerator.def_gen import Generator
-from DefFileGenerator.report_generator import analyze_definition_file
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 TAGGED_DIR = REPO_ROOT / "tagged_definitions"
