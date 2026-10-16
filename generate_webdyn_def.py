@@ -186,7 +186,9 @@ def main():
     model = sys.argv[4]
 
     # Optional arguments
-    protocol = sys.argv[5] if len(sys.argv) > 5 and not sys.argv[5].startswith("--") else "modbusRTU"
+    protocol = (
+        sys.argv[5] if len(sys.argv) > 5 and not sys.argv[5].startswith("--") else "modbusRTU"
+    )
     category = sys.argv[6] if len(sys.argv) > 6 and not sys.argv[6].startswith("--") else "Inverter"
 
     report_file = None

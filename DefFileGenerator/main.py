@@ -570,7 +570,6 @@ def report_command(args: argparse.Namespace) -> None:
             logging.info(f"Structured metrics exported: {json_path}")
 
 
-
 def _run_cli(argv: list[str] | None = None) -> None:
     """
     Parses CLI arguments and dispatches to the corresponding command handler.

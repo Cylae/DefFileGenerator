@@ -64,6 +64,7 @@ addopts = "-ra"
 [tool.ruff]
 target-version = "py310"
 line-length = 100
+exclude = ["scratch", "stress_test_data", "torture_test"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
