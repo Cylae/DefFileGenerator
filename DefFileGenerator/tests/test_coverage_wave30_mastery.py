@@ -45,7 +45,9 @@ class TestMarsGeneratorUnits(unittest.TestCase):
         self.assertEqual(determine_action("Reserve Point", "4", is_reserve=True), "0")
         self.assertEqual(determine_action("Active Power Mode Set", "3", is_reserve=False), "1")
         self.assertEqual(determine_action("System Alarm Fault", "4", is_reserve=False), "9")
-        self.assertEqual(determine_action("Normal Register", "4", is_reserve=False, default_action="4"), "4")
+        self.assertEqual(
+            determine_action("Normal Register", "4", is_reserve=False, default_action="4"), "4"
+        )
 
     def test_write_definition_file_and_validation(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

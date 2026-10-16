@@ -92,9 +92,7 @@ class TestReportGenerator(unittest.TestCase):
     def test_generate_directory_technical_report(self) -> None:
         """Verify complete Markdown report synthesis and structure."""
         report_path = self.test_dir / "TECHNICAL_REPORT.md"
-        content = generate_directory_technical_report(
-            self.test_dir, output_report_path=report_path
-        )
+        content = generate_directory_technical_report(self.test_dir, output_report_path=report_path)
 
         self.assertTrue(report_path.is_file())
         self.assertIn("# 📊 RAPPORT TECHNIQUE MAJEUR", content)

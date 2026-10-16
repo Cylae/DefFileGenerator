@@ -71,4 +71,3 @@ __all__ = [
     "normalize_tag_to_sunpm",
     "train_knowledge_from_definitions",
 ]
-

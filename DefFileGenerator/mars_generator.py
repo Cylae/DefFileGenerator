@@ -69,7 +69,10 @@ def determine_action(name: str, fc: str, is_reserve: bool, default_action: str =
     ):
         return "1"
     name_lower = name.lower()
-    if any(k in name_lower for k in ("alarm", "status", "fault", "crash-stop", "trip", "feedback", "indicator")):
+    if any(
+        k in name_lower
+        for k in ("alarm", "status", "fault", "crash-stop", "trip", "feedback", "indicator")
+    ):
         return "9"
     return default_action
 
@@ -586,7 +589,13 @@ def generate_mars_requested_definitions(
 
     p3 = out_dir / "MarsRenewable_Rack-Cell.csv"
     valid, rep = write_definition_file(
-        p3, "modbusTCP", "Battery", "MarsRenewable", "Rack-Cell", rack_cell_regs, strict_overlap=True
+        p3,
+        "modbusTCP",
+        "Battery",
+        "MarsRenewable",
+        "Rack-Cell",
+        rack_cell_regs,
+        strict_overlap=True,
     )
     if not valid:
         raise ValueError(f"Validation failed for {p3.name}: {rep.issues}")
@@ -685,7 +694,13 @@ def generate_mars_requested_definitions(
 
     p4_lc = out_dir / "MarsRenewable_LC.csv"
     valid, rep = write_definition_file(
-        p4_lc, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_alone_regs, strict_overlap=True
+        p4_lc,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "LiquidCooling",
+        lc_alone_regs,
+        strict_overlap=True,
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_lc.name}: {rep.issues}")
@@ -694,7 +709,13 @@ def generate_mars_requested_definitions(
     # Also generate MarsRenewable_LiquidCooling.csv alias
     p4_lc_alias = out_dir / "MarsRenewable_LiquidCooling.csv"
     write_definition_file(
-        p4_lc_alias, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_alone_regs, strict_overlap=True
+        p4_lc_alias,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "LiquidCooling",
+        lc_alone_regs,
+        strict_overlap=True,
     )
     generated["MarsRenewable_LiquidCooling.csv"] = p4_lc_alias
 
@@ -722,7 +743,13 @@ def generate_mars_requested_definitions(
 
     p4_ac = out_dir / "MarsRenewable_AC.csv"
     valid, rep = write_definition_file(
-        p4_ac, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_alone_regs, strict_overlap=True
+        p4_ac,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "AirCooling",
+        ac_alone_regs,
+        strict_overlap=True,
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_ac.name}: {rep.issues}")
@@ -731,7 +758,13 @@ def generate_mars_requested_definitions(
     # Also generate MarsRenewable_AirCooling.csv alias
     p4_ac_alias = out_dir / "MarsRenewable_AirCooling.csv"
     write_definition_file(
-        p4_ac_alias, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_alone_regs, strict_overlap=True
+        p4_ac_alias,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "AirCooling",
+        ac_alone_regs,
+        strict_overlap=True,
     )
     generated["MarsRenewable_AirCooling.csv"] = p4_ac_alias
 
