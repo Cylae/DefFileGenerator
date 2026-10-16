@@ -98,6 +98,7 @@ class TestDefGenExtraEdge(unittest.TestCase):
 class TestWebEdgeCoverage(unittest.TestCase):
     def test_web_app_index_endpoint(self) -> None:
         from fastapi.testclient import TestClient
+
         from web.app import app
 
         client = TestClient(app)
