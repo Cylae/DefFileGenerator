@@ -26,6 +26,7 @@
   - [Example 3: Exported CSV Register Map (ABB)](#example-3-exported-csv-register-map-abb)
   - [Example 4: Semantic SunPM Tagging & Enrichment](#example-4-semantic-sunpm-tagging--enrichment)
   - [Example 5: Technical Audit & Markdown Reporting](#example-5-technical-audit--markdown-reporting)
+  - [Example 6: High-Throughput Batch Processing](#example-6-high-throughput-batch-processing)
 - [🔍 How Conversion Works Under the Hood](#-how-conversion-works-under-the-hood)
 - [🛠️ Command-Line Options Reference](#️-command-line-options-reference)
 - [🧪 Testing Immediately with Bundled Sample Files](#-testing-immediately-with-bundled-sample-files)
@@ -170,6 +171,19 @@ deffilegen audit Definitions/ --strict-overlap
 # Generate a publication-quality Markdown report and machine-readable JSON metrics:
 deffilegen report Definitions/ -o "docs/AUDIT_REPORT.md" --json "docs/metrics.json"
 ```
+
+---
+
+### Example 6: High-Throughput Batch Processing
+
+To convert an entire directory of mixed datasheets (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`) with auto-detected metadata:
+
+```bash
+# Automatically infer manufacturer, model, and equipment category from filenames:
+deffilegen batch ./manuals/ -o ./definitions/ --tag --report batch_report.md
+```
+
+This runs parallel extraction, applies SunPM canonical tags, validates every generated definition, and writes an aggregated Markdown technical report.
 
 ---
 

@@ -21,7 +21,25 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   <a href="docs/AUDIT_REPORT.md"><b>Audit Report</b></a>
 </p>
 
-## [Unreleased]
+## [0.3.0] - 2026-11-02
+
+### Added
+
+- **`deffilegen batch` High-Throughput CLI Subcommand**: Converts entire directories of mixed manufacturer documents (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`) with metadata auto-inference, SunPM tagging (`--tag`), strict schema validation (`--strict`), overwrite protection (`--force`), and aggregated Markdown reporting (`--report`).
+- **Filename Metadata Auto-Inference Engine**: Token-based entity detection in `DefFileGenerator/main.py` resolving 60+ manufacturers and equipment categories (`Inverter`, `Meter`, `Sensor`, `Battery`, `Communication`, `Io`) with zero substring collisions (e.g. `pyranometer` vs `meter`).
+- **Industrial Web Studio v0.3.0 (`web/static/`)**: Modernized 4-tab interface:
+  - Tab 1: **Convert Datasheet** (drag-and-drop ingestion, live preview, export)
+  - Tab 2: **SunPM Tagger** (canonical semantic tag enrichment, category override)
+  - Tab 3: **Validator & Auditor** (Modbus address overlap detection, auto-repair)
+  - Tab 4: **Equipment Library** (real-time searchable catalog of 125 pre-validated definitions with one-click downloads)
+- **FastAPI Endpoints in `web/app.py`**:
+  - `POST /api/tag`: Multi-part tag enrichment endpoint.
+  - `POST /api/audit`: Comprehensive schema validation and auto-repair endpoint.
+  - `GET /api/library`: Catalog metadata provider for all 125 industrial definitions.
+  - `GET /api/library/{filename}`: Path-traversal-guarded download endpoint.
+- **Wave 31 CLI & Reports Regression Suite (`test_coverage_wave31_cli_and_reports.py`)**: Dedicated test coverage bringing `main.py` coverage to 91% and `report_generator.py` to 98%.
+- **Extended Web Test Suite (`test_web_extended.py`)**: 22 tests verifying all new endpoints, error states, and traversal guards.
+- **Overall Project Test Coverage Reached 90%** across 1,083 automated tests.
 
 ### Performance
 

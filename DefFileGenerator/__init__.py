@@ -37,7 +37,7 @@ from DefFileGenerator.report_generator import (
     generate_single_definition_report,
 )
 
-__version__ = "0.2.1"
+__version__ = "0.3.0"
 
 __all__ = [
     "CSVHeaderConfig",

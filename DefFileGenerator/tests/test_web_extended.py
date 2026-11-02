@@ -11,6 +11,7 @@ Extended test suite for Web API endpoints:
 from __future__ import annotations
 
 import io
+import os
 
 import pytest
 from fastapi.testclient import TestClient
@@ -195,3 +196,53 @@ class TestWebEdgeCases:
         files = {"file": ("..", io.BytesIO(b"data"), "text/csv")}
         response = client.post("/api/audit", files=files)
         assert response.status_code in (400, 422)
+
+    def test_library_when_directory_missing(self, client: TestClient) -> None:
+        with pytest.MonkeyPatch.context() as mp:
+            original_exists = os.path.exists
+            mp.setattr(
+                os.path,
+                "exists",
+                lambda p: False if "Definitions" in str(p) else original_exists(p),
+            )
+            response = client.get("/api/library")
+            assert response.status_code == 200
+            assert response.json() == []
+
+    def test_root_when_index_missing(self, client: TestClient) -> None:
+        with pytest.MonkeyPatch.context() as mp:
+            original_exists = os.path.exists
+            mp.setattr(
+                os.path,
+                "exists",
+                lambda p: False if "index.html" in str(p) else original_exists(p),
+            )
+            response = client.get("/")
+            assert response.status_code == 200
+            assert "Frontend assets not found" in response.json()["message"]
+
+    def test_tag_document_exception_handling(self, client: TestClient) -> None:
+        from unittest.mock import patch
+
+        csv_data = "modbusRTU;Inverter;SMA;STP5000;;;;;;;\n1;3;10;U16;;P;p;1;0;W;4\n"
+        files = {"file": ("sma.csv", io.BytesIO(csv_data.encode("utf-8")), "text/csv")}
+        with patch(
+            "DefFileGenerator.knowledge_miner.enrich_definition_file",
+            side_effect=RuntimeError("Boom"),
+        ):
+            response = client.post("/api/tag", files=files)
+            assert response.status_code == 400
+            assert "Failed to enrich definition file" in response.json()["detail"]
+
+    def test_audit_document_exception_handling(self, client: TestClient) -> None:
+        from unittest.mock import patch
+
+        csv_data = "modbusRTU;Inverter;SMA;STP5000;;;;;;;\n1;3;10;U16;;P;p;1;0;W;4\n"
+        files = {"file": ("sma.csv", io.BytesIO(csv_data.encode("utf-8")), "text/csv")}
+        with patch(
+            "DefFileGenerator.knowledge_miner.audit_definition_file",
+            side_effect=RuntimeError("Boom"),
+        ):
+            response = client.post("/api/audit", files=files)
+            assert response.status_code == 400
+            assert "Failed to audit definition file" in response.json()["detail"]

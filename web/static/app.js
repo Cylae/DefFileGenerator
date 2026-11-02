@@ -2,29 +2,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // Tab Navigation
     // =========================================================================
-    const navTabs = document.querySelectorAll('.nav-tab');
-    const tabPanes = document.querySelectorAll('.tab-pane');
     let libraryLoaded = false;
+    const tabBindings = [
+        { btnId: 'tabBtnConvert', paneId: 'tab-convert' },
+        { btnId: 'tabBtnTag', paneId: 'tab-tag' },
+        { btnId: 'tabBtnAudit', paneId: 'tab-audit' },
+        {
+            btnId: 'tabBtnLibrary',
+            paneId: 'tab-library',
+            onActivate: () => {
+                if (!libraryLoaded) loadLibrary();
+            }
+        }
+    ];
 
-    navTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const targetId = tab.getAttribute('data-tab');
-            navTabs.forEach(t => t.classList.remove('active'));
-            tabPanes.forEach(p => {
-                p.classList.remove('active');
-                p.classList.add('hidden');
+    tabBindings.forEach(({ btnId, paneId, onActivate }) => {
+        const btn = document.getElementById(btnId);
+        if (!btn || !btn.addEventListener) return;
+        btn.addEventListener('click', () => {
+            tabBindings.forEach(other => {
+                const b = document.getElementById(other.btnId);
+                const p = document.getElementById(other.paneId);
+                if (b && b.classList) b.classList.remove('active');
+                if (p && p.classList) {
+                    p.classList.remove('active');
+                    p.classList.add('hidden');
+                }
             });
-
-            tab.classList.add('active');
-            const activePane = document.getElementById(targetId);
-            if (activePane) {
-                activePane.classList.remove('hidden');
-                activePane.classList.add('active');
+            if (btn.classList) btn.classList.add('active');
+            const pane = document.getElementById(paneId);
+            if (pane && pane.classList) {
+                pane.classList.remove('hidden');
+                pane.classList.add('active');
             }
-
-            if (targetId === 'tab-library' && !libraryLoaded) {
-                loadLibrary();
-            }
+            if (onActivate) onActivate();
         });
     });
 
@@ -53,28 +64,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper: Wire Drag & Drop for a Zone
     // =========================================================================
     function setupDropZone(dropZoneEl, fileInputEl, onFileSelected) {
+        if (!dropZoneEl || !dropZoneEl.addEventListener) return;
         ['dragenter', 'dragover'].forEach(eventName => {
             dropZoneEl.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                dropZoneEl.classList.add('dragover');
+                if (e && e.preventDefault) e.preventDefault();
+                if (dropZoneEl.classList) dropZoneEl.classList.add('dragover');
             });
         });
 
         ['dragleave', 'drop'].forEach(eventName => {
             dropZoneEl.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                dropZoneEl.classList.remove('dragover');
+                if (e && e.preventDefault) e.preventDefault();
+                if (dropZoneEl.classList) dropZoneEl.classList.remove('dragover');
             });
         });
 
         dropZoneEl.addEventListener('drop', (e) => {
-            const files = e.dataTransfer.files;
-            if (files.length) onFileSelected(files[0]);
+            const files = e && e.dataTransfer ? e.dataTransfer.files : [];
+            if (files && files.length) onFileSelected(files[0]);
         });
 
-        fileInputEl.addEventListener('change', (e) => {
-            if (e.target.files.length) onFileSelected(e.target.files[0]);
-        });
+        if (fileInputEl && fileInputEl.addEventListener) {
+            fileInputEl.addEventListener('change', (e) => {
+                const files = e && e.target ? e.target.files : [];
+                if (files && files.length) onFileSelected(files[0]);
+            });
+        }
     }
 
     // =========================================================================
@@ -115,7 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
         convertBtn.innerHTML = convertLabel;
     }
 
-    document.getElementById('convertForm').addEventListener('input', invalidateConversion);
+    const convertForm = document.getElementById('convertForm');
+    if (convertForm && convertForm.addEventListener) {
+        convertForm.addEventListener('input', invalidateConversion);
+    }
 
     setupDropZone(dropZone, fileInput, (file) => {
         selectedFile = file;
@@ -126,75 +144,86 @@ document.addEventListener('DOMContentLoaded', () => {
         convertBtn.disabled = false;
     });
 
-    removeFileBtn.addEventListener('click', () => {
-        selectedFile = null;
-        invalidateConversion();
-        fileInput.value = '';
-        dropZone.classList.remove('hidden');
-        fileDetails.classList.add('hidden');
-        convertBtn.disabled = true;
-    });
+    if (removeFileBtn && removeFileBtn.addEventListener) {
+        removeFileBtn.addEventListener('click', () => {
+            selectedFile = null;
+            invalidateConversion();
+            fileInput.value = '';
+            dropZone.classList.remove('hidden');
+            fileDetails.classList.add('hidden');
+            convertBtn.disabled = true;
+        });
+    }
 
-    convertBtn.addEventListener('click', async () => {
-        if (!selectedFile) return;
+    if (convertBtn && convertBtn.addEventListener) {
+        convertBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
 
-        const version = ++requestVersion;
-        const controller = new AbortController();
-        pendingController = controller;
-        resetResults();
-        convertBtn.disabled = true;
-        convertBtn.textContent = 'Processing...';
+            const version = ++requestVersion;
+            const controller = new AbortController();
+            pendingController = controller;
+            resetResults();
+            convertBtn.disabled = true;
+            convertBtn.textContent = 'Processing...';
 
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-        formData.append('manufacturer', document.getElementById('mfgInput').value || 'Manufacturer');
-        formData.append('model', document.getElementById('modelInput').value || 'Model');
-        formData.append('protocol', document.getElementById('protocolSelect').value);
-        formData.append('category', document.getElementById('categorySelect').value);
-        formData.append('address_offset', document.getElementById('offsetInput').value || '0');
-        formData.append('forced_write', document.getElementById('forcedWriteInput').value || '');
+            const mfgInput = document.getElementById('mfgInput');
+            const modelInput = document.getElementById('modelInput');
+            const protocolSelect = document.getElementById('protocolSelect');
+            const categorySelect = document.getElementById('categorySelect');
+            const offsetInput = document.getElementById('offsetInput');
+            const forcedWriteInput = document.getElementById('forcedWriteInput');
 
-        try {
-            const response = await fetch('/api/convert', {
-                method: 'POST',
-                body: formData,
-                signal: controller.signal
-            });
-            if (version !== requestVersion) return;
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            formData.append('manufacturer', (mfgInput && mfgInput.value) || 'Manufacturer');
+            formData.append('model', (modelInput && modelInput.value) || 'Model');
+            formData.append('protocol', (protocolSelect && protocolSelect.value) || 'modbusRTU');
+            formData.append('category', (categorySelect && categorySelect.value) || 'Inverter');
+            formData.append('address_offset', (offsetInput && offsetInput.value) || '0');
+            formData.append('forced_write', (forcedWriteInput && forcedWriteInput.value) || '');
 
-            if (!response.ok) {
-                const errData = await response.json();
+            try {
+                const response = await fetch('/api/convert', {
+                    method: 'POST',
+                    body: formData,
+                    signal: controller.signal
+                });
                 if (version !== requestVersion) return;
-                alert(`Conversion Error: ${errData.detail || 'Unknown error'}`);
-                return;
-            }
 
-            const data = await response.json();
-            if (version !== requestVersion) return;
-            convertedCsvContent = data.csv_content;
-            convertedFilename = data.filename;
+                if (!response.ok) {
+                    const errData = await response.json();
+                    if (version !== requestVersion) return;
+                    alert(`Conversion Error: ${errData.detail || 'Unknown error'}`);
+                    return;
+                }
 
-            const skipped = Math.max(0, (data.extracted_count || data.register_count) - data.register_count);
-            registerBadge.textContent = `${data.register_count} registers generated${skipped ? ` (${skipped} skipped)` : ''}`;
-            validBadge.textContent = data.is_valid === true ? 'Valid' : 'Invalid';
-            validBadge.classList.toggle('badge-success', data.is_valid === true);
-            validBadge.classList.toggle('badge-error', data.is_valid !== true);
-            downloadBtn.disabled = data.is_valid !== true;
-            renderConvertPreview(data.preview);
-            resultsSection.classList.remove('hidden');
+                const data = await response.json();
+                if (version !== requestVersion) return;
+                convertedCsvContent = data.csv_content;
+                convertedFilename = data.filename;
 
-        } catch (err) {
-            if (version === requestVersion && err.name !== 'AbortError') {
-                alert(`Network or Server Error: ${err.message}`);
+                const skipped = Math.max(0, (data.extracted_count || data.register_count) - data.register_count);
+                registerBadge.textContent = `${data.register_count} registers generated${skipped ? ` (${skipped} skipped)` : ''}`;
+                validBadge.textContent = data.is_valid === true ? 'Valid' : 'Invalid';
+                validBadge.classList.toggle('badge-success', data.is_valid === true);
+                validBadge.classList.toggle('badge-error', data.is_valid !== true);
+                downloadBtn.disabled = data.is_valid !== true;
+                renderConvertPreview(data.preview || []);
+                resultsSection.classList.remove('hidden');
+
+            } catch (err) {
+                if (version === requestVersion && err.name !== 'AbortError') {
+                    alert(`Network or Server Error: ${err.message}`);
+                }
+            } finally {
+                if (version === requestVersion) {
+                    pendingController = null;
+                    convertBtn.disabled = !selectedFile;
+                    convertBtn.innerHTML = convertLabel;
+                }
             }
-        } finally {
-            if (version === requestVersion) {
-                pendingController = null;
-                convertBtn.disabled = !selectedFile;
-                convertBtn.innerHTML = convertLabel;
-            }
-        }
-    });
+        });
+    }
 
     function renderConvertPreview(rows) {
         previewBody.innerHTML = '';
@@ -215,10 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    downloadBtn.addEventListener('click', () => {
-        if (!convertedCsvContent || downloadBtn.disabled) return;
-        triggerDownload(convertedCsvContent, convertedFilename);
-    });
+    if (downloadBtn && downloadBtn.addEventListener) {
+        downloadBtn.addEventListener('click', () => {
+            if (!convertedCsvContent || downloadBtn.disabled) return;
+            triggerDownload(convertedCsvContent, convertedFilename);
+        });
+    }
 
     // =========================================================================
     // TAB 2: SunPM Tagger
@@ -250,74 +281,82 @@ document.addEventListener('DOMContentLoaded', () => {
         tagResultsSection.classList.add('hidden');
     });
 
-    tagRemoveFileBtn.addEventListener('click', () => {
-        tagSelectedFile = null;
-        tagFileInput.value = '';
-        tagDropZone.classList.remove('hidden');
-        tagFileDetails.classList.add('hidden');
-        tagProcessBtn.disabled = true;
-        tagResultsSection.classList.add('hidden');
-    });
+    if (tagRemoveFileBtn && tagRemoveFileBtn.addEventListener) {
+        tagRemoveFileBtn.addEventListener('click', () => {
+            tagSelectedFile = null;
+            if (tagFileInput) tagFileInput.value = '';
+            tagDropZone.classList.remove('hidden');
+            tagFileDetails.classList.add('hidden');
+            tagProcessBtn.disabled = true;
+            tagResultsSection.classList.add('hidden');
+        });
+    }
 
-    tagProcessBtn.addEventListener('click', async () => {
-        if (!tagSelectedFile) return;
+    if (tagProcessBtn && tagProcessBtn.addEventListener) {
+        tagProcessBtn.addEventListener('click', async () => {
+            if (!tagSelectedFile) return;
 
-        tagProcessBtn.disabled = true;
-        tagProcessBtn.textContent = 'Enriching tags...';
+            tagProcessBtn.disabled = true;
+            tagProcessBtn.textContent = 'Enriching tags...';
 
-        const formData = new FormData();
-        formData.append('file', tagSelectedFile);
-        if (tagCategorySelect.value) {
-            formData.append('category', tagCategorySelect.value);
-        }
-        formData.append('overwrite', tagOverwriteCheck.checked ? 'true' : 'false');
-
-        try {
-            const response = await fetch('/api/tag', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (!response.ok) {
-                const errData = await response.json();
-                alert(`Tagging Error: ${errData.detail || 'Failed to tag file'}`);
-                return;
+            const formData = new FormData();
+            formData.append('file', tagSelectedFile);
+            if (tagCategorySelect && tagCategorySelect.value) {
+                formData.append('category', tagCategorySelect.value);
             }
+            formData.append('overwrite', (tagOverwriteCheck && tagOverwriteCheck.checked) ? 'true' : 'false');
 
-            const data = await response.json();
-            taggedCsvContent = data.csv_content;
-            taggedFilename = data.filename || 'definition_tagged.csv';
+            try {
+                const response = await fetch('/api/tag', {
+                    method: 'POST',
+                    body: formData
+                });
 
-            tagCountBadge.textContent = `${data.updated_count} tags updated`;
-            tagRegisterBadge.textContent = `${data.total_registers} registers`;
+                if (!response.ok) {
+                    const errData = await response.json();
+                    alert(`Tagging Error: ${errData.detail || 'Failed to tag file'}`);
+                    return;
+                }
 
-            tagPreviewBody.innerHTML = '';
-            (data.preview || []).forEach(r => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${escapeHtml(r.Name || '')}</td>
-                    <td><code>${escapeHtml(r.Tag || '')}</code></td>
-                    <td><code>${escapeHtml(r.Address ?? '')}</code></td>
-                    <td>${escapeHtml(r.Type || '')}</td>
-                    <td>${escapeHtml(r.Unit || '')}</td>
-                    <td>${escapeHtml(r.Action || '1')}</td>
-                `;
-                tagPreviewBody.appendChild(tr);
-            });
+                const data = await response.json();
+                taggedCsvContent = data.csv_content;
+                taggedFilename = data.filename || 'definition_tagged.csv';
 
-            tagResultsSection.classList.remove('hidden');
-        } catch (err) {
-            alert(`Network or Server Error: ${err.message}`);
-        } finally {
-            tagProcessBtn.disabled = false;
-            tagProcessBtn.textContent = 'Apply Canonical SunPM Tags';
-        }
-    });
+                if (tagCountBadge) tagCountBadge.textContent = `${data.updated_count} tags updated`;
+                if (tagRegisterBadge) tagRegisterBadge.textContent = `${data.total_registers} registers`;
 
-    tagDownloadBtn.addEventListener('click', () => {
-        if (!taggedCsvContent) return;
-        triggerDownload(taggedCsvContent, taggedFilename);
-    });
+                if (tagPreviewBody) {
+                    tagPreviewBody.innerHTML = '';
+                    (data.preview || []).forEach(r => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${escapeHtml(r.Name || '')}</td>
+                            <td><code>${escapeHtml(r.Tag || '')}</code></td>
+                            <td><code>${escapeHtml(r.Address ?? '')}</code></td>
+                            <td>${escapeHtml(r.Type || '')}</td>
+                            <td>${escapeHtml(r.Unit || '')}</td>
+                            <td>${escapeHtml(r.Action || '1')}</td>
+                        `;
+                        tagPreviewBody.appendChild(tr);
+                    });
+                }
+
+                if (tagResultsSection) tagResultsSection.classList.remove('hidden');
+            } catch (err) {
+                alert(`Network or Server Error: ${err.message}`);
+            } finally {
+                tagProcessBtn.disabled = false;
+                tagProcessBtn.textContent = 'Apply Canonical SunPM Tags';
+            }
+        });
+    }
+
+    if (tagDownloadBtn && tagDownloadBtn.addEventListener) {
+        tagDownloadBtn.addEventListener('click', () => {
+            if (!taggedCsvContent) return;
+            triggerDownload(taggedCsvContent, taggedFilename);
+        });
+    }
 
     // =========================================================================
     // TAB 3: Validator & Auditor
@@ -351,104 +390,117 @@ document.addEventListener('DOMContentLoaded', () => {
         auditResultsSection.classList.add('hidden');
     });
 
-    auditRemoveFileBtn.addEventListener('click', () => {
-        auditSelectedFile = null;
-        auditFileInput.value = '';
-        auditDropZone.classList.remove('hidden');
-        auditFileDetails.classList.add('hidden');
-        auditProcessBtn.disabled = true;
-        auditResultsSection.classList.add('hidden');
-    });
+    if (auditRemoveFileBtn && auditRemoveFileBtn.addEventListener) {
+        auditRemoveFileBtn.addEventListener('click', () => {
+            auditSelectedFile = null;
+            if (auditFileInput) auditFileInput.value = '';
+            auditDropZone.classList.remove('hidden');
+            auditFileDetails.classList.add('hidden');
+            auditProcessBtn.disabled = true;
+            auditResultsSection.classList.add('hidden');
+        });
+    }
 
-    auditProcessBtn.addEventListener('click', async () => {
-        if (!auditSelectedFile) return;
+    if (auditProcessBtn && auditProcessBtn.addEventListener) {
+        auditProcessBtn.addEventListener('click', async () => {
+            if (!auditSelectedFile) return;
 
-        auditProcessBtn.disabled = true;
-        auditProcessBtn.textContent = 'Auditing...';
+            auditProcessBtn.disabled = true;
+            auditProcessBtn.textContent = 'Auditing...';
 
-        const formData = new FormData();
-        formData.append('file', auditSelectedFile);
-        formData.append('strict_overlap', auditStrictOverlapCheck.checked ? 'true' : 'false');
-        formData.append('auto_fix', auditAutoFixCheck.checked ? 'true' : 'false');
+            const formData = new FormData();
+            formData.append('file', auditSelectedFile);
+            formData.append('strict_overlap', (auditStrictOverlapCheck && auditStrictOverlapCheck.checked) ? 'true' : 'false');
+            formData.append('auto_fix', (auditAutoFixCheck && auditAutoFixCheck.checked) ? 'true' : 'false');
 
-        try {
-            const response = await fetch('/api/audit', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (!response.ok) {
-                const errData = await response.json();
-                alert(`Audit Error: ${errData.detail || 'Audit failed'}`);
-                return;
-            }
-
-            const data = await response.json();
-
-            // Status Badge
-            auditStatusBadge.textContent = data.is_valid ? 'Valid' : 'Issues Found';
-            auditStatusBadge.classList.toggle('badge-success', data.is_valid);
-            auditStatusBadge.classList.toggle('badge-error', !data.is_valid);
-
-            auditRegistersBadge.textContent = `${data.register_count} registers`;
-
-            if (data.error_count > 0) {
-                auditErrorsBadge.textContent = `${data.error_count} errors`;
-                auditErrorsBadge.classList.remove('hidden');
-            } else {
-                auditErrorsBadge.classList.add('hidden');
-            }
-
-            if (data.warning_count > 0) {
-                auditWarningsBadge.textContent = `${data.warning_count} warnings`;
-                auditWarningsBadge.classList.remove('hidden');
-            } else {
-                auditWarningsBadge.classList.add('hidden');
-            }
-
-            // Render Issues List
-            auditIssuesList.innerHTML = '';
-            if (data.issues && data.issues.length > 0) {
-                data.issues.forEach(issue => {
-                    const card = document.createElement('div');
-                    const level = (issue.level || 'info').toLowerCase();
-                    card.className = `audit-issue-card ${level}`;
-                    card.innerHTML = `
-                        <span class="issue-level">${escapeHtml(issue.level || 'INFO')}</span>
-                        <span>${issue.field ? `<strong>${escapeHtml(issue.field)}:</strong> ` : ''}${escapeHtml(issue.message || '')}</span>
-                    `;
-                    auditIssuesList.appendChild(card);
+            try {
+                const response = await fetch('/api/audit', {
+                    method: 'POST',
+                    body: formData
                 });
-            } else {
-                const cleanCard = document.createElement('div');
-                cleanCard.className = 'audit-issue-card info';
-                cleanCard.innerHTML = `<span class="issue-level">PASS</span><span>Definition passed all integrity checks. Zero syntax, overlap, or semantic issues detected.</span>`;
-                auditIssuesList.appendChild(cleanCard);
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    alert(`Audit Error: ${errData.detail || 'Audit failed'}`);
+                    return;
+                }
+
+                const data = await response.json();
+
+                if (auditStatusBadge) {
+                    auditStatusBadge.textContent = data.is_valid ? 'Valid' : 'Issues Found';
+                    auditStatusBadge.classList.toggle('badge-success', data.is_valid);
+                    auditStatusBadge.classList.toggle('badge-error', !data.is_valid);
+                }
+
+                if (auditRegistersBadge) {
+                    auditRegistersBadge.textContent = `${data.register_count} registers`;
+                }
+
+                if (auditErrorsBadge) {
+                    if (data.error_count > 0) {
+                        auditErrorsBadge.textContent = `${data.error_count} errors`;
+                        auditErrorsBadge.classList.remove('hidden');
+                    } else {
+                        auditErrorsBadge.classList.add('hidden');
+                    }
+                }
+
+                if (auditWarningsBadge) {
+                    if (data.warning_count > 0) {
+                        auditWarningsBadge.textContent = `${data.warning_count} warnings`;
+                        auditWarningsBadge.classList.remove('hidden');
+                    } else {
+                        auditWarningsBadge.classList.add('hidden');
+                    }
+                }
+
+                if (auditIssuesList) {
+                    auditIssuesList.innerHTML = '';
+                    if (data.issues && data.issues.length > 0) {
+                        data.issues.forEach(issue => {
+                            const card = document.createElement('div');
+                            const level = (issue.level || 'info').toLowerCase();
+                            card.className = `audit-issue-card ${level}`;
+                            card.innerHTML = `
+                                <span class="issue-level">${escapeHtml(issue.level || 'INFO')}</span>
+                                <span>${issue.field ? `<strong>${escapeHtml(issue.field)}:</strong> ` : ''}${escapeHtml(issue.message || '')}</span>
+                            `;
+                            auditIssuesList.appendChild(card);
+                        });
+                    } else {
+                        const cleanCard = document.createElement('div');
+                        cleanCard.className = 'audit-issue-card info';
+                        cleanCard.innerHTML = `<span class="issue-level">PASS</span><span>Definition passed all integrity checks. Zero syntax, overlap, or semantic issues detected.</span>`;
+                        auditIssuesList.appendChild(cleanCard);
+                    }
+                }
+
+                if (data.fixed_csv_content) {
+                    auditFixedCsvContent = data.fixed_csv_content;
+                    auditFixedFilename = data.filename ? `repaired_${data.filename}` : 'definition_repaired.csv';
+                    if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.remove('hidden');
+                } else {
+                    auditFixedCsvContent = null;
+                    if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.add('hidden');
+                }
+
+                if (auditResultsSection) auditResultsSection.classList.remove('hidden');
+            } catch (err) {
+                alert(`Network or Server Error: ${err.message}`);
+            } finally {
+                auditProcessBtn.disabled = false;
+                auditProcessBtn.textContent = 'Audit Definition';
             }
+        });
+    }
 
-            // Fixed CSV Download
-            if (data.fixed_csv_content) {
-                auditFixedCsvContent = data.fixed_csv_content;
-                auditFixedFilename = data.filename ? `repaired_${data.filename}` : 'definition_repaired.csv';
-                auditDownloadFixedBtn.classList.remove('hidden');
-            } else {
-                auditFixedCsvContent = null;
-                auditDownloadFixedBtn.classList.add('hidden');
-            }
-
-            auditResultsSection.classList.remove('hidden');
-        } catch (err) {
-            alert(`Network or Server Error: ${err.message}`);
-        } finally {
-            auditProcessBtn.disabled = false;
-            auditProcessBtn.textContent = 'Audit Definition';
-        }
-    });
-
-    auditDownloadFixedBtn.addEventListener('click', () => {
-        if (!auditFixedCsvContent) return;
-        triggerDownload(auditFixedCsvContent, auditFixedFilename);
-    });
+    if (auditDownloadFixedBtn && auditDownloadFixedBtn.addEventListener) {
+        auditDownloadFixedBtn.addEventListener('click', () => {
+            if (!auditFixedCsvContent) return;
+            triggerDownload(auditFixedCsvContent, auditFixedFilename);
+        });
+    }
 
     // =========================================================================
     // TAB 4: Equipment Library
@@ -459,6 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let libraryItems = [];
 
     async function loadLibrary() {
+        if (!libraryTableBody) return;
         try {
             const response = await fetch('/api/library');
             if (!response.ok) {
@@ -468,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             libraryItems = data.definitions || [];
             libraryLoaded = true;
-            libraryCountBadge.textContent = `${data.count} models`;
+            if (libraryCountBadge) libraryCountBadge.textContent = `${data.count} models`;
             renderLibraryTable(libraryItems);
         } catch (err) {
             libraryTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Network error: ${escapeHtml(err.message)}</td></tr>`;
@@ -476,6 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderLibraryTable(items) {
+        if (!libraryTableBody) return;
         libraryTableBody.innerHTML = '';
         if (items.length === 0) {
             libraryTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">No matching definitions found.</td></tr>`;
@@ -500,19 +554,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    librarySearchInput.addEventListener('input', () => {
-        const query = librarySearchInput.value.trim().toLowerCase();
-        if (!query) {
-            renderLibraryTable(libraryItems);
-            return;
-        }
+    if (librarySearchInput && librarySearchInput.addEventListener) {
+        librarySearchInput.addEventListener('input', () => {
+            const query = librarySearchInput.value.trim().toLowerCase();
+            if (!query) {
+                renderLibraryTable(libraryItems);
+                return;
+            }
 
-        const filtered = libraryItems.filter(item => {
-            return (item.manufacturer && item.manufacturer.toLowerCase().includes(query)) ||
-                   (item.model && item.model.toLowerCase().includes(query)) ||
-                   (item.category && item.category.toLowerCase().includes(query)) ||
-                   (item.filename && item.filename.toLowerCase().includes(query));
+            const filtered = libraryItems.filter(item => {
+                return (item.manufacturer && item.manufacturer.toLowerCase().includes(query)) ||
+                       (item.model && item.model.toLowerCase().includes(query)) ||
+                       (item.category && item.category.toLowerCase().includes(query)) ||
+                       (item.filename && item.filename.toLowerCase().includes(query));
+            });
+            renderLibraryTable(filtered);
         });
-        renderLibraryTable(filtered);
-    });
+    }
 });

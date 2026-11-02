@@ -3,8 +3,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
-  <img src="https://img.shields.io/badge/Tests-1040%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1040 passed" />
-  <img src="https://img.shields.io/badge/Coverage-88%25-brightgreen?style=for-the-badge" alt="Coverage: 88%" />
+  <img src="https://img.shields.io/badge/Version-0.3.0-blue?style=for-the-badge" alt="Version 0.3.0" />
+  <img src="https://img.shields.io/badge/Tests-1082%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1082 passed" />
+  <img src="https://img.shields.io/badge/Coverage-90%25-brightgreen?style=for-the-badge" alt="Coverage: 90%" />
   <img src="https://img.shields.io/badge/Type%20Check-Mypy%20Strict-blue?style=for-the-badge" alt="Mypy Strict" />
   <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
   <img src="https://img.shields.io/badge/Security-Bandit%20Pass-success?style=for-the-badge" alt="Bandit Security" />
@@ -207,7 +208,7 @@ In your PowerShell window, run:
 # 1. Create the virtual environment in a folder named .venv
 python -m venv .venv
 
-# 2. Activate the virtual environment
+# 10. Activate the virtual environment
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -254,7 +255,7 @@ deffilegen --version
 ```
 The terminal will respond:
 ```text
-deffilegen 0.2.1
+deffilegen 0.3.0
 ```
 
 You are all set! 🎉
@@ -270,7 +271,7 @@ On macOS or Linux distributions (Ubuntu, Debian, Fedora, Arch):
 git clone https://github.com/Cylae/DefFileGenerator.git
 cd DefFileGenerator
 
-# 2. Run the bootstrap script or manually set up venv
+# 10. Run the bootstrap script or manually set up venv
 ./scripts/bootstrap.sh
 
 # Or manual setup:
@@ -279,7 +280,7 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -e ".[web]"
 
-# 3. Verify installation
+# 10. Verify installation
 deffilegen --version
 ```
 
@@ -372,36 +373,39 @@ launch_gui.bat
 
 ---
 
-### 2. High-Performance CLI (`deffilegen`)
+### 10. High-Performance CLI (`deffilegen`)
 
-The command-line suite offers 9 unified subcommands:
+The command-line suite offers 10 unified subcommands:
 
 ```powershell
 # 1. Complete end-to-end workflow (Extract + Generate + Validate)
 deffilegen run "datasheet.pdf" --manufacturer "Huawei" --model "SUN2000-50KTL" -o huawei.csv
 
-# 2. Extract registers to an intermediate raw CSV
+# 10. Batch process an entire directory of documents with auto-metadata inference
+deffilegen batch datasheets_folder/ -o generated_defs/ --tag --report batch_report.md
+
+# 10. Extract registers to an intermediate raw CSV
 deffilegen extract "register_map.xlsx" --sheet "Holding Registers" -o raw_registers.csv
 
-# 3. Generate a Webdyn definition from intermediate CSV data
+# 10. Generate a Webdyn definition from intermediate CSV data
 deffilegen generate raw_registers.csv --manufacturer "SMA" --model "STP-5000" -o sma_def.csv
 
-# 4. Validate an existing definition CSV for Webdyn syntax compliance
+# 10. Validate an existing definition CSV for Webdyn syntax compliance
 deffilegen validate sma_def.csv
 
-# 5. Enrich or normalize official Webdyn SunPM semantic tags
+# 10. Enrich or normalize official Webdyn SunPM semantic tags
 deffilegen tag sma_def.csv --category Inverter
 
-# 6. Deep semantic audit (Modbus address overlaps, tag conformity, unit coherence)
+# 10. Deep semantic audit (Modbus address overlaps, tag conformity, unit coherence)
 deffilegen audit Definitions/ --strict-overlap
 
-# 7. Auto-repair definitions (normalize legacy tags, fill known tags, deduplicate)
+# 10. Auto-repair definitions (normalize legacy tags, fill known tags, deduplicate)
 deffilegen audit defective_def.csv --fix -o sanitized_def.csv
 
-# 8. Generate comprehensive technical Markdown / JSON reports
+# 10. Generate comprehensive technical Markdown / JSON reports
 deffilegen report Definitions/ -o AUDIT_REPORT.md --json metrics.json
 
-# 9. Train semantic knowledge base from definition datasets
+# 10. Train semantic knowledge base from definition datasets
 deffilegen train --dir Definitions/ --summary --export-json learned_knowledge.json
 ```
 
@@ -415,7 +419,7 @@ deffilegen train --dir Definitions/ --summary --export-json learned_knowledge.js
 
 ---
 
-### 3. Local Web Interface (FastAPI Browser App)
+### 10. Local Web Interface (FastAPI Browser App)
 
 ```powershell
 uvicorn web.app:app --host 127.0.0.1 --port 8000
@@ -426,7 +430,7 @@ uvicorn web.app:app --host 127.0.0.1 --port 8000
 
 ---
 
-### 4. Python Programmatic API
+### 10. Python Programmatic API
 
 Embed the conversion engine directly into custom Python pipelines:
 
@@ -473,7 +477,7 @@ The engine replaces legacy inconsistent tags with official Webdyn SunPM canonica
 | **Status & Alarms** | `STATUS`, `ALARM`, `STATE` | `InverterState`, `DeviceStatus` | Operating status and fault alarm bitfields |
 | **Remote Commands** | `CMD_ON`, `CMD_OFF`, `CMD_P_AC_SET_PERCENT` | `cmdOn`, `cmdPwrPercent` | Remote Curtailment, Setpoint, and Control |
 
-### 2. Intelligent Semantic Disambiguation
+### 10. Intelligent Semantic Disambiguation
 
 The knowledge miner incorporates multi-signal context disambiguation rules:
 - **Phase Detection**: Disambiguates `L1/L2/L3`, `R/S/T`, or `Phase A/B/C` into canonical suffixes `_1`, `_2`, `_3`.
@@ -517,7 +521,7 @@ Generates standardized Webdyn definition architectures for multi-megawatt batter
 - **All-in-One Generator**: Complete unified definition linking PV, BESS, Inverters, and Substation Meters.
 - Full Report: [`docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md`](docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md).
 
-### 2. FoxESS P3 & H3 Pro Hybrid Storage Inverters (`scratch/regenerate_foxess_p3_h3_pro.py`)
+### 10. FoxESS P3 & H3 Pro Hybrid Storage Inverters (`scratch/regenerate_foxess_p3_h3_pro.py`)
 Generates production-grade definition mappings for three-phase commercial hybrid inverters:
 - Full Report: [`docs/RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md`](docs/RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md).
 
@@ -604,7 +608,7 @@ This repository is governed by the **Apollo-Standard Autonomous Constitution** (
 - **CSV** : Automatic delimiter detection (comma, semicolon, tab) and multi-encoding recognition (UTF-8, UTF-8-SIG, CP1252, Latin-1).
 - **XML** : Hardened XML parsing with `defusedxml` to block XXE attacks.
 
-### 2. Recognized Column Headers
+### 10. Recognized Column Headers
 The extractor recognizes headers in English, French, and German:
 
 | Target Field | Purpose | Sample Vendor Headers Recognized |
@@ -617,7 +621,7 @@ The extractor recognizes headers in English, French, and German:
 | **Offset** | Addition bias | `offset`, `bias`, `decalage`, `b` |
 | **Action** | Access permission | `action`, `access`, `read/write`, `r/w`, `droits` |
 
-### 3. Normalized Data Types
+### 10. Normalized Data Types
 
 | Canonical Code | Common Vendor Names Recognized | Modbus Format |
 |---|---|---|
@@ -674,17 +678,17 @@ The codebase is protected by automated unit and integration tests under strict A
 # 1. Run the entire test suite with branch coverage (1,040 tests, 88% coverage):
 uv run pytest --cov=DefFileGenerator --cov=web
 
-# 2. Check code style and formatting:
+# 10. Check code style and formatting:
 uv run ruff check .
 uv run ruff format --check .
 
-# 3. Static type verification (Strict Mypy):
+# 10. Static type verification (Strict Mypy):
 uv run mypy DefFileGenerator web
 
-# 4. Security vulnerability scan:
+# 10. Security vulnerability scan:
 uv run bandit -r DefFileGenerator web -ll
 
-# 5. Build distribution package:
+# 10. Build distribution package:
 uv build --offline
 ```
 
