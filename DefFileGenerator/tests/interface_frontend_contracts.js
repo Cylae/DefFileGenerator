@@ -8,16 +8,24 @@ class Element {
         this.listeners = new Map();
         this.classes = new Set();
         this.children = [];
-        this.innerHTML = 'Convert';
+        this._innerHTML = 'Convert';
         this.textContent = '';
         this.value = '';
         this.disabled = false;
+        this.checked = false;
         this.classList = {
             add: value => this.classes.add(value),
             remove: value => this.classes.delete(value),
             toggle: (value, enabled) => enabled ? this.classes.add(value) : this.classes.delete(value),
             contains: value => this.classes.has(value),
         };
+    }
+    get innerHTML() { return this._innerHTML; }
+    set innerHTML(value) {
+        this._innerHTML = value;
+        if (value === '') {
+            this.children = [];
+        }
     }
     addEventListener(name, callback) { this.listeners.set(name, callback); }
     fire(name, event = {}) { return this.listeners.get(name)?.(event); }
@@ -66,6 +74,8 @@ const validResult = {
 
 async function main() {
     const app = application();
+
+    // 1. Convert tab verification
     selectFile(app);
     app.context.fetch = async () => response(validResult);
     await app.element('convertBtn').fire('click');
@@ -105,6 +115,73 @@ async function main() {
     app.element('convertForm').fire('input');
     assert.equal(app.element('resultsSection').classList.contains('hidden'), true);
     assert.equal(app.element('downloadBtn').disabled, true);
+
+    // 2. Tab Navigation Contracts
+    app.element('tabBtnTag').fire('click');
+    assert.equal(app.element('tabBtnTag').classList.contains('active'), true);
+    assert.equal(app.element('tabBtnConvert').classList.contains('active'), false);
+    assert.equal(app.element('tab-tag').classList.contains('active'), true);
+    assert.equal(app.element('tab-convert').classList.contains('hidden'), true);
+
+    // 3. SunPM Tagger Tab Flow
+    app.element('tagFileInput').fire('change', { target: { files: [{ name: 'inverter.csv', size: 1024 }] } });
+    assert.equal(app.element('tagProcessBtn').disabled, false);
+    app.context.fetch = async () => response({
+        success: true,
+        filename: 'tagged_inverter.csv',
+        tags_updated: 15,
+        register_count: 50,
+        preview: [{ Name: 'Active Power', Tag: 'P_AC', Address: 30001, Type: 'U16', Unit: 'W', Action: '4' }],
+        csv_content: 'sample_csv'
+    });
+    await app.element('tagProcessBtn').fire('click');
+    assert.equal(app.element('tagCountBadge').textContent, '15 tags updated');
+    assert.equal(app.element('tagRegisterBadge').textContent, '50 registers');
+    assert.equal(app.element('tagResultsSection').classList.contains('hidden'), false);
+
+    // 4. Auditor Tab Flow (Errors & Fix applied)
+    app.element('tabBtnAudit').fire('click');
+    assert.equal(app.element('tab-audit').classList.contains('active'), true);
+    app.element('auditFileInput').fire('change', { target: { files: [{ name: 'defective.csv', size: 512 }] } });
+    assert.equal(app.element('auditProcessBtn').disabled, false);
+    app.context.fetch = async () => response({
+        success: true,
+        filename: 'defective.csv',
+        valid: false,
+        register_count: 30,
+        error_count: 2,
+        warning_count: 1,
+        issues: [
+            { level: 'error', field: 'Info2', message: 'Address overlap at 40001' },
+            { level: 'error', field: 'Tag', message: 'Duplicate tag P_AC' },
+            { level: 'warning', field: 'Unit', message: 'Non-canonical unit kwh' }
+        ],
+        fixed_csv_content: 'repaired_csv_content'
+    });
+    await app.element('auditProcessBtn').fire('click');
+    assert.equal(app.element('auditStatusBadge').textContent, 'Issues Found');
+    assert.equal(app.element('auditRegistersBadge').textContent, '30 registers');
+    assert.equal(app.element('auditErrorsBadge').textContent, '2 errors');
+    assert.equal(app.element('auditWarningsBadge').textContent, '1 warnings');
+    assert.equal(app.element('auditDownloadFixedBtn').classList.contains('hidden'), false);
+    assert.equal(app.element('auditIssuesList').children.length, 3);
+
+    // 5. Equipment Library Flow (Tab 4)
+    const sampleLibrary = [
+        { filename: 'INV_Huawei_SUN2000.csv', category: 'Inverter', manufacturer: 'Huawei', model: 'SUN2000', size_kb: 12.5 },
+        { filename: 'MET_ABB_B23.csv', category: 'Meter', manufacturer: 'ABB', model: 'B23', size_kb: 8.2 }
+    ];
+    app.context.fetch = async () => response(sampleLibrary);
+    app.element('tabBtnLibrary').fire('click');
+    // Allow promise tick
+    await new Promise(r => setImmediate(r));
+    assert.equal(app.element('libraryCountBadge').textContent, '2 models');
+    assert.equal(app.element('libraryTableBody').children.length, 2);
+
+    // Search filter
+    app.element('librarySearchInput').value = 'ABB';
+    app.element('librarySearchInput').fire('input');
+    assert.equal(app.element('libraryTableBody').children.length, 1);
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

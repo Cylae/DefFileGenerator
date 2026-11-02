@@ -373,7 +373,7 @@ launch_gui.bat
 
 ---
 
-### 10. High-Performance CLI (`deffilegen`)
+### 2. High-Performance CLI (`deffilegen`)
 
 The command-line suite offers 10 unified subcommands:
 
@@ -381,28 +381,28 @@ The command-line suite offers 10 unified subcommands:
 # 1. Complete end-to-end workflow (Extract + Generate + Validate)
 deffilegen run "datasheet.pdf" --manufacturer "Huawei" --model "SUN2000-50KTL" -o huawei.csv
 
-# 10. Batch process an entire directory of documents with auto-metadata inference
+# 2. Batch process an entire directory of documents with auto-metadata inference
 deffilegen batch datasheets_folder/ -o generated_defs/ --tag --report batch_report.md
 
-# 10. Extract registers to an intermediate raw CSV
+# 3. Extract registers to an intermediate raw CSV
 deffilegen extract "register_map.xlsx" --sheet "Holding Registers" -o raw_registers.csv
 
-# 10. Generate a Webdyn definition from intermediate CSV data
+# 4. Generate a Webdyn definition from intermediate CSV data
 deffilegen generate raw_registers.csv --manufacturer "SMA" --model "STP-5000" -o sma_def.csv
 
-# 10. Validate an existing definition CSV for Webdyn syntax compliance
+# 5. Validate an existing definition CSV for Webdyn syntax compliance
 deffilegen validate sma_def.csv
 
-# 10. Enrich or normalize official Webdyn SunPM semantic tags
+# 6. Enrich or normalize official Webdyn SunPM semantic tags
 deffilegen tag sma_def.csv --category Inverter
 
-# 10. Deep semantic audit (Modbus address overlaps, tag conformity, unit coherence)
+# 7. Deep semantic audit (Modbus address overlaps, tag conformity, unit coherence)
 deffilegen audit Definitions/ --strict-overlap
 
-# 10. Auto-repair definitions (normalize legacy tags, fill known tags, deduplicate)
+# 8. Auto-repair definitions (normalize legacy tags, fill known tags, deduplicate)
 deffilegen audit defective_def.csv --fix -o sanitized_def.csv
 
-# 10. Generate comprehensive technical Markdown / JSON reports
+# 9. Generate comprehensive technical Markdown / JSON reports
 deffilegen report Definitions/ -o AUDIT_REPORT.md --json metrics.json
 
 # 10. Train semantic knowledge base from definition datasets
@@ -419,18 +419,31 @@ deffilegen train --dir Definitions/ --summary --export-json learned_knowledge.js
 
 ---
 
-### 10. Local Web Interface (FastAPI Browser App)
+### 3. Industrial Web Studio & REST API (FastAPI Browser App)
+
+The built-in Web Studio provides a responsive single-page application with 4 specialized engineering tabs:
+
+1. **Convert Datasheet**: Drag-and-drop ingestion of PDF, XLSX, XLSM, CSV, or XML documents, interactive configuration (manufacturer, model, protocol, category), and real-time tabular preview with one-click CSV export.
+2. **SunPM Tagger**: Upload an existing or newly generated definition to automatically enrich and align register tags with canonical Webdyn SunPM semantics (`P_AC`, `Q_AC`, `E_TOT`, etc.) with phase inference and category override.
+3. **Validator & Auditor**: In-depth rule validation checking syntax, 11-column integrity, Modbus interval address collisions/overlaps, and providing a 1-click automatic remediation download.
+4. **Equipment Library**: Real-time searchable catalog of 125+ pre-validated industrial definition CSV files covering 61 manufacturers, with instant live search and direct download buttons.
 
 ```powershell
 uvicorn web.app:app --host 127.0.0.1 --port 8000
 ```
-- Web Application: [http://127.0.0.1:8000](http://127.0.0.1:8000)
-- Interactive OpenAPI Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- Endpoints: `POST /api/convert` (file conversion) and `POST /api/validate` (compliance check).
+- **Web Studio Application**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- **Interactive OpenAPI Documentation**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **REST Endpoints**:
+  - `POST /api/convert`: Multipart document conversion pipeline.
+  - `POST /api/validate`: Structural and syntax validator.
+  - `POST /api/tag`: SunPM semantic tag enrichment engine.
+  - `POST /api/audit`: Comprehensive audit and automatic remediation engine.
+  - `GET /api/library`: Equipment definition catalog metadata provider.
+  - `GET /api/library/{filename}`: Path-traversal-guarded definition file download.
 
 ---
 
-### 10. Python Programmatic API
+### 4. Python Programmatic API
 
 Embed the conversion engine directly into custom Python pipelines:
 
@@ -477,7 +490,7 @@ The engine replaces legacy inconsistent tags with official Webdyn SunPM canonica
 | **Status & Alarms** | `STATUS`, `ALARM`, `STATE` | `InverterState`, `DeviceStatus` | Operating status and fault alarm bitfields |
 | **Remote Commands** | `CMD_ON`, `CMD_OFF`, `CMD_P_AC_SET_PERCENT` | `cmdOn`, `cmdPwrPercent` | Remote Curtailment, Setpoint, and Control |
 
-### 10. Intelligent Semantic Disambiguation
+### 2. Intelligent Semantic Disambiguation
 
 The knowledge miner incorporates multi-signal context disambiguation rules:
 - **Phase Detection**: Disambiguates `L1/L2/L3`, `R/S/T`, or `Phase A/B/C` into canonical suffixes `_1`, `_2`, `_3`.
@@ -521,7 +534,7 @@ Generates standardized Webdyn definition architectures for multi-megawatt batter
 - **All-in-One Generator**: Complete unified definition linking PV, BESS, Inverters, and Substation Meters.
 - Full Report: [`docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md`](docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md).
 
-### 10. FoxESS P3 & H3 Pro Hybrid Storage Inverters (`scratch/regenerate_foxess_p3_h3_pro.py`)
+### 2. FoxESS P3 & H3 Pro Hybrid Storage Inverters (`scratch/regenerate_foxess_p3_h3_pro.py`)
 Generates production-grade definition mappings for three-phase commercial hybrid inverters:
 - Full Report: [`docs/RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md`](docs/RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md).
 
@@ -608,7 +621,7 @@ This repository is governed by the **Apollo-Standard Autonomous Constitution** (
 - **CSV** : Automatic delimiter detection (comma, semicolon, tab) and multi-encoding recognition (UTF-8, UTF-8-SIG, CP1252, Latin-1).
 - **XML** : Hardened XML parsing with `defusedxml` to block XXE attacks.
 
-### 10. Recognized Column Headers
+### 2. Recognized Column Headers
 The extractor recognizes headers in English, French, and German:
 
 | Target Field | Purpose | Sample Vendor Headers Recognized |
@@ -621,7 +634,7 @@ The extractor recognizes headers in English, French, and German:
 | **Offset** | Addition bias | `offset`, `bias`, `decalage`, `b` |
 | **Action** | Access permission | `action`, `access`, `read/write`, `r/w`, `droits` |
 
-### 10. Normalized Data Types
+### 3. Normalized Data Types
 
 | Canonical Code | Common Vendor Names Recognized | Modbus Format |
 |---|---|---|

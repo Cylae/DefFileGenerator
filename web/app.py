@@ -426,7 +426,9 @@ def _tag_document(
         "success": True,
         "filename": safe_filename,
         "tags_updated": count,
+        "updated_count": count,
         "register_count": report.register_count,
+        "total_registers": report.register_count,
         "preview": preview_rows,
         "csv_content": csv_content,
         "stats": report.stats,
@@ -459,20 +461,45 @@ def _audit_document(
         logger.exception("Audit error for %s", safe_filename)
         raise HTTPException(status_code=400, detail="Failed to audit definition file.") from None
 
+    errors_list = [asdict(e) for e in report.errors]
+    warnings_list = [asdict(w) for w in report.warnings]
+    infos_list = [asdict(i) for i in report.infos]
+
+    issues_list: list[dict[str, Any]] = []
+    for item in errors_list:
+        entry = dict(item)
+        entry["level"] = "error"
+        issues_list.append(entry)
+    for item in warnings_list:
+        entry = dict(item)
+        entry["level"] = "warning"
+        issues_list.append(entry)
+    for item in infos_list:
+        entry = dict(item)
+        entry["level"] = "info"
+        issues_list.append(entry)
+
     result: dict[str, Any] = {
         "success": True,
         "filename": safe_filename,
         "valid": report.is_valid,
+        "is_valid": report.is_valid,
         "register_count": report.register_count,
         "stats": report.stats,
-        "errors": [asdict(e) for e in report.errors],
-        "warnings": [asdict(w) for w in report.warnings],
-        "infos": [asdict(i) for i in report.infos],
+        "error_count": len(errors_list),
+        "warning_count": len(warnings_list),
+        "info_count": len(infos_list),
+        "errors": errors_list,
+        "warnings": warnings_list,
+        "infos": infos_list,
+        "issues": issues_list,
     }
     if fix_stats:
         result["fix_applied"] = fix_stats
         with open(target_path, encoding="utf-8-sig") as f:
-            result["csv_content"] = f.read()
+            content_fixed = f.read()
+            result["csv_content"] = content_fixed
+            result["fixed_csv_content"] = content_fixed
     return result
 
 

@@ -79,6 +79,8 @@ class TestWebExtendedEndpoints:
         result = response.json()
         assert result["success"] is True
         assert result["tags_updated"] >= 1
+        assert result["updated_count"] == result["tags_updated"]
+        assert result["total_registers"] == result["register_count"]
         assert "P_AC" in result["csv_content"] or "E_TOT" in result["csv_content"]
         assert len(result["preview"]) >= 2
 
@@ -104,7 +106,12 @@ class TestWebExtendedEndpoints:
         result = response.json()
         assert result["success"] is True
         assert result["valid"] is True
+        assert result["is_valid"] is True
         assert result["register_count"] == 2
+        assert result["error_count"] == len(result["errors"])
+        assert result["warning_count"] == len(result["warnings"])
+        assert result["info_count"] == len(result["infos"])
+        assert isinstance(result["issues"], list)
         assert isinstance(result["errors"], list)
         assert isinstance(result["warnings"], list)
 
@@ -122,6 +129,7 @@ class TestWebExtendedEndpoints:
         result = response.json()
         assert "fix_applied" in result
         assert "csv_content" in result
+        assert result["fixed_csv_content"] == result["csv_content"]
         assert "P_AC" in result["csv_content"]
 
     def test_audit_file_invalid_extension(self, client: TestClient) -> None:

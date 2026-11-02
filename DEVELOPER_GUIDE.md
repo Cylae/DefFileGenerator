@@ -35,7 +35,7 @@ Manufacturer register maps vary wildly in format:
 
 `DefFileGenerator` provides a format-agnostic extraction, semantic tagging, and normalization pipeline accessible via:
 1. **Command Line Interface (`deffilegen`)** — Primary automation tool for pipelines and scripting.
-2. **REST API Backend (`web/app.py`)** — FastAPI server powering browser-based conversion.
+2. **Industrial Web Studio & REST API (`web/app.py`)** — FastAPI server powering a 4-tab browser-based conversion, tagging, auditing, and equipment library studio.
 3. **Windows 11 Desktop GUI (`DefFileGenerator/gui.py`)** — Modern CustomTkinter application with live register preview.
 4. **Semantic Domain Engine (`DefFileGenerator/knowledge_miner.py`)** — Trained on 211,000+ registers for SunPM canonical tagging.
 5. **Technical Audit & Report Generator (`DefFileGenerator/report_generator.py`)** — Markdown and JSON audit reporting.
@@ -235,7 +235,7 @@ All code must pass static typing, linting, security scanning, and automated test
 
 ### Running Tests
 ```powershell
-# Run the complete test suite with coverage report (1,040 tests, 88% coverage):
+# Run the complete test suite with coverage report (1,090 tests, 90% coverage):
 uv run pytest --cov=DefFileGenerator --cov=web
 
 # Run fast targeted unit tests:
@@ -282,7 +282,7 @@ This repository is governed by the **Apollo-Standard Engineering Constitution** 
 ### Audit Ledgers in `docs/audit/`:
 - **`PLAN.md`**: Milestone tracking and task completion status.
 - **`REVIEW_MATRIX.md`**: LOC, risk classification, and test coverage per module.
-- **`FINDINGS.md`**: Root-cause defect ledger (FIND-001 through FIND-003).
+- **`FINDINGS.md`**: Root-cause defect ledger (FIND-001 through FIND-008).
 - **`VALIDATION.md`**: Output traces for all quality gates.
 - **`PERFORMANCE.md`**: Collection benchmarks (2.50s test collection) and profiling.
 - **`HANDOFF.md`**: Operational handoff instructions.

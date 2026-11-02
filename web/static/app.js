@@ -322,8 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 taggedCsvContent = data.csv_content;
                 taggedFilename = data.filename || 'definition_tagged.csv';
 
-                if (tagCountBadge) tagCountBadge.textContent = `${data.updated_count} tags updated`;
-                if (tagRegisterBadge) tagRegisterBadge.textContent = `${data.total_registers} registers`;
+                const updatedCount = data.tags_updated ?? data.updated_count ?? 0;
+                const regCount = data.register_count ?? data.total_registers ?? 0;
+                if (tagCountBadge) tagCountBadge.textContent = `${updatedCount} tags updated`;
+                if (tagRegisterBadge) tagRegisterBadge.textContent = `${regCount} registers`;
 
                 if (tagPreviewBody) {
                     tagPreviewBody.innerHTML = '';
@@ -427,38 +429,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await response.json();
 
+                const isValid = Boolean(data.is_valid ?? data.valid);
                 if (auditStatusBadge) {
-                    auditStatusBadge.textContent = data.is_valid ? 'Valid' : 'Issues Found';
-                    auditStatusBadge.classList.toggle('badge-success', data.is_valid);
-                    auditStatusBadge.classList.toggle('badge-error', !data.is_valid);
+                    auditStatusBadge.textContent = isValid ? 'Valid' : 'Issues Found';
+                    auditStatusBadge.classList.toggle('badge-success', isValid);
+                    auditStatusBadge.classList.toggle('badge-error', !isValid);
                 }
 
                 if (auditRegistersBadge) {
-                    auditRegistersBadge.textContent = `${data.register_count} registers`;
+                    auditRegistersBadge.textContent = `${data.register_count ?? 0} registers`;
                 }
 
+                const errCount = data.error_count ?? (Array.isArray(data.errors) ? data.errors.length : 0);
                 if (auditErrorsBadge) {
-                    if (data.error_count > 0) {
-                        auditErrorsBadge.textContent = `${data.error_count} errors`;
+                    if (errCount > 0) {
+                        auditErrorsBadge.textContent = `${errCount} errors`;
                         auditErrorsBadge.classList.remove('hidden');
                     } else {
                         auditErrorsBadge.classList.add('hidden');
                     }
                 }
 
+                const warnCount = data.warning_count ?? (Array.isArray(data.warnings) ? data.warnings.length : 0);
                 if (auditWarningsBadge) {
-                    if (data.warning_count > 0) {
-                        auditWarningsBadge.textContent = `${data.warning_count} warnings`;
+                    if (warnCount > 0) {
+                        auditWarningsBadge.textContent = `${warnCount} warnings`;
                         auditWarningsBadge.classList.remove('hidden');
                     } else {
                         auditWarningsBadge.classList.add('hidden');
                     }
                 }
 
+                const rawIssues = Array.isArray(data.issues) ? data.issues : [
+                    ...(Array.isArray(data.errors) ? data.errors.map(e => ({ ...e, level: 'error' })) : []),
+                    ...(Array.isArray(data.warnings) ? data.warnings.map(w => ({ ...w, level: 'warning' })) : []),
+                    ...(Array.isArray(data.infos) ? data.infos.map(i => ({ ...i, level: 'info' })) : [])
+                ];
+
                 if (auditIssuesList) {
                     auditIssuesList.innerHTML = '';
-                    if (data.issues && data.issues.length > 0) {
-                        data.issues.forEach(issue => {
+                    if (rawIssues.length > 0) {
+                        rawIssues.forEach(issue => {
                             const card = document.createElement('div');
                             const level = (issue.level || 'info').toLowerCase();
                             card.className = `audit-issue-card ${level}`;
@@ -476,8 +487,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                if (data.fixed_csv_content) {
-                    auditFixedCsvContent = data.fixed_csv_content;
+                const fixedContent = data.fixed_csv_content ?? data.csv_content;
+                if (fixedContent) {
+                    auditFixedCsvContent = fixedContent;
                     auditFixedFilename = data.filename ? `repaired_${data.filename}` : 'definition_repaired.csv';
                     if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.remove('hidden');
                 } else {
@@ -519,9 +531,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             const data = await response.json();
-            libraryItems = data.definitions || [];
+            libraryItems = Array.isArray(data) ? data : (data.definitions || []);
             libraryLoaded = true;
-            if (libraryCountBadge) libraryCountBadge.textContent = `${data.count} models`;
+            const modelCount = data.count ?? libraryItems.length;
+            if (libraryCountBadge) libraryCountBadge.textContent = `${modelCount} models`;
             renderLibraryTable(libraryItems);
         } catch (err) {
             libraryTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Network error: ${escapeHtml(err.message)}</td></tr>`;
@@ -538,11 +551,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         items.forEach(item => {
             const tr = document.createElement('tr');
-            const sizeKb = (item.size_bytes / 1024).toFixed(1);
+            const sizeKb = item.size_kb != null ? item.size_kb : (item.size_bytes ? (item.size_bytes / 1024).toFixed(1) : '0.0');
             tr.innerHTML = `
-                <td><span class="badge badge-info">${escapeHtml(item.category)}</span></td>
-                <td><strong>${escapeHtml(item.manufacturer)}</strong></td>
-                <td><code>${escapeHtml(item.model)}</code></td>
+                <td><span class="badge badge-info">${escapeHtml(item.category || '')}</span></td>
+                <td><strong>${escapeHtml(item.manufacturer || '')}</strong></td>
+                <td><code>${escapeHtml(item.model || '')}</code></td>
                 <td>${sizeKb} KB</td>
                 <td>
                     <a href="/api/library/${encodeURIComponent(item.filename)}" class="btn btn-primary btn-sm" download>

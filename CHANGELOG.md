@@ -39,7 +39,8 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   - `GET /api/library/{filename}`: Path-traversal-guarded download endpoint.
 - **Wave 31 CLI & Reports Regression Suite (`test_coverage_wave31_cli_and_reports.py`)**: Dedicated test coverage bringing `main.py` coverage to 91% and `report_generator.py` to 98%.
 - **Extended Web Test Suite (`test_web_extended.py`)**: 22 tests verifying all new endpoints, error states, and traversal guards.
-- **Overall Project Test Coverage Reached 90%** across 1,083 automated tests.
+- **Overall Project Test Coverage Reached 90%** across 1,090 automated tests (1,089 passed, 1 skipped).
+- **Frontend Contract Test Suite (`DefFileGenerator/tests/interface_frontend_contracts.js`)**: Node.js contract test suite asserting DOM interaction and response processing across all 4 Web Studio tabs.
 
 ### Performance
 
@@ -76,6 +77,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- **Frontend-Backend API Dual-Resilience Architecture.** Harmonized `/api/tag`, `/api/audit`, and `/api/library` response contracts between `web/app.py` and `web/static/app.js`. The backend supplies primary and alias fields (`tags_updated`/`updated_count`, `register_count`/`total_registers`, `is_valid`/`valid`, `fixed_csv_content`/`csv_content`), while the frontend employs defensive nullish coalescing (`??`) and fallback mapping.
+- **Single-Source Version Centralization (`DefFileGenerator/_version.py`).** Eliminated version drift across CLI, GUI, and Web endpoints by centralizing version `0.3.0` into a single module, guarded by `tests/test_version_consistency.py`.
+- **Test Isolation & Repository Working-Tree Cleanliness.** Hardened `test_mars_requested_definitions.py` to generate into isolated temporary directories and corrected `output_dir` in `test_coverage_wave31_cli_and_reports.py`, preventing tests from dirtying git status.
 - **Subword & Byte Addressing Support (`U8`/`I8`).** Extended address parser and interval collision detector to handle `_0` and `_1` byte addresses without false positive overlap errors.
 - **Legacy Definition Encoding Fallback.** Added automatic graceful fallback to Windows-1252 / CP1252 in lenient validation mode for historical manufacturer files containing special characters.
 - **Mars Local Controller Vendor Typo Resolution.** Corrected vendor documentation typo where `Branch 2~n DC Current` was misaddressed at 71 instead of 72, avoiding 32-bit float collision.
@@ -92,6 +96,7 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Removed
 
+- **Orphan Legacy Prototype Script (`gen_mars_defs.py`).** Safely removed 611-line unreferenced root script superseded by `DefFileGenerator/mars_generator.py` and `generate_mars_definitions.py`.
 - **Unused Ad-Hoc Test Artifact (`DefFileGenerator/test_input.csv`).** Removed unreferenced loose CSV file from the core package root directory.
 - **Tracked Test Output Artifacts.** Untracked generated test outputs (`stress_test_data/output.csv`, `stress_test_data/output_offset.csv`, `torture_test/output.csv`, `torture_test/output_str.csv`) from version control and updated `.gitignore` with `torture_test/output*.csv` so test batteries execute without dirtying the working directory.
 
