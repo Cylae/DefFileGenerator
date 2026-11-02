@@ -5,7 +5,8 @@
   <a href="../QUICKSTART.md"><b>Beginner Tutorial</b></a> •
   <a href="input-format.md"><b>Input Formats</b></a> •
   <a href="architecture.md"><b>Architecture</b></a> •
-  <a href="security.md"><b>Security</b></a>
+  <a href="security.md"><b>Security</b></a> •
+  <a href="audit/VALIDATION.md"><b>Audit Ledger</b></a>
 </p>
 
 ---
@@ -52,6 +53,27 @@ deffilegen validate sma_def.csv --lenient
 
 ---
 
+## 🧠 Semantic SunPM Tagging & Auditing
+
+```bash
+# Enrich or normalize canonical SunPM tags (P_AC, E_TOT, U_AC_1...)
+deffilegen tag sma_def.csv --category Inverter
+
+# Audit definitions for Modbus address overlaps and tag coherence
+deffilegen audit Definitions/ --strict-overlap
+
+# Automatically repair and sanitize defective definitions
+deffilegen audit defective.csv --fix -o repaired.csv
+
+# Generate structured technical Markdown and JSON audit reports
+deffilegen report Definitions/ -o AUDIT_REPORT.md --json metrics.json
+
+# Train the knowledge base from a directory of definition files
+deffilegen train --dir Definitions/ --summary --export-json knowledge.json
+```
+
+---
+
 ## 📋 Common Command Options
 
 | Flag | Description | Example |
@@ -63,6 +85,7 @@ deffilegen validate sma_def.csv --lenient
 | `--pages RANGE` | Selective PDF pages range | `--pages "12,14-18"` |
 | `--mapping FILE` | Custom JSON column mapping dictionary | `--mapping custom_map.json` |
 | `--address-offset N` | Global address shift (applied once) | `--address-offset -1` |
+| `--report FILE` | Output path for Markdown report generated during run | `--report report.md` |
 | `--force` | Overwrite existing output without prompt | `--force` |
 | `--no-validate` | `run` only: opt out of generation validation for diagnostics | `--no-validate` |
 | `-v, --verbose` | Enable diagnostic logging output | `-v` |
@@ -86,18 +109,21 @@ deffilegen generate --template --template-mode definition -o template_definition
 ## 🧪 Quality Gates & Validation Suite
 
 ```bash
-# Run the complete automated test suite
-pytest
+# Run the complete automated test suite with coverage
+uv run pytest --cov=DefFileGenerator --cov=web
 
 # Code formatting and linting
-ruff check .
-ruff format --check .
+uv run ruff check .
+uv run ruff format --check .
 
 # Static type analysis
-mypy DefFileGenerator web
+uv run mypy DefFileGenerator web
 
 # Security scanning
-bandit -r DefFileGenerator web -ll
+uv run bandit -r DefFileGenerator web -ll
+
+# Packaging verification
+uv build --offline
 ```
 
 ---
