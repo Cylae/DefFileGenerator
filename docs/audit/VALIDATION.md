@@ -18,12 +18,12 @@
 | **Linter** | `uv run ruff check .` | Entire repository | **EXECUTED_PASS** | All checks passed (0 errors across 138 files) |
 | **Formatter** | `uv run ruff format --check .` | Entire repository | **EXECUTED_PASS** | 138 files already formatted cleanly |
 | **Type Checker** | `uv run mypy DefFileGenerator web` | First-party packages | **EXECUTED_PASS** | Success: 0 issues found in 102 source files |
-| **Security Audit** | `uv run bandit -r DefFileGenerator web -ll` | First-party packages | **EXECUTED_PASS** | 0 high/medium issues across 23,748 LOC |
+| **Security Audit** | `uv run bandit -r DefFileGenerator web -ll` | First-party packages | **EXECUTED_PASS** | 0 high/medium issues across 23,949 LOC |
 | **Build & Packaging** | `uv build --offline` | Sdist & Wheel | **EXECUTED_PASS** | `def_file_generator-0.3.0-py3-none-any.whl` generated |
-| **Package Integrity** | Python ZipFile inspection | Built wheel archive | **EXECUTED_PASS** | All 8 required web/core files present; 0 test leaks |
+| **Package Integrity** | Python ZipFile inspection | Built wheel archive | **EXECUTED_PASS** | All required web/core files present; 0 test leaks |
 | **CLI Verification** | `uv run deffilegen --version` | Application CLI | **EXECUTED_PASS** | `deffilegen 0.3.0` returned with exit code 0 |
-| **Frontend Contracts** | `node DefFileGenerator/tests/interface_frontend_contracts.js web/static/app.js` | Web Studio DOM contracts | **EXECUTED_PASS** | All 4 tabs asserted: Convert, Tag, Audit, Library |
-| **Unit & Integration** | `uv run pytest --cov=DefFileGenerator --cov=web` | 1,090 collected tests | **EXECUTED_PASS** | 1,089 passed, 1 skipped, 0 failed |
+| **Frontend Contracts** | `node DefFileGenerator/tests/interface_frontend_contracts.js web/static/app.js` | Web Studio DOM contracts | **EXECUTED_PASS** | All 4 tabs asserted: Convert, Tag, Audit, Library, Toast, Copy, Filter, ARIA |
+| **Unit & Integration** | `uv run pytest --cov=DefFileGenerator --cov=web` | 1,093 collected tests | **EXECUTED_PASS** | 1,092 passed, 1 skipped, 0 failed |
 
 ---
 
@@ -39,11 +39,11 @@
 | `DefFileGenerator/report_generator.py` | 216 | 2 | 40 | 3 | **98%** | Verified |
 | `DefFileGenerator/mars_generator.py` | 335 | 27 | 176 | 25 | **89%** | Verified |
 | `DefFileGenerator/io_utils.py` | 41 | 0 | 10 | 0 | **100%** | Verified |
-| `DefFileGenerator/main.py` | 575 | 39 | 222 | 26 | **91%** | Verified |
+| `DefFileGenerator/main.py` | 598 | 38 | 232 | 27 | **91%** | Verified |
 | `DefFileGenerator/gui.py` | 824 | 176 | 230 | 50 | **72%** | Verified |
 | `web/__init__.py` | 0 | 0 | 0 | 0 | **100%** | Verified |
-| `web/app.py` | 316 | 20 | 96 | 15 | **92%** | Verified |
-| **TOTAL** | **4,702** | **390** | **2,000** | **207** | **90%** | **PASS** |
+| `web/app.py` | 327 | 20 | 96 | 15 | **92%** | Verified |
+| **TOTAL** | **4,736** | **389** | **2,010** | **208** | **90%** | **PASS** |
 
 ---
 

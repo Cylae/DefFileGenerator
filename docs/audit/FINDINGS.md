@@ -10,6 +10,8 @@
 | **FIND-006** | LOW | Test Hygiene | `tests/test_coverage_wave31_cli_and_reports.py` | Vacuous batch skip-existing test leaked output into the repo | RESOLVED |
 | **FIND-007** | HIGH | Contract / Frontend-Backend | `web/app.py`, `web/static/app.js`, `DefFileGenerator/tests/interface_frontend_contracts.js` | API contract mismatch on Tag, Audit, and Library response keys | RESOLVED |
 | **FIND-008** | LOW | Architecture / Dead Code | `gen_mars_defs.py` | Orphan legacy prototype script in repository root | RESOLVED |
+| **FIND-009** | MEDIUM | Scalability / CLI | `DefFileGenerator/main.py`, `tests/test_batch_cli.py` | Batch CLI lacked recursive directory tree scanning and multi-worker execution | RESOLVED |
+| **FIND-010** | MEDIUM | Schema / API Typing | `web/app.py` | Missing explicit Pydantic response models on FastAPI endpoints | RESOLVED |
 
 ---
 
@@ -85,4 +87,20 @@
 - **Trigger**: Repository cleanliness inspection and dead code audit.
 - **Root Cause**: `gen_mars_defs.py` (611 lines) was an outdated prototype script with hardcoded local paths, no unit tests, and no callers. It was fully superseded by `DefFileGenerator/mars_generator.py` and `generate_mars_definitions.py`.
 - **Fix**: Removed `gen_mars_defs.py` from repository after verifying zero dependencies or test usages.
+- **Status**: RESOLVED
+
+### FIND-009: Batch CLI Lacked Recursive Scanning and Multi-Worker Concurrency
+- **Severity**: MEDIUM
+- **Component**: CLI (`DefFileGenerator/main.py::batch_command`, `tests/test_batch_cli.py`)
+- **Trigger**: Running `deffilegen batch` against nested manufacturer folders or large libraries.
+- **Root Cause**: Batch command only processed top-level files using non-recursive globbing, and processed all files serially in a single thread.
+- **Fix**: Added `--recursive` / `-r` flag to traverse nested subdirectories (`rglob`) and `--jobs` / `-j` flag leveraging `concurrent.futures.ThreadPoolExecutor` for parallel document conversion. Added 3 unit tests in `test_batch_cli.py`.
+- **Status**: RESOLVED
+
+### FIND-010: Web Endpoints Lacked Explicit Pydantic Response Models
+- **Severity**: MEDIUM
+- **Component**: Web API (`web/app.py`, OpenAPI schema)
+- **Trigger**: Inspecting OpenAPI `/docs` or `/openapi.json` schemas for `/api/convert`, `/api/validate`, `/api/tag`, `/api/audit`, and `/api/library`.
+- **Root Cause**: Endpoints returned raw dictionaries wrapped in `JSONResponse` without `response_model=` decorators, resulting in unvalidated and untyped OpenAPI specifications.
+- **Fix**: Implemented explicit Pydantic v2 models (`HealthResponse`, `ValidationIssueItem`, `ConvertResponse`, `ValidateResponse`, `TagResponse`, `AuditResponse`, `LibraryItem`) with full type annotations on all route handlers.
 - **Status**: RESOLVED

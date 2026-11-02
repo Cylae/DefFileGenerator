@@ -214,3 +214,80 @@ class TestBatchCommand:
             with pytest.raises(SystemExit) as exc:
                 batch_command(args)
             assert exc.value.code == 1
+
+    def test_batch_recursive_scanning(self) -> None:
+        sample_file = Path("sample_inverter_registers.xlsx")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            input_dir = os.path.join(temp_dir, "input")
+            sub_dir = os.path.join(input_dir, "subdir", "deep")
+            output_dir = os.path.join(temp_dir, "output")
+            os.makedirs(sub_dir)
+
+            dest_sample = os.path.join(sub_dir, "Huawei_SUN2000_inverter.xlsx")
+            with open(sample_file, "rb") as src, open(dest_sample, "wb") as dst:
+                dst.write(src.read())
+
+            args = argparse.Namespace(
+                input_dir=input_dir,
+                output_dir=output_dir,
+                protocol="modbusRTU",
+                category="Inverter",
+                manufacturer=None,
+                tag=False,
+                strict=False,
+                force=True,
+                report=None,
+                recursive=True,
+                jobs=1,
+            )
+            batch_command(args)
+            output_files = list(Path(output_dir).glob("*.csv"))
+            assert len(output_files) == 1
+
+    def test_batch_parallel_jobs(self) -> None:
+        sample_file = Path("sample_inverter_registers.xlsx")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            input_dir = os.path.join(temp_dir, "input")
+            output_dir = os.path.join(temp_dir, "output")
+            os.makedirs(input_dir)
+
+            for i in range(3):
+                dest = os.path.join(input_dir, f"SMA_STP{i}_inverter.xlsx")
+                with open(sample_file, "rb") as src, open(dest, "wb") as dst:
+                    dst.write(src.read())
+
+            args = argparse.Namespace(
+                input_dir=input_dir,
+                output_dir=output_dir,
+                protocol="modbusRTU",
+                category="Inverter",
+                manufacturer="SMA",
+                tag=False,
+                strict=False,
+                force=True,
+                report=None,
+                recursive=False,
+                jobs=3,
+            )
+            batch_command(args)
+            output_files = list(Path(output_dir).glob("*.csv"))
+            assert len(output_files) == 3
+
+    def test_batch_cli_recursive_and_jobs_flags(self) -> None:
+        sample_file = Path("sample_inverter_registers.xlsx")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            out_dir = os.path.join(temp_dir, "out")
+            main(
+                [
+                    "batch",
+                    str(sample_file),
+                    "-o",
+                    out_dir,
+                    "-r",
+                    "-j",
+                    "2",
+                    "--force",
+                ]
+            )
+            output_files = list(Path(out_dir).glob("*.csv"))
+            assert len(output_files) >= 1

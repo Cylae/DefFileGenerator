@@ -235,7 +235,7 @@ All code must pass static typing, linting, security scanning, and automated test
 
 ### Running Tests
 ```powershell
-# Run the complete test suite with coverage report (1,090 tests, 90% coverage):
+# Run the complete test suite with coverage report (1,093 tests, 90% coverage):
 uv run pytest --cov=DefFileGenerator --cov=web
 
 # Run fast targeted unit tests:
@@ -282,7 +282,7 @@ This repository is governed by the **Apollo-Standard Engineering Constitution** 
 ### Audit Ledgers in `docs/audit/`:
 - **`PLAN.md`**: Milestone tracking and task completion status.
 - **`REVIEW_MATRIX.md`**: LOC, risk classification, and test coverage per module.
-- **`FINDINGS.md`**: Root-cause defect ledger (FIND-001 through FIND-008).
+- **`FINDINGS.md`**: Root-cause defect ledger (FIND-001 through FIND-010).
 - **`VALIDATION.md`**: Output traces for all quality gates.
 - **`PERFORMANCE.md`**: Collection benchmarks (2.50s test collection) and profiling.
 - **`HANDOFF.md`**: Operational handoff instructions.

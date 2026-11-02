@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
-    // Tab Navigation
+    // Tab Navigation & Keyboard Accessibility
     // =========================================================================
     let libraryLoaded = false;
     const tabBindings = [
@@ -16,28 +16,122 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    tabBindings.forEach(({ btnId, paneId, onActivate }) => {
+    function activateTab(index) {
+        if (index < 0 || index >= tabBindings.length) return;
+        const target = tabBindings[index];
+        const btn = document.getElementById(target.btnId);
+        if (!btn) return;
+        tabBindings.forEach(other => {
+            const b = document.getElementById(other.btnId);
+            const p = document.getElementById(other.paneId);
+            if (b) {
+                if (b.classList) b.classList.remove('active');
+                if (b.setAttribute) {
+                    b.setAttribute('aria-selected', 'false');
+                    b.setAttribute('tabindex', '-1');
+                }
+            }
+            if (p && p.classList) {
+                p.classList.remove('active');
+                p.classList.add('hidden');
+            }
+        });
+        if (btn.classList) btn.classList.add('active');
+        if (btn.setAttribute) {
+            btn.setAttribute('aria-selected', 'true');
+            btn.setAttribute('tabindex', '0');
+        }
+        if (btn.focus) btn.focus();
+        const pane = document.getElementById(target.paneId);
+        if (pane && pane.classList) {
+            pane.classList.remove('hidden');
+            pane.classList.add('active');
+        }
+        if (target.onActivate) target.onActivate();
+    }
+
+    tabBindings.forEach(({ btnId }, idx) => {
         const btn = document.getElementById(btnId);
         if (!btn || !btn.addEventListener) return;
-        btn.addEventListener('click', () => {
-            tabBindings.forEach(other => {
-                const b = document.getElementById(other.btnId);
-                const p = document.getElementById(other.paneId);
-                if (b && b.classList) b.classList.remove('active');
-                if (p && p.classList) {
-                    p.classList.remove('active');
-                    p.classList.add('hidden');
-                }
-            });
-            if (btn.classList) btn.classList.add('active');
-            const pane = document.getElementById(paneId);
-            if (pane && pane.classList) {
-                pane.classList.remove('hidden');
-                pane.classList.add('active');
-            }
-            if (onActivate) onActivate();
-        });
+        btn.addEventListener('click', () => activateTab(idx));
     });
+
+    const navTabs = document.getElementById('navTabs');
+    if (navTabs && navTabs.addEventListener) {
+        navTabs.addEventListener('keydown', (e) => {
+            const activeIdx = tabBindings.findIndex(t => {
+                const b = document.getElementById(t.btnId);
+                return b && b.classList && b.classList.contains('active');
+            });
+            if (activeIdx === -1) return;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                if (e.preventDefault) e.preventDefault();
+                activateTab((activeIdx + 1) % tabBindings.length);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                if (e.preventDefault) e.preventDefault();
+                activateTab((activeIdx - 1 + tabBindings.length) % tabBindings.length);
+            } else if (e.key === 'Home') {
+                if (e.preventDefault) e.preventDefault();
+                activateTab(0);
+            } else if (e.key === 'End') {
+                if (e.preventDefault) e.preventDefault();
+                activateTab(tabBindings.length - 1);
+            }
+        });
+    }
+
+    // =========================================================================
+    // Utilities: Toast, Clipboard, and HTML Escaping
+    // =========================================================================
+    function showToast(message, type = 'info') {
+        const container = document.getElementById('toastContainer');
+        if (container && container.appendChild) {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => {
+                if (container.removeChild) {
+                    container.removeChild(toast);
+                }
+            }, 3500);
+        }
+        if (type === 'error' && typeof alert === 'function' && typeof window === 'undefined') {
+            alert(message);
+        }
+    }
+
+    async function copyToClipboard(text, successMsg = 'Copied to clipboard!') {
+        if (!text) return;
+        try {
+            if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+            }
+            showToast(successMsg, 'success');
+        } catch {
+            showToast('Unable to copy to clipboard', 'error');
+        }
+    }
+
+    function setupTableFilter(inputEl, tbodyEl) {
+        if (!inputEl || !inputEl.addEventListener || !tbodyEl) return;
+        inputEl.addEventListener('input', () => {
+            const q = inputEl.value.trim().toLowerCase();
+            const rows = tbodyEl.children || [];
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                if (!row) continue;
+                const text = (row.textContent || row.innerText || row.innerHTML || '').toLowerCase();
+                const visible = !q || text.includes(q);
+                if (row.style) {
+                    row.style.display = visible ? '' : 'none';
+                }
+                if (row.classList) {
+                    row.classList.toggle('hidden', !visible);
+                }
+            }
+        });
+    }
 
     function escapeHtml(str) {
         return String(str ?? '')
@@ -106,6 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerBadge = document.getElementById('registerBadge');
     const validBadge = document.getElementById('validBadge');
     const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const previewFilterInput = document.getElementById('previewFilterInput');
     const convertLabel = convertBtn.innerHTML;
 
     let selectedFile = null;
@@ -119,6 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsSection.classList.add('hidden');
         previewBody.innerHTML = '';
         downloadBtn.disabled = true;
+        if (copyBtn) copyBtn.disabled = true;
+        if (previewFilterInput) previewFilterInput.value = '';
     }
 
     function invalidateConversion() {
@@ -193,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) {
                     const errData = await response.json();
                     if (version !== requestVersion) return;
-                    alert(`Conversion Error: ${errData.detail || 'Unknown error'}`);
+                    showToast(`Conversion Error: ${errData.detail || 'Unknown error'}`, 'error');
                     return;
                 }
 
@@ -208,12 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 validBadge.classList.toggle('badge-success', data.is_valid === true);
                 validBadge.classList.toggle('badge-error', data.is_valid !== true);
                 downloadBtn.disabled = data.is_valid !== true;
+                if (copyBtn) copyBtn.disabled = data.is_valid !== true;
                 renderConvertPreview(data.preview || []);
                 resultsSection.classList.remove('hidden');
 
             } catch (err) {
                 if (version === requestVersion && err.name !== 'AbortError') {
-                    alert(`Network or Server Error: ${err.message}`);
+                    showToast(`Network or Server Error: ${err.message}`, 'error');
                 }
             } finally {
                 if (version === requestVersion) {
@@ -251,6 +350,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    if (copyBtn && copyBtn.addEventListener) {
+        copyBtn.addEventListener('click', () => {
+            if (!convertedCsvContent || copyBtn.disabled) return;
+            copyToClipboard(convertedCsvContent, 'Definition CSV copied to clipboard!');
+        });
+    }
+    setupTableFilter(previewFilterInput, previewBody);
+
     // =========================================================================
     // TAB 2: SunPM Tagger
     // =========================================================================
@@ -265,6 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagCountBadge = document.getElementById('tagCountBadge');
     const tagRegisterBadge = document.getElementById('tagRegisterBadge');
     const tagDownloadBtn = document.getElementById('tagDownloadBtn');
+    const tagCopyBtn = document.getElementById('tagCopyBtn');
+    const tagFilterInput = document.getElementById('tagFilterInput');
     const tagCategorySelect = document.getElementById('tagCategorySelect');
     const tagOverwriteCheck = document.getElementById('tagOverwriteCheck');
 
@@ -314,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) {
                     const errData = await response.json();
-                    alert(`Tagging Error: ${errData.detail || 'Failed to tag file'}`);
+                    showToast(`Tagging Error: ${errData.detail || 'Failed to tag file'}`, 'error');
                     return;
                 }
 
@@ -343,9 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
+                if (tagCopyBtn) tagCopyBtn.disabled = false;
                 if (tagResultsSection) tagResultsSection.classList.remove('hidden');
             } catch (err) {
-                alert(`Network or Server Error: ${err.message}`);
+                showToast(`Network or Server Error: ${err.message}`, 'error');
             } finally {
                 tagProcessBtn.disabled = false;
                 tagProcessBtn.textContent = 'Apply Canonical SunPM Tags';
@@ -359,6 +469,14 @@ document.addEventListener('DOMContentLoaded', () => {
             triggerDownload(taggedCsvContent, taggedFilename);
         });
     }
+
+    if (tagCopyBtn && tagCopyBtn.addEventListener) {
+        tagCopyBtn.addEventListener('click', () => {
+            if (!taggedCsvContent) return;
+            copyToClipboard(taggedCsvContent, 'Enriched CSV copied to clipboard!');
+        });
+    }
+    setupTableFilter(tagFilterInput, tagPreviewBody);
 
     // =========================================================================
     // TAB 3: Validator & Auditor
@@ -375,6 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const auditErrorsBadge = document.getElementById('auditErrorsBadge');
     const auditWarningsBadge = document.getElementById('auditWarningsBadge');
     const auditDownloadFixedBtn = document.getElementById('auditDownloadFixedBtn');
+    const auditCopyFixedBtn = document.getElementById('auditCopyFixedBtn');
     const auditIssuesList = document.getElementById('auditIssuesList');
     const auditStrictOverlapCheck = document.getElementById('auditStrictOverlapCheck');
     const auditAutoFixCheck = document.getElementById('auditAutoFixCheck');
@@ -423,7 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) {
                     const errData = await response.json();
-                    alert(`Audit Error: ${errData.detail || 'Audit failed'}`);
+                    showToast(`Audit Error: ${errData.detail || 'Audit failed'}`, 'error');
                     return;
                 }
 
@@ -492,14 +611,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     auditFixedCsvContent = fixedContent;
                     auditFixedFilename = data.filename ? `repaired_${data.filename}` : 'definition_repaired.csv';
                     if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.remove('hidden');
+                    if (auditCopyFixedBtn) auditCopyFixedBtn.classList.remove('hidden');
                 } else {
                     auditFixedCsvContent = null;
                     if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.add('hidden');
+                    if (auditCopyFixedBtn) auditCopyFixedBtn.classList.add('hidden');
                 }
 
                 if (auditResultsSection) auditResultsSection.classList.remove('hidden');
             } catch (err) {
-                alert(`Network or Server Error: ${err.message}`);
+                showToast(`Network or Server Error: ${err.message}`, 'error');
             } finally {
                 auditProcessBtn.disabled = false;
                 auditProcessBtn.textContent = 'Audit Definition';
@@ -511,6 +632,13 @@ document.addEventListener('DOMContentLoaded', () => {
         auditDownloadFixedBtn.addEventListener('click', () => {
             if (!auditFixedCsvContent) return;
             triggerDownload(auditFixedCsvContent, auditFixedFilename);
+        });
+    }
+
+    if (auditCopyFixedBtn && auditCopyFixedBtn.addEventListener) {
+        auditCopyFixedBtn.addEventListener('click', () => {
+            if (!auditFixedCsvContent) return;
+            copyToClipboard(auditFixedCsvContent, 'Repaired CSV copied to clipboard!');
         });
     }
 

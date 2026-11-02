@@ -25,7 +25,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Added
 
-- **`deffilegen batch` High-Throughput CLI Subcommand**: Converts entire directories of mixed manufacturer documents (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`) with metadata auto-inference, SunPM tagging (`--tag`), strict schema validation (`--strict`), overwrite protection (`--force`), and aggregated Markdown reporting (`--report`).
+- **`deffilegen batch` High-Throughput CLI Subcommand**: Converts entire directories of mixed manufacturer documents (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`) with metadata auto-inference, recursive scanning (`--recursive` / `-r`), multi-threaded parallel worker execution (`--jobs` / `-j`), SunPM tagging (`--tag`), strict schema validation (`--strict`), overwrite protection (`--force`), and aggregated Markdown reporting (`--report`).
+- **Pydantic v2 Response Models in `web/app.py`**: Fully typed request/response contracts (`HealthResponse`, `ValidationIssueItem`, `ConvertResponse`, `ValidateResponse`, `TagResponse`, `AuditResponse`, `LibraryItem`) generating comprehensive, interactive OpenAPI / Swagger documentation (`/docs` and `/redoc`).
+- **Web Studio UX & Accessibility Enhancements**: Integrated non-blocking toast notifications (`showToast`), one-click clipboard copy buttons for definition CSVs, live table search filters for preview tables, full W3C ARIA tab pattern implementation (`role="tablist"`, `role="tab"`, `role="tabpanel"`), and keyboard arrow navigation.
 - **Filename Metadata Auto-Inference Engine**: Token-based entity detection in `DefFileGenerator/main.py` resolving 60+ manufacturers and equipment categories (`Inverter`, `Meter`, `Sensor`, `Battery`, `Communication`, `Io`) with zero substring collisions (e.g. `pyranometer` vs `meter`).
 - **Industrial Web Studio v0.3.0 (`web/static/`)**: Modernized 4-tab interface:
   - Tab 1: **Convert Datasheet** (drag-and-drop ingestion, live preview, export)

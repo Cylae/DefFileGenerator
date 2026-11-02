@@ -381,8 +381,8 @@ The command-line suite offers 10 unified subcommands:
 # 1. Complete end-to-end workflow (Extract + Generate + Validate)
 deffilegen run "datasheet.pdf" --manufacturer "Huawei" --model "SUN2000-50KTL" -o huawei.csv
 
-# 2. Batch process an entire directory of documents with auto-metadata inference
-deffilegen batch datasheets_folder/ -o generated_defs/ --tag --report batch_report.md
+# 2. Batch process an entire directory (supports recursive discovery and parallel multi-worker jobs)
+deffilegen batch datasheets_folder/ -o generated_defs/ --recursive --jobs 4 --tag --report batch_report.md
 
 # 3. Extract registers to an intermediate raw CSV
 deffilegen extract "register_map.xlsx" --sheet "Holding Registers" -o raw_registers.csv
@@ -410,6 +410,8 @@ deffilegen train --dir Definitions/ --summary --export-json learned_knowledge.js
 ```
 
 #### Helpful CLI Flags:
+- `-r` or `--recursive` : Recursively scan directories for nested register map files in batch mode.
+- `-j` or `--jobs N` : Number of parallel worker threads for batch processing (default: 1).
 - `--pages 12,14-18` : Target specific register table pages in a large manual.
 - `--sheet "Registers"` : Target a specific worksheet inside an Excel workbook.
 - `--mapping custom.json` : Supply explicit column mapping overrides.

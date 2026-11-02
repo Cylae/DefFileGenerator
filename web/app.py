@@ -22,6 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import FileResponse, JSONResponse  # noqa: E402
 from fastapi.routing import APIRoute  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
+from pydantic import BaseModel  # noqa: E402
 from starlette.exceptions import HTTPException as StarletteHTTPException  # noqa: E402
 from starlette.formparsers import MultiPartException  # noqa: E402
 from starlette.types import ASGIApp, Message, Receive, Scope, Send  # noqa: E402
@@ -145,6 +146,79 @@ app.add_middleware(
 )
 
 
+class HealthResponse(BaseModel):
+    status: str
+    version: str
+
+
+class ValidationIssueItem(BaseModel):
+    line: int
+    severity: str
+    code: str
+    field: str
+    message: str
+
+
+class ConvertResponse(BaseModel):
+    success: bool
+    is_valid: bool
+    filename: str
+    register_count: int
+    extracted_count: int
+    preview: list[dict[str, Any]]
+    csv_content: str
+    issues: list[ValidationIssueItem]
+    stats: dict[str, Any]
+
+
+class ValidateResponse(BaseModel):
+    filename: str
+    valid: bool
+    register_count: int
+    issues: list[ValidationIssueItem]
+    stats: dict[str, Any]
+
+
+class TagResponse(BaseModel):
+    success: bool
+    filename: str
+    tags_updated: int
+    updated_count: int
+    register_count: int
+    total_registers: int
+    preview: list[dict[str, Any]]
+    csv_content: str
+    stats: dict[str, Any]
+
+
+class AuditResponse(BaseModel):
+    success: bool
+    filename: str
+    valid: bool
+    is_valid: bool
+    register_count: int
+    stats: dict[str, Any]
+    error_count: int
+    warning_count: int
+    info_count: int
+    errors: list[dict[str, Any]]
+    warnings: list[dict[str, Any]]
+    infos: list[dict[str, Any]]
+    issues: list[dict[str, Any]]
+    fix_applied: dict[str, Any] | None = None
+    csv_content: str | None = None
+    fixed_csv_content: str | None = None
+
+
+class LibraryItem(BaseModel):
+    filename: str
+    prefix: str
+    category: str
+    manufacturer: str
+    model: str
+    size_kb: float
+
+
 async def _save_upload(file: UploadFile, destination: str) -> None:
     """Persist an upload in bounded chunks and reject oversized payloads."""
     total = 0
@@ -165,12 +239,12 @@ async def _save_upload(file: UploadFile, destination: str) -> None:
         await file.close()
 
 
-@app.get("/api/health")
-def health_check() -> dict[str, str]:
-    return {"status": "ok", "version": __version__}
+@app.get("/api/health", response_model=HealthResponse)
+def health_check() -> HealthResponse:
+    return HealthResponse(status="ok", version=__version__)
 
 
-@app.post("/api/convert")
+@app.post("/api/convert", response_model=ConvertResponse)
 async def convert_file(
     file: UploadFile = File(...),
     manufacturer: str = Form("Manufacturer"),
@@ -179,7 +253,7 @@ async def convert_file(
     category: str = Form("Inverter"),
     address_offset: int = Form(0),
     forced_write: str = Form(""),
-) -> Any:
+) -> ConvertResponse:
     """Converts an uploaded documentation file (PDF, Excel, CSV, XML) to a WebdynSunPM definition CSV."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
@@ -215,7 +289,7 @@ async def convert_file(
             address_offset,
             forced_write,
         )
-        return JSONResponse(content=result)
+        return ConvertResponse(**result)
 
 
 def _convert_document(
@@ -369,8 +443,8 @@ def _validate_document(input_path: str, safe_filename: str) -> dict[str, Any]:
     }
 
 
-@app.post("/api/validate")
-async def validate_file(file: UploadFile = File(...)) -> Any:
+@app.post("/api/validate", response_model=ValidateResponse)
+async def validate_file(file: UploadFile = File(...)) -> ValidateResponse:
     """Validates an uploaded WebdynSunPM CSV definition file."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
@@ -391,7 +465,7 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
         await _save_upload(file, input_path)
 
         result = await run_in_threadpool(_validate_document, input_path, safe_filename)
-        return JSONResponse(content=result)
+        return ValidateResponse(**result)
 
 
 def _tag_document(
@@ -503,13 +577,13 @@ def _audit_document(
     return result
 
 
-@app.post("/api/tag")
+@app.post("/api/tag", response_model=TagResponse)
 async def tag_file(
     file: UploadFile = File(...),
     category: str = Form(""),
     overwrite: bool = Form(False),
     normalize_legacy: bool = Form(True),
-) -> Any:
+) -> TagResponse:
     """Enriches an uploaded definition CSV with canonical SunPM tags."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
@@ -537,15 +611,15 @@ async def tag_file(
             overwrite,
             normalize_legacy,
         )
-        return JSONResponse(content=result)
+        return TagResponse(**result)
 
 
-@app.post("/api/audit")
+@app.post("/api/audit", response_model=AuditResponse)
 async def audit_file(
     file: UploadFile = File(...),
     strict_overlap: bool = Form(False),
     auto_fix: bool = Form(False),
-) -> Any:
+) -> AuditResponse:
     """Audits an uploaded definition CSV for syntax, address overlaps, and SunPM tag compliance."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
@@ -572,17 +646,17 @@ async def audit_file(
             strict_overlap,
             auto_fix,
         )
-        return JSONResponse(content=result)
+        return AuditResponse(**result)
 
 
-@app.get("/api/library")
-def get_library() -> list[dict[str, Any]]:
+@app.get("/api/library", response_model=list[LibraryItem])
+def get_library() -> list[LibraryItem]:
     """Returns the catalog of 125 pre-validated industrial definitions."""
     definitions_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
     if not os.path.exists(definitions_dir):
         return []
 
-    catalog: list[dict[str, Any]] = []
+    catalog: list[LibraryItem] = []
     category_map = {
         "INV": "Inverter",
         "MET": "Meter",
@@ -603,14 +677,14 @@ def get_library() -> list[dict[str, Any]]:
         size_bytes = os.path.getsize(filepath)
 
         catalog.append(
-            {
-                "filename": entry,
-                "prefix": prefix,
-                "category": cat,
-                "manufacturer": mfg,
-                "model": model,
-                "size_kb": round(size_bytes / 1024, 1),
-            }
+            LibraryItem(
+                filename=entry,
+                prefix=prefix,
+                category=cat,
+                manufacturer=mfg,
+                model=model,
+                size_kb=round(size_bytes / 1024, 1),
+            )
         )
     return catalog
 

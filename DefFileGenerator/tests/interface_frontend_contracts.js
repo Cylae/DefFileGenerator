@@ -9,16 +9,23 @@ class Element {
         this.classes = new Set();
         this.children = [];
         this._innerHTML = 'Convert';
-        this.textContent = '';
+        this._textContent = '';
         this.value = '';
         this.disabled = false;
         this.checked = false;
+        this.style = {};
         this.classList = {
             add: value => this.classes.add(value),
             remove: value => this.classes.delete(value),
             toggle: (value, enabled) => enabled ? this.classes.add(value) : this.classes.delete(value),
             contains: value => this.classes.has(value),
         };
+    }
+    get textContent() {
+        return this._textContent || this._innerHTML.replace(/<[^>]+>/g, ' ');
+    }
+    set textContent(value) {
+        this._textContent = value;
     }
     get innerHTML() { return this._innerHTML; }
     set innerHTML(value) {
@@ -43,9 +50,16 @@ function application() {
     };
     const blobs = [];
     const alerts = [];
+    const copied = [];
+    const timers = [];
     const context = {
         AbortController, Blob,
         FormData: class { append() {} },
+        navigator: {
+            clipboard: {
+                writeText: async text => { copied.push(text); }
+            }
+        },
         document: {
             getElementById: element,
             addEventListener: (_, callback) => callback(),
@@ -54,11 +68,14 @@ function application() {
         },
         URL: { createObjectURL: blob => { blobs.push(blob); return 'blob:test'; }, revokeObjectURL() {} },
         alert: value => alerts.push(value),
-        setTimeout: callback => callback(),
+        setTimeout: (callback, delay) => {
+            if (!delay) callback();
+            else timers.push(callback);
+        },
         fetch: async () => { throw new Error('No response configured'); },
     };
     vm.runInNewContext(fs.readFileSync(process.argv[2], 'utf8'), context);
-    return { element, context, blobs, alerts };
+    return { element, context, blobs, alerts, copied, timers };
 }
 
 function selectFile(app) {
@@ -86,6 +103,17 @@ async function main() {
     assert.match(app.element('previewBody').children[0].innerHTML, /<code>0<\/code>/);
     app.element('downloadBtn').fire('click');
     assert.deepEqual(Array.from(new Uint8Array(await app.blobs[0].arrayBuffer())).slice(0, 3), [239, 187, 191]);
+
+    // Clipboard and filter checks on Convert tab
+    await app.element('copyBtn').fire('click');
+    await new Promise(r => setImmediate(r));
+    assert.equal(app.copied.length >= 1, true);
+    assert.match(app.copied[0], /modbusRTU/);
+    assert.equal(app.element('toastContainer').children.length >= 1, true);
+
+    app.element('previewFilterInput').value = 'script';
+    app.element('previewFilterInput').fire('input');
+    assert.equal(app.element('previewBody').children[0].classList.contains('hidden'), false);
 
     app.context.fetch = async () => response({ ...validResult, is_valid: false });
     await app.element('convertBtn').fire('click');
@@ -123,6 +151,14 @@ async function main() {
     assert.equal(app.element('tab-tag').classList.contains('active'), true);
     assert.equal(app.element('tab-convert').classList.contains('hidden'), true);
 
+    // Keyboard navigation: ArrowRight moves from tab-tag to tab-audit
+    app.element('navTabs').fire('keydown', { key: 'ArrowRight', preventDefault: () => {} });
+    assert.equal(app.element('tabBtnAudit').classList.contains('active'), true);
+    assert.equal(app.element('tab-audit').classList.contains('active'), true);
+
+    // Switch back to tag tab for tagger tests
+    app.element('tabBtnTag').fire('click');
+
     // 3. SunPM Tagger Tab Flow
     app.element('tagFileInput').fire('change', { target: { files: [{ name: 'inverter.csv', size: 1024 }] } });
     assert.equal(app.element('tagProcessBtn').disabled, false);
@@ -138,6 +174,9 @@ async function main() {
     assert.equal(app.element('tagCountBadge').textContent, '15 tags updated');
     assert.equal(app.element('tagRegisterBadge').textContent, '50 registers');
     assert.equal(app.element('tagResultsSection').classList.contains('hidden'), false);
+    await app.element('tagCopyBtn').fire('click');
+    await new Promise(r => setImmediate(r));
+    assert.equal(app.copied.includes('sample_csv'), true);
 
     // 4. Auditor Tab Flow (Errors & Fix applied)
     app.element('tabBtnAudit').fire('click');
@@ -164,7 +203,11 @@ async function main() {
     assert.equal(app.element('auditErrorsBadge').textContent, '2 errors');
     assert.equal(app.element('auditWarningsBadge').textContent, '1 warnings');
     assert.equal(app.element('auditDownloadFixedBtn').classList.contains('hidden'), false);
+    assert.equal(app.element('auditCopyFixedBtn').classList.contains('hidden'), false);
     assert.equal(app.element('auditIssuesList').children.length, 3);
+    await app.element('auditCopyFixedBtn').fire('click');
+    await new Promise(r => setImmediate(r));
+    assert.equal(app.copied.includes('repaired_csv_content'), true);
 
     // 5. Equipment Library Flow (Tab 4)
     const sampleLibrary = [

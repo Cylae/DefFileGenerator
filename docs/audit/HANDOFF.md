@@ -8,12 +8,12 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 - **Working Tree**: `C:\Users\Cylae\Documents\GitHub\DefFileGenerator`
 - **Active Release**: v0.3.0 (single source of truth in `DefFileGenerator/_version.py`)
 - **Verification Summary**:
-  - **1,090 tests collected in 2.50s** (1,089 passed, 1 skipped cleanly due to live intranet share requirement).
+  - **1,093 tests collected in 0.82s** (1,092 passed, 1 skipped cleanly due to live intranet share requirement).
   - **90% overall statement coverage** (Core `def_gen.py` at **97%**, `report_generator.py` at **98%**, `knowledge_miner.py` at **93%**, `extractor.py` at **92%**, `web/app.py` at **92%**, `main.py` at **91%**, `mars_generator.py` at **89%**, `io_utils.py` at **100%**).
   - **0 Ruff lint errors** across all 138 repository files.
   - **0 Mypy type issues** across 102 source files.
-  - **0 Bandit security vulnerabilities** across 23,748 lines of code.
-  - **Node.js Frontend Contract Suite**: 100% passing contract tests asserting DOM state updates across all 4 Web Studio tabs.
+  - **0 Bandit security vulnerabilities** across 23,949 lines of code.
+  - **Node.js Frontend Contract Suite**: 100% passing contract tests asserting DOM state updates, toasts, copy actions, filters, and keyboard navigation across all 4 Web Studio tabs.
   - **Torture & Gigantic Stress Batteries**: Executed and passing (5,000-row CSV generation in 0.269s, 12,000 type conversions in 0.0011s, XXE defended).
   - **Industrial Equipementiers Battery**: 45 real-world files from 20+ vendors tested (7,949 registers extracted with 0 unhandled exceptions).
   - **Huawei & ABB Battery**: 35 production manufacturer documents tested (33 valid definitions generated, 2 image/empty PDFs safely caught).
@@ -53,6 +53,17 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 7. **FIND-008 (Resolved): Orphan Legacy Prototype Cleanup**:
    - *Problem*: Dead prototype script `gen_mars_defs.py` (611 lines) in repository root.
    - *Fix*: Verified zero dependencies/callers and safely removed the file.
+
+8. **FIND-009 (Resolved): Batch CLI Recursive Scanning and Parallel Workers**:
+   - *Problem*: `deffilegen batch` only processed top-level files serially.
+   - *Fix*: Added `--recursive` / `-r` flag for nested folder traversal and `--jobs` / `-j` flag for multi-threaded parallel document conversion via `concurrent.futures.ThreadPoolExecutor`. Guarded by unit tests in `test_batch_cli.py`.
+
+9. **FIND-010 (Resolved): Explicit Pydantic v2 Response Models in Web API**:
+   - *Problem*: Web endpoints returned raw untyped dictionaries, producing empty/untyped OpenAPI response schemas.
+   - *Fix*: Introduced explicit Pydantic response models (`HealthResponse`, `ValidationIssueItem`, `ConvertResponse`, `ValidateResponse`, `TagResponse`, `AuditResponse`, `LibraryItem`) with `response_model=` decorators, generating full interactive OpenAPI specifications at `/docs`.
+
+10. **Web Studio UX & Accessibility Hardening**:
+    - *Improvements*: Non-intrusive toast notifications (`showToast`), one-click clipboard copy buttons, live table row filtering, and W3C ARIA Tab pattern compliance with keyboard navigation (`ArrowRight`, `ArrowLeft`, `Home`, `End`). Verified by Node.js contract suite.
 
 ---
 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+    <div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
     <header class="app-header">
         <div class="logo">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -17,17 +18,17 @@
 
     <main class="container">
         <!-- Tab Navigation Bar -->
-        <nav class="nav-tabs" id="navTabs">
-            <button class="nav-tab active" id="tabBtnConvert" data-tab="tab-convert">📁 Convert Datasheet</button>
-            <button class="nav-tab" id="tabBtnTag" data-tab="tab-tag">🏷️ SunPM Tagger</button>
-            <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit">🛡️ Validator & Auditor</button>
-            <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library">📚 Equipment Library (125)</button>
+        <nav class="nav-tabs" id="navTabs" role="tablist" aria-label="Studio Modules">
+            <button class="nav-tab active" id="tabBtnConvert" data-tab="tab-convert" role="tab" aria-selected="true" aria-controls="tab-convert" tabindex="0">📁 Convert Datasheet</button>
+            <button class="nav-tab" id="tabBtnTag" data-tab="tab-tag" role="tab" aria-selected="false" aria-controls="tab-tag" tabindex="-1">🏷️ SunPM Tagger</button>
+            <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit" role="tab" aria-selected="false" aria-controls="tab-audit" tabindex="-1">🛡️ Validator & Auditor</button>
+            <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library" role="tab" aria-selected="false" aria-controls="tab-library" tabindex="-1">📚 Equipment Library (125)</button>
         </nav>
 
         <!-- ======================================================== -->
         <!-- TAB 1: CONVERT DATASHEET                                 -->
         <!-- ======================================================== -->
-        <div id="tab-convert" class="tab-pane active">
+        <div id="tab-convert" class="tab-pane active" role="tabpanel" aria-labelledby="tabBtnConvert">
             <section class="card upload-card">
                 <h2>1. Upload Register Map</h2>
                 <p class="subtitle">Supports PDF datasheets, Excel workbooks (.xlsx, .xlsm), CSV maps, or XML files.</p>
@@ -95,10 +96,16 @@
                         <span id="registerBadge" class="badge">0 registers</span>
                         <span id="validBadge" class="badge badge-success">Valid</span>
                     </div>
-                    <button id="downloadBtn" class="btn btn-success">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download Definition CSV
-                    </button>
+                    <div class="header-actions">
+                        <input type="text" id="previewFilterInput" class="filter-input" placeholder="🔍 Filter registers...">
+                        <button id="copyBtn" class="btn btn-secondary" title="Copy CSV to clipboard">
+                            📋 Copy CSV
+                        </button>
+                        <button id="downloadBtn" class="btn btn-success">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Definition CSV
+                        </button>
+                    </div>
                 </div>
 
                 <div class="table-wrapper">
@@ -125,7 +132,7 @@
         <!-- ======================================================== -->
         <!-- TAB 2: SUNPM TAGGER                                      -->
         <!-- ======================================================== -->
-        <div id="tab-tag" class="tab-pane hidden">
+        <div id="tab-tag" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnTag">
             <section class="card">
                 <h2>Enrich Definition with Official Webdyn SunPM Tags</h2>
                 <p class="subtitle">Maps vendor registers to canonical SunPM supervisory tags (P_AC, Q_AC, E_TOT, U_AC_1...) based on a 211,000+ register training dataset.</p>
@@ -174,10 +181,16 @@
                         <span id="tagCountBadge" class="badge badge-success">0 tags updated</span>
                         <span id="tagRegisterBadge" class="badge">0 registers</span>
                     </div>
-                    <button id="tagDownloadBtn" class="btn btn-success">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download Enriched CSV
-                    </button>
+                    <div class="header-actions">
+                        <input type="text" id="tagFilterInput" class="filter-input" placeholder="🔍 Filter tagged registers...">
+                        <button id="tagCopyBtn" class="btn btn-secondary" title="Copy Enriched CSV to clipboard">
+                            📋 Copy CSV
+                        </button>
+                        <button id="tagDownloadBtn" class="btn btn-success">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Enriched CSV
+                        </button>
+                    </div>
                 </div>
                 <div class="table-wrapper">
                     <table id="tagPreviewTable">
@@ -200,7 +213,7 @@
         <!-- ======================================================== -->
         <!-- TAB 3: VALIDATOR & AUDITOR                               -->
         <!-- ======================================================== -->
-        <div id="tab-audit" class="tab-pane hidden">
+        <div id="tab-audit" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnAudit">
             <section class="card">
                 <h2>Definition Compliance & Overlap Auditor</h2>
                 <p class="subtitle">Audits definition CSVs for Modbus address collisions, data type semantics, scaling sanity, and SunPM tag density.</p>
@@ -246,10 +259,15 @@
                         <span id="auditErrorsBadge" class="badge badge-error hidden">0 errors</span>
                         <span id="auditWarningsBadge" class="badge badge-warning hidden">0 warnings</span>
                     </div>
-                    <button id="auditDownloadFixedBtn" class="btn btn-success hidden">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download Repaired CSV
-                    </button>
+                    <div class="header-actions">
+                        <button id="auditCopyFixedBtn" class="btn btn-secondary hidden" title="Copy Repaired CSV to clipboard">
+                            📋 Copy Repaired CSV
+                        </button>
+                        <button id="auditDownloadFixedBtn" class="btn btn-success hidden">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Repaired CSV
+                        </button>
+                    </div>
                 </div>
                 <div id="auditIssuesList" class="audit-issues"></div>
             </section>
@@ -258,7 +276,7 @@
         <!-- ======================================================== -->
         <!-- TAB 4: EQUIPMENT LIBRARY                                 -->
         <!-- ======================================================== -->
-        <div id="tab-library" class="tab-pane hidden">
+        <div id="tab-library" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnLibrary">
             <section class="card">
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>

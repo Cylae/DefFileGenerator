@@ -19,6 +19,10 @@ class TestWebBackend(unittest.TestCase):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("WebdynSunPM", response.text)
+        self.assertIn("toastContainer", response.text)
+        self.assertIn("copyBtn", response.text)
+        self.assertIn("previewFilterInput", response.text)
+        self.assertIn('role="tablist"', response.text)
 
     def test_convert_valid_csv_upload(self):
         csv_content = (
