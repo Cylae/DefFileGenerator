@@ -13,21 +13,17 @@ import logging
 import os
 import re
 import sys
-import time
 from pathlib import Path
 
 # Add project root
 WORKSPACE_DIR = Path(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 sys.path.insert(0, str(WORKSPACE_DIR))
 
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator  # noqa: E402
+from DefFileGenerator.def_gen import Generator  # noqa: E402
 from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
 from DefFileGenerator.knowledge_miner import (  # noqa: E402
-    clean_variable_key,
     get_active_knowledge,
     infer_sunpm_tag,
-    is_canonical_sunpm_tag,
-    load_dataset_knowledge,
     normalize_tag_to_sunpm,
 )
 
@@ -258,7 +254,7 @@ for l_csv in local_csvs:
     target_path = OUTPUT_DIR / target_name
     try:
         # Strictly open read-only
-        with open(l_csv, "r", encoding="utf-8-sig", errors="ignore") as f:
+        with open(l_csv, encoding="utf-8-sig", errors="ignore") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader, None)
             if not header:
@@ -307,7 +303,7 @@ for s_csv in share_csvs:
         mfg = rel_parts[0] if len(rel_parts) > 1 else "Generic"
 
         # Strictly open read-only
-        with open(s_csv, "r", encoding="utf-8-sig", errors="ignore") as f:
+        with open(s_csv, encoding="utf-8-sig", errors="ignore") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader, None)
             if not header or len(header) < 2 or not any(header):
@@ -566,7 +562,7 @@ for g_file in sorted(gen_defs_dir.glob("*.csv")):
         continue
     target_path = OUTPUT_DIR / target_name
     try:
-        with open(g_file, "r", encoding="utf-8-sig", errors="ignore") as f:
+        with open(g_file, encoding="utf-8-sig", errors="ignore") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader, None)
             if not header or len(header) < 2:
@@ -616,7 +612,7 @@ for fname, cat in fox_files:
     if src_f.exists():
         target_f = OUTPUT_DIR / fname
         try:
-            with open(src_f, "r", encoding="utf-8-sig", errors="ignore") as f:
+            with open(src_f, encoding="utf-8-sig", errors="ignore") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
                 rows = list(reader)
@@ -656,7 +652,7 @@ for fpath in all_final:
     report = generator.validate_csv_detailed(str(fpath), strict=False, strict_overlap=False)
     if not report.is_valid:
         invalid_count += 1
-    with open(fpath, "r", encoding="utf-8-sig", errors="ignore") as fp:
+    with open(fpath, encoding="utf-8-sig", errors="ignore") as fp:
         rdr = csv.reader(fp, delimiter=";")
         next(rdr, None)
         for r in rdr:

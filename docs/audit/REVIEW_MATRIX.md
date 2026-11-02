@@ -1,0 +1,17 @@
+# Apollo-Standard Review Matrix: DefFileGenerator
+
+| Subsystem / Path | LOC | Classification | Primary Responsibilities | Hazards Audited | Verification Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `DefFileGenerator/def_gen.py` | ~2,250 | First-party Core | Webdyn definition generation, CSV formatting, address overlap detection, 6-decimal scaling, Modbus validation | Address collisions, bit-level overlap, formula injection, non-finite floats, encoding issues | Unit & property tests in `test_def_gen*.py`, `test_overlap*.py`, `test_adversarial*.py` |
+| `DefFileGenerator/extractor.py` | ~1,900 | First-party Core | Lazy generator extracting tabular register maps from PDF, XLSX, XLSM, CSV, XML | Malformed documents, zip bombs, memory exhaustion, unclosed file handles, encoding mismatches | `test_extractor*.py`, `test_bombs.py`, `test_source_fixes_deep.py` |
+| `DefFileGenerator/knowledge_miner.py` | ~1,450 | First-party Core | Semantic canonical tag matching, normalization from 211,000+ register database | Disambiguation errors, duplicate canonical tags, phase confusion, false semantic inferences | `test_sunpm_tags.py`, `test_dataset_learning_and_audit.py`, `test_coverage_wave28.py` |
+| `DefFileGenerator/mars_generator.py` | ~940 | First-party Domain | Specialized definition suite for Mars Energy Local Controller V7.0 BESS | Slave address shifts, cell offset calculations, write command codes | `test_mars_and_r_and_d_battery.py`, `test_mars_requested_definitions.py` |
+| `DefFileGenerator/report_generator.py` | ~590 | First-party Tooling | Quality audits, coverage statistics, and validation reporting | Invalid JSON generation, division by zero on empty sets | `test_report_generator.py`, `test_coverage_wave29*.py` |
+| `DefFileGenerator/main.py` | ~500 | First-party Interface | CLI entry point, batch processing, argument parsing | CLI injection, exit code propagation, missing file handling | `test_cli*.py`, `test_api_contracts.py` |
+| `DefFileGenerator/gui.py` | ~2,150 | First-party Interface | CustomTkinter GUI for desktop users | Thread blocking, race conditions during long-running extractions, UI crashes | `test_gui.py` |
+| `DefFileGenerator/io_utils.py` | ~50 | First-party Utility | Safe file previews, path manipulation | Directory traversal, symlink hijacking | `test_io_utils.py` |
+| `web/app.py` | ~415 | First-party Interface | FastAPI REST API (`/api/convert`, `/api/validate`) | Multipart upload exhaustion, unauthenticated file writes, cross-site leaks | `test_web*.py`, `test_web_concurrency.py`, `test_adversarial_security.py` |
+| `web/static/` | ~600 | First-party Frontend | SPA frontend (HTML/CSS/JS) | XSS via register names, UI state synchronization | Browser tests, static analysis |
+| `build_exe.py` & `.spec` | ~300 | First-party Build | PyInstaller packaging for Windows executable | Missing binary dependencies, manifest corruption | `test_build_exe.py`, `test_packaging_and_entrypoints.py` |
+| `scratch/` | ~1,200 | Scratch / R&D | Analysis scripts & experimental benchmarks | Linter violations, unhandled exceptions | Excluded from release wheel; covered in audit |
+

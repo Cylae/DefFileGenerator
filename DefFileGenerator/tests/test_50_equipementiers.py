@@ -19,11 +19,17 @@ from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
 
 DEFAULT_EQUIPEMENTIERS_DIR = r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers"
+LOCAL_EQUIPEMENTIERS_DIR = r"G:\My Drive\08092026\Equipementiers"
 EQUIPEMENTIERS_DIR = os.environ.get(
     "EQUIPEMENTIERS_DIR",
-    DEFAULT_EQUIPEMENTIERS_DIR
-    if os.path.exists(DEFAULT_EQUIPEMENTIERS_DIR)
-    else r"G:\My Drive\08092026\Equipementiers",
+    LOCAL_EQUIPEMENTIERS_DIR
+    if os.path.exists(LOCAL_EQUIPEMENTIERS_DIR)
+    else (
+        DEFAULT_EQUIPEMENTIERS_DIR
+        if os.environ.get("ENABLE_NETWORK_SHARE_TESTS") == "1"
+        and os.path.exists(DEFAULT_EQUIPEMENTIERS_DIR)
+        else DEFAULT_EQUIPEMENTIERS_DIR
+    ),
 )
 
 DOCS_52 = [

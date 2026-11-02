@@ -211,8 +211,11 @@ def test_auto_fix_definition_legacy_to_canonical(tmp_path: Path):
 
 
 @pytest.mark.skipif(
-    not os.path.exists(DEFAULT_EQUIPEMENTIERS_DIR),
-    reason=f"Network share not accessible: {DEFAULT_EQUIPEMENTIERS_DIR}",
+    os.environ.get("ENABLE_NETWORK_SHARE_TESTS") != "1"
+    and not (
+        os.environ.get("EQUIPEMENTIERS_DIR") and os.path.exists(os.environ["EQUIPEMENTIERS_DIR"])
+    ),
+    reason=f"Network share not accessible or disabled: {DEFAULT_EQUIPEMENTIERS_DIR}",
 )
 def test_real_world_definitions_audit_from_share():
     """Audits real definition files from diverse manufacturers on the network share."""
