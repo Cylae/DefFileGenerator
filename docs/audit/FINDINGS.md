@@ -34,3 +34,26 @@
 - **Expected Behavior**: Clean diagnostics or non-blocking behavior when network loopback is unavailable.
 - **Remediation**: Document the requirement for Windows loopback socket permissions, and provide fallback or explicit test tagging for web endpoints requiring loopback transport.
 
+
+### FIND-004: Version string hardcoded in five places and drifted from pyproject (0.2.1 vs 0.3.0)
+- **Severity**: MEDIUM
+- **Component**: `DefFileGenerator/main.py`, `gui.py`, `web/app.py` (OpenAPI + `/api/health`), tests
+- **Trigger**: `deffilegen --version`, `/api/health`, OpenAPI docs reported 0.2.1 while the package is 0.3.0; baseline `test_package_metadata` failed.
+- **Root Cause**: No single source of truth for the version.
+- **Fix**: `DefFileGenerator/_version.py` is the only definition; CLI, GUI, web and `__init__` import it. Tests derive the expected value from it.
+- **Regression**: `tests/test_version_consistency.py` (pyproject == package == web; fails if a stale literal returns; verified by reverting `web/app.py`).
+- **Status**: RESOLVED
+
+### FIND-005: Mars definitions test regenerated committed fixtures in place
+- **Severity**: LOW
+- **Component**: `tests/test_mars_requested_definitions.py`
+- **Trigger**: Running the suite rewrote 10 tracked `generated_definitions/*.csv` (LF in git, CRLF from the generator), dirtying the working tree.
+- **Fix**: Regenerate into a `TemporaryDirectory`; fall back to committed files only when the source workbook is absent.
+- **Status**: RESOLVED (open follow-up: no `.gitattributes`, so committed LF vs generated CRLF is undecided; needs a product decision on the canonical line ending)
+
+### FIND-006: Vacuous batch skip-existing test leaked output into the repo
+- **Severity**: LOW
+- **Component**: `tests/test_coverage_wave31_cli_and_reports.py::test_batch_command_skip_existing_and_exceptions`
+- **Root Cause**: Namespace used `output=` but `batch_command` reads `output_dir`, so the pre-created file was never consulted and `generated_definitions/huawei_sun2000_definition.csv` was written to the CWD.
+- **Fix**: Use `output_dir=`; the skip-existing assertion now actually exercises the code path.
+- **Status**: RESOLVED

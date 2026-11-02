@@ -10,6 +10,7 @@ Unit and integration tests for Mars Renewable regenerated definition files:
 """
 
 import csv
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -32,19 +33,32 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
     meter_file: Path
     pv_file: Path
 
+    gen_dir: Path
+    _tmp: tempfile.TemporaryDirectory[str] | None = None
+
     @classmethod
     def setUpClass(cls) -> None:
         cls.generator = Generator()
-        cls.lc_file = GEN_DIR / "MarsRenewable_LocalControler.csv"
-        cls.pcs_bank_file = GEN_DIR / "MarsRenewable_PCS-Bank-Rack.csv"
-        cls.rack_cell_file = GEN_DIR / "MarsRenewable_Rack-Cell.csv"
-        cls.lc_ac_file = GEN_DIR / "MarsRenewable_LC-AC.csv"
-        cls.meter_file = GEN_DIR / "MarsRenewable_Meter.csv"
-        cls.pv_file = GEN_DIR / "MarsRenewable_PV.csv"
-
-        # Ensure files are generated fresh before running tests
+        # Hermetic: regenerate into a temp dir so the suite never rewrites committed fixtures.
+        # Without the source workbook, fall back to validating the committed definitions.
         if XLSX_PATH.exists():
-            generate_mars_requested_definitions(XLSX_PATH, GEN_DIR)
+            cls._tmp = tempfile.TemporaryDirectory()
+            cls.gen_dir = Path(cls._tmp.name)
+            generate_mars_requested_definitions(XLSX_PATH, cls.gen_dir)
+        else:
+            cls.gen_dir = GEN_DIR
+        cls.lc_file = cls.gen_dir / "MarsRenewable_LocalControler.csv"
+        cls.pcs_bank_file = cls.gen_dir / "MarsRenewable_PCS-Bank-Rack.csv"
+        cls.rack_cell_file = cls.gen_dir / "MarsRenewable_Rack-Cell.csv"
+        cls.lc_ac_file = cls.gen_dir / "MarsRenewable_LC-AC.csv"
+        cls.meter_file = cls.gen_dir / "MarsRenewable_Meter.csv"
+        cls.pv_file = cls.gen_dir / "MarsRenewable_PV.csv"
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        if cls._tmp is not None:
+            cls._tmp.cleanup()
+            cls._tmp = None
 
     def _read_definition(self, path: Path) -> tuple[list[str], list[list[str]]]:
         self.assertTrue(path.exists(), f"Definition file does not exist: {path}")
@@ -203,8 +217,8 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
     def test_mars_standalone_lc_and_ac_compliance(self) -> None:
         """Verify standalone MarsRenewable_LC.csv (18 regs) and MarsRenewable_AC.csv (16 regs)."""
-        lc_path = GEN_DIR / "MarsRenewable_LC.csv"
-        ac_path = GEN_DIR / "MarsRenewable_AC.csv"
+        lc_path = self.gen_dir / "MarsRenewable_LC.csv"
+        ac_path = self.gen_dir / "MarsRenewable_AC.csv"
 
         self.assertTrue(lc_path.exists(), f"Missing {lc_path}")
         self.assertTrue(ac_path.exists(), f"Missing {ac_path}")

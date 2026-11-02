@@ -27,6 +27,7 @@ from typing import Any
 # Ensure parent directory is in sys.path to support direct and packaged executions
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from DefFileGenerator._version import __version__
 from DefFileGenerator.def_gen import (
     Generator,
     GeneratorConfig,
@@ -860,7 +861,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--version", action="version", version="deffilegen 0.2.1")
+    parser.add_argument("--version", action="version", version=f"deffilegen {__version__}")
     parser.add_argument("--gui", action="store_true", help="Launch Windows 11 Desktop Application")
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
     parser.add_argument("-q", "--quiet", action="store_true", help="Quiet logging")

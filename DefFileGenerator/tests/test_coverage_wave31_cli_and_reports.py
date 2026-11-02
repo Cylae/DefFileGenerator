@@ -264,7 +264,7 @@ def test_batch_command_skip_existing_and_exceptions(tmp_path: Path):
 
     args = argparse.Namespace(
         input_dir=str(in_dir),
-        output=str(out_dir),
+        output_dir=str(out_dir),
         tag=False,
         strict=False,
         force=False,

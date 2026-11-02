@@ -30,6 +30,7 @@ from typing import Any
 # Ensure parent directory is in sys.path to support direct and packaged executions
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from DefFileGenerator._version import __version__
 from DefFileGenerator.def_gen import (
     Generator,
     GeneratorConfig,
@@ -2136,7 +2137,7 @@ def main() -> None:
         print("  --version      Show program's version number and exit")
         return
     if len(sys.argv) > 1 and sys.argv[1] == "--version":
-        print("deffilegen-gui 0.2.1")
+        print(f"deffilegen-gui {__version__}")
         return
 
     root = ctk.CTk() if HAS_CUSTOMTKINTER else tk.Tk()

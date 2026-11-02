@@ -26,6 +26,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException  # noqa
 from starlette.formparsers import MultiPartException  # noqa: E402
 from starlette.types import ASGIApp, Message, Receive, Scope, Send  # noqa: E402
 
+from DefFileGenerator._version import __version__  # noqa: E402
 from DefFileGenerator.def_gen import (  # noqa: E402
     Generator,
     GeneratorConfig,
@@ -130,7 +131,7 @@ class UploadRoute(APIRoute):
 app = FastAPI(
     title="WebdynSunPM Definition Generator API",
     description="REST API for parsing Modbus register documentation and generating validated WebdynSunPM definition files.",
-    version="0.2.1",
+    version=__version__,
 )
 app.router.route_class = UploadRoute
 app.add_middleware(UploadBodyLimitMiddleware)
@@ -166,7 +167,7 @@ async def _save_upload(file: UploadFile, destination: str) -> None:
 
 @app.get("/api/health")
 def health_check() -> dict[str, str]:
-    return {"status": "ok", "version": "0.2.1"}
+    return {"status": "ok", "version": __version__}
 
 
 @app.post("/api/convert")

@@ -6,6 +6,8 @@ import subprocess
 import sys
 import unittest
 
+from DefFileGenerator import __version__
+
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 
@@ -53,7 +55,7 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
 
     def test_package_metadata(self):
         dist = importlib.metadata.distribution("def-file-generator")
-        self.assertEqual(dist.metadata["Version"], "0.2.1")
+        self.assertEqual(dist.metadata["Version"], __version__)
         self.assertIn("Cylae", dist.metadata["Author"])
         lic = dist.metadata.get("License-Expression") or dist.metadata.get("License", "")
         self.assertEqual(lic, "MIT")
@@ -71,7 +73,7 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
             text=True,
             check=True,
         )
-        self.assertIn("deffilegen 0.2.1", res.stdout)
+        self.assertIn(f"deffilegen {__version__}", res.stdout)
 
     def test_deffilegen_cli_help(self):
         res = subprocess.run(
@@ -100,7 +102,7 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
                 text=True,
                 check=True,
             )
-            self.assertIn("deffilegen 0.2.1", res.stdout)
+            self.assertIn(f"deffilegen {__version__}", res.stdout)
 
     def test_gui_direct_script_entrypoint(self):
         gui_path = os.path.join(REPO_ROOT, "DefFileGenerator", "gui.py")
@@ -110,7 +112,7 @@ class TestPackagingAndEntrypoints(unittest.TestCase):
             text=True,
             check=True,
         )
-        self.assertIn("deffilegen-gui 0.2.1", res.stdout)
+        self.assertIn(f"deffilegen-gui {__version__}", res.stdout)
 
     def test_mypy_typecheck_passes(self):
         res = subprocess.run(
