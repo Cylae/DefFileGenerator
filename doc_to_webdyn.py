@@ -14,10 +14,16 @@ import logging
 import os
 import re
 import sys
+from pathlib import Path
 
-from DefFileGenerator.def_gen import GeneratorConfig, run_generator
-from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.io_utils import paths_refer_to_same_file
+# Ensure root package DefFileGenerator can be imported even when run directly or in debug
+REPO_ROOT = Path(__file__).resolve().parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from DefFileGenerator.def_gen import GeneratorConfig, run_generator  # noqa: E402
+from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
+from DefFileGenerator.io_utils import paths_refer_to_same_file  # noqa: E402
 
 RE_SLUGIFY = re.compile(r"[^a-zA-Z0-9]")
 

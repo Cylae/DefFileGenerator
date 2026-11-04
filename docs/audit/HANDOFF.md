@@ -85,6 +85,14 @@ The Apollo-standard software engineering audit, remediation, and verification pa
     - *Problem*: Stale editable package metadata (`0.2.1`) in `.venv` caused `test_package_metadata` failure.
     - *Fix*: Reinstalled editable package via `pip install -e . --no-deps`, synchronizing metadata to `0.3.0`.
 
+15. **FIND-015 (Resolved): IDE Debug Runtime Isolation & Dependency Provisioning**:
+    - *Problem*: Debugging `DefFileGenerator/mars_generator.py` failed with `ModuleNotFoundError: No module named 'openpyxl'` due to VS Code targeting unmanaged global Python interpreter rather than `.venv`.
+    - *Fix*: Bound `.vscode/settings.json` and `.vscode/launch.json` directly to `${workspaceFolder}/.venv/Scripts/python.exe`, installed `openpyxl` in fallback global Python, terminated frozen background process, and added dynamic `sys.path` bootstrapping.
+
+16. **FIND-016 (Resolved): Cross-Manufacturer Generator Hardening & Documentation Battery**:
+    - *Problem*: Standalone and debug execution of generator scripts (`generate_mars_definitions.py`, `DefFileGenerator/mars_generator.py`, `generate_webdyn_def.py`, `doc_to_webdyn.py`, `scratch/run_full_documentation_battery.py`) failed without PYTHONPATH or with different working directories, and subfolder paths for GoodWe, Growatt, Lettel failed resolution.
+    - *Fix*: Standardized workspace path bootstrapping, added fallback to repository stress test data, and implemented transparent subfolder resolution in `ALT_MAP`. Verified 100% success (33/33 documents, 100% valid WebdynSunPM definitions) across all manufacturers (Mars Energy, Huawei, ABB, Fox ESS, GoodWe, Growatt, Hukseflux, Janitza, Kaco, Lettel, Siebert).
+
 ## 3. Verified Commands for Reproducibility
 
 To re-verify the codebase at any time, execute the following commands in sequence:

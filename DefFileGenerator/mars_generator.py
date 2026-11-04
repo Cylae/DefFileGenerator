@@ -11,8 +11,13 @@ Strictly adheres to WebdynSunPM standard specification and user instructions:
 """
 
 import csv
+import os
+import sys
 from pathlib import Path
 from typing import Any
+
+# Ensure parent directory is in sys.path to support direct and debug executions
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import openpyxl
 
@@ -916,13 +921,18 @@ def generate_mars_requested_definitions(
 
 
 if __name__ == "__main__":
-    src_xlsx = Path("stress_test_data") / "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
+    workspace_dir = Path(__file__).resolve().parent.parent
+    src_xlsx = (
+        workspace_dir / "stress_test_data" / "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
+    )
+    if not src_xlsx.exists():
+        src_xlsx = Path("stress_test_data") / "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
     if not src_xlsx.exists():
         src_xlsx = Path(
             r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers\MarsRenewable\Sources\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
         )
 
-    dest_dir = Path("generated_definitions")
+    dest_dir = workspace_dir / "generated_definitions"
     print(f"Generating Mars Renewable definitions from {src_xlsx} into {dest_dir}...")
     res = generate_mars_requested_definitions(src_xlsx, dest_dir)
     print("Generated successfully:")

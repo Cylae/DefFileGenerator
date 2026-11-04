@@ -15,10 +15,12 @@ import time
 from typing import Any
 
 # Add project root to sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+WORKSPACE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if WORKSPACE_DIR not in sys.path:
+    sys.path.insert(0, WORKSPACE_DIR)
 
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
-from DefFileGenerator.extractor import Extractor, peek_generator
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator  # noqa: E402
+from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger("FullDocBattery")
@@ -32,7 +34,38 @@ EQUIPEMENTIERS_DIR = os.environ.get(
     else r"G:\My Drive\08092026\Equipementiers",
 )
 R_AND_D_DIR = r"G:\My Drive\08092026\DEF_PM_R&D"
-MARS_SOURCE = r"C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
+MARS_SOURCE = os.path.join(
+    WORKSPACE_DIR, "stress_test_data", "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx"
+)
+if not os.path.exists(MARS_SOURCE):
+    MARS_SOURCE = r"C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx" 
+
+ALT_MAP = {
+    r"Goodwe\GoodWe_SMT_Series.csv": [
+        r"Goodwe\Fichiers SUN PM\Gamme SMT - GT SERIES\W_Goodwe_SMT50K_SMT60K.csv",
+        r"Goodwe\Fichiers SUN PM\Gamme SMT - GT SERIES\INV_GOODWE_SMT60K-G2_SMT80K_GT.csv",
+    ],
+    r"Goodwe\GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv": [
+        r"Goodwe\Fichiers SUN PM\Gamme ET-EH-BT-BH-EHB-AES-ABP-BTC\GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
+    ],
+    r"Growatt\W_Growatt_Generic.csv": [
+        r"Growatt\Fichiers PM\GENERIC\W_Growatt_Generic.csv",
+    ],
+    r"Lettel\LETTEL_MAP4-34RJ.csv": [
+        r"Lettel\Fichiers PM\LETTEL_MAP4-34RJ.csv",
+    ],
+}
+
+
+def resolve_equipment_path(base_dir: str, rel_path: str) -> str:
+    full = os.path.join(base_dir, rel_path)
+    if os.path.exists(full):
+        return full
+    for alt in ALT_MAP.get(rel_path, []):
+        alt_full = os.path.join(base_dir, alt)
+        if os.path.exists(alt_full):
+            return alt_full
+    return full
 
 # Technical documents catalog to test thoroughly
 CATALOG = [
@@ -516,6 +549,9 @@ def run_battery():
     for idx, item in enumerate(CATALOG, start=1):
         doc_id = item["id"]
         doc_path = item["path"]
+        if not os.path.exists(doc_path) and EQUIPEMENTIERS_DIR and doc_path.startswith(EQUIPEMENTIERS_DIR):
+            rel = os.path.relpath(doc_path, EQUIPEMENTIERS_DIR)
+            doc_path = resolve_equipment_path(EQUIPEMENTIERS_DIR, rel)
         mfg = item["mfg"]
         model = item["model"]
         category = item["category"]

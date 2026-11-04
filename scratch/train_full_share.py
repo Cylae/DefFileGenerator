@@ -12,7 +12,9 @@ import time
 from pathlib import Path
 
 # Add project root
-sys.path.insert(0, os.path.abspath("."))
+WORKSPACE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if WORKSPACE_DIR not in sys.path:
+    sys.path.insert(0, WORKSPACE_DIR)
 
 from DefFileGenerator.knowledge_miner import (
     DatasetKnowledge,

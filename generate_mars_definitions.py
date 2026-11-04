@@ -19,10 +19,17 @@ Features:
 
 import csv
 import os
+import sys
+from pathlib import Path
 
-import openpyxl
+# Ensure root package DefFileGenerator can be imported even when run directly or in debug
+REPO_ROOT = Path(__file__).resolve().parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-from DefFileGenerator.def_gen import Generator
+import openpyxl  # noqa: E402
+
+from DefFileGenerator.def_gen import Generator  # noqa: E402
 
 
 def normalize_unit(unit_raw: str | None) -> tuple[str, float]:
@@ -593,15 +600,24 @@ def main(argv: list[str] | None = None) -> None:
     )
     cli_args = parser.parse_args(argv)
 
-    if not os.path.isfile(cli_args.source_xlsx):
-        print(f"Error: Source workbook not found at: {cli_args.source_xlsx}", file=sys.stderr)
-        print(
-            "Usage: python generate_mars_definitions.py <path_to_io_list.xlsx> [--out-dir <dir>]",
-            file=sys.stderr,
+    source_path = cli_args.source_xlsx
+    if not os.path.isfile(source_path):
+        repo_data_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "stress_test_data",
+            "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
         )
-        sys.exit(1)
+        if os.path.isfile(repo_data_path):
+            source_path = repo_data_path
+        else:
+            print(f"Error: Source workbook not found at: {cli_args.source_xlsx}", file=sys.stderr)
+            print(
+                "Usage: python generate_mars_definitions.py <path_to_io_list.xlsx> [--out-dir <dir>]",
+                file=sys.stderr,
+            )
+            sys.exit(1)
 
-    generate_all_mars_files(cli_args.source_xlsx, cli_args.out_dir)
+    generate_all_mars_files(source_path, cli_args.out_dir)
 
 
 if __name__ == "__main__":

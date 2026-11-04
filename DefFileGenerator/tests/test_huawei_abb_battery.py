@@ -14,7 +14,23 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../.
 from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
 from DefFileGenerator.extractor import Extractor, peek_generator
 
-EQUIPEMENTIERS_DIR = r"G:\My Drive\08092026\Equipementiers"
+DEFAULT_EQUIPEMENTIERS_DIR = r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers"
+LOCAL_EQUIPEMENTIERS_DIR = r"G:\My Drive\08092026\Equipementiers"
+
+
+def get_equipementiers_dir() -> str:
+    if "EQUIPEMENTIERS_DIR" in os.environ and os.path.exists(os.environ["EQUIPEMENTIERS_DIR"]):
+        return os.environ["EQUIPEMENTIERS_DIR"]
+    if os.path.exists(LOCAL_EQUIPEMENTIERS_DIR):
+        return LOCAL_EQUIPEMENTIERS_DIR
+    if os.environ.get("ENABLE_NETWORK_SHARE_TESTS") == "1" and os.path.exists(
+        DEFAULT_EQUIPEMENTIERS_DIR
+    ):
+        return DEFAULT_EQUIPEMENTIERS_DIR
+    return ""
+
+
+EQUIPEMENTIERS_DIR = get_equipementiers_dir()
 
 TEST_FILES = [
     # --- Huawei CSVs ---
@@ -64,8 +80,10 @@ def run_battery():
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     logger = logging.getLogger("HuaweiAbbBattery")
 
-    if not os.path.exists(EQUIPEMENTIERS_DIR):
-        logger.warning(f"Equipementiers dir not found: {EQUIPEMENTIERS_DIR}")
+    if not EQUIPEMENTIERS_DIR or not os.path.exists(EQUIPEMENTIERS_DIR):
+        logger.warning(
+            f"Equipementiers directory not found or inaccessible: {EQUIPEMENTIERS_DIR}. Skipping."
+        )
         return
 
     extractor = Extractor()

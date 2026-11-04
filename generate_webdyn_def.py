@@ -7,15 +7,21 @@ using the DefFileGenerator package.
 import logging
 import os
 import sys
+from pathlib import Path
 
-from DefFileGenerator.def_gen import (
+# Ensure root package DefFileGenerator can be imported even when run directly or in debug
+REPO_ROOT = Path(__file__).resolve().parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from DefFileGenerator.def_gen import (  # noqa: E402
     Generator,
     GeneratorConfig,
     WebdynDefConfig,
     run_generator,
 )
-from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.io_utils import paths_refer_to_same_file
+from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
+from DefFileGenerator.io_utils import paths_refer_to_same_file  # noqa: E402
 
 
 def setup_logging() -> None:

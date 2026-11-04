@@ -1,0 +1,92 @@
+﻿modbusRTU;Inverter;Growatt;Growatt_RTU_Protocol_II;;;;;;;
+1;3;0;U16;;Remote On/Off . On（1）；Off（0）;remote_onoff_on1off0;1.000000;0.000000;;4
+2;3;1;U16;;Bit0: SPI enable Bit1: AutoTestStart Bit2: LVFRT enable Bit3: FreqDeratingEnable Bit4: Softstart enable Bit5: DRMS enable Bit6:PowerVoltFunc En Bit7~15:reserved;bit0_spi_enable_bit1_autoteststart_bit2_lvfrt_enable_bit3_freqderatingenable_bit4_softstart_enable_bit5_drms_enable_bit6powervoltfunc_en_bit715reserved;1.000000;0.000000;;0
+3;3;2;U16;;Set Holding register 3,4,5,99 CMD will be memory or not(1/0), if not, these settings are the initial value.;set_holding_register_34599_cmd_will_be_memory_or_not10_if_not_these_settings_are_the_initial_value;1.000000;0.000000;;4
+4;3;3;U16;;Inverter Max output active power percent;inverter_max_output_active_power_percent;1.000000;0.000000;'%;4
+5;3;4;U16;;Inverter max output reactive power percent;inverter_max_output_reactive_power_percent;1.000000;0.000000;'%;4
+6;3;5;U16;;Inverter output power factor’s 10000 times;inverter_output_power_factors_10000_times;1.000000;0.000000;;4
+7;3;6;U16;;Normal power (high);normal_power_high;1.000000;0.000000;0.1VA;4
+8;3;7;U16;;Normal power (low);normal_power_low;1.000000;0.000000;0.1VA;4
+9;3;8;U16;;Normal work PV voltage;normal_work_pv_voltage;1.000000;0.000000;0.1V;4
+10;3;9;U16;;Firmware version (high);firmware_version_high;1.000000;0.000000;ASCII;4
+11;3;10;U16;;Firmware version (middle);firmware_version_middle;1.000000;0.000000;;4
+12;3;11;U16;;Firmware version (low);firmware_version_low;1.000000;0.000000;;4
+13;3;12;U16;;Control Firmware version (high);control_firmware_version_high;1.000000;0.000000;ASCII;4
+14;3;13;U16;;Control Firmware version (middle);control_firmware_version_middle;1.000000;0.000000;;4
+15;3;14;U16;;Control Firmware version (low);control_firmware_version_low;1.000000;0.000000;;4
+16;3;15;U16;;LCD language;lcd_language;1.000000;0.000000;;4
+17;3;16;U16;;Country Selected or not;country_selected_or_not;1.000000;0.000000;;4
+18;3;17;U16;;Input start voltage;input_start_voltage;1.000000;0.000000;0.1V;4
+19;3;18;U16;;Start time;start_time;1.000000;0.000000;1s;4
+20;3;19;U16;;"Restart Delay Time after fault back;";restart_delay_time_after_fault_back;1.000000;0.000000;1s;9
+21;3;20;U16;;Power start slope;power_start_slope;1.000000;0.000000;0.1%;4
+22;3;21;U16;;Power restart slope;power_restart_slope;1.000000;0.000000;0.1%;4
+23;3;22;U16;;Select communication baudrate 0: 9600bps 1:38400bps;select_communication_baudrate_0_9600bps_138400bps;1.000000;0.000000;;4
+24;3;23;U16;;Serial number 5;serial_number_5;1.000000;0.000000;ASCII;4
+25;3;24;U16;;Serial number 4;serial_number_4;1.000000;0.000000;;4
+26;3;25;U16;;Serial number 3;serial_number_3;1.000000;0.000000;;4
+27;3;26;U16;;Serial number 2;serial_number_2;1.000000;0.000000;;4
+28;3;27;U16;;Serial number 1;serial_number_1;1.000000;0.000000;;4
+29;3;28;U16;;Inverter Module (high);inverter_module_high;1.000000;0.000000;;4
+30;3;29;U16;;Inverter Module (low);inverter_module_low;1.000000;0.000000;;4
+31;3;30;U16;;Communicate address;communicate_address;1.000000;0.000000;;4
+32;3;31;U16;;Update firmware;update_firmware;1.000000;0.000000;;4
+33;3;32;U16;;Reset User Information;reset_user_information;1.000000;0.000000;;4
+34;3;118;U16;;Boot loader version1;boot_loader_version1;1.000000;0.000000;;4
+35;3;119;U16;;Boot loader version2;boot_loader_version2;1.000000;0.000000;;4
+36;3;120;U16;;Boot loader version3;boot_loader_version3;1.000000;0.000000;;4
+37;3;121;U16;;Boot loader version4;boot_loader_version4;1.000000;0.000000;;4
+38;3;122;U16;;ExportLimit_En/dis;exportlimit_endis;1.000000;0.000000;;4
+39;3;123;U16;;ExportLimitPowerRate;exportlimitpowerrate;1.000000;0.000000;;4
+40;3;124;U16;;2 Traker Model;v_2_traker_model;1.000000;0.000000;0:Inde pende nt 1:DC Source 2:Paral lel;4
+41;3;125;U16;;Inverter type-1;inverter_type1;1.000000;0.000000;ASCII;4
+42;3;126;U16;;Inverter type-2;inverter_type2;1.000000;0.000000;ASCII;4
+43;3;127;U16;;Inverter type-3;inverter_type3;1.000000;0.000000;ASCII;4
+44;3;128;U16;;Inverter type-4;inverter_type4;1.000000;0.000000;ASCII;4
+45;3;129;U16;;Inverter type-5;inverter_type5;1.000000;0.000000;ASCII;4
+46;3;130;U16;;Inverter type-06;inverter_type06;1.000000;0.000000;ASCII;4
+47;3;131;U16;;Inverter type-7;inverter_type7;1.000000;0.000000;ASCII;4
+48;3;132;U16;;Inverter type-8;inverter_type8;1.000000;0.000000;ASCII;4
+49;3;133;U16;;Serial number New 15;serial_number_new_15;1.000000;0.000000;ASCII;4
+50;3;134;U16;;Serial number New 14;serial_number_new_14;1.000000;0.000000;ASCII;4
+51;3;135;U16;;Serial number New 13;serial_number_new_13;1.000000;0.000000;ASCII;4
+52;3;136;U16;;Serial numbe New r 12;serial_numbe_new_r_12;1.000000;0.000000;ASCII;4
+53;3;137;U16;;Serial number New 11;serial_number_new_11;1.000000;0.000000;ASCII;4
+54;3;138;U16;;Serial number New 10;serial_number_new_10;1.000000;0.000000;ASCII;4
+55;3;139;U16;;Serial numbe New r 9;serial_numbe_new_r_9;1.000000;0.000000;ASCII;4
+56;3;140;U16;;Serial numbe New r 8;serial_numbe_new_r_8;1.000000;0.000000;ASCII;4
+57;3;141;U16;;Serial number New 7;serial_number_new_7;1.000000;0.000000;ASCII;4
+58;3;142;U16;;Serial number New 6;serial_number_new_6;1.000000;0.000000;ASCII;4
+59;3;143;U16;;Serial number New 5;serial_number_new_5;1.000000;0.000000;ASCII;4
+60;3;144;U16;;Serial number New 4;serial_number_new_4;1.000000;0.000000;ASCII;4
+61;3;145;U16;;Serial number New 3;serial_number_new_3;1.000000;0.000000;ASCII;4
+62;3;146;U16;;Serial number New 2;serial_number_new_2;1.000000;0.000000;ASCII;4
+63;3;147;U16;;Serial numbe New r 1;serial_numbe_new_r_1;1.000000;0.000000;ASCII;4
+64;3;200;U16;;/;var;1.000000;0.000000;/;4
+65;3;201;U16;;PID Working Model;pid_working_model;1.000000;0.000000;;4
+66;3;202;U16;;PID On/Off Control;pid_onoff_control;1.000000;0.000000;;4
+67;3;203;U16;;PID Output Voltage Option;pid_output_voltage_option;1.000000;0.000000;V;4
+68;3;229;U16;;;;1.000000;0.000000;;1
+69;3;230;U16;;Island Disable or not. 1:disable 0:Enable;island_disable_or_not_1disable_0enable;1.000000;0.000000;;4
+70;3;231;U16;;Start Fan Check;start_fan_check;1.000000;0.000000;;4
+71;3;232;U16;;Enable N Line of grid;enable_n_line_of_grid;1.000000;0.000000;;4
+72;3;233;U16;;"wCheckHardware Bit0: GFCIBreak; Bit1:SPSDamage Bit8:EepromReadWarni ng Bit9:EEWriteWarning ……";wcheckhardware_bit0_gfcibreak_bit1spsdamage_bit8eepromreadwarni_ng_bit9eewritewarning;1.000000;0.000000;;9
+73;3;234;U16;;;;1.000000;0.000000;;1
+74;3;512;U16;;GPRSIP Addr No.8;gprsip_addr_no8;1.000000;0.000000;ASCII;4
+75;3;513;U16;;GPRSIP Addr No.9;gprsip_addr_no9;1.000000;0.000000;ASCII;4
+76;3;514;U16;;GPRSIP Addr No.10;gprsip_addr_no10;1.000000;0.000000;ASCII;4
+77;3;515;U16;;GPRSIP Addr No.11;gprsip_addr_no11;1.000000;0.000000;ASCII;4
+78;3;516;U16;;GPRSIP Addr No.12;gprsip_addr_no12;1.000000;0.000000;ASCII;4
+79;3;517;U16;;GPRSIP Addr No.13;gprsip_addr_no13;1.000000;0.000000;ASCII;4
+80;3;518;U16;;GPRSIP Addr No.14;gprsip_addr_no14;1.000000;0.000000;ASCII;4
+81;3;519;U16;;GPRSIP Addr No.15;gprsip_addr_no15;1.000000;0.000000;ASCII;4
+82;3;520;U16;;GPRSIP Addr No.16;gprsip_addr_no16;1.000000;0.000000;ASCII;4
+83;3;521;U16;;GPRSIP Addr No.17;gprsip_addr_no17;1.000000;0.000000;ASCII;4
+84;3;522;U16;;GPRSIP Addr No.18;gprsip_addr_no18;1.000000;0.000000;ASCII;4
+85;3;523;U16;;GPRSIP Addr No.19;gprsip_addr_no19;1.000000;0.000000;ASCII;4
+86;3;524;U16;;GPRSIP Addr No.20;gprsip_addr_no20;1.000000;0.000000;ASCII;4
+87;3;525;U16;;GPRSIP Addr No.21;gprsip_addr_no21;1.000000;0.000000;ASCII;4
+88;3;526;U16;;GPRSIP Addr No.22;gprsip_addr_no22;1.000000;0.000000;ASCII;4
+89;3;527;U16;;GPRSIP Addr No.23;gprsip_addr_no23;1.000000;0.000000;ASCII;4
+90;3;528;U16;;GPRSIP Addr No.24;gprsip_addr_no24;1.000000;0.000000;ASCII;4
+91;3;529;U16;;GPRSIP Addr No.25;gprsip_addr_no25;1.000000;0.000000;ASCII;4

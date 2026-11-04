@@ -141,3 +141,29 @@
 - **Root Cause**: The virtual environment `.venv` contained an editable build from version 0.2.1, causing `importlib.metadata.distribution('def-file-generator').metadata['Version']` to report `'0.2.1'` while package and pyproject were `'0.3.0'`.
 - **Remediation**: Reinstalled editable distribution via `pip install -e . --no-deps`, synchronizing distribution metadata to `0.3.0`.
 - **Status**: RESOLVED
+
+### FIND-015: Missing `openpyxl` Dependency and Frozen Debug Task in Global IDE Environment
+- **Severity**: HIGH
+- **Component**: Development / IDE Debugging Environment (`.vscode/settings.json`, `.vscode/launch.json`, Python 3.15 runtime)
+- **Trigger**: Running VS Code Debugger or interactive debugging on `DefFileGenerator/mars_generator.py`.
+- **Root Cause**: The IDE launched the script using the unmanaged system Python 3.15 interpreter (`C:\Python315\python.exe`) rather than the workspace virtual environment (`.venv\Scripts\python.exe`), where `openpyxl` was installed. An earlier failed debug session remained suspended in background as an unclosed process (`PID 33832`), holding handles and blocking subsequent debug runs.
+- **Remediation**:
+  1. Configured `.vscode/settings.json` and `.vscode/launch.json` to explicitly bind all Python tasks and launch configurations to `${workspaceFolder}/.venv/Scripts/python.exe`.
+  2. Installed `openpyxl` and `et-xmlfile` in the system Python interpreter as a resilient fallback.
+  3. Terminated the orphan background process (`PID 33832`).
+  4. Added dynamic `sys.path` bootstrapping to `DefFileGenerator/mars_generator.py` so the module resolves root imports regardless of invocation mechanism or active interpreter.
+- **Status**: RESOLVED
+
+### FIND-016: Generator Entrypoints and Test Battery Path Sensitivity Across Manufacturers
+- **Severity**: MEDIUM
+- **Component**: `generate_mars_definitions.py`, `DefFileGenerator/mars_generator.py`, `generate_webdyn_def.py`, `doc_to_webdyn.py`, `scratch/run_full_documentation_battery.py`, `DefFileGenerator/tests/test_huawei_abb_battery.py`
+- **Trigger**: Direct execution or debugging of generator scripts outside package context or with different working directories.
+- **Root Cause**:
+  1. `generate_mars_definitions.py` expected the workbook in `cwd`, failing when run without CLI arguments from the repo root.
+  2. `scratch/run_full_documentation_battery.py` used an invalid relative `sys.path` traversal (`../..` instead of `..`) and hardcoded user-specific path `C:\Users\Cylae\...`.
+  3. Network share subfolder variations for GoodWe, Growatt, Lettel, Solax caused lookup failures in battery runners.
+- **Remediation**:
+  1. Added resilient file fallback to `stress_test_data/MarsLocalController_IO List_ModbusTCP_V7.0.xlsx` across Mars generators.
+  2. Inserted workspace root into `sys.path` across `generate_mars_definitions.py`, `generate_webdyn_def.py`, `doc_to_webdyn.py`, `scratch/run_full_documentation_battery.py`, and `scratch/train_full_share.py`.
+  3. Applied `resolve_equipment_path` and `get_equipementiers_dir` to resolve all 33 manufacturer documentation files seamlessly (100% success rate: 33/33 on full documentation battery).
+- **Status**: RESOLVED
