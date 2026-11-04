@@ -106,6 +106,9 @@ KNOWN_MANUFACTURERS: tuple[str, ...] = (
     "Schneider",
     "FoxESS",
     "Fox ESS",
+    "Dyness",
+    "Mars",
+    "Mars Renewable",
     "Enphase",
     "Ingeteam",
     "Solax",
@@ -163,7 +166,19 @@ def infer_metadata_from_filename(filepath: str | Path) -> tuple[str, str, str]:
         category = "Meter"
     elif any(
         k in lower_tokens or k in stem_lower
-        for k in ("battery", "batterie", "bms", "bess", "storage", "rack", "cell")
+        for k in (
+            "battery",
+            "batterie",
+            "bms",
+            "bess",
+            "storage",
+            "rack",
+            "cell",
+            "dh200y",
+            "dh200f",
+            "dh100f",
+            "dyness",
+        )
     ):
         category = "Battery"
     elif any(

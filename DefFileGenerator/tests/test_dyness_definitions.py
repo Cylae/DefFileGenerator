@@ -237,6 +237,34 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
             self.assertIn("Cell Temperature 60", content)
             self.assertNotIn("Cell Temperature 61", content)
 
+    def test_package_level_dyness_exports(self) -> None:
+        """Verify DefFileGenerator exports dyness generator components cleanly."""
+        from DefFileGenerator import (
+            DynessDefinitionGenerator as PkgGen,
+        )
+        from DefFileGenerator import (
+            DynessProtocolParser as PkgParser,
+        )
+        from DefFileGenerator import (
+            generate_dyness_definitions as pkg_fn,
+        )
+
+        self.assertIs(PkgGen, DynessDefinitionGenerator)
+        self.assertIs(PkgParser, DynessProtocolParser)
+        self.assertTrue(callable(pkg_fn))
+
+    def test_metadata_inference_recognizes_dyness(self) -> None:
+        """Verify DefFileGenerator.main.infer_metadata_from_filename infers Dyness Battery."""
+        from DefFileGenerator.main import infer_metadata_from_filename
+
+        mfg, model, cat = infer_metadata_from_filename("Dyness_DH200Y_Protocol.xlsx")
+        self.assertEqual(mfg, "Dyness")
+        self.assertEqual(cat, "Battery")
+
+        mfg_f, model_f, cat_f = infer_metadata_from_filename("Dyness_DH200F_Manual.pdf")
+        self.assertEqual(mfg_f, "Dyness")
+        self.assertEqual(cat_f, "Battery")
+
 
 if __name__ == "__main__":
     unittest.main()

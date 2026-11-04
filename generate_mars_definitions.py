@@ -105,7 +105,7 @@ def build_definition_file(
     """Writes a strictly compliant WebdynSunPM definition file with UTF-8 BOM encoding."""
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     with open(output_path, "w", encoding="utf-8-sig", newline="") as f:
-        writer = csv.writer(f, delimiter=";", lineterminator="\n")
+        writer = csv.writer(f, delimiter=";", lineterminator="\r\n")
         # 11 columns in header (10 semicolons)
         writer.writerow([protocol, category, manufacturer, model, "", "", "", "", "", "", ""])
 
@@ -117,7 +117,7 @@ def build_definition_file(
                     str(reg["Info2"]),
                     str(reg["Info3"]),
                     "",
-                    str(reg["Name"]),
+                    Generator.sanitize_csv_field(str(reg["Name"])),
                     str(reg.get("Tag", "")),
                     f"{float(reg['CoefA']):.6f}",
                     f"{float(reg['CoefB']):.6f}",

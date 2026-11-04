@@ -10,6 +10,11 @@ from DefFileGenerator.def_gen import (
     ValidationReport,
     WebdynDefConfig,
 )
+from DefFileGenerator.dyness_generator import (
+    DynessDefinitionGenerator,
+    DynessProtocolParser,
+    generate_dyness_definitions,
+)
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.knowledge_miner import (
     SUNPM_CANONICAL_TAGS,
@@ -46,6 +51,8 @@ __all__ = [
     "DefinitionAuditReport",
     "DefinitionFileStats",
     "DirectoryReportStats",
+    "DynessDefinitionGenerator",
+    "DynessProtocolParser",
     "Extractor",
     "Generator",
     "GeneratorConfig",
@@ -64,6 +71,7 @@ __all__ = [
     "enrich_definition_rows",
     "export_report_json",
     "generate_directory_technical_report",
+    "generate_dyness_definitions",
     "generate_single_definition_report",
     "infer_sunpm_tag",
     "infer_webdyn_tag",

@@ -122,7 +122,7 @@ def write_definition_file(
                     str(reg["Info2"]),
                     str(reg["Info3"]),
                     "",
-                    str(reg["Name"]),
+                    Generator.sanitize_csv_field(str(reg["Name"])),
                     str(reg.get("Tag", "")),
                     f"{float(reg['CoefA']):.6f}",
                     f"{float(reg['CoefB']):.6f}",
