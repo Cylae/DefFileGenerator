@@ -2,13 +2,13 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 0;3;30000_30;STRING;;Model Name;MODEL;1.000000;0.000000;;4
 1;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;;4
 2;3;30025_20;STRING;;PN;;1.000000;0.000000;;4
-3;3;30070;U16;;Model ID;ModelId;1.000000;0.000000;;4
+3;3;30070;U16;;Model ID;;1.000000;0.000000;;4
 4;3;30071;U16;;String Number;;1.000000;0.000000;;4
 5;3;30072;U16;;MPPT Number;;1.000000;0.000000;;4
 6;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
-7;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001000;0.000000;kW;4
-8;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001000;0.000000;kVA;4
-9;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);Q_AC;0.001000;0.000000;kVar;4
+7;3;30075;U32;;Maximum active power (Pmax);;0.001000;0.000000;kW;4
+8;3;30077;U32;;Maximum apparent power (Smax);;0.001000;0.000000;kVA;4
+9;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);;0.001000;0.000000;kVar;4
 10;3;30081;I32;;Maximum reactive power (Qmax, absorbed from the power grid);;0.001000;0.000000;kVar;4
 11;3;32000;U16;;Standalone teleindication;;1.000000;0.000000;;4
 12;3;32002;U16;;Operating status;;1.000000;0.000000;;4
@@ -74,9 +74,9 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 72;3;32072;I32;;Current1_Ia;;0.001000;0.000000;A;4
 73;3;32074;I32;;Current2_Ib;;0.001000;0.000000;A;4
 74;3;32076;I32;;Current3_Ic;;0.001000;0.000000;A;4
-75;3;32078;I32;;Active power peak of current day;Watts;0.001000;0.000000;kW;4
+75;3;32078;I32;;Active power peak of current day;P_AC;0.001000;0.000000;kW;4
 76;3;32080;I32;;Active power;;1.000000;0.000000;W;4
-77;3;32082;I32;;Reactive_power;;1.000000;0.000000;Var;4
+77;3;32082;I32;;Reactive_power;Q_AC;1.000000;0.000000;Var;4
 78;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
 79;3;32085;U16;;Frequency;FREQ;0.010000;0.000000;Hz;4
 80;3;32086;U16;;Inverter efficiency;;0.010000;0.000000;% ;4
@@ -86,8 +86,8 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 84;3;32090;U16;;Fault code;;1.000000;0.000000;;4
 85;3;32091;U32;;Startup time;;1.000000;0.000000;s;4
 86;3;32093;U32;;Shutdown time;;1.000000;0.000000;s;4
-87;3;32106;U32;;Energy_total;WattHours;0.010000;0.000000;kWh;4
-88;3;32114;U32;;Energy yield of current day;E_DAY;0.010000;0.000000;kWh;4
+87;3;32106;U32;;Energy_total;E_TOT;0.010000;0.000000;kWh;4
+88;3;32114;U32;;Energy yield of current day;;0.010000;0.000000;kWh;4
 89;3;32116;U32;;Energy yield of current month;;0.010000;0.000000;kWh;4
 90;3;32118;U32;;Energy yield of current year;;0.010000;0.000000;kWh;4
 91;3;35300;U16;;[Active] Adjustment mode;;1.000000;0.000000;;4
@@ -98,18 +98,18 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 96;3;35307;U16;;[Reactive] Adjustment command;;1.000000;0.000000;;4
 97;3;40000;U32;;System Time;;1.000000;0.000000;s;4
 98;3;40120;U16;;Active power derating;;0.100000;0.000000;kW;4
-99;3;40122;I16;;Reactive power compensation (PF);CMD_PF;0.001000;0.000000;;4
+99;3;40122;I16;;Reactive power compensation (PF);;0.001000;0.000000;;4
 100;3;40123;I16;;Reactive power compensation(Q/S);;0.001000;0.000000;;4
 101;3;40125;U16;;Power_limitation_pct;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
-102;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);CMD_P_AC_SET_ABS;1.000000;0.000000;W;4
+102;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);;1.000000;0.000000;W;4
 103;3;40129;I32;;[Power grid scheduling] Reactive power compensation at night (kVar);;0.001000;0.000000;kVar;4
-104;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;CMD_RAMP_TIME_S;1.000000;0.000000;s;4
+104;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;;1.000000;0.000000;s;4
 105;3;40200;U16;;Power On;CMD_ON;1.000000;0.000000;;4
 106;3;40201;U16;;Power Off;CMD_OFF;1.000000;0.000000;;4
 107;3;42000;U16;;Grid code;;0.001000;0.000000;;4
 108;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001000;0.000000;%/s;4
 109;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001000;0.000000;;4
-110;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.000000;0.000000;s;4
+110;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;;1.000000;0.000000;s;4
 111;3;43006;I16;;Time Zone;;1.000000;0.000000;min;4
 112;3;37200;U16;;[Optimizer] Total number of optimizers;;1.000000;0.000000;;4
 113;3;37201;U16;;[Optimizer] Number of online optimizers;;1.000000;0.000000;;4
@@ -119,7 +119,7 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 117;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;;1.000000;0.000000;%;4
 118;3;37000;U16;;[Energy storage unit 1] Running status;;1.000000;0.000000;;4
 119;3;37001;I32;;[Energy storage unit 1] Charge and discharge power;;1.000000;0.000000;W;4
-120;3;37003;U16;;[Energy storage unit 1] Bus voltage;U_DC;1.000000;0.000000;V;4
+120;3;37003;U16;;[Energy storage unit 1] Bus voltage;;1.000000;0.000000;V;4
 121;3;37004;U16;;[Energy storage unit 1] Battery SOC;SOC;1.000000;0.000000;%;4
 122;3;47415;U16;;Active power control mode;;1.000000;0.000000;;4
 123;3;47416;I32;;Maximum Feed Grid Power (kW);;0.001000;0.000000;kW;4
@@ -128,8 +128,8 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 126;3;37101;I32;;[Meter] Grid voltage (A phase);;0.100000;0.000000;V;4
 127;3;37103;I32;;[Meter] B phase voltage;;0.100000;0.000000;V;4
 128;3;37105;I32;;[Meter] C phase voltage;;0.100000;0.000000;V;4
-129;3;37107;I32;;[Meter] Grid current(A phase);;0.010000;0.000000;A;4
-130;3;37109;I32;;[Meter] B phase current;I_AC_3;0.010000;0.000000;A;4
+129;3;37107;I32;;[Meter] Grid current(A phase);I_AC;0.010000;0.000000;A;4
+130;3;37109;I32;;[Meter] B phase current;;0.010000;0.000000;A;4
 131;3;37111;I32;;[Meter] C phase current;;0.010000;0.000000;A;4
 132;3;37113;I32;;[Meter] Active power;;1.000000;0.000000;W;4
 133;3;37115;I32;;[Meter] Reactive power;;1.000000;0.000000;Var;4
@@ -142,7 +142,7 @@ modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3
 140;3;37126;I32;;[Meter] A-B line voltage;;0.100000;0.000000;V;4
 141;3;37128;I32;;[Meter] B-C line voltage;;0.100000;0.000000;V;4
 142;3;37130;I32;;[Meter] C-A line voltage;;0.010000;0.000000;V;4
-143;3;37132;I32;;[Meter] A phase active power;P_AC_1;1.000000;0.000000;W;4
-144;3;37134;I32;;[Meter] B phase active power;P_AC_2;1.000000;0.000000;W;4
-145;3;37136;I32;;[Meter] C phase active power;P_AC_3;1.000000;0.000000;W;4
+143;3;37132;I32;;[Meter] A phase active power;;1.000000;0.000000;W;4
+144;3;37134;I32;;[Meter] B phase active power;;1.000000;0.000000;W;4
+145;3;37136;I32;;[Meter] C phase active power;;1.000000;0.000000;W;4
 146;3;37138;U16;;[Meter] Meter model detection result;;1.000000;0.000000;;4

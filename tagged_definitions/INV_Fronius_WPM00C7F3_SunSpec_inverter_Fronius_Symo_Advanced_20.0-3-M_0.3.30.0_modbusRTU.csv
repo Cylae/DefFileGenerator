@@ -1,4 +1,4 @@
-﻿modbusRTU;inverter;Fronius;Symo Advanced 20.0-3-M;;;;;;;
+modbusRTU;inverter;Fronius;Symo Advanced 20.0-3-M;;;;;;;
 1;3;40002;I16;;1_tableId;;1.000000;0.000000;;1
 2;3;40003;I16;;1_tableSize;;1.000000;0.000000;;1
 3;3;40004_32;STRING;;1_Mn;MANUFACTURER;1.000000;0.000000;;1

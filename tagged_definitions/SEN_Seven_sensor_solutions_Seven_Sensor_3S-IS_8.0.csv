@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;SevenSensor;3S-IS;;;;;;;
+modbusRTU;Sensor;SevenSensor;3S-IS;;;;;;;
 1;3;30000;I16;;Irradiance 1;POA;0.1;0;W/m;4
 2;3;30001;I16;;Irradiance 2;;0.1;0;W/m;4
 3;3;30002;I16;;Irradiance 3;;0.1;0;W/m;4

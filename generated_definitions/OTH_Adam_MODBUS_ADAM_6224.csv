@@ -11,7 +11,7 @@ modbus;io;ADAM;6224;;;;;;;
 10;4;103;U32;;AO status channel 1;;1.000000;0.000000;;4
 11;4;105;U32;;AO status channel 2;;1.000000;0.000000;;4
 12;4;107;U32;;AO status channel 3;;1.000000;0.000000;;4
-13;4;110;U16;;DI Event Status channel 0;WIND_SPEED;1.000000;0.000000;;4
+13;4;110;U16;;DI Event Status channel 0;;1.000000;0.000000;;4
 14;4;111;U16;;DI Event Status channel 1;;1.000000;0.000000;;4
 15;4;112;U16;;DI Event Status channel 2;;1.000000;0.000000;;4
 16;4;113;U16;;DI Event Status channel 3;;1.000000;0.000000;;4

@@ -4,7 +4,7 @@ Modbus;Sensor;KIPPZONEN;RT1
 3;4;2;U16;;DevMode;;1.0;0.0;;4
 4;4;3;U16;;STATUS;;1.0;0.0;;8
 5;4;6;I16;;Sensor1;;1.0;0.0;W/m2;4
-6;4;9;I16;;PanelTemp;TEMP_CELL;0.1;0.0;Deg.Celsius;4
+6;4;9;I16;;PanelTemp;;0.1;0.0;Deg.Celsius;4
 7;4;10;I16;;VSupply;;0.1;0.0;V;4
 8;4;332;F32;;Calibration;;1.0;0.0;;4
 9;4;26;U16;;IO_ERROR_CODE;;1.0;0.0;;4

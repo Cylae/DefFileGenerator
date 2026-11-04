@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;IngenieurBuro;INGENIEURBURO_Tx-RS485-MB;;;;;;;
+modbusRTU;Other;IngenieurBuro;INGENIEURBURO_Tx-RS485-MB;;;;;;;
 1;4;1;U16;;Cell temperature;TEMP_CELL;1.0;0.0;C;4
 2;4;2;U16;;External temperature;;1.0;0.0;C;4
 3;4;5;U16;;Cell temperature measurement (FW1.52);;1.0;0.0;C;4

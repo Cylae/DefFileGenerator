@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Solax;X2;;;;;;;
+ModbusRTU;Inverter;Solax;X2;;;;;;;
 1;3;1024;U16;;Vdc1;U_DC;0.1;0;V;4
 2;3;1025;U16;;Vdc2;;0.1;0;V;4
 3;3;1026;U16;;Idc1;I_DC;0.1;0;A;4

@@ -1,4 +1,4 @@
-﻿Modbus;Meter;Lettel;MCX4-34V;;;;;;;
+Modbus;Meter;Lettel;MCX4-34V;;;;;;;
 1;4;0;F32;;Phase 1 line to neutral volts.;;1.0;0.0;V;4
 2;4;2;F32;;Phase 2 line to neutral volts.;;1.0;0.0;V;4
 3;4;4;F32;;Phase 3 line to neutral volts.;;1.0;0.0;V;4

@@ -1,4 +1,4 @@
-﻿modbus;Inverter;SL Energy;Hybrid Series Test;;;;;;;
+modbus;Inverter;SL Energy;Hybrid Series Test;;;;;;;
 1;3;10000;U16;;Comm_Protocol_Ver;;1;0;;4
 2;3;10001;U16;;Main_DSP_Ver;;1;0;;4
 3;3;10002;U16;;Aux_DSP_Ver;;1;0;;4
@@ -87,7 +87,7 @@
 86;3;10548;I16;;Power_Factor_T;;0.001;0;;4
 87;3;10549;I32;;Forward_Reverse_Pwr_S;;1;0;W;4
 88;3;10551;I32;;Forward_Reverse_Pwr_T;;1;0;W;4
-89;3;10560;U32;;Total_PV_Power;;1;0;W;4
+89;3;10560;U32;;Total_PV_Power;P_DC;1;0;W;4
 90;3;10562;U16;;PV1_Voltage;U_DC_STRING_1;0.1;0;V;4
 91;3;10563;U16;;PV1_Current;I_DC_STRING_1;0.1;0;A;4
 92;3;10564;U16;;PV1_Power;;1;0;W;4
@@ -285,7 +285,7 @@
 284;3;40118;U16;;STS_Type;;1;0;;4
 285;3;40296;U16;;Country_Regulations_Selection;;1;0;;4
 286;3;40297;U16;;Protection_Level_Settings;;1;0;;4
-287;3;40298;U16;;Undervoltage_Protection_Recovery_Value;UnderReco;0.1;0;V;4
+287;3;40298;U16;;Undervoltage_Protection_Recovery_Value;;0.1;0;V;4
 288;3;40299;U16;;Overvoltage_Protection_Recovery_Value;;0.1;0;V;4
 289;3;40300;U16;;Underfrequency_Protection_Recovery_Value;;0.01;0;Hz;4
 290;3;40301;U16;;Over_Frequency_Protection_Recovery_Value;;0.01;0;Hz;4
@@ -293,7 +293,7 @@
 292;3;40303;U16;;Overvoltage_Recovery_Time;;1;0;ms;4
 293;3;40304;U16;;Underfrequency_Recovery_Time;;1;0;ms;4
 294;3;40305;U16;;Over_Frequency_Recovery_Time;;1;0;ms;4
-295;3;40306;U16;;Undervoltage_Protection_Level_1;ProtecLevel;0.1;0;V;4
+295;3;40306;U16;;Undervoltage_Protection_Level_1;;0.1;0;V;4
 296;3;40307;U16;;Overvoltage_Protection_Level_1;;0.1;0;V;4
 297;3;40308;U16;;Underfrequency_Protection_Level_1;;0.01;0;Hz;4
 298;3;40309;U16;;Over_Frequency_Protection_Level_1;;0.01;0;Hz;4
@@ -412,7 +412,7 @@
 411;3;40487;U16;;Power_Grid_Undervoltage_Power_Adjustment_Voltage_Point_3_Power;;0.1;0;%;4
 412;3;40488;U16;;Power_Grid_Undervoltage_Power_Adjustment_Voltage_Point_4_Power;;0.1;0;%;4
 413;3;40489;U16;;Power_Grid_Undervoltage_Power_Adjustment_Time;;0.1;0;s;4
-414;3;40500;U16;;Active_Power_Control;Control;1;0;;4
+414;3;40500;U16;;Active_Power_Control;;1;0;;4
 415;3;40501;U16;;Active_Power_Degradation_Rate;CMD_RAMP_TIME_S;1;0;%/min;1
 416;3;40502;U16;;Active_Power_Rise_Rate;CMD_REVERT_TIME_S;1;0;%/min;1
 417;3;40503;U16;;Active_Power_Percentage_Setting;;0.1;0;%;4
@@ -511,7 +511,7 @@
 510;3;41962;U16;;Battery_Grid_Connection_Enabled;;1;0;;4
 511;3;41963;U16;;Enabled_By_Weak_Grid_Mode;;1;0;;4
 512;3;41964;U16;;Power_On_Activation_Control_Enable;;1;0;;4
-513;3;41968;U16;;Energy_Distribution_Pattern_2;edp;1;0;;4
+513;3;41968;U16;;Energy_Distribution_Pattern_2;;1;0;;4
 514;3;41969;U16;;UPS_Mode_Enable;;1;0;;4
 515;3;41970;U16;;Power_Limiting_Control;;1;0;;4
 516;3;41971;U16;;Max_Solar_Power;;1;0;W;4

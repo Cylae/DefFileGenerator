@@ -15,7 +15,7 @@ modbus;Battery;SL Energy;Battery;;;;;;;
 14;3;11127;U16;;Minimum unit voltage;;0.1;0;V;4
 15;3;11128;U16;;Maximum single-cell voltage;;0.1;0;V;4
 16;3;11129;U16;;Total number of loops;;1;0;;4
-17;3;11130;U16;;Battery_Voltage;;0.1;0;V;4
+17;3;11130;U16;;Battery_Voltage;U_DC;0.1;0;V;4
 18;3;11131;I16;;Battery_Discharge_Current;;0.1;0;A;4
 19;3;11132;I16;;Battery_Charging_Current;;0.1;0;A;4
 20;3;11133;I16;;Battery temperature;TEMP;0.1;;C;4
@@ -69,11 +69,11 @@ modbus;Battery;SL Energy;Battery;;;;;;;
 68;3;41972;U16;;Max_Sell_Power;;1;0;W;4
 69;3;41973;U16;;Zero_Export_Power;;1;0;W;4
 70;3;41974;U16;;Rated_Power_2;;1;0;W;4
-71;3;41975;U16;;Power;P_AC;1;0;W;4
+71;3;41975;U16;;Power;;1;0;W;4
 72;3;41976;U16;;External_Relay;;1;0;;4
 73;3;41977;U16;;AC_Couple_On_Grid_Side;;1;0;;4
 74;3;41978;U16;;AC_Couple_On_Load_Side;;1;0;;4
-75;3;41979;U16;;AC_Couple_Frequency_Upper_Limit_Setting;FREQ;0.01;0;Hz;4
+75;3;41979;U16;;AC_Couple_Frequency_Upper_Limit_Setting;;0.01;0;Hz;4
 76;3;41980;U16;;Off_Grid_Immediately_Off;;1;0;;4
 77;3;41983;U16;;Generator_Input_As_Load_Output_Enable;;1;0;;4
 78;3;41984;U16;;Generator_Input_Rated_Power;;1;0;W;4
@@ -143,7 +143,7 @@ modbus;Battery;SL Energy;Battery;;;;;;;
 142;3;42055;U16;;Maximum_Discharge_Power_During_Time_Period_6;;0.1;0;kW;4
 143;3;42056;U16;;Time_Period_6Start_Chargingvoltage_Value;;0.1;0;V;4
 144;3;42057;U16;;Time_Period_6Start_ChargingSOC_Value;;1;0;%;4
-145;3;42091;I16;;Battery power settings;BatteryCmd;0.1;0;kW;4
+145;3;42091;I16;;Battery power settings;;0.1;0;kW;4
 146;3;42092;I16;;SOC forced calibration enabled;;1;0;;4
 147;3;42093;U16;;SOC mandatory calibration cycle;;1;0;;4
 148;3;42094;U16;;Battery port information;;1;0;;4
@@ -172,13 +172,13 @@ modbus;Battery;SL Energy;Battery;;;;;;;
 171;3;42120;I16;;Temperature compensation value;;1;0;mV/C;4
 172;3;42121;U16;;Battery internal resistance;;1;0;mOhm;4
 173;3;42122;U16;;Battery capacity;;1;0;Ah;4
-174;3;42123;I16;;Maximum total charging current of battery;I_AC;1;0;A;4
+174;3;42123;I16;;Maximum total charging current of battery;;1;0;A;4
 175;3;42124;I16;;Maximum total discharge current of battery;;1;0;A;4
 176;3;42125;U16;;Battery discharge cutoff voltage in hybrid mode;;0.1;0;V;4
 177;3;42126;U16;;Battery discharge cutoff SOC in hybrid mode;;1;0;%;4
 178;3;42127;U16;;Cutoff recovery voltage in hybrid mode;;0.1;0;V;4
 179;3;42128;U16;;Cut-off recovery of SOC in hybrid mode;;1;0;%;4
-180;3;42130;U16;;Battery/BMS manufacturers;MANUFACTURER;1;0;;4
+180;3;42130;U16;;Battery/BMS manufacturers;;1;0;;4
 181;3;42132;U16;;Battery low voltage alarm SOC value;;1;0;%;4
 182;3;42133;U16;;Battery undervoltage alarm restores SOC value;;1;0;%;4
 183;3;42134;U16;;Battery discharge cutoff SOC value;;1;0;%;4

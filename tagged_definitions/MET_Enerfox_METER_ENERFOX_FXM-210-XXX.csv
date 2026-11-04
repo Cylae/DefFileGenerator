@@ -1,4 +1,4 @@
-﻿Modbus;Meter;Enerfox;FXM-210-XXX;;;;;;;
+Modbus;Meter;Enerfox;FXM-210-XXX;;;;;;;
 1;3;512;U16;;Meter address;;1;0;;4
 2;3;513;U16;;RS485 baud rate;;1;0;bps;4
 3;3;514;U16;;RS485 parity setting;;1;0;;4

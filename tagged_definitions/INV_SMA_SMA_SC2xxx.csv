@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_SC2xxx;;;;;;;
+modbusRTU;Inverter;SMA;SMA_SC2xxx;;;;;;;
 1;4;0;U16;;InvOpMod;;1.0;0.0;;4
 2;4;2;U16;;RemRdy;;1.0;0.0;;4
 3;4;4;U16;;GriMng.VArMod;;1.0;0.0;;4

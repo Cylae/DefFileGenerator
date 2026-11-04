@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
+ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
 1;4;0_1;STRING;;Device Type;MODEL;1.0;0.0;;4
 2;4;1;U32;;E-today;;0.0;0.0;kW;4
 3;4;3;U32;;E-total;E_TOT;0.0;0.0;kW;4

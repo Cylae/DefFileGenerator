@@ -1,4 +1,4 @@
-﻿modbus;Inverter;SL Energy;Hybrid Series Test;;;;;;;
+modbus;Inverter;SL Energy;Hybrid Series Test;;;;;;;
 1;3;10000;U16;;Comm_Protocol_Ver;;1.000000;0.000000;;4
 2;3;10001;U16;;Main_DSP_Ver;;1.000000;0.000000;;4
 3;3;10002;U16;;Aux_DSP_Ver;;1.000000;0.000000;;4
@@ -87,7 +87,7 @@
 86;3;10548;I16;;Power_Factor_T;;0.001000;0.000000;;4
 87;3;10549;I32;;Forward_Reverse_Pwr_S;;1.000000;0.000000;W;4
 88;3;10551;I32;;Forward_Reverse_Pwr_T;;1.000000;0.000000;W;4
-89;3;10560;U32;;Total_PV_Power;;1.000000;0.000000;W;4
+89;3;10560;U32;;Total_PV_Power;P_DC;1.000000;0.000000;W;4
 90;3;10562;U16;;PV1_Voltage;U_DC_STRING_1;0.100000;0.000000;V;4
 91;3;10563;U16;;PV1_Current;I_DC_STRING_1;0.100000;0.000000;A;4
 92;3;10564;U16;;PV1_Power;;1.000000;0.000000;W;4
@@ -182,8 +182,8 @@
 181;3;20014;U16;;SOC;SOC;0.100000;0.000000;%;4
 182;3;20015;U16;;SOH;SOH;1.000000;0.000000;%;4
 183;3;20016;I16;;SOE;;0.100000;0.000000;%;4
-184;3;20017;U16;;Charging cutoff voltage;CCV;0.100000;0.000000;%;4
-185;3;20018;U16;;Discharge cutoff voltage;DCV;0.100000;0.000000;%;4
+184;3;20017;U16;;Charging cutoff voltage;;0.100000;0.000000;%;4
+185;3;20018;U16;;Discharge cutoff voltage;;0.100000;0.000000;%;4
 186;3;20019;U16;;Maximum charging current;;0.100000;0.000000;A;4
 187;3;20020;U16;;Maximum discharge current;;0.100000;0.000000;A;4
 188;3;20021;I16;;Cumulative charging power (high bytes);;0.100000;0.000000;kWh;4
@@ -251,11 +251,11 @@
 250;3;40042;U16;;CT_Related_Settings;;1.000000;0.000000;;4
 251;3;40043;U16;;External_CT_Transformer_Ratio;;1.000000;0.000000;;4
 252;3;40046;U16;;Loading_Slope_Enable;;1.000000;0.000000;;4
-253;3;40047;U16;;Start_Up_Slope;SUS;1.000000;0.000000;%Pn/min;4
-254;3;40048;U16;;Restart_Slope;RS;1.000000;0.000000;%Pn/min;4
-255;3;40049;U16;;Shutdown_And_Load_Reduction_Enable;SLRE;1.000000;0.000000;;4
-256;3;40050;U16;;Shutdown_Load_Reduction_Slope;SLRS;1.000000;0.000000;%Pn/min;4
-257;3;40051;U16;;Inverter_Remote_Lock;IRL;1.000000;0.000000;;4
+253;3;40047;U16;;Start_Up_Slope;;1.000000;0.000000;%Pn/min;4
+254;3;40048;U16;;Restart_Slope;;1.000000;0.000000;%Pn/min;4
+255;3;40049;U16;;Shutdown_And_Load_Reduction_Enable;;1.000000;0.000000;;4
+256;3;40050;U16;;Shutdown_Load_Reduction_Slope;;1.000000;0.000000;%Pn/min;4
+257;3;40051;U16;;Inverter_Remote_Lock;;1.000000;0.000000;;4
 258;3;40052;U16;;Grid_Connected_Operation_Switch;;1.000000;0.000000;;4
 259;3;40053;U16;;Buzzer_Enable;;1.000000;0.000000;;4
 260;3;40054;U16;;Zero_Ground_Detection_Enabled;;1.000000;0.000000;;4
@@ -305,7 +305,7 @@
 304;3;40118;U16;;STS_Type;;1.000000;0.000000;;4
 305;3;40296;U16;;Country_Regulations_Selection;;1.000000;0.000000;;4
 306;3;40297;U16;;Protection_Level_Settings;;1.000000;0.000000;;4
-307;3;40298;U16;;Undervoltage_Protection_Recovery_Value;UnderReco;0.100000;0.000000;V;4
+307;3;40298;U16;;Undervoltage_Protection_Recovery_Value;;0.100000;0.000000;V;4
 308;3;40299;U16;;Overvoltage_Protection_Recovery_Value;;0.100000;0.000000;V;4
 309;3;40300;U16;;Underfrequency_Protection_Recovery_Value;;0.010000;0.000000;Hz;4
 310;3;40301;U16;;Over_Frequency_Protection_Recovery_Value;;0.010000;0.000000;Hz;4
@@ -313,7 +313,7 @@
 312;3;40303;U16;;Overvoltage_Recovery_Time;;1.000000;0.000000;ms;4
 313;3;40304;U16;;Underfrequency_Recovery_Time;;1.000000;0.000000;ms;4
 314;3;40305;U16;;Over_Frequency_Recovery_Time;;1.000000;0.000000;ms;4
-315;3;40306;U16;;Undervoltage_Protection_Level_1;ProtecLevel;0.100000;0.000000;V;4
+315;3;40306;U16;;Undervoltage_Protection_Level_1;;0.100000;0.000000;V;4
 316;3;40307;U16;;Overvoltage_Protection_Level_1;;0.100000;0.000000;V;4
 317;3;40308;U16;;Underfrequency_Protection_Level_1;;0.010000;0.000000;Hz;4
 318;3;40309;U16;;Over_Frequency_Protection_Level_1;;0.010000;0.000000;Hz;4
@@ -432,15 +432,15 @@
 431;3;40487;U16;;Power_Grid_Undervoltage_Power_Adjustment_Voltage_Point_3_Power;;0.100000;0.000000;%;4
 432;3;40488;U16;;Power_Grid_Undervoltage_Power_Adjustment_Voltage_Point_4_Power;;0.100000;0.000000;%;4
 433;3;40489;U16;;Power_Grid_Undervoltage_Power_Adjustment_Time;;0.100000;0.000000;s;4
-434;3;40500;U16;;Active_Power_Control;Control;1.000000;0.000000;;4
-435;3;40501;U16;;Active_Power_Degradation_Rate;APDR;1.000000;0.000000;%/min;4
-436;3;40502;U16;;Active_Power_Rise_Rate;APRR;1.000000;0.000000;%/min;4
+434;3;40500;U16;;Active_Power_Control;;1.000000;0.000000;;4
+435;3;40501;U16;;Active_Power_Degradation_Rate;;1.000000;0.000000;%/min;4
+436;3;40502;U16;;Active_Power_Rise_Rate;;1.000000;0.000000;%/min;4
 437;3;40503;U16;;Active_Power_Percentage_Setting;;0.100000;0.000000;%;4
 438;3;40504;U16;;Reactive_Power_Regulation;;1.000000;0.000000;;4
 439;3;40505;I16;;Reactive_Power_Percentage_Setting;CMD_Q_AC_SET_PERCENT;0.100000;0.000000;%;1
 440;3;40506;I16;;Power_Factor_Setting_Value;;0.001000;0.000000;;4
-441;3;40507;U16;;Power_Response_Switch;prs;1.000000;0.000000;;4
-442;3;40508;U16;;Power_Response_Time_Constant;prtc;0.100000;0.000000;s;4
+441;3;40507;U16;;Power_Response_Switch;;1.000000;0.000000;;4
+442;3;40508;U16;;Power_Response_Time_Constant;;0.100000;0.000000;s;4
 443;3;40520;U16;;Q_P_Curve_Type_Selection;;1.000000;0.000000;;4
 444;3;40521;U16;;Active_Power_Percentage_Point_A;;0.100000;0.000000;%;4
 445;3;40522;U16;;Active_Power_Percentage_B;;0.100000;0.000000;%;4
@@ -531,7 +531,7 @@
 530;3;41962;U16;;Battery_Grid_Connection_Enabled;;1.000000;0.000000;;4
 531;3;41963;U16;;Enabled_By_Weak_Grid_Mode;;1.000000;0.000000;;4
 532;3;41964;U16;;Power_On_Activation_Control_Enable;;1.000000;0.000000;;4
-533;3;41968;U16;;Energy_Distribution_Pattern_2;edp;1.000000;0.000000;;4
+533;3;41968;U16;;Energy_Distribution_Pattern_2;;1.000000;0.000000;;4
 534;3;41969;U16;;UPS_Mode_Enable;;1.000000;0.000000;;4
 535;3;41970;U16;;Power_Limiting_Control;;1.000000;0.000000;;4
 536;3;41971;U16;;Max_Solar_Power;;1.000000;0.000000;W;4
@@ -616,17 +616,17 @@
 615;3;42086;U16;;Off_Grid_Output_Voltage_Setting;;0.100000;0.000000;V;4
 616;3;42087;U16;;Off_Grid_Output_Frequency_Settings;;0.010000;0.000000;Hz;4
 617;3;42088;U16;;Energy_Flow_Priority_Setting;;1.000000;0.000000;;4
-618;3;42091;I16;;Battery power settings;bps;0.100000;0.000000;kW;4
-619;3;42092;I16;;SOC forced calibration enabled;sfce;1.000000;0.000000;;4
+618;3;42091;I16;;Battery power settings;;0.100000;0.000000;kW;4
+619;3;42092;I16;;SOC forced calibration enabled;;1.000000;0.000000;;4
 620;3;42093;U16;;SOC mandatory calibration cycle;;1.000000;0.000000;;4
 621;3;42094;U16;;Battery port information;;1.000000;0.000000;;4
 622;3;42095;U16;;Battery information;;1.000000;0.000000;;4
 623;3;42096;U16;;Battery operating type;;1.000000;0.000000;;4
 624;3;42097;U16;;Number of batteries connected in series and parallel;;1.000000;0.000000;;4
-625;3;42098;U16;;Battery charge/discharge slope enable;bcdse;1.000000;0.000000;;4
-626;3;42099;U16;;Battery charge/discharge slope;bcds;1.000000;0.000000;%Pn/Mn;4
-627;3;42100;U16;;Battery charging power settings;bcps;0.100000;0.000000;kW;4
-628;3;42101;U16;;Battery discharge power settings;bdps;0.100000;0.000000;kW;4
+625;3;42098;U16;;Battery charge/discharge slope enable;;1.000000;0.000000;;4
+626;3;42099;U16;;Battery charge/discharge slope;;1.000000;0.000000;%Pn/Mn;4
+627;3;42100;U16;;Battery charging power settings;;0.100000;0.000000;kW;4
+628;3;42101;U16;;Battery discharge power settings;;0.100000;0.000000;kW;4
 629;3;42105;U16;;CV charging voltage;;0.100000;0.000000;V;4
 630;3;42106;U16;;float voltage;;0.100000;0.000000;V;4
 631;3;42107;U16;;Battery equalization enable;;0.000000;0.000000;V;4

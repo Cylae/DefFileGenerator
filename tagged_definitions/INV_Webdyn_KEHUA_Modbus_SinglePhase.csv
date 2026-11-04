@@ -1,7 +1,7 @@
-﻿ModbusRTU;Inverter;Kehua;SinglePhase;;;;;;;
+ModbusRTU;Inverter;Kehua;SinglePhase;;;;;;;
 1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
 2;4;4502;U16;;Power Voltage;;0.1;0.0;V;4
-3;4;4503;U16;;Grid Current;;0.1;0.0;A;4
+3;4;4503;U16;;Grid Current;I_AC;0.1;0.0;A;4
 4;4;4504;U16;;Grid Frequency;FREQ;0.1;0.0;Hz;4
 5;4;4505;U16;;Daily Power Consumption;;0.1;0.0;kWh;4
 6;4;4506;U16;;Daily Power Generation;E_DAY;0.1;0.0;kWh;4
@@ -25,7 +25,7 @@
 24;4;4524;U16;;PV2 Current;I_DC_STRING_2;0.1;0.0;A;4
 25;4;4525;U16;;PV2 Power;;0.0;0.0;W;4
 26;4;4526;U16;;PV Day Power generation;;0.1;0.0;kWh;4
-27;4;4537;U16;;Total PV Power;;1.0;0.0;W;4
+27;4;4537;U16;;Total PV Power;P_DC;1.0;0.0;W;4
 28;4;4560;U16;;PV3 Voltage;U_DC_STRING_3;0.1;0.0;V;4
 29;4;4561;U16;;PV3 Current;I_DC_STRING_3;0.1;0.0;A;4
 30;4;4562;U16;;PV3 Power;;0.0;0.0;W;4

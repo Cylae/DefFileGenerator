@@ -1,4 +1,4 @@
-﻿Modbus;Meter;CIRCUTOR;CVME3MINI;;;;;;;
+Modbus;Meter;CIRCUTOR;CVME3MINI;;;;;;;
 1;3;4096;I32;;Volt L1;;0.1;0.0;V;4
 2;3;4098;I32;;Current L1;I_AC_1;0.001;0.0;A;4
 3;3;4100;I32;;Active power L1;P_AC_1;1.0;0.0;kW;4

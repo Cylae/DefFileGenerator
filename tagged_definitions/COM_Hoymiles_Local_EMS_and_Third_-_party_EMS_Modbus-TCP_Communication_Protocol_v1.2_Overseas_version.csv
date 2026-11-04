@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Hoymiles;Local EMS and Third - party EM;;;;;;;
+modbusRTU;Other;Hoymiles;Local EMS and Third - party EM;;;;;;;
 1;4;1;U16;;Heartbeat Information;;1.0;0.0;/;4
 2;4;2;U16;;Current Control Mode;;1.0;0.0;/;4
 3;4;3;U16;;Current Operating Mode;;1.0;0.0;/;4

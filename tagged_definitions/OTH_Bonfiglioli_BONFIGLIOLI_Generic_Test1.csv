@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic_Test1;;;;;;;
+modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic_Test1;;;;;;;
 1;4;3841;U16;;Active Power;P_AC;1.0;0.0;kW;4
 2;4;3842;U16;;DC-Link Voltage;U_DC;1.0;0.0;V;4
 3;4;3843;U16;;Heat Sink Temperature;TEMP_INT;1.0;0.0;°C;4

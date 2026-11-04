@@ -1,12 +1,12 @@
 modbusRTU;Other;HAGER;Generic;;;;;;;
-1;3;4096_16;STRING;;Vendor Name;;1;0;;4
+1;3;4096_16;STRING;;Vendor Name;MANUFACTURER;1;0;;4
 2;3;4112_16;STRING;;Product Code;;1;0;;4
 3;3;4128;U32;;SW version;;1;0;;4
 4;3;4146_16;STRING;;Product Name;;1;0;;4
-5;3;4162_16;STRING;;Model Name;MODEL;1;0;;4
+5;3;4162_16;STRING;;Model Name;;1;0;;4
 6;3;4178_16;STRING;;User Application Name;;1;0;;4
 7;3;4194;U32;;HW Version;;1;0;;4
-8;3;4196_16;STRING;;Product code (Serial number);SERIAL;1;0;;4
+8;3;4196_16;STRING;;Product code (Serial number);;1;0;;4
 9;3;4212_2;STRING;;Product code (Site Code);;1;0;;4
 10;3;4214;U16;;Production Date (Day of the Year);;1;0;;4
 11;3;4215;U16;;Production Date (Year);;1;0;;4
@@ -21,14 +21,14 @@ modbusRTU;Other;HAGER;Generic;;;;;;;
 20;3;45067;U32;;I(L2);;1;0;mA;4
 21;3;45069;U32;;I(L3);;1;0;mA;4
 22;3;45071;U32;;I(Neutral);;1;0;mA;4
-23;3;45073;I32;;P(?L);P_AC_3;0.01;0;KW;4
+23;3;45073;I32;;P(?L);;0.01;0;KW;4
 24;3;45075;I32;;Q(?L);;0.01;0;kvar;4
 25;3;45077;U32;;S(?L);;0.01;0;KvA;4
 26;3;45079;U16;;PF(?L) IEC;;0.001;0;;4
 27;3;45080;U16;;PF(?L) IEEE;;0.001;0;;4
 28;3;45081;I32;;P(L1);P_AC_1;0.01;0;KW;4
 29;3;45083;I32;;P(L2);P_AC_2;0.01;0;KW;4
-30;3;45085;I32;;P(L3);;0.01;0;KW;4
+30;3;45085;I32;;P(L3);P_AC_3;0.01;0;KW;4
 31;3;45087;I32;;Q(L1);;0.01;0;kvar;4
 32;3;45089;I32;;Q(L2);;0.01;0;kvar;4
 33;3;45091;I32;;Q(L3);;0.01;0;kvar;4
@@ -61,12 +61,12 @@ modbusRTU;Other;HAGER;Generic;;;;;;;
 60;3;45462;U32;;Er-[L3];;1;0;kvarh;4
 61;3;45689;U16;;I(L3)_1;;1;0;mA;4
 62;3;45690;U16;;I(Neutral)_1;;1;0;mA;4
-63;3;45691;U16;;P(?L)_1;totalPwrKWatt;1;0;W;4
+63;3;45691;U16;;P(?L)_1;;1;0;W;4
 64;3;45692;U16;;Q(?L)_1;;1;0;var;4
 65;3;45693;U16;;S(?L)_1;;1;0;VA;4
 66;3;45694;U16;;PF(?L) IEC_1;;0.001;0;;4
 67;3;45695;U16;;PF(?L) IEEE_1;;0.001;0;;4
-68;3;45696;U16;;P(L1)_1;P_AC;1;0;W;4
+68;3;45696;U16;;P(L1)_1;;1;0;W;4
 69;3;45697;U16;;P(L2)_1;;1;0;W;4
 70;3;45698;U16;;P(L3)_1;;1;0;W;4
 71;3;45699;U16;;Q(L1)_1;;1;0;var;4
@@ -99,5 +99,5 @@ modbusRTU;Other;HAGER;Generic;;;;;;;
 98;3;45986;U32;;Er- [L1];;0.01;0;kvarh;4
 99;3;45988;U32;;Er- [L2];;0.01;0;kvarh;4
 100;3;45990;U32;;Er- [L3];;0.01;0;kvarh;4
-101;3;49216;U16;;Modbus Address;UNIT_ID;1;0;;4
+101;3;49216;U16;;Modbus Address;;1;0;;4
 102;3;49217;U16;;Modbus Baud Rate, Modbus Parity & Stop Bits;;1;0;;4

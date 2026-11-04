@@ -1,4 +1,4 @@
-﻿modbus;EMS;SAJ;CM2-EMS;;;;;;;
+modbus;EMS;SAJ;CM2-EMS;;;;;;;
 1;3;33792;U16;;EMSEnable;;1;0;;1
 2;3;33793;U16;;EMSKeepTime;;1;0;S;1
 3;3;33794;I16;;EMSINVPRef;;0.01;0;%;1

@@ -166,20 +166,27 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
         self.assertEqual(header[0], "modbusTCP")
         self.assertEqual(header[1], "Inverter")
         self.assertEqual(header[2], "MarsRenewable")
-        self.assertEqual(len(rows), 34)
+        self.assertEqual(len(rows), 3400)
 
-        lc_rows = [r for r in rows if r[5].startswith("LiquidCooling1 ")]
-        ac_rows = [r for r in rows if r[5].startswith("AC1 ")]
-        self.assertEqual(len(lc_rows), 18)
-        self.assertEqual(len(ac_rows), 16)
+        # 100 AC units (16 regs each = 1600) and 100 LC units (18 regs each = 1800)
+        ac_all = [r for r in rows if r[5].startswith("AC")]
+        lc_all = [r for r in rows if r[5].startswith("LiquidCooling")]
+        self.assertEqual(len(ac_all), 1600)
+        self.assertEqual(len(lc_all), 1800)
 
         tags = {r[6] for r in rows if r[6]}
         self.assertIn("TEMP_AMB", tags)
         self.assertIn("TEMP", tags)
         self.assertIn("HUMIDITY", tags)
 
+        # Also verify 1-unit baseline file
+        p_1u = GEN_DIR / "MarsRenewable_LC-AC_1Unit.csv"
+        self.assertTrue(p_1u.exists())
+        _, rows_1u = self._read_definition(p_1u)
+        self.assertEqual(len(rows_1u), 34)
+
     def test_mars_standalone_lc_and_ac_compliance(self) -> None:
-        """Verify standalone MarsRenewable_LC.csv (18 regs) and MarsRenewable_AC.csv (16 regs)."""
+        """Verify standalone MarsRenewable_LC.csv (1800 regs) and MarsRenewable_AC.csv (1600 regs)."""
         lc_path = GEN_DIR / "MarsRenewable_LC.csv"
         ac_path = GEN_DIR / "MarsRenewable_AC.csv"
 
@@ -193,15 +200,25 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
         self.assertTrue(rep_ac.is_valid, f"AC validation errors: {[i.message for i in rep_ac.issues]}")
 
         _, lc_rows = self._read_definition(lc_path)
-        self.assertEqual(len(lc_rows), 18)
+        self.assertEqual(len(lc_rows), 1800)
         lc_tags = {r[6] for r in lc_rows if r[6]}
         self.assertIn("TEMP_AMB", lc_tags)
 
         _, ac_rows = self._read_definition(ac_path)
-        self.assertEqual(len(ac_rows), 16)
+        self.assertEqual(len(ac_rows), 1600)
         ac_tags = {r[6] for r in ac_rows if r[6]}
         self.assertIn("TEMP", ac_tags)
         self.assertIn("HUMIDITY", ac_tags)
+
+        # Verify 1-unit baseline files
+        lc_1u = GEN_DIR / "MarsRenewable_LC_1Unit.csv"
+        ac_1u = GEN_DIR / "MarsRenewable_AC_1Unit.csv"
+        self.assertTrue(lc_1u.exists())
+        self.assertTrue(ac_1u.exists())
+        _, lc_1u_rows = self._read_definition(lc_1u)
+        _, ac_1u_rows = self._read_definition(ac_1u)
+        self.assertEqual(len(lc_1u_rows), 18)
+        self.assertEqual(len(ac_1u_rows), 16)
 
     def test_mars_meter_compliance(self) -> None:
         """Verify MarsRenewable_Meter.csv (Device ID 1: Bidirectional Meter 1)."""

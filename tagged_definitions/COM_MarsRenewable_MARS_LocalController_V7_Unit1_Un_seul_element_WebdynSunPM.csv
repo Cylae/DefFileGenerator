@@ -1,4 +1,4 @@
-﻿Modbus;Logger;MarsRenewable;LocalController V7.0 Unit1 - Single element;0;;;;;;
+Modbus;Logger;MarsRenewable;LocalController V7.0 Unit1 - Single element;0;;;;;;
 1;4;0;U16;;1#PCS - Operating Status;;1;0;;4
 2;4;2;F32;;1#PCS - AC Uab Line Voltage;U_AC_L1L2;1;0;V;4
 3;4;4;F32;;1#PCS - AC Ubc Line Voltage;U_AC_L2L3;1;0;V;4

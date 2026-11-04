@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;LETTEL;MAP4-345M;;;;;;;
+modbusRTU;Meter;LETTEL;MAP4-345M;;;;;;;
 1;4;3;U16;;Sequence des phases;;1;0;;4
 2;4;4;F32;;Angle de phase L1 entre tension et courant;U_AC_1;0.1;0;Degres;4
 3;4;6;F32;;Angle de phase L2 entre tension et courant;U_AC_2;0.1;0;Degres;4

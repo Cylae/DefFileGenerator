@@ -1,8 +1,8 @@
-﻿modbusRTU;Other;PowerOne;ABB_TRIO_200_276_FR;;;;;;;
+modbusRTU;Other;PowerOne;ABB_TRIO_200_276_FR;;;;;;;
 1;4;179;U16;;Remote On/Off;CMD_ON;1.0;0.0;;1
 2;4;180;U16;;Alarm manual reset;;1.0;0.0;;4
 3;4;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la montée en puissance (actif);;1.0;0.0;;4
-4;4;190;U16;;Mode dynamique - Tempo - Durée des consignes de puissance active ou réactive 1;P_AC;1.0;0.0;min;4
+4;4;190;U16;;Mode dynamique - Tempo - Durée des consignes de puissance active ou réactive 1;;1.0;0.0;min;4
 5;4;197;U16;;Définition du comportement transitoire 1;;1.0;0.0;;4
 6;4;199;U16;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi);Q_AC;1.0;0.0;;4
 7;4;201;U16;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi);;1.0;0.0;;4

@@ -14,7 +14,7 @@ Modbus;Meter;Socomec;Diris_I30
 13;3;18478;I32;;Total reactive power;Q_AC;0.001;0.0;Var;4
 14;3;18484;U32;;Total apparent power;S_AC;0.001;0.0;VA;4
 15;3;18486;I16;;Total power factor;PF;0.001;0.0;COS phi;4
-16;3;19841;U32;;Total Positive active Energy _ Ea_;E_TOT;1.0;0.0;KWh;4
+16;3;19841;U32;;Total Positive active Energy _ Ea_;;1.0;0.0;KWh;4
 17;3;19844;U32;;Total Negative active Energy _ Ea-;;1.0;0.0;KWh;4
 18;3;19847;U32;;Total Positive reactive Energy _ Er_;;1.0;0.0;Kvarh;4
 19;3;19850;U32;;Total Negative reactive Energy _ Er-;;1.0;0.0;Kvarh;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_ClusterControler1;;;;;;;
+modbusRTU;Inverter;SMA;SMA_ClusterControler1;;;;;;;
 1;4;30001;U16;;Numéro de version du profil Modbus SMA;;1.0;0.0;;1
 2;4;30003;U16;;SUSy-ID (du Cluster Controller);;1.0;0.0;;1
 3;4;30005;U16;;Numéro de série (du Cluster Controller);SERIAL;1.0;0.0;;1

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Inaccess;MODBUS_Inaccess;;;;;;;
+modbusRTU;Other;Inaccess;MODBUS_Inaccess;;;;;;;
 1;4;1;U16;;pvpgroup001:MODTEMP;;1.0;0.0;;4
 2;4;2;U16;;pvpgroup001:VSTRING;;1.0;0.0;;4
 3;4;3;U16;;pvpgroup001:_ISTRING;;1.0;0.0;;4

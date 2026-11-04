@@ -9,10 +9,10 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 8;4;4515;U16;;U-phase grid current;;0.1;0.0;A;4
 9;4;4516;U16;;V-phase grid current;;0.1;0.0;A;4
 10;4;4517;U16;;W-phase grid current;;0.1;0.0;A;4
-11;4;4518;I16;;Grid total active power;P_AC;0.1;0.0;kWh;4
-12;4;4519;I16;;Grid total reactive power;Q_AC;0.1;0.0;kVar;4
-13;4;4522;U16;;The total grid apparent power;S_AC;0.1;0.0;Kva;4
-14;4;4526;I16;;Output power factor;PF;0.01;0.0;;4
+11;4;4518;I16;;Grid total active power;;0.1;0.0;kWh;4
+12;4;4519;I16;;Grid total reactive power;;0.1;0.0;kVar;4
+13;4;4522;U16;;The total grid apparent power;;0.1;0.0;Kva;4
+14;4;4526;I16;;Output power factor;;0.01;0.0;;4
 15;4;4527;U16;;PV input total power ;;0.1;0.0;kW;4
 16;4;4528;U16;;AC leakage current;;0.1;0.0;mA;4
 17;4;4529;U16;;Daily grid electricity consumption;;1.0;0.0;;4

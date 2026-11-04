@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Autarco;Modbus Table;;;;;;;
+modbusRTU;Other;Autarco;Modbus Table;;;;;;;
 1;4;3000;U16;;Product model;MODEL;1.0;0.0;None;4
 2;4;3001;U16;;DSP software version;;1.0;0.0;None;4
 3;4;3002;U16;;LCD software version;;1.0;0.0;None;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Jema;JEMA_Generic_revG;;;;;;;
+modbusRTU;Other;Jema;JEMA_Generic_revG;;;;;;;
 1;4;75;U16;;DC SIDE Current INVERTER String 1;I_DC_STRING_1;1.0;0.0;A;4
 2;4;76;U16;;DC SIDE Current INVERTER String 2;I_DC_STRING_2;1.0;0.0;A;4
 3;4;77;U16;;DC SIDE Current INVERTER String 3;I_DC_STRING_3;1.0;0.0;A;4

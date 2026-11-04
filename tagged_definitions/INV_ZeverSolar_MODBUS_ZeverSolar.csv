@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;ZEVERSOLAR;Generic;;;;;;;
+ModbusRTU;Inverter;ZEVERSOLAR;Generic;;;;;;;
 1;4;0_2;STRING;;Device Type;MODEL;1;0;;4
 2;4;1;U32;;E-today;;0.1;0;kWh;4
 3;4;3;U32;;E-total;E_TOT;0.1;0;kWh;4
@@ -67,7 +67,7 @@
 66;3;5026;U16;;10 minutes average over voltage threshold;;0.1;0;V;4
 67;3;5027;U16;;ISO fault threshold;;1;0;kOhm;4
 68;3;5028;U16;;DCI fault threshold;;1;0;mA;4
-69;3;5029;U16;;Active power set;cmdPwrPct;1;0;%Pn;4
+69;3;5029;U16;;Active power set;;1;0;%Pn;4
 70;3;5030;U16;;Active power control response time;;1;0;S;4
 71;3;5036;U16;;Reactive power control mode;;1;0;;4
 72;3;5037;I16;;Power factor;;0.01;0;;4

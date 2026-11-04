@@ -14,11 +14,11 @@ Modbus;Inverter;FOX ESS;G-MAX BMS;;;;;;;
 13;4;212;U16;;Maximum cell voltage Cell number;;1;0;;4
 14;4;213;U16;;Minimum cell voltage cluster number;;1;0;;4
 15;4;214;U16;;Minimum cell voltage Cell number;;1;0;;4
-16;4;215;U16;;Maximum cell temperature cluster number;TEMP_CELL;1;0;;4
+16;4;215;U16;;Maximum cell temperature cluster number;;1;0;;4
 17;4;216;U16;;Maximum monomer temperature monomer number;;1;0;;4
 18;4;217;U16;;Minimum cell temperature cluster number;;1;0;;4
 19;4;218;U16;;Minimum monomer temperature monomer number;;1;0;;4
-20;4;223;U16;;Maximum pressure difference of monomer;PRESSURE;1;0;mV;4
+20;4;223;U16;;Maximum pressure difference of monomer;;1;0;mV;4
 21;4;224;I16;;Stack power;;1;0;KW;4
 22;4;227;U32;;Cumulative cluster charging capacity;;1;0;KWh;4
 23;4;229;U32;;Cumulative cluster discharge capacity;;1;0;KWh;4
@@ -47,7 +47,7 @@ Modbus;Inverter;FOX ESS;G-MAX BMS;;;;;;;
 46;4;2224;I16;;Cluster Power;;1;0;KW;4
 47;4;2227;U32;;Cumulative cluster charging capacity 2;;1;0;KWh;4
 48;4;2229;U32;;Cumulative cluster discharge capacity 2;;1;0;KWh;4
-49;4;200;U16;;Negative bus insulation slight alarm;R_ISO;1;0;;4
+49;4;200;U16;;Negative bus insulation slight alarm;;1;0;;4
 50;4;201;U16;;Negative bus insulation moderate alarm;;1;0;;4
 51;4;202;U16;;Negative bus insulation serious alarm;;1;0;;4
 52;4;206;U16;;Cluster terminal voltage overvoltage slight alarm;;1;0;;4

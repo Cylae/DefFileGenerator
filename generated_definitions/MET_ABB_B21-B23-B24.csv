@@ -57,10 +57,10 @@ Modbus;Meter;ABB;B21-B23-B24
 56;3;21808;U64;;Resettable active export;;0.01;0.0;kWh;4
 57;3;21812;U64;;Resettable reactive import;;0.01;0.0;kWh;4
 58;3;21816;U64;;Resettable reactive export;;0.01;0.0;kWh;4
-59;3;23296;U32;;Voltage L1-N;U_AC_1;0.1;0.0;V;4
-60;3;23298;U32;;Voltage L2-N;U_AC_2;0.1;0.0;V;4
-61;3;23300;U32;;Voltage L3-N;U_AC_3;0.1;0.0;V;4
-62;3;23302;U32;;Voltage L1-L2;U_AC_L1L2;0.1;0.0;V;4
+59;3;23296;U32;;Voltage L1-N;;0.1;0.0;V;4
+60;3;23298;U32;;Voltage L2-N;;0.1;0.0;V;4
+61;3;23300;U32;;Voltage L3-N;;0.1;0.0;V;4
+62;3;23302;U32;;Voltage L1-L2;;0.1;0.0;V;4
 63;3;23304;U32;;Voltage L3-L2;;0.1;0.0;V;4
 64;3;23306;U32;;Voltage L1-L3;;0.1;0.0;V;4
 65;3;23308;U32;;Current L1;I_AC_1;0.01;0.0;A;4
@@ -71,14 +71,14 @@ Modbus;Meter;ABB;B21-B23-B24
 70;3;23318;I32;;Active_power L1;P_AC_1;0.01;0.0;W;4
 71;3;23320;I32;;Active_power L2;P_AC_2;0.01;0.0;W;4
 72;3;23322;I32;;Active_power L3;P_AC_3;0.01;0.0;W;4
-73;3;23324;I32;;Reactive_power Total;Q_AC;0.01;0.0;var;4
-74;3;23326;I32;;Reactive_power L1;;0.01;0.0;var;4
-75;3;23328;I32;;Reactive_power L2;;0.01;0.0;var;4
-76;3;23330;I32;;Reactive_power L3;;0.01;0.0;var;4
+73;3;23324;I32;;Reactive_power Total;;0.01;0.0;var;4
+74;3;23326;I32;;Reactive_power L1;Q_AC_1;0.01;0.0;var;4
+75;3;23328;I32;;Reactive_power L2;Q_AC_2;0.01;0.0;var;4
+76;3;23330;I32;;Reactive_power L3;Q_AC_3;0.01;0.0;var;4
 77;3;23332;I32;;Apparent_power Total;;0.01;0.0;VA;4
-78;3;23334;I32;;Apparent_power L1;;0.01;0.0;VA;4
-79;3;23336;I32;;Apparent_power L2;;0.01;0.0;VA;4
-80;3;23338;I32;;Apparent_power L3;;0.01;0.0;VA;4
+78;3;23334;I32;;Apparent_power L1;S_AC_1;0.01;0.0;VA;4
+79;3;23336;I32;;Apparent_power L2;S_AC_2;0.01;0.0;VA;4
+80;3;23338;I32;;Apparent_power L3;S_AC_3;0.01;0.0;VA;4
 81;3;23340;U16;;Frequency;FREQ;0.01;0.0;Hz;4
 82;3;23341;I16;;Phase_angle_power Total;;0.1;0.0;Degree;4
 83;3;23342;I16;;Phase_angle_power L1;;0.1;0.0;Degree;4
@@ -91,10 +91,10 @@ Modbus;Meter;ABB;B21-B23-B24
 90;3;23352;I16;;Phase_angle_current L2;;0.1;0.0;Degree;4
 91;3;23353;I16;;Phase_angle_current L3;;0.1;0.0;Degree;4
 92;3;23354;I16;;Power_factor Total;;0.001;0.0;;4
-93;3;23355;I16;;Power_factor L1;;0.001;0.0;;4
-94;3;23356;I16;;Power_factor L2;;0.001;0.0;;4
-95;3;23357;I16;;Power_factor L3;;0.001;0.0;;4
-96;3;23358;U16;;Current_quadrant Total;I_AC;1.0;0.0;;4
+93;3;23355;I16;;Power_factor L1;PF_1;0.001;0.0;;4
+94;3;23356;I16;;Power_factor L2;PF_2;0.001;0.0;;4
+95;3;23357;I16;;Power_factor L3;PF_3;0.001;0.0;;4
+96;3;23358;U16;;Current_quadrant Total;;1.0;0.0;;4
 97;3;23359;U16;;Current_quadrant L1;;1.0;0.0;;4
 98;3;23360;U16;;Current_quadrant L2;;1.0;0.0;;4
 99;3;23361;U16;;Current_quadrant L3;;1.0;0.0;;4
@@ -112,8 +112,8 @@ Modbus;Meter;ABB;B21-B23-B24
 111;3;36620;U16;;Reset input counter Input 4;;1.0;0.0;;4
 112;3;36627;U16;;Reset stored state Input 3;;1.0;0.0;;4
 113;3;36628;U16;;Reset stored state Input 4;;1.0;0.0;;4
-114;3;36635;U16;;Reset resettable active energy import;E_IMP;1.0;0.0;;4
-115;3;36636;U16;;Reset resettable active energy export;E_EXP;1.0;0.0;;4
+114;3;36635;U16;;Reset resettable active energy import;;1.0;0.0;;4
+115;3;36636;U16;;Reset resettable active energy export;;1.0;0.0;;4
 116;3;36637;U16;;Reset resettable reactive energy import;;1.0;0.0;;4
 117;3;36638;U16;;Reset resettable reactive energy export;;1.0;0.0;;4
 118;3;36641;U16;;Reset Load profile channel 1;;1.0;0.0;;4
@@ -125,7 +125,7 @@ Modbus;Meter;ABB;B21-B23-B24
 124;3;36647;U16;;Reset Load profile channel 7;;1.0;0.0;;4
 125;3;36648;U16;;Reset Load profile channel 8;;1.0;0.0;;4
 126;3;36657;U16;;Reset System log;;1.0;0.0;;4
-127;3;36658;U16;;Reset Event log;WIND_SPEED;1.0;0.0;;4
+127;3;36658;U16;;Reset Event log;;1.0;0.0;;4
 128;3;36659;U16;;Reset Net quality log;;1.0;0.0;;4
 129;3;36660;U16;;Reset Communication log;;1.0;0.0;;4
 130;3;25344;U16;;Output 1;;1.0;0.0;;4

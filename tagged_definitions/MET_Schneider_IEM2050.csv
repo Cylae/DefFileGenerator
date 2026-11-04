@@ -1,4 +1,4 @@
-﻿modbus;Meter;Schneider;IEM2050;;;;;;;
+modbus;Meter;Schneider;IEM2050;;;;;;;
 1;3;32_40;STRING;;Meter name;;1;0;;4
 2;3;52_40;STRING;;Meter model;MODEL;1;0;;4
 3;3;72_40;STRING;;Manufacturer;MANUFACTURER;1;0;;4
@@ -31,10 +31,10 @@
 30;3;3112;F32;;Frequency;;1;0;Hz;4
 31;3;3206;I64;;Forward active energy;;1;0;Wh;4
 32;3;3210;I64;;Reverse active energy;;1;0;Wh;4
-33;3;3214;I64;;Total active energy;;1;0;Wh;4
+33;3;3214;I64;;Total active energy;E_TOT;1;0;Wh;4
 34;3;3222;I64;;Forward reactive energy;;1;0;VARh;4
 35;3;3226;I64;;Reverse reactive energy;;1;0;VARh;4
-36;3;3230;I64;;Total reactive energy;E_TOT;1;0;VARh;4
+36;3;3230;I64;;Total reactive energy;;1;0;VARh;4
 37;3;3258;I64;;Forward partial active energy;;1;0;Wh;4
 38;3;4193;U16;;Tariff status;;1;0;;4
 39;3;4198;I64;;T1 Forward active energy;;1;0;Wh;4

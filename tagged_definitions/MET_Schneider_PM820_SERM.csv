@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Schneider;PM820;;;;;;;
+modbusRTU;Meter;Schneider;PM820;;;;;;;
 1;4;1104;U16;;I moyen 3 phases;;1;0;A;4
 2;4;1119;U16;;U efficaces entre phases 1 et 2;;1;0;V;4
 3;4;1142;I16;;Puissance active totale;P_AC;1;0;kW;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
+modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
 1;3;32016;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;4
 2;3;32017;I16;;PV1 Current;I_DC_STRING_1;0.01;0;A;4
 3;3;32018;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;4

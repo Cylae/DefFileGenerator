@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Gamesa;INVERSOR III 100 KW;;;;;;;
+ModbusRTU;Inverter;Gamesa;INVERSOR III 100 KW;;;;;;;
 1;4;50514;U32_W;;Vcc Paneles;;1.0;0.0;;4
 2;4;50516;U32_W;;Vcc Puente;;1.0;0.0;;4
 3;4;50518;U32_W;;Intensidad continua;;0.1;0.0;;4

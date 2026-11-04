@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;THIES;Wind Transmitter;;;;;;;
+modbusRTU;Sensor;THIES;Wind Transmitter;;;;;;;
 1;3;1;U32;;Instantaneous value of the wind velocity;WIND_SPEED;0.1;0;m/s;4
 2;3;3;U32;;Current average value of the wind velocity;;0.1;0;m/s;4
 3;3;5;U32;;Instantaneous value of the wind velocity, calculated with the standard curve;;0.1;0;m/s;4

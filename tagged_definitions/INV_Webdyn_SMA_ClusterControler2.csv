@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Webdyn;SMA_ClusterControler2;;;;;;;
+modbusRTU;Inverter;Webdyn;SMA_ClusterControler2;;;;;;;
 1;4;30193;U16;;Heure du système UTC (s);;1.0;0.0;s;4
 2;4;30775;U16;;Puissance totale active en W;;1.0;0.0;W;4
 3;4;30805;U16;;Puissance réactive totale en Var;Q_AC;1.0;0.0;Var;4

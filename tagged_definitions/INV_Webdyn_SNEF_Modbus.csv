@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;SNEF;Generic;;;;;;;
+ModbusRTU;Inverter;SNEF;Generic;;;;;;;
 1;3;4120;F32;;ActivePower-Phase1;P_AC_1;1.0;0.0;mW;4
 2;3;4122;F32;;ActivePower-Phase2;P_AC_2;1.0;0.0;mW;4
 3;3;4124;F32;;ActivePower-Phase3;P_AC_3;1.0;0.0;mW;4

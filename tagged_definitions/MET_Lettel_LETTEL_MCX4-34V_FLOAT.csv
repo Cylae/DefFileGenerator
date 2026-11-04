@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Lettel;LETTEL_MCX4-34V_FLOAT;;;;;;;
+modbusRTU;Meter;Lettel;LETTEL_MCX4-34V_FLOAT;;;;;;;
 1;4;0;U16;;Phase 1 line to neutral volts.;;1.0;0.0;V;4
 2;4;2;U16;;Phase 2 line to neutral volts.;;1.0;0.0;V;4
 3;4;4;U16;;Phase 3 line to neutral volts.;;1.0;0.0;V;4

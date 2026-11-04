@@ -1,11 +1,11 @@
-﻿modbusRTU;Other;SolarEdge;SolarEdge_ActivePowerControl;;;;;;;
+modbusRTU;Other;SolarEdge;SolarEdge_ActivePowerControl;;;;;;;
 1;4;61440;U16;;RRCR State;;1.0;0.0;;4
-2;4;61441;U16;;Active Power Limit;cmdPwrPercent2;1.0;0.0;%;4
+2;4;61441;U16;;Active Power Limit;;1.0;0.0;%;4
 3;4;61442;U16;;CosPhi;PF;1.0;0.0;;4
-4;4;61696;U16;;Commit Power Control Settings;WMaxLim_Ena_3=1;1.0;0.0;;4
+4;4;61696;U16;;Commit Power Control Settings;;1.0;0.0;;4
 5;4;61697;U16;;Restore Power Control Default Settings;;1.0;0.0;;4
 6;4;61698;U16;;PwrFrqDeratingConfig;;1.0;0.0;;4
-7;4;61700;U16;;ReactivePwrConfig;WMaxLim_Ena_2=4;1.0;0.0;;4
+7;4;61700;U16;;ReactivePwrConfig;;1.0;0.0;;4
 8;4;61702;U16;;ReactPwrIterTime;;1.0;0.0;ms;4
 9;4;61704;U16;;ActivePwrGradEn;;1.0;0.0;;4
 10;4;61706;U16;;FixedCosPhiPhase;;1.0;0.0;;4

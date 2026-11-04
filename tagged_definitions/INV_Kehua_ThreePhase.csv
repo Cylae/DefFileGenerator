@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Kehua;ThreePhase;;;;;;;
+Modbus;Inverter;Kehua;ThreePhase;;;;;;;
 1;4;4800_20;STRING;;Model;MODEL;1.0;0.0;;4
 2;4;4810_10;STRING;;Hardware version;;1.0;0.0;;4
 3;4;4815_10;STRING;;Control software version;;1.0;0.0;;4

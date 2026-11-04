@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Alro Solar;PCS_Definition;;;;;;;
+modbusRTU;Other;Alro Solar;PCS_Definition;;;;;;;
 1;4;10000;U16;;Communication protocol version number;;1.0;0.0;---;4
 2;4;10001;U16;;Main DSP version number;;1.0;0.0;---;4
 3;4;10002;U16;;Auxiliary DSP version number;;1.0;0.0;---;4

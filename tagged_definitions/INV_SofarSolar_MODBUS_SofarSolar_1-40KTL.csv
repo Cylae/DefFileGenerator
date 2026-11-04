@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;SofarSolar;1-40KTL;;;;;;;
+ModbusRTU;Inverter;SofarSolar;1-40KTL;;;;;;;
 1;3;0;U16;;Operating state;;1;0;;4
 2;3;1;U16;;Fault 1;;1;0;;4
 3;3;2;U16;;Fault 2;;1;0;;4

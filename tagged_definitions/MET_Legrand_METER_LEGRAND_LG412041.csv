@@ -1,4 +1,4 @@
-﻿modbus;Meter;Legrand;LG 412041;;;;;;;
+modbus;Meter;Legrand;LG 412041;;;;;;;
 1;4;20480;U32;;Phase 1 Current Value (R);I_AC_1;0.001;0.0;A;4
 2;4;20482;U32;;Phase 2 Current Value (S);I_AC_2;0.001;0.0;A;4
 3;4;20484;U32;;Phase 3 Current Value (T);I_AC_3;0.001;0.0;A;4

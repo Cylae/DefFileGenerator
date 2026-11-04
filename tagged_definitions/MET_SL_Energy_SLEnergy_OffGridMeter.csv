@@ -1,4 +1,4 @@
-﻿modbus;OffGridMeter;SL Energy;OffGridMeter;;;;;;;
+modbus;OffGridMeter;SL Energy;OffGridMeter;;;;;;;
 1;3;11070;U16;;EPS_Voltage_R;;0.1;0;V;4
 2;3;11071;U16;;EPS_Voltage_S;;0.1;0;V;4
 3;3;11072;U16;;EPS_Voltage_T;;0.1;0;V;4

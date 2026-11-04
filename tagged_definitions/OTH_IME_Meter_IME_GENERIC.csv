@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;IME Meter;IME_GENERIC;;;;;;;
+modbusRTU;Other;IME Meter;IME_GENERIC;;;;;;;
 1;4;20480;U16;;Phase 1 Current Value (R);I_AC_1;1.0;0.0;mA;4
 2;4;20482;U16;;Phase 2 Current Value (S);I_AC_2;1.0;0.0;mA;4
 3;4;20484;U16;;Phase 3 Current Value (T);I_AC_3;1.0;0.0;mA;4

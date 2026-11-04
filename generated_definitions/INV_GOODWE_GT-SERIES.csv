@@ -1,64 +1,64 @@
 modbusRTU;Inverter;GOODWE;GT-SERIES;;;;;;;
-1;3;32016;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;4
-2;3;32017;I16;;PV1 Current;I_DC_STRING_1;0.01;0;A;4
-3;3;32018;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;4
-4;3;32019;I16;;PV2 Current;I_DC_STRING_2;0.01;0;A;4
-5;3;32020;I16;;PV3 Voltage;U_DC_STRING_3;0.1;0;V;4
-6;3;32021;I16;;PV3 Current;I_DC_STRING_3;0.01;0;A;4
-7;3;32022;I16;;PV4 Voltage;U_DC_STRING_4;0.1;0;V;4
-8;3;32023;I16;;PV4 Current;I_DC_STRING_4;0.01;0;A;4
-9;3;32024;I16;;PV5 Voltage;U_DC_STRING_5;0.1;0;V;4
-10;3;32025;I16;;PV5 Current;I_DC_STRING_5;0.01;0;A;4
-11;3;32026;I16;;PV6 Voltage;U_DC_STRING_6;0.1;0;V;4
-12;3;32027;I16;;PV6 Current;I_DC_STRING_6;0.01;0;A;4
-13;3;32028;I16;;PV7 Voltage;U_DC_STRING_7;0.1;0;V;4
-14;3;32029;I16;;PV7 Current;I_DC_STRING_7;0.01;0;A;4
-15;3;32030;I16;;PV8 Voltage;U_DC_STRING_8;0.1;0;V;4
-16;3;32031;I16;;PV8 Current;I_DC_STRING_8;0.01;0;A;4
-17;3;32032;I16;;PV9 Voltage;U_DC_STRING_9;0.1;0;V;4
-18;3;32033;I16;;PV9 Current;I_DC_STRING_9;0.01;0;A;4
-19;3;32034;I16;;PV10 Voltage;U_DC_STRING_10;0.1;0;V;4
-20;3;32035;I16;;PV10 Current;I_DC_STRING_10;0.01;0;A;4
-21;3;32036;I16;;PV11 Voltage;U_DC_STRING_11;0.1;0;V;4
-22;3;32037;I16;;PV11 Current;I_DC_STRING_11;0.01;0;A;4
-23;3;32038;I16;;PV12 Voltage;U_DC_STRING_12;0.1;0;V;4
-24;3;32039;I16;;PV12 Current;I_DC_STRING_12;0.01;0;A;4
-25;3;32040;I16;;PV13 Voltage;U_DC_STRING_13;0.1;0;V;4
-26;3;32041;I16;;PV13 Current;I_DC_STRING_13;0.01;0;A;4
-27;3;32042;I16;;PV14 Voltage;U_DC_STRING_14;0.1;0;V;4
-28;3;32043;I16;;PV14 Current;I_DC_STRING_14;0.01;0;A;4
-29;3;32044;I16;;PV15 Voltage;U_DC_STRING_15;0.1;0;V;4
-30;3;32045;I16;;PV15 Current;I_DC_STRING_15;0.01;0;A;4
-31;3;32046;I16;;PV16 Voltage;U_DC_STRING_16;0.1;0;V;4
-32;3;32047;I16;;PV16 Current;I_DC_STRING_16;0.01;0;A;4
-33;3;32048;I16;;PV17 Voltage;U_DC_STRING_17;0.1;0;V;4
-34;3;32049;I16;;PV17 Current;I_DC_STRING_17;0.01;0;A;4
-35;3;32050;I16;;PV18 Voltage;U_DC_STRING_18;0.1;0;V;4
-36;3;32051;I16;;PV18 Current;I_DC_STRING_18;0.01;0;A;4
-37;3;32052;I16;;PV19 Voltage;U_DC_STRING_19;0.1;0;V;4
-38;3;32053;I16;;PV19 Current;I_DC_STRING_19;0.01;0;A;4
-39;3;32054;I16;;PV20 Voltage;U_DC_STRING_20;0.1;0;V;4
-40;3;32055;I16;;PV20 Current;I_DC_STRING_20;0.01;0;A;4
-41;3;32066;U16;;Grid AB-Line Voltage ;U_AC_L1L2;0.1;0;V;4
-42;3;32067;U16;;Grid BC-Line Voltage;U_AC_L2L3;0.1;0;V;4
-43;3;32068;U16;;Grid CA-Line Voltage;U_AC_L3L1;0.1;0;V;4
-44;3;32069;U16;;Grid A-phase voltage;U_AC_1;0.1;0;V;4
-45;3;32070;U16;;Grid B-phase voltage;U_AC_2;0.1;0;V;4
-46;3;32071;U16;;Grid C-phase voltage;U_AC_3;0.1;0;V;4
-47;3;32072;I32;;Grid A-phase current;I_AC_1;0.001;0;A;4
-48;3;32074;I32;;Grid B-phase current;I_AC_2;0.001;0;A;4
-49;3;32076;I32;;Grid C-phase current;I_AC_3;0.001;0;A;4
+1;3;32016;I16;;PV1 Voltage;;0.1;0;V;4
+2;3;32017;I16;;PV1 Current;;0.01;0;A;4
+3;3;32018;I16;;PV2 Voltage;;0.1;0;V;4
+4;3;32019;I16;;PV2 Current;;0.01;0;A;4
+5;3;32020;I16;;PV3 Voltage;;0.1;0;V;4
+6;3;32021;I16;;PV3 Current;;0.01;0;A;4
+7;3;32022;I16;;PV4 Voltage;;0.1;0;V;4
+8;3;32023;I16;;PV4 Current;;0.01;0;A;4
+9;3;32024;I16;;PV5 Voltage;;0.1;0;V;4
+10;3;32025;I16;;PV5 Current;;0.01;0;A;4
+11;3;32026;I16;;PV6 Voltage;;0.1;0;V;4
+12;3;32027;I16;;PV6 Current;;0.01;0;A;4
+13;3;32028;I16;;PV7 Voltage;;0.1;0;V;4
+14;3;32029;I16;;PV7 Current;;0.01;0;A;4
+15;3;32030;I16;;PV8 Voltage;;0.1;0;V;4
+16;3;32031;I16;;PV8 Current;;0.01;0;A;4
+17;3;32032;I16;;PV9 Voltage;;0.1;0;V;4
+18;3;32033;I16;;PV9 Current;;0.01;0;A;4
+19;3;32034;I16;;PV10 Voltage;;0.1;0;V;4
+20;3;32035;I16;;PV10 Current;;0.01;0;A;4
+21;3;32036;I16;;PV11 Voltage;;0.1;0;V;4
+22;3;32037;I16;;PV11 Current;;0.01;0;A;4
+23;3;32038;I16;;PV12 Voltage;;0.1;0;V;4
+24;3;32039;I16;;PV12 Current;;0.01;0;A;4
+25;3;32040;I16;;PV13 Voltage;;0.1;0;V;4
+26;3;32041;I16;;PV13 Current;;0.01;0;A;4
+27;3;32042;I16;;PV14 Voltage;;0.1;0;V;4
+28;3;32043;I16;;PV14 Current;;0.01;0;A;4
+29;3;32044;I16;;PV15 Voltage;;0.1;0;V;4
+30;3;32045;I16;;PV15 Current;;0.01;0;A;4
+31;3;32046;I16;;PV16 Voltage;;0.1;0;V;4
+32;3;32047;I16;;PV16 Current;;0.01;0;A;4
+33;3;32048;I16;;PV17 Voltage;;0.1;0;V;4
+34;3;32049;I16;;PV17 Current;;0.01;0;A;4
+35;3;32050;I16;;PV18 Voltage;;0.1;0;V;4
+36;3;32051;I16;;PV18 Current;;0.01;0;A;4
+37;3;32052;I16;;PV19 Voltage;;0.1;0;V;4
+38;3;32053;I16;;PV19 Current;;0.01;0;A;4
+39;3;32054;I16;;PV20 Voltage;;0.1;0;V;4
+40;3;32055;I16;;PV20 Current;;0.01;0;A;4
+41;3;32066;U16;;Grid AB-Line Voltage ;;0.1;0;V;4
+42;3;32067;U16;;Grid BC-Line Voltage;;0.1;0;V;4
+43;3;32068;U16;;Grid CA-Line Voltage;;0.1;0;V;4
+44;3;32069;U16;;Grid A-phase voltage;;0.1;0;V;4
+45;3;32070;U16;;Grid B-phase voltage;;0.1;0;V;4
+46;3;32071;U16;;Grid C-phase voltage;;0.1;0;V;4
+47;3;32072;I32;;Grid A-phase current;;0.001;0;A;4
+48;3;32074;I32;;Grid B-phase current;;0.001;0;A;4
+49;3;32076;I32;;Grid C-phase current;;0.001;0;A;4
 50;3;32080;I32;;Active Power;P_AC;0.001;0;kW;4
 51;3;32082;I32;;Reactive Power;Q_AC;0.001;0;kVar;4
 52;3;32084;I16;;Power factor;PF;0.001;0;;4
 53;3;32085;U16;;Grid frequency;FREQ;0.01;0;Hz;4
-54;3;32088;U16;;Insulation impedance value;R_ISO;1;0;kOhm;4
-55;3;32106;U32;;Cumulative power generation;E_TOT;0.01;0;kWh;4
+54;3;32088;U16;;Insulation impedance value;;1;0;kOhm;4
+55;3;32106;U32;;Cumulative power generation;;0.01;0;kWh;4
 56;3;32114;U32;;Daily power generation;E_DAY;0.01;0;kWh;4
 57;3;32369;I16;;PV+_PE Voltage;;0.1;0;V;4
 58;3;32370;I16;;PV-_PE Voltage;;0.1;0;V;4
-59;3;35502_16;STRING;;Device serial number DSP;SERIAL;1;0;;4
-60;3;35510_10;STRING;;Device model DSP;MODEL;1;0;;4
+59;3;35502_16;STRING;;Device serial number DSP;;1;0;;4
+60;3;35510_10;STRING;;Device model DSP;;1;0;;4
 61;3;35710;U32;;DSP fault code;;1;0;;4
 62;3;35718;U32;;Slave DSP fault code;;1;0;;4
 63;3;35751;U16;;Safety Country Code;;1;0;;4
@@ -67,7 +67,7 @@ modbusRTU;Inverter;GOODWE;GT-SERIES;;;;;;;
 66;3;35849;U16;;Current Derating Flag;;1;0;;4
 67;3;35851;U16;;Current Reactive Flag;;1;0;;4
 68;3;40264;U16;;European shutdown switch;;1;0;;4
-69;3;41144;U16;;Modbus address;UNIT_ID;1;0;;4
+69;3;41144;U16;;Modbus address;;1;0;;4
 70;3;41145;U16;;Modbus protocol type;;1;0;;4
 71;3;41146;U32;;RS485 Baud rate;;1;0;;4
 72;3;41150;U16;;External CT Ratio;;1;0;;4
@@ -83,18 +83,18 @@ modbusRTU;Inverter;GOODWE;GT-SERIES;;;;;;;
 82;3;42022;U16;;shadow mppt function 1;;1;0;;4
 83;3;42051;U16;;NPE Overvoltage fault detection switch;;1;0;;4
 84;3;42057;U16;;Lightning protection module detection switch;;1;0;;4
-85;3;42061;U16;;PID prevent function switch;WIND_SPEED;1;0;;4
+85;3;42061;U16;;PID prevent function switch;;1;0;;4
 86;3;42067;U16;;PID repair function switch;;1;0;;4
 87;3;42404;U32;;Active power fixed value derating;;1;0;W;4
 88;3;42407;U16;;Active power percentage derating(0.1%);CMD_P_AC_SET_PERCENT;0.1;0;%;4
-89;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1;0;;4
-90;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001;0;;4
+89;3;42411;I32;;Reactive power compensation fixed value;;1;0;;4
+90;3;42413;I16;;Reactive power compensation(PF);;0.001;0;;4
 91;3;42414;I16;;Reactive power compensation(Q/S);;0.1;0;%Pn;4
 92;3;42427;U16;;Reactive power compensation response mode;;1;0;;4
 93;3;42428;U32;;Reactive pow compensation parameter;;1;0;ms;4
 94;3;42430;U16;;Active power compensation response mode;;1;0;;4
 95;3;42431;U32;;Active power compensation parameter LPF time parameter;;1;0;ms;4
-96;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.1;0;%Pn/min;4
+96;3;42433;U32;;Active power gradient;;0.1;0;%Pn/min;4
 97;3;42435;U32;;Reactive power gradient;;0.1;0;%Pn/min;4
 98;3;42441;U16;;Night reactive power switch;;1;0;;4
 99;3;42442;U16;;Night reactive power parameters enable;;1;0;;4
@@ -102,7 +102,7 @@ modbusRTU;Inverter;GOODWE;GT-SERIES;;;;;;;
 101;3;42446;I16;;Night reactive power compensation percentage deratin;;0.1;0;%Pn;4
 102;3;42500;U16;;Safety code;;1;0;;4
 103;3;42531;U16;;Normal condition Grid connection waiting time;;1;0;s;4
-104;3;42532;U16;;Slope of normal condition gridconnected power;I_DC;0.1;0;%Pn/min;4
+104;3;42532;U16;;Slope of normal condition gridconnected power;;0.1;0;%Pn/min;4
 105;3;42533;U16;;Normal condition upper limit of connection voltage(0.1%);;0.1;0;%Vn;4
 106;3;42534;U16;;Normal condition lowerer limit of connection voltage(0.1%);;0.1;0;%Vn;4
 107;3;42535;U16;;Normal condition upper limit of connection frequency;;0.01;0;Hz;4
@@ -117,21 +117,21 @@ modbusRTU;Inverter;GOODWE;GT-SERIES;;;;;;;
 116;3;42555;U16;;Power of enter the curve (0.1%);;0.1;0;%Pn;4
 117;3;42556;U16;;Power of quit the curve (0.1%);;0.1;0;%Pn;4
 118;3;42557;U16;;Voltage1-1(0.1%);;0.1;0;%Vn;4
-119;3;42558;I16;;Reactive power 1 (0.1%);;0.1;0;%Pr;4
+119;3;42558;I16;;Reactive power 1 (0.1%);Q_AC_1;0.1;0;%Pr;4
 120;3;42559;U16;;Voltage1-2(0.1%);;0.1;0;%Vn;4
-121;3;42560;I16;;Reactive power 2(0.1%);;0.1;0;%Pr;4
+121;3;42560;I16;;Reactive power 2(0.1%);Q_AC_2;0.1;0;%Pr;4
 122;3;42561;U16;;Voltage1-3(0.1%);;0.1;0;%Vn;4
-123;3;42562;I16;;Reactive power 3(0.1%);;0.1;0;%Pr;4
+123;3;42562;I16;;Reactive power 3(0.1%);Q_AC_3;0.1;0;%Pr;4
 124;3;42563;U16;;Voltage1-4(0.1%);;0.1;0;%Vn;4
 125;3;42564;I16;;Reactive power 4 (0.1%);;0.1;0;%Pr;4
 126;3;42567;U32;;QU Reference Voltage Regulation Time;;1;0;ms;4
 127;3;42578;U16;;PU curve enable;;1;0;;4
 128;3;42579;U16;;Voltage1 (0.1%);;0.1;0;%Vn;4
-129;3;42580;U16;;Active power 1 (0.1%);;0.1;0;%Pn;4
+129;3;42580;U16;;Active power 1 (0.1%);P_AC_1;0.1;0;%Pn;4
 130;3;42581;U16;;Voltage2 (0.1%);;0.1;0;%Vn;4
-131;3;42582;U16;;Active power 2 (0.1%);;0.1;0;%Pn;4
+131;3;42582;U16;;Active power 2 (0.1%);P_AC_2;0.1;0;%Pn;4
 132;3;42583;U16;;Voltage3 (0.1%);;0.1;0;%Vn;4
-133;3;42584;U16;;Active power 3 (0.1%);;0.1;0;%Pn;4
+133;3;42584;U16;;Active power 3 (0.1%);P_AC_3;0.1;0;%Pn;4
 134;3;42585;U16;;Voltage4 (0.1%);;0.1;0;%Vn;4
 135;3;42586;U16;;Active power 4 (0.1%);;0.1;0;%Pn;4
 136;3;42587;U16;;PU Curve OutPut Regulation Mode;;1;0;;4

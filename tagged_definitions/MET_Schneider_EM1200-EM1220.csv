@@ -1,4 +1,4 @@
-﻿Modbus;Meter;Schneider;EM1200-EM1220;;;;;;;
+Modbus;Meter;Schneider;EM1200-EM1220;;;;;;;
 1;3;3057;F32;;A  Current average;;1.0;0.0;;4
 2;3;3009;F32;;A1  Current_ phase 1;I_AC_1;1.0;0.0;;4
 3;3;3025;F32;;A2  Current_ phase 2;I_AC_2;1.0;0.0;;4

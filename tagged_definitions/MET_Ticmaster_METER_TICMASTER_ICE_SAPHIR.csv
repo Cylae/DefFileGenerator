@@ -1,4 +1,4 @@
-﻿Modbus;Meter;TicMaster;ICE/SAPHIR;;;;;;;
+Modbus;Meter;TicMaster;ICE/SAPHIR;;;;;;;
 1;3;2422;U32;;Dt;;1;0;;4
 2;3;2424;U32;;PAS;;1;0;kW;4
 3;3;2426;U32;;PAI;;1;0;kW;4

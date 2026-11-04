@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;PhenixContact;EEM-MA600;;;;;;;
+modbusRTU;Other;PhenixContact;EEM-MA600;;;;;;;
 1;4;50512;U16;;Op_Hours_Counter;;1.0;0.0;h;4
 2;4;50514;U16;;U12_Line_Voltage;;1.0;0.0;V;4
 3;4;50516;U16;;U23_Line_Voltage;;1.0;0.0;V;4

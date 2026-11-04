@@ -46,7 +46,7 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 45;3;51;U16;;System Weekly;;1.0;0.0;;4
 46;3;52;U16;;Grid voltage low limit protect;;0.1;0.0;V;4
 47;3;53;U16;;Grid voltage high limit protect;;0.1;0.0;V;4
-48;3;54;U16;;Grid frequency low limit protect;FREQ;0.01;0.0;Hz;4
+48;3;54;U16;;Grid frequency low limit protect;;0.01;0.0;Hz;4
 49;3;55;U16;;Grid high frequency limit protect;;0.01;0.0;Hz;4
 50;3;56;U16;;Grid voltage low limit protect 2;;0.1;0.0;V;4
 51;3;57;U16;;Grid voltage high limit protect 2;;0.1;0.0;V;4
@@ -95,11 +95,11 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 94;3;104;U16;;PF adjust value 4;;1.0;0.0;;4
 95;3;105;U16;;PF adjust value 5;;1.0;0.0;;4
 96;3;106;U16;;PF adjust value 6;;1.0;0.0;;4
-97;3;107;U16;;QV Reactive Power delay time;Q_AC;1.0;0.0;s;4
+97;3;107;U16;;QV Reactive Power delay time;;1.0;0.0;s;4
 98;3;108;U16;;Overfrequency derating delay time;;50.0;0.0;ms;4
 99;3;109;U16;;Qmax for Q(V) curve;;0.1;0.0;%;4
 100;3;110;U16;;PF limit line point 1 load percent;;1.0;0.0;%;4
-101;3;111;U16;;PF limit line point 1 power factor;PF;1.0;0.0;;4
+101;3;111;U16;;PF limit line point 1 power factor;;1.0;0.0;;4
 102;3;112;U16;;PF limit line point 2 load percent;;1.0;0.0;%;4
 103;3;113;U16;;PF limit line point 2 power factor;;1.0;0.0;;4
 104;3;114;U16;;PF limit line point 3 load percent;;1.0;0.0;%;4
@@ -112,7 +112,7 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 111;3;121;U16;;Inverter Module 1;;1.0;0.0;;4
 112;3;122;U16;;Export Limit En/dis;;1.0;0.0;;4
 113;3;123;I16;;Export Limit Power Rate;;0.1;0.0;%;4
-114;3;124;U16;;Traker Model;MODEL;1.0;0.0;;4
+114;3;124;U16;;Traker Model;;1.0;0.0;;4
 115;3;137;U32;;Reactive Value;;0.1;0.0;Var;4
 116;3;139;U16;;Reactive Output Priority Enable;CMD_Q_ENA;1.0;0.0;;4
 117;3;140;U16;;Reactive Value(Ratio);;0.1;0.0;;4
@@ -209,7 +209,7 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 208;4;51;U16;;Three phase grid voltage (ST);U_AC_L2L3;0.1;0.0;V;4
 209;4;52;U16;;Three phase grid voltage (TR);U_AC_L3L1;0.1;0.0;V;4
 210;4;53;U32;;Today generate energy;E_DAY;0.1;0.0;kWh;4
-211;4;55;U32;;Total generate energy;E_TOT;0.1;0.0;kWh;4
+211;4;55;U32;;Total generate energy;;0.1;0.0;kWh;4
 212;4;57;U32;;Work time total;TOT;0.5;0.0;s;4
 213;4;59;U32;;PV1 Energy today;;0.1;0.0;kWh;4
 214;4;61;U32;;PV1 Energy total;;0.1;0.0;kWh;4
@@ -232,11 +232,11 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 231;4;94;U16;;Temp2;;0.1;0.0;°C;4
 232;4;95;U16;;Temp3;;0.1;0.0;°C;4
 233;4;97;U16;;BatVolt_DSP;;0.1;0.0;V;4
-234;4;98;U16;;P Bus Voltage;U_DC;0.1;0.0;V;4
+234;4;98;U16;;P Bus Voltage;;0.1;0.0;V;4
 235;4;99;U16;;N Bus Voltage;;0.1;0.0;V;4
-236;4;100;U16;;Inverter output PF now;;1.0;0.0;;4
+236;4;100;U16;;Inverter output PF now;PF;1.0;0.0;;4
 237;4;101;U16;;Real Output power Percent;;1.0;0.0;%;4
-238;4;102;U32;;Output Maxpower Limited;CMD_P_AC_SET_ABS;0.1;0.0;W;4
+238;4;102;U32;;Output Maxpower Limited;;0.1;0.0;W;4
 239;4;104;U16;;Derating Mode;;1.0;0.0;;4
 240;4;105;U16;;Fault Maincode;;1.0;0.0;;4
 241;4;107;U16;;Fault Subcode;;1.0;0.0;;4
@@ -252,39 +252,39 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 251;4;118;U16;;Priority;;1.0;0.0;;4
 252;4;119;U16;;Battery Type;;1.0;0.0;;4
 253;4;120;U16;;AutoProofreadC MD;;1.0;0.0;;4
-254;4;125;U16;;PID PV1+ Voltage;U_DC_STRING_1;0.1;0.0;V;4
-255;4;126;I16;;PID PV1+ Current;I_DC_STRING_1;0.1;0.0;mA;4
-256;4;127;U16;;PID PV2+ Voltage;U_DC_STRING_2;0.1;0.0;V;4
-257;4;128;I16;;PID PV2+ Current;I_DC_STRING_2;0.1;0.0;mA;4
-258;4;129;U16;;PID PV3+ Voltage;U_DC_STRING_3;0.1;0.0;V;4
-259;4;130;I16;;PID PV3+ Current;I_DC_STRING_3;0.1;0.0;mA;4
-260;4;131;U16;;PID PV4+ Voltage;U_DC_STRING_4;0.1;0.0;V;4
-261;4;132;I16;;PID PV4+ Current;I_DC_STRING_4;0.1;0.0;mA;4
-262;4;133;U16;;PID PV5+ Voltage;U_DC_STRING_5;0.1;0.0;V;4
-263;4;134;I16;;PID PV5+ Current;I_DC_STRING_5;0.1;0.0;mA;4
-264;4;135;U16;;PID PV6+ Voltage;U_DC_STRING_6;0.1;0.0;V;4
-265;4;136;I16;;PID PV6+ Current;I_DC_STRING_6;0.1;0.0;mA;4
-266;4;137;U16;;PID PV7+ Voltage;U_DC_STRING_7;0.1;0.0;V;4
-267;4;138;I16;;PID PV7+ Current;I_DC_STRING_7;0.1;0.0;mA;4
-268;4;139;U16;;PID PV8+ Voltage;U_DC_STRING_8;0.1;0.0;V;4
-269;4;140;I16;;PID PV8+ Current;I_DC_STRING_8;0.1;0.0;mA;4
+254;4;125;U16;;PID PV1+ Voltage;;0.1;0.0;V;4
+255;4;126;I16;;PID PV1+ Current;;0.1;0.0;mA;4
+256;4;127;U16;;PID PV2+ Voltage;;0.1;0.0;V;4
+257;4;128;I16;;PID PV2+ Current;;0.1;0.0;mA;4
+258;4;129;U16;;PID PV3+ Voltage;;0.1;0.0;V;4
+259;4;130;I16;;PID PV3+ Current;;0.1;0.0;mA;4
+260;4;131;U16;;PID PV4+ Voltage;;0.1;0.0;V;4
+261;4;132;I16;;PID PV4+ Current;;0.1;0.0;mA;4
+262;4;133;U16;;PID PV5+ Voltage;;0.1;0.0;V;4
+263;4;134;I16;;PID PV5+ Current;;0.1;0.0;mA;4
+264;4;135;U16;;PID PV6+ Voltage;;0.1;0.0;V;4
+265;4;136;I16;;PID PV6+ Current;;0.1;0.0;mA;4
+266;4;137;U16;;PID PV7+ Voltage;;0.1;0.0;V;4
+267;4;138;I16;;PID PV7+ Current;;0.1;0.0;mA;4
+268;4;139;U16;;PID PV8+ Voltage;;0.1;0.0;V;4
+269;4;140;I16;;PID PV8+ Current;;0.1;0.0;mA;4
 270;4;141_0_8;Bits;;PID Status : PID Working Status;;1.0;0.0;;4
-271;4;142;U16;;PV String1 voltage;;0.1;0.0;V;4
-272;4;143;I16;;PV String1 current;;0.1;0.0;A;4
-273;4;144;U16;;PV String2 voltage;;0.1;0.0;V;4
-274;4;145;I16;;PV String2 current;;0.1;0.0;A;4
-275;4;146;U16;;PV String3 voltage;;0.1;0.0;V;4
-276;4;147;I16;;PV String3 current;;0.1;0.0;A;4
-277;4;148;U16;;PV String4 voltage;;0.1;0.0;V;4
-278;4;149;I16;;PV String4 current;;0.1;0.0;A;4
-279;4;150;U16;;PV String5 voltage;;0.1;0.0;V;4
-280;4;151;I16;;PV String5 current;;0.1;0.0;A;4
-281;4;152;U16;;PV String6 voltage;;0.1;0.0;V;4
-282;4;153;I16;;PV String6 current;;0.1;0.0;A;4
-283;4;154;U16;;PV String7 voltage;;0.1;0.0;V;4
-284;4;155;I16;;PV String7 current;;0.1;0.0;A;4
-285;4;156;U16;;PV String8 voltage;;0.1;0.0;V;4
-286;4;157;I16;;PV String8 current;;0.1;0.0;A;4
+271;4;142;U16;;PV String1 voltage;U_DC_STRING_1;0.1;0.0;V;4
+272;4;143;I16;;PV String1 current;I_DC_STRING_1;0.1;0.0;A;4
+273;4;144;U16;;PV String2 voltage;U_DC_STRING_2;0.1;0.0;V;4
+274;4;145;I16;;PV String2 current;I_DC_STRING_2;0.1;0.0;A;4
+275;4;146;U16;;PV String3 voltage;U_DC_STRING_3;0.1;0.0;V;4
+276;4;147;I16;;PV String3 current;I_DC_STRING_3;0.1;0.0;A;4
+277;4;148;U16;;PV String4 voltage;U_DC_STRING_4;0.1;0.0;V;4
+278;4;149;I16;;PV String4 current;I_DC_STRING_4;0.1;0.0;A;4
+279;4;150;U16;;PV String5 voltage;U_DC_STRING_5;0.1;0.0;V;4
+280;4;151;I16;;PV String5 current;I_DC_STRING_5;0.1;0.0;A;4
+281;4;152;U16;;PV String6 voltage;U_DC_STRING_6;0.1;0.0;V;4
+282;4;153;I16;;PV String6 current;I_DC_STRING_6;0.1;0.0;A;4
+283;4;154;U16;;PV String7 voltage;U_DC_STRING_7;0.1;0.0;V;4
+284;4;155;I16;;PV String7 current;I_DC_STRING_7;0.1;0.0;A;4
+285;4;156;U16;;PV String8 voltage;U_DC_STRING_8;0.1;0.0;V;4
+286;4;157;I16;;PV String8 current;I_DC_STRING_8;0.1;0.0;A;4
 287;4;158;U16;;PV String9 voltage;U_DC_STRING_9;0.1;0.0;V;4
 288;4;159;I16;;PV String9 current;I_DC_STRING_9;0.1;0.0;A;4
 289;4;160;U16;;PV String10 voltage;U_DC_STRING_10;0.1;0.0;V;4
@@ -344,7 +344,7 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 343;4;216;U16;;R phase load side harmonic;;0.1;0.0;A;4
 344;4;217;U16;;S phase load side harmonic;;0.1;0.0;A;4
 345;4;218;U16;;T phase load side harmonic;;0.1;0.0;A;4
-346;4;219;U32;;R phase compensate reactive power for SVG;Q_AC_3;0.1;0.0;Var;4
+346;4;219;U32;;R phase compensate reactive power for SVG;;0.1;0.0;Var;4
 347;4;221;U32;;S phase compensate reactive power for SVG;;0.1;0.0;Var;4
 348;4;223;U32;;T phase compensate reactive power for SVG;;0.1;0.0;Var;4
 349;4;225;U16;;R phase compensate harmonic for SVG;;0.1;0.0;A;4
@@ -356,7 +356,7 @@ Modbus;Inverter;Growatt;MAX1500V_MAX-XLV_Series;1
 355;4;229_2_1;BITS;;FanFaultBit : Fan 3 fault;;1.0;0.0;;4
 356;4;229_3_1;BITS;;FanFaultBit : Fan 4 fault;;1.0;0.0;;4
 357;4;230;U32;;Output apparent power;S_AC;0.1;0.0;W;4
-358;4;232;I32;;Real Output Reactive Power;;0.1;0.0;W;4
+358;4;232;I32;;Real Output Reactive Power;Q_AC;0.1;0.0;W;4
 359;4;234;U32;;Nominal Output Reactive Power;Q_RATED;0.1;0.0;Var;4
 360;4;236;U32;;Reactive power generation;;0.1;0.0;kWh;4
 361;4;238;U16;;AfciStatus;;1.0;0.0;;4

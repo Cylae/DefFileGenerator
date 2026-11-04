@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_STPX - Copie;;;;;;;
+modbusRTU;Inverter;SMA;SMA_STPX - Copie;;;;;;;
 1;4;30201;U16;;Measurement.Operation.Health;;1.0;0.0;;4
 2;4;30203;U16;;Measurement.Operation.HealthStt.Ok_1;;1.0;0.0;;4
 3;4;30205;U16;;Measurement.Operation.HealthStt.Wrn;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Solis;50;;;;;;;
+modbusRTU;Inverter;Solis;50;;;;;;;
 1;4;3000;U16;;inverter 1;;1.000000;0.000000;;4
 2;4;3001;U16;;DSP software version;;1.000000;0.000000;;4
 3;4;3002;U16;;LCD software version;;1.000000;0.000000;;4
@@ -43,6 +43,6 @@
 42;4;3061;U16;;Inverter SN_2;;1.000000;0.000000;;4
 43;4;3062;U16;;Inverter SN_3;;1.000000;0.000000;;4
 44;4;3063;U16;;Inverter SN_4;;1.000000;0.000000;;4
-45;3;3051;U16;;Limited active power;cmd;1.000000;0.000000;%;4
+45;3;3051;U16;;Limited active power;;1.000000;0.000000;%;4
 46;4;3049;U16;;Reduced Percentage;;1.000000;0.000000;%;4
 47;3;3069;U16;;Power down Save function;;1.000000;0.000000;;4

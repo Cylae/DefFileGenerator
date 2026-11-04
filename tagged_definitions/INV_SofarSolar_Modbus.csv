@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;SofarSolar;Generic;;;;;;;
+ModbusRTU;Inverter;SofarSolar;Generic;;;;;;;
 1;3;1156;U16;;Frequency_Grid;FREQ;0.01;0.0;Hz;4
 2;3;1157;I16;;ActivePower_Output_Total;P_AC;0.01;0.0;kW;4
 3;3;1158;I16;;ReactivePower_Output_Total;Q_AC;0.01;0.0;kW;4
@@ -69,7 +69,7 @@
 68;3;1455;U16;;Voltage_PV16;;0.1;0.0;V;4
 69;3;1456;U16;;Current_PV16;;0.01;0.0;A;4
 70;3;1457;U16;;Power_PV16;;0.01;0.0;kW;4
-71;3;4272;U16;;PID Auto running enable;4;1.0;0.0;;0
+71;3;4272;U16;;PID Auto running enable;;1.0;0.0;;0
 72;3;4273;U16;;PID Working Start Time;;1.0;0.0;Minute;0
 73;3;4274;U16;;PID_Working_Hours;;1.0;0.0;Minute;0
 74;3;4275;U16;;PID_Working_PV_Threshold;;0.1;0.0;V;4

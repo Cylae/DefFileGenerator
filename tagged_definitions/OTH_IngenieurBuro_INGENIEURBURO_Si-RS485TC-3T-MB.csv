@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;IngenieurBuro;INGENIEURBURO_Si-RS485TC-3T-MB;;;;;;;
+modbusRTU;Other;IngenieurBuro;INGENIEURBURO_Si-RS485TC-3T-MB;;;;;;;
 1;4;0;U16;;Irradiance;POA;1.0;0.0;W/m2;4
 2;4;1;U16;;Cell temperature;TEMP_CELL;1.0;0.0;C;4
 3;4;2;U16;;External temperature;;1.0;0.0;C;4

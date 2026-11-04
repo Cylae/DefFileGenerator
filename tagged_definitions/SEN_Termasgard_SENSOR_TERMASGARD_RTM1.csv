@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;THERMASGARD;RTM1;;;;;;;
+modbusRTU;Sensor;THERMASGARD;RTM1;;;;;;;
 1;2;1_0_1;BITS;;Sensor error - breakage;;1;0;;4
 2;2;2_0_1;BITS;;Sensor error - short-circuit;;1;0;;4
 3;4;1;I16;;Temperature without filtering;;1;0;Degr.Celsius;4

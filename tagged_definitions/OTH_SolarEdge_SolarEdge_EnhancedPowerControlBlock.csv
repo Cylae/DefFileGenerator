@@ -1,6 +1,6 @@
-﻿modbusRTU;Other;SolarEdge;SolarEdge_EnhancedPowerControl;;;;;;;
+modbusRTU;Other;SolarEdge;SolarEdge_EnhancedPowerControl;;;;;;;
 1;4;62208;U16;;Enable Dynamic Power Control;CMD_P_ENA;1.0;0.0;;1
-2;4;62212;U16;;Max Active Power;RatedPower;1.0;0.0;W;4
+2;4;62212;U16;;Max Active Power;;1.0;0.0;W;4
 3;4;62214;U16;;Max Reactive Power;Q_AC;1.0;0.0;VAR;4
 4;4;62216;U16;;Active/Reactive Preference;;1.0;0.0;;4
 5;4;62217;U16;;CosPhi/Q Preference;PF;1.0;0.0;;4

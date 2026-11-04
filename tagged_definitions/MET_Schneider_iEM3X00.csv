@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Schneider;iEM3000;0;;;;;;
+modbusRTU;Meter;Schneider;iEM3000;0;;;;;;
 1;3;29_40;STRING;;DeviceName;;1;0;;1
 2;3;49_40;STRING;;DeviceModel;MODEL;1;0;;1
 3;3;69_40;STRING;;Manufacturer;MANUFACTURER;1;0;;1

@@ -1,6 +1,6 @@
 modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
 1;3;3841;I16;;Active Power;P_AC;1;0;kW;4
-2;3;3842;I16;;DC-Link Voltage;U_DC;1;0;V;4
+2;3;3842;I16;;DC-Link Voltage;;1;0;V;4
 3;3;3843;I16;;Heat Sink Temperature;;1;0;C;4
 4;3;3844;I16;;Inside Temperature;;1;0;C;4
 5;3;3845;U16;;Current Error;;1;0;;4
@@ -22,9 +22,9 @@ modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
 21;3;3861;I16;;Current Phase a;I_AC_1;1;0;A;4
 22;3;3862;I16;;Current Phase b;I_AC_2;1;0;A;4
 23;3;3863;I16;;Current Phase c;I_AC_3;1;0;A;4
-24;3;3864;I16;;Power Supply Voltage Phase a;U_AC_1;1;0;V;4
-25;3;3865;I16;;Power Supply Voltage Phase b;U_AC_2;1;0;V;4
-26;3;3866;I16;;Power Supply Voltage Phase c;U_AC_3;1;0;V;4
+24;3;3864;I16;;Power Supply Voltage Phase a;;1;0;V;4
+25;3;3865;I16;;Power Supply Voltage Phase b;;1;0;V;4
+26;3;3866;I16;;Power Supply Voltage Phase c;;1;0;V;4
 27;3;3867;I16;;Reactive power Phase a;Q_AC_1;1;0;kvar;4
 28;3;3868;I16;;Reactive power Phase b;Q_AC_2;1;0;kvar;4
 29;3;3869;I16;;Reactive power Phase c;Q_AC_3;1;0;kvar;4
@@ -51,6 +51,6 @@ modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
 50;3;3899;I16;;Power Factor Phase a;PF_1;1;0;;4
 51;3;3900;I16;;Power Factor Phase b;PF_2;1;0;;4
 52;3;3901;I16;;Power Factor Phase c;PF_3;1;0;;4
-53;3;3902;I16;;Power Factor Total;PF;1;0;;4
+53;3;3902;I16;;Power Factor Total;;1;0;;4
 54;3;3903;I16;;Active current;;1;0;A;4
 55;3;3904;I16;;Reactive current;;1;0;A;4

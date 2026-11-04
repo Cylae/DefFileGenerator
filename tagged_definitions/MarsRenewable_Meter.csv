@@ -1,4 +1,4 @@
-﻿modbusTCP;Meter;MarsRenewable;Meter;;;;;;;
+modbusTCP;Meter;MarsRenewable;Meter;;;;;;;
 1;4;10000;F32;;Meter1 Total Forward Active Energy;E_IMP;1.000000;0.000000;kWh;4
 2;4;10002;F32;;Meter1 Total Forward Sharp Energy;;1.000000;0.000000;kWh;4
 3;4;10004;F32;;Meter1 Total Forward Peak Energy;;1.000000;0.000000;kWh;4

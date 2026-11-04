@@ -1,7 +1,7 @@
 modbusRTU;meter;Legrand;EMSCX3;;;;;;;
-1;4;20480;U16;;Phase 1 : current (R);I_AC_1;1;0;A;4
-2;4;20481;U16;;Phase 2 : current (S);I_AC_2;1;0;A;4
-3;4;20482;U16;;Phase 3 : current (T);I_AC_3;1;0;A;4
+1;4;20480;U16;;Phase 1 : current (R);;1;0;A;4
+2;4;20481;U16;;Phase 2 : current (S);;1;0;A;4
+3;4;20482;U16;;Phase 3 : current (T);;1;0;A;4
 4;4;20483;U16;;Neutral current value;;1;0;A;4
 5;4;20494;U16;;1-N Voltage;;1;0;V;4
 6;4;20495;U16;;2-N Voltage;;1;0;V;4
@@ -16,24 +16,24 @@ modbusRTU;meter;Legrand;EMSCX3;;;;;;;
 15;4;20516;U16;;1-N Voltage THD vs. fundamental;;1;0;Percent;4
 16;4;20517;U16;;2-N Voltage THD vs. fundamental;;1;0;Percent;4
 17;4;20518;U16;;3-N Voltage THD vs. fundamental;;1;0;Percent;4
-18;4;20522;I16;;Three-phase Active Power;P_AC;1;0;kW;4
-19;4;20523;I16;;Three-phase reactive power;Q_AC;1;0;kvar;4
-20;4;20526;I16;;Threee-Phase Apparent Power;S_AC_1;1;0;kVA;4
-21;4;20527;I16;;Three-phase Power Factor (PF);PF;0.01;0;;4
-22;4;20529;I16;;Three-phase frequency;FREQ;0.01;0;Hz;4
+18;4;20522;I16;;Three-phase Active Power;;1;0;kW;4
+19;4;20523;I16;;Three-phase reactive power;;1;0;kvar;4
+20;4;20526;I16;;Threee-Phase Apparent Power;;1;0;kVA;4
+21;4;20527;I16;;Three-phase Power Factor (PF);;0.01;0;;4
+22;4;20529;I16;;Three-phase frequency;;0.01;0;Hz;4
 23;4;20532;U16;;Positive Three-phase Active Energy;;1;0;kWh;4
 24;4;20534;U16;;Negative Three-phase Active Energy;;1;0;kWh;4
 25;4;20538;U16;;Positive Three-phase Reactive Energy;;1;0;kvarh;4
 26;4;20540;U16;;Negative Three-phase Reactive Energy;;1;0;kvarh;4
-27;4;20544;I16;;Phase 1 Active Power;P_AC_1;1;0;kW;4
-28;4;20545;I16;;Phase 2 Active Power;P_AC_2;1;0;kW;4
-29;4;20546;I16;;Phase 3 Active Power;P_AC_3;1;0;kW;4
-30;4;20547;I16;;Phase 1 Reactive power;Q_AC_1;1;0;kvar;4
-31;4;20548;I16;;Phase 2 Reactive power;Q_AC_2;1;0;kvar;4
-32;4;20549;I16;;Phase 3 Reactive power;Q_AC_3;1;0;kvar;4
+27;4;20544;I16;;Phase 1 Active Power;;1;0;kW;4
+28;4;20545;I16;;Phase 2 Active Power;;1;0;kW;4
+29;4;20546;I16;;Phase 3 Active Power;;1;0;kW;4
+30;4;20547;I16;;Phase 1 Reactive power;;1;0;kvar;4
+31;4;20548;I16;;Phase 2 Reactive power;;1;0;kvar;4
+32;4;20549;I16;;Phase 3 Reactive power;;1;0;kvar;4
 33;4;20556;I16;;Phase 1 Apparent Power;;1;0;kVA;4
-34;4;20557;I16;;Phase 2 Apparent Power;S_AC_2;1;0;kVA;4
-35;4;20558;I16;;Phase 3 Apparent Power;S_AC_3;1;0;kVA;4
+34;4;20557;I16;;Phase 2 Apparent Power;;1;0;kVA;4
+35;4;20558;I16;;Phase 3 Apparent Power;;1;0;kVA;4
 36;4;20565;U16;;Phase 1 Positive Active Energy;;1;0;kWh;4
 37;4;20567;U16;;Phase 2 Positive Active Energy;;1;0;kWh;4
 38;4;20569;U16;;Phase 3 Positive Active Energy;;1;0;kWh;4
@@ -100,9 +100,9 @@ modbusRTU;meter;Legrand;EMSCX3;;;;;;;
 99;3;20488;U16;;Current multiplier factor;;1;0;;4
 100;3;20489;U16;;Total power multiplier factor;;1;0;;4
 101;3;20490;U16;;Phase power multiplier factor;;1;0;;4
-102;3;20491;U16;;Total energy multiplier factor;E_TOT;1;0;;4
+102;3;20491;U16;;Total energy multiplier factor;;1;0;;4
 103;3;20492;U16;;Phase energy multiplier factor;;1;0;;4
-104;3;20493;U16;;Alarm/event 1 value;WIND_SPEED;1;0;;4
+104;3;20493;U16;;Alarm/event 1 value;;1;0;;4
 105;3;20494;U16;;Alarm/event 1 threshold;;1;0;;4
 106;3;20496;U16;;Alarm/event 1 delay;;1;0;seconds;4
 107;3;20497;U16;;Alarm/event 1 Hysteresis;;0.1;0;Percent;4

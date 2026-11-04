@@ -56,7 +56,7 @@ Modbus;Inverter;Sungrow;Generic
 55;4;5121;U16;;MPPT 7 current;I_DC_MPPT_7;0.1;0.0;A;4
 56;4;5122;U16;;MPPT 8 voltage;U_DC_MPPT_8;0.1;0.0;V;4
 57;4;5123;U16;;MPPT 8 current;I_DC_MPPT_8;0.1;0.0;A;4
-58;4;5124;I16;;Power factor Setpoint;CMD_PF;0.001;0.0;;4
+58;4;5124;I16;;Power factor Setpoint;;0.001;0.0;;4
 59;4;5127;U32_W;;Monthly power yields;;0.1;0.0;kWh;4
 60;4;5129;U16;;MPPT 9 voltage;U_DC_MPPT_9;0.1;0.0;V;4
 61;4;5130;U16;;MPPT 9 current;I_DC_MPPT_9;0.1;0.0;A;4
@@ -105,7 +105,7 @@ Modbus;Inverter;Sungrow;Generic
 104;3;5005;U16;;Start/Stop;CMD_ON;1.0;-206.0;;4
 105;3;5006;U16;;Power limitation switch;CMD_P_ENA;1.0;-169.0;;4
 106;3;5007;U16;;Power limitation setting;CMD_P_AC_LIM_PERCENT;0.11;0.0;%;4
-107;3;5018;I16;;PF setting;;0.001;0.0;;4
+107;3;5018;I16;;PF setting;CMD_PF;0.001;0.0;;4
 108;3;5019;U16;;Active Power Overload;CMD_P_MODE;1.0;-169.0;;4
 109;3;5032;I16;;Reactive Power Ratio at Night;;0.1;0.0;%;4
 110;3;5033;U16;;Local / remote control;;1.0;0.0;;4

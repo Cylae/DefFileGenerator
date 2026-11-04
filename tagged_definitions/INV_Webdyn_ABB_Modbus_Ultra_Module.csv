@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;ABB;Ultra;;;;;;;
+ModbusRTU;Inverter;ABB;Ultra;;;;;;;
 1;4;99;U16;;Start Parameter Module x;;1.0;0.0;;1
 2;4;100;U16;;Length Parameter Module x;;1.0;0.0;;1
 3;4;101;U16;;ModBus numerical Map Version;;1.0;0.0;;1

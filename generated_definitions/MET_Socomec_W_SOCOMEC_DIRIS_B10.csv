@@ -18,7 +18,7 @@ modbus;meter;SOCOMEC;DIRIS_B10;;;;;;;
 17;3;18498;I32;;Reactive_power___P3;;0.001;0;kVAr;4
 18;3;18442;U32;;Frequency;FREQ;0.001;0;Hz;4
 19;3;18476;I32;;Total_active_power;P_AC;0.001;0;kW;4
-20;3;19843;U32;;Total_Positive_active_Energy___Ea_;E_TOT;1;0;kWh;4
+20;3;19843;U32;;Total_Positive_active_Energy___Ea_;;1;0;kWh;4
 21;3;19846;U32;;Total_Negative_active_Energy___Ea-;;1;0;kWh;4
 22;3;19849;U32;;Total_Positive_reactive_Energy___Er_;;1;0;kVArh;4
 23;3;19852;U32;;Total_Negative_reactive_Energy___Er-;;1;0;kVArh;4

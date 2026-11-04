@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SofarSolar;SOFAR-G3.External.Modbus.Proto;;;;;;;
+modbusRTU;Inverter;SofarSolar;SOFAR-G3.External.Modbus.Proto;;;;;;;
 1;4;2368;U16;;Add Bit4;;1.0;0.0;;4
 2;4;1028;U16;;Add 2 new status descriptions;;1.0;0.0;;9
 3;4;2496;U16;;Add Bit3;;1.0;0.0;;4

@@ -7,7 +7,7 @@ modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
 6;3;30847;U32;;Capacite de la batterie actuelle;;1;0;Wh;4
 7;3;32257;U32;;Courant de decharge maximum;;0.001;0;A;4
 8;3;32245;U32;;Tension de fin de decharge;;0.01;0;V;4
-9;3;30849;I32;;Temperature batterie;;0.1;0;C;4
+9;3;30849;I32;;Temperature batterie;TEMP;0.1;0;C;4
 10;3;31397;U64;;Chargement batterie;;1;0;Wh;4
 11;3;31401;U64;;Dechargement batterie;;1;0;Wh;4
 12;3;41363;U32;;Energie de charge;;1;0;Wh;1
@@ -18,7 +18,7 @@ modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
 17;3;40005;U32;;Passage automatique heure ete/hiver active;;1;0;;1
 18;3;40003;U32;;Fuseau horaire;;1;0;;1
 19;3;34623;U32;;Rayonnement sur capteur externe;;1;0;W/m2;4
-20;3;34615;U32;;Vitesse du vent 1;WIND_SPEED;0.01;0;m/s;4
+20;3;34615;U32;;Vitesse du vent 1;;0.01;0;m/s;4
 21;3;34633;U32;;Vitesse du vent 2;;0.01;0;m/s;4
 22;3;34635;U32;;Vitesse du vent 3;;0.01;0;m/s;4
 23;3;34609;I32;;Temperature exterieure 1;;0.1;0;C;4
@@ -28,7 +28,7 @@ modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
 27;3;41437;U32;;Appliquer la configuration des parametres de la courbe;;1;0;;1
 28;3;41439;U32;;Resultat de l application des parametres de la courbe;;1;0;;1
 29;3;41187;U32;;Source de la mesure de reference pour regulation de puissance;;1;0;;1
-30;3;41215;I32;;Cons. de puissance active valeur de retombee;P_AC;1;0;W;1
+30;3;41215;I32;;Cons. de puissance active valeur de retombee;;1;0;W;1
 31;3;40151;U32;;Reg.puiss.act.et app.par comm 1;;1;0;;4
 32;3;44427;U32;;Reg.puiss.act.et app.par comm 2;;1;0;;4
 33;3;40149;I32;;Prescription de puiss. active 1;;1;0;W;4
@@ -39,24 +39,24 @@ modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
 38;3;34621;I32;;Temperature des panneaux 1;;0.1;0;C;4
 39;3;34629;I32;;Temperature des panneaux 2;;0.1;0;C;4
 40;3;34631;I32;;Temperature des panneaux 3;;0.1;0;C;4
-41;3;30517;U64;;Energie degagee jour actuel;E_DAY;1;0;Wh;4
+41;3;30517;U64;;Energie degagee jour actuel;;1;0;Wh;4
 42;3;30535;U32;;Energie degagee jour actuel 1;;1;0;Wh;4
 43;3;30537;U32;;Energie degagee jour actuel 2;;1;0;Wh;4
 44;3;30539;U32;;Energie degagee jour actuel 3;;1;0;Wh;4
-45;3;31435;I32;;Courant du reseau phase L1;I_AC_1;0.001;0;A;4
-46;3;31437;I32;;Courant du reseau phase L2;I_AC_2;0.001;0;A;4
-47;3;31439;I32;;Courant du reseau phase L3;I_AC_3;0.001;0;A;4
-48;3;31447;U32;;Frequence du reseau;FREQ;0.01;0;Hz;4
-49;3;31253;U32;;Tension du reseau phase L1;U_AC_1;0.01;0;V;4
+45;3;31435;I32;;Courant du reseau phase L1;;0.001;0;A;4
+46;3;31437;I32;;Courant du reseau phase L2;;0.001;0;A;4
+47;3;31439;I32;;Courant du reseau phase L3;;0.001;0;A;4
+48;3;31447;U32;;Frequence du reseau;;0.01;0;Hz;4
+49;3;31253;U32;;Tension du reseau phase L1;;0.01;0;V;4
 50;3;31451;U32;;Tension de reseau phase L1 contre L2;;0.01;0;V;4
-51;3;31255;U32;;Tension du reseau phase L2;U_AC_2;0.01;0;V;4
+51;3;31255;U32;;Tension du reseau phase L2;;0.01;0;V;4
 52;3;31453;U32;;Tension de reseau phase L2 contre L3;;0.01;0;V;4
-53;3;31257;U32;;Tension du reseau phase L3;U_AC_3;0.01;0;V;4
+53;3;31257;U32;;Tension du reseau phase L3;;0.01;0;V;4
 54;3;31449;U32;;Tension de reseau phase L3 contre L1;;0.01;0;V;4
 55;3;31433;U32;;Facteur de dephasage;;0.01;0;;4
 56;3;31499;I32;;Facteur de dephasage EEI;;0.001;0;;4
 57;3;31455;I32;;Puissance apparente;S_AC;1;0;VA;4
-58;3;31277;I32;;Puissance reactive d injection dans le reseau;Q_AC;1;0;VAr;4
+58;3;31277;I32;;Puissance reactive d injection dans le reseau;;1;0;VAr;4
 59;3;30581;U32;;Etat du compteur de prelevement;;1;0;Wh;4
 60;3;30583;U32;;Etat du compteur d injection dans le reseau;;1;0;Wh;4
 61;3;30865;I32;;Puissance de prelevement;;1;0;W;4
@@ -87,18 +87,18 @@ modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
 86;3;41171;U32;;Reglage energie tot. degagee point rac. reseau;;1;0;kWh;1
 87;3;30057;U32;;Numero de serie 1;;1;0;;1
 88;3;40067;U32;;Numero de serie 2;;1;0;;1
-89;3;41203;U32;;Puissance nominale de l installation;P_RATED;1;0;W;1
+89;3;41203;U32;;Puissance nominale de l installation;;1;0;W;1
 90;3;41121;U32;;Definition du jeu de donnees regionales;;1;0;;4
 91;3;30953;I32;;Temperature interieure 1;;0.1;0;C;4
 92;3;34113;I32;;Temperature interieure 2;;0.1;0;C;4
 93;3;30975;I32;;Tension du circuit intermediaire;;0.01;0;V;4
 94;3;30881;U32;;Connexion reseau de l installation;;1;0;;4
-95;3;31793;I32;;Entree courant DC 1;I_DC;0.001;0;A;4
+95;3;31793;I32;;Entree courant DC 1;;0.001;0;A;4
 96;3;41143;U32;;Tension limite pour terminer l injection;;0.01;0;V;1
 97;3;41155;U32;;Retard de demarrage entree;;1;0;s;1
 98;3;41131;U32;;Entree tension minimale;;0.01;0;V;1
 99;3;30769;I32;;Entree courant DC 2;;0.001;0;A;4
-100;3;30771;I32;;Entree tension DC;U_DC;0.01;0;V;4
+100;3;30771;I32;;Entree tension DC;;0.01;0;V;4
 101;3;30525;U64;;Temps d injection 1;;1;0;s;4
 102;3;30543;U32;;Temps d injection 2;;1;0;s;4
 103;3;30521;U64;;Temps de service 1;;1;0;s;4

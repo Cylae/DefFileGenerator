@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;MODBUS_Hukseflux;;;;;;;
+modbusRTU;Other;Webdyn;MODBUS_Hukseflux;;;;;;;
 1;4;0;U16;;Modbus address;UNIT_ID;1.0;0.0;-;1
 2;4;1;U16;;Serial communication settings;;1.0;0.0;-;1
 3;4;2;U16;;Irradiance;POA;1.0;0.0;W/m2;4

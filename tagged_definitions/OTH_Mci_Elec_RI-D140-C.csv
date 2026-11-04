@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Mci Elec;RI-D140-C;;;;;;;
+modbusRTU;Other;Mci Elec;RI-D140-C;;;;;;;
 1;4;0;U16;;Voltage 1st Phase;;1.0;0.0;V;2
 2;4;2;U16;;Voltage 2nd Phase;;1.0;0.0;V;2
 3;4;4;U16;;Voltage 3rd Phase;;1.0;0.0;V;2
@@ -23,9 +23,9 @@
 22;4;42;U16;;Total kW;P_AC;1.0;0.0;kW;2
 23;4;44;U16;;Total kVA;;1.0;0.0;kVA;2
 24;4;46;U16;;Total kVAr;;1.0;0.0;kVAr;2
-25;4;48;U16;;PF1;;1.0;0.0;;2
-26;4;50;U16;;PF2;;1.0;0.0;;2
-27;4;52;U16;;PF3;;1.0;0.0;;2
+25;4;48;U16;;PF1;PF_1;1.0;0.0;;2
+26;4;50;U16;;PF2;PF_2;1.0;0.0;;2
+27;4;52;U16;;PF3;PF_3;1.0;0.0;;2
 28;4;54;U16;;Average PF;;1.0;0.0;;2
 29;4;56;U16;;Frequency;FREQ;1.0;0.0;Hz;2
 30;4;58;U16;;Import kWh;;1.0;0.0;kWh;4

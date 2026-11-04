@@ -4,7 +4,7 @@ Modbus;Io;Webdyn;Sens_IO_8DI-6DO
 3;3;6_1;U8;;Device Address;UNIT_ID;1.0;0.0;;4
 4;3;7;U16;;Product Model;MODEL;1.0;0.0;;4
 5;3;8;I16;;Hardware Version;;1.0;0.0;;4
-6;3;9;I16;;Baudrate Setting;BusConfig;1.0;0.0;;4
+6;3;9;I16;;Baudrate Setting;;1.0;0.0;;4
 7;3;100_1;U8;;Status digital Inputs;;1.0;0.0;;4
 8;3;100_0_1;Bits;;Status digital Input channel 1;;1.0;0.0;;4
 9;3;100_1_1;Bits;;Status digital Input channel 2;;1.0;0.0;;4
@@ -14,13 +14,13 @@ Modbus;Io;Webdyn;Sens_IO_8DI-6DO
 13;3;100_5_1;Bits;;Status digital Input channel 6;;1.0;0.0;;4
 14;3;100_6_1;Bits;;Status digital Input channel 7;;1.0;0.0;;4
 15;3;100_7_1;Bits;;Status digital Input channel 8;;1.0;0.0;;4
-16;3;101;U16;;Open collector outputs;DigitalOutputs;1.0;0.0;;4
-17;3;101_0_1;Bits;;Open collector output 1;DigitalOutput1;1.0;0.0;;4
-18;3;101_1_1;Bits;;Open collector output 2;DigitalOutput2;1.0;0.0;;4
-19;3;101_2_1;Bits;;Open collector output 3;DigitalOutput3;1.0;0.0;;4
-20;3;101_3_1;Bits;;Open collector output 4;DigitalOutput4;1.0;0.0;;4
-21;3;101_4_1;Bits;;Open collector output 5;DigitalOutput5;1.0;0.0;;4
-22;3;101_5_1;Bits;;Open collector output 6;DigitalOutput6;1.0;0.0;;4
+16;3;101;U16;;Open collector outputs;;1.0;0.0;;4
+17;3;101_0_1;Bits;;Open collector output 1;;1.0;0.0;;4
+18;3;101_1_1;Bits;;Open collector output 2;;1.0;0.0;;4
+19;3;101_2_1;Bits;;Open collector output 3;;1.0;0.0;;4
+20;3;101_3_1;Bits;;Open collector output 4;;1.0;0.0;;4
+21;3;101_4_1;Bits;;Open collector output 5;;1.0;0.0;;4
+22;3;101_5_1;Bits;;Open collector output 6;;1.0;0.0;;4
 23;3;102;I16;;Counter input 1;;1.0;0.0;;4
 24;3;104;I16;;Counter input 2;;1.0;0.0;;4
 25;3;106;I16;;Counter input 3;;1.0;0.0;;4

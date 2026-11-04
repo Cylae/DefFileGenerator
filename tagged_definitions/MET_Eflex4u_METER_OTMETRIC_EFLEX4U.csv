@@ -1,4 +1,4 @@
-﻿modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
+modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
 1;4;0;U32;;V1_Phase_1_N_voltage;;0.001;0;V;4
 2;4;2;U32;;V2_Phase_2_N_voltage;;0.001;0;V;4
 3;4;4;U32;;V3_Phase_3_N_voltage;;0.001;0;V;4

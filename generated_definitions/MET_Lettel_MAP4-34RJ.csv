@@ -2,9 +2,9 @@ Modbus;Meter;Lettel;MAP4-34RJ
 1;3;6;F32;;Ua;;1.0;0.0;V;4
 2;3;8;F32;;Ub;;1.0;0.0;V;4
 3;3;10;F32;;Uc;;1.0;0.0;V;4
-4;3;12;F32;;Uab;;1.0;0.0;V;4
-5;3;14;F32;;Ubc;;1.0;0.0;V;4
-6;3;16;F32;;Uca;;1.0;0.0;V;4
+4;3;12;F32;;Uab;U_AC_L1L2;1.0;0.0;V;4
+5;3;14;F32;;Ubc;U_AC_L2L3;1.0;0.0;V;4
+6;3;16;F32;;Uca;U_AC_L3L1;1.0;0.0;V;4
 7;3;18;F32;;F;;1.0;0.0;Hz;4
 8;3;20;F32;;L1_Ia;;1.0;0.0;A;4
 9;3;22;F32;;L1_Ib;;1.0;0.0;A;4
@@ -329,9 +329,9 @@ Modbus;Meter;Lettel;MAP4-34RJ
 328;3;2053;I16;;High byte_ _1 Communication verification format;;1.0;0.0;;4
 329;3;2056;I16;;High byte_ Wiring method;;1.0;0.0;;4
 330;3;2058;I16;;Voltage range setting;;1.0;0.0;V;4
-331;3;2059;I16;;L1 current range setting;I_AC_1;1.0;0.0;A;4
-332;3;2060;I16;;L2 current range setting;I_AC_2;1.0;0.0;A;4
-333;3;2061;I16;;L3 current range setting;I_AC_3;1.0;0.0;A;4
+331;3;2059;I16;;L1 current range setting;;1.0;0.0;A;4
+332;3;2060;I16;;L2 current range setting;;1.0;0.0;A;4
+333;3;2061;I16;;L3 current range setting;;1.0;0.0;A;4
 334;3;2062;I16;;L4 current range setting;;1.0;0.0;A;4
 335;3;2064;U32;;Primary voltage setting;;1.0;0.0;V;4
 336;3;2066;U32;;L1 primary current setting;;1.0;0.0;A;4
@@ -349,14 +349,14 @@ Modbus;Meter;Lettel;MAP4-34RJ
 348;3;2101;I16;;_1 Demand working mode;;1.0;0.0;;4
 349;3;2102;I16;;_1 Demand slip time(t);;1.0;0.0;s;4
 350;3;2103;I16;;_1 Demand calculation time(T);;1.0;0.0;t;4
-351;3;2304;F32;;L1 total multi-rate energy;E_TOT_1;1.0;0.0;kWh;4
+351;3;2304;F32;;L1 total multi-rate energy;;1.0;0.0;kWh;4
 352;3;2306;F32;;L1 total multi-rate    energy [P1];;1.0;0.0;kWh;4
 353;3;2308;F32;;L1 total multi-rate    energy [P2];;1.0;0.0;kWh;4
 354;3;2310;F32;;L1 total multi-rate energy [P3];;1.0;0.0;kWh;4
 355;3;2312;F32;;L1 total multi-rate energy [P4];;1.0;0.0;kWh;4
-356;3;2314;F32;;L2 total multi-rate energy_ as above;E_TOT_2;1.0;0.0;kWh;4
-357;3;2324;F32;;L3 total multi-rate energy_ as above;E_TOT_3;1.0;0.0;kWh;4
-358;3;2334;F32;;L4 total multi-rate energy_ as above;E_TOT;1.0;0.0;kWh;4
+356;3;2314;F32;;L2 total multi-rate energy_ as above;;1.0;0.0;kWh;4
+357;3;2324;F32;;L3 total multi-rate energy_ as above;;1.0;0.0;kWh;4
+358;3;2334;F32;;L4 total multi-rate energy_ as above;;1.0;0.0;kWh;4
 359;3;2344;F32;;L1 multi-rate energy this month;;1.0;0.0;kWh;4
 360;3;2354;F32;;L2 multi-rate energy this month;;1.0;0.0;kWh;4
 361;3;2364;F32;;L3 multi-rate energy this month;;1.0;0.0;kWh;4
@@ -388,7 +388,7 @@ Modbus;Meter;Lettel;MAP4-34RJ
 387;3;3095;I16;;Deviation_Uab;;0.1;0.0;V;4
 388;3;3096;I16;;Deviation_Ubc;;0.1;0.0;V;4
 389;3;3097;I16;;Deviation_Uca;;0.1;0.0;V;4
-390;3;3098;I16;;Frequency deviation;FREQ;0.01;0.0;Hz;4
+390;3;3098;I16;;Frequency deviation;;0.01;0.0;Hz;4
 391;3;3120;I16;;THD_Ua;;0.02;0.0;Percent;4
 392;3;3121;I16;;THD_Ub;;0.03;0.0;Percent;4
 393;3;3122;I16;;THD_Uc;;0.04;0.0;Percent;4

@@ -1,5 +1,5 @@
 modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
-1;3;3200_10;STRING;;Machine model;MODEL;1;0;;4
+1;3;3200_10;STRING;;Machine model;;1;0;;4
 2;3;3205_0;U8;;DSP version;;1;0;;4
 3;3;3205_1;U8;;ARM version;;1;0;;4
 4;3;3206_22;STRING;;Inverter SN;SERIAL;1;0;;4
@@ -12,13 +12,13 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 11;3;3230_0;U8;;DSP2version number;;1;0;;4
 12;3;3230_1;U8;;DSP2Test version number;;1;0;;4
 13;3;4000;U16;;Clear  statistical information;;1;0;;4
-14;3;4001;U16;;Remote power-off;CMD_OFF;1;0;;4
+14;3;4001;U16;;Remote power-off;;1;0;;4
 15;3;4002;U16;;Revoke remote power-off;;1;0;;4
-16;3;4003;U16;;Set the power factor;PF;1;0;;4
-17;3;4004;U16;;Set the active power;CMD_P_AC_SET_PERCENT;1;0;%;4
-18;3;4005;I16;;Set the reactive power;Q_AC;1;0;Kvar;4
+16;3;4003;U16;;Set the power factor;;1;0;;4
+17;3;4004;U16;;Set the active power;;1;0;%;4
+18;3;4005;I16;;Set the reactive power;;1;0;Kvar;4
 19;3;4006;U16;;Set the reactive control mode;;1;0;;4
-20;3;4007;U16;;Overfrequency derating;FREQ;1;0;;4
+20;3;4007;U16;;Overfrequency derating;;1;0;;4
 21;3;4008;U16;;Overfrequency derating Threshold;;0.01;0;Hz;4
 22;3;4011;U16;;LOGO Settings;;1;0;;4
 23;3;4012;U16;;Input Mode Settings;;1;0;;4
@@ -29,7 +29,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 28;3;4017;U16;;Grid Voltage  Upper Limit;;1;0;;4
 29;3;4018;U16;;Grid Frequency  Lower Limit Settings;;1;0;;4
 30;3;4019;U16;;Grid  Frequency   Upper Limit Settings;;1;0;;4
-31;3;4020;U16;;Back Current Power Limit Settings;CMD_P_AC_SET_ABS;1;0;W;4
+31;3;4020;U16;;Back Current Power Limit Settings;;1;0;W;4
 32;3;4021;U16;;Overvoltage Derating Threshold Value;;0.001;0;;4
 33;3;4023;U16;;485Address Settings (U2);;1;0;;4
 34;3;4024;U16;;485Baud RateSettings(U2);;1;0;;4
@@ -46,54 +46,54 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 45;3;4035;U16;;Start I/VScan;;1;0;;4
 46;3;4036;I16;;OUTPUT ADJUSTING (20/50KW);;1;0;KW;4
 47;3;4037;I16;;Active PowerIncrement (W);;1;0;W;4
-48;3;4038;I16;;Soft Start Active Power Change Rate;P_AC;1;0;%/min;4
+48;3;4038;I16;;Soft Start Active Power Change Rate;;1;0;%/min;4
 49;3;4039;U16;;Active Power Settings;;0.001;0;;4
 50;3;4040;U16;;R-phase Voltage Calibration Factor;;1;0;;4
 51;3;4041;U16;;S-phase Voltage Calibration Factor;;1;0;;4
 52;3;4042;U16;;T-phase Voltage Calibration Factor;;1;0;;4
-53;3;4043;U16;;R-phase Current Calibration Factor;I_AC_3;1;0;;4
+53;3;4043;U16;;R-phase Current Calibration Factor;;1;0;;4
 54;3;4044;U16;;S-phase Calibration;;1;0;;4
 55;3;4045;U16;;T-phase Current Calibration Factor;;1;0;;4
 56;3;4046;U16;;BatteryVoltage Calibration Factor;;1;0;;4
-57;3;4113;U16;;OUTPUT ADJUSTING (120/250KW);cmdPwrZGR;1;0;KW;4
-58;3;4114;U16;;Nominal Power write;P_RATED;1;0;KW;4
-59;4;2964;U16;;PV12 input voltage;U_DC_STRING_12;0.1;0;V;4
-60;4;2965;I16;;PV12 input current;I_DC_MPPT_12;0.01;0;A;4
-61;4;2966;I32;;PV12 input power;P_DC_MPPT_12;1;0;W;4
-62;4;2968;U16;;PV11 input voltage;U_DC_STRING_11;0.1;0;V;4
-63;4;2969;I16;;PV11 input current;I_DC_MPPT_11;0.01;0;A;4
-64;4;2970;I32;;PV11 input power;P_DC_MPPT_11;1;0;W;4
-65;4;2972;U16;;PV10 input voltage;U_DC_STRING_10;0.1;0;V;4
-66;4;2973;I16;;PV10 input current;I_DC_MPPT_10;0.01;0;A;4
-67;4;2974;I32;;PV10 input power;P_DC_MPPT_10;1;0;W;4
-68;4;2976;U16;;PV9 input voltage;U_DC_STRING_9;0.1;0;V;4
-69;4;2977;I16;;PV9 input current;I_DC_MPPT_9;0.01;0;A;4
-70;4;2978;I32;;PV9 input power;P_DC_MPPT_9;1;0;W;4
-71;4;2980;U16;;PV8 input voltage;U_DC_STRING_8;0.1;0;V;4
-72;4;2981;I16;;PV8 input current;I_DC_MPPT_8;0.01;0;A;4
-73;4;2982;I32;;PV8 input power;P_DC_MPPT_8;1;0;W;4
-74;4;2984;U16;;PV7 input voltage;U_DC_STRING_7;0.1;0;V;4
-75;4;2985;I16;;PV7 input current;I_DC_MPPT_7;0.01;0;A;4
-76;4;2986;I32;;PV7 input power;P_DC_MPPT_7;1;0;W;4
-77;4;2988;U16;;PV6 input voltage;U_DC_STRING_6;0.1;0;V;4
-78;4;2989;I16;;PV6 input current;I_DC_MPPT_6;0.01;0;A;4
-79;4;2990;I32;;PV6 input power;P_DC_MPPT_6;1;0;W;4
-80;4;2992;U16;;PV5 input voltage;U_DC_STRING_5;0.1;0;V;4
-81;4;2993;I16;;PV5 input current;I_DC_MPPT_5;0.01;0;A;4
-82;4;2994;I32;;PV5 input power;P_DC_MPPT_5;1;0;W;4
-83;4;2996;U16;;PV4 input voltage;U_DC_STRING_4;0.1;0;V;4
-84;4;2997;I16;;PV4 input current;I_DC_MPPT_4;0.01;0;A;4
-85;4;2998;I32;;PV4 input power;P_DC_MPPT_4;1;0;W;4
-86;4;3000;U16;;PV1 input voltage;U_DC_STRING_1;0.1;0;V;4
-87;4;3001;U16;;PV2 input voltage;U_DC_STRING_2;0.1;0;V;4
-88;4;3002;U16;;PV3 input voltage;U_DC_STRING_3;0.1;0;V;4
-89;4;3003;U16;;PV1 input current;I_DC_MPPT_1;0.01;0;A;4
-90;4;3004;U16;;PV2 input current;I_DC_MPPT_2;0.01;0;A;4
-91;4;3005;U16;;PV3 input current;I_DC_MPPT_3;0.01;0;A;4
-92;4;3006;I32;;PV1 input power;P_DC_MPPT_1;1;0;W;4
-93;4;3008;I32;;PV2 input power;P_DC_MPPT_2;1;0;W;4
-94;4;3010;I32;;PV3 input power;P_DC_MPPT_3;1;0;W;4
-95;4;3012;U16;;PBUS voltage;U_DC;0.1;0;V;4
+57;3;4113;U16;;OUTPUT ADJUSTING (120/250KW);;1;0;KW;4
+58;3;4114;U16;;Nominal Power write;;1;0;KW;4
+59;4;2964;U16;;PV12 input voltage;;0.1;0;V;4
+60;4;2965;I16;;PV12 input current;;0.01;0;A;4
+61;4;2966;I32;;PV12 input power;;1;0;W;4
+62;4;2968;U16;;PV11 input voltage;;0.1;0;V;4
+63;4;2969;I16;;PV11 input current;;0.01;0;A;4
+64;4;2970;I32;;PV11 input power;;1;0;W;4
+65;4;2972;U16;;PV10 input voltage;;0.1;0;V;4
+66;4;2973;I16;;PV10 input current;;0.01;0;A;4
+67;4;2974;I32;;PV10 input power;;1;0;W;4
+68;4;2976;U16;;PV9 input voltage;;0.1;0;V;4
+69;4;2977;I16;;PV9 input current;;0.01;0;A;4
+70;4;2978;I32;;PV9 input power;;1;0;W;4
+71;4;2980;U16;;PV8 input voltage;;0.1;0;V;4
+72;4;2981;I16;;PV8 input current;;0.01;0;A;4
+73;4;2982;I32;;PV8 input power;;1;0;W;4
+74;4;2984;U16;;PV7 input voltage;;0.1;0;V;4
+75;4;2985;I16;;PV7 input current;;0.01;0;A;4
+76;4;2986;I32;;PV7 input power;;1;0;W;4
+77;4;2988;U16;;PV6 input voltage;;0.1;0;V;4
+78;4;2989;I16;;PV6 input current;;0.01;0;A;4
+79;4;2990;I32;;PV6 input power;;1;0;W;4
+80;4;2992;U16;;PV5 input voltage;;0.1;0;V;4
+81;4;2993;I16;;PV5 input current;;0.01;0;A;4
+82;4;2994;I32;;PV5 input power;;1;0;W;4
+83;4;2996;U16;;PV4 input voltage;;0.1;0;V;4
+84;4;2997;I16;;PV4 input current;;0.01;0;A;4
+85;4;2998;I32;;PV4 input power;;1;0;W;4
+86;4;3000;U16;;PV1 input voltage;;0.1;0;V;4
+87;4;3001;U16;;PV2 input voltage;;0.1;0;V;4
+88;4;3002;U16;;PV3 input voltage;;0.1;0;V;4
+89;4;3003;U16;;PV1 input current;;0.01;0;A;4
+90;4;3004;U16;;PV2 input current;;0.01;0;A;4
+91;4;3005;U16;;PV3 input current;;0.01;0;A;4
+92;4;3006;I32;;PV1 input power;;1;0;W;4
+93;4;3008;I32;;PV2 input power;;1;0;W;4
+94;4;3010;I32;;PV3 input power;;1;0;W;4
+95;4;3012;U16;;PBUS voltage;;0.1;0;V;4
 96;4;3013;U16;;NBUS voltage;;0.1;0;V;4
 97;4;3014;U16;;RS-phase grid voltage;;0.1;0;V;4
 98;4;3015;U16;;ST-phase grid voltage;;0.1;0;V;4
@@ -104,7 +104,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 103;4;3020;U16;;R-phase grid-tied current;;0.01;0;A;4
 104;4;3021;U16;;S-phasegrid-tied current;;0.01;0;A;4
 105;4;3022;U16;;T-phase grid-tied current;;0.01;0;A;4
-106;4;3023;I32;;Grid-tied power;;1;0;W;4
+106;4;3023;I32;;Grid-tied power;P_AC;1;0;W;4
 107;4;3025;U16;;Radiator temperature;;0.1;0;C;4
 108;4;3026;U16;;Module temperature;TEMP_CELL;0.1;0;C;4
 109;4;3027;U16;;DSP alarm code;;1;0;;4
@@ -118,9 +118,9 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 117;4;3036_1;U8;;ARM error code;;1;0;;4
 118;4;3037_0;U8;;Input mode;;1;0;;4
 119;4;3037_1;U8;;Mains standard;;1;0;;4
-120;4;3038;U32;;Total energy yield;E_TOT;0.1;0;Kwh;4
+120;4;3038;U32;;Total energy yield;;0.1;0;Kwh;4
 121;4;3040;U32;;Annual energy yield;;1;0;Kwh;4
-122;4;3042;U16;;Daily energy yield;E_DAY;1;0;Kwh;4
+122;4;3042;U16;;Daily energy yield;;1;0;Kwh;4
 123;4;3043;U16;;Power-on voltage;;0.1;0;V;4
 124;4;3044;U16;;Power-on delay;;1;0;s;4
 125;4;3045;U16;;Lower grid voltage threshold;;0.1;0;V;4
@@ -132,36 +132,36 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 131;4;3051_0;I8;;Preset reactive power;;1;0;Kvar;4
 132;4;3051_1;U8;;Reactive control mode;;1;0;;4
 133;4;3052;I32;;Apparent power;S_AC;1;0;VA;4
-134;4;3054;I32;;Reactive power;;1;0;Var;4
-135;4;3056;U16;;Power factor;;1;0;;4
-136;4;3057;U16;;DC insulation resistance;R_ISO;1;0;Kohm;4
+134;4;3054;I32;;Reactive power;Q_AC;1;0;Var;4
+135;4;3056;U16;;Power factor;PF;1;0;;4
+136;4;3057;U16;;DC insulation resistance;;1;0;Kohm;4
 137;4;3058;U16;;Overfrequency derating_1;;1;0;;4
 138;4;3059;U16;;Overfrequency derating threshold_1;;1;0;;4
 139;4;3060;U16;;High voltage of the QV curve;;1;0;;4
 140;4;3061;U16;;High-voltage power;;1;0;;4
 141;4;3062;U16;;Low voltage of the QV curve;;1;0;;4
 142;4;3063;U16;;Low-voltage power;;1;0;;4
-143;4;3064;I16;;PV1 String current 1;I_DC_STRING_1;0.01;0;A;4
+143;4;3064;I16;;PV1 String current 1;;0.01;0;A;4
 144;4;3065;I16;;PV1 String current 2;;0.01;0;A;4
 145;4;3066;I16;;PV1 String current 3;;0.01;0;A;4
 146;4;3067;I16;;PV1 String current 4;;0.01;0;A;4
-147;4;3068;I16;;PV2 String current 1;I_DC_STRING_2;0.01;0;A;4
+147;4;3068;I16;;PV2 String current 1;;0.01;0;A;4
 148;4;3069;I16;;PV2 String current 2;;0.01;0;A;4
 149;4;3070;I16;;PV2 String current 3;;0.01;0;A;4
 150;4;3071;I16;;PV2 String current 4;;0.01;0;A;4
-151;4;3072;I16;;PV3 String current 1;I_DC_STRING_3;0.01;0;A;4
+151;4;3072;I16;;PV3 String current 1;;0.01;0;A;4
 152;4;3073;I16;;PV3 String current 2;;0.01;0;A;4
 153;4;3074;I16;;PV3 String current 3;;0.01;0;A;4
 154;4;3075;I16;;PV3 String current 4;;0.01;0;A;4
-155;4;3076;I16;;PV4 String current 1;I_DC_STRING_4;0.01;0;A;4
+155;4;3076;I16;;PV4 String current 1;;0.01;0;A;4
 156;4;3077;I16;;PV4 String current 2;;0.01;0;A;4
 157;4;3078;I16;;PV4 String current 3;;0.01;0;A;4
 158;4;3079;I16;;PV4 String current 4;;0.01;0;A;4
-159;4;3080;I16;;PV5 String current 1;I_DC_STRING_5;0.01;0;A;4
+159;4;3080;I16;;PV5 String current 1;;0.01;0;A;4
 160;4;3081;I16;;PV5 String current 2;;0.01;0;A;4
 161;4;3082;I16;;PV5 String current 3;;0.01;0;A;4
 162;4;3083;I16;;PV5 String current 4;;0.01;0;A;4
-163;4;3084;I16;;PV6 String current 1;I_DC_STRING_6;0.01;0;A;4
+163;4;3084;I16;;PV6 String current 1;;0.01;0;A;4
 164;4;3085;I16;;PV6 String current 2;;0.01;0;A;4
 165;4;3086;I16;;PV6 String current 3;;0.01;0;A;4
 166;4;3087;I16;;PV6 String current 4;;0.01;0;A;4
@@ -189,7 +189,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 188;4;3120;U16;;485 Address(1);;1;0;;4
 189;4;3121;U16;;485Baud Rate(1);;1;0;;4
 190;4;3122;U16;;Three-phase System;;1;0;;4
-191;4;3123;U16;;Remote Control Enable;CMD_P_ENA;1;0;;4
+191;4;3123;U16;;Remote Control Enable;;1;0;;4
 192;4;3124;U16;;String Test Threshold;;1;0;A;4
 193;4;3125;U16;;Setting Value of Self- check;;1;0;;4
 194;4;3126;U16;;I/V Scan-status;;1;0;;4
@@ -206,7 +206,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 205;4;3137;U16;;S-phase Calibration Factor_1;;1;0;;4
 206;4;3138;U16;;T-phase Current Calibration Factor_1;;1;0;;4
 207;4;3139;U16;;Battery Voltage Calibration Factor_1;;1;0;;4
-208;4;3196;U32;;Nominal Power read;;1;0;KW;4
+208;4;3196;U32;;Nominal Power read;P_RATED;1;0;KW;4
 209;4;5000;U16;;PV1 Voltage Point 1;;0.1;0;V;0
 210;4;5001;I16;;PV1 Current Point 1;;0.01;0;A;0
 211;4;5002;U16;;PV1 Voltage Point 2;;0.1;0;V;0
@@ -1408,7 +1408,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 1407;4;6198;U16;;PV6 Voltage Point 100;;0.1;0;V;0
 1408;4;6199;I16;;PV6 Current Point 100;;0.01;0;A;0
 1409;4;6200;U16;;PV7 Voltage Point 1;;0.1;0;V;0
-1410;4;6201;I16;;PV7 Current Point 1;I_DC_STRING_7;0.01;0;A;0
+1410;4;6201;I16;;PV7 Current Point 1;;0.01;0;A;0
 1411;4;6202;U16;;PV7 Voltage Point 2;;0.1;0;V;0
 1412;4;6203;I16;;PV7 Current Point 2;;0.01;0;A;0
 1413;4;6204;U16;;PV7 Voltage Point 3;;0.1;0;V;0
@@ -1608,7 +1608,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 1607;4;6398;U16;;PV7 Voltage Point 100;;0.1;0;V;0
 1608;4;6399;I16;;PV7 Current Point 100;;0.01;0;A;0
 1609;4;6400;U16;;PV8 Voltage Point 1;;0.1;0;V;0
-1610;4;6401;I16;;PV8 Current Point 1;I_DC_STRING_8;0.01;0;A;0
+1610;4;6401;I16;;PV8 Current Point 1;;0.01;0;A;0
 1611;4;6402;U16;;PV8 Voltage Point 2;;0.1;0;V;0
 1612;4;6403;I16;;PV8 Current Point 2;;0.01;0;A;0
 1613;4;6404;U16;;PV8 Voltage Point 3;;0.1;0;V;0
@@ -1808,7 +1808,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 1807;4;6598;U16;;PV8 Voltage Point 100;;0.1;0;V;0
 1808;4;6599;I16;;PV8 Current Point 100;;0.01;0;A;0
 1809;4;6600;U16;;PV9 Voltage Point 1;;0.1;0;V;0
-1810;4;6601;I16;;PV9 Current Point 1;I_DC_STRING_9;0.01;0;A;0
+1810;4;6601;I16;;PV9 Current Point 1;;0.01;0;A;0
 1811;4;6602;U16;;PV9 Voltage Point 2;;0.1;0;V;0
 1812;4;6603;I16;;PV9 Current Point 2;;0.01;0;A;0
 1813;4;6604;U16;;PV9 Voltage Point 3;;0.1;0;V;0
@@ -2008,7 +2008,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 2007;4;6798;U16;;PV9 Voltage Point 100;;0.1;0;V;0
 2008;4;6799;I16;;PV9 Current Point 100;;0.01;0;A;0
 2009;4;6800;U16;;PV10 Voltage Point 1;;0.1;0;V;0
-2010;4;6801;I16;;PV10 Current Point 1;I_DC_STRING_10;0.01;0;A;0
+2010;4;6801;I16;;PV10 Current Point 1;;0.01;0;A;0
 2011;4;6802;U16;;PV10 Voltage Point 2;;0.1;0;V;0
 2012;4;6803;I16;;PV10 Current Point 2;;0.01;0;A;0
 2013;4;6804;U16;;PV10 Voltage Point 3;;0.1;0;V;0
@@ -2208,7 +2208,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 2207;4;6998;U16;;PV10 Voltage Point 100;;0.1;0;V;0
 2208;4;6999;I16;;PV10 Current Point 100;;0.01;0;A;0
 2209;4;7000;U16;;PV11 Voltage Point 1;;0.1;0;V;0
-2210;4;7001;I16;;PV11 Current Point 1;I_DC_STRING_11;0.01;0;A;0
+2210;4;7001;I16;;PV11 Current Point 1;;0.01;0;A;0
 2211;4;7002;U16;;PV11 Voltage Point 2;;0.1;0;V;0
 2212;4;7003;I16;;PV11 Current Point 2;;0.01;0;A;0
 2213;4;7004;U16;;PV11 Voltage Point 3;;0.1;0;V;0
@@ -2408,7 +2408,7 @@ modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 2407;4;7198;U16;;PV11 Voltage Point 100;;0.1;0;V;0
 2408;4;7199;I16;;PV11 Current Point 100;;0.01;0;A;0
 2409;4;7200;U16;;PV12 Voltage Point 1;;0.1;0;V;0
-2410;4;7201;I16;;PV12 Current Point 1;I_DC_STRING_12;0.01;0;A;0
+2410;4;7201;I16;;PV12 Current Point 1;;0.01;0;A;0
 2411;4;7202;U16;;PV12 Voltage Point 2;;0.1;0;V;0
 2412;4;7203;I16;;PV12 Current Point 2;;0.01;0;A;0
 2413;4;7204;U16;;PV12 Voltage Point 3;;0.1;0;V;0

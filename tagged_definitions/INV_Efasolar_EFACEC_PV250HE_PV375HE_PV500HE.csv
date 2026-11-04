@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;EFACEC;PV250HE_PV375HE_PV500HE;;;;;;;
+ModbusRTU;Inverter;EFACEC;PV250HE_PV375HE_PV500HE;;;;;;;
 1;3;41001;F32;;DC_Current;I_DC;1;0;A;4
 2;3;41003;F32;;DC_Voltage;U_DC;1;0;V;4
 3;3;41005;F32;;PV_Voltage;;1;0;V;4
@@ -11,7 +11,7 @@
 10;3;41019;F32;;T-R Voltage;;1;0;V;4
 11;3;41021;F32;;Apparent Power;S_AC;1;0;kVa;4
 12;3;41023;F32;;Active Power;P_AC;1;0;kW;4
-13;3;41025;F32;;Reactive Power;Reactive Power;1;0;kvar;4
+13;3;41025;F32;;Reactive Power;Q_AC;1;0;kvar;4
 14;3;41027;F32;;Frequency;FREQ;1;0;Hz;4
 15;3;41029;F32;;Power Factor;PF;1;0;;4
 16;3;41031;F32;;Efficiency;;1;0;%;4
@@ -96,22 +96,22 @@
 95;3;41097;F32;;GFDI_ILeak;;1;0;A;0
 96;3;41959;F32;;[optionalGFDI] GND_Ins (last_valid_measure);;1;0;kOhm;0
 97;3;41163;F32;;[optionalGFDI] GND_Ins (Time_Since_Last_Meas);;1;0;h;0
-98;3;41701;U16;;QCtrlMode;QCtrlMode;1;0;;4
+98;3;41701;U16;;QCtrlMode;;1;0;;4
 99;3;41702;U16;;QCtrlPreference;;1;0;;4
-100;3;41703;U16;;QFPF_SP;QFPF_SP;1;0;;4
-101;3;41704;U16;;QFQ_SP_%;QFQ_SP_%;1;0;%;4
-102;3;41705;U16;;QFQ_SP_kVar;QFQ_SP_kVar;1;0;kvar;4
-103;3;41706;U16;;QQuad_SP;signSinPhi;1;0;;4
+100;3;41703;U16;;QFPF_SP;;1;0;;4
+101;3;41704;U16;;QFQ_SP_%;;1;0;%;4
+102;3;41705;U16;;QFQ_SP_kVar;;1;0;kvar;4
+103;3;41706;U16;;QQuad_SP;;1;0;;4
 104;3;41707;U16;;PMaxCtrl;CMD_P_ENA;1;0;;1
-105;3;41708;U16;;PMax_SP_%;CmdPowerPct;1;0;%;4
-106;3;41709;U16;;PMax_SP_kW;CmdPower;1;0;kW;4
+105;3;41708;U16;;PMax_SP_%;;1;0;%;4
+106;3;41709;U16;;PMax_SP_kW;;1;0;kW;4
 107;3;41710;U16;;PRedFreq;;1;0;;4
 108;3;41711;U16;;PLimGrad;;1;0;;4
 109;3;41712;U16;;PLimGrad_%;;1;0;;4
 110;3;41802_0_1;BITS;;TurnOn command;CMD_ON;1;0;;1
 111;3;41802_1_1;BITS;;TurnOff command;CMD_OFF;1;0;;1
 112;3;41831;I32;;Total real power +/-;;1;0;;4
-113;3;41833;I32;;Total reactive power +/-;Q_AC;1;0;;4
+113;3;41833;I32;;Total reactive power +/-;;1;0;;4
 114;3;41835;I32;;Total apparent power;;1;0;;4
 115;3;41837;I32;;Real power phase 1 +/-;P_AC_1;1;0;;4
 116;3;41839;I32;;Real power phase 2;P_AC_2;1;0;;4

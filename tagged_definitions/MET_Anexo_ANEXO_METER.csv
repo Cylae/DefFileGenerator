@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Anexo;ANEXO_METER;;;;;;;
+modbusRTU;Meter;Anexo;ANEXO_METER;;;;;;;
 1;4;0;U16;;0.0.1 modbus adres (modbus adres  1);;1.0;0.0;;4
 2;4;2;U16;;32.25 Voltage L1 (230V);U_AC_1;1.0;0.0;V;4
 3;4;4;U16;;52.25 Voltage L2 (230V);U_AC_2;1.0;0.0;V;4

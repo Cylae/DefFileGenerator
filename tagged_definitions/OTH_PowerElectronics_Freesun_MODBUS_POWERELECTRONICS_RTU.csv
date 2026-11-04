@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;PowerElectronics Freesun;MODBUS_POWERELECTRONICS_RTU;;;;;;;
+modbusRTU;Other;PowerElectronics Freesun;MODBUS_POWERELECTRONICS_RTU;;;;;;;
 1;4;1100;U16;;volt1;;1.0;0.0;V;4
 2;4;1101;U16;;volt2;;1.0;0.0;V;4
 3;4;1102;U16;;volt3;;1.0;0.0;V;4

@@ -1,6 +1,6 @@
-﻿modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
-1;4;0_30;STRING;;EMS1000 PRO SN;DeviceSerialNumber;1;0;;4
-2;4;15_10;STRING;;EMS1000 PRO Version Number;FirmwareVersion;1;0;;4
+modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
+1;4;0_30;STRING;;EMS1000 PRO SN;;1;0;;4
+2;4;15_10;STRING;;EMS1000 PRO Version Number;;1;0;;4
 3;4;20;U16;;Year Month;;1;0;;4
 4;4;21;U16;;Day Hour;;1;0;;4
 5;4;22;U16;;Minute Second;;1;0;;4
@@ -15,11 +15,11 @@
 14;4;80;U64;;Total discharged;;0.1;0;kWh;4
 15;4;84;I32;;Daily loads consumed;;0.1;0;kWh;4
 16;4;86;I64;;Total loads consumed;;0.1;0;kWh;4
-17;4;90;I32;;Grid power;GridPower;0.01;0;kW;4
+17;4;90;I32;;Grid power;;0.01;0;kW;4
 18;4;92;U32;;PV Power;P_AC;0.01;0;kW;4
 19;4;94;I32;;Load power;;0.01;0;kW;4
-20;4;96;I32;;Battery power;BatteryPower;0.01;0;kW;4
-21;4;98;U16;;Battery SOC;BatterySOC;0.1;0;%;4
+20;4;96;I32;;Battery power;;0.01;0;kW;4
+21;4;98;U16;;Battery SOC;SOC;0.1;0;%;4
 22;4;202;U16;;Meter communication status;;1;0;;4
 23;4;203;U16;;Meter type;;1;0;;4
 24;4;204;U32;;Positive active energy;;0.1;0;kWh;4
@@ -304,7 +304,7 @@
 303;4;826;U16;;Access control status_9;;1;0;;4
 304;4;827;U16;;SPD Status_9;;1;0;;4
 305;3;0;I16;;System manual charge and discharge power;;1;0;kW;4
-306;3;1;U16;;System manual charging SOC target;SOC;1;0;%;4
+306;3;1;U16;;System manual charging SOC target;;1;0;%;4
 307;3;2;U16;;System manuel discharge SOC target;;1;0;;4
 308;3;3;U16;;System reactive power control mode;;1;0;;4
 309;3;4;U16;;System reactive power factor;;1;0;%;4

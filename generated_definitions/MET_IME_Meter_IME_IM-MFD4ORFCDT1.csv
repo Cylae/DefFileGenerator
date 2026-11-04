@@ -1,7 +1,7 @@
 Modbus;Meter;IME;IM-MFD4ORFCDT1;
-1;4;20480;U32;;Phase 1 Current Value (R);I_AC_1;1;0;mA;4
-2;4;20482;U32;;Phase 2 Current Value (S);I_AC_2;1;0;mA;4
-3;4;20484;U32;;Phase 3 Current Value (T);I_AC_3;1;0;mA;4
+1;4;20480;U32;;Phase 1 Current Value (R);;1;0;mA;4
+2;4;20482;U32;;Phase 2 Current Value (S);;1;0;mA;4
+3;4;20484;U32;;Phase 3 Current Value (T);;1;0;mA;4
 4;4;20486;U32;;Neutral Current Value;;1;0;mA;4
 5;4;20492;U32;;Medium value Im=(R+sec.+T)/3;;1;0;mA;4
 6;4;20498;U32;;Medium thermal value 1 (R);;1;0;mA;4
@@ -13,22 +13,22 @@ Modbus;Meter;IME;IM-MFD4ORFCDT1;
 12;4;20515;U32;;1-2 Voltage;;1;0;mV;4
 13;4;20517;U32;;2-3 Voltage;;1;0;mV;4
 14;4;20519;U32;;3-1 Voltage;;1;0;mV;4
-15;4;20537;U16;;Three-phase frequency;FREQ;0.01;0;Hz;4
+15;4;20537;U16;;Three-phase frequency;;0.01;0;Hz;4
 16;4;20538;I32;;Three-phase Active Power;P_AC;0.01;0;;4
-17;4;20540;I32;;Three-phase reactive power;Q_AC;0.01;0;;4
-18;4;20544;I32;;Threee-Phase Apparent Power;S_AC_1;0.01;0;;4
+17;4;20540;I32;;Three-phase reactive power;;0.01;0;;4
+18;4;20544;I32;;Threee-Phase Apparent Power;;0.01;0;;4
 19;4;20546;I32;;Three-phase Power Distortion;;0.01;0;;4
-20;4;20548;I16;;Three-phase Power Factor (PF);PF;0.001;0;;4
+20;4;20548;I16;;Three-phase Power Factor (PF);;0.001;0;;4
 21;4;20550;U16;;Power Factor Sector;;1;0;;4
 22;4;20551;I32;;Phase 1 Active Power;P_AC_1;0.01;0;;4
 23;4;20553;I32;;Phase 2 Active Power;P_AC_2;0.01;0;;4
 24;4;20555;I32;;Phase 3 Active Power;P_AC_3;0.01;0;;4
-25;4;20557;I32;;Phase 1 Reactive power;Q_AC_1;0.01;0;;4
-26;4;20559;I32;;Phase 2 Reactive power;Q_AC_2;0.01;0;;4
-27;4;20561;I32;;Phase 3 Reactive power;Q_AC_3;0.01;0;;4
+25;4;20557;I32;;Phase 1 Reactive power;;0.01;0;;4
+26;4;20559;I32;;Phase 2 Reactive power;;0.01;0;;4
+27;4;20561;I32;;Phase 3 Reactive power;;0.01;0;;4
 28;4;20569;U32;;Phase 1 Apparent Power;;0.01;0;;4
-29;4;20571;U32;;Phase 2 Apparent Power;S_AC_2;0.01;0;;4
-30;4;20573;U32;;Phase 3 Apparent Power;S_AC_3;0.01;0;;4
+29;4;20571;U32;;Phase 2 Apparent Power;;0.01;0;;4
+30;4;20573;U32;;Phase 3 Apparent Power;;0.01;0;;4
 31;4;20581;I16;;Power Factor Phase 1 (R);PF_1;0.001;0;;4
 32;4;20582;I16;;Power Factor Phase 2 (S);PF_2;0.001;0;;4
 33;4;20583;I16;;Power Factor Phase 3 (T);PF_3;0.001;0;;4
@@ -47,7 +47,7 @@ Modbus;Meter;IME;IM-MFD4ORFCDT1;
 46;4;20710;U16;;THD Voltage 1-N vs. fundamental;;0.1;0;%;4
 47;4;20711;U16;;THD Voltage 2-N vs. fundamental;;0.1;0;%;4
 48;4;20712;U16;;THD Voltage 3-N vs. fundamental;;0.1;0;%;4
-49;4;20738;U16;;Wrap round total positive active energy;E_TOT;1;0;;4
+49;4;20738;U16;;Wrap round total positive active energy;;1;0;;4
 50;4;20739;U16;;Wrap round total positive reactive energy;;1;0;;4
 51;4;20740;U16;;Wrap round total negative active energy;;1;0;;4
 52;4;20741;U16;;Wrap round total negative reactive energy;;1;0;;4
@@ -66,7 +66,7 @@ Modbus;Meter;IME;IM-MFD4ORFCDT1;
 65;3;20632;U32;;Maximum Phase 3 Current Requirement (T);;1;0;mA;4
 66;3;20672;I32;;Maximum Total Active Power Requirement Tariff 1;;0.01;0;;4
 67;3;20674;I32;;Maximum Total Reactive Power Requirement Tariff 1;;0.01;0;;4
-68;3;20676;I32;;Maximum Total Apparent Power Requirement Tariff 1;S_AC;0.01;0;;4
+68;3;20676;I32;;Maximum Total Apparent Power Requirement Tariff 1;;0.01;0;;4
 69;3;20678;I32;;Maximum Total Active Power Requirement Tariff 2;;0.01;0;;4
 70;3;20680;I32;;Maximum Total Reactive Power Requirement Tariff 2;;0.01;0;;4
 71;3;20682;I32;;Maximum Total Apparent Power Requirement Tariff 2;;0.01;0;;4

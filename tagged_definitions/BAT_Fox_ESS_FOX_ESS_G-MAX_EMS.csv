@@ -1,4 +1,4 @@
-﻿Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
+Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
 1;4;101;I16;;PCS actual total active power summary;P_AC;0.1;0;KW;4
 2;4;102;I16;;PCS actual total reactive power summary;Q_AC;0.1;0;Kvar;4
 3;4;103;I16;;Total voltage summary;;0.1;0;V;4

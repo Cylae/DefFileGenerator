@@ -1,14 +1,14 @@
 ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
-1;3;180_12;STRING;;Device Serial Number;SERIAL;1;0;;4
+1;3;180_12;STRING;;Device Serial Number;;1;0;;4
 2;4;270_20;STRING;;Hardware Version;;1;0;;4
 3;4;280_18;STRING;;Software Version;;1;0;;4
 4;3;0;U16;;On/Off;CMD_ON;1;0;;4
 5;3;26;U16;;Mode Selection Setting;;1;0;;4
 6;3;190;U16;;Running state;;1;0;;4
-7;4;0;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;4
-8;4;1;U16;;Battery voltage;;0.1;0;V;4
-9;4;2;I16;;Battery current;;0.1;0;A;4
-10;4;3;I16;;PV1 DC current;I_DC_STRING_1;0.1;0;A;4
+7;4;0;U16;;PV1 Voltage;;0.1;0;V;4
+8;4;1;U16;;Battery voltage;U_DC;0.1;0;V;4
+9;4;2;I16;;Battery current;I_DC;0.1;0;A;4
+10;4;3;I16;;PV1 DC current;;0.1;0;A;4
 11;4;4;U16;;Output voltage UV;;0.1;0;V;4
 12;4;5;U16;;Output voltage VW;;0.1;0;V;4
 13;4;6;U16;;Output voltage WU;;0.1;0;V;4
@@ -21,19 +21,19 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 20;4;13;U16;;Grid bypass voltageUV;;0.1;0;V;4
 21;4;14;U16;;Grid bypass voltageVW;;0.1;0;V;4
 22;4;15;U16;;Grid bypass voltageWU;;0.1;0;V;4
-23;4;16;U16;;Output frequency;FREQ;0.01;0;Hz;4
+23;4;16;U16;;Output frequency;;0.01;0;Hz;4
 24;4;17;I16;;Battery power;;0.1;0;kW;4
-25;4;18;U16;;Bypass apparent power;S_AC;0.1;0;kVA;4
-26;4;19;I16;;Bypass active power;P_AC;0.1;0;kW;4
-27;4;20;I16;;Bypass reactive power;Q_AC;0.1;0;kVar;4
-28;4;21;U16;;Grid frequency;;0.01;0;Hz;4
-29;4;22;U16;;Power factor symbol;PF;1;0;;4
-30;4;23;I16;;Power factor;;0.001;0;;4
+25;4;18;U16;;Bypass apparent power;;0.1;0;kVA;4
+26;4;19;I16;;Bypass active power;;0.1;0;kW;4
+27;4;20;I16;;Bypass reactive power;;0.1;0;kVar;4
+28;4;21;U16;;Grid frequency;FREQ;0.01;0;Hz;4
+29;4;22;U16;;Power factor symbol;;1;0;;4
+30;4;23;I16;;Power factor;PF;0.001;0;;4
 31;4;24;U16;;Battery daily discharge capacity;;0.1;0;kWh;4
 32;4;25;U16;;Battery daily discharge time;;0.1;0;Min;4
 33;4;26;U16;;Battery daily charge capacity;;0.1;0;kWh;4
 34;4;27;U16;;Battery daily charge time;;0.1;0;Min;4
-35;4;28;U16;;PV2 insulation test positive;R_ISO;0.1;0;kOhm;4
+35;4;28;U16;;PV2 insulation test positive;;0.1;0;kOhm;4
 36;4;29;U16;;PV2 insulation test negative;;0.1;0;kOhm;4
 37;4;30;I16;;Temperature of heat sink of converter;;0.1;0;C;4
 38;4;31;I16;;Buck fin temperature;;0.1;0;C;4
@@ -64,7 +64,7 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 63;4;56;U16;;Output voltage U;;0.1;0;V;4
 64;4;57;U16;;Output voltage V;;0.1;0;V;4
 65;4;58;U16;;Output voltage W;;0.1;0;V;4
-66;4;59;I16;;Busbar voltage;U_DC;0.1;0;V;4
+66;4;59;I16;;Busbar voltage;;0.1;0;V;4
 67;4;60;I16;;Busbar voltage positive;;0.1;0;V;4
 68;4;61;I16;;Busbar voltage negative;;0.1;0;V;4
 69;4;62;U16;;PV daily power generation;E_DAY;0.1;0;kWh;4
@@ -76,10 +76,10 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 75;4;72;U32;;Total charge capacity of battery High/low;;0.1;0;kWh;4
 76;4;74;U32;;Total battery charge time High/low;;0.1;0;h;4
 77;4;76;I16;;PV1 inductance current;;0.1;0;A;4
-78;4;77;I16;;PV2 inductance current;I_DC_STRING_2;0.1;0;A;4
-79;4;78;U16;;Output apparent power;;0.1;0;kVA;4
-80;4;79;I16;;Output active power;;0.1;0;kW;4
-81;4;80;I16;;Output reactive power;;0.1;0;kVar;4
+78;4;77;I16;;PV2 inductance current;;0.1;0;A;4
+79;4;78;U16;;Output apparent power;S_AC;0.1;0;kVA;4
+80;4;79;I16;;Output active power;P_AC;0.1;0;kW;4
+81;4;80;I16;;Output reactive power;Q_AC;0.1;0;kVar;4
 82;4;81;U16;;Bypass frequency;;0.01;0;Hz;4
 83;4;82;U16;;Daily power consumption of load;;0.1;0;kWh;4
 84;4;83;U16;;Daily power time of load;;0.1;0;Min;4
@@ -98,7 +98,7 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 97;4;102;U16;;Invert Phase voltage U;;0.1;0;V;4
 98;4;103;U16;;Invert Phase voltage V;;0.1;0;V;4
 99;4;104;U16;;Invert Phase voltage W;;0.1;0;V;4
-100;4;105;I16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
+100;4;105;I16;;PV2 voltage;;0.1;0;V;4
 101;4;106;I16;;PV2 DC current;;0.1;0;A;4
 102;4;107;I16;;PV2 power;;0.1;0;kW;4
 103;4;108;I16;;PV total power;E_TOT;0.1;0;kW;4
@@ -107,7 +107,7 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 106;4;111;I16;;Output inductance 1 current;;0.1;0;A;4
 107;4;112;I16;;Output inductance 2 current;;0.1;0;A;4
 108;4;113;I16;;Output power;;0.1;0;kW;4
-109;4;114;I16;;PV Module temperature;TEMP_CELL;0.1;0;C;4
+109;4;114;I16;;PV Module temperature;;0.1;0;C;4
 110;4;115;I16;;OUT Module temperature;;0.1;0;C;4
 111;4;116;I16;;PV inductance temperature;;0.1;0;C;4
 112;4;117;I16;;OUT inductance temperature;;0.1;0;C;4
@@ -115,12 +115,12 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 114;4;119;U16;;Bus negative insulation impedance;;0.1;0;kOhm;4
 115;4;120;U16;;Output daily discharge;;0.1;0;kWh;4
 116;4;121;U32;;Output total discharge High/Low;;0.1;0;kWh;4
-117;4;123;I16;;PV3 voltage;U_DC_STRING_3;0.1;0;V;4
-118;4;124;I16;;PV4 voltage;U_DC_STRING_4;0.1;0;V;4
-119;4;125;I16;;PV5 voltage;U_DC_STRING_5;0.1;0;V;4
-120;4;126;I16;;PV3 DC current;I_DC_STRING_3;0.1;0;A;4
-121;4;127;I16;;PV4 DC current;I_DC_STRING_4;0.1;0;A;4
-122;4;128;I16;;PV5 DC current;I_DC_STRING_5;0.1;0;A;4
+117;4;123;I16;;PV3 voltage;;0.1;0;V;4
+118;4;124;I16;;PV4 voltage;;0.1;0;V;4
+119;4;125;I16;;PV5 voltage;;0.1;0;V;4
+120;4;126;I16;;PV3 DC current;;0.1;0;A;4
+121;4;127;I16;;PV4 DC current;;0.1;0;A;4
+122;4;128;I16;;PV5 DC current;;0.1;0;A;4
 123;4;129;I16;;PV3inductance current;;0.1;0;A;4
 124;4;130;I16;;PV4inductance current;;0.1;0;A;4
 125;4;131;I16;;PV5 inductance current;;0.1;0;A;4
@@ -138,14 +138,14 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 137;4;143;U16;;Judgement symbol of parallel operation;;1;0;;4
 138;4;144;I16;;Battery inductance current 1;;0.1;0;A;4
 139;4;145;I16;;Battery inductance current 2;;0.1;0;A;4
-140;4;146;I16;;Busbar current;I_DC;0.1;0;A;4
+140;4;146;I16;;Busbar current;;0.1;0;A;4
 141;4;147;I16;;BAT mode temperature;;0.1;0;C;4
 142;4;148;I16;;Balance board mode temperature;;0.1;0;C;4
 143;4;149;U16;;SCR state;;1;0;;4
 144;4;150;I16;;PCS battery charging power;;0.1;0;kW;4
 145;4;151;I16;;PCS output power;;0.1;0;kW;4
 146;4;152;I16;;PBD output power;;0.1;0;kW;4
-147;4;153;I16;;HPS Charge power limit;CMD_P_AC_SET_ABS;0.1;0;kW;4
+147;4;153;I16;;HPS Charge power limit;;0.1;0;kW;4
 148;4;154;I16;;CP current U;;0.1;0;A;4
 149;4;155;I16;;CP current V;;0.1;0;A;4
 150;4;156;I16;;CP current W;;0.1;0;A;4
@@ -157,7 +157,7 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 156;4;162;I16;;System battery current;;0.1;0;A;4
 157;4;163;U16;;Dry contact state;;1;0;;4
 158;4;164;U16;;BMS total voltage;;0.1;0;V;4
-159;4;165;I16;;BMS total current;I_AC;0.1;0;A;4
+159;4;165;I16;;BMS total current;;0.1;0;A;4
 160;4;166;U16;;SOH;SOH;1;0;%;4
 161;4;167;U16;;BMS max/min temperature group number;;1;0;;4
 162;4;168;U16;;Max/min voltage Group BMS No.;;1;0;;4

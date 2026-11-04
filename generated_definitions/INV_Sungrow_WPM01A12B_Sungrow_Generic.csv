@@ -9,8 +9,8 @@ Modbus;Inverter;Sungrow;Generic
 8;4;5001;U16;;Output type;;1.000000;0.000000;;4
 9;4;5002;U16;;Daily power yields;E_DAY;0.100000;0.000000;kWh;4
 10;4;5003;U32_W;;Total power yields;E_TOT;1.000000;0.000000;kWh;4
-11;4;5005;U32_W;;Total running time;TOT;1.000000;0.000000;h;4
-12;4;5007;I16;;Internal temperature;TEMP;0.100000;0.000000;C;4
+11;4;5005;U32_W;;Total running time;;1.000000;0.000000;h;4
+12;4;5007;I16;;Internal temperature;TEMP_INT;0.100000;0.000000;C;4
 13;4;5008;I32_W;;Total apparent power;S_AC;1.000000;0.000000;VA;4
 14;4;5010;U16;;MPPT 1 voltage;U_DC_MPPT_1;0.100000;0.000000;V;4
 15;4;5011;U16;;MPPT 1 current ;I_DC_MPPT_1;0.100000;0.000000;A;4
@@ -19,9 +19,9 @@ Modbus;Inverter;Sungrow;Generic
 18;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.100000;0.000000;V;4
 19;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.100000;0.000000;A;4
 20;4;5016;U32_W;;Total DC power;P_DC;1.000000;0.000000;W;4
-21;4;5018;U16;;A-B line voltage_phase A voltage;U_AC_L1L2;0.100000;0.000000;V;4
-22;4;5019;U16;;B-C line voltage_phase B voltage;U_AC_L2L3;0.100000;0.000000;V;4
-23;4;5020;U16;;C-A line voltage_phase C voltage;U_AC_L3L1;0.100000;0.000000;V;4
+21;4;5018;U16;;A-B line voltage_phase A voltage;;0.100000;0.000000;V;4
+22;4;5019;U16;;B-C line voltage_phase B voltage;;0.100000;0.000000;V;4
+23;4;5020;U16;;C-A line voltage_phase C voltage;;0.100000;0.000000;V;4
 24;4;5021;U16;;Phase A current;I_AC_1;0.100000;0.000000;A;4
 25;4;5022;U16;;Phase B current;I_AC_2;0.100000;0.000000;A;4
 26;4;5023;U16;;Phase C current;I_AC_3;0.100000;0.000000;A;4
@@ -37,9 +37,9 @@ Modbus;Inverter;Sungrow;Generic
 36;4;5042;U16;;Fault_Alarm time_ min;;1.000000;0.000000;;4
 37;4;5043;U16;;Fault_Alarm time_ sec;;1.000000;0.000000;;4
 38;4;5044;U16;;Fault_Alarm code;;1.000000;0.000000;;4
-39;4;5048;U16;;Nominal reactive power;Q_RATED;0.100000;0.000000;kVAR;4
-40;4;5070;U16;;Array insulation resistance;R_ISO;1.000000;0.000000;kOhm;4
-41;4;5076;U32_W;;Active Power Regulation Setpoint;CMD_P_AC_SET_ABS;1.000000;0.000000;W;4
+39;4;5048;U16;;Nominal reactive power;;0.100000;0.000000;kVAR;4
+40;4;5070;U16;;Array insulation resistance;;1.000000;0.000000;kOhm;4
+41;4;5076;U32_W;;Active Power Regulation Setpoint;;1.000000;0.000000;W;4
 42;4;5078;I32_W;;Reactive Power Regulation Setpoint;;1.000000;0.000000;Var;4
 43;4;5080;U32_W;;Device work State 2;;1.000000;0.000000;W;9
 44;4;5082;I32_W;;Meter power;;1.000000;0.000000;W;4
@@ -48,9 +48,9 @@ Modbus;Inverter;Sungrow;Generic
 47;4;5088;I32_W;;Meter C phase power;;1.000000;0.000000;W;4
 48;4;5090;I32_W;;Load power;;1.000000;0.000000;W;4
 49;4;5092;U32_W;;Daily export energy;;0.100000;0.000000;kWh;4
-50;4;5094;U32_W;;Total export energy;E_EXP;0.100000;0.000000;kWh;4
+50;4;5094;U32_W;;Total export energy;;0.100000;0.000000;kWh;4
 51;4;5096;U32_W;;Daily import energy;;0.100000;0.000000;kWh;4
-52;4;5098;U32_W;;Total import energy;E_IMP;0.100000;0.000000;kWh;4
+52;4;5098;U32_W;;Total import energy;;0.100000;0.000000;kWh;4
 53;4;5100;U32_W;;Daily direct energy consumption;;0.100000;0.000000;kWh;4
 54;4;5102;U32_W;;Total direct energy consumption;;0.100000;0.000000;kWh;4
 55;4;5112;U16;;Daily running time;;1.000000;0.000000;min;4
@@ -79,7 +79,7 @@ Modbus;Inverter;Sungrow;Generic
 78;4;5142;U16;;Heart Beat;;1.000000;0.000000;;4
 79;4;5143;U32_W;;Total power yields_1;;0.100000;0.000000;kWh;4
 80;4;5145;I16;;Negative voltage to the ground;;0.100000;0.000000;V;4
-81;4;5146;U16;;Bus voltage;U_DC;0.100000;0.000000;V;4
+81;4;5146;U16;;Bus voltage;;0.100000;0.000000;V;4
 82;4;5147;U16;;Grid frequency_1;;0.010000;0.000000;Hz;4
 83;4;5149;U16;;PID work state;;1.000000;0.000000;;4
 84;4;5150;U16;;PID alarm code ;;1.000000;0.000000;;4
@@ -129,7 +129,7 @@ Modbus;Inverter;Sungrow;Generic
 128;3;5002;U16;;System clock_ Hour;;1.000000;0.000000;;4
 129;3;5003;U16;;System clock_ Minute;;1.000000;0.000000;;4
 130;3;5004;U16;;System clock_ Second;;1.000000;0.000000;;4
-131;3;5005;U16;;Start_Stop;CMD_ON;1.000000;0.000000;;4
+131;3;5005;U16;;Start_Stop;;1.000000;0.000000;;4
 132;3;5006;U16;;Power limitation switch;CMD_P_ENA;1.000000;0.000000;;4
 133;3;5007;U16;;Power limitation setting;CMD_P_AC_SET_PERCENT;0.090900;0.000000;%;4
 134;3;5009;U16;;Export power limitation;;1.000000;0.000000;;4
@@ -139,16 +139,16 @@ Modbus;Inverter;Sungrow;Generic
 138;3;5013;U16;;Current transformer;;1.000000;0.000000;;4
 139;3;5014;U16;;Export power limitation percentage;;0.100000;0.000000;%;4
 140;3;5015;U16;;Installed PV Power;;0.010000;0.000000;kW;4
-141;3;5018;I16;;Power Factor setting;CMD_PF;0.001000;0.000000;;4
-142;3;5019;U16;;Active Power Overload;CMD_P_MODE;1.000000;0.000000;;4
+141;3;5018;I16;;Power Factor setting;;0.001000;0.000000;;4
+142;3;5019;U16;;Active Power Overload;;1.000000;0.000000;;4
 143;3;5034;U16;;Night SVG Switch;;1.000000;0.000000;;4
-144;3;5035;U16;;Reactive power adjustment mode;CMD_Q_MODE;1.000000;0.000000;;4
-145;3;5036;I16;;Reactive power percentage setting;CMD_Q_AC_SET_PERCENT;0.100000;0.000000;%;4
-146;3;5038;U16;;Power limitation adjustment;CMD_P_AC_LIM_ABS;0.100000;0.000000;kW;4
-147;3;5039;I16;;Reactive power adjustment;CMD_Q_AC_SET_ABS;0.100000;0.000000;kVAR;4
+144;3;5035;U16;;Reactive power adjustment mode;;1.000000;0.000000;;4
+145;3;5036;I16;;Reactive power percentage setting;;0.100000;0.000000;%;4
+146;3;5038;U16;;Power limitation adjustment;;0.100000;0.000000;kW;4
+147;3;5039;I16;;Reactive power adjustment;;0.100000;0.000000;kVAR;4
 148;3;5040;U16;;PID Recovery;;1.000000;0.000000;;4
 149;3;5041;U16;;Anti PID;;1.000000;0.000000;;4
-150;3;5042;U16;;Full-Day PID Suppression;PRESSURE;1.000000;0.000000;;4
+150;3;5042;U16;;Full-Day PID Suppression;;1.000000;0.000000;;4
 151;3;5047;U16;;Q(P) Curve 1 - Curve;;1.000000;0.000000;;4
 152;3;5048;U16;;Q(P) Curve 1 - PB;;0.100000;0.000000;%;4
 153;3;5049;I16;;Q(P) Curve 1 - KB;;0.001000;0.000000;;4

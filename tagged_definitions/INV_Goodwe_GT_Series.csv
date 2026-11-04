@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Goodwe;GT_Series;1;;;;;;
+Modbus;Inverter;Goodwe;GT_Series;1;;;;;;
 1;3;32016;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
 2;3;32017;I16;;PV1 Current;I_DC_STRING_1;0.01;0.0;A;4
 3;3;32018;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0.0;V;4
@@ -144,11 +144,11 @@
 143;3;42555;U16;;Power of enter the curve (0.1%);;0.1;0.0;%Pn;4
 144;3;42556;U16;;Power of quit the curve (0.1%);;0.1;0.0;%Pn;4
 145;3;42557;U16;;Voltage1-1(0.1%);;0.1;0.0;%Vn;4
-146;3;42558;I16;;Reactive power 1 (0.1%);;0.1;0.0;%Pr;4
+146;3;42558;I16;;Reactive power 1 (0.1%);Q_AC_1;0.1;0.0;%Pr;4
 147;3;42559;U16;;Voltage1-2(0.1%);;0.1;0.0;%Vn;4
-148;3;42560;I16;;Reactive power 2(0.1%);;0.1;0.0;%Pr;4
+148;3;42560;I16;;Reactive power 2(0.1%);Q_AC_2;0.1;0.0;%Pr;4
 149;3;42561;U16;;Voltage1-3(0.1%);;0.1;0.0;%Vn;4
-150;3;42562;I16;;Reactive power 3(0.1%);;0.1;0.0;%Pr;4
+150;3;42562;I16;;Reactive power 3(0.1%);Q_AC_3;0.1;0.0;%Pr;4
 151;3;42563;U16;;Voltage1-4(0.1%);;0.1;0.0;%Vn;4
 152;3;42564;I16;;Reactive power 4 (0.1%);;0.1;0.0;%Pr;4
 153;3;42567;U32;;QU Reference Voltage Regulation Time;;1.0;0.0;ms;4

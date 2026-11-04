@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
+Modbus;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
 1;4;8456_16;STRING;;Serial Number;SERIAL;1.0;0.0;;4
 2;4;8464_16;STRING;;Model Name;MODEL;1.0;0.0;;4
 3;4;8502;U32;;FeedInGrid Life energy;E_TOT;0.1;0.0;kWh;4

@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Goodwe;HT_others_Series;1;;;;;;
+Modbus;Inverter;Goodwe;HT_others_Series;1;;;;;;
 1;3;32002;U16;;Operating status;;1.0;0.0;;4
 2;3;32016;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
 3;3;32017;I16;;PV1 Current;I_DC_STRING_1;0.01;0.0;A;4
@@ -191,11 +191,11 @@
 190;3;41651;U16;;Power of enter the curve (0.1%);;0.1;0.0;%;4
 191;3;41652;U16;;Power of quit the curve (0.1%)_1;;0.1;0.0;%;4
 192;3;41653;U16;;Voltage1(0.1%);;0.1;0.0;%;4
-193;3;41654;U16;;Reactive power 1(0.1%);;0.1;0.0;%;4
+193;3;41654;U16;;Reactive power 1(0.1%);Q_AC_1;0.1;0.0;%;4
 194;3;41655;U16;;Voltage2(0.1%);;0.1;0.0;%;4
-195;3;41656;U16;;Reactive power 2(0.1%);;0.1;0.0;%;4
+195;3;41656;U16;;Reactive power 2(0.1%);Q_AC_2;0.1;0.0;%;4
 196;3;41657;U16;;Voltage3(0.1%);;0.1;0.0;%;4
-197;3;41658;U16;;Reactive power 3(0.1%);;0.1;0.0;%;4
+197;3;41658;U16;;Reactive power 3(0.1%);Q_AC_3;0.1;0.0;%;4
 198;3;41659;U16;;Voltage4(0.1%);;0.1;0.0;%;4
 199;3;41660;U16;;Reactive power 4(0.1%);;0.1;0.0;%;4
 200;3;41661;U16;;K value (percentage of reactive power corresponding to Pn);;0.1;0.0;;4
@@ -203,11 +203,11 @@
 202;3;41680;U16;;PU curve enable;;1.0;0.0;;4
 203;3;41681;U16;;PU curve mode;;1.0;0.0;;4
 204;3;41683;U16;;Voltage1(0.1%)_1;;0.1;0.0;%;4
-205;3;41684;U16;;Active power 1(0.1%);;0.1;0.0;%;4
+205;3;41684;U16;;Active power 1(0.1%);P_AC_1;0.1;0.0;%;4
 206;3;41685;U16;;Voltage2(0.1%)_1;;0.1;0.0;%;4
-207;3;41686;U16;;Active power 2(0.1%);;0.1;0.0;%;4
+207;3;41686;U16;;Active power 2(0.1%);P_AC_2;0.1;0.0;%;4
 208;3;41688;U16;;Voltage3(0.1%)_1;;0.1;0.0;%;4
-209;3;41689;U16;;Active power 3(0.1%);;0.1;0.0;%;4
+209;3;41689;U16;;Active power 3(0.1%);P_AC_3;0.1;0.0;%;4
 210;3;41690;U16;;Voltage4(0.1%)_1;;0.1;0.0;%;4
 211;3;41691;U16;;Active power 4(0.1%);;0.1;0.0;%;4
 212;3;41700;U16;;QP curve flag;;0.1;0.0;;4

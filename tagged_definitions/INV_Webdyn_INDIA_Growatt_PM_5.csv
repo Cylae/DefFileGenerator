@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Growatt;110;;;;;;;
+modbusRTU;Inverter;Growatt;110;;;;;;;
 1;4;1;U16;;Input power (high);P_DC;1.000000;0.000000;;4
 2;4;2;U16;;Input power (low);;1.000000;0.000000;;4
 3;4;3;U16;;PV1 voltage;U_DC_STRING_1;1.000000;0.000000;;4
@@ -105,7 +105,7 @@
 104;4;104;U16;;Inverter fault code;;1.000000;0.000000;;4
 105;4;105;U16;;Inverter warning code;;1.000000;0.000000;;4
 106;4;106;U16;;Actual power percentage;;1.000000;0.000000;;4
-107;3;3;U16;;Active power reduction;cmd;1.000000;0.000000;%;4
+107;3;3;U16;;Active power reduction;;1.000000;0.000000;%;4
 108;4;142;U16;;String_1 voltage;;1.0;0.0;;4
 109;4;143;U16;;String_1 current;I_DC_STRING_1;1.0;0.0;;4
 110;4;144;U16;;String_2 voltage;;1.0;0.0;;4

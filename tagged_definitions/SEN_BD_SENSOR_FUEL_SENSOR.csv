@@ -1,4 +1,4 @@
-﻿Modbus;Sensor;BD_SENSOR;FUEL_SENSOR;;;;;;;
+Modbus;Sensor;BD_SENSOR;FUEL_SENSOR;;;;;;;
 1;4;0;U32;;Serial number;SERIAL;1.0;0.0;;4
 2;4;2;U32;;Date of last calibration;;1.0;0.0;;4
 3;4;4;F32;;Upper range of pressure channel;PRESSURE;1.0;0.0;;4

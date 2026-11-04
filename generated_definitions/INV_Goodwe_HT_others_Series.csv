@@ -58,8 +58,8 @@ Modbus;Inverter;Goodwe;HT_others_Series;1
 57;3;32072;I32;;Grid A - phase current;I_AC_1;0.001;0.0;A;4
 58;3;32074;I32;;Grid B - phase current;I_AC_2;0.001;0.0;A;4
 59;3;32076;I32;;Grid C - phase current;I_AC_3;0.001;0.0;A;4
-60;3;32078;I32;;Peak active power of the day;P_AC;0.001;0.0;kW;4
-61;3;32080;I32;;Active power;;0.001;0.0;kW;4
+60;3;32078;I32;;Peak active power of the day;;0.001;0.0;kW;4
+61;3;32080;I32;;Active power;P_AC;0.001;0.0;kW;4
 62;3;32082;I32;;Reactive power;Q_AC;0.001;0.0;kVar;4
 63;3;32084;I16;;Power factor;PF;0.001;0.0;;4
 64;3;32085;U16;;Grid frequency;FREQ;0.01;0.0;Hz;4
@@ -110,8 +110,8 @@ Modbus;Inverter;Goodwe;HT_others_Series;1
 109;3;41336;U16;;Set the ARP power percentage;;1.0;0.0;%Pn;4
 110;3;41339;U16;;Over load Switch;;1.0;0.0;;4
 111;3;41345;U16;;Hardware ARP Switch;;1.0;0.0;;4
-112;3;41480;U16;;Active Control adjust;CMD_P_AC_SET_PERCENT;1.0;0.0;%;4
-113;3;41481;I16;;PF reactive power adjust;CMD_PF;1.0;0.0;%;4
+112;3;41480;U16;;Active Control adjust;;1.0;0.0;%;4
+113;3;41481;I16;;PF reactive power adjust;;1.0;0.0;%;4
 114;3;41482;I32;;Reactive power adjust;CMD_Q_AC_SET_ABS;1.0;0.0;Var;4
 115;3;41484;I16;;Reactive power adjust (percentage adjust);;1.0;0.0;%;4
 116;3;41485;U16;;Power On Voltage;;0.1;0.0;V;4
@@ -191,11 +191,11 @@ Modbus;Inverter;Goodwe;HT_others_Series;1
 190;3;41651;U16;;Power of enter the curve (0.1%);;0.1;0.0;%;4
 191;3;41652;U16;;Power of quit the curve (0.1%)_1;;0.1;0.0;%;4
 192;3;41653;U16;;Voltage1(0.1%);;0.1;0.0;%;4
-193;3;41654;U16;;Reactive power 1(0.1%);;0.1;0.0;%;4
+193;3;41654;U16;;Reactive power 1(0.1%);Q_AC_1;0.1;0.0;%;4
 194;3;41655;U16;;Voltage2(0.1%);;0.1;0.0;%;4
-195;3;41656;U16;;Reactive power 2(0.1%);;0.1;0.0;%;4
+195;3;41656;U16;;Reactive power 2(0.1%);Q_AC_2;0.1;0.0;%;4
 196;3;41657;U16;;Voltage3(0.1%);;0.1;0.0;%;4
-197;3;41658;U16;;Reactive power 3(0.1%);;0.1;0.0;%;4
+197;3;41658;U16;;Reactive power 3(0.1%);Q_AC_3;0.1;0.0;%;4
 198;3;41659;U16;;Voltage4(0.1%);;0.1;0.0;%;4
 199;3;41660;U16;;Reactive power 4(0.1%);;0.1;0.0;%;4
 200;3;41661;U16;;K value (percentage of reactive power corresponding to Pn);;0.1;0.0;;4
@@ -203,11 +203,11 @@ Modbus;Inverter;Goodwe;HT_others_Series;1
 202;3;41680;U16;;PU curve enable;;1.0;0.0;;4
 203;3;41681;U16;;PU curve mode;;1.0;0.0;;4
 204;3;41683;U16;;Voltage1(0.1%)_1;;0.1;0.0;%;4
-205;3;41684;U16;;Active power 1(0.1%);;0.1;0.0;%;4
+205;3;41684;U16;;Active power 1(0.1%);P_AC_1;0.1;0.0;%;4
 206;3;41685;U16;;Voltage2(0.1%)_1;;0.1;0.0;%;4
-207;3;41686;U16;;Active power 2(0.1%);;0.1;0.0;%;4
+207;3;41686;U16;;Active power 2(0.1%);P_AC_2;0.1;0.0;%;4
 208;3;41688;U16;;Voltage3(0.1%)_1;;0.1;0.0;%;4
-209;3;41689;U16;;Active power 3(0.1%);;0.1;0.0;%;4
+209;3;41689;U16;;Active power 3(0.1%);P_AC_3;0.1;0.0;%;4
 210;3;41690;U16;;Voltage4(0.1%)_1;;0.1;0.0;%;4
 211;3;41691;U16;;Active power 4(0.1%);;0.1;0.0;%;4
 212;3;41700;U16;;QP curve flag;;0.1;0.0;;4
@@ -226,10 +226,10 @@ Modbus;Inverter;Goodwe;HT_others_Series;1
 225;3;41814;U16;;Active slope loading switch;;1.0;0.0;;4
 226;3;41820;U16;;Active power regulation (0.1%);;0.1;0.0;%;4
 227;3;41824;U16;;Reactive power regulation (0.1%);;0.1;0.0;%;4
-228;3;42061;U16;;PID prevent function switch;WIND_SPEED;1.0;0.0;;4
-229;3;42408;I16;;Active power percentage derating command(0.1%);;0.1;0.0;%Pn;4
+228;3;42061;U16;;PID prevent function switch;;1.0;0.0;;4
+229;3;42408;I16;;Active power percentage derating command(0.1%);CMD_P_AC_SET_PERCENT;0.1;0.0;%Pn;4
 230;3;42419;I16;;Reactive power compensation command(Q/S);CMD_Q_AC_SET_PERCENT;0.1;0.0;%Pn;4
-231;3;42420;I16;;Reactive power compensation command(PF);;0.001;0.0;;4
+231;3;42420;I16;;Reactive power compensation command(PF);CMD_PF;0.001;0.0;;4
 232;3;42441;U16;;Night reactive mode;;1.0;0.0;;4
 233;3;42442;U16;;Night reactive power parameters enable;;1.0;0.0;;4
 234;3;42443;U16;;Night reactive power compensation mode;;1.0;0.0;;4

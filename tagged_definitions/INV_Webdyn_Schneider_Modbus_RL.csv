@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Schneider;Connext_RL;;;;;;;
+ModbusRTU;Inverter;Schneider;Connext_RL;;;;;;;
 1;3;6143;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
 2;3;6144;I16;;PV1 Current;I_DC_STRING_1;0.1;0.0;A;4
 3;3;6145;I16;;PV1 Power;;0.1;0.0;kW;4

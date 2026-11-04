@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Lettel;LETTEL_MCT4-45;;;;;;;
+modbusRTU;Meter;Lettel;LETTEL_MCT4-45;;;;;;;
 1;4;262;U16;;Positive Active Energy;;1.0;0.0;Wh;4
 2;4;264;U16;;Reverse Active Energy;;1.0;0.0;Wh;4
 3;4;266;U16;;Positive reactive Energy;;1.0;0.0;Varh;4

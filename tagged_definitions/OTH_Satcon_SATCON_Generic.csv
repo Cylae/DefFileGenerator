@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Satcon;SATCON_Generic;;;;;;;
+modbusRTU;Other;Satcon;SATCON_Generic;;;;;;;
 1;4;30070;U16;;Slave Address;UNIT_ID;1.0;0.0;;4
 2;4;30075;U16;;Fault 1;;1.0;0.0;;8
 3;4;30076;U16;;Fault 2;;1.0;0.0;;8

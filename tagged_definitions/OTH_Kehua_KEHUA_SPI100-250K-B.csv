@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Kehua;KEHUA_SPI100-250K-B;;;;;;;
+modbusRTU;Other;Kehua;KEHUA_SPI100-250K-B;;;;;;;
 1;4;4800;U16;;Model;MODEL;1.0;0.0;;4
 2;4;4820;U16;;HMI software version;;1.0;0.0;;4
 3;4;4825;U16;;Serial Number;SERIAL;1.0;0.0;;4
@@ -39,7 +39,7 @@
 38;4;11028;U16;;Grid voltage (U/UV);;1.0;0.0;V;4
 39;4;11029;U16;;Grid voltage (V/VW);;1.0;0.0;V;4
 40;4;11030;U16;;Grid voltage (W/WU);;1.0;0.0;V;4
-41;4;11031;U16;;Grid current (U);;1.0;0.0;A;4
+41;4;11031;U16;;Grid current (U);I_AC;1.0;0.0;A;4
 42;4;11032;U16;;Grid current (V);;1.0;0.0;A;4
 43;4;11033;U16;;Grid current (W);;1.0;0.0;A;4
 44;4;11034;U16;;AC Residual current;;1.0;0.0;mA;4

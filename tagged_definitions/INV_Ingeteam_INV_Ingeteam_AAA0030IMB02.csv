@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Ingeteam;INV_Ingeteam_AAA0030IMB02;;;;;;;
+modbusRTU;Inverter;Ingeteam;INV_Ingeteam_AAA0030IMB02;;;;;;;
 1;4;0;U16;;Actual Date Year;;1.0;0.0;;4
 2;4;1;U16;;Actual Date Month;;1.0;0.0;;4
 3;4;2;U16;;Actual Date Day;;1.0;0.0;;4
@@ -19,7 +19,7 @@
 18;4;23;U16;;Unit flags 1;;1.0;0.0;;9
 19;4;24;U16;;Unit flags 2;;1.0;0.0;;9
 20;4;25;U16;;Unit flags 3;;1.0;0.0;;9
-21;4;26;U16;;Status Unit 1;DeviceStatus;1.0;0.0;;9
+21;4;26;U16;;Status Unit 1;;1.0;0.0;;9
 22;4;27;U16;;Status Unit 2;;1.0;0.0;;9
 23;4;28;U16;;Status Unit 3;;1.0;0.0;;9
 24;4;29;U16;;Output grid current RMS;;1.0;0.0;A;4
@@ -30,9 +30,9 @@
 29;4;34;U16;;Output active power;P_AC;1.0;0.0;W;4
 30;4;35;U16;;Output reactive power;Q_AC;1.0;0.0;VAr;4
 31;4;36;U16;;Cosine of Phi;;1.0;0.0;;4
-32;4;37;U16;;PV current;;1.0;0.0;A;4
-33;4;39;U16;;PV voltage;;1.0;0.0;Vdc;4
-34;4;41;U16;;PV power;;1.0;0.0;W;4
+32;4;37;U16;;PV current;I_DC;1.0;0.0;A;4
+33;4;39;U16;;PV voltage;U_DC;1.0;0.0;Vdc;4
+34;4;41;U16;;PV power;P_DC;1.0;0.0;W;4
 35;4;44;U16;;Isolation resistance of PV field;R_ISO;1.0;0.0;kOhm;4
 36;4;45;U16;;Wattmeter measurement (Self-Consumption mode);;1.0;0.0;W;4
 37;4;46;U16;;Active Power Reduction rate;;1.0;0.0;%;4
@@ -99,7 +99,7 @@
 98;4;30011;U16;;Active Power rate reason (Power B);;1.0;0.0;;9
 99;4;30012;U16;;Reactive Power rate reason (Power B);;1.0;0.0;;9
 100;4;30013;U16;;PV Power (Power B);;1.0;0.0;kW;4
-101;4;30014;U16;;Bus voltage (Power B);U_DC;1.0;0.0;V;4
+101;4;30014;U16;;Bus voltage (Power B);;1.0;0.0;V;4
 102;4;30015;U16;;PV current (Power B);;1.0;0.0;A;4
 103;4;30016;U16;;PV voltage (Power B);;1.0;0.0;V;4
 104;4;30017;U16;;Heatsink R temperature (Power B);TEMP_INT;1.0;0.0;°C;4
@@ -121,7 +121,7 @@
 120;4;30033;U16;;Grid frequency (Power B);;1.0;0.0;Hz;4
 121;4;30034;U16;;Filter current rms Phase R (Power B);;1.0;0.0;A;4
 122;4;30035;U16;;Filter current rms Phase S (Power B);;1.0;0.0;A;4
-123;4;30036;U16;;VBUS Bus+ to earth (Power B);P_DC;1.0;0.0;V;4
+123;4;30036;U16;;VBUS Bus+ to earth (Power B);;1.0;0.0;V;4
 124;4;30037;U16;;VBUS earth to bus- (Power B);;1.0;0.0;V;4
 125;4;30040;U16;;Daily AC Energy Injected to grid (Power B);;1.0;0.0;kWh;2
 126;4;30048;U16;;Partial AC Energy injected to the grid since last reset (Power B);;1.0;0.0;kWh;2

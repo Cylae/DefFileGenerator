@@ -1,5 +1,5 @@
 modbusRTU;Meter;Acrel;DTSD1352;;;;;;;
-1;3;0;U32;;Current total active energy;I_AC;0.01;0;kWh;4
+1;3;0;U32;;Current total active energy;;0.01;0;kWh;4
 2;3;2;U32;;Current spike total active energy;;0.01;0;kWh;4
 3;3;4;U32;;Current peak total active energy;;0.01;0;kWh;4
 4;3;6;U32;;Current flat total active energy;;0.01;0;kWh;4
@@ -120,7 +120,7 @@ modbusRTU;Meter;Acrel;DTSD1352;;;;;;;
 119;3;126;U16;;Reversing active maximum demand;;0.001;0;kW;4
 120;3;127;U16;;Time of occurrence :minute,hour_2;;1;0;;4
 121;3;128;U16;;Time of occurrence :day,month_2;;1;0;;4
-122;3;129;U16;;Maximum forward demand for reactive power;Q_AC;0.001;0;kvar;4
+122;3;129;U16;;Maximum forward demand for reactive power;;0.001;0;kvar;4
 123;3;130;U16;;Time of occurrence :minute,hour_3;;1;0;;4
 124;3;131;U16;;Time of occurrence :day,month_3;;1;0;;4
 125;3;132;U16;;Maximum reversing demand for reactive power;;0.001;0;kvar;4
@@ -145,18 +145,18 @@ modbusRTU;Meter;Acrel;DTSD1352;;;;;;;
 144;3;358;U32;;Active power of B phase;P_AC_2;0.001;0;kW;4
 145;3;360;U32;;Active power of C phase;P_AC_3;0.001;0;kW;4
 146;3;362;U32;;Total active power;P_AC;0.001;0;kW;4
-147;3;364;U32;;Reactive power of A phase;ReactivePow1;0.001;0;kvar;4
-148;3;366;U32;;Reactive power of B phase;ReactivePow2;0.001;0;kvar;4
-149;3;368;U32;;Reactive power of C phase;ReactivePow3;0.001;0;kvar;4
-150;3;370;U32;;Total reactive power;ReactivePowSUM;0.001;0;kvar;4
-151;3;372;U32;;Apparent power of A phase;S_AC;0.001;0;kVA;4
+147;3;364;U32;;Reactive power of A phase;;0.001;0;kvar;4
+148;3;366;U32;;Reactive power of B phase;;0.001;0;kvar;4
+149;3;368;U32;;Reactive power of C phase;;0.001;0;kvar;4
+150;3;370;U32;;Total reactive power;Q_AC;0.001;0;kvar;4
+151;3;372;U32;;Apparent power of A phase;;0.001;0;kVA;4
 152;3;374;U32;;Apparent power of b phase;;0.001;0;kVA;4
 153;3;376;U32;;Apparent power of c phase;;0.001;0;kVA;4
-154;3;378;U32;;Total apparent power;;0.001;0;kVA;4
-155;3;380;U16;;Power factor of A phase;PF;0.001;0;;4
+154;3;378;U32;;Total apparent power;S_AC;0.001;0;kVA;4
+155;3;380;U16;;Power factor of A phase;;0.001;0;;4
 156;3;381;U16;;Power factor of B phase;;0.001;0;;4
 157;3;382;U16;;Power factor of C phase;;0.001;0;;4
-158;3;383;U16;;Total power factor;;0.001;0;;4
+158;3;383;U16;;Total power factor;PF;0.001;0;;4
 159;3;384;U16;;Maximum forward active demand a day;;0.001;0;kW;4
 160;3;385;U16;;Occur time:minute,hour_5;;1;0;;4
 161;3;386;U16;;Maximum reversing active demand a day;;0.001;0;kW;4
@@ -188,12 +188,12 @@ modbusRTU;Meter;Acrel;DTSD1352;;;;;;;
 187;3;512;U16;;Maximum voltage on A phase;;0.1;0;V;4
 188;3;513;U16;;Occur time:month,day_5;;1;0;;4
 189;3;514;U16;;Occur time:hour,minute_3;;1;0;;4
-190;3;515;U32;;Maximum voltage on B phase and occur time;U_AC_1;0.1;0;V;4
+190;3;515;U32;;Maximum voltage on B phase and occur time;;0.1;0;V;4
 191;3;518;U32;;Maximum voltage on C phase and occur time;;0.1;0;V;4
-192;3;521;U32;;Maximum current on A phase and occur time;I_AC_1;0.01;0;A;4
+192;3;521;U32;;Maximum current on A phase and occur time;;0.01;0;A;4
 193;3;524;U32;;Maximum current on B phase and occur time;;0.01;0;A;4
 194;3;527;U32;;Maximum current on C phase and occur time;;0.01;0;A;4
-195;3;530;U32;;Maximum active power on A phase;CMD_ON;0.001;0;kW;4
+195;3;530;U32;;Maximum active power on A phase;;0.001;0;kW;4
 196;3;532;U16;;Occur time:month,day_6;;1;0;;4
 197;3;533;U16;;Occur time:hour,minute_4;;1;0;;4
 198;3;534;U32;;Maximum active power on B phase and occur time;;0.001;0;kW;4

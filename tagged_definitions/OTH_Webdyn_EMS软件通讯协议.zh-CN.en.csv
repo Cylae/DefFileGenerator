@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;EMS软件通讯协议.zh-CN.en;;;;;;;
+modbusRTU;Other;Webdyn;EMS软件通讯协议.zh-CN.en;;;;;;;
 1;4;31000;U16;;DIDO serial number SN0;SERIAL;1.0;0.0;---;4
 2;4;31001;U16;;DIDO serial number SN1;;1.0;0.0;---;4
 3;4;31002;U16;;DIDO serial number SN2;;1.0;0.0;---;4

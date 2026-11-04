@@ -1,6 +1,6 @@
 ModbusRTU;Inverter;Solaredge;Sunspec
-1;3;40004_16;STRING;;C_Manufacturer;MANUFACTURER;1.0;0.0;;0
-2;3;40020_16;STRING;;C_Model;MODEL;1.0;0.0;;4
+1;3;40004_16;STRING;;C_Manufacturer;;1.0;0.0;;0
+2;3;40020_16;STRING;;C_Model;;1.0;0.0;;4
 3;3;40044_8;STRING;;C_Version;;1.0;0.0;;4
 4;3;40052_16;STRING;;C_SerialNumber;;1.0;0.0;;4
 5;3;40068;U16;;C_DeviceAddress;;1.0;0.0;;4
@@ -20,7 +20,7 @@ ModbusRTU;Inverter;Solaredge;Sunspec
 19;3;40082;I16;;I_AC_Voltage_SF;;1.0;0.0;;2
 20;3;40083;I16;;I_AC_Power;;1.0;0.0;Watts;0
 21;3;40084;I16;;I_AC_Power_SF;;1.0;0.0;;2
-22;3;40085;U16;;I_AC_Frequency;FREQ;1.0;0.0;Hertz;2
+22;3;40085;U16;;I_AC_Frequency;;1.0;0.0;Hertz;2
 23;3;40086;I16;;I_AC_Frequency_SF;;1.0;0.0;;0
 24;3;40087;I16;;I_AC_VA;;1.0;0.0;VA;0
 25;3;40088;I16;;I_AC_VA_SF;;1.0;0.0;;0
@@ -30,11 +30,11 @@ ModbusRTU;Inverter;Solaredge;Sunspec
 29;3;40092;I16;;I_AC_PF_SF;;1.0;0.0;;0
 30;3;40093;U32;;I_AC_Energy_WH;;1.0;0.0;WattHours;0
 31;3;40095;U16;;I_AC_Energy_WH_SF;;1.0;0.0;;0
-32;3;40096;U16;;I_DC_Current;I_DC;1.0;0.0;Amps;0
+32;3;40096;U16;;I_DC_Current;;1.0;0.0;Amps;0
 33;3;40097;I16;;I_DC_Current_SF;;1.0;0.0;;0
-34;3;40098;U16;;I_DC_Voltage;U_DC;1.0;0.0;Volts;0
+34;3;40098;U16;;I_DC_Voltage;;1.0;0.0;Volts;0
 35;3;40099;I16;;I_DC_Voltage_SF;;1.0;0.0;;0
-36;3;40100;I16;;I_DC_Power;P_DC;1.0;0.0;Watts;0
+36;3;40100;I16;;I_DC_Power;;1.0;0.0;Watts;0
 37;3;40101;I16;;I_DC_Power_SF;;1.0;0.0;;0
 38;3;40102;I16;;var1;;1.0;0.0;;0
 39;3;40103;I16;;I_Temp_Sink;;1.0;0.0;degre;0

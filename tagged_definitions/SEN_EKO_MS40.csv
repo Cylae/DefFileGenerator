@@ -1,4 +1,4 @@
-﻿Modbus;Sensor;EKO;MS40;;;;;;;
+Modbus;Sensor;EKO;MS40;;;;;;;
 1;3;0;U16;;Serial number;SERIAL;1.0;0.0;;4
 2;3;1;U16;;Serial number_1;;1.0;0.0;;4
 3;3;2;U16;;Serial number_2;;1.0;0.0;;4

@@ -1,12 +1,12 @@
 ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 1;4;4989_8;STRING;;SN;SERIAL;1.0;0.0;;4
 2;4;4999;U16;;Device type code;;1.0;0.0;;4
-3;4;5000;U16;;Nominal active power;P_RATED;0.1;0.0;kW;4
+3;4;5000;U16;;Nominal active power;;0.1;0.0;kW;4
 4;4;5001;U16;;Output type;;1.0;0.0;;4
-5;4;5002;U16;;Daily power yields;E_DAY;0.1;0.0;kWh;4
-6;4;5003;U32_W;;Total power yields;E_TOT;1.0;0.0;kWh;4
-7;4;5005;U32_W;;Total running time;TOT;1.0;0.0;h;4
-8;4;5007;I16;;Internal temperature;TEMP;0.1;0.0;C;2
+5;4;5002;U16;;Daily power yields;;0.1;0.0;kWh;4
+6;4;5003;U32_W;;Total power yields;;1.0;0.0;kWh;4
+7;4;5005;U32_W;;Total running time;;1.0;0.0;h;4
+8;4;5007;I16;;Internal temperature;TEMP_INT;0.1;0.0;C;2
 9;4;5008;I32_W;;Total apparent power;S_AC;1.0;0.0;VA;0
 10;4;5010;U16;;MPPT 1 voltage;U_DC_MPPT_1;0.1;0.0;V;2
 11;4;5011;U16;;MPPT 1 current ;I_DC_MPPT_1;0.1;0.0;A;2
@@ -15,9 +15,9 @@ ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 14;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.1;0.0;V;2
 15;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.1;0.0;A;2
 16;4;5016;U32_W;;Total DC power;P_DC;1.0;0.0;W;4
-17;4;5018;U16;;A-B line voltage/phase A voltage;U_AC_L1L2;0.1;0.0;V;2
-18;4;5019;U16;;B-C line voltage/phase B voltage;U_AC_L2L3;0.1;0.0;V;2
-19;4;5020;U16;;C-A line voltage/phase C voltage;U_AC_L3L1;0.1;0.0;V;2
+17;4;5018;U16;;A-B line voltage/phase A voltage;;0.1;0.0;V;2
+18;4;5019;U16;;B-C line voltage/phase B voltage;;0.1;0.0;V;2
+19;4;5020;U16;;C-A line voltage/phase C voltage;;0.1;0.0;V;2
 20;4;5021;U16;;Phase A current;I_AC_1;0.1;0.0;A;2
 21;4;5022;U16;;Phase B current;I_AC_2;0.1;0.0;A;2
 22;4;5023;U16;;Phase C current;I_AC_3;0.1;0.0;A;2
@@ -33,7 +33,7 @@ ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 32;4;5042;U16;;Fault/Alarm time:5;;1.0;0.0;;4
 33;4;5043;U16;;Fault/Alarm time:6;;1.0;0.0;;4
 34;4;5044;U16;;Fault/Alarm code;;1.0;0.0;;4
-35;4;5048;U16;;Nominal reactive power;Q_RATED;0.1;0.0;kVAR;4
+35;4;5048;U16;;Nominal reactive power;;0.1;0.0;kVAR;4
 36;4;5070;U16;;Impedance to the ground in parallel connection;;1.0;0.0;kOhm;4
 37;4;5080;U32_W;;Work state_1;;1.0;0.0;W;8
 38;4;5082;I32_W;;Meter power;;1.0;0.0;W;4
@@ -42,9 +42,9 @@ ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 41;4;5088;I32_W;;Meter C phase power;;1.0;0.0;W;4
 42;4;5090;I32_W;;Load power;;1.0;0.0;W;4
 43;4;5092;U32_W;;Daily export energy;;0.1;0.0;kWh;4
-44;4;5094;U32_W;;Total export energy;E_EXP;0.1;0.0;kWh;4
+44;4;5094;U32_W;;Total export energy;;0.1;0.0;kWh;4
 45;4;5096;U32_W;;Daily import energy;;0.1;0.0;kWh;4
-46;4;5098;U32_W;;Total import energy;E_IMP;0.1;0.0;kWh;4
+46;4;5098;U32_W;;Total import energy;;0.1;0.0;kWh;4
 47;4;5100;U32_W;;Daily direct energy consumption;;0.1;0.0;kWh;4
 48;4;5102;U32_W;;Total direct energy consumption;;0.1;0.0;kWh;4
 49;4;5112;U16;;Daily running time;;1.0;0.0;min;4
@@ -70,7 +70,7 @@ ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 69;4;5136;U16;;MPPT 12 current;I_DC_MPPT_12;0.1;0.0;A;4
 70;4;5143;U32_W;;Total power yields_1;;0.1;0.0;kWh;4
 71;4;5145;I16;;Negative voltage to the ground;;0.1;0.0;V;4
-72;4;5146;U16;;Bus voltage;U_DC;0.1;0.0;V;4
+72;4;5146;U16;;Bus voltage;;0.1;0.0;V;4
 73;4;5147;U16;;Grid frequency_1;;0.01;0.0;Hz;4
 74;4;5149;U16;;PID work state;;1.0;0.0;;4
 75;4;5150;U16;;PID alarm code ;;1.0;0.0;;4

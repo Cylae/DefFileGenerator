@@ -1,4 +1,4 @@
-﻿ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
+ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 1;3;0;U16;;Lowest_Feeding_Voltage_of_PV;;0.1;0;V;4
 2;3;1;U16;;Reconnect_Time;;1;0;s;4
 3;3;2;U16;;High_limit_of_Grid_Voltage;;0.1;0;V;4
@@ -29,7 +29,7 @@
 28;3;1286;U16;;Vbattery1;;0.1;0;V;4
 29;3;1287;U16;;TBD;;1;0;;4
 30;3;1288;U16;;BMS Status;;1;0;;4
-31;3;1289;U16;;BMS Pack Temperature;;0.1;0;C;4
+31;3;1289;U16;;BMS Pack Temperature;TEMP;0.1;0;C;4
 32;3;1290;U16;;Ibattery1;;0.1;0;A;4
 33;3;1291;U16;;BMS Charge Imax;;1;0;A;4
 34;3;1292;U16;;BMS Discharge Imax;;1;0;A;4
@@ -37,7 +37,7 @@
 36;3;1294;U16;;SOC;SOC;1;0;%;4
 37;3;1295;U16;;Inverter Warning Code;;1;0;;8
 38;3;1296;U16;;TBD_1;;1;0;;4
-39;3;1297;U16;;BMS SOH;;1;0;%;4
+39;3;1297;U16;;BMS SOH;SOH;1;0;%;4
 40;3;1298;U16;;Battery Mode;;1;0;;4
 41;3;1299;U16;;BMS Warning Code H;;1;0;;4
 42;3;1300;U16;;BMS Warning Code L;;1;0;;4
@@ -53,7 +53,7 @@
 52;3;1310;U16;;Fload;;0.01;0;Hz;4
 53;3;1311;U16;;Load Mode;;1;0;;4
 54;3;1312;U16;;Work Mode;;1;0;;4
-55;3;1313;U16;;Temperature;TEMP;0.1;0;C;4
+55;3;1313;U16;;Temperature;;0.1;0;C;4
 56;3;1314;U16;;Error Message H;;1;0;;4
 57;3;1315;U16;;Error Message L;;1;0;;4
 58;3;1316;U16;;E-Total H;;0.1;0;KW.Hr;4

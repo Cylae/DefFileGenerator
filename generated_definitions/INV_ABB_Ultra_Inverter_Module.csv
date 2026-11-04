@@ -8,14 +8,14 @@ Modbus;Inverter;ABB;Ultra_Inverter_Module
 7;4;105;U16;;JB Managed;;1.0;0.0;;1
 8;4;106;U16;;JA_H;;1.0;0.0;;1
 9;4;107;U16;;JA_L;;1.0;0.0;;1
-10;4;108_12;STRING;;Rack SN Module x;SERIAL;1.0;0.0;;1
+10;4;108_12;STRING;;Rack SN Module x;;1.0;0.0;;1
 11;4;114_12;STRING;;Rack PN Module x;;1.0;0.0;;1
 12;4;120_12;STRING;;SN Module x;;1.0;0.0;;1
 13;4;126_12;STRING;;PN Module x;;1.0;0.0;;1
 14;4;132_2;STRING;;Type Module x;;1.0;0.0;;1
 15;4;133_2;STRING;;Grid Type Module x;;1.0;0.0;;1
 16;4;134_2;STRING;;Trafo Type Module x;;1.0;0.0;;1
-17;4;135_2;STRING;;Wind Type Module x;WIND_SPEED;1.0;0.0;;1
+17;4;135_2;STRING;;Wind Type Module x;;1.0;0.0;;1
 18;4;136_8;STRING;;Date Production Module x;;1.0;0.0;;1
 19;4;140;U16;;Status0 Module x (Global State);;1.0;0.0;;8
 20;4;141;U16;;Status1 Module x (Inverter State);;1.0;0.0;;8
@@ -39,7 +39,7 @@ Modbus;Inverter;ABB;Ultra_Inverter_Module
 38;4;172;F32;;Input Power Module x;P_AC;1.0;0.0;W;4
 39;4;174;F32;;Input Voltage Module x;;1.0;0.0;V;4
 40;4;176;F32;;Input Current Module x;;1.0;0.0;A;4
-41;4;178;F32;;Supervisor Temperature Module x;TEMP_CELL;1.0;0.0;C;4
+41;4;178;F32;;Supervisor Temperature Module x;;1.0;0.0;C;4
 42;4;180;F32;;Power SupplyTemperature Module x;;1.0;0.0;C;4
 43;4;182;F32;;Input Headsink Temperature Module x;;1.0;0.0;C;4
 44;4;184;F32;;Output Headsink Temperature Module x;;1.0;0.0;C;4
@@ -53,6 +53,6 @@ Modbus;Inverter;ABB;Ultra_Inverter_Module
 52;4;200;F32;;3 phases Grid Voltage Module x;;1.0;0.0;V;4
 53;4;202;F32;;3 phases Grid Current Module x;;1.0;0.0;A;4
 54;4;204;F32;;3 phases Grid Power Module x;;1.0;0.0;W;4
-55;4;206;F32;;3 phases Grid Reactive Power Module x;Q_AC;1.0;0.0;VAR;4
+55;4;206;F32;;3 phases Grid Reactive Power Module x;;1.0;0.0;VAR;4
 56;4;208;F32;;Ground Leakage Current Module x;;1.0;0.0;A;4
 57;3;383;U16;;ON or OFF Module x;CMD_OFF;1.0;0.0;;4

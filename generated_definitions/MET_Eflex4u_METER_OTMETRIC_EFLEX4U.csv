@@ -44,7 +44,7 @@ modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
 43;4;108;U32;;THDA2_Phase_2_current_THD;;0.001;0;%;4
 44;4;110;U32;;THDA3_Phase_3_current_THD;;0.001;0;%;4
 45;4;112;U32;;THDAN_Neutral_current_THD;;0.001;0;%;4
-46;4;114;U32;;F_Frequency;FREQ;0.001;0;Hz;4
+46;4;114;U32;;F_Frequency;;0.001;0;Hz;4
 47;4;116;U32;;Phase_sequence_00123_CCW_01321_CW_02not;;1;0;;4
 48;4;118;U32;;Installation_hourcounter;;0.1;0;h;4
 49;4;120;U32;;Measurement_hourcounter;;0.1;0;h;4
@@ -181,8 +181,8 @@ modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
 180;4;788;U64;;PSum_System_active_power_MIN;;0.001;0;W;4
 181;4;792;U64;;SSum_System_apparent_power_MIN;;0.001;0;VA;4
 182;4;796;U64;;QSum_System_reactive_power_MIN;;0.001;0;var;4
-183;4;1024;U64;;Plus_kWh1_Phase_1_imported_active_energy;E_IMP;0.1;0;Wh;4
-184;4;1028;U64;;Minus_kWh1_Phase_1_exported_active_energy;E_EXP;0.1;0;Wh;4
+183;4;1024;U64;;Plus_kWh1_Phase_1_imported_active_energy;;0.1;0;Wh;4
+184;4;1028;U64;;Minus_kWh1_Phase_1_exported_active_energy;;0.1;0;Wh;4
 185;4;1032;U64;;Plus_kWh2_Phase_2_imported_active_energy;;0.1;0;Wh;4
 186;4;1036;U64;;Minus_kWh2_Phase_2_exported_active_energy;;0.1;0;Wh;4
 187;4;1040;U64;;Plus_kWh3_Phase_3_imported_active_energy;;0.1;0;Wh;4
@@ -236,7 +236,7 @@ modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
 235;4;1232;U64;;kvarhSumBAL_C_Balance_of_system_capacitive_reactive_en_imp_exp;;0.1;0;varh;4
 236;4;1236;U64;;kvarhSumBAL_L_Balance_of_system_inductive_reactive_en_imp_exp;;0.1;0;varh;4
 237;4;1240;U64;;kvarhSumBAL_Balance_of_system_reactive_energy_BAL_C_Plus_BAL_L;;0.1;0;varh;4
-238;4;1280;U32;;HaV1_Phase_1_N_voltage_component_0_DC;U_DC;0.01;0;%;4
+238;4;1280;U32;;HaV1_Phase_1_N_voltage_component_0_DC;;0.01;0;%;4
 239;4;1282;U32;;HaV1_Phase_1_N_voltage_component_1st;;0.01;0;%;4
 240;4;1284;U32;;HaV1_Phase_1_N_voltage_component_2nd;;0.01;0;%;4
 241;4;1286;U32;;HaV1_Phase_1_N_voltage_component_3rd;;0.01;0;%;4
@@ -332,7 +332,7 @@ modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
 331;4;1466;U32;;HaV31_Line_31_voltage_component_13th;;0.01;0;%;4
 332;4;1468;U32;;HaV31_Line_31_voltage_component_14th;;0.01;0;%;4
 333;4;1470;U32;;HaV31_Line_31_voltage_component_15th;;0.01;0;%;4
-334;4;1472;U32;;HaA1_Phase_1_current_component_0_DC;I_DC;0.01;0;%;4
+334;4;1472;U32;;HaA1_Phase_1_current_component_0_DC;;0.01;0;%;4
 335;4;1474;U32;;HaA1_Phase_1_current_component_1st;;0.01;0;%;4
 336;4;1476;U32;;HaA1_Phase_1_current_component_2nd;;0.01;0;%;4
 337;4;1478;U32;;HaA1_Phase_1_current_component_3rd;;0.01;0;%;4
@@ -399,7 +399,7 @@ modbus;Meter;OTMETRIC;EFLEX4U;;;;;;;
 398;4;8192_12;STRING;;Serial_number;SERIAL;1;0;;4
 399;4;8198;U32;;Firmware_release;;1;0;;4
 400;4;8200;U32;;Hardware_version;;1;0;;4
-401;4;8202;U32;;Model;MODEL;1;0;;4
+401;4;8202;U32;;Model;;1;0;;4
 402;4;8204;U32;;COM_features;;1;0;;4
 403;4;8208;U32;;Digital_output_number;;1;0;;4
 404;4;8214;U32;;Calibration_date;;1;0;;4

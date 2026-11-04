@@ -19,7 +19,7 @@ modbusRTU;Inverter;Ingeteam;Multi-Series;;;;;;;
 18;3;23;U16;;Unit flags 1;;1.000000;0.000000;;9
 19;3;24;U16;;Unit flags 2;;1.000000;0.000000;;9
 20;3;25;U16;;Unit flags 3;;1.000000;0.000000;;9
-21;3;26;U16;;Status Unit 1;DeviceStatus;1.000000;0.000000;;9
+21;3;26;U16;;Status Unit 1;;1.000000;0.000000;;9
 22;3;27;U16;;Status Unit 2;;1.000000;0.000000;;9
 23;3;28;U16;;Status Unit 3;;1.000000;0.000000;;9
 24;3;29;U16;;Output grid current RMS;;0.010000;0.000000;A;4
@@ -30,17 +30,17 @@ modbusRTU;Inverter;Ingeteam;Multi-Series;;;;;;;
 29;3;34;I16;;Output active power;P_AC;0.100000;0.000000;W;4
 30;3;35;I16;;Output reactive power;Q_AC;0.100000;0.000000;VAr;4
 31;3;36;I16;;Cosine of Phi;;0.001000;0.000000;;4
-32;3;37;I16;;PV current;;0.010000;0.000000;A;4
-33;3;39;U16;;PV voltage;;1.000000;0.000000;Vdc;4
-34;3;41;I16;;PV power;;0.100000;0.000000;W;4
+32;3;37;I16;;PV current;I_DC;0.010000;0.000000;A;4
+33;3;39;U16;;PV voltage;U_DC;1.000000;0.000000;Vdc;4
+34;3;41;I16;;PV power;P_DC;0.100000;0.000000;W;4
 35;3;44;U16;;Isolation resistance of PV field;;1.000000;0.000000;kOhm;4
 36;3;45;I16;;Wattmeter measurement (Self-Consumption mode);;0.100000;0.000000;W;4
 37;3;46;U16;;Active Power Reduction rate;;1.000000;0.000000;%;4
 38;3;47;U16;;Active Power Reduction Reason;;1.000000;0.000000;;9
 39;3;48;U16;;Reactive Power Reference type;;1.000000;0.000000;;9
-40;3;49;U32;;Daily energy value;E_DAY;0.010000;0.000000;kWh;2
+40;3;49;U32;;Daily energy value;;0.010000;0.000000;kWh;2
 41;3;51;U16;;Self Consumption ratio;;1.000000;0.000000;%;4
-42;3;52;U16;;Inverter Instantaneous Stop event;WIND_SPEED;1.000000;0.000000;;9
+42;3;52;U16;;Inverter Instantaneous Stop event;;1.000000;0.000000;;9
 43;3;53;U16;;Current of PV string 1;I_DC_STRING_1;0.100000;0.000000;A;4
 44;3;54;U16;;Current of PV string 2;I_DC_STRING_2;0.100000;0.000000;A;4
 45;3;55;U16;;Current of PV string 3;I_DC_STRING_3;0.100000;0.000000;A;4
@@ -94,20 +94,20 @@ modbusRTU;Inverter;Ingeteam;Multi-Series;;;;;;;
 93;3;883;U16;;Current of PV string 24 (string kit);I_DC_STRING_24;0.100000;0.000000;A;4
 94;3;30007;I16;;Output active power (Power B);;0.100000;0.000000;kW;4
 95;3;30008;I16;;Output reactive power (Power B);;0.100000;0.000000;kVar;4
-96;3;30009;I16;;Active Power rate (Power B);CMD_P_AC_SET_PERCENT;0.010000;0.000000;%;4
-97;3;30010;I16;;Reactive Power rate (Power B);CMD_Q_AC_SET_PERCENT;0.010000;0.000000;%;4
+96;3;30009;I16;;Active Power rate (Power B);;0.010000;0.000000;%;4
+97;3;30010;I16;;Reactive Power rate (Power B);;0.010000;0.000000;%;4
 98;3;30011;U16;;Active Power rate reason (Power B);;1.000000;0.000000;;9
 99;3;30012;U16;;Reactive Power rate reason (Power B);;1.000000;0.000000;;9
 100;3;30013;I16;;PV Power (Power B);;0.100000;0.000000;kW;4
-101;3;30014;I16;;Bus voltage (Power B);U_DC;1.000000;0.000000;V;4
+101;3;30014;I16;;Bus voltage (Power B);;1.000000;0.000000;V;4
 102;3;30015;I16;;PV current (Power B);;0.100000;0.000000;A;4
 103;3;30016;I16;;PV voltage (Power B);;1.000000;0.000000;V;4
-104;3;30017;I16;;Heatsink R temperature (Power B);TEMP_INT;0.100000;0.000000;°C;4
+104;3;30017;I16;;Heatsink R temperature (Power B);;0.100000;0.000000;°C;4
 105;3;30018;I16;;Heatsink S temperature (Power B);;0.100000;0.000000;°C;4
 106;3;30019;I16;;Heatsink T temperature (Power B);;0.100000;0.000000;°C;4
 107;3;30020;I16;;Inductor temperature (Power B);;0.100000;0.000000;°C;4
 108;3;30021;I16;;Power stack temperature (Power B);;0.100000;0.000000;°C;4
-109;3;30022;I16;;Ambient filtered temperature (Power B);TEMP_AMB;0.100000;0.000000;°C;4
+109;3;30022;I16;;Ambient filtered temperature (Power B);;0.100000;0.000000;°C;4
 110;3;30023;I16;;Maximun IGBT NTC Temperature (Power B);;0.100000;0.000000;°C;4
 111;3;30024;I16;;Grid Voltage rms Phase R (Power B);;0.100000;0.000000;V;4
 112;3;30025;I16;;Grid Voltage rms Phase S (Power B);;0.100000;0.000000;V;4
@@ -121,7 +121,7 @@ modbusRTU;Inverter;Ingeteam;Multi-Series;;;;;;;
 120;3;30033;I16;;Grid frequency (Power B);;0.010000;0.000000;Hz;4
 121;3;30034;I16;;Filter current rms Phase R (Power B);;0.100000;0.000000;A;4
 122;3;30035;I16;;Filter current rms Phase S (Power B);;0.100000;0.000000;A;4
-123;3;30036;I16;;VBUS Bus+ to earth (Power B);P_DC;1.000000;0.000000;V;4
+123;3;30036;I16;;VBUS Bus+ to earth (Power B);;1.000000;0.000000;V;4
 124;3;30037;I16;;VBUS earth to bus- (Power B);;1.000000;0.000000;V;4
 125;3;30040;U32;;Daily AC Energy Injected to grid (Power B);;0.010000;0.000000;kWh;2
 126;3;30048;U32;;Partial AC Energy injected to the grid since last reset (Power B);;1.000000;0.000000;kWh;2

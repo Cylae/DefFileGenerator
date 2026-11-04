@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Thies Clima;Wind_Transmitter_Thies_Test_2;;;;;;;
+modbusRTU;Other;Thies Clima;Wind_Transmitter_Thies_Test_2;;;;;;;
 1;4;1;U16;;Instantaneous value of the wind velocity;WIND_SPEED;1.0;0.0;m/s;4
 2;4;3;U16;;Current average value of the wind velocity;;1.0;0.0;m/s;4
 3;4;5;U16;;Instantaneous value of the wind velocity, calculated with the standard curve;;1.0;0.0;m/s;4

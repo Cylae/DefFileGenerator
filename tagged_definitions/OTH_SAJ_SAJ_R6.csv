@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SAJ;SAJ_R6;;;;;;;
+modbusRTU;Other;SAJ;SAJ_R6;;;;;;;
 1;4;16388;U16;;MPVMode;;1.0;0.0;;4
 2;4;16389;U16;;HFaultMSG;;1.0;0.0;;4
 3;4;16391;U16;;MFaultMSG;;1.0;0.0;;4

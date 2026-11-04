@@ -1,6 +1,6 @@
 Modbus;Inverter;CyberPower;1-Phase
 1;4;4096;U32_W;;Product_ID;;1.0;0.0;;4
-2;4;4098;U16;;Inverter_Rated_Power;P_RATED;1.0;0.0;;4
+2;4;4098;U16;;Inverter_Rated_Power;;1.0;0.0;;4
 3;4;4099;U16;;Peak Panel_Power;;1.0;0.0;;4
 4;4;4100;U16;;Installation_Year;;1.0;0.0;;4
 5;4;4101;U16;;Installation_Month;;1.0;0.0;;4
@@ -36,7 +36,7 @@ Modbus;Inverter;CyberPower;1-Phase
 35;4;4145;U16;;CPS_PV_Status;;1.0;0.0;;4
 36;4;4146;U16;;Function Status Counter;;1.0;0.0;;4
 37;4;4147;U16;;Reconnected Time;;1.0;0.0;;4
-38;4;4148;U16;;Event Index Start;WIND_SPEED;1.0;0.0;;4
+38;4;4148;U16;;Event Index Start;;1.0;0.0;;4
 39;4;4149;U16;;Event Index End;;1.0;0.0;;4
 40;4;4150;U16;;Input1 R Leakage;;1.0;0.0;kOhm;4
 41;4;4151;U16;;Input2 R Leakage;;1.0;0.0;kOhm;4
@@ -62,11 +62,11 @@ Modbus;Inverter;CyberPower;1-Phase
 61;4;4183;U16;;Bus Volt (Neg)_ (average);;0.1;0.0;V;4
 62;4;4184;U16;;AC Volt (average);;0.1;0.0;V;4
 63;4;4185;U16;;AC Curr (average);;0.01;0.0;A;4
-64;4;4186;U16;;AC Watt (average);P_AC;1.0;0.0;W;4
-65;4;4187;U16;;AC Freq (average);FREQ;0.01;0.0;Hz;4
+64;4;4186;U16;;AC Watt (average);;1.0;0.0;W;4
+65;4;4187;U16;;AC Freq (average);;0.01;0.0;Hz;4
 66;4;4188;U16;;AC Volt (redundant) (average);;0.1;0.0;V;4
 67;4;4189;U16;;AC Freq (redundant) (average);;0.01;0.0;Hz;4
-68;4;4190;U16;;Temperature (Ambient);TEMP;1.0;0.0;K;4
+68;4;4190;U16;;Temperature (Ambient);;1.0;0.0;K;4
 69;4;4191;U16;;Temperature (Heatsink);;1.0;0.0;K;4
 70;4;4192;U16;;Input1 Volt;;0.1;0.0;V;4
 71;4;4193;U16;;Input1 Curr;;0.01;0.0;A;4
@@ -78,8 +78,8 @@ Modbus;Inverter;CyberPower;1-Phase
 77;4;4199;U16;;Bus Volt (Neg);;0.1;0.0;V;4
 78;4;4200;U16;;AC Volt;;0.1;0.0;V;4
 79;4;4201;U16;;AC Curr;;0.01;0.0;A;4
-80;4;4202;U16;;AC Watt;;1.0;0.0;W;4
-81;4;4203;U16;;AC Freq;;0.01;0.0;Hz;4
+80;4;4202;U16;;AC Watt;P_AC;1.0;0.0;W;4
+81;4;4203;U16;;AC Freq;FREQ;0.01;0.0;Hz;4
 82;4;4204;U16;;AC Volt (redundant);;0.1;0.0;V;4
 83;4;4205;U16;;AC Freq (redundant);;0.01;0.0;Hz;4
 84;4;4206;U16;;Input1 R Leakage_1;;1.0;0.0;kOhm;4

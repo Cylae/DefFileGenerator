@@ -26,7 +26,7 @@ ModbusRTU;Meter;ZELEC;EM3100PURSM;;;;;;;
 25;4;52;F32;;Puissance active totale;P_AC;1;0;W;4
 26;4;56;F32;;Puissance apparente totale;S_AC;1;0;VA;4
 27;4;60;F32;;Puissance reactive totale;Q_AC;1;0;VAr;4
-28;4;62;F32;;Facteur de puissance global;PF;1;0;;4
+28;4;62;F32;;Facteur de puissance global;;1;0;;4
 29;4;66;F32;;Angle globale;;1;0;Degree;4
 30;4;70;F32;;Frequence;FREQ;1;0;Hz;4
 31;4;72;F32;;Puissance active (import) depuis le dernier reset;;1;0;kWh/MWh;4
@@ -53,7 +53,7 @@ ModbusRTU;Meter;ZELEC;EM3100PURSM;;;;;;;
 52;4;242;F32;;Taux de Distorsion Harmonique sur I2;;1;0;Percent;4
 53;4;244;F32;;Taux de Distorsion Harmonique sur I3;;1;0;Percent;4
 54;4;248;F32;;Average line to neutral V THD.;;1;0;Percent;4
-55;4;250;F32;;Average line current THD.;I_AC_3;1;0;Percent;4
+55;4;250;F32;;Average line current THD.;;1;0;Percent;4
 56;4;254;F32;;Facteur de puissance Totale;;1;0;;4
 57;4;258;F32;;I1 sur la periode d'integration (max demand);;1;0;A;4
 58;4;260;F32;;I2 sur la periode d'integration (max demand);;1;0;A;4
@@ -87,12 +87,12 @@ ModbusRTU;Meter;ZELEC;EM3100PURSM;;;;;;;
 86;4;380;F32;;Puissance en kVArh total sur la phase 3;;1;0;kVArh;4
 87;3;12;F32;;Largeur de l'impulsion;;1;0;;4
 88;3;18;F32;;Bit(s) de stop et parite;;1;0;;4
-89;3;20;F32;;Adresse Modbus;UNIT_ID;1;0;;4
+89;3;20;F32;;Adresse Modbus;;1;0;;4
 90;3;28;F32;;Vitesse de communication;;1;0;;4
 91;3;86;U16;;Sortie d'impulsion No. 1;;1;0;;4
 92;3;62720;U16;;Periode intervalle pour la valeur Max/Temps integration/Temps defilement automatique de l'afficheur/ Temps retroeclairage;;1;0;;4
 93;3;63760;U16;;Poids de l'impulsion;;1;0;;4
 94;3;63775;U16;;Mode de mesure;;1;0;;4
-95;3;64512;U32;;Numero de serie;;1;0;;4
+95;3;64512;U32;;Numero de serie;SERIAL;1;0;;4
 96;3;64514;U16;;Type de compteur;;1;0;;4
 97;3;64515;U16;;Version du Firmware;;1;0;;4

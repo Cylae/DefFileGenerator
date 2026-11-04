@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;LSI LASTEM SRL;LSILASTEM_DPA870-873;;;;;;;
+modbusRTU;Other;LSI LASTEM SRL;LSILASTEM_DPA870-873;;;;;;;
 1;4;0;U16;;Irradiance Instantaneous;POA;1.0;0.0;W/m2;4
 2;4;2;U16;;Irradiance Mean;;1.0;0.0;W/m2;4
 3;4;4;U16;;Irradiance Minimum;;1.0;0.0;W/m2;4

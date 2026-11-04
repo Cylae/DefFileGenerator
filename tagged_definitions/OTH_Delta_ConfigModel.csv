@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Delta;ConfigModel;;;;;;;
+modbusRTU;Other;Delta;ConfigModel;;;;;;;
 1;4;797;U16;;Country_code;;1.0;0.0;;4
 2;4;48158;U16;;AC_terminal;;1.0;0.0;;4
 3;4;33552;U16;;U_High_off;;1.0;0.0;;4

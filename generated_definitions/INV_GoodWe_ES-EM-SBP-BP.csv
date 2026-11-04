@@ -3,20 +3,20 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 2;3;1;U16;;Reconnect_Time;;1;0;s;4
 3;3;2;U16;;High_limit_of_Grid_Voltage;;0.1;0;V;4
 4;3;3;U16;;Low_limit_of_Grid_Voltage;;0.1;0;V;4
-5;3;4;U16;;Low_limit_of_Grid_Frequency;FREQ;0.01;0;Hz;4
+5;3;4;U16;;Low_limit_of_Grid_Frequency;;0.01;0;Hz;4
 6;3;5;U16;;High_limit_of_Grid_Frequency;;0.01;0;Hz;4
 7;3;16;U16;;RTC date&time Year+Month;;1;0;Year/Month;4
 8;3;17;U16;;RTC date&time Date+Hour;;1;0;Date/Hour;4
 9;3;18;U16;;RTC date&time Minute+Second;;1;0;Minute/Second;4
-10;3;256;U16;;Range of real power adjust;P_AC;1;0;%;4
-11;3;257;U16;;Range of reactive power adjust;Q_AC;1;0;;4
+10;3;256;U16;;Range of real power adjust;;1;0;%;4
+11;3;257;U16;;Range of reactive power adjust;;1;0;;4
 12;3;512_16;STRING;;Serial Number of Inverter;SERIAL;1;0;;4
 13;3;520_4;STRING;;Model Name of Inverter;MODEL;1;0;;4
 14;3;522_6;STRING;;Firmware Version;;1;0;;4
 15;3;528_10;STRING;;Model Name of Inverter_1;;1;0;;4
 16;3;533_12;STRING;;DSP Internal Firmware Ver;;1;0;;4
 17;3;539_12;STRING;;ARM Internal Firmware Ver;;1;0;;4
-18;3;545_16;STRING;;Manufacturer Info;MANUFACTURER;1;0;;4
+18;3;545_16;STRING;;Manufacturer Info;;1;0;;4
 19;3;553;U16;;Firmware Version(0x16);;1;0;;4
 20;3;554;U16;;ARM Updata Result;;1;0;;4
 21;3;555;U16;;DSP Updata Result;;1;0;;4
@@ -29,7 +29,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 28;3;1286;U16;;Vbattery1;;0.1;0;V;4
 29;3;1287;U16;;TBD;;1;0;;4
 30;3;1288;U16;;BMS Status;;1;0;;4
-31;3;1289;U16;;BMS Pack Temperature;;0.1;0;C;4
+31;3;1289;U16;;BMS Pack Temperature;TEMP;0.1;0;C;4
 32;3;1290;U16;;Ibattery1;;0.1;0;A;4
 33;3;1291;U16;;BMS Charge Imax;;1;0;A;4
 34;3;1292;U16;;BMS Discharge Imax;;1;0;A;4
@@ -37,7 +37,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 36;3;1294;U16;;SOC;SOC;1;0;%;4
 37;3;1295;U16;;Inverter Warning Code;;1;0;;8
 38;3;1296;U16;;TBD_1;;1;0;;4
-39;3;1297;U16;;BMS SOH;;1;0;%;4
+39;3;1297;U16;;BMS SOH;SOH;1;0;%;4
 40;3;1298;U16;;Battery Mode;;1;0;;4
 41;3;1299;U16;;BMS Warning Code H;;1;0;;4
 42;3;1300;U16;;BMS Warning Code L;;1;0;;4
@@ -53,7 +53,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 52;3;1310;U16;;Fload;;0.01;0;Hz;4
 53;3;1311;U16;;Load Mode;;1;0;;4
 54;3;1312;U16;;Work Mode;;1;0;;4
-55;3;1313;U16;;Temperature;TEMP;0.1;0;C;4
+55;3;1313;U16;;Temperature;;0.1;0;C;4
 56;3;1314;U16;;Error Message H;;1;0;;4
 57;3;1315;U16;;Error Message L;;1;0;;4
 58;3;1316;U16;;E-Total H;;0.1;0;KW.Hr;4
@@ -128,7 +128,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 129;3;1389;U16;;AS477Parameters;;1;0;;4
 130;3;1390;U16;;WgPowerMode;;1;0;;4
 131;3;1391;U16;;WgPowerSet;;1;0;W;4
-133;3;1393;U16;;NoGridChargeEnable;I_DC;1;0;;4
+133;3;1393;U16;;NoGridChargeEnable;;1;0;;4
 134;3;1394;U16;;DisChgWithPVEnable;;1;0;;4
 136;3;1396;U16;;AppModeIndex;;1;0;;4
 137;3;1397;U16;;GridWaveCheckLevel;;1;0;;4
@@ -163,7 +163,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 166;3;1426;U16;;GridLimitByVolStartPer;;1;0;%;4
 167;3;1427;U16;;GridLimitByVolSlope;;1;0;%/V;4
 168;3;1428;U16;;ActiveCurveVolt;;0.1;0;V;4
-169;3;1429;U16;;DesactiveCurveVolt;S_AC;0.1;0;V;4
+169;3;1429;U16;;DesactiveCurveVolt;;0.1;0;V;4
 170;3;1430;U16;;EnableCurve;;1;0;;4
 171;3;1431;U16;;BackupStartDly;;1;0;min;4
 172;3;1432;U16;;RecoverTimeEE;;1;0;%/min;4
@@ -236,23 +236,23 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 239;3;24581;U16;;Phase A current;I_AC_1;0.01;0;A;4
 240;3;24582;U16;;Phase B current;I_AC_2;0.01;0;A;4
 241;3;24583;U16;;Phase C current;I_AC_3;0.01;0;A;4
-242;3;24584;I16;;Phase A active power;P_AC_1;1;0;W;4
-243;3;24585;I16;;Phase B active power;P_AC_2;1;0;W;4
-244;3;24586;I16;;Phase C active power;P_AC_3;1;0;W;4
-245;3;24587;I16;;Total active power;;1;0;W;4
-246;3;24588;I16;;Phase A reactive power;Q_AC_1;1;0;Var;4
-247;3;24589;I16;;Phase B reactive power;Q_AC_2;1;0;Var;4
-248;3;24590;I16;;Phase C reactive power;Q_AC_3;1;0;Var;4
-249;3;24591;I16;;Total reactive power;;1;0;Var;4
-250;3;24592;I16;;Phase A apparent power;S_AC_1;1;0;VA;4
-251;3;24593;I16;;Phase B apparent power;S_AC_2;1;0;VA;4
-252;3;24594;I16;;Phase C apparent power;S_AC_3;1;0;VA;4
-253;3;24595;I16;;Total apparent power;;1;0;VA;4
-254;3;24596;I16;;Phase A power factor;PF_1;1;0;;4
-255;3;24597;I16;;Phase B power factor;PF_2;1;0;;4
-256;3;24598;I16;;Phase C power factor;PF_3;1;0;;4
+242;3;24584;I16;;Phase A active power;;1;0;W;4
+243;3;24585;I16;;Phase B active power;;1;0;W;4
+244;3;24586;I16;;Phase C active power;;1;0;W;4
+245;3;24587;I16;;Total active power;P_AC;1;0;W;4
+246;3;24588;I16;;Phase A reactive power;;1;0;Var;4
+247;3;24589;I16;;Phase B reactive power;;1;0;Var;4
+248;3;24590;I16;;Phase C reactive power;;1;0;Var;4
+249;3;24591;I16;;Total reactive power;Q_AC;1;0;Var;4
+250;3;24592;I16;;Phase A apparent power;;1;0;VA;4
+251;3;24593;I16;;Phase B apparent power;;1;0;VA;4
+252;3;24594;I16;;Phase C apparent power;;1;0;VA;4
+253;3;24595;I16;;Total apparent power;S_AC;1;0;VA;4
+254;3;24596;I16;;Phase A power factor;;1;0;;4
+255;3;24597;I16;;Phase B power factor;;1;0;;4
+256;3;24598;I16;;Phase C power factor;;1;0;;4
 257;3;24599;I16;;Total power factor;PF;1;0;;4
-258;3;24600;U16;;Frequency;;0.01;0;Hz;4
+258;3;24600;U16;;Frequency;FREQ;0.01;0;Hz;4
 259;3;24601;F32;;E-Total-Sell_1;;1;0;W;4
 261;3;24603;F32;;E-Total-Buy_1;;1;0;W;4
 263;3;28928;U16;;Vac1;;0.1;0;V;4
@@ -369,7 +369,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 374;3;45481;I16;;PU V4 value ((P/Pn));;0.1;0;%Pn;4
 375;3;45482;U16;;Fixed Power Factor;;100;0;;4
 376;3;45483;I16;;Fixed reactive power;;0.1;0;%Pn;4
-377;3;45484;U16;;Fixed active power;CMD_P_AC_SET_PERCENT;0.1;0;%Pn;4
+377;3;45484;U16;;Fixed active power;;0.1;0;%Pn;4
 378;3;45488;U16;;Auto Test Enable;;1;0;;4
 379;3;45489;U16;;Auto Test step;;1;0;;4
 380;3;45490;U16;;uwItalyFreqMode;;1;0;;4

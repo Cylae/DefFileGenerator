@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Lettel;map4-345m_table_modbus_fr;;;;;;;
+modbusRTU;Other;Lettel;map4-345m_table_modbus_fr;;;;;;;
 1;4;3;U16;;Séquence des phases;;1.0;0.0;/;4
 2;4;4;U16;;Angle de phase 1 entre tension et courant;U_AC_1;1.0;0.0;0.1º;4
 3;4;6;U16;;Angle de phase L2 entre tension et courant;U_AC_2;1.0;0.0;0.1º;4

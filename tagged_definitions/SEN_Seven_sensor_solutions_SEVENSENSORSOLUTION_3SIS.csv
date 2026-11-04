@@ -1,4 +1,4 @@
-﻿ModbusRTU;Sensor;SEVEN SENSOR SOLUTION;3S-IS;;;;;;;
+ModbusRTU;Sensor;SEVEN SENSOR SOLUTION;3S-IS;;;;;;;
 1;4;3;U16;;Wind speed;WIND_SPEED;1;0;m/s;4
 2;4;5;U16;;Temperature compensated Irradiance value;POA;1;0;W/m2;4
 3;4;10;U16;;External temperature;;0.1;0;Deg. Celsius;4

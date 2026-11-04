@@ -6,22 +6,22 @@ ModbusRTU;AnalogExtention;Webdyn;Sens'IO 16DI;;;;;;;
 5;3;8;I16;;Hardware Version;;1;0.0;-;4
 6;3;9;I16;;Baudrate Setting;;1;0.0;-;4
 7;3;100;I16;;Status digital Input channel;;1;0.0;-;4
-8;3;100_0_1;Bits;;Status digital Input channel 1;XDIN1;1;0.0;-;4
-9;3;100_1_1;Bits;;Status digital Input channel 2;XDIN2;1;0.0;-;4
-10;3;100_2_1;Bits;;Status digital Input channel 3;XDIN3;1;0.0;-;4
-11;3;100_3_1;Bits;;Status digital Input channel 4;XDIN4;1;0.0;-;4
-12;3;100_4_1;Bits;;Status digital Input channel 5;XDIN5;1;0.0;-;4
-13;3;100_5_1;Bits;;Status digital Input channel 6;XDIN6;1;0.0;-;4
-14;3;100_6_1;Bits;;Status digital Input channel 7;XDIN7;1;0.0;-;4
-15;3;100_7_1;Bits;;Status digital Input channel 8;XDIN8;1;0.0;-;4
-16;3;100_8_1;Bits;;Status digital Input channel 9;XDIN9;1;0.0;-;4
-17;3;100_9_1;Bits;;Status digital Input channel 10;XDIN10;1;0.0;-;4
-18;3;100_10_1;Bits;;Status digital Input channel 11;XDIN11;1;0.0;-;4
-19;3;100_11_1;Bits;;Status digital Input channel 12;XDIN12;1;0.0;-;4
-20;3;100_12_1;Bits;;Status digital Input channel 13;XDIN13;1;0.0;-;4
-21;3;100_13_1;Bits;;Status digital Input channel 14;XDIN14;1;0.0;-;4
-22;3;100_14_1;Bits;;Status digital Input channel 15;XDIN15;1;0.0;-;4
-23;3;100_15_1;Bits;;Status digital Input channel 16;XDIN16;1;0.0;-;4
+8;3;100_0_1;Bits;;Status digital Input channel 1;;1;0.0;-;4
+9;3;100_1_1;Bits;;Status digital Input channel 2;;1;0.0;-;4
+10;3;100_2_1;Bits;;Status digital Input channel 3;;1;0.0;-;4
+11;3;100_3_1;Bits;;Status digital Input channel 4;;1;0.0;-;4
+12;3;100_4_1;Bits;;Status digital Input channel 5;;1;0.0;-;4
+13;3;100_5_1;Bits;;Status digital Input channel 6;;1;0.0;-;4
+14;3;100_6_1;Bits;;Status digital Input channel 7;;1;0.0;-;4
+15;3;100_7_1;Bits;;Status digital Input channel 8;;1;0.0;-;4
+16;3;100_8_1;Bits;;Status digital Input channel 9;;1;0.0;-;4
+17;3;100_9_1;Bits;;Status digital Input channel 10;;1;0.0;-;4
+18;3;100_10_1;Bits;;Status digital Input channel 11;;1;0.0;-;4
+19;3;100_11_1;Bits;;Status digital Input channel 12;;1;0.0;-;4
+20;3;100_12_1;Bits;;Status digital Input channel 13;;1;0.0;-;4
+21;3;100_13_1;Bits;;Status digital Input channel 14;;1;0.0;-;4
+22;3;100_14_1;Bits;;Status digital Input channel 15;;1;0.0;-;4
+23;3;100_15_1;Bits;;Status digital Input channel 16;;1;0.0;-;4
 24;3;101;I32;;Counter input 1;;1;0.0;-;4
 25;3;103;I32;;Counter input 2;;1;0.0;-;4
 26;3;105;I32;;Counter input 3;;1;0.0;-;4
@@ -58,4 +58,4 @@ ModbusRTU;AnalogExtention;Webdyn;Sens'IO 16DI;;;;;;;
 57;3;136_5_1;Bits;;Disable/Enable input 14;;1;0.0;-;4
 58;3;136_6_1;Bits;;Disable/Enable input 15;;1;0.0;-;4
 59;3;136_7_1;Bits;;Disable/Enable input 16;;1;0.0;-;4
-60;3;137;I16;;Input status selection;SwitchLogic;1;0.0;-;4
+60;3;137;I16;;Input status selection;;1;0.0;-;4

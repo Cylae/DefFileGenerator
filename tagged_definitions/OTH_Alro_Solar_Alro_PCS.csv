@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Alro Solar;Alro_PCS;;;;;;;
+modbusRTU;Other;Alro Solar;Alro_PCS;;;;;;;
 1;4;40000;U16;;RS485 slave address (connected to the data acquisition device port);UNIT_ID;1.0;0.0;---;1
 2;4;40001;U16;;RS485 baud rate (connected to data acquisition device port);;1.0;0.0;---;1
 3;4;40002;U16;;RS485 slave address (connected to host computer port)or third-party data collector);;1.0;0.0;---;1

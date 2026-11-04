@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;KEHUA_Modbus_ThreePhase;;;;;;;
+modbusRTU;Other;Webdyn;KEHUA_Modbus_ThreePhase;;;;;;;
 1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
 2;4;4506;U16;;The capacity of power generation at the same day;;1.0;0.0;kWh;4
 3;4;4507;U16;;Total Grid generation capacity;;1.0;0.0;kWh;4

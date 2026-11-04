@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;MarsRenewable;MarsRenewable_LocalControler_B;;;;;;;
+modbusRTU;Other;MarsRenewable;MarsRenewable_LocalControler_B;;;;;;;
 1;4;5000;U16;;Bank Voltage;;1.0;0.0;V;4
 2;4;5002;U16;;Bank Current;;1.0;0.0;A;4
 3;4;5004;U16;;Bank SOC;SOC;1.0;0.0;%;4
@@ -51,7 +51,7 @@
 50;4;20;U16;;Available Charge Energy;;1.0;0.0;kWh;4
 51;4;22;U16;;Available Discharge Energy;;1.0;0.0;kWh;4
 52;4;24;U16;;Average Cell Voltage;;1.0;0.0;V;4
-53;4;26;U16;;Average Cell Temperature;TEMP_CELL;1.0;0.0;Degr.Celsius;4
+53;4;26;U16;;Average Cell Temperature;;1.0;0.0;Degr.Celsius;4
 54;4;28;U16;;Maximum Cell Voltage;;1.0;0.0;V;4
 55;4;30;U16;;Maximum Cell Voltage Cell Number;;1.0;0.0;;4
 56;4;32;U16;;Minimum Cell Voltage;;1.0;0.0;V;4
@@ -69,7 +69,7 @@
 68;4;56;U16;;Minimum Cell SOH;;1.0;0.0;%;4
 69;4;58;U16;;Minimum Cell SOH Cell Number;;1.0;0.0;;4
 70;4;100;U16;;Cell Voltage;;1.0;0.0;V;4
-71;4;102;U16;;Cell Temperature;;1.0;0.0;Degr.Celsius;4
+71;4;102;U16;;Cell Temperature;TEMP_CELL;1.0;0.0;Degr.Celsius;4
 72;4;104;U16;;Cell SOC;;1.0;0.0;%;4
 73;4;106;U16;;Cell SOH;;1.0;0.0;%;4
 74;4;108;U16;;Cell Resistance;;1.0;0.0;Ohm;4

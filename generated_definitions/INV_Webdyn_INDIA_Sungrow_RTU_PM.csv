@@ -22,8 +22,8 @@ modbusRTU;Inverter;Sungrow;110
 21;4;5114;U16;;Res;;0.100000;0.000000;V;4
 22;4;5115;U16;;Res2;;0.100000;0.000000;A;4
 23;4;5037;U16;;Inverter state;;1.000000;0.000000;;8
-24;3;5006;U16;;Active power reduction function enable;ctrl;1.000000;0.000000;;4
-25;3;5007;U16;;Active power reduction setting;cmd;1.000000;0.000000;%;4
+24;3;5006;U16;;Active power reduction function enable;;1.000000;0.000000;;4
+25;3;5007;U16;;Active power reduction setting;;1.000000;0.000000;%;4
 26;4;7012;U16;;Current of string 1;I_DC_STRING_1;0.010000;0.000000;A;4
 27;4;7013;U16;;Current of string 2;I_DC_STRING_2;0.010000;0.000000;A;4
 28;4;7014;U16;;Current of string 3;I_DC_STRING_3;0.010000;0.000000;A;4
@@ -46,8 +46,8 @@ modbusRTU;Inverter;Sungrow;110
 45;4;5071;I32;;Leakage current;;1.000000;0.000000;;4
 46;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;1.000000;0.000000;;4
 47;4;5115;U16;;MPPT 4 current;I_DC_MPPT_4;1.000000;0.000000;;4
-48;4;5038;U16;;Power Limitation adjustment;CMD_P_AC_LIM_ABS;0.100000;0.000000;kw;4
-49;4;5039;U16;;Power Limitation adjustment2;2;0.100000;0.000000;kw;4
+48;4;5038;U16;;Power Limitation adjustment;;0.100000;0.000000;kw;4
+49;4;5039;U16;;Power Limitation adjustment2;;0.100000;0.000000;kw;4
 50;4;5014;U16;;Ex Power Lim per;;0.100000;0.000000;%;4
 51;4;5015;U16;;Ex Power Lim per2;;1.000000;0.000000;%;4
 52;4;5116;U16;;MPPT 5 voltage;U_DC_MPPT_5;1.000000;0.000000;;4

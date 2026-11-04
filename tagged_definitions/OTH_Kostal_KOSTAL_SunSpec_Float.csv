@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Kostal;KOSTAL_SunSpec_Float;;;;;;;
+modbusRTU;Other;Kostal;KOSTAL_SunSpec_Float;;;;;;;
 1;4;1;U16;;SunS;;1.0;0.0;;4
 2;4;2;U16;;Common;;1.0;0.0;;4
 3;4;3;U16;;Manufacturer;MANUFACTURER;1.0;0.0;;4

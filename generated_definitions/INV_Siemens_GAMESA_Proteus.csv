@@ -1,22 +1,22 @@
 ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
-1;3;0_32;STRING;;Manufacturer Info ;MANUFACTURER;1;0;;4
-2;3;16_32;STRING;;Model & Options;MODEL;1;0;;4
+1;3;0_32;STRING;;Manufacturer Info ;;1;0;;4
+2;3;16_32;STRING;;Model & Options;;1;0;;4
 3;3;32_8;STRING;;GP Code ;;1;0;;4
 4;3;36_16;STRING;;Version;;1;0;;4
 5;3;44_8;STRING;;Version date ;;1;0;;4
 6;3;48_32;STRING;;Serial Number;SERIAL;1;0;;4
-7;3;64;U16;;Device Address;UNIT_ID;1;0;;4
+7;3;64;U16;;Device Address;;1;0;;4
 8;3;65;U16;;ModbusVr;;1;0;;4
 9;3;66;I16;;Operating State of the Inverter;;1;0;;4
 10;3;67;U16;;Alarm;;1;0;;4
 11;3;67_0_1;Bits;;Ground fault;;1;0;;4
-12;3;67_1_1;Bits;;DC over voltage;U_DC;1;0;;4
+12;3;67_1_1;Bits;;DC over voltage;;1;0;;4
 13;3;67_2_1;Bits;;AC disconnected;;1;0;;4
 14;3;67_3_1;Bits;;DC disconnected;;1;0;;4
 15;3;67_4_1;Bits;;Grid disconnected;;1;0;;4
 16;3;67_6_1;Bits;;Emergency Relay;;1;0;;4
 17;3;67_7_1;Bits;;Over temperature;;1;0;;4
-18;3;67_8_1;Bits;;Over Frequency;FREQ;1;0;;4
+18;3;67_8_1;Bits;;Over Frequency;;1;0;;4
 19;3;67_9_1;Bits;;Under Frequency;;1;0;;4
 20;3;67_10_1;Bits;;AC Over Voltage;;1;0;;4
 21;3;67_11_1;Bits;;AC Under Voltage;;1;0;;4
@@ -24,14 +24,14 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 23;3;67_14_1;Bits;;Communication error;;1;0;;4
 24;3;67_15_1;Bits;;Active Alarms for the Inverter 16;;1;0;;4
 25;3;68;I16;;Total Active Power Measurement ;P_AC;1;0;kW;4
-26;3;69;U16;;Total Apparent Power Measurement;S_AC;1;0;kVA;4
-27;3;70;I16;;Total Reactive Power Measurement ;Q_AC;1;0;kVAr ;4
+26;3;69;U16;;Total Apparent Power Measurement;;1;0;kVA;4
+27;3;70;I16;;Total Reactive Power Measurement ;;1;0;kVAr ;4
 28;3;71;I16;;Power Factor;PF;0.0001;0;;4
 29;3;72;U16;;Total AC Current;I_AC;0.1;0;A;4
-30;3;73;U16;;Line AC Voltage;U_AC_1;0.1;0;V;4
+30;3;73;U16;;Line AC Voltage;;0.1;0;V;4
 31;3;74;U16;;Phase AC Voltage;;0.1;0;V;4
-32;3;75;U16;;AC Frequency;;0.01;0;Hz;4
-33;3;76;I64;;Total Energy Injected;E_TOT;1;0;kWh;4
+32;3;75;U16;;AC Frequency;FREQ;0.01;0;Hz;4
+33;3;76;I64;;Total Energy Injected;;1;0;kWh;4
 34;3;80;I64;;Total Energy Absorbed;;1;0;Wh;4
 35;3;84;I64;;Total Reactive Energy Injected;;1;0;Varh;4
 36;3;88;I64;;Total Reactive Energy Absorbed;;1;0;Varh;4
@@ -41,9 +41,9 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 40;3;95;I16;;Filter temperature;;0.1;0;C;4
 41;3;96;I16;;IGBT temperature;;0.1;0;C;4
 42;3;97;I16;;Coolant temperature;;0.1;0;C;4
-43;3;98;U16;;Current Measurement of Phase 1 ;I_AC_1;0.1;0;A;4
-44;3;99;U16;;Current Measurement of Phase 2 ;I_AC_2;0.1;0;A;4
-45;3;100;U16;;Current Measurement of Phase 3 ;I_AC_3;0.1;0;A;4
+43;3;98;U16;;Current Measurement of Phase 1 ;;0.1;0;A;4
+44;3;99;U16;;Current Measurement of Phase 2 ;;0.1;0;A;4
+45;3;100;U16;;Current Measurement of Phase 3 ;;0.1;0;A;4
 46;3;101;U16;;UL12;;0.1;0;V;4
 47;3;102;U16;;UL23;;0.1;0;V;4
 48;3;103;U16;;UL31;;0.1;0;V;4
@@ -55,7 +55,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 54;3;108_0_1;Bits;;Power Section 1 ;;1;0;;4
 55;3;108_2_1;Bits;;Power Section 1 AC Switch status 1-1;;1;0;;4
 56;3;108_3_1;Bits;;Power Section 1 AC Switch status 1-2;;1;0;;4
-57;3;108_4_1;Bits;;Power Section 1 DC Switch status 1-1;P_DC;1;0;;4
+57;3;108_4_1;Bits;;Power Section 1 DC Switch status 1-1;;1;0;;4
 58;3;108_5_1;Bits;;Power Section 1 DC Switch status 1-2;;1;0;;4
 59;3;108_6_1;Bits;;Power Section 2;;1;0;;4
 60;3;108_7_1;Bits;;Power Section 2 AC Switch status 1-1;;1;0;;4
@@ -67,7 +67,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 66;3;108_13_1;Bits;;Status of Grounding Switch 1-2;;1;0;;4
 67;3;108_14_1;Bits;;Status of Harmonic Filter Switch 1-1;;1;0;;4
 68;3;108_15_1;Bits;;Status of Harmonic Filter Switch 1-2;;1;0;;4
-69;3;109;I16;;Total DC Current for all ports;I_DC;0.1;0;A;4
+69;3;109;I16;;Total DC Current for all ports;;0.1;0;A;4
 70;3;110;I16;;Total DC Power for all ports ;;1;0;kW;4
 71;3;111;I64;;EDCInj;;1;0;Wh;4
 72;3;119;U16;;Number of DC ports;;1;0;;4
@@ -412,7 +412,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 411;3;8193_12_1;Bits;;Harmonic Filter Discharge Contactors Feedback Error;;1;0;;4
 412;3;8193_13_1;Bits;;Supercaps protection trip;;1;0;;4
 413;3;8193_14_1;Bits;;Shunt Ground Current Monitor Alarm;;1;0;;4
-414;3;8193_15_1;Bits;;Humidity above 95%;HUMIDITY;1;0;;4
+414;3;8193_15_1;Bits;;Humidity above 95%;;1;0;;4
 415;3;8194;U16;;Alarm word 2;;1;0;;4
 416;3;8194_0_1;Bits;;High air outlet temperature;;1;0;;4
 417;3;8194_1_1;Bits;;Very high air outlet temperature;;1;0;;4
@@ -434,8 +434,8 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 433;3;8195_0_1;Bits;;Very high instantaneous voltage;;1;0;;4
 434;3;8195_1_1;Bits;;High grid frequency and low grid voltage;;1;0;;4
 435;3;8195_3_1;Bits;;High RMS voltage phase 1;;1;0;;4
-436;3;8195_4_1;Bits;;High RMS voltage phase 2;U_AC_2;1;0;;4
-437;3;8195_5_1;Bits;;High RMS voltage phase 3;U_AC_3;1;0;;4
+436;3;8195_4_1;Bits;;High RMS voltage phase 2;;1;0;;4
+437;3;8195_5_1;Bits;;High RMS voltage phase 3;;1;0;;4
 438;3;8195_6_1;Bits;;Very high RMS voltage phase 1;;1;0;;4
 439;3;8195_7_1;Bits;;Very high RMS voltage phase 2;;1;0;;4
 440;3;8195_8_1;Bits;;Very high RMS voltage phase 3;;1;0;;4
@@ -509,7 +509,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 508;3;8199_9_1;Bits;;Reverse polarity on panel conection 2;;1;0;;4
 509;3;8199_10_1;Bits;;Very high voltage on panel 1;;1;0;;4
 510;3;8199_11_1;Bits;;Very high voltage on panel 2;;1;0;;4
-511;3;8199_12_1;Bits;;Temperature on section 1 any power module out of range;TEMP_CELL;1;0;;4
+511;3;8199_12_1;Bits;;Temperature on section 1 any power module out of range;;1;0;;4
 512;3;8199_13_1;Bits;;Temperature on section 2 any power module out of range;;1;0;;4
 513;3;8199_14_1;Bits;;Low cooling temperature out of range;;1;0;;4
 514;3;8199_15_1;Bits;;High cooling temperature out of range;;1;0;;4
@@ -524,7 +524,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 523;3;8200_7_1;Bits;;Shunt Ground Current Monitor Warning;;1;0;;4
 524;3;8200_8_1;Bits;;Ambient conditions and 230Vac to filter breaker feedback;;1;0;;4
 525;3;8200_9_1;Bits;;Harmonic filter main contactor error;;1;0;;4
-526;3;8200_10_1;Bits;;Active and reactive power limited;CMD_P_AC_SET_ABS;1;0;;4
+526;3;8200_10_1;Bits;;Active and reactive power limited;;1;0;;4
 527;3;8200_11_1;Bits;;Maximum Advanced Grounding Kit test error limit reached;;1;0;;4
 528;3;8200_12_1;Bits;;Doing Grounding Kit test in STATCOM;;1;0;;4
 529;3;8200_13_1;Bits;;Internal Cooler filter replace needed;;1;0;;4
@@ -595,7 +595,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 594;3;8205_1_1;Bits;;Liquid refrigeration pump error;;1;0;;4
 595;3;8205_2_1;Bits;;Cooling liquid heater error;;1;0;;4
 596;3;8205_3_1;Bits;;Liquid refrigeration cooler error;;1;0;;4
-597;3;8205_4_1;Bits;;Low pressure error;PRESSURE;1;0;;4
+597;3;8205_4_1;Bits;;Low pressure error;;1;0;;4
 598;3;8205_5_1;Bits;;High differential pressure error;;1;0;;4
 599;3;8205_6_1;Bits;;Inverter PWM syncing...;;1;0;;4
 600;3;8205_7_1;Bits;;Proportional electrovalve feedback error;;1;0;;4
@@ -641,7 +641,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 640;3;8207_14_1;Bits;;Reactive Power is being limited by high external temperature;;1;0;;4
 641;3;8207_15_1;Bits;;Active Power is being limited by high external temperature;;1;0;;4
 642;3;8208;U16;;Alarm word 16;;1;0;;4
-643;3;8208_0_1;Bits;;Preventive maintenance warning;WIND_SPEED;1;0;;4
+643;3;8208_0_1;Bits;;Preventive maintenance warning;;1;0;;4
 644;3;8208_1_1;Bits;;Preventive maintenance alarm};;1;0;;4
 645;3;8208_2_1;Bits;;Preventive maintenance warning: Precharge 1;;1;0;;4
 646;3;8208_3_1;Bits;;Preventive maintenance alarm: Precharge 1;;1;0;;4

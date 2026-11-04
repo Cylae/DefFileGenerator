@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Schneider;EM 6400;;;;;;;
+ModbusRTU;Meter;Schneider;EM 6400;;;;;;;
 1;3;3960;F32_W;;Forward active energy;;1.0;0.0;Wh;4
 2;3;3902;F32_W;;Active Power;P_AC;1.0;0.0;W;4
 3;3;3926;F32_W;;R-N Phase Voltage;;1.0;0.0;VLNr;4

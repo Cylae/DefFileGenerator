@@ -10,11 +10,11 @@ Modbus;Meter;Socomec;Diris_B30
 9;3;18488;I32;;Active power _ P1;P_AC_1;1.0;0.0;W;4
 10;3;18490;I32;;Active power _ P2;P_AC_2;1.0;0.0;W;4
 11;3;18492;I32;;Active power _ P3;P_AC_3;1.0;0.0;W;4
-12;3;18494;I32;;Reactive power _ Q1;Q_AC;0.0;0.0;var;4
+12;3;18494;I32;;Reactive power _ Q1;;0.0;0.0;var;4
 13;3;18496;I32;;Reactive power _ Q2;;0.0;0.0;var;4
 14;3;18498;I32;;Reactive power _ Q3;;0.0;0.0;var;4
 15;3;18442;U32;;Frequency;FREQ;1.0;0.0;mHz;4
-16;3;19843;U32;;Total Positive active Energy _ Ea_;E_TOT;0.001;0.0;Wh;4
+16;3;19843;U32;;Total Positive active Energy _ Ea_;;0.001;0.0;Wh;4
 17;3;19846;U32;;Total Negative active Energy _ Ea-;;0.001;0.0;Wh;4
 18;3;19849;U32;;Total Positive reactive Energy _ Er_;;0.001;0.0;Varh;4
 19;3;19852;U32;;Total Negative reactive Energy _ Er-;;0.001;0.0;Varh;4

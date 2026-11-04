@@ -1,4 +1,4 @@
-﻿Modbus;Meter;Carlo_Gavazzi;EM210;;;;;;;
+Modbus;Meter;Carlo_Gavazzi;EM210;;;;;;;
 1;3;1;I32;;volt1;;0.1;0.0;V;4
 2;3;3;I32;;volt2;;0.1;0.0;V;4
 3;3;5;I32;;volt3;;0.1;0.0;V;4

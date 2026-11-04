@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SofarSolar;SofarSolar_HYD_G3_old;;;;;;;
+modbusRTU;Inverter;SofarSolar;SofarSolar_HYD_G3_old;;;;;;;
 1;4;1156;U16;;Frequency_Grid;FREQ;1.0;0.0;Hz;4
 2;4;1157;U16;;ActivePower_Output_Total;P_AC;1.0;0.0;kW;4
 3;4;1158;U16;;ReactivePower_Output_Total;Q_AC;1.0;0.0;kW;4

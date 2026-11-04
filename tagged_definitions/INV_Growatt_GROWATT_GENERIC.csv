@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Growatt;GROWATT_GENERIC;;;;;;;
+modbusRTU;Inverter;Growatt;GROWATT_GENERIC;;;;;;;
 1;4;0;U16;;Inverter Status;;1.0;0.0;;4
 2;4;1;U16;;Ppv;;1.0;0.0;W;4
 3;4;3;U16;;volt.mppt.1;;1.0;0.0;V;4

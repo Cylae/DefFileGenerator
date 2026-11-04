@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
+modbusRTU;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
 1;4;29999;U16;;Device type;MODEL;1;0;;4
 2;4;30000_20;STRING;;Serial number;SERIAL;1;0;;4
 3;4;30010_18;STRING;;Inverter model;;1;0;;4
@@ -93,8 +93,8 @@
 92;4;31038;U32;;Inverter output apparent power;S_AC;1;0;VA;4
 93;4;32039;U16;;Battery status;;1;0;;4
 94;4;32050;U16;;BMS communication status;;1;0;;4
-95;4;32054;U16;;Battery Voltage;;0.1;0;V;4
-96;4;32055;I16;;Battery Current;;0.01;0;A;4
+95;4;32054;U16;;Battery Voltage;U_DC;0.1;0;V;4
+96;4;32055;I16;;Battery Current;I_DC;0.01;0;A;4
 97;4;32056;I32;;Battery power;;1;0;W;4
 98;4;32062;I16;;Battery Temperature;TEMP;0.1;0;°C;4
 99;4;32063;U16;;Battery SOC;SOC;1;0;%;4
@@ -337,7 +337,7 @@
 336;3;41504;U16;;PV capacity over 1.1 oversizing;;1;0;;4
 337;3;41505;U16;;EPS enable flag;;1;0;;4
 338;3;41507;U16;;EPS-N voltage detection;;1;0;;4
-339;3;42001;U16;;DC shutdown voltage;U_DC;1;0;;4
+339;3;42001;U16;;DC shutdown voltage;;1;0;;4
 340;3;42005;U16;;Error clear;;1;0;;4
 341;3;42007;U16;;Fan self-check;;1;0;;4
 342;3;42009;U16;;Logic interfaces enable;;1;0;;4

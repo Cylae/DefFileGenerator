@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;TicMaster;ICE-SAPHIR;;;;;;;
+ModbusRTU;Meter;TicMaster;ICE-SAPHIR;;;;;;;
 1;3;98;I32;;Read32Test;;1;0;;4
 2;3;101;U32_W;;Type de compteur;;1;0;;4
 3;3;4658;I32;;PASI;P_AC;0.1;0;kW;4

@@ -1,4 +1,4 @@
-﻿ModbusTCP;Inverter;SMA;speedwire;;;;;;;
+ModbusTCP;Inverter;SMA;speedwire;;;;;;;
 1;3;40052_16;STRING;;SN Inv;SERIAL;1.0;0.0;;4
 2;3;40188;U16;;Current line conductor L1;I_AC_1;1.0;0.0;;4
 3;3;40189;U16;;Current line conductor L2;I_AC_2;1.0;0.0;;4

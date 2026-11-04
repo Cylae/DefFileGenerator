@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Lufft;WS600;;;;;;;
+ModbusRTU;Meter;Lufft;WS600;;;;;;;
 1;4;0;I16;;Identification;;1;0;;4
 2;4;1;I16;;Device status;;1;0;;4
 3;4;2;I16;;Sensor status 1;;1;0;;4

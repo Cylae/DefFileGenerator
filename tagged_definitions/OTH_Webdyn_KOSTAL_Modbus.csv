@@ -1,12 +1,12 @@
-﻿modbusRTU;Other;Webdyn;KOSTAL_Modbus;;;;;;;
-1;4;30000;U16;;DC U string 1;;1.0;0.0;V;4
-2;4;30001;U16;;DC I string 1;;1.0;0.0;A;4
+modbusRTU;Other;Webdyn;KOSTAL_Modbus;;;;;;;
+1;4;30000;U16;;DC U string 1;U_DC_STRING_1;1.0;0.0;V;4
+2;4;30001;U16;;DC I string 1;I_DC_STRING_1;1.0;0.0;A;4
 3;4;30002;U16;;DC P string 1;;1.0;0.0;W;4
-4;4;30005;U16;;DC U string 2;;1.0;0.0;V;4
-5;4;30006;U16;;DC I string 2;;1.0;0.0;A;4
+4;4;30005;U16;;DC U string 2;U_DC_STRING_2;1.0;0.0;V;4
+5;4;30006;U16;;DC I string 2;I_DC_STRING_2;1.0;0.0;A;4
 6;4;30007;U16;;DC P string 2;;1.0;0.0;W;4
-7;4;30010;U16;;DC U string 3;;1.0;0.0;V;4
-8;4;30011;U16;;DC I string 3;;1.0;0.0;A;4
+7;4;30010;U16;;DC U string 3;U_DC_STRING_3;1.0;0.0;V;4
+8;4;30011;U16;;DC I string 3;I_DC_STRING_3;1.0;0.0;A;4
 9;4;30012;U16;;DC P string 3;;1.0;0.0;W;4
 10;4;30015;U16;;AC L1 U;;1.0;0.0;V;4
 11;4;30016;U16;;AC L1 I;;1.0;0.0;A;4

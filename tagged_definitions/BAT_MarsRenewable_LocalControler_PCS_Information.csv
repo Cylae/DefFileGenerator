@@ -1,4 +1,4 @@
-﻿Modbus;Battery;MarsRenewable;PCS;;;;;;;
+Modbus;Battery;MarsRenewable;PCS;;;;;;;
 1;4;0;U16;;Operating Status;;1;0;;4
 2;4;2;F32;;AC Uab Line Voltage;U_AC_L1L2;1;0;V;4
 3;4;4;F32;;AC Ubc Line Voltage;U_AC_L2L3;1;0;V;4

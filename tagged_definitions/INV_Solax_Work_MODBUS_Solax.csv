@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Solax;Work_MODBUS_Solax;;;;;;;
+modbusRTU;Inverter;Solax;Work_MODBUS_Solax;;;;;;;
 1;4;1;U16;;00000_SeriesNumber_Parameters;SERIAL;1.0;0.0;;4
 2;4;2;U16;;00007_FactoryName_Parameters;;1.0;0.0;;4
 3;4;3;U16;;000014_ModuleName_Parameters;;1.0;0.0;;4

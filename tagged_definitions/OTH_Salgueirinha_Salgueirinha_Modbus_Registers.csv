@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Salgueirinha;Salgueirinha_Modbus Registers;;;;;;;
+modbusRTU;Other;Salgueirinha;Salgueirinha_Modbus Registers;;;;;;;
 1;4;0;U16;;Energy Meter COM;;1.0;0.0;;4
 2;4;0;U16;;Circuit Breaker Closing Spring;;1.0;0.0;;4
 3;4;0;U16;;Circuit Breaker;;1.0;0.0;;4
@@ -537,7 +537,7 @@
 536;4;55;U16;;Pyranometer 1 COM;POA;1.0;0.0;;4
 537;4;5;U16;;Pyranometer 2 COM;;1.0;0.0;;4
 538;4;60;U16;;Instant Availability;;1.0;0.0;None;4
-539;4;62;U16;;Consumption - Active Energy;;1.0;0.0;MWh;4
+539;4;62;U16;;Consumption - Active Energy;E_TOT;1.0;0.0;MWh;4
 540;4;64;U16;;Consumption - Active Energy - Off-Peak;;1.0;0.0;MWh;4
 541;4;66;U16;;Consumption - Active Energy - Peak;;1.0;0.0;MWh;4
 542;4;68;U16;;Consumption - Active Energy - Partial Peak;;1.0;0.0;MWh;4

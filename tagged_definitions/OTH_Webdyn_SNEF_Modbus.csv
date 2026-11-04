@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;SNEF_Modbus;;;;;;;
+modbusRTU;Other;Webdyn;SNEF_Modbus;;;;;;;
 1;4;4120;U16;;ActivePower-Phase1;P_AC_1;1.0;0.0;mW;4
 2;4;4122;U16;;ActivePower-Phase2;P_AC_2;1.0;0.0;mW;4
 3;4;4124;U16;;ActivePower-Phase3;P_AC_3;1.0;0.0;mW;4

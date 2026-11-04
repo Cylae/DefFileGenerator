@@ -30,7 +30,7 @@ modbus;Meter;Schneider Electric;iEM3400_3500;;;;;;;
 29;3;5375;U16;;tat de commande;;1;0;;4
 30;3;5376;U16;;Code de rsultat de commande;;1;0;;4
 31;3;6500;U16;;Protocole;;1;0;;1
-32;3;6501;U16;;Adresse Modbus;UNIT_ID;1;0;;1
+32;3;6501;U16;;Adresse Modbus;;1;0;;1
 33;3;6502;U16;;Vitesse de transmission;;1;0;;1
 34;3;6503;U16;;Parit;;1;0;;1
 35;3;7032_40;STRING;;tiquette mesures d'entre;;1;0;;1
@@ -39,17 +39,17 @@ modbus;Meter;Schneider Electric;iEM3400_3500;;;;;;;
 38;3;7274;U16;;Mode de commande des entres logiques;;1;0;;1
 39;3;8905;U32;;tat d'entre logique;;1;0;;4
 40;3;9673;U16;;tat du mode de commande des sorties logiques;;1;0;;1
-41;3;3000;F32;;I1 : Courant phase 1;I_AC_1;1;0;A;4
-42;3;3002;F32;;I2 : Courant phase 2;I_AC_2;1;0;A;4
-43;3;3004;F32;;I3 : Courant phase 3;I_AC_3;1;0;A;4
+41;3;3000;F32;;I1 : Courant phase 1;;1;0;A;4
+42;3;3002;F32;;I2 : Courant phase 2;;1;0;A;4
+43;3;3004;F32;;I3 : Courant phase 3;;1;0;A;4
 44;3;3010;F32;;Courant Avg;;1;0;A;4
-45;3;3020;F32;;Tension L1-L2;U_AC_L1L2;1;0;V;4
-46;3;3022;F32;;Tension L2-L3;U_AC_L2L3;1;0;V;4
-47;3;3024;F32;;Tension L3-L1;U_AC_L3L1;1;0;V;4
+45;3;3020;F32;;Tension L1-L2;;1;0;V;4
+46;3;3022;F32;;Tension L2-L3;;1;0;V;4
+47;3;3024;F32;;Tension L3-L1;;1;0;V;4
 48;3;3026;F32;;Tension L-L Avg;;1;0;V;4
-49;3;3028;F32;;Tension L1-N;U_AC_1;1;0;V;4
-50;3;3030;F32;;Tension L2-N;U_AC_2;1;0;V;4
-51;3;3032;F32;;Tension L3-N;U_AC_3;1;0;V;4
+49;3;3028;F32;;Tension L1-N;;1;0;V;4
+50;3;3030;F32;;Tension L2-N;;1;0;V;4
+51;3;3032;F32;;Tension L3-N;;1;0;V;4
 52;3;3036;F32;;Tension L-N Avg;;1;0;V;4
 53;3;3054;F32;;Puissance active phase 1;P_AC_1;1;0;kW;4
 54;3;3056;F32;;Puissance active phase 2;P_AC_2;1;0;kW;4
@@ -57,7 +57,7 @@ modbus;Meter;Schneider Electric;iEM3400_3500;;;;;;;
 56;3;3060;F32;;Puissance active totale;P_AC;1;0;kW;4
 57;3;3068;F32;;Puissance ractive totale;;1;0;kVAR;4
 58;3;3076;F32;;Puissance apparente totale;S_AC;1;0;kVA;4
-59;3;3084;F32;;Facteur de puissance total;PF;1;0;;4
+59;3;3084;F32;;Facteur de puissance total;;1;0;;4
 60;3;3110;F32;;Frquence;;1;0;Hz;4
 61;3;3252;U64;;Date heure de rinitialisation d'nergie;;1;0;;1
 62;3;3554;U64;;Date heure de rinitialisation des mesures d'entre;;1;0;;1

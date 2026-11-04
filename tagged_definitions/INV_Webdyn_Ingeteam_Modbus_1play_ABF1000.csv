@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Ingeteam;1Play_ABF;;;;;;;
+ModbusRTU;Inverter;Ingeteam;1Play_ABF;;;;;;;
 1;4;0;U16;;Actual Date.Year;;1.0;0.0;Year;4
 2;4;1;U16;;Actual Date.Month of the Year;;1.0;0.0;Month;4
 3;4;2;U16;;Actual Date.Day of the month;;1.0;0.0;Day;4
@@ -27,11 +27,11 @@
 26;4;31;I16;;Output active power;P_AC;0.1;0.0;Watt;4
 27;4;32;I16;;Output reactive power;Q_AC;0.1;0.0;Var;4
 28;4;33;I16;;Cosine of Phi;;1000.0;0.0;;4
-29;4;34;I16;;PV current;;100.0;0.0;Amps;4
+29;4;34;I16;;PV current;I_DC;100.0;0.0;Amps;4
 30;4;35;I16;;Reserved;;1.0;0.0;;0
-31;4;36;I16;;PV voltage;;1.0;0.0;Vdc;4
+31;4;36;I16;;PV voltage;U_DC;1.0;0.0;Vdc;4
 32;4;37;I16;;Reserved_1;;1.0;0.0;;0
-33;4;38;I16;;PV power;;0.1;0.0;Wat;4
+33;4;38;I16;;PV power;P_DC;0.1;0.0;Wat;4
 34;4;39;I16;;Reserved_2;;1.0;0.0;;0
 35;4;40;I16;;Reserved_3;;1.0;0.0;;0
 36;4;41;U16;;Isolation resistance of PV field;R_ISO;1.0;0.0;kOhm;4

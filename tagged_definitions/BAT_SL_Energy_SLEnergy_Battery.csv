@@ -1,4 +1,4 @@
-﻿modbus;Battery;SL Energy;Battery;;;;;;;
+modbus;Battery;SL Energy;Battery;;;;;;;
 1;3;11000;U16;;Grid_Buy_Day;;0.1;0;kWh;4
 2;3;11001;U32;;Grid_Buy_Month;;0.1;0;kWh;4
 3;3;11003;U32;;Grid_Buy_Year;;0.1;0;kWh;4
@@ -15,7 +15,7 @@
 14;3;11127;U16;;Minimum unit voltage;;0.1;0;V;4
 15;3;11128;U16;;Maximum single-cell voltage;;0.1;0;V;4
 16;3;11129;U16;;Total number of loops;;1;0;;4
-17;3;11130;U16;;Battery_Voltage;;0.1;0;V;4
+17;3;11130;U16;;Battery_Voltage;U_DC;0.1;0;V;4
 18;3;11131;I16;;Battery_Discharge_Current;;0.1;0;A;4
 19;3;11132;I16;;Battery_Charging_Current;;0.1;0;A;4
 20;3;11133;I16;;Battery temperature;TEMP;0.1;0.0;C;4
@@ -143,7 +143,7 @@
 142;3;42055;U16;;Maximum_Discharge_Power_During_Time_Period_6;;0.1;0;kW;4
 143;3;42056;U16;;Time_Period_6Start_Chargingvoltage_Value;;0.1;0;V;4
 144;3;42057;U16;;Time_Period_6Start_ChargingSOC_Value;;1;0;%;4
-145;3;42091;I16;;Battery power settings;BatteryCmd;0.1;0;kW;4
+145;3;42091;I16;;Battery power settings;;0.1;0;kW;4
 146;3;42092;I16;;SOC forced calibration enabled;;1;0;;4
 147;3;42093;U16;;SOC mandatory calibration cycle;;1;0;;4
 148;3;42094;U16;;Battery port information;;1;0;;4

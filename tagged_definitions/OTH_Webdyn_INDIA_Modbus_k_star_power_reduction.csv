@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn INDIA;Modbus_k_star_power_reduction;;;;;;;
+modbusRTU;Other;Webdyn INDIA;Modbus_k_star_power_reduction;;;;;;;
 1;4;3000;U16;;PV1 input voltage;U_DC_STRING_1;1.0;0.0;;4
 2;4;3001;U16;;PV2 input voltage;U_DC_STRING_2;1.0;0.0;;4
 3;4;3002;U16;;PV3 input voltage;U_DC_STRING_3;1.0;0.0;;4
@@ -17,7 +17,7 @@
 16;4;3020;U16;;R-phase grid current;;1.0;0.0;;4
 17;4;3021;U16;;S-phase grid current;;1.0;0.0;;4
 18;4;3022;U16;;T-phase grid current;;1.0;0.0;;4
-19;4;3023;U16;;Grid-tied power;Metercond;1.0;0.0;;4
+19;4;3023;U16;;Grid-tied power;;1.0;0.0;;4
 20;4;3027;U16;;DSP alarm code;;1.0;0.0;;4
 21;4;3028;U16;;DSP error code;;1.0;0.0;;4
 22;4;3036;U16;;ARM alarm code;;1.0;0.0;;8
@@ -35,4 +35,4 @@
 34;4;3052;U16;;Apparent power;S_AC;1.0;0.0;;4
 35;4;3054;U16;;Reactive power;Q_AC;1.0;0.0;;4
 36;4;3056;U16;;power factor;;1.0;0.0;;4
-37;4;4004;U16;;Power Reduction Setpoint;cmd;1.0;0.0;%;4
+37;4;4004;U16;;Power Reduction Setpoint;;1.0;0.0;%;4

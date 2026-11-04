@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Janitza;JANITZA_GENERIC_TCP;;;;;;;
+modbusRTU;Meter;Janitza;JANITZA_GENERIC_TCP;;;;;;;
 1;4;19000;U16;;ULN[0];U_AC_3;1.0;0.0;V;4
 2;4;19002;U16;;ULN[1];;1.0;0.0;V;4
 3;4;19004;U16;;ULN[2];;1.0;0.0;V;4

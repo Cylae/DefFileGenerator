@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Schneider;PM556x_PublicModbusRegisterLis;;;;;;;
+modbusRTU;Other;Schneider;PM556x_PublicModbusRegisterLis;;;;;;;
 1;4;1;U16;;None;;1.0;0.0;---;4
 2;4;30;U16;;None;;1.0;0.0;---;4
 3;4;30;U16;;Meter Name;;1.0;0.0;---;4

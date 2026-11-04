@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;MODBUS_EM6400;;;;;;;
+modbusRTU;Other;Webdyn;MODBUS_EM6400;;;;;;;
 1;4;3960;U16;;Forward active energy;;1.0;0.0;Wh;4
 2;4;3902;U16;;Active Power;P_AC;1.0;0.0;W;4
 3;4;3926;U16;;R-N Phase Voltage;;1.0;0.0;VLNr;4

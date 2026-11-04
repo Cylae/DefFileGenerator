@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Jema;JEMA_IFX3_1050_RevD;;;;;;;
+modbusRTU;Other;Jema;JEMA_IFX3_1050_RevD;;;;;;;
 1;4;40082;U16;;Energie Produite par jour;E_DAY;1.0;0.0;kWh;4
 2;4;40088;U16;;Energie Produite par mois;;1.0;0.0;kWh;4
 3;4;40086;U16;;Energie Produite par an;;1.0;0.0;kWh;4

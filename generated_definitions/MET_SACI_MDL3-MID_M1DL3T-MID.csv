@@ -6,13 +6,13 @@ ModbusRTU;Meter;SACI;MDL3-MID_M1DL3T-MID;;;;;;;
 5;3;264;I32;;Reactive power;Q_AC;;0;var;4
 6;3;266;I16;;Frequency;FREQ;0.1;0;Hz;4
 7;3;267;I16;;Power factor;PF;0.001;0;;4
-8;3;270;I32;;Total import active energy;E_IMP;0.01;0;kWh;4
+8;3;270;I32;;Total import active energy;;0.01;0;kWh;4
 9;3;272;I32;;Import active energy tariff T1;P_AC_1;0.01;0;kWh;4
 10;3;274;I32;;Import active energy tariff T2;P_AC_2;0.01;0;kWh;4
 11;3;276;I32;;Import active energy tariff T3;P_AC_3;0.01;0;kWh;4
 12;3;278;I32;;Import active energy tariff T4;;0.01;0;kWh;4
 13;3;280;I32;;Total export active energy;;0.01;0;kWh;4
-14;3;282;I32;;Export active energy tariff T1;E_EXP;0.01;0;kWh;4
+14;3;282;I32;;Export active energy tariff T1;;0.01;0;kWh;4
 15;3;284;I32;;Export active energy tariff T2;;0.01;0;kWh;4
 16;3;286;I32;;Export active energy tariff T3;;0.01;0;kWh;4
 17;3;288;I32;;Export active energy tariff T4;;0.01;0;kWh;4
@@ -26,7 +26,7 @@ ModbusRTU;Meter;SACI;MDL3-MID_M1DL3T-MID;;;;;;;
 25;3;314;I32;;Export reactive energy tariff T2;;0.01;0;kvarh;4
 26;3;316;I32;;Export reactive energy tariff T3;;0.01;0;kvarh;4
 27;3;318;I32;;Export reactive energy tariff T4;;0.01;0;kvarh;4
-28;3;330;I32;;Reactive energy Quadrant 1 total;E_TOT;0.01;0;kvarh;4
+28;3;330;I32;;Reactive energy Quadrant 1 total;;0.01;0;kvarh;4
 29;3;332;I32;;Reactive energy Q1 tariff 1;;0.01;0;kvarh;4
 30;3;334;I32;;Reactive energy Q1 tariff 2;;0.01;0;kvarh;4
 31;3;336;I32;;Reactive energy Q1 tariff 3;;0.01;0;kvarh;4

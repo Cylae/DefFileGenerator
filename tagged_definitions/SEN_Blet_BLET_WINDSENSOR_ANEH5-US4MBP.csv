@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;Blet;BLET_WINDSENSOR_ANEH5-US4MBP;;;;;;;
+modbusRTU;Sensor;Blet;BLET_WINDSENSOR_ANEH5-US4MBP;;;;;;;
 1;4;0;U16;;Device State;;1.0;0.0;;4
 2;4;1;U16;;Wind Direction;WIND_BEARING;1.0;0.0;°;4
 3;4;2;U16;;Wind Speed;WIND_SPEED;1.0;0.0;m/s;4

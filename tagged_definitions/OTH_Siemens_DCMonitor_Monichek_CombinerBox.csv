@@ -1,4 +1,4 @@
-﻿ModbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
+ModbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
 1;2;512_0_1;BITS;;Bus arc trip state;;1;0;;4
 2;2;513_0_1;BITS;;Channel arc trip state;;1;0;;4
 3;2;515_0_1;BITS;;Bus voltage is too high trip state;U_DC;1;0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;GREENHEISS;GH-I Style & GH-IT 2M;;;;;;;
+modbusRTU;Inverter;GREENHEISS;GH-I Style & GH-IT 2M;;;;;;;
 1;4;36608;U16;;Type;;1;0;;4
 2;4;36609;U16;;SubType;;1;0;;4
 3;4;36610;U16;;CommProVersi on;;0.001;0;;4

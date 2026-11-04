@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Lettel;LETTEL_MCT4-45_FLOAT;;;;;;;
+modbusRTU;Meter;Lettel;LETTEL_MCT4-45_FLOAT;;;;;;;
 1;4;0;U16;;A phase voltage;;1.0;0.0;V;4
 2;4;2;U16;;B phase voltage;;1.0;0.0;V;4
 3;4;4;U16;;C phase voltage;;1.0;0.0;V;4

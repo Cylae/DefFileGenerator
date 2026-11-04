@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;PowerOne;M4M Modbus map - v.1.3N;;;;;;;
+modbusRTU;Other;PowerOne;M4M Modbus map - v.1.3N;;;;;;;
 1;4;20480;U16;;Active energy - import;;1.0;0.0;kWh;4
 2;4;20484;U16;;Active energy - export;;1.0;0.0;kWh;4
 3;4;20488;U16;;Active energy - net;;1.0;0.0;kWh;4

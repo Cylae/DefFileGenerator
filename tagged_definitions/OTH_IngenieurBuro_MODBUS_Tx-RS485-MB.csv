@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;IngenieurBuro;MODBUS_Tx-RS485-MB;;;;;;;
+modbusRTU;Other;IngenieurBuro;MODBUS_Tx-RS485-MB;;;;;;;
 1;4;0;U16;;reserved;;1.0;0.0;;0
 2;4;1;U16;;Module temperature;TEMP_CELL;1.0;0.0;C;4
 3;4;2;U16;;Ambiant temperature;;1.0;0.0;C;4

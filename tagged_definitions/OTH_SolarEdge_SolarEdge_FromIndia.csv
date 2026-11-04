@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SolarEdge;SolarEdge_FromIndia;;;;;;;
+modbusRTU;Other;SolarEdge;SolarEdge_FromIndia;;;;;;;
 1;4;69;U16;;C_SunSpec_DID;;1.0;0.0;;4
 2;4;70;U16;;C_SunSpec_Length;;1.0;0.0;;4
 3;4;71;U16;;I_AC_Current;;1.0;0.0;Amps;4
@@ -35,5 +35,5 @@
 34;4;103;U16;;I_Temp_SF;;1.0;0.0;;4
 35;4;104;U16;;I_Status;;1.0;0.0;;4
 36;4;105;U16;;I_Status_Vendor;;1.0;0.0;;4
-37;4;62208;U16;;Lim_Ena;ctrl;1.0;0.0;;4
-38;4;61441;U16;;limited active power;cmd;1.0;0.0;;4
+37;4;62208;U16;;Lim_Ena;;1.0;0.0;;4
+38;4;61441;U16;;limited active power;;1.0;0.0;;4

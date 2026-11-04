@@ -1,4 +1,4 @@
-﻿modbus;Inverter;REFUSOL;GENERIC;;;;;;;
+modbus;Inverter;REFUSOL;GENERIC;;;;;;;
 1;4;64;U64;;Mask General;;1;0;;4
 2;4;68;U16;;Protocol Version;;0.01;0;;4
 3;4;69_2;STRING;;Chip Code;;1;0;;4

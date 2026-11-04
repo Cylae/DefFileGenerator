@@ -1,16 +1,16 @@
 modbusTCP;meter;OG;NHEOBOX;;;;;;;
 1;4;28200;I32;;Active power_MEM;;0.001;0;kW;4
-2;4;28202;I32;;Reactive power_MEM;Q_AC;0.001;0;kW;4
-3;4;28204;U32;;Phase A voltage_MEM;U_AC_1;0.1;0;V;4
-4;4;28206;U32;;Phase B voltage_MEM;U_AC_2;0.1;0;V;4
-5;4;28208;U32;;Phase C voltage_MEM;U_AC_3;0.1;0;V;4
-6;4;28210;I32;;Phase A current_MEM;I_AC_1;0.001;0;A;4
-7;4;28212;I32;;Phase B current_MEM;I_AC_2;0.001;0;A;4
-8;4;28214;I32;;Phase C current_MEM;I_AC_3;0.001;0;A;4
-9;4;28216;U32;;Input total active energy_MEM;E_TOT;0.0001;0;kWh;4
+2;4;28202;I32;;Reactive power_MEM;;0.001;0;kW;4
+3;4;28204;U32;;Phase A voltage_MEM;;0.1;0;V;4
+4;4;28206;U32;;Phase B voltage_MEM;;0.1;0;V;4
+5;4;28208;U32;;Phase C voltage_MEM;;0.1;0;V;4
+6;4;28210;I32;;Phase A current_MEM;;0.001;0;A;4
+7;4;28212;I32;;Phase B current_MEM;;0.001;0;A;4
+8;4;28214;I32;;Phase C current_MEM;;0.001;0;A;4
+9;4;28216;U32;;Input total active energy_MEM;;0.0001;0;kWh;4
 10;4;28218;U32;;Output total active energy_MEM;;0.0001;0;kWh;4
-11;4;28220;I32;;Power factor_MEM;PF;0.001;0;;4
-12;4;28222;U32;;Frequency_MEM;FREQ;1;0;Hz;4
+11;4;28220;I32;;Power factor_MEM;;0.001;0;;4
+12;4;28222;U32;;Frequency_MEM;;1;0;Hz;4
 13;4;28224;U32;;Total harmonic distortion of Phase A voltage_MEM;;0.1;0;%;4
 14;4;28226;U32;;Total harmonic distortion of Phase B voltage_MEM;;0.1;0;%;4
 15;4;28228;U32;;Total harmonic distortion of Phase C voltage_MEM;;0.1;0;%;4
@@ -30,7 +30,7 @@ modbusTCP;meter;OG;NHEOBOX;;;;;;;
 29;4;28262;I16;;Voltage_SCEM;;0.01;0;V;4
 30;4;28263;I32;;Current_SCEM;;0.001;0;A;4
 31;4;28265;I32;;Active power_SCEM;;0.1;0;W;4
-32;4;28267;I32;;Apparent power_SCEM;S_AC;0.1;0;VA;4
+32;4;28267;I32;;Apparent power_SCEM;;0.1;0;VA;4
 33;4;28269;I32;;Reactive power_SCEM;;0.1;0;Var;4
 34;4;28271;I16;;Frequency_SCEM;;0.01;0;Hz;4
 35;4;28272;I16;;Power factor_SCEM;;0.001;0;;4
@@ -41,7 +41,7 @@ modbusTCP;meter;OG;NHEOBOX;;;;;;;
 42;4;28283;I32;;Total reactive energy_SCEM;;0.1;0;kWh;4
 43;4;28285;I32;;Total apparent energy_SCEM;;0.1;0;kWh;4
 44;4;28287;U16;;Meter communication status_SCEM;;1;0;;4
-45;4;28300;I32;;Active Power Total_PSCM;P_AC;0.001;0;kW;4
+45;4;28300;I32;;Active Power Total_PSCM;;0.001;0;kW;4
 46;4;28302;I32;;Reactive Power Total_PSCM;;0.001;0;kW;4
 47;4;28304;U32;;Voltage Phase A_PSCM;;0.1;0;V;4
 48;4;28306;U32;;Voltage Phase B_PSCM;;0.1;0;V;4
@@ -70,10 +70,10 @@ modbusTCP;meter;OG;NHEOBOX;;;;;;;
 71;4;28352;U16;;Meter Communication Status_PSCM;;1;0;;4
 72;4;28400;I32;;Active Power Total_PDCM;;0.001;0;kW;4
 73;4;28402;I32;;Reactive Power Total_PDCM;;0.001;0;kW;4
-74;4;28404;U32;;Voltage Phase A_PDCM;U_DC;0.1;0;V;4
+74;4;28404;U32;;Voltage Phase A_PDCM;;0.1;0;V;4
 75;4;28406;U32;;Voltage Phase B_PDCM;;0.1;0;V;4
 76;4;28408;U32;;Voltage Phase C_PDCM;;0.1;0;V;4
-77;4;28410;I32;;Current Phase A_PDCM;I_DC;0.001;0;A;4
+77;4;28410;I32;;Current Phase A_PDCM;;0.001;0;A;4
 78;4;28412;I32;;Current Phase B_PDCM;;0.001;0;A;4
 79;4;28414;I32;;Current Phase C_PDCM;;0.001;0;A;4
 80;4;28416;U32;;Input Active Energy Total_PDCM;;0.0001;0;kWh;4
@@ -86,7 +86,7 @@ modbusTCP;meter;OG;NHEOBOX;;;;;;;
 87;4;28430;U32;;Current Harmonic Distortion Phase A_PDCM;;0.1;0;%;4
 88;4;28432;U32;;Current Harmonic Distortion Phase B_PDCM;;0.1;0;%;4
 89;4;28434;U32;;Current Harmonic Distortion Phase C_PDCM;;0.1;0;%;4
-90;4;28436;U32;;Active Energy Input in Peak Period_PDCM;P_DC;0.0001;0;kWh;4
+90;4;28436;U32;;Active Energy Input in Peak Period_PDCM;;0.0001;0;kWh;4
 91;4;28438;U32;;Active Energy Input in Peak Period_PDCM_1;;0.0001;0;kWh;4
 92;4;28440;U32;;Active Energy Input in Peak Period_PDCM_2;;0.0001;0;kWh;4
 93;4;28442;U32;;Active Energy Input in Peak Period_PDCM_3;;0.0001;0;kWh;4

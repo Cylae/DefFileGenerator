@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
+modbusRTU;Inverter;ZIGOR;STR120-250;;;;;;;
 1;3;3200_10;STRING;;Machine model;MODEL;1;0;;4
 2;3;3205_0;U8;;DSP version;;1;0;;4
 3;3;3205_1;U8;;ARM version;;1;0;;4
@@ -55,7 +55,7 @@
 54;3;4044;U16;;S-phase Calibration;;1;0;;4
 55;3;4045;U16;;T-phase Current Calibration Factor;;1;0;;4
 56;3;4046;U16;;BatteryVoltage Calibration Factor;;1;0;;4
-57;3;4113;U16;;OUTPUT ADJUSTING (120/250KW);cmdPwrZGR;1;0;KW;4
+57;3;4113;U16;;OUTPUT ADJUSTING (120/250KW);;1;0;KW;4
 58;3;4114;U16;;Nominal Power write;P_RATED;1;0;KW;4
 59;4;2964;U16;;PV12 input voltage;U_DC_STRING_12;0.1;0;V;4
 60;4;2965;I16;;PV12 input current;I_DC_MPPT_12;0.01;0;A;4

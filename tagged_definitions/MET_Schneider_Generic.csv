@@ -1,4 +1,4 @@
-﻿Modbus;Meter;Schneider;Generic;;;;;;;
+Modbus;Meter;Schneider;Generic;;;;;;;
 1;3;30_20;STRING;;Meter Name;;1.0;0.0;;4
 2;3;50_20;STRING;;Meter Model;MODEL;1.0;0.0;;4
 3;3;70_20;STRING;;Manufacturer;MANUFACTURER;1.0;0.0;;4
@@ -101,9 +101,9 @@
 100;3;2734;F32;;Reactive Energy in Quadrant II;;1.0;0.0;kVARh;4
 101;3;2736;F32;;Reactive Energy in Quadrant III;;1.0;0.0;kVARh;4
 102;3;2738;F32;;Reactive Energy in Quadrant IV;;1.0;0.0;kVARh;4
-103;3;3000;F32;;Current A;;1.0;0.0;A;4
-104;3;3002;F32;;Current B;;1.0;0.0;A;4
-105;3;3004;F32;;Current C;;1.0;0.0;A;4
+103;3;3000;F32;;Current A;I_AC_1;1.0;0.0;A;4
+104;3;3002;F32;;Current B;I_AC_2;1.0;0.0;A;4
+105;3;3004;F32;;Current C;I_AC_3;1.0;0.0;A;4
 106;3;3006;F32;;Current N;;1.0;0.0;A;4
 107;3;3008;F32;;Current G;;1.0;0.0;A;4
 108;3;3010;F32;;Current Avg;;1.0;0.0;A;4
@@ -133,16 +133,16 @@
 132;3;3058;F32;;Active Power C;P_AC_3;1.0;0.0;kW;4
 133;3;3060;F32;;Active Power Total;P_AC;1.0;0.0;kW;4
 134;3;3062;F32;;Reactive Power A;Q_AC;1.0;0.0;kVAR;4
-135;3;3064;F32;;Reactive Power B;;1.0;0.0;kVAR;4
-136;3;3066;F32;;Reactive Power C;;1.0;0.0;kVAR;4
+135;3;3064;F32;;Reactive Power B;Q_AC_2;1.0;0.0;kVAR;4
+136;3;3066;F32;;Reactive Power C;Q_AC_3;1.0;0.0;kVAR;4
 137;3;3068;F32;;Reactive Power Total;;1.0;0.0;kVAR;4
 138;3;3070;F32;;Apparent Power A;S_AC;1.0;0.0;kVA;4
-139;3;3072;F32;;Apparent Power B;;1.0;0.0;kVA;4
-140;3;3074;F32;;Apparent Power C;;1.0;0.0;kVA;4
+139;3;3072;F32;;Apparent Power B;S_AC_2;1.0;0.0;kVA;4
+140;3;3074;F32;;Apparent Power C;S_AC_3;1.0;0.0;kVA;4
 141;3;3076;F32;;Apparent Power Total;;1.0;0.0;kVA;4
-142;3;3078;U32;;Power Factor A;;1.0;0.0;4Q_FP_PF;4
-143;3;3080;U32;;Power Factor B;;1.0;0.0;4Q_FP_PF;4
-144;3;3082;U32;;Power Factor C;;1.0;0.0;4Q_FP_PF;4
+142;3;3078;U32;;Power Factor A;PF_1;1.0;0.0;4Q_FP_PF;4
+143;3;3080;U32;;Power Factor B;PF_2;1.0;0.0;4Q_FP_PF;4
+144;3;3082;U32;;Power Factor C;PF_3;1.0;0.0;4Q_FP_PF;4
 145;3;3084;U32;;Power Factor Total;;1.0;0.0;4Q_FP_PF;4
 146;3;3110;F32;;Frequency;;1.0;0.0;Hz;4
 147;3;3192;F32;;Power Factor Total IEC;;1.0;0.0;;4

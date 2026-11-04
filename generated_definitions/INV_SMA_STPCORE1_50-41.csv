@@ -4,7 +4,7 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 3;3;30005;U32;;Serial number;SERIAL;1.0;0.0;;4
 4;3;30051;U32;;Device class;;1.0;0.0;;4
 5;3;30053;U32;;Numerical identification of the device type;;1.0;0.0;;4
-6;3;30055;U32;;Manufacturer specification;MANUFACTURER;1.0;0.0;;4
+6;3;30055;U32;;Manufacturer specification;;1.0;0.0;;4
 7;3;30057;U32;;Serial number_1;;1.0;0.0;;4
 8;3;30059;U32;;Software package;;1.0;0.0;;4
 9;3;30201;U32;;Status of the device;;1.0;0.0;;4
@@ -14,17 +14,17 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 13;3;31435;I32;;Metering_Courant du reseau phase L1_AC;;0.001;0.0;A;4
 14;3;31437;I32;;Metering_Courant du reseau phase L2_AC;;0.001;0.0;A;4
 15;3;31439;I32;;Metering_Courant du reseau phase L3_AC;;0.001;0.0;A;4
-16;3;31447;U32;;Metering_Frequence du reseau_AC;FREQ;0.01;0.0;Hz;4
+16;3;31447;U32;;Metering_Frequence du reseau_AC;;0.01;0.0;Hz;4
 17;3;31253;U32;;Metering_Tension du reseau phase L1_AC;;0.01;0.0;;4
 18;3;31255;U32;;Metering_Tension du reseau phase L2_AC;;0.01;0.0;;4
 19;3;31257;U32;;Metering_Tension du reseau phase L3_AC;;0.01;0.0;;4
-20;3;31449;U32;;Metering_Tension de reseau phase L3 contre L1_AC;U_AC_3;0.01;0.0;;4
-21;3;31451;U32;;Metering_Tension de reseau phase L1 contre L2_AC;U_AC_1;0.01;0.0;;4
-22;3;31453;U32;;Metering_Tension de reseau phase L2 contre L3_AC;U_AC_2;0.01;0.0;;4
+20;3;31449;U32;;Metering_Tension de reseau phase L3 contre L1_AC;;0.01;0.0;;4
+21;3;31451;U32;;Metering_Tension de reseau phase L1 contre L2_AC;;0.01;0.0;;4
+22;3;31453;U32;;Metering_Tension de reseau phase L2 contre L3_AC;;0.01;0.0;;4
 23;3;31433;U32;;Metering_Facteur de dephasage_AC;;0.01;0.0;;4
 24;3;31499;I32;;Metering_Facteur de dephasage EEI_AC;;0.001;0.0;;4
-25;3;31455;I32;;Metering_Puissance apparente_AC;S_AC;1.0;0.0;;4
-26;3;31277;I32;;Metering_Puissance reactive_AC;Q_AC;1.0;0.0;;4
+25;3;31455;I32;;Metering_Puissance apparente_AC;;1.0;0.0;;4
+26;3;31277;I32;;Metering_Puissance reactive_AC;;1.0;0.0;;4
 27;3;30581;U32;;Metering_Énergie absorbee au point raccordement du reseau_AC;;1.0;0.0;;4
 28;3;30583;U32;;Metering_Rendement total_AC;;1.0;0.0;;4
 29;3;30865;I32;;Metering_Puissance absorbee_AC;;1.0;0.0;;4
@@ -59,10 +59,10 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 58;3;30795;U32;;Somme courant toutes phases;;0.001;0.0;;4
 59;3;31221;I32;;Facteur de dephasage EEI;;0.001;0.0;;4
 60;3;30949;U32;;Facteur de decalage;;0.001;0.0;;4
-61;3;30823;U32;;Type d'excitation du cos phi;PF;1.0;0.0;;4
-62;3;31497;I32;;Puissance reactive;;1.0;0.0;;4
-63;3;30813;I32;;Puissance apparente;;1.0;0.0;;4
-64;3;30775;I32;;Puissance;P_AC;1.0;0.0;;4
+61;3;30823;U32;;Type d'excitation du cos phi;;1.0;0.0;;4
+62;3;31497;I32;;Puissance reactive;Q_AC;1.0;0.0;;4
+63;3;30813;I32;;Puissance apparente;S_AC;1.0;0.0;;4
+64;3;30775;I32;;Puissance;;1.0;0.0;;4
 65;3;30777;I32;;Puissance L1;;1.0;0.0;;4
 66;3;30779;I32;;Puissance L2;;1.0;0.0;;4
 67;3;30781;I32;;Puissance L3;;1.0;0.0;;4
@@ -79,15 +79,15 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 78;3;30975;I32;;Tension du circuit intermediaire;;0.01;0.0;;4
 79;3;30217;U32;;Etat du relais reseau;;1.0;0.0;;4
 80;3;30881;U32;;Connexion reseau de l'installation;;1.0;0.0;;4
-81;3;31793;I32;;Entree courant DC_1;I_DC;0.001;0.0;;4
+81;3;31793;I32;;Entree courant DC_1;;0.001;0.0;;4
 82;3;31795;I32;;Entree courant DC_2;;0.001;0.0;;4
 83;3;31797;I32;;Entree courant DC_3;;0.001;0.0;;4
 84;3;31799;I32;;Entree courant DC_4;;0.001;0.0;;4
 85;3;31801;I32;;Entree courant DC_5;;0.001;0.0;;4
 86;3;31803;I32;;Entree courant DC_6;;0.001;0.0;;4
 87;3;30769;I32;;Entree courant DC_7;;0.001;0.0;;4
-88;3;30771;I32;;Entree tension DC_1;U_DC;0.01;0.0;;4
-89;3;30773;I32;;Entree puissance DC_1;P_DC;1.0;0.0;;4
+88;3;30771;I32;;Entree tension DC_1;;0.01;0.0;;4
+89;3;30773;I32;;Entree puissance DC_1;;1.0;0.0;;4
 90;3;30957;I32;;Entree courant DC_8;;0.001;0.0;;4
 91;3;30959;I32;;Entree tension DC_2;;0.01;0.0;;4
 92;3;30961;I32;;Entree puissance DC_2;;1.0;0.0;;4

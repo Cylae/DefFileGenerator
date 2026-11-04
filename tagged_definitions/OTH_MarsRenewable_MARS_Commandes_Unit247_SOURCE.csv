@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;MarsRenewable;MARS_Commandes_Unit247_SOURCE;;;;;;;
+modbusRTU;Other;MarsRenewable;MARS_Commandes_Unit247_SOURCE;;;;;;;
 1;4;0;U16;;EMS Working Mode;;1.0;0.0;247;4
 2;4;1;U16;;Remote Control Duration;;1.0;0.0;247;4
 3;4;3;U16;;Energy Storage Working Mode;;1.0;0.0;247;4

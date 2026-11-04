@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
+modbusRTU;Inverter;SMA;SHP-xxx-21;;;;;;;
 1;3;40187;U32;;Capacite nominale batterie;;1;0;Wh;1
 2;3;32251;U32;;Courant de charge maximum;;0.001;0;A;4
 3;3;31061;U32;;Commande de la charge batterie disponible par comm;;1;0;;4
@@ -7,7 +7,7 @@
 6;3;30847;U32;;Capacite de la batterie actuelle;;1;0;Wh;4
 7;3;32257;U32;;Courant de decharge maximum;;0.001;0;A;4
 8;3;32245;U32;;Tension de fin de decharge;;0.01;0;V;4
-9;3;30849;I32;;Temperature batterie;;0.1;0;C;4
+9;3;30849;I32;;Temperature batterie;TEMP;0.1;0;C;4
 10;3;31397;U64;;Chargement batterie;;1;0;Wh;4
 11;3;31401;U64;;Dechargement batterie;;1;0;Wh;4
 12;3;41363;U32;;Energie de charge;;1;0;Wh;1

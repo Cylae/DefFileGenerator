@@ -9,7 +9,7 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 8;3;30068;I64;;Accumulated discharged electricity;;0.01;0;kWh;4
 9;3;38000;U32;;Current annual energy yield;;0.01;0;kWh;4
 10;3;38002;U32;;Current Monthly Energy Yield;;0.01;0;kWh;4
-11;3;38004;U32;;Current daily energy yield;E_DAY;0.01;0;kWh;4
+11;3;38004;U32;;Current daily energy yield;;0.01;0;kWh;4
 12;3;38006;U32;;Current Hourly Energy Yield;;0.01;0;kWh;4
 13;3;38008;U32;;Statistical time of current annual energy yield;;1;0;s;4
 14;3;38010;U32;;Current Monthly Energy Yield Statistics Time;;1;0;s;4
@@ -30,8 +30,8 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 29;3;40197;U16;;PV inverter startup;;1;0;;0
 30;3;40198;U16;;ESS shutdown;;1;0;;0
 31;3;40199;U16;;ESS startup;;1;0;;0
-32;3;40200;U16;;Startup;CMD_ON;1;0;;0
-33;3;40201;U16;;Shutdown;CMD_OFF;1;0;;0
+32;3;40200;U16;;Startup;;1;0;;0
+33;3;40201;U16;;Shutdown;;1;0;;0
 34;3;40202;U16;;Startup/Shutdown_1;;1;0;;0
 35;3;40203;U16;;Startup/Shutdown_2;;1;0;;0
 36;3;40204;U16;;Transfer trip;;1;0;;1
@@ -57,20 +57,20 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 56;3;40404;I32;;Minimum reactive PV power adjustment value;;0.001;0;kVar;4
 57;3;40406;U32;;Maximum reactive ESS power adjustment value;;0.001;0;kVar;4
 58;3;40408;I32;;Minimum reactive ESS power adjustment value;;0.001;0;kVar;4
-59;3;40412;I32;;Minimum active power adjustment value;P_AC;0.1;0;kW;4
+59;3;40412;I32;;Minimum active power adjustment value;;0.1;0;kW;4
 60;3;40420;I32;;Active power adjustment_1;;0.1;0;kW;1
-61;3;40422;I32;;Reactive power adjustment_1;Q_AC;0.1;0;kVar;1
+61;3;40422;I32;;Reactive power adjustment_1;;0.1;0;kVar;1
 62;3;40424;U32;;Active power adjustment_2;;0.1;0;kW;1
 63;3;40426;I32;;Reactive power adjustment_2;;0.1;0;kVar;1
 64;3;40428;I16;;Active power adjustment in percentage;;0.1;0;%;1
-65;3;40429;I16;;Power factor adjustment;PF;0.001;0;;1
+65;3;40429;I16;;Power factor adjustment;;0.001;0;;1
 66;3;40430;I32;;Active power adjustment (highest-priority);;0.001;0;kW;1
-67;3;40432;I32;;Reactive power adjustment (highest-priority);CMD_Q_AC_SET_ABS;0.001;0;kVar;1
+67;3;40432;I32;;Reactive power adjustment (highest-priority);;0.001;0;kVar;1
 68;3;40438;U32;;Power supply from grid today;;0.01;0;kWh;4
 69;3;40464;I64;;Total power supply from grid;;0.01;0;kWh;4
 70;3;40468;U32;;Energy charged today;;0.01;0;kWh;4
 71;3;40470;U32;;Energy discharged today;;0.01;0;kWh;4
-72;3;40472;I64;;Total energy charged;E_TOT;0.01;0;kWh;4
+72;3;40472;I64;;Total energy charged;;0.01;0;kWh;4
 73;3;40476;I64;;Total energy discharged;;0.01;0;kWh;4
 74;3;40480;U32;;Chargeable capacity;;0.001;0;kWh;4
 75;3;40482;U32;;Dischargeable capacity;;0.001;0;kWh;4
@@ -87,8 +87,8 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 86;3;40518;U32;;Rated ESS capacity in Ah;;0.1;0;Ah;4
 87;3;40521;U32;;Input power;P_DC;0.001;0;kW;4
 88;3;40523;U32;;CO2 reduced_1;;0.1;0;kg;4
-89;3;40525;I32;;Active power;;0.001;0;kW;4
-90;3;40532;I16;;Power factor;;0.001;0;;4
+89;3;40525;I32;;Active power;P_AC;0.001;0;kW;4
+90;3;40532;I16;;Power factor;PF;0.001;0;;4
 91;3;40535;U16;;Array in operation;;1;0;;4
 92;3;40536;U16;;Array shut down;;1;0;;4
 93;3;40537;U16;;PV inverter in operation;;1;0;;4
@@ -98,7 +98,7 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 97;3;40541;U16;;Plant status_1;;1;0;;4
 98;3;40542;U16;;Plant status_2;;1;0;;4
 99;3;40543;U16;;Plant status_3;;1;0;;4
-100;3;40544;I32;;Reactive power;;0.001;0;kVar;4
+100;3;40544;I32;;Reactive power;Q_AC;0.001;0;kVar;4
 101;3;40550;U64;;CO2 reduced_2;;0.01;0;kg;4
 102;3;40554;I32;;DC current 2;;0.1;0;A;4
 103;3;40560;U32;;Total energy yield;;0.1;0;kWh;4
@@ -108,9 +108,9 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 107;3;40567;U16;;Plant status_5;;1;0;;4
 108;3;40568;U32;;Active alarm sequence number;;1;0;;4
 109;3;40570;U32;;Historical alarm sequence number;;1;0;;4
-110;3;40572;I16;;Phase A current of grid;I_AC_1;1;0;A;4
-111;3;40573;I16;;Phase B current of grid;I_AC_2;1;0;A;4
-112;3;40574;I16;;Phase C current of grid;I_AC_3;1;0;A;4
+110;3;40572;I16;;Phase A current of grid;;1;0;A;4
+111;3;40573;I16;;Phase B current of grid;;1;0;A;4
+112;3;40574;I16;;Phase C current of grid;;1;0;A;4
 113;3;40575;U16;;A-B line voltage of grid;;0.1;0;V;4
 114;3;40576;U16;;B-C line voltage of grid;;0.1;0;V;4
 115;3;40577;U16;;C-A line voltage of grid;;0.1;0;V;4
@@ -121,7 +121,7 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 120;3;40697;I32;;Maximum active power adjustment value;;0.1;0;kW;4
 121;3;40699;U16;;Locking status;;1;0;;4
 122;3;40700;U16;;DI group state;;1;0;;4
-123;3;40713_20;STRING;;Equipment serial number (ESN);SERIAL;1;0;;4
+123;3;40713_20;STRING;;Equipment serial number (ESN);;1;0;;4
 124;3;40723;U16;;System reset;;1;0;;0
 125;3;40724;U16;;Fast device access;;1;0;;0
 126;3;40725_22;RAW;;Device operation;;1;0;;0
@@ -135,7 +135,7 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 134;3;41124;U16;;CO2 emission reduction coefficient;;0.001;0;kg/kWh;1
 135;3;41889;U16;;Active power control mode_2;;1;0;;1
 136;3;41934;U32;;PV module capacity;;0.001;0;kW;4
-137;3;41936;U32;;Rated plant capacity;P_RATED;0.001;0;kW;4
+137;3;41936;U32;;Rated plant capacity;;0.001;0;kW;4
 138;3;41938;U32;;Total rated capacity of grid-tied inverters;;0.001;0;kW;4
 139;3;41940;U32;;Conversion coefficient;;0.001;0;;4
 140;3;41942;U16;;Communication status;;1;0;;4
@@ -161,7 +161,7 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 160;3;44365;U16;;PV array PCS working mode_2;;1;0;;4
 161;3;44365;U16;;PCS working mode;;1;0;;0
 162;3;44366;I16;;Voltage adjustment value for VSG synchronous control;;0.01;0;%;1
-163;3;44367;I16;;Frequency adjustment value for VSG synchronous control;FREQ;0.01;0;%;1
+163;3;44367;I16;;Frequency adjustment value for VSG synchronous control;;0.01;0;%;1
 164;3;44373;U16;;Power on the PCS of the Subarray;;1;0;;0
 165;3;44374;U16;;Shut down the PCS of the Subarray;;1;0;;0
 166;3;44375;U16;;Subarray PV inverter microgrid adaptability;;1;0;;0

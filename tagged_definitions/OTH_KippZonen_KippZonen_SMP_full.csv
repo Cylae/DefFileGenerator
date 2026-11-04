@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;KippZonen;KippZonen_SMP_full;;;;;;;
+modbusRTU;Other;KippZonen;KippZonen_SMP_full;;;;;;;
 1;4;0;U16;;IO_DEVICE_TYPE;;1.0;0.0;;4
 2;4;1;U16;;IO_DATAMODEL_VERSION;MODEL;1.0;0.0;;4
 3;4;2;U16;;IO_OPERATIONAL_MODE;;1.0;0.0;;4

@@ -21,12 +21,12 @@ modbusRTU;Meter;Socomec;Countis E5x;;;;;;;
 20;3;782;U32;;Simple voltage V1 CT VT;;0.01;0;V;4
 21;3;784;U32;;Simple voltage V2 CT VT;;0.01;0;V;4
 22;3;786;U32;;Simple voltage V3 CT VT;;0.01;0;V;4
-23;3;790;I32;;Total Active Power P CT VT;P_AC;0.1;0;W;4
-24;3;792;I32;;Total Reactive Power Q CT VT;Q_AC;0.1;0;var;4
-25;3;794;U32;;Total Apparent Power S CT VT;S_AC;0.1;0;VA;4
-26;3;796;I32;;Total Power Factor PF CT VT;PF;0.001;0;;4
+23;3;790;I32;;Total Active Power P CT VT;;0.1;0;W;4
+24;3;792;I32;;Total Reactive Power Q CT VT;;0.1;0;var;4
+25;3;794;U32;;Total Apparent Power S CT VT;;0.1;0;VA;4
+26;3;796;I32;;Total Power Factor PF CT VT;;0.001;0;;4
 27;3;844;U32;;P plus AVG MAX;;0.1;0;W;4
-28;3;856;U32;;Active Energy Total Legacy;E_TOT;1;0;kWh;4
+28;3;856;U32;;Active Energy Total Legacy;;1;0;kWh;4
 29;3;858;U32;;Reactive Energy Total Legacy;;1;0;kvarh;4
 30;3;1024_1;U8;;Reset Action;;1;0;;1
 31;3;1792_1;U8;;Current I1 No Tx;;0.001;0;A;4
@@ -86,7 +86,7 @@ modbusRTU;Meter;Socomec;Countis E5x;;;;;;;
 85;3;50030_8;STRING;;Product VLO;;1;0;;1
 86;3;50034_8;STRING;;Customization VLO;;1;0;;1
 87;3;50038_8;STRING;;SW Base VLO;;1;0;;1
-88;3;50042_16;STRING;;Vendor Name;;1;0;;1
+88;3;50042_16;STRING;;Vendor Name;MANUFACTURER;1;0;;1
 89;3;50050_16;STRING;;Product Name;;1;0;;1
 90;3;50058_16;STRING;;Extended Name;;1;0;;1
 91;3;50512;U32;;Hour Meter;;0.01;0;h;4
@@ -99,22 +99,22 @@ modbusRTU;Meter;Socomec;Countis E5x;;;;;;;
 98;3;50528;U32;;Current I1;;0.001;0;A;4
 99;3;50530;U32;;Current I2;;0.001;0;A;4
 100;3;50532;U32;;Current I3;;0.001;0;A;4
-101;3;50536;I32;;Total Active Power P;;0.1;0;W;4
+101;3;50536;I32;;Total Active Power P;P_AC;0.1;0;W;4
 102;3;50538;I32;;Total Reactive Power Q;;0.1;0;var;4
 103;3;50540;U32;;Total Apparent Power S;;0.1;0;VA;4
 104;3;50542;I32;;Power Factor PF;;0.001;0;;4
 105;3;50544;I32;;Active Power phase 1 P1;P_AC_1;0.1;0;W;4
 106;3;50546;I32;;Active Power phase 2 P2;P_AC_2;0.1;0;W;4
 107;3;50548;I32;;Active Power phase 3 P3;P_AC_3;0.1;0;W;4
-108;3;50550;I32;;Reactive Power phase 1 Q1;Q_AC_1;0.1;0;var;4
-109;3;50552;I32;;Reactive Power phase 2 Q2;Q_AC_2;0.1;0;var;4
-110;3;50554;I32;;Reactive Power phase 3 Q3;Q_AC_3;0.1;0;var;4
-111;3;50556;U32;;Apparent Power phase 1 S1;S_AC_1;0.1;0;VA;4
-112;3;50558;U32;;Apparent Power phase 2 S2;S_AC_2;0.1;0;VA;4
-113;3;50560;U32;;Apparent Power phase 3 S3;S_AC_3;0.1;0;VA;4
-114;3;50562;I32;;Power Factor phase 1 PF1;PF_1;0.001;0;;4
-115;3;50564;I32;;Power Factor phase 2 PF2;PF_2;0.001;0;;4
-116;3;50566;I32;;Power Factor phase 3 PF3;PF_3;0.001;0;;4
+108;3;50550;I32;;Reactive Power phase 1 Q1;;0.1;0;var;4
+109;3;50552;I32;;Reactive Power phase 2 Q2;;0.1;0;var;4
+110;3;50554;I32;;Reactive Power phase 3 Q3;;0.1;0;var;4
+111;3;50556;U32;;Apparent Power phase 1 S1;;0.1;0;VA;4
+112;3;50558;U32;;Apparent Power phase 2 S2;;0.1;0;VA;4
+113;3;50560;U32;;Apparent Power phase 3 S3;;0.1;0;VA;4
+114;3;50562;I32;;Power Factor phase 1 PF1;;0.001;0;;4
+115;3;50564;I32;;Power Factor phase 2 PF2;;0.001;0;;4
+116;3;50566;I32;;Power Factor phase 3 PF3;;0.001;0;;4
 117;3;50770;U32;;Total Positive Active Energy Ea+;;1;0;kWh;4
 118;3;50772;U32;;Total Positive Reactive Energy Er+;;1;0;kvarh;4
 119;3;50774;U32;;Total Apparent Energy Es;;1;0;kVAh;4

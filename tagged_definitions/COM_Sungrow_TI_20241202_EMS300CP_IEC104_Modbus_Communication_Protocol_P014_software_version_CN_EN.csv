@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_IEC104&Mo;;;;;;;
+modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_IEC104&Mo;;;;;;;
 1;4;1;U16;;"充电完成
 Charging Complete";;1.0;0.0;;4
 2;4;2;U16;;"放电完成

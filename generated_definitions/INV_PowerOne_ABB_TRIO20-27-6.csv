@@ -4,10 +4,10 @@ modbusRTU;Inverter;ABB;TRIO-20.0-27_6-TL-OUTD;;;;;;;
 3;3;189;U16;;Power ramping interval;;1.000000;0.000000;s;4
 4;3;190;U16;;Dynamic mode - Timeout;;1.000000;0.000000;min;4
 5;3;197;U16;;Set transient options;;1.000000;0.000000;;4
-6;3;199;F32_W;;Dynamic Mode - Reactive Power management by fixed PF;Q_AC;1.000000;0.000000;;4
+6;3;199;F32_W;;Dynamic Mode - Reactive Power management by fixed PF;;1.000000;0.000000;;4
 7;3;201;F32_W;;Permanent Mode - Reactive Power management by fixed PF;;1.000000;0.000000;;4
 8;3;204;U16;;Permanent Mode - Reset PF to 1;;1.000000;0.000000;;4
-9;3;209;U16;;Dynamic Mode - Active Power management;P_AC;1.000000;0.000000;%;4
+9;3;209;U16;;Dynamic Mode - Active Power management;;1.000000;0.000000;%;4
 10;3;211;U16;;Permanent Mode - Active Power management;;1.000000;0.000000;%;4
 11;3;214;U16;;Permanent Mode - Reset Active Power to 100% of Nominal Power (PNOM);;1.000000;0.000000;;4
 12;3;219;F32_W;;Dynamic Mode - Reactive power management;;1.000000;0.000000;;4
@@ -18,8 +18,8 @@ modbusRTU;Inverter;ABB;TRIO-20.0-27_6-TL-OUTD;;;;;;;
 17;3;299;U16;;Heartbeat counter;;1.000000;0.000000;;4
 18;3;300;F32_W;;Inverter - Grid Reactive Power;;1.000000;0.000000;VAR;4
 19;3;302;F32_W;;Inverter - Grid Voltage;;1.000000;0.000000;V;4
-20;3;304;F32_W;;Inverter - Grid Power;;0.001;0.000000;kW;4
-21;3;306;F32_W;;Inverter - Grid Current;;1.000000;0.000000;A;4
+20;3;304;F32_W;;Inverter - Grid Power;P_AC;0.001;0.000000;kW;4
+21;3;306;F32_W;;Inverter - Grid Current;I_AC;1.000000;0.000000;A;4
 22;3;500;U16;;Set unit of registers 0507, 0508, 0511 and 0512 (% or %/1000);;1.000000;0.000000;;4
 23;3;501;U16;;Set active mode (permanent or dynamic);;1.000000;0.000000;;4
 24;3;502;U16;;Power ramping interval_1;CMD_RAMP_TIME_S;1.000000;0.000000;s;4
@@ -37,10 +37,10 @@ modbusRTU;Inverter;ABB;TRIO-20.0-27_6-TL-OUTD;;;;;;;
 36;4;99;U16;;Inverter - Start register;;1.000000;0.000000;;4
 37;4;100;U16;;Inverter - Map size;;1.000000;0.000000;;4
 38;4;101;U16;;Inverter - Map Version;;1.000000;0.000000;;4
-39;4;102;U16;;Inverter address;UNIT_ID;1.000000;0.000000;;4
+39;4;102;U16;;Inverter address;;1.000000;0.000000;;4
 40;4;103_6;STRING;;Inverter - Serial number;SERIAL;1.000000;0.000000;;4
 41;4;109_6;STRING;;Inverter - Part number;;1.000000;0.000000;;4
-42;4;115;U16;;Inverter - Model identifier;MODEL;1.000000;0.000000;;4
+42;4;115;U16;;Inverter - Model identifier;;1.000000;0.000000;;4
 43;4;116;U16;;Inverter - Country/Grid standard;;1.000000;0.000000;;4
 44;4;117;U16;;Inverter -Transformer type;;1.000000;0.000000;;4
 45;4;118;U16;;Inverter - Inverter type;;1.000000;0.000000;;4
@@ -70,11 +70,11 @@ modbusRTU;Inverter;ABB;TRIO-20.0-27_6-TL-OUTD;;;;;;;
 69;4;157;F32_W;;Inverter - Input 2 Power;;1.000000;0.000000;W;4
 70;4;160;F32_W;;Inverter - Input 2 Voltage;;1.000000;0.000000;V;4
 71;4;161;F32_W;;Inverter - Input 2 Current;;1.000000;0.000000;A;4
-72;4;163;F32_W;;Inverter - Inverter Temperature;TEMP;1.000000;0.000000;Degr.Celsius;4
+72;4;163;F32_W;;Inverter - Inverter Temperature;;1.000000;0.000000;Degr.Celsius;4
 73;4;165;F32_W;;Inverter - Booster Temperature;;1.000000;0.000000;Degr.Celsius;4
-74;4;167;F32_W;;Inverter - Isolation Resistance;;1.000000;0.000000;Mohm;4
+74;4;167;F32_W;;Inverter - Isolation Resistance;R_ISO;1.000000;0.000000;Mohm;4
 75;4;169;F32_W;;Inverter - Wind Generator Frequency;;1.000000;0.000000;Hz;4
-76;4;171;F32_W;;Inverter - Cos(phi);PF;1.000000;0.000000;Cosphi;4
+76;4;171;F32_W;;Inverter - Cos(phi);;1.000000;0.000000;Cosphi;4
 77;4;173;U16;;Inverter - Presence - Indicates status of board to inverter;;1.000000;0.000000;;4
 78;4;249;U16;;Auxiliary Boards - Start register;;1.000000;0.000000;;4
 79;4;250;U16;;Auxiliary Board - Map size;;1.000000;0.000000;;4

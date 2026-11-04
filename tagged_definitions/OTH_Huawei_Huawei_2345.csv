@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Huawei;Huawei_2345;;;;;;;
+modbusRTU;Other;Huawei;Huawei_2345;;;;;;;
 1;4;30000;U16;;1  Model Name;MODEL;1.0;0.0;;4
 2;4;30015;U16;;2  SN;SERIAL;1.0;0.0;;4
 3;4;30025;U16;;3  PN;;1.0;0.0;;4

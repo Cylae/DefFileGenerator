@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;SIEL;10 TL SOLAR INVERTER;;;;;;;
+ModbusRTU;Inverter;SIEL;10 TL SOLAR INVERTER;;;;;;;
 1;3;1_0_16;BITS;;Statuses of alarms 1;;1;0;;8
 2;3;2_0_16;BITS;;Statuses of alarms 2;;1;0;;8
 3;3;3;I16;;VinRN;;1;0;V;4

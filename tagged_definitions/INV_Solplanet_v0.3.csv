@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Solplanet;V1;;;;;;;
+modbusRTU;Inverter;Solplanet;V1;;;;;;;
 1;4;1000_2;STRING;;Device Type;MODEL;1;0;;4
 2;4;1001;U16;;Modbus Address RO;UNIT_ID;1;0;;4
 3;4;1002_32;STRING;;Serial Number;SERIAL;1;0;;4
@@ -114,7 +114,7 @@
 113;4;1387;U16;;Warning Code 10;;1;0;;4
 114;4;1388;U16;;ISO Measurement;;1;0;kOhm;4
 115;4;1390;U16;;Grid Conn Status;;1;0;;4
-116;4;1391;U32;;Total PV Power;;1;0;W;4
+116;4;1391;U32;;Total PV Power;P_DC;1;0;W;4
 117;4;1600;U32;;Total PV Power Bat;;1;0;W;4
 118;4;1602;U32;;PV Daily Yield;;0.1;0;kWh;4
 119;4;1604;U32;;PV Total Yield;;0.1;0;kWh;4

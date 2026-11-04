@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;SIEL;WINDWAVE;;;;;;;
+Modbus;Inverter;SIEL;WINDWAVE;;;;;;;
 1;4;1_0_16;BITS;;Statuses of alarms 1;;1.0;0.0;;8
 2;4;2_0_16;BITS;;Statuses of alarms 2;;1.0;0.0;;8
 3;4;3;I16;;VinRN;;1.0;0.0;V;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Schneider;SCHNEIDER_SEPAM_S48;;;;;;;
+modbusRTU;Other;Schneider;SCHNEIDER_SEPAM_S48;;;;;;;
 1;4;275;U16;;Courant phase I1;;1.0;0.0;A;4
 2;4;276;U16;;Courant phase I2;;1.0;0.0;A;4
 3;4;277;U16;;Courant phase I3;;1.0;0.0;A;4
@@ -21,8 +21,8 @@
 20;4;294;U16;;Tension inverse Vi;;1.0;0.0;V;4
 21;4;295;U16;;Frequence;FREQ;1.0;0.0;Hz;4
 22;4;296;U16;;Puissance active P;P_AC;1.0;0.0;kW;4
-23;4;297;U16;;Puissance reactive Q;ReactivePowSum;1.0;0.0;kvar;4
-24;4;298;U16;;Puissance apparente S;ApparentPowSum;1.0;0.0;kVA;4
+23;4;297;U16;;Puissance reactive Q;;1.0;0.0;kvar;4
+24;4;298;U16;;Puissance apparente S;;1.0;0.0;kVA;4
 25;4;299;U16;;Maximetre puissance active Pm;;1.0;0.0;kW;4
 26;4;300;U16;;Maximetre puissance reactive Qm;Q_AC;1.0;0.0;kvar;4
 27;4;301;U16;;Facteur de puissance cosphi;PF;1.0;0.0;;4

@@ -6,27 +6,27 @@ ModbusRTU;Meter;Socomec;Diris A10;;;;;;;
 5;3;50520;U32;;Simple voltage : V1;;100;0.0;V;4
 6;3;50522;U32;;Simple voltage : V2;;100;0.0;V;4
 7;3;50524;U32;;Simple voltage : V3;;100;0.0;V;4
-8;3;50526;U32;;Frequency : F;FREQ;100;0.0;Hz;4
+8;3;50526;U32;;Frequency : F;;100;0.0;Hz;4
 9;3;50528;U32;;Current I1;;1000;0.0;A;4
 10;3;50530;U32;;Current I2;;1000;0.0;A;4
 11;3;50532;U32;;Current I3;;1000;0.0;A;4
 12;3;50534;U32;;Neutral Current : In;;1000;0.0;A;4
 13;3;50536;I32;;Active Power +/- : P;P_AC;0.1;0.0;W;4
-14;3;50538;I32;;Reactive Power +/- : Q;Q_AC;0.1;0.0;var;4
-15;3;50540;U32;;Apparent Power : S;S_AC;0.1;0.0;VA;4
-16;3;50542;I32;;Power Factor : -: leading et + : lagging : PF;PF;1000;0.0;;4
+14;3;50538;I32;;Reactive Power +/- : Q;;0.1;0.0;var;4
+15;3;50540;U32;;Apparent Power : S;;0.1;0.0;VA;4
+16;3;50542;I32;;Power Factor : -: leading et + : lagging : PF;;1000;0.0;;4
 17;3;50544;I32;;Active Power phase 1 +/- : P1;P_AC_1;0.1;0.0;W;4
 18;3;50546;I32;;Active Power phase 2 +/- : P2;P_AC_2;0.1;0.0;W;4
 19;3;50548;I32;;Active Power phase 3 +/- : P3;P_AC_3;0.1;0.0;W;4
-20;3;50550;I32;;Reactive Power phase 1 +/- : Q1;Q_AC_1;0.1;0.0;var;4
-21;3;50552;I32;;Reactive Power phase 2 +/- : Q2;Q_AC_2;0.1;0.0;var;4
-22;3;50554;I32;;Reactive Power phase 3 +/- : Q3;Q_AC_3;0.1;0.0;var;4
-23;3;50556;U32;;Apparent Power phase 1 : S1;S_AC_1;0.1;0.0;VA;4
-24;3;50558;U32;;Apparent Power phase 2 : S2;S_AC_2;0.1;0.0;VA;4
-25;3;50560;U32;;Apparent Power phase 3 : S3;S_AC_3;0.1;0.0;VA;4
-26;3;50562;I32;;Power Factor phase 1 -: leading and + : lagging : PF1;PF_1;1000;0.0;;4
-27;3;50564;I32;;Power Factor phase 2 -: leading and + : lagging : PF2;PF_2;1000;0.0;;4
-28;3;50566;I32;;Power Factor phase 3 -: leading and + : lagging : PF3;PF_3;1000;0.0;;4
+20;3;50550;I32;;Reactive Power phase 1 +/- : Q1;;0.1;0.0;var;4
+21;3;50552;I32;;Reactive Power phase 2 +/- : Q2;;0.1;0.0;var;4
+22;3;50554;I32;;Reactive Power phase 3 +/- : Q3;;0.1;0.0;var;4
+23;3;50556;U32;;Apparent Power phase 1 : S1;;0.1;0.0;VA;4
+24;3;50558;U32;;Apparent Power phase 2 : S2;;0.1;0.0;VA;4
+25;3;50560;U32;;Apparent Power phase 3 : S3;;0.1;0.0;VA;4
+26;3;50562;I32;;Power Factor phase 1 -: leading and + : lagging : PF1;;1000;0.0;;4
+27;3;50564;I32;;Power Factor phase 2 -: leading and + : lagging : PF2;;1000;0.0;;4
+28;3;50566;I32;;Power Factor phase 3 -: leading and + : lagging : PF3;;1000;0.0;;4
 29;3;50780;U32;;Partial Positive Active Energy: Ea+;;0.001;0.0;Wh;4
 30;3;50782;U32;;Partial Positive Reactive Energy: Er+;;0.001;0.0;varh;4
 31;3;51070;U32;;Max/avg I1;;1000;0.0;A;4
@@ -63,7 +63,7 @@ ModbusRTU;Meter;Socomec;Diris A10;;;;;;;
 62;3;51305;I16;;Power Factor phase 1 -: leading and + : lagging : PF1_1;;1000;0.0;;4
 63;3;51306;I16;;Power Factor phase 2 -: leading and + : lagging : PF2_1;;1000;0.0;;4
 64;3;51307;I16;;Power Factor phase 3 -: leading and + : lagging : PF3_1;;1000;0.0;;4
-65;3;51311;U16;;Total Positive Active Energy (no resetable) : Ea+;E_TOT;1.0E-6;0.0;Wh;4
+65;3;51311;U16;;Total Positive Active Energy (no resetable) : Ea+;;1.0E-6;0.0;Wh;4
 66;3;51313;U16;;Total Negative Active Energy (no resetable) : Er +;;1.0E-6;0.0;Wh;4
 67;3;51536;U16;;thd U12;;10;0.0;Percent;4
 68;3;51537;U16;;thd U23;;10;0.0;Percent;4

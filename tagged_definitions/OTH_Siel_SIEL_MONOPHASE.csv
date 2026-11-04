@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Siel;SIEL_MONOPHASE;;;;;;;
+modbusRTU;Other;Siel;SIEL_MONOPHASE;;;;;;;
 1;4;1;U16;;Statuses of alarms1;;1.0;0.0;;8
 2;4;2;U16;;Statuses of alarms2;;1.0;0.0;;8
 3;4;3;U16;;Main voltage;;1.0;0.0;V;4

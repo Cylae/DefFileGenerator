@@ -2,19 +2,19 @@ ModbusTCP;Other;SMA;ClusterController2
 1;3;30193;U32;;Heure du systme UTC (s);;1.0;0.0;s;4
 4;3;30775;I32;;Puissance totale active en W;;1.0;0.0;W;4
 5;3;30805;I32;;Puissance ractive totale en Var;;1.0;0.0;Var;4
-6;3;31235;U32;;Valeur de consigne de la puissance active Digital I/O (%);P_AC;0.01;0.0;%;4
+6;3;31235;U32;;Valeur de consigne de la puissance active Digital I/O (%);;0.01;0.0;%;4
 7;3;31237;U32;;Valeur de consigne de la puissance active entre analogique (%);;0.01;0.0;%;4
 8;3;31239;U32;;Valeur de consigne de la puissance active (%), consigne Modbus fournisseur d'lectricit;;0.01;0.0;%;4
 9;3;31241;U32;;Valeur de consigne de la puissance active (%), consigne Modbus distribution directe;;0.01;0.0;%;4
 10;3;31243;U32;;Valeur de consigne en rsultant (%) (valeur minimale obtenue  partir de toutes les valeurs de consigne);;0.01;0.0;%;4
 11;3;31249;I32;;Puissance active d'exportation rseau actuelle P en W ;;1.0;0.0;W;4
 12;3;31251;I32;;Puissance ractive d'exportation rseau actuelle Q en var;;1.0;0.0;VAr;4
-13;3;34609;I32;;Temprature ambiante (C);TEMP_AMB;0.1;0.0;C;4
+13;3;34609;I32;;Temprature ambiante (C);;0.1;0.0;C;4
 14;3;34611;I32;;Temprature ambiante mesure maximale (C);;0.1;0.0;C;4
 15;3;34613;U32;;Rayonnement total sur la surface du capteur (W/m);;1.0;0.0;W/m;4
 16;3;34615;U32;;Vitesse du vent (m/s);WIND_SPEED;0.1;0.0;m/s;0
 17;3;34617;U32;;Humidit de lair (%);;0.01;0.0;%;4
-18;3;34619;U32;;Pression dair (Pa);PRESSURE;0.01;0.0;Pa;4
+18;3;34619;U32;;Pression dair (Pa);;0.01;0.0;Pa;4
 19;3;34621;I32;;Temprature des panneaux photovoltaques (C);;0.1;0.0;C;4
 20;3;34623;U32;;Rayonnement total sur le capteur d'irradiation externe (W/m);;1.0;0.0;W/m;4
 21;3;34625;I32;;Temprature ambiante (F);;0.1;0.0;C;4

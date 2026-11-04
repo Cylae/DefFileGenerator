@@ -3,13 +3,13 @@ Modbus;Inverter;SMA;STPX;;;;;;;
 2;3;30003;U32;;Nameplate_SusyId;;1;0;;4
 3;3;30005;U32;;Nameplate_SerNum_1;SERIAL;1;0;;4
 4;3;30007;U32;;Modbus_data_change_count;;1;0;;4
-5;3;30051;U32;;Nameplate_MainModel;MODEL;1;0;;4
-6;3;30053;U32;;Nameplate_Model;;1;0;;4
+5;3;30051;U32;;Nameplate_MainModel;;1;0;;4
+6;3;30053;U32;;Nameplate_Model;MODEL;1;0;;4
 7;3;30055;U32;;Nameplate_Vendor;;1;0;;4
 8;3;30057;U32;;Nameplate_SerNum_2;;1;0;;4
 9;3;30059;U32;;Nameplate_PkgRev;;1;0;;4
 10;3;30193;U32;;UTC_system_time;;1;0;;4
-11;3;30201;U32;;Operation_Health;alarm;1;0;;4
+11;3;30201;U32;;Operation_Health;;1;0;;4
 12;3;30203;U32;;Operation_HealthStt_Ok_1;P_RATED;1;0;W;4
 13;3;30205;U32;;Operation_HealthStt_Wrn;;1;0;W;4
 14;3;30207;U32;;Operation_HealthStt_Alm;;1;0;W;4
@@ -22,7 +22,7 @@ Modbus;Inverter;SMA;STPX;;;;;;;
 21;3;30233;U32;;Inverter_WMax_1;;1;0;W;4
 22;3;30235;U32;;Operation_BckStt;;1;0;;4
 23;3;30237;U32;;GridMs_GriTyp;;1;0;;4
-24;3;30251;U32;;Operation_RstrLokStt;lock;1;0;;4
+24;3;30251;U32;;Operation_RstrLokStt;;1;0;;4
 25;3;30513;U64;;Metering_TotWhOut_1;;1;0;Wh;4
 26;3;30521;U64;;Metering_TotOpTms_1;;1;0;s;4
 27;3;30525;U64;;Metering_TotFeedTms_1;;1;0;s;4

@@ -1,4 +1,4 @@
-﻿ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
+ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 1;3;0_32;STRING;;Manufacturer Info;MANUFACTURER;1;0;;4
 2;3;16_32;STRING;;Model & Options;MODEL;1;0;;4
 3;3;32_8;STRING;;GP Code;;1;0;;4

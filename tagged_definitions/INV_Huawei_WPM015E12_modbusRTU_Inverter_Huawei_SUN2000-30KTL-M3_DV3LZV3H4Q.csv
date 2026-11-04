@@ -1,8 +1,8 @@
-﻿modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3;;;;;;;
+modbusRTU;Inverter;Huawei;SUN2000-30KTL-M3;;;;;;;
 1;3;30000_30;STRING;;Model Name;MODEL;1.000000;0.000000;;4
 2;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;;4
 3;3;30025_20;STRING;;PN;;1.000000;0.000000;;4
-4;3;30070;U16;;Model ID;ModelId;1.000000;0.000000;;4
+4;3;30070;U16;;Model ID;;1.000000;0.000000;;4
 5;3;30071;U16;;String Number;;1.000000;0.000000;;4
 6;3;30072;U16;;MPPT Number;;1.000000;0.000000;;4
 7;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
@@ -74,7 +74,7 @@
 73;3;32072;I32;;Current1_Ia;;0.001000;0.000000;A;4
 74;3;32074;I32;;Current2_Ib;;0.001000;0.000000;A;4
 75;3;32076;I32;;Current3_Ic;;0.001000;0.000000;A;4
-76;3;32078;I32;;Active power peak of current day;Watts;0.001000;0.000000;kW;4
+76;3;32078;I32;;Active power peak of current day;;0.001000;0.000000;kW;4
 77;3;32080;I32;;Active power;;1.000000;0.000000;W;4
 78;3;32082;I32;;Reactive_power;;1.000000;0.000000;Var;4
 79;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
@@ -86,7 +86,7 @@
 85;3;32090;U16;;Fault code;;1.000000;0.000000;;4
 86;3;32091;U32;;Startup time;;1.000000;0.000000;s;4
 87;3;32093;U32;;Shutdown time;;1.000000;0.000000;s;4
-88;3;32106;U32;;Energy_total;WattHours;0.010000;0.000000;kWh;4
+88;3;32106;U32;;Energy_total;E_TOT;0.010000;0.000000;kWh;4
 89;3;32114;U32;;Energy yield of current day;E_DAY;0.010000;0.000000;kWh;4
 90;3;32116;U32;;Energy yield of current month;;0.010000;0.000000;kWh;4
 91;3;32118;U32;;Energy yield of current year;;0.010000;0.000000;kWh;4
@@ -128,7 +128,7 @@
 127;3;37101;I32;;[Meter] Grid voltage (A phase);;0.100000;0.000000;V;4
 128;3;37103;I32;;[Meter] B phase voltage;;0.100000;0.000000;V;4
 129;3;37105;I32;;[Meter] C phase voltage;;0.100000;0.000000;V;4
-130;3;37107;I32;;[Meter] Grid current(A phase);;0.010000;0.000000;A;4
+130;3;37107;I32;;[Meter] Grid current(A phase);I_AC;0.010000;0.000000;A;4
 131;3;37109;I32;;[Meter] B phase current;I_AC_3;0.010000;0.000000;A;4
 132;3;37111;I32;;[Meter] C phase current;;0.010000;0.000000;A;4
 133;3;37113;I32;;[Meter] Active power;;1.000000;0.000000;W;4

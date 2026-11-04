@@ -17,12 +17,12 @@ Modbus;Meter;Carlo_Gavazzi;EM210
 16;3;37;I32;;volt;;0.1;0.0;V;4
 17;3;39;I32;;V l-l;;0.1;0.0;V;4
 18;3;41;I32;;power;P_AC;0.1;0.0;W;4
-19;3;43;I32;;apparent_power;;0.1;0.0;VA;4
+19;3;43;I32;;apparent_power;S_AC;0.1;0.0;VA;4
 20;3;45;I32;;reactive_power;Q_AC;0.1;0.0;VAR;4
 21;3;47;I16;;Pf l1;;0.001;0.0;;4
 22;3;48;I16;;Pf l2;;0.001;0.0;;4
 23;3;49;I16;;Pf l3;;0.001;0.0;;4
-24;3;50;I16;;Pf;;0.001;0.0;;4
+24;3;50;I16;;Pf;PF;0.001;0.0;;4
 25;3;51;I16;;Phase sequence;;0.001;0.0;;4
 26;3;52;I16;;frequency;FREQ;1.0;0.0;Hz;4
 27;3;53;I32_W;;energy_tot;;0.1;0.0;kWh;4
@@ -90,7 +90,7 @@ Modbus;Meter;Carlo_Gavazzi;EM210
 89;3;12;U16;;Carlo Gavazzi Controls identification code;;1.0;0.0;;4
 90;3;4099;U16;;Measuring system;;1.0;0.0;;4
 91;3;4100;U32;;Primary current;;1.0;0.0;;4
-92;3;4102;U32;;Voltage transformer ratio;SERIAL;1.0;0.0;;4
+92;3;4102;U32;;Voltage transformer ratio;;1.0;0.0;;4
 93;3;4104;U16;;Sensor selection;;1.0;0.0;;4
 94;3;4105;U16;;Range Rogowski sensor;;1.0;0.0;;4
 95;3;4357;U16;;Wrong connection (Installing help) management enabling;;1.0;0.0;;4

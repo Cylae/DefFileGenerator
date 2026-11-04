@@ -2,42 +2,42 @@ modbus;Logger;HOYMILES;MICROINVERTER;;;;;;;
 1;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4
 2;4;12544;U64;;Sum of All Microinverters Total Production in DTU;;1.000000;0.000000;Wh;4
 3;4;12548;U64;;Sum of All Microinverters Today Production in DTU;;1.000000;0.000000;Wh;4
-4;4;12552;U32;;Sum of All Microinverters Active Power in DTU;P_AC;0.100000;0.000000;W;4
-5;4;12554;U32;;Sum of All Microinverters Reactive Power in DTU;Q_AC;0.100000;0.000000;VA;4
-6;4;14560_6;STRING;;Microinverter 1: Serial Number;SERIAL;1.000000;0.000000;;4
+4;4;12552;U32;;Sum of All Microinverters Active Power in DTU;;0.100000;0.000000;W;4
+5;4;12554;U32;;Sum of All Microinverters Reactive Power in DTU;;0.100000;0.000000;VA;4
+6;4;14560_6;STRING;;Microinverter 1: Serial Number;;1.000000;0.000000;;4
 7;4;14563;U32;;Microinverter 1: Total Production;;1.000000;0.000000;Wh;4
 8;4;14565;U32;;Microinverter 1: Today Production;;1.000000;0.000000;Wh;4
 9;4;14567;U16;;Microinverter 1: Active Power;;0.100000;0.000000;W;4
 10;4;14568;U16;;Microinverter 1: Reactive Power;;0.100000;0.000000;VA;4
-11;4;14569;U16;;Microinverter 1: Power Factor;PF;0.001000;0.000000;;4
-12;4;14570;U16;;Microinverter 1: Phase A Phase Voltage;U_AC_1;0.100000;0.000000;V;4
-13;4;14571;U16;;Microinverter 1: Phase B Phase Voltage;U_AC_2;0.100000;0.000000;V;4
-14;4;14572;U16;;Microinverter 1: Phase C Phase Voltage;U_AC_3;0.100000;0.000000;V;4
+11;4;14569;U16;;Microinverter 1: Power Factor;;0.001000;0.000000;;4
+12;4;14570;U16;;Microinverter 1: Phase A Phase Voltage;;0.100000;0.000000;V;4
+13;4;14571;U16;;Microinverter 1: Phase B Phase Voltage;;0.100000;0.000000;V;4
+14;4;14572;U16;;Microinverter 1: Phase C Phase Voltage;;0.100000;0.000000;V;4
 15;4;14573;U16;;Microinverter 1: Phase AB Line Voltage;;0.100000;0.000000;V;4
 16;4;14574;U16;;Microinverter 1: Phase BC Line Voltage;;0.100000;0.000000;V;4
 17;4;14575;U16;;Microinverter 1: Phase CA Line Voltage;;0.100000;0.000000;V;4
-18;4;14576;U16;;Microinverter 1: Phase A Current;I_AC_1;0.010000;0.000000;A;4
-19;4;14577;U16;;Microinverter 1: Phase B Current;I_AC_2;0.010000;0.000000;A;4
-20;4;14578;U16;;Microinverter 1: Phase C Current;I_AC_3;0.010000;0.000000;A;4
-21;4;14579;U16;;Microinverter 1: Grid Frequency;FREQ;0.010000;0.000000;Hz;4
-22;4;14580;U16;;Microinverter 1: Device Temperature;TEMP_INT;0.100000;0.000000;Deg. Celsius;4
-23;4;14581;U16;;Microinverter 1: PV1 Voltage;U_DC_STRING_1;0.100000;0.000000;V;4
-24;4;14582;U16;;Microinverter 1: PV1 Current;I_DC_STRING_1;0.010000;0.000000;A;4
+18;4;14576;U16;;Microinverter 1: Phase A Current;;0.010000;0.000000;A;4
+19;4;14577;U16;;Microinverter 1: Phase B Current;;0.010000;0.000000;A;4
+20;4;14578;U16;;Microinverter 1: Phase C Current;;0.010000;0.000000;A;4
+21;4;14579;U16;;Microinverter 1: Grid Frequency;;0.010000;0.000000;Hz;4
+22;4;14580;U16;;Microinverter 1: Device Temperature;;0.100000;0.000000;Deg. Celsius;4
+23;4;14581;U16;;Microinverter 1: PV1 Voltage;;0.100000;0.000000;V;4
+24;4;14582;U16;;Microinverter 1: PV1 Current;;0.010000;0.000000;A;4
 25;4;14583;U16;;Microinverter 1: PV1 Power;;0.100000;0.000000;W;4
-26;4;14584;U16;;Microinverter 1: PV2 Voltage;U_DC_STRING_2;0.100000;0.000000;V;4
-27;4;14585;U16;;Microinverter 1: PV2 Current;I_DC_STRING_2;0.010000;0.000000;A;4
+26;4;14584;U16;;Microinverter 1: PV2 Voltage;;0.100000;0.000000;V;4
+27;4;14585;U16;;Microinverter 1: PV2 Current;;0.010000;0.000000;A;4
 28;4;14586;U16;;Microinverter 1: PV2 Power;;0.100000;0.000000;W;4
-29;4;14587;U16;;Microinverter 1: PV3 Voltage;U_DC_STRING_3;0.100000;0.000000;V;4
-30;4;14588;U16;;Microinverter 1: PV3 Current;I_DC_STRING_3;0.010000;0.000000;A;4
+29;4;14587;U16;;Microinverter 1: PV3 Voltage;;0.100000;0.000000;V;4
+30;4;14588;U16;;Microinverter 1: PV3 Current;;0.010000;0.000000;A;4
 31;4;14589;U16;;Microinverter 1: PV3 Power;;0.100000;0.000000;W;4
-32;4;14590;U16;;Microinverter 1: PV4 Voltage;U_DC_STRING_4;0.100000;0.000000;V;4
-33;4;14591;U16;;Microinverter 1: PV4 Current;I_DC_STRING_4;0.010000;0.000000;A;4
+32;4;14590;U16;;Microinverter 1: PV4 Voltage;;0.100000;0.000000;V;4
+33;4;14591;U16;;Microinverter 1: PV4 Current;;0.010000;0.000000;A;4
 34;4;14592;U16;;Microinverter 1: PV4 Power;;0.100000;0.000000;W;4
-35;4;14593;U16;;Microinverter 1: PV5 Voltage;U_DC_STRING_5;0.100000;0.000000;V;4
-36;4;14594;U16;;Microinverter 1: PV5 Current;I_DC_STRING_5;0.010000;0.000000;A;4
+35;4;14593;U16;;Microinverter 1: PV5 Voltage;;0.100000;0.000000;V;4
+36;4;14594;U16;;Microinverter 1: PV5 Current;;0.010000;0.000000;A;4
 37;4;14595;U16;;Microinverter 1: PV5 Power;;0.100000;0.000000;W;4
-38;4;14596;U16;;Microinverter 1: PV6 Voltage;U_DC_STRING_6;0.100000;0.000000;V;4
-39;4;14597;U16;;Microinverter 1: PV6 Current;I_DC_STRING_6;0.010000;0.000000;A;4
+38;4;14596;U16;;Microinverter 1: PV6 Voltage;;0.100000;0.000000;V;4
+39;4;14597;U16;;Microinverter 1: PV6 Current;;0.010000;0.000000;A;4
 40;4;14598;U16;;Microinverter 1: PV6 Power;;0.100000;0.000000;W;4
 41;4;14599;U16;;Microinverter 1: Microinverter Status;;1.000000;0.000000;;9
 42;4;14600;U16;;Microinverter 1: Alarm Code 1;;1.000000;0.000000;;9

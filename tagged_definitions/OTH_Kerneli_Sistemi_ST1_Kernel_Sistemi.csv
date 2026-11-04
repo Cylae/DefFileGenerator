@@ -1,4 +1,4 @@
-﻿modbusRTU;String Combiner;Kernel Sistemi;ST1;;;;;;;
+modbusRTU;String Combiner;Kernel Sistemi;ST1;;;;;;;
 1;4;30001;U16;;Inputs;;1;0;;4
 2;4;30002;U16;;Inst Curr Str_01 (mA [0...30000]);;1;0;mA;4
 3;4;30003;U16;;Inst Curr Str_02 (mA [0...30000]);;1;0;mA;4

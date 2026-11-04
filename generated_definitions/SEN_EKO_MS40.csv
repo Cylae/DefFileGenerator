@@ -7,7 +7,7 @@ Modbus;Sensor;EKO;MS40
 6;3;5;U16;;Serial number_5;;1.0;0.0;;4
 7;3;6;U16;;Serial number_6;;1.0;0.0;;4
 8;3;7;U16;;Serial number_7;;1.0;0.0;;4
-9;3;8;U16;;Model Number;MODEL;1.0;0.0;;4
+9;3;8;U16;;Model Number;;1.0;0.0;;4
 10;3;9;U16;;Model Number_1;;1.0;0.0;;4
 11;3;10;U16;;Model Number_2;;1.0;0.0;;4
 12;3;11;U16;;Model Number_3;;1.0;0.0;;4

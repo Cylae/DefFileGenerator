@@ -1,4 +1,4 @@
-﻿modbus;Meter;Schneider Electric;iEM3400_3500;;;;;;;
+modbus;Meter;Schneider Electric;iEM3400_3500;;;;;;;
 1;3;30_40;STRING;;Nom de l'appareil;;1;0;;1
 2;3;50_40;STRING;;Modle de l'appareil;;1;0;;1
 3;3;70_40;STRING;;Fabricant;MANUFACTURER;1;0;;1

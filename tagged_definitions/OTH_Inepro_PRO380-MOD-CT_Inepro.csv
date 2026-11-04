@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Inepro;PRO380-MOD-CT Inepro;;;;;;;
+modbusRTU;Other;Inepro;PRO380-MOD-CT Inepro;;;;;;;
 1;4;20482;U16;;volt1;;1.0;0.0;V;4
 2;4;20484;U16;;volt2;;1.0;0.0;V;4
 3;4;20486;U16;;volt3;;1.0;0.0;V;4

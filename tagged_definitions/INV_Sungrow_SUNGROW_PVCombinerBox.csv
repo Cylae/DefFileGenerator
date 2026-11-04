@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Sungrow;SUNGROW_PVCombinerBox;;;;;;;
+modbusRTU;Inverter;Sungrow;SUNGROW_PVCombinerBox;;;;;;;
 1;4;6999;U16;;Device type code;;1.0;0.0;;4
 2;4;7000;U16;;Max input numbers;;1.0;0.0;;4
 3;4;7005;U16;;DC bus voltage;U_DC;1.0;0.0;V;4

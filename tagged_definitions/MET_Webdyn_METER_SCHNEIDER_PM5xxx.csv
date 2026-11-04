@@ -1,4 +1,4 @@
-﻿modbus;Meter;Schneider Electric;PM5xxx;;;;;;;
+modbus;Meter;Schneider Electric;PM5xxx;;;;;;;
 1;3;30_40;STRING;;Meter Name;;1;0;;1
 2;3;50_40;STRING;;Meter Model;MODEL;1;0;;1
 3;3;70_40;STRING;;Manufacturer;MANUFACTURER;1;0;;1
@@ -94,8 +94,8 @@
 93;3;2138;U16;;Energy Pulse Output Channel 03;;1;0;;1
 94;3;2139;U16;;DO Association Channel 03;;1;0;;1
 95;3;2140;U32;;Pulse Weight Channel 03;;1;0;kWh;1
-96;3;2400;U16;;Digital Input Validity Base Unit;DI1;1;0;;4
-97;3;2401;U16;;Digital Input Status Base Unit;DI2;1;0;;4
+96;3;2400;U16;;Digital Input Validity Base Unit;;1;0;;4
+97;3;2401;U16;;Digital Input Status Base Unit;;1;0;;4
 98;3;2402;U16;;Digital Output Status Validity Base Unit;;1;0;;4
 99;3;2403;U16;;Digital Output Status Base Unit;;1;0;;4
 100;3;2420;U16;;Standard 1-sec Group 1 Validity;;1;0;;4

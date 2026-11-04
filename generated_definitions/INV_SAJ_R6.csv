@@ -15,7 +15,7 @@ Modbus;Inverter;SAJ;R6
 14;3;16407;U16;;DRM_HardwareStatus;;1.0;0.0;;4
 15;3;16408;U16;;DRM_SoftwareStatus;;1.0;0.0;;4
 16;3;16409;U16;;ConnTime;;1.0;0.0;S;4
-17;3;16410;U16;;ErrorDataSN;SERIAL;1.0;0.0;;4
+17;3;16410;U16;;ErrorDataSN;;1.0;0.0;;4
 18;3;16411;U16;;SettingDataSN;;1.0;0.0;;4
 19;3;16412;U16;;FCASTriggerFlag;;1.0;0.0;;4
 20;3;16413;U16;;Running_data;;1.0;0.0;;4
@@ -35,7 +35,7 @@ Modbus;Inverter;SAJ;R6
 34;3;16431;I16;;BmsChgPowerSet;;1.0;0.0;Un;4
 35;3;16432;I16;;MeterModeSet;;1.0;0.0; ;4
 36;3;16433;U16;;RGridVolt;;0.1;0.0;V;4
-37;3;16434;I16;;RGridCurr;I_DC;0.01;0.0;Un;4
+37;3;16434;I16;;RGridCurr;;0.01;0.0;Un;4
 38;3;16435;U16;;RGridFreq;;0.01;0.0;Hz;4
 39;3;16436;I16;;RGridDCI;;1.0;0.0;mA;4
 40;3;16437;I16;;RGridPowerWatt;;1.0;0.0;W;4
@@ -211,7 +211,7 @@ Modbus;Inverter;SAJ;R6
 212;3;24603;U32;;Energia;;0.01;0.0;kWh;4
 213;3;24605;U32;;Power;P_AC;0.001;0.0;kW;4
 214;3;24607;I32;;QPower;;1.0;0.0;Var ;4
-215;3;24609;I16;;PF;;0.001;0.0;;4
+215;3;24609;I16;;PF;PF;0.001;0.0;;4
 216;3;24610;U16;;L1Volt;;0.1;0.0;V;4
 217;3;24611;U16;;L1Curr;;0.01;0.0;Un;4
 218;3;24612;U16;;L1Freq;FREQ_1;0.01;0.0;Hz;4

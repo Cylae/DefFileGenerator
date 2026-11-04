@@ -1,4 +1,4 @@
-﻿modbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
+modbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
 1;2;512_0_1;BITS;;Bus arc trip state;;1.000000;0.000000;;4
 2;2;513_0_1;BITS;;Channel arc trip state;;1.000000;0.000000;;4
 3;2;515_0_1;BITS;;Bus voltage is too high trip state;U_DC;1.000000;0.000000;;4
@@ -208,7 +208,7 @@
 207;4;257;U16;;Broadcast time  (day  hour);;1.000000;0.000000;;4
 208;4;258;U16;;Broadcast time  (minutes seconds);;1.000000;0.000000;;4
 209;4;259;U16;;Broadcast time  milliseconds;;1.000000;0.000000;;4
-210;4;260;U16;;Bus voltage;udc_v;1.000000;0.000000;V;2
+210;4;260;U16;;Bus voltage;;1.000000;0.000000;V;2
 211;4;261;I16;;Temperature sensor 1-1;;0.100000;0.000000;C;4
 212;4;262;I16;;Temperature sensor 2-1;;0.100000;0.000000;C;4
 213;4;263;U16;;Switch input_0;;1.000000;0.000000;;4
@@ -220,30 +220,30 @@
 219;4;265;I16;;Total reverse current;;10.000000;0.000000;mA;4
 220;4;266;I16;;Total current;;10.000000;0.000000;mA;4
 221;4;267;I16;;Average current;;1.000000;0.000000;mA;4
-222;4;268;I16;;Channel 1 current;idc1_ma;1.000000;0.000000;mA;2
-223;4;269;I16;;Channel 2 current;idc2_ma;1.000000;0.000000;mA;2
-224;4;270;I16;;Channel 3 current;idc3_ma;1.000000;0.000000;mA;2
-225;4;271;I16;;Channel 4 current;idc4_ma;1.000000;0.000000;mA;2
-226;4;272;I16;;Channel 5 current;idc5_ma;1.000000;0.000000;mA;2
-227;4;273;I16;;Channel 6 current;idc6_ma;1.000000;0.000000;mA;2
-228;4;274;I16;;Channel 7 current;idc7_ma;1.000000;0.000000;mA;2
-229;4;275;I16;;Channel 8 current;idc8_ma;1.000000;0.000000;mA;2
-230;4;276;I16;;Channel 9 current;idc9_ma;1.000000;0.000000;mA;2
-231;4;277;I16;;Channel 10 current;idc10_ma;1.000000;0.000000;mA;2
-232;4;278;I16;;Channel 11 current;idc11_ma;1.000000;0.000000;mA;2
-233;4;279;I16;;Channel 12 current;idc12_ma;1.000000;0.000000;mA;2
-234;4;280;I16;;Channel 13 current;idc13_ma;1.000000;0.000000;mA;2
-235;4;281;I16;;Channel 14 current;idc14_ma;1.000000;0.000000;mA;2
-236;4;282;I16;;Channel 15 current;idc15_ma;1.000000;0.000000;mA;2
-237;4;283;I16;;Channel 16 current;idc16_ma;1.000000;0.000000;mA;2
-238;4;284;I16;;Channel 17 current;idc17_ma;1.000000;0.000000;mA;2
-239;4;285;I16;;Channel 18 current;idc18_ma;1.000000;0.000000;mA;2
-240;4;286;I16;;Channel 19 current;idc19_ma;1.000000;0.000000;mA;2
-241;4;287;I16;;Channel 20 current;idc20_ma;1.000000;0.000000;mA;2
-242;4;288;I16;;Channel 21 current;idc21_ma;1.000000;0.000000;mA;2
-243;4;289;I16;;Channel 22 current;idc22_ma;1.000000;0.000000;mA;2
-244;4;290;I16;;Channel 23 current;idc23_ma;1.000000;0.000000;mA;2
-245;4;291;I16;;Channel 24 current;idc24_ma;1.000000;0.000000;mA;2
+222;4;268;I16;;Channel 1 current;;1.000000;0.000000;mA;2
+223;4;269;I16;;Channel 2 current;;1.000000;0.000000;mA;2
+224;4;270;I16;;Channel 3 current;;1.000000;0.000000;mA;2
+225;4;271;I16;;Channel 4 current;;1.000000;0.000000;mA;2
+226;4;272;I16;;Channel 5 current;;1.000000;0.000000;mA;2
+227;4;273;I16;;Channel 6 current;;1.000000;0.000000;mA;2
+228;4;274;I16;;Channel 7 current;;1.000000;0.000000;mA;2
+229;4;275;I16;;Channel 8 current;;1.000000;0.000000;mA;2
+230;4;276;I16;;Channel 9 current;;1.000000;0.000000;mA;2
+231;4;277;I16;;Channel 10 current;;1.000000;0.000000;mA;2
+232;4;278;I16;;Channel 11 current;;1.000000;0.000000;mA;2
+233;4;279;I16;;Channel 12 current;;1.000000;0.000000;mA;2
+234;4;280;I16;;Channel 13 current;;1.000000;0.000000;mA;2
+235;4;281;I16;;Channel 14 current;;1.000000;0.000000;mA;2
+236;4;282;I16;;Channel 15 current;;1.000000;0.000000;mA;2
+237;4;283;I16;;Channel 16 current;;1.000000;0.000000;mA;2
+238;4;284;I16;;Channel 17 current;;1.000000;0.000000;mA;2
+239;4;285;I16;;Channel 18 current;;1.000000;0.000000;mA;2
+240;4;286;I16;;Channel 19 current;;1.000000;0.000000;mA;2
+241;4;287;I16;;Channel 20 current;;1.000000;0.000000;mA;2
+242;4;288;I16;;Channel 21 current;;1.000000;0.000000;mA;2
+243;4;289;I16;;Channel 22 current;;1.000000;0.000000;mA;2
+244;4;290;I16;;Channel 23 current;;1.000000;0.000000;mA;2
+245;4;291;I16;;Channel 24 current;;1.000000;0.000000;mA;2
 246;4;298;U16;;Shunt trip status1;;1.000000;0.000000;;4
 247;4;299;U16;;Shunt trip status2;;1.000000;0.000000;;4
 248;4;301;U16;;Alarm status 1;;1.000000;0.000000;;4
@@ -267,30 +267,30 @@
 266;4;344;U16;;Channel 17~24 arc channel self-check status;;1.000000;0.000000;;4
 267;4;512;U16;;Total power;;100.000000;0.000000;W;4
 268;4;513;U16;;Average power;;1.000000;0.000000;W;4
-269;4;514;U16;;Channel 1 power;pdc1_ma;1.000000;0.000000;W;2
-270;4;515;U16;;Channel 2 power;pdc2_ma;1.000000;0.000000;W;2
-271;4;516;U16;;Channel 3 power;pdc3_ma;1.000000;0.000000;W;2
-272;4;517;U16;;Channel 4 power;pdc4_ma;1.000000;0.000000;W;2
-273;4;518;U16;;Channel 5 power;pdc5_ma;1.000000;0.000000;W;2
-274;4;519;U16;;Channel 6 power;pdc6_ma;1.000000;0.000000;W;2
-275;4;520;U16;;Channel 7 power;pdc7_ma;1.000000;0.000000;W;2
-276;4;521;U16;;Channel 8 power;pdc8_ma;1.000000;0.000000;W;2
-277;4;522;U16;;Channel 9 power;pdc9_ma;1.000000;0.000000;W;2
-278;4;523;U16;;Channel 10 power;pdc10_ma;1.000000;0.000000;W;2
-279;4;524;U16;;Channel 11 power;pdc11_ma;1.000000;0.000000;W;2
-280;4;525;U16;;Channel 12 power;pdc12_ma;1.000000;0.000000;W;2
-281;4;526;U16;;Channel 13 power;pdc13_ma;1.000000;0.000000;W;2
-282;4;527;U16;;Channel 14 power;pdc14_ma;1.000000;0.000000;W;2
-283;4;528;U16;;Channel 15 power;pdc15_ma;1.000000;0.000000;W;2
-284;4;529;U16;;Channel 16 power;pdc16_ma;1.000000;0.000000;W;2
-285;4;530;U16;;Channel 17 power;pdc17_ma;1.000000;0.000000;W;2
-286;4;531;U16;;Channel 18 power;pdc18_ma;1.000000;0.000000;W;2
-287;4;532;U16;;Channel 19 power;pdc19_ma;1.000000;0.000000;W;2
-288;4;533;U16;;Channel 20 power;pdc20_ma;1.000000;0.000000;W;2
-289;4;534;U16;;Channel 21 power;pdc21_ma;1.000000;0.000000;W;2
-290;4;535;U16;;Channel 22 power;pdc22_ma;1.000000;0.000000;W;2
-291;4;536;U16;;Channel 23 power;pdc23_ma;1.000000;0.000000;W;2
-292;4;537;U16;;Channel 24 power;pdc24_ma;1.000000;0.000000;W;2
+269;4;514;U16;;Channel 1 power;;1.000000;0.000000;W;2
+270;4;515;U16;;Channel 2 power;;1.000000;0.000000;W;2
+271;4;516;U16;;Channel 3 power;;1.000000;0.000000;W;2
+272;4;517;U16;;Channel 4 power;;1.000000;0.000000;W;2
+273;4;518;U16;;Channel 5 power;;1.000000;0.000000;W;2
+274;4;519;U16;;Channel 6 power;;1.000000;0.000000;W;2
+275;4;520;U16;;Channel 7 power;;1.000000;0.000000;W;2
+276;4;521;U16;;Channel 8 power;;1.000000;0.000000;W;2
+277;4;522;U16;;Channel 9 power;;1.000000;0.000000;W;2
+278;4;523;U16;;Channel 10 power;;1.000000;0.000000;W;2
+279;4;524;U16;;Channel 11 power;;1.000000;0.000000;W;2
+280;4;525;U16;;Channel 12 power;;1.000000;0.000000;W;2
+281;4;526;U16;;Channel 13 power;;1.000000;0.000000;W;2
+282;4;527;U16;;Channel 14 power;;1.000000;0.000000;W;2
+283;4;528;U16;;Channel 15 power;;1.000000;0.000000;W;2
+284;4;529;U16;;Channel 16 power;;1.000000;0.000000;W;2
+285;4;530;U16;;Channel 17 power;;1.000000;0.000000;W;2
+286;4;531;U16;;Channel 18 power;;1.000000;0.000000;W;2
+287;4;532;U16;;Channel 19 power;;1.000000;0.000000;W;2
+288;4;533;U16;;Channel 20 power;;1.000000;0.000000;W;2
+289;4;534;U16;;Channel 21 power;;1.000000;0.000000;W;2
+290;4;535;U16;;Channel 22 power;;1.000000;0.000000;W;2
+291;4;536;U16;;Channel 23 power;;1.000000;0.000000;W;2
+292;4;537;U16;;Channel 24 power;;1.000000;0.000000;W;2
 293;4;538;U16;;The higher 16bit of the total generated energy;E_TOT;1.000000;0.000000;Wh;4
 294;4;539;U16;;The lower 16bit of the total generated energy;;1.000000;0.000000;Wh;4
 295;4;540;U16;;The higher 16bit of the generated energy of channel 1;;1.000000;0.000000;Wh;4

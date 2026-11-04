@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;MODBUS_THERMOKON_AGS55;;;;;;;
+modbusRTU;Other;Webdyn;MODBUS_THERMOKON_AGS55;;;;;;;
 1;4;0;U16;;Temperature 1;TEMP_CELL;1.0;0.0;°C;4
 2;4;1;U16;;Relative humidity;HUMIDITY;1.0;0.0;%rF;4
 3;4;2;U16;;Absolute humidity;;1.0;0.0;g/mÂ³;4

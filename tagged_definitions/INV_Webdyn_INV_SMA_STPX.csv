@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Webdyn;INV_SMA_STPX;;;;;;;
+modbusRTU;Inverter;Webdyn;INV_SMA_STPX;;;;;;;
 1;4;30001;U16;;SMA Modbus profile revision;;1.0;0.0;;4
 2;4;30003;U16;;SUSyID;;1.0;0.0;;4
 3;4;30005;U16;;Serial number;SERIAL;1.0;0.0;;4

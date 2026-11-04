@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Fox ESS;FOX_ESS_G-MAX_EMS;;;;;;;
+modbusRTU;Inverter;Fox ESS;FOX_ESS_G-MAX_EMS;;;;;;;
 1;4;101;U16;;PCS actual total active power summary;P_AC;1.0;0.0;KW;4
 2;4;102;U16;;PCS actual total reactive power summary;Q_AC;1.0;0.0;Kvar;4
 3;4;103;U16;;Total voltage summary;;1.0;0.0;V;4

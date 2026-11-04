@@ -6,9 +6,9 @@ Modbus;Inverter;Huawei;V3
 5;3;30071;U16;;Number of PV strings;;1.0;0.0;;4
 6;3;30072;U16;;Number of MPP trackers;;1.0;0.0;;4
 7;3;30073;U32;;Rated power (Pn);P_RATED;0.001;0.0;kW;4
-8;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001;0.0;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);;0.001;0.0;kW;4
 9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001;0.0;kVA;4
-10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);Q_AC;0.001;0.0;kVar;4
+10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);;0.001;0.0;kVar;4
 11;3;30081;I32;;Maximum reactive power (Qmax: absorbed from the power grid);;0.001;0.0;kVar;4
 12;3;32000;U16;;State 1;;1.0;0.0;;9
 13;3;32002;U16;;State 2;;1.0;0.0;;9
@@ -71,12 +71,12 @@ Modbus;Inverter;Huawei;V3
 70;3;32069;U16;;Phase A voltage;U_AC_1;0.1;0.0;V;4
 71;3;32070;U16;;Phase B voltage;U_AC_2;0.1;0.0;V;4
 72;3;32071;U16;;Phase C voltage;U_AC_3;0.1;0.0;V;4
-73;3;32072;I32;;Power grid current/Phase A current;I_AC_1;0.001;0.0;A;4
+73;3;32072;I32;;Power grid current/Phase A current;;0.001;0.0;A;4
 74;3;32074;I32;;Phase B current;I_AC_2;0.001;0.0;A;4
 75;3;32076;I32;;Phase C current;I_AC_3;0.001;0.0;A;4
 76;3;32078;I32;;Peak active power of current day;;0.001;0.0;kW;4
-77;3;32080;I32;;Active power;;0.001;0.0;kW;4
-78;3;32082;I32;;Reactive power;;0.001;0.0;kVar;4
+77;3;32080;I32;;Active power;P_AC;0.001;0.0;kW;4
+78;3;32082;I32;;Reactive power;Q_AC;0.001;0.0;kVar;4
 79;3;32084;I16;;Power factor;PF;0.001;0.0;;4
 80;3;32085;U16;;Grid frequency;FREQ;0.01;0.0;Hz;4
 81;3;32086;U16;;Efficiency;;0.01;0.0;% ;4
@@ -103,11 +103,11 @@ Modbus;Inverter;Huawei;V3
 102;3;40000;U32;;System Time;;1.0;0.0;s;4
 103;3;40037;U16;;[Power grid scheduling] Q-U characteristic curve mode;;1.0;0.0;;4
 104;3;40038;U16;;[Power grid scheduling] Q-U dispatch trigger power (%);;1.0;0.0;%;4
-105;3;40120;U16;;[Power grid scheduling] Fixed active power derated;CMD_P_AC_SET_ABS;0.1;0.0;kW;4
+105;3;40120;U16;;[Power grid scheduling] Fixed active power derated;;0.1;0.0;kW;4
 106;3;40122;I16;;power factor;CMD_PF;0.001;0.0;;4
 107;3;40123;I16;;[Power grid scheduling] Reactive power compensation(Q/S);;0.001;0.0;;4
 108;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);CMD_P_AC_SET_PERCENT;0.1;0.0;%;4
-109;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);;1.0;0.0;W;4
+109;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);CMD_P_AC_SET_ABS;1.0;0.0;W;4
 110;3;40129;I32;;[Power grid scheduling] Reactive power compensation at night (kVar);;0.001;0.0;kVar;4
 111;3;40133;U16;;Number of points cosphi-P/Pn;;1.0;0.0;;4
 112;3;40134;U16;;P/Pn value at point 1;;0.1;0.0;%;4

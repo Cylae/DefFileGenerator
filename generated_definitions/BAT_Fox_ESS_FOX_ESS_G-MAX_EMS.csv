@@ -1,18 +1,18 @@
 Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
-1;4;101;I16;;PCS actual total active power summary;P_AC;0.1;0;KW;4
-2;4;102;I16;;PCS actual total reactive power summary;Q_AC;0.1;0;Kvar;4
+1;4;101;I16;;PCS actual total active power summary;;0.1;0;KW;4
+2;4;102;I16;;PCS actual total reactive power summary;;0.1;0;Kvar;4
 3;4;103;I16;;Total voltage summary;;0.1;0;V;4
-4;4;104;I16;;Total current summary;I_AC;0.1;0;A;4
-5;4;105;U16;;Total soc summary;SOC;1;0;%;4
+4;4;104;I16;;Total current summary;;0.1;0;A;4
+5;4;105;U16;;Total soc summary;;1;0;%;4
 6;4;106;U16;;Battery status summary;;1;0;;4
 7;4;107;U16;;Total number of batteries summary;;1;0;;4
-8;4;108;I16;;Average battery temperature summary;TEMP;1;0;Degr. Celsius;4
+8;4;108;I16;;Average battery temperature summary;;1;0;Degr. Celsius;4
 9;4;109;I16;;Maximum battery temperature difference summary;;1;0;Degr. Celsius;4
 10;4;110;U16;;Maximum single cell voltage value summary;;0.001;0;V;4
 11;4;111;U16;;Minimum single cell voltage value summary;;0.001;0;V;4
 12;4;114;U16;;System Status;;1;0;;4
 13;4;136;U32;;Heartbeat Point;;1;0;;4
-14;4;32000;U16;;Device serial number;SERIAL;1;0;;4
+14;4;32000;U16;;Device serial number;;1;0;;4
 15;4;32024;U16;;Battery Pack Serial Number 1;;1;0;;4
 16;4;32048;U16;;Battery pack serial number 2;;1;0;;4
 17;4;32072;U16;;Battery pack serial number 3;;1;0;;4
@@ -23,7 +23,7 @@ Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
 22;4;32192;U16;;Date of manufacture;;1;0;;4
 23;4;31024;U16;;Software Version 2;;1;0;;4
 24;4;31048;U16;;System ID;;1;0;;4
-25;4;31072;U16;;System Model;MODEL;1;0;;4
+25;4;31072;U16;;System Model;;1;0;;4
 26;4;31096;U16;;System version;;1;0;;4
 27;4;31120;U16;;CPLD Version;;1;0;;4
 28;4;31144;U16;;DSP1 version;;1;0;;4
@@ -269,9 +269,9 @@ Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
 268;3;368;I16;;Stop charging single cell voltage return difference;;0.001;0; V;4
 269;3;369;I16;;Parking cell voltage;;0.001;0; V;4
 270;3;370;I16;;Parking single cell voltage hysteresis value;;0.001;0; V;4
-271;3;371;I16;;Reverse flow rated power kW;P_RATED;0.1;0; kW;4
+271;3;371;I16;;Reverse flow rated power kW;;0.1;0; kW;4
 272;3;375;I16;;Reverse flow power differential value;;0.1;0; kW;4
-273;3;376;U16;;Backflow adjustment frequency s;FREQ;1;0;s;4
+273;3;376;U16;;Backflow adjustment frequency s;;1;0;s;4
 274;3;377;I16;;Single cell voltage limit power voltage point 0 v;;0.001;0; V;4
 275;3;378;I16;;Single cell voltage limit power voltage point 1 v;;0.001;0; V;4
 276;3;379;I16;;Single cell voltage limit power voltage point 2 v;;0.001;0; V;4
@@ -533,7 +533,7 @@ Modbus;BATTERY;FOX ESS;G-MAX EMS;;;;;;;
 532;3;760;U16;;Aems reverse power differential value;;1;0;;4
 533;3;761;U16;;Aems countercurrent adjustment time step;;1;0;;4
 534;3;762;U16;;Aems backflow threshold;;1;0;;4
-535;3;763;U16;;Aems static demand rated power one month kw;CMD_ON;1;0;;4
+535;3;763;U16;;Aems static demand rated power one month kw;;1;0;;4
 536;3;764;U16;;Aems static demand rated power February kw;;1;0;;4
 537;3;765;U16;;Aems static demand rated power March kw;;1;0;;4
 538;3;766;U16;;Aems static demand rated power April kw;;1;0;;4

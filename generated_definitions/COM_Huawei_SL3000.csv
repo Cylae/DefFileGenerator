@@ -14,13 +14,13 @@ Modbus;Logger;Huawei;SL3000
 13;3;40422;I32;;ReactiveAdjustment;;0.1;0.0;kVar;4
 14;3;40424;U32;;ActiveAdjustment_2;;0.1;0.0;kW;4
 15;3;40426;I32;;ReactiveAdjustment_2;;0.1;0.0;kVar;4
-16;3;40428;U16;;Active power adjustment by percentage;P_AC;0.1;0.0;%;4
-17;3;40429;I16;;Power factor adjustment;PF;0.001;0.0;;4
+16;3;40428;U16;;Active power adjustment by percentage;;0.1;0.0;%;4
+17;3;40429;I16;;Power factor adjustment;;0.001;0.0;;4
 18;3;40500;I16;;DC Current;I_DC;0.1;0.0;A;4
 19;3;40521;U32;;Input power;P_DC;0.001;0.0;kW;4
 20;3;40523;U32;;CO2 reduction;;0.1;0.0;kg;4
-21;3;40525;I32;;Active power;;0.001;0.0;kW;4
-22;3;40532;I16;;Power Factor;;0.001;0.0;;4
+21;3;40525;I32;;Active power;P_AC;0.001;0.0;kW;4
+22;3;40532;I16;;Power Factor;PF;0.001;0.0;;4
 23;3;40543;U16;;Plant status;;1.0;0.0;;4
 24;3;40544;I32;;Reactive power;Q_AC;0.001;0.0;;4
 25;3;40550;U64;;CO2 reduction_1;;0.01;0.0;kg;4
@@ -35,9 +35,9 @@ Modbus;Logger;Huawei;SL3000
 34;3;40572;I16;;Phase A current;I_AC_1;0.001;0.0;A;4
 35;3;40573;I16;;Phase B current;I_AC_2;0.001;0.0;A;4
 36;3;40574;I16;;Phase C current;I_AC_3;0.001;0.0;A;4
-37;3;40575;U16;;Uab;;0.1;0.0;V;4
-38;3;40576;U16;;Ubc;;0.1;0.0;V;4
-39;3;40577;U16;;Uca;;0.1;0.0;V;4
+37;3;40575;U16;;Uab;U_AC_L1L2;0.1;0.0;V;4
+38;3;40576;U16;;Ubc;U_AC_L2L3;0.1;0.0;V;4
+39;3;40577;U16;;Uca;U_AC_L3L1;0.1;0.0;V;4
 40;3;40685;U16;;Inverter efficiency;;0.01;0.0;%;4
 41;3;40693;U32;;Max. reactive adjustment;;0.01;0.0;kVar;4
 42;3;40695;I32;;Min. reactive adjustment;;0.01;0.0;kVar;4
@@ -51,7 +51,7 @@ Modbus;Logger;Huawei;SL3000
 50;3;40700_5_1;BITS;;DI Status _ DI 6;;1.0;0.0;;4
 51;3;40700_6_1;BITS;;DI Status _ DI 7;;1.0;0.0;;4
 52;3;40700_7_1;BITS;;DI Status _ DI 8;;1.0;0.0;;4
-53;3;40713_10;STRING;;ESN;SERIAL;1.0;0.0;;4
+53;3;40713_10;STRING;;ESN;;1.0;0.0;;4
 54;3;40723;U16;;System reset;;1.0;0.0;;4
 55;3;40724;U16;;Fast device access;;1.0;0.0;;4
 56;3;40736;U16;;Device access status;;1.0;0.0;;4
@@ -63,7 +63,7 @@ Modbus;Logger;Huawei;SL3000
 62;3;40802;U32;;Active scheduling percentage;;1.0;0.0;%;4
 63;3;41124;U16;;CO2 emission reduction coefficient;;0.001;0.0;kg/kWh;4
 64;3;41934;U32;;PV module capacity;;0.001;0.0;kW;4
-65;3;41936;U32;;Rated plant capacity;P_RATED;0.001;0.0;kW;4
+65;3;41936;U32;;Rated plant capacity;;0.001;0.0;kW;4
 66;3;41938;U32;;Total rated capacity of grid connected inverters;;0.001;0.0;kW;4
 67;3;41940;U32;;Conversion coefficient;;0.001;0.0;;4
 68;3;41942;U16;;Communication status;;1.0;0.0;;4

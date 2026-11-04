@@ -1,16 +1,16 @@
 ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
-1;4;0_1;STRING;;Device Type;MODEL;1.0;0.0;;4
+1;4;0_1;STRING;;Device Type;;1.0;0.0;;4
 2;4;1;U32;;E-today;;0.0;0.0;kW;4
-3;4;3;U32;;E-total ;E_TOT;0.0;0.0;kW;4
+3;4;3;U32;;E-total ;;0.0;0.0;kW;4
 4;4;5;U32;;H-total  ;;1.0;0.0;H;4
 5;4;7;U32;;resv;;1.0;0.0;;0
 6;4;9;U32;;resv_1;;1.0;0.0;;0
 7;4;11;U16;;State  ;;1.0;0.0;;8
 8;4;12;U16;;Error Code ;;1.0;0.0;;4
 9;4;13;U16;;Connect Time;;1.0;0.0;s;4
-10;4;14;I16;;Temperature;TEMP;0.0;0.0;°C;4
+10;4;14;I16;;Temperature;;0.0;0.0;°C;4
 11;4;15;U16;;Connected PV Strings;;1.0;0.0;;4
-12;4;16;U16;;BUS Voltage ;U_DC;0.0;0.0;V;4
+12;4;16;U16;;BUS Voltage ;;0.0;0.0;V;4
 13;4;17;U16;;PV Voltage 1;;0.0;0.0;V;4
 14;4;18;U16;;PV Current 1;;0.0;0.0;A;4
 15;4;19;U16;;PV Voltage 2;;0.0;0.0;V;4
@@ -20,17 +20,17 @@ ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
 19;4;23;U32;;Resv_2;;1.0;0.0;W;4
 20;4;25;U32;;Resv_3;;1.0;0.0;;4
 21;4;27;U16;;Resv_4;;1.0;0.0;;4
-22;4;28;U16;;L1 Phase Voltage;U_AC_1;0.0;0.0;V;4
-23;4;29;U16;;L1 Phase Current;I_AC_1;0.0;0.0;A;4
-24;4;30;U16;;L2 Phase Voltage;U_AC_2;0.0;0.0;V;4
-25;4;31;U16;;L2 Phase Current;I_AC_2;0.0;0.0;A;4
-26;4;32;U16;;L3 Phase Voltage;U_AC_3;0.0;0.0;V;4
-27;4;33;U16;;L3 Phase Current;I_AC_3;0.0;0.0;A;4
+22;4;28;U16;;L1 Phase Voltage;;0.0;0.0;V;4
+23;4;29;U16;;L1 Phase Current;;0.0;0.0;A;4
+24;4;30;U16;;L2 Phase Voltage;;0.0;0.0;V;4
+25;4;31;U16;;L2 Phase Current;;0.0;0.0;A;4
+26;4;32;U16;;L3 Phase Voltage;;0.0;0.0;V;4
+27;4;33;U16;;L3 Phase Current;;0.0;0.0;A;4
 28;4;34;U16;;Grid Freq;;0.0;0.0;Hz;4
 29;4;35;U32;;Resv_5;;1.0;0.0;;4
 30;4;37;U32;;Pac;P_AC;1.0;0.0;W;4
 31;4;39;I32;;Qac;Q_AC;1.0;0.0;Var;4
-32;4;41;I16;;PF;;0.0;0.0;;4
+32;4;41;I16;;PF;PF;0.0;0.0;;4
 33;4;42;U16;;Reactive Power Mode;;1.0;0.0;;4
 34;4;43;U16;;Active Power Mode;;1.0;0.0;;4
 35;4;44;U16;;OverLoad;;1.0;0.0;;4
@@ -49,7 +49,7 @@ ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
 48;4;57;U16;;String Current 11;;0.0;0.0;A;4
 49;4;58;U16;;String Current 12;;0.0;0.0;A;4
 50;4;59;U16;;Resv_6;;1.0;0.0;;4
-51;3;12;U16;;Power ON/OFF;CMD_ON;1.0;0.0;;4
+51;3;12;U16;;Power ON/OFF;;1.0;0.0;;4
 52;3;5000;U16;;Safety type;;1.0;0.0;;4
 53;3;5006;U16;;Grid voltage high limit2;;0.0;0.0;V;4
 54;3;5007;U16;;Grid voltage high limit time2;;1.0;0.0;ms;4
@@ -61,7 +61,7 @@ ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
 60;3;5013;U16;;Grid voltage low limit time1;;1.0;0.0;ms;4
 61;3;5014;U16;;Grid voltage high recovery value;;0.0;0.0;V;4
 62;3;5015;U16;;Grid voltage low recovery value;;0.0;0.0;V;4
-63;3;5016;U16;;Grid frequency high limit2;FREQ;0.0;0.0;Hz;4
+63;3;5016;U16;;Grid frequency high limit2;;0.0;0.0;Hz;4
 64;3;5017;U16;;Grid frequency high limit time2;;1.0;0.0;ms;4
 65;3;5018;U16;;Grid frequency high limit1;;0.0;0.0;Hz;4
 66;3;5019;U16;;Grid frequency high limit time1;;1.0;0.0;ms;4

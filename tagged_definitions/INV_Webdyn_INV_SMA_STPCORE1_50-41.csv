@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Webdyn;INV_SMA_STPCORE1_50-41;;;;;;;
+modbusRTU;Inverter;Webdyn;INV_SMA_STPCORE1_50-41;;;;;;;
 1;4;30001;U16;;Version number of the SMA Modbus profile;;1.0;0.0;;4
 2;4;30003;U16;;SUSy-ID;;1.0;0.0;;4
 3;4;30005;U16;;Serial number;SERIAL;1.0;0.0;;4
@@ -7,7 +7,7 @@
 6;4;30055;U16;;Manufacturer specification;MANUFACTURER;1.0;0.0;;4
 7;4;30057;U16;;Serial number_1;;1.0;0.0;;4
 8;4;30059;U16;;Software package;;1.0;0.0;;4
-9;4;30201;U16;;Status of the device;alarm;1.0;0.0;;4
+9;4;30201;U16;;Status of the device;;1.0;0.0;;4
 10;4;30535;U16;;Metering.DyWhOut_1_AC;;1.0;0.0;;4
 11;4;30537;U16;;Metering.DyWhOut_2_AC;;1.0;0.0;;4
 12;4;30539;U16;;Metering.DyWhOut_3_AC;;1.0;0.0;;4
@@ -103,4 +103,4 @@
 102;4;31215;U16;;Entree courant DC_12;;1.0;0.0;;4
 103;4;31217;U16;;Entree tension DC_6;;1.0;0.0;;4
 104;4;31219;U16;;Entree puissance DC_6;;1.0;0.0;;4
-105;4;30251;U16;;Etat de verrouillage;lock;1.0;0.0;;4
+105;4;30251;U16;;Etat de verrouillage;;1.0;0.0;;4

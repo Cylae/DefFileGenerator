@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;ABB;Sunspec;;;;;;;
+ModbusRTU;Inverter;ABB;Sunspec;;;;;;;
 1;3;40000_2;STRING;;1_SunS;;1.0;0.0;;1
 2;3;40002;U16;;1_Common_ID;;1.0;0.0;;4
 3;3;40003;U16;;1_Common_L;;1.0;0.0;;4

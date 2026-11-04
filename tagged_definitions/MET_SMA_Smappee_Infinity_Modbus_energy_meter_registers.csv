@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;SMA;Smappee Infinity Modbus energy;;;;;;;
+modbusRTU;Meter;SMA;Smappee Infinity Modbus energy;;;;;;;
 1;4;0;U16;;Root Mean Square Voltage, 1 second average;;1.0;0.0;Volt;4
 2;4;2;U16;;Root Mean Square Fundamental Voltage, 1 second average;;1.0;0.0;Volt;4
 3;4;4;U16;;Root Mean Square Voltage, 1 second average;;1.0;0.0;Volt;4
@@ -1658,5 +1658,5 @@
 1657;4;65002;U16;;Device status;;1.0;0.0;;4
 1658;4;65003;U16;;Firmware upgrade status;;1.0;0.0;;4
 1659;4;65004;U16;;Device type;MODEL;1.0;0.0;;1
-1660;4;65005;U16;;Device serial;;1.0;0.0;;1
+1660;4;65005;U16;;Device serial;SERIAL;1.0;0.0;;1
 1661;4;65007;U16;;Modbus Address;UNIT_ID;1.0;0.0;;1

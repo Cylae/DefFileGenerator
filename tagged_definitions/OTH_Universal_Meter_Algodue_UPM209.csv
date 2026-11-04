@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Universal Meter;Algodue_UPM209;;;;;;;
+modbusRTU;Other;Universal Meter;Algodue_UPM209;;;;;;;
 1;4;1;U16;;Phase 1-N voltage;U_AC_1;1.0;0.0;V;4
 2;4;2;U16;;Phase 2-N voltage;U_AC_2;1.0;0.0;V;4
 3;4;3;U16;;Phase 3-N voltage;U_AC_3;1.0;0.0;V;4

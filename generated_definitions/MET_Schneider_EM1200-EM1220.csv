@@ -1,33 +1,33 @@
 Modbus;Meter;Schneider;EM1200-EM1220
 1;3;3057;F32;;A  Current average;;1.0;0.0;;4
-2;3;3009;F32;;A1  Current_ phase 1;I_AC_1;1.0;0.0;;4
-3;3;3025;F32;;A2  Current_ phase 2;I_AC_2;1.0;0.0;;4
-4;3;3041;F32;;A3  Current_ phase 3;I_AC_3;1.0;0.0;;4
+2;3;3009;F32;;A1  Current_ phase 1;;1.0;0.0;;4
+3;3;3025;F32;;A2  Current_ phase 2;;1.0;0.0;;4
+4;3;3041;F32;;A3  Current_ phase 3;;1.0;0.0;;4
 5;3;3059;F32;;V LL  Voltage (LL) average;;1.0;0.0;;4
-6;3;3011;F32;;V12  Voltage(LL)_ phase 1-2;U_AC_1;1.0;0.0;;4
-7;3;3027;F32;;V23  Voltage(LL)_ phase 2-3;U_AC_2;1.0;0.0;;4
-8;3;3043;F32;;V31  Voltage(LL)_ phase 3-1;U_AC_3;1.0;0.0;;4
+6;3;3011;F32;;V12  Voltage(LL)_ phase 1-2;;1.0;0.0;;4
+7;3;3027;F32;;V23  Voltage(LL)_ phase 2-3;;1.0;0.0;;4
+8;3;3043;F32;;V31  Voltage(LL)_ phase 3-1;;1.0;0.0;;4
 9;3;3061;F32;;V LN  Voltage(LN) average;;1.0;0.0;;4
 10;3;3013;F32;;V1  Voltage(LN)_ phase 1;;1.0;0.0;;4
 11;3;3029;F32;;V2  Voltage(LN)_ phase 2;;1.0;0.0;;4
 12;3;3045;F32;;V3  Voltage(LN)_ phase 3;;1.0;0.0;;4
-13;3;3063;F32;;F  Frequency;FREQ;1.0;0.0;;4
+13;3;3063;F32;;F  Frequency;;1.0;0.0;;4
 14;3;3051;F32;;W Active power_ total;P_AC;1.0;0.0;;4
 15;3;3003;F32;;W1 Active power_ phase 1;P_AC_1;1.0;0.0;;4
 16;3;3019;F32;;W2 Active power_ phase 2;P_AC_2;1.0;0.0;;4
 17;3;3035;F32;;W3 Active power_ phase 3;P_AC_3;1.0;0.0;;4
-18;3;3053;F32;;VAR  Reactive power_ total;Q_AC;1.0;0.0;;4
-19;3;3005;F32;;VAR1 Reactive power_ phase 1;Q_AC_1;1.0;0.0;;4
-20;3;3021;F32;;VAR2 Reactive power_ phase 2;Q_AC_2;1.0;0.0;;4
-21;3;3037;F32;;VAR3 Reactive power_ phase 3;Q_AC_3;1.0;0.0;;4
-22;3;3049;F32;;VA Apparent power_ total;S_AC;1.0;0.0;;4
-23;3;3001;F32;;VA1 Apparent power_ phase 1;S_AC_1;1.0;0.0;;4
-24;3;3017;F32;;VA2 Apparent power_ phase 2;S_AC_2;1.0;0.0;;4
-25;3;3033;F32;;VA3 Apparent power_ phase 3;S_AC_3;1.0;0.0;;4
-26;3;3055;F32;;PF Power factor total;PF;1.0;0.0;;4
-27;3;3007;F32;;PF1 Power factor_ phase 1;PF_1;1.0;0.0;;4
-28;3;3023;F32;;PF2 Power factor_ phase 2;PF_2;1.0;0.0;;4
-29;3;3039;F32;;PF3 Power factor_ phase 3;PF_3;1.0;0.0;;4
+18;3;3053;F32;;VAR  Reactive power_ total;;1.0;0.0;;4
+19;3;3005;F32;;VAR1 Reactive power_ phase 1;;1.0;0.0;;4
+20;3;3021;F32;;VAR2 Reactive power_ phase 2;;1.0;0.0;;4
+21;3;3037;F32;;VAR3 Reactive power_ phase 3;;1.0;0.0;;4
+22;3;3049;F32;;VA Apparent power_ total;;1.0;0.0;;4
+23;3;3001;F32;;VA1 Apparent power_ phase 1;;1.0;0.0;;4
+24;3;3017;F32;;VA2 Apparent power_ phase 2;;1.0;0.0;;4
+25;3;3033;F32;;VA3 Apparent power_ phase 3;;1.0;0.0;;4
+26;3;3055;F32;;PF Power factor total;;1.0;0.0;;4
+27;3;3007;F32;;PF1 Power factor_ phase 1;;1.0;0.0;;4
+28;3;3023;F32;;PF2 Power factor_ phase 2;;1.0;0.0;;4
+29;3;3039;F32;;PF3 Power factor_ phase 3;;1.0;0.0;;4
 30;3;3201;F32;;FwdVAh Forward apparent energy;;1.0;0.0;;4
 31;3;3203;F32;;FwdWh Forward active energy;;1.0;0.0;;4
 32;3;3205;F32;;FwdVARh Forward reactive energy;;1.0;0.0;;4
@@ -87,7 +87,7 @@ Modbus;Meter;Schneider;EM1200-EM1220
 86;3;11_20;STRING;;Product code   EM1200  _  EM1220;;1.0;0.0;;4
 87;3;21_10;STRING;;FW version;;1.0;0.0;;4
 88;3;26;U16;;Firmware Version;;1.0;0.0;;4
-89;3;27;U16;;Model no(model tag);MODEL;1.0;0.0;;4
+89;3;27;U16;;Model no(model tag);;1.0;0.0;;4
 90;3;28_6;STRING;;HW_version;;1.0;0.0;;4
 91;3;7001;F32;;FwdVAh Forward apparent energy old;;1.0;0.0;;4
 92;3;7003;F32;;FwdWh Forward active energy old;;1.0;0.0;;4

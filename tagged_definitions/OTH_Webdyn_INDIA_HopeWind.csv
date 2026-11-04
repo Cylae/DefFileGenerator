@@ -1,4 +1,4 @@
-﻿ModbusRTU;Other;Inverter;HopeWind;;;;;;;
+ModbusRTU;Other;Inverter;HopeWind;;;;;;;
 1;3;40300;U16;;MPPT1 Input Voltage;U_DC_MPPT_1;1.0;0.0;;4
 2;3;40301;U16;;MPPT2 Input Voltage;U_DC_MPPT_2;1.0;0.0;;4
 3;3;40302;U16;;MPPT3 Input Voltage;U_DC_MPPT_3;1.0;0.0;;4

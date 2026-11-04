@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
+modbusRTU;Inverter;BONFIGLIOLI;Generic;;;;;;;
 1;3;3841;I16;;Active Power;P_AC;1;0;kW;4
 2;3;3842;I16;;DC-Link Voltage;U_DC;1;0;V;4
 3;3;3843;I16;;Heat Sink Temperature;TEMP_INT;1;0;C;4

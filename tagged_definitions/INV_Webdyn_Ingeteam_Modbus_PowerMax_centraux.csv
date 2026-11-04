@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Ingeteam;PowerMax_Centraux;;;;;;;
+ModbusRTU;Inverter;Ingeteam;PowerMax_Centraux;;;;;;;
 1;4;0;U32;;Ah_Total;;1.0;0.0;;4
 2;4;2;U32;;Operating Time;;1.0;0.0;;4
 3;4;4_0;I8;;Current from Strings 1;;1.0;0.0;;4

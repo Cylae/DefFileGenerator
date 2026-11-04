@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Lettel;MCX2;;;;;;;
+ModbusRTU;Meter;Lettel;MCX2;;;;;;;
 1;4;0;F32;;Tension_Float;;0.01;0;V;4
 2;4;6;F32;;Courant_Float;;0.001;0;A;4
 3;4;12;F32;;Puissance active_Float;;0.001;0;Kw;4

@@ -1,6 +1,6 @@
 modbusRTU;Meter;Schneider;IEM 3255;;;;;;;
 1;3;2003;U32;;OperationTimer;;1.000000;0.000000;s;4
-2;3;6500;U16;;Address;UNIT_ID;1.000000;0.000000;;4
+2;3;6500;U16;;Address;;1.000000;0.000000;;4
 3;3;6501;U16;;vitesse;;1.000000;0.000000;;4
 4;3;6502;U16;;parity;;1.000000;0.000000;;4
 5;3;8904;U16;;Digital Input Status;;1.000000;0.000000;;4
@@ -10,9 +10,9 @@ modbusRTU;Meter;Schneider;IEM 3255;;;;;;;
 9;3;3005;F32;;reserved_1;;1.000000;0.000000;;0
 10;3;3007;F32;;reserved_2;;1.000000;0.000000;;0
 11;3;3009;F32;;Current Avg;;1.000000;0.000000;A;4
-12;3;3019;F32;;Voltage L1L2;U_AC_L1L2;1.000000;0.000000;V;4
-13;3;3021;F32;;Voltage L2L3;U_AC_L2L3;1.000000;0.000000;V;4
-14;3;3023;F32;;Voltage L3L1;U_AC_L3L1;1.000000;0.000000;V;4
+12;3;3019;F32;;Voltage L1L2;;1.000000;0.000000;V;4
+13;3;3021;F32;;Voltage L2L3;;1.000000;0.000000;V;4
+14;3;3023;F32;;Voltage L3L1;;1.000000;0.000000;V;4
 15;3;3025;F32;;Voltage LL Avg;;1.000000;0.000000;V;4
 16;3;3027;F32;;Voltage L1N;;1.000000;0.000000;V;4
 17;3;3029;F32;;Voltage L2N;;1.000000;0.000000;V;4
@@ -40,8 +40,8 @@ modbusRTU;Meter;Schneider;IEM 3255;;;;;;;
 39;3;3555;U8;;Input Accumulation Reset min;;1.000000;0.000000;;0
 40;3;3556;U16;;Input Accumulation Reset ms;;1.000000;0.000000;;0
 41;3;4190;U16;;MultiTariffs Energy Active Rate;;1.000000;0.000000;;0
-42;3;45099;F32;;Total Active Energy Import;E_IMP;1.000000;0.000000;Wh;4
-43;3;45101;F32;;Total Active Energy Export;E_EXP;1.000000;0.000000;Wh;4
+42;3;45099;F32;;Total Active Energy Import;;1.000000;0.000000;Wh;4
+43;3;45101;F32;;Total Active Energy Export;;1.000000;0.000000;Wh;4
 44;3;45103;F32;;Total Reactive Energy Import;;1.000000;0.000000;VARh;4
 45;3;45105;F32;;Total Reactive Energy Export;;1.000000;0.000000;VARh;4
 46;3;45107;F32;;Partial Active Energy Import;;1.000000;0.000000;Wh;4

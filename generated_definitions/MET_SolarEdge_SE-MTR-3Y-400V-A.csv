@@ -1,8 +1,8 @@
 modbusRTU;Meter;SOLAREDGE;SE-MTR-3Y-400V-A;;;;;;;
 1;3;40121;U16;;C_SunSpec_DID;;1;0;;4
 2;3;40122;U16;;C_SunSpec_Length;;1;0;;4
-3;3;40123_32;STRING;;C_Manufacturer;MANUFACTURER;1;0;;4
-4;3;40139_32;STRING;;C_Model;MODEL;1;0;;4
+3;3;40123_32;STRING;;C_Manufacturer;;1;0;;4
+4;3;40139_32;STRING;;C_Model;;1;0;;4
 5;3;40155_16;STRING;;C_Option;;1;0;;4
 6;3;40163_16;STRING;;C_Version;;1;0;;4
 7;3;40171_32;STRING;;C_SerialNumber;;1;0;;4
@@ -80,7 +80,7 @@ modbusRTU;Meter;SOLAREDGE;SE-MTR-3Y-400V-A;;;;;;;
 79;3;40288;U32;;M_Export_VARh_ Q4B;;1;0;VAR-hours;4
 80;3;40290;U32;;M_Export_VARh_ Q4C;;1;0;VAR-hours;4
 81;3;40292;I16;;M_Energy_VAR_ SF;;1;0;SF;4
-82;3;40293;U32;;M_Events;WIND_SPEED;1;0;Flags;4
+82;3;40293;U32;;M_Events;;1;0;Flags;4
 83;3;40295;U16;;C_SunSpec_DID_1;;1;0;;4
 84;3;40296;U16;;C_SunSpec_Length_1;;1;0;;4
 85;3;40297_32;STRING;;C_Manufacturer_1;;1;0;;4

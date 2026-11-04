@@ -1,4 +1,4 @@
-﻿ModbusRTU;Other;Schneider;NSX;1;;;;;;
+ModbusRTU;Other;Schneider;NSX;1;;;;;;
 1;3;7999;U16;;Code commande - 8000;;1.0;0.0;;4
 2;3;8000;U16;;Nb parametres - 8001;;1.0;0.0;;4
 3;3;8001;U16;;Destination - 8002;;1.0;1.0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SolarLog;SOLARLOG_PRO380_Test_Float;;;;;;;
+modbusRTU;Other;SolarLog;SOLARLOG_PRO380_Test_Float;;;;;;;
 1;4;4096;U16;;Serial number;SERIAL;1.0;0.0;;4
 2;4;4112;U16;;Meter code;;1.0;0.0;;4
 3;4;4120;U16;;Meter ID (Mbus/Modbus);;1.0;0.0;;4
@@ -37,8 +37,8 @@
 36;4;8428;U16;;L2 Power Factor;PF_2;1.0;0.0;;4
 37;4;8432;U16;;L3 Power Factor;PF_3;1.0;0.0;;4
 38;4;8704;U16;;Tariff;;1.0;0.0;;4
-39;4;12288;U16;;Total Active Energy;;1.0;0.0;;4
-40;4;12544;U16;;T1 Total Active Energy;E_TOT;1.0;0.0;;4
+39;4;12288;U16;;Total Active Energy;E_TOT;1.0;0.0;;4
+40;4;12544;U16;;T1 Total Active Energy;;1.0;0.0;;4
 41;4;12800;U16;;T2 Total Active Energy;;1.0;0.0;;4
 42;4;12296;U16;;L1 Total Active Energy;E_TOT_1;1.0;0.0;;4
 43;4;12300;U16;;L2 Total Active Energy;E_TOT_2;1.0;0.0;;4

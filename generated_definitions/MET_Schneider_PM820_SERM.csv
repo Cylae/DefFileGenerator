@@ -3,7 +3,7 @@ modbusRTU;Meter;Schneider;PM820;;;;;;;
 2;4;1119;U16;;U efficaces entre phases 1 et 2;;1;0;V;4
 3;4;1142;I16;;Puissance active totale;P_AC;1;0;kW;4
 4;4;1146;I16;;Puissance reactive totale;Q_AC;1;0;kvar;4
-5;4;1162;I16;;Facteur de puissance vrai totale;PF;0.001;0;;4
+5;4;1162;I16;;Facteur de puissance vrai totale;;0.001;0;;4
 6;4;1170;I16;;Cos Phi total;;0.001;0;;4
 7;4;1179;I16;;Frequence;FREQ;0.01;0;Hz;4
 8;4;1699;U64;;Energie active (entree);;1;0;Wh;4

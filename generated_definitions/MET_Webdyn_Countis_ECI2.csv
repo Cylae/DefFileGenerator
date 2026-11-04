@@ -1,5 +1,5 @@
 ModbusRTU;Meter;Socomec;Countis ECI2
-1;3;50792;U32;;EnergieTotale_1;E_TOT;1.0;0.0;kWh;4
+1;3;50792;U32;;EnergieTotale_1;;1.0;0.0;kWh;4
 2;3;50794;U32;;EnergieTotale_2;;1.0;0.0;kWh;4
 3;3;50796;U32;;EnergieTotale_3;;1.0;0.0;kWh;4
 4;3;50798;U32;;EnergieTotale_4;;1.0;0.0;kWh;4

@@ -1,11 +1,11 @@
 modbusRTU;Meter;ELSTER;A1800;;;;;;;
 1;3;40001;U16;;Frequency;FREQ;0.01;0;Hz;4
-2;3;40002;U16;;Line 1 current;I_AC_1;0.01;0;A;4
-3;3;40003;U16;;Line 2 current;I_AC_2;0.01;0;A;4
+2;3;40002;U16;;Line 1 current;;0.01;0;A;4
+3;3;40003;U16;;Line 2 current;;0.01;0;A;4
 4;3;40004;U16;;Line 3 curent;;0.01;0;A;4
-5;3;40005;U16;;Line 1 voltage;U_AC_1;0.01;0;V;4
-6;3;40006;U16;;Line 2 voltage;U_AC_2;0.01;0;V;4
-7;3;40007;U16;;Line 3 voltage;U_AC_3;0.01;0;V;4
+5;3;40005;U16;;Line 1 voltage;;0.01;0;V;4
+6;3;40006;U16;;Line 2 voltage;;0.01;0;V;4
+7;3;40007;U16;;Line 3 voltage;;0.01;0;V;4
 8;3;40008;U16;;Line 1 Current Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
 9;3;40009;U16;;Line 2 Current Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
 10;3;40010;U16;;Line 3 Current Angle wrt/ Line 1 Voltage;;0.1;0;Degree;4
@@ -24,7 +24,7 @@ modbusRTU;Meter;ELSTER;A1800;;;;;;;
 23;3;40032;I32;;Line 2 VAs;;0.01;0;VAs;4
 24;3;40034;I32;;Line 3 VAs;;0.01;0;VAs;4
 25;3;40036;I32;;Total (System) VAs;;0.01;0;VAs;4
-26;3;40038;I16;;Line 1 Power Factor;PF;0.0001;0;;4
+26;3;40038;I16;;Line 1 Power Factor;;0.0001;0;;4
 27;3;40039;I16;;Line 2 Power Factor;;0.0001;0;;4
 28;3;40040;I16;;Line 3 Power Factor;;0.0001;0;;4
 29;3;40041;I16;;Total (System) Power;;0.0001;0;;4
@@ -41,12 +41,12 @@ modbusRTU;Meter;ELSTER;A1800;;;;;;;
 40;3;40057;I32;;VA-hours, received;;1;0;VAHr;4
 41;3;40059;I16;;VA-hours, received_1;;1;0;VAHr;4
 42;3;41000_4;STRING;;Manufacture String;;1;0;;4
-43;3;41002_8;STRING;;Model String;MODEL;1;0;;4
+43;3;41002_8;STRING;;Model String;;1;0;;4
 44;3;41006;I16;;Hardware Version;;1;0;;4
 45;3;41007;I16;;Hardware Revision;;1;0;;4
 46;3;41008;I16;;Firmware Version;;1;0;;4
 47;3;41009;I16;;Firmware Revision;;1;0;;4
-48;3;41010_16;STRING;;Serial Number String;SERIAL;1;0;;4
+48;3;41010_16;STRING;;Serial Number String;;1;0;;4
 49;3;41018_4;STRING;;Manufacture String (ACB Option Board);;1;0;;1
 50;3;41020_8;STRING;;Model String (ACB Option Board);;1;0;;1
 51;3;41024;U16;;Hardware Version (ACB Option Board);;1;0;;1

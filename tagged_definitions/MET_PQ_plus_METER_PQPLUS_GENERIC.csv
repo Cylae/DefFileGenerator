@@ -1,4 +1,4 @@
-﻿modbus;Meter;PQ PLUS;GENERIC;;;;;;;
+modbus;Meter;PQ PLUS;GENERIC;;;;;;;
 1;3;25946;F32;;Puissance active Phase L1;P_AC_1;0.001;0;kW;4
 2;3;25948;F32;;Puissance ractive Phase L1;;1;0;var;4
 3;3;25950;F32;;Puissance apparente Phase L1;S_AC_1;1;0;VA;4

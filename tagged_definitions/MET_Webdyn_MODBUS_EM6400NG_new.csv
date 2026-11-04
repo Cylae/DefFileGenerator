@@ -1,5 +1,5 @@
-﻿ModbusRTU;Meter;Schneider;EM 6400 NG NEW;;;;;;;
-1;3;2699;F32;;Active energy;;1.0;0.0;kWh;4
+ModbusRTU;Meter;Schneider;EM 6400 NG NEW;;;;;;;
+1;3;2699;F32;;Active energy;E_TOT;1.0;0.0;kWh;4
 2;3;3059;F32;;Active Power;P_AC;1.0;0.0;kW;4
 3;3;3027;F32;;R-N Phase Voltage;;1.0;0.0;VLNr;4
 4;3;3029;F32;;Y-N Phase Voltage;;1.0;0.0;VLNy;4

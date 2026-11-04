@@ -20,17 +20,17 @@ Modbus;Inverter;CyberPower;GENERIC
 19;4;8534;U32_W;;EPS today energy;;0.1;0.0;Wh;4
 20;4;8536;U32_W;;EPS life energy;;0.1;0.0;Wh;4
 21;4;8540;U32_W;;Battery charge today energy;;0.1;0.0;Wh;4
-22;4;8596;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;2
-23;4;8597;U16;;PV1 Current;I_DC_STRING_1;0.01;0.0;A;2
+22;4;8596;U16;;PV1 Voltage;;0.1;0.0;V;2
+23;4;8597;U16;;PV1 Current;;0.01;0.0;A;2
 24;4;8598;U16;;PV1 Power;;1.0;0.0;W;2
-25;4;8599;U16;;PV2 Voltage;U_DC_STRING_2;0.1;0.0;V;2
-26;4;8600;U16;;PV2 Current;I_DC_STRING_2;0.01;0.0;A;2
+25;4;8599;U16;;PV2 Voltage;;0.1;0.0;V;2
+26;4;8600;U16;;PV2 Current;;0.01;0.0;A;2
 27;4;8601;U16;;PV2 Power;;1.0;0.0;W;2
-28;4;8602;U16;;PV3 Voltage;U_DC_STRING_3;0.1;0.0;V;2
-29;4;8603;U16;;PV3 Current;I_DC_STRING_3;0.01;0.0;A;2
+28;4;8602;U16;;PV3 Voltage;;0.1;0.0;V;2
+29;4;8603;U16;;PV3 Current;;0.01;0.0;A;2
 30;4;8604;U16;;PV3 Power;;1.0;0.0;W;2
-31;4;8605;U16;;PV4 Voltage;U_DC_STRING_4;0.1;0.0;V;2
-32;4;8606;U16;;PV4 Current;I_DC_STRING_4;0.01;0.0;A;2
+31;4;8605;U16;;PV4 Voltage;;0.1;0.0;V;2
+32;4;8606;U16;;PV4 Current;;0.01;0.0;A;2
 33;4;8607;U16;;PV4 Power;;1.0;0.0;W;2
 34;4;8608;U16;;Grid phase-A voltage;;0.1;0.0;V;2
 35;4;8609;U16;;Grid phase-B voltage;;0.1;0.0;V;2
@@ -46,19 +46,19 @@ Modbus;Inverter;CyberPower;GENERIC
 45;4;8619;U16;;Grid phase-CA voltage;;0.1;0.0;V;2
 46;4;8620;U16;;Grid Frequency;FREQ;0.01;0.0;Hz;2
 47;4;8621;U16;;Grid output active power;P_AC;1.0;0.0;W;2
-48;4;8622;U16;;Grid output apparent power;S_AC;1.0;0.0;VA;2
-49;4;8623;U16;;Grid output reactive power;Q_AC;1.0;0.0;VAr;2
+48;4;8622;U16;;Grid output apparent power;;1.0;0.0;VA;2
+49;4;8623;U16;;Grid output reactive power;;1.0;0.0;VAr;2
 50;4;8624;U16;;Power scale factor;;1.0;0.0;;2
-51;4;8633;U16;;BUS1_Voltage;U_DC;0.1;0.0;V;4
+51;4;8633;U16;;BUS1_Voltage;;0.1;0.0;V;4
 52;4;8634;U16;;BUS2_Voltage;;0.1;0.0;V;4
 53;4;8635;U16;;PV Rleakage;;1.0;0.0;kOhm;4
-54;4;8636;I16;;Temperature;TEMP;0.1;0.0;C;4
+54;4;8636;I16;;Temperature;;0.1;0.0;C;4
 55;4;8637;I16;;Temp air inside;;0.1;0.0;C;4
 56;4;8638;I16;;Highest Inv Temp;;0.1;0.0;C;4
 57;4;8639;I16;;Highest DD Temp;;0.1;0.0;C;4
 58;4;8640;U16;;CPS_PV_Status;;1.0;0.0;C;8
 59;4;8641;U16;;Reconnection Time;;1.0;0.0;C;1
-60;4;8642;U32_W;;I_Event_flags1;WIND_SPEED;1.0;0.0;Bitfield;8
+60;4;8642;U32_W;;I_Event_flags1;;1.0;0.0;Bitfield;8
 61;4;8644;U32_W;;I_Event_flags2;;1.0;0.0;Bitfield;8
 62;4;8646;U16;;I_Event_1_Vendor;;1.0;0.0;Bitfield;8
 63;4;8647;U16;;I_Event_2_Vendor;;1.0;0.0;Bitfield;8
@@ -83,17 +83,17 @@ Modbus;Inverter;CyberPower;GENERIC
 82;4;8200;U16;;String Negative fuse flags;;1.0;0.0;Bitfield;8
 83;4;8201;U16;;String Positive fuse flags 2;;1.0;0.0;Bitfield;8
 84;4;8202;U16;;String Negative fuse flags 2;;1.0;0.0;Bitfield;8
-85;4;8208;U16;;PV1 String 1 voltage;;0.1;0.0;V;4
-86;4;8209;U16;;PV1 String 1 current;;0.01;0.0;A;4
+85;4;8208;U16;;PV1 String 1 voltage;U_DC_STRING_1;0.1;0.0;V;4
+86;4;8209;U16;;PV1 String 1 current;I_DC_STRING_1;0.01;0.0;A;4
 87;4;8210;U16;;PV1 String 1 power;;1.0;0.0;W;4
-88;4;8211;U16;;PV1 String 2 voltage;;0.1;0.0;V;4
-89;4;8212;U16;;PV1 String 2 current;;0.01;0.0;A;4
+88;4;8211;U16;;PV1 String 2 voltage;U_DC_STRING_2;0.1;0.0;V;4
+89;4;8212;U16;;PV1 String 2 current;I_DC_STRING_2;0.01;0.0;A;4
 90;4;8213;U16;;PV1 String 2 power;;1.0;0.0;W;4
-91;4;8214;U16;;PV1 String 3 voltage;;0.1;0.0;V;4
-92;4;8215;U16;;PV1 String 3 current;;0.01;0.0;A;4
+91;4;8214;U16;;PV1 String 3 voltage;U_DC_STRING_3;0.1;0.0;V;4
+92;4;8215;U16;;PV1 String 3 current;I_DC_STRING_3;0.01;0.0;A;4
 93;4;8216;U16;;PV1 String 3 power;;1.0;0.0;W;4
-94;4;8217;U16;;PV1 String 4 voltage;;0.1;0.0;V;4
-95;4;8218;U16;;PV1 String 4 current;;0.01;0.0;A;4
+94;4;8217;U16;;PV1 String 4 voltage;U_DC_STRING_4;0.1;0.0;V;4
+95;4;8218;U16;;PV1 String 4 current;I_DC_STRING_4;0.01;0.0;A;4
 96;4;8219;U16;;PV1 String 4 power;;1.0;0.0;W;4
 97;4;8220;U16;;PV2 String 1 voltage;;0.1;0.0;V;4
 98;4;8221;U16;;PV2 String 1 current;;0.01;0.0;A;4
@@ -220,27 +220,27 @@ Modbus;Inverter;CyberPower;GENERIC
 219;4;17690;U32_W;;PV11 Life energy;;0.1;0.0;kWh;4
 220;4;17692;U32_W;;PV12 Today energy;;0.1;0.0;kWh;4
 221;4;17694;U32_W;;PV12 Life energy;;0.1;0.0;kWh;4
-222;4;17744;U16;;PV5 Voltage;U_DC_STRING_5;0.1;0.0;V;4
+222;4;17744;U16;;PV5 Voltage;;0.1;0.0;V;4
 223;4;17745;U16;;PV5 Curent;;0.01;0.0;A;4
 224;4;17746;U16;;PV5 Power;;0.01;0.0;W;4
-225;4;17747;U16;;PV6 Voltage;U_DC_STRING_6;0.1;0.0;V;4
+225;4;17747;U16;;PV6 Voltage;;0.1;0.0;V;4
 226;4;17748;U16;;PV6 Curent;;0.01;0.0;A;4
 227;4;17749;U16;;PV6 Power;;0.01;0.0;W;4
-228;4;17750;U16;;PV7 Voltage;U_DC_STRING_7;0.1;0.0;V;4
+228;4;17750;U16;;PV7 Voltage;;0.1;0.0;V;4
 229;4;17751;U16;;PV7 Curent;;0.01;0.0;A;4
 230;4;17752;U16;;PV7 Power;;0.01;0.0;W;4
-231;4;17753;U16;;PV8 Voltage;U_DC_STRING_8;0.1;0.0;V;4
+231;4;17753;U16;;PV8 Voltage;;0.1;0.0;V;4
 232;4;17754;U16;;PV8 Curent;;0.01;0.0;A;4
 233;4;17755;U16;;PV8 Power;;0.01;0.0;W;4
-234;4;17756;U16;;PV9 Voltage;U_DC_STRING_9;0.1;0.0;V;4
+234;4;17756;U16;;PV9 Voltage;;0.1;0.0;V;4
 235;4;17757;U16;;PV9 Curent;;0.01;0.0;A;4
 236;4;17758;U16;;PV9 Power;;0.01;0.0;W;4
-237;4;17759;U16;;PV10 Voltage;U_DC_STRING_10;0.1;0.0;V;4
+237;4;17759;U16;;PV10 Voltage;;0.1;0.0;V;4
 238;4;17760;U16;;PV10 Curent;;0.01;0.0;A;4
 239;4;17761;U16;;PV10 Power;;0.01;0.0;W;4
-240;4;17762;U16;;PV11 Voltage;U_DC_STRING_11;0.1;0.0;V;4
+240;4;17762;U16;;PV11 Voltage;;0.1;0.0;V;4
 241;4;17763;U16;;PV11 Curent;;0.01;0.0;A;4
 242;4;17764;U16;;PV11 Power;;0.01;0.0;W;4
-243;4;17765;U16;;PV12 Voltage;U_DC_STRING_12;0.1;0.0;V;4
+243;4;17765;U16;;PV12 Voltage;;0.1;0.0;V;4
 244;4;17766;U16;;PV12 Curent;;0.01;0.0;A;4
 245;4;17767;U16;;PV12 Power;;0.01;0.0;W;4

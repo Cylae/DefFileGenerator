@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;GREENHEISS;GH-IT 3-4-9M;;;;;;;
+modbusRTU;Inverter;GREENHEISS;GH-IT 3-4-9M;;;;;;;
 1;4;36608;U16;;Type;;1;0;;4
 2;4;36609;U16;;SubType;;1;0;;4
 3;4;36610;U16;;"CommProVersio

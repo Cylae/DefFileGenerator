@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
+ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 1;4;0_4;STRING;;Protocol Identifier;;1;0;;4
 2;4;18_32;STRING;;Model Type;MODEL;1;0;;4
 3;4;34_32;STRING;;Software Version;;1;0;;4

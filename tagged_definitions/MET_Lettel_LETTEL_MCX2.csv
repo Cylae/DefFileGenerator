@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Lettel;LETTEL_MCX2;;;;;;;
+modbusRTU;Meter;Lettel;LETTEL_MCX2;;;;;;;
 1;4;0;U16;;Tension_Float;;1.0;0.0;V;4
 2;4;6;U16;;Courant_Float;;1.0;0.0;A;4
 3;4;12;U16;;Puissance active_Float;;1.0;0.0;Kw;4

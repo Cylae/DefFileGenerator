@@ -1,18 +1,18 @@
 ModbusTCP;Inverter;Solax;X1-X3 Generic;;;;;;;
-1;3;0_7;STRING;;SeriesNumber;SERIAL;1;0;;4
+1;3;0_7;STRING;;SeriesNumber;;1;0;;4
 2;3;7_7;STRING;;FactoryName;;1;0;;4
 3;3;14_7;STRING;;ModuleName;;1;0;;4
 4;4;0;U16;;GridVoltage(X1);;0.1;0;V;4
-5;4;1;I16;;GridCurrent(X1);I_DC;0.1;0;A;4
+5;4;1;I16;;GridCurrent(X1);;0.1;0;A;4
 6;4;2;I16;;GridPower(X1);;1;0;W;4
 7;4;3;U16;;PvVoltage1;;0.1;0;V;4
 8;4;4;U16;;PvVoltage2;;0.1;0;V;4
 9;4;5;U16;;PvCurrent1;;0.1;0;A;4
 10;4;6;U16;;PvCurrent2;;0.1;0;A;4
-11;4;7;U16;;GridFrequency(X1);FREQ;0.01;0;Hz;4
-12;4;8;I16;;Temperature;TEMP;1;0;Degr.celsius;4
+11;4;7;U16;;GridFrequency(X1);;0.01;0;Hz;4
+12;4;8;I16;;Temperature;;1;0;Degr.celsius;4
 13;4;9;U16;;RunMode;;1;0;;4
-14;4;10;U16;;Powerdc1;P_DC;1;0;W;4
+14;4;10;U16;;Powerdc1;;1;0;W;4
 15;4;11;U16;;Powerdc2;;1;0;W;4
 16;4;12;I16;;TemperFaultValue;;1;0;Degr.celsius;4
 17;4;13;U16;;Pv1VoltFaultValue;;0.1;0;V;4
@@ -33,7 +33,7 @@ ModbusTCP;Inverter;Solax;X1-X3 Generic;;;;;;;
 32;4;28;U16;;Battery Capacity;;1;0;%;4
 33;4;29;U16;;OutputEnergy_Charge.LSB;;0.1;0;kWh;4
 34;4;30;U16;;OutputEnergy_Charge.MSB;;0.1;0;kWh;4
-35;4;32;U16;;OutputEnergy_Charge_today;E_DAY;0.1;0;kWh;4
+35;4;32;U16;;OutputEnergy_Charge_today;;0.1;0;kWh;4
 36;4;33;U16;;InputEnergy_Charge.LSB;;0.1;0;kWh;4
 37;4;34;U16;;InputEnergy_Charge.MSB;;0.1;0;kWh;4
 38;4;35;U16;;InputEnergy_Charge_today;;0.1;0;kWh;4
@@ -47,8 +47,8 @@ ModbusTCP;Inverter;Solax;X1-X3 Generic;;;;;;;
 46;4;67;U16;;Mgr FaultMessage;;1;0;;4
 47;4;68;U16;;Bat_BMS_FaultMessage.LSB;;1;0;;4
 48;4;69;U16;;Bat_BMS_FaultMessage.MSB;;1;0;;4
-49;4;70;I32_W;;feedin_power;P_AC;1;0;W;4
-50;4;72;U32_W;;feedin_energy_total(meter);E_TOT;0.01;0;kWh;4
+49;4;70;I32_W;;feedin_power;;1;0;W;4
+50;4;72;U32_W;;feedin_energy_total(meter);;0.01;0;kWh;4
 51;4;74;U32_W;;consum_energy_total(meter);;0.01;0;kWh;4
 52;4;76;U16;;Off-gridVoltage(X1);;0.1;0;V;4
 53;4;77;U16;;Off-gridCurrent(X1);;0.1;0;A;4
@@ -117,7 +117,7 @@ ModbusTCP;Inverter;Solax;X1-X3 Generic;;;;;;;
 116;4;189;U16;;Cell_Voltage_Low;;0.001;0;V;4
 117;4;190;U16;;BMS_UserSOC;;1;0;%;4
 118;4;191;U16;;BMS_UserSOH;;1;0;%;4
-119;4;192;I16;;GridReactivePower_Total_Meter;Q_AC;1;0;Var;4
+119;4;192;I16;;GridReactivePower_Total_Meter;;1;0;Var;4
 120;4;193;I16;;GridReactivePower_R_Meter;;1;0;Var;4
 121;4;194;I16;;GridReactivePower_S_Meter;;1;0;Var;4
 122;4;195;I16;;GridReactivePower_T_Meter;;1;0;Var;4
@@ -138,7 +138,7 @@ ModbusTCP;Inverter;Solax;X1-X3 Generic;;;;;;;
 137;4;257;U16;;TargetFinishFlag;;1;0;;4
 138;4;258;I32_W;;ActivePowerTarget;;1;0;W;4
 139;4;260;I32_W;;wReactivePowerTarget;;1;0;Var;4
-140;4;262;I32_W;;wActivePowerReal;;1;0;W;4
+140;4;262;I32_W;;wActivePowerReal;P_AC;1;0;W;4
 141;4;264;I32_W;;wReactivePowerReal;;1;0;Var;4
 142;4;266;I32_W;;wActivePower_Upper;;1;0;W;4
 143;4;268;I32_W;;wActivePower_Lower;;1;0;W;4

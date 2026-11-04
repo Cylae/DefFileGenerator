@@ -1,4 +1,4 @@
-﻿Modbus;meter;SOCOMEC;COUNTIS P44;;;;;;;
+Modbus;meter;SOCOMEC;COUNTIS P44;;;;;;;
 1;3;50008;U16;;Serial_AA_SS;;1;0;;4
 2;3;50009;U16;;Serial_SST_L;;1;0;;4
 3;3;50010;U16;;Serial_order;;1;0;;4

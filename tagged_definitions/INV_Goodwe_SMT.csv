@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Goodwe;SMT;1;;;;;;
+Modbus;Inverter;Goodwe;SMT;1;;;;;;
 1;3;0;U16;;Power on voltage;CMD_ON;0.1;0.0;V;1
 2;3;1;U16;;Reconnect time;;1.0;0.0;s;4
 3;3;2;U16;;Lower limit of grid voltage;;0.1;0.0;V;4
@@ -66,7 +66,7 @@
 65;3;797;U16;;NBUS Voltage;;0.1;0.0;V;4
 66;3;799;U16;;Safety Code;;1.0;0.0;;4
 67;3;800;U16;;Feed Power to grid in today/ Daily power generation;;0.1;0.0;kWh;4
-68;3;814;I16;;Power Factor_1;;0.001;0.0;;4
+68;3;814;I16;;Power Factor_1;PF_1;0.001;0.0;;4
 69;3;827;U16;;Year :Month;;1.0;0.0;;4
 70;3;828;U16;;Date :Hour;;1.0;0.0;;4
 71;3;829;U16;;Minute :Second;;1.0;0.0;;4

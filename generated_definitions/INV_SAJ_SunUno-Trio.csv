@@ -24,9 +24,9 @@ ModbusRTU;Inverter;SAJ;Sununo Plus/Suntrio
 23;3;272;U16;;BusVolt;;0.1;0;V;4
 24;3;273;U16;;InvTempC;;0.1;0;C;4
 25;3;274;U16;;GFCI;;1;0;mA;4
-26;3;275;U16;;Power;P_AC;1;0;W;4
+26;3;275;U16;;Power;;1;0;W;4
 27;3;276;U16;;QPower;;1;0;Var;4
-28;3;277;U16;;PF;;0.0001;0;;4
+28;3;277;U16;;PF;PF;0.0001;0;;4
 29;3;278;U16;;L1Volt;;0.1;0;V;4
 30;3;279;U16;;L1Curr;;0.01;0;A;4
 31;3;280;U16;;L1Freq;FREQ_1;0.01;0;Hz;4
@@ -199,4 +199,4 @@ ModbusRTU;Inverter;SAJ;Sununo Plus/Suntrio
 198;3;2745;U32;;Eyear22;;0.01;0;kWh;4
 199;3;2747;U32;;Eyear23;;0.01;0;kWh;4
 200;3;2749;U32;;Eyear24;;0.01;0;kWh;4
-201;3;32799;U16;;LimitPower;CMD_P_AC_SET_PERCENT;1;0;%;4
+201;3;32799;U16;;LimitPower;;1;0;%;4

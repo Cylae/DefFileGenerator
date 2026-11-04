@@ -1,4 +1,4 @@
-﻿modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
+modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 1;4;12288_6;STRING;;DTU Serial Number;SERIAL;1.000000;0.000000;;4
 2;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 3;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4

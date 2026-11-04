@@ -1,7 +1,7 @@
 Modbus;Io;Webdyn;Sens_IO_16DI
 1;3;0;I16;;Serial Number;SERIAL;1.0;0.0;-;4
 2;3;4;I16;;Firmware Version;;1.0;0.0;-;4
-3;3;6;I16;;Device Address;UNIT_ID;1.0;0.0;-;4
+3;3;6;I16;;Device Address;;1.0;0.0;-;4
 4;3;7;I16;;Product Model;MODEL;1.0;0.0;-;4
 5;3;8;I16;;Hardware Version;;1.0;0.0;-;4
 6;3;9;I16;;Baudrate Setting;;1.0;0.0;-;4
@@ -58,4 +58,4 @@ Modbus;Io;Webdyn;Sens_IO_16DI
 57;3;136_5_1;Bits;;Disable_Enable input 14;;1.0;0.0;-;4
 58;3;136_6_1;Bits;;Disable_Enable input 15;;1.0;0.0;-;4
 59;3;136_7_1;Bits;;Disable_Enable input 16;;1.0;0.0;-;4
-60;3;137;I16;;Input status selection;SwitchLogic;1.0;0.0;-;4
+60;3;137;I16;;Input status selection;;1.0;0.0;-;4

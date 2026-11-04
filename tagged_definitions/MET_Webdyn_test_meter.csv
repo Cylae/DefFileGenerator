@@ -1,4 +1,4 @@
-﻿modbusRTU;meter;SolarEdge;SE-RGMTR-1D-240C-A;;;;;;;
+modbusRTU;meter;SolarEdge;SE-RGMTR-1D-240C-A;;;;;;;
 1;3;40188;I16;;203_tableId;;1.000000;0.000000;;4
 2;3;40189;I16;;203_tableSize;;1.000000;0.000000;;4
 3;3;40190;I16;;203_A;;1.000000;0.000000;A;4

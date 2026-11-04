@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;SOLAREDGE;GENERIC;;;;;;;
+ModbusRTU;Inverter;SOLAREDGE;GENERIC;;;;;;;
 1;3;40000;U32;;C_SunSpec_ID;;1.0;0.0;;4
 2;3;40002;U16;;C_SunSpec_DID;;1.0;0.0;;4
 3;3;40003;U16;;C_Sunspec_Length;;1.0;0.0;;4

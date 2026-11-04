@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;ABB;TRIO-20.0-27_6-TL-OUTD;;;;;;;
+modbusRTU;Inverter;ABB;TRIO-20.0-27_6-TL-OUTD;;;;;;;
 1;3;179;U16;;Remote on/off;CMD_ON;1.000000;0.000000;;1
 2;3;180;U16;;Reset by-hand;;1.000000;0.000000;;4
 3;3;189;U16;;Power ramping interval;;1.000000;0.000000;s;4
@@ -19,7 +19,7 @@
 18;3;300;F32_W;;Inverter - Grid Reactive Power;;1.000000;0.000000;VAR;4
 19;3;302;F32_W;;Inverter - Grid Voltage;;1.000000;0.000000;V;4
 20;3;304;F32_W;;Inverter - Grid Power;;0.001;0.000000;kW;4
-21;3;306;F32_W;;Inverter - Grid Current;;1.000000;0.000000;A;4
+21;3;306;F32_W;;Inverter - Grid Current;I_AC;1.000000;0.000000;A;4
 22;3;500;U16;;Set unit of registers 0507, 0508, 0511 and 0512 (% or %/1000);;1.000000;0.000000;;4
 23;3;501;U16;;Set active mode (permanent or dynamic);;1.000000;0.000000;;4
 24;3;502;U16;;Power ramping interval_1;CMD_RAMP_TIME_S;1.000000;0.000000;s;1

@@ -1,4 +1,4 @@
-﻿modbus;Inverter;SL Energy;Hybrid Series Test;;;;;;;
+modbus;Inverter;SL Energy;Hybrid Series Test;;;;;;;
 1;3;10000;U16;;Comm_Protocol_Ver;;1;0;;4
 2;3;10001;U16;;Main_DSP_Ver;;1;0;;4
 3;3;10002;U16;;Aux_DSP_Ver;;1;0;;4
@@ -87,7 +87,7 @@
 86;3;10548;I16;;Power_Factor_T;;0.001;0;;4
 87;3;10549;I32;;Forward_Reverse_Pwr_S;;1;0;W;4
 88;3;10551;I32;;Forward_Reverse_Pwr_T;;1;0;W;4
-89;3;10560;U32;;Total_PV_Power;;1;0;W;4
+89;3;10560;U32;;Total_PV_Power;P_DC;1;0;W;4
 90;3;10562;U16;;PV1_Voltage;U_DC_STRING_1;0.1;0;V;4
 91;3;10563;U16;;PV1_Current;I_DC_STRING_1;0.1;0;A;4
 92;3;10564;U16;;PV1_Power;;1;0;W;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
+modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 1;4;40202;U32;;DC voltage;U_DC;0.01;0;V;4
 2;4;40204;U32;;Line current;I_AC_3;0.01;0;A;4
 3;4;40206;U32;;Line current %;;0.1;0;%;4
@@ -207,7 +207,7 @@
 206;3;46140;U32;;Connect limit type;;1;0;;4
 207;3;46142;U32;;Connect limit ramp;;1;0;%/min;4
 208;3;46144;U32;;Grid fault ramp;;1;0;%/min;4
-209;3;46150;U32;;External power limit;cmdPwrPct;1;0;%;4
+209;3;46150;U32;;External power limit;;1;0;%;4
 210;3;46152;U32;;P(U) limiter;;1;0;;4
 211;3;46154;U32;;P(U) trigger level;;1;0;%;4
 212;3;46156;U32;;P(U) release level;;1;0;%;4

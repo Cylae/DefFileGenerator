@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;HIXYPOWER;8-50K;;;;;;;
+modbusRTU;Inverter;HIXYPOWER;8-50K;;;;;;;
 1;4;1;U16;;Main DSP Version Low;;1.000000;0.000000;;4
 2;4;2;U16;;Master DSP Version High;;1.000000;0.000000;;4
 3;4;10;U16;;Slave DSP Version Low;;1.000000;0.000000;;4

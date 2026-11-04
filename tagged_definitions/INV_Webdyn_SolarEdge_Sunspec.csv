@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Solaredge;Sunspec;;;;;;;
+ModbusRTU;Inverter;Solaredge;Sunspec;;;;;;;
 1;3;40004_16;STRING;;C_Manufacturer;MANUFACTURER;1.0;0.0;;0
 2;3;40020_16;STRING;;C_Model;MODEL;1.0;0.0;;4
 3;3;40044_8;STRING;;C_Version;;1.0;0.0;;4

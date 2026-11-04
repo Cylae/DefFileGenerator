@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Huawei;8KTL,10KTL,12KTL,14KTL,18KTL,20KTL;;;;;;;
+ModbusRTU;Inverter;Huawei;8KTL,10KTL,12KTL,14KTL,18KTL,20KTL;;;;;;;
 1;3;32001;U16;;1 Rated inverter power;;1.0;0.0;-;4
 2;3;32002;U16;;2 Output mode;;1.0;0.0;-;4
 3;3;32003_10;STRING;;3 ESN;SERIAL;1.0;0.0;-;4

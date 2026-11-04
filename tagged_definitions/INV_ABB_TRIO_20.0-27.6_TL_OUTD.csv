@@ -1,8 +1,8 @@
-﻿Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD;;;;;;;
+Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD;;;;;;;
 1;3;179;U16;;Remote On_Off;CMD_ON;1.0;0.0;;1
 2;3;180;U16;;Alarm manual reset;;1.0;0.0;;4
 3;3;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance (actif);;1.0;0.0;;4
-4;3;190;U16;;Mode dynamique - Tempo - Duree des consignes de puissance active ou reactive 1;P_AC;1.0;0.0;min;4
+4;3;190;U16;;Mode dynamique - Tempo - Duree des consignes de puissance active ou reactive 1;;1.0;0.0;min;4
 5;3;197;U16;;Definition du comportement transitoire 1;;1.0;0.0;;4
 6;3;199;F32_W;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi)_1;Q_AC;1.0;0.0;;4
 7;3;201;F32_W;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi)_1;;1.0;0.0;;4

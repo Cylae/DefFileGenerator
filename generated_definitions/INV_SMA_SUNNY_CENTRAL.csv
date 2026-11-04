@@ -86,7 +86,7 @@ modbusTCP;Inverter;SMA;SUNNY CENTRAL GENERIC;;;;;;;
 85;4;32;I32;;GriMs.V.PhsAB;;0.1;0;V;4
 86;4;34;I32;;GriMs.V.PhsBC;;0.1;0;V;4
 87;4;36;I32;;GriMs.V.PhsCA;;0.1;0;V;4
-88;4;38;I32;;GriMs.Hz;FREQ;0.01;0;HZ;4
+88;4;38;I32;;GriMs.Hz;;0.01;0;HZ;4
 89;4;40;I32;;TmpCab.Acc;;0.1;0;C;4
 90;4;42;I32;;TmpCab.Dcc;;0.1;0;C;4
 91;4;44;I32;;TmpCab.Rio;;0.1;0;C;4
@@ -104,9 +104,9 @@ modbusTCP;Inverter;SMA;SUNNY CENTRAL GENERIC;;;;;;;
 103;4;70;U32;;Cnt.TotFeedTm;;1;0;S;4
 104;4;72;U32;;Cnt.TotOpTm;;1;0;S;4
 105;4;74;I32;;Cnt.TotWatthIn;;0.01;0;MWH;4
-106;4;76;I32;;Cnt.TotWhOut;E_TOT;0.01;0;MWH;4
+106;4;76;I32;;Cnt.TotWhOut;;0.01;0;MWH;4
 107;4;78;I32;;Cnt.WatthIn;;0.01;0;MWH;4
-108;4;80;I32;;Cnt.WhOut;E_DAY;0.01;0;MWH;4
+108;4;80;I32;;Cnt.WhOut;;0.01;0;MWH;4
 109;4;82;U32;;Cnt.FanCab1Tm;;1;0;S;4
 110;4;84;U32;;Cnt.FanCab2Tm;;1;0;S;4
 111;4;86;U32;;Cnt.FanStkTm;;1;0;S;4
@@ -141,11 +141,11 @@ modbusTCP;Inverter;SMA;SUNNY CENTRAL GENERIC;;;;;;;
 140;4;144;I32;;PresTrf.ErrStt;;0;0;;4
 141;4;146;U16;;BfpBits;;1;0;;4
 142;4;147;I32;;DcMs.BfpAmp;;0.1;0;A;4
-143;4;149;I32;;GriMs.Vol.PsNom;SERIAL;0.0001;0;;4
+143;4;149;I32;;GriMs.Vol.PsNom;;0.0001;0;;4
 144;4;151;I32;;Cnt.TotDcWhOut;;0.01;0;MWH;4
-145;4;153;I32;;Cnt.TotAcWhIn;;0.01;0;MWH;4
+145;4;153;I32;;Cnt.TotAcWhIn;E_TOT;0.01;0;MWH;4
 146;4;155;I32;;Cnt.DcWhOut;;0.01;0;MWH;4
-147;4;157;I32;;Cnt.AcWhIn;;0.01;0;MWH;4
+147;4;157;I32;;Cnt.AcWhIn;E_DAY;0.01;0;MWH;4
 148;4;159;I32;;DclVolSpt;;0.1;0;V;4
 149;4;163;I32;;VolNomSpt;;0.0001;0;PU;4
 150;4;167;U16;;AuxCtl.LifeSign;;1;0;;4

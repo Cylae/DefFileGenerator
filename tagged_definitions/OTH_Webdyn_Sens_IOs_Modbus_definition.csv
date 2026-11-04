@@ -1,4 +1,4 @@
-﻿ModbusRTU;Other;Webdyn;Sens'8 digital inputs 6 digital outputs;;;;;;;
+ModbusRTU;Other;Webdyn;Sens'8 digital inputs 6 digital outputs;;;;;;;
 1;3;0;I16;;Serial Number;SERIAL;0.0;0.0;-;4
 2;3;4;I16;;Firmware Version;;0.0;0.0;-;4
 3;3;6;I16;;Device Address;UNIT_ID;0.0;0.0;-;4

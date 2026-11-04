@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
+modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 1;4;3;U16;;Input voltage phase 1;U_AC_1;0;0.0;V AC;4
 2;4;4;U16;;Input voltage phase 2;U_AC_2;0;0.0;V AC;4
 3;4;5;U16;;Input voltage phase 3;U_AC_3;0;0.0;V AC;4
@@ -22,8 +22,8 @@
 21;4;23;U16;;Output power 1;;0;0.0;VA or Watts;4
 22;4;24;U16;;Output power 2;;0;0.0;VA or Watts;4
 23;4;25;U16;;Output power 3;;0;0.0;VA or Watts;4
-24;4;26;U16;;Battery voltage;;0;0.0;V DC;4
-25;4;27;U16;;Battery current;;0;0.0;A DC;4
+24;4;26;U16;;Battery voltage;U_DC;0;0.0;V DC;4
+25;4;27;U16;;Battery current;I_DC;0;0.0;A DC;4
 26;4;28;U16;;Phase count;;1;0.0;count;4
 27;4;29;U16;;Active input;;1;0.0;"0=AC Input 1;1=AC Input 2";4
 28;4;30;U16;;VE.Bus state of charge;SOC;0;0.0;%;4
@@ -163,7 +163,7 @@
 162;4;845;U16;;Battery Consumed Amphours (System);;0;0.0;Ah;4
 163;4;846;U16;;Battery Time to Go (System);;0;0.0;s;4
 164;4;850;U16;;PV - DC-coupled power;P_DC;1;0.0;W;4
-165;4;851;U16;;PV - DC-coupled current;I_DC;0;0.0;A DC;4
+165;4;851;U16;;PV - DC-coupled current;;0;0.0;A DC;4
 166;4;855;U16;;Charger power;;1;0.0;W;4
 167;4;860;U16;;DC System Power;;1;0.0;W;4
 168;4;865;U16;;VE.Bus charge current (System);;0;0.0;A DC;4
@@ -204,7 +204,7 @@
 203;4;1301;U16;;"History; Max cell-voltage";;0;0.0;V DC;4
 204;4;2048;U16;;Motor RPM;;1;0.0;RPM;4
 205;4;2049;U16;;Motor temperature;;0;0.0;Degrees celsius;4
-206;4;2050;U16;;Controller DC Voltage;U_DC;0;0.0;V DC;4
+206;4;2050;U16;;Controller DC Voltage;;0;0.0;V DC;4
 207;4;2051;U16;;Controller DC Current;;0;0.0;A DC;4
 208;4;2052;U16;;Controller DC Power;;0;0.0;W;4
 209;4;2053;U16;;Controller Temperature;;0;0.0;Degrees celsius;4
@@ -216,7 +216,7 @@
 215;4;2312;U16;;Output 3 - voltage;;0;0.0;V DC;4
 216;4;2313;U16;;Output 3 - current;;0;0.0;A DC;4
 217;4;2314;U16;;AC Current;I_AC;0;0.0;A AC;4
-218;4;2315;U16;;AC Power;;1;0.0;W DC;4
+218;4;2315;U16;;AC Power;P_AC;1;0.0;W DC;4
 219;4;2316;U16;;AC Current limit;;0;0.0;A AC;4
 220;4;2317;U16;;Charger on/off;;1;0.0;"0=Off;1=On;2=Error;3=Unavailable- Unknown";4
 221;4;2318;U16;;Charge state;;1;0.0;"0=Off;1=Low Power Mode;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;8=Passthru;9=Inverting;10=Power assist;11=Power supply mode;252=Bulk protection";4

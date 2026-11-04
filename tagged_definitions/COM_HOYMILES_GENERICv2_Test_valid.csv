@@ -1,4 +1,4 @@
-﻿modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
+modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 1;4;12288_6;STRING;;DTU Serial Number;SERIAL;1.000000;0.000000;;4
 2;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 3;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4
@@ -29,7 +29,7 @@
 28;4;12681;U32;;Meter 1: Phase A Power Factor;PF_1;0.001000;0.000000;;4
 29;4;12683;U32;;Meter 1: Phase B Power Factor;PF_2;0.001000;0.000000;;4
 30;4;12685;U32;;Meter 1: Phase C Power Factor;PF_3;0.001000;0.000000;;4
-31;4;12687;U16;;Meter 1: Status (0: Offline;1: Online);1.0;1.000000;0;4
+31;4;12687;U16;;Meter 1: Status (0: Offline;;1.0;1.000000;0;4
 32;4;12688;U32;;Meter 1: Uab Line Voltage;U_AC_L1L2;0.010000;0.000000;V;4
 33;4;12690;U32;;Meter 1: Ubc Line Voltage;U_AC_L2L3;0.010000;0.000000;V;4
 34;4;12692;U32;;Meter 1: Uca Line Voltage;U_AC_L3L1;0.010000;0.000000;V;4

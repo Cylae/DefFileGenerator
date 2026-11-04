@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;EFACEC;PV550;;;;;;;
+ModbusRTU;Inverter;EFACEC;PV550;;;;;;;
 1;4;40001;F32;;Vdc;U_DC;1.0;0.0;Vrms;4
 2;4;40003;F32;;Idc;I_DC;1.0;0.0;Arms;4
 3;4;40005;F32;;Pdc;P_DC;1.0;0.0;KW;4

@@ -6,9 +6,9 @@ modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, 
 5;3;91;U16;;Hardware Detected;;1;0;;4
 6;3;95;U16;;Supported Features;;1;0;;4
 7;3;116;U16;;Production Track Id;;1;0;;4
-8;3;117_12;STRING;;ASCII Serial Number;SERIAL;1;0;;4
+8;3;117_12;STRING;;ASCII Serial Number;;1;0;;4
 9;3;129;U16;;Manufacturing Unit Id;;1;0;;4
-10;3;130;U32;;Serial Number;;1;0;;4
+10;3;130;U32;;Serial Number;SERIAL;1;0;;4
 11;3;132;U64;;Date of Manufacture;;1;0;DATETIME;4
 12;3;136_5;STRING;;Hardware Revision;;1;0;;4
 13;3;141;U16;;Production History 01;;1;0;;0
@@ -65,10 +65,10 @@ modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, 
 64;3;2014;U16;;Number of Phases;;1;0;;4
 65;3;2015;U16;;Number of Wires;;1;0;;4
 66;3;2016;U16;;Power System Configuration;;1;0;;4
-67;3;2017;U16;;Nominal Frequency;FREQ;1;0;Hz;4
+67;3;2017;U16;;Nominal Frequency;;1;0;Hz;4
 68;3;2018;F32;;Nominal Voltage;;1;0;V;4
 69;3;2020;F32;;Nominal Current;;1;0;A;4
-70;3;2022;U32;;Nominal Power Factor;PF;1;0;4Q_FP_PF;4
+70;3;2022;U32;;Nominal Power Factor;;1;0;4Q_FP_PF;4
 71;3;2024;U16;;Normal Phase Rotation;;1;0;;4
 72;3;2025;U16;;Number VTs;;1;0;;4
 73;3;2026;F32;;VT Primary;;1;0;V;4
@@ -101,9 +101,9 @@ modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, 
 100;3;2734;F32;;Reactive Energy in Quadrant II;;1;0;kVARh;4
 101;3;2736;F32;;Reactive Energy in Quadrant III;;1;0;kVARh;4
 102;3;2738;F32;;Reactive Energy in Quadrant IV;;1;0;kVARh;4
-103;3;3000;F32;;Current A;;1;0;A;4
-104;3;3002;F32;;Current B;;1;0;A;4
-105;3;3004;F32;;Current C;;1;0;A;4
+103;3;3000;F32;;Current A;I_AC_1;1;0;A;4
+104;3;3002;F32;;Current B;I_AC_2;1;0;A;4
+105;3;3004;F32;;Current C;I_AC_3;1;0;A;4
 106;3;3006;F32;;Current N;;1;0;A;4
 107;3;3008;F32;;Current G;;1;0;A;4
 108;3;3010;F32;;Current Avg;;1;0;A;4
@@ -132,19 +132,19 @@ modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, 
 131;3;3056;F32;;Active Power B;P_AC_2;1;0;kW;4
 132;3;3058;F32;;Active Power C;P_AC_3;1;0;kW;4
 133;3;3060;F32;;Active Power Total;P_AC;1;0;kW;4
-134;3;3062;F32;;Reactive Power A;Q_AC;1;0;kVAR;4
-135;3;3064;F32;;Reactive Power B;;1;0;kVAR;4
-136;3;3066;F32;;Reactive Power C;;1;0;kVAR;4
+134;3;3062;F32;;Reactive Power A;Q_AC_1;1;0;kVAR;4
+135;3;3064;F32;;Reactive Power B;Q_AC_2;1;0;kVAR;4
+136;3;3066;F32;;Reactive Power C;Q_AC_3;1;0;kVAR;4
 137;3;3068;F32;;Reactive Power Total;;1;0;kVAR;4
-138;3;3070;F32;;Apparent Power A;S_AC;1;0;kVA;4
-139;3;3072;F32;;Apparent Power B;;1;0;kVA;4
-140;3;3074;F32;;Apparent Power C;;1;0;kVA;4
+138;3;3070;F32;;Apparent Power A;S_AC_1;1;0;kVA;4
+139;3;3072;F32;;Apparent Power B;S_AC_2;1;0;kVA;4
+140;3;3074;F32;;Apparent Power C;S_AC_3;1;0;kVA;4
 141;3;3076;F32;;Apparent Power Total;;1;0;kVA;4
-142;3;3078;U32;;Power Factor A;;1;0;4Q_FP_PF;4
-143;3;3080;U32;;Power Factor B;;1;0;4Q_FP_PF;4
-144;3;3082;U32;;Power Factor C;;1;0;4Q_FP_PF;4
+142;3;3078;U32;;Power Factor A;PF_1;1;0;4Q_FP_PF;4
+143;3;3080;U32;;Power Factor B;PF_2;1;0;4Q_FP_PF;4
+144;3;3082;U32;;Power Factor C;PF_3;1;0;4Q_FP_PF;4
 145;3;3084;U32;;Power Factor Total;;1;0;4Q_FP_PF;4
-146;3;3110;F32;;Frequency;;1;0;Hz;4
+146;3;3110;F32;;Frequency;FREQ;1;0;Hz;4
 147;3;3192;F32;;Power Factor Total IEC;;1;0;;4
 148;3;3194;F32;;Power Factor Total Lead Lag;;1;0;;4
 149;3;3196;U16;;Power Factor Total IEC_1;;1;0;;4
@@ -470,7 +470,7 @@ modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, 
 469;3;21330;F32;;THD Voltage A-N;;1;0;%;4
 470;3;21332;F32;;THD Voltage B-N;;1;0;%;4
 471;3;21334;F32;;THD Voltage C-N;;1;0;%;4
-472;3;42283;U16;;A.Suppression;PRESSURE;1;0;mA;4
+472;3;42283;U16;;A.Suppression;;1;0;mA;4
 473;3;42284;U16;;FS%;;1;0;;4
 474;3;42285;U16;;Parameter selection (Power);;1;0;;4
 475;3;42286;U16;;Demand Parameter selection;;1;0;;4
@@ -494,7 +494,7 @@ modbusRTU;meter;Schneider;PM1125H, PM2105H, EM6459H, DM6200H, EM6433H, EM6436H, 
 493;3;43502;F32;;Current B load %;;1;0;%;4
 494;3;43504;F32;;Current C load %;;1;0;%;4
 495;3;43506;F32;;Current avg load %;;1;0;%;4
-496;3;43508;F32;;Phase angle between Voltage A and Current A;U_AC_1;1;0;;4
+496;3;43508;F32;;Phase angle between Voltage A and Current A;;1;0;;4
 497;3;43510;F32;;Phase angle between Voltage B and Current B;;1;0;;4
 498;3;43512;F32;;Phase angle between Voltage C and Current C;;1;0;;4
 499;3;43520;F32;;RPM;;1;0;;4

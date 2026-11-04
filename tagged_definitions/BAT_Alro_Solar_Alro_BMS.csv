@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Alro Solar;Alro_BMS;;;;;;;
+modbusRTU;Other;Alro Solar;Alro_BMS;;;;;;;
 1;4;20000;U16;;Battery software version;;1.0;0.0;---;4
 2;4;20010;U16;;Total battery pack voltage (PCS);;1.0;0.0;0.1V;4
 3;4;20011;U16;;Total battery pack current (PCS);I_AC;1.0;0.0;0.1A;4
@@ -69,7 +69,7 @@
 68;4;20509;U16;;Average voltage;;1.0;0.0;mV;4
 69;4;20510;U16;;Average temperature;;1.0;0.0;0.1℃;4
 70;4;20511;U16;;Single cell voltage difference;;1.0;0.0;mV;4
-71;4;20512;U16;;Individual cell temperature difference;TEMP_CELL;1.0;0.0;0.1℃;4
+71;4;20512;U16;;Individual cell temperature difference;;1.0;0.0;0.1℃;4
 72;4;20600;U16;;Number of alarm codes;;1.0;0.0;None;9
 73;4;20601;U16;;Main alarm code 1;;1.0;0.0;None;9
 74;4;20602;U16;;Child alarm code 1;;1.0;0.0;None;9

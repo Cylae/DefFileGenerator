@@ -1,25 +1,25 @@
 Modbus;Meter;Legrand;LEG412052
 1;4;768;U16;;Device identifier;;0.01;0.0;;4
-2;4;4096;U32;;Phase 1 _ phase voltage;U_AC_1;1.0;0.0;mV;4
-3;4;4098;U32;;Phase 2 _ phase voltage;U_AC_2;1.0;0.0;mV;4
-4;4;4100;U32;;Phase 3 _ phase voltage;U_AC_3;1.0;0.0;mV;4
+2;4;4096;U32;;Phase 1 _ phase voltage;;1.0;0.0;mV;4
+3;4;4098;U32;;Phase 2 _ phase voltage;;1.0;0.0;mV;4
+4;4;4100;U32;;Phase 3 _ phase voltage;;1.0;0.0;mV;4
 5;4;4102;U32;;Phase 1 _ current;I_AC_1;1.0;0.0;mA;4
 6;4;4104;U32;;Phase 2 _ current;I_AC_2;1.0;0.0;mA;4
 7;4;4106;U32;;Phase 3 _ current;I_AC_3;1.0;0.0;mA;4
 8;4;4108;U32;;Neutral current;;1.0;0.0;mA;4
-9;4;4110;U32;;Chained voltage _ L1-L2;U_AC_L1L2;1.0;0.0;mV;4
-10;4;4112;U32;;Chained voltage _ L2-L3;U_AC_L2L3;1.0;0.0;mV;4
-11;4;4114;U32;;Chained voltage _ L3-L1;U_AC_L3L1;1.0;0.0;mV;4
+9;4;4110;U32;;Chained voltage _ L1-L2;;1.0;0.0;mV;4
+10;4;4112;U32;;Chained voltage _ L2-L3;;1.0;0.0;mV;4
+11;4;4114;U32;;Chained voltage _ L3-L1;;1.0;0.0;mV;4
 12;4;4116;U32;;3-phase _ active power;P_AC;1.0;0.0;W;4
-13;4;4118;U32;;3-phase _ reactive power;Q_AC;1.0;0.0;var;4
-14;4;4120;U32;;3-phase _ apparent power;S_AC;1.0;0.0;VA;4
+13;4;4118;U32;;3-phase _ reactive power;;1.0;0.0;var;4
+14;4;4120;U32;;3-phase _ apparent power;;1.0;0.0;VA;4
 15;4;4122;U16;;3-phase _ sign of active power;;1.0;0.0;;4
 16;4;4123;U16;;3-phase _ sign of reactive power;;1.0;0.0;;4
 17;4;4124;U32;;3-phase _ positive active energy;;1.0;0.0;Wh;4
 18;4;4126;U32;;3-phase _ positive reactive energy;;1.0;0.0;varh;4
 19;4;4128;U32;;3-phase _ negative active energy;;1.0;0.0;Wh;4
 20;4;4130;U32;;3-phase _ negative reactive energy;;1.0;0.0;varh;4
-21;4;4132;I16;;3-phase _ power factor;PF;0.01;0.0;;4
+21;4;4132;I16;;3-phase _ power factor;;0.01;0.0;;4
 22;4;4133;U16;;3-phase _ sector of power factor (cap or ind);;1.0;0.0;;4
 23;4;4134;U16;;Frequency;FREQ;0.1;0.0;Hz;4
 24;4;4135;U32;;3-phase _ average power;;1.0;0.0;W;4
@@ -31,18 +31,18 @@ Modbus;Meter;Legrand;LEG412052
 30;4;4146;U16;;Phase 1 _ sign of active power;;1.0;0.0;;4
 31;4;4147;U16;;Phase 2 _ sign of active power;;1.0;0.0;;4
 32;4;4148;U16;;Phase 3 _ sign of active power;;1.0;0.0;;4
-33;4;4149;U32;;Phase 1 _ reactive power;Q_AC_1;1.0;0.0;var;4
-34;4;4151;U32;;Phase 2 _ reactive power;Q_AC_2;1.0;0.0;var;4
-35;4;4153;U32;;Phase 3 _ reactive power;Q_AC_3;1.0;0.0;var;4
+33;4;4149;U32;;Phase 1 _ reactive power;;1.0;0.0;var;4
+34;4;4151;U32;;Phase 2 _ reactive power;;1.0;0.0;var;4
+35;4;4153;U32;;Phase 3 _ reactive power;;1.0;0.0;var;4
 36;4;4155;U16;;Phase 1 _ sign of reactive power;;1.0;0.0;;4
 37;4;4156;U16;;Phase 2 _ sign of reactive power;;1.0;0.0;;4
 38;4;4157;U16;;Phase 3 _ sign of reactive power;;1.0;0.0;;4
-39;4;4158;U32;;Phase 1 _ apparent power;S_AC_1;1.0;0.0;VA;4
-40;4;4160;U32;;Phase 2 _ apparent power;S_AC_2;1.0;0.0;VA;4
-41;4;4162;U32;;Phase 3 _ apparent power;S_AC_3;1.0;0.0;VA;4
-42;4;4164;I16;;Phase 1 _ power factor;PF_1;0.01;0.0;;4
-43;4;4165;I16;;Phase 2 _ power factor;PF_2;0.01;0.0;;4
-44;4;4166;I16;;Phase 3 _ power factor;PF_3;0.01;0.0;;4
+39;4;4158;U32;;Phase 1 _ apparent power;;1.0;0.0;VA;4
+40;4;4160;U32;;Phase 2 _ apparent power;;1.0;0.0;VA;4
+41;4;4162;U32;;Phase 3 _ apparent power;;1.0;0.0;VA;4
+42;4;4164;I16;;Phase 1 _ power factor;;0.01;0.0;;4
+43;4;4165;I16;;Phase 2 _ power factor;;0.01;0.0;;4
+44;4;4166;I16;;Phase 3 _ power factor;;0.01;0.0;;4
 45;4;4167;U16;;Phase 1 _ sector of power factor (cap or ind);;1.0;0.0;;4
 46;4;4168;U16;;Phase 2 _ sector of power factor (cap or ind);;1.0;0.0;;4
 47;4;4169;U16;;Phase 3 _ sector of power factor (cap or ind);;1.0;0.0;;4
@@ -75,10 +75,10 @@ Modbus;Meter;Legrand;LEG412052
 74;4;4214;U32;;3-phase _ active PMD power;;1.0;0.0;W;4
 75;4;4216;U32;;3-phase _ reactive PMD power;;1.0;0.0;var;4
 76;4;4218;U32;;3-phase _ apparent PMD power;;1.0;0.0;VA;4
-77;4;4608;U16;;Current transformer ratio (CT);MODEL;1.0;0.0;;4
-78;4;4609;U16;;Voltage transformer ratio (VT);SERIAL;0.01;0.0;;4
+77;4;4608;U16;;Current transformer ratio (CT);;1.0;0.0;;4
+78;4;4609;U16;;Voltage transformer ratio (VT);;0.01;0.0;;4
 79;4;4614;U16;;Digital Inputs Status;;1.0;0.0;;4
-80;4;4688;U32;;3-phase _ Positive total active energy;E_TOT;1.0;0.0;Wh;4
+80;4;4688;U32;;3-phase _ Positive total active energy;;1.0;0.0;Wh;4
 81;4;4690;U32;;3-phase _ Positive total reactive energy;;1.0;0.0;varh;4
 82;4;4692;U32;;3-phase _ Negative total active energy;;1.0;0.0;Wh;4
 83;4;4694;U32;;3-phase _ Negative total reactive energy;;1.0;0.0;varh;4
@@ -101,7 +101,7 @@ Modbus;Meter;Legrand;LEG412052
 100;4;4888;U32;;3-phase _ active average power tarifs 4;;1.0;0.0;W;4
 101;4;4890;U32;;3-phase _ reactive average power tarifs 4;;1.0;0.0;var;4
 102;4;4892;U32;;3-phase _ apparent average power tarifs 4;;1.0;0.0;VA;4
-103;4;5424;U32;;Total Apparent power;;1.0;0.0;VA;4
+103;4;5424;U32;;Total Apparent power;S_AC;1.0;0.0;VA;4
 104;4;5426;U32;;3-phase _ average active power_1;;1.0;0.0;W;4
 105;4;5428;U32;;3-phase _ average reactive power_1;;1.0;0.0;var;4
 106;4;5430;U32;;3-phase _ average apparent power_1;;1.0;0.0;VA;4
@@ -333,7 +333,7 @@ Modbus;Meter;Legrand;LEG412052
 332;4;29226;U32;;Current phase 1 - 22nd harmonic (rms);;1.0;0.0;mA;4
 333;4;29228;U32;;Current phase 1 - 23rd harmonic (rms);;1.0;0.0;mA;4
 334;4;29230;U32;;Current phase 1 - 24th harmonic (rms);;1.0;0.0;mA;4
-335;4;29232;U32;;Current phase 1 - 25th harmonic (rms);CMD_ON;1.0;0.0;mA;4
+335;4;29232;U32;;Current phase 1 - 25th harmonic (rms);;1.0;0.0;mA;4
 336;4;29312;U32;;Current phase 2 - 1st harmonic (rms);;1.0;0.0;mA;4
 337;4;29314;U32;;Current phase 2 - 2nd harmonic (rms);;1.0;0.0;mA;4
 338;4;29316;U32;;Current phase 2 - 3rd harmonic (rms);;1.0;0.0;mA;4

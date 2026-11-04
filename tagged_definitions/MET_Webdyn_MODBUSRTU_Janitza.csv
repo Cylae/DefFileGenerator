@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Janitza;UMG-104-604;;;;;;;
+ModbusRTU;Meter;Janitza;UMG-104-604;;;;;;;
 1;4;19000;F32;;ULN[0];U_AC_3;1.0;0.0;V;4
 2;4;19002;F32;;ULN[1];;1.0;0.0;V;4
 3;4;19004;F32;;ULN[2];;1.0;0.0;V;4

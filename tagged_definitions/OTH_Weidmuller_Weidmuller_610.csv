@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Weidmuller;Weidmuller_610;;;;;;;
+modbusRTU;Other;Weidmuller;Weidmuller_610;;;;;;;
 1;4;0;U16;;Device address;UNIT_ID;1.0;0.0;;4
 2;4;1;U16;;Baud rate;;1.0;0.0;kbps;4
 3;4;2;U16;;Modbus Master;;1.0;0.0;;4

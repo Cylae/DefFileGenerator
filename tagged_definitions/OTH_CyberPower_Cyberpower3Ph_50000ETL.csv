@@ -1,6 +1,6 @@
-﻿modbusRTU;Other;CyberPower;Cyberpower3Ph_50000ETL;;;;;;;
+modbusRTU;Other;CyberPower;Cyberpower3Ph_50000ETL;;;;;;;
 1;4;8504;U16;;Today Energy (Wh);E_DAY;1.0;0.0;Wh;4
-2;4;8508;U16;;Total Energy (Wh);WattHours;1.0;0.0;Wh;4
+2;4;8508;U16;;Total Energy (Wh);E_TOT;1.0;0.0;Wh;4
 3;4;8596;U16;;Udc1;U_DC;1.0;0.0;V;2
 4;4;8597;U16;;Idc1;I_DC;1.0;0.0;A;2
 5;4;8598;U16;;Pdc1;P_DC;1.0;0.0;W;2
@@ -13,9 +13,9 @@
 12;4;8605;U16;;Udc4;;1.0;0.0;V;2
 13;4;8606;U16;;Idc4;;1.0;0.0;A;2
 14;4;8607;U16;;Pdc4;;1.0;0.0;W;2
-15;4;8608;U16;;Uac1;;1.0;0.0;V;2
-16;4;8609;U16;;Uac2;;1.0;0.0;V;2
-17;4;8610;U16;;Uac3;;1.0;0.0;V;2
+15;4;8608;U16;;Uac1;U_AC_1;1.0;0.0;V;2
+16;4;8609;U16;;Uac2;U_AC_2;1.0;0.0;V;2
+17;4;8610;U16;;Uac3;U_AC_3;1.0;0.0;V;2
 18;4;8611;U16;;Iac1;I_AC_1;1.0;0.0;A;2
 19;4;8612;U16;;Iac2;I_AC_2;1.0;0.0;A;2
 20;4;8613;U16;;Iac3;I_AC_3;1.0;0.0;A;2
@@ -23,10 +23,10 @@
 22;4;8618;U16;;Grid phase-BC voltage;;1.0;0.0;V;2
 23;4;8619;U16;;Grid phase-CA voltage;;1.0;0.0;V;2
 24;4;8620;U16;;Fac;FREQ;1.0;0.0;Hz;2
-25;4;8621;U16;;Pac;Watts;1.0;0.0;W;2
+25;4;8621;U16;;Pac;P_AC;1.0;0.0;W;2
 26;4;8633;U16;;BUS1_Voltage;;1.0;0.0;V;4
 27;4;8634;U16;;BUS2_Voltage;;1.0;0.0;V;4
-28;4;8635;U16;;Riso;;1.0;0.0;kohm;4
+28;4;8635;U16;;Riso;R_ISO;1.0;0.0;kohm;4
 29;4;8636;U16;;Temp;TEMP_CELL;1.0;0.0;C;4
 30;4;8640;U16;;CPS_PV_Status;;1.0;0.0;;8
 31;4;8641;U16;;Reconnection Time;;1.0;0.0;s;1
@@ -46,17 +46,17 @@
 45;4;8208;U16;;PV1 String 1 voltage;U_DC_STRING_1;1.0;0.0;V;1
 46;4;8209;U16;;PV1 String 1 current;I_DC_STRING_1;1.0;0.0;A;2
 47;4;8210;U16;;PV1 String 1 power;;1.0;0.0;W;2
-48;4;8211;U16;;PV1 String 2 voltage;;1.0;0.0;V;1
-49;4;8212;U16;;PV1 String 2 current;;1.0;0.0;A;2
+48;4;8211;U16;;PV1 String 2 voltage;U_DC_STRING_2;1.0;0.0;V;1
+49;4;8212;U16;;PV1 String 2 current;I_DC_STRING_2;1.0;0.0;A;2
 50;4;8213;U16;;PV1 String 2 power;;1.0;0.0;W;2
-51;4;8214;U16;;PV1 String 3 voltage;;1.0;0.0;V;1
-52;4;8215;U16;;PV1 String 3 current;;1.0;0.0;A;2
+51;4;8214;U16;;PV1 String 3 voltage;U_DC_STRING_3;1.0;0.0;V;1
+52;4;8215;U16;;PV1 String 3 current;I_DC_STRING_3;1.0;0.0;A;2
 53;4;8216;U16;;PV1 String 3 power;;1.0;0.0;W;2
-54;4;8217;U16;;PV1 String 4 voltage;;1.0;0.0;V;1
-55;4;8218;U16;;PV1 String 4 current;;1.0;0.0;A;2
+54;4;8217;U16;;PV1 String 4 voltage;U_DC_STRING_4;1.0;0.0;V;1
+55;4;8218;U16;;PV1 String 4 current;I_DC_STRING_4;1.0;0.0;A;2
 56;4;8219;U16;;PV1 String 4 power;;1.0;0.0;W;2
-57;4;8220;U16;;PV2 String 1 voltage;U_DC_STRING_2;1.0;0.0;V;1
-58;4;8221;U16;;PV2 String 1 current;I_DC_STRING_2;1.0;0.0;A;2
+57;4;8220;U16;;PV2 String 1 voltage;;1.0;0.0;V;1
+58;4;8221;U16;;PV2 String 1 current;;1.0;0.0;A;2
 59;4;8222;U16;;PV2 String 1 power;;1.0;0.0;W;0
 60;4;8223;U16;;PV2 String 2 voltage;;1.0;0.0;V;1
 61;4;8224;U16;;PV2 String 2 current;;1.0;0.0;A;2
@@ -67,8 +67,8 @@
 66;4;8229;U16;;PV2 String 4 voltage;;1.0;0.0;V;1
 67;4;8230;U16;;PV2 String 4 current;;1.0;0.0;A;2
 68;4;8231;U16;;PV2 String 4 power;;1.0;0.0;W;2
-69;4;8232;U16;;PV3 String 1 voltage;U_DC_STRING_3;1.0;0.0;V;1
-70;4;8233;U16;;PV3 String 1 current;I_DC_STRING_3;1.0;0.0;A;2
+69;4;8232;U16;;PV3 String 1 voltage;;1.0;0.0;V;1
+70;4;8233;U16;;PV3 String 1 current;;1.0;0.0;A;2
 71;4;8234;U16;;PV3 String 1 power;;1.0;0.0;W;2
 72;4;8235;U16;;PV3 String 2 voltage;;1.0;0.0;V;1
 73;4;8236;U16;;PV3 String 2 current;;1.0;0.0;A;2

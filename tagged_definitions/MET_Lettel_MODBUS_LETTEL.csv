@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Lettel;MODBUS_LETTEL;;;;;;;
+modbusRTU;Meter;Lettel;MODBUS_LETTEL;;;;;;;
 1;4;6;U16;;6;;1.0;0.0;V;4
 2;4;8;U16;;8;;1.0;0.0;V;4
 3;4;10;U16;;10;;1.0;0.0;V;4

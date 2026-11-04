@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Solax;SOLAX_GENERIC;;;;;;;
+modbusRTU;Inverter;Solax;SOLAX_GENERIC;;;;;;;
 1;4;0;U16;;SeriesNumber;SERIAL;1.0;0.0;;4
 2;4;1;U16;;SeriesNumber_1;;1.0;0.0;;4
 3;4;2;U16;;SeriesNumber_2;;1.0;0.0;;4

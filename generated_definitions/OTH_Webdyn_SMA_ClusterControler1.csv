@@ -5,13 +5,13 @@ ModbusTCP;Other;SMA;ClusterController1
 4;3;30007;U32;;Modification des donnes Modbus;;1.0;0.0;;1
 5;3;30051;U32;;Groupe dappareils;;1.0;0.0;ENUM;1
 6;3;30193;U32;;Heure du systeme UTC (s);;1.0;0.0;s;1
-9;3;30775;I32;;Puissance active actuelle;P_AC;1.0;0.0;W;1
+9;3;30775;I32;;Puissance active actuelle;;1.0;0.0;W;1
 10;3;30805;I32;;Puissance ractive;;1.0;0.0;var;1
 11;3;34653;U32;;Groupe dentre numrique 1;;1.0;0.0;ENUM;1
 12;3;34655;U32;;Groupe dentre numrique 2;;1.0;0.0;ENUM;1
 13;3;40001;U32;;Mettre linstallation  lheure UTC, en s;;1.0;0.0;s;1
 14;3;42109;U16;;SUSy-ID Appareil 1;;1.0;0.0;;1
-15;3;42110;U32;;SN Appareil 1;SERIAL;1.0;0.0;;1
+15;3;42110;U32;;SN Appareil 1;;1.0;0.0;;1
 16;3;42112;U16;;Unit ID Appareil 1;;1.0;0.0;;1
 17;3;42113;U16;;SUSy-ID Appareil 2;;1.0;0.0;;1
 18;3;42114;U32;;SN Appareil 2;;1.0;0.0;;1

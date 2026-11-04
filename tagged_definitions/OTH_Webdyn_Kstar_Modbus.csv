@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;Kstar_Modbus;;;;;;;
+modbusRTU;Other;Webdyn;Kstar_Modbus;;;;;;;
 1;4;3000;U16;;PV1 input voltage;U_DC_STRING_1;1.0;0.0;0.1V;4
 2;4;3001;U16;;PV2 input voltage;U_DC_STRING_2;1.0;0.0;0.1V;4
 3;4;3002;U16;;PV3 input voltage;U_DC_STRING_3;1.0;0.0;0.1V;4

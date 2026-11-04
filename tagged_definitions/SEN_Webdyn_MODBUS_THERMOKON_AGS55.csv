@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;Webdyn;Thermokon AGS55;;;;;;;
+modbusRTU;Sensor;Webdyn;Thermokon AGS55;;;;;;;
 1;3;0;I16;;Temperature 1;TEMP_CELL;0.1;0;C;4
 2;3;1;I16;;Relative humidity;HUMIDITY;0.1;0;%rF;4
 3;3;2;I16;;Absolute humidity;;0.01;0;g/m³;4

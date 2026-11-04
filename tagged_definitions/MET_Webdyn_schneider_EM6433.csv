@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Schneider;EM 6433;;;;;;;
+ModbusRTU;Meter;Schneider;EM 6433;;;;;;;
 1;3;3900;F32_W;;Apparent power, total;S_AC;1.0;0.0;;4
 2;3;3902;F32_W;;Active power, total;P_AC;1.0;0.0;;4
 3;3;3912;F32_W;;Current average;;1.0;0.0;;4

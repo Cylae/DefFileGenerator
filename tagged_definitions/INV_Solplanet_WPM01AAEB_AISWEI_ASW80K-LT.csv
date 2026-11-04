@@ -1,4 +1,4 @@
-﻿modbus;Inverter;AISWEI          ;ASW80K-LT;;;;;;;
+modbus;Inverter;AISWEI          ;ASW80K-LT;;;;;;;
 1;3;40002;U16;;1_tableId;;1;0;;4
 2;3;40003;U16;;1_tableSize;;1;0;;4
 3;3;40004_32;STRING;;1_Mn;MANUFACTURER;1;0;;4

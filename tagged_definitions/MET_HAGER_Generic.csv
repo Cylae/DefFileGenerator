@@ -1,5 +1,5 @@
-﻿Modbus;Meter;HAGER;Generic;;;;;;;
-1;3;4096_16;STRING;;Vendor Name;;1.0;0.0;;4
+Modbus;Meter;HAGER;Generic;;;;;;;
+1;3;4096_16;STRING;;Vendor Name;MANUFACTURER;1.0;0.0;;4
 2;3;4112_16;STRING;;Product Code;SERIAL;1.0;0.0;;4
 3;3;4128;U32;;SW version;;1.0;0.0;;4
 4;3;4146_16;STRING;;Product Name;;1.0;0.0;;4

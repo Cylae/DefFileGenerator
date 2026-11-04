@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;PowerOne;PVS800;;;;;;;
+modbusRTU;Other;PowerOne;PVS800;;;;;;;
 1;4;40202;U16;;DC voltage;U_DC;1.0;0.0;V;4
 2;4;40204;U16;;Line current;I_AC_3;1.0;0.0;A;4
 3;4;40206;U16;;Line current %;;1.0;0.0;%;4
@@ -207,7 +207,7 @@
 206;4;46140;U16;;Connect limit type;;1.0;0.0;;4
 207;4;46142;U16;;Connect limit ramp;;1.0;0.0;%/min;4
 208;4;46144;U16;;Grid fault ramp;;1.0;0.0;%/min;4
-209;4;46150;U16;;External power limit;cmdPwrPct;1.0;0.0;%;4
+209;4;46150;U16;;External power limit;;1.0;0.0;%;4
 210;4;46152;U16;;P(U) limiter;;1.0;0.0;;4
 211;4;46154;U16;;P(U) trigger level;;1.0;0.0;%;4
 212;4;46156;U16;;P(U) release level;;1.0;0.0;%;4

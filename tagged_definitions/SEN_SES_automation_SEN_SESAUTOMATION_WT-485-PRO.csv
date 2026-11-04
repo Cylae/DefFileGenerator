@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;SES automation;SEN_SESAUTOMATION_WT-485-PRO;;;;;;;
+modbusRTU;Sensor;SES automation;SEN_SESAUTOMATION_WT-485-PRO;;;;;;;
 1;4;257;U16;;Valeur de l'ensoleillement;POA;1.0;0.0;W/m²;4
 2;4;34818;U16;;Temperature de la cellule;TEMP_CELL;1.0;0.0;Degr. Celsius;4
 3;4;259;U16;;Status;;1.0;0.0;;4

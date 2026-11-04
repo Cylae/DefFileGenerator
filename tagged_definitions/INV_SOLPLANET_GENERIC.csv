@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SOLPLANET;GENERIC;;;;;;;
+modbusRTU;Inverter;SOLPLANET;GENERIC;;;;;;;
 1;4;1000_2;STRING;;Device_Type;MODEL;1.0;0;;4
 2;4;1001;U16;;Modbus_address;UNIT_ID;1.0;0;;4
 3;4;1002_32;STRING;;Serial_Number;SERIAL;1.0;0;;4

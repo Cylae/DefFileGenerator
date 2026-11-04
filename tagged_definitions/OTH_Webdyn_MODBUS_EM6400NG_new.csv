@@ -1,5 +1,5 @@
-﻿modbusRTU;Other;Webdyn;MODBUS_EM6400NG_new;;;;;;;
-1;4;2699;U16;;Active energy;;1.0;0.0;kWh;4
+modbusRTU;Other;Webdyn;MODBUS_EM6400NG_new;;;;;;;
+1;4;2699;U16;;Active energy;E_TOT;1.0;0.0;kWh;4
 2;4;3059;U16;;Active Power;P_AC;1.0;0.0;kW;4
 3;4;3027;U16;;R-N Phase Voltage;;1.0;0.0;VLNr;4
 4;4;3029;U16;;Y-N Phase Voltage;;1.0;0.0;VLNy;4

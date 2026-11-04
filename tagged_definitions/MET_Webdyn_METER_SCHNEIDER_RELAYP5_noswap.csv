@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Schneider Electric;Easergy P5;;;;;;;
+modbusRTU;Meter;Schneider Electric;Easergy P5;;;;;;;
 1;3;21350;F32;;Phase-to-ground voltage VA;;1.000000;0.000000;V;4
 2;3;21352;F32;;Phase-to-ground voltage VB;;1.000000;0.000000;V;4
 3;3;21354;F32;;Phase-to-ground voltage VC;;1.000000;0.000000;V;4

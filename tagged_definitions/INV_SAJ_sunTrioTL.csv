@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;SAJ;Triotop;;;;;;;
+ModbusRTU;Inverter;SAJ;Triotop;;;;;;;
 1;3;263;U16;;PV1Volt;;1.0;0.0;;4
 2;3;264;U16;;PV1Curr;;1.0;0.0;;4
 3;3;265;U16;;PV1Power;;1.0;0.0;;4

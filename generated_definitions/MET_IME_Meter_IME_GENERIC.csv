@@ -1,28 +1,28 @@
 modbusRTU;meter;IME;GENERIC;1;;;;;;
-1;4;20480;U32;;Phase 1 Current Value (R);I_AC_1;1;0;mA;4
-2;4;20482;U32;;Phase 2 Current Value (S);I_AC_2;1;0;mA;4
-3;4;20484;U32;;Phase 3 Current Value (T);I_AC_3;1;0;mA;4
+1;4;20480;U32;;Phase 1 Current Value (R);;1;0;mA;4
+2;4;20482;U32;;Phase 2 Current Value (S);;1;0;mA;4
+3;4;20484;U32;;Phase 3 Current Value (T);;1;0;mA;4
 4;4;20509;U32;;1-N Voltage;;1;0;mV;4
 5;4;20511;U32;;2-N Voltage;;1;0;mV;4
 6;4;20513;U32;;3-N Voltage;;1;0;mV;4
 7;4;20515;U32;;1-2 Voltage;;1;0;mV;4
 8;4;20517;U32;;2-3 Voltage;;1;0;mV;4
 9;4;20519;U32;;3-1 Voltage;;1;0;mV;4
-10;4;20537;U16;;Three-phase frequency;FREQ;0.01;0;Hz;4
-11;4;20538;I32;;Three-phase Active Power;P_AC;0.01;0;W;4
-12;4;20540;I32;;Three-phase reactive power;Q_AC;0.01;0;W;4
-13;4;20544;I32;;Three-Phase Apparent Power;S_AC_1;0.01;0;W;4
-14;4;20548;I16;;Three-phase Power Factor (PF);PF;0.01;0;;4
+10;4;20537;U16;;Three-phase frequency;;0.01;0;Hz;4
+11;4;20538;I32;;Three-phase Active Power;;0.01;0;W;4
+12;4;20540;I32;;Three-phase reactive power;;0.01;0;W;4
+13;4;20544;I32;;Three-Phase Apparent Power;;0.01;0;W;4
+14;4;20548;I16;;Three-phase Power Factor (PF);;0.01;0;;4
 15;4;20550;U16;;Power Factor (PF) sector;;0.01;0;;4
-16;4;20551;I32;;Phase 1 Active Power;P_AC_1;0.01;0;kW/kvar/kVA;4
-17;4;20553;I32;;Phase 2 Active Power;P_AC_2;0.01;0;kW/kvar/kVA;4
-18;4;20555;I32;;Phase 3 Active Power;P_AC_3;0.01;0;kW/kvar/kVA;4
-19;4;20557;I32;;Phase 1 Reactive power;Q_AC_1;0.01;0;kW/kvar/kVA;4
-20;4;20559;I32;;Phase 2 Reactive power;Q_AC_2;0.01;0;kW/kvar/kVA;4
-21;4;20561;I32;;Phase 3 Reactive power;Q_AC_3;0.01;0;kW/kvar/kVA;4
+16;4;20551;I32;;Phase 1 Active Power;;0.01;0;kW/kvar/kVA;4
+17;4;20553;I32;;Phase 2 Active Power;;0.01;0;kW/kvar/kVA;4
+18;4;20555;I32;;Phase 3 Active Power;;0.01;0;kW/kvar/kVA;4
+19;4;20557;I32;;Phase 1 Reactive power;;0.01;0;kW/kvar/kVA;4
+20;4;20559;I32;;Phase 2 Reactive power;;0.01;0;kW/kvar/kVA;4
+21;4;20561;I32;;Phase 3 Reactive power;;0.01;0;kW/kvar/kVA;4
 22;4;20569;U32;;Phase 1 Apparent Power;;0.01;0;kW/kvar/kVA;4
-23;4;20571;U32;;Phase 2 Apparent Power;S_AC_2;0.01;0;kW/kvar/kVA;4
-24;4;20573;U32;;Phase 3 Apparent Power;S_AC_3;0.01;0;kW/kvar/kVA;4
+23;4;20571;U32;;Phase 2 Apparent Power;;0.01;0;kW/kvar/kVA;4
+24;4;20573;U32;;Phase 3 Apparent Power;;0.01;0;kW/kvar/kVA;4
 25;4;20592;U32;;Positive Three-phase Active Energy;;0.1;0;MWh/Mvarh;4
 26;4;20594;U32;;Negative Three-phase Active Energy;;0.1;0;MWh/Mvarh;4
 27;4;20598;U32;;Positive Three-phase Reactive Energy;;0.1;0;MWh/Mvarh;4

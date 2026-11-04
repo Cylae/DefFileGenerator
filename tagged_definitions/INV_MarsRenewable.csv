@@ -1,4 +1,4 @@
-﻿modbusTCP;Inverter;MarsRenewable;LC_V7;;;;;;;
+modbusTCP;Inverter;MarsRenewable;LC_V7;;;;;;;
 1;2;0;U16;;LC Alarm Summary [0=normal, 1=alarm];;1;0;;9
 2;2;1;U16;;PCS Alarm Summary [0=normal, 1=alarm];;1;0;;9
 3;2;2;U16;;Bank Alarm Summary [0=normal, 1=alarm];;1;0;;9

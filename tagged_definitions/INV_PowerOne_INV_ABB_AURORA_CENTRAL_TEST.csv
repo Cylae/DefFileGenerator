@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;PowerOne;INV_ABB_AURORA_CENTRAL_TEST;;;;;;;
+modbusRTU;Inverter;PowerOne;INV_ABB_AURORA_CENTRAL_TEST;;;;;;;
 1;4;1;U16;;Number_Modules_Aurora_Central;;1.0;0.0;;4
 2;4;2;U16;;Module_01_Presence;;1.0;0.0;;4
 3;4;3;U16;;Module_02_Presence;;1.0;0.0;;4

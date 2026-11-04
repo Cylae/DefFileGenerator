@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Socomec;SOCOMEC_DIRIS_B10;;;;;;;
+modbusRTU;Meter;Socomec;SOCOMEC_DIRIS_B10;;;;;;;
 1;4;18432;U16;;Load_1 - Load status (0: Disabled;;1.0;0.0;;4
 2;4;18433;U16;;Load_1 - Date of last instance;;1.0;0.0;s;4
 3;4;18435;U16;;Load_1 - Integration time;;1.0;0.0;s;4
@@ -252,7 +252,7 @@
 251;4;50030;U16;;Identification - Product VLO;;1.0;0.0;;4
 252;4;50034;U16;;Identification - Customization VLO;;1.0;0.0;;4
 253;4;50038;U16;;Identification - Software technical base VLO;;1.0;0.0;;4
-254;4;50042;U16;;Identification - Vendor name;;1.0;0.0;;4
+254;4;50042;U16;;Identification - Vendor name;MANUFACTURER;1.0;0.0;;4
 255;4;50050;U16;;Identification - Product name;;1.0;0.0;;4
 256;4;50058;U16;;Identification - Extended name;;1.0;0.0;;4
 257;4;50066;U16;;Identification - Ressource version Build 2;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Schneider;IEM 3100;;;;;;;
+ModbusRTU;Meter;Schneider;IEM 3100;;;;;;;
 1;3;2003;U32;;OperationTimer;;1.0;0.0;s;4
 2;3;6500;U16;;Address;UNIT_ID;1.0;0.0;;4
 3;3;6501;U16;;vitesse;;1.0;0.0;;4

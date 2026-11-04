@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Solax;Generic;;;;;;;
+Modbus;Inverter;Solax;Generic;;;;;;;
 1;3;0_7;STRING;;SeriesNumber;SERIAL;1.0;0.0;;1
 2;3;7_7;STRING;;FactoryName;;1.0;0.0;;1
 3;3;14_3;STRING;;ModuleName;;1.0;0.0;;1

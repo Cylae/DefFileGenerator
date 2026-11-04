@@ -1,4 +1,4 @@
-﻿Modbus;Sensor;DELTAOHM;HD523D;;;;;;;
+Modbus;Sensor;DELTAOHM;HD523D;;;;;;;
 1;4;1;U16;;Wind speed;WIND_SPEED;100.0;0.0;;4
 2;4;2;U16;;Wind direction in degrees;WIND_BEARING;10.0;0.0;;4
 3;4;6;I16;;Temperature measured by Pt100 sensor;;10.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;SIEL;RECTIFIERS;;;;;;;
+Modbus;Inverter;SIEL;RECTIFIERS;;;;;;;
 1;3;1;I16;;Tbatt 1 _Temperature of branch 1 battery;TEMP;1.0;0.0;C;4
 2;3;2;I16;;Tbatt 2 _Temperature of branch 2battery;;1.0;0.0;C;4
 3;3;3;I16;;Iout1 _Output current of branch 1 (A);;1.0;0.0;A;4

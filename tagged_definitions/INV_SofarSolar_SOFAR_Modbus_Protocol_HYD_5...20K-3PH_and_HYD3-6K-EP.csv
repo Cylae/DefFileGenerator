@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SofarSolar;SOFAR Modbus Protocol HYD 5...;;;;;;;
+modbusRTU;Inverter;SofarSolar;SOFAR Modbus Protocol HYD 5...;;;;;;;
 1;4;1024;U16;;AddressMask_Realtime_SysInfo1;;1.0;0.0;None;4
 2;4;1025;U16;;None;;1.0;0.0;None;4
 3;4;1026;U16;;None;;1.0;0.0;None;4

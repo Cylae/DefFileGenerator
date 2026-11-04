@@ -1,4 +1,4 @@
-﻿Modbus;Meter;CHAUVIN-ARNOUX;Ulys_TT-M;;;;;;;
+Modbus;Meter;CHAUVIN-ARNOUX;Ulys_TT-M;;;;;;;
 1;3;1336;U16;;RegisterSetType;;1.0;0.0;;4
 2;3;0;U32;;Vphase1;;0.001;0.0;;4
 3;3;2;U32;;Vphase2;;0.001;0.0;;4

@@ -1,11 +1,11 @@
 modbus;Logger;HOYMILES;METER;;;;;;;
 1;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
-2;4;12640_6;STRING;;Meter 1: Serial Number;SERIAL;1.000000;0.000000;;4
-3;4;12643;U32;;Meter 1: Total Active Power;P_AC;0.010000;0.000000;kW;4
-4;4;12645;U32;;Meter 1: Phase A Active Power;P_AC_1;0.010000;0.000000;kW;4
-5;4;12647;U32;;Meter 1: Phase B Active Power;P_AC_2;0.010000;0.000000;kW;4
-6;4;12649;U32;;Meter 1: Phase C Active Power;P_AC_3;0.010000;0.000000;kW;4
-7;4;12651;U32;;Meter 1: Power Factor;PF;0.001000;0.000000;;4
+2;4;12640_6;STRING;;Meter 1: Serial Number;;1.000000;0.000000;;4
+3;4;12643;U32;;Meter 1: Total Active Power;;0.010000;0.000000;kW;4
+4;4;12645;U32;;Meter 1: Phase A Active Power;;0.010000;0.000000;kW;4
+5;4;12647;U32;;Meter 1: Phase B Active Power;;0.010000;0.000000;kW;4
+6;4;12649;U32;;Meter 1: Phase C Active Power;;0.010000;0.000000;kW;4
+7;4;12651;U32;;Meter 1: Power Factor;;0.001000;0.000000;;4
 8;4;12653;U32;;Meter 1: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
 9;4;12655;U32;;Meter 1: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
 10;4;12657;U32;;Meter 1: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
@@ -14,19 +14,19 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 13;4;12663;U32;;Meter 1: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
 14;4;12665;U32;;Meter 1: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
 15;4;12667;U32;;Meter 1: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
-16;4;12669;U32;;Meter 1: Phase A Voltage;U_AC_1;0.010000;0.000000;V;4
-17;4;12671;U32;;Meter 1: Phase B Voltage;U_AC_2;0.010000;0.000000;V;4
-18;4;12673;U32;;Meter 1: Phase C Voltage;U_AC_3;0.010000;0.000000;V;4
-19;4;12675;U32;;Meter 1: Phase A Current;I_AC_1;0.010000;0.000000;A;4
-20;4;12677;U32;;Meter 1: Phase B Current;I_AC_2;0.010000;0.000000;A;4
-21;4;12679;U32;;Meter 1: Phase C Current;I_AC_3;0.010000;0.000000;A;4
-22;4;12681;U32;;Meter 1: Phase A Power Factor;PF_1;0.001000;0.000000;;4
-23;4;12683;U32;;Meter 1: Phase B Power Factor;PF_2;0.001000;0.000000;;4
-24;4;12685;U32;;Meter 1: Phase C Power Factor;PF_3;0.001000;0.000000;;4
+16;4;12669;U32;;Meter 1: Phase A Voltage;;0.010000;0.000000;V;4
+17;4;12671;U32;;Meter 1: Phase B Voltage;;0.010000;0.000000;V;4
+18;4;12673;U32;;Meter 1: Phase C Voltage;;0.010000;0.000000;V;4
+19;4;12675;U32;;Meter 1: Phase A Current;;0.010000;0.000000;A;4
+20;4;12677;U32;;Meter 1: Phase B Current;;0.010000;0.000000;A;4
+21;4;12679;U32;;Meter 1: Phase C Current;;0.010000;0.000000;A;4
+22;4;12681;U32;;Meter 1: Phase A Power Factor;;0.001000;0.000000;;4
+23;4;12683;U32;;Meter 1: Phase B Power Factor;;0.001000;0.000000;;4
+24;4;12685;U32;;Meter 1: Phase C Power Factor;;0.001000;0.000000;;4
 25;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0;;4
-26;4;12688;U32;;Meter 1: Uab Line Voltage;U_AC_L1L2;0.010000;0.000000;V;4
-27;4;12690;U32;;Meter 1: Ubc Line Voltage;U_AC_L2L3;0.010000;0.000000;V;4
-28;4;12692;U32;;Meter 1: Uca Line Voltage;U_AC_L3L1;0.010000;0.000000;V;4
+26;4;12688;U32;;Meter 1: Uab Line Voltage;;0.010000;0.000000;V;4
+27;4;12690;U32;;Meter 1: Ubc Line Voltage;;0.010000;0.000000;V;4
+28;4;12692;U32;;Meter 1: Uca Line Voltage;;0.010000;0.000000;V;4
 29;4;12768_6;STRING;;Meter 2: Serial Number;;1.000000;0.000000;;4
 30;4;12771;U32;;Meter 2: Total Active Power;;0.010000;0.000000;kW;4
 31;4;12773;U32;;Meter 2: Phase A Active Power;;0.010000;0.000000;kW;4

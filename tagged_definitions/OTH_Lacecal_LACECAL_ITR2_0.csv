@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Lacecal;LACECAL_ITR2_0;;;;;;;
+modbusRTU;Other;Lacecal;LACECAL_ITR2_0;;;;;;;
 1;4;4099;U16;;Estado;;1.0;0.0;;4
 2;4;4103;U16;;redR +;;1.0;0.0;kWh;4
 3;4;4105;U16;;redR -;;1.0;0.0;kWh;4

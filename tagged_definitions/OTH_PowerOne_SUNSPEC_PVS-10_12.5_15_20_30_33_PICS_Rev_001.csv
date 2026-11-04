@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;PowerOne;SUNSPEC_PVS-10_12.5_15_20_30_3;;;;;;;
+modbusRTU;Other;PowerOne;SUNSPEC_PVS-10_12.5_15_20_30_3;;;;;;;
 1;4;40002;U16;;ID;;1.0;0.0;None;4
 2;4;40003;U16;;L;;1.0;0.0;None;4
 3;4;40004;U16;;Mn;;1.0;0.0;None;4

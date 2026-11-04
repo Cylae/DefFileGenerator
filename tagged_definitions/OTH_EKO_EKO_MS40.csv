@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;EKO;EKO_MS40;;;;;;;
+modbusRTU;Other;EKO;EKO_MS40;;;;;;;
 1;4;0;U16;;Serial number;SERIAL;1.0;0.0;;4
 2;4;1;U16;;Serial number _1;;1.0;0.0;;4
 3;4;2;U16;;Serial number _2;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿ModbusRTU;Sensor;IngenieurBuro;Si-RS485TC-2T-v-MB;;;;;;;
+ModbusRTU;Sensor;IngenieurBuro;Si-RS485TC-2T-v-MB;;;;;;;
 1;4;0;U16;;reserved;;1;0;;0
 2;4;1;U16;;Module temperature;TEMP_CELL;0.1;-25;C;4
 3;4;2;U16;;Ambiant temperature;;0.1;-25.0;C;4

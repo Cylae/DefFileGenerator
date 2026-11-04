@@ -30,8 +30,8 @@ modbusRTU;String Combiner;Kernel Sistemi;ST1;;;;;;;
 29;4;30044;U16;;Inst T_1 (C [0...100]);;1;0;C;4
 30;4;30045;I16;;Inst T_2 (C [-22,0...+83,0]);;1;0;C;4
 31;4;30046;I16;;Inst T_3 (C [-22,0...+83,0]);;1;0;C;4
-32;4;30047;U16;;Sum of all currents (A);I_AC;1;0;A;4
-33;4;30048;U16;;Power (W);P_AC;1;0;W;4
+32;4;30047;U16;;Sum of all currents (A);;1;0;A;4
+33;4;30048;U16;;Power (W);;1;0;W;4
 34;4;30052;U16;;RMS Curr Str_01 (average value on last 6 seconds);;1;0;;4
 35;4;30053;U16;;RMS Curr Str_02 (average value on last 6 seconds);;1;0;;4
 36;4;30054;U16;;RMS Curr Str_03 (average value on last 6 seconds);;1;0;;4

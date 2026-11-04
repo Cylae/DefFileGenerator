@@ -1,4 +1,4 @@
-﻿Modbus;Sensor;MEIER-NT;ADL-SR;;;;;;;
+Modbus;Sensor;MEIER-NT;ADL-SR;;;;;;;
 1;4;30001;F32;;temperature 1 (internal solar cell_device temperature);TEMP_CELL;1.0;0.0;Deg.Celsius;4
 2;4;30003;F32;;temperature 2 (external);;1.0;0.0;Deg.Celsius;4
 3;4;30005;F32;;radiation;;1.0;0.0;W/m2;4

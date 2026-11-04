@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Huawei;60HV;;;;;;;
+ModbusRTU;Inverter;Huawei;60HV;;;;;;;
 1;3;32001;U16;;Rated inverter power;;1.0;0.0;;4
 2;3;32002;U16;;Output mode;;1.0;0.0;;4
 3;3;32003_10;STRING;;3 ESN;SERIAL;1.0;0.0;;4

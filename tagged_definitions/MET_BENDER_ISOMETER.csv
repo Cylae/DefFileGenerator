@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;BENDER;ISOMETER;;;;;;;
+modbusRTU;Meter;BENDER;ISOMETER;;;;;;;
 1;3;1296_20;STRING;;Device Name;;1;0;;4
 2;3;1306;U16;;D-No. Software MU;;1;0;;4
 3;3;1307;U16;;Software-version MU;;1;0;;4

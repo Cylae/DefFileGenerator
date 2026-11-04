@@ -1,22 +1,22 @@
 Modbus;Battery;Robestec;BESS;;;;;;;
-1;4;100;I16;;EMS - PCS real total active power (summary);P_AC;0.1;0;kW;4
-2;4;101;I16;;EMS - PCS real total reactive power (summary);Q_AC;0.1;0;kVar;4
+1;4;100;I16;;EMS - PCS real total active power (summary);;0.1;0;kW;4
+2;4;101;I16;;EMS - PCS real total reactive power (summary);;0.1;0;kVar;4
 3;4;102;I16;;EMS - Total volt. (summary);;0.1;0;V;4
 4;4;103;I16;;EMS - Total curr. (summary);;0.1;0;A;4
 5;4;104;U16;;EMS - Total SOC (summary);SOC;1;0;%;4
-6;4;105;I16;;EMS - Battery average temp. (summary);TEMP;1;0;Degr.Celsius;4
+6;4;105;I16;;EMS - Battery average temp. (summary);;1;0;Degr.Celsius;4
 7;4;106;I16;;EMS - Battery max. temp-diff. (summary);;1;0;Degr.Celsius;4
 8;4;107;U16;;EMS - Max. cell volt. (summary);;0.001;0;V;4
 9;4;108;U16;;EMS - Min. cell volt. (summary);;0.001;0;V;4
 10;4;111;U16;;EMS - System status;;1;0;;4
 11;4;200;U16;;BMS Cabinet 1 - Stack SOC;;1;0;%;4
-12;4;201;U16;;BMS Cabinet 1 - Stack SOH;SOH;1;0;%;4
+12;4;201;U16;;BMS Cabinet 1 - Stack SOH;;1;0;%;4
 13;4;202;U16;;BMS Cabinet 1 - Stack Status;;1;0;;4
 14;4;203;I16;;BMS Cabinet 1 - Stack volt.;;0.1;0;V;4
 15;4;204;I16;;BMS Cabinet 1 - Stack curr.;;0.1;0;A;4
 16;4;205;I16;;BMS Cabinet 1 - Max. cell volt.;;0.001;0;V;4
 17;4;206;I16;;BMS Cabinet 1 - Min. cell volt.;;0.001;0;V;4
-18;4;207;I16;;BMS Cabinet 1 - Max. cell temp.;TEMP_CELL;1;0;Degr.Celsius;4
+18;4;207;I16;;BMS Cabinet 1 - Max. cell temp.;;1;0;Degr.Celsius;4
 19;4;208;I16;;BMS Cabinet 1 - Min. cell temp.;;1;0;Degr.Celsius;4
 20;4;209;U16;;BMS Cabinet 1 - Max. cell SOC;;1;0;%;4
 21;4;210;U16;;BMS Cabinet 1 - Min. cell SOC;;1;0;%;4
@@ -297,26 +297,26 @@ Modbus;Battery;Robestec;BESS;;;;;;;
 296;4;55070;I32;;Meter 1 - Phase-A active power;;0.001;0;kW;4
 297;4;55072;I32;;Meter 1 - Phase-B active power;;0.001;0;kW;4
 298;4;55074;I32;;Meter 1 - Phase-C active power;;0.001;0;kW;4
-299;4;55076;I32;;Meter 1 - Total active power;;0.001;0;kW;4
+299;4;55076;I32;;Meter 1 - Total active power;P_AC;0.001;0;kW;4
 300;4;55078;I32;;Meter 1 - Phase-A reactive power;;0.001;0;kVar;4
 301;4;55080;I32;;Meter 1 - Phase-B reactive power;;0.001;0;kVar;4
 302;4;55082;I32;;Meter 1 - Phase-C reactive power;;0.001;0;kVar;4
-303;4;55084;I32;;Meter 1 - Total reactive power;;0.001;0;kVar;4
-304;4;55086;U32;;Meter 1 - Phase-A apparent power;S_AC;0.001;0;kVA;4
+303;4;55084;I32;;Meter 1 - Total reactive power;Q_AC;0.001;0;kVar;4
+304;4;55086;U32;;Meter 1 - Phase-A apparent power;;0.001;0;kVA;4
 305;4;55088;U32;;Meter 1 - Phase-B apparent power;;0.001;0;kVA;4
 306;4;55090;U32;;Meter 1 - Phase-C apparent power;;0.001;0;kVA;4
-307;4;55092;U32;;Meter 1 - Total apparent power;;0.001;0;kVA;4
+307;4;55092;U32;;Meter 1 - Total apparent power;S_AC;0.001;0;kVA;4
 308;4;55094;I16;;Meter 1 - Phase-A PF;;0.001;0;;4
 309;4;55095;I16;;Meter 1 - Phase-B PF;;0.001;0;;4
 310;4;55096;I16;;Meter 1 - Phase-C PF;;0.001;0;;4
 311;4;55097;U16;;Meter 1 - Total PF;;0.001;0;;4
-312;4;55098;U32;;Meter 1 - Combined Total Active Energy;E_TOT;0.01;0;kWh;4
+312;4;55098;U32;;Meter 1 - Combined Total Active Energy;;0.01;0;kWh;4
 313;4;55100;U32;;Meter 1 - Curr. combination total reactive electrical energy;;0.01;0;kWh;4
-314;4;55102;U32;;Meter 1 - Import Peak Active Energy;E_IMP;0.01;0;kWh;4
+314;4;55102;U32;;Meter 1 - Import Peak Active Energy;;0.01;0;kWh;4
 315;4;55104;U32;;Meter 1 - Import Shoulder Active Energy;;0.01;0;kWh;4
 316;4;55106;U32;;Meter 1 - Import Flat Active Energy;;0.01;0;kWh;4
 317;4;55108;U32;;Meter 1 - Import Valley Active Energy;;0.01;0;kWh;4
-318;4;55110;U32;;Meter 1 - Export Peak Active Energy;E_EXP;0.01;0;kWh;4
+318;4;55110;U32;;Meter 1 - Export Peak Active Energy;;0.01;0;kWh;4
 319;4;55112;U32;;Meter 1 - Export Shoulder Active Energy;;0.01;0;kWh;4
 320;4;55114;U32;;Meter 1 - Export Flat Active Energy;;0.01;0;kWh;4
 321;4;55116;U32;;Meter 1 - Export Valley Active Energy;;0.01;0;kWh;4
@@ -364,7 +364,7 @@ Modbus;Battery;Robestec;BESS;;;;;;;
 363;4;56001;U16;;PCS 1 - Grid-on/off status;;1;0;;4
 364;4;56002;I16;;PCS 1 - Input curr.;;0.1;0;;4
 365;4;56003;U16;;PCS 1 - Input volt.;;0.1;0;V;4
-366;4;56004;I16;;PCS 1 - Input power;;0.1;0;;4
+366;4;56004;I16;;PCS 1 - Input power;P_DC;0.1;0;;4
 367;4;56005;U16;;PCS 1 - Phase-A volt.;;0.1;0;V;4
 368;4;56006;U16;;PCS 1 - Phase-B volt.;;0.1;0;V;4
 369;4;56007;U16;;PCS 1 - Phase-C volt.;;0.1;0;V;4
@@ -391,11 +391,11 @@ Modbus;Battery;Robestec;BESS;;;;;;;
 390;4;56353;U16;;Liquid Cooling 1 - Electrical heater operation status;;1;0;;4
 391;4;56355;I16;;Liquid Cooling 1 - Water outlet temp.;;0.1;0;;4
 392;4;56356;I16;;Liquid Cooling 1 - Water Return Temperature;;0.1;0;;4
-393;4;56357;U16;;Liquid Cooling 1 - Water outlet pressure;PRESSURE;0.01;0;;4
+393;4;56357;U16;;Liquid Cooling 1 - Water outlet pressure;;0.01;0;;4
 394;4;56358;U16;;Liquid Cooling 1 - Return water pressure;;0.01;0;;4
 395;4;56450;U16;;Dryer 1 - Temperature alarm upper limit value;;0.1;0;;4
 396;4;56451;I16;;Dryer 1 - Temperature alarm lower limit value;;0.1;0;;4
-397;4;56452;U16;;Dryer 1 - Humidity control start value;HUMIDITY;0.1;0;;4
+397;4;56452;U16;;Dryer 1 - Humidity control start value;;0.1;0;;4
 398;4;56453;U16;;Dryer 1 - Humidity control stop value;;0.1;0;%RH;4
 399;4;56455;I16;;Dryer 1 - Temperature control stop value;;0.1;0;;4
 400;4;56456;I16;;Dryer 1 - Temperature control start value;;0.1;0;;4
@@ -755,7 +755,7 @@ Modbus;Battery;Robestec;BESS;;;;;;;
 754;3;299;I16;;EMS - Time division B:23:45~00:00;;0.1;0;kW;1
 755;3;300;U16;;EMS - Season A starting month;;1;0;;1
 756;3;301;U16;;EMS - Seasonal timing B starting month;;1;0;;1
-757;3;336;I16;;EMS - Max. temp. power limitation temp. point [0];CMD_P_AC_SET_ABS;1;0;Degr.Celsius;1
+757;3;336;I16;;EMS - Max. temp. power limitation temp. point [0];;1;0;Degr.Celsius;1
 758;3;337;I16;;EMS - Max. temp. power limitation temp. point [1];;1;0;Degr.Celsius;1
 759;3;338;I16;;EMS - Max. temp. power limitation temp. point [2];;1;0;Degr.Celsius;1
 760;3;339;I16;;EMS - Max. temp. power limitation temp. point [3];;1;0;Degr.Celsius;1
@@ -790,7 +790,7 @@ Modbus;Battery;Robestec;BESS;;;;;;;
 789;3;368;I16;;EMS - CHA stop cell volt. hysteresis;;0.001;0;V;1
 790;3;369;I16;;EMS - DIS stop cell volt.;;0.001;0;V;1
 791;3;370;I16;;EMS - DIS stop cell volt. hysteresis;;0.001;0;V;1
-792;3;371;I16;;EMS - Reverse curr.-Nominal power(kW);P_RATED;0.1;0;kW;1
+792;3;371;I16;;EMS - Reverse curr.-Nominal power(kW);;0.1;0;kW;1
 793;3;375;I16;;EMS - Reverse curr.-Power hysteresis;;0.1;0;kW;1
 794;3;376;U16;;EMS - Reverse curr.-Frequency regulation(s);;1;0;s;1
 795;3;377;I16;;EMS - Cell volt. power limitation volt. point [0] (v);;0.001;0;V;1
@@ -1175,7 +1175,7 @@ Modbus;Battery;Robestec;BESS;;;;;;;
 1174;3;61080;U16;;Liquid Cooling 5 - BMS mode control;;1;0;;1
 1175;3;61081;I16;;Liquid Cooling 5 - Cooling point;;1;0;;1
 1176;3;61082;I16;;Liquid Cooling 5 - Heating point;;1;0;;1
-1177;2;200_0_1;Bits;;BMS Cabinet 1 - Negative electrical insulation alarm minor;R_ISO;1;0;;4
+1177;2;200_0_1;Bits;;BMS Cabinet 1 - Negative electrical insulation alarm minor;;1;0;;4
 1178;2;201_0_1;Bits;;BMS Cabinet 1 - Negative electrical insulation alarm major;;1;0;;4
 1179;2;202_0_1;Bits;;BMS Cabinet 1 - Negative electrical insulation alarm critical;;1;0;;4
 1180;2;206_0_1;Bits;;BMS Cabinet 1 - Rack OV-volt. alarm minor;;1;0;;4

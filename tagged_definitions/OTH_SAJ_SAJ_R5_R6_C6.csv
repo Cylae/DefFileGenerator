@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SAJ;SAJ_R5_R6_C6;;;;;;;
+modbusRTU;Other;SAJ;SAJ_R5_R6_C6;;;;;;;
 1;4;36608;U16;;Device Type;MODEL;1.0;0.0;;1
 2;4;36609;U16;;Subclass Machine Power;;1.0;0.0;;1
 3;4;36610;U16;;Comms Protocol Version;;1.0;0.0;;1

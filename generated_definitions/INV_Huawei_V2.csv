@@ -30,8 +30,8 @@ Modbus;Inverter;Huawei;V2
 29;3;32285;U16;;Inverter efficiency;;0.01;0.0;%;4
 30;3;32286;I16;;Internal temperature;TEMP_INT;0.1;0.0;�C;4
 31;3;32287;U16;;Device status;;1.0;0.0;epoch;4
-32;3;32288;I32;;Active power peak of current day;P_AC;0.001;0.0;kW;4
-33;3;32290;I32;;Active power;;0.001;0.0;kW;4
+32;3;32288;I32;;Active power peak of current day;;0.001;0.0;kW;4
+33;3;32290;I32;;Active power;P_AC;0.001;0.0;kW;4
 34;3;32292;I32;;Reactive power;Q_AC;0.001;0.0;kVar;4
 35;3;32294;U32;;Input power;P_DC;0.001;0.0;kW;4
 36;3;32296;U32;;Current energy yield collection time;;1.0;0.0;epoch;0
@@ -40,10 +40,10 @@ Modbus;Inverter;Huawei;V2
 39;3;32302;U32;;Monthly energy yield;;0.01;0.0;kWh;4
 40;3;32304;U32;;Annual energy yield;;1.0;0.0;;4
 41;3;32306;U32;;Accumulated energy yield;E_TOT;0.01;0.0;kWh;4
-42;3;32314;I16;;PV7 voltage;U_DC_STRING_7;1.0;0.0;;4
-43;3;32315;I16;;PV7 current;I_DC_STRING_7;1.0;0.0;;4
-44;3;32316;I16;;PV8 voltage;U_DC_STRING_8;1.0;0.0;;4
-45;3;32317;I16;;PV8 current;I_DC_STRING_8;1.0;0.0;;4
+42;3;32314;I16;;PV7 voltage;;1.0;0.0;;4
+43;3;32315;I16;;PV7 current;;1.0;0.0;;4
+44;3;32316;I16;;PV8 voltage;;1.0;0.0;;4
+45;3;32317;I16;;PV8 current;;1.0;0.0;;4
 46;3;32319_0_1;BITS;;State 1:Standby;;1.0;0.0;;4
 47;3;32319_1_1;BITS;;State 1 : Grid-connected;;1.0;0.0;;4
 48;3;32319_2_1;BITS;;State 1 : Grid-connected normally;;1.0;0.0;;4
@@ -82,15 +82,15 @@ Modbus;Inverter;Huawei;V2
 81;3;33026;U32;;MPPT3 total input power;P_DC_MPPT_3;0.001;0.0;kW;4
 82;3;33070;U32;;MPPT4 total input power;P_DC_MPPT_4;0.001;0.0;kW;4
 83;3;40000;U32;;Date and time;;1.0;0.0;Epoch;4
-84;3;40117;U16;;[Power grid scheduling] Reactive power compensation;CMD_PF;1.0;0.0;;4
+84;3;40117;U16;;[Power grid scheduling] Reactive power compensation;;1.0;0.0;;4
 85;3;40118;U16;;[Power grid scheduling] Active power control;CMD_P_ENA;1.0;0.0;;4
 86;3;40119;U16;;[Power grid scheduling] Active power percentage derating 40119;;1.0;0.0;%;4
-87;3;40120;U16;;[Power grid scheduling] Fixed Active power derated;CMD_P_AC_SET_ABS;0.1;0.0;kW;4
+87;3;40120;U16;;[Power grid scheduling] Fixed Active power derated;;0.1;0.0;kW;4
 88;3;40121;U16;;[Power grid scheduling] Active power change gradient;CMD_RAMP_TIME_S;0.1;0.0;%/s;4
 89;3;40122;U16;;[Power grid scheduling] Reactive power compensation (PF);;0.001;0.0;;4
 90;3;40123;U16;;[Power grid scheduling] Reactive power compensation (Q/S);;0.001;0.0;;4
 91;3;40124;I16;;[Power grid scheduling] Reactive power adjustment time;;1.0;0.0;Sec;4
-92;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);CMD_P_AC_SET_PERCENT;0.1;0.0;%;4
+92;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);;0.1;0.0;%;4
 93;3;40133;U16;;[Power grid scheduling] cosphi-P/Pn characteristic curve;;1.0;0.0;;4
 94;3;40134;U16;;P/Pn value of cosphi-P/Pn curve point 1;;0.1;0.0;%;4
 95;3;40135;U16;;cosphi value of cosphi-P/Pn curve point 1;;0.001;0.0;;4
@@ -193,7 +193,7 @@ Modbus;Inverter;Huawei;V2
 192;3;42303;U16;;System time: hour;;1.0;0.0;Hour;4
 193;3;42304;U16;;System time: minute;;1.0;0.0;Minutes;4
 194;3;42305;U16;;System time: second;;1.0;0.0;Sec;4
-195;3;42320;U16;;[Power grid scheduling] Active power percentage derating 42320;;1.0;0.0;%;4
+195;3;42320;U16;;[Power grid scheduling] Active power percentage derating 42320;CMD_P_AC_SET_PERCENT;1.0;0.0;%;4
 196;3;42321;U16;;[Power grid scheduling] Power factor;;0.001;0.0;;4
 197;3;42333;U16;;Remote power scheduling;;1.0;0.0;;4
 198;3;50000;U16;;Alarm 1;;1.0;0.0;;8

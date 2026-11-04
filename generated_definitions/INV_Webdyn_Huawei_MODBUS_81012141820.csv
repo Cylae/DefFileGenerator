@@ -1,19 +1,19 @@
 ModbusRTU;Inverter;Huawei;8KTL-10KTL-12KTL-14KTL-18KTL-20KTL;;;;;;;
 1;3;32001;U16;;1 Rated inverter power ;;1.0;0.0;;4
 2;3;32002;U16;;2 Output mode ;;1.0;0.0;;4
-3;3;32003_10;STRING;;3 ESN ;SERIAL;1.0;0.0;;4
-4;3;32262;I16;;4 PV1 Voltage ;U_DC_STRING_1;0.1;0.0;V;4
-5;3;32263;I16;;5 PV1 Current ;I_DC_STRING_1;0.01;0.0;A;4
-6;3;32264;I16;;6 PV2 Voltage ;U_DC_STRING_2;0.1;0.0;V;4
-7;3;32265;I16;;7 PV2 Current ;I_DC_STRING_2;0.01;0.0;A;4
-8;3;32266;I16;;8 PV3 Voltage ;U_DC_STRING_3;0.1;0.0;V;4
-9;3;32267;I16;;9 PV3 Current ;I_DC_STRING_3;0.01;0.0;A;4
-10;3;32268;I16;;10 PV4 Voltage ;U_DC_STRING_4;0.1;0.0;V;4
-11;3;32269;I16;;11 PV4 Current ;I_DC_STRING_4;0.01;0.0;A;4
-12;3;32270;I16;;12 PV5 Voltage ;U_DC_STRING_5;0.1;0.0;V;4
-13;3;32271;I16;;13 PV5 Current ;I_DC_STRING_5;0.01;0.0;A;4
-14;3;32272;I16;;14 PV6 Voltage;U_DC_STRING_6;0.1;0.0;V;4
-15;3;32273;I16;;15 PV6 Current;I_DC_STRING_6;0.01;0.0;A;4
+3;3;32003_10;STRING;;3 ESN ;;1.0;0.0;;4
+4;3;32262;I16;;4 PV1 Voltage ;;0.1;0.0;V;4
+5;3;32263;I16;;5 PV1 Current ;;0.01;0.0;A;4
+6;3;32264;I16;;6 PV2 Voltage ;;0.1;0.0;V;4
+7;3;32265;I16;;7 PV2 Current ;;0.01;0.0;A;4
+8;3;32266;I16;;8 PV3 Voltage ;;0.1;0.0;V;4
+9;3;32267;I16;;9 PV3 Current ;;0.01;0.0;A;4
+10;3;32268;I16;;10 PV4 Voltage ;;0.1;0.0;V;4
+11;3;32269;I16;;11 PV4 Current ;;0.01;0.0;A;4
+12;3;32270;I16;;12 PV5 Voltage ;;0.1;0.0;V;4
+13;3;32271;I16;;13 PV5 Current ;;0.01;0.0;A;4
+14;3;32272;I16;;14 PV6 Voltage;;0.1;0.0;V;4
+15;3;32273;I16;;15 PV6 Current;;0.01;0.0;A;4
 16;3;32274;U16;;16 Uab ;;0.01;0.0;V;4
 17;3;32275;U16;;17 Ubc;;0.01;0.0;V;4
 18;3;32276;U16;;18 Uca ;;0.01;0.0;V;4
@@ -23,14 +23,14 @@ ModbusRTU;Inverter;Huawei;8KTL-10KTL-12KTL-14KTL-18KTL-20KTL;;;;;;;
 22;3;32280;U16;;22 Ia ;;0.01;0.0;A;4
 23;3;32281;U16;;23 Ib ;;0.01;0.0;A;4
 24;3;32282;U16;;24 Ic ;;0.01;0.0;A;4
-25;3;32283;U16;;25 Frequency ;FREQ;0.01;0.0;Hz;4
-26;3;32284;I16;;26 Power factor;PF;0.001;0.0;;4
+25;3;32283;U16;;25 Frequency ;;0.01;0.0;Hz;4
+26;3;32284;I16;;26 Power factor;;0.001;0.0;;4
 27;3;32285;U16;;27 Inverter efficiency ;;0.01;0.0;%;4
-28;3;32286;I16;;28 Cabinet temperature ;TEMP_INT;0.1;0.0;°C;4
+28;3;32286;I16;;28 Cabinet temperature ;;0.1;0.0;°C;4
 29;3;32287;U16;;29 Inverter status ;;1.0;0.0;;8
-30;3;32288;I32;;30 Active power peak of current day;P_AC;0.001;0.0;kW;4
+30;3;32288;I32;;30 Active power peak of current day;;0.001;0.0;kW;4
 31;3;32290;I32;;31 Active power ;;0.001;0.0;kW;4
-32;3;32292;I32;;32 Reactive power ;Q_AC;0.001;0.0;kVar;4
+32;3;32292;I32;;32 Reactive power ;;0.001;0.0;kVar;4
 33;3;32294;U32;;33 Total input power ;;0.001;0.0;kW;4
 34;3;32298;U32;;34 E-Hour ;;0.01;0.0;kWh;4
 35;3;32300;U32;;35 E-Day ;;0.01;0.0;kWh;4
@@ -46,12 +46,12 @@ ModbusRTU;Inverter;Huawei;8KTL-10KTL-12KTL-14KTL-18KTL-20KTL;;;;;;;
 45;3;32327_0_1;BITS;;BitOffset:7;;1.0;0.0;;4
 46;3;32328_0_1;BITS;;BitOffset:8;;1.0;0.0;;4
 47;3;32329;U16;;42 Inverter on-grid;;1.0;0.0;;4
-48;3;32330;U16;;43 Insulation resistance ;R_ISO;0.001;0.0;M;4
+48;3;32330;U16;;43 Insulation resistance ;;0.001;0.0;M;4
 49;3;32325;U32;;44 Inverter start time ;;1.0;0.0;Sec;4
 50;3;32327;U32;;45 Inverter shutdown time;;1.0;0.0;Sec;4
-51;3;33022;U32;;46 MPPT1 total input power;P_DC_MPPT_1;0.001;0.0;kW;4
-52;3;33024;U32;;47 MPPT2 total input power;P_DC_MPPT_2;0.001;0.0;kW;4
-53;3;33026;U32;;48 MPPT3 total input power;P_DC_MPPT_3;0.001;0.0;kW;4
+51;3;33022;U32;;46 MPPT1 total input power;I_DC_MPPT_1;0.001;0.0;kW;4
+52;3;33024;U32;;47 MPPT2 total input power;I_DC_MPPT_2;0.001;0.0;kW;4
+53;3;33026;U32;;48 MPPT3 total input power;I_DC_MPPT_3;0.001;0.0;kW;4
 54;3;40000;U32;;49 Date and time ;;1.0;0.0;;4
 55;3;40117;U16;;50 Reactive power compensation;;1.0;0.0;;4
 56;3;40118;U16;;51 Active power control;;1.0;0.0;;4
@@ -104,8 +104,8 @@ ModbusRTU;Inverter;Huawei;8KTL-10KTL-12KTL-14KTL-18KTL-20KTL;;;;;;;
 103;3;40172;I16;;Q/S value of Q-U curve point 9;;0.001;0.0;;4
 104;3;40173;I16;;U/Un value of Q-U curve point 10;;0.1;0.0;%;4
 105;3;40174;I16;;Q/S value of Q-U curve point 10;;0.001;0.0;;4
-106;3;40200;U16;;61 Power on ;CMD_ON;1.0;0.0;;4
-107;3;40201;U16;;62 Power off ;CMD_OFF;1.0;0.0;;4
+106;3;40200;U16;;61 Power on ;;1.0;0.0;;4
+107;3;40201;U16;;62 Power off ;;1.0;0.0;;4
 108;3;40232;U16;;63 Active power derating percent;;1.0;0.0;%;4
 109;3;40234;U16;;64 Active power deration percent;;1.0;0.0;%;4
 110;3;40235;U16;;65 Active power deration fixed value;;0.1;0.0;kW;4
@@ -147,7 +147,7 @@ ModbusRTU;Inverter;Huawei;8KTL-10KTL-12KTL-14KTL-18KTL-20KTL;;;;;;;
 146;3;42096;U16;;101 Q-U dispatch trigger power percent;;1.0;0.0;%;4
 147;3;42097;U16;;102 MPPT setting;;1.0;0.0;;4
 148;3;42101;U16;;103 MPPT scanning interval;;1.0;0.0;Mins;4
-149;3;42174;U16;;104 Shutdown at 0% power limit;CMD_P_AC_SET_PERCENT;1.0;0.0;;4
+149;3;42174;U16;;104 Shutdown at 0% power limit;;1.0;0.0;;4
 150;3;42320;U16;;105 Active power deration;;1.0;0.0;%;4
 151;3;42321;U16;;106 Reactive power compensation;;0.001;0.0;;4
 152;3;42333;U16;;107 Remote power schedule;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;INVT Solar;ModbusRTU_INVT_Generic;;;;;;;
+modbusRTU;Other;INVT Solar;ModbusRTU_INVT_Generic;;;;;;;
 1;4;14353;U16;;RS grid line voltage;;1.0;0.0;V;4
 2;4;14354;U16;;ST grid Line Voltage;;1.0;0.0;V;4
 3;4;14355;U16;;TR grid line voltage;;1.0;0.0;V;4

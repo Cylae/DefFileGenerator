@@ -1,4 +1,4 @@
-﻿ModbusRTU;Other;Inverter;Sungrow;;;;;;;
+ModbusRTU;Other;Inverter;Sungrow;;;;;;;
 1;4;4999;U16;;Device type code;;1.0;0.0;;4
 2;4;5000;U16;;Nominal Active Power;P_RATED;1.0;0.0;0.1kW;4
 3;4;5001;U16;;Output type;;1.0;0.0;;4

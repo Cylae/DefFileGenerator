@@ -1,10 +1,10 @@
 modbus;Meter;Chauvin_Arnoux;Ulys_Flex;0;;;;;;
-1;3;4096;F32;;Voltage L1-N;U_AC_1;1;0;V;4
-2;3;4098;F32;;Voltage L2-N;U_AC_2;1;0;V;4
-3;3;4100;F32;;Voltage L3-N;U_AC_3;1;0;V;4
-4;3;4102;F32;;Voltage L1-L2;U_AC_L1L2;1;0;V;4
-5;3;4104;F32;;Voltage L2-L3;U_AC_L2L3;1;0;V;4
-6;3;4106;F32;;Voltage L3-L1;U_AC_L3L1;1;0;V;4
+1;3;4096;F32;;Voltage L1-N;;1;0;V;4
+2;3;4098;F32;;Voltage L2-N;;1;0;V;4
+3;3;4100;F32;;Voltage L3-N;;1;0;V;4
+4;3;4102;F32;;Voltage L1-L2;;1;0;V;4
+5;3;4104;F32;;Voltage L2-L3;;1;0;V;4
+6;3;4106;F32;;Voltage L3-L1;;1;0;V;4
 7;3;4108;F32;;System Voltage;;1;0;V;4
 8;3;4110;F32;;Current L1;I_AC_1;1;0;A;4
 9;3;4112;F32;;Current L2;I_AC_2;1;0;A;4
@@ -14,19 +14,19 @@ modbus;Meter;Chauvin_Arnoux;Ulys_Flex;0;;;;;;
 13;3;4120;F32;;Active Power L1;P_AC_1;1;0;W;4
 14;3;4122;F32;;Active Power L2;P_AC_2;1;0;W;4
 15;3;4124;F32;;Active Power L3;P_AC_3;1;0;W;4
-16;3;4126;F32;;System Active Power;P_AC;1;0;W;4
+16;3;4126;F32;;System Active Power;;1;0;W;4
 17;3;4128;F32;;Apparent Power L1;S_AC_1;1;0;VA;4
 18;3;4130;F32;;Apparent Power L2;S_AC_2;1;0;VA;4
 19;3;4132;F32;;Apparent Power L3;S_AC_3;1;0;VA;4
-20;3;4134;F32;;System Apparent Power;S_AC;1;0;VA;4
+20;3;4134;F32;;System Apparent Power;;1;0;VA;4
 21;3;4136;F32;;Reactive Power L1;Q_AC_1;1;0;var;4
 22;3;4138;F32;;Reactive Power L2;Q_AC_2;1;0;var;4
 23;3;4140;F32;;Reactive Power L3;Q_AC_3;1;0;var;4
-24;3;4142;F32;;System Reactive Power;Q_AC;1;0;var;4
+24;3;4142;F32;;System Reactive Power;;1;0;var;4
 25;3;4144;F32;;Power Factor L1;PF_1;1;0;;4
 26;3;4146;F32;;Power Factor L2;PF_2;1;0;;4
 27;3;4148;F32;;Power Factor L3;PF_3;1;0;;4
-28;3;4150;F32;;System Power Factor;PF;1;0;;4
+28;3;4150;F32;;System Power Factor;;1;0;;4
 29;3;4158;F32;;Tangent Phi L1;;1;0;;4
 30;3;4160;F32;;Tangent Phi L2;;1;0;;4
 31;3;4162;F32;;Tangent Phi L3;;1;0;;4
@@ -90,8 +90,8 @@ modbus;Meter;Chauvin_Arnoux;Ulys_Flex;0;;;;;;
 89;3;4788;F32;;System Active Power Min;;1;0;W;4
 90;3;4790;F32;;System Apparent Power Min;;1;0;VA;4
 91;3;4792;F32;;System Reactive Power Min;;1;0;var;4
-92;3;5120;F32;;Imported Active Energy L1;E_IMP;1;0;Wh;4
-93;3;5122;F32;;Exported Active Energy L1;E_EXP;1;0;Wh;4
+92;3;5120;F32;;Imported Active Energy L1;;1;0;Wh;4
+93;3;5122;F32;;Exported Active Energy L1;;1;0;Wh;4
 94;3;5124;F32;;Imported Active Energy L2;;1;0;Wh;4
 95;3;5126;F32;;Exported Active Energy L2;;1;0;Wh;4
 96;3;5128;F32;;Imported Active Energy L3;;1;0;Wh;4

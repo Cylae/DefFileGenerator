@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;MODBUS_CarloGavazi_EM-ET300;;;;;;;
+modbusRTU;Other;Webdyn;MODBUS_CarloGavazi_EM-ET300;;;;;;;
 1;4;0;U16;;V L1-N;;1.0;0.0;V;4
 2;4;2;U16;;V L2-N;;1.0;0.0;V;4
 3;4;4;U16;;V L3-N;;1.0;0.0;V;4
@@ -27,7 +27,7 @@
 26;4;48;U16;;PF L3;;1.0;0.0;F;4
 27;4;49;U16;;PF sys;;1.0;0.0;F;4
 28;4;50;U16;;Phase sequence;;1.0;0.0;hase;4
-29;4;51;U16;;Hz;;1.0;0.0;Hz;4
+29;4;51;U16;;Hz;FREQ;1.0;0.0;Hz;4
 30;4;52;U16;;kWh (+) TOT;;1.0;0.0;KWh;4
 31;4;54;U16;;Kvarh (+) TOT;;1.0;0.0;Kvarh;4
 32;4;56;U16;;kW dmd;;1.0;0.0;W;4

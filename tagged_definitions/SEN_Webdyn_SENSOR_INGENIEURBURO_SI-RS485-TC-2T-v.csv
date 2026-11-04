@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;IngenieurBuro;SI-RS485-TC-2T-MB;;;;;;;
+modbusRTU;Sensor;IngenieurBuro;SI-RS485-TC-2T-MB;;;;;;;
 1;4;0;U16;;solarimeter-irra1.irradiation;;0.1;0.0;W/m2;2
 2;4;1;U16;;thermometer-temp1.module_temp;TEMP_CELL;0.1;-25.0;Deg.Celsius;2
 3;4;2;U16;;thermometer-temp2.temperature;;0.1;-25.0;Deg.Celsius;2

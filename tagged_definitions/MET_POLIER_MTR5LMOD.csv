@@ -1,4 +1,4 @@
-﻿Modbus;Meter;POLIER;MTR5LMOD;;;;;;;
+Modbus;Meter;POLIER;MTR5LMOD;;;;;;;
 1;3;0;U16;;Com address;;1.0;0.0;;4
 2;3;32784;U16;;Com address_1;;0.0;0.0;;4
 3;3;1;U16;;Baudrate;;1.0;0.0;;4

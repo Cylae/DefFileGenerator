@@ -1,4 +1,4 @@
-﻿ModbusTCP;Other;SMA;33KW;;;;;;;
+ModbusTCP;Other;SMA;33KW;;;;;;;
 1;4;30203;U32;;Nominal_power_in_ok_mode;P_RATED;1.0;0.0;;4
 2;4;30205;U32;;Nominal_power_in_warning_mode;;1.0;0.0;;4
 3;4;30207;U32;;Nominal power in Fault Mode;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Ingeteam;Modbus_Map_Rapid_Fusion_EN;;;;;;;
+modbusRTU;Other;Ingeteam;Modbus_Map_Rapid_Fusion_EN;;;;;;;
 1;4;1;U16;;FSM_State_Outlet1;;1.0;0.0;;4
 2;4;2;U16;;Power_Outlet1;;1.0;0.0;;4
 3;4;4;U16;;Energy_Outlet1;;1.0;0.0;;4

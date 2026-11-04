@@ -15,7 +15,7 @@ ModbusTCP;Inverter;SMA;STP5.0-3SE-40-STP6.0-3SE-40-STP8.0-3SE-40-STP10.0-3SE-40;
 14;3;32385;U32;;Operation.Inverter.Health;;1;0;;4
 15;3;30201;U32;;Operation.Health;;1;0;;4
 16;3;30207;U32;;Operation.HealthStt.Alm;;1;0;;4
-17;3;30203;U32;;Operation.HealthStt.Ok_1;P_RATED;1;0;;4
+17;3;30203;U32;;Operation.HealthStt.Ok_1;;1;0;;4
 18;3;31085;U32;;Operation.HealthStt.Ok_2;;1;0;;4
 19;3;30205;U32;;Operation.HealthStt.Wrn;;1;0;;4
 20;3;30055;U32;;Nameplate.Vendor;;1;0;;4
@@ -30,7 +30,7 @@ ModbusTCP;Inverter;SMA;STP5.0-3SE-40-STP6.0-3SE-40-STP8.0-3SE-40-STP10.0-3SE-40;
 29;3;31041_16;STRING;;Spdwr.ActlDnsSrvIp;;1;0;;4
 30;3;31033_16;STRING;;Spdwr.ActlGwIp;;1;0;;4
 31;3;31017_16;STRING;;Spdwr.ActlIp;;1;0;;4
-32;3;31025_16;STRING;;Spdwr.ActlSnetMsk;SERIAL;1;0;;4
+32;3;31025_16;STRING;;Spdwr.ActlSnetMsk;;1;0;;4
 33;3;30925;U32;;Spdwr.ComSocA.ConnSpd;;1;0;;4
 34;3;30927;U32;;Spdwr.ComSocA.DpxMode;;1;0;;4
 35;3;30929;U32;;Spdwr.ComSocA.Stt;;1;0;;4
@@ -351,7 +351,7 @@ ModbusTCP;Inverter;SMA;STP5.0-3SE-40-STP6.0-3SE-40-STP8.0-3SE-40-STP10.0-3SE-40;
 356;3;40063;U32;;Nameplate.CmpMain.SwRev;;1;0;;4
 357;3;40789;U32;;Nameplate.ComRev;;1;0;;4
 358;3;40631_16;STRING;;Nameplate.Location;;1;0;;4
-359;3;30051;U32;;Nameplate.MainModel;MODEL;1;0;;4
+359;3;30051;U32;;Nameplate.MainModel;;1;0;;4
 360;3;30053;U32;;Nameplate.Model;;1;0;;4
 361;3;30057;U32;;Nameplate.SerNum_1;;1;0;;4
 362;3;40067;U32;;Nameplate.SerNum_2;;1;0;;4
@@ -364,7 +364,7 @@ ModbusTCP;Inverter;SMA;STP5.0-3SE-40-STP6.0-3SE-40-STP8.0-3SE-40-STP10.0-3SE-40;
 371;3;44021;U32;;Operation.ValRsIstl;;1;0;;4
 372;3;41217;U32;;PCC.WMax;;1;0;;4
 373;3;41199;U32;;PCC.WMaxNom;;1;0;%;4
-374;3;41203;U32;;Plnt.DcWRtg;;1;0;W;4
+374;3;41203;U32;;Plnt.DcWRtg;P_RATED;1;0;W;4
 375;3;30001;U32;;Versionsnummer_SMA_Modbus_Prof;;1;0;;4
 376;3;30003;U32;;Nameplate.SusyId;;1;0;;4
 377;3;30005;U32;;Nameplate.SerNum_3;;1;0;;4

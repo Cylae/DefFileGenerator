@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Solis;Inv;;;;;;;
+ModbusRTU;Inverter;Solis;Inv;;;;;;;
 1;4;3000;U16;;Product model;MODEL;1;0;;4
 2;4;3001;U16;;DSP software version;;1;0;;4
 3;4;3002;U16;;LCD software version;;1;0;;4
@@ -91,4 +91,4 @@
 90;4;3068;U16;;Fault code 03;;1;0;;4
 91;4;3069;U16;;Fault code 04;;1;0;;4
 92;4;3070;U16;;Fault code 05;;1;0;;4
-93;3;3051;U16;;Limited active power;cmd;1;0;%;4
+93;3;3051;U16;;Limited active power;;1;0;%;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SAJ;SAJ_sunTrioTL;;;;;;;
+modbusRTU;Other;SAJ;SAJ_sunTrioTL;;;;;;;
 1;4;263;U16;;PV1Volt;;1.0;0.0;;4
 2;4;264;U16;;PV1Curr;;1.0;0.0;;4
 3;4;265;U16;;PV1Power;;1.0;0.0;;4

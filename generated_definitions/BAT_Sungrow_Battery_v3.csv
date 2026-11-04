@@ -12,8 +12,8 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 11;3;10061;U16;;Master_Slave_Setting;;1;0;;4
 12;3;10062;U16;;Black_Start_Beat_Count;;1;0;;4
 13;3;10099;U16;;Offgrid_Voltage_Setting;;0.1;0;V;4
-14;3;10100;U16;;Offgrid_Frequency_Setting;FREQ;0.01;0;Hz;4
-15;3;10102;I16;;Power_Factor_Setting;CMD_PF;0.001;0;;4
+14;3;10100;U16;;Offgrid_Frequency_Setting;;0.01;0;Hz;4
+15;3;10102;I16;;Power_Factor_Setting;;0.001;0;;4
 16;3;10103;I32;;Reactive_Power_Setting_Pct;;0.1;0;%;4
 17;3;10105;U16;;Debug_Mode;;1;0;;4
 18;3;10108;U16;;Overload_Status;;1;0;;4
@@ -30,7 +30,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 29;3;10133;U16;;VSG_Q_V_Droop_Coeff;;0.1;0;;4
 30;3;10134;I32;;Active_Issue_Setpoint;;0.1;0;kW;4
 31;3;10136;I32;;Reactive_Issue_Setpoint;;0.1;0;kvar;4
-32;3;10315;U16;;LCU_Outlet_Pressure_High_Threshold;PRESSURE;0.01;0;Bar;4
+32;3;10315;U16;;LCU_Outlet_Pressure_High_Threshold;;0.01;0;Bar;4
 33;3;10317;U16;;LCU_Run_Max_Temp_1;;1;0;degC;4
 34;3;10318;U16;;LCU_Run_Max_Temp_2;;1;0;degC;4
 35;3;10319;U16;;LCU_Run_Min_Temp_1;;1;0;degC;4
@@ -76,7 +76,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 75;3;11024;U16;;Input_Debug_Mode;;1;0;;4
 76;3;11025;U16;;Input_Node_Mode_Set;;1;0;;4
 77;3;11027;U16;;Output_Debug_Mode;;1;0;;4
-78;3;11028;U16;;Output_Node_Model_Set;MODEL;1;0;;4
+78;3;11028;U16;;Output_Node_Model_Set;;1;0;;4
 79;3;11029;U16;;Security_Service_Switch;;1;0;;4
 80;3;11030;U16;;LC_Downgrade_Enable;;1;0;;4
 81;3;11094;U16;;Country_Code_Set;;1;0;;4
@@ -88,10 +88,10 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 87;4;10057;U32;;Sys_Avail_Discharge_Power;;1;0;kW;4
 88;4;10059;I32;;Sys_Active_Power;;0.1;0;kW;4
 89;4;10061;I32;;Sys_Reactive_Power;;0.1;0;kvar;4
-90;4;10063;I32;;Sys_DC_Power;P_DC;0.1;0;kW;4
-91;4;10065;U32;;Sys_Total_Charge_Energy;E_TOT;1;0;kWh;4
+90;4;10063;I32;;Sys_DC_Power;;0.1;0;kW;4
+91;4;10065;U32;;Sys_Total_Charge_Energy;;1;0;kWh;4
 92;4;10067;U32;;Sys_Total_Discharge_Energy;;1;0;kWh;4
-93;4;10069;U32;;Sys_Daily_Charge_Energy;E_DAY;0.1;0;kWh;4
+93;4;10069;U32;;Sys_Daily_Charge_Energy;;0.1;0;kWh;4
 94;4;10071;U32;;Sys_Daily_Discharge_Energy;;0.1;0;kWh;4
 95;4;10073;U16;;Sys_Master_Slave_Status;;1;0;;4
 96;4;10074;U16;;Sys_Black_Start_Enabled;;1;0;;4
@@ -102,7 +102,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 101;4;10082;U16;;Sys_Charge_Discharge_Status;;1;0;;4
 102;4;10094;U32;;Sys_Max_Active_Power;;1;0;kW;4
 103;4;10096;U32;;Sys_Max_Reactive_Power;;1;0;kvar;4
-104;4;10098_16;STRING;;Cabinet_SN;SERIAL;1;0;;4
+104;4;10098_16;STRING;;Cabinet_SN;;1;0;;4
 105;4;10106_16;STRING;;Machine_Type_Name;;1;0;;4
 106;4;10124;U16;;LCU_Count;;1;0;;4
 107;4;10127;U16;;LED_Count;;1;0;;4
@@ -134,8 +134,8 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 133;4;10243;U16;;PCS_Daily_Run_Time;;1;0;min;4
 134;4;10244;I16;;PCS_Total_Power_Factor;;0.001;0;;4
 135;4;10245;U16;;PCS_Grid_Frequency;;0.01;0;Hz;4
-136;4;10247;U16;;PCS_Busbar_Voltage;U_DC;0.1;0;V;4
-137;4;10248;I16;;PCS_Internal_Air_Temp;TEMP_INT;0.1;0;degC;4
+136;4;10247;U16;;PCS_Busbar_Voltage;;0.1;0;V;4
+137;4;10248;I16;;PCS_Internal_Air_Temp;;0.1;0;degC;4
 138;4;10250;U16;;PCS_AB_Voltage;;0.1;0;V;4
 139;4;10251;U16;;PCS_BC_Voltage;;0.1;0;V;4
 140;4;10252;U16;;PCS_CA_Voltage;;0.1;0;V;4
@@ -158,7 +158,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 157;4;10272;U16;;PCS_Max_Charge_Power;;0.01;0;kW;4
 158;4;10273;U16;;PCS_Max_Discharge_Power;;0.01;0;kW;4
 159;4;10274;I16;;PCS_DC_Voltage;;0.1;0;V;4
-160;4;10275;I16;;PCS_DC_Current;I_DC;0.1;0;A;4
+160;4;10275;I16;;PCS_DC_Current;;0.1;0;A;4
 161;4;10276;U16;;PCS_DC_Impedance_To_Gnd;;1;0;kOhm;4
 162;4;10277;I32;;PCS_DC_Power;;0.1;0;kW;4
 163;4;10279;I32;;PCS_Active_Power;;0.1;0;kW;4
@@ -211,7 +211,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 210;4;32014;U16;;Bat_Total_Discharge_MWh;;0.001;0;MWh;4
 211;4;32015;U16;;Bat_Total_Charge_kAh;;0.001;0;kAh;4
 212;4;32016;U16;;Bat_Total_Discharge_kAh;;0.001;0;kAh;4
-213;4;32017;I16;;Bat_Max_Cell_Temp;TEMP_CELL;0.1;0;degC;4
+213;4;32017;I16;;Bat_Max_Cell_Temp;;0.1;0;degC;4
 214;4;32018;I16;;Bat_Min_Cell_Temp;;0.1;0;degC;4
 215;4;32019;U16;;Bat_Total_Rack_Count;;1;0;;4
 216;4;32020;U16;;Bat_Online_Rack_Count;;1;0;;4
@@ -247,7 +247,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 246;4;32056;I16;;LCU_Outlet_Temp;;0.1;0;degC;4
 247;4;32057;I16;;LCU_Inlet_Temp;;0.1;0;degC;4
 248;4;32058;U16;;LCU_Outlet_Pressure;;0.01;0;Bar;4
-249;4;32060;I16;;LCU_Ambient_Temp;TEMP_AMB;0.1;0;degC;4
+249;4;32060;I16;;LCU_Ambient_Temp;;0.1;0;degC;4
 250;4;32061;U16;;LCU_Alarm_Status;;1;0;;4
 251;4;32062_7;STRING;;LCU_Other_Alarms;;1;0;;4
 252;4;32069_8;STRING;;LCU_Serial_Number;;1;0;;4
@@ -284,7 +284,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 283;4;32182;U16;;Dehumidify_Status;;1;0;;4
 284;4;32183;U16;;Dehum_Alarm_Status;;1;0;;4
 285;4;32184;I16;;Dehum_Temp;;0.1;0;degC;4
-286;4;32185;U16;;Dehum_Humidity;HUMIDITY;0.1;0;RH%;4
+286;4;32185;U16;;Dehum_Humidity;;0.1;0;RH%;4
 287;4;32186;U16;;Dehum_Fan_Speed;;1;0;RPM;4
 288;4;32187;U16;;Dehum_Comm_Status;;1;0;;4
 289;4;32188;U16;;Dehum_Run_Status;;1;0;;4

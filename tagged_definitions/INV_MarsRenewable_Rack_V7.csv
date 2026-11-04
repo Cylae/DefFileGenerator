@@ -1,4 +1,4 @@
-﻿modbus;Inverter;MarsRenewable;Rack_V7;;;;;;;
+modbus;Inverter;MarsRenewable;Rack_V7;;;;;;;
 1;4;0;U16;;Number of Cells in Rack;;1;0;;1
 2;4;1;F32;;Rack Rack Voltage;;1;0;V;4
 3;4;3;F32;;Rack Rack Current;;1;0;A;4

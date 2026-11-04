@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Kaco;NX1-NX3_Series;;;;;;;
+Modbus;Inverter;Kaco;NX1-NX3_Series;;;;;;;
 1;4;31001_2;STRING;;Device Type;MODEL;1.0;0.0;;4
 2;4;31002;U16;;Modbus address;UNIT_ID;1.0;0.0;;4
 3;4;31003_32;STRING;;Serial Number;SERIAL;1.0;0.0;;4

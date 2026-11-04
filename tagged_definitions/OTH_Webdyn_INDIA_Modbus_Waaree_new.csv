@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn INDIA;Modbus_Waaree_new;;;;;;;
+modbusRTU;Other;Webdyn INDIA;Modbus_Waaree_new;;;;;;;
 1;4;550;U16;;PV1;;1.0;0.0;V;4
 2;4;551;U16;;PV2;;1.0;0.0;V;4
 3;4;552;U16;;I1;;1.0;0.0;A;4

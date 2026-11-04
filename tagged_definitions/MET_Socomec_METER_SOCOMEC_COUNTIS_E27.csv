@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;SOCOMEC;Countis_E27;0;;;;;;
+modbusRTU;Meter;SOCOMEC;Countis_E27;0;;;;;;
 1;3;50004;U16;;Product order ID;;1;0;;4
 2;3;50005;U16;;Product ID;;1;0;;4
 3;3;50006;U16;;JBUS Table Version;;1;0;;4
@@ -11,7 +11,7 @@
 10;3;50018;U16;;Product version Major;;1;0;;4
 11;3;50019;U16;;Product version Minor;;1;0;;4
 12;3;50030_8;STRING;;Product VLO;;1;0;;4
-13;3;50042_16;STRING;;Vendor name;;1;0;;4
+13;3;50042_16;STRING;;Vendor name;MANUFACTURER;1;0;;4
 14;3;50050_16;STRING;;Product name;;1;0;;4
 15;3;50058_16;STRING;;Extended name;;1;0;;4
 16;3;57344;U8;;Slave Address;UNIT_ID;1;0;;1
@@ -33,15 +33,15 @@
 32;3;50532;U32;;Current I3;;0.001;0;A;4
 33;3;50534;U32;;Neutral Current;;0.001;0;A;4
 34;3;50536;I32;;Sum Active Power;P_AC;0.001;0;kW;4
-35;3;50538;I32;;Sum Reactive Power;ReactivePowSUM;0.1;0;var;4
+35;3;50538;I32;;Sum Reactive Power;;0.1;0;var;4
 36;3;50540;U32;;Sum Apparent Power;S_AC;0.1;0;VA;4
 37;3;50542;I32;;Sum Power Factor;PF;0.001;0;;4
 38;3;50544;I32;;Active Power phase 1;P_AC_1;0.001;0;kW;4
 39;3;50546;I32;;Active Power phase 2;P_AC_2;0.001;0;W;4
 40;3;50548;I32;;Active Power phase 3;P_AC_3;0.001;0;W;4
-41;3;50550;I32;;Reactive Power phase 1;ReactivePow1;0.001;0;var;4
-42;3;50552;I32;;Reactive Power phase 2;ReactivePow2;0.001;0;var;4
-43;3;50554;I32;;Reactive Power phase 3;ReactivePow3;0.001;0;var;4
+41;3;50550;I32;;Reactive Power phase 1;Q_AC_1;0.001;0;var;4
+42;3;50552;I32;;Reactive Power phase 2;Q_AC_2;0.001;0;var;4
+43;3;50554;I32;;Reactive Power phase 3;Q_AC_3;0.001;0;var;4
 44;3;50556;U32;;Apparent Power phase 1;S_AC_1;0.001;0;VA;4
 45;3;50558;U32;;Apparent Power phase 2;S_AC_2;0.001;0;VA;4
 46;3;50560;U32;;Apparent Power phase 3;S_AC_3;0.001;0;VA;4

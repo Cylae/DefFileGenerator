@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
+modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 1;4;1;U16;;Initial status;;1.0;0.0;;9
 2;4;2;U16;;Reserved;;1.0;0.0;;0
 3;4;3;U16;;Reserved;;1.0;0.0;;0

@@ -1,17 +1,17 @@
 modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
-1;4;12288_6;STRING;;DTU Serial Number;SERIAL;1.000000;0.000000;;4
+1;4;12288_6;STRING;;DTU Serial Number;;1.000000;0.000000;;4
 2;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 3;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4
 4;4;12544;U64;;Sum of All Microinverters Total Production in DTU;;1.000000;0.000000;Wh;4
 5;4;12548;U64;;Sum of All Microinverters Today Production in DTU;;1.000000;0.000000;Wh;4
-6;4;12552;U32;;Sum of All Microinverters Active Power in DTU;P_AC;0.100000;0.000000;W;4
-7;4;12554;U32;;Sum of All Microinverters Reactive Power in DTU;Q_AC;0.100000;0.000000;VA;4
+6;4;12552;U32;;Sum of All Microinverters Active Power in DTU;;0.100000;0.000000;W;4
+7;4;12554;U32;;Sum of All Microinverters Reactive Power in DTU;;0.100000;0.000000;VA;4
 8;4;12640_6;STRING;;Meter 1: Serial Number;;1.000000;0.000000;;4
 9;4;12643;U32;;Meter 1: Total Active Power;;0.010000;0.000000;kW;4
-10;4;12645;U32;;Meter 1: Phase A Active Power;P_AC_1;0.010000;0.000000;kW;4
-11;4;12647;U32;;Meter 1: Phase B Active Power;P_AC_2;0.010000;0.000000;kW;4
-12;4;12649;U32;;Meter 1: Phase C Active Power;P_AC_3;0.010000;0.000000;kW;4
-13;4;12651;U32;;Meter 1: Power Factor;PF;0.001000;0.000000;;4
+10;4;12645;U32;;Meter 1: Phase A Active Power;;0.010000;0.000000;kW;4
+11;4;12647;U32;;Meter 1: Phase B Active Power;;0.010000;0.000000;kW;4
+12;4;12649;U32;;Meter 1: Phase C Active Power;;0.010000;0.000000;kW;4
+13;4;12651;U32;;Meter 1: Power Factor;;0.001000;0.000000;;4
 14;4;12653;U32;;Meter 1: Total Electricity Positive Import;;0.010000;0.000000;kWh;4
 15;4;12655;U32;;Meter 1: Phase A Total Electricity Positive Import;;0.010000;0.000000;kWh;4
 16;4;12657;U32;;Meter 1: Phase B Total Electricity Positive Import;;0.010000;0.000000;kWh;4
@@ -20,19 +20,19 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 19;4;12663;U32;;Meter 1: Phase A Total Electricity Positive Export;;0.010000;0.000000;kWh;4
 20;4;12665;U32;;Meter 1: Phase B Total Electricity Positive Export;;0.010000;0.000000;kWh;4
 21;4;12667;U32;;Meter 1: Phase C Total Electricity Positive Export;;0.010000;0.000000;kWh;4
-22;4;12669;U32;;Meter 1: Phase A Voltage;U_AC_1;0.010000;0.000000;V;4
-23;4;12671;U32;;Meter 1: Phase B Voltage;U_AC_2;0.010000;0.000000;V;4
-24;4;12673;U32;;Meter 1: Phase C Voltage;U_AC_3;0.010000;0.000000;V;4
-25;4;12675;U32;;Meter 1: Phase A Current;I_AC_1;0.010000;0.000000;A;4
-26;4;12677;U32;;Meter 1: Phase B Current;I_AC_2;0.010000;0.000000;A;4
-27;4;12679;U32;;Meter 1: Phase C Current;I_AC_3;0.010000;0.000000;A;4
-28;4;12681;U32;;Meter 1: Phase A Power Factor;PF_1;0.001000;0.000000;;4
-29;4;12683;U32;;Meter 1: Phase B Power Factor;PF_2;0.001000;0.000000;;4
-30;4;12685;U32;;Meter 1: Phase C Power Factor;PF_3;0.001000;0.000000;;4
+22;4;12669;U32;;Meter 1: Phase A Voltage;;0.010000;0.000000;V;4
+23;4;12671;U32;;Meter 1: Phase B Voltage;;0.010000;0.000000;V;4
+24;4;12673;U32;;Meter 1: Phase C Voltage;;0.010000;0.000000;V;4
+25;4;12675;U32;;Meter 1: Phase A Current;;0.010000;0.000000;A;4
+26;4;12677;U32;;Meter 1: Phase B Current;;0.010000;0.000000;A;4
+27;4;12679;U32;;Meter 1: Phase C Current;;0.010000;0.000000;A;4
+28;4;12681;U32;;Meter 1: Phase A Power Factor;;0.001000;0.000000;;4
+29;4;12683;U32;;Meter 1: Phase B Power Factor;;0.001000;0.000000;;4
+30;4;12685;U32;;Meter 1: Phase C Power Factor;;0.001000;0.000000;;4
 31;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0;;4
-32;4;12688;U32;;Meter 1: Uab Line Voltage;U_AC_L1L2;0.010000;0.000000;V;4
-33;4;12690;U32;;Meter 1: Ubc Line Voltage;U_AC_L2L3;0.010000;0.000000;V;4
-34;4;12692;U32;;Meter 1: Uca Line Voltage;U_AC_L3L1;0.010000;0.000000;V;4
+32;4;12688;U32;;Meter 1: Uab Line Voltage;;0.010000;0.000000;V;4
+33;4;12690;U32;;Meter 1: Ubc Line Voltage;;0.010000;0.000000;V;4
+34;4;12692;U32;;Meter 1: Uca Line Voltage;;0.010000;0.000000;V;4
 35;4;12768_6;STRING;;Meter 2: Serial Number;;1.000000;0.000000;;4
 36;4;12771;U32;;Meter 2: Total Active Power;;0.010000;0.000000;kW;4
 37;4;12773;U32;;Meter 2: Phase A Active Power;;0.010000;0.000000;kW;4
@@ -291,25 +291,25 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 290;4;14576;U16;;Microinverter 1: Phase A Current;;0.010000;0.000000;A;4
 291;4;14577;U16;;Microinverter 1: Phase B Current;;0.010000;0.000000;A;4
 292;4;14578;U16;;Microinverter 1: Phase C Current;;0.010000;0.000000;A;4
-293;4;14579;U16;;Microinverter 1: Grid Frequency;FREQ;0.010000;0.000000;Hz;4
-294;4;14580;U16;;Microinverter 1: Device Temperature;TEMP_INT;0.100000;0.000000;Deg. Celsius;4
-295;4;14581;U16;;Microinverter 1: PV1 Voltage;U_DC_STRING_1;0.100000;0.000000;V;4
-296;4;14582;U16;;Microinverter 1: PV1 Current;I_DC_STRING_1;0.010000;0.000000;A;4
+293;4;14579;U16;;Microinverter 1: Grid Frequency;;0.010000;0.000000;Hz;4
+294;4;14580;U16;;Microinverter 1: Device Temperature;;0.100000;0.000000;Deg. Celsius;4
+295;4;14581;U16;;Microinverter 1: PV1 Voltage;;0.100000;0.000000;V;4
+296;4;14582;U16;;Microinverter 1: PV1 Current;;0.010000;0.000000;A;4
 297;4;14583;U16;;Microinverter 1: PV1 Power;;0.100000;0.000000;W;4
-298;4;14584;U16;;Microinverter 1: PV2 Voltage;U_DC_STRING_2;0.100000;0.000000;V;4
-299;4;14585;U16;;Microinverter 1: PV2 Current;I_DC_STRING_2;0.010000;0.000000;A;4
+298;4;14584;U16;;Microinverter 1: PV2 Voltage;;0.100000;0.000000;V;4
+299;4;14585;U16;;Microinverter 1: PV2 Current;;0.010000;0.000000;A;4
 300;4;14586;U16;;Microinverter 1: PV2 Power;;0.100000;0.000000;W;4
-301;4;14587;U16;;Microinverter 1: PV3 Voltage;U_DC_STRING_3;0.100000;0.000000;V;4
-302;4;14588;U16;;Microinverter 1: PV3 Current;I_DC_STRING_3;0.010000;0.000000;A;4
+301;4;14587;U16;;Microinverter 1: PV3 Voltage;;0.100000;0.000000;V;4
+302;4;14588;U16;;Microinverter 1: PV3 Current;;0.010000;0.000000;A;4
 303;4;14589;U16;;Microinverter 1: PV3 Power;;0.100000;0.000000;W;4
-304;4;14590;U16;;Microinverter 1: PV4 Voltage;U_DC_STRING_4;0.100000;0.000000;V;4
-305;4;14591;U16;;Microinverter 1: PV4 Current;I_DC_STRING_4;0.010000;0.000000;A;4
+304;4;14590;U16;;Microinverter 1: PV4 Voltage;;0.100000;0.000000;V;4
+305;4;14591;U16;;Microinverter 1: PV4 Current;;0.010000;0.000000;A;4
 306;4;14592;U16;;Microinverter 1: PV4 Power;;0.100000;0.000000;W;4
-307;4;14593;U16;;Microinverter 1: PV5 Voltage;U_DC_STRING_5;0.100000;0.000000;V;4
-308;4;14594;U16;;Microinverter 1: PV5 Current;I_DC_STRING_5;0.010000;0.000000;A;4
+307;4;14593;U16;;Microinverter 1: PV5 Voltage;;0.100000;0.000000;V;4
+308;4;14594;U16;;Microinverter 1: PV5 Current;;0.010000;0.000000;A;4
 309;4;14595;U16;;Microinverter 1: PV5 Power;;0.100000;0.000000;W;4
-310;4;14596;U16;;Microinverter 1: PV6 Voltage;U_DC_STRING_6;0.100000;0.000000;V;4
-311;4;14597;U16;;Microinverter 1: PV6 Current;I_DC_STRING_6;0.010000;0.000000;A;4
+310;4;14596;U16;;Microinverter 1: PV6 Voltage;;0.100000;0.000000;V;4
+311;4;14597;U16;;Microinverter 1: PV6 Current;;0.010000;0.000000;A;4
 312;4;14598;U16;;Microinverter 1: PV6 Power;;0.100000;0.000000;W;4
 313;4;14599;U16;;Microinverter 1: Microinverter Status;;1.000000;0.000000;;9
 314;4;14600;U16;;Microinverter 1: Alarm Code 1;;1.000000;0.000000;;9
@@ -4557,7 +4557,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 4556;3;21760;U16;;Power Grid Mode;;1.000000;0.000000;;1
 4557;3;21761;U16;;TCP Modbus Port;;1.000000;0.000000;;1
 4558;3;21762;U16;;485 Modbus Mode;;1.000000;0.000000;;1
-4559;3;21763;U16;;485 Modbus Address;UNIT_ID;1.000000;0.000000;;1
+4559;3;21763;U16;;485 Modbus Address;;1.000000;0.000000;;1
 4560;3;21764;U16;;Power Export Limiting Mode;;1;0;;4
 4561;3;21765;U16;;Power Grid Type;;1;0;;4
 4562;3;21766;U16;;Group Control Enable;;1;0;;4
@@ -4575,10 +4575,10 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 4574;3;21778;I16;;Max. Export Power A (kW);;0.01;0;;4
 4575;3;21779;I16;;Max. Export Power B (kW);;0.01;0;;4
 4576;3;21780;I16;;Max. Export Power C (kW);;0.01;0;;4
-4577;3;21781;I16;;Active Power Control (Whole Plant);CMD_P_ENA;0.01;0;;4
+4577;3;21781;I16;;Active Power Control (Whole Plant);;0.01;0;;4
 4578;3;21782;I16;;Reactive Power Control (Whole Plant);;0.01;0;;4
 4579;3;21783;I16;;Power Factor Control (Whole Plant);;0.01;0;;4
-4580;3;53272;U16;;Port 4: Turn ON/OFF;CMD_ON;1.000000;0.000000;;1
+4580;3;53272;U16;;Port 4: Turn ON/OFF;;1.000000;0.000000;;1
 4581;3;53273;U16;;Port 4: Temporary Limit Active Power;;1.000000;0.000000;;1
 4582;3;53274;U16;;Port 4: Permanent Limit Active Power;;1.000000;0.000000;;1
 4583;3;53275;U16;;Port 4: Permanent Power Factor Control;;1.000000;0.000000;;1

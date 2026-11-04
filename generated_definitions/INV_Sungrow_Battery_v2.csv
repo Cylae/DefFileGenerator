@@ -3,15 +3,15 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 2;4;10226;U16;;Fault Alarm code;;1;0;;4
 3;4;10227;U16;;Reserved;;1;0;;4
 4;4;10233;U16;;Reserved;;1;0;;4
-5;4;10234;U32;;Total running time;TOT;1;0;h;4
+5;4;10234;U32;;Total running time;;1;0;h;4
 6;4;10236;U16;;Reserved;;1;0;;4
 7;4;10243;U16;;Reserved;;1;0;;4
 8;4;10244;U16;;Daily running time;;1;0;min;4
 9;4;10245;I16;;Total power factor;PF;0.001;0;;4
-10;4;10246;U16;;Gird frequency;FREQ;0.01;0;Hz;4
+10;4;10246;U16;;Gird frequency;;0.01;0;Hz;4
 11;4;10247;U16;;Reserved;;1;0;;4
-12;4;10248;U16;;Bus voltage;U_DC;0.1;0;V;4
-13;4;10249;I16;;Internal Air temperature;TEMP_INT;0.1;0;C;4
+12;4;10248;U16;;Bus voltage;;0.1;0;V;4
+13;4;10249;I16;;Internal Air temperature;;0.1;0;C;4
 14;4;10250;U16;;Reserved;;1;0;;4
 15;4;10251;U16;;PhA voltage;;0.1;0;V;4
 16;4;10252;U16;;PhB voltage;;0.1;0;V;4
@@ -22,8 +22,8 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 21;4;10257;U16;;Device type code;;1;0;;4
 22;4;10258;U16;;Rated active power;P_RATED;0.1;0;kW;4
 23;4;10259;U16;;Output type;;1;0;;4
-24;4;10260;U16;;Rated reactive power;Q_AC;0.1;0;kvar;4
-25;4;10261;U16;;SN number;SERIAL;1;0;;4
+24;4;10260;U16;;Rated reactive power;;0.1;0;kvar;4
+25;4;10261;U16;;SN number;;1;0;;4
 26;4;10271;U16;;Machine type;;1;0;;4
 27;4;10272;U16;;Active overload rate;;0.001;0;;4
 28;4;10273;U16;;Reserved;;1;0;;4
@@ -42,18 +42,18 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 41;4;10286;I16;;Battery voltage 2;;0.1;0;V;4
 42;4;10287;I16;;Battery current 1;;0.1;0;A;4
 43;4;10288;I16;;Battery current 2;;0.1;0;A;4
-44;4;10289;I16;;DC voltage;;0.1;0;V;4
+44;4;10289;I16;;DC voltage;U_DC;0.1;0;V;4
 45;4;10290;I16;;DC current;I_DC;0.1;0;A;4
 46;4;10291;U16;;DC impedance to ground;;1;0;kOhm;4
 47;4;10292;I32;;DC power;P_DC;0.1;0;kW;4
 49;4;10294;I32;;Active power;P_AC;0.1;0;kW;4
-51;4;10296;I32;;Reactive power;;0.1;0;kvar;4
+51;4;10296;I32;;Reactive power;Q_AC;0.1;0;kvar;4
 53;4;10298;I32;;Apparent power;S_AC;0.1;0;kVA;4
 55;4;10300;U16;;Phase N current;;0.1;0;A;4
-56;4;10301;U16;;Daily charge energy;E_DAY;0.1;0;kWh;4
+56;4;10301;U16;;Daily charge energy;;0.1;0;kWh;4
 57;4;10302;U32;;Monthly charge energy;;0.1;0;kWh;4
 59;4;10304;U32;;Annual charge energy;;0.1;0;kWh;4
-61;4;10306;U32;;Total charge energy;E_TOT;0.1;0;kWh;4
+61;4;10306;U32;;Total charge energy;;0.1;0;kWh;4
 63;4;10308;U16;;Daily discharge energy;;0.1;0;kWh;4
 64;4;10309;U32;;Monthly discharge;;0.1;0;kWh;4
 66;4;10311;U32;;Yearly discharge;;0.1;0;kWh;4
@@ -119,25 +119,25 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 155;4;10547;I16;;Power factor S;;0.001;0;;4
 156;4;10548;I16;;Power factor T;;0.001;0;;4
 157;4;10560;U32;;Total PV power;;1;0;W;4
-159;4;10562;U16;;PV1 voltage;U_DC_STRING_1;0.1;0;V;4
-160;4;10563;U16;;PV1 current;I_DC_STRING_1;0.1;0;A;4
+159;4;10562;U16;;PV1 voltage;;0.1;0;V;4
+160;4;10563;U16;;PV1 current;;0.1;0;A;4
 161;4;10564;U16;;PV1 power;;1;0;W;4
-162;4;10565;U16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
-163;4;10566;U16;;PV2 current;I_DC_STRING_2;0.1;0;A;4
+162;4;10565;U16;;PV2 voltage;;0.1;0;V;4
+163;4;10566;U16;;PV2 current;;0.1;0;A;4
 164;4;10567;U16;;PV2 power;;1;0;W;4
-165;4;10568;U16;;PV3 voltage;U_DC_STRING_3;0.1;0;V;4
-166;4;10569;U16;;PV3 current;I_DC_STRING_3;0.1;0;A;4
+165;4;10568;U16;;PV3 voltage;;0.1;0;V;4
+166;4;10569;U16;;PV3 current;;0.1;0;A;4
 167;4;10570;U16;;PV3 power;;1;0;W;4
-168;4;10571;U16;;PV4 voltage;U_DC_STRING_4;0.1;0;V;4
-169;4;10572;U16;;PV4 current;I_DC_STRING_4;0.1;0;A;4
+168;4;10571;U16;;PV4 voltage;;0.1;0;V;4
+169;4;10572;U16;;PV4 current;;0.1;0;A;4
 170;4;10573;U16;;PV4 power;;1;0;W;4
-171;4;10631;U16;;PV24 voltage;U_DC_STRING_24;0.1;0;V;4
-172;4;10632;U16;;PV24 current;I_DC_STRING_24;0.1;0;A;4
+171;4;10631;U16;;PV24 voltage;;0.1;0;V;4
+172;4;10632;U16;;PV24 current;;0.1;0;A;4
 173;4;10633;U16;;PV24 power;;1;0;W;4
-174;4;10635;I16;;String 1 current;;0.01;0;A;4
-175;4;10636;I16;;String 2 current;;0.01;0;A;4
-176;4;10637;I16;;String 3 current;;0.01;0;A;4
-177;4;10638;I16;;String 4 current;;0.01;0;A;4
+174;4;10635;I16;;String 1 current;I_DC_STRING_1;0.01;0;A;4
+175;4;10636;I16;;String 2 current;I_DC_STRING_2;0.01;0;A;4
+176;4;10637;I16;;String 3 current;I_DC_STRING_3;0.01;0;A;4
+177;4;10638;I16;;String 4 current;I_DC_STRING_4;0.01;0;A;4
 178;4;10639;I16;;String 5 current;I_DC_STRING_5;0.01;0;A;4
 179;4;10640;I16;;String 6 current;I_DC_STRING_6;0.01;0;A;4
 180;4;10641;I16;;String 7 current;I_DC_STRING_7;0.01;0;A;4
@@ -207,7 +207,7 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 278;4;11103;U16;;RS line volt 3;;0.1;0;V;4
 279;4;11104;U16;;ST line volt 3;;0.1;0;V;4
 280;4;11105;U16;;TR line volt 3;;0.1;0;V;4
-281;4;11106;I16;;Power factor 3;;0.01;0;;4
+281;4;11106;I16;;Power factor 3;PF_3;0.01;0;;4
 282;4;11107;I16;;Offgrid Day energy;;0.1;0;kWh;4
 283;4;11108;I32;;Offgrid Total energy;;0.1;0;kWh;4
 285;4;11110;I16;;R offgrid DCV;;0.1;0;mV;4
@@ -310,7 +310,7 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 391;3;40101;U16;;DCI protection value;;1;0;mA;4
 392;3;40102;U16;;DCI protection time;;0.01;0;s;4
 393;3;40105;U16;;DRM Enabled;;1;0;;4
-394;3;40106;U16;;DRM model;MODEL;1;0;;4
+394;3;40106;U16;;DRM model;;1;0;;4
 395;3;40107;U16;;DRM input pwr lim;;0.1;0;%;4
 396;3;40108;U16;;DRM output pwr lim;;0.1;0;%;4
 397;3;40109;U16;;DRM PF;;0.001;0;;4
@@ -455,7 +455,7 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 546;3;40503;U16;;Active Pct set;;0.1;0;%;4
 547;3;40504;U16;;Reactive pwr reg;;1;0;;4
 548;3;40505;I16;;React Pct set;;0.1;0;%;4
-549;3;40506;I16;;PF setting;CMD_PF;0.001;0;;4
+549;3;40506;I16;;PF setting;;0.001;0;;4
 550;3;40507;U16;;Power resp sw;;1;0;;4
 551;3;40508;U16;;Pwr resp Time;;0.1;0;s;4
 552;3;40520;U16;;QP curve select;;1;0;;4
@@ -533,7 +533,7 @@ modbus;Inverter;Sungrow;FullMap;0;;;;;;
 624;3;41964;U16;;Pwr-on active en;;1;0;;4
 625;3;41968;U16;;Energy dist pattrn;;1;0;;4
 626;3;41969;U16;;UPS mode en;;1;0;;4
-627;3;41970;U16;;Power limit ctl;CMD_P_AC_SET_ABS;1;0;;4
+627;3;41970;U16;;Power limit ctl;;1;0;;4
 628;3;41971;U16;;Max Solar Power;;1;0;W;4
 629;3;41972;U16;;Max Sell Power;;1;0;W;4
 630;3;41973;U16;;Zero Export power;;1;0;W;4

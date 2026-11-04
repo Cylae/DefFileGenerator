@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Ingeteam;1Play_ABE;;;;;;;
+ModbusRTU;Inverter;Ingeteam;1Play_ABE;;;;;;;
 1;4;0;U16;;Actual Date.Year;;1.0;0.0;Year;4
 2;4;1;U16;;Actual Date.Month of the Year;;1.0;0.0;Month;4
 3;4;2;U16;;Actual Date.Day of the month;;1.0;0.0;Day;4
@@ -34,7 +34,7 @@
 33;4;38;I16;;PV2 current;I_DC_STRING_2;100.0;0.0;Amps;4
 34;4;39;I16;;PV1 voltage;U_DC_STRING_1;1.0;0.0;Vdc;4
 35;4;40;I16;;PV2 voltage;U_DC_STRING_2;1.0;0.0;Vdc;4
-36;4;41;I16;;PV power;;0.1;0.0;Wat;4
+36;4;41;I16;;PV power;P_DC;0.1;0.0;Wat;4
 37;4;42;I16;;PV1 power;;0.1;0.0;Wat;4
 38;4;43;I16;;PV2 power;;0.1;0.0;Wat;4
 39;4;44;U16;;Isolation resistance of PV field;R_ISO;1.0;0.0;kOhm;4

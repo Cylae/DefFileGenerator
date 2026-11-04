@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;OG NHEOBOX;OG_NHEOBOX;;;;;;;
+modbusRTU;Other;OG NHEOBOX;OG_NHEOBOX;;;;;;;
 1;4;28200;U16;;Active power_MEM;;1.0;0.0;kW;4
 2;4;28202;U16;;Reactive power_MEM;Q_AC;1.0;0.0;kW;4
 3;4;28204;U16;;Phase A voltage_MEM;U_AC_1;1.0;0.0;V;4

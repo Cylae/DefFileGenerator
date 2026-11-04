@@ -1,7 +1,7 @@
-﻿modbusRTU;Other;Kehua;KEHUA_SinglePhase_Work;;;;;;;
+modbusRTU;Other;Kehua;KEHUA_SinglePhase_Work;;;;;;;
 1;4;4501;U16;;Device status;;1.0;0.0;;9
 2;4;4502;U16;;Grid voltage;;1.0;0.0;;4
-3;4;4503;U16;;Grid current;;1.0;0.0;;4
+3;4;4503;U16;;Grid current;I_AC;1.0;0.0;;4
 4;4;4504;U16;;Grid frequency;FREQ;1.0;0.0;;4
 5;4;4505;U16;;Daily power generation;E_DAY;1.0;0.0;;4
 6;4;4506;U16;;Daily On-grid generation;;1.0;0.0;;4
@@ -26,8 +26,8 @@
 25;4;4525;U16;;PV2 power;;1.0;0.0;;4
 26;4;4526;U16;;PV daily power generation;;1.0;0.0;;4
 27;4;4527;U16;;Battery status;;1.0;0.0;;9
-28;4;4528;U16;;Battery voltage;;1.0;0.0;;4
-29;4;4529;U16;;Battery current;;1.0;0.0;;4
+28;4;4528;U16;;Battery voltage;U_DC;1.0;0.0;;4
+29;4;4529;U16;;Battery current;I_DC;1.0;0.0;;4
 30;4;4530;U16;;Battery maximum temperature;TEMP;1.0;0.0;;4
 31;4;4531;U16;;Battery minimum temperature;;1.0;0.0;;4
 32;4;4532;U16;;Battery daily charging amount;;1.0;0.0;;4
@@ -88,8 +88,8 @@ low word (Grid input)";;1.0;0.0;;4
 82;4;4923;U16;;BMS discharging limiting current;;1.0;0.0;;4
 83;4;4924;U16;;BMS charging limiting voltage;;1.0;0.0;;4
 84;4;4925;U16;;BMS discharging limiting voltage;;1.0;0.0;;4
-85;4;5500;U16;;DC component of the inverter voltage;U_DC;1.0;0.0;;4
-86;4;5501;U16;;DC component of the inverter current;I_DC;1.0;0.0;;4
+85;4;5500;U16;;DC component of the inverter voltage;;1.0;0.0;;4
+86;4;5501;U16;;DC component of the inverter current;;1.0;0.0;;4
 87;4;5502;U16;;Busbar voltage;;1.0;0.0;;4
 88;4;5503;U16;;"battery up and down
 voltage inductive current";;1.0;0.0;;4

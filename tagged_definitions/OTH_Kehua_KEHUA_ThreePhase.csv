@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Kehua;KEHUA_ThreePhase;;;;;;;
+modbusRTU;Other;Kehua;KEHUA_ThreePhase;;;;;;;
 1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
 2;4;4506;U16;;The capacity of power generation at the same day;;1.0;0.0;kWh;4
 3;4;4507;U16;;Total Grid generation capacity;;1.0;0.0;kWh;4
@@ -18,8 +18,8 @@
 17;4;4529;U16;;Daily grid electricity consumption;;1.0;0.0;;4
 18;4;4530;U16;;Total grid electricity consumption;;1.0;0.0;;4
 19;4;4551;U16;;Battery status;;1.0;0.0;;4
-20;4;4552;U16;;Battery voltage;;1.0;0.0;V;4
-21;4;4553;U16;;Battery current;;1.0;0.0;A;4
+20;4;4552;U16;;Battery voltage;U_DC;1.0;0.0;V;4
+21;4;4553;U16;;Battery current;I_DC;1.0;0.0;A;4
 22;4;4554;U16;;Battery power;;1.0;0.0;kW;4
 23;4;4555;U16;;Battery maximum temperature;TEMP;1.0;0.0;;4
 24;4;4556;U16;;Battery minimum temperature;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;MODBUS_EM1200;;;;;;;
+modbusRTU;Other;Webdyn;MODBUS_EM1200;;;;;;;
 1;4;3200;U16;;Forward Apparent Energy;;1.0;0.0;FwdVAh;4
 2;4;3202;U16;;Forward Active Energy;;1.0;0.0;FwdWh;4
 3;4;3204;U16;;Forward Reactive Energy;;1.0;0.0;FwdVARh;4

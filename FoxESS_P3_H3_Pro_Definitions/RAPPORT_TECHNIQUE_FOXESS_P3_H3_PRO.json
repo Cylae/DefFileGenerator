@@ -1,0 +1,273 @@
+{
+  "manufacturer": "Fox ESS",
+  "ranges": [
+    "P3 Pro",
+    "H3 Pro",
+    "P3 Pro / H3 Pro (Commun)"
+  ],
+  "all_in_one": {
+    "filename": "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\FoxESS_P3_H3_Pro_Definitions\\FOXESS_P3_H3_PRO_ALL_IN_ONE.csv",
+    "prefix": "FOXESS",
+    "category": "Inverter",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 1233,
+    "tag_count": 127,
+    "canonical_tag_count": 114,
+    "custom_tag_count": 13,
+    "holding_count": 1233,
+    "coil_count": 0,
+    "action_1_count": 742,
+    "action_4_count": 459,
+    "action_9_count": 27,
+    "other_action_count": 5,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 25,
+    "tag_density": 10.3,
+    "top_tags": [
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "U_DC",
+        1
+      ],
+      [
+        "I_DC",
+        1
+      ],
+      [
+        "TEMP",
+        1
+      ],
+      [
+        "SOC",
+        1
+      ],
+      [
+        "TEMP_MAX",
+        1
+      ],
+      [
+        "TEMP_MIN",
+        1
+      ],
+      [
+        "U_CELL_MAX",
+        1
+      ]
+    ]
+  },
+  "inverter": {
+    "filename": "FOXESS_P3_H3_PRO_INVERTER.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\FoxESS_P3_H3_Pro_Definitions\\FOXESS_P3_H3_PRO_INVERTER.csv",
+    "prefix": "FOXESS",
+    "category": "Inverter",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 285,
+    "tag_count": 114,
+    "canonical_tag_count": 109,
+    "custom_tag_count": 5,
+    "holding_count": 285,
+    "coil_count": 0,
+    "action_1_count": 47,
+    "action_4_count": 218,
+    "action_9_count": 20,
+    "other_action_count": 0,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 23,
+    "tag_density": 40.0,
+    "top_tags": [
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "P_RATED",
+        1
+      ],
+      [
+        "STATE",
+        1
+      ],
+      [
+        "STATE_FAULT",
+        1
+      ],
+      [
+        "ALARM_1",
+        1
+      ],
+      [
+        "ALARM_2",
+        1
+      ],
+      [
+        "ALARM_3",
+        1
+      ],
+      [
+        "U_DC_MPPT_1",
+        1
+      ]
+    ]
+  },
+  "meter": {
+    "filename": "FOXESS_P3_H3_PRO_METER.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\FoxESS_P3_H3_Pro_Definitions\\FOXESS_P3_H3_PRO_METER.csv",
+    "prefix": "FOXESS",
+    "category": "Meter",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 61,
+    "tag_count": 27,
+    "canonical_tag_count": 26,
+    "custom_tag_count": 1,
+    "holding_count": 61,
+    "coil_count": 0,
+    "action_1_count": 3,
+    "action_4_count": 57,
+    "action_9_count": 1,
+    "other_action_count": 0,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "tag_density": 44.3,
+    "top_tags": [
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "U_AC_1",
+        1
+      ],
+      [
+        "U_AC_2",
+        1
+      ],
+      [
+        "U_AC_3",
+        1
+      ],
+      [
+        "I_AC_1",
+        1
+      ],
+      [
+        "I_AC_2",
+        1
+      ],
+      [
+        "I_AC_3",
+        1
+      ],
+      [
+        "P_AC",
+        1
+      ]
+    ]
+  },
+  "battery": {
+    "filename": "FOXESS_P3_H3_PRO_BATTERY.csv",
+    "filepath": "C:\\Users\\alexandre.calais\\Documents\\GitHub\\DefFileGenerator\\FoxESS_P3_H3_Pro_Definitions\\FOXESS_P3_H3_PRO_BATTERY.csv",
+    "prefix": "FOXESS",
+    "category": "Battery",
+    "manufacturer": "FoxESS",
+    "model": "P3 Pro / H3 Pro",
+    "protocol": "Modbus",
+    "register_count": 893,
+    "tag_count": 18,
+    "canonical_tag_count": 8,
+    "custom_tag_count": 10,
+    "holding_count": 893,
+    "coil_count": 0,
+    "action_1_count": 692,
+    "action_4_count": 190,
+    "action_9_count": 6,
+    "other_action_count": 5,
+    "is_valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "tag_density": 2.0,
+    "top_tags": [
+      [
+        "MODEL",
+        1
+      ],
+      [
+        "SERIAL",
+        1
+      ],
+      [
+        "MANUFACTURER",
+        1
+      ],
+      [
+        "U_DC",
+        1
+      ],
+      [
+        "I_DC",
+        1
+      ],
+      [
+        "TEMP",
+        1
+      ],
+      [
+        "SOC",
+        1
+      ],
+      [
+        "TEMP_MAX",
+        1
+      ],
+      [
+        "TEMP_MIN",
+        1
+      ],
+      [
+        "U_CELL_MAX",
+        1
+      ]
+    ]
+  },
+  "summary": {
+    "total_registers_individual": 1239,
+    "total_registers_all_in_one": 1233,
+    "all_valid": true
+  }
+}

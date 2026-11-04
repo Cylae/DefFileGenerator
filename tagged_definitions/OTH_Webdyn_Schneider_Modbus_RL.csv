@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;Schneider_Modbus_RL;;;;;;;
+modbusRTU;Other;Webdyn;Schneider_Modbus_RL;;;;;;;
 1;4;6143;U16;;PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;4
 2;4;6144;U16;;PV1 Current;I_DC_STRING_1;1.0;0.0;A;4
 3;4;6145;U16;;PV1 Power;;1.0;0.0;kW;4

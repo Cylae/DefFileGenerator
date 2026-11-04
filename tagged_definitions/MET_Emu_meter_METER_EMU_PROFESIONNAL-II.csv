@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;1;;;;;;
+ModbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;1;;;;;;
 1;3;4999;I32;;Serial No.;;1;0.0;;4
 2;3;5001;I32;;Factory No.;;1;0.0;;4
 3;3;5025;I64;;Current System-­time;;1;0.0;;4

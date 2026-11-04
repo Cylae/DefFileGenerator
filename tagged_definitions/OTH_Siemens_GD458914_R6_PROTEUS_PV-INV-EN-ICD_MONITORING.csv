@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Siemens;GD458914_R6_PROTEUS PV-INV-EN-;;;;;;;
+modbusRTU;Other;Siemens;GD458914_R6_PROTEUS PV-INV-EN-;;;;;;;
 1;4;0;U16;;Mn: Manufacturer Info;MANUFACTURER;1.0;0.0;None;4
 2;4;16;U16;;Md: Model & Options;MODEL;1.0;0.0;None;4
 3;4;32;U16;;GP: GP Code;;1.0;0.0;None;4

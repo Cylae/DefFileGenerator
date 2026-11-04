@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;HUAWEI_SmartLogger3000;;;;;;;
+modbusRTU;Other;Webdyn;HUAWEI_SmartLogger3000;;;;;;;
 1;4;40575;U16;;Volt L1 to 2_Uab;;1.0;0.0;V;4
 2;4;40576;U16;;Volt L2 to 3_Ubc;;1.0;0.0;V;4
 3;4;40577;U16;;Volt L3 to 1_Uca;;1.0;0.0;V;4

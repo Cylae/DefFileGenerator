@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Socorel;Table modbus TIC V4;;;;;;;
+modbusRTU;Other;Socorel;Table modbus TIC V4;;;;;;;
 1;4;0;U16;;Valeur 1 (Température, Hygrométrie…);;1.0;0.0;;4
 2;4;2;U16;;Valeur 2(Température, Hygrométrie…);;1.0;0.0;;4
 3;4;4;U16;;Valeur 1 (Température, Hygrométrie…);;1.0;0.0;;4

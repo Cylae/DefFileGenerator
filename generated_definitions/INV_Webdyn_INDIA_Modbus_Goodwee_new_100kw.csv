@@ -48,12 +48,12 @@ ModbusRTU;Inverter;Modbus;Goodwee;;;;;;;
 47;3;32061;U16;;Ipv23;;1;0;;4
 48;3;32062;U16;;Vpv24;;1;0;;4
 49;3;32063;U16;;Ipv24;;1;0;;4
-50;3;32072;U32;;Current of phase A (Grid);I_AC_1;1;0;;4
-51;3;32074;U32;;Current of phase B (Grid);I_AC_2;1;0;;4
-52;3;32076;U32;;Current of phase C (Grid);I_AC_3;1;0;;4
+50;3;32072;U32;;Current of phase A (Grid);;1;0;;4
+51;3;32074;U32;;Current of phase B (Grid);;1;0;;4
+52;3;32076;U32;;Current of phase C (Grid);;1;0;;4
 53;3;32080;U32;;Active Power;P_AC;0.001;0;;4
 54;3;32085;U16;;Grid Frequency;FREQ;1;0;;4
-55;3;32087;U16;;Internal temperature (cabinet temp);TEMP;1;0;;4
+55;3;32087;U16;;Internal temperature (cabinet temp);TEMP_INT;1;0;;4
 56;3;32106;U32;;Cumulative Generation;;1;0;;4
 57;3;32114;U32;;Daily Generation;;1;0;;4
-58;3;41480;U16;;Set Active Power (percentage);cmd;1;0;;4
+58;3;41480;U16;;Set Active Power (percentage);;1;0;;4

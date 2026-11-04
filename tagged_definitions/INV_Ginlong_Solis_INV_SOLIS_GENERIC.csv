@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Ginlong_Solis;INV_SOLIS_GENERIC;;;;;;;
+modbusRTU;Inverter;Ginlong_Solis;INV_SOLIS_GENERIC;;;;;;;
 1;4;2999;U16;;Product model;MODEL;1.0;0.0;;4
 2;4;3000;U16;;DSP software version;;1.0;0.0;;4
 3;4;3001;U16;;LCD software version;;1.0;0.0;;4
@@ -38,17 +38,17 @@
 37;4;3042;U16;;Grid Frequency;FREQ;1.0;0.0;Hz;4
 38;4;3043;U16;;Inverter status;;1.0;0.0;;8
 39;4;3044;U16;;Limit active power adjustement rated power;P_RATED;1.0;0.0;W;4
-40;4;3046;U16;;Limit reactive power adjustment rated power;NominalQ;1.0;0.0;Var;4
-41;4;3048;U16;;Inverter control word;ControlRead;1.0;0.0;;4
-42;4;3049;U16;;Power limit actual value;CmdPwrPctRead;1.0;0.0;%;4
-43;4;3050;U16;;Actual adjust value of power factor;PF1Read;1.0;0.0;;4
-44;4;3051;U16;;Actual adjust value of power factor_1;PF2Read;1.0;0.0;;4
-45;4;3052;U16;;Reactive power limitation;QPctRead;1.0;0.0;%;4
+40;4;3046;U16;;Limit reactive power adjustment rated power;;1.0;0.0;Var;4
+41;4;3048;U16;;Inverter control word;;1.0;0.0;;4
+42;4;3049;U16;;Power limit actual value;;1.0;0.0;%;4
+43;4;3050;U16;;Actual adjust value of power factor;;1.0;0.0;;4
+44;4;3051;U16;;Actual adjust value of power factor_1;;1.0;0.0;;4
+45;4;3052;U16;;Reactive power limitation;;1.0;0.0;%;4
 46;4;3053;U16;;Country standard code;;1.0;0.0;;4
 47;4;3054;U16;;Power curve code;;1.0;0.0;;4
 48;4;3055;U16;;Reactive power;Q_AC;1.0;0.0;Var;4
 49;4;3057;U16;;Apparent power;S_AC;1.0;0.0;VA;4
-50;4;3059;U16;;Real-time power factor;PFRead;1.0;0.0;;4
+50;4;3059;U16;;Real-time power factor;;1.0;0.0;;4
 51;4;3060;U16;;Inverter SN_1;SERIAL;1.0;0.0;;4
 52;4;3061;U16;;Inverter SN_2;;1.0;0.0;;4
 53;4;3062;U16;;Inverter SN_3;;1.0;0.0;;4
@@ -118,7 +118,7 @@
 117;4;3274;U16;;Meter S B;;1.0;0.0;VA;1
 118;4;3276;U16;;Meter S C;;1.0;0.0;VA;1
 119;4;3278;U16;;Meter Total S;;1.0;0.0;VA;1
-120;4;3280;U16;;Meter PF;;1.0;0.0;;1
+120;4;3280;U16;;Meter PF;PF;1.0;0.0;;1
 121;4;3281;U16;;Meter Freq;;1.0;0.0;Hz;1
 122;4;3282;U16;;Meter grid import active energy;E_IMP;1.0;0.0;kWh;1
 123;4;3284;U16;;Meter grid export active energy;E_EXP;1.0;0.0;kWh;1

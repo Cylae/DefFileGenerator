@@ -17,8 +17,8 @@ ModbusRTU;Inverter;INGETEAM;PowerMax(centraux);;;;;;;
 16;4;10_1;I8;;Current from Strings 14;;1;0;;4
 17;4;11_0;I8;;Current from Strings 15;;1;0;;4
 18;4;11_1;I8;;Current from Strings 16;;1;0;;4
-19;4;12;I16;;Sum of instant currents;I_AC;1;0;;4
-20;4;13;U16;;Temperature;TEMP;1;0;;4
+19;4;12;I16;;Sum of instant currents;;1;0;;4
+20;4;13;U16;;Temperature;;1;0;;4
 21;4;14;U16;;String current alarms;;1;0;;4
 22;4;15;U16;;Fuse alarms;;1;0;;4
 23;4;16;U16;;Reserved;;1;0;;0

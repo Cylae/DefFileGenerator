@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Ingeteam;INGETEAM_PowerBlock(ABK1000);;;;;;;
+modbusRTU;Other;Ingeteam;INGETEAM_PowerBlock(ABK1000);;;;;;;
 1;4;0;U16;;Actual Date.Year;;1.0;0.0;Year;4
 2;4;1;U16;;Actual Date.Month of the Year;;1.0;0.0;Month;4
 3;4;2;U16;;Actual Date.Day of the month;;1.0;0.0;Day;4
@@ -11,9 +11,9 @@
 10;4;9;U16;;Reactive Power Reduction rate;;1.0;0.0;%;4
 11;4;10;U16;;Active Power Reduction Reason;;1.0;0.0;Reason;4
 12;4;11;U16;;Reactive Power Reduction Reason;;1.0;0.0;Reason;4
-13;4;12;U16;;PV power;;1.0;0.0;kWatt;4
+13;4;12;U16;;PV power;P_DC;1.0;0.0;kWatt;4
 14;4;13;U16;;BUS voltage;U_DC;1.0;0.0;V;4
-15;4;14;U16;;PV current;;1.0;0.0;Amps;4
+15;4;14;U16;;PV current;I_DC;1.0;0.0;Amps;4
 16;4;15;U16;;PV voltage;;1.0;0.0;Vdc;4
 17;4;16;U16;;HeatSink R Temperature;TEMP_INT;1.0;0.0;C;4
 18;4;17;U16;;HeatSink S Temperature;;1.0;0.0;C;4

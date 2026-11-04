@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Goodwe;GoodWe_MT_series_customer_vers;;;;;;;
+modbusRTU;Inverter;Goodwe;GoodWe_MT_series_customer_vers;;;;;;;
 1;4;0;U16;;Power on voltage;CMD_ON;1.0;0.0;V;1
 2;4;1;U16;;Reconnect time;;1.0;0.0;s;4
 3;4;2;U16;;Lower limit of grid voltage;;1.0;0.0;V;4

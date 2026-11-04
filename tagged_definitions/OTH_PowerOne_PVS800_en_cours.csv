@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;PowerOne;PVS800(en cours);;;;;;;
+modbusRTU;Other;PowerOne;PVS800(en cours);;;;;;;
 1;4;40202;U16;;DC voltage;U_DC;1.0;0.0;V;4
 2;4;40204;U16;;Line current;I_AC_3;1.0;0.0;A;4
 3;4;40206;U16;;Line current %;;1.0;0.0;%;4

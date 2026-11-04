@@ -1,6 +1,6 @@
 ModbusRTU;Inverter;Jema;Generic;;;;;;;
-1;3;100;U16;;DC SIDE Voltage INVERTER 1;U_DC;0.1;0.0;V;4
-2;3;101;U16;;DC SIDE Current INVERTER 1;I_DC;0.1;0.0;A;4
+1;3;100;U16;;DC SIDE Voltage INVERTER 1;;0.1;0.0;V;4
+2;3;101;U16;;DC SIDE Current INVERTER 1;;0.1;0.0;A;4
 3;3;200;U16;;DC SIDE Voltage INVERTER 2;;0.1;0.0;V;4
 4;3;201;U16;;DC SIDE Current INVERTER 2;;0.1;0.0;A;4
 5;3;300;U16;;DC SIDE Voltage INVERTER 3;;0.1;0.0;V;4
@@ -8,15 +8,15 @@ ModbusRTU;Inverter;Jema;Generic;;;;;;;
 7;3;1002;U16;;AC SIDE VOLTAGE;;0.1;0.0;V;4
 8;3;1003;U16;;Not used;;1.0;0.0;;0
 9;3;1004;U16;;Not used_1;;1.0;0.0;;0
-10;3;1005;U16;;AC SIDE L1 Current;I_AC_1;0.1;0.0;A;4
-11;3;1006;U16;;AC SIDE L2 Current;I_AC_2;0.1;0.0;A;4
-12;3;1007;U16;;AC SIDE L3 Current;I_AC_3;0.1;0.0;A;4
+10;3;1005;U16;;AC SIDE L1 Current;;0.1;0.0;A;4
+11;3;1006;U16;;AC SIDE L2 Current;;0.1;0.0;A;4
+12;3;1007;U16;;AC SIDE L3 Current;;0.1;0.0;A;4
 13;3;1008;U16;;Not used_2;;1.0;0.0;;0
-14;3;1009;U16;;AC SIDE Generated Active Power;P_AC;0.1;0.0;kW;4
-15;3;1010;U16;;AC SIDE Generated Reactive Power;Q_AC;0.1;0.0;kVAr;4
-16;3;5;U16;;DC SIDE Power;P_DC;0.1;0.0;kW;4
-17;3;111;U16;;CosPhi INVERTER 1;PF;0.001;0.0;;4
-18;3;112;U16;;AC SIDE Frequency INVERTER 1;FREQ;0.001;0.0;;4
+14;3;1009;U16;;AC SIDE Generated Active Power;;0.1;0.0;kW;4
+15;3;1010;U16;;AC SIDE Generated Reactive Power;;0.1;0.0;kVAr;4
+16;3;5;U16;;DC SIDE Power;;0.1;0.0;kW;4
+17;3;111;U16;;CosPhi INVERTER 1;;0.001;0.0;;4
+18;3;112;U16;;AC SIDE Frequency INVERTER 1;;0.001;0.0;;4
 19;3;113;U16;;Not used_3;;1.0;0.0;;0
 20;3;114;U16;;Control Temperature 1;;0.1;0.0;°C;4
 21;3;115;U16;;Input State 1;;1.0;0.0;;4
@@ -53,6 +53,6 @@ ModbusRTU;Inverter;Jema;Generic;;;;;;;
 52;3;1123;U16;;DC SIDE Current INVERTER String 14;I_DC_STRING_14;0.01;0.0;A;0
 53;3;1124;U16;;DC SIDE Current INVERTER String 15;I_DC_STRING_15;0.01;0.0;A;0
 54;3;1125;U16;;DC SIDE Current INVERTER String 16;I_DC_STRING_16;0.01;0.0;A;0
-55;3;1149;U16;;Temperature modules;TEMP_CELL;1.0;0.0;ºC;4
+55;3;1149;U16;;Temperature modules;;1.0;0.0;ºC;4
 56;3;1150;U16;;Irradiation module;;1.0;0.0;W/m2;4
 57;3;1151;U16;;Anémomètre;;1.0;0.0;m/s;4

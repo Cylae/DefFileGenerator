@@ -1,4 +1,4 @@
-﻿modbusRTU;meter;Legrand;EMSCX3;;;;;;;
+modbusRTU;meter;Legrand;EMSCX3;;;;;;;
 1;4;20480;U16;;Phase 1 : current (R);I_AC_1;1;0;A;4
 2;4;20481;U16;;Phase 2 : current (S);I_AC_2;1;0;A;4
 3;4;20482;U16;;Phase 3 : current (T);I_AC_3;1;0;A;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_STPX_V03_02_07(CEME);;;;;;;
+modbusRTU;Inverter;SMA;SMA_STPX_V03_02_07(CEME);;;;;;;
 1;4;30005;U16;;Numero de serie_0;SERIAL;1.0;0.0;;4
 2;4;30051;U16;;Classe d appareil;;1.0;0.0;;4
 3;4;30053;U16;;Type d appareil;MODEL;1.0;0.0;;4

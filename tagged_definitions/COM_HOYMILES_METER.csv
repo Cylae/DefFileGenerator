@@ -1,4 +1,4 @@
-﻿modbus;Logger;HOYMILES;METER;;;;;;;
+modbus;Logger;HOYMILES;METER;;;;;;;
 1;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 2;4;12640_6;STRING;;Meter 1: Serial Number;SERIAL;1.000000;0.000000;;4
 3;4;12643;U32;;Meter 1: Total Active Power;P_AC;0.010000;0.000000;kW;4

@@ -7,14 +7,14 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 6;3;30007;I32;;[Grid sensor] reactive power;Q_AC;0.001;0;kVar;4
 7;3;30009;U16;;On/Off Grid status;;1;0;;4
 8;3;30010;U32;;Max active power;;0.001;0;kW;4
-9;3;30012;U32;;Max apparent power;S_AC;0.001;0;kVar;4
+9;3;30012;U32;;Max apparent power;;0.001;0;kVar;4
 10;3;30014;U16;;[ESS] SOC;SOC;0.1;0;%;4
-11;3;30015;I32;;Plant phase A active power;P_AC_1;0.001;0;kW;4
-12;3;30017;I32;;Plant phase B active power;P_AC_2;0.001;0;kW;4
-13;3;30019;I32;;Plant phase C active power;P_AC_3;0.001;0;kW;4
-14;3;30021;I32;;Plant phase A reactive power;Q_AC_1;0.001;0;kVar;4
-15;3;30023;I32;;Plant phase B reactive power;Q_AC_2;0.001;0;kVar;4
-16;3;30025;I32;;Plant phase C reactive power;Q_AC_3;0.001;0;kVar;4
+11;3;30015;I32;;Plant phase A active power;;0.001;0;kW;4
+12;3;30017;I32;;Plant phase B active power;;0.001;0;kW;4
+13;3;30019;I32;;Plant phase C active power;;0.001;0;kW;4
+14;3;30021;I32;;Plant phase A reactive power;;0.001;0;kVar;4
+15;3;30023;I32;;Plant phase B reactive power;;0.001;0;kVar;4
+16;3;30025;I32;;Plant phase C reactive power;;0.001;0;kVar;4
 17;3;30027;U16;;General Alarm1;;1;0;;4
 18;3;30028;U16;;General Alarm2;;1;0;;4
 19;3;30029;U16;;General Alarm3;;1;0;;4
@@ -50,7 +50,7 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 49;4;40003;I32;;Reactive power fixed adjustment target value;;0.001;0;kVar;4
 50;4;40005;I16;;Active power percentage adjustment target value;;0.01;0;%;4
 51;4;40006;I16;;Q/S adjustment target value;;0.01;0;%;4
-52;4;40007;I16;;Power factor adjustment target value;PF;0.001;0;;4
+52;4;40007;I16;;Power factor adjustment target value;;0.001;0;;4
 53;4;40008;I32;;Phase A active power fixed adjustment target value;;0.001;0;kW;4
 54;4;40010;I32;;Phase B active power fixed adjustment target value;;0.001;0;kW;4
 55;4;40012;I32;;Phase C active power fixed adjustment target value;;0.001;0;kW;4
@@ -68,12 +68,12 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 67;4;40031;U16;;Remote EMS control mode;;1;0;;4
 68;4;40032;U32;;ESS max charging limit;;0.001;0;kW;4
 69;4;40034;U32;;ESS max discharging limit;;0.001;0;kW;4
-70;4;40036;U32;;PV max power limit;CMD_P_AC_SET_ABS;0.001;0;kW;4
+70;4;40036;U32;;PV max power limit;;0.001;0;kW;4
 71;4;40038;U32;;[Grid Point]Maximum export limitation;;0.001;0;kW;4
 72;4;40040;U32;;[Grid Point] Maximum import limitation;;0.001;0;kW;4
 73;4;40042;U32;;PCS maximum export limitation;;0.001;0;kW;4
 74;4;40044;U32;;PCS maximum import limitation;;0.001;0;kW;4
-75;3;30500_30;STRING;;Model type;MODEL;1;0;;4
+75;3;30500_30;STRING;;Model type;;1;0;;4
 76;3;30515_20;STRING;;Serial number;SERIAL;1;0;;4
 77;3;30525_30;STRING;;Machine firmware version;;1;0;;4
 78;3;30540;U32;;Rated active power;P_RATED;0.001;0;kW;4
@@ -83,7 +83,7 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 82;3;30548;U32;;Rated battery capacity;;0.01;0;kWh;4
 83;3;30550;U32;;[ESS]Rated charge power;;0.001;0;kW;4
 84;3;30552;U32;;[ESS]Rated discharge power;;0.001;0;kW;4
-85;3;30566;U32;;[ESS]Daily charge energy;E_DAY;0.01;0;kWh;4
+85;3;30566;U32;;[ESS]Daily charge energy;;0.01;0;kWh;4
 86;3;30568;U64;;[ESS]Accumulated charge energy;;0.01;0;kWh;4
 87;3;30572;U32;;[ESS]Daily discharge energy;;0.01;0;kWh;4
 88;3;30574;U64;;[ESS]Accumulated discharge energy;;0.01;0;kWh;4
@@ -101,21 +101,21 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 100;3;30599;I32;;[ESS] Charge / discharge power;;0.001;0;kW;4
 101;3;30601;U16;;[ESS]Battery SOC;;0.1;0;%;4
 102;3;30602;U16;;[ESS]Battery SOH;;0.1;0;%;4
-103;3;30603;I16;;[ESS]Average cell temperature;TEMP_CELL;0.1;0;DegC;4
+103;3;30603;I16;;[ESS]Average cell temperature;;0.1;0;DegC;4
 104;3;30604;U16;;[ESS] Average cell voltage;;0.001;0;V;4
 105;3;30605;U16;;Alarm1_1;;1;0;;4
 106;3;30606;U16;;Alarm2_1;;1;0;;4
 107;3;30607;U16;;Alarm3_1;;1;0;;4
 108;3;30608;U16;;Alarm4;;1;0;;4
 109;3;30609;U16;;Alarm5;;1;0;;4
-110;3;30620;I16;;[ESS]Maximum battery temperature;TEMP;0.1;0;DegC;4
+110;3;30620;I16;;[ESS]Maximum battery temperature;;0.1;0;DegC;4
 111;3;30621;I16;;[ESS]Minimum battery temperature;;0.1;0;DegC;4
 112;3;30622;U16;;[ESS] Maximum battery cell voltage;;0.001;0;V;4
 113;3;30623;U16;;[ESS] Minimum battery cell voltage;;0.001;0;V;4
 114;3;31000;U16;;Rated grid voltage;;0.1;0;V;4
-115;3;31001;U16;;Rated grid frequency;FREQ;0.01;0;Hz;4
-116;3;31002;U16;;Grid frequency;;0.01;0;Hz;4
-117;3;31003;I16;;[PCS] Internal temperature;;0.1;0;DegC;4
+115;3;31001;U16;;Rated grid frequency;;0.01;0;Hz;4
+116;3;31002;U16;;Grid frequency;FREQ;0.01;0;Hz;4
+117;3;31003;I16;;[PCS] Internal temperature;TEMP_INT;0.1;0;DegC;4
 118;3;31004;U16;;Output type;;1;0;;4
 119;3;31005;U32;;A-B line voltage;;0.01;0;V;4
 120;3;31007;U32;;B-C line voltage;;0.01;0;V;4
@@ -126,48 +126,48 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 125;3;31017;I32;;Phase A current;I_AC_1;0.01;0;A;4
 126;3;31019;I32;;Phase B current;I_AC_2;0.01;0;A;4
 127;3;31021;I32;;Phase C current;I_AC_3;0.01;0;A;4
-128;3;31023;U16;;Power factor;;0.001;0;;4
+128;3;31023;U16;;Power factor;PF;0.001;0;;4
 129;3;31024;U16;;PACK count;;1;0;;4
 130;3;31025;U16;;PV string count;;1;0;;4
 131;3;31026;U16;;MPPT count;;1;0;;4
-132;3;31027;I16;;PV1 voltage;U_DC_STRING_1;0.1;0;V;4
-133;3;31028;I16;;PV1 current;I_DC_STRING_1;0.01;0;A;4
-134;3;31029;I16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
-135;3;31030;I16;;PV2 current;I_DC_STRING_2;0.01;0;A;4
-136;3;31031;I16;;PV3 voltage;U_DC_STRING_3;0.1;0;V;4
-137;3;31032;I16;;PV3 current;I_DC_STRING_3;0.01;0;A;4
-138;3;31033;I16;;PV4 voltage;U_DC_STRING_4;0.1;0;V;4
-139;3;31034;I16;;PV4 current;I_DC_STRING_4;0.01;0;A;4
-140;3;31035;I32;;PV power;;0.001;0;kW;4
+132;3;31027;I16;;PV1 voltage;;0.1;0;V;4
+133;3;31028;I16;;PV1 current;;0.01;0;A;4
+134;3;31029;I16;;PV2 voltage;;0.1;0;V;4
+135;3;31030;I16;;PV2 current;;0.01;0;A;4
+136;3;31031;I16;;PV3 voltage;;0.1;0;V;4
+137;3;31032;I16;;PV3 current;;0.01;0;A;4
+138;3;31033;I16;;PV4 voltage;;0.1;0;V;4
+139;3;31034;I16;;PV4 current;;0.01;0;A;4
+140;3;31035;I32;;PV power;P_DC;0.001;0;kW;4
 141;3;31037;U16;;Insulation resistance;R_ISO;0.001;0;MOhm;4
 142;3;31038;U32;;Startup time;;1;0;s;4
 143;3;31040;U32;;Shutdown time;;1;0;s;4
-144;3;31042;I16;;PV5 voltage;U_DC_STRING_5;0.1;0;V;4
-145;3;31043;I16;;PV5 current;I_DC_STRING_5;0.01;0;A;4
-146;3;31044;I16;;PV6 voltage;U_DC_STRING_6;0.1;0;V;4
-147;3;31045;I16;;PV6 current;I_DC_STRING_6;0.01;0;A;4
-148;3;31046;I16;;PV7 voltage;U_DC_STRING_7;0.1;0;V;4
-149;3;31047;I16;;PV7 current;I_DC_STRING_7;0.01;0;A;4
-150;3;31048;I16;;PV8 voltage;U_DC_STRING_8;0.1;0;V;4
-151;3;31049;I16;;PV8 current_2;I_DC_STRING_8;0.01;0;A;4
-152;3;31050;I16;;PV9 voltage;U_DC_STRING_9;0.1;0;V;4
-153;3;31051;I16;;PV9 current;I_DC_STRING_9;0.01;0;A;4
-154;3;31052;I16;;PV10 voltage;U_DC_STRING_10;0.1;0;V;4
-155;3;31053;I16;;PV10 current;I_DC_STRING_10;0.01;0;A;4
-156;3;31054;I16;;PV11 voltage;U_DC_STRING_11;0.1;0;V;4
-157;3;31055;I16;;PV11 current;I_DC_STRING_11;0.01;0;A;4
-158;3;31056;I16;;PV12 voltage;U_DC_STRING_12;0.1;0;V;4
-159;3;31057;I16;;PV12 current;I_DC_STRING_12;0.01;0;A;4
-160;3;31058;I16;;PV13 voltage;U_DC_STRING_13;0.1;0;V;4
-161;3;31059;I16;;PV13 current;I_DC_STRING_13;0.01;0;A;4
-162;3;31060;I16;;PV14 voltage;U_DC_STRING_14;0.1;0;V;4
-163;3;31061;I16;;PV14 current;I_DC_STRING_14;0.01;0;A;4
-164;3;31062;I16;;PV15 voltage;U_DC_STRING_15;0.1;0;V;4
-165;3;31063;I16;;PV15 current;I_DC_STRING_15;0.01;0;A;4
-166;3;31064;I16;;PV16 voltage;U_DC_STRING_16;0.1;0;V;4
-167;3;31065;I16;;PV16 current;I_DC_STRING_16;0.01;0;A;4
-168;3;31500;U16;;[DC Charger] Vehicle battery voltage;U_DC;0.1;0;V;4
-169;3;31501;U16;;[DC Charger] Charging current;I_DC;0.01;0;A;4
+144;3;31042;I16;;PV5 voltage;;0.1;0;V;4
+145;3;31043;I16;;PV5 current;;0.01;0;A;4
+146;3;31044;I16;;PV6 voltage;;0.1;0;V;4
+147;3;31045;I16;;PV6 current;;0.01;0;A;4
+148;3;31046;I16;;PV7 voltage;;0.1;0;V;4
+149;3;31047;I16;;PV7 current;;0.01;0;A;4
+150;3;31048;I16;;PV8 voltage;;0.1;0;V;4
+151;3;31049;I16;;PV8 current_2;;0.01;0;A;4
+152;3;31050;I16;;PV9 voltage;;0.1;0;V;4
+153;3;31051;I16;;PV9 current;;0.01;0;A;4
+154;3;31052;I16;;PV10 voltage;;0.1;0;V;4
+155;3;31053;I16;;PV10 current;;0.01;0;A;4
+156;3;31054;I16;;PV11 voltage;;0.1;0;V;4
+157;3;31055;I16;;PV11 current;;0.01;0;A;4
+158;3;31056;I16;;PV12 voltage;;0.1;0;V;4
+159;3;31057;I16;;PV12 current;;0.01;0;A;4
+160;3;31058;I16;;PV13 voltage;;0.1;0;V;4
+161;3;31059;I16;;PV13 current;;0.01;0;A;4
+162;3;31060;I16;;PV14 voltage;;0.1;0;V;4
+163;3;31061;I16;;PV14 current;;0.01;0;A;4
+164;3;31062;I16;;PV15 voltage;;0.1;0;V;4
+165;3;31063;I16;;PV15 current;;0.01;0;A;4
+166;3;31064;I16;;PV16 voltage;;0.1;0;V;4
+167;3;31065;I16;;PV16 current;;0.01;0;A;4
+168;3;31500;U16;;[DC Charger] Vehicle battery voltage;;0.1;0;V;4
+169;3;31501;U16;;[DC Charger] Charging current;;0.01;0;A;4
 170;3;31502;I32;;[DC Charger] Output power;;0.001;0;kW;4
 171;3;31504;U16;;[DC Charger] Vehicle SOC;;0.1;0;%;4
 172;3;31505;U32;;[DC Charger] Current charging capacity;;0.01;0;kWh;4
@@ -182,7 +182,7 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 181;4;41506;I16;;Reactive power Q/S adjustment;;0.01;0;%;4
 182;4;41507;I16;;Power factor adjustment;;0.001;0;;4
 183;3;32000;U16;;System state;;1;0;;4
-184;3;32001;U32;;Total energy consumed;E_TOT;0.01;0;kWh;4
+184;3;32001;U32;;Total energy consumed;;0.01;0;kWh;4
 185;3;32003;I32;;Charging power;;0.001;0;kW;4
 186;3;32005;U32;;Rated power;;0.001;0;kW;4
 187;3;32007;I32;;Rated current;;0.01;0;A;4

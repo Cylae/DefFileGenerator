@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_SC_Webbox;;;;;;;
+modbusRTU;Inverter;SMA;SMA_SC_Webbox;;;;;;;
 1;4;30057;U16;;Serial number Serial Number;SERIAL;1.0;0.0;;4
 2;4;30193;U16;;Reading the plant time UTC SerTm;;1.0;0.0;s;4
 3;4;30197;U16;;Event ID of the current event;WIND_SPEED;1.0;0.0;;4

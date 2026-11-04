@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Eco Adapt;MODBUS_PowerElec6;;;;;;;
+modbusRTU;Other;Eco Adapt;MODBUS_PowerElec6;;;;;;;
 1;4;0;U16;;Software version;;1.0;0.0;;4
 2;4;1;U16;;Modbus version;;1.0;0.0;;4
 3;4;2;U16;;Adresse MAC_1;;1.0;0.0;;4

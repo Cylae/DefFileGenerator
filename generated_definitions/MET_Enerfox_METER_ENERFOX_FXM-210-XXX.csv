@@ -20,17 +20,17 @@ Modbus;Meter;Enerfox;FXM-210-XXX;;;;;;;
 19;3;8222;F32;;Phase B power;P_AC_2;0.001;0;kW;4
 20;3;8224;F32;;Phase C power;P_AC_3;0.001;0;kW;4
 21;3;8226;F32;;Total apparent power;S_AC;0.001;0;kVA;4
-22;3;8228;F32;;Phase A apparent power;S_AC_1;0.001;0;kVA;4
-23;3;8230;F32;;Phase B apparent power;S_AC_2;0.001;0;kVA;4
-24;3;8232;F32;;Phase C apparent power;S_AC_3;0.001;0;kVA;4
+22;3;8228;F32;;Phase A apparent power;;0.001;0;kVA;4
+23;3;8230;F32;;Phase B apparent power;;0.001;0;kVA;4
+24;3;8232;F32;;Phase C apparent power;;0.001;0;kVA;4
 25;3;8234;F32;;Total reactive power;Q_AC;0.001;0;kvar;4
-26;3;8236;F32;;Phase A reactive power;Q_AC_1;0.001;0;kvar;4
-27;3;8238;F32;;Phase B reactive power;Q_AC_2;0.001;0;kvar;4
-28;3;8240;F32;;Phase C reactive power;Q_AC_3;0.001;0;kvar;4
+26;3;8236;F32;;Phase A reactive power;;0.001;0;kvar;4
+27;3;8238;F32;;Phase B reactive power;;0.001;0;kvar;4
+28;3;8240;F32;;Phase C reactive power;;0.001;0;kvar;4
 29;3;8242;F32;;Total power factor;PF;1;0;;4
-30;3;8244;F32;;Phase A power factor;PF_1;1;0;;4
-31;3;8246;F32;;Phase B power factor;PF_2;1;0;;4
-32;3;8248;F32;;Phase C power factor;PF_3;1;0;;4
+30;3;8244;F32;;Phase A power factor;;1;0;;4
+31;3;8246;F32;;Phase B power factor;;1;0;;4
+32;3;8248;F32;;Phase C power factor;;1;0;;4
 33;3;8262;U32;;Generated energy;;1;0;kWh;4
 34;3;8264;U32;;Phase A generated energy;;1;0;kWh;4
 35;3;8266;U32;;Phase B generated energy;;1;0;kWh;4

@@ -1,11 +1,11 @@
 ModbusRTU;Other;Inverter;Sungrow
 1;4;4999;U16;;Device type code;;1.0;0.0;;4
-2;4;5000;U16;;Nominal Active Power;P_RATED;1.0;0.0;0.1kW;4
+2;4;5000;U16;;Nominal Active Power;;1.0;0.0;0.1kW;4
 3;4;5001;U16;;Output type;;1.0;0.0;;4
-4;4;5002;U16;;Daily power yields;E_DAY;1.0;0.0;0.1 kWh;4
-5;4;5003;U32_W;;Total power yields;E_TOT;1.0;0.0;kWh;4
-6;4;5005;U32_W;;Total running time;TOT;1.0;0.0;h;4
-7;4;5007;U16;;Internal temperature;TEMP;1.0;0.0;0.1 deg cel;4
+4;4;5002;U16;;Daily power yields;;1.0;0.0;0.1 kWh;4
+5;4;5003;U32_W;;Total power yields;;1.0;0.0;kWh;4
+6;4;5005;U32_W;;Total running time;;1.0;0.0;h;4
+7;4;5007;U16;;Internal temperature;TEMP_INT;1.0;0.0;0.1 deg cel;4
 8;4;5008;U32_W;;Total apparent power;S_AC;1.0;0.0;VA;4
 9;4;5010;U16;;MPPT 1 voltage;U_DC_MPPT_1;1.0;0.0;0.1V;4
 10;4;5011;U16;;MPPT 1 current;I_DC_MPPT_1;1.0;0.0;0.1A;4

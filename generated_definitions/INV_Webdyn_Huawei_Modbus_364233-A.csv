@@ -1,22 +1,22 @@
 ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 1;3;32001;U16;;Rated inverter power;;1.0;0.0;;4
 2;3;32002;U16;;Output mode ;;1.0;0.0;;4
-3;3;32003_10;STRING;;ESN ;SERIAL;1.0;0.0;;1
-4;3;32262;I16;;PV1 Voltage;U_DC_STRING_1;0.1;0.0;V;4
-5;3;32263;I16;;PV1 Current;I_DC_STRING_1;0.1;0.0;A;4
-6;3;32264;I16;;PV2 Voltage;U_DC_STRING_2;0.1;0.0;V;4
-7;3;32265;I16;;PV2 Current;I_DC_STRING_2;0.1;0.0;A;4
-8;3;32266;I16;;PV3 Voltage;U_DC_STRING_3;0.1;0.0;V;4
-9;3;32267;I16;;PV3 Current;I_DC_STRING_3;0.1;0.0;A;4
-10;3;32268;I16;;PV4 Voltage;U_DC_STRING_4;0.1;0.0;V;4
-11;3;32269;I16;;PV4 Current;I_DC_STRING_4;0.1;0.0;A;4
-12;3;32270;I16;;PV5 Voltage;U_DC_STRING_5;0.1;0.0;V;4
-13;3;32271;I16;;PV5 Current;I_DC_STRING_5;0.1;0.0;A;4
-14;3;32272;I16;;PV6 Voltage;U_DC_STRING_6;0.1;0.0;V;4
-15;3;32273;I16;;PV6 Current;I_DC_STRING_6;0.1;0.0;A;4
-16;3;32274;U16;;Uab;;0.1;0.0;V;4
-17;3;32275;U16;;Ubc;;0.1;0.0;V;4
-18;3;32276;U16;;Uca;;0.1;0.0;V;4
+3;3;32003_10;STRING;;ESN ;;1.0;0.0;;1
+4;3;32262;I16;;PV1 Voltage;;0.1;0.0;V;4
+5;3;32263;I16;;PV1 Current;;0.1;0.0;A;4
+6;3;32264;I16;;PV2 Voltage;;0.1;0.0;V;4
+7;3;32265;I16;;PV2 Current;;0.1;0.0;A;4
+8;3;32266;I16;;PV3 Voltage;;0.1;0.0;V;4
+9;3;32267;I16;;PV3 Current;;0.1;0.0;A;4
+10;3;32268;I16;;PV4 Voltage;;0.1;0.0;V;4
+11;3;32269;I16;;PV4 Current;;0.1;0.0;A;4
+12;3;32270;I16;;PV5 Voltage;;0.1;0.0;V;4
+13;3;32271;I16;;PV5 Current;;0.1;0.0;A;4
+14;3;32272;I16;;PV6 Voltage;;0.1;0.0;V;4
+15;3;32273;I16;;PV6 Current;;0.1;0.0;A;4
+16;3;32274;U16;;Uab;U_AC_L1L2;0.1;0.0;V;4
+17;3;32275;U16;;Ubc;U_AC_L2L3;0.1;0.0;V;4
+18;3;32276;U16;;Uca;U_AC_L3L1;0.1;0.0;V;4
 19;3;32277;U16;;Ua;;0.1;0.0;V;4
 20;3;32278;U16;;Ub;;0.1;0.0;V;4
 21;3;32279;U16;;Uc;;0.1;0.0;V;4
@@ -28,20 +28,20 @@ ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 27;3;32285;U16;;Inverter efficiency;;0.01;0.0;%;4
 28;3;32286;I16;;Cabinet temperature;TEMP_INT;0.1;0.0;°C;4
 29;3;32287;U16;;Inverter status;;1.0;0.0;;8
-30;3;32288;I32;; Active power peak of current day;P_AC;0.001;0.0;kW;4
-31;3;32290;I32;; Active power ;;0.001;0.0;kW;4
+30;3;32288;I32;; Active power peak of current day;;0.001;0.0;kW;4
+31;3;32290;I32;; Active power ;P_AC;0.001;0.0;kW;4
 32;3;32292;I32;;Reactive power;Q_AC;0.001;0.0;kVar;4
-33;3;32294;U32;; Total input power ;;0.001;0.0;kW;4
+33;3;32294;U32;; Total input power ;P_DC;0.001;0.0;kW;4
 34;3;32296;U32;;Current electricity yield collection time;;1.0;0.0;;4
 35;3;32298;U32;;36 E-Hour ;;0.01;0.0;kWh;4
 36;3;32300;U32;;37 E-Day ;;0.01;0.0;kWh;4
 37;3;32302;U32;;38 E-Month ;;0.01;0.0;kWh;4
 38;3;32304;U32;;39 E-Year ;;0.01;0.0;kWh;4
 39;3;32306;U32;;40 E-Total ;;0.01;0.0;kWh;4
-40;3;32314;I16;;41 PV7 voltage ;U_DC_STRING_7;0.1;0.0;V;4
-41;3;32315;I16;;42 PV7 current ;I_DC_STRING_7;0.1;0.0;A;4
-42;3;32316;I16;;43 PV8 voltage ;U_DC_STRING_8;0.1;0.0;V;4
-43;3;32317;I16;;44 PV8 current ;I_DC_STRING_8;0.1;0.0;A;4
+40;3;32314;I16;;41 PV7 voltage ;;0.1;0.0;V;4
+41;3;32315;I16;;42 PV7 current ;;0.1;0.0;A;4
+42;3;32316;I16;;43 PV8 voltage ;;0.1;0.0;V;4
+43;3;32317;I16;;44 PV8 current ;;0.1;0.0;A;4
 44;3;32320;U16;;45 Locking;;1.0;0.0;;4
 45;3;32321_0_1;BITS;;39 Zero voltage ride through protection;;1.0;0.0;;4
 46;3;32322_0_1;BITS;;40 LVRT protection ;;1.0;0.0;;4
@@ -52,7 +52,7 @@ ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 51;3;32327_0_1;BITS;;BitOffset:7;;1.0;0.0;;4
 52;3;32328_0_1;BITS;;BitOffset:8;;1.0;0.0;;4
 53;3;32329;U16;;49 Inverter on-grid ;;1.0;0.0;;4
-54;3;32330;U16;;50 Insulation resistance;R_ISO;0.001;0.0;M;4
+54;3;32330;U16;;50 Insulation resistance;;0.001;0.0;M;4
 55;3;32325;U16;;51 Start time;;1.0;0.0;s;4
 56;3;32326;U32;;52 Shutdown time;;1.0;0.0;s;4
 57;3;32343;U32;;53 Electricity yield collection time for previous hour;;1.0;0.0;;4
@@ -63,10 +63,10 @@ ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 62;3;32353;U32;;58 Electricity yield in previous month;;0.01;0.0;kWh;4
 63;3;32355;U32;;59 Electricity yield collection time for previous year;;1.0;0.0;;4
 64;3;32357;U32;;60 Electricity yield in previous year;;0.01;0.0;kWh;4
-65;3;33022;U32;;61 MPPT1 total input power;P_DC_MPPT_1;0.001;0.0;kW;4
-66;3;33024;U32;;62 MPPT2 total input power;P_DC_MPPT_2;0.001;0.0; kW;4
-67;3;33026;U32;;63 MPPT3 total input power;P_DC_MPPT_3;0.001;0.0; kW;4
-68;3;33070;U32;;64 MPPT4 total input power;P_DC_MPPT_4;0.001;0.0; kW;4
+65;3;33022;U32;;61 MPPT1 total input power;I_DC_MPPT_1;0.001;0.0;kW;4
+66;3;33024;U32;;62 MPPT2 total input power;I_DC_MPPT_2;0.001;0.0; kW;4
+67;3;33026;U32;;63 MPPT3 total input power;I_DC_MPPT_3;0.001;0.0; kW;4
+68;3;33070;U32;;64 MPPT4 total input power;I_DC_MPPT_4;0.001;0.0; kW;4
 69;3;40000;U32;;65 System time ;;1.0;0.0;;4
 70;3;40117;U16;;66 Reactive power compensation;;1.0;0.0;;4
 71;3;40118;U16;;67 Active power control;;1.0;0.0;;4
@@ -119,8 +119,8 @@ ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 118;3;40172;U16;;Q/S value of Q-U curve point 9;;0.001;0.0;;4
 119;3;40173;U16;;U/Un value of Q-U curve point 10;;0.1;0.0;%;4
 120;3;40174;U16;;Q/S value of Q-U curve point 10;;0.001;0.0;;4
-121;3;40200;U16;;77 Power on ;CMD_ON;1.0;0.0;;4
-122;3;40201;U16;;78 Power off ;CMD_OFF;1.0;0.0;;4
+121;3;40200;U16;;77 Power on ;;1.0;0.0;;4
+122;3;40201;U16;;78 Power off ;;1.0;0.0;;4
 123;3;40232;U16;;79 Active power derating percent(0.1%);;1.0;0.0;%;4
 124;3;40234;U16;;80 Active power deration percent(1%);;1.0;0.0;%;4
 125;3;40235;U16;;81 Active power deration fixed value;;0.1;0.0;kW;4
@@ -170,7 +170,7 @@ ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 169;3;42158;U32;;125 Level-3 UV prot.time;;1.0;0.0;ms;4
 170;3;42160;U16;;126 Level-4 UV prot. ;;0.1;0.0;V;4
 171;3;42161;U32;;127 Level-4 UV prot.time;;1.0;0.0;ms;4
-172;3;42174;U16;;Shutdown at 0% power limit;CMD_P_AC_SET_PERCENT;1.0;0.0;;4
+172;3;42174;U16;;Shutdown at 0% power limit;;1.0;0.0;;4
 173;3;42300;U16;;System time: year ;;1.0;0.0;;4
 174;3;42301;U16;;System time: month;;1.0;0.0;;4
 175;3;42302;U16;;System time: day ;;1.0;0.0;;4
@@ -178,7 +178,7 @@ ModbusRTU;Inverter;Huawei;33-A_36_42KTL;;;;;;;
 177;3;42304;U16;;System time: minute;;1.0;0.0;;4
 178;3;42305;U16;;System time: second;;1.0;0.0;;4
 179;3;42320;U16;;Active power derating;;1.0;0.0;%;4
-180;3;42321;I16;;Reactive power compensation;CMD_PF;0.001;0.0;;4
+180;3;42321;I16;;Reactive power compensation;;0.001;0.0;;4
 181;3;42333;U16;;Remote power schedule;;1.0;0.0;;4
 182;3;50000;U16;;Upgrade Failed;;1.0;0.0;;0
 183;3;50001;U16;;System Fault;;1.0;0.0;;0

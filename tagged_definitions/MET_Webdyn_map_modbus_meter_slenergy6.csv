@@ -1,4 +1,4 @@
-﻿Modbus;Meter;SLEnergy;Generic6;;;;;;;
+Modbus;Meter;SLEnergy;Generic6;;;;;;;
 1;4;14025;I16;;R-phase current;I_AC_3;0.100000;0.000000;A;4
 2;4;14026;I16;;S-phase current;;0.100000;0.000000;A;4
 3;4;14027;I16;;T-phase current;;0.100000;0.000000;A;4

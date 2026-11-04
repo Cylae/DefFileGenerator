@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
+ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 1;4;31001_1;STRING;;Device Type: 1=Single phase / 3=Three pahse;;1;0;;4
 2;4;31002;U16;;Modbus address?Default as 3;UNIT_ID;1;0;;4
 3;4;31003_16;STRING;;Serial Number;SERIAL;1;0;;4

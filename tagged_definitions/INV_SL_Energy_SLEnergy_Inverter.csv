@@ -1,4 +1,4 @@
-﻿modbus;Inverter;SL Energy;Inverter;;;;;;;
+modbus;Inverter;SL Energy;Inverter;;;;;;;
 1;3;10443;I16;;Inv_Current_R;;0.1;0;A;4
 2;3;10444;I16;;Inv_Current_S;;0.1;0;A;4
 3;3;10445;I16;;Inv_Current_T;;0.1;0;A;4
@@ -8,7 +8,7 @@
 7;3;10459;I32;;Inv_Active_Power_T;;1;0;W;4
 8;3;10461;I16;;Inv_Daily_Generation;;0.1;0;kWh;4
 9;3;10462;I32;;Inv_Cumul_Generation;;0.1;0;kWh;4
-10;3;10560;U32;;Total_PV_Power;;1;0;W;4
+10;3;10560;U32;;Total_PV_Power;P_DC;1;0;W;4
 11;3;10562;U16;;PV1_Voltage;U_DC_STRING_1;0.1;0;V;4
 12;3;10563;U16;;PV1_Current;I_DC_STRING_1;0.1;0;A;4
 13;3;10564;U16;;PV1_Power;;1;0;W;4

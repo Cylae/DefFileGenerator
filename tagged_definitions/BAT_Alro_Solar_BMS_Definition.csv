@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Alro Solar;BMS_Definition;;;;;;;
+modbusRTU;Other;Alro Solar;BMS_Definition;;;;;;;
 1;4;20000;U16;;Read-only segment;;1.0;0.0;---;4
 2;4;20010;U16;;None;;1.0;0.0;0.1V;4
 3;4;20011;U16;;None;;1.0;0.0;0.1A;4

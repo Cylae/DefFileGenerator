@@ -23,23 +23,23 @@ ModbusRTU;Inverter;Socomec;P100TR;;;;;;;
 22;3;4165;U16;;R01 Unit Alarms 2;;1.0;0.0;;4
 23;3;4166;U16;;R01 Unit Alarms 3;;1.0;0.0;;4
 24;3;4167;U16;;R01 Unit Alarms 4;;1.0;0.0;;4
-25;3;4176;U16;;R01 AC Mains Input Frequency;FREQ;0.1;0.0;Hz;4
+25;3;4176;U16;;R01 AC Mains Input Frequency;;0.1;0.0;Hz;4
 26;3;4177;I16;;R01 AC Mains R-S Voltage;;0.1;0.0;V;4
 27;3;4178;I16;;R01 AC Mains S-T Voltage;;0.1;0.0;V;4
 28;3;4179;I16;;R01 AC Mains T-R Voltage;;0.1;0.0;V;4
 29;3;4180;I16;;R01 Inverter Current phase R;;0.1;0.0;A;4
 30;3;4181;I16;;R01 Inverter Current phase S;;0.1;0.0;A;4
 31;3;4182;I16;;R01 Inverter Current phase T;;0.1;0.0;A;4
-32;3;4183;I16;;R01 Inverter Active Power;P_AC;1.0;0.0;W;4
-33;3;4184;I16;;R01 Inverter Reactive Power;Q_AC;1.0;0.0;VAR;4
-34;3;4185;I16;;R01 Inverter DC Input Power;P_DC;1.0;0.0;W;4
+32;3;4183;I16;;R01 Inverter Active Power;;1.0;0.0;W;4
+33;3;4184;I16;;R01 Inverter Reactive Power;;1.0;0.0;VAR;4
+34;3;4185;I16;;R01 Inverter DC Input Power;;1.0;0.0;W;4
 35;3;4240;U16;;R01 Counter: AC fault;;1.0;0.0;;4
 36;3;4241;U16;;R01 N.M.;;1.0;0.0;;0
 37;3;4242;U16;;R01 Partial Running Time (Today);;1.0;0.0;Min;4
 38;3;4243;U16;;R01 Total Running Time;;1.0;0.0;;4
 39;3;4244;U16;;R01 Next DC test countdown;;1.0;0.0;;4
-40;3;4245;U32;;R01 Total Energy Accumulated;E_TOT;1.0;0.0;kWh;4
-41;3;4247;U16;;R01 Partial Energy Accumulated (today);E_DAY;0.1;0.0;kWh;4
+40;3;4245;U32;;R01 Total Energy Accumulated;;1.0;0.0;kWh;4
+41;3;4247;U16;;R01 Partial Energy Accumulated (today);;0.1;0.0;kWh;4
 42;3;8224;U16;;R02 System States 1;;1.0;0.0;;4
 43;3;8225;U16;;R02 System States 2;;1.0;0.0;;4
 44;3;8226;U16;;R02 System States 3;;1.0;0.0;;4

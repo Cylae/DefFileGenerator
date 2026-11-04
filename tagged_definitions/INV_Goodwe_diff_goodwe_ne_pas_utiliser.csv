@@ -1,4 +1,4 @@
-﻿modbus;Inverter;;;;;;;;;
+modbus;Inverter;;;;;;;;;
 1;3;40002;U16;;1_tableId;;1.000000;0.000000;;4
 2;3;40003;U16;;1_tableSize;;1.000000;0.000000;;4
 3;3;40004_32;STRING;;1_Mn;MANUFACTURER;1.000000;0.000000;;1

@@ -60,7 +60,7 @@ Modbus;Inverter;SMA;SC2xxx
 59;4;98;I32;;OpStt;;1.0;0.0;;4
 60;4;100;I32;;Rio.KeySw;;1.0;0.0;;4
 61;4;102;I32;;WaitGriTm;;0.1;0.0;s;4
-62;4;104;U32;;DevInf.SerNo (SN);SERIAL;1.0;0.0;;4
+62;4;104;U32;;DevInf.SerNo (SN);;1.0;0.0;;4
 63;4;106;I32;;GfdiSwStt;;1.0;0.0;;4
 64;4;108;I32;;WSpt;;1.0;0.0;kW;4
 65;4;110;I32;;VAMaxSpt;;0.1;0.0;kVA;4

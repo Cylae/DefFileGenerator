@@ -1,11 +1,11 @@
-﻿ModbusTCP;Inverter;SMA;Speedwire;;;;;;;
+ModbusTCP;Inverter;SMA;Speedwire;;;;;;;
 1;3;30001;U32;;Version number of the SMA Modbus profile;;1;0;;4
 2;3;30003;U32;;SUSy-ID;;1;0;;4
 3;3;30005;U32;;Serial number;SERIAL;1;0;;4
 4;3;30007;U32;;Modbus data change;;1;0;;4
 5;3;30051;U32;;Device class;;1;0;;4
 6;3;30053;U32;;Numerical identification of the device type;;1;0;;4
-7;3;30055;U32;;Manufacturer specification;SmaIdFixedValue461;1;0;;4
+7;3;30055;U32;;Manufacturer specification;;1;0;;4
 8;3;30057;U32;;Serial number 2;;1;0;;4
 9;3;30059;U32;;Software package;;1;0;;4
 10;3;30197;U32;;Number of the current event;WIND_SPEED;1;0;;4

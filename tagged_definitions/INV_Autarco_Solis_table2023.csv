@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Autarco;GENERIC;;;;;;;
+ModbusRTU;Inverter;Autarco;GENERIC;;;;;;;
 1;4;2999;U16;;Product model;MODEL;1.0;0.0;;4
 2;4;3000;U16;;DSP software version;;1.0;0.0;;4
 3;4;3001;U16;;LCD software version;;1.0;0.0;;4
@@ -130,13 +130,13 @@
 129;4;3258;I32;;Meter Active powerB;;0.001;0.0;kW;1
 130;4;3260;I32;;Meter Active powerC;;0.001;0.0;kW;1
 131;4;3262;I32;;Meter Total active power;;0.001;0.0;kW;1
-132;4;3264;I32;;Meter Reactive power A;;1;0.0;Var;1
-133;4;3266;I32;;Meter Reactive power B;;1;0.0;Var;1
-134;4;3268;I32;;Meter Reactive power C;;1;0.0;Var;1
+132;4;3264;I32;;Meter Reactive power A;Q_AC_1;1;0.0;Var;1
+133;4;3266;I32;;Meter Reactive power B;Q_AC_2;1;0.0;Var;1
+134;4;3268;I32;;Meter Reactive power C;Q_AC_3;1;0.0;Var;1
 135;4;3270;I32;;Meter Total reactive power;;1;0.0;Var;1
-136;4;3272;I32;;Meter Apparent power A;;1;0.0;VA;1
-137;4;3274;I32;;Meter Apparent power B;;1;0.0;VA;1
-138;4;3276;I32;;Meter Apparent power C;;1;0.0;VA;1
+136;4;3272;I32;;Meter Apparent power A;S_AC_1;1;0.0;VA;1
+137;4;3274;I32;;Meter Apparent power B;S_AC_2;1;0.0;VA;1
+138;4;3276;I32;;Meter Apparent power C;S_AC_3;1;0.0;VA;1
 139;4;3278;I16;;Meter Apparent power;;1;0.0;;1
 140;4;3280;U16;;Meter Power factor;;0.001;0.0;Hz;1
 141;4;3281;U32;;Meter Grid frequency;;0.01;0.0;Hz;1

@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Huawei;HUAWEI_PowerMeter;;;;;;;
+modbusRTU;Meter;Huawei;HUAWEI_PowerMeter;;;;;;;
 1;4;32260;U16;;Phase A Voltage;U_AC_1;1.0;0.0;V;4
 2;4;32262;U16;;Phase B Voltage;U_AC_2;1.0;0.0;V;4
 3;4;32264;U16;;Phase C Voltage;U_AC_3;1.0;0.0;V;4

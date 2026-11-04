@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;CEFEM;TrioSun,TrioTop;1;;;;;;
+ModbusRTU;Inverter;CEFEM;TrioSun,TrioTop;1;;;;;;
 1;3;0;U16;;Fabrication number Low;;1;0;;4
 2;3;1;U16;;Order number;;1;0;;4
 3;3;2;U16;;Model;MODEL;1;0;;4
@@ -40,7 +40,7 @@
 39;3;27;U16;;Fault Register2;;1;0;;8
 40;3;28;U32;;Daily production;;1;0;Wh;4
 41;3;30;U16;;Fabrication number High;;1;0;;4
-42;3;31;U32;;PowerLimit;cmdPwrWatt;1;0;W;4
+42;3;31;U32;;PowerLimit;;1;0;W;4
 43;3;33;U32;;External Total Prod;;1;0;;4
 44;3;35;U16;;Seconds;;1;0;;4
 45;3;36;U16;;Minutes;;1;0;;4

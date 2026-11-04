@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Sungrow;Generic;;;;;;;
+ModbusRTU;Inverter;Sungrow;Generic;;;;;;;
 1;4;4949;U32_W;;Protocol num;;1;0;;4
 2;4;4951;U32_W;;Protocol ver;;1;0;;4
 3;4;4953_30;STRING;;Arm software ver;;1;0;;4
@@ -143,9 +143,9 @@
 142;3;5019;U16;;Active Power Overload;CMD_P_MODE;1;0;;1
 143;3;5034;U16;;Night SVG Switch;;1;0;;4
 144;3;5035;U16;;Reactive power adjustment mode;CMD_Q_MODE;1;-160;;1
-145;3;5036;I16;;Reactive power percentage setting;cmdQPwrPercent;0.1;0;%;4
+145;3;5036;I16;;Reactive power percentage setting;;0.1;0;%;4
 146;3;5038;U16;;Power limitation adjustment;CMD_P_AC_LIM_ABS;0.1;0;kW;1
-147;3;5039;I16;;Reactive power adjustment;cmdQPwr;0.1;0;kVAR;4
+147;3;5039;I16;;Reactive power adjustment;;0.1;0;kVAR;4
 148;3;5040;U16;;PID Recovery;;1;0;;4
 149;3;5041;U16;;Anti PID;;1;0;;4
 150;3;5042;U16;;Full-Day PID Suppression;PRESSURE;1;0;;4

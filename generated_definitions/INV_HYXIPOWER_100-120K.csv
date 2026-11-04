@@ -1,0 +1,229 @@
+modbus;Inverter;HYXIPOWER;100-120K;;;;;;;
+1;4;1;U16;;Lower Bits of Main DSP Program Version Number;;1.000000;0.000000;;4
+2;4;2;U16;;High-order Bits of Main DSP Program Version Number;;1.000000;0.000000;;4
+3;4;12;I16;;Ambient Temperature 1;;0.100000;0.000000;Celsius;4
+4;4;13;I16;;Ambient Temperature 2;;0.100000;0.000000;Celsius;4
+5;4;14;I16;;Inverter Phase A Module Temperature;;0.100000;0.000000;Celsius;4
+6;4;15;I16;;Inverter Phase B Module Temperature;;0.100000;0.000000;Celsius;4
+7;4;16;I16;;Inverter Phase C Module Temperature;;0.100000;0.000000;Celsius;4
+8;4;17;I16;;Boost Module 1 Temperature;;0.100000;0.000000;Celsius;4
+9;4;18;I16;;Boost Module 2 Temperature;;0.100000;0.000000;Celsius;4
+10;4;19;I16;;Boost Module 3 Temperature;;0.100000;0.000000;Celsius;4
+11;4;20;I16;;Boost Radiator Temperature;;0.100000;0.000000;Celsius;4
+12;4;21;U16;;System Status Machine;;1.000000;0.000000;;4
+13;4;25;U16;;Inverter Start Stop Status;;1.000000;0.000000;;4
+14;4;26;U16;;Inverter ISO Insulation Resistance Value;;1.000000;0.000000;kOhm;4
+15;4;27;U16;;Inverter Leakage Current Detection Value;;1.000000;0.000000;mA;4
+16;4;31;U16;;System L3 Fault Status Word 1;;1.000000;0.000000;;4
+17;4;32;U16;;System L3 Fault Status Word 2;;1.000000;0.000000;;4
+18;4;33;U16;;System L2 Fault Status Word 1;;1.000000;0.000000;;4
+19;4;34;U16;;System L2 Fault Status Word 2;;1.000000;0.000000;;4
+20;4;35;U16;;System L2 Fault Status Word 3;;1.000000;0.000000;;4
+21;4;36;U16;;System L2 Fault Status Word 4;;1.000000;0.000000;;4
+22;4;37;U16;;System L1 Fault Status Word 1;;1.000000;0.000000;;4
+23;4;38;U16;;System L1 Fault Status Word 2;;1.000000;0.000000;;4
+24;4;39;U16;;System L1 Fault Status Word 3;;1.000000;0.000000;;4
+25;4;40;U16;;System L1 Fault Status Word 4;;1.000000;0.000000;;4
+26;4;41;U16;;System L1 Fault Status Word 5;;1.000000;0.000000;;4
+27;4;42;U16;;System L0 Fault Status Word 1;;1.000000;0.000000;;4
+28;4;43;U16;;System L0 Fault Status Word 2;;1.000000;0.000000;;4
+29;4;100;U16;;Phase A Grid Voltage RMS;;0.100000;0.000000;V;4
+30;4;101;U16;;Phase B Grid Voltage RMS Value;;0.100000;0.000000;V;4
+31;4;102;U16;;Phase C Grid Voltage RMS Value;;0.100000;0.000000;V;4
+32;4;103;U16;;Grid Voltage Frequency;;0.010000;0.000000;Hz;4
+33;4;111;U16;;AC Current Phase A RMS;;0.100000;0.000000;A;4
+34;4;112;U16;;AC Current Phase B RMS;;0.100000;0.000000;A;4
+35;4;113;U16;;AC Current Phase C RMS;;0.100000;0.000000;A;4
+36;4;116;I16;;Grid-side Active Power;;0.010000;0.000000;kW;4
+37;4;117;I16;;Grid-side Reactive Power;;0.010000;0.000000;kVar;4
+38;4;118;U16;;Grid-side Apparent Power;;0.010000;0.000000;kVA;4
+39;4;119;I16;;Grid-side Power Factor;;0.010000;0.000000;;4
+40;4;188;U16;;CPLD Fault Word 1;;1.000000;0.000000;;4
+41;4;189;U16;;CPLD Fault Word 2;;1.000000;0.000000;;4
+42;4;401;U16;;DSP Program Version Number Low Bits;;1.000000;0.000000;;4
+43;4;402;U16;;DSP Program Version High Byte;;1.000000;0.000000;;4
+44;4;422;U16;;PV Side L3 Fault Status Word 1;;1.000000;0.000000;;4
+45;4;423;U16;;PV Side L3 Fault Status Word 2;;1.000000;0.000000;;4
+46;4;424;U16;;PV Side L2 Fault Status Word 1;;1.000000;0.000000;;4
+47;4;425;U16;;PV Side L2 Fault Status Word 2;;1.000000;0.000000;;4
+48;4;426;U16;;PV Side L2 Fault Status Word 3;;1.000000;0.000000;;4
+49;4;427;U16;;PV Side L2 Fault Status Word 4;;1.000000;0.000000;;4
+50;4;428;U16;;PV Side L2 Fault Status Word 5;;1.000000;0.000000;;4
+51;4;429;U16;;System L1 Fault Status Word 1 PV Mapping;;1.000000;0.000000;;4
+52;4;430;U16;;System L1 Fault Status Word 2 PV Mapping;;1.000000;0.000000;;4
+53;4;431;U16;;System L0 Fault Status Word 1 PV Mapping;;1.000000;0.000000;;4
+54;4;432;U16;;System L0 Fault Status Word 2 PV Mapping;;1.000000;0.000000;;4
+55;4;433;U16;;System L0 Fault Status Word 3 PV Mapping;;1.000000;0.000000;;4
+56;4;434;U16;;System L0 Fault Status Word 4 PV Mapping;;1.000000;0.000000;;4
+57;4;435;U16;;Number of PV Channels;;1.000000;0.000000;;4
+58;4;436;U16;;Total PV Power;P_DC;0.010000;0.000000;kW;4
+59;4;440;I16;;PV1 Current;;0.100000;0.000000;A;4
+60;4;441;I16;;PV2 Current;;0.100000;0.000000;A;4
+61;4;442;I16;;PV3 Current;;0.100000;0.000000;A;4
+62;4;443;I16;;PV4 Current;;0.100000;0.000000;A;4
+63;4;444;I16;;PV5 Current;;0.100000;0.000000;A;4
+64;4;445;I16;;PV6 Current;;0.100000;0.000000;A;4
+65;4;446;I16;;PV7 Current;;0.100000;0.000000;A;4
+66;4;447;I16;;PV8 Current;;0.100000;0.000000;A;4
+67;4;448;I16;;PV9 Current;;0.100000;0.000000;A;4
+68;4;449;I16;;PV10 Current;;0.100000;0.000000;A;4
+69;4;450;I16;;PV11 Current;;0.100000;0.000000;A;4
+70;4;451;I16;;PV12 Current;;0.100000;0.000000;A;4
+71;4;452;I16;;PV13 Current;;0.100000;0.000000;A;4
+72;4;453;I16;;PV14 Current;;0.100000;0.000000;A;4
+73;4;454;I16;;PV15 Current;;0.100000;0.000000;A;4
+74;4;455;I16;;PV16 Current;;0.100000;0.000000;A;4
+75;4;456;I16;;PV17 Current;;0.100000;0.000000;A;4
+76;4;457;I16;;PV18 Current;;0.100000;0.000000;A;4
+77;4;458;I16;;PV19 Current;;0.100000;0.000000;A;4
+78;4;459;I16;;PV20 Current;;0.100000;0.000000;A;4
+79;4;502;U16;;Boost1 Voltage;;0.100000;0.000000;V;4
+80;4;503;I16;;Boost1 Current;;0.100000;0.000000;A;4
+81;4;504;I16;;Boost1 Power;;0.010000;0.000000;kW;4
+82;4;513;U16;;Boost2 Voltage;;0.100000;0.000000;V;4
+83;4;514;I16;;Boost2 Current;;0.100000;0.000000;A;4
+84;4;515;I16;;Boost2 Power;;0.010000;0.000000;kW;4
+85;4;524;U16;;Boost3 Voltage;;0.100000;0.000000;V;4
+86;4;525;I16;;Boost3 Current;;0.100000;0.000000;A;4
+87;4;526;I16;;Boost3 Power;;0.010000;0.000000;kW;4
+88;4;535;U16;;Boost4 Voltage;;0.100000;0.000000;V;4
+89;4;536;I16;;Boost4 Current;;0.100000;0.000000;A;4
+90;4;537;I16;;Boost4 Power;;0.010000;0.000000;kW;4
+91;4;546;U16;;Boost5 Voltage;;0.100000;0.000000;V;4
+92;4;547;I16;;Boost5 Current;;0.100000;0.000000;A;4
+93;4;548;I16;;Boost5 Power;;0.010000;0.000000;kW;4
+94;4;557;U16;;Boost6 Voltage;;0.100000;0.000000;V;4
+95;4;558;I16;;Boost6 Current;;0.100000;0.000000;A;4
+96;4;559;I16;;Boost6 Power;;0.010000;0.000000;kW;4
+97;4;568;U16;;Boost7 Voltage;;0.100000;0.000000;V;4
+98;4;569;I16;;Boost7 Current;;0.100000;0.000000;A;4
+99;4;570;I16;;Boost7 Power;;0.010000;0.000000;kW;4
+100;4;579;U16;;Boost8 Voltage;;0.100000;0.000000;V;4
+101;4;580;I16;;Boost8 Current;;0.100000;0.000000;A;4
+102;4;581;I16;;Boost8 Power;;0.010000;0.000000;kW;4
+103;4;590;U16;;Boost9 Voltage;;0.100000;0.000000;V;4
+104;4;591;I16;;Boost9 Current;;0.100000;0.000000;A;4
+105;4;592;I16;;Boost9 Power;;0.010000;0.000000;kW;4
+106;4;601;U16;;Boost10 Voltage;;0.100000;0.000000;V;4
+107;4;602;I16;;Boost10 Current;;0.100000;0.000000;A;4
+108;4;603;I16;;Boost10 Power;;0.010000;0.000000;kW;4
+109;4;1000;U16;;BL Program Version;;1.000000;0.000000;;4
+110;4;1001;U32_W;;Main Program Version;;1.000000;0.000000;;4
+111;4;1007;U64_W;;Serial Number;SERIAL;1.000000;0.000000;;4
+112;4;1011;U32_W;;System Time;;1.000000;0.000000;s;4
+113;4;1042;U16;;Fault Bit Device;;1.000000;0.000000;;4
+114;4;1044;U16;;AFCI Version Number;;1.000000;0.000000;;4
+115;4;1047;U32_W;;Timestamp;;1.000000;0.000000;s;4
+116;4;1101;U16;;A Equivalent Daily Electricity Output;;0.100000;0.000000;kWh;4
+117;4;1102;U16;;B Equivalent Daily Electricity Output;;0.100000;0.000000;kWh;4
+118;4;1103;U16;;C Equivalent Daily Electricity Output;;0.100000;0.000000;kWh;4
+119;4;1118;U16;;Daily Power Generation Boost1;;0.100000;0.000000;kWh;4
+120;4;1119;U16;;Daily Power Generation Boost2;;0.100000;0.000000;kWh;4
+121;4;1120;U16;;Daily Power Generation Boost3;;0.100000;0.000000;kWh;4
+122;4;1121;U16;;Daily Power Generation Boost4;;0.100000;0.000000;kWh;4
+123;4;1122;U16;;Daily Power Generation Boost5;;0.100000;0.000000;kWh;4
+124;4;1123;U16;;Daily Power Generation Boost6;;0.100000;0.000000;kWh;4
+125;4;1124;U16;;Daily Power Generation Boost7;;0.100000;0.000000;kWh;4
+126;4;1125;U16;;Daily Power Generation Boost8;;0.100000;0.000000;kWh;4
+127;4;1126;U16;;Daily Power Generation Boost9;;0.100000;0.000000;kWh;4
+128;4;1127;U16;;Daily Power Generation Boost10;;0.100000;0.000000;kWh;4
+129;4;1194;U32_W;;Cumulative Power Generation;E_TOT;0.100000;0.000000;kWh;4
+130;3;3;U16;;DSP Start Stop Command;;1.000000;0.000000;;4
+131;3;4;U16;;Fault Clear;;1.000000;0.000000;;4
+132;3;1007;U32_W;;Absolute Time;;1.000000;0.000000;s;4
+133;3;1009;I32_W;;Time Zone;;1.000000;0.000000;s;4
+134;3;1035_30;STRING;;Product Name;;1.000000;0.000000;;4
+135;3;1055;U16;;Mailing Address;;1.000000;0.000000;;4
+136;3;1057;U16;;Communication Baud Rate;;1.000000;0.000000;;4
+137;3;1078;U16;;Active Power Control Percentage;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
+138;3;1079;U16;;Active Power Control Percentage Enable;CMD_P_ENA;1.000000;0.000000;;4
+139;4;1500;U32_W;;Uni Primary DSP Software Version;;1.000000;0.000000;;4
+140;4;1502;U32_W;;Uni Slave DSP Software Version;;1.000000;0.000000;;4
+141;4;1504;I16;;Uni Maximum Ambient Temperature;;0.100000;0.000000;Celsius;4
+142;4;1505;I16;;Uni Maximum AC-side Temperature;;0.100000;0.000000;Celsius;4
+143;4;1506;I16;;Uni Maximum DC-side Temperature;;0.100000;0.000000;Celsius;4
+144;4;1507;U16;;Uni Grid Voltage Frequency;;0.010000;0.000000;Hz;4
+145;4;1508;U16;;Uni Phase A Grid Voltage RMS;;0.100000;0.000000;V;4
+146;4;1509;U16;;Uni Phase B Grid Voltage RMS Value;;0.100000;0.000000;V;4
+147;4;1510;U16;;Uni Phase C Grid Voltage RMS Value;;0.100000;0.000000;V;4
+148;4;1511;U16;;Uni AC Current Phase A RMS Value;;0.100000;0.000000;A;4
+149;4;1512;U16;;Uni AC Current Phase B RMS;;0.100000;0.000000;A;4
+150;4;1513;U16;;Uni AC Current Phase C RMS;;0.100000;0.000000;A;4
+151;4;1514;F32_W;;Uni Grid-side Active Power;P_AC;1.000000;0.000000;kW;4
+152;4;1516;F32_W;;Uni Grid-side Reactive Power;;1.000000;0.000000;kVar;4
+153;4;1518;F32_W;;Uni Grid-side Apparent Power;;1.000000;0.000000;kVA;4
+154;4;1520;F32_W;;Uni PV Total Power;;1.000000;0.000000;kW;4
+155;4;1522;F32_W;;Uni Phase R Active Power;;1.000000;0.000000;kW;4
+156;4;1524;F32_W;;Uni Phase S Active Power;;1.000000;0.000000;kW;4
+157;4;1526;F32_W;;Uni Phase T Active Power;;1.000000;0.000000;kW;4
+158;4;1528;I16;;Uni Grid-side Power Factor;;0.010000;0.000000;;4
+159;4;1529;U16;;Uni DC Bus Voltage;;0.100000;0.000000;V;4
+160;4;1530;U16;;Uni System State Machine;;1.000000;0.000000;;4
+161;4;1531;U16;;Uni Daily Generation;;0.100000;0.000000;kWh;4
+162;4;1532;U16;;Uni A Equivalent Daily Electricity Generation;;0.100000;0.000000;kWh;4
+163;4;1533;U16;;Uni B Equivalent Daily Electricity Output;;0.100000;0.000000;kWh;4
+164;4;1534;U16;;Uni C Equivalent Daily Electricity Generation;;0.100000;0.000000;kWh;4
+165;4;1535;U16;;Uni Rated Power;;1.000000;0.000000;kW;4
+166;4;1536;U16;;Uni Rated Frequency;;0.010000;0.000000;Hz;4
+167;4;1537;U16;;Uni Rated Voltage;;1.000000;0.000000;V;4
+168;4;1538;U16;;Uni Maximum Reactive Power Output;;0.100000;0.000000;kVar;4
+169;4;1539;U16;;Uni Country Code;;1.000000;0.000000;;4
+170;4;1540;U16;;Uni Grid Protection Document Version;;1.000000;0.000000;;4
+171;4;1541;U16;;Uni Boost1 Voltage;;0.100000;0.000000;V;4
+172;4;1542;I16;;Uni Boost1 Current;;0.100000;0.000000;A;4
+173;4;1543;U32_W;;Uni Boost1 Power;;1.000000;0.000000;W;4
+174;4;1545;U16;;Uni Boost2 Voltage;;0.100000;0.000000;V;4
+175;4;1546;I16;;Uni Boost2 Current;;0.100000;0.000000;A;4
+176;4;1547;U32_W;;Uni Boost2 Power;;1.000000;0.000000;W;4
+177;4;1549;U16;;Uni Boost3 Voltage;;0.100000;0.000000;V;4
+178;4;1550;I16;;Uni Boost3 Current;;0.100000;0.000000;A;4
+179;4;1551;U32_W;;Uni Boost3 Power;;1.000000;0.000000;W;4
+180;4;1553;U16;;Uni Boost4 Voltage;;0.100000;0.000000;V;4
+181;4;1554;I16;;Uni Boost4 Current;;0.100000;0.000000;A;4
+182;4;1555;U32_W;;Uni Boost4 Power;;1.000000;0.000000;W;4
+183;4;1557;U16;;Uni Boost5 Voltage;;0.100000;0.000000;V;4
+184;4;1558;I16;;Uni Boost5 Current;;0.100000;0.000000;A;4
+185;4;1559;U32_W;;Uni Boost5 Power;;1.000000;0.000000;W;4
+186;4;1561;U16;;Uni Boost6 Voltage;;0.100000;0.000000;V;4
+187;4;1562;I16;;Uni Boost6 Current;;0.100000;0.000000;A;4
+188;4;1563;U32_W;;Uni Boost6 Power;;1.000000;0.000000;W;4
+189;4;1565;U16;;Uni Boost7 Voltage;;0.100000;0.000000;V;4
+190;4;1566;I16;;Uni Boost7 Current;;0.100000;0.000000;A;4
+191;4;1567;U32_W;;Uni Boost7 Power;;1.000000;0.000000;W;4
+192;4;1569;U16;;Uni Boost8 Voltage;;0.100000;0.000000;V;4
+193;4;1570;I16;;Uni Boost8 Current;;0.100000;0.000000;A;4
+194;4;1571;U32_W;;Uni Boost8 Power;;1.000000;0.000000;W;4
+195;4;1573;U16;;Uni Boost9 Voltage;;0.100000;0.000000;V;4
+196;4;1574;I16;;Uni Boost9 Current;;0.100000;0.000000;A;4
+197;4;1575;U32_W;;Uni Boost9 Power;;1.000000;0.000000;W;4
+198;4;1577;U16;;Uni Boost10 Voltage;;0.100000;0.000000;V;4
+199;4;1578;I16;;Uni Boost10 Current;;0.100000;0.000000;A;4
+200;4;1579;U32_W;;Uni Boost10 Power;;1.000000;0.000000;W;4
+201;4;1592;U16;;Uni Mapping 31 System L3 Fault Status Word 1;;1.000000;0.000000;;4
+202;4;1593;U16;;Uni Mapping 32 System L3 Fault Status Word 2;;1.000000;0.000000;;4
+203;4;1594;U16;;Uni Mapping 33 System L2 Fault Status Word 1;;1.000000;0.000000;;4
+204;4;1595;U16;;Uni Mapping 34 System L2 Fault Status Word 2;;1.000000;0.000000;;4
+205;4;1596;U16;;Uni Mapping 35 System L2 Fault Status Word 3;;1.000000;0.000000;;4
+206;4;1597;U16;;Uni Mapping 36 System L2 Fault Status Word 4;;1.000000;0.000000;;4
+207;4;1598;U16;;Uni Mapping 37 System L1 Fault Status Word 1;;1.000000;0.000000;;4
+208;4;1599;U16;;Uni Mapping 38 System L1 Fault Status Word 2;;1.000000;0.000000;;4
+209;4;1600;U16;;Uni Mapping 39 System L1 Fault Status Word 3;;1.000000;0.000000;;4
+210;4;1601;U16;;Uni Mapping 40 System L1 Fault Status Word 4;;1.000000;0.000000;;4
+211;4;1602;U16;;Uni Mapping 41 System L1 Fault Status Word 5;;1.000000;0.000000;;4
+212;4;1603;U16;;Uni Mapping 42 System L0 Fault Status Word 1;;1.000000;0.000000;;4
+213;4;1604;U16;;Uni Mapping 43 System L0 Fault Status Word 2;;1.000000;0.000000;;4
+214;4;1605;U16;;Uni Mapping 188 CPLD Fault Word 1;;1.000000;0.000000;;4
+215;4;1606;U16;;Uni Mapping 189 CPLD Fault Word 2;;1.000000;0.000000;;4
+216;4;1607;U16;;Uni Mapping 422 PV Side L3 Fault Status Word 1;;1.000000;0.000000;;4
+217;4;1608;U16;;Uni Mapping 423 PV Side L3 Fault Status Word 2;;1.000000;0.000000;;4
+218;4;1609;U16;;Uni Mapping 424 PV Side L2 Fault Status Word 1;;1.000000;0.000000;;4
+219;4;1610;U16;;Uni Mapping 425 PV Side L2 Fault Status Word 2;;1.000000;0.000000;;4
+220;4;1611;U16;;Uni Mapping 426 PV Side L2 Fault Status Word 3;;1.000000;0.000000;;4
+221;4;1612;U16;;Uni Mapping 427 PV Side L2 Fault Status Word 4;;1.000000;0.000000;;4
+222;4;1613;U16;;Uni Mapping 428 PV Side L2 Fault Status Word 5;;1.000000;0.000000;;4
+223;4;1614;U16;;Uni Mapping 429 System L1 Fault Status Word 1;;1.000000;0.000000;;4
+224;4;1615;U16;;Uni Mapping 430 System L1 Fault Status Word 2;;1.000000;0.000000;;4
+225;4;1616;U16;;Uni Mapping 431 System L0 Fault Status Word 1;;1.000000;0.000000;;4
+226;4;1617;U16;;Uni Mapping 432 System L0 Fault Status Word 2;;1.000000;0.000000;;4
+227;4;1618;U16;;Uni Mapping 433 System L0 Fault Status Word 3;;1.000000;0.000000;;4
+228;4;1619;U16;;Uni Mapping 434 System L0 Fault Status Word 4;;1.000000;0.000000;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Lufft;MODBUS_RTU_Lufft_WS10;;;;;;;
+modbusRTU;Other;Lufft;MODBUS_RTU_Lufft_WS10;;;;;;;
 1;4;19;U16;;Température de l'air;;1.0;0.0;°C;4
 2;4;23;U16;;Température du point de rosée;;1.0;0.0;°C;4
 3;4;29;U16;;Humidité relative;HUMIDITY;1.0;0.0;%;4

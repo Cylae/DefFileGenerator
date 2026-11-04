@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Meier-nt;MEIER_ADL-SR;;;;;;;
+modbusRTU;Other;Meier-nt;MEIER_ADL-SR;;;;;;;
 1;4;30001;U16;;temperature 1 (internal solar cell/device temperature);TEMP_CELL;1.0;0.0;°C;4
 2;4;30003;U16;;temperature 2 (external);;1.0;0.0;°C;4
 3;4;30005;U16;;radiation;;1.0;0.0;W/m²;4

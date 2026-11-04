@@ -1,6 +1,6 @@
 modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
-1;4;0_30;STRING;;EMS1000 PRO SN;DeviceSerialNumber;1;0;;4
-2;4;15_10;STRING;;EMS1000 PRO Version Number;FirmwareVersion;1;0;;4
+1;4;0_30;STRING;;EMS1000 PRO SN;;1;0;;4
+2;4;15_10;STRING;;EMS1000 PRO Version Number;;1;0;;4
 3;4;20;U16;;Year Month;;1;0;;4
 4;4;21;U16;;Day Hour;;1;0;;4
 5;4;22;U16;;Minute Second;;1;0;;4
@@ -15,11 +15,11 @@ modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
 14;4;80;U64;;Total discharged;;0.1;0;kWh;4
 15;4;84;I32;;Daily loads consumed;;0.1;0;kWh;4
 16;4;86;I64;;Total loads consumed;;0.1;0;kWh;4
-17;4;90;I32;;Grid power;GridPower;0.01;0;kW;4
+17;4;90;I32;;Grid power;;0.01;0;kW;4
 18;4;92;U32;;PV Power;P_AC;0.01;0;kW;4
 19;4;94;I32;;Load power;;0.01;0;kW;4
-20;4;96;I32;;Battery power;BatteryPower;0.01;0;kW;4
-21;4;98;U16;;Battery SOC;BatterySOC;0.1;0;%;4
+20;4;96;I32;;Battery power;;0.01;0;kW;4
+21;4;98;U16;;Battery SOC;SOC;0.1;0;%;4
 22;4;202;U16;;Meter communication status;;1;0;;4
 23;4;203;U16;;Meter type;;1;0;;4
 24;4;204;U32;;Positive active energy;;0.1;0;kWh;4
@@ -27,9 +27,9 @@ modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
 26;4;208;I32;;Active power;;0.01;0;kW;4
 27;4;210;I32;;Reactive power;Q_AC;0.01;0;kVar;4
 28;4;212;I16;;Power factor;PF;0.001;0;;4
-29;4;213;I32;;Phase A active power;P_AC_1;0.01;0;kW;4
-30;4;215;I32;;Phase B active power;P_AC_2;0.01;0;kW;4
-31;4;217;I32;;Phase C active power;P_AC_3;0.01;0;kW;4
+29;4;213;I32;;Phase A active power;;0.01;0;kW;4
+30;4;215;I32;;Phase B active power;;0.01;0;kW;4
+31;4;217;I32;;Phase C active power;;0.01;0;kW;4
 32;4;219;U16;;Phase A voltage;U_AC_1;0.1;0;V;4
 33;4;220;U16;;Phase B voltage;U_AC_2;0.1;0;V;4
 34;4;221;U16;;Phase C voltage;U_AC_3;0.1;0;V;4
@@ -37,16 +37,16 @@ modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
 36;4;223;I16;;Phase B current;I_AC_2;0.1;0;A;4
 37;4;224;I16;;Phase C current;I_AC_3;0.1;0;A;4
 38;4;225;U16;;Grid frequency;FREQ;0.01;0;Hz;4
-39;4;226;I32;;Phase A reactive power;Q_AC_1;0.01;0;kVar;4
-40;4;228;I32;;Phase B reactive power;Q_AC_2;0.01;0;kVar;4
-41;4;230;I32;;Phase C reactive power;Q_AC_3;0.01;0;kVar;4
-42;4;232;I16;;Phase A power factor;PF_1;0.001;0;;4
-43;4;233;I16;;Phase B power factor;PF_2;0.001;0;;4
-44;4;234;I16;;Phase C power factor;PF_3;0.001;0;;4
+39;4;226;I32;;Phase A reactive power;;0.01;0;kVar;4
+40;4;228;I32;;Phase B reactive power;;0.01;0;kVar;4
+41;4;230;I32;;Phase C reactive power;;0.01;0;kVar;4
+42;4;232;I16;;Phase A power factor;;0.001;0;;4
+43;4;233;I16;;Phase B power factor;;0.001;0;;4
+44;4;234;I16;;Phase C power factor;;0.001;0;;4
 45;4;240;U16;;PCAB Communication Status_0;;1;0;;1
 46;4;241;U16;;PCAB Alarm Status_0;;1;0;;1
-47;4;242_30;STRING;;PCAB SN_0;SERIAL;1;0;;1
-48;4;257;U16;;PCAB Model_0;MODEL;1;0;;1
+47;4;242_30;STRING;;PCAB SN_0;;1;0;;1
+48;4;257;U16;;PCAB Model_0;;1;0;;1
 49;4;258_10;STRING;;PCAB Software  Version_0;;1;0;;1
 50;4;263_10;STRING;;PCAB Hardware Version_0;;1;0;;1
 51;4;268;U16;;Inverter L1 Voltage_0;;0.1;0;V;4
@@ -58,11 +58,11 @@ modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
 57;4;274;U16;;Grid L1 Current_0;;0.1;0;A;4
 58;4;275;U16;;Grid L2 Current_0;;0.1;0;A;4
 59;4;276;U16;;Grid L3 Current_0;;0.1;0;A;4
-60;4;277;U16;;Grid L1 Frequency_0;FREQ_1;0.01;0;Hz;4
-61;4;278;U16;;Grid L2 Frequency_0;FREQ_2;0.01;0;Hz;4
-62;4;279;U16;;Grid L3 Frequency_0;FREQ_3;0.01;0;Hz;4
-63;4;280;U16;;Ambient temperature_0;TEMP_AMB;0.1;0;C;4
-64;4;281;U16;;Ambient humidity_0;HUMIDITY;0.1;0;%RH;4
+60;4;277;U16;;Grid L1 Frequency_0;;0.01;0;Hz;4
+61;4;278;U16;;Grid L2 Frequency_0;;0.01;0;Hz;4
+62;4;279;U16;;Grid L3 Frequency_0;;0.01;0;Hz;4
+63;4;280;U16;;Ambient temperature_0;;0.1;0;C;4
+64;4;281;U16;;Ambient humidity_0;;0.1;0;%RH;4
 65;4;282;U16;;QF1 Status_0;;1;0;;4
 66;4;283;U16;;QF2 Status_0;;1;0;;4
 67;4;284;U16;;Emergency stop status_0;;1;0;;8
@@ -304,19 +304,19 @@ modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
 303;4;826;U16;;Access control status_9;;1;0;;4
 304;4;827;U16;;SPD Status_9;;1;0;;4
 305;3;0;I16;;System manual charge and discharge power;;1;0;kW;4
-306;3;1;U16;;System manual charging SOC target;SOC;1;0;%;4
+306;3;1;U16;;System manual charging SOC target;;1;0;%;4
 307;3;2;U16;;System manuel discharge SOC target;;1;0;;4
 308;3;3;U16;;System reactive power control mode;;1;0;;4
 309;3;4;U16;;System reactive power factor;;1;0;%;4
 310;3;5;U16;;System control;;1;0;;4
-311;3;6;U16;;System power on/off;CMD_ON;1;0;;4
+311;3;6;U16;;System power on/off;;1;0;;4
 312;3;7;U16;;System work mode;;1;0;;4
 313;3;8;U16;;Discharge Cutoff SOC;;1;0;;4
 314;3;9;U16;;Discharge period 1 start time;;1;0;%;4
 315;3;10;U16;;Discharge period 1 stop time;;1;0;;4
 316;3;11;U16;;Discharge period 1 peak limit value;;1;0;kW;4
 317;3;12;U16;;Discharge period 1 charge from the grid enable;;1;0;;4
-318;3;13;U16;;Discharge period 1 charge power limit;CMD_P_AC_SET_ABS;1;0;kW;4
+318;3;13;U16;;Discharge period 1 charge power limit;;1;0;kW;4
 319;3;14;U16;;Discharge period 1 charge cutoff SOC;;1;0;%;4
 320;3;15;U16;;Discharge period 2 enable;;1;0;;4
 321;3;16;U16;;Discharge period 2 start time;;1;0;;4

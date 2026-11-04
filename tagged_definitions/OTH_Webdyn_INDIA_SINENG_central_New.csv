@@ -1,11 +1,11 @@
-﻿ModbusTCP;Other;Inverter;Sening;;;;;;;
+ModbusTCP;Other;Inverter;Sening;;;;;;;
 1;4;1050;U32;;Active power;P_AC;1.0;0.0;;4
 2;4;1052;U32;;Reactive power;Q_AC;1.0;0.0;;4
 3;4;1054;U16;;PF;PF;1.0;0.0;;4
 4;4;1055;U16;;voltage AB;;1.0;0.0;;4
 5;4;1056;U16;;voltage BC;;1.0;0.0;;4
 6;4;1057;U16;;voltage CA;;1.0;0.0;;4
-7;4;1058;U16;;Hz;;1.0;0.0;;4
+7;4;1058;U16;;Hz;FREQ;1.0;0.0;;4
 8;4;1059;U16;;A phase current;I_AC_3;1.0;0.0;;4
 9;4;1060;U16;;B phase current;;1.0;0.0;;4
 10;4;1061;U16;;C phase current;;1.0;0.0;;4

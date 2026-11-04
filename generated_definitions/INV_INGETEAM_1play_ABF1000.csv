@@ -5,7 +5,7 @@ ModbusRTU;Inverter;INGETEAM;1play(ABF1000);;;;;;;
 4;4;3;U16;;Actual Date.Hour of the day;;1;0;Hour;4
 5;4;4;U16;;Actual Date.Minute;;1;0;Minute;4
 6;4;5;U16;;Actual Date.Second;;1;0;Second;4
-7;4;6;U32;;Total Energy delivered by the unit;E_TOT;1;0;kW*h;4
+7;4;6;U32;;Total Energy delivered by the unit;;1;0;kW*h;4
 8;4;8;U32;;Total hours of operation. hours;;1;0;Hours ;4
 9;4;10;U32;; Total number of connections since launching;;1;0;;4
 10;4;12;U32;;Partial Energy delivered by the unit since user reset;;1;0;kW*h.;4
@@ -30,11 +30,11 @@ ModbusRTU;Inverter;INGETEAM;1play(ABF1000);;;;;;;
 29;4;34;I16;;Output active power;P_AC;1;0;Watt;4
 30;4;35;I16;;Output reactive power;Q_AC;1;0;Var;4
 31;4;36;I16;;Cosine of Phi;;1000;0;;4
-32;4;37;I16;;PV current;;100;0;Amps;4
+32;4;37;I16;;PV current;I_DC;100;0;Amps;4
 33;4;38;I16;;Reserved;;1;0;;0
-34;4;39;I16;;PV voltage;;1;0;Vdc ;4
+34;4;39;I16;;PV voltage;U_DC;1;0;Vdc ;4
 35;4;40;I16;;Reserved_1;;1;0;;0
-36;4;41;I16;;PV power;;1;0;Wat;4
+36;4;41;I16;;PV power;P_DC;1;0;Wat;4
 37;4;42;I16;;Reserved_2;;1;0;;0
 38;4;43;I16;;Reserved_3;;1;0;;0
 39;4;44;U16;;Isolation resistance of PV field;;1;0;kOhm ;4
@@ -42,5 +42,5 @@ ModbusRTU;Inverter;INGETEAM;1play(ABF1000);;;;;;;
 41;4;46;U16;;Active Power Reduction rate;;1;0;%;4
 42;4;47;U16;;Active Power Reduction Reason;;1;0;Reason;4
 43;4;48;U16;;Reactive Power Reference type;;1;0;Reason;4
-44;4;49;U32;;Daily energy value;E_DAY;100;0;KWh;4
+44;4;49;U32;;Daily energy value;;100;0;KWh;4
 45;4;50;U16;;Self Consumption ratio;;1;0;%;4

@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Socomec;Countis E33;;;;;;;
+ModbusRTU;Meter;Socomec;Countis E33;;;;;;;
 1;3;50514;U32;;Phase to Phase Voltage U12 (CT);;100.0;0.0;V;2
 2;3;50516;U32;;Phase to Phase Voltage U23 (CT);;100.0;0.0;V;2
 3;3;50518;U32;;Phase to Phase Voltage U31 (CT);;100.0;0.0;V;2

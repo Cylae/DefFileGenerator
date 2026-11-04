@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;WEBDYN_Sens'IO-8AI_work;;;;;;;
+modbusRTU;Other;Webdyn;WEBDYN_Sens'IO-8AI_work;;;;;;;
 1;4;1;U16;;Mesure température for Thermocouple;;1.0;0.0;;4
 2;4;2;U16;;Alarme 1 Status;;1.0;0.0;;9
 3;4;3;U16;;Alarme 2 Status;;1.0;0.0;;9

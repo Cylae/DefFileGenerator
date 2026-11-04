@@ -1,4 +1,4 @@
-﻿ModbusTCP;inverter;Huawei;smartlogger3;;;;;;;
+ModbusTCP;inverter;Huawei;smartlogger3;;;;;;;
 1;3;40575;U16;;Volt L1 to 2_Uab;;0.100000;0.000000;V;4
 2;3;40576;U16;;Volt L2 to 3_Ubc;;0.100000;0.000000;V;4
 3;3;40577;U16;;Volt L3 to 1_Uca;;0.100000;0.000000;V;4

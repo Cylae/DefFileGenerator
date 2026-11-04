@@ -1,20 +1,20 @@
 Modbus;Meter;ABB;M2M_Meter
 1;3;4096;U32;;Three-phase system voltage;;1.0;0.0;V;4
-2;3;4098;U32;;Rated Voltage L1;U_AC_1;1.0;0.0;V;4
-3;3;4100;U32;;Rated Voltage L2;U_AC_2;1.0;0.0;V;4
-4;3;4102;U32;;Rated Voltage L3;U_AC_3;1.0;0.0;V;4
+2;3;4098;U32;;Rated Voltage L1;;1.0;0.0;V;4
+3;3;4100;U32;;Rated Voltage L2;;1.0;0.0;V;4
+4;3;4102;U32;;Rated Voltage L3;;1.0;0.0;V;4
 5;3;4104;U32;;Linked Voltage L12;;1.0;0.0;V;4
 6;3;4106;U32;;Linked Voltage L23;;1.0;0.0;V;4
 7;3;4108;U32;;Linked Voltage L31;;1.0;0.0;V;4
 8;3;4110;U32;;Three-phase system current;;1.0;0.0;mA;4
-9;3;4112;U32;;Line Current 1;I_AC_3;1.0;0.0;mA;4
+9;3;4112;U32;;Line Current 1;;1.0;0.0;mA;4
 10;3;4114;U32;;Line Current 2;;1.0;0.0;mA;4
 11;3;4116;U32;;Line Current 3;;1.0;0.0;mA;4
-12;3;4118;I32;;Three-phase system Power Factor;PF;1000.0;0.0;;4
+12;3;4118;I32;;Three-phase system Power Factor;;1000.0;0.0;;4
 13;3;4120;I32;;Power Factor Line 1;;1000.0;0.0;;4
 14;3;4122;I32;;Power Factor Line 2;;1000.0;0.0;;4
 15;3;4124;I32;;Power Factor Line 3;;1000.0;0.0;;4
-16;3;4134;U32;;Three-phase system Apparent Power;S_AC;1.0;0.0;VA;4
+16;3;4134;U32;;Three-phase system Apparent Power;;1.0;0.0;VA;4
 17;3;4136;U32;;Apparent Power Line 1;;1.0;0.0;VA;4
 18;3;4138;U32;;Apparent Power Line 2;;1.0;0.0;VA;4
 19;3;4140;U32;;Apparent Power Line 3;;1.0;0.0;VA;4
@@ -22,18 +22,18 @@ Modbus;Meter;ABB;M2M_Meter
 21;3;4144;I32;;Active Power Line 1;P_AC_1;1.0;0.0;W;4
 22;3;4146;I32;;Active Power Line 2;P_AC_2;1.0;0.0;W;4
 23;3;4148;I32;;Active Power Line 3;P_AC_3;1.0;0.0;W;4
-24;3;4150;I32;;Three-phase Reactive Power;Q_AC;1.0;0.0;Var;4
-25;3;4152;I32;;Reactive Power Line 1;Q_AC_1;1.0;0.0;Var;4
-26;3;4154;I32;;Reactive Power Line 2;Q_AC_2;1.0;0.0;Var;4
-27;3;4156;I32;;Reactive Power Line 3;Q_AC_3;1.0;0.0;Var;4
+24;3;4150;I32;;Three-phase Reactive Power;;1.0;0.0;Var;4
+25;3;4152;I32;;Reactive Power Line 1;;1.0;0.0;Var;4
+26;3;4154;I32;;Reactive Power Line 2;;1.0;0.0;Var;4
+27;3;4156;I32;;Reactive Power Line 3;;1.0;0.0;Var;4
 28;3;4158;U32;;Three-phase active energy;;100.0;0.0;Wh;4
 29;3;4160;U32;;Three-phase reactive energy;;100.0;0.0;Varh;4
 30;3;4166;U32;;Frequency;FREQ;1.0;0.0;mHz;4
-31;3;4192;U32;;Max. Current L1;I_AC_1;1.0;0.0;mA;4
-32;3;4194;U32;;Max. Current L2;I_AC_2;1.0;0.0;mA;4
+31;3;4192;U32;;Max. Current L1;;1.0;0.0;mA;4
+32;3;4194;U32;;Max. Current L2;;1.0;0.0;mA;4
 33;3;4196;U32;;Max. Current L3;;1.0;0.0;mA;4
 34;3;4198;I32;;Max. Three-phase Active Power;;1.0;0.0;W;4
-35;3;4200;U32;;Max. Three-phase Apparent Power;S_AC_1;1.0;0.0;VA;4
+35;3;4200;U32;;Max. Three-phase Apparent Power;;1.0;0.0;VA;4
 36;3;4208;I32;;Aver. Three-phase Active Power;;1.0;0.0;W;4
 37;3;4210;U32;;Aver. Three-phase Apparent Power;;1.0;0.0;VA;4
 38;3;4212;U32;;Active Energy L1;;100.0;0.0;Wh;4

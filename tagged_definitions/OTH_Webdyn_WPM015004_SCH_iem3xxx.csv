@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;WPM015004_SCH_iem3xxx;;;;;;;
+modbusRTU;Other;Webdyn;WPM015004_SCH_iem3xxx;;;;;;;
 1;4;2003;U16;;OperationTimer;;1.0;0.0;s;4
 2;4;6500;U16;;Address;UNIT_ID;1.0;0.0;;4
 3;4;6501;U16;;vitesse;;1.0;0.0;;4

@@ -1,4 +1,4 @@
-﻿modbus;meter;Rayleigh;RI-D140-C;;;;;;;
+modbus;meter;Rayleigh;RI-D140-C;;;;;;;
 1;4;0;F32_W;;Voltage 1st Phase;;1;0;V;2
 2;4;2;F32_W;;Voltage 2nd Phase;;1;0;V;2
 3;4;4;F32_W;;Voltage 3rd Phase;;1;0;V;2
@@ -23,9 +23,9 @@
 22;4;42;F32_W;;Total kW;P_AC;1;0;kW;2
 23;4;44;F32_W;;Total kVA;;1;0;kVA;2
 24;4;46;F32_W;;Total kVAr;;1;0;kVAr;2
-25;4;48;F32_W;;PF1;;1;0;;2
-26;4;50;F32_W;;PF2;;1;0;;2
-27;4;52;F32_W;;PF3;;1;0;;2
+25;4;48;F32_W;;PF1;PF_1;1;0;;2
+26;4;50;F32_W;;PF2;PF_2;1;0;;2
+27;4;52;F32_W;;PF3;PF_3;1;0;;2
 28;4;54;F32_W;;Average PF;;1;0;;2
 29;4;56;F32_W;;Frequency;FREQ;1;0;Hz;2
 30;4;58;F32_W;;Import kWh;;1;0;kWh;4

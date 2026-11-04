@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;PowerOne;INV_ABB_PVI50-60;;;;;;;
+modbusRTU;Inverter;PowerOne;INV_ABB_PVI50-60;;;;;;;
 1;4;179;U16;;Remote On/Off;CMD_ON;1.0;0.0;;1
 2;4;180;U16;;Alarm manual reset;;1.0;0.0;;1
 3;4;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance;;1.0;0.0;s;1

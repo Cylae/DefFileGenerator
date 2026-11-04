@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;CyberPower;GENERIC;;;;;;;
+Modbus;Inverter;CyberPower;GENERIC;;;;;;;
 1;4;4429;I16;;Load Power;;1.0;0.0;W;4
 2;4;4554;I32_W;;Load Power (Phase A);;1.0;0.0;W;4
 3;4;4556;I32_W;;Load Power (Phase B);;1.0;0.0;W;4

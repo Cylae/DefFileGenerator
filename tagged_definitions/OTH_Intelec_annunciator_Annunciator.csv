@@ -1,4 +1,4 @@
-﻿ModbusRTU;Other;Intelec;annunciator;;;;;;;
+ModbusRTU;Other;Intelec;annunciator;;;;;;;
 1;1;257_0_1;BITS;;Parameter_1;;1.0;0.0;;4
 2;1;258_0_1;BITS;;Parameter_2;;1.0;0.0;;4
 3;1;259_0_1;BITS;;Parameter_3;;1.0;0.0;;4

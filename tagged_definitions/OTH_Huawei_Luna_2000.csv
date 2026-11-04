@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Huawei;Luna_2000;;;;;;;
+modbusRTU;Other;Huawei;Luna_2000;;;;;;;
 1;4;30000;U16;;Container Status 1;;1.0;0.0;;9
 2;4;30001;U16;;Container Status 2;;1.0;0.0;;9
 3;4;30002;U16;;Container Status 3;;1.0;0.0;;9

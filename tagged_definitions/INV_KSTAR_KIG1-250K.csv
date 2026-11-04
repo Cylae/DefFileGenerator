@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;KSTAR;KIG1-250K;1;;;;;;
+Modbus;Inverter;KSTAR;KIG1-250K;1;;;;;;
 1;4;2964;U16;;PV12 input voltage;U_DC_STRING_12;0.1;0.0;V;4
 2;4;2965;U16;;PV12 input current;I_DC_MPPT_12;0.01;0.0;A;4
 3;4;2966;U32;;PV12 input power;P_DC_MPPT_12;1.0;0.0;W;4

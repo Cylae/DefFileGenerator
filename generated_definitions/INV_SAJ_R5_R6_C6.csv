@@ -1,5 +1,5 @@
 modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
-1;3;36608;U16;;Device Type;MODEL;1;0;;1
+1;3;36608;U16;;Device Type;;1;0;;1
 2;3;36609;U16;;Subclass Machine Power;;1;0;;1
 3;3;36610;U16;;Comms Protocol Version;;0.001;0;;1
 4;3;36611;STRING;;Serial Number;SERIAL;1;0;;1
@@ -12,39 +12,39 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 11;3;36636;U16;;PowerBoard Hardware Version;;0.001;0;;1
 12;3;256;U16;;PLUS/R5 Inverter Operating Mode;;1;0;;1
 13;3;257;STRING;;PLUS/R5 FaultMSG;;1;0;;1
-14;3;263;U16;;PLUS/R5 PV1 Voltage;U_DC_STRING_1;0.1;0;V;1
-15;3;264;U16;;PLUS/R5 PV1 Total Current;I_AC;0.01;0;A;1
+14;3;263;U16;;PLUS/R5 PV1 Voltage;;0.1;0;V;1
+15;3;264;U16;;PLUS/R5 PV1 Total Current;;0.01;0;A;1
 16;3;265;U16;;PLUS/R5 PV1 Power;;1;0;W;1
-17;3;266;U16;;PLUS/R5 PV2 Voltage;U_DC_STRING_2;0.1;0;V;1
+17;3;266;U16;;PLUS/R5 PV2 Voltage;;0.1;0;V;1
 18;3;267;U16;;PLUS/R5 PV2 Total Current;;0.01;0;A;1
 19;3;268;U16;;PLUS/R5 PV2 Power;;1;0;W;1
-20;3;269;U16;;PLUS/R5 PV3 Voltage;U_DC_STRING_3;0.1;0;V;1
+20;3;269;U16;;PLUS/R5 PV3 Voltage;;0.1;0;V;1
 21;3;270;U16;;PLUS/R5 PV3 Total Current;;0.01;0;A;1
 22;3;271;U16;;PLUS/R5 PV3 Power;;1;0;W;1
-23;3;272;U16;;PLUS/R5 BUS Voltage;U_DC;0.1;0;V;1
-24;3;273;I16;;PLUS/R5 Inverter Temperature;TEMP_INT;0.1;0;C;1
+23;3;272;U16;;PLUS/R5 BUS Voltage;;0.1;0;V;1
+24;3;273;I16;;PLUS/R5 Inverter Temperature;;0.1;0;C;1
 25;3;274;I16;;PLUS/R5 GFCI;;1;0;mA;1
-26;3;275;U16;;PLUS/R5 Total Active Power;P_AC;0.001;0;kW;1
-27;3;276;I16;;PLUS/R5 Total Reactive Power;Q_AC;1;0;Var;1
-28;3;277;I16;;PLUS/R5 Total Power Factor;PF;0.001;0;;1
-29;3;278;U16;;PLUS/R5 L1 Phase Voltage;U_AC_1;0.1;0;V;1
-30;3;279;U16;;PLUS/R5 L1 Phase Current;I_AC_1;0.01;0;A;1
-31;3;280;U16;;PLUS/R5 L1 Phase Frequency;FREQ_1;0.01;0;Hz;1
+26;3;275;U16;;PLUS/R5 Total Active Power;;0.001;0;kW;1
+27;3;276;I16;;PLUS/R5 Total Reactive Power;;1;0;Var;1
+28;3;277;I16;;PLUS/R5 Total Power Factor;;0.001;0;;1
+29;3;278;U16;;PLUS/R5 L1 Phase Voltage;;0.1;0;V;1
+30;3;279;U16;;PLUS/R5 L1 Phase Current;;0.01;0;A;1
+31;3;280;U16;;PLUS/R5 L1 Phase Frequency;;0.01;0;Hz;1
 32;3;281;I16;;PLUS/R5 L1 DC Component;;1;0;mA;1
 33;3;282;U16;;PLUS/R5 L1 Power;;0.001;0;kW;1
-34;3;283;I16;;PLUS/R5 L1 Power Factor;PF_1;0.001;0;;1
-35;3;284;U16;;PLUS/R5 L2 Phase Voltage;U_AC_2;0.1;0;V;1
-36;3;285;U16;;PLUS/R5 L2 Phase Current;I_AC_2;0.01;0;A;1
-37;3;286;U16;;PLUS/R5 L2 Phase Frequency;FREQ_2;0.01;0;Hz;1
+34;3;283;I16;;PLUS/R5 L1 Power Factor;;0.001;0;;1
+35;3;284;U16;;PLUS/R5 L2 Phase Voltage;;0.1;0;V;1
+36;3;285;U16;;PLUS/R5 L2 Phase Current;;0.01;0;A;1
+37;3;286;U16;;PLUS/R5 L2 Phase Frequency;;0.01;0;Hz;1
 38;3;287;I16;;PLUS/R5 L2 DC Component;;1;0;mA;1
 39;3;288;U16;;PLUS/R5 L2 Power;;0.001;0;kW;1
-40;3;289;I16;;PLUS/R5 L2 Power Factor;PF_2;0.001;0;;1
-41;3;290;U16;;PLUS/R5 L3 Phase Voltage;U_AC_3;0.1;0;V;1
-42;3;291;U16;;PLUS/R5 L3 Phase Current;I_AC_3;0.01;0;A;1
-43;3;292;U16;;PLUS/R5 L3 Phase Frequency;FREQ_3;0.01;0;Hz;1
+40;3;289;I16;;PLUS/R5 L2 Power Factor;;0.001;0;;1
+41;3;290;U16;;PLUS/R5 L3 Phase Voltage;;0.1;0;V;1
+42;3;291;U16;;PLUS/R5 L3 Phase Current;;0.01;0;A;1
+43;3;292;U16;;PLUS/R5 L3 Phase Frequency;;0.01;0;Hz;1
 44;3;293;I16;;PLUS/R5 L3 DC Component;;1;0;mA;1
 45;3;294;U16;;PLUS/R5 L3 Power;;0.001;0;kW;1
-46;3;295;I16;;PLUS/R5 L3 Power Factor;PF_3;0.001;0;;1
+46;3;295;I16;;PLUS/R5 L3 Power Factor;;0.001;0;;1
 47;3;296;U16;;PLUS/R5 ISO1;;1;0;kOhm;1
 48;3;297;U16;;PLUS/R5 ISO2;;1;0;kOhm;1
 49;3;298;U16;;PLUS/R5 ISO3;;1;0;kOhm;1
@@ -97,7 +97,7 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 96;3;16435;U16;;R6 3-15K R Phase Grid Freq;;0.01;0;Hz;1
 97;3;16436;I16;;R6 3-15K R Phase Grid DCI;;1;0;mA;1
 98;3;16437;I16;;R6 3-15K R Phase Grid Active Power;;1;0;W;1
-99;3;16438;U16;;R6 3-15K R Phase Grid Apparent Power;S_AC;1;0;VA;1
+99;3;16438;U16;;R6 3-15K R Phase Grid Apparent Power;;1;0;VA;1
 100;3;16439;I16;;R6 3-15K R Phase Grid Power Factor;;0.001;0;;1
 101;3;16440;U16;;R6 3-15K S Phase Grid Volt;;0.1;0;V;1
 102;3;16441;I16;;R6 3-15K S Phase Grid Curr;;0.01;0;A;1
@@ -153,19 +153,19 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 152;3;16491;I16;;R6 3-15K Battery Controller 1 Current;;0.01;0;A;1
 153;3;16492;I16;;R6 3-15K Battery Controller 2 Current;;0.01;0;A;1
 154;3;16493;I16;;R6 3-15K Battery Power;;1;0;W;1
-155;3;16494;I16;;R6 3-15K Battery Temperature;TEMP;0.1;0;C;1
-156;3;16495;U16;;R6 3-15K Battery State of Charge;SOC;0.01;0;%;1
+155;3;16494;I16;;R6 3-15K Battery Temperature;;0.1;0;C;1
+156;3;16495;U16;;R6 3-15K Battery State of Charge;;0.01;0;%;1
 157;3;16497;U16;;R6 3-15K PV1 Voltage;;0.1;0;V;1
-158;3;16498;U16;;R6 3-15K PV1 Current;I_DC_STRING_1;0.01;0;A;1
+158;3;16498;U16;;R6 3-15K PV1 Current;;0.01;0;A;1
 159;3;16499;U16;;R6 3-15K PV1 Power;;1;0;W;1
 160;3;16500;U16;;R6 3-15K PV2 Voltage;;0.1;0;V;1
-161;3;16501;U16;;R6 3-15K PV2 Current;I_DC_STRING_2;0.01;0;A;1
+161;3;16501;U16;;R6 3-15K PV2 Current;;0.01;0;A;1
 162;3;16502;U16;;R6 3-15K PV2 Power;;1;0;W;1
 163;3;16503;U16;;R6 3-15K PV3 Voltage;;0.1;0;V;1
-164;3;16504;U16;;R6 3-15K PV3 Current;I_DC_STRING_3;0.01;0;A;1
+164;3;16504;U16;;R6 3-15K PV3 Current;;0.01;0;A;1
 165;3;16505;U16;;R6 3-15K PV3 Power;;1;0;W;1
-166;3;16506;U16;;R6 3-15K PV4 Voltage;U_DC_STRING_4;0.1;0;V;1
-167;3;16507;U16;;R6 3-15K PV4 Current;I_DC_STRING_4;0.01;0;A;1
+166;3;16506;U16;;R6 3-15K PV4 Voltage;;0.1;0;V;1
+167;3;16507;U16;;R6 3-15K PV4 Current;;0.01;0;A;1
 168;3;16508;U16;;R6 3-15K PV4 Power;;1;0;W;1
 169;3;16509;U16;;R6 3-15K PV1 String Current 1;;0.01;0;A;1
 170;3;16510;U16;;R6 3-15K PV1 String Current 2;;0.01;0;A;1
@@ -223,10 +223,10 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 222;3;16562;U16;;R6 3-15K T Phase Intelligent Load Power;;1;0;W;1
 223;3;16572;U16;;R6 3-15K Today Hour;;0.1;0;h;1
 224;3;16573;U32;;R6 3-15K Total Hour;;0.1;0;h;1
-225;3;16575;U32;;R6 3-15K Today PV Energy;E_DAY;0.01;0;kWh;1
+225;3;16575;U32;;R6 3-15K Today PV Energy;;0.01;0;kWh;1
 226;3;16577;U32;;R6 3-15K Month PV Energy;;0.01;0;kWh;1
 227;3;16579;U32;;R6 3-15K Year PV Energy;;0.01;0;kWh;1
-228;3;16581;U32;;R6 3-15K Total PV Energy;E_TOT;0.01;0;kWh;1
+228;3;16581;U32;;R6 3-15K Total PV Energy;;0.01;0;kWh;1
 229;3;16583;U32;;R6 3-15K Today Bat Chg Energy;;0.01;0;kWh;1
 230;3;16585;U32;;R6 3-15K Month Bat Chg Energy;;0.01;0;kWh;1
 231;3;16587;U32;;R6 3-15K Year Bat Chg Energy;;0.01;0;kWh;1
@@ -299,7 +299,7 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 298;3;24634;I16;;R6/C6 L2 Phase Temperature;;0.1;0;C;1
 299;3;24635;I16;;R6/C6 L3 Phase Temperature;;0.1;0;C;1
 300;3;24636;I16;;R6/C6 Chamber Temperature;;0.1;0;C;1
-301;3;24637;I16;;R6/C6 Boost Module Temp 1;TEMP_CELL;0.1;0;C;1
+301;3;24637;I16;;R6/C6 Boost Module Temp 1;;0.1;0;C;1
 302;3;24638;I16;;R6/C6 Boost Module Temp 2;;0.1;0;C;1
 303;3;24639;I16;;R6/C6 Boost Module Temp 3;;0.1;0;C;1
 304;3;24640;I16;;R6/C6 Boost Module Temp 4;;0.1;0;C;1
@@ -319,11 +319,11 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 318;3;24654;U16;;R6/C6 PV4 Voltage;;0.1;0;V;1
 319;3;24655;U16;;R6/C6 PV4 Current;;0.01;0;A;1
 320;3;24656;U16;;R6/C6 PV4 Power;;1;0;W;1
-321;3;24657;U16;;R6/C6 PV5 Voltage;U_DC_STRING_5;0.1;0;V;1
-322;3;24658;U16;;R6/C6 PV5 Current;I_DC_STRING_5;0.01;0;A;1
+321;3;24657;U16;;R6/C6 PV5 Voltage;;0.1;0;V;1
+322;3;24658;U16;;R6/C6 PV5 Current;;0.01;0;A;1
 323;3;24659;U16;;R6/C6 PV5 Power;;1;0;W;1
-324;3;24660;U16;;R6/C6 PV6 Voltage;U_DC_STRING_6;0.1;0;V;1
-325;3;24661;U16;;R6/C6 PV6 Current;I_DC_STRING_6;0.01;0;A;1
+324;3;24660;U16;;R6/C6 PV6 Voltage;;0.1;0;V;1
+325;3;24661;U16;;R6/C6 PV6 Current;;0.01;0;A;1
 326;3;24662;U16;;R6/C6 PV6 Power;;1;0;W;1
 327;3;24663;U16;;R6/C6 PV1 String Current 1;;0.01;0;A;1
 328;3;24664;U16;;R6/C6 PV1 String Current 2;;0.01;0;A;1
@@ -337,23 +337,23 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 336;3;24672;U16;;R6/C6 PV5 String Current 2;;0.01;0;A;1
 337;3;24673;U16;;R6/C6 PV6 String Current 1;;0.01;0;A;1
 338;3;24674;U16;;R6/C6 PV6 String Current 2;;0.01;0;A;1
-339;3;24675;U16;;R6/C6 PV7 Voltage;U_DC_STRING_7;0.1;0;V;1
-340;3;24676;U16;;R6/C6 PV7 Current;I_DC_STRING_7;0.01;0;A;1
+339;3;24675;U16;;R6/C6 PV7 Voltage;;0.1;0;V;1
+340;3;24676;U16;;R6/C6 PV7 Current;;0.01;0;A;1
 341;3;24677;U16;;R6/C6 PV7 Power;;1;0;W;1
-342;3;24678;U16;;R6/C6 PV8 Voltage;U_DC_STRING_8;0.1;0;V;1
-343;3;24679;U16;;R6/C6 PV8 Current;I_DC_STRING_8;0.01;0;A;1
+342;3;24678;U16;;R6/C6 PV8 Voltage;;0.1;0;V;1
+343;3;24679;U16;;R6/C6 PV8 Current;;0.01;0;A;1
 344;3;24680;U16;;R6/C6 PV8 Power;;1;0;W;1
-345;3;24681;U16;;R6/C6 PV9 Voltage;U_DC_STRING_9;0.1;0;V;1
-346;3;24682;U16;;R6/C6 PV9 Current;I_DC_STRING_9;0.01;0;A;1
+345;3;24681;U16;;R6/C6 PV9 Voltage;;0.1;0;V;1
+346;3;24682;U16;;R6/C6 PV9 Current;;0.01;0;A;1
 347;3;24683;U16;;R6/C6 PV9 Power;;1;0;W;1
-348;3;24684;U16;;R6/C6 PV10 Voltage;U_DC_STRING_10;0.1;0;V;1
-349;3;24685;U16;;R6/C6 PV10 Current;I_DC_STRING_10;0.01;0;A;1
+348;3;24684;U16;;R6/C6 PV10 Voltage;;0.1;0;V;1
+349;3;24685;U16;;R6/C6 PV10 Current;;0.01;0;A;1
 350;3;24686;U16;;R6/C6 PV10 Power;;1;0;W;1
-351;3;24687;U16;;R6/C6 PV11 Voltage;U_DC_STRING_11;0.1;0;V;1
-352;3;24688;U16;;R6/C6 PV11 Current;I_DC_STRING_11;0.01;0;A;1
+351;3;24687;U16;;R6/C6 PV11 Voltage;;0.1;0;V;1
+352;3;24688;U16;;R6/C6 PV11 Current;;0.01;0;A;1
 353;3;24689;U16;;R6/C6 PV11 Power;;1;0;W;1
-354;3;24690;U16;;R6/C6 PV12 Voltage;U_DC_STRING_12;0.1;0;V;1
-355;3;24691;U16;;R6/C6 PV12 Current;I_DC_STRING_12;0.01;0;A;1
+354;3;24690;U16;;R6/C6 PV12 Voltage;;0.1;0;V;1
+355;3;24691;U16;;R6/C6 PV12 Current;;0.01;0;A;1
 356;3;24692;U16;;R6/C6 PV12 Power;;1;0;W;1
 357;3;24693;U16;;R6/C6 PV7 String Current 1;;0.01;0;A;1
 358;3;24694;U16;;R6/C6 PV7 String Current 2;;0.01;0;A;1
@@ -370,7 +370,7 @@ modbusRTU;Inverter;SAJ;PLUS_R5_R6_C6;;;;;;;
 369;3;4104;U16;;Safety Standard Number;;1;0;;4
 370;3;4105;U16;;Function Word (FunMask);;1;0;;4
 371;3;4121;U16;;ISO Limit Value;;1;0;kOhm;4
-372;3;4124;U16;;Power Limit Value;CMD_P_AC_SET_ABS;0.1;0;%;4
+372;3;4124;U16;;Power Limit Value;;0.1;0;%;4
 373;3;4125;U16;;Reactive Power Compensation Mode;;1;0;;4
 374;3;4126;U16;;Reactive Value Regulation;;0.001;0;;4
 375;3;4151;U16;;Remote On/Off Command;;1;0;;4

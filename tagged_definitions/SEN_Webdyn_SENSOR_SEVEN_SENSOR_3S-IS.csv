@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;Seven Sensor;3S-IS;;;;;;;
+modbusRTU;Sensor;Seven Sensor;3S-IS;;;;;;;
 1;4;0;U16;;Irradiance;POA;0.1;0;W/m2;4
 2;4;6;I16;;Temperature Compensated Irradiance;;0.1;0;W/m2;4
 3;4;15;I16;;Internal temperature;TEMP_INT;0.1;0;Degr.Celsius;4

@@ -1,4 +1,4 @@
-﻿modbusTCP;BESS;Mars Energy;MarsLocalController V7.0;;;;;;;
+modbusTCP;BESS;Mars Energy;MarsLocalController V7.0;;;;;;;
 1;2;0;U16;;LC Alarm - LC Alarm Summary;;1.000000;0.000000;;9
 2;2;1;U16;;LC Alarm - PCS Alarm Summary;;1.000000;0.000000;;9
 3;2;2;U16;;LC Alarm - Bank Alarm Summary;;1.000000;0.000000;;9

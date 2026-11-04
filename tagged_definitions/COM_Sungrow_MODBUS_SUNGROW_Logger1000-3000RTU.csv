@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Sungrow;MODBUS_SUNGROW_Logger1000-3000;;;;;;;
+modbusRTU;Other;Sungrow;MODBUS_SUNGROW_Logger1000-3000;;;;;;;
 1;4;8000;U16;;Device type code;;1.0;0.0;;4
 2;4;8001;U16;;Protocol Number;;1.0;0.0;;4
 3;4;8003;U16;;Communication protocol version;;1.0;0.0;;4

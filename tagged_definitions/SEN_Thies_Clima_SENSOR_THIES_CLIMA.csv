@@ -1,4 +1,4 @@
-﻿modbusRTU;Sensor;Thies Clima;Clima Sensor;;;;;;;
+modbusRTU;Sensor;Thies Clima;Clima Sensor;;;;;;;
 1;4;30003;U32;;Average wind speed;WIND_SPEED;0.1;0;m/s;4
 2;4;30011;U32;;Maximum value Wind velocity (gust);;0.1;0;m/s;4
 3;4;30019;U32;;Average wind speed (High Resolution);;0.01;0;m/s;4

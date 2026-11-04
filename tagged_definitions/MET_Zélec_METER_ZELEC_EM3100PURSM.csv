@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;ZELEC;EM3100PURSM;;;;;;;
+ModbusRTU;Meter;ZELEC;EM3100PURSM;;;;;;;
 1;4;0;F32;;Tension simple V1;;1;0;V;4
 2;4;2;F32;;Tension simple V2;;1;0;V;4
 3;4;4;F32;;Tension simple V3;;1;0;V;4
@@ -93,6 +93,6 @@
 92;3;62720;U16;;Periode intervalle pour la valeur Max/Temps integration/Temps defilement automatique de l'afficheur/ Temps retroeclairage;;1;0;;4
 93;3;63760;U16;;Poids de l'impulsion;;1;0;;4
 94;3;63775;U16;;Mode de mesure;;1;0;;4
-95;3;64512;U32;;Numero de serie;;1;0;;4
+95;3;64512;U32;;Numero de serie;SERIAL;1;0;;4
 96;3;64514;U16;;Type de compteur;;1;0;;4
 97;3;64515;U16;;Version du Firmware;;1;0;;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SMA;CORE1test;;;;;;;
+modbusRTU;Other;SMA;CORE1test;;;;;;;
 1;4;40497;U16;;Nameplate.MacId;;1.0;0.0;-;4
 2;4;30059;U16;;Nameplate.PkgRev;;1.0;0.0;-;4
 3;4;30559;U16;;Operation.EvtCntUsr;;1.0;0.0;-;4

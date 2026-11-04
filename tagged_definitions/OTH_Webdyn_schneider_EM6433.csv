@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;schneider_EM6433;;;;;;;
+modbusRTU;Other;Webdyn;schneider_EM6433;;;;;;;
 1;4;3900;U16;;Apparent power, total;S_AC;1.0;0.0;;4
 2;4;3902;U16;;Active power, total;P_AC;1.0;0.0;;4
 3;4;3912;U16;;Current average;;1.0;0.0;;4

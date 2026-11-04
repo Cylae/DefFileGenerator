@@ -2,11 +2,11 @@ Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD
 1;3;179;U16;;Remote On_Off;CMD_ON;1.0;0.0;;4
 2;3;180;U16;;Alarm manual reset;;1.0;0.0;;4
 3;3;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la montee en puissance (actif);;1.0;0.0;;4
-4;3;190;U16;;Mode dynamique - Tempo - Duree des consignes de puissance active ou reactive 1;P_AC;1.0;0.0;min;4
+4;3;190;U16;;Mode dynamique - Tempo - Duree des consignes de puissance active ou reactive 1;;1.0;0.0;min;4
 5;3;197;U16;;Definition du comportement transitoire 1;;1.0;0.0;;4
-6;3;199;F32_W;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi)_1;Q_AC;1.0;0.0;;4
+6;3;199;F32_W;;Mode dynamique - gestion de la puissance reactive via un facteur de puissance fixe (cos phi)_1;;1.0;0.0;;4
 7;3;201;F32_W;;Mode permanent - gestion de la puissance reactive via le facteur de puissance (cos phi)_1;;1.0;0.0;;4
-8;3;204;U16;;Mode permanent - facteur de puissance remis a 1;PF;1.0;0.0;;4
+8;3;204;U16;;Mode permanent - facteur de puissance remis a 1;;1.0;0.0;;4
 9;3;209;U16;;Mode dynamique - regulation de la puissance active maximale de sortie en pourcentage de la puissance nominale (P NOM ) par pas de 1_;;1.0;0.0;%;4
 10;3;211;U16;;Mode permanent - regulation de la puissance active maximale de sortie en pourcentage de la puissance nominale (P NOM ) par pas de 1_;;1.0;0.0;%;4
 11;3;214;U16;;Mode permanent - Reset de la regulation de puissance active retour a 100_P NOM;;1.0;0.0;;4
@@ -16,9 +16,9 @@ Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD
 15;3;226;I16;;Mode permanent - gestion de la puissance reactive en pourcentage de la puissance apparente (P NOM ) par pas de 1__2;;1.0;0.0;%;4
 16;3;298;U16;;Configuration des options transitoires;;1.0;0.0;;4
 17;3;299;U16;;Compteur cardiaque;;1.0;0.0;;4
-18;3;300;F32_W;;Onduleur - Puissance reactive;;1.0;0.0;VAR;4
+18;3;300;F32_W;;Onduleur - Puissance reactive;Q_AC;1.0;0.0;VAR;4
 19;3;302;F32_W;;Onduleur - Tension du reseau;;1.0;0.0;V;4
-20;3;304;F32_W;;Onduleur - Puissance active injectee;;1.0;0.0;W;4
+20;3;304;F32_W;;Onduleur - Puissance active injectee;P_AC;1.0;0.0;W;4
 21;3;306;F32_W;;Onduleur - Courant;;1.0;0.0;A;4
 22;3;500;U16;;Definition de l unite des registres (_ ou pour mille);;1.0;0.0;;4
 23;3;501;U16;;Definir le mode utilise (permanent ou dynamique);;1.0;0.0;;4
@@ -38,7 +38,7 @@ Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD
 37;4;100;U16;;Onduleur - Map size;;1.0;0.0;;4
 38;4;101;U16;;Onduleur - Version (majeur_mineure) de la table d echange au format numerique;;1.0;0.0;;4
 39;4;102;U16;;Adresse RS485 de l onduleur;UNIT_ID;1.0;0.0;;4
-40;4;103;U16;;SN0;SERIAL;1.0;0.0;;4
+40;4;103;U16;;SN0;;1.0;0.0;;4
 41;4;104;U16;;SN1;;1.0;0.0;;4
 42;4;105;U16;;SN2;;1.0;0.0;;4
 43;4;106;U16;;SN3;;1.0;0.0;;4
@@ -84,7 +84,7 @@ Modbus;Inverter;ABB;TRIO_20.0-27.6_TL_OUTD
 83;4;161;F32_W;;Onduleur  Courant MPPT2;I_DC_MPPT_2;1.0;0.0;A;4
 84;4;163;F32_W;;Onduleur  Temperature onduleur;;1.0;0.0;C;4
 85;4;165;F32_W;;Onduleur  Temperature booster;;1.0;0.0;C;4
-86;4;167;F32_W;;Onduleur  Resistance d isolement (Riso);R_ISO;1.0;0.0;MOhm;4
+86;4;167;F32_W;;Onduleur  Resistance d isolement (Riso);;1.0;0.0;MOhm;4
 87;4;169;F32_W;;Onduleur  Frequence (onduleur eolien uniquement);;1.0;0.0;Hz;4
-88;4;171;F32_W;;Onduleur  Cos phi;;1.0;0.0;;4
+88;4;171;F32_W;;Onduleur  Cos phi;PF;1.0;0.0;;4
 89;4;173;U16;;Onduleur - Presence - Indicates status of board to inverter;;1.0;0.0;;4

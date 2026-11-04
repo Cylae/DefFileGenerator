@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Polier;POLIER_MTR5LMOD;;;;;;;
+modbusRTU;Other;Polier;POLIER_MTR5LMOD;;;;;;;
 1;4;0;U16;;Com address;;1.0;0.0;;4
 2;4;32784;U16;;Com address_1;;1.0;0.0;;4
 3;4;1;U16;;Baudrate;;1.0;0.0;;4
@@ -25,8 +25,8 @@
 24;4;24586;U16;;PhaseA reactive power;Q_AC_1;1.0;0.0;Var;4
 25;4;24588;U16;;PhaseB reactive power;Q_AC_2;1.0;0.0;Var;4
 26;4;24590;U16;;PhaseC reactive power;Q_AC_3;1.0;0.0;Var;4
-27;4;28672;U16;;Total active energy;;1.0;0.0;kWh;4
-28;4;28928;U16;;Total reactive energy;E_TOT;1.0;0.0;kvarh;4
+27;4;28672;U16;;Total active energy;E_TOT;1.0;0.0;kWh;4
+28;4;28928;U16;;Total reactive energy;;1.0;0.0;kvarh;4
 29;4;32768;U16;;System Config.;;1.0;0.0;;4
 30;4;32771;U16;;Remote control output;;1.0;0.0;;4
 31;4;32773;U16;;CT rate;;1.0;0.0;;4

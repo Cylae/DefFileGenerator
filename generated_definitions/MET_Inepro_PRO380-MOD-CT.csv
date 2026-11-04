@@ -13,12 +13,12 @@ Modbus;Meter;Inepro;PRO380-MOD-CT
 12;3;20516;F32;;apparent_power1;;0.001;0.0;kVA;4
 13;3;20518;F32;;apparent_power2;;0.001;0.0;kVA;4
 14;3;20520;F32;;apparent_power3;;0.001;0.0;kVA;4
-15;3;20514;F32;;apparent_power;;0.001;0.0;kVA;4
+15;3;20514;F32;;apparent_power;S_AC;0.001;0.0;kVA;4
 16;3;20508;F32;;reactive_power1;;0.001;0.0;kvar;4
 17;3;20510;F32;;reactive_power2;;0.001;0.0;kvar;4
 18;3;20512;F32;;reactive_power3;;0.001;0.0;kvar;4
 19;3;20506;F32;;reactive_power;Q_AC;0.001;0.0;kvar;4
-20;3;20524;F32;;cosphi1;PF;1.0;0.0;;4
+20;3;20524;F32;;cosphi1;;1.0;0.0;;4
 21;3;20526;F32;;cosphi2;;1.0;0.0;;4
 22;3;20528;F32;;cosphi3;;1.0;0.0;;4
 23;3;20488;F32;;frequency;FREQ;1.0;0.0;Hz;4

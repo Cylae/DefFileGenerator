@@ -1,4 +1,4 @@
-﻿modbusTCP;BatteryRack;Mars Energy;MarsLocalController Rack V7.0;;;;;;;
+modbusTCP;BatteryRack;Mars Energy;MarsLocalController Rack V7.0;;;;;;;
 1;4;0;U16;;Rack - Number of cells in Rack;;1.000000;0.000000;;4
 2;4;1;F32;;Rack - Rack Voltage;;1.000000;0.000000;V;4
 3;4;3;F32;;Rack - Rack Current;;1.000000;0.000000;A;4

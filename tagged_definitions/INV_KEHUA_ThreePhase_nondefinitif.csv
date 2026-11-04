@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
+ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 1;4;4800_20;STRING;;Model;MODEL;1;0.0;;4
 2;4;4810_10;STRING;;Hardware version;;1;0.0;;4
 3;4;4815_10;STRING;;Control software version;;1;0.0;;4
@@ -72,7 +72,7 @@
 71;3;6003;I16;;Reactive power;;1;0.0;;4
 72;3;6004;U16;;Mode auto switch;;1;0.0;;4
 73;3;6005;U16;;Manual grid-tied/off-grid mode;;1;0.0;;4
-74;3;6006;I16;;Active power;cmdPower;0.1;0.0;kW;4
+74;3;6006;I16;;Active power;;0.1;0.0;kW;4
 75;3;6007;U16;;Initiative islanding;;1;0.0;;4
 76;3;6009;U16;;Plan curve running;;1;0.0;;4
 77;3;6011;U16;;Automatic frequency control;;1;0.0;;4

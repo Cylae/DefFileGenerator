@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Vectron;Modbus_Vectron;;;;;;;
+modbusRTU;Other;Vectron;Modbus_Vectron;;;;;;;
 1;4;211;U16;;R.m.s. Current;;1.0;0.0;A;4
 2;4;212;U16;;Output Voltage;;1.0;0.0;V;4
 3;4;213;U16;;Active Power;CMD_P_AC_SET_PERCENT;1.0;0.0;kW;1

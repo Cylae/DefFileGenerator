@@ -5,9 +5,9 @@ modbusRTU;Meter;Schneider Electric;Easergy P5;;;;;;;
 4;3;21356;F32;;Phase-to-phase voltage VAB;;1;0;V;4
 5;3;21358;F32;;Phase-to-phase voltage VBC;;1;0;V;4
 6;3;21360;F32;;Phase-to-phase voltage VCA;;1;0;V;4
-7;3;21362;F32;;Phase current IA;I_AC_1;1;0;A;4
-8;3;21364;F32;;Phase current IB;I_AC_2;1;0;A;4
-9;3;21366;F32;;Phase current IC;I_AC_3;1;0;A;4
+7;3;21362;F32;;Phase current IA;;1;0;A;4
+8;3;21364;F32;;Phase current IB;;1;0;A;4
+9;3;21366;F32;;Phase current IC;;1;0;A;4
 10;3;21368;F32;;IN.meas;;1;0;A;4
 11;3;21370;F32;;IN.meas.sens;;1;0;A;4
 12;3;21372;F32;;IN.CSH;;1;0;A;4
@@ -19,12 +19,12 @@ modbusRTU;Meter;Schneider Electric;Easergy P5;;;;;;;
 18;3;21384;F32;;Phase A active power;P_AC_1;1;0;kW;4
 19;3;21386;F32;;Phase B active power;P_AC_2;1;0;kW;4
 20;3;21388;F32;;Phase C active power;P_AC_3;1;0;kW;4
-21;3;21390;F32;;Phase A reactive power;Q_AC_1;1;0;kvar;4
-22;3;21392;F32;;Phase B reactive power;Q_AC_2;1;0;kvar;4
-23;3;21394;F32;;Phase C reactive power;Q_AC_3;1;0;kvar;4
-24;3;21396;F32;;Phase A apparent power;S_AC_1;1;0;kVA;4
-25;3;21398;F32;;Phase B apparent power;S_AC_2;1;0;kVA;4
-26;3;21400;F32;;Phase C apparent power;S_AC_3;1;0;kVA;4
+21;3;21390;F32;;Phase A reactive power;;1;0;kvar;4
+22;3;21392;F32;;Phase B reactive power;;1;0;kvar;4
+23;3;21394;F32;;Phase C reactive power;;1;0;kvar;4
+24;3;21396;F32;;Phase A apparent power;;1;0;kVA;4
+25;3;21398;F32;;Phase B apparent power;;1;0;kVA;4
+26;3;21400;F32;;Phase C apparent power;;1;0;kVA;4
 27;3;21402;F32;;Measured VN;;1;0;kV;4
 28;3;21404;F32;;Calculated VN;;1;0;kV;4
 29;3;21406;F32;;Positive sequence I1;;1;0;A;4

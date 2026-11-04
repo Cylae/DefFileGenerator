@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Socomec;DirisA10;;;;;;;
+ModbusRTU;Meter;Socomec;DirisA10;;;;;;;
 1;3;50512;U32;;Hour Meter;;0.01;0.0;H;4
 2;3;50514;U32;;U12;;0.01;0.0;V;4
 3;3;50516;U32;;U23;;0.01;0.0;V;4

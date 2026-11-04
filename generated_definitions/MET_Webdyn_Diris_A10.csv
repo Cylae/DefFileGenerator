@@ -14,7 +14,7 @@ ModbusRTU;Meter;Socomec;DirisA10;;;;;;;
 13;3;50536;I32;;Active Power;P_AC;10;0.0;W;4
 14;3;50538;I32;;Reactive Power;Q_AC;10;0.0;var;4
 15;3;50540;U32;;Apparent Power;S_AC;10;0.0;VA;4
-16;3;50542;I32;;PF;;0.001;0.0;-;4
+16;3;50542;I32;;PF;PF;0.001;0.0;-;4
 17;3;50780;U32;;Partial Ea+;;1.0;0.0;kWh;4
 18;3;50782;U32;;Partial Er +;;1.0;0.0;kvarh;4
 19;3;50784;U32;;Partial Es;;1.0;0.0;KVAh;4

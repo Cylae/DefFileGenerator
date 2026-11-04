@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;BlueSun;Hybrid Inverter_Modbus Protoco;;;;;;;
+modbusRTU;Inverter;BlueSun;Hybrid Inverter_Modbus Protoco;;;;;;;
 1;4;40001;U16;;alarm or fault reset;;1.0;0.0;;9
 2;4;40021;U16;;system alarm or fault present;;1.0;0.0;;9
 3;4;40022;U16;;PCS device ready for switch on;;1.0;0.0;;4

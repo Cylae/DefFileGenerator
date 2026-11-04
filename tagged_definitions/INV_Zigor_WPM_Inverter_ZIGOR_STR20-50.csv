@@ -1,13 +1,13 @@
-﻿modbusRTU;Inverter;ZIGOR;STR20-50;;;;;;;
+modbusRTU;Inverter;ZIGOR;STR20-50;;;;;;;
 1;3;3200_10;STRING;;Machine model;MODEL;1;0;;4
 2;3;3205_0;U8;;DSP version;;1;0;;4
 3;3;3205_1;U8;;ARM version;;1;0;;4
 4;3;3206_22;STRING;;Inverter SN;SERIAL;1;0;;4
 5;3;4000;U16;;Clear  statistical information;;1;0;;4
-6;3;4001;U16;;Remote power-off;CmdOnOff;1;0;;4
+6;3;4001;U16;;Remote power-off;;1;0;;4
 7;3;4002;U16;;Revoke remote power-off;;1;0;;4
-8;3;4003;U16;;Set the power factor;MaximumPercentalP;1;0;;4
-9;3;4004;U16;;Set the active power;PctMaxPower;1;0;%;4
+8;3;4003;U16;;Set the power factor;;1;0;;4
+9;3;4004;U16;;Set the active power;;1;0;%;4
 10;3;4005;I16;;Set the reactive power;Q_AC;1;0;Kvar;4
 11;3;4006;U16;;Set the reactive control mode;;1;0;;4
 12;3;4007;U16;;Overfrequency derating;FREQ;1;0;;4
@@ -36,7 +36,7 @@
 35;3;4033;U16;;Clear Fault Record;;1;0;;4
 36;3;4034;U16;;Factory Data Reset;;1;0;;4
 37;3;4035;U16;;Start I/VScan;;1;0;;4
-38;3;4036;I16;;OUTPUT ADJUSTING (20/50KW);cmdPwrZGR;1;0;KW;4
+38;3;4036;I16;;OUTPUT ADJUSTING (20/50KW);;1;0;KW;4
 39;3;4037;I16;;Active PowerIncrement (W);;1;0;W;4
 40;3;4038;I16;;Soft Start Active Power Change Rate;P_AC;1;0;%/min;4
 41;3;4039;U16;;Active Power Settings;;0.001;0;;4
@@ -48,7 +48,7 @@
 47;3;4045;U16;;T-phase Current Calibration Factor;;1;0;;4
 48;3;4046;U16;;BatteryVoltage Calibration Factor;;1;0;;4
 49;3;4113;U16;;OUTPUT ADJUSTING (120/250KW);;1;0;KW;4
-50;3;4114;U16;;Nominal Power write;NominalPowerWrite;1;0;KW;4
+50;3;4114;U16;;Nominal Power write;;1;0;KW;4
 51;4;3006;I32;;PV1 input power;P_DC_MPPT_1;1;0;W;4
 52;4;3008;I32;;PV2 input power;P_DC_MPPT_2;1;0;W;4
 53;4;3010;I32;;PV3 input power;P_DC_MPPT_3;1;0;W;4

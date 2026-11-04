@@ -1,4 +1,4 @@
-﻿modbus;Inverter;GoodWe;G3;;;;;;;
+modbus;Inverter;GoodWe;G3;;;;;;;
 1;3;256;U16;;Active power (%);P_AC;1;0;%;4
 2;3;257;U16;;Power factor;PF;1;0;%;4
 3;3;258;U32;;Reactive power;Q_AC;1;0;Var;4
@@ -13,7 +13,7 @@
 12;3;563;U16;;Active power;;1;0;W;4
 13;3;565;U16;;Internal temperature;TEMP_INT;0.1;0;DegC;4
 14;3;566;U16;;Daily power generation;E_DAY;0.1;0;kWh;4
-15;3;886;I16;;Power factor_2;;0.001;0;;4
+15;3;886;I16;;Power factor_2;PF_2;0.001;0;;4
 16;3;893;I32;;AC reactive power;;0.001;0;kVAR;4
 17;3;30004_16;STRING;;Device Serial Number;SERIAL;1;0;;1
 18;3;30034;U16;;DSP1 software version;;1;0;;1
@@ -29,9 +29,9 @@
 28;3;30108;U16;;PV3 current;I_DC_STRING_3;0.1;0;A;4
 29;3;30109;U16;;PV4 voltage;U_DC_STRING_4;0.1;0;V;4
 30;3;30110;U16;;PV4 current;I_DC_STRING_4;0.1;0;A;4
-31;3;30115;U16;;Phase voltage AB;;0.1;0;V;4
-32;3;30116;U16;;Phase voltage BC;;0.1;0;V;4
-33;3;30117;U16;;Phase voltage CA;;0.1;0;V;4
+31;3;30115;U16;;Phase voltage AB;U_AC_L1L2;0.1;0;V;4
+32;3;30116;U16;;Phase voltage BC;U_AC_L2L3;0.1;0;V;4
+33;3;30117;U16;;Phase voltage CA;U_AC_L3L1;0.1;0;V;4
 34;3;30118;U16;;Phase voltage AN;;0.1;0;V;4
 35;3;30119;U16;;Phase voltage BN;;0.1;0;V;4
 36;3;30120;U16;;Phase voltage CN;;0.1;0;V;4
@@ -47,7 +47,7 @@
 46;3;30132;U16;;Warning code;;1;0;;4
 47;3;30133;U32;;AC apparent power;S_AC;1;0;kVA;4
 48;3;30135;I32;;AC reactive power (telemetry);;1;0;Var;4
-49;3;30137;I32;;Total input power;;1;0;W;4
+49;3;30137;I32;;Total input power;P_DC;1;0;W;4
 50;3;30141;I16;;Cabinet Temperature;;0.1;0;DegC;4
 51;3;30144;U16;;Daily AC energy;;0.1;0;kWh;4
 52;3;30145;U32;;Gross AC energy;;0.1;0;kWh;4

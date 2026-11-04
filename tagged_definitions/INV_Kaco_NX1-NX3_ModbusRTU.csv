@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
+ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 1;4;31001_2;STRING;;Device Type: 1=Single phase / 3=Three pahse;;1;0;;4
 2;4;31002;U16;;Modbus address;UNIT_ID;1;0;;4
 3;4;31003_32;STRING;;Serial Number;SERIAL;1;0;;4
@@ -12,8 +12,8 @@
 11;4;31301;U16;;Grid rated voltage;;0.1;0;V;4
 12;4;31302;U16;;Grid rated frequency;FREQ;0.01;0;Hz;4
 13;4;31303;U32;;E-Today of inverter;E_DAY;0.1;0;kWh;4
-14;4;31305;U32;;E-Total of inverter;WattHours;0.1;0;kWh;4
-15;4;31307;U32;;H-Total;E_TOT;1;0;H;4
+14;4;31305;U32;;E-Total of inverter;E_TOT;0.1;0;kWh;4
+15;4;31307;U32;;H-Total;;1;0;H;4
 16;4;31309;U16;;Device State;;1;0;;4
 17;4;31310;U16;;Connect time;;1;0;s;4
 18;4;31311;I16;;Air temperature;;0.1;0;C;4
@@ -49,7 +49,7 @@
 48;4;31367;U16;;ST Line voltage;;0.1;0;V;4
 49;4;31368;U16;;Grid frequency;;0.01;0;Hz;4
 50;4;31369;U32;;Apparent power;S_AC;1;0;VA;4
-51;4;31371;U32;;Active power;Watts;1;0;W;4
+51;4;31371;U32;;Active power;P_AC;1;0;W;4
 52;4;31373;I32;;Reactive power;Q_AC;1;0;Var;4
 53;4;31375;I16;;Power factor;PF;0.01;0;;4
 54;4;31378;U16;;Error message;;1;0;;4
@@ -61,7 +61,7 @@
 60;3;41004;U16;;RTC:Hour;;1;0;;4
 61;3;41005;U16;;RTC:Minute;;1;0;;4
 62;3;41006;U16;;RTC:Seconds;;1;0;;4
-63;3;44001;U16;;Active power control function;P_AC;1;0;;4
+63;3;44001;U16;;Active power control function;;1;0;;4
 64;3;44002;U16;;EEG control function;;1;0;;4
 65;3;44003;U16;;Slope load function;;1;0;;4
 66;3;44004;U16;;Overvoltage reduce power function;;1;0;;4

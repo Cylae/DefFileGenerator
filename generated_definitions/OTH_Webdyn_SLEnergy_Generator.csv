@@ -5,7 +5,7 @@ modbus;Gen;SL Energy;Generator;;;;;;;
 4;3;11043;I16;;Gen_Current_R;;0.1;0;A;4
 5;3;11044;I16;;Gen_Current_S;;0.1;0;A;4
 6;3;11045;I16;;Gen_Current_T;;0.1;0;A;4
-7;3;11046;U16;;Gen_Frequency_R;FREQ;0.01;0;Hz;4
+7;3;11046;U16;;Gen_Frequency_R;;0.01;0;Hz;4
 8;3;11047;U16;;Gen_Frequency_S;;0.01;0;Hz;4
 9;3;11048;U16;;Gen_Frequency_T;;0.01;0;Hz;4
 10;3;11049;I32;;Gen_Total_Power;;1;0;W;4

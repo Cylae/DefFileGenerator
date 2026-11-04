@@ -1,4 +1,4 @@
-﻿Modbus;Meter;HUAWEI;Power_Meter;;;;;;;
+Modbus;Meter;HUAWEI;Power_Meter;;;;;;;
 1;3;32260;U32;;Phase A Voltage;U_AC_1;0.01;0.0;V;4
 2;3;32262;U32;;Phase B Voltage;U_AC_2;0.01;0.0;V;4
 3;3;32264;U32;;Phase C Voltage;U_AC_3;0.01;0.0;V;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;KSTAR;HYBRID;;;;;;;
+modbusRTU;Inverter;KSTAR;HYBRID;;;;;;;
 1;4;3000;U16;;PV1 Input Vlot;;0.1;0;;4
 2;4;3001;U16;;PV2 Input Vlot;;0.1;0;;4
 3;4;3012;I16;;PV1 Input Curr;;1;0;A;4

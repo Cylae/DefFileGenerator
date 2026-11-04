@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;ABB;PVS50;;;;;;;
+ModbusRTU;Inverter;ABB;PVS50;;;;;;;
 1;3;40020_32;STRING;;1_Model;MODEL;1.0;0.0;;4
 2;3;40036_16;STRING;;1_Options;;1.0;0.0;;4
 3;3;40044_16;STRING;;1_Version;;1.0;0.0;;4

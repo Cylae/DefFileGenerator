@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;ABB;PRO33;;;;;;;
+ModbusRTU;Inverter;ABB;PRO33;;;;;;;
 1;3;3644_14;STRING;;PN;;1.0;0.0;;1
 2;3;3664_14;STRING;;SN;SERIAL;1.0;0.0;;1
 3;3;0;U16;;Inverter operation;;1.0;0.0;;8

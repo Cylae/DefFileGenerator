@@ -5,7 +5,7 @@ modbus;Meter;SL Energy;GridMeter;;;;;;;
 4;3;10503;I16;;Grid_Current_R;;0.1;0;A;4
 5;3;10504;I16;;Grid_Current_S;;0.1;0;A;4
 6;3;10505;I16;;Grid_Current_T;;0.1;0;A;4
-7;3;10506;U16;;Grid_Frequency_R;FREQ;0.01;0;Hz;4
+7;3;10506;U16;;Grid_Frequency_R;;0.01;0;Hz;4
 8;3;10507;U16;;Grid_Frequency_S;;0.01;0;Hz;4
 9;3;10508;U16;;Grid_Frequency_T;;0.01;0;Hz;4
 10;3;10509;I32;;Grid_Total_Active_Power;P_AC;1;0;W;4
@@ -41,9 +41,9 @@ modbus;Meter;SL Energy;GridMeter;;;;;;;
 40;3;14004;I32;;Meter_Active_Power_S;;0.1;0;W;4
 41;3;14006;I32;;Meter_Active_Power_T;;0.1;0;W;4
 42;3;14008;I32;;Meter_Combined Phase Reactive Pwr;;0.1;0;Var;4
-43;3;14010;I32;;Meter_Combined Phase Power Factor;PF;0.001;0;;4
-44;3;14012;I32;;Meter_Daily_Active_Energy;E_DAY;0.1;0;kWh;4
-45;3;14014;I32;;Meter_Total_Positive_Energy;E_TOT;0.1;0;kWh;4
+43;3;14010;I32;;Meter_Combined Phase Power Factor;;0.001;0;;4
+44;3;14012;I32;;Meter_Daily_Active_Energy;;0.1;0;kWh;4
+45;3;14014;I32;;Meter_Total_Positive_Energy;;0.1;0;kWh;4
 46;3;14016;I32;;Meter_Daily_Reverse_Energy;;0.1;0;kWh;4
 47;3;14018;I32;;Meter_Total_Reverse_Energy;;0.1;0;kWh;4
 48;3;14025;I16;;Meter_CT_Current_R;;0.1;0;A;4
@@ -51,7 +51,7 @@ modbus;Meter;SL Energy;GridMeter;;;;;;;
 50;3;14027;I16;;Meter_CT_Current_T;;0.1;0;A;4
 51;3;14060;U16;;Com Interface Status;;1;0;;4
 52;3;14070;U16;;PID operating status;;;;;
-53;3;14071;U16;;PID_Bus_Voltage;U_DC;0.1;0;V;4
+53;3;14071;U16;;PID_Bus_Voltage;;0.1;0;V;4
 54;3;14072;U16;;PID_PV1_PE_Voltage;;0.1;0;V;4
 55;3;14073;U16;;PID_PV2_PE_Voltage;;0.1;0;V;4
 56;3;40030;U16;;AC_Starting_High_Voltage;;0.1;0;V;4

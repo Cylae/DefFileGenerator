@@ -1,4 +1,4 @@
-﻿modbusRTU;meter;Legrand;LEG412052;;;;;;;
+modbusRTU;meter;Legrand;LEG412052;;;;;;;
 1;3;768;U16;;Device identifier;;0.01;0;;4
 2;3;4096;U32;;Phase 1 : phase voltage;U_AC_1;1;0;mV;4
 3;3;4098;U32;;Phase 2 : phase voltage;U_AC_2;1;0;mV;4

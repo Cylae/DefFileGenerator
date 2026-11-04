@@ -331,9 +331,12 @@ def generate_mars_requested_definitions(
     xlsx_path: str | Path,
     output_dir: str | Path,
     num_cells: int = 1,
+    num_lc: int = 100,
+    num_ac: int = 100,
 ) -> dict[str, Path]:
     """
-    Generates the exact 6 Mars Renewable definition files as requested.
+    Generates the exact Mars Renewable definition files as requested.
+    Supports up to 100 Liquid Cooling units and 100 Air Conditioning units.
     Returns dictionary of generated file paths.
     """
     out_dir = Path(output_dir)
@@ -595,30 +598,25 @@ def generate_mars_requested_definitions(
     generated["MarsRenewable_Rack-Cell.csv"] = p3
 
     # -------------------------------------------------------------------------
-    # 4. MarsRenewable_LC-AC.csv (Liquid Cooling 1 + Air Conditioning 1)
+    # 4. MarsRenewable_LC-AC.csv (Up to 100 Air Conditioning + 100 Liquid Cooling)
     # -------------------------------------------------------------------------
-    lc_ac_regs = []
-    used_cooling_tags: set[str] = set()
+    ac_template = [item for item in raw["ac"] if item["action"] != "0"]
+    lc_template = [item for item in raw["lc_cooling"] if item["action"] != "0"]
 
-    # Liquid Cooling (Addr 30000..30032)
-    lc_tag_map = {
-        30006: "TEMP_AMB",
-    }
-    for item in raw["lc_cooling"]:
-        if item["action"] != "0":
-            addr = item["addr"]
-            tag = lc_tag_map.get(addr, "")
-            if tag and tag in used_cooling_tags:
-                tag = ""
-            if tag:
-                used_cooling_tags.add(tag)
-
-            lc_ac_regs.append(
+    # Generate up to num_ac Air Conditioning units (stride 50: 15000..19999)
+    ac_regs = []
+    for i in range(1, num_ac + 1):
+        base = 15000 + (i - 1) * 50
+        for item in ac_template:
+            rel = item["addr"] - 15000
+            addr = base + rel
+            tag = "TEMP" if (i == 1 and rel == 20) else ("HUMIDITY" if (i == 1 and rel == 27) else "")
+            ac_regs.append(
                 {
                     "Info1": "4",
                     "Info2": str(addr),
                     "Info3": item["dtype"],
-                    "Name": f"LiquidCooling1 {item['name']}",
+                    "Name": f"AC{i} {item['name']}",
                     "Tag": tag,
                     "CoefA": item["coef_a"],
                     "CoefB": 0.0,
@@ -627,26 +625,20 @@ def generate_mars_requested_definitions(
                 }
             )
 
-    # Air Conditioning (Addr 15000..15027)
-    ac_tag_map = {
-        15020: "TEMP",
-        15027: "HUMIDITY",
-    }
-    for item in raw["ac"]:
-        if item["action"] != "0":
-            addr = item["addr"]
-            tag = ac_tag_map.get(addr, "")
-            if tag and tag in used_cooling_tags:
-                tag = ""
-            if tag:
-                used_cooling_tags.add(tag)
-
-            lc_ac_regs.append(
+    # Generate up to num_lc Liquid Cooling units (stride 40: 30000..33999)
+    lc_regs = []
+    for i in range(1, num_lc + 1):
+        base = 30000 + (i - 1) * 40
+        for item in lc_template:
+            rel = item["addr"] - 30000
+            addr = base + rel
+            tag = "TEMP_AMB" if (i == 1 and rel == 6) else ""
+            lc_regs.append(
                 {
                     "Info1": "4",
                     "Info2": str(addr),
                     "Info3": item["dtype"],
-                    "Name": f"AC1 {item['name']}",
+                    "Name": f"LiquidCooling{i} {item['name']}",
                     "Tag": tag,
                     "CoefA": item["coef_a"],
                     "CoefB": 0.0,
@@ -654,6 +646,9 @@ def generate_mars_requested_definitions(
                     "Action": item["action"],
                 }
             )
+
+    # Combined LC-AC in ascending address order (AC 15000..19999, then LC 30000..33999)
+    lc_ac_regs = ac_regs + lc_regs
 
     p4 = out_dir / "MarsRenewable_LC-AC.csv"
     valid, rep = write_definition_file(
@@ -663,31 +658,20 @@ def generate_mars_requested_definitions(
         raise ValueError(f"Validation failed for {p4.name}: {rep.issues}")
     generated["MarsRenewable_LC-AC.csv"] = p4
 
-    # -------------------------------------------------------------------------
-    # 4b. MarsRenewable_LC.csv (Liquid Cooling 1 individually)
-    # -------------------------------------------------------------------------
-    lc_alone_regs = []
-    for item in raw["lc_cooling"]:
-        if item["action"] != "0":
-            addr = item["addr"]
-            tag = "TEMP_AMB" if addr == 30006 else ""
-            lc_alone_regs.append(
-                {
-                    "Info1": "4",
-                    "Info2": str(addr),
-                    "Info3": item["dtype"],
-                    "Name": f"LiquidCooling1 {item['name']}",
-                    "Tag": tag,
-                    "CoefA": item["coef_a"],
-                    "CoefB": 0.0,
-                    "Unit": item["unit"],
-                    "Action": item["action"],
-                }
-            )
+    # Also generate MarsRenewable_LC-AC_1Unit.csv (single unit baseline: 34 registers)
+    p4_1unit = out_dir / "MarsRenewable_LC-AC_1Unit.csv"
+    lc_ac_1unit = ac_regs[:len(ac_template)] + lc_regs[:len(lc_template)]
+    write_definition_file(
+        p4_1unit, "modbusTCP", "Inverter", "MarsRenewable", "LC-AC-1Unit", lc_ac_1unit, strict_overlap=True
+    )
+    generated["MarsRenewable_LC-AC_1Unit.csv"] = p4_1unit
 
+    # -------------------------------------------------------------------------
+    # 4b. MarsRenewable_LC.csv (Liquid Cooling - 100 units)
+    # -------------------------------------------------------------------------
     p4_lc = out_dir / "MarsRenewable_LC.csv"
     valid, rep = write_definition_file(
-        p4_lc, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_alone_regs, strict_overlap=True
+        p4_lc, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_lc.name}: {rep.issues}")
@@ -696,35 +680,23 @@ def generate_mars_requested_definitions(
     # Also generate MarsRenewable_LiquidCooling.csv alias
     p4_lc_alias = out_dir / "MarsRenewable_LiquidCooling.csv"
     write_definition_file(
-        p4_lc_alias, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_alone_regs, strict_overlap=True
+        p4_lc_alias, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_regs, strict_overlap=True
     )
     generated["MarsRenewable_LiquidCooling.csv"] = p4_lc_alias
 
-    # -------------------------------------------------------------------------
-    # 4c. MarsRenewable_AC.csv (Air Conditioning / Air Cooling 1 individually)
-    # -------------------------------------------------------------------------
-    ac_alone_regs = []
-    for item in raw["ac"]:
-        if item["action"] != "0":
-            addr = item["addr"]
-            tag = "TEMP" if addr == 15020 else ("HUMIDITY" if addr == 15027 else "")
-            ac_alone_regs.append(
-                {
-                    "Info1": "4",
-                    "Info2": str(addr),
-                    "Info3": item["dtype"],
-                    "Name": f"AC1 {item['name']}",
-                    "Tag": tag,
-                    "CoefA": item["coef_a"],
-                    "CoefB": 0.0,
-                    "Unit": item["unit"],
-                    "Action": item["action"],
-                }
-            )
+    # Also generate MarsRenewable_LC_1Unit.csv
+    p4_lc_1u = out_dir / "MarsRenewable_LC_1Unit.csv"
+    write_definition_file(
+        p4_lc_1u, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling-1Unit", lc_regs[:len(lc_template)], strict_overlap=True
+    )
+    generated["MarsRenewable_LC_1Unit.csv"] = p4_lc_1u
 
+    # -------------------------------------------------------------------------
+    # 4c. MarsRenewable_AC.csv (Air Conditioning / Air Cooling - 100 units)
+    # -------------------------------------------------------------------------
     p4_ac = out_dir / "MarsRenewable_AC.csv"
     valid, rep = write_definition_file(
-        p4_ac, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_alone_regs, strict_overlap=True
+        p4_ac, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_ac.name}: {rep.issues}")
@@ -733,9 +705,16 @@ def generate_mars_requested_definitions(
     # Also generate MarsRenewable_AirCooling.csv alias
     p4_ac_alias = out_dir / "MarsRenewable_AirCooling.csv"
     write_definition_file(
-        p4_ac_alias, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_alone_regs, strict_overlap=True
+        p4_ac_alias, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
     )
     generated["MarsRenewable_AirCooling.csv"] = p4_ac_alias
+
+    # Also generate MarsRenewable_AC_1Unit.csv
+    p4_ac_1u = out_dir / "MarsRenewable_AC_1Unit.csv"
+    write_definition_file(
+        p4_ac_1u, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling-1Unit", ac_regs[:len(ac_template)], strict_overlap=True
+    )
+    generated["MarsRenewable_AC_1Unit.csv"] = p4_ac_1u
 
     # -------------------------------------------------------------------------
     # 5. MarsRenewable_Meter.csv (Device ID 1: Meter 1)

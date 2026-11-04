@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Solax;X1-X3 Generic;;;;;;;
+ModbusRTU;Inverter;Solax;X1-X3 Generic;;;;;;;
 1;3;0_7;STRING;;SeriesNumber;SERIAL;1;0;;4
 2;3;7_7;STRING;;FactoryName;;1;0;;4
 3;3;14_7;STRING;;ModuleName;;1;0;;4

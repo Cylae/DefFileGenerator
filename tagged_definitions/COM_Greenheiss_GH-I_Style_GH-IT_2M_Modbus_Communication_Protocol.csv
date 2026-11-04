@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Greenheiss;GH-I Style & GH-IT 2M Modbus C;;;;;;;
+modbusRTU;Other;Greenheiss;GH-I Style & GH-IT 2M Modbus C;;;;;;;
 1;4;263;U16;;PV1Volt;;-1;0.0;V;4
 2;4;256;U16;;MPVMode;;1.0;0.0;None;4
 3;4;257;U16;;FaultMSG;;1.0;0.0;None;4

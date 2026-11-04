@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Growatt;Inv;;;;;;;
+ModbusRTU;Inverter;Growatt;Inv;;;;;;;
 1;4;1;U16;;Input power (high);P_DC;1.0;0.0;;4
 2;4;2;U16;;Input power (low);;1.0;0.0;;4
 3;4;3;U16;;PV1 voltage;U_DC_STRING_1;1.0;0.0;;4
@@ -155,4 +155,4 @@
 154;4;904;U16;;PV16 input current;I_DC_MPPT_16;1.0;0.0;;4
 155;4;905;U16;;PV16 input power(high);P_DC_MPPT_16;1.0;0.0;;4
 156;4;906;U16;;PV16 input power(low);;1.0;0.0;;4
-157;3;3;U16;;Active power reduction;cmd;1.000000;0.000000;%;4
+157;3;3;U16;;Active power reduction;;1.000000;0.000000;%;4

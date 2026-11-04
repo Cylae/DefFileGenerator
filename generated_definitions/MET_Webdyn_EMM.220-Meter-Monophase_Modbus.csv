@@ -7,12 +7,12 @@ ModbusRTU;Meter;Webdyn;EMM220;;;;;;;
 6;4;30;F32;;Power Factor;PF;1.0;0.0;-;4
 7;4;36;F32;;Phase Angle;;1.0;0.0;-;4
 8;4;70;F32;;Frequency;FREQ;1.0;0.0;Hz;4
-9;4;72;F32;;Import active energy;E_IMP;1.0;0.0;kWh;4
-10;4;74;F32;;Export active energy;E_EXP;1.0;0.0;kWh;4
+9;4;72;F32;;Import active energy;;1.0;0.0;kWh;4
+10;4;74;F32;;Export active energy;;1.0;0.0;kWh;4
 11;4;76;F32;;Import reactive energy;;1.0;0.0;kVArh;4
 12;4;78;F32;;Export reactive energy;;1.0;0.0;kVArh;4
-13;4;86;F32;;Total active energy;;1.0;0.0;kWh;4
-14;4;88;F32;;Total reactive energy;E_TOT;1.0;0.0;kVArh;4
+13;4;86;F32;;Total active energy;E_TOT;1.0;0.0;kWh;4
+14;4;88;F32;;Total reactive energy;;1.0;0.0;kVArh;4
 15;3;12;F32;;Relay Pulse Width_Float;;1.0;0.0;;1
 16;3;18;F32;;Network Parity Stop;;1.0;0.0;;1
 17;3;20;F32;;Network Port Mode;;1.0;0.0;;1

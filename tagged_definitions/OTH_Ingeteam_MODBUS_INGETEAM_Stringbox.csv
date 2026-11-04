@@ -1,4 +1,4 @@
-﻿ModbusRTU;stringbox;Ingeteam;StringBox;;;;;;;
+ModbusRTU;stringbox;Ingeteam;StringBox;;;;;;;
 1;4;30001;U32;;h_total;;1;0;H;4
 2;4;30003;U32;;Operating Time;;1;0;H;4
 3;4;30005;U8;;Current from string 1;I_DC_STRING_1;10;0;A;4

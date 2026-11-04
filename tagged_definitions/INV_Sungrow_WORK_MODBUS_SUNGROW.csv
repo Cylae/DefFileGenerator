@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Sungrow;WORK_MODBUS_SUNGROW;;;;;;;
+modbusRTU;Inverter;Sungrow;WORK_MODBUS_SUNGROW;;;;;;;
 1;4;4989;U16;;Req_SN;SERIAL;1.0;0.0;;4
 2;4;4999;U16;;Req1;;1.0;0.0;;4
 3;4;5030;U16;;Req2;;1.0;0.0;;4

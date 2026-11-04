@@ -1,4 +1,4 @@
-﻿modbusTCP;meter;OG;NHEOBOX;;;;;;;
+modbusTCP;meter;OG;NHEOBOX;;;;;;;
 1;4;28200;I32;;Active power_MEM;;0.001;0;kW;4
 2;4;28202;I32;;Reactive power_MEM;Q_AC;0.001;0;kW;4
 3;4;28204;U32;;Phase A voltage_MEM;U_AC_1;0.1;0;V;4

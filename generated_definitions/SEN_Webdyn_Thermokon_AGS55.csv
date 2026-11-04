@@ -7,7 +7,7 @@ Modbus;Sensor;Webdyn;Thermokon_AGS55
 6;3;5;I16;;CO2;;1.0;0.0;;4
 7;3;6;I16;;VOC;;0.1;0.0;;4
 8;3;7;I16;;CO2 VOC Mix;;0.1;0.0;;4
-9;3;8;I16;;Differential pressure 1;PRESSURE;1.0;0.0;Pa;4
+9;3;8;I16;;Differential pressure 1;;1.0;0.0;Pa;4
 10;3;9;U16;;Volume flow 1;;100.0;0.0;m³/h;4
 11;3;10;I16;;Differential pressure 2;;1.0;0.0;Pa;4
 12;3;11;U16;;Volume flow 2;;100.0;0.0;m³/h;4

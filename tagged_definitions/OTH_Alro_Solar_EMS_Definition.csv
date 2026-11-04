@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Alro Solar;EMS_Definition;;;;;;;
+modbusRTU;Other;Alro Solar;EMS_Definition;;;;;;;
 1;4;31000;U16;;Read-only segment;;1.0;0.0;---;4
 2;4;31001;U16;;None;;1.0;0.0;---;4
 3;4;31002;U16;;None;;1.0;0.0;---;4

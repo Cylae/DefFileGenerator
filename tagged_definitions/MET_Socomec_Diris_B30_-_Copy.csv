@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Socomec;DirisB30;;;;;;;
+ModbusRTU;Meter;Socomec;DirisB30;;;;;;;
 1;4;18444;U32;;Tension Phase1;U_AC_1;0.0;0.0;;4
 2;4;18446;U32;;Tension Phase2;U_AC_2;0.0;0.0;;4
 3;4;18448;U32;;Tension Phase3;U_AC_3;0.0;0.0;;4

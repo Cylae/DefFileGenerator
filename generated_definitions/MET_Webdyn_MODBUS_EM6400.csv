@@ -9,7 +9,7 @@ ModbusRTU;Meter;Schneider;EM 6400
 8;3;3924;F32_W;;R-Y Phase Voltage;;1.0;0.0;VRY;4
 9;3;3938;F32_W;;Y-B Phase Voltage;;1.0;0.0;VYB;4
 10;3;3952;F32_W;;B-R Phase Voltage;;1.0;0.0;VBR;4
-11;3;3906;F32_W;;Avg Power Factor;PF;1.0;0.0;;4
+11;3;3906;F32_W;;Avg Power Factor;;1.0;0.0;;4
 12;3;3928;F32_W;;R Current;;1.0;0.0;Amp;4
 13;3;3942;F32_W;;Y Current;;1.0;0.0;Amp;4
 14;3;3956;F32_W;;B Current;;1.0;0.0;Amp;4

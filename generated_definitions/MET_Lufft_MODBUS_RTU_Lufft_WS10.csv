@@ -3,9 +3,9 @@ ModbusRTU;Meter;Lufft;WS10;;;;;;;
 2;4;23;I16;;Temprature du point de rose;;10;0.0;C;4
 3;4;29;U16;;Humidit relative  ;;10;0.0;%;4
 4;4;31;U16;;Humidit absolue ;;10;0.0;g/m3;4
-5;4;37;U16;;Pression atmosphrique absolue;PRESSURE;10;0.0;hPa;4
+5;4;37;U16;;Pression atmosphrique absolue;;10;0.0;hPa;4
 6;4;39;U16;;Pression atmosphrique relative  ;;10;0.0;hPa ;4
-7;4;45;U16;;Vitesse du vent ms;WIND_SPEED;10;0.0;m/s;4
+7;4;45;U16;;Vitesse du vent ms;;10;0.0;m/s;4
 8;4;49;U16;;Vitesse du vent kmh;;10;0.0;km/h;4
 9;4;53;U16;;Direction du vent  ;WIND_BEARING;10;0.0;deg;4
 10;4;54;U16;;Direction du vent  (corrig par la boussole);;10;0.0;deg;4

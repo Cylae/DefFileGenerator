@@ -1,4 +1,4 @@
-﻿ModbusRTU;Sensor;IngenieurBuro;Tx-RS485-MB;;;;;;;
+ModbusRTU;Sensor;IngenieurBuro;Tx-RS485-MB;;;;;;;
 1;4;0;U16;;Irradiance;POA;0.1;0.0;W/m;4
 2;4;1;U16;;Cell temperature;TEMP_CELL;0.1;-25.0;C;4
 3;4;2;U16;;External temperature;;0.1;-25.0;C;4

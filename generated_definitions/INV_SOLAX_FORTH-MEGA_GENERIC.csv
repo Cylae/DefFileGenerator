@@ -1,10 +1,10 @@
 ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 1;4;0_4;STRING;;Protocol Identifier;;1;0;;4
-2;4;18_32;STRING;;Model Type;MODEL;1;0;;4
+2;4;18_32;STRING;;Model Type;;1;0;;4
 3;4;34_32;STRING;;Software Version;;1;0;;4
 4;4;50_32;STRING;;Serial Number;SERIAL;1;0;;4
 5;4;66;U16;;Rated grid voltage;;1;0;V;4
-6;4;67;U16;;Rated output active power;P_AC;0.1;0;kW;4
+6;4;67;U16;;Rated output active power;;0.1;0;kW;4
 7;4;76_20;STRING;;Protocol number;;1;0;;4
 8;4;86_20;STRING;;Protocol Version;;1;0;;4
 9;4;256;U16;;line-voltage AB;;0.1;0;V;4
@@ -17,7 +17,7 @@ ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 16;4;384;U16;;Phase-A Current;;0.1;0;A;4
 17;4;385;U16;;Phase-B Current;;0.1;0;A;4
 18;4;386;U16;;Phase-C Current;;0.1;0;A;4
-19;4;387;I32;;Active Power;;1;0;W;4
+19;4;387;I32;;Active Power;P_AC;1;0;W;4
 20;4;389;I32;;Reactive Power;Q_AC;1;0;Var;4
 21;4;391;U32;;Apparent Power;S_AC;1;0;VA;4
 22;4;393;U16;;Today Energy;E_DAY;0.1;0;kWh;4
@@ -27,8 +27,8 @@ ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 26;4;399;I16;;Power Factor;PF;0.001;0;;4
 27;4;512;U16;;Major Operation-mode;;1;0;;4
 28;4;513;U16;;Minor Operation-mode;;1;0;;4
-29;4;514;I16;;Internal Temperature;TEMP;0.1;0;Degr.Celsius;4
-30;4;515;I16;;Boost-module Temperature 1;TEMP_CELL;0.1;0;Degr.Celsius;4
+29;4;514;I16;;Internal Temperature;TEMP_INT;0.1;0;Degr.Celsius;4
+30;4;515;I16;;Boost-module Temperature 1;;0.1;0;Degr.Celsius;4
 31;4;516;I16;;Boost-module Temperature 2;;0.1;0;Degr.Celsius;4
 32;4;517;I16;;Boost-module Temperature 3;;0.1;0;Degr.Celsius;4
 33;4;518;I16;;Boost-module Temperature 4;;0.1;0;Degr.Celsius;4
@@ -200,7 +200,7 @@ ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 199;4;955;U16;;Year Product 3;;0.1;0;kWh;1
 200;4;957;U16;;Year Product 4;;1;0;;1
 201;4;959;U16;;Year Product 5;;0.1;0;kWh;1
-202;3;8321;U16;;Modbus Address;UNIT_ID;1;0;;4
+202;3;8321;U16;;Modbus Address;;1;0;;4
 203;3;8322;U16;;Modbus Baud Rate;;0.01;0;;4
 204;3;8450;U16;;Grid Code;;1;0;;1
 205;3;8451;U16;;Language;;1;0;;1
@@ -247,19 +247,19 @@ ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 246;3;8707;U16;;Clear History Log;;1;0;;1
 247;3;8709;I16;;Energy Compensation;;0.1;0;kWh;1
 248;3;8710;U16;;Grid-connected  control Set;;1;0;;1
-249;3;8711;U16;;BUS voltage setting;U_DC;0.1;0;V;1
+249;3;8711;U16;;BUS voltage setting;;0.1;0;V;1
 250;3;8832;U16;;System Time;;1;0;;1
 251;3;8837;U16;;Scheduled boot time;;1;0;Secs;1
 252;3;8838;U16;;Scheduled shutdown time;;1;0;Secs;1
 253;3;8839;U16;;Command ON/OFF;;1;0;;1
 254;3;8840;U16;;Meter Negate Enable;;1;0;;1
-255;3;8962;U16;;Backflow preventionPercent;WIND_SPEED;0.1;0;% Wmax;1
+255;3;8962;U16;;Backflow preventionPercent;;0.1;0;% Wmax;1
 256;3;8963;U16;;Maximum  power  output Percent;;0.1;0;% Wmax;1
 257;3;8964;U16;;Real-time active power percent;;1;0;;1
 258;3;8965;U16;;Real-time reactive power percent;;1;0;;1
 259;3;8966;U16;;active power rising slope;;0.1;0;%;1
 260;3;8967;U16;;reactive power rising slope;;;0;;1
-261;3;8968;I16;;Power factor Setting;CMD_PF;0.001;0;;1
+261;3;8968;I16;;Power factor Setting;;0.001;0;;1
 262;3;8969;I16;;reactive power percent;;0.1;0;%;1
 263;3;8970;U16;;reactive power regulations speed;;0.1;0;%;1
 264;3;8977;I16;;Watt-Freq Enable;;1;0;;1

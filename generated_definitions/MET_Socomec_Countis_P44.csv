@@ -1,5 +1,5 @@
 modbus;Meter;SOCOMEC;COUNTIS_P44;;;;;;;
-1;3;50042_8;STRING;;Vendor Name;;1;0;;4
+1;3;50042_8;STRING;;Vendor Name;MANUFACTURER;1;0;;4
 2;3;50050_8;STRING;;Product Name;;1;0;;4
 3;3;50514;U32;;Phase to Phase Voltage U12;;0.01;0;V;4
 4;3;50516;U32;;Phase to Phase Voltage U23;;0.01;0;V;4
@@ -12,9 +12,9 @@ modbus;Meter;SOCOMEC;COUNTIS_P44;;;;;;;
 11;3;50530;U32;;Current I2;;0.001;0;A;4
 12;3;50532;U32;;Current I3;;0.001;0;A;4
 13;3;50534;U32;;Neutral Current In;;0.001;0;A;4
-14;3;50536;I32;;Total Active Power P;P_AC;0.01;0;kW;4
-15;3;50538;I32;;Total Reactive Power Q;Q_AC;0.01;0;kVar;4
-16;3;50540;U32;;Total Apparent Power S;S_AC;0.01;0;kVA;4
+14;3;50536;I32;;Total Active Power P;;0.01;0;kW;4
+15;3;50538;I32;;Total Reactive Power Q;;0.01;0;kVar;4
+16;3;50540;U32;;Total Apparent Power S;;0.01;0;kVA;4
 17;3;50542;I32;;Total Power Factor;PF;0.001;0;;4
 18;3;50544;I32;;Active Power Phase 1;P_AC_1;0.01;0;kW;4
 19;3;50546;I32;;Active Power Phase 2;P_AC_2;0.01;0;kW;4
@@ -28,7 +28,7 @@ modbus;Meter;SOCOMEC;COUNTIS_P44;;;;;;;
 27;3;50562;I32;;Power Factor Phase 1;PF_1;0.001;0;;4
 28;3;50564;I32;;Power Factor Phase 2;PF_2;0.001;0;;4
 29;3;50566;I32;;Power Factor Phase 3;PF_3;0.001;0;;4
-30;3;25987;U32;;Total Positive Active Energy Ea+;E_TOT;1;0;kWh;4
+30;3;25987;U32;;Total Positive Active Energy Ea+;;1;0;kWh;4
 31;3;25990;U32;;Total Negative Active Energy Ea-;;1;0;kWh;4
 32;3;25993;U32;;Total Positive Reactive Energy Er+;;1;0;kVarh;4
 33;3;25996;U32;;Total Negative Reactive Energy Er-;;1;0;kVarh;4

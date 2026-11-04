@@ -1,7 +1,7 @@
-﻿Modbus;Sensor;Lufft;WS10;;;;;;;
+Modbus;Sensor;Lufft;WS10;;;;;;;
 1;4;19;I16;;Temperature de l_air;;10.0;0.0;Deg.Celsius;4
 2;4;23;I16;;Temperature du point de rosee;;10.0;0.0;Deg.Celsius;4
-3;4;29;U16;;Humidite relative;;10.0;0.0;%;4
+3;4;29;U16;;Humidite relative;HUMIDITY;10.0;0.0;%;4
 4;4;31;U16;;Humidite absolue;;10.0;0.0;g/m3;4
 5;4;37;U16;;Pression atmospherique absolue;PRESSURE;10.0;0.0;hPa;4
 6;4;39;U16;;Pression atmospherique relative;;10.0;0.0;hPa;4

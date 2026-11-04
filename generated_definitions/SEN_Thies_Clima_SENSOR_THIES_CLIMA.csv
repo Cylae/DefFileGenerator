@@ -1,23 +1,23 @@
 modbusRTU;Sensor;Thies Clima;Clima Sensor;;;;;;;
-1;4;30003;U32;;Average wind speed;WIND_SPEED;0.1;0;m/s;4
+1;4;30003;U32;;Average wind speed;;0.1;0;m/s;4
 2;4;30011;U32;;Maximum value Wind velocity (gust);;0.1;0;m/s;4
 3;4;30019;U32;;Average wind speed (High Resolution);;0.01;0;m/s;4
 4;4;30021;U32;;True wind;;0.01;0;m/s;4
-5;4;30203;U32;;Average wind direction;WIND_BEARING;0.1;0;Degree;4
+5;4;30203;U32;;Average wind direction;;0.1;0;Degree;4
 6;4;30211;U32;;Wind direction of the gust;;0.1;0;Degree;4
 7;4;30213;U32;;True wind direction;;0.1;0;Degree;4
 8;4;30401;I32;;Air temperature;;0.1;0;°C;4
-9;4;30403;I32;;Internal temperature of housing;TEMP_INT;0.1;0;°C;4
+9;4;30403;I32;;Internal temperature of housing;;0.1;0;°C;4
 10;4;30405;I32;;Acoustic temperature;;0.1;0;°C;4
 11;4;30407;I32;;Air temperature uncorrected;;0.1;0;°C;4
 12;4;30409;I32;;Wind Chill Temperature;;0.1;0;°C;4
 13;4;30411;I32;;Heat Index Temperature;;0.1;0;°C;4
-14;4;30413;I32;;Rain temperature;RAIN;0.1;0;°C;4
+14;4;30413;I32;;Rain temperature;;0.1;0;°C;4
 15;4;30601;U32;;Relative humidity;HUMIDITY;0.1;0;%rh;4
 16;4;30603;U32;;Absolute humidity;;0.01;0;g/m^3;4
 17;4;30605;I32;;Dew-point temperature;;0.1;0;°C;4
 18;4;30607;U32;;Rel. humidity uncorrected;;0.1;0;%r.h.;4
-19;4;30801;U32;;Absolute air pressure;PRESSURE;0.01;0;hPa;4
+19;4;30801;U32;;Absolute air pressure;;0.01;0;hPa;4
 20;4;30803;U32;;Relative air pressure referred to standard elevation zero (NHN);;0.01;0;hPa;4
 21;4;31001;I32;;Global radiation;;0.1;0;W/m^2;4
 22;4;31201;U32;;Brightness north;;0.1;0;klux;4
@@ -47,7 +47,7 @@ modbusRTU;Sensor;Thies Clima;Clima Sensor;;;;;;;
 46;4;34809;I32;;Height above mean sea level;;1;0;m;4
 47;4;34811;U32;;Sensor status wind measurement;;1;0;;4
 48;4;34837;U32;;Magnetic compass Aspecular angle Instrument north marking to magnetic North Pole;;0.1;0;Degree;4
-49;4;34839;I32;;Pitch from magnetic compass angle between north-south to horizontal;GHI;0.1;0;Degree;4
+49;4;34839;I32;;Pitch from magnetic compass angle between north-south to horizontal;;0.1;0;Degree;4
 50;4;34841;I32;;Roll from the magnetic compass angle between west-east to horizontal;;0.1;0;Degree;4
 51;4;34847;U32;;Speed Over Ground from GPS;;0.01;0;m/s;4
 52;4;34849;U32;;Track Angle from GPS;;0.1;0;Degree;4

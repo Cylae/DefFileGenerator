@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn INDIA;SAJ;;;;;;;
+modbusRTU;Other;Webdyn INDIA;SAJ;;;;;;;
 1;4;263;U16;;PV1Volt;;1.0;0.0;;4
 2;4;264;U16;;PV1Curr;;1.0;0.0;;4
 3;4;265;U16;;PV1Power;;1.0;0.0;;4
@@ -43,4 +43,4 @@
 42;4;307;U16;;Today Hour;;1.0;0.0;;4
 43;4;308;U16;;Total Hour;;1.0;0.0;;4
 44;4;310;U16;;Error Count;;1.0;0.0;;0
-45;4;32799;U16;;Active power reduction setting;cmd;1.0;0.0;%;1
+45;4;32799;U16;;Active power reduction setting;;1.0;0.0;%;1

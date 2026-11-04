@@ -1,4 +1,4 @@
-﻿modbusTCP;Inverter;MarsRenewable;PV;;;;;;;
+modbusTCP;Inverter;MarsRenewable;PV;;;;;;;
 1;4;25000;U16;;PV1 Operating Status;;1.000000;0.000000;;9
 2;4;25002;F32;;PV1 AC Phase A Voltage;U_AC_1;0.100000;0.000000;V;4
 3;4;25004;F32;;PV1 AC Phase B Voltage;U_AC_2;0.100000;0.000000;V;4

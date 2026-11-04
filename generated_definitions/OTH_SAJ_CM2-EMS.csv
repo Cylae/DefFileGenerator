@@ -17,7 +17,7 @@ modbus;EMS;SAJ;CM2-EMS;;;;;;;
 16;3;33946;U32;;paralltotalcap;;1;0;K;4
 17;3;33948;U32;;parallUsercap;;1;0;K;4
 18;3;33950;U16;;RGridVolt;;0.1;0;V;4
-19;3;33951;I16;;RGridCurr;I_DC;0.01;0;A;4
+19;3;33951;I16;;RGridCurr;;0.01;0;A;4
 20;3;33952;U16;;RGridFreq;;0.01;0;Hz;4
 21;3;33953;I32;;RGridPowerWatt;;1;0;W;4
 22;3;33955;U32;;RGridPowerVA;;1;0;VA;4
@@ -53,10 +53,10 @@ modbus;EMS;SAJ;CM2-EMS;;;;;;;
 52;3;33995;U32;;TInvPowerVA;;1;0;VA;4
 53;3;33997;I16;;TInvPowerPF;;0.001;0;;4
 54;3;33998;U16;;reserve;;1;0;;4
-55;3;34048;U32;;Parall_Today_PVEnergy;E_DAY;1;0;K;4
+55;3;34048;U32;;Parall_Today_PVEnergy;;1;0;K;4
 56;3;34050;U32;;Parall_Month_PVEnergy;;1;0;K;4
 57;3;34052;U32;;Parall_Year_PVEnergy;;1;0;K;4
-58;3;34054;U32;;Parall_Total_PVEnergy;E_TOT;1;0;K;4
+58;3;34054;U32;;Parall_Total_PVEnergy;;1;0;K;4
 59;3;34056;U32;;Parall_Today_BatChgEnergy;;1;0;K;4
 60;3;34058;U32;;Parall_Month_BatChgEnergy;;1;0;K;4
 61;3;34060;U32;;Parall_Year_BatChgEnergy;;1;0;K;4

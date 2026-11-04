@@ -1,6 +1,6 @@
 modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 1;4;40202;U32;;DC voltage;U_DC;0.01;0;V;4
-2;4;40204;U32;;Line current;I_AC_3;0.01;0;A;4
+2;4;40204;U32;;Line current;;0.01;0;A;4
 3;4;40206;U32;;Line current %;;0.1;0;%;4
 4;4;40208;I32;;Active current;;0.01;0;A;4
 5;4;40210;I32;;Active current %;;0.1;0;%;4
@@ -10,7 +10,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 9;4;40218;U32;;Grid voltage;;0.01;0;V;4
 10;4;40220;I32;;Apparent power;S_AC;0.01;0;kVA;4
 11;4;40222;I32;;Apparent power %;;0.1;0;%;4
-12;4;40224;I32;;Power;P_AC;0.01;0;kW;4
+12;4;40224;I32;;Power;;0.01;0;kW;4
 13;4;40226;I32;;Power %;;0.1;0;%;4
 14;4;40228;I32;;Reactive power;Q_AC;0.01;0;kVAr;4
 15;4;40230;I32;;Reactive power %;;0.1;0;%;4
@@ -67,7 +67,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 66;3;43828;U32;;Ext2 ctrl mode1;;1;0;;4
 67;3;43832;U32;;Local ctrl mode;;1;0;;4
 68;3;43834;U32;;Local ctrl disable;;1;0;;4
-69;3;44202;U32;;Fast power off mode;CMD_OFF;1;0;;4
+69;3;44202;U32;;Fast power off mode;;1;0;;4
 70;3;44204;U32;;Fast power off source;;1;0;;4
 71;3;44602;U32;;User DC voltage ref;;0.01;0;V;4
 72;3;44604;U32;;DC ref sel;;1;0;;4
@@ -195,7 +195,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 194;4;13005;U16;;Limit word 5;;1;0;;4
 195;4;13006;U16;;Limit word 6;;1;0;;4
 196;4;46022;U32;;Active power limit to grid;;1;0;kW;4
-197;4;46026;U32;;Reactive power limit;CMD_P_AC_SET_ABS;1;0;kVAr;4
+197;4;46026;U32;;Reactive power limit;;1;0;kVAr;4
 198;3;46124;U32;;P(f) limit type;;1;0;;4
 199;3;46126;U32;;P(f) corner frequency;;0.01;0;Hz;4
 200;3;46128;U32;;P(f) limit gradient;;0.1;0;%/Hz;4
@@ -207,7 +207,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 206;3;46140;U32;;Connect limit type;;1;0;;4
 207;3;46142;U32;;Connect limit ramp;;1;0;%/min;4
 208;3;46144;U32;;Grid fault ramp;;1;0;%/min;4
-209;3;46150;U32;;External power limit;cmdPwrPct;1;0;%;4
+209;3;46150;U32;;External power limit;;1;0;%;4
 210;3;46152;U32;;P(U) limiter;;1;0;;4
 211;3;46154;U32;;P(U) trigger level;;1;0;%;4
 212;3;46156;U32;;P(U) release level;;1;0;%;4
@@ -515,7 +515,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 514;3;52802;U32;;Enable;;1;0;;4
 515;3;52804;U32;;Profile;;1;0;;4
 516;3;52808;U32;;Power scale;;0.1;0;kW;4
-517;3;52820;U32;;Communication loss event;WIND_SPEED;1;0;;4
+517;3;52820;U32;;Communication loss event;;1;0;;4
 518;3;52822;U32;;Communication loss timeout;;1;0;s;4
 519;3;52824;U32;;Heartbeat max interval;;1;0;s;4
 520;3;52826;U32;;First start delay;;1;0;s;4
@@ -699,7 +699,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 698;3;54852;U32;;Current meas range;;0.1;0;A;4
 699;3;17427;U16;;Current range selection 1-12;;1;0;;4
 700;3;17428;U16;;Current range selection 13-24;;1;0;;4
-701;4;54862;I32;;DC input 1 current;I_DC;0.1;0;A;4
+701;4;54862;I32;;DC input 1 current;;0.1;0;A;4
 702;4;54864;I32;;DC input 2 current;;0.1;0;A;4
 703;4;54866;I32;;DC input 3 current;;0.1;0;A;4
 704;4;54868;I32;;DC input 4 current;;0.1;0;A;4
@@ -755,7 +755,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 754;3;55446;U32;;Transformer low oil level delay;;1;0;s;4
 755;3;55448;U32;;Transformer low oil level current limit;;1;0;A;4
 756;3;55450;U32;;Transformer low oil level failure logic;;1;0;;4
-757;3;55452;U32;;MV overpressure source;PRESSURE;1;0;;4
+757;3;55452;U32;;MV overpressure source;;1;0;;4
 758;3;55454;U32;;Transformer overpressure action;;1;0;;4
 759;3;55456;U32;;Transformer overpressure delay;;1;0;s;4
 760;3;55458;U32;;Transformer overpressure current limit;;1;0;A;4
@@ -966,7 +966,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 965;3;62002;U32;;Grounding mode;;1;0;;4
 966;3;62004;U32;;Grounding device;;1;0;;4
 967;4;62006;U32;;Grounding state;;1;0;;4
-968;3;62008;U32;;Ignore insulation resistance;R_ISO;1;0;;4
+968;3;62008;U32;;Ignore insulation resistance;;1;0;;4
 969;3;62010;U32;;Ungrounded operation;;1;0;;4
 970;3;62012;U32;;Unground on fault;;1;0;;4
 971;3;62014;U32;;Night grounding;;1;0;;4
@@ -976,7 +976,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 975;3;62022;U32;;Minimum grounding interval;;1;0;min;4
 976;3;62024;U32;;Grounding circuit voltage fail action;;1;0;;4
 977;3;62026;U32;;Grounding current limit;;0.01;0;A;4
-978;4;62028;U32;;Total grounding current;I_AC;0.001;0;A;4
+978;4;62028;U32;;Total grounding current;;0.001;0;A;4
 979;4;62030;I32;;Resistive grounding current;;0.001;0;A;4
 980;3;62032;U32;;Grounding current fault action;;1;0;;4
 981;3;62034;U32;;Grounding current time limit;;0.001;0;s;4
@@ -990,7 +990,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 989;3;62052;U32;;Insulation resistance device;;1;0;;4
 990;4;62054;U32;;Insulation resistance device state;;1;0;;4
 991;3;62056;U32;;Insulation resistance limit;;1;0;Ohm;4
-992;4;62058;U32;;Insulation resistance;;1;0;;4
+992;4;62058;U32;;Insulation resistance;R_ISO;1;0;;4
 993;3;62060;U32;;Insulation resistance fault action;;1;0;;4
 994;3;62062;U32;;Minimum Riso measurement time;;1;0;min;4
 995;3;62064;U32;;Maximum Riso measurement time;;1;0;min;4

@@ -1,5 +1,5 @@
 modbusRTU;Sensor;THIES;Wind Transmitter;;;;;;;
-1;4;30001;U32;;Instantaneous value of the wind velocity;WIND_SPEED;0.1;0;m/s;4
+1;4;30001;U32;;Instantaneous value of the wind velocity;;0.1;0;m/s;4
 2;4;30003;U32;;Current average value of the wind velocity;;0.1;0;m/s;4
 3;4;30005;U32;;Instantaneous value of the wind velocity, calculated with the standard curve;;0.1;0;m/s;4
 4;4;30007;U32;;Current standard deviation of the wind velocity, calculated with the current calibration table (35007) 1;;0.1;0;m/s;4
@@ -7,15 +7,15 @@ modbusRTU;Sensor;THIES;Wind Transmitter;;;;;;;
 6;4;30011;U32;;Current gust of the wind velocity of the last 1min., calculated with the current calibration table (35011)1;;0.1;0;m/s;4
 7;4;30013;U32;;Wind velocity8  (compensated for air pressure) (35013)1;;0.01;0;m/s;4
 8;4;30403;I32;;Housing interior temperature of the wind transmitter (35019) 1;;0.1;0;C;4
-9;4;30801;U32;;Absolute air pressure (35021)1;PRESSURE;0.01;0;hPa;4
+9;4;30801;U32;;Absolute air pressure (35021)1;;0.01;0;hPa;4
 10;4;30803;U32;;Relative air pressure (35023)1;;0.01;0;hPa;4
 11;4;34811;U32;;32-bit sensor status in hexadecimal representation;;1;0;;4
 12;4;34813;U32;;Main loop run per 1s (35027)1;;1;0;1/s;4
 13;4;34815;U32;;Operating time (35029) 1;;1;0;s;4
 14;4;34819;I32;;Inclination value ? Angle between the Z-axis and the vertical (35031)1;;0.1;0;;4
-15;4;34821;I32;;Inclination value ? Angle between the X-axis and the horizontal;GHI;0.1;0;;4
+15;4;34821;I32;;Inclination value ? Angle between the X-axis and the horizontal;;0.1;0;;4
 16;4;34823;I32;;Inclination value ? Angle between the Y-axis and the horizontal;;0.1;0;;4
-17;4;34825;U32;;Frequency vibration measurement, X-axis (35037) 1;FREQ;0.01;0;Hz;4
+17;4;34825;U32;;Frequency vibration measurement, X-axis (35037) 1;;0.01;0;Hz;4
 18;4;34827;U32;;Acceleration vibration measurement, X-axis (35039) 1;;1;0;mg;4
 19;4;34829;U32;;Frequency vibration measurement, Y-axis (35041) 1;;0.01;0;Hz;4
 20;4;34831;U32;;Acceleration vibration measurement, Y-axis (35043) 1;;1;0;mg;4

@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;INV_SMA_STPCORE1_50-41;;;;;;;
+modbusRTU;Inverter;SMA;INV_SMA_STPCORE1_50-41;;;;;;;
 1;4;30001;U16;;Version number of the SMA Modbus profile;;1.0;0.0;;4
 2;4;30003;U16;;SUSy-ID;;1.0;0.0;;4
 3;4;30005;U16;;Serial number;SERIAL;1.0;0.0;;4

@@ -5,7 +5,7 @@ Modbus;Meter;Lettel;MCT4-45
 4;4;6;F32;;AB line voltage;;1.0;0.0;V;4
 5;4;8;F32;;BC line voltage;;1.0;0.0;V;4
 6;4;10;F32;;CA line voltage;;1.0;0.0;V;4
-7;4;12;F32;;A phase current;I_AC_3;1.0;0.0;A;4
+7;4;12;F32;;A phase current;;1.0;0.0;A;4
 8;4;14;F32;;B phase current;;1.0;0.0;A;4
 9;4;16;F32;;C phase current;;1.0;0.0;A;4
 10;4;18;F32;;A Phase active power;P_AC_1;1.0;0.0;kW;4
@@ -20,10 +20,10 @@ Modbus;Meter;Lettel;MCT4-45
 19;4;36;F32;;B Phase view power;;1.0;0.0;kVA;4
 20;4;38;F32;;C Phase view power;;1.0;0.0;kVA;4
 21;4;40;F32;;Total apparent power;S_AC;1.0;0.0;kVA;4
-22;4;42;F32;;A Phase power factor;PF;1.0;0.0;;4
+22;4;42;F32;;A Phase power factor;;1.0;0.0;;4
 23;4;44;F32;;B Phase power factor;;1.0;0.0;;4
 24;4;46;F32;;C Phase power factor;;1.0;0.0;;4
-25;4;48;F32;;Total power factor;;1.0;0.0;;4
+25;4;48;F32;;Total power factor;PF;1.0;0.0;;4
 26;4;50;F32;;Frequency;FREQ;1.0;0.0;Hz;4
 27;4;52;F32;;Positive Active Energy;;1.0;0.0;kWh;4
 28;4;54;F32;;Reverse Active Energy;;1.0;0.0;kWh;4

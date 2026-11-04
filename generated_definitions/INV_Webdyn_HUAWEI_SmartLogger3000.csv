@@ -5,7 +5,7 @@ ModbusTCP;inverter;Huawei;smartlogger3
 4;3;40572;I16;;Current1_Ia;;0.001000;0.000000;A;4
 5;3;40573;I16;;Current2_Ib;;0.001000;0.000000;A;4
 6;3;40574;I16;;Current3_Ic;;0.001000;0.000000;A;4
-7;3;40120;U16;;Active power derating;P_AC;0.100000;0.000000;kW;4
+7;3;40120;U16;;Active power derating;;0.100000;0.000000;kW;4
 8;3;40200;U16;;Power On  ;CMD_ON;1.000000;0.000000; -;4
 9;3;40201;U16;;Power Off  ;CMD_OFF;1.000000;0.000000; -;4
 10;3;40420;U32;;ActiveAdjustment;CMD_P_AC_SET_PERCENT;0.100000;0.000000;kW;4

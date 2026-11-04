@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Sungrow;Generic;;;;;;;
+Modbus;Inverter;Sungrow;Generic;;;;;;;
 1;4;4949;U32_W;;Protocol No.;;1.0;0.0;;4
 2;4;4951;U32_W;;Protocol version;;1.0;0.0;;4
 3;4;4953_30;STRING;;ARM software version;;1.0;0.0;;4

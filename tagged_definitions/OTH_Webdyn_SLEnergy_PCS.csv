@@ -1,4 +1,4 @@
-﻿modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
+modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
 1;3;10000;U16;;Comm_Protocol_Ver;;1;0;;4
 2;3;10001;U16;;Main_DSP_Ver;;1;0;;4
 3;3;10002;U16;;Aux_DSP_Ver;;1;0;;4
@@ -87,7 +87,7 @@
 86;3;10548;I16;;Power_Factor_T;;0.001;0;;4
 87;3;10549;I32;;Forward_Reverse_Pwr_S;;1;0;W;4
 88;3;10551;I32;;Forward_Reverse_Pwr_T;;1;0;W;4
-89;3;10560;U32;;Total_PV_Power;;1;0;W;4
+89;3;10560;U32;;Total_PV_Power;P_DC;1;0;W;4
 90;3;10562;U16;;PV1_Voltage;U_DC_STRING_1;0.1;0;V;4
 91;3;10563;U16;;PV1_Current;I_DC_STRING_1;0.1;0;A;4
 92;3;10564;U16;;PV1_Power;;1;0;W;4
@@ -116,7 +116,7 @@
 115;3;10684;U32;;PV_Cumulative_Yield;E_TOT;0.1;0;kWh;4
 116;3;10686;U32;;PV_Monthly_Yield;;0.1;0;kWh;4
 117;3;10688;U32;;PV_Yearly_Yield;;0.1;0;kWh;4
-118;3;10800;I32;;Load_Total_Active_Power;Load;1;0;W;4
+118;3;10800;I32;;Load_Total_Active_Power;;1;0;W;4
 119;3;10802;I32;;Load_Active_Power_R;;1;0;W;4
 120;3;10804;I32;;Load_Active_Power_S;;1;0;W;4
 121;3;10806;I32;;Load_Active_Power_T;;1;0;W;4
@@ -186,7 +186,7 @@
 185;3;11132;I16;;Battery_Charging_Current;;0.1;0;A;4
 186;3;11133;I16;;Battery temperature;TEMP;0.1;0.0;C;4
 187;3;11134;U16;;Discharge cutoff voltage;;0.1;0.0;V;4
-188;3;11135;U16;;SOC;SOC2;1;0;pct;4
+188;3;11135;U16;;SOC;SOC;1;0;pct;4
 189;3;11136;U16;;SOH;SOH;1;0;pct;4
 190;3;11137;I16;;Maximum discharge current;;0.1;0.0;A;4
 191;3;11138;I16;;Maximum charging current;;0.1;0.0;A;4
@@ -228,7 +228,7 @@
 227;3;20010;U16;;Cloud_Total battery pack voltage (PCS);;0.1;0;V;4
 228;3;20011;I16;;Cloud_Total battery pack current (PCS);;0.1;0;A;4
 229;3;20013;U16;;Cloud_Main control temperature;;0.1;0;C;4
-230;3;20014;U16;;Cloud_SOC;SOC;0.1;0;%;4
+230;3;20014;U16;;Cloud_SOC;;0.1;0;%;4
 231;3;20015;U16;;Cloud_SOH;;1;0;%;4
 232;3;20016;U16;;Cloud_SOE;;0.1;0;%;4
 233;3;20017;U16;;Cloud_Charging cutoff voltage;;0.1;0;V;4
@@ -638,7 +638,7 @@
 637;3;42086;U16;;Off_Grid_Output_Voltage_Setting;;0.1;0;V;4
 638;3;42087;U16;;Off_Grid_Output_Frequency_Settings;;0.01;0;Hz;4
 639;3;42088;U16;;Energy_Flow_Priority_Setting;;1;0;;4
-640;3;42091;I16;;Battery power settings;BatteryCmd;0.1;0;kW;4
+640;3;42091;I16;;Battery power settings;;0.1;0;kW;4
 641;3;42092;I16;;SOC forced calibration enabled;;1;0;;4
 642;3;42093;U16;;SOC mandatory calibration cycle;;1;0;;4
 643;3;42094;U16;;Battery port information;;1;0;;4

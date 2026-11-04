@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;Socomec_Modbus_P100TR;;;;;;;
+modbusRTU;Other;Webdyn;Socomec_Modbus_P100TR;;;;;;;
 1;4;4128;U16;;R01 System States 1;;1.0;0.0;;4
 2;4;4129;U16;;R01 System States 2;;1.0;0.0;;4
 3;4;4130;U16;;R01 System States 3;;1.0;0.0;;4

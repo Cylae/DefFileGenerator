@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;FOX ESS;G-MAX BMS;;;;;;;
+Modbus;Inverter;FOX ESS;G-MAX BMS;;;;;;;
 1;4;200;U16;;Stack SOC;;1;0;%;4
 2;4;201;U16;;Heap SOH;;1;0;%;4
 3;4;202;U16;;Stack status 0 Stop-1 Charge-2 Discharge-3 Standby-4 Fault;;1;0;;4
@@ -14,7 +14,7 @@
 13;4;212;U16;;Maximum cell voltage Cell number;;1;0;;4
 14;4;213;U16;;Minimum cell voltage cluster number;;1;0;;4
 15;4;214;U16;;Minimum cell voltage Cell number;;1;0;;4
-16;4;215;U16;;Maximum cell temperature cluster number;TEMP_CELL;1;0;;4
+16;4;215;U16;;Maximum cell temperature cluster number;;1;0;;4
 17;4;216;U16;;Maximum monomer temperature monomer number;;1;0;;4
 18;4;217;U16;;Minimum cell temperature cluster number;;1;0;;4
 19;4;218;U16;;Minimum monomer temperature monomer number;;1;0;;4

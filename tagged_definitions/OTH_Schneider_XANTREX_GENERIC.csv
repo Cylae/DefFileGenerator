@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Schneider;XANTREX_GENERIC;;;;;;;
+modbusRTU;Other;Schneider;XANTREX_GENERIC;;;;;;;
 1;4;288;U16;;Product Model Designation;MODEL;1.0;0.0;;4
 2;4;298;U16;;Finished Goods Assembly (FGA) Number;;1.0;0.0;;4
 3;4;308;U16;;Serial Number;SERIAL;1.0;0.0;;4

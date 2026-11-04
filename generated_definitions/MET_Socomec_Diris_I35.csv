@@ -23,12 +23,12 @@ modbus;Meter;Socomec;Diris_Digiware_I-35DC;;;;;;;
 22;3;50030_8;STRING;;Product_VLO;;1;0;;1
 23;3;50034_8;STRING;;Customization_VLO;;1;0;;1
 24;3;50038_8;STRING;;Soft_Tech_Base_VLO;;1;0;;1
-25;3;50042_16;STRING;;Vendor_Name;;1;0;;1
+25;3;50042_16;STRING;;Vendor_Name;MANUFACTURER;1;0;;1
 26;3;50050_16;STRING;;Product_Name;;1;0;;1
 27;3;50058_16;STRING;;Extended_Name;;1;0;;1
 28;3;50066;U16;;Resource_Version;;1;0;;1
 29;3;50067;U32;;Net_ID;;1;0;;1
-30;3;50496;U16;;Udc_Modbus_Address;U_DC;1;0;;1
+30;3;50496;U16;;Udc_Modbus_Address;;1;0;;1
 31;3;50497;U16;;Udc_Product_Order_ID;;1;0;;1
 32;3;50498;U16;;Udc_Product_ID;;1;0;;1
 33;3;50499;U16;;Udc_Serial_AA_SS;;1;0;;1
@@ -63,7 +63,7 @@ modbus;Meter;Socomec;Diris_Digiware_I-35DC;;;;;;;
 62;3;18438;I32;;L1_Inst_Vdc;;0.01;0;V;4
 63;3;18440;U32;;L1_Inst_Vripple;;0.01;0;V;4
 64;3;18442;U32;;L1_Inst_Irms;;0.001;0;A;4
-65;3;18444;I32;;L1_Inst_Idc;I_DC;0.001;0;A;4
+65;3;18444;I32;;L1_Inst_Idc;;0.001;0;A;4
 66;3;18446;U32;;L1_Inst_Iripple;;0.001;0;A;4
 67;3;18448;I32;;L1_Inst_P;;1;0;W;4
 68;3;18560;U16;;L1_Avg_Load_Status;;1;0;;4
@@ -138,7 +138,7 @@ modbus;Meter;Socomec;Diris_Digiware_I-35DC;;;;;;;
 137;3;19483;U32;;L1_MinAvg_Date_P;;1;0;;4
 138;3;19840;U16;;L1_Energy_Load_Status;;1;0;;4
 139;3;19841;U32;;L1_Total_Hour_Meter;;1;0;s;4
-140;3;19843;U32;;L1_Total_Pos_Energy_E+;E_TOT;1;0;kWh;4
+140;3;19843;U32;;L1_Total_Pos_Energy_E+;;1;0;kWh;4
 141;3;19845;U16;;L1_Total_Res_Pos_Energy_rE+;;0.1;0;Wh;4
 142;3;19846;U32;;L1_Total_Neg_Energy_E-;;1;0;kWh;4
 143;3;19848;U16;;L1_Total_Res_Neg_Energy_rE-;;0.1;0;Wh;4

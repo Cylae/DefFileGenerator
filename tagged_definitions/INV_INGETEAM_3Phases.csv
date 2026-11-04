@@ -1,4 +1,4 @@
-﻿modbusTCP;Inverter;INGETEAM;3phases;1;;;;;;
+modbusTCP;Inverter;INGETEAM;3phases;1;;;;;;
 1;4;0;I32;;Total AC Energy;E_TOT;1;0;kWh;4
 2;4;2;U32;;Hours up and running;;1;0;hour;4
 3;4;4;U32;;Number of connections to grid;;1;0;;4
@@ -94,8 +94,8 @@
 93;4;110;U16;;Inverter state_1;;1;0;;4
 94;4;111;I16;;Cos(Phi);;1;0;;4
 95;4;112;I16;;Sign of sin(j);;1;0;;4
-96;4;113;I16;;Active Power_1;;0.1;0;W;4
-97;4;114;I16;;Reactive Power_1;;0.1;0;Var;4
+96;4;113;I16;;Active Power_1;P_AC_1;0.1;0;W;4
+97;4;114;I16;;Reactive Power_1;Q_AC_1;0.1;0;Var;4
 98;4;116;U16;;Power reduction cause;;1;0;;4
 99;4;117;U16;;pct of reduction;;1;0;pct;4
 100;4;118;I32;;Total Dc Energy;;1;0;kWh;4

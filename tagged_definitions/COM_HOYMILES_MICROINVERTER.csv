@@ -1,4 +1,4 @@
-﻿modbus;Logger;HOYMILES;MICROINVERTER;;;;;;;
+modbus;Logger;HOYMILES;MICROINVERTER;;;;;;;
 1;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4
 2;4;12544;U64;;Sum of All Microinverters Total Production in DTU;;1.000000;0.000000;Wh;4
 3;4;12548;U64;;Sum of All Microinverters Today Production in DTU;;1.000000;0.000000;Wh;4

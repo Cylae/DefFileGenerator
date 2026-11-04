@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;Acrel;DTSD1352;;;;;;;
+modbusRTU;Meter;Acrel;DTSD1352;;;;;;;
 1;3;0;U32;;Current total active energy;I_AC;0.01;0;kWh;4
 2;3;2;U32;;Current spike total active energy;;0.01;0;kWh;4
 3;3;4;U32;;Current peak total active energy;;0.01;0;kWh;4
@@ -145,10 +145,10 @@
 144;3;358;U32;;Active power of B phase;P_AC_2;0.001;0;kW;4
 145;3;360;U32;;Active power of C phase;P_AC_3;0.001;0;kW;4
 146;3;362;U32;;Total active power;P_AC;0.001;0;kW;4
-147;3;364;U32;;Reactive power of A phase;ReactivePow1;0.001;0;kvar;4
-148;3;366;U32;;Reactive power of B phase;ReactivePow2;0.001;0;kvar;4
-149;3;368;U32;;Reactive power of C phase;ReactivePow3;0.001;0;kvar;4
-150;3;370;U32;;Total reactive power;ReactivePowSUM;0.001;0;kvar;4
+147;3;364;U32;;Reactive power of A phase;;0.001;0;kvar;4
+148;3;366;U32;;Reactive power of B phase;;0.001;0;kvar;4
+149;3;368;U32;;Reactive power of C phase;;0.001;0;kvar;4
+150;3;370;U32;;Total reactive power;;0.001;0;kvar;4
 151;3;372;U32;;Apparent power of A phase;S_AC;0.001;0;kVA;4
 152;3;374;U32;;Apparent power of b phase;;0.001;0;kVA;4
 153;3;376;U32;;Apparent power of c phase;;0.001;0;kVA;4

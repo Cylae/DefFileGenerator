@@ -1,7 +1,7 @@
 Modbus;Inverter;Zucchetti;Azzuro-3PH
-1;3;1156;U16;;Frequency_Grid;FREQ;0.01;0.0;Hz;4
-2;3;1157;I16;;ActivePower_Output_Total;P_AC;0.01;0.0;kW;4
-3;3;1158;I16;;ReactivePower_Output_Total;Q_AC;0.01;0.0;kW;4
+1;3;1156;U16;;Frequency_Grid;;0.01;0.0;Hz;4
+2;3;1157;I16;;ActivePower_Output_Total;;0.01;0.0;kW;4
+3;3;1158;I16;;ReactivePower_Output_Total;;0.01;0.0;kW;4
 4;3;1159;I16;;ApparentPower_Output_Total;;0.01;0.0;kW;4
 5;3;1160;I16;;ActivePower_PCC_Total;;0.01;0.0;kW;4
 6;3;1161;I16;;ReactivePower_PCC_Total;;0.01;0.0;kW;4
@@ -182,7 +182,7 @@ Modbus;Inverter;Zucchetti;Azzuro-3PH
 181;3;4109;U16;;RS485Config_StopBit;;1.0;0.0;;4
 182;3;4110;U16;;RS485Config_ParityBit;;1.0;0.0;;4
 183;3;4111;U16;;RS485Config_Control;;1.0;0.0;;4
-184;3;4356;U16;;Remote_On_Off_Control;CMD_ON;1.0;0.0;;4
+184;3;4356;U16;;Remote_On_Off_Control;;1.0;0.0;;4
 185;3;4932;U16;;IVCurve_Voltage1;;0.1;0.0;V;4
 186;3;4933;U16;;IVCurve_Current1;;0.01;0.0;A;4
 187;3;4934;U16;;IVCurve_Voltage2;;0.1;0.0;V;4

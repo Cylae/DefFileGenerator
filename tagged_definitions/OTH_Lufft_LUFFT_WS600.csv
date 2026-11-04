@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Lufft;LUFFT_WS600;;;;;;;
+modbusRTU;Other;Lufft;LUFFT_WS600;;;;;;;
 1;4;0;U16;;Identification;;1.0;0.0;;4
 2;4;1;U16;;Device status;;1.0;0.0;;4
 3;4;2;U16;;Sensor status 1;;1.0;0.0;;4

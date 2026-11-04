@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Legrand;LEGRAND_Nemo96HDLe;;;;;;;
+modbusRTU;Other;Legrand;LEGRAND_Nemo96HDLe;;;;;;;
 1;4;256;U16;;Current transformer ratio (KTA);MODEL;1.0;0.0;;4
 2;4;258;U16;;Voltage transformer ratio (KTV);SERIAL;1.0;0.0;;4
 3;4;768;U16;;Device identifier;;1.0;0.0;0x1101;4

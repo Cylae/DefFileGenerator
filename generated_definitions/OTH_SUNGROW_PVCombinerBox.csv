@@ -2,7 +2,7 @@ ModbusRTU;Other;Sungrow;PV Combiner Box 24 inputs;;;;;;;
 1;4;6999;U16;;Device type code;;1.0;0.0;;4
 2;4;7000;U16;;Max input numbers;;1.0;0.0;;4
 3;4;7005;U16;;DC bus voltage;U_DC;0.1;0.0;V;4
-4;4;7006;I16;;Internal temperature;TEMP;0.1;0.0;Celsius;4
+4;4;7006;I16;;Internal temperature;TEMP_INT;0.1;0.0;Celsius;4
 5;4;7010;U16;;Max. current;;0.01;0.0;A;4
 6;4;7011;U16;;Average current;;0.01;0.0;A;4
 7;4;7012;U16;;Current of 1st input;;0.01;0.0;A;4
@@ -21,9 +21,9 @@ ModbusRTU;Other;Sungrow;PV Combiner Box 24 inputs;;;;;;;
 20;4;7025;U16;;Current of 14th input;;0.01;0.0;A;4
 21;4;7026;U16;;Current of 15th input;;0.01;0.0;A;4
 22;4;7028;U16;;Current of 16th input;;0.01;0.0;A;4
-23;4;7030;U32;;Total current;I_AC;0.1;0.0;A;4
+23;4;7030;U32;;Total current;;0.1;0.0;A;4
 24;4;7032;U32;;Total DC power;P_DC;1.0;0.0;W;4
-25;4;7036;U32;;Total Power yields;E_TOT;0.1;0.0;kWh;4
+25;4;7036;U32;;Total Power yields;;0.1;0.0;kWh;4
 26;4;7040;U32;;Work state;;1.0;0.0;W;4
 27;4;7042;U32;;Short circuit data;;1.0;0.0;;4
 28;4;7044;U32;;Reverse current data;;1.0;0.0;;4

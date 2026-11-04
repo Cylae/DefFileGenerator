@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;FOX_ESS;R_V_H3plus;;;;;;;
+modbusRTU;Inverter;FOX_ESS;R_V_H3plus;;;;;;;
 1;3;40098;I16;;SF_Current;;1;0;;1
 2;3;40099;I16;;SF_Voltage;;1;0;;1
 3;3;40100;I16;;SF_Freq;;1;0;;1

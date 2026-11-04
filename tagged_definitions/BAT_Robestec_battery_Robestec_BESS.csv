@@ -1,4 +1,4 @@
-﻿Modbus;Battery;Robestec;BESS;;;;;;;
+Modbus;Battery;Robestec;BESS;;;;;;;
 1;4;100;I16;;EMS - PCS real total active power (summary);P_AC;0.1;0;kW;4
 2;4;101;I16;;EMS - PCS real total reactive power (summary);Q_AC;0.1;0;kVar;4
 3;4;102;I16;;EMS - Total volt. (summary);;0.1;0;V;4
@@ -16,7 +16,7 @@
 15;4;204;I16;;BMS Cabinet 1 - Stack curr.;;0.1;0;A;4
 16;4;205;I16;;BMS Cabinet 1 - Max. cell volt.;;0.001;0;V;4
 17;4;206;I16;;BMS Cabinet 1 - Min. cell volt.;;0.001;0;V;4
-18;4;207;I16;;BMS Cabinet 1 - Max. cell temp.;TEMP_CELL;1;0;Degr.Celsius;4
+18;4;207;I16;;BMS Cabinet 1 - Max. cell temp.;;1;0;Degr.Celsius;4
 19;4;208;I16;;BMS Cabinet 1 - Min. cell temp.;;1;0;Degr.Celsius;4
 20;4;209;U16;;BMS Cabinet 1 - Max. cell SOC;;1;0;%;4
 21;4;210;U16;;BMS Cabinet 1 - Min. cell SOC;;1;0;%;4
@@ -364,7 +364,7 @@
 363;4;56001;U16;;PCS 1 - Grid-on/off status;;1;0;;4
 364;4;56002;I16;;PCS 1 - Input curr.;;0.1;0;;4
 365;4;56003;U16;;PCS 1 - Input volt.;;0.1;0;V;4
-366;4;56004;I16;;PCS 1 - Input power;;0.1;0;;4
+366;4;56004;I16;;PCS 1 - Input power;P_DC;0.1;0;;4
 367;4;56005;U16;;PCS 1 - Phase-A volt.;;0.1;0;V;4
 368;4;56006;U16;;PCS 1 - Phase-B volt.;;0.1;0;V;4
 369;4;56007;U16;;PCS 1 - Phase-C volt.;;0.1;0;V;4

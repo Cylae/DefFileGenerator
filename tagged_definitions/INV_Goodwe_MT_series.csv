@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Goodwe;MT_series;1;;;;;;
+Modbus;Inverter;Goodwe;MT_series;1;;;;;;
 1;3;0;U16;;Power on voltage;CMD_ON;0.1;0.0;V;1
 2;3;1;U16;;Reconnect time;;1.0;0.0;s;4
 3;3;2;U16;;Lower limit of grid voltage;;0.1;0.0;V;4
@@ -72,7 +72,7 @@
 71;3;805;U16;;Ipv5 /PV5 input current;I_DC_MPPT_5;0.1;0.0;A;4
 72;3;806;U16;;Vpv6 /PV6 input voltage;U_DC_MPPT_6;0.1;0.0;V;4
 73;3;807;U16;;Ipv6 /PV6 input current;I_DC_MPPT_6;0.1;0.0;A;4
-74;3;814;I16;;Power Factor_1;;0.001;0.0;;4
+74;3;814;I16;;Power Factor_1;PF_1;0.001;0.0;;4
 75;3;827;U16;;Year :Month;;1.0;0.0;;4
 76;3;828;U16;;Date :Hour;;1.0;0.0;;4
 77;3;829;U16;;Minute :Second;;1.0;0.0;;4

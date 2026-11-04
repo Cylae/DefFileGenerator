@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;fronius;test;;;;;;;
+ModbusRTU;Inverter;fronius;test;;;;;;;
 1;3;40002;I16;;1_tableId;;1.0;0.0;;1
 2;3;40003;I16;;1_tableSize;;1.0;0.0;;1
 3;3;40004_16;STRING;;1_Mn;MANUFACTURER;1.0;0.0;;1

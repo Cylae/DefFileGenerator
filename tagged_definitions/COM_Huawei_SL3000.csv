@@ -1,4 +1,4 @@
-﻿Modbus;Logger;Huawei;SL3000;;;;;;;
+Modbus;Logger;Huawei;SL3000;;;;;;;
 1;3;40000;U32;;Date_Time;;1.0;0.0;Epoch;4
 2;3;40002;U32;;City;;1.0;0.0;;4
 3;3;40004;U16;;Daylight Saving Time (DST;;1.0;0.0;;4
@@ -35,9 +35,9 @@
 34;3;40572;I16;;Phase A current;I_AC_1;0.001;0.0;A;4
 35;3;40573;I16;;Phase B current;I_AC_2;0.001;0.0;A;4
 36;3;40574;I16;;Phase C current;I_AC_3;0.001;0.0;A;4
-37;3;40575;U16;;Uab;;0.1;0.0;V;4
-38;3;40576;U16;;Ubc;;0.1;0.0;V;4
-39;3;40577;U16;;Uca;;0.1;0.0;V;4
+37;3;40575;U16;;Uab;U_AC_L1L2;0.1;0.0;V;4
+38;3;40576;U16;;Ubc;U_AC_L2L3;0.1;0.0;V;4
+39;3;40577;U16;;Uca;U_AC_L3L1;0.1;0.0;V;4
 40;3;40685;U16;;Inverter efficiency;;0.01;0.0;%;4
 41;3;40693;U32;;Max. reactive adjustment;;0.01;0.0;kVar;4
 42;3;40695;I32;;Min. reactive adjustment;;0.01;0.0;kVar;4

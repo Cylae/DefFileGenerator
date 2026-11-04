@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;SofarSolar;HYDG3;1;;;;;;
+Modbus;Inverter;SofarSolar;HYDG3;1;;;;;;
 1;3;1028;U16;;SysState;;1.0;0.0;;4
 2;3;1029;U16;;Fault1;;1.0;0.0;;4
 3;3;1030;U16;;Fault2;;1.0;0.0;;4

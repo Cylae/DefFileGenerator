@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;;;;;;;
+modbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;;;;;;;
 1;3;4199;I32;;Momentary System time;;1;0;;4
 2;3;4201;I64;;Active-Energy Total Import;E_IMP;1;0;Wh;4
 3;3;4205;I64;;Active-Energy Import Phase L1 Tariff 1;;1;0;Wh;4

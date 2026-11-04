@@ -11,23 +11,23 @@ ModbusRTU;Inverter;INGETEAM;PowerBlock(ABK1000);;;;;;;
 10;4;9;I16;;Reactive Power Reduction rate;;100;0;%;4
 11;4;10;U16;;Active Power Reduction Reason;;1;0;Reason;4
 12;4;11;U16;;Reactive Power Reduction Reason;;1;0;Reason;4
-13;4;12;I16;;PV power;;10;0;kWatt;4
-14;4;13;I16;;BUS voltage;U_DC;1;0;V;4
-15;4;14;I16;;PV current;;10;0;Amps;4
-16;4;15;I16;;PV voltage;;1;0;Vdc ;4
-17;4;16;I16;;HeatSink R Temperature;TEMP_INT;10;0;C;4
+13;4;12;I16;;PV power;P_DC;10;0;kWatt;4
+14;4;13;I16;;BUS voltage;;1;0;V;4
+15;4;14;I16;;PV current;I_DC;10;0;Amps;4
+16;4;15;I16;;PV voltage;U_DC;1;0;Vdc ;4
+17;4;16;I16;;HeatSink R Temperature;;10;0;C;4
 18;4;17;I16;;HeatSink S Temperature;;10;0;C;4
 19;4;18;I16;;HeatSink T Temperature;;10;0;C;4
 20;4;19;I16;;Coil Temperature;;10;0;C;4
 21;4;20;I16;;Stack Amb. Temperature;;10;0;C;4
-22;4;21;I16;;Ambient. Temperature;TEMP_AMB;10;0;C;4
+22;4;21;I16;;Ambient. Temperature;;10;0;C;4
 23;4;22;I16;;Reserved Temperature;;10;0;C;0
-24;4;23;I16;;Grid RMS voltage of phase 1;U_AC_1;10;0;Vrms;4
-25;4;24;I16;;Grid RMS voltage of phase 2;U_AC_2;10;0;Vrms;4
-26;4;25;I16;;Grid RMS voltage of phase 3;U_AC_3;10;0;Vrms;4
-27;4;26;I16;;Output grid RMS current of phase 1;I_AC_1;10;0;Amps ;4
-28;4;27;I16;;Output grid RMS current of phase 2;I_AC_2;10;0;Amps;4
-29;4;28;I16;;Output grid RMS current of phase 3;I_AC_3;10;0;Amps;4
+24;4;23;I16;;Grid RMS voltage of phase 1;;10;0;Vrms;4
+25;4;24;I16;;Grid RMS voltage of phase 2;;10;0;Vrms;4
+26;4;25;I16;;Grid RMS voltage of phase 3;;10;0;Vrms;4
+27;4;26;I16;;Output grid RMS current of phase 1;;10;0;Amps ;4
+28;4;27;I16;;Output grid RMS current of phase 2;;10;0;Amps;4
+29;4;28;I16;;Output grid RMS current of phase 3;;10;0;Amps;4
 30;4;29;I16;;Cosine of Phi;;1000;0;;4
 31;4;30;I16;;Sign of Phi;;1;0;;4
 32;4;31;I16;;Output apparent power;S_AC;10;0;kVA;4
@@ -38,7 +38,7 @@ ModbusRTU;Inverter;INGETEAM;PowerBlock(ABK1000);;;;;;;
 37;4;36;I16;;EARTH - BUS- voltage;;10;0;Vrms;4
 38;4;37;I16;;Isolation resistance of PV field;;1;0;kOhm ;4
 39;4;38;I16;;External Extra Measurement 1;;1000;0;;4
-40;4;39;U32;;Daily AC injected energy;E_DAY;100;0;kW*h;4
+40;4;39;U32;;Daily AC injected energy;;100;0;kW*h;4
 41;4;41;U32;;Reserved (Daily AC consumed energy);;1;0;;0
 42;4;43;U32;;Reserved (Daily DC injected energy);;1;0;;0
 43;4;45;U32;;Reserved (Daily DC consumed energy);;1;0;;0
@@ -48,7 +48,7 @@ ModbusRTU;Inverter;INGETEAM;PowerBlock(ABK1000);;;;;;;
 47;4;53;U32;;Reserved (Partial DC consumed energy);;1;0;;0
 48;4;55;U32;;Partial number of hours of operation;;1;0;hours;4
 49;4;57;U32;;Partial number of connection since user reset.;;1;0;;4
-50;4;59;U32;;Total AC Energy injected by the unit;E_TOT;1;0;kW*h;4
+50;4;59;U32;;Total AC Energy injected by the unit;;1;0;kW*h;4
 51;4;61;U32;;Reserved (Total AC consumed energy);;1;0;;0
 52;4;63;U32;;Reserved (Total DC injected energy);;1;0;;0
 53;4;65;U32;;Reserved (Total DC consumed energy);;1;0;;0
@@ -61,7 +61,7 @@ ModbusRTU;Inverter;INGETEAM;PowerBlock(ABK1000);;;;;;;
 60;4;75;U16;;Instantaneous alarm code 3 ;;1;0;Flag bits;4
 61;4;76;U16;;Instantaneous alarm code 4 ;;1;0;Flag bits;4
 62;4;77;U16;;Instantaneous Warning code;;1;0;Flag bits;4
-63;4;78;U16;;Stop events3;WIND_SPEED;1;0;;0
+63;4;78;U16;;Stop events3;;1;0;;0
 64;4;79;U16;;Unit flags 1;;1;0;Flag bits;4
 65;4;80;U16;;Unit flags 2;;1;0;Flag bits;4
 66;4;81;U16;;Unit flags 3;;1;0;Flag bits;4

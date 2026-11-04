@@ -1,16 +1,16 @@
 modbus;Meter;Schneider;IEM2050;;;;;;;
 1;3;32_40;STRING;;Meter name;;1;0;;4
-2;3;52_40;STRING;;Meter model;MODEL;1;0;;4
+2;3;52_40;STRING;;Meter model;;1;0;;4
 3;3;72_40;STRING;;Manufacturer;MANUFACTURER;1;0;;4
 4;3;92;U16;;Meter code;;1;0;;4
 5;3;132;U32;;Serial number;SERIAL;1;0;;4
 6;3;138_10;STRING;;Hardware revision;;1;0;;4
 7;3;1639;U16;;Present firmware version;;1;0;;4
-8;3;1831;U16;;Power on off counter;CMD_ON;1;0;;4
+8;3;1831;U16;;Power on off counter;;1;0;;4
 9;3;2016;U16;;Number of phases;;1;0;;4
 10;3;2017;U16;;Number of wires;;1;0;;4
 11;3;2018;U16;;Power system;;1;0;;4
-12;3;2019;U16;;Nominal frequency;FREQ;1;0;Hz;4
+12;3;2019;U16;;Nominal frequency;;1;0;Hz;4
 13;3;2022;F32;;Meter Amps;;1;0;A;4
 14;3;5252;U16;;Requested command;;1;0;;4
 15;3;5253;U16;;Reserved command;;1;0;;4
@@ -28,13 +28,13 @@ modbus;Meter;Schneider;IEM2050;;;;;;;
 27;3;3070;F32;;Reactive power;Q_AC;1;0;kVAr;4
 28;3;3078;F32;;Apparent power;S_AC;1;0;kVA;4
 29;3;3086;F32;;Total power factor;PF;1;0;;4
-30;3;3112;F32;;Frequency;;1;0;Hz;4
+30;3;3112;F32;;Frequency;FREQ;1;0;Hz;4
 31;3;3206;I64;;Forward active energy;;1;0;Wh;4
 32;3;3210;I64;;Reverse active energy;;1;0;Wh;4
-33;3;3214;I64;;Total active energy;;1;0;Wh;4
+33;3;3214;I64;;Total active energy;E_TOT;1;0;Wh;4
 34;3;3222;I64;;Forward reactive energy;;1;0;VARh;4
 35;3;3226;I64;;Reverse reactive energy;;1;0;VARh;4
-36;3;3230;I64;;Total reactive energy;E_TOT;1;0;VARh;4
+36;3;3230;I64;;Total reactive energy;;1;0;VARh;4
 37;3;3258;I64;;Forward partial active energy;;1;0;Wh;4
 38;3;4193;U16;;Tariff status;;1;0;;4
 39;3;4198;I64;;T1 Forward active energy;;1;0;Wh;4

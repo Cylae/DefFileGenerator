@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;DeYe;GENERIC;1;;;;;;
+modbusRTU;Inverter;DeYe;GENERIC;1;;;;;;
 1;3;60;I16;;DayActive PowerWh;;0.1;0;kWh;4
 2;3;61;I16;;DayReactive PowerWh;Q_AC;0.1;0;kVarh;4
 3;3;62;U16;;Day Grid Work Time;;1;0;s;4

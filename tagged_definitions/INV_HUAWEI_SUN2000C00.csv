@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Huawei;Sun2000;;;;;;;
+ModbusRTU;Inverter;Huawei;Sun2000;;;;;;;
 1;3;40000;U32;;Date/Time setting;;1.0;0.0;s;4
 2;3;40002;U16;;Grid Standards code;;1.0;0.0;;4
 3;3;40006;U16;;UFP of level1;;0.01;0.0;Hz;4

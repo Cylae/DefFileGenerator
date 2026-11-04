@@ -21,7 +21,7 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 20;3;1047;U16;;Countdown;;1;0;;4
 21;3;1048;I16;;Temperature_Env1;;1;0;;4
 22;3;1049;I16;;Temperature_Env2;;1;0;;4
-23;3;1050;I16;;Temperature_HeatSink1;TEMP_INT;1;0;;4
+23;3;1050;I16;;Temperature_HeatSink1;;1;0;;4
 24;3;1051;I16;;Temperature_HeatSink2;;1;0;;4
 25;3;1052;I16;;Temperature_HeatSink3;;1;0;;4
 26;3;1053;I16;;Temperature_HeatSink4;;1;0;;4
@@ -36,7 +36,7 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 35;3;1062;U16;;GenerationTime_Today;;1;0;;4
 36;3;1063;U32;;GenerationTime_Total;;1;0;;4
 37;3;1065;U32;;ServiceTime_Total;;1;0;;4
-38;3;1067;U16;;InsulationResistance;R_ISO;1;0;;4
+38;3;1067;U16;;InsulationResistance;;1;0;;4
 39;3;1068;U16;;SysTime_Year;;1;0;;4
 40;3;1069;U16;;SysTime_Month;;1;0;;4
 41;3;1070;U16;;SysTime_Date;;1;0;;4
@@ -64,9 +64,9 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 63;3;1149;U16;;State7;;1;0;;4
 64;3;1150;U16;;State8;;1;0;;4
 65;3;1151;U16;;State9;;1;0;;4
-66;3;1156;U16;;Frequency_Grid;FREQ;0.01;0;Hz;4
+66;3;1156;U16;;Frequency_Grid;;0.01;0;Hz;4
 67;3;1157;I16;;ActivePower_Output_Total;P_AC;0.01;0;kW;4
-68;3;1158;I16;;ReactivePower_Output_Total;Q_AC;0.01;0;kW;4
+68;3;1158;I16;;ReactivePower_Output_Total;;0.01;0;kW;4
 69;3;1159;I16;;ApparentPower_Output_Total;;0.01;0;kW;4
 70;3;1160;I16;;ActivePower_PCC_Total;;0.01;0;kW;4
 71;3;1161;I16;;ReactivePower_PCC_Total;;0.01;0;kW;4
@@ -343,7 +343,7 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 342;3;1842;U16;;Current_Group16_Branch1;;0.01;0;A;4
 343;3;1843;U16;;Current_Group16_Branch2;;0.01;0;A;4
 344;3;2304;U16;;Remote Config;;1;0;;4
-345;3;2305;U16;;ActiveOutputLimit;CMD_P_AC_SET_PERCENT;0.1;0;%;4
+345;3;2305;U16;;ActiveOutputLimit;;0.1;0;%;4
 346;3;2306;U16;;ActiveOutputDownSpeed;;1;0;%Pn/min;4
 347;3;2307;U16;;GridVoltageDropStart;;0.1;0;V;4
 348;3;2308;U16;;GridVoltageDropStop;;0.1;0;V;4
@@ -525,10 +525,10 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 524;3;4276;U16;;PID_Break_Restart_Delay;;1;0;Minute;4
 525;3;4356;U16;;Remote_On_Off_Control;CMD_ON;1;0;;4
 526;3;4357;U16;;Power_Control;CMD_P_ENA;1;0;;4
-527;3;4358;U16;;Active_Power_Export_Limit;;0.1;0;%;4
+527;3;4358;U16;;Active_Power_Export_Limit;CMD_P_AC_SET_PERCENT;0.1;0;%;4
 528;3;4359;U16;;Active_Power_Import_Limit;;0.1;0;%;4
 529;3;4360;I16;;Reactive_Power_Setting;;0.1;0;%;4
-530;3;4361;I16;;Power_Factor_Setting;CMD_PF;0.01;0;p.u.;4
+530;3;4361;I16;;Power_Factor_Setting;;0.01;0;p.u.;4
 531;3;4362;U16;;Active_Power_Limit_Speed;;1;0;%;4
 532;3;4363;U16;;Reactive_Power_Response_Time;;0.1;0;second;4
 533;3;4364;I16;;SVG_Fixed_Reactive_Power_Setting;;0.1;0;kVar;4

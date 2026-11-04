@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;SAJ;Modbus protocol for SAJ CM2-EM;;;;;;;
+modbusRTU;Other;SAJ;Modbus protocol for SAJ CM2-EM;;;;;;;
 1;4;33930;U16;;MPVMode;;1.0;0.0;-;4
 2;4;33931;U16;;PowerRated;;1.0;0.0;W;4
 3;4;33933;U16;;TotalInvPowerWatt;;1.0;0.0;W;4

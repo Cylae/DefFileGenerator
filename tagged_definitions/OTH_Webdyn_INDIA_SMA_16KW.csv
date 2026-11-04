@@ -1,4 +1,4 @@
-﻿ModbusTCP;Other;Inverter;SMA;;;;;;;
+ModbusTCP;Other;Inverter;SMA;;;;;;;
 1;4;30241;U32;;Operating state;;1.0;0.0;;8
 2;4;30243;U32;;Error;;1.0;0.0;;8
 3;4;30249;U32;;Status of the GFDI relay;;1.0;0.0;;8

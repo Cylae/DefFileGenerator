@@ -1,4 +1,4 @@
-﻿Modbus;Io;Webdyn;Sens_IO_8AI;;;;;;;
+Modbus;Io;Webdyn;Sens_IO_8AI;;;;;;;
 1;4;1561;I16;;Mesure temperature for Thermocouple;;1.0;0.0;-;4
 2;4;1577;I16;;Alarme 1 Status;;1.0;0.0;C;4
 3;4;1578;I16;;Alarme 2 Status;;1.0;0.0;-;4

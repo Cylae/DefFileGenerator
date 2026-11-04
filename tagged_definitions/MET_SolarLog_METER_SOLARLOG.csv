@@ -1,4 +1,4 @@
-﻿ModbusTCP;Meter;POLIER;PRO 380;;;;;;;
+ModbusTCP;Meter;POLIER;PRO 380;;;;;;;
 1;4;3500;U32;;lastUpdateTime;;1;0;Sec;4
 2;4;3502;U32;;Pac;P_AC;1;0;W;4
 3;4;3504;U32;;Pdc;P_DC;1;0;W;4

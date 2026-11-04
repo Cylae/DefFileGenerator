@@ -1,0 +1,13 @@
+{
+  "status": "SUCCESS",
+  "audit_timestamp": "2026-10-16T08:47:51Z",
+  "total_valid_definitions": 830,
+  "total_invalid_files": 0,
+  "total_registers": 264413,
+  "canonical_tags": 10375,
+  "non_canonical_tags": 0,
+  "duplicate_tags_per_file": 0,
+  "empty_registers": 254050,
+  "golden_rule_shorter_than_db": 0,
+  "non_csv_files_in_generated_definitions": 0
+}

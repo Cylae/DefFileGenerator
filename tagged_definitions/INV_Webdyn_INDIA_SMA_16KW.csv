@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Webdyn INDIA;SMA_16KW;;;;;;;
+modbusRTU;Inverter;Webdyn INDIA;SMA_16KW;;;;;;;
 1;4;30241;U16;;Operating state;;1.0;0.0;;8
 2;4;30243;U16;;Error;;1.0;0.0;;8
 3;4;30249;U16;;Status of the GFDI relay;;1.0;0.0;;8

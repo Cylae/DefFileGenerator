@@ -1,4 +1,4 @@
-﻿modbusRTU;Meter;CarloGavazzi;CarloGavazzi_EM210;;;;;;;
+modbusRTU;Meter;CarloGavazzi;CarloGavazzi_EM210;;;;;;;
 1;4;1;U16;;volt1;;1.0;0.0;V;4
 2;4;3;U16;;volt2;;1.0;0.0;V;4
 3;4;5;U16;;volt3;;1.0;0.0;V;4

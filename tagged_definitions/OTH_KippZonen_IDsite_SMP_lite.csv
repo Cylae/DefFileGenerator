@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;KippZonen;IDsite_SMP_lite;;;;;;;
+modbusRTU;Other;KippZonen;IDsite_SMP_lite;;;;;;;
 1;4;5;U16;;IO_SENSOR1_DATA;;1.0;0.0;W/m2;4
 2;4;6;U16;;IO_RAW_SENSOR1_DATA;;1.0;0.0;W/m2;4
 3;4;7;U16;;IO_STDEV_SENSOR1;;1.0;0.0;W/m2;4

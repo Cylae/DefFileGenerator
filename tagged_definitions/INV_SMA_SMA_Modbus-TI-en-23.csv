@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_Modbus-TI-en-23;;;;;;;
+modbusRTU;Inverter;SMA;SMA_Modbus-TI-en-23;;;;;;;
 1;4;30051;U16;;Device class;;1.0;0.0;ENUM;4
 2;4;30053;U16;;Device type;MODEL;1.0;0.0;ENUM;4
 3;4;30057;U16;;Serial number;SERIAL;1.0;0.0;RAW;4
@@ -194,7 +194,7 @@
 170;4;30769;U16;;DC current input [1];I_DC;1.0;0.0;FIX3;4
 171;4;30771;U16;;DC voltage input [1];U_DC;1.0;0.0;FIX2;4
 172;4;30773;U16;;DC power input [1];P_DC;1.0;0.0;FIX0;4
-173;4;30795;U16;;Grid current;;1.0;0.0;FIX3;4
+173;4;30795;U16;;Grid current;I_AC;1.0;0.0;FIX3;4
 174;4;30825;U16;;"Operating mode of stat.V stab., stat.V stab. config.:
 303 = Off
 1069 = React. power/volt. char. Q(U)
@@ -676,7 +676,7 @@
 376;4;30915;U16;;Power supply status;;1.0;0.0;None;4
 377;4;30917;U16;;Generator status;;1.0;0.0;None;4
 378;4;30983;U16;;Output of photovoltaics;;1.0;0.0;W;4
-379;4;30985;U16;;Total current external network connection;I_AC;1.0;0.0;A;4
+379;4;30985;U16;;Total current external network connection;;1.0;0.0;A;4
 380;4;30987;U16;;Fault battery state of charge;;1.0;0.0;%;4
 381;4;30989;U16;;Maximum battery current in charge direction;;1.0;0.0;A;4
 382;4;30991;U16;;Maximum battery current in discharge direction;;1.0;0.0;A;4

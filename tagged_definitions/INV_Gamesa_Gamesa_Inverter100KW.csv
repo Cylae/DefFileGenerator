@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Gamesa;Gamesa_Inverter100KW;;;;;;;
+modbusRTU;Inverter;Gamesa;Gamesa_Inverter100KW;;;;;;;
 1;4;50514;U16;;Vcc Paneles;;1.0;0.0;;4
 2;4;50516;U16;;Vcc Puente;;1.0;0.0;;4
 3;4;50518;U16;;Intensidad continua;;1.0;0.0;;4

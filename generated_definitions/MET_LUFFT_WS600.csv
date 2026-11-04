@@ -8,12 +8,12 @@ ModbusRTU;Meter;Lufft;WS600;;;;;;;
 7;4;6;I16;;Sensor status 5;;1;0;;4
 8;4;7;I16;;Sensor status 6;;1;0;;4
 9;4;13;I16;;Relative humidity (avg.);HUMIDITY;0.1;0;;4
-10;4;17;I16;;Relative air pressure (avg.);PRESSURE;0.1;0;;4
+10;4;17;I16;;Relative air pressure (avg.);;0.1;0;;4
 11;4;19;I16;;Wind direction (min.);WIND_BEARING;0.1;0;;4
 12;4;20;I16;;Wind direction (max.);;0.1;0;;4
 13;4;24;I16;;Compass;;0.1;0;;4
 14;4;25;I16;;Precipitation type;;1;0;;4
-15;4;26;U16;;Wind measurement quality;WIND_SPEED;1;0;;4
+15;4;26;U16;;Wind measurement quality;;1;0;;4
 16;4;30;I16;;Global radiation (avg).;;0.1;0;;4
 17;4;34;I16;;Air Temperature Degr.C (avg.);;0.1;0.0;Degr.C;4
 18;4;39;I16;;Wind chill-temperature Degr.C;;0.1;0.0;Degr.C;4

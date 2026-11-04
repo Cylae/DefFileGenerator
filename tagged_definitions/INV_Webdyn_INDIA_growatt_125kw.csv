@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;Inverter;Growatt;;;;;;;
+ModbusRTU;Inverter;Inverter;Growatt;;;;;;;
 1;4;1;U16;;Input power (high);P_DC;1.0;0.0;;4
 2;4;2;U16;;Input power (low);;1.0;0.0;;4
 3;4;3;U16;;PV1 voltage;U_DC_STRING_1;1.0;0.0;;4

@@ -18,7 +18,7 @@ modbusTCP;Inverter;SMA;STP X
 17;3;30217;U32;;Relais/Contacteur reseau;;1.000000;0.000000;;4
 18;3;30219;U32;;Cause de la reduction de puissance;;1.000000;0.000000;;4
 19;3;30225;U32;;Resistance d isolement;R_ISO;1.000000;0.000000;Ohm;4
-20;3;30231;U32;;Puissance active assignee WMaxOutRtg;P_AC;1.000000;0.000000;W;4
+20;3;30231;U32;;Puissance active assignee WMaxOutRtg;;1.000000;0.000000;W;4
 21;3;30233;U32;;Lim. de puiss. active reglee;;1.000000;0.000000;W;4
 22;3;30235;U32;;Etat du mode de sauvegarde;;1.000000;0.000000;;4
 23;3;30237;U32;;Type de reseau;;1.000000;0.000000;;4
@@ -35,24 +35,24 @@ modbusTCP;Inverter;SMA;STP X
 34;3;30561;U32;;Nombre evenements pour installateur;;1.000000;0.000000;;4
 35;3;30563;U32;;Nombre evenements pour service;;1.000000;0.000000;;4
 36;3;30599;U32;;Nombre de connexions au reseau;;1.000000;0.000000;;4
-37;3;30769;I32;;Entree courant DC 0;I_DC;0.001000;0.000000;A;4
-38;3;30771;I32;;Entree tension DC 0;U_DC;0.010000;0.000000;V;4
-39;3;30773;I32;;Entree puissance DC 0;P_DC;1.000000;0.000000;W;4
-40;3;30775;I32;;Puissance;;1.000000;0.000000;W;4
+37;3;30769;I32;;Entree courant DC 0;;0.001000;0.000000;A;4
+38;3;30771;I32;;Entree tension DC 0;;0.010000;0.000000;V;4
+39;3;30773;I32;;Entree puissance DC 0;;1.000000;0.000000;W;4
+40;3;30775;I32;;Puissance;P_AC;1.000000;0.000000;W;4
 41;3;30777;I32;;Puissance L1;;1.000000;0.000000;W;4
 42;3;30779;I32;;Puissance L2;;1.000000;0.000000;W;4
 43;3;30781;I32;;Puissance L3;;1.000000;0.000000;W;4
-44;3;30783;U32;;Tension du reseau phase L1;U_AC_1;0.010000;0.000000;V;4
-45;3;30785;U32;;Tension du reseau phase L2;U_AC_2;0.010000;0.000000;V;4
-46;3;30787;U32;;Tension du reseau phase L3;U_AC_3;0.010000;0.000000;V;4
+44;3;30783;U32;;Tension du reseau phase L1;;0.010000;0.000000;V;4
+45;3;30785;U32;;Tension du reseau phase L2;;0.010000;0.000000;V;4
+46;3;30787;U32;;Tension du reseau phase L3;;0.010000;0.000000;V;4
 47;3;30789;U32;;Tension di reseau entre phase L1 et L2;;0.010000;0.000000;V;4
 48;3;30791;U32;;Tension de reseau phase L2 contre L3;;0.010000;0.000000;V;4
 49;3;30793;U32;;Tension de reseau phase L3 contre L1;;0.010000;0.000000;V;4
 50;3;30795;U32;;Courant du reseau;;0.001000;0.000000;A;4
-51;3;30797;U32;;Courant du reseau phase L1;I_AC_1;0.001000;0.000000;A;4
-52;3;30799;U32;;Courant du reseau phase L2;I_AC_2;0.001000;0.000000;A;4
-53;3;30801;U32;;Courant du reseau phase L3;I_AC_3;0.001000;0.000000;A;4
-54;3;30803;U32;;Frequence du reseau;FREQ;0.010000;0.000000;Hz;4
+51;3;30797;U32;;Courant du reseau phase L1;;0.001000;0.000000;A;4
+52;3;30799;U32;;Courant du reseau phase L2;;0.001000;0.000000;A;4
+53;3;30801;U32;;Courant du reseau phase L3;;0.001000;0.000000;A;4
+54;3;30803;U32;;Frequence du reseau;;0.010000;0.000000;Hz;4
 55;3;30805;I32;;Puissance reactive;Q_AC;1.000000;0.000000;;4
 56;3;30807;I32;;Puissance reactive L1;Q_AC_1;1.000000;0.000000;;4
 57;3;30809;I32;;Puissance reactive L2;Q_AC_2;1.000000;0.000000;;4
@@ -61,7 +61,7 @@ modbusTCP;Inverter;SMA;STP X
 60;3;30815;I32;;Puissance apparente L1;S_AC_1;1.000000;0.000000;VA;4
 61;3;30817;I32;;Puissance apparente L2;S_AC_2;1.000000;0.000000;VA;4
 62;3;30819;I32;;Puissance apparente L3;S_AC_3;1.000000;0.000000;VA;4
-63;3;30823;U32;;Type d'excitation du cos Phi;PF;1.000000;0.000000;;4
+63;3;30823;U32;;Type d'excitation du cos Phi;;1.000000;0.000000;;4
 64;3;30827;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree;;1.000000;0.000000;;4
 65;3;30829;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_2;;0.100000;0.000000;%;4
 66;3;30835;U32;;Mode de fonctionnement consigne de puissance active;;1.000000;0.000000;;4
@@ -84,7 +84,7 @@ modbusTCP;Inverter;SMA;STP X
 83;3;30979;I32;;Courant du reseau phase L2_2;;0.001000;0.000000;A;4
 84;3;30981;I32;;Courant du reseau phase L3_2;;0.001000;0.000000;A;4
 85;3;31221;I32;;Facteur de dephasage EEI;;0.001000;0.000000;;4
-86;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;WIND_SPEED;0.010000;0.000000;%;4
+86;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;;0.010000;0.000000;%;4
 87;3;31245;U32;;Limitation de puissance PV interne;;0.010000;0.000000;%;4
 88;3;31247;I32;;Courant de defaut;;0.001000;0.000000;A;4
 89;3;31249;I32;;Puiss. effective au pt de raccordement au reseau;;1.000000;0.000000;W;4

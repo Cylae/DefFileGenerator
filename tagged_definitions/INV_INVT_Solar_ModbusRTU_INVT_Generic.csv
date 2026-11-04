@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;INVT;Generic;;;;;;;
+modbusRTU;Inverter;INVT;Generic;;;;;;;
 1;3;14353;U16;;RS grid line voltage;;0.1;0;V;4
 2;3;14354;U16;;ST grid Line Voltage;;0.1;0;V;4
 3;3;14355;U16;;TR grid line voltage;;0.1;0;V;4

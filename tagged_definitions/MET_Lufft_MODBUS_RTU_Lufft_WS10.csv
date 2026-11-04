@@ -1,4 +1,4 @@
-﻿ModbusRTU;Meter;Lufft;WS10;;;;;;;
+ModbusRTU;Meter;Lufft;WS10;;;;;;;
 1;4;19;I16;;Temprature de l'air;;10;0.0;C;4
 2;4;23;I16;;Temprature du point de rose;;10;0.0;C;4
 3;4;29;U16;;Humidit relative;;10;0.0;%;4

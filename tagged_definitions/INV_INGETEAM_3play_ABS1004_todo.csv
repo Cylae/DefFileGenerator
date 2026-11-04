@@ -1,4 +1,4 @@
-﻿ModbusRTU;Inverter;INGETEAM;3play(ABS1004);;;;;;;
+ModbusRTU;Inverter;INGETEAM;3play(ABS1004);;;;;;;
 1;4;0;U16;;Actual Date.Year;;1;0;Year;4
 2;4;1;U16;;Actual Date.Month of the Year;;1;0;Month;4
 3;4;2;U16;;Actual Date.Day of the month;;1;0;Day;4

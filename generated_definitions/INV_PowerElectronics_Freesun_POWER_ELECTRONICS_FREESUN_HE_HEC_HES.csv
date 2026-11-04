@@ -10,26 +10,26 @@ Modbus;Inverter;Power Electronics;FREESUN_HE_HEC_HES;1;;;;;;
 9;3;764;U32;;Fault Timestamp 8 (raw);;1;0;;4
 10;3;766;U32;;Fault Timestamp 9 (raw);;1;0;;4
 11;3;768;U32;;Fault Timestamp 10 (raw);;1;0;;4
-12;3;1100;U16;;Net Voltage L1;U_AC_1;1;0;V;4
-13;3;1101;U16;;Net Voltage L2;U_AC_2;1;0;V;4
-14;3;1102;U16;;Net Voltage L3;U_AC_3;1;0;V;4
-15;3;1103;U16;;Net Frequency;FREQ;0.1;0;Hz;4
-16;3;1106;U16;;Net Current L1 (% nominal);I_AC_1;0.01220703125;0;%;4
-17;3;1107;U16;;Net Current L2 (% nominal);I_AC_2;0.01220703125;0;%;4
-18;3;1108;U16;;Net Current L3 (% nominal);I_AC_3;0.01220703125;0;%;4
+12;3;1100;U16;;Net Voltage L1;;1;0;V;4
+13;3;1101;U16;;Net Voltage L2;;1;0;V;4
+14;3;1102;U16;;Net Voltage L3;;1;0;V;4
+15;3;1103;U16;;Net Frequency;;0.1;0;Hz;4
+16;3;1106;U16;;Net Current L1 (% nominal);;0.01220703125;0;%;4
+17;3;1107;U16;;Net Current L2 (% nominal);;0.01220703125;0;%;4
+18;3;1108;U16;;Net Current L3 (% nominal);;0.01220703125;0;%;4
 19;3;1109;U16;;Net Power;;0.1;0;kW;4
 20;3;1110;I16;;Power Factor;PF;0.01;0;;4
 21;3;1126;U16;;Input Voltage;;1;0;Vdc;4
 22;3;1127;U16;;Input Current (% nominal);;0.01220703125;0;%;4
 23;3;1128;U16;;Input Power;P_DC;0.1;0;kW;4
 24;3;1129;U16;;Last Input Voltage;;1;0;Vdc;4
-25;3;1145;U16;;Inverter Power;P_AC;0.1;0;kW;4
+25;3;1145;U16;;Inverter Power;;0.1;0;kW;4
 26;3;1146;U16;;Inverter Voltage;;1;0;V;4
 27;3;1147;U16;;Micro Software Version;;0.01;0;;1
 28;3;1148;U16;;DSP Software Version;;0.01;0;;1
 29;3;1149;U16;;Display Software Version;;0.01;0;;1
 30;3;1150;U16;;Hardware Version;;1;0;;1
-31;3;1151;I16;;Inverter Temperature;TEMP;0.01;0;Degr.Celsius;4
+31;3;1151;I16;;Inverter Temperature;;0.01;0;Degr.Celsius;4
 32;3;1152;I16;;Power Circuit Temperature;;1;0;Degr.Celsius;4
 33;3;1166;I16;;PT100 Temperature;;1;0;Degr.Celsius;4
 34;3;1167;U16;;Digital Input / Main Switch Status;;1;0;;4
@@ -96,7 +96,7 @@ Modbus;Inverter;Power Electronics;FREESUN_HE_HEC_HES;1;;;;;;
 95;3;1301;U16;;DI Feedback AC Relay;;1;0;;4
 96;3;1302;U16;;DI Feedback CS Relay;;1;0;;4
 97;3;1303;U16;;AC Overvoltage Protector Status;;1;0;;4
-98;3;1304;U16;;DC Overvoltage Protector Status;U_DC;1;0;;4
+98;3;1304;U16;;DC Overvoltage Protector Status;;1;0;;4
 99;3;1330;U16;;2nd Fault;;1;0;;4
 100;3;1331;U16;;1st Fault;;1;0;;4
 101;3;4000;U32;;Global Energy;;0.0001;0;MWh;4
@@ -125,7 +125,7 @@ Modbus;Inverter;Power Electronics;FREESUN_HE_HEC_HES;1;;;;;;
 124;3;4112;U16;;Module Phase U Current 1;;0.1;0;A;4
 125;3;4113;U16;;Module Phase V Current 1;;0.1;0;A;4
 126;3;4114;U16;;Module Phase W Current 1;;0.1;0;A;4
-127;3;4115;I16;;Module Internal Temperature 1;TEMP_CELL;0.01;0;Degr.Celsius;4
+127;3;4115;I16;;Module Internal Temperature 1;;0.01;0;Degr.Celsius;4
 128;3;4116;I16;;Module IGBT Temperature 1;;1;0;Degr.Celsius;4
 129;3;4122;U16;;Module Power Output 1;;0.1;0;kW;4
 130;3;4200;U16;;Module Command 2;;1;0;;0

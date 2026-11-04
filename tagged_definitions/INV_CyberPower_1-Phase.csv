@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;CyberPower;1-Phase;;;;;;;
+Modbus;Inverter;CyberPower;1-Phase;;;;;;;
 1;4;4096;U32_W;;Product_ID;;1.0;0.0;;4
 2;4;4098;U16;;Inverter_Rated_Power;P_RATED;1.0;0.0;;4
 3;4;4099;U16;;Peak Panel_Power;;1.0;0.0;;4

@@ -3,9 +3,9 @@ ModbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;1;;;;;;
 2;3;5001;I32;;Factory No.;;1;;;4
 3;3;5025;I64;;Current System-­time ;;1;;;4
 4;3;5899;I32;;Time of Sectamp of Entry;;1;0;Sec;4
-5;3;5901;I64;;Active Energy Import L123 T1;E_IMP;1;0;Wh;4
+5;3;5901;I64;;Active Energy Import L123 T1;;1;0;Wh;4
 6;3;5905;I64;;Active Energy Import L123 T2;;1;0;Wh;4
-7;3;5909;I64;;Active Energy Export L123 T1;E_EXP;1;0;Wh;4
+7;3;5909;I64;;Active Energy Export L123 T1;;1;0;Wh;4
 8;3;5913;I64;;Active Energy Export L123 T2;;1;0;Wh;4
 9;3;5917;I64;;Reactive Energy Import L123 T1;;1;0;varh;4
 10;3;5921;I64;;Reactive Energy Import L123 T2;;1;0;varh;4
@@ -20,9 +20,9 @@ ModbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;1;;;;;;
 19;3;5945;F32;;Current L2;I_AC_2;0.001;0;A;4
 20;3;5947;F32;;Current L3;I_AC_3;0.001;0;A;4
 21;3;5949;F32;;Current L4;;0.001;0;A;4
-22;3;5951;F32;;Voltage L1-N;U_AC_1;0.1;0;V;4
-23;3;5953;F32;;Voltage L2­-N;U_AC_2;0.1;0;V;4
-24;3;5955;F32;;Voltage L3-­N;U_AC_3;0.1;0;V;4
+22;3;5951;F32;;Voltage L1-N;;0.1;0;V;4
+23;3;5953;F32;;Voltage L2­-N;;0.1;0;V;4
+24;3;5955;F32;;Voltage L3-­N;;0.1;0;V;4
 25;3;5957;F32;;Power Factor L1;PF_1;0.1;0;;4
 26;3;5959;F32;;Power Factor L2;PF_2;0.1;0;;4
 27;3;5961;F32;;Power Factor L3;PF_3;0.1;0;;4
@@ -266,11 +266,11 @@ ModbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;1;;;;;;
 265;3;9001;F32;;Active Power L1_1;;1;0;W;4
 266;3;9003;F32;;Active Power L2_1;;1;0;W;4
 267;3;9005;F32;;Active Power L3_1;;1;0;W;4
-268;3;9009;F32;;Reactive Power L123;Q_AC;1;0;var;4
+268;3;9009;F32;;Reactive Power L123;;1;0;var;4
 269;3;9011;F32;;Reactive Power L1;Q_AC_1;1;0;var;4
 270;3;9013;F32;;Reactive Power L2;Q_AC_2;1;0;var;4
 271;3;9015;F32;;Reactive Power L3;Q_AC_3;1;0;var;4
-272;3;9017;F32;;Apparent Power L123;S_AC;1;0;VA;4
+272;3;9017;F32;;Apparent Power L123;;1;0;VA;4
 273;3;9019;F32;;Apparent Power L1;S_AC_1;1;0;VA;4
 274;3;9021;F32;;Apparent Power L2;S_AC_2;1;0;VA;4
 275;3;9023;F32;;Apparent Power L3;S_AC_3;1;0;VA;4
@@ -284,7 +284,7 @@ ModbusRTU;Meter;EMU ELECTRONIC;EMU PROFESSIONAL;1;;;;;;
 283;3;9205;F32;;Voltage L1­-L2;;0.1;0;V;4
 284;3;9207;F32;;Voltage L2­-L3;;0.1;0;V;4
 285;3;9209;F32;;Voltage L3­-L1;;0.1;0;V;4
-286;3;9299;F32;;Power Factor L1_1;PF;1;0;V;4
+286;3;9299;F32;;Power Factor L1_1;;1;0;V;4
 287;3;9301;F32;;Power Factor L2_1;;1;0;V;4
 288;3;9303;F32;;Power Factor L3_1;;1;0;V;4
 289;3;9309;F32;;Frequency_1;;1;0;Hz;4

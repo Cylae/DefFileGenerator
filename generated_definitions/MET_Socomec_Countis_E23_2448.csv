@@ -5,28 +5,28 @@ ModbusRTU;Meter;Socomec;Countis E24
 4;3;50520;U32;;Simple voltage V1 (CT);;1.0;0.0;V;2
 5;3;50522;U32;;Simple voltage V2 (CT);;1.0;0.0;V;2
 6;3;50524;U32;;Simple voltage V3 (CT);;1.0;0.0;V;2
-7;3;50526;U32;;!Frequency F(Not applicable) (CT);FREQ;1.0;0.0;V;0
+7;3;50526;U32;;!Frequency F(Not applicable) (CT);;1.0;0.0;V;0
 8;3;50528;U32;;Current I1 (CT);;1.0;0.0;mA;2
 9;3;50530;U32;;Current I2 (CT);;1.0;0.0;mA;2
 10;3;50532;U32;;Current I3 (CT);;1.0;0.0;mA;2
 11;3;50534;U32;;Neutral Current In (CT);;1.0;0.0;mA;2
-12;3;50536;I32;;(Sum)Active Power +/-  P (CT);P_AC;1.0;0.0;kW  (Signed);2
-13;3;50538;I32;;(Sum)Reactive Power +/- Q (CT);Q_AC;1.0;0.0;kvar  (Signed);2
-14;3;50540;U32;;(Sum)Apparent Power S (CT);S_AC;1.0;0.0;kVA;2
+12;3;50536;I32;;(Sum)Active Power +/-  P (CT);;1.0;0.0;kW  (Signed);2
+13;3;50538;I32;;(Sum)Reactive Power +/- Q (CT);;1.0;0.0;kvar  (Signed);2
+14;3;50540;U32;;(Sum)Apparent Power S (CT);;1.0;0.0;kVA;2
 15;3;50542;I32;;(Sum)Power Factor - leading et + lagging PF (CT);;1.0;0.0;0,001  (Signed);2
-16;3;50544;I32;;Active Power phase 1 +/- P1 (CT);P_AC_1;1.0;0.0;kW (Signed);2
-17;3;50546;I32;;Active Power phase 2 +/- P2 (CT);P_AC_2;1.0;0.0;kW (Signed);2
-18;3;50548;I32;;Active Power phase 3 +/- P3 (CT);P_AC_3;1.0;0.0;kW (Signed);2
-19;3;50550;I32;;Reactive Power phase 1 +/- Q1 (CT);Q_AC_1;1.0;0.0;kvar (Signed);2
-20;3;50552;I32;;Reactive Power phase 2 +/- Q2 (CT);Q_AC_2;1.0;0.0;kvar (Signed);2
-21;3;50554;I32;;Reactive Power phase 3 +/- Q3 (CT);Q_AC_3;1.0;0.0;kvar (Signed);2
-22;3;50556;U32;;Apparent Power phase 1 S1 (CT);S_AC_1;1.0;0.0;kVA;2
-23;3;50558;U32;;Apparent Power phase 2 S2 (CT);S_AC_2;1.0;0.0;kVA;2
-24;3;50560;U32;;Apparent Power phase 3 S3 (CT);S_AC_3;1.0;0.0;kVA;2
+16;3;50544;I32;;Active Power phase 1 +/- P1 (CT);;1.0;0.0;kW (Signed);2
+17;3;50546;I32;;Active Power phase 2 +/- P2 (CT);;1.0;0.0;kW (Signed);2
+18;3;50548;I32;;Active Power phase 3 +/- P3 (CT);;1.0;0.0;kW (Signed);2
+19;3;50550;I32;;Reactive Power phase 1 +/- Q1 (CT);;1.0;0.0;kvar (Signed);2
+20;3;50552;I32;;Reactive Power phase 2 +/- Q2 (CT);;1.0;0.0;kvar (Signed);2
+21;3;50554;I32;;Reactive Power phase 3 +/- Q3 (CT);;1.0;0.0;kvar (Signed);2
+22;3;50556;U32;;Apparent Power phase 1 S1 (CT);;1.0;0.0;kVA;2
+23;3;50558;U32;;Apparent Power phase 2 S2 (CT);;1.0;0.0;kVA;2
+24;3;50560;U32;;Apparent Power phase 3 S3 (CT);;1.0;0.0;kVA;2
 25;3;50562;I32;;Power Factor phase 1 - leading and + lagging PF1 (CT);;1.0;0.0;0,001 (Signed);2
 26;3;50564;I32;;Power Factor phase 2 - leading and + lagging PF2 (CT);;1.0;0.0;0,001 (Signed);2
 27;3;50566;I32;;Power Factor phase 3 - leading and + lagging PF3 (CT);;1.0;0.0;0,001 (Signed);2
-28;3;50770;U32;;Total Positive Active Energy (no resetable) Ea+;E_TOT;1.0;0.0;kWh ;4
+28;3;50770;U32;;Total Positive Active Energy (no resetable) Ea+;;1.0;0.0;kWh ;4
 29;3;50772;U32;;Total Positive Reactive Energy (no resetable) Er +;;1.0;0.0;kvarh;4
 30;3;50774;U32;;!Total Apparent Energy (no resetable) Es (Not applicable);;1.0;0.0;kVAh;0
 31;3;50776;U32;;Total Negative Active Energy (no resetable) Ea-;;1.0;0.0;kWh ;4

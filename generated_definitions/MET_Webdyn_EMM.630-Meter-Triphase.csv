@@ -14,21 +14,21 @@ ModbusRTU;Meter;Webdyn;EMM 630;;;;;;;
 13;4;24;F32;;Phase 1 volt amps reactive;;1.0;0.0;VAr;4
 14;4;26;F32;;Phase 2 volt amps reactive;;1.0;0.0;VAr;4
 15;4;28;F32;;Phase 3 volt amps reactive;;1.0;0.0;VAr;4
-16;4;30;F32;;Phase 1 power factor (1);PF_1;1.0;0.0;-;4
-17;4;32;F32;;Phase 2 power factor (1);PF_2;1.0;0.0;-;4
-18;4;34;F32;;Phase 3 power factor (1);PF_3;1.0;0.0;-;4
+16;4;30;F32;;Phase 1 power factor (1);;1.0;0.0;-;4
+17;4;32;F32;;Phase 2 power factor (1);;1.0;0.0;-;4
+18;4;34;F32;;Phase 3 power factor (1);;1.0;0.0;-;4
 19;4;36;F32;;Phase 1 phase angle;;1.0;0.0;deg.C;4
 20;4;38;F32;;Phase 2 phase angle;;1.0;0.0;deg.C;4
 21;4;40;F32;;Phase 3 phase angle;;1.0;0.0;deg.C;4
 22;4;42;F32;;Average line to neutral volts;;1.0;0.0;V;4
 23;4;46;F32;;Average line current;;1.0;0.0;A;4
 24;4;48;F32;;Sum of line current;;1.0;0.0;A;4
-25;4;52;F32;;Total system power;P_AC;1.0;0.0;W;4
+25;4;52;F32;;Total system power;;1.0;0.0;W;4
 26;4;56;F32;;Total system volt amps;;1.0;0.0;VA;4
 27;4;60;F32;;Total system VAr;;1.0;0.0;VAr;4
-28;4;62;F32;;Total system power factor (1);PF;1.0;0.0;-;4
+28;4;62;F32;;Total system power factor (1);;1.0;0.0;-;4
 29;4;66;F32;;Total system phase angle;;1.0;0.0;;4
-30;4;70;F32;;Frequency of supply voltages;FREQ;1.0;0.0;Hz;4
+30;4;70;F32;;Frequency of supply voltages;;1.0;0.0;Hz;4
 31;4;72;F32;;Import Wh since last reset;;1.0;0.0;kWh;4
 32;4;74;F32;;Export Wh since last reset;;1.0;0.0;kWh;4
 33;4;76;F32;;Import VArh since last reset;;1.0;0.0;kVArh;4
@@ -65,7 +65,7 @@ ModbusRTU;Meter;Webdyn;EMM 630;;;;;;;
 64;4;336;F32;;Line 2 to line 3 volts THD;;1.0;0.0;%;4
 65;4;338;F32;;Line 3 to line 1 volts THD;;1.0;0.0;%;4
 66;4;340;F32;;Average line to line volts THD;;1.0;0.0;%;4
-67;4;342;F32;;Total kwh.(3);E_TOT;1.0;0.0;kWh;4
+67;4;342;F32;;Total kwh.(3);;1.0;0.0;kWh;4
 68;4;344;F32;;Total kvarh.(3);;1.0;0.0;Kvarh;4
 69;4;346;F32;;L1 import kwh;;1.0;0.0;kWh;4
 70;4;348;F32;;L2 import kwh;;1.0;0.0;kWh;4

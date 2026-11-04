@@ -1,4 +1,4 @@
-﻿Modbus;Sensor;KIPPZONEN;RT1;;;;;;;
+Modbus;Sensor;KIPPZONEN;RT1;;;;;;;
 1;4;0;U16;;DevType;;1.0;0.0;;4
 2;4;1;U16;;Dataset;;1.0;0.0;;4
 3;4;2;U16;;DevMode;;1.0;0.0;;4

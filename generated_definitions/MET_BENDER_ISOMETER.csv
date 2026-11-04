@@ -13,7 +13,7 @@ modbusRTU;Meter;BENDER;ISOMETER;;;;;;;
 12;3;8198;I16;;net voltage;;1;0;V;4
 13;3;8199;I16;;Voltage U+/Earth;;1;0;V;4
 14;3;8200;I16;;Voltage U-/Earth;;1;0;V;4
-15;3;8201;I16;;System Frequency;FREQ;0.01;0;mHz;4
+15;3;8201;I16;;System Frequency;;0.01;0;mHz;4
 16;3;8202;I16;;PGH current;;1;0;mA;4
 17;3;8203;I16;;Temperature coupling L+;;1;0;Deg.Celsius;4
 18;3;8204;I16;;Temperature coupling L-;;1;0;Deg.Celsius;4

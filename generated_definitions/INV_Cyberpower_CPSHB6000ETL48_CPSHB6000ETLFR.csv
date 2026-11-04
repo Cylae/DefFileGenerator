@@ -1,8 +1,8 @@
 ModbusRTU;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
 1;4;8456_16;STRING;;Serial Number;SERIAL;1;0;;4
 2;4;8464_16;STRING;;Model Name;MODEL;1;0;;4
-3;4;8502;U32;;FeedInGrid Life energy;E_TOT;0.1;0;kWh;4
-4;4;8504;U32;;Inv. OP today energy;E_DAY;0.1;0;kWh;4
+3;4;8502;U32;;FeedInGrid Life energy;;0.1;0;kWh;4
+4;4;8504;U32;;Inv. OP today energy;;0.1;0;kWh;4
 5;4;8508;U32;;Inv. OP life energy;;0.1;0;kWh;4
 6;4;8512;U32;;PV1 today energy;;0.1;0;kWh;4
 7;4;8514;U32;;PV1 life energy;;0.1;0;kWh;4
@@ -34,21 +34,21 @@ ModbusRTU;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
 33;4;8578;U16;;Vgrid_A;;0.1;0;V;4
 34;4;8581;U16;;Igrid_A;;0.01;0;A;4
 35;4;8584;I32;;Pgrid_A;;1;0;W;4
-36;4;8596;U16;;PV1 Voltage;U_DC_STRING_1;0.1;0;V;4
-37;4;8597;U16;;PV1 Current;I_DC_STRING_1;0.01;0;A;4
+36;4;8596;U16;;PV1 Voltage;;0.1;0;V;4
+37;4;8597;U16;;PV1 Current;;0.01;0;A;4
 38;4;8598;U16;;PV1 Power;;1;0;W;4
-39;4;8599;U16;;PV2 Voltage;U_DC_STRING_2;0.1;0;V;4
-40;4;8600;U16;;PV2 Current;I_DC_STRING_2;0.01;0;A;4
+39;4;8599;U16;;PV2 Voltage;;0.1;0;V;4
+40;4;8600;U16;;PV2 Current;;0.01;0;A;4
 41;4;8601;U16;;PV2 Power;;1;0;W;4
-42;4;8602;U16;;PV3 Voltage;U_DC_STRING_3;0.1;0;V;4
-43;4;8603;U16;;PV3 Current;I_DC_STRING_3;0.01;0;A;4
+42;4;8602;U16;;PV3 Voltage;;0.1;0;V;4
+43;4;8603;U16;;PV3 Current;;0.01;0;A;4
 44;4;8604;U16;;PV3 Power;;1;0;W;4
-45;4;8605;U16;;PV4 Voltage;U_DC_STRING_4;0.1;0;V;4
-46;4;8606;U16;;PV4 Current;I_DC_STRING_4;0.01;0;A;4
+45;4;8605;U16;;PV4 Voltage;;0.1;0;V;4
+46;4;8606;U16;;PV4 Current;;0.01;0;A;4
 47;4;8607;U16;;PV4 Power;;1;0;W;4
-48;4;8608;U16;;Inv phase-A voltage;U_AC_1;0.1;0;V;4
-49;4;8609;U16;;Inv phase-B voltage;U_AC_2;0.1;0;V;4
-50;4;8610;U16;;Inv phase-C voltage;U_AC_3;0.1;0;V;4
+48;4;8608;U16;;Inv phase-A voltage;;0.1;0;V;4
+49;4;8609;U16;;Inv phase-B voltage;;0.1;0;V;4
+50;4;8610;U16;;Inv phase-C voltage;;0.1;0;V;4
 51;4;8611;U16;;Inv phase-A output current;;0.01;0;A;4
 52;4;8612;U16;;Inv phase-B output current;;0.01;0;A;4
 53;4;8613;U16;;Inv phase-C output current;;0.01;0;A;4
@@ -60,17 +60,17 @@ ModbusRTU;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
 59;4;8619;U16;;Inv phase-CA voltage;;0.1;0;V;4
 60;4;8620;U16;;Grid Frequency;FREQ;0.01;0;Hz;4
 61;4;8626;U16;;Pload;;1;0;W;4
-62;4;8628;U32;;Load today energy;;0.1;0;kWh;4
-63;4;8630;U32;;Load life energy;;0.1;0;kWh;4
-64;4;8633;U16;;BUS1_Voltage;U_DC;0.1;0;V;4
+62;4;8628;U32;;Load today energy;E_DAY;0.1;0;kWh;4
+63;4;8630;U32;;Load life energy;E_TOT;0.1;0;kWh;4
+64;4;8633;U16;;BUS1_Voltage;;0.1;0;V;4
 65;4;8634;U16;;BUS2_Voltage;;0.1;0;V;4
 66;4;8635;U16;;PV Rleakage;;1;0;kOhm;4
-67;4;8636;I16;;Temperature (air inside around power stage);TEMP;0.1;0;Deg.Celsius;4
+67;4;8636;I16;;Temperature (air inside around power stage);;0.1;0;Deg.Celsius;4
 68;4;8637;I16;;Temperature (air inside of wiring box);;0.1;0;Deg.Celsius;4
-69;4;8638;I16;;Highest inverter temperature;TEMP_INT;0.1;0;Deg.Celsius;4
+69;4;8638;I16;;Highest inverter temperature;;0.1;0;Deg.Celsius;4
 70;4;8639;I16;;Highest D/D temperature;;0.1;0;Deg.Celsius;4
 71;4;8641;U16;;Reconnection Time;;1;0;seconds;4
-72;4;8642;U32;;I_Event_flags1;WIND_SPEED;1;0;Bitfield;4
+72;4;8642;U32;;I_Event_flags1;;1;0;Bitfield;4
 73;4;8644;U32;;I_Event_flags2;;1;0;Bitfield;4
 74;4;8646;U16;;I_Event_1_Vendor;;1;0;Bitfield;4
 75;4;8647;U16;;I_Event_2_Vendor;;1;0;Bitfield;4

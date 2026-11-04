@@ -1,6 +1,6 @@
-﻿modbus;Inverter;SolarEdge;Enhanced Power Control Block;;;;;;;
+modbus;Inverter;SolarEdge;Enhanced Power Control Block;;;;;;;
 1;3;62208;U16;;Enable Dynamic Power Control;CMD_P_ENA;1.000000;0.000000;;1
-2;3;62212;F32;;Max Active Power;RatedPower;1.000000;0.000000;W;4
+2;3;62212;F32;;Max Active Power;;1.000000;0.000000;W;4
 3;3;62214;F32;;Max Reactive Power;Q_AC;1.000000;0.000000;VAR;4
 4;3;62216;U16;;Active/Reactive Preference;;1.000000;0.000000;;4
 5;3;62217;U16;;CosPhi/Q Preference;PF;1.000000;0.000000;;4

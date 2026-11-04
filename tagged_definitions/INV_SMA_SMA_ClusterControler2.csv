@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;SMA;SMA_ClusterControler2;;;;;;;
+modbusRTU;Inverter;SMA;SMA_ClusterControler2;;;;;;;
 1;4;30193;U16;;Heure du systeme UTC (s);;1.0;0.0;s;4
 2;4;30513;U16;;Energie totale injectee;E_TOT;1.0;0.0;Wh;4
 3;4;30517;U16;;Energie injectee journaliere;E_DAY;1.0;0.0;W;4

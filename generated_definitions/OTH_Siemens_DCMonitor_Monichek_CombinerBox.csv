@@ -1,11 +1,11 @@
 ModbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
 1;2;512_0_1;BITS;;Bus arc trip state;;1;0;;4
 2;2;513_0_1;BITS;;Channel arc trip state;;1;0;;4
-3;2;515_0_1;BITS;;Bus voltage is too high trip state;U_DC;1;0;;4
+3;2;515_0_1;BITS;;Bus voltage is too high trip state;;1;0;;4
 4;2;516_0_1;BITS;;Temperature sensor 1;;1;0;;4
 5;2;517_0_1;BITS;;Temperature sensor 2;;1;0;;4
 6;2;518_0_1;BITS;;Channel reverse current trip state;;1;0;;4
-7;2;519_0_1;BITS;;Total reverse current trip state;I_AC;1;0;;4
+7;2;519_0_1;BITS;;Total reverse current trip state;;1;0;;4
 8;2;521_0_1;BITS;;Total current is too high trip state;;1;0;;4
 9;2;522_0_1;BITS;;Channel no current trip state;;1;0;;4
 10;2;523_0_1;BITS;;Channel undercurrent trip state;;1;0;;4
@@ -291,7 +291,7 @@ ModbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
 290;4;535;U16;;Channel 22 power;;1;0;W;4
 291;4;536;U16;;Channel 23 power;;1;0;W;4
 292;4;537;U16;;Channel 24 power;;1;0;W;4
-293;4;538;U16;;The higher 16bit of the total generated energy;E_TOT;1;0;Wh;4
+293;4;538;U16;;The higher 16bit of the total generated energy;;1;0;Wh;4
 294;4;539;U16;;The lower 16bit of the total generated energy;;1;0;Wh;4
 295;4;540;U16;;The higher 16bit of the generated energy of channel 1;;1;0;Wh;4
 296;4;541;U16;;The lower 16bit of the generated energy of channel 1;;1;0;Wh;4
@@ -518,16 +518,16 @@ ModbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
 517;3;3076;U16;;Remote manual control release performs tripping;;1;0;;4
 518;3;3077;U16;;Arc channel selfcheck operation;;1;0;;4
 519;3;3078;U16;;Log clear operation;;1;0;;4
-520;3;3200;U16;;broadcast setting address-Serial number 47~32;SERIAL;1;0;;0
+520;3;3200;U16;;broadcast setting address-Serial number 47~32;;1;0;;0
 521;3;3201;U16;;broadcast setting address-Serial number 31~16;;1;0;;0
 522;3;3202;U16;;broadcast setting address-Serial number 15~0;;1;0;;0
-523;3;3203;U16;;broadcast setting address-Modbus slave address;UNIT_ID;1;0;;0
+523;3;3203;U16;;broadcast setting address-Modbus slave address;;1;0;;0
 524;3;3216;U16;;Broadcast time - year, month;;1;0;;0
 525;3;3217;U16;;Broadcast time - day, hour;;1;0;;0
 526;3;3218;U16;;Broadcast time - minutes, seconds;;1;0;;0
 527;3;3219;U16;;Broadcast time - milliseconds;;1;0;;0
 528;3;4096;I16;;Channel 1 panel 1 : voltage;;1;0;mV;4
-529;3;4097;I16;;Channel 1 panel 1: temperature;TEMP_CELL;1;0;C;4
+529;3;4097;I16;;Channel 1 panel 1: temperature;;1;0;C;4
 530;3;4098;I16;;Channel 1 panel 1 : channel and node addresses;;1;0;;4
 531;3;4099;I16;;Channel 1 panel 1 : year, month;;1;0;;4
 532;3;4100;I16;;Channel 1 panel 1 : day, hour;;1;0;;4

@@ -1,9 +1,9 @@
 ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
-1;4;4800_20;STRING;;Model;MODEL;1;;;4
+1;4;4800_20;STRING;;Model;;1;;;4
 2;4;4810_10;STRING;;Hardware version;;1;;;4
 3;4;4815_10;STRING;;Control software version;;1;;;4
 4;4;4820_10;STRING;;HMI software version;;1;;;4
-5;4;4825_30;STRING;;Manufacturer info;MANUFACTURER;1;;;4
+5;4;4825_30;STRING;;Manufacturer info;;1;;;4
 6;4;4850;U16;;Device type;;1;;;4
 7;4;4852;U16;;Protocol type;;1;;;4
 8;4;4853_10;STRING;;Protocol version;;1;;;4
@@ -22,8 +22,8 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 21;4;5012;U16;;Output current (U);;0.1;;A;4
 22;4;5013;U16;;Output current (V);;0.1;;A;4
 23;4;5014;U16;;Output current (W);;0.1;;A;4
-24;4;5015;U16;;Off-grid frequency;FREQ;0.01;;Hz;4
-25;4;5016;U16;;Grid frequency;;0.01;;Hz;4
+24;4;5015;U16;;Off-grid frequency;;0.01;;Hz;4
+25;4;5016;U16;;Grid frequency;FREQ;0.01;;Hz;4
 26;4;5018;I16;;Inner temperature;;0.1;;?;4
 27;4;5019;I16;;Heat sink temperature;;0.1;;?;4
 28;4;5020;U16;;DC voltage;U_DC;0.1;;V;4
@@ -58,7 +58,7 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 57;4;5056;I16;;Total power factor;;0.01;;;4
 58;4;5200;U16;;BMS status;;;;;4
 59;4;5202;U16;;Battery total voltage;;0.1;;V;4
-60;4;5203;I16;;Battery total current;I_AC;0.1;;A;4
+60;4;5203;I16;;Battery total current;;0.1;;A;4
 61;4;5204;U16;;Battery SOC;SOC;0.001;;;4
 62;4;5205;U16;;Battery SOH;SOH;0.001;;;4
 63;4;5206;U16;;Charge limited-current;;0.1;;A;4
@@ -72,7 +72,7 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 71;3;6003;I16;;Reactive power;;1;;;4
 72;3;6004;U16;;Mode auto switch;;1;;;4
 73;3;6005;U16;;Manual grid-tied/off-grid mode;;1;;;4
-74;3;6006;I16;;Active power;cmdPower;0.1;;kW;4
+74;3;6006;I16;;Active power;;0.1;;kW;4
 75;3;6007;U16;;Initiative islanding;;1;;;4
 76;3;6009;U16;;Plan curve running;;1;;;4
 77;3;6011;U16;;Automatic frequency control;;1;;;4
