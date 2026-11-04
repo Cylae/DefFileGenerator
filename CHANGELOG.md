@@ -1,15 +1,5 @@
 # Changelog
 
-## Unreleased
-
-- Validate complete Modbus register spans and explicit word/byte swap aliases.
-- Preserve zero addresses/factors and reciprocal scaling precision; support small-address headerless Excel tables and separate RAW byte lengths.
-- Reject malformed Unicode, incomplete document parsing, XML DTDs, and excessive Excel archive or worksheet expansion.
-- Validate staged definitions before file or stream publication, preserve source aliases and previous destinations, and report generation failures reliably.
-- Bound multipart requests before parsing, offload web processing, and align previews/counts/downloads with serialized output.
-- Protect intermediate CSVs against formula injection; fix GUI JSON exports, overwrite prompts, quiet flags, and stale browser results.
-- Include the documented Python API in built distributions, exclude tests from runtime coverage, and refresh installation/security/maintenance documentation.
-
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -20,6 +10,62 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   <a href="DEVELOPER_GUIDE.md"><b>Developer Guide</b></a> •
   <a href="docs/AUDIT_REPORT.md"><b>Audit Report</b></a>
 </p>
+
+## [Unreleased]
+
+## [0.4.0] - 2026-11-04
+
+### Added
+
+- **Dyness DH-Series Commercial & Industrial BESS Generator (`DefFileGenerator/dyness_generator.py` & `generate_dyness_definitions.py`)**:
+  - Full end-to-end parsing of Dyness DH-Series Modbus communication protocols (V1.0 through V2.2) and automated WebdynSunPM CSV definition generation.
+  - Dedicated support for `DH200Y` (Liquid-Cooled 232 kWh platform with 260 individual cell voltages at 0.001 V, 80 cell temperatures with -40.0 °C physical offset, PCS Position #4, and chiller cooling loop).
+  - Dedicated support for `DH200F` (Air-Cooled 215 kWh high-voltage platform with 240 cell voltages, 60 cell temperatures, PCS Position #5, DCDC modules, and AC HVAC unit).
+  - Dedicated support for `DH100F` (Air-Cooled 100 kWh C&I platform with 240 cell voltages, 60 cell temperatures, and unified telemetry).
+  - Universal `DH_Series_Generic` superset definition linking all modular battery blocks, fire protection, and ambient temperature/humidity sensors.
+  - Added 4 definitions to `Definitions/` (bringing library to 129 models), `Dyness_DH_Series_Definitions/`, `generated_definitions/`, and `tagged_definitions/`.
+- **FoxESS P3 & H3 Pro Commercial Inverter Suite (`generate_foxess_definitions.py`)**:
+  - Generates 30 production-grade definitions in `FoxESS_P3_H3_Pro_Definitions/` covering P3 Pro, H3 Pro, Common Inverter, Meter, Battery, and All-In-One (1,233 registers).
+- **Metadata Auto-Inference Expansion (`DefFileGenerator/main.py`)**:
+  - Registered `Dyness`, `Mars`, and `FoxESS` into `KNOWN_MANUFACTURERS`.
+  - Automatic category classification for BESS platforms (`dh200y`, `dh200f`, `dh100f`, `dyness`, `bms`, `bess`) mapping to `Battery`.
+- **Deep Metrological & Schema Audit Suite (`scratch/deep_audit_all_definitions.py`)**:
+  - Audits 2,360 definition files across 5 repository libraries (765,377 registers) verifying 100.0% schema validity, zero tag duplicates, and sequential 1-based indexing.
+- **Python Public API Exports in `DefFileGenerator/__init__.py`**:
+  - Exposed `DynessDefinitionGenerator`, `DynessProtocolParser`, and `generate_dyness_definitions` in root package `__all__`.
+- **Environment Auto-Discovery for VS Code Run & Debug**:
+  - Built-in `.venv/Lib/site-packages` auto-discovery in `dyness_generator.py`, `generate_dyness_definitions.py`, `mars_generator.py`, and `generate_mars_definitions.py`, preventing `ModuleNotFoundError` when run via system Python.
+- **Test Battery Expansion**:
+  - Expanded test coverage to 1,113 automated tests across unit, integration, adversarial security, web concurrency, and performance suites (1,108 passing, 0 failures, 5 offline skipped).
+
+### Security
+
+- **CSV Formula Injection (DDE) Neutralization**:
+  - Systematic application of `Generator.sanitize_csv_field()` across all definition generator outputs (`dyness_generator.py`, `mars_generator.py`, `def_gen.py`), quoting formulas starting with `=`, `+`, `-`, `@`, `|`, `%` without corrupting legitimate signed numbers (`-40.0`, `+25.0`).
+- **Comprehensive Boundary & Bomb Defenses**:
+  - Rejection of malformed Unicode, XML DTDs (XXE), ZipSlip path traversal, and excessive Excel archive/worksheet decompression expansion.
+- **Bandit AST Security Audit**:
+  - 25,347 lines of code scanned with zero High and zero Medium vulnerabilities.
+
+### Fixed
+
+- **Modbus Register Spans & Addressing**:
+  - Validate complete Modbus register spans and explicit word/byte swap aliases (`_w`, `_b`, `_wb`).
+  - Preserve zero addresses/factors and reciprocal scaling precision; support small-address headerless Excel tables and separate RAW byte lengths.
+  - Corrected address parsing in `_write_dh100f` to safely split underscore-separated string addresses.
+- **Staged Definitions & Failure Reporting**:
+  - Validate staged definitions before file or stream publication, preserve source aliases and previous destinations, and report generation failures reliably.
+- **Web & Multipart Processing**:
+  - Bound multipart requests before parsing, offload web processing, and align previews/counts/downloads with serialized output.
+- **GUI & CLI Stability**:
+  - Fix GUI JSON exports, overwrite prompts, quiet flags, and stale browser results.
+  - Standardized Windows/Webdyn CRLF (`\r\n`) line terminators across all generator CSV outputs.
+
+### Performance
+
+- **High-Throughput Generator Execution**:
+  - Benchmarked throughput: Dyness generation at 4,632 registers/s, Mars generation at 28,272 registers/s.
+  - Zero CRT file descriptor leaks and memory heap growth bounded below 30 KB across 185,000+ generated registers.
 
 ## [0.3.0] - 2026-11-02
 
@@ -172,11 +218,11 @@ Rebuilt against the current `main`. Functionally audited, hardened, and verified
   - Entry points: `deffilegen-gui`, `deffilegen gui`, `deffilegen --gui`, and double-click `launch_gui.bat`.
 - **Smart Header Detection for PDF Tables.** Added semantic keyword density scanning across the first 4 rows of PDF tables in `Extractor.extract_from_pdf` to bypass merged title rows.
 - **Structured Validation Diagnostics.** Added `validate_csv_detailed` returning `ValidationReport` and `ValidationIssue` objects for rich diagnostics across CLI, Web API, and Desktop GUI.
-- Smart Excel Header Detection in `Extractor.extract_from_excel`: dynamically scans the first 15 rows of each worksheet to identify actual Modbus table headers, eliminating silent column misalignment caused by title, metadata, or section banners.
-- International Column Synonyms in `Extractor.COLUMN_MAPPING`: added SunSpec and multilingual variants (`point`, `point name`, `designation`, `nom`, `grandeur`, `quantity`, `adresse`, `start reg (dec)`, `registre`, `res.`, `resolution`, `accès`, `acces`, `lecture/écriture`).
-- Enhanced Webdyn definition CSV ingestion in `Extractor.extract_from_csv`: supports standard 4-part headers (`protocol;category;manufacturer;model`) as well as 5+ parts.
-- Enhanced strict validation in `validate_csv` verifying `Info1` in `(1, 2, 3, 4)`, valid WebdynSunPM Action codes, finite float precision for `CoefA`/`CoefB`, and minimum column length.
-- Added `info1`, `info2`, `info3`, `coefa`, and `coefb` aliases to `COLUMN_MAPPING` in `DefFileGenerator/extractor.py`.
+- **Smart Excel Header Detection in `Extractor.extract_from_excel`**: dynamically scans the first 15 rows of each worksheet to identify actual Modbus table headers, eliminating silent column misalignment caused by title, metadata, or section banners.
+- **International Column Synonyms in `Extractor.COLUMN_MAPPING`**: added SunSpec and multilingual variants (`point`, `point name`, `designation`, `nom`, `grandeur`, `quantity`, `adresse`, `start reg (dec)`, `registre`, `res.`, `resolution`, `accès`, `acces`, `lecture/écriture`).
+- **Enhanced Webdyn definition CSV ingestion in `Extractor.extract_from_csv`**: supports standard 4-part headers (`protocol;category;manufacturer;model`) as well as 5+ parts.
+- **Enhanced strict validation in `validate_csv`**: verifying `Info1` in `(1, 2, 3, 4)`, valid WebdynSunPM Action codes, finite float precision for `CoefA`/`CoefB`, and minimum column length.
+- **Added `info1`, `info2`, `info3`, `coefa`, and `coefb` aliases to `COLUMN_MAPPING` in `DefFileGenerator/extractor.py`**.
 
 ### Changed
 

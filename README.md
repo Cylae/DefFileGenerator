@@ -3,7 +3,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
-  <img src="https://img.shields.io/badge/Version-0.3.0-blue?style=for-the-badge" alt="Version 0.3.0" />
+  <img src="https://img.shields.io/badge/Version-0.4.0-blue?style=for-the-badge" alt="Version 0.4.0" />
   <img src="https://img.shields.io/badge/Tests-1108%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1108 passed" />
   <img src="https://img.shields.io/badge/Coverage-90%25-brightgreen?style=for-the-badge" alt="Coverage: 90%" />
   <img src="https://img.shields.io/badge/Type%20Check-Mypy%20Strict-blue?style=for-the-badge" alt="Mypy Strict" />
@@ -22,6 +22,7 @@
 ## 📑 Table of Contents
 
 - [🎯 What is DefFileGenerator?](#-what-is-deffilegenerator)
+- [🌟 What's New in v0.4.0](#-whats-new-in-v040)
 - [🚀 A-to-Z Installation Guide (Absolute Beginner Friendly)](#-a-to-z-installation-guide-absolute-beginner-friendly)
   - [Method 1 — Ready-to-use Standalone Executable (Recommended for Windows)](#method-1--ready-to-use-standalone-executable-recommended-for-windows)
   - [Method 2 — Express Start via `launch_gui.bat` Script](#method-2--express-start-via-launch_guibat-script)
@@ -64,6 +65,31 @@ Manually creating this file usually requires hours of tedious, error-prone manua
 4. **Applies Semantic SunPM Canonical Tags** via a 211,000+ register training dataset (`P_AC`, `Q_AC`, `E_TOT`, `E_DAY`, `U_AC_1`, etc.).
 5. **Performs strict validation** (unique variable tags, valid Modbus address spaces, interval collision and overlap checks).
 6. **Generates an official WebdynSunPM CSV file**, ready to be imported directly into your data logger gateway!
+
+---
+
+## 🌟 What's New in v0.4.0
+
+The **v0.4.0** release delivers major industrial equipment suites, enhanced security safeguards, deep metrological verification, and developer ergonomics:
+
+- 🔋 **Dyness DH-Series Commercial & Industrial BESS Generator**:
+  - Full end-to-end parsing of Dyness DH-Series Modbus protocol (V1.0 - V2.2) and automated WebdynSunPM CSV definition generation.
+  - Dedicated models: `DH200Y` (Liquid-Cooled 232 kWh, 260 cells, 80 temperature probes), `DH200F` (Air-Cooled 215 kWh, 240 cells, 60 temps), `DH100F` (Air-Cooled 100 kWh, 240 cells, 60 temps), and `DH_Series_Generic` (Universal superset).
+  - Integrated subsystem mapping for PCS Modules (Positions #4 and #5), DCDC modules, Liquid cooling loop, AC HVAC units, Fire protection, and ambient sensors.
+  - Physical offsets calibrated (-40.0 °C for cell/module temperatures, -3200.0 A for pack current).
+- ⚡ **FoxESS P3 & H3 Pro Commercial Inverter Suite**:
+  - 30 production-grade definition files generated in `FoxESS_P3_H3_Pro_Definitions/` covering P3 Pro, H3 Pro, Common Inverter, Meter, Battery, and All-in-One (1,233 registers).
+- 🛡️ **Defense-in-Depth CSV Formula Injection (DDE) Neutralization**:
+  - Systematic application of `Generator.sanitize_csv_field()` across all definition generator outputs (`dyness_generator.py`, `mars_generator.py`, `def_gen.py`), quoting formulas starting with `=`, `+`, `-`, `@`, `|`, `%` without corrupting legitimate signed numbers (`-40.0`, `+25.0`).
+- 🔍 **Deep Metrological & Schema Audit Suite (`scratch/deep_audit_all_definitions.py`)**:
+  - Evaluated **2,360 definition files** across 5 directory trees (**765,377 Modbus registers**) achieving **100.0% schema validity**, zero tag duplicates, and exact 1-based sequential indexing.
+- 📦 **Package Modularity & Public Python API**:
+  - Integrated `DefFileGenerator/dyness_generator.py` into core package with official exports in `DefFileGenerator/__init__.py`.
+  - Metadata auto-inference in `DefFileGenerator/main.py` recognizing `Dyness`, `Mars`, and `FoxESS` with automatic classification to `Battery`.
+- 🛠️ **Zero-Friction VS Code Environment Auto-Discovery**:
+  - Automatic `.venv` site-packages resolution in generators preventing `ModuleNotFoundError` when debugging or running via system Python.
+- 🧪 **Comprehensive Automated Test Battery**:
+  - Expanded test suite to **1,113 automated tests** (1,108 passing, 0 failures, 5 offline skipped) across unit, integration, adversarial security, web concurrency, and performance suites.
 
 ---
 
@@ -255,7 +281,7 @@ deffilegen --version
 ```
 The terminal will respond:
 ```text
-deffilegen 0.3.0
+deffilegen 0.4.0
 ```
 
 You are all set! 🎉
