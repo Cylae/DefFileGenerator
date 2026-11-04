@@ -217,27 +217,15 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
         self.assertIn("HUMIDITY", tags)
 
         # Also verify 1-unit baseline file
-        p_1u = GEN_DIR / "MarsRenewable_LC-AC_1Unit.csv"
+        p_1u = self.gen_dir / "MarsRenewable_LC-AC_1Unit.csv"
         self.assertTrue(p_1u.exists())
         _, rows_1u = self._read_definition(p_1u)
         self.assertEqual(len(rows_1u), 34)
 
     def test_mars_standalone_lc_and_ac_compliance(self) -> None:
-<<<<<<< HEAD
-<<<<<<< HEAD
         """Verify standalone MarsRenewable_LC.csv (1800 regs) and MarsRenewable_AC.csv (1600 regs)."""
-        lc_path = GEN_DIR / "MarsRenewable_LC.csv"
-        ac_path = GEN_DIR / "MarsRenewable_AC.csv"
-=======
-        """Verify standalone MarsRenewable_LC.csv (18 regs) and MarsRenewable_AC.csv (16 regs)."""
         lc_path = self.gen_dir / "MarsRenewable_LC.csv"
         ac_path = self.gen_dir / "MarsRenewable_AC.csv"
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
-=======
-        """Verify standalone MarsRenewable_LC.csv (18 regs) and MarsRenewable_AC.csv (16 regs)."""
-        lc_path = self.gen_dir / "MarsRenewable_LC.csv"
-        ac_path = self.gen_dir / "MarsRenewable_AC.csv"
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         self.assertTrue(lc_path.exists(), f"Missing {lc_path}")
         self.assertTrue(ac_path.exists(), f"Missing {ac_path}")
@@ -268,8 +256,8 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
         self.assertIn("HUMIDITY", ac_tags)
 
         # Verify 1-unit baseline files
-        lc_1u = GEN_DIR / "MarsRenewable_LC_1Unit.csv"
-        ac_1u = GEN_DIR / "MarsRenewable_AC_1Unit.csv"
+        lc_1u = self.gen_dir / "MarsRenewable_LC_1Unit.csv"
+        ac_1u = self.gen_dir / "MarsRenewable_AC_1Unit.csv"
         self.assertTrue(lc_1u.exists())
         self.assertTrue(ac_1u.exists())
         _, lc_1u_rows = self._read_definition(lc_1u)

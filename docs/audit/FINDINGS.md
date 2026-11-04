@@ -12,6 +12,10 @@
 | **FIND-008** | LOW | Architecture / Dead Code | `gen_mars_defs.py` | Orphan legacy prototype script in repository root | RESOLVED |
 | **FIND-009** | MEDIUM | Scalability / CLI | `DefFileGenerator/main.py`, `tests/test_batch_cli.py` | Batch CLI lacked recursive directory tree scanning and multi-worker execution | RESOLVED |
 | **FIND-010** | MEDIUM | Schema / API Typing | `web/app.py` | Missing explicit Pydantic response models on FastAPI endpoints | RESOLVED |
+| **FIND-011** | HIGH | Quality / Syntax | `DefFileGenerator/mars_generator.py`, `tests/test_foxess_p3_h3_pro.py`, `tests/test_mars_requested_definitions.py` | Unresolved raw git conflict markers committed causing SyntaxErrors during test collection | RESOLVED |
+| **FIND-012** | MEDIUM | Portability / Network | `DefFileGenerator/tests/test_30_equipementiers.py`, `tests/test_50_equipementiers.py` | Missing guard fallback and UNC subpath layout mismatches causing failures during offline/online runs | RESOLVED |
+| **FIND-013** | LOW | Quality / Linter | `generate_foxess_definitions.py` | Deprecated type imports, unused variables, and formatting violations in FoxESS generator | RESOLVED |
+| **FIND-014** | MEDIUM | Packaging / Metadata | `.venv`, `pyproject.toml` | Local virtual environment had stale editable metadata (0.2.1 vs 0.3.0) | RESOLVED |
 
 ---
 
@@ -103,4 +107,37 @@
 - **Trigger**: Inspecting OpenAPI `/docs` or `/openapi.json` schemas for `/api/convert`, `/api/validate`, `/api/tag`, `/api/audit`, and `/api/library`.
 - **Root Cause**: Endpoints returned raw dictionaries wrapped in `JSONResponse` without `response_model=` decorators, resulting in unvalidated and untyped OpenAPI specifications.
 - **Fix**: Implemented explicit Pydantic v2 models (`HealthResponse`, `ValidationIssueItem`, `ConvertResponse`, `ValidateResponse`, `TagResponse`, `AuditResponse`, `LibraryItem`) with full type annotations on all route handlers.
+- **Status**: RESOLVED
+
+
+### FIND-011: Committed Raw Git Conflict Markers in Production and Test Files
+- **Severity**: HIGH
+- **Component**: `DefFileGenerator/mars_generator.py`, `DefFileGenerator/tests/test_foxess_p3_h3_pro.py`, `DefFileGenerator/tests/test_mars_requested_definitions.py`
+- **Trigger**: Executing `pytest` collection.
+- **Root Cause**: An unresolved merge commit (`af2000e`) committed raw git conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`), raising `SyntaxError: invalid decimal literal` during AST parsing.
+- **Remediation**: Architecturally reconciled all three files. In `mars_generator.py`, preserved the 100-unit arrays for `MarsRenewable_LC.csv` and `MarsRenewable_AC.csv` alongside the 1-unit baseline files. In `test_foxess_p3_h3_pro.py`, harmonized dedicated directory validation with canonical telemetry tags and removed stale assertions. In `test_mars_requested_definitions.py`, ensured hermetic execution against `self.gen_dir`.
+- **Status**: RESOLVED
+
+### FIND-012: Network Share Path Layout Discrepancies and Incomplete Skip Guard
+- **Severity**: MEDIUM
+- **Component**: `DefFileGenerator/tests/test_30_equipementiers.py`, `DefFileGenerator/tests/test_50_equipementiers.py`
+- **Trigger**: Running test battery without `ENABLE_NETWORK_SHARE_TESTS=1` or against corporate share `\\WDN-FILES.WEBDYN.COM\Support\Equipementiers`.
+- **Root Cause**: The ternary path fallback in `EQUIPEMENTIERS_DIR` defaulted to `DEFAULT_EQUIPEMENTIERS_DIR` even when `ENABLE_NETWORK_SHARE_TESTS` was not set, bypassing the fast-skip guard. Furthermore, files located in vendor subfolders on the network share (e.g. `Goodwe\Fichiers SUN PM\...`, `Growatt\Fichiers PM\...`, `Solax\Fichiers PM\...`, `Lettel\Fichiers PM\...`) failed resolution.
+- **Remediation**: Implemented `get_equipementiers_dir()` with strict fast-fail guard when share tests are disabled, and added `resolve_equipment_path()` providing transparent dual-mapping across flat and subfolder directory layouts.
+- **Status**: RESOLVED
+
+### FIND-013: Code Quality and Lint Violations in FoxESS Generator
+- **Severity**: LOW
+- **Component**: `generate_foxess_definitions.py`
+- **Trigger**: Running `ruff check .` across the repository.
+- **Root Cause**: Unused imports (`os`, `export_report_json`), deprecated `typing.Dict/List/Set/Tuple`, and unused loop and assignment variables (`total_tags`, `total_canonical`, `total_writes`, `total_alarms`).
+- **Remediation**: Cleaned all imports, removed dead variables, prefixed unused loop indices with underscores, and reformatted with `ruff format`.
+- **Status**: RESOLVED
+
+### FIND-014: Stale Editable Distribution Metadata in Virtual Environment
+- **Severity**: MEDIUM
+- **Component**: `.venv`, `pyproject.toml`, `DefFileGenerator/tests/test_packaging_and_entrypoints.py`
+- **Trigger**: Running `test_package_metadata`.
+- **Root Cause**: The virtual environment `.venv` contained an editable build from version 0.2.1, causing `importlib.metadata.distribution('def-file-generator').metadata['Version']` to report `'0.2.1'` while package and pyproject were `'0.3.0'`.
+- **Remediation**: Reinstalled editable distribution via `pip install -e . --no-deps`, synchronizing distribution metadata to `0.3.0`.
 - **Status**: RESOLVED

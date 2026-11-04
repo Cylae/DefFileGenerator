@@ -20,17 +20,64 @@ from DefFileGenerator.extractor import Extractor, peek_generator
 
 DEFAULT_EQUIPEMENTIERS_DIR = r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers"
 LOCAL_EQUIPEMENTIERS_DIR = r"G:\My Drive\08092026\Equipementiers"
-EQUIPEMENTIERS_DIR = os.environ.get(
-    "EQUIPEMENTIERS_DIR",
-    LOCAL_EQUIPEMENTIERS_DIR
-    if os.path.exists(LOCAL_EQUIPEMENTIERS_DIR)
-    else (
+
+
+def get_equipementiers_dir() -> str:
+    if "EQUIPEMENTIERS_DIR" in os.environ and os.path.exists(os.environ["EQUIPEMENTIERS_DIR"]):
+        return os.environ["EQUIPEMENTIERS_DIR"]
+    if os.path.exists(LOCAL_EQUIPEMENTIERS_DIR):
+        return LOCAL_EQUIPEMENTIERS_DIR
+    if os.environ.get("ENABLE_NETWORK_SHARE_TESTS") == "1" and os.path.exists(
         DEFAULT_EQUIPEMENTIERS_DIR
-        if os.environ.get("ENABLE_NETWORK_SHARE_TESTS") == "1"
-        and os.path.exists(DEFAULT_EQUIPEMENTIERS_DIR)
-        else DEFAULT_EQUIPEMENTIERS_DIR
-    ),
-)
+    ):
+        return DEFAULT_EQUIPEMENTIERS_DIR
+    return ""
+
+
+EQUIPEMENTIERS_DIR = get_equipementiers_dir()
+
+ALT_MAP = {
+    r"Goodwe\GoodWe_SMT_Series.csv": [
+        r"Goodwe\Fichiers SUN PM\Gamme SMT - GT SERIES\W_Goodwe_SMT50K_SMT60K.csv",
+        r"Goodwe\Fichiers SUN PM\Gamme SMT - GT SERIES\INV_GOODWE_SMT60K-G2_SMT80K_GT.csv",
+    ],
+    r"Goodwe\GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv": [
+        r"Goodwe\Fichiers SUN PM\Gamme ET-EH-BT-BH-EHB-AES-ABP-BTC\GoodWe_ET-EH-BT-BH-EHB-AES-ABP-BTC_ModbusRTU.csv",
+    ],
+    r"Growatt\W_Growatt_Generic.csv": [
+        r"Growatt\Fichiers PM\GENERIC\W_Growatt_Generic.csv",
+    ],
+    r"Lettel\LETTEL_MAP4-34RJ.csv": [
+        r"Lettel\Fichiers PM\LETTEL_MAP4-34RJ.csv",
+    ],
+    r"Solax\SOLAX-X1-X3-GENERIC.csv": [
+        r"Solax\Fichiers PM\SOLAX-X1-X3-GENERIC.csv",
+    ],
+    r"Solax\INV_SOLAX_MICG2-PROG2.csv": [
+        r"Solax\Fichiers PM\INV_SOLAX_MICG2-PROG2.csv",
+    ],
+    r"Solax\SOLAX-X1-X3-GENERIC(TCP).csv": [
+        r"Solax\Fichiers PM\SOLAX-X1-X3-GENERIC(TCP).csv",
+    ],
+    r"CarloGavazzi\Meter\CarloGavazzi_EM210.csv": [
+        r"CarloGavazzi\Meter\Fichiers PM\EM210\CarloGavazzi_EM210.csv",
+    ],
+    r"CarloGavazzi\Meter\CarloGavazzi_EM24.csv": [
+        r"CarloGavazzi\Meter\Fichiers PM\EM24\CarloGavazzi_EM24.csv",
+    ],
+}
+
+
+def resolve_equipment_path(base_dir: str, rel_path: str) -> str:
+    full = os.path.join(base_dir, rel_path)
+    if os.path.exists(full):
+        return full
+    for alt in ALT_MAP.get(rel_path, []):
+        alt_full = os.path.join(base_dir, alt)
+        if os.path.exists(alt_full):
+            return alt_full
+    return full
+
 
 DOCS_52 = [
     # 1. Huawei (3)
@@ -122,7 +169,7 @@ def test_52_battery():
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     logger = logging.getLogger("Equipementiers52")
 
-    if not os.path.exists(EQUIPEMENTIERS_DIR):
+    if not EQUIPEMENTIERS_DIR or not os.path.exists(EQUIPEMENTIERS_DIR):
         logger.warning(f"Equipementiers dir not found: {EQUIPEMENTIERS_DIR}")
         try:
             import pytest
@@ -143,7 +190,7 @@ def test_52_battery():
     start_time = time.time()
 
     for idx, (rel, mfg) in enumerate(DOCS_52, start=1):
-        full = os.path.join(EQUIPEMENTIERS_DIR, rel)
+        full = resolve_equipment_path(EQUIPEMENTIERS_DIR, rel)
         ext = os.path.splitext(full)[1].lower()
         res = {
             "idx": idx,

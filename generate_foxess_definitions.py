@@ -24,27 +24,24 @@ STRICT POLICY: NO modification to \\\\WDN-FILES.WEBDYN.COM without explicit user
 
 import csv
 import json
-import os
 import shutil
 import sys
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
-
 
 WORKSPACE_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(WORKSPACE_DIR))
+if str(WORKSPACE_DIR) not in sys.path:
+    sys.path.insert(0, str(WORKSPACE_DIR))
 
-from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator
-from DefFileGenerator.extractor import Extractor, peek_generator
-from DefFileGenerator.knowledge_miner import (
+from DefFileGenerator.def_gen import Generator, GeneratorConfig, run_generator  # noqa: E402
+from DefFileGenerator.extractor import Extractor, peek_generator  # noqa: E402
+from DefFileGenerator.knowledge_miner import (  # noqa: E402
     auto_fix_definition_file,
     infer_sunpm_tag,
     is_canonical_sunpm_tag,
 )
-from DefFileGenerator.report_generator import (
+from DefFileGenerator.report_generator import (  # noqa: E402
     analyze_definition_file,
-    export_report_json,
 )
 
 FOX_SHARE_DIR = Path(r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers\Fox ESS")
@@ -61,8 +58,18 @@ generator = Generator()
 extractor = Extractor()
 
 
-
-def format_row(idx: int, fc: str, addr: str, dtype: str, name: str, tag: str, ca_raw: str, cb_raw: str, unit: str, action: str) -> list[str]:
+def format_row(
+    idx: int,
+    fc: str,
+    addr: str,
+    dtype: str,
+    name: str,
+    tag: str,
+    ca_raw: str,
+    cb_raw: str,
+    unit: str,
+    action: str,
+) -> list[str]:
     """Formats a single row into standard 11-column WebdynSunPM format."""
     try:
         ca = float(ca_raw) if ca_raw.strip() else 1.0
@@ -108,7 +115,7 @@ def build_inverter_rows() -> list[list[str]]:
     if not src_inv_path.exists():
         src_inv_path = TAGGED_DEFS_DIR / "INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv"
 
-    with open(src_inv_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+    with open(src_inv_path, encoding="utf-8-sig", errors="ignore") as f:
         reader = csv.reader(f, delimiter=";")
         next(reader, None)  # Skip header
         raw_rows = list(reader)
@@ -135,7 +142,12 @@ def build_inverter_rows() -> list[list[str]]:
         name_l = name.lower()
 
         # Alarm registers and bitfields: action MUST be 9, never assign analog telemetry tags
-        is_alarm_reg = addr_base in ("39067", "39068", "39069", "39070") or "alarm" in name_l or "fault" in name_l or "abnormal" in name_l
+        is_alarm_reg = (
+            addr_base in ("39067", "39068", "39069", "39070")
+            or "alarm" in name_l
+            or "fault" in name_l
+            or "abnormal" in name_l
+        )
 
         tag = ""
         # 1. Identification
@@ -267,13 +279,20 @@ def build_inverter_rows() -> list[list[str]]:
 
         # Mark all remote control / command registers as Action = 1
         if addr_base.startswith("46") or addr_base.startswith("49"):
-            if any(k in name_l for k in ("command", "set", "limit", "power on", "shut down", "remote control")):
+            if any(
+                k in name_l
+                for k in ("command", "set", "limit", "power on", "shut down", "remote control")
+            ):
                 action = "1"
 
         # Fallback to inference only for non-alarm registers
         if not tag and not is_alarm_reg:
             inferred = infer_sunpm_tag(name, raw_tag, equipment_type="Inverter")
-            if inferred and is_canonical_sunpm_tag(inferred) and inferred not in ("P_AC", "Q_AC", "FREQ", "U_DC", "I_DC", "P_DC"):
+            if (
+                inferred
+                and is_canonical_sunpm_tag(inferred)
+                and inferred not in ("P_AC", "Q_AC", "FREQ", "U_DC", "I_DC", "P_DC")
+            ):
                 tag = inferred
 
         # Strict tag deduplication
@@ -283,7 +302,11 @@ def build_inverter_rows() -> list[list[str]]:
             else:
                 seen_tags.add(tag)
 
-        clean_rows.append(format_row(len(clean_rows) + 1, fc, addr, dtype, name, tag, ca_raw, cb_raw, unit, action))
+        clean_rows.append(
+            format_row(
+                len(clean_rows) + 1, fc, addr, dtype, name, tag, ca_raw, cb_raw, unit, action
+            )
+        )
 
     return clean_rows
 
@@ -294,7 +317,7 @@ def build_meter_rows() -> list[list[str]]:
     if not src_met_path.exists():
         src_met_path = TAGGED_DEFS_DIR / "MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv"
 
-    with open(src_met_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+    with open(src_met_path, encoding="utf-8-sig", errors="ignore") as f:
         reader = csv.reader(f, delimiter=";")
         next(reader, None)  # Skip header
         raw_rows = list(reader)
@@ -309,7 +332,6 @@ def build_meter_rows() -> list[list[str]]:
         addr = r[2]
         dtype = r[3]
         name = r[5]
-        raw_tag = r[6] if len(r) > 6 else ""
         ca_raw = r[7] if len(r) > 7 else "1.0"
         cb_raw = r[8] if len(r) > 8 else "0.0"
         unit = r[9] if len(r) > 9 else ""
@@ -385,7 +407,11 @@ def build_meter_rows() -> list[list[str]]:
             else:
                 seen_tags.add(tag)
 
-        clean_rows.append(format_row(len(clean_rows) + 1, fc, addr, dtype, name, tag, ca_raw, cb_raw, unit, action))
+        clean_rows.append(
+            format_row(
+                len(clean_rows) + 1, fc, addr, dtype, name, tag, ca_raw, cb_raw, unit, action
+            )
+        )
 
     return clean_rows
 
@@ -396,7 +422,7 @@ def build_battery_rows() -> list[list[str]]:
     if not src_bat_path.exists():
         src_bat_path = TAGGED_DEFS_DIR / "BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv"
 
-    with open(src_bat_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+    with open(src_bat_path, encoding="utf-8-sig", errors="ignore") as f:
         reader = csv.reader(f, delimiter=";")
         next(reader, None)  # Skip header
         raw_rows = list(reader)
@@ -411,7 +437,6 @@ def build_battery_rows() -> list[list[str]]:
         addr = r[2]
         dtype = r[3]
         name = r[5]
-        raw_tag = r[6] if len(r) > 6 else ""
         ca_raw = r[7] if len(r) > 7 else "1.0"
         cb_raw = r[8] if len(r) > 8 else "0.0"
         unit = r[9] if len(r) > 9 else ""
@@ -423,7 +448,11 @@ def build_battery_rows() -> list[list[str]]:
         # Exclude Meter registers that were in raw master dump
         try:
             addr_int = int(addr_base)
-            if (36100 <= addr_int <= 36248) or (38801 <= addr_int <= 38947) or addr_int in (39168, 49207, 49208, 49248):
+            if (
+                (36100 <= addr_int <= 36248)
+                or (38801 <= addr_int <= 38947)
+                or addr_int in (39168, 49207, 49208, 49248)
+            ):
                 continue
         except ValueError:
             pass
@@ -487,12 +516,18 @@ def build_battery_rows() -> list[list[str]]:
             else:
                 seen_tags.add(tag)
 
-        clean_rows.append(format_row(len(clean_rows) + 1, fc, addr, dtype, name, tag, ca_raw, cb_raw, unit, action))
+        clean_rows.append(
+            format_row(
+                len(clean_rows) + 1, fc, addr, dtype, name, tag, ca_raw, cb_raw, unit, action
+            )
+        )
 
     return clean_rows
 
 
-def build_all_in_one_rows(inv_rows: list[list[str]], met_rows: list[list[str]], bat_rows: list[list[str]]) -> list[list[str]]:
+def build_all_in_one_rows(
+    inv_rows: list[list[str]], met_rows: list[list[str]], bat_rows: list[list[str]]
+) -> list[list[str]]:
     """
     Combines Inverter, Meter, and Battery into a unified 1,233 register All-In-One definition,
     sorted by Modbus address, with deduplicated identification registers and unique SunPM tags.
@@ -512,7 +547,7 @@ def build_all_in_one_rows(inv_rows: list[list[str]], met_rows: list[list[str]], 
     all_combined.sort(key=lambda x: (x[0], x[1]))
 
     merged_rows: list[list[str]] = []
-    for addr_base, sub, addr_str, r, src_name in all_combined:
+    for _addr_base, _sub, addr_str, r, _src_name in all_combined:
         if addr_str in seen_addrs:
             continue
         seen_addrs.add(addr_str)
@@ -565,9 +600,14 @@ def generate_other_fox_sources() -> dict[str, Path]:
                 )
                 if run_generator(cfg, input_data=dedup):
                     results["GMAX"] = gmax_out
-                    for dest in [LOCAL_OUTPUT_DIR / "FOXESS_GMAX_STORAGE.csv", GEN_DEFS_DIR / "FOXESS_GMAX_STORAGE.csv"]:
+                    for dest in [
+                        LOCAL_OUTPUT_DIR / "FOXESS_GMAX_STORAGE.csv",
+                        GEN_DEFS_DIR / "FOXESS_GMAX_STORAGE.csv",
+                    ]:
                         shutil.copy2(gmax_out, dest)
-                    print(f"  ✓ [Storage] FOXESS_GMAX_STORAGE.csv (G-MAX Series): {len(dedup)} registers, 100% valid")
+                    print(
+                        f"  ✓ [Storage] FOXESS_GMAX_STORAGE.csv (G-MAX Series): {len(dedup)} registers, 100% valid"
+                    )
         except Exception as e:
             print(f"  Warning: failed to generate G-MAX: {e}")
 
@@ -576,9 +616,14 @@ def generate_other_fox_sources() -> dict[str, Path]:
     if r_inv.exists():
         try:
             r_inv_out = AUTRES_GAMMES_DIR / "FOXESS_R_SERIES_INVERTER.csv"
-            auto_fix_definition_file(r_inv, r_inv_out, auto_tag=True, normalize_legacy=True, deduplicate=True)
+            auto_fix_definition_file(
+                r_inv, r_inv_out, auto_tag=True, normalize_legacy=True, deduplicate=True
+            )
             results["R_INV"] = r_inv_out
-            for dest in [LOCAL_OUTPUT_DIR / "FOXESS_R_SERIES_INVERTER.csv", GEN_DEFS_DIR / "FOXESS_R_SERIES_INVERTER.csv"]:
+            for dest in [
+                LOCAL_OUTPUT_DIR / "FOXESS_R_SERIES_INVERTER.csv",
+                GEN_DEFS_DIR / "FOXESS_R_SERIES_INVERTER.csv",
+            ]:
                 shutil.copy2(r_inv_out, dest)
             print("  ✓ [Inverter] FOXESS_R_SERIES_INVERTER.csv (R Series): 100% valid")
         except Exception as e:
@@ -589,9 +634,14 @@ def generate_other_fox_sources() -> dict[str, Path]:
     if r_bat.exists():
         try:
             r_bat_out = AUTRES_GAMMES_DIR / "FOXESS_R_SERIES_BATTERY.csv"
-            auto_fix_definition_file(r_bat, r_bat_out, auto_tag=True, normalize_legacy=True, deduplicate=True)
+            auto_fix_definition_file(
+                r_bat, r_bat_out, auto_tag=True, normalize_legacy=True, deduplicate=True
+            )
             results["R_BAT"] = r_bat_out
-            for dest in [LOCAL_OUTPUT_DIR / "FOXESS_R_SERIES_BATTERY.csv", GEN_DEFS_DIR / "FOXESS_R_SERIES_BATTERY.csv"]:
+            for dest in [
+                LOCAL_OUTPUT_DIR / "FOXESS_R_SERIES_BATTERY.csv",
+                GEN_DEFS_DIR / "FOXESS_R_SERIES_BATTERY.csv",
+            ]:
                 shutil.copy2(r_bat_out, dest)
             print("  ✓ [Battery] FOXESS_R_SERIES_BATTERY.csv (R Series): 100% valid")
         except Exception as e:
@@ -602,9 +652,14 @@ def generate_other_fox_sources() -> dict[str, Path]:
     if sunspec.exists():
         try:
             sun_out = AUTRES_GAMMES_DIR / "FOXESS_SUNSPEC_RV_H3PLUS.csv"
-            auto_fix_definition_file(sunspec, sun_out, auto_tag=True, normalize_legacy=True, deduplicate=True)
+            auto_fix_definition_file(
+                sunspec, sun_out, auto_tag=True, normalize_legacy=True, deduplicate=True
+            )
             results["SUNSPEC"] = sun_out
-            for dest in [LOCAL_OUTPUT_DIR / "FOXESS_SUNSPEC_RV_H3PLUS.csv", GEN_DEFS_DIR / "FOXESS_SUNSPEC_RV_H3PLUS.csv"]:
+            for dest in [
+                LOCAL_OUTPUT_DIR / "FOXESS_SUNSPEC_RV_H3PLUS.csv",
+                GEN_DEFS_DIR / "FOXESS_SUNSPEC_RV_H3PLUS.csv",
+            ]:
                 shutil.copy2(sun_out, dest)
             print("  ✓ [Inverter] FOXESS_SUNSPEC_RV_H3PLUS.csv (SunSpec R/V/H3plus): 100% valid")
         except Exception as e:
@@ -641,8 +696,9 @@ presentes dans \\\\WDN-FILES.WEBDYN.COM\\Support\\Equipementiers\\Fox ESS :
     return results
 
 
-def write_definition_file(path: Path, equipment: str, manufacturer: str, model: str, rows: list[list[str]]) -> None:
-
+def write_definition_file(
+    path: Path, equipment: str, manufacturer: str, model: str, rows: list[list[str]]
+) -> None:
     """Writes a definition file with explicit header and validates compliance."""
     path.parent.mkdir(parents=True, exist_ok=True)
     header = ["Modbus", equipment, manufacturer, model, "", "", "", "", "", "", ""]
@@ -679,52 +735,182 @@ def main() -> None:
     print("\n[2/4] Writing definition files...")
 
     # A. Specific P3 Pro folder
-    write_definition_file(P3_PRO_DIR / "FOXESS_P3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro", inv_rows)
-    write_definition_file(P3_PRO_DIR / "FOXESS_P3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro", met_rows)
-    write_definition_file(P3_PRO_DIR / "FOXESS_P3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro", bat_rows)
+    write_definition_file(
+        P3_PRO_DIR / "FOXESS_P3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro", inv_rows
+    )
+    write_definition_file(
+        P3_PRO_DIR / "FOXESS_P3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro", met_rows
+    )
+    write_definition_file(
+        P3_PRO_DIR / "FOXESS_P3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro", bat_rows
+    )
 
     # B. Specific H3 Pro folder
-    write_definition_file(H3_PRO_DIR / "FOXESS_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "H3 Pro", inv_rows)
-    write_definition_file(H3_PRO_DIR / "FOXESS_H3_PRO_METER.csv", "Meter", "FoxESS", "H3 Pro", met_rows)
-    write_definition_file(H3_PRO_DIR / "FOXESS_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "H3 Pro", bat_rows)
+    write_definition_file(
+        H3_PRO_DIR / "FOXESS_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "H3 Pro", inv_rows
+    )
+    write_definition_file(
+        H3_PRO_DIR / "FOXESS_H3_PRO_METER.csv", "Meter", "FoxESS", "H3 Pro", met_rows
+    )
+    write_definition_file(
+        H3_PRO_DIR / "FOXESS_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "H3 Pro", bat_rows
+    )
 
     # C. Common folder (Commun/) specifically for shared definitions between P3 Pro and H3 Pro
-    write_definition_file(COMMUN_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
-    write_definition_file(COMMUN_DIR / "FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows)
-    write_definition_file(COMMUN_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro / H3 Pro", bat_rows)
-    write_definition_file(COMMUN_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", aio_rows)
-    write_definition_file(COMMUN_DIR / "FoxESS_P3_H3_PRO.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
+    write_definition_file(
+        COMMUN_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        inv_rows,
+    )
+    write_definition_file(
+        COMMUN_DIR / "FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows
+    )
+    write_definition_file(
+        COMMUN_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv",
+        "Battery",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        bat_rows,
+    )
+    write_definition_file(
+        COMMUN_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        aio_rows,
+    )
+    write_definition_file(
+        COMMUN_DIR / "FoxESS_P3_H3_PRO.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows
+    )
 
     # D. Flat / Root FoxESS_P3_H3_Pro_Definitions directory (all files readily accessible)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro", inv_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro", met_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro", bat_rows)
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro", inv_rows
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro", met_rows
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro", bat_rows
+    )
 
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "H3 Pro", inv_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_H3_PRO_METER.csv", "Meter", "FoxESS", "H3 Pro", met_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "H3 Pro", bat_rows)
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "H3 Pro", inv_rows
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_H3_PRO_METER.csv", "Meter", "FoxESS", "H3 Pro", met_rows
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "H3 Pro", bat_rows
+    )
 
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro / H3 Pro", bat_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", aio_rows)
-    write_definition_file(LOCAL_OUTPUT_DIR / "FoxESS_P3_H3_PRO.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        inv_rows,
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_METER.csv",
+        "Meter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        met_rows,
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv",
+        "Battery",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        bat_rows,
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        aio_rows,
+    )
+    write_definition_file(
+        LOCAL_OUTPUT_DIR / "FoxESS_P3_H3_PRO.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows
+    )
 
     # E. Sync to generated_definitions directory
-    write_definition_file(GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
-    write_definition_file(GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows)
-    write_definition_file(GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro / H3 Pro", bat_rows)
-    write_definition_file(GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", aio_rows)
-    write_definition_file(GEN_DEFS_DIR / "FoxESS_P3_H3_PRO.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
+    write_definition_file(
+        GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        inv_rows,
+    )
+    write_definition_file(
+        GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows
+    )
+    write_definition_file(
+        GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv",
+        "Battery",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        bat_rows,
+    )
+    write_definition_file(
+        GEN_DEFS_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        aio_rows,
+    )
+    write_definition_file(
+        GEN_DEFS_DIR / "FoxESS_P3_H3_PRO.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows
+    )
 
-    write_definition_file(GEN_DEFS_DIR / "INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
-    write_definition_file(GEN_DEFS_DIR / "MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows)
-    write_definition_file(GEN_DEFS_DIR / "BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro / H3 Pro", bat_rows)
+    write_definition_file(
+        GEN_DEFS_DIR / "INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        inv_rows,
+    )
+    write_definition_file(
+        GEN_DEFS_DIR / "MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv",
+        "Meter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        met_rows,
+    )
+    write_definition_file(
+        GEN_DEFS_DIR / "BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv",
+        "Battery",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        bat_rows,
+    )
 
     # F. Sync to tagged_definitions
-    write_definition_file(TAGGED_DEFS_DIR / "INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv", "Inverter", "FoxESS", "P3 Pro / H3 Pro", inv_rows)
-    write_definition_file(TAGGED_DEFS_DIR / "MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv", "Meter", "FoxESS", "P3 Pro / H3 Pro", met_rows)
-    write_definition_file(TAGGED_DEFS_DIR / "BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv", "Battery", "FoxESS", "P3 Pro / H3 Pro", bat_rows)
+    write_definition_file(
+        TAGGED_DEFS_DIR / "INV_Fox_ESS_FOXESS_P3_H3_PRO_INVERTER.csv",
+        "Inverter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        inv_rows,
+    )
+    write_definition_file(
+        TAGGED_DEFS_DIR / "MET_Fox_ESS_FOXESS_P3_H3_PRO_METER.csv",
+        "Meter",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        met_rows,
+    )
+    write_definition_file(
+        TAGGED_DEFS_DIR / "BAT_Fox_ESS_FOXESS_P3_H3_PRO_BATTERY.csv",
+        "Battery",
+        "FoxESS",
+        "P3 Pro / H3 Pro",
+        bat_rows,
+    )
 
     # G. Generate definitions for other FoxESS sources from network share
     print("\n[2b/4] Processing other FoxESS equipment sources from network share...")
@@ -732,7 +918,6 @@ def main() -> None:
 
     # 3. Create dedicated READMEs for P3 Pro, H3 Pro, Commun, and root
     print("\n[3/4] Generating dedicated READMEs for P3 Pro, H3 Pro, and Commun...")
-
 
     # README for Commun folder (Text)
     commun_readme = """===============================================================================
@@ -1056,10 +1241,6 @@ FoxESS_P3_H3_Pro_Definitions/
     aio_stats = analyze_definition_file(LOCAL_OUTPUT_DIR / "FOXESS_P3_H3_PRO_ALL_IN_ONE.csv")
 
     total_regs = inv_stats.register_count + met_stats.register_count + bat_stats.register_count
-    total_tags = inv_stats.tag_count + met_stats.tag_count + bat_stats.tag_count
-    total_canonical = inv_stats.canonical_tag_count + met_stats.canonical_tag_count + bat_stats.canonical_tag_count
-    total_writes = inv_stats.action_1_count + met_stats.action_1_count + bat_stats.action_1_count
-    total_alarms = inv_stats.action_9_count + met_stats.action_9_count + bat_stats.action_9_count
 
     report_content = f"""# 📊 RAPPORT TECHNIQUE DE GÉNÉRATION & ARBITRAGE — FOX ESS
 ## P3 Pro, H3 Pro, All-In-One & Gammes Dérivées — Conformité WebdynSunPM & Cartographie des Tags SunPM
@@ -1079,9 +1260,15 @@ FoxESS_P3_H3_Pro_Definitions/
 | **Battery (Batterie / BMS)** | `FOXESS_P3_H3_PRO_BATTERY.csv` | **{bat_stats.register_count}** | **{bat_stats.tag_count}** | {bat_stats.tag_density:.1f}% | FC03 Holding | **{bat_stats.action_1_count}** | **{bat_stats.action_9_count}** | ✅ **100% Conforme** |
 """
 
-    (LOCAL_OUTPUT_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md").write_text(report_content, encoding="utf-8")
-    (DOCS_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md").write_text(report_content, encoding="utf-8")
-    (TAGGED_DEFS_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md").write_text(report_content, encoding="utf-8")
+    (LOCAL_OUTPUT_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md").write_text(
+        report_content, encoding="utf-8"
+    )
+    (DOCS_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md").write_text(
+        report_content, encoding="utf-8"
+    )
+    (TAGGED_DEFS_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md").write_text(
+        report_content, encoding="utf-8"
+    )
 
     # Export JSON metrics
     json_metrics = {
@@ -1094,11 +1281,16 @@ FoxESS_P3_H3_Pro_Definitions/
         "summary": {
             "total_registers_individual": total_regs,
             "total_registers_all_in_one": aio_stats.register_count,
-            "all_valid": aio_stats.is_valid and inv_stats.is_valid and met_stats.is_valid and bat_stats.is_valid,
+            "all_valid": aio_stats.is_valid
+            and inv_stats.is_valid
+            and met_stats.is_valid
+            and bat_stats.is_valid,
         },
     }
     json_str = json.dumps(json_metrics, indent=2, ensure_ascii=False)
-    (LOCAL_OUTPUT_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.json").write_text(json_str, encoding="utf-8")
+    (LOCAL_OUTPUT_DIR / "RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.json").write_text(
+        json_str, encoding="utf-8"
+    )
     (TAGGED_DEFS_DIR / "foxess_p3_h3_pro_report.json").write_text(json_str, encoding="utf-8")
 
     print(f"\n✓ Reports written to {LOCAL_OUTPUT_DIR}")

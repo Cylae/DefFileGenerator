@@ -15,15 +15,16 @@
 
 | Gate | Command | Scope | Result | Observed Evidence |
 | :--- | :--- | :--- | :--- | :--- |
-| **Linter** | `uv run ruff check .` | Entire repository | **EXECUTED_PASS** | All checks passed (0 errors across 138 files) |
-| **Formatter** | `uv run ruff format --check .` | Entire repository | **EXECUTED_PASS** | 138 files already formatted cleanly |
+| **Linter** | `uv run ruff check .` | Entire repository | **EXECUTED_PASS** | All checks passed (0 errors across 141 files) |
+| **Formatter** | `uv run ruff format --check .` | Entire repository | **EXECUTED_PASS** | 141 files already formatted cleanly |
 | **Type Checker** | `uv run mypy DefFileGenerator web` | First-party packages | **EXECUTED_PASS** | Success: 0 issues found in 102 source files |
-| **Security Audit** | `uv run bandit -r DefFileGenerator web -ll` | First-party packages | **EXECUTED_PASS** | 0 high/medium issues across 23,949 LOC |
-| **Build & Packaging** | `uv build --offline` | Sdist & Wheel | **EXECUTED_PASS** | `def_file_generator-0.3.0-py3-none-any.whl` generated |
+| **Security Audit** | `uv run bandit -r DefFileGenerator web -ll` | First-party packages | **EXECUTED_PASS** | 0 high/medium issues across 24,193 LOC |
+| **Build & Packaging** | `pip wheel . --no-deps -w dist` | Sdist & Wheel | **EXECUTED_PASS** | `def_file_generator-0.3.0-py3-none-any.whl` generated |
 | **Package Integrity** | Python ZipFile inspection | Built wheel archive | **EXECUTED_PASS** | All required web/core files present; 0 test leaks |
-| **CLI Verification** | `uv run deffilegen --version` | Application CLI | **EXECUTED_PASS** | `deffilegen 0.3.0` returned with exit code 0 |
+| **CLI Verification** | `deffilegen --version` | Application CLI | **EXECUTED_PASS** | `deffilegen 0.3.0` returned with exit code 0 |
 | **Frontend Contracts** | `node DefFileGenerator/tests/interface_frontend_contracts.js web/static/app.js` | Web Studio DOM contracts | **EXECUTED_PASS** | All 4 tabs asserted: Convert, Tag, Audit, Library, Toast, Copy, Filter, ARIA |
-| **Unit & Integration** | `uv run pytest --cov=DefFileGenerator --cov=web` | 1,093 collected tests | **EXECUTED_PASS** | 1,092 passed, 1 skipped, 0 failed |
+| **Unit & Integration** | `pytest --cov=DefFileGenerator --cov=web` | 1,099 collected tests | **EXECUTED_PASS** | 1,094 passed, 5 skipped, 0 failed |
+| **Live Share Validation** | `ENABLE_NETWORK_SHARE_TESTS=1 pytest test_30_equipementiers.py test_50_equipementiers.py` | 30 & 52 equipment batteries | **EXECUTED_PASS** | 30/30 passed in battery 30; 47/52 passed in battery 52 (>=45 passed) |
 
 ---
 

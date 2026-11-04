@@ -617,7 +617,9 @@ def generate_mars_requested_definitions(
         for item in ac_template:
             rel = item["addr"] - 15000
             addr = base + rel
-            tag = "TEMP" if (i == 1 and rel == 20) else ("HUMIDITY" if (i == 1 and rel == 27) else "")
+            tag = (
+                "TEMP" if (i == 1 and rel == 20) else ("HUMIDITY" if (i == 1 and rel == 27) else "")
+            )
             ac_regs.append(
                 {
                     "Info1": "4",
@@ -667,9 +669,15 @@ def generate_mars_requested_definitions(
 
     # Also generate MarsRenewable_LC-AC_1Unit.csv (single unit baseline: 34 registers)
     p4_1unit = out_dir / "MarsRenewable_LC-AC_1Unit.csv"
-    lc_ac_1unit = ac_regs[:len(ac_template)] + lc_regs[:len(lc_template)]
+    lc_ac_1unit = ac_regs[: len(ac_template)] + lc_regs[: len(lc_template)]
     write_definition_file(
-        p4_1unit, "modbusTCP", "Inverter", "MarsRenewable", "LC-AC-1Unit", lc_ac_1unit, strict_overlap=True
+        p4_1unit,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "LC-AC-1Unit",
+        lc_ac_1unit,
+        strict_overlap=True,
     )
     generated["MarsRenewable_LC-AC_1Unit.csv"] = p4_1unit
 
@@ -678,23 +686,13 @@ def generate_mars_requested_definitions(
     # -------------------------------------------------------------------------
     p4_lc = out_dir / "MarsRenewable_LC.csv"
     valid, rep = write_definition_file(
-<<<<<<< HEAD
-<<<<<<< HEAD
-        p4_lc, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_regs, strict_overlap=True
-=======
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_lc,
         "modbusTCP",
         "Inverter",
         "MarsRenewable",
         "LiquidCooling",
-        lc_alone_regs,
+        lc_regs,
         strict_overlap=True,
-<<<<<<< HEAD
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_lc.name}: {rep.issues}")
@@ -703,30 +701,26 @@ def generate_mars_requested_definitions(
     # Also generate MarsRenewable_LiquidCooling.csv alias
     p4_lc_alias = out_dir / "MarsRenewable_LiquidCooling.csv"
     write_definition_file(
-<<<<<<< HEAD
-<<<<<<< HEAD
-        p4_lc_alias, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_regs, strict_overlap=True
-=======
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_lc_alias,
         "modbusTCP",
         "Inverter",
         "MarsRenewable",
         "LiquidCooling",
-        lc_alone_regs,
+        lc_regs,
         strict_overlap=True,
-<<<<<<< HEAD
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     generated["MarsRenewable_LiquidCooling.csv"] = p4_lc_alias
 
     # Also generate MarsRenewable_LC_1Unit.csv
     p4_lc_1u = out_dir / "MarsRenewable_LC_1Unit.csv"
     write_definition_file(
-        p4_lc_1u, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling-1Unit", lc_regs[:len(lc_template)], strict_overlap=True
+        p4_lc_1u,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "LiquidCooling-1Unit",
+        lc_regs[: len(lc_template)],
+        strict_overlap=True,
     )
     generated["MarsRenewable_LC_1Unit.csv"] = p4_lc_1u
 
@@ -735,23 +729,7 @@ def generate_mars_requested_definitions(
     # -------------------------------------------------------------------------
     p4_ac = out_dir / "MarsRenewable_AC.csv"
     valid, rep = write_definition_file(
-<<<<<<< HEAD
-<<<<<<< HEAD
         p4_ac, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
-=======
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
-        p4_ac,
-        "modbusTCP",
-        "Inverter",
-        "MarsRenewable",
-        "AirCooling",
-        ac_alone_regs,
-        strict_overlap=True,
-<<<<<<< HEAD
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_ac.name}: {rep.issues}")
@@ -760,30 +738,26 @@ def generate_mars_requested_definitions(
     # Also generate MarsRenewable_AirCooling.csv alias
     p4_ac_alias = out_dir / "MarsRenewable_AirCooling.csv"
     write_definition_file(
-<<<<<<< HEAD
-<<<<<<< HEAD
-        p4_ac_alias, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
-=======
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_ac_alias,
         "modbusTCP",
         "Inverter",
         "MarsRenewable",
         "AirCooling",
-        ac_alone_regs,
+        ac_regs,
         strict_overlap=True,
-<<<<<<< HEAD
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
-=======
->>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     generated["MarsRenewable_AirCooling.csv"] = p4_ac_alias
 
     # Also generate MarsRenewable_AC_1Unit.csv
     p4_ac_1u = out_dir / "MarsRenewable_AC_1Unit.csv"
     write_definition_file(
-        p4_ac_1u, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling-1Unit", ac_regs[:len(ac_template)], strict_overlap=True
+        p4_ac_1u,
+        "modbusTCP",
+        "Inverter",
+        "MarsRenewable",
+        "AirCooling-1Unit",
+        ac_regs[: len(ac_template)],
+        strict_overlap=True,
     )
     generated["MarsRenewable_AC_1Unit.csv"] = p4_ac_1u
 

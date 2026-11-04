@@ -8,11 +8,12 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 - **Working Tree**: `C:\Users\Cylae\Documents\GitHub\DefFileGenerator`
 - **Active Release**: v0.3.0 (single source of truth in `DefFileGenerator/_version.py`)
 - **Verification Summary**:
-  - **1,093 tests collected in 0.82s** (1,092 passed, 1 skipped cleanly due to live intranet share requirement).
-  - **90% overall statement coverage** (Core `def_gen.py` at **97%**, `report_generator.py` at **98%**, `knowledge_miner.py` at **93%**, `extractor.py` at **92%**, `web/app.py` at **92%**, `main.py` at **91%**, `mars_generator.py` at **89%**, `io_utils.py` at **100%**).
-  - **0 Ruff lint errors** across all 138 repository files.
+  - **1,099 tests collected** (1,094 passed, 5 skipped cleanly when intranet share is disabled; 0 failed).
+  - **87% overall statement coverage** across 4,731 statements (`def_gen.py` at **95%**, `report_generator.py` at **98%**, `knowledge_miner.py` at **93%**, `web/app.py` at **92%**, `main.py` at **91%**, `mars_generator.py` at **89%**, `extractor.py` at **83%**, `io_utils.py` at **100%**).
+  - **0 Ruff lint errors** across all 141 repository files.
   - **0 Mypy type issues** across 102 source files.
-  - **0 Bandit security vulnerabilities** across 23,949 lines of code.
+  - **0 Bandit security vulnerabilities** across 24,193 lines of code.
+  - **Equipementiers Live Share Batteries**: 30/30 passed in `test_30_battery`; 47/52 passed in `test_52_battery` (exceeding >=45 threshold).
   - **Node.js Frontend Contract Suite**: 100% passing contract tests asserting DOM state updates, toasts, copy actions, filters, and keyboard navigation across all 4 Web Studio tabs.
   - **Torture & Gigantic Stress Batteries**: Executed and passing (5,000-row CSV generation in 0.269s, 12,000 type conversions in 0.0011s, XXE defended).
   - **Industrial Equipementiers Battery**: 45 real-world files from 20+ vendors tested (7,949 registers extracted with 0 unhandled exceptions).
@@ -66,6 +67,23 @@ The Apollo-standard software engineering audit, remediation, and verification pa
     - *Improvements*: Non-intrusive toast notifications (`showToast`), one-click clipboard copy buttons, live table row filtering, and W3C ARIA Tab pattern compliance with keyboard navigation (`ArrowRight`, `ArrowLeft`, `Home`, `End`). Verified by Node.js contract suite.
 
 ---
+
+
+11. **FIND-011 (Resolved): Git Conflict Markers Purge & Architecture Reconciliation**:
+    - *Problem*: Raw conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`) committed in `mars_generator.py`, `test_foxess_p3_h3_pro.py`, and `test_mars_requested_definitions.py`.
+    - *Fix*: Resolved conflicting branches to keep the unified 100-unit arrays alongside 1-unit baseline files for Mars Renewable, and harmonized FoxESS P3/H3 Pro telemetry tests with hermetic temp directories.
+
+12. **FIND-012 (Resolved): Equipment Network Share Subpath Resolution & Skip Guards**:
+    - *Problem*: `test_30_battery` and `test_52_battery` failed when looking for files located in subfolders on `\\WDN-FILES.WEBDYN.COM\Support\Equipementiers`, and bypassed the fast-skip guard when share tests were disabled.
+    - *Fix*: Implemented `get_equipementiers_dir()` with strict fast-skip fallback, and `resolve_equipment_path()` providing transparent multi-layout mapping across both flat mirror drives and corporate network share structures.
+
+13. **FIND-013 (Resolved): FoxESS Generator Code Hygiene & Type Safety**:
+    - *Problem*: Unused variables, unformatted imports, and deprecated typing definitions in `generate_foxess_definitions.py`.
+    - *Fix*: Refactored imports, removed dead code, and formatted cleanly with `ruff format`.
+
+14. **FIND-014 (Resolved): Package Distribution Metadata Synchronization**:
+    - *Problem*: Stale editable package metadata (`0.2.1`) in `.venv` caused `test_package_metadata` failure.
+    - *Fix*: Reinstalled editable package via `pip install -e . --no-deps`, synchronizing metadata to `0.3.0`.
 
 ## 3. Verified Commands for Reproducibility
 
