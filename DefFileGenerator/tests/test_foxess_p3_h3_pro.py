@@ -55,6 +55,9 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
             report.is_valid,
             f"Inverter validation errors: {[i.message for i in report.issues if i.severity == 'ERROR']}",
         )
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         inv_file = P3_PRO_DIR / "FOXESS_P3_PRO_INVERTER.csv"
@@ -187,6 +190,9 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
             report.is_valid,
             f"Meter validation errors: {[i.message for i in report.issues if i.severity == 'ERROR']}",
         )
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         with open(met_file, encoding="utf-8-sig") as f:
@@ -237,6 +243,9 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
             report.is_valid,
             f"Battery validation errors: {[i.message for i in report.issues if i.severity == 'ERROR']}",
         )
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         with open(bat_file, encoding="utf-8-sig") as f:
@@ -270,13 +279,19 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
         for unique_tag in ("MODEL", "SERIAL", "MANUFACTURER", "SOC", "SOH", "TEMP", "U_DC", "I_DC"):
             if unique_tag in tag_counts:
 <<<<<<< HEAD
+<<<<<<< HEAD
                 self.assertEqual(tag_counts[unique_tag], 1, f"Tag '{unique_tag}' must be unique, found {tag_counts[unique_tag]}")
 =======
+=======
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
                 self.assertEqual(
                     tag_counts[unique_tag],
                     1,
                     f"Tag '{unique_tag}' must be unique, found {tag_counts[unique_tag]} occurrences",
                 )
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
     def test_arbitration_register_parity_p3_vs_h3(self) -> None:

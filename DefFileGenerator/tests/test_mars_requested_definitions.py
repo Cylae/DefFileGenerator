@@ -224,9 +224,15 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
     def test_mars_standalone_lc_and_ac_compliance(self) -> None:
 <<<<<<< HEAD
+<<<<<<< HEAD
         """Verify standalone MarsRenewable_LC.csv (1800 regs) and MarsRenewable_AC.csv (1600 regs)."""
         lc_path = GEN_DIR / "MarsRenewable_LC.csv"
         ac_path = GEN_DIR / "MarsRenewable_AC.csv"
+=======
+        """Verify standalone MarsRenewable_LC.csv (18 regs) and MarsRenewable_AC.csv (16 regs)."""
+        lc_path = self.gen_dir / "MarsRenewable_LC.csv"
+        ac_path = self.gen_dir / "MarsRenewable_AC.csv"
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 =======
         """Verify standalone MarsRenewable_LC.csv (18 regs) and MarsRenewable_AC.csv (16 regs)."""
         lc_path = self.gen_dir / "MarsRenewable_LC.csv"

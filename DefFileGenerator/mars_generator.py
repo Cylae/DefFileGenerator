@@ -679,8 +679,11 @@ def generate_mars_requested_definitions(
     p4_lc = out_dir / "MarsRenewable_LC.csv"
     valid, rep = write_definition_file(
 <<<<<<< HEAD
+<<<<<<< HEAD
         p4_lc, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_regs, strict_overlap=True
 =======
+=======
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_lc,
         "modbusTCP",
         "Inverter",
@@ -688,6 +691,9 @@ def generate_mars_requested_definitions(
         "LiquidCooling",
         lc_alone_regs,
         strict_overlap=True,
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     if not valid:
@@ -698,8 +704,11 @@ def generate_mars_requested_definitions(
     p4_lc_alias = out_dir / "MarsRenewable_LiquidCooling.csv"
     write_definition_file(
 <<<<<<< HEAD
+<<<<<<< HEAD
         p4_lc_alias, "modbusTCP", "Inverter", "MarsRenewable", "LiquidCooling", lc_regs, strict_overlap=True
 =======
+=======
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_lc_alias,
         "modbusTCP",
         "Inverter",
@@ -707,6 +716,9 @@ def generate_mars_requested_definitions(
         "LiquidCooling",
         lc_alone_regs,
         strict_overlap=True,
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     generated["MarsRenewable_LiquidCooling.csv"] = p4_lc_alias
@@ -724,8 +736,11 @@ def generate_mars_requested_definitions(
     p4_ac = out_dir / "MarsRenewable_AC.csv"
     valid, rep = write_definition_file(
 <<<<<<< HEAD
+<<<<<<< HEAD
         p4_ac, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
 =======
+=======
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_ac,
         "modbusTCP",
         "Inverter",
@@ -733,6 +748,9 @@ def generate_mars_requested_definitions(
         "AirCooling",
         ac_alone_regs,
         strict_overlap=True,
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     if not valid:
@@ -743,8 +761,11 @@ def generate_mars_requested_definitions(
     p4_ac_alias = out_dir / "MarsRenewable_AirCooling.csv"
     write_definition_file(
 <<<<<<< HEAD
+<<<<<<< HEAD
         p4_ac_alias, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
 =======
+=======
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
         p4_ac_alias,
         "modbusTCP",
         "Inverter",
@@ -752,6 +773,9 @@ def generate_mars_requested_definitions(
         "AirCooling",
         ac_alone_regs,
         strict_overlap=True,
+<<<<<<< HEAD
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
+=======
 >>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
     )
     generated["MarsRenewable_AirCooling.csv"] = p4_ac_alias
