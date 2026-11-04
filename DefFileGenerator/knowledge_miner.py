@@ -791,9 +791,9 @@ def infer_sunpm_tag(
         if any(k in n_lower for k in ("kvar", "var", "abs")):
             return "CMD_Q_AC_SET_ABS"
         return "CMD_Q_AC_SET_PERCENT"
-    if any(k in n_lower for k in ("power limit", "power limitation", "cmdpwr", "set active power")) or re.search(
-        r"\b(?:ac\s+)?active\s+power\s+(?:limitation|setpoint|limit|ratio)\b", n_lower
-    ):
+    if any(
+        k in n_lower for k in ("power limit", "power limitation", "cmdpwr", "set active power")
+    ) or re.search(r"\b(?:ac\s+)?active\s+power\s+(?:limitation|setpoint|limit|ratio)\b", n_lower):
         if "%" in clean_name or "percent" in n_lower or "ratio" in n_lower:
             return "CMD_P_AC_SET_PERCENT"
         if any(k in n_lower for k in ("kw", "w", "abs")):
@@ -1006,7 +1006,11 @@ def infer_sunpm_tag(
         return "RAIN"
 
     # 15. Battery Storage (BESS)
-    if eq_lower in ("battery", "bess") or "battery" in n_lower or any(k in n_lower for k in ("state of charge", "state of health")):
+    if (
+        eq_lower in ("battery", "bess")
+        or "battery" in n_lower
+        or any(k in n_lower for k in ("state of charge", "state of health"))
+    ):
         if any(k in n_lower for k in ("state of charge", "soc", "charge state")):
             return "SOC"
         if any(k in n_lower for k in ("state of health", "soh")):

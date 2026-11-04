@@ -7,6 +7,8 @@ Focuses on edge error paths, fallback conditions, and boundary conditions across
 - web/app.py
 """
 
+from typing import Any
+
 from fastapi.testclient import TestClient
 
 from DefFileGenerator.def_gen import (
@@ -27,7 +29,7 @@ from web.app import app
 # =============================================================================
 
 
-def test_knowledge_miner_fc_regex_fallback():
+def test_knowledge_miner_fc_regex_fallback() -> None:
     # Test val = 05 matching regex and lstripping 0 to "5", returning "1"
     res = parse_function_code_from_text("function code: 05")
     assert res == "1"
@@ -41,7 +43,7 @@ def test_knowledge_miner_fc_regex_fallback():
     assert parse_function_code_from_text("fc: 04") == "4"
 
 
-def test_knowledge_miner_infer_action_code():
+def test_knowledge_miner_infer_action_code() -> None:
     # Write command with fc=5, rw="w"
     assert infer_action_code("set_active_power", fc=5, rw_field="w") == "1"
     # Reserve
@@ -55,7 +57,7 @@ def test_knowledge_miner_infer_action_code():
 # =============================================================================
 
 
-def test_def_gen_config_post_init():
+def test_def_gen_config_post_init() -> None:
     # Path post_init empty/None handling
     cfg1 = WebdynDefConfig(manufacturer="Mfg", model="Mod", input_file="", output_file="")
     assert cfg1.input_file == ""
@@ -64,7 +66,7 @@ def test_def_gen_config_post_init():
     assert cfg2.output == ""
 
 
-def test_def_gen_address_and_type_validation_edges():
+def test_def_gen_address_and_type_validation_edges() -> None:
     gen = Generator()
     # Empty string or invalid address normalization
     assert gen.validate_address("", "INT16") is False
@@ -81,31 +83,15 @@ def test_def_gen_address_and_type_validation_edges():
     assert len(coef_issues) > 0
 
 
-def test_def_gen_check_address_overlap_edge():
+def test_def_gen_check_address_overlap_edge() -> None:
     gen = Generator()
-    # Same base address, different bit ranges
-    rows = [
-        {
-            "Info1": "4",
-            "Tag": "T1",
-            "Type": "BITS",
-            "Address": "100.0-100.3",
-            "Action": "4",
-            "coef_a": "1",
-            "coef_b": "0",
-        },
-        {
-            "Info1": "4",
-            "Tag": "T2",
-            "Type": "BITS",
-            "Address": "100.4-100.7",
-            "Action": "4",
-            "coef_a": "1",
-            "coef_b": "0",
-        },
-    ]
-    has_overlap = gen._check_address_overlap(rows)
-    assert has_overlap is False
+    # Test checking overlap between two entries
+    usage: dict[str, dict[str, Any]] = {}
+    warned: set[tuple[int, int]] = set()
+    o1 = gen._check_address_overlap("4", "100_0_4", "BITS", "T1", 2, usage, warned)
+    o2 = gen._check_address_overlap("4", "100_4_4", "BITS", "T2", 3, usage, warned)
+    assert o1 is False
+    assert o2 is False
 
 
 # =============================================================================
@@ -113,7 +99,7 @@ def test_def_gen_check_address_overlap_edge():
 # =============================================================================
 
 
-def test_extractor_pdf_and_excel_edge_fallbacks():
+def test_extractor_pdf_and_excel_edge_fallbacks() -> None:
     ext = Extractor()
 
     # Empty generator for missing pdf file
@@ -125,7 +111,7 @@ def test_extractor_pdf_and_excel_edge_fallbacks():
     assert isinstance(res_excel, list)
 
 
-def test_extractor_map_and_clean():
+def test_extractor_map_and_clean() -> None:
     ext = Extractor()
     # Test empty generator mapping
     mapped = list(ext.map_and_clean([]))
@@ -137,7 +123,7 @@ def test_extractor_map_and_clean():
 # =============================================================================
 
 
-def test_web_app_rest_api_edge_cases():
+def test_web_app_rest_api_edge_cases() -> None:
     client = TestClient(app)
 
     # Healthcheck

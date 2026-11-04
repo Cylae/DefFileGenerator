@@ -22,10 +22,12 @@ from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import FileResponse, JSONResponse  # noqa: E402
 from fastapi.routing import APIRoute  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
+from pydantic import BaseModel  # noqa: E402
 from starlette.exceptions import HTTPException as StarletteHTTPException  # noqa: E402
 from starlette.formparsers import MultiPartException  # noqa: E402
 from starlette.types import ASGIApp, Message, Receive, Scope, Send  # noqa: E402
 
+from DefFileGenerator._version import __version__  # noqa: E402
 from DefFileGenerator.def_gen import (  # noqa: E402
     Generator,
     GeneratorConfig,
@@ -41,7 +43,7 @@ MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 UPLOAD_CHUNK_BYTES = 1024 * 1024
 MAX_WEB_REGISTERS = 65536
 MAX_MULTIPART_OVERHEAD_BYTES = 64 * 1024
-UPLOAD_PATHS = frozenset({"/api/convert", "/api/validate"})
+UPLOAD_PATHS = frozenset({"/api/convert", "/api/validate", "/api/tag", "/api/audit"})
 
 
 class UploadBodyLimitMiddleware:
@@ -115,7 +117,7 @@ class UploadRoute(APIRoute):
         async def handler(request: Request):
             if request.method == "POST" and request.url.path in UPLOAD_PATHS:
                 try:
-                    await request.form(max_files=1, max_fields=6)
+                    await request.form(max_files=1, max_fields=10)
                 except StarletteHTTPException as exc:
                     if "Too many files" in str(exc.detail):
                         raise HTTPException(
@@ -130,7 +132,7 @@ class UploadRoute(APIRoute):
 app = FastAPI(
     title="WebdynSunPM Definition Generator API",
     description="REST API for parsing Modbus register documentation and generating validated WebdynSunPM definition files.",
-    version="0.2.1",
+    version=__version__,
 )
 app.router.route_class = UploadRoute
 app.add_middleware(UploadBodyLimitMiddleware)
@@ -142,6 +144,79 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+class HealthResponse(BaseModel):
+    status: str
+    version: str
+
+
+class ValidationIssueItem(BaseModel):
+    line: int
+    severity: str
+    code: str
+    field: str
+    message: str
+
+
+class ConvertResponse(BaseModel):
+    success: bool
+    is_valid: bool
+    filename: str
+    register_count: int
+    extracted_count: int
+    preview: list[dict[str, Any]]
+    csv_content: str
+    issues: list[ValidationIssueItem]
+    stats: dict[str, Any]
+
+
+class ValidateResponse(BaseModel):
+    filename: str
+    valid: bool
+    register_count: int
+    issues: list[ValidationIssueItem]
+    stats: dict[str, Any]
+
+
+class TagResponse(BaseModel):
+    success: bool
+    filename: str
+    tags_updated: int
+    updated_count: int
+    register_count: int
+    total_registers: int
+    preview: list[dict[str, Any]]
+    csv_content: str
+    stats: dict[str, Any]
+
+
+class AuditResponse(BaseModel):
+    success: bool
+    filename: str
+    valid: bool
+    is_valid: bool
+    register_count: int
+    stats: dict[str, Any]
+    error_count: int
+    warning_count: int
+    info_count: int
+    errors: list[dict[str, Any]]
+    warnings: list[dict[str, Any]]
+    infos: list[dict[str, Any]]
+    issues: list[dict[str, Any]]
+    fix_applied: dict[str, Any] | None = None
+    csv_content: str | None = None
+    fixed_csv_content: str | None = None
+
+
+class LibraryItem(BaseModel):
+    filename: str
+    prefix: str
+    category: str
+    manufacturer: str
+    model: str
+    size_kb: float
 
 
 async def _save_upload(file: UploadFile, destination: str) -> None:
@@ -164,12 +239,12 @@ async def _save_upload(file: UploadFile, destination: str) -> None:
         await file.close()
 
 
-@app.get("/api/health")
-def health_check() -> dict[str, str]:
-    return {"status": "ok", "version": "0.2.1"}
+@app.get("/api/health", response_model=HealthResponse)
+def health_check() -> HealthResponse:
+    return HealthResponse(status="ok", version=__version__)
 
 
-@app.post("/api/convert")
+@app.post("/api/convert", response_model=ConvertResponse)
 async def convert_file(
     file: UploadFile = File(...),
     manufacturer: str = Form("Manufacturer"),
@@ -178,7 +253,7 @@ async def convert_file(
     category: str = Form("Inverter"),
     address_offset: int = Form(0),
     forced_write: str = Form(""),
-) -> Any:
+) -> ConvertResponse:
     """Converts an uploaded documentation file (PDF, Excel, CSV, XML) to a WebdynSunPM definition CSV."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
@@ -214,7 +289,7 @@ async def convert_file(
             address_offset,
             forced_write,
         )
-        return JSONResponse(content=result)
+        return ConvertResponse(**result)
 
 
 def _convert_document(
@@ -368,8 +443,8 @@ def _validate_document(input_path: str, safe_filename: str) -> dict[str, Any]:
     }
 
 
-@app.post("/api/validate")
-async def validate_file(file: UploadFile = File(...)) -> Any:
+@app.post("/api/validate", response_model=ValidateResponse)
+async def validate_file(file: UploadFile = File(...)) -> ValidateResponse:
     """Validates an uploaded WebdynSunPM CSV definition file."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
@@ -390,7 +465,248 @@ async def validate_file(file: UploadFile = File(...)) -> Any:
         await _save_upload(file, input_path)
 
         result = await run_in_threadpool(_validate_document, input_path, safe_filename)
-        return JSONResponse(content=result)
+        return ValidateResponse(**result)
+
+
+def _tag_document(
+    input_path: str,
+    output_path: str,
+    safe_filename: str,
+    category: str,
+    overwrite: bool,
+    normalize_legacy: bool,
+) -> dict[str, Any]:
+    from DefFileGenerator.knowledge_miner import enrich_definition_file
+
+    try:
+        count = enrich_definition_file(
+            input_path=input_path,
+            output_path=output_path,
+            equipment_type=category,
+            overwrite_existing=overwrite,
+            normalize_legacy=normalize_legacy,
+        )
+        report = Generator().validate_csv_detailed(output_path, strict=False)
+        with open(output_path, encoding="utf-8-sig") as f:
+            csv_content = f.read()
+    except Exception:
+        logger.exception("Tagging error for %s", safe_filename)
+        raise HTTPException(
+            status_code=400, detail="Failed to enrich definition file with SunPM tags."
+        ) from None
+
+    preview_rows = definition_preview(csv_content, limit=500)
+    return {
+        "success": True,
+        "filename": safe_filename,
+        "tags_updated": count,
+        "updated_count": count,
+        "register_count": report.register_count,
+        "total_registers": report.register_count,
+        "preview": preview_rows,
+        "csv_content": csv_content,
+        "stats": report.stats,
+    }
+
+
+def _audit_document(
+    input_path: str,
+    output_path: str,
+    safe_filename: str,
+    strict_overlap: bool,
+    auto_fix: bool,
+) -> dict[str, Any]:
+    from dataclasses import asdict
+
+    from DefFileGenerator.knowledge_miner import (
+        audit_definition_file,
+        auto_fix_definition_file,
+    )
+
+    fix_stats = None
+    target_path = input_path
+    if auto_fix:
+        fix_stats = auto_fix_definition_file(input_path, output_path=output_path)
+        target_path = output_path
+
+    try:
+        report = audit_definition_file(target_path, strict_overlap=strict_overlap)
+    except Exception:
+        logger.exception("Audit error for %s", safe_filename)
+        raise HTTPException(status_code=400, detail="Failed to audit definition file.") from None
+
+    errors_list = [asdict(e) for e in report.errors]
+    warnings_list = [asdict(w) for w in report.warnings]
+    infos_list = [asdict(i) for i in report.infos]
+
+    issues_list: list[dict[str, Any]] = []
+    for item in errors_list:
+        entry = dict(item)
+        entry["level"] = "error"
+        issues_list.append(entry)
+    for item in warnings_list:
+        entry = dict(item)
+        entry["level"] = "warning"
+        issues_list.append(entry)
+    for item in infos_list:
+        entry = dict(item)
+        entry["level"] = "info"
+        issues_list.append(entry)
+
+    result: dict[str, Any] = {
+        "success": True,
+        "filename": safe_filename,
+        "valid": report.is_valid,
+        "is_valid": report.is_valid,
+        "register_count": report.register_count,
+        "stats": report.stats,
+        "error_count": len(errors_list),
+        "warning_count": len(warnings_list),
+        "info_count": len(infos_list),
+        "errors": errors_list,
+        "warnings": warnings_list,
+        "infos": infos_list,
+        "issues": issues_list,
+    }
+    if fix_stats:
+        result["fix_applied"] = fix_stats
+        with open(target_path, encoding="utf-8-sig") as f:
+            content_fixed = f.read()
+            result["csv_content"] = content_fixed
+            result["fixed_csv_content"] = content_fixed
+    return result
+
+
+@app.post("/api/tag", response_model=TagResponse)
+async def tag_file(
+    file: UploadFile = File(...),
+    category: str = Form(""),
+    overwrite: bool = Form(False),
+    normalize_legacy: bool = Form(True),
+) -> TagResponse:
+    """Enriches an uploaded definition CSV with canonical SunPM tags."""
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
+    safe_filename = os.path.basename(file.filename.replace("\\", "/").strip())
+    if not safe_filename or safe_filename in (".", ".."):
+        raise HTTPException(status_code=400, detail="Invalid filename provided.")
+    ext = os.path.splitext(safe_filename)[1].lower()
+    if ext not in {".csv", ".txt"}:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file format '{ext}'. Tagging requires a CSV definition file (.csv, .txt).",
+        )
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        input_path = os.path.join(temp_dir, f"input_{safe_filename}")
+        output_path = os.path.join(temp_dir, f"tagged_{safe_filename}")
+        await _save_upload(file, input_path)
+
+        result = await run_in_threadpool(
+            _tag_document,
+            input_path,
+            output_path,
+            safe_filename,
+            category,
+            overwrite,
+            normalize_legacy,
+        )
+        return TagResponse(**result)
+
+
+@app.post("/api/audit", response_model=AuditResponse)
+async def audit_file(
+    file: UploadFile = File(...),
+    strict_overlap: bool = Form(False),
+    auto_fix: bool = Form(False),
+) -> AuditResponse:
+    """Audits an uploaded definition CSV for syntax, address overlaps, and SunPM tag compliance."""
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
+    safe_filename = os.path.basename(file.filename.replace("\\", "/").strip())
+    if not safe_filename or safe_filename in (".", ".."):
+        raise HTTPException(status_code=400, detail="Invalid filename provided.")
+    ext = os.path.splitext(safe_filename)[1].lower()
+    if ext not in {".csv", ".txt"}:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file format '{ext}'. Auditing requires a CSV definition file (.csv, .txt).",
+        )
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        input_path = os.path.join(temp_dir, f"input_{safe_filename}")
+        output_path = os.path.join(temp_dir, f"fixed_{safe_filename}")
+        await _save_upload(file, input_path)
+
+        result = await run_in_threadpool(
+            _audit_document,
+            input_path,
+            output_path,
+            safe_filename,
+            strict_overlap,
+            auto_fix,
+        )
+        return AuditResponse(**result)
+
+
+@app.get("/api/library", response_model=list[LibraryItem])
+def get_library() -> list[LibraryItem]:
+    """Returns the catalog of 125 pre-validated industrial definitions."""
+    definitions_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
+    if not os.path.exists(definitions_dir):
+        return []
+
+    catalog: list[LibraryItem] = []
+    category_map = {
+        "INV": "Inverter",
+        "MET": "Meter",
+        "SEN": "Sensor",
+        "BAT": "Battery",
+        "COM": "Communication",
+        "OTH": "Other",
+    }
+    for entry in sorted(os.listdir(definitions_dir)):
+        if not entry.lower().endswith(".csv") or entry == "README.md":
+            continue
+        prefix = entry[:3].upper()
+        cat = category_map.get(prefix, "Other")
+        parts = entry[:-4].split("_")
+        mfg = parts[1] if len(parts) > 1 else "Unknown"
+        model = "_".join(parts[2:]) if len(parts) > 2 else parts[-1]
+        filepath = os.path.join(definitions_dir, entry)
+        size_bytes = os.path.getsize(filepath)
+
+        catalog.append(
+            LibraryItem(
+                filename=entry,
+                prefix=prefix,
+                category=cat,
+                manufacturer=mfg,
+                model=model,
+                size_kb=round(size_bytes / 1024, 1),
+            )
+        )
+    return catalog
+
+
+@app.get("/api/library/{filename}")
+def download_library_file(filename: str) -> FileResponse:
+    """Downloads a definition CSV from the industrial definitions library."""
+    safe_filename = os.path.basename(filename.replace("\\", "/").strip())
+    if not safe_filename or not safe_filename.lower().endswith(".csv"):
+        raise HTTPException(status_code=400, detail="Invalid definition filename.")
+
+    definitions_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Definitions"))
+    file_path = os.path.join(definitions_dir, safe_filename)
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail=f"Definition '{safe_filename}' not found.")
+
+    return FileResponse(
+        file_path,
+        media_type="text/csv",
+        filename=safe_filename,
+        headers={"Content-Disposition": f'attachment; filename="{safe_filename}"'},
+    )
 
 
 # Serve static web frontend assets

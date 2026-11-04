@@ -17,19 +17,14 @@ from __future__ import annotations
 
 import csv
 import json
-import os
-import re
-from collections import Counter, defaultdict
+from collections import Counter
 from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Any
 
-from DefFileGenerator.def_gen import Generator, ValidationReport
+from DefFileGenerator.def_gen import Generator
 from DefFileGenerator.knowledge_miner import (
-    SUNPM_CANONICAL_TAGS,
     is_canonical_sunpm_tag,
-    normalize_tag_to_sunpm,
 )
 
 CATEGORY_NAMES: dict[str, str] = {
@@ -134,7 +129,7 @@ def analyze_definition_file(
     act_other = 0
 
     try:
-        with open(path, "r", encoding="utf-8-sig", errors="ignore") as f:
+        with open(path, encoding="utf-8-sig", errors="ignore") as f:
             reader = csv.reader(f, delimiter=";")
             header = next(reader, None)
             if header and len(header) >= 4:
@@ -321,8 +316,8 @@ def generate_directory_technical_report(
 
     lines = [
         f"# 📊 {title}",
-        f"## Traçabilité Industrielle, Validation Modbus & Cartographie des Tags SunPM",
-        f"**Projet** : `DefFileGenerator` · **Norme de référence** : `INV_HUAWEI_V4.csv` (WebdynSunPM R&D)",
+        "## Traçabilité Industrielle, Validation Modbus & Cartographie des Tags SunPM",
+        "**Projet** : `DefFileGenerator` · **Norme de référence** : `INV_HUAWEI_V4.csv` (WebdynSunPM R&D)",
         f"**Date de génération** : {stats.generation_timestamp} · **Répertoire audité** : `{stats.directory_path}`",
         f"**Statut global de conformité** : **{'100.0% VALIDE' if stats.invalid_files == 0 else f'{stats.valid_files}/{stats.total_files} Validés'}**",
         "",

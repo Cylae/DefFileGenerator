@@ -17,6 +17,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from DefFileGenerator import __version__
 from DefFileGenerator.extractor import Extractor
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -83,7 +84,7 @@ class TestWave10Hardening(unittest.TestCase):
             text=True,
             check=True,
         )
-        self.assertIn("deffilegen-gui 0.2.1", res.stdout)
+        self.assertIn(f"deffilegen-gui {__version__}", res.stdout)
 
     def test_gui_direct_execution_help_flag(self) -> None:
         """Verify that DefFileGenerator/gui.py can be invoked directly as a script with --help."""

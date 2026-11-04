@@ -16,6 +16,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
+from DefFileGenerator import __version__
 from DefFileGenerator.def_gen import (
     Generator,
     peek_generator,
@@ -273,7 +274,7 @@ class TestWebAPIWave16(unittest.TestCase):
     def test_health_check(self) -> None:
         response = self.client.get("/api/health")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"status": "ok", "version": "0.2.1"})
+        self.assertEqual(response.json(), {"status": "ok", "version": __version__})
 
     def test_validate_unsupported_extension(self) -> None:
         response = self.client.post(

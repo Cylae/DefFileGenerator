@@ -1,5 +1,6 @@
 """WebdynSunPM definition file generator and documentation parser."""
 
+from DefFileGenerator._version import __version__
 from DefFileGenerator.def_gen import (
     CSVHeaderConfig,
     Generator,
@@ -27,7 +28,6 @@ from DefFileGenerator.knowledge_miner import (
     normalize_tag_to_sunpm,
     train_knowledge_from_definitions,
 )
-
 from DefFileGenerator.report_generator import (
     DefinitionFileStats,
     DirectoryReportStats,
@@ -38,9 +38,8 @@ from DefFileGenerator.report_generator import (
     generate_single_definition_report,
 )
 
-__version__ = "0.2.1"
-
 __all__ = [
+    "__version__",
     "CSVHeaderConfig",
     "DatasetKnowledge",
     "DefinitionAuditIssue",
@@ -72,4 +71,3 @@ __all__ = [
     "normalize_tag_to_sunpm",
     "train_knowledge_from_definitions",
 ]
-

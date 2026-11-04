@@ -11,7 +11,6 @@ strict tag uniqueness, and automated generation of technical audit reports in Ma
 
 import csv
 import json
-import os
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -21,11 +20,9 @@ WORKSPACE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WORKSPACE_DIR))
 
 from DefFileGenerator.def_gen import Generator
-from DefFileGenerator.knowledge_miner import infer_sunpm_tag, is_canonical_sunpm_tag
+from DefFileGenerator.knowledge_miner import infer_sunpm_tag
 from DefFileGenerator.report_generator import (
     analyze_definition_file,
-    generate_single_definition_report,
-    export_report_json,
 )
 
 FOX_DIR = Path(r"\\WDN-FILES.WEBDYN.COM\Support\Equipementiers\Fox ESS")
@@ -90,7 +87,7 @@ src_inv_path = FOX_DIR / "FOXESS_P3_H3_PRO_INVERTER.csv"
 if not src_inv_path.exists():
     src_inv_path = FOX_DIR / "FoxESS_P3_H3_PRO.csv"
 
-with open(src_inv_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+with open(src_inv_path, encoding="utf-8-sig", errors="ignore") as f:
     reader = csv.reader(f, delimiter=";")
     inv_header = next(reader)
     inv_raw_rows = list(reader)
@@ -232,7 +229,7 @@ print(f"  Inverter rows generated: {len(clean_inv_rows)}")
 # =============================================================================
 print("\n[2/3] Processing Fox ESS P3 Pro / H3 Pro Meter...")
 src_met_path = FOX_DIR / "FOXESS_P3_H3_PRO_METER.csv"
-with open(src_met_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+with open(src_met_path, encoding="utf-8-sig", errors="ignore") as f:
     reader = csv.reader(f, delimiter=";")
     next(reader, None)
     met_raw_rows = list(reader)
@@ -337,7 +334,7 @@ src_bat_path = FOX_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv"
 if not src_bat_path.exists():
     src_bat_path = FOX_DIR / "Battery" / "FoxESS_P3_H3_PRO.csv"
 
-with open(src_bat_path, "r", encoding="utf-8-sig", errors="ignore") as f:
+with open(src_bat_path, encoding="utf-8-sig", errors="ignore") as f:
     reader = csv.reader(f, delimiter=";")
     next(reader, None)
     bat_raw_rows = list(reader)

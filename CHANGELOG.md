@@ -21,10 +21,32 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   <a href="docs/AUDIT_REPORT.md"><b>Audit Report</b></a>
 </p>
 
-## [Unreleased]
+## [0.3.0] - 2026-11-02
+
+### Added
+
+- **`deffilegen batch` High-Throughput CLI Subcommand**: Converts entire directories of mixed manufacturer documents (`.pdf`, `.xlsx`, `.xlsm`, `.csv`, `.xml`) with metadata auto-inference, recursive scanning (`--recursive` / `-r`), multi-threaded parallel worker execution (`--jobs` / `-j`), SunPM tagging (`--tag`), strict schema validation (`--strict`), overwrite protection (`--force`), and aggregated Markdown reporting (`--report`).
+- **Pydantic v2 Response Models in `web/app.py`**: Fully typed request/response contracts (`HealthResponse`, `ValidationIssueItem`, `ConvertResponse`, `ValidateResponse`, `TagResponse`, `AuditResponse`, `LibraryItem`) generating comprehensive, interactive OpenAPI / Swagger documentation (`/docs` and `/redoc`).
+- **Web Studio UX & Accessibility Enhancements**: Integrated non-blocking toast notifications (`showToast`), one-click clipboard copy buttons for definition CSVs, live table search filters for preview tables, full W3C ARIA tab pattern implementation (`role="tablist"`, `role="tab"`, `role="tabpanel"`), and keyboard arrow navigation.
+- **Filename Metadata Auto-Inference Engine**: Token-based entity detection in `DefFileGenerator/main.py` resolving 60+ manufacturers and equipment categories (`Inverter`, `Meter`, `Sensor`, `Battery`, `Communication`, `Io`) with zero substring collisions (e.g. `pyranometer` vs `meter`).
+- **Industrial Web Studio v0.3.0 (`web/static/`)**: Modernized 4-tab interface:
+  - Tab 1: **Convert Datasheet** (drag-and-drop ingestion, live preview, export)
+  - Tab 2: **SunPM Tagger** (canonical semantic tag enrichment, category override)
+  - Tab 3: **Validator & Auditor** (Modbus address overlap detection, auto-repair)
+  - Tab 4: **Equipment Library** (real-time searchable catalog of 125 pre-validated definitions with one-click downloads)
+- **FastAPI Endpoints in `web/app.py`**:
+  - `POST /api/tag`: Multi-part tag enrichment endpoint.
+  - `POST /api/audit`: Comprehensive schema validation and auto-repair endpoint.
+  - `GET /api/library`: Catalog metadata provider for all 125 industrial definitions.
+  - `GET /api/library/{filename}`: Path-traversal-guarded download endpoint.
+- **Wave 31 CLI & Reports Regression Suite (`test_coverage_wave31_cli_and_reports.py`)**: Dedicated test coverage bringing `main.py` coverage to 91% and `report_generator.py` to 98%.
+- **Extended Web Test Suite (`test_web_extended.py`)**: 22 tests verifying all new endpoints, error states, and traversal guards.
+- **Overall Project Test Coverage Reached 90%** across 1,090 automated tests (1,089 passed, 1 skipped).
+- **Frontend Contract Test Suite (`DefFileGenerator/tests/interface_frontend_contracts.js`)**: Node.js contract test suite asserting DOM interaction and response processing across all 4 Web Studio tabs.
 
 ### Performance
 
+- **Fast Test Suite Collection & SMB Stalls Elimination (81.3% speedup).** Probing unresolvable intranet UNC paths (`\\WDN-FILES.WEBDYN.COM\Support\Equipementiers`) in pytest modules caused 30–45s SMB timeout freezes per test file on Windows. Reordered probe to prioritize local drive mirrors (`G:\My Drive\08092026\Equipementiers`) and safe cached fallbacks, reducing pytest test collection latency from 13.39s (+90s SMB stalls) to **2.50s**.
 - **CSV Field Sanitization Fast-Path (3.09x speedup).** Added an early ASCII alphanumeric short-circuit check (`s.isascii() and s.isprintable() and s[0].isalnum()`) in `Generator.sanitize_csv_field` avoiding character-by-character generator comprehensions, surrogate scans, and string replacements for >95% of standard Modbus table cells while preserving 100% defense against CSV formula injection (DDE attacks).
 - **Cached & Short-Circuited Address Normalization (4.48x speedup).** Implemented `@functools.lru_cache(maxsize=4096)` backed helper `_normalize_address_cached` and an immediate decimal integer fast-path in `Generator.normalize_address_val`, making repetitive address parsing during mapping and validation instant $O(1)$.
 - **Direct Dictionary & Set Type Lookups (1.50x speedup).** Added `_EXACT_REG_COUNTS`, `_COMMON_VALID_NUMERIC`, `_VALID_SPECIAL_TYPES`, `_CANONICAL_TYPE_SET`, and `_SHORTHAND_TYPE_MAP` to replace sequential linear tuple scans and regular expressions with $O(1)$ hash table lookups during type validation and register count calculation.
@@ -32,6 +54,8 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Added
 
+- **Apollo-Standard Autonomous Constitution & Ledgers.** Integrated `AGENTS.md` (with strict network share write protection for `\\WDN-FILES.WEBDYN.COM`), `CLAUDE.md`, `MASTER_CODEX_MISSION.md`, cross-platform bootstrap scripts (`scripts/bootstrap.ps1`, `scripts/bootstrap.sh`), and durable audit ledgers in `docs/audit/` (`PLAN.md`, `REVIEW_MATRIX.md`, `FINDINGS.md`, `VALIDATION.md`, `PERFORMANCE.md`, `HANDOFF.md`).
+- **Comprehensive Project-Wide Documentation Overhaul.** Enriched `README.md`, `QUICKSTART.md`, `docs/architecture.md`, `DEVELOPER_GUIDE.md`, `docs/quickstart.md`, and `docs/AUDIT_REPORT.md` documenting SunPM canonical tagging (`P_AC`, `Q_AC`, `E_TOT`...), technical report generation (`report_generator.py`), industrial BESS suites (`mars_generator.py`), modern `uv` commands, and the Apollo validation framework.
 - **Official Webdyn SunPM Tag Knowledge Engine & Specification (`docs/WEBDYN_TAGS_REFERENCE.md`).** Full semantic understanding and integration of `SunPM_DEfFile_Tags_v1.xlsx` across the repository. Implemented `infer_sunpm_tag`, `normalize_tag_to_sunpm`, `enrich_definition_rows`, and `enrich_definition_file` in `DefFileGenerator/knowledge_miner.py`. Supports canonical 3-phase per-phase telemetry (`U_AC_[1..3]`, `I_AC_[1..3]`, `P_AC_[1..3]`, `Q_AC_[1..3]`), MPPT and PV strings (`U_DC_MPPT_x`, `I_DC_MPPT_x`, `I_DC_STRING_x`), remote inverter commands (`CMD_ON`, `CMD_OFF`, `CMD_P_AC_SET_PERCENT`, `CMD_P_AC_SET_ABS`, `CMD_P_ENA`, `CMD_RAMP_TIME_S`, `CMD_PF`), weather sensors (`POA`, `GHI`, `TEMP_AMB`, `TEMP_CELL`), and BESS storage (`SOC`, `SOH`, `TEMP`).
 - **CLI Definition Tagging Command (`deffilegen tag`).** Added dedicated CLI subcommand to automatically infer, populate, or normalize official SunPM tags on any existing or newly generated Webdyn definition CSV file.
 - **SunPM Tag Knowledge Unit Test Suite (`DefFileGenerator/tests/test_sunpm_tags.py`).** Added 10 automated tests covering tag normalization, phase inference, MPPT detection, command prioritization, CSV enrichment roundtrips, and backward compatibility.
@@ -55,6 +79,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- **Frontend-Backend API Dual-Resilience Architecture.** Harmonized `/api/tag`, `/api/audit`, and `/api/library` response contracts between `web/app.py` and `web/static/app.js`. The backend supplies primary and alias fields (`tags_updated`/`updated_count`, `register_count`/`total_registers`, `is_valid`/`valid`, `fixed_csv_content`/`csv_content`), while the frontend employs defensive nullish coalescing (`??`) and fallback mapping.
+- **Single-Source Version Centralization (`DefFileGenerator/_version.py`).** Eliminated version drift across CLI, GUI, and Web endpoints by centralizing version `0.3.0` into a single module, guarded by `tests/test_version_consistency.py`.
+- **Test Isolation & Repository Working-Tree Cleanliness.** Hardened `test_mars_requested_definitions.py` to generate into isolated temporary directories and corrected `output_dir` in `test_coverage_wave31_cli_and_reports.py`, preventing tests from dirtying git status.
 - **Subword & Byte Addressing Support (`U8`/`I8`).** Extended address parser and interval collision detector to handle `_0` and `_1` byte addresses without false positive overlap errors.
 - **Legacy Definition Encoding Fallback.** Added automatic graceful fallback to Windows-1252 / CP1252 in lenient validation mode for historical manufacturer files containing special characters.
 - **Mars Local Controller Vendor Typo Resolution.** Corrected vendor documentation typo where `Branch 2~n DC Current` was misaddressed at 71 instead of 72, avoiding 32-bit float collision.
@@ -71,6 +98,7 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ### Removed
 
+- **Orphan Legacy Prototype Script (`gen_mars_defs.py`).** Safely removed 611-line unreferenced root script superseded by `DefFileGenerator/mars_generator.py` and `generate_mars_definitions.py`.
 - **Unused Ad-Hoc Test Artifact (`DefFileGenerator/test_input.csv`).** Removed unreferenced loose CSV file from the core package root directory.
 - **Tracked Test Output Artifacts.** Untracked generated test outputs (`stress_test_data/output.csv`, `stress_test_data/output_offset.csv`, `torture_test/output.csv`, `torture_test/output_str.csv`) from version control and updated `.gitignore` with `torture_test/output*.csv` so test batteries execute without dirtying the working directory.
 

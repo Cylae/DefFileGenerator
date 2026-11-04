@@ -13,6 +13,7 @@ Provides unified sub-commands:
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import csv
 import json
 import logging
@@ -27,6 +28,7 @@ from typing import Any
 # Ensure parent directory is in sys.path to support direct and packaged executions
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from DefFileGenerator._version import __version__
 from DefFileGenerator.def_gen import (
     Generator,
     GeneratorConfig,
@@ -72,6 +74,122 @@ def _get_default_output(manufacturer: str, model: str) -> str:
     m = RE_SLUGIFY.sub("_", manufacturer).lower()
     md = RE_SLUGIFY.sub("_", model).lower()
     return f"{m}_{md}_definition.csv"
+
+
+KNOWN_MANUFACTURERS: tuple[str, ...] = (
+    "Huawei",
+    "SMA",
+    "ABB",
+    "SolarEdge",
+    "GoodWe",
+    "Growatt",
+    "Sungrow",
+    "Fronius",
+    "Sofar",
+    "SofarSolar",
+    "Janitza",
+    "Kaco",
+    "Lettel",
+    "Siebert",
+    "Chint",
+    "Atess",
+    "Victron",
+    "Socomec",
+    "Legrand",
+    "Acrel",
+    "CarloGavazzi",
+    "Carlo Gavazzi",
+    "Hukseflux",
+    "KippZonen",
+    "Kipp & Zonen",
+    "Delta",
+    "Schneider",
+    "FoxESS",
+    "Fox ESS",
+    "Enphase",
+    "Ingeteam",
+    "Solax",
+    "Deye",
+    "ElMeasure",
+    "Webdyn",
+)
+
+
+def infer_metadata_from_filename(filepath: str | Path) -> tuple[str, str, str]:
+    """
+    Infers manufacturer, model, and equipment category from a document filepath.
+
+    Args:
+        filepath: Path to the documentation file.
+
+    Returns:
+        tuple[str, str, str]: (manufacturer, model, category)
+    """
+    path_obj = Path(filepath)
+    stem = path_obj.stem
+    full_str = f"{path_obj.parent.name} {stem}".lower()
+
+    # 1. Infer Manufacturer
+    matched_mfg = "Manufacturer"
+    for mfg in KNOWN_MANUFACTURERS:
+        if mfg.lower() in full_str:
+            matched_mfg = mfg
+            break
+
+    # 2. Infer Category (token-based to prevent substring collisions like 'meter' in 'pyranometer' or 'io' in 'action')
+    lower_tokens = set(re.findall(r"[a-z0-9]+", stem.lower()))
+    stem_lower = stem.lower()
+
+    category = "Inverter"
+    if any(
+        k in lower_tokens or k in stem_lower
+        for k in (
+            "pyranometer",
+            "pyranometre",
+            "dustiq",
+            "smp",
+            "weather",
+            "meteo",
+            "irradiance",
+            "sensor",
+            "capteur",
+        )
+    ):
+        category = "Sensor"
+    elif any(
+        k in lower_tokens or k in stem_lower
+        for k in ("meter", "compteur", "analyseur", "diris", "em24", "dtsd", "m4m", "lg41")
+    ):
+        category = "Meter"
+    elif any(
+        k in lower_tokens or k in stem_lower
+        for k in ("battery", "batterie", "bms", "bess", "storage", "rack", "cell")
+    ):
+        category = "Battery"
+    elif any(
+        k in lower_tokens or k in stem_lower
+        for k in ("smartlogger", "gateway", "passerelle", "sl3000", "ccgx")
+    ) or ("logger" in lower_tokens and "smart" in lower_tokens):
+        category = "Communication"
+    elif (
+        "sens_io" in stem_lower
+        or "io" in lower_tokens
+        or any(k in lower_tokens for k in ("di", "do", "relay"))
+    ):
+        category = "Io"
+    elif any(k in lower_tokens for k in ("inverter", "onduleur", "sun2000", "stp", "pvs", "ktl")):
+        category = "Inverter"
+
+    # 3. Infer Model
+    clean_stem = stem
+    if matched_mfg != "Manufacturer":
+        clean_stem = re.sub(re.escape(matched_mfg), "", clean_stem, flags=re.IGNORECASE)
+    clean_stem = re.sub(r"^(INV_|MET_|SEN_|BAT_|COM_|OTH_)", "", clean_stem, flags=re.IGNORECASE)
+    clean_model = re.sub(r"[_\s]+", "-", clean_stem.strip("_- "))
+    if not clean_model:
+        clean_model = "Model"
+
+    return matched_mfg, clean_model, category
 
 
 def _perform_extraction(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
@@ -534,6 +652,213 @@ def run_command(args: argparse.Namespace) -> None:
             sys.exit(1)
 
 
+def _convert_single_doc(
+    doc: Path,
+    output_dir: str,
+    protocol: str,
+    category_override: str | None,
+    mfg_override: str | None,
+    do_tag: bool,
+    strict: bool,
+    force: bool,
+) -> tuple[bool, str, str | None, str]:
+    """
+    Process a single document within the batch conversion pipeline.
+
+    Returns:
+        tuple of (success, doc_name, output_filepath_or_none, detail_message)
+    """
+    ext = doc.suffix.lower()
+    mfg_inferred, model_inferred, cat_inferred = infer_metadata_from_filename(doc)
+    mfg = mfg_override or mfg_inferred
+    model = model_inferred
+    category = category_override or cat_inferred
+
+    out_name = (
+        f"{RE_SLUGIFY.sub('_', mfg).lower()}_{RE_SLUGIFY.sub('_', model).lower()}_definition.csv"
+    )
+    out_file = os.path.join(output_dir, out_name)
+
+    if os.path.exists(out_file) and not force:
+        return False, doc.name, None, "Destination exists. Use --force to overwrite."
+
+    extractor = Extractor()
+    generator = Generator()
+
+    try:
+        if ext in (".xlsx", ".xlsm", ".xltx", ".xltm"):
+            raw_data = extractor.extract_from_excel(str(doc))
+        elif ext == ".pdf":
+            raw_data = extractor.extract_from_pdf(str(doc))
+        elif ext == ".csv":
+            raw_data = extractor.extract_from_csv(str(doc))
+        elif ext == ".xml":
+            raw_data = extractor.extract_from_xml(str(doc))
+        else:
+            return False, doc.name, None, f"Unsupported file extension: {ext}"
+
+        has_data, peeked = peek_generator(raw_data)
+        if not has_data:
+            return False, doc.name, None, "No register tables found."
+
+        mapped_data = extractor.map_and_clean(peeked, address_offset=0)
+        has_mapped, mapped_peeked = peek_generator(mapped_data)
+        if not has_mapped:
+            return False, doc.name, None, "No registers mapped."
+
+        config = GeneratorConfig(
+            input_file=str(doc),
+            output=out_file,
+            manufacturer=mfg,
+            model=model,
+            protocol=protocol,
+            category=category,
+            strict_validation=strict,
+        )
+        ok = run_generator(config, input_data=mapped_peeked)
+        if not ok or not os.path.exists(out_file):
+            return False, doc.name, None, "Generation failed."
+
+        if do_tag:
+            from DefFileGenerator.knowledge_miner import enrich_definition_file
+
+            enrich_definition_file(out_file, out_file, equipment_type=category)
+
+        val_rep = generator.validate_csv_detailed(out_file, strict=strict)
+        if not val_rep.is_valid and strict:
+            return False, doc.name, None, "Strict validation rejected definition."
+
+        return True, doc.name, out_file, f"OK: {val_rep.register_count} registers"
+    except Exception as e:
+        return False, doc.name, None, f"Exception: {e}"
+
+
+def batch_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'batch': processes a directory of documentation files
+    (PDF, Excel, CSV, XML) and generates validated WebdynSunPM definition files.
+
+    Supports recursive subdirectory scanning (--recursive/-r) and multi-threaded
+    parallel worker execution (--jobs/-j).
+
+    Args:
+        args: Parsed command line arguments.
+    """
+    input_dir = getattr(args, "input_dir", None)
+    if not input_dir or not os.path.exists(input_dir):
+        logging.error(f"Input directory not found: {input_dir}")
+        sys.exit(1)
+
+    output_dir = getattr(args, "output_dir", None) or "generated_definitions"
+    os.makedirs(output_dir, exist_ok=True)
+
+    protocol = getattr(args, "protocol", "modbusRTU")
+    category_override = getattr(args, "category", None)
+    mfg_override = getattr(args, "manufacturer", None)
+    do_tag = getattr(args, "tag", False)
+    strict = getattr(args, "strict", False)
+    force = getattr(args, "force", False)
+    report_path = getattr(args, "report", None)
+    recursive = getattr(args, "recursive", False)
+    jobs = max(1, getattr(args, "jobs", 1) or 1)
+
+    supported_files: list[Path] = []
+    p = Path(input_dir)
+    if p.is_file():
+        supported_files = [p]
+    else:
+        scan_fn = p.rglob if recursive else p.glob
+        for ext in (".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"):
+            supported_files.extend(scan_fn(f"*{ext}"))
+            supported_files.extend(scan_fn(f"*{ext.upper()}"))
+    supported_files = sorted(set(supported_files))
+
+    if not supported_files:
+        logging.error(f"No supported documentation files found in '{input_dir}'.")
+        sys.exit(1)
+
+    logging.info(
+        f"Found {len(supported_files)} file(s) to process in '{input_dir}' "
+        f"(recursive={recursive}, jobs={jobs})."
+    )
+
+    success_count = 0
+    skip_count = 0
+    fail_count = 0
+    generated_paths: list[str] = []
+
+    if jobs > 1 and len(supported_files) > 1:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as executor:
+            future_to_doc = {
+                executor.submit(
+                    _convert_single_doc,
+                    doc,
+                    output_dir,
+                    protocol,
+                    category_override,
+                    mfg_override,
+                    do_tag,
+                    strict,
+                    force,
+                ): doc
+                for doc in supported_files
+            }
+            for idx, future in enumerate(concurrent.futures.as_completed(future_to_doc), start=1):
+                doc = future_to_doc[future]
+                try:
+                    success, doc_name, out_file, detail = future.result()
+                    if success and out_file:
+                        success_count += 1
+                        generated_paths.append(out_file)
+                        logging.info(f"[{idx}/{len(supported_files)}] {doc_name} -> {detail}")
+                    elif detail and "Destination exists" in detail:
+                        skip_count += 1
+                        logging.info(f"[{idx}/{len(supported_files)}] SKIPPED {doc_name}: {detail}")
+                    else:
+                        fail_count += 1
+                        logging.warning(
+                            f"[{idx}/{len(supported_files)}] {doc_name} failed: {detail}"
+                        )
+                except Exception as e:
+                    fail_count += 1
+                    logging.error(f"[{idx}/{len(supported_files)}] ERROR {doc.name}: {e}")
+    else:
+        for idx, doc in enumerate(supported_files, start=1):
+            success, doc_name, out_file, detail = _convert_single_doc(
+                doc,
+                output_dir,
+                protocol,
+                category_override,
+                mfg_override,
+                do_tag,
+                strict,
+                force,
+            )
+            if success and out_file:
+                success_count += 1
+                generated_paths.append(out_file)
+                logging.info(f"[{idx}/{len(supported_files)}] OK: {doc_name} -> {detail}")
+            elif detail and "Destination exists" in detail:
+                skip_count += 1
+                logging.info(f"[{idx}/{len(supported_files)}] SKIPPED: {doc_name}: {detail}")
+            else:
+                fail_count += 1
+                logging.warning(f"[{idx}/{len(supported_files)}] {doc_name}: {detail}")
+
+    logging.info(
+        f"Batch conversion completed: {success_count} succeeded, {skip_count} skipped, {fail_count} failed."
+    )
+
+    if report_path and generated_paths:
+        from DefFileGenerator.report_generator import generate_directory_technical_report
+
+        generate_directory_technical_report(output_dir, output_report_path=report_path)
+        logging.info(f"Batch technical report generated: {report_path}")
+
+    if success_count == 0 and fail_count > 0:
+        sys.exit(1)
+
+
 def report_command(args: argparse.Namespace) -> None:
     """
     Subcommand handler for 'report': generates comprehensive technical reports in Markdown/JSON.
@@ -570,7 +895,6 @@ def report_command(args: argparse.Namespace) -> None:
             logging.info(f"Structured metrics exported: {json_path}")
 
 
-
 def _run_cli(argv: list[str] | None = None) -> None:
     """
     Parses CLI arguments and dispatches to the corresponding command handler.
@@ -605,7 +929,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--version", action="version", version="deffilegen 0.2.1")
+    parser.add_argument("--version", action="version", version=f"deffilegen {__version__}")
     parser.add_argument("--gui", action="store_true", help="Launch Windows 11 Desktop Application")
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
     parser.add_argument("-q", "--quiet", action="store_true", help="Quiet logging")
@@ -751,6 +1075,51 @@ def _run_cli(argv: list[str] | None = None) -> None:
     )
     parser_audit.add_argument("--json", action="store_true", help="Output audit report as JSON")
 
+    # Batch Subparser
+    parser_batch = subparsers.add_parser(
+        "batch", help="Batch convert a directory of documentation files into definition CSVs"
+    )
+    add_common_flags(parser_batch)
+    parser_batch.add_argument(
+        "input_dir", help="Directory or file containing documentation manuals"
+    )
+    parser_batch.add_argument(
+        "-o",
+        "--output-dir",
+        default="generated_definitions",
+        help="Output directory for generated CSVs",
+    )
+    parser_batch.add_argument("--manufacturer", help="Manufacturer override")
+    parser_batch.add_argument(
+        "--category", help="Category override (Inverter, Meter, Sensor, Battery)"
+    )
+    parser_batch.add_argument(
+        "--protocol", default="modbusRTU", help="Modbus protocol (modbusRTU or modbusTCP)"
+    )
+    parser_batch.add_argument(
+        "--tag", action="store_true", help="Auto-enrich definitions with SunPM canonical tags"
+    )
+    parser_batch.add_argument(
+        "--strict", action="store_true", help="Enforce strict validation on every file"
+    )
+    parser_batch.add_argument(
+        "--force", action="store_true", help="Overwrite existing output files"
+    )
+    parser_batch.add_argument(
+        "-r",
+        "--recursive",
+        action="store_true",
+        help="Recursively scan subdirectories for documentation files",
+    )
+    parser_batch.add_argument(
+        "-j",
+        "--jobs",
+        type=int,
+        default=1,
+        help="Number of parallel worker threads for batch conversion (default: 1)",
+    )
+    parser_batch.add_argument("--report", help="Path to generate batch Markdown technical report")
+
     # Train
     parser_train = subparsers.add_parser(
         "train", help="Train semantic knowledge base from definition CSVs"
@@ -814,6 +1183,8 @@ def _run_cli(argv: list[str] | None = None) -> None:
         audit_command(args)
     elif args.command == "train":
         train_command(args)
+    elif args.command == "batch":
+        batch_command(args)
 
 
 def main(args: list[str] | None = None) -> None:

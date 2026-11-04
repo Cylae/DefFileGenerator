@@ -14,7 +14,6 @@ import unittest
 from pathlib import Path
 
 from DefFileGenerator.def_gen import Generator
-from DefFileGenerator.report_generator import analyze_definition_file
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 LOCAL_DIR = REPO_ROOT / "FoxESS_P3_H3_Pro_Definitions"
@@ -34,6 +33,7 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.generator = Generator()
 
+<<<<<<< HEAD
     def test_p3_pro_dedicated_folder_and_readme(self) -> None:
         """Verify FoxESS P3 Pro dedicated folder, files, and README."""
         self.assertTrue(P3_PRO_DIR.exists(), f"Missing {P3_PRO_DIR}")
@@ -44,11 +44,24 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
         self.assertIn("FOXESS_P3_PRO_INVERTER.csv", readme_content)
         self.assertIn("FOXESS_P3_PRO_METER.csv", readme_content)
         self.assertIn("FOXESS_P3_PRO_BATTERY.csv", readme_content)
+=======
+    def test_inverter_definition_compliance(self) -> None:
+        """Verify Inverter definition schema, mandatory tags, and commands."""
+        self.assertTrue(self.inv_file.exists(), f"Missing {self.inv_file}")
+        report = self.generator.validate_csv_detailed(
+            str(self.inv_file), strict=False, strict_overlap=False
+        )
+        self.assertTrue(
+            report.is_valid,
+            f"Inverter validation errors: {[i.message for i in report.issues if i.severity == 'ERROR']}",
+        )
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         inv_file = P3_PRO_DIR / "FOXESS_P3_PRO_INVERTER.csv"
         met_file = P3_PRO_DIR / "FOXESS_P3_PRO_METER.csv"
         bat_file = P3_PRO_DIR / "FOXESS_P3_PRO_BATTERY.csv"
 
+<<<<<<< HEAD
         for f, model, eq in [(inv_file, "P3 Pro", "Inverter"), (met_file, "P3 Pro", "Meter"), (bat_file, "P3 Pro", "Battery")]:
             self.assertTrue(f.exists(), f"Missing {f}")
             rep = self.generator.validate_csv_detailed(str(f), strict=False, strict_overlap=False)
@@ -58,6 +71,27 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
                 self.assertEqual(hdr[1], eq)
                 self.assertEqual(hdr[2], "FoxESS")
                 self.assertEqual(hdr[3], model)
+=======
+        self.assertGreaterEqual(len(rows), 280)
+        tags = {r[6].strip() for r in rows if r[6].strip()}
+        mandatory_tags = {
+            "MODEL",
+            "SERIAL",
+            "MANUFACTURER",
+            "P_RATED",
+            "P_AC",
+            "Q_AC",
+            "PF",
+            "FREQ",
+            "TEMP_INT",
+            "E_TOT",
+            "E_DAY",
+            "CMD_ON",
+            "CMD_OFF",
+        }
+        for mt in mandatory_tags:
+            self.assertIn(mt, tags, f"Inverter definition must contain mandatory SunPM tag '{mt}'")
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
     def test_h3_pro_dedicated_folder_and_readme(self) -> None:
         """Verify FoxESS H3 Pro dedicated folder, files, and README."""
@@ -137,37 +171,93 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
                 self.assertNotIn(r[6], ("FREQ", "I_DC", "R_ISO", "P_AC", "Q_AC", "P_DC"), f"Alarm register {addr} must not steal analog telemetry tags")
                 self.assertEqual(r[10], "9", f"Alarm register {addr} must have Action = 9")
 
+<<<<<<< HEAD
     def test_meter_canonical_telemetry_tags(self) -> None:
         """Verify Meter definition 3-phase grid telemetry and mandatory tags."""
         met_file = LOCAL_DIR / "FOXESS_P3_H3_PRO_METER.csv"
         self.assertTrue(met_file.exists(), f"Missing {met_file}")
+=======
+    def test_meter_definition_compliance(self) -> None:
+        """Verify Meter definition schema and 3-phase grid telemetry tags."""
+        self.assertTrue(self.met_file.exists(), f"Missing {self.met_file}")
+        report = self.generator.validate_csv_detailed(
+            str(self.met_file), strict=False, strict_overlap=False
+        )
+        self.assertTrue(
+            report.is_valid,
+            f"Meter validation errors: {[i.message for i in report.issues if i.severity == 'ERROR']}",
+        )
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         with open(met_file, encoding="utf-8-sig") as f:
             rows = list(csv.reader(f, delimiter=";"))[1:]
 
         tags = {r[6].strip() for r in rows if r[6].strip()}
         mandatory_tags = {
-            "SERIAL", "MANUFACTURER", "MODEL",
-            "U_AC_1", "U_AC_2", "U_AC_3",
-            "I_AC_1", "I_AC_2", "I_AC_3",
-            "P_AC", "P_AC_1", "P_AC_2", "P_AC_3",
-            "Q_AC", "Q_AC_1", "Q_AC_2", "Q_AC_3",
-            "S_AC", "S_AC_1", "S_AC_2", "S_AC_3",
-            "PF", "FREQ",
+            "SERIAL",
+            "MANUFACTURER",
+            "MODEL",
+            "U_AC_1",
+            "U_AC_2",
+            "U_AC_3",
+            "I_AC_1",
+            "I_AC_2",
+            "I_AC_3",
+            "P_AC",
+            "P_AC_1",
+            "P_AC_2",
+            "P_AC_3",
+            "Q_AC",
+            "Q_AC_1",
+            "Q_AC_2",
+            "Q_AC_3",
+            "S_AC",
+            "S_AC_1",
+            "S_AC_2",
+            "S_AC_3",
+            "PF",
+            "FREQ",
         }
         for mt in mandatory_tags:
             self.assertIn(mt, tags, f"Meter must contain tag '{mt}'")
 
+<<<<<<< HEAD
     def test_battery_canonical_telemetry_tags(self) -> None:
         """Verify Battery definition BMS telemetry, unique tags, and commands."""
         bat_file = LOCAL_DIR / "FOXESS_P3_H3_PRO_BATTERY.csv"
         self.assertTrue(bat_file.exists(), f"Missing {bat_file}")
+=======
+    def test_battery_definition_compliance(self) -> None:
+        """Verify Battery definition schema and BMS telemetry/alarm tags."""
+        self.assertTrue(self.bat_file.exists(), f"Missing {self.bat_file}")
+        report = self.generator.validate_csv_detailed(
+            str(self.bat_file), strict=False, strict_overlap=False
+        )
+        self.assertTrue(
+            report.is_valid,
+            f"Battery validation errors: {[i.message for i in report.issues if i.severity == 'ERROR']}",
+        )
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
         with open(bat_file, encoding="utf-8-sig") as f:
             rows = list(csv.reader(f, delimiter=";"))[1:]
 
         tags = {r[6].strip() for r in rows if r[6].strip()}
-        mandatory_tags = {"MODEL", "SERIAL", "MANUFACTURER", "U_DC", "I_DC", "TEMP", "SOC", "SOH", "TEMP_MAX", "TEMP_MIN", "U_CELL_MAX", "U_CELL_MIN", "ALARM_1"}
+        mandatory_tags = {
+            "MODEL",
+            "SERIAL",
+            "MANUFACTURER",
+            "U_DC",
+            "I_DC",
+            "TEMP",
+            "SOC",
+            "SOH",
+            "TEMP_MAX",
+            "TEMP_MIN",
+            "U_CELL_MAX",
+            "U_CELL_MIN",
+            "ALARM_1",
+        }
         for mt in mandatory_tags:
             self.assertIn(mt, tags, f"Battery must contain tag '{mt}'")
 
@@ -179,7 +269,15 @@ class TestFoxESSP3H3Pro(unittest.TestCase):
                 tag_counts[t] = tag_counts.get(t, 0) + 1
         for unique_tag in ("MODEL", "SERIAL", "MANUFACTURER", "SOC", "SOH", "TEMP", "U_DC", "I_DC"):
             if unique_tag in tag_counts:
+<<<<<<< HEAD
                 self.assertEqual(tag_counts[unique_tag], 1, f"Tag '{unique_tag}' must be unique, found {tag_counts[unique_tag]}")
+=======
+                self.assertEqual(
+                    tag_counts[unique_tag],
+                    1,
+                    f"Tag '{unique_tag}' must be unique, found {tag_counts[unique_tag]} occurrences",
+                )
+>>>>>>> 21b7600c58cf0464a2c717f10d800ed39c565736
 
     def test_arbitration_register_parity_p3_vs_h3(self) -> None:
         """Factual arbitration test: verify that P3 Pro and H3 Pro share identical registers."""
