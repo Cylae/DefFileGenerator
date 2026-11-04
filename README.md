@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
   <img src="https://img.shields.io/badge/Version-0.3.0-blue?style=for-the-badge" alt="Version 0.3.0" />
-  <img src="https://img.shields.io/badge/Tests-1082%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1082 passed" />
+  <img src="https://img.shields.io/badge/Tests-1108%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1108 passed" />
   <img src="https://img.shields.io/badge/Coverage-90%25-brightgreen?style=for-the-badge" alt="Coverage: 90%" />
   <img src="https://img.shields.io/badge/Type%20Check-Mypy%20Strict-blue?style=for-the-badge" alt="Mypy Strict" />
   <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
@@ -38,7 +38,7 @@
   - [4. Python Programmatic API](#4-python-programmatic-api)
 - [🧠 Semantic Knowledge Miner & SunPM Tagging Engine](#-semantic-knowledge-miner--sunpm-tagging-engine)
 - [📊 Technical Audit & Quality Reporting Engine](#-technical-audit--quality-reporting-engine)
-- [🔋 Industrial Equipment Suites (Mars Renewable & FoxESS)](#-industrial-equipment-suites-mars-renewable--foxess)
+- [🔋 Industrial Equipment Suites (Mars Renewable, FoxESS & Dyness BESS)](#-industrial-equipment-suites-mars-renewable-foxess--dyness-bess)
 - [🏛️ Apollo-Standard Engineering Architecture & Ledgers](#️-apollo-standard-engineering-architecture--ledgers)
 - [📊 System Architecture & Pipeline](#-system-architecture--pipeline)
 - [📑 Supported Input Formats & Modbus Semantics](#-supported-input-formats--modbus-semantics)
@@ -524,7 +524,7 @@ deffilegen report Definitions/ -o docs/RAPPORT_TECHNIQUE.md --json metrics.json
 
 ---
 
-## 🔋 Industrial Equipment Suites (Mars Renewable & FoxESS)
+## 🔋 Industrial Equipment Suites (Mars Renewable, FoxESS & Dyness BESS)
 
 DefFileGenerator includes specialized industrial generators for utility-scale solar and BESS (Battery Energy Storage Systems):
 
@@ -536,9 +536,16 @@ Generates standardized Webdyn definition architectures for multi-megawatt batter
 - **All-in-One Generator**: Complete unified definition linking PV, BESS, Inverters, and Substation Meters.
 - Full Report: [`docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md`](docs/RAPPORT_TECHNIQUE_MARS_RENEWABLE.md).
 
-### 2. FoxESS P3 & H3 Pro Hybrid Storage Inverters (`scratch/regenerate_foxess_p3_h3_pro.py`)
+### 2. FoxESS P3 & H3 Pro Hybrid Storage Inverters (`generate_foxess_definitions.py`)
 Generates production-grade definition mappings for three-phase commercial hybrid inverters:
 - Full Report: [`docs/RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md`](docs/RAPPORT_TECHNIQUE_FOXESS_P3_H3_PRO.md).
+
+### 3. Dyness DH-Series Commercial & Industrial BESS (`DefFileGenerator/dyness_generator.py` & `generate_dyness_definitions.py`)
+Generates verified WebdynSunPM definitions for Dyness Commercial & Industrial BESS platforms:
+- **DH200Y (Liquid-Cooled 232 kWh)**: Full telemetry with 260 individual cell voltages (0.001 V) and 80 cell temperature sensors (-40 °C physical offset), PCS Position #4, and liquid cooling chiller loop.
+- **DH200F (Air-Cooled 215 kWh)**: High-voltage architecture with 240 cell voltages, 60 cell temperatures, PCS Position #5, DCDC modules, and AC HVAC unit.
+- **DH100F (Air-Cooled 100 kWh)**: Compact C&I BESS with 240 cell voltages, 60 cell temperatures, and unified telemetry.
+- **DH-Series Universal Generic**: Superset definition covering all modular subsystems and parallel master aggregations.
 
 ---
 
@@ -743,14 +750,17 @@ DefFileGenerator/
 │   ├── gui.py                # Desktop GUI application (CustomTkinter / Tkinter)
 │   ├── io_utils.py           # Atomic file IO and preview utilities
 │   ├── knowledge_miner.py    # Semantic SunPM tag inference (211,000+ registers dataset)
+│   ├── dyness_generator.py   # Dyness DH-Series BESS (DH200Y, DH200F, DH100F) generator
 │   ├── mars_generator.py     # Mars Renewable BESS & EMS multi-slave generator
 │   ├── report_generator.py   # Technical audit & quality reporting engine
 │   ├── main.py               # Unified CLI entrypoint (deffilegen)
-│   └── tests/                # Comprehensive test suite (1,040 tests, 88% coverage)
+│   └── tests/                # Comprehensive test suite (1,113 tests, 90% coverage)
 ├── web/                      # FastAPI Web Application & UI
 │   ├── app.py                # REST API endpoints (/api/convert, /api/validate)
 │   └── static/               # Responsive Vanilla JS / CSS frontend
-├── Definitions/              # Validated industrial equipment definitions library (125 models)
+├── Definitions/              # Validated industrial equipment definitions library (129 models)
+├── Dyness_DH_Series_Definitions/ # Dedicated Dyness DH-series definitions
+├── FoxESS_P3_H3_Pro_Definitions/ # Dedicated FoxESS P3 / H3 Pro definitions
 ├── generated_definitions/    # Production Webdyn CSV definitions (34+ models)
 ├── tagged_definitions/       # Canonical SunPM-tagged production definitions
 ├── stress_test_data/         # Real-world vendor datasets for stress testing
