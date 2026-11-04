@@ -1,4 +1,4 @@
-modbus;Logger;HOYMILES;METER;;;;;;;
+﻿modbus;Logger;HOYMILES;METER;;;;;;;
 1;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 2;4;12640_6;STRING;;Meter 1: Serial Number;;1.000000;0.000000;;4
 3;4;12643;U32;;Meter 1: Total Active Power;;0.010000;0.000000;kW;4
@@ -23,7 +23,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 22;4;12681;U32;;Meter 1: Phase A Power Factor;;0.001000;0.000000;;4
 23;4;12683;U32;;Meter 1: Phase B Power Factor;;0.001000;0.000000;;4
 24;4;12685;U32;;Meter 1: Phase C Power Factor;;0.001000;0.000000;;4
-25;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0;;4
+25;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 26;4;12688;U32;;Meter 1: Uab Line Voltage;;0.010000;0.000000;V;4
 27;4;12690;U32;;Meter 1: Ubc Line Voltage;;0.010000;0.000000;V;4
 28;4;12692;U32;;Meter 1: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -50,7 +50,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 49;4;12809;U32;;Meter 2: Phase A Power Factor;;0.001000;0.000000;;4
 50;4;12811;U32;;Meter 2: Phase B Power Factor;;0.001000;0.000000;;4
 51;4;12813;U32;;Meter 2: Phase C Power Factor;;0.001000;0.000000;;4
-52;4;12815;U16;;"Meter 2: Status (0: Offline; 1: Online)";;1.000000;0;;4
+52;4;12815;U16;;"Meter 2: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 53;4;12816;U32;;Meter 2: Uab Line Voltage;;0.010000;0.000000;V;4
 54;4;12818;U32;;Meter 2: Ubc Line Voltage;;0.010000;0.000000;V;4
 55;4;12820;U32;;Meter 2: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -77,7 +77,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 76;4;12937;U32;;Meter 3: Phase A Power Factor;;0.001000;0.000000;;4
 77;4;12939;U32;;Meter 3: Phase B Power Factor;;0.001000;0.000000;;4
 78;4;12941;U32;;Meter 3: Phase C Power Factor;;0.001000;0.000000;;4
-79;4;12943;U16;;"Meter 3: Status (0: Offline; 1: Online)";;1.000000;0;;4
+79;4;12943;U16;;"Meter 3: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 80;4;12944;U32;;Meter 3: Uab Line Voltage;;0.010000;0.000000;V;4
 81;4;12946;U32;;Meter 3: Ubc Line Voltage;;0.010000;0.000000;V;4
 82;4;12948;U32;;Meter 3: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -104,7 +104,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 103;4;13065;U32;;Meter 4: Phase A Power Factor;;0.001000;0.000000;;4
 104;4;13067;U32;;Meter 4: Phase B Power Factor;;0.001000;0.000000;;4
 105;4;13069;U32;;Meter 4: Phase C Power Factor;;0.001000;0.000000;;4
-106;4;13071;U16;;"Meter 4: Status (0: Offline; 1: Online)";;1.000000;0;;4
+106;4;13071;U16;;"Meter 4: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 107;4;13072;U32;;Meter 4: Uab Line Voltage;;0.010000;0.000000;V;4
 108;4;13074;U32;;Meter 4: Ubc Line Voltage;;0.010000;0.000000;V;4
 109;4;13076;U32;;Meter 4: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -131,7 +131,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 130;4;13193;U32;;Meter 5: Phase A Power Factor;;0.001000;0.000000;;4
 131;4;13195;U32;;Meter 5: Phase B Power Factor;;0.001000;0.000000;;4
 132;4;13197;U32;;Meter 5: Phase C Power Factor;;0.001000;0.000000;;4
-133;4;13199;U16;;"Meter 5: Status (0: Offline; 1: Online)";;1.000000;0;;4
+133;4;13199;U16;;"Meter 5: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 134;4;13200;U32;;Meter 5: Uab Line Voltage;;0.010000;0.000000;V;4
 135;4;13202;U32;;Meter 5: Ubc Line Voltage;;0.010000;0.000000;V;4
 136;4;13204;U32;;Meter 5: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -158,7 +158,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 157;4;13321;U32;;Meter 6: Phase A Power Factor;;0.001000;0.000000;;4
 158;4;13323;U32;;Meter 6: Phase B Power Factor;;0.001000;0.000000;;4
 159;4;13325;U32;;Meter 6: Phase C Power Factor;;0.001000;0.000000;;4
-160;4;13327;U16;;"Meter 6: Status (0: Offline; 1: Online)";;1.000000;0;;4
+160;4;13327;U16;;"Meter 6: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 161;4;13328;U32;;Meter 6: Uab Line Voltage;;0.010000;0.000000;V;4
 162;4;13330;U32;;Meter 6: Ubc Line Voltage;;0.010000;0.000000;V;4
 163;4;13332;U32;;Meter 6: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -185,7 +185,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 184;4;13449;U32;;Meter 7: Phase A Power Factor;;0.001000;0.000000;;4
 185;4;13451;U32;;Meter 7: Phase B Power Factor;;0.001000;0.000000;;4
 186;4;13453;U32;;Meter 7: Phase C Power Factor;;0.001000;0.000000;;4
-187;4;13455;U16;;"Meter 7: Status (0: Offline; 1: Online)";;1.000000;0;;4
+187;4;13455;U16;;"Meter 7: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 188;4;13456;U32;;Meter 7: Uab Line Voltage;;0.010000;0.000000;V;4
 189;4;13458;U32;;Meter 7: Ubc Line Voltage;;0.010000;0.000000;V;4
 190;4;13460;U32;;Meter 7: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -212,7 +212,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 211;4;13577;U32;;Meter 8: Phase A Power Factor;;0.001000;0.000000;;4
 212;4;13579;U32;;Meter 8: Phase B Power Factor;;0.001000;0.000000;;4
 213;4;13581;U32;;Meter 8: Phase C Power Factor;;0.001000;0.000000;;4
-214;4;13583;U16;;"Meter 8: Status (0: Offline; 1: Online)";;1.000000;0;;4
+214;4;13583;U16;;"Meter 8: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 215;4;13584;U32;;Meter 8: Uab Line Voltage;;0.010000;0.000000;V;4
 216;4;13586;U32;;Meter 8: Ubc Line Voltage;;0.010000;0.000000;V;4
 217;4;13588;U32;;Meter 8: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -239,7 +239,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 238;4;13705;U32;;Meter 9: Phase A Power Factor;;0.001000;0.000000;;4
 239;4;13707;U32;;Meter 9: Phase B Power Factor;;0.001000;0.000000;;4
 240;4;13709;U32;;Meter 9: Phase C Power Factor;;0.001000;0.000000;;4
-241;4;13711;U16;;"Meter 9: Status (0: Offline; 1: Online)";;1.000000;0;;4
+241;4;13711;U16;;"Meter 9: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 242;4;13712;U32;;Meter 9: Uab Line Voltage;;0.010000;0.000000;V;4
 243;4;13714;U32;;Meter 9: Ubc Line Voltage;;0.010000;0.000000;V;4
 244;4;13716;U32;;Meter 9: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -266,7 +266,7 @@ modbus;Logger;HOYMILES;METER;;;;;;;
 265;4;13833;U32;;Meter 10: Phase A Power Factor;;0.001000;0.000000;;4
 266;4;13835;U32;;Meter 10: Phase B Power Factor;;0.001000;0.000000;;4
 267;4;13837;U32;;Meter 10: Phase C Power Factor;;0.001000;0.000000;;4
-268;4;13839;U16;;"Meter 10: Status (0: Offline; 1: Online)";;1.000000;0;;4
+268;4;13839;U16;;"Meter 10: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 269;4;13840;U32;;Meter 10: Uab Line Voltage;;0.010000;0.000000;V;4
 270;4;13842;U32;;Meter 10: Ubc Line Voltage;;0.010000;0.000000;V;4
 271;4;13844;U32;;Meter 10: Uca Line Voltage;;0.010000;0.000000;V;4

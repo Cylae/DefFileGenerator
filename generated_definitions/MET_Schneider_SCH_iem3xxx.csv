@@ -1,4 +1,4 @@
-modbusRTU;Meter;Schneider;IEM 3255;;;;;;;
+﻿modbusRTU;Meter;Schneider;IEM 3255;;;;;;;
 1;3;2003;U32;;OperationTimer;;1.000000;0.000000;s;4
 2;3;6500;U16;;Address;;1.000000;0.000000;;4
 3;3;6501;U16;;vitesse;;1.000000;0.000000;;4
@@ -54,6 +54,6 @@ modbusRTU;Meter;Schneider;IEM 3255;;;;;;;
 53;3;45121;F32;;Rate B Active Energy Import;;1.000000;0.000000;Wh;0
 54;3;45123;F32;;Rate C Active Energy Import;;1.000000;0.000000;Wh;0
 55;3;45125;F32;;Rate D Active Energy Import;;1.000000;0.000000;Wh;0
-56;3;45127;F32;;Reactive Energy Import Phase A;;1.000000;0.000000; KVARH;4
-57;3;45129;F32;;Reactive Energy Import Phase B;;1.000000;0.000000; KVARH;4
-58;3;45131;F32;;Reactive Energy Import Phase C;;1.000000;0.000000; KVARH;4
+56;3;45127;F32;;Reactive Energy Import Phase A;;1.000000;0.000000;KVARH;4
+57;3;45129;F32;;Reactive Energy Import Phase B;;1.000000;0.000000;KVARH;4
+58;3;45131;F32;;Reactive Energy Import Phase C;;1.000000;0.000000;KVARH;4

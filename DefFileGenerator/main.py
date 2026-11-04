@@ -224,7 +224,7 @@ def _perform_extraction(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
     mapping_path = getattr(args, "mapping", None)
     if mapping_path:
         try:
-            with open(mapping_path) as f:
+            with open(mapping_path, encoding="utf-8") as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")

@@ -25,6 +25,7 @@
 | **Frontend Contracts** | `node DefFileGenerator/tests/interface_frontend_contracts.js web/static/app.js` | Web Studio DOM contracts | **EXECUTED_PASS** | All 4 tabs asserted: Convert, Tag, Audit, Library, Toast, Copy, Filter, ARIA |
 | **Unit & Integration** | `pytest --cov=DefFileGenerator --cov=web` | 1,099 collected tests | **EXECUTED_PASS** | 1,094 passed, 5 skipped, 0 failed |
 | **Live Share Validation** | `ENABLE_NETWORK_SHARE_TESTS=1 pytest test_30_equipementiers.py test_50_equipementiers.py` | 30 & 52 equipment batteries | **EXECUTED_PASS** | 30/30 passed in battery 30; 47/52 passed in battery 52 (>=45 passed) |
+| **Meticulous Definition Audit** | `python scratch/deep_audit_all_definitions.py` | 2,344 definitions (750,577 registers) across all libraries | **EXECUTED_PASS** | 2,344 / 2,344 (100.0%) valid, 0 errors, 11-col headers & sequential indices |
 
 ---
 

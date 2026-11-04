@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Sungrow;110
+﻿modbusRTU;Inverter;Sungrow;110;;;;;;;
 1;4;4999;U16;;Inverter type code;;1.000000;0.000000;;4
 2;4;5000;U16;;Rated AC Power;;0.100000;0.000000;kW;4
 3;4;5001;U16;;Output type;;1.000000;0.000000;;4

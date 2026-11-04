@@ -1,25 +1,25 @@
-modbus;Inverter;MarsRenewable;LC_Meter;;;;;;;
-1;4;10000;F32;;Meter1 Total Forward Active Energy;;1;0;kWh;4
-2;4;10002;F32;;Meter1 Total Forward Sharp Energy;;1;0;kWh;4
-3;4;10004;F32;;Meter1 Total Forward Peak Energy;;1;0;kWh;4
-4;4;10006;F32;;Meter1 Total Forward Flat Energy;;1;0;kWh;4
-5;4;10008;F32;;Meter1 Total Forward Valley Energy;;1;0;kWh;4
-6;4;10010;F32;;Meter1 Total Reverse Active Energy;;1;0;kWh;4
-7;4;10012;F32;;Meter1 Total Reverse Sharp Energy;;1;0;kWh;4
-8;4;10014;F32;;Meter1 Total Reverse Peak Energy;;1;0;kWh;4
-9;4;10016;F32;;Meter1 Total Reverse Flat Energy;;1;0;kWh;4
-10;4;10018;F32;;Meter1 Total Reverse Valley Energy;;1;0;kWh;4
-11;4;10020;F32;;Meter1 Total Active Power;;1;0;kW;4
-12;4;10050;F32;;Meter2 Total Forward Active Energy;;1;0;kWh;0
-13;4;10052;F32;;Meter2 Total Forward Sharp Energy;;1;0;kWh;0
-14;4;10054;F32;;Meter2 Total Forward Peak Energy;;1;0;kWh;0
-15;4;10056;F32;;Meter2 Total Forward Flat Energy;;1;0;kWh;4
-16;4;10058;F32;;Meter2 Total Forward Valley Energy;;1;0;kWh;0
-17;4;10060;F32;;Meter2 Total Reverse Active Energy;;1;0;kWh;0
-18;4;10062;F32;;Meter2 Total Reverse Sharp Energy;;1;0;kWh;0
-19;4;10064;F32;;Meter2 Total Reverse Peak Energy;;1;0;kWh;0
-20;4;10066;F32;;Meter2 Total Reverse Flat Energy;;1;0;kWh;0
-21;4;10068;F32;;Meter2 Total Reverse Valley Energy;;1;0;kWh;0
-22;4;10070;F32;;Meter2 Total Active Power;;1;0;kW;0
-23;4;10100;F32;;Meter3 Total Forward Active Energy;;1;0;kWh;0
-24;4;14950;F32;;Meter100 Total Forward Active Energy;;1;0;kWh;0
+﻿modbus;Inverter;MarsRenewable;LC_Meter;;;;;;;
+1;4;10000;F32;;Meter1 Total Forward Active Energy;;1.000000;0.000000;kWh;4
+2;4;10002;F32;;Meter1 Total Forward Sharp Energy;;1.000000;0.000000;kWh;4
+3;4;10004;F32;;Meter1 Total Forward Peak Energy;;1.000000;0.000000;kWh;4
+4;4;10006;F32;;Meter1 Total Forward Flat Energy;;1.000000;0.000000;kWh;4
+5;4;10008;F32;;Meter1 Total Forward Valley Energy;;1.000000;0.000000;kWh;4
+6;4;10010;F32;;Meter1 Total Reverse Active Energy;;1.000000;0.000000;kWh;4
+7;4;10012;F32;;Meter1 Total Reverse Sharp Energy;;1.000000;0.000000;kWh;4
+8;4;10014;F32;;Meter1 Total Reverse Peak Energy;;1.000000;0.000000;kWh;4
+9;4;10016;F32;;Meter1 Total Reverse Flat Energy;;1.000000;0.000000;kWh;4
+10;4;10018;F32;;Meter1 Total Reverse Valley Energy;;1.000000;0.000000;kWh;4
+11;4;10020;F32;;Meter1 Total Active Power;;1.000000;0.000000;kW;4
+12;4;10050;F32;;Meter2 Total Forward Active Energy;;1.000000;0.000000;kWh;0
+13;4;10052;F32;;Meter2 Total Forward Sharp Energy;;1.000000;0.000000;kWh;0
+14;4;10054;F32;;Meter2 Total Forward Peak Energy;;1.000000;0.000000;kWh;0
+15;4;10056;F32;;Meter2 Total Forward Flat Energy;;1.000000;0.000000;kWh;4
+16;4;10058;F32;;Meter2 Total Forward Valley Energy;;1.000000;0.000000;kWh;0
+17;4;10060;F32;;Meter2 Total Reverse Active Energy;;1.000000;0.000000;kWh;0
+18;4;10062;F32;;Meter2 Total Reverse Sharp Energy;;1.000000;0.000000;kWh;0
+19;4;10064;F32;;Meter2 Total Reverse Peak Energy;;1.000000;0.000000;kWh;0
+20;4;10066;F32;;Meter2 Total Reverse Flat Energy;;1.000000;0.000000;kWh;0
+21;4;10068;F32;;Meter2 Total Reverse Valley Energy;;1.000000;0.000000;kWh;0
+22;4;10070;F32;;Meter2 Total Active Power;;1.000000;0.000000;kW;0
+23;4;10100;F32;;Meter3 Total Forward Active Energy;;1.000000;0.000000;kWh;0
+24;4;14950;F32;;Meter100 Total Forward Active Energy;;1.000000;0.000000;kWh;0

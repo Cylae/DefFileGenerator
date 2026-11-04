@@ -1,4 +1,4 @@
-modbusRTU;Other;CEFEM;Table Modbus Trio-Sun Trio-Top;;;;;;;
+﻿modbusRTU;Other;CEFEM;Table Modbus Trio-Sun Trio-Top;;;;;;;
 1;4;0;U16;;Numéro de fabrication;;1.000000;0.000000;;4
 2;4;1;U16;;Numéro d'ordre;;1.000000;0.000000;;4
 3;4;2;U16;;Modèle;MODEL;1.000000;0.000000;;4

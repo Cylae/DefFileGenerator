@@ -1,4 +1,4 @@
-modbus;Inverter;HYXIPOWER;12-50K;;;;;;;
+﻿modbus;Inverter;HYXIPOWER;12-50K;;;;;;;
 1;4;1;U16;;Main DSP Program Version Number Low Byte;;1.000000;0.000000;;4
 2;4;2;U16;;Main DSP Program Version Number High Byte;;1.000000;0.000000;;4
 3;4;10;U16;;Slave DSP Program Version Number Low Byte;;1.000000;0.000000;;4

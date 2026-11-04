@@ -1,19 +1,19 @@
-modbusTCP;Inverter;MarsRenewable;LiquidCooling;;;;;;;
-1;4;30000;U16;;LiquidCooling1 Operating Status [0=stopped, 1=running];;1;0;;0
-2;4;30004;U16;;LiquidCooling1 Operating Mode [0=stop,1=cool,2=heat,3=self-circ,4=auto,5=standby];;1;0;;0
-3;4;30006;F32;;LiquidCooling1 Ambient Temperature;;1;0;C;0
-4;4;30008;F32;;LiquidCooling1 Supply Water Temperature;;1;0;C;0
-5;4;30010;F32;;LiquidCooling1 Inlet Water Temperature;;1;0;C;0
-6;4;30012;F32;;LiquidCooling1 Supply Water Pressure;;1;0;;0
-7;4;30014;F32;;LiquidCooling1 Return Water Pressure;;1;0;;0
-8;4;30016;U16;;LiquidCooling1 Fan Operating Status;;1;0;;0
-9;4;30017;U16;;LiquidCooling1 Water Pump Operating Status;;1;0;;0
-10;4;30018;U16;;LiquidCooling1 Electric Heating Operating Status;;1;0;;0
-11;4;30019;U16;;LiquidCooling1 Refrigerant Operating Status;;1;0;;0
-12;4;30020;F32;;LiquidCooling1 Fan Output;;1;0;;0
-13;4;30022;F32;;LiquidCooling1 Water Pump Output;;1;0;;0
-14;4;30024;F32;;LiquidCooling1 Target Cooling Start Point;;1;0;C;0
-15;4;30026;F32;;LiquidCooling1 Target Cooling Stop Point;;1;0;C;0
-16;4;30028;F32;;LiquidCooling1 Target Heating Start Point;;1;0;C;0
-17;4;30030;F32;;LiquidCooling1 Target Heating Stop Point;;1;0;C;0
-18;4;30032;U16;;LiquidCooling1 EMS Control Mode Status [0=false, 1=true];;1;0;;0
+﻿modbusTCP;Inverter;MarsRenewable;LiquidCooling;;;;;;;
+1;4;30000;U16;;LiquidCooling1 Operating Status [0=stopped, 1=running];;1.000000;0.000000;;0
+2;4;30004;U16;;LiquidCooling1 Operating Mode [0=stop,1=cool,2=heat,3=self-circ,4=auto,5=standby];;1.000000;0.000000;;0
+3;4;30006;F32;;LiquidCooling1 Ambient Temperature;;1.000000;0.000000;C;0
+4;4;30008;F32;;LiquidCooling1 Supply Water Temperature;;1.000000;0.000000;C;0
+5;4;30010;F32;;LiquidCooling1 Inlet Water Temperature;;1.000000;0.000000;C;0
+6;4;30012;F32;;LiquidCooling1 Supply Water Pressure;;1.000000;0.000000;;0
+7;4;30014;F32;;LiquidCooling1 Return Water Pressure;;1.000000;0.000000;;0
+8;4;30016;U16;;LiquidCooling1 Fan Operating Status;;1.000000;0.000000;;0
+9;4;30017;U16;;LiquidCooling1 Water Pump Operating Status;;1.000000;0.000000;;0
+10;4;30018;U16;;LiquidCooling1 Electric Heating Operating Status;;1.000000;0.000000;;0
+11;4;30019;U16;;LiquidCooling1 Refrigerant Operating Status;;1.000000;0.000000;;0
+12;4;30020;F32;;LiquidCooling1 Fan Output;;1.000000;0.000000;;0
+13;4;30022;F32;;LiquidCooling1 Water Pump Output;;1.000000;0.000000;;0
+14;4;30024;F32;;LiquidCooling1 Target Cooling Start Point;;1.000000;0.000000;C;0
+15;4;30026;F32;;LiquidCooling1 Target Cooling Stop Point;;1.000000;0.000000;C;0
+16;4;30028;F32;;LiquidCooling1 Target Heating Start Point;;1.000000;0.000000;C;0
+17;4;30030;F32;;LiquidCooling1 Target Heating Stop Point;;1.000000;0.000000;C;0
+18;4;30032;U16;;LiquidCooling1 EMS Control Mode Status [0=false, 1=true];;1.000000;0.000000;;0

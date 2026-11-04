@@ -1,4 +1,4 @@
-modbusRTU;Meter;Socomec;Countis P44;;;;;;;
+﻿modbusRTU;Meter;Socomec;Countis P44;;;;;;;
 1;3;50000_16;STRING;;SOCO;;1;0;;1
 2;3;50004;U16;;Product order ID (Countis:100, Protection:200, Atys:300, Diris:400);;1;0;;1
 3;3;50005;U16;;Product ID (EX: 1000 ATS3);;1;0;;1
@@ -160,9 +160,9 @@ modbusRTU;Meter;Socomec;Countis P44;;;;;;;
 159;3;29451;U8;;Current transformer Line 2 Way0 : Positive (+)1 : Negative (-);I_AC_2;1;0;;1
 160;3;29452;U8;;Current transformer Line 3 Way0 : Positive (+)1 : Negative (-);I_AC_3;1;0;;1
 161;3;34817;U16;;Integration time for average 5 : 5 minutes 8 : 8 minutes10 : 10 minutes15 : 15 minutes20 : 20 minutes30 : 30 minutes6...;;1;0;min;1
-162;6;40481;U8;;Tariff Number to set1 : Tariff 12 : Tariff 23 : Tariff 34 : Tariff 4;;1;0;;1
-163;6;57856;U8;;Action :0xA1 : Product Configuration storage0xB2 : Product reset;;1;0;;1
-164;6;57888;U16;;Reset Min/Max and AVG0xFFFF : Reset All;;1;0;;1
-165;6;57890;U16;;Reset Partial Energies0x0000 : None0x0001 : Partial Ea+0x0002 : Partial Er+0x0004 : Partial Eap0x0008 : Partial Ea-0x...;;1;0;;1
-166;6;40512;U8;;Reset0x20 : Partial Energies;;1;0;;1
+162;3;40481;U8;;Tariff Number to set1 : Tariff 12 : Tariff 23 : Tariff 34 : Tariff 4;;1;0;;1
+163;3;57856;U8;;Action :0xA1 : Product Configuration storage0xB2 : Product reset;;1;0;;1
+164;3;57888;U16;;Reset Min/Max and AVG0xFFFF : Reset All;;1;0;;1
+165;3;57890;U16;;Reset Partial Energies0x0000 : None0x0001 : Partial Ea+0x0002 : Partial Er+0x0004 : Partial Eap0x0008 : Partial Ea-0x...;;1;0;;1
+166;3;40512;U8;;Reset0x20 : Partial Energies;;1;0;;1
 167;3;40545;U8;;MID status (0: non-MID product, 1: MID product;;1;0;;1

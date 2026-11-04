@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsLocalController_IO List_Mo;;;;;;;
+﻿modbusTCP;Other;MarsRenewable;MarsLocalController_IO List_Mo;;;;;;;
 1;4;0;U16;;Measurement point version number;;1.000000;0.000000;;4
 2;4;1;U16;;PCS Number;;1.000000;0.000000;;4
 3;4;2;U16;;Bank Number;;1.000000;0.000000;;4
@@ -57,8 +57,8 @@ modbusRTU;Other;MarsRenewable;MarsLocalController_IO List_Mo;;;;;;;
 56;4;4902;F32;;AC Phase A Voltage;;1.000000;0.000000;V;4
 57;4;5000;F32;;Bank Voltage;;1.000000;0.000000;V;4
 58;4;5002;F32;;Bank Current;;1.000000;0.000000;A;4
-59;4;5004;F32;;Bank SOC;;1.000000;0.000000;'%;4
-60;4;5006;F32;;Bank SOH;;1.000000;0.000000;'%;4
+59;4;5004;F32;;Bank SOC;;1.000000;0.000000;%;4
+60;4;5006;F32;;Bank SOH;;1.000000;0.000000;%;4
 61;4;5008;F32;;Bank Insulation Resistance;;1.000000;0.000000;Ω;4
 62;4;5010;F32;;Bank Available Charge Energy;;1.000000;0.000000;kWh;4
 63;4;5012;F32;;Bank Available Discharge Energy;;1.000000;0.000000;kWh;4
@@ -156,11 +156,11 @@ modbusRTU;Other;MarsRenewable;MarsLocalController_IO List_Mo;;;;;;;
 155;4;20029;U16;;2#DI-1;;1.000000;0.000000;;4
 156;4;20030;U16;;2#DI-2;;1.000000;0.000000;;4
 157;4;20031;U16;;2#DI-3;;1.000000;0.000000;;4
-158;4;20032;U16;;;;1.000000;0.000000;;4
+158;4;20032;U16;;Register_20032;;1.000000;0.000000;;4
 159;4;20033;U16;;2#DO-1;;1.000000;0.000000;;4
 160;4;20034;U16;;2#DO-2;;1.000000;0.000000;;4
 161;4;20035;U16;;2#DO-3;;1.000000;0.000000;;4
-162;4;20036;U16;;;;1.000000;0.000000;;4
+162;4;20036;U16;;Register_20036;;1.000000;0.000000;;4
 163;4;20037;U16;;Reserve;;1.000000;0.000000;;0
 164;4;20038;U16;;Reserve;;1.000000;0.000000;;0
 165;4;20039;U16;;Reserve;;1.000000;0.000000;;0
@@ -252,4 +252,4 @@ modbusRTU;Other;MarsRenewable;MarsLocalController_IO List_Mo;;;;;;;
 251;4;29900;U16;;Operating Status;;1.000000;0.000000;;9
 252;4;29901;U16;;Reserve;;1.000000;0.000000;;0
 253;4;29902;F32;;AC Phase A Voltage;;0.100000;0.000000;V;4
-254;3;50000;U16;;;;1.000000;0.000000;;1
+254;3;50000;U16;;Register_50000;;1.000000;0.000000;;1

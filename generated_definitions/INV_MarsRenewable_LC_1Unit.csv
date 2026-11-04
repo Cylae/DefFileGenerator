@@ -1,4 +1,4 @@
-modbusTCP;Inverter;MarsRenewable;LiquidCooling-1Unit;;;;;;;
+﻿modbusTCP;Inverter;MarsRenewable;LiquidCooling-1Unit;;;;;;;
 1;4;30000;U16;;LiquidCooling1 Operating Status;;1.000000;0.000000;;9
 2;4;30004;U16;;LiquidCooling1 Operating Mode;;1.000000;0.000000;;4
 3;4;30006;F32;;LiquidCooling1 Ambient Temperature;TEMP_AMB;0.100000;0.000000;°C;4

@@ -1,4 +1,4 @@
-modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
+﻿modbusTCP;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 1;4;800_6;STRING;;Serial (System);;100.000000;0.000000;;4
 2;4;806;U16;;CCGX Relay 1 state;;100.000000;0.000000;"0=Open;1=Closed";4
 3;4;807;U16;;CCGX Relay 2 state;;100.000000;0.000000;"0=Open;1=Closed";4
@@ -24,7 +24,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 23;4;840;U16;;Battery Voltage (System);U_DC;0.100000;0.000000;V DC;4
 24;4;841;I16;;Battery Current (System);I_DC;0.100000;0.000000;A DC;4
 25;4;842;I16;;Battery Power (System);;100.000000;0.000000;W;4
-26;4;843;U16;;Battery State of Charge (System);SOC;100.000000;0.000000;'%;4
+26;4;843;U16;;Battery State of Charge (System);SOC;100.000000;0.000000;%;4
 27;4;844;U16;;Battery state (System);;100.000000;0.000000;"0=idle;1=charging;2=discharging";4
 28;4;845;U16;;Battery Consumed Amphours (System);;-0.100000;0.000000;Ah;4
 29;4;846;U16;;Battery Time to Go (System);;100.000000;0.000000;s;4
@@ -61,7 +61,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 60;4;27;I16;;Battery current;;0.100000;0.000000;A DC;4
 61;4;28;U16;;Phase count;;100.000000;0.000000;count;4
 62;4;29;U16;;Active input;;100.000000;0.000000;"0=AC Input 1;1=AC Input 2;240=Disconnected";4
-63;4;30;U16;;VE.Bus state of charge;;0.100000;0.000000;'%;4
+63;4;30;U16;;VE.Bus state of charge;;0.100000;0.000000;%;4
 64;4;31;U16;;VE.Bus state;;100.000000;0.000000;"0=Off;1=Low Power;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;8=Passthru;9=Inverting;10=Power assist;11=Power supply;252=External control";4
 65;4;32;U16;;VE.Bus Error;;100.000000;0.000000;"0=No error;1=VE.Bus Error 1: Device is switched off because one of the other phases in the system has switched off;2=VE.Bus Error 2: New and old types MK2 are mixed in the system;3=VE.Bus Error 3: Not all- or more than- the expected devices were found in the system;4=VE.Bus Error 4: No other device whatsoever detected;5=VE.Bus Error 5: Overvoltage on AC-out;6=VE.Bus Error 6: Error in DDC Program;7=VE.Bus BMS connected- which requires an Assistant- but no assistant found;10=VE.Bus Error 10: System time synchronisation problem occurred;14=VE.Bus Error 14: Device cannot transmit data;16=VE.Bus Error 16: Dongle missing;17=VE.Bus Error 17: One of the devices assumed master status because the original master failed;18=VE.Bus Error 18: AC Overvoltage on the output of a slave has occurred while already switched off;22=VE.Bus Error 22: This device cannot function as slave;24=VE.Bus Error 24: Switch-over system protection initiated;25=VE.Bus Error 25: Firmware incompatibility. The firmware of one of the connected device is not sufficiently up to date to operate in conjunction with this device;26=VE.Bus Error 26: Internal error";9
 66;4;33;U16;;Switch Position;;100.000000;0.000000;"1=Charger Only;2=Inverter Only;3=On;4=Off";4
@@ -120,9 +120,9 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 119;4;261;I16;;Current;;0.100000;0.000000;A DC;4
 120;4;262;I16;;Battery temperature;;0.100000;0.000000;Degrees celsius;4
 121;4;263;U16;;Mid-point voltage of the battery bank;;0.010000;0.000000;V DC;4
-122;4;264;U16;;Mid-point deviation of the battery bank;;0.010000;0.000000;'%;4
+122;4;264;U16;;Mid-point deviation of the battery bank;;0.010000;0.000000;%;4
 123;4;265;U16;;Consumed Amphours;;-0.100000;0.000000;Ah;4
-124;4;266;U16;;State of charge;;0.100000;0.000000;'%;4
+124;4;266;U16;;State of charge;;0.100000;0.000000;%;4
 125;4;267;U16;;Alarm;;100.000000;0.000000;"0=No alarm;2=Alarm";9
 126;4;268;U16;;Low voltage alarm;;100.000000;0.000000;"0=No alarm;2=Alarm";9
 127;4;269;U16;;High voltage alarm;;100.000000;0.000000;"0=No alarm;2=Alarm";9
@@ -160,7 +160,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 159;4;301;U16;;Discharged Energy;;0.100000;0.000000;kWh;4
 160;4;302;U16;;Charged Energy;;0.100000;0.000000;kWh;4
 161;4;303;U16;;Time to go;;100.000000;0.000000;seconds;4
-162;4;304;U16;;State of health;SOH;0.100000;0.000000;'%;4
+162;4;304;U16;;State of health;SOH;0.100000;0.000000;%;4
 163;4;305;U16;;Max charge voltage;;0.100000;0.000000;V DC;4
 164;4;306;U16;;Min discharge voltage;;0.100000;0.000000;V DC;4
 165;4;307;U16;;Max charge current;;0.100000;0.000000;A DC;4
@@ -189,7 +189,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 188;4;778;U16;;Equalization pending;;100.000000;0.000000;"0=No;1=Yes;2=Error;3=Unavailable- Unknown";4
 189;4;779;U16;;Equalization time remaining;;0.100000;0.000000;seconds;4
 190;4;780;U16;;Relay on the charger;;100.000000;0.000000;"0=Open;1=Closed";4
-191;4;781;U16;;;;100.000000;0.000000;"0=No alarm;2=Alarm";4
+191;4;781;U16;;Register_781;;100.000000;0.000000;"0=No alarm;2=Alarm";4
 192;4;782;U16;;Low batt. voltage alarm;;100.000000;0.000000;"0=No alarm;2=Alarm";9
 193;4;783;U16;;High batt. voltage alarm;;100.000000;0.000000;"0=No alarm;2=Alarm";9
 194;4;784;U16;;Yield today;;0.100000;0.000000;kWh;4
@@ -319,8 +319,8 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 318;4;2634;U32;;Total Energy from net;;0.010000;0.000000;kWh;4
 319;4;2636;U32;;Total Energy to net;;0.010000;0.000000;kWh;4
 320;4;2700;I16;;ESS control loop setpoint;;100.000000;0.000000;W;4
-321;4;2701;U16;;ESS max charge current (fractional);;100.000000;0.000000;'%;4
-322;4;2702;U16;;ESS max discharge current (fractional);;100.000000;0.000000;'%;4
+321;4;2701;U16;;ESS max charge current (fractional);;100.000000;0.000000;%;4
+322;4;2702;U16;;ESS max discharge current (fractional);;100.000000;0.000000;%;4
 323;4;2703;I16;;ESS control loop setpoint;;100.000000;0.000000;W;4
 324;4;2704;U16;;ESS max discharge current;;10.000000;0.000000;W;4
 325;4;2705;I16;;DVCC system max charge current;;100.000000;0.000000;A DC;4
@@ -337,13 +337,13 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 336;4;2807;U16;;GPS number of satellites;;100.000000;0.000000;;4
 337;4;2808;I32;;Altitude;;0.100000;0.000000;m/s;4
 338;4;2900;U16;;ESS BatteryLife state;;100.000000;0.000000;"0=Unused, BL disabled;1=Restarting;2=Self-consumption;3=Self-consumption;4=Self-consumption;5=Discharge disabled;6=Force charge;7=Sustain;8=Low Soc Recharge;9=Keep batteries charged;10=BL Disabled;11=BL Disabled (Low SoC);12=BL Disabled (Low SOC recharge)";4
-339;4;2901;U16;;ESS Minimum SoC (unless grid fails);;0.100000;0.000000;'%;9
+339;4;2901;U16;;ESS Minimum SoC (unless grid fails);;0.100000;0.000000;%;9
 340;4;2902;U16;;ESS Mode;;100.000000;0.000000;"1=ESS with Phase Compensation;2=ESS without phase compensation;3=Disabled/External Control";4
-341;4;2903;U16;;ESS BatteryLife SoC limit (read only);;0.100000;0.000000;'%;4
+341;4;2903;U16;;ESS BatteryLife SoC limit (read only);;0.100000;0.000000;%;4
 342;4;3000;U16;;Product ID;;100.000000;0.000000;;4
 343;4;3001;U32;;Tank capacity;;0.000100;0.000000;m3;4
 344;4;3003;U16;;Tank fluid type;;100.000000;0.000000;"0=Fuel;1=Fresh water;2=Waste water;3=Live well;4=Oil;5=Black water (sewage);6=Gasoline;7=Diesel;8=LPG;9=LNG;10=Hydraulic oil;11=Raw water";4
-345;4;3004;U16;;Tank level;;0.100000;0.000000;'%;4
+345;4;3004;U16;;Tank level;;0.100000;0.000000;%;4
 346;4;3005;U32;;Tank remaining fluid;;0.000100;0.000000;m3;4
 347;4;3007;U16;;Tank status;;100.000000;0.000000;"0=OK;1=Disconnected;2=Short circuited;3=Reverse Polarity;4=Unknown";9
 348;4;3100;I16;;Output current;;0.100000;0.000000;A AC;4
@@ -409,7 +409,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 408;4;3213;U16;;Status;;100.000000;0.000000;"0=Standby;1=Startup 1;2=Startup 2;3=Startup 3;4=Startup 4;5=Startup 5;6=Startup 6;7=Startup 7;8=Running;9=Stopping;10=Error";9
 409;4;3214;U16;;Error;;100.000000;0.000000;"0=No error;1=AC voltage L1 too low;2=AC frequency L1 too low;3=AC current too low;4=AC power too low;5=Emergency stop;6=Servo current too low;7=Oil pressure too low;8=Engine temperature too low;9=Winding temperature too low;10=Exhaust temperature too low;13=Starter current too low;14=Glow current too low;15=Glow current too low;16=Fuel holding magnet current too low;17=Stop solenoid hold coil current too low;18=Stop solenoid pull coil current too low;19=Optional DC out current too low;20=5V output voltage too low;21=Boost output current too low;22=Panel supply current too high;25=Starter battery voltage too low;26=Startup aborted (rotation too low);28=Rotation too low;29=Power contactor current too low;30=AC voltage L2 too low;31=AC frequency L2 too low;32=AC current L2 too low;33=AC power L2 too low;34=AC voltage L3 too low;35=AC frequency L3 too low;36=AC current L3 too low;37=AC power L3 too low;62=Fuel temperature too low;63=Fuel level too low;65=AC voltage L1 too high;66=AC frequency too high;67=AC current too high;68=AC power too high;70=Servo current too high;71=Oil pressure too high;72=Engine temperature too high;73=Winding temperature too high;74=Exhaust temperature too low;77=Starter current too low;78=Glow current too high;79=Glow current too high;80=Fuel holding magnet current too high;81=Stop solenoid hold coil current too high;82=Stop solenoid pull coil current too high;83=Optional DC out current too high;84=5V output voltage too high;85=Boost output current too high;89=Starter battery voltage too high;90=Startup aborted (rotation too high);92=Rotation too high;93=Power contactor current too high;94=AC voltage L2 too high;95=AC frequency L2 too high;96=AC current L2 too high;97=AC power L2 too high;98=AC voltage L3 too high;99=AC frequency L3 too high;100=AC current L3 too high;101=AC power L3 too high;126=Fuel temperature too high;127=Fuel level too high;130=Lost control unit;131=Lost panel;132=Service needed;133=Lost 3-phase module;134=Lost AGT module;135=Synchronization failure;137=Intake airfilter;139=Lost sync. module;140=Load-balance failed;141=Sync-mode deactivated;142=Engine controller;148=Rotating field wrong;149=Fuel level sensor lost;150=Init failed;151=Watchdog;152=Out: winding;153=Out: exhaust;154=Out: Cyl. head;155=Inverter over temperature;156=Inverter overload;157=Inverter communication lost;158=Inverter sync failed;159=CAN communication lost;160=L1 overload;161=L2 overload;162=L3 overload;163=DC overload;164=DC overvoltage;165=Emergency stop;166=No connection";9
 410;4;3215;U16;;Auto start;;100.000000;0.000000;"0=Disabled;1=Enabled";4
-411;4;3216;U16;;Engine load;;100.000000;0.000000;'%;4
+411;4;3216;U16;;Engine load;;100.000000;0.000000;%;4
 412;4;3217;U16;;Engine speed;;100.000000;0.000000;RPM;4
 413;4;3218;U16;;Engine operating hours;;100.000000;0.000000;s;4
 414;4;3219;I16;;Engine coolant temperature;;0.100000;0.000000;Degrees celsius;4
@@ -423,7 +423,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 422;4;3303;U16;;Temperature type;;100.000000;0.000000;"0=Battery;1=Fridge;2=Generic";4
 423;4;3304;I16;;Temperature;;0.010000;0.000000;Degrees celsius;4
 424;4;3305;U16;;Temperature status;;100.000000;0.000000;"0=OK;1=Disconnected;2=Short circuited;3=Reverse Polarity;4=Unknown";9
-425;4;3306;U16;;Humidity;;0.100000;0.000000;'%;4
+425;4;3306;U16;;Humidity;;0.100000;0.000000;%;4
 426;4;3307;U16;;Sensor battery voltage;;0.010000;0.000000;V;4
 427;4;3308;U16;;Atmospheric pressure;;100.000000;0.000000;hPa;4
 428;4;3400;U32;;Aggregate (measured value);;100.000000;0.000000;m3;4
@@ -497,7 +497,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 496;4;4113;U16;;Alternator error code;;100.000000;0.000000;"12=High battery temperature;13=High battery voltage;14=Low battery voltage;15=VBat exceeds $CPB;21=High alternator temperature;22=Alternator overspeed;24=Internal error;41=High field FET temperature;42=Sensor missing;43=Low VAlt;44=High Voltage offset;45=VAlt exceeds $CPB;51-52=Battery disconnect request;53=Battery instance out of range;54=Too many BMSes;55=AEBus fault;56=Too many Victron devices;58-61=Battery requested disconnection;91=BMS lost;92=Forced idle;201=DCDC converter fail;201-207=DCDC error";9
 497;4;4114;U16;;Engine speed;;100.000000;0.000000;RPM;4
 498;4;4115;U16;;Alternator speed;;100.000000;0.000000;RPM;4
-499;4;4116;U16;;Percentage field drive;;100.000000;0.000000;'%;4
+499;4;4116;U16;;Percentage field drive;;100.000000;0.000000;%;4
 500;4;4200;U16;;Battery voltage;;0.010000;0.000000;V DC;4
 501;4;4201;I16;;Battery current;;0.100000;0.000000;A;4
 502;4;4202;U16;;Auxiliary voltage;;0.010000;0.000000;V DC;4
@@ -561,7 +561,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 560;4;4526;U16;;Battery voltage;;0.010000;0.000000;V DC;4
 561;4;4527;I16;;Battery current;;0.100000;0.000000;A DC;4
 562;4;4528;I16;;Battery temperature;;0.100000;0.000000;Degrees celsius;4
-563;4;4529;U16;;Battery State of Charge;;0.100000;0.000000;'%;4
+563;4;4529;U16;;Battery State of Charge;;0.100000;0.000000;%;4
 564;4;4530;U16;;Inverter/Charger state;;100.000000;0.000000;"0=Off;1=Low Power;2=Fault;3=Bulk;4=Absorption;5=Float;6=Storage;7=Equalize;8=Passthru;9=Inverting;10=Power assist;11=Power supply;252=External control";4
 565;4;4531;U16;;Switch position;;100.000000;0.000000;"1=Charger Only;2=Inverter Only;3=On;4=Off";4
 566;4;4532;U16;;Temperature alarm;;100.000000;0.000000;"0=Ok;1=Warning;2=Alarm";9

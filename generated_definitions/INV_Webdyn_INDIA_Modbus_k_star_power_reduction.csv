@@ -1,4 +1,4 @@
-modbusRTU;Inverter;k_star;Inv
+﻿modbusRTU;Inverter;k_star;Inv;;;;;;;
 1;4;3000;U16;;PV1 input voltage;;1.000000;0.000000;;4
 2;4;3001;U16;;PV2 input voltage;;1.000000;0.000000;;4
 3;4;3002;U16;;PV3 input voltage;;1.000000;0.000000;;4

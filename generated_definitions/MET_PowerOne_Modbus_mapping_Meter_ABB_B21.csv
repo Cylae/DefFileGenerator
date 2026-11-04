@@ -1,4 +1,4 @@
-modbusRTU;Meter;PowerOne;Modbus mapping Meter ABB B21;;;;;;;
+﻿modbusRTU;Meter;PowerOne;Modbus mapping Meter ABB B21;;;;;;;
 1;3;23296;U16;;Voltage;;0.100000;0.000000;V;4
 2;3;23298;U16;;Voltage;;0.100000;0.000000;V;4
 3;3;23300;U16;;Voltage;;0.100000;0.000000;V;4

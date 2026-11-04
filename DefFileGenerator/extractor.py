@@ -1847,7 +1847,7 @@ def main() -> None:
 
     mapping = {}
     if args.mapping:
-        with open(args.mapping) as f:
+        with open(args.mapping, encoding="utf-8") as f:
             mapping = json.load(f)
     extractor = Extractor(mapping)
     ext = os.path.splitext(args.input_file)[1].lower()

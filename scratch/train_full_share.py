@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""
+r"""
 Full Dataset Knowledge Mining and Verification Script.
 Mines \\WDN-FILES.WEBDYN.COM\Support\Equipementiers
-"""
+r"""
 
 import csv
 import json

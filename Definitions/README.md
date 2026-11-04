@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **125 fichiers de définition** validés couvrant **18 127 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **129 fichiers de définition** validés couvrant **21 827 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -10,6 +10,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 |-----------|---------|----------|-----------------|------------------------|
 | Onduleurs & Convertisseurs (Inverters) | `INV_` | 66 | 13 936 | ABB, CyberPower, EFACEC, GoodWe, Goodwe (+21) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 31 | 3 394 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+14) |
+| Systèmes de Stockage BESS (Batteries) | `BAT_` | 4 | 3 700 | Dyness |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
 | Passerelles & Loggers de Communication | `COM_` | 2 | 142 | GoodWe, Huawei |
 | Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 5 | 209 | ICPDAS, SIEBERT, Webdyn |
@@ -24,6 +25,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 ```
 - `INV_` : Onduleurs solaires, hybrides et industriels (*Inverters*)
 - `MET_` : Compteurs d'énergie et analyseurs de réseau (*Meters*)
+- `BAT_` : Systèmes de stockage d'énergie et batteries BESS (*Battery*)
 - `SEN_` : Capteurs météo, pyranomètres et sondes thermiques (*Sensors*)
 - `COM_` : Loggers, concentrateurs et passerelles de données (*Loggers*)
 - `OTH_` : Modules d'entrées/sorties (Sens'IO), afficheurs et bornes (*Other*)
@@ -138,6 +140,15 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`MET_Socomec_Diris_I30.csv`](./MET_Socomec_Diris_I30.csv) | Socomec | Diris_I30 | Modbus | 20 |
 | [`MET_SOCOMEC_E33_E43.csv`](./MET_SOCOMEC_E33_E43.csv) | SOCOMEC | E33_E43 | Modbus | 73 |
 | [`MET_Weidmuller_610.csv`](./MET_Weidmuller_610.csv) | Weidmuller | 610 | Modbus | 122 |
+
+### Systèmes de Stockage BESS (Batteries) (4 fichiers)
+
+| Fichier | Constructeur | Modèle | Protocole | Registres |
+|---------|--------------|--------|-----------|-----------|
+| [`BAT_Dyness_DH100F.csv`](./BAT_Dyness_DH100F.csv) | Dyness | DH100F | Modbus | 913 |
+| [`BAT_Dyness_DH200F.csv`](./BAT_Dyness_DH200F.csv) | Dyness | DH200F | Modbus | 913 |
+| [`BAT_Dyness_DH200Y.csv`](./BAT_Dyness_DH200Y.csv) | Dyness | DH200Y | Modbus | 912 |
+| [`BAT_Dyness_DH_Series_Generic.csv`](./BAT_Dyness_DH_Series_Generic.csv) | Dyness | DH_Series_Generic | Modbus | 962 |
 
 ### Capteurs & Pyranomètres (Sensors) (21 fichiers)
 

@@ -1,14 +1,14 @@
-Modbus;Inverter;FoxESS;P3 Pro / H3 Pro;;;;;;;
-1;3;30016_32;String;;SN;SERIAL;1.000000;0.000000;;4
-2;3;30000_32;String;;Model name;MODEL;1.000000;0.000000;;4
-3;3;30032_32;String;;MFG ID;MANUFACTURER;1.000000;0.000000;;4
+﻿Modbus;Inverter;FoxESS;P3 Pro / H3 Pro;;;;;;;
+1;3;30016_32;STRING;;SN;SERIAL;1.000000;0.000000;;4
+2;3;30000_32;STRING;;Model name;MODEL;1.000000;0.000000;;4
+3;3;30032_32;STRING;;MFG ID;MANUFACTURER;1.000000;0.000000;;4
 4;3;36001;U16;;Master Version;;1.000000;0.000000;;4
 5;3;36002;U16;;Slave Version;;1.000000;0.000000;;4
 6;3;36003;U16;;Manager Version;;1.000000;0.000000;;4
 7;3;39000;U32;;Protocol Version;;1.000000;0.000000;;4
-8;3;39002_32;String;;Model name_2;;1.000000;0.000000;;4
-9;3;39018_32;String;;SN_2;;1.000000;0.000000;;4
-10;3;39034_32;String;;PN;;1.000000;0.000000;;4
+8;3;39002_32;STRING;;Model name_2;;1.000000;0.000000;;4
+9;3;39018_32;STRING;;SN_2;;1.000000;0.000000;;4
+10;3;39034_32;STRING;;PN;;1.000000;0.000000;;4
 11;3;39050;U16;;Model ID;;1.000000;0.000000;;4
 12;3;39051;U16;;Number of strings;;1.000000;0.000000;;4
 13;3;39052;U16;;Number of MPPTs;;1.000000;0.000000;;4
@@ -17,30 +17,30 @@ Modbus;Inverter;FoxESS;P3 Pro / H3 Pro;;;;;;;
 16;3;39057;I32;;Maximum apparent value (Smax);;0.001000;0.000000;kVA;4
 17;3;39059;I32;;Maximum reactive power (Qmax, fed into the grid);Q_AC;0.001000;0.000000;kVar;4
 18;3;39061;I32;;Maximum reactive power (Qmax, absorbed from the grid);;0.001000;0.000000;kVar;4
-19;3;39063_0_1;Bits;;Standby status;;1.000000;0.000000;;4
-20;3;39063_0_16;Bits;;Status 1;;1.000000;0.000000;;4
-21;3;39063_2_1;Bits;;Operation status;;1.000000;0.000000;;4
-22;3;39063_6_1;Bits;;Fault status;;1.000000;0.000000;;4
-23;3;39065_0_1;Bits;;Off-grid status;;1.000000;0.000000;;4
-24;3;39065_0_16;Bits;;Status 3;;1.000000;0.000000;;4
-25;3;39067_0_1;Bits;;Input string voltage is high;;1.000000;0.000000;;4
-26;3;39067_0_16;Bits;;Alarm 1;;1.000000;0.000000;;4
-27;3;39067_11_1;Bits;;Abnormal power grid frequency;FREQ;1.000000;0.000000;;4
-28;3;39067_14_1;Bits;;Output overcurrent;;1.000000;0.000000;;4
-29;3;39067_15_1;Bits;;The DC component of the output current is too large;I_DC;1.000000;0.000000;;4
-30;3;39067_1_1;Bits;;DC arc fault;;1.000000;0.000000;;4
-31;3;39067_2_1;Bits;;String reverse connection;;1.000000;0.000000;;4
-32;3;39067_7_1;Bits;;Grid power outage;;1.000000;0.000000;;4
-33;3;39067_8_1;Bits;;Abnormal power grid voltage;;1.000000;0.000000;;4
-34;3;39068_0_1;Bits;;Abnormal residual current;;1.000000;0.000000;;4
-35;3;39068_0_16;Bits;;Alarm 2;;1.000000;0.000000;;4
-36;3;39068_10_1;Bits;;Isolated island;;1.000000;0.000000;;4
-37;3;39068_14_1;Bits;;Off-grid output overload;;1.000000;0.000000;;4
-38;3;39068_1_1;Bits;;System grounding abnormality;;1.000000;0.000000;;4
-39;3;39068_2_1;Bits;;Low insulation resistance;R_ISO;1.000000;0.000000;;4
-40;3;39068_3_1;Bits;;Temperature is too high;;1.000000;0.000000;;4
-41;3;39069_0_16;Bits;;Alarm 3;;1.000000;0.000000;;4
-42;3;39069_3_1;Bits;;External fan abnormality;;1.000000;0.000000;;4
+19;3;39063_0_1;BITS;;Standby status;;1.000000;0.000000;;4
+20;3;39063_0_16;BITS;;Status 1;;1.000000;0.000000;;4
+21;3;39063_2_1;BITS;;Operation status;;1.000000;0.000000;;4
+22;3;39063_6_1;BITS;;Fault status;;1.000000;0.000000;;4
+23;3;39065_0_1;BITS;;Off-grid status;;1.000000;0.000000;;4
+24;3;39065_0_16;BITS;;Status 3;;1.000000;0.000000;;4
+25;3;39067_0_1;BITS;;Input string voltage is high;;1.000000;0.000000;;4
+26;3;39067_0_16;BITS;;Alarm 1;;1.000000;0.000000;;4
+27;3;39067_11_1;BITS;;Abnormal power grid frequency;FREQ;1.000000;0.000000;;4
+28;3;39067_14_1;BITS;;Output overcurrent;;1.000000;0.000000;;4
+29;3;39067_15_1;BITS;;The DC component of the output current is too large;I_DC;1.000000;0.000000;;4
+30;3;39067_1_1;BITS;;DC arc fault;;1.000000;0.000000;;4
+31;3;39067_2_1;BITS;;String reverse connection;;1.000000;0.000000;;4
+32;3;39067_7_1;BITS;;Grid power outage;;1.000000;0.000000;;4
+33;3;39067_8_1;BITS;;Abnormal power grid voltage;;1.000000;0.000000;;4
+34;3;39068_0_1;BITS;;Abnormal residual current;;1.000000;0.000000;;4
+35;3;39068_0_16;BITS;;Alarm 2;;1.000000;0.000000;;4
+36;3;39068_10_1;BITS;;Isolated island;;1.000000;0.000000;;4
+37;3;39068_14_1;BITS;;Off-grid output overload;;1.000000;0.000000;;4
+38;3;39068_1_1;BITS;;System grounding abnormality;;1.000000;0.000000;;4
+39;3;39068_2_1;BITS;;Low insulation resistance;R_ISO;1.000000;0.000000;;4
+40;3;39068_3_1;BITS;;Temperature is too high;;1.000000;0.000000;;4
+41;3;39069_0_16;BITS;;Alarm 3;;1.000000;0.000000;;4
+42;3;39069_3_1;BITS;;External fan abnormality;;1.000000;0.000000;;4
 43;3;39070;I16;;PV1 voltage;U_DC_MPPT_1;0.100000;0.000000;V;4
 44;3;39071;I16;;PV1 current;I_DC_MPPT_1;0.010000;0.000000;A;4
 45;3;39072;I16;;PV2 voltage;U_DC_MPPT_2;0.100000;0.000000;V;4
@@ -232,11 +232,11 @@ Modbus;Inverter;FoxESS;P3 Pro / H3 Pro;;;;;;;
 231;3;39603;U32;;Total PV power today;;0.010000;0.000000;kWh;4
 232;3;39621;U32;;Output total power;;0.010000;0.000000;kWh;4
 233;3;39623;U32;;Total power output today;;0.010000;0.000000;kWh;4
-234;3;46001_0_1;Bits;;Remote control enabled;;1.000000;0.000000;;4
-235;3;46001_0_16;Bits;;Remote Control;;1.000000;0.000000;;1
-236;3;46001_1_1;Bits;;Remote control positive direction;;1.000000;0.000000;;4
-237;3;46001_2_2;Bits;;Remote control target;;1.000000;0.000000;;4
-238;3;46001_9_1;Bits;;Remote control PV enabled;;1.000000;0.000000;;4
+234;3;46001_0_1;BITS;;Remote control enabled;;1.000000;0.000000;;4
+235;3;46001_0_16;BITS;;Remote Control;;1.000000;0.000000;;1
+236;3;46001_1_1;BITS;;Remote control positive direction;;1.000000;0.000000;;4
+237;3;46001_2_2;BITS;;Remote control target;;1.000000;0.000000;;4
+238;3;46001_9_1;BITS;;Remote control PV enabled;;1.000000;0.000000;;4
 239;3;46002;U16;;Remote Timeout Set;;1.000000;0.000000;s;1
 240;3;46003;I32;;Remote Control Active Power Command;CMD_P_AC_SET_ABS;1.000000;0.000000;W;1
 241;3;46005;I32;;Remote Control Reactive Power Command;CMD_Q_AC_SET_ABS;1.000000;0.000000;Var;1

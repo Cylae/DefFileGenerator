@@ -1,4 +1,4 @@
-modbusRTU;Other;SMA;STP-X_STP_xx-50_Sunspec_Modbus;;;;;;;
+﻿modbusRTU;Other;SMA;STP-X_STP_xx-50_Sunspec_Modbus;;;;;;;
 1;3;40002;U16;;ID;;1.000000;0.000000;;4
 2;3;40003;U16;;L;;1.000000;0.000000;;4
 3;3;40004_16;STRING;;Mn;MANUFACTURER;1.000000;0.000000;;4

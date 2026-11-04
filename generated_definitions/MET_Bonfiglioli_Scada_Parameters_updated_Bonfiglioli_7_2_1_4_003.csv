@@ -1,4 +1,4 @@
-modbusRTU;Meter;Bonfiglioli;Scada Parameters updated_Bonfi;;;;;;;
+﻿modbusRTU;Meter;Bonfiglioli;Scada Parameters updated_Bonfi;;;;;;;
 1;3;3841;U16;;213;;1.000000;0.000000;;4
 2;3;3842;U16;;222;;1.000000;0.000000;;4
 3;3;3843;U16;;255;;1.000000;0.000000;;4

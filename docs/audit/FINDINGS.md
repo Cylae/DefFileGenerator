@@ -167,3 +167,22 @@
   2. Inserted workspace root into `sys.path` across `generate_mars_definitions.py`, `generate_webdyn_def.py`, `doc_to_webdyn.py`, `scratch/run_full_documentation_battery.py`, and `scratch/train_full_share.py`.
   3. Applied `resolve_equipment_path` and `get_equipementiers_dir` to resolve all 33 manufacturer documentation files seamlessly (100% success rate: 33/33 on full documentation battery).
 - **Status**: RESOLVED
+
+### FIND-017: Deep Definition Audit Discrepancies and Full-Repository Standardization
+- **Severity**: HIGH
+- **Component**: Definition Generation & Storage Subsystems (`generated_definitions/`, `Definitions/`, `tagged_definitions/`, `FoxESS_P3_H3_Pro_Definitions/`)
+- **Trigger**: Full-scale ground-up audit of all 2,344 generated and library definition CSV files across the workspace.
+- **Root Cause**:
+  1. 262 definition files in `generated_definitions/` and 123 historical reference files in `Definitions/` contained headers truncated to 4 or 5 columns instead of the required 11 columns (`modbusRTU;Category;Manufacturer;Model;;;;;;;`).
+  2. 37,023 rows across generated definitions had non-sequential index numbers due to post-extraction row filtering/deduplication without 1-based sequential re-indexing.
+  3. Modbus write function codes `5` (Write Single Coil) and `6` (Write Single Register) were present as raw numbers in `Info1` in certain SMA and Socomec definitions rather than being canonicalized to `Info1=1` / `Info1=3` with `Action=1`.
+  4. European dot-as-thousand formatting (`1.000.000`) and space separators (`1 000 000`) caused non-numeric CoefA/CoefB values in 3 files.
+  5. The generic CSV injection sanitizer escaped standalone percentage units (`%`, `%RH`) into `'%` and `'%RH`.
+  6. Non-production draft artifacts (`_work.csv`, `_test.csv`) lingered in `generated_definitions/`.
+- **Remediation**:
+  1. Standardized all 125 reference definitions in `Definitions/` with 11-column headers and 1-based sequential indices.
+  2. Fixed and normalized function codes 5/6 in `tagged_definitions/`.
+  3. Built and executed `scratch/meticulous_audit_and_repair_generated.py` across `generated_definitions/`: purged draft files, normalized all headers to 11 columns, re-indexed all rows sequentially 1..N, normalized all data types, finite float coefficients, and canonical Webdyn function codes.
+  4. Updated `def_gen.py` to preserve standalone `%` and `%RH` units safely without escaping.
+  5. Verified 100.0% validity across all 2,344 definition files (843 in `generated_definitions`, 30 in `FoxESS_P3_H3_Pro_Definitions`, 1,346 in `tagged_definitions`, 125 in `Definitions/`) covering 750,577 Modbus registers with 0 errors.
+- **Status**: RESOLVED

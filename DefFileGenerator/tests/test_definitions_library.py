@@ -24,9 +24,10 @@ EXPECTED_PREFIX_MAP = {
     "Logger": "COM",
     "Io": "OTH",
     "Display": "OTH",
+    "Battery": "BAT",
 }
 
-VALID_PREFIXES = {"INV", "MET", "SEN", "COM", "OTH"}
+VALID_PREFIXES = {"INV", "MET", "SEN", "COM", "OTH", "BAT"}
 
 
 class TestDefinitionsLibrary(unittest.TestCase):

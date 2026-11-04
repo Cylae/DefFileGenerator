@@ -1,30 +1,30 @@
-modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
+﻿modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
 1;3;0;F32;;Input Voltage;;1.000000;0.000000;Vrms;4
-2;3;1;U16;;;;1.000000;0.000000;;1
+2;3;1;U16;;Register_1;;1.000000;0.000000;;1
 3;3;2;F32;;Input Current;;1.000000;0.000000;Arms;4
-4;3;3;U16;;;;1.000000;0.000000;;1
+4;3;3;U16;;Register_3;;1.000000;0.000000;;1
 5;3;4;F32;;Input power;P_DC;1.000000;0.000000;KW;4
-6;3;5;U16;;;;1.000000;0.000000;;1
+6;3;5;U16;;Register_5;;1.000000;0.000000;;1
 7;3;6;F32;;Grid Voltage;;1.000000;0.000000;Vrms;4
-8;3;7;U16;;;;1.000000;0.000000;;1
-9;3;8;F32;;;;1.000000;0.000000;Vrms;1
-10;3;9;U16;;;;1.000000;0.000000;;1
-11;3;10;F32;;;;1.000000;0.000000;Vrms;1
-12;3;11;U16;;;;1.000000;0.000000;;1
+8;3;7;U16;;Register_7;;1.000000;0.000000;;1
+9;3;8;F32;;Register_8;;1.000000;0.000000;Vrms;1
+10;3;9;U16;;Register_9;;1.000000;0.000000;;1
+11;3;10;F32;;Register_10;;1.000000;0.000000;Vrms;1
+12;3;11;U16;;Register_11;;1.000000;0.000000;;1
 13;3;12;F32;;Output grid current;;1.000000;0.000000;Arms;4
-14;3;13;U16;;;;1.000000;0.000000;;1
-15;3;14;F32;;;;1.000000;0.000000;Arms;1
-16;3;15;U16;;;;1.000000;0.000000;;1
-17;3;16;F32;;;;1.000000;0.000000;Arms;1
-18;3;17;U16;;;;1.000000;0.000000;;1
+14;3;13;U16;;Register_13;;1.000000;0.000000;;1
+15;3;14;F32;;Register_14;;1.000000;0.000000;Arms;1
+16;3;15;U16;;Register_15;;1.000000;0.000000;;1
+17;3;16;F32;;Register_16;;1.000000;0.000000;Arms;1
+18;3;17;U16;;Register_17;;1.000000;0.000000;;1
 19;3;18;F32;;Output active power;P_AC;1.000000;0.000000;KW;4
-20;3;19;U16;;;;1.000000;0.000000;;1
+20;3;19;U16;;Register_19;;1.000000;0.000000;;1
 21;3;20;F32;;Power Factor;PF;1.000000;0.000000;'-;4
-22;3;21;U16;;;;1.000000;0.000000;;1
+22;3;21;U16;;Register_21;;1.000000;0.000000;;1
 23;3;22;F32;;Power Electronic Temperature;;1.000000;0.000000;ºC;4
-24;3;23;U16;;;;1.000000;0.000000;;1
+24;3;23;U16;;Register_23;;1.000000;0.000000;;1
 25;3;24;F32;;Grid Frecuency;;1.000000;0.000000;Hz;4
-26;3;25;U16;;;;1.000000;0.000000;;1
+26;3;25;U16;;Register_25;;1.000000;0.000000;;1
 27;3;26;U16;;Not Used;;1.000000;0.000000;'-;4
 28;3;27;U16;;Not Used;;1.000000;0.000000;'-;4
 29;3;28;U16;;Not Used;;1.000000;0.000000;'-;4
@@ -34,15 +34,15 @@ modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
 33;3;32;U16;;Not Used;;1.000000;0.000000;'-;4
 34;3;33;U16;;Not Used;;1.000000;0.000000;'-;4
 35;3;34;F32;;Estimated active power counter;;1.000000;0.000000;kWh;4
-36;3;35;U16;;;;1.000000;0.000000;;1
+36;3;35;U16;;Register_35;;1.000000;0.000000;;1
 37;3;36;F32;;Estimated reactive power counter;;1.000000;0.000000;kVArh;4
-38;3;37;U16;;;;1.000000;0.000000;;1
+38;3;37;U16;;Register_37;;1.000000;0.000000;;1
 39;3;38;I16;;Cosine reference for reactive power control escaled by 100;;100.000000;0.000000;'-;4
 40;3;39;U16;;Inverter halted;;1.000000;0.000000;'-;4
 41;3;40;U32;;Inverter Error code 1;;1.000000;0.000000;See Errors table;9
-42;3;41;U16;;;;1.000000;0.000000;;1
+42;3;41;U16;;Register_41;;1.000000;0.000000;;1
 43;3;42;U32;;Inverter Error code 2;;1.000000;0.000000;See Errors table;9
-44;3;43;U16;;;;1.000000;0.000000;;1
+44;3;43;U16;;Register_43;;1.000000;0.000000;;1
 45;3;44;U16;;Inverter command:;;1.000000;0.000000;See Commands table;4
 46;3;45;U16;;Summer Start Day;;1.000000;0.000000;[1,31];4
 47;3;46;U16;;Summer Start Month;;1.000000;0.000000;[1,12];4
@@ -117,17 +117,17 @@ modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
 116;3;130;I16;;Phase S Reactive Power;;10.000000;0.000000;KVAR;4
 117;3;131;I16;;Phase T Reactive Power;;10.000000;0.000000;KVAR;4
 118;3;138;U32;;Estimated produced active power counter;;10.000000;0.000000;KWh;4
-119;3;139;U16;;;;1.000000;0.000000;;1
+119;3;139;U16;;Register_139;;1.000000;0.000000;;1
 120;3;140;U32;;Estimated produced capacitive  power counter;;10.000000;0.000000;KVArh;4
-121;3;141;U16;;;;1.000000;0.000000;;1
+121;3;141;U16;;Register_141;;1.000000;0.000000;;1
 122;3;142;U32;;Estimated produced inductive power counter;;10.000000;0.000000;KVArh;4
-123;3;143;U16;;;;1.000000;0.000000;;1
+123;3;143;U16;;Register_143;;1.000000;0.000000;;1
 124;3;144;U32;;Estimated consumed active power counter;;10.000000;0.000000;KWh;4
-125;3;145;U16;;;;1.000000;0.000000;;1
+125;3;145;U16;;Register_145;;1.000000;0.000000;;1
 126;3;146;U32;;Estimated consumed capacitive  power counter;;10.000000;0.000000;KVArh;4
-127;3;147;U16;;;;1.000000;0.000000;;1
+127;3;147;U16;;Register_147;;1.000000;0.000000;;1
 128;3;148;U32;;Estimated consumed inductive power counter;;10.000000;0.000000;KVArh;4
-129;3;149;U16;;;;1.000000;0.000000;;1
+129;3;149;U16;;Register_149;;1.000000;0.000000;;1
 130;3;156;U16;;Inverter Status;;1.000000;0.000000;See Inverter Status table;9
 131;3;157;U16;;DSP Digital I/O Status;;1.000000;0.000000;Debugger only;9
 132;3;158;U16;;DSP Digital I/O Status;;1.000000;0.000000;Debugger only;9
@@ -136,21 +136,21 @@ modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
 135;3;161;U16;;Internal DSP Reactive control mode;;1.000000;0.000000;Debugger only;4
 136;3;162;U16;;Internal DSP Reactive control mode;;1.000000;0.000000;Debugger only;4
 137;3;169;U32;;Inverter Error code 1;;1.000000;0.000000;See Errors table;9
-138;3;170;U16;;;;1.000000;0.000000;;1
+138;3;170;U16;;Register_170;;1.000000;0.000000;;1
 139;3;171;U32;;Inverter Error code 2;;1.000000;0.000000;See Errors table;9
-140;3;172;U16;;;;1.000000;0.000000;;1
+140;3;172;U16;;Register_172;;1.000000;0.000000;;1
 141;3;177;U32;;Interver Alarms code;;1.000000;0.000000;See Alarms table;9
-142;3;178;U16;;;;1.000000;0.000000;;1
+142;3;178;U16;;Register_178;;1.000000;0.000000;;1
 143;3;179;U32;;Inverter Alarms code;;1.000000;0.000000;Not Used;9
-144;3;180;U16;;;;1.000000;0.000000;;1
+144;3;180;U16;;Register_180;;1.000000;0.000000;;1
 145;3;185;I16;;Grid frecuency;;100.000000;0.000000;;4
 146;3;186;I16;;Inverter efficiency;;1000.000000;0.000000;;4
 147;3;187;I16;;Power Electronic Temperature;;100.000000;0.000000;[100*temp] ºC;4
-148;3;188;I16;;Phase R current overload;;100.000000;0.000000;'%;4
-149;3;189;I16;;Phase S current overload;;100.000000;0.000000;'%;4
+148;3;188;I16;;Phase R current overload;;100.000000;0.000000;%;4
+149;3;189;I16;;Phase S current overload;;100.000000;0.000000;%;4
 150;3;190;I16;;Phase T current overload;;100.000000;0.000000;[100*Value] %;4
 151;3;191;U32;;Inverter start up timer after failure;;1.000000;0.000000;Seconds;9
-152;3;192;U16;;;;1.000000;0.000000;;1
+152;3;192;U16;;Register_192;;1.000000;0.000000;;1
 153;3;193;I16;;Not used;;1.000000;0.000000;'-;4
 154;3;194;I16;;Not used;;1.000000;0.000000;'-;4
 155;3;195;I16;;Internal DSP Reactive power reference;;10.000000;0.000000;'-;4
@@ -159,7 +159,7 @@ modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
 158;3;257;U16;;NTU Communications Protocol (Modbus RTU or Modbus TCP);;1.000000;0.000000;[(0) RTU,(1) TCP];4
 159;3;258;U16;;Commands to setup the modbus configuration;;1.000000;0.000000;See Modbus Commands table;4
 160;3;259;U32;;Modbus RTU Speed;;1.000000;0.000000;[9600, 19200,38400] bds;4
-161;3;260;U16;;;;1.000000;0.000000;;1
+161;3;260;U16;;Register_260;;1.000000;0.000000;;1
 162;3;261;U16;;Modbus RTU Data bits;;1.000000;0.000000;[7, 8] bits;4
 163;3;262;U16;;Modbus RTU parity;;1.000000;0.000000;[0 (None), 1 (odd), 2 (even) ];4
 164;3;263;U16;;Modbus RTU Stop Bits;;1.000000;0.000000;[1, 2];4

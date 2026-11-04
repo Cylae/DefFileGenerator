@@ -1,13 +1,13 @@
-modbus;Battery;MarsRenewable;LC;;;;;;;
-1;4;0;U16;;Measurement point version number;;1;0;;4
-2;4;1;U16;;PCS Number;;1;0;;4
-3;4;2;U16;;Bank Number;;1;0;;4
-4;4;3;U16;;Rack Number;;1;0;;4
-5;4;4;U16;;Meter Number;;1;0;;4
-6;3;0;U16;;EMS Working Mode;;1;0;;4
-7;3;1;I32;;	Remote Control Duration;;1;0;min;4
-8;3;3;U16;;Energy Storage Working Mode;;1;0;;4
-9;3;4;I32;;Energy Storage Active Power;;1;0;W;4
-10;3;6;I32;;Energy Storage Reactive Power;;1;0;Var;4
-11;3;8;U16;;	AC Voltage;;1;0;V;4
-12;3;9;U16;;AC Frequency;FREQ;0.01;0;Hz;4
+﻿modbus;Battery;MarsRenewable;LC;;;;;;;
+1;4;0;U16;;Measurement point version number;;1.000000;0.000000;;4
+2;4;1;U16;;PCS Number;;1.000000;0.000000;;4
+3;4;2;U16;;Bank Number;;1.000000;0.000000;;4
+4;4;3;U16;;Rack Number;;1.000000;0.000000;;4
+5;4;4;U16;;Meter Number;;1.000000;0.000000;;4
+6;3;0;U16;;EMS Working Mode;;1.000000;0.000000;;4
+7;3;1;I32;;Remote Control Duration;;1.000000;0.000000;min;4
+8;3;3;U16;;Energy Storage Working Mode;;1.000000;0.000000;;4
+9;3;4;I32;;Energy Storage Active Power;;1.000000;0.000000;W;4
+10;3;6;I32;;Energy Storage Reactive Power;;1.000000;0.000000;Var;4
+11;3;8;U16;;AC Voltage;;1.000000;0.000000;V;4
+12;3;9;U16;;AC Frequency;FREQ;0.010000;0.000000;Hz;4

@@ -27,7 +27,18 @@ REPO_ROOT = Path(__file__).resolve().parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-import openpyxl  # noqa: E402
+# Auto-locate virtual environment site-packages if run with system python in VS Code
+win_sp = REPO_ROOT / ".venv" / "Lib" / "site-packages"
+if win_sp.is_dir() and str(win_sp) not in sys.path:
+    sys.path.insert(0, str(win_sp))
+
+try:
+    import openpyxl  # noqa: E402
+except ModuleNotFoundError as exc:
+    raise ModuleNotFoundError(
+        "No module named 'openpyxl'. Please run this script with the virtual environment "
+        "(e.g. .venv\\Scripts\\python.exe) or install openpyxl via 'pip install openpyxl'."
+    ) from exc
 
 from DefFileGenerator.def_gen import Generator  # noqa: E402
 
@@ -602,14 +613,15 @@ def main(argv: list[str] | None = None) -> None:
 
     source_path = cli_args.source_xlsx
     if not os.path.isfile(source_path):
-        repo_data_path = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)),
-            "stress_test_data",
-            "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
-        )
-        if os.path.isfile(repo_data_path):
-            source_path = repo_data_path
-        else:
+        if cli_args.source_xlsx == "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx":
+            repo_data_path = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                "stress_test_data",
+                "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+            )
+            if os.path.isfile(repo_data_path):
+                source_path = repo_data_path
+        if not os.path.isfile(source_path):
             print(f"Error: Source workbook not found at: {cli_args.source_xlsx}", file=sys.stderr)
             print(
                 "Usage: python generate_mars_definitions.py <path_to_io_list.xlsx> [--out-dir <dir>]",

@@ -11,17 +11,31 @@ Strictly adheres to WebdynSunPM standard specification and user instructions:
 """
 
 import csv
-import os
 import sys
 from pathlib import Path
 from typing import Any
 
-# Ensure parent directory is in sys.path to support direct and debug executions
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# Ensure parent directory and .venv are in sys.path to support direct and debug executions
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-import openpyxl
+# Auto-locate virtual environment site-packages if run with system python in VS Code
+for candidate_dir in [REPO_ROOT, Path(__file__).resolve().parent]:
+    win_sp = candidate_dir / ".venv" / "Lib" / "site-packages"
+    if win_sp.is_dir() and str(win_sp) not in sys.path:
+        sys.path.insert(0, str(win_sp))
+        break
 
-from DefFileGenerator.def_gen import Generator
+try:
+    import openpyxl  # noqa: E402
+except ModuleNotFoundError as exc:
+    raise ModuleNotFoundError(
+        "No module named 'openpyxl'. Please run this script with the virtual environment "
+        "(e.g. .venv\\Scripts\\python.exe) or install openpyxl via 'pip install openpyxl'."
+    ) from exc
+
+from DefFileGenerator.def_gen import Generator  # noqa: E402
 
 
 def normalize_unit(unit_raw: Any) -> tuple[str, float]:

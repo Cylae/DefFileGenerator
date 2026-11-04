@@ -1,4 +1,4 @@
-modbusRTU;Other;SMA;CORE2_Sunspec_Modbus_Model_pre;;;;;;;
+﻿modbusRTU;Other;SMA;CORE2_Sunspec_Modbus_Model_pre;;;;;;;
 1;3;40003;U16;;ID;;1.000000;0.000000;;4
 2;3;40004;U16;;L;;1.000000;0.000000;;4
 3;3;40069;U16;;Device Address (DA);;1.000000;0.000000;;1

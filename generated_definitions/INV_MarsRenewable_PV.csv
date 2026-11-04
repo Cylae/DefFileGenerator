@@ -1,53 +1,53 @@
-modbus;Inverter;MarsRenewable;PV;;;;;;;
-1;4;25000;U16;;PV1 Operating Status [0=stopped, 1=running];;1;0;;4
-2;4;25002;F32;;PV1 AC Phase A Voltage;;1;0;V;4
-3;4;25004;F32;;PV1 AC Phase B Voltage;;1;0;V;4
-4;4;25006;F32;;PV1 AC Phase C Voltage;;1;0;V;4
-5;4;25008;F32;;PV1 AC Phase A Current;;1;0;A;4
-6;4;25010;F32;;PV1 AC Phase B Current;;1;0;A;4
-7;4;25012;F32;;PV1 AC Phase C Current;;1;0;A;4
-8;4;25014;F32;;PV1 AC Frequency;;1;0;Hz;4
-9;4;25016;F32;;PV1 Total AC Active Power;;1;0;W;4
-10;4;25018;F32;;PV1 Total AC Reactive Power;;1;0;Var;4
-11;4;25020;F32;;PV1 Total AC Apparent Power;;1;0;kVA;4
-12;4;25022;F32;;PV1 Total AC Power Factor;;1;0;;4
-13;4;25024;F32;;PV1 Phase A AC Active Power;;1;0;kW;4
-14;4;25026;F32;;PV1 Phase B AC Active Power;;1;0;kW;4
-15;4;25028;F32;;PV1 Phase C AC Active Power;;1;0;kW;4
-16;4;25030;F32;;PV1 Phase A AC Reactive Power;;1;0;kvar;4
-17;4;25032;F32;;PV1 Phase B AC Reactive Power;;1;0;kvar;4
-18;4;25034;F32;;PV1 Phase C AC Reactive Power;;1;0;kvar;4
-19;4;25036;F32;;PV1 Phase A AC Apparent Power;;1;0;kVA;4
-20;4;25038;F32;;PV1 Phase B AC Apparent Power;;1;0;kVA;4
-21;4;25040;F32;;PV1 Phase C AC Apparent Power;;1;0;kVA;4
-22;4;25042;F32;;PV1 Phase A AC Power Factor;;1;0;;4
-23;4;25044;F32;;PV1 Phase B AC Power Factor;;1;0;;4
-24;4;25046;F32;;PV1 Phase C AC Power Factor;;1;0;;4
-25;4;25048;F32;;PV1 IGBT Module Temperature;;1;0;C;4
-26;4;25050;F32;;PV1 Ambient Temperature;;1;0;C;4
-27;4;25052;F32;;PV1 Total AC Charging Energy;;1;0;kWh;4
-28;4;25054;F32;;PV1 Total AC Discharging Energy;;1;0;kWh;4
-29;4;25056;F32;;PV1 Daily AC Charging Energy;;1;0;kWh;4
-30;4;25058;F32;;PV1 Daily AC Discharging Energy;;1;0;kWh;4
-31;4;25060;U32;;PV1 Number of branches;;1;0;;1
-32;4;25062;F32;;PV1 Branch 1 DC Power;;1;0;kW;4
-33;4;25064;F32;;PV1 Branch 1 DC Voltage;;1;0;V;4
-34;4;25066;F32;;PV1 Branch 1 DC Current;;1;0;A;4
-35;4;25068;F32;;PV1 Branch 2 DC Power;;1;0;kW;4
-36;4;25070;F32;;PV1 Branch 2 DC Voltage;;1;0;V;4
-37;4;25072;F32;;PV1 Branch 2 DC Current;;1;0;A;4
-38;4;25074;F32;;PV1 Branch 3 DC Power;;1;0;kW;4
-39;4;25076;F32;;PV1 Branch 3 DC Voltage;;1;0;V;4
-40;4;25078;F32;;PV1 Branch 3 DC Current;;1;0;A;4
-41;4;25080;F32;;PV1 Branch 4 DC Power;;1;0;kW;4
-42;4;25082;F32;;PV1 Branch 4 DC Voltage;;1;0;V;4
-43;4;25084;F32;;PV1 Branch 4 DC Current;;1;0;A;4
-44;4;25086;F32;;PV1 Branch 5 DC Power;;1;0;kW;4
-45;4;25088;F32;;PV1 Branch 5 DC Voltage;;1;0;V;4
-46;4;25090;F32;;PV1 Branch 5 DC Current;;1;0;A;4
-47;4;25092;F32;;PV1 Branch 6 DC Power;;1;0;kW;4
-48;4;25094;F32;;PV1 Branch 6 DC Voltage;;1;0;V;4
-49;4;25096;F32;;PV1 Branch 6 DC Current;;1;0;A;4
-50;4;25100;U16;;PV2 Operating Status [0=stopped, 1=running];;1;0;;4
-51;4;25200;U16;;PV3 Operating Status [0=stopped, 1=running];;1;0;;4
-52;4;29900;U16;;PV50 Operating Status [0=stopped, 1=running];;1;0;;4
+﻿modbus;Inverter;MarsRenewable;PV;;;;;;;
+1;4;25000;U16;;PV1 Operating Status [0=stopped, 1=running];;1.000000;0.000000;;4
+2;4;25002;F32;;PV1 AC Phase A Voltage;;1.000000;0.000000;V;4
+3;4;25004;F32;;PV1 AC Phase B Voltage;;1.000000;0.000000;V;4
+4;4;25006;F32;;PV1 AC Phase C Voltage;;1.000000;0.000000;V;4
+5;4;25008;F32;;PV1 AC Phase A Current;;1.000000;0.000000;A;4
+6;4;25010;F32;;PV1 AC Phase B Current;;1.000000;0.000000;A;4
+7;4;25012;F32;;PV1 AC Phase C Current;;1.000000;0.000000;A;4
+8;4;25014;F32;;PV1 AC Frequency;;1.000000;0.000000;Hz;4
+9;4;25016;F32;;PV1 Total AC Active Power;;1.000000;0.000000;W;4
+10;4;25018;F32;;PV1 Total AC Reactive Power;;1.000000;0.000000;Var;4
+11;4;25020;F32;;PV1 Total AC Apparent Power;;1.000000;0.000000;kVA;4
+12;4;25022;F32;;PV1 Total AC Power Factor;;1.000000;0.000000;;4
+13;4;25024;F32;;PV1 Phase A AC Active Power;;1.000000;0.000000;kW;4
+14;4;25026;F32;;PV1 Phase B AC Active Power;;1.000000;0.000000;kW;4
+15;4;25028;F32;;PV1 Phase C AC Active Power;;1.000000;0.000000;kW;4
+16;4;25030;F32;;PV1 Phase A AC Reactive Power;;1.000000;0.000000;kvar;4
+17;4;25032;F32;;PV1 Phase B AC Reactive Power;;1.000000;0.000000;kvar;4
+18;4;25034;F32;;PV1 Phase C AC Reactive Power;;1.000000;0.000000;kvar;4
+19;4;25036;F32;;PV1 Phase A AC Apparent Power;;1.000000;0.000000;kVA;4
+20;4;25038;F32;;PV1 Phase B AC Apparent Power;;1.000000;0.000000;kVA;4
+21;4;25040;F32;;PV1 Phase C AC Apparent Power;;1.000000;0.000000;kVA;4
+22;4;25042;F32;;PV1 Phase A AC Power Factor;;1.000000;0.000000;;4
+23;4;25044;F32;;PV1 Phase B AC Power Factor;;1.000000;0.000000;;4
+24;4;25046;F32;;PV1 Phase C AC Power Factor;;1.000000;0.000000;;4
+25;4;25048;F32;;PV1 IGBT Module Temperature;;1.000000;0.000000;C;4
+26;4;25050;F32;;PV1 Ambient Temperature;;1.000000;0.000000;C;4
+27;4;25052;F32;;PV1 Total AC Charging Energy;;1.000000;0.000000;kWh;4
+28;4;25054;F32;;PV1 Total AC Discharging Energy;;1.000000;0.000000;kWh;4
+29;4;25056;F32;;PV1 Daily AC Charging Energy;;1.000000;0.000000;kWh;4
+30;4;25058;F32;;PV1 Daily AC Discharging Energy;;1.000000;0.000000;kWh;4
+31;4;25060;U32;;PV1 Number of branches;;1.000000;0.000000;;1
+32;4;25062;F32;;PV1 Branch 1 DC Power;;1.000000;0.000000;kW;4
+33;4;25064;F32;;PV1 Branch 1 DC Voltage;;1.000000;0.000000;V;4
+34;4;25066;F32;;PV1 Branch 1 DC Current;;1.000000;0.000000;A;4
+35;4;25068;F32;;PV1 Branch 2 DC Power;;1.000000;0.000000;kW;4
+36;4;25070;F32;;PV1 Branch 2 DC Voltage;;1.000000;0.000000;V;4
+37;4;25072;F32;;PV1 Branch 2 DC Current;;1.000000;0.000000;A;4
+38;4;25074;F32;;PV1 Branch 3 DC Power;;1.000000;0.000000;kW;4
+39;4;25076;F32;;PV1 Branch 3 DC Voltage;;1.000000;0.000000;V;4
+40;4;25078;F32;;PV1 Branch 3 DC Current;;1.000000;0.000000;A;4
+41;4;25080;F32;;PV1 Branch 4 DC Power;;1.000000;0.000000;kW;4
+42;4;25082;F32;;PV1 Branch 4 DC Voltage;;1.000000;0.000000;V;4
+43;4;25084;F32;;PV1 Branch 4 DC Current;;1.000000;0.000000;A;4
+44;4;25086;F32;;PV1 Branch 5 DC Power;;1.000000;0.000000;kW;4
+45;4;25088;F32;;PV1 Branch 5 DC Voltage;;1.000000;0.000000;V;4
+46;4;25090;F32;;PV1 Branch 5 DC Current;;1.000000;0.000000;A;4
+47;4;25092;F32;;PV1 Branch 6 DC Power;;1.000000;0.000000;kW;4
+48;4;25094;F32;;PV1 Branch 6 DC Voltage;;1.000000;0.000000;V;4
+49;4;25096;F32;;PV1 Branch 6 DC Current;;1.000000;0.000000;A;4
+50;4;25100;U16;;PV2 Operating Status [0=stopped, 1=running];;1.000000;0.000000;;4
+51;4;25200;U16;;PV3 Operating Status [0=stopped, 1=running];;1.000000;0.000000;;4
+52;4;29900;U16;;PV50 Operating Status [0=stopped, 1=running];;1.000000;0.000000;;4

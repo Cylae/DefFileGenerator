@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;TechniqueSolaire_INI_M70A;;;;;;;
+﻿modbusRTU;Other;Delta;TechniqueSolaire_INI_M70A;;;;;;;
 1;4;40002;U16;;ID;;1.000000;0.000000;;4
 2;4;40003;U16;;L;;1.000000;0.000000;;4
 3;4;40004;U16;;Manufacturer (Mn);MANUFACTURER;1.000000;0.000000;;4

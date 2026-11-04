@@ -25,6 +25,7 @@ stress_test_data/output*.csv
 stress_test_data/*.log
 torture_test/output*.csv
 benchmarks/results/
+scratch/
 
 # Editors and operating systems
 .vscode/

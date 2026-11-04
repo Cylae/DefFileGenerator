@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Solis;Generic
+﻿modbusRTU;Inverter;Solis;Generic;;;;;;;
 1;4;2999;U16;;Product model;MODEL;1.000000;0.000000;;4
 2;4;3000;U16;;DSP software version;;1.000000;0.000000;;4
 3;4;3001;U16;;LCD software version;;1.000000;0.000000;;4

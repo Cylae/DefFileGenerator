@@ -563,6 +563,8 @@ class Generator:
 
         # Neutralize spreadsheet formula prefix triggers
         if stripped[0] in _CSV_FORMULA_CHARS:
+            if stripped in ("%", "%RH"):
+                return s
             if "_" in stripped or "inf" in stripped.lower() or "nan" in stripped.lower():
                 return "'" + s
             try:

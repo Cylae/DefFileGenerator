@@ -1,4 +1,4 @@
-modbus;io;ADAM;6224;;;;;;;
+﻿modbus;io;ADAM;6224;;;;;;;
 1;1;0_0_1;BITS;;DI Value channel 0;;1.000000;0.000000;;4
 2;1;1_0_1;BITS;;DI Value channel 1;;1.000000;0.000000;;4
 3;1;2_0_1;BITS;;DI Value channel 2;;1.000000;0.000000;;4

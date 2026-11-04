@@ -1,4 +1,4 @@
-modbusRTU;Other;ZeverSolar;ZeverSolar;;;;;;;
+﻿modbusRTU;Other;ZeverSolar;ZeverSolar;;;;;;;
 1;4;1;U16;;Device Type;;1.000000;0.000000;;4
 2;4;2;U16;;Energy Information;;1.000000;0.000000;;4
 3;4;3;U16;;Device State;;1.000000;0.000000;;4

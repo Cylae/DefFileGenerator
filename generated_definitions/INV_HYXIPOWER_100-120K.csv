@@ -1,4 +1,4 @@
-modbus;Inverter;HYXIPOWER;100-120K;;;;;;;
+﻿modbus;Inverter;HYXIPOWER;100-120K;;;;;;;
 1;4;1;U16;;Lower Bits of Main DSP Program Version Number;;1.000000;0.000000;;4
 2;4;2;U16;;High-order Bits of Main DSP Program Version Number;;1.000000;0.000000;;4
 3;4;12;I16;;Ambient Temperature 1;;0.100000;0.000000;Celsius;4

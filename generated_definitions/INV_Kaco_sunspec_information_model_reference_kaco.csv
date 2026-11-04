@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Kaco;sunspec_information_model_refe;;;;;;;
+﻿modbusRTU;Inverter;Kaco;sunspec_information_model_refe;;;;;;;
 1;3;0;U16;;ID;;1.000000;0.000000;;4
 2;3;1;U16;;L;;1.000000;0.000000;;4
 3;3;2;U16;;VerMajor;;1.000000;0.000000;;4

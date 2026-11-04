@@ -89,7 +89,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     mapping = {}
     if args.mapping:
         try:
-            with open(args.mapping) as f:
+            with open(args.mapping, encoding="utf-8") as f:
                 mapping = json.load(f)
         except (OSError, ValueError) as e:
             logging.error(f"Error reading mapping file: {e}")

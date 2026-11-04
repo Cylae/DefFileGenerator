@@ -623,7 +623,18 @@ def infer_metadata_from_path(file_path: str) -> dict[str, str]:
     safe_mfg = re.sub(r"[^a-zA-Z0-9]", "", detected_mfg)
     safe_model = re.sub(r"[^a-zA-Z0-9_.]", "_", clean_model)
     dir_name = os.path.dirname(file_path) or os.getcwd()
-    suggested_filename = f"{category.upper()[:4]}_{safe_mfg}_{safe_model}.csv"
+    prefix_map = {
+        "Inverter": "INV",
+        "Meter": "MET",
+        "Sensor": "SEN",
+        "Battery": "BAT",
+        "Communication": "COM",
+        "Logger": "COM",
+        "Other": "OTH",
+        "Io": "OTH",
+    }
+    canonical_prefix = prefix_map.get(category, category.upper()[:3])
+    suggested_filename = f"{canonical_prefix}_{safe_mfg}_{safe_model}.csv"
     suggested_out_path = os.path.join(dir_name, suggested_filename)
 
     return {

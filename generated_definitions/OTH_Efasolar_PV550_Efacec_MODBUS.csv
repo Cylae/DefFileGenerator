@@ -1,4 +1,4 @@
-modbusRTU;Other;Efasolar;PV550_Efacec_MODBUS;;;;;;;
+﻿modbusRTU;Other;Efasolar;PV550_Efacec_MODBUS;;;;;;;
 1;4;0;U16;;Req_1;;1.000000;0.000000;;4
 2;4;2;U16;;Req_2;;1.000000;0.000000;;4
 3;4;4;U16;;Req_3;;1.000000;0.000000;;4

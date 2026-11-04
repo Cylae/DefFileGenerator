@@ -1,20 +1,20 @@
-modbus;Inverter;TMEIC;L1000E;1;;;;;;
-1;4;26;U32;;Active Energy;E_TOT;0.1;0.000000;kWh;4
-2;4;30;I16;;Active power P;;0.1;0.000000;kW;4
-3;4;31;I16;;Reactive power Q;;0.1;0.000000;kVAr;4
-4;4;32;I16;;Power factor;PF;0.01;0.000000;u;4
-5;4;33;I16;;Grid frequency;FREQ;0.1;0.000000;Hz;4
-6;4;34;I16;;Grid voltage UV;;0.1;0.000000;V;4
-7;4;35;I16;;Grid voltage VW;;0.1;0.000000;V;4
-8;4;36;I16;;Grid voltage WU;;0.1;0.000000;V;4
-9;4;37;I16;;Inverter output current U;;0.1;0.000000;A;4
-10;4;38;I16;;Inverter output current V;;0.1;0.000000;A;4
-11;4;39;I16;;Inverter output current W;;0.1;0.000000;A;4
-12;4;40;I16;;DC input power;;0.1;0.000000;kW;4
-13;4;41;I16;;DC input voltage;;0.1;0.000000;V;4
-14;4;42;I16;;DC input current;;0.1;0.000000;A;4
-15;4;43;I16;;Potential to ground PE;;0.1;0.000000;V;4
-16;4;44;I16;;Potential to ground EN;;0.1;0.000000;V;4
+﻿modbus;Inverter;TMEIC;L1000E;;;;;;;
+1;4;26;U32;;Active Energy;E_TOT;0.100000;0.000000;kWh;4
+2;4;30;I16;;Active power P;;0.100000;0.000000;kW;4
+3;4;31;I16;;Reactive power Q;;0.100000;0.000000;kVAr;4
+4;4;32;I16;;Power factor;PF;0.010000;0.000000;u;4
+5;4;33;I16;;Grid frequency;FREQ;0.100000;0.000000;Hz;4
+6;4;34;I16;;Grid voltage UV;;0.100000;0.000000;V;4
+7;4;35;I16;;Grid voltage VW;;0.100000;0.000000;V;4
+8;4;36;I16;;Grid voltage WU;;0.100000;0.000000;V;4
+9;4;37;I16;;Inverter output current U;;0.100000;0.000000;A;4
+10;4;38;I16;;Inverter output current V;;0.100000;0.000000;A;4
+11;4;39;I16;;Inverter output current W;;0.100000;0.000000;A;4
+12;4;40;I16;;DC input power;;0.100000;0.000000;kW;4
+13;4;41;I16;;DC input voltage;;0.100000;0.000000;V;4
+14;4;42;I16;;DC input current;;0.100000;0.000000;A;4
+15;4;43;I16;;Potential to ground PE;;0.100000;0.000000;V;4
+16;4;44;I16;;Potential to ground EN;;0.100000;0.000000;V;4
 17;4;0;I16;;Data status;;1.000000;0.000000;;4
 18;4;1;I32;;Time stamp (YYMMDD)1;;1.000000;0.000000;;4
 19;4;3;I32;;Time stamp (hhmmss)2;;1.000000;0.000000;;4
@@ -28,18 +28,18 @@ modbus;Inverter;TMEIC;L1000E;1;;;;;;
 27;4;20;U32;;Status bit 3 Word-5;;1.000000;0.000000;;8
 28;4;22;U32;;Status bit 3 Word-6;;1.000000;0.000000;;8
 29;4;24;U32;;Status bit 3 Word-7;;1.000000;0.000000;;8
-30;4;46;I16;;Cabinet temperature;TEMP_INT;0.1;0.000000;C;8
+30;4;46;I16;;Cabinet temperature;TEMP_INT;0.100000;0.000000;C;8
 31;4;47;U16;;Daily Active Energy Integrated;;1.000000;0.000000;kWh;8
 32;3;10001;U16;;P limit enable/disable;;1.000000;0.000000;;4
 33;3;10002;U16;;Active power P limit;;1.000000;0.000000;;4
-34;4;59;I16;;DC current 1;;0.1;0.000000;A;4
-35;4;60;I16;;DC current 2;;0.1;0.000000;A;4
-36;4;61;I16;;DC current 3;;0.1;0.000000;A;4
-37;4;62;I16;;DC current 4;;0.1;0.000000;A;4
-38;4;63;I16;;DC current 5;;0.1;0.000000;A;4
-39;4;64;I16;;DC current 6;;0.1;0.000000;A;4
-40;4;65;I16;;DC current 7;;0.1;0.000000;A;4
-41;4;66;I16;;DC current 8;;0.1;0.000000;A;4
+34;4;59;I16;;DC current 1;;0.100000;0.000000;A;4
+35;4;60;I16;;DC current 2;;0.100000;0.000000;A;4
+36;4;61;I16;;DC current 3;;0.100000;0.000000;A;4
+37;4;62;I16;;DC current 4;;0.100000;0.000000;A;4
+38;4;63;I16;;DC current 5;;0.100000;0.000000;A;4
+39;4;64;I16;;DC current 6;;0.100000;0.000000;A;4
+40;4;65;I16;;DC current 7;;0.100000;0.000000;A;4
+41;4;66;I16;;DC current 8;;0.100000;0.000000;A;4
 42;3;10000;U16;;Operation Command;;1.000000;0.000000;;4
 43;3;10003;U16;;Writing Read_1;;1.000000;0.000000;;4
 44;3;10004;U16;;Writing Read_2;;1.000000;0.000000;;4

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Solax;MIC-G2-PRO-G2;;;;;;;
+﻿modbusRTU;Inverter;Solax;MIC-G2-PRO-G2;;;;;;;
 1;4;1024;U16;;PV1 Input Voltage;;0.100000;0.000000;V;4
 2;4;1025;U16;;PV2 Input Voltage;;0.100000;0.000000;V;4
 3;4;1026;U16;;PV1 Input Current;;0.100000;0.000000;A;4

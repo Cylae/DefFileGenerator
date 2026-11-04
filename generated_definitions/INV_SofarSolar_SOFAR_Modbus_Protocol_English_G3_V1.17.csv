@@ -1,8 +1,8 @@
-modbusRTU;Inverter;SofarSolar;SOFAR_Modbus_Protocol_English_;;;;;;;
+﻿modbusRTU;Inverter;SofarSolar;SOFAR_Modbus_Protocol_English_;;;;;;;
 1;3;64;U64;;Mask area for the 64 register address words starting at this address. Each bit of this field corresponds to the validity of the 64 addresses in this field (each bit corresponds to a register address, including the address of this field). A corresponding bit of 0 means invalid, a 1 means valid. Example: 0x0000 0x0000 0x0000 0x001F means that the 0x0044 address function is valid, followed by the same meaning of the mask area and a merged treatment of the address interval, not listed separately.;;1.000000;0.000000;;4
-2;3;65;U16;;;;1.000000;0.000000;;1
-3;3;66;U16;;;;1.000000;0.000000;;1
-4;3;67;U16;;;;1.000000;0.000000;;1
+2;3;65;U16;;Register_65;;1.000000;0.000000;;1
+3;3;66;U16;;Register_66;;1.000000;0.000000;;1
+4;3;67;U16;;Register_67;;1.000000;0.000000;;1
 5;3;82;U16;;Version number of the protocol between ARM and DSPM. The high 8 bits correspond to the ARM-DSPM protocol version number. The lower 8 bits correspond to the DSPM-ARM protocol version number.;;1.000000;0.000000;;4
 6;3;83;U16;;Protocol version number between ARM and DSPS. The high 8 bits correspond to the ARM-DSPS protocol version number, the The lower 8 bits correspond to the DSPS-ARM protocol version number.;;1.000000;0.000000;;4
 7;3;84;U16;;Protocol version number between DSPM and DSPS. The high 8 bits correspond to the DSPM-DSPS protocol version number, the The lower 8 bits correspond to the DSPS-DSPM protocol version number.;;1.000000;0.000000;;4
@@ -49,8 +49,8 @@ modbusRTU;Inverter;SofarSolar;SOFAR_Modbus_Protocol_English_;;;;;;;
 48;3;1318;I16;;L2 load current RMS;;0.010000;0.000000;A;4
 49;3;1319;I16;;Load L2 to N active power;;0.010000;0.000000;kW;4
 50;3;1639;I16;;Total battery charging and discharging power. Charging is positive, discharging is negative;;0.100000;0.000000;kW;4
-51;3;1640;U16;;Average of total battery pack SOC;;1.000000;0.000000;'%;4
-52;3;1641;U16;;Aggregate battery pack SOH;;1.000000;0.000000;'%;4
+51;3;1640;U16;;Average of total battery pack SOC;;1.000000;0.000000;%;4
+52;3;1641;U16;;Aggregate battery pack SOH;;1.000000;0.000000;%;4
 53;3;2048;U16;;Waiting time before grid connection;;1.000000;0.000000;秒;1
 54;3;2049;U16;;100 indicates the rate corresponding to a 1-minute rise to full load, other values are multiplied and divided on this basis Note: Grid connection rise rate;;1.000000;0.000000;'%Pn/min;1
 55;3;2050;U16;;Waiting time before re-connecting to the grid after grid failure recovery;;1.000000;0.000000;秒;1
@@ -88,16 +88,16 @@ modbusRTU;Inverter;SofarSolar;SOFAR_Modbus_Protocol_English_;;;;;;;
 87;3;2194;U16;;Secondary underfrequency protection time high;;1.000000;0.000000;;1
 88;3;2195;U16;;Level 3 underfrequency protection time high;;1.000000;0.000000;;1
 89;3;2304;U16;;Bit0: Active down load enable bit Bit1: Remote switch-on/off enable bit Bit2: overvoltage down load enable bit Bit3: overvoltage charge down enable bit Bit4: Under-voltage charge-down power enable bit Bit5: DRM0 enable bit Bit6: Logic interface (DRM1-8) enable bit Bit7: Anti-backflow overload enable bit Bit8: Voltage drop-down PT curve enable bit Bit9: Remote shutdown down load enable bit (0: default direct shutdown, 1: ramp down load shutdown)                       Note: Enable is set to 1 for on, set to 0 for off;;1.000000;0.000000;;1
-90;3;2305;U16;;Active output percentage;;0.100000;0.000000;'%;1
+90;3;2305;U16;;Active output percentage;;0.100000;0.000000;%;1
 91;3;2306;U16;;Active load shedding rate;;1.000000;0.000000;'%Pn/min;1
 92;3;2307;U16;;Grid overvoltage load shedding start point;;0.100000;0.000000;V;1
 93;3;2308;U16;;Grid overvoltage derate cut-off point;;0.100000;0.000000;V;1
-94;3;2309;I16;;Grid over-voltage derating cut-off power;;1.000000;0.000000;'%;1
+94;3;2309;I16;;Grid over-voltage derating cut-off power;;1.000000;0.000000;%;1
 95;3;2310;U16;;Over-voltage derating rate;;1.000000;0.000000;'%Pn/min;1
 96;3;2311;U16;;Grid under-voltage load shedding start point;;0.100000;0.000000;V;1
 97;3;2312;U16;;Grid undervoltage cut-off point;;0.100000;0.000000;V;1
-98;3;2313;I16;;Grid undervoltage cut-off power;;1.000000;0.000000;'%;1
-99;3;2322;U16;;Anti-backflow power (VDE4105 safety regulation grid-connected power limit);;1.000000;0.000000;'%;1
+98;3;2313;I16;;Grid undervoltage cut-off power;;1.000000;0.000000;%;1
+99;3;2322;U16;;Anti-backflow power (VDE4105 safety regulation grid-connected power limit);;1.000000;0.000000;%;1
 100;3;2323;U16;;Anti-backflow overload time (VDE4105 safety regulation backflow overload off-grid time);;10.000000;0.000000;ms;1
 101;3;2324;U16;;Logical interface down load rate;;1.000000;0.000000;'%Pn/min;1
 102;3;2325;U16;;Logical interface return load rate;;1.000000;0.000000;'%Pn/min;1
@@ -128,22 +128,22 @@ modbusRTU;Inverter;SofarSolar;SOFAR_Modbus_Protocol_English_;;;;;;;
 127;3;2402;U16;;(energy storage) Underfrequency power down crossing frequency point. Valid when 0940 Bit6 is enabled.;;0.010000;0.000000;Hz;1
 128;3;2432;U16;;Bit0: Reactive enable Bit1-3: Reactive mode Bit8: Reactive mode three-voltage entry enable bit Bit9: Charge reactive enable Bit10: Reactive mode four Austrian enable bit Note: Reactive mode bits1-3 control the six reactive modes Note: The corresponding functions are controlled in the corresponding reactive modes, as described in the following register functions Note: Enable is set to 1 for on, set to 0 for off;;1.000000;0.000000;;1
 129;3;2433;I16;;"Power factor for reactive mode one to calculate Tanphi. Positive values represent the provision of inductive under-stimulated reactive power, with the inverter output current overriding the grid voltage; A negative value means that capacitive over-excitation reactive power is provided and the inverter output current lags behind the grid voltage;";;0.000100;0.000000;;1
-130;3;2434;I16;;"Fixed reactive power percentage for reactive mode II calculation of reactive power. positive values represent the supply of inductive under-excitation reactive power and the inverter output current overruns the grid voltage; A negative value means that capacitive over-excitation reactive power is provided and the inverter output current lags behind the grid voltage;";;0.010000;0.000000;'%;1
+130;3;2434;I16;;"Fixed reactive power percentage for reactive mode II calculation of reactive power. positive values represent the supply of inductive under-excitation reactive power and the inverter output current overruns the grid voltage; A negative value means that capacitive over-excitation reactive power is provided and the inverter output current lags behind the grid voltage;";;0.010000;0.000000;%;1
 131;3;2435;I16;;"is used for reactive mode III, the first point power factor value. positive values represent the supply of inductive under-excitation reactive power and the inverter output current overruns the grid voltage; A negative value means that capacitive over-excitation reactive power is supplied and the inverter output current lags behind the grid voltage;";;0.000100;0.000000;;1
-132;3;2436;I16;;for reactive mode III, first point power percentage;;1.000000;0.000000;'%;1
+132;3;2436;I16;;for reactive mode III, first point power percentage;;1.000000;0.000000;%;1
 133;3;2437;I16;;for reactive mode III, second point power factor value;;0.000100;0.000000;;1
-134;3;2438;I16;;for reactive mode III, second point power percentage;;1.000000;0.000000;'%;1
+134;3;2438;I16;;for reactive mode III, second point power percentage;;1.000000;0.000000;%;1
 135;3;2439;I16;;for reactive mode III, third point power factor value;;0.000100;0.000000;;1
-136;3;2440;I16;;for reactive mode III, third point power percentage;;1.000000;0.000000;'%;1
+136;3;2440;I16;;for reactive mode III, third point power percentage;;1.000000;0.000000;%;1
 137;3;2441;I16;;for reactive mode III, fourth power factor point;;0.000100;0.000000;;1
-138;3;2448;U16;;for reactive mode IV, % LV termination voltage;;1.000000;0.000000;'%;1
-139;3;2449;U16;;for reactive mode IV, % of Lockin power value;;1.000000;0.000000;'%;1
-140;3;2450;U16;;for reactive mode IV, % of Lockout power value;;1.000000;0.000000;'%;1
+138;3;2448;U16;;for reactive mode IV, % LV termination voltage;;1.000000;0.000000;%;1
+139;3;2449;U16;;for reactive mode IV, % of Lockin power value;;1.000000;0.000000;%;1
+140;3;2450;U16;;for reactive mode IV, % of Lockout power value;;1.000000;0.000000;%;1
 141;3;2451;U16;;for reactive mode IV, % of maximum overrun reactive power;;0.010000;0.000000;'%Pn;1
 142;3;2452;U16;;for Reactive mode IV, Reactive response waiting time;;10.000000;0.000000;ms;1
 143;3;2453;I16;;For reactive mode IV, percentage reactive power offset Offset reactive power curve over the entire operating voltage range. Positive values indicate overrunning, negative values indicate lagging.;;0.010000;0.000000;'%Qmax;1
 144;3;2454;U16;;"For reactive mode IV, 50% of the percentage change in reactive power range from the low voltage starting voltage to the high voltage starting voltage point. The low-voltage starting voltage corresponds to the reactive power lagging in this register; the high-voltage starting voltage corresponds to the reactive power overrunning in this register;";;0.010000;0.000000;'%Pn;1
-145;3;2455;U16;;For reactive mode V, percentage of high-voltage starting voltage;;1.000000;0.000000;'%;1
-146;3;2456;U16;;for reactive mode V, percentage of high-voltage termination voltage;;1.000000;0.000000;'%;1
-147;3;2457;U16;;for reactive mode V, percentage of low-voltage starting voltage;;1.000000;0.000000;'%;1
+145;3;2455;U16;;For reactive mode V, percentage of high-voltage starting voltage;;1.000000;0.000000;%;1
+146;3;2456;U16;;for reactive mode V, percentage of high-voltage termination voltage;;1.000000;0.000000;%;1
+147;3;2457;U16;;for reactive mode V, percentage of low-voltage starting voltage;;1.000000;0.000000;%;1
 148;3;15;U16;;AddressMask_General1;;1.000000;0.000000;;4

@@ -1,4 +1,4 @@
-modbus;Logger;HOYMILES;MICROINVERTER;;;;;;;
+﻿modbus;Logger;HOYMILES;MICROINVERTER;;;;;;;
 1;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4
 2;4;12544;U64;;Sum of All Microinverters Total Production in DTU;;1.000000;0.000000;Wh;4
 3;4;12548;U64;;Sum of All Microinverters Today Production in DTU;;1.000000;0.000000;Wh;4
@@ -4261,5 +4261,5 @@ modbus;Logger;HOYMILES;MICROINVERTER;;;;;;;
 4260;3;20811_6;STRING;;Microinverter 97: SN;;1.000000;0.000000;;1
 4261;3;20814_6;STRING;;Microinverter 98: SN;;1.000000;0.000000;;1
 4262;3;20817_6;STRING;;Microinverter 99: SN;;1.000000;0.000000;;1
-4263;3;21771;U16;;Microinverter Reconnection Time;;1;0;;4
-4264;3;21772;U16;;Microinverter Restart Power Ramp Rate;;0.0001;0;%Pn/s;4
+4263;3;21771;U16;;Microinverter Reconnection Time;;1.000000;0.000000;;4
+4264;3;21772;U16;;Microinverter Restart Power Ramp Rate;;0.000100;0.000000;%Pn/s;4

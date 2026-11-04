@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
+﻿modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 1;3;0;U16;;Remote OnOff;CMD_ON;1.000000;0.000000;;4
 2;3;1_0_1;BITS;;SaftyFuncEn : SPI enable;saftyfuncen_spi_enable;1.000000;0.000000;;4
 3;3;1_1_1;BITS;;SaftyFuncEn : AutoTestStart;saftyfuncen_autoteststart;1.000000;0.000000;;4
@@ -12,8 +12,8 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 11;3;1_9_1;BITS;;SaftyFuncEn : Recover FreqDeratingMode Enable;saftyfuncen_recover_freqderatingmode_enable;1.000000;0.000000;;4
 12;3;1_10_1;BITS;;SaftyFuncEn : Split phase enable;saftyfuncen_split_phase_enable;1.000000;0.000000;;4
 13;3;2;U16;;PF CMD memory state;CMD_P_ENA;1.000000;0.000000;;4
-14;3;3;U16;;Active Power Rate;CMD_P_AC_SET_PERCENT;1.000000;0.000000;'%;4
-15;3;4;I16;;Reactive Power Rate;CMD_Q_AC_SET_PERCENT;1.000000;0.000000;'%;4
+14;3;3;U16;;Active Power Rate;CMD_P_AC_SET_PERCENT;1.000000;0.000000;%;4
+15;3;4;I16;;Reactive Power Rate;CMD_Q_AC_SET_PERCENT;1.000000;0.000000;%;4
 16;3;5;U16;;Power factor_1;CMD_PF;1.000000;0.000000;;4
 17;3;6;U32;;Pmax;P_RATED;0.100000;0.000000;VA;4
 18;3;8;U16;;Vnormal;vnormal;0.100000;0.000000;V;4
@@ -24,8 +24,8 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 23;3;17;U16;;Vpv start;vpv_start;0.100000;0.000000;V;4
 24;3;18;U16;;Time start;time_start;1.000000;0.000000;s;4
 25;3;19;U16;;Restart Delay Time;restart_delay_time;1.000000;0.000000;s;4
-26;3;20;U16;;wPower Start Slope;wpower_start_slope;0.100000;0.000000;'%;4
-27;3;21;U16;;wPower Restart SlopeEE;wpower_restart_slopeee;0.100000;0.000000;'%;4
+26;3;20;U16;;wPower Start Slope;wpower_start_slope;0.100000;0.000000;%;4
+27;3;21;U16;;wPower Restart SlopeEE;wpower_restart_slopeee;0.100000;0.000000;%;4
 28;3;22;U16;;wSelect Baudrate;wselect_baudrate;1.000000;0.000000;;4
 29;3;23_10;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
 30;3;28;U32;;Inverter Module;inverter_module;1.000000;0.000000;;4
@@ -85,8 +85,8 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 84;3;94;U16;;V2S;v2s;0.100000;0.000000;V;4
 85;3;95;U16;;V1L;v1l;0.100000;0.000000;V;4
 86;3;96;U16;;V2L;v2l;0.100000;0.000000;V;4
-87;3;97;U16;;Qlock in power;qlock_in_power;1.000000;0.000000;'%;4
-88;3;98;U16;;Qlock Out power;qlock_out_power;1.000000;0.000000;'%;4
+87;3;97;U16;;Qlock in power;qlock_in_power;1.000000;0.000000;%;4
+88;3;98;U16;;Qlock Out power;qlock_out_power;1.000000;0.000000;%;4
 89;3;99;U16;;Lock in gird volt of PF line;lock_in_gird_volt_of_pf_line;0.100000;0.000000;V;4
 90;3;100;U16;;Lock out gird volt of PF Line;lock_out_gird_volt_of_pf_line;0.100000;0.000000;V;4
 91;3;101;U16;;PF adjust value 1;pf_adjust_value_1;1.000000;0.000000;;4
@@ -97,21 +97,21 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 96;3;106;U16;;PF adjust value 6;pf_adjust_value_6;1.000000;0.000000;;4
 97;3;107;U16;;QV Reactive Power delay time;qv_reactive_power_delay_time;1.000000;0.000000;s;4
 98;3;108;U16;;Overfrequency derating delay time;overfrequency_derating_delay_time;50.000000;0.000000;ms;4
-99;3;109;U16;;Qmax for Q(V) curve;qmax_for_qv_curve;0.100000;0.000000;'%;4
-100;3;110;U16;;PF limit line point 1 load percent;pf_limit_line_point_1_load_percent;1.000000;0.000000;'%;4
+99;3;109;U16;;Qmax for Q(V) curve;qmax_for_qv_curve;0.100000;0.000000;%;4
+100;3;110;U16;;PF limit line point 1 load percent;pf_limit_line_point_1_load_percent;1.000000;0.000000;%;4
 101;3;111;U16;;PF limit line point 1 power factor;pf_limit_line_point_1_power_factor;1.000000;0.000000;;4
-102;3;112;U16;;PF limit line point 2 load percent;pf_limit_line_point_2_load_percent;1.000000;0.000000;'%;4
+102;3;112;U16;;PF limit line point 2 load percent;pf_limit_line_point_2_load_percent;1.000000;0.000000;%;4
 103;3;113;U16;;PF limit line point 2 power factor;pf_limit_line_point_2_power_factor;1.000000;0.000000;;4
-104;3;114;U16;;PF limit line point 3 load percent;pf_limit_line_point_3_load_percent;1.000000;0.000000;'%;4
+104;3;114;U16;;PF limit line point 3 load percent;pf_limit_line_point_3_load_percent;1.000000;0.000000;%;4
 105;3;115;U16;;PF limit line point 3 power factor;pf_limit_line_point_3_power_factor;1.000000;0.000000;;4
-106;3;116;U16;;PF limit line point 4 load percent;pf_limit_line_point_4_load_percent;1.000000;0.000000;'%;4
+106;3;116;U16;;PF limit line point 4 load percent;pf_limit_line_point_4_load_percent;1.000000;0.000000;%;4
 107;3;117;U16;;PF limit line point 4 power factor;pf_limit_line_point_4_power_factor;1.000000;0.000000;;4
 108;3;118;U16;;Inverter Module 4;inverter_module_4;1.000000;0.000000;;4
 109;3;119;U16;;Inverter Module 3;inverter_module_3;1.000000;0.000000;;4
 110;3;120;U16;;Inverter Module 2;inverter_module_2;1.000000;0.000000;;4
 111;3;121;U16;;Inverter Module 1;inverter_module_1;1.000000;0.000000;;4
 112;3;122;U16;;Export Limit En/dis;export_limit_endis;1.000000;0.000000;;4
-113;3;123;I16;;Export Limit Power Rate;export_limit_power_rate;0.100000;0.000000;'%;4
+113;3;123;I16;;Export Limit Power Rate;export_limit_power_rate;0.100000;0.000000;%;4
 114;3;124;U16;;Traker Model;traker_model;1.000000;0.000000;;4
 115;3;137;U32;;Reactive Value;reactive_value;0.100000;0.000000;Var;4
 116;3;139;U16;;Reactive Output Priority Enable;CMD_Q_ENA;1.000000;0.000000;;4
@@ -167,32 +167,32 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 166;3;202;U16;;PID On_Off Ctrl;pid_on_off_ctrl;1.000000;0.000000;;4
 167;3;203;U16;;PID Voltage Option;pid_voltage_option;1.000000;0.000000;V;4
 168;3;209_30;STRING;;New Serial Number;new_serial_number;1.000000;0.000000;;4
-169;3;229;U16;;Energy Adjuste;energy_adjuste;0.100000;0.000000;'%;4
-170;3;304;U16;;uwAnti Backflow Fail Power limit;uwanti_backflow_fail_power_limit;0.100000;0.000000;'%;4
-171;3;305;U16;;Reactive loading speed;reactive_loading_speed;1.000000;0.000000;'%;4
+169;3;229;U16;;Energy Adjuste;energy_adjuste;0.100000;0.000000;%;4
+170;3;304;U16;;uwAnti Backflow Fail Power limit;uwanti_backflow_fail_power_limit;0.100000;0.000000;%;4
+171;3;305;U16;;Reactive loading speed;reactive_loading_speed;1.000000;0.000000;%;4
 172;3;306;U16;;Parallel Anti-Backflow Enable;parallel_antibackflow_enable;1.000000;0.000000;;4
 173;3;307;U16;;Anti-Backflow Failure Response Time;antibackflow_failure_response_time;1.000000;0.000000;s;4
-174;3;308;U16;;Parallel Anti-Backflow Power;parallel_antibackflow_power;0.100000;0.000000;'%;4
+174;3;308;U16;;Parallel Anti-Backflow Power;parallel_antibackflow_power;0.100000;0.000000;%;4
 175;3;309;U16;;ISO detection command;iso_detection_command;1.000000;0.000000;;4
 176;3;310;U16;;GPRS Status;gprs_status;0.100000;0.000000;;4
-177;3;311;U16;;uwQmax Inductive;uwqmax_inductive;0.100000;0.000000;'%;4
-178;3;312;U16;;uwQmax_Capactive;uwqmax_capactive;0.100000;0.000000;'%;4
+177;3;311;U16;;uwQmax Inductive;uwqmax_inductive;0.100000;0.000000;%;4
+178;3;312;U16;;uwQmax_Capactive;uwqmax_capactive;0.100000;0.000000;%;4
 179;3;313;U16;;Reactive Power Adjust Failur Response Time;reactive_power_adjust_failur_response_time;1.000000;0.000000;s;4
 180;3;314;U16;;Super Anti-Backflow Enable;super_antibackflow_enable;1.000000;0.000000;;4
 181;3;315;U16;;Reactive Power Stable Time;reactive_power_stable_time;1.000000;0.000000;s;4
 182;3;316;U16;;QpStable Time;qpstable_time;1.000000;0.000000;s;4
 183;3;317;U16;;PuDerate Time;puderate_time;1.000000;0.000000;s;4
-184;3;318;U16;;QV Mode Q2 Point;qv_mode_q2_point;0.100000;0.000000;'%;4
-185;3;319;U16;;QV Mode Q3 Point;qv_mode_q3_point;0.100000;0.000000;'%;4
+184;3;318;U16;;QV Mode Q2 Point;qv_mode_q2_point;0.100000;0.000000;%;4
+185;3;319;U16;;QV Mode Q3 Point;qv_mode_q3_point;0.100000;0.000000;%;4
 186;3;320;U16;;Vref Model Enable;vref_model_enable;1.000000;0.000000;;4
 187;3;321;U16;;Vre fModel Filter Time;vre_fmodel_filter_time;1.000000;0.000000;;4
-188;3;322;U16;;User QP Mode P1 Krate;user_qp_mode_p1_krate;0.100000;0.000000;'%;4
-189;3;323;I16;;User QP Mode P2 Krate;user_qp_mode_p2_krate;0.100000;0.000000;'%;4
-190;3;324;I16;;User QP Mode P3 Krate;user_qp_mode_p3_krate;0.100000;0.000000;'%;4
-191;3;325;U16;;User QP Mode Q1 Krate;user_qp_mode_q1_krate;0.100000;0.000000;'%;4
-192;3;326;U16;;User QP Mode Q2 Krate;user_qp_mode_q2_krate;0.100000;0.000000;'%;4
-193;3;327;U16;;User QP Mode Q3 Krate;user_qp_mode_q3_krate;0.100000;0.000000;'%;4
-194;3;328;I16;;Ac Volt High Derat Power Limit;ac_volt_high_derat_power_limit;0.100000;0.000000;'%;4
+188;3;322;U16;;User QP Mode P1 Krate;user_qp_mode_p1_krate;0.100000;0.000000;%;4
+189;3;323;I16;;User QP Mode P2 Krate;user_qp_mode_p2_krate;0.100000;0.000000;%;4
+190;3;324;I16;;User QP Mode P3 Krate;user_qp_mode_p3_krate;0.100000;0.000000;%;4
+191;3;325;U16;;User QP Mode Q1 Krate;user_qp_mode_q1_krate;0.100000;0.000000;%;4
+192;3;326;U16;;User QP Mode Q2 Krate;user_qp_mode_q2_krate;0.100000;0.000000;%;4
+193;3;327;U16;;User QP Mode Q3 Krate;user_qp_mode_q3_krate;0.100000;0.000000;%;4
+194;3;328;I16;;Ac Volt High Derat Power Limit;ac_volt_high_derat_power_limit;0.100000;0.000000;%;4
 195;3;329;I16;;Backflow Single Ctrl;backflow_single_ctrl;1.000000;0.000000;;4
 196;3;330;U16;;Anti-Backflow Protect Mode;antibackflow_protect_mode;1.000000;0.000000;;4
 197;3;331;U16;;Underfreq Upload Zero Power Point;underfreq_upload_zero_power_point;0.010000;0.000000;h;4
@@ -202,15 +202,15 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 201;3;335;U16;;Freq Increasing Recover Time;freq_increasing_recover_time;50.000000;0.000000;ms;4
 202;3;336;U16;;Freq Increasing End Low Point;freq_increasing_end_low_point;0.010000;0.000000;Hz;4
 203;3;337;U16;;Freq Increasing Stop Mode Enable;freq_increasing_stop_mode_enable;1.000000;0.000000;;4
-204;3;338;U16;;User QP function charge P1 set point;user_qp_function_charge_p1_set_point;0.100000;0.000000;'%;4
-205;3;339;U16;;User QP function charge P2 set point;user_qp_function_charge_p2_set_point;0.100000;0.000000;'%;4
-206;3;340;U16;;User QP function charge P3 set point;user_qp_function_charge_p3_set_point;0.100000;0.000000;'%;4
-207;3;341;I16;;User QP function charge Q1 set point;user_qp_function_charge_q1_set_point;0.100000;0.000000;'%;4
-208;3;342;I16;;User QP function charge Q2 set point;user_qp_function_charge_q2_set_point;0.100000;0.000000;'%;4
-209;3;343;I16;;User QP function charge Q3 set point;user_qp_function_charge_q3_set_point;0.100000;0.000000;'%;4
+204;3;338;U16;;User QP function charge P1 set point;user_qp_function_charge_p1_set_point;0.100000;0.000000;%;4
+205;3;339;U16;;User QP function charge P2 set point;user_qp_function_charge_p2_set_point;0.100000;0.000000;%;4
+206;3;340;U16;;User QP function charge P3 set point;user_qp_function_charge_p3_set_point;0.100000;0.000000;%;4
+207;3;341;I16;;User QP function charge Q1 set point;user_qp_function_charge_q1_set_point;0.100000;0.000000;%;4
+208;3;342;I16;;User QP function charge Q2 set point;user_qp_function_charge_q2_set_point;0.100000;0.000000;%;4
+209;3;343;I16;;User QP function charge Q3 set point;user_qp_function_charge_q3_set_point;0.100000;0.000000;%;4
 210;3;344;U16;;Freq Derating Recover Low Point;freq_derating_recover_low_point;0.010000;0.000000;Hz;4
 211;3;345;U16;;Freq Increasing Recover High Point;freq_increasing_recover_high_point;0.010000;0.000000;Hz;4
-212;3;532;I16;;Turn Off Unload Speed;turn_off_unload_speed;0.100000;0.000000;'%;4
+212;3;532;I16;;Turn Off Unload Speed;turn_off_unload_speed;0.100000;0.000000;%;4
 213;3;533;U16;;Limit Device;limit_device;1.000000;0.000000;;4
 214;3;534;U16;;Power Set On DC Source Mode;power_set_on_dc_source_mode;1.000000;0.000000;;4
 215;3;535;U16;;Over Uder Freq Grade 1 Enable;over_uder_freq_grade_1_enable;1.000000;0.000000;;4
@@ -242,12 +242,12 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 241;3;610;U16;;Deal Debug Para Flag;deal_debug_para_flag;1.000000;0.000000;;4
 242;3;612;U16;;Ac Couple Enable;ac_couple_enable;1.000000;0.000000;;4
 243;3;660;U16;;M3 remote command;m3_remote_command;1.000000;0.000000;;4
-244;3;3000;U16;;Export Limit Filed Power Rate;export_limit_filed_power_rate;0.100000;0.000000;'%;4
+244;3;3000;U16;;Export Limit Filed Power Rate;export_limit_filed_power_rate;0.100000;0.000000;%;4
 245;3;3001_30;STRING;;New Serial NO Serial NO;new_serial_no_serial_no;1.000000;0.000000;;4
 246;3;3016;U16;;Dry Contact Function Enable;dry_contact_function_enable;1.000000;0.000000;;4
-247;3;3017;U16;;Dry Contact On Rate;dry_contact_on_rate;0.100000;0.000000;'%;4
+247;3;3017;U16;;Dry Contact On Rate;dry_contact_on_rate;0.100000;0.000000;%;4
 248;3;3018;I16;;WorkMode;workmode;1.000000;0.000000;;4
-249;3;3019;U16;;Dry Contact Off Rate;dry_contact_off_rate;0.100000;0.000000;'%;4
+249;3;3019;U16;;Dry Contact Off Rate;dry_contact_off_rate;0.100000;0.000000;%;4
 250;3;3020;U16;;Box Ctrl Inv Order;box_ctrl_inv_order;1.000000;0.000000;;4
 251;3;3021;U16;;Exter Comm Off Grid Enable;exter_comm_off_grid_enable;1.000000;0.000000;;4
 252;3;3022;U16;;Bdc Stop Work Of Bus Volt;bdc_stop_work_of_bus_volt;1.000000;0.000000;;4
@@ -416,7 +416,7 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 415;4;98;U16;;P Bus Voltage;p_bus_voltage;0.100000;0.000000;V;4
 416;4;99;U16;;N Bus Voltage;n_bus_voltage;0.100000;0.000000;V;4
 417;4;100;U16;;Inverter output PF now;inverter_output_pf_now;1.000000;0.000000;;4
-418;4;101;U16;;Real Output power Percent;real_output_power_percent;1.000000;0.000000;'%;4
+418;4;101;U16;;Real Output power Percent;real_output_power_percent;1.000000;0.000000;%;4
 419;4;102;U32;;Output Maxpower Limited;output_maxpower_limited;0.100000;0.000000;W;4
 420;4;104;U16;;Derating Mode;derating_mode;1.000000;0.000000;;4
 421;4;105;U16;;Fault Maincode;fault_maincode;1.000000;0.000000;;4
@@ -712,7 +712,7 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 711;4;3098;U16;;P Bus inside Voltage;p_bus_inside_voltage;0.100000;0.000000;V;4
 712;4;3099;U16;;N Bus inside Voltage;n_bus_inside_voltage;0.100000;0.000000;V;4
 713;4;3100;U16;;Inverter output PF now_1;inverter_output_pf_now_1;1.000000;0.000000;;4
-714;4;3101;U16;;Real Output power Percent_1;real_output_power_percent_1;1.000000;0.000000;'%;4
+714;4;3101;U16;;Real Output power Percent_1;real_output_power_percent_1;1.000000;0.000000;%;4
 715;4;3102;U32;;Output Maxpower Limited_1;output_maxpower_limited_1;0.100000;0.000000;W;4
 716;4;3104_0_1;BITS;;Inverter standby : turn off;inverter_standby_turn_off;1.000000;0.000000;;4
 717;4;3104_1_1;BITS;;Inverter standby : PV low;inverter_standby_pv_low;1.000000;0.000000;;4
@@ -751,7 +751,7 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 750;4;3155;U16;;UPS phase T output current;ups_phase_t_output_current;0.100000;0.000000;A;4
 751;4;3156;U32;;UPS phase T output power;ups_phase_t_output_power;0.100000;0.000000;VA;4
 752;4;3158;U32;;UPS output power;ups_output_power;0.100000;0.000000;VA;4
-753;4;3160;U16;;Load percent of UPS output;load_percent_of_ups_output;0.100000;0.000000;'%;4
+753;4;3160;U16;;Load percent of UPS output;load_percent_of_ups_output;0.100000;0.000000;%;4
 754;4;3161;U16;;Power factor_2;power_factor_2;0.100000;0.000000;;4
 755;4;3162;U16;;DC voltage;dc_voltage;1.000000;0.000000;mV;4
 756;4;3164;U16;;Whether to parse BDC data separately;whether_to_parse_bdc_data_separately;1.000000;0.000000;;4
@@ -761,7 +761,7 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 760;4;3168;U16;;Storge device warning code;storge_device_warning_code;1.000000;0.000000;;4
 761;4;3169;U16;;Battery voltage;battery_voltage;0.010000;0.000000;V;4
 762;4;3170;U16;;Battery current;battery_current;0.100000;0.000000;A;4
-763;4;3171;U16;;State of charge Capacity;state_of_charge_capacity;1.000000;0.000000;'%;4
+763;4;3171;U16;;State of charge Capacity;state_of_charge_capacity;1.000000;0.000000;%;4
 764;4;3172;U16;;Total BUS voltage;total_bus_voltage_1;0.100000;0.000000;V;4
 765;4;3173;U16;;On the BUS voltage;on_the_bus_voltage;0.100000;0.000000;V;4
 766;4;3174;U16;;BUCK-BOOST Current;buckboost_current;0.100000;0.000000;A;4
@@ -784,8 +784,8 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 783;4;3193;U16;;BmsBatteryAvgTemp_2;bmsbatteryavgtemp_2;0.100000;0.000000;°C;4
 784;4;3194;U16;;BmsMaxCellTemp_2;bmsmaxcelltemp_2;1.000000;0.000000;;4
 785;4;3195;U16;;BmsBatteryAvgTemp_3;bmsbatteryavgtemp_3;1.000000;0.000000;;4
-786;4;3196;U16;;BmsMaxSOC;bmsmaxsoc;1.000000;0.000000;'%;4
-787;4;3197;U16;;BmsMinSOC;bmsminsoc;1.000000;0.000000;'%;4
+786;4;3196;U16;;BmsMaxSOC;bmsmaxsoc;1.000000;0.000000;%;4
+787;4;3197;U16;;BmsMinSOC;bmsminsoc;1.000000;0.000000;%;4
 788;4;3198;U16;;ParallelBatteryNum;parallelbatterynum;1.000000;0.000000;;4
 789;4;3199;U16;;BmsDerateReason;bmsderatereason;1.000000;0.000000;;4
 790;4;3200;U16;;BmsGaugeFCC;bmsgaugefcc;1.000000;0.000000;Ah;4
@@ -803,7 +803,7 @@ modbusRTU;Inverter;Growatt;Growatt_Generic;;;;;;;
 802;4;3212;U16;;battery working status;battery_working_status;1.000000;0.000000;;4
 803;4;3213;U16;;BMS Protect2;bms_protect2;1.000000;0.000000;;4
 804;4;3214;U16;;BMS Warn2;bms_warn2;1.000000;0.000000;;4
-805;4;3215;U16;;BMS SOC;bms_soc;1.000000;0.000000;'%;4
+805;4;3215;U16;;BMS SOC;bms_soc;1.000000;0.000000;%;4
 806;4;3216;U16;;BMS BatteryVolt;bms_batteryvolt;0.010000;0.000000;V;4
 807;4;3217;U16;;BMS BatteryCurr;bms_batterycurr;0.010000;0.000000;A;4
 808;4;3218;U16;;battery cell maximum temperature;battery_cell_maximum_temperature;0.100000;0.000000;°C;4

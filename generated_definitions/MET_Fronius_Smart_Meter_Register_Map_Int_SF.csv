@@ -1,4 +1,4 @@
-modbusRTU;Meter;Fronius;Smart_Meter_Register_Map_Int&S;;;;;;;
+﻿modbusRTU;Meter;Fronius;Smart_Meter_Register_Map_Int&S;;;;;;;
 1;4;40001;U32;;SID;;1.000000;0.000000;;4
 2;4;40003;U16;;ID;;1.000000;0.000000;;4
 3;4;40004;U16;;L;;1.000000;0.000000;Registers;4

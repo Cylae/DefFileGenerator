@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Fronius;Gen24_Primo_Symo_Inverter_Regi;;;;;;;
+﻿modbusRTU;Inverter;Fronius;Gen24_Primo_Symo_Inverter_Regi;;;;;;;
 1;4;40001;U32;;SID;;1.000000;0.000000;;4
 2;4;40003;U16;;ID;;1.000000;0.000000;;4
 3;4;40004;U16;;L;;1.000000;0.000000;Registers;4

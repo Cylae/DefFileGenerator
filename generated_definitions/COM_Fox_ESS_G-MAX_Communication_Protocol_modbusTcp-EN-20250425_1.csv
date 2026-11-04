@@ -1,9 +1,9 @@
-modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
+﻿modbusTCP;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 1;4;101;U16;;PCS actual total active power (summary);P_AC;10.000000;0.000000;KW;4
 2;4;102;U16;;PCS actual total reactive power (summary);Q_AC;10.000000;0.000000;Kvar;4
 3;4;103;U16;;Total voltage (summary);;10.000000;0.000000;V;4
 4;4;104;U16;;Total current (summary);;10.000000;0.000000;A;4
-5;4;105;U16;;Total soc (summary);SOC;1.000000;0.000000;'%;4
+5;4;105;U16;;Total soc (summary);SOC;1.000000;0.000000;%;4
 6;4;106;U16;;Battery status (summary);;1.000000;0.000000;;9
 7;4;107;U16;;Total number of batteries (summary);;1.000000;0.000000;;4
 8;4;108;U16;;Average battery temperature (summary);;1.000000;0.000000;℃;4
@@ -34,7 +34,7 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 33;3;94;U16;;Modbus fault recovery;;1.000000;0.000000;;1
 34;3;95;U16;;ModbusTCP communication loss strategy enable;;1.000000;0.000000;;1
 35;3;102;U16;;Instruction mode (0 subsystem/1 plan/2 total instructions);;1.000000;0.000000;;1
-36;3;103;U16;;;;1.000000;0.000000;;1
+36;3;103;U16;;Register_103;;1.000000;0.000000;;1
 37;3;104;U16;;Control source (local 0/remote 1/other);;1.000000;0.000000;;1
 38;3;105;U16;;Total active power command;;10.000000;0.000000;kW;1
 39;3;106;U16;;Total reactive power command;;10.000000;0.000000;kVar;1
@@ -549,43 +549,43 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 548;3;778;U16;;Peak-valley arbitrage-start time 1 (discharge);;1.000000;0.000000;;1
 549;3;780;U16;;Peak-valley arbitrage-end time 1 (discharge);;1.000000;0.000000;;1
 550;3;782;U16;;Peak-valley arbitrage-set power 1 (discharge);;1.000000;0.000000;kW;1
-551;3;783;U16;;Peak-valley arbitrage-discharge cutoff soc1 (discharge);;1.000000;0.000000;'%;1
+551;3;783;U16;;Peak-valley arbitrage-discharge cutoff soc1 (discharge);;1.000000;0.000000;%;1
 552;3;784;U16;;Peak-valley arbitrage-discharge enable 2;;1.000000;0.000000;;1
 553;3;785;U16;;Peak-valley arbitrage-start time 2 (discharge);;1.000000;0.000000;;1
 554;3;787;U16;;Peak-valley arbitrage-end time 2 (discharge);;1.000000;0.000000;;1
 555;3;789;U16;;Peak-valley arbitrage-set power 2 (discharge);;1.000000;0.000000;kW;1
-556;3;790;U16;;Peak-valley arbitrage-discharge cutoff soc2 (discharge);;1.000000;0.000000;'%;1
+556;3;790;U16;;Peak-valley arbitrage-discharge cutoff soc2 (discharge);;1.000000;0.000000;%;1
 557;3;791;U16;;Peak-valley arbitrage-discharge enable 3;;1.000000;0.000000;;1
 558;3;792;U16;;Peak-valley arbitrage-start time 3 (discharge);;1.000000;0.000000;;1
 559;3;794;U16;;Peak-valley arbitrage-end time 3 (discharge);;1.000000;0.000000;;1
 560;3;796;U16;;Peak-valley arbitrage-set power 3 (discharge);;1.000000;0.000000;kW;1
-561;3;797;U16;;Peak-valley arbitrage-discharge cutoff soc3 (discharge);;1.000000;0.000000;'%;1
+561;3;797;U16;;Peak-valley arbitrage-discharge cutoff soc3 (discharge);;1.000000;0.000000;%;1
 562;3;798;U16;;Peak-valley arbitrage-discharge enable 4;;1.000000;0.000000;;1
 563;3;799;U16;;Peak-valley arbitrage-start time 4 (discharge);;1.000000;0.000000;;1
 564;3;801;U16;;Peak-valley arbitrage-end time 4 (discharge);;1.000000;0.000000;;1
 565;3;803;U16;;Peak-valley arbitrage-set power 4 (discharge);;1.000000;0.000000;kW;1
-566;3;804;U16;;Peak-valley arbitrage-discharge cutoff soc4 (discharge);;1.000000;0.000000;'%;1
+566;3;804;U16;;Peak-valley arbitrage-discharge cutoff soc4 (discharge);;1.000000;0.000000;%;1
 567;3;805;U16;;Peak-valley arbitrage-charging enablement 1;;1.000000;0.000000;;1
 568;3;806;U16;;Peak-valley arbitrage-start time 1 (charging);;1.000000;0.000000;;1
 569;3;808;U16;;Peak-Valley Arbitrage-End Time 1 (Charging);;1.000000;0.000000;;1
 570;3;810;U16;;Peak-valley arbitrage-set power 1 (charging);;1.000000;0.000000;kW;1
-571;3;811;U16;;Peak-valley arbitrage-discharge cutoff soc1 (charging);;1.000000;0.000000;'%;1
+571;3;811;U16;;Peak-valley arbitrage-discharge cutoff soc1 (charging);;1.000000;0.000000;%;1
 572;3;812;U16;;Peak-valley arbitrage-charging enablement 2;;1.000000;0.000000;;1
 573;3;813;U16;;Peak-valley arbitrage-start time 2 (charging);;1.000000;0.000000;;1
 574;3;815;U16;;Peak-Valley Arbitrage-End Time 2 (Charging);;1.000000;0.000000;;1
 575;3;817;U16;;Peak-valley arbitrage-set power 2 (charging);;1.000000;0.000000;kW;1
-576;3;818;U16;;Peak-valley arbitrage-discharge cutoff soc2 (charging);;1.000000;0.000000;'%;1
+576;3;818;U16;;Peak-valley arbitrage-discharge cutoff soc2 (charging);;1.000000;0.000000;%;1
 577;3;819;U16;;Peak-valley arbitrage-charging enablement 3;;1.000000;0.000000;;1
 578;3;820;U16;;Peak-valley arbitrage-start time 3 (charging);;1.000000;0.000000;;1
 579;3;822;U16;;Peak-Valley Arbitrage-End Time 3 (Charging);;1.000000;0.000000;;1
 580;3;824;U16;;Peak-valley arbitrage-set power 3 (charging);;1.000000;0.000000;kW;1
-581;3;825;U16;;Peak-valley arbitrage-discharge cutoff soc3 (charging);;1.000000;0.000000;'%;1
+581;3;825;U16;;Peak-valley arbitrage-discharge cutoff soc3 (charging);;1.000000;0.000000;%;1
 582;3;826;U16;;Peak-valley arbitrage-charging enablement 4;;1.000000;0.000000;;1
 583;3;827;U16;;Peak-valley arbitrage-start time 4 (charging);;1.000000;0.000000;;1
 584;3;829;U16;;Peak-Valley Arbitrage-End Time 4 (Charging);;1.000000;0.000000;;1
 585;3;831;U16;;Peak-valley arbitrage-set power 4 (charging);;1.000000;0.000000;kW;1
-586;3;832;U16;;Peak-valley arbitrage-discharge cutoff soc4 (charging);;1.000000;0.000000;'%;1
-587;4;201;U16;;Heap SOH;;1.000000;0.000000;'%;4
+586;3;832;U16;;Peak-valley arbitrage-discharge cutoff soc4 (charging);;1.000000;0.000000;%;1
+587;4;201;U16;;Heap SOH;;1.000000;0.000000;%;4
 588;4;202;U16;;Stack status (0: Stop 1: Charge 2: Discharge 3: Standby 4 Fault);;1.000000;0.000000;;9
 589;4;203;U16;;Stack voltage;;10.000000;0.000000;V;4
 590;4;204;U16;;Stack current;;10.000000;0.000000;A;4
@@ -593,8 +593,8 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 592;4;206;U16;;Minimum single cell voltage;;1000.000000;0.000000;V;4
 593;4;207;U16;;Maximum monomer temperature;;1.000000;0.000000;℃;4
 594;4;208;U16;;Minimum monomer temperature;;1.000000;0.000000;℃;4
-595;4;209;U16;;Maximum single cell SOC value;;1.000000;0.000000;'%;4
-596;4;210;U16;;Minimum single cell SOC value;;1.000000;0.000000;'%;4
+595;4;209;U16;;Maximum single cell SOC value;;1.000000;0.000000;%;4
+596;4;210;U16;;Minimum single cell SOC value;;1.000000;0.000000;%;4
 597;4;211;U16;;Maximum cell voltage cluster number;;1.000000;0.000000;;4
 598;4;212;U16;;Maximum cell voltage Cell number;;1.000000;0.000000;;4
 599;4;213;U16;;Minimum cell voltage cluster number;;1.000000;0.000000;;4
@@ -603,8 +603,8 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 602;4;216;U16;;Maximum monomer temperature monomer number;;1.000000;0.000000;;4
 603;4;217;U16;;Minimum cell temperature cluster number;;1.000000;0.000000;;4
 604;4;218;U16;;Minimum monomer temperature monomer number;;1.000000;0.000000;;4
-605;4;219;U16;;;;10.000000;0.000000;A;4
-606;4;220;U16;;;;10.000000;0.000000;A;4
+605;4;219;U16;;Register_219;;10.000000;0.000000;A;4
+606;4;220;U16;;Register_220;;10.000000;0.000000;A;4
 607;4;223;U16;;Maximum pressure difference of monomer;;1.000000;0.000000;mV;4
 608;4;224;U16;;Stack power;;1.000000;0.000000;KW;4
 609;4;227;U16;;Cumulative cluster charging capacity;;1.000000;0.000000;KWh;4
@@ -612,8 +612,8 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 611;4;231;U16;;Rechargeable capacity;;10.000000;0.000000;KWh;4
 612;4;233;U16;;Dischargeable capacity;;10.000000;0.000000;KWh;4
 613;4;6600;U16;;Single cell voltage;;1000.000000;0.000000;V;4
-614;4;7000;U16;;Single SOC;;1.000000;0.000000;'%;4
-615;4;2201;U16;;Cluster SOH;;1.000000;0.000000;'%;4
+614;4;7000;U16;;Single SOC;;1.000000;0.000000;%;4
+615;4;2201;U16;;Cluster SOH;;1.000000;0.000000;%;4
 616;4;2202;U16;;Cluster status 0: Stop 1: Charging 2: Discharging 3: Standby 4 Fault;;1.000000;0.000000;;9
 617;4;2203;U16;;Cluster voltage;;10.000000;0.000000;V;4
 618;4;2204;U16;;Cluster current;;10.000000;0.000000;A;4
@@ -621,20 +621,20 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 620;4;2206;U16;;Minimum single cell voltage;;1000.000000;0.000000;V;4
 621;4;2207;U16;;Maximum monomer temperature;;1.000000;0.000000;℃;4
 622;4;2208;U16;;Minimum monomer temperature;;1.000000;0.000000;℃;4
-623;4;2209;U16;;Maximum single cell SOC value;;1.000000;0.000000;'%;4
-624;4;2210;U16;;Minimum single cell SOC value;;1.000000;0.000000;'%;4
+623;4;2209;U16;;Maximum single cell SOC value;;1.000000;0.000000;%;4
+624;4;2210;U16;;Minimum single cell SOC value;;1.000000;0.000000;%;4
 625;4;2212;U16;;Maximum cell voltage Cell number;;1.000000;0.000000;;4
 626;4;2214;U16;;Minimum cell voltage Cell number;;1.000000;0.000000;;4
 627;4;2216;U16;;Maximum monomer temperature monomer number;;1.000000;0.000000;;4
 628;4;2218;U16;;Minimum monomer temperature monomer number;;1.000000;0.000000;;4
-629;4;2219;U16;;;;10.000000;0.000000;A;4
-630;4;2220;U16;;;;10.000000;0.000000;A;4
+629;4;2219;U16;;Register_2219;;10.000000;0.000000;A;4
+630;4;2220;U16;;Register_2220;;10.000000;0.000000;A;4
 631;4;2221;U16;;Number of cluster batteries;;1.000000;0.000000;;4
 632;4;2222;U16;;Number of cluster temperatures;;1.000000;0.000000;;4
-633;4;2223;U16;;;;1.000000;0.000000;mV;4
+633;4;2223;U16;;Register_2223;;1.000000;0.000000;mV;4
 634;4;2224;U16;;Cluster Power;;1.000000;0.000000;KW;4
-635;4;2225;U16;;;;1.000000;0.000000;;4
-636;4;2226;U16;;;;1.000000;0.000000;;4
+635;4;2225;U16;;Register_2225;;1.000000;0.000000;;4
+636;4;2226;U16;;Register_2226;;1.000000;0.000000;;4
 637;4;2227;U16;;Cumulative cluster charging capacity;;1.000000;0.000000;KWh;4
 638;4;2229;U16;;Cumulative cluster discharge capacity;;1.000000;0.000000;KWh;4
 639;2;201;U16;;Negative bus insulation moderate alarm;;1.000000;0.000000;;9
@@ -842,7 +842,7 @@ modbusRTU;Other;Fox ESS;G-MAX Communication Protocol m;;;;;;;
 841;4;55302;U16;;Heating output status;;1.000000;0.000000;;9
 842;4;55303;U16;;Ambient temperature;TEMP_AMB;1.000000;0.000000;;4
 843;4;55304;U16;;Manual automatic state;;1.000000;0.000000;;4
-844;4;55305;U16;;Ambient humidity;;1.000000;0.000000;'%RH;4
+844;4;55305;U16;;Ambient humidity;;1.000000;0.000000;%RH;4
 845;4;55306;U16;;Refrigeration block temperature;;1.000000;0.000000;℃;4
 846;4;56001;U16;;Outlet water temperature;;10.000000;0.000000;℃;4
 847;4;56002;U16;;Inlet water temperature;;10.000000;0.000000;℃;4

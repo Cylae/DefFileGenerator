@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 Mass WebdynSunPM Definition Generator.
 Generates the maximum number of compliant, validated Webdyn definition files
 and stores them in 'generated_definitions/'.
@@ -12,7 +12,7 @@ Sources:
    - Vendor register table CSVs (extracted via Extractor -> Generator)
    - Vendor Excel files (extracted via Extractor -> Generator)
    - Key vendor PDF technical specs (extracted via Extractor -> Generator)
-"""
+r"""
 
 import csv
 import logging

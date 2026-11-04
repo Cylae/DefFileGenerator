@@ -1,4 +1,4 @@
-modbusRTU;Sensor;Hukseflux;SR05-D1A3
+﻿modbusRTU;Sensor;Hukseflux;SR05-D1A3;;;;;;;
 1;3;0;U16;;Modbus address;;1.000000;0.000000;;4
 2;3;1;U16;;Serial communication settings;;1.000000;0.000000;;4
 3;3;2;I32;;Irradiance;;0.010000;0.000000;W/m2;4
@@ -21,7 +21,7 @@ modbusRTU;Sensor;Hukseflux;SR05-D1A3
 20;3;67;F32;;Sensor sensitivity history 2;;0.001000;0.000000;mV/(W/m2);1
 21;3;69;U32;;Calibration date history 2;;1.000000;0.000000;;1
 22;3;71;F32;;Sensor sensitivity history 3;;0.001000;0.000000;mV/(W/m2);1
-23;3;73;U32;;Calibration date history 3 ;;1.000000;0.000000;;1
+23;3;73;U32;;Calibration date history 3;;1.000000;0.000000;;1
 24;3;75;F32;;Sensor sensitivity history 4;;0.001000;0.000000;mV/(W/m2);1
 25;3;77;U32;;Calibration date history 4;;1.000000;0.000000;;1
 26;3;79;F32;;Sensor sensitivity history 5;;0.001000;0.000000;mV/(W/m2);1

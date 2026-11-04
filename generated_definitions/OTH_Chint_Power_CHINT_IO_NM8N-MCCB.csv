@@ -1,4 +1,4 @@
-Modbus;Io;CHINT;NM8N-MCCB;;;;;;;
+﻿Modbus;Io;CHINT;NM8N-MCCB;;;;;;;
 1;3;1;U8;;L1 phase current;;1.000000;0.000000;A;4
 2;3;2;U8;;L2 phase current;;1.000000;0.000000;A;4
 3;3;3;U8;;L3 phase current;;1.000000;0.000000;A;4

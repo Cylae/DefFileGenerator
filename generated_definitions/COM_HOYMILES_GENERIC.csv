@@ -1,4 +1,4 @@
-modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
+﻿modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 1;4;12288_6;STRING;;DTU Serial Number;;1.000000;0.000000;;4
 2;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 3;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4
@@ -29,7 +29,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 28;4;12681;U32;;Meter 1: Phase A Power Factor;;0.001000;0.000000;;4
 29;4;12683;U32;;Meter 1: Phase B Power Factor;;0.001000;0.000000;;4
 30;4;12685;U32;;Meter 1: Phase C Power Factor;;0.001000;0.000000;;4
-31;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0;;4
+31;4;12687;U16;;"Meter 1: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 32;4;12688;U32;;Meter 1: Uab Line Voltage;;0.010000;0.000000;V;4
 33;4;12690;U32;;Meter 1: Ubc Line Voltage;;0.010000;0.000000;V;4
 34;4;12692;U32;;Meter 1: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -56,7 +56,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 55;4;12809;U32;;Meter 2: Phase A Power Factor;;0.001000;0.000000;;4
 56;4;12811;U32;;Meter 2: Phase B Power Factor;;0.001000;0.000000;;4
 57;4;12813;U32;;Meter 2: Phase C Power Factor;;0.001000;0.000000;;4
-58;4;12815;U16;;"Meter 2: Status (0: Offline; 1: Online)";;1.000000;0;;4
+58;4;12815;U16;;"Meter 2: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 59;4;12816;U32;;Meter 2: Uab Line Voltage;;0.010000;0.000000;V;4
 60;4;12818;U32;;Meter 2: Ubc Line Voltage;;0.010000;0.000000;V;4
 61;4;12820;U32;;Meter 2: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -83,7 +83,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 82;4;12937;U32;;Meter 3: Phase A Power Factor;;0.001000;0.000000;;4
 83;4;12939;U32;;Meter 3: Phase B Power Factor;;0.001000;0.000000;;4
 84;4;12941;U32;;Meter 3: Phase C Power Factor;;0.001000;0.000000;;4
-85;4;12943;U16;;"Meter 3: Status (0: Offline; 1: Online)";;1.000000;0;;4
+85;4;12943;U16;;"Meter 3: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 86;4;12944;U32;;Meter 3: Uab Line Voltage;;0.010000;0.000000;V;4
 87;4;12946;U32;;Meter 3: Ubc Line Voltage;;0.010000;0.000000;V;4
 88;4;12948;U32;;Meter 3: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -110,7 +110,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 109;4;13065;U32;;Meter 4: Phase A Power Factor;;0.001000;0.000000;;4
 110;4;13067;U32;;Meter 4: Phase B Power Factor;;0.001000;0.000000;;4
 111;4;13069;U32;;Meter 4: Phase C Power Factor;;0.001000;0.000000;;4
-112;4;13071;U16;;"Meter 4: Status (0: Offline; 1: Online)";;1.000000;0;;4
+112;4;13071;U16;;"Meter 4: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 113;4;13072;U32;;Meter 4: Uab Line Voltage;;0.010000;0.000000;V;4
 114;4;13074;U32;;Meter 4: Ubc Line Voltage;;0.010000;0.000000;V;4
 115;4;13076;U32;;Meter 4: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -137,7 +137,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 136;4;13193;U32;;Meter 5: Phase A Power Factor;;0.001000;0.000000;;4
 137;4;13195;U32;;Meter 5: Phase B Power Factor;;0.001000;0.000000;;4
 138;4;13197;U32;;Meter 5: Phase C Power Factor;;0.001000;0.000000;;4
-139;4;13199;U16;;"Meter 5: Status (0: Offline; 1: Online)";;1.000000;0;;4
+139;4;13199;U16;;"Meter 5: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 140;4;13200;U32;;Meter 5: Uab Line Voltage;;0.010000;0.000000;V;4
 141;4;13202;U32;;Meter 5: Ubc Line Voltage;;0.010000;0.000000;V;4
 142;4;13204;U32;;Meter 5: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -164,7 +164,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 163;4;13321;U32;;Meter 6: Phase A Power Factor;;0.001000;0.000000;;4
 164;4;13323;U32;;Meter 6: Phase B Power Factor;;0.001000;0.000000;;4
 165;4;13325;U32;;Meter 6: Phase C Power Factor;;0.001000;0.000000;;4
-166;4;13327;U16;;"Meter 6: Status (0: Offline; 1: Online)";;1.000000;0;;4
+166;4;13327;U16;;"Meter 6: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 167;4;13328;U32;;Meter 6: Uab Line Voltage;;0.010000;0.000000;V;4
 168;4;13330;U32;;Meter 6: Ubc Line Voltage;;0.010000;0.000000;V;4
 169;4;13332;U32;;Meter 6: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -191,7 +191,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 190;4;13449;U32;;Meter 7: Phase A Power Factor;;0.001000;0.000000;;4
 191;4;13451;U32;;Meter 7: Phase B Power Factor;;0.001000;0.000000;;4
 192;4;13453;U32;;Meter 7: Phase C Power Factor;;0.001000;0.000000;;4
-193;4;13455;U16;;"Meter 7: Status (0: Offline; 1: Online)";;1.000000;0;;4
+193;4;13455;U16;;"Meter 7: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 194;4;13456;U32;;Meter 7: Uab Line Voltage;;0.010000;0.000000;V;4
 195;4;13458;U32;;Meter 7: Ubc Line Voltage;;0.010000;0.000000;V;4
 196;4;13460;U32;;Meter 7: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -218,7 +218,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 217;4;13577;U32;;Meter 8: Phase A Power Factor;;0.001000;0.000000;;4
 218;4;13579;U32;;Meter 8: Phase B Power Factor;;0.001000;0.000000;;4
 219;4;13581;U32;;Meter 8: Phase C Power Factor;;0.001000;0.000000;;4
-220;4;13583;U16;;"Meter 8: Status (0: Offline; 1: Online)";;1.000000;0;;4
+220;4;13583;U16;;"Meter 8: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 221;4;13584;U32;;Meter 8: Uab Line Voltage;;0.010000;0.000000;V;4
 222;4;13586;U32;;Meter 8: Ubc Line Voltage;;0.010000;0.000000;V;4
 223;4;13588;U32;;Meter 8: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -245,7 +245,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 244;4;13705;U32;;Meter 9: Phase A Power Factor;;0.001000;0.000000;;4
 245;4;13707;U32;;Meter 9: Phase B Power Factor;;0.001000;0.000000;;4
 246;4;13709;U32;;Meter 9: Phase C Power Factor;;0.001000;0.000000;;4
-247;4;13711;U16;;"Meter 9: Status (0: Offline; 1: Online)";;1.000000;0;;4
+247;4;13711;U16;;"Meter 9: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 248;4;13712;U32;;Meter 9: Uab Line Voltage;;0.010000;0.000000;V;4
 249;4;13714;U32;;Meter 9: Ubc Line Voltage;;0.010000;0.000000;V;4
 250;4;13716;U32;;Meter 9: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -272,7 +272,7 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 271;4;13833;U32;;Meter 10: Phase A Power Factor;;0.001000;0.000000;;4
 272;4;13835;U32;;Meter 10: Phase B Power Factor;;0.001000;0.000000;;4
 273;4;13837;U32;;Meter 10: Phase C Power Factor;;0.001000;0.000000;;4
-274;4;13839;U16;;"Meter 10: Status (0: Offline; 1: Online)";;1.000000;0;;4
+274;4;13839;U16;;"Meter 10: Status (0: Offline; 1: Online)";;1.000000;0.000000;;4
 275;4;13840;U32;;Meter 10: Uab Line Voltage;;0.010000;0.000000;V;4
 276;4;13842;U32;;Meter 10: Ubc Line Voltage;;0.010000;0.000000;V;4
 277;4;13844;U32;;Meter 10: Uca Line Voltage;;0.010000;0.000000;V;4
@@ -4558,26 +4558,26 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 4557;3;21761;U16;;TCP Modbus Port;;1.000000;0.000000;;1
 4558;3;21762;U16;;485 Modbus Mode;;1.000000;0.000000;;1
 4559;3;21763;U16;;485 Modbus Address;;1.000000;0.000000;;1
-4560;3;21764;U16;;Power Export Limiting Mode;;1;0;;4
-4561;3;21765;U16;;Power Grid Type;;1;0;;4
-4562;3;21766;U16;;Group Control Enable;;1;0;;4
-4563;3;21767;U16;;Power Export Limiting Shutdown Parameters Enable;;1;0;;4
-4564;3;21768;U16;;Communication Interruption Timeout;;1;0;s;4
-4565;3;21769;U16;;Communication Interruption Status;;1;0;;4
-4566;3;21770;U16;;Restart Status After Communication-Interruption Shutdown;;1;0;;4
-4567;3;21771;U16;;Microinverter Reconnection Time;;1;0;;4
-4568;3;21772;U16;;Microinverter Restart Power Ramp Rate;;0.0001;0;%Pn/s;4
-4569;3;21773;U16;;Active Power Setting During Communication Interruption Without Shutdown;;0.001;0;%Pn;4
-4570;3;21774;U16;;Power Export Limiting Mode;;1;0;;4
-4571;3;21775;I16;;Max. Export Power A (%);;0.0001;0;;4
-4572;3;21776;I16;;Max. Export Power B (%);;0.0001;0;;4
-4573;3;21777;I16;;Max. Export Power C (%);;0.0001;0;;4
-4574;3;21778;I16;;Max. Export Power A (kW);;0.01;0;;4
-4575;3;21779;I16;;Max. Export Power B (kW);;0.01;0;;4
-4576;3;21780;I16;;Max. Export Power C (kW);;0.01;0;;4
-4577;3;21781;I16;;Active Power Control (Whole Plant);;0.01;0;;4
-4578;3;21782;I16;;Reactive Power Control (Whole Plant);;0.01;0;;4
-4579;3;21783;I16;;Power Factor Control (Whole Plant);;0.01;0;;4
+4560;3;21764;U16;;Power Export Limiting Mode;;1.000000;0.000000;;4
+4561;3;21765;U16;;Power Grid Type;;1.000000;0.000000;;4
+4562;3;21766;U16;;Group Control Enable;;1.000000;0.000000;;4
+4563;3;21767;U16;;Power Export Limiting Shutdown Parameters Enable;;1.000000;0.000000;;4
+4564;3;21768;U16;;Communication Interruption Timeout;;1.000000;0.000000;s;4
+4565;3;21769;U16;;Communication Interruption Status;;1.000000;0.000000;;4
+4566;3;21770;U16;;Restart Status After Communication-Interruption Shutdown;;1.000000;0.000000;;4
+4567;3;21771;U16;;Microinverter Reconnection Time;;1.000000;0.000000;;4
+4568;3;21772;U16;;Microinverter Restart Power Ramp Rate;;0.000100;0.000000;%Pn/s;4
+4569;3;21773;U16;;Active Power Setting During Communication Interruption Without Shutdown;;0.001000;0.000000;%Pn;4
+4570;3;21774;U16;;Power Export Limiting Mode;;1.000000;0.000000;;4
+4571;3;21775;I16;;Max. Export Power A (%);;0.000100;0.000000;;4
+4572;3;21776;I16;;Max. Export Power B (%);;0.000100;0.000000;;4
+4573;3;21777;I16;;Max. Export Power C (%);;0.000100;0.000000;;4
+4574;3;21778;I16;;Max. Export Power A (kW);;0.010000;0.000000;;4
+4575;3;21779;I16;;Max. Export Power B (kW);;0.010000;0.000000;;4
+4576;3;21780;I16;;Max. Export Power C (kW);;0.010000;0.000000;;4
+4577;3;21781;I16;;Active Power Control (Whole Plant);;0.010000;0.000000;;4
+4578;3;21782;I16;;Reactive Power Control (Whole Plant);;0.010000;0.000000;;4
+4579;3;21783;I16;;Power Factor Control (Whole Plant);;0.010000;0.000000;;4
 4580;3;53272;U16;;Port 4: Turn ON/OFF;;1.000000;0.000000;;1
 4581;3;53273;U16;;Port 4: Temporary Limit Active Power;;1.000000;0.000000;;1
 4582;3;53274;U16;;Port 4: Permanent Limit Active Power;;1.000000;0.000000;;1
