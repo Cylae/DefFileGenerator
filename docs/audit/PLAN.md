@@ -3,17 +3,21 @@
 ## 1. Project Profile and Mission Scope
 
 - **Repository**: DefFileGenerator (https://github.com/Cylae/DefFileGenerator.git)
-- **Local Path**: `C:\Users\Cylae\Documents\GitHub\DefFileGenerator`
-- **Active Release**: v0.3.0
-- **Language / Runtime**: Python 3.10-3.14 (Active runtime: Python 3.14.7 x86_64 on Windows 11)
-- **Package Management**: `uv` 0.12.9 with `pyproject.toml` and `uv.lock`
+- **Local Path**: `C:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator`
+- **Active Release**: v0.4.0
+- **Language / Runtime**: Python 3.10-3.15 (Active runtime: Python 3.15.0 x86_64 on Windows 11)
+- **Package Management**: `uv` with `pyproject.toml`
 - **Application Type**: Multi-interface system:
   1. CLI (`DefFileGenerator/main.py`)
   2. Desktop GUI (`DefFileGenerator/gui.py` via `customtkinter`)
   3. Web REST API & SPA Studio (`web/app.py`, `web/static/` via FastAPI/Starlette)
   4. Core Extractor & Engine (`DefFileGenerator/extractor.py`, `DefFileGenerator/def_gen.py`)
   5. Semantic Knowledge Miner (`DefFileGenerator/knowledge_miner.py`)
-  6. Generator & Reporting modules (`DefFileGenerator/mars_generator.py`, `DefFileGenerator/report_generator.py`)
+  6. Dedicated Industrial Generators:
+     - Mars Renewable BESS & EMS (`DefFileGenerator/mars_generator.py`, `generate_mars_definitions.py`)
+     - Dyness DH-Series Commercial & Industrial BESS (`DefFileGenerator/dyness_generator.py`, `generate_dyness_definitions.py`)
+     - FoxESS P3/H3 Pro Hybrid Inverter Suite (`generate_foxess_definitions.py`)
+  7. Technical Reporting & Validation Engine (`DefFileGenerator/report_generator.py`)
 - **Product Contract**: Accurate extraction of Modbus register maps from heterogeneous technical documents (PDF, Excel, CSV, XML) and generation of syntactically and semantically validated WebdynSunPM definition CSV files compliant with official Webdyn gateway specifications.
 
 ---
@@ -27,7 +31,8 @@ graph TD
     M3 --> M4[M4: Comprehensive Subsystem Audit & Edge Hardening - COMPLETE]
     M4 --> M5[M5: Extended Verification, Replay & Soak Testing - COMPLETE]
     M5 --> M6[M6: Performance Benchmarking & Optimization - COMPLETE]
-    M6 --> M7[M7: Final Verification & Apollo Handoff - COMPLETE]
+    M6 --> M7[M7: Final Verification & v0.3.0 Release - COMPLETE]
+    M7 --> M8[M8: Dyness BESS, Global CSV Injection Neutralization & v0.4.0 Release - COMPLETE]
 ```
 
 ### Milestone 1: Baseline, Toolchain & Full Reconnaissance [COMPLETE]
@@ -37,7 +42,7 @@ graph TD
 
 ### Milestone 2: Environmental Hardening (SMB Timeouts & Loopback Socket) [COMPLETE]
 - Fast-fail UNC path probe and local drive preference eliminating 30-45s SMB stalls.
-- Identified and verified Windows loopback socket configuration for Python 3.14 proactor loop in FastAPI `TestClient`.
+- Identified and verified Windows loopback socket configuration for Python proactor loop in FastAPI `TestClient`.
 
 ### Milestone 3: Semantic Knowledge Miner & Type System Consistency [COMPLETE]
 - Type normalization correctly handles `bool`/`boolean` -> `BITS`, SunSpec types (`sunssf` -> `I16`, `acc32` -> `U32`, etc.).
@@ -62,6 +67,16 @@ graph TD
 - Constant-time dictionary and set lookups for data types.
 - Measured definition generation benchmarks documented in `PERFORMANCE.md`.
 
-### Milestone 7: Final Documentation, Verification & Handoff [COMPLETE]
+### Milestone 7: Documentation, Packaging & v0.3.0 Release [COMPLETE]
 - Complete synchronization of `README.md`, `DEVELOPER_GUIDE.md`, `CHANGELOG.md`, and all `docs/audit/` ledgers for the v0.3.0 release.
 - Standalone Windows binary build pipeline verified via GitHub Actions CI.
+
+### Milestone 8: Dyness BESS, CSV Injection Neutralization, Deep Audit & v0.4.0 Release [COMPLETE]
+- Developed first-class generator `DefFileGenerator/dyness_generator.py` and CLI `generate_dyness_definitions.py` supporting `DH200Y` (liquid-cooled 232 kWh), `DH200F` (air-cooled 215 kWh), `DH100F` (air-cooled 100 kWh), and `DH_Series_Generic`.
+- Integrated 4 validated definitions into `Definitions/` (catalog expanded to 129 models), `Dyness_DH_Series_Definitions/`, `generated_definitions/`, and `tagged_definitions/`.
+- Generated 30 FoxESS P3/H3 Pro production definitions in `FoxESS_P3_H3_Pro_Definitions/`.
+- Implemented defense-in-depth CSV formula injection (DDE) sanitization via `Generator.sanitize_csv_field()` across all generator output streams (`mars_generator.py`, `dyness_generator.py`, `generate_mars_definitions.py`, `generate_dyness_definitions.py`, `def_gen.py`).
+- Added automatic `.venv` site-packages discovery across all root generator scripts to eliminate VS Code `ModuleNotFoundError`.
+- Executed full repository metrological audit (`scratch/deep_audit_all_definitions.py`): 2,360 definition files and 765,377 Modbus registers verified with 100.0% schema validity.
+- Expanded test battery to 1,113 automated tests (1,108 passing, 0 failures, 5 offline skipped).
+- Synchronized `CHANGELOG.md`, `README.md`, and all audit ledgers; bumped package release to `v0.4.0`.

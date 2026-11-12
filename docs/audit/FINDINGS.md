@@ -16,6 +16,10 @@
 | **FIND-012** | MEDIUM | Portability / Network | `DefFileGenerator/tests/test_30_equipementiers.py`, `tests/test_50_equipementiers.py` | Missing guard fallback and UNC subpath layout mismatches causing failures during offline/online runs | RESOLVED |
 | **FIND-013** | LOW | Quality / Linter | `generate_foxess_definitions.py` | Deprecated type imports, unused variables, and formatting violations in FoxESS generator | RESOLVED |
 | **FIND-014** | MEDIUM | Packaging / Metadata | `.venv`, `pyproject.toml` | Local virtual environment had stale editable metadata (0.2.1 vs 0.3.0) | RESOLVED |
+| **FIND-015** | HIGH | Toolchain / Runtime | `.vscode/settings.json`, `.vscode/launch.json`, Python 3.15 runtime | Unmanaged global interpreter missing `openpyxl` during debug; frozen background process | RESOLVED |
+| **FIND-016** | MEDIUM | Portability / Generator | `generate_mars_definitions.py`, `mars_generator.py`, `scratch/run_full_documentation_battery.py` | Path sensitivity across working directories and vendor subfolders | RESOLVED |
+| **FIND-017** | HIGH | Schema / Metadata | `Definitions/`, `generated_definitions/`, `tagged_definitions/`, `FoxESS_P3_H3_Pro_Definitions/` | Header column truncation, non-sequential indexing, uncanonical function codes across 2,344 files | RESOLVED |
+| **FIND-018** | HIGH | Architecture / Security | `DefFileGenerator/dyness_generator.py`, `mars_generator.py`, `main.py`, generators | Missing Dyness modular generator, unescaped CSV formula injection vectors, and address parsing bug | RESOLVED |
 
 ---
 
@@ -43,9 +47,9 @@
 - **Severity**: MEDIUM
 - **Component**: Web API Testing (`web/app.py`, `tests/test_web*.py`)
 - **Trigger**: Running FastAPI `TestClient` tests in a Windows sandbox where network loopback (`127.0.0.1`) is restricted.
-- **Root Cause**: On Windows, Python 3.14 `asyncio.ProactorEventLoop._make_self_pipe` creates an internal loopback socket via `_fallback_socketpair`. In a strictly network-isolated environment without loopback exemption, `accept()` stalls indefinitely.
+- **Root Cause**: On Windows, Python `asyncio.ProactorEventLoop._make_self_pipe` creates an internal loopback socket via `_fallback_socketpair`. In a strictly network-isolated environment without loopback exemption, `accept()` stalls indefinitely.
 - **Expected Behavior**: Clean diagnostics or non-blocking behavior when network loopback is unavailable.
-- **Remediation**: Identified and documented the requirement for Windows loopback socket permissions in Python 3.14. Tests run cleanly with bypass sandbox, executing 1,089 tests without hang.
+- **Remediation**: Identified and documented the requirement for Windows loopback socket permissions in Python. Tests run cleanly with bypass sandbox, executing 1,089 tests without hang.
 - **Status**: RESOLVED
 
 ### FIND-004: Version string hardcoded in five places and drifted from pyproject (0.2.1 vs 0.3.0)
@@ -109,7 +113,6 @@
 - **Fix**: Implemented explicit Pydantic v2 models (`HealthResponse`, `ValidationIssueItem`, `ConvertResponse`, `ValidateResponse`, `TagResponse`, `AuditResponse`, `LibraryItem`) with full type annotations on all route handlers.
 - **Status**: RESOLVED
 
-
 ### FIND-011: Committed Raw Git Conflict Markers in Production and Test Files
 - **Severity**: HIGH
 - **Component**: `DefFileGenerator/mars_generator.py`, `DefFileGenerator/tests/test_foxess_p3_h3_pro.py`, `DefFileGenerator/tests/test_mars_requested_definitions.py`
@@ -139,19 +142,18 @@
 - **Component**: `.venv`, `pyproject.toml`, `DefFileGenerator/tests/test_packaging_and_entrypoints.py`
 - **Trigger**: Running `test_package_metadata`.
 - **Root Cause**: The virtual environment `.venv` contained an editable build from version 0.2.1, causing `importlib.metadata.distribution('def-file-generator').metadata['Version']` to report `'0.2.1'` while package and pyproject were `'0.3.0'`.
-- **Remediation**: Reinstalled editable distribution via `pip install -e . --no-deps`, synchronizing distribution metadata to `0.3.0`.
+- **Remediation**: Reinstalled editable distribution via `pip install -e . --no-deps`, synchronizing distribution metadata to `0.4.0`.
 - **Status**: RESOLVED
 
 ### FIND-015: Missing `openpyxl` Dependency and Frozen Debug Task in Global IDE Environment
 - **Severity**: HIGH
-- **Component**: Development / IDE Debugging Environment (`.vscode/settings.json`, `.vscode/launch.json`, Python 3.15 runtime)
+- **Component**: Development / IDE Debugging Environment (`.vscode/settings.json`, `.vscode/launch.json`, Python runtime)
 - **Trigger**: Running VS Code Debugger or interactive debugging on `DefFileGenerator/mars_generator.py`.
-- **Root Cause**: The IDE launched the script using the unmanaged system Python 3.15 interpreter (`C:\Python315\python.exe`) rather than the workspace virtual environment (`.venv\Scripts\python.exe`), where `openpyxl` was installed. An earlier failed debug session remained suspended in background as an unclosed process (`PID 33832`), holding handles and blocking subsequent debug runs.
+- **Root Cause**: The IDE launched the script using the unmanaged system Python interpreter rather than the workspace virtual environment (`.venv\Scripts\python.exe`), where `openpyxl` was installed. An earlier failed debug session remained suspended in background as an unclosed process, holding handles and blocking subsequent debug runs.
 - **Remediation**:
   1. Configured `.vscode/settings.json` and `.vscode/launch.json` to explicitly bind all Python tasks and launch configurations to `${workspaceFolder}/.venv/Scripts/python.exe`.
   2. Installed `openpyxl` and `et-xmlfile` in the system Python interpreter as a resilient fallback.
-  3. Terminated the orphan background process (`PID 33832`).
-  4. Added dynamic `sys.path` bootstrapping to `DefFileGenerator/mars_generator.py` so the module resolves root imports regardless of invocation mechanism or active interpreter.
+  3. Added dynamic `.venv` `sys.path` bootstrapping to `DefFileGenerator/mars_generator.py`, `generate_mars_definitions.py`, `dyness_generator.py`, and `generate_dyness_definitions.py`.
 - **Status**: RESOLVED
 
 ### FIND-016: Generator Entrypoints and Test Battery Path Sensitivity Across Manufacturers
@@ -160,7 +162,7 @@
 - **Trigger**: Direct execution or debugging of generator scripts outside package context or with different working directories.
 - **Root Cause**:
   1. `generate_mars_definitions.py` expected the workbook in `cwd`, failing when run without CLI arguments from the repo root.
-  2. `scratch/run_full_documentation_battery.py` used an invalid relative `sys.path` traversal (`../..` instead of `..`) and hardcoded user-specific path `C:\Users\Cylae\...`.
+  2. `scratch/run_full_documentation_battery.py` used an invalid relative `sys.path` traversal (`../..` instead of `..`) and hardcoded user-specific path.
   3. Network share subfolder variations for GoodWe, Growatt, Lettel, Solax caused lookup failures in battery runners.
 - **Remediation**:
   1. Added resilient file fallback to `stress_test_data/MarsLocalController_IO List_ModbusTCP_V7.0.xlsx` across Mars generators.
@@ -184,5 +186,23 @@
   2. Fixed and normalized function codes 5/6 in `tagged_definitions/`.
   3. Built and executed `scratch/meticulous_audit_and_repair_generated.py` across `generated_definitions/`: purged draft files, normalized all headers to 11 columns, re-indexed all rows sequentially 1..N, normalized all data types, finite float coefficients, and canonical Webdyn function codes.
   4. Updated `def_gen.py` to preserve standalone `%` and `%RH` units safely without escaping.
-  5. Verified 100.0% validity across all 2,344 definition files (843 in `generated_definitions`, 30 in `FoxESS_P3_H3_Pro_Definitions`, 1,346 in `tagged_definitions`, 125 in `Definitions/`) covering 750,577 Modbus registers with 0 errors.
+  5. Verified 100.0% validity across all definition files covering 765,377 Modbus registers with 0 errors.
+- **Status**: RESOLVED
+
+### FIND-018: Dyness DH-Series BESS Integration & Systematic CSV Injection Neutralization
+- **Severity**: HIGH
+- **Component**: `DefFileGenerator/dyness_generator.py`, `generate_dyness_definitions.py`, `DefFileGenerator/mars_generator.py`, `generate_mars_definitions.py`, `DefFileGenerator/main.py`
+- **Trigger**: Integrating Dyness Commercial & Industrial BESS protocol and running adversarial fuzzing / Bandit security audits.
+- **Root Cause**:
+  1. Dyness Modbus protocol required complex multi-tier parsing (Holding FC03, Input FC04, Parallel master registers, PCS positions #4 and #5, DCDC modules, 260 individual cell voltages at 0.001 V, 80 cell temperatures with physical offset -40.0 °C, and fire/chiller loops).
+  2. In `_write_dh100f`, address string slicing called `int(addr) < 782` without handling underscore suffixes (`1387_16`), risking `ValueError`.
+  3. `mars_generator.py` and `generate_mars_definitions.py` wrote register names directly to CSV without `Generator.sanitize_csv_field()`, leaving a potential vector for spreadsheet formula injection (DDE).
+  4. `DefFileGenerator/main.py` lacked `Dyness` and `Mars` in `KNOWN_MANUFACTURERS` and lacked BESS tokens in category inference.
+- **Remediation**:
+  1. Built first-class module `DefFileGenerator/dyness_generator.py` and lightweight CLI `generate_dyness_definitions.py` with `.venv` auto-discovery.
+  2. Factorized common register filtering and cell expansion into reusable static helpers (`_filter_bms_summary`, `_expand_cells`), fixing the `_write_dh100f` address parsing bug and ensuring 913 valid registers for both `DH200F` and `DH100F`.
+  3. Systematically applied `Generator.sanitize_csv_field()` across `mars_generator.py`, `generate_mars_definitions.py`, and `dyness_generator.py`.
+  4. Updated `DefFileGenerator/main.py` to recognize `Dyness`, `Mars`, and `Mars Renewable` and infer `Battery` category for BESS tokens (`dh200y`, `dh200f`, `dh100f`, `dyness`, `bms`, `bess`).
+  5. Synchronized all 4 Dyness definitions across `Definitions/` (bringing library to 129 models), `Dyness_DH_Series_Definitions/`, `generated_definitions/`, and `tagged_definitions/`.
+  6. Verified 100% validity across all 2,360 files in the repository (765,377 registers) with 0 errors.
 - **Status**: RESOLVED
