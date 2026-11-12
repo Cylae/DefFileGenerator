@@ -16,6 +16,7 @@ from DefFileGenerator.knowledge_miner import (
     enrich_definition_rows,
     infer_sunpm_tag,
     infer_webdyn_tag,
+    is_canonical_sunpm_tag,
     normalize_tag_to_sunpm,
 )
 from DefFileGenerator.main import _run_cli
@@ -72,6 +73,19 @@ class TestSunPMTags(unittest.TestCase):
             ("voltage.battery", "U_DC"),
             ("irradiance", "POA"),
             ("irradiance.horizontal", "GHI"),
+            ("PAC", "P_AC"),
+            ("serialNumber", "SERIAL"),
+            ("WattHours", "E_TOT"),
+            ("P_PV", "P_DC"),
+            ("P_BAT", "P_DC"),
+            ("V_BAT", "U_DC"),
+            ("I_BAT", "I_DC"),
+            ("V_CELL_MAX", "U_CELL_MAX"),
+            ("V_CELL_MIN", "U_CELL_MIN"),
+            ("VArPct_RmpTms", "CMD_Q_RAMP_TIME_S"),
+            ("VArPct_RvrtTms", "CMD_Q_REVERT_TIME_S"),
+            ("OutPFSet_RmpTms", "CMD_PF_RAMP_TIME_S"),
+            ("OutPFSet_RvrtTms", "CMD_PF_REVERT_TIME_S"),
         ]
         for legacy, canonical in test_cases:
             self.assertEqual(
@@ -85,6 +99,28 @@ class TestSunPMTags(unittest.TestCase):
                 canonical,
                 f"Expected {legacy.lower()} -> {canonical}",
             )
+
+    def test_canonical_sunpm_tags_extended(self) -> None:
+        """Verify extended canonical tags including ramp/revert commands, battery and alarms."""
+        canonical_tags = [
+            "CMD_Q_RAMP_TIME_S",
+            "CMD_Q_REVERT_TIME_S",
+            "CMD_PF_RAMP_TIME_S",
+            "CMD_PF_REVERT_TIME_S",
+            "CMD_BATTERY",
+            "U_CELL_MAX",
+            "U_CELL_MIN",
+            "TEMP_MAX",
+            "TEMP_MIN",
+            "ALARM_1",
+            "ALARM_16",
+        ]
+        for tag in canonical_tags:
+            self.assertTrue(is_canonical_sunpm_tag(tag), f"Expected {tag} to be canonical")
+
+        non_canonical = ["NOT_A_TAG", "RO", "RW", "1", "10", "4", "0.1"]
+        for tag in non_canonical:
+            self.assertFalse(is_canonical_sunpm_tag(tag), f"Expected {tag} to NOT be canonical")
 
     def test_legacy_infer_webdyn_tag_backward_compatibility(self) -> None:
         """Verify legacy infer_webdyn_tag retains exact backward-compatible behavior."""

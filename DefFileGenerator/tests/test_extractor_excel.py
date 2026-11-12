@@ -49,6 +49,26 @@ class TestExtractorExcel(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["Name"], "Voltage")
 
+    def test_excel_inflated_column_dimension_bounded(self):
+        """Verify that openpyxl sheets with inflated column count (e.g. 16,384) are clamped and parsed."""
+        import openpyxl
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "WideSheet"
+        ws.append(["Address", "Name", "Type", "Unit"])
+        ws.append(["100", "Grid Voltage", "U16", "V"])
+        # Set a cell far out to inflate max_column beyond default limit
+        ws.cell(row=1, column=500, value="sparse_far_cell")
+        p = os.path.join(self.tmpdir.name, "wide.xlsx")
+        wb.save(p)
+
+        tables = list(self.ex.extract_from_excel(p))
+        rows = list(tables[0])
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["Name"], "Grid Voltage")
+        self.assertEqual(rows[0]["Address"], "100")
+
     def test_excel_multiple_sheets_yields_multiple_tables(self):
         p = self._make_excel(
             {

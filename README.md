@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
   <img src="https://img.shields.io/badge/Version-0.4.0-blue?style=for-the-badge" alt="Version 0.4.0" />
-  <img src="https://img.shields.io/badge/Tests-1108%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1108 passed" />
+  <img src="https://img.shields.io/badge/Tests-1112%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1112 passed" />
   <img src="https://img.shields.io/badge/Coverage-90%25-brightgreen?style=for-the-badge" alt="Coverage: 90%" />
   <img src="https://img.shields.io/badge/Type%20Check-Mypy%20Strict-blue?style=for-the-badge" alt="Mypy Strict" />
   <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
@@ -62,7 +62,7 @@ Manually creating this file usually requires hours of tedious, error-prone manua
 1. **Reads your source document** (PDF datasheet, Excel workbook, CSV table, or XML register map).
 2. **Automatically locates register tables** and understands vendor-specific column names in English, French, and German.
 3. **Normalizes data types and addresses** (hex/decimal conversions, standard types like `U16`, `I32`, `F32`, individual bitfield slices).
-4. **Applies Semantic SunPM Canonical Tags** via a 211,000+ register training dataset (`P_AC`, `Q_AC`, `E_TOT`, `E_DAY`, `U_AC_1`, etc.).
+4. **Applies Semantic SunPM Canonical Tags** via a 1,100,000+ register training dataset (`P_AC`, `Q_AC`, `E_TOT`, `E_DAY`, `U_AC_1`, etc.).
 5. **Performs strict validation** (unique variable tags, valid Modbus address spaces, interval collision and overlap checks).
 6. **Generates an official WebdynSunPM CSV file**, ready to be imported directly into your data logger gateway!
 
@@ -431,13 +431,14 @@ deffilegen audit defective_def.csv --fix -o sanitized_def.csv
 # 9. Generate comprehensive technical Markdown / JSON reports
 deffilegen report Definitions/ -o AUDIT_REPORT.md --json metrics.json
 
-# 10. Train semantic knowledge base from definition datasets
-deffilegen train --dir Definitions/ --summary --export-json learned_knowledge.json
+# 10. Train semantic knowledge base from definition datasets (CSV, Excel workbooks, INI profiles, XML tables)
+deffilegen train --dir Definitions/ --include-all --summary --export-json learned_knowledge.json
 ```
 
 #### Helpful CLI Flags:
 - `-r` or `--recursive` : Recursively scan directories for nested register map files in batch mode.
 - `-j` or `--jobs N` : Number of parallel worker threads for batch processing (default: 1).
+- `--include-all` : Mine from all equipment formats (CSV, Excel, INI profiles, XML tables).
 - `--pages 12,14-18` : Target specific register table pages in a large manual.
 - `--sheet "Registers"` : Target a specific worksheet inside an Excel workbook.
 - `--mapping custom.json` : Supply explicit column mapping overrides.
@@ -497,7 +498,7 @@ if success:
 
 ## 🧠 Semantic Knowledge Miner & SunPM Tagging Engine
 
-The **Semantic Knowledge Miner** (`DefFileGenerator/knowledge_miner.py`) is an autonomous domain intelligence layer trained on **211,000+ Modbus registers** across 250+ solar inverters, energy meters, weather stations, and battery storage systems, combined with the official Webdyn SunPM specification (`SunPM_DEfFile_Tags_v1.xlsx`).
+The **Semantic Knowledge Miner** (`DefFileGenerator/knowledge_miner.py`) is an autonomous domain intelligence layer trained on **1,280,000+ Modbus registers** across 5,040+ equipment definitions (CSV, Excel, Webdyn INI profile tables, XML tables, and PDF protocol datasheets) representing all 252 energy equipment manufacturers, combined with the official Webdyn SunPM specification (`SunPM_DEfFile_Tags_v1.xlsx`).
 
 ### 1. Modern SunPM Canonical Tag Taxonomy
 
@@ -615,7 +616,7 @@ This repository is governed by the **Apollo-Standard Autonomous Constitution** (
                             ▼
 ┌────────────────────────────────────────────────────────┐
 │  2. SEMANTIC KNOWLEDGE MINER (knowledge_miner.py)      │
-│  - 211,000+ registers training dataset                 │
+│  - 1,100,000+ registers training dataset               │
 │  - Canonical SunPM tag attribution (P_AC, E_TOT...)    │
 │  - Action code inference (4=Telemetry, 9=Alarm...)     │
 │  - Phase & scaling factor disambiguation               │
@@ -775,7 +776,7 @@ DefFileGenerator/
 │   ├── extractor.py          # Multi-format parser (PDF, Excel, CSV, XML)
 │   ├── gui.py                # Desktop GUI application (CustomTkinter / Tkinter)
 │   ├── io_utils.py           # Atomic file IO and preview utilities
-│   ├── knowledge_miner.py    # Semantic SunPM tag inference (211,000+ registers dataset)
+│   ├── knowledge_miner.py    # Semantic SunPM tag inference (1,100,000+ registers dataset)
 │   ├── dyness_generator.py   # Dyness DH-Series BESS (DH200Y, DH200F, DH100F) generator
 │   ├── mars_generator.py     # Mars Renewable BESS & EMS multi-slave generator
 │   ├── report_generator.py   # Technical audit & quality reporting engine

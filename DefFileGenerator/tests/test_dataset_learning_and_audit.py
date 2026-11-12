@@ -208,6 +208,76 @@ class TestDatasetLearningAndAudit(unittest.TestCase):
         total_regs = sum(r.register_count for r in reports.values())
         self.assertGreaterEqual(total_regs, 15000)
 
+    def test_train_knowledge_multi_format(self) -> None:
+        """Verifies multi-format knowledge mining (CSV + INI) into DatasetKnowledge."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / "test_def.csv"
+            ini_path = Path(tmpdir) / "test_profile.ini"
+
+            # Create test CSV
+            rows = [
+                ["ID", "Inverter", "ModelX"],
+                ["0", "4", "100", "U16", "0", "Inverter Active Power", "P_AC", "1", "0", "kW", "4"],
+            ]
+            with open(csv_path, "w", newline="", encoding="utf-8") as f:
+                writer = csv.writer(f, delimiter=";")
+                writer.writerows(rows)
+
+            # Create test INI
+            ini_content = (
+                "[Modbus_VariablesTables]\n"
+                "1;4;Daily Energy Yield;0;10;0;0;0;0;0;kWh;4\n"
+                "2;4;Grid Frequency;0;10;0;0;0;0;0;Hz;4\n"
+                "}\n"
+            )
+            with open(ini_path, "w", encoding="latin-1") as f:
+                f.write(ini_content)
+
+            knowledge = train_knowledge_from_definitions(
+                directories=tmpdir,
+                force_retrain=True,
+                include_ini=True,
+            )
+            self.assertEqual(knowledge.total_definitions_mined, 2)
+            self.assertGreaterEqual(knowledge.total_registers_mined, 3)
+            self.assertEqual(knowledge.get_learned_tag("Inverter Active Power"), "P_AC")
+            self.assertEqual(knowledge.get_learned_tag("Daily Energy Yield"), "E_DAY")
+            self.assertEqual(knowledge.get_learned_tag("Grid Frequency"), "FREQ")
+
+    def test_cli_train_command_include_all(self) -> None:
+        """Verifies `deffilegen train --include-all` CLI subcommand."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / "test_def.csv"
+            json_export = Path(tmpdir) / "learned.json"
+
+            rows = [
+                ["ID", "Inverter", "ModelY"],
+                [
+                    "0",
+                    "4",
+                    "100",
+                    "U16",
+                    "0",
+                    "Internal Temperature",
+                    "TEMP_INT",
+                    "1",
+                    "0",
+                    "°C",
+                    "4",
+                ],
+            ]
+            with open(csv_path, "w", newline="", encoding="utf-8") as f:
+                writer = csv.writer(f, delimiter=";")
+                writer.writerows(rows)
+
+            _run_cli(["train", "--include-all", "--dir", tmpdir, "--export-json", str(json_export)])
+
+            self.assertTrue(json_export.is_file())
+            with open(json_export, encoding="utf-8") as f:
+                data = json.load(f)
+            self.assertIn("name_to_tag", data)
+            self.assertEqual(data["name_to_tag"].get("internal temperature"), "TEMP_INT")
+
     def test_cli_train_command(self) -> None:
         """Verifies `deffilegen train --summary --export-json` CLI subcommand."""
         with tempfile.TemporaryDirectory() as tmpdir:

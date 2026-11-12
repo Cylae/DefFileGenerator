@@ -115,6 +115,8 @@ KNOWN_MANUFACTURERS: tuple[str, ...] = (
     "Deye",
     "ElMeasure",
     "Webdyn",
+    "Answer Drives",
+    "AnswerDrives",
 )
 
 
@@ -138,6 +140,10 @@ def infer_metadata_from_filename(filepath: str | Path) -> tuple[str, str, str]:
         if mfg.lower() in full_str:
             matched_mfg = mfg
             break
+    if matched_mfg == "AnswerDrives":
+        matched_mfg = "Answer Drives"
+    elif matched_mfg == "Manufacturer" and ("solargate" in full_str or "adsolargate" in full_str):
+        matched_mfg = "Answer Drives"
 
     # 2. Infer Category (token-based to prevent substring collisions like 'meter' in 'pyranometer' or 'io' in 'action')
     lower_tokens = set(re.findall(r"[a-z0-9]+", stem.lower()))
@@ -196,13 +202,18 @@ def infer_metadata_from_filename(filepath: str | Path) -> tuple[str, str, str]:
         category = "Inverter"
 
     # 3. Infer Model
-    clean_stem = stem
-    if matched_mfg != "Manufacturer":
-        clean_stem = re.sub(re.escape(matched_mfg), "", clean_stem, flags=re.IGNORECASE)
-    clean_stem = re.sub(r"^(INV_|MET_|SEN_|BAT_|COM_|OTH_)", "", clean_stem, flags=re.IGNORECASE)
-    clean_model = re.sub(r"[_\s]+", "-", clean_stem.strip("_- "))
-    if not clean_model:
-        clean_model = "Model"
+    if "solargate" in stem_lower:
+        clean_model = "Solargate"
+    else:
+        clean_stem = stem
+        if matched_mfg != "Manufacturer":
+            clean_stem = re.sub(re.escape(matched_mfg), "", clean_stem, flags=re.IGNORECASE)
+        clean_stem = re.sub(
+            r"^(INV_|MET_|SEN_|BAT_|COM_|OTH_)", "", clean_stem, flags=re.IGNORECASE
+        )
+        clean_model = re.sub(r"[_\s]+", "-", clean_stem.strip("_- "))
+        if not clean_model:
+            clean_model = "Model"
 
     return matched_mfg, clean_model, category
 
@@ -502,7 +513,8 @@ def audit_command(args: argparse.Namespace) -> None:
 def train_command(args: argparse.Namespace) -> None:
     """
     Subcommand handler for 'train': learns empirical metrics, data types, units,
-    action codes, and official SunPM tags from definition CSVs.
+    action codes, and official SunPM tags from definition CSVs, Excel workbooks,
+    INI profiles, and XML tables.
 
     Args:
         args: Parsed command line arguments.
@@ -512,12 +524,22 @@ def train_command(args: argparse.Namespace) -> None:
     definitions_dir = getattr(args, "dir", "Definitions")
     export_json = getattr(args, "export_json", None)
     summary = getattr(args, "summary", False)
+    include_all = getattr(args, "include_all", False)
+    include_excel = include_all or getattr(args, "include_excel", False)
+    include_ini = include_all or getattr(args, "include_ini", False)
+    include_xml = include_all or getattr(args, "include_xml", False)
 
     if not os.path.exists(definitions_dir):
         logging.error(f"Definitions directory not found: {definitions_dir}")
         sys.exit(1)
 
-    knowledge = train_knowledge_from_definitions(directories=definitions_dir, force_retrain=True)
+    knowledge = train_knowledge_from_definitions(
+        directories=definitions_dir,
+        force_retrain=True,
+        include_excel=include_excel,
+        include_ini=include_ini,
+        include_xml=include_xml,
+    )
 
     logging.info(
         f"Knowledge training successful: "
@@ -1137,19 +1159,40 @@ def _run_cli(argv: list[str] | None = None) -> None:
 
     # Train
     parser_train = subparsers.add_parser(
-        "train", help="Train semantic knowledge base from definition CSVs"
+        "train",
+        help="Train semantic knowledge base from definition CSVs, Excel workbooks, INI profiles, and XML tables",
     )
     add_common_flags(parser_train)
     parser_train.add_argument(
         "--dir",
         default="Definitions",
-        help="Directory containing definition CSV files (default: Definitions)",
+        help="Directory containing definition files (default: Definitions)",
     )
     parser_train.add_argument("--export-json", help="Export learned knowledge to a JSON file")
     parser_train.add_argument(
         "--summary",
         action="store_true",
         help="Display summary of learned metrics and tag distribution",
+    )
+    parser_train.add_argument(
+        "--include-all",
+        action="store_true",
+        help="Mine from all equipment formats (CSV, Excel, INI profiles, XML tables)",
+    )
+    parser_train.add_argument(
+        "--include-excel",
+        action="store_true",
+        help="Mine also from Excel workbooks (.xlsx, .xls)",
+    )
+    parser_train.add_argument(
+        "--include-ini",
+        action="store_true",
+        help="Mine also from INI equipment profile configurations (.ini)",
+    )
+    parser_train.add_argument(
+        "--include-xml",
+        action="store_true",
+        help="Mine also from XML register table files (.xml)",
     )
 
     args = parser.parse_args(argv)

@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **129 fichiers de définition** validés couvrant **21 827 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **130 fichiers de définition** validés couvrant **22 115 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,7 +8,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 66 | 13 936 | ABB, CyberPower, EFACEC, GoodWe, Goodwe (+21) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 67 | 14 224 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe (+21) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 31 | 3 394 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+14) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 4 | 3 700 | Dyness |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
@@ -34,7 +34,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (66 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (67 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -42,6 +42,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_ABB_PVS800-57B.csv`](./INV_ABB_PVS800-57B.csv) | ABB | PVS800-57B | Modbus | 1053 |
 | [`INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv`](./INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv) | ABB | TRIO_20.0-27.6_TL_OUTD | Modbus | 89 |
 | [`INV_ABB_Ultra_Inverter_Module.csv`](./INV_ABB_Ultra_Inverter_Module.csv) | ABB | Ultra_Inverter_Module | Modbus | 57 |
+| [`INV_AnswerDrives_Solargate.csv`](./INV_AnswerDrives_Solargate.csv) | Answer Drives | Solargate | Modbus | 288 |
 | [`INV_CyberPower_1-Phase.csv`](./INV_CyberPower_1-Phase.csv) | CyberPower | 1-Phase | Modbus | 85 |
 | [`INV_CyberPower_3-Phases.csv`](./INV_CyberPower_3-Phases.csv) | CyberPower | 3-Phases | Modbus | 71 |
 | [`INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv`](./INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv) | CyberPower | CPSHB6000ETL48-CPSHB6000ETLFR | Modbus | 103 |

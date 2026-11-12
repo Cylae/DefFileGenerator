@@ -70,9 +70,20 @@ SUNPM_LEGACY_TO_CANONICAL: dict[str, str] = {
     "DisplayModel": "MODEL",
     "DisplaySerial": "SERIAL",
     "DisplaySerialNumber": "SERIAL",
+    "serialNumber": "SERIAL",
     "ManufacturerStr": "MANUFACTURER",
     "SlaveAddress": "UNIT_ID",
     "DeviceAddr": "UNIT_ID",
+    # Aliases
+    "PAC": "P_AC",
+    "WattHours": "E_TOT",
+    "P_PV": "P_DC",
+    "P_BAT": "P_DC",
+    "V_BAT": "U_DC",
+    "I_BAT": "I_DC",
+    "V_CELL_MAX": "U_CELL_MAX",
+    "V_CELL_MIN": "U_CELL_MIN",
+    "total_discharge_energy": "E_TOT",
     # Remote Commands & Controls
     "cmdOn": "CMD_ON",
     "cmdOff": "CMD_OFF",
@@ -187,10 +198,15 @@ SUNPM_CANONICAL_TAGS: set[str] = {
     "CMD_Q_MODE",
     "CMD_Q_PERCENT",
     "CMD_Q_ANGLE",
+    "CMD_Q_RAMP_TIME_S",
+    "CMD_Q_REVERT_TIME_S",
     "CMD_PF",
     "CMD_PF_INT",
     "CMD_PF_ENA",
+    "CMD_PF_RAMP_TIME_S",
+    "CMD_PF_REVERT_TIME_S",
     "CMD_COMMIT",
+    "CMD_BATTERY",
     # Sensors
     "POA",
     "GHI",
@@ -201,10 +217,14 @@ SUNPM_CANONICAL_TAGS: set[str] = {
     "HUMIDITY",
     "PRESSURE",
     "RAIN",
-    # Battery
+    # Battery & BESS
     "SOC",
     "SOH",
     "TEMP",
+    "TEMP_MAX",
+    "TEMP_MIN",
+    "U_CELL_MAX",
+    "U_CELL_MIN",
     # Display
     "AVOIDED_CO2",
     "AVOIDED_CO2_DAY",
@@ -238,6 +258,8 @@ def is_canonical_sunpm_tag(tag: str) -> bool:
     if not tag:
         return False
     if tag in SUNPM_CANONICAL_TAGS:
+        return True
+    if tag.startswith("ALARM_") and tag[6:].isdigit():
         return True
     return any(
         tag.startswith(pref)
@@ -510,10 +532,14 @@ def train_knowledge_from_definitions(
     auto_activate: bool = True,
     force_retrain: bool = False,
     recursive: bool = True,
+    include_excel: bool = False,
+    include_ini: bool = False,
+    include_xml: bool = False,
 ) -> DatasetKnowledge:
     """
-    Parses all definition CSV files in specified directories, training a DatasetKnowledge
-    model with variable tags, unit associations, and type distributions.
+    Parses definition files (CSV, and optionally Excel workbooks, INI profiles, XML tables)
+    in specified directories, training a DatasetKnowledge model with variable tags,
+    unit associations, and type distributions.
     """
     global ACTIVE_KNOWLEDGE
 
@@ -546,9 +572,20 @@ def train_knowledge_from_definitions(
     knowledge = DatasetKnowledge()
     seen_files: set[str] = set()
 
+    ext_cls: Any = None
+    if include_excel or include_xml:
+        if __package__:
+            from .extractor import Extractor as ext_cls
+        else:
+            from extractor import (  # type: ignore[import-not-found, no-redef]
+                Extractor as ext_cls,
+            )
+
     for d_path in resolved_dirs:
         if not d_path.is_dir():
             continue
+
+        # 1. Definition CSV files
         csv_files = sorted(d_path.rglob("*.csv") if recursive else d_path.glob("*.csv"))
         for p in csv_files:
             if p.name in seen_files:
@@ -586,6 +623,169 @@ def train_knowledge_from_definitions(
                         )
             except Exception:
                 continue
+
+        # 2. Excel Technical Workbooks (.xlsx & .xls)
+        if include_excel and ext_cls is not None:
+            try:
+                extractor = ext_cls()
+                excel_candidates = [
+                    f
+                    for f in (d_path.rglob("*.xlsx") if recursive else d_path.glob("*.xlsx"))
+                    if not f.name.startswith("~$")
+                ] + [
+                    f
+                    for f in (d_path.rglob("*.xls") if recursive else d_path.glob("*.xls"))
+                    if not f.name.startswith("~$")
+                ]
+                for ep in sorted(excel_candidates):
+                    if ep.name in seen_files:
+                        continue
+                    seen_files.add(ep.name)
+                    try:
+                        raw_data = extractor.extract_from_excel(str(ep))
+                        mapped = list(extractor.map_and_clean(raw_data))
+                        if not mapped:
+                            continue
+                        excel_regs = 0
+                        for reg in mapped:
+                            name = str(reg.get("Name") or "").strip()
+                            if not name:
+                                continue
+                            dtype = str(reg.get("Type") or "").strip()
+                            unit = str(reg.get("Unit") or "").strip()
+                            action = str(reg.get("Action") or "").strip()
+                            tag = str(reg.get("Tag") or "").strip()
+
+                            norm_tag = normalize_tag_to_sunpm(tag)
+                            if not norm_tag:
+                                norm_tag = infer_sunpm_tag(name, use_learned_dataset=False)
+
+                            if norm_tag and is_canonical_sunpm_tag(norm_tag):
+                                knowledge.learn_entry(
+                                    name=name,
+                                    tag=norm_tag,
+                                    dtype=dtype,
+                                    unit=unit,
+                                    action=action,
+                                )
+                            excel_regs += 1
+                        if excel_regs > 0:
+                            knowledge.total_definitions_mined += 1
+                            knowledge.total_registers_mined += excel_regs
+                    except Exception:
+                        continue
+            except Exception:
+                pass
+
+        # 3. INI Equipment Profile Configurations
+        if include_ini:
+            ini_candidates = sorted(d_path.rglob("*.ini") if recursive else d_path.glob("*.ini"))
+            for ip in ini_candidates:
+                if ip.name in seen_files:
+                    continue
+                seen_files.add(ip.name)
+                try:
+                    with open(ip, encoding="latin-1", errors="replace") as fp:
+                        lines = fp.readlines()
+                    in_modbus_vars = False
+                    ini_regs = 0
+                    for line in lines:
+                        line_str = line.strip()
+                        if not line_str or line_str.startswith("#"):
+                            continue
+                        if "Modbus_VariablesTables" in line_str:
+                            in_modbus_vars = True
+                            continue
+                        if in_modbus_vars and "}" in line_str:
+                            in_modbus_vars = False
+                            continue
+
+                        parts = [x.strip() for x in line_str.split(";")]
+                        name = ""
+                        unit = ""
+                        action = ""
+                        if in_modbus_vars and len(parts) >= 4:
+                            name = parts[2]
+                            unit = parts[10] if len(parts) > 10 else ""
+                            action = parts[11] if len(parts) > 11 else ""
+                        elif len(parts) >= 6:
+                            for idx in (4, 2, 5):
+                                if (
+                                    idx < len(parts)
+                                    and len(parts[idx]) > 2
+                                    and not parts[idx].isdigit()
+                                ):
+                                    name = parts[idx]
+                                    if idx + 1 < len(parts):
+                                        cand_unit = parts[idx + 1]
+                                        if (
+                                            len(cand_unit) <= 6
+                                            and not cand_unit.replace(".", "").isdigit()
+                                        ):
+                                            unit = cand_unit
+                                    break
+
+                        if name and len(name) > 1 and not name.isdigit():
+                            norm_tag = infer_sunpm_tag(name, use_learned_dataset=False)
+                            if norm_tag and is_canonical_sunpm_tag(norm_tag):
+                                knowledge.learn_entry(
+                                    name=name, tag=norm_tag, unit=unit, action=action
+                                )
+                            ini_regs += 1
+
+                    if ini_regs > 0:
+                        knowledge.total_definitions_mined += 1
+                        knowledge.total_registers_mined += ini_regs
+                except Exception:
+                    continue
+
+        # 4. XML Register Maps
+        if include_xml and ext_cls is not None:
+            try:
+                extractor = ext_cls()
+                xml_candidates = sorted(
+                    d_path.rglob("*.xml") if recursive else d_path.glob("*.xml")
+                )
+                for xp in xml_candidates:
+                    if xp.name in seen_files:
+                        continue
+                    seen_files.add(xp.name)
+                    try:
+                        raw_data = extractor.extract_from_xml(str(xp))
+                        mapped = list(extractor.map_and_clean(raw_data))
+                        if not mapped:
+                            continue
+                        xml_regs = 0
+                        for reg in mapped:
+                            name = str(reg.get("Name") or "").strip()
+                            if not name:
+                                continue
+                            dtype = str(reg.get("Type") or "").strip()
+                            unit = str(reg.get("Unit") or "").strip()
+                            action = str(reg.get("Action") or "").strip()
+                            tag = str(reg.get("Tag") or "").strip()
+
+                            norm_tag = normalize_tag_to_sunpm(tag)
+                            if not norm_tag:
+                                norm_tag = infer_sunpm_tag(name, use_learned_dataset=False)
+
+                            if norm_tag and is_canonical_sunpm_tag(norm_tag):
+                                knowledge.learn_entry(
+                                    name=name,
+                                    tag=norm_tag,
+                                    dtype=dtype,
+                                    unit=unit,
+                                    action=action,
+                                )
+                            xml_regs += 1
+
+                        if xml_regs > 0:
+                            knowledge.total_definitions_mined += 1
+                            knowledge.total_registers_mined += xml_regs
+                    except Exception:
+                        continue
+            except Exception:
+                pass
 
     if auto_activate:
         ACTIVE_KNOWLEDGE = knowledge
@@ -638,6 +838,28 @@ def infer_sunpm_tag(
                 return normalized
         return existing_tag
 
+    # Guard dummy, unused, or reserved placeholder registers
+    clean_n = variable_name.strip().lower()
+    if (
+        not clean_n
+        or clean_n
+        in (
+            "reserved",
+            "réservé",
+            "reserve",
+            "not used",
+            "notused",
+            "unused",
+            "nu",
+            "n.u.",
+            "none",
+            "-",
+            "--",
+        )
+        or clean_n.startswith(("reserved_", "reserve_"))
+    ):
+        return ""
+
     # 0. Check learned dataset associations first
     if use_learned_dataset:
         kb = knowledge if knowledge is not None else get_active_knowledge()
@@ -647,8 +869,73 @@ def infer_sunpm_tag(
                 low = variable_name.lower()
                 if any(u in low for u in ("kw", " w", "[w]", "(w)", "kvar", "var", "abs")):
                     learned = ""
+            if learned in ("CMD_P_AC_SET_ABS", "CMD_Q_AC_SET_ABS"):
+                low = variable_name.lower()
+                if any(u in low for u in ("%", "pct", "percent", "pourcent", "percentage")):
+                    learned = ""
+            if learned in ("U_AC_1", "U_AC_2", "U_AC_3", "U_AC"):
+                low = variable_name.lower()
+                if any(
+                    k in low
+                    for k in (
+                        "l1-l2",
+                        "l2-l3",
+                        "l3-l1",
+                        "l1l2",
+                        "l2l3",
+                        "l3l1",
+                        "l1_l2",
+                        "l2_l3",
+                        "l3_l1",
+                        "l1-l3",
+                        "l1l3",
+                        "l1 / l2",
+                        "l2 / l3",
+                        "l3 / l1",
+                        " uab",
+                        " ubc",
+                        " uca",
+                        " vab",
+                        " vbc",
+                        " vca",
+                        "(uab)",
+                        "(ubc)",
+                        "(uca)",
+                        "[uab]",
+                        "[ubc]",
+                        "[uca]",
+                        "phase a to phase b",
+                        "phase b to phase c",
+                        "phase c to phase a",
+                        "phase-phase",
+                        "phase to phase",
+                        "line-line",
+                        "line to line",
+                        "entre phases",
+                        "composée",
+                        "composee",
+                    )
+                ):
+                    learned = ""
             if learned in ("S_AC", "P_AC", "Q_AC", "FREQ", "PF"):
                 low = variable_name.lower()
+                if any(
+                    cmd in low
+                    for cmd in (
+                        "setpoint",
+                        "set point",
+                        "command",
+                        "commande",
+                        "consigne",
+                        "setting",
+                        "limitation",
+                        "limit",
+                        "target",
+                        "write",
+                        "cmd",
+                    )
+                ):
+                    learned = ""
                 if any(
                     ph in low
                     for ph in (
@@ -841,7 +1128,20 @@ def infer_sunpm_tag(
 
     # 2. AC Current (I_AC_1, I_AC_2, I_AC_3, I_AC)
     if any(k in n_lower for k in ("current", "courant", "i_ac", "iac")) and not any(
-        k in n_lower for k in ("dc", "mppt", "string", "bus", "leakage", "leak")
+        k in n_lower
+        for k in (
+            "dc",
+            "mppt",
+            "string",
+            "bus",
+            "leakage",
+            "leak",
+            "reactive",
+            "pv",
+            "solar",
+            "battery",
+            "bat",
+        )
     ):
         if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|l1\b|ia\b|iac1\b)", n_lower):
             return "I_AC_1"
@@ -849,7 +1149,13 @@ def infer_sunpm_tag(
             return "I_AC_2"
         if re.search(r"\b(?:phase\s*[c3]|line\s*[c3]|l3\b|ic\b|iac3\b)", n_lower):
             return "I_AC_3"
-        if re.search(r"\b(?:total|sum|ac\s+current|courant\s+ac\s+total)\b", n_lower):
+        if (
+            re.search(
+                r"\b(?:total|sum|ac\s+current|courant\s+ac\s+total|line\s+current|iac|i_ac|rmsac|is)\b",
+                n_lower,
+            )
+            or "linecurrent" in n_lower
+        ):
             return "I_AC"
 
     # 3. Reactive Power (Q_AC_1, Q_AC_2, Q_AC_3, Q_AC) - Checked before Active Power
@@ -885,7 +1191,9 @@ def infer_sunpm_tag(
         return "P_AC"
 
     # 5. Apparent Power (S_AC_1, S_AC_2, S_AC_3, S_AC)
-    if any(k in n_lower for k in ("apparent power", "puissance apparente", "sac")):
+    if any(k in n_lower for k in ("apparent power", "puissance apparente")) or re.search(
+        r"\b(?:sac|s_ac)\b", n_lower
+    ):
         if re.search(r"\b(?:phase\s*[a1]|l1\b|sac1\b)", n_lower):
             return "S_AC_1"
         if re.search(r"\b(?:phase\s*[b2]|l2\b|sac2\b)", n_lower):
@@ -909,7 +1217,15 @@ def infer_sunpm_tag(
     # 7. Power Factor (PF, PF_1, PF_2, PF_3)
     if any(
         k in n_lower
-        for k in ("power factor", "facteur de puissance", "cosphi", "cos_phi", "cos phi")
+        for k in (
+            "power factor",
+            "facteur de puissance",
+            "cosphi",
+            "cos_phi",
+            "cos phi",
+            "cosφ",
+            "powerfactor",
+        )
     ):
         if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
             return "PF_1"

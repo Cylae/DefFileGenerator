@@ -143,7 +143,10 @@ RE_ADDR_RANGE = re.compile(
     r"^(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})\s*([-\u2013\u2014~]|--|\.\.|to)\s*(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})$",
     re.IGNORECASE,
 )
-RE_FIRST_ADDR_CANDIDATE = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
+RE_FIRST_ADDR_CANDIDATE = re.compile(
+    r"^(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})([,\s\-\u2013\u2014~./]+(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5}))*$",
+    re.IGNORECASE,
+)
 RE_HEURISTIC_TYPE = re.compile(r"^(u|i|s|f|str|bit|bitmap|bitfield)\s*\d*$", re.IGNORECASE)
 RE_HEURISTIC_RW = re.compile(r"^(ro|rw|wo|r|w)$", re.IGNORECASE)
 RE_HEURISTIC_UNIT = re.compile(r"^(v|a|w|kw|kwh|mwh|var|kvar|hz|%|deg|c|℃)$", re.IGNORECASE)
@@ -162,8 +165,14 @@ MODBUS_HEADER_KEYWORDS = frozenset(
         "register",
         "reg",
         "registre",
+        "modbuspar",
+        "modbus par",
+        "modbusserialaddress",
+        "param#",
+        "param #",
         "name",
         "description",
+        "meaning",
         "nom",
         "point",
         "point table",
@@ -176,11 +185,15 @@ MODBUS_HEADER_KEYWORDS = frozenset(
         "grandeur",
         "parameter",
         "paramètre",
+        "commandword",
         "channel",
         "kanal",
         "bezeichnung",
         "type",
         "datatype",
+        "typology",
+        "dataelement",
+        "data element",
         "format",
         "unit",
         "unité",
@@ -193,6 +206,10 @@ MODBUS_HEADER_KEYWORDS = frozenset(
         "zugriff",
         "scale",
         "factor",
+        "ratedvalue",
+        "rated value",
+        "nominalvalue",
+        "nominal value",
         "gain",
         "offset",
         "length",
@@ -339,6 +356,16 @@ class Extractor:
             "modbus-adresse",
             "modbus-register-adresse",
             "registeradresse",
+            "modbuspar.",
+            "modbuspar",
+            "modbus par.",
+            "modbus par",
+            "modbus-par",
+            "modbus serial address",
+            "modbusserialaddress",
+            "modbus-serial-address",
+            "param#",
+            "param #",
             "point table",
             "point index",
             "offset",
@@ -375,8 +402,13 @@ class Extractor:
         "Name": [
             "name",
             "description",
+            "meaning",
             "parameter",
             "parameter name",
+            "parametername-param#",
+            "parameter name-param#",
+            "parametername-param# nu",
+            "parameter name-param# nu",
             "variable",
             "signal",
             "signal name",
@@ -392,6 +424,8 @@ class Extractor:
             "grandeur",
             "quantity",
             "register",
+            "function",
+            "fonction",
             "信号名称",
             "数据名称",
             "点名",
@@ -402,6 +436,14 @@ class Extractor:
             "data type",
             "datatype",
             "type",
+            "typology",
+            "dataelement",
+            "data element",
+            "dataelement type",
+            "data element type",
+            "dataelement\ntype",
+            "parametertype",
+            "parameter type",
             "format",
             "info3",
             "type de données",
@@ -455,6 +497,10 @@ class Extractor:
             "résolution",
             "accuracy",
             "precision",
+            "ratedvalue",
+            "rated value",
+            "nominalvalue",
+            "nominal value",
             "facteur",
             "faktor",
             "auflösung",
@@ -882,13 +928,15 @@ class Extractor:
                             logging.error(f"Sheet '{name}' not found in {filepath}")
                             return
                         ws = wb_xls.sheet_by_name(name)
-                        if ws.nrows * ws.ncols > MAX_EXCEL_SHEET_CELLS:
+                        effective_cols = min(ws.ncols, 100)
+                        if ws.nrows * effective_cols > MAX_EXCEL_SHEET_CELLS:
                             raise ExtractionError(
                                 f"Sheet '{name}' exceeds the maximum expanded worksheet size "
                                 f"of {MAX_EXCEL_SHEET_CELLS} cells."
                             )
                         raw_rows = [
-                            [ws.cell_value(r, c) for c in range(ws.ncols)] for r in range(ws.nrows)
+                            [ws.cell_value(r, c) for c in range(effective_cols)]
+                            for r in range(ws.nrows)
                         ]
                         yield from Extractor._process_sheet_rows(raw_rows)
 
@@ -951,12 +999,18 @@ class Extractor:
                         logging.error(f"Sheet '{name}' not found in {filepath}")
                         return
                     ws = wb[name]
-                    if (ws.max_row or 0) * (ws.max_column or 0) > MAX_EXCEL_SHEET_CELLS:
-                        raise ExtractionError(
-                            f"Sheet '{name}' exceeds the maximum expanded worksheet size "
-                            f"of {MAX_EXCEL_SHEET_CELLS} cells."
-                        )
-                    rows = list(ws.iter_rows(values_only=True))
+                    max_r = ws.max_row or 0
+                    max_c = ws.max_column or 0
+                    if max_r * max_c > MAX_EXCEL_SHEET_CELLS:
+                        effective_cols = min(max_c, 100)
+                        if max_r * effective_cols > MAX_EXCEL_SHEET_CELLS:
+                            raise ExtractionError(
+                                f"Sheet '{name}' exceeds the maximum expanded worksheet size "
+                                f"of {MAX_EXCEL_SHEET_CELLS} cells."
+                            )
+                        rows = list(ws.iter_rows(max_col=effective_cols, values_only=True))
+                    else:
+                        rows = list(ws.iter_rows(values_only=True))
                     yield from Extractor._process_sheet_rows(rows)
 
                 yield sheet_generator()
@@ -1175,6 +1229,38 @@ class Extractor:
                                         if c_i_has_data and c_next_no_data:
                                             combined_headers[c_i] = combined_headers[c_i + 1]
                                             combined_headers[c_i + 1] = ""
+                                    # Right-shift correction: when a Name/Description header is placed over the Address column
+                                    elif combined_headers[c_i] and not combined_headers[c_i + 1]:
+                                        c_i_low = combined_headers[c_i].lower()
+                                        if any(term in c_i_low for term in NAME_INDICATOR_TERMS):
+                                            c_i_is_addr = any(
+                                                row[c_i]
+                                                and (
+                                                    str(row[c_i]).strip().isdigit()
+                                                    or RE_HEX_OR_DEC.match(
+                                                        RE_CLEAN_WHITESPACE.sub(
+                                                            "", str(row[c_i]).strip()
+                                                        )
+                                                    )
+                                                    or RE_ADDR_RANGE.match(
+                                                        RE_CLEAN_WHITESPACE.sub(
+                                                            "", str(row[c_i]).strip()
+                                                        )
+                                                    )
+                                                )
+                                                for row in data_rows
+                                                if len(row) > c_i
+                                            )
+                                            c_next_is_name = any(
+                                                row[c_i + 1]
+                                                and len(str(row[c_i + 1]).strip()) > 3
+                                                and not str(row[c_i + 1]).strip().isdigit()
+                                                for row in data_rows
+                                                if len(row) > c_i + 1
+                                            )
+                                            if c_i_is_addr and c_next_is_name:
+                                                combined_headers[c_i + 1] = combined_headers[c_i]
+                                                combined_headers[c_i] = "Address"
 
                                 # Ensure column names are unique to avoid key collision overwrites
                                 unique_headers = []
@@ -1220,6 +1306,61 @@ class Extractor:
                                             row_dict[current_active_headers[i]] = (
                                                 str(cell).replace("\n", " ").strip() if cell else ""
                                             )
+                                    # Coalesce fragmented address columns:
+                                    # If an address column exists and its value in this row is empty,
+                                    # inspect adjacent unlabelled ("col", "col_2", etc.) or empty header columns for numeric address tokens.
+                                    addr_col_key = None
+                                    addr_col_idx = None
+                                    for h_i, h_val in enumerate(current_active_headers):
+                                        h_clean = RE_CLEAN_WHITESPACE.sub("", h_val.lower())
+                                        if h_clean in (
+                                            "address",
+                                            "addr",
+                                            "modbuspar.",
+                                            "modbuspar",
+                                            "modbusserialaddress",
+                                        ) or h_val.lower() in (
+                                            "address",
+                                            "addr",
+                                            "adresse",
+                                            "modbus par.",
+                                            "modbus par",
+                                            "modbus serial address",
+                                        ):
+                                            addr_col_key = h_val
+                                            addr_col_idx = h_i
+                                            break
+
+                                    if addr_col_key and addr_col_idx is not None:
+                                        curr_addr = row_dict.get(addr_col_key, "").strip()
+                                        if not curr_addr:
+                                            for cand_idx in (addr_col_idx - 1, addr_col_idx + 1):
+                                                if 0 <= cand_idx < len(row) and cand_idx < len(
+                                                    current_active_headers
+                                                ):
+                                                    cand_hdr = current_active_headers[cand_idx]
+                                                    if cand_hdr.startswith("col") or cand_hdr == "":
+                                                        val_cand = (
+                                                            str(row[cand_idx]).strip()
+                                                            if row[cand_idx]
+                                                            else ""
+                                                        )
+                                                        val_clean = RE_CLEAN_WHITESPACE.sub(
+                                                            "", val_cand
+                                                        )
+                                                        if (
+                                                            val_clean
+                                                            and (
+                                                                RE_HEX_OR_DEC.match(val_clean)
+                                                                or RE_ADDR_RANGE.match(val_clean)
+                                                                or any(
+                                                                    ch.isdigit() for ch in val_clean
+                                                                )
+                                                            )
+                                                            and len(val_clean) <= 25
+                                                        ):
+                                                            row_dict[addr_col_key] = val_cand
+                                                            break
                                     # Synthesize address if high/low byte columns exist
                                     if not row_dict.get("Address"):
                                         hi_val = None
@@ -1536,6 +1677,58 @@ class Extractor:
                 "LowByte",
             ]
 
+            def _is_genuine_fc_column(col_name: str, rows_buf: list[dict[str, Any]]) -> bool:
+                name_low = str(col_name).lower().strip()
+                if any(
+                    explicit in name_low
+                    for explicit in (
+                        "function code",
+                        "code fonction",
+                        "modbus function",
+                        "modbus fc",
+                        "fc code",
+                        "fc no",
+                        "fcno",
+                        "fc",
+                    )
+                ):
+                    return True
+                fc_indicators = 0
+                total_non_empty = 0
+                for r in rows_buf:
+                    val = str(r.get(col_name, "") or "").strip().lower()
+                    if not val:
+                        continue
+                    total_non_empty += 1
+                    if val in {
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "16",
+                        "0x01",
+                        "0x02",
+                        "0x03",
+                        "0x04",
+                        "0x05",
+                        "0x06",
+                        "0x10",
+                    } or any(
+                        t in val
+                        for t in (
+                            "0x0",
+                            "holding",
+                            "input register",
+                            "read coil",
+                            "write coil",
+                            "read discrete",
+                        )
+                    ):
+                        fc_indicators += 1
+                return total_non_empty > 0 and (fc_indicators / total_non_empty) >= 0.5
+
             # Stage 1: Exact target-name match (case-insensitive and space-normalized)
             for target in detection_order:
                 if target in col_map:
@@ -1546,6 +1739,14 @@ class Extractor:
                         continue
                     src_str = str(src_col).lower().strip()
                     src_clean = RE_CLEAN_WHITESPACE.sub("", src_str)
+                    if target == "RegisterType" and (
+                        "function" in src_clean or "fonction" in src_clean
+                    ):
+                        if not _is_genuine_fc_column(src_col, buffer):
+                            continue
+                    if target == "Name" and ("function" in src_clean or "fonction" in src_clean):
+                        if _is_genuine_fc_column(src_col, buffer):
+                            continue
                     if src_str == target_low or src_clean == target_low:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
@@ -1562,6 +1763,14 @@ class Extractor:
                         continue
                     src_str = str(src_col).lower().strip()
                     src_clean = RE_CLEAN_WHITESPACE.sub("", src_str)
+                    if target == "RegisterType" and (
+                        "function" in src_clean or "fonction" in src_clean
+                    ):
+                        if not _is_genuine_fc_column(src_col, buffer):
+                            continue
+                    if target == "Name" and ("function" in src_clean or "fonction" in src_clean):
+                        if _is_genuine_fc_column(src_col, buffer):
+                            continue
                     if src_str in patterns or src_clean in clean_patterns:
                         col_map[target] = src_col
                         used_src_cols.add(src_col)
@@ -1580,6 +1789,15 @@ class Extractor:
                         continue
                     src_low = str(src_col).lower().strip()
                     src_clean = RE_CLEAN_WHITESPACE.sub("", src_low)
+
+                    if target == "RegisterType" and (
+                        "function" in src_clean or "fonction" in src_clean
+                    ):
+                        if not _is_genuine_fc_column(src_col, buffer):
+                            continue
+                    if target == "Name" and ("function" in src_clean or "fonction" in src_clean):
+                        if _is_genuine_fc_column(src_col, buffer):
+                            continue
 
                     # Guard: If column contains name/description terms or metadata, do NOT map as Address
                     if target == "Address" and (
@@ -1629,32 +1847,46 @@ class Extractor:
             )
 
             current_section_reg_type = None
+            last_valid_name = ""
+            last_emitted_addr: str | None = None
 
             def process_row(
                 r: dict[str, Any],
                 col_map=col_map,
                 length_is_register_quantity=length_is_register_quantity,
             ) -> dict[str, Any] | None:
-                nonlocal current_section_reg_type
+                nonlocal current_section_reg_type, last_valid_name, last_emitted_addr
 
                 # Check if row is a section banner containing Function Code / Register Type
                 row_str_values = " ".join(str(v) for v in r.values() if v is not None)
                 row_str_low = row_str_values.lower()
-                if "function code" in row_str_low or "modbus addr" in row_str_low:
-                    if "0x02" in row_str_low or "discrete inputs" in row_str_low:
+                if any(
+                    k in row_str_low
+                    for k in ("function code", "function", "fonction", "modbus addr", "fc0", "fc1")
+                ):
+                    if (
+                        "0x02" in row_str_low
+                        or "discrete inputs" in row_str_low
+                        or "read coil status" in row_str_low
+                    ):
                         current_section_reg_type = "Discrete Input"
                     elif "0x04" in row_str_low or "input registers" in row_str_low:
                         current_section_reg_type = "Input Register"
                     elif (
                         "0x01" in row_str_low
+                        or "0x05" in row_str_low
+                        or "0x0f" in row_str_low
+                        or "write coil" in row_str_low
+                        or "multiple coil" in row_str_low
+                        or "single coil" in row_str_low
                         or "read coils" in row_str_low
-                        or "coils" in row_str_low
                     ):
                         current_section_reg_type = "Coil"
                     elif (
                         "0x03" in row_str_low
                         or "0x16" in row_str_low
                         or "0x06" in row_str_low
+                        or "0x10" in row_str_low
                         or "holding" in row_str_low
                     ):
                         current_section_reg_type = "Holding Register"
@@ -1671,6 +1903,15 @@ class Extractor:
                     raw_address = new_row.get("Address")
                     addr_val = str(raw_address).strip() if raw_address is not None else ""
                 if not addr_val:
+                    return None
+
+                # Drop phantom wrapped rows where all other descriptive cells are empty
+                other_non_empty = [
+                    str(v).strip()
+                    for k, v in r.items()
+                    if k != col_map.get("Address") and v is not None and str(v).strip()
+                ]
+                if not other_non_empty:
                     return None
 
                 # Filter sub-table header repeats (e.g. Address == 'addr'/'address' and Type == 'type')
@@ -1697,7 +1938,16 @@ class Extractor:
 
                 # Collapse whitespace in addresses caused by fragmented font rendering in PDFs
                 compact_addr = RE_CLEAN_WHITESPACE.sub("", addr_val)
-                clean_num = compact_addr.replace(",", "")
+                if "," in compact_addr:
+                    if re.match(r"^\d{1,3},\d{3}$", compact_addr):
+                        clean_num = compact_addr.replace(",", "")
+                    else:
+                        first_addr_tok = compact_addr.split(",")[0].strip()
+                        clean_num = RE_CLEAN_WHITESPACE.sub("", first_addr_tok)
+                        compact_addr = clean_num
+                else:
+                    clean_num = compact_addr
+
                 if clean_num.endswith(".0"):
                     clean_num = clean_num[:-2]
                     compact_addr = compact_addr[:-2]
@@ -1719,7 +1969,7 @@ class Extractor:
                             and all(c in "0123456789abcdefABCDEF" for c in clean_num[:-1])
                         )
                         or (
-                            any(sep in clean_num for sep in ("_", "-", "~"))
+                            any(sep in clean_num for sep in ("_", "-", "~", "\u2013", "\u2014"))
                             and any(c.isdigit() for c in clean_num)
                             and len(clean_num) < 25
                         )
@@ -1754,7 +2004,12 @@ class Extractor:
                         if slen == "":
                             slen = "16"
                     addr = f"{addr}_{sbit}_{slen}"
-                elif is_byte_length_type and slen != "" and "_" not in addr:
+                elif is_byte_length_type and "_" not in addr:
+                    if slen == "":
+                        if dtype.startswith("STR") and dtype[3:].isdigit():
+                            slen = dtype[3:]
+                        else:
+                            slen = "2"
                     addr = f"{addr}_{slen}"
 
                 new_row["Address"] = Generator.apply_address_offset(addr, address_offset)
@@ -1789,6 +2044,21 @@ class Extractor:
                     new_row["Factor"] = str(Generator._parse_numeric(new_row["Factor"], 1.0))
 
                 var_name = str(new_row.get("Name") or "").strip()
+                if var_name in ("“", '"', "”", "«", "»") and last_valid_name:
+                    var_name = last_valid_name
+                    new_row["Name"] = last_valid_name
+                elif var_name and var_name not in (":", "--", "-"):
+                    last_valid_name = var_name
+
+                # Filter spacer rows like "40614-40720 :"
+                if var_name in (":", "--", "-") and any(
+                    sep in clean_num for sep in ("-", "\u2013", "\u2014", "~")
+                ):
+                    return None
+
+                # Drop phantom wrapped rows that duplicate the previous row address with empty name
+                if not var_name and addr_val == last_emitted_addr:
+                    return None
                 raw_tag = str(new_row.get("Tag") or "").strip()
                 if raw_tag:
                     assigned_tags.add(raw_tag)
@@ -1820,6 +2090,7 @@ class Extractor:
                 ):
                     new_row["RegisterType"] = current_section_reg_type
 
+                last_emitted_addr = addr_val
                 return new_row
 
             for row in itertools.chain(buffer, iterator):

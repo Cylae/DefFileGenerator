@@ -31,9 +31,9 @@
 30;3;707;U16;;MPPT Maximum Power Limit;CMD_P_AC_SET_ABS;0.100000;0.000000;kW;1
 31;3;710;I16;;PCS-A Phase Active Power;P_AC_1;0.100000;0.000000;kW;1
 32;3;711;I16;;PCS-A Phase Reactive Power;;0.100000;0.000000;kvar;1
-33;3;712;I16;;PCS-B Phase Active Power;P_AC_2;0.100000;0.000000;kW;1
+33;3;712;I16;;PCS-B Phase Active Power;;0.100000;0.000000;kW;1
 34;3;713;I16;;PCS-B Phase Reactive Power;;0.100000;0.000000;kvar;1
-35;3;714;I16;;PCS-C Phase Active Power;P_AC_3;0.100000;0.000000;kW;1
+35;3;714;I16;;PCS-C Phase Active Power;;0.100000;0.000000;kW;1
 36;3;715;I16;;PCS-C Phase Reactive Power;;0.100000;0.000000;kvar;1
 37;4;0;U16;;System Status;;1.000000;0.000000;;9
 38;4;1;U16;;Running Mode;;1.000000;0.000000;;4
@@ -43,7 +43,7 @@
 42;4;13;U16;;Grid Connection Status;;1.000000;0.000000;;9
 43;4;14;U16;;EMS Operation Status;;1.000000;0.000000;;9
 44;4;17;U16;;Humidity 1;HUMIDITY;0.100000;0.000000;%;4
-45;4;19;I16;;Temperature 1;TEMP_CELL;0.100000;0.000000;°C;4
+45;4;19;I16;;Temperature 1;TEMP;0.100000;0.000000;°C;4
 46;4;23;U16;;System Fault word0;;1.000000;0.000000;;9
 47;4;24;U16;;System Fault word1;;1.000000;0.000000;;9
 48;4;25;U16;;System Fault word2;;1.000000;0.000000;;9
@@ -60,11 +60,11 @@
 59;4;86;U32;;PV Input Power;P_PV;1.000000;0.000000;W;4
 60;4;88;U16;;MPPT String Count;;1.000000;0.000000;;4
 61;4;89;U16;;PV1 Voltage;U_DC_STRING_1;0.100000;0.000000;V;4
-62;4;90;U16;;PV1 Input Current;I_DC_MPPT_1;0.010000;0.000000;A;4
+62;4;90;U16;;PV1 Input Current;I_DC_STRING_1;0.010000;0.000000;A;4
 63;4;91;U16;;PV2 Voltage;U_DC_STRING_2;0.100000;0.000000;V;4
-64;4;92;U16;;PV2 Input Current;I_DC_MPPT_2;0.010000;0.000000;A;4
+64;4;92;U16;;PV2 Input Current;I_DC_STRING_2;0.010000;0.000000;A;4
 65;4;93;U16;;PV3 Voltage;U_DC_STRING_3;0.100000;0.000000;V;4
-66;4;94;U16;;PV3 Input Current;I_DC_MPPT_3;0.010000;0.000000;A;4
+66;4;94;U16;;PV3 Input Current;I_DC_STRING_3;0.010000;0.000000;A;4
 67;4;144;I32;;Battery Power;P_BAT;1.000000;0.000000;W;4
 68;4;146;U16;;Battery Voltage;V_BAT;0.100000;0.000000;V;4
 69;4;147;U16;;State of Charge;;1.000000;0.000000;%;4
@@ -72,14 +72,14 @@
 71;4;149;U16;;Battery Status;;1.000000;0.000000;;9
 72;4;168;U16;;Inverter Frequency;FREQ;0.010000;0.000000;Hz;4
 73;4;169;I32;;Inverter Total Power;PAC;1.000000;0.000000;W;4
-74;4;171;U16;;Inverter Phase-A Voltage;U_AC_1;0.100000;0.000000;V;4
-75;4;172;I16;;Inverter Phase-A Current;I_AC_1;0.010000;0.000000;A;4
+74;4;171;U16;;Inverter Phase-A Voltage;;0.100000;0.000000;V;4
+75;4;172;I16;;Inverter Phase-A Current;;0.010000;0.000000;A;4
 76;4;173;I32;;Phase-A Output Power;;1.000000;0.000000;W;4
-77;4;175;U16;;Inverter Phase-B Voltage;U_AC_2;0.100000;0.000000;V;4
-78;4;176;I16;;Inverter Phase-B Current;I_AC_2;0.010000;0.000000;A;4
+77;4;175;U16;;Inverter Phase-B Voltage;;0.100000;0.000000;V;4
+78;4;176;I16;;Inverter Phase-B Current;;0.010000;0.000000;A;4
 79;4;177;I32;;Phase-B Output Power;;1.000000;0.000000;W;4
-80;4;179;U16;;Inverter Phase-C Voltage;U_AC_3;0.100000;0.000000;V;4
-81;4;180;I16;;Inverter Phase-C Current;I_AC_3;0.010000;0.000000;A;4
+80;4;179;U16;;Inverter Phase-C Voltage;;0.100000;0.000000;V;4
+81;4;180;I16;;Inverter Phase-C Current;;0.010000;0.000000;A;4
 82;4;181;I32;;Phase-C Output Power;;1.000000;0.000000;W;4
 83;4;183;I16;;Inverter Power Factor;PF;0.010000;0.000000;;4
 84;4;184;U16;;Inverter Status;;1.000000;0.000000;;9
@@ -95,12 +95,12 @@
 94;4;252;U16;;Native ID;;1.000000;0.000000;;4
 95;4;253;U16;;System Paralle Number;;1.000000;0.000000;;4
 96;4;254_24;STRING;;Parallel identification code1;;1.000000;0.000000;;4
-97;4;500;U16;;AC Phase A Voltage;;0.100000;0.000000;V;4
-98;4;501;U16;;AC Phase B Voltage;;0.100000;0.000000;V;4
-99;4;502;U16;;AC Phase C Voltage;;0.100000;0.000000;V;4
-100;4;503;U16;;AC Phase A Current;;0.100000;0.000000;A;4
-101;4;504;U16;;AC Phase B Current;;0.100000;0.000000;A;4
-102;4;505;U16;;AC Phase C Current;;0.100000;0.000000;A;4
+97;4;500;U16;;AC Phase A Voltage;U_AC_1;0.100000;0.000000;V;4
+98;4;501;U16;;AC Phase B Voltage;U_AC_2;0.100000;0.000000;V;4
+99;4;502;U16;;AC Phase C Voltage;U_AC_3;0.100000;0.000000;V;4
+100;4;503;U16;;AC Phase A Current;I_AC_1;0.100000;0.000000;A;4
+101;4;504;U16;;AC Phase B Current;I_AC_2;0.100000;0.000000;A;4
+102;4;505;U16;;AC Phase C Current;I_AC_3;0.100000;0.000000;A;4
 103;4;506;I16;;AC Active Power;;0.100000;0.000000;kW;4
 104;4;507;I16;;AC Reactive Power;;0.100000;0.000000;kVA;4
 105;4;508;I16;;AC Apparent Power;S_AC;0.100000;0.000000;kW;4
@@ -109,7 +109,7 @@
 108;4;511;U16;;DC Port Voltage;;0.100000;0.000000;V;4
 109;4;512;I16;;DC Port Current;I_DC;0.100000;0.000000;A;4
 110;4;513;I16;;DC Port Power;P_DC;0.100000;0.000000;kW;4
-111;4;514;I16;;Module IGBT1 Temperature;;0.100000;0.000000;°C;4
+111;4;514;I16;;Module IGBT1 Temperature;TEMP_CELL;0.100000;0.000000;°C;4
 112;4;515;I16;;Module IGBT2 Temperature;;0.100000;0.000000;°C;4
 113;4;516;I16;;Module IGBT3 Temperature;;0.100000;0.000000;°C;4
 114;4;517;I16;;Module IGBT4 Temperature;;0.100000;0.000000;°C;4
@@ -118,14 +118,14 @@
 117;4;520;I16;;Module Air Inlet Temperature;;0.100000;0.000000;°C;4
 118;4;521;I16;;Module Air Outlet Temperature;;0.100000;0.000000;°C;4
 119;4;522;I16;;AC Phase A Active Power;;0.100000;0.000000;kW;4
-120;4;523;I16;;AC Phase B Active Power;;0.100000;0.000000;kW;4
-121;4;524;I16;;AC Phase C Active Power;;0.100000;0.000000;kW;4
+120;4;523;I16;;AC Phase B Active Power;P_AC_2;0.100000;0.000000;kW;4
+121;4;524;I16;;AC Phase C Active Power;P_AC_3;0.100000;0.000000;kW;4
 122;4;525;U16;;DC Bus Voltage;;0.100000;0.000000;V;4
 123;4;526;U16;;Equipment Operational Status Word;;1.000000;0.000000;;9
 124;4;527;U16;;System Comprehensive Fault Word;;1.000000;0.000000;;9
 125;4;528;U16;;System Environmental Fault Word;;1.000000;0.000000;;9
 126;4;529;U16;;System Hardware Fault Word;;1.000000;0.000000;;9
-127;4;530;U16;;System Temperature Fault Word;TEMP;1.000000;0.000000;;9
+127;4;530;U16;;System Temperature Fault Word;;1.000000;0.000000;;9
 128;4;531;U16;;Software Version Number (High Byte);;1.000000;0.000000;;4
 129;4;532;U16;;Software Version Number (Low Byte);;1.000000;0.000000;;4
 130;4;533;U16;;Hardware Version Number (High Byte);;1.000000;0.000000;;4
@@ -204,7 +204,7 @@
 203;4;649;U16;;DCDC Parallel Module Online Flag;;1.000000;0.000000;;4
 204;4;650;U16;;DCDC Parallel Module Fault Flag;;1.000000;0.000000;;9
 205;4;651;U16;;DCDC Parallel Module Run Flag;;1.000000;0.000000;;4
-206;4;652;U16;;Module Address;UNIT_ID;1.000000;0.000000;;4
+206;4;652;U16;;Module Address;;1.000000;0.000000;;4
 207;4;654;U32;;Total Charging Energy (Low);E_TOT;0.100000;0.000000;kWh;4
 208;4;656;U32;;Total Discharging Energy (Low);;0.100000;0.000000;kWh;4
 209;4;658;U16;;Hardware Fault Word 1;;1.000000;0.000000;;9
@@ -218,7 +218,7 @@
 217;4;668;U16;;Daily Charging Energy;E_DAY;0.100000;0.000000;kWh;4
 218;4;669;U16;;Daily Discharging Energy;;1.000000;0.000000;kWh;4
 219;4;750;U16;;Total Battery Pack Voltage;;0.100000;0.000000;V;4
-220;4;751;U16;;Total Battery Pack Current;I_AC;0.100000;-3200.000000;A;4
+220;4;751;U16;;Total Battery Pack Current;;0.100000;-3200.000000;A;4
 221;4;752;U16;;Battery Pack SOC;;1.000000;0.000000;%;4
 222;4;753;U16;;Battery Pack SOH;SOH;1.000000;0.000000;%;4
 223;4;754;U16;;Max. Allowed Charging Current;;0.100000;0.000000;A;4
@@ -583,7 +583,7 @@
 582;4;1504;U16;;Electric Heating Status;;1.000000;0.000000;;9
 583;4;1505;I16;;Defrost Temperature;;0.100000;0.000000;°C;4
 584;4;1507;I16;;Condensation Temperature;;0.100000;0.000000;°C;4
-585;4;1508;I16;;Cabinet Temperature;TEMP_INT;0.100000;0.000000;°C;4
+585;4;1508;I16;;Cabinet Temperature;;0.100000;0.000000;°C;4
 586;4;1509;U16;;Cabinet Humidity;;1.000000;0.000000;%;4
 587;4;1510;I16;;Outlet Air Temperature;;0.100000;0.000000;°C;4
 588;4;1511;U16;;Cabinet Overheat Alarm;;1.000000;0.000000;;9
@@ -771,7 +771,7 @@
 770;4;4066;U16;;Three/ Single phase grid voltage;;0.100000;0.000000;V;4
 771;4;4067;I16;;Three/ Single phase grid output current;;1.000000;0.000000;A;4
 772;4;4068;I32;;Three/ Single phase grid output power;;0.100000;0.000000;kW;4
-773;4;4070;U16;;Three phase grid voltage;U_AC_L3L1;0.100000;0.000000;V;4
+773;4;4070;U16;;Three phase grid voltage;;0.100000;0.000000;V;4
 774;4;4071;I16;;Three phase grid output current;;1.000000;0.000000;A;4
 775;4;4072;I32;;Three phase grid output power;;0.100000;0.000000;kW;4
 776;4;4074;U16;;Three phase grid voltage;;0.100000;0.000000;V;4

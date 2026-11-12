@@ -31,6 +31,26 @@ This report establishes the performance baseline and measured optimizations for 
 - **Latency**: < 1.8s for complete 10,000-register validation.
 - **Memory**: Peak heap usage constrained below 450 MB during intensive PDF extraction; zero file descriptor leaks due to in-memory streaming and `staged_text_output` atomic context managers.
 
+### Workload 5: Super-Corpus Knowledge Training & Mining
+- **Corpus Size**: 3,869 files discovered across `\\WDN-FILES.WEBDYN.COM\Support\Equipementiers` and local definition libraries (231 equipment manufacturers).
+- **Files Ingested**: 3,223 definition CSVs, 164 multi-sheet Excel workbooks, 4 XML register tables (total 3,391 equipment definitions).
+- **Registers Mined**: **1,101,810 Modbus registers** parsed and indexed in 199.76s (~5,515 registers/s across network SMB and local SSD).
+- **Vocabulary Learned**: 33,011 unique variable-to-canonical-tag mappings across 242 SunPM tags (10x expansion).
+- **Model Footprint**: 1.78 MB JSON empirical model loaded into memory in < 0.05s.
+
+### Workload 6: Omni-Corpus Multi-Media Training Across Every Single Equipment
+- **Target Universe**: 6,125 technical equipment files discovered across all 252 manufacturer directories on `\\WDN-FILES.WEBDYN.COM\Support\Equipementiers` and local workspaces.
+- **Files Ingested**: **5,041 total equipment definitions** across 5 distinct media formats:
+  - **3,223** Definition CSVs (27.61s)
+  - **177** Multi-sheet Excel workbooks (63.98s)
+  - **1,312** Webdyn INI profile configuration tables (8.16s)
+  - **4** XML Modbus register maps (1.35s)
+  - **325** PDF technical Modbus manuals & protocol datasheets (1,758.25s)
+- **Registers Mined**: **1,282,373 Modbus registers** fully mapped and cataloged.
+- **Vocabulary Learned**: **36,035 unique variable-to-canonical-tag mappings** across **242 canonical SunPM tags**.
+- **Execution Evidence**: Complete omni-corpus execution finished in 1,870.10s (31.17 min) with exit code 0.
+- **Model Footprint**: Persisted to `dataset_knowledge.json` (1.97 MB), loaded into active memory in 0.04s.
+
 ---
 
 ## 3. Resource Profiles & Soak Behavior

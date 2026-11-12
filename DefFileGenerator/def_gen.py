@@ -77,7 +77,9 @@ RE_COUNT_32 = re.compile(r"^([UI]32(_(W|B|WB))?|F32(_(W|B|WB))?|IP)$", re.IGNORE
 RE_COUNT_64 = re.compile(r"^([UI]64(_(W|B|WB))?|F64(_(W|B|WB))?)$", re.IGNORECASE)
 
 _CLEAN_TYPE_RE = re.compile(r"[^a-z0-9_]+")
-_ADDR_RANGE_RE = re.compile(r"^([^\s~.]+?)\s*(?:~|\.\.|\s+-\s+|-(?=[0-9a-fA-FxX]))")
+_ADDR_RANGE_RE = re.compile(
+    r"^([^\s~.\u2013\u2014]+?)\s*(?:~|\.\.|\s+[-\u2013\u2014]\s+|[-\u2013\u2014](?=[0-9a-fA-FxX]))"
+)
 _ADDR_GROUPING_COMMA_RE = re.compile(r"(?<=\d),(?=\d{3}(?!\d))")
 _ADDR_HEX_MATCH_RE = re.compile(r"^-?[0-9A-Fa-f]+$")
 _ADDR_CLEAN_BITFIELD_RE = re.compile(r"_(wb|b|w)$|\b(swap|big endian|big|word)\b")
@@ -125,6 +127,7 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"signed\s*(?:int(?:eger)?)?\s*8|sint8|\bint8\b|\bi8\b|\bs8\b|\bint8s\b"), "I8"),
     (re.compile(r"^(?:32\s*[-_]?\s*bit\s*)hex$|^hex32$"), "U32"),
     (re.compile(r"^(?:16\s*[-_]?\s*bit\s*)?hex(?:16)?$"), "U16"),
+    (re.compile(r"\bdouble\s*word\b|\bdoubleword\b|word\s*-\s*double\s*word"), "U32"),
     (re.compile(r"float64|double|\bf64\b|64\s*[-_]?\s*bit\s*ieee\s*[-_]?\s*754"), "F64"),
     (re.compile(r"float32|float|\bf32\b|(?:32\s*[-_]?\s*bit\s*)?ieee\s*[-_]?\s*754"), "F32"),
     (
@@ -150,6 +153,9 @@ TYPE_SYNONYMS_COMPILED: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"^bool(?:ean)?$"), "BITS"),
     (re.compile(r"^single$"), "F32"),
     (re.compile(r"^raw16$"), "U16"),
+    (re.compile(r"^analog(?:ical)?$"), "I16"),
+    (re.compile(r"^bit\s*significant.*$"), "U16"),
+    (re.compile(r"^exponential$"), "I16"),
 )
 
 # Characters to strip when inspecting text for CSV formula injection
@@ -1038,10 +1044,15 @@ class Generator:
         if (
             "0x03" in lt
             or "0x16" in lt
+            or "0x10" in lt
+            or "0x06" in lt
             or "holding" in lt
             or "read holding" in lt
             or "fc03" in lt
             or "fc16" in lt
+            or "fc10" in lt
+            or "fc06" in lt
+            or lt in ("register", "registre", "reg")
         ):
             return MODBUS_HOLDING
 
@@ -1294,26 +1305,23 @@ class Generator:
                 )
                 for k, v in row.items()
             }
-            name, tag, reg_type_str, address = (
-                norm_row.get("name", ""),
-                norm_row.get("tag", ""),
-                norm_row.get("registertype", ""),
-                norm_row.get("address", ""),
-            )
-            dtype_raw, factor, offset, unit = (
-                norm_row.get("type", ""),
-                norm_row.get("factor", ""),
-                norm_row.get("offset", ""),
-                norm_row.get("unit", ""),
-            )
-            action, scale_factor_str = (
-                norm_row.get("action", ""),
-                norm_row.get("scalefactor", ""),
-            )
+            name = str(norm_row.get("name") or "").strip()
+            tag = str(norm_row.get("tag") or "").strip()
+            reg_type_str = str(norm_row.get("registertype") or "").strip()
+            address = str(norm_row.get("address") or "").strip()
+            dtype_raw = str(norm_row.get("type") or "").strip()
+            factor = str(norm_row.get("factor") or "").strip()
+            offset = str(norm_row.get("offset") or "").strip()
+            unit = str(norm_row.get("unit") or "").strip()
+            action = str(norm_row.get("action") or "").strip()
+            scale_factor_str = str(norm_row.get("scalefactor") or "").strip()
 
             if not name and not address:
                 logging.warning(f"Line {line_num}: Skipping row with missing Name and Address.")
                 continue
+
+            if not name:
+                name = f"Register_{address}"
 
             dtype = self.normalize_type(dtype_raw)
             if not self.validate_type(dtype):

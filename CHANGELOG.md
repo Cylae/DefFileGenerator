@@ -13,6 +13,30 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- **Answer Drives Solargate Solar Inverter Definition (`Definitions/INV_AnswerDrives_Solargate.csv`)**:
+  - Full end-to-end extraction from 179-page factory manual `ADSolargateManENHWSW 02-11-09 (1).pdf` (Appendix BB).
+  - 288 validated Modbus registers covering holding registers (telemetry: DC bus voltage, AC line currents, voltages, power factor, frequency, active/reactive powers, energy counters) and supervisory coils (trip status, run/stop states, auxiliary protections).
+  - 100% compliant with WebdynSunPM schema (0 errors, 0 warnings).
+  - Comprehensive dedicated automated regression test suite (`DefFileGenerator/tests/test_answer_drives_solargate.py`).
+- **Omni-Corpus Multi-Format Training Engine Across Every Single Equipment (`DefFileGenerator/dataset_knowledge.json`)**:
+  - Ingested **5,041 equipment definitions** across all 5 technical formats: **3,223** CSV definitions, **177** multi-sheet Excel workbooks, **1,312** Webdyn INI profile configuration tables (`Modbus_VariablesTables`), **4** XML register maps, and **325** PDF technical Modbus protocol manuals.
+  - Mined **1,282,373 Modbus registers** and indexed **36,035 unique variable-to-canonical-tag mappings** across **242 SunPM canonical tags** representing all 252 energy equipment manufacturers.
+  - Model serialized cleanly to `DefFileGenerator/dataset_knowledge.json` (1.97 MB) with sub-50ms lazy loading.
+- **Multi-Format CLI Training Subcommand (`DefFileGenerator/main.py` & `knowledge_miner.py`)**:
+  - Extended `deffilegen train` CLI with `--include-all`, `--include-excel`, `--include-ini`, `--include-xml` to mine from heterogenous equipment documentation directly.
+- **Expanded SunPM Canonical Tags & Normalization (`DefFileGenerator/knowledge_miner.py`)**:
+  - Added canonical command tags (`CMD_Q_RAMP_TIME_S`, `CMD_Q_REVERT_TIME_S`, `CMD_PF_RAMP_TIME_S`, `CMD_PF_REVERT_TIME_S`, `CMD_BATTERY`), battery tags (`U_CELL_MAX`, `U_CELL_MIN`, `TEMP_MAX`, `TEMP_MIN`), and alarms (`ALARM_1`..`ALARM_16`).
+  - Added legacy normalizations for `PAC`, `serialNumber`, `WattHours`, `P_PV`, `V_BAT`, `I_BAT`, `V_CELL_MAX`, `V_CELL_MIN`, and `total_discharge_energy`.
+- **Semantic Disambiguation Guardrails (`DefFileGenerator/knowledge_miner.py`)**:
+  - Hardened negative lookaheads preventing remote commands from intercepting percentage vs. absolute setpoints, phase-to-neutral voltages (`U_AC_1`) from intercepting phase-to-phase voltages (`U_AC_L1L2`), and telemetry tags (`P_AC`, `Q_AC`) from matching command/setpoint variables.
+
+### Fixed
+- **Openpyxl Inflated Worksheet Traversal (`DefFileGenerator/extractor.py`)**:
+  - Clamped column traversal to `min(max_c, 100)` when `max_r * max_c > MAX_EXCEL_SHEET_CELLS` to prevent `ExtractionError` on sparse sheets with full-row formatting (e.g. Sungrow BESS protocol workbooks).
+- **Missing Register Name Resilience (`DefFileGenerator/def_gen.py`)**:
+  - Safely handled rows with missing or None `Name` without crashing on case conversions, defaulting to `Register_{address}` when address is provided.
+
 ## [0.4.0] - 2026-11-04
 
 ### Added

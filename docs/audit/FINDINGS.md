@@ -20,6 +20,9 @@
 | **FIND-016** | MEDIUM | Portability / Generator | `generate_mars_definitions.py`, `mars_generator.py`, `scratch/run_full_documentation_battery.py` | Path sensitivity across working directories and vendor subfolders | RESOLVED |
 | **FIND-017** | HIGH | Schema / Metadata | `Definitions/`, `generated_definitions/`, `tagged_definitions/`, `FoxESS_P3_H3_Pro_Definitions/` | Header column truncation, non-sequential indexing, uncanonical function codes across 2,344 files | RESOLVED |
 | **FIND-018** | HIGH | Architecture / Security | `DefFileGenerator/dyness_generator.py`, `mars_generator.py`, `main.py`, generators | Missing Dyness modular generator, unescaped CSV formula injection vectors, and address parsing bug | RESOLVED |
+| **FIND-019** | MEDIUM | Scalability / Parsing | `DefFileGenerator/extractor.py`, `knowledge_miner.py`, `dataset_knowledge.json` | Openpyxl sparse styled sheets caused runaway max_column dimensions (16384); missing command/battery tags | RESOLVED |
+| **FIND-020** | MEDIUM | Enhancement / Learning | `DefFileGenerator/knowledge_miner.py`, `main.py`, `dataset_knowledge.json` | Multi-format omni-corpus training engine across all 252 manufacturers (6,125 files, 1.28M registers) | RESOLVED |
+| **FIND-021** | HIGH | Robustness / Extraction | `DefFileGenerator/extractor.py`, `def_gen.py`, `knowledge_miner.py`, `main.py` | Answer Drives Solargate PDF Modbus extraction: header right-shift, column coalescence, function name disambiguation & tag hardening | RESOLVED |
 
 ---
 
@@ -205,4 +208,56 @@
   4. Updated `DefFileGenerator/main.py` to recognize `Dyness`, `Mars`, and `Mars Renewable` and infer `Battery` category for BESS tokens (`dh200y`, `dh200f`, `dh100f`, `dyness`, `bms`, `bess`).
   5. Synchronized all 4 Dyness definitions across `Definitions/` (bringing library to 129 models), `Dyness_DH_Series_Definitions/`, `generated_definitions/`, and `tagged_definitions/`.
   6. Verified 100% validity across all 2,360 files in the repository (765,377 registers) with 0 errors.
+- **Status**: RESOLVED
+
+### FIND-019: Openpyxl runaway sheet dimensions and Super-Corpus Knowledge Expansion
+- **Severity**: MEDIUM
+- **Component**: `DefFileGenerator/extractor.py`, `DefFileGenerator/knowledge_miner.py`, `DefFileGenerator/dataset_knowledge.json`
+- **Trigger**: Bulk documentation training across manufacturer Excel workbooks (e.g. Sungrow BESS `TI_20251013_LC300_Modbus Communication Protocol_V8_EN.xlsx`).
+- **Root Cause**:
+  1. Openpyxl sheets where a user styled an entire row reported `max_column = 16384`, causing `ws.max_row * ws.max_column > MAX_EXCEL_SHEET_CELLS` to trigger `ExtractionError` despite containing only 12 true data columns and 182 rows.
+  2. Missing canonical command tags (`CMD_Q_RAMP_TIME_S`, `CMD_Q_REVERT_TIME_S`, `CMD_PF_RAMP_TIME_S`, `CMD_PF_REVERT_TIME_S`, `CMD_BATTERY`), battery tags (`U_CELL_MAX`, `U_CELL_MIN`, `TEMP_MAX`, `TEMP_MIN`), and alarms in `SUNPM_CANONICAL_TAGS`.
+  3. Row normalization in `def_gen.py` risked `AttributeError` on rows with missing register names.
+- **Remediation**:
+  1. In `DefFileGenerator/extractor.py`, bounded column traversal to `min(max_c, 100)` when `max_r * max_c > MAX_EXCEL_SHEET_CELLS`, preserving safety bounds while parsing sparse sheets cleanly.
+  2. In `DefFileGenerator/knowledge_miner.py`, added canonical command, battery, and alarm tags to `SUNPM_CANONICAL_TAGS` and mapped aliases (`PAC`, `serialNumber`, `WattHours`, `P_PV`, `V_BAT`, `I_BAT`, `V_CELL_MAX`, `V_CELL_MIN`).
+  3. In `DefFileGenerator/def_gen.py`, safely handled missing/None register names, defaulting to `Register_{address}` when address is present.
+  4. Executed super-corpus training across 3,869 files (3,223 CSVs, 164 Excel workbooks, 4 XMLs), expanding `dataset_knowledge.json` to **1,101,810 registers** and **33,011 unique variable mappings** (10x vocabulary expansion).
+- **Status**: RESOLVED
+
+### FIND-020: Omni-Corpus Multi-Format Training Engine Across Every Single Equipment (6,125 Files, 252 Manufacturers)
+- **Severity**: MEDIUM / ENHANCEMENT
+- **Component**: `DefFileGenerator/knowledge_miner.py`, `DefFileGenerator/main.py`, `DefFileGenerator/dataset_knowledge.json`, `DefFileGenerator/tests/test_dataset_learning_and_audit.py`
+- **Trigger**: User directive to train on every single equipment across all 252 manufacturer repositories and all 5 technical documentation media formats.
+- **Root Cause**:
+  1. Knowledge mining was historically limited to definition CSVs; equipment configurations stored in Webdyn INI profile tables (`Modbus_VariablesTables`), Excel technical workbooks, XML register tables, and PDF protocol manuals were excluded from CLI training workflows.
+  2. In `infer_sunpm_tag`, learned dataset tags lacked negative lookaheads for explicit command/setpoint tokens (`setpoint`, `command`, `consigne`, `limit`) and phase-to-phase indicators (`l1-l2`, `uab`, `phase a to phase b`), allowing coarse mappings to shadow canonical rule inference.
+- **Remediation**:
+  1. Extended `train_knowledge_from_definitions` in `knowledge_miner.py` and `deffilegen train` CLI with `--include-all`, `--include-excel`, `--include-ini`, `--include-xml`, supporting multi-format ingestion natively.
+  2. Hardened `infer_sunpm_tag` domain guardrails: prevents `CMD_P_AC_SET_ABS` from claiming percentage variables, prevents `U_AC_1` from claiming phase-to-phase voltages (`U_AC_L1L2`), and prevents telemetry tags (`P_AC`, `Q_AC`) from intercepting remote command setpoints.
+  3. Executed full omni-corpus training run over 6,125 technical equipment files: parsed **5,041 definitions** (3,223 CSVs, 177 Excel workbooks, 1,312 Webdyn INI profile configs, 4 XML maps, 325 PDF Modbus manuals), mining **1,282,373 Modbus registers**, **36,035 unique variable mappings**, and **242 canonical SunPM tags**.
+  4. Model serialized cleanly to `dataset_knowledge.json` (1.97 MB), verified across all 1,112 automated unit, integration, and type-check tests.
+- **Status**: RESOLVED
+
+### FIND-021: Answer Drives Solargate Solar Inverter PDF Modbus Extraction & Tag Hardening
+- **Severity**: HIGH
+- **Component**: `DefFileGenerator/extractor.py`, `DefFileGenerator/def_gen.py`, `DefFileGenerator/knowledge_miner.py`, `DefFileGenerator/main.py`, `Definitions/INV_AnswerDrives_Solargate.csv`, `DefFileGenerator/tests/test_answer_drives_solargate.py`
+- **Trigger**: Processing `ADSolargateManENHWSW 02-11-09 (1).pdf` (Answer Drives Solargate Photovoltaic Inverter manual).
+- **Root Cause**:
+  1. PDF layout had an address/meaning right-shift on Page 168 Table 2 where the `Meaning` header was placed above a numeric address column and the descriptive label sat in an unlabelled adjacent column.
+  2. PDF grid segmentation in `pdfplumber` split `ModbusPar.` into two adjacent columns (columns 0 and 1) across pages 161 and 162, leaving one empty.
+  3. Drive parameter table used "Function" as the parameter description name, which collided with Modbus Function Code (`RegisterType`).
+  4. Non-standard type representations in drive manual: `Exponential` (base/exp registers), `Word-DoubleWord` / `Double Word`, `Bit Significant`, `Analog`.
+  5. Bare string types lacked byte length suffix (`_2`) required by Webdyn SunPM schema.
+  6. Substring `"sac"` in apparent power pattern inadvertently matched `"rmsaclinecurrent"`, falsely classifying AC line current as apparent power (`S_AC`).
+  7. Stray `name_to_tag` entry in `dataset_knowledge.json` mapped `reserved` to `E_TOT`.
+- **Remediation**:
+  1. Implemented header right-shift correction and adjacent column coalescence in `extractor.py`.
+  2. Implemented `_is_genuine_fc_column` to safeguard Name columns titled "Function" containing descriptive parameter names.
+  3. Added comprehensive type synonyms (`double word` -> `U32`, `exponential` -> `I16`, `analog` -> `I16`, `bit significant` -> `U16`).
+  4. Added automatic byte length synthesis for bare `STRING` types (`_2`).
+  5. Corrected apparent power pattern with word boundaries `\b(?:sac|s_ac)\b` and safeguarded AC Current inference.
+  6. Guarded dummy/reserved registers (`Reserved`, `NotUsed`, `Nu`) against receiving telemetry tags in `infer_sunpm_tag`.
+  7. Generated, validated, and cataloged `Definitions/INV_AnswerDrives_Solargate.csv` (288 registers, 0 errors, 0 warnings).
+  8. Created comprehensive test suite `test_answer_drives_solargate.py` (8 automated tests) covering live extraction, validation, telemetry tags, and CLI execution.
 - **Status**: RESOLVED
