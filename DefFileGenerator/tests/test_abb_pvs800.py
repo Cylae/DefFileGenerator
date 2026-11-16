@@ -16,6 +16,8 @@ import csv
 import sys
 from pathlib import Path
 
+import pytest
+
 # Ensure project root is available on sys.path
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(REPO_ROOT) not in sys.path:
@@ -25,22 +27,26 @@ from DefFileGenerator.def_gen import Generator  # noqa: E402
 from DefFileGenerator.knowledge_miner import infer_sunpm_tag  # noqa: E402
 
 REPO_DEF_PATH = REPO_ROOT / "Definitions" / "INV_ABB_PVS800-57B.csv"
+REPO_DEF_2_PATH = REPO_ROOT / "Definitions" / "INV_ABB_PVS800-57B_2.csv"
 DOWNLOADS_DEF_PATH = Path(r"c:\Users\alexandre.calais\Downloads\PVS800.csv")
 
+DEF_PATHS = [REPO_DEF_PATH, REPO_DEF_2_PATH]
 
-def test_pvs800_definition_encoding_and_header() -> None:
+
+@pytest.mark.parametrize("def_path", DEF_PATHS)
+def test_pvs800_definition_encoding_and_header(def_path: Path) -> None:
     """Verifies that the PVS800 definition file is encoded in valid UTF-8-sig."""
-    assert REPO_DEF_PATH.is_file(), f"Missing definition file: {REPO_DEF_PATH}"
+    assert def_path.is_file(), f"Missing definition file: {def_path}"
 
-    with open(REPO_DEF_PATH, "rb") as f:
+    with open(def_path, "rb") as f:
         raw_bytes = f.read()
 
     # Must start with UTF-8 BOM
-    assert raw_bytes.startswith(b"\xef\xbb\xbf"), "PVS800 definition must start with UTF-8 BOM"
+    assert raw_bytes.startswith(b"\xef\xbb\xbf"), f"{def_path.name} must start with UTF-8 BOM"
 
     # Must decode cleanly without UnicodeDecodeError
     text = raw_bytes.decode("utf-8-sig")
-    assert "\x00" not in text, "Definition must not contain NUL bytes"
+    assert "\x00" not in text, f"{def_path.name} must not contain NUL bytes"
 
     # Header verification
     reader = csv.reader(text.splitlines(), delimiter=";")
@@ -52,28 +58,32 @@ def test_pvs800_definition_encoding_and_header() -> None:
     assert "PVS800" in header[3]
 
 
-def test_pvs800_function_code_holding_registers() -> None:
+@pytest.mark.parametrize("def_path", DEF_PATHS)
+def test_pvs800_function_code_holding_registers(def_path: Path) -> None:
     """
     Verifies that all parameter rows use Function Code 3 (Read Holding Registers).
     ABB Modbus adapters (FSCA-01, FENA-01/11/21, RMBA-01) map all drive parameters
     and actual signals into Holding Registers and reject FC 04 with Exception 01.
     """
-    with open(REPO_DEF_PATH, encoding="utf-8-sig") as f:
+    with open(def_path, encoding="utf-8-sig") as f:
         reader = csv.reader(f, delimiter=";")
         next(reader)
         rows = [r for r in reader if r]
 
     for idx, row in enumerate(rows, start=2):
         fc = row[1].strip()
-        assert fc == "3", f"Line {idx}: Expected Function Code 3 (Read Holding Registers), got {fc}"
+        assert fc == "3", (
+            f"{def_path.name} Line {idx}: Expected Function Code 3 (Read Holding Registers), got {fc}"
+        )
 
 
-def test_pvs800_word_swap_on_all_32bit_types() -> None:
+@pytest.mark.parametrize("def_path", DEF_PATHS)
+def test_pvs800_word_swap_on_all_32bit_types(def_path: Path) -> None:
     """
     Verifies that all 32-bit registers (both unsigned and signed)
     have word-swap enabled (_W) per ABB PVS800 Modbus specifications.
     """
-    with open(REPO_DEF_PATH, encoding="utf-8-sig") as f:
+    with open(def_path, encoding="utf-8-sig") as f:
         reader = csv.reader(f, delimiter=";")
         next(reader)
         rows = [r for r in reader if r]
@@ -85,8 +95,8 @@ def test_pvs800_word_swap_on_all_32bit_types() -> None:
     for idx, row in enumerate(rows, start=2):
         dtype = row[3].strip()
         # Must never have un-swapped U32 or I32
-        assert dtype != "U32", f"Line {idx}: U32 found without word-swap (_W)"
-        assert dtype != "I32", f"Line {idx}: I32 found without word-swap (_W)"
+        assert dtype != "U32", f"{def_path.name} Line {idx}: U32 found without word-swap (_W)"
+        assert dtype != "I32", f"{def_path.name} Line {idx}: I32 found without word-swap (_W)"
 
         if dtype == "U32_W":
             u32_count += 1
@@ -97,12 +107,13 @@ def test_pvs800_word_swap_on_all_32bit_types() -> None:
     assert i32_count == 131, f"Expected 131 I32_W registers, got {i32_count}"
 
 
-def test_pvs800_canonical_sunpm_tags() -> None:
+@pytest.mark.parametrize("def_path", DEF_PATHS)
+def test_pvs800_canonical_sunpm_tags(def_path: Path) -> None:
     """
     Verifies that essential inverter telemetry and command variables
     carry valid, unique WebdynSunPM canonical tags.
     """
-    with open(REPO_DEF_PATH, encoding="utf-8-sig") as f:
+    with open(def_path, encoding="utf-8-sig") as f:
         reader = csv.reader(f, delimiter=";")
         next(reader)
         rows = [r for r in reader if r]
@@ -131,7 +142,7 @@ def test_pvs800_canonical_sunpm_tags() -> None:
 
     seen_tags: set[str] = set()
     for name, (expected_addr, expected_type, expected_tag) in expected_tags.items():
-        assert name in name_to_row, f"Variable '{name}' not found in PVS800 definition"
+        assert name in name_to_row, f"Variable '{name}' not found in {def_path.name}"
         row = name_to_row[name]
         addr = row[2].strip()
         dtype = row[3].strip()
@@ -145,43 +156,25 @@ def test_pvs800_canonical_sunpm_tags() -> None:
         )
         assert tag == expected_tag, f"Mismatch for '{name}': expected tag {expected_tag}, got {tag}"
 
-        assert tag not in seen_tags, f"Duplicate tag '{tag}' detected in PVS800 definition"
+        assert tag not in seen_tags, f"Duplicate tag '{tag}' detected in {def_path.name}"
         seen_tags.add(tag)
 
 
-def test_pvs800_mode_3_address_formula() -> None:
-    """
-    Verifies that register addresses strictly follow ABB Mode 3 parameter mapping:
-    Register Address = 256 * Group + 2 * Index - 1.
-    """
-    # Sample verification from ABB PVS800 Firmware Manual Chapter 9:
-    # Group 101, Index 1 (DC voltage): 256 * 101 + 2 * 1 - 1 = 25857
-    # Group 101, Index 2 (Line current): 256 * 101 + 2 * 2 - 1 = 25859
-    # Group 101, Index 8 (Frequency): 256 * 101 + 2 * 8 - 1 = 25871
-    # Group 104, Index 1 (Tripping fault): 256 * 104 + 2 * 1 - 1 = 26625
-    test_cases = [
-        (101, 1, 25857),
-        (101, 2, 25859),
-        (101, 8, 25871),
-        (104, 1, 26625),
-    ]
-    for grp, idx, expected_reg in test_cases:
-        calculated = 256 * grp + 2 * idx - 1
-        assert calculated == expected_reg, (
-            f"Formula error for Group {grp}, Index {idx}: got {calculated}"
-        )
-
-
-def test_pvs800_schema_validation() -> None:
+@pytest.mark.parametrize("def_path", DEF_PATHS)
+def test_pvs800_schema_validation(def_path: Path) -> None:
     """Verifies that the definition passes strict Webdyn schema validation."""
     gen = Generator()
     report = gen.validate_csv_detailed(
-        str(REPO_DEF_PATH),
+        str(def_path),
         strict=True,
         strict_overlap=False,
     )
-    assert report.is_valid, f"Validation issues: {[str(i) for i in report.issues]}"
-    assert report.register_count == 1053, f"Expected 1053 registers, got {report.register_count}"
+    assert report.is_valid, (
+        f"Validation issues in {def_path.name}: {[str(i) for i in report.issues]}"
+    )
+    assert report.register_count == 1053, (
+        f"Expected 1053 registers in {def_path.name}, got {report.register_count}"
+    )
 
 
 def test_knowledge_miner_pvs800_tag_inference() -> None:
