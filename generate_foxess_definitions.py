@@ -702,7 +702,7 @@ def write_definition_file(
     """Writes a definition file with explicit header and validates compliance."""
     path.parent.mkdir(parents=True, exist_ok=True)
     header = ["Modbus", equipment, manufacturer, model, "", "", "", "", "", "", ""]
-    with open(path, "w", encoding="utf-8-sig", newline="") as f:
+    with open(path, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter=";")
         writer.writerow(header)
         writer.writerows(rows)

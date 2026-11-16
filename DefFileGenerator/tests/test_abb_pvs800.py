@@ -35,17 +35,17 @@ DEF_PATHS = [REPO_DEF_PATH, REPO_DEF_2_PATH]
 
 @pytest.mark.parametrize("def_path", DEF_PATHS)
 def test_pvs800_definition_encoding_and_header(def_path: Path) -> None:
-    """Verifies that the PVS800 definition file is encoded in valid UTF-8-sig."""
+    """Verifies that the PVS800 definition file is encoded in valid UTF-8 without BOM."""
     assert def_path.is_file(), f"Missing definition file: {def_path}"
 
     with open(def_path, "rb") as f:
         raw_bytes = f.read()
 
-    # Must start with UTF-8 BOM
-    assert raw_bytes.startswith(b"\xef\xbb\xbf"), f"{def_path.name} must start with UTF-8 BOM"
+    # Must NOT start with UTF-8 BOM
+    assert not raw_bytes.startswith(b"\xef\xbb\xbf"), f"{def_path.name} must NOT start with UTF-8 BOM"
 
-    # Must decode cleanly without UnicodeDecodeError
-    text = raw_bytes.decode("utf-8-sig")
+    # Must decode cleanly without UnicodeDecodeError in plain UTF-8
+    text = raw_bytes.decode("utf-8")
     assert "\x00" not in text, f"{def_path.name} must not contain NUL bytes"
 
     # Header verification

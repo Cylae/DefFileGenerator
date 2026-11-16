@@ -136,14 +136,14 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
             self.assertGreater(report.register_count, 800, f"Expected >800 registers in {filename}")
 
     def test_utf8_bom_and_header(self) -> None:
-        """Verify UTF-8 BOM, 11-column header, and metadata."""
+        """Verify UTF-8 without BOM, 11-column header, and metadata."""
         for model_key, filename in EXPECTED_FILES.items():
             filepath = DEFINITIONS_DIR / filename
             with open(filepath, "rb") as f:
                 bom = f.read(3)
-                self.assertEqual(bom, b"\xef\xbb\xbf", f"{filename} missing UTF-8 BOM")
+                self.assertNotEqual(bom, b"\xef\xbb\xbf", f"{filename} must not have UTF-8 BOM")
 
-            with open(filepath, encoding="utf-8-sig") as f:
+            with open(filepath, encoding="utf-8") as f:
                 reader = csv.reader(f, delimiter=";")
                 header = next(reader)
                 self.assertEqual(len(header), 11, f"{filename} header must have 11 columns")

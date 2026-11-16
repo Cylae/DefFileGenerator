@@ -109,7 +109,7 @@ def write_definition_file(
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(output_path, "w", encoding="utf-8-sig", newline="") as f:
+    with open(output_path, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter=";", lineterminator="\r\n")
         # 11 columns in header (10 semicolons)
         writer.writerow([protocol, category, manufacturer, model, "", "", "", "", "", "", ""])

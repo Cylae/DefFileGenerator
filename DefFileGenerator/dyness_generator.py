@@ -964,7 +964,7 @@ class DynessDefinitionGenerator:
 
         # 4. Write CSV with UTF-8 BOM encoding and \r\n line terminators
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, "w", encoding="utf-8-sig", newline="") as f:
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f, delimiter=";", lineterminator="\r\n")
             # 11 columns in header
             writer.writerow(["Modbus", "Battery", "Dyness", model_name, "", "", "", "", "", "", ""])

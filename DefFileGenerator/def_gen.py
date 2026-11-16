@@ -1652,19 +1652,23 @@ class Generator:
             if header_bytes.startswith((b"\xff\xfe", b"\xfe\xff")):
                 encoding = "utf-16"
             elif strict:
-                encoding = "utf-8-sig"
+                encoding = "utf-8"
             else:
                 with open(filepath, "rb") as f:
                     raw_data = f.read()
                 try:
-                    raw_data.decode("utf-8-sig")
-                    encoding = "utf-8-sig"
+                    raw_data.decode("utf-8")
+                    encoding = "utf-8"
                 except UnicodeDecodeError:
                     try:
-                        raw_data.decode("windows-1252")
-                        encoding = "windows-1252"
-                    except UnicodeDecodeError:
+                        raw_data.decode("utf-8-sig")
                         encoding = "utf-8-sig"
+                    except UnicodeDecodeError:
+                        try:
+                            raw_data.decode("windows-1252")
+                            encoding = "windows-1252"
+                        except UnicodeDecodeError:
+                            encoding = "utf-8"
 
             with open(filepath, encoding=encoding) as f:
                 reader = csv.reader(f, delimiter=";")
@@ -1886,7 +1890,7 @@ class Generator:
                     suffix=".tmp",
                     dir=target_dir,
                 )
-                outfile = os.fdopen(fd, "w", newline="", encoding="utf-8-sig")
+                outfile = os.fdopen(fd, "w", newline="", encoding="utf-8")
             elif stream_staging:
                 outfile = tempfile.NamedTemporaryFile(
                     mode="w", newline="", encoding="utf-8", delete=False
@@ -2079,7 +2083,7 @@ def generate_template(output_file: str | None, mode: str = "input") -> bool:
         delimiter = ","
 
     try:
-        encoding = "utf-8-sig" if mode == "definition" else "utf-8"
+        encoding = "utf-8"
         output_context = (
             staged_text_output(output_file, encoding=encoding)
             if output_file

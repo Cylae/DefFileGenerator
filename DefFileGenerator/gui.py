@@ -2051,7 +2051,7 @@ class DefFileGenApp:
         if not save_path:
             return
 
-        with open(save_path, "w", newline="", encoding="utf-8-sig") as f:
+        with open(save_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter=";", lineterminator="\n")
             # Header row
             header_row = ["modbusRTU", category, f"Example_{category}", "Model_1", ""] + [""] * 6
