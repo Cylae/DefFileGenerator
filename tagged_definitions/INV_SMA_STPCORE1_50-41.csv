@@ -58,8 +58,8 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 57;3;30793;U32;;Tension de reseau phase L3 contre L1;;0.01;0.0;;4
 58;3;30795;U32;;Somme courant toutes phases;;0.001;0.0;;4
 59;3;31221;I32;;Facteur de dephasage EEI;;0.001;0.0;;4
-60;3;30949;U32;;Facteur de decalage;;0.001;0.0;;4
-61;3;30823;U32;;Type d'excitation du cos phi;PF;1.0;0.0;;4
+60;3;30949;U32;;Facteur de decalage;PF;0.001;0.0;;4
+61;3;30823;U32;;Type d'excitation du cos phi;;1.0;0.0;;4
 62;3;31497;I32;;Puissance reactive;;1.0;0.0;;4
 63;3;30813;I32;;Puissance apparente;;1.0;0.0;;4
 64;3;30775;I32;;Puissance;P_AC;1.0;0.0;;4

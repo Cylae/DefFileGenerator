@@ -1,13 +1,13 @@
 modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 1;4;40202;U32;;DC voltage;U_DC;0.01;0;V;4
-2;4;40204;U32;;Line current;I_AC_3;0.01;0;A;4
+2;4;40204;U32;;Line current;I_AC;0.01;0;A;4
 3;4;40206;U32;;Line current %;;0.1;0;%;4
 4;4;40208;I32;;Active current;;0.01;0;A;4
 5;4;40210;I32;;Active current %;;0.1;0;%;4
 6;4;40212;I32;;Reactive current;;0.01;0;A;4
 7;4;40214;I32;;Reactive current %;;0.1;0;%;4
 8;4;40216;U32;;Frequency;FREQ;0.01;0;Hz;4
-9;4;40218;U32;;Grid voltage;;0.01;0;V;4
+9;4;40218;U32;;Grid voltage;U_AC_L1L2;0.01;0;V;4
 10;4;40220;I32;;Apparent power;S_AC;0.01;0;kVA;4
 11;4;40222;I32;;Apparent power %;;0.1;0;%;4
 12;4;40224;I32;;Power;P_AC;0.01;0;kW;4
@@ -194,8 +194,8 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 193;4;13004;U16;;Limit word 4;;1;0;;4
 194;4;13005;U16;;Limit word 5;;1;0;;4
 195;4;13006;U16;;Limit word 6;;1;0;;4
-196;4;46022;U32;;Active power limit to grid;;1;0;kW;4
-197;4;46026;U32;;Reactive power limit;CMD_P_AC_SET_ABS;1;0;kVAr;1
+196;4;46022;U32;;Active power limit to grid;CMD_P_AC_SET_ABS;1;0;kW;1
+197;4;46026;U32;;Reactive power limit;;1;0;kVAr;4
 198;3;46124;U32;;P(f) limit type;;1;0;;4
 199;3;46126;U32;;P(f) corner frequency;;0.01;0;Hz;4
 200;3;46128;U32;;P(f) limit gradient;;0.1;0;%/Hz;4
@@ -207,7 +207,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 206;3;46140;U32;;Connect limit type;;1;0;;4
 207;3;46142;U32;;Connect limit ramp;;1;0;%/min;4
 208;3;46144;U32;;Grid fault ramp;;1;0;%/min;4
-209;3;46150;U32;;External power limit;;1;0;%;4
+209;3;46150;U32;;External power limit;cmdPwrPct;1;0;%;4
 210;3;46152;U32;;P(U) limiter;;1;0;;4
 211;3;46154;U32;;P(U) trigger level;;1;0;%;4
 212;3;46156;U32;;P(U) release level;;1;0;%;4
@@ -812,7 +812,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 811;4;56820;U32;;Total kVAh supplied Frac;;1;0;;4
 812;4;56824;U32;;Energy counter, resettable;;0.01;0;kWh;4
 813;4;56826;U32;;kVAh Energy counter, resettable;;0.01;0;kVAh;4
-814;4;56828;U32;;Daily kWh supplied;;0.1;0.1;kWh;4
+814;4;56828;U32;;Daily kWh supplied;E_DAY;0.1;0.1;kWh;4
 815;4;56830;U32;;Daily kVAh supplied;;0.1;0;kVAh;4
 816;3;18501;U16;;Main circuit SPD status;;1;0;;4
 817;3;18502;U16;;DC input fuse status;;1;0;;4
@@ -859,7 +859,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 858;4;58064;U32;;Main voltage 2 pos seq;;0.01;0;V;4
 859;4;58066;U32;;Main voltage 2 neg seq;;0.01;0;V;4
 860;4;58068;U32;;Frequency 2;;0.01;0;Hz;4
-861;4;58080;U32;;Phase current U1;;0.01;0;A;4
+861;4;58080;U32;;Phase current U1;I_AC_3;0.01;0;A;4
 862;4;58082;U32;;Phase current V1;;0.01;0;A;4
 863;4;58084;U32;;Phase current W1;;0.01;0;A;4
 864;4;58086;U32;;Current 1 pos seq;;0.01;0;A;4
@@ -976,7 +976,7 @@ modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
 975;3;62022;U32;;Minimum grounding interval;;1;0;min;4
 976;3;62024;U32;;Grounding circuit voltage fail action;;1;0;;4
 977;3;62026;U32;;Grounding current limit;;0.01;0;A;4
-978;4;62028;U32;;Total grounding current;I_AC;0.001;0;A;4
+978;4;62028;U32;;Total grounding current;;0.001;0;A;4
 979;4;62030;I32;;Resistive grounding current;;0.001;0;A;4
 980;3;62032;U32;;Grounding current fault action;;1;0;;4
 981;3;62034;U32;;Grounding current time limit;;0.001;0;s;4

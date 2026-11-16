@@ -17,14 +17,14 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 16;3;35100;U16;;RTC_YM;;1;0;EPOCH;4
 17;3;35101;U16;;RTC_DH;;1;0;EPOCH;4
 18;3;35102;U16;;RTC_MS;;1;0;EPOCH;4
-19;3;35103;U16;;Vpv1;;0.1;0;V;4
-20;3;35104;U16;;Ipv1;;0.1;0;A;4
+19;3;35103;U16;;Vpv1;U_DC_STRING_1;0.1;0;V;4
+20;3;35104;U16;;Ipv1;I_DC_STRING_1;0.1;0;A;4
 21;3;35105;U32;;Ppv1;;1;0;W;4
-22;3;35107;U16;;Vpv2;;0.1;0;V;4
-23;3;35108;U16;;Ipv2;;0.1;0;A;4
+22;3;35107;U16;;Vpv2;U_DC_STRING_2;0.1;0;V;4
+23;3;35108;U16;;Ipv2;I_DC_STRING_2;0.1;0;A;4
 24;3;35109;U32;;Ppv2;;1;0;W;4
-25;3;35111;U16;;Vpv3;;1;0;V;4
-26;3;35112;U16;;Ipv3;;0.1;0;A;4
+25;3;35111;U16;;Vpv3;U_DC_STRING_3;1;0;V;4
+26;3;35112;U16;;Ipv3;I_DC_STRING_3;0.1;0;A;4
 27;3;35113;U32;;Ppv3;;1;0;W;4
 28;3;35115;U16;;Vpv4;;0.1;0;V;4
 29;3;35116;U16;;Ipv4;;0.1;0;A;4
@@ -44,7 +44,7 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 43;3;35134;I32;;Pgrid_T;;1;0;W;4
 44;3;35136;U16;;Grid Mode;;1;0;;8
 45;3;35137;I32;;Total INV Power;;1;0;W;4
-46;3;35139;I32;;AC ActivePower;P_AC;1;0;W;4
+46;3;35139;I32;;AC ActivePower;Watts;1;0;W;4
 47;3;35141;I32;;AC ReactivePower;Q_AC;1;0;Var;4
 48;3;35143;I32;;AC ApparentPower;;1;0;VA;4
 49;3;35145;U16;;Back-Up Vload_R;;0.1;0;V;4
@@ -132,7 +132,7 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 131;3;36010;I16;;MeterPF_R;;0.01;0;;4
 132;3;36011;I16;;MeterPF_S;;0.01;0;;4
 133;3;36012;I16;;MeterPF_T;;0.01;0;;4
-134;3;36013;I16;;MeterPowerFactor;;0.01;0;;4
+134;3;36013;I16;;MeterPowerFactor;PF;0.01;0;;4
 135;3;36014;U16;;MeterFrequence;FREQ;0.01;0;;4
 136;3;36015;F32;;E-Total-Sell;;1;0;;4
 137;3;36017;F32;;E-Total-Buy;;1;0;;4
@@ -235,7 +235,7 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 234;3;42009;I32;;S phase FeedPowerPara;;1;0;;4
 235;3;42011;I32;;T phase FeedPowerPara;;1;0;;4
 236;3;45127;U16;;Modbus address;UNIT_ID;1;0;;4
-237;3;45132;U32;;Modbus Baud rate;;1;0;;4
+237;3;45132;U32;;Modbus Baud rate;Baudrate;1;0;;4
 238;3;45200;U16;;RTC setting (Year/Month);;1;0;;4
 239;3;45201;U16;;RTC setting (Date/Hour);;1;0;;4
 240;3;45202;U16;;RTC setting (Minute/Second);;1;0;;4
@@ -320,7 +320,7 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 319;3;45432;U16;;power slope enable;;1;0;;4
 320;3;45433;U16;;EnableCurve;;1;0;;4
 321;3;45434;I16;;A point power;;1;0;%/1000;4
-322;3;45435;I16;;A point cos PHI;PF;1;0;;4
+322;3;45435;I16;;A point cos PHI;;1;0;;4
 323;3;45436;I16;;B point power;;1;0;%/1000;4
 324;3;45437;I16;;B point cos PHI;;1;0;;4
 325;3;45438;I16;;C pointpower;;1;0;%/1000;4
@@ -345,7 +345,7 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 344;3;45457;I16;;lock in power_1;;1;0;%/1000 / Hz;4
 345;3;45458;I16;;lock out power_1;;1;0;%/1000 / Hz;4
 346;3;45459;U16;;V1 voltage_1;;0.1;0;V;4
-347;3;45460;I16;;V1 value (var % rated VA);;1;0;%/1000;4
+347;3;45460;I16;;V1 value (var % rated VA);S_AC;1;0;%/1000;4
 348;3;45461;U16;;V2 voltage_1;;0.1;0;V;4
 349;3;45462;I16;;V2 value (var % rated VA);;1;0;%/1000;4
 350;3;45463;U16;;V3 voltage_1;;0.1;0;V;4
@@ -374,7 +374,7 @@ ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 373;3;45486;U16;;GridLimitByVolStartPer;;1;0;;4
 374;3;45487;U16;;GridLimitByVolSlope;;1;0;;4
 375;3;45491;U16;;All Power Curve Disable;;1;0;;4
-376;3;45492;U16;;R phase fixed active power;;1;0;%/1000;4
+376;3;45492;U16;;R phase fixed active power;P_AC;1;0;%/1000;4
 377;3;45493;U16;;S phase fixed active power;;1;0;%/1000;4
 378;3;45494;U16;;T phase fixed active power;;1;0;%/1000;4
 379;3;45495;U16;;GridVoltHighS3;;0.1;0;V;4

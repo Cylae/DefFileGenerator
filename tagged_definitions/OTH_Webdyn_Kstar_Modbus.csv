@@ -2,13 +2,13 @@ modbusRTU;Other;Webdyn;Kstar_Modbus;;;;;;;
 1;4;3000;U16;;PV1 input voltage;U_DC_STRING_1;1.0;0.0;0.1V;4
 2;4;3001;U16;;PV2 input voltage;U_DC_STRING_2;1.0;0.0;0.1V;4
 3;4;3002;U16;;PV3 input voltage;U_DC_STRING_3;1.0;0.0;0.1V;4
-4;4;3003;U16;;PV1 input current;I_DC_MPPT_1;1.0;0.0;0.01A;4
-5;4;3004;U16;;PV2 input current;I_DC_MPPT_2;1.0;0.0;0.01A;4
-6;4;3005;U16;;PV3 input current;I_DC_MPPT_3;1.0;0.0;0.01A;4
+4;4;3003;U16;;PV1 input current;I_DC_STRING_1;1.0;0.0;0.01A;4
+5;4;3004;U16;;PV2 input current;I_DC_STRING_2;1.0;0.0;0.01A;4
+6;4;3005;U16;;PV3 input current;I_DC_STRING_3;1.0;0.0;0.01A;4
 7;4;3006;U16;;PV1 input power;P_DC_MPPT_1;1.0;0.0;W;4
 8;4;3008;U16;;PV2 input power;P_DC_MPPT_2;1.0;0.0;W;4
 9;4;3010;U16;;PV3 input power;P_DC_MPPT_3;1.0;0.0;W;4
-10;4;3014;U16;;RS-phase grid voltage;;1.0;0.0;0.1V;4
+10;4;3014;U16;;RS-phase grid voltage;U_AC_L1L2;1.0;0.0;0.1V;4
 11;4;3015;U16;;ST-phase grid voltage;;1.0;0.0;0.1V;4
 12;4;3016;U16;;TS-phase grid voltage;;1.0;0.0;0.1V;4
 13;4;3017;U16;;RS-phase grid frequency;FREQ;1.0;0.0;0.01Hz;4
@@ -31,7 +31,7 @@ modbusRTU;Other;Webdyn;Kstar_Modbus;;;;;;;
 30;4;3047;U16;;Lower grid frequency threshold;;1.0;0.0;0.01Hz;4
 31;4;3048;U16;;Upper grid frequency threshold;;1.0;0.0;0.01Hz;4
 32;4;3049;U16;;Preset power factor;PF;1.0;0.0;;4
-33;4;3050;U16;;Preset active power;;1.0;0.0;%;4
+33;4;3050;U16;;Preset active power;CMD_P_AC_SET_ABS;1.0;0.0;%;1
 34;4;3052;U16;;Apparent power;S_AC;1.0;0.0;VA;4
 35;4;3054;U16;;Reactive power;Q_AC;1.0;0.0;Var;4
 36;4;3056;U16;;power factor;;1.0;0.0;0.001;4

@@ -9,7 +9,7 @@ modbusTCP;BESS;Mars Energy;MarsLocalController All-In-One V7.0;;;;;;;
 8;3;3;U16;;EMS Consigne - Energy Storage Working Mode;;1.000000;0.000000;;1
 9;3;4;I32;;EMS Consigne - Energy Storage Active Power;P_AC;1.000000;0.000000;W;1
 10;3;6;I32;;EMS Consigne - Energy Storage Reactive Power;Q_AC;1.000000;0.000000;Var;1
-11;3;8;U16;;EMS Consigne - AC Voltage;;1.000000;0.000000;V;1
+11;3;8;U16;;EMS Consigne - AC Voltage;U_AC_L1L2;1.000000;0.000000;V;1
 12;3;9;U16;;EMS Consigne - AC Frequency;FREQ;0.010000;0.000000;Hz;1
 13;2;0;U16;;LC Alarm - LC Alarm Summary;;1.000000;0.000000;;9
 14;2;1;U16;;LC Alarm - PCS Alarm Summary;;1.000000;0.000000;;9
@@ -17,7 +17,7 @@ modbusTCP;BESS;Mars Energy;MarsLocalController All-In-One V7.0;;;;;;;
 16;2;3;U16;;LC Alarm - Air Conditioning Alarm Summary;;1.000000;0.000000;;9
 17;4;0;U16;;1#PCS - Operating Status;;1.000000;0.000000;;9
 18;4;1;U16;;1#PCS - Reserve;;1.000000;0.000000;;0
-19;4;2;F32;;1#PCS - AC Uab Line Voltage;U_AC_L1L2;1.000000;0.000000;V;4
+19;4;2;F32;;1#PCS - AC Uab Line Voltage;;1.000000;0.000000;V;4
 20;4;4;F32;;1#PCS - AC Ubc Line Voltage;U_AC_L2L3;1.000000;0.000000;V;4
 21;4;6;F32;;1#PCS - AC Uca Line Voltage;U_AC_L3L1;1.000000;0.000000;V;4
 22;4;8;F32;;1#PCS - AC Phase A Current;I_AC_1;1.000000;0.000000;A;4
@@ -3677,7 +3677,7 @@ modbusTCP;BESS;Mars Energy;MarsLocalController All-In-One V7.0;;;;;;;
 3676;4;15014;F32;;1#AC - Dehumidification Low Point (Stop Point);;0.100000;0.000000;;4
 3677;4;15016;F32;;1#AC - High Temperature Alarm Point;TEMP;0.100000;0.000000;°C;9
 3678;4;15018;F32;;1#AC - Low Temperature Alarm Point;;0.100000;0.000000;°C;9
-3679;4;15020;F32;;1#AC - Temperature;;0.100000;0.000000;°C;4
+3679;4;15020;F32;;1#AC - Temperature;TEMP_INT;0.100000;0.000000;°C;4
 3680;4;15022;U16;;1#AC - Temperature Status;;1.000000;0.000000;;9
 3681;4;15023;U16;;1#AC - Voltage Status;;1.000000;0.000000;;9
 3682;4;15024;U16;;1#AC - Sensor Status;;1.000000;0.000000;;9

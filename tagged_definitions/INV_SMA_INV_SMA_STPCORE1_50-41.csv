@@ -58,8 +58,8 @@ modbusRTU;Inverter;SMA;INV_SMA_STPCORE1_50-41;;;;;;;
 57;4;30793;U16;;Tension de reseau phase L3 contre L1;;1.0;0.0;;4
 58;4;30795;U16;;Somme courant toutes phases;;1.0;0.0;;4
 59;4;31221;U16;;Facteur de dephasage EEI;;1.0;0.0;;4
-60;4;30949;U16;;Facteur de decalage;;1.0;0.0;;4
-61;4;30823;U16;;Type d'excitation du cos phi;PF;1.0;0.0;;4
+60;4;30949;U16;;Facteur de decalage;PF;1.0;0.0;;4
+61;4;30823;U16;;Type d'excitation du cos phi;;1.0;0.0;;4
 62;4;31497;U16;;Puissance reactive;;1.0;0.0;;4
 63;4;30813;U16;;Puissance apparente;;1.0;0.0;;4
 64;4;30775;U16;;Puissance;P_AC;1.0;0.0;;4

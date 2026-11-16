@@ -1,0 +1,554 @@
+modbusRTU;Other;Robestec battery;SJ2025B2846SJ2025B28_p5;;;;;;;
+1;4;101;U16;;Remote user timeout time(s);;1.0;0.0;s;4
+2;4;102;U16;;Command mode(0-Sub-system, 1-Plan, 2-Main command);;1.0;0.0;;4
+3;4;103;U16;;0: Seasonal timing, 1: Timing, 2: Curve;;1.0;0.0;;4
+4;4;104;U16;;Control source;;1.0;0.0;;4
+5;4;105;U16;;Total active power command;P_AC;1.0;0.0;kW;4
+6;4;106;U16;;Total reactive power command;Q_AC;1.0;0.0;kVar;4
+7;4;107;U16;;Time division A:0:00~0:15;;1.0;0.0;kW;4
+8;4;108;U16;;Time division A:0:15~0:30;;1.0;0.0;kW;4
+9;4;109;U16;;Time division A:0:30~0:45;;1.0;0.0;kW;4
+10;4;110;U16;;Time division A:0:45~1:00;;1.0;0.0;kW;4
+11;4;111;U16;;Time division A:1:00~1:15;;1.0;0.0;kW;4
+12;4;112;U16;;Time division A:1:15~1:30;;1.0;0.0;kW;4
+13;4;113;U16;;Time division A:1:30~1:45;;1.0;0.0;kW;4
+14;4;114;U16;;Time division A:1:45~2:00;;1.0;0.0;kW;4
+15;4;115;U16;;Time division A:2:00~2:15;;1.0;0.0;kW;4
+16;4;116;U16;;Time division A:2:15~2:30;;1.0;0.0;kW;4
+17;4;117;U16;;Time division A:2:30~2:45;;1.0;0.0;kW;4
+18;4;118;U16;;Time division A:2:45~3:00;;1.0;0.0;kW;4
+19;4;119;U16;;Time division A:3:00~3:15;;1.0;0.0;kW;4
+20;4;120;U16;;Time division A:3:15~3:30;;1.0;0.0;kW;4
+21;4;121;U16;;Time division A:3:30~3:45;;1.0;0.0;kW;4
+22;4;122;U16;;Time division A:3:45~4:0;;1.0;0.0;kW;4
+23;4;123;U16;;Time division A:4:00~4:15;;1.0;0.0;kW;4
+24;4;124;U16;;Time division A:4:15~4:30;;1.0;0.0;kW;4
+25;4;125;U16;;Time division A:4:30~4:45;;1.0;0.0;kW;4
+26;4;126;U16;;Time division A:4:45~4:00;;1.0;0.0;kW;4
+27;4;127;U16;;Time division A:5:00~5:15;;1.0;0.0;kW;4
+28;4;128;U16;;Time division A:5:15~5:30;;1.0;0.0;kW;4
+29;4;129;U16;;Time division A:5:30~5:45;;1.0;0.0;kW;4
+30;4;130;U16;;Time division A:5:45~6:00;;1.0;0.0;kW;4
+31;4;131;U16;;Time division A:6:00~6:15;;1.0;0.0;kW;4
+32;4;132;U16;;Time division A:6:15~6:30;;1.0;0.0;kW;4
+33;4;133;U16;;Time division A:6:30~6:45;;1.0;0.0;kW;4
+34;4;134;U16;;Time division A:6:45~7:00;;1.0;0.0;kW;4
+35;4;135;U16;;Time division A:7:00~7:15;;1.0;0.0;kW;4
+36;4;136;U16;;Time division A:7:15~7:30;;1.0;0.0;kW;4
+37;4;137;U16;;Time division A:7:30~7:45;;1.0;0.0;kW;4
+38;4;138;U16;;Time division A:7:45~8:00;;1.0;0.0;kW;4
+39;4;139;U16;;Time division A:8:00~8:15;;1.0;0.0;kW;4
+40;4;140;U16;;Time division A:8:15~8:30;;1.0;0.0;kW;4
+41;4;141;U16;;Time division A:8:30~8:45;;1.0;0.0;kW;4
+42;4;142;U16;;Time division A:8:45~9:00;;1.0;0.0;kW;4
+43;4;143;U16;;Time division A:9:00~9:15;;1.0;0.0;kW;4
+44;4;144;U16;;Time division A:9:15~9:30;;1.0;0.0;kW;4
+45;4;145;U16;;Time division A:9:30~9:45;;1.0;0.0;kW;4
+46;4;146;U16;;Time division A:9:45~10:00;;1.0;0.0;kW;4
+47;4;147;U16;;Time division A:10:00~10:15;;1.0;0.0;kW;4
+48;4;148;U16;;Time division A:10:15~10:30;;1.0;0.0;kW;4
+49;4;149;U16;;Time division A:10:30~10:45;;1.0;0.0;kW;4
+50;4;150;U16;;Time division A:10:45~11:00;;1.0;0.0;kW;4
+51;4;151;U16;;Time division A:11:00~11:15;;1.0;0.0;kW;4
+52;4;152;U16;;Time division A:11:15~11:30;;1.0;0.0;kW;4
+53;4;153;U16;;Time division A:11:30~11:45;;1.0;0.0;kW;4
+54;4;154;U16;;Time division A:11:45~12:00;;1.0;0.0;kW;4
+55;4;155;U16;;Time division A:12:00~12:15;;1.0;0.0;kW;4
+56;4;156;U16;;Time division A:12:15~12:30;;1.0;0.0;kW;4
+57;4;157;U16;;Time division A:12:30~12:45;;1.0;0.0;kW;4
+58;4;158;U16;;Time division A:12:45~13:00;;1.0;0.0;kW;4
+59;4;159;U16;;Time division A:13:00~13:15;;1.0;0.0;kW;4
+60;4;160;U16;;Time division A:13:15~13:30;;1.0;0.0;kW;4
+61;4;161;U16;;Time division A:13:30~13:45;;1.0;0.0;kW;4
+62;4;162;U16;;Time division A:13:45~14:00;;1.0;0.0;kW;4
+63;4;163;U16;;Time division A:14:00~14:15;;1.0;0.0;kW;4
+64;4;164;U16;;Time division A:14:15~14:30;;1.0;0.0;kW;4
+65;4;165;U16;;Time division A:14:30~14:45;;1.0;0.0;kW;4
+66;4;166;U16;;Time division A:14:45~15:00;;1.0;0.0;kW;4
+67;4;167;U16;;Time division A:15:00~15:15;;1.0;0.0;kW;4
+68;4;168;U16;;Time division A:15:15~15:30;;1.0;0.0;kW;4
+69;4;169;U16;;Time division A:15:30~15:45;;1.0;0.0;kW;4
+70;4;170;U16;;Time division A:15:45~16:00;;1.0;0.0;kW;4
+71;4;171;U16;;Time division A:16:00~16:15;;1.0;0.0;kW;4
+72;4;172;U16;;Time division A:16:15~16:30;;1.0;0.0;kW;4
+73;4;173;U16;;Time division A:16:30~16:45;;1.0;0.0;kW;4
+74;4;174;U16;;Time division A:16:45~17:00;;1.0;0.0;kW;4
+75;4;175;U16;;Time division A:17:00~17:15;;1.0;0.0;kW;4
+76;4;176;U16;;Time division A:17:15~17:30;;1.0;0.0;kW;4
+77;4;177;U16;;Time division A:17:30~17:45;;1.0;0.0;kW;4
+78;4;178;U16;;Time division A:17:45~18:00;;1.0;0.0;kW;4
+79;4;179;U16;;Time division A:18:00~18:15;;1.0;0.0;kW;4
+80;4;180;U16;;Time division A:18:15~18:30;;1.0;0.0;kW;4
+81;4;181;U16;;Time division A:18:30~18:45;;1.0;0.0;kW;4
+82;4;182;U16;;Time division A:18:45~19:00;;1.0;0.0;kW;4
+83;4;183;U16;;Time division A:19:00~19:15;;1.0;0.0;kW;4
+84;4;184;U16;;Time division A:19:15~19:30;;1.0;0.0;kW;4
+85;4;185;U16;;Time division A:19:30~19:45;;1.0;0.0;kW;4
+86;4;186;U16;;Time division A:19:45~20:00;;1.0;0.0;kW;4
+87;4;187;U16;;Time division A:20:00~20:15;;1.0;0.0;kW;4
+88;4;188;U16;;Time division A:20:15~20:30;;1.0;0.0;kW;4
+89;4;189;U16;;Time division A:20:30~20:45;;1.0;0.0;kW;4
+90;4;190;U16;;Time division A:20:45~21:00;;1.0;0.0;kW;4
+91;4;191;U16;;Time division A:21:00~21:15;;1.0;0.0;kW;4
+92;4;192;U16;;Time division A:21:15~21:30;;1.0;0.0;kW;4
+93;4;193;U16;;Time division A:21:30~21:45;;1.0;0.0;kW;4
+94;4;194;U16;;Time division A:21:45~22:00;;1.0;0.0;kW;4
+95;4;195;U16;;Time division A:22:00~22:15;;1.0;0.0;kW;4
+96;4;196;U16;;Time division A:22:15~22:30;;1.0;0.0;kW;4
+97;4;197;U16;;Time division A:22:30~22:45;;1.0;0.0;kW;4
+98;4;198;U16;;Time division A:22:45~23:00;;1.0;0.0;kW;4
+99;4;199;U16;;Time division A:23:00~23:15;;1.0;0.0;kW;4
+100;4;200;U16;;Time division A:23:15~23:30;;1.0;0.0;kW;4
+101;4;201;U16;;Time division A:23:30~23:45;;1.0;0.0;kW;4
+102;4;202;U16;;Time division A:23:45~00:00;;1.0;0.0;kW;4
+103;4;204;U16;;Time division B:0:00~0:15;;1.0;0.0;kW;4
+104;4;205;U16;;Time division B:0:15~0:30;;1.0;0.0;kW;4
+105;4;206;U16;;Time division B:0:30~0:45;;1.0;0.0;kW;4
+106;4;207;U16;;Time division B:0:45~1:00;;1.0;0.0;kW;4
+107;4;208;U16;;Time division B:1:00~1:15;;1.0;0.0;kW;4
+108;4;209;U16;;Time division B:1:15~1:30;;1.0;0.0;kW;4
+109;4;210;U16;;Time division B:1:30~1:45;;1.0;0.0;kW;4
+110;4;211;U16;;Time division B:1:45~2:00;;1.0;0.0;kW;4
+111;4;212;U16;;Time division B:2:00~2:15;;1.0;0.0;kW;4
+112;4;213;U16;;Time division B:2:15~2:30;;1.0;0.0;kW;4
+113;4;214;U16;;Time division B:2:30~2:45;;1.0;0.0;kW;4
+114;4;215;U16;;Time division B:2:45~3:00;;1.0;0.0;kW;4
+115;4;216;U16;;Time division B:3:00~3:15;;1.0;0.0;kW;4
+116;4;217;U16;;Time division B:3:15~3:30;;1.0;0.0;kW;4
+117;4;218;U16;;Time division B:3:30~3:45;;1.0;0.0;kW;4
+118;4;219;U16;;Time division B:3:45~4:0;;1.0;0.0;kW;4
+119;4;220;U16;;Time division B:4:00~4:15;;1.0;0.0;kW;4
+120;4;221;U16;;Time division B:4:15~4:30;;1.0;0.0;kW;4
+121;4;222;U16;;Time division B:4:30~4:45;;1.0;0.0;kW;4
+122;4;223;U16;;Time division B:4:45~4:00;;1.0;0.0;kW;4
+123;4;224;U16;;Time division B:5:00~5:15;;1.0;0.0;kW;4
+124;4;225;U16;;Time division B:5:15~5:30;;1.0;0.0;kW;4
+125;4;226;U16;;Time division B:5:30~5:45;;1.0;0.0;kW;4
+126;4;227;U16;;Time division B:5:45~6:00;;1.0;0.0;kW;4
+127;4;228;U16;;Time division B:6:00~6:15;;1.0;0.0;kW;4
+128;4;229;U16;;Time division B:6:15~6:30;;1.0;0.0;kW;4
+129;4;230;U16;;Time division B:6:30~6:45;;1.0;0.0;kW;4
+130;4;231;U16;;Time division B:6:45~7:00;;1.0;0.0;kW;4
+131;4;232;U16;;Time division B:7:00~7:15;;1.0;0.0;kW;4
+132;4;233;U16;;Time division B:7:15~7:30;;1.0;0.0;kW;4
+133;4;234;U16;;Time division B:7:30~7:45;;1.0;0.0;kW;4
+134;4;235;U16;;Time division B:7:45~8:00;;1.0;0.0;kW;4
+135;4;236;U16;;Time division B:8:00~8:15;;1.0;0.0;kW;4
+136;4;237;U16;;Time division B:8:15~8:30;;1.0;0.0;kW;4
+137;4;238;U16;;Time division B:8:30~8:45;;1.0;0.0;kW;4
+138;4;239;U16;;Time division B:8:45~9:00;;1.0;0.0;kW;4
+139;4;240;U16;;Time division B:9:00~9:15;;1.0;0.0;kW;4
+140;4;241;U16;;Time division B:9:15~9:30;;1.0;0.0;kW;4
+141;4;242;U16;;Time division B:9:30~9:45;;1.0;0.0;kW;4
+142;4;243;U16;;Time division B:9:45~10:00;;1.0;0.0;kW;4
+143;4;244;U16;;Time division B:10:00~10:15;;1.0;0.0;kW;4
+144;4;245;U16;;Time division B:10:15~10:30;;1.0;0.0;kW;4
+145;4;246;U16;;Time division B:10:30~10:45;;1.0;0.0;kW;4
+146;4;247;U16;;Time division B:10:45~11:00;;1.0;0.0;kW;4
+147;4;248;U16;;Time division B:11:00~11:15;;1.0;0.0;kW;4
+148;4;249;U16;;Time division B:11:15~11:30;;1.0;0.0;kW;4
+149;4;250;U16;;Time division B:11:30~11:45;;1.0;0.0;kW;4
+150;4;251;U16;;Time division B:11:45~12:00;;1.0;0.0;kW;4
+151;4;252;U16;;Time division B:12:00~12:15;;1.0;0.0;kW;4
+152;4;253;U16;;Time division B:12:15~12:30;;1.0;0.0;kW;4
+153;4;254;U16;;Time division B:12:30~12:45;;1.0;0.0;kW;4
+154;4;255;U16;;Time division B:12:45~13:00;;1.0;0.0;kW;4
+155;4;256;U16;;Time division B:13:00~13:15;;1.0;0.0;kW;4
+156;4;257;U16;;Time division B:13:15~13:30;;1.0;0.0;kW;4
+157;4;258;U16;;Time division B:13:30~13:45;;1.0;0.0;kW;4
+158;4;259;U16;;Time division B:13:45~14:00;;1.0;0.0;kW;4
+159;4;260;U16;;Time division B:14:00~14:15;;1.0;0.0;kW;4
+160;4;261;U16;;Time division B:14:15~14:30;;1.0;0.0;kW;4
+161;4;262;U16;;Time division B:14:30~14:45;;1.0;0.0;kW;4
+162;4;263;U16;;Time division B:14:45~15:00;;1.0;0.0;kW;4
+163;4;264;U16;;Time division B:15:00~15:15;;1.0;0.0;kW;4
+164;4;265;U16;;Time division B:15:15~15:30;;1.0;0.0;kW;4
+165;4;266;U16;;Time division B:15:30~15:45;;1.0;0.0;kW;4
+166;4;267;U16;;Time division B:15:45~16:00;;1.0;0.0;kW;4
+167;4;268;U16;;Time division B:16:00~16:15;;1.0;0.0;kW;4
+168;4;269;U16;;Time division B:16:15~16:30;;1.0;0.0;kW;4
+169;4;270;U16;;Time division B:16:30~16:45;;1.0;0.0;kW;4
+170;4;271;U16;;Time division B:16:45~17:00;;1.0;0.0;kW;4
+171;4;272;U16;;Time division B:17:00~17:15;;1.0;0.0;kW;4
+172;4;273;U16;;Time division B:17:15~17:30;;1.0;0.0;kW;4
+173;4;274;U16;;Time division B:17:30~17:45;;1.0;0.0;kW;4
+174;4;275;U16;;Time division B:17:45~18:00;;1.0;0.0;kW;4
+175;4;276;U16;;Time division B:18:00~18:15;;1.0;0.0;kW;4
+176;4;277;U16;;Time division B:18:15~18:30;;1.0;0.0;kW;4
+177;4;278;U16;;Time division B:18:30~18:45;;1.0;0.0;kW;4
+178;4;279;U16;;Time division B:18:45~19:00;;1.0;0.0;kW;4
+179;4;280;U16;;Time division B:19:00~19:15;;1.0;0.0;kW;4
+180;4;281;U16;;Time division B:19:15~19:30;;1.0;0.0;kW;4
+181;4;282;U16;;Time division B:19:30~19:45;;1.0;0.0;kW;4
+182;4;283;U16;;Time division B:19:45~20:00;;1.0;0.0;kW;4
+183;4;284;U16;;Time division B:20:00~20:15;;1.0;0.0;kW;4
+184;4;285;U16;;Time division B:20:15~20:30;;1.0;0.0;kW;4
+185;4;286;U16;;Time division B:20:30~20:45;;1.0;0.0;kW;4
+186;4;287;U16;;Time division B:20:45~21:00;;1.0;0.0;kW;4
+187;4;288;U16;;Time division B:21:00~21:15;;1.0;0.0;kW;4
+188;4;289;U16;;Time division B:21:15~21:30;;1.0;0.0;kW;4
+189;4;290;U16;;Time division B:21:30~21:45;;1.0;0.0;kW;4
+190;4;291;U16;;Time division B:21:45~22:00;;1.0;0.0;kW;4
+191;4;292;U16;;Time division B:22:00~22:15;;1.0;0.0;kW;4
+192;4;293;U16;;Time division B:22:15~22:30;;1.0;0.0;kW;4
+193;4;294;U16;;Time division B:22:30~22:45;;1.0;0.0;kW;4
+194;4;295;U16;;Time division B:22:45~23:00;;1.0;0.0;kW;4
+195;4;296;U16;;Time division B:23:00~23:15;;1.0;0.0;kW;4
+196;4;297;U16;;Time division B:23:15~23:30;;1.0;0.0;kW;4
+197;4;298;U16;;Time division B:23:30~23:45;;1.0;0.0;kW;4
+198;4;299;U16;;Time division B:23:45~00:00;;1.0;0.0;kW;4
+199;4;300;U16;;Season A starting month;;1.0;0.0;;4
+200;4;301;U16;;Seasonal timing B starting month;;1.0;0.0;;4
+201;4;336;U16;;Max. temp. power limitation temp. point [0];CMD_P_AC_SET_ABS;1.0;0.0;℃;1
+202;4;337;U16;;Max. temp. power limitation temp. point [1];;1.0;0.0;℃;4
+203;4;338;U16;;Max. temp. power limitation temp. point [2];;1.0;0.0;℃;4
+204;4;339;U16;;Max. temp. power limitation temp. point [3];;1.0;0.0;℃;4
+205;4;340;U16;;Max. temp. power limitation temp. point [4];;1.0;0.0;℃;4
+206;4;341;U16;;Max. temp. power limitation temp. point [5];;1.0;0.0;℃;4
+207;4;342;U16;;Max. temp. power limitation temp. point [6];;1.0;0.0;℃;4
+208;4;343;U16;;Max. temp. power limitation temp. point [7];;1.0;0.0;℃;4
+209;4;344;U16;;Max. temp. power limitation temp. point [8];;1.0;0.0;℃;4
+210;4;345;U16;;Max Temp Limit Dis Pwr Pt0;;1.0;0.0;kW;4
+211;4;346;U16;;Max Temp Limit Dis Pwr Pt1;;1.0;0.0;kW;4
+212;4;347;U16;;Max Temp Limit Dis Pwr Pt2;;1.0;0.0;kW;4
+213;4;348;U16;;Max Temp Limit Dis Pwr Pt3;;1.0;0.0;kW;4
+214;4;349;U16;;Max Temp Limit Dis Pwr Pt4;;1.0;0.0;kW;4
+215;4;350;U16;;Max Temp Limit Dis Pwr Pt5;;1.0;0.0;kW;4
+216;4;351;U16;;Max Temp Limit Dis Pwr Pt6;;1.0;0.0;kW;4
+217;4;352;U16;;Max Temp Limit Dis Pwr Pt7;;1.0;0.0;kW;4
+218;4;353;U16;;Max Temp Limit Dis Pwr Pt8;;1.0;0.0;kW;4
+219;4;354;U16;;Max Temp Limit Dis Pwr Pt9;;1.0;0.0;kW;4
+220;4;355;U16;;Max Temp Limit Chg Pwr Pt0;;1.0;0.0;kW;4
+221;4;356;U16;;Max Temp Limit Chg Pwr Pt1;;1.0;0.0;kW;4
+222;4;357;U16;;Max Temp Limit Chg Pwr Pt2;;1.0;0.0;kW;4
+223;4;358;U16;;Max Temp Limit Chg Pwr Pt3;;1.0;0.0;kW;4
+224;4;359;U16;;Max Temp Limit Chg Pwr Pt4;;1.0;0.0;kW;4
+225;4;360;U16;;Max Temp Limit Chg Pwr Pt5;;1.0;0.0;kW;4
+226;4;361;U16;;Max Temp Limit Chg Pwr Pt6;;1.0;0.0;kW;4
+227;4;362;U16;;Max Temp Limit Chg Pwr Pt7;;1.0;0.0;kW;4
+228;4;363;U16;;Max Temp Limit Chg Pwr Pt8;;1.0;0.0;kW;4
+229;4;364;U16;;Max Temp Limit Chg Pwr Pt9;;1.0;0.0;kW;4
+230;4;365;U16;;PCS max. DIS power;;1.0;0.0;kW;4
+231;4;366;U16;;PCS max. CHA power;;1.0;0.0;kW;4
+232;4;367;U16;;CHA stop cell volt.;;1.0;0.0;V;4
+233;4;368;U16;;CHA stop cell volt. hysteresis;;1.0;0.0;V;4
+234;4;369;U16;;DIS stop cell volt.;;1.0;0.0;V;4
+235;4;370;U16;;DIS stop cell volt. hysteresis;;1.0;0.0;V;4
+236;4;371;U16;;Reverse curr.-Nominal power(kW);P_RATED;1.0;0.0;kW;4
+237;4;375;U16;;Reverse curr.-Power hysteresis;;1.0;0.0;kW;4
+238;4;376;U16;;Reverse curr.-Frequency regulation(s);FREQ;1.0;0.0;s;4
+239;4;377;U16;;Cell volt. power limitation volt. point [0] (v);;1.0;0.0;V;4
+240;4;378;U16;;Cell volt. power limitation volt. point [1] (v);;1.0;0.0;V;4
+241;4;379;U16;;Cell volt. power limitation volt. point [2] (v);;1.0;0.0;V;4
+242;4;380;U16;;Cell volt. power limitation volt. point [3] (v);;1.0;0.0;V;4
+243;4;381;U16;;Cell volt. power limitation volt. point [4] (v);;1.0;0.0;V;4
+244;4;382;U16;;Cell volt. power limitation volt. point [5] (v);;1.0;0.0;V;4
+245;4;383;U16;;Cell volt. power limitation volt. point [6] (v);;1.0;0.0;V;4
+246;4;384;U16;;Cell volt. power limitation volt. point [7] (v);;1.0;0.0;V;4
+247;4;385;U16;;Cell volt. power limitation volt. point [8] (v);;1.0;0.0;V;4
+248;4;386;U16;;Cell Volt Limit Dis Pwr Pt0;;1.0;0.0;kW;4
+249;4;387;U16;;Cell Volt Limit Dis Pwr Pt1;;1.0;0.0;kW;4
+250;4;388;U16;;Cell Volt Limit Dis Pwr Pt2;;1.0;0.0;kW;4
+251;4;389;U16;;Cell Volt Limit Dis Pwr Pt3;;1.0;0.0;kW;4
+252;4;390;U16;;Cell Volt Limit Dis Pwr Pt4;;1.0;0.0;kW;4
+253;4;391;U16;;Cell Volt Limit Dis Pwr Pt5;;1.0;0.0;kW;4
+254;4;392;U16;;Cell Volt Limit Dis Pwr Pt6;;1.0;0.0;kW;4
+255;4;393;U16;;Cell Volt Limit Dis Pwr Pt7;;1.0;0.0;kW;4
+256;4;394;U16;;Cell Volt Limit Dis Pwr Pt8;;1.0;0.0;kW;4
+257;4;395;U16;;Cell Volt Limit Dis Pwr Pt9;;1.0;0.0;kW;4
+258;4;396;U16;;Cell Volt Limit Chg Pwr Pt0;;1.0;0.0;kW;4
+259;4;397;U16;;Cell Volt Limit Chg Pwr Pt1;;1.0;0.0;kW;4
+260;4;398;U16;;Cell Volt Limit Chg Pwr Pt2;;1.0;0.0;kW;4
+261;4;399;U16;;Cell Volt Limit Chg Pwr Pt3;;1.0;0.0;kW;4
+262;4;400;U16;;Cell Volt Limit Chg Pwr Pt4;;1.0;0.0;kW;4
+263;4;401;U16;;Cell Volt Limit Chg Pwr Pt5;;1.0;0.0;kW;4
+264;4;402;U16;;Cell Volt Limit Chg Pwr Pt6;;1.0;0.0;kW;4
+265;4;403;U16;;Cell Volt Limit Chg Pwr Pt7;;1.0;0.0;kW;4
+266;4;404;U16;;Cell Volt Limit Chg Pwr Pt8;;1.0;0.0;kW;4
+267;4;405;U16;;Cell Volt Limit Chg Pwr Pt9;;1.0;0.0;kW;4
+268;4;406;U16;;Demand-Nominal power(Jan)(kw);;1.0;0.0;kW;4
+269;4;407;U16;;Demand-Nominal power(Feb)(kw);;1.0;0.0;kW;4
+270;4;408;U16;;Demand-Nominal power(Mar)(kw);;1.0;0.0;kW;4
+271;4;409;U16;;Demand-Nominal power(Apr)(kw);;1.0;0.0;kW;4
+272;4;410;U16;;Demand-Nominal power(May)(kw);;1.0;0.0;kW;4
+273;4;411;U16;;Demand-Nominal power(Jun)(kw);;1.0;0.0;kW;4
+274;4;412;U16;;Demand-Nominal power(Jul)(kw);;1.0;0.0;kW;4
+275;4;413;U16;;Demand-Nominal power(Aug)(kw);;1.0;0.0;kW;4
+276;4;414;U16;;Demand-Nominal power(Sep)(kw);;1.0;0.0;kW;4
+277;4;415;U16;;Demand-Nominal power(Oct)(kw);;1.0;0.0;kW;4
+278;4;416;U16;;Demand-Nominal power(Nov)(kw);;1.0;0.0;kW;4
+279;4;417;U16;;Demand-Nominal power(Dec)(kw);;1.0;0.0;kW;4
+280;4;421;U16;;Demand-Power hysteresis (less than hysteresis);;1.0;0.0;kW;4
+281;4;422;U16;;Demand-Frequency regulating;;1.0;0.0;s;4
+282;4;423;U16;;Planned power reverse flow enable switch;;1.0;0.0;;4
+283;4;424;U16;;Planned power 1 start time YMD;;1.0;0.0;;4
+284;4;426;U16;;Planned power 1 end time YMD;;1.0;0.0;;4
+285;4;428;U16;;Planned power 1 start time HMS;;1.0;0.0;;4
+286;4;430;U16;;Planned power 1 end time HMS;;1.0;0.0;;4
+287;4;432;U16;;Planned power 1 active power;;1.0;0.0;kW;4
+288;4;433;U16;;Planned power 1 reactive power;;1.0;0.0;kVar;4
+289;4;434;U16;;Planned power 1 use mark;;1.0;0.0;;4
+290;4;435;U16;;Planned power 2 start time YMD;;1.0;0.0;;4
+291;4;437;U16;;Planned power 2 end time YMD;;1.0;0.0;;4
+292;4;439;U16;;Planned power 2 start time HMS;;1.0;0.0;;4
+293;4;441;U16;;Planned power 2 end time HMS;;1.0;0.0;;4
+294;4;443;U16;;Planned power 2 active power;;1.0;0.0;kW;4
+295;4;444;U16;;Planned power 2 reactive power;;1.0;0.0;kVar;4
+296;4;445;U16;;Planned power 2 use mark;;1.0;0.0;;4
+297;4;446;U16;;Planned power 3 start time YMD;;1.0;0.0;;4
+298;4;448;U16;;Planned power 3 end time YMD;;1.0;0.0;;4
+299;4;450;U16;;Planned power 3 start time HMS;;1.0;0.0;;4
+300;4;452;U16;;Planned power 3 end time HMS;;1.0;0.0;;4
+301;4;454;U16;;Planned power 3 active power;;1.0;0.0;kW;4
+302;4;455;U16;;Planned power 3 reactive power;;1.0;0.0;kVar;4
+303;4;456;U16;;Planned power 3 use mark;;1.0;0.0;;4
+304;4;457;U16;;Planned power 4 start time YMD;;1.0;0.0;;4
+305;4;459;U16;;Planned power 4 end time YMD;;1.0;0.0;;4
+306;4;461;U16;;Planned power 4 start time HMS;;1.0;0.0;;4
+307;4;463;U16;;Planned power 4 end time HMS;;1.0;0.0;;4
+308;4;465;U16;;Planned power 4 active power;;1.0;0.0;kW;4
+309;4;466;U16;;Planned power 4 reactive power;;1.0;0.0;kVar;4
+310;4;467;U16;;Planned power 4 use mark;;1.0;0.0;;4
+311;4;468;U16;;Planned power 5 start time YMD;;1.0;0.0;;4
+312;4;470;U16;;Planned power 5 end time YMD;;1.0;0.0;;4
+313;4;472;U16;;Planned power 5 start time HMS;;1.0;0.0;;4
+314;4;474;U16;;Planned power 5 end time HMS;;1.0;0.0;;4
+315;4;476;U16;;Planned power 5 active power;;1.0;0.0;kW;4
+316;4;477;U16;;Planned power 5 reactive power;;1.0;0.0;kVar;4
+317;4;478;U16;;Planned power 5 use mark;;1.0;0.0;;4
+318;4;479;U16;;Planned power 6 start time YMD;;1.0;0.0;;4
+319;4;481;U16;;Planned power 6 end time YMD;;1.0;0.0;;4
+320;4;483;U16;;Planned power 6 start time HMS;;1.0;0.0;;4
+321;4;485;U16;;Planned power 6 end time HMS;;1.0;0.0;;4
+322;4;487;U16;;Planned power 6 active power;;1.0;0.0;kW;4
+323;4;488;U16;;Planned power 6 reactive power;;1.0;0.0;kVar;4
+324;4;489;U16;;Planned power 6 use mark;;1.0;0.0;;4
+325;4;490;U16;;Planned power 7 start time YMD;;1.0;0.0;;4
+326;4;492;U16;;Planned power 7 end time YMD;;1.0;0.0;;4
+327;4;494;U16;;Planned power 7 start time HMS;;1.0;0.0;;4
+328;4;496;U16;;Planned power 7 end time HMS;;1.0;0.0;;4
+329;4;498;U16;;Planned power 7 active power;;1.0;0.0;kW;4
+330;4;499;U16;;Planned power 7 reactive power;;1.0;0.0;kVar;4
+331;4;500;U16;;Planned power 7 use mark;;1.0;0.0;;4
+332;4;501;U16;;Plan power 8 start time year/month/day;;1.0;0.0;;4
+333;4;503;U16;;Plan power 8 end time year/month/day;;1.0;0.0;;4
+334;4;505;U16;;Plan power 8 start time hour/minute/second;;1.0;0.0;;4
+335;4;507;U16;;Plan power 8 end time hour/minute/second;;1.0;0.0;;4
+336;4;509;U16;;Plan power 8 active power;;1.0;0.0;kW;4
+337;4;510;U16;;Plan power 8 reactive power;;1.0;0.0;kVar;4
+338;4;511;U16;;Plan power 8 use mark;;1.0;0.0;;4
+339;4;512;U16;;Plan power 9 start time year/month/day;;1.0;0.0;;4
+340;4;514;U16;;Plan power 9 end time year/month/day;;1.0;0.0;;4
+341;4;516;U16;;Plan power 9 start time hour/minute/second;;1.0;0.0;;4
+342;4;518;U16;;Plan power 9 end time hour/minute/second;;1.0;0.0;;4
+343;4;520;U16;;Plan power 9 active power;;1.0;0.0;kW;4
+344;4;521;U16;;Plan power 9 reactive power;;1.0;0.0;kVar;4
+345;4;522;U16;;Plan power 9 use mark;;1.0;0.0;;4
+346;4;523;U16;;Plan power 10 start time year/month/day;;1.0;0.0;;4
+347;4;525;U16;;Plan power 10 end time year/month/day;;1.0;0.0;;4
+348;4;527;U16;;Plan power 10 start time hour/minute/second;;1.0;0.0;;4
+349;4;529;U16;;Plan power 10 end time hour/minute/second;;1.0;0.0;;4
+350;4;531;U16;;Plan power 10 active power;;1.0;0.0;kW;4
+351;4;532;U16;;Plan power 10 reactive power;;1.0;0.0;kVar;4
+352;4;533;U16;;Plan power 10 use mark;;1.0;0.0;;4
+353;4;534;U16;;Plan power 11 start time year/month/day;;1.0;0.0;;4
+354;4;536;U16;;Plan power 11 end time year/month/day;;1.0;0.0;;4
+355;4;538;U16;;Plan power 11 start time hour/minute/second;;1.0;0.0;;4
+356;4;540;U16;;Plan power 11 end time hour/minute/second;;1.0;0.0;;4
+357;4;542;U16;;Plan power 11 active power;;1.0;0.0;kW;4
+358;4;543;U16;;Plan power 11 reactive power;;1.0;0.0;kVar;4
+359;4;544;U16;;Plan power 11 use mark;;1.0;0.0;;4
+360;4;545;U16;;Plan power 12 start time year/month/day;;1.0;0.0;;4
+361;4;547;U16;;Plan power 12 end time year/month/day;;1.0;0.0;;4
+362;4;549;U16;;Plan power 12 start time hour/minute/second;;1.0;0.0;;4
+363;4;551;U16;;Plan power 12 end time hour/minute/second;;1.0;0.0;;4
+364;4;553;U16;;Plan power 12 active power;;1.0;0.0;kW;4
+365;4;554;U16;;Plan power 12 reactive power;;1.0;0.0;kVar;4
+366;4;555;U16;;Plan power 12 use mark;;1.0;0.0;;4
+367;4;556;U16;;Plan power 13 start time year/month/day;;1.0;0.0;;4
+368;4;558;U16;;Plan power 13 end time year/month/day;;1.0;0.0;;4
+369;4;560;U16;;Plan power 13 start time hour/minute/second;;1.0;0.0;;4
+370;4;562;U16;;Plan power 13 end time hour/minute/second;;1.0;0.0;;4
+371;4;564;U16;;Plan power 13 active power;;1.0;0.0;kW;4
+372;4;565;U16;;Plan power 13 reactive power;;1.0;0.0;kVar;4
+373;4;566;U16;;Plan power 13 use mark;;1.0;0.0;;4
+374;4;567;U16;;Plan power 14 start time year/month/day;;1.0;0.0;;4
+375;4;569;U16;;Plan power 14 end time year/month/day;;1.0;0.0;;4
+376;4;571;U16;;Plan power 14 start time hour/minute/second;;1.0;0.0;;4
+377;4;573;U16;;Plan power 14 end time hour/minute/second;;1.0;0.0;;4
+378;4;575;U16;;Plan power 14 active power;;1.0;0.0;kW;4
+379;4;576;U16;;Plan power 14 reactive power;;1.0;0.0;kVar;4
+380;4;577;U16;;Plan power 14 use mark;;1.0;0.0;;4
+381;4;578;U16;;Plan power 15 start time year/month/day;;1.0;0.0;;4
+382;4;580;U16;;Plan power 15 end time year/month/day;;1.0;0.0;;4
+383;4;582;U16;;Plan power 15 start time hour/minute/second;;1.0;0.0;;4
+384;4;584;U16;;Plan power 15 end time hour/minute/second;;1.0;0.0;;4
+385;4;586;U16;;Plan power 15 active power;;1.0;0.0;kW;4
+386;4;587;U16;;Plan power 15 reactive power;;1.0;0.0;kVar;4
+387;4;588;U16;;Plan power 15 use mark;;1.0;0.0;;4
+388;4;589;U16;;Plan power 16 start time year/month/day;;1.0;0.0;;4
+389;4;591;U16;;Plan power 16 end time year/month/day;;1.0;0.0;;4
+390;4;593;U16;;Plan power 16 start time hour/minute/second;;1.0;0.0;;4
+391;4;595;U16;;Plan power 16 end time hour/minute/second;;1.0;0.0;;4
+392;4;597;U16;;Plan power 16 active power;;1.0;0.0;kW;4
+393;4;598;U16;;Plan power 16 reactive power;;1.0;0.0;kVar;4
+394;4;599;U16;;Plan power 16 use mark;;1.0;0.0;;4
+395;4;600;U16;;Plan power 17 start time year/month/day;;1.0;0.0;;4
+396;4;602;U16;;Plan power 17 end time year/month/day;;1.0;0.0;;4
+397;4;604;U16;;Plan power 17 start time hour/minute/second;;1.0;0.0;;4
+398;4;606;U16;;Plan power 17 end time hour/minute/second;;1.0;0.0;;4
+399;4;608;U16;;Plan power 17 active power;;1.0;0.0;kW;4
+400;4;609;U16;;Plan power 17 reactive power;;1.0;0.0;kVar;4
+401;4;610;U16;;Plan power 17 use mark;;1.0;0.0;;4
+402;4;611;U16;;Plan power 18 start time year/month/day;;1.0;0.0;;4
+403;4;613;U16;;Plan power 18 end time year/month/day;;1.0;0.0;;4
+404;4;615;U16;;Plan power 18 start time hour/minute/second;;1.0;0.0;;4
+405;4;617;U16;;Plan power 18 end time hour/minute/second;;1.0;0.0;;4
+406;4;619;U16;;Plan power 18 active power;;1.0;0.0;kW;4
+407;4;620;U16;;Plan power 18 reactive power;;1.0;0.0;kVar;4
+408;4;621;U16;;Plan power 18 use mark;;1.0;0.0;;4
+409;4;622;U16;;Plan power 19 start time year/month/day;;1.0;0.0;;4
+410;4;624;U16;;Plan power 19 end time year/month/day;;1.0;0.0;;4
+411;4;626;U16;;Plan power 19 start time hour/minute/second;;1.0;0.0;;4
+412;4;628;U16;;Plan power 19 end time hour/minute/second;;1.0;0.0;;4
+413;4;630;U16;;Plan power 19 active power;;1.0;0.0;kW;4
+414;4;631;U16;;Plan power 19 reactive power;;1.0;0.0;kVar;4
+415;4;632;U16;;Plan power 19 use mark;;1.0;0.0;;4
+416;4;633;U16;;Plan power 20 start time year/month/day;;1.0;0.0;;4
+417;4;635;U16;;Plan power 20 end time year/month/day;;1.0;0.0;;4
+418;4;637;U16;;Plan power 20 start time hour/minute/second;;1.0;0.0;;4
+419;4;639;U16;;Plan power 20 end time hour/minute/second;;1.0;0.0;;4
+420;4;641;U16;;Plan power 20 active power;;1.0;0.0;kW;4
+421;4;642;U16;;Plan power 20 reactive power;;1.0;0.0;kVar;4
+422;4;643;U16;;Plan power 20 use mark;;1.0;0.0;;4
+423;4;644;U16;;Plan power 21 start time year/month/day;;1.0;0.0;;4
+424;4;646;U16;;Plan power 21 end time year/month/day;;1.0;0.0;;4
+425;4;648;U16;;Plan power 21 start time hour/minute/second;;1.0;0.0;;4
+426;4;650;U16;;Plan power 21 end time hour/minute/second;;1.0;0.0;;4
+427;4;652;U16;;Plan power 21 active power;;1.0;0.0;kW;4
+428;4;653;U16;;Plan power 21 reactive power;;1.0;0.0;kVar;4
+429;4;654;U16;;Plan power 21 use mark;;1.0;0.0;;4
+430;4;655;U16;;Plan power 22 start time year/month/day;;1.0;0.0;;4
+431;4;657;U16;;Plan power 22 end time year/month/day;;1.0;0.0;;4
+432;4;659;U16;;Plan power 22 start time hour/minute/second;;1.0;0.0;;4
+433;4;661;U16;;Plan power 22 end time hour/minute/second;;1.0;0.0;;4
+434;4;663;U16;;Plan power 22 active power;;1.0;0.0;kW;4
+435;4;664;U16;;Plan power 22 reactive power;;1.0;0.0;kVar;4
+436;4;665;U16;;Plan power 22 use mark;;1.0;0.0;;4
+437;4;666;U16;;Plan power 23 start time year/month/day;;1.0;0.0;;4
+438;4;668;U16;;Plan power 23 end time year/month/day;;1.0;0.0;;4
+439;4;670;U16;;Plan power 23 start time hour/minute/second;;1.0;0.0;;4
+440;4;672;U16;;Plan power 23 end time hour/minute/second;;1.0;0.0;;4
+441;4;674;U16;;Plan power 23 active power;;1.0;0.0;kW;4
+442;4;675;U16;;Plan power 23 reactive power;;1.0;0.0;kVar;4
+443;4;676;U16;;Plan power 23 use mark;;1.0;0.0;;4
+444;4;677;U16;;Plan power 24 start time year/month/day;;1.0;0.0;;4
+445;4;679;U16;;Plan power 24 end time year/month/day;;1.0;0.0;;4
+446;4;681;U16;;Plan power 24 start time hour/minute/second;;1.0;0.0;;4
+447;4;683;U16;;Plan power 24 end time hour/minute/second;;1.0;0.0;;4
+448;4;685;U16;;Plan power 24 active power;;1.0;0.0;kW;4
+449;4;686;U16;;Plan power 24 reactive power;;1.0;0.0;kVar;4
+450;4;687;U16;;Plan power 24 use mark;;1.0;0.0;;4
+451;4;714;U16;;Min. temp. power limitation temp. point [0];;1.0;0.0;℃;4
+452;4;715;U16;;Min. temp. power limitation temp. point [1];;1.0;0.0;℃;4
+453;4;716;U16;;Min. temp. power limitation temp. point [2];;1.0;0.0;℃;4
+454;4;717;U16;;Min. temp. power limitation temp. point [3];;1.0;0.0;℃;4
+455;4;718;U16;;Min. temp. power limitation temp. point [4];;1.0;0.0;℃;4
+456;4;719;U16;;Min. temp. power limitation temp. point [5];;1.0;0.0;℃;4
+457;4;720;U16;;Min. temp. power limitation temp. point [6];;1.0;0.0;℃;4
+458;4;721;U16;;Min. temp. power limitation temp. point [7];;1.0;0.0;℃;4
+459;4;722;U16;;Min. temp. power limitation temp. point [8];;1.0;0.0;℃;4
+460;4;723;U16;;Min Temp Limit Dis Pwr Pt0;;1.0;0.0;kW;4
+461;4;724;U16;;Min Temp Limit Dis Pwr Pt1;;1.0;0.0;kW;4
+462;4;725;U16;;Min Temp Limit Dis Pwr Pt2;;1.0;0.0;kW;4
+463;4;726;U16;;Min Temp Limit Dis Pwr Pt3;;1.0;0.0;kW;4
+464;4;727;U16;;Min Temp Limit Dis Pwr Pt4;;1.0;0.0;kW;4
+465;4;728;U16;;Min Temp Limit Dis Pwr Pt5;;1.0;0.0;kW;4
+466;4;729;U16;;Min Temp Limit Dis Pwr Pt6;;1.0;0.0;kW;4
+467;4;730;U16;;Min Temp Limit Dis Pwr Pt7;;1.0;0.0;kW;4
+468;4;731;U16;;Min Temp Limit Dis Pwr Pt8;;1.0;0.0;kW;4
+469;4;732;U16;;Min Temp Limit Dis Pwr Pt9;;1.0;0.0;kW;4
+470;4;733;U16;;Min Temp Limit Chg Pwr Pt0;;1.0;0.0;kW;4
+471;4;734;U16;;Min Temp Limit Chg Pwr Pt1;;1.0;0.0;kW;4
+472;4;735;U16;;Min Temp Limit Chg Pwr Pt2;;1.0;0.0;kW;4
+473;4;736;U16;;Min Temp Limit Chg Pwr Pt3;;1.0;0.0;kW;4
+474;4;737;U16;;Min Temp Limit Chg Pwr Pt4;;1.0;0.0;kW;4
+475;4;738;U16;;Min Temp Limit Chg Pwr Pt5;;1.0;0.0;kW;4
+476;4;739;U16;;Min Temp Limit Chg Pwr Pt6;;1.0;0.0;kW;4
+477;4;740;U16;;Min Temp Limit Chg Pwr Pt7;;1.0;0.0;kW;4
+478;4;741;U16;;Min Temp Limit Chg Pwr Pt8;;1.0;0.0;kW;4
+479;4;742;U16;;Min Temp Limit Chg Pwr Pt9;;1.0;0.0;kW;4
+480;4;743;U16;;lems backflow threshold;;1.0;0.0;;4
+481;4;744;U16;;lems reverse power differential value;;1.0;0.0;;4
+482;4;745;U16;;lems backflow adjustment time step;;1.0;0.0;;4
+483;4;746;U16;;lems static demand-rated power (month) (kw);;1.0;0.0;;4
+484;4;747;U16;;lems static demand-rated power (February) (kw);;1.0;0.0;;4
+485;4;748;U16;;lems static demand-rated power (March) (kw);;1.0;0.0;;4
+486;4;749;U16;;lems static demand-rated power (April) (kw);;1.0;0.0;;4
+487;4;750;U16;;lems static demand-rated power (may) (kw);;1.0;0.0;;4
+488;4;751;U16;;lems static demand-rated power (June) (kw);;1.0;0.0;;4
+489;4;752;U16;;lems static demand-rated power (July) (kw);;1.0;0.0;;4
+490;4;753;U16;;lems static demand-rated power (August) (kw);;1.0;0.0;;4
+491;4;754;U16;;lems static demand-rated power (September) (kw);;1.0;0.0;;4
+492;4;755;U16;;lems static demand-rated power (Oct)(kw);;1.0;0.0;;4
+493;4;756;U16;;lems static demand-rated power (November) (kw);;1.0;0.0;;4
+494;4;757;U16;;lems static demand-rated power (December) (kw);;1.0;0.0;;4
+495;4;758;U16;;LEMS Static Demand Power Hysteresis;;1.0;0.0;;4
+496;4;759;U16;;lems static demand-power adjustment step;;1.0;0.0;;4
+497;4;760;U16;;aems reverse power differential value;;1.0;0.0;;4
+498;4;761;U16;;AEMS countercurrent adjustment time step;;1.0;0.0;;4
+499;4;762;U16;;aems backflow threshold;;1.0;0.0;;4
+500;4;763;U16;;aems static demand-rated power (one month) (kw);;1.0;0.0;;4
+501;4;764;U16;;aems static demand-rated power (February) (kw);;1.0;0.0;;4
+502;4;765;U16;;aems static demand-rated power (March) (kw);;1.0;0.0;;4
+503;4;766;U16;;aems static demand-rated power (April) (kw);;1.0;0.0;;4
+504;4;767;U16;;aems static demand-rated power (May) (kw);;1.0;0.0;;4
+505;4;768;U16;;aems static demand-rated power (June) (kw);;1.0;0.0;;4
+506;4;769;U16;;aems static demand-rated power (July) (kw);;1.0;0.0;;4
+507;4;770;U16;;aems static demand-rated power (August) (kw);;1.0;0.0;;4
+508;4;771;U16;;aems static demand-rated power (September) (kw);;1.0;0.0;;4
+509;4;772;U16;;aems static demand-rated power (October) (kw);;1.0;0.0;;4
+510;4;773;U16;;aems static demand-rated power (November) (kw);;1.0;0.0;;4
+511;4;774;U16;;aems static demand-rated power (December) (kw);;1.0;0.0;;4
+512;4;775;U16;;AEMS Static Demand Power Hysteresis;;1.0;0.0;;4
+513;4;776;U16;;aems static demand-power adjustment step;;1.0;0.0;;4
+514;4;777;U16;;Peak-valley arbitrage-discharge enable 1;;1.0;0.0;;4
+515;4;778;U16;;Peak-valley arbitrage-Start time1 (DIS);;1.0;0.0;;4
+516;4;780;U16;;Peak-valley arbitrage-End time1 (DIS);;1.0;0.0;;4
+517;4;782;U16;;Peak-valley arbitrage-Power setting1 (DIS);;1.0;0.0;;4
+518;4;783;U16;;Peak-valley arbitrage-DIS stop SOC1 (DIS);;1.0;0.0;;4
+519;4;784;U16;;Peak-valley arbitrage-discharge enable 2;;1.0;0.0;;4
+520;4;785;U16;;Peak-valley arbitrage-Start time2 (DIS);;1.0;0.0;;4
+521;4;787;U16;;Peak-valley arbitrage-End time2 (DIS);;1.0;0.0;;4
+522;4;789;U16;;Peak-valley arbitrage-Power setting2 (DIS);;1.0;0.0;;4
+523;4;790;U16;;Peak-valley arbitrage-DIS stop SOC2 (DIS);;1.0;0.0;;4
+524;4;791;U16;;Peak-valley arbitrage-discharge enable 3;;1.0;0.0;;4
+525;4;792;U16;;Peak-valley arbitrage-Start time3 (DIS);;1.0;0.0;;4
+526;4;794;U16;;Peak-valley arbitrage-End time3 (DIS);;1.0;0.0;;4
+527;4;796;U16;;Peak-valley arbitrage-Power setting3 (DIS);;1.0;0.0;;4
+528;4;797;U16;;Peak-valley arbitrage-DIS stop SOC3 (DIS);;1.0;0.0;;4
+529;4;798;U16;;Peak-valley arbitrage-discharge enable 4;;1.0;0.0;;4
+530;4;799;U16;;Peak-valley arbitrage-Start time4 (DIS);;1.0;0.0;;4
+531;4;801;U16;;Peak-valley arbitrage-End time4 (DIS);;1.0;0.0;;4
+532;4;803;U16;;Peak-valley arbitrage-Power setting4 (DIS);;1.0;0.0;;4
+533;4;804;U16;;Peak-valley arbitrage-DIS stop SOC4 (DIS);;1.0;0.0;;4
+534;4;805;U16;;Peak-valley arbitrage-charging enablement 1;;1.0;0.0;;4
+535;4;806;U16;;Peak-valley arbitrage-Start time1 (CHA);;1.0;0.0;;4
+536;4;808;U16;;Peak-valley arbitrage-End time1 (CHA);;1.0;0.0;;4
+537;4;810;U16;;Peak-valley arbitrage-Power setting1 (CHA);;1.0;0.0;;4
+538;4;811;U16;;Peak-valley arbitrage-DIS stop SOC1 (CHA);;1.0;0.0;;4
+539;4;812;U16;;Peak-valley arbitrage-charging enablement 2;;1.0;0.0;;4
+540;4;813;U16;;Peak-valley arbitrage-Start time2 (CHA);;1.0;0.0;;4
+541;4;815;U16;;Peak-valley arbitrage-End time2 (CHA);;1.0;0.0;;4
+542;4;817;U16;;Peak-valley arbitrage-Power setting2 (CHA);;1.0;0.0;;4
+543;4;818;U16;;Peak-valley arbitrage-DIS stop SOC2 (CHA);;1.0;0.0;;4
+544;4;819;U16;;Peak-valley arbitrage-charging enablement 3;;1.0;0.0;;4
+545;4;820;U16;;Peak-valley arbitrage-Start time3 (CHA);;1.0;0.0;;4
+546;4;822;U16;;Peak-valley arbitrage-End time3 (CHA);;1.0;0.0;;4
+547;4;824;U16;;Peak-valley arbitrage-Power setting3 (CHA);;1.0;0.0;;4
+548;4;825;U16;;Peak-valley arbitrage-DIS stop SOC3 (CHA);;1.0;0.0;;4
+549;4;826;U16;;Peak-valley arbitrage-charging enablement 4;;1.0;0.0;;4
+550;4;827;U16;;Peak-valley arbitrage-Start time4 (CHA);;1.0;0.0;;4
+551;4;829;U16;;Peak-valley arbitrage-End time4 (CHA);;1.0;0.0;;4
+552;4;831;U16;;Peak-valley arbitrage-Power setting4 (CHA);;1.0;0.0;;4
+553;4;832;U16;;Peak-valley arbitrage-DIS stop SOC4 (CHA);;1.0;0.0;;4

@@ -1,5 +1,5 @@
 modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
-1;3;1;U16;;Product Model Designation 1;;1.000000;0.000000;;4
+1;3;1;U16;;Product Model Designation 1;MODEL;1.000000;0.000000;;4
 2;3;2;U16;;Product Model Designation 2;;1.000000;0.000000;;4
 3;3;3;U16;;Product Model Designation 3;;1.000000;0.000000;;4
 4;3;4;U16;;Product Model Designation 4;;1.000000;0.000000;;4
@@ -12,7 +12,7 @@ modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
 11;3;11;U16;;Product Finished Goods Assembly Number 2;;1.000000;0.000000;;4
 12;3;12;U16;;Product Finished Goods Assembly Number 3;;1.000000;0.000000;;4
 13;3;13;U16;;Product Finished Goods Assembly Number 4;;1.000000;0.000000;;4
-14;3;20;U16;;Product Serial Number 1;;1.000000;0.000000;;4
+14;3;20;U16;;Product Serial Number 1;SERIAL;1.000000;0.000000;;4
 15;3;21;U16;;Product Serial Number 2;;1.000000;0.000000;;4
 16;3;22;U16;;Product Serial Number 3;;1.000000;0.000000;;4
 17;3;23;U16;;Product Serial Number 4;;1.000000;0.000000;;4
@@ -33,19 +33,19 @@ modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
 32;3;2052;U32;;Energy Today;E_DAY;0.100000;0.000000;kWh;4
 33;3;2078;U32;;Operating Hours;;1.000000;0.000000;h;4
 34;3;5888;U16;;Operation Mode State;;1.000000;0.000000;;4
-35;3;5889;I16;;Temperature Power Board;;0.100000;0.000000;°C;4
+35;3;5889;I16;;Temperature Power Board;TEMP_INT;0.100000;0.000000;°C;4
 36;3;5890;I16;;Temperature Heatsink 1;;0.100000;0.000000;°C;4
 37;3;5891;I16;;Temperature Heatsink 2;;0.100000;0.000000;°C;4
 38;3;5892;I16;;Temperature Heatsink 3;;0.100000;0.000000;°C;4
 39;3;5893;I16;;Grid Current;I_AC;0.100000;0.000000;Arms;4
 40;3;6129;U16;;Apparent Power;S_AC;0.100000;0.000000;kVA;4
 41;3;6132;I16;;Reactive Power;Q_AC;0.100000;0.000000;kVAr;4
-42;3;6136;I16;;Grid Voltage V12;;0.100000;0.000000;Vrms;4
-43;3;6137;I16;;Grid Voltage V23;;0.100000;0.000000;Vrms;4
+42;3;6136;I16;;Grid Voltage V12;U_AC_1;0.100000;0.000000;Vrms;4
+43;3;6137;I16;;Grid Voltage V23;U_AC_2;0.100000;0.000000;Vrms;4
 44;3;6138;I16;;Grid Voltage V31;;0.100000;0.000000;Vrms;4
-45;3;6139;I16;;Grid Current Line 1;;0.100000;0.000000;Arms;4
-46;3;6140;I16;;Grid Current Line 2;;0.100000;0.000000;Arms;4
-47;3;6141;I16;;Grid Current Line 3;;0.100000;0.000000;Arms;4
+45;3;6139;I16;;Grid Current Line 1;I_AC_1;0.100000;0.000000;Arms;4
+46;3;6140;I16;;Grid Current Line 2;I_AC_2;0.100000;0.000000;Arms;4
+47;3;6141;I16;;Grid Current Line 3;I_AC_3;0.100000;0.000000;Arms;4
 48;3;6142;I16;;Active Power;P_AC;0.100000;0.000000;kW;4
 49;3;6143;I16;;PV Voltage;U_DC;0.100000;0.000000;VDC;4
 50;3;6144;I16;;PV Current;I_DC;0.100000;0.000000;ADC;4
@@ -53,35 +53,35 @@ modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
 52;3;6146;U16;;Grid Frequency;FREQ;0.100000;0.000000;Hz;4
 53;3;6157;I16;;DC Voltage;;0.100000;0.000000;VDC;4
 54;3;6158;U16;;Thermal Loading;;0.100000;0.000000;'%;4
-55;3;6168;U16;;Phase A Frequency;;0.100000;0.000000;Hz;4
-56;3;6169;U16;;Phase B Frequency;;0.100000;0.000000;Hz;4
-57;3;6170;U16;;Phase C Frequency;;0.100000;0.000000;Hz;4
-58;3;6171;I16;;Phase A Real Power;;0.100000;0.000000;kW;4
-59;3;6172;I16;;Phase B Real Power;;0.100000;0.000000;kW;4
-60;3;6173;I16;;Phase C Real Power;;0.100000;0.000000;kW;4
-61;3;6174;I16;;Phase A Reactive Power;;0.100000;0.000000;kVar;4
-62;3;6175;I16;;Phase B Reactive Power;;0.100000;0.000000;kVar;4
-63;3;6176;I16;;Phase C Reactive Power;;0.100000;0.000000;kVar;4
-64;3;6177;U16;;Phase A Apparent Power;;0.100000;0.000000;kVA;4
-65;3;6178;U16;;Phase B Apparent Power;;0.100000;0.000000;kVA;4
-66;3;6179;U16;;Phase C Apparent Power;;0.100000;0.000000;kVA;4
-67;3;6182;U16;;Event Code;;1.000000;0.000000;;4
+55;3;6168;U16;;Phase A Frequency;FREQ_1;0.100000;0.000000;Hz;4
+56;3;6169;U16;;Phase B Frequency;FREQ_2;0.100000;0.000000;Hz;4
+57;3;6170;U16;;Phase C Frequency;FREQ_3;0.100000;0.000000;Hz;4
+58;3;6171;I16;;Phase A Real Power;P_AC_1;0.100000;0.000000;kW;4
+59;3;6172;I16;;Phase B Real Power;P_AC_2;0.100000;0.000000;kW;4
+60;3;6173;I16;;Phase C Real Power;P_AC_3;0.100000;0.000000;kW;4
+61;3;6174;I16;;Phase A Reactive Power;Q_AC_1;0.100000;0.000000;kVar;4
+62;3;6175;I16;;Phase B Reactive Power;Q_AC_2;0.100000;0.000000;kVar;4
+63;3;6176;I16;;Phase C Reactive Power;Q_AC_3;0.100000;0.000000;kVar;4
+64;3;6177;U16;;Phase A Apparent Power;S_AC_1;0.100000;0.000000;kVA;4
+65;3;6178;U16;;Phase B Apparent Power;S_AC_2;0.100000;0.000000;kVA;4
+66;3;6179;U16;;Phase C Apparent Power;S_AC_3;0.100000;0.000000;kVA;4
+67;3;6182;U16;;Event Code;WIND_SPEED;1.000000;0.000000;;4
 68;3;6183;U16;;System State;;1.000000;0.000000;;4
 69;3;6184;U16;;Alarm Code;;1.000000;0.000000;;4
 70;3;64264;U16;;DC Cap Surge Accum;;1.000000;0.000000;Min;4
 71;3;64305;U16;;DC Switch Open Count;;1.000000;0.000000;;4
 72;3;64306;U16;;AC Switch Open Count;;1.000000;0.000000;;4
 73;3;64474;U16;;Fan Speed;;0.100000;0.000000;V;4
-74;3;32771;U16;;Modbus Unit ID;;1.000000;0.000000;;4
+74;3;32771;U16;;Modbus Unit ID;UNIT_ID;1.000000;0.000000;;4
 75;3;32784;U16;;Baud Rate;;1.000000;0.000000;Baud;4
 76;3;57568;U16;;Parameter Control Station;;1.000000;0.000000;;4
-77;3;57569;U16;;Commit Modbus Settings;;1.000000;0.000000;;4
+77;3;57569;U16;;Commit Modbus Settings;CMD_COMMIT;1.000000;0.000000;;1
 78;3;61439;U16;;Clear Service Mode;;1.000000;0.000000;;4
 79;3;63491;U16;;Max Tracking Volt;;1.000000;0.000000;V;4
 80;3;63492;U16;;Min Tracking Volt;;1.000000;0.000000;V;4
 81;3;63990;U16;;P(f) Control Function;;1.000000;0.000000;;4
 82;3;63994;U16;;Reconn HV Threshold;;1.000000;0.000000;'%;4
-83;3;63995;I16;;User Phase Angle Ref;;1.000000;0.000000;Degree;4
+83;3;63995;I16;;User Phase Angle Ref;CMD_Q_ANGLE;1.000000;0.000000;Degree;1
 84;3;64002;U16;;PV noP Disconn Delay;;1.000000;0.000000;s;4
 85;3;64005;U16;;Disconn HV Delay;;1.000000;0.000000;ms;4
 86;3;64006;U16;;Disconn LV Delay;;1.000000;0.000000;ms;4
@@ -96,11 +96,11 @@ modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
 95;3;64021;U16;;LP PV Voltage Reference;;1.000000;0.000000;V;4
 96;3;64022;U16;;LP Threshold;;1.000000;0.000000;'%;4
 97;3;64023;U16;;PV noP Disconn Threshold;;0.100000;0.000000;'%;4
-98;3;64025;I16;;User Active Power Limit;;0.100000;0.000000;kW;4
+98;3;64025;I16;;User Active Power Limit;CMD_P_AC_SET_ABS;0.100000;0.000000;kW;1
 99;3;64027;I16;;User Reactive Power Reference;;0.100000;0.000000;kVAr;4
 100;3;64028;U16;;PV noP Disconn Delay Factor;;1.000000;0.000000;;4
 101;3;64029;U16;;User Apparent Power Limit;;0.100000;0.000000;kVA;4
-102;3;64030;U16;;User Phase Current Limit;;1.000000;0.000000;'%;4
+102;3;64030;U16;;User Phase Current Limit;CMD_P_AC_SET_PERCENT;1.000000;0.000000;'%;1
 103;3;64032;U16;;Language;;1.000000;0.000000;;4
 104;3;64033;I32;;Time (UTC);;1.000000;0.000000;s;4
 105;3;64036;U16;;Voltage Support Function;;1.000000;0.000000;;4
@@ -112,7 +112,7 @@ modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
 111;3;64050;U16;;Sweep Duration;;0.100000;0.000000;s;4
 112;3;64051;U16;;MPPT Type;;1.000000;0.000000;;4
 113;3;64052;U16;;P(f) Control, Slope;;1.000000;0.000000;'%/Hz;4
-114;3;64053;U16;;Power Ramp Time;;1.000000;0.000000;ms;4
+114;3;64053;U16;;Power Ramp Time;CMD_RAMP_TIME_S;1.000000;0.000000;ms;1
 115;3;64057;U16;;Disconn very HV Delay;;1.000000;0.000000;ms;4
 116;3;64060;U16;;Disconn very LV Delay;;1.000000;0.000000;ms;4
 117;3;64063;U16;;Disconn very LF Delay;;1.000000;0.000000;ms;4
@@ -180,9 +180,9 @@ modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC_2;;;;;;;
 179;3;18449;U16;;Timestamp High;;1.000000;0.000000;;4
 180;3;18450;U16;;Timestamp Low;;1.000000;0.000000;;4
 181;3;18451;U32;;kWh Energy High;;1.000000;0.000000;kWh;4
-182;3;18453;I16;;Grid AC voltage phase A to phase B, RMS;;0.100000;0.000000;V;4
-183;3;18454;I16;;Grid AC voltage phase B to phase C, RMS;;0.100000;0.000000;V;4
-184;3;18455;I16;;Grid AC voltage phase C to phase A, RMS;;0.100000;0.000000;V;4
+182;3;18453;I16;;Grid AC voltage phase A to phase B, RMS;U_AC_L1L2;0.100000;0.000000;V;4
+183;3;18454;I16;;Grid AC voltage phase B to phase C, RMS;U_AC_L2L3;0.100000;0.000000;V;4
+184;3;18455;I16;;Grid AC voltage phase C to phase A, RMS;U_AC_L3L1;0.100000;0.000000;V;4
 185;3;18456;I16;;Inverter AC Current Phase A, RMS;;0.100000;0.000000;A;4
 186;3;18457;I16;;Inverter AC Current Phase B, RMS;;0.100000;0.000000;A;4
 187;3;18458;I16;;Inverter AC Current Phase C, RMS;;0.100000;0.000000;A;4

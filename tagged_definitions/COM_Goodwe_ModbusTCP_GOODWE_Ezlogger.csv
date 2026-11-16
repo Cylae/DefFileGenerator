@@ -4,10 +4,10 @@ modbusRTU;Other;Goodwe;ModbusTCP_GOODWE_Ezlogger;;;;;;;
 3;4;20004;U16;;Day Grid Work Time;;1.0;0.0;s;4
 4;4;20006;U16;;Total_Active_PowerWh;;1.0;0.0;;4
 5;4;20008;U16;;Total_Reactive_PowerWh;;1.0;0.0;;4
-6;4;20009;U16;;Grid voltage AB;;1.0;0.0;;4
+6;4;20009;U16;;Grid voltage AB;U_AC_L1L2;1.0;0.0;;4
 7;4;20010;U16;;Grid voltage BC;;1.0;0.0;;4
 8;4;20011;U16;;Grid voltage AC;;1.0;0.0;;4
-9;4;20012;U16;;Grid voltage A;;1.0;0.0;;4
+9;4;20012;U16;;Grid voltage A;I_AC;1.0;0.0;;4
 10;4;20013;U16;;Grid voltage B;;1.0;0.0;kW;4
 11;4;20015;U16;;Reactive power adjustment;CMD_Q_AC_SET_ABS;1.0;0.0;kVar;1
 12;4;20017;U16;;Active power adjustment;P_AC;1.0;0.0;kW;4
@@ -23,7 +23,7 @@ modbusRTU;Other;Goodwe;ModbusTCP_GOODWE_Ezlogger;;;;;;;
 22;4;20034;U16;;Total Daily Generation;;1.0;0.0;kWh;4
 23;4;20036;U16;;Total Generation Hour;;1.0;0.0;h;4
 24;4;20038;U16;;Plants Status;;1.0;0.0;N/A;4
-25;4;20039;U16;;Total A- Phase-current;I_AC;1.0;0.0;A;4
+25;4;20039;U16;;Total A- Phase-current;;1.0;0.0;A;4
 26;4;20040;U16;;Total B- Phase-current;I_AC_3;1.0;0.0;A;4
 27;4;20041;U16;;Total C- Phase-current;;1.0;0.0;A;4
 28;4;20042;U16;;Total grid Vab;;1.0;0.0;V;4

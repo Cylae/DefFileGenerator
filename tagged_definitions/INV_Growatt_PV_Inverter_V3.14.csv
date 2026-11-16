@@ -2,8 +2,8 @@ modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 1;3;0;U16;;The Inverter On/Off state and the auto start state, The low byte is the on/off(1/0), the high byte is the auto start state or not(1/0).;;1.000000;0.000000;;4
 2;3;1;U16;;SPI(system protection interface) function enable;;1.000000;0.000000;;4
 3;3;2;U16;;Set the following 3,4,5,99 CMD will be memory or not(1/0), if not, these settings are the initial value.;;1.000000;0.000000;;4
-4;3;3;U16;;Read Inverter max output active power percent;;1.000000;0.000000;perce nt;4
-5;3;4;U16;;Read Inverter max output reactive power percent;;1.000000;0.000000;perce nt;4
+4;3;3;U16;;Read Inverter max output active power percent;P_AC;1.000000;0.000000;perce nt;4
+5;3;4;U16;;Read Inverter max output reactive power percent;Q_AC;1.000000;0.000000;perce nt;4
 6;3;8;U16;;Normal work PV voltage;;1.000000;0.000000;0.1V;4
 7;3;9;U16;;Firmware version (high);;1.000000;0.000000;ASCII;4
 8;3;10;U16;;Firmware version (middle);;1.000000;0.000000;;4
@@ -15,11 +15,11 @@ modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 14;3;16;U16;;LCD Contrast;;1.000000;0.000000;;4
 15;3;17;U16;;Input start voltage;;1.000000;0.000000;0.1V;4
 16;3;18;U16;;Start time;;1.000000;0.000000;1S;4
-17;3;19;U16;;Grid voltage low limit protect;;1.000000;0.000000;0.1V;4
+17;3;19;U16;;Grid voltage low limit protect;U_AC_L1L2;1.000000;0.000000;0.1V;4
 18;3;20;U16;;Grid voltage high limit protect;;1.000000;0.000000;0.1V;4
-19;3;21;U16;;Grid frequency low limit protect;;1.000000;0.000000;0.01 Hz;4
+19;3;21;U16;;Grid frequency low limit protect;FREQ;1.000000;0.000000;0.01 Hz;4
 20;3;22;U16;;Grid high frequency limit protect;;1.000000;0.000000;0.01 Hz;4
-21;3;23;U16;;Serial number 5;;1.000000;0.000000;ASCII;4
+21;3;23;U16;;Serial number 5;SERIAL;1.000000;0.000000;ASCII;4
 22;3;24;U16;;Serial number 4;;1.000000;0.000000;;4
 23;3;25;U16;;Serial number 3;;1.000000;0.000000;;4
 24;3;26;U16;;Serial number 2;;1.000000;0.000000;;4
@@ -31,7 +31,7 @@ modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 30;3;56;U16;;Grid frequency high limit protect time 1;;1.000000;0.000000;Cycle;4
 31;3;57;U16;;Grid frequency low limit protect time 2;;1.000000;0.000000;Cycle;4
 32;3;58;U16;;Grid frequency high limit protect time 2;;1.000000;0.000000;Cycle;4
-33;3;59;U16;;Manufacturer information (high);;1.000000;0.000000;ASCII;4
+33;3;59;U16;;Manufacturer information (high);MANUFACTURER;1.000000;0.000000;ASCII;4
 34;3;60;U16;;Manufacturer information (middle);;1.000000;0.000000;;4
 35;3;61;U16;;Manufacturer information (low);;1.000000;0.000000;;4
 36;3;62;U16;;Manufacturer information (high);;1.000000;0.000000;;4
@@ -45,7 +45,7 @@ modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 44;3;70;U16;;COM FW Build No. 1;;1.000000;0.000000;ASCII;4
 45;3;72;U16;;Sys Weekly;;1.000000;0.000000;;4
 46;3;73;U16;;Modbus Version;;1.000000;0.000000;Int(16 bits);4
-47;3;74;U16;;Model Selected or not;;1.000000;0.000000;;4
+47;3;74;U16;;Model Selected or not;MODEL;1.000000;0.000000;;4
 48;3;75;U16;;232T485Enable;;1.000000;0.000000;;4
 49;3;76;U16;;Decrease output watt;;1.000000;0.000000;;4
 50;3;77;U16;;Decrease output watt;;1.000000;0.000000;0.1W;4
@@ -105,10 +105,10 @@ modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 104;3;151;U16;;Enable N Line of grid;;1.000000;0.000000;;4
 105;3;5;U16;;PV1 input watt (high);;1.000000;0.000000;0.1W;4
 106;3;6;U16;;PV1 input watt (low);;1.000000;0.000000;0.1W;4
-107;3;7;U16;;PV2 voltage;;1.000000;0.000000;0.1V;4
-108;3;30;U16;;Work time total (high);;1.000000;0.000000;0.5S;4
+107;3;7;U16;;PV2 voltage;U_DC_STRING_2;1.000000;0.000000;0.1V;4
+108;3;30;U16;;Work time total (high);TOT;1.000000;0.000000;0.5S;4
 109;3;31;U16;;Work time total (low);;1.000000;0.000000;0.5S;4
-110;3;32;U16;;Inverter temperature;;1.000000;0.000000;0.1C;4
+110;3;32;U16;;Inverter temperature;TEMP_INT;1.000000;0.000000;0.1C;4
 111;3;33;U16;;ISO Fault value;;1.000000;0.000000;0.1V;9
 112;3;34;U16;;GFCI fault Value;;1.000000;0.000000;1mA;9
 113;3;35;U16;;DCI fault Value;;1.000000;0.000000;0.01 A;9
@@ -118,7 +118,7 @@ modbusRTU;Inverter;Growatt;Growatt_PV_Inverter_V3.14;;;;;;;
 117;3;39;U16;;Temperature fault value;;1.000000;0.000000;0.1C;9
 118;3;40;U16;;Inverter fault bit;;1.000000;0.000000;;9
 119;3;41;U16;;The inside IPM in inverter Temperature;;1.000000;0.000000;0.1C;4
-120;3;42;U16;;P Bus inside Voltage;;1.000000;0.000000;0.1V;4
+120;3;42;U16;;P Bus inside Voltage;U_DC;1.000000;0.000000;0.1V;4
 121;3;43;U16;;N Bus inside Voltage;;1.000000;0.000000;0.1V;4
 122;3;44;U16;;Product check step;;1.000000;0.000000;;4
 123;3;45;U16;;Inverter output PF now;;1.000000;0.000000;;4

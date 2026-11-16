@@ -13,4 +13,4 @@ ModbusTCP;Inverter;POWERELECTRONICS;FREESUN;;;;;;;
 12;3;1126;I16;;volt_in;;1.0;0.0;V;4
 13;3;1127;I16;;current_in;;0.026123046875;0.0;A;4
 14;3;1128;I16;;power_in;;100.0;0.0;kW;4
-15;3;1151;I16;;temperature;TEMP;0.01;0.0;C;4
+15;3;1151;I16;;temperature;TEMP_INT;0.01;0.0;C;4

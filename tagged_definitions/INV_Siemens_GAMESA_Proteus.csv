@@ -8,7 +8,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 7;3;64;U16;;Device Address;UNIT_ID;1;0;;4
 8;3;65;U16;;ModbusVr;;1;0;;4
 9;3;66;I16;;Operating State of the Inverter;;1;0;;4
-10;3;67;U16;;Alarm;;1;0;;4
+10;3;67;U16;;Alarm;R_ISO;1;0;;4
 11;3;67_0_1;BITS;;Ground fault;;1;0;;4
 12;3;67_1_1;BITS;;DC over voltage;U_DC;1;0;;4
 13;3;67_2_1;BITS;;AC disconnected;;1;0;;4
@@ -405,7 +405,7 @@ ModbusTCP;Inverter;Gamesa;Proteus;;;;;;;
 404;3;8193_5_1;BITS;;AC Breaker 1 Non Ready To Close;;1;0;;4
 405;3;8193_6_1;BITS;;AC Breaker 2 Trip;;1;0;;4
 406;3;8193_7_1;BITS;;AC Breaker 2 Non Ready To Close;;1;0;;4
-407;3;8193_8_1;BITS;;Isolation Monitor 1 Alarm;R_ISO;1;0;;4
+407;3;8193_8_1;BITS;;Isolation Monitor 1 Alarm;;1;0;;4
 408;3;8193_9_1;BITS;;Isolation Monitor 2 Alarm;;1;0;;4
 409;3;8193_10_1;BITS;;DC Grounding Protection Alarm;;1;0;;4
 410;3;8193_11_1;BITS;;Voltage grid measurement protection trip;;1;0;;4

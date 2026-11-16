@@ -3,7 +3,7 @@ modbusTCP;Other;ALPITRONIC;HYC150-300;;;;;;;
 2;4;2;U16;;NumConnectors;;1;0;;4
 3;4;3;U16;;StationState;;1;0;;4
 4;4;4;U32;;TotalPowerDrained;RAIN;1;0;W;4
-5;4;6_24;STRING;;SerialNumber;;1;0;;4
+5;4;6_24;STRING;;SerialNumber;SERIAL;1;0;;4
 6;4;18;U16;;Load Management Enabled;;1;0;bool;4
 7;4;30_32;STRING;;Charge point ID;;1;0;;4
 8;4;100;U16;;State;;1;0;;4

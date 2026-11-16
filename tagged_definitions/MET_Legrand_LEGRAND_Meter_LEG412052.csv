@@ -462,29 +462,28 @@ modbusRTU;Meter;Legrand;LEGRAND_Meter_LEG412052;;;;;;;
 461;4;256;U16;;Write Current transformer ratio - CT;;1.0;0.0;;4
 462;4;258;U16;;Write Voltage transformer ratio - VT;;1.0;0.0;;4
 463;4;259;U16;;Energy mode accumulation;;1.0;0.0;;4
-464;4;4207;U16;;Output Remote Command;;1.0;0.0;;4
-465;4;8196;U16;;Percentage of rated 3phase active power run hour meter;;1.0;0.0;%;4
-466;4;8197;U16;;Run hour meter active on;;1.0;0.0;;4
-467;4;8200;U16;;Backlight intensity;;1.0;0.0;;4
-468;4;8202;U16;;Power Averaging time;;1.0;0.0;;4
-469;4;8203;U16;;Insertion type;;1.0;0.0;;4
-470;4;8204;U16;;Measure on line 1 of custom page;;1.0;0.0;;4
-471;4;8205;U16;;Measure on line 2 of custom page;;1.0;0.0;;4
-472;4;8206;U16;;Measure on line 3 of custom page;;1.0;0.0;;4
-473;4;8714;U16;;Output type;;1.0;0.0;;4
-474;4;8715;U16;;Pulse duration;;1.0;0.0;;4
-475;4;8716;U16;;Pulse weight;;1.0;0.0;;4
-476;4;8717;U16;;Pulse active on;;1.0;0.0;;4
-477;4;8718;U16;;Alarm deactivation delay or Relay closing time (if Output type = Timed Remote command);;1.0;0.0;s;4
-478;4;8719;U16;;Alarm activation delay;;1.0;0.0;s;4
-479;4;8720;U16;;Hysteresis;;1.0;0.0;%;4
-480;4;8721;U16;;Relay (NO/NC);;1.0;0.0;;4
-481;4;8722;U16;;Alarm on Min Value or Max Value;;1.0;0.0;;4
-482;4;8723;U16;;Alarm setpoint;;1.0;0.0;;4
-483;4;8725;U16;;Unit of setpoint;;1.0;0.0;;4
-484;4;8726;U16;;Sign of Alarm setpoint (Only for Energies);;1.0;0.0;;4
-485;4;8727;U16;;Type of measure;;1.0;0.0;;4
-486;4;9216;U16;;Reset Hour Meter, Maximum Powers, Maximum Voltages, Maximum Currents, Minimum Voltages, Active Partial Energy, Reactive Partial Energy;;1.0;0.0;;4
-487;4;9728;U16;;Saving in EEPROM parameters changed by Remote commands;;1.0;0.0;;4
-488;4;9984;U16;;Enable Remote Writing Operation;;1.0;0.0;;4
-489;4;10240;U16;;Restore default parameters;;1.0;0.0;;4
+464;4;8196;U16;;Percentage of rated 3phase active power run hour meter;;1.0;0.0;%;4
+465;4;8197;U16;;Run hour meter active on;;1.0;0.0;;4
+466;4;8200;U16;;Backlight intensity;;1.0;0.0;;4
+467;4;8202;U16;;Power Averaging time;;1.0;0.0;;4
+468;4;8203;U16;;Insertion type;;1.0;0.0;;4
+469;4;8204;U16;;Measure on line 1 of custom page;;1.0;0.0;;4
+470;4;8205;U16;;Measure on line 2 of custom page;;1.0;0.0;;4
+471;4;8206;U16;;Measure on line 3 of custom page;;1.0;0.0;;4
+472;4;8714;U16;;Output type;;1.0;0.0;;4
+473;4;8715;U16;;Pulse duration;;1.0;0.0;;4
+474;4;8716;U16;;Pulse weight;;1.0;0.0;;4
+475;4;8717;U16;;Pulse active on;;1.0;0.0;;4
+476;4;8718;U16;;Alarm deactivation delay or Relay closing time (if Output type = Timed Remote command);;1.0;0.0;s;4
+477;4;8719;U16;;Alarm activation delay;;1.0;0.0;s;4
+478;4;8720;U16;;Hysteresis;;1.0;0.0;%;4
+479;4;8721;U16;;Relay (NO/NC);;1.0;0.0;;4
+480;4;8722;U16;;Alarm on Min Value or Max Value;;1.0;0.0;;4
+481;4;8723;U16;;Alarm setpoint;;1.0;0.0;;4
+482;4;8725;U16;;Unit of setpoint;;1.0;0.0;;4
+483;4;8726;U16;;Sign of Alarm setpoint (Only for Energies);;1.0;0.0;;4
+484;4;8727;U16;;Type of measure;;1.0;0.0;;4
+485;4;9216;U16;;Reset Hour Meter, Maximum Powers, Maximum Voltages, Maximum Currents, Minimum Voltages, Active Partial Energy, Reactive Partial Energy;;1.0;0.0;;4
+486;4;9728;U16;;Saving in EEPROM parameters changed by Remote commands;;1.0;0.0;;4
+487;4;9984;U16;;Enable Remote Writing Operation;;1.0;0.0;;4
+488;4;10240;U16;;Restore default parameters;;1.0;0.0;;4

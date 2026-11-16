@@ -1,11 +1,11 @@
 ModbusRTU;Inverter;Modbus;Goodwee;;;;;;;
 1;3;30015;U16;;SN;SERIAL;1;0;;4
-2;3;32016;U16;;Vpv1;;1;0;;4
-3;3;32017;U16;;Ipv1;;1;0;;4
-4;3;32018;U16;;Vpv2;;1;0;;4
-5;3;32019;U16;;Ipv2;;1;0;;4
-6;3;32020;U16;;Vpv3;;1;0;;4
-7;3;32021;U16;;Ipv3;;1;0;;4
+2;3;32016;U16;;Vpv1;U_DC_STRING_1;1;0;;4
+3;3;32017;U16;;Ipv1;I_DC_STRING_1;1;0;;4
+4;3;32018;U16;;Vpv2;U_DC_STRING_2;1;0;;4
+5;3;32019;U16;;Ipv2;I_DC_STRING_2;1;0;;4
+6;3;32020;U16;;Vpv3;U_DC_STRING_3;1;0;;4
+7;3;32021;U16;;Ipv3;I_DC_STRING_3;1;0;;4
 8;3;32022;U16;;Vpv4;;1;0;;4
 9;3;32023;U16;;Ipv4;;1;0;;4
 10;3;32024;U16;;Vpv5;;1;0;;4
@@ -56,4 +56,4 @@ ModbusRTU;Inverter;Modbus;Goodwee;;;;;;;
 55;3;32087;U16;;Internal temperature (cabinet temp);TEMP_INT;1;0;;4
 56;3;32106;U32;;Cumulative Generation;;1;0;;4
 57;3;32114;U32;;Daily Generation;;1;0;;4
-58;3;41480;U16;;Set Active Power (percentage);;1;0;;4
+58;3;41480;U16;;Set Active Power (percentage);cmd;1;0;;4

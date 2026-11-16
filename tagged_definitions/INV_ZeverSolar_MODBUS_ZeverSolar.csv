@@ -1,14 +1,14 @@
 ModbusRTU;Inverter;ZEVERSOLAR;Generic;;;;;;;
 1;4;0_2;STRING;;Device Type;MODEL;1;0;;4
 2;4;1;U32;;E-today;;0.1;0;kWh;4
-3;4;3;U32;;E-total;E_TOT;0.1;0;kWh;4
+3;4;3;U32;;E-total;U_DC;0.1;0;kWh;4
 4;4;5;U32;;H-total;;1;0;H;4
 5;4;11;U16;;State;;1;0;;8
 6;4;12;U16;;Error Code;;1;0;;4
 7;4;13;U16;;Connect Time;;1;0;s;4
-8;4;14;I16;;Temperature;TEMP;0.1;0;C;4
+8;4;14;I16;;Temperature;TEMP_INT;0.1;0;C;4
 9;4;15;U16;;Connected PV Strings;;1;0;;4
-10;4;16;U16;;BUS Voltage;U_DC;0.1;0;V;4
+10;4;16;U16;;BUS Voltage;;0.1;0;V;4
 11;4;17;U16;;PV Voltage 1;;0.1;0;V;4
 12;4;18;U16;;PV Current 1;;0.1;0;A;4
 13;4;19;U16;;PV Voltage 2;;0.1;0;V;4
@@ -44,7 +44,7 @@ ModbusRTU;Inverter;ZEVERSOLAR;Generic;;;;;;;
 43;4;58;U16;;String Current 12;;0.1;0;A;4
 44;3;12;U16;;Power ON/OFF;CMD_ON;1;0;;1
 45;3;5000;U16;;Safety type;;1;0;;4
-46;3;5006;U16;;Grid voltage high limit2;;0.1;0;V;4
+46;3;5006;U16;;Grid voltage high limit2;U_AC_L1L2;0.1;0;V;4
 47;3;5007;U16;;Grid voltage high limit time2;;1;0;ms;4
 48;3;5008;U16;;Grid voltage high limit1;;0.1;0;V;4
 49;3;5009;U16;;Grid voltage high limit time1;;1;0;ms;4
@@ -67,7 +67,7 @@ ModbusRTU;Inverter;ZEVERSOLAR;Generic;;;;;;;
 66;3;5026;U16;;10 minutes average over voltage threshold;;0.1;0;V;4
 67;3;5027;U16;;ISO fault threshold;;1;0;kOhm;4
 68;3;5028;U16;;DCI fault threshold;;1;0;mA;4
-69;3;5029;U16;;Active power set;;1;0;%Pn;4
+69;3;5029;U16;;Active power set;cmdPwrPct;1;0;%Pn;4
 70;3;5030;U16;;Active power control response time;;1;0;S;4
 71;3;5036;U16;;Reactive power control mode;;1;0;;4
 72;3;5037;I16;;Power factor;;0.01;0;;4

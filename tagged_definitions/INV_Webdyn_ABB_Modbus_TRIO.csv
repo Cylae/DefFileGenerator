@@ -4,7 +4,7 @@ ModbusRTU;Inverter;ABB;TRIO;;;;;;;
 3;4;134;F32;;Energie totale;E_TOT;1.0;0.0;kWh;4
 4;4;140;F32;;Energie mensuelle;;1.0;0.0;kWh;4
 5;4;142;F32;;Energie annuelle;;1.0;0.0;kWh;4
-6;4;144;F32;;Tension reseau;;1.0;0.0;V;4
+6;4;144;F32;;Tension reseau;U_AC_L1L2;1.0;0.0;V;4
 7;4;146;F32;;Courant injecte;;1.0;0.0;A;4
 8;4;148;F32;;Puissance injectee;;1.0;0.0;W;4
 9;4;150;F32;;Frequence du reseau;FREQ;1.0;0.0;Hz;4

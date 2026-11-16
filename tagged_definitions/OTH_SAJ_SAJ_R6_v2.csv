@@ -42,7 +42,7 @@ modbusRTU;Other;SAJ;SAJ_R6_v2;;;;;;;
 41;4;16430;U16;;BMS Set Discharging Power;;1.0;0.0;A;1
 42;4;16431;U16;;BMS Set Charging Power;;1.0;0.0;A;1
 43;4;16432;U16;;Set Meter Mode;;1.0;0.0;;1
-44;4;16433;U16;;R Phase Grid Voltage;;1.0;0.0;V;1
+44;4;16433;U16;;R Phase Grid Voltage;U_AC_L1L2;1.0;0.0;V;1
 45;4;16434;U16;;R Phase Grid Current;;1.0;0.0;A;1
 46;4;16435;U16;;R Phase Grid Frequency;FREQ;1.0;0.0;Hz;1
 47;4;16436;U16;;R Phase Grid DC Component;;1.0;0.0;mA;1
@@ -102,7 +102,7 @@ modbusRTU;Other;SAJ;SAJ_R6_v2;;;;;;;
 101;4;16490;U16;;Battery Current;I_DC;1.0;0.0;A;1
 102;4;16491;U16;;Battery Controller 1 Current;;1.0;0.0;A;1
 103;4;16492;U16;;Battery Controller 2 Current;;1.0;0.0;A;1
-104;4;16493;U16;;Battery Power;;1.0;0.0;W;1
+104;4;16493;U16;;Battery Power;P_DC;1.0;0.0;W;1
 105;4;16494;U16;;Battery Temperature;TEMP;1.0;0.0;°C;1
 106;4;16495;U16;;Battery State of Charge;;1.0;0.0;%;1
 107;4;16497;U16;;PV1 Voltage;U_DC_STRING_1;1.0;0.0;V;1
@@ -207,7 +207,7 @@ modbusRTU;Other;SAJ;SAJ_R6_v2;;;;;;;
 206;4;16637;U16;;Total System Electricity Purchased;;1.0;0.0;kWh;1
 207;4;13320;U16;;Inverter Function Word (FunMask);;1.0;0.0;;4
 208;4;13323;U16;;Power Limit Value;CMD_P_AC_SET_ABS;1.0;0.0;%;1
-209;4;13324;U16;;Inverter Stop Command;CMD_OFF;1.0;0.0;;4
+209;4;13324;U16;;Inverter Stop Command;CMD_OFF;1.0;0.0;;1
 210;4;13328;U16;;ISO Limit Value;;1.0;0.0;kOhm;4
 211;4;13334;U16;;Reactive Power Compensation Mode;Q_AC;1.0;0.0;;4
 212;4;13335;U16;;Reactive Compensation Value;;1.0;0.0;;4

@@ -4,14 +4,14 @@ modbusRTU;Inverter;Solargate;INV_SOLARGATE_Inverter;;;;;;;
 3;3;40003;U16;;PKW3;;1.000000;0.000000;;0
 4;3;40004;U16;;PKW4;;1.000000;0.000000;;0
 5;3;40005;U16;;Command Word;;1.000000;0.000000;;0
-6;3;40006;I16;;DC voltage reference;;1.000000;0.000000;;0
+6;3;40006;I16;;DC voltage reference;U_DC;1.000000;0.000000;;0
 7;3;40007;I16;;Preset DC voltage reference;;1.000000;0.000000;;0
-8;3;40008;I16;;Reactive power reference;;0.003815;0.000000;'%;0
+8;3;40008;I16;;Reactive power reference;Q_AC;0.003815;0.000000;'%;0
 9;3;40009;I16;;Preset Reactive power reference;;0.003815;0.000000;'%;0
 10;3;40010;U16;;Strobe for preset;;1.000000;0.000000;;0
 11;3;40011;U16;;Auxiliary Command Word;;1.000000;0.000000;;0
-12;3;40012;I16;;Active power reference;;0.003815;0.000000;'%;0
-13;3;40013;I16;;Preset Active power reference;;0.003815;0.000000;'%;0
+12;3;40012;I16;;Active power reference;P_AC;0.003815;0.000000;'%;0
+13;3;40013;I16;;Preset Active power reference;CMD_P_AC_SET_ABS;0.003815;0.000000;'%;0
 14;3;40014;I16;;Reactive current reference;;1.000000;0.000000;;0
 15;3;40015;I16;;Preset Reactive current reference;;1.000000;0.000000;;0
 16;3;40016;I16;;Active current reference;;1.000000;0.000000;;0
@@ -21,13 +21,13 @@ modbusRTU;Inverter;Solargate;INV_SOLARGATE_Inverter;;;;;;;
 20;3;40020;I16;;Upper Limit for reactive current;;1.000000;0.000000;;0
 21;3;40021;I16;;Preset Limit for reactive current;;1.000000;0.000000;;0
 22;3;40210;U16;;RMS AcLine reactive current;;1.000000;0.000000;;4
-23;3;40211;I16;;AC Line Power Factor (cosφ);;0.000031;0.000000;;4
-24;3;40212;U16;;DC bus voltage (Vdc);U_DC;1.000000;0.000000;;4
+23;3;40211;I16;;AC Line Power Factor (cosφ);PF;0.000031;0.000000;;4
+24;3;40212;U16;;DC bus voltage (Vdc);;1.000000;0.000000;;4
 25;3;40213;U16;;AC Line Voltage;;1.000000;0.000000;;4
-26;3;40214;U16;;AC Line frequency;;1.000000;0.000000;;4
+26;3;40214;U16;;AC Line frequency;FREQ;1.000000;0.000000;;4
 27;3;40215;U16;;Converter output voltage;;1.000000;0.000000;;4
 28;3;40216;U16;;RMS converter current;;1.000000;0.000000;;4
-29;3;40217;I16;;AC Line Active Power;;1.000000;0.000000;;4
+29;3;40217;I16;;AC Line Active Power;P_AC_1;1.000000;0.000000;;4
 30;3;40218;I16;;AC Line Reactive Power;;1.000000;0.000000;;4
 31;3;40219;U16;;Phase sequence;;1.000000;0.000000;;4
 32;3;40220;I16;;Analog imput voltage 1 (VsyncUV);;0.000381;0.000000;V;4
@@ -53,11 +53,11 @@ modbusRTU;Inverter;Solargate;INV_SOLARGATE_Inverter;;;;;;;
 52;3;40308_15_1;BITS;;StatusPC DialogBoxText2;;1.000000;0.000000;;4
 53;3;40309;U16;;DC current;I_DC;0.100000;0.000000;A;4
 54;3;40310;U16;;DC voltage;;0.100000;0.000000;V;4
-55;3;40311;I16;;DC link power;;0.100000;0.000000;kW;4
+55;3;40311;I16;;DC link power;P_DC;0.100000;0.000000;kW;4
 56;3;40312;I16;;CPU temperature Degrees;;0.100000;0.000000;Degr.Celsius;4
-57;3;40313;U16;;AC line current;;0.100000;0.000000;A;4
+57;3;40313;U16;;AC line current;I_AC_3;0.100000;0.000000;A;4
 58;3;40314;U16;;AC line voltage;;0.100000;0.000000;V;4
-59;3;40315;I16;;Active Power;P_AC;0.100000;0.000000;kW;4
+59;3;40315;I16;;Active Power;;0.100000;0.000000;kW;4
 60;3;40316;U16;;Max absolute peak Power;;0.100000;0.000000;kW;4
 61;3;40317;U16;;Daily Peak Power;;0.100000;0.000000;kW;4
 62;3;40318;U32_W;;Daily energy;E_DAY;0.100000;0.000000;kWh;4

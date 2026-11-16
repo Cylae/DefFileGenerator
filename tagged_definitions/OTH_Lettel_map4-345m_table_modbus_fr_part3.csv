@@ -1,0 +1,82 @@
+modbusRTU;Other;Lettel;map4-345m_table_modb_p3;;;;;;;
+1;4;4096;U16;;Impédance L1;;1.0;0.0;0.01 ohms;4
+2;4;4097;U16;;Impédance L2;;1.0;0.0;0.01 ohms;4
+3;4;4098;U16;;Impédance L3;;1.0;0.0;0.01 ohms;4
+4;4;4099;U16;;Distorsion harmonique totale de la tension L1;U_AC_1;1.0;0.0;0.0001;4
+5;4;4100;U16;;"3ème harmonique THD
+de la tension L1";;1.0;0.0;0.0001;4
+6;4;4101;U16;;5ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+7;4;4102;U16;;7ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+8;4;4103;U16;;9èm harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+9;4;4104;U16;;11ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+10;4;4105;U16;;13ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+11;4;4106;U16;;15ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+12;4;4107;U16;;17ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+13;4;4108;U16;;"19ème harmonique THD
+de la tension L1";;1.0;0.0;0.0001;4
+14;4;4109;U16;;21ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+15;4;4110;U16;;23ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+16;4;4111;U16;;25ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+17;4;4112;U16;;27ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+18;4;4113;U16;;"29ème harmonique THD
+de la tension L1";;1.0;0.0;0.0001;4
+19;4;4114;U16;;31ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+20;4;4115;U16;;33ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+21;4;4116;U16;;35ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+22;4;4117;U16;;37ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+23;4;4118;U16;;39ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+24;4;4119;U16;;41ème harmonique THD de la tension L1;;1.0;0.0;0.0001;4
+25;4;4120;U16;;Distorsion harmonique totale courant L1;I_AC_1;1.0;0.0;0.0001;4
+26;4;4121;U16;;Distorsion harmonique totale courant L2;I_AC_2;1.0;0.0;0.0001;4
+27;4;4122;U16;;3ème harmonique THD de la tension L2;U_AC_2;1.0;0.0;0.0001;4
+28;4;4123;U16;;5ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+29;4;4124;U16;;7ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+30;4;4125;U16;;9ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+31;4;4126;U16;;11ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+32;4;4127;U16;;13ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+33;4;4128;U16;;"15ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+34;4;4129;U16;;"17ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+35;4;4130;U16;;"19ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+36;4;4131;U16;;21ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+37;4;4132;U16;;"23ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+38;4;4133;U16;;"25ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+39;4;4134;U16;;27ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+40;4;4135;U16;;29ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+41;4;4136;U16;;31ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+42;4;4137;U16;;33ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+43;4;4138;U16;;"35ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+44;4;4139;U16;;37ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+45;4;4140;U16;;"39ème harmonique THD
+de la tension L2";;1.0;0.0;0.0001;4
+46;4;4141;U16;;41ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+47;4;4142;U16;;Distorsion Harmonique de la tension L2;;1.0;0.0;0.0001;4
+48;4;4143;U16;;Distorsion Harmonique Totale du Courant L3;I_AC_3;1.0;0.0;0.0001;4
+49;4;4144;U16;;3ème harmonique THD de la tension L3;U_AC_3;1.0;0.0;0.0001;4
+50;4;4145;U16;;5ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+51;4;4146;U16;;7ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+52;4;4147;U16;;9ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+53;4;4148;U16;;11ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+54;4;4149;U16;;13ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+55;4;4150;U16;;15ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+56;4;4151;U16;;17ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+57;4;4152;U16;;19ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+58;4;4153;U16;;21ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+59;4;4154;U16;;23ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+60;4;4155;U16;;25ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+61;4;4156;U16;;27ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+62;4;4157;U16;;29ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+63;4;4158;U16;;31ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+64;4;4159;U16;;33ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+65;4;4160;U16;;35ème harmonique THD de la tension L3;;1.0;0.0;0.0001;4
+66;4;4161;U16;;37ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+67;4;4162;U16;;39ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+68;4;4163;U16;;41ème harmonique THD de la tension L2;;1.0;0.0;0.0001;4
+69;4;4164;U16;;Distorsion Harmonique Totale du Courant L3;;1.0;0.0;0.0001;4
+70;4;4165;U16;;Distorsion Harmonique Totale du Courant N;;1.0;0.0;0.0001;4
+71;4;4166;U16;;Reservé;;1.0;0.0;/;4

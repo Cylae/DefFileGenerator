@@ -15,9 +15,9 @@ ModbusRTU;Inverter;Schneider;Conext CL 30-33-50;;;;;;;
 14;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.1;0;V;4
 15;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.1;0;A;4
 16;4;5016;U32;;Total DC power;P_DC;1;0;W;4
-17;4;5018;U16;;A-B Line Voltage/Phase A voltage;U_AC_L1L2;0.1;0;V;4
-18;4;5019;U16;;B-C Line Voltage/Phase B voltage;U_AC_L2L3;0.1;0;V;4
-19;4;5020;U16;;C-A Line Voltage/Phase C voltage;U_AC_L3L1;0.1;0;V;4
+17;4;5018;U16;;A-B Line Voltage/Phase A voltage;U_AC_1;0.1;0;V;4
+18;4;5019;U16;;B-C Line Voltage/Phase B voltage;U_AC_2;0.1;0;V;4
+19;4;5020;U16;;C-A Line Voltage/Phase C voltage;U_AC_3;0.1;0;V;4
 20;4;5021;U16;;Phase A current;I_AC_1;0.1;0;A;4
 21;4;5022;U16;;Phase B current;I_AC_2;0.1;0;A;4
 22;4;5023;U16;;Phase C current;I_AC_3;0.1;0;A;4
@@ -33,7 +33,7 @@ ModbusRTU;Inverter;Schneider;Conext CL 30-33-50;;;;;;;
 32;4;5042;U16;;Event/Alarm time : Minute;;1;0;;8
 33;4;5043;U16;;Event/Alarm time : Second;;1;0;;8
 34;4;5044;U16;;Event/Alarm time code;;1;0;;8
-35;4;5048;U16;;Nominal reactive power;Q_RATED;0.1;0;kVar;4
+35;4;5048;U16;;Nominal reactive power;;0.1;0;kVar;4
 36;4;5070;U16;;Array insulation resistance;R_ISO;1;0;kOhm;4
 37;4;5112;U16;;Daily running time;;1;0;minute;4
 38;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;0.1;0;V;4

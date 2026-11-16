@@ -16,19 +16,19 @@ modbusRTU;Inverter;Solargate;INV_SOLARGATE_2009_WebdynSunPM;;;;;;;
 15;3;202;U16;;PKW3_2;;1.000000;0.000000;;4
 16;3;203;U16;;PKW4_2;;1.000000;0.000000;;4
 17;3;204;U16;;Status Word;;1.000000;0.000000;;4
-18;3;205;U16;;DC bus voltage (Vdc)_1;;1.000000;0.000000;;4
-19;3;206;U16;;RMS AcLine current (Is);;1.000000;0.000000;;4
+18;3;205;U16;;DC bus voltage (Vdc)_1;U_DC;1.000000;0.000000;;4
+19;3;206;U16;;RMS AcLine current (Is);I_AC;1.000000;0.000000;;4
 20;3;207;I16;;Active converter current (Isd);;1.000000;0.000000;;4
 21;3;208;I16;;Reactive converter current (Isq);;1.000000;0.000000;;4
 22;3;209;I16;;RMS AcLine reactive current;;1.000000;0.000000;;4
-23;3;210;I16;;AC Line Power Factor (cosφ);;0.000031;0.000000;;4
+23;3;210;I16;;AC Line Power Factor (cosφ);PF;0.000031;0.000000;;4
 24;3;211;U16;;DC bus voltage (Vdc)_2;;1.000000;0.000000;;4
 25;3;212;U16;;AC Line Voltage_1;;1.000000;0.000000;;4
-26;3;213;U16;;AC Line frequency;;1.000000;0.000000;;4
+26;3;213;U16;;AC Line frequency;FREQ;1.000000;0.000000;;4
 27;3;214;U16;;Converter output voltage;;1.000000;0.000000;;4
 28;3;215;U16;;RMS converter current;;1.000000;0.000000;;4
-29;3;216;I16;;AC Line Active Power;;1.000000;0.000000;;4
-30;3;217;I16;;AC Line Reactive Power;;1.000000;0.000000;;4
+29;3;216;I16;;AC Line Active Power;P_AC_1;1.000000;0.000000;;4
+30;3;217;I16;;AC Line Reactive Power;Q_AC;1.000000;0.000000;;4
 31;3;218;U16;;Phase sequence;;1.000000;0.000000;;4
 32;3;219;I16;;Analog imput voltage 1 (VsyncUV);;0.000381;0.000000;V;4
 33;3;220;I16;;Analog imput voltage 2 (VsyncWU);;0.000381;0.000000;V;4
@@ -39,10 +39,10 @@ modbusRTU;Inverter;Solargate;INV_SOLARGATE_2009_WebdynSunPM;;;;;;;
 38;3;255;U16;;Modbus comunication state;;1.000000;0.000000;;4
 39;3;307;U16;;Status for PC;;1.000000;0.000000;;4
 40;3;308;U16;;DC current;I_DC;0.100000;0.000000;A;4
-41;3;309;U16;;DC voltage;U_DC;0.100000;0.000000;V;4
-42;3;310;U16;;DC link power;;0.100000;0.000000;kW;4
+41;3;309;U16;;DC voltage;;0.100000;0.000000;V;4
+42;3;310;U16;;DC link power;P_DC;0.100000;0.000000;kW;4
 43;3;311;U16;;Output Frequency;;0.100000;0.000000;Hz;4
-44;3;312;U16;;AC line current;;0.100000;0.000000;A;4
+44;3;312;U16;;AC line current;I_AC_3;0.100000;0.000000;A;4
 45;3;313;U16;;AC line voltage_2;;0.100000;0.000000;V;4
 46;3;314;I16;;CPU temperature;;0.100000;0.000000;Degr.Celsius;4
 47;3;315;I16;;Active Power;P_AC;0.100000;0.000000;kW;4

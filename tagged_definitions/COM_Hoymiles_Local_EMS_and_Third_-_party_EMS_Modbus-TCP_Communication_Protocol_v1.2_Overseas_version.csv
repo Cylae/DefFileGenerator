@@ -1,4 +1,4 @@
-modbusRTU;Other;Hoymiles;Local EMS and Third - party EM;;;;;;;
+modbusRTU;Other;Hoymiles;Local_EMS_and_Third_-_party_EM;;;;;;;
 1;4;1;U16;;Heartbeat Information;;1.0;0.0;/;4
 2;4;2;U16;;Current Control Mode;;1.0;0.0;/;4
 3;4;3;U16;;Current Operating Mode;;1.0;0.0;/;4
@@ -31,12 +31,4 @@ modbusRTU;Other;Hoymiles;Local EMS and Third - party EM;;;;;;;
 30;4;206;U16;;Unit 2 Average Cell Voltage;;1.0;0.0;V;4
 31;4;207;U16;;Unit 2 Average Cell Temperature;;1.0;0.0;℃;4
 32;4;208;U16;;Reserved;;1.0;0.0;None;0
-33;4;1;U16;;Control Mode Setting;;1.0;0.0;/;4
-34;4;2;U16;;Active Power Command;;1.0;0.0;kW;4
-35;4;3;U16;;Reactive Power Command;;1.0;0.0;kVar;4
-36;4;4;U16;;Operating Mode Setting;;1.0;0.0;None;4
-37;4;5;U16;;System Fault Reset Command;;1.0;0.0;None;9
-38;4;6;U16;;System Power On/Off Command;CMD_ON;1.0;0.0;None;1
-39;4;7;U16;;Off-Grid VF Mode Output Frequency Setting;FREQ;1.0;0.0;Hz;4
-40;4;8;U16;;Off-Grid VF Mode Output Line Voltage Setting;;1.0;0.0;V;4
-41;4;9;U16;;Reserved;;1.0;0.0;/;0
+33;4;9;U16;;Reserved;;1.0;0.0;/;0

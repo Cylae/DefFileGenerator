@@ -1,0 +1,99 @@
+modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p5;;;;;;;
+1;4;10050;U16;;"0xAA：On-grid Mode
+0x55：Off-grid Mode
+0xBB：VSG Mode";;1;0.0;/;4
+2;4;10051;U16;;See Reference：Working Status;;1;0.0;/;9
+3;4;10052;U16;;Low byte in the front;;0;0.0;kWh;4
+4;4;10053;U16;;None;;1.0;0.0;None;4
+5;4;10054;U16;;Low byte in the front;;0;0.0;kWh;4
+6;4;10055;U16;;None;;1.0;0.0;None;4
+7;4;10056;U16;;Low byte in the front;;1;0.0;kW;4
+8;4;10057;U16;;None;;1.0;0.0;None;4
+9;4;10058;U16;;Low byte in the front;;1;0.0;kW;4
+10;4;10059;U16;;None;;1.0;0.0;None;4
+11;4;10060;U16;;Low byte in the front;;0;0.0;kW;4
+12;4;10061;U16;;None;;1.0;0.0;None;4
+13;4;10062;U16;;Low byte in the front;;0;0.0;kvar;4
+14;4;10063;U16;;None;;1.0;0.0;None;4
+15;4;10064;U16;;Low byte in the front;;0;0.0;kW;4
+16;4;10065;U16;;None;;1.0;0.0;None;4
+17;4;10066;U16;;Low byte in the front;;1;0.0;kWh;4
+18;4;10067;U16;;None;;1.0;0.0;None;4
+19;4;10068;U16;;Low byte in the front;;1;0.0;kWh;4
+20;4;10069;U16;;None;;1.0;0.0;None;4
+21;4;10070;U16;;Low byte in the front;;0;0.0;kWh;4
+22;4;10071;U16;;None;;1.0;0.0;None;4
+23;4;10072;U16;;Low byte in the front;;0;0.0;kWh;4
+24;4;10073;U16;;None;;1.0;0.0;None;4
+25;4;10074;U16;;0xAA：master；0x55：slave;;1.0;0.0;None;4
+26;4;10075;U16;;0x55：disable；0xAA：enable;;1.0;0.0;None;4
+27;4;10076;U16;;Current number of black start beats;;1;0.0;None;4
+28;4;10077;U16;;None;;1;0.0;None;4
+29;4;10078;U16;;None;;1.0;0.0;None;4
+30;4;10079;U16;;Low byte in the front;;0;0.0;kW;4
+31;4;10080;U16;;None;;1.0;0.0;None;4
+32;4;10081;U16;;Low byte in the front;;0;0.0;kWh;4
+33;4;10082;U16;;None;;1.0;0.0;None;4
+34;4;10083;U16;;"0：Charging
+1：Discharging
+2：Non-working Status";;1;0.0;/;9
+35;4;10095;U16;;Low byte in the front;;1;0.0;kW;4
+36;4;10096;U16;;None;;1.0;0.0;None;4
+37;4;10097;U16;;Low byte in the front;;1;0.0;kvar;4
+38;4;10098;U16;;None;;1.0;0.0;None;4
+39;4;10099;U16;;Parsed as ASCII code;;1.0;0.0;/;4
+40;4;10106;U16;;None;;1.0;0.0;None;4
+41;4;10107;U16;;Parsed as ASCII code;;1.0;0.0;/;4
+42;4;10122;U16;;None;;1.0;0.0;None;4
+43;4;10123;U16;;None;;1.0;0.0;None;4
+44;4;10124;U16;;None;;1.0;0.0;None;4
+45;4;10125;U16;;None;;1.0;0.0;/;4
+46;4;10126;U16;;None;;1.0;0.0;None;4
+47;4;10127;U16;;None;;1.0;0.0;None;4
+48;4;10128;U16;;None;;1.0;0.0;/;4
+49;4;10131;U16;;Low byte in the front;;1;0.0;kW;4
+50;4;10132;U16;;None;;1.0;0.0;None;4
+51;4;10133;U16;;Low byte in the front;;1;0.0;kW;4
+52;4;10134;U16;;None;;1.0;0.0;None;4
+53;4;10137;U16;;None;;1.0;0.0;None;4
+54;4;10138;U16;;Displayed based on node configuration;;1;0.0;/;4
+55;4;10139;U16;;None;;1.0;0.0;None;4
+56;4;10142;U16;;Displayed based on node configuration;;1;0.0;/;4
+57;4;10143;U16;;None;;1.0;0.0;None;4
+58;4;10144;U16;;None;;1.0;0.0;None;4
+59;4;10148;U16;;See Reference：Sub-device Configuration Status;;1.0;0.0;None;9
+60;4;10149;U16;;None;;1.0;0.0;None;4
+61;4;10150;U16;;See Reference：System Fault Status 1;;1;0.0;/;9
+62;4;10151;U16;;None;;1.0;0.0;None;4
+63;4;10152;U16;;Reserved;;1;0.0;/;0
+64;4;10153;U16;;None;;1.0;0.0;None;4
+65;4;10154;U16;;See Reference：System Alarm Status 1;;1;0.0;/;9
+66;4;10155;U16;;None;;1.0;0.0;None;4
+67;4;10156;U16;;Reserved;;1;0.0;/;0
+68;4;10157;U16;;None;;1.0;0.0;None;4
+69;4;10158;U16;;Parsed as ASCII code;;1.0;0.0;None;4
+70;4;10165;U16;;None;;1.0;0.0;None;4
+71;4;10166;U16;;See Reference: System status information;;1;0.0;/;9
+72;4;10167;U16;;None;;1.0;0.0;None;4
+73;4;10171;U16;;"Parsed as ASCII code. No communication uploaded ""- -""";;1.0;0.0;None;4
+74;4;10182;U16;;None;;1.0;0.0;None;4
+75;4;10183;U16;;"Parsed as ASCII code. No communication uploaded ""- -""";;1.0;0.0;None;4
+76;4;10190;U16;;None;;1.0;0.0;None;4
+77;4;10191;U16;;0：Offline；1：Online;;1.0;0.0;None;4
+78;4;10192;U16;;0：Non-upgradeable；1：Upgradeable;;1.0;0.0;None;4
+79;4;10193;U16;;Displayed based on node configuration;;1;0.0;/;4
+80;4;10194;U16;;None;;1.0;0.0;None;4
+81;4;10197;U16;;See Reference：System not ready falut;;1.0;0.0;/;4
+82;4;10198;U16;;None;;1.0;0.0;None;4
+83;4;10200;U16;;"0x55：No need for power supply
+0xAA：Need for power supply";;1;0.0;/;4
+84;4;10201;U16;;"0：No power reduction needed 
+1：Request load reduction
+2：Request lower charging power
+If the power reduction request exists for 10s, a system stop will be triggered.";;1;0.0;/;4
+85;4;10206;U16;;See Reference;;1.0;0.0;None;4
+86;4;10207;U16;;None;;1.0;0.0;None;4
+87;4;10208;U16;;"0：Not support 
+1：Support";;1;0.0;/;4
+88;4;10209;U16;;"Parsed as ASCII code. No communication uploaded ""- -""";;1.0;0.0;None;4
+89;4;10220;U16;;None;;1.0;0.0;None;4

@@ -10,23 +10,23 @@ modbusRTU;Other;PowerOne;ABB_TRIO-50.0-TM-OUTD_SunSpec_;;;;;;;
 9;4;40069;U16;;Pad;;1.0;0.0;;4
 10;4;40070;U16;;ID;;1.0;0.0;;4
 11;4;40071;U16;;L;;1.0;0.0;;4
-12;4;40072;U16;;Amps (A);;1.0;0.0;;4
-13;4;40073;U16;;Amps PhaseA (AphA);;1.0;0.0;;4
-14;4;40074;U16;;Amps PhaseB (AphB);;1.0;0.0;;4
-15;4;40075;U16;;Amps PhaseC (AphC);;1.0;0.0;;4
+12;4;40072;U16;;Amps (A);I_AC;1.0;0.0;;4
+13;4;40073;U16;;Amps PhaseA (AphA);I_AC_1;1.0;0.0;;4
+14;4;40074;U16;;Amps PhaseB (AphB);I_AC_2;1.0;0.0;;4
+15;4;40075;U16;;Amps PhaseC (AphC);I_AC_3;1.0;0.0;;4
 16;4;40076;U16;;A_SF;;1.0;0.0;;4
 17;4;40077;U16;;Phase Voltage AB (PPVphAB);U_AC_L1L2;1.0;0.0;;4
 18;4;40078;U16;;Phase Voltage BC (PPVphBC);U_AC_L2L3;1.0;0.0;;4
 19;4;40079;U16;;Phase Voltage CA (PPVphCA);U_AC_L3L1;1.0;0.0;;4
-20;4;40080;U16;;Phase Voltage AN (PhVphA);;1.0;0.0;;4
-21;4;40081;U16;;Phase Voltage BN (PhVphB);;1.0;0.0;;4
-22;4;40082;U16;;Phase Voltage CN (PhVphC);;1.0;0.0;;4
+20;4;40080;U16;;Phase Voltage AN (PhVphA);U_AC_1;1.0;0.0;;4
+21;4;40081;U16;;Phase Voltage BN (PhVphB);U_AC_2;1.0;0.0;;4
+22;4;40082;U16;;Phase Voltage CN (PhVphC);U_AC_3;1.0;0.0;;4
 23;4;40083;U16;;V_SF;;1.0;0.0;;4
-24;4;40084;U16;;Watts (W);;1.0;0.0;;4
+24;4;40084;U16;;Watts (W);P_AC;1.0;0.0;;4
 25;4;40085;U16;;W_SF;;1.0;0.0;;4
 26;4;40086;U16;;Hz;FREQ;1.0;0.0;;4
 27;4;40087;U16;;Hz_SF;;1.0;0.0;;4
-28;4;40088;U16;;VA;;1.0;0.0;;4
+28;4;40088;U16;;VA;S_AC;1.0;0.0;;4
 29;4;40089;U16;;VA_SF;;1.0;0.0;;4
 30;4;40090;U16;;VAr;Q_AC;1.0;0.0;;4
 31;4;40091;U16;;VAr_SF;;1.0;0.0;;4
@@ -34,11 +34,11 @@ modbusRTU;Other;PowerOne;ABB_TRIO-50.0-TM-OUTD_SunSpec_;;;;;;;
 33;4;40093;U16;;PF_SF;;1.0;0.0;;4
 34;4;40094;U16;;WattHours (WH);;1.0;0.0;;4
 35;4;40096;U16;;WH_SF;;1.0;0.0;;4
-36;4;40097;U16;;DC Amps (DCA);;1.0;0.0;;4
+36;4;40097;U16;;DC Amps (DCA);I_DC;1.0;0.0;;4
 37;4;40098;U16;;DCA_SF;;1.0;0.0;;4
 38;4;40099;U16;;DC Voltage (DCV);U_DC;1.0;0.0;;4
 39;4;40100;U16;;DCV_SF;;1.0;0.0;;4
-40;4;40101;U16;;DC Watts (DCW);;1.0;0.0;;4
+40;4;40101;U16;;DC Watts (DCW);P_DC;1.0;0.0;;4
 41;4;40102;U16;;DCW_SF;;1.0;0.0;;4
 42;4;40103;U16;;Cabinet Temperature (TmpCab);TEMP_INT;1.0;0.0;;4
 43;4;40104;U16;;Heat Sink Temperature (TmpSnk);;1.0;0.0;;4
@@ -133,7 +133,7 @@ modbusRTU;Other;PowerOne;ABB_TRIO-50.0-TM-OUTD_SunSpec_;;;;;;;
 132;4;40219;U16;;TmSrc;;1.0;0.0;;4
 133;4;40223;U16;;Tms;;1.0;0.0;;4
 134;4;40225;U16;;RtSt;;1.0;0.0;;4
-135;4;40226;U16;;Ris;;1.0;0.0;;4
+135;4;40226;U16;;Ris;R_ISO;1.0;0.0;;4
 136;4;40227;U16;;Ris_SF;;1.0;0.0;;4
 137;4;40228;U16;;ID;;1.0;0.0;;4
 138;4;40229;U16;;L;;1.0;0.0;;4
@@ -147,15 +147,15 @@ modbusRTU;Other;PowerOne;ABB_TRIO-50.0-TM-OUTD_SunSpec_;;;;;;;
 146;4;40237;U16;;WMaxLim_Ena;;1.0;0.0;;1
 147;4;40238;U16;;OutPFSet;CMD_PF;1.0;0.0;;1
 148;4;40239;U16;;OutPFSet_WinTms;;1.0;0.0;;1
-149;4;40240;U16;;OutPFSet_RvrtTms;;1.0;0.0;;1
-150;4;40241;U16;;OutPFSet_RmpTms;;1.0;0.0;;1
+149;4;40240;U16;;OutPFSet_RvrtTms;CMD_PF_REVERT_TIME_S;1.0;0.0;;1
+150;4;40241;U16;;OutPFSet_RmpTms;CMD_PF_RAMP_TIME_S;1.0;0.0;;1
 151;4;40242;U16;;OutPFSet_Ena;CMD_PF_ENA;1.0;0.0;;1
 152;4;40243;U16;;VArWMaxPct;;1.0;0.0;;1
 153;4;40244;U16;;VArMaxPct;;1.0;0.0;;1
 154;4;40245;U16;;VArAvalPct;;1.0;0.0;;1
 155;4;40246;U16;;VArPct_WinTms;;1.0;0.0;;1
-156;4;40247;U16;;VArPct_RvrtTms;;1.0;0.0;;1
-157;4;40248;U16;;VArPct_RmpTms;;1.0;0.0;;1
+156;4;40247;U16;;VArPct_RvrtTms;CMD_Q_REVERT_TIME_S;1.0;0.0;;1
+157;4;40248;U16;;VArPct_RmpTms;CMD_Q_RAMP_TIME_S;1.0;0.0;;1
 158;4;40249;U16;;VArPct_Mod;CMD_Q_MODE;1.0;0.0;;1
 159;4;40250;U16;;VArPct_Ena;CMD_Q_ENA;1.0;0.0;;1
 160;4;40251;U16;;WMaxLimPct_SF;;1.0;0.0;;4
@@ -915,9 +915,9 @@ modbusRTU;Other;PowerOne;ABB_TRIO-50.0-TM-OUTD_SunSpec_;;;;;;;
 914;4;41103;U16;;Ramp Rate Scale Factor (Rmp_SF);;1.0;0.0;;4
 915;4;41104;U16;;ID;;1.0;0.0;;4
 916;4;41105;U16;;L;;1.0;0.0;;4
-917;4;41106;U16;;Current Scale Factor (DCA_SF);I_DC;1.0;0.0;;4
+917;4;41106;U16;;Current Scale Factor (DCA_SF);;1.0;0.0;;4
 918;4;41107;U16;;Voltage Scale Factor (DCV_SF);;1.0;0.0;;4
-919;4;41108;U16;;Power Scale Factor (DCW_SF);P_DC;1.0;0.0;;4
+919;4;41108;U16;;Power Scale Factor (DCW_SF);;1.0;0.0;;4
 920;4;41109;U16;;Energy Scale Factor (DCWH_SF);;1.0;0.0;;4
 921;4;41110;U16;;Global Events (Evt);;1.0;0.0;;4
 922;4;41112;U16;;Number of Modules (N);;1.0;0.0;;4

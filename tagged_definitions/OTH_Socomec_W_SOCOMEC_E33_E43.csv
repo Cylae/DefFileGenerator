@@ -1,0 +1,74 @@
+modbusRTU;Other;Socomec;W_SOCOMEC_E33_E43;;;;;;;
+1;4;50514;U16;;Phase to Phase Voltage U12 (CT);;1.0;0.0;V;4
+2;4;50516;U16;;Phase to Phase Voltage U23 (CT);;1.0;0.0;V;4
+3;4;50518;U16;;Phase to Phase Voltage U31 (CT);;1.0;0.0;V;4
+4;4;50520;U16;;Simple voltage V1 (CT);;1.0;0.0;V;4
+5;4;50522;U16;;Simple voltage V2 (CT);;1.0;0.0;V;4
+6;4;50524;U16;;Simple voltage V3 (CT);;1.0;0.0;V;4
+7;4;50526;U16;;Frequency F(Not applicable) (CT);FREQ;1.0;0.0;V;0
+8;4;50528;U16;;Current I1 (CT);;1.0;0.0;mA;4
+9;4;50530;U16;;Current I2 (CT);;1.0;0.0;mA;4
+10;4;50532;U16;;Current I3 (CT);;1.0;0.0;mA;4
+11;4;50534;U16;;Neutral Current In (CT);;1.0;0.0;mA;4
+12;4;50536;U16;;(Sum)Active Power __-  P (CT);P_AC;1.0;0.0;kW;4
+13;4;50538;U16;;(Sum)Reactive Power __- Q (CT);Q_AC;1.0;0.0;kvar;4
+14;4;50540;U16;;(Sum)Apparent Power S (CT);S_AC;1.0;0.0;kVA;4
+15;4;50542;U16;;(Sum)Power Factor - leading et _ lagging PF (CT);PF;1.0;0.0;;4
+16;4;50544;U16;;Active Power phase 1 __- P1 (CT);P_AC_1;1.0;0.0;kW;4
+17;4;50546;U16;;Active Power phase 2 __- P2 (CT);P_AC_2;1.0;0.0;kW;4
+18;4;50548;U16;;Active Power phase 3 __- P3 (CT);P_AC_3;1.0;0.0;kW;4
+19;4;50550;U16;;Reactive Power phase 1 __- Q1 (CT);Q_AC_1;1.0;0.0;kvar;4
+20;4;50552;U16;;Reactive Power phase 2 __- Q2 (CT);Q_AC_2;1.0;0.0;kvar;4
+21;4;50554;U16;;Reactive Power phase 3 __- Q3 (CT);Q_AC_3;1.0;0.0;kvar;4
+22;4;50556;U16;;Apparent Power phase 1 S1 (CT);S_AC_1;1.0;0.0;kVA;4
+23;4;50558;U16;;Apparent Power phase 2 S2 (CT);S_AC_2;1.0;0.0;kVA;4
+24;4;50560;U16;;Apparent Power phase 3 S3 (CT);S_AC_3;1.0;0.0;kVA;4
+25;4;50562;U16;;Power Factor phase 1 - leading and _ lagging PF1 (CT);PF_1;1.0;0.0;;4
+26;4;50564;U16;;Power Factor phase 2 - leading and _ lagging PF2 (CT);PF_2;1.0;0.0;;4
+27;4;50566;U16;;Power Factor phase 3 - leading and _ lagging PF3 (CT);PF_3;1.0;0.0;;4
+28;4;50770;U16;;Total Positive Active Energy (no resetable) Ea_;E_TOT;1.0;0.0;kWh;4
+29;4;50772;U16;;Total Positive Reactive Energy (no resetable) Er _;;1.0;0.0;kvarh;4
+30;4;50774;U16;;Total Apparent Energy (no resetable) Es (Not applicable);;1.0;0.0;kVAh;4
+31;4;50776;U16;;Total Negative Active Energy (no resetable) Ea-;;1.0;0.0;kWh;4
+32;4;50778;U16;;Total Negative Reactive Energy (no resetable) Er- (Not Applicable);;1.0;0.0;kvarh;0
+33;4;50780;U16;;Partial Positive Active Energy Ea_;;1.0;0.0;kWh;4
+34;4;50782;U16;;Partial Positive Reactive Energy Er _;;1.0;0.0;kvarh;4
+35;4;50784;U16;;_Partial Apparent Energy Es;;1.0;0.0;kVAh;0
+36;4;50786;U16;;Partial Negative Active Energy Ea-;;1.0;0.0;kWh;4
+37;4;51078;U16;;Max_avg P_ (CT);;1.0;0.0;kW;4
+38;4;51281;U16;;Phase to Phase Voltage U12 (no CT);;1.0;0.0;V;4
+39;4;51282;U16;;Phase to Phase Voltage U23 (no CT);;1.0;0.0;V;4
+40;4;51283;U16;;Phase to Phase Voltage U31 (no CT);;1.0;0.0;V;4
+41;4;51284;U16;;Simple voltage V1 (no CT);;1.0;0.0;V;4
+42;4;51285;U16;;Simple voltage V2 (no CT);;1.0;0.0;V;4
+43;4;51286;U16;;Simple voltage V3 (no CT);;1.0;0.0;V;4
+44;4;51287;U16;;Frequency F (no CT);;1.0;0.0;Hz;0
+45;4;51288;U16;;Current I1 (no CT);;1.0;0.0;mA;2
+46;4;51289;U16;;Current I2 (no CT);;1.0;0.0;mA;2
+47;4;51290;U16;;Current I3 (no CT);;1.0;0.0;mA;2
+48;4;51291;U16;;Neutral Current In (no CT);;1.0;0.0;mA;2
+49;4;51292;U16;;(Sum)Active Power __-  P (no CT);;1.0;0.0;kW;2
+50;4;51293;U16;;(Sum)Reactive Power __- Q (no CT);;1.0;0.0;kvar;2
+51;4;51294;U16;;(Sum)Apparent power S (no CT);;1.0;0.0;kVA;2
+52;4;51295;U16;;(Sum)Power factor - leading and _ lagging PF (no CT);;1.0;0.0;;2
+53;4;51296;U16;;Active Power phase 1 __- P1 (no CT);;1.0;0.0;kW;2
+54;4;51297;U16;;Active Power phase 2 __- P2 (no CT);;1.0;0.0;kW;2
+55;4;51298;U16;;Active Power phase 3 __- P3 (no CT);;1.0;0.0;kW;2
+56;4;51299;U16;;Reactive Power phase 1 __- Q1 (no CT);;1.0;0.0;kvar;2
+57;4;51300;U16;;Reactive Power phase 2 __- Q2 (no CT);;1.0;0.0;kvar;2
+58;4;51301;U16;;Reactive Power phase 3 __- Q3 (no CT);;1.0;0.0;kvar;2
+59;4;51302;U16;;Apparent power phase 1 S1 (no CT);;1.0;0.0;kVA;2
+60;4;51303;U16;;Apparent power phase 2 S2 (no CT);;1.0;0.0;kVA;2
+61;4;51304;U16;;Apparent power phase 3 S3 (no CT);;1.0;0.0;kVA;2
+62;4;51305;U16;;Power Factor phase 1 - leading and _ lagging  PF1 (no CT);;1.0;0.0;;2
+63;4;51306;U16;;Power Factor phase 2 - leading and _ lagging  PF2 (no CT);;1.0;0.0;;2
+64;4;51307;U16;;Power Factor phase 3 - leading and _ lagging  PF3 (no CT);;1.0;0.0;;2
+65;4;51308;U16;;_System value I Sys _ (I1_I2_I3)_3 (no CT);;1.0;0.0;mA;0
+66;4;51309;U16;;_System value U Sys _ (U12_U23_U31)_3 (no CT);;1.0;0.0;V;0
+67;4;51310;U16;;_System value V Sys _ (V1_V2_V3)_3 (no CT);;1.0;0.0;V;0
+68;4;51311;U16;;Total Positive Active Energy (no resetable) Ea_ (no CT);;1.0;0.0;MWh;2
+69;4;51312;U16;;Total Positive Reactive Energy (no resetable) Er_ (no CT);;1.0;0.0;Mvarh;2
+70;4;51313;U16;;Total Negative Active Energy  (no resetable) Ea- (no CT);;1.0;0.0;MWh;2
+71;4;40576;U16;;Current I1 (no CT)_1;;1.0;0.0;mA;2
+72;4;40578;U16;;Current I2 (no CT)_1;;1.0;0.0;mA;2
+73;4;40580;U16;;Current I3 (no CT)_1;;1.0;0.0;mA;2

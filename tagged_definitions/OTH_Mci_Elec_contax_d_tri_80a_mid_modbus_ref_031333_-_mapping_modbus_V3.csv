@@ -1,4 +1,4 @@
-modbusRTU;Other;Mci Elec;contax d tri 80a mid modbus re;;;;;;;
+modbusRTU;Other;Mci Elec;contax_d_tri_80a_mid_modbus_re;;;;;;;
 1;4;0;U16;;Serial number;SERIAL;1.0;0.0;None;4
 2;4;2;U16;;Modbus ID;;1.0;0.0;None;1
 3;4;3;U16;;Baud Rate;;1.0;0.0;None;1
@@ -20,7 +20,7 @@ modbusRTU;Other;Mci Elec;contax d tri 80a mid modbus re;;;;;;;
 19;4;52;U16;;Total Power Factor;PF;1.0;0.0;kvar;4
 20;4;54;U16;;Power Factor;;1.0;0.0;kvar;4
 21;4;56;U16;;Power Factor;;1.0;0.0;kvar;4
-22;4;256;U16;;Total Active Energy;P_AC;1.0;0.0;kWh;4
+22;4;256;U16;;Total Active Energy;E_TOT;1.0;0.0;kWh;4
 23;4;258;U16;;L1 Total Active Energy;E_TOT_1;1.0;0.0;kWh;4
 24;4;260;U16;;L2 Total Active Energy;E_TOT_2;1.0;0.0;kWh;4
 25;4;262;U16;;L3 Total Active Energy;E_TOT_3;1.0;0.0;kWh;4
@@ -29,7 +29,7 @@ modbusRTU;Other;Mci Elec;contax d tri 80a mid modbus re;;;;;;;
 28;4;274;U16;;L1 Reverse Active Energy;;1.0;0.0;kWh;4
 29;4;276;U16;;L2 Reverse Active Energy;;1.0;0.0;kWh;4
 30;4;278;U16;;L3 Reverse Active Energy;;1.0;0.0;kWh;4
-31;4;280;U16;;Total Reactive Energy;E_TOT;1.0;0.0;kvarh;4
+31;4;280;U16;;Total Reactive Energy;;1.0;0.0;kvarh;4
 32;4;288;U16;;Forward Reactive Energy;;1.0;0.0;kvarh;4
 33;4;290;U16;;L1 Forward Reactive Energy;;1.0;0.0;kvarh;4
 34;4;292;U16;;L2 Forward Reactive Energy;;1.0;0.0;kvarh;4

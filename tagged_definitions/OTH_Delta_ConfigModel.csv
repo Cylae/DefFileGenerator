@@ -73,7 +73,7 @@ modbusRTU;Other;Delta;ConfigModel;;;;;;;
 72;4;881;U16;;Recovery_Time(s);;1.0;0.0;;4
 73;4;882;U16;;Lockin_Power(%);;1.0;0.0;;4
 74;4;883;U16;;Lockout_Power(%);;1.0;0.0;;4
-75;4;884;U16;;Lockin_Voltage(Vac);;1.0;0.0;;4
+75;4;884;U16;;Lockin_Voltage(Vac);U_AC_L1L2;1.0;0.0;;4
 76;4;885;U16;;Lockout_Voltage(Vac);;1.0;0.0;;4
 77;4;48551;U16;;Stop_Voltage(Vac);;1.0;0.0;;4
 78;4;48799;U16;;Const.Q_Percent(Q_24/7);;1.0;0.0;;4

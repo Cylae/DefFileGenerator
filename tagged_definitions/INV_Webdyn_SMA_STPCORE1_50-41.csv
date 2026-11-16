@@ -7,7 +7,7 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 6;3;30055;U32;;Manufacturer specification;MANUFACTURER;1.0;0.0;;4
 7;3;30057;U32;;Serial number_1;;1.0;0.0;;4
 8;3;30059;U32;;Software package;;1.0;0.0;;4
-9;3;30201;U32;;Status of the device;;1.0;0.0;;4
+9;3;30201;U32;;Status of the device;alarm;1.0;0.0;;4
 10;3;30535;U32;;Metering.DyWhOut_1_AC;;1.0;0.0;;4
 11;3;30537;U32;;Metering.DyWhOut_2_AC;;1.0;0.0;;4
 12;3;30539;U32;;Metering.DyWhOut_3_AC;;1.0;0.0;;4
@@ -58,8 +58,8 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 57;3;30793;U32;;Tension de reseau phase L3 contre L1;;0.01;0.0;;4
 58;3;30795;U32;;Somme courant toutes phases;;0.001;0.0;;4
 59;3;31221;I32;;Facteur de dephasage EEI;;0.001;0.0;;4
-60;3;30949;U32;;Facteur de decalage;;0.001;0.0;;4
-61;3;30823;U32;;Type d'excitation du cos phi;PF;1.0;0.0;;4
+60;3;30949;U32;;Facteur de decalage;PF;0.001;0.0;;4
+61;3;30823;U32;;Type d'excitation du cos phi;;1.0;0.0;;4
 62;3;31497;I32;;Puissance reactive;;1.0;0.0;;4
 63;3;30813;I32;;Puissance apparente;;1.0;0.0;;4
 64;3;30775;I32;;Puissance;P_AC;1.0;0.0;;4
@@ -103,4 +103,4 @@ ModbusTCP;Inverter;SMA;STP CORE 1 50-41;;;;;;;
 102;3;31215;I32;;Entree courant DC_12;;0.001;0.0;;4
 103;3;31217;I32;;Entree tension DC_6;;0.01;0.0;;4
 104;3;31219;I32;;Entree puissance DC_6;;1.0;0.0;;4
-105;3;30251;U32;;Etat de verrouillage;;1;0;;4
+105;3;30251;U32;;Etat de verrouillage;lock;1;0;;4

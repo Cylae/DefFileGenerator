@@ -54,8 +54,8 @@ modbusRTU;Other;MarsRenewable;MarsRenewable;;;;;;;
 53;4;96;U16;;PCS1 Branch 6 DC Current;;1.0;0.0;A;4
 54;4;5000;U16;;Bank1 Bank Voltage;;1.0;0.0;V;4
 55;4;5002;U16;;Bank1 Bank Current;;1.0;0.0;A;4
-56;4;5004;U16;;Bank1 Bank SOC;;1.0;0.0;%;4
-57;4;5006;U16;;Bank1 Bank SOH;;1.0;0.0;%;4
+56;4;5004;U16;;Bank1 Bank SOC;SOC;1.0;0.0;%;4
+57;4;5006;U16;;Bank1 Bank SOH;SOH;1.0;0.0;%;4
 58;4;5008;U16;;Bank1 Bank Insulation Resistance;R_ISO;1.0;0.0;Ohm;4
 59;4;5010;U16;;Bank1 Bank Available Charge Energy;;1.0;0.0;kWh;4
 60;4;5012;U16;;Bank1 Bank Available Discharge Energy;;1.0;0.0;kWh;4
@@ -85,7 +85,7 @@ modbusRTU;Other;MarsRenewable;MarsRenewable;;;;;;;
 84;4;15014;U16;;AC1 Dehumidification Low Point (Stop Point);;1.0;0.0;%;1
 85;4;15016;U16;;AC1 High Temperature Alarm Point;;1.0;0.0;°C;1
 86;4;15018;U16;;AC1 Low Temperature Alarm Point;;1.0;0.0;°C;1
-87;4;15020;U16;;AC1 Temperature;;1.0;0.0;°C;4
+87;4;15020;U16;;AC1 Temperature;TEMP;1.0;0.0;°C;4
 88;4;15022;U16;;AC1 Temperature Status [0=normal, 1=alarm];;1.0;0.0;;9
 89;4;15023;U16;;AC1 Voltage Status [0=normal, 1=alarm];;1.0;0.0;;9
 90;4;15024;U16;;AC1 Sensor Status [0=normal, 1=alarm];;1.0;0.0;;9

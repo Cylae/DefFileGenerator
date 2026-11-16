@@ -65,7 +65,7 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 64;4;264;U16;;Mid-point deviation of the battery bank;;0;0.0;%;4
 65;4;265;U16;;Consumed Amphours;;0;0.0;Ah;4
 66;4;266;U16;;State of charge;;0;0.0;%;4
-67;4;267;U16;;Alarm;;1;0.0;"0=No alarm;2=Alarm";9
+67;4;267;U16;;Alarm;R_ISO;1;0.0;"0=No alarm;2=Alarm";9
 68;4;268;U16;;Low voltage alarm;;1;0.0;"0=No alarm;2=Alarm";9
 69;4;269;U16;;High voltage alarm;;1;0.0;"0=No alarm;2=Alarm";9
 70;4;270;U16;;Low starter-voltage alarm;;1;0.0;"0=No alarm;2=Alarm";9
@@ -157,12 +157,12 @@ modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 156;4;825;U16;;Genset L3;;1;0.0;W;4
 157;4;840;U16;;Battery Voltage (System);;0;0.0;V DC;4
 158;4;841;U16;;Battery Current (System);;0;0.0;A DC;4
-159;4;842;U16;;Battery Power (System);;1;0.0;W;4
+159;4;842;U16;;Battery Power (System);P_DC;1;0.0;W;4
 160;4;843;U16;;Battery State of Charge (System);;1;0.0;%;4
 161;4;844;U16;;Battery state (System);;1;0.0;"0=idle;1=charging;2=discharging";4
 162;4;845;U16;;Battery Consumed Amphours (System);;0;0.0;Ah;4
 163;4;846;U16;;Battery Time to Go (System);;0;0.0;s;4
-164;4;850;U16;;PV - DC-coupled power;P_DC;1;0.0;W;4
+164;4;850;U16;;PV - DC-coupled power;;1;0.0;W;4
 165;4;851;U16;;PV - DC-coupled current;;0;0.0;A DC;4
 166;4;855;U16;;Charger power;;1;0.0;W;4
 167;4;860;U16;;DC System Power;;1;0.0;W;4

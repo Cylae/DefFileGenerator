@@ -66,7 +66,7 @@ Modbus;Logger;MarsRenewable;LocalController V7.0 Unit1 - Single element;0;;;;;;
 65;4;15014;F32;;1#AC - Dehumidification Low Point (Stop Point);;1;0;;4
 66;4;15016;F32;;1#AC - High Temperature Alarm Point;TEMP;1;0;Degr.Celsius;4
 67;4;15018;F32;;1#AC - Low Temperature Alarm Point;;1;0;Degr.Celsius;4
-68;4;15020;F32;;1#AC - Temperature;;1;0;Degr.Celsius;4
+68;4;15020;F32;;1#AC - Temperature;TEMP_INT;1;0;Degr.Celsius;4
 69;4;15022;U16;;1#AC - Temperature Status;;1;0;;4
 70;4;15023;U16;;1#AC - Voltage Status;;1;0;;4
 71;4;15024;U16;;1#AC - Sensor Status;;1;0;;4

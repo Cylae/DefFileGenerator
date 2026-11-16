@@ -13,15 +13,15 @@ modbusRTU;Inverter;SMA;SMA_STPX_V03_02_07_R;;;;;;;
 12;3;30215;U32;;Mesure d?‚limination des erreurs;;1.000000;0.000000;;4
 13;3;30217;U32;;Relais/Contacteur r‚seau;;1.000000;0.000000;;4
 14;3;30219;U32;;Cause de la r‚duction de puissance;;1.000000;0.000000;;4
-15;3;30225;U32;;R‚sistance d?isolement;;1.000000;0.000000;Ohm;4
-16;3;30231;U32;;Puissance active assign‚e WMaxOutRtg;;1.000000;0.000000;W;4
+15;3;30225;U32;;R‚sistance d?isolement;R_ISO;1.000000;0.000000;Ohm;4
+16;3;30231;U32;;Puissance active assign‚e WMaxOutRtg;P_AC;1.000000;0.000000;W;4
 17;3;30233;U32;;Lim. de puiss. active r‚gl‚e_RO;;1.000000;0.000000;W;4
 18;3;30235;U32;;Etat du mode de sauvegarde;;1.000000;0.000000;;4
 19;3;30247;U32;;Num‚ro d?‚v‚nement actuel pour fabricant;;1.000000;0.000000;;4
 20;3;30251;U32;;�tat de verrouillage;;1.000000;0.000000;;4
-21;3;30513;U64;;Rendement total_0;;1.000000;0.000000;Wh;4
+21;3;30513;U64;;Rendement total_0;E_TOT;1.000000;0.000000;Wh;4
 22;3;30513;U64;;Rendement total_2;;1.000000;0.000000;Wh;4
-23;3;30521;U64;;Temps de service_0;;1.000000;0.000000;s;4
+23;3;30521;U64;;Temps de service_0;TOT;1.000000;0.000000;s;4
 24;3;30525;U64;;Temps d?injection_1;;1.000000;0.000000;s;4
 25;3;30529;U32;;Rendement total_1;;1.000000;0.000000;Wh;4
 26;3;30529;U32;;Rendement total_3;;1.000000;0.000000;Wh;4
@@ -30,13 +30,13 @@ modbusRTU;Inverter;SMA;SMA_STPX_V03_02_07_R;;;;;;;
 29;3;30559;U32;;Nombre ‚v‚nements pour utilisateur_0;;1.000000;0.000000;;4
 30;3;30561;U32;;Nombre ‚v‚nements pour installateur_1;;1.000000;0.000000;;4
 31;3;30599;U32;;Nombre de connexions au r‚seau;;1.000000;0.000000;;4
-32;3;30775;I32;;Puissance;P_AC;1.000000;0.000000;W;4
+32;3;30775;I32;;Puissance;;1.000000;0.000000;W;4
 33;3;30777;I32;;Puissance L1;;1.000000;0.000000;W;4
 34;3;30779;I32;;Puissance L2;;1.000000;0.000000;W;4
 35;3;30781;I32;;Puissance L3;;1.000000;0.000000;W;4
-36;3;30783;U32;;Tension du r‚seau phase L1;;0.010000;0.000000;V;4
-37;3;30785;U32;;Tension du r‚seau phase L2;;0.010000;0.000000;V;4
-38;3;30787;U32;;Tension du r‚seau phase L3;;0.010000;0.000000;V;4
+36;3;30783;U32;;Tension du r‚seau phase L1;U_AC_1;0.010000;0.000000;V;4
+37;3;30785;U32;;Tension du r‚seau phase L2;U_AC_2;0.010000;0.000000;V;4
+38;3;30787;U32;;Tension du r‚seau phase L3;U_AC_3;0.010000;0.000000;V;4
 39;3;30789;U32;;Tension di r‚seau entre phase L1 et L2;;0.010000;0.000000;V;4
 40;3;30791;U32;;Tension de r‚seau phase L2 contre L3;;0.010000;0.000000;V;4
 41;3;30793;U32;;Tension de r‚seau phase L3 contre L1;;0.010000;0.000000;V;4
@@ -65,9 +65,9 @@ modbusRTU;Inverter;SMA;SMA_STPX_V03_02_07_R;;;;;;;
 64;3;30921;I32;;Consigne de puissance r‚active manuelle avec puissance active nulle_0;;1.000000;0.000000;VAr;4
 65;3;30923;I32;;Consigne de puissance r‚active manuelle avec puissance active nulle_1;;0.100000;0.000000;;4
 66;3;30949;U32;;Facteur de d‚calage;;0.001000;0.000000;;4
-67;3;30963;I32;;Entr‚e courant DC_1;;0.001000;0.000000;A;4
-68;3;30965;I32;;Entr‚e tension DC_1;;0.010000;0.000000;V;4
-69;3;30967;I32;;Entr‚e puissance DC_1;;1.000000;0.000000;W;4
+67;3;30963;I32;;Entr‚e courant DC_1;I_DC;0.001000;0.000000;A;4
+68;3;30965;I32;;Entr‚e tension DC_1;U_DC;0.010000;0.000000;V;4
+69;3;30967;I32;;Entr‚e puissance DC_1;P_DC;1.000000;0.000000;W;4
 70;3;30969;I32;;Entr‚e courant DC_2;;0.001000;0.000000;A;4
 71;3;30971;I32;;Entr‚e tension DC_2;;0.010000;0.000000;V;4
 72;3;30973;I32;;Entr‚e puissance DC_2;;1.000000;0.000000;W;4
@@ -83,7 +83,7 @@ modbusRTU;Inverter;SMA;SMA_STPX_V03_02_07_R;;;;;;;
 82;3;31217;I32;;Entr‚e tension DC_4;;0.010000;0.000000;V;4
 83;3;31219;I32;;Entr‚e puissance DC_4;;1.000000;0.000000;W;4
 84;3;31221;I32;;Facteur de d‚phasage EEI;;0.001000;0.000000;;4
-85;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;;0.010000;0.000000;pct;4
+85;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;WIND_SPEED;0.010000;0.000000;pct;4
 86;3;31245;U32;;Limitation de puissance PV interne;;0.010000;0.000000;pct;4
 87;3;31247;I32;;Courant de d‚faut;;0.001000;0.000000;A;4
 88;3;31391;U32;;�tat batterie;;1.000000;0.000000;;4

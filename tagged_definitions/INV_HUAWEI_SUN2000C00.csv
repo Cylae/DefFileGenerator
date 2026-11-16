@@ -8,7 +8,7 @@ ModbusRTU;Inverter;Huawei;Sun2000;;;;;;;
 7;3;40012;U16;;OVP protect 10min.;;0.01;0.0;V;4
 8;3;40013;U32;;OVP time 10min;;1.0;0.0;ms;4
 9;3;40022;U16;;ISO detect setting;;0.001;0.0;MOhms;4
-10;3;40023;U16;;Grid Voltage-Unbalance setting;;1.0;0.0;%;4
+10;3;40023;U16;;Grid Voltage-Unbalance setting;U_AC_L1L2;1.0;0.0;%;4
 11;3;40051;U16;;Enable LVRT function (available for VDE-AR-N-4105);;1.0;0.0;;4
 12;3;40052;U16;;Enable islanding detection;;1.0;0.0;;4
 13;3;40053;U16;;Soft-start time;;1.0;0.0;Sec;4
@@ -84,14 +84,14 @@ ModbusRTU;Inverter;Huawei;Sun2000;;;;;;;
 83;3;40503;I16;;PV4 Input voltage;U_DC_STRING_4;0.1;0.0;V;4
 84;3;40504;I16;;PV5 Input voltage;U_DC_STRING_5;0.1;0.0;V;4
 85;3;40505;I16;;PV6 Input voltage;U_DC_STRING_6;0.1;0.0;V;4
-86;3;40506;I16;;PV1 Input current;I_DC_MPPT_1;0.01;0.0;A;4
-87;3;40507;I16;;PV2 Input current;I_DC_MPPT_2;0.01;0.0;A;4
-88;3;40508;I16;;PV3 Input current;I_DC_MPPT_3;0.01;0.0;A;4
-89;3;40509;I16;;PV4 Input current;I_DC_MPPT_4;0.01;0.0;A;4
-90;3;40510;I16;;PV5 Input current;I_DC_MPPT_5;0.01;0.0;A;4
-91;3;40511;I16;;PV6 Input current;I_DC_MPPT_6;0.01;0.0;A;4
+86;3;40506;I16;;PV1 Input current;I_DC_STRING_1;0.01;0.0;A;4
+87;3;40507;I16;;PV2 Input current;I_DC_STRING_2;0.01;0.0;A;4
+88;3;40508;I16;;PV3 Input current;I_DC_STRING_3;0.01;0.0;A;4
+89;3;40509;I16;;PV4 Input current;I_DC_STRING_4;0.01;0.0;A;4
+90;3;40510;I16;;PV5 Input current;I_DC_STRING_5;0.01;0.0;A;4
+91;3;40511;I16;;PV6 Input current;I_DC_STRING_6;0.01;0.0;A;4
 92;3;40525;I32;;Output active power;;0.001;0.0;kW;4
-93;3;40527;I16;;Grid AB Line Voltage;U_AC_L1L2;0.01;0.0;V;4
+93;3;40527;I16;;Grid AB Line Voltage;;0.01;0.0;V;4
 94;3;40528;I16;;Grid BC Line Voltage;U_AC_L2L3;0.01;0.0;V;4
 95;3;40529;I16;;Grid CA Line Voltage;U_AC_L3L1;0.01;0.0;V;4
 96;3;40532;I16;;Output power factor;PF;0.001;0.0;;4
@@ -104,7 +104,7 @@ ModbusRTU;Inverter;Huawei;Sun2000;;;;;;;
 103;3;40573;I16;;Grid B Line Current;;0.01;0.0;A;4
 104;3;40574;I16;;Grid C Line Current;;0.01;0.0;A;4
 105;3;40575;U32;;Reserved;;1.0;0.0;;0
-106;3;40577;U16;;ACV of phase A;;0.01;0.0;V;4
+106;3;40577;U16;;ACV of phase A;I_AC;0.01;0.0;V;4
 107;3;40578;U16;;ACV of phase B;;0.01;0.0;V;4
 108;3;40579;U16;;ACV of phase C;;0.01;0.0;V;4
 109;3;40686;U32;;MPPT1 DC Power;P_DC_MPPT_1;0.001;0.0;kW;4

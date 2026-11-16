@@ -38,17 +38,17 @@ ModbusRTU;Inverter;Solis;GENERIC;;;;;;;
 37;4;3042;U16;;Grid Frequency;FREQ;0.01;0.0;Hz;4
 38;4;3043;U16;;Inverter status;;1.0;0.0;;8
 39;4;3044;I32;;Limit active power adjustement rated power;P_RATED;1.0;0.0;W;4
-40;4;3046;I32;;Limit reactive power adjustment rated power;;1.0;0.0;Var;4
-41;4;3048;U16;;Inverter control word;;1.0;0.0;;4
-42;4;3049;U16;;Power limit actual value;;1.0;0.0;%;4
-43;4;3050;I16;;Actual adjust value of power factor;;0.001;0.0;;4
-44;4;3051;I16;;Actual adjust value of power factor_1;;0.001;0.0;;4
-45;4;3052;I16;;Reactive power limitation;;1.0;0.0;%;4
+40;4;3046;I32;;Limit reactive power adjustment rated power;NominalQ;1.0;0.0;Var;4
+41;4;3048;U16;;Inverter control word;ControlRead;1.0;0.0;;4
+42;4;3049;U16;;Power limit actual value;CmdPwrPctRead;1.0;0.0;%;4
+43;4;3050;I16;;Actual adjust value of power factor;PF1Read;0.001;0.0;;4
+44;4;3051;I16;;Actual adjust value of power factor_1;PF2Read;0.001;0.0;;4
+45;4;3052;I16;;Reactive power limitation;QPctRead;1.0;0.0;%;4
 46;4;3053;U16;;Country standard code;;1.0;0.0;;4
 47;4;3054;U16;;Power curve code;;1.0;0.0;;4
 48;4;3055;I32;;Reactive power;Q_AC;1.0;0.0;Var;4
 49;4;3057;I32;;Apparent power;S_AC;1.0;0.0;VA;4
-50;4;3059;I16;;Real-time power factor;;1.0;0.0;;4
+50;4;3059;I16;;Real-time power factor;PFRead;1.0;0.0;;4
 51;4;3060;U16;;Inverter SN_1;SERIAL;1.0;0.0;;4
 52;4;3061;U16;;Inverter SN_2;;1.0;0.0;;4
 53;4;3062;U16;;Inverter SN_3;;1.0;0.0;;4
@@ -67,7 +67,7 @@ ModbusRTU;Inverter;Solis;GENERIC;;;;;;;
 66;4;3085;U16;;Leakage current threshold;;1.0;0.0;mA;4
 67;4;3086;U16;;PV ISO threshold;;1.0;0.0;Kohm;4
 68;4;3089;U16;;Power limit switch;CMD_P_AC_SET_ABS;1.0;0.0;;1
-69;4;3090;U16;;Reactive power switch;CMD_Q_ENA;1.0;0.0;;1
+69;4;3090;U16;;Reactive power switch;;1.0;0.0;;4
 70;4;3091;U16;;Groudning resistance;;1.0;0.0;Kohm;4
 71;4;3092;I16;;AC NTC (IGBT) Module Temperature;TEMP_CELL;0.1;0.0;Deg.Celsius;4
 72;4;3094;U16;;Fault word 00;;1.0;0.0;;1
@@ -376,7 +376,7 @@ ModbusRTU;Inverter;Solis;GENERIC;;;;;;;
 375;3;3053;I16;;PF Setting 02;;0.01;0.0;;4
 376;3;3067;U16;;Grid standard;;1.0;0.0;;4
 377;3;3068;U16;;Power-off saving function;;1.0;0.0;;4
-378;3;3069;U16;;Power limitation switch;CMD_P_ENA;1.0;0.0;;1
+378;3;3069;U16;;Power limitation switch;;1.0;0.0;;4
 379;3;3070;U16;;Reactive power switch_1;;1.0;0.0;;4
 380;3;3072;U16;;Working mode_1;;1.0;0.0;;4
 381;3;3076;U16;;AFCI ON/OFF;;1.0;0.0;;4

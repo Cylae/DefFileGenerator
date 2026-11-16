@@ -44,9 +44,9 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 43;3;49;U16;;System Min;;1.000000;0.000000;;4
 44;3;50;U16;;System Sec;;1.000000;0.000000;;4
 45;3;51;U16;;System Weekly;;1.000000;0.000000;;4
-46;3;52;U16;;Grid voltage low limit protect;;0.100000;0.000000;V;4
+46;3;52;U16;;Grid voltage low limit protect;U_AC_L1L2;0.100000;0.000000;V;4
 47;3;53;U16;;Grid voltage high limit protect;;0.100000;0.000000;V;4
-48;3;54;U16;;Grid frequency low limit protect;;0.010000;0.000000;Hz;4
+48;3;54;U16;;Grid frequency low limit protect;FREQ;0.010000;0.000000;Hz;4
 49;3;55;U16;;Grid high frequency limit protect;;0.010000;0.000000;Hz;4
 50;3;56;U16;;Grid voltage low limit protect 2;;0.100000;0.000000;V;4
 51;3;57;U16;;Grid voltage high limit protect 2;;0.100000;0.000000;V;4
@@ -95,11 +95,11 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 94;3;104;U16;;PF adjust value 4;;1.000000;0.000000;;4
 95;3;105;U16;;PF adjust value 5;;1.000000;0.000000;;4
 96;3;106;U16;;PF adjust value 6;;1.000000;0.000000;;4
-97;3;107;U16;;QV Reactive Power delay time;;1.000000;0.000000;s;4
+97;3;107;U16;;QV Reactive Power delay time;Q_AC;1.000000;0.000000;s;4
 98;3;108;U16;;Overfrequency derating delay time;;50.000000;0.000000;ms;4
 99;3;109;U16;;Qmax for Q(V) curve;;0.100000;0.000000;'%;4
 100;3;110;U16;;PF limit line point 1 load percent;;1.000000;0.000000;'%;4
-101;3;111;U16;;PF limit line point 1 power factor;;1.000000;0.000000;;4
+101;3;111;U16;;PF limit line point 1 power factor;PF;1.000000;0.000000;;4
 102;3;112;U16;;PF limit line point 2 load percent;;1.000000;0.000000;'%;4
 103;3;113;U16;;PF limit line point 2 power factor;;1.000000;0.000000;;4
 104;3;114;U16;;PF limit line point 3 load percent;;1.000000;0.000000;'%;4
@@ -112,7 +112,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 111;3;121;U16;;Inverter Module 1;;1.000000;0.000000;;4
 112;3;122;U16;;Export Limit En/dis;;1.000000;0.000000;;4
 113;3;123;I16;;Export Limit Power Rate;;0.100000;0.000000;'%;4
-114;3;124;U16;;Traker Model;;1.000000;0.000000;;4
+114;3;124;U16;;Traker Model;MODEL;1.000000;0.000000;;4
 115;3;137;U32;;Reactive Value;;0.100000;0.000000;Var;4
 116;3;139;U16;;Reactive Output Priority Enable;CMD_Q_ENA;1.000000;0.000000;;1
 117;3;140;U16;;Reactive Value(Ratio);;0.100000;0.000000;;4
@@ -168,7 +168,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 167;3;203;U16;;PID Voltage Option;;1.000000;0.000000;V;4
 168;3;209_30;STRING;;New Serial Number;;1.000000;0.000000;;4
 169;3;229;U16;;Energy Adjuste;;0.100000;0.000000;'%;4
-170;3;304;U16;;uwAnti Backflow Fail Power limit;;0.100000;0.000000;'%;4
+170;3;304;U16;;uwAnti Backflow Fail Power limit;CMD_P_AC_SET_ABS;0.100000;0.000000;'%;1
 171;3;305;U16;;Reactive loading speed;;1.000000;0.000000;'%;4
 172;3;306;U16;;Parallel Anti-Backflow Enable;;1.000000;0.000000;;4
 173;3;307;U16;;Anti-Backflow Failure Response Time;;1.000000;0.000000;s;4
@@ -210,9 +210,9 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 209;3;343;I16;;User QP function charge Q3 set point;;0.100000;0.000000;'%;4
 210;3;344;U16;;Freq Derating Recover Low Point;;0.010000;0.000000;Hz;4
 211;3;345;U16;;Freq Increasing Recover High Point;;0.010000;0.000000;Hz;4
-212;3;532;I16;;Turn Off Unload Speed;;0.100000;0.000000;'%;4
+212;3;532;I16;;Turn Off Unload Speed;CMD_OFF;0.100000;0.000000;'%;1
 213;3;533;U16;;Limit Device;;1.000000;0.000000;;4
-214;3;534;U16;;Power Set On DC Source Mode;;1.000000;0.000000;;4
+214;3;534;U16;;Power Set On DC Source Mode;P_DC;1.000000;0.000000;;4
 215;3;535;U16;;Over Uder Freq Grade 1 Enable;;1.000000;0.000000;;4
 216;3;536;U16;;Country Set;;1.000000;0.000000;;4
 217;3;538;U16;;Interlock Enable;;1.000000;0.000000;;4
@@ -227,7 +227,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 226;3;547;U16;;Over Threshold Value Max Cnt;;1.000000;0.000000;;4
 227;3;548;U16;;AFCI Scan Type Enable;;1.000000;0.000000;;4
 228;3;549;U16;;Power Volt Stop Mode Enable;;1.000000;0.000000;;4
-229;3;550;U16;;Voltage Active Power Recovery Time;;20.000000;0.000000;ms;4
+229;3;550;U16;;Voltage Active Power Recovery Time;P_AC;20.000000;0.000000;ms;4
 230;3;551;I16;;Voltage active cut-off;;1.000000;0.000000;;4
 231;3;552;U16;;QV Time Exponent;;1.000000;0.000000;;4
 232;3;553;U16;;Voltage active V1 point;;1.000000;0.000000;;4
@@ -337,7 +337,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 336;3;3098;U16;;DTC;;1.000000;0.000000;;4
 337;3;3099_4;STRING;;DSP software code;;1.000000;0.000000;;4
 338;3;3101_2;STRING;;DSP Software Version;;1.000000;0.000000;;4
-339;3;3102;U16;;Bus Voltage Ref;;1.000000;0.000000;;4
+339;3;3102;U16;;Bus Voltage Ref;U_DC;1.000000;0.000000;;4
 340;3;3103;U16;;BDC monitoring software version;;1.000000;0.000000;;4
 341;3;3104;U16;;BDC hardware software version;;1.000000;0.000000;;4
 342;3;3105;U16;;BMS software version information;;1.000000;0.000000;;4
@@ -350,48 +350,48 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 349;3;3113;U16;;BDC Protocol Ver;;1.000000;0.000000;;4
 350;3;3114;U16;;BDC Certification Ver;;1.000000;0.000000;;4
 351;4;0;U16;;Inverter Status;;1.000000;0.000000;;4
-352;4;1;U32;;Input power;P_DC;0.100000;0.000000;W;4
-353;4;3;U16;;PV1 voltage;;0.100000;0.000000;V;4
-354;4;4;U16;;PV1 input current;;0.100000;0.000000;A;4
-355;4;5;U32;;PV1 input power;;0.100000;0.000000;W;4
-356;4;7;U16;;PV2 voltage;;0.100000;0.000000;V;4
-357;4;8;U16;;PV2 input current;;0.100000;0.000000;A;4
-358;4;9;U32;;PV2 input power;;0.100000;0.000000;W;4
-359;4;11;U16;;PV3 voltage;;0.100000;0.000000;V;4
-360;4;12;U16;;PV3 input current;;0.100000;0.000000;A;4
-361;4;13;U32;;PV3 input power;;0.100000;0.000000;W;4
-362;4;15;U16;;PV4 voltage;;0.100000;0.000000;V;4
-363;4;16;U16;;PV4 input current;;0.100000;0.000000;A;4
-364;4;17;U32;;PV4 input power;;0.100000;0.000000;W;4
-365;4;19;U16;;PV5 voltage;;0.100000;0.000000;V;4
-366;4;20;U16;;PV5 input current;;0.100000;0.000000;A;4
-367;4;21;U32;;PV5 input power;;0.100000;0.000000;W;4
-368;4;23;U16;;PV6 voltage;;0.100000;0.000000;V;4
-369;4;24;U16;;PV6 input current;;0.100000;0.000000;A;4
-370;4;25;U32;;PV6 input power;;0.100000;0.000000;W;4
-371;4;27;U16;;PV7 voltage;;0.100000;0.000000;V;4
-372;4;28;U16;;PV7 input current;;0.100000;0.000000;A;4
-373;4;29;U32;;PV7 input power;;0.100000;0.000000;W;4
-374;4;31;U16;;PV8 voltage;;0.100000;0.000000;V;4
-375;4;32;U16;;PV8 input current;;0.100000;0.000000;A;4
-376;4;33;U32;;PV8 input power;;0.100000;0.000000;W;4
+352;4;1;U32;;Input power;;0.100000;0.000000;W;4
+353;4;3;U16;;PV1 voltage;U_DC_STRING_1;0.100000;0.000000;V;4
+354;4;4;U16;;PV1 input current;I_DC_STRING_1;0.100000;0.000000;A;4
+355;4;5;U32;;PV1 input power;P_DC_MPPT_1;0.100000;0.000000;W;4
+356;4;7;U16;;PV2 voltage;U_DC_STRING_2;0.100000;0.000000;V;4
+357;4;8;U16;;PV2 input current;I_DC_STRING_2;0.100000;0.000000;A;4
+358;4;9;U32;;PV2 input power;P_DC_MPPT_2;0.100000;0.000000;W;4
+359;4;11;U16;;PV3 voltage;U_DC_STRING_3;0.100000;0.000000;V;4
+360;4;12;U16;;PV3 input current;I_DC_STRING_3;0.100000;0.000000;A;4
+361;4;13;U32;;PV3 input power;P_DC_MPPT_3;0.100000;0.000000;W;4
+362;4;15;U16;;PV4 voltage;U_DC_STRING_4;0.100000;0.000000;V;4
+363;4;16;U16;;PV4 input current;I_DC_STRING_4;0.100000;0.000000;A;4
+364;4;17;U32;;PV4 input power;P_DC_MPPT_4;0.100000;0.000000;W;4
+365;4;19;U16;;PV5 voltage;U_DC_STRING_5;0.100000;0.000000;V;4
+366;4;20;U16;;PV5 input current;I_DC_STRING_5;0.100000;0.000000;A;4
+367;4;21;U32;;PV5 input power;P_DC_MPPT_5;0.100000;0.000000;W;4
+368;4;23;U16;;PV6 voltage;U_DC_STRING_6;0.100000;0.000000;V;4
+369;4;24;U16;;PV6 input current;I_DC_STRING_6;0.100000;0.000000;A;4
+370;4;25;U32;;PV6 input power;P_DC_MPPT_6;0.100000;0.000000;W;4
+371;4;27;U16;;PV7 voltage;U_DC_STRING_7;0.100000;0.000000;V;4
+372;4;28;U16;;PV7 input current;I_DC_STRING_7;0.100000;0.000000;A;4
+373;4;29;U32;;PV7 input power;P_DC_MPPT_7;0.100000;0.000000;W;4
+374;4;31;U16;;PV8 voltage;U_DC_STRING_8;0.100000;0.000000;V;4
+375;4;32;U16;;PV8 input current;I_DC_STRING_8;0.100000;0.000000;A;4
+376;4;33;U32;;PV8 input power;P_DC_MPPT_8;0.100000;0.000000;W;4
 377;4;35;U32;;Outputpower;;0.100000;0.000000;W;4
-378;4;37;U16;;Gridfrequency;FREQ;0.010000;0.000000;Hz;4
-379;4;38;U16;;Three/single phase grid voltage;;0.100000;0.000000;V;4
-380;4;39;U16;;Three/single phase grid output current;;0.100000;0.000000;A;4
+378;4;37;U16;;Gridfrequency;;0.010000;0.000000;Hz;4
+379;4;38;U16;;Three/single phase grid voltage;U_AC_1;0.100000;0.000000;V;4
+380;4;39;U16;;Three/single phase grid output current;I_AC_1;0.100000;0.000000;A;4
 381;4;40;U32;;Three/single phase grid output watt VA;S_AC;0.100000;0.000000;VA;4
-382;4;42;U16;;Three phase grid voltage 2;;0.100000;0.000000;V;4
-383;4;43;U16;;Three phase grid output current 2;;0.100000;0.000000;A;4
+382;4;42;U16;;Three phase grid voltage 2;U_AC_2;0.100000;0.000000;V;4
+383;4;43;U16;;Three phase grid output current 2;I_AC_2;0.100000;0.000000;A;4
 384;4;44;U32;;Three phase grid output power 2;;0.100000;0.000000;VA;4
-385;4;46;U16;;Three phase grid voltage 3;;0.100000;0.000000;V;4
-386;4;47;U16;;Three phase grid output current 3;;0.100000;0.000000;A;4
+385;4;46;U16;;Three phase grid voltage 3;U_AC_3;0.100000;0.000000;V;4
+386;4;47;U16;;Three phase grid output current 3;I_AC_3;0.100000;0.000000;A;4
 387;4;48;U32;;Three phase grid output power 3;;0.100000;0.000000;VA;4
 388;4;50;U16;;Three phase grid voltage (RS)_1;;0.100000;0.000000;V;4
 389;4;51;U16;;Three phase grid voltage (ST)_1;;0.100000;0.000000;V;4
 390;4;52;U16;;Three phase grid voltage (TR)_1;;0.100000;0.000000;V;4
-391;4;53;U32;;Today generate energy;;0.100000;0.000000;kWh;4
-392;4;55;U32;;Total generate energy;;0.100000;0.000000;kWh;4
-393;4;57;U32;;Work time total;;0.500000;0.000000;s;4
+391;4;53;U32;;Today generate energy;E_DAY;0.100000;0.000000;kWh;4
+392;4;55;U32;;Total generate energy;E_TOT;0.100000;0.000000;kWh;4
+393;4;57;U32;;Work time total;TOT;0.500000;0.000000;s;4
 394;4;59;U32;;PV1 Energy today;;0.100000;0.000000;kWh;4
 395;4;61;U32;;PV1 Energy total;;0.100000;0.000000;kWh;4
 396;4;63;U32;;PV2 Energy today;;0.100000;0.000000;kWh;4
@@ -409,7 +409,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 408;4;87;U32;;PV8 Energy today;;0.100000;0.000000;kWh;4
 409;4;89;U32;;PV8 Energy total;;0.100000;0.000000;kWh;4
 410;4;91;U32;;PV  Energy total;;0.100000;0.000000;kWh;4
-411;4;93;U16;;Temp1;;0.100000;0.000000;°C;4
+411;4;93;U16;;Temp1;TEMP_INT;0.100000;0.000000;°C;4
 412;4;94;U16;;Temp2;;0.100000;0.000000;°C;4
 413;4;95;U16;;Temp3;;0.100000;0.000000;°C;4
 414;4;97;U16;;BatVolt_DSP;;0.100000;0.000000;V;4
@@ -432,7 +432,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 431;4;116;U32;;AC charge Power;;0.100000;0.000000;kWh;4
 432;4;118;U16;;Priority;;1.000000;0.000000;;4
 433;4;119;U16;;Battery Type;;1.000000;0.000000;;4
-434;4;120;U16;;AutoProofreadC MD;MODEL;1.000000;0.000000;;4
+434;4;120;U16;;AutoProofreadC MD;;1.000000;0.000000;;4
 435;4;125;U16;;PID PV1+ Voltage;;0.100000;0.000000;V;4
 436;4;126;I16;;PID PV1+ Current;;0.100000;0.000000;mA;4
 437;4;127;U16;;PID PV2+ Voltage;;0.100000;0.000000;V;4
@@ -450,22 +450,22 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 449;4;139;U16;;PID PV8+ Voltage;;0.100000;0.000000;V;4
 450;4;140;I16;;PID PV8+ Current;;0.100000;0.000000;mA;4
 451;4;141_0_8;BITS;;PID Status : PID Working Status;;1.000000;0.000000;;4
-452;4;142;U16;;PV String1 voltage;U_DC_STRING_1;0.100000;0.000000;V;4
-453;4;143;I16;;PV String1 current;I_DC_STRING_1;0.100000;0.000000;A;4
-454;4;144;U16;;PV String2 voltage;U_DC_STRING_2;0.100000;0.000000;V;4
-455;4;145;I16;;PV String2 current;I_DC_STRING_2;0.100000;0.000000;A;4
-456;4;146;U16;;PV String3 voltage;U_DC_STRING_3;0.100000;0.000000;V;4
-457;4;147;I16;;PV String3 current;I_DC_STRING_3;0.100000;0.000000;A;4
-458;4;148;U16;;PV String4 voltage;U_DC_STRING_4;0.100000;0.000000;V;4
-459;4;149;I16;;PV String4 current;I_DC_STRING_4;0.100000;0.000000;A;4
-460;4;150;U16;;PV String5 voltage;U_DC_STRING_5;0.100000;0.000000;V;4
-461;4;151;I16;;PV String5 current;I_DC_STRING_5;0.100000;0.000000;A;4
-462;4;152;U16;;PV String6 voltage;U_DC_STRING_6;0.100000;0.000000;V;4
-463;4;153;I16;;PV String6 current;I_DC_STRING_6;0.100000;0.000000;A;4
-464;4;154;U16;;PV String7 voltage;U_DC_STRING_7;0.100000;0.000000;V;4
-465;4;155;I16;;PV String7 current;I_DC_STRING_7;0.100000;0.000000;A;4
-466;4;156;U16;;PV String8 voltage;U_DC_STRING_8;0.100000;0.000000;V;4
-467;4;157;I16;;PV String8 current;I_DC_STRING_8;0.100000;0.000000;A;4
+452;4;142;U16;;PV String1 voltage;;0.100000;0.000000;V;4
+453;4;143;I16;;PV String1 current;;0.100000;0.000000;A;4
+454;4;144;U16;;PV String2 voltage;;0.100000;0.000000;V;4
+455;4;145;I16;;PV String2 current;;0.100000;0.000000;A;4
+456;4;146;U16;;PV String3 voltage;;0.100000;0.000000;V;4
+457;4;147;I16;;PV String3 current;;0.100000;0.000000;A;4
+458;4;148;U16;;PV String4 voltage;;0.100000;0.000000;V;4
+459;4;149;I16;;PV String4 current;;0.100000;0.000000;A;4
+460;4;150;U16;;PV String5 voltage;;0.100000;0.000000;V;4
+461;4;151;I16;;PV String5 current;;0.100000;0.000000;A;4
+462;4;152;U16;;PV String6 voltage;;0.100000;0.000000;V;4
+463;4;153;I16;;PV String6 current;;0.100000;0.000000;A;4
+464;4;154;U16;;PV String7 voltage;;0.100000;0.000000;V;4
+465;4;155;I16;;PV String7 current;;0.100000;0.000000;A;4
+466;4;156;U16;;PV String8 voltage;;0.100000;0.000000;V;4
+467;4;157;I16;;PV String8 current;;0.100000;0.000000;A;4
 468;4;158;U16;;PV String9 voltage;U_DC_STRING_9;0.100000;0.000000;V;4
 469;4;159;I16;;PV String9 current;I_DC_STRING_9;0.100000;0.000000;A;4
 470;4;160;U16;;PV String10 voltage;U_DC_STRING_10;0.100000;0.000000;V;4
@@ -509,7 +509,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 508;4;197;U16;;DSP075 Debug Data8;;1.000000;0.000000;;4
 509;4;198;U16;;USBAgingTestOk Flag;;1.000000;0.000000;;4
 510;4;199;U16;;FlashEraseAging OkFlag;;1.000000;0.000000;;4
-511;4;200;U16;;PVISO;;1.000000;0.000000;kOhm;4
+511;4;200;U16;;PVISO;R_ISO;1.000000;0.000000;kOhm;4
 512;4;201;U16;;R_DCI;;0.100000;0.000000;mA;4
 513;4;202;U16;;S_DCI;;0.100000;0.000000;mA;4
 514;4;203;U16;;T_DCI;;0.100000;0.000000;mA;4
@@ -525,7 +525,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 524;4;216;U16;;R phase load side harmonic;;0.100000;0.000000;A;4
 525;4;217;U16;;S phase load side harmonic;;0.100000;0.000000;A;4
 526;4;218;U16;;T phase load side harmonic;;0.100000;0.000000;A;4
-527;4;219;U32;;R phase compensate reactive power for SVG;;0.100000;0.000000;Var;4
+527;4;219;U32;;R phase compensate reactive power for SVG;Q_AC_3;0.100000;0.000000;Var;4
 528;4;221;U32;;S phase compensate reactive power for SVG;;0.100000;0.000000;Var;4
 529;4;223;U32;;T phase compensate reactive power for SVG;;0.100000;0.000000;Var;4
 530;4;225;U16;;R phase compensate harmonic for SVG;;0.100000;0.000000;A;4
@@ -553,28 +553,28 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 552;4;248;U16;;DSP067 Debug Data8_2;;1.000000;0.000000;;4
 553;4;875;U16;;PV9 voltage;;0.100000;0.000000;V;4
 554;4;876;U16;;PV9 input current;;0.100000;0.000000;A;4
-555;4;877;U32;;PV9 input power;;0.100000;0.000000;W;4
+555;4;877;U32;;PV9 input power;P_DC_MPPT_9;0.100000;0.000000;W;4
 556;4;879;U16;;PV10 voltage;;0.100000;0.000000;V;4
 557;4;880;U16;;PV10 input current;;0.100000;0.000000;A;4
-558;4;881;U32;;PV10 input power;;0.100000;0.000000;W;4
+558;4;881;U32;;PV10 input power;P_DC_MPPT_10;0.100000;0.000000;W;4
 559;4;883;U16;;PV11 voltage;;0.100000;0.000000;V;4
 560;4;884;U16;;PV11 input current;;0.100000;0.000000;A;4
-561;4;885;U32;;PV11 input power;;0.100000;0.000000;W;4
+561;4;885;U32;;PV11 input power;P_DC_MPPT_11;0.100000;0.000000;W;4
 562;4;887;U16;;PV12 voltage;;0.100000;0.000000;V;4
 563;4;888;U16;;PV12 input current;;0.100000;0.000000;A;4
-564;4;889;U32;;PV12 input power;;0.100000;0.000000;W;4
-565;4;891;U16;;PV13 voltage;;0.100000;0.000000;V;4
+564;4;889;U32;;PV12 input power;P_DC_MPPT_12;0.100000;0.000000;W;4
+565;4;891;U16;;PV13 voltage;U_DC_MPPT_7;0.100000;0.000000;V;4
 566;4;892;U16;;PV13 input current;;0.100000;0.000000;A;4
-567;4;893;U32;;PV13 input power;;0.100000;0.000000;W;4
+567;4;893;U32;;PV13 input power;P_DC_MPPT_13;0.100000;0.000000;W;4
 568;4;895;U16;;PV14 voltage;;0.100000;0.000000;V;4
 569;4;896;U16;;PV14 input current;;0.100000;0.000000;A;4
-570;4;897;U32;;PV14 input power;;0.100000;0.000000;W;4
-571;4;899;U16;;PV15 voltage;;0.100000;0.000000;V;4
+570;4;897;U32;;PV14 input power;P_DC_MPPT_14;0.100000;0.000000;W;4
+571;4;899;U16;;PV15 voltage;U_DC_MPPT_8;0.100000;0.000000;V;4
 572;4;900;U16;;PV15 input current;;0.100000;0.000000;A;4
-573;4;901;U32;;PV15 input power;;0.100000;0.000000;W;4
+573;4;901;U32;;PV15 input power;P_DC_MPPT_15;0.100000;0.000000;W;4
 574;4;903;U16;;PV16 voltage;;0.100000;0.000000;V;4
 575;4;904;U16;;PV16 input current;;0.100000;0.000000;A;4
-576;4;905;U32;;PV16 input power;;0.100000;0.000000;W;4
+576;4;905;U32;;PV16 input power;P_DC_MPPT_16;0.100000;0.000000;W;4
 577;4;907;U32;;PV9 Energy today;;0.100000;0.000000;kWh;4
 578;4;909;U32;;PV9 Energy total;;0.100000;0.000000;kWh;4
 579;4;911;U32;;PV10 Energy today;;0.100000;0.000000;kWh;4
@@ -662,7 +662,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 661;4;3017;U32;;PV4 power_1;;0.100000;0.000000;W;4
 662;4;3019;U32;;System output power;;0.100000;0.000000;W;4
 663;4;3021;U32;;reactive power;CMD_Q_AC_SET_ABS;0.100000;0.000000;Var;1
-664;4;3023;U32;;Output power;P_AC;0.100000;0.000000;W;4
+664;4;3023;U32;;Output power;;0.100000;0.000000;W;4
 665;4;3025;U16;;Grid frequency;;0.010000;0.000000;Hz;4
 666;4;3026;U16;;Three/single phase grid voltage_1;;0.100000;0.000000;V;4
 667;4;3027;U16;;Three/single phase grid output current_1;;0.100000;0.000000;A;4
@@ -754,7 +754,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 753;4;3158;U32;;UPS output power;;0.100000;0.000000;VA;4
 754;4;3160;U16;;Load percent of UPS output;;0.100000;0.000000;'%;4
 755;4;3161;U16;;Power factor_2;PF_2;0.100000;0.000000;;4
-756;4;3162;U16;;DC voltage;U_DC;1.000000;0.000000;mV;4
+756;4;3162;U16;;DC voltage;;1.000000;0.000000;mV;4
 757;4;3164;U16;;Whether to parse BDC data separately;;1.000000;0.000000;;4
 758;4;3165;U16;;BDCDeratingMode;;1.000000;0.000000;;4
 759;4;3166;U16;;System work State and mode;;1.000000;0.000000;;4
@@ -762,7 +762,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 761;4;3168;U16;;Storge device warning code;;1.000000;0.000000;;4
 762;4;3169;U16;;Battery voltage;;0.010000;0.000000;V;4
 763;4;3170;U16;;Battery current;I_DC;0.100000;0.000000;A;4
-764;4;3171;U16;;State of charge Capacity;;1.000000;0.000000;'%;4
+764;4;3171;U16;;State of charge Capacity;SOC;1.000000;0.000000;'%;4
 765;4;3172;U16;;Total BUS voltage;;0.100000;0.000000;V;4
 766;4;3173;U16;;On the BUS voltage;;0.100000;0.000000;V;4
 767;4;3174;U16;;BUCK-BOOST Current;;0.100000;0.000000;A;4
@@ -780,8 +780,8 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 779;4;3188;U16;;Lower BUS voltage;;0.100000;0.000000;V;4
 780;4;3189;U16;;BmsMaxVoltCellNo;;1.000000;0.000000;;4
 781;4;3190;U16;;BmsMinVoltCellNo;;1.000000;0.000000;;4
-782;4;3191;U16;;BmsBatteryAvgTemp_1;;1.000000;0.000000;;4
-783;4;3192;U16;;BmsMaxCellTemp_1;;0.100000;0.000000;°C;4
+782;4;3191;U16;;BmsBatteryAvgTemp_1;TEMP;1.000000;0.000000;;4
+783;4;3192;U16;;BmsMaxCellTemp_1;TEMP_CELL;0.100000;0.000000;°C;4
 784;4;3193;U16;;BmsBatteryAvgTemp_2;;0.100000;0.000000;°C;4
 785;4;3194;U16;;BmsMaxCellTemp_2;;1.000000;0.000000;;4
 786;4;3195;U16;;BmsBatteryAvgTemp_3;;1.000000;0.000000;;4
@@ -804,7 +804,7 @@ modbusRTU;Inverter;Growatt;W_Growatt_Generic;;;;;;;
 803;4;3212;U16;;battery working status;;1.000000;0.000000;;4
 804;4;3213;U16;;BMS Protect2;;1.000000;0.000000;;4
 805;4;3214;U16;;BMS Warn2;;1.000000;0.000000;;4
-806;4;3215;U16;;BMS SOC;SOC;1.000000;0.000000;'%;4
+806;4;3215;U16;;BMS SOC;;1.000000;0.000000;'%;4
 807;4;3216;U16;;BMS BatteryVolt;;0.010000;0.000000;V;4
 808;4;3217;U16;;BMS BatteryCurr;;0.010000;0.000000;A;4
 809;4;3218;U16;;battery cell maximum temperature;;0.100000;0.000000;°C;4

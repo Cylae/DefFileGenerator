@@ -1,16 +1,16 @@
 ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
 1;4;0_1;STRING;;Device Type;MODEL;1.0;0.0;;4
 2;4;1;U32;;E-today;;0.0;0.0;kW;4
-3;4;3;U32;;E-total;E_TOT;0.0;0.0;kW;4
+3;4;3;U32;;E-total;U_DC;0.0;0.0;kW;4
 4;4;5;U32;;H-total;;1.0;0.0;H;4
 5;4;7;U32;;resv;;1.0;0.0;;0
 6;4;9;U32;;resv_1;;1.0;0.0;;0
 7;4;11;U16;;State;;1.0;0.0;;8
 8;4;12;U16;;Error Code;;1.0;0.0;;4
 9;4;13;U16;;Connect Time;;1.0;0.0;s;4
-10;4;14;I16;;Temperature;TEMP;0.0;0.0;°C;4
+10;4;14;I16;;Temperature;TEMP_INT;0.0;0.0;°C;4
 11;4;15;U16;;Connected PV Strings;;1.0;0.0;;4
-12;4;16;U16;;BUS Voltage;U_DC;0.0;0.0;V;4
+12;4;16;U16;;BUS Voltage;;0.0;0.0;V;4
 13;4;17;U16;;PV Voltage 1;;0.0;0.0;V;4
 14;4;18;U16;;PV Current 1;;0.0;0.0;A;4
 15;4;19;U16;;PV Voltage 2;;0.0;0.0;V;4
@@ -51,7 +51,7 @@ ModbusRTU;Inverter;Zeversolar;Generic;;;;;;;
 50;4;59;U16;;Resv_6;;1.0;0.0;;4
 51;3;12;U16;;Power ON/OFF;CMD_ON;1.0;0.0;;1
 52;3;5000;U16;;Safety type;;1.0;0.0;;4
-53;3;5006;U16;;Grid voltage high limit2;;0.0;0.0;V;4
+53;3;5006;U16;;Grid voltage high limit2;U_AC_L1L2;0.0;0.0;V;4
 54;3;5007;U16;;Grid voltage high limit time2;;1.0;0.0;ms;4
 55;3;5008;U16;;Grid voltage high limit1;;0.0;0.0;V;4
 56;3;5009;U16;;Grid voltage high limit time1;;1.0;0.0;ms;4

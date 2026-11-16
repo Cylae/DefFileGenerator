@@ -1,4 +1,4 @@
-modbusRTU;Meter;SMA;Smappee Infinity Modbus energy;;;;;;;
+modbusRTU;Meter;SMA;Smappee_Infinity_Modbus_energy;;;;;;;
 1;4;0;U16;;Root Mean Square Voltage, 1 second average;;1.0;0.0;Volt;4
 2;4;2;U16;;Root Mean Square Fundamental Voltage, 1 second average;;1.0;0.0;Volt;4
 3;4;4;U16;;Root Mean Square Voltage, 1 second average;;1.0;0.0;Volt;4
@@ -25,9 +25,9 @@ modbusRTU;Meter;SMA;Smappee Infinity Modbus energy;;;;;;;
 24;4;46;U16;;Root Mean Square Fifth harmonic voltage, 1 second average;;1.0;0.0;Volt;4
 25;4;128;U16;;0;;1.0;0.0;Ampere;4
 26;4;130;U16;;0;;1.0;0.0;Ampere;4
-27;4;132;U16;;1;;1.0;0.0;Ampere;4
+27;4;132;U16;;1;SERIAL;1.0;0.0;Ampere;4
 28;4;134;U16;;1;;1.0;0.0;Ampere;4
-29;4;136;U16;;2;;1.0;0.0;Ampere;4
+29;4;136;U16;;2;FREQ;1.0;0.0;Ampere;4
 30;4;138;U16;;2;;1.0;0.0;Ampere;4
 31;4;140;U16;;3;;1.0;0.0;Ampere;4
 32;4;142;U16;;3;;1.0;0.0;Ampere;4
@@ -477,7 +477,7 @@ modbusRTU;Meter;SMA;Smappee Infinity Modbus energy;;;;;;;
 476;4;12618;U16;;Active Export;;1.0;0.0;Watthour;1
 477;4;12620;U16;;Reactive Import;;1.0;0.0;varh;1
 478;4;12622;U16;;Reactive Export;;1.0;0.0;varh;1
-479;4;1014;U16;;Nominal Frequency, 50 or 60 Hz;FREQ;1.0;0.0;Hertz;4
+479;4;1014;U16;;Nominal Frequency, 50 or 60 Hz;;1.0;0.0;Hertz;4
 480;4;1016;U16;;Actual Frequency,  200 ms average;;1.0;0.0;Hertz;4
 481;4;1018;U16;;Run time in seconds, when this value changes, new 1 second data is available;;1.0;0.0;seconds;4
 482;4;1020;U16;;None;;1.0;0.0;None;4
@@ -1658,5 +1658,5 @@ modbusRTU;Meter;SMA;Smappee Infinity Modbus energy;;;;;;;
 1657;4;65002;U16;;Device status;;1.0;0.0;;4
 1658;4;65003;U16;;Firmware upgrade status;;1.0;0.0;;4
 1659;4;65004;U16;;Device type;MODEL;1.0;0.0;;1
-1660;4;65005;U16;;Device serial;SERIAL;1.0;0.0;;1
+1660;4;65005;U16;;Device serial;;1.0;0.0;;1
 1661;4;65007;U16;;Modbus Address;UNIT_ID;1.0;0.0;;1

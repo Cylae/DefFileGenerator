@@ -12,7 +12,7 @@ modbusRTU;Other;Zucchetti Centro Sistemi S.p.a;ZCS_Hyd_3PH;;;;;;;
 11;4;1166;U16;;Current_Output_R;;1.0;0.0;A;4
 12;4;1167;U16;;ActivePower_Output_R;;1.0;0.0;kW;4
 13;4;1168;U16;;ReactivePower_Output_R;;1.0;0.0;kW;4
-14;4;1169;U16;;PowerFactor_Output_R;;1.0;0.0;p.u;4
+14;4;1169;U16;;PowerFactor_Output_R;PF;1.0;0.0;p.u;4
 15;4;1170;U16;;Current_PCC_R;;1.0;0.0;A;4
 16;4;1171;U16;;ActivePower_PCC_R;;1.0;0.0;kW;4
 17;4;1172;U16;;ReactivePower_PCC_R;;1.0;0.0;kW;4

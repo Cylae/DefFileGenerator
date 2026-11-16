@@ -1,5 +1,5 @@
 modbusRTU;Other;Schneider;PM8000_Modbus_Map;;;;;;;
-1;3;1837;U16;;Year;;1.000000;0.000000;year;4
+1;3;1837;U16;;Year;U_DC;1.000000;0.000000;year;4
 2;3;1838;U16;;Month;;1.000000;0.000000;month;4
 3;3;1839;U16;;Day;;1.000000;0.000000;days;4
 4;3;1840;U16;;Hour;;1.000000;0.000000;hours;4
@@ -90,15 +90,15 @@ modbusRTU;Other;Schneider;PM8000_Modbus_Map;;;;;;;
 89;3;3032;F32;;Voltage C-N;;1.000000;0.000000;V;4
 90;3;3036;F32;;Voltage L-N Avg;;1.000000;0.000000;V;4
 91;3;3052;F32;;Voltage Unbalance L-N Worst;;1.000000;0.000000;'---;4
-92;3;3054;F32;;Active Power A;;1.000000;0.000000;W;4
+92;3;3054;F32;;Active Power A;P_AC;1.000000;0.000000;W;4
 93;3;3056;F32;;Active Power B;P_AC_2;1.000000;0.000000;W;4
 94;3;3058;F32;;Active Power C;P_AC_3;1.000000;0.000000;W;4
 95;3;3060;F32;;Active Power Total;;1.000000;0.000000;W;4
-96;3;3062;F32;;Reactive Power A;;1.000000;0.000000;VAR;4
+96;3;3062;F32;;Reactive Power A;Q_AC;1.000000;0.000000;VAR;4
 97;3;3064;F32;;Reactive Power B;Q_AC_2;1.000000;0.000000;VAR;4
 98;3;3066;F32;;Reactive Power C;Q_AC_3;1.000000;0.000000;VAR;4
 99;3;3068;F32;;Reactive Power Total;;1.000000;0.000000;VAR;4
-100;3;3070;F32;;Apparent Power A;;1.000000;0.000000;VA;4
+100;3;3070;F32;;Apparent Power A;S_AC;1.000000;0.000000;VA;4
 101;3;3072;F32;;Apparent Power B;S_AC_2;1.000000;0.000000;VA;4
 102;3;3074;F32;;Apparent Power C;S_AC_3;1.000000;0.000000;VA;4
 103;3;3076;F32;;Apparent Power Total;;1.000000;0.000000;VA;4
@@ -112,7 +112,7 @@ modbusRTU;Other;Schneider;PM8000_Modbus_Map;;;;;;;
 111;3;3138;F32;;Current Capacity B;;1.000000;0.000000;'---;4
 112;3;3140;F32;;Current Capacity C;;1.000000;0.000000;'---;4
 113;3;3142;F32;;Current Capacity avg;;1.000000;0.000000;'---;4
-114;3;3144;F32;;Power Factor A;;1.000000;0.000000;'---;4
+114;3;3144;F32;;Power Factor A;PF;1.000000;0.000000;'---;4
 115;3;3146;F32;;Power Factor B;PF_2;1.000000;0.000000;'---;4
 116;3;3148;F32;;Power Factor C;PF_3;1.000000;0.000000;'---;4
 117;3;3150;F32;;Power Factor Total;;1.000000;0.000000;'---;4
@@ -1875,7 +1875,7 @@ modbusRTU;Other;Schneider;PM8000_Modbus_Map;;;;;;;
 1874;3;31020;F32;;Reactive Energy Received;;1.000000;0.000000;kVARh;4
 1875;3;31022;F32;;Apparent Energy Delivered;;1.000000;0.000000;kVAh;4
 1876;3;31024;F32;;Apparent Energy Received;;1.000000;0.000000;kVAh;4
-1877;3;34352;F32;;Current, Phase A 3 Second (150/180 Cycles);;1.000000;0.000000;A;4
+1877;3;34352;F32;;Current, Phase A 3 Second (150/180 Cycles);I_AC_1;1.000000;0.000000;A;4
 1878;3;34354;F32;;Current, Phase A 10 Minute;;1.000000;0.000000;A;4
 1879;3;34358;F32;;Current, Phase B 3 Second (150/180 Cycles);;1.000000;0.000000;A;4
 1880;3;34360;F32;;Current, Phase B 10 Minute;;1.000000;0.000000;A;4

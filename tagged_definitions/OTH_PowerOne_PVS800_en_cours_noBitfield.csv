@@ -1,13 +1,13 @@
 modbusRTU;Other;PowerOne;PVS800(en cours)noBitfield;;;;;;;
 1;4;40202;U16;;DC voltage;U_DC;1.0;0.0;V;4
 2;4;40204;U16;;Line current;I_AC_3;1.0;0.0;A;4
-3;4;40206;U16;;Line current %;;1.0;0.0;%;4
+3;4;40206;U16;;Line current %;I_AC;1.0;0.0;%;4
 4;4;40208;U16;;Active current;;1.0;0.0;A;4
 5;4;40210;U16;;Active current %;;1.0;0.0;%;4
 6;4;40212;U16;;Reactive current;;1.0;0.0;A;4
 7;4;40214;U16;;Reactive current %;;1.0;0.0;%;4
 8;4;40216;U16;;Frequency;FREQ;1.0;0.0;Hz;4
-9;4;40218;U16;;Grid voltage;;1.0;0.0;V;4
+9;4;40218;U16;;Grid voltage;U_AC_L1L2;1.0;0.0;V;4
 10;4;40220;U16;;Apparent power;S_AC;1.0;0.0;kVA;4
 11;4;40222;U16;;Apparent power %;;1.0;0.0;%;4
 12;4;40224;U16;;Power;P_AC;1.0;0.0;kW;4
@@ -194,8 +194,8 @@ modbusRTU;Other;PowerOne;PVS800(en cours)noBitfield;;;;;;;
 193;4;13004;U16;;Limit word 4;;1.0;0.0;;4
 194;4;13005;U16;;Limit word 5;;1.0;0.0;;4
 195;4;13006;U16;;Limit word 6;;1.0;0.0;;4
-196;4;46022;U16;;Active power limit to grid;;1.0;0.0;kW;4
-197;4;46026;U16;;Reactive power limit;CMD_P_AC_SET_ABS;1.0;0.0;kVAr;1
+196;4;46022;U16;;Active power limit to grid;CMD_P_AC_SET_ABS;1.0;0.0;kW;1
+197;4;46026;U16;;Reactive power limit;;1.0;0.0;kVAr;1
 198;4;46124;U16;;P(f) limit type;;1.0;0.0;;4
 199;4;46126;U16;;P(f) corner frequency;;1.0;0.0;Hz;4
 200;4;46128;U16;;P(f) limit gradient;;1.0;0.0;%/Hz;4
@@ -812,7 +812,7 @@ modbusRTU;Other;PowerOne;PVS800(en cours)noBitfield;;;;;;;
 811;4;56820;U16;;Total kVAh supplied Frac;;1.0;0.0;;4
 812;4;56824;U16;;Energy counter, resettable;;1.0;0.0;kWh;4
 813;4;56826;U16;;kVAh Energy counter, resettable;;1.0;0.0;kVAh;4
-814;4;56828;U16;;Daily kWh supplied;;1.0;0.0;kWh;4
+814;4;56828;U16;;Daily kWh supplied;E_DAY;1.0;0.0;kWh;4
 815;4;56830;U16;;Daily kVAh supplied;;1.0;0.0;kVAh;4
 816;4;18501;U16;;Main circuit SPD status;;1.0;0.0;;4
 817;4;18502;U16;;DC input fuse status;;1.0;0.0;;4
@@ -976,7 +976,7 @@ modbusRTU;Other;PowerOne;PVS800(en cours)noBitfield;;;;;;;
 975;4;62022;U16;;Minimum grounding interval;;1.0;0.0;min;4
 976;4;62024;U16;;Grounding circuit voltage fail action;;1.0;0.0;;4
 977;4;62026;U16;;Grounding current limit;;1.0;0.0;A;4
-978;4;62028;U16;;Total grounding current;I_AC;1.0;0.0;A;4
+978;4;62028;U16;;Total grounding current;;1.0;0.0;A;4
 979;4;62030;U16;;Resistive grounding current;;1.0;0.0;A;4
 980;4;62032;U16;;Grounding current fault action;;1.0;0.0;;4
 981;4;62034;U16;;Grounding current time limit;;1.0;0.0;s;4

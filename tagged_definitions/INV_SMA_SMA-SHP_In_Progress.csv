@@ -18,7 +18,7 @@ modbusRTU;Inverter;SMA;SMA-SHP_In_Progress;;;;;;;
 17;3;40005;U32;;Passage automatique heure ete/hiver active;;1.000000;0.000000;;1
 18;3;40003;U32;;Fuseau horaire;;1.000000;0.000000;;1
 19;3;34623;U32;;Rayonnement sur capteur externe;;1.000000;0.000000;W/m2;4
-20;3;34615;U32;;Vitesse du vent 1;;0.010000;0.000000;m/s;4
+20;3;34615;U32;;Vitesse du vent 1;WIND_SPEED;0.010000;0.000000;m/s;4
 21;3;34633;U32;;Vitesse du vent 2;;0.010000;0.000000;m/s;4
 22;3;34635;U32;;Vitesse du vent 3;;0.010000;0.000000;m/s;4
 23;3;34609;I32;;Temperature exterieure 1;;0.100000;0.000000;C;4
@@ -28,7 +28,7 @@ modbusRTU;Inverter;SMA;SMA-SHP_In_Progress;;;;;;;
 27;3;41437;U32;;Appliquer la configuration des parametres de la courbe;;1.000000;0.000000;;1
 28;3;41439;U32;;Resultat de l application des parametres de la courbe;;1.000000;0.000000;;1
 29;3;41187;U32;;Source de la mesure de reference pour regulation de puissance;;1.000000;0.000000;;1
-30;3;41215;I32;;Cons. de puissance active valeur de retombee;;1.000000;0.000000;W;1
+30;3;41215;I32;;Cons. de puissance active valeur de retombee;P_AC;1.000000;0.000000;W;1
 31;3;40151;U32;;Reg.puiss.act.et app.par comm 1;;1.000000;0.000000;;4
 32;3;44427;U32;;Reg.puiss.act.et app.par comm 2;;1.000000;0.000000;;4
 33;3;40149;I32;;Prescription de puiss. active 1;;1.000000;0.000000;W;4
@@ -39,24 +39,24 @@ modbusRTU;Inverter;SMA;SMA-SHP_In_Progress;;;;;;;
 38;3;34621;I32;;Temperature des panneaux 1;;0.100000;0.000000;C;4
 39;3;34629;I32;;Temperature des panneaux 2;;0.100000;0.000000;C;4
 40;3;34631;I32;;Temperature des panneaux 3;;0.100000;0.000000;C;4
-41;3;30517;U64;;Energie degagee jour actuel;;1.000000;0.000000;Wh;4
+41;3;30517;U64;;Energie degagee jour actuel;E_DAY;1.000000;0.000000;Wh;4
 42;3;30535;U32;;Energie degagee jour actuel 1;;1.000000;0.000000;Wh;4
 43;3;30537;U32;;Energie degagee jour actuel 2;;1.000000;0.000000;Wh;4
 44;3;30539;U32;;Energie degagee jour actuel 3;;1.000000;0.000000;Wh;4
-45;3;31435;I32;;Courant du reseau phase L1;;0.001000;0.000000;A;4
-46;3;31437;I32;;Courant du reseau phase L2;;0.001000;0.000000;A;4
-47;3;31439;I32;;Courant du reseau phase L3;;0.001000;0.000000;A;4
-48;3;31447;U32;;Frequence du reseau;;0.010000;0.000000;Hz;4
-49;3;31253;U32;;Tension du reseau phase L1;;0.010000;0.000000;V;4
+45;3;31435;I32;;Courant du reseau phase L1;I_AC_1;0.001000;0.000000;A;4
+46;3;31437;I32;;Courant du reseau phase L2;I_AC_2;0.001000;0.000000;A;4
+47;3;31439;I32;;Courant du reseau phase L3;I_AC_3;0.001000;0.000000;A;4
+48;3;31447;U32;;Frequence du reseau;FREQ;0.010000;0.000000;Hz;4
+49;3;31253;U32;;Tension du reseau phase L1;U_AC_1;0.010000;0.000000;V;4
 50;3;31451;U32;;Tension de reseau phase L1 contre L2;;0.010000;0.000000;V;4
-51;3;31255;U32;;Tension du reseau phase L2;;0.010000;0.000000;V;4
+51;3;31255;U32;;Tension du reseau phase L2;U_AC_2;0.010000;0.000000;V;4
 52;3;31453;U32;;Tension de reseau phase L2 contre L3;;0.010000;0.000000;V;4
-53;3;31257;U32;;Tension du reseau phase L3;;0.010000;0.000000;V;4
+53;3;31257;U32;;Tension du reseau phase L3;U_AC_3;0.010000;0.000000;V;4
 54;3;31449;U32;;Tension de reseau phase L3 contre L1;;0.010000;0.000000;V;4
 55;3;31433;U32;;Facteur de dephasage;;0.010000;0.000000;;4
 56;3;31499;I32;;Facteur de dephasage EEI;;0.001000;0.000000;;4
 57;3;31455;I32;;Puissance apparente;S_AC;1.000000;0.000000;VA;4
-58;3;31277;I32;;Puissance reactive d injection dans le reseau;;1.000000;0.000000;VAr;4
+58;3;31277;I32;;Puissance reactive d injection dans le reseau;Q_AC;1.000000;0.000000;VAr;4
 59;3;30581;U32;;Etat du compteur de prelevement;;1.000000;0.000000;Wh;4
 60;3;30583;U32;;Etat du compteur d injection dans le reseau;;1.000000;0.000000;Wh;4
 61;3;30865;I32;;Puissance de prelevement;;1.000000;0.000000;W;4
@@ -87,18 +87,18 @@ modbusRTU;Inverter;SMA;SMA-SHP_In_Progress;;;;;;;
 86;3;41171;U32;;Reglage energie tot. degagee point rac. reseau;;1.000000;0.000000;kWh;1
 87;3;30057;U32;;Numero de serie 1;;1.000000;0.000000;;1
 88;3;40067;U32;;Numero de serie 2;;1.000000;0.000000;;1
-89;3;41203;U32;;Puissance nominale de l installation;;1.000000;0.000000;W;1
+89;3;41203;U32;;Puissance nominale de l installation;P_RATED;1.000000;0.000000;W;1
 90;3;41121;U32;;Definition du jeu de donnees regionales;;1.000000;0.000000;;4
 91;3;30953;I32;;Temperature interieure 1;;0.100000;0.000000;C;4
 92;3;34113;I32;;Temperature interieure 2;;0.100000;0.000000;C;4
 93;3;30975;I32;;Tension du circuit intermediaire;;0.010000;0.000000;V;4
 94;3;30881;U32;;Connexion reseau de l installation;;1.000000;0.000000;;4
-95;3;31793;I32;;Entree courant DC 1;;0.001000;0.000000;A;4
+95;3;31793;I32;;Entree courant DC 1;I_DC;0.001000;0.000000;A;4
 96;3;41143;U32;;Tension limite pour terminer l injection;;0.010000;0.000000;V;1
 97;3;41155;U32;;Retard de demarrage entree;;1.000000;0.000000;s;1
 98;3;41131;U32;;Entree tension minimale;;0.010000;0.000000;V;1
 99;3;30769;I32;;Entree courant DC 2;;0.001000;0.000000;A;4
-100;3;30771;I32;;Entree tension DC;;0.010000;0.000000;V;4
+100;3;30771;I32;;Entree tension DC;U_DC;0.010000;0.000000;V;4
 101;3;30525;U64;;Temps d injection 1;;1.000000;0.000000;s;4
 102;3;30543;U32;;Temps d injection 2;;1.000000;0.000000;s;4
 103;3;30521;U64;;Temps de service 1;;1.000000;0.000000;s;4
@@ -117,7 +117,7 @@ modbusRTU;Inverter;SMA;SMA-SHP_In_Progress;;;;;;;
 116;3;40023;I16;;Limite puissance alim normalisee via cde install. 1;;0.010000;0.000000;'%;4
 117;3;41255;I16;;Limite puissance alim normalisee via cde install. 2;;0.010000;0.000000;'%;4
 118;3;40016;I16;;Limite puissance alim normalisee via cde install. 3;;1.000000;0.000000;;4
-119;3;41251;I32;;Limitation de puissance absorbee en W;P_AC;1.000000;0.000000;W;4
+119;3;41251;I32;;Limitation de puissance absorbee en W;;1.000000;0.000000;W;4
 120;3;40022;I16;;Consigne de puissance reactive externe;;0.010000;0.000000;'%;4
 121;3;41256;I16;;Consigne de puissance reactive externe;;0.010000;0.000000;'%;4
 122;3;41219;U32;;Consigne de puissance reactive externe, comportement de retombee;;1.000000;0.000000;;1

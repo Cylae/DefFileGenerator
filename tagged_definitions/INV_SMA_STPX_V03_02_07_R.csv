@@ -19,9 +19,9 @@ modbusTCP;Inverter;SMA;STP X 3_02_07;;;;;;;
 18;3;30235;U32;;Etat du mode de sauvegarde;;1;0;;4
 19;3;30247;U32;;Numro d?vnement actuel pour fabricant;;1;0;;4
 20;3;30251;U32;;tat de verrouillage;;1;0;;4
-21;3;30513;U64;;Rendement total_0;;1;0;Wh;4
+21;3;30513;U64;;Rendement total_0;E_TOT;1;0;Wh;4
 22;3;30513;U64;;Rendement total_2;;1;0;Wh;4
-23;3;30521;U64;;Temps de service_0;;1;0;s;4
+23;3;30521;U64;;Temps de service_0;TOT;1;0;s;4
 24;3;30525;U64;;Temps d?injection_1;;1;0;s;4
 25;3;30529;U32;;Rendement total_1;;1;0;Wh;4
 26;3;30529;U32;;Rendement total_3;;1;0;Wh;4
@@ -245,7 +245,7 @@ modbusTCP;Inverter;SMA;STP X 3_02_07;;;;;;;
 244;3;41451;U32;;Consigne de puissance active externe 2, Timeout;;1;0;s;4
 245;3;41453;U32;;Consigne de puissance active externe 2;;1;0;;4
 246;3;41455;U32;;Frquence locale intgrale, activation via Modbus;;1;0;;4
-247;3;41463;U32;;Puissance totale de l?installation;E_TOT;1;0;W;4
+247;3;41463;U32;;Puissance totale de l?installation;;1;0;W;4
 248;3;44001;U32;;Taux de dmarrage progressif P;;1;0;pct/min;4
 249;3;44003;U32;;Dmarrage progressif P;;1;0;;4
 250;3;44005;U32;;Taux de dmarrage progressif Q;;1;0;pct/min;4
@@ -260,9 +260,9 @@ modbusTCP;Inverter;SMA;STP X 3_02_07;;;;;;;
 259;3;44023;U32;;Taux d'augmentation du changement de rayonnement_1;;1;0;pct/min;4
 260;3;44025;U32;;Consigne de puissance active externe, filtre de valeur de consigne;;1;0;;4
 261;3;44027;U32;;Consigne de puissance active externe, temps de rglage du filtre de valeur de consigne;;0.01;0;s;4
-262;3;44029;U32;;Consigne de puissance active externe, limitation du taux de changement;;1;0;;4
-263;3;44031;U32;;Consigne de puissance active externe, taux d'augmentation;;0.01;0;pct/s;4
-264;3;44033;U32;;Consigne de puissance active externe, taux de rduction;;0.01;0;pct/s;4
+262;3;44029;U32;;Consigne de puissance active externe, limitation du taux de changement;TauxChg_Ena;1;0;;4
+263;3;44031;U32;;Consigne de puissance active externe, taux d'augmentation;TauxAugment;0.01;0;pct/s;4
+264;3;44033;U32;;Consigne de puissance active externe, taux de rduction;TauxReduc;0.01;0;pct/s;4
 265;3;44039;I32;;Puissance active maximum_1;;0.01;0;pct;4
 266;3;44041;I32;;Puissance active minimum_1;;0.01;0;pct;4
 267;3;44043;U32;;P(U), activation;;1;0;;4
@@ -398,7 +398,7 @@ modbusTCP;Inverter;SMA;STP X 3_02_07;;;;;;;
 397;3;44327;U32;;Soutien dynamique du rseau, seuil de surtension pour courant ractif;;0.01;0;p.u.;4
 398;3;44329;U32;;Soutien dynamique du rseau, seuil de sous-tension pour courant ractif;;0.01;0;p.u.;4
 399;3;44331;U32;;Soutien dynamique du rseau, hauteur de saut de tension;;0.01;0;p.u.;4
-400;3;44333;U32;;Courbe caract. P(f);;1;0;;4
+400;3;44333;U32;;Courbe caract. P(f);PF;1;0;;4
 401;3;44335;U32;;P(f), grandeur de rfrence pour puissance active en cas de surfrquence;;1;0;;4
 402;3;44337;U32;;P(f), grandeur de rfrence pour puissance active en cas de sous-frquence;;1;0;;4
 403;3;44339;U32;;P(f), temps de rglage;;0.01;0;s;4

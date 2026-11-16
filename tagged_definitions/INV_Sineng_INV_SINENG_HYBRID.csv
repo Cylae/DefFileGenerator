@@ -1,5 +1,5 @@
 modbusRTU;Inverter;Sineng;INV_SINENG_HYBRID;;;;;;;
-1;4;29999;U16;;Device type;;1.000000;0.000000;;4
+1;4;29999;U16;;Device type;MODEL;1.000000;0.000000;;4
 2;4;30000_20;STRING;;Serial number;SERIAL;1.000000;0.000000;;4
 3;4;30010_18;STRING;;Inverter model;;1.000000;0.000000;;4
 4;4;30019_12;STRING;;Brand info;;1.000000;0.000000;;4
@@ -21,7 +21,7 @@ modbusRTU;Inverter;Sineng;INV_SINENG_HYBRID;;;;;;;
 20;4;30105_0_1;BITS;;DC power lose or updating signs - Bit 0;;1.000000;0.000000;;4
 21;4;30105_4_1;BITS;;DC power lose or updating signs - Bit 4;;1.000000;0.000000;;4
 22;4;30107;U16;;Safety code change flag bit;;1.000000;0.000000;;4
-23;4;30108;U16;;DSP AC power off;;1.000000;0.000000;;4
+23;4;30108;U16;;DSP AC power off;CMD_OFF;1.000000;0.000000;;1
 24;4;30199;U16;;DSP error 1;;1.000000;0.000000;;8
 25;4;30200;U16;;DSP error2;;1.000000;0.000000;;8
 26;4;30201;U16;;DSP error3;;1.000000;0.000000;;8
@@ -35,7 +35,7 @@ modbusRTU;Inverter;Sineng;INV_SINENG_HYBRID;;;;;;;
 34;4;30209;U16;;DSP warning 4;;1.000000;0.000000;;8
 35;4;30210;U16;;DSP warning;;1.000000;0.000000;;8
 36;4;30300;I16;;Cabin temperature;;0.100000;0.000000;°C;4
-37;4;30302;I16;;Boost module 1 temperature;;0.100000;0.000000;°C;4
+37;4;30302;I16;;Boost module 1 temperature;TEMP_CELL;0.100000;0.000000;°C;4
 38;4;30304;I16;;Buckboost temperature;;0.100000;0.000000;°C;4
 39;4;30306;I16;;DC/AC module temperature;;0.100000;0.000000;°C;4
 40;4;30315;I16;;Heat sink temperature;;0.100000;0.000000;°C;4
@@ -65,16 +65,16 @@ modbusRTU;Inverter;Sineng;INV_SINENG_HYBRID;;;;;;;
 64;4;30420_1_1;BITS;;ARM Bit error2 - Bit 1;;1.000000;0.000000;;8
 65;4;30420_2_1;BITS;;ARM Bit error2 - Bit 2;;1.000000;0.000000;;8
 66;4;30499;U16;;Total PV power;P_DC;0.010000;0.000000;kW;4
-67;4;30500;U16;;PV 1 Voltage;;0.100000;0.000000;V;4
-68;4;30501;U16;;PV 1 Current;;0.100000;0.000000;A;4
+67;4;30500;U16;;PV 1 Voltage;U_DC_STRING_1;0.100000;0.000000;V;4
+68;4;30501;U16;;PV 1 Current;I_DC_STRING_1;0.100000;0.000000;A;4
 69;4;30502;U16;;PV 1 Power;;0.010000;0.000000;kW;4
 70;4;30503;U16;;E_Today (PV 1);;0.100000;0.000000;kWh;4
-71;4;30504;U16;;PV 2 Voltage;;0.100000;0.000000;V;4
-72;4;30505;U16;;PV 2 Current;;0.100000;0.000000;A;4
+71;4;30504;U16;;PV 2 Voltage;U_DC_STRING_2;0.100000;0.000000;V;4
+72;4;30505;U16;;PV 2 Current;I_DC_STRING_2;0.100000;0.000000;A;4
 73;4;30506;U16;;PV 2 Power;;0.010000;0.000000;kW;4
 74;4;30507;U16;;E_Today (PV2);;0.100000;0.000000;kWh;4
 75;4;30999;U16;;R-phase Volatge;;0.100000;0.000000;V;4
-76;4;31000;U16;;R-phase Current;;0.010000;0.000000;A;4
+76;4;31000;U16;;R-phase Current;I_AC_3;0.010000;0.000000;A;4
 77;4;31001;U32;;Grid frequency;FREQ;0.001000;0.000000;Hz;4
 78;4;31003;I32;;R-phase Power;;1.000000;0.000000;W;4
 79;4;31005;U16;;S-phase Volatge;;0.100000;0.000000;V;4
@@ -186,7 +186,7 @@ modbusRTU;Inverter;Sineng;INV_SINENG_HYBRID;;;;;;;
 185;4;34037;U32;;E-total (PV sell to grid);;0.100000;0.000000;kWh;4
 186;4;34039;U32;;E-total (Battery discharge to grid);;0.100000;0.000000;KWh;4
 187;4;34041;U32;;E-total (Battery discharge to EPS);;0.100000;0.000000;kWh;4
-188;3;40035;U16;;Device address;;1.000000;0.000000;;4
+188;3;40035;U16;;Device address;UNIT_ID;1.000000;0.000000;;4
 189;3;40103;U16;;PV start-up Voltage;;0.100000;0.000000;V;4
 190;3;40104;U16;;PV turn-off Voltage;;0.100000;0.000000;V;4
 191;3;40111;U16;;P output limit (%);;0.010000;0.000000;'%;4
@@ -355,7 +355,7 @@ modbusRTU;Inverter;Sineng;INV_SINENG_HYBRID;;;;;;;
 354;3;46003;I16;;Q limit percentage;;0.010000;0.000000;'%Pn;4
 355;3;46004;U16;;P dispatch reaction time;;1.000000;0.000000;s;4
 356;3;46005;U16;;Q dispatch reaction time;;1.000000;0.000000;ms;4
-357;3;46006;U16;;Power on P increase rate;;1.000000;0.000000;'%Pn/min;4
+357;3;46006;U16;;Power on P increase rate;CMD_ON;1.000000;0.000000;'%Pn/min;1
 358;3;46007;U16;;Reconnection P increase rate;;1.000000;0.000000;'%Pn/min;4
 359;3;46008;U16;;Shutdown P change rate;;1.000000;0.000000;'%Pn/min;4
 360;3;46009;U16;;Normal P change rate;;1.000000;0.000000;'%Pn/min;4

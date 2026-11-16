@@ -163,13 +163,11 @@ modbusRTU;Other;Legrand;LEGRAND_Nemo_Work;;;;;;;
 162;4;8726;U16;;Pulse weight;;1.0;0.0;;4
 163;4;8727;U16;;"Positive Energy type used for the pulse_x000D_
 output";;1.0;0.0;;4
-164;4;256;U16;;Write Current transformer ratio (KTA);;1.0;0.0;;4
-165;4;258;U16;;Write Voltage transformer ratio (KTV);;1.0;0.0;;4
-166;4;8192;U16;;Write Standard setup parameters;;1.0;0.0;;4
-167;4;8704;U16;;Write Programming parameters of pulse output (slot 2);;1.0;0.0;;4
-168;4;9216;U16;;"Reset Hour Meter, Maximum Powers, Maximum Voltages,_x000D_
+164;4;8192;U16;;Write Standard setup parameters;;1.0;0.0;;4
+165;4;8704;U16;;Write Programming parameters of pulse output (slot 2);;1.0;0.0;;4
+166;4;9216;U16;;"Reset Hour Meter, Maximum Powers, Maximum Voltages,_x000D_
 Maximum Currents, Minimum Voltages, Active Partial_x000D_
 Energy, Reactive Partial Energy";;1.0;0.0;;4
-169;4;9728;U16;;Saving in EEPROM parameters changed by Remote commands;;1.0;0.0;;4
-170;4;9984;U16;;Enable Remote Writing Operation;;1.0;0.0;;4
-171;4;10240;U16;;Load previous setup parameters stored in EEPROM;;1.0;0.0;;4
+167;4;9728;U16;;Saving in EEPROM parameters changed by Remote commands;;1.0;0.0;;4
+168;4;9984;U16;;Enable Remote Writing Operation;;1.0;0.0;;4
+169;4;10240;U16;;Load previous setup parameters stored in EEPROM;;1.0;0.0;;4

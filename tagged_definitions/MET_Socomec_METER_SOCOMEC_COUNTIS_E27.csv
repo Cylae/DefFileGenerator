@@ -33,15 +33,15 @@ modbusRTU;Meter;SOCOMEC;Countis_E27;0;;;;;;
 32;3;50532;U32;;Current I3;;0.001;0;A;4
 33;3;50534;U32;;Neutral Current;;0.001;0;A;4
 34;3;50536;I32;;Sum Active Power;P_AC;0.001;0;kW;4
-35;3;50538;I32;;Sum Reactive Power;;0.1;0;var;4
+35;3;50538;I32;;Sum Reactive Power;ReactivePowSUM;0.1;0;var;4
 36;3;50540;U32;;Sum Apparent Power;S_AC;0.1;0;VA;4
 37;3;50542;I32;;Sum Power Factor;PF;0.001;0;;4
 38;3;50544;I32;;Active Power phase 1;P_AC_1;0.001;0;kW;4
 39;3;50546;I32;;Active Power phase 2;P_AC_2;0.001;0;W;4
 40;3;50548;I32;;Active Power phase 3;P_AC_3;0.001;0;W;4
-41;3;50550;I32;;Reactive Power phase 1;Q_AC_1;0.001;0;var;4
-42;3;50552;I32;;Reactive Power phase 2;Q_AC_2;0.001;0;var;4
-43;3;50554;I32;;Reactive Power phase 3;Q_AC_3;0.001;0;var;4
+41;3;50550;I32;;Reactive Power phase 1;ReactivePow1;0.001;0;var;4
+42;3;50552;I32;;Reactive Power phase 2;ReactivePow2;0.001;0;var;4
+43;3;50554;I32;;Reactive Power phase 3;ReactivePow3;0.001;0;var;4
 44;3;50556;U32;;Apparent Power phase 1;S_AC_1;0.001;0;VA;4
 45;3;50558;U32;;Apparent Power phase 2;S_AC_2;0.001;0;VA;4
 46;3;50560;U32;;Apparent Power phase 3;S_AC_3;0.001;0;VA;4

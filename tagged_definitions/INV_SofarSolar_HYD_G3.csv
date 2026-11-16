@@ -66,7 +66,7 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 65;3;1166;U16;;Current_Output_R;;0.01;0;A;4
 66;3;1167;I16;;ActivePower_Output_R;;0.01;0;kW;4
 67;3;1168;I16;;ReactivePower_Output_R;;0.01;0;kW;4
-68;3;1169;I16;;PowerFactor_Output_R;;0.001;0;p.u.;4
+68;3;1169;I16;;PowerFactor_Output_R;PF;0.001;0;p.u.;4
 69;3;1170;U16;;Current_PCC_R;;0.01;0;A;4
 70;3;1171;I16;;ActivePower_PCC_R;;0.01;0;kW;4
 71;3;1172;I16;;ReactivePower_PCC_R;;0.01;0;kW;4
@@ -104,7 +104,7 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 103;3;1210;U16;;Voltage_Line_L1;;0.1;0;V;4
 104;3;1211;U16;;Voltage_Line_L2;;0.1;0;V;4
 105;3;1212;U16;;Voltage_Line_L3;;0.1;0;V;4
-106;3;1213;I16;;Power_Factor;PF;0.001;0;p.u.;4
+106;3;1213;I16;;Power_Factor;;0.001;0;p.u.;4
 107;3;1284;I16;;ActivePower_Load_Total;;0.01;0;kW;4
 108;3;1285;I16;;ReactivePower_Load_Total;;0.01;0;kW;4
 109;3;1286;I16;;ApparentPower_Load_Total;;0.01;0;kW;4
@@ -519,7 +519,7 @@ ModbusRTU;Inverter;SOFARSOLAR;HYDG3;1;;;;;;
 518;3;4358;U16;;Active_Power_Export_Limit;;0.1;0;%;4
 519;3;4359;U16;;Active_Power_Import_Limit;;0.1;0;%;4
 520;3;4360;I16;;Reactive_Power_Setting;;0.1;0;%;4
-521;3;4361;I16;;Power_Factor_Setting;CMD_PF;0.01;0;p.u.;1
+521;3;4361;I16;;Power_Factor_Setting;;0.01;0;p.u.;4
 522;3;4362;U16;;Active_Power_Limit_Speed;;1;0;%;4
 523;3;4363;U16;;Reactive_Power_Response_Time;;0.1;0;second;4
 524;3;4364;I16;;SVG_Fixed_Reactive_Power_Setting;;0.1;0;kVar;4

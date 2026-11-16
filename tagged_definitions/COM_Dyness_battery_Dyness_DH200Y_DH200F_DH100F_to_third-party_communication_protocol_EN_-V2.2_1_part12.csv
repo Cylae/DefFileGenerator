@@ -1,0 +1,65 @@
+modbusRTU;Other;Dyness battery;Dyness_DH200Y_DH200F_p12;;;;;;;
+1;4;1625;U16;;uwWaterPumpState;;1.0;0.0;None;4
+2;4;1626;U16;;uwCompressorState;;1.0;0.0;None;4
+3;4;1627;U16;;Reserve3;;1.0;0.0;None;0
+4;4;1628;U16;;uwHeatState;;1.0;0.0;None;4
+5;4;1629;U16;;uwCondensatState;;1.0;0.0;None;4
+6;4;1630;U16;;wEffluentTemp;;1.0;0.0;℃;4
+7;4;1631;U16;;wBackwaterTemp;;1.0;0.0;℃;4
+8;4;1632;U16;;uwEffluentPress;;1.0;0.0;bar;4
+9;4;1633;U16;;uwBackwaterPress;;1.0;0.0;bar;4
+10;4;1634;U16;;wAmbientTemp;TEMP_AMB;1.0;0.0;℃;4
+11;4;1635;U16;;uwFluidState;;1.0;0.0;None;4
+12;4;1636;U16;;uwOnOffState;;1.0;0.0;None;4
+13;4;1637;U16;;uwUnitNumber0;;1.0;0.0;None;4
+14;4;1638;U16;;uwUnitNumber1;;1.0;0.0;None;4
+15;4;1639;U16;;uwUnitNumber2;;1.0;0.0;None;4
+16;4;1640;U16;;uwUnitNumber3;;1.0;0.0;None;4
+17;4;1641;U16;;uwUnitNumber4;;1.0;0.0;None;4
+18;4;1642;U16;;uwUnitNumber5;;1.0;0.0;None;4
+19;4;1643;U16;;uwUnitNumber6;;1.0;0.0;None;4
+20;4;1644;U16;;uwUnitNumber7;;1.0;0.0;None;4
+21;4;1645;U16;;uwLocalRemoteStatus;;1.0;0.0;None;4
+22;4;1646;U16;;uwCondensatPress;;1.0;0.0;bar;4
+23;4;1647;U16;;Reserve23;;1.0;0.0;None;0
+24;4;1648;U16;;Reserve24;;1.0;0.0;None;0
+25;4;1649;U16;;Reserve25;;1.0;0.0;None;0
+26;4;1650;U16;;Reserve26;;1.0;0.0;None;0
+27;4;1651;U16;;Reserve27;;1.0;0.0;None;0
+28;4;1652;U16;;Reserve28;;1.0;0.0;None;0
+29;4;1653;U16;;Reserve29;;1.0;0.0;None;0
+30;4;1654;U16;;Reserve30;;1.0;0.0;None;0
+31;4;1655;U16;;uwAlarmState_1;;1.0;0.0;None;4
+32;4;1656;U16;;uwAlarmState_2;;1.0;0.0;None;4
+33;4;1657;U16;;uwAlarmState_3;;1.0;0.0;None;4
+34;4;1658;U16;;uwAlarmState_4;;1.0;0.0;None;4
+35;4;1659;U16;;None;;1.0;0.0;None;4
+36;4;1749;U16;;None;;1.0;0.0;None;4
+37;4;1660;U16;;High voltage protection;;1.0;0.0;None;4
+38;4;1661;U16;;Low voltage protection;;1.0;0.0;None;4
+39;4;1662;U16;;Protection against high exhaust temperature;;1.0;0.0;None;4
+40;4;1663;U16;;Low water outlet temperature protection;;1.0;0.0;None;4
+41;4;1664;U16;;High temperature protection for fins;;1.0;0.0;None;4
+42;4;1665;U16;;Protection against high temperature difference between inlet and outlet water;;1.0;0.0;None;4
+43;4;1666;U16;;External fan 1 malfunction;;1.0;0.0;None;4
+44;4;1667;U16;;Communication failure of external fan 1;;1.0;0.0;None;4
+45;4;1668;U16;;Overload fault of external fan 1;;1.0;0.0;None;4
+46;4;1669;U16;;External fan 2 malfunction;;1.0;0.0;None;4
+47;4;1670;U16;;Communication failure of external fan 2;;1.0;0.0;None;4
+48;4;1671;U16;;Overload fault of external fan 2;;1.0;0.0;None;4
+49;4;1672;U16;;Compressor 1 malfunction;;1.0;0.0;None;4
+50;4;1673;U16;;Communication fault of compressor 1;;1.0;0.0;None;4
+51;4;1674;U16;;Compressor 2 malfunction;;1.0;0.0;None;4
+52;4;1675;U16;;Communication fault of compressor 2;;1.0;0.0;None;4
+53;4;1676;U16;;Water pump malfunction;;1.0;0.0;None;4
+54;4;1677;U16;;Communication failure of water pump;;1.0;0.0;None;4
+55;4;1678;U16;;Water pump overload fault;;1.0;0.0;None;4
+56;4;1679;U16;;Machine status;;1.0;0.0;None;4
+57;4;1680;U16;;External fan 1;;1.0;0.0;None;4
+58;4;1681;U16;;External fan 2;;1.0;0.0;None;4
+59;4;1682;U16;;Compressor 1;;1.0;0.0;None;4
+60;4;1683;U16;;Compressor 2;;1.0;0.0;None;4
+61;4;1684;U16;;Electric heating;;1.0;0.0;None;4
+62;4;1685;U16;;water pump;;1.0;0.0;None;4
+63;4;1686;U16;;Makeup pump;;1.0;0.0;None;4
+64;4;1687;U16;;Fault alarm;;1.0;0.0;None;4

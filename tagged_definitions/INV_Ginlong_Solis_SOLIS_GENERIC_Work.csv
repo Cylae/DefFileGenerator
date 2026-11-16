@@ -5,7 +5,7 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 4;3;3002;U16;;AC output type;;0.250000;0.000000;;4
 5;3;3003;U16;;DC input type;;0.200000;0.000000;;4
 6;3;3004;U32;;Active Power;P_AC;0.166667;0.000000;;4
-7;3;3006;U32_W;;Total DC output power;;0.142857;0.000000;;1
+7;3;3006;U32_W;;Total DC output power;P_DC;0.142857;0.000000;;1
 8;3;3008;U32;;Total energy;E_TOT;0.125000;0.000000;;1
 9;3;3010;U32_W;;Energy this month;;0.111111;0.000000;;1
 10;3;3012;U32_W;;Energy last month;;0.100000;0.000000;;1
@@ -14,8 +14,8 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 13;3;3016;U32_W;;Energy this year;;0.076923;0.000000;;1
 14;3;3018;U32_W;;Energy last year;;0.071429;0.000000;;1
 15;3;3020;I16;;HMI Version;;0.066667;0.000000;;1
-16;3;3021;U16;;DC voltage 1;;0.062500;0.000000;;1
-17;3;3022;U16;;DC current 1;;0.058824;0.000000;;1
+16;3;3021;U16;;DC voltage 1;U_DC;0.062500;0.000000;;1
+17;3;3022;U16;;DC current 1;I_DC;0.058824;0.000000;;1
 18;3;3023;U16;;DC voltage 2;;0.055556;0.000000;;1
 19;3;3024;U16;;DC current 2;;0.052632;0.000000;;1
 20;3;3025;U16;;DC voltage 3;;0.050000;0.000000;;1
@@ -29,27 +29,27 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 28;3;3033;U16;;AB line voltage / A phase voltage;;0.035714;0.000000;;1
 29;3;3034;U16;;BC line voltage / B phase voltage;;0.034483;0.000000;;1
 30;3;3035;U16;;CA line voltage / C phase voltage;;0.033333;0.000000;;1
-31;3;3036;U16;;A phase current;;0.032258;0.000000;;1
+31;3;3036;U16;;A phase current;I_AC_3;0.032258;0.000000;;1
 32;3;3037;U16;;B phase current;;0.031250;0.000000;;1
 33;3;3038;U16;;C phase current;;0.030303;0.000000;;1
 34;3;3039;U16;;Master/slave dsp upgrade switch;;0.029412;0.000000;;4
 35;3;3040;U16;;Working mode;;0.028571;0.000000;;4
-36;3;3041;U16;;Inverter temperature;;0.027778;0.000000;;1
+36;3;3041;U16;;Inverter temperature;TEMP_INT;0.027778;0.000000;;1
 37;3;3042;U16;;Grid Frequency;FREQ;0.027027;0.000000;;1
 38;3;3043;U16;;Inverter status;;0.026316;0.000000;;9
 39;3;3044;I32;;Limit active power adjustement rated power;;0.025641;0.000000;;1
-40;3;3046;I32;;Limit reactive power adjustment rated power;;0.025000;0.000000;;1
+40;3;3046;I32;;Limit reactive power adjustment rated power;Q_AC;0.025000;0.000000;;1
 41;3;3048;U16;;Inverter control word;;0.024390;0.000000;;4
-42;3;3049;U16;;Power limit actual value;;0.023810;0.000000;;1
-43;3;3050;I16;;Actual adjust value of power factor;;0.023256;0.000000;;4
+42;3;3049;U16;;Power limit actual value;CMD_P_AC_SET_ABS;0.023810;0.000000;;1
+43;3;3050;I16;;Actual adjust value of power factor;PF;0.023256;0.000000;;4
 44;3;3051;I16;;Actual adjust value of power factor_1;;0.022727;0.000000;;4
 45;3;3052;I16;;Reactive power limitation;;0.022222;0.000000;;1
 46;3;3053;U16;;Country standard code;;0.021739;0.000000;;4
 47;3;3054;U16;;Power curve code;;0.021277;0.000000;;4
-48;3;3055;I32;;Reactive power;Q_AC;0.020833;0.000000;;1
+48;3;3055;I32;;Reactive power;;0.020833;0.000000;;1
 49;3;3057;I32;;Apparent power;S_AC;0.020408;0.000000;;1
 50;3;3059;I16;;Real-time power factor;;0.020000;0.000000;;4
-51;3;3060;U16;;Inverter SN_1;;0.019608;0.000000;;4
+51;3;3060;U16;;Inverter SN_1;SERIAL;0.019608;0.000000;;4
 52;3;3061;U16;;Inverter SN_2;;0.019231;0.000000;;4
 53;3;3062;U16;;Inverter SN_3;;0.018868;0.000000;;4
 54;3;3063;U16;;Inverter SN_4;;0.018519;0.000000;;4
@@ -76,7 +76,7 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 75;3;3089;U16;;Power limit switch;;0.013333;0.000000;;4
 76;3;3090;U16;;Reactive power switch;;0.013158;0.000000;;4
 77;3;3091;U16;;Groudning resistance;;0.012987;0.000000;;1
-78;3;3092;I16;;AC NTC (IGBT) Module Temperature;;0.012821;0.000000;;1
+78;3;3092;I16;;AC NTC (IGBT) Module Temperature;TEMP_CELL;0.012821;0.000000;;1
 79;3;3094;U16;;Fault word 00;;0.012658;0.000000;;9
 80;3;3095;U16;;Fault word 01;;0.012500;0.000000;;9
 81;3;3096;U16;;Fault word 02;;0.012346;0.000000;;9
@@ -143,7 +143,7 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 142;3;3249;U16;;Meter location;;0.007042;0.000000;;4
 143;3;3250;U16;;Meter AC voltage A;I_AC;0.006993;0.000000;;1
 144;3;3251;U16;;Meter AC current A;;0.006944;0.000000;;1
-145;3;3252;U16;;Meter AC voltage B;;0.006897;0.000000;;1
+145;3;3252;U16;;Meter AC voltage B;U_AC_L1L2;0.006897;0.000000;;1
 146;3;3253;U16;;Meter AC current B;;0.006849;0.000000;;1
 147;3;3254;U16;;Meter AC voltage C;;0.006803;0.000000;;1
 148;3;3255;U16;;Meter AC current C;;0.006757;0.000000;;1
@@ -159,10 +159,10 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 158;3;3274;I32;;Meter Apparent Power B;S_AC_2;0.006329;0.000000;;1
 159;3;3276;I32;;Meter Apparent Power C;S_AC_3;0.006289;0.000000;;1
 160;3;3278;I32;;Meter Total Apparent Power;;0.006250;0.000000;;1
-161;3;3280;I16;;Meter PF;PF;0.006211;0.000000;;4
+161;3;3280;I16;;Meter PF;;0.006211;0.000000;;4
 162;3;3281;U16;;Meter Freq;;0.006173;0.000000;;1
-163;3;3282;U32;;Meter grid import active energy;;0.006135;0.000000;;1
-164;3;3284;U32;;Meter grid export active energy;;0.006098;0.000000;;1
+163;3;3282;U32;;Meter grid import active energy;E_IMP;0.006135;0.000000;;1
+164;3;3284;U32;;Meter grid export active energy;E_EXP;0.006098;0.000000;;1
 165;3;3286;U16;;PV string voltage and Current Combination Description;;0.006061;0.000000;;4
 166;3;3288;I16;;PV21I;;0.006024;0.000000;;1
 167;3;3289;I16;;PV22I;;0.005988;0.000000;;1
@@ -458,7 +458,7 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 457;3;3797;U16;;PVV32;;0.002183;0.000000;;1
 458;3;3798;I16;;PVI32;;0.002179;0.000000;;1
 459;3;4999;U16;;Inverter status_1;;0.002169;0.000000;;9
-460;3;5001;U16;;DC bus voltage;U_DC;0.002165;0.000000;;1
+460;3;5001;U16;;DC bus voltage;;0.002165;0.000000;;1
 461;3;33600;U16;;Energy Read Progress;;0.002155;0.000000;;1
 462;3;33601;U16;;Energy Check Method;;0.002151;0.000000;;4
 463;3;33602;U16;;Energy Detailed Type;;0.002146;0.000000;;4
@@ -542,14 +542,14 @@ modbusRTU;Inverter;Ginlong_Solis;SOLIS_GENERIC_Work;;;;;;;
 541;3;33702;U16;;Fault/Alarm 5 occurred when: hours: minutes;;0.001838;0.000000;;9
 542;3;33703;U16;;Fault/Alarm 5 status;;0.001835;0.000000;;9
 543;3;33704;U16;;Fault/Alert 5 data;;0.001832;0.000000;;9
-544;3;3005;U16;;Slave address;;0.001808;0.000000;;4
+544;3;3005;U16;;Slave address;UNIT_ID;0.001808;0.000000;;4
 545;3;3009;U16;;81>S1;;0.001799;0.000000;;1
 546;3;3011;U16;;81<S1_1;;0.001792;0.000000;;1
 547;3;3013;U16;;81>S2F;;0.001786;0.000000;;1
 548;3;3017;U16;;81>S2S;;0.001773;0.000000;;1
 549;3;3019;U16;;81>S2S_1;;0.001767;0.000000;;1
 550;3;3080;I16;;Limit power actual value;;0.001672;0.000000;;1
-551;3;3084;U16;;PV insulation protection;;0.001664;0.000000;;1
+551;3;3084;U16;;PV insulation protection;R_ISO;0.001664;0.000000;;1
 552;3;3088;U16;;Grid code accuracy set flag;;0.001661;0.000000;;4
 553;3;3093;U16;;UN-G-V 01;;0.001647;0.000000;;1
 554;3;3100;U16;;OV-G-F-T 02;;0.001629;0.000000;;1

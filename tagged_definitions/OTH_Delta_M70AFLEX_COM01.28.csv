@@ -10,23 +10,23 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 9;4;40069;U16;;Pad;;1.0;0.0;;4
 10;4;40070;U16;;ID;;1.0;0.0;;4
 11;4;40071;U16;;L;;1.0;0.0;;4
-12;4;40072;U16;;Amps (A);;1.0;0.0;;4
-13;4;40073;U16;;Amps PhaseA (AphA);;1.0;0.0;;4
-14;4;40074;U16;;Amps PhaseB (AphB);;1.0;0.0;;4
-15;4;40075;U16;;Amps PhaseC (AphC);;1.0;0.0;;4
+12;4;40072;U16;;Amps (A);I_AC;1.0;0.0;;4
+13;4;40073;U16;;Amps PhaseA (AphA);I_AC_1;1.0;0.0;;4
+14;4;40074;U16;;Amps PhaseB (AphB);I_AC_2;1.0;0.0;;4
+15;4;40075;U16;;Amps PhaseC (AphC);I_AC_3;1.0;0.0;;4
 16;4;40076;U16;;A_SF;;1.0;0.0;;4
 17;4;40077;U16;;Phase Voltage AB (PPVphAB);U_AC_L1L2;1.0;0.0;;4
 18;4;40078;U16;;Phase Voltage BC (PPVphBC);U_AC_L2L3;1.0;0.0;;4
 19;4;40079;U16;;Phase Voltage CA (PPVphCA);U_AC_L3L1;1.0;0.0;;4
-20;4;40080;U16;;Phase Voltage AN (PhVphA);;1.0;0.0;;4
-21;4;40081;U16;;Phase Voltage BN (PhVphB);;1.0;0.0;;4
-22;4;40082;U16;;Phase Voltage CN (PhVphC);;1.0;0.0;;4
+20;4;40080;U16;;Phase Voltage AN (PhVphA);U_AC_1;1.0;0.0;;4
+21;4;40081;U16;;Phase Voltage BN (PhVphB);U_AC_2;1.0;0.0;;4
+22;4;40082;U16;;Phase Voltage CN (PhVphC);U_AC_3;1.0;0.0;;4
 23;4;40083;U16;;V_SF;;1.0;0.0;;4
-24;4;40084;U16;;Watts (W);;1.0;0.0;;4
+24;4;40084;U16;;Watts (W);P_AC;1.0;0.0;;4
 25;4;40085;U16;;W_SF;;1.0;0.0;;4
 26;4;40086;U16;;Hz;FREQ;1.0;0.0;;4
 27;4;40087;U16;;Hz_SF;;1.0;0.0;;4
-28;4;40088;U16;;VA;;1.0;0.0;;4
+28;4;40088;U16;;VA;S_AC;1.0;0.0;;4
 29;4;40089;U16;;VA_SF;;1.0;0.0;;4
 30;4;40090;U16;;VAr;Q_AC;1.0;0.0;;4
 31;4;40091;U16;;VAr_SF;;1.0;0.0;;4
@@ -34,11 +34,11 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 33;4;40093;U16;;PF_SF;;1.0;0.0;;4
 34;4;40094;U16;;WattHours (WH);;1.0;0.0;;4
 35;4;40096;U16;;WH_SF;;1.0;0.0;;4
-36;4;40097;U16;;DC Amps (DCA);;1.0;0.0;;4
+36;4;40097;U16;;DC Amps (DCA);I_DC;1.0;0.0;;4
 37;4;40098;U16;;DCA_SF;;1.0;0.0;;4
 38;4;40099;U16;;DC Voltage (DCV);U_DC;1.0;0.0;;4
 39;4;40100;U16;;DCV_SF;;1.0;0.0;;4
-40;4;40101;U16;;DC Watts (DCW);;1.0;0.0;;4
+40;4;40101;U16;;DC Watts (DCW);P_DC;1.0;0.0;;4
 41;4;40102;U16;;DCW_SF;;1.0;0.0;;4
 42;4;40103;U16;;Cabinet Temperature (TmpCab);TEMP_INT;1.0;0.0;;4
 43;4;40104;U16;;Heat Sink Temperature (TmpSnk);;1.0;0.0;;4
@@ -133,29 +133,29 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 132;4;40219;U16;;TmSrc;;1.0;0.0;;4
 133;4;40223;U16;;Tms;;1.0;0.0;;4
 134;4;40225;U16;;RtSt;;1.0;0.0;;4
-135;4;40226;U16;;Ris;;1.0;0.0;;4
+135;4;40226;U16;;Ris;R_ISO;1.0;0.0;;4
 136;4;40227;U16;;Ris_SF;;1.0;0.0;;4
 137;4;40228;U16;;ID;;1.0;0.0;;4
 138;4;40229;U16;;L;;1.0;0.0;;4
 139;4;40230;U16;;Conn_WinTms;;1.0;0.0;;1
 140;4;40231;U16;;Conn_RvrtTms;;1.0;0.0;;1
 141;4;40232;U16;;Conn;;1.0;0.0;;1
-142;4;40233;U16;;WMaxLimPct;CMD_P_AC_SET_PERCENT;1.0;0.0;;1
-143;4;40234;U16;;WMaxLimPct_WinTms;CMD_P_ENA;1.0;0.0;;1
-144;4;40235;U16;;WMaxLimPct_RvrtTms;CMD_REVERT_TIME_S;1.0;0.0;;1
-145;4;40236;U16;;WMaxLimPct_RmpTms;CMD_RAMP_TIME_S;1.0;0.0;;1
+142;4;40233;U16;;WMaxLimPct;CMD_P_ENA;1.0;0.0;;1
+143;4;40234;U16;;WMaxLimPct_WinTms;;1.0;0.0;;1
+144;4;40235;U16;;WMaxLimPct_RvrtTms;;1.0;0.0;;1
+145;4;40236;U16;;WMaxLimPct_RmpTms;;1.0;0.0;;1
 146;4;40237;U16;;WMaxLim_Ena;;1.0;0.0;;1
 147;4;40238;U16;;OutPFSet;CMD_PF;1.0;0.0;;1
 148;4;40239;U16;;OutPFSet_WinTms;;1.0;0.0;;1
-149;4;40240;U16;;OutPFSet_RvrtTms;;1.0;0.0;;1
-150;4;40241;U16;;OutPFSet_RmpTms;;1.0;0.0;;1
+149;4;40240;U16;;OutPFSet_RvrtTms;CMD_PF_REVERT_TIME_S;1.0;0.0;;1
+150;4;40241;U16;;OutPFSet_RmpTms;CMD_PF_RAMP_TIME_S;1.0;0.0;;1
 151;4;40242;U16;;OutPFSet_Ena;CMD_PF_ENA;1.0;0.0;;1
 152;4;40243;U16;;VArWMaxPct;;1.0;0.0;;1
 153;4;40244;U16;;VArMaxPct;;1.0;0.0;;1
 154;4;40245;U16;;VArAvalPct;;1.0;0.0;;1
 155;4;40246;U16;;VArPct_WinTms;;1.0;0.0;;1
-156;4;40247;U16;;VArPct_RvrtTms;;1.0;0.0;;1
-157;4;40248;U16;;VArPct_RmpTms;;1.0;0.0;;1
+156;4;40247;U16;;VArPct_RvrtTms;CMD_Q_REVERT_TIME_S;1.0;0.0;;1
+157;4;40248;U16;;VArPct_RmpTms;CMD_Q_RAMP_TIME_S;1.0;0.0;;1
 158;4;40249;U16;;VArPct_Mod;CMD_Q_MODE;1.0;0.0;;1
 159;4;40250;U16;;VArPct_Ena;CMD_Q_ENA;1.0;0.0;;1
 160;4;40251;U16;;WMaxLimPct_SF;;1.0;0.0;;4
@@ -372,11 +372,11 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 371;4;40483;U16;;RmpIncDec_SF;;1.0;0.0;;4
 372;4;40484;U16;;ActPt;;1.0;0.0;;1
 373;4;40485;U16;;W1;;1.0;0.0;;1
-374;4;40486;U16;;PF1;PF_1;1.0;0.0;;1
+374;4;40486;U16;;PF1;;1.0;0.0;;1
 375;4;40487;U16;;W2;;1.0;0.0;;1
-376;4;40488;U16;;PF2;PF_2;1.0;0.0;;1
+376;4;40488;U16;;PF2;;1.0;0.0;;1
 377;4;40489;U16;;W3;;1.0;0.0;;1
-378;4;40490;U16;;PF3;PF_3;1.0;0.0;;1
+378;4;40490;U16;;PF3;;1.0;0.0;;1
 379;4;40491;U16;;W4;;1.0;0.0;;1
 380;4;40492;U16;;PF4;;1.0;0.0;;1
 381;4;40493;U16;;W5;;1.0;0.0;;1
@@ -588,9 +588,9 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 587;4;40727;U16;;ReadOnly;;1.0;0.0;;4
 588;4;40728;U16;;ID;;1.0;0.0;;4
 589;4;40729;U16;;L;;1.0;0.0;;4
-590;4;40730;U16;;Current Scale Factor (DCA_SF);I_DC;1.0;0.0;;4
+590;4;40730;U16;;Current Scale Factor (DCA_SF);;1.0;0.0;;4
 591;4;40731;U16;;Voltage Scale Factor (DCV_SF);;1.0;0.0;;4
-592;4;40732;U16;;Power Scale Factor (DCW_SF);P_DC;1.0;0.0;;4
+592;4;40732;U16;;Power Scale Factor (DCW_SF);;1.0;0.0;;4
 593;4;40733;U16;;Energy Scale Factor (DCWH_SF);;1.0;0.0;;4
 594;4;40734;U16;;Global Events (Evt);;1.0;0.0;;4
 595;4;40736;U16;;Number of Modules (N);;1.0;0.0;;4
@@ -602,7 +602,7 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 601;4;40749;U16;;DC Power (DCW);;1.0;0.0;;4
 602;4;40750;U16;;Lifetime Energy (DCWH);E_TOT;1.0;0.0;;4
 603;4;40752;U16;;Timestamp (Tms);;1.0;0.0;;4
-604;4;40754;U16;;Temperature (Tmp);TEMP;1.0;0.0;;4
+604;4;40754;U16;;Temperature (Tmp);;1.0;0.0;;4
 605;4;40755;U16;;Operating State (DCSt);;1.0;0.0;;4
 606;4;40756;U16;;Module Events (DCEvt);;1.0;0.0;;4
 607;4;40758;U16;;Input ID (ID);;1.0;0.0;;4
@@ -661,7 +661,7 @@ modbusRTU;Other;Delta;M70AFLEX_COM01.28;;;;;;;
 660;4;40861;U16;;DCAhr_SF;;1.0;0.0;;4
 661;4;40862;U16;;DCV_SF;;1.0;0.0;;4
 662;4;40863;U16;;Rating (DCAMax);;1.0;0.0;;4
-663;4;40864;U16;;N;U_AC_1;1.0;0.0;;4
+663;4;40864;U16;;N;;1.0;0.0;;4
 664;4;40865;U16;;Event (Evt);;1.0;0.0;;4
 665;4;40867;U16;;Vendor Event (EvtVnd);;1.0;0.0;;4
 666;4;40869;U16;;Amps (DCA);;1.0;0.0;;4

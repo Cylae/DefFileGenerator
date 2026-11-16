@@ -5,8 +5,8 @@ modbusRTU;Other;Sungrow;MODBUS_SUNGROW_Logger1000-3000;;;;;;;
 4;4;8005;U16;;Total devices connected;;1.0;0.0;;4
 5;4;8006;U16;;Total faulty devices;;1.0;0.0;;4
 6;4;8021;U16;;Digital input state;;1.0;0.0;;4
-7;4;8027;U16;;PT100-1;;1.0;0.0;;4
-8;4;8028;U16;;PT100-2;;1.0;0.0;;4
+7;4;8027;U16;;PT100-1;SERIAL;1.0;0.0;;4
+8;4;8028;U16;;PT100-2;FREQ;1.0;0.0;;4
 9;4;8029;U16;;ADC1 voltage;U_DC;1.0;0.0;V;4
 10;4;8030;U16;;ADC1 current;I_DC;1.0;0.0;mA;4
 11;4;8031;U16;;ADC2 voltage;;1.0;0.0;V;4
@@ -34,19 +34,17 @@ modbusRTU;Other;Sungrow;MODBUS_SUNGROW_Logger1000-3000;;;;;;;
 33;4;8088;U16;;Min. adjustable reactive power;;1.0;0.0;kvar;4
 34;4;8090;U16;;Max. adjustable reactive power;;1.0;0.0;kvar;4
 35;4;8092;U16;;Nominal active power;P_RATED;1.0;0.0;kvar;4
-36;4;8094;U16;;Nominal reactive power;Q_RATED;1.0;0.0;kvar;4
+36;4;8094;U16;;Nominal reactive power;;1.0;0.0;kvar;4
 37;4;8096;U16;;Grid-connected devices;;1.0;0.0;;4
 38;4;8097;U16;;Off-grid devices;;1.0;0.0;;4
 39;4;8098;U16;;Monthly yield of array;;1.0;0.0;kWh;4
 40;4;8102;U16;;Annual yield of array;;1.0;0.0;kWh;4
 41;4;8106;U16;;Apparent power of array;S_AC;1.0;0.0;VA;4
 42;4;8002;U16;;Set On/Off for subarray inverter;;1.0;0.0;;4
-43;4;8003;U16;;Set the active power value for subaray inverter;;1.0;0.0;kW;4
-44;4;8005;U16;;Set the active power ratio for subarray inverter;CMD_P_AC_SET_PERCENT;1.0;0.0;%;1
-45;4;8007;U16;;Set the reactive power value for subarray inverter;;1.0;0.0;kvar;4
-46;4;8009;U16;;Set the reactive power ratio for subarray inverter;;1.0;0.0;%;4
-47;4;8011;U16;;Set the power factor for subarray inverter;PF;1.0;0.0;;4
-48;4;8013;U16;;D01;;1.0;0.0;;4
-49;4;8014;U16;;D02;;1.0;0.0;;4
-50;4;8015;U16;;D03;;1.0;0.0;;4
-51;4;8016;U16;;D04;;1.0;0.0;;4
+43;4;8007;U16;;Set the reactive power value for subarray inverter;;1.0;0.0;kvar;4
+44;4;8009;U16;;Set the reactive power ratio for subarray inverter;;1.0;0.0;%;4
+45;4;8011;U16;;Set the power factor for subarray inverter;PF;1.0;0.0;;4
+46;4;8013;U16;;D01;;1.0;0.0;;4
+47;4;8014;U16;;D02;;1.0;0.0;;4
+48;4;8015;U16;;D03;;1.0;0.0;;4
+49;4;8016;U16;;D04;;1.0;0.0;;4

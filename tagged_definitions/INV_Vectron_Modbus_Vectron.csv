@@ -14,8 +14,8 @@ modbusRTU;Inverter;VECTRON;RPS450TL;;;;;;;
 13;3;251;I16;;Analog Input MFI1A;;1;0;%;4
 14;3;253;I16;;Analog Input EM-S1INA;;1;0;%;4
 15;3;254;I16;;Digital Outputs;;1;0;;4
-16;3;255;I16;;Heat Sink Temperature;TEMP_INT;1;0;C;4
-17;3;256;I16;;Inside Temperature;;0.1;0;C;4
+16;3;255;I16;;Heat Sink Temperature;SERIAL;1;0;C;4
+17;3;256;I16;;Inside Temperature;TEMP_INT;0.1;0;C;4
 18;3;257;I16;;Analog Output MFO1A;;0.01;0;V;4
 19;3;260;U16;;Current Error;;0.1;0;;4
 20;3;266;I16;;Analog Output EM-S1OUTA;;0.01;0;V;4
@@ -44,7 +44,7 @@ modbusRTU;Inverter;VECTRON;RPS450TL;;;;;;;
 43;3;858;I16;;Power Factor Phase c;PF_3;0.01;0;;4
 44;3;859;I16;;Power Factor Total;;0.1;0;;4
 45;3;860;I16;;DC Current;I_DC;0.01;0;A;4
-46;3;861;I16;;Active current;;0.1;0;A;4
+46;3;861;I16;;Active current;I_AC;0.1;0;A;4
 47;3;862;I16;;Reactive current;;0.01;0;A;4
 48;3;863;I16;;Current Phase a;I_AC_1;0.1;0;A;4
 49;3;864;I16;;Current Phase b;I_AC_2;0.01;0;A;4

@@ -66,8 +66,8 @@ ModbusRTU;Inverter;CyberPower;1-Phase;;;;;;;
 65;4;4187;U16;;AC Freq (average);FREQ;0.01;0;Hz;4
 66;4;4188;U16;;AC Volt (redundant) (average);;0.1;0;V;4
 67;4;4189;U16;;AC Freq (redundant) (average);;0.01;0;Hz;4
-68;4;4190;U16;;Temperature (Ambient);TEMP_AMB;1;0;K;4
-69;4;4191;U16;;Temperature (Heatsink);TEMP_INT;1;0;K;4
+68;4;4190;U16;;Temperature (Ambient);TEMP_INT;1;0;K;4
+69;4;4191;U16;;Temperature (Heatsink);;1;0;K;4
 70;4;4192;U16;;Input1 Volt;;0.1;0;V;4
 71;4;4193;U16;;Input1 Curr;;0.01;0;A;4
 72;4;4194;U16;;Input1 Watt;;1;0;W;4
@@ -78,7 +78,7 @@ ModbusRTU;Inverter;CyberPower;1-Phase;;;;;;;
 77;4;4199;U16;;Bus Volt (Neg);;0.1;0;V;4
 78;4;4200;U16;;AC Volt;;0.1;0;V;4
 79;4;4201;U16;;AC Curr;;0.01;0;A;4
-80;4;4202;U16;;AC Watt;;1;0;W;4
+80;4;4202;U16;;AC Watt;Watts;1;0;W;4
 81;4;4203;U16;;AC Freq;;0.01;0;Hz;4
 82;4;4204;U16;;AC Volt (redundant);;0.1;0;V;4
 83;4;4205;U16;;AC Freq (redundant);;0.01;0;Hz;4

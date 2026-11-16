@@ -3,7 +3,7 @@ modbusRTU;Other;Kehua;KEHUA_ThreePhase_nondefinitif;;;;;;;
 2;4;4810_10;STRING;;Hardware version;;1.000000;0.000000;;4
 3;4;4815_10;STRING;;Control software version;;1.000000;0.000000;;4
 4;4;4820_10;STRING;;HMI software version;;1.000000;0.000000;;4
-5;4;4825_30;STRING;;Manufacturer info;;1.000000;0.000000;;4
+5;4;4825_30;STRING;;Manufacturer info;MANUFACTURER;1.000000;0.000000;;4
 6;4;4850;U16;;Device type;;1.000000;0.000000;;4
 7;4;4852;U16;;Protocol type;;1.000000;0.000000;;4
 8;4;4853_10;STRING;;Protocol version;;1.000000;0.000000;;4
@@ -13,18 +13,18 @@ modbusRTU;Other;Kehua;KEHUA_ThreePhase_nondefinitif;;;;;;;
 12;4;5003;U16;;Fault code 2;;1.000000;0.000000;;4
 13;4;5004;U16;;Fault code 3;;1.000000;0.000000;;4
 14;4;5005;U16;;Fault code 4;;1.000000;0.000000;;4
-15;4;5006;U16;;Grid voltage (U/UV);;0.100000;0.000000;V;4
+15;4;5006;U16;;Grid voltage (U/UV);U_AC_L1L2;0.100000;0.000000;V;4
 16;4;5007;U16;;Grid voltage (V/VW);;0.100000;0.000000;V;4
 17;4;5008;U16;;Grid voltage (W/WU);;0.100000;0.000000;V;4
 18;4;5009;U16;;Output voltage (U/UV);;0.100000;0.000000;V;4
 19;4;5010;U16;;Output voltage (V/VW);;0.100000;0.000000;V;4
 20;4;5011;U16;;Output voltage (W/WU);;0.100000;0.000000;V;4
-21;4;5012;U16;;Output current (U);;0.100000;0.000000;A;4
+21;4;5012;U16;;Output current (U);P_AC;0.100000;0.000000;A;4
 22;4;5013;U16;;Output current (V);;0.100000;0.000000;A;4
-23;4;5014;U16;;Output current (W);P_AC;0.100000;0.000000;A;4
-24;4;5015;U16;;Off-grid frequency;;0.010000;0.000000;Hz;4
-25;4;5016;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
-26;4;5018;I16;;Inner temperature;;0.100000;0.000000;?;4
+23;4;5014;U16;;Output current (W);;0.100000;0.000000;A;4
+24;4;5015;U16;;Off-grid frequency;FREQ;0.010000;0.000000;Hz;4
+25;4;5016;U16;;Grid frequency;;0.010000;0.000000;Hz;4
+26;4;5018;I16;;Inner temperature;TEMP_INT;0.100000;0.000000;?;4
 27;4;5019;I16;;Heat sink temperature;;0.100000;0.000000;?;4
 28;4;5020;U16;;DC voltage;U_DC;0.100000;0.000000;V;4
 29;4;5021;I16;;DC current;I_DC;0.100000;0.000000;A;4
@@ -58,7 +58,7 @@ modbusRTU;Other;Kehua;KEHUA_ThreePhase_nondefinitif;;;;;;;
 57;4;5056;I16;;Total power factor;;0.010000;0.000000;;4
 58;4;5200;U16;;BMS status;;1.000000;0.000000;;4
 59;4;5202;U16;;Battery total voltage;;0.100000;0.000000;V;4
-60;4;5203;I16;;Battery total current;;0.100000;0.000000;A;4
+60;4;5203;I16;;Battery total current;I_AC;0.100000;0.000000;A;4
 61;4;5204;U16;;Battery SOC;SOC;0.001000;0.000000;;4
 62;4;5205;U16;;Battery SOH;SOH;0.001000;0.000000;;4
 63;4;5206;U16;;Charge limited-current;;0.100000;0.000000;A;4

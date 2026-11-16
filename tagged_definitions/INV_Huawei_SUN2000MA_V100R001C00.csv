@@ -5,10 +5,10 @@ modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
 4;3;30070;U16;;Model ID;;1.000000;0.000000;N/A;4
 5;3;30071;U16;;Number of PV strings;;1.000000;0.000000;N/A;4
 6;3;30072;U16;;Number of MPP trackers;;1.000000;0.000000;N/A;4
-7;3;30073;U32;;Rated power (P ) n;;0.001000;0.000000;kW;4
-8;3;30075;U32;;Maximum active power (P ) max;;0.001000;0.000000;kW;4
-9;3;30077;U32;;Maximum apparent power (S ) max;;0.001000;0.000000;kVA;4
-10;3;30079;I32;;Maximum reactive power (Q , fed to max the power grid);;0.001000;0.000000;kVar;4
+7;3;30073;U32;;Rated power (P ) n;P_RATED;0.001000;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (P ) max;P_AC;0.001000;0.000000;kW;4
+9;3;30077;U32;;Maximum apparent power (S ) max;S_AC;0.001000;0.000000;kVA;4
+10;3;30079;I32;;Maximum reactive power (Q , fed to max the power grid);Q_AC;0.001000;0.000000;kVar;4
 11;3;30081;I32;;Maximum reactive power (Q , max absorbed from the power grid);;0.001000;0.000000;kVar;4
 12;3;30561_30;STRING;;Offering name of southbound device 1;;1.000000;0.000000;N/A;4
 13;3;30576_30;STRING;;Offering name of southbound device 2;;1.000000;0.000000;N/A;4
@@ -24,31 +24,31 @@ modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
 23;3;32000;U16;;[Remote communicati on] Single- machine remote communicati on;;1.000000;0.000000;N/A;4
 24;3;32002;U16;;[Remote communicati on] Running status (monitoring processing);;1.000000;0.000000;N/A;4
 25;3;32003;U32;;[Remote communicati on] Running status (power processing);;1.000000;0.000000;N/A;4
-26;3;32008;U16;;Alarm 1;;1.000000;0.000000;N/A;4
-27;3;32009;U16;;Alarm 2;;1.000000;0.000000;N/A;4
-28;3;32010;U16;;Alarm 3;;1.000000;0.000000;N/A;4
+26;3;32008;U16;;Alarm 1;ALARM_1;1.000000;0.000000;N/A;9
+27;3;32009;U16;;Alarm 2;ALARM_2;1.000000;0.000000;N/A;9
+28;3;32010;U16;;Alarm 3;ALARM_3;1.000000;0.000000;N/A;9
 29;3;32015;U16;;ESN;;1.000000;0.000000;N/A;4
-30;3;32016;I16;;PV1 voltage;;0.100000;0.000000;V;4
-31;3;32017;I16;;PV1 current;;0.010000;0.000000;A;4
-32;3;32018;I16;;PV2 voltage;;0.100000;0.000000;V;4
-33;3;32019;I16;;PV2 current;;0.010000;0.000000;A;4
-34;3;32020;I16;;PV3 voltage;;0.100000;0.000000;V;4
-35;3;32021;I16;;PV3 current;;0.010000;0.000000;A;4
-36;3;32022;I16;;PV4 voltage;;0.100000;0.000000;V;4
-37;3;32023;I16;;PV4 current;;0.010000;0.000000;A;4
+30;3;32016;I16;;PV1 voltage;U_DC_STRING_1;0.100000;0.000000;V;4
+31;3;32017;I16;;PV1 current;I_DC_STRING_1;0.010000;0.000000;A;4
+32;3;32018;I16;;PV2 voltage;U_DC_STRING_2;0.100000;0.000000;V;4
+33;3;32019;I16;;PV2 current;I_DC_STRING_2;0.010000;0.000000;A;4
+34;3;32020;I16;;PV3 voltage;U_DC_STRING_3;0.100000;0.000000;V;4
+35;3;32021;I16;;PV3 current;I_DC_STRING_3;0.010000;0.000000;A;4
+36;3;32022;I16;;PV4 voltage;U_DC_STRING_4;0.100000;0.000000;V;4
+37;3;32023;I16;;PV4 current;I_DC_STRING_4;0.010000;0.000000;A;4
 38;3;32064;I32;;Input power;P_DC;0.001000;0.000000;kW;4
-39;3;32066;U16;;Power grid voltage/Line voltage between phases A and B;;0.100000;0.000000;V;4
-40;3;32067;U16;;Line voltage between phases B and C;;0.100000;0.000000;V;4
+39;3;32066;U16;;Power grid voltage/Line voltage between phases A and B;U_AC_L1L2;0.100000;0.000000;V;4
+40;3;32067;U16;;Line voltage between phases B and C;U_AC_L2L3;0.100000;0.000000;V;4
 41;3;32068;U16;;Line voltage between phases C and A;I_AC;0.100000;0.000000;V;4
 42;3;32069;U16;;Phase A voltage;U_AC_1;0.100000;0.000000;V;4
 43;3;32070;U16;;Phase B voltage;U_AC_2;0.100000;0.000000;V;4
 44;3;32071;U16;;Phase C voltage;U_AC_3;0.100000;0.000000;V;4
-45;3;32072;I32;;Power grid current/ Phase A current;;0.001000;0.000000;A;4
+45;3;32072;I32;;Power grid current/ Phase A current;I_AC_1;0.001000;0.000000;A;4
 46;3;32074;I32;;Phase B current;I_AC_2;0.001000;0.000000;A;4
 47;3;32076;I32;;Phase C current;I_AC_3;0.001000;0.000000;A;4
 48;3;32078;I32;;Peak active power of current day;;0.001000;0.000000;kW;4
-49;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
-50;3;32082;I32;;Reactive power;Q_AC;0.001000;0.000000;kVar;4
+49;3;32080;I32;;Active power;;0.001000;0.000000;kW;4
+50;3;32082;I32;;Reactive power;;0.001000;0.000000;kVar;4
 51;3;32084;I16;;Power factor;PF;0.001000;0.000000;N/A;4
 52;3;32085;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
 53;3;32086;U16;;Efficiency;;0.010000;0.000000;'%;4
@@ -81,13 +81,13 @@ modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
 80;3;40129;I32;;[Power grid scheduling] Reactive power compensatio n at night (kVar);;0.001000;0.000000;kVar;1
 81;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;;1.000000;0.000000;s;1
 82;3;40198;I16;;[Power grid scheduling] Q-U power percentage to exit scheduling*;;1.000000;0.000000;'%;1
-83;3;40200;U16;;Startup;;1.000000;0.000000;N/A;1
-84;3;40201;U16;;Shutdown;;1.000000;0.000000;N/A;1
+83;3;40200;U16;;Startup;CMD_ON;1.000000;0.000000;N/A;1
+84;3;40201;U16;;Shutdown;CMD_OFF;1.000000;0.000000;N/A;1
 85;3;42000;U16;;Grid code;;1.000000;0.000000;NA;1
 86;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001000;0.000000;'%/s;1
 87;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001000;0.000000;'%/s;1
-88;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;;1.000000;0.000000;s;1
-89;3;42405;I32;;Failsafe Active Power Limit [kW] [High Accuracy];;0.001000;0.000000;kW;1
+88;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.000000;0.000000;s;1
+89;3;42405;I32;;Failsafe Active Power Limit [kW] [High Accuracy];CMD_P_AC_SET_ABS;0.001000;0.000000;kW;1
 90;3;43006;I16;;Time zone;;1.000000;0.000000;min;1
 91;3;43098;U16;;[Manageme nt system] TLS encryption;;1.000000;0.000000;N/A;1
 92;3;45052;U16;;WLAN wakeup;;1.000000;0.000000;N/A;1
@@ -118,7 +118,7 @@ modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
 117;3;37046;U32;;[Energ y storag e]Max imum charge power;;1.000000;0.000000;W;4
 118;3;37048;U32;;[Energ y storag e] Maxi mum discha rge power;;1.000000;0.000000;W;4
 119;3;37052_20;STRING;;[Energ y storag e unit 1] SN;;1.000000;0.000000;N/A;4
-120;3;37066;U32;;[Energ y storag e unit 1] Total charge;;0.010000;0.000000;kWh;4
+120;3;37066;U32;;[Energ y storag e unit 1] Total charge;E_TOT;0.010000;0.000000;kWh;4
 121;3;37068;U32;;[Energ y storag e unit 1] Total discha rge;;0.010000;0.000000;kWh;4
 122;3;37700;U8;;[Energ y storag e unit 2] SN;;1.000000;0.000000;N/A;4
 123;3;37738;U16;;[Energ y storag e unit 2] Batter y SOC;;0.100000;0.000000;'%;4
@@ -258,7 +258,7 @@ modbusRTU;Inverter;Huawei;SUN2000MA_V100R001C00;;;;;;;
 257;3;37126;I32;;A-B line voltage;;0.100000;0.000000;V;4
 258;3;37128;I32;;B-C line voltage;;0.100000;0.000000;V;4
 259;3;37130;I32;;CA line voltage;;0.100000;0.000000;V;4
-260;3;37132;I32;;A phase active power;;1.000000;0.000000;W;4
+260;3;37132;I32;;A phase active power;P_AC_1;1.000000;0.000000;W;4
 261;3;37134;I32;;B phase active power;;1.000000;0.000000;W;4
 262;3;37136;I32;;C phase active power;;1.000000;0.000000;W;4
 263;3;37138;U16;;Meter model detection result;;1.000000;0.000000;N/A;4

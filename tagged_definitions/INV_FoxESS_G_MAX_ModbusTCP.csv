@@ -2,17 +2,17 @@ modbusTCP;Inverter;Fox ESS;G-MAX_ModbusTCP;;;;;;;
 1;3;101;U16;;PCS actual total active power (summary);P_AC;10.000000;0.000000;KW;4
 2;3;102;U16;;PCS actual total reactive power (summary);Q_AC;10.000000;0.000000;Kvar;4
 3;3;103;U16;;Total voltage (summary);;10.000000;0.000000;V;4
-4;3;104;U16;;Total current (summary);;10.000000;0.000000;A;4
+4;3;104;U16;;Total current (summary);I_AC;10.000000;0.000000;A;4
 5;3;105;U16;;Total soc (summary);SOC;1.000000;0.000000;'%;4
 6;3;106;U16;;Battery status (summary);;1.000000;0.000000;;4
 7;3;107;U16;;Total number of batteries (summary);;1.000000;0.000000;;4
-8;3;108;U16;;Average battery temperature (summary);;1.000000;0.000000;℃;4
+8;3;108;U16;;Average battery temperature (summary);TEMP;1.000000;0.000000;℃;4
 9;3;109;U16;;Maximum battery temperature difference (summary);;1.000000;0.000000;℃;4
 10;3;110;U16;;Maximum single cell voltage value (summary);;1000.000000;0.000000;V;4
 11;3;111;U16;;Minimum single cell voltage value (summary);;1000.000000;0.000000;V;4
 12;3;114;U16;;System Status;;1.000000;0.000000;;4
 13;3;136;U16;;Heartbeat Point;;1.000000;0.000000;;4
-14;3;32024;U16;;Battery Pack Serial Number 1;;1.000000;0.000000;;4
+14;3;32024;U16;;Battery Pack Serial Number 1;SERIAL;1.000000;0.000000;;4
 15;3;32048;U16;;Battery pack serial number 2;;1.000000;0.000000;;4
 16;3;32072;U16;;Battery pack serial number 3;;1.000000;0.000000;;4
 17;3;32096;U16;;Battery pack serial number 4;;1.000000;0.000000;;4
@@ -21,7 +21,7 @@ modbusTCP;Inverter;Fox ESS;G-MAX_ModbusTCP;;;;;;;
 20;3;32168;U16;;Manufacturer Name;MANUFACTURER;1.000000;0.000000;;4
 21;3;32192;U16;;Date of manufacture;;1.000000;0.000000;;4
 22;3;31048;U16;;System ID;;1.000000;0.000000;;4
-23;3;31072;U16;;System Model;;1.000000;0.000000;;4
+23;3;31072;U16;;System Model;MODEL;1.000000;0.000000;;4
 24;3;31096;U16;;System version;;1.000000;0.000000;;4
 25;3;31120;U16;;CPLD Version;;1.000000;0.000000;;4
 26;3;31144;U16;;DSP1 version;;1.000000;0.000000;;4
@@ -40,11 +40,11 @@ modbusTCP;Inverter;Fox ESS;G-MAX_ModbusTCP;;;;;;;
 39;3;212;U16;;Maximum cell voltage Cell number;;1.000000;0.000000;;4
 40;3;213;U16;;Minimum cell voltage cluster number;;1.000000;0.000000;;4
 41;3;214;U16;;Minimum cell voltage Cell number;;1.000000;0.000000;;4
-42;3;215;U16;;Maximum cell temperature cluster number;;1.000000;0.000000;;4
+42;3;215;U16;;Maximum cell temperature cluster number;TEMP_CELL;1.000000;0.000000;;4
 43;3;216;U16;;Maximum monomer temperature monomer number;;1.000000;0.000000;;4
 44;3;217;U16;;Minimum cell temperature cluster number;;1.000000;0.000000;;4
 45;3;218;U16;;Minimum monomer temperature monomer number;;1.000000;0.000000;;4
-46;3;223;U16;;Maximum pressure difference of monomer;;1.000000;0.000000;mV;4
+46;3;223;U16;;Maximum pressure difference of monomer;PRESSURE;1.000000;0.000000;mV;4
 47;3;224;U16;;Stack power;;1.000000;0.000000;KW;4
 48;3;227;U16;;Cumulative cluster charging capacity;;1.000000;0.000000;KWh;4
 49;3;229;U16;;Cumulative cluster discharge capacity;;1.000000;0.000000;KWh;4
@@ -100,7 +100,7 @@ modbusTCP;Inverter;Fox ESS;G-MAX_ModbusTCP;;;;;;;
 99;3;254;U16;;Extreme single-cell overvoltage action alarm;;1.000000;0.000000;;4
 100;3;255;U16;;Limit single cell undervoltage action alarm;;1.000000;0.000000;;4
 101;3;256;U16;;Extreme single cell over-temperature action alarm;;1.000000;0.000000;;4
-102;3;4201;U16;;Cluster end negative insulation alarm (medium);;1.000000;0.000000;;4
+102;3;4201;U16;;Cluster end negative insulation alarm (medium);R_ISO;1.000000;0.000000;;4
 103;3;4202;U16;;Cluster end negative insulation alarm (serious);;1.000000;0.000000;;4
 104;3;4203;U16;;Cluster-end SOC low (mild);;1.000000;0.000000;;4
 105;3;4204;U16;;Cluster-end SOC low (medium);;1.000000;0.000000;;4
@@ -177,29 +177,29 @@ modbusTCP;Inverter;Fox ESS;G-MAX_ModbusTCP;;;;;;;
 176;3;4276;U16;;Serious alarm for excessive pressure difference of a single cell;;1.000000;0.000000;;4
 177;3;4277;U16;;The single cell pressure difference is too large, medium alarm;;1.000000;0.000000;;4
 178;3;4278;U16;;The pressure difference of the single cell is too large, a slight alarm;;1.000000;0.000000;;4
-179;3;55101;U16;;Ub phase voltage;;1.000000;0.000000;V;4
-180;3;55102;U16;;Uc phase voltage;;1.000000;0.000000;V;4
-181;3;55103;U16;;Ia phase current;;1.000000;0.000000;A;4
-182;3;55104;U16;;Ib phase current;;1.000000;0.000000;A;4
-183;3;55105;U16;;Ic phase current;;1.000000;0.000000;A;4
-184;3;55106;U16;;Uab line voltage;;1.000000;0.000000;V;4
-185;3;55107;U16;;Ubc line voltage;;1.000000;0.000000;V;4
-186;3;55108;U16;;Uca line voltage;;1.000000;0.000000;V;4
-187;3;55109;U16;;Phase A active power;;1.000000;0.000000;kw;4
-188;3;55110;U16;;Phase B active power;;1.000000;0.000000;kw;4
-189;3;55111;U16;;Phase C active power;;1.000000;0.000000;kw;4
+179;3;55101;U16;;Ub phase voltage;U_AC_2;1.000000;0.000000;V;4
+180;3;55102;U16;;Uc phase voltage;U_AC_3;1.000000;0.000000;V;4
+181;3;55103;U16;;Ia phase current;I_AC_1;1.000000;0.000000;A;4
+182;3;55104;U16;;Ib phase current;I_AC_2;1.000000;0.000000;A;4
+183;3;55105;U16;;Ic phase current;I_AC_3;1.000000;0.000000;A;4
+184;3;55106;U16;;Uab line voltage;U_AC_L1L2;1.000000;0.000000;V;4
+185;3;55107;U16;;Ubc line voltage;U_AC_L2L3;1.000000;0.000000;V;4
+186;3;55108;U16;;Uca line voltage;U_AC_L3L1;1.000000;0.000000;V;4
+187;3;55109;U16;;Phase A active power;P_AC_1;1.000000;0.000000;kw;4
+188;3;55110;U16;;Phase B active power;P_AC_2;1.000000;0.000000;kw;4
+189;3;55111;U16;;Phase C active power;P_AC_3;1.000000;0.000000;kw;4
 190;3;55112;U16;;Total active power;;1.000000;0.000000;kw;4
-191;3;55113;U16;;Phase A reactive power;;1.000000;0.000000;kvar;4
+191;3;55113;U16;;Phase A reactive power;Q_AC_1;1.000000;0.000000;kvar;4
 192;3;55114;U16;;B phase reactive power;;1.000000;0.000000;kvar;4
-193;3;55115;U16;;Phase C reactive power;;1.000000;0.000000;kvar;4
+193;3;55115;U16;;Phase C reactive power;Q_AC_3;1.000000;0.000000;kvar;4
 194;3;55116;U16;;Total reactive power;;1.000000;0.000000;kvar;4
 195;3;55117;U16;;spare;;1.000000;0.000000;VA;4
 196;3;55118;U16;;spare;;1.000000;0.000000;VA;4
 197;3;55119;U16;;spare;;1.000000;0.000000;VA;4
 198;3;55120;U16;;spare;;1.000000;0.000000;VA;4
-199;3;55121;U16;;Phase A power factor;;100.000000;0.000000;;4
-200;3;55122;U16;;Phase B power factor;;100.000000;0.000000;;4
-201;3;55123;U16;;Phase C power factor;;100.000000;0.000000;;4
+199;3;55121;U16;;Phase A power factor;PF_1;100.000000;0.000000;;4
+200;3;55122;U16;;Phase B power factor;PF_2;100.000000;0.000000;;4
+201;3;55123;U16;;Phase C power factor;PF_3;100.000000;0.000000;;4
 202;3;55124;U16;;Total power factor;PF;100.000000;0.000000;;4
 203;3;55125;U16;;frequency;FREQ;1.000000;0.000000;Hz;4
 204;3;55126;U16;;Current forward total peak active energy;;1.000000;0.000000;KWh;4

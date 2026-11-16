@@ -1,0 +1,17 @@
+modbus;DG;SL Energy;Generator;;;;;;;
+1;3;11040;U16;;Gen_Voltage_R;;0.1;0;V;4
+2;3;11041;U16;;Gen_Voltage_S;;0.1;0;V;4
+3;3;11042;U16;;Gen_Voltage_T;;0.1;0;V;4
+4;3;11043;I16;;Gen_Current_R;;0.1;0;A;4
+5;3;11044;I16;;Gen_Current_S;;0.1;0;A;4
+6;3;11045;I16;;Gen_Current_T;;0.1;0;A;4
+7;3;11046;U16;;Gen_Frequency_R;FREQ;0.01;0;Hz;4
+8;3;11047;U16;;Gen_Frequency_S;;0.01;0;Hz;4
+9;3;11048;U16;;Gen_Frequency_T;;0.01;0;Hz;4
+10;3;11049;I32;;Gen_Total_Power;;1;0;W;4
+11;3;11051;I32;;Gen_Power_R;;1;0;W;4
+12;3;11053;I32;;Gen_Power_S;;1;0;W;4
+13;3;11055;I32;;Gen_Power_T;;1;0;W;4
+14;3;11057;I16;;Gen_Daily_Gen;;0.1;0;kWh;4
+15;3;11058;I32;;Gen_Cumul_Gen;;0.1;0;kWh;4
+16;3;11060;U16;;Gen_Daily_Hours;;0.1;0;H;4

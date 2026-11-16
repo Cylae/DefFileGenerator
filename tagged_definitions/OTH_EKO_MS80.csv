@@ -6,17 +6,17 @@ modbusRTU;Other;EKO;MS80;;;;;;;
 5;3;18;F32;;Raw.Irr;;1.000000;0.000000;W/m²;4
 6;3;20;F32;;ADmV;;1.000000;0.000000;mV;4
 7;3;22;F32;;Internal temperature;TEMP_INT;1.000000;0.000000;C;4
-8;3;24;F32;;Internal humidity;;1.000000;0.000000;RH%;4
+8;3;24;F32;;Internal humidity;HUMIDITY;1.000000;0.000000;RH%;4
 9;3;96_4;STRING;;EKO;;1.000000;0.000000;;4
 10;3;98;U16;;Firmware version;;1.000000;0.000000;;4
 11;3;99;U16;;Hardware version;;1.000000;0.000000;;4
 12;3;100;U16;;Model;;1.000000;0.000000;;4
-13;3;101;U16;;Modbus Address;;1.000000;0.000000;;4
+13;3;101;U16;;Modbus Address;UNIT_ID;1.000000;0.000000;;4
 14;3;102;U16;;Serial  communication setting;;1.000000;0.000000;;4
 15;3;103;U16;;Register Type;;1.000000;0.000000;;4
 16;3;106;U16;;Setting  the  analog outputs;;1.000000;0.000000;;4
 17;3;131;F32;;0-1V loading resistor;;1.000000;0.000000;Ohm;4
-18;3;133;F32;;Irradiance (0-1Vmode 0V);;1.000000;0.000000;W/m 2;4
+18;3;133;F32;;Irradiance (0-1Vmode 0V);POA;1.000000;0.000000;W/m 2;4
 19;3;135;F32;;Irradiance (0-1Vmode 1V);;1.000000;0.000000;W/m 2;4
 20;3;137;F32;;Irradiance (4-20mode 4mA);;1.000000;0.000000;W/m 2;4
 21;3;139;F32;;Irradiance (4-20mode 20mA);;1.000000;0.000000;W/m 2;4

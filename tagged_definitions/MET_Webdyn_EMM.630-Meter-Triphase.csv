@@ -1,14 +1,14 @@
 ModbusRTU;Meter;Webdyn;EMM 630;;;;;;;
-1;4;0;F32;;Phase 1 line to neutral volts.;;1.0;0.0;V;4
-2;4;2;F32;;Phase 2 line to neutral volts.;;1.0;0.0;V;4
-3;4;4;F32;;Phase 3 line to neutral volts.;;1.0;0.0;V;4
+1;4;0;F32;;Phase 1 line to neutral volts.;U_AC_1;1.0;0.0;V;4
+2;4;2;F32;;Phase 2 line to neutral volts.;U_AC_2;1.0;0.0;V;4
+3;4;4;F32;;Phase 3 line to neutral volts.;U_AC_3;1.0;0.0;V;4
 4;4;6;F32;;Phase 1 current;I_AC_1;1.0;0.0;A;4
 5;4;8;F32;;Phase 2 current;I_AC_2;1.0;0.0;A;4
 6;4;10;F32;;Phase 3 current;I_AC_3;1.0;0.0;A;4
 7;4;12;F32;;Phase 1 power;;1.0;0.0;W;4
 8;4;14;F32;;Phase 2 power;;1.0;0.0;W;4
 9;4;16;F32;;Phase 3 power;;1.0;0.0;W;4
-10;4;18;F32;;Phase 1 volt amps;;1.0;0.0;VA;4
+10;4;18;F32;;Phase 1 volt amps;I_AC;1.0;0.0;VA;4
 11;4;20;F32;;Phase 2 volt amps;;1.0;0.0;VA;4
 12;4;22;F32;;Phase 3 volt amps;;1.0;0.0;VA;4
 13;4;24;F32;;Phase 1 volt amps reactive;;1.0;0.0;VAr;4
@@ -41,9 +41,9 @@ ModbusRTU;Meter;Webdyn;EMM 630;;;;;;;
 40;4;102;F32;;Maximum total system VA demand;;1.0;0.0;VA;4
 41;4;104;F32;;Neutral current demand;;1.0;0.0;A;4
 42;4;106;F32;;Maximum neutral current demand;;1.0;0.0;A;4
-43;4;200;F32;;Line 1 to Line 2 volts;;1.0;0.0;V;4
-44;4;202;F32;;Line 2 to Line 3 volts;;1.0;0.0;V;4
-45;4;204;F32;;Line 3 to Line 1 volts;;1.0;0.0;V;4
+43;4;200;F32;;Line 1 to Line 2 volts;U_AC_L1L2;1.0;0.0;V;4
+44;4;202;F32;;Line 2 to Line 3 volts;U_AC_L2L3;1.0;0.0;V;4
+45;4;204;F32;;Line 3 to Line 1 volts;U_AC_L3L1;1.0;0.0;V;4
 46;4;206;F32;;Average line to line volts;;1.0;0.0;V;4
 47;4;224;F32;;Neutral current;;1.0;0.0;A;4
 48;4;234;F32;;Phase 1 L/N volts THD;;1.0;0.0;%;4

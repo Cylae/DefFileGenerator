@@ -13,5 +13,5 @@ modbusTCP;Inverter;MarsRenewable;AirCooling-1Unit;;;;;;;
 12;4;15023;U16;;AC1 Voltage Status;;1.000000;0.000000;;9
 13;4;15024;U16;;AC1 Sensor Status;;1.000000;0.000000;;9
 14;4;15025;U16;;AC1 Compressor Status;;1.000000;0.000000;;9
-15;4;15026;U16;;AC1 Air Pressure Status;;1.000000;0.000000;;9
+15;4;15026;U16;;AC1 Air Pressure Status;PRESSURE;1.000000;0.000000;;9
 16;4;15027;F32;;AC1 Relative Humidity;HUMIDITY;0.100000;0.000000;;4

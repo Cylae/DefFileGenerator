@@ -1,16 +1,16 @@
 modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 1;4;40202;U32;;DC voltage;U_DC;0.010000;0.000000;V;4
-2;4;40204;U32;;Line current;;0.010000;0.000000;A;4
+2;4;40204;U32;;Line current;I_AC;0.010000;0.000000;A;4
 3;4;40206;U32;;Line current %;;0.100000;0.000000;'%;4
 4;4;40208;I32;;Active current;;0.010000;0.000000;A;4
 5;4;40210;I32;;Active current %;;0.100000;0.000000;'%;4
 6;4;40212;I32;;Reactive current;;0.010000;0.000000;A;4
 7;4;40214;I32;;Reactive current %;;0.100000;0.000000;'%;4
 8;4;40216;U32;;Frequency;FREQ;0.010000;0.000000;Hz;4
-9;4;40218;U32;;Grid voltage;;0.010000;0.000000;V;4
+9;4;40218;U32;;Grid voltage;U_AC_L1L2;0.010000;0.000000;V;4
 10;4;40220;I32;;Apparent power;S_AC;0.010000;0.000000;kVA;4
 11;4;40222;I32;;Apparent power %;;0.100000;0.000000;'%;4
-12;4;40224;I32;;Power;;0.010000;0.000000;kW;4
+12;4;40224;I32;;Power;P_AC;0.010000;0.000000;kW;4
 13;4;40226;I32;;Power %;;0.100000;0.000000;'%;4
 14;4;40228;I32;;Reactive power;Q_AC;0.010000;0.000000;kVAr;4
 15;4;40230;I32;;Reactive power %;;0.100000;0.000000;'%;4
@@ -67,7 +67,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 66;3;43828;U32;;Ext2 ctrl mode1;;1.000000;0.000000;;4
 67;3;43832;U32;;Local ctrl mode;;1.000000;0.000000;;4
 68;3;43834;U32;;Local ctrl disable;;1.000000;0.000000;;4
-69;3;44202;U32;;Fast power off mode;;1.000000;0.000000;;4
+69;3;44202;U32;;Fast power off mode;CMD_OFF;1.000000;0.000000;;1
 70;3;44204;U32;;Fast power off source;;1.000000;0.000000;;4
 71;3;44602;U32;;User DC voltage ref;;0.010000;0.000000;V;4
 72;3;44604;U32;;DC ref sel;;1.000000;0.000000;;4
@@ -194,7 +194,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 193;4;46008_0_16;BITS;;Limit word 4;;1.000000;0.000000;;4
 194;4;46010_0_16;BITS;;Limit word 5;;1.000000;0.000000;;4
 195;4;46012_0_16;BITS;;Limit word 6;;1.000000;0.000000;;4
-196;4;46022;U32;;Active power limit to grid;;1.000000;0.000000;kW;4
+196;4;46022;U32;;Active power limit to grid;CMD_P_AC_SET_ABS;1.000000;0.000000;kW;1
 197;4;46026;U32;;Reactive power limit;;1.000000;0.000000;kVAr;4
 198;3;46124;U32;;P(f) limit type;;1.000000;0.000000;;4
 199;3;46126;U32;;P(f) corner frequency;;0.010000;0.000000;Hz;4
@@ -223,7 +223,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 222;3;46188;U32;;Shut down ramp;;1.000000;0.000000;'%/s;4
 223;3;46190;U32;;Active power margin;;0.100000;0.000000;'%;4
 224;3;46196;U32;;External limit ramp up;;1.000000;0.000000;ms;4
-225;3;46198;U32;;External limit ramp down;;1.000000;0.000000;ms;4
+225;3;46198;U32;;External limit ramp down;CMD_RAMP_TIME_S;1.000000;0.000000;ms;1
 226;3;46202;U32;;Limit priority;;1.000000;0.000000;;4
 227;4;46402;U32;;Autoreset counter;;1.000000;0.000000;;4
 228;3;46406;U32;;Overcurrent trials;;1.000000;0.000000;;4
@@ -515,7 +515,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 514;3;52802;U32;;Enable;;1.000000;0.000000;;4
 515;3;52804;U32;;Profile;;1.000000;0.000000;;4
 516;3;52808;U32;;Power scale;;0.100000;0.000000;kW;4
-517;3;52820;U32;;Communication loss event;;1.000000;0.000000;;4
+517;3;52820;U32;;Communication loss event;WIND_SPEED;1.000000;0.000000;;4
 518;3;52822;U32;;Communication loss timeout;;1.000000;0.000000;s;4
 519;3;52824;U32;;Heartbeat max interval;;1.000000;0.000000;s;4
 520;3;52826;U32;;First start delay;;1.000000;0.000000;s;4
@@ -699,7 +699,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 698;3;54852;U32;;Current meas range;;0.100000;0.000000;A;4
 699;3;54854_0_16;BITS;;Current range selection 1-12;;1.000000;0.000000;;4
 700;3;54856_0_16;BITS;;Current range selection 13-24;;1.000000;0.000000;;4
-701;4;54862;I32;;DC input 1 current;;0.100000;0.000000;A;4
+701;4;54862;I32;;DC input 1 current;I_DC;0.100000;0.000000;A;4
 702;4;54864;I32;;DC input 2 current;;0.100000;0.000000;A;4
 703;4;54866;I32;;DC input 3 current;;0.100000;0.000000;A;4
 704;4;54868;I32;;DC input 4 current;;0.100000;0.000000;A;4
@@ -755,7 +755,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 754;3;55446;U32;;Transformer low oil level delay;;1.000000;0.000000;s;4
 755;3;55448;U32;;Transformer low oil level current limit;;1.000000;0.000000;A;4
 756;3;55450;U32;;Transformer low oil level failure logic;;1.000000;0.000000;;4
-757;3;55452;U32;;MV overpressure source;;1.000000;0.000000;;4
+757;3;55452;U32;;MV overpressure source;PRESSURE;1.000000;0.000000;;4
 758;3;55454;U32;;Transformer overpressure action;;1.000000;0.000000;;4
 759;3;55456;U32;;Transformer overpressure delay;;1.000000;0.000000;s;4
 760;3;55458;U32;;Transformer overpressure current limit;;1.000000;0.000000;A;4
@@ -812,7 +812,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 811;4;56820;U32;;Total kVAh supplied Frac;;1.000000;0.000000;;4
 812;4;56824;U32;;Energy counter, resettable;;0.010000;0.000000;kWh;4
 813;4;56826;U32;;kVAh Energy counter, resettable;;0.010000;0.000000;kVAh;4
-814;4;56828;U32;;Daily kWh supplied;;0.100000;0.100000;kWh;4
+814;4;56828;U32;;Daily kWh supplied;E_DAY;0.100000;0.100000;kWh;4
 815;4;56830;U32;;Daily kVAh supplied;;0.100000;0.000000;kVAh;4
 816;3;57002_0_16;BITS;;Main circuit SPD status;;1.000000;0.000000;;4
 817;3;57004_0_16;BITS;;DC input fuse status;;1.000000;0.000000;;4
@@ -859,7 +859,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 858;4;58064;U32;;Main voltage 2 pos seq;;0.010000;0.000000;V;4
 859;4;58066;U32;;Main voltage 2 neg seq;;0.010000;0.000000;V;4
 860;4;58068;U32;;Frequency 2;;0.010000;0.000000;Hz;4
-861;4;58080;U32;;Phase current U1;;0.010000;0.000000;A;4
+861;4;58080;U32;;Phase current U1;I_AC_3;0.010000;0.000000;A;4
 862;4;58082;U32;;Phase current V1;;0.010000;0.000000;A;4
 863;4;58084;U32;;Phase current W1;;0.010000;0.000000;A;4
 864;4;58086;U32;;Current 1 pos seq;;0.010000;0.000000;A;4
@@ -966,7 +966,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 965;3;62002;U32;;Grounding mode;;1.000000;0.000000;;4
 966;3;62004;U32;;Grounding device;;1.000000;0.000000;;4
 967;4;62006;U32;;Grounding state;;1.000000;0.000000;;4
-968;3;62008;U32;;Ignore insulation resistance;;1.000000;0.000000;;4
+968;3;62008;U32;;Ignore insulation resistance;R_ISO;1.000000;0.000000;;4
 969;3;62010;U32;;Ungrounded operation;;1.000000;0.000000;;4
 970;3;62012;U32;;Unground on fault;;1.000000;0.000000;;4
 971;3;62014;U32;;Night grounding;;1.000000;0.000000;;4
@@ -990,7 +990,7 @@ modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
 989;3;62052;U32;;Insulation resistance device;;1.000000;0.000000;;4
 990;4;62054;U32;;Insulation resistance device state;;1.000000;0.000000;;4
 991;3;62056;U32;;Insulation resistance limit;;1.000000;0.000000;Ohm;4
-992;4;62058;U32;;Insulation resistance;R_ISO;1.000000;0.000000;;4
+992;4;62058;U32;;Insulation resistance;;1.000000;0.000000;;4
 993;3;62060;U32;;Insulation resistance fault action;;1.000000;0.000000;;4
 994;3;62062;U32;;Minimum Riso measurement time;;1.000000;0.000000;min;4
 995;3;62064;U32;;Maximum Riso measurement time;;1.000000;0.000000;min;4

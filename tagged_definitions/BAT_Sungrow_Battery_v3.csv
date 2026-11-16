@@ -7,13 +7,13 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 6;3;10054;U16;;System_Time_Second;;1;0;;4
 7;3;10055;U16;;Start_Stop_Control;;1;0;;4
 8;3;10057;U16;;Local_Remote_Setting;;1;0;;4
-9;3;10059;U16;;Reactive_Power_Mode;;1;0;;4
+9;3;10059;U16;;Reactive_Power_Mode;Q_AC;1;0;;4
 10;3;10060;U16;;Black_Start_Enable;;1;0;;4
 11;3;10061;U16;;Master_Slave_Setting;;1;0;;4
 12;3;10062;U16;;Black_Start_Beat_Count;;1;0;;4
 13;3;10099;U16;;Offgrid_Voltage_Setting;;0.1;0;V;4
 14;3;10100;U16;;Offgrid_Frequency_Setting;FREQ;0.01;0;Hz;4
-15;3;10102;I16;;Power_Factor_Setting;CMD_PF;0.001;0;;1
+15;3;10102;I16;;Power_Factor_Setting;;0.001;0;;4
 16;3;10103;I32;;Reactive_Power_Setting_Pct;;0.1;0;%;4
 17;3;10105;U16;;Debug_Mode;;1;0;;4
 18;3;10108;U16;;Overload_Status;;1;0;;4
@@ -161,7 +161,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 160;4;10275;I16;;PCS_DC_Current;I_DC;0.1;0;A;4
 161;4;10276;U16;;PCS_DC_Impedance_To_Gnd;;1;0;kOhm;4
 162;4;10277;I32;;PCS_DC_Power;;0.1;0;kW;4
-163;4;10279;I32;;PCS_Active_Power;;0.1;0;kW;4
+163;4;10279;I32;;PCS_Active_Power;P_AC;0.1;0;kW;4
 164;4;10281;I32;;PCS_Reactive_Power;;0.1;0;kvar;4
 165;4;10283;I32;;PCS_Apparent_Power;;0.1;0;kVA;4
 166;4;10285;U16;;PCS_N_Phase_Current;;0.1;0;A;4
@@ -211,7 +211,7 @@ modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 210;4;32014;U16;;Bat_Total_Discharge_MWh;;0.001;0;MWh;4
 211;4;32015;U16;;Bat_Total_Charge_kAh;;0.001;0;kAh;4
 212;4;32016;U16;;Bat_Total_Discharge_kAh;;0.001;0;kAh;4
-213;4;32017;I16;;Bat_Max_Cell_Temp;;0.1;0;degC;4
+213;4;32017;I16;;Bat_Max_Cell_Temp;TEMP_CELL;0.1;0;degC;4
 214;4;32018;I16;;Bat_Min_Cell_Temp;;0.1;0;degC;4
 215;4;32019;U16;;Bat_Total_Rack_Count;;1;0;;4
 216;4;32020;U16;;Bat_Online_Rack_Count;;1;0;;4

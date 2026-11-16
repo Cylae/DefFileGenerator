@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
+modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104_Commu;;;;;;;
 1;4;1;U16;;Initial status;;1.0;0.0;;9
 2;4;2;U16;;Reserved;;1.0;0.0;;0
 3;4;3;U16;;Reserved;;1.0;0.0;;0
@@ -221,7 +221,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 220;4;220;U16;;System shutdown;;1.0;0.0;;4
 221;4;221;U16;;System standby;;1.0;0.0;;4
 222;4;222;U16;;Reactive regulation mode QP;;1.0;0.0;;4
-223;4;223;U16;;Reactive regulation mode PF;;1.0;0.0;;4
+223;4;223;U16;;Reactive regulation mode PF;PF;1.0;0.0;;4
 224;4;224;U16;;Reactive regulation mode OFF;;1.0;0.0;;4
 225;4;225;U16;;Reserved;;1.0;0.0;;0
 226;4;226;U16;;Reserved;;1.0;0.0;;0
@@ -741,7 +741,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 740;4;29089;U16;;DC component over;;1.0;0.0;;4
 741;4;29090;U16;;Address code duplication fault;;1.0;0.0;;9
 742;4;29091;U16;;Parallel communication fault;;1.0;0.0;;9
-743;4;29092;U16;;AC voltage imbalance fault;;1.0;0.0;;9
+743;4;29092;U16;;AC voltage imbalance fault;U_AC_L1L2;1.0;0.0;;9
 744;4;29093;U16;;BMS communication abnormal;;1.0;0.0;;4
 745;4;29094;U16;;BMS and battery fault 1;;1.0;0.0;;9
 746;4;29095;U16;;Inverter open loop self-check fault;;1.0;0.0;;9
@@ -851,7 +851,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 850;4;33322;U16;;System SOH;;1;0.0;%;4
 851;4;33323;U16;;Max SOH;;1;0.0;%;4
 852;4;33324;U16;;Min SOH;;1;0.0;%;4
-853;4;33325;U16;;Rated active power;P_RATED;0;0.0;kW;4
+853;4;33325;U16;;Rated active power;;0;0.0;kW;4
 854;4;33326;U16;;System rated capacity;;0;0.0;kWh;4
 855;4;33327;U16;;System max active power;;1;0.0;kW;4
 856;4;33328;U16;;System max reactive power;;1;0.0;kvar;4
@@ -864,7 +864,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 863;4;33335;U16;;Input dry node alarm status2;;1.0;0.0;/;9
 864;4;33336;U16;;Input dry node status1;;1.0;0.0;/;9
 865;4;33337;U16;;Input dry node status2;;1.0;0.0;/;9
-866;4;33338;U16;;Power factor;PF;0;0.0;/;4
+866;4;33338;U16;;Power factor;;0;0.0;/;4
 867;4;33339;U16;;Reactive power feedback;;0;0.0;kvar;4
 868;4;33340;U16;;Active power feedback;;0;0.0;kW;4
 869;4;33341;U16;;Debugging mode;;1.0;0.0;/;4
@@ -972,7 +972,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 971;4;33640;U16;;Software version;;1.0;0.0;/;4
 972;4;33668;U16;;Dehumidifier number;;1;0.0;/;4
 973;4;33669;U16;;Dehumidification status;;1.0;0.0;/;9
-974;4;33670;U16;;Temperature;TEMP;1.0;0.0;℃;4
+974;4;33670;U16;;Temperature;TEMP_INT;1.0;0.0;℃;4
 975;4;33671;U16;;Humidity;;1.0;0.0;%rh;4
 976;4;33672;U16;;Fan speed;;1.0;0.0;RPM;4
 977;4;33673;U16;;Comm status;;1.0;0.0;/;9
@@ -999,8 +999,8 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 998;4;33830;U16;;Reserved;;1.0;0.0;None;0
 999;4;33831;U16;;Max charge current;;0;0.0;A;4
 1000;4;33832;U16;;Max discharge current;;0;0.0;A;4
-1001;4;33833;U16;;Max cell voltage;;0;0.0;mV;4
-1002;4;33834;U16;;Min cell voltage;;0;0.0;mV;4
+1001;4;33833;U16;;Max cell voltage;U_CELL_MAX;0;0.0;mV;4
+1002;4;33834;U16;;Min cell voltage;U_CELL_MIN;0;0.0;mV;4
 1003;4;33835;U16;;Max cell temperature;;0;0.0;℃;4
 1004;4;33836;U16;;Min cell temperature;;0;0.0;℃;4
 1005;4;33837;U16;;Valid SOC difference;;0;0.0;%;4
@@ -1045,7 +1045,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 1044;4;33876;U16;;Discharging cut off voltage(MSB);;1.0;0.0;None;4
 1045;4;33877;U16;;Cell voltage difference;;0;0.0;mV;4
 1046;4;33878;U16;;Cell temperature difference;;0;0.0;℃;4
-1047;4;34541;U16;;Capacity;;0;0.0;Ah;4
+1047;4;34541;U16;;Capacity;P_RATED;0;0.0;Ah;4
 1048;4;34542;U16;;Voltage;;0;0.0;V;4
 1049;4;34543;U16;;Current;;0;0.0;A;4
 1050;4;34544;U16;;SOC;SOC;0;0.0;%;4
@@ -1207,7 +1207,7 @@ modbusRTU;Other;Sungrow;TI_20251013_LC300_IEC104 Commu;;;;;;;
 1206;4;62011;U16;;Grid frequency;;0;0.0;Hz;4
 1207;4;62012;U16;;Reserved;;1.0;0.0;None;0
 1208;4;62013;U16;;Bus voltage;;0;0.0;V;4
-1209;4;62014;U16;;Internal air temperature;TEMP_INT;0;0.0;℃;4
+1209;4;62014;U16;;Internal air temperature;;0;0.0;℃;4
 1210;4;62015;U16;;Reserved;;1.0;0.0;None;0
 1211;4;62016;U16;;A-B line voltage;;0;0.0;V;4
 1212;4;62017;U16;;B-C line voltage;;0;0.0;V;4

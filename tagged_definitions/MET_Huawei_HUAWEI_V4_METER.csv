@@ -1,6 +1,6 @@
 modbusRTU;Meter;Huawei;HUAWEI_V4 (METER);;;;;;;
 1;4;37100;U16;;Meter status;;1.0;0.0;;4
-2;4;37101;U16;;Grid voltage (A phase) / Meter;;1.0;0.0;V;4
+2;4;37101;U16;;Grid voltage (A phase) / Meter;U_AC_L1L2;1.0;0.0;V;4
 3;4;37103;U16;;B phase voltage / Meter;;1.0;0.0;V;4
 4;4;37105;U16;;C phase voltage / Meter;;1.0;0.0;V;4
 5;4;37107;U16;;Grid current(A phase) / Meter;;1.0;0.0;A;4

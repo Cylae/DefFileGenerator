@@ -7,15 +7,15 @@ modbusRTU;Inverter;Solax;SOLAX_EMS1000-PRO_v2;;;;;;;
 6;4;23;U16;;Time Zone;;1.000000;0.000000;;1
 7;4;24;U16;;Plant System Type (1=Bat+Grid+Ld 2=PV+Bat+Grid+Ld);;1.000000;0.000000;;1
 8;4;25_2;STRING;;Plant Country Region;;1.000000;0.000000;;1
-9;4;66;U32;;Daily PV Yield;;0.100000;0.000000;kWh;4
-10;4;68;U64;;Total PV Yield;;0.100000;0.000000;kWh;4
+9;4;66;U32;;Daily PV Yield;E_DAY;0.100000;0.000000;kWh;4
+10;4;68;U64;;Total PV Yield;E_TOT;0.100000;0.000000;kWh;4
 11;4;72;U32;;Daily Battery Charge;;0.100000;0.000000;kWh;4
 12;4;74;U64;;Total Battery Charge;;0.100000;0.000000;kWh;4
 13;4;78;U32;;Daily Battery Discharge;;0.100000;0.000000;kWh;4
 14;4;80;U64;;Total Battery Discharge;;0.100000;0.000000;kWh;4
 15;4;84;I32;;Daily Load Consumed;;0.100000;0.000000;kWh;4
 16;4;86;I64;;Total Load Consumed;;0.100000;0.000000;kWh;4
-17;4;90;I32;;Grid Active Power;;0.010000;0.000000;kW;2
+17;4;90;I32;;Grid Active Power;P_AC;0.010000;0.000000;kW;2
 18;4;92;U32;;PV Power;P_DC;0.010000;0.000000;kW;2
 19;4;94;I32;;Load Power;;0.010000;0.000000;kW;2
 20;4;96;I32;;Battery Power;;0.010000;0.000000;kW;2
@@ -24,12 +24,12 @@ modbusRTU;Inverter;Solax;SOLAX_EMS1000-PRO_v2;;;;;;;
 23;4;203;U16;;Meter Type;;1.000000;0.000000;;1
 24;4;204;U32;;Positive Active Energy;;0.100000;0.000000;kWh;4
 25;4;206;U32;;Negative Active Energy;;0.100000;0.000000;kWh;4
-26;4;208;I32;;Active Power;P_AC;0.010000;0.000000;kW;2
+26;4;208;I32;;Active Power;;0.010000;0.000000;kW;2
 27;4;210;I32;;Reactive Power;Q_AC;0.010000;0.000000;kVar;2
 28;4;212;I16;;Power Factor;PF;0.001000;0.000000;;2
-29;4;213;I32;;Phase A Active Power;;0.010000;0.000000;kW;2
-30;4;215;I32;;Phase B Active Power;;0.010000;0.000000;kW;2
-31;4;217;I32;;Phase C Active Power;;0.010000;0.000000;kW;2
+29;4;213;I32;;Phase A Active Power;P_AC_1;0.010000;0.000000;kW;2
+30;4;215;I32;;Phase B Active Power;P_AC_2;0.010000;0.000000;kW;2
+31;4;217;I32;;Phase C Active Power;P_AC_3;0.010000;0.000000;kW;2
 32;4;219;U16;;Phase A Voltage;U_AC_1;0.100000;0.000000;V;2
 33;4;220;U16;;Phase B Voltage;U_AC_2;0.100000;0.000000;V;2
 34;4;221;U16;;Phase C Voltage;U_AC_3;0.100000;0.000000;V;2
@@ -37,16 +37,16 @@ modbusRTU;Inverter;Solax;SOLAX_EMS1000-PRO_v2;;;;;;;
 36;4;223;I16;;Phase B Current;I_AC_2;0.100000;0.000000;A;2
 37;4;224;I16;;Phase C Current;I_AC_3;0.100000;0.000000;A;2
 38;4;225;U16;;Grid Frequency;FREQ;0.010000;0.000000;Hz;2
-39;4;226;I32;;Phase A Reactive Power;;0.010000;0.000000;kVar;2
-40;4;228;I32;;Phase B Reactive Power;;0.010000;0.000000;kVar;2
-41;4;230;I32;;Phase C Reactive Power;;0.010000;0.000000;kVar;2
-42;4;232;I16;;Phase A Power Factor;;0.001000;0.000000;;2
-43;4;233;I16;;Phase B Power Factor;;0.001000;0.000000;;2
-44;4;234;I16;;Phase C Power Factor;;0.001000;0.000000;;2
+39;4;226;I32;;Phase A Reactive Power;Q_AC_1;0.010000;0.000000;kVar;2
+40;4;228;I32;;Phase B Reactive Power;Q_AC_2;0.010000;0.000000;kVar;2
+41;4;230;I32;;Phase C Reactive Power;Q_AC_3;0.010000;0.000000;kVar;2
+42;4;232;I16;;Phase A Power Factor;PF_1;0.001000;0.000000;;2
+43;4;233;I16;;Phase B Power Factor;PF_2;0.001000;0.000000;;2
+44;4;234;I16;;Phase C Power Factor;PF_3;0.001000;0.000000;;2
 45;4;240;U16;;PCAB 0 Comm Status;;1.000000;0.000000;;4
 46;4;241;U16;;PCAB 0 Alarm Status;;1.000000;0.000000;;4
 47;4;242_30;STRING;;PCAB 0 SN;;1.000000;0.000000;;1
-48;4;257;U16;;PCAB 0 Model;;1.000000;0.000000;;1
+48;4;257;U16;;PCAB 0 Model;MODEL;1.000000;0.000000;;1
 49;4;258_10;STRING;;PCAB 0 Soft Version;;1.000000;0.000000;;1
 50;4;263_10;STRING;;PCAB 0 Hard Version;;1.000000;0.000000;;1
 51;4;268;U16;;PCAB 0 Inv L1 Voltage;;0.100000;0.000000;V;2
@@ -149,13 +149,13 @@ modbusRTU;Inverter;Solax;SOLAX_EMS1000-PRO_v2;;;;;;;
 148;3;3;U16;;Sys Reactive Power Mode;;1.000000;0.000000;;4
 149;3;4;U16;;Sys Power Factor Set;;1.000000;0.000000;'%;4
 150;3;5;U16;;Sys Control Mode (0:Remote 1:Local);;1.000000;0.000000;;4
-151;3;6;U16;;Sys Power ON/OFF (0:Off 1:On);;1.000000;0.000000;;4
+151;3;6;U16;;Sys Power ON/OFF (0:Off 1:On);CMD_ON;1.000000;0.000000;;1
 152;3;7;U16;;Sys Work Mode (1:SelfUse 5:PeakShav);;1.000000;0.000000;;4
 153;3;8;U16;;PeakShav Period 1 Start Time (H:L);;1.000000;0.000000;;4
 154;3;9;U16;;PeakShav Period 1 Stop Time (H:L);;1.000000;0.000000;;4
 155;3;10;U32;;PeakShav Period 1 Limit;;1.000000;0.000000;kW;4
 156;3;11;U16;;PeakShav Period 1 Charge Grid (0:Off 1:On);;1.000000;0.000000;;4
-157;3;12;U16;;PeakShav Period 1 Power Limit;;1.000000;0.000000;kW;4
+157;3;12;U16;;PeakShav Period 1 Power Limit;CMD_P_AC_SET_ABS;1.000000;0.000000;kW;1
 158;3;13;U16;;PeakShav Period 1 Cutoff SOC;;1.000000;0.000000;'%;4
 159;3;14;U16;;PeakShav Period 2 Enable (0:Off 1:On);;1.000000;0.000000;;4
 160;3;15;U16;;PeakShav Period 2 Start Time (H:L);;1.000000;0.000000;;4
@@ -173,7 +173,7 @@ modbusRTU;Inverter;Solax;SOLAX_EMS1000-PRO_v2;;;;;;;
 172;3;44;U16;;Export Reserve;;1.000000;0.000000;;4
 173;3;177;U16;;Com Timeout Standby Enable;;1.000000;0.000000;;4
 174;3;178;U16;;Com Timeout Time;;1.000000;0.000000;s;4
-175;3;996;U16;;Off-grid Voltage;;1.000000;0.000000;V;4
+175;3;996;U16;;Off-grid Voltage;U_AC_L1L2;1.000000;0.000000;V;4
 176;3;997;U16;;Off-grid Frequency;;1.000000;0.000000;Hz;4
 177;3;998;U16;;Switching Mode (1:Auto 2:Manual);;1.000000;0.000000;;4
 178;3;999;U16;;Current Operation Status (1:On-G 2:Off-G);;1.000000;0.000000;;4

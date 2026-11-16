@@ -120,9 +120,9 @@ ModbusRTU;Inverter;Autarco;GENERIC;;;;;;;
 119;3;3247;U16;;SN Number_18;;1.0;0.0;;4
 120;3;3248;U16;;SN Number_19;;1.0;0.0;;4
 121;4;3249;U16;;Meter placement;;1.0;0.0;;1
-122;4;3250;U16;;Meter AC voltage A;;0.1;0.0;V;1
-123;4;3251;U16;;Meter AC current A;I_AC;0.01;0.0;A;1
-124;4;3252;U16;;Meter AC voltage B;;0.1;0.0;V;1
+122;4;3250;U16;;Meter AC voltage A;I_AC;0.1;0.0;V;1
+123;4;3251;U16;;Meter AC current A;;0.01;0.0;A;1
+124;4;3252;U16;;Meter AC voltage B;U_AC_L1L2;0.1;0.0;V;1
 125;4;3253;U16;;Meter AC current B;;0.01;0.0;A;1
 126;4;3254;U16;;Meter AC voltage C;;0.1;0.0;V;1
 127;4;3255;U16;;Meter AC current C;;0.01;0.0;A;1

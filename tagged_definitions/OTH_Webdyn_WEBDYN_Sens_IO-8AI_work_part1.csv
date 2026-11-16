@@ -1,0 +1,35 @@
+modbusRTU;Other;Webdyn;WEBDYN_Sens_IO-8AI_w_p1;;;;;;;
+1;4;1;U16;;Mesure température for Thermocouple;;1.0;0.0;;4
+2;4;2;U16;;Alarme 1 Status;;1.0;0.0;;9
+3;4;3;U16;;Alarme 2 Status;;1.0;0.0;;9
+4;4;4;U16;;Alarme 3 Status;;1.0;0.0;;9
+5;4;5;U16;;Alarme 4 Status;;1.0;0.0;;9
+6;4;6;U16;;Température ambiante;TEMP_AMB;1.0;0.0;;4
+7;4;7;U16;;Input Type;;1.0;0.0;;4
+8;4;8;U16;;Temperature units;;1.0;0.0;;4
+9;4;9;U16;;DC Resolution;;1.0;0.0;;4
+10;4;10;U16;;Signal Low;;1.0;0.0;;4
+11;4;11;U16;;Signal High;;1.0;0.0;;4
+12;4;12;U16;;Range Low;;1.0;0.0;;4
+13;4;13;U16;;Range High;;1.0;0.0;;4
+14;4;14;U16;;Offset for PV;;1.0;0.0;;4
+15;4;15;U16;;Alarme 1 Type;;1.0;0.0;;9
+16;4;16;U16;;Alarme 2 Type;;1.0;0.0;;9
+17;4;17;U16;;Alarme 3 Type;;1.0;0.0;;9
+18;4;18;U16;;Alarme 4 Type;;1.0;0.0;;9
+19;4;19;U16;;Alarme 1 Set Point;;1.0;0.0;;9
+20;4;20;U16;;Alarme 2 Set Point;;1.0;0.0;;9
+21;4;21;U16;;Alarme 3 Set Point;;1.0;0.0;;9
+22;4;22;U16;;Alarme 4 Set Point;;1.0;0.0;;9
+23;4;23;U16;;Alarme 1 Hysteresis;;1.0;0.0;;9
+24;4;24;U16;;Alarme 2 Hysteresis;;1.0;0.0;;9
+25;4;25;U16;;Alarme 3 Hysteresis;;1.0;0.0;;9
+26;4;26;U16;;Alarme 4 Hysteresis;;1.0;0.0;;9
+27;4;27;U16;;Alarme 1 Inhibit;;1.0;0.0;;9
+28;4;28;U16;;Alarme 2 Inhibit;;1.0;0.0;;9
+29;4;29;U16;;Alarme 3 Inhibit;;1.0;0.0;;9
+30;4;30;U16;;Alarme 4 Inhibit;;1.0;0.0;;9
+31;4;31;U16;;Enable Bottom Clipping;;1.0;0.0;;4
+32;4;32;U16;;Bottom Clip Value;;1.0;0.0;;4
+33;4;33;U16;;Enable Top Clipping;;1.0;0.0;;4
+34;4;34;U16;;Top Clip Value;;1.0;0.0;;4

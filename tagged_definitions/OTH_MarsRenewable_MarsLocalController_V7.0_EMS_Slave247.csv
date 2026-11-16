@@ -4,8 +4,8 @@ modbusRTU;Other;MarsRenewable;MarsLocalController_V7.0_EMS_S;;;;;;;
 3;3;2;U16;;Bank Number;;1.000000;0.000000;;4
 4;3;3;U16;;Rack Number;;1.000000;0.000000;;4
 5;3;4;U16;;Meter Number;;1.000000;0.000000;;4
-6;3;6;I32;;Energy Storage Reactive Power;;1.000000;0.000000;Var;4
-7;3;8;U16;;AC Voltage;;1.000000;0.000000;V;4
+6;3;6;I32;;Energy Storage Reactive Power;Q_AC;1.000000;0.000000;Var;4
+7;3;8;U16;;AC Voltage;U_AC_3;1.000000;0.000000;V;4
 8;3;9;U16;;AC Frequency;FREQ;1.000000;0.000000;0.01Hz;4
 9;2;0_0_16;BITS;;LC Alarm Summary;;1.000000;0.000000;;9
 10;2;1_0_16;BITS;;PCS Alarm Summary;;1.000000;0.000000;;9

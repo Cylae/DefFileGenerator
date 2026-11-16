@@ -40,7 +40,7 @@ modbusRTU;Inverter;Solplanet;V1;;;;;;;
 39;4;1310;I16;;Internal Temp;TEMP_INT;0.1;0;C;4
 40;4;1311;I16;;Temp Module U;TEMP_CELL;0.1;0;C;4
 41;4;1312;I16;;Temp Module V;;0.1;0;C;4
-42;4;1313;I16;;Temp Module W;;0.1;0;C;4
+42;4;1313;I16;;Temp Module W;P_AC;0.1;0;C;4
 43;4;1314;I16;;Temp Boost;;0.1;0;C;4
 44;4;1315;I16;;Temp DCDC;;0.1;0;C;4
 45;4;1316;U16;;Bus Voltage;U_DC;0.1;0;V;4
@@ -96,7 +96,7 @@ modbusRTU;Inverter;Solplanet;V1;;;;;;;
 95;4;1366;U16;;Line Voltage ST;;0.1;0;V;4
 96;4;1367;U16;;Grid Frequency;FREQ;0.01;0;Hz;4
 97;4;1368;U32;;Apparent Power;S_AC;1;0;VA;4
-98;4;1370;I32;;Active Power;P_AC;1;0;W;4
+98;4;1370;I32;;Active Power;;1;0;W;4
 99;4;1372;I32;;Reactive Power;Q_AC;1;0;Var;4
 100;4;1374;I16;;Power Factor;PF;0.01;0;;4
 101;4;1375;U16;;Power Limit Status;CMD_P_AC_SET_ABS;1;0;;1

@@ -19,7 +19,7 @@ modbusRTU;Inverter;Ingeteam;INV_Ingeteam_AAA0030IMB02;;;;;;;
 18;4;23;U16;;Unit flags 1;;1.0;0.0;;9
 19;4;24;U16;;Unit flags 2;;1.0;0.0;;9
 20;4;25;U16;;Unit flags 3;;1.0;0.0;;9
-21;4;26;U16;;Status Unit 1;;1.0;0.0;;9
+21;4;26;U16;;Status Unit 1;DeviceStatus;1.0;0.0;;9
 22;4;27;U16;;Status Unit 2;;1.0;0.0;;9
 23;4;28;U16;;Status Unit 3;;1.0;0.0;;9
 24;4;29;U16;;Output grid current RMS;;1.0;0.0;A;4
@@ -109,7 +109,7 @@ modbusRTU;Inverter;Ingeteam;INV_Ingeteam_AAA0030IMB02;;;;;;;
 108;4;30021;U16;;Power stack temperature (Power B);;1.0;0.0;°C;4
 109;4;30022;U16;;Ambient filtered temperature (Power B);TEMP_AMB;1.0;0.0;°C;4
 110;4;30023;U16;;Maximun IGBT NTC Temperature (Power B);;1.0;0.0;°C;4
-111;4;30024;U16;;Grid Voltage rms Phase R (Power B);;1.0;0.0;V;4
+111;4;30024;U16;;Grid Voltage rms Phase R (Power B);U_AC_L1L2;1.0;0.0;V;4
 112;4;30025;U16;;Grid Voltage rms Phase S (Power B);;1.0;0.0;V;4
 113;4;30026;U16;;Grid Voltage rms Phase T (Power B);;1.0;0.0;V;4
 114;4;30027;U16;;Grid Current rms Phase R (Power B);;1.0;0.0;A;4

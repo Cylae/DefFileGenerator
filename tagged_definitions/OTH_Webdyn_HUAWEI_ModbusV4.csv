@@ -6,9 +6,9 @@ modbusRTU;Other;Webdyn;HUAWEI_ModbusV4;;;;;;;
 5;3;30071;U16;;String Number;;1.000000;0.000000;;4
 6;3;30072;U16;;MPPT Number;;1.000000;0.000000;;4
 7;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
-8;3;30075;U32;;Maximum active power (Pmax);;0.001000;0.000000;kW;4
-9;3;30077;U32;;Maximum apparent power (Smax);;0.001000;0.000000;kVA;4
-10;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);;0.001000;0.000000;kVar;4
+8;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001000;0.000000;kW;4
+9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001000;0.000000;kVA;4
+10;3;30079;I32;;Maximum reactive power (Qmax, fed to the power grid);Q_AC;0.001000;0.000000;kVar;4
 11;3;30081;I32;;Maximum reactive power (Qmax, absorbed from the power grid);;0.001000;0.000000;kVar;4
 12;3;32000;U16;;Standalone teleindication;;1.000000;0.000000;;4
 13;3;32002;U16;;Operating status;;1.000000;0.000000;;4
@@ -75,8 +75,8 @@ modbusRTU;Other;Webdyn;HUAWEI_ModbusV4;;;;;;;
 74;3;32074;I32;;Current2_Ib;;0.001000;0.000000;A;4
 75;3;32076;I32;;Current3_Ic;;0.001000;0.000000;A;4
 76;3;32078;I32;;Active power peak of current day;;0.001000;0.000000;kW;4
-77;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
-78;3;32082;I32;;Reactive_power;Q_AC;1.000000;0.000000;Var;4
+77;3;32080;I32;;Active power;;0.001000;0.000000;kW;4
+78;3;32082;I32;;Reactive_power;;1.000000;0.000000;Var;4
 79;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
 80;3;32085;U16;;Frequency;FREQ;0.010000;0.000000;Hz;4
 81;3;32086;U16;;Inverter efficiency;;0.010000;0.000000;'%;4
@@ -87,7 +87,7 @@ modbusRTU;Other;Webdyn;HUAWEI_ModbusV4;;;;;;;
 86;3;32091;U32;;Startup time;;1.000000;0.000000;s;4
 87;3;32093;U32;;Shutdown time;;1.000000;0.000000;s;4
 88;3;32106;U32;;Energy_total;E_TOT;0.010000;0.000000;kWh;4
-89;3;32114;U32;;Energy yield of current day;;0.010000;0.000000;kWh;4
+89;3;32114;U32;;Energy yield of current day;E_DAY;0.010000;0.000000;kWh;4
 90;3;32116;U32;;Energy yield of the month;;0.010000;0.000000;kWh;4
 91;3;32118;U32;;Energy yield of the year;;0.010000;0.000000;kWh;4
 92;3;35300;U16;;[Active] Adjusment mode;;1.000000;0.000000;;4
@@ -179,11 +179,11 @@ modbusRTU;Other;Webdyn;HUAWEI_ModbusV4;;;;;;;
 178;3;42000;U16;;Grid code;;1.000000;0.000000;;4
 179;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001000;0.000000;'%/s;4
 180;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001000;0.000000;;4
-181;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;;1.000000;0.000000;s;4
+181;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.000000;0.000000;s;1
 182;3;43006;I16;;Time Zone;;1.000000;0.000000;min;4
 183;3;37000;U16;;[Energy storage unit 1] Running status;;1.000000;0.000000;;1
 184;3;37001;I32;;[Energy storage unit 1] Charge and discharge power;;1.000000;0.000000;W;1
-185;3;37003;U16;;[Energy storage unit 1] Bus voltage;;1.000000;0.000000;V;1
+185;3;37003;U16;;[Energy storage unit 1] Bus voltage;U_DC;1.000000;0.000000;V;1
 186;3;37004;U16;;[Energy storage unit 1] Battery SOC;SOC;1.000000;0.000000;'%;1
 187;3;37006;U16;;[Energy storage unit 1] Working mode;;1.000000;0.000000;;1
 188;3;37007;U32;;[Energy storage unit 1] Rated charge power;;1.000000;0.000000;W;1
@@ -191,7 +191,7 @@ modbusRTU;Other;Webdyn;HUAWEI_ModbusV4;;;;;;;
 190;3;37014;U16;;[Energy storage unit 1] Fault ID;;1.000000;0.000000;;1
 191;3;37015;U32;;[Energy storage unit 1] Currentday charge capacity;;1.000000;0.000000;kWh;1
 192;3;37017;U32;;[Energy storage unit 1] Currentday discharge capacity;;0.100000;0.000000;kWh;1
-193;3;37021;I16;;[Energy storage unit 1] Bus current;;0.100000;0.000000;A;1
+193;3;37021;I16;;[Energy storage unit 1] Bus current;I_DC;0.100000;0.000000;A;1
 194;3;37022;I16;;[Energy storage unit 1] battery temperature;TEMP;0.100000;0.000000;Deg. Celsius;1
 195;3;37025;U16;;[Energy storage unit 1] Remaining charge/ discharge time;;1.000000;0.000000;min/s;1
 196;3;37026_20;STRING;;[Energy storage unit 1] DCDCversion;;1.000000;0.000000;;1

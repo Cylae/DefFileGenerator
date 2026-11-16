@@ -3,8 +3,8 @@ modbusRTU;Inverter;SMA;INV_SMA_STPX_27_30_50_60;;;;;;;
 2;4;30003;U32;;Parameter.Nameplate.SusyId;;1.000000;0.000000;;4
 3;4;30005;U32;;Parameter.Nameplate.SerNum;;1.000000;0.000000;;4
 4;4;30007;U32;;Modbus data change count;;1.000000;0.000000;;4
-5;4;30051;U32;;Parameter.Nameplate.MainModel;;1.000000;0.000000;;4
-6;4;30053;U32;;Parameter.Nameplate.Model;MODEL;1.000000;0.000000;;4
+5;4;30051;U32;;Parameter.Nameplate.MainModel;MODEL;1.000000;0.000000;;4
+6;4;30053;U32;;Parameter.Nameplate.Model;;1.000000;0.000000;;4
 7;4;30055;U32;;Parameter.Nameplate.Vendor;;1.000000;0.000000;;4
 8;4;30057;U32;;Parameter.Nameplate.SerNum_2;SERIAL;1.000000;0.000000;;4
 9;4;30059;U32;;Parameter.Nameplate.PkgRev;;1.000000;0.000000;;4
@@ -17,8 +17,8 @@ modbusRTU;Inverter;SMA;INV_SMA_STPX_27_30_50_60;;;;;;;
 16;4;30215;U32;;Measurement.Operation.Evt.Dsc;;1.000000;0.000000;;4
 17;4;30217;U32;;Measurement.Operation.GriSwStt;;1.000000;0.000000;;4
 18;4;30219;U32;;Measurement.Operation.DrtStt;;1.000000;0.000000;;4
-19;4;30225;U32;;Measurement.Isolation.LeakRis;;1.000000;0.000000;;4
-20;4;30231;U32;;Parameter.Inverter.WLim;;1.000000;0.000000;W;4
+19;4;30225;U32;;Measurement.Isolation.LeakRis;R_ISO;1.000000;0.000000;;4
+20;4;30231;U32;;Parameter.Inverter.WLim;P_RATED;1.000000;0.000000;W;4
 21;4;30233;U32;;Parameter.Inverter.WMax;;1.000000;0.000000;W;4
 22;4;30235;U32;;Measurement.Operation.BckStt;;1.000000;0.000000;;4
 23;4;30237;U32;;Measurement.GridMs.GriTyp;;1.000000;0.000000;;4

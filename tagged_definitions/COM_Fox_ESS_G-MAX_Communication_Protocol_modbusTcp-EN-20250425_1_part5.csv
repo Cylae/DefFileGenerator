@@ -1,0 +1,56 @@
+modbusRTU;Other;Fox ESS;G-MAX_Communication__p5;;;;;;;
+1;4;200;U16;;Stack SOC;;1.0;0.0;%;4
+2;4;201;U16;;Heap SOH;;1.0;0.0;%;4
+3;4;202;U16;;Stack status (0: Stop 1: Charge 2: Discharge 3: Standby 4 Fault);;1.0;0.0;None;4
+4;4;203;U16;;Stack voltage;;1.0;0.0;V;4
+5;4;204;U16;;Stack current;;1.0;0.0;A;4
+6;4;205;U16;;Maximum single cell voltage;;1.0;0.0;V;4
+7;4;206;U16;;Minimum single cell voltage;;1.0;0.0;V;4
+8;4;207;U16;;Maximum monomer temperature;;1.0;0.0;℃;4
+9;4;208;U16;;Minimum monomer temperature;;1.0;0.0;℃;4
+10;4;209;U16;;Maximum single cell SOC value;;1.0;0.0;%;4
+11;4;210;U16;;Minimum single cell SOC value;;1.0;0.0;%;4
+12;4;211;U16;;Maximum cell voltage cluster number;;1.0;0.0;None;4
+13;4;212;U16;;Maximum cell voltage Cell number;;1.0;0.0;None;4
+14;4;213;U16;;Minimum cell voltage cluster number;;1.0;0.0;None;4
+15;4;214;U16;;Minimum cell voltage Cell number;;1.0;0.0;None;4
+16;4;215;U16;;Maximum cell temperature cluster number;TEMP_CELL;1.0;0.0;None;4
+17;4;216;U16;;Maximum monomer temperature monomer number;;1.0;0.0;None;4
+18;4;217;U16;;Minimum cell temperature cluster number;;1.0;0.0;None;4
+19;4;218;U16;;Minimum monomer temperature monomer number;;1.0;0.0;None;4
+20;4;219;U16;;None;;1.0;0.0;A;4
+21;4;220;U16;;None;;1.0;0.0;A;4
+22;4;223;U16;;Maximum pressure difference of monomer;PRESSURE;1.0;0.0;mV;4
+23;4;224;U16;;Stack power;;1.0;0.0;KW;4
+24;4;227;U16;;Cumulative cluster charging capacity;;1.0;0.0;KWh;4
+25;4;229;U16;;Cumulative cluster discharge capacity;;1.0;0.0;KWh;4
+26;4;231;U16;;Rechargeable capacity;;1.0;0.0;KWh;4
+27;4;233;U16;;Dischargeable capacity;;1.0;0.0;KWh;4
+28;4;6200;U16;;Monomer temperature;;1.0;0.0;℃;4
+29;4;6600;U16;;Single cell voltage;;1.0;0.0;V;4
+30;4;7000;U16;;Single SOC;;1.0;0.0;%;4
+31;4;2200;U16;;Cluster SOC;;1.0;0.0;%;4
+32;4;2201;U16;;Cluster SOH;;1.0;0.0;%;4
+33;4;2202;U16;;Cluster status 0: Stop 1: Charging 2: Discharging 3: Standby 4 Fault;;1.0;0.0;None;4
+34;4;2203;U16;;Cluster voltage;;1.0;0.0;V;4
+35;4;2204;U16;;Cluster current;;1.0;0.0;A;4
+36;4;2205;U16;;Maximum single cell voltage;;1.0;0.0;V;4
+37;4;2206;U16;;Minimum single cell voltage;;1.0;0.0;V;4
+38;4;2207;U16;;Maximum monomer temperature;;1.0;0.0;℃;4
+39;4;2208;U16;;Minimum monomer temperature;;1.0;0.0;℃;4
+40;4;2209;U16;;Maximum single cell SOC value;;1.0;0.0;%;4
+41;4;2210;U16;;Minimum single cell SOC value;;1.0;0.0;%;4
+42;4;2212;U16;;Maximum cell voltage Cell number;;1.0;0.0;None;4
+43;4;2214;U16;;Minimum cell voltage Cell number;;1.0;0.0;None;4
+44;4;2216;U16;;Maximum monomer temperature monomer number;;1.0;0.0;None;4
+45;4;2218;U16;;Minimum monomer temperature monomer number;;1.0;0.0;None;4
+46;4;2219;U16;;None;;1.0;0.0;A;4
+47;4;2220;U16;;None;;1.0;0.0;A;4
+48;4;2221;U16;;Number of cluster batteries;;1.0;0.0;None;4
+49;4;2222;U16;;Number of cluster temperatures;;1.0;0.0;None;4
+50;4;2223;U16;;None;;1.0;0.0;mV;4
+51;4;2224;U16;;Cluster Power;;1.0;0.0;KW;4
+52;4;2225;U16;;None;;1.0;0.0;None;4
+53;4;2226;U16;;None;;1.0;0.0;None;4
+54;4;2227;U16;;Cumulative cluster charging capacity;;1.0;0.0;KWh;4
+55;4;2229;U16;;Cumulative cluster discharge capacity;;1.0;0.0;KWh;4

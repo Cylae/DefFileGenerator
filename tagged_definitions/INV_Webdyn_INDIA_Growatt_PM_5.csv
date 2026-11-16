@@ -2,35 +2,35 @@ modbusRTU;Inverter;Growatt;110;;;;;;;
 1;4;1;U16;;Input power (high);P_DC;1.000000;0.000000;;4
 2;4;2;U16;;Input power (low);;1.000000;0.000000;;4
 3;4;3;U16;;PV1 voltage;U_DC_STRING_1;1.000000;0.000000;;4
-4;4;4;U16;;PV1 input current;I_DC_MPPT_1;1.000000;0.000000;;4
+4;4;4;U16;;PV1 input current;I_DC_STRING_1;1.000000;0.000000;;4
 5;4;5;U16;;PV1 input power(high);P_DC_MPPT_1;1.000000;0.000000;;4
 6;4;6;U16;;PV1 input power(low);;0.001000;0.000000;;4
 7;4;7;U16;;PV2 voltage;U_DC_STRING_2;1.000000;0.000000;;4
-8;4;8;U16;;PV2 input current;I_DC_MPPT_2;1.000000;0.000000;;4
+8;4;8;U16;;PV2 input current;I_DC_STRING_2;1.000000;0.000000;;4
 9;4;9;U16;;PV2 input power (high);P_DC_MPPT_2;1.000000;0.000000;;4
 10;4;10;U16;;PV2 input power (low);;1.000000;0.000000;;4
 11;4;11;U16;;PV3 voltage;U_DC_STRING_3;0.100000;0.000000;;4
-12;4;12;U16;;PV3 input current;I_DC_MPPT_3;0.100000;0.000000;;4
+12;4;12;U16;;PV3 input current;I_DC_STRING_3;0.100000;0.000000;;4
 13;4;13;U16;;PV3 input power (high);P_DC_MPPT_3;1.000000;0.000000;;4
 14;4;14;U16;;PV3 input power (low);;1.000000;0.000000;;4
 15;4;15;U16;;PV4 voltage;U_DC_STRING_4;0.100000;0.000000;;4
-16;4;16;U16;;PV4 input current;I_DC_MPPT_4;1.000000;0.000000;;4
+16;4;16;U16;;PV4 input current;I_DC_STRING_4;1.000000;0.000000;;4
 17;4;17;U16;;PV4 input power (high);P_DC_MPPT_4;0.100000;0.000000;;4
 18;4;18;U16;;PV4 input power (low);;1.000000;0.000000;;4
 19;4;19;U16;;PV5 voltage;U_DC_STRING_5;0.100000;0.000000;;4
-20;4;20;U16;;PV5 input current;I_DC_MPPT_5;1.000000;0.000000;;4
+20;4;20;U16;;PV5 input current;I_DC_STRING_5;1.000000;0.000000;;4
 21;4;21;U16;;PV5 input power(high);P_DC_MPPT_5;0.100000;0.000000;;4
 22;4;22;U16;;PV5 input power(low);;1.000000;0.000000;;4
 23;4;23;U16;;PV6 voltage;U_DC_STRING_6;1.000000;0.000000;;4
-24;4;24;U16;;PV6 input current;I_DC_MPPT_6;1.000000;0.000000;;4
+24;4;24;U16;;PV6 input current;I_DC_STRING_6;1.000000;0.000000;;4
 25;4;25;U16;;PV6 input power (high);P_DC_MPPT_6;1.000000;0.000000;;4
 26;4;26;U16;;PV6 input power (low);;1.000000;0.000000;;4
 27;4;27;U16;;PV7 voltage;U_DC_STRING_7;1.000000;0.000000;;4
-28;4;28;U16;;PV7 input current;I_DC_MPPT_7;1.000000;0.000000;;4
+28;4;28;U16;;PV7 input current;I_DC_STRING_7;1.000000;0.000000;;4
 29;4;29;U16;;PV7 input power (high);P_DC_MPPT_7;1.000000;0.000000;;4
 30;4;30;U16;;PV7 input power (low);;1.000000;0.000000;;4
 31;4;31;U16;;PV8 voltage;U_DC_STRING_8;1.000000;0.000000;;4
-32;4;32;U16;;PV8 input current;I_DC_MPPT_8;1.000000;0.000000;;4
+32;4;32;U16;;PV8 input current;I_DC_STRING_8;1.000000;0.000000;;4
 33;4;33;U16;;PV8 input power (high);P_DC_MPPT_8;1.000000;0.000000;;4
 34;4;34;U16;;PV8 input power (low);;1.000000;0.000000;;4
 35;4;35;U16;;Output power (high);P_AC;1.000000;0.000000;;4
@@ -38,7 +38,7 @@ modbusRTU;Inverter;Growatt;110;;;;;;;
 37;4;37;U16;;Grid frequency;FREQ;1.000000;0.000000;;4
 38;4;38;U16;;Three/single phase grid voltage;U_AC_1;1.000000;0.000000;;4
 39;4;39;U16;;Three/single phase grid output current;I_AC_1;1.000000;0.000000;;4
-40;4;40;U16;;Three/single phase grid output watt VA (high);;1.000000;0.000000;;4
+40;4;40;U16;;Three/single phase grid output watt VA (high);S_AC;1.000000;0.000000;;4
 41;4;41;U16;;Three/single phase grid output watt VA(low);;1.000000;0.000000;;4
 42;4;42;U16;;Three phase grid voltage;U_AC_L3L1;1.000000;0.000000;;4
 43;4;43;U16;;Three phase grid output current;;1.000000;0.000000;;4
@@ -105,23 +105,23 @@ modbusRTU;Inverter;Growatt;110;;;;;;;
 104;4;104;U16;;Inverter fault code;;1.000000;0.000000;;4
 105;4;105;U16;;Inverter warning code;;1.000000;0.000000;;4
 106;4;106;U16;;Actual power percentage;;1.000000;0.000000;;4
-107;3;3;U16;;Active power reduction;;1.000000;0.000000;%;4
+107;3;3;U16;;Active power reduction;cmd;1.000000;0.000000;%;4
 108;4;142;U16;;String_1 voltage;;1.0;0.0;;4
-109;4;143;U16;;String_1 current;I_DC_STRING_1;1.0;0.0;;4
+109;4;143;U16;;String_1 current;;1.0;0.0;;4
 110;4;144;U16;;String_2 voltage;;1.0;0.0;;4
-111;4;145;U16;;String_2 current;I_DC_STRING_2;1.0;0.0;;4
+111;4;145;U16;;String_2 current;;1.0;0.0;;4
 112;4;146;U16;;String_3 voltage;;1.0;0.0;;4
-113;4;147;U16;;String_3 current;I_DC_STRING_3;1.0;0.0;;4
+113;4;147;U16;;String_3 current;;1.0;0.0;;4
 114;4;148;U16;;String_4 voltage;;1.0;0.0;;4
-115;4;149;U16;;String_4 current;I_DC_STRING_4;1.0;0.0;;4
+115;4;149;U16;;String_4 current;;1.0;0.0;;4
 116;4;150;U16;;String_5 voltage;;1.0;0.0;;4
-117;4;151;U16;;String_5 current;I_DC_STRING_5;1.0;0.0;;4
+117;4;151;U16;;String_5 current;;1.0;0.0;;4
 118;4;152;U16;;String_6 voltage;;1.0;0.0;;4
-119;4;153;U16;;String_6 current;I_DC_STRING_6;1.0;0.0;;4
+119;4;153;U16;;String_6 current;;1.0;0.0;;4
 120;4;154;U16;;String_7 voltage;;1.0;0.0;;4
-121;4;155;U16;;String_7 current;I_DC_STRING_7;1.0;0.0;;4
+121;4;155;U16;;String_7 current;;1.0;0.0;;4
 122;4;156;U16;;String_8 voltage;;1.0;0.0;;4
-123;4;157;U16;;String_8 current;I_DC_STRING_8;1.0;0.0;;4
+123;4;157;U16;;String_8 current;;1.0;0.0;;4
 124;4;158;U16;;String_9 voltage;U_DC_STRING_9;1.0;0.0;;4
 125;4;159;U16;;String_9 current;I_DC_STRING_9;1.0;0.0;;4
 126;4;160;U16;;String_10 voltage;U_DC_STRING_10;1.0;0.0;;4
@@ -171,34 +171,34 @@ modbusRTU;Inverter;Growatt;110;;;;;;;
 170;4;985;U16;;String_32 voltage;U_DC_STRING_32;1.0;0.0;;4
 171;4;986;U16;;String_32 current;I_DC_STRING_32;1.0;0.0;;4
 172;4;875;U16;;PV9 voltage;;1.0;0.0;;4
-173;4;876;U16;;PV9 input current;I_DC_MPPT_9;1.0;0.0;;4
+173;4;876;U16;;PV9 input current;;1.0;0.0;;4
 174;4;877;U16;;PV9 input power(high);P_DC_MPPT_9;1.0;0.0;;4
 175;4;878;U16;;PV9 input power(low);;1.0;0.0;;4
 176;4;879;U16;;PV10 voltage;;1.0;0.0;;4
-177;4;880;U16;;PV10 input current;I_DC_MPPT_10;1.0;0.0;;4
+177;4;880;U16;;PV10 input current;;1.0;0.0;;4
 178;4;881;U16;;PV10 input power(high);P_DC_MPPT_10;1.0;0.0;;4
 179;4;882;U16;;PV10 input power(low);;1.0;0.0;;4
 180;4;883;U16;;PV11 voltage;;1.0;0.0;;4
-181;4;884;U16;;PV11 input current;I_DC_MPPT_11;1.0;0.0;;4
+181;4;884;U16;;PV11 input current;;1.0;0.0;;4
 182;4;885;U16;;PV11 input power(high);P_DC_MPPT_11;1.0;0.0;;4
 183;4;886;U16;;PV11 input power(low);;1.0;0.0;;4
 184;4;887;U16;;PV12 voltage;;1.0;0.0;;4
-185;4;888;U16;;PV12 input current;I_DC_MPPT_12;1.0;0.0;;4
+185;4;888;U16;;PV12 input current;;1.0;0.0;;4
 186;4;889;U16;;PV12 input power(high);P_DC_MPPT_12;1.0;0.0;;4
 187;4;890;U16;;PV12 input power(low);;1.0;0.0;;4
-188;4;891;U16;;PV13 voltage;;1.0;0.0;;4
-189;4;892;U16;;PV13 input current;I_DC_MPPT_13;1.0;0.0;;4
+188;4;891;U16;;PV13 voltage;U_DC_MPPT_7;1.0;0.0;;4
+189;4;892;U16;;PV13 input current;;1.0;0.0;;4
 190;4;893;U16;;PV13 input power(high);P_DC_MPPT_13;1.0;0.0;;4
 191;4;894;U16;;PV13 input power(low);;1.0;0.0;;4
 192;4;895;U16;;PV14 voltage;;1.0;0.0;;4
-193;4;896;U16;;PV14 input current;I_DC_MPPT_14;1.0;0.0;;4
+193;4;896;U16;;PV14 input current;;1.0;0.0;;4
 194;4;897;U16;;PV14 input power(high);P_DC_MPPT_14;1.0;0.0;;4
 195;4;898;U16;;PV14 input power(low);;1.0;0.0;;4
-196;4;899;U16;;PV15 voltage;;1.0;0.0;;4
-197;4;900;U16;;PV15 input current;I_DC_MPPT_15;1.0;0.0;;4
+196;4;899;U16;;PV15 voltage;U_DC_MPPT_8;1.0;0.0;;4
+197;4;900;U16;;PV15 input current;;1.0;0.0;;4
 198;4;901;U16;;PV15 input power(high);P_DC_MPPT_15;1.0;0.0;;4
 199;4;902;U16;;PV15 input power(low);;1.0;0.0;;4
 200;4;903;U16;;PV16 voltage;;1.0;0.0;;4
-201;4;904;U16;;PV16 input current;I_DC_MPPT_16;1.0;0.0;;4
+201;4;904;U16;;PV16 input current;;1.0;0.0;;4
 202;4;905;U16;;PV16 input power(high);P_DC_MPPT_16;1.0;0.0;;4
 203;4;906;U16;;PV16 input power(low);;1.0;0.0;;4

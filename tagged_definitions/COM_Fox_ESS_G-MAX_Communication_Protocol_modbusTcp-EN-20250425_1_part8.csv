@@ -1,0 +1,123 @@
+modbusRTU;Other;Fox ESS;G-MAX_Communication__p8;;;;;;;
+1;4;55100;U16;;Ua phase voltage;U_AC_1;1.0;0.0;V;4
+2;4;55101;U16;;Ub phase voltage;U_AC_2;1.0;0.0;V;4
+3;4;55102;U16;;Uc phase voltage;U_AC_3;1.0;0.0;V;4
+4;4;55103;U16;;Ia phase current;I_AC_1;1.0;0.0;A;4
+5;4;55104;U16;;Ib phase current;I_AC_2;1.0;0.0;A;4
+6;4;55105;U16;;Ic phase current;I_AC_3;1.0;0.0;A;4
+7;4;55106;U16;;Uab line voltage;U_AC_L1L2;1.0;0.0;V;4
+8;4;55107;U16;;Ubc line voltage;U_AC_L2L3;1.0;0.0;V;4
+9;4;55108;U16;;Uca line voltage;U_AC_L3L1;1.0;0.0;V;4
+10;4;55109;U16;;Phase A active power;P_AC_1;1.0;0.0;kw;4
+11;4;55110;U16;;Phase B active power;P_AC_2;1.0;0.0;kw;4
+12;4;55111;U16;;Phase C active power;P_AC_3;1.0;0.0;kw;4
+13;4;55112;U16;;Total active power;P_AC;1.0;0.0;kw;4
+14;4;55113;U16;;Phase A reactive power;Q_AC_1;1.0;0.0;kvar;4
+15;4;55114;U16;;B phase reactive power;Q_AC;1.0;0.0;kvar;4
+16;4;55115;U16;;Phase C reactive power;Q_AC_3;1.0;0.0;kvar;4
+17;4;55116;U16;;Total reactive power;;1.0;0.0;kvar;4
+18;4;55117;U16;;spare;;1.0;0.0;VA;4
+19;4;55118;U16;;spare;;1.0;0.0;VA;4
+20;4;55119;U16;;spare;;1.0;0.0;VA;4
+21;4;55120;U16;;spare;;1.0;0.0;VA;4
+22;4;55121;U16;;Phase A power factor;PF_1;1.0;0.0;None;4
+23;4;55122;U16;;Phase B power factor;PF_2;1.0;0.0;None;4
+24;4;55123;U16;;Phase C power factor;PF_3;1.0;0.0;None;4
+25;4;55124;U16;;Total power factor;PF;1.0;0.0;None;4
+26;4;55125;U16;;frequency;FREQ;1.0;0.0;Hz;4
+27;4;55126;U16;;Current forward total peak active energy;I_AC;1.0;0.0;KWh;4
+28;4;55127;U16;;Current total forward peak active energy;;1.0;0.0;KWh;4
+29;4;55128;U16;;Current forward total active energy;;1.0;0.0;KWh;4
+30;4;55129;U16;;Current forward total valley active energy;;1.0;0.0;KWh;4
+31;4;55130;U16;;Current total reverse peak active energy;;1.0;0.0;KWh;4
+32;4;55131;U16;;Current total reverse peak active energy;;1.0;0.0;KWh;4
+33;4;55132;U16;;Current total reverse active energy;;1.0;0.0;KWh;4
+34;4;55133;U16;;Current total reverse active energy;;1.0;0.0;KWh;4
+35;4;55134;U16;;spare;;1.0;0.0;None;4
+36;4;55135;U16;;spare;;1.0;0.0;None;4
+37;4;55150;U16;;Ua phase voltage;;1.0;0.0;V;4
+38;4;55151;U16;;Ub phase voltage;;1.0;0.0;V;4
+39;4;55152;U16;;Uc phase voltage;;1.0;0.0;V;4
+40;4;55153;U16;;Ia phase current;;1.0;0.0;A;4
+41;4;55154;U16;;Ib phase current;;1.0;0.0;A;4
+42;4;55155;U16;;Ic phase current;;1.0;0.0;A;4
+43;4;55156;U16;;Uab line voltage;;1.0;0.0;V;4
+44;4;55157;U16;;Ubc line voltage;;1.0;0.0;V;4
+45;4;55158;U16;;Uca line voltage;;1.0;0.0;V;4
+46;4;55159;U16;;Phase A active power;;1.0;0.0;kw;4
+47;4;55160;U16;;Phase B active power;;1.0;0.0;kw;4
+48;4;55161;U16;;Phase C active power;;1.0;0.0;kw;4
+49;4;55162;U16;;Total active power;;1.0;0.0;kw;4
+50;4;55163;U16;;Phase A reactive power;;1.0;0.0;kvar;4
+51;4;55164;U16;;B phase reactive power;;1.0;0.0;kvar;4
+52;4;55165;U16;;Phase C reactive power;;1.0;0.0;kvar;4
+53;4;55166;U16;;Total reactive power;;1.0;0.0;kvar;4
+54;4;55167;U16;;spare;;1.0;0.0;VA;4
+55;4;55168;U16;;spare;;1.0;0.0;VA;4
+56;4;55169;U16;;spare;;1.0;0.0;VA;4
+57;4;55170;U16;;spare;;1.0;0.0;VA;4
+58;4;55171;U16;;Phase A power factor;;1.0;0.0;None;4
+59;4;55172;U16;;Phase B power factor;;1.0;0.0;None;4
+60;4;55173;U16;;Phase C power factor;;1.0;0.0;None;4
+61;4;55174;U16;;Total power factor;;1.0;0.0;None;4
+62;4;55175;U16;;frequency;;1.0;0.0;None;4
+63;4;55176;U16;;Current forward total peak active energy;;1.0;0.0;KWh;4
+64;4;55177;U16;;Current total forward peak active energy;;1.0;0.0;KWh;4
+65;4;55178;U16;;Current forward total active energy;;1.0;0.0;KWh;4
+66;4;55179;U16;;Current forward total valley active energy;;1.0;0.0;KWh;4
+67;4;55180;U16;;Current total reverse peak active energy;;1.0;0.0;KWh;4
+68;4;55181;U16;;Current total reverse peak active energy;;1.0;0.0;KWh;4
+69;4;55182;U16;;Current total reverse active energy;;1.0;0.0;KWh;4
+70;4;55183;U16;;Current total reverse active energy;;1.0;0.0;KWh;4
+71;4;55184;U16;;spare;;1.0;0.0;None;4
+72;4;55185;U16;;spare;;1.0;0.0;None;4
+73;4;55300;U16;;Fan on status;;1.0;0.0;None;4
+74;4;55301;U16;;Refrigeration block on state;;1.0;0.0;None;4
+75;4;55302;U16;;Heating output status;;1.0;0.0;None;4
+76;4;55303;U16;;Ambient temperature;TEMP_AMB;1.0;0.0;None;4
+77;4;55304;U16;;Manual automatic state;;1.0;0.0;None;4
+78;4;55305;U16;;Ambient humidity;HUMIDITY;1.0;0.0;%RH;4
+79;4;55306;U16;;Refrigeration block temperature;TEMP;1.0;0.0;℃;4
+80;4;56000;U16;;Current Mode;;1.0;0.0;None;4
+81;4;56001;U16;;Outlet water temperature;;1.0;0.0;℃;4
+82;4;56002;U16;;Inlet water temperature;;1.0;0.0;℃;4
+83;4;56003;U16;;Water outlet pressure;PRESSURE;1.0;0.0;Bar;4
+84;4;56004;U16;;Return water pressure;;1.0;0.0;Bar;4
+85;4;56007;U16;;Liquid cooling unit communication failure;;1.0;0.0;None;4
+86;4;55750;U16;;Running status;;1.0;0.0;None;4
+87;4;55751;U16;;spare;;1.0;0.0;None;4
+88;4;55752;U16;;DC Current;I_DC;1.0;0.0;A;4
+89;4;55753;U16;;DC voltage;U_DC;1.0;0.0;V;4
+90;4;55754;U16;;DC Power;P_DC;1.0;0.0;KW;4
+91;4;55755;U16;;AC A phase voltage;;1.0;0.0;V;4
+92;4;55756;U16;;AC B phase voltage;;1.0;0.0;V;4
+93;4;55757;U16;;AC C phase voltage;;1.0;0.0;V;4
+94;4;55758;U16;;AC A phase current;;1.0;0.0;A;4
+95;4;55759;U16;;AC B phase current;;1.0;0.0;A;4
+96;4;55760;U16;;AC phase C current;;1.0;0.0;A;4
+97;4;55761;U16;;AC phase A active power;;1.0;0.0;A;4
+98;4;55762;U16;;AC B phase active power;;1.0;0.0;kw;4
+99;4;55763;U16;;AC phase C active power;;1.0;0.0;kw;4
+100;4;55764;U16;;Total AC active power;;1.0;0.0;kW;4
+101;4;55765;U16;;spare;;1.0;0.0;None;4
+102;4;55766;U16;;spare;;1.0;0.0;None;4
+103;4;55767;U16;;spare;;1.0;0.0;None;4
+104;4;55768;U16;;spare;;1.0;0.0;None;4
+105;4;55769;U16;;Total AC reactive power;;1.0;0.0;None;4
+106;4;55770;U16;;spare;;1.0;0.0;None;4
+107;4;55771;U16;;spare;;1.0;0.0;None;4
+108;4;55772;U16;;spare;;1.0;0.0;None;4
+109;4;55773;U16;;Total AC apparent power;S_AC;1.0;0.0;None;4
+110;4;55774;U16;;Power Factor;;1.0;0.0;None;4
+111;4;55775;U16;;spare;;1.0;0.0;None;4
+112;4;55776;U16;;Warning word 1;;1.0;0.0;None;4
+113;4;55778;U16;;Warning word 2;;1.0;0.0;None;4
+114;4;55780;U16;;Warning word 3;;1.0;0.0;None;4
+115;4;55782;U16;;Warning word 4;;1.0;0.0;None;4
+116;4;31024;U16;;Software Version;;1.0;0.0;None;4
+117;4;31048;U16;;System ID;;1.0;0.0;None;4
+118;4;31072;U16;;System Model;MODEL;1.0;0.0;None;4
+119;4;31096;U16;;System version;;1.0;0.0;None;4
+120;4;31120;U16;;CPLD Version;;1.0;0.0;None;4
+121;4;31144;U16;;DSP1 version;;1.0;0.0;None;4
+122;4;31168;U16;;devName;;1.0;0.0;None;4

@@ -23,22 +23,22 @@ modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
 22;3;32037;I16;;PV11 Current;I_DC_STRING_11;0.01;0;A;4
 23;3;32038;I16;;PV12 Voltage;U_DC_STRING_12;0.1;0;V;4
 24;3;32039;I16;;PV12 Current;I_DC_STRING_12;0.01;0;A;4
-25;3;32040;I16;;PV13 Voltage;U_DC_STRING_13;0.1;0;V;4
-26;3;32041;I16;;PV13 Current;I_DC_STRING_13;0.01;0;A;4
-27;3;32042;I16;;PV14 Voltage;U_DC_STRING_14;0.1;0;V;4
-28;3;32043;I16;;PV14 Current;I_DC_STRING_14;0.01;0;A;4
-29;3;32044;I16;;PV15 Voltage;U_DC_STRING_15;0.1;0;V;4
-30;3;32045;I16;;PV15 Current;I_DC_STRING_15;0.01;0;A;4
-31;3;32046;I16;;PV16 Voltage;U_DC_STRING_16;0.1;0;V;4
-32;3;32047;I16;;PV16 Current;I_DC_STRING_16;0.01;0;A;4
-33;3;32048;I16;;PV17 Voltage;U_DC_STRING_17;0.1;0;V;4
+25;3;32040;I16;;PV13 Voltage;U_DC_MPPT_7;0.1;0;V;4
+26;3;32041;I16;;PV13 Current;I_DC_MPPT_7;0.01;0;A;4
+27;3;32042;I16;;PV14 Voltage;;0.1;0;V;4
+28;3;32043;I16;;PV14 Current;;0.01;0;A;4
+29;3;32044;I16;;PV15 Voltage;U_DC_MPPT_8;0.1;0;V;4
+30;3;32045;I16;;PV15 Current;I_DC_MPPT_8;0.01;0;A;4
+31;3;32046;I16;;PV16 Voltage;;0.1;0;V;4
+32;3;32047;I16;;PV16 Current;;0.01;0;A;4
+33;3;32048;I16;;PV17 Voltage;U_DC_MPPT_9;0.1;0;V;4
 34;3;32049;I16;;PV17 Current;I_DC_STRING_17;0.01;0;A;4
-35;3;32050;I16;;PV18 Voltage;U_DC_STRING_18;0.1;0;V;4
+35;3;32050;I16;;PV18 Voltage;;0.1;0;V;4
 36;3;32051;I16;;PV18 Current;I_DC_STRING_18;0.01;0;A;4
 37;3;32052;I16;;PV19 Voltage;U_DC_STRING_19;0.1;0;V;4
-38;3;32053;I16;;PV19 Current;I_DC_STRING_19;0.01;0;A;4
-39;3;32054;I16;;PV20 Voltage;U_DC_STRING_20;0.1;0;V;4
-40;3;32055;I16;;PV20 Current;I_DC_STRING_20;0.01;0;A;4
+38;3;32053;I16;;PV19 Current;I_DC_MPPT_1;0.01;0;A;4
+39;3;32054;I16;;PV20 Voltage;U_DC_MPPT_1;0.1;0;V;4
+40;3;32055;I16;;PV20 Current;;0.01;0;A;4
 41;3;32064;I32;;Input Power (DC Power);P_DC;0.001;0;kW;4
 42;3;32066;U16;;Grid AB-Line Voltage;U_AC_L1L2;0.1;0;V;4
 43;3;32067;U16;;Grid BC-Line Voltage;U_AC_L2L3;0.1;0;V;4
@@ -46,9 +46,9 @@ modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
 45;3;32069;U16;;Grid A-phase voltage;U_AC_1;0.1;0;V;4
 46;3;32070;U16;;Grid B-phase voltage;U_AC_2;0.1;0;V;4
 47;3;32071;U16;;Grid C-phase voltage;U_AC_3;0.1;0;V;4
-48;3;32072;I32;;Grid A-phase current;I_AC_1;0.001;0;A;4
-49;3;32074;I32;;Grid B-phase current;I_AC_2;0.001;0;A;4
-50;3;32076;I32;;Grid C-phase current;I_AC_3;0.001;0;A;4
+48;3;32072;I32;;Grid A-phase current;I_AC_3;0.001;0;A;4
+49;3;32074;I32;;Grid B-phase current;;0.001;0;A;4
+50;3;32076;I32;;Grid C-phase current;;0.001;0;A;4
 51;3;32078;I32;;Peak active power of the day;P_AC;0.001;0;kW;4
 52;3;32080;I32;;Active Power;;0.001;0;kW;4
 53;3;32082;I32;;Reactive Power;Q_AC;0.001;0;kVar;4
@@ -117,7 +117,7 @@ modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
 116;3;41324;U16;;HVRT Enable;;1;0;;1
 117;3;41325;U16;;Anti Islanding;;1;0;;1
 118;3;41326;U16;;Shadow mode switch;;1;0;;1
-119;3;41327;U16;;Export Power Limit Switch;CMD_P_ENA;1;0;;1
+119;3;41327;U16;;Export Power Limit Switch;CMD_P_AC_SET_ABS;1;0;;1
 120;3;41328;U32;;Export Power Limit Set;CMD_P_AC_LIM_ABS;1;0;;1
 121;3;41330;U16;;Power On;CMD_ON;1;0;;1
 122;3;41331;U16;;Power Off;CMD_OFF;1;0;;1
@@ -128,15 +128,15 @@ modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
 127;3;41351;U16;;N-PE Fault Limit;;1;0;V;1
 128;3;41373;U16;;History fault clearing;;1;0;;1
 129;3;42008;U16;;Export Power Limit Switch (Alt);;1;0;;1
-130;3;42009;U16;;Three-phase Export Power Limit mode selection;CMD_P_AC_SET_ABS;1;0;;1
+130;3;42009;U16;;Three-phase Export Power Limit mode selection;;1;0;;1
 131;3;42022;U16;;shadow mppt function 1;;1;0;;1
 132;3;42051;U16;;NPE Overvoltage fault detection switch;;1;0;;1
 133;3;42057;U16;;Lightning protection module detection switch;;1;0;;1
 134;3;42403;U16;;Active power control method;;1;0;;1
 135;3;42404;I32;;Active power fixed value derating;;1;0;W;1
 136;3;42407;I16;;Active power percentage derating(0.1%);;0.1;0;%Pn;1
-137;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1;0;Var;1
-138;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001;0;;1
+137;3;42411;I32;;Reactive power compensation fixed value;;1;0;Var;1
+138;3;42413;I16;;Reactive power compensation(PF);;0.001;0;;1
 139;3;42414;I16;;Reactive power compensation(Q/S);;0.1;0;%Pn;1
 140;3;42415;I16;;Reactive power compensation(Q/Qn);;1;0;%Qn;1
 141;3;42416;U16;;Reactive power compensation method;;1;0;;1
@@ -144,7 +144,7 @@ modbusRTU;Inverter;GOODWE;SMT_Series;;;;;;;
 143;3;42428;U32;;Reactive power compensation LPF time parameter;;1;0;ms;1
 144;3;42430;U16;;Active power compensation response mode;;1;0;;1
 145;3;42431;U32;;Active power compensation LPF time parameter;;1;0;ms;1
-146;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.1;0;%Pn/min;1
+146;3;42433;U32;;Active power gradient;;0.1;0;%Pn/min;1
 147;3;42435;U32;;Reactive power gradient;;0.1;0;%Pn/min;1
 148;3;42441;U16;;Night reactive power switch;;1;0;;1
 149;3;42442;U16;;Night reactive power parameters enable;;1;0;;1

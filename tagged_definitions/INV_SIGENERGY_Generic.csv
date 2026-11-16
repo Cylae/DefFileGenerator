@@ -76,7 +76,7 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 75;3;30500_30;STRING;;Model type;MODEL;1;0;;4
 76;3;30515_20;STRING;;Serial number;SERIAL;1;0;;4
 77;3;30525_30;STRING;;Machine firmware version;;1;0;;4
-78;3;30540;U32;;Rated active power;P_RATED;0.001;0;kW;4
+78;3;30540;U32;;Rated active power;;0.001;0;kW;4
 79;3;30542;U32;;Max. apparent power;;0.001;0;kVA;4
 80;3;30544;U32;;Max. active power;;0.001;0;kW;4
 81;3;30546;U32;;Max. absorption power;;0.001;0;kW;4
@@ -112,7 +112,7 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 111;3;30621;I16;;[ESS]Minimum battery temperature;;0.1;0;DegC;4
 112;3;30622;U16;;[ESS] Maximum battery cell voltage;;0.001;0;V;4
 113;3;30623;U16;;[ESS] Minimum battery cell voltage;;0.001;0;V;4
-114;3;31000;U16;;Rated grid voltage;;0.1;0;V;4
+114;3;31000;U16;;Rated grid voltage;U_AC_L1L2;0.1;0;V;4
 115;3;31001;U16;;Rated grid frequency;FREQ;0.01;0;Hz;4
 116;3;31002;U16;;Grid frequency;;0.01;0;Hz;4
 117;3;31003;I16;;[PCS] Internal temperature;TEMP_INT;0.1;0;DegC;4
@@ -158,14 +158,14 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 157;3;31055;I16;;PV11 current;I_DC_STRING_11;0.01;0;A;4
 158;3;31056;I16;;PV12 voltage;U_DC_STRING_12;0.1;0;V;4
 159;3;31057;I16;;PV12 current;I_DC_STRING_12;0.01;0;A;4
-160;3;31058;I16;;PV13 voltage;U_DC_STRING_13;0.1;0;V;4
-161;3;31059;I16;;PV13 current;I_DC_STRING_13;0.01;0;A;4
-162;3;31060;I16;;PV14 voltage;U_DC_STRING_14;0.1;0;V;4
-163;3;31061;I16;;PV14 current;I_DC_STRING_14;0.01;0;A;4
-164;3;31062;I16;;PV15 voltage;U_DC_STRING_15;0.1;0;V;4
-165;3;31063;I16;;PV15 current;I_DC_STRING_15;0.01;0;A;4
-166;3;31064;I16;;PV16 voltage;U_DC_STRING_16;0.1;0;V;4
-167;3;31065;I16;;PV16 current;I_DC_STRING_16;0.01;0;A;4
+160;3;31058;I16;;PV13 voltage;U_DC_MPPT_7;0.1;0;V;4
+161;3;31059;I16;;PV13 current;I_DC_MPPT_7;0.01;0;A;4
+162;3;31060;I16;;PV14 voltage;;0.1;0;V;4
+163;3;31061;I16;;PV14 current;;0.01;0;A;4
+164;3;31062;I16;;PV15 voltage;U_DC_MPPT_8;0.1;0;V;4
+165;3;31063;I16;;PV15 current;I_DC_MPPT_8;0.01;0;A;4
+166;3;31064;I16;;PV16 voltage;;0.1;0;V;4
+167;3;31065;I16;;PV16 current;;0.01;0;A;4
 168;3;31500;U16;;[DC Charger] Vehicle battery voltage;U_DC;0.1;0;V;4
 169;3;31501;U16;;[DC Charger] Charging current;I_DC;0.01;0;A;4
 170;3;31502;I32;;[DC Charger] Output power;;0.001;0;kW;4
@@ -184,7 +184,7 @@ modbus;Inverter;SIGENERGY;Generic;;;;;;;
 183;3;32000;U16;;System state;;1;0;;4
 184;3;32001;U32;;Total energy consumed;E_TOT;0.01;0;kWh;4
 185;3;32003;I32;;Charging power;;0.001;0;kW;4
-186;3;32005;U32;;Rated power;;0.001;0;kW;4
+186;3;32005;U32;;Rated power;P_RATED;0.001;0;kW;4
 187;3;32007;I32;;Rated current;;0.01;0;A;4
 188;3;32009;U16;;Rated voltage;;0.1;0;V;4
 189;3;32010;I32;;AC-Charger input breaker rated current;;0.01;0;A;4

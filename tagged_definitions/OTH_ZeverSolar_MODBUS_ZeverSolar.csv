@@ -1,12 +1,12 @@
 modbusRTU;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
-1;4;0_2;STRING;;Device Type;;1.000000;0.000000;;4
+1;4;0_2;STRING;;Device Type;MODEL;1.000000;0.000000;;4
 2;4;1;U32;;E-today;;0.100000;0.000000;kWh;4
-3;4;3;U32;;E-total;;0.100000;0.000000;kWh;4
+3;4;3;U32;;E-total;U_DC;0.100000;0.000000;kWh;4
 4;4;5;U32;;H-total;;1.000000;0.000000;H;4
 5;4;11;U16;;State;;1.000000;0.000000;;8
 6;4;12;U16;;Error Code;;1.000000;0.000000;;4
 7;4;13;U16;;Connect Time;;1.000000;0.000000;s;4
-8;4;14;I16;;Temperature;;0.100000;0.000000;°C;4
+8;4;14;I16;;Temperature;TEMP_INT;0.100000;0.000000;°C;4
 9;4;15;U16;;Connected PV Strings;;1.000000;0.000000;;4
 10;4;16;U16;;BUS Voltage;;0.100000;0.000000;V;4
 11;4;17;U16;;PV Voltage 1;;0.100000;0.000000;V;4
@@ -15,12 +15,12 @@ modbusRTU;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
 14;4;20;U16;;PV Current 2;;0.100000;0.000000;A;4
 15;4;21;U16;;PV Voltage 3;;0.100000;0.000000;V;4
 16;4;22;U16;;PV Current 3;;0.100000;0.000000;A;4
-17;4;28;U16;;L1 Phase Voltage;;0.100000;0.000000;V;4
-18;4;29;U16;;L1 Phase Current;;0.100000;0.000000;A;4
-19;4;30;U16;;L2 Phase Voltage;;0.100000;0.000000;V;4
-20;4;31;U16;;L2 Phase Current;;0.100000;0.000000;A;4
-21;4;32;U16;;L3 Phase Voltage;;0.100000;0.000000;V;4
-22;4;33;U16;;L3 Phase Current;;0.100000;0.000000;A;4
+17;4;28;U16;;L1 Phase Voltage;U_AC_1;0.100000;0.000000;V;4
+18;4;29;U16;;L1 Phase Current;I_AC_1;0.100000;0.000000;A;4
+19;4;30;U16;;L2 Phase Voltage;U_AC_2;0.100000;0.000000;V;4
+20;4;31;U16;;L2 Phase Current;I_AC_2;0.100000;0.000000;A;4
+21;4;32;U16;;L3 Phase Voltage;U_AC_3;0.100000;0.000000;V;4
+22;4;33;U16;;L3 Phase Current;I_AC_3;0.100000;0.000000;A;4
 23;4;34;U16;;Grid Freq;;0.010000;0.000000;Hz;4
 24;4;37;U32;;Pac;P_AC;1.000000;0.000000;W;4
 25;4;39;I32;;Qac;Q_AC;1.000000;0.000000;Var;4
@@ -42,9 +42,9 @@ modbusRTU;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
 41;4;56;U16;;String Current 10;;0.100000;0.000000;A;4
 42;4;57;U16;;String Current 11;;0.100000;0.000000;A;4
 43;4;58;U16;;String Current 12;;0.100000;0.000000;A;4
-44;3;12;U16;;Power ON/OFF;;1.000000;0.000000;;4
+44;3;12;U16;;Power ON/OFF;CMD_ON;1.000000;0.000000;;1
 45;3;5000;U16;;Safety type;;1.000000;0.000000;;4
-46;3;5006;U16;;Grid voltage high limit2;;0.100000;0.000000;V;4
+46;3;5006;U16;;Grid voltage high limit2;U_AC_L1L2;0.100000;0.000000;V;4
 47;3;5007;U16;;Grid voltage high limit time2;;1.000000;0.000000;ms;4
 48;3;5008;U16;;Grid voltage high limit1;;0.100000;0.000000;V;4
 49;3;5009;U16;;Grid voltage high limit time1;;1.000000;0.000000;ms;4
@@ -54,7 +54,7 @@ modbusRTU;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
 53;3;5013;U16;;Grid voltage low limit time1;;1.000000;0.000000;ms;4
 54;3;5014;U16;;Grid voltage high recovery value;;0.100000;0.000000;V;4
 55;3;5015;U16;;Grid voltage low recovery value;;0.100000;0.000000;V;4
-56;3;5016;U16;;Grid frequency high limit2;;0.010000;0.000000;Hz;4
+56;3;5016;U16;;Grid frequency high limit2;FREQ;0.010000;0.000000;Hz;4
 57;3;5017;U16;;Grid frequency high limit time2;;1.000000;0.000000;ms;4
 58;3;5018;U16;;Grid frequency high limit1;;0.010000;0.000000;Hz;4
 59;3;5019;U16;;Grid frequency high limit time1;;1.000000;0.000000;ms;4

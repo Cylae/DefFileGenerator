@@ -40,8 +40,8 @@ modbusRTU;Other;Huawei;Luna_2000;;;;;;;
 39;4;30095;U16;;CO Concentration 5;;1.0;0.0;ppm;4
 40;4;30096;U16;;CO Concentration 6;;1.0;0.0;ppm;4
 41;4;30104;U16;;H2 Concentration 1;;1.0;0.0;ppm;4
-42;4;30118;U16;;Alarm 1;;1.0;0.0;;9
-43;4;30119;U16;;Alarm 2;;1.0;0.0;;9
+42;4;30118;U16;;Alarm 1;ALARM_1;1.0;0.0;;9
+43;4;30119;U16;;Alarm 2;ALARM_2;1.0;0.0;;9
 44;4;30120;U16;;Alarm 3 Rectifiers;;1.0;0.0;;9
 45;4;30122;U16;;Alarm TH Sensors;;1.0;0.0;;9
 46;4;30123;U16;;Alarm Air Conditioners;;1.0;0.0;;9
@@ -80,7 +80,7 @@ modbusRTU;Other;Huawei;Luna_2000;;;;;;;
 79;4;30103;U16;;BCU 1 Rack Voltage;;1.0;0.0;V;4
 80;4;30104;U16;;BCU 1 Rack Current;;1.0;0.0;A;4
 81;4;30105;U16;;BCU 1 SOC;;1.0;0.0;%;4
-82;4;30106;U16;;BCU 1 SOH;;1.0;0.0;%;4
+82;4;30106;U16;;BCU 1 SOH;SOH;1.0;0.0;%;4
 83;4;30107;U16;;BCU 1 Charge Discharge Power;;1.0;0.0;kW;4
 84;4;30164;U16;;BCU 1 SOE;;1.0;0.0;%;4
 85;4;30167;U16;;BCU 1 DOD;;1.0;0.0;%;4

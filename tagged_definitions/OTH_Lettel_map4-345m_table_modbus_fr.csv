@@ -38,11 +38,11 @@ modbusRTU;Other;Lettel;map4-345m_table_modbus_fr;;;;;;;
 37;4;74;U16;;Angle de phase de la tension L2;;1.0;0.0;0.1º;4
 38;4;76;U16;;Angle de phase de la tension L3;;1.0;0.0;0.1º;4
 39;4;77;U16;;Réservé;;1.0;0.0;/;4
-40;4;352;U16;;Énergie active;;1.0;0.0;0.01kWh;4
+40;4;352;U16;;Énergie active;E_TOT;1.0;0.0;0.01kWh;4
 41;4;354;U16;;Énergie réactive;;1.0;0.0;0.01kvarh;4
 42;4;356;U16;;Énergie apparente;;1.0;0.0;0.01VAh;4
 43;4;358;U16;;Énergie active;;1.0;0.0;0.01kWh;4
-44;4;360;U16;;Énergie réactive totale;E_TOT;1.0;0.0;0.01kvarh;4
+44;4;360;U16;;Énergie réactive totale;E_EXP;1.0;0.0;0.01kvarh;4
 45;4;362;U16;;Énergie apparente;;1.0;0.0;0.01VAh;4
 46;4;364;U16;;Énergie active totale;;1.0;0.0;0.01kWh;4
 47;4;366;U16;;Énergie réactive totale;;1.0;0.0;0.01kvarh;4

@@ -1,0 +1,93 @@
+modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p8;;;;;;;
+1;4;40001;U16;;None;;0;0.0;Ah;4
+2;4;40002;U16;;None;;0;0.0;V;4
+3;4;40003;U16;;None;;0;0.0;A;4
+4;4;40004;U16;;None;;0;0.0;%;4
+5;4;40005;U16;;None;;0;0.0;%;4
+6;4;40006;U16;;None;;0;0.0;%;4
+7;4;40007;U16;;None;;0;0.0;V;4
+8;4;40008;U16;;See Reference;;1;0.0;/;4
+9;4;40009;U16;;None;;0;0.0;mV;4
+10;4;40010;U16;;"High byte: Max cell voltage position BMU ID
+Low byte: Max cell voltage position CELL ID";;1;0.0;/;4
+11;4;40011;U16;;None;;0;0.0;mV;4
+12;4;40012;U16;;"High Byte: Min cell voltage position BMU ID
+Low Byte: Min cell voltage position CELL ID";;1;0.0;/;4
+13;4;40013;U16;;None;;0;0.0;℃;4
+14;4;40014;U16;;"High byte: Max cell temperature position BMU ID
+Low byte: Max cell temperature position CELL ID";TEMP_CELL;1;0.0;/;4
+15;4;40015;U16;;None;;0;0.0;℃;4
+16;4;40016;U16;;"High Byte: Min cell temperature position BMU ID
+Low Byte: Min cell temperature position CELL ID";;1;0.0;/;4
+17;4;40017;U16;;None;;0;0.0;mV;4
+18;4;40018;U16;;None;;0;0.0;℃;4
+19;4;40019;U16;;0：Disconnect；1：Close;;1;0.0;/;4
+20;4;40020;U16;;None;;0;0.0;A;4
+21;4;40021;U16;;None;;0;0.0;A;4
+22;4;40022;U16;;See Reference;;1;0.0;/;4
+23;4;40023;U16;;None;;1.0;0.0;None;4
+24;4;40024;U16;;See Reference;;1;0.0;/;4
+25;4;40025;U16;;None;;1.0;0.0;None;4
+26;4;40026;U16;;See Reference;;1;0.0;/;4
+27;4;40027;U16;;None;;1.0;0.0;None;4
+28;4;40028;U16;;None;;1.0;0.0;/;4
+29;4;40029;U16;;"HBYTE:Fault Position of Pack ID
+LBYTE:Fault Position of BMU ID";;1;0.0;/;9
+30;4;40030;U16;;"High Byte: Voltage Sample Fault Position BMU ID
+Low Byte: Voltage Sample Fault Position CELL ID";;1;0.0;/;9
+31;4;40031;U16;;"High Byte: Temperature Sample Fault Position BMU ID
+Low Byte: Temperature Sample Fault Position CELL ID";;1;0.0;/;9
+32;4;40032;U16;;None;;1;0.0;/;4
+33;4;40033;U16;;None;;1;0.0;/;4
+34;4;40034;U16;;None;;0;0.0;/;4
+35;4;40035;U16;;None;;1.0;0.0;None;4
+36;4;40036;U16;;None;;1;0.0;Wh;4
+37;4;40037;U16;;None;;1.0;0.0;None;4
+38;4;40038;U16;;None;;1;0.0;Wh;4
+39;4;40039;U16;;None;;1.0;0.0;None;4
+40;4;40040;U16;;None;;0;0.0;Ah;4
+41;4;40041;U16;;None;;1.0;0.0;None;4
+42;4;40042;U16;;None;;0;0.0;Ah;4
+43;4;40043;U16;;None;;1.0;0.0;None;4
+44;4;40044;U16;;None;;1.0;0.0;/;4
+45;4;40045;U16;;None;;1;0.0;/;4
+46;4;40046;U16;;1#Pack Number of cell-related parameters (reserved);;1;0.0;/;0
+47;4;40047;U16;;None;;1;0.0;/;4
+48;4;40048;U16;;None;;1;0.0;/;4
+49;4;40073;U16;;10#Pack Number of cell-related parameters (reserved);;1;0.0;/;0
+50;4;40074;U16;;None;;1;0.0;/;4
+51;4;40075;U16;;None;;1;0.0;/;4
+52;4;40076;U16;;"U16 type data is converted to binary data, and the high and low bits are converted to ASCII code characters and then displayed on the page.
+ARM_BCMU_007_V01_V01_000_00
+No communication uploaded ""- -""";;1.0;0.0;/;4
+53;4;40089;U16;;None;;1.0;0.0;None;4
+54;4;40090;U16;;256;;1.0;0.0;/;4
+55;4;40091;U16;;0：Offline；1：Online;;1;0.0;/;4
+56;4;40092;U16;;0：Non-upgradeable；1：Upgradeable;;1;0.0;/;4
+57;4;40093;U16;;0：Disconnect；1：Closed;;1;0.0;/;4
+58;4;40094;U16;;None;;0;0.0;℃;4
+59;4;40095;U16;;"High Byte: Second high cell temperature location BMU ID 
+Low Byte: Second high cell temperature position CELL ID";;1;0.0;/;4
+60;4;40096;U16;;None;;0;0.0;℃;4
+61;4;40097;U16;;"High Byte: Second low cell temperature position BMU ID 
+Low Byte: Second low cell temperature position CELL ID";;1;0.0;/;4
+62;4;40098;U16;;0：Closed；1：Opend;;1;0.0;/;4
+63;4;40099;U16;;None;;1;0.0;/;4
+64;4;40101;U16;;None;;0;0.0;mV;4
+65;4;40102;U16;;None;;0;0.0;mV;4
+66;4;40103;U16;;None;;0;0.0;mV;4
+67;4;40598;U16;;None;;0;0.0;mV;4
+68;4;40599;U16;;None;;0;0.0;mV;4
+69;4;40600;U16;;None;;0;0.0;mV;4
+70;4;40601;U16;;None;;0;0.0;℃;4
+71;4;40602;U16;;None;;0;0.0;℃;4
+72;4;40603;U16;;None;;0;0.0;℃;4
+73;4;41098;U16;;None;;0;0.0;℃;4
+74;4;41099;U16;;None;;0;0.0;℃;4
+75;4;41100;U16;;None;;0;0.0;℃;4
+76;4;41101;U16;;None;;0;0.0;℃;4
+77;4;41102;U16;;None;;0;0.0;℃;4
+78;4;41103;U16;;None;;0;0.0;℃;4
+79;4;41198;U16;;None;;0;0.0;℃;4
+80;4;41199;U16;;None;;0;0.0;℃;4
+81;4;41200;U16;;None;;0;0.0;℃;4

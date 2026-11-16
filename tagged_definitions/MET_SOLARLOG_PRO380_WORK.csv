@@ -6,7 +6,7 @@ modbusRTU;Meter;SOLARLOG;PRO380;;;;;;;
 5;3;4176;U16;;Protocol Version;;1;0;;4
 6;3;4180;U16;;Software Version;;1;0;;4
 7;3;4184;U16;;Hardware Version;;1;0;;4
-8;3;4192;U16;;Meter Amps;;1;0;;4
+8;3;4192;U16;;Meter Amps;I_AC;1;0;;4
 9;3;4194;U16;;CT rate;;1;0;;4
 10;3;4198;U16;;S0 output rate;;1;0;;4
 11;3;4218;U16;;Combined Code;;1;0;;4
@@ -16,7 +16,7 @@ modbusRTU;Meter;SOLARLOG;PRO380;;;;;;;
 15;3;8204;U16;;L2 Voltage;U_AC_2;1;0;;8
 16;3;8208;U16;;L3 Voltage;U_AC_3;1;0;;8
 17;3;8224;U16;;Grid Frequency;FREQ;1;0;;8
-18;3;8288;U16;;Current;;1;0;;4
+18;3;8288;U16;;Current;I_DC;1;0;;4
 19;3;8296;U16;;L1 Current;I_AC_1;1;0;;4
 20;3;8300;U16;;L2 Current;I_AC_2;1;0;;4
 21;3;8304;U16;;L3 Current;I_AC_3;1;0;;4

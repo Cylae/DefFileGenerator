@@ -1515,9 +1515,3 @@ modbusRTU;Inverter;PowerOne;INV_ABB_AURORA_CENTRAL_TEST;;;;;;;
 1514;4;3706;U16;;Collection_Week_Energy_All_Modules;;1.0;0.0;kWh;4
 1515;4;3708;U16;;Collection_Monthly_Energy_All_Modules;;1.0;0.0;kWh;4
 1516;4;3710;U16;;Collection_Yearly_Energy_All_Modules;;1.0;0.0;kWh;4
-1517;4;1;U16;;Modbus_Address;UNIT_ID;1.0;0.0;;4
-1518;4;2;U16;;Modbus_Synchronization;;1.0;0.0;;1
-1519;4;10;U16;;Modbus_Message_Time_To_Live;;1.0;0.0;;1
-1520;4;11;U16;;Modbus_Data_Collection_State;;1.0;0.0;;1
-1521;4;12;U16;;Modbus_Reset_Values_After_Lost_Communication;;1.0;0.0;;1
-1522;4;13;U16;;Modbus_Speed_Inverter_Modules;;1.0;0.0;ms;1

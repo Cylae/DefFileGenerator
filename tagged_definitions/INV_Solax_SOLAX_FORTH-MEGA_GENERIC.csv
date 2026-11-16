@@ -1,10 +1,10 @@
 modbusRTU;Inverter;Solax;SOLAX_FORTH-MEGA_GENERIC;;;;;;;
 1;4;0_4;STRING;;Protocol Identifier;;1.000000;0.000000;;4
-2;4;18_32;STRING;;Model Type;;1.000000;0.000000;;4
+2;4;18_32;STRING;;Model Type;MODEL;1.000000;0.000000;;4
 3;4;34_32;STRING;;Software Version;;1.000000;0.000000;;4
 4;4;50_32;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
-5;4;66;U16;;Rated grid voltage;;1.000000;0.000000;V;4
-6;4;67;U16;;Rated output active power;;0.100000;0.000000;kW;4
+5;4;66;U16;;Rated grid voltage;U_AC_L1L2;1.000000;0.000000;V;4
+6;4;67;U16;;Rated output active power;P_AC;0.100000;0.000000;kW;4
 7;4;76_20;STRING;;Protocol number;;1.000000;0.000000;;4
 8;4;86_20;STRING;;Protocol Version;;1.000000;0.000000;;4
 9;4;256;U16;;line-voltage AB;;0.100000;0.000000;V;4
@@ -17,7 +17,7 @@ modbusRTU;Inverter;Solax;SOLAX_FORTH-MEGA_GENERIC;;;;;;;
 16;4;384;U16;;Phase-A Current;;0.100000;0.000000;A;4
 17;4;385;U16;;Phase-B Current;;0.100000;0.000000;A;4
 18;4;386;U16;;Phase-C Current;;0.100000;0.000000;A;4
-19;4;387;I32;;Active Power;P_AC;1.000000;0.000000;W;4
+19;4;387;I32;;Active Power;;1.000000;0.000000;W;4
 20;4;389;I32;;Reactive Power;Q_AC;1.000000;0.000000;Var;4
 21;4;391;U32;;Apparent Power;S_AC;1.000000;0.000000;VA;4
 22;4;393;U16;;Today Energy;E_DAY;0.100000;0.000000;kWh;4
@@ -28,7 +28,7 @@ modbusRTU;Inverter;Solax;SOLAX_FORTH-MEGA_GENERIC;;;;;;;
 27;4;512;U16;;Major Operation-mode;;1.000000;0.000000;;4
 28;4;513;U16;;Minor Operation-mode;;1.000000;0.000000;;4
 29;4;514;I16;;Internal Temperature;TEMP_INT;0.100000;0.000000;Degr.Celsius;4
-30;4;515;I16;;Boost-module Temperature 1;;0.100000;0.000000;Degr.Celsius;4
+30;4;515;I16;;Boost-module Temperature 1;TEMP_CELL;0.100000;0.000000;Degr.Celsius;4
 31;4;516;I16;;Boost-module Temperature 2;;0.100000;0.000000;Degr.Celsius;4
 32;4;517;I16;;Boost-module Temperature 3;;0.100000;0.000000;Degr.Celsius;4
 33;4;518;I16;;Boost-module Temperature 4;;0.100000;0.000000;Degr.Celsius;4
@@ -199,7 +199,7 @@ modbusRTU;Inverter;Solax;SOLAX_FORTH-MEGA_GENERIC;;;;;;;
 198;4;955;U16;;Year Product 3;;0.100000;0.000000;kWh;1
 199;4;957;U16;;Year Product 4;;1.000000;0.000000;;1
 200;4;959;U16;;Year Product 5;;0.100000;0.000000;kWh;1
-201;3;8321;U16;;Modbus Address;;1.000000;0.000000;;4
+201;3;8321;U16;;Modbus Address;UNIT_ID;1.000000;0.000000;;4
 202;3;8322;U16;;Modbus Baud Rate;;0.010000;0.000000;;4
 203;3;8450;U16;;Grid Code;;1.000000;0.000000;;1
 204;3;8451;U16;;Language;;1.000000;0.000000;;1
@@ -246,13 +246,13 @@ modbusRTU;Inverter;Solax;SOLAX_FORTH-MEGA_GENERIC;;;;;;;
 245;3;8707;U16;;Clear History Log;;1.000000;0.000000;;1
 246;3;8709;I16;;Energy Compensation;;0.100000;0.000000;kWh;1
 247;3;8710;U16;;Grid-connected  control Set;;1.000000;0.000000;;1
-248;3;8711;U16;;BUS voltage setting;;0.100000;0.000000;V;1
+248;3;8711;U16;;BUS voltage setting;U_DC;0.100000;0.000000;V;1
 249;3;8832;U16;;System Time;;1.000000;0.000000;;1
 250;3;8837;U16;;Scheduled boot time;;1.000000;0.000000;Secs;1
 251;3;8838;U16;;Scheduled shutdown time;;1.000000;0.000000;Secs;1
 252;3;8839;U16;;Command ON/OFF;;1.000000;0.000000;;1
 253;3;8840;U16;;Meter Negate Enable;;1.000000;0.000000;;1
-254;3;8962;U16;;Backflow preventionPercent;;0.100000;0.000000;'% Wmax;1
+254;3;8962;U16;;Backflow preventionPercent;WIND_SPEED;0.100000;0.000000;'% Wmax;1
 255;3;8963;U16;;Maximum  power  output Percent;;0.100000;0.000000;'% Wmax;1
 256;3;8964;U16;;Real-time active power percent;;1.000000;0.000000;;1
 257;3;8965;U16;;Real-time reactive power percent;;1.000000;0.000000;;1

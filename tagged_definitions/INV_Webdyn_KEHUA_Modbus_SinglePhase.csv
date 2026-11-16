@@ -8,8 +8,8 @@ ModbusRTU;Inverter;Kehua;SinglePhase;;;;;;;
 7;4;4507;I16;;Grid as apparent power;S_AC;0.0;0.0;VA;4
 8;4;4508;I16;;Grid active power;P_AC;0.0;0.0;W;4
 9;4;4509;I16;;Grid reactive Power;Q_AC;0.0;0.0;Var;4
-10;4;4510;U16;;Inverter voltage;;0.1;0.0;V;4
-11;4;4511;U16;;Inverter current;;0.1;0.0;A;4
+10;4;4510;U16;;Inverter voltage;U_DC;0.1;0.0;V;4
+11;4;4511;U16;;Inverter current;I_DC;0.1;0.0;A;4
 12;4;4512;U16;;Inverter frequency;;0.1;0.0;Hz;4
 13;4;4513;U16;;Load Voltage;;0.1;0.0;V;4
 14;4;4514;U16;;Load Current;;0.1;0.0;A;4

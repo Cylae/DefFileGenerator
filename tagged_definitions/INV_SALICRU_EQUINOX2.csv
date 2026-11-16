@@ -22,11 +22,11 @@ ModbusRTU;Inverter;SALICRU;EQUINOX2;1;;;;;;
 21;3;11007;U16;;Grid LINE BC voltage;U_AC_2;0.1;0;V;4
 22;3;11008;U16;;Grid LINE CA voltage;U_AC_3;0.1;0;V;4
 23;3;11009;U16;;Grid A phase voltage;;0.1;0;V;4
-24;3;11010;U16;;Grid A phase current;I_AC_1;0.1;0;A;4
+24;3;11010;U16;;Grid A phase current;I_AC_3;0.1;0;A;4
 25;3;11011;U16;;Grid B phase voltage;;0.1;0;V;4
-26;3;11012;U16;;Grid B phase current;I_AC_2;0.1;0;A;4
+26;3;11012;U16;;Grid B phase current;;0.1;0;A;4
 27;3;11013;U16;;Grid C phase voltage;;0.1;0;V;4
-28;3;11014;U16;;Grid C phase current;I_AC_3;0.1;0;A;4
+28;3;11014;U16;;Grid C phase current;;0.1;0;A;4
 29;3;11015;U16;;Grid frequency;FREQ;0.01;0;Hz;4
 30;3;11016;U32;;P_AC;P_AC;0.001;0;kW;4
 31;3;11018;U32;;Daily generating capacity;E_DAY;0.1;0;kWh;4
@@ -107,9 +107,9 @@ ModbusRTU;Inverter;SALICRU;EQUINOX2;1;;;;;;
 106;3;25105;I32;;Phase A Power On Meter;;1;0;W;4
 107;3;25107;I32;;Phase B Power On Meter;;1;0;W;4
 108;3;25109;I32;;Phase C Power On Meter;;1;0;W;4
-109;3;25112;U32;;Active power limit;CMD_P_AC_SET_PERCENT;1;0;W;1
-110;3;25114;U16;;Active power limit percentage;;0.001;0;%;4
-111;3;25116;I32;;Reactive power limit;CMD_P_AC_SET_ABS;1;0;Var;1
+109;3;25112;U32;;Active power limit;CMD_P_AC_SET_ABS;1;0;W;1
+110;3;25114;U16;;Active power limit percentage;CMD_P_AC_SET_PERCENT;0.001;0;%;1
+111;3;25116;I32;;Reactive power limit;;1;0;Var;4
 112;3;25118;I16;;Reactive power limit percentage;;0.001;0;;4
 113;3;25120;I16;;PF Settings;;0.001;0;;4
 114;3;28004;U16;;Under voltage 1;;0.1;0;V;4
@@ -174,14 +174,14 @@ ModbusRTU;Inverter;SALICRU;EQUINOX2;1;;;;;;
 173;3;43010;U16;;Min Cell Temperature ID;;1;0;;4
 174;3;43011;U16;;Min Cell Temperature;;0.1;0;C;4
 175;3;43012;U16;;Max Cell Voltage ID;;1;0;;4
-176;3;43013;U16;;Max Cell Voltage;;0.001;0;V;4
+176;3;43013;U16;;Max Cell Voltage;U_CELL_MAX;0.001;0;V;4
 177;3;43014;U16;;Min Cell Voltage ID;;1;0;;4
-178;3;43015;U16;;Min Cell Voltage;;0.001;0;V;4
+178;3;43015;U16;;Min Cell Voltage;U_CELL_MIN;0.001;0;V;4
 179;3;43016;U32;;BMS ERROR CODE;;1;0;;4
 180;3;43018;U32;;BMS WARN CODE;;1;0;;4
 181;3;50000;U16;;Hybrid Inverter Working Mode Setting;;1;0;;4
 182;3;50001;U16;;EPS/UPS function Switch;;1;0;;4
-183;3;50004;U16;;Off-grid Voltage Setting;;0.1;0;V;4
+183;3;50004;U16;;Off-grid Voltage Setting;U_AC_L1L2;0.1;0;V;4
 184;3;50005;U16;;Off-grid Frequency Setting;;0.01;0;Hz;4
 185;3;50006;U16;;Off-grid asymmetric output function switch;;1;0;;4
 186;3;50007;U16;;Peak Load Shifting Switch;;1;0;;4

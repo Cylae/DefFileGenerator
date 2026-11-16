@@ -9,7 +9,7 @@ modbusRTU;Other;ChauvinArnoud;CHAUVINARNOUX_ULYS-TT_M;;;;;;;
 8;4;4128;U16;;PwrPhase1;;1.0;0.0;W;4
 9;4;4130;U16;;PwrPhase2;;1.0;0.0;W;4
 10;4;4132;U16;;PwrPhase3;;1.0;0.0;W;4
-11;4;4134;U16;;PwrTotal;;1.0;0.0;W;4
+11;4;4134;U16;;PwrTotal;P_AC;1.0;0.0;W;4
 12;4;4352;U16;;KwhImpPh1;;1.0;0.0;Wh;4
 13;4;4354;U16;;KwhImpPh2;;1.0;0.0;Wh;4
 14;4;4356;U16;;KwhImpPh3;;1.0;0.0;Wh;4

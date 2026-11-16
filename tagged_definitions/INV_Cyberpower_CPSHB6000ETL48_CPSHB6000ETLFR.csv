@@ -19,7 +19,7 @@ ModbusRTU;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
 18;4;8536;U32;;EPS life energy;;0.1;0;kWh;4
 19;4;8540;U32;;Battery charge today energy;;0.1;0;kWh;4
 20;4;8542;U32;;Battery discharge today energy;;0.1;0;kWh;4
-21;4;8544;U16;;Veps_A;;0.1;0;V;4
+21;4;8544;U16;;Veps_A;I_AC;0.1;0;V;4
 22;4;8547;U16;;Ieps_A;;0.01;0;A;4
 23;4;8550;U16;;Peps_A;;1;0;W;4
 24;4;8553;U16;;VAeps_A;;1;0;VA;4
@@ -65,9 +65,9 @@ ModbusRTU;Inverter;CyberPower;CPSHB6000ETL48-CPSHB6000ETLFR;;;;;;;
 64;4;8633;U16;;BUS1_Voltage;U_DC;0.1;0;V;4
 65;4;8634;U16;;BUS2_Voltage;;0.1;0;V;4
 66;4;8635;U16;;PV Rleakage;;1;0;kOhm;4
-67;4;8636;I16;;Temperature (air inside around power stage);TEMP;0.1;0;Deg.Celsius;4
+67;4;8636;I16;;Temperature (air inside around power stage);TEMP_INT;0.1;0;Deg.Celsius;4
 68;4;8637;I16;;Temperature (air inside of wiring box);;0.1;0;Deg.Celsius;4
-69;4;8638;I16;;Highest inverter temperature;TEMP_INT;0.1;0;Deg.Celsius;4
+69;4;8638;I16;;Highest inverter temperature;;0.1;0;Deg.Celsius;4
 70;4;8639;I16;;Highest D/D temperature;;0.1;0;Deg.Celsius;4
 71;4;8641;U16;;Reconnection Time;;1;0;seconds;4
 72;4;8642;U32;;I_Event_flags1;WIND_SPEED;1;0;Bitfield;4

@@ -20,11 +20,11 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 19;3;553;U16;;Firmware Version(0x16);;1;0;;4
 20;3;554;U16;;ARM Updata Result;;1;0;;4
 21;3;555;U16;;DSP Updata Result;;1;0;;4
-22;3;1280;U16;;Vpv1;;0.1;0;V;4
-23;3;1281;U16;;Ipv1;;0.1;0;V;4
+22;3;1280;U16;;Vpv1;U_DC_STRING_1;0.1;0;V;4
+23;3;1281;U16;;Ipv1;I_DC_STRING_1;0.1;0;V;4
 24;3;1282;U16;;PV1 Mode;;1.0;0.0;;4
-25;3;1283;U16;;Vpv2;;0.1;0;A;4
-26;3;1284;U16;;Ipv2;;0.1;0;A;4
+25;3;1283;U16;;Vpv2;U_DC_STRING_2;0.1;0;A;4
+26;3;1284;U16;;Ipv2;I_DC_STRING_2;0.1;0;A;4
 27;3;1285;U16;;PV2 Mode;;1.0;0.0;;4
 28;3;1286;U16;;Vbattery1;;0.1;0;V;4
 29;3;1287;U16;;TBD;;1;0;;4
@@ -53,14 +53,14 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 52;3;1310;U16;;Fload;;0.01;0;Hz;4
 53;3;1311;U16;;Load Mode;;1;0;;4
 54;3;1312;U16;;Work Mode;;1;0;;4
-55;3;1313;U16;;Temperature;;0.1;0;C;4
+55;3;1313;U16;;Temperature;TEMP_INT;0.1;0;C;4
 56;3;1314;U16;;Error Message H;;1;0;;4
 57;3;1315;U16;;Error Message L;;1;0;;4
 58;3;1316;U16;;E-Total H;;0.1;0;KW.Hr;4
 59;3;1317;U16;;E-Total L;;0.1;0;KW.Hr;4
 60;3;1318;U16;;h-Total H;;1;0;Hr;4
 61;3;1319;U16;;h-Total L;;1;0;Hr;4
-62;3;1320;U16;;E-Day;;0.1;0;KW.Hr;4
+62;3;1320;U16;;E-Day;U_DC;0.1;0;KW.Hr;4
 63;3;1321;U16;;E-Load-Day;;0.1;0;KW.Hr;4
 64;3;1322;U16;;E-Total-Load H;;0.1;0;KW.Hr;4
 65;3;1323;U16;;E-Total-Load L;;0.1;0;KW.Hr;4
@@ -69,14 +69,14 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 68;3;1326;U16;;E-PV-Total-L;;0.1;0;KW.Hr;4
 69;3;1327;U16;;Grid in-out flag;;1;0;;4
 70;3;1328;U16;;Back-up Load Power;;1;0;W;4
-71;3;1329;I16;;MeterPowerFactor;;1;0;%;4
+71;3;1329;I16;;MeterPowerFactor;PF;1;0;%;4
 72;3;1330;U16;;DiagStatusH;;1;0;;4
 73;3;1331;U16;;DiagStatusL;;1;0;;4
 74;3;1332;U16;;DRMStatus;;1;0;;4
 75;3;1333;F32;;E-Total-Sell;;1;0;;4
 76;3;1335;F32;;E-Total-Buy;;1;0;;4
-77;3;1337;U16;;Vpv3;;0.1;0;V;4
-78;3;1338;U16;;Ipv3;;0.1;0;A;4
+77;3;1337;U16;;Vpv3;U_DC_STRING_3;0.1;0;V;4
+78;3;1338;U16;;Ipv3;I_DC_STRING_3;0.1;0;A;4
 79;3;1339;U16;;PV3 Mode;;1;0;;4
 80;3;1340;U16;;VgridUo;;0.1;0;V;4
 81;3;1341;U16;;IgridUo;;0.1;0;A;4
@@ -251,7 +251,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 250;3;24596;I16;;Phase A power factor;PF_1;1;0;;4
 251;3;24597;I16;;Phase B power factor;PF_2;1;0;;4
 252;3;24598;I16;;Phase C power factor;PF_3;1;0;;4
-253;3;24599;I16;;Total power factor;PF;1;0;;4
+253;3;24599;I16;;Total power factor;;1;0;;4
 254;3;24600;U16;;Frequency;;0.01;0;Hz;4
 255;3;24601;F32;;E-Total-Sell_1;;1;0;W;4
 256;3;24603;F32;;E-Total-Buy_1;;1;0;W;4
@@ -369,7 +369,7 @@ ModbusTCP;Inverter;Goodwe;ES/EM/S-BP/BP Series;;;;;;;
 368;3;45481;I16;;PU V4 value ((P/Pn));;0.1;0;%Pn;4
 369;3;45482;U16;;Fixed Power Factor;;100;0;;4
 370;3;45483;I16;;Fixed reactive power;;0.1;0;%Pn;4
-371;3;45484;U16;;Fixed active power;CMD_P_AC_SET_PERCENT;0.1;0;%Pn;1
+371;3;45484;U16;;Fixed active power;;0.1;0;%Pn;4
 372;3;45488;U16;;Auto Test Enable;;1;0;;4
 373;3;45489;U16;;Auto Test step;;1;0;;4
 374;3;45490;U16;;uwItalyFreqMode;;1;0;;4

@@ -26,7 +26,7 @@ modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
 25;3;10039;U16;;DC_Insulation_Res;R_ISO;1;0;kOhm;4
 26;3;10040;U16;;Leakage_Current;;0.1;0;mA;4
 27;3;10041;I32;;Derating_Power;;1;0;W;4
-28;3;10043;U16;;Power_Limiting_Mode;;1;0;;4
+28;3;10043;U16;;Power_Limiting_Mode;CMD_P_AC_SET_ABS;1;0;;1
 29;3;10044;I16;;N_Line_Voltage_Gnd;;0.1;0;V;4
 30;3;10050;I16;;Temp_INV_Module_R;TEMP_CELL;0.1;0;degC;4
 31;3;10051;I16;;Temp_INV_Module;;0.1;0;degC;4
@@ -61,7 +61,7 @@ modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
 60;3;10508;U16;;Grid_Frequency_T;;0.01;0;Hz;4
 61;3;10509;I32;;Grid_Total_Active_Power;;1;0;W;4
 62;3;10511;I32;;Grid_Total_Reactive_Power;Q_AC;1;0;Var;4
-63;3;10513;I32;;Grid_Total_Apparent_Power;;1;0;Va;4
+63;3;10513;I32;;Grid_Total_Apparent_Power;S_AC;1;0;Va;4
 64;3;10515;I32;;Grid_Active_Power_R;;1;0;W;4
 65;3;10517;I32;;Grid_Active_Power_S;;1;0;W;4
 66;3;10519;I32;;Grid_Active_Power_T;;1;0;W;4
@@ -74,7 +74,7 @@ modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
 73;3;10533;U16;;Grid_Line_Voltage_RS;;0.1;0;V;4
 74;3;10534;U16;;Grid_Line_Voltage_ST;;0.1;0;V;4
 75;3;10535;U16;;Grid_Line_Voltage_TR;;0.1;0;V;4
-76;3;10536;I16;;Power_Factor_R;;0.001;0;;4
+76;3;10536;I16;;Power_Factor_R;PF;0.001;0;;4
 77;3;10537;U16;;Daily_Grid_Conn_Time;;0.1;0;H;4
 78;3;10538;U32;;Cumul_Grid_Conn_Time;;0.1;0;H;4
 79;3;10540;I16;;Grid_Conn_Gen_Daily;;0.1;0;kWh;4
@@ -211,7 +211,7 @@ modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
 210;3;14004;I32;;Meter_Active_Power_S;;0.1;0;W;4
 211;3;14006;I32;;Meter_Active_Power_T;;0.1;0;W;4
 212;3;14008;I32;;Meter_Combined Phase Reactive Pwr;;0.1;0;Var;4
-213;3;14010;I32;;Meter_Combined Phase Power Factor;PF;0.001;0;;4
+213;3;14010;I32;;Meter_Combined Phase Power Factor;;0.001;0;;4
 214;3;14012;I32;;Meter_Daily_Active_Energy;;0.1;0;kWh;4
 215;3;14014;I32;;Meter_Total_Positive_Energy;;0.1;0;kWh;4
 216;3;14016;I32;;Meter_Daily_Reverse_Energy;;0.1;0;kWh;4
@@ -245,7 +245,7 @@ modbus;PCS;SL Energy;PCS-PCS settings-Battery Cloud Management;;;;;;;
 244;3;20031;U16;;Cloud_Total battery pack voltage;;0.1;0;V;4
 245;3;20032;I16;;Cloud_Total current of battery pack;;0.1;0;A;4
 246;3;20033;I32;;Cloud_Battery pack total power_2;;1;0;W;4
-247;3;40000;U16;;RS485_Slave_Address;;1;0;;4
+247;3;40000;U16;;RS485_Slave_Address;UNIT_ID;1;0;;4
 248;3;40001;U16;;RS485_Baud_Rate;;1;0;;4
 249;3;40002;U16;;RS485_Slave_Address_2;;1;0;;4
 250;3;40003;U16;;RS485_Baud_Rate_2;;1;0;;4

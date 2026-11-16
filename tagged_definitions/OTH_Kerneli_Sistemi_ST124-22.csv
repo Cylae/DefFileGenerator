@@ -30,7 +30,7 @@ modbusRTU;Other;Kerneli Sistemi;ST124-22;;;;;;;
 29;4;30042;U16;;Instantaneous Auxiliary Input 1 (0...10V);;1.0;0.0;;4
 30;4;30043;U16;;Instantaneous Auxiliary Input 2 (0...20mA);;1.0;0.0;mA;4
 31;4;30044;U16;;Instantaneous Temperature 1 (External PT100);;1.0;0.0;°C;4
-32;4;30045;U16;;Instantaneous Temperature 2 (On-Board);;1.0;0.0;°C;4
+32;4;30045;U16;;Instantaneous Temperature 2 (On-Board);TEMP_INT;1.0;0.0;°C;4
 33;4;30047;U16;;Sum of all active string currents;;1.0;0.0;A;4
 34;4;30048;U16;;Calculated Power - Least Significant Word (LSW);;1.0;0.0;W;4
 35;4;30049;U16;;Calculated Power - Most Significant Word (MSW);;1.0;0.0;W;4

@@ -22,7 +22,7 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 21;4;14;U16;;Grid bypass voltageVW;;0.1;0;V;4
 22;4;15;U16;;Grid bypass voltageWU;;0.1;0;V;4
 23;4;16;U16;;Output frequency;FREQ;0.01;0;Hz;4
-24;4;17;I16;;Battery power;;0.1;0;kW;4
+24;4;17;I16;;Battery power;P_DC;0.1;0;kW;4
 25;4;18;U16;;Bypass apparent power;S_AC;0.1;0;kVA;4
 26;4;19;I16;;Bypass active power;P_AC;0.1;0;kW;4
 27;4;20;I16;;Bypass reactive power;Q_AC;0.1;0;kVar;4
@@ -140,7 +140,7 @@ ModbusRTU;Inverter;ATESS;GENERIC;;;;;;;
 139;4;145;I16;;Battery inductance current 2;;0.1;0;A;4
 140;4;146;I16;;Busbar current;;0.1;0;A;4
 141;4;147;I16;;BAT mode temperature;;0.1;0;C;4
-142;4;148;I16;;Balance board mode temperature;;0.1;0;C;4
+142;4;148;I16;;Balance board mode temperature;TEMP_INT;0.1;0;C;4
 143;4;149;U16;;SCR state;;1;0;;4
 144;4;150;I16;;PCS battery charging power;;0.1;0;kW;4
 145;4;151;I16;;PCS output power;;0.1;0;kW;4

@@ -33,8 +33,8 @@ modbus;Inverter;GoodWe;G3;;;;;;;
 32;3;30116;U16;;Phase voltage BC;U_AC_L2L3;0.1;0;V;4
 33;3;30117;U16;;Phase voltage CA;U_AC_L3L1;0.1;0;V;4
 34;3;30118;U16;;Phase voltage AN;;0.1;0;V;4
-35;3;30119;U16;;Phase voltage BN;;0.1;0;V;4
-36;3;30120;U16;;Phase voltage CN;;0.1;0;V;4
+35;3;30119;U16;;Phase voltage BN;U_AC_2;0.1;0;V;4
+36;3;30120;U16;;Phase voltage CN;U_AC_3;0.1;0;V;4
 37;3;30121;U16;;Phase A current;;0.1;0;A;4
 38;3;30122;U16;;Phase B current;I_AC_2;0.1;0;A;4
 39;3;30123;U16;;Phase C current;I_AC_3;0.1;0;A;4

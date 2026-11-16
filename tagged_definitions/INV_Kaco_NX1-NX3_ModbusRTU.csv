@@ -13,7 +13,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 12;4;31302;U16;;Grid rated frequency;FREQ;0.01;0;Hz;4
 13;4;31303;U32;;E-Today of inverter;E_DAY;0.1;0;kWh;4
 14;4;31305;U32;;E-Total of inverter;E_TOT;0.1;0;kWh;4
-15;4;31307;U32;;H-Total;;1;0;H;4
+15;4;31307;U32;;H-Total;U_DC;1;0;H;4
 16;4;31309;U16;;Device State;;1;0;;4
 17;4;31310;U16;;Connect time;;1;0;s;4
 18;4;31311;I16;;Air temperature;;0.1;0;C;4
@@ -21,7 +21,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 20;4;31313;I16;;Inverter V phase temperature;;0.1;0;C;4
 21;4;31314;I16;;Inverter W phase temperature;;0.1;0;C;4
 22;4;31315;I16;;Boost temperature;;0.1;0;C;4
-23;4;31317;U16;;Bus voltage;U_DC;0.1;0;V;4
+23;4;31317;U16;;Bus voltage;;0.1;0;V;4
 24;4;31319;U16;;PV1 voltage;U_DC_STRING_1;0.1;0;V;4
 25;4;31320;U16;;PV1 current;I_DC_STRING_1;0.01;0;A;4
 26;4;31321;U16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
@@ -49,7 +49,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 48;4;31367;U16;;ST Line voltage;;0.1;0;V;4
 49;4;31368;U16;;Grid frequency;;0.01;0;Hz;4
 50;4;31369;U32;;Apparent power;S_AC;1;0;VA;4
-51;4;31371;U32;;Active power;P_AC;1;0;W;4
+51;4;31371;U32;;Active power;Watts;1;0;W;4
 52;4;31373;I32;;Reactive power;Q_AC;1;0;Var;4
 53;4;31375;I16;;Power factor;PF;0.01;0;;4
 54;4;31378;U16;;Error message;;1;0;;4
@@ -61,7 +61,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 60;3;41004;U16;;RTC:Hour;;1;0;;4
 61;3;41005;U16;;RTC:Minute;;1;0;;4
 62;3;41006;U16;;RTC:Seconds;;1;0;;4
-63;3;44001;U16;;Active power control function;;1;0;;4
+63;3;44001;U16;;Active power control function;P_AC;1;0;;4
 64;3;44002;U16;;EEG control function;;1;0;;4
 65;3;44003;U16;;Slope load function;;1;0;;4
 66;3;44004;U16;;Overvoltage reduce power function;;1;0;;4
@@ -78,7 +78,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 77;3;45203;U16;;Overvoltage protection value of the first grid connection_1;;0.1;0;V;4
 78;3;45204;U16;;Overvoltage protection value of the first grid connection_2;;0.01;0;Hz;4
 79;3;45205;U16;;Underfrequency protection value for first grid connection;;0.01;0;Hz;4
-80;3;45206;U16;;Grid Voltage High Limit3;;0.1;0;V;4
+80;3;45206;U16;;Grid Voltage High Limit3;U_AC_L1L2;0.1;0;V;4
 81;3;45207;U32;;Grid Voltage High Limit Time3;;1;0;ms;4
 82;3;45209;U16;;Grid Voltage High Limit2;;0.1;0;V;4
 83;3;45210;U32;;Grid Voltage High Limit Time2;;1;0;ms;4
@@ -157,7 +157,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 156;3;45452;U16;;DRMs Pval;;0.01;0;%Pn;4
 157;3;45501;U16;;Reactive power control mode;;1;0;s;4
 158;3;45502;U16;;Time constant of reactive power curve;;1;0;s;4
-159;3;45503;I16;;Power factor_1;CMD_PF;0.0001;0;;1
+159;3;45503;I16;;Power factor_1;;0.0001;0;;4
 160;3;45504;U16;;cos phi(P) curve? Active power of the first point;;0.01;0;%Pn;4
 161;3;45505;I16;;cos phi(P) curve? cos phi of the first point;;0.0001;0;;4
 162;3;45506;U16;;cos phi(P) curve? Active power of the second point;;0.01;0;%Pn;4

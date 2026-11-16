@@ -3665,7 +3665,7 @@ modbusTCP;BESS;Mars Energy;MarsLocalController V7.0;;;;;;;
 3664;4;15014;F32;;1#AC - Dehumidification Low Point (Stop Point);;0.100000;0.000000;;4
 3665;4;15016;F32;;1#AC - High Temperature Alarm Point;TEMP;0.100000;0.000000;°C;9
 3666;4;15018;F32;;1#AC - Low Temperature Alarm Point;;0.100000;0.000000;°C;9
-3667;4;15020;F32;;1#AC - Temperature;;0.100000;0.000000;°C;4
+3667;4;15020;F32;;1#AC - Temperature;TEMP_INT;0.100000;0.000000;°C;4
 3668;4;15022;U16;;1#AC - Temperature Status;;1.000000;0.000000;;9
 3669;4;15023;U16;;1#AC - Voltage Status;;1.000000;0.000000;;9
 3670;4;15024;U16;;1#AC - Sensor Status;;1.000000;0.000000;;9

@@ -1,0 +1,58 @@
+modbusRTU;Other;PDL;Elite_440-_Modbus_Ma_p3;;;;;;;
+1;4;40200;U16;;kWhT(I);;1.0;0.0;kWh;4
+2;4;40202;U16;;kWhT(E);;1.0;0.0;kWh;4
+3;4;40204;U16;;kWhT(I);;1.0;0.0;kWh;4
+4;4;40206;U16;;kWhT(E);;1.0;0.0;kWh;4
+5;4;40208;U16;;kVArh(I)_WI;;1.0;0.0;kVArh;4
+6;4;40210;U16;;kVArh(E)_WI;;1.0;0.0;kVArh;4
+7;4;40212;U16;;kVArh(I)_WE;;1.0;0.0;kVArh;4
+8;4;40214;U16;;kVArh(E)_WE;;1.0;0.0;kVArh;4
+9;4;40216;U16;;kVAh(I);;1.0;0.0;kVAh;4
+10;4;40218;U16;;kVAh(E);;1.0;0.0;kVAh;4
+11;4;40220;U16;;kVArh(I);;1.0;0.0;kVArh;4
+12;4;40222;U16;;kVArh(E);;1.0;0.0;kVArh;4
+13;4;40224;U16;;kWh (ABS);;1.0;0.0;kWh;4
+14;4;40226;U16;;kVAh(ABS);;1.0;0.0;kVArh;4
+15;4;40228;U16;;kWhLag (ABS);;1.0;0.0;kVArh;4
+16;4;40230;U16;;kWhLead (ABS);;1.0;0.0;kVAh;4
+17;4;40232;U16;;None;;1.0;0.0;None;4
+18;4;40240;U16;;kWT(I);;1.0;0.0;kW;4
+19;4;40242;U16;;24hMDTime kWT(I);;1.0;0.0;Seconds;4
+20;4;40244;U16;;kWT(E);;1.0;0.0;kW;4
+21;4;40246;U16;;24hMDTime kWT(E);;1.0;0.0;Seconds;4
+22;4;40248;U16;;kW(I);;1.0;0.0;kW;4
+23;4;40250;U16;;24hMDTime kW(I);;1.0;0.0;Seconds;4
+24;4;40252;U16;;kW(E);;1.0;0.0;kW;4
+25;4;40254;U16;;24hMDTime kW(E);;1.0;0.0;Seconds;4
+26;4;40256;U16;;kVAr(I)_WI;;1.0;0.0;kVAr;4
+27;4;40258;U16;;24hMDTime kVAr(I)_WI;;1.0;0.0;Seconds;4
+28;4;40260;U16;;kVAr(E)_WI;;1.0;0.0;kVAr;4
+29;4;40262;U16;;24hMDTime kVAr(E)_WI;;1.0;0.0;Seconds;4
+30;4;40264;U16;;kVAr(I)_WE;;1.0;0.0;kVAr;4
+31;4;40266;U16;;24hMDTime kVAr(I)_WE;;1.0;0.0;Seconds;4
+32;4;40268;U16;;kVAr(E)_WE;;1.0;0.0;kVAr;4
+33;4;40270;U16;;24hMDTime kVAr(E)_WE;;1.0;0.0;Seconds;4
+34;4;40272;U16;;kVA(I);;1.0;0.0;kVA;4
+35;4;40274;U16;;24hMDTime kVA(I);;1.0;0.0;Seconds;4
+36;4;40276;U16;;kVA(E);;1.0;0.0;kVA;4
+37;4;40278;U16;;24hMDTime kVA(E);;1.0;0.0;Seconds;4
+38;4;40280;U16;;kVAr(I);;1.0;0.0;kVAr;4
+39;4;40282;U16;;24hMDTime kVAr(I);;1.0;0.0;Seconds;4
+40;4;40284;U16;;kVAr(E);;1.0;0.0;kVAr;4
+41;4;40286;U16;;24hMDTime kVAr(E);;1.0;0.0;Seconds;4
+42;4;40288;U16;;kW(I)  ABS;;1.0;0.0;kW;4
+43;4;40290;U16;;24hMDTime kW(I)  ABS;;1.0;0.0;Seconds;4
+44;4;40292;U16;;kVA (ABS);;1.0;0.0;kVAr;4
+45;4;40294;U16;;24hMDTime kVA (ABS);;1.0;0.0;Seconds;4
+46;4;40296;U16;;kVAr(I)_Lag (ABS);;1.0;0.0;kVAr;4
+47;4;40298;U16;;24hMDTime kVAr(I)_Lag (ABS);;1.0;0.0;Seconds;4
+48;4;40300;U16;;kVAr(I)_Lead (ABS);;1.0;0.0;kVA;4
+49;4;40302;U16;;24hMDTime kVAr(I)_Lead (ABS);;1.0;0.0;Seconds;4
+50;4;40304;U16;;None;;1.0;0.0;None;4
+51;4;40320;U16;;PONMins;;1.0;0.0;Minutes;4
+52;4;40322;U16;;POFFMins;;1.0;0.0;Minutes;4
+53;4;40324;U16;;LON Mins;;1.0;0.0;Minutes;4
+54;4;40326;U16;;LOFF Mins;;1.0;0.0;Minutes;4
+55;4;40328;U16;;Counter1;;1.0;0.0;Counts;4
+56;4;40330;U16;;Counter2;;1.0;0.0;Counts;4
+57;4;40332;U16;;None;;1.0;0.0;None;4

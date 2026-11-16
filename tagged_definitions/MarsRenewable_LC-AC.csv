@@ -13,7 +13,7 @@ modbusTCP;Inverter;MarsRenewable;LC-AC;;;;;;;
 12;4;15023;U16;;AC1 Voltage Status;;1.000000;0.000000;;9
 13;4;15024;U16;;AC1 Sensor Status;;1.000000;0.000000;;9
 14;4;15025;U16;;AC1 Compressor Status;;1.000000;0.000000;;9
-15;4;15026;U16;;AC1 Air Pressure Status;;1.000000;0.000000;;9
+15;4;15026;U16;;AC1 Air Pressure Status;PRESSURE;1.000000;0.000000;;9
 16;4;15027;F32;;AC1 Relative Humidity;HUMIDITY;0.100000;0.000000;;4
 17;4;15050;U16;;AC2 Operating Status;;1.000000;0.000000;;9
 18;4;15054;F32;;AC2 Cooling Low Point;;0.100000;0.000000;°C;4
@@ -1599,7 +1599,7 @@ modbusTCP;Inverter;MarsRenewable;LC-AC;;;;;;;
 1598;4;19975;U16;;AC100 Compressor Status;;1.000000;0.000000;;9
 1599;4;19976;U16;;AC100 Air Pressure Status;;1.000000;0.000000;;9
 1600;4;19977;F32;;AC100 Relative Humidity;;0.100000;0.000000;;4
-1601;4;30000;U16;;LiquidCooling1 Operating Status;;1.000000;0.000000;;9
+1601;4;30000;U16;;LiquidCooling1 Operating Status;I_DC;1.000000;0.000000;;9
 1602;4;30004;U16;;LiquidCooling1 Operating Mode;;1.000000;0.000000;;4
 1603;4;30006;F32;;LiquidCooling1 Ambient Temperature;TEMP_AMB;0.100000;0.000000;°C;4
 1604;4;30008;F32;;LiquidCooling1 Supply Water Temperature;;0.100000;0.000000;°C;4

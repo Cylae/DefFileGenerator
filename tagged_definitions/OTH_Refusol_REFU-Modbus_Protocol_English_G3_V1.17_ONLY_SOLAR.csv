@@ -9,19 +9,19 @@ modbusRTU;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
 8;3;1072;U16;;System Time - Minute;;1.000000;0.000000;;4
 9;3;1073;U16;;System time-second;;1.000000;0.000000;;4
 10;3;1092;U16;;Reserved;;1.000000;0.000000;;0
-11;3;1156;U16;;Grid frequency.;;0.010000;0.000000;Hz;4
-12;3;1157;I16;;Total active power.;;0.010000;0.000000;kW;4
-13;3;1158;I16;;Total reactive power.;;0.010000;0.000000;kW;4
-14;3;1159;I16;;Total apparent power.;;0.010000;0.000000;kW;4
+11;3;1156;U16;;Grid frequency.;FREQ;0.010000;0.000000;Hz;4
+12;3;1157;I16;;Total active power.;P_AC;0.010000;0.000000;kW;4
+13;3;1158;I16;;Total reactive power.;Q_AC;0.010000;0.000000;kW;4
+14;3;1159;I16;;Total apparent power.;S_AC;0.010000;0.000000;kW;4
 15;3;1160;I16;;Total PCC active power.;;0.010000;0.000000;kW;4
 16;3;1161;I16;;Total PCC reactive power.;;0.010000;0.000000;kW;4
 17;3;1168;I16;;R phase inverter output reactive power.;;0.010000;0.000000;kW;4
-18;3;1169;I16;;R-phase power factor.;;0.001000;0.000000;p.u.;4
+18;3;1169;I16;;R-phase power factor.;PF;0.001000;0.000000;p.u.;4
 19;3;1170;U16;;R-phase PCC current.;;0.010000;0.000000;A;4
 20;3;1171;I16;;R-phase PCC active power;;0.010000;0.000000;kW;4
 21;3;1172;I16;;R-phase PCC reactive power.;;0.010000;0.000000;kW;4
 22;3;1173;I16;;R phase PCC power factor.;;0.001000;0.000000;p.u.;4
-23;3;1176;U16;;Phase S grid voltage;;0.100000;0.000000;V;4
+23;3;1176;U16;;Phase S grid voltage;U_AC_L1L2;0.100000;0.000000;V;4
 24;3;1177;U16;;Phase S inverter output current;;0.010000;0.000000;A;4
 25;3;1284;I16;;Load active power.;;0.010000;0.000000;kW;4
 26;3;1285;I16;;Load reactive power;;0.010000;0.000000;kW;4
@@ -35,19 +35,19 @@ modbusRTU;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
 34;3;1301;I16;;S phase load reactive power.;;0.010000;0.000000;kW;4
 35;3;1302;I16;;S phase load apparent power.;;0.010000;0.000000;kVA;4
 36;3;1303;U16;;S phase load peak ratio;;0.010000;0.000000;p.u.;4
-37;3;1304;U16;;S phase corresponding acute load voltage;;0.100000;0.000000;V;4
+37;3;1304;U16;;S phase corresponding acute load voltage;U_AC_3;0.100000;0.000000;V;4
 38;3;1305;U16;;S phase reserve 2;;1.000000;0.000000;;0
 39;3;1312;U16;;T corresponding acute load voltage;;0.100000;0.000000;V;4
 40;3;1313;U16;;T phase reserved 2;;1.000000;0.000000;;0
-41;3;1314;U16;;Inverter L1 to N voltage RMS;;0.100000;0.000000;V;4
-42;3;1315;I16;;L1 load current RMS;;0.010000;0.000000;A;4
-43;3;1316;I16;;Load L1 to N active power;;0.010000;0.000000;kW;4
-44;3;1317;U16;;Inverter L2 to N voltage RMS;;0.100000;0.000000;V;4
-45;3;1318;I16;;L2 load current RMS;;0.010000;0.000000;A;4
-46;3;1319;I16;;Load L2 to N active power;;0.010000;0.000000;kW;4
+41;3;1314;U16;;Inverter L1 to N voltage RMS;U_AC_1;0.100000;0.000000;V;4
+42;3;1315;I16;;L1 load current RMS;I_AC_1;0.010000;0.000000;A;4
+43;3;1316;I16;;Load L1 to N active power;P_AC_1;0.010000;0.000000;kW;4
+44;3;1317;U16;;Inverter L2 to N voltage RMS;U_AC_2;0.100000;0.000000;V;4
+45;3;1318;I16;;L2 load current RMS;I_AC_2;0.010000;0.000000;A;4
+46;3;1319;I16;;Load L2 to N active power;P_AC_2;0.010000;0.000000;kW;4
 47;3;1639;I16;;Total battery charging and discharging power. Charging is positive, discharging is negative;;0.100000;0.000000;kW;4
-48;3;1640;U16;;Average of total battery pack SOC;;1.000000;0.000000;'%;4
-49;3;1641;U16;;Aggregate battery pack SOH;;1.000000;0.000000;'%;4
+48;3;1640;U16;;Average of total battery pack SOC;SOC;1.000000;0.000000;'%;4
+49;3;1641;U16;;Aggregate battery pack SOH;SOH;1.000000;0.000000;'%;4
 50;3;2048;U16;;Waiting time before grid connection;;1.000000;0.000000;秒;1
 51;3;2049;U16;;100 indicates the rate corresponding to a 1-minute rise to full load, other values are multiplied and divided on this basis Note: Grid connection rise rate;;1.000000;0.000000;'%Pn/min;1
 52;3;2050;U16;;Waiting time before re-connecting to the grid after grid failure recovery;;1.000000;0.000000;秒;1
@@ -94,7 +94,7 @@ modbusRTU;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
 93;3;2311;U16;;Grid under-voltage load shedding start point;;0.100000;0.000000;V;1
 94;3;2312;U16;;Grid undervoltage cut-off point;;0.100000;0.000000;V;1
 95;3;2313;I16;;Grid undervoltage cut-off power;;1.000000;0.000000;'%;1
-96;3;2322;U16;;Anti-backflow power (VDE4105 safety regulation grid-connected power limit);;1.000000;0.000000;'%;1
+96;3;2322;U16;;Anti-backflow power (VDE4105 safety regulation grid-connected power limit);CMD_P_AC_SET_ABS;1.000000;0.000000;'%;1
 97;3;2323;U16;;Anti-backflow overload time (VDE4105 safety regulation backflow overload off-grid time);;10.000000;0.000000;ms;1
 98;3;2324;U16;;Logical interface down load rate;;1.000000;0.000000;'%Pn/min;1
 99;3;2325;U16;;Logical interface return load rate;;1.000000;0.000000;'%Pn/min;1
@@ -138,7 +138,7 @@ modbusRTU;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
 137;3;2450;U16;;for reactive mode IV, % of Lockout power value;;1.000000;0.000000;'%;1
 138;3;2451;U16;;for reactive mode IV, % of maximum overrun reactive power;;0.010000;0.000000;'%Pn;1
 139;3;2452;U16;;for Reactive mode IV, Reactive response waiting time;;10.000000;0.000000;ms;1
-140;3;2453;I16;;For reactive mode IV, percentage reactive power offset Offset reactive power curve over the entire operating voltage range. Positive values indicate overrunning, negative values indicate lagging.;;0.010000;0.000000;'%Qmax;1
+140;3;2453;I16;;For reactive mode IV, percentage reactive power offset Offset reactive power curve over the entire operating voltage range. Positive values indicate overrunning, negative values indicate lagging.;CMD_OFF;0.010000;0.000000;'%Qmax;1
 141;3;2454;U16;;"For reactive mode IV, 50% of the percentage change in reactive power range from the low voltage starting voltage to the high voltage starting voltage point. The low-voltage starting voltage corresponds to the reactive power lagging in this register; the high-voltage starting voltage corresponds to the reactive power overrunning in this register;";;0.010000;0.000000;'%Pn;1
 142;3;2455;U16;;For reactive mode V, percentage of high-voltage starting voltage;;1.000000;0.000000;'%;1
 143;3;2456;U16;;for reactive mode V, percentage of high-voltage termination voltage;;1.000000;0.000000;'%;1

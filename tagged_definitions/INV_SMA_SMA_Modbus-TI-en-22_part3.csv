@@ -1,0 +1,164 @@
+modbusRTU;Inverter;SMA;SMA_Modbus-TI-en-22_p3;;;;;;;
+1;4;30051;U16;;Device class;;1.0;0.0;ENUM;4
+2;4;30053;U16;;Device type;MODEL;1.0;0.0;ENUM;4
+3;4;30057;U16;;Serial number;SERIAL;1.0;0.0;RAW;4
+4;4;30059;U16;;Software package;;1.0;0.0;FW;4
+5;4;30197;U16;;Current event number;WIND_SPEED;1.0;0.0;FIX0;4
+6;4;30199;U16;;Waiting time until feed-in;;1.0;0.0;Duration;4
+7;4;30201;U16;;Condition;;1.0;0.0;ENUM;4
+8;4;30203;U16;;Nominal power in Ok Mode;P_RATED;1.0;0.0;FIX0;4
+9;4;30205;U16;;Nominal power in Warning Mode;;1.0;0.0;FIX0;4
+10;4;30207;U16;;Nominal power in Fault Mode;;1.0;0.0;FIX0;4
+11;4;30211;U16;;Recommended action;;1.0;0.0;ENUM;4
+12;4;30213;U16;;Message;;1.0;0.0;ENUM;4
+13;4;30215;U16;;Fault correction measure;;1.0;0.0;ENUM;4
+14;4;30217;U16;;Grid relay/contactor;;1.0;0.0;ENUM;4
+15;4;30219;U16;;Derating;;1.0;0.0;ENUM;4
+16;4;30225;U16;;Insulation resistance;R_ISO;1.0;0.0;FIX0;4
+17;4;30231;U16;;Maximum active power device;P_AC;1.0;0.0;FIX0;4
+18;4;30233;U16;;Set active power limit;CMD_P_AC_SET_ABS;1.0;0.0;FIX0;1
+19;4;30247;U16;;Current event number for manufacturer;;1.0;0.0;FIX0;4
+20;4;30513;U16;;Total yield;E_TOT;1.0;0.0;FIX0;4
+21;4;30517;U16;;Daily yield;E_DAY;1.0;0.0;FIX0;4
+22;4;30521;U16;;Operating time;;1.0;0.0;Duration;4
+23;4;30525;U16;;Feed-in time;;1.0;0.0;Duration;4
+24;4;30529;U16;;Total yield;;1.0;0.0;FIX0;4
+25;4;30531;U16;;Total yield;;1.0;0.0;FIX0;4
+26;4;30533;U16;;Total yield;;1.0;0.0;FIX0;4
+27;4;30535;U16;;Daily yield;;1.0;0.0;FIX0;4
+28;4;30537;U16;;Daily yield;;1.0;0.0;FIX0;4
+29;4;30539;U16;;Daily yield;;1.0;0.0;FIX0;4
+30;4;30541;U16;;Operating time;;1.0;0.0;Duration;4
+31;4;30543;U16;;Feed-in time;;1.0;0.0;Duration;4
+32;4;30559;U16;;Number of events for user;;1.0;0.0;FIX0;4
+33;4;30561;U16;;Number of events for installer;;1.0;0.0;FIX0;4
+34;4;30563;U16;;Number of events for service;;1.0;0.0;FIX0;4
+35;4;30583;U16;;Grid feed-in counter reading;;1.0;0.0;FIX0;4
+36;4;30599;U16;;Number of grid connections;;1.0;0.0;FIX0;4
+37;4;30775;U16;;Power;;1.0;0.0;FIX0;4
+38;4;30777;U16;;Power L1;;1.0;0.0;FIX0;4
+39;4;30779;U16;;Power L2;;1.0;0.0;FIX0;4
+40;4;30781;U16;;Power L3;;1.0;0.0;FIX0;4
+41;4;30783;U16;;Grid voltage phase L1;U_AC_1;1.0;0.0;FIX2;4
+42;4;30785;U16;;Grid voltage phase L2;U_AC_2;1.0;0.0;FIX2;4
+43;4;30787;U16;;Grid voltage phase L3;U_AC_3;1.0;0.0;FIX2;4
+44;4;30797;U16;;Grid current phase L1;I_AC_1;1.0;0.0;FIX3;4
+45;4;30799;U16;;Grid current phase L2;I_AC_2;1.0;0.0;FIX3;4
+46;4;30801;U16;;Grid current phase L3;I_AC_3;1.0;0.0;FIX3;4
+47;4;30803;U16;;Grid frequency;FREQ;1.0;0.0;FIX2;4
+48;4;30805;U16;;Reactive power;Q_AC;1.0;0.0;FIX0;4
+49;4;30807;U16;;Reactive power L1;Q_AC_1;1.0;0.0;FIX0;4
+50;4;30809;U16;;Reactive power L2;Q_AC_2;1.0;0.0;FIX0;4
+51;4;30811;U16;;Reactive power L3;Q_AC_3;1.0;0.0;FIX0;4
+52;4;30813;U16;;Apparent power;S_AC;1.0;0.0;FIX0;4
+53;4;30815;U16;;Apparent power L1;S_AC_1;1.0;0.0;FIX0;4
+54;4;30817;U16;;Apparent power L2;S_AC_2;1.0;0.0;FIX0;4
+55;4;30819;U16;;Apparent power L3;S_AC_3;1.0;0.0;FIX0;4
+56;4;30825;U16;;Operating mode of stat.V stab., stat.V stab. config.;;1.0;0.0;ENUM;4
+57;4;30829;U16;;Reactive power set value as a %;;1.0;0.0;FIX1;4
+58;4;30831;U16;;cosPhi setpoint, cosPhi config., direct specif.;PF;1.0;0.0;FIX2;4
+59;4;30833;U16;;cosPhi excit.type, cosPhi config., direct spec.;;1.0;0.0;ENUM;4
+60;4;30835;U16;;Operating mode of feed-in management;;1.0;0.0;ENUM;4
+61;4;30837;U16;;Active power limitation P, active power configuration;CMD_P_AC_SET_PERCENT;1.0;0.0;FIX0;1
+62;4;30839;U16;;Active power limitation P, active power configuration;;1.0;0.0;FIX0;4
+63;4;30919;U16;;Oper.mode vol.maint.at Q on Dem., st.vol.maint.conf.;;1.0;0.0;ENUM;4
+64;4;30925;U16;;Connection speed of SMACOM A;;1.0;0.0;ENUM;4
+65;4;30927;U16;;Duplex mode of SMACOM A;;1.0;0.0;ENUM;4
+66;4;30929;U16;;Speedwire connection status of SMACOM A;;1.0;0.0;ENUM;4
+67;4;30931;U16;;Connection speed of SMACOM B;;1.0;0.0;ENUM;4
+68;4;30933;U16;;Duplex mode of SMACOM B;;1.0;0.0;ENUM;4
+69;4;30935;U16;;Speedwire connection status of SMACOM B;;1.0;0.0;ENUM;4
+70;4;30949;U16;;Displacement power factor;;1.0;0.0;FIX3;4
+71;4;30975;U16;;Intermediate circuit voltage;;1.0;0.0;FIX2;4
+72;4;31017;U16;;Current speedwire IP address;;1.0;0.0;UTF8;4
+73;4;31025;U16;;Current speedwire subnet mask;;1.0;0.0;UTF8;4
+74;4;31033;U16;;Current speedwire gateway address;;1.0;0.0;UTF8;4
+75;4;31041;U16;;Current speedwire DNS server address;;1.0;0.0;UTF8;4
+76;4;31085;U16;;Nominal power in Ok Mode;;1.0;0.0;FIX0;4
+77;4;31159;U16;;Current spec. reactive power Q;;1.0;0.0;FIX0;4
+78;4;35377;U16;;Number of events for user;;1.0;0.0;FIX0;4
+79;4;35381;U16;;Number of events for installer;;1.0;0.0;FIX0;4
+80;4;35385;U16;;Number of events for service;;1.0;0.0;FIX0;4
+81;4;40009;U16;;Operating condition;;1.0;0.0;ENUM;1
+82;4;40013;U16;;Language of the user interface;;1.0;0.0;ENUM;1
+83;4;40015;U16;;Normalized reactive power limitation by PV system ctrl;;1.0;0.0;FIX1;1
+84;4;40016;U16;;Normalized active power limitation by PV system ctrl;;1.0;0.0;FIX0;1
+85;4;40024;U16;;Dis.pow.factor that can be changed via PV system ctrl;;1.0;0.0;FIX4;1
+86;4;40025;U16;;"Excitation type that can be changed by PV system ctrl
+1041 = Capacitive
+1042 = Inductive";;1.0;0.0;ENUM;1
+87;4;40063;U16;;Firmware version of the main processor;;1.0;0.0;FW;4
+88;4;40065;U16;;Firmware version of the logic component;;1.0;0.0;FW;4
+89;4;40067;U16;;Serial number;;1.0;0.0;RAW;4
+90;4;40095;U16;;Voltage monitoring upper maximum threshold;;1.0;0.0;FIX2;1
+91;4;40109;U16;;Country standard set;;1.0;0.0;ENUM;4
+92;4;40133;U16;;Grid nominal voltage;;1.0;0.0;FIX0;1
+93;4;40135;U16;;Nominal frequency;;1.0;0.0;FIX2;1
+94;4;40157;U16;;Automatic speedwire configureation switched on;;1.0;0.0;ENUM;1
+95;4;40159;U16;;Speedwire IP address;;1.0;0.0;IP4;1
+96;4;40167;U16;;Speedwire subnet mask;;1.0;0.0;IP4;1
+97;4;40175;U16;;Speedwire gateway address;;1.0;0.0;IP4;1
+98;4;40185;U16;;Maximum apparent power device;;1.0;0.0;FIX0;4
+99;4;40195;U16;;Currently set apparent power limit;;1.0;0.0;FIX0;1
+100;4;40200;U16;;Operating mode of stat.V stab., stat.V stab. config.;;1.0;0.0;ENUM;1
+101;4;40204;U16;;Reactive power set value as a %;;1.0;0.0;FIX1;1
+102;4;40206;U16;;cosPhi setpoint, cosPhi config., direct specif.;;1.0;0.0;FIX2;1
+103;4;40208;U16;;cosPhi excit.type, cosPhi config., direct spec.;;1.0;0.0;ENUM;1
+104;4;40210;U16;;Operating mode of feed-in management;;1.0;0.0;ENUM;1
+105;4;40212;U16;;Active power limitation P, active power configuration;;1.0;0.0;FIX0;1
+106;4;40214;U16;;Active power limitation P, active power configuration;;1.0;0.0;FIX0;1
+107;4;40216;U16;;Operating mode of active power reduction in case of overfrequency P(f);;1.0;0.0;ENUM;1
+108;4;40218;U16;;Difference between starting frequency and grid frequency, linear instantaneous power gradient configuration;;1.0;0.0;FIX2;1
+109;4;40220;U16;;Difference between reset frequency and grid frequency, linear instantaneous power gradient configuration;;1.0;0.0;FIX2;1
+110;4;40222;U16;;cosPhi at start point, cosPhi(P) char. config.;;1.0;0.0;FIX2;1
+111;4;40224;U16;;Excit. type at start point, cosPhi(P) char. conf.;;1.0;0.0;ENUM;1
+112;4;40226;U16;;cosPhi at end point, cosPhi(P) char. config.;;1.0;0.0;FIX2;1
+113;4;40228;U16;;Excit. type at end point, cosPhi(P) char. config.;;1.0;0.0;ENUM;1
+114;4;40230;U16;;Act. power at start point, cosPhi(P) char. config.;;1.0;0.0;FIX0;1
+115;4;40232;U16;;Act. power at end point, cosPhi(P) char. config.;;1.0;0.0;FIX0;1
+116;4;40234;U16;;Active power gradient;;1.0;0.0;FIX0;1
+117;4;40238;U16;;Active power gradient, linear instantaneous power gradient configuration;;1.0;0.0;FIX0;1
+118;4;40240;U16;;Activation of stay-set indicator function, linear instantaneous power gradient configuration;;1.0;0.0;ENUM;1
+119;4;40242;U16;;Active power gradient after reset frequency, linear instantaneous power gradient configuration;;1.0;0.0;FIX0;1
+120;4;40244;U16;;Reactive current droop, full dynamic grid support configuration;;1.0;0.0;ENUM;1
+121;4;40250;U16;;Operating mode of dynamic grid support, dynamic grid support configuration;;1.0;0.0;ENUM;1
+122;4;40252;U16;;Lower limit, voltage dead band, full dynamic grid support configuration;;1.0;0.0;FIX0;1
+123;4;40254;U16;;Upper limit, voltage dead band, full dynamic support configuration;;1.0;0.0;FIX0;1
+124;4;40256;U16;;PWM inverse voltage, dynamic grid support configuration;;1.0;0.0;FIX0;1
+125;4;40258;U16;;PWM inversion delay, dynamic grid support configuration;;1.0;0.0;FIX2;1
+126;4;40260;U16;;Characteristic curve number of the PV system control procedure P(U);;1.0;0.0;FIX0;1
+127;4;40428;U16;;Frequency monitoring median maximum threshold;;1.0;0.0;FIX2;1
+128;4;40430;U16;;Frq. monitoring median max. threshold trip. time;;1.0;0.0;FIX0;1
+129;4;40432;U16;;Frequency monitoring lower maximum threshold;;1.0;0.0;FIX2;1
+130;4;40434;U16;;Frq. monitoring lower max. threshold trip. time;;1.0;0.0;FIX0;1
+131;4;40436;U16;;Frequency monitoring upper minimum threshold;;1.0;0.0;FIX2;1
+132;4;40438;U16;;Frq. monitoring upper min. threshold trip. time;;1.0;0.0;FIX0;1
+133;4;40440;U16;;Frequency monitoring median minimum threshold;;1.0;0.0;FIX2;1
+134;4;40442;U16;;Frq. monitoring median min. threshold trip. time;;1.0;0.0;FIX0;1
+135;4;40446;U16;;Voltage monitoring upper max. threshold trip. time;;1.0;0.0;FIX3;1
+136;4;40448;U16;;Voltage monitoring median maximum threshold;;1.0;0.0;FIX2;1
+137;4;40450;U16;;Voltage monitoring median max. threshold trip.time;;1.0;0.0;FIX0;1
+138;4;40452;U16;;Voltage monitoring lower maximum threshold;;1.0;0.0;FIX2;1
+139;4;40456;U16;;Voltage monitoring lower max. threshold trip. time;;1.0;0.0;FIX0;1
+140;4;40458;U16;;Voltage monitoring lower minimum threshold;;1.0;0.0;FIX2;1
+141;4;40462;U16;;Voltage monitoring lower min. threshold trip. time;;1.0;0.0;FIX0;1
+142;4;40464;U16;;Voltage monitoring of median minimum threshold;;1.0;0.0;FIX2;1
+143;4;40466;U16;;Voltage monitoring median min. threshold trip.time;;1.0;0.0;FIX0;1
+144;4;40472;U16;;Reference voltage, PV system control;;1.0;0.0;FIX0;1
+145;4;40474;U16;;Reference correction voltage, PV system control;;1.0;0.0;FIX0;1
+146;4;40482;U16;;Reactive power gradient;;1.0;0.0;FIX0;1
+147;4;40484;U16;;Activation of active power gradient;;1.0;0.0;ENUM;1
+148;4;40490;U16;;Reactive power gradient, reactive power/voltage characteristic curve configuration Q(U);;1.0;0.0;FIX1;1
+149;4;40497;U16;;MAC address;;1.0;0.0;UTF8;4
+150;4;40513;U16;;Speedwire DNX server address;;1.0;0.0;IP4;1
+151;4;40575;U16;;Operating mode of multifunction relay [1];;1.0;0.0;ENUM;1
+152;4;40577;U16;;Operating mode of multifunction relay [2];;1.0;0.0;ENUM;1
+153;4;40579;U16;;Operating mode of multifunction relay [3];;1.0;0.0;ENUM;1
+154;4;40581;U16;;Operating mode of multifunction relay [4];;1.0;0.0;ENUM;1
+155;4;40583;U16;;Operating mode of multifunction relay [5];;1.0;0.0;ENUM;1
+156;4;40585;U16;;Operating mode of multifunction relay [6];;1.0;0.0;ENUM;1
+157;4;40631;U16;;Device name;;1.0;0.0;UTF8;1
+158;4;40789;U16;;Communication version;;1.0;0.0;REV;4
+159;4;40809;U16;;Revision status of the logic component;;1.0;0.0;FIX0;4
+160;4;40915;U16;;Set active power limit;;1.0;0.0;FIX0;1
+161;4;43090;U16;;Login with Grid Guard-Code;;1.0;0.0;None;1

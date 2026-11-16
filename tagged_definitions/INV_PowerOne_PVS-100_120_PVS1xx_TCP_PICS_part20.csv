@@ -1,0 +1,70 @@
+modbusRTU;Inverter;PowerOne;PVS-100_120_PVS1xx_T_p20;;;;;;;
+1;4;41104;U16;;ID;;1.0;0.0;;4
+2;4;41105;U16;;L;;1.0;0.0;;4
+3;4;41106;U16;;Current Scale Factor (DCA_SF);I_DC;1.0;0.0;;4
+4;4;41107;U16;;Voltage Scale Factor (DCV_SF);U_DC;1.0;0.0;;4
+5;4;41108;U16;;Power Scale Factor (DCW_SF);P_DC;1.0;0.0;;4
+6;4;41109;U16;;Energy Scale Factor (DCWH_SF);;1.0;0.0;;4
+7;4;41110;U16;;Global Events (Evt);WIND_SPEED;1.0;0.0;;4
+8;4;41112;U16;;Number of Modules (N);;1.0;0.0;;4
+9;4;41113;U16;;Timestamp Period (TmsPer);;1.0;0.0;;4
+10;4;41114;U16;;Input ID (ID);;1.0;0.0;;4
+11;4;41115;U16;;Input ID Sting (IDStr);;1.0;0.0;;4
+12;4;41123;U16;;DC Current (DCA);;1.0;0.0;;4
+13;4;41124;U16;;DC Voltage (DCV);;1.0;0.0;;4
+14;4;41125;U16;;DC Power (DCW);;1.0;0.0;;4
+15;4;41126;U16;;Lifetime Energy (DCWH);E_TOT;1.0;0.0;;4
+16;4;41128;U16;;Timestamp (Tms);;1.0;0.0;;4
+17;4;41130;U16;;Temperature (Tmp);TEMP_INT;1.0;0.0;;4
+18;4;41131;U16;;Operating State (DCSt);;1.0;0.0;;4
+19;4;41132;U16;;Module Events (DCEvt);;1.0;0.0;;4
+20;4;41134;U16;;Input ID (ID);;1.0;0.0;;4
+21;4;41135;U16;;Input ID Sting (IDStr);;1.0;0.0;;4
+22;4;41143;U16;;DC Current (DCA);;1.0;0.0;;4
+23;4;41144;U16;;DC Voltage (DCV);;1.0;0.0;;4
+24;4;41145;U16;;DC Power (DCW);;1.0;0.0;;4
+25;4;41146;U16;;Lifetime Energy (DCWH);;1.0;0.0;;4
+26;4;41148;U16;;Timestamp (Tms);;1.0;0.0;;4
+27;4;41150;U16;;Temperature (Tmp);;1.0;0.0;;4
+28;4;41151;U16;;Operating State (DCSt);;1.0;0.0;;4
+29;4;41152;U16;;Module Events (DCEvt);;1.0;0.0;;4
+30;4;41154;U16;;Input ID (ID);;1.0;0.0;;4
+31;4;41155;U16;;Input ID Sting (IDStr);;1.0;0.0;;4
+32;4;41163;U16;;DC Current (DCA);;1.0;0.0;;4
+33;4;41164;U16;;DC Voltage (DCV);;1.0;0.0;;4
+34;4;41165;U16;;DC Power (DCW);;1.0;0.0;;4
+35;4;41166;U16;;Lifetime Energy (DCWH);;1.0;0.0;;4
+36;4;41168;U16;;Timestamp (Tms);;1.0;0.0;;4
+37;4;41170;U16;;Temperature (Tmp);;1.0;0.0;;4
+38;4;41171;U16;;Operating State (DCSt);;1.0;0.0;;4
+39;4;41172;U16;;Module Events (DCEvt);;1.0;0.0;;4
+40;4;41174;U16;;Input ID (ID);;1.0;0.0;;4
+41;4;41175;U16;;Input ID Sting (IDStr);;1.0;0.0;;4
+42;4;41183;U16;;DC Current (DCA);;1.0;0.0;;4
+43;4;41184;U16;;DC Voltage (DCV);;1.0;0.0;;4
+44;4;41185;U16;;DC Power (DCW);;1.0;0.0;;4
+45;4;41186;U16;;Lifetime Energy (DCWH);;1.0;0.0;;4
+46;4;41188;U16;;Timestamp (Tms);;1.0;0.0;;4
+47;4;41190;U16;;Temperature (Tmp);;1.0;0.0;;4
+48;4;41191;U16;;Operating State (DCSt);;1.0;0.0;;4
+49;4;41192;U16;;Module Events (DCEvt);;1.0;0.0;;4
+50;4;41194;U16;;Input ID (ID);;1.0;0.0;;4
+51;4;41195;U16;;Input ID Sting (IDStr);;1.0;0.0;;4
+52;4;41203;U16;;DC Current (DCA);;1.0;0.0;;4
+53;4;41204;U16;;DC Voltage (DCV);;1.0;0.0;;4
+54;4;41205;U16;;DC Power (DCW);;1.0;0.0;;4
+55;4;41206;U16;;Lifetime Energy (DCWH);;1.0;0.0;;4
+56;4;41208;U16;;Timestamp (Tms);;1.0;0.0;;4
+57;4;41210;U16;;Temperature (Tmp);;1.0;0.0;;4
+58;4;41211;U16;;Operating State (DCSt);;1.0;0.0;;4
+59;4;41212;U16;;Module Events (DCEvt);;1.0;0.0;;4
+60;4;41214;U16;;Input ID (ID);;1.0;0.0;;4
+61;4;41215;U16;;Input ID Sting (IDStr);;1.0;0.0;;4
+62;4;41223;U16;;DC Current (DCA);;1.0;0.0;;4
+63;4;41224;U16;;DC Voltage (DCV);;1.0;0.0;;4
+64;4;41225;U16;;DC Power (DCW);;1.0;0.0;;4
+65;4;41226;U16;;Lifetime Energy (DCWH);;1.0;0.0;;4
+66;4;41228;U16;;Timestamp (Tms);;1.0;0.0;;4
+67;4;41230;U16;;Temperature (Tmp);;1.0;0.0;;4
+68;4;41231;U16;;Operating State (DCSt);;1.0;0.0;;4
+69;4;41232;U16;;Module Events (DCEvt);;1.0;0.0;;4

@@ -38,7 +38,7 @@ modbusRTU;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
 37;4;30302;I16;;Boost module 1 temperature;TEMP_CELL;0.1;0;°C;4
 38;4;30304;I16;;Buckboost temperature;;0.1;0;°C;4
 39;4;30306;I16;;DC/AC module temperature;;0.1;0;°C;4
-40;4;30315;I16;;Heat sink temperature;TEMP_INT;0.1;0;°C;4
+40;4;30315;I16;;Heat sink temperature;;0.1;0;°C;4
 41;4;30399_10;STRING;;ARM protocol version;;1;0;;4
 42;4;30404_4;STRING;;ARM software code ID;;1;0;;4
 43;4;30406_10;STRING;;ARM software version;;1;0;;4
@@ -64,7 +64,7 @@ modbusRTU;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
 63;4;30420_0_1;BITS;;ARM Bit error2 - Bit 0;;1;0;;8
 64;4;30420_1_1;BITS;;ARM Bit error2 - Bit 1;;1;0;;8
 65;4;30420_2_1;BITS;;ARM Bit error2 - Bit 2;;1;0;;8
-66;4;30499;U16;;Total PV power;P_AC;0.01;0;kW;4
+66;4;30499;U16;;Total PV power;P_DC;0.01;0;kW;4
 67;4;30500;U16;;PV 1 Voltage;U_DC_STRING_1;0.1;0;V;4
 68;4;30501;U16;;PV 1 Current;I_DC_STRING_1;0.1;0;A;4
 69;4;30502;U16;;PV 1 Power;;0.01;0;kW;4
@@ -181,7 +181,7 @@ modbusRTU;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
 180;4;34030;U16;;E-today (PV sell to grid);;0.1;0;kWh;4
 181;4;34031;U16;;E-today (Battery sell to grid);;0.1;0;KWh;4
 182;4;34032;U16;;E-today (Battery power EPS);;0.1;0;KWh;4
-183;4;34033;U32;;E-total (PV charge battery);E_TOT;0.1;0;KWh;4
+183;4;34033;U32;;E-total (PV charge battery);;0.1;0;KWh;4
 184;4;34035;U32;;E-total (EPS consume PV);;0.1;0;kWh;4
 185;4;34037;U32;;E-total (PV sell to grid);;0.1;0;kWh;4
 186;4;34039;U32;;E-total (Battery discharge to grid);;0.1;0;KWh;4

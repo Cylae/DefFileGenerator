@@ -95,15 +95,10 @@ modbusRTU;Meter;Legrand;LEGRAND_Meter_EMSCX3;;;;;;;
 94;4;20705;U16;;harmonic V1 row 15;;1.0;0.0;Percent;4
 95;4;20706;U16;;harmonic V2 row 15;;1.0;0.0;Percent;4
 96;4;20707;U16;;harmonic V3 row 15;;1.0;0.0;Percent;4
-97;4;20480;U16;;Measure Type Configuration;;1.0;0.0;;4
-98;4;20487;U16;;Voltage multiplier factor;;1.0;0.0;;4
-99;4;20488;U16;;Current multiplier factor;;1.0;0.0;;4
-100;4;20489;U16;;Total power multiplier factor;;1.0;0.0;;4
-101;4;20490;U16;;Phase power multiplier factor;;1.0;0.0;;4
-102;4;20491;U16;;Total energy multiplier factor;E_TOT;1.0;0.0;;4
-103;4;20492;U16;;Phase energy multiplier factor;;1.0;0.0;;4
-104;4;20493;U16;;Alarm/event 1 value;WIND_SPEED;1.0;0.0;;4
-105;4;20494;U16;;Alarm/event 1 threshold;;1.0;0.0;;4
-106;4;20496;U16;;Alarm/event 1 delay;;1.0;0.0;seconds;4
-107;4;20497;U16;;Alarm/event 1 Hysteresis;;1.0;0.0;Percent;4
-108;4;20498;U16;;Event type;;1.0;0.0;;4
+97;4;20487;U16;;Voltage multiplier factor;;1.0;0.0;;4
+98;4;20488;U16;;Current multiplier factor;;1.0;0.0;;4
+99;4;20489;U16;;Total power multiplier factor;;1.0;0.0;;4
+100;4;20490;U16;;Phase power multiplier factor;;1.0;0.0;;4
+101;4;20491;U16;;Total energy multiplier factor;E_TOT;1.0;0.0;;4
+102;4;20492;U16;;Phase energy multiplier factor;;1.0;0.0;;4
+103;4;20493;U16;;Alarm/event 1 value;WIND_SPEED;1.0;0.0;;4

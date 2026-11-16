@@ -3,7 +3,7 @@ modbusRTU;Other;Webdyn;KEHUA_Modbus_ThreePhase;;;;;;;
 2;4;4506;U16;;The capacity of power generation at the same day;;1.0;0.0;kWh;4
 3;4;4507;U16;;Total Grid generation capacity;;1.0;0.0;kWh;4
 4;4;4511;U16;;Grid Frequency;FREQ;1.0;0.0;Hz;4
-5;4;4512;U16;;U-phase grid voltage;;1.0;0.0;V;4
+5;4;4512;U16;;U-phase grid voltage;U_AC_L1L2;1.0;0.0;V;4
 6;4;4513;U16;;V-phase grid voltage;;1.0;0.0;V;4
 7;4;4514;U16;;W-phase grid voltage;;1.0;0.0;V;4
 8;4;4515;U16;;U-phase grid current;;1.0;0.0;A;4

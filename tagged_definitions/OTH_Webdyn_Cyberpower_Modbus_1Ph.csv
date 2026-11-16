@@ -1,11 +1,11 @@
 modbusRTU;Other;Webdyn;Cyberpower_Modbus_1Ph;;;;;;;
 1;3;4096;I32_W;;Product_ID;;1.000000;0.000000;;4
-2;3;4098;U16;;Inverter_Rated_Power;;1.000000;0.000000;;4
+2;3;4098;U16;;Inverter_Rated_Power;P_RATED;1.000000;0.000000;;4
 3;3;4099;U16;;Peak Panel_Power;;1.000000;0.000000;;4
 4;3;4100;U16;;Installation_Year;;1.000000;0.000000;;4
 5;3;4101;U16;;Installation_Month;;1.000000;0.000000;;4
 6;3;4102;U16;;Installation_Day;;1.000000;0.000000;;4
-7;3;4103;U16;;RS485_ID;;1.000000;0.000000;;4
+7;3;4103;U16;;RS485_ID;UNIT_ID;1.000000;0.000000;;4
 8;3;40104_7;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
 9;3;40112_7;STRING;;Model Name;MODEL;1.000000;0.000000;;4
 10;3;4120;U16;;Processor1 FW Version;;1.000000;0.000000;;4
@@ -36,11 +36,11 @@ modbusRTU;Other;Webdyn;Cyberpower_Modbus_1Ph;;;;;;;
 35;3;4145;U16;;CPS_PV_Status;;1.000000;0.000000;;4
 36;3;4146;U16;;Function Status Counter;;1.000000;0.000000;;4
 37;3;4147;U16;;Reconnected Time;;1.000000;0.000000;;4
-38;3;4148;U16;;Event Index Start;;1.000000;0.000000;;4
+38;3;4148;U16;;Event Index Start;WIND_SPEED;1.000000;0.000000;;4
 39;3;4149;U16;;Event Index End;;1.000000;0.000000;;4
 40;3;4150;U16;;Input1 R Leakage;;1.000000;0.000000;Kohm;4
 41;3;4151;U16;;Input2 R Leakage;;1.000000;0.000000;Kohm;4
-42;3;4152;U32_W;;Today kWh;;1.000000;0.000000;Wh;4
+42;3;4152;U32_W;;Today kWh;E_DAY;1.000000;0.000000;Wh;4
 43;3;4154;U32_W;;Today Runtime;;1.000000;0.000000;Sec;4
 44;3;4156;U32_W;;System Life kWh;E_TOT;1.000000;0.000000;Wh;4
 45;3;4158;U32_W;;System Life Runtime;;1.000000;0.000000;Kohm;4
@@ -62,11 +62,11 @@ modbusRTU;Other;Webdyn;Cyberpower_Modbus_1Ph;;;;;;;
 61;3;4183;U16;;Bus Volt (Neg), (average);;0.100000;0.000000;V;4
 62;3;4184;U16;;AC Volt (average);;0.100000;0.100000;V;4
 63;3;4185;U16;;AC Curr (average);;0.010000;0.000000;A;4
-64;3;4186;U16;;AC Watt (average);;1.000000;0.000000;W;4
-65;3;4187;U16;;AC Freq (average);;0.010000;0.000000;HZ;4
+64;3;4186;U16;;AC Watt (average);P_AC;1.000000;0.000000;W;4
+65;3;4187;U16;;AC Freq (average);FREQ;0.010000;0.000000;HZ;4
 66;3;4188;U16;;AC Volt (redundant) (average);;0.100000;0.000000;V;4
 67;3;4189;U16;;AC Freq (redundant) (average);;0.010000;0.000000;Hz;4
-68;3;4190;U16;;Temperature (Ambient);;1.000000;0.000000;K;4
+68;3;4190;U16;;Temperature (Ambient);TEMP_INT;1.000000;0.000000;K;4
 69;3;4191;U16;;Temperature (Heatsink);;1.000000;0.000000;K;4
 70;3;4192;U16;;Input1 Volt;;0.100000;0.000000;V;4
 71;3;4193;U16;;Input1 Curr;;0.010000;0.000000;A;4

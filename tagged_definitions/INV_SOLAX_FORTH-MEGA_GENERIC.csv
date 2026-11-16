@@ -3,7 +3,7 @@ ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 2;4;18_32;STRING;;Model Type;MODEL;1;0;;4
 3;4;34_32;STRING;;Software Version;;1;0;;4
 4;4;50_32;STRING;;Serial Number;SERIAL;1;0;;4
-5;4;66;U16;;Rated grid voltage;;1;0;V;4
+5;4;66;U16;;Rated grid voltage;U_AC_L1L2;1;0;V;4
 6;4;67;U16;;Rated output active power;P_AC;0.1;0;kW;4
 7;4;76_20;STRING;;Protocol number;;1;0;;4
 8;4;86_20;STRING;;Protocol Version;;1;0;;4
@@ -259,7 +259,7 @@ ModbusRTU;Inverter;Solax;FORTH-MEGA;;;;;;;
 258;3;8965;U16;;Real-time reactive power percent;;1;0;;1
 259;3;8966;U16;;active power rising slope;;0.1;0;%;1
 260;3;8967;U16;;reactive power rising slope;;1.0;0;;1
-261;3;8968;I16;;Power factor Setting;CMD_PF;0.001;0;;1
+261;3;8968;I16;;Power factor Setting;;0.001;0;;1
 262;3;8969;I16;;reactive power percent;;0.1;0;%;1
 263;3;8970;U16;;reactive power regulations speed;;0.1;0;%;1
 264;3;8977;I16;;Watt-Freq Enable;;1;0;;1

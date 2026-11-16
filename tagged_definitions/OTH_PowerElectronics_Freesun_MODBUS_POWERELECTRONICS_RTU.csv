@@ -13,4 +13,4 @@ modbusRTU;Other;PowerElectronics Freesun;MODBUS_POWERELECTRONICS_RTU;;;;;;;
 12;4;1126;U16;;volt_in;;1.0;0.0;V;4
 13;4;1127;U16;;current_in;;1.0;0.0;A;4
 14;4;1128;U16;;power_in;;1.0;0.0;kW;4
-15;4;1151;U16;;temperature;TEMP;1.0;0.0;C;4
+15;4;1151;U16;;temperature;TEMP_INT;1.0;0.0;C;4
