@@ -1,7 +1,7 @@
 # 📊 RAPPORT TECHNIQUE MAJEUR — GÉNÉRATION DES FICHIERS DE DÉFINITION WEBDYNSUNPM
 ## Traçabilité Industrielle, Validation Modbus & Cartographie des Tags SunPM
 **Projet** : `DefFileGenerator` · **Norme de référence** : `INV_HUAWEI_V4.csv` (WebdynSunPM R&D)
-**Date de génération** : 2026-11-16 14:49:32 · **Répertoire audité** : `C:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator\tagged_definitions`
+**Date de génération** : 2026-11-16 15:16:47 · **Répertoire audité** : `C:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator\tagged_definitions`
 **Statut global de conformité** : **100.0% VALIDE**
 
 ---
@@ -12,28 +12,31 @@ Ce rapport technique valide la conformité totale des fichiers de définition in
 
 ```mermaid
 pie title Répartition des Équipements par Catégorie
-    "INV" : 584
-    "OTH" : 454
-    "MET" : 253
-    "SEN" : 67
-    "BAT" : 46
-    "COM" : 36
+    "INV" : 672
+    "OTH" : 656
+    "MET" : 269
+    "COM" : 73
+    "SEN" : 69
+    "BAT" : 51
     "BESS" : 14
     "BESS" : 13
     "BESS" : 4
+    "BESS" : 4
+    "BESS" : 3
     "BESS" : 1
+    "WPM" : 1
 ```
 
 | Indicateur Clé | Valeur Obtenue | Statut Webdyn |
 | :--- | :--- | :--- |
-| **Volume Total de Fichiers Définition** | **1 472 fichiers** | 📦 **Prêt Déploiement** |
-| **Taux de Validité Schéma Webdyn** | **1472 / 1472 (100.0%)** | ✅ 100% Conforme |
-| **Total Registres Modbus Validés** | **490 692 registres** | 🛡️ **Zéro Perte** |
-| **Tags SunPM Canoniques Assignés** | **38 100 tags** (Densité : **7.8%**) | 🏷️ **Sémantique SunPM v1** |
-| **Registres Holding / Input (FC03/FC04)** | **488 838** (99.6%) | ⚡ **Télémétrie 16/32/64 bits** |
-| **Registres Coils / Discretes (FC01/FC02)** | **1 854** (0.4%) | 🔘 **États & Contacts Secs** |
-| **Commandes d'Écriture (Action = 1)** | **71 359 consignes** | ✍️ **Contrôle Réseau & EMS** |
-| **Alarmes & Événements (Action = 9)** | **20 298 registres** | 🚨 **Supervision Alertes** |
+| **Volume Total de Fichiers Définition** | **1 830 fichiers** | 📦 **Prêt Déploiement** |
+| **Taux de Validité Schéma Webdyn** | **1830 / 1830 (100.0%)** | ✅ 100% Conforme |
+| **Total Registres Modbus Validés** | **549 311 registres** | 🛡️ **Zéro Perte** |
+| **Tags SunPM Canoniques Assignés** | **43 083 tags** (Densité : **7.8%**) | 🏷️ **Sémantique SunPM v1** |
+| **Registres Holding / Input (FC03/FC04)** | **547 457** (99.7%) | ⚡ **Télémétrie 16/32/64 bits** |
+| **Registres Coils / Discretes (FC01/FC02)** | **1 854** (0.3%) | 🔘 **États & Contacts Secs** |
+| **Commandes d'Écriture (Action = 1)** | **88 623 consignes** | ✍️ **Contrôle Réseau & EMS** |
+| **Alarmes & Événements (Action = 9)** | **21 817 registres** | 🚨 **Supervision Alertes** |
 | **Fichiers Invalides / Rejetés** | **0** | 🛡️ **Zéro Bloquant** |
 
 ---
@@ -42,16 +45,19 @@ pie title Répartition des Équipements par Catégorie
 
 | Préfixe | Catégorie Industrielle | Fichiers | Registres Modbus | Tags SunPM | Densité | Constructeurs Représentatifs |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
-| `INV` | Onduleurs & Convertisseurs (Inverters) | **584** | 183 438 | 19 597 | 10.7% | SMA, Goodwe, Fronius, ABB |
-| `OTH` | Autres Équipements (IO Modules, EV, Automates) | **454** | 147 679 | 10 133 | 6.9% | Webdyn, Delta, MarsRenewable, PowerOne |
-| `MET` | Compteurs & Analyseurs Réseau (Meters) | **253** | 30 982 | 3 698 | 11.9% | Schneider, Socomec, Janitza, Lettel |
-| `SEN` | Capteurs Météo & Pyranomètres (Sensors) | **67** | 1 803 | 235 | 13.0% | IngenieurBuro, Hukseflux, KippZonen, Seven Sensor |
-| `BAT` | Stockage d'Énergie & Batteries (BESS / BMS) | **46** | 18 799 | 982 | 5.2% | MarsRenewable, Dyness, FOX ESS, Sungrow |
-| `COM` | Passerelles & Loggers de Communication | **36** | 57 331 | 1 537 | 2.7% | HOYMILES, MarsRenewable, Sungrow, Huawei |
+| `INV` | Onduleurs & Convertisseurs (Inverters) | **672** | 201 762 | 21 882 | 10.8% | SMA, Goodwe, PowerOne, Fronius |
+| `OTH` | Autres Équipements (IO Modules, EV, Automates) | **656** | 167 722 | 12 169 | 7.3% | Webdyn, Delta, SMA, PowerOne |
+| `MET` | Compteurs & Analyseurs Réseau (Meters) | **269** | 38 720 | 3 813 | 9.8% | Schneider, Socomec, Janitza, Lettel |
+| `COM` | Passerelles & Loggers de Communication | **73** | 65 721 | 1 750 | 2.7% | Sungrow, HOYMILES, Robestec battery, Dyness battery |
+| `SEN` | Capteurs Météo & Pyranomètres (Sensors) | **69** | 1 820 | 241 | 13.2% | IngenieurBuro, Hukseflux, KippZonen, Seven Sensor |
+| `BAT` | Stockage d'Énergie & Batteries (BESS / BMS) | **51** | 20 326 | 1 102 | 5.4% | MarsRenewable, SL Energy, Dyness, FOX ESS |
 | `FOXESS` | FOXESS | **14** | 6 428 | 1 594 | 24.8% | FoxESS, FOX ESS, FOX_ESS |
 | `MarsRenewable` | MarsRenewable | **13** | 10 455 | 119 | 1.1% | MarsRenewable |
 | `MarsLocalController` | Contrôleur Central BESS (Mars Local Controller) | **4** | 33 492 | 87 | 0.3% | Mars Energy |
+| `WPM01D6AF` | WPM01D6AF | **4** | 2 018 | 139 | 6.9% | SMA |
+| `WPM0144A8` | WPM0144A8 | **3** | 71 | 9 | 12.7% | Hukseflux, KIPPZONEN |
 | `FoxESS` | FoxESS | **1** | 285 | 118 | 41.4% | FoxESS |
+| `WPM` | WPM | **1** | 491 | 60 | 12.2% | FOX ESS |
 
 ---
 
@@ -59,24 +65,24 @@ pie title Répartition des Équipements par Catégorie
 
 | Constructeur | Définitions | Total Registres | Tags SunPM | Part de Volume | Conformité |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Webdyn** | **123** | 13 345 | 2 483 | 2.7% | ✅ **100% Conforme** |
-| **SMA** | **82** | 42 769 | 2 001 | 8.7% | ✅ **100% Conforme** |
-| **MarsRenewable** | **69** | 49 369 | 1 183 | 10.1% | ✅ **100% Conforme** |
-| **Schneider** | **59** | 11 874 | 1 028 | 2.4% | ✅ **100% Conforme** |
-| **Huawei** | **45** | 8 656 | 1 519 | 1.8% | ✅ **100% Conforme** |
-| **Fronius** | **45** | 10 967 | 1 496 | 2.2% | ✅ **100% Conforme** |
-| **Delta** | **43** | 28 509 | 1 455 | 5.8% | ✅ **100% Conforme** |
-| **Goodwe** | **38** | 9 328 | 1 977 | 1.9% | ✅ **100% Conforme** |
-| **PowerOne** | **31** | 21 779 | 759 | 4.4% | ✅ **100% Conforme** |
-| **ABB** | **30** | 13 402 | 581 | 2.7% | ✅ **100% Conforme** |
-| **Sungrow** | **27** | 10 243 | 2 321 | 2.1% | ✅ **100% Conforme** |
-| **SL Energy** | **26** | 9 045 | 1 247 | 1.8% | ✅ **100% Conforme** |
-| **Socomec** | **26** | 1 944 | 270 | 0.4% | ✅ **100% Conforme** |
-| **Janitza** | **22** | 1 201 | 319 | 0.2% | ✅ **100% Conforme** |
-| **SAJ** | **20** | 3 253 | 397 | 0.7% | ✅ **100% Conforme** |
-| **Lettel** | **20** | 3 502 | 511 | 0.7% | ✅ **100% Conforme** |
-| **FoxESS** | **19** | 9 500 | 1 980 | 1.9% | ✅ **100% Conforme** |
-| **Ingeteam** | **17** | 1 150 | 305 | 0.2% | ✅ **100% Conforme** |
+| **SMA** | **135** | 52 693 | 2 668 | 9.6% | ✅ **100% Conforme** |
+| **Webdyn** | **130** | 14 458 | 2 548 | 2.6% | ✅ **100% Conforme** |
+| **Delta** | **117** | 34 485 | 1 518 | 6.3% | ✅ **100% Conforme** |
+| **MarsRenewable** | **69** | 49 356 | 1 178 | 9.0% | ✅ **100% Conforme** |
+| **PowerOne** | **66** | 30 040 | 2 012 | 5.5% | ✅ **100% Conforme** |
+| **Schneider** | **61** | 11 921 | 1 047 | 2.2% | ✅ **100% Conforme** |
+| **Huawei** | **55** | 10 185 | 1 698 | 1.9% | ✅ **100% Conforme** |
+| **Fronius** | **53** | 11 545 | 1 565 | 2.1% | ✅ **100% Conforme** |
+| **Goodwe** | **49** | 10 098 | 2 046 | 1.8% | ✅ **100% Conforme** |
+| **Sungrow** | **46** | 13 620 | 2 396 | 2.5% | ✅ **100% Conforme** |
+| **Socomec** | **36** | 3 747 | 303 | 0.7% | ✅ **100% Conforme** |
+| **SL Energy** | **34** | 11 483 | 1 405 | 2.1% | ✅ **100% Conforme** |
+| **ABB** | **30** | 13 402 | 581 | 2.4% | ✅ **100% Conforme** |
+| **Kaco** | **29** | 3 777 | 434 | 0.7% | ✅ **100% Conforme** |
+| **Kostal** | **29** | 2 611 | 300 | 0.5% | ✅ **100% Conforme** |
+| **Janitza** | **23** | 7 078 | 350 | 1.3% | ✅ **100% Conforme** |
+| **Lettel** | **22** | 3 623 | 530 | 0.7% | ✅ **100% Conforme** |
+| **SAJ** | **21** | 3 298 | 404 | 0.6% | ✅ **100% Conforme** |
 
 ---
 
@@ -86,31 +92,31 @@ Les tags appliqués sont issus du modèle d'apprentissage supervisé entraîné 
 
 | Rang | Tag Canonique SunPM | Occurrence | Description / Fonctionnalité Métier | Grandeur / Unité Type |
 | :---: | :--- | :---: | :--- | :--- |
-| **01** | `P_AC` | **711** | Puissance active totale injectée/consommée | W, kW |
-| **02** | `SERIAL` | **662** | Numéro de série de l'équipement | Chaîne de caractères |
-| **03** | `FREQ` | **556** | Fréquence du réseau électrique | Hz |
-| **04** | `Q_AC` | **489** | Puissance réactive totale | Var, kVar |
-| **05** | `MODEL` | **479** | Modèle ou désignation commerciale de l'appareil | Chaîne de caractères |
-| **06** | `I_AC_3` | **477** | Courant efficace phase C / L3 | A |
-| **07** | `I_AC_1` | **431** | Courant efficace phase A / L1 | A |
-| **08** | `I_AC_2` | **422** | Courant efficace phase B / L2 | A |
-| **09** | `U_AC_L1L2` | **376** | Tension composée réseau L1-L2 | V |
-| **10** | `PF` | **357** | Facteur de puissance global (cos phi) | Sans unité [-1.0 à 1.0] |
-| **11** | `MANUFACTURER` | **332** | Télémesure Modbus normalisée SunPM | Spécifique |
-| **12** | `I_AC` | **314** | Télémesure Modbus normalisée SunPM | Spécifique |
-| **13** | `E_TOT` | **309** | Énergie totale cumulée produite/consommée | kWh, MWh |
-| **14** | `S_AC` | **267** | Puissance apparente totale | VA, kVA |
-| **15** | `U_DC` | **261** | Tension bus continu DC | V |
-| **16** | `U_AC_1` | **259** | Tension simple phase A-N / L1-N | V |
-| **17** | `U_AC_L2L3` | **253** | Tension composée réseau L2-L3 | V |
-| **18** | `U_AC_3` | **246** | Tension simple phase C-N / L3-N | V |
-| **19** | `U_AC_2` | **232** | Tension simple phase B-N / L2-N | V |
-| **20** | `U_AC_L3L1` | **215** | Tension composée réseau L3-L1 | V |
-| **21** | `I_DC` | **214** | Courant continu DC total | A |
-| **22** | `E_DAY` | **214** | Énergie journalière produite | kWh |
-| **23** | `P_AC_1` | **206** | Télémesure Modbus normalisée SunPM | Spécifique |
-| **24** | `P_AC_2` | **185** | Télémesure Modbus normalisée SunPM | Spécifique |
-| **25** | `P_RATED` | **178** | Télémesure Modbus normalisée SunPM | Spécifique |
+| **01** | `P_AC` | **778** | Puissance active totale injectée/consommée | W, kW |
+| **02** | `SERIAL` | **728** | Numéro de série de l'équipement | Chaîne de caractères |
+| **03** | `FREQ` | **609** | Fréquence du réseau électrique | Hz |
+| **04** | `I_AC_3` | **529** | Courant efficace phase C / L3 | A |
+| **05** | `Q_AC` | **520** | Puissance réactive totale | Var, kVar |
+| **06** | `MODEL` | **506** | Modèle ou désignation commerciale de l'appareil | Chaîne de caractères |
+| **07** | `I_AC_1` | **471** | Courant efficace phase A / L1 | A |
+| **08** | `I_AC_2` | **463** | Courant efficace phase B / L2 | A |
+| **09** | `U_AC_L1L2` | **409** | Tension composée réseau L1-L2 | V |
+| **10** | `PF` | **396** | Facteur de puissance global (cos phi) | Sans unité [-1.0 à 1.0] |
+| **11** | `I_AC` | **366** | Télémesure Modbus normalisée SunPM | Spécifique |
+| **12** | `MANUFACTURER` | **357** | Télémesure Modbus normalisée SunPM | Spécifique |
+| **13** | `E_TOT` | **345** | Énergie totale cumulée produite/consommée | kWh, MWh |
+| **14** | `U_AC_3` | **312** | Tension simple phase C-N / L3-N | V |
+| **15** | `U_AC_1` | **302** | Tension simple phase A-N / L1-N | V |
+| **16** | `U_DC` | **302** | Tension bus continu DC | V |
+| **17** | `S_AC` | **287** | Puissance apparente totale | VA, kVA |
+| **18** | `U_AC_L2L3` | **275** | Tension composée réseau L2-L3 | V |
+| **19** | `U_AC_2` | **272** | Tension simple phase B-N / L2-N | V |
+| **20** | `I_DC` | **251** | Courant continu DC total | A |
+| **21** | `U_AC_L3L1` | **234** | Tension composée réseau L3-L1 | V |
+| **22** | `E_DAY` | **234** | Énergie journalière produite | kWh |
+| **23** | `P_RATED` | **211** | Télémesure Modbus normalisée SunPM | Spécifique |
+| **24** | `P_AC_1` | **210** | Télémesure Modbus normalisée SunPM | Spécifique |
+| **25** | `P_AC_2` | **188** | Télémesure Modbus normalisée SunPM | Spécifique |
 
 ---
 
@@ -145,6 +151,6 @@ Toutes les définitions générées répondent aux exigences d'intégrité indus
 
 ## 7. Conclusion & État de Validation
 
-**Validation Globale** : **1472 / 1472 définitions WebdynSunPM certifiées conformes** (0 erreur bloquante, 0 régression). La bibliothèque générée est immédiatement déployable sur les concentrateurs Webdyn et le serveur SunPM.
+**Validation Globale** : **1830 / 1830 définitions WebdynSunPM certifiées conformes** (0 erreur bloquante, 0 régression). La bibliothèque générée est immédiatement déployable sur les concentrateurs Webdyn et le serveur SunPM.
 
 _Rapport généré automatiquement par le module `DefFileGenerator.report_generator`._

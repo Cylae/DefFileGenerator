@@ -904,7 +904,7 @@ class Extractor:
                 return
 
             # Support legacy Excel format (.xls) via xlrd
-            if filepath.lower().endswith(".xls"):
+            if filepath.lower().endswith(".xls") and not zipfile.is_zipfile(filepath):
                 if xlrd is None:
                     raise ExtractionError(
                         "Legacy Excel format (.xls) requires 'xlrd' to be installed."
