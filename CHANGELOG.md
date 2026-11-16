@@ -14,6 +14,17 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+- **100+ Equipment Industrial Multi-Vendor Test Battery (`DefFileGenerator/tests/test_100_equipements_battery.py`)**:
+  - Comprehensive battery of 107 test cases covering 101 distinct industrial equipment models across 50 world manufacturers and all 6 functional categories (Batteries, Loggers, IO Modules, Sensors, Meters, Inverters).
+  - Multi-vendor live document extractions across heterogeneous vendor media: Mars BESS Excel, Mars EMS LC Excel, Solargate Industrial PDF, FoxESS PDF, and Stress Controller XML (>5,000 registers).
+  - Validates total volume (>18,000 registers) and manufacturer diversity (>=35 manufacturers) in 0.20s with standalone Markdown report generation (`docs/audit/BATTERY_100_EQUIPMENTS_REPORT.md`).
+- **ABB PVS 800 Central Inverter Definition Hardening & Verification (`Definitions/INV_ABB_PVS800-57B.csv` & `c:\Users\alexandre.calais\Downloads\PVS800.csv`)**:
+  - Full audit and training on all 4 PVS 800 variants and official ABB Modbus adapter specifications (`PVS800_Work.xlsx`, `PVS800-57B - Manuel firmware(table modbus).pdf`, `PVS800_central_inverters_RevN_EN_lowres_Modbus avec adaptateur.pdf`, and engineer audio/image instructions).
+  - Converted encoding from CP1252 to `utf-8-sig` (resolving fatal `0xB0` degree symbol decode crash on strict UTF-8 readers).
+  - Enforced word-swapped endianness on all 1,003 32-bit registers (872 `U32` -> `U32_W` and 131 `I32` -> `I32_W`) per ABB Modbus adapter architecture.
+  - Mapped canonical SunPM tags (`U_DC`, `I_AC`, `FREQ`, `U_AC_L1L2`, `S_AC`, `P_AC`, `Q_AC`, `PF`, `P_RATED`, `E_TOT`, `E_DAY`, `TEMP_AMB`, `TEMP_INT`, `R_ISO`, `FAULT_CODE`, `cmdPwrPct`, `WMaxLimPct_RmpTms`).
+  - Verified Mode 3 parameter-mapped addressing formula (`256 * Group + 2 * Index - 1`).
+  - Dedicated regression test suite created (`DefFileGenerator/tests/test_abb_pvs800.py`) passing with 100% compliance.
 - **Answer Drives Solargate Solar Inverter Definition (`Definitions/INV_AnswerDrives_Solargate.csv`)**:
   - Full end-to-end extraction from 179-page factory manual `ADSolargateManENHWSW 02-11-09 (1).pdf` (Appendix BB).
   - 288 validated Modbus registers covering holding registers (telemetry: DC bus voltage, AC line currents, voltages, power factor, frequency, active/reactive powers, energy counters) and supervisory coils (trip status, run/stop states, auxiliary protections).
@@ -32,6 +43,10 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   - Hardened negative lookaheads preventing remote commands from intercepting percentage vs. absolute setpoints, phase-to-neutral voltages (`U_AC_1`) from intercepting phase-to-phase voltages (`U_AC_L1L2`), and telemetry tags (`P_AC`, `Q_AC`) from matching command/setpoint variables.
 
 ### Fixed
+- **Knowledge Miner Regex Boundary Overlap (`DefFileGenerator/knowledge_miner.py`)**:
+  - Added word boundary `\b` after `[c3]` in AC Phase C regex `\b(?:phase\s*[c3]|line\s*[c3]|l3\b|ic\b|iac3\b)` to prevent general `Line current` from being misclassified as Phase C (`I_AC_3`) instead of overall AC current (`I_AC`).
+- **ABB PVS800 CP1252 Non-ASCII Decoding (`Definitions/INV_ABB_PVS800-57B.csv`)**:
+  - Re-encoded legacy Windows CP1252 CSV files containing degree symbols (`0xB0` in `°C`) into atomic `utf-8-sig` to prevent fatal decoding crashes in strict UTF-8 readers.
 - **Openpyxl Inflated Worksheet Traversal (`DefFileGenerator/extractor.py`)**:
   - Clamped column traversal to `min(max_c, 100)` when `max_r * max_c > MAX_EXCEL_SHEET_CELLS` to prevent `ExtractionError` on sparse sheets with full-row formatting (e.g. Sungrow BESS protocol workbooks).
 - **Missing Register Name Resilience (`DefFileGenerator/def_gen.py`)**:

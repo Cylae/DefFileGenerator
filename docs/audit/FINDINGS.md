@@ -23,6 +23,7 @@
 | **FIND-019** | MEDIUM | Scalability / Parsing | `DefFileGenerator/extractor.py`, `knowledge_miner.py`, `dataset_knowledge.json` | Openpyxl sparse styled sheets caused runaway max_column dimensions (16384); missing command/battery tags | RESOLVED |
 | **FIND-020** | MEDIUM | Enhancement / Learning | `DefFileGenerator/knowledge_miner.py`, `main.py`, `dataset_knowledge.json` | Multi-format omni-corpus training engine across all 252 manufacturers (6,125 files, 1.28M registers) | RESOLVED |
 | **FIND-021** | HIGH | Robustness / Extraction | `DefFileGenerator/extractor.py`, `def_gen.py`, `knowledge_miner.py`, `main.py` | Answer Drives Solargate PDF Modbus extraction: header right-shift, column coalescence, function name disambiguation & tag hardening | RESOLVED |
+| **FIND-022** | HIGH | Correctness / Endianness & Encoding | `Definitions/INV_ABB_PVS800-57B.csv`, `knowledge_miner.py`, `dataset_knowledge.json`, tests | ABB PVS 800 definition CP1252 decode error, word-swap on 32-bit types, Mode 3 addressing, regex boundary bug, and 100+ equipment battery | RESOLVED |
 
 ---
 
@@ -260,4 +261,24 @@
   6. Guarded dummy/reserved registers (`Reserved`, `NotUsed`, `Nu`) against receiving telemetry tags in `infer_sunpm_tag`.
   7. Generated, validated, and cataloged `Definitions/INV_AnswerDrives_Solargate.csv` (288 registers, 0 errors, 0 warnings).
   8. Created comprehensive test suite `test_answer_drives_solargate.py` (8 automated tests) covering live extraction, validation, telemetry tags, and CLI execution.
+- **Status**: RESOLVED
+
+### FIND-022: ABB PVS 800 Central Inverter Definition Corrections & 100+ Equipment Industrial Battery
+- **Severity**: HIGH
+- **Component**: `Definitions/INV_ABB_PVS800-57B.csv`, `DefFileGenerator/knowledge_miner.py`, `DefFileGenerator/dataset_knowledge.json`, `DefFileGenerator/tests/test_abb_pvs800.py`, `DefFileGenerator/tests/test_100_equipements_battery.py`
+- **Trigger**: User directive to train on provided ABB PVS800 files (`PVS800.csv`, `PVS80082.csv`, `PVS80082 (1).csv`, `PVS80082_AUDIO_IMAGE.csv`) and run a 100+ equipment test battery across diverse hardware.
+- **Root Cause**:
+  1. `PVS800.csv` was encoded in CP1252 with `0xB0` (degree symbol in `°C`), causing fatal `UnicodeDecodeError` when opened by strict UTF-8 readers.
+  2. Modbus word order for ABB drives: 32-bit parameters (`U32` and `I32`) require word swap (`_W`) according to official ABB Modbus adapter specifications, but 872 unsigned and 131 signed registers were typed as raw `U32` and `I32`.
+  3. Addressing formula: ABB supports Mode 0 (`20000 + 200*Group + 2*Index`) and Mode 3 (`256*Group + 2*Index - 1`). The user's audio and image instructions confirmed Mode 3 as the live standard.
+  4. In `DefFileGenerator/knowledge_miner.py`, regex `\b(?:phase\s*[c3]|line\s*[c3]|l3\b|ic\b|iac3\b)` lacked word boundary `\b` after `[c3]`, so `"line current"` matched `"line c"` and was falsely tagged as `I_AC_3` instead of `I_AC`.
+  5. Missing SunPM canonical tag mappings for `Grid voltage` (`U_AC_L1L2`) and `Control board temperature` (`TEMP_INT`).
+- **Remediation**:
+  1. Converted `PVS800.csv` and `INV_ABB_PVS800-57B.csv` to strict `utf-8-sig` encoding.
+  2. Updated all 872 `U32` to `U32_W` and all 131 `I32` to `I32_W`.
+  3. Fixed regex boundary defect in `knowledge_miner.py` and enriched canonical SunPM mappings (`U_DC`, `I_AC`, `FREQ`, `U_AC_L1L2`, `S_AC`, `P_AC`, `Q_AC`, `PF`, `P_RATED`, `E_TOT`, `E_DAY`, `TEMP_AMB`, `TEMP_INT`, `R_ISO`, `FAULT_CODE`, `cmdPwrPct`, `WMaxLimPct_RmpTms`).
+  4. Updated `DefFileGenerator/dataset_knowledge.json` with learned PVS800 parameters.
+  5. Validated definition via `Generator.validate_csv_detailed`: 1,053 registers, 0 errors.
+  6. Implemented dedicated test suite `DefFileGenerator/tests/test_abb_pvs800.py` (6 tests, all passing).
+  7. Built massive 100+ equipment industrial test battery `DefFileGenerator/tests/test_100_equipements_battery.py` covering 101 equipment models, 50 manufacturers, 6 categories, and 5 live extractions (107 automated pytest tests, all passing, report generated at `docs/audit/BATTERY_100_EQUIPMENTS_REPORT.md`).
 - **Status**: RESOLVED

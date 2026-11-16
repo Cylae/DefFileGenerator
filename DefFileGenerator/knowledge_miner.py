@@ -1119,12 +1119,15 @@ def infer_sunpm_tag(
         ):
             return "U_AC_L3L1"
         # Phase to Neutral: U_AC_1, U_AC_2, U_AC_3
-        if re.search(r"\b(?:l1-n|l1_n|phase\s*[a1]|line\s*[a1]|l1\b|ua\b)", n_lower):
+        if re.search(r"\b(?:l1-n|l1_n|phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ua)\b", n_lower):
             return "U_AC_1"
-        if re.search(r"\b(?:l2-n|l2_n|phase\s*[b2]|line\s*[b2]|l2\b|ub\b)", n_lower):
+        if re.search(r"\b(?:l2-n|l2_n|phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ub)\b", n_lower):
             return "U_AC_2"
-        if re.search(r"\b(?:l3-n|l3_n|phase\s*[c3]|line\s*[c3]|l3\b|uc\b)", n_lower):
+        if re.search(r"\b(?:l3-n|l3_n|phase\s*[c3]|line\s*[c3])\b|\b(?:l3|uc)\b", n_lower):
             return "U_AC_3"
+        # Total / Line-to-Line / Grid AC Voltage
+        if re.search(r"\b(?:grid\s+voltage|tension\s+r[eé]seau|ac\s+voltage|vac|uac)\b", n_lower):
+            return "U_AC_L1L2"
 
     # 2. AC Current (I_AC_1, I_AC_2, I_AC_3, I_AC)
     if any(k in n_lower for k in ("current", "courant", "i_ac", "iac")) and not any(
@@ -1143,11 +1146,11 @@ def infer_sunpm_tag(
             "bat",
         )
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|l1\b|ia\b|iac1\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ia|iac1)\b", n_lower):
             return "I_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2]|l2\b|ib\b|iac2\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ib|iac2)\b", n_lower):
             return "I_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3]|l3\b|ic\b|iac3\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|ic|iac3)\b", n_lower):
             return "I_AC_3"
         if (
             re.search(
@@ -1169,11 +1172,11 @@ def infer_sunpm_tag(
             "qac",
         )
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|l1\b|qac1\b|reactivepow1)", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|qac1|reactivepow1)\b", n_lower):
             return "Q_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2]|l2\b|qac2\b|reactivepow2)", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|qac2|reactivepow2)\b", n_lower):
             return "Q_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3]|l3\b|qac3\b|reactivepow3)", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|qac3|reactivepow3)\b", n_lower):
             return "Q_AC_3"
         return "Q_AC"
 
@@ -1181,14 +1184,26 @@ def infer_sunpm_tag(
     if re.search(
         r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow|\bp_total\b|\btotal_power\b",
         n_lower,
+    ) or (
+        equipment_type == "Inverter"
+        and n_lower.strip() in ("power", "power %", "active power", "output power")
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|l1\b|pac1\b|activepow1)", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|pac1|activepow1)\b", n_lower):
             return "P_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2]|l2\b|pac2\b|activepow2)", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|pac2|activepow2)\b", n_lower):
             return "P_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3]|l3\b|pac3\b|activepow3)", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|pac3|activepow3)\b", n_lower):
             return "P_AC_3"
         return "P_AC"
+
+    # 4b. Nominal / Rated Power
+    if re.search(r"\b(?:nominal|rated)\s+(?:active\s+)?power\b", n_lower) or n_lower.strip() in (
+        "nominal power",
+        "rated power",
+        "p_rated",
+        "prated",
+    ):
+        return "P_RATED"
 
     # 5. Apparent Power (S_AC_1, S_AC_2, S_AC_3, S_AC)
     if any(k in n_lower for k in ("apparent power", "puissance apparente")) or re.search(
@@ -1298,7 +1313,16 @@ def infer_sunpm_tag(
             return "TEMP"
         if any(
             k in n_lower
-            for k in ("internal", "interne", "cabinet", "inverter", "heatsink", "radiateur")
+            for k in (
+                "internal",
+                "interne",
+                "cabinet",
+                "inverter",
+                "heatsink",
+                "radiateur",
+                "control board",
+                "board",
+            )
         ):
             return "TEMP_INT"
 
