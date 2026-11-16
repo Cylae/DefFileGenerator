@@ -54,7 +54,7 @@ Modbus;Inverter;Kaco;NX1-NX3_Series;;;;;;;
 53;4;31375;I16;;Power factor;PF;0.010000;0.000000;;4
 54;4;31378;U16;;Error message;;1.000000;0.000000;;4
 55;4;31379;U16;;Warning message;;1.000000;0.000000;;4
-56;3;40201;U16;;Remote switch command_ 0 _ POWER OFF 1 _ POWER ON;CMD_ON;1.000000;0.000000;;4
+56;3;40201;U16;;Remote switch command_ 0 _ POWER OFF 1 _ POWER ON;CMD_ON;1.000000;0.000000;;1
 57;3;41001;U16;;RTC_Year;;1.000000;0.000000;;4
 58;3;41002;U16;;RTC_Month;;1.000000;0.000000;;4
 59;3;41003;U16;;RTC_Day;;1.000000;0.000000;;4
@@ -117,7 +117,7 @@ Modbus;Inverter;Kaco;NX1-NX3_Series;;;;;;;
 116;3;45255;U16;;DCI protect time;;1.000000;0.000000;ms;4
 117;3;45401;U16;;Load rate of first connection to grid;;1.000000;0.000000;%Pn/min;4
 118;3;45402;U16;;Load rate of re-connection to grid;;1.000000;0.000000;%Pn/min;4
-119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.010000;0.000000;%Pn;4
+119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.010000;0.000000;%Pn;1
 120;3;45404;U16;;Increase rate of active power;;0.010000;0.000000;%Pn/min;4
 121;3;45405;U16;;Decrease rate of active power;;0.010000;0.000000;%Pn/min;4
 122;3;45408;U16;;Over frequency reduce power mode;;1.000000;0.000000;;4
@@ -180,4 +180,4 @@ Modbus;Inverter;Kaco;NX1-NX3_Series;;;;;;;
 179;3;45526;U16;;Lock in power_for Q(U) curve_;;0.010000;0.000000;%Pn;4
 180;3;45527;U16;;Lock outpower_for Q(U) curve_;;0.010000;0.000000;%Pn;4
 181;3;45606;U16;;LVRT Trigger voltage;;0.010000;0.000000;%Un;4
-182;3;45609;U16;;LVRT active power limit mode;CMD_P_AC_SET_ABS;1.000000;0.000000;;4
+182;3;45609;U16;;LVRT active power limit mode;CMD_P_AC_SET_ABS;1.000000;0.000000;;1

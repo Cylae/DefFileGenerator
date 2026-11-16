@@ -6,7 +6,7 @@ modbusRTU;Other;SolarLog;SOLARLOG_PRO380_WORK;;;;;;;
 5;4;4176;U16;;Protocol Version;;1.0;0.0;;4
 6;4;4180;U16;;Software Version;;1.0;0.0;;4
 7;4;4184;U16;;Hardware Version;;1.0;0.0;;4
-8;4;4192;U16;;Meter Amps;;1.0;0.0;;4
+8;4;4192;U16;;Meter Amps;I_AC;1.0;0.0;;4
 9;4;4194;U16;;CT rate;;1.0;0.0;;4
 10;4;4198;U16;;S0 output rate;;1.0;0.0;;4
 11;4;4218;U16;;Combined Code;;1.0;0.0;;4
@@ -16,7 +16,7 @@ modbusRTU;Other;SolarLog;SOLARLOG_PRO380_WORK;;;;;;;
 15;4;8204;U16;;L2 Voltage;U_AC_2;1.0;0.0;;8
 16;4;8208;U16;;L3 Voltage;U_AC_3;1.0;0.0;;8
 17;4;8224;U16;;Grid Frequency;FREQ;1.0;0.0;;8
-18;4;8288;U16;;Current;;1.0;0.0;;4
+18;4;8288;U16;;Current;I_DC;1.0;0.0;;4
 19;4;8296;U16;;L1 Current;I_AC_1;1.0;0.0;;4
 20;4;8300;U16;;L2 Current;I_AC_2;1.0;0.0;;4
 21;4;8304;U16;;L3 Current;I_AC_3;1.0;0.0;;4
@@ -146,4 +146,3 @@ modbusRTU;Other;SolarLog;SOLARLOG_PRO380_WORK;;;;;;;
 145;4;24644;U16;;L1 Reverse Reactive Energy;;1.0;0.0;;4
 146;4;24646;U16;;L2 Reverse Reactive Energy;;1.0;0.0;;4
 147;4;24648;U16;;L3 Reverse Reactive Energy;;1.0;0.0;;4
-148;4;24648;U16;;Tariff;;1.0;0.0;;4

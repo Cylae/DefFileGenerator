@@ -40,8 +40,8 @@ modbus;Battery;HUAWEI;LUNA2000C;;;;;;;
 39;3;30095;U16;;CO Concentration 5;;1;0;ppm;4
 40;3;30096;U16;;CO Concentration 6;;1;0;ppm;4
 41;3;30104;U16;;H2 Concentration 1;;1;0;ppm;4
-42;3;30118;U16;;Alarm 1;;1;0;;9
-43;3;30119;U16;;Alarm 2;;1;0;;9
+42;3;30118;U16;;Alarm 1;ALARM_1;1;0;;9
+43;3;30119;U16;;Alarm 2;ALARM_2;1;0;;9
 44;3;30120;U16;;Alarm 3 Rectifiers;;1;0;;9
 45;3;30122;U16;;Alarm TH Sensors;;1;0;;9
 46;3;30123;U16;;Alarm Air Conditioners;;1;0;;9
@@ -70,7 +70,7 @@ modbus;Battery;HUAWEI;LUNA2000C;;;;;;;
 69;3;30310;I32;;Phase C Active Power;P_AC_3;0.001;0;kW;4
 70;3;30312;I32;;Active Power;;0.001;0;kW;4
 71;3;30314;I32;;Reactive Power;Q_AC;0.001;0;kVar;4
-72;3;30316;I16;;Power Factor;CMD_PF;0.001;0;;1
+72;3;30316;I16;;Power Factor;PF;0.001;0;;4
 73;3;30500;U16;;Total Output Voltage Of Rectifiers;;0.1;0;V;4
 74;3;30501;U16;;Total Output Current Of Rectifiers;I_AC;0.1;0;A;4
 75;3;30502;U16;;Quantity Of Rectifiers;;1;0;;0
@@ -132,7 +132,7 @@ modbus;Battery;HUAWEI;LUNA2000C;;;;;;;
 131;3;31562;I16;;DCDC Bus Side Voltage 1C;;0.1;0;V;4
 132;3;31563;I16;;DCDC Battery Side Current 1C;;0.1;0;A;4
 133;3;31564;I16;;DCDC Bus Side Current 1C;;0.1;0;A;4
-134;3;31565;I16;;DCDC Cabinet Temperature;;0.1;0;C;4
+134;3;31565;I16;;DCDC Cabinet Temperature;TEMP_INT;0.1;0;C;4
 135;3;31571;U16;;DCDC ISO Insulation Resistance 1C;R_ISO;0.001;0;M/Ohm;4
 136;3;31614;U16;;DCDC Running Status 1C;;1;0;;9
 137;3;39002;U16;;DCDC 1 ISO Insulation Resistance;;0.001;0;M/Ohm;4

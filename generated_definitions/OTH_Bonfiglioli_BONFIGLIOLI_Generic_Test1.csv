@@ -1,8 +1,8 @@
 modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic_Test1;;;;;;;
 1;4;3841;U16;;Active Power;P_AC;1.0;0.0;kW;4
 2;4;3842;U16;;DC-Link Voltage;U_DC;1.0;0.0;V;4
-3;4;3843;U16;;Heat Sink Temperature;TEMP_INT;1.0;0.0;°C;4
-4;4;3844;U16;;Inside Temperature;;1.0;0.0;°C;4
+3;4;3843;U16;;Heat Sink Temperature;SERIAL;1.0;0.0;°C;4
+4;4;3844;U16;;Inside Temperature;TEMP_INT;1.0;0.0;°C;4
 5;4;3845;U16;;Current Error;;1.0;0.0;;4
 6;4;3846;U16;;Power supply current;;1.0;0.0;A;4
 7;4;3847;U16;;Power supply voltage;;1.0;0.0;V;4

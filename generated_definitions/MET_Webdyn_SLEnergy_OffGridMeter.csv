@@ -23,7 +23,7 @@ modbus;OffGridMeter;SL Energy;OffGridMeter;;;;;;;
 22;3;11106;I16;;EPS_Power_Factor;;0.001;0;;4
 23;3;11107;I16;;EPS_Daily_Generation;;0.1;0;kWh;4
 24;3;11108;I32;;EPS_Cumulative_Generation;;0.1;0;kWh;4
-25;3;11110;I16;;R-phase off-grid DCV;;0.1;0;mV;4
+25;3;11110;I16;;R-phase off-grid DCV;U_DC;0.1;0;mV;4
 26;3;11111;I16;;S-phase off-grid DCV;;0.1;0;mV;4
 27;3;11112;I16;;T-phase off-grid DCV;;0.1;0;mV;4
 28;3;11113;I32;;Off-grid power generation in the current month;;0.1;0;kWh;4

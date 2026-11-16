@@ -66,8 +66,8 @@ ModbusRTU;Inverter;Cyberpower;1-Phase;;;;;;;
 65;3;4187;U16;;AC Freq (average);FREQ;0.01;0.0;HZ;4
 66;3;4188;U16;;AC Volt (redundant) (average);;0.1;0.0;V;4
 67;3;4189;U16;;AC Freq (redundant) (average);;0.01;0.0;Hz;4
-68;3;4190;U16;;Temperature (Ambient);TEMP_AMB;1.0;0.0;K;4
-69;3;4191;U16;;Temperature (Heatsink);TEMP_INT;1.0;0.0;K;4
+68;3;4190;U16;;Temperature (Ambient);TEMP_INT;1.0;0.0;K;4
+69;3;4191;U16;;Temperature (Heatsink);;1.0;0.0;K;4
 70;3;4192;U16;;Input1 Volt;;0.1;0.0;V;4
 71;3;4193;U16;;Input1 Curr;;0.01;0.0;A;4
 72;3;4194;U16;;Input1 Watt;;1.0;0.0;W;4

@@ -44,7 +44,7 @@ ModbusRTU;Inverter;ABB;Ultra;;;;;;;
 43;4;182;F32;;Input Headsink Temperature Module x;;1.0;0.0;°C;4
 44;4;184;F32;;Output Headsink Temperature Module x;;1.0;0.0;°C;4
 45;4;186;F32;;Input Air Temperature Module x;;1.0;0.0;°C;4
-46;4;188;F32;;Grid Voltage Phase R Module x;;1.0;0.0;V;4
+46;4;188;F32;;Grid Voltage Phase R Module x;U_AC_L1L2;1.0;0.0;V;4
 47;4;190;F32;;Grid Voltage Phase S Module x;;1.0;0.0;V;4
 48;4;192;F32;;Grid Voltage Phase T Module x;;1.0;0.0;V;4
 49;4;194;F32;;Grid Current Phase R Module x;;1.0;0.0;A;4

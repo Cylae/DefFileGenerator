@@ -1,8 +1,8 @@
 modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic;;;;;;;
 1;4;3841;U16;;Active Power;P_AC;1.0;0.0;kW;4
 2;4;3842;U16;;DC-Link Voltage;U_DC;1.0;0.0;V;4
-3;4;3843;U16;;Heat Sink Temperature;TEMP_INT;1.0;0.0;°C;4
-4;4;3844;U16;;Inside Temperature;;1.0;0.0;°C;4
+3;4;3843;U16;;Heat Sink Temperature;SERIAL;1.0;0.0;°C;4
+4;4;3844;U16;;Inside Temperature;TEMP_INT;1.0;0.0;°C;4
 5;4;3845;U16;;Current Error;;1.0;0.0;;4
 6;4;3846;U16;;Power supply current;;1.0;0.0;A;4
 7;4;3847;U16;;Power supply voltage;;1.0;0.0;V;4
@@ -52,5 +52,5 @@ modbusRTU;Other;Bonfiglioli;BONFIGLIOLI_Generic;;;;;;;
 51;4;3900;U16;;Power Factor Phase b;PF_2;1.0;0.0;;4
 52;4;3901;U16;;Power Factor Phase c;PF_3;1.0;0.0;;4
 53;4;3902;U16;;Power Factor Total;PF;1.0;0.0;;4
-54;4;3903;U16;;Active current;;1.0;0.0;A;4
+54;4;3903;U16;;Active current;I_AC;1.0;0.0;A;4
 55;4;3904;U16;;Reactive current;;1.0;0.0;A;4

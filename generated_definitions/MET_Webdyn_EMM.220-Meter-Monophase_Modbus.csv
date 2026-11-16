@@ -1,6 +1,6 @@
 ModbusRTU;Meter;Webdyn;EMM220;;;;;;;
 1;4;1;F32;;Line to neutral volts;;1.0;0.0;V;4
-2;4;6;F32;;Current;;1.0;0.0;A;4
+2;4;6;F32;;Current;I_DC;1.0;0.0;A;4
 3;4;12;F32;;Active Power;P_AC;1.0;0.0;W;4
 4;4;18;F32;;Apparent Power;S_AC;1.0;0.0;VA;4
 5;4;24;F32;;Reactive Power;Q_AC;1.0;0.0;VAr;4

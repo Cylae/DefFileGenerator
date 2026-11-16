@@ -10,12 +10,12 @@ modbusRTU;Other;Schneider;SCH_iem3xxx;;;;;;;
 9;4;3005;U16;;reserved_1;;1.0;0.0;;0
 10;4;3007;U16;;reserved_2;;1.0;0.0;;0
 11;4;3009;U16;;Current Avg;;1.0;0.0;A;4
-12;4;3019;U16;;Voltage L1–L2;U_AC_L1L2;1.0;0.0;V;4
-13;4;3021;U16;;Voltage L2–L3;U_AC_L2L3;1.0;0.0;V;4
-14;4;3023;U16;;Voltage L3–L1;U_AC_L3L1;1.0;0.0;V;4
+12;4;3019;U16;;Voltage L1–L2;U_AC_1;1.0;0.0;V;4
+13;4;3021;U16;;Voltage L2–L3;U_AC_2;1.0;0.0;V;4
+14;4;3023;U16;;Voltage L3–L1;;1.0;0.0;V;4
 15;4;3025;U16;;Voltage L–L Avg;;1.0;0.0;V;4
-16;4;3027;U16;;Voltage L1–N;U_AC_1;1.0;0.0;V;4
-17;4;3029;U16;;Voltage L2–N;U_AC_2;1.0;0.0;V;4
+16;4;3027;U16;;Voltage L1–N;;1.0;0.0;V;4
+17;4;3029;U16;;Voltage L2–N;;1.0;0.0;V;4
 18;4;3031;U16;;Voltage L3–N;U_AC_3;1.0;0.0;V;4
 19;4;3033;U16;;reserved_3;;1.0;0.0;;0
 20;4;3035;U16;;Voltage L–N Avg;;1.0;0.0;V;4
@@ -29,31 +29,27 @@ modbusRTU;Other;Schneider;SCH_iem3xxx;;;;;;;
 28;4;3109;U16;;Frequency;FREQ;1.0;0.0;Hz;4
 29;4;3251;U16;;Energy Reset Year;;1.0;0.0;;0
 30;4;3252;U16;;Energy Reset month;;1.0;0.0;;0
-31;4;3252;U16;;Energy Reset day;;1.0;0.0;;0
-32;4;3253;U16;;Energy Reset hour;;1.0;0.0;;0
-33;4;3253;U16;;Energy Reset min;;1.0;0.0;;0
-34;4;3254;U16;;Energy Reset ms;;1.0;0.0;;0
-35;4;3553;U16;;Input Accumulation Reset Year;;1.0;0.0;;0
-36;4;3554;U16;;Input Accumulation Reset month;;1.0;0.0;;0
-37;4;3554;U16;;Input Accumulation Reset day;;1.0;0.0;;0
-38;4;3555;U16;;Input Accumulation Reset hour;;1.0;0.0;;0
-39;4;3555;U16;;Input Accumulation Reset min;;1.0;0.0;;0
-40;4;3556;U16;;Input Accumulation Reset ms;;1.0;0.0;;0
-41;4;4190;U16;;MultiTariffs Energy Active Rate;;1.0;0.0;;0
-42;4;45099;U16;;Total Active Energy Import;E_IMP;1.0;0.0;Wh;4
-43;4;45101;U16;;Total Active Energy Export;E_EXP;1.0;0.0;Wh;4
-44;4;45103;U16;;Total Reactive Energy Import;;1.0;0.0;VARh;4
-45;4;45105;U16;;Total Reactive Energy Export;;1.0;0.0;VARh;4
-46;4;45107;U16;;Partial Active Energy Import;;1.0;0.0;Wh;4
-47;4;45109;U16;;Partial Reactive Energy Import;;1.0;0.0;VARh;4
-48;4;45111;U16;;Active Energy Import Phase 1;;1.0;0.0;Wh;4
-49;4;45113;U16;;Active Energy Import Phase 2;;1.0;0.0;Wh;4
-50;4;45115;U16;;Active Energy Import Phase 3;;1.0;0.0;Wh;4
-51;4;45117;U16;;Input Metering Accumulation;;1.0;0.0;unit;4
-52;4;45119;U16;;Rate A Active Energy Import;;1.0;0.0;Wh;0
-53;4;45121;U16;;Rate B Active Energy Import;;1.0;0.0;Wh;0
-54;4;45123;U16;;Rate C Active Energy Import;;1.0;0.0;Wh;0
-55;4;45125;U16;;Rate D Active Energy Import;;1.0;0.0;Wh;0
-56;4;45127;U16;;Reactive Energy Import Phase A;;1.0;0.0;KVARH;4
-57;4;45129;U16;;Reactive Energy Import Phase B;;1.0;0.0;KVARH;4
-58;4;45131;U16;;Reactive Energy Import Phase C;;1.0;0.0;KVARH;4
+31;4;3253;U16;;Energy Reset hour;;1.0;0.0;;0
+32;4;3254;U16;;Energy Reset ms;;1.0;0.0;;0
+33;4;3553;U16;;Input Accumulation Reset Year;;1.0;0.0;;0
+34;4;3554;U16;;Input Accumulation Reset month;;1.0;0.0;;0
+35;4;3555;U16;;Input Accumulation Reset hour;;1.0;0.0;;0
+36;4;3556;U16;;Input Accumulation Reset ms;;1.0;0.0;;0
+37;4;4190;U16;;MultiTariffs Energy Active Rate;;1.0;0.0;;0
+38;4;45099;U16;;Total Active Energy Import;E_IMP;1.0;0.0;Wh;4
+39;4;45101;U16;;Total Active Energy Export;E_EXP;1.0;0.0;Wh;4
+40;4;45103;U16;;Total Reactive Energy Import;;1.0;0.0;VARh;4
+41;4;45105;U16;;Total Reactive Energy Export;;1.0;0.0;VARh;4
+42;4;45107;U16;;Partial Active Energy Import;;1.0;0.0;Wh;4
+43;4;45109;U16;;Partial Reactive Energy Import;;1.0;0.0;VARh;4
+44;4;45111;U16;;Active Energy Import Phase 1;;1.0;0.0;Wh;4
+45;4;45113;U16;;Active Energy Import Phase 2;;1.0;0.0;Wh;4
+46;4;45115;U16;;Active Energy Import Phase 3;;1.0;0.0;Wh;4
+47;4;45117;U16;;Input Metering Accumulation;;1.0;0.0;unit;4
+48;4;45119;U16;;Rate A Active Energy Import;;1.0;0.0;Wh;0
+49;4;45121;U16;;Rate B Active Energy Import;;1.0;0.0;Wh;0
+50;4;45123;U16;;Rate C Active Energy Import;;1.0;0.0;Wh;0
+51;4;45125;U16;;Rate D Active Energy Import;;1.0;0.0;Wh;0
+52;4;45127;U16;;Reactive Energy Import Phase A;;1.0;0.0;KVARH;4
+53;4;45129;U16;;Reactive Energy Import Phase B;;1.0;0.0;KVARH;4
+54;4;45131;U16;;Reactive Energy Import Phase C;;1.0;0.0;KVARH;4

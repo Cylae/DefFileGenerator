@@ -34,7 +34,7 @@ Modbus;Battery;ATMOCE;GENERIC;;;;;;;
 33;3;60182;U32;;Daily Electricity Sell Volume;;0.010000;0.000000;kWh;4
 34;3;60184;U64;;Cumulative Electricity Purchase Volume;;0.010000;0.000000;kWh;4
 35;3;60188;U32;;Daily Electricity Purchase Volume;;0.010000;0.000000;kWh;4
-36;3;60200;U32;;Energy Storage Maximum Charging Power Limit;CMD_P_AC_SET_ABS;0.010000;0.000000;kW;4
+36;3;60200;U32;;Energy Storage Maximum Charging Power Limit;CMD_P_AC_SET_ABS;0.010000;0.000000;kW;1
 37;3;60202;U32;;Energy Storage Maximum Discharging Power Limit;;0.010000;0.000000;kW;4
 38;3;60301;U16;;Remote Communication Control Mode;;1.000000;0.000000;;4
 39;3;60302;U32;;Active Power Fixed Value Regulation;;0.001000;0.000000;kW;4

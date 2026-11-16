@@ -11,7 +11,7 @@ modbus;Meter;Schneider;IEM2050;;;;;;;
 10;3;2017;U16;;Number of wires;;1;0;;4
 11;3;2018;U16;;Power system;;1;0;;4
 12;3;2019;U16;;Nominal frequency;FREQ;1;0;Hz;4
-13;3;2022;F32;;Meter Amps;;1;0;A;4
+13;3;2022;F32;;Meter Amps;I_AC;1;0;A;4
 14;3;5252;U16;;Requested command;;1;0;;4
 15;3;5253;U16;;Reserved command;;1;0;;4
 16;3;5377;U16;;Command status;;1;0;;4
@@ -22,8 +22,8 @@ modbus;Meter;Schneider;IEM2050;;;;;;;
 21;3;6505;U16;;RS-485 communication parity;;1;0;;4
 22;3;6506;F32;;SO output rate;;1;0;;4
 23;3;6508;U16;;Combined Code;;1;0;;4
-24;3;3002;F32;;Current;;1;0;A;4
-25;3;3030;F32;;Voltage;;1;0;V;4
+24;3;3002;F32;;Current;I_DC;1;0;A;4
+25;3;3030;F32;;Voltage;U_DC;1;0;V;4
 26;3;3056;F32;;Active power;P_AC;1;0;kW;4
 27;3;3070;F32;;Reactive power;Q_AC;1;0;kVAr;4
 28;3;3078;F32;;Apparent power;S_AC;1;0;kVA;4

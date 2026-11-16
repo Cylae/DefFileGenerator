@@ -1,4 +1,4 @@
-﻿modbusTCP;BESS;Mars Energy;MarsLocalController EMS V7.0;;;;;;;
+modbusTCP;BESS;Mars Energy;MarsLocalController EMS V7.0;;;;;;;
 1;4;0;U16;;LC Overview - Measurement point version number;;1.000000;0.000000;;4
 2;4;1;U16;;LC Overview - PCS Number;;1.000000;0.000000;;4
 3;4;2;U16;;LC Overview - Bank Number;;1.000000;0.000000;;4

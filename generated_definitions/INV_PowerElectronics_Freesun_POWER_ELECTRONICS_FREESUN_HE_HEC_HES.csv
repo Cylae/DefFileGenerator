@@ -24,7 +24,7 @@ Modbus;Inverter;Power Electronics;FREESUN_HE_HEC_HES;1;;;;;;
 23;3;1128;U16;;Input Power;P_DC;0.1;0;kW;4
 24;3;1129;U16;;Last Input Voltage;;1;0;Vdc;4
 25;3;1145;U16;;Inverter Power;P_AC;0.1;0;kW;4
-26;3;1146;U16;;Inverter Voltage;;1;0;V;4
+26;3;1146;U16;;Inverter Voltage;U_DC;1;0;V;4
 27;3;1147;U16;;Micro Software Version;;0.01;0;;1
 28;3;1148;U16;;DSP Software Version;;0.01;0;;1
 29;3;1149;U16;;Display Software Version;;0.01;0;;1
@@ -96,7 +96,7 @@ Modbus;Inverter;Power Electronics;FREESUN_HE_HEC_HES;1;;;;;;
 95;3;1301;U16;;DI Feedback AC Relay;;1;0;;4
 96;3;1302;U16;;DI Feedback CS Relay;;1;0;;4
 97;3;1303;U16;;AC Overvoltage Protector Status;;1;0;;4
-98;3;1304;U16;;DC Overvoltage Protector Status;U_DC;1;0;;4
+98;3;1304;U16;;DC Overvoltage Protector Status;;1;0;;4
 99;3;1330;U16;;2nd Fault;;1;0;;4
 100;3;1331;U16;;1st Fault;;1;0;;4
 101;3;4000;U32;;Global Energy;;0.0001;0;MWh;4

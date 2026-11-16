@@ -13,7 +13,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 12;4;31302;U16;;Grid rated frequency;FREQ;0.01;0;Hz;4
 13;4;31303;U32;;E-Today of inverter;E_DAY;0.1;0;kWh;4
 14;4;31305;U32;;E-Total of inverter;E_TOT;0.1;0;kWh;4
-15;4;31307;U32;;H-Total;;1;0;H;4
+15;4;31307;U32;;H-Total;U_DC;1;0;H;4
 16;4;31309;U16;;Device State: 0 = Wait 1 = Normal 2 = Fault 4 = Checking;;1;0;;4
 17;4;31310;U16;;Connect time;;1;0;s;4
 18;4;31311;I16;;Air temperature;;0.1;0;C;4
@@ -21,7 +21,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 20;4;31313;I16;;Inverter V phase temperature;;0.1;0;C;4
 21;4;31314;I16;;Inverter W phase temperature;;0.1;0;C;4
 22;4;31315;I16;;Boost temperature;;0.1;0;C;4
-23;4;31317;U16;;Bus voltage;U_DC;0.1;0;V;4
+23;4;31317;U16;;Bus voltage;;0.1;0;V;4
 24;4;31319;U16;;PV1 voltage;U_DC_STRING_1;0.1;0;V;4
 25;4;31320;U16;;PV1 current;I_DC_STRING_1;0.01;0;A;4
 26;4;31321;U16;;PV2 voltage;U_DC_STRING_2;0.1;0;V;4
@@ -78,7 +78,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 77;3;45203;U16;;Overvoltage protection value of the first grid connection_1;;0.1;0;V;4
 78;3;45204;U16;;Overvoltage protection value of the first grid connection_2;;0.01;0;Hz;4
 79;3;45205;U16;;Underfrequency protection value for first grid connection;;0.01;0;Hz;4
-80;3;45206;U16;;Grid Voltage High Limit3;;0.1;0;V;4
+80;3;45206;U16;;Grid Voltage High Limit3;U_AC_L1L2;0.1;0;V;4
 81;3;45207;U32;;Grid Voltage High Limit Time3;;1;0;ms;4
 82;3;45209;U16;;Grid Voltage High Limit2;;0.1;0;V;4
 83;3;45210;U32;;Grid Voltage High Limit Time2;;1;0;ms;4
@@ -117,7 +117,7 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 116;3;45255;U16;;DCI protect time;;1;0;ms;4
 117;3;45401;U16;;Load rate of first connection to grid;;1;0;%Pn/min;4
 118;3;45402;U16;;Load rate of re-connection to grid;;1;0;%Pn/min;4
-119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.01;0;%Pn;1
+119;3;45403;U16;;Active Power Set;;0.01;0;%Pn;4
 120;3;45404;U16;;Increase rate of active power;;0.01;0;%Pn/min;4
 121;3;45405;U16;;Decrease rate of active power;;0.01;0;%Pn/min;4
 122;3;45408;U16;;Over frequency reduce power mode? 0 = None 1 = Fixed reduction ratio, non ? hysteresis 2 = Fixed reduction ratio, hysteresis 3 = Not fixed reduction ratio, non ? hysteresis 4 = Not fixed reduction ratio, hysteresis;;1;0;;4
@@ -155,9 +155,9 @@ ModbusRTU;Inverter;Kaco;NX1-NX3 Series;;;;;;;
 154;3;45450;U16;;Speed of under voltage recover to Pn;;0.01;0;%Pn/min;4
 155;3;45451;I16;;Pav;;0.01;0;%Pn;4
 156;3;45452;U16;;DRMs Pval;;0.01;0;%Pn;4
-157;3;45501;U16;;Reactive power control mode? 0 = None 1 = Fixed power factor 2 = cos phi(P) curve 3 = Fixed Q value 4 = Fixed Q value of AU DRMs 5 = Linear Q(U) curve 6 = Hysteresis Q(U) curve;Q_AC_1;1;0;;4
+157;3;45501;U16;;Reactive power control mode? 0 = None 1 = Fixed power factor 2 = cos phi(P) curve 3 = Fixed Q value 4 = Fixed Q value of AU DRMs 5 = Linear Q(U) curve 6 = Hysteresis Q(U) curve;;1;0;;4
 158;3;45502;U16;;Time constant of reactive power curve;;1;0;s;4
-159;3;45503;I16;;Power factor_1;CMD_PF;0.0001;0;;1
+159;3;45503;I16;;Power factor_1;;0.0001;0;;4
 160;3;45504;U16;;cos phi(P) curve? Active power of the first point;;0.01;0;%Pn;4
 161;3;45505;I16;;cos phi(P) curve? cos phi of the first point;;0.0001;0;;4
 162;3;45506;U16;;cos phi(P) curve? Active power of the second point;;0.01;0;%Pn;4

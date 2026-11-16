@@ -24,7 +24,7 @@ modbusRTU;Inverter;PowerElectronics Freesun;INV_POWER_ELECTRONICS_FREESUN_;;;;;;
 23;4;1128;U16;;Input Power;P_DC;1.0;0.0;kW;4
 24;4;1129;U16;;Last Input Voltage;;1.0;0.0;Vdc;4
 25;4;1145;U16;;Inverter Power;P_AC;1.0;0.0;kW;4
-26;4;1146;U16;;Inverter Voltage;;1.0;0.0;V;4
+26;4;1146;U16;;Inverter Voltage;U_DC;1.0;0.0;V;4
 27;4;1147;U16;;Micro Software Version;;1.0;0.0;;1
 28;4;1148;U16;;DSP Software Version;;1.0;0.0;;1
 29;4;1149;U16;;Display Software Version;;1.0;0.0;;1
@@ -96,7 +96,7 @@ modbusRTU;Inverter;PowerElectronics Freesun;INV_POWER_ELECTRONICS_FREESUN_;;;;;;
 95;4;1301;U16;;DI Feedback AC Relay;;1.0;0.0;;4
 96;4;1302;U16;;DI Feedback CS Relay;;1.0;0.0;;4
 97;4;1303;U16;;AC Overvoltage Protector Status;;1.0;0.0;;4
-98;4;1304;U16;;DC Overvoltage Protector Status;U_DC;1.0;0.0;;4
+98;4;1304;U16;;DC Overvoltage Protector Status;;1.0;0.0;;4
 99;4;1330;U16;;2nd Fault;;1.0;0.0;;4
 100;4;1331;U16;;1st Fault;;1.0;0.0;;4
 101;4;4000;U16;;Global Energy;;1.0;0.0;MWh;4

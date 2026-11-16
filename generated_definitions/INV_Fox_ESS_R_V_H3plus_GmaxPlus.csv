@@ -3,7 +3,7 @@ modbusRTU;Inverter;FOX_ESS;R_V_H3plus;;;;;;;
 2;3;40099;I16;;SF_Voltage;;1;0;;1
 3;3;40100;I16;;SF_Freq;;1;0;;1
 4;3;40101;I16;;SF_APower;;1;0;;1
-5;3;40102;I16;;SF_PF;;1;0;;1
+5;3;40102;I16;;SF_PF;PF;1;0;;1
 6;3;40103;I16;;SF_App_Power;;1;0;;1
 7;3;40104;I16;;SF_R_Power;;1;0;;1
 8;3;40105;I16;;SF_Energy;;1;0;;1
@@ -22,7 +22,7 @@ modbusRTU;Inverter;FOX_ESS;R_V_H3plus;;;;;;;
 21;3;40078;I16;;Active_Power_AC;;1;0;W;4
 22;3;40079;I16;;Apparent_Power;S_AC;1;0;VA;4
 23;3;40080;I16;;Reactive_Power;Q_AC;1;0;VAr;4
-24;3;40081;I16;;Power_Factor;PF;1;0;;4
+24;3;40081;I16;;Power_Factor;;1;0;;4
 25;3;40082;U32;;Grid_Frequency;FREQ;1;0;Hz;4
 26;3;40084;U64;;Total_Energy_Injected;E_TOT;1;0;Wh;4
 27;3;40088;I16;;Heat_Sink_Temp;;1;0;C;4

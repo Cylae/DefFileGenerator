@@ -12,7 +12,7 @@ modbusRTU;Other;Webdyn INDIA;MODBUS_Hitachi_50_40;;;;;;;
 11;4;1166;U16;;Current_Output_R;;1.0;0.0;;4
 12;4;1167;U16;;ActivePower_Output_R;;1.0;0.0;;4
 13;4;1168;U16;;ReactivePower_Output_R;;1.0;0.0;;4
-14;4;1169;U16;;PowerFactor_Output_R;;1.0;0.0;;4
+14;4;1169;U16;;PowerFactor_Output_R;PF;1.0;0.0;;4
 15;4;1170;U16;;Current_PCC_R;;1.0;0.0;;4
 16;4;1171;U16;;ActivePower_PCC_R;;1.0;0.0;;4
 17;4;1172;U16;;ReactivePower_PCC_R;;1.0;0.0;;4
@@ -39,8 +39,8 @@ modbusRTU;Other;Webdyn INDIA;MODBUS_Hitachi_50_40;;;;;;;
 38;4;1193;U16;;ActivePower_PCC_T;;1.0;0.0;;4
 39;4;1194;U16;;ReactivePower_PCC_T;;1.0;0.0;;4
 40;4;1195;U16;;PowerFactor_PCC_T;;1.0;0.0;;4
-41;4;4357;U16;;Enable;;1.0;0.0;;4
-42;4;4358;U16;;Active power reduction;;1.0;0.0;;4
+41;4;4357;U16;;Enable;ctrl;1.0;0.0;;4
+42;4;4358;U16;;Active power reduction;cmd;1.0;0.0;;4
 43;4;1412;U16;;Voltage_PV1;U_DC_STRING_1;1.0;0.0;;4
 44;4;1413;U16;;Current_PV1;I_DC_STRING_1;1.0;0.0;;4
 45;4;1414;U16;;Power_PV1;;1.0;0.0;;4

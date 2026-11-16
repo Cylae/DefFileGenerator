@@ -64,4 +64,4 @@ Modbus;Meter;IME;CE4DF3DTMID;;;;;;;
 63;3;20697;U32;;Run hour meter (TOT);;1;0;s;4
 64;3;20699;U32;;Run hour meter (Tariff 1);;1;0;s;4
 65;3;20701;U32;;Run hour meter (Tariff 2);;1;0;s;4
-66;2;4096_0_1;Bits;;Current active tariff;;1;0;;4
+66;2;4096_0_1;BITS;;Current active tariff;;1;0;;4

@@ -10,7 +10,7 @@ ModbusRTU;Inverter;Solax;X1-X3 Generic;;;;;;;
 9;4;5;U16;;PvCurrent1;;0.1;0;A;4
 10;4;6;U16;;PvCurrent2;;0.1;0;A;4
 11;4;7;U16;;GridFrequency(X1);FREQ;0.01;0;Hz;4
-12;4;8;I16;;Temperature;TEMP;1;0;Degr.celsius;4
+12;4;8;I16;;Temperature;TEMP_INT;1;0;Degr.celsius;4
 13;4;9;U16;;RunMode;;1;0;;4
 14;4;10;U16;;Powerdc1;P_DC;1;0;W;4
 15;4;11;U16;;Powerdc2;;1;0;W;4
@@ -121,7 +121,7 @@ ModbusRTU;Inverter;Solax;X1-X3 Generic;;;;;;;
 120;4;193;I16;;GridReactivePower_R_Meter;;1;0;Var;4
 121;4;194;I16;;GridReactivePower_S_Meter;;1;0;Var;4
 122;4;195;I16;;GridReactivePower_T_Meter;;1;0;Var;4
-123;4;196;I16;;GridPowerFactor_Total_Meter;;0.01;0;;4
+123;4;196;I16;;GridPowerFactor_Total_Meter;PF;0.01;0;;4
 124;4;197;I16;;GridPowerFactor_R_Meter;;0.01;0;;4
 125;4;198;I16;;GridPowerFactor_S_Meter;;0.01;0;;4
 126;4;199;I16;;GridPowerFactor_T_Meter;;0.01;0;;4

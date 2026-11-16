@@ -58,9 +58,9 @@ ModbusRTU;Other;Inverter;HopeWind;;;;;;;
 57;3;40364;U16;;Grid AB line voltage;U_AC_L1L2;1.0;0.0;;4
 58;3;40365;U16;;Grid BC line voltage;U_AC_L2L3;1.0;0.0;;4
 59;3;40366;U16;;Grid CA line voltage;U_AC_L3L1;1.0;0.0;;4
-60;3;40367;U16;;Grid A-phase current (Ia);I_AC_1;1.0;0.0;;4
-61;3;40368;U16;;Grid B-phase current (Ib);I_AC_2;1.0;0.0;;4
-62;3;40369;U16;;Grid C-phase current (Ic);I_AC_3;1.0;0.0;;4
+60;3;40367;U16;;Grid A-phase current (Ia);I_AC_3;1.0;0.0;;4
+61;3;40368;U16;;Grid B-phase current (Ib);;1.0;0.0;;4
+62;3;40369;U16;;Grid C-phase current (Ic);;1.0;0.0;;4
 63;3;40370;U16;;Grid frequency;FREQ;1.0;0.0;;4
 64;3;40371;U16;;AC active power;P_AC;1.0;0.0;;4
 65;3;40372;U16;;AC reactive power;Q_AC;1.0;0.0;;4

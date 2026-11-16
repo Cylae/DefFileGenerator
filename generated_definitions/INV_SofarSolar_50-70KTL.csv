@@ -101,9 +101,9 @@ Modbus;Inverter;SofarSolar;50-70KTL;1;;;;;;
 100;3;4147;U16;;Class 2 DCI protection value;;1.000000;0.000000;mA;4
 101;3;4148;U16;;Trigger time for class 2 DCI protection;;10.000000;0.000000;ms;4
 102;3;4149;U16;;DCI injection test value;;1.000000;0.000000;mA;4
-103;3;4160;U16;;Enabled register for active_remote on_off control;CMD_P_ENA;1.000000;0.000000;;4
-104;3;4161;U16;;Percentage of active power output;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
-105;3;4162;U16;;Remote on_off (0x55 on _ 0x66 off);CMD_ON;1.000000;0.000000;;4
+103;3;4160;U16;;Enabled register for active_remote on_off control;CMD_P_ENA;1.000000;0.000000;;1
+104;3;4161;U16;;Percentage of active power output;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;1
+105;3;4162;U16;;Remote on_off (0x55 on _ 0x66 off);CMD_ON;1.000000;0.000000;;1
 106;3;4163;U16;;Staring point for power derate cause by grid voltage;;0.100000;0.000000;V;4
 107;3;4164;U16;;Ending point for power derate cause by grid voltage;;0.100000;0.000000;V;4
 108;3;4176;U16;;Enable _ Working mode selection register;;1.000000;0.000000;;4

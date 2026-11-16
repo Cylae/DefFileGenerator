@@ -61,22 +61,22 @@ Modbus;Meter;ABB;M2M_Meter;;;;;;;
 60;3;4256;U32;;Active Energy from pulse input CH1;;100.000000;0.000000;Wh;4
 61;3;4258;U32;;Reactive Energy from pulse input CH2;;100.000000;0.000000;Varh;4
 62;3;4260;U32;;Current threshold for timer 2 activation;;1.000000;0.000000;mA;4
-63;3;4262;U32;;Three-phase Apparent Energy;;100.000000;0.000000;VAh ;4
-64;3;4264;U32;;Apparent Energy Line 1;;100.000000;0.000000;VAh ;4
-65;3;4266;U32;;Apparent Energy Line 2;;100.000000;0.000000;VAh ;4
-66;3;4268;U32;;Apparent Energy Line 3;;100.000000;0.000000;VAh ;4
+63;3;4262;U32;;Three-phase Apparent Energy;;100.000000;0.000000;VAh;4
+64;3;4264;U32;;Apparent Energy Line 1;;100.000000;0.000000;VAh;4
+65;3;4266;U32;;Apparent Energy Line 2;;100.000000;0.000000;VAh;4
+66;3;4268;U32;;Apparent Energy Line 3;;100.000000;0.000000;VAh;4
 67;3;4270;U32;;Generated three-phase Active Energy;;100.000000;0.000000;Wh;4
 68;3;4272;U32;;Generated Active Energy Line 1;;100.000000;0.000000;Wh;4
 69;3;4274;U32;;Generated Active Energy Line 2;;100.000000;0.000000;Wh;4
 70;3;4276;U32;;Generated Active Energy Line 3;;100.000000;0.000000;Wh;4
-71;3;4278;U32;;Generated three-phase Reactive Energy;;100.000000;0.000000;Varh ;4
-72;3;4280;U32;;Generated Reactive Energy Line 1;;100.000000;0.000000;Varh ;4
-73;3;4282;U32;;Generated Reactive Energy Line 2;;100.000000;0.000000;Varh ;4
-74;3;4284;U32;;Generated Reactive Energy Line 3;;100.000000;0.000000;Varh ;4
-75;3;4286;U32;;Generated three-phase Apparent Energy;;100.000000;0.000000;VAh ;4
-76;3;4288;U32;;Generated Apparent Energy Line 1;;100.000000;0.000000;VAh ;4
-77;3;4290;U32;;Generated Apparent Energy Line 2;;100.000000;0.000000;VAh ;4
-78;3;4292;U32;;Generated Apparent Energy Line 3;;100.000000;0.000000;VAh ;4
+71;3;4278;U32;;Generated three-phase Reactive Energy;;100.000000;0.000000;Varh;4
+72;3;4280;U32;;Generated Reactive Energy Line 1;;100.000000;0.000000;Varh;4
+73;3;4282;U32;;Generated Reactive Energy Line 2;;100.000000;0.000000;Varh;4
+74;3;4284;U32;;Generated Reactive Energy Line 3;;100.000000;0.000000;Varh;4
+75;3;4286;U32;;Generated three-phase Apparent Energy;;100.000000;0.000000;VAh;4
+76;3;4288;U32;;Generated Apparent Energy Line 1;;100.000000;0.000000;VAh;4
+77;3;4290;U32;;Generated Apparent Energy Line 2;;100.000000;0.000000;VAh;4
+78;3;4292;U32;;Generated Apparent Energy Line 3;;100.000000;0.000000;VAh;4
 79;3;4512;U32;;Current Transform. ratio;;1.000000;0.000000;Units (range 1-2000);4
 80;3;4514;U32;;Voltage Transform. ratio;;1.000000;0.000000;Units (range 1-600);4
 81;3;4516;U32;;Output pulses weight;;1.000000;0.000000;Units (range 1-4);4

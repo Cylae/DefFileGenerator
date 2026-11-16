@@ -23,7 +23,7 @@ ModbusRTU;Inverter;Huawei;2KTL-3KTL-4KTL-5KTL;;;;;;;
 22;3;32022;I16;;23  PV4 Voltage;U_DC_STRING_4;0.1;0.0;V;4
 23;3;32023;I16;;24  PV4 Current;I_DC_STRING_4;0.01;0.0;A;4
 24;3;32064;I32;;41  Input power;;0.001;0.0;kW;4
-25;3;32066;U16;;42 Grid Voltage;;0.1;0.0;V;4
+25;3;32066;U16;;42 Grid Voltage;U_AC_L1L2;0.1;0.0;V;4
 26;3;32072;I32;;48  Grid Current;;0.001;0.0;A;4
 27;3;32078;I32;;51  Active power peak of current day;;0.001;0.0;kW;4
 28;3;32080;I32;;52  Active power;;0.001;0.0;kW;4

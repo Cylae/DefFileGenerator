@@ -1,7 +1,7 @@
 modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
-1;4;30001;U16;;Phase 1 line to neutral volts;;1.0;0.0;V;4
-2;4;30003;U16;;Phase 2 line to neutral volts;;1.0;0.0;V;4
-3;4;30005;U16;;Phase 3 line to neutral volts;;1.0;0.0;V;4
+1;4;30001;U16;;Phase 1 line to neutral volts;U_AC_1;1.0;0.0;V;4
+2;4;30003;U16;;Phase 2 line to neutral volts;U_AC_2;1.0;0.0;V;4
+3;4;30005;U16;;Phase 3 line to neutral volts;U_AC_3;1.0;0.0;V;4
 4;4;30007;U16;;Phase 1 current;I_AC_1;1.0;0.0;A;4
 5;4;30009;U16;;Phase 2 current;I_AC_2;1.0;0.0;A;4
 6;4;30011;U16;;Phase 3 current;I_AC_3;1.0;0.0;A;4
@@ -53,9 +53,9 @@ modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
 52;4;30195;U16;;Nature of L1 load / Resistive =1 , inductive=2 , capacitive=3);;1.0;0.0;;4
 53;4;30197;U16;;Nature of L2 load / Resistive =1 , inductive=2  , capacitive=3 );;1.0;0.0;;4
 54;4;30199;U16;;Nature of L3 load / Resistive =1 , inductive=2  , capacitive=3 );;1.0;0.0;;4
-55;4;30201;U16;;Line 1 to Line 2 volts;;1.0;0.0;V;4
-56;4;30203;U16;;Line 2 to Line 3 volts;;1.0;0.0;V;4
-57;4;30205;U16;;Line 3 to Line 1 volts;;1.0;0.0;V;4
+55;4;30201;U16;;Line 1 to Line 2 volts;U_AC_L1L2;1.0;0.0;V;4
+56;4;30203;U16;;Line 2 to Line 3 volts;U_AC_L2L3;1.0;0.0;V;4
+57;4;30205;U16;;Line 3 to Line 1 volts;U_AC_L3L1;1.0;0.0;V;4
 58;4;30207;U16;;Average line to line volts;;1.0;0.0;V;4
 59;4;30225;U16;;Neutral current;;1.0;0.0;A;4
 60;4;30235;U16;;Phase 1 L/N volts THD;;1.0;0.0;Percent;4
@@ -96,9 +96,9 @@ modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
 95;4;30377;U16;;L1 total kvarh;;1.0;0.0;kVArh;4
 96;4;30379;U16;;L2 total kvarh;;1.0;0.0;kVArh;4
 97;4;30381;U16;;L3 total kvarh;;1.0;0.0;kVArh;4
-98;4;31147;U16;;Voltage Total Harmonic L1;U_AC_1;1.0;0.0;Percent;4
-99;4;31149;U16;;Voltage Total Harmonic L2;U_AC_2;1.0;0.0;Percent;4
-100;4;31151;U16;;Voltage Total Harmonic L3;U_AC_3;1.0;0.0;Percent;4
+98;4;31147;U16;;Voltage Total Harmonic L1;;1.0;0.0;Percent;4
+99;4;31149;U16;;Voltage Total Harmonic L2;;1.0;0.0;Percent;4
+100;4;31151;U16;;Voltage Total Harmonic L3;;1.0;0.0;Percent;4
 101;4;31153;U16;;Current Total Harmonic L1;;1.0;0.0;Percent;4
 102;4;31155;U16;;Current Total Harmonic L2;;1.0;0.0;Percent;4
 103;4;31157;U16;;Current Total Harmonic L3;;1.0;0.0;Percent;4
@@ -118,7 +118,7 @@ modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
 117;4;40049;U16;;PT2;;1.0;0.0;;4
 118;4;40051;U16;;CT1;;1.0;0.0;;4
 119;4;40053;U16;;CT2;;1.0;0.0;;4
-120;4;40057;U16;;Current Direction correction (when the external CT is connected reversely);;1.0;0.0;;4
+120;4;40057;U16;;Current Direction correction (when the external CT is connected reversely);I_AC;1.0;0.0;;4
 121;4;40059;U16;;Automatic Scroll Display Time;;1.0;0.0;;4
 122;4;40061;U16;;Backlit time;;1.0;0.0;;4
 123;4;40087;U16;;Pulse 1 Energy;;1.0;0.0;;4

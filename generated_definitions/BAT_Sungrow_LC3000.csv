@@ -5,7 +5,7 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 4;3;6;U16;;Alarm running;;1;0;;4
 5;3;7;U16;;Standby;;1;0;;4
 6;3;8;U16;;Shutting down;;1;0;;4
-7;3;9;U16;;Shutdown;CMD_OFF;1;0;;4
+7;3;9;U16;;Shutdown;CMD_OFF;1;0;;1
 8;3;10;U16;;Emergency shutdown;;1;0;;4
 9;3;11;U16;;Fault shutdown;;1;0;;4
 10;3;17;U16;;Forbid charge;;1;0;;4
@@ -340,7 +340,7 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 339;3;1235;U16;;CMU-ARM comm fault;;1;0;;4
 340;3;1236;U16;;Temperature rise fault;;1;0;;4
 341;3;1239;U16;;Temperature sensor abnormal fault;;1;0;;4
-342;3;2325;U16;;Power on mode;CMD_ON;1;0;;4
+342;3;2325;U16;;Power on mode;CMD_ON;1;0;;1
 343;3;2326;U16;;Selfcheck mode;;1;0;;4
 344;3;2327;U16;;Working mode;;1;0;;4
 345;3;2328;U16;;Fault mode;;1;0;;4
@@ -559,11 +559,11 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 558;3;33375;U16;;Security version12;;1;0;;4
 559;3;33376;U16;;Network security service on/off feedback;;1;0;;4
 560;3;33565;U16;;System fire status;;1;0;;4
-561;3;33566;I16;;Temperature 1;;1;0; degC;4
-562;3;33567;I16;;Temperature 2;;1;0; degC;4
+561;3;33566;I16;;Temperature 1;;1;0;degC;4
+562;3;33567;I16;;Temperature 2;;1;0;degC;4
 563;3;33568;U16;;Carbon monoxide concentration;;1;0;ppm;4
 564;3;33569;U16;;Hydrogen concentration;;1;0;ppm;4
-565;3;33570;U16;;VOC concentration;;1;0; permille;4
+565;3;33570;U16;;VOC concentration;;1;0;permille;4
 566;3;33571;U16;;Smoke concentration;;1;0;mg/m3;4
 567;3;33572;U16;;Number of composite detector;;1;0;;4
 568;3;33573;U16;;Fault code;;1;0;;4
@@ -574,10 +574,10 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 573;3;33582;U16;;Compressor status;;1;0;;4
 574;3;33584;U16;;Heater running status;;1;0;;4
 575;3;33585;U16;;Fan status;;1;0;;4
-576;3;33586;I16;;Outlet water temperature;;0.1;0; degC;4
-577;3;33587;I16;;Inlet water temperature;;0.1;0; degC;4
+576;3;33586;I16;;Outlet water temperature;;0.1;0;degC;4
+577;3;33587;I16;;Inlet water temperature;;0.1;0;degC;4
 578;3;33588;U16;;Outlet water pressure;;0.01;0;Bar;4
-579;3;33590;I16;;Ambient temperature;;0.1;0; degC;4
+579;3;33590;I16;;Ambient temperature;;0.1;0;degC;4
 580;3;33591;U16;;Other alarm code;;1;0;;4
 581;3;33598;U16;;LCU No.;;1;0;;4
 582;3;33606;U16;;LCU Online flag;;1;0;;4
@@ -598,7 +598,7 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 597;3;33640;U16;;Software version;;1;0;;4
 598;3;33668;U16;;Dehumidifier number;;1;0;;4
 599;3;33669;U16;;Dehumidification status;;1;0;;4
-600;3;33670;I16;;Temperature;TEMP_INT;1;0; degC;4
+600;3;33670;I16;;Temperature;TEMP_INT;1;0;degC;4
 601;3;33671;U16;;Humidity;;1;0;%rh;4
 602;3;33672;U16;;Fan speed;;1;0;RPM;4
 603;3;33673;U16;;Comm status;;1;0;;4
@@ -606,7 +606,7 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 605;3;33675;U16;;Running Status;;1;0;;4
 606;3;33676;U16;;Parts running Status;;1;0;;4
 607;3;33677;U16;;Device  type;MODEL;1;0;;4
-608;3;33678;I16;;Dew point temperature;;1;0; degC;4
+608;3;33678;I16;;Dew point temperature;;1;0;degC;4
 609;3;33679;U16;;Working status;;1;0;;4
 610;3;33680;U16;;Device status;;1;0;;4
 611;3;33681;U16;;Other alarm code;;1;0;;4
@@ -622,8 +622,8 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 621;3;33832;I16;;Max discharge current;;0.1;0;A;4
 622;3;33833;U16;;Max cell voltage;U_CELL_MAX;0.1;0;mV;4
 623;3;33834;U16;;Min cell voltage;U_CELL_MIN;0.1;0;mV;4
-624;3;33835;I16;;Max cell temperature;;0.1;0; degC;4
-625;3;33836;I16;;Min cell temperature;;0.1;0; degC;4
+624;3;33835;I16;;Max cell temperature;;0.1;0;degC;4
+625;3;33836;I16;;Min cell temperature;;0.1;0;degC;4
 626;3;33837;U16;;Valid SOC difference;;0.1;0;%;4
 627;3;33840;U16;;Max cell voltage position(#Rack);;1;0;;4
 628;3;33841;U16;;Max cell voltage position (#BMU);;1;0;;4
@@ -648,8 +648,8 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 647;3;33862;U16;;Total discharge capacity;;0.001;0;kAh;4
 648;3;33863;U16;;System charging/discharging status;;1;0;;4
 649;3;33864;U16;;System SOE;;0.1;0;%;4
-650;3;33865;I16;;Second high cell temperature;;0.1;0; degC;4
-651;3;33866;I16;;Second low cell temperature;;0.1;0; degC;4
+650;3;33865;I16;;Second high cell temperature;;0.1;0;degC;4
+651;3;33866;I16;;Second low cell temperature;;0.1;0;degC;4
 652;3;33867;I16;;Second high cell temperature position (#Rack);;1;0;;4
 653;3;33868;I16;;Second high cell temperature position (#BMU);;1;0;;4
 654;3;33869;I16;;Second high cell temperature position (#Cell);;1;0;;4
@@ -661,7 +661,7 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 660;3;33875;U16;;Discharging cut off voltage(LSB);;0.01;0;V;4
 661;3;33876;U16;;Discharging cut off voltage(MSB);;1;0;;4
 662;3;33877;U16;;Cell voltage difference;;0.1;0;mV;4
-663;3;33878;I16;;Cell temperature difference;;0.1;0; degC;4
+663;3;33878;I16;;Cell temperature difference;;0.1;0;degC;4
 664;3;34541;U16;;Capacity;P_RATED;0.1;0;Ah;4
 665;3;34542;U16;;Voltage;;0.1;0;V;4
 666;3;34543;I16;;Current;;0.1;0;A;4
@@ -676,14 +676,14 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 675;3;34552;U16;;Min cell voltage;;0.1;0;mV;4
 676;3;34553;U16;;Min cell voltage position(#BMU);;1;0;;4
 677;3;34554;U16;;Min cell voltage position(#Cell);;1;0;;4
-678;3;34555;I16;;Max cell temperature;;0.1;0; degC;4
+678;3;34555;I16;;Max cell temperature;;0.1;0;degC;4
 679;3;34556;I16;;Max cell temperature position(#BMU);;1;0;;4
 680;3;34557;I16;;Max cell temperature position(#Cell);;1;0;;4
-681;3;34558;I16;;Min cell temperature;;0.1;0; degC;4
+681;3;34558;I16;;Min cell temperature;;0.1;0;degC;4
 682;3;34559;I16;;Min cell temperature position(#BMU);;1;0;;4
 683;3;34560;I16;;Min cell temperature position(#Cell);;1;0;;4
 684;3;34561;U16;;Average voltage;;0.1;0;mV;4
-685;3;34562;I16;;Average temperature;;0.1;0; degC;4
+685;3;34562;I16;;Average temperature;;0.1;0;degC;4
 686;3;34563;U16;;Positive contactor status;;1;0;;4
 687;3;34565;I16;;Max charge current;;0.1;0;A;4
 688;3;34566;I16;;Max discharge current;;0.1;0;A;4
@@ -713,10 +713,10 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 712;3;34627;U16;;CMU Online flag;;1;0;;4
 713;3;34628;U16;;CMU Can be upgraded flag;;1;0;;4
 714;3;34629;I16;;Power loss protection flag;;1;0;;4
-715;3;34630;I16;;Second high cell temperature;;0.1;0; degC;4
+715;3;34630;I16;;Second high cell temperature;;0.1;0;degC;4
 716;3;34631;I16;;Second high cell temperature position(#BMU);;1;0;;4
 717;3;34632;I16;;Second high cell temperature position(#Cell);;1;0;;4
-718;3;34633;I16;;Second low cell temperature;;0.1;0; degC;4
+718;3;34633;I16;;Second low cell temperature;;0.1;0;degC;4
 719;3;34634;I16;;Second low cell temperature position(#BMU);;1;0;;4
 720;3;34635;I16;;Second low cell temperature position(#Cell);;1;0;;4
 721;3;34636;U16;;Balance status;;1;0;;4
@@ -725,14 +725,14 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 724;3;34642;U16;;2#Cell voltage;;0.1;0;mV;4
 725;3;35139;U16;;499#Cell voltage;;0.1;0;mV;4
 726;3;35140;U16;;500#Cell voltage;;0.1;0;mV;4
-727;3;35141;I16;;1#Cell temperature;;0.1;0; degC;4
-728;3;35142;I16;;2#Cell temperature;;0.1;0; degC;4
-729;3;35639;I16;;499#Cell temperature;;0.1;0; degC;4
-730;3;35640;I16;;500#Cell temperature;;0.1;0; degC;4
-731;3;35641;I16;;1#Onboard temperature;;0.1;0; degC;4
-732;3;35642;I16;;2#Onboard temperature;;0.1;0; degC;4
-733;3;35739;I16;;99#Onboard temperature;;0.1;0; degC;4
-734;3;35740;I16;;100#Onboard temperature;;0.1;0; degC;4
+727;3;35141;I16;;1#Cell temperature;;0.1;0;degC;4
+728;3;35142;I16;;2#Cell temperature;;0.1;0;degC;4
+729;3;35639;I16;;499#Cell temperature;;0.1;0;degC;4
+730;3;35640;I16;;500#Cell temperature;;0.1;0;degC;4
+731;3;35641;I16;;1#Onboard temperature;;0.1;0;degC;4
+732;3;35642;I16;;2#Onboard temperature;;0.1;0;degC;4
+733;3;35739;I16;;99#Onboard temperature;;0.1;0;degC;4
+734;3;35740;I16;;100#Onboard temperature;;0.1;0;degC;4
 735;3;40001;U16;;Input node 1 name;;1;0;;4
 736;3;40002;U16;;Input node 2 name;;1;0;;4
 737;3;40003;U16;;Input node 3 name;;1;0;;4
@@ -804,7 +804,7 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 803;3;62010;I16;;Total power factor;;0.001;0;;4
 804;3;62011;U16;;Grid frequency;;0.01;0;Hz;4
 805;3;62013;U16;;Bus voltage;;0.1;0;V;4
-806;3;62014;I16;;Internal air temperature;;0.1;0; degC;4
+806;3;62014;I16;;Internal air temperature;;0.1;0;degC;4
 807;3;62016;U16;;A-B line voltage;;0.1;0;V;4
 808;3;62017;U16;;B-C line voltage;;0.1;0;V;4
 809;3;62018;U16;;C-A line voltage;;0.1;0;V;4
@@ -907,11 +907,11 @@ modbus;Battery;Sungrow;LC3000;;;;;;;
 906;3;65208;U16;;Network security service on/ off;;1;0;;4
 907;3;65209;U16;;The LC can be updated to the same version or a previous version;;1;0;;4
 908;3;65241;U16;;High outlet water pressure set point;;0.01;0;Bar;4
-909;3;65243;I16;;Running max temperature1;;1;0; degC;4
-910;3;65244;I16;;Running max temperature2;;1;0; degC;4
-911;3;65245;I16;;Running min temperature1;;1;0; degC;4
-912;3;65246;I16;;Running min temperature2;;1;0; degC;4
-913;3;65248;I16;;Non-running max temperature1;;1;0; degC;4
-914;3;65249;I16;;Non-running max temperature2;;1;0; degC;4
-915;3;65250;I16;;Non-running min temperature1;;1;0; degC;4
-916;3;65251;I16;;Non-running min temperature2;;1;0; degC;4
+909;3;65243;I16;;Running max temperature1;;1;0;degC;4
+910;3;65244;I16;;Running max temperature2;;1;0;degC;4
+911;3;65245;I16;;Running min temperature1;;1;0;degC;4
+912;3;65246;I16;;Running min temperature2;;1;0;degC;4
+913;3;65248;I16;;Non-running max temperature1;;1;0;degC;4
+914;3;65249;I16;;Non-running max temperature2;;1;0;degC;4
+915;3;65250;I16;;Non-running min temperature1;;1;0;degC;4
+916;3;65251;I16;;Non-running min temperature2;;1;0;degC;4

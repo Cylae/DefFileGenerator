@@ -43,9 +43,9 @@ modbus;meter;Zelec;EM35TCPURS;;;;;;;
 42;4;106;F32;;Maximum neutral current demand;;1;0;A;4
 43;4;108;F32;;Total system reactive power demand;Q_AC;1;0;VAr;4
 44;4;110;F32;;Maximum total system reactive power demand;;1;0;VAr;4
-45;4;200;F32;;Line 1 to Line 2 volts;;1;0;V;4
-46;4;202;F32;;Line 2 to Line 3 volts;;1;0;V;4
-47;4;204;F32;;Line 3 to Line 1 volts;;1;0;V;4
+45;4;200;F32;;Line 1 to Line 2 volts;U_AC_L1L2;1;0;V;4
+46;4;202;F32;;Line 2 to Line 3 volts;U_AC_L2L3;1;0;V;4
+47;4;204;F32;;Line 3 to Line 1 volts;U_AC_L3L1;1;0;V;4
 48;4;206;F32;;Average line to line volts;;1;0;V;4
 49;4;224;F32;;Neutral current;;1;0;A;4
 50;4;234;F32;;Phase 1 L/N volts THD;;1;0;%;4

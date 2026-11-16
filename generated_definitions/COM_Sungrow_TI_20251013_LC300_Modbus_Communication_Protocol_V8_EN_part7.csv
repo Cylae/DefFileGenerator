@@ -1,0 +1,143 @@
+modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p7;;;;;;;
+1;4;32000;U16;;See Reference;;1;0.0;/;4
+2;4;32001;U16;;None;;0;0.0;V;4
+3;4;32002;U16;;None;;0;0.0;A;4
+4;4;32003;U16;;None;;0;0.0;%;4
+5;4;32004;U16;;None;;0;0.0;%;4
+6;4;32005;U16;;None;;1;0.0;%;4
+7;4;32006;U16;;None;;0;0.0;%;4
+8;4;32007;U16;;None;;0;0.0;%;4
+9;4;32008;U16;;None;;0;0.0;A;4
+10;4;32009;U16;;None;;0;0.0;A;4
+11;4;32010;U16;;None;;1;0.0;V;4
+12;4;32011;U16;;None;;1;0.0;V;4
+13;4;32012;U16;;None;;0;0.0;mV;4
+14;4;32013;U16;;None;;0;0.0;mV;4
+15;4;32014;U16;;None;;0;0.0;MWh;4
+16;4;32015;U16;;None;;0;0.0;MWh;4
+17;4;32016;U16;;None;;0;0.0;kAh;4
+18;4;32017;U16;;None;;0;0.0;kAh;4
+19;4;32018;U16;;None;;0;0.0;℃;4
+20;4;32019;U16;;None;;0;0.0;℃;4
+21;4;32020;U16;;None;;1;0.0;/;4
+22;4;32021;U16;;None;;1;0.0;/;4
+23;4;32022;U16;;None;;0;0.0;/;4
+24;4;32023;U16;;None;;1;0.0;/;4
+25;4;32024;U16;;None;;1;0.0;/;4
+26;4;32025;U16;;None;;1;0.0;/;4
+27;4;32026;U16;;None;;1;0.0;/;4
+28;4;32027;U16;;None;;1;0.0;/;4
+29;4;32028;U16;;None;;1;0.0;/;4
+30;4;32029;U16;;"High byte: Max cell voltage position BMU ID
+Low byte: Max cell voltage position CELL ID";;1;0.0;/;4
+31;4;32030;U16;;"High byte: Max cell voltage position BMU ID
+Low byte: Max cell voltage position CELL ID";;1;0.0;/;4
+32;4;32031;U16;;"High byte: Max cell temperature position BMU ID
+Low byte: Max cell temperature position CELL ID";TEMP_CELL;1;0.0;/;4
+33;4;32032;U16;;"High byte: Max cell temperature position BMU ID
+Low byte: Max cell temperature position CELL ID";;1;0.0;/;4
+34;4;32033;U16;;See reference;;1;0.0;/;4
+35;4;32034;U16;;None;;1.0;0.0;None;4
+36;4;32035;U16;;See reference;;1;0.0;/;4
+37;4;32036;U16;;None;;1.0;0.0;None;4
+38;4;32037;U16;;See reference;;1;0.0;/;4
+39;4;32038;U16;;None;;1.0;0.0;None;4
+40;4;32039;U16;;None;;0;0.0;℃;4
+41;4;32040;U16;;None;;0;0.0;℃;4
+42;4;32041;U16;;None;;1;0.0;/;4
+43;4;32042;U16;;"High Byte: Second high cell temperature location BMU ID 
+Low Byte: Second high cell temperature position CELL ID";;1;0.0;/;4
+44;4;32043;U16;;None;;1;0.0;/;4
+45;4;32044;U16;;"High Byte: Second low cell temperature position BMU ID 
+Low Byte: Second low cell temperature position CELL ID";;1;0.0;/;4
+46;4;32045;U16;;None;;0;0.0;V;4
+47;4;32046;U16;;None;;1.0;0.0;None;4
+48;4;32047;U16;;None;;0;0.0;V;4
+49;4;32048;U16;;None;;1.0;0.0;None;4
+50;4;32049;U16;;None;;0;0.0;mV;4
+51;4;32050;U16;;None;;0;0.0;℃;4
+52;4;32051;U16;;0： Automatic control mode；1：Cooling Mode；2：Heating Mode；3：Pump Cycle；4：Stop Mode.;;1;0.0;/;4
+53;4;32052;U16;;Percentage of water pump speed. 0 for Stop, and any number greater than 0 for Running.;;1;0.0;%;4
+54;4;32053;U16;;0：Stop；1：Run;;1;0.0;/;4
+55;4;32054;U16;;None;;1.0;0.0;/;4
+56;4;32055;U16;;0：Stop；1：Run;;1;0.0;/;4
+57;4;32056;U16;;0：Stop；1：Run;;1;0.0;/;4
+58;4;32057;U16;;None;;0;0.0;℃;4
+59;4;32058;U16;;None;;0;0.0;℃;4
+60;4;32059;U16;;None;;0;0.0;Bar;4
+61;4;32060;U16;;None;;1.0;0.0;/;4
+62;4;32061;U16;;None;;0;0.0;℃;4
+63;4;32062;U16;;See Reference;;1;0.0;/;4
+64;4;32063;U16;;None;;1.0;0.0;/;4
+65;4;32069;U16;;None;;1.0;0.0;None;4
+66;4;32070;U16;;"U16 type data is converted to binary data, and the high and low bits are converted to ASCII code characters and then displayed on the page.
+(W-ST-xxxxx)";;1.0;0.0;/;4
+67;4;32077;U16;;None;;1.0;0.0;None;4
+68;4;32078;U16;;0：Offline；1：Online;;1.0;0.0;/;4
+69;4;32079;U16;;0：abnormal； 1：normal;;1.0;0.0;/;4
+70;4;32088;U16;;None;;1.0;0.0;/;4
+71;4;32089;U16;;"U16 type data is converted to binary data, and the high and low bits are converted to ASCII code characters and then displayed on the page.
+(KS200-B_121_240808_0126)";;1.0;0.0;/;4
+72;4;32090;U16;;None;;1.0;0.0;None;4
+73;4;32091;U16;;None;;1.0;0.0;None;4
+74;4;32092;U16;;None;;1.0;0.0;None;4
+75;4;32093;U16;;None;;1.0;0.0;None;4
+76;4;32094;U16;;None;;1.0;0.0;None;4
+77;4;32095;U16;;None;;1.0;0.0;None;4
+78;4;32096;U16;;None;;1.0;0.0;None;4
+79;4;32097;U16;;None;;1.0;0.0;None;4
+80;4;32098;U16;;None;;1.0;0.0;None;4
+81;4;32099;U16;;None;;1.0;0.0;None;4
+82;4;32100;U16;;None;;1.0;0.0;None;4
+83;4;32101;U16;;None;;1;0.0;/;4
+84;4;32102;U16;;0：Normal；2：Fire Alarm;;1;0.0;/;9
+85;4;32103;U16;;None;;1;0.0;℃;4
+86;4;32104;U16;;None;;1;0.0;℃;4
+87;4;32105;U16;;None;;1;0.0;ppm;4
+88;4;32106;U16;;None;;1;0.0;‰;4
+89;4;32107;U16;;None;;1;0.0;ppm;4
+90;4;32108;U16;;None;;1;0.0;mg/m³;4
+91;4;32109;U16;;0: Normal 1: Voltage Source Fault 2: Combustible Gas Sensor Fault 3: Temperature Sensor Fault 4: System Clock Source Fault 5: Calibration Data Fault 6: Aerosol Sensor Fault 7: Carbon Monoxide Sensor Fault 8: Communication Fault 9: Selector Valve Fault 10: Hydrogen Sensor Fault 11: Channel A Power Supply Output Fault 12: Channel B Power Supply Output Fault 13: 5V Power Supply Fault;U_DC;1;0.0;/;9
+92;4;32110;U16;;0：Offline；1：Online;;1;0.0;/;4
+93;4;32111;U16;;"Bit0:shield the fire alarm
+Bit2: shield the fault
+By bit, 0 indicates unshield and 1 indicates shield";;1;0.0;/;9
+94;4;32120;U16;;None;;1.0;0.0;/;4
+95;4;32121;U16;;None;;1;0.0;/;4
+96;4;32122;U16;;None;;1;0.0;%;4
+97;4;32123;U16;;1：Normal；2：Warm up after power on；3：Disabled；8：Alarm；12：calibration；16：Fault;CMD_ON;1.0;0.0;/;1
+98;4;32124;U16;;See Reference;;1.0;0.0;/;4
+99;4;32125;U16;;0：Offline；1：Online;;1;0.0;/;4
+100;4;32131;U16;;None;;1.0;0.0;/;4
+101;4;32142;U16;;None;;1;0.0;/;4
+102;4;32143;U16;;0x00：Self-check；0x01：Standby；0x02：Running；0x03：Fault；0x04：Fault Stop；0x05：Upgrading；0x06：Testing;;1.0;0.0;/;9
+103;4;32144;U16;;0x00：Opened；0x01：Closed；0x02：Fault;;1.0;0.0;/;9
+104;4;32145;U16;;0x00：Opened；0x01：Closed；0x02：Fault;;1.0;0.0;/;9
+105;4;32146;U16;;0x00：Opened；0x01：Closed；0x02：Fault;;1;0.0;/;9
+106;4;32147;U16;;None;;1.0;0.0;mA;4
+107;4;32148;U16;;"0x00：Communication abnorma
+0x01：Communication normal";;1;0.0;/;4
+108;4;32149;U16;;None;;1.0;0.0;/;4
+109;4;32150;U16;;"0：Not self-check status
+ 1：Self-checking";;1.0;0.0;/;9
+110;4;32151;U16;;None;;1.0;0.0;/;4
+111;4;32182;U16;;None;;1;0.0;/;4
+112;4;32183;U16;;"1：Dehumidifying
+0：Not dehumidifying";;1.0;0.0;/;4
+113;4;32184;U16;;See Reference;;1.0;0.0;/;4
+114;4;32185;U16;;None;;1.0;0.0;℃;4
+115;4;32186;U16;;None;;1.0;0.0;%rh;4
+116;4;32187;U16;;None;;1.0;0.0;RPM;4
+117;4;32188;U16;;"0x00：Communication abnorma
+0x01：Communication normal";;1.0;0.0;/;4
+118;4;32189;U16;;0: idle, 1: ready to start, 2: running, 3: delayed shutdown, 4: shutdown fault;;1.0;0.0;/;9
+119;4;32190;U16;;0:close, 1:open  bit1 Semiconductor chilling plate, bit2 fan, bit4 Total alarm information;;1.0;0.0;/;9
+120;4;32191;U16;;0:DBS, 1 :TF, 2:ADS, 3:Standard;;1.0;0.0;/;4
+121;4;32192;U16;;None;;1.0;0.0;℃;4
+122;4;32193;U16;;"ADS dehumidifier: bit0 Compressor running status, bit1 Fan running status, bit2 Defrost status
+ Standard dehumidifier: 0：not dehumidifying ；1：ready to dehumidify；2：dehumidifying；3：defrosting";;1.0;0.0;/;9
+123;4;32194;U16;;0：normal； 1：device alarm；2：device fault;;1.0;0.0;/;9
+124;4;32195;U16;;Each manufacturer defines itself;MANUFACTURER;1.0;0.0;/;4
+125;4;32196;U16;;None;;1.0;0.0;None;4
+126;4;32197;U16;;None;;1.0;0.0;/;4
+127;4;32198;U16;;None;;1.0;0.0;/;4

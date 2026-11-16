@@ -14,7 +14,7 @@ modbusRTU;Inverter;SofarSolar;INV_SOFARSOLAR_1-40KTL;;;;;;;
 13;4;12;U16;;Active power output;P_AC;1.0;0.0;kW;4
 14;4;13;U16;;Reactive power output;Q_AC;1.0;0.0;kVar;4
 15;4;14;U16;;Grid frequency;FREQ;1.0;0.0;Hz;4
-16;4;15;U16;;A-phase voltage;;1.0;0.0;V;4
+16;4;15;U16;;A-phase voltage;U_DC;1.0;0.0;V;4
 17;4;16;U16;;A-phase current;I_AC_3;1.0;0.0;A;4
 18;4;17;U16;;B-phase voltage;;1.0;0.0;V;4
 19;4;18;U16;;B-phase current;;1.0;0.0;A;4
@@ -26,7 +26,7 @@ modbusRTU;Inverter;SofarSolar;INV_SOFARSOLAR_1-40KTL;;;;;;;
 25;4;26;U16;;The day generation time;;1.0;0.0;minute;4
 26;4;27;U16;;Inverter module temperature;TEMP_CELL;1.0;0.0;C;4
 27;4;28;U16;;Inverter inner temperature;TEMP_INT;1.0;0.0;C;4
-28;4;29;U16;;Inverter bus voltage;U_DC;1.0;0.0;V;4
+28;4;29;U16;;Inverter bus voltage;;1.0;0.0;V;4
 29;4;30;U16;;PV1 input voltage sampling by CPU Slave;;1.0;0.0;V;4
 30;4;31;U16;;PV2 input voltage sampling by CPU Slave;;1.0;0.0;V;4
 31;4;32;U16;;Count-down time;;1.0;0.0;;4
@@ -48,13 +48,13 @@ modbusRTU;Inverter;SofarSolar;INV_SOFARSOLAR_1-40KTL;;;;;;;
 47;4;258;U16;;Fault 3_1;;1.0;0.0;;4
 48;4;259;U16;;Fault 4_1;;1.0;0.0;;4
 49;4;260;U16;;Fault 5_1;;1.0;0.0;;4
-50;4;261;U16;;PV1 Voltage_1;U_DC_MPPT_1;1.0;0.0;V;4
+50;4;261;U16;;PV1 Voltage_1;;1.0;0.0;V;4
 51;4;262;U16;;PV1 Current_1;;1.0;0.0;A;4
-52;4;263;U16;;PV2 Voltage_1;U_DC_MPPT_2;1.0;0.0;V;4
+52;4;263;U16;;PV2 Voltage_1;;1.0;0.0;V;4
 53;4;264;U16;;PV2 Current_1;;1.0;0.0;A;4
-54;4;265;U16;;PV3 Voltage_1;U_DC_MPPT_3;1.0;0.0;V;4
+54;4;265;U16;;PV3 Voltage_1;U_DC_STRING_3;1.0;0.0;V;4
 55;4;266;U16;;PV3 Current_1;I_DC_STRING_3;1.0;0.0;A;4
-56;4;267;U16;;PV4 Voltage_1;U_DC_MPPT_4;1.0;0.0;V;4
+56;4;267;U16;;PV4 Voltage_1;U_DC_STRING_4;1.0;0.0;V;4
 57;4;268;U16;;PV4 Current_1;I_DC_STRING_4;1.0;0.0;A;4
 58;4;269;U16;;PV5 Voltage_1;U_DC_STRING_5;1.0;0.0;V;4
 59;4;270;U16;;PV5 Current_1;I_DC_STRING_5;1.0;0.0;A;4
@@ -72,7 +72,7 @@ modbusRTU;Inverter;SofarSolar;INV_SOFARSOLAR_1-40KTL;;;;;;;
 71;4;4101;U16;;Under voltage protection value before grid connection;;1.0;0.0;V;4
 72;4;4102;U16;;Over frequency protection value before grid connection;;1.0;0.0;Hz;4
 73;4;4103;U16;;Under frequency protection value before grid connection;;1.0;0.0;Hz;4
-74;4;4112;U16;;Enabled register for grid voltage protection;;1.0;0.0;;4
+74;4;4112;U16;;Enabled register for grid voltage protection;U_AC_L1L2;1.0;0.0;;4
 75;4;4113;U16;;Class 1 over voltage protection value;;1.0;0.0;V;4
 76;4;4114;U16;;Trigger time for class 1 over voltage protection;;1.0;0.0;ms;4
 77;4;4115;U16;;Class 2 over voltage protection value;;1.0;0.0;mA;4

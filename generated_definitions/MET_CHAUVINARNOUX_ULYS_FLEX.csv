@@ -125,7 +125,7 @@ modbus;Meter;Chauvin_Arnoux;Ulys_Flex;0;;;;;;
 124;3;5224;F32;;Reactive Engy Cap Bal Sys;;1;0;varh;4
 125;3;5226;F32;;Reactive Engy Ind Bal Sys;;1;0;varh;4
 126;3;5228;F32;;Reactive Energy Balance Sys;;1;0;varh;4
-127;3;8192_12;String;;Serial Number;SERIAL;1;0;;4
+127;3;8192_12;STRING;;Serial Number;SERIAL;1;0;;4
 128;3;8198;U32;;Firmware Release;;1;0;;4
 129;3;8200;U32;;Hardware Version;;1;0;;4
 130;3;8220;U32;;Error Code;;1;0;;4

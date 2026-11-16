@@ -9600,8 +9600,8 @@ Modbus;Logger;MarsRenewable;LocalController V7 - Complet FC4 - Esclave 1 actif;0
 9599;4;0;U16;;Rack(N+1)_Number of cells in Rack;;1;0;;0
 9600;4;1;F32;;Rack(N+1)_Rack Voltage;;1;0;V;0
 9601;4;3;F32;;Rack(N+1)_Rack Current;;1;0;A;0
-9602;4;5;F32;;Rack(N+1)_Rack SOC;;1;0;%;0
-9603;4;7;F32;;Rack(N+1)_Rack SOH;;1;0;%;0
+9602;4;5;F32;;Rack(N+1)_Rack SOC;SOC;1;0;%;0
+9603;4;7;F32;;Rack(N+1)_Rack SOH;SOH;1;0;%;0
 9604;4;9;F32;;Rack(N+1)_Rack Insulation Resistance;;1;0;Ohm;0
 9605;4;11;F32;;Rack(N+1)_Maximum Allowable Charge Current;;1;0;A;0
 9606;4;13;F32;;Rack(N+1)_Maximum Allowable Discharge Current;;1;0;A;0

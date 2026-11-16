@@ -1,0 +1,27 @@
+modbusRTU;Meter;Socomec;SOCOMEC_DIRIS_DIGIWARE_I35;;;;;;;
+1;4;13504;U16;;Loads number;;1.0;0.0;;4
+2;4;18432;U16;;Load status;;1.0;0.0;;4
+3;4;18476;U16;;Total active power;P_AC;1.0;0.0;kW;4
+4;4;18488;U16;;Active power  P1;P_AC_1;1.0;0.0;kW;4
+5;4;18490;U16;;Active power  P2;P_AC_2;1.0;0.0;kW;4
+6;4;18492;U16;;Active power  P3;P_AC_3;1.0;0.0;kW;4
+7;4;18442;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+8;4;18444;U16;;Ph-N Voltage  V1;;1.0;0.0;V;4
+9;4;18446;U16;;Ph-N Voltage  V2;;1.0;0.0;V;4
+10;4;18448;U16;;Ph-N Voltage  V3;;1.0;0.0;V;4
+11;4;18452;U16;;Ph-Ph Voltage  U12;;1.0;0.0;V;4
+12;4;18454;U16;;Ph-Ph Voltage  U23;;1.0;0.0;V;4
+13;4;18456;U16;;Ph-Ph Voltage  U31;;1.0;0.0;V;4
+14;4;18458;U16;;Current  I1;;1.0;0.0;A;4
+15;4;18460;U16;;Current  I2;;1.0;0.0;A;4
+16;4;18462;U16;;Current  I3;;1.0;0.0;A;4
+17;4;18478;U16;;Total reactive power;Q_AC;1.0;0.0;kvar;4
+18;4;18494;U16;;Reactive power  Q1;;1.0;0.0;kvar;4
+19;4;18496;U16;;Reactive power  Q2;;1.0;0.0;kvar;4
+20;4;18498;U16;;Reactive power  Q3;;1.0;0.0;kvar;4
+21;4;18484;U16;;Total apparent power;S_AC;1.0;0.0;kVA;4
+22;4;18486;U16;;Total power factor;PF;1.0;0.0;;4
+23;4;19843;U16;;Total Positive active Energy  Ea+;E_TOT;1.0;0.0;kWh;4
+24;4;19846;U16;;Total Negative active Energy  Ea-;;1.0;0.0;kWh;4
+25;4;19872;U16;;Partial positive active Energy  Ea+;;1.0;0.0;kWh;4
+26;4;19875;U16;;Partial negative active Energy  Ea-;;1.0;0.0;kWh;4

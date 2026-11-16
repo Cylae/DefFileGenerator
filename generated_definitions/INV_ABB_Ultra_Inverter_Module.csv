@@ -55,4 +55,4 @@ Modbus;Inverter;ABB;Ultra_Inverter_Module;;;;;;;
 54;4;204;F32;;3 phases Grid Power Module x;;1.000000;0.000000;W;4
 55;4;206;F32;;3 phases Grid Reactive Power Module x;Q_AC;1.000000;0.000000;VAR;4
 56;4;208;F32;;Ground Leakage Current Module x;;1.000000;0.000000;A;4
-57;3;383;U16;;ON or OFF Module x;CMD_OFF;1.000000;0.000000;;4
+57;3;383;U16;;ON or OFF Module x;CMD_OFF;1.000000;0.000000;;1

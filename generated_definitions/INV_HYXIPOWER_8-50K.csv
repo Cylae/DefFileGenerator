@@ -152,5 +152,5 @@ modbus;Inverter;HYXIPOWER;12-50K;;;;;;;
 151;3;5;U16;;Start Stop Command;;1.000000;0.000000;;4
 152;3;1055;U16;;Communication Address;;1.000000;0.000000;;4
 153;3;1057;U16;;Communication Baud Rate;;1.000000;0.000000;;4
-154;3;1078;U16;;Active Power Control Percentage;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
-155;3;1079;U16;;Active Power Control Percentage Enable;CMD_P_ENA;1.000000;0.000000;;4
+154;3;1078;U16;;Active Power Control Percentage;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;1
+155;3;1079;U16;;Active Power Control Percentage Enable;CMD_P_ENA;1.000000;0.000000;;1

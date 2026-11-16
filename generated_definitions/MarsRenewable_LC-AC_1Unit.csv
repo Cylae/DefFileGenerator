@@ -1,4 +1,4 @@
-﻿modbusTCP;Inverter;MarsRenewable;LC-AC-1Unit;;;;;;;
+modbusTCP;Inverter;MarsRenewable;LC-AC-1Unit;;;;;;;
 1;4;15000;U16;;AC1 Operating Status;;1.000000;0.000000;;9
 2;4;15004;F32;;AC1 Cooling Low Point;;0.100000;0.000000;°C;4
 3;4;15006;F32;;AC1 Cooling High Point;;0.100000;0.000000;°C;4
@@ -13,9 +13,9 @@
 12;4;15023;U16;;AC1 Voltage Status;;1.000000;0.000000;;9
 13;4;15024;U16;;AC1 Sensor Status;;1.000000;0.000000;;9
 14;4;15025;U16;;AC1 Compressor Status;;1.000000;0.000000;;9
-15;4;15026;U16;;AC1 Air Pressure Status;;1.000000;0.000000;;9
+15;4;15026;U16;;AC1 Air Pressure Status;PRESSURE;1.000000;0.000000;;9
 16;4;15027;F32;;AC1 Relative Humidity;HUMIDITY;0.100000;0.000000;;4
-17;4;30000;U16;;LiquidCooling1 Operating Status;;1.000000;0.000000;;9
+17;4;30000;U16;;LiquidCooling1 Operating Status;I_DC;1.000000;0.000000;;9
 18;4;30004;U16;;LiquidCooling1 Operating Mode;;1.000000;0.000000;;4
 19;4;30006;F32;;LiquidCooling1 Ambient Temperature;TEMP_AMB;0.100000;0.000000;°C;4
 20;4;30008;F32;;LiquidCooling1 Supply Water Temperature;;0.100000;0.000000;°C;4

@@ -1,4 +1,4 @@
-﻿modbusTCP;Battery;MarsRenewable;Rack-Cell;;;;;;;
+modbusTCP;Battery;MarsRenewable;Rack-Cell;;;;;;;
 1;4;0;U16;;Rack Number of cells in Rack;;1.000000;0.000000;;4
 2;4;1;F32;;Rack Rack Voltage;U_DC;1.000000;0.000000;V;4
 3;4;3;F32;;Rack Rack Current;I_DC;1.000000;0.000000;A;4
@@ -7,7 +7,7 @@
 6;4;9;F32;;Rack Rack Insulation Resistance;R_ISO;1.000000;0.000000;Ω;4
 7;4;11;F32;;Rack Maximum Allowable Charge Current;;1.000000;0.000000;A;4
 8;4;13;F32;;Rack Maximum Allowable Discharge Current;;1.000000;0.000000;A;4
-9;4;15;F32;;Rack Total Charge Energy;;1.000000;0.000000;kWh;4
+9;4;15;F32;;Rack Total Charge Energy;E_TOT;1.000000;0.000000;kWh;4
 10;4;17;F32;;Rack Total Discharge Energy;;1.000000;0.000000;kWh;4
 11;4;19;F32;;Rack Available Charge Energy;;1.000000;0.000000;kWh;4
 12;4;21;F32;;Rack Available Discharge Energy;;1.000000;0.000000;kWh;4

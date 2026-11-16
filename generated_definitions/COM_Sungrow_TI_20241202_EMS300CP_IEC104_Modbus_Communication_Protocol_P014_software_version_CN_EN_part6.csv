@@ -1,0 +1,203 @@
+modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_p6;;;;;;;
+1;4;25089;U16;;"有功功率目标值
+Active Power Target Value";P_AC;1.0;0.0;kW;4
+2;4;25090;U16;;"无功功率目标值
+Reactive Power Target Value";Q_AC;1.0;0.0;kvar;4
+3;4;25091;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+4;4;25092;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+5;4;25093;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+6;4;25094;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+7;4;25095;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+8;4;25096;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+9;4;25097;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+10;4;25098;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+11;4;25099;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+12;4;25100;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+13;4;25101;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+14;4;25102;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+15;4;25103;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+16;4;25104;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+17;4;25105;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+18;4;25106;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+19;4;25107;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+20;4;25108;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+21;4;25109;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+22;4;25110;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+23;4;25111;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+24;4;25112;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+25;4;25113;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+26;4;25114;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+27;4;25115;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+28;4;25116;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+29;4;25117;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+30;4;25118;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+31;4;25119;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+32;4;25120;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+33;4;25121;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+34;4;25122;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+35;4;25123;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+36;4;25124;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+37;4;25125;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+38;4;25126;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+39;4;25127;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+40;4;25128;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+41;4;25129;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+42;4;25130;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+43;4;25131;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+44;4;25132;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+45;4;25133;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+46;4;25134;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+47;4;25135;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+48;4;25136;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+49;4;25137;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+50;4;25138;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+51;4;25139;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+52;4;25140;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+53;4;25141;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+54;4;25142;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+55;4;25143;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+56;4;25144;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+57;4;25145;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+58;4;25146;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+59;4;25147;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+60;4;25148;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+61;4;25149;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+62;4;25150;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+63;4;25151;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+64;4;25152;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+65;4;25153;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+66;4;25154;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+67;4;25155;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+68;4;25156;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+69;4;25157;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+70;4;25158;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+71;4;25159;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+72;4;25160;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+73;4;25161;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+74;4;25162;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+75;4;25163;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+76;4;25164;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+77;4;25165;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+78;4;25166;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+79;4;25167;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+80;4;25168;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+81;4;25169;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+82;4;25170;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+83;4;25171;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+84;4;25172;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+85;4;25173;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+86;4;25174;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+87;4;25175;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+88;4;25176;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+89;4;25177;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+90;4;25178;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+91;4;25179;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+92;4;25180;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+93;4;25181;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+94;4;25182;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+95;4;25183;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+96;4;25184;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+97;4;25185;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+98;4;25186;U16;;AGC_PLAN_001;;1.0;0.0;kW;4
+99;4;25187;U16;;"段数 调频算法段数
+Segment Number, Frequency Regulation Algorithm Segment Number";FREQ;1.0;0.0;/;4
+100;4;25188;U16;;"并网点额定频率
+Rated Frequency of Grid-connection Point";;1.0;0.0;Hz;4
+101;4;25189;U16;;"频率调差系数
+Frequency Regulation Coefficient";;1.0;0.0;/;4
+102;4;25190;U16;;"调频死区
+Frequency Regulation Dead Zone";;1.0;0.0;Hz;4
+103;4;25191;U16;;"最大输出有功功率
+Maximum Active Power Output";;1.0;0.0;kW;4
+104;4;25192;U16;;"最大吸收有功功率 
+Maximum Active Power Absorbed";;1.0;0.0;kW;4
+105;4;25193;U16;;"有功功率限幅系数下限 
+Lower Limit of Active Power Limit Coefficient";CMD_P_AC_SET_ABS;1.0;0.0;/;1
+106;4;25194;U16;;"有功功率限幅系数上限 
+Upper Limit of Active Power Limit Coefficient";;1.0;0.0;/;4
+107;4;25195;U16;;"调频二段调差系数
+Frequency Regulation II Regulation Coefficient";;1.0;0.0;/;4
+108;4;25196;U16;;"调频二段死区
+Frequency Regulation II Dead Zone";;1.0;0.0;Hz;4
+109;4;25197;U16;;"并离网启动控制字
+And Off-network Start Control Word";;1.0;0.0;/;4
+110;4;25198;U16;;"主从机状态
+Status of Master and Slave Servers";;1.0;0.0;/;9
+111;4;25199;U16;;"级联控制字
+Cascading Control Word";;1.0;0.0;/;4
+112;4;25200;U16;;"SOC上限
+Control Unit SOC Maximum Allowed";;1.0;0.0;%;4
+113;4;25201;U16;;"SOC下限
+Control Unit SOC Minimum Allowable";;1.0;0.0;%;4
+114;4;25202;U16;;"有功控制死区
+Active Power Control Dead Zone";;1.0;0.0;kW;4
+115;4;25203;U16;;"无功控制死区
+Reactive Power Control Dead Zone";;1.0;0.0;kW;4
+116;4;25205;U16;;"分时功率时间段1开始时间
+Start Time of Time of Use Power Period 1";;1.0;0.0;Min;4
+117;4;25206;U16;;"分时功率时间段1结束时间
+End Time of Time of Use Power Period 1";;1.0;0.0;Min;4
+118;4;25207;U16;;"分时功率时间段1设置功率
+Power Setting of Time of Use Power Period 1";;1.0;0.0;kW;4
+119;4;25209;U16;;"分时功率时间段2开始时间
+Start Time of Time of Use Power Period 2";;1.0;0.0;Min;4
+120;4;25210;U16;;"分时功率时间段2结束时间
+End Time of Time of Use Power Period 2";;1.0;0.0;Min;4
+121;4;25211;U16;;"分时功率时间段2设置功率
+Power Setting of Time of Use Power Period 2";;1.0;0.0;kW;4
+122;4;25213;U16;;"分时功率时间段3开始时间
+Start Time of Time of Use Power Period 3";;1.0;0.0;Min;4
+123;4;25214;U16;;"分时功率时间段3结束时间
+End Time of Time of Use Power Period 3";;1.0;0.0;Min;4
+124;4;25215;U16;;"分时功率时间段3设置功率
+Power Setting of Time of Use Power Period 3";;1.0;0.0;kW;4
+125;4;25217;U16;;"分时功率时间段4开始时间
+Start Time of Time of Use Power Period 4";;1.0;0.0;Min;4
+126;4;25218;U16;;"分时功率时间段4结束时间
+End Time of Time of Use Power Period 4";;1.0;0.0;Min;4
+127;4;25219;U16;;"分时功率时间段4设置功率
+Power Setting of Time of Use Power Period 4";;1.0;0.0;kW;4
+128;4;25221;U16;;"分时功率时间段5开始时间
+Start Time of Time of Use Power Period 5";;1.0;0.0;Min;4
+129;4;25222;U16;;"分时功率时间段5结束时间
+End Time of Time of Use Power Period 5";;1.0;0.0;Min;4
+130;4;25223;U16;;"分时功率时间段5设置功率
+Power Setting of Time of Use Power Period 5";;1.0;0.0;kW;4
+131;4;25225;U16;;"分时功率时间段6开始时间
+Start Time of Time of Use Power Period 6";;1.0;0.0;Min;4
+132;4;25226;U16;;"分时功率时间段6结束时间
+End Time of Time of Use Power Period 6";;1.0;0.0;Min;4
+133;4;25227;U16;;"分时功率时间段6设置功率
+Power Setting of Time of Use Power Period 6";;1.0;0.0;kW;4
+134;4;25229;U16;;"分时功率时间段7开始时间
+Start Time of Time of Use Power Period 7";;1.0;0.0;Min;4
+135;4;25230;U16;;"分时功率时间段7结束时间
+End Time of Time of Use Power Period 7";;1.0;0.0;Min;4
+136;4;25231;U16;;"分时功率时间段7设置功率
+Power Setting of Time of Use Power Period 7";;1.0;0.0;kW;4
+137;4;25233;U16;;"分时功率时间段8开始时间
+Start Time of Time of Use Power Period 8";;1.0;0.0;Min;4
+138;4;25234;U16;;"分时功率时间段8结束时间
+End Time of Time of Use Power Period 8";;1.0;0.0;Min;4
+139;4;25235;U16;;"分时功率时间段8设置功率
+Power Setting of Time of Use Power Period 8";;1.0;0.0;kW;4
+140;4;25237;U16;;"分时功率时间段9开始时间
+Start Time of Time of Use Power Period 9";;1.0;0.0;Min;4
+141;4;25238;U16;;"分时功率时间段9结束时间
+End Time of Time of Use Power Period 9";;1.0;0.0;Min;4
+142;4;25239;U16;;"分时功率时间段9设置功率
+Power Setting of Time of Use Power Period 9";;1.0;0.0;kW;4
+143;4;25241;U16;;"分时功率时间段10开始时间
+Start Time of Time of Use Power Period 10";;1.0;0.0;Min;4
+144;4;25242;U16;;"分时功率时间段10结束时间
+End Time of Time of Use Power Period 10";;1.0;0.0;Min;4
+145;4;25243;U16;;"分时功率时间段10设置功率
+Power Setting of Time of Use Power Period 10";;1.0;0.0;kW;4
+146;4;25244;U16;;"通信异常时间
+Communication Interruption Time";;1.0;0.0;ms;4
+147;4;25245;U16;;"通信异常计数时间
+Communication Interruption Counting Period";;1.0;0.0;s;4
+148;4;25246;U16;;"通信异常次数
+Communication Interruption Counts";;1.0;0.0;/;4
+149;4;25247;U16;;"调度方式
+Scheduling Mode";;1.0;0.0;/;4

@@ -96,8 +96,8 @@ ModbusTCP;Inverter;SMA;speedwire;;;;;;;
 95;3;30393;U32;;Error message DC switch 32;;1;0;;4
 96;3;30513;U32;;Total AC energy fed in on all line conductors (total yield);E_TOT;1;0;Wh;4
 97;3;30515;U32;;Total AC energy fed in on all line conductors (total yield)-2;;1;0;Wh;4
-98;3;30517;U32;;Energy fed in on the current day on all line conductors (daily yield);E_DAY;1;0;Wh;4
-99;3;30519;U32;;Energy fed in on the current day on all line conductors (daily yield) -2;I_AC_3;1;0;Wh;4
+98;3;30517;U32;;Energy fed in on the current day on all line conductors (daily yield);I_AC_3;1;0;Wh;4
+99;3;30519;U32;;Energy fed in on the current day on all line conductors (daily yield) -2;;1;0;Wh;4
 100;3;30521;U32;;Operating time;;1;0;s;4
 101;3;30523;U32;;Operating time-2;;1;0;s;4
 102;3;30525;U32;;Feed-in time;;1;0;s;4
@@ -131,7 +131,7 @@ ModbusTCP;Inverter;SMA;speedwire;;;;;;;
 130;3;30589;U32;;Total increased self-consumption;;1;0;Wh;4
 131;3;30591;U32;;Increased self-consumption today;;1;0;Wh;4
 132;3;30593;U32;;Total energy consumed internally;;1;0;Wh;4
-133;3;30595;U32;;Consumed energy;;1;0;Wh;4
+133;3;30595;U32;;Consumed energy;E_DAY;1;0;Wh;4
 134;3;30597;U32;;Fed energy;;1;0;Wh;4
 135;3;30599;U32;;Number of grid connections;;1;0;;4
 136;3;30601;U32;;Operating time of interior fan 3;;1;0;s;4
@@ -201,7 +201,7 @@ ModbusTCP;Inverter;SMA;speedwire;;;;;;;
 200;3;30913;I32;;Current external grid connection line conductor L3;;1;0;A;4
 201;3;30915;U32;;Electricity supply status_1:;;1;0;;4
 202;3;30917;U32;;Generator status:;;1;0;;4
-203;3;30925;U32;;Data transfer rate of network terminal A:;;1;0;;4
+203;3;30925;U32;;Data transfer rate of network terminal A:;I_AC;1;0;;4
 204;3;30927;U32;;Duplex mode of network terminal A:;;1;0;;4
 205;3;30929;U32;;Speedwire connection status of network terminal A:;;1;0;;4
 206;3;30931;U32;;Data transfer rate of network terminal B:;;1;0;;4
@@ -231,7 +231,7 @@ ModbusTCP;Inverter;SMA;speedwire;;;;;;;
 230;3;30979;I32;;Line current of line conductor L2_2;;1.00E-04;0;A;4
 231;3;30981;I32;;Line current of line conductor L3_3;;1.00E-04;0;A;4
 232;3;30983;U32;;PV power;;1;0;W;4
-233;3;30985;I32;;Total current at the external grid connection;I_AC;1.00E-04;0;A;4
+233;3;30985;I32;;Total current at the external grid connection;;1.00E-04;0;A;4
 234;3;30987;U32;;Error battery state of charge;;0;0;%;4
 235;3;30989;U32;;Maximum occurring battery current in charge direction;;1.00E-04;0;A;4
 236;3;30991;U32;;Maximum occurring battery current in discharge direction;;1.00E-04;0;A;4

@@ -57,6 +57,6 @@ Modbus;Inverter;Schneider;Conext_CL_30-33-50;;;;;;;
 56;4;7019;U16;;String 8 current;I_DC_STRING_8;0.010000;0.000000;A;4
 57;4;7020;U16;;String 9 current;I_DC_STRING_9;0.010000;0.000000;A;4
 58;4;7021;U16;;String 10 current;I_DC_STRING_10;0.010000;0.000000;A;4
-59;3;5005;U16;;Start_Stop Inverter;CMD_OFF;1.000000;0.000000;;4
-60;3;5006;U16;;Power limitation switch;CMD_P_AC_SET_ABS;1.000000;0.000000;;4
-61;3;5007;U16;;Power limitation settings (0-1100);CMD_P_AC_SET_PERCENT;0.001000;0.000000;%;4
+59;3;5005;U16;;Start_Stop Inverter;CMD_OFF;1.000000;0.000000;;1
+60;3;5006;U16;;Power limitation switch;CMD_P_AC_SET_ABS;1.000000;0.000000;;1
+61;3;5007;U16;;Power limitation settings (0-1100);CMD_P_AC_SET_PERCENT;0.001000;0.000000;%;1

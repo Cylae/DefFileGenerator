@@ -333,7 +333,7 @@ Modbus;Meter;Legrand;LEG412052;;;;;;;
 332;4;29226;U32;;Current phase 1 - 22nd harmonic (rms);;1.000000;0.000000;mA;4
 333;4;29228;U32;;Current phase 1 - 23rd harmonic (rms);;1.000000;0.000000;mA;4
 334;4;29230;U32;;Current phase 1 - 24th harmonic (rms);;1.000000;0.000000;mA;4
-335;4;29232;U32;;Current phase 1 - 25th harmonic (rms);CMD_ON;1.000000;0.000000;mA;4
+335;4;29232;U32;;Current phase 1 - 25th harmonic (rms);CMD_ON;1.000000;0.000000;mA;1
 336;4;29312;U32;;Current phase 2 - 1st harmonic (rms);;1.000000;0.000000;mA;4
 337;4;29314;U32;;Current phase 2 - 2nd harmonic (rms);;1.000000;0.000000;mA;4
 338;4;29316;U32;;Current phase 2 - 3rd harmonic (rms);;1.000000;0.000000;mA;4

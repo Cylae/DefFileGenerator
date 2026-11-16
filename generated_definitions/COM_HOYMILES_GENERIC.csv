@@ -4569,13 +4569,13 @@ modbus;Logger;HOYMILES;GENERIC FULL;;;;;;;
 4568;3;21772;U16;;Microinverter Restart Power Ramp Rate;;0.0001;0;%Pn/s;4
 4569;3;21773;U16;;Active Power Setting During Communication Interruption Without Shutdown;;0.001;0;%Pn;4
 4570;3;21774;U16;;Power Export Limiting Mode;;1;0;;4
-4571;3;21775;I16;;Max. Export Power A (%);;0.0001;0;;4
+4571;3;21775;I16;;Max. Export Power A (%);I_AC;0.0001;0;;4
 4572;3;21776;I16;;Max. Export Power B (%);;0.0001;0;;4
 4573;3;21777;I16;;Max. Export Power C (%);;0.0001;0;;4
 4574;3;21778;I16;;Max. Export Power A (kW);;0.01;0;;4
 4575;3;21779;I16;;Max. Export Power B (kW);;0.01;0;;4
 4576;3;21780;I16;;Max. Export Power C (kW);;0.01;0;;4
-4577;3;21781;I16;;Active Power Control (Whole Plant);CMD_P_ENA;0.01;0;;1
+4577;3;21781;I16;;Active Power Control (Whole Plant);;0.01;0;;4
 4578;3;21782;I16;;Reactive Power Control (Whole Plant);;0.01;0;;4
 4579;3;21783;I16;;Power Factor Control (Whole Plant);;0.01;0;;4
 4580;3;53272;U16;;Port 4: Turn ON/OFF;CMD_ON;1.000000;0.000000;;1

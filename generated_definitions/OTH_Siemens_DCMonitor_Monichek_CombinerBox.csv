@@ -265,7 +265,7 @@ ModbusRTU;DCMonitor;MONICHEK;CombinerBox;;;;;;;
 264;4;342;U16;;Channel 17~24 current high alarm;;1;0;;4
 265;4;343;U16;;Channel 1~16 arc channel self-check status;;1;0;;4
 266;4;344;U16;;Channel 17~24 arc channel self-check status;;1;0;;4
-267;4;512;U16;;Total power;;100;0;W;4
+267;4;512;U16;;Total power;P_AC;100;0;W;4
 268;4;513;U16;;Average power;;1;0;W;4
 269;4;514;U16;;Channel 1 power;;1;0;W;4
 270;4;515;U16;;Channel 2 power;;1;0;W;4

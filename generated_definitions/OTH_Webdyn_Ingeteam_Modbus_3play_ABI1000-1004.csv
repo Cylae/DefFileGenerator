@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;Ingeteam_Modbus_3play(ABI1000-;;;;;;;
+modbusRTU;Other;Webdyn;Ingeteam_Modbus_3play_ABI1000-;;;;;;;
 1;4;0;U16;;Actual Date.Year;;1.0;0.0;Year;4
 2;4;1;U16;;Actual Date.Month of the Year;;1.0;0.0;Month;4
 3;4;2;U16;;Actual Date.Day of the month;;1.0;0.0;Day;4

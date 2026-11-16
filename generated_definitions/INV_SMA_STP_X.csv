@@ -132,9 +132,9 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 131;3;40187;U32;;Capacite nominale batterie;;1.000000;0.000000;Wh;4
 132;3;40202;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_2;;1.000000;0.000000;VAr;4
 133;3;40204;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_3;;0.100000;0.000000;;4
-134;3;40210;U32;;Mode de fonctionnement consigne de puissance active_RW;CMD_P_ENA;1.000000;0.000000;;4
+134;3;40210;U32;;Mode de fonctionnement consigne de puissance active_RW;CMD_P_ENA;1.000000;0.000000;;1
 135;3;40212;U32;;Limitation de la puissance active P_ configuration de la puissance active_W;;1.000000;0.000000;W;4
-136;3;40214;U32;;Limitation de la puissance active P_ configuration de la puissance active_pct;CMD_P_AC_SET_PERCENT;1.000000;0.000000;pct;4
+136;3;40214;U32;;Limitation de la puissance active P_ configuration de la puissance active_pct;CMD_P_AC_SET_PERCENT;1.000000;0.000000;pct;1
 137;3;40236;U32;;Mode de service de BMS_0;;1.000000;0.000000;;4
 138;3;40242;U32;;P(f)_ taux de modification de la puissance active apres la fin du defaut;;1.000000;0.000000;pct/min;4
 139;3;40244;U32;;Soutien dynamique du reseau_ mode statique de courant reactif;;1.000000;0.000000;;4

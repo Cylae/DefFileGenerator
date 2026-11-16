@@ -1,0 +1,714 @@
+modbusRTU;Other;Dyness battery;Dyness_DH200Y_DH200F_p5;;;;;;;
+1;4;0;U16;;System Status;;1.0;0.0;"DH200Y Description 0. Initialization 1. Self-test 2. Standby 3. Bypass 4. Ready 5. Grid-tied Charging (Auto Operation) 6. Grid-tied Discharging (Auto Operation) 7. Off-grid Charging (Auto Operation) 8. Off-grid Discharging (Auto Operation) 9. Warning 10. Fault 11. Upgrading 12. Debugging 13. Protective Charging""";9
+2;4;1;U16;;Running Mode;;1.0;0.0;DH200Y Description 0: Scheduled Charge/Discharge 1: Peak Shaving/Valley Filling 2: Self-consumption 3: Off-grid Mode (Grid disconnected) 4: Remote Mode;4
+3;4;2;U16;;Module Online Status H;;1.0;0.0;"Bit0 :1; //BIT00 BMS Bit1 :1; //BIT01 Fire Protection Bit2 :1; //BIT02 PCS Bit3 :1; //BIT03 DCDC Bit4 :1; //BIT04 MPPT Bit5 :1; //BIT05 STS Bit6 :1; //BIT06 Meter Bit7 :1; //BIT07 AC Bit8 :1; //BIT08 Liquid Cooling Unit Bit9 :1; //BIT09 HMI Bit10 :1; //BIT10 PC Bit11 :1; //BIT11 GPS Module Bit12 :1; //BIT12 4G Module Bit13 :1; //BIT13 WIFI Module Bit14 :1; //BIT14 Bluetooth Module Bit15 :1; //BIT15 LAN1";9
+4;4;3;U16;;Module Online Status L;;1.0;0.0;"Bit0 :1; //BIT00 LAN2 Bit1 :1; //BIT01 Temp/Humidity Controller Bit2 :1; //BIT02 Parallel Communication Bit3 :1; //BIT03 Bit4 :1; //BIT04 Bit5 :1; //BIT05 Bit6 :1; //BIT06 Bit7 :1; //BIT07 Bit8 :1; //BIT08 Bit9 :1; //BIT09 Bit10 :1; //BIT10 Bit11 :1; //BIT11 Bit12 :1; //BIT12 Bit13 :1; //BIT13 Bit14 :1; //BIT14 Bit15 :1; //BIT15";9
+5;4;4;U16;;Network Status;;1.0;0.0;None;9
+6;4;13;U16;;Grid Connection Status;;1.0;0.0;1：On-grid 0：Off-grid;9
+7;4;14;U16;;EMS Operation Status;;1.0;0.0;0: Standby State 1: Running State 2: Fault State;9
+8;4;17;U16;;Humidity 1;HUMIDITY;1.0;0.0;Dehumidifier/AC Ambient Humidity;4
+9;4;19;U16;;Temperature 1;TEMP_CELL;1.0;0.0;Dehumidifier/AC Ambient Temperature;4
+10;4;23;U16;;System Fault word0;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+11;4;24;U16;;System Fault word1;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+12;4;25;U16;;System Fault word2;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+13;4;26;U16;;System Fault word3;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+14;4;27;U16;;System Fault word4;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+15;4;28;U16;;System Alarm word0;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+16;4;29;U16;;System Alarm word1;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+17;4;30;U16;;System Alarm word2;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+18;4;31;U16;;System Alarm word3;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+19;4;32;U16;;System Alarm word4;;1.0;0.0;See Appendix 0 - Fault/Alarm Description;9
+20;4;33;U16;;EMS Firmware Version;;1.0;0.0;None;4
+21;4;34;U16;;None;;1.0;0.0;None;4
+22;4;35;U16;;None;;1.0;0.0;None;4
+23;4;36;U16;;None;;1.0;0.0;None;4
+24;4;37;U16;;None;;1.0;0.0;None;4
+25;4;38;U16;;None;;1.0;0.0;None;4
+26;4;39;U16;;None;;1.0;0.0;None;4
+27;4;40;U16;;None;;1.0;0.0;None;4
+28;4;41;U16;;None;;1.0;0.0;None;4
+29;4;42;U16;;None;;1.0;0.0;None;4
+30;4;43;U16;;BMS/DCDC Format TBD;;1.0;0.0;None;4
+31;4;44;U16;;None;;1.0;0.0;None;4
+32;4;45;U16;;None;;1.0;0.0;None;4
+33;4;46;U16;;None;;1.0;0.0;None;4
+34;4;47;U16;;None;;1.0;0.0;None;4
+35;4;48;U16;;None;;1.0;0.0;None;4
+36;4;49;U16;;None;;1.0;0.0;None;4
+37;4;50;U16;;None;;1.0;0.0;None;4
+38;4;51;U16;;None;;1.0;0.0;None;4
+39;4;52;U16;;None;;1.0;0.0;None;4
+40;4;53;U16;;HMI Format TBD;;1.0;0.0;None;4
+41;4;54;U16;;None;;1.0;0.0;None;4
+42;4;55;U16;;None;;1.0;0.0;None;4
+43;4;56;U16;;None;;1.0;0.0;None;4
+44;4;57;U16;;None;;1.0;0.0;None;4
+45;4;58;U16;;None;;1.0;0.0;None;4
+46;4;59;U16;;None;;1.0;0.0;None;4
+47;4;60;U16;;None;;1.0;0.0;None;4
+48;4;61;U16;;None;;1.0;0.0;None;4
+49;4;62;U16;;None;;1.0;0.0;None;4
+50;4;86;U16;;PV Input Power (High Word);P_DC;1.0;0.0;None;4
+51;4;87;U16;;PV Input Power (Low Word);;1.0;0.0;None;4
+52;4;88;U16;;MPPT String Count;;1.0;0.0;1-4 (Determines PV list size);4
+53;4;89;U16;;PV1 Voltage;U_DC_STRING_1;1.0;0.0;None;4
+54;4;90;U16;;PV1 Input Current;I_DC_STRING_1;1.0;0.0;None;4
+55;4;91;U16;;PV2 Voltage;U_DC_STRING_2;1.0;0.0;None;4
+56;4;92;U16;;PV2 Input Current;I_DC_STRING_2;1.0;0.0;None;4
+57;4;93;U16;;PV3 Voltage;U_DC_STRING_3;1.0;0.0;None;4
+58;4;94;U16;;PV3 Input Current;I_DC_STRING_3;1.0;0.0;None;4
+59;4;144;U16;;Battery Power (High Word);;1.0;0.0;Negative: Charging Positive: Discharging;4
+60;4;145;U16;;Battery Power (Low Word);;1.0;0.0;None;4
+61;4;146;U16;;Battery Voltage;U_DC;1.0;0.0;None;4
+62;4;147;U16;;State of Charge;SOC;1.0;0.0;None;4
+63;4;148;U16;;Battery Current;I_DC;1.0;0.0;Negative: Charging Positive: Discharging;4
+64;4;149;U16;;Battery Status;;1.0;0.0;None;9
+65;4;168;U16;;Inverter Frequency;FREQ;1.0;0.0;None;4
+66;4;169;U16;;Inverter Total Power (High Word);P_AC;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+67;4;170;U16;;Inverter Total Power (Low Word);;1.0;0.0;None;4
+68;4;171;U16;;Inverter Phase-A Voltage;U_AC_1;1.0;0.0;None;4
+69;4;172;U16;;Inverter Phase-A Current;I_AC_1;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+70;4;173;U16;;Phase-A Output Power (High);;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+71;4;174;U16;;Phase-A Output Power (Low);;1.0;0.0;None;4
+72;4;175;U16;;Inverter Phase-B Voltage;U_AC_2;1.0;0.0;None;4
+73;4;176;U16;;Inverter Phase-B Current;I_AC_2;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+74;4;177;U16;;Phase-B Output Power (High);;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+75;4;178;U16;;Phase-B Output Power (Low);;1.0;0.0;None;4
+76;4;179;U16;;Inverter Phase-C Voltage;U_AC_3;1.0;0.0;None;4
+77;4;180;U16;;Inverter Phase-C Current;I_AC_3;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+78;4;181;U16;;Phase-C Output Power (High);;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+79;4;182;U16;;Phase-C Output Power (Low);;1.0;0.0;None;4
+80;4;183;U16;;Inverter Power Factor;PF;1.0;0.0;None;4
+81;4;184;U16;;Inverter Status;;1.0;0.0;None;9
+82;4;189;U16;;System Time - Year;;1.0;0.0;None;4
+83;4;190;U16;;System Time - Month;;1.0;0.0;None;4
+84;4;191;U16;;System Time - Day;;1.0;0.0;None;4
+85;4;192;U16;;System Time - Hour;;1.0;0.0;None;4
+86;4;193;U16;;System Time - Minute;;1.0;0.0;None;4
+87;4;194;U16;;System Time - Second;;1.0;0.0;None;4
+88;4;195;U16;;System Time - Weekday;;1.0;0.0;None;4
+89;4;249;U16;;None;;1.0;0.0;None;4
+90;4;250;U16;;Parallel Flag;;1.0;0.0;None;4
+91;4;251;U16;;Master slave machine;;1.0;0.0;None;4
+92;4;252;U16;;Native ID;;1.0;0.0;None;4
+93;4;253;U16;;System Paralle Number;;1.0;0.0;None;4
+94;4;254;U16;;Parallel identification code1;;1.0;0.0;ASCII;4
+95;4;255;U16;;Parallel identification code2;;1.0;0.0;None;4
+96;4;256;U16;;Parallel identification code3;;1.0;0.0;None;4
+97;4;257;U16;;Parallel identification code4;;1.0;0.0;None;4
+98;4;258;U16;;Parallel identification code5;;1.0;0.0;None;4
+99;4;259;U16;;Parallel identification code6;;1.0;0.0;None;4
+100;4;260;U16;;Parallel identification code7;;1.0;0.0;None;4
+101;4;261;U16;;Parallel identification code8;;1.0;0.0;None;4
+102;4;262;U16;;Parallel identification code9;;1.0;0.0;None;4
+103;4;263;U16;;Parallel identification code10;;1.0;0.0;None;4
+104;4;264;U16;;Parallel identification code11;;1.0;0.0;None;4
+105;4;265;U16;;Parallel identification code12;;1.0;0.0;None;4
+106;4;1125;U16;;Phase A Voltage;;1.0;0.0;None;4
+107;4;1126;U16;;Phase B Voltage;;1.0;0.0;None;4
+108;4;1127;U16;;Phase C Voltage;;1.0;0.0;None;4
+109;4;1128;U16;;AB Line Voltage;;1.0;0.0;None;4
+110;4;1129;U16;;CB Line Voltage;;1.0;0.0;None;4
+111;4;1130;U16;;AC Line Voltage;;1.0;0.0;None;4
+112;4;1131;U16;;Phase A Current;;1.0;0.0;None;4
+113;4;1132;U16;;Phase B Current;;1.0;0.0;None;4
+114;4;1133;U16;;Phase C Current;;1.0;0.0;None;4
+115;4;1134;U16;;zero-sequence current;;1.0;0.0;None;4
+116;4;1135;U16;;Phase A Active Power;P_AC_1;1.0;0.0;None;4
+117;4;1136;U16;;None;;1.0;0.0;None;4
+118;4;1137;U16;;Phase B Active Power;P_AC_2;1.0;0.0;None;4
+119;4;1138;U16;;None;;1.0;0.0;None;4
+120;4;1139;U16;;Phase C Active Power;P_AC_3;1.0;0.0;None;4
+121;4;1140;U16;;None;;1.0;0.0;None;4
+122;4;1141;U16;;Total Active Power;;1.0;0.0;None;4
+123;4;1142;U16;;None;;1.0;0.0;None;4
+124;4;1143;U16;;Phase A Reactive Power;Q_AC_1;1.0;0.0;None;4
+125;4;1144;U16;;None;;1.0;0.0;None;4
+126;4;1145;U16;;Phase B Reactive Power;Q_AC_2;1.0;0.0;None;4
+127;4;1146;U16;;None;;1.0;0.0;None;4
+128;4;1147;U16;;Phase C Reactive Power;Q_AC_3;1.0;0.0;None;4
+129;4;1148;U16;;None;;1.0;0.0;None;4
+130;4;1149;U16;;Total Reactive Power;Q_AC;1.0;0.0;None;4
+131;4;1150;U16;;None;;1.0;0.0;None;4
+132;4;1151;U16;;Phase A Apparent Power;S_AC_1;1.0;0.0;None;4
+133;4;1152;U16;;None;;1.0;0.0;None;4
+134;4;1153;U16;;Phase B Apparent Power;S_AC_2;1.0;0.0;None;4
+135;4;1154;U16;;None;;1.0;0.0;None;4
+136;4;1155;U16;;Phase C Apparent Power;S_AC_3;1.0;0.0;None;4
+137;4;1156;U16;;None;;1.0;0.0;None;4
+138;4;1157;U16;;Total Apparent Power;S_AC;1.0;0.0;None;4
+139;4;1158;U16;;None;;1.0;0.0;None;4
+140;4;1159;U16;;Phase A Power Factor;PF_1;1.0;0.0;None;4
+141;4;1160;U16;;Phase B Power Factor;PF_2;1.0;0.0;None;4
+142;4;1161;U16;;Phase C Power Factor;PF_3;1.0;0.0;None;4
+143;4;1162;U16;;Total Power Factor;;1.0;0.0;None;4
+144;4;1163;U16;;System Frequency;;1.0;0.0;None;4
+145;4;1249;U16;;None;;1.0;0.0;None;4
+146;4;1875;U16;;Neutralized Active Total Energy;E_TOT;1.0;0.0;None;4
+147;4;1876;U16;;None;;1.0;0.0;None;4
+148;4;1877;U16;;Neutralized Active Peak Energy;;1.0;0.0;None;4
+149;4;1878;U16;;None;;1.0;0.0;None;4
+150;4;1879;U16;;Neutralized Active On-Peak Energy;;1.0;0.0;None;4
+151;4;1880;U16;;None;;1.0;0.0;None;4
+152;4;1881;U16;;Neutralized Active Shoulder Energy;;1.0;0.0;None;4
+153;4;1882;U16;;None;;1.0;0.0;None;4
+154;4;1883;U16;;Neutralized Active Off-Peak Energy;;1.0;0.0;None;4
+155;4;1884;U16;;None;;1.0;0.0;None;4
+156;4;1885;U16;;Forward Active Total Energy;;1.0;0.0;None;4
+157;4;1886;U16;;None;;1.0;0.0;None;4
+158;4;1887;U16;;Forward Active Peak Energy;;1.0;0.0;None;4
+159;4;1888;U16;;None;;1.0;0.0;None;4
+160;4;1889;U16;;Forward Active On-Peak Energy;;1.0;0.0;None;4
+161;4;1890;U16;;None;;1.0;0.0;None;4
+162;4;1891;U16;;Forward Active Shoulder Energy;;1.0;0.0;None;4
+163;4;1892;U16;;None;;1.0;0.0;None;4
+164;4;1893;U16;;Forward Active Off-Peak Energy;;1.0;0.0;None;4
+165;4;1894;U16;;None;;1.0;0.0;None;4
+166;4;1895;U16;;Reverse Active Total Energy;;1.0;0.0;None;4
+167;4;1896;U16;;None;;1.0;0.0;None;4
+168;4;1897;U16;;Reverse Active Peak Energy;;1.0;0.0;None;4
+169;4;1898;U16;;None;;1.0;0.0;None;4
+170;4;1899;U16;;Reverse Active On-Peak Energy;;1.0;0.0;None;4
+171;4;1900;U16;;None;;1.0;0.0;None;4
+172;4;1901;U16;;Reverse Active Shoulder Energy;;1.0;0.0;None;4
+173;4;1902;U16;;None;;1.0;0.0;None;4
+174;4;1903;U16;;Reverse Active Off-Peak Energy;;1.0;0.0;None;4
+175;4;1904;U16;;None;;1.0;0.0;None;4
+176;4;1905;U16;;Neutralized Reactive Total Energy;;1.0;0.0;None;4
+177;4;1906;U16;;None;;1.0;0.0;None;4
+178;4;1907;U16;;Neutralized Reactive Peak Energy;;1.0;0.0;None;4
+179;4;1908;U16;;None;;1.0;0.0;None;4
+180;4;1909;U16;;Neutralized Reactive On-Peak Energy;;1.0;0.0;None;4
+181;4;1910;U16;;None;;1.0;0.0;None;4
+182;4;1911;U16;;Neutralized Reactive Shoulder Energy;;1.0;0.0;None;4
+183;4;1912;U16;;None;;1.0;0.0;None;4
+184;4;1913;U16;;Neutralized Reactive Off-Peak Energy;;1.0;0.0;None;4
+185;4;1914;U16;;None;;1.0;0.0;None;4
+186;4;1915;U16;;Forward Reactive Total Energy;;1.0;0.0;None;4
+187;4;1916;U16;;None;;1.0;0.0;None;4
+188;4;1917;U16;;Forward Reactive Peak Energy;;1.0;0.0;None;4
+189;4;1918;U16;;None;;1.0;0.0;None;4
+190;4;1919;U16;;Forward Reactive On-Peak Energy;;1.0;0.0;None;4
+191;4;1920;U16;;None;;1.0;0.0;None;4
+192;4;1921;U16;;Forward Reactive Shoulder Energy;;1.0;0.0;None;4
+193;4;1922;U16;;None;;1.0;0.0;None;4
+194;4;1923;U16;;Forward Reactive Off-Peak Energy;;1.0;0.0;None;4
+195;4;1924;U16;;None;;1.0;0.0;None;4
+196;4;1925;U16;;Reverse Reactive Total Energy;;1.0;0.0;None;4
+197;4;1926;U16;;None;;1.0;0.0;None;4
+198;4;1927;U16;;Reverse Reactive Peak Energy;;1.0;0.0;None;4
+199;4;1928;U16;;None;;1.0;0.0;None;4
+200;4;1929;U16;;Reverse Reactive On-Peak Energy;;1.0;0.0;None;4
+201;4;1930;U16;;None;;1.0;0.0;None;4
+202;4;1931;U16;;Reverse Reactive Shoulder Energy;;1.0;0.0;None;4
+203;4;1932;U16;;None;;1.0;0.0;None;4
+204;4;1933;U16;;Reverse Reactive Off-Peak Energy;;1.0;0.0;None;4
+205;4;1934;U16;;None;;1.0;0.0;None;4
+206;4;1935;U16;;Peak TOU Electricity Price (High);;1.0;0.0;None;4
+207;4;1936;U16;;Peak TOU Electricity Price (Low);;1.0;0.0;None;4
+208;4;1937;U16;;On-Peak TOU Electricity Price (High);;1.0;0.0;None;4
+209;4;1938;U16;;On-Peak TOU Electricity Price (Low);;1.0;0.0;None;4
+210;4;1939;U16;;Shoulder TOU Electricity Price (High);;1.0;0.0;None;4
+211;4;1940;U16;;Shoulder TOU Electricity Price (Low);;1.0;0.0;None;4
+212;4;1941;U16;;Off-Peak TOU Electricity Price (High);;1.0;0.0;None;4
+213;4;1942;U16;;Off-Peak TOU Electricity Price (Low);;1.0;0.0;None;4
+214;4;1999;U16;;None;;1.0;0.0;None;4
+215;4;2000;U16;;System Hourly Energy (High);;1.0;0.0;System energy generation: PV + Battery Discharge - Air Cooling;4
+216;4;2001;U16;;System Hourly Energy (Low);;1.0;0.0;None;4
+217;4;2002;U16;;System Daily Energy (High);E_DAY;1.0;0.0;None;4
+218;4;2003;U16;;System Daily Energy (Low);;1.0;0.0;None;4
+219;4;2004;U16;;System Monthly Energy (High);;1.0;0.0;None;4
+220;4;2005;U16;;System Monthly Energy (Low);;1.0;0.0;None;4
+221;4;2006;U16;;System Annual Energy (High);;1.0;0.0;None;4
+222;4;2007;U16;;System Annual Energy (Low);;1.0;0.0;None;4
+223;4;2008;U16;;System Total Energy (High);;1.0;0.0;None;4
+224;4;2009;U16;;System Total Energy (Low);;1.0;0.0;None;4
+225;4;2010;U16;;Self-Consumption Hourly Energy (High);;1.0;0.0;Self-consumption: System Output - Grid Feed-in Load Consumption - Grid to Users (Air cooling considered);4
+226;4;2011;U16;;Self-Consumption Hourly Energy (Low);;1.0;0.0;None;4
+227;4;2012;U16;;Self-Consumption Daily Energy (High);;1.0;0.0;None;4
+228;4;2013;U16;;Self-Consumption Daily Energy (Low);;1.0;0.0;None;4
+229;4;2014;U16;;Self-Consumption Monthly Energy (High);;1.0;0.0;None;4
+230;4;2015;U16;;Self-Consumption Monthly Energy (Low);;1.0;0.0;None;4
+231;4;2016;U16;;Self-Consumption Annual Energy (High);;1.0;0.0;None;4
+232;4;2017;U16;;Self-Consumption Annual Energy (Low);;1.0;0.0;None;4
+233;4;2018;U16;;Self-Consumption Total Energy (High);;1.0;0.0;None;4
+234;4;2019;U16;;Self-Consumption Total Energy (Low);;1.0;0.0;None;4
+235;4;2020;U16;;Hourly Grid Feed-in Energy (High);;1.0;0.0;Feed-into Grid;4
+236;4;2021;U16;;Hourly Grid Feed-in Energy (Low);;1.0;0.0;None;4
+237;4;2022;U16;;Daily Grid Feed-in Energy (High);;1.0;0.0;None;4
+238;4;2023;U16;;Daily Grid Feed-in Energy (Low);;1.0;0.0;None;4
+239;4;2024;U16;;Monthly Grid Feed-in Energy (High);;1.0;0.0;None;4
+240;4;2025;U16;;Monthly Grid Feed-in Energy (Low);;1.0;0.0;None;4
+241;4;2026;U16;;Annual Grid Feed-in Energy (High);;1.0;0.0;None;4
+242;4;2027;U16;;Annual Grid Feed-in Energy (Low);;1.0;0.0;None;4
+243;4;2028;U16;;Total Grid Feed-in Energy (High);;1.0;0.0;None;4
+244;4;2029;U16;;Total Grid Feed-in Energy (Low);;1.0;0.0;None;4
+245;4;2030;U16;;Hourly Grid Energy to Users (High);;1.0;0.0;Get Power from Grid;4
+246;4;2031;U16;;Hourly Grid Energy to Users (Low);;1.0;0.0;None;4
+247;4;2032;U16;;Daily Grid Energy to Users (High);;1.0;0.0;None;4
+248;4;2033;U16;;Daily Grid Energy to Users (Low);;1.0;0.0;None;4
+249;4;2034;U16;;Monthly Grid Energy to Users (High);;1.0;0.0;None;4
+250;4;2035;U16;;Monthly Grid Energy to Users (Low);;1.0;0.0;None;4
+251;4;2036;U16;;Annual Grid Energy to Users (High);;1.0;0.0;None;4
+252;4;2037;U16;;Annual Grid Energy to Users (Low);;1.0;0.0;None;4
+253;4;2038;U16;;Total Grid Energy to Users (High);;1.0;0.0;None;4
+254;4;2039;U16;;Total Grid Energy to Users (Low);;1.0;0.0;None;4
+255;4;2040;U16;;Hourly Local Load Consumption (High);;1.0;0.0;Load Consumption;4
+256;4;2041;U16;;Hourly Local Load Consumption (Low);;1.0;0.0;None;4
+257;4;2042;U16;;Daily Local Load Consumption (High);;1.0;0.0;None;4
+258;4;2043;U16;;Daily Local Load Consumption (Low);;1.0;0.0;None;4
+259;4;2044;U16;;Monthly Local Load Consumption (High);;1.0;0.0;None;4
+260;4;2045;U16;;Monthly Local Load Consumption (Low);;1.0;0.0;None;4
+261;4;2046;U16;;Annual Local Load Consumption (High);;1.0;0.0;None;4
+262;4;2047;U16;;Annual Local Load Consumption (Low);;1.0;0.0;None;4
+263;4;2048;U16;;Total Local Load Consumption (High);;1.0;0.0;None;4
+264;4;2049;U16;;Total Local Load Consumption (Low);;1.0;0.0;None;4
+265;4;2050;U16;;PV Hourly Generation (High);;1.0;0.0;PV Generation-Air Cooling;4
+266;4;2051;U16;;PV Hourly Generation (Low);;1.0;0.0;None;4
+267;4;2052;U16;;PV Daily Generation (High);;1.0;0.0;None;4
+268;4;2053;U16;;PV Daily Generation (Low);;1.0;0.0;None;4
+269;4;2054;U16;;PV Monthly Generation (High);;1.0;0.0;None;4
+270;4;2055;U16;;PV Monthly Generation (Low);;1.0;0.0;None;4
+271;4;2056;U16;;PV Annual Generation (High);;1.0;0.0;None;4
+272;4;2057;U16;;PV Annual Generation (Low);;1.0;0.0;None;4
+273;4;2058;U16;;PV Total Generation (High);;1.0;0.0;None;4
+274;4;2059;U16;;PV Total Generation (Low);;1.0;0.0;None;4
+275;4;2060;U16;;Battery Hourly Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Hour）;4
+276;4;2061;U16;;Battery Hourly Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Hour）;4
+277;4;2062;U16;;Battery Daily Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Day）;4
+278;4;2063;U16;;Battery Daily Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Day）;4
+279;4;2064;U16;;Battery Monthly Discharge (High);;1.0;0.0;Battery Data（Battery Discharge-Month）;4
+280;4;2065;U16;;Battery Monthly Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Month）;4
+281;4;2066;U16;;Battery Annual Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Year）;4
+282;4;2067;U16;;Battery Annual Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Year）;4
+283;4;2068;U16;;Battery Total Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Total）;4
+284;4;2069;U16;;Battery Total Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Total）;4
+285;4;2070;U16;;Battery Hourly Charge 1 (High);;1.0;0.0;Battery Data（Battery Charge-Hour）;4
+286;4;2071;U16;;Battery Hourly Charge 1 (Low);;1.0;0.0;Battery Data（Battery Charge-Hour）;4
+287;4;2072;U16;;Battery Daily Charge 1(High);;1.0;0.0;Battery Data（Battery Charge-Day）;4
+288;4;2073;U16;;Battery Daily Charge 1 (Low);;1.0;0.0;Battery Data（Battery Charge-Day）;4
+289;4;2074;U16;;Battery Monthly Charge1 (High);;1.0;0.0;Battery Data（Battery Charge-Month）;4
+290;4;2075;U16;;Battery Monthly Charge1 (Low);;1.0;0.0;Battery Data（Battery Charge-Month）;4
+291;4;2076;U16;;Battery Annual Charge 1 (High);;1.0;0.0;Battery Data（Battery Charge-Year）;4
+292;4;2077;U16;;Battery Annual Charge 1(Low);;1.0;0.0;Battery Data（Battery Charge-Year）;4
+293;4;2078;U16;;Battery Total Charge 1 (High);;1.0;0.0;Battery Data（Battery Charge-Total）;4
+294;4;2079;U16;;Battery Total Charge 1 (Low);;1.0;0.0;Battery Data（Battery Charge-Total）;4
+295;4;2080;U16;;Generator Daily Production (High);;1.0;0.0;Generator Data（Generator Energy Production-Today）;4
+296;4;2081;U16;;Generator Daily Production (Low);;1.0;0.0;Generator Data（Generator Energy Production-Today）;4
+297;4;2082;U16;;Generator Total Production (High);;1.0;0.0;Generator Data（Generator Energy Production-Total）;4
+298;4;2083;U16;;Generator Total Production (Low);;1.0;0.0;Generator Data（Generator Energy Production-Total）;4
+299;4;2084;U16;;PV Inverter AC/DC Daily Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+300;4;2085;U16;;PV Inverter AC/DC Daily Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+301;4;2086;U16;;PV Inverter AC/DC Total Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+302;4;2087;U16;;PV Inverter AC/DC Total Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+303;4;2088;U16;;PV Inverter DC/AC Daily Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+304;4;2089;U16;;PV Inverter DC/AC Daily Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+305;4;2090;U16;;PV Inverter DC/AC Total Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+306;4;2091;U16;;PV Inverter DC/AC Total Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+307;4;2124;U16;;None;;1.0;0.0;None;4
+308;4;2125;U16;;4G Module Hardware Version;;1.0;0.0;None;4
+309;4;2126;U16;;None;;1.0;0.0;None;4
+310;4;2127;U16;;None;;1.0;0.0;None;4
+311;4;2128;U16;;None;;1.0;0.0;None;4
+312;4;2129;U16;;None;;1.0;0.0;None;4
+313;4;2130;U16;;None;;1.0;0.0;None;4
+314;4;2131;U16;;None;;1.0;0.0;None;4
+315;4;2132;U16;;None;;1.0;0.0;None;4
+316;4;2133;U16;;None;;1.0;0.0;None;4
+317;4;2134;U16;;None;;1.0;0.0;None;4
+318;4;2135;U16;;4G Module Hardware Version1;;1.0;0.0;None;4
+319;4;2136;U16;;None;;1.0;0.0;None;4
+320;4;2137;U16;;None;;1.0;0.0;None;4
+321;4;2138;U16;;None;;1.0;0.0;None;4
+322;4;2139;U16;;None;;1.0;0.0;None;4
+323;4;2140;U16;;None;;1.0;0.0;None;4
+324;4;2141;U16;;None;;1.0;0.0;None;4
+325;4;2142;U16;;None;;1.0;0.0;None;4
+326;4;2143;U16;;None;;1.0;0.0;None;4
+327;4;2144;U16;;None;;1.0;0.0;None;4
+328;4;2145;U16;;4G Module Hardware Version 2;;1.0;0.0;None;4
+329;4;2146;U16;;None;;1.0;0.0;None;4
+330;4;2147;U16;;None;;1.0;0.0;None;4
+331;4;2148;U16;;None;;1.0;0.0;None;4
+332;4;2149;U16;;None;;1.0;0.0;None;4
+333;4;2150;U16;;None;;1.0;0.0;None;4
+334;4;2151;U16;;None;;1.0;0.0;None;4
+335;4;2152;U16;;None;;1.0;0.0;None;4
+336;4;2153;U16;;None;;1.0;0.0;None;4
+337;4;2154;U16;;None;;1.0;0.0;None;4
+338;4;2155;U16;;None;;1.0;0.0;None;4
+339;4;2156;U16;;None;;1.0;0.0;None;4
+340;4;2157;U16;;None;;1.0;0.0;None;4
+341;4;2158;U16;;None;;1.0;0.0;None;4
+342;4;2159;U16;;None;;1.0;0.0;None;4
+343;4;2160;U16;;IMEI;;1.0;0.0;None;4
+344;4;2161;U16;;None;;1.0;0.0;None;4
+345;4;2162;U16;;None;;1.0;0.0;None;4
+346;4;2163;U16;;None;;1.0;0.0;None;4
+347;4;2164;U16;;None;;1.0;0.0;None;4
+348;4;2165;U16;;None;;1.0;0.0;None;4
+349;4;2166;U16;;None;;1.0;0.0;None;4
+350;4;2167;U16;;None;;1.0;0.0;None;4
+351;4;2168;U16;;None;;1.0;0.0;None;4
+352;4;2169;U16;;None;;1.0;0.0;None;4
+353;4;2170;U16;;ICCID;;1.0;0.0;None;4
+354;4;2171;U16;;None;;1.0;0.0;None;4
+355;4;2172;U16;;None;;1.0;0.0;None;4
+356;4;2173;U16;;None;;1.0;0.0;None;4
+357;4;2174;U16;;None;;1.0;0.0;None;4
+358;4;2175;U16;;None;;1.0;0.0;None;4
+359;4;2176;U16;;None;;1.0;0.0;None;4
+360;4;2177;U16;;None;;1.0;0.0;None;4
+361;4;2178;U16;;None;;1.0;0.0;None;4
+362;4;2179;U16;;None;;1.0;0.0;None;4
+363;4;2180;U16;;None;;1.0;0.0;None;4
+364;4;2181;U16;;None;;1.0;0.0;None;4
+365;4;2182;U16;;None;;1.0;0.0;None;4
+366;4;2183;U16;;None;;1.0;0.0;None;4
+367;4;2184;U16;;None;;1.0;0.0;None;4
+368;4;2185;U16;;None;;1.0;0.0;None;4
+369;4;2186;U16;;PCS Module Fault Register Address;;1.0;0.0;None;9
+370;4;2187;U16;;PCS Module Fault Register Value;;1.0;0.0;None;9
+371;4;2188;U16;;DCDC Module Fault Register Address;;1.0;0.0;None;9
+372;4;2189;U16;;DCDC Module Fault Register Value;;1.0;0.0;None;9
+373;4;2190;U16;;BMS Module Fault Register Address;;1.0;0.0;None;9
+374;4;2191;U16;;BMS Module Fault Register Value (High);;1.0;0.0;None;9
+375;4;2192;U16;;BMS Module Fault Register Value (Low);;1.0;0.0;None;9
+376;4;2193;U16;;STS Module Fault Register Address;;1.0;0.0;None;9
+377;4;2194;U16;;STS Module Fault Register Value;;1.0;0.0;None;9
+378;4;2195;U16;;Fire Protection Module Fault Register Address;;1.0;0.0;None;9
+379;4;2196;U16;;Fire Protection Module Fault Register Value;;1.0;0.0;None;9
+380;4;2197;U16;;AC Module Fault Register Address;;1.0;0.0;None;9
+381;4;2198;U16;;AC Module Fault Register Value;;1.0;0.0;None;9
+382;4;2199;U16;;Liquid Cooling Module Fault Register Address;;1.0;0.0;None;9
+383;4;2200;U16;;Liquid Cooling Module Fault Register Value;;1.0;0.0;None;9
+384;4;2201;U16;;Dehumidifier Module Fault Register Address;;1.0;0.0;None;9
+385;4;2202;U16;;Dehumidifier Module Fault Register Value;;1.0;0.0;None;9
+386;4;2203;U16;;Reserved;;1.0;0.0;None;0
+387;4;2204;U16;;Reserved;;1.0;0.0;None;0
+388;4;2205;U16;;Reserved;;1.0;0.0;None;0
+389;4;2206;U16;;Reserved;;1.0;0.0;None;0
+390;4;2207;U16;;Reserved;;1.0;0.0;None;0
+391;4;2208;U16;;Reserved;;1.0;0.0;None;0
+392;4;2209;U16;;Reserved;;1.0;0.0;None;0
+393;4;2210;U16;;Reserved;;1.0;0.0;None;0
+394;4;2211;U16;;Reserved;;1.0;0.0;None;0
+395;4;2212;U16;;Reserved;;1.0;0.0;None;0
+396;4;2213;U16;;PCS Module Alarm Register Address;;1.0;0.0;None;9
+397;4;2214;U16;;PCS Module Alarm Register Value;;1.0;0.0;None;9
+398;4;2215;U16;;DCDC Module Alarm Register Address;;1.0;0.0;None;9
+399;4;2216;U16;;DCDC Module Alarm Register Value;;1.0;0.0;None;9
+400;4;2217;U16;;BMS Module Alarm Register Address;;1.0;0.0;None;9
+401;4;2218;U16;;BMS Module Alarm Register Value (High);;1.0;0.0;None;9
+402;4;2219;U16;;BMS Module Alarm Register Value (Low);;1.0;0.0;None;9
+403;4;2220;U16;;STS Module Alarm Register Address;;1.0;0.0;None;9
+404;4;2221;U16;;STS Module Alarm Register Value;;1.0;0.0;None;9
+405;4;2222;U16;;Fire Protection Module Alarm Register Address;;1.0;0.0;None;9
+406;4;2223;U16;;Fire Protection Module Alarm Register Value;;1.0;0.0;None;9
+407;4;2224;U16;;AC Module Alarm Register Address;;1.0;0.0;None;9
+408;4;2225;U16;;AC Module Alarm Register Value;;1.0;0.0;None;9
+409;4;2226;U16;;Liquid Cooling Module Alarm Register Address;;1.0;0.0;None;9
+410;4;2227;U16;;Liquid Cooling Module Alarm Register Value;;1.0;0.0;None;9
+411;4;2228;U16;;Dehumidifier Module Alarm Register Address;;1.0;0.0;None;9
+412;4;2229;U16;;Dehumidifier Module Alarm Register Value;;1.0;0.0;None;9
+413;4;2249;U16;;None;;1.0;0.0;None;4
+414;4;4000;U16;;System Run Status;;1.0;0.0;"DH200Y Description 0. Initialization 1. Self-test 2. Standby 3. Bypass 4. Ready 5. Grid-tied Charging (Auto Operation) 6. Grid-tied Discharging (Auto Operation) 7. Off-grid Charging (Auto Operation) 8. Off-grid Discharging (Auto Operation) 9. Warning 10. Fault 11. Upgrading 12. Debugging 13. Protective Charging""";9
+415;4;4001;U16;;Run Mode status;;1.0;0.0;DH200Y Description 0: Timing Charge/Discharge Mode 1: Peak Shaving & Valley shift Mode 2: Self-use Mode 3: Off-Grid Mode (Grid Disconnected) 4: Remote Mode;9
+416;4;4004;U16;;networking;;1.0;0.0;None;4
+417;4;4013;U16;;And leave the network;;1.0;0.0;0：offline 1：online;4
+418;4;4014;U16;;EMS Status;;1.0;0.0;0: Waiting State 1: Running State 2: Fault State;9
+419;4;4017;U16;;humidity1;;1.0;0.0;Dehumidifier/Air Conditioner Environmental Humidity;4
+420;4;4019;U16;;Temp1;TEMP_INT;1.0;0.0;Dehumidifier / Air Conditioner Environmental Temperature;4
+421;4;4023;U16;;Systemfault word0;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+422;4;4024;U16;;Systemfault word1;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+423;4;4025;U16;;Systemfault word2;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+424;4;4026;U16;;Systemfault word3;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+425;4;4027;U16;;Systemfault word4;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+426;4;4028;U16;;Systemalarm word0;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+427;4;4029;U16;;Systemalarm word1;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+428;4;4030;U16;;Systemalarm word2;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+429;4;4031;U16;;Systemalarm word3;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+430;4;4032;U16;;Systemalarm word4;;1.0;0.0;See Appendix0-System Fault Warningsing;9
+431;4;4033;U16;;EMS_ver;;1.0;0.0;None;4
+432;4;4034;U16;;None;;1.0;0.0;None;4
+433;4;4035;U16;;None;;1.0;0.0;None;4
+434;4;4036;U16;;None;;1.0;0.0;None;4
+435;4;4037;U16;;None;;1.0;0.0;None;4
+436;4;4038;U16;;None;;1.0;0.0;None;4
+437;4;4039;U16;;None;;1.0;0.0;None;4
+438;4;4040;U16;;None;;1.0;0.0;None;4
+439;4;4041;U16;;None;;1.0;0.0;None;4
+440;4;4042;U16;;None;;1.0;0.0;None;4
+441;4;4043;U16;;BMS/DCDC_ver;;1.0;0.0;None;4
+442;4;4044;U16;;None;;1.0;0.0;None;4
+443;4;4045;U16;;None;;1.0;0.0;None;4
+444;4;4046;U16;;None;;1.0;0.0;None;4
+445;4;4047;U16;;None;;1.0;0.0;None;4
+446;4;4048;U16;;None;;1.0;0.0;None;4
+447;4;4049;U16;;None;;1.0;0.0;None;4
+448;4;4050;U16;;None;;1.0;0.0;None;4
+449;4;4051;U16;;None;;1.0;0.0;None;4
+450;4;4052;U16;;None;;1.0;0.0;None;4
+451;4;4053;U16;;HMI_ver;;1.0;0.0;None;4
+452;4;4054;U16;;None;;1.0;0.0;None;4
+453;4;4055;U16;;None;;1.0;0.0;None;4
+454;4;4056;U16;;None;;1.0;0.0;None;4
+455;4;4057;U16;;None;;1.0;0.0;None;4
+456;4;4058;U16;;None;;1.0;0.0;None;4
+457;4;4059;U16;;None;;1.0;0.0;None;4
+458;4;4060;U16;;None;;1.0;0.0;None;4
+459;4;4061;U16;;None;;1.0;0.0;None;4
+460;4;4062;U16;;None;;1.0;0.0;None;4
+461;4;4063;U16;;Grid Power H;;1.0;0.0;"Positive values ​​indicate charge; negative values ​​indicate discharge";4
+462;4;4064;U16;;Grid Power L;;1.0;0.0;None;4
+463;4;4065;U16;;Grid Frequency;;1.0;0.0;None;4
+464;4;4066;U16;;Three/ Single phase grid voltage;;1.0;0.0;None;4
+465;4;4067;U16;;Three/ Single phase grid output current;;1.0;0.0;None;4
+466;4;4068;U16;;Three/ Single phase grid output power (High Word);;1.0;0.0;"Positive values ​​indicate charge; negative values ​​indicate discharge";4
+467;4;4069;U16;;Three/ Single phase grid output power L(Low Word);;1.0;0.0;None;4
+468;4;4070;U16;;Three phase grid voltage;U_AC_L3L1;1.0;0.0;None;4
+469;4;4071;U16;;Three phase grid output current;;1.0;0.0;None;4
+470;4;4072;U16;;Three phase grid output power(High Word);;1.0;0.0;"Positive values ​​indicate charge; negative values ​​indicate discharge";4
+471;4;4073;U16;;Three phase grid output power (Low Word);;1.0;0.0;None;4
+472;4;4074;U16;;Three phase grid voltage;;1.0;0.0;None;4
+473;4;4075;U16;;Three phase grid output current;;1.0;0.0;None;4
+474;4;4076;U16;;Three phase grid output power (High Word);;1.0;0.0;"Positive values ​​indicate charge; negative values ​​indicate discharge";4
+475;4;4077;U16;;Three phase grid output power(Low Word);;1.0;0.0;None;4
+476;4;4078;U16;;Phase A grid voltage;;1.0;0.0;Line A voltage;4
+477;4;4079;U16;;Phase B grid voltage;;1.0;0.0;Line B voltage;4
+478;4;4080;U16;;Phase C grid voltage;;1.0;0.0;Line C voltage;4
+479;4;4081;U16;;Phase A Power Factor;;1.0;0.0;None;4
+480;4;4082;U16;;Phase B Power Factor;;1.0;0.0;None;4
+481;4;4083;U16;;Phase C Power Factor;;1.0;0.0;None;4
+482;4;4084;U16;;Total Power Factor;;1.0;0.0;None;4
+483;4;4085;U16;;Grid States;;1.0;0.0;None;4
+484;4;4086;U16;;PV Input Power (High Word);;1.0;0.0;None;4
+485;4;4087;U16;;PV Input Power (Low Word);;1.0;0.0;None;4
+486;4;4088;U16;;MPPT String Count;;1.0;0.0;1–18: Based on this parameter, the size of the displayed PV list is limited to this range. If the number of channels exceeds 18, the remaining channels are retrieved via a separate field query.;4
+487;4;4089;U16;;PV1 Voltage;;1.0;0.0;None;4
+488;4;4090;U16;;PV1 Input Current;;1.0;0.0;None;4
+489;4;4091;U16;;PV2 Voltage;;1.0;0.0;None;4
+490;4;4092;U16;;PV2 Input Current;;1.0;0.0;None;4
+491;4;4093;U16;;PV3 Voltage;;1.0;0.0;None;4
+492;4;4094;U16;;PV3 Input Current;;1.0;0.0;None;4
+493;4;4125;U16;;Load phase A voltage;;1.0;0.0;None;4
+494;4;4126;U16;;Load phase A current;;1.0;0.0;None;4
+495;4;4127;U16;;Load phase A power;;1.0;0.0;None;4
+496;4;4128;U16;;None;;1.0;0.0;None;4
+497;4;4129;U16;;Load phase B voltage;;1.0;0.0;None;4
+498;4;4130;U16;;Load phase B current;;1.0;0.0;None;4
+499;4;4131;U16;;Load phase B power;;1.0;0.0;None;4
+500;4;4132;U16;;None;;1.0;0.0;None;4
+501;4;4133;U16;;Load phase C voltage;;1.0;0.0;None;4
+502;4;4134;U16;;Load phase C current;;1.0;0.0;None;4
+503;4;4135;U16;;Load phase C power;;1.0;0.0;None;4
+504;4;4136;U16;;None;;1.0;0.0;None;4
+505;4;4137;U16;;Load total power;;1.0;0.0;None;4
+506;4;4138;U16;;None;;1.0;0.0;None;4
+507;4;4139;U16;;Load phase A power factor;;1.0;0.0;None;4
+508;4;4140;U16;;Load phase B power factor;;1.0;0.0;None;4
+509;4;4141;U16;;Load phase C power factor;;1.0;0.0;None;4
+510;4;4142;U16;;Load power factor;;1.0;0.0;None;4
+511;4;4143;U16;;Load frequency;;1.0;0.0;None;4
+512;4;4144;U16;;Battery Power (High Word);;1.0;0.0;Negative: Charging Positive: Discharging;4
+513;4;4145;U16;;Battery Power (Low Word);;1.0;0.0;None;4
+514;4;4146;U16;;Battery Voltage;;1.0;0.0;None;4
+515;4;4147;U16;;State of Charge;;1.0;0.0;None;4
+516;4;4148;U16;;Battery Current;;1.0;0.0;Negative: Charging Positive: Discharging;4
+517;4;4149;U16;;Battery Status;;1.0;0.0;None;9
+518;4;4168;U16;;Inverter Frequency;;1.0;0.0;None;4
+519;4;4169;U16;;Inverter Total Power (High Word);;1.0;0.0;Negative: AC→DC Positive: DC→ACC;4
+520;4;4170;U16;;Inverter Total Power (Low Word);;1.0;0.0;None;4
+521;4;4171;U16;;Inverter Phase-A Voltage;;1.0;0.0;None;4
+522;4;4172;U16;;Inverter Phase-A Current;;1.0;0.0;Negative: AC→DC Positive: DC→ACAC;4
+523;4;4173;U16;;Phase-A Output Power (High);;1.0;0.0;Negative: AC→DC Positive: DC→ACC;4
+524;4;4174;U16;;Phase-A Output Power (Low);;1.0;0.0;None;4
+525;4;4175;U16;;Inverter Phase-B Voltage;;1.0;0.0;None;4
+526;4;4176;U16;;Inverter Phase-B Current;;1.0;0.0;Negative: AC→DC Positive: DC→ACAC;4
+527;4;4177;U16;;Phase-B Output Power (High);;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+528;4;4178;U16;;Phase-B Output Power (Low);;1.0;0.0;None;4
+529;4;4179;U16;;Inverter Phase-C Voltage;;1.0;0.0;None;4
+530;4;4180;U16;;Inverter Phase-C Current;;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+531;4;4181;U16;;Phase-C Output Power (High);;1.0;0.0;Negative: AC→DC Positive: DC→AC;4
+532;4;4182;U16;;Phase-C Output Power (Low);;1.0;0.0;None;4
+533;4;4183;U16;;Inverter Power Factor;;1.0;0.0;None;4
+534;4;4184;U16;;Inverter Status;;1.0;0.0;None;9
+535;4;4189;U16;;System Time - Year;;1.0;0.0;None;4
+536;4;4190;U16;;System Time - Month;;1.0;0.0;None;4
+537;4;4191;U16;;System Time - Day;;1.0;0.0;None;4
+538;4;4192;U16;;System Time - Hour;;1.0;0.0;None;4
+539;4;4193;U16;;System Time - Minute;;1.0;0.0;None;4
+540;4;4194;U16;;System Time - Second;;1.0;0.0;None;4
+541;4;4195;U16;;System Time - Weekday;;1.0;0.0;None;4
+542;4;4249;U16;;None;;1.0;0.0;None;4
+543;4;5875;U16;;Neutralized Active Total Energy;;1.0;0.0;None;4
+544;4;5876;U16;;None;;1.0;0.0;None;4
+545;4;5877;U16;;Neutralized Active Peak Energy;;1.0;0.0;None;4
+546;4;5878;U16;;None;;1.0;0.0;None;4
+547;4;5879;U16;;Neutralized Active On-Peak Energy;;1.0;0.0;None;4
+548;4;5880;U16;;None;;1.0;0.0;None;4
+549;4;5881;U16;;Neutralized Active Shoulder Energy;;1.0;0.0;None;4
+550;4;5882;U16;;None;;1.0;0.0;None;4
+551;4;5883;U16;;Neutralized Active Off-Peak Energy;;1.0;0.0;None;4
+552;4;5884;U16;;None;;1.0;0.0;None;4
+553;4;5885;U16;;Forward Active Total Energy;;1.0;0.0;None;4
+554;4;5886;U16;;None;;1.0;0.0;None;4
+555;4;5887;U16;;Forward Active Peak Energy;;1.0;0.0;None;4
+556;4;5888;U16;;None;;1.0;0.0;None;4
+557;4;5889;U16;;Forward Active On-Peak Energy;;1.0;0.0;None;4
+558;4;5890;U16;;None;;1.0;0.0;None;4
+559;4;5891;U16;;Forward Active Shoulder Energy;;1.0;0.0;None;4
+560;4;5892;U16;;None;;1.0;0.0;None;4
+561;4;5893;U16;;Forward Active Off-Peak Energy;;1.0;0.0;None;4
+562;4;5894;U16;;None;;1.0;0.0;None;4
+563;4;5895;U16;;Reverse Active Total Energy;;1.0;0.0;None;4
+564;4;5896;U16;;None;;1.0;0.0;None;4
+565;4;5897;U16;;Reverse Active Peak Energy;;1.0;0.0;None;4
+566;4;5898;U16;;None;;1.0;0.0;None;4
+567;4;5899;U16;;Reverse Active On-Peak Energy;;1.0;0.0;None;4
+568;4;5900;U16;;None;;1.0;0.0;None;4
+569;4;5901;U16;;Reverse Active Shoulder Energy;;1.0;0.0;None;4
+570;4;5902;U16;;None;;1.0;0.0;None;4
+571;4;5903;U16;;Reverse Active Off-Peak Energy;;1.0;0.0;None;4
+572;4;5904;U16;;None;;1.0;0.0;None;4
+573;4;5905;U16;;Forward Active Total Energy;;1.0;0.0;None;4
+574;4;5906;U16;;None;;1.0;0.0;None;4
+575;4;5907;U16;;Forward Active Peak Energy;;1.0;0.0;None;4
+576;4;5908;U16;;None;;1.0;0.0;None;4
+577;4;5909;U16;;Forward Active On-Peak Energy;;1.0;0.0;None;4
+578;4;5910;U16;;None;;1.0;0.0;None;4
+579;4;5911;U16;;Forward Active Shoulder Energy;;1.0;0.0;None;4
+580;4;5912;U16;;None;;1.0;0.0;None;4
+581;4;5913;U16;;Forward Active Off-Peak Energy;;1.0;0.0;None;4
+582;4;5914;U16;;None;;1.0;0.0;None;4
+583;4;5915;U16;;Forward Reactive Total Energy;;1.0;0.0;None;4
+584;4;5916;U16;;None;;1.0;0.0;None;4
+585;4;5917;U16;;Forward Reactive Peak Energy;;1.0;0.0;None;4
+586;4;5918;U16;;None;;1.0;0.0;None;4
+587;4;5919;U16;;Forward Reactive On-Peak Energy;;1.0;0.0;None;4
+588;4;5920;U16;;None;;1.0;0.0;None;4
+589;4;5921;U16;;Forward Reactive Shoulder Energy;;1.0;0.0;None;4
+590;4;5922;U16;;None;;1.0;0.0;None;4
+591;4;5923;U16;;Forward Reactive Off-Peak Energy;;1.0;0.0;None;4
+592;4;5924;U16;;None;;1.0;0.0;None;4
+593;4;5925;U16;;Reverse Reactive Total Energy;;1.0;0.0;None;4
+594;4;5926;U16;;None;;1.0;0.0;None;4
+595;4;5927;U16;;Reverse Reactive Peak Energy;;1.0;0.0;None;4
+596;4;5928;U16;;None;;1.0;0.0;None;4
+597;4;5929;U16;;Reverse Reactive On-Peak Energy;;1.0;0.0;None;4
+598;4;5930;U16;;None;;1.0;0.0;None;4
+599;4;5931;U16;;Reverse Reactive Shoulder Energy;;1.0;0.0;None;4
+600;4;5932;U16;;None;;1.0;0.0;None;4
+601;4;5933;U16;;Reverse Reactive Off-Peak Energy;;1.0;0.0;None;4
+602;4;5934;U16;;None;;1.0;0.0;None;4
+603;4;5935;U16;;Peak TOU Electricity Price (High);;1.0;0.0;None;4
+604;4;5936;U16;;Peak TOU Electricity Price (Low);;1.0;0.0;None;4
+605;4;5937;U16;;On-Peak TOU Electricity Price (High);;1.0;0.0;None;4
+606;4;5938;U16;;On-Peak TOU Electricity Price (Low);;1.0;0.0;None;4
+607;4;5939;U16;;Shoulder TOU Electricity Price (High);;1.0;0.0;None;4
+608;4;5940;U16;;Shoulder TOU Electricity Price (Low);;1.0;0.0;None;4
+609;4;5941;U16;;Off-Peak TOU Electricity Price (High);;1.0;0.0;None;4
+610;4;5942;U16;;Off-Peak TOU Electricity Price (Low);;1.0;0.0;None;4
+611;4;5999;U16;;None;;1.0;0.0;None;4
+612;4;6000;U16;;System Hourly Energy (High);;1.0;0.0;System energy generation: PV + Battery Discharge;4
+613;4;6001;U16;;System Hourly Energy (Low);;1.0;0.0;None;4
+614;4;6002;U16;;System Daily Energy (High);;1.0;0.0;None;4
+615;4;6003;U16;;System Daily Energy (Low);;1.0;0.0;None;4
+616;4;6004;U16;;System Monthly Energy (High);;1.0;0.0;None;4
+617;4;6005;U16;;System Monthly Energy (Low);;1.0;0.0;None;4
+618;4;6006;U16;;System Annual Energy (High);;1.0;0.0;None;4
+619;4;6007;U16;;System Annual Energy (Low);;1.0;0.0;None;4
+620;4;6008;U16;;System Total Energy (High);;1.0;0.0;None;4
+621;4;6009;U16;;System Total Energy (Low);;1.0;0.0;None;4
+622;4;6010;U16;;Self-Consumption Hourly Energy (High);;1.0;0.0;Self-consumption: System Output - Grid Feed-in Load Consumption - Grid to Users (Air cooling considered);4
+623;4;6011;U16;;Self-Consumption Hourly Energy (Low);;1.0;0.0;None;4
+624;4;6012;U16;;Self-Consumption Daily Energy (High);;1.0;0.0;None;4
+625;4;6013;U16;;Self-Consumption Daily Energy (Low);;1.0;0.0;None;4
+626;4;6014;U16;;Self-Consumption Monthly Energy (High);;1.0;0.0;None;4
+627;4;6015;U16;;Self-Consumption Monthly Energy (Low);;1.0;0.0;None;4
+628;4;6016;U16;;Self-Consumption Annual Energy (High);;1.0;0.0;None;4
+629;4;6017;U16;;Self-Consumption Annual Energy (Low);;1.0;0.0;None;4
+630;4;6018;U16;;Self-Consumption Total Energy (High);;1.0;0.0;None;4
+631;4;6019;U16;;Self-Consumption Total Energy (Low);;1.0;0.0;None;4
+632;4;6020;U16;;Hourly Grid Feed-in Energy (High);;1.0;0.0;Feed-into Grid;4
+633;4;6021;U16;;Hourly Grid Feed-in Energy (Low);;1.0;0.0;None;4
+634;4;6022;U16;;Daily Grid Feed-in Energy (High);;1.0;0.0;None;4
+635;4;6023;U16;;Daily Grid Feed-in Energy (Low);;1.0;0.0;None;4
+636;4;6024;U16;;Monthly Grid Feed-in Energy (High);;1.0;0.0;None;4
+637;4;6025;U16;;Monthly Grid Feed-in Energy (Low);;1.0;0.0;None;4
+638;4;6026;U16;;Annual Grid Feed-in Energy (High);;1.0;0.0;None;4
+639;4;6027;U16;;Annual Grid Feed-in Energy (Low);;1.0;0.0;None;4
+640;4;6028;U16;;Total Grid Feed-in Energy (High);;1.0;0.0;None;4
+641;4;6029;U16;;Total Grid Feed-in Energy (Low);;1.0;0.0;None;4
+642;4;6030;U16;;Hourly Grid Energy to Users (High);;1.0;0.0;Get Power from Grid;4
+643;4;6031;U16;;Hourly Grid Energy to Users (Low);;1.0;0.0;None;4
+644;4;6032;U16;;Daily Grid Energy to Users (High);;1.0;0.0;None;4
+645;4;6033;U16;;Daily Grid Energy to Users (Low);;1.0;0.0;None;4
+646;4;6034;U16;;Monthly Grid Energy to Users (High);;1.0;0.0;None;4
+647;4;6035;U16;;Monthly Grid Energy to Users (Low);;1.0;0.0;None;4
+648;4;6036;U16;;Annual Grid Energy to Users (High);;1.0;0.0;None;4
+649;4;6037;U16;;Annual Grid Energy to Users (Low);;1.0;0.0;None;4
+650;4;6038;U16;;Total Grid Energy to Users (High);;1.0;0.0;None;4
+651;4;6039;U16;;Total Grid Energy to Users (Low);;1.0;0.0;None;4
+652;4;6040;U16;;Hourly Local Load Consumption (High);;1.0;0.0;Load Consumption;4
+653;4;6041;U16;;Hourly Local Load Consumption (Low);;1.0;0.0;None;4
+654;4;6042;U16;;Daily Local Load Consumption (High);;1.0;0.0;None;4
+655;4;6043;U16;;Daily Local Load Consumption (Low);;1.0;0.0;None;4
+656;4;6044;U16;;Monthly Local Load Consumption (High);;1.0;0.0;None;4
+657;4;6045;U16;;Monthly Local Load Consumption (Low);;1.0;0.0;None;4
+658;4;6046;U16;;Annual Local Load Consumption (High);;1.0;0.0;None;4
+659;4;6047;U16;;Annual Local Load Consumption (Low);;1.0;0.0;None;4
+660;4;6048;U16;;Total Local Load Consumption (High);;1.0;0.0;None;4
+661;4;6049;U16;;Total Local Load Consumption (Low);;1.0;0.0;None;4
+662;4;6050;U16;;PV Hourly Generation (High);;1.0;0.0;PV Generation-Air Cooling;4
+663;4;6051;U16;;PV Hourly Generation (Low);;1.0;0.0;None;4
+664;4;6052;U16;;PV Daily Generation (High);;1.0;0.0;None;4
+665;4;6053;U16;;PV Daily Generation (Low);;1.0;0.0;None;4
+666;4;6054;U16;;PV Monthly Generation (High);;1.0;0.0;None;4
+667;4;6055;U16;;PV Monthly Generation (Low);;1.0;0.0;None;4
+668;4;6056;U16;;PV Annual Generation (High);;1.0;0.0;None;4
+669;4;6057;U16;;PV Annual Generation (Low);;1.0;0.0;None;4
+670;4;6058;U16;;PV Total Generation (High);;1.0;0.0;None;4
+671;4;6059;U16;;PV Total Generation (Low);;1.0;0.0;None;4
+672;4;6060;U16;;Battery Hourly Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Hour）;4
+673;4;6061;U16;;Battery Hourly Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Hour）;4
+674;4;6062;U16;;Battery Daily Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Day）;4
+675;4;6063;U16;;Battery Daily Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Day）;4
+676;4;6064;U16;;Battery Monthly Discharge (High);;1.0;0.0;Battery Data（Battery Discharge-Month）;4
+677;4;6065;U16;;Battery Monthly Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Month）;4
+678;4;6066;U16;;Battery Annual Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Year）;4
+679;4;6067;U16;;Battery Annual Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Year）;4
+680;4;6068;U16;;Battery Total Discharge 1 (High);;1.0;0.0;Battery Data（Battery Discharge-Total）;4
+681;4;6069;U16;;Battery Total Discharge 1 (Low);;1.0;0.0;Battery Data（Battery Discharge-Total）;4
+682;4;6070;U16;;Battery Hourly Charge 1 (High);;1.0;0.0;Battery Data（Battery Charge-Hour）;4
+683;4;6071;U16;;Battery Hourly Charge 1 (Low);;1.0;0.0;Battery Data（Battery Charge-Hour）;4
+684;4;6072;U16;;Battery Daily Charge 1(High);;1.0;0.0;Battery Data（Battery Charge-Day）;4
+685;4;6073;U16;;Battery Daily Charge 1 (Low);;1.0;0.0;Battery Data（Battery Charge-Day）;4
+686;4;6074;U16;;Battery Monthly Charge1 (High);;1.0;0.0;Battery Data（Battery Charge-Month）;4
+687;4;6075;U16;;Battery Monthly Charge1 (Low);;1.0;0.0;Battery Data（Battery Charge-Month）;4
+688;4;6076;U16;;Battery Annual Charge 1 (High);;1.0;0.0;Battery Data（Battery Charge-Year）;4
+689;4;6077;U16;;Battery Annual Charge 1(Low);;1.0;0.0;Battery Data（Battery Charge-Year）;4
+690;4;6078;U16;;Battery Total Charge 1 (High);;1.0;0.0;Battery Data（Battery Charge-Total）;4
+691;4;6079;U16;;Battery Total Charge 1 (Low);;1.0;0.0;Battery Data（Battery Charge-Total）;4
+692;4;6080;U16;;Generator Daily Production (High);;1.0;0.0;Generator Data（Generator Energy Production-Today）;4
+693;4;6081;U16;;Generator Daily Production (Low);;1.0;0.0;Generator Data（Generator Energy Production-Today）;4
+694;4;6082;U16;;Generator Total Production (High);;1.0;0.0;Generator Data（Generator Energy Production-Total）;4
+695;4;6083;U16;;Generator Total Production (Low);;1.0;0.0;Generator Data（Generator Energy Production-Total）;4
+696;4;6084;U16;;PV Inverter AC/DC Daily Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+697;4;6085;U16;;PV Inverter AC/DC Daily Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+698;4;6086;U16;;PV Inverter AC/DC Total Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+699;4;6087;U16;;PV Inverter AC/DC Total Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+700;4;6088;U16;;PV Inverter DC/AC Daily Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+701;4;6089;U16;;PV Inverter DC/AC Daily Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Today）;4
+702;4;6090;U16;;PV Inverter DC/AC Total Production (High);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+703;4;6091;U16;;PV Inverter DC/AC Total Production (Low);;1.0;0.0;Inverter Data（PV Inverter Generation-Total）;4
+704;4;6092;U16;;None;;1.0;0.0;None;4
+705;4;6093;U16;;None;;1.0;0.0;None;4
+706;4;6094;U16;;None;;1.0;0.0;None;4
+707;4;6095;U16;;None;;1.0;0.0;None;4
+708;4;6096;U16;;None;;1.0;0.0;None;4
+709;4;6097;U16;;None;;1.0;0.0;None;4
+710;4;6098;U16;;None;;1.0;0.0;None;4
+711;4;6099;U16;;None;;1.0;0.0;None;4
+712;4;6100;U16;;None;;1.0;0.0;None;4
+713;4;6124;U16;;None;;1.0;0.0;None;4

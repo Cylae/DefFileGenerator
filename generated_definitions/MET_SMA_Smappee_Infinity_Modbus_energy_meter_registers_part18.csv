@@ -1,0 +1,75 @@
+modbusRTU;Meter;SMA;Smappee_Infinity_Mod_p18;;;;;;;
+1;4;20480;U16;;Image length in bytes;;1.0;0.0;;1
+2;4;20482;U16;;Offset;;1.0;0.0;;1
+3;4;20484;U16;;Available buffer size in bytes;;1.0;0.0;;1
+4;4;20544;U16;;Transfer Buffer;;1.0;0.0;;1
+5;4;20545;U16;;Transfer Buffer;;1.0;0.0;;1
+6;4;20546;U16;;Transfer Buffer;;1.0;0.0;;1
+7;4;20547;U16;;Transfer Buffer;;1.0;0.0;;1
+8;4;20548;U16;;Transfer Buffer;;1.0;0.0;;1
+9;4;20549;U16;;Transfer Buffer;;1.0;0.0;;1
+10;4;20550;U16;;Transfer Buffer;;1.0;0.0;;1
+11;4;20551;U16;;Transfer Buffer;;1.0;0.0;;1
+12;4;20552;U16;;Transfer Buffer;;1.0;0.0;;1
+13;4;20553;U16;;Transfer Buffer;;1.0;0.0;;1
+14;4;20554;U16;;Transfer Buffer;;1.0;0.0;;1
+15;4;20555;U16;;Transfer Buffer;;1.0;0.0;;1
+16;4;20556;U16;;Transfer Buffer;;1.0;0.0;;1
+17;4;20557;U16;;Transfer Buffer;;1.0;0.0;;1
+18;4;20558;U16;;Transfer Buffer;;1.0;0.0;;1
+19;4;20559;U16;;Transfer Buffer;;1.0;0.0;;1
+20;4;20560;U16;;Transfer Buffer;;1.0;0.0;;1
+21;4;20561;U16;;Transfer Buffer;;1.0;0.0;;1
+22;4;20562;U16;;Transfer Buffer;;1.0;0.0;;1
+23;4;20563;U16;;Transfer Buffer;;1.0;0.0;;1
+24;4;20564;U16;;Transfer Buffer;;1.0;0.0;;1
+25;4;20565;U16;;Transfer Buffer;;1.0;0.0;;1
+26;4;20566;U16;;Transfer Buffer;;1.0;0.0;;1
+27;4;20567;U16;;Transfer Buffer;;1.0;0.0;;1
+28;4;20568;U16;;Transfer Buffer;;1.0;0.0;;1
+29;4;20569;U16;;Transfer Buffer;;1.0;0.0;;1
+30;4;20570;U16;;Transfer Buffer;;1.0;0.0;;1
+31;4;20571;U16;;Transfer Buffer;;1.0;0.0;;1
+32;4;20572;U16;;Transfer Buffer;;1.0;0.0;;1
+33;4;20573;U16;;Transfer Buffer;;1.0;0.0;;1
+34;4;20574;U16;;Transfer Buffer;;1.0;0.0;;1
+35;4;20575;U16;;Transfer Buffer;;1.0;0.0;;1
+36;4;20576;U16;;Transfer Buffer;;1.0;0.0;;1
+37;4;20577;U16;;Transfer Buffer;;1.0;0.0;;1
+38;4;20578;U16;;Transfer Buffer;;1.0;0.0;;1
+39;4;20579;U16;;Transfer Buffer;;1.0;0.0;;1
+40;4;20580;U16;;Transfer Buffer;;1.0;0.0;;1
+41;4;20581;U16;;Transfer Buffer;;1.0;0.0;;1
+42;4;20582;U16;;Transfer Buffer;;1.0;0.0;;1
+43;4;20583;U16;;Transfer Buffer;;1.0;0.0;;1
+44;4;20584;U16;;Transfer Buffer;;1.0;0.0;;1
+45;4;20585;U16;;Transfer Buffer;;1.0;0.0;;1
+46;4;20586;U16;;Transfer Buffer;;1.0;0.0;;1
+47;4;20587;U16;;Transfer Buffer;;1.0;0.0;;1
+48;4;20588;U16;;Transfer Buffer;;1.0;0.0;;1
+49;4;20589;U16;;Transfer Buffer;;1.0;0.0;;1
+50;4;20590;U16;;Transfer Buffer;;1.0;0.0;;1
+51;4;20591;U16;;Transfer Buffer;;1.0;0.0;;1
+52;4;20592;U16;;Transfer Buffer;;1.0;0.0;;1
+53;4;20593;U16;;Transfer Buffer;;1.0;0.0;;1
+54;4;20594;U16;;Transfer Buffer;;1.0;0.0;;1
+55;4;20595;U16;;Transfer Buffer;;1.0;0.0;;1
+56;4;20596;U16;;Transfer Buffer;;1.0;0.0;;1
+57;4;20597;U16;;Transfer Buffer;;1.0;0.0;;1
+58;4;20598;U16;;Transfer Buffer;;1.0;0.0;;1
+59;4;20599;U16;;Transfer Buffer;;1.0;0.0;;1
+60;4;20600;U16;;Transfer Buffer;;1.0;0.0;;1
+61;4;20601;U16;;Transfer Buffer;;1.0;0.0;;1
+62;4;20602;U16;;Transfer Buffer;;1.0;0.0;;1
+63;4;20603;U16;;Transfer Buffer;;1.0;0.0;;1
+64;4;20604;U16;;Transfer Buffer;;1.0;0.0;;1
+65;4;20605;U16;;Transfer Buffer;;1.0;0.0;;1
+66;4;20606;U16;;Transfer Buffer;;1.0;0.0;;1
+67;4;20607;U16;;Transfer Buffer;;1.0;0.0;;1
+68;4;65000;U16;;Write 1 to save config to flash;;1.0;0.0;;1
+69;4;65001;U16;;Reserved;;1.0;0.0;;0
+70;4;65002;U16;;Device status;;1.0;0.0;;4
+71;4;65003;U16;;Firmware upgrade status;;1.0;0.0;;4
+72;4;65004;U16;;Device type;MODEL;1.0;0.0;;1
+73;4;65005;U16;;Device serial;SERIAL;1.0;0.0;;1
+74;4;65007;U16;;Modbus Address;UNIT_ID;1.0;0.0;;1

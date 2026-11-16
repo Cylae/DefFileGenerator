@@ -16,7 +16,7 @@ Modbus;Inverter;KOSTAL;PIKO_CI;;;;;;;
 15;3;114;F32;;Total home comsumption PV;;1.000000;0.000000;Wh;4
 16;3;116;F32;;Home own comsumption from PV;;1.000000;0.000000;W;4
 17;3;118;F32;;Total home consumption;;1.000000;0.000000;Wh;4
-18;3;122;F32;;Power limit from EVU;CMD_P_AC_SET_ABS;1.000000;0.000000;%;4
+18;3;122;F32;;Power limit from EVU;CMD_P_AC_SET_ABS;1.000000;0.000000;%;1
 19;3;124;F32;;Total home consumption rate;;1.000000;0.000000;%;4
 20;3;144;F32;;Worktime;;1.000000;0.000000;s;4
 21;3;150;F32;;Actual cosphi;PF;1.000000;0.000000;;4

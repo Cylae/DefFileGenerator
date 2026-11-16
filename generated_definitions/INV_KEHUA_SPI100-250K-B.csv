@@ -36,7 +36,7 @@ ModbusRTU;Inverter;KEHUA;SPI 100K-250K-B;;;;;;;
 35;3;11023;U32;;Output active power;;1.0;0.0;W;4
 36;3;11025;I32;;Output reactive power;;1.0;0.0;Var;4
 37;3;11027;I16;;Total power factor;;0.001;0.0;;4
-38;3;11028;U16;;Grid voltage (U/UV);;0.1;0.0;V;4
+38;3;11028;U16;;Grid voltage (U/UV);U_AC_L1L2;0.1;0.0;V;4
 39;3;11029;U16;;Grid voltage (V/VW);;0.1;0.0;V;4
 40;3;11030;U16;;Grid voltage (W/WU);;0.1;0.0;V;4
 41;3;11031;U16;;Grid current (U);I_AC;0.1;0.0;A;4
@@ -50,7 +50,7 @@ ModbusRTU;Inverter;KEHUA;SPI 100K-250K-B;;;;;;;
 49;3;11039;I16;;Inner temperature;;0.1;0.0;Deg.Celsius;4
 50;3;11040;U16;;Bus voltage (inverter);;0.1;0.0;V;4
 51;3;11041;U16;;Insulation resistance;R_ISO;0.1;0.0;Kohm;4
-52;3;11042;U16;;PV input power;;0.1;0.0;kW;4
+52;3;11042;U16;;PV input power;P_DC;0.1;0.0;kW;4
 53;3;11043;U16;;Bus cap value;;1.0;0.0;uF;4
 54;3;11044;U16;;PID running status;;1.0;0.0;;4
 55;3;11045;U16;;PID repair voltage;;0.1;0.0;V;4
@@ -199,7 +199,7 @@ ModbusRTU;Inverter;KEHUA;SPI 100K-250K-B;;;;;;;
 198;3;12014;U16;;Clear the alarm of DC arc;;1.0;0.0;;4
 199;3;12015;U16;;Recover default setting;;1.0;0.0;;4
 200;3;12016;U16;;Active power mode;;1.0;0.0;;4
-201;3;12017;U16;;Active power setting (SI value);CMD_P_AC_SET_PERCENT;0.1;0.0;kW;1
+201;3;12017;U16;;Active power setting (SI value);;0.1;0.0;kW;4
 202;3;12018;U16;;Active power setting (p.u.);;0.1;0.0;Percent;4
 203;3;12019;U16;;Reactive power mode;;1.0;0.0;;4
 204;3;12020;I16;;Reactive power (SI value);;0.1;0.0;kVar;4
@@ -224,10 +224,10 @@ ModbusRTU;Inverter;KEHUA;SPI 100K-250K-B;;;;;;;
 223;3;11519;U16;;Inverter voltage (U/UV);;0.1;0.0;V;4
 224;3;11520;U16;;Inverter voltage (V/VW);;0.1;0.0;V;4
 225;3;11521;U16;;Inverter voltage (W/WU);;0.1;0.0;V;4
-226;3;11522;U16;;Inverter current (U);;0.1;0.0;A;4
+226;3;11522;U16;;Inverter current (U);I_DC;0.1;0.0;A;4
 227;3;11523;U16;;Inverter current (V);;0.1;0.0;A;4
 228;3;11524;U16;;Inverter current (W);;0.1;0.0;A;4
-229;3;11525;I16;;Current DC component (U);I_DC;0.1;0.0;A;4
+229;3;11525;I16;;Current DC component (U);;0.1;0.0;A;4
 230;3;11526;I16;;Current DC component (V);;0.1;0.0;A;4
 231;3;11527;I16;;Current DC component (W);;0.1;0.0;A;4
 232;3;11528;U16;;Negative Bus voltage;;0.1;0.0;V;4

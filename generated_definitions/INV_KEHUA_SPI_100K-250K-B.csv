@@ -182,7 +182,7 @@ Modbus;Inverter;KEHUA;SPI_100K-250K-B;;;;;;;
 181;3;11197;I16;;Power of PV 30;;0.100000;0.000000;kW;4
 182;3;11198;I16;;Power of PV 31;;0.100000;0.000000;kW;4
 183;3;11199;I16;;Power of PV 32;;0.100000;0.000000;kW;4
-184;3;12000;U16;;ON_OFF;CMD_ON;1.000000;0.000000;;4
+184;3;12000;U16;;ON_OFF;CMD_ON;1.000000;0.000000;;1
 185;3;12001;U16;;Self-start after power on;;1.000000;0.000000;;4
 186;3;12002;U16;;Recover grid-tied;;1.000000;0.000000;;4
 187;3;12003;U16;;Self-recover once grid abnormal;;1.000000;0.000000;;4
@@ -200,7 +200,7 @@ Modbus;Inverter;KEHUA;SPI_100K-250K-B;;;;;;;
 199;3;12015;U16;;Recover default setting;;1.000000;0.000000;;4
 200;3;12016;U16;;Active power mode;;1.000000;0.000000;;4
 201;3;12017;U16;;Active power setting (SI value);;0.100000;0.000000;kW;4
-202;3;12018;U16;;Active power setting (p.u.);CMD_P_AC_SET_PERCENT;0.100000;0.000000;Percent;4
+202;3;12018;U16;;Active power setting (p.u.);CMD_P_AC_SET_PERCENT;0.100000;0.000000;Percent;1
 203;3;12019;U16;;Reactive power mode;;1.000000;0.000000;;4
 204;3;12020;I16;;Reactive power (SI value);;0.100000;0.000000;kVar;4
 205;3;12021;I16;;Reactive power (p.u. value);;0.100000;0.000000;Percent;4

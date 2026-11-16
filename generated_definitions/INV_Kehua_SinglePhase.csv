@@ -143,7 +143,7 @@ Modbus;Inverter;Kehua;SinglePhase;;;;;;;
 142;3;6487;U16;;10min grid voltage point;;0.100000;0.000000;%;4
 143;3;6490;U16;;Soft start rate of ON_OFF;;0.010000;0.000000;%;4
 144;3;6492;U16;;P-LF mode;;1.000000;0.000000;;4
-145;1;5000_0_1;BITS;;ON_OFF setting;CMD_OFF;1.000000;0.000000;;4
+145;1;5000_0_1;BITS;;ON_OFF setting;CMD_OFF;1.000000;0.000000;;1
 146;1;5001_0_1;BITS;;Buzzer enable;;1.000000;0.000000;;4
 147;1;5002_0_1;BITS;;Battery alarm function enable;;1.000000;0.000000;;4
 148;1;5003_0_1;BITS;;Input abnormal alarm function enable;;1.000000;0.000000;;4

@@ -2,7 +2,7 @@ modbusRTU;Other;Webdyn;SNEF_Modbus;;;;;;;
 1;4;4120;U16;;ActivePower-Phase1;P_AC_1;1.0;0.0;mW;4
 2;4;4122;U16;;ActivePower-Phase2;P_AC_2;1.0;0.0;mW;4
 3;4;4124;U16;;ActivePower-Phase3;P_AC_3;1.0;0.0;mW;4
-4;4;0;U16;;Voltage-Phase1-N;U_AC_1;1.0;0.0;mV;4
+4;4;0;U16;;Voltage-Phase1-N;U_AC_3;1.0;0.0;mV;4
 5;4;2;U16;;Voltage-Phase2-N;;1.0;0.0;mV;4
 6;4;4;U16;;Voltage-Phase3-N;;1.0;0.0;mV;4
 7;4;14;U16;;Current-Phase1;I_AC_1;1.0;0.0;mA;4

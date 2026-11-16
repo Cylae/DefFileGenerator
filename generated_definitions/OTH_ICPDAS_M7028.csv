@@ -23,7 +23,7 @@ Modbus;Io;ICPDAS;M7028;;;;;;;
 22;3;101;U16;;Safe analog output Channel 5;;1.000000;0.000000;;4
 23;3;102;U16;;Safe analog output Channel 6;;1.000000;0.000000;;4
 24;3;103;U16;;Safe analog output Channel 7;;1.000000;0.000000;;4
-25;3;192;U16;;Power on analog output value of channel 0;CMD_ON;1.000000;0.000000;;4
+25;3;192;U16;;Power on analog output value of channel 0;CMD_ON;1.000000;0.000000;;1
 26;3;193;U16;;Power on analog output value of channel 1;;1.000000;0.000000;;4
 27;3;194;U16;;Power on analog output value of channel 2;;1.000000;0.000000;;4
 28;3;195;U16;;Power on analog output value of channel 3;;1.000000;0.000000;;4

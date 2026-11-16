@@ -11,14 +11,14 @@ ModbusRTU;Meter;Carlo Gavazzi;EM210;;;;;;;
 10;3;25;I32;;apparent_power1;;0.1;0.0;VA;4
 11;3;27;I32;;apparent_power2;;0.1;0.0;VA;4
 12;3;29;I32;;apparent_power3;;0.1;0.0;VA;4
-13;3;31;I32;;reactive_power1;;0.1;0.0;VAR;4
+13;3;31;I32;;reactive_power1;Q_AC;0.1;0.0;VAR;4
 14;3;33;I32;;reactive_power2;;0.1;0.0;VAR;4
 15;3;35;I32;;reactive_power3;;0.1;0.0;VAR;4
 16;3;37;I32;;volt;;0.1;0.0;V;4
 17;3;39;I32;;V l-l;;0.1;0.0;V;4
 18;3;41;I32;;power;P_AC;0.1;0.0;W;4
 19;3;43;I32;;apparent_power;S_AC;0.1;0.0;VA;4
-20;3;45;I32;;reactive_power;Q_AC;0.1;0.0;VAR;4
+20;3;45;I32;;reactive_power;;0.1;0.0;VAR;4
 21;3;47;I16;;Pf l1;;0.001;0.0;;4
 22;3;48;I16;;Pf l2;;0.001;0.0;;4
 23;3;49;I16;;Pf l3;;0.001;0.0;;4

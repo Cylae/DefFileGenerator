@@ -19,9 +19,9 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 18;3;30235;U32;;Etat du mode de sauvegarde;;1.000000;0.000000;;4
 19;3;30247;U32;;Numero d evenement actuel pour fabricant;;1.000000;0.000000;;4
 20;3;30251;U32;;Etat de verrouillage;;1.000000;0.000000;;4
-21;3;30513;U64;;Rendement total_0;;1.000000;0.000000;Wh;4
+21;3;30513;U64;;Rendement total_0;E_TOT;1.000000;0.000000;Wh;4
 22;3;30513;U64;;Rendement total_2;;1.000000;0.000000;Wh;4
-23;3;30521;U64;;Temps de service_0;;1.000000;0.000000;s;4
+23;3;30521;U64;;Temps de service_0;TOT;1.000000;0.000000;s;4
 24;3;30525;U64;;Temps d injection_1;;1.000000;0.000000;s;4
 25;3;30529;U32;;Rendement total_1;;1.000000;0.000000;Wh;4
 26;3;30529;U32;;Rendement total_3;;1.000000;0.000000;Wh;4
@@ -235,7 +235,7 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 234;3;41451;U32;;Consigne de puissance active externe 2_ Timeout;;1.000000;0.000000;s;4
 235;3;41453;U32;;Consigne de puissance active externe 2;;1.000000;0.000000;;4
 236;3;41455;U32;;Frequence locale integrale_ activation via Modbus;;1.000000;0.000000;;4
-237;3;41463;U32;;Puissance totale de l installation;E_TOT;0.001000;0.000000;kW;4
+237;3;41463;U32;;Puissance totale de l installation;;0.001000;0.000000;kW;4
 238;3;44001;U32;;Taux de demarrage progressif P;;1.000000;0.000000;pct/min;4
 239;3;44003;U32;;Demarrage progressif P;;1.000000;0.000000;;4
 240;3;44005;U32;;Taux de demarrage progressif Q;;1.000000;0.000000;pct/min;4

@@ -67,7 +67,7 @@ modbus;Inverter;ABB;PVS800-57B;;;;;;;
 66;3;30491;U32_W;;Ext2 ctrl mode1;;1;0;;4
 67;3;30495;U32_W;;Local ctrl mode;;1;0;;4
 68;3;30497;U32_W;;Local ctrl disable;;1;0;;4
-69;3;30977;U32_W;;Fast power off mode;CMD_OFF;1;0;;4
+69;3;30977;U32_W;;Fast power off mode;CMD_OFF;1;0;;1
 70;3;30979;U32_W;;Fast power off source;;1;0;;4
 71;3;31489;U32_W;;User DC voltage ref;;0.01;0;V;4
 72;3;31491;U32_W;;DC ref sel;;1;0;;4
@@ -194,7 +194,7 @@ modbus;Inverter;ABB;PVS800-57B;;;;;;;
 193;3;33287;U32_W;;Limit word 4;;1;0;;4
 194;3;33289;U32_W;;Limit word 5;;1;0;;4
 195;3;33291;U32_W;;Limit word 6;;1;0;;4
-196;3;33301;U32_W;;Active power limit to grid;CMD_P_AC_SET_ABS;1;0;kW;4
+196;3;33301;U32_W;;Active power limit to grid;CMD_P_AC_SET_ABS;1;0;kW;1
 197;3;33305;U32_W;;Reactive power limit;;1;0;kVAr;4
 198;3;33403;U32_W;;P(f) limit type;;1;0;;4
 199;3;33405;U32_W;;P(f) corner frequency;;0.01;0;Hz;4
@@ -222,7 +222,7 @@ modbus;Inverter;ABB;PVS800-57B;;;;;;;
 221;3;33465;U32_W;;Active power ramp;;1;0;%/min;4
 222;3;33467;U32_W;;Shut down ramp;;1;0;%/s;4
 223;3;33469;U32_W;;Active power margin;;0.1;0;%;4
-224;3;33475;U32_W;;External limit ramp up;CMD_RAMP_TIME_S;1;0;ms;4
+224;3;33475;U32_W;;External limit ramp up;CMD_RAMP_TIME_S;1;0;ms;1
 225;3;33477;U32_W;;External limit ramp down;;1;0;ms;4
 226;3;33481;U32_W;;Limit priority;;1;0;;4
 227;3;33793;U32_W;;Autoreset counter;;1;0;;4

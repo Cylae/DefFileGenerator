@@ -15,9 +15,9 @@ ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 14;4;5014;U16;;MPPT 3 voltage;U_DC_MPPT_3;0.1;0.0;V;2
 15;4;5015;U16;;MPPT 3 current;I_DC_MPPT_3;0.1;0.0;A;2
 16;4;5016;U32_W;;Total DC power;P_DC;1.0;0.0;W;4
-17;4;5018;U16;;A-B line voltage/phase A voltage;U_AC_L1L2;0.1;0.0;V;2
-18;4;5019;U16;;B-C line voltage/phase B voltage;U_AC_L2L3;0.1;0.0;V;2
-19;4;5020;U16;;C-A line voltage/phase C voltage;U_AC_L3L1;0.1;0.0;V;2
+17;4;5018;U16;;A-B line voltage/phase A voltage;U_AC_1;0.1;0.0;V;2
+18;4;5019;U16;;B-C line voltage/phase B voltage;U_AC_2;0.1;0.0;V;2
+19;4;5020;U16;;C-A line voltage/phase C voltage;U_AC_3;0.1;0.0;V;2
 20;4;5021;U16;;Phase A current;I_AC_1;0.1;0.0;A;2
 21;4;5022;U16;;Phase B current;I_AC_2;0.1;0.0;A;2
 22;4;5023;U16;;Phase C current;I_AC_3;0.1;0.0;A;2
@@ -33,7 +33,7 @@ ModbusTCP;Inverter;Sungrow;Generic;;;;;;;
 32;4;5042;U16;;Fault/Alarm time:5;;1.0;0.0;;4
 33;4;5043;U16;;Fault/Alarm time:6;;1.0;0.0;;4
 34;4;5044;U16;;Fault/Alarm code;;1.0;0.0;;4
-35;4;5048;U16;;Nominal reactive power;Q_RATED;0.1;0.0;kVAR;4
+35;4;5048;U16;;Nominal reactive power;;0.1;0.0;kVAR;4
 36;4;5070;U16;;Impedance to the ground in parallel connection;;1.0;0.0;kOhm;4
 37;4;5080;U32_W;;Work state_1;;1.0;0.0;W;8
 38;4;5082;I32_W;;Meter power;;1.0;0.0;W;4

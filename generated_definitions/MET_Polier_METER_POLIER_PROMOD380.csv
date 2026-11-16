@@ -6,7 +6,7 @@ ModbusRTU;Meter;POLIER;PROMOD380;;;;;;;
 5;3;16389;F32;;Protocol version;;1;0.0;;4
 6;3;16391;F32;;Software version;;1;0.0;;4
 7;3;16393;F32;;Hardware version;;1;0.0;;4
-8;3;16395;I16;;Meter amps;;1;0.0;A;4
+8;3;16395;I16;;Meter amps;I_AC;1;0.0;A;4
 9;3;16396;U16;;CT ratio;;1;0.0;A;4
 10;3;16397;F32;;S0 output rate;;1;0.0;imp/kWh;4
 11;3;16399;I16;;Combination code;;1;0.0;;4
@@ -24,12 +24,12 @@ ModbusRTU;Meter;POLIER;PROMOD380;;;;;;;
 23;3;16411;U32;;Checksum;;1;0.0;;4
 24;3;16413;U32;;Active status word;;1;0.0;;4
 25;3;16415;I16;;CT mode;;1;0.0;A;4
-26;3;20480;F32;;Voltage;;1;0.0;V;4
+26;3;20480;F32;;Voltage;U_DC;1;0.0;V;4
 27;3;20482;F32;;L1 Voltage;U_AC_1;1;0.0;V;4
 28;3;20484;F32;;L2 Voltage;U_AC_2;1;0.0;V;4
 29;3;20486;F32;;L3 Voltage;U_AC_3;1;0.0;V;4
 30;3;20488;F32;;Grid frequency;FREQ;1;0.0;Hz;4
-31;3;20490;F32;;Current;;1;0.0;A;4
+31;3;20490;F32;;Current;I_DC;1;0.0;A;4
 32;3;20492;F32;;L1 Current;I_AC_1;1;0.0;A;4
 33;3;20494;F32;;L2 Current;;1;0.0;A;4
 34;3;20496;F32;;L3 Current;;1;0.0;A;4

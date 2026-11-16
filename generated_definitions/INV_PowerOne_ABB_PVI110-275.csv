@@ -363,7 +363,7 @@ ModbusRTU;Inverter;PowerOne;PVI 110-275;;;;;;;
 362;4;20136;F32;;Week Energy Module 01;;1;0;kWh;4
 363;4;20138;F32;;Month Energy Module 01;;1;0;kWh;4
 364;4;20140;F32;;Yearly Energy Module 01;;1;0;kWh;4
-365;4;20142;F32;;3 phases Grid Voltage Module 01;;1;0;V;4
+365;4;20142;F32;;3 phases Grid Voltage Module 01;U_AC_L1L2;1;0;V;4
 366;4;20144;F32;;3 phases Grid Current Module 01;;1;0;A;4
 367;4;20146;F32;;3 phases Grid power Module 01;;1;0;W;4
 368;4;20148;F32;;3 phases Frequence Module 01;FREQ;1;0;Hz;4

@@ -1,0 +1,119 @@
+modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p6;;;;;;;
+1;4;10050;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;;1;0.0;/;4
+2;4;10051;U16;;None;;1;0.0;/;4
+3;4;10052;U16;;None;;1;0.0;/;4
+4;4;10053;U16;;None;;1;0.0;/;4
+5;4;10054;U16;;None;;1;0.0;/;4
+6;4;10055;U16;;None;;1;0.0;/;4
+7;4;10056;U16;;"1：Power On
+2：Power Off
+3：Standby";CMD_ON;1;0.0;/;1
+8;4;10057;U16;;None;;1.0;0.0;None;4
+9;4;10058;U16;;"0：Local/Upper computer
+1：Upper computer
+2：Local";;1.0;0.0;/;4
+10;4;10059;U16;;None;;1.0;0.0;None;4
+11;4;10060;U16;;"0x55：Disabled
+0xA1：Power factor setting
+0xA2：Reactive power ratio setting";Q_AC;1;0.0;/;4
+12;4;10061;U16;;"0x55：Disable
+0xAA：Enable";;1;0.0;/;4
+13;4;10062;U16;;"0xAA：Master
+0x55：Slave";;1;0.0;/;4
+14;4;10063;U16;;None;;1;0.0;/;4
+15;4;10100;U16;;PCS voltage on offgrid-mode;;0;0.0;V;4
+16;4;10101;U16;;PCS frequency on offgrid-mode;FREQ;0;0.0;Hz;4
+17;4;10102;U16;;None;;1.0;0.0;None;4
+18;4;10103;U16;;You need to set the reactive working mode to power factor mode first and then set the power factor.;PF;0;0.0;/;4
+19;4;10104;U16;;"You need to set the reactive power working mode to the reactive power percentage mode first, and then set that reactive power value.                                                                  
+ Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued. 
+In DC-coupled systems, the unit of reactive power points is % within the range of [-1000, 1000]";;0;0.0;kvar;4
+20;4;10106;U16;;0x55: Disable, 0xBB: Overload Test Mode;;1.0;0.0;/;4
+21;4;10107;U16;;None;;1.0;0.0;None;4
+22;4;10109;U16;;0: No Overload 1: 1.1x Overload 2: 1.2x Overload;;1.0;0.0;/;4
+23;4;10110;U16;;None;;1.0;0.0;None;4
+24;4;10113;U16;;The upper computer should be set with different values, otherwise there will be faults.;;1;0.0;None;9
+25;4;10114;U16;;"0:Upper computer communication fault enable is disable
+1~120:The heartbeat settings value should change in this time";;1;0.0;s;9
+26;4;10115;U16;;0xAA: Enable；0x55: Disable;;1;0.0;/;4
+27;4;10116;U16;;None;;1.0;0.0;None;4
+28;4;10125;U16;;"0xAA: On-grid Mode
+0x55: Off-grid Mode                    
+0xBB: VSG Mode";;1;0.0;/;4
+29;4;10126;U16;;0x04: On-grid constant power AC;;1;0.0;/;4
+30;4;10127;U16;;Positive electrode for discharge and negative electrode for charge                                                                                     Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;;0;0.0;kW;4
+31;4;10129;U16;;"0x05：Power On
+0x03：Power Off";;1;0.0;/;4
+32;4;10130;U16;;None;;1.0;0.0;None;4
+33;4;10131;U16;;None;;0;0.0;V;4
+34;4;10132;U16;;None;;0;0.0;Hz;4
+35;4;10133;U16;;None;;0;0.0;/;4
+36;4;10134;U16;;None;;0;0.0;/;4
+37;4;10135;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;;0;0.0;kW;4
+38;4;10137;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;;0;0.0;kvar;4
+39;4;10139;U16;;None;;1.0;0.0;None;4
+40;4;10316;U16;;None;;0;0.0;Bar;4
+41;4;10317;U16;;None;;1.0;0.0;None;4
+42;4;10318;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.(max temperature 1>max temperature 2>min temperature 1>min temperature 1);;1;0.0;℃;4
+43;4;10319;U16;;None;;1;0.0;℃;4
+44;4;10320;U16;;None;;1;0.0;℃;4
+45;4;10321;U16;;None;;1;0.0;℃;4
+46;4;10322;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.(max temperature 1>max temperature 2>min temperature 1>min temperature 1);;1;0.0;℃;4
+47;4;10323;U16;;None;;1;0.0;℃;4
+48;4;10324;U16;;None;;1;0.0;℃;4
+49;4;10325;U16;;None;;1;0.0;℃;4
+50;4;10326;U16;;"See Note 1.
+Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.";;0;0.0;%;4
+51;4;10327;U16;;None;;0;0.0;%;4
+52;4;10328;U16;;None;;0;0.0;%;4
+53;4;10329;U16;;None;;0;0.0;%;4
+54;4;10330;U16;;None;;0;0.0;%;4
+55;4;10331;U16;;None;;0;0.0;%;4
+56;4;10332;U16;;None;;0;0.0;%;4
+57;4;10333;U16;;None;;0;0.0;%;4
+58;4;10334;U16;;None;;1;0.0;s;4
+59;4;10335;U16;;None;;1;0.0;s;4
+60;4;10336;U16;;"0xAA：Activate One-button Supply Power
+0x55：Deactivate One-button Supply Power";;1;0.0;/;4
+61;4;10337;U16;;None;;1.0;0.0;None;4
+62;4;10361;U16;;None;;0;0.0;kW;4
+63;4;10363;U16;;None;;0;0.0;mV;4
+64;4;10364;U16;;0xAA：Enable；0x55：Disable;;1;0.0;/;4
+65;4;10365;U16;;None;;0;0.0;%;4
+66;4;10366;U16;;None;;1.0;0.0;None;4
+67;4;11005;U16;;0x50：Fault reset;;1;0.0;/;9
+68;4;11006;U16;;None;;1.0;0.0;None;4
+69;4;11007;U16;;0xAA：Enable；0x55：Disable;;1;0.0;/;4
+70;4;11008;U16;;0xAA：Enable；0x55：Disable;;1;0.0;/;4
+71;4;11009;U16;;None;;1;0.0;℃;4
+72;4;11010;U16;;None;;1;0.0;℃;4
+73;4;11011;U16;;None;;1;0.0;mg/m³;4
+74;4;11012;U16;;None;;1;0.0;mg/m³;4
+75;4;11013;U16;;None;;1;0.0;ppm;4
+76;4;11014;U16;;None;;1;0.0;ppm;4
+77;4;11015;U16;;None;;1;0.0;ppm;4
+78;4;11016;U16;;None;;1;0.0;ppm;4
+79;4;11017;U16;;"0xAA: Enable; 0x55: Disable";;1;0.0;/;4
+80;4;11018;U16;;"0x55：disable
+0xAA：enable";;1;0.0;/;4
+81;4;11019;U16;;1:Running   2：Non-running   4Fault;;1;0.0;/;9
+82;4;11020;U16;;"0x55：disable
+0xAA：enable";;1;0.0;/;4
+83;4;11021;U16;;0： Automatic control mode；1：Cooling Mode；2：Heating Mode；3：Pump Cycle；4：Stop Mode.;;1;0.0;/;4
+84;4;11022;U16;;None;;1;0.0;%;4
+85;4;11023;U16;;Cooling temperature ≥Heating temperature;;0;0.0;℃;4
+86;4;11024;U16;;None;;0;0.0;℃;4
+87;4;11025;U16;;"0x00：DIN1~DIN24 function is forbidden
+0x01：DIN1~DIN24 function is faulty,model is open";MODEL;1.0;0.0;/;9
+88;4;11026;U16;;"Each bit of data represents the model of input nodes with corresponding numbers.
+0: close；1: open";;1.0;0.0;/;4
+89;4;11028;U16;;"0x00：DO1~DO10 close
+0x01：DO1~DO10 open";;1.0;0.0;/;4
+90;4;11029;U16;;"Each bit of data represents the model of input nodes with corresponding numbers.
+corresponding to DO1-DO10
+0: close；1: open";;1.0;0.0;/;4
+91;4;11030;U16;;"0x55：Disable
+0xAA：Enable";;1.0;0.0;/;4
+92;4;11031;U16;;"0x55：Disable
+0xAA：Enable";;1.0;0.0;/;4
+93;4;11095;U16;;Reference SC100&110&125CX info-3x  : Country (Region) Codes Used for Inverter Communication;;1;0.0;/;4

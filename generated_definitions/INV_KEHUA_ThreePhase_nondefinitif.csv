@@ -7,19 +7,19 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 6;4;4850;U16;;Device type;;1;0.0;;4
 7;4;4852;U16;;Protocol type;;1;0.0;;4
 8;4;4853_10;STRING;;Protocol version;;1;0.0;;4
-9;4;4875_20;STRING;;S/N;;1;0.0;;4
+9;4;4875_20;STRING;;S/N;SERIAL;1;0.0;;4
 10;4;5001;U16;;Running status;;1;0.0;;4
 11;4;5002;U16;;Fault code 1;;1;0.0;;4
 12;4;5003;U16;;Fault code 2;;1;0.0;;4
 13;4;5004;U16;;Fault code 3;;1;0.0;;4
 14;4;5005;U16;;Fault code 4;;1;0.0;;4
-15;4;5006;U16;;Grid voltage (U/UV);;0.1;0.0;V;4
+15;4;5006;U16;;Grid voltage (U/UV);U_AC_L1L2;0.1;0.0;V;4
 16;4;5007;U16;;Grid voltage (V/VW);;0.1;0.0;V;4
 17;4;5008;U16;;Grid voltage (W/WU);;0.1;0.0;V;4
 18;4;5009;U16;;Output voltage (U/UV);;0.1;0.0;V;4
 19;4;5010;U16;;Output voltage (V/VW);;0.1;0.0;V;4
 20;4;5011;U16;;Output voltage (W/WU);;0.1;0.0;V;4
-21;4;5012;U16;;Output current (U);;0.1;0.0;A;4
+21;4;5012;U16;;Output current (U);P_AC;0.1;0.0;A;4
 22;4;5013;U16;;Output current (V);;0.1;0.0;A;4
 23;4;5014;U16;;Output current (W);;0.1;0.0;A;4
 24;4;5015;U16;;Off-grid frequency;FREQ;0.01;0.0;Hz;4
@@ -30,7 +30,7 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 29;4;5021;I16;;DC current;I_DC;0.1;0.0;A;4
 30;4;5022;I16;;Total DC power;P_DC;0.1;0.0;kW;4
 31;4;5023;U16;;Output apparent power;S_AC;0.1;0.0;Kva;4
-32;4;5024;I16;;Output active power;P_AC;0.1;0.0;kW;4
+32;4;5024;I16;;Output active power;;0.1;0.0;kW;4
 33;4;5025;I16;;Output reactive power;Q_AC;0.1;0.0;kVar;4
 34;4;5026;U16;;Output   apparent   power (U);;0.1;0.0;kVA;4
 35;4;5027;I16;;Output active power (U);;0.1;0.0;kW;4
@@ -72,7 +72,7 @@ ModbusRTU;Inverter;Kehua;ThreePhase;;;;;;;
 71;3;6003;I16;;Reactive power;;1;0.0;;4
 72;3;6004;U16;;Mode auto switch;;1;0.0;;4
 73;3;6005;U16;;Manual grid-tied/off-grid mode;;1;0.0;;4
-74;3;6006;I16;;Active power;;0.1;0.0;kW;4
+74;3;6006;I16;;Active power;cmdPower;0.1;0.0;kW;4
 75;3;6007;U16;;Initiative islanding;;1;0.0;;4
 76;3;6009;U16;;Plan curve running;;1;0.0;;4
 77;3;6011;U16;;Automatic frequency control;;1;0.0;;4

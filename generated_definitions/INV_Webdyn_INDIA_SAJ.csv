@@ -43,4 +43,4 @@ ModbusRTU;Inverter;SAJ;50KTL;;;;;;;
 42;3;307;U16;;Today Hour;;1.0;0.0;;4
 43;3;308;U32;;Total Hour;;1.0;0.0;;4
 44;3;310;U16;;Error Count;;1.0;0.0;;0
-45;3;32799;U16;;Active power reduction setting;;1.0;0.0;%;1
+45;3;32799;U16;;Active power reduction setting;cmd;1.0;0.0;%;1

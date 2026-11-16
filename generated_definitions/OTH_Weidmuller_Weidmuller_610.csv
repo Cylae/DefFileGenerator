@@ -46,7 +46,7 @@ modbusRTU;Other;Weidmuller;Weidmuller_610;;;;;;;
 45;4;509;U16;;Voltage connection diagram;;1.0;0.0;;4
 46;4;510;U16;;Current connection diagram;;1.0;0.0;;4
 47;4;511;U16;;Relative voltage for THD and FFT;;1.0;0.0;;4
-48;4;512;U16;;Year;;1.0;0.0;;4
+48;4;512;U16;;Year;U_DC;1.0;0.0;;4
 49;4;513;U16;;Month;;1.0;0.0;;4
 50;4;514;U16;;Day;;1.0;0.0;;4
 51;4;515;U16;;Hour;;1.0;0.0;;4

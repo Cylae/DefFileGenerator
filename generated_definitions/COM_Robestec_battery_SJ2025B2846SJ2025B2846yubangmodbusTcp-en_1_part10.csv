@@ -1,0 +1,287 @@
+modbusRTU;Other;Robestec battery;SJ2025B2846SJ2025B28_p10;;;;;;;
+1;4;56450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+2;4;56451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+3;4;56452;U16;;Humidity control start value;HUMIDITY;1.0;0.0;;4
+4;4;56453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+5;4;56454;U16;;Backup;;1.0;0.0;;4
+6;4;56455;U16;;Temperature control stop value;;1.0;0.0;;4
+7;4;56456;U16;;Temperature control start value;;1.0;0.0;;4
+8;4;57450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+9;4;57451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+10;4;57452;U16;;Humidity control start value;;1.0;0.0;;4
+11;4;57453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+12;4;57454;U16;;Backup;;1.0;0.0;;4
+13;4;57455;U16;;Temperature control stop value;;1.0;0.0;;4
+14;4;57456;U16;;Temperature control start value;;1.0;0.0;;4
+15;4;58450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+16;4;58451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+17;4;58452;U16;;Humidity control start value;;1.0;0.0;;4
+18;4;58453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+19;4;58454;U16;;Backup;;1.0;0.0;;4
+20;4;58455;U16;;Temperature control stop value;;1.0;0.0;;4
+21;4;58456;U16;;Temperature control start value;;1.0;0.0;;4
+22;4;59450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+23;4;59451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+24;4;59452;U16;;Humidity control start value;;1.0;0.0;;4
+25;4;59453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+26;4;59454;U16;;Backup;;1.0;0.0;;4
+27;4;59455;U16;;Temperature control stop value;;1.0;0.0;;4
+28;4;59456;U16;;Temperature control start value;;1.0;0.0;;4
+29;4;60450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+30;4;60451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+31;4;60452;U16;;Humidity control start value;;1.0;0.0;;4
+32;4;60453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+33;4;60454;U16;;Backup;;1.0;0.0;;4
+34;4;60455;U16;;Temperature control stop value;;1.0;0.0;;4
+35;4;60456;U16;;Temperature control start value;;1.0;0.0;;4
+36;4;56350;U16;;Curr. mode;;1.0;0.0;;4
+37;4;56351;U16;;Pump operating status;;1.0;0.0;;9
+38;4;56352;U16;;1#Compressor status;;1.0;0.0;;9
+39;4;56353;U16;;Electrical heater operation status;;1.0;0.0;;9
+40;4;56354;U16;;Backup;;1.0;0.0;;4
+41;4;56355;U16;;Water outlet temp.;;1.0;0.0;;4
+42;4;56356;U16;;Water Return Temperature;;1.0;0.0;;4
+43;4;56357;U16;;Water outlet pressure;PRESSURE;1.0;0.0;;4
+44;4;56358;U16;;Return water pressure;;1.0;0.0;;4
+45;4;57350;U16;;Curr. mode;;1.0;0.0;;4
+46;4;57351;U16;;Pump operating status;;1.0;0.0;;9
+47;4;57352;U16;;1#Compressor status;;1.0;0.0;;9
+48;4;57353;U16;;Electrical heater operation status;;1.0;0.0;;9
+49;4;57354;U16;;Backup;;1.0;0.0;;4
+50;4;57355;U16;;Water outlet temp.;;1.0;0.0;;4
+51;4;57356;U16;;Water Return Temperature;;1.0;0.0;;4
+52;4;57357;U16;;Water outlet pressure;;1.0;0.0;;4
+53;4;57358;U16;;Return water pressure;;1.0;0.0;;4
+54;4;58350;U16;;Curr. mode;;1.0;0.0;;4
+55;4;58351;U16;;Pump operating status;;1.0;0.0;;9
+56;4;58352;U16;;1#Compressor status;;1.0;0.0;;9
+57;4;58353;U16;;Electrical heater operation status;;1.0;0.0;;9
+58;4;58354;U16;;Backup;;1.0;0.0;;4
+59;4;58355;U16;;Water outlet temp.;;1.0;0.0;;4
+60;4;58356;U16;;Water Return Temperature;;1.0;0.0;;4
+61;4;58357;U16;;Water outlet pressure;;1.0;0.0;;4
+62;4;58358;U16;;Return water pressure;;1.0;0.0;;4
+63;4;59350;U16;;Curr. mode;;1.0;0.0;;4
+64;4;59351;U16;;Pump operating status;;1.0;0.0;;9
+65;4;59352;U16;;1#Compressor status;;1.0;0.0;;9
+66;4;59353;U16;;Electrical heater operation status;;1.0;0.0;;9
+67;4;59354;U16;;Backup;;1.0;0.0;;4
+68;4;59355;U16;;Water outlet temp.;;1.0;0.0;;4
+69;4;59356;U16;;Water Return Temperature;;1.0;0.0;;4
+70;4;59357;U16;;Water outlet pressure;;1.0;0.0;;4
+71;4;59358;U16;;Return water pressure;;1.0;0.0;;4
+72;4;60350;U16;;Curr. mode;;1.0;0.0;;4
+73;4;60351;U16;;Pump operating status;;1.0;0.0;;9
+74;4;60352;U16;;1#Compressor status;;1.0;0.0;;9
+75;4;60353;U16;;Electrical heater operation status;;1.0;0.0;;9
+76;4;60354;U16;;Backup;;1.0;0.0;;4
+77;4;60355;U16;;Water outlet temp.;;1.0;0.0;;4
+78;4;60356;U16;;Water Return Temperature;;1.0;0.0;;4
+79;4;60357;U16;;Water outlet pressure;;1.0;0.0;;4
+80;4;60358;U16;;Return water pressure;;1.0;0.0;;4
+81;4;55050;U16;;Frequency;FREQ;1.0;0.0;Hz;4
+82;4;55052;U16;;Phase-A volt.;;1.0;0.0;;4
+83;4;55054;U16;;Phase-B volt.;;1.0;0.0;;4
+84;4;55056;U16;;Phase-C volt.;;1.0;0.0;;4
+85;4;55058;U16;;Phase-A curr.;;1.0;0.0;;4
+86;4;55060;U16;;Phase-B curr.;;1.0;0.0;;4
+87;4;55062;U16;;Phase-C curr.;;1.0;0.0;;4
+88;4;55064;U16;;A-B line volt.;;1.0;0.0;;4
+89;4;55066;U16;;C-B line volt.;;1.0;0.0;;4
+90;4;55068;U16;;A-C line volt.;;1.0;0.0;;4
+91;4;55070;U16;;Phase-A active power;P_AC;1.0;0.0;kW;4
+92;4;55072;U16;;Phase-B active power;;1.0;0.0;kW;4
+93;4;55074;U16;;Phase-C active power;;1.0;0.0;kW;4
+94;4;55076;U16;;Total active power;;1.0;0.0;kW;4
+95;4;55078;U16;;Phase-A reactive power;Q_AC;1.0;0.0;kVar;4
+96;4;55080;U16;;Phase-B reactive power;;1.0;0.0;kVar;4
+97;4;55082;U16;;Phase-C reactive power;;1.0;0.0;kVar;4
+98;4;55084;U16;;Total reactive power;;1.0;0.0;kVar;4
+99;4;55086;U16;;Phase-A apparent power;S_AC;1.0;0.0;kVA;4
+100;4;55088;U16;;Phase-B apparent power;;1.0;0.0;kVA;4
+101;4;55090;U16;;Phase-C apparent power;;1.0;0.0;kVA;4
+102;4;55092;U16;;Total apparent power;;1.0;0.0;kVA;4
+103;4;55094;U16;;Phase-A PF;;1.0;0.0;;4
+104;4;55095;U16;;Phase-B PF;;1.0;0.0;;4
+105;4;55096;U16;;Phase-C PF;;1.0;0.0;;4
+106;4;55097;U16;;Total PF;PF;1.0;0.0;;4
+107;4;55098;U16;;Combined Total Active Energy;E_TOT;1.0;0.0;kWh;4
+108;4;55100;U16;;Curr. combination total reactive electrical energy;;1.0;0.0;kWh;4
+109;4;55102;U16;;Import Peak Active Energy;E_IMP;1.0;0.0;kWh;4
+110;4;55104;U16;;Import Shoulder Active Energy;;1.0;0.0;kWh;4
+111;4;55106;U16;;Import Flat Active Energy;;1.0;0.0;kWh;4
+112;4;55108;U16;;Import Valley Active Energy;;1.0;0.0;kWh;4
+113;4;55110;U16;;Export Peak Active Energy;E_EXP;1.0;0.0;kWh;4
+114;4;55112;U16;;Export Shoulder Active Energy;;1.0;0.0;kWh;4
+115;4;55114;U16;;Export Flat Active Energy;;1.0;0.0;kWh;4
+116;4;55116;U16;;Export Valley Active Energy;;1.0;0.0;kWh;4
+117;4;55118;U16;;Import Total Active Energy;;1.0;0.0;kWh;4
+118;4;55120;U16;;Export Total Active Energy;;1.0;0.0;kWh;4
+119;4;55150;U16;;Frequency;;1.0;0.0;Hz;4
+120;4;55152;U16;;Phase-A volt.;;1.0;0.0;;4
+121;4;55154;U16;;Phase-B volt.;;1.0;0.0;;4
+122;4;55156;U16;;Phase-C volt.;;1.0;0.0;;4
+123;4;55158;U16;;Phase-A curr.;;1.0;0.0;;4
+124;4;55160;U16;;Phase-B curr.;;1.0;0.0;;4
+125;4;55162;U16;;Phase-C curr.;;1.0;0.0;;4
+126;4;55164;U16;;Line-volt. UAB;;1.0;0.0;;4
+127;4;55166;U16;;Line-volt. UBC;;1.0;0.0;;4
+128;4;55168;U16;;Line-volt. UCA;;1.0;0.0;;4
+129;4;55170;U16;;Phase-A active power;;1.0;0.0;kW;4
+130;4;55172;U16;;Phase-B active power;;1.0;0.0;kW;4
+131;4;55174;U16;;Phase-C active power;;1.0;0.0;kW;4
+132;4;55176;U16;;Total active power;;1.0;0.0;kW;4
+133;4;55178;U16;;Phase-A reactive power;;1.0;0.0;kVar;4
+134;4;55180;U16;;Phase-B reactive power;;1.0;0.0;kVar;4
+135;4;55182;U16;;Phase-C reactive power;;1.0;0.0;kVar;4
+136;4;55184;U16;;Total reactive power;;1.0;0.0;kVar;4
+137;4;55186;U16;;Phase-A apparent power;;1.0;0.0;kVA;4
+138;4;55188;U16;;Phase-B apparent power;;1.0;0.0;kVA;4
+139;4;55190;U16;;Phase-C apparent power;;1.0;0.0;kVA;4
+140;4;55192;U16;;Total apparent power;;1.0;0.0;kVA;4
+141;4;55194;U16;;Phase-A PF;;1.0;0.0;;4
+142;4;55195;U16;;Phase-B PF;;1.0;0.0;;4
+143;4;55196;U16;;Phase-C PF;;1.0;0.0;;4
+144;4;55197;U16;;Total PF;;1.0;0.0;;4
+145;4;55198;U16;;Combined Total Active Energy;;1.0;0.0;kWh;4
+146;4;55200;U16;;Curr. combination total reactive electrical energy;;1.0;0.0;kWh;4
+147;4;55202;U16;;Import Peak Active Energy;;1.0;0.0;kWh;4
+148;4;55204;U16;;Import Shoulder Active Energy;;1.0;0.0;kWh;4
+149;4;55206;U16;;Import Flat Active Energy;;1.0;0.0;kWh;4
+150;4;55208;U16;;Import Valley Active Energy;;1.0;0.0;kWh;4
+151;4;55210;U16;;Export Peak Active Energy;;1.0;0.0;kWh;4
+152;4;55212;U16;;Export Shoulder Active Energy;;1.0;0.0;kWh;4
+153;4;55214;U16;;Export Flat Active Energy;;1.0;0.0;kWh;4
+154;4;55216;U16;;Export Valley Active Energy;;1.0;0.0;kWh;4
+155;4;55218;U16;;Import Total Active Energy;;1.0;0.0;kWh;4
+156;4;55220;U16;;Export Total Active Energy;;1.0;0.0;kWh;4
+157;4;56000;U16;;Operational state;;1.0;0.0;;4
+158;4;56001;U16;;Grid-on/off status;;1.0;0.0;;9
+159;4;56002;U16;;Input curr.;;1.0;0.0;;4
+160;4;56003;U16;;Input volt.;;1.0;0.0;V;4
+161;4;56004;U16;;Input power;P_DC;1.0;0.0;;4
+162;4;56005;U16;;Phase-A volt.;;1.0;0.0;V;4
+163;4;56006;U16;;Phase-B volt.;;1.0;0.0;V;4
+164;4;56007;U16;;Phase-C volt.;;1.0;0.0;V;4
+165;4;56008;U16;;Phase-A curr.;;1.0;0.0;A;4
+166;4;56009;U16;;Phase-B curr.;;1.0;0.0;A;4
+167;4;56010;U16;;Phase-C curr.;;1.0;0.0;A;4
+168;4;56011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+169;4;56012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+170;4;56013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+171;4;56014;U16;;Total output active power;;1.0;0.0;;4
+172;4;56015;U16;;Backup;;1.0;0.0;kW;4
+173;4;56016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+174;4;56017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+175;4;56018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+176;4;56019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+177;4;56020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+178;4;56021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+179;4;56022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+180;4;56023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+181;4;56024;U16;;Total output PF;;1.0;0.0;;4
+182;4;56025;U16;;Frequency;;1.0;0.0;Hz;4
+183;4;57000;U16;;Operational state;;1.0;0.0;;4
+184;4;57001;U16;;Grid-on/off status;;1.0;0.0;;9
+185;4;57002;U16;;Input curr.;;1.0;0.0;;4
+186;4;57003;U16;;Input volt.;;1.0;0.0;V;4
+187;4;57004;U16;;Input power;;1.0;0.0;;4
+188;4;57005;U16;;Phase-A volt.;;1.0;0.0;V;4
+189;4;57006;U16;;Phase-B volt.;;1.0;0.0;V;4
+190;4;57007;U16;;Phase-C volt.;;1.0;0.0;V;4
+191;4;57008;U16;;Phase-A curr.;;1.0;0.0;A;4
+192;4;57009;U16;;Phase-B curr.;;1.0;0.0;A;4
+193;4;57010;U16;;Phase-C curr.;;1.0;0.0;A;4
+194;4;57011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+195;4;57012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+196;4;57013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+197;4;57014;U16;;Total output active power;;1.0;0.0;;4
+198;4;57015;U16;;Backup;;1.0;0.0;kW;4
+199;4;57016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+200;4;57017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+201;4;57018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+202;4;57019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+203;4;57020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+204;4;57021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+205;4;57022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+206;4;57023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+207;4;57024;U16;;Total output PF;;1.0;0.0;;4
+208;4;57025;U16;;Frequency;;1.0;0.0;Hz;4
+209;4;58000;U16;;Operational state;;1.0;0.0;;4
+210;4;58001;U16;;Grid-on/off status;;1.0;0.0;;9
+211;4;58002;U16;;Input curr.;;1.0;0.0;;4
+212;4;58003;U16;;Input volt.;;1.0;0.0;V;4
+213;4;58004;U16;;Input power;;1.0;0.0;;4
+214;4;58005;U16;;Phase-A volt.;;1.0;0.0;V;4
+215;4;58006;U16;;Phase-B volt.;;1.0;0.0;V;4
+216;4;58007;U16;;Phase-C volt.;;1.0;0.0;V;4
+217;4;58008;U16;;Phase-A curr.;;1.0;0.0;A;4
+218;4;58009;U16;;Phase-B curr.;;1.0;0.0;A;4
+219;4;58010;U16;;Phase-C curr.;;1.0;0.0;A;4
+220;4;58011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+221;4;58012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+222;4;58013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+223;4;58014;U16;;Total output active power;;1.0;0.0;;4
+224;4;58015;U16;;Backup;;1.0;0.0;kW;4
+225;4;58016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+226;4;58017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+227;4;58018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+228;4;58019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+229;4;58020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+230;4;58021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+231;4;58022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+232;4;58023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+233;4;58024;U16;;Total output PF;;1.0;0.0;;4
+234;4;58025;U16;;Frequency;;1.0;0.0;Hz;4
+235;4;59000;U16;;Operational state;;1.0;0.0;;4
+236;4;59001;U16;;Grid-on/off status;;1.0;0.0;;9
+237;4;59002;U16;;Input curr.;;1.0;0.0;;4
+238;4;59003;U16;;Input volt.;;1.0;0.0;V;4
+239;4;59004;U16;;Input power;;1.0;0.0;;4
+240;4;59005;U16;;Phase-A volt.;;1.0;0.0;V;4
+241;4;59006;U16;;Phase-B volt.;;1.0;0.0;V;4
+242;4;59007;U16;;Phase-C volt.;;1.0;0.0;V;4
+243;4;59008;U16;;Phase-A curr.;;1.0;0.0;A;4
+244;4;59009;U16;;Phase-B curr.;;1.0;0.0;A;4
+245;4;59010;U16;;Phase-C curr.;;1.0;0.0;A;4
+246;4;59011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+247;4;59012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+248;4;59013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+249;4;59014;U16;;Total output active power;;1.0;0.0;;4
+250;4;59015;U16;;Backup;;1.0;0.0;kW;4
+251;4;59016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+252;4;59017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+253;4;59018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+254;4;59019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+255;4;59020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+256;4;59021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+257;4;59022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+258;4;59023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+259;4;59024;U16;;Total output PF;;1.0;0.0;;4
+260;4;59025;U16;;Frequency;;1.0;0.0;Hz;4
+261;4;60000;U16;;Operational state;;1.0;0.0;;4
+262;4;60001;U16;;Grid-on/off status;;1.0;0.0;;9
+263;4;60002;U16;;Input curr.;;1.0;0.0;;4
+264;4;60003;U16;;Input volt.;;1.0;0.0;V;4
+265;4;60004;U16;;Input power;;1.0;0.0;;4
+266;4;60005;U16;;Phase-A volt.;;1.0;0.0;V;4
+267;4;60006;U16;;Phase-B volt.;;1.0;0.0;V;4
+268;4;60007;U16;;Phase-C volt.;;1.0;0.0;V;4
+269;4;60008;U16;;Phase-A curr.;;1.0;0.0;A;4
+270;4;60009;U16;;Phase-B curr.;;1.0;0.0;A;4
+271;4;60010;U16;;Phase-C curr.;;1.0;0.0;A;4
+272;4;60011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+273;4;60012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+274;4;60013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+275;4;60014;U16;;Total output active power;;1.0;0.0;;4
+276;4;60015;U16;;Backup;;1.0;0.0;kW;4
+277;4;60016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+278;4;60017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+279;4;60018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+280;4;60019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+281;4;60020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+282;4;60021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+283;4;60022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+284;4;60023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+285;4;60024;U16;;Total output PF;;1.0;0.0;;4
+286;4;60025;U16;;Frequency;;1.0;0.0;Hz;4

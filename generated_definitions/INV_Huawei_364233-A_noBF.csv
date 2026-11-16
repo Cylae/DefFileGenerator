@@ -178,7 +178,7 @@ ModbusRTU;Inverter;HUAWEI;SUN2000-50KTL-C1,SUN2000-42KTL,SUN2000-36KTL,SUN2000-3
 177;3;42304;U16;;System time: minute;;1.0;0.0;-;0
 178;3;42305;U16;;System time: second;;1.0;0.0;-;0
 179;3;42320;U16;;Active power derating;;1.0;0.0;%;0
-180;3;42321;I16;;Reactive power compensation;CMD_PF;0.001;0.0;-;0
+180;3;42321;I16;;Reactive power compensation;;0.001;0.0;-;0
 181;3;42333;U16;;Remote power schedule;;1.0;0.0;-;0
 182;3;50000;U16;;Upgrade Failed;;1.0;0.0;-;0
 183;3;50001;U16;;System Fault;;1.0;0.0;-;0

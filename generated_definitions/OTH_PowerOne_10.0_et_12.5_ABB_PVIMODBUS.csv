@@ -1,4 +1,4 @@
-modbusRTU;Other;PowerOne;10.0 et 12.5 ABB_PVIMODBUS;;;;;;;
+modbusRTU;Other;PowerOne;10.0_et_12.5_ABB_PVIMODBUS;;;;;;;
 1;4;102;U16;;Modbus-Address;UNIT_ID;1.0;0.0;;4
 2;4;123;U16;;Global-State;;1.0;0.0;;4
 3;4;124;U16;;Inverter-State;;1.0;0.0;;4

@@ -55,7 +55,7 @@ ModbusRTU;Inverter;Cyberpower;3-Phases;;;;;;;
 54;4;4277;I16;;DC2_Power;;1.0;0.0;W;4
 55;4;4278;I16;;BUS1_Voltage;;0.1;0.0;V;4
 56;4;4279;I16;;BUS2_Voltage;;0.1;0.0;V;4
-57;4;4284;U16;;Temperature (Amb);TEMP;0.1;0.0;C;4
+57;4;4284;U16;;Temperature (Amb);TEMP_INT;0.1;0.0;C;4
 58;4;4285;U16;;Temperature 1;TEMP_CELL;0.1;0.0;C;4
 59;4;4286;U16;;Temperature 2;;0.1;0.0;C;4
 60;4;4288;I16_B;;CPS_PV_Status;;1.0;0.0;V;4

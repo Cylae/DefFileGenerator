@@ -1,4 +1,4 @@
-﻿modbusTCP;Inverter;MarsRenewable;PV;;;;;;;
+modbusTCP;Inverter;MarsRenewable;PV;;;;;;;
 1;4;25000;U16;;PV1 Operating Status;;1.000000;0.000000;;9
 2;4;25002;F32;;PV1 AC Phase A Voltage;U_AC_1;0.100000;0.000000;V;4
 3;4;25004;F32;;PV1 AC Phase B Voltage;U_AC_2;0.100000;0.000000;V;4
@@ -25,10 +25,10 @@
 24;4;25046;F32;;PV1 Phase C AC Power Factor;PF_3;0.010000;0.000000;;4
 25;4;25048;F32;;PV1 IGBT Module Temperature;TEMP_INT;0.100000;0.000000;°C;4
 26;4;25050;F32;;PV1 Ambient Temperature;TEMP_AMB;0.100000;0.000000;°C;4
-27;4;25052;F32;;PV1 Total  AC Charging Energy;;0.100000;0.000000;kWh;4
-28;4;25054;F32;;PV1 Total AC Discharging Energy;E_TOT;0.100000;0.000000;kWh;4
-29;4;25056;F32;;PV1 Daily AC Charging Energy;;0.100000;0.000000;kWh;4
-30;4;25058;F32;;PV1 Daily AC Discharging Energy;E_DAY;0.100000;0.000000;kWh;4
+27;4;25052;F32;;PV1 Total  AC Charging Energy;E_TOT;0.100000;0.000000;kWh;4
+28;4;25054;F32;;PV1 Total AC Discharging Energy;;0.100000;0.000000;kWh;4
+29;4;25056;F32;;PV1 Daily AC Charging Energy;E_DAY;0.100000;0.000000;kWh;4
+30;4;25058;F32;;PV1 Daily AC Discharging Energy;;0.100000;0.000000;kWh;4
 31;4;25060;U32;;PV1 Number of branches;;1.000000;0.000000;;4
 32;4;25062;F32;;PV1 Branch 1 DC Power;P_DC_MPPT_1;0.100000;0.000000;kW;4
 33;4;25064;F32;;PV1 Branch 1 DC Voltage;U_DC_MPPT_1;0.100000;0.000000;V;4

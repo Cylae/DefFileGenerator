@@ -2,7 +2,7 @@ modbusRTU;Sensor;BLET;ANEH5-US4MBP;;;;;;;
 1;3;0;I16;;Device State;;1;0;;4
 2;3;1;I16;;Wind Direction;WIND_BEARING;1;0;;4
 3;3;2;F32;;Wind Speed;WIND_SPEED;1;0;m/s;4
-4;3;4;F32;;Temperature;TEMP;1;0;?;4
+4;3;4;F32;;Temperature;TEMP_INT;1;0;?;4
 5;3;6;F32;;Humidity;HUMIDITY;1;0;%;4
 6;3;8;F32;;Air Pressure;PRESSURE;1;0;hPa;4
 7;3;10;I16;;Compass Heading;;1;0;;4

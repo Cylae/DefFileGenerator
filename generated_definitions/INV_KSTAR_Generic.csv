@@ -31,7 +31,7 @@ Modbus;Inverter;KSTAR;Generic;;;;;;;
 30;4;3047;U16;;Lower grid frequency threshold;;0.010000;0.000000;Hz;4
 31;4;3048;U16;;Upper grid frequency threshold;;0.010000;0.000000;Hz;4
 32;4;3049;U16;;Preset power factor;PF;1.000000;0.000000;;4
-33;4;3050;U16;;Preset active power;CMD_P_AC_SET_ABS;1.000000;0.000000;%;4
+33;4;3050;U16;;Preset active power;CMD_P_AC_SET_ABS;1.000000;0.000000;%;1
 34;4;3052;I32;;Apparent power;S_AC;1.000000;0.000000;VA;4
 35;4;3054;I32;;Reactive power;Q_AC;1.000000;0.000000;Var;4
 36;4;3056;U16;;Power factor;;0.001000;0.000000;;4
@@ -43,10 +43,10 @@ Modbus;Inverter;KSTAR;Generic;;;;;;;
 42;4;3062;U16;;Low voltage of the QV curve;;1.000000;0.000000;;4
 43;4;3063;U16;;Low voltage power factor of the QV curve;;1.000000;0.000000;;4
 44;4;4000;U16;;Clear statistical information;;1.000000;0.000000;;1
-45;4;4001;U16;;Remote power-off;CMD_OFF;1.000000;0.000000;;4
+45;4;4001;U16;;Remote power-off;CMD_OFF;1.000000;0.000000;;1
 46;4;4002;U16;;Revoke remote power-off;;1.000000;0.000000;;1
 47;4;4003;U16;;Set the power factor;;1.000000;0.000000;;1
-48;4;4004;U16;;Set the active power;CMD_P_AC_SET_PERCENT;1.000000;0.000000;%;4
+48;4;4004;U16;;Set the active power;CMD_P_AC_SET_PERCENT;1.000000;0.000000;%;1
 49;4;4005;I16;;Set the reactive power;;1.000000;0.000000;kVar;1
 50;4;4006;U16;;Set the reactive control mode;;1.000000;0.000000;;1
 51;4;4007;U16;;Overfrequency derating_1;;1.000000;0.000000;;1

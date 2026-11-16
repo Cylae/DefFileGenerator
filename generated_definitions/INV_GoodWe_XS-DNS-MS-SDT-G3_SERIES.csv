@@ -95,8 +95,8 @@ modbus;Inverter;GoodWe;XS-DNS-MS-SDT-G3 SERIES;;;;;;;
 94;3;40326;U16;;Shadow mode switch;;1;0;;1
 95;3;40327;U16;;Software ARP Switch;;1;0;;1
 96;3;40328;U32;;Arp Load Limit Set;;1;0;W;1
-97;3;40330;U16;;Power On;CMD_ON;1;0;;4
-98;3;40331;U16;;Power Off;CMD_OFF;1;0;;4
+97;3;40330;U16;;Power On;CMD_ON;1;0;;1
+98;3;40331;U16;;Power Off;CMD_OFF;1;0;;1
 99;3;40332;U16;;Restart;;1;0;;4
 100;3;40336;U16;;Set the ARP power percentage;;1;0;%;1
 101;3;40345;U16;;Hardware ARP Switch;;1;0;;1

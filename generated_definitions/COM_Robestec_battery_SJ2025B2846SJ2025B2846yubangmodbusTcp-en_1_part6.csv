@@ -1,0 +1,276 @@
+modbusRTU;Other;Robestec battery;SJ2025B2846SJ2025B28_p6;;;;;;;
+1;4;200;U16;;Stack SOC;;1.0;0.0;%;4
+2;4;201;U16;;Stack SOH;;1.0;0.0;%;4
+3;4;202;U16;;Stack Status;;1.0;0.0;;9
+4;4;203;U16;;Stack volt.;;1.0;0.0;V;4
+5;4;204;U16;;Stack curr.;;1.0;0.0;A;4
+6;4;205;U16;;Max. cell volt.;;1.0;0.0;V;4
+7;4;206;U16;;Min. cell volt.;;1.0;0.0;V;4
+8;4;207;U16;;Max. cell temp.;TEMP_CELL;1.0;0.0;℃;4
+9;4;208;U16;;Min. cell temp.;;1.0;0.0;℃;4
+10;4;209;U16;;Max. cell SOC;;1.0;0.0;%;4
+11;4;210;U16;;Min. cell SOC;;1.0;0.0;%;4
+12;4;211;U16;;Maximum cell voltage cluster number;;1.0;0.0;;4
+13;4;212;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+14;4;213;U16;;Minimum cell voltage cluster number;;1.0;0.0;;4
+15;4;214;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+16;4;215;U16;;Maximum cell temperature cluster number;;1.0;0.0;;4
+17;4;216;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+18;4;217;U16;;Minimum cell temperature cluster number;;1.0;0.0;;4
+19;4;218;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+20;4;219;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+21;4;220;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+22;4;223;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+23;4;224;U16;;Stack power;;1.0;0.0;kW;4
+24;4;225;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+25;4;226;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+26;4;227;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+27;4;229;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+28;4;250;U16;;Stack SOC;;1.0;0.0;%;4
+29;4;251;U16;;Stack SOH;;1.0;0.0;%;4
+30;4;252;U16;;Stack Status;;1.0;0.0;;9
+31;4;253;U16;;Stack volt.;;1.0;0.0;V;4
+32;4;254;U16;;Stack curr.;;1.0;0.0;A;4
+33;4;255;U16;;Max. cell volt.;;1.0;0.0;V;4
+34;4;256;U16;;Min. cell volt.;;1.0;0.0;V;4
+35;4;257;U16;;Max. cell temp.;;1.0;0.0;℃;4
+36;4;258;U16;;Min. cell temp.;;1.0;0.0;℃;4
+37;4;259;U16;;Max. cell SOC;;1.0;0.0;%;4
+38;4;260;U16;;Min. cell SOC;;1.0;0.0;%;4
+39;4;261;U16;;Maximum cell voltage cluster number;;1.0;0.0;;4
+40;4;262;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+41;4;263;U16;;Minimum cell voltage cluster number;;1.0;0.0;;4
+42;4;264;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+43;4;265;U16;;Maximum cell temperature cluster number;;1.0;0.0;;4
+44;4;266;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+45;4;267;U16;;Minimum cell temperature cluster number;;1.0;0.0;;4
+46;4;268;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+47;4;269;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+48;4;270;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+49;4;273;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+50;4;274;U16;;Stack power;;1.0;0.0;kW;4
+51;4;275;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+52;4;276;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+53;4;277;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+54;4;279;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+55;4;300;U16;;Stack SOC;;1.0;0.0;%;4
+56;4;301;U16;;Stack SOH;;1.0;0.0;%;4
+57;4;302;U16;;Stack Status;;1.0;0.0;;9
+58;4;303;U16;;Stack volt.;;1.0;0.0;V;4
+59;4;304;U16;;Stack curr.;;1.0;0.0;A;4
+60;4;305;U16;;Max. cell volt.;;1.0;0.0;V;4
+61;4;306;U16;;Min. cell volt.;;1.0;0.0;V;4
+62;4;307;U16;;Max. cell temp.;;1.0;0.0;℃;4
+63;4;308;U16;;Min. cell temp.;;1.0;0.0;℃;4
+64;4;309;U16;;Max. cell SOC;;1.0;0.0;%;4
+65;4;310;U16;;Min. cell SOC;;1.0;0.0;%;4
+66;4;311;U16;;Maximum cell voltage cluster number;;1.0;0.0;;4
+67;4;312;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+68;4;313;U16;;Minimum cell voltage cluster number;;1.0;0.0;;4
+69;4;314;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+70;4;315;U16;;Maximum cell temperature cluster number;;1.0;0.0;;4
+71;4;316;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+72;4;317;U16;;Minimum cell temperature cluster number;;1.0;0.0;;4
+73;4;318;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+74;4;319;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+75;4;320;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+76;4;323;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+77;4;324;U16;;Stack power;;1.0;0.0;kW;4
+78;4;325;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+79;4;326;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+80;4;327;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+81;4;329;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+82;4;350;U16;;Stack SOC;;1.0;0.0;%;4
+83;4;351;U16;;Stack SOH;;1.0;0.0;%;4
+84;4;352;U16;;Stack Status;;1.0;0.0;;9
+85;4;353;U16;;Stack volt.;;1.0;0.0;V;4
+86;4;354;U16;;Stack curr.;;1.0;0.0;A;4
+87;4;355;U16;;Max. cell volt.;;1.0;0.0;V;4
+88;4;356;U16;;Min. cell volt.;;1.0;0.0;V;4
+89;4;357;U16;;Max. cell temp.;;1.0;0.0;℃;4
+90;4;358;U16;;Min. cell temp.;;1.0;0.0;℃;4
+91;4;359;U16;;Max. cell SOC;;1.0;0.0;%;4
+92;4;360;U16;;Min. cell SOC;;1.0;0.0;%;4
+93;4;361;U16;;Maximum cell voltage cluster number;;1.0;0.0;;4
+94;4;362;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+95;4;363;U16;;Minimum cell voltage cluster number;;1.0;0.0;;4
+96;4;364;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+97;4;365;U16;;Maximum cell temperature cluster number;;1.0;0.0;;4
+98;4;366;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+99;4;367;U16;;Minimum cell temperature cluster number;;1.0;0.0;;4
+100;4;368;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+101;4;369;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+102;4;370;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+103;4;373;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+104;4;374;U16;;Stack power;;1.0;0.0;kW;4
+105;4;375;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+106;4;376;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+107;4;377;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+108;4;379;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+109;4;400;U16;;Stack SOC;;1.0;0.0;%;4
+110;4;401;U16;;Stack SOH;;1.0;0.0;%;4
+111;4;402;U16;;Stack Status;;1.0;0.0;;9
+112;4;403;U16;;Stack volt.;;1.0;0.0;V;4
+113;4;404;U16;;Stack curr.;;1.0;0.0;A;4
+114;4;405;U16;;Max. cell volt.;;1.0;0.0;V;4
+115;4;406;U16;;Min. cell volt.;;1.0;0.0;V;4
+116;4;407;U16;;Max. cell temp.;;1.0;0.0;℃;4
+117;4;408;U16;;Min. cell temp.;;1.0;0.0;℃;4
+118;4;409;U16;;Max. cell SOC;;1.0;0.0;%;4
+119;4;410;U16;;Min. cell SOC;;1.0;0.0;%;4
+120;4;411;U16;;Maximum cell voltage cluster number;;1.0;0.0;;4
+121;4;412;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+122;4;413;U16;;Minimum cell voltage cluster number;;1.0;0.0;;4
+123;4;414;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+124;4;415;U16;;Maximum cell temperature cluster number;;1.0;0.0;;4
+125;4;416;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+126;4;417;U16;;Minimum cell temperature cluster number;;1.0;0.0;;4
+127;4;418;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+128;4;419;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+129;4;420;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+130;4;423;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+131;4;424;U16;;Stack power;;1.0;0.0;kW;4
+132;4;425;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+133;4;426;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+134;4;427;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+135;4;429;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+136;4;6200;U16;;Celltemperature;;1.0;0.0;;4
+137;4;6600;U16;;Cell voltage;;1.0;0.0;;4
+138;4;7000;U16;;Cell SOC;;1.0;0.0;%;4
+139;4;7400;U16;;Celltemperature;;1.0;0.0;;4
+140;4;7800;U16;;Cell voltage;;1.0;0.0;;4
+141;4;8200;U16;;Cell SOC;;1.0;0.0;%;4
+142;4;8600;U16;;Celltemperature;;1.0;0.0;;4
+143;4;9000;U16;;Cell voltage;;1.0;0.0;;4
+144;4;9400;U16;;Cell SOC;;1.0;0.0;%;4
+145;4;9800;U16;;Celltemperature;;1.0;0.0;;4
+146;4;10200;U16;;Cell voltage;;1.0;0.0;;4
+147;4;10600;U16;;Cell SOC;;1.0;0.0;%;4
+148;4;11000;U16;;Celltemperature;;1.0;0.0;;4
+149;4;11400;U16;;Cell voltage;;1.0;0.0;;4
+150;4;11800;U16;;Cell SOC;;1.0;0.0;%;4
+151;4;2200;U16;;Rack SOC;;1.0;0.0;%;4
+152;4;2201;U16;;Rack SOH;;1.0;0.0;%;4
+153;4;2202;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+154;4;2203;U16;;Rack volt.;;1.0;0.0;V;4
+155;4;2204;U16;;Rack curr.;;1.0;0.0;A;4
+156;4;2205;U16;;Max. cell volt.;;1.0;0.0;V;4
+157;4;2206;U16;;Min. cell volt.;;1.0;0.0;V;4
+158;4;2207;U16;;Max. cell temp.;;1.0;0.0;℃;4
+159;4;2208;U16;;Min. cell temp.;;1.0;0.0;℃;4
+160;4;2209;U16;;Max. cell SOC;;1.0;0.0;%;4
+161;4;2210;U16;;Min. cell SOC;;1.0;0.0;%;4
+162;4;2212;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+163;4;2214;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+164;4;2216;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+165;4;2218;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+166;4;2219;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+167;4;2220;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+168;4;2221;U16;;Number of cell in rack;;1.0;0.0;;4
+169;4;2222;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+170;4;2223;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+171;4;2224;U16;;Rack power;;1.0;0.0;kW;4
+172;4;2225;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+173;4;2226;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+174;4;2227;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+175;4;2229;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+176;4;2250;U16;;Rack SOC;;1.0;0.0;%;4
+177;4;2251;U16;;Rack SOH;;1.0;0.0;%;4
+178;4;2252;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+179;4;2253;U16;;Rack volt.;;1.0;0.0;V;4
+180;4;2254;U16;;Rack curr.;;1.0;0.0;A;4
+181;4;2255;U16;;Max. cell volt.;;1.0;0.0;V;4
+182;4;2256;U16;;Min. cell volt.;;1.0;0.0;V;4
+183;4;2257;U16;;Max. cell temp.;;1.0;0.0;℃;4
+184;4;2258;U16;;Min. cell temp.;;1.0;0.0;℃;4
+185;4;2259;U16;;Max. cell SOC;;1.0;0.0;%;4
+186;4;2260;U16;;Min. cell SOC;;1.0;0.0;%;4
+187;4;2262;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+188;4;2264;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+189;4;2266;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+190;4;2268;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+191;4;2269;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+192;4;2270;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+193;4;2271;U16;;Number of cell in rack;;1.0;0.0;;4
+194;4;2272;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+195;4;2273;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+196;4;2274;U16;;Rack power;;1.0;0.0;kW;4
+197;4;2275;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+198;4;2276;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+199;4;2277;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+200;4;2279;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+201;4;2300;U16;;Rack SOC;;1.0;0.0;%;4
+202;4;2301;U16;;Rack SOH;;1.0;0.0;%;4
+203;4;2302;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+204;4;2303;U16;;Rack volt.;;1.0;0.0;V;4
+205;4;2304;U16;;Rack curr.;;1.0;0.0;A;4
+206;4;2305;U16;;Max. cell volt.;;1.0;0.0;V;4
+207;4;2306;U16;;Min. cell volt.;;1.0;0.0;V;4
+208;4;2307;U16;;Max. cell temp.;;1.0;0.0;℃;4
+209;4;2308;U16;;Min. cell temp.;;1.0;0.0;℃;4
+210;4;2309;U16;;Max. cell SOC;;1.0;0.0;%;4
+211;4;2310;U16;;Min. cell SOC;;1.0;0.0;%;4
+212;4;2312;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+213;4;2314;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+214;4;2316;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+215;4;2318;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+216;4;2319;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+217;4;2320;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+218;4;2321;U16;;Number of cell in rack;;1.0;0.0;;4
+219;4;2322;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+220;4;2323;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+221;4;2324;U16;;Rack power;;1.0;0.0;kW;4
+222;4;2325;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+223;4;2326;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+224;4;2327;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+225;4;2329;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+226;4;2350;U16;;Rack SOC;;1.0;0.0;%;4
+227;4;2351;U16;;Rack SOH;;1.0;0.0;%;4
+228;4;2352;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+229;4;2353;U16;;Rack volt.;;1.0;0.0;V;4
+230;4;2354;U16;;Rack curr.;;1.0;0.0;A;4
+231;4;2355;U16;;Max. cell volt.;;1.0;0.0;V;4
+232;4;2356;U16;;Min. cell volt.;;1.0;0.0;V;4
+233;4;2357;U16;;Max. cell temp.;;1.0;0.0;℃;4
+234;4;2358;U16;;Min. cell temp.;;1.0;0.0;℃;4
+235;4;2359;U16;;Max. cell SOC;;1.0;0.0;%;4
+236;4;2360;U16;;Min. cell SOC;;1.0;0.0;%;4
+237;4;2362;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+238;4;2364;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+239;4;2366;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+240;4;2368;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+241;4;2369;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+242;4;2370;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+243;4;2371;U16;;Number of cell in rack;;1.0;0.0;;4
+244;4;2372;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+245;4;2373;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+246;4;2374;U16;;Rack power;;1.0;0.0;kW;4
+247;4;2375;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+248;4;2376;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+249;4;2377;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+250;4;2379;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+251;4;2400;U16;;Rack SOC;;1.0;0.0;%;4
+252;4;2401;U16;;Rack SOH;;1.0;0.0;%;4
+253;4;2402;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+254;4;2403;U16;;Rack volt.;;1.0;0.0;V;4
+255;4;2404;U16;;Rack curr.;;1.0;0.0;A;4
+256;4;2405;U16;;Max. cell volt.;;1.0;0.0;V;4
+257;4;2406;U16;;Min. cell volt.;;1.0;0.0;V;4
+258;4;2407;U16;;Max. cell temp.;;1.0;0.0;℃;4
+259;4;2408;U16;;Min. cell temp.;;1.0;0.0;℃;4
+260;4;2409;U16;;Max. cell SOC;;1.0;0.0;%;4
+261;4;2410;U16;;Min. cell SOC;;1.0;0.0;%;4
+262;4;2412;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+263;4;2414;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+264;4;2416;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+265;4;2418;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+266;4;2419;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+267;4;2420;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+268;4;2421;U16;;Number of cell in rack;;1.0;0.0;;4
+269;4;2422;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+270;4;2423;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+271;4;2424;U16;;Rack power;;1.0;0.0;kW;4
+272;4;2425;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+273;4;2426;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+274;4;2427;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+275;4;2429;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4

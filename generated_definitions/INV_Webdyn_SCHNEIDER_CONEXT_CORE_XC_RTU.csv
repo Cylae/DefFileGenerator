@@ -10,15 +10,15 @@ modbusRTU;Inverter;Schneider;CONEXT CORE XC;;;;;;;
 9;3;2078;U32;;Operating Hours 1;;1;0;Hz;4
 10;3;2079;U32;;Operating Hours 2;;1;0;Hz;4
 11;3;5888;U16;;Operation Mode State;;1;0;;4
-12;3;5889;I16;;Temperature Power Board;;0.1;0;;4
-13;3;5890;I16;;Temperature Heatsink 1;TEMP_INT;0.1;0;;4
+12;3;5889;I16;;Temperature Power Board;TEMP_INT;0.1;0;;4
+13;3;5890;I16;;Temperature Heatsink 1;;0.1;0;;4
 14;3;5891;I16;;Temperature Heatsink 2;;0.1;0;;4
 15;3;5892;I16;;Temperature Heatsink 3;;0.1;0;;4
 16;3;5893;I16;;Grid Current;I_AC;0.1;0;Arms;4
 17;3;6129;U16;;Apparent Power;S_AC;0.1;0;kVA;4
 18;3;6133;I16;;Reactive Power;Q_AC;0.1;0;kVAr;4
-19;3;6136;I16;;Grid Voltage V12;;0.1;0;Vrms;4
-20;3;6137;I16;;Grid Voltage V23;;0.1;0;Vrms;4
+19;3;6136;I16;;Grid Voltage V12;U_AC_1;0.1;0;Vrms;4
+20;3;6137;I16;;Grid Voltage V23;U_AC_2;0.1;0;Vrms;4
 21;3;6138;I16;;Grid Voltage V31;;0.1;0;Vrms;4
 22;3;6139;I16;;Grid Current Line 1;I_AC_1;0.1;0;Arms;4
 23;3;6140;I16;;Grid Current Line 2;I_AC_2;0.1;0;Arms;4
@@ -51,7 +51,7 @@ modbusRTU;Inverter;Schneider;CONEXT CORE XC;;;;;;;
 50;3;64474;U16;;Fan Speed;;0.1;0;V;4
 51;3;32771;U16;;Modbus Unit ID;UNIT_ID;1;0;;4
 52;3;32784;U16;;Baud Rate;;1;0;Baud;4
-53;3;57568;U16;;Parameter Control Station;;1;0;;4
+53;3;57568;U16;;Parameter Control Station;ControlStation;1;0;;4
 54;3;57569;U16;;Commit Modbus Settings;CMD_COMMIT;1;0;;1
 55;3;61439;U16;;Clear Service Mode;;1;0;;4
 56;3;63491;U16;;Max Tracking Volt;;1;0;V;4

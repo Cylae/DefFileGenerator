@@ -1,4 +1,4 @@
-Modbus;Meter;SOCOMEC;DIRIS Digiware I-35
+Modbus;Meter;SOCOMEC;DIRIS Digiware I-35;;;;;;;
 1;3;13504;U16;;Loads number;;1;0;;4
 2;3;18432;U16;;Load status;;1;0;;4
 3;3;18476;I32;;Total active power;P_AC;0.001;0;kW;4

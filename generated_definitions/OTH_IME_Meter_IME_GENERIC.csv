@@ -61,26 +61,23 @@ modbusRTU;Other;IME Meter;IME_GENERIC;;;;;;;
 60;4;20736;U16;;Phase shift between V3 - I3;;1.0;0.0;°;4
 61;4;0;U16;;Protocol type;;1.0;0.0;;4
 62;4;4097;U16;;Configuration of external input;;1.0;0.0;;4
-63;4;20480;U16;;Measurement System Features;;1.0;0.0;;4
-64;4;20481;U16;;Phase Currents Transformation Ratio (KTA);;1.0;0.0;;4
-65;4;20484;U16;;Voltage Transformation Ratio (KTV);;1.0;0.0;;4
-66;4;20485;U16;;Calculation Settings Requirement;;1.0;0.0;;4
-67;4;20558;U16;;Partial Positive Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
-68;4;20560;U16;;Partial Negative Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
-69;4;20564;U16;;Partial Positive Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
-70;4;20566;U16;;Partial Negative Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
-71;4;20572;U16;;Partial Positive Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
-72;4;20574;U16;;Partial Negative Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
-73;4;20578;U16;;Partial Positive Three-phase Reactive Energy (secondary);;1.0;0.0;kvarh;4
-74;4;20580;U16;;Partial Negative Three-phase Reactive Energy (secondary);;1.0;0.0;kvarh;4
-75;4;20636;U16;;Total Active Power Requirement (MD);P_AC;1.0;0.0;kW/kvar/kVA;4
-76;4;20638;U16;;Maximum Total Active Power Requirement (PMD);;1.0;0.0;kW/kvar/kVA;4
-77;4;20672;U16;;Maximum Total Active Power Requirement Tariff 1 (PMD T1);;1.0;0.0;kW/kvar/kVA;4
-78;4;20678;U16;;Maximum Total Active Power Requirement Tariff 2 (PMD T2);;1.0;0.0;kW/kvar/kVA;4
-79;4;20696;U16;;Run hour meter threshold;;1.0;0.0;%;4
-80;4;20697;U16;;Run hour meter (TOT);;1.0;0.0;s;4
-81;4;20699;U16;;Run hour meter (Tariff 1);;1.0;0.0;s;4
-82;4;20701;U16;;Run hour meter (Tariff 2);;1.0;0.0;s;4
-83;4;29696;U16;;Measurement unit input;;1.0;0.0;;4
-84;4;29697;U16;;Pulse weight input;;1.0;0.0;;4
-85;4;29698;U16;;Pulse pulse input;;1.0;0.0;;4
+63;4;20481;U16;;Phase Currents Transformation Ratio (KTA);;1.0;0.0;;4
+64;4;20485;U16;;Calculation Settings Requirement;;1.0;0.0;;4
+65;4;20558;U16;;Partial Positive Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
+66;4;20560;U16;;Partial Negative Three-phase Active Energy;;1.0;0.0;MWh/Mvarh;4
+67;4;20564;U16;;Partial Positive Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
+68;4;20566;U16;;Partial Negative Three-phase Reactive Energy;;1.0;0.0;MWh/Mvarh;4
+69;4;20572;U16;;Partial Positive Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
+70;4;20574;U16;;Partial Negative Three-phase Active Energy (secondary);;1.0;0.0;kWh;4
+71;4;20578;U16;;Partial Positive Three-phase Reactive Energy (secondary);;1.0;0.0;kvarh;4
+72;4;20580;U16;;Partial Negative Three-phase Reactive Energy (secondary);;1.0;0.0;kvarh;4
+73;4;20636;U16;;Total Active Power Requirement (MD);P_AC;1.0;0.0;kW/kvar/kVA;4
+74;4;20672;U16;;Maximum Total Active Power Requirement Tariff 1 (PMD T1);;1.0;0.0;kW/kvar/kVA;4
+75;4;20678;U16;;Maximum Total Active Power Requirement Tariff 2 (PMD T2);;1.0;0.0;kW/kvar/kVA;4
+76;4;20696;U16;;Run hour meter threshold;;1.0;0.0;%;4
+77;4;20697;U16;;Run hour meter (TOT);;1.0;0.0;s;4
+78;4;20699;U16;;Run hour meter (Tariff 1);;1.0;0.0;s;4
+79;4;20701;U16;;Run hour meter (Tariff 2);;1.0;0.0;s;4
+80;4;29696;U16;;Measurement unit input;;1.0;0.0;;4
+81;4;29697;U16;;Pulse weight input;;1.0;0.0;;4
+82;4;29698;U16;;Pulse pulse input;;1.0;0.0;;4

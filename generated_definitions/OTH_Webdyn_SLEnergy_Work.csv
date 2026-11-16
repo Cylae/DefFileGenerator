@@ -1,4 +1,4 @@
-﻿modbusRTU;Other;Webdyn;SLEnergy_Work;;;;;;;
+modbusRTU;Other;Webdyn;SLEnergy_Work;;;;;;;
 1;3;1;U16;;Register_1;register_1;1.000000;0.000000;;1
 2;3;2;U16;;Register_2;register_2;1.000000;0.000000;;1
 3;3;3;U16;;Register_3;register_3;1.000000;0.000000;;1

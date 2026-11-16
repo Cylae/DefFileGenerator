@@ -35,7 +35,7 @@ Modbus;Meter;Enerfox;FXM-210-XXX;;;;;;;
 34;3;8264;U32;;Phase A generated energy;;1;0;kWh;4
 35;3;8266;U32;;Phase B generated energy;;1;0;kWh;4
 36;3;8268;U32;;Phase C generated energy;;1;0;kWh;4
-37;3;8270;U32;;Consumed energy;;1;0;kWh;4
+37;3;8270;U32;;Consumed energy;E_DAY;1;0;kWh;4
 38;3;8272;U32;;Phase A consumed energy;;1;0;kWh;4
 39;3;8274;U32;;Phase B consumed energy;;1;0;kWh;4
 40;3;8276;U32;;Phase C consumed energy;;1;0;kWh;4

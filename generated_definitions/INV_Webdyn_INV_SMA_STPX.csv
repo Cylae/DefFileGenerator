@@ -70,7 +70,7 @@ modbusRTU;Inverter;Webdyn;INV_SMA_STPX;;;;;;;
 69;4;30881;U16;;Connexion reseau de l installation;;1.0;0.0;;4
 70;4;30921;U16;;Consigne de puissance reactive manuelle avec puissance active nulle;;1.0;0.0;;4
 71;4;30923;U16;;Consigne de puissance reactive manuelle avec puissance active nulle_2;;1.0;0.0;%;4
-72;4;30929;U16;;Etat de connexion Speedwire de SMACOM A;;1.0;0.0;;4
+72;4;30929;U16;;Etat de connexion Speedwire de SMACOM A;I_AC;1.0;0.0;;4
 73;4;30949;U16;;Facteur de decalage;;1.0;0.0;;4
 74;4;30953;U16;;Temperature interieure;;1.0;0.0;-¦C;4
 75;4;30957;U16;;Entree courant DC 1;;1.0;0.0;A;4

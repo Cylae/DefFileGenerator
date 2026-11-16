@@ -1,1054 +1,1054 @@
-modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;;
-1;4;25857;U32_W;;DC voltage;U_DC;0.01;0;V;0;
-2;4;25859;U32_W;;Line current;I_AC;0.01;0;A;0;
-3;4;25861;U32_W;;Line current %;;0.1;0;%;0;
-4;4;25863;I32_W;;Active current;;0.01;0;A;0;
-5;4;25865;I32_W;;Active current %;;0.1;0;%;0;
-6;4;25867;I32_W;;Reactive current;;0.01;0;A;0;
-7;4;25869;I32_W;;Reactive current %;;0.1;0;%;0;
-8;4;25871;U32_W;;Frequency;FREQ;0.01;0;Hz;4;
-9;4;25873;U32_W;;Grid voltage;U_AC_L1L2;0.01;0;V;0;
-10;4;25875;I32_W;;Apparent power;S_AC;0.01;0;kVA;0;
-11;4;25877;I32_W;;Apparent power %;;0.1;0;%;0;
-12;4;25879;I32_W;;Power;P_AC;0.01;0;kW;0;
-13;4;25881;I32_W;;Power %;;0.1;0;%;0;
-14;4;25883;I32_W;;Reactive power;Q_AC;0.01;0;kVAr;0;
-15;4;25885;I32_W;;Reactive power %;;0.1;0;%;0;
-16;4;25887;I32_W;;CosPhi;PF;0.01;0;;0;
-17;4;25895;U32_W;;Converter current;;0.01;0;A;0;
-18;4;25983;U32_W;;Nominal power;P_RATED;1;0;kW;0;
-19;4;26625;U32_W;;Tripping fault;;1;0;;0;
-20;4;26627;U32_W;;Active fault 2;;1;0;;0;
-21;4;26629;U32_W;;Active fault 3;;1;0;;0;
-22;4;26631;U32_W;;Active fault 4;;1;0;;0;
-23;4;26633;U32_W;;Active fault 5;;1;0;;0;
-24;4;26635;U32_W;;Active warning 1;;1;0;;0;
-25;4;26637;U32_W;;Active warning 2;;1;0;;0;
-26;4;26639;U32_W;;Active warning 3;;1;0;;0;
-27;4;26641;U32_W;;Active warning 4;;1;0;;0;
-28;4;26643;U32_W;;Active warning 5;;1;0;;0;
-29;4;26645;U32_W;;Latest fault;;1;0;;0;
-30;4;26647;U32_W;;2nd latest fault;;1;0;;0;
-31;4;26649;U32_W;;3rd latest fault;;1;0;;0;
-32;4;26651;U32_W;;4th latest fault;;1;0;;0;
-33;4;26653;U32_W;;5th latest fault;;1;0;;0;
-34;4;26655;U32_W;;Latest warning;;1;0;;0;
-35;4;26657;U32_W;;2nd latest warning;;1;0;;0;
-36;4;26659;U32_W;;3rd latest warning;;1;0;;0;
-37;4;26661;U32_W;;4th latest warning;;1;0;;0;
-38;4;26663;U32_W;;5th latest warning;;1;0;;0;
-39;4;27397;U32_W;;Rating id;;1;0;;0;
-40;4;27399;U32_W;;Firmware name;;1;0;;0;
-41;4;27401;U32_W;;Firmware ver;;1;0;;0;
-42;4;27403;U32_W;;Loading package name;;1;0;;0;
-43;4;27405;U32_W;;Loading package version;;1;0;;0;
-44;4;27407;U32_W;;Bootloader version;;1;0;;0;
-45;4;27409;U32_W;;Preboot version;;1;0;;0;
-46;4;27411;U32_W;;Safety critical hash;;1;0;;0;
-47;4;27413;U32_W;;Cpu usage;;1;0;%;0;
-48;4;27415;U32_W;;PU logic version name;;1;0;;0;
-49;4;27417;U32_W;;PU logic version number;;1;0;;0;
-50;4;27425;U32_W;;PLC HW variant;;1;0;;0;
-51;4;27427;U32_W;;PLC SW version;;1;0;;0;
-52;4;28163;U16;;DI delayed status;;1;0;;0;
-53;3;28201;U16;;RO status;;1;0;;0;
-54;3;29185;U32_W;;Module 1 type;;1;0;;0;OK
-55;3;29187;U32_W;;Module 1 location;;1;0;;0;OK
-56;4;29189;U32_W;;Module 1 status;;1;0;;0;
-57;3;29441;U32_W;;Module 2 type;;1;0;;0;OK
-58;3;29443;U32_W;;Module 2 location;;1;0;;0;OK
-59;4;29445;U32_W;;Module 2 status;;1;0;;0;
-60;3;29697;U32_W;;Module 3 type;;1;0;;0;OK
-61;3;29699;U32_W;;Module 3 location;;1;0;;0;OK
-62;3;29701;U32_W;;Module 3 status;;1;0;;0;ERR
-63;4;30465;U32_W;;Actual operation mode;;1;0;;0;
-64;3;30485;U32_W;;Ext1/Ext2 sel;;1;0;;0;
-65;3;30487;U32_W;;Ext1 ctrl mode1;;1;0;;0;
-66;3;30491;U32_W;;Ext2 ctrl mode1;;1;0;;0;
-67;3;30495;U32_W;;Local ctrl mode;;1;0;;0;
-68;3;30497;U32_W;;Local ctrl disable;;1;0;;0;
-69;3;30977;U32_W;;Fast power off mode;CMD_OFF;1;0;;0;
-70;3;30979;U32_W;;Fast power off source;;1;0;;0;
-71;3;31489;U32_W;;User DC voltage ref;;0.01;0;V;0;
-72;3;31491;U32_W;;DC ref sel;;1;0;;0;
-73;4;31493;U32_W;;DC voltage ref 1;;0.01;0;V;0;
-74;3;31745;U32_W;;User Qref;;0.01;0;%;0;
-75;3;31747;U32_W;;Q power ref selection;;1;0;;0;
-76;4;31749;U32_W;;Qref 1;;0.01;0;kVAr;0;
-77;3;31751;I32_W;;Q ref scale;;0.01;0;;0;
-78;4;31753;I32_W;;Qref 2;;0.01;0;kVAr;0;
-79;3;31755;U32_W;;Q power ref type;;1;0;;0;
-80;4;31757;I32_W;;Ireact ref %;;0.1;0;%;0;
-81;4;31759;U32_W;;Ireact ref;;0.01;0;A;0;
-82;4;31761;I32_W;;Q power ref %;;0.1;0;%;0;
-83;4;31763;U32_W;;Q power ref;;0.1;0;kVAr;0;
-84;3;31765;U32_W;;Ireact ref max %;;0.1;0;%;0;
-85;3;31767;I32_W;;Ireact ref min %;;0.1;0;%;0;
-86;4;31769;I32_W;;Ireact ref lim %;;0.1;0;%;0;
-87;3;31771;U32_W;;Ireact ref ramp up;;1;0;ms;0;
-88;3;31773;U32_W;;Ireact ref ramp down;;1;0;ms;0;
-89;4;31775;I32_W;;Ireact ref out %;;0.1;0;%;0;
-90;4;31777;U32_W;;Ireact ref out;;0.01;0;A;0;
-91;4;31779;I32_W;;Q power ref out %;;0.1;0;%;0;
-92;4;31781;U32_W;;Q power ref out;;0.1;0;kVAr;0;
-93;3;31783;U32_W;;AC control gain;;0.1;0;;0;
-94;3;31785;U32_W;;AC control integ time;;1;0;ms;0;
-95;3;31787;U32_W;;AC diff max %;;0.1;0;%;0;
-96;3;31789;I32_W;;AC diff min %;;0.1;0;%;0;
-97;3;31797;U32_W;;AC control base grid voltage;;1;0;V;0;
-98;3;31803;U32_W;;Q(x) curve;;1;0;;0;
-99;3;31805;U32_W;;Lock-in level;;0.1;0;%;0;
-100;3;31807;U32_W;;Lock-out level;;0.1;0;%;0;
-101;3;31809;U32_W;;Q(x) input level 1;;0.1;0;%;0;
-102;3;31811;U32_W;;Q(x) input level 2;;0.1;0;%;0;
-103;3;31813;U32_W;;Q(x) input level 3;;0.1;0;%;0;
-104;3;31815;U32_W;;Q(x) input level 4;;0.1;0;%;0;
-105;3;31817;U32_W;;Q(x) input level 5;;0.1;0;%;0;
-106;3;31819;U32_W;;Q(x) input level 6;;0.1;0;%;0;
-107;3;31821;U32_W;;Q(x) output level 1;;0.01;0;%;0;
-108;3;31823;U32_W;;Q(x) output level 2;;0.01;0;%;0;
-109;3;31825;U32_W;;Q(x) output level 3;;0.01;0;%;0;
-110;3;31827;U32_W;;Q(x) output level 4;;0.01;0;%;0;
-111;3;31829;U32_W;;Q(x) output level 5;;0.01;0;%;0;
-112;3;31831;U32_W;;Q(x) output level 6;;0.01;0;%;0;
-113;3;31833;U32_W;;Q(U) activation delay;;1;0;ms;0;
-114;3;31835;U32_W;;Q(U) activation level low;;1;0;%;0;
-115;3;31837;U32_W;;Q(U) activation level high;;1;0;%;0;
-116;3;32001;U32_W;;Grid support;;1;0;;0;
-117;3;32003;U32_W;;Gs symm sig;;1;0;;0;
-118;3;32005;U32_W;;Gs asymm sig;;1;0;;0;
-119;3;32007;U32_W;;Lv Gs trig U %;;1;0;%;0;
-120;3;32009;U32_W;;Lv Gs K-factor;;0.01;0;;0;
-121;3;32011;U32_W;;Lv Gs P1 volt %;;1;0;%;0;
-122;3;32013;U32_W;;Lv Gs P1 cur %;;1;0;%;0;
-123;3;32015;U32_W;;Lv Gs P2 volt %;;1;0;%;0;
-124;3;32017;U32_W;;Lv Gs P2 cur %;;1;0;%;0;
-125;3;32019;U32_W;;Lv Gs P3 volt %;;1;0;%;0;
-126;3;32021;U32_W;;Lv Gs P3 cur %;;1;0;%;0;
-127;3;32023;U32_W;;Lv Gs P4 volt %;;1;0;%;0;
-128;3;32025;U32_W;;Lv Gs P4 cur %;;1;0;%;0;
-129;3;32027;U32_W;;Lv Gs P5 volt %;;1;0;%;0;
-130;3;32029;U32_W;;Lv Gs P5 cur %;;1;0;%;0;
-131;3;32035;U32_W;;Hv Gs trig U %;;1;0;%;0;
-132;3;32037;U32_W;;Hv Gs K-factor;;0.01;0;;0;
-133;3;32039;U32_W;;Hv Gs P1 volt %;;1;0;%;0;
-134;3;32041;I32_W;;Hv Gs P1 cur %;;1;0;%;0;
-135;3;32043;U32_W;;Hv Gs P2 volt %;;1;0;%;0;
-136;3;32045;I32_W;;Hv Gs P2 cur %;;1;0;%;0;
-137;3;32047;U32_W;;Hv Gs P3 volt %;;1;0;%;0;
-138;3;32049;I32_W;;Hv Gs P3 cur %;;1;0;%;0;
-139;3;32055;U32_W;;Frt Ireact ref ramp up;;1;0;ms;0;
-140;3;32057;U32_W;;Frt Ireact ref ramp down;;1;0;ms;0;
-141;3;32059;U32_W;;Frt Ipow ref ramp up;;1;0;ms;0;
-142;3;32061;U32_W;;Frt Ipow ref ramp down;;1;0;ms;0;
-143;4;32063;I32_W;;Frt Ireact ref %;;0.1;0;%;0;
-144;4;32065;I32_W;;Frt Ireact ref out %;;0.1;0;%;0;
-145;4;32067;I32_W;;Frt Ipow ref %;;0.1;0;%;0;
-146;4;32069;I32_W;;Frt Ipow ref out %;;0.1;0;%;0;
-147;3;32071;U32_W;;Gs after dip time;;1;0;ms;0;
-148;3;32073;U32_W;;Frt Imax %;;1;0;%;0;
-149;3;32097;U32_W;;Gs prefault average time;;1;0;s;0;
-150;3;32099;U32_W;;Gs base current;;1;0;;0;
-151;3;32101;U32_W;;Gs reference voltage;;1;0;;0;
-152;3;32103;U32_W;;Gs average voltage;;1;0;;0;
-153;3;32105;U32_W;;Gs active power reserve;;1;0;%;0;
-154;3;32107;U32_W;;Gs max reserve current;;1;0;%;0;
-155;3;32257;U32_W;;FRT enable;;1;0;;0;
-156;3;32259;U32_W;;Lv Rt symm sig;;1;0;;0;
-157;3;32261;U32_W;;Lv Rt asymm sig;;1;0;;0;
-158;3;32263;U32_W;;Hv Rt symm sig;;1;0;;0;
-159;3;32265;U32_W;;Hv Rt asymm sig;;1;0;;0;
-160;3;32267;U32_W;;Asymm/symm limit;;1;0;%;0;
-161;3;32275;U32_W;;Lv Rt trig U %;;1;0;%;0;
-162;3;32277;U32_W;;Lv Rt recover hyst U %;;1;0;%;0;
-163;3;32279;U32_W;;Lv Rt sec 1 time;;1;0;ms;0;
-164;3;32281;U32_W;;Lv Rt sec 2 time;;1;0;ms;0;
-165;3;32283;U32_W;;Lv Rt sec 3 time;;1;0;ms;0;
-166;3;32285;U32_W;;Lv Rt sec 4 time;;1;0;ms;0;
-167;3;32287;U32_W;;Lv Rt sec 5 time;;1;0;ms;0;
-168;3;32289;U32_W;;Lv Rt ext time;;1;0;ms;0;
-169;3;32291;U32_W;;Lv Rt S1 start U %;;1;0;%;0;
-170;3;32293;U32_W;;Lv Rt S1 end U %;;1;0;%;0;
-171;3;32295;U32_W;;Lv Rt S2 start U %;;1;0;%;0;
-172;3;32297;U32_W;;Lv Rt S2 end U %;;1;0;%;0;
-173;3;32299;U32_W;;Lv Rt S3 start U %;;1;0;%;0;
-174;3;32301;U32_W;;Lv Rt S3 end U %;;1;0;%;0;
-175;3;32303;U32_W;;Lv Rt S4 start U %;;1;0;%;0;
-176;3;32305;U32_W;;Lv Rt S4 end U %;;1;0;%;0;
-177;3;32307;U32_W;;Lv Rt S5 start U %;;1;0;%;0;
-178;3;32309;U32_W;;Lv Rt S5 end U %;;1;0;%;0;
-179;3;32311;U32_W;;Lv Rt ext U %;;1;0;%;0;
-180;3;32315;U32_W;;Hv Rt trig U %;;1;0;%;0;
-181;3;32317;U32_W;;Hv Rt recover hyst U %;;1;0;%;0;
-182;3;32319;U32_W;;Hv Rt sec 1 time;;1;0;ms;0;
-183;3;32321;U32_W;;Hv Rt sec 2 time;;1;0;ms;0;
-184;3;32323;U32_W;;Hv Rt sec 3 time;;1;0;ms;0;
-185;3;32329;U32_W;;Hv Rt S1 start U %;;1;0;%;0;
-186;3;32331;U32_W;;Hv Rt S1 end U %;;1;0;%;0;
-187;3;32333;U32_W;;Hv Rt S2 start U %;;1;0;%;0;
-188;3;32335;U32_W;;Hv Rt S2 end U %;;1;0;%;0;
-189;3;32337;U32_W;;Hv Rt S3 start U %;;1;0;%;0;
-190;3;32339;U32_W;;Hv Rt S3 end U %;;1;0;%;0;
-191;4;33281;U16;;Limit word 1;;1;0;;0;
-192;4;33283;U16;;Limit word 2;;1;0;;0;
-193;4;33287;U16;;Limit word 4;;1;0;;0;
-194;4;33289;U16;;Limit word 5;;1;0;;0;
-195;4;33291;U16;;Limit word 6;;1;0;;0;
-196;4;33301;U32_W;;Active power limit to grid;CMD_P_AC_SET_ABS;1;0;kW;0;
-197;4;33305;U32_W;;Reactive power limit;;1;0;kVAr;0;
-198;3;33403;U32_W;;P(f) limit type;;1;0;;0;
-199;3;33405;U32_W;;P(f) corner frequency;;0.01;0;Hz;0;
-200;3;33407;U32_W;;P(f) limit gradient;;0.1;0;%/Hz;0;
-201;3;33409;U32_W;;P(f) release frequency;;0.01;0;Hz;0;
-202;3;33411;U32_W;;P(f) release time;;1;0;s;0;
-203;3;33413;U32_W;;P(f) release ramp;;1;0;%/min;0;
-204;3;33415;U32_W;;P(f) release ramp ref;;1;0;;0;
-205;3;33417;U32_W;;P(f) activation delay;;1;0;ms;0;
-206;3;33419;U32_W;;Connect limit type;;1;0;;0;
-207;3;33421;U32_W;;Connect limit ramp;;1;0;%/min;0;
-208;3;33423;U32_W;;Grid fault ramp;;1;0;%/min;0;
-209;3;33429;U32_W;;External power limit;cmdPwrPct;1;0;%;0;
-210;3;33431;U32_W;;P(U) limiter;;1;0;;0;
-211;3;33433;U32_W;;P(U) trigger level;;1;0;%;0;
-212;3;33435;U32_W;;P(U) release level;;1;0;%;0;
-213;3;33437;U32_W;;P(U) limit level;;1;0;%;0;
-214;3;33439;U32_W;;P(U) limit ramp;;1;0;%/min;0;
-215;3;33441;U32_W;;P(U) release ramp;;1;0;%/min;0;
-216;3;33443;U32_W;;P(U) end level;;1;0;%;0;
-217;3;33445;U32_W;;P(U) filtering time constant;;1;0;s;0;
-218;3;33447;U32_W;;P(U) used power;;1;0;;0;
-219;3;33459;U32_W;;Flat-top limit;;1;0;%;0;
-220;3;33463;U32_W;;Active power ramping;;1;0;;0;
-221;3;33465;U32_W;;Active power ramp;;1;0;%/min;0;
-222;3;33467;U32_W;;Shut down ramp;;1;0;%/s;0;
-223;3;33469;U32_W;;Active power margin;;0.1;0;%;0;
-224;3;33475;U32_W;;External limit ramp up;CMD_RAMP_TIME_S;1;0;ms;0;
-225;3;33477;U32_W;;External limit ramp down;;1;0;ms;0;
-226;3;33481;U32_W;;Limit priority;;1;0;;0;
-227;4;33793;U32_W;;Autoreset counter;;1;0;;0;
-228;3;33797;U32_W;;Overcurrent trials;;1;0;;0;
-229;3;33799;U32_W;;Overcurrent reset delay;;1;0;s;0;
-230;3;33803;U32_W;;Short circuit current reset delay;;1;0;s;0;
-231;3;33805;U32_W;;Ground impedance trials;;1;0;;0;
-232;3;33807;U32_W;;Ground impedance reset delay;;1;0;s;0;
-233;3;34561;U32_W;;Grid code;;1;0;;0;
-234;3;34563;U32_W;;Nominal LL voltage;;1;0;V;0;
-235;3;34567;U32_W;;Nominal frequency;;1;0;;0;
-236;3;34579;U32_W;;Initial connection delay;;1;0;s;0;
-237;3;34581;U32_W;;Reconnection delay;;1;0;s;0;
-238;3;34583;U32_W;;Quick disturbance limit;;1;0;s;0;
-239;3;34585;U32_W;;Quick reconnection delay;;1;0;s;0;
-240;3;34591;U32_W;;External trip;;1;0;;0;
-241;3;34597;U32_W;;Zero cross monitor enable;;1;0;;0;
-242;3;34599;U32_W;;Connect underfrequency type;;1;0;;0;
-243;3;34601;I32_W;;Connect underfrequency limit;;0.01;0;Hz;0;
-244;3;34603;U32_W;;Connect overfrequency type;;1;0;;0;
-245;3;34605;U32_W;;Connect overfrequency limit;;0.01;0;Hz;0;
-246;3;34607;U32_W;;Connect undervoltage type;;1;0;;0;
-247;3;34609;U32_W;;Connect undervoltage limit;;1;0;%;0;
-248;3;34611;U32_W;;Connect overvoltage type;;1;0;;0;
-249;3;34613;U32_W;;Connect overvoltage limit;;1;0;%;0;
-250;3;34619;I32_W;;Underfrequency enable 1;;1;0;;0;
-251;3;34621;U32_W;;Underfrequency limit 1;;0.1;0;Hz;0;
-252;3;34623;U32_W;;Underfrequency time 1;;1;0;ms;0;
-253;3;34625;U32_W;;Underfrequency enable 2;;1;0;;0;
-254;3;34627;I32_W;;Underfrequency limit 2;;0.1;0;Hz;0;
-255;3;34629;U32_W;;Underfrequency time 2;;1;0;ms;0;
-256;3;34639;U32_W;;Overfrequency enable 1;;1;0;;0;
-257;3;34641;U32_W;;Overfrequency limit 1;;0.1;0;Hz;0;
-258;3;34643;U32_W;;Overfrequency time 1;;1;0;ms;0;
-259;3;34645;U32_W;;Overfrequency enable 2;;1;0;;0;
-260;3;34647;U32_W;;Overfrequency limit 2;;0.1;0;Hz;0;
-261;3;34649;U32_W;;Overfrequency time 2;;1;0;ms;0;
-262;3;34659;U32_W;;Undervoltage enable 1;;1;0;;0;
-263;3;34661;U32_W;;Undervoltage limit 1;;1;0;%;0;
-264;3;34663;U32_W;;Undervoltage time 1;;1;0;ms;0;
-265;3;34665;U32_W;;Undervoltage enable 2;;1;0;;0;
-266;3;34667;U32_W;;Undervoltage limit 2;;1;0;%;0;
-267;3;34669;U32_W;;Undervoltage time 2;;1;0;ms;0;
-268;3;34671;U32_W;;Undervoltage enable 3;;1;0;;0;
-269;3;34673;U32_W;;Undervoltage limit 3;;1;0;%;0;
-270;3;34675;U32_W;;Undervoltage time 3;;1;0;ms;0;
-271;3;34677;U32_W;;Undervoltage enable 4;;1;0;;0;
-272;3;34679;U32_W;;Undervoltage limit 4;;1;0;%;0;
-273;3;34681;U32_W;;Undervoltage time 4;;1;0;ms;0;
-274;3;34685;U32_W;;Overvoltage enable 1;;1;0;;0;
-275;3;34687;U32_W;;Overvoltage limit 1;;1;0;%;0;
-276;3;34689;U32_W;;Overvoltage time 1;;1;0;ms;0;
-277;3;34691;U32_W;;Overvoltage enable 2;;1;0;;0;
-278;3;34693;U32_W;;Overvoltage limit 2;;1;0;%;0;
-279;3;34695;U32_W;;Overvoltage time 2;;1;0;ms;0;
-280;3;34697;U32_W;;Overvoltage enable 3;;1;0;;0;
-281;3;34699;U32_W;;Overvoltage limit 3;;1;0;%;0;
-282;3;34701;U32_W;;Overvoltage time 3;;1;0;ms;0;
-283;3;34703;U32_W;;Overvoltage enable 4;;1;0;;0;
-284;3;34705;U32_W;;Overvoltage limit 4;;1;0;%;0;
-285;3;34707;U32_W;;Overvoltage time 4;;1;0;ms;0;
-286;3;34709;U32_W;;Sliding overvoltage enable;;1;0;;0;
-287;3;34711;U32_W;;Sliding overvoltage limit;;1;0;%;0;
-288;3;34713;U32_W;;Sliding overvoltage time;;1;0;ms;0;
-289;3;34719;U32_W;;Combinatory trip;;1;0;;0;
-290;3;34721;U32_W;;Combinatory trip time;;1;0;ms;0;
-291;3;34727;U32_W;;Comb pos seq voltage limit;;1;0;%;0;
-292;3;34729;U32_W;;Comb neg seq voltage limit;;1;0;%;0;
-293;3;34731;I32_W;;Comb underfrequency limit;;0.1;0;Hz;0;
-294;3;34733;U32_W;;Comb overfrequency limit;;0.1;0;Hz;0;
-295;3;34759;U32_W;;Anti-islanding;;1;0;;0;
-296;3;34761;U32_W;;AI underfrequency enable;;1;0;;0;
-297;3;34763;I32_W;;AI underfrequency limit;;0.1;0;Hz;0;
-298;3;34765;U32_W;;AI overfrequency enable;;1;0;;0;
-299;3;34767;U32_W;;AI overfrequency limit;;0.1;0;Hz;0;
-300;3;34769;U32_W;;AI undervoltage enable;;1;0;;0;
-301;3;34771;U32_W;;AI undervoltage limit;;1;0;%;0;
-302;3;34773;U32_W;;AI overvoltage enable;;1;0;;0;
-303;3;34775;U32_W;;AI overvoltage limit;;1;0;%;0;
-304;3;34779;U32_W;;Rate of change of freq enable;;1;0;;0;
-305;3;34781;U32_W;;Rate of change of freq limit;;0.1;0;;0;
-306;3;34821;U32_W;;Overfrequency enable 3;;1;0;;0;
-307;3;34823;U32_W;;Overfrequency limit 3;;0.1;0;Hz;0;
-308;3;34825;U32_W;;Overfrequency time 3;;1;0;ms;0;
-309;3;34827;U32_W;;Overfrequency enable 4;;1;0;;0;
-310;3;34829;U32_W;;Overfrequency limit 4;;0.1;0;Hz;0;
-311;3;34831;U32_W;;Overfrequency time 4;;1;0;ms;0;
-312;3;34833;U32_W;;Underfrequency enable 3;;1;0;;0;
-313;3;34835;I32_W;;Underfrequency limit 3;;0.1;0;Hz;0;
-314;3;34837;U32_W;;Underfrequency time 3;;1;0;ms;0;
-315;3;34839;U32_W;;Underfrequency enable 4;;1;0;;0;
-316;3;34841;I32_W;;Underfrequency limit 4;;0.1;0;Hz;0;
-317;3;34843;U32_W;;Underfrequency time 4;;1;0;ms;0;
-318;3;34845;U32_W;;Underfrequency enable 5;;1;0;;0;
-319;3;34847;I32_W;;Underfrequency limit 5;;0.1;0;Hz;0;
-320;3;34849;U32_W;;Underfrequency time 5;;1;0;ms;0;
-321;3;34851;U32_W;;Underfrequency enable 6;;1;0;;0;
-322;3;34853;I32_W;;Underfrequency limit 6;;0.1;0;Hz;0;
-323;3;34855;U32_W;;Underfrequency time 6;;1;0;ms;0;
-324;4;35059;U16;;Grid monitoring SW1;;1;0;;0;
-325;4;35061;U16;;Grid monitoring SW2;;1;0;;0;
-326;4;35063;U16;;Grid monitoring SW3;;1;0;;0;
-327;3;37633;I32_W;;Data storage 1 real32;;0.001;0;;0;OK
-328;3;37635;I32_W;;Data storage 2 real32;;0.001;0;;0;OK
-329;3;37637;I32_W;;Data storage 3 real32;;0.001;0;;0;OK
-330;3;37639;I32_W;;Data storage 4 real32;;0.001;0;;0;OK
-331;3;37641;I32_W;;Data storage 5 real32;;0.001;0;;0;OK
-332;3;37643;I32_W;;Data storage 6 real32;;0.001;0;;0;OK
-333;3;37645;I32_W;;Data storage 7 real32;;0.001;0;;0;OK
-334;3;37647;I32_W;;Data storage 8 real32;;0.001;0;;0;OK
-335;3;37653;I32_W;;Data storage 1 int32;;1;0;;0;OK
-336;3;37655;I32_W;;Data storage 2 int32;;1;0;;0;OK
-337;3;37657;I32_W;;Data storage 3 int32;;1;0;;0;OK
-338;3;37659;I32_W;;Data storage 4 int32;;1;0;;0;OK
-339;3;37661;I32_W;;Data storage 5 int32;;1;0;;0;OK
-340;3;37663;I32_W;;Data storage 6 int32;;1;0;;0;OK
-341;3;37665;I32_W;;Data storage 7 int32;;1;0;;0;OK
-342;3;37667;I32_W;;Data storage 8 int32;;1;0;;0;OK
-343;3;37673;I16;;Data storage 1 int16;;1;0;;0;
-344;3;37675;I16;;Data storage 2 int16;;1;0;;0;
-345;3;37677;I16;;Data storage 3 int16;;1;0;;0;
-346;3;37679;I16;;Data storage 4 int16;;1;0;;0;
-347;3;37681;I16;;Data storage 5 int16;;1;0;;0;
-348;3;37683;I16;;Data storage 6 int16;;1;0;;0;
-349;3;37685;I16;;Data storage 7 int16;;1;0;;0;
-350;3;37687;I16;;Data storage 8 int16;;1;0;;0;
-351;3;37693;I32_W;;Data storage 1 real32 type;;1;0;;0;OK
-352;3;37695;I32_W;;Data storage 2 real32 type;;1;0;;0;OK
-353;3;37697;I32_W;;Data storage 3 real32 type;;1;0;;0;OK
-354;3;37699;I32_W;;Data storage 4 real32 type;;1;0;;0;OK
-355;3;37701;I32_W;;Data storage 5 real32 type;;1;0;;0;OK
-356;3;37703;I32_W;;Data storage 6 real32 type;;1;0;;0;OK
-357;3;37705;I32_W;;Data storage 7 real32 type;;1;0;;0;OK
-358;3;37707;I32_W;;Data storage 8 real32 type;;1;0;;0;OK
-359;3;38145;U32_W;;Node ID;;1;0;;0;
-360;3;38149;U32_W;;Baud rate;;1;0;;0;
-361;3;38155;U32_W;;Refresh settings;;1;0;;0;
-362;3;38401;U32_W;;FBA A Enable;;1;0;;0;OK
-363;3;38403;U32_W;;FBA A comm loss func;;1;0;;0;OK
-364;3;38405;U32_W;;FBA A comm loss t out;;0.1;0;s;0;OK
-365;3;38407;U32_W;;FBA A ref1 type;;1;0;;0;OK
-366;3;38409;U32_W;;FBA A ref2 type;;1;0;;0;OK
-367;3;38411;U32_W;;FBA A SW sel;;1;0;;0;OK
-368;3;38413;U32_W;;FBA A act1 type;;1;0;;0;OK
-369;3;38415;U32_W;;FBA A act2 type;;1;0;;0;OK
-370;3;38417;U32_W;;FBA A SW tr src;;1;0;;0;OK
-371;3;38419;U32_W;;FBA A act1 transparent source;;1;0;;0;OK
-372;3;38421;U32_W;;FBA A act2 transparent source;;1;0;;0;OK
-373;3;38423;U32_W;;FBA A debug mode;;1;0;;0;OK
-374;4;38425;U32_W;;FBA A Control Word;;1;0;;0;
-375;4;38427;I32_W;;FBA A Reference REF1;;1;0;;0;
-376;4;38429;I32_W;;FBA A Reference REF2;;1;0;;0;
-377;4;38431;U32_W;;FBA A Status Word;;1;0;;0;
-378;4;38433;I32_W;;FBA A Actual value 1;;1;0;;0;
-379;4;38435;I32_W;;FBA A Actual value 2;;1;0;;0;
-380;3;38441;U32_W;;FBA A Timelevel sel;;1;0;;0;OK
-381;3;38461;U32_W;;FBA B Enable;;1;0;;0;OK
-382;3;38463;U32_W;;FBA B comm loss func;;1;0;;0;OK
-383;3;38465;U32_W;;FBA B comm loss t out;;0.1;0;s;0;OK
-384;3;38467;U32_W;;FBA B ref1 type;;1;0;;0;OK
-385;3;38469;U32_W;;FBA B ref2 type;;1;0;;0;OK
-386;3;38471;U32_W;;FBA B SW sel;;1;0;;0;OK
-387;3;38473;U32_W;;FBA B act1 type;;1;0;;0;OK
-388;3;38475;U32_W;;FBA B act2 type;;1;0;;0;OK
-389;3;38477;U32_W;;FBA B SW tr src;;1;0;;0;OK
-390;3;38479;U32_W;;FBA B act1 transparent source;;1;0;;0;OK
-391;3;38481;U32_W;;FBA B act2 transparent source;;1;0;;0;OK
-392;3;38483;U32_W;;FBA B debug mode;;1;0;;0;OK
-393;4;38485;U32_W;;FBA B Control Word;;1;0;;0;
-394;4;38487;I32_W;;FBA B Reference REF1;;1;0;;0;
-395;4;38489;I32_W;;FBA B Reference REF2;;1;0;;0;
-396;4;38491;U32_W;;FBA B Status Word;;1;0;;0;
-397;4;38493;I32_W;;FBA B Actual value 1;;1;0;;0;
-398;4;38495;I32_W;;FBA B Actual value 2;;1;0;;0;
-399;3;38501;U32_W;;FBA B Timelevel sel;;1;0;;0;OK
-400;3;38657;U32_W;;FBA type;;1;0;;0;OK
-401;3;38659;U32_W;;FBA Par2;;1;0;;0;OK
-402;3;38661;U32_W;;FBA Par3;;1;0;;0;OK
-403;3;38663;U32_W;;FBA Par4;;1;0;;0;OK
-404;3;38665;U32_W;;FBA Par5;;1;0;;0;OK
-405;3;38667;U32_W;;FBA Par6;;1;0;;0;OK
-406;3;38669;U32_W;;FBA Par7;;1;0;;0;OK
-407;3;38671;U32_W;;FBA Par8;;1;0;;0;OK
-408;3;38673;U32_W;;FBA Par9;;1;0;;0;OK
-409;3;38675;U32_W;;FBA Par10;;1;0;;0;OK
-410;3;38677;U32_W;;FBA Par11;;1;0;;0;OK
-411;3;38679;U32_W;;FBA Par12;;1;0;;0;OK
-412;3;38681;U32_W;;FBA Par13;;1;0;;0;OK
-413;3;38683;U32_W;;FBA Par14;;1;0;;0;OK
-414;3;38685;U32_W;;FBA Par15;;1;0;;0;OK
-415;3;38687;U32_W;;FBA Par16;;1;0;;0;OK
-416;3;38689;U32_W;;FBA Par17;;1;0;;0;OK
-417;3;38691;U32_W;;FBA Par18;;1;0;;0;OK
-418;3;38693;U32_W;;FBA Par19;;1;0;;0;OK
-419;3;38695;U32_W;;FBA Par20;;1;0;;0;OK
-420;3;38697;U32_W;;FBA Par21;;1;0;;0;OK
-421;3;38699;U32_W;;FBA Par22;;1;0;;0;OK
-422;3;38701;U32_W;;FBA Par23;;1;0;;0;OK
-423;3;38703;U32_W;;FBA Par24;;1;0;;0;OK
-424;3;38705;U32_W;;FBA Par25;;1;0;;0;OK
-425;3;38707;U32_W;;FBA Par26;;1;0;;0;OK
-426;3;38709;U32_W;;FBA par refresh;;1;0;;0;OK
-427;4;38711;U32_W;;Par table ver;;1;0;;0;
-428;4;38713;U32_W;;Drive type code;;1;0;;0;
-429;4;38715;U32_W;;Mapping file ver;;1;0;;0;
-430;3;38717;U32_W;;D2FBA comm sta;;1;0;;0;OK
-431;3;38719;U32_W;;FBA comm SW ver;;1;0;;0;OK
-432;3;38721;U32_W;;FBA appl SW ver;;1;0;;0;OK
-433;3;38913;U32_W;;FBA data in1;;1;0;;0;OK
-434;3;38915;U32_W;;FBA data in2;;1;0;;0;OK
-435;3;38917;U32_W;;FBA data in3;;1;0;;0;OK
-436;3;38919;U32_W;;FBA data in4;;1;0;;0;OK
-437;3;38921;U32_W;;FBA data in5;;1;0;;0;OK
-438;3;38923;U32_W;;FBA data in6;;1;0;;0;OK
-439;3;38925;U32_W;;FBA data in7;;1;0;;0;OK
-440;3;38927;U32_W;;FBA data in8;;1;0;;0;OK
-441;3;38929;U32_W;;FBA data in9;;1;0;;0;OK
-442;3;38931;U32_W;;FBA data in10;;1;0;;0;OK
-443;3;38933;U32_W;;FBA data in11;;1;0;;0;OK
-444;3;38935;U32_W;;FBA data in12;;1;0;;0;OK
-445;3;39169;U32_W;;FBA data out1;;1;0;;0;OK
-446;3;39171;U32_W;;FBA data out2;;1;0;;0;OK
-447;3;39173;U32_W;;FBA data out3;;1;0;;0;OK
-448;3;39175;U32_W;;FBA data out4;;1;0;;0;OK
-449;3;39177;U32_W;;FBA data out5;;1;0;;0;OK
-450;3;39179;U32_W;;FBA data out6;;1;0;;0;OK
-451;3;39181;U32_W;;FBA data out7;;1;0;;0;OK
-452;3;39183;U32_W;;FBA data out8;;1;0;;0;OK
-453;3;39185;U32_W;;FBA data out9;;1;0;;0;OK
-454;3;39187;U32_W;;FBA data out10;;1;0;;0;OK
-455;3;39189;U32_W;;FBA data out11;;1;0;;0;OK
-456;3;39191;U32_W;;FBA data out12;;1;0;;0;OK
-457;3;39425;U32_W;;FBA type_1;;1;0;;0;OK
-458;3;39427;U32_W;;FBA Par2_1;;1;0;;0;OK
-459;3;39429;U32_W;;FBA Par3_1;;1;0;;0;OK
-460;3;39431;U32_W;;FBA Par4_1;;1;0;;0;OK
-461;3;39433;U32_W;;FBA Par5_1;;1;0;;0;OK
-462;3;39435;U32_W;;FBA Par6_1;;1;0;;0;OK
-463;3;39437;U32_W;;FBA Par7_1;;1;0;;0;OK
-464;3;39439;U32_W;;FBA Par8_1;;1;0;;0;OK
-465;3;39441;U32_W;;FBA Par9_1;;1;0;;0;OK
-466;3;39443;U32_W;;FBA Par10_1;;1;0;;0;OK
-467;3;39445;U32_W;;FBA Par11_1;;1;0;;0;OK
-468;3;39447;U32_W;;FBA Par12_1;;1;0;;0;OK
-469;3;39449;U32_W;;FBA Par13_1;;1;0;;0;OK
-470;3;39451;U32_W;;FBA Par14_1;;1;0;;0;OK
-471;3;39453;U32_W;;FBA Par15_1;;1;0;;0;OK
-472;3;39455;U32_W;;FBA Par16_1;;1;0;;0;OK
-473;3;39457;U32_W;;FBA Par17_1;;1;0;;0;OK
-474;3;39459;U32_W;;FBA Par18_1;;1;0;;0;OK
-475;3;39461;U32_W;;FBA Par19_1;;1;0;;0;OK
-476;3;39463;U32_W;;FBA Par20_1;;1;0;;0;OK
-477;3;39465;U32_W;;FBA Par21_1;;1;0;;0;OK
-478;3;39467;U32_W;;FBA Par22_1;;1;0;;0;OK
-479;3;39469;U32_W;;FBA Par23_1;;1;0;;0;OK
-480;3;39471;U32_W;;FBA Par24_1;;1;0;;0;OK
-481;3;39473;U32_W;;FBA Par25_1;;1;0;;0;OK
-482;3;39475;U32_W;;FBA Par26_1;;1;0;;0;OK
-483;3;39477;U32_W;;FBA par refresh_1;;1;0;;0;
-484;4;39479;U32_W;;Par table ver _1;;1;0;;0;
-485;4;39481;U32_W;;Drive type code_1;;1;0;;0;
-486;4;39483;U32_W;;Mapping file ver_1;;1;0;;0;
-487;3;39485;U32_W;;D2FBA comm sta_1;;1;0;;0;OK
-488;3;39487;U32_W;;FBA comm SW ver_1;;1;0;;0;OK
-489;3;39489;U32_W;;FBA appl SW ver_1;;1;0;;0;OK
-490;3;39681;U32_W;;FBA data in1_1;;1;0;;0;OK
-491;3;39683;U32_W;;FBA data in2_1;;1;0;;0;OK
-492;3;39685;U32_W;;FBA data in3_1;;1;0;;0;OK
-493;3;39687;U32_W;;FBA data in4_1;;1;0;;0;OK
-494;3;39689;U32_W;;FBA data in5_1;;1;0;;0;OK
-495;3;39691;U32_W;;FBA data in6_1;;1;0;;0;OK
-496;3;39693;U32_W;;FBA data in7_1;;1;0;;0;OK
-497;3;39695;U32_W;;FBA data in8_1;;1;0;;0;OK
-498;3;39697;U32_W;;FBA data in9_1;;1;0;;0;OK
-499;3;39699;U32_W;;FBA data in10_1;;1;0;;0;OK
-500;3;39701;U32_W;;FBA data in11_1;;1;0;;0;OK
-501;3;39703;U32_W;;FBA data in12_1;;1;0;;0;OK
-502;3;39937;U32_W;;FBA B data out1;;1;0;;0;OK
-503;3;39939;U32_W;;FBA B data out2;;1;0;;0;OK
-504;3;39941;U32_W;;FBA B data out3;;1;0;;0;OK
-505;3;39943;U32_W;;FBA B data out4;;1;0;;0;OK
-506;3;39945;U32_W;;FBA B data out5;;1;0;;0;OK
-507;3;39947;U32_W;;FBA B data out6;;1;0;;0;OK
-508;3;39949;U32_W;;FBA B data out7;;1;0;;0;OK
-509;3;39951;U32_W;;FBA B data out8;;1;0;;0;OK
-510;3;39953;U32_W;;FBA B data out9;;1;0;;0;OK
-511;3;39955;U32_W;;FBA B data out10;;1;0;;0;OK
-512;3;39957;U32_W;;FBA B data out11;;1;0;;0;OK
-513;3;39959;U32_W;;FBA B data out12;;1;0;;0;OK
-514;3;41985;U32_W;;Enable;;1;0;;0;OK
-515;3;41987;U32_W;;Profile;;1;0;;0;OK
-516;3;41991;U32_W;;Power scale;;0.1;0;kW;0;OK
-517;3;42003;U32_W;;Communication loss event;WIND_SPEED;1;0;;0;OK
-518;3;42005;U32_W;;Communication loss timeout;;1;0;s;0;OK
-519;3;42007;U32_W;;Heartbeat max interval;;1;0;s;0;OK
-520;3;42009;U32_W;;First start delay;;1;0;s;0;OK
-521;3;42241;U32_W;;Data in 1;;1;0;;0;OK
-522;3;42243;U32_W;;Data in 2;;1;0;;0;OK
-523;3;42245;U32_W;;Data in 3;;1;0;;0;OK
-524;3;42247;U32_W;;Data in 4;;1;0;;0;OK
-525;3;42249;U32_W;;Data in 5;;1;0;;0;OK
-526;3;42251;U32_W;;Data in 6;;1;0;;0;OK
-527;3;42253;U32_W;;Data in 7;;1;0;;0;OK
-528;3;42255;U32_W;;Data in 8;;1;0;;0;OK
-529;3;42257;U32_W;;Data in 9;;1;0;;0;OK
-530;3;42259;U32_W;;Data in 10;;1;0;;0;OK
-531;3;42261;U32_W;;Data in 11;;1;0;;0;OK
-532;3;42263;U32_W;;Data in 12;;1;0;;0;OK
-533;3;42265;U32_W;;Data in 13;;1;0;;0;OK
-534;3;42267;U32_W;;Data in 14;;1;0;;0;OK
-535;3;42269;U32_W;;Data in 15;;1;0;;0;OK
-536;3;42339;U32_W;;Data in 50;;1;0;;0;OK
-537;3;42341;U32_W;;Data in 51;;1;0;;0;OK
-538;3;42343;U32_W;;Data in 52;;1;0;;0;OK
-539;3;42345;U32_W;;Data in 53;;1;0;;0;OK
-540;3;42347;U32_W;;Data in 54;;1;0;;0;OK
-541;3;42349;U32_W;;Data in 55;;1;0;;0;OK
-542;3;42351;U32_W;;Data in 56;;1;0;;0;OK
-543;3;42497;U32_W;;Data out 1;;1;0;;0;OK
-544;3;42499;U32_W;;Data out 2;;1;0;;0;OK
-545;3;42501;U32_W;;Data out 3;;1;0;;0;OK
-546;3;42503;U32_W;;Data out 4;;1;0;;0;OK
-547;3;42505;U32_W;;Data out 5;;1;0;;0;OK
-548;3;42507;U32_W;;Data out 6;;1;0;;0;OK
-549;3;42509;U32_W;;Data out 7;;1;0;;0;OK
-550;3;42511;U32_W;;Data out 8;;1;0;;0;OK
-551;3;42513;U32_W;;Data out 9;;1;0;;0;OK
-552;3;42515;U32_W;;Data out 10;;1;0;;0;OK
-553;3;42517;U32_W;;Data out 11;;1;0;;0;OK
-554;3;42595;U32_W;;Data out 50;;1;0;;0;OK
-555;3;42597;U32_W;;Data out 51;;1;0;;0;OK
-556;3;42599;U32_W;;Data out 52;;1;0;;0;OK
-557;3;42601;U32_W;;Data out 53;;1;0;;0;OK
-558;3;42603;U32_W;;Data out 54;;1;0;;0;OK
-559;3;42605;U32_W;;Data out 55;;1;0;;0;OK
-560;3;42607;U32_W;;Data out 56;;1;0;;0;OK
-561;3;42609;U32_W;;Data out 57;;1;0;;0;OK
-562;3;42611;U32_W;;Data out 58;;1;0;;0;OK
-563;3;42613;U32_W;;Data out 59;;1;0;;0;OK
-564;3;42615;U32_W;;Data out 60;;1;0;;0;OK
-565;3;42617;U32_W;;Data out 61;;1;0;;0;OK
-566;3;42619;U32_W;;Data out 62;;1;0;;0;OK
-567;3;42621;U32_W;;Data out 63;;1;0;;0;OK
-568;3;42623;U32_W;;Data out 64;;1;0;;0;OK
-569;3;42625;U32_W;;Data out 65;;1;0;;0;OK
-570;3;42627;U32_W;;Data out 66;;1;0;;0;OK
-571;3;42629;U32_W;;Data out 67;;1;0;;0;OK
-572;3;42631;U32_W;;Data out 68;;1;0;;0;OK
-573;3;42633;U32_W;;Data out 69;;1;0;;0;OK
-574;3;42635;U32_W;;Data out 70;;1;0;;0;OK
-575;3;42637;U32_W;;Data out 71;;1;0;;0;OK
-576;3;42639;U32_W;;Data out 72;;1;0;;0;OK
-577;3;42641;U32_W;;Data out 73;;1;0;;0;OK
-578;3;42643;U32_W;;Data out 74;;1;0;;0;OK
-579;3;42645;U32_W;;Data out 75;;1;0;;0;OK
-580;3;42647;U32_W;;Data out 76;;1;0;;0;OK
-581;3;42649;U32_W;;Data out 77;;1;0;;0;OK
-582;3;42651;U32_W;;Data out 78;;1;0;;0;OK
-583;3;42653;U32_W;;Data out 79;;1;0;;0;OK
-584;3;42655;U32_W;;Data out 80;;1;0;;0;OK
-585;3;42657;U32_W;;Data out 81;;1;0;;0;OK
-586;3;42659;U32_W;;Data out 82;;1;0;;0;OK
-587;3;42661;U32_W;;Data out 83;;1;0;;0;OK
-588;3;42663;U32_W;;Data out 84;;1;0;;0;OK
-589;3;42665;U32_W;;Data out 85;;1;0;;0;OK
-590;3;42667;U32_W;;Data out 86;;1;0;;0;OK
-591;3;42669;U32_W;;Data out 87;;1;0;;0;OK
-592;3;42671;U32_W;;Data out 88;;1;0;;0;OK
-593;3;42673;U32_W;;Data out 89;;1;0;;0;OK
-594;3;42675;U32_W;;Data out 90;;1;0;;0;OK
-595;3;42677;U32_W;;Data out 91;;1;0;;0;OK
-596;3;42679;U32_W;;Data out 92;;1;0;;0;OK
-597;3;42681;U32_W;;Data out 93;;1;0;;0;OK
-598;3;42683;U32_W;;Data out 94;;1;0;;0;OK
-599;3;42685;U32_W;;Data out 95;;1;0;;0;OK
-600;3;42687;U32_W;;Data out 96;;1;0;;0;OK
-601;3;42689;U32_W;;Data out 97;;1;0;;0;OK
-602;3;42691;U32_W;;Data out 98;;1;0;;0;OK
-603;3;42693;U32_W;;Data out 99;;1;0;;0;OK
-604;3;42695;U32_W;;Data out 100;;1;0;;0;OK
-605;3;42697;U32_W;;Data out 101;;1;0;;0;OK
-606;3;42699;U32_W;;Data out 102;;1;0;;0;OK
-607;3;42701;U32_W;;Data out 103;;1;0;;0;OK
-608;3;42703;U32_W;;Data out 104;;1;0;;0;OK
-609;3;42705;U32_W;;Data out 105;;1;0;;0;OK
-610;3;42707;U32_W;;Data out 106;;1;0;;0;OK
-611;3;42709;U32_W;;Data out 107;;1;0;;0;OK
-612;3;42711;U32_W;;Data out 108;;1;0;;0;OK
-613;3;42713;U32_W;;Data out 109;;1;0;;0;OK
-614;3;42715;U32_W;;Data out 110;;1;0;;0;OK
-615;3;42717;U32_W;;Data out 111;;1;0;;0;OK
-616;3;42719;U32_W;;Data out 112;;1;0;;0;OK
-617;3;42721;U32_W;;Data out 113;;1;0;;0;OK
-618;3;42723;U32_W;;Data out 114;;1;0;;0;OK
-619;3;42725;U32_W;;Data out 115;;1;0;;0;OK
-620;3;42727;U32_W;;Data out 116;;1;0;;0;OK
-621;3;42729;U32_W;;Data out 117;;1;0;;0;OK
-622;3;42731;U32_W;;Data out 118;;1;0;;0;OK
-623;3;42733;U32_W;;Data out 119;;1;0;;0;OK
-624;3;42735;U32_W;;Data out 120;;1;0;;0;OK
-625;3;42737;U32_W;;Data out 121;;1;0;;0;OK
-626;3;42739;U32_W;;Data out 122;;1;0;;0;OK
-627;3;42741;U32_W;;Data out 123;;1;0;;0;OK
-628;3;42743;U32_W;;Data out 124;;1;0;;0;OK
-629;3;42745;U32_W;;Data out 125;;1;0;;0;OK
-630;3;42747;U32_W;;Data out 126;;1;0;;0;OK
-631;3;42749;U32_W;;Data out 127;;1;0;;0;OK
-632;3;42751;U32_W;;Data out 128;;1;0;;0;OK
-633;3;42753;U32_W;;Data out 129;;1;0;;0;OK
-634;3;42755;U32_W;;Data out 130;;1;0;;0;OK
-635;3;42757;U32_W;;Data out 131;;1;0;;0;OK
-636;3;42759;U32_W;;Data out 132;;1;0;;0;OK
-637;3;42761;U32_W;;Data out 133;;1;0;;0;OK
-638;3;42763;U32_W;;Data out 134;;1;0;;0;OK
-639;3;42765;U32_W;;Data out 135;;1;0;;0;OK
-640;3;42767;U32_W;;Data out 136;;1;0;;0;OK
-641;3;42769;U32_W;;Data out 137;;1;0;;0;OK
-642;3;42771;U32_W;;Data out 138;;1;0;;0;OK
-643;3;42773;U32_W;;Data out 139;;1;0;;0;OK
-644;3;42775;U32_W;;Data out 140;;1;0;;0;OK
-645;3;42777;U32_W;;Data out 141;;1;0;;0;OK
-646;3;42779;U32_W;;Data out 142;;1;0;;0;OK
-647;3;42781;U32_W;;Data out 143;;1;0;;0;OK
-648;3;42783;U32_W;;Data out 144;;1;0;;0;OK
-649;3;42785;U32_W;;Data out 145;;1;0;;0;OK
-650;3;42787;U32_W;;Data out 146;;1;0;;0;OK
-651;3;42789;U32_W;;Data out 147;;1;0;;0;OK
-652;3;42791;U32_W;;Data out 148;;1;0;;0;OK
-653;3;42793;U32_W;;Data out 149;;1;0;;0;OK
-654;3;42795;U32_W;;Data out 150;;1;0;;0;OK
-655;3;42797;U32_W;;Data out 151;;1;0;;0;OK
-656;3;42799;U32_W;;Data out 152;;1;0;;0;OK
-657;3;42801;U32_W;;Data out 153;;1;0;;0;OK
-658;3;42803;U32_W;;Data out 154;;1;0;;0;OK
-659;3;42805;U32_W;;Data out 155;;1;0;;0;OK
-660;3;42807;U32_W;;Data out 156;;1;0;;0;OK
-661;3;42809;U32_W;;Data out 157;;1;0;;0;OK
-662;3;42811;U32_W;;Data out 158;;1;0;;0;OK
-663;3;42813;U32_W;;Data out 159;;1;0;;0;OK
-664;3;42815;U32_W;;Data out 160;;1;0;;0;OK
-665;3;44289;U16;;Main status word;;1;0;;0;
-666;3;44291;U32_W;;Inverter main state;;1;0;;0;
-667;3;44293;U32_W;;MPPT unit state;;1;0;;0;
-668;3;44295;U16;;Start command SW;;1;0;;0;
-669;3;44297;U16;;Internal inverter inhibitors 1;;1;0;;0;
-670;3;44299;U16;;Internal inverter inhibitors 2;;1;0;;0;
-671;3;44301;U16;;Internal MPPT inhibitors;;1;0;;0;
-672;3;44309;U32_W;;Output power status;;1;0;;0;OK
-673;3;44311;U32_W;;Disconnect trigger;;1;0;;0;OK
-674;3;44327;U32_W;;Grid monitoring ready in;;1;0;s;0;OK
-675;3;44329;U32_W;;Start logic ready in;;1;0;s;0;OK
-676;3;44333;U32_W;;PU ready in;;1;0;s;0;OK
-677;3;44347;U32_W;;Start logic stopping in;;1;0;s;0;OK
-678;3;44545;U16;;Connected DC inputs 1- 12;;1;0;;0;
-679;3;44547;U16;;Connected DC inputs 13-24;;1;0;;0;
-680;3;44553;U32_W;;Overcurrent detection;;1;0;;0;
-681;3;44555;U32_W;;Overcurrent instant limit;;0.1;0;A;0;
-682;3;44557;U32_W;;Overcurrent delayed limit;;0.1;0;A;0;
-683;3;44559;U32_W;;Overcurrent time delay;;0.1;0;s;0;
-684;3;44561;U32_W;;Reverse current detection;;1;0;;0;
-685;3;44563;I32_W;;Delayed Reverse current limit;;0.1;0;A;0;
-686;3;44565;U32_W;;Reverse current time delay;;0.1;0;s;0;
-687;3;44571;U32_W;;Current deviation action;;1;0;;0;
-688;3;44573;U32_W;;Current deviation delay;;1;0;min;0;
-689;3;44575;U32_W;;Comparison mode;;1;0;;0;
-690;3;44577;U32_W;;Reference type;;1;0;;0;
-691;3;44581;U32_W;;Relative current limit;;1;0;%;0;
-692;3;44583;U32_W;;Absolute current limit;;0.1;0;A;0;
-693;3;44585;U32_W;;Relative threshold;;0.1;0;A;0;
-694;3;44587;U32_W;;Fuse monitor action;;1;0;;0;
-695;3;44589;U32_W;;Blown fuse tolerance;;0.1;0;A;0;
-696;3;44591;U32_W;;Blown fuse active boundary;;0.1;0;A;0;
-697;3;44593;U32_W;;Current sanity check action;;1;0;;0;
-698;3;44595;U32_W;;Current meas range;;0.1;0;A;0;
-699;3;44597;U16;;Current range selection 1-12;;1;0;;0;
-700;3;44599;U16;;Current range selection 13-24;;1;0;;0;
-701;4;44605;I32_W;;DC input 1 current;I_DC;0.1;0;A;0;OK
-702;4;44607;I32_W;;DC input 2 current;;0.1;0;A;0;OK
-703;4;44609;I32_W;;DC input 3 current;;0.1;0;A;0;OK
-704;4;44611;I32_W;;DC input 4 current;;0.1;0;A;0;OK
-705;4;44613;I32_W;;DC input 5 current;;0.1;0;A;0;OK
-706;4;44615;I32_W;;DC input 6 current;;0.1;0;A;0;OK
-707;4;44617;I32_W;;DC input 7 current;;0.1;0;A;0;OK
-708;4;44619;I32_W;;DC input 8 current;;0.1;0;A;0;OK
-709;4;44621;I32_W;;DC input 9 current;;0.1;0;A;0;OK
-710;4;44623;I32_W;;DC input 10 current;;0.1;0;A;0;OK
-711;4;44625;I32_W;;DC input 11 current;;0.1;0;A;0;OK
-712;4;44627;I32_W;;DC input 12 current;;0.1;0;A;0;OK
-713;4;44629;I32_W;;DC input 13 current;;0.1;0;A;0;OK
-714;4;44631;I32_W;;DC input 14 current;;0.1;0;A;0;OK
-715;4;44633;I32_W;;DC input 15 current;;0.1;0;A;0;OK
-716;4;44635;I32_W;;DC input 16 current;;0.1;0;A;0;OK
-717;4;44637;I32_W;;DC input 17 current;;0.1;0;A;0;OK
-718;4;44639;I32_W;;DC input 18 current;;0.1;0;A;0;OK
-719;4;44641;I32_W;;DC input 19 current;;0.1;0;A;0;OK
-720;4;44643;I32_W;;DC input 20 current;;0.1;0;A;0;OK
-721;4;44645;I32_W;;DC input 21 current;;0.1;0;A;0;OK
-722;4;44647;I32_W;;DC input 22 current;;0.1;0;A;0;OK
-723;4;44649;I32_W;;DC input 23 current;;0.1;0;A;0;OK
-724;4;44651;I32_W;;DC input 24 current;;0.1;0;A;0;OK
-725;4;44705;U16;;Current meas status 1- 12;;1;0;;0;
-726;4;44707;U16;;Current meas status 13- 24;;1;0;;0;
-727;3;45057;U32_W;;Spare AI1;;1;0;;0;
-728;3;45077;U32_W;;PLC CPU RO 0 source;;1;0;;0;
-729;3;45079;U32_W;;PCC CPU RO 1 source;;1;0;;0;
-730;3;45097;U32_W;;External fault 1 source;;1;0;;0;
-731;3;45099;U32_W;;External fault 1 action;;1;0;;0;
-732;3;45101;U32_W;;External fault 1 action delay;;1;0;s;0;
-733;3;45103;U32_W;;External fault 1 failure logic;;1;0;;0;
-734;3;45107;U32_W;;External fault 2 source;;1;0;;0;
-735;3;45109;U32_W;;External fault 2 action;;1;0;;0;
-736;3;45111;U32_W;;External fault 2 action delay;;1;0;s;0;
-737;3;45113;U32_W;;External fault 2 failure logic;;1;0;;0;
-738;3;45117;U32_W;;External fault 3 source;;1;0;;0;
-739;3;45119;U32_W;;External fault 3 action;;1;0;;0;
-740;3;45121;U32_W;;External fault 3 action delay;;1;0;s;0;
-741;3;45123;U32_W;;External fault 3 failure logic;;1;0;;0;
-742;3;45333;U32_W;;MV temperature alarm source;;1;0;;0;
-743;3;45335;U32_W;;Transformer temperature alarm action;;1;0;;0;
-744;3;45337;U32_W;;Transformer temperature alarm delay;;1;0;s;0;
-745;3;45339;U32_W;;Transformer temperature alarm current;;1;0;A;0;
-746;3;45341;U32_W;;Transformer temperature alarm failure logic;;1;0;;0;
-747;3;45343;U32_W;;MV temperature fault source;;1;0;;0;
-748;3;45345;U32_W;;Transformer temperature fault action;;1;0;;0;
-749;3;45347;U32_W;;Transformer temperature fault delay;;1;0;s;0;
-750;3;45349;U32_W;;Transformer temperature fault current limit;;1;0;A;0;
-751;3;45351;U32_W;;Transformer temperature fault failure logic;;1;0;;0;
-752;3;45353;U32_W;;MV low oil level source;;1;0;;0;
-753;3;45355;U32_W;;Transformer low oil level action;;1;0;;0;
-754;3;45357;U32_W;;Transformer low oil level delay;;1;0;s;0;
-755;3;45359;U32_W;;Transformer low oil level current limit;;1;0;A;0;
-756;3;45361;U32_W;;Transformer low oil level failure logic;;1;0;;0;
-757;3;45363;U32_W;;MV overpressure source;PRESSURE;1;0;;0;
-758;3;45365;U32_W;;Transformer overpressure action;;1;0;;0;
-759;3;45367;U32_W;;Transformer overpressure delay;;1;0;s;0;
-760;3;45369;U32_W;;Transformer overpressure current limit;;1;0;A;0;
-761;3;45371;U32_W;;Transformer overpressure failure logic;;1;0;;0;
-762;3;45373;U32_W;;MV vacuum failure source;;1;0;;0;
-763;3;45375;U32_W;;Transformer vacuum failure action;;1;0;;0;
-764;3;45377;U32_W;;Transformer vacuum failure delay;;1;0;s;0;
-765;3;45379;U32_W;;Transformer vacuum failure current limit;;1;0;A;0;
-766;3;45381;U32_W;;Transformer vacuum failure logic;;1;0;;0;
-767;3;45383;U32_W;;MV gas discharge source;;1;0;;0;
-768;3;45385;U32_W;;Transformer gas discharge action;;1;0;;0;
-769;3;45387;U32_W;;Transformer gas discharge delay;;1;0;s;0;
-770;3;45389;U32_W;;Transformer gas discharge current limit;;1;0;A;0;
-771;3;45391;U32_W;;Transformer gas discharge failure logic;;1;0;;0;
-772;3;45393;U32_W;;MV breaker opening source;;1;0;;0;
-773;3;45395;U32_W;;MV breaker feedback action;;1;0;;0;
-774;3;45397;U32_W;;MV breaker feedback action delay;;1;0;s;0;
-775;3;45399;U32_W;;MV breaker feedback power limit;;1;0;A;0;
-776;3;45401;U32_W;;MV breaker feedback failure logic;;1;0;;0;
-777;3;45403;U32_W;;MV side phase lost source;;1;0;;0;
-778;3;45405;U32_W;;MV phase loss detection action;;1;0;;0;
-779;3;45407;U32_W;;MV phase loss detection action delay;;1;0;s;0;
-780;3;45409;U32_W;;MV phase loss detection power limit;;1;0;A;0;
-781;3;45411;U32_W;;MV phase loss detection failure logic;;1;0;;0;
-782;3;45413;U32_W;;Transformer coil temperature source;;1;0;;0;
-783;4;45415;I32_W;;Transformer coil temperature;;0.1;0;C;0;
-784;3;45417;I32_W;;Transformer coil temperature at 4 mA current;;1;0;C;0;
-785;3;45419;I32_W;;Transformer coil temperature at 20 mA current;;1;0;C;0;
-786;3;45421;U32_W;;Transformer coil temperature warning limit;;1;0;C;0;
-787;3;45423;U32_W;;Transformer coil temperature fault limit;;1;0;C;0;
-788;3;45425;U32_W;;Transformer coil, current limit temperature 1;;1;0;C;0;
-789;3;45427;U32_W;;Transformer coil, current limit temperature 2;;1;0;C;0;
-790;3;45429;U32_W;;Transformer coil, current limit temperature 3;;1;0;C;0;
-791;3;45431;U32_W;;Transformer coil, current limit current 1;;1;0;A;0;
-792;3;45433;U32_W;;Transformer coil, current limit current 2;;1;0;A;0;
-793;3;45437;U32_W;;Transformer oil temperature source;;1;0;;0;
-794;4;45439;I32_W;;Transformer oil temperature;;0.1;0;C;0;
-795;3;45441;I32_W;;Transformer oil temperature at 4 mA current;;1;0;C;0;
-796;3;45443;I32_W;;Transformer oil temperature at 20 mA current;;1;0;C;0;
-797;3;45445;U32_W;;Transformer oil temperature warning limit;;1;0;C;0;
-798;3;45447;U32_W;;Transformer oil temperature fault limit;;1;0;C;0;
-799;3;45449;U32_W;;Transformer oil, current limit temperature 1;;1;0;C;0;
-800;3;45451;U32_W;;Transformer oil, current limit temperature 2;;1;0;C;0;
-801;3;45453;U32_W;;Transformer oil, current limit temperature 3;;1;0;C;0;
-802;3;45455;U32_W;;Transformer oil, current limit current 1;;1;0;A;0;
-803;3;45457;U32_W;;Transformer oil, current limit current 2;;1;0;A;0;
-804;4;45473;U16;;MV breaker opening status;;1;0;;0;
-805;4;47105;U32_W;;Startup date;;1;0;day;0;
-806;4;47107;U32_W;;Last Boot Time, Days;;1;0;day;0;
-807;4;47109;U32_W;;Last Boot Time, Ticks;;1;0;;0;
-808;4;47115;U32_W;;Total energy;E_TOT;1;0;kWh;0;
-809;4;47117;U32_W;;Total energy frac;;1;0;W;0;
-810;4;47121;U32_W;;Total kVAh supplied;;1;0;kVAh;0;
-811;4;47123;U32_W;;Total kVAh supplied Frac;;1;0;;0;
-812;4;47127;U32_W;;Energy counter, resettable;;0.01;0;kWh;0;
-813;4;47129;U32_W;;kVAh Energy counter, resettable;;0.01;0;kVAh;0;
-814;4;47131;U32_W;;Daily kWh supplied;E_DAY;0.1;0.1;kWh;0;
-815;4;47133;U32_W;;Daily kVAh supplied;;0.1;0;kVAh;0;
-816;3;47361;U16;;Main circuit SPD status;;1;0;;0;
-817;3;47363;U16;;DC input fuse status;;1;0;;0;
-818;3;47365;U16;;48 V power supply status;;1;0;;0;
-819;3;47367;U16;;48 V buffer status;;1;0;;0;
-820;3;47369;U16;;24 V buffer status;;1;0;;0;
-821;3;47381;U16;;LCL overheat sensor status;;1;0;;0;
-822;3;47407;U32_W;;24 V buffer action delay;;0.1;0;s;0;
-823;3;47409;U32_W;;48 V power supply action delay;;0.1;0;s;0;
-824;3;47411;U32_W;;48 V buffer action delay;;0.1;0;s;0;
-825;3;47413;U32_W;;Buffer charge delay;;1;0;s;0;
-826;3;48385;U32_W;;Inverter operation;;1;0;;0;
-827;3;48387;U32_W;;Start switch source;;1;0;;0;
-828;3;48389;U32_W;;IO transfer trip source;;1;0;;0;
-829;3;48391;U32_W;;SCADA transfer trip;;1;0;;0;
-830;3;48393;U32_W;;Transfer trip event;;1;0;;0;
-831;3;48395;U32_W;;IO shutdown source;;1;0;;0;
-832;3;48397;U32_W;;SCADA shutdown;;1;0;;0;
-833;3;48399;U32_W;;Shutdown event;;1;0;;0;
-834;3;48405;U32_W;;Reset active faults;;1;0;;0;OK
-835;4;48641;U32_W;;Phase voltage U1;;0.01;0;V;0;
-836;4;48643;U32_W;;Phase voltage V1;;0.01;0;V;0;
-837;4;48645;U32_W;;Phase voltage W1;;0.01;0;V;0;
-838;4;48647;U32_W;;Phase voltage 1 max;;0.01;0;V;0;
-839;4;48649;U32_W;;Phase voltage 1 min;;0.01;0;V;0;
-840;4;48651;U32_W;;Main voltage U1-V1;;0.01;0;V;0;
-841;4;48653;U32_W;;Main voltage V1-W1;;0.01;0;V;0;
-842;4;48655;U32_W;;Main voltage W1-U1;;0.01;0;V;0;
-843;4;48657;U32_W;;Main voltage 1 max;;0.01;0;V;0;
-844;4;48659;U32_W;;Main voltage 1 min;;0.01;0;V;0;
-845;4;48661;U32_W;;Phase voltage 1 pos seq;;0.01;0;V;0;
-846;4;48663;U32_W;;Phase voltage 1 neg seq;;0.01;0;V;0;
-847;4;48665;U32_W;;Main voltage 1 pos seq;;0.01;0;V;0;
-848;4;48667;U32_W;;Main voltage 1 neg seq;;0.01;0;V;0;
-849;4;48669;U32_W;;Frequency 1;;0.01;0;Hz;0;
-850;4;48679;U32_W;;Phase voltage U2;;0.01;0;V;0;
-851;4;48681;U32_W;;Phase voltage V2;;0.01;0;V;0;
-852;4;48683;U32_W;;Phase voltage W2;;0.01;0;V;0;
-853;4;48689;U32_W;;Main voltage U2-V2;;0.01;0;V;0;
-854;4;48691;U32_W;;Main voltage V2-W2;;0.01;0;V;0;
-855;4;48693;U32_W;;Main voltage W2-U2;;0.01;0;V;0;
-856;4;48699;U32_W;;Phase voltage 2 pos seq;;0.01;0;V;0;
-857;4;48701;U32_W;;Phase voltage 2 neg seq;;0.01;0;V;0;
-858;4;48703;U32_W;;Main voltage 2 pos seq;;0.01;0;V;0;
-859;4;48705;U32_W;;Main voltage 2 neg seq;;0.01;0;V;0;
-860;4;48707;U32_W;;Frequency 2;;0.01;0;Hz;0;
-861;4;48719;U32_W;;Phase current U1;I_AC_3;0.01;0;A;0;
-862;4;48721;U32_W;;Phase current V1;;0.01;0;A;0;
-863;4;48723;U32_W;;Phase current W1;;0.01;0;A;0;
-864;4;48725;U32_W;;Current 1 pos seq;;0.01;0;A;0;
-865;4;48727;U32_W;;Current 1 neg seq;;0.01;0;A;0;
-866;3;49927;U32_W;;Control board supply;;1;0;;0;
-867;4;49947;U16;;Connected modules;;1;0;;0;
-868;3;49959;U16;;HW options word 1;;1;0;;0;
-869;3;49969;U32_W;;LCL filter parameter source;;1;0;;0;
-870;3;50177;U32_W;;Language;;1;0;;0;OK
-871;3;50179;U32_W;;Passcode;;1;0;;0;OK
-872;4;50181;U16;;Access level status;;1;0;;0;
-873;3;50187;U32_W;;Param restore;;1;0;;0;
-874;3;50189;U32_W;;Param save;;1;0;;0;
-875;3;50191;U32_W;;Control board boot;;1;0;;0;
-876;4;50195;U32_W;;User set status;;1;0;;0;
-877;3;50197;U32_W;;User set save/load;;1;0;;0;
-878;3;50199;U32_W;;User set IO sel in1;;1;0;;0;
-879;3;50201;U32_W;;User set IO sel in2;;1;0;;0;
-880;3;50215;U32_W;;Time synchronization source;;1;0;;0;
-881;3;50223;U32_W;;Full days since 1st Jan 1980;;1;0;days;0;
-882;3;50225;U32_W;;Time in minutes within 24 h;;1;0;min;0;
-883;3;50227;U32_W;;Time in ms within one minute;;1;0;ms;0;
-884;4;50233;U16;;Time source status;;1;0;;0;
-885;4;50297;U16;;User data logger status word;;1;0;;0;
-886;3;50301;U32_W;;User data logger trigger;;1;0;;0;
-887;3;50303;U32_W;;User data logger start;;1;0;;0;
-888;3;50305;U32_W;;Factory data logger time level;;1;0;;0;
-889;3;51713;U32_W;;DC door fan mode;;1;0;;0;
-890;3;51715;U32_W;;AC door fan mode;;1;0;;0;
-891;3;51717;U32_W;;Power module fan mode;;1;0;;0;
-892;4;51751;U32_W;;Power module fan reference;;1;0;rpm;0;
-893;4;51753;U32_W;;Power module 1 fan;;1;0;rpm;0;
-894;4;51755;U32_W;;Power module 2 fan;;1;0;rpm;0;
-895;4;51757;U32_W;;Power module 3 fan;;1;0;rpm;0;
-896;4;51759;U32_W;;Power module 4 fan;;1;0;rpm;0;
-897;3;51761;U32_W;;Expected grid rotation;;1;0;;0;
-898;3;52225;U16;;PLC digital Inputs 1;;1;0;;0;
-899;3;52227;U16;;PLC digital inputs 2;;1;0;;0;
-900;3;52229;U16;;PLC digital inputs 3;;1;0;;0;
-901;3;52231;U32_W;;Cabinet temperature;TEMP_INT;1;0;;0;OK
-902;3;52233;U32_W;;Spare AI 0-10 V;;1;0;;0;OK
-903;3;52235;U32_W;;PLC watchdog read;;1;0;;0;OK
-904;3;52457;U32_W;;DC input current 1;;1;0;;0;
-905;3;52459;U32_W;;DC input current 2;;1;0;;0;
-906;3;52461;U32_W;;DC input current 3;;1;0;;0;
-907;3;52463;U32_W;;DC input current 4;;1;0;;0;
-908;3;52465;U32_W;;DC input current 5;;1;0;;0;
-909;3;52467;U32_W;;DC input current 6;;1;0;;0;
-910;3;52469;U32_W;;DC input current 7;;1;0;;0;
-911;3;52471;U32_W;;DC input current 8;;1;0;;0;
-912;3;52473;U32_W;;DC input current 9;;1;0;;0;
-913;3;52475;U32_W;;DC input current 10;;1;0;;0;
-914;3;52477;U32_W;;DC input current 11;;1;0;;0;
-915;3;52479;U32_W;;DC input current 12;;1;0;;0;
-916;3;52481;U32_W;;DC input current 13;;1;0;;0;
-917;3;52483;U32_W;;DC input current 14;;1;0;;0;
-918;3;52485;U32_W;;DC input current 15;;1;0;;0;
-919;3;52487;U32_W;;DC input current 16;;1;0;;0;
-920;3;52489;U32_W;;DC input current 17;;1;0;;0;
-921;3;52491;U32_W;;DC input current 18;;1;0;;0;
-922;3;52493;U32_W;;DC input current 19;;1;0;;0;
-923;3;52495;U32_W;;DC input current 20;;1;0;;0;
-924;3;52497;U32_W;;DC input current 21;;1;0;;0;
-925;3;52499;U32_W;;DC input current 22;;1;0;;0;
-926;3;52501;U32_W;;DC input current 23;;1;0;;0;
-927;3;52503;U32_W;;DC input current 24;;1;0;;0;
-928;3;52505;U32_W;;PLC error class;;1;0;;0;OK
-929;3;52507;U32_W;;PLC error component;;1;0;;0;OK
-930;3;52509;U32_W;;PLC error device;;1;0;;0;OK
-931;3;52511;U32_W;;PLC error module;;1;0;;0;OK
-932;3;52513;U32_W;;PLC error channel;;1;0;;0;OK
-933;3;52515;U32_W;;PLC error identifier;;1;0;;0;OK
-934;3;52517;U32_W;;PLC error state;;1;0;;0;OK
-935;3;52519;U32_W;;PLC CPU load;;1;0;;0;
-936;3;52625;U32_W;;PLC SW version, lower bits;;1;0;;0;
-937;3;52627;U32_W;;PLC SW version, upper bits;;1;0;;0;
-938;3;52629;U32_W;;PLC runtime system version;;1;0;;0;
-939;3;52631;U32_W;;PLC bootcode version;;1;0;;0;
-940;3;52633;U32_W;;PLC onboard I/O version;;1;0;;0;
-941;3;52635;U32_W;;PLC software MD5 hash #1;;1;0;;0;
-942;3;52637;U32_W;;PLC software MD5 hash #2;;1;0;;0;
-943;3;52639;U32_W;;PLC software MD5 hash #3;;1;0;;0;
-944;3;52641;U32_W;;PLC software MD5 hash #4;;1;0;;0;
-945;3;52725;U32_W;;PLC error code;;1;0;;0;
-946;3;52481;U16;;PLC Relay Outputs 1;;1;0;;0;OK
-947;3;52483;U16;;PLC Relay Outputs 2;;1;0;;0;OK
-948;3;52485;U16;;PLC Relay Outputs 3;;1;0;;0;OK
-949;4;52487;U32_W;;PLC watchdog write;;1;0;;0;
-950;3;52489;U32_W;;PLC diagnostics counter;;1;0;;0;OK
-951;3;52491;U32_W;;PLC watchdog threshold;;1;0;ms;0;OK
-952;3;52493;U32_W;;PLC CPU reboot;;1;0;;0;
-953;3;52495;U32_W;;PLC error acknowledgement;;1;0;;0;OK
-954;3;52497;U32_W;;PLC configuration code;;1;0;;0;
-955;4;53109;U32_W;;Iout limit 1;;0.01;0;p.u.;0;
-956;4;53111;U32_W;;Iout limit scaled;;0.01;0;p.u.;0;
-957;4;53119;U32_W;;Relative limit IGBT;;1;0;%;0;
-958;3;53133;U32_W;;Altitude;;1;0;;0;
-959;4;53249;U32_W;;Input voltage;;1;0;V;0;
-960;4;53253;U32_W;;Input power;P_DC;0.1;0;kW;0;
-961;4;53255;I32_W;;Input current;;0.1;0;A;0;
-962;3;53265;U32_W;;Input current monitoring;;1;0;;0;
-963;3;53271;I32_W;;Reverse current limit;;0.1;0;A;0;
-964;3;53273;U32_W;;Reverse current delay;;1;0;s;0;
-965;3;53761;U32_W;;Grounding mode;;1;0;;0;
-966;3;53763;U32_W;;Grounding device;;1;0;;0;
-967;4;53765;U32_W;;Grounding state;;1;0;;0;
-968;3;53767;U32_W;;Ignore insulation resistance;R_ISO;1;0;;0;
-969;3;53769;U32_W;;Ungrounded operation;;1;0;;0;
-970;3;53771;U32_W;;Unground on fault;;1;0;;0;
-971;3;53773;U32_W;;Night grounding;;1;0;;0;
-972;3;53775;U32_W;;Wake-up voltage;;1;0;V;0;
-973;3;53777;U32_W;;Night mode voltage;;1;0;V;0;
-974;3;53779;U32_W;;Grounding transient time;;0.01;0;s;0;
-975;3;53781;U32_W;;Minimum grounding interval;;1;0;min;0;
-976;3;53783;U32_W;;Grounding circuit voltage fail action;;1;0;;0;
-977;3;53785;U32_W;;Grounding current limit;;0.01;0;A;0;
-978;4;53787;U32_W;;Total grounding current;;0.001;0;A;0;
-979;4;53789;I32_W;;Resistive grounding current;;0.001;0;A;0;
-980;3;53791;U32_W;;Grounding current fault action;;1;0;;0;
-981;3;53793;U32_W;;Grounding current time limit;;0.001;0;s;0;
-982;3;53795;U32_W;;Sudden change current fault action;;1;0;;0;
-983;3;53797;U32_W;;Step 1 current limit;;0.001;0;A;0;
-984;3;53799;U32_W;;Step 2 current limit;;0.001;0;A;0;
-985;3;53801;U32_W;;Step 3 current limit;;0.001;0;A;0;
-986;3;53803;U32_W;;Step 1 time limit;;0.001;0;s;0;
-987;3;53805;U32_W;;Step 2 time limit;;0.001;0;s;0;
-988;3;53809;U32_W;;Insulation resistance measurement;;1;0;;0;
-989;3;53811;U32_W;;Insulation resistance device;;1;0;;0;
-990;4;53813;U32_W;;Insulation resistance device state;;1;0;;0;
-991;3;53815;U32_W;;Insulation resistance limit;;1;0;Ohm;0;
-992;4;53817;U32_W;;Insulation resistance;;1;0;;0;
-993;3;53819;U32_W;;Insulation resistance fault action;;1;0;;0;
-994;3;53821;U32_W;;Minimum Riso measurement time;;1;0;min;0;
-995;3;53823;U32_W;;Maximum Riso measurement time;;1;0;min;0;
-996;3;53825;U32_W;;MIRU self-test;;1;0;;0;
-997;3;53827;U32_W;;Self-test voltage;;1;0;V;0;
-998;3;53829;U16;;Status word;;1;0;;0;
-999;3;53831;U32_W;;Sudden change warning indication time;;1;0;s;0;
-1000;4;54017;I32_W;;Ambient temperature;TEMP_AMB;0.1;0;C;0;
-1001;4;54019;I32_W;;Control board temperature;;0.1;0;C;0;
-1002;4;54021;I32_W;;PU1 IGBT T1;;0.1;0;C;0;
-1003;4;54023;I32_W;;PU1 IGBT T2;;0.1;0;C;0;
-1004;4;54025;I32_W;;PU1 IGBT T3;;0.1;0;C;0;
-1005;4;54027;I32_W;;PU1 PSU temperature;;0.1;0;C;0;
-1006;4;54029;I32_W;;PU1 air temperature;;0.1;0;C;0;
-1007;4;54031;I32_W;;PU1 board temperature;;0.1;0;C;0;
-1008;4;54033;I32_W;;PU2 IGBT T1;;0.1;0;C;0;
-1009;4;54035;I32_W;;PU2 IGBT T2;;0.1;0;C;0;
-1010;4;54037;I32_W;;PU2 IGBT T3;;0.1;0;C;0;
-1011;4;54039;I32_W;;PU2 PSU temperature;;0.1;0;C;0;
-1012;4;54041;I32_W;;PU2 air temperature;;0.1;0;C;0;
-1013;4;54043;I32_W;;PU2 board temperature;;0.1;0;C;0;
-1014;4;54045;I32_W;;PU3 IGBT T1;;0.1;0;C;0;
-1015;4;54047;I32_W;;PU3 IGBT T2;;0.1;0;C;0;
-1016;4;54049;I32_W;;PU3 IGBT T3;;0.1;0;C;0;
-1017;4;54051;I32_W;;PU3 PSU temperature;;0.1;0;C;0;
-1018;4;54053;I32_W;;PU3 air temperature;;0.1;0;C;0;
-1019;4;54055;I32_W;;PU3 board temperature;;0.1;0;C;0;
-1020;4;54057;I32_W;;PU4 IGBT T1;;0.1;0;C;0;
-1021;4;54059;I32_W;;PU4 IGBT T2;;0.1;0;C;0;
-1022;4;54061;I32_W;;PU4 IGBT T3;;0.1;0;C;0;
-1023;4;54063;I32_W;;PU4 PSU temperature;;0.1;0;C;0;
-1024;4;54065;I32_W;;PU4 air temperature;;0.1;0;C;0;
-1025;4;54067;I32_W;;PU4 board temperature;;0.1;0;C;0;
-1026;4;54069;I32_W;;Estimated case temperature;;0.1;0;C;0;
-1027;4;54071;I32_W;;Estimated IGBT temperature;;0.1;0;C;0;
-1028;4;54097;U16;;Busbar thermal protection status;;1;0;;0;
-1029;4;54531;U32_W;;Wake-up state;;1;0;;0;
-1030;3;54535;U32_W;;Max daily connect attempts;;1;0;;0;
-1031;3;54537;U32_W;;Min input voltage for wake-up;;0.1;0;%;0;
-1032;3;54541;U32_W;;Delay for grid connection;;1;0;min;0;
-1033;3;54543;U32_W;;Min input voltage for first start;;0.1;0;%;0;
-1034;3;54547;U32_W;;Delay for first start;;1;0;min;0;
-1035;3;54549;U32_W;;Time for wake-up completed;;1;0;min;0;
-1036;3;54551;U32_W;;Min power for wake-up;;0.1;0;%;0;
-1037;3;54553;U32_W;;Disconnection delay in wake-up;;1;0;min;0;
-1038;3;54555;U32_W;;Reconnection delay_1;;1;0;min;0;
-1039;3;54557;U32_W;;Timeout for exceeding daily connections;;1;0;h;0;
-1040;3;54559;U32_W;;Min power for sleep;;1;0;%;0;
-1041;3;54561;U32_W;;Disconnection delay for sleep-mode;;1;0;min;0;
-1042;3;54563;U32_W;;Evening cool down delay;;1;0;min;0;
-1043;3;54569;U32_W;;Min DC voltage for DC contactors to stay closed;;1;0;%;0;
-1044;3;54629;U32_W;;Night Q production;;1;0;;0;
-1045;3;54631;U32_W;;Night Q low power;;1;0;kVAr;0;
-1046;3;54633;U32_W;;Night Q delay;;1;0;s;0;
-1047;3;54635;I32_W;;Night Q reference;;1;0;kVAr;0;
-1048;4;54785;U16;;Feedback status;;1;0;;0;
-1049;4;54793;U32_W;;DC contactor 1 switchings;;1;0;;0;
-1050;4;54795;U32_W;;DC contactor 2 switchings;;1;0;;0;
-1051;4;54801;U32_W;;AC contactor 1 switchings;;1;0;;0;
-1052;4;54803;U32_W;;AC contactor 2 switchings;;1;0;;0;
-1053;4;54809;U32_W;;AC breaker 1 switchings;;1;0;;0;
+modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
+1;4;25857;U32_W;;DC voltage;U_DC;0.01;0;V;0
+2;4;25859;U32_W;;Line current;I_AC;0.01;0;A;0
+3;4;25861;U32_W;;Line current %;;0.1;0;%;0
+4;4;25863;I32_W;;Active current;;0.01;0;A;0
+5;4;25865;I32_W;;Active current %;;0.1;0;%;0
+6;4;25867;I32_W;;Reactive current;;0.01;0;A;0
+7;4;25869;I32_W;;Reactive current %;;0.1;0;%;0
+8;4;25871;U32_W;;Frequency;FREQ;0.01;0;Hz;4
+9;4;25873;U32_W;;Grid voltage;U_AC_L1L2;0.01;0;V;0
+10;4;25875;I32_W;;Apparent power;S_AC;0.01;0;kVA;0
+11;4;25877;I32_W;;Apparent power %;;0.1;0;%;0
+12;4;25879;I32_W;;Power;P_AC;0.01;0;kW;0
+13;4;25881;I32_W;;Power %;;0.1;0;%;0
+14;4;25883;I32_W;;Reactive power;Q_AC;0.01;0;kVAr;0
+15;4;25885;I32_W;;Reactive power %;;0.1;0;%;0
+16;4;25887;I32_W;;CosPhi;PF;0.01;0;;0
+17;4;25895;U32_W;;Converter current;;0.01;0;A;0
+18;4;25983;U32_W;;Nominal power;P_RATED;1;0;kW;0
+19;4;26625;U32_W;;Tripping fault;;1;0;;0
+20;4;26627;U32_W;;Active fault 2;;1;0;;0
+21;4;26629;U32_W;;Active fault 3;;1;0;;0
+22;4;26631;U32_W;;Active fault 4;;1;0;;0
+23;4;26633;U32_W;;Active fault 5;;1;0;;0
+24;4;26635;U32_W;;Active warning 1;;1;0;;0
+25;4;26637;U32_W;;Active warning 2;;1;0;;0
+26;4;26639;U32_W;;Active warning 3;;1;0;;0
+27;4;26641;U32_W;;Active warning 4;;1;0;;0
+28;4;26643;U32_W;;Active warning 5;;1;0;;0
+29;4;26645;U32_W;;Latest fault;;1;0;;0
+30;4;26647;U32_W;;2nd latest fault;;1;0;;0
+31;4;26649;U32_W;;3rd latest fault;;1;0;;0
+32;4;26651;U32_W;;4th latest fault;;1;0;;0
+33;4;26653;U32_W;;5th latest fault;;1;0;;0
+34;4;26655;U32_W;;Latest warning;;1;0;;0
+35;4;26657;U32_W;;2nd latest warning;;1;0;;0
+36;4;26659;U32_W;;3rd latest warning;;1;0;;0
+37;4;26661;U32_W;;4th latest warning;;1;0;;0
+38;4;26663;U32_W;;5th latest warning;;1;0;;0
+39;4;27397;U32_W;;Rating id;;1;0;;0
+40;4;27399;U32_W;;Firmware name;;1;0;;0
+41;4;27401;U32_W;;Firmware ver;;1;0;;0
+42;4;27403;U32_W;;Loading package name;;1;0;;0
+43;4;27405;U32_W;;Loading package version;;1;0;;0
+44;4;27407;U32_W;;Bootloader version;;1;0;;0
+45;4;27409;U32_W;;Preboot version;;1;0;;0
+46;4;27411;U32_W;;Safety critical hash;;1;0;;0
+47;4;27413;U32_W;;Cpu usage;;1;0;%;0
+48;4;27415;U32_W;;PU logic version name;;1;0;;0
+49;4;27417;U32_W;;PU logic version number;;1;0;;0
+50;4;27425;U32_W;;PLC HW variant;;1;0;;0
+51;4;27427;U32_W;;PLC SW version;;1;0;;0
+52;4;28163;U16;;DI delayed status;;1;0;;0
+53;3;28201;U16;;RO status;;1;0;;0
+54;3;29185;U32_W;;Module 1 type;;1;0;;0
+55;3;29187;U32_W;;Module 1 location;;1;0;;0
+56;4;29189;U32_W;;Module 1 status;;1;0;;0
+57;3;29441;U32_W;;Module 2 type;;1;0;;0
+58;3;29443;U32_W;;Module 2 location;;1;0;;0
+59;4;29445;U32_W;;Module 2 status;;1;0;;0
+60;3;29697;U32_W;;Module 3 type;;1;0;;0
+61;3;29699;U32_W;;Module 3 location;;1;0;;0
+62;3;29701;U32_W;;Module 3 status;;1;0;;0
+63;4;30465;U32_W;;Actual operation mode;;1;0;;0
+64;3;30485;U32_W;;Ext1/Ext2 sel;;1;0;;0
+65;3;30487;U32_W;;Ext1 ctrl mode1;;1;0;;0
+66;3;30491;U32_W;;Ext2 ctrl mode1;;1;0;;0
+67;3;30495;U32_W;;Local ctrl mode;;1;0;;0
+68;3;30497;U32_W;;Local ctrl disable;;1;0;;0
+69;3;30977;U32_W;;Fast power off mode;CMD_OFF;1;0;;0
+70;3;30979;U32_W;;Fast power off source;;1;0;;0
+71;3;31489;U32_W;;User DC voltage ref;;0.01;0;V;0
+72;3;31491;U32_W;;DC ref sel;;1;0;;0
+73;4;31493;U32_W;;DC voltage ref 1;;0.01;0;V;0
+74;3;31745;U32_W;;User Qref;;0.01;0;%;0
+75;3;31747;U32_W;;Q power ref selection;;1;0;;0
+76;4;31749;U32_W;;Qref 1;;0.01;0;kVAr;0
+77;3;31751;I32_W;;Q ref scale;;0.01;0;;0
+78;4;31753;I32_W;;Qref 2;;0.01;0;kVAr;0
+79;3;31755;U32_W;;Q power ref type;;1;0;;0
+80;4;31757;I32_W;;Ireact ref %;;0.1;0;%;0
+81;4;31759;U32_W;;Ireact ref;;0.01;0;A;0
+82;4;31761;I32_W;;Q power ref %;;0.1;0;%;0
+83;4;31763;U32_W;;Q power ref;;0.1;0;kVAr;0
+84;3;31765;U32_W;;Ireact ref max %;;0.1;0;%;0
+85;3;31767;I32_W;;Ireact ref min %;;0.1;0;%;0
+86;4;31769;I32_W;;Ireact ref lim %;;0.1;0;%;0
+87;3;31771;U32_W;;Ireact ref ramp up;;1;0;ms;0
+88;3;31773;U32_W;;Ireact ref ramp down;;1;0;ms;0
+89;4;31775;I32_W;;Ireact ref out %;;0.1;0;%;0
+90;4;31777;U32_W;;Ireact ref out;;0.01;0;A;0
+91;4;31779;I32_W;;Q power ref out %;;0.1;0;%;0
+92;4;31781;U32_W;;Q power ref out;;0.1;0;kVAr;0
+93;3;31783;U32_W;;AC control gain;;0.1;0;;0
+94;3;31785;U32_W;;AC control integ time;;1;0;ms;0
+95;3;31787;U32_W;;AC diff max %;;0.1;0;%;0
+96;3;31789;I32_W;;AC diff min %;;0.1;0;%;0
+97;3;31797;U32_W;;AC control base grid voltage;;1;0;V;0
+98;3;31803;U32_W;;Q(x) curve;;1;0;;0
+99;3;31805;U32_W;;Lock-in level;;0.1;0;%;0
+100;3;31807;U32_W;;Lock-out level;;0.1;0;%;0
+101;3;31809;U32_W;;Q(x) input level 1;;0.1;0;%;0
+102;3;31811;U32_W;;Q(x) input level 2;;0.1;0;%;0
+103;3;31813;U32_W;;Q(x) input level 3;;0.1;0;%;0
+104;3;31815;U32_W;;Q(x) input level 4;;0.1;0;%;0
+105;3;31817;U32_W;;Q(x) input level 5;;0.1;0;%;0
+106;3;31819;U32_W;;Q(x) input level 6;;0.1;0;%;0
+107;3;31821;U32_W;;Q(x) output level 1;;0.01;0;%;0
+108;3;31823;U32_W;;Q(x) output level 2;;0.01;0;%;0
+109;3;31825;U32_W;;Q(x) output level 3;;0.01;0;%;0
+110;3;31827;U32_W;;Q(x) output level 4;;0.01;0;%;0
+111;3;31829;U32_W;;Q(x) output level 5;;0.01;0;%;0
+112;3;31831;U32_W;;Q(x) output level 6;;0.01;0;%;0
+113;3;31833;U32_W;;Q(U) activation delay;;1;0;ms;0
+114;3;31835;U32_W;;Q(U) activation level low;;1;0;%;0
+115;3;31837;U32_W;;Q(U) activation level high;;1;0;%;0
+116;3;32001;U32_W;;Grid support;;1;0;;0
+117;3;32003;U32_W;;Gs symm sig;;1;0;;0
+118;3;32005;U32_W;;Gs asymm sig;;1;0;;0
+119;3;32007;U32_W;;Lv Gs trig U %;;1;0;%;0
+120;3;32009;U32_W;;Lv Gs K-factor;;0.01;0;;0
+121;3;32011;U32_W;;Lv Gs P1 volt %;;1;0;%;0
+122;3;32013;U32_W;;Lv Gs P1 cur %;;1;0;%;0
+123;3;32015;U32_W;;Lv Gs P2 volt %;;1;0;%;0
+124;3;32017;U32_W;;Lv Gs P2 cur %;;1;0;%;0
+125;3;32019;U32_W;;Lv Gs P3 volt %;;1;0;%;0
+126;3;32021;U32_W;;Lv Gs P3 cur %;;1;0;%;0
+127;3;32023;U32_W;;Lv Gs P4 volt %;;1;0;%;0
+128;3;32025;U32_W;;Lv Gs P4 cur %;;1;0;%;0
+129;3;32027;U32_W;;Lv Gs P5 volt %;;1;0;%;0
+130;3;32029;U32_W;;Lv Gs P5 cur %;;1;0;%;0
+131;3;32035;U32_W;;Hv Gs trig U %;;1;0;%;0
+132;3;32037;U32_W;;Hv Gs K-factor;;0.01;0;;0
+133;3;32039;U32_W;;Hv Gs P1 volt %;;1;0;%;0
+134;3;32041;I32_W;;Hv Gs P1 cur %;;1;0;%;0
+135;3;32043;U32_W;;Hv Gs P2 volt %;;1;0;%;0
+136;3;32045;I32_W;;Hv Gs P2 cur %;;1;0;%;0
+137;3;32047;U32_W;;Hv Gs P3 volt %;;1;0;%;0
+138;3;32049;I32_W;;Hv Gs P3 cur %;;1;0;%;0
+139;3;32055;U32_W;;Frt Ireact ref ramp up;;1;0;ms;0
+140;3;32057;U32_W;;Frt Ireact ref ramp down;;1;0;ms;0
+141;3;32059;U32_W;;Frt Ipow ref ramp up;;1;0;ms;0
+142;3;32061;U32_W;;Frt Ipow ref ramp down;;1;0;ms;0
+143;4;32063;I32_W;;Frt Ireact ref %;;0.1;0;%;0
+144;4;32065;I32_W;;Frt Ireact ref out %;;0.1;0;%;0
+145;4;32067;I32_W;;Frt Ipow ref %;;0.1;0;%;0
+146;4;32069;I32_W;;Frt Ipow ref out %;;0.1;0;%;0
+147;3;32071;U32_W;;Gs after dip time;;1;0;ms;0
+148;3;32073;U32_W;;Frt Imax %;;1;0;%;0
+149;3;32097;U32_W;;Gs prefault average time;;1;0;s;0
+150;3;32099;U32_W;;Gs base current;;1;0;;0
+151;3;32101;U32_W;;Gs reference voltage;;1;0;;0
+152;3;32103;U32_W;;Gs average voltage;;1;0;;0
+153;3;32105;U32_W;;Gs active power reserve;;1;0;%;0
+154;3;32107;U32_W;;Gs max reserve current;;1;0;%;0
+155;3;32257;U32_W;;FRT enable;;1;0;;0
+156;3;32259;U32_W;;Lv Rt symm sig;;1;0;;0
+157;3;32261;U32_W;;Lv Rt asymm sig;;1;0;;0
+158;3;32263;U32_W;;Hv Rt symm sig;;1;0;;0
+159;3;32265;U32_W;;Hv Rt asymm sig;;1;0;;0
+160;3;32267;U32_W;;Asymm/symm limit;;1;0;%;0
+161;3;32275;U32_W;;Lv Rt trig U %;;1;0;%;0
+162;3;32277;U32_W;;Lv Rt recover hyst U %;;1;0;%;0
+163;3;32279;U32_W;;Lv Rt sec 1 time;;1;0;ms;0
+164;3;32281;U32_W;;Lv Rt sec 2 time;;1;0;ms;0
+165;3;32283;U32_W;;Lv Rt sec 3 time;;1;0;ms;0
+166;3;32285;U32_W;;Lv Rt sec 4 time;;1;0;ms;0
+167;3;32287;U32_W;;Lv Rt sec 5 time;;1;0;ms;0
+168;3;32289;U32_W;;Lv Rt ext time;;1;0;ms;0
+169;3;32291;U32_W;;Lv Rt S1 start U %;;1;0;%;0
+170;3;32293;U32_W;;Lv Rt S1 end U %;;1;0;%;0
+171;3;32295;U32_W;;Lv Rt S2 start U %;;1;0;%;0
+172;3;32297;U32_W;;Lv Rt S2 end U %;;1;0;%;0
+173;3;32299;U32_W;;Lv Rt S3 start U %;;1;0;%;0
+174;3;32301;U32_W;;Lv Rt S3 end U %;;1;0;%;0
+175;3;32303;U32_W;;Lv Rt S4 start U %;;1;0;%;0
+176;3;32305;U32_W;;Lv Rt S4 end U %;;1;0;%;0
+177;3;32307;U32_W;;Lv Rt S5 start U %;;1;0;%;0
+178;3;32309;U32_W;;Lv Rt S5 end U %;;1;0;%;0
+179;3;32311;U32_W;;Lv Rt ext U %;;1;0;%;0
+180;3;32315;U32_W;;Hv Rt trig U %;;1;0;%;0
+181;3;32317;U32_W;;Hv Rt recover hyst U %;;1;0;%;0
+182;3;32319;U32_W;;Hv Rt sec 1 time;;1;0;ms;0
+183;3;32321;U32_W;;Hv Rt sec 2 time;;1;0;ms;0
+184;3;32323;U32_W;;Hv Rt sec 3 time;;1;0;ms;0
+185;3;32329;U32_W;;Hv Rt S1 start U %;;1;0;%;0
+186;3;32331;U32_W;;Hv Rt S1 end U %;;1;0;%;0
+187;3;32333;U32_W;;Hv Rt S2 start U %;;1;0;%;0
+188;3;32335;U32_W;;Hv Rt S2 end U %;;1;0;%;0
+189;3;32337;U32_W;;Hv Rt S3 start U %;;1;0;%;0
+190;3;32339;U32_W;;Hv Rt S3 end U %;;1;0;%;0
+191;4;33281;U16;;Limit word 1;;1;0;;0
+192;4;33283;U16;;Limit word 2;;1;0;;0
+193;4;33287;U16;;Limit word 4;;1;0;;0
+194;4;33289;U16;;Limit word 5;;1;0;;0
+195;4;33291;U16;;Limit word 6;;1;0;;0
+196;4;33301;U32_W;;Active power limit to grid;CMD_P_AC_SET_ABS;1;0;kW;0
+197;4;33305;U32_W;;Reactive power limit;;1;0;kVAr;0
+198;3;33403;U32_W;;P(f) limit type;;1;0;;0
+199;3;33405;U32_W;;P(f) corner frequency;;0.01;0;Hz;0
+200;3;33407;U32_W;;P(f) limit gradient;;0.1;0;%/Hz;0
+201;3;33409;U32_W;;P(f) release frequency;;0.01;0;Hz;0
+202;3;33411;U32_W;;P(f) release time;;1;0;s;0
+203;3;33413;U32_W;;P(f) release ramp;;1;0;%/min;0
+204;3;33415;U32_W;;P(f) release ramp ref;;1;0;;0
+205;3;33417;U32_W;;P(f) activation delay;;1;0;ms;0
+206;3;33419;U32_W;;Connect limit type;;1;0;;0
+207;3;33421;U32_W;;Connect limit ramp;;1;0;%/min;0
+208;3;33423;U32_W;;Grid fault ramp;;1;0;%/min;0
+209;3;33429;U32_W;;External power limit;cmdPwrPct;1;0;%;0
+210;3;33431;U32_W;;P(U) limiter;;1;0;;0
+211;3;33433;U32_W;;P(U) trigger level;;1;0;%;0
+212;3;33435;U32_W;;P(U) release level;;1;0;%;0
+213;3;33437;U32_W;;P(U) limit level;;1;0;%;0
+214;3;33439;U32_W;;P(U) limit ramp;;1;0;%/min;0
+215;3;33441;U32_W;;P(U) release ramp;;1;0;%/min;0
+216;3;33443;U32_W;;P(U) end level;;1;0;%;0
+217;3;33445;U32_W;;P(U) filtering time constant;;1;0;s;0
+218;3;33447;U32_W;;P(U) used power;;1;0;;0
+219;3;33459;U32_W;;Flat-top limit;;1;0;%;0
+220;3;33463;U32_W;;Active power ramping;;1;0;;0
+221;3;33465;U32_W;;Active power ramp;;1;0;%/min;0
+222;3;33467;U32_W;;Shut down ramp;;1;0;%/s;0
+223;3;33469;U32_W;;Active power margin;;0.1;0;%;0
+224;3;33475;U32_W;;External limit ramp up;CMD_RAMP_TIME_S;1;0;ms;0
+225;3;33477;U32_W;;External limit ramp down;;1;0;ms;0
+226;3;33481;U32_W;;Limit priority;;1;0;;0
+227;4;33793;U32_W;;Autoreset counter;;1;0;;0
+228;3;33797;U32_W;;Overcurrent trials;;1;0;;0
+229;3;33799;U32_W;;Overcurrent reset delay;;1;0;s;0
+230;3;33803;U32_W;;Short circuit current reset delay;;1;0;s;0
+231;3;33805;U32_W;;Ground impedance trials;;1;0;;0
+232;3;33807;U32_W;;Ground impedance reset delay;;1;0;s;0
+233;3;34561;U32_W;;Grid code;;1;0;;0
+234;3;34563;U32_W;;Nominal LL voltage;;1;0;V;0
+235;3;34567;U32_W;;Nominal frequency;;1;0;;0
+236;3;34579;U32_W;;Initial connection delay;;1;0;s;0
+237;3;34581;U32_W;;Reconnection delay;;1;0;s;0
+238;3;34583;U32_W;;Quick disturbance limit;;1;0;s;0
+239;3;34585;U32_W;;Quick reconnection delay;;1;0;s;0
+240;3;34591;U32_W;;External trip;;1;0;;0
+241;3;34597;U32_W;;Zero cross monitor enable;;1;0;;0
+242;3;34599;U32_W;;Connect underfrequency type;;1;0;;0
+243;3;34601;I32_W;;Connect underfrequency limit;;0.01;0;Hz;0
+244;3;34603;U32_W;;Connect overfrequency type;;1;0;;0
+245;3;34605;U32_W;;Connect overfrequency limit;;0.01;0;Hz;0
+246;3;34607;U32_W;;Connect undervoltage type;;1;0;;0
+247;3;34609;U32_W;;Connect undervoltage limit;;1;0;%;0
+248;3;34611;U32_W;;Connect overvoltage type;;1;0;;0
+249;3;34613;U32_W;;Connect overvoltage limit;;1;0;%;0
+250;3;34619;I32_W;;Underfrequency enable 1;;1;0;;0
+251;3;34621;U32_W;;Underfrequency limit 1;;0.1;0;Hz;0
+252;3;34623;U32_W;;Underfrequency time 1;;1;0;ms;0
+253;3;34625;U32_W;;Underfrequency enable 2;;1;0;;0
+254;3;34627;I32_W;;Underfrequency limit 2;;0.1;0;Hz;0
+255;3;34629;U32_W;;Underfrequency time 2;;1;0;ms;0
+256;3;34639;U32_W;;Overfrequency enable 1;;1;0;;0
+257;3;34641;U32_W;;Overfrequency limit 1;;0.1;0;Hz;0
+258;3;34643;U32_W;;Overfrequency time 1;;1;0;ms;0
+259;3;34645;U32_W;;Overfrequency enable 2;;1;0;;0
+260;3;34647;U32_W;;Overfrequency limit 2;;0.1;0;Hz;0
+261;3;34649;U32_W;;Overfrequency time 2;;1;0;ms;0
+262;3;34659;U32_W;;Undervoltage enable 1;;1;0;;0
+263;3;34661;U32_W;;Undervoltage limit 1;;1;0;%;0
+264;3;34663;U32_W;;Undervoltage time 1;;1;0;ms;0
+265;3;34665;U32_W;;Undervoltage enable 2;;1;0;;0
+266;3;34667;U32_W;;Undervoltage limit 2;;1;0;%;0
+267;3;34669;U32_W;;Undervoltage time 2;;1;0;ms;0
+268;3;34671;U32_W;;Undervoltage enable 3;;1;0;;0
+269;3;34673;U32_W;;Undervoltage limit 3;;1;0;%;0
+270;3;34675;U32_W;;Undervoltage time 3;;1;0;ms;0
+271;3;34677;U32_W;;Undervoltage enable 4;;1;0;;0
+272;3;34679;U32_W;;Undervoltage limit 4;;1;0;%;0
+273;3;34681;U32_W;;Undervoltage time 4;;1;0;ms;0
+274;3;34685;U32_W;;Overvoltage enable 1;;1;0;;0
+275;3;34687;U32_W;;Overvoltage limit 1;;1;0;%;0
+276;3;34689;U32_W;;Overvoltage time 1;;1;0;ms;0
+277;3;34691;U32_W;;Overvoltage enable 2;;1;0;;0
+278;3;34693;U32_W;;Overvoltage limit 2;;1;0;%;0
+279;3;34695;U32_W;;Overvoltage time 2;;1;0;ms;0
+280;3;34697;U32_W;;Overvoltage enable 3;;1;0;;0
+281;3;34699;U32_W;;Overvoltage limit 3;;1;0;%;0
+282;3;34701;U32_W;;Overvoltage time 3;;1;0;ms;0
+283;3;34703;U32_W;;Overvoltage enable 4;;1;0;;0
+284;3;34705;U32_W;;Overvoltage limit 4;;1;0;%;0
+285;3;34707;U32_W;;Overvoltage time 4;;1;0;ms;0
+286;3;34709;U32_W;;Sliding overvoltage enable;;1;0;;0
+287;3;34711;U32_W;;Sliding overvoltage limit;;1;0;%;0
+288;3;34713;U32_W;;Sliding overvoltage time;;1;0;ms;0
+289;3;34719;U32_W;;Combinatory trip;;1;0;;0
+290;3;34721;U32_W;;Combinatory trip time;;1;0;ms;0
+291;3;34727;U32_W;;Comb pos seq voltage limit;;1;0;%;0
+292;3;34729;U32_W;;Comb neg seq voltage limit;;1;0;%;0
+293;3;34731;I32_W;;Comb underfrequency limit;;0.1;0;Hz;0
+294;3;34733;U32_W;;Comb overfrequency limit;;0.1;0;Hz;0
+295;3;34759;U32_W;;Anti-islanding;;1;0;;0
+296;3;34761;U32_W;;AI underfrequency enable;;1;0;;0
+297;3;34763;I32_W;;AI underfrequency limit;;0.1;0;Hz;0
+298;3;34765;U32_W;;AI overfrequency enable;;1;0;;0
+299;3;34767;U32_W;;AI overfrequency limit;;0.1;0;Hz;0
+300;3;34769;U32_W;;AI undervoltage enable;;1;0;;0
+301;3;34771;U32_W;;AI undervoltage limit;;1;0;%;0
+302;3;34773;U32_W;;AI overvoltage enable;;1;0;;0
+303;3;34775;U32_W;;AI overvoltage limit;;1;0;%;0
+304;3;34779;U32_W;;Rate of change of freq enable;;1;0;;0
+305;3;34781;U32_W;;Rate of change of freq limit;;0.1;0;;0
+306;3;34821;U32_W;;Overfrequency enable 3;;1;0;;0
+307;3;34823;U32_W;;Overfrequency limit 3;;0.1;0;Hz;0
+308;3;34825;U32_W;;Overfrequency time 3;;1;0;ms;0
+309;3;34827;U32_W;;Overfrequency enable 4;;1;0;;0
+310;3;34829;U32_W;;Overfrequency limit 4;;0.1;0;Hz;0
+311;3;34831;U32_W;;Overfrequency time 4;;1;0;ms;0
+312;3;34833;U32_W;;Underfrequency enable 3;;1;0;;0
+313;3;34835;I32_W;;Underfrequency limit 3;;0.1;0;Hz;0
+314;3;34837;U32_W;;Underfrequency time 3;;1;0;ms;0
+315;3;34839;U32_W;;Underfrequency enable 4;;1;0;;0
+316;3;34841;I32_W;;Underfrequency limit 4;;0.1;0;Hz;0
+317;3;34843;U32_W;;Underfrequency time 4;;1;0;ms;0
+318;3;34845;U32_W;;Underfrequency enable 5;;1;0;;0
+319;3;34847;I32_W;;Underfrequency limit 5;;0.1;0;Hz;0
+320;3;34849;U32_W;;Underfrequency time 5;;1;0;ms;0
+321;3;34851;U32_W;;Underfrequency enable 6;;1;0;;0
+322;3;34853;I32_W;;Underfrequency limit 6;;0.1;0;Hz;0
+323;3;34855;U32_W;;Underfrequency time 6;;1;0;ms;0
+324;4;35059;U16;;Grid monitoring SW1;;1;0;;0
+325;4;35061;U16;;Grid monitoring SW2;;1;0;;0
+326;4;35063;U16;;Grid monitoring SW3;;1;0;;0
+327;3;37633;I32_W;;Data storage 1 real32;;0.001;0;;0
+328;3;37635;I32_W;;Data storage 2 real32;;0.001;0;;0
+329;3;37637;I32_W;;Data storage 3 real32;;0.001;0;;0
+330;3;37639;I32_W;;Data storage 4 real32;;0.001;0;;0
+331;3;37641;I32_W;;Data storage 5 real32;;0.001;0;;0
+332;3;37643;I32_W;;Data storage 6 real32;;0.001;0;;0
+333;3;37645;I32_W;;Data storage 7 real32;;0.001;0;;0
+334;3;37647;I32_W;;Data storage 8 real32;;0.001;0;;0
+335;3;37653;I32_W;;Data storage 1 int32;;1;0;;0
+336;3;37655;I32_W;;Data storage 2 int32;;1;0;;0
+337;3;37657;I32_W;;Data storage 3 int32;;1;0;;0
+338;3;37659;I32_W;;Data storage 4 int32;;1;0;;0
+339;3;37661;I32_W;;Data storage 5 int32;;1;0;;0
+340;3;37663;I32_W;;Data storage 6 int32;;1;0;;0
+341;3;37665;I32_W;;Data storage 7 int32;;1;0;;0
+342;3;37667;I32_W;;Data storage 8 int32;;1;0;;0
+343;3;37673;I16;;Data storage 1 int16;;1;0;;0
+344;3;37675;I16;;Data storage 2 int16;;1;0;;0
+345;3;37677;I16;;Data storage 3 int16;;1;0;;0
+346;3;37679;I16;;Data storage 4 int16;;1;0;;0
+347;3;37681;I16;;Data storage 5 int16;;1;0;;0
+348;3;37683;I16;;Data storage 6 int16;;1;0;;0
+349;3;37685;I16;;Data storage 7 int16;;1;0;;0
+350;3;37687;I16;;Data storage 8 int16;;1;0;;0
+351;3;37693;I32_W;;Data storage 1 real32 type;;1;0;;0
+352;3;37695;I32_W;;Data storage 2 real32 type;;1;0;;0
+353;3;37697;I32_W;;Data storage 3 real32 type;;1;0;;0
+354;3;37699;I32_W;;Data storage 4 real32 type;;1;0;;0
+355;3;37701;I32_W;;Data storage 5 real32 type;;1;0;;0
+356;3;37703;I32_W;;Data storage 6 real32 type;;1;0;;0
+357;3;37705;I32_W;;Data storage 7 real32 type;;1;0;;0
+358;3;37707;I32_W;;Data storage 8 real32 type;;1;0;;0
+359;3;38145;U32_W;;Node ID;;1;0;;0
+360;3;38149;U32_W;;Baud rate;;1;0;;0
+361;3;38155;U32_W;;Refresh settings;;1;0;;0
+362;3;38401;U32_W;;FBA A Enable;;1;0;;0
+363;3;38403;U32_W;;FBA A comm loss func;;1;0;;0
+364;3;38405;U32_W;;FBA A comm loss t out;;0.1;0;s;0
+365;3;38407;U32_W;;FBA A ref1 type;;1;0;;0
+366;3;38409;U32_W;;FBA A ref2 type;;1;0;;0
+367;3;38411;U32_W;;FBA A SW sel;;1;0;;0
+368;3;38413;U32_W;;FBA A act1 type;;1;0;;0
+369;3;38415;U32_W;;FBA A act2 type;;1;0;;0
+370;3;38417;U32_W;;FBA A SW tr src;;1;0;;0
+371;3;38419;U32_W;;FBA A act1 transparent source;;1;0;;0
+372;3;38421;U32_W;;FBA A act2 transparent source;;1;0;;0
+373;3;38423;U32_W;;FBA A debug mode;;1;0;;0
+374;4;38425;U32_W;;FBA A Control Word;;1;0;;0
+375;4;38427;I32_W;;FBA A Reference REF1;;1;0;;0
+376;4;38429;I32_W;;FBA A Reference REF2;;1;0;;0
+377;4;38431;U32_W;;FBA A Status Word;;1;0;;0
+378;4;38433;I32_W;;FBA A Actual value 1;;1;0;;0
+379;4;38435;I32_W;;FBA A Actual value 2;;1;0;;0
+380;3;38441;U32_W;;FBA A Timelevel sel;;1;0;;0
+381;3;38461;U32_W;;FBA B Enable;;1;0;;0
+382;3;38463;U32_W;;FBA B comm loss func;;1;0;;0
+383;3;38465;U32_W;;FBA B comm loss t out;;0.1;0;s;0
+384;3;38467;U32_W;;FBA B ref1 type;;1;0;;0
+385;3;38469;U32_W;;FBA B ref2 type;;1;0;;0
+386;3;38471;U32_W;;FBA B SW sel;;1;0;;0
+387;3;38473;U32_W;;FBA B act1 type;;1;0;;0
+388;3;38475;U32_W;;FBA B act2 type;;1;0;;0
+389;3;38477;U32_W;;FBA B SW tr src;;1;0;;0
+390;3;38479;U32_W;;FBA B act1 transparent source;;1;0;;0
+391;3;38481;U32_W;;FBA B act2 transparent source;;1;0;;0
+392;3;38483;U32_W;;FBA B debug mode;;1;0;;0
+393;4;38485;U32_W;;FBA B Control Word;;1;0;;0
+394;4;38487;I32_W;;FBA B Reference REF1;;1;0;;0
+395;4;38489;I32_W;;FBA B Reference REF2;;1;0;;0
+396;4;38491;U32_W;;FBA B Status Word;;1;0;;0
+397;4;38493;I32_W;;FBA B Actual value 1;;1;0;;0
+398;4;38495;I32_W;;FBA B Actual value 2;;1;0;;0
+399;3;38501;U32_W;;FBA B Timelevel sel;;1;0;;0
+400;3;38657;U32_W;;FBA type;;1;0;;0
+401;3;38659;U32_W;;FBA Par2;;1;0;;0
+402;3;38661;U32_W;;FBA Par3;;1;0;;0
+403;3;38663;U32_W;;FBA Par4;;1;0;;0
+404;3;38665;U32_W;;FBA Par5;;1;0;;0
+405;3;38667;U32_W;;FBA Par6;;1;0;;0
+406;3;38669;U32_W;;FBA Par7;;1;0;;0
+407;3;38671;U32_W;;FBA Par8;;1;0;;0
+408;3;38673;U32_W;;FBA Par9;;1;0;;0
+409;3;38675;U32_W;;FBA Par10;;1;0;;0
+410;3;38677;U32_W;;FBA Par11;;1;0;;0
+411;3;38679;U32_W;;FBA Par12;;1;0;;0
+412;3;38681;U32_W;;FBA Par13;;1;0;;0
+413;3;38683;U32_W;;FBA Par14;;1;0;;0
+414;3;38685;U32_W;;FBA Par15;;1;0;;0
+415;3;38687;U32_W;;FBA Par16;;1;0;;0
+416;3;38689;U32_W;;FBA Par17;;1;0;;0
+417;3;38691;U32_W;;FBA Par18;;1;0;;0
+418;3;38693;U32_W;;FBA Par19;;1;0;;0
+419;3;38695;U32_W;;FBA Par20;;1;0;;0
+420;3;38697;U32_W;;FBA Par21;;1;0;;0
+421;3;38699;U32_W;;FBA Par22;;1;0;;0
+422;3;38701;U32_W;;FBA Par23;;1;0;;0
+423;3;38703;U32_W;;FBA Par24;;1;0;;0
+424;3;38705;U32_W;;FBA Par25;;1;0;;0
+425;3;38707;U32_W;;FBA Par26;;1;0;;0
+426;3;38709;U32_W;;FBA par refresh;;1;0;;0
+427;4;38711;U32_W;;Par table ver;;1;0;;0
+428;4;38713;U32_W;;Drive type code;;1;0;;0
+429;4;38715;U32_W;;Mapping file ver;;1;0;;0
+430;3;38717;U32_W;;D2FBA comm sta;;1;0;;0
+431;3;38719;U32_W;;FBA comm SW ver;;1;0;;0
+432;3;38721;U32_W;;FBA appl SW ver;;1;0;;0
+433;3;38913;U32_W;;FBA data in1;;1;0;;0
+434;3;38915;U32_W;;FBA data in2;;1;0;;0
+435;3;38917;U32_W;;FBA data in3;;1;0;;0
+436;3;38919;U32_W;;FBA data in4;;1;0;;0
+437;3;38921;U32_W;;FBA data in5;;1;0;;0
+438;3;38923;U32_W;;FBA data in6;;1;0;;0
+439;3;38925;U32_W;;FBA data in7;;1;0;;0
+440;3;38927;U32_W;;FBA data in8;;1;0;;0
+441;3;38929;U32_W;;FBA data in9;;1;0;;0
+442;3;38931;U32_W;;FBA data in10;;1;0;;0
+443;3;38933;U32_W;;FBA data in11;;1;0;;0
+444;3;38935;U32_W;;FBA data in12;;1;0;;0
+445;3;39169;U32_W;;FBA data out1;;1;0;;0
+446;3;39171;U32_W;;FBA data out2;;1;0;;0
+447;3;39173;U32_W;;FBA data out3;;1;0;;0
+448;3;39175;U32_W;;FBA data out4;;1;0;;0
+449;3;39177;U32_W;;FBA data out5;;1;0;;0
+450;3;39179;U32_W;;FBA data out6;;1;0;;0
+451;3;39181;U32_W;;FBA data out7;;1;0;;0
+452;3;39183;U32_W;;FBA data out8;;1;0;;0
+453;3;39185;U32_W;;FBA data out9;;1;0;;0
+454;3;39187;U32_W;;FBA data out10;;1;0;;0
+455;3;39189;U32_W;;FBA data out11;;1;0;;0
+456;3;39191;U32_W;;FBA data out12;;1;0;;0
+457;3;39425;U32_W;;FBA type_1;;1;0;;0
+458;3;39427;U32_W;;FBA Par2_1;;1;0;;0
+459;3;39429;U32_W;;FBA Par3_1;;1;0;;0
+460;3;39431;U32_W;;FBA Par4_1;;1;0;;0
+461;3;39433;U32_W;;FBA Par5_1;;1;0;;0
+462;3;39435;U32_W;;FBA Par6_1;;1;0;;0
+463;3;39437;U32_W;;FBA Par7_1;;1;0;;0
+464;3;39439;U32_W;;FBA Par8_1;;1;0;;0
+465;3;39441;U32_W;;FBA Par9_1;;1;0;;0
+466;3;39443;U32_W;;FBA Par10_1;;1;0;;0
+467;3;39445;U32_W;;FBA Par11_1;;1;0;;0
+468;3;39447;U32_W;;FBA Par12_1;;1;0;;0
+469;3;39449;U32_W;;FBA Par13_1;;1;0;;0
+470;3;39451;U32_W;;FBA Par14_1;;1;0;;0
+471;3;39453;U32_W;;FBA Par15_1;;1;0;;0
+472;3;39455;U32_W;;FBA Par16_1;;1;0;;0
+473;3;39457;U32_W;;FBA Par17_1;;1;0;;0
+474;3;39459;U32_W;;FBA Par18_1;;1;0;;0
+475;3;39461;U32_W;;FBA Par19_1;;1;0;;0
+476;3;39463;U32_W;;FBA Par20_1;;1;0;;0
+477;3;39465;U32_W;;FBA Par21_1;;1;0;;0
+478;3;39467;U32_W;;FBA Par22_1;;1;0;;0
+479;3;39469;U32_W;;FBA Par23_1;;1;0;;0
+480;3;39471;U32_W;;FBA Par24_1;;1;0;;0
+481;3;39473;U32_W;;FBA Par25_1;;1;0;;0
+482;3;39475;U32_W;;FBA Par26_1;;1;0;;0
+483;3;39477;U32_W;;FBA par refresh_1;;1;0;;0
+484;4;39479;U32_W;;Par table ver _1;;1;0;;0
+485;4;39481;U32_W;;Drive type code_1;;1;0;;0
+486;4;39483;U32_W;;Mapping file ver_1;;1;0;;0
+487;3;39485;U32_W;;D2FBA comm sta_1;;1;0;;0
+488;3;39487;U32_W;;FBA comm SW ver_1;;1;0;;0
+489;3;39489;U32_W;;FBA appl SW ver_1;;1;0;;0
+490;3;39681;U32_W;;FBA data in1_1;;1;0;;0
+491;3;39683;U32_W;;FBA data in2_1;;1;0;;0
+492;3;39685;U32_W;;FBA data in3_1;;1;0;;0
+493;3;39687;U32_W;;FBA data in4_1;;1;0;;0
+494;3;39689;U32_W;;FBA data in5_1;;1;0;;0
+495;3;39691;U32_W;;FBA data in6_1;;1;0;;0
+496;3;39693;U32_W;;FBA data in7_1;;1;0;;0
+497;3;39695;U32_W;;FBA data in8_1;;1;0;;0
+498;3;39697;U32_W;;FBA data in9_1;;1;0;;0
+499;3;39699;U32_W;;FBA data in10_1;;1;0;;0
+500;3;39701;U32_W;;FBA data in11_1;;1;0;;0
+501;3;39703;U32_W;;FBA data in12_1;;1;0;;0
+502;3;39937;U32_W;;FBA B data out1;;1;0;;0
+503;3;39939;U32_W;;FBA B data out2;;1;0;;0
+504;3;39941;U32_W;;FBA B data out3;;1;0;;0
+505;3;39943;U32_W;;FBA B data out4;;1;0;;0
+506;3;39945;U32_W;;FBA B data out5;;1;0;;0
+507;3;39947;U32_W;;FBA B data out6;;1;0;;0
+508;3;39949;U32_W;;FBA B data out7;;1;0;;0
+509;3;39951;U32_W;;FBA B data out8;;1;0;;0
+510;3;39953;U32_W;;FBA B data out9;;1;0;;0
+511;3;39955;U32_W;;FBA B data out10;;1;0;;0
+512;3;39957;U32_W;;FBA B data out11;;1;0;;0
+513;3;39959;U32_W;;FBA B data out12;;1;0;;0
+514;3;41985;U32_W;;Enable;;1;0;;0
+515;3;41987;U32_W;;Profile;;1;0;;0
+516;3;41991;U32_W;;Power scale;;0.1;0;kW;0
+517;3;42003;U32_W;;Communication loss event;WIND_SPEED;1;0;;0
+518;3;42005;U32_W;;Communication loss timeout;;1;0;s;0
+519;3;42007;U32_W;;Heartbeat max interval;;1;0;s;0
+520;3;42009;U32_W;;First start delay;;1;0;s;0
+521;3;42241;U32_W;;Data in 1;;1;0;;0
+522;3;42243;U32_W;;Data in 2;;1;0;;0
+523;3;42245;U32_W;;Data in 3;;1;0;;0
+524;3;42247;U32_W;;Data in 4;;1;0;;0
+525;3;42249;U32_W;;Data in 5;;1;0;;0
+526;3;42251;U32_W;;Data in 6;;1;0;;0
+527;3;42253;U32_W;;Data in 7;;1;0;;0
+528;3;42255;U32_W;;Data in 8;;1;0;;0
+529;3;42257;U32_W;;Data in 9;;1;0;;0
+530;3;42259;U32_W;;Data in 10;;1;0;;0
+531;3;42261;U32_W;;Data in 11;;1;0;;0
+532;3;42263;U32_W;;Data in 12;;1;0;;0
+533;3;42265;U32_W;;Data in 13;;1;0;;0
+534;3;42267;U32_W;;Data in 14;;1;0;;0
+535;3;42269;U32_W;;Data in 15;;1;0;;0
+536;3;42339;U32_W;;Data in 50;;1;0;;0
+537;3;42341;U32_W;;Data in 51;;1;0;;0
+538;3;42343;U32_W;;Data in 52;;1;0;;0
+539;3;42345;U32_W;;Data in 53;;1;0;;0
+540;3;42347;U32_W;;Data in 54;;1;0;;0
+541;3;42349;U32_W;;Data in 55;;1;0;;0
+542;3;42351;U32_W;;Data in 56;;1;0;;0
+543;3;42497;U32_W;;Data out 1;;1;0;;0
+544;3;42499;U32_W;;Data out 2;;1;0;;0
+545;3;42501;U32_W;;Data out 3;;1;0;;0
+546;3;42503;U32_W;;Data out 4;;1;0;;0
+547;3;42505;U32_W;;Data out 5;;1;0;;0
+548;3;42507;U32_W;;Data out 6;;1;0;;0
+549;3;42509;U32_W;;Data out 7;;1;0;;0
+550;3;42511;U32_W;;Data out 8;;1;0;;0
+551;3;42513;U32_W;;Data out 9;;1;0;;0
+552;3;42515;U32_W;;Data out 10;;1;0;;0
+553;3;42517;U32_W;;Data out 11;;1;0;;0
+554;3;42595;U32_W;;Data out 50;;1;0;;0
+555;3;42597;U32_W;;Data out 51;;1;0;;0
+556;3;42599;U32_W;;Data out 52;;1;0;;0
+557;3;42601;U32_W;;Data out 53;;1;0;;0
+558;3;42603;U32_W;;Data out 54;;1;0;;0
+559;3;42605;U32_W;;Data out 55;;1;0;;0
+560;3;42607;U32_W;;Data out 56;;1;0;;0
+561;3;42609;U32_W;;Data out 57;;1;0;;0
+562;3;42611;U32_W;;Data out 58;;1;0;;0
+563;3;42613;U32_W;;Data out 59;;1;0;;0
+564;3;42615;U32_W;;Data out 60;;1;0;;0
+565;3;42617;U32_W;;Data out 61;;1;0;;0
+566;3;42619;U32_W;;Data out 62;;1;0;;0
+567;3;42621;U32_W;;Data out 63;;1;0;;0
+568;3;42623;U32_W;;Data out 64;;1;0;;0
+569;3;42625;U32_W;;Data out 65;;1;0;;0
+570;3;42627;U32_W;;Data out 66;;1;0;;0
+571;3;42629;U32_W;;Data out 67;;1;0;;0
+572;3;42631;U32_W;;Data out 68;;1;0;;0
+573;3;42633;U32_W;;Data out 69;;1;0;;0
+574;3;42635;U32_W;;Data out 70;;1;0;;0
+575;3;42637;U32_W;;Data out 71;;1;0;;0
+576;3;42639;U32_W;;Data out 72;;1;0;;0
+577;3;42641;U32_W;;Data out 73;;1;0;;0
+578;3;42643;U32_W;;Data out 74;;1;0;;0
+579;3;42645;U32_W;;Data out 75;;1;0;;0
+580;3;42647;U32_W;;Data out 76;;1;0;;0
+581;3;42649;U32_W;;Data out 77;;1;0;;0
+582;3;42651;U32_W;;Data out 78;;1;0;;0
+583;3;42653;U32_W;;Data out 79;;1;0;;0
+584;3;42655;U32_W;;Data out 80;;1;0;;0
+585;3;42657;U32_W;;Data out 81;;1;0;;0
+586;3;42659;U32_W;;Data out 82;;1;0;;0
+587;3;42661;U32_W;;Data out 83;;1;0;;0
+588;3;42663;U32_W;;Data out 84;;1;0;;0
+589;3;42665;U32_W;;Data out 85;;1;0;;0
+590;3;42667;U32_W;;Data out 86;;1;0;;0
+591;3;42669;U32_W;;Data out 87;;1;0;;0
+592;3;42671;U32_W;;Data out 88;;1;0;;0
+593;3;42673;U32_W;;Data out 89;;1;0;;0
+594;3;42675;U32_W;;Data out 90;;1;0;;0
+595;3;42677;U32_W;;Data out 91;;1;0;;0
+596;3;42679;U32_W;;Data out 92;;1;0;;0
+597;3;42681;U32_W;;Data out 93;;1;0;;0
+598;3;42683;U32_W;;Data out 94;;1;0;;0
+599;3;42685;U32_W;;Data out 95;;1;0;;0
+600;3;42687;U32_W;;Data out 96;;1;0;;0
+601;3;42689;U32_W;;Data out 97;;1;0;;0
+602;3;42691;U32_W;;Data out 98;;1;0;;0
+603;3;42693;U32_W;;Data out 99;;1;0;;0
+604;3;42695;U32_W;;Data out 100;;1;0;;0
+605;3;42697;U32_W;;Data out 101;;1;0;;0
+606;3;42699;U32_W;;Data out 102;;1;0;;0
+607;3;42701;U32_W;;Data out 103;;1;0;;0
+608;3;42703;U32_W;;Data out 104;;1;0;;0
+609;3;42705;U32_W;;Data out 105;;1;0;;0
+610;3;42707;U32_W;;Data out 106;;1;0;;0
+611;3;42709;U32_W;;Data out 107;;1;0;;0
+612;3;42711;U32_W;;Data out 108;;1;0;;0
+613;3;42713;U32_W;;Data out 109;;1;0;;0
+614;3;42715;U32_W;;Data out 110;;1;0;;0
+615;3;42717;U32_W;;Data out 111;;1;0;;0
+616;3;42719;U32_W;;Data out 112;;1;0;;0
+617;3;42721;U32_W;;Data out 113;;1;0;;0
+618;3;42723;U32_W;;Data out 114;;1;0;;0
+619;3;42725;U32_W;;Data out 115;;1;0;;0
+620;3;42727;U32_W;;Data out 116;;1;0;;0
+621;3;42729;U32_W;;Data out 117;;1;0;;0
+622;3;42731;U32_W;;Data out 118;;1;0;;0
+623;3;42733;U32_W;;Data out 119;;1;0;;0
+624;3;42735;U32_W;;Data out 120;;1;0;;0
+625;3;42737;U32_W;;Data out 121;;1;0;;0
+626;3;42739;U32_W;;Data out 122;;1;0;;0
+627;3;42741;U32_W;;Data out 123;;1;0;;0
+628;3;42743;U32_W;;Data out 124;;1;0;;0
+629;3;42745;U32_W;;Data out 125;;1;0;;0
+630;3;42747;U32_W;;Data out 126;;1;0;;0
+631;3;42749;U32_W;;Data out 127;;1;0;;0
+632;3;42751;U32_W;;Data out 128;;1;0;;0
+633;3;42753;U32_W;;Data out 129;;1;0;;0
+634;3;42755;U32_W;;Data out 130;;1;0;;0
+635;3;42757;U32_W;;Data out 131;;1;0;;0
+636;3;42759;U32_W;;Data out 132;;1;0;;0
+637;3;42761;U32_W;;Data out 133;;1;0;;0
+638;3;42763;U32_W;;Data out 134;;1;0;;0
+639;3;42765;U32_W;;Data out 135;;1;0;;0
+640;3;42767;U32_W;;Data out 136;;1;0;;0
+641;3;42769;U32_W;;Data out 137;;1;0;;0
+642;3;42771;U32_W;;Data out 138;;1;0;;0
+643;3;42773;U32_W;;Data out 139;;1;0;;0
+644;3;42775;U32_W;;Data out 140;;1;0;;0
+645;3;42777;U32_W;;Data out 141;;1;0;;0
+646;3;42779;U32_W;;Data out 142;;1;0;;0
+647;3;42781;U32_W;;Data out 143;;1;0;;0
+648;3;42783;U32_W;;Data out 144;;1;0;;0
+649;3;42785;U32_W;;Data out 145;;1;0;;0
+650;3;42787;U32_W;;Data out 146;;1;0;;0
+651;3;42789;U32_W;;Data out 147;;1;0;;0
+652;3;42791;U32_W;;Data out 148;;1;0;;0
+653;3;42793;U32_W;;Data out 149;;1;0;;0
+654;3;42795;U32_W;;Data out 150;;1;0;;0
+655;3;42797;U32_W;;Data out 151;;1;0;;0
+656;3;42799;U32_W;;Data out 152;;1;0;;0
+657;3;42801;U32_W;;Data out 153;;1;0;;0
+658;3;42803;U32_W;;Data out 154;;1;0;;0
+659;3;42805;U32_W;;Data out 155;;1;0;;0
+660;3;42807;U32_W;;Data out 156;;1;0;;0
+661;3;42809;U32_W;;Data out 157;;1;0;;0
+662;3;42811;U32_W;;Data out 158;;1;0;;0
+663;3;42813;U32_W;;Data out 159;;1;0;;0
+664;3;42815;U32_W;;Data out 160;;1;0;;0
+665;3;44289;U16;;Main status word;;1;0;;0
+666;3;44291;U32_W;;Inverter main state;;1;0;;0
+667;3;44293;U32_W;;MPPT unit state;;1;0;;0
+668;3;44295;U16;;Start command SW;;1;0;;0
+669;3;44297;U16;;Internal inverter inhibitors 1;;1;0;;0
+670;3;44299;U16;;Internal inverter inhibitors 2;;1;0;;0
+671;3;44301;U16;;Internal MPPT inhibitors;;1;0;;0
+672;3;44309;U32_W;;Output power status;;1;0;;0
+673;3;44311;U32_W;;Disconnect trigger;;1;0;;0
+674;3;44327;U32_W;;Grid monitoring ready in;;1;0;s;0
+675;3;44329;U32_W;;Start logic ready in;;1;0;s;0
+676;3;44333;U32_W;;PU ready in;;1;0;s;0
+677;3;44347;U32_W;;Start logic stopping in;;1;0;s;0
+678;3;44545;U16;;Connected DC inputs 1- 12;;1;0;;0
+679;3;44547;U16;;Connected DC inputs 13-24;;1;0;;0
+680;3;44553;U32_W;;Overcurrent detection;;1;0;;0
+681;3;44555;U32_W;;Overcurrent instant limit;;0.1;0;A;0
+682;3;44557;U32_W;;Overcurrent delayed limit;;0.1;0;A;0
+683;3;44559;U32_W;;Overcurrent time delay;;0.1;0;s;0
+684;3;44561;U32_W;;Reverse current detection;;1;0;;0
+685;3;44563;I32_W;;Delayed Reverse current limit;;0.1;0;A;0
+686;3;44565;U32_W;;Reverse current time delay;;0.1;0;s;0
+687;3;44571;U32_W;;Current deviation action;;1;0;;0
+688;3;44573;U32_W;;Current deviation delay;;1;0;min;0
+689;3;44575;U32_W;;Comparison mode;;1;0;;0
+690;3;44577;U32_W;;Reference type;;1;0;;0
+691;3;44581;U32_W;;Relative current limit;;1;0;%;0
+692;3;44583;U32_W;;Absolute current limit;;0.1;0;A;0
+693;3;44585;U32_W;;Relative threshold;;0.1;0;A;0
+694;3;44587;U32_W;;Fuse monitor action;;1;0;;0
+695;3;44589;U32_W;;Blown fuse tolerance;;0.1;0;A;0
+696;3;44591;U32_W;;Blown fuse active boundary;;0.1;0;A;0
+697;3;44593;U32_W;;Current sanity check action;;1;0;;0
+698;3;44595;U32_W;;Current meas range;;0.1;0;A;0
+699;3;44597;U16;;Current range selection 1-12;;1;0;;0
+700;3;44599;U16;;Current range selection 13-24;;1;0;;0
+701;4;44605;I32_W;;DC input 1 current;I_DC;0.1;0;A;0
+702;4;44607;I32_W;;DC input 2 current;;0.1;0;A;0
+703;4;44609;I32_W;;DC input 3 current;;0.1;0;A;0
+704;4;44611;I32_W;;DC input 4 current;;0.1;0;A;0
+705;4;44613;I32_W;;DC input 5 current;;0.1;0;A;0
+706;4;44615;I32_W;;DC input 6 current;;0.1;0;A;0
+707;4;44617;I32_W;;DC input 7 current;;0.1;0;A;0
+708;4;44619;I32_W;;DC input 8 current;;0.1;0;A;0
+709;4;44621;I32_W;;DC input 9 current;;0.1;0;A;0
+710;4;44623;I32_W;;DC input 10 current;;0.1;0;A;0
+711;4;44625;I32_W;;DC input 11 current;;0.1;0;A;0
+712;4;44627;I32_W;;DC input 12 current;;0.1;0;A;0
+713;4;44629;I32_W;;DC input 13 current;;0.1;0;A;0
+714;4;44631;I32_W;;DC input 14 current;;0.1;0;A;0
+715;4;44633;I32_W;;DC input 15 current;;0.1;0;A;0
+716;4;44635;I32_W;;DC input 16 current;;0.1;0;A;0
+717;4;44637;I32_W;;DC input 17 current;;0.1;0;A;0
+718;4;44639;I32_W;;DC input 18 current;;0.1;0;A;0
+719;4;44641;I32_W;;DC input 19 current;;0.1;0;A;0
+720;4;44643;I32_W;;DC input 20 current;;0.1;0;A;0
+721;4;44645;I32_W;;DC input 21 current;;0.1;0;A;0
+722;4;44647;I32_W;;DC input 22 current;;0.1;0;A;0
+723;4;44649;I32_W;;DC input 23 current;;0.1;0;A;0
+724;4;44651;I32_W;;DC input 24 current;;0.1;0;A;0
+725;4;44705;U16;;Current meas status 1- 12;;1;0;;0
+726;4;44707;U16;;Current meas status 13- 24;;1;0;;0
+727;3;45057;U32_W;;Spare AI1;;1;0;;0
+728;3;45077;U32_W;;PLC CPU RO 0 source;;1;0;;0
+729;3;45079;U32_W;;PCC CPU RO 1 source;;1;0;;0
+730;3;45097;U32_W;;External fault 1 source;;1;0;;0
+731;3;45099;U32_W;;External fault 1 action;;1;0;;0
+732;3;45101;U32_W;;External fault 1 action delay;;1;0;s;0
+733;3;45103;U32_W;;External fault 1 failure logic;;1;0;;0
+734;3;45107;U32_W;;External fault 2 source;;1;0;;0
+735;3;45109;U32_W;;External fault 2 action;;1;0;;0
+736;3;45111;U32_W;;External fault 2 action delay;;1;0;s;0
+737;3;45113;U32_W;;External fault 2 failure logic;;1;0;;0
+738;3;45117;U32_W;;External fault 3 source;;1;0;;0
+739;3;45119;U32_W;;External fault 3 action;;1;0;;0
+740;3;45121;U32_W;;External fault 3 action delay;;1;0;s;0
+741;3;45123;U32_W;;External fault 3 failure logic;;1;0;;0
+742;3;45333;U32_W;;MV temperature alarm source;;1;0;;0
+743;3;45335;U32_W;;Transformer temperature alarm action;;1;0;;0
+744;3;45337;U32_W;;Transformer temperature alarm delay;;1;0;s;0
+745;3;45339;U32_W;;Transformer temperature alarm current;;1;0;A;0
+746;3;45341;U32_W;;Transformer temperature alarm failure logic;;1;0;;0
+747;3;45343;U32_W;;MV temperature fault source;;1;0;;0
+748;3;45345;U32_W;;Transformer temperature fault action;;1;0;;0
+749;3;45347;U32_W;;Transformer temperature fault delay;;1;0;s;0
+750;3;45349;U32_W;;Transformer temperature fault current limit;;1;0;A;0
+751;3;45351;U32_W;;Transformer temperature fault failure logic;;1;0;;0
+752;3;45353;U32_W;;MV low oil level source;;1;0;;0
+753;3;45355;U32_W;;Transformer low oil level action;;1;0;;0
+754;3;45357;U32_W;;Transformer low oil level delay;;1;0;s;0
+755;3;45359;U32_W;;Transformer low oil level current limit;;1;0;A;0
+756;3;45361;U32_W;;Transformer low oil level failure logic;;1;0;;0
+757;3;45363;U32_W;;MV overpressure source;PRESSURE;1;0;;0
+758;3;45365;U32_W;;Transformer overpressure action;;1;0;;0
+759;3;45367;U32_W;;Transformer overpressure delay;;1;0;s;0
+760;3;45369;U32_W;;Transformer overpressure current limit;;1;0;A;0
+761;3;45371;U32_W;;Transformer overpressure failure logic;;1;0;;0
+762;3;45373;U32_W;;MV vacuum failure source;;1;0;;0
+763;3;45375;U32_W;;Transformer vacuum failure action;;1;0;;0
+764;3;45377;U32_W;;Transformer vacuum failure delay;;1;0;s;0
+765;3;45379;U32_W;;Transformer vacuum failure current limit;;1;0;A;0
+766;3;45381;U32_W;;Transformer vacuum failure logic;;1;0;;0
+767;3;45383;U32_W;;MV gas discharge source;;1;0;;0
+768;3;45385;U32_W;;Transformer gas discharge action;;1;0;;0
+769;3;45387;U32_W;;Transformer gas discharge delay;;1;0;s;0
+770;3;45389;U32_W;;Transformer gas discharge current limit;;1;0;A;0
+771;3;45391;U32_W;;Transformer gas discharge failure logic;;1;0;;0
+772;3;45393;U32_W;;MV breaker opening source;;1;0;;0
+773;3;45395;U32_W;;MV breaker feedback action;;1;0;;0
+774;3;45397;U32_W;;MV breaker feedback action delay;;1;0;s;0
+775;3;45399;U32_W;;MV breaker feedback power limit;;1;0;A;0
+776;3;45401;U32_W;;MV breaker feedback failure logic;;1;0;;0
+777;3;45403;U32_W;;MV side phase lost source;;1;0;;0
+778;3;45405;U32_W;;MV phase loss detection action;;1;0;;0
+779;3;45407;U32_W;;MV phase loss detection action delay;;1;0;s;0
+780;3;45409;U32_W;;MV phase loss detection power limit;;1;0;A;0
+781;3;45411;U32_W;;MV phase loss detection failure logic;;1;0;;0
+782;3;45413;U32_W;;Transformer coil temperature source;;1;0;;0
+783;4;45415;I32_W;;Transformer coil temperature;;0.1;0;C;0
+784;3;45417;I32_W;;Transformer coil temperature at 4 mA current;;1;0;C;0
+785;3;45419;I32_W;;Transformer coil temperature at 20 mA current;;1;0;C;0
+786;3;45421;U32_W;;Transformer coil temperature warning limit;;1;0;C;0
+787;3;45423;U32_W;;Transformer coil temperature fault limit;;1;0;C;0
+788;3;45425;U32_W;;Transformer coil, current limit temperature 1;;1;0;C;0
+789;3;45427;U32_W;;Transformer coil, current limit temperature 2;;1;0;C;0
+790;3;45429;U32_W;;Transformer coil, current limit temperature 3;;1;0;C;0
+791;3;45431;U32_W;;Transformer coil, current limit current 1;;1;0;A;0
+792;3;45433;U32_W;;Transformer coil, current limit current 2;;1;0;A;0
+793;3;45437;U32_W;;Transformer oil temperature source;;1;0;;0
+794;4;45439;I32_W;;Transformer oil temperature;;0.1;0;C;0
+795;3;45441;I32_W;;Transformer oil temperature at 4 mA current;;1;0;C;0
+796;3;45443;I32_W;;Transformer oil temperature at 20 mA current;;1;0;C;0
+797;3;45445;U32_W;;Transformer oil temperature warning limit;;1;0;C;0
+798;3;45447;U32_W;;Transformer oil temperature fault limit;;1;0;C;0
+799;3;45449;U32_W;;Transformer oil, current limit temperature 1;;1;0;C;0
+800;3;45451;U32_W;;Transformer oil, current limit temperature 2;;1;0;C;0
+801;3;45453;U32_W;;Transformer oil, current limit temperature 3;;1;0;C;0
+802;3;45455;U32_W;;Transformer oil, current limit current 1;;1;0;A;0
+803;3;45457;U32_W;;Transformer oil, current limit current 2;;1;0;A;0
+804;4;45473;U16;;MV breaker opening status;;1;0;;0
+805;4;47105;U32_W;;Startup date;;1;0;day;0
+806;4;47107;U32_W;;Last Boot Time, Days;;1;0;day;0
+807;4;47109;U32_W;;Last Boot Time, Ticks;;1;0;;0
+808;4;47115;U32_W;;Total energy;E_TOT;1;0;kWh;0
+809;4;47117;U32_W;;Total energy frac;;1;0;W;0
+810;4;47121;U32_W;;Total kVAh supplied;;1;0;kVAh;0
+811;4;47123;U32_W;;Total kVAh supplied Frac;;1;0;;0
+812;4;47127;U32_W;;Energy counter, resettable;;0.01;0;kWh;0
+813;4;47129;U32_W;;kVAh Energy counter, resettable;;0.01;0;kVAh;0
+814;4;47131;U32_W;;Daily kWh supplied;E_DAY;0.1;0.1;kWh;0
+815;4;47133;U32_W;;Daily kVAh supplied;;0.1;0;kVAh;0
+816;3;47361;U16;;Main circuit SPD status;;1;0;;0
+817;3;47363;U16;;DC input fuse status;;1;0;;0
+818;3;47365;U16;;48 V power supply status;;1;0;;0
+819;3;47367;U16;;48 V buffer status;;1;0;;0
+820;3;47369;U16;;24 V buffer status;;1;0;;0
+821;3;47381;U16;;LCL overheat sensor status;;1;0;;0
+822;3;47407;U32_W;;24 V buffer action delay;;0.1;0;s;0
+823;3;47409;U32_W;;48 V power supply action delay;;0.1;0;s;0
+824;3;47411;U32_W;;48 V buffer action delay;;0.1;0;s;0
+825;3;47413;U32_W;;Buffer charge delay;;1;0;s;0
+826;3;48385;U32_W;;Inverter operation;;1;0;;0
+827;3;48387;U32_W;;Start switch source;;1;0;;0
+828;3;48389;U32_W;;IO transfer trip source;;1;0;;0
+829;3;48391;U32_W;;SCADA transfer trip;;1;0;;0
+830;3;48393;U32_W;;Transfer trip event;;1;0;;0
+831;3;48395;U32_W;;IO shutdown source;;1;0;;0
+832;3;48397;U32_W;;SCADA shutdown;;1;0;;0
+833;3;48399;U32_W;;Shutdown event;;1;0;;0
+834;3;48405;U32_W;;Reset active faults;;1;0;;0
+835;4;48641;U32_W;;Phase voltage U1;;0.01;0;V;0
+836;4;48643;U32_W;;Phase voltage V1;;0.01;0;V;0
+837;4;48645;U32_W;;Phase voltage W1;;0.01;0;V;0
+838;4;48647;U32_W;;Phase voltage 1 max;;0.01;0;V;0
+839;4;48649;U32_W;;Phase voltage 1 min;;0.01;0;V;0
+840;4;48651;U32_W;;Main voltage U1-V1;;0.01;0;V;0
+841;4;48653;U32_W;;Main voltage V1-W1;;0.01;0;V;0
+842;4;48655;U32_W;;Main voltage W1-U1;;0.01;0;V;0
+843;4;48657;U32_W;;Main voltage 1 max;;0.01;0;V;0
+844;4;48659;U32_W;;Main voltage 1 min;;0.01;0;V;0
+845;4;48661;U32_W;;Phase voltage 1 pos seq;;0.01;0;V;0
+846;4;48663;U32_W;;Phase voltage 1 neg seq;;0.01;0;V;0
+847;4;48665;U32_W;;Main voltage 1 pos seq;;0.01;0;V;0
+848;4;48667;U32_W;;Main voltage 1 neg seq;;0.01;0;V;0
+849;4;48669;U32_W;;Frequency 1;;0.01;0;Hz;0
+850;4;48679;U32_W;;Phase voltage U2;;0.01;0;V;0
+851;4;48681;U32_W;;Phase voltage V2;;0.01;0;V;0
+852;4;48683;U32_W;;Phase voltage W2;;0.01;0;V;0
+853;4;48689;U32_W;;Main voltage U2-V2;;0.01;0;V;0
+854;4;48691;U32_W;;Main voltage V2-W2;;0.01;0;V;0
+855;4;48693;U32_W;;Main voltage W2-U2;;0.01;0;V;0
+856;4;48699;U32_W;;Phase voltage 2 pos seq;;0.01;0;V;0
+857;4;48701;U32_W;;Phase voltage 2 neg seq;;0.01;0;V;0
+858;4;48703;U32_W;;Main voltage 2 pos seq;;0.01;0;V;0
+859;4;48705;U32_W;;Main voltage 2 neg seq;;0.01;0;V;0
+860;4;48707;U32_W;;Frequency 2;;0.01;0;Hz;0
+861;4;48719;U32_W;;Phase current U1;I_AC_3;0.01;0;A;0
+862;4;48721;U32_W;;Phase current V1;;0.01;0;A;0
+863;4;48723;U32_W;;Phase current W1;;0.01;0;A;0
+864;4;48725;U32_W;;Current 1 pos seq;;0.01;0;A;0
+865;4;48727;U32_W;;Current 1 neg seq;;0.01;0;A;0
+866;3;49927;U32_W;;Control board supply;;1;0;;0
+867;4;49947;U16;;Connected modules;;1;0;;0
+868;3;49959;U16;;HW options word 1;;1;0;;0
+869;3;49969;U32_W;;LCL filter parameter source;;1;0;;0
+870;3;50177;U32_W;;Language;;1;0;;0
+871;3;50179;U32_W;;Passcode;;1;0;;0
+872;4;50181;U16;;Access level status;;1;0;;0
+873;3;50187;U32_W;;Param restore;;1;0;;0
+874;3;50189;U32_W;;Param save;;1;0;;0
+875;3;50191;U32_W;;Control board boot;;1;0;;0
+876;4;50195;U32_W;;User set status;;1;0;;0
+877;3;50197;U32_W;;User set save/load;;1;0;;0
+878;3;50199;U32_W;;User set IO sel in1;;1;0;;0
+879;3;50201;U32_W;;User set IO sel in2;;1;0;;0
+880;3;50215;U32_W;;Time synchronization source;;1;0;;0
+881;3;50223;U32_W;;Full days since 1st Jan 1980;;1;0;days;0
+882;3;50225;U32_W;;Time in minutes within 24 h;;1;0;min;0
+883;3;50227;U32_W;;Time in ms within one minute;;1;0;ms;0
+884;4;50233;U16;;Time source status;;1;0;;0
+885;4;50297;U16;;User data logger status word;;1;0;;0
+886;3;50301;U32_W;;User data logger trigger;;1;0;;0
+887;3;50303;U32_W;;User data logger start;;1;0;;0
+888;3;50305;U32_W;;Factory data logger time level;;1;0;;0
+889;3;51713;U32_W;;DC door fan mode;;1;0;;0
+890;3;51715;U32_W;;AC door fan mode;;1;0;;0
+891;3;51717;U32_W;;Power module fan mode;;1;0;;0
+892;4;51751;U32_W;;Power module fan reference;;1;0;rpm;0
+893;4;51753;U32_W;;Power module 1 fan;;1;0;rpm;0
+894;4;51755;U32_W;;Power module 2 fan;;1;0;rpm;0
+895;4;51757;U32_W;;Power module 3 fan;;1;0;rpm;0
+896;4;51759;U32_W;;Power module 4 fan;;1;0;rpm;0
+897;3;51761;U32_W;;Expected grid rotation;;1;0;;0
+898;3;52225;U16;;PLC digital Inputs 1;;1;0;;0
+899;3;52227;U16;;PLC digital inputs 2;;1;0;;0
+900;3;52229;U16;;PLC digital inputs 3;;1;0;;0
+901;3;52231;U32_W;;Cabinet temperature;TEMP_INT;1;0;;0
+902;3;52233;U32_W;;Spare AI 0-10 V;;1;0;;0
+903;3;52235;U32_W;;PLC watchdog read;;1;0;;0
+904;3;52457;U32_W;;DC input current 1;;1;0;;0
+905;3;52459;U32_W;;DC input current 2;;1;0;;0
+906;3;52461;U32_W;;DC input current 3;;1;0;;0
+907;3;52463;U32_W;;DC input current 4;;1;0;;0
+908;3;52465;U32_W;;DC input current 5;;1;0;;0
+909;3;52467;U32_W;;DC input current 6;;1;0;;0
+910;3;52469;U32_W;;DC input current 7;;1;0;;0
+911;3;52471;U32_W;;DC input current 8;;1;0;;0
+912;3;52473;U32_W;;DC input current 9;;1;0;;0
+913;3;52475;U32_W;;DC input current 10;;1;0;;0
+914;3;52477;U32_W;;DC input current 11;;1;0;;0
+915;3;52479;U32_W;;DC input current 12;;1;0;;0
+916;3;52481;U32_W;;DC input current 13;;1;0;;0
+917;3;52483;U32_W;;DC input current 14;;1;0;;0
+918;3;52485;U32_W;;DC input current 15;;1;0;;0
+919;3;52487;U32_W;;DC input current 16;;1;0;;0
+920;3;52489;U32_W;;DC input current 17;;1;0;;0
+921;3;52491;U32_W;;DC input current 18;;1;0;;0
+922;3;52493;U32_W;;DC input current 19;;1;0;;0
+923;3;52495;U32_W;;DC input current 20;;1;0;;0
+924;3;52497;U32_W;;DC input current 21;;1;0;;0
+925;3;52499;U32_W;;DC input current 22;;1;0;;0
+926;3;52501;U32_W;;DC input current 23;;1;0;;0
+927;3;52503;U32_W;;DC input current 24;;1;0;;0
+928;3;52505;U32_W;;PLC error class;;1;0;;0
+929;3;52507;U32_W;;PLC error component;;1;0;;0
+930;3;52509;U32_W;;PLC error device;;1;0;;0
+931;3;52511;U32_W;;PLC error module;;1;0;;0
+932;3;52513;U32_W;;PLC error channel;;1;0;;0
+933;3;52515;U32_W;;PLC error identifier;;1;0;;0
+934;3;52517;U32_W;;PLC error state;;1;0;;0
+935;3;52519;U32_W;;PLC CPU load;;1;0;;0
+936;3;52625;U32_W;;PLC SW version, lower bits;;1;0;;0
+937;3;52627;U32_W;;PLC SW version, upper bits;;1;0;;0
+938;3;52629;U32_W;;PLC runtime system version;;1;0;;0
+939;3;52631;U32_W;;PLC bootcode version;;1;0;;0
+940;3;52633;U32_W;;PLC onboard I/O version;;1;0;;0
+941;3;52635;U32_W;;PLC software MD5 hash #1;;1;0;;0
+942;3;52637;U32_W;;PLC software MD5 hash #2;;1;0;;0
+943;3;52639;U32_W;;PLC software MD5 hash #3;;1;0;;0
+944;3;52641;U32_W;;PLC software MD5 hash #4;;1;0;;0
+945;3;52725;U32_W;;PLC error code;;1;0;;0
+946;3;52481;U16;;PLC Relay Outputs 1;;1;0;;0
+947;3;52483;U16;;PLC Relay Outputs 2;;1;0;;0
+948;3;52485;U16;;PLC Relay Outputs 3;;1;0;;0
+949;4;52487;U32_W;;PLC watchdog write;;1;0;;0
+950;3;52489;U32_W;;PLC diagnostics counter;;1;0;;0
+951;3;52491;U32_W;;PLC watchdog threshold;;1;0;ms;0
+952;3;52493;U32_W;;PLC CPU reboot;;1;0;;0
+953;3;52495;U32_W;;PLC error acknowledgement;;1;0;;0
+954;3;52497;U32_W;;PLC configuration code;;1;0;;0
+955;4;53109;U32_W;;Iout limit 1;;0.01;0;p.u.;0
+956;4;53111;U32_W;;Iout limit scaled;;0.01;0;p.u.;0
+957;4;53119;U32_W;;Relative limit IGBT;;1;0;%;0
+958;3;53133;U32_W;;Altitude;;1;0;;0
+959;4;53249;U32_W;;Input voltage;;1;0;V;0
+960;4;53253;U32_W;;Input power;P_DC;0.1;0;kW;0
+961;4;53255;I32_W;;Input current;;0.1;0;A;0
+962;3;53265;U32_W;;Input current monitoring;;1;0;;0
+963;3;53271;I32_W;;Reverse current limit;;0.1;0;A;0
+964;3;53273;U32_W;;Reverse current delay;;1;0;s;0
+965;3;53761;U32_W;;Grounding mode;;1;0;;0
+966;3;53763;U32_W;;Grounding device;;1;0;;0
+967;4;53765;U32_W;;Grounding state;;1;0;;0
+968;3;53767;U32_W;;Ignore insulation resistance;R_ISO;1;0;;0
+969;3;53769;U32_W;;Ungrounded operation;;1;0;;0
+970;3;53771;U32_W;;Unground on fault;;1;0;;0
+971;3;53773;U32_W;;Night grounding;;1;0;;0
+972;3;53775;U32_W;;Wake-up voltage;;1;0;V;0
+973;3;53777;U32_W;;Night mode voltage;;1;0;V;0
+974;3;53779;U32_W;;Grounding transient time;;0.01;0;s;0
+975;3;53781;U32_W;;Minimum grounding interval;;1;0;min;0
+976;3;53783;U32_W;;Grounding circuit voltage fail action;;1;0;;0
+977;3;53785;U32_W;;Grounding current limit;;0.01;0;A;0
+978;4;53787;U32_W;;Total grounding current;;0.001;0;A;0
+979;4;53789;I32_W;;Resistive grounding current;;0.001;0;A;0
+980;3;53791;U32_W;;Grounding current fault action;;1;0;;0
+981;3;53793;U32_W;;Grounding current time limit;;0.001;0;s;0
+982;3;53795;U32_W;;Sudden change current fault action;;1;0;;0
+983;3;53797;U32_W;;Step 1 current limit;;0.001;0;A;0
+984;3;53799;U32_W;;Step 2 current limit;;0.001;0;A;0
+985;3;53801;U32_W;;Step 3 current limit;;0.001;0;A;0
+986;3;53803;U32_W;;Step 1 time limit;;0.001;0;s;0
+987;3;53805;U32_W;;Step 2 time limit;;0.001;0;s;0
+988;3;53809;U32_W;;Insulation resistance measurement;;1;0;;0
+989;3;53811;U32_W;;Insulation resistance device;;1;0;;0
+990;4;53813;U32_W;;Insulation resistance device state;;1;0;;0
+991;3;53815;U32_W;;Insulation resistance limit;;1;0;Ohm;0
+992;4;53817;U32_W;;Insulation resistance;;1;0;;0
+993;3;53819;U32_W;;Insulation resistance fault action;;1;0;;0
+994;3;53821;U32_W;;Minimum Riso measurement time;;1;0;min;0
+995;3;53823;U32_W;;Maximum Riso measurement time;;1;0;min;0
+996;3;53825;U32_W;;MIRU self-test;;1;0;;0
+997;3;53827;U32_W;;Self-test voltage;;1;0;V;0
+998;3;53829;U16;;Status word;;1;0;;0
+999;3;53831;U32_W;;Sudden change warning indication time;;1;0;s;0
+1000;4;54017;I32_W;;Ambient temperature;TEMP_AMB;0.1;0;C;0
+1001;4;54019;I32_W;;Control board temperature;;0.1;0;C;0
+1002;4;54021;I32_W;;PU1 IGBT T1;;0.1;0;C;0
+1003;4;54023;I32_W;;PU1 IGBT T2;;0.1;0;C;0
+1004;4;54025;I32_W;;PU1 IGBT T3;;0.1;0;C;0
+1005;4;54027;I32_W;;PU1 PSU temperature;;0.1;0;C;0
+1006;4;54029;I32_W;;PU1 air temperature;;0.1;0;C;0
+1007;4;54031;I32_W;;PU1 board temperature;;0.1;0;C;0
+1008;4;54033;I32_W;;PU2 IGBT T1;;0.1;0;C;0
+1009;4;54035;I32_W;;PU2 IGBT T2;;0.1;0;C;0
+1010;4;54037;I32_W;;PU2 IGBT T3;;0.1;0;C;0
+1011;4;54039;I32_W;;PU2 PSU temperature;;0.1;0;C;0
+1012;4;54041;I32_W;;PU2 air temperature;;0.1;0;C;0
+1013;4;54043;I32_W;;PU2 board temperature;;0.1;0;C;0
+1014;4;54045;I32_W;;PU3 IGBT T1;;0.1;0;C;0
+1015;4;54047;I32_W;;PU3 IGBT T2;;0.1;0;C;0
+1016;4;54049;I32_W;;PU3 IGBT T3;;0.1;0;C;0
+1017;4;54051;I32_W;;PU3 PSU temperature;;0.1;0;C;0
+1018;4;54053;I32_W;;PU3 air temperature;;0.1;0;C;0
+1019;4;54055;I32_W;;PU3 board temperature;;0.1;0;C;0
+1020;4;54057;I32_W;;PU4 IGBT T1;;0.1;0;C;0
+1021;4;54059;I32_W;;PU4 IGBT T2;;0.1;0;C;0
+1022;4;54061;I32_W;;PU4 IGBT T3;;0.1;0;C;0
+1023;4;54063;I32_W;;PU4 PSU temperature;;0.1;0;C;0
+1024;4;54065;I32_W;;PU4 air temperature;;0.1;0;C;0
+1025;4;54067;I32_W;;PU4 board temperature;;0.1;0;C;0
+1026;4;54069;I32_W;;Estimated case temperature;;0.1;0;C;0
+1027;4;54071;I32_W;;Estimated IGBT temperature;;0.1;0;C;0
+1028;4;54097;U16;;Busbar thermal protection status;;1;0;;0
+1029;4;54531;U32_W;;Wake-up state;;1;0;;0
+1030;3;54535;U32_W;;Max daily connect attempts;;1;0;;0
+1031;3;54537;U32_W;;Min input voltage for wake-up;;0.1;0;%;0
+1032;3;54541;U32_W;;Delay for grid connection;;1;0;min;0
+1033;3;54543;U32_W;;Min input voltage for first start;;0.1;0;%;0
+1034;3;54547;U32_W;;Delay for first start;;1;0;min;0
+1035;3;54549;U32_W;;Time for wake-up completed;;1;0;min;0
+1036;3;54551;U32_W;;Min power for wake-up;;0.1;0;%;0
+1037;3;54553;U32_W;;Disconnection delay in wake-up;;1;0;min;0
+1038;3;54555;U32_W;;Reconnection delay_1;;1;0;min;0
+1039;3;54557;U32_W;;Timeout for exceeding daily connections;;1;0;h;0
+1040;3;54559;U32_W;;Min power for sleep;;1;0;%;0
+1041;3;54561;U32_W;;Disconnection delay for sleep-mode;;1;0;min;0
+1042;3;54563;U32_W;;Evening cool down delay;;1;0;min;0
+1043;3;54569;U32_W;;Min DC voltage for DC contactors to stay closed;;1;0;%;0
+1044;3;54629;U32_W;;Night Q production;;1;0;;0
+1045;3;54631;U32_W;;Night Q low power;;1;0;kVAr;0
+1046;3;54633;U32_W;;Night Q delay;;1;0;s;0
+1047;3;54635;I32_W;;Night Q reference;;1;0;kVAr;0
+1048;4;54785;U16;;Feedback status;;1;0;;0
+1049;4;54793;U32_W;;DC contactor 1 switchings;;1;0;;0
+1050;4;54795;U32_W;;DC contactor 2 switchings;;1;0;;0
+1051;4;54801;U32_W;;AC contactor 1 switchings;;1;0;;0
+1052;4;54803;U32_W;;AC contactor 2 switchings;;1;0;;0
+1053;4;54809;U32_W;;AC breaker 1 switchings;;1;0;;0

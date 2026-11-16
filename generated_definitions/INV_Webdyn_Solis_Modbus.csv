@@ -4,7 +4,7 @@ modbusRTU;Inverter;Webdyn;Solis_Modbus;;;;;;;
 3;4;3001;U16;;LCD software version;;1.0;0.0;;4
 4;4;3002;U16;;AC output type;;1.0;0.0;;4
 5;4;3003;U16;;DC output type;;1.0;0.0;;4
-6;4;3004;U16;;Active power_Real time power;;1.0;0.0;W;4
+6;4;3004;U16;;Active power_Real time power;P_AC;1.0;0.0;W;4
 7;4;3006;U16;;Total DC output power;P_DC;1.0;0.0;W;4
 8;4;3008;U16;;Total energy;E_TOT;1.0;0.0;kWh;4
 9;4;3010;U16;;Energy this month;;1.0;0.0;kWh;4
@@ -42,7 +42,7 @@ modbusRTU;Inverter;Webdyn;Solis_Modbus;;;;;;;
 41;4;3046;U16;;Reserved;;1.0;0.0;;4
 42;4;3047;U16;;Reserved;;1.0;0.0;;4
 43;4;3048;U16;;Reserved;;1.0;0.0;;4
-44;4;3049;U16;;Actual value of limited Active power;P_AC;1.0;0.0;;4
+44;4;3049;U16;;Actual value of limited Active power;;1.0;0.0;;4
 45;4;3050;U16;;Actual adjust value of power factor;PF;1.0;0.0;;4
 46;4;3051;U16;;Reserved;;1.0;0.0;;4
 47;4;3052;U16;;Reserved;;1.0;0.0;;4

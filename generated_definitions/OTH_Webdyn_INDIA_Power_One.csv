@@ -10,10 +10,10 @@ ModbusRTU;Other;Power;One;;;;;;;
 9;3;67;U16;;Total Work time low word;;1.0;0.0;0.1h;4
 10;3;68;U16;;Total Work time high word;;1.0;0.0;0.1h;4
 11;3;69;U16;;Inverter efficiency;;1.0;0.0;0.10%;4
-12;3;70;U16;;Grid voltage AB;;1.0;0.0;0.1V;4
+12;3;70;U16;;Grid voltage AB;U_AC_L1L2;1.0;0.0;0.1V;4
 13;3;71;U16;;Grid voltage BC;;1.0;0.0;0.1V;4
 14;3;72;U16;;Grid voltage AC;;1.0;0.0;0.1V;4
-15;3;73;U16;;Grid voltage A;;1.0;0.0;0.1V;4
+15;3;73;U16;;Grid voltage A;I_AC;1.0;0.0;0.1V;4
 16;3;74;U16;;Grid voltage B;;1.0;0.0;0.1V;4
 17;3;75;U16;;Grid voltage C;;1.0;0.0;0.1V;4
 18;3;76;U16;;Grid current A;;1.0;0.0;0.1A;4
@@ -30,7 +30,7 @@ ModbusRTU;Other;Power;One;;;;;;;
 29;3;87;U16;;Output active power high word;;1.0;0.0;0.1W;4
 30;3;88;U16;;Output reactive power low word;;1.0;0.0;0.1Var;4
 31;3;89;U16;;Output reactive power high word;;1.0;0.0;0.1Var;4
-32;3;90;U16;;Radiator temperature;;1.0;0.0;0.1C;4
+32;3;90;U16;;Radiator temperature;TEMP;1.0;0.0;0.1C;4
 33;3;91;U16;;IGBT temperature;;1.0;0.0;0.1C;4
 34;3;92;U16;;Inductance 1 temperature Void;;1.0;0.0;0.1C;4
 35;3;93;U16;;Power factor;PF;1.0;0.0;;4

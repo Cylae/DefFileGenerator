@@ -65,7 +65,7 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 64;3;40428;I16;;Active power adjustment in percentage;;0.1;0;%;1
 65;3;40429;I16;;Power factor adjustment;PF;0.001;0;;1
 66;3;40430;I32;;Active power adjustment (highest-priority);;0.001;0;kW;1
-67;3;40432;I32;;Reactive power adjustment (highest-priority);CMD_Q_AC_SET_ABS;0.001;0;kVar;1
+67;3;40432;I32;;Reactive power adjustment (highest-priority);;0.001;0;kVar;1
 68;3;40438;U32;;Power supply from grid today;;0.01;0;kWh;4
 69;3;40464;I64;;Total power supply from grid;;0.01;0;kWh;4
 70;3;40468;U32;;Energy charged today;;0.01;0;kWh;4
@@ -167,9 +167,9 @@ modbus;Datalogger;Huawei;SmartLogger V Series;;;;;;;
 166;3;44375;U16;;Subarray PV inverter microgrid adaptability;;1;0;;0
 167;3;44376;U16;;Grid connection switch status;;1;0;;0
 168;3;45282;U16;;Modbus TCP fast scheduling;;1;0;;4
-169;3;50000;U16;;Alarm 1;;1;0;;9
-170;3;50001;U16;;Alarm 2;;1;0;;9
-171;3;50002;U16;;Alarm 3;;1;0;;9
+169;3;50000;U16;;Alarm 1;ALARM_1;1;0;;9
+170;3;50001;U16;;Alarm 2;ALARM_2;1;0;;9
+171;3;50002;U16;;Alarm 3;ALARM_3;1;0;;9
 172;3;50003;U16;;Alarm 4;;1;0;;9
 173;3;50004;U16;;Alarm 5;;1;0;;9
 174;3;50005;U16;;Alarm 6;;1;0;;9

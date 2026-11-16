@@ -135,8 +135,8 @@ modbus;Inverter;HYXIPOWER;100-120K;;;;;;;
 134;3;1035_30;STRING;;Product Name;;1.000000;0.000000;;4
 135;3;1055;U16;;Mailing Address;;1.000000;0.000000;;4
 136;3;1057;U16;;Communication Baud Rate;;1.000000;0.000000;;4
-137;3;1078;U16;;Active Power Control Percentage;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
-138;3;1079;U16;;Active Power Control Percentage Enable;CMD_P_ENA;1.000000;0.000000;;4
+137;3;1078;U16;;Active Power Control Percentage;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;1
+138;3;1079;U16;;Active Power Control Percentage Enable;CMD_P_ENA;1.000000;0.000000;;1
 139;4;1500;U32_W;;Uni Primary DSP Software Version;;1.000000;0.000000;;4
 140;4;1502;U32_W;;Uni Slave DSP Software Version;;1.000000;0.000000;;4
 141;4;1504;I16;;Uni Maximum Ambient Temperature;;0.100000;0.000000;Celsius;4

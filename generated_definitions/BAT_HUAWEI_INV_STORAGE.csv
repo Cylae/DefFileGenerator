@@ -154,7 +154,7 @@ Modbus;Battery;HUAWEI;Luna2000 LG;;;;;;;
 153;3;47081;U16;;[Energy storage]Charging cutoff capacity;;0.100000;0.000000;%;4
 154;3;47082;U16;;[Energy storage] Discharge cutoff capacity;;0.100000;0.000000;%;4
 155;3;47083;U16;;[Energy storage]Forced charging and discharging period;;1.000000;0.000000;min/s;4
-156;3;47084;I32;;[Energy storage]Forced charging and discharging power;CMD_P_AC_SET_ABS;1.000000;0.000000;W;4
+156;3;47084;I32;;[Energy storage]Forced charging and discharging power;CMD_P_AC_SET_ABS;1.000000;0.000000;W;1
 157;3;47086;U16;;[Energy storage]Working mode settings;MODE;1.000000;0.000000;;4
 158;3;47087;U16;;[Energy storage] Charge from grid Function;GRID_MODE;1.000000;0.000000;;4
 159;3;47088;U16;;[Energy storage] Grid charge cutoff SOC;;1.000000;0.000000;%;4

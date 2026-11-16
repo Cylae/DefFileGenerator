@@ -15,7 +15,7 @@ ModbusRTU;Inverter;CEFEM;TrioSun,TrioTop;1;;;;;;
 14;3;13;U16;;Voltage PhaseA;U_AC_1;1;0;V;4
 15;3;14;U16;;Voltage PhaseB;U_AC_2;1;0;V;4
 16;3;15;U16;;Voltage PhaseC;U_AC_3;1;0;V;4
-17;3;16;U16;;PowerFactor;;1;0;;4
+17;3;16;U16;;PowerFactor;PF;1;0;;4
 18;3;17;U16;;Output Power;P_AC;1;0;W;4
 19;3;18;U16;;Daily Production;;2;0;Wh;4
 20;3;19_0_4;BITS;;Seconds units;;1;0;s;4
@@ -40,7 +40,7 @@ ModbusRTU;Inverter;CEFEM;TrioSun,TrioTop;1;;;;;;
 39;3;27;U16;;Fault Register2;;1;0;;8
 40;3;28;U32;;Daily production;;1;0;Wh;4
 41;3;30;U16;;Fabrication number High;;1;0;;4
-42;3;31;U32;;PowerLimit;;1;0;W;4
+42;3;31;U32;;PowerLimit;cmdPwrWatt;1;0;W;4
 43;3;33;U32;;External Total Prod;;1;0;;4
 44;3;35;U16;;Seconds;;1;0;;4
 45;3;36;U16;;Minutes;;1;0;;4
@@ -64,6 +64,6 @@ ModbusRTU;Inverter;CEFEM;TrioSun,TrioTop;1;;;;;;
 63;3;54;U16;;Status Switch;;1;0;;4
 64;3;55;U16;;Power Limitation Percentage;CMD_P_AC_SET_PERCENT;0.1;0;%;1
 65;3;56;U16;;Nominal Power Inverter;P_RATED;1;0;W;4
-66;3;58;U16;;INV Temperature;TEMP;1;0;C;4
+66;3;58;U16;;INV Temperature;TEMP_INT;1;0;C;4
 67;3;59;U16;;DC DC Temperature;;1;0;C;4
 68;3;60;U16;;GUI Temperature;;1;0;C;4

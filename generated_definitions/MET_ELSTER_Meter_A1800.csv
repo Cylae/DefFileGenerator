@@ -27,7 +27,7 @@ modbusRTU;Meter;ELSTER;A1800;;;;;;;
 26;3;40038;I16;;Line 1 Power Factor;PF;0.0001;0;;4
 27;3;40039;I16;;Line 2 Power Factor;;0.0001;0;;4
 28;3;40040;I16;;Line 3 Power Factor;;0.0001;0;;4
-29;3;40041;I16;;Total (System) Power;;0.0001;0;;4
+29;3;40041;I16;;Total (System) Power;P_AC;0.0001;0;;4
 30;3;40042;I32;;Watt-hours, delivered;;1;0;Wh;4
 31;3;40044;I16;;Watt-hours, delivered_1;;1;0;Wh;4
 32;3;40045;I32;;Watt-hours, received;;1;0;Wh;4

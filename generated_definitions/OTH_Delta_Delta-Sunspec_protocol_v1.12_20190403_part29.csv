@@ -1,0 +1,53 @@
+modbusRTU;Other;Delta;Delta-Sunspec_protoc_p29;;;;;;;
+1;4;0;U16;;ID;;1.0;0.0;None;4
+2;4;1;U16;;L;;1.0;0.0;None;4
+3;4;2;U16;;Grid Code;;1.0;0.0;None;1
+4;4;3;U16;;AC Connection;;1.0;0.0;None;1
+5;4;4;U16;;Reclosure_time;;1.0;0.0;second;1
+6;4;5;U16;;RCMU Enable;;1.0;0.0;None;1
+7;4;6;U16;;Dry Contact 0;;1.0;0.0;None;1
+8;4;7;U16;;Dry Contact 1;;1.0;0.0;None;1
+9;4;8;U16;;Dry Contact 2;;1.0;0.0;None;1
+10;4;9;U16;;EPO 0;;1.0;0.0;None;1
+11;4;10;U16;;EPO 1;;1.0;0.0;None;1
+12;4;11;U16;;Insulation Mode;R_ISO;1.0;0.0;None;1
+13;4;12;U16;;Insulation R;;1.0;0.0;ohms;1
+14;4;13;U16;;Insulation R SF;;1.0;0.0;None;4
+15;4;14;U16;;PID Trip Time;;1.0;0.0;hour;1
+16;4;15;U16;;PID status;;1.0;0.0;None;4
+17;4;16;U16;;Fan Test;;1.0;0.0;None;1
+18;4;17;U16;;Int FAN Test Result;;1.0;0.0;None;4
+19;4;19;U16;;Ext FAN Test Result;;1.0;0.0;None;4
+20;4;21;U16;;Q(T) Mode  24/7;;1.0;0.0;None;1
+21;4;22;U16;;Const.Q_Percent  24/7;;1.0;0.0;0.01;1
+22;4;23;U16;;Q(P)_Q_Upper  24/7;;1.0;0.0;0.01;1
+23;4;24;U16;;Q(P)_Q_Lower  24/7;;1.0;0.0;0.01;1
+24;4;25;U16;;Q(P)_Lower_Limit  24/7;;1.0;0.0;0.01;1
+25;4;26;U16;;Q(P)_Upper_Limit  24/7;;1.0;0.0;0.01;1
+26;4;27;U16;;Q(P)_Lockin_V  24/7;;1.0;0.0;V;1
+27;4;28;U16;;Q(P)_Lockout_V  24/7;;1.0;0.0;V;1
+28;4;29;U16;;Q(U)_Upper_Limit  24/7;;1.0;0.0;0.01;1
+29;4;30;U16;;Q(U)_Lower_Limit  24/7;;1.0;0.0;0.01;1
+30;4;31;U16;;Q(U)_Vmin  24/7;;1.0;0.0;V;1
+31;4;32;U16;;Q(U)_Vmax  24/7;;1.0;0.0;V;1
+32;4;33;U16;;Q(U)_V1  24/7;;1.0;0.0;V;1
+33;4;34;U16;;Q(U)_V2  24/7;;1.0;0.0;V;1
+34;4;35;U16;;Q(U)_P_Lock_in  24/7;;1.0;0.0;0.01;1
+35;4;36;U16;;Q(U)_P_Lock_out  24/7;;1.0;0.0;0.01;1
+36;4;37;U16;;Q(U)_Hysteresis  24/7;;1.0;0.0;V;1
+37;4;38;U16;;Response_Delay  24/7;;1.0;0.0;second;1
+38;4;39;U16;;BaudRate;;1.0;0.0;None;1
+39;4;40;U16;;RTC_Total_Seconds;;1.0;0.0;second;1
+40;4;42;U16;;ModEna_Q(P)_24/7;;1.0;0.0;None;1
+41;4;43;U16;;ModEna_Fixed Kvar 24/7;;1.0;0.0;None;1
+42;4;44;U16;;ModEna_Q(U) 24/7;;1.0;0.0;None;1
+43;4;45;U16;;ModEna_ CosphiOfU;PF;1.0;0.0;None;1
+44;4;46;U16;;cosphi(U)_Upper_Limit;;1.0;0.0;0.001;1
+45;4;47;U16;;cosphi(U)_Lower_Limit;;1.0;0.0;0.001;1
+46;4;48;U16;;cosphi(U)_Vmin;;1.0;0.0;0.1V;1
+47;4;49;U16;;cosphi(U)_Vmax;;1.0;0.0;0.1V;1
+48;4;50;U16;;cosphi(U)_V1;;1.0;0.0;0.1V;1
+49;4;51;U16;;cosphi(U)_V2;;1.0;0.0;0.1V;1
+50;4;52;U16;;cosphi(U)_P_Lock_in;;1.0;0.0;0.01;1
+51;4;53;U16;;cosphi(U)_P_Lock_out;;1.0;0.0;0.01;1
+52;4;54;U16;;NoUse64063;;1.0;0.0;None;1

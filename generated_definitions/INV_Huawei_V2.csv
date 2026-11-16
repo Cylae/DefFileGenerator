@@ -83,10 +83,10 @@ Modbus;Inverter;Huawei;V2;;;;;;;
 82;3;33070;U32;;MPPT4 total input power;P_DC_MPPT_4;0.001000;0.000000;kW;4
 83;3;40000;U32;;Date and time;;1.000000;0.000000;Epoch;4
 84;3;40117;U16;;[Power grid scheduling] Reactive power compensation;;1.000000;0.000000;;4
-85;3;40118;U16;;[Power grid scheduling] Active power control;CMD_P_ENA;1.000000;0.000000;;4
+85;3;40118;U16;;[Power grid scheduling] Active power control;CMD_P_ENA;1.000000;0.000000;;1
 86;3;40119;U16;;[Power grid scheduling] Active power percentage derating 40119;;1.000000;0.000000;%;4
 87;3;40120;U16;;[Power grid scheduling] Fixed Active power derated;;0.100000;0.000000;kW;4
-88;3;40121;U16;;[Power grid scheduling] Active power change gradient;CMD_RAMP_TIME_S;0.100000;0.000000;%/s;4
+88;3;40121;U16;;[Power grid scheduling] Active power change gradient;CMD_RAMP_TIME_S;0.100000;0.000000;%/s;1
 89;3;40122;U16;;[Power grid scheduling] Reactive power compensation (PF);;0.001000;0.000000;;4
 90;3;40123;U16;;[Power grid scheduling] Reactive power compensation (Q/S);;0.001000;0.000000;;4
 91;3;40124;I16;;[Power grid scheduling] Reactive power adjustment time;;1.000000;0.000000;Sec;4
@@ -134,8 +134,8 @@ Modbus;Inverter;Huawei;V2;;;;;;;
 133;3;40173;I16;;U/Un value of Q-U curve point 10;;0.100000;0.000000;%;4
 134;3;40174;I16;;Q/S value of Q-U curve point 10;;0.001000;0.000000;;4
 135;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;;1.000000;0.000000;;4
-136;3;40200;U16;;Startup;CMD_ON;1.000000;0.000000;;4
-137;3;40201;U16;;Shutdown;CMD_OFF;1.000000;0.000000;;4
+136;3;40200;U16;;Startup;CMD_ON;1.000000;0.000000;;1
+137;3;40201;U16;;Shutdown;CMD_OFF;1.000000;0.000000;;1
 138;3;40232;U16;;[Power grid scheduling] Active power percentage derating command (0.1%);;1.000000;0.000000;%;4
 139;3;40234;U16;;[Power grid scheduling] Fixed active power derating command (1%);;1.000000;0.000000;%;4
 140;3;40235;U16;;[Power grid scheduling] Fixed active power derating command;;0.100000;0.000000;kW;4
@@ -186,7 +186,7 @@ Modbus;Inverter;Huawei;V2;;;;;;;
 185;3;42158;U32;;Level-3 UV protection time;;1.000000;0.000000;ms;4
 186;3;42160;U16;;Level-4 UV protection;;1.000000;0.000000;V;4
 187;3;42161;U32;;Level-4 UV protection time;;1.000000;0.000000;ms;4
-188;3;42174;U16;;Shutdown at 0% power limit;CMD_P_AC_SET_PERCENT;1.000000;0.000000;;4
+188;3;42174;U16;;Shutdown at 0% power limit;CMD_P_AC_SET_PERCENT;1.000000;0.000000;;1
 189;3;42300;U16;;System time: year;;1.000000;0.000000;Year;4
 190;3;42301;U16;;System time: month;;1.000000;0.000000;Month;4
 191;3;42302;U16;;System time: day;;1.000000;0.000000;Day;4

@@ -12,7 +12,7 @@ ModbusRTU;Inverter;Zucchetti;Azzuro-3PH;;;;;;;
 11;3;1166;U16;;Current_Output_R;;0.01;0.0;A;4
 12;3;1167;I16;;ActivePower_Output_R;;0.01;0.0;kW;4
 13;3;1168;I16;;ReactivePower_Output_R;;0.01;0.0;kW;4
-14;3;1169;I16;;PowerFactor_Output_R;;0.001;0.0;p.u;4
+14;3;1169;I16;;PowerFactor_Output_R;PF;0.001;0.0;p.u;4
 15;3;1170;U16;;Current_PCC_R;;0.01;0.0;A;4
 16;3;1171;I16;;ActivePower_PCC_R;;0.01;0.0;kW;4
 17;3;1172;I16;;ReactivePower_PCC_R;;0.01;0.0;kW;4

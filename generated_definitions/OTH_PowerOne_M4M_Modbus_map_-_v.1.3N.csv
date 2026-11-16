@@ -1,6 +1,6 @@
-modbusRTU;Other;PowerOne;M4M Modbus map - v.1.3N;;;;;;;
-1;4;20480;U16;;Active energy - import;;1.0;0.0;kWh;4
-2;4;20484;U16;;Active energy - export;;1.0;0.0;kWh;4
+modbusRTU;Other;PowerOne;M4M_Modbus_map_-_v.1.3N;;;;;;;
+1;4;20480;U16;;Active energy - import;E_IMP;1.0;0.0;kWh;4
+2;4;20484;U16;;Active energy - export;E_EXP;1.0;0.0;kWh;4
 3;4;20488;U16;;Active energy - net;;1.0;0.0;kWh;4
 4;4;20492;U16;;Reactive energy - import;;1.0;0.0;kvarh;4
 5;4;20496;U16;;Reactive energy - export;;1.0;0.0;kvarh;4
@@ -31,7 +31,7 @@ modbusRTU;Other;PowerOne;M4M Modbus map - v.1.3N;;;;;;;
 30;4;23306;U16;;Line voltage L3-L2;;1.0;0.0;V;4
 31;4;23308;U16;;Line voltage L1-L3;;1.0;0.0;V;4
 32;4;23310;U16;;Three phase system current;;1.0;0.0;A;4
-33;4;23312;U16;;Current;;1.0;0.0;A;4
+33;4;23312;U16;;Current;I_DC;1.0;0.0;A;4
 34;4;23314;U16;;Current;;1.0;0.0;A;4
 35;4;23316;U16;;Current;;1.0;0.0;A;4
 36;4;23318;U16;;Current;;1.0;0.0;A;4
