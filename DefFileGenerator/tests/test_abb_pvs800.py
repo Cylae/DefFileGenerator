@@ -52,6 +52,22 @@ def test_pvs800_definition_encoding_and_header() -> None:
     assert "PVS800" in header[3]
 
 
+def test_pvs800_function_code_holding_registers() -> None:
+    """
+    Verifies that all parameter rows use Function Code 3 (Read Holding Registers).
+    ABB Modbus adapters (FSCA-01, FENA-01/11/21, RMBA-01) map all drive parameters
+    and actual signals into Holding Registers and reject FC 04 with Exception 01.
+    """
+    with open(REPO_DEF_PATH, encoding="utf-8-sig") as f:
+        reader = csv.reader(f, delimiter=";")
+        next(reader)
+        rows = [r for r in reader if r]
+
+    for idx, row in enumerate(rows, start=2):
+        fc = row[1].strip()
+        assert fc == "3", f"Line {idx}: Expected Function Code 3 (Read Holding Registers), got {fc}"
+
+
 def test_pvs800_word_swap_on_all_32bit_types() -> None:
     """
     Verifies that all 32-bit registers (both unsigned and signed)
