@@ -317,6 +317,7 @@ class CSVHeaderConfig:
     protocol: str = "modbusRTU"
     category: str = "Inverter"
     forced_write: str = ""
+    encoding: str = "utf-8"
 
 
 @dataclass
@@ -1942,7 +1943,8 @@ class Generator:
                         Generator.sanitize_csv_field(row["Action"]),
                     ]
                 )
-                type_counts[row["Info1"]] = type_counts.get(row["Info1"], 0) + 1
+                info1_key = str(row["Info1"])
+                type_counts[info1_key] = type_counts.get(info1_key, 0) + 1
                 total += 1
 
             if owns_output:
@@ -1967,7 +1969,9 @@ class Generator:
                             while chunk := staged.read(65536):
                                 target_stream.write(chunk)
 
-            summary = ", ".join([f"{type_labels[k]}: {v}" for k, v in type_counts.items() if v > 0])
+            summary = ", ".join(
+                [f"{type_labels.get(str(k), str(k))}: {v}" for k, v in type_counts.items() if v > 0]
+            )
             if summary:
                 logging.info(f"Generated {total} registers ({summary})")
             return True

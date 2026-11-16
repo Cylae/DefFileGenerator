@@ -779,7 +779,7 @@ modbusTCP;Storage;FoxESS;G-MAX Series;;;;;;;
 778;4;55109;U16;;Phase A active power;phase_a_active_power;1.000000;0.000000;kw;4
 779;4;55110;U16;;Phase B active power;phase_b_active_power;1.000000;0.000000;kw;4
 780;4;55111;U16;;Phase C active power;phase_c_active_power;1.000000;0.000000;kw;4
-781;4;55112;U16;;Total active power;P_AC;1.000000;0.000000;kw;4
+781;4;55112;U16;;Total active power;RealPower;1.000000;0.000000;kw;4
 782;4;55113;U16;;Phase A reactive power;phase_a_reactive_power;1.000000;0.000000;kvar;4
 783;4;55114;U16;;B phase reactive power;b_phase_reactive_power;1.000000;0.000000;kvar;4
 784;4;55115;U16;;Phase C reactive power;phase_c_reactive_power;1.000000;0.000000;kvar;4
@@ -791,8 +791,8 @@ modbusTCP;Storage;FoxESS;G-MAX Series;;;;;;;
 790;4;55121;U16;;Phase A power factor;phase_a_power_factor;100.000000;0.000000;;4
 791;4;55122;U16;;Phase B power factor;phase_b_power_factor;100.000000;0.000000;;4
 792;4;55123;U16;;Phase C power factor;phase_c_power_factor;100.000000;0.000000;;4
-793;4;55124;U16;;Total power factor;PF;100.000000;0.000000;;4
-794;4;55125;U16;;frequency;FREQ;1.000000;0.000000;Hz;4
+793;4;55124;U16;;Total power factor;CosPhi;100.000000;0.000000;;4
+794;4;55125;U16;;frequency;GridFrequency;1.000000;0.000000;Hz;4
 795;4;55126;U16;;Current forward total peak active energy;current_forward_total_peak_active_energy;1.000000;0.000000;KWh;4
 796;4;55127;U16;;Current total forward peak active energy;current_total_forward_peak_active_energy;1.000000;0.000000;KWh;4
 797;4;55128;U16;;Current forward total active energy;current_forward_total_active_energy;1.000000;0.000000;KWh;4
