@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;EFACEC;Efasolar;;;;;;;
+Modbus;Inverter;EFACEC;Efasolar;;;;;;;
 1;3;41001;F32;;DC_Current;;1.000000;0.000000;A;4
 2;3;41003;F32;;DC_Voltage;;1.000000;0.000000;V;4
 3;3;41005;F32;;PV_Voltage;;1.000000;0.000000;V;4

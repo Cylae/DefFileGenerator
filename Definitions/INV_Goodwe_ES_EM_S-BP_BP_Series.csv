@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Goodwe;ES_EM_S-BP_BP_Series;;;;;;;
+Modbus;Inverter;Goodwe;ES_EM_S-BP_BP_Series;;;;;;;
 1;3;0;U16;;Lowest Feeding PV Voltage;;0.100000;0.000000;V;4
 2;3;1;U16;;Reconnect Time;;1.000000;0.000000;s;4
 3;3;2;U16;;High limit of Grid Voltage;;0.100000;0.000000;V;4

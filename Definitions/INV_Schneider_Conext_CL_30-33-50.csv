@@ -1,4 +1,4 @@
-﻿Modbus;Inverter;Schneider;Conext_CL_30-33-50;;;;;;;
+Modbus;Inverter;Schneider;Conext_CL_30-33-50;;;;;;;
 1;4;4989_10;STRING;;Serial Number;;1.000000;0.000000;;4
 2;4;4999;U16;;Device type code;;1.000000;0.000000;;4
 3;4;5000;U16;;Nominal active power;P_RATED;0.100000;0.000000;kW;4

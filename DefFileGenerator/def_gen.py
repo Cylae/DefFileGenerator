@@ -345,6 +345,7 @@ class GeneratorConfig:
     template_mode: str = "input"  # 'input' or 'definition'
     address_offset: int = 0
     strict_validation: bool | None = None
+    encoding: str = "utf-8"
 
     def __post_init__(self) -> None:
         if self.input_file is not None:
@@ -1868,6 +1869,12 @@ class Generator:
             category_val = str(kwargs.get("category", "Inverter")) or "Inverter"
             forced_write_val = str(kwargs.get("forced_write", "")) or ""
 
+        encoding_val = (
+            getattr(config, "encoding", "utf-8")
+            if isinstance(config, (CSVHeaderConfig, GeneratorConfig))
+            else str(kwargs.get("encoding", "utf-8"))
+        ) or "utf-8"
+
         type_counts = {"1": 0, "2": 0, "3": 0, "4": 0}
         type_labels = {
             "1": "Coils",
@@ -1890,10 +1897,10 @@ class Generator:
                     suffix=".tmp",
                     dir=target_dir,
                 )
-                outfile = os.fdopen(fd, "w", newline="", encoding="utf-8")
+                outfile = os.fdopen(fd, "w", newline="", encoding=encoding_val)
             elif stream_staging:
                 outfile = tempfile.NamedTemporaryFile(
-                    mode="w", newline="", encoding="utf-8", delete=False
+                    mode="w", newline="", encoding=encoding_val, delete=False
                 )
                 temp_path = outfile.name
             elif output is None:

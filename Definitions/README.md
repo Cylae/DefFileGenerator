@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **130 fichiers de définition** validés couvrant **22 115 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **131 fichiers de définition** validés couvrant **23 238 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,7 +8,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 67 | 14 224 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe (+21) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 68 | 15 347 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe (+22) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 31 | 3 394 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+14) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 4 | 3 700 | Dyness |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
@@ -25,7 +25,6 @@ Tous les fichiers suivent la convention canonique Webdyn :
 ```
 - `INV_` : Onduleurs solaires, hybrides et industriels (*Inverters*)
 - `MET_` : Compteurs d'énergie et analyseurs de réseau (*Meters*)
-- `BAT_` : Systèmes de stockage d'énergie et batteries BESS (*Battery*)
 - `SEN_` : Capteurs météo, pyranomètres et sondes thermiques (*Sensors*)
 - `COM_` : Loggers, concentrateurs et passerelles de données (*Loggers*)
 - `OTH_` : Modules d'entrées/sorties (Sens'IO), afficheurs et bornes (*Other*)
@@ -34,15 +33,16 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (67 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (68 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`INV_ABB_10.5.csv`](./INV_ABB_10.5.csv) | ABB | 10.5 | Modbus | 19 |
 | [`INV_ABB_PVS800-57B.csv`](./INV_ABB_PVS800-57B.csv) | ABB | PVS800-57B | Modbus | 1053 |
+| [`INV_ABB_PVS800-57B_2.csv`](./INV_ABB_PVS800-57B_2.csv) | ABB | PVS800-57B | Modbus | 1053 |
 | [`INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv`](./INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv) | ABB | TRIO_20.0-27.6_TL_OUTD | Modbus | 89 |
 | [`INV_ABB_Ultra_Inverter_Module.csv`](./INV_ABB_Ultra_Inverter_Module.csv) | ABB | Ultra_Inverter_Module | Modbus | 57 |
-| [`INV_AnswerDrives_Solargate.csv`](./INV_AnswerDrives_Solargate.csv) | Answer Drives | Solargate | Modbus | 288 |
+| [`INV_AnswerDrives_Solargate.csv`](./INV_AnswerDrives_Solargate.csv) | Answer Drives | Solargate | modbusRTU | 288 |
 | [`INV_CyberPower_1-Phase.csv`](./INV_CyberPower_1-Phase.csv) | CyberPower | 1-Phase | Modbus | 85 |
 | [`INV_CyberPower_3-Phases.csv`](./INV_CyberPower_3-Phases.csv) | CyberPower | 3-Phases | Modbus | 71 |
 | [`INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv`](./INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv) | CyberPower | CPSHB6000ETL48-CPSHB6000ETLFR | Modbus | 103 |
@@ -61,14 +61,14 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Goodwe_SDTG2.csv`](./INV_Goodwe_SDTG2.csv) | Goodwe | SDTG2 | Modbus | 116 |
 | [`INV_Goodwe_SMT.csv`](./INV_Goodwe_SMT.csv) | Goodwe | SMT | Modbus | 115 |
 | [`INV_Goodwe_SMT50K_SMT60K.csv`](./INV_Goodwe_SMT50K_SMT60K.csv) | Goodwe | SMT50K_SMT60K | Modbus | 119 |
-| [`INV_Growatt_Generic.csv`](./INV_Growatt_Generic.csv) | Growatt | Growatt_Generic | ﻿modbusRTU | 851 |
+| [`INV_Growatt_Generic.csv`](./INV_Growatt_Generic.csv) | Growatt | Growatt_Generic | modbusRTU | 851 |
 | [`INV_Growatt_MAX1500V_MAX-XLV_Series.csv`](./INV_Growatt_MAX1500V_MAX-XLV_Series.csv) | Growatt | MAX1500V_MAX-XLV_Series | Modbus | 468 |
 | [`INV_Growatt_MOD_TL3-XH_Series.csv`](./INV_Growatt_MOD_TL3-XH_Series.csv) | Growatt | MOD_TL3-XH_Series | Modbus | 409 |
 | [`INV_Growatt_TL-X_TL-XH_Series.csv`](./INV_Growatt_TL-X_TL-XH_Series.csv) | Growatt | TL-X_TL-XH_Series | Modbus | 425 |
 | [`INV_Growatt_TL3-X_Series.csv`](./INV_Growatt_TL3-X_Series.csv) | Growatt | TL3-X_Series | Modbus | 371 |
+| [`INV_Huawei_V4.csv`](./INV_Huawei_V4.csv) | Huawei | SUN2000_V4 | modbusRTU | 392 |
 | [`INV_Huawei_V2.csv`](./INV_Huawei_V2.csv) | Huawei | V2 | Modbus | 214 |
 | [`INV_Huawei_V3.csv`](./INV_Huawei_V3.csv) | Huawei | V3 | Modbus | 182 |
-| [`INV_Huawei_V4.csv`](./INV_Huawei_V4.csv) | Huawei | V4 | Modbus | 322 |
 | [`INV_JEMA_Generic.csv`](./INV_JEMA_Generic.csv) | JEMA | Generic | Modbus | 60 |
 | [`INV_Kaco_NX1-NX3_Series.csv`](./INV_Kaco_NX1-NX3_Series.csv) | Kaco | NX1-NX3_Series | Modbus | 182 |
 | [`INV_Kehua_SinglePhase.csv`](./INV_Kehua_SinglePhase.csv) | Kehua | SinglePhase | Modbus | 159 |

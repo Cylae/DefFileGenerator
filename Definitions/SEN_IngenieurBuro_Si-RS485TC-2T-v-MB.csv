@@ -1,4 +1,4 @@
-﻿Modbus;Sensor;IngenieurBuro;Si-RS485TC-2T-v-MB;;;;;;;
+Modbus;Sensor;IngenieurBuro;Si-RS485TC-2T-v-MB;;;;;;;
 1;4;0;U16;;Irradiance;;0.100000;0.000000;W/m;4
 2;4;1;U16;;Cell temperature;;0.100000;-25.000000;C;4
 3;4;2;U16;;External temperature;;0.100000;-25.000000;C;4

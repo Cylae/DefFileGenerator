@@ -42,6 +42,7 @@ def generate_catalog():
     category_titles = {
         "INV": ("Onduleurs & Convertisseurs (Inverters)", "Inverter"),
         "MET": ("Compteurs & Analyseurs Réseau (Meters)", "Meter"),
+        "BAT": ("Systèmes de Stockage BESS (Batteries)", "Battery"),
         "SEN": ("Capteurs & Pyranomètres (Sensors)", "Sensor"),
         "COM": ("Passerelles & Loggers de Communication", "Logger"),
         "OTH": ("Autres Équipements (IO Modules & Afficheurs)", "Io / Display"),
@@ -67,7 +68,7 @@ def generate_catalog():
         "|-----------|---------|----------|-----------------|------------------------|",
     ]
 
-    for pfx in ["INV", "MET", "SEN", "COM", "OTH"]:
+    for pfx in ["INV", "MET", "BAT", "SEN", "COM", "OTH"]:
         items = grouped[pfx]
         cat_regs = sum(i["registers"] for i in items)
         mfrs = sorted(set(i["manufacturer"] for i in items))
@@ -99,7 +100,7 @@ def generate_catalog():
         ]
     )
 
-    for pfx in ["INV", "MET", "SEN", "COM", "OTH"]:
+    for pfx in ["INV", "MET", "BAT", "SEN", "COM", "OTH"]:
         title, _ = category_titles[pfx]
         items = grouped[pfx]
         lines.extend(

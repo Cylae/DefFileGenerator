@@ -603,6 +603,7 @@ def generate_command(args: argparse.Namespace) -> None:
         template=template,
         template_mode=template_mode,
         strict_validation=True,
+        encoding=getattr(args, "encoding", "utf-8"),
     )
     if run_generator(config) is False:
         logging.error("Definition generation failed.")
@@ -669,6 +670,7 @@ def run_command(args: argparse.Namespace) -> None:
         template=template,
         template_mode=getattr(args, "template_mode", "input"),
         strict_validation=not getattr(args, "no_validate", False),
+        encoding=getattr(args, "encoding", "utf-8"),
     )
     if run_generator(config, input_data=mapped_data) is False:
         logging.error("Definition generation failed.")
@@ -751,6 +753,7 @@ def _convert_single_doc(
             protocol=protocol,
             category=category,
             strict_validation=strict,
+            encoding="utf-8",
         )
         ok = run_generator(config, input_data=mapped_peeked)
         if not ok or not os.path.exists(out_file):
@@ -1027,6 +1030,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_generate.add_argument("--category", default="Inverter")
     parser_generate.add_argument("--forced-write", default="")
     parser_generate.add_argument("--address-offset", type=int, default=0, help="Address offset")
+    parser_generate.add_argument("--encoding", default="utf-8", choices=["utf-8", "utf-16", "windows-1252", "ascii"], help="Output character encoding (default: utf-8 without BOM)")
     parser_generate.add_argument("--report", help="Path to generate technical Markdown report")
     parser_generate.add_argument("--force", action="store_true", help="Force overwrite output file")
 
@@ -1046,6 +1050,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_run.add_argument("--category", default="Inverter")
     parser_run.add_argument("--forced-write", default="")
     parser_run.add_argument("--address-offset", type=int, default=0, help="Address offset")
+    parser_run.add_argument("--encoding", default="utf-8", choices=["utf-8", "utf-16", "windows-1252", "ascii"], help="Output character encoding (default: utf-8 without BOM)")
     parser_run.add_argument("--report", help="Path to generate technical Markdown report")
     parser_run.add_argument("--force", action="store_true", help="Force overwrite output file")
     parser_run.add_argument(

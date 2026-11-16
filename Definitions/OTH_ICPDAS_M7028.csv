@@ -1,4 +1,4 @@
-﻿Modbus;Io;ICPDAS;M7028;;;;;;;
+Modbus;Io;ICPDAS;M7028;;;;;;;
 1;4;64;U16;;Read Output Channel 0;;1.000000;0.000000;;4
 2;4;65;U16;;Read Output Channel 1;;1.000000;0.000000;;4
 3;4;66;U16;;Read Output Channel 2;;1.000000;0.000000;;4
