@@ -122,5 +122,5 @@ modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
 121;4;40059;U16;;Automatic Scroll Display Time;;1.0;0.0;;4
 122;4;40061;U16;;Backlit time;;1.0;0.0;;4
 123;4;40087;U16;;Pulse 1 Energy;;1.0;0.0;;4
-124;4;461457;U16;;Reset;;1.0;0.0;;4
-125;4;461667;U16;;Meter Info;;1.0;0.0;;4
+124;4;61457;U16;;Reset;;1.0;0.0;;4
+125;4;61667;U16;;Meter Info;;1.0;0.0;;4

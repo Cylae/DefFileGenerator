@@ -122,5 +122,5 @@ ModbusRTU;Meter;EASTRON;X96-5E;1;;;;;;
 121;3;40059;F32;;Automatic Scroll Display Time;;1.0;0.0;;4
 122;3;40061;F32;;Backlit time;;1.0;0.0;;4
 123;3;40087;F32;;Pulse 1 Energy;;1.0;0.0;;4
-124;3;461457;F32;;Reset;;1.0;0.0;;4
-125;3;461667;F32;;Meter Info;;1.0;0.0;;4
+124;3;61457;F32;;Reset;;1.0;0.0;;4
+125;3;61667;F32;;Meter Info;;1.0;0.0;;4
