@@ -271,14 +271,16 @@
   1. `PVS800.csv` was encoded in CP1252 with `0xB0` (degree symbol in `°C`), causing fatal `UnicodeDecodeError` when opened by strict UTF-8 readers.
   2. Modbus word order for ABB drives: 32-bit parameters (`U32` and `I32`) require word swap (`_W`) according to official ABB Modbus adapter specifications, but 872 unsigned and 131 signed registers were typed as raw `U32` and `I32`.
   3. Addressing formula: ABB supports Mode 0 (`20000 + 200*Group + 2*Index`) and Mode 3 (`256*Group + 2*Index - 1`). The user's audio and image instructions confirmed Mode 3 as the live standard.
-  4. In `DefFileGenerator/knowledge_miner.py`, regex `\b(?:phase\s*[c3]|line\s*[c3]|l3\b|ic\b|iac3\b)` lacked word boundary `\b` after `[c3]`, so `"line current"` matched `"line c"` and was falsely tagged as `I_AC_3` instead of `I_AC`.
-  5. Missing SunPM canonical tag mappings for `Grid voltage` (`U_AC_L1L2`) and `Control board temperature` (`TEMP_INT`).
+  4. Function Code mismatch: ABB Modbus adapters (FSCA-01, FENA-01/11/21, RMBA-01) map all drive parameters and actual values as Holding Registers (FC 03) and do NOT support Read Input Registers (FC 04), rejecting it with Modbus Exception 01 (Illegal Function). Legacy templates incorrectly specified FC 4 for read-only rows.
+  5. In `DefFileGenerator/knowledge_miner.py`, regex `\b(?:phase\s*[c3]|line\s*[c3]|l3\b|ic\b|iac3\b)` lacked word boundary `\b` after `[c3]`, so `"line current"` matched `"line c"` and was falsely tagged as `I_AC_3` instead of `I_AC`.
+  6. Missing SunPM canonical tag mappings for `Grid voltage` (`U_AC_L1L2`) and `Control board temperature` (`TEMP_INT`).
 - **Remediation**:
   1. Converted `PVS800.csv` and `INV_ABB_PVS800-57B.csv` to strict `utf-8-sig` encoding.
   2. Updated all 872 `U32` to `U32_W` and all 131 `I32` to `I32_W`.
-  3. Fixed regex boundary defect in `knowledge_miner.py` and enriched canonical SunPM mappings (`U_DC`, `I_AC`, `FREQ`, `U_AC_L1L2`, `S_AC`, `P_AC`, `Q_AC`, `PF`, `P_RATED`, `E_TOT`, `E_DAY`, `TEMP_AMB`, `TEMP_INT`, `R_ISO`, `FAULT_CODE`, `cmdPwrPct`, `WMaxLimPct_RmpTms`).
-  4. Updated `DefFileGenerator/dataset_knowledge.json` with learned PVS800 parameters.
-  5. Validated definition via `Generator.validate_csv_detailed`: 1,053 registers, 0 errors.
-  6. Implemented dedicated test suite `DefFileGenerator/tests/test_abb_pvs800.py` (6 tests, all passing).
-  7. Built massive 100+ equipment industrial test battery `DefFileGenerator/tests/test_100_equipements_battery.py` covering 101 equipment models, 50 manufacturers, 6 categories, and 5 live extractions (107 automated pytest tests, all passing, report generated at `docs/audit/BATTERY_100_EQUIPMENTS_REPORT.md`).
+  3. Enforced Function Code 3 (Read Holding Registers) across all parameter rows per official ABB FSCA-01 and FENA hardware adapter specifications and company network share reference `ABB_PVS800.csv`.
+  4. Fixed regex boundary defect in `knowledge_miner.py` and enriched canonical SunPM mappings (`U_DC`, `I_AC`, `FREQ`, `U_AC_L1L2`, `S_AC`, `P_AC`, `Q_AC`, `PF`, `P_RATED`, `E_TOT`, `E_DAY`, `TEMP_AMB`, `TEMP_INT`, `R_ISO`, `FAULT_CODE`, `cmdPwrPct`, `WMaxLimPct_RmpTms`).
+  5. Updated `DefFileGenerator/dataset_knowledge.json` with learned PVS800 parameters.
+  6. Validated definition via `Generator.validate_csv_detailed`: 1,053 registers, 0 errors.
+  7. Implemented dedicated test suite `DefFileGenerator/tests/test_abb_pvs800.py` (7 tests, all passing, including explicit FC 3 holding register check).
+  8. Built massive 100+ equipment industrial test battery `DefFileGenerator/tests/test_100_equipements_battery.py` covering 101 equipment models, 50 manufacturers, 6 categories, and 5 live extractions (107 automated pytest tests, all passing, report generated at `docs/audit/BATTERY_100_EQUIPMENTS_REPORT.md`).
 - **Status**: RESOLVED

@@ -22,6 +22,7 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   - Full audit and training on all 4 PVS 800 variants and official ABB Modbus adapter specifications (`PVS800_Work.xlsx`, `PVS800-57B - Manuel firmware(table modbus).pdf`, `PVS800_central_inverters_RevN_EN_lowres_Modbus avec adaptateur.pdf`, and engineer audio/image instructions).
   - Converted encoding from CP1252 to `utf-8-sig` (resolving fatal `0xB0` degree symbol decode crash on strict UTF-8 readers).
   - Enforced word-swapped endianness on all 1,003 32-bit registers (872 `U32` -> `U32_W` and 131 `I32` -> `I32_W`) per ABB Modbus adapter architecture.
+  - Enforced Function Code 3 (Read Holding Registers) across all parameter rows per official ABB FSCA-01 and FENA adapter specifications (FC 04 is unsupported on ABB drives and causes Illegal Function exceptions).
   - Mapped canonical SunPM tags (`U_DC`, `I_AC`, `FREQ`, `U_AC_L1L2`, `S_AC`, `P_AC`, `Q_AC`, `PF`, `P_RATED`, `E_TOT`, `E_DAY`, `TEMP_AMB`, `TEMP_INT`, `R_ISO`, `FAULT_CODE`, `cmdPwrPct`, `WMaxLimPct_RmpTms`).
   - Verified Mode 3 parameter-mapped addressing formula (`256 * Group + 2 * Index - 1`).
   - Dedicated regression test suite created (`DefFileGenerator/tests/test_abb_pvs800.py`) passing with 100% compliance.
