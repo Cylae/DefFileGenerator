@@ -1,0 +1,741 @@
+﻿modbusRTU;Other;Dyness battery;Dyness DH200Y DH200F DH100F）to;;;;;;;
+1;3;0;U16;;DTC;dtc;1.000000;1.000000;;4
+2;3;1;U16;;System Onoff;system_onoff;1.000000;1.000000;;1
+3;3;2;U16;;System Reset;system_reset;1.000000;1.000000;;1
+4;3;3;U16;;Fault Reset;fault_reset;1.000000;1.000000;;1
+5;3;6;U16;;reset_3;reset_3;1.000000;1.000000;;1
+6;3;41;U16;;Sys Year;sys_year;1.000000;1.000000;;1
+7;3;42;U16;;Sys Month;sys_month;1.000000;1.000000;;1
+8;3;43;U16;;Sys Day;sys_day;1.000000;1.000000;;1
+9;3;44;U16;;Sys Hour;sys_hour;1.000000;1.000000;;1
+10;3;45;U16;;Sys Min;sys_min;1.000000;1.000000;;1
+11;3;46;U16;;Sys Sec;sys_sec;1.000000;1.000000;;1
+12;3;47;U16;;Sys Weekly;sys_weekly;1.000000;1.000000;;1
+13;3;146;U16;;Power Closed-Loop;power_closedloop;1.000000;1.000000;1;1
+14;3;147;U16;;Enable three-phase imbalance;enable_threephase_imbalance;1.000000;0.000000;;1
+15;3;148;U16;;PCS Power Priority;pcs_power_priority;1.000000;0.000000;;1
+16;3;170;U16;;SOC control enable;soc_control_enable;1.000000;1.000000;;1
+17;3;177;U16;;charg max SOC;charg_max_soc;1.000000;1.000000;%;1
+18;3;178;U16;;Discharg min SOC;discharg_min_soc;1.000000;1.000000;%;1
+19;3;193;U16;;Off grid cutoff SOC;off_grid_cutoff_soc;1.000000;1.000000;%;1
+20;3;206;U16;;parallel Enable;parallel_enable;1.000000;1.000000;;1
+21;3;207;U16;;parallel Address;parallel_address;1.000000;1.000000;;1
+22;3;208;U16;;parallel Number;parallel_number;1.000000;1.000000;;1
+23;3;209;U16;;Meter Display;meter_display;1.000000;1.000000;;1
+24;3;212;U16;;Parallel Remote Power Select;parallel_remote_power_select;1.000000;1.000000;1;1
+25;3;216;U16;;Parallel data summary level;parallel_data_summary_level;1.000000;1.000000;1;1
+26;3;700;U16;;Manual power on/off;manual_power_onoff;1.000000;1.000000;;1
+27;3;703;I16;;wSetAcActPower;wsetacactpower;1.000000;0.100000;KW;1
+28;3;704;I16;;wSetAcReactPower;wsetacreactpower;1.000000;0.100000;kVar;1
+29;3;706;U16;;MPPT output bus limiting;mppt_output_bus_limiting;1.000000;0.100000;V;1
+30;3;707;U16;;uwMpptMaxPow;uwmpptmaxpow;1.000000;0.100000;KW;1
+31;3;708;U16;;Register_708;register_708;1.000000;0.000000;;1
+32;3;709;U16;;Register_709;register_709;1.000000;0.000000;;1
+33;3;710;I16;;PCS-A Phase Active Power;pcsa_phase_active_power;1.000000;0.100000;kW;1
+34;3;711;I16;;PCS-A Phase Reactive Power;pcsa_phase_reactive_power;1.000000;0.100000;kvar;1
+35;3;712;I16;;PCS-B Phase Active Power;pcsb_phase_active_power;1.000000;0.100000;kW;1
+36;3;713;I16;;PCS-B Phase Reactive Power;pcsb_phase_reactive_power;1.000000;0.100000;kvar;1
+37;3;714;I16;;PCS-C Phase Active Power;pcsc_phase_active_power;1.000000;0.100000;kW;1
+38;3;715;I16;;PCS-C Phase Reactive Power;pcsc_phase_reactive_power;1.000000;0.100000;kvar;1
+39;4;33;U16;;EMS Firmware Version;ems_firmware_version;1.000000;0.000000;;4
+40;4;34;U16;;Register_34;register_34;1.000000;0.000000;;4
+41;4;35;U16;;Register_35;register_35;1.000000;0.000000;;4
+42;4;36;U16;;Register_36;register_36;1.000000;0.000000;;4
+43;4;37;U16;;Register_37;register_37;1.000000;0.000000;;4
+44;4;38;U16;;Register_38;register_38;1.000000;0.000000;;4
+45;4;39;U16;;Register_39;register_39;1.000000;0.000000;;4
+46;4;40;U16;;Register_40;register_40;1.000000;0.000000;;4
+47;4;41;U16;;Register_41;register_41;1.000000;0.000000;;4
+48;4;42;U16;;Register_42;register_42;1.000000;0.000000;;4
+49;4;43;U16;;BMS/DCDC Format TBD;bmsdcdc_format_tbd;1.000000;0.000000;;4
+50;4;44;U16;;Register_44;register_44;1.000000;0.000000;;4
+51;4;45;U16;;Register_45;register_45;1.000000;0.000000;;4
+52;4;46;U16;;Register_46;register_46;1.000000;0.000000;;4
+53;4;47;U16;;Register_47;register_47;1.000000;0.000000;;4
+54;4;48;U16;;Register_48;register_48;1.000000;0.000000;;4
+55;4;49;U16;;Register_49;register_49;1.000000;0.000000;;4
+56;4;50;U16;;Register_50;register_50;1.000000;0.000000;;4
+57;4;51;U16;;Register_51;register_51;1.000000;0.000000;;4
+58;4;52;U16;;Register_52;register_52;1.000000;0.000000;;4
+59;4;53;U16;;HMI Format TBD;hmi_format_tbd;1.000000;0.000000;;4
+60;4;54;U16;;Register_54;register_54;1.000000;0.000000;;4
+61;4;55;U16;;Register_55;register_55;1.000000;0.000000;;4
+62;4;56;U16;;Register_56;register_56;1.000000;0.000000;;4
+63;4;57;U16;;Register_57;register_57;1.000000;0.000000;;4
+64;4;58;U16;;Register_58;register_58;1.000000;0.000000;;4
+65;4;59;U16;;Register_59;register_59;1.000000;0.000000;;4
+66;4;60;U16;;Register_60;register_60;1.000000;0.000000;;4
+67;4;61;U16;;Register_61;register_61;1.000000;0.000000;;4
+68;4;62;U16;;Register_62;register_62;1.000000;0.000000;;4
+69;4;87;U16;;PV Input Power (Low Word);pv_input_power_low_word;1.000000;0.000000;;4
+70;4;145;U16;;Battery Power (Low Word);battery_power_low_word;1.000000;0.000000;;4
+71;4;170;U16;;Inverter Total Power (Low Word);inverter_total_power_low_word;1.000000;0.000000;;4
+72;4;174;U16;;Phase-A Output Power (Low);phasea_output_power_low;1.000000;0.000000;;4
+73;4;178;U16;;Phase-B Output Power (Low);phaseb_output_power_low;1.000000;0.000000;;4
+74;4;182;U16;;Phase-C Output Power (Low);phasec_output_power_low;1.000000;0.000000;;4
+75;4;249;U16;;Register_249;register_249;1.000000;0.000000;;4
+76;4;1136;U16;;Register_1136;register_1136;1.000000;0.000000;;4
+77;4;1138;U16;;Register_1138;register_1138;1.000000;0.000000;;4
+78;4;1140;U16;;Register_1140;register_1140;1.000000;0.000000;;4
+79;4;1142;U16;;Register_1142;register_1142;1.000000;0.000000;;4
+80;4;1144;U16;;Register_1144;register_1144;1.000000;0.000000;;4
+81;4;1146;U16;;Register_1146;register_1146;1.000000;0.000000;;4
+82;4;1148;U16;;Register_1148;register_1148;1.000000;0.000000;;4
+83;4;1150;U16;;Register_1150;register_1150;1.000000;0.000000;;4
+84;4;1152;U16;;Register_1152;register_1152;1.000000;0.000000;;4
+85;4;1154;U16;;Register_1154;register_1154;1.000000;0.000000;;4
+86;4;1156;U16;;Register_1156;register_1156;1.000000;0.000000;;4
+87;4;1158;U16;;Register_1158;register_1158;1.000000;0.000000;;4
+88;4;1249;U16;;Register_1249;register_1249;1.000000;0.000000;;4
+89;4;1876;U16;;Register_1876;register_1876;1.000000;0.000000;;4
+90;4;1878;U16;;Register_1878;register_1878;1.000000;0.000000;;4
+91;4;1880;U16;;Register_1880;register_1880;1.000000;0.000000;;4
+92;4;1882;U16;;Register_1882;register_1882;1.000000;0.000000;;4
+93;4;1884;U16;;Register_1884;register_1884;1.000000;0.000000;;4
+94;4;1886;U16;;Register_1886;register_1886;1.000000;0.000000;;4
+95;4;1888;U16;;Register_1888;register_1888;1.000000;0.000000;;4
+96;4;1890;U16;;Register_1890;register_1890;1.000000;0.000000;;4
+97;4;1892;U16;;Register_1892;register_1892;1.000000;0.000000;;4
+98;4;1894;U16;;Register_1894;register_1894;1.000000;0.000000;;4
+99;4;1896;U16;;Register_1896;register_1896;1.000000;0.000000;;4
+100;4;1898;U16;;Register_1898;register_1898;1.000000;0.000000;;4
+101;4;1900;U16;;Register_1900;register_1900;1.000000;0.000000;;4
+102;4;1902;U16;;Register_1902;register_1902;1.000000;0.000000;;4
+103;4;1904;U16;;Register_1904;register_1904;1.000000;0.000000;;4
+104;4;1906;U16;;Register_1906;register_1906;1.000000;0.000000;;4
+105;4;1908;U16;;Register_1908;register_1908;1.000000;0.000000;;4
+106;4;1910;U16;;Register_1910;register_1910;1.000000;0.000000;;4
+107;4;1912;U16;;Register_1912;register_1912;1.000000;0.000000;;4
+108;4;1914;U16;;Register_1914;register_1914;1.000000;0.000000;;4
+109;4;1916;U16;;Register_1916;register_1916;1.000000;0.000000;;4
+110;4;1918;U16;;Register_1918;register_1918;1.000000;0.000000;;4
+111;4;1920;U16;;Register_1920;register_1920;1.000000;0.000000;;4
+112;4;1922;U16;;Register_1922;register_1922;1.000000;0.000000;;4
+113;4;1924;U16;;Register_1924;register_1924;1.000000;0.000000;;4
+114;4;1926;U16;;Register_1926;register_1926;1.000000;0.000000;;4
+115;4;1928;U16;;Register_1928;register_1928;1.000000;0.000000;;4
+116;4;1930;U16;;Register_1930;register_1930;1.000000;0.000000;;4
+117;4;1932;U16;;Register_1932;register_1932;1.000000;0.000000;;4
+118;4;1934;U16;;Register_1934;register_1934;1.000000;0.000000;;4
+119;4;1936;U16;;Peak TOU Electricity Price (Low);peak_tou_electricity_price_low;1.000000;0.000000;;4
+120;4;1938;U16;;On-Peak TOU Electricity Price (Low);onpeak_tou_electricity_price_low;1.000000;0.000000;;4
+121;4;1940;U16;;Shoulder TOU Electricity Price (Low);shoulder_tou_electricity_price_low;1.000000;0.000000;;4
+122;4;1942;U16;;Off-Peak TOU Electricity Price (Low);offpeak_tou_electricity_price_low;1.000000;0.000000;;4
+123;4;1999;U16;;Register_1999;register_1999;1.000000;0.000000;;4
+124;4;2001;U16;;System Hourly Energy (Low);system_hourly_energy_low;1.000000;0.000000;;4
+125;4;2003;U16;;System Daily Energy (Low);system_daily_energy_low;1.000000;0.000000;;4
+126;4;2005;U16;;System Monthly Energy (Low);system_monthly_energy_low;1.000000;0.000000;;4
+127;4;2007;U16;;System Annual Energy (Low);system_annual_energy_low;1.000000;0.000000;;4
+128;4;2009;U16;;System Total Energy (Low);system_total_energy_low;1.000000;0.000000;;4
+129;4;2011;U16;;Self-Consumption Hourly Energy (Low);selfconsumption_hourly_energy_low;1.000000;0.000000;;4
+130;4;2013;U16;;Self-Consumption Daily Energy (Low);selfconsumption_daily_energy_low;1.000000;0.000000;;4
+131;4;2015;U16;;Self-Consumption Monthly Energy (Low);selfconsumption_monthly_energy_low;1.000000;0.000000;;4
+132;4;2017;U16;;Self-Consumption Annual Energy (Low);selfconsumption_annual_energy_low;1.000000;0.000000;;4
+133;4;2019;U16;;Self-Consumption Total Energy (Low);selfconsumption_total_energy_low;1.000000;0.000000;;4
+134;4;2021;U16;;Hourly Grid Feed-in Energy (Low);hourly_grid_feedin_energy_low;1.000000;0.000000;;4
+135;4;2023;U16;;Daily Grid Feed-in Energy (Low);daily_grid_feedin_energy_low;1.000000;0.000000;;4
+136;4;2025;U16;;Monthly Grid Feed-in Energy (Low);monthly_grid_feedin_energy_low;1.000000;0.000000;;4
+137;4;2027;U16;;Annual Grid Feed-in Energy (Low);annual_grid_feedin_energy_low;1.000000;0.000000;;4
+138;4;2029;U16;;Total Grid Feed-in Energy (Low);total_grid_feedin_energy_low;1.000000;0.000000;;4
+139;4;2031;U16;;Hourly Grid Energy to Users (Low);hourly_grid_energy_to_users_low;1.000000;0.000000;;4
+140;4;2033;U16;;Daily Grid Energy to Users (Low);daily_grid_energy_to_users_low;1.000000;0.000000;;4
+141;4;2035;U16;;Monthly Grid Energy to Users (Low);monthly_grid_energy_to_users_low;1.000000;0.000000;;4
+142;4;2037;U16;;Annual Grid Energy to Users (Low);annual_grid_energy_to_users_low;1.000000;0.000000;;4
+143;4;2039;U16;;Total Grid Energy to Users (Low);total_grid_energy_to_users_low;1.000000;0.000000;;4
+144;4;2041;U16;;Hourly Local Load Consumption (Low);hourly_local_load_consumption_low;1.000000;0.000000;;4
+145;4;2043;U16;;Daily Local Load Consumption (Low);daily_local_load_consumption_low;1.000000;0.000000;;4
+146;4;2045;U16;;Monthly Local Load Consumption (Low);monthly_local_load_consumption_low;1.000000;0.000000;;4
+147;4;2047;U16;;Annual Local Load Consumption (Low);annual_local_load_consumption_low;1.000000;0.000000;;4
+148;4;2049;U16;;Total Local Load Consumption (Low);total_local_load_consumption_low;1.000000;0.000000;;4
+149;4;2051;U16;;PV Hourly Generation (Low);pv_hourly_generation_low;1.000000;0.000000;;4
+150;4;2053;U16;;PV Daily Generation (Low);pv_daily_generation_low;1.000000;0.000000;;4
+151;4;2055;U16;;PV Monthly Generation (Low);pv_monthly_generation_low;1.000000;0.000000;;4
+152;4;2057;U16;;PV Annual Generation (Low);pv_annual_generation_low;1.000000;0.000000;;4
+153;4;2059;U16;;PV Total Generation (Low);pv_total_generation_low;1.000000;0.000000;;4
+154;4;2061;U16;;Battery Hourly Discharge 1 (Low);battery_hourly_discharge_1_low;1.000000;0.000000;Battery Data（Battery Discharge-Hour）;4
+155;4;2063;U16;;Battery Daily Discharge 1 (Low);battery_daily_discharge_1_low;1.000000;0.000000;Battery Data（Battery Discharge-Day）;4
+156;4;2065;U16;;Battery Monthly Discharge 1 (Low);battery_monthly_discharge_1_low;1.000000;0.000000;Battery Data（Battery Discharge-Month）;4
+157;4;2067;U16;;Battery Annual Discharge 1 (Low);battery_annual_discharge_1_low;1.000000;0.000000;Battery Data（Battery Discharge-Year）;4
+158;4;2069;U16;;Battery Total Discharge 1 (Low);battery_total_discharge_1_low;1.000000;0.000000;Battery Data（Battery Discharge-Total）;4
+159;4;2071;U16;;Battery Hourly Charge 1 (Low);battery_hourly_charge_1_low;1.000000;0.000000;Battery Data（Battery Charge-Hour）;4
+160;4;2073;U16;;Battery Daily Charge 1 (Low);battery_daily_charge_1_low;1.000000;0.000000;Battery Data（Battery Charge-Day）;4
+161;4;2075;U16;;Battery Monthly Charge1 (Low);battery_monthly_charge1_low;1.000000;0.000000;Battery Data（Battery Charge-Month）;4
+162;4;2077;U16;;Battery Annual Charge 1(Low);battery_annual_charge_1low;1.000000;0.000000;Battery Data（Battery Charge-Year）;4
+163;4;2079;U16;;Battery Total Charge 1 (Low);battery_total_charge_1_low;1.000000;0.000000;Battery Data（Battery Charge-Total）;4
+164;4;2081;U16;;Generator Daily Production (Low);generator_daily_production_low;1.000000;0.000000;Generator Data（Generator Energy Production-Today）;4
+165;4;2083;U16;;Generator Total Production (Low);generator_total_production_low;1.000000;0.000000;Generator Data（Generator Energy Production-Total）;4
+166;4;2085;U16;;PV Inverter AC/DC Daily Production (Low);pv_inverter_acdc_daily_production_low;1.000000;0.000000;Inverter Data（PV Inverter Generation-Today）;4
+167;4;2087;U16;;PV Inverter AC/DC Total Production (Low);pv_inverter_acdc_total_production_low;1.000000;0.000000;Inverter Data（PV Inverter Generation-Total）;4
+168;4;2089;U16;;PV Inverter DC/AC Daily Production (Low);pv_inverter_dcac_daily_production_low;1.000000;0.000000;Inverter Data（PV Inverter Generation-Today）;4
+169;4;2091;U16;;PV Inverter DC/AC Total Production (Low);pv_inverter_dcac_total_production_low;1.000000;0.000000;Inverter Data（PV Inverter Generation-Total）;4
+170;4;2124;U16;;Register_2124;register_2124;1.000000;0.000000;;4
+171;4;2125;U16;;4G Module Hardware Version;v_4g_module_hardware_version;1.000000;0.000000;;4
+172;4;2126;U16;;Register_2126;register_2126;1.000000;0.000000;;4
+173;4;2127;U16;;Register_2127;register_2127;1.000000;0.000000;;4
+174;4;2128;U16;;Register_2128;register_2128;1.000000;0.000000;;4
+175;4;2129;U16;;Register_2129;register_2129;1.000000;0.000000;;4
+176;4;2130;U16;;Register_2130;register_2130;1.000000;0.000000;;4
+177;4;2131;U16;;Register_2131;register_2131;1.000000;0.000000;;4
+178;4;2132;U16;;Register_2132;register_2132;1.000000;0.000000;;4
+179;4;2133;U16;;Register_2133;register_2133;1.000000;0.000000;;4
+180;4;2134;U16;;Register_2134;register_2134;1.000000;0.000000;;4
+181;4;2135;U16;;4G Module Hardware Version1;v_4g_module_hardware_version1;1.000000;0.000000;;4
+182;4;2136;U16;;Register_2136;register_2136;1.000000;0.000000;;4
+183;4;2137;U16;;Register_2137;register_2137;1.000000;0.000000;;4
+184;4;2138;U16;;Register_2138;register_2138;1.000000;0.000000;;4
+185;4;2139;U16;;Register_2139;register_2139;1.000000;0.000000;;4
+186;4;2140;U16;;Register_2140;register_2140;1.000000;0.000000;;4
+187;4;2141;U16;;Register_2141;register_2141;1.000000;0.000000;;4
+188;4;2142;U16;;Register_2142;register_2142;1.000000;0.000000;;4
+189;4;2143;U16;;Register_2143;register_2143;1.000000;0.000000;;4
+190;4;2144;U16;;Register_2144;register_2144;1.000000;0.000000;;4
+191;4;2145;U16;;4G Module Hardware Version 2;v_4g_module_hardware_version_2;1.000000;0.000000;;4
+192;4;2146;U16;;Register_2146;register_2146;1.000000;0.000000;;4
+193;4;2147;U16;;Register_2147;register_2147;1.000000;0.000000;;4
+194;4;2148;U16;;Register_2148;register_2148;1.000000;0.000000;;4
+195;4;2149;U16;;Register_2149;register_2149;1.000000;0.000000;;4
+196;4;2150;U16;;Register_2150;register_2150;1.000000;0.000000;;4
+197;4;2151;U16;;Register_2151;register_2151;1.000000;0.000000;;4
+198;4;2152;U16;;Register_2152;register_2152;1.000000;0.000000;;4
+199;4;2153;U16;;Register_2153;register_2153;1.000000;0.000000;;4
+200;4;2154;U16;;Register_2154;register_2154;1.000000;0.000000;;4
+201;4;2155;U16;;Register_2155;register_2155;1.000000;0.000000;;4
+202;4;2156;U16;;Register_2156;register_2156;1.000000;0.000000;;4
+203;4;2157;U16;;Register_2157;register_2157;1.000000;0.000000;;4
+204;4;2158;U16;;Register_2158;register_2158;1.000000;0.000000;;4
+205;4;2159;U16;;Register_2159;register_2159;1.000000;0.000000;;4
+206;4;2160;U16;;IMEI;imei;1.000000;0.000000;;4
+207;4;2161;U16;;Register_2161;register_2161;1.000000;0.000000;;4
+208;4;2162;U16;;Register_2162;register_2162;1.000000;0.000000;;4
+209;4;2163;U16;;Register_2163;register_2163;1.000000;0.000000;;4
+210;4;2164;U16;;Register_2164;register_2164;1.000000;0.000000;;4
+211;4;2165;U16;;Register_2165;register_2165;1.000000;0.000000;;4
+212;4;2166;U16;;Register_2166;register_2166;1.000000;0.000000;;4
+213;4;2167;U16;;Register_2167;register_2167;1.000000;0.000000;;4
+214;4;2168;U16;;Register_2168;register_2168;1.000000;0.000000;;4
+215;4;2169;U16;;Register_2169;register_2169;1.000000;0.000000;;4
+216;4;2170;U16;;ICCID;iccid;1.000000;0.000000;;4
+217;4;2171;U16;;Register_2171;register_2171;1.000000;0.000000;;4
+218;4;2172;U16;;Register_2172;register_2172;1.000000;0.000000;;4
+219;4;2173;U16;;Register_2173;register_2173;1.000000;0.000000;;4
+220;4;2174;U16;;Register_2174;register_2174;1.000000;0.000000;;4
+221;4;2175;U16;;Register_2175;register_2175;1.000000;0.000000;;4
+222;4;2176;U16;;Register_2176;register_2176;1.000000;0.000000;;4
+223;4;2177;U16;;Register_2177;register_2177;1.000000;0.000000;;4
+224;4;2178;U16;;Register_2178;register_2178;1.000000;0.000000;;4
+225;4;2179;U16;;Register_2179;register_2179;1.000000;0.000000;;4
+226;4;2180;U16;;Register_2180;register_2180;1.000000;0.000000;;4
+227;4;2181;U16;;Register_2181;register_2181;1.000000;0.000000;;4
+228;4;2182;U16;;Register_2182;register_2182;1.000000;0.000000;;4
+229;4;2183;U16;;Register_2183;register_2183;1.000000;0.000000;;4
+230;4;2184;U16;;Register_2184;register_2184;1.000000;0.000000;;4
+231;4;2185;U16;;Register_2185;register_2185;1.000000;0.000000;;4
+232;4;2203;U16;;Reserved;reserved;1.000000;0.000000;;0
+233;4;2204;U16;;Reserved;reserved_1;1.000000;0.000000;;0
+234;4;2205;U16;;Reserved;reserved_2;1.000000;0.000000;;0
+235;4;2206;U16;;Reserved;reserved_3;1.000000;0.000000;;0
+236;4;2207;U16;;Reserved;reserved_4;1.000000;0.000000;;0
+237;4;2208;U16;;Reserved;reserved_5;1.000000;0.000000;;0
+238;4;2209;U16;;Reserved;reserved_6;1.000000;0.000000;;0
+239;4;2210;U16;;Reserved;reserved_7;1.000000;0.000000;;0
+240;4;2211;U16;;Reserved;reserved_8;1.000000;0.000000;;0
+241;4;2212;U16;;Reserved;reserved_9;1.000000;0.000000;;0
+242;4;2249;U16;;Register_2249;register_2249;1.000000;0.000000;;4
+243;4;4033;U16;;EMS_ver;ems_ver;1.000000;0.000000;;4
+244;4;4034;U16;;Register_4034;register_4034;1.000000;0.000000;;4
+245;4;4035;U16;;Register_4035;register_4035;1.000000;0.000000;;4
+246;4;4036;U16;;Register_4036;register_4036;1.000000;0.000000;;4
+247;4;4037;U16;;Register_4037;register_4037;1.000000;0.000000;;4
+248;4;4038;U16;;Register_4038;register_4038;1.000000;0.000000;;4
+249;4;4039;U16;;Register_4039;register_4039;1.000000;0.000000;;4
+250;4;4040;U16;;Register_4040;register_4040;1.000000;0.000000;;4
+251;4;4041;U16;;Register_4041;register_4041;1.000000;0.000000;;4
+252;4;4042;U16;;Register_4042;register_4042;1.000000;0.000000;;4
+253;4;4043;U16;;BMS/DCDC_ver;bmsdcdc_ver;1.000000;0.000000;;4
+254;4;4044;U16;;Register_4044;register_4044;1.000000;0.000000;;4
+255;4;4045;U16;;Register_4045;register_4045;1.000000;0.000000;;4
+256;4;4046;U16;;Register_4046;register_4046;1.000000;0.000000;;4
+257;4;4047;U16;;Register_4047;register_4047;1.000000;0.000000;;4
+258;4;4048;U16;;Register_4048;register_4048;1.000000;0.000000;;4
+259;4;4049;U16;;Register_4049;register_4049;1.000000;0.000000;;4
+260;4;4050;U16;;Register_4050;register_4050;1.000000;0.000000;;4
+261;4;4051;U16;;Register_4051;register_4051;1.000000;0.000000;;4
+262;4;4052;U16;;Register_4052;register_4052;1.000000;0.000000;;4
+263;4;4053;U16;;HMI_ver;hmi_ver;1.000000;0.000000;;4
+264;4;4054;U16;;Register_4054;register_4054;1.000000;0.000000;;4
+265;4;4055;U16;;Register_4055;register_4055;1.000000;0.000000;;4
+266;4;4056;U16;;Register_4056;register_4056;1.000000;0.000000;;4
+267;4;4057;U16;;Register_4057;register_4057;1.000000;0.000000;;4
+268;4;4058;U16;;Register_4058;register_4058;1.000000;0.000000;;4
+269;4;4059;U16;;Register_4059;register_4059;1.000000;0.000000;;4
+270;4;4060;U16;;Register_4060;register_4060;1.000000;0.000000;;4
+271;4;4061;U16;;Register_4061;register_4061;1.000000;0.000000;;4
+272;4;4062;U16;;Register_4062;register_4062;1.000000;0.000000;;4
+273;4;4064;U16;;Grid Power L;grid_power_l;1.000000;0.000000;;4
+274;4;4069;U16;;Three/ Single phase grid output power L(Low Word);three_single_phase_grid_output_power_llow_word;1.000000;0.000000;;4
+275;4;4073;U16;;Three phase grid output power (Low Word);three_phase_grid_output_power_low_word;1.000000;0.000000;;4
+276;4;4077;U16;;Three phase grid output power(Low Word);three_phase_grid_output_powerlow_word;1.000000;0.000000;;4
+277;4;4085;U16;;Grid States;grid_states;1.000000;0.000000;;4
+278;4;4087;U16;;PV Input Power (Low Word);pv_input_power_low_word_1;1.000000;0.000000;;4
+279;4;4128;U16;;Register_4128;register_4128;1.000000;0.000000;;4
+280;4;4132;U16;;Register_4132;register_4132;1.000000;0.000000;;4
+281;4;4136;U16;;Register_4136;register_4136;1.000000;0.000000;;4
+282;4;4138;U16;;Register_4138;register_4138;1.000000;0.000000;;4
+283;4;4145;U16;;Battery Power (Low Word);battery_power_low_word_1;1.000000;0.000000;;4
+284;4;4170;U16;;Inverter Total Power (Low Word);inverter_total_power_low_word_1;1.000000;0.000000;;4
+285;4;4174;U16;;Phase-A Output Power (Low);phasea_output_power_low_1;1.000000;0.000000;;4
+286;4;4178;U16;;Phase-B Output Power (Low);phaseb_output_power_low_1;1.000000;0.000000;;4
+287;4;4182;U16;;Phase-C Output Power (Low);phasec_output_power_low_1;1.000000;0.000000;;4
+288;4;4249;U16;;Register_4249;register_4249;1.000000;0.000000;;4
+289;4;5876;U16;;Register_5876;register_5876;1.000000;0.000000;;4
+290;4;5878;U16;;Register_5878;register_5878;1.000000;0.000000;;4
+291;4;5880;U16;;Register_5880;register_5880;1.000000;0.000000;;4
+292;4;5882;U16;;Register_5882;register_5882;1.000000;0.000000;;4
+293;4;5884;U16;;Register_5884;register_5884;1.000000;0.000000;;4
+294;4;5886;U16;;Register_5886;register_5886;1.000000;0.000000;;4
+295;4;5888;U16;;Register_5888;register_5888;1.000000;0.000000;;4
+296;4;5890;U16;;Register_5890;register_5890;1.000000;0.000000;;4
+297;4;5892;U16;;Register_5892;register_5892;1.000000;0.000000;;4
+298;4;5894;U16;;Register_5894;register_5894;1.000000;0.000000;;4
+299;4;5896;U16;;Register_5896;register_5896;1.000000;0.000000;;4
+300;4;5898;U16;;Register_5898;register_5898;1.000000;0.000000;;4
+301;4;5900;U16;;Register_5900;register_5900;1.000000;0.000000;;4
+302;4;5902;U16;;Register_5902;register_5902;1.000000;0.000000;;4
+303;4;5904;U16;;Register_5904;register_5904;1.000000;0.000000;;4
+304;4;5906;U16;;Register_5906;register_5906;1.000000;0.000000;;4
+305;4;5908;U16;;Register_5908;register_5908;1.000000;0.000000;;4
+306;4;5910;U16;;Register_5910;register_5910;1.000000;0.000000;;4
+307;4;5912;U16;;Register_5912;register_5912;1.000000;0.000000;;4
+308;4;5914;U16;;Register_5914;register_5914;1.000000;0.000000;;4
+309;4;5916;U16;;Register_5916;register_5916;1.000000;0.000000;;4
+310;4;5918;U16;;Register_5918;register_5918;1.000000;0.000000;;4
+311;4;5920;U16;;Register_5920;register_5920;1.000000;0.000000;;4
+312;4;5922;U16;;Register_5922;register_5922;1.000000;0.000000;;4
+313;4;5924;U16;;Register_5924;register_5924;1.000000;0.000000;;4
+314;4;5926;U16;;Register_5926;register_5926;1.000000;0.000000;;4
+315;4;5928;U16;;Register_5928;register_5928;1.000000;0.000000;;4
+316;4;5930;U16;;Register_5930;register_5930;1.000000;0.000000;;4
+317;4;5932;U16;;Register_5932;register_5932;1.000000;0.000000;;4
+318;4;5934;U16;;Register_5934;register_5934;1.000000;0.000000;;4
+319;4;5936;U16;;Peak TOU Electricity Price (Low);peak_tou_electricity_price_low_1;1.000000;0.000000;;4
+320;4;5938;U16;;On-Peak TOU Electricity Price (Low);onpeak_tou_electricity_price_low_1;1.000000;0.000000;;4
+321;4;5940;U16;;Shoulder TOU Electricity Price (Low);shoulder_tou_electricity_price_low_1;1.000000;0.000000;;4
+322;4;5942;U16;;Off-Peak TOU Electricity Price (Low);offpeak_tou_electricity_price_low_1;1.000000;0.000000;;4
+323;4;5999;U16;;Register_5999;register_5999;1.000000;0.000000;;4
+324;4;6001;U16;;System Hourly Energy (Low);system_hourly_energy_low_1;1.000000;0.000000;;4
+325;4;6003;U16;;System Daily Energy (Low);system_daily_energy_low_1;1.000000;0.000000;;4
+326;4;6005;U16;;System Monthly Energy (Low);system_monthly_energy_low_1;1.000000;0.000000;;4
+327;4;6007;U16;;System Annual Energy (Low);system_annual_energy_low_1;1.000000;0.000000;;4
+328;4;6009;U16;;System Total Energy (Low);system_total_energy_low_1;1.000000;0.000000;;4
+329;4;6011;U16;;Self-Consumption Hourly Energy (Low);selfconsumption_hourly_energy_low_1;1.000000;0.000000;;4
+330;4;6013;U16;;Self-Consumption Daily Energy (Low);selfconsumption_daily_energy_low_1;1.000000;0.000000;;4
+331;4;6015;U16;;Self-Consumption Monthly Energy (Low);selfconsumption_monthly_energy_low_1;1.000000;0.000000;;4
+332;4;6017;U16;;Self-Consumption Annual Energy (Low);selfconsumption_annual_energy_low_1;1.000000;0.000000;;4
+333;4;6019;U16;;Self-Consumption Total Energy (Low);selfconsumption_total_energy_low_1;1.000000;0.000000;;4
+334;4;6021;U16;;Hourly Grid Feed-in Energy (Low);hourly_grid_feedin_energy_low_1;1.000000;0.000000;;4
+335;4;6023;U16;;Daily Grid Feed-in Energy (Low);daily_grid_feedin_energy_low_1;1.000000;0.000000;;4
+336;4;6025;U16;;Monthly Grid Feed-in Energy (Low);monthly_grid_feedin_energy_low_1;1.000000;0.000000;;4
+337;4;6027;U16;;Annual Grid Feed-in Energy (Low);annual_grid_feedin_energy_low_1;1.000000;0.000000;;4
+338;4;6029;U16;;Total Grid Feed-in Energy (Low);total_grid_feedin_energy_low_1;1.000000;0.000000;;4
+339;4;6031;U16;;Hourly Grid Energy to Users (Low);hourly_grid_energy_to_users_low_1;1.000000;0.000000;;4
+340;4;6033;U16;;Daily Grid Energy to Users (Low);daily_grid_energy_to_users_low_1;1.000000;0.000000;;4
+341;4;6035;U16;;Monthly Grid Energy to Users (Low);monthly_grid_energy_to_users_low_1;1.000000;0.000000;;4
+342;4;6037;U16;;Annual Grid Energy to Users (Low);annual_grid_energy_to_users_low_1;1.000000;0.000000;;4
+343;4;6039;U16;;Total Grid Energy to Users (Low);total_grid_energy_to_users_low_1;1.000000;0.000000;;4
+344;4;6041;U16;;Hourly Local Load Consumption (Low);hourly_local_load_consumption_low_1;1.000000;0.000000;;4
+345;4;6043;U16;;Daily Local Load Consumption (Low);daily_local_load_consumption_low_1;1.000000;0.000000;;4
+346;4;6045;U16;;Monthly Local Load Consumption (Low);monthly_local_load_consumption_low_1;1.000000;0.000000;;4
+347;4;6047;U16;;Annual Local Load Consumption (Low);annual_local_load_consumption_low_1;1.000000;0.000000;;4
+348;4;6049;U16;;Total Local Load Consumption (Low);total_local_load_consumption_low_1;1.000000;0.000000;;4
+349;4;6051;U16;;PV Hourly Generation (Low);pv_hourly_generation_low_1;1.000000;0.000000;;4
+350;4;6053;U16;;PV Daily Generation (Low);pv_daily_generation_low_1;1.000000;0.000000;;4
+351;4;6055;U16;;PV Monthly Generation (Low);pv_monthly_generation_low_1;1.000000;0.000000;;4
+352;4;6057;U16;;PV Annual Generation (Low);pv_annual_generation_low_1;1.000000;0.000000;;4
+353;4;6059;U16;;PV Total Generation (Low);pv_total_generation_low_1;1.000000;0.000000;;4
+354;4;6061;U16;;Battery Hourly Discharge 1 (Low);battery_hourly_discharge_1_low_1;1.000000;0.000000;Battery Data（Battery Discharge-Hour）;4
+355;4;6063;U16;;Battery Daily Discharge 1 (Low);battery_daily_discharge_1_low_1;1.000000;0.000000;Battery Data（Battery Discharge-Day）;4
+356;4;6065;U16;;Battery Monthly Discharge 1 (Low);battery_monthly_discharge_1_low_1;1.000000;0.000000;Battery Data（Battery Discharge-Month）;4
+357;4;6067;U16;;Battery Annual Discharge 1 (Low);battery_annual_discharge_1_low_1;1.000000;0.000000;Battery Data（Battery Discharge-Year）;4
+358;4;6069;U16;;Battery Total Discharge 1 (Low);battery_total_discharge_1_low_1;1.000000;0.000000;Battery Data（Battery Discharge-Total）;4
+359;4;6071;U16;;Battery Hourly Charge 1 (Low);battery_hourly_charge_1_low_1;1.000000;0.000000;Battery Data（Battery Charge-Hour）;4
+360;4;6073;U16;;Battery Daily Charge 1 (Low);battery_daily_charge_1_low_1;1.000000;0.000000;Battery Data（Battery Charge-Day）;4
+361;4;6075;U16;;Battery Monthly Charge1 (Low);battery_monthly_charge1_low_1;1.000000;0.000000;Battery Data（Battery Charge-Month）;4
+362;4;6077;U16;;Battery Annual Charge 1(Low);battery_annual_charge_1low_1;1.000000;0.000000;Battery Data（Battery Charge-Year）;4
+363;4;6079;U16;;Battery Total Charge 1 (Low);battery_total_charge_1_low_1;1.000000;0.000000;Battery Data（Battery Charge-Total）;4
+364;4;6081;U16;;Generator Daily Production (Low);generator_daily_production_low_1;1.000000;0.000000;Generator Data（Generator Energy Production-Today）;4
+365;4;6083;U16;;Generator Total Production (Low);generator_total_production_low_1;1.000000;0.000000;Generator Data（Generator Energy Production-Total）;4
+366;4;6085;U16;;PV Inverter AC/DC Daily Production (Low);pv_inverter_acdc_daily_production_low_1;1.000000;0.000000;Inverter Data（PV Inverter Generation-Today）;4
+367;4;6087;U16;;PV Inverter AC/DC Total Production (Low);pv_inverter_acdc_total_production_low_1;1.000000;0.000000;Inverter Data（PV Inverter Generation-Total）;4
+368;4;6089;U16;;PV Inverter DC/AC Daily Production (Low);pv_inverter_dcac_daily_production_low_1;1.000000;0.000000;Inverter Data（PV Inverter Generation-Today）;4
+369;4;6091;U16;;PV Inverter DC/AC Total Production (Low);pv_inverter_dcac_total_production_low_1;1.000000;0.000000;Inverter Data（PV Inverter Generation-Total）;4
+370;4;6092;U16;;Register_6092;register_6092;1.000000;0.000000;;4
+371;4;6093;U16;;Register_6093;register_6093;1.000000;0.000000;;4
+372;4;6094;U16;;Register_6094;register_6094;1.000000;0.000000;;4
+373;4;6095;U16;;Register_6095;register_6095;1.000000;0.000000;;4
+374;4;6096;U16;;Register_6096;register_6096;1.000000;0.000000;;4
+375;4;6097;U16;;Register_6097;register_6097;1.000000;0.000000;;4
+376;4;6098;U16;;Register_6098;register_6098;1.000000;0.000000;;4
+377;4;6099;U16;;Register_6099;register_6099;1.000000;0.000000;;4
+378;4;6100;U16;;Register_6100;register_6100;1.000000;0.000000;;4
+379;4;6124;U16;;Register_6124;register_6124;1.000000;0.000000;;4
+380;3;500;U16;;PCS Read Addr;pcs_read_addr;1.000000;0.000000;;4
+381;3;501;U16;;uwDcpFaultState_1_L;uwdcpfaultstate_1_l;1.000000;0.000000;;9
+382;3;502;U16;;uwDcpFaultState_1_H;uwdcpfaultstate_1_h;1.000000;0.000000;;9
+383;3;503;U16;;uwDcpFaultState_2_L;uwdcpfaultstate_2_l;1.000000;0.000000;;9
+384;3;504;U16;;uwDcpFaultState_2_H;uwdcpfaultstate_2_h;1.000000;0.000000;;9
+385;3;505;U16;;uwReserve;uwreserve;1.000000;0.000000;;0
+386;3;506;U16;;uwReserve;uwreserve_1;1.000000;0.000000;;0
+387;3;507;U16;;uwFspFaultState_1_L;uwfspfaultstate_1_l;1.000000;0.000000;;9
+388;3;508;U16;;uwFspFaultState_1_H;uwfspfaultstate_1_h;1.000000;0.000000;;9
+389;3;509;U16;;uwFspFaultState_2_L;uwfspfaultstate_2_l;1.000000;0.000000;;9
+390;3;510;U16;;uwFspFaultState_2_H;uwfspfaultstate_2_h;1.000000;0.000000;;9
+391;3;511;U16;;uwSmpFaultState_1_L;uwsmpfaultstate_1_l;1.000000;0.000000;;9
+392;3;512;U16;;uwSmpFaultState_1_H;uwsmpfaultstate_1_h;1.000000;0.000000;;9
+393;3;513;I16;;wGrid_A_Vol;wgrid_a_vol;1.000000;0.000000;V;4
+394;3;514;I16;;wInv_A_Curr;winv_a_curr;1.000000;0.000000;A;4
+395;3;515;I16;;wGrid_A_Curr;wgrid_a_curr;1.000000;0.000000;A;4
+396;3;516;I16;;wInv_A_PowerL;winv_a_powerl;1.000000;0.000000;W;4
+397;3;517;I16;;wInv_A_PowerH;winv_a_powerh;1.000000;0.000000;;4
+398;3;518;I16;;wGrid_B_Vol;wgrid_b_vol;1.000000;0.000000;V;4
+399;3;519;I16;;wInv_B_Curr;winv_b_curr;1.000000;0.000000;A;4
+400;3;520;I16;;wGrid_B_Curr;wgrid_b_curr;1.000000;0.000000;A;4
+401;3;521;I16;;wInv_B_PowerL;winv_b_powerl;1.000000;0.000000;W;4
+402;3;522;I16;;wInv_B_PowerH;winv_b_powerh;1.000000;0.000000;;4
+403;3;523;I16;;wGrid_C_Vol;wgrid_c_vol;1.000000;0.000000;V;4
+404;3;524;I16;;wInv_C_Curr;winv_c_curr;1.000000;0.000000;A;4
+405;3;525;I16;;wGrid_C_Curr;wgrid_c_curr;1.000000;0.000000;A;4
+406;3;526;I16;;wInv_C_PowerL;winv_c_powerl;1.000000;0.000000;W;4
+407;3;527;I16;;wInv_C_PowerH;winv_c_powerh;1.000000;0.000000;;4
+408;3;528;I16;;wBridgeCurr;wbridgecurr;1.000000;0.000000;A;4
+409;3;529;I16;;wABLineVol;wablinevol;1.000000;0.000000;V;4
+410;3;530;I16;;wBCLineVol;wbclinevol;1.000000;0.000000;V;4
+411;3;531;I16;;wACLineVol;waclinevol;1.000000;0.000000;V;4
+412;3;532;I16;;wFreqAve;wfreqave;1.000000;0.000000;Hz;4
+413;3;533;I16;;wPfAve;wpfave;1.000000;0.000000;;4
+414;3;534;I16;;wBusVolAve;wbusvolave;1.000000;0.000000;V;4
+415;3;535;I16;;wZbusVolAve;wzbusvolave;1.000000;0.000000;V;4
+416;3;536;I16;;wFbusVolAve;wfbusvolave;1.000000;0.000000;V;4
+417;3;537;I16;;wInvPtotalL;winvptotall;1.000000;0.000000;W;4
+418;3;538;I16;;wInvPtotalH;winvptotalh;1.000000;0.000000;;4
+419;3;539;I16;;wInvQtotalL;winvqtotall;1.000000;0.000000;Var;4
+420;3;540;I16;;wInvQtotalH;winvqtotalh;1.000000;0.000000;;4
+421;3;541;I16;;wInvStotalL;winvstotall;1.000000;0.000000;Va;4
+422;3;542;I16;;wInvStotalH;winvstotalh;1.000000;0.000000;;4
+423;3;543;I16;;wBatVol;wbatvol;1.000000;0.000000;V;4
+424;3;544;I16;;wBatCurr;wbatcurr;1.000000;0.000000;A;4
+425;3;545;I16;;wBatPower;wbatpower;1.000000;0.000000;KW;4
+426;3;546;I16;;uwInvState;uwinvstate;1.000000;0.000000;;4
+427;3;547;U16;;wModule1Temp;wmodule1temp;1.000000;0.000000;℃;4
+428;3;548;U16;;wModule2Temp;wmodule2temp;1.000000;0.000000;℃;4
+429;3;549;U16;;wModule3Temp;wmodule3temp;1.000000;0.000000;℃;4
+430;3;550;U16;;wRadiatorTemp;wradiatortemp;1.000000;0.000000;℃;4
+431;3;551;U16;;wReserved;wreserved;1.000000;0.000000;;0
+432;3;552;U16;;wEnvTemp;wenvtemp;1.000000;0.000000;℃;4
+433;3;553;U16;;uwFpowState;uwfpowstate;1.000000;0.000000;;4
+434;3;554;U16;;uwBatChgState;uwbatchgstate;1.000000;0.000000;;4
+435;3;555;U16;;uwBatDisChgState;uwbatdischgstate;1.000000;0.000000;;4
+436;3;556;U16;;uwZRegState;uwzregstate;1.000000;0.000000;;4
+437;3;557;U16;;uwFRegState;uwfregstate;1.000000;0.000000;;4
+438;3;558;U16;;uwAcRegState;uwacregstate;1.000000;0.000000;;4
+439;3;559;U16;;uwGridOffState;uwgridoffstate;1.000000;0.000000;;4
+440;3;624;U16;;Register_624;register_624;1.000000;0.000000;;1
+441;3;560;U16;;"uwOffGridInvVolSet;";uwoffgridinvvolset;1.000000;0.000000;V;4
+442;3;561;I16;;"wAcActPowerSet;";wacactpowerset;1.000000;0.000000;KW;4
+443;3;562;I16;;"wAcReactPowerSet;";wacreactpowerset;1.000000;0.000000;KVar;4
+444;3;563;U16;;Resever;resever;1.000000;0.000000;;4
+445;3;564;U16;;Resever;resever_1;1.000000;0.000000;;4
+446;3;565;U16;;Resever;resever_2;1.000000;0.000000;;4
+447;3;566;U16;;Resever;resever_3;1.000000;0.000000;;4
+448;3;567;U16;;Resever;resever_4;1.000000;0.000000;;4
+449;3;568;U16;;Resever;resever_5;1.000000;0.000000;;4
+450;3;569;U16;;Resever;resever_6;1.000000;0.000000;;4
+451;3;570;U16;;Resever;resever_7;1.000000;0.000000;;4
+452;3;571;U16;;Resever;resever_8;1.000000;0.000000;;4
+453;3;572;U16;;Resever;resever_9;1.000000;0.000000;;4
+454;3;573;U16;;Resever;resever_10;1.000000;0.000000;;4
+455;3;574;U16;;Resever;resever_11;1.000000;0.000000;;4
+456;3;575;U16;;Resever;resever_12;1.000000;0.000000;;4
+457;3;576;U16;;Resever;resever_13;1.000000;0.000000;;4
+458;3;577;U16;;Resever;resever_14;1.000000;0.000000;;4
+459;3;578;U16;;Resever;resever_15;1.000000;0.000000;;4
+460;3;579;U16;;Resever;resever_16;1.000000;0.000000;;4
+461;3;580;U16;;Resever;resever_17;1.000000;0.000000;;4
+462;3;581;U16;;Resever;resever_18;1.000000;0.000000;;4
+463;3;582;U16;;Resever;resever_19;1.000000;0.000000;;4
+464;3;583;U16;;Resever;resever_20;1.000000;0.000000;;4
+465;3;584;U16;;Resever;resever_21;1.000000;0.000000;;4
+466;3;585;U16;;Resever;resever_22;1.000000;0.000000;;4
+467;3;586;U16;;Resever;resever_23;1.000000;0.000000;;4
+468;3;587;U16;;Resever;resever_24;1.000000;0.000000;;4
+469;3;588;U16;;uwSoftVersion;uwsoftversion;1.000000;0.000000;;4
+470;3;589;U16;;uwBusFault;uwbusfault;1.000000;0.000000;;9
+471;3;590;U16;;uwAcCapFault;uwaccapfault;1.000000;0.000000;;9
+472;3;591;U16;;uwSysFault;uwsysfault;1.000000;0.000000;;9
+473;3;592;U16;;uwSwitchFault;uwswitchfault;1.000000;0.000000;;9
+474;3;593;U16;;uwOtherFault;uwotherfault;1.000000;0.000000;;9
+475;3;594;U16;;Register_594;register_594;1.000000;0.000000;;4
+476;3;595;U16;;Register_595;register_595;1.000000;0.000000;;4
+477;3;596;U16;;Register_596;register_596;1.000000;0.000000;;4
+478;3;597;U16;;Register_597;register_597;1.000000;0.000000;;4
+479;3;598;U16;;Register_598;register_598;1.000000;0.000000;;4
+480;3;599;U16;;Register_599;register_599;1.000000;0.000000;;4
+481;3;600;U16;;Register_600;register_600;1.000000;0.000000;;4
+482;3;601;U16;;Register_601;register_601;1.000000;0.000000;;4
+483;3;602;U16;;Register_602;register_602;1.000000;0.000000;;4
+484;3;603;U16;;Register_603;register_603;1.000000;0.000000;;4
+485;3;604;U16;;Register_604;register_604;1.000000;0.000000;;4
+486;3;605;U16;;Register_605;register_605;1.000000;0.000000;;1
+487;3;606;U16;;Register_606;register_606;1.000000;0.000000;;1
+488;3;607;U16;;Register_607;register_607;1.000000;0.000000;;1
+489;3;608;U16;;Register_608;register_608;1.000000;0.000000;;1
+490;3;609;U16;;Register_609;register_609;1.000000;0.000000;;1
+491;3;610;U16;;Register_610;register_610;1.000000;0.000000;;1
+492;3;611;U16;;Register_611;register_611;1.000000;0.000000;;1
+493;3;612;U16;;Register_612;register_612;1.000000;0.000000;;1
+494;3;613;U16;;Register_613;register_613;1.000000;0.000000;;1
+495;3;614;U16;;Register_614;register_614;1.000000;0.000000;;1
+496;3;615;U16;;Register_615;register_615;1.000000;0.000000;;1
+497;3;616;U16;;Register_616;register_616;1.000000;0.000000;;1
+498;3;617;U16;;Register_617;register_617;1.000000;0.000000;;1
+499;3;618;U16;;Register_618;register_618;1.000000;0.000000;;1
+500;3;619;U16;;Register_619;register_619;1.000000;0.000000;;1
+501;3;620;U16;;Register_620;register_620;1.000000;0.000000;;1
+502;3;621;U16;;Register_621;register_621;1.000000;0.000000;;1
+503;3;622;U16;;Register_622;register_622;1.000000;0.000000;;1
+504;3;623;U16;;Register_623;register_623;1.000000;0.000000;;1
+505;3;625;U16;;DCDC mode read address;dcdc_mode_read_address;1.000000;0.000000;;4
+506;3;626;U16;;uwDSP_Ver_V;uwdsp_ver_v;1.000000;0.000000;;4
+507;3;627;U16;;uwDSP_Ver_B;uwdsp_ver_b;1.000000;0.000000;;4
+508;3;628;U16;;uwDSP_Ver_D;uwdsp_ver_d;1.000000;0.000000;;4
+509;3;629;U16;;uwCPLD_Ver_V;uwcpld_ver_v;1.000000;0.000000;;4
+510;3;630;U16;;uwCPLD_Ver_B;uwcpld_ver_b;1.000000;0.000000;;4
+511;3;631;U16;;uwCPLD_Ver_D;uwcpld_ver_d;1.000000;0.000000;;4
+512;3;632;U16;;uwWorkState;uwworkstate;1.000000;0.000000;;4
+513;3;633;I16;;wRadiatorTemp;wradiatortemp_1;1.000000;0.000000;℃;4
+514;3;634;I16;;wHVoltageTotal;whvoltagetotal;1.000000;0.000000;V;4
+515;3;635;I16;;wHMPLVoltage;whmplvoltage;1.000000;0.000000;V;4
+516;3;636;I16;;wHNEGVoltage;whnegvoltage;1.000000;0.000000;V;4
+517;3;637;I16;;wHDifferVoltage;whdiffervoltage;1.000000;0.000000;V;4
+518;3;638;I16;;wLVoltage;wlvoltage;1.000000;0.000000;V;4
+519;3;639;I16;;wLCurrent;wlcurrent;1.000000;0.000000;A;4
+520;3;640;I16;;wMLDCPower;wmldcpower;1.000000;0.000000;KW;4
+521;3;641;I16;;wModeVibeTemp;wmodevibetemp;1.000000;0.000000;℃;4
+522;3;642;I16;;wTempRatedPower;wtempratedpower;1.000000;0.000000;KW;4
+523;3;643;U16;;uwMpptBoost;uwmpptboost;1.000000;0.000000;;4
+524;3;644;U16;;uwDehumiModuleRun;uwdehumimodulerun;1.000000;0.000000;;4
+525;3;645;U16;;uwInsulation_Z;uwinsulation_z;1.000000;0.000000;kΩ;4
+526;3;646;U16;;uwInsulation_F;uwinsulation_f;1.000000;0.000000;kΩ;4
+527;3;647;U16;;uwInsulation_Count;uwinsulation_count;1.000000;0.000000;S;4
+528;3;648;U16;;uwInsulation_Run;uwinsulation_run;1.000000;0.000000;;4
+529;3;649;U16;;uwDcdcModeParallel_Online;uwdcdcmodeparallel_online;1.000000;0.000000;;4
+530;3;650;U16;;uwDcdcModeParallel_Fault;uwdcdcmodeparallel_fault;1.000000;0.000000;;9
+531;3;651;U16;;uwDcdcModeParallel_Run;uwdcdcmodeparallel_run;1.000000;0.000000;;4
+532;3;652;U16;;uwModeAddr;uwmodeaddr;1.000000;0.000000;;4
+533;3;653;U16;;Resever;resever_25;1.000000;0.000000;;4
+534;3;654;U32;;uwChargPowerTotalL;uwchargpowertotall;1.000000;0.000000;kWh;4
+535;3;655;U16;;uwChargPowerTotalH;uwchargpowertotalh;1.000000;0.000000;;4
+536;3;656;U32;;uwDischargPowerTotalL;uwdischargpowertotall;1.000000;0.000000;kWh;4
+537;3;657;U16;;uwDischargPowerTotalH;uwdischargpowertotalh;1.000000;0.000000;;4
+538;3;658;U16;;uwHardwareFault_1;uwhardwarefault_1;1.000000;0.000000;;9
+539;3;659;U16;;uwHardwareFault_2;uwhardwarefault_2;1.000000;0.000000;;9
+540;3;660;U16;;uwDCDCFault;uwdcdcfault;1.000000;0.000000;;9
+541;3;661;U16;;uwHVolFault;uwhvolfault;1.000000;0.000000;;9
+542;3;662;U16;;uwBineFault;uwbinefault;1.000000;0.000000;;9
+543;3;663;U16;;uwSysFault;uwsysfault_1;1.000000;0.000000;;9
+544;3;664;U16;;uwSwitchFault;uwswitchfault_1;1.000000;0.000000;;9
+545;3;665;U16;;uwOtherFault;uwotherfault_1;1.000000;0.000000;;9
+546;3;666;U16;;Register_666;register_666;1.000000;0.000000;;1
+547;3;667;U16;;Register_667;register_667;1.000000;0.000000;;1
+548;3;668;U16;;uwChargPowerToday;uwchargpowertoday;1.000000;0.000000;KWH;4
+549;3;669;U16;;uwDischargPowerToday;uwdischargpowertoday;1.000000;0.000000;KWH;4
+550;3;749;U16;;Register_749;register_749;1.000000;0.000000;;1
+551;3;750;U16;;uwBatVoltageTotal;uwbatvoltagetotal;1.000000;0.000000;V;4
+552;3;751;U16;;uwBatCurrentTotal;uwbatcurrenttotal;1.000000;0.000000;A;4
+553;3;752;U16;;uwBatSocTotal;uwbatsoctotal;1.000000;0.000000;%;4
+554;3;753;U16;;uwBatSohTotal;uwbatsohtotal;1.000000;0.000000;%;4
+555;3;754;U16;;uwBatMaxChargCurrent;uwbatmaxchargcurrent;1.000000;0.000000;A;4
+556;3;755;U16;;uwBatMaxDischargCurrent;uwbatmaxdischargcurrent;1.000000;0.000000;A;4
+557;3;756;U16;;uwBatMaxChargPower;uwbatmaxchargpower;1.000000;0.000000;KW;4
+558;3;757;U16;;uwBatMaxDischargPower;uwbatmaxdischargpower;1.000000;0.000000;KW;4
+559;3;758;U16;;uwBatSingleMaxVoltage;uwbatsinglemaxvoltage;1.000000;0.000000;V;4
+560;3;759;U16;;uwBatSingleMinVoltage;uwbatsingleminvoltage;1.000000;0.000000;V;4
+561;3;760;U16;;uwBatSingleMaxTemp;uwbatsinglemaxtemp;1.000000;0.000000;℃;4
+562;3;761;U16;;uwBatSingleMinTemp;uwbatsinglemintemp;1.000000;0.000000;℃;4
+563;3;762;U16;;uwBatState;uwbatstate;1.000000;0.000000;;4
+564;3;763;U16;;uwMildAlarm;uwmildalarm;1.000000;0.000000;;9
+565;3;764;U16;;uwModerateAlarm;uwmoderatealarm;1.000000;0.000000;;9
+566;3;765;U16;;uwSeriousAlarm;uwseriousalarm;1.000000;0.000000;;9
+567;3;766;U16;;uwEmsBmsCom;uwemsbmscom;1.000000;0.000000;;4
+568;3;767;U16;;uwBatSingleMinSoc;uwbatsingleminsoc;1.000000;0.000000;;4
+569;3;768;U16;;uwBatSingleMaxSoc;uwbatsinglemaxsoc;1.000000;0.000000;;4
+570;3;769;U16;;uwReserve_0;uwreserve_0;1.000000;0.000000;;0
+571;3;770;U16;;uwReserve_1;uwreserve_1_1;1.000000;0.000000;;0
+572;3;771;U16;;uwReserve_2;uwreserve_2;1.000000;0.000000;;0
+573;3;772;U16;;uwReserve_3;uwreserve_3;1.000000;0.000000;;0
+574;3;773;U16;;uwReserve_4;uwreserve_4;1.000000;0.000000;;0
+575;3;774;U16;;uwReserve_5;uwreserve_5;1.000000;0.000000;;0
+576;3;775;U16;;uwReserve_6;uwreserve_6;1.000000;0.000000;;0
+577;3;776;U16;;uwReserve_7;uwreserve_7;1.000000;0.000000;;0
+578;3;777;U16;;uwReserve_8;uwreserve_8;1.000000;0.000000;;0
+579;3;778;U16;;uwReserve_9;uwreserve_9;1.000000;0.000000;;0
+580;3;779;U16;;uwReserve_10;uwreserve_10;1.000000;0.000000;;0
+581;3;780;U16;;uwReserve_11;uwreserve_11;1.000000;0.000000;;0
+582;3;781;U16;;uwReserve_12;uwreserve_12;1.000000;0.000000;;0
+583;3;782;U16;;uwSingleVoltage1_260;uwsinglevoltage1_260;1.000000;0.000000;V;4
+584;3;1042;U16;;uwTemp1_80;uwtemp1_80;1.000000;0.000000;℃;4
+585;3;1022;U16;;uwTemp1_60;uwtemp1_60;1.000000;0.000000;℃;4
+586;3;1124;U16;;Register_1124;register_1124;1.000000;0.000000;;1
+587;3;1375;U16;;uwFaultLevel;uwfaultlevel;1.000000;0.000000;;9
+588;3;1376;U16;;uwfaultData;uwfaultdata;1.000000;0.000000;;9
+589;3;1377;U16;;uwFireAlarmLevel;uwfirealarmlevel;1.000000;0.000000;;9
+590;3;1378;U16;;uwFireAlarmData;uwfirealarmdata;1.000000;0.000000;;9
+591;3;1379;I16;;uwAmbientTemp;uwambienttemp;1.000000;0.000000;℃;4
+592;3;1380;U16;;uwCO_Concen;uwco_concen;1.000000;0.000000;;4
+593;3;1381;U16;;uwInfraredValue;uwinfraredvalue;1.000000;0.000000;;4
+594;3;1382;U16;;Register_1382;register_1382;1.000000;0.000000;;1
+595;3;1383;U16;;Register_1383;register_1383;1.000000;0.000000;;1
+596;3;1499;U16;;Register_1499;register_1499;1.000000;0.000000;;1
+597;3;1384;U16;;uwSensorSmokeState;uwsensorsmokestate;1.000000;0.000000;;4
+598;3;1385;U16;;uwVersion;uwversion;1.000000;0.000000;;4
+599;3;1386;U16;;Register_1386;register_1386;1.000000;0.000000;;4
+600;3;1387;U16;;Register_1387;register_1387;1.000000;0.000000;ASCII;1
+601;3;1388;U16;;Register_1388;register_1388;1.000000;0.000000;ASCII;1
+602;3;1389;U16;;uwVocData;uwvocdata;1.000000;0.000000;;4
+603;3;1390;U16;;uwSensorVocState;uwsensorvocstate;1.000000;0.000000;;4
+604;3;1500;U16;;uwDeviceState;uwdevicestate;1.000000;0.000000;;4
+605;3;1501;U16;;uwIndFanState;uwindfanstate;1.000000;0.000000;;4
+606;3;1502;U16;;uwOutdFanState;uwoutdfanstate;1.000000;0.000000;;4
+607;3;1503;U16;;uwCompressorState;uwcompressorstate;1.000000;0.000000;;4
+608;3;1504;U16;;uwHeatRunState;uwheatrunstate;1.000000;0.000000;;4
+609;3;1505;I16;;wFrostTemp;wfrosttemp;1.000000;0.000000;℃;4
+610;3;1506;U16;;Reserve;reserve;1.000000;0.000000;;0
+611;3;1507;I16;;wCondensTemp;wcondenstemp;1.000000;0.000000;℃;4
+612;3;1508;I16;;wCabinetTemp;wcabinettemp;1.000000;0.000000;℃;4
+613;3;1509;U16;;uwCabinetHumidity;uwcabinethumidity;1.000000;0.000000;%;4
+614;3;1510;I16;;wOutletTemp;woutlettemp;1.000000;0.000000;℃;4
+615;3;1511;U16;;uwTheTempHigt;uwthetemphigt;1.000000;0.000000;;4
+616;3;1512;U16;;uwTheTempLow;uwthetemplow;1.000000;0.000000;;4
+617;3;1513;U16;;uwHumidityHigt;uwhumidityhigt;1.000000;0.000000;;4
+618;3;1514;U16;;uwHumidityLow;uwhumiditylow;1.000000;0.000000;;4
+619;3;1515;U16;;uwCoil;uwcoil;1.000000;0.000000;;4
+620;3;1516;U16;;uwReserve1541;uwreserve1541;1.000000;0.000000;;0
+621;3;1517;U16;;uwProbeFault;uwprobefault;1.000000;0.000000;;9
+622;3;1518;U16;;uwReserve1543;uwreserve1543;1.000000;0.000000;;0
+623;3;1519;U16;;uwGnprobeFault;uwgnprobefault;1.000000;0.000000;;9
+624;3;1520;U16;;uwGnTemProbeFault;uwgntemprobefault;1.000000;0.000000;;9
+625;3;1521;U16;;uwReserve1546;uwreserve1546;1.000000;0.000000;;0
+626;3;1522;U16;;uwHumProbeFault;uwhumprobefault;1.000000;0.000000;;9
+627;3;1523;U16;;uwNfanFault;uwnfanfault;1.000000;0.000000;;9
+628;3;1524;U16;;uwReserve1549;uwreserve1549;1.000000;0.000000;;0
+629;3;1525;U16;;uwCompreFault;uwcomprefault;1.000000;0.000000;;9
+630;3;1526;U16;;uwReserve1551;uwreserve1551;1.000000;0.000000;;0
+631;3;1527;U16;;uwReserve1552;uwreserve1552;1.000000;0.000000;;0
+632;3;1528;U16;;uwParHigtFault;uwparhigtfault;1.000000;0.000000;;9
+633;3;1529;U16;;uwParLowFault;uwparlowfault;1.000000;0.000000;;9
+634;3;1530;U16;;uwReserve1555;uwreserve1555;1.000000;0.000000;;0
+635;3;1531;U16;;uwReserve1556;uwreserve1556;1.000000;0.000000;;0
+636;3;1532;U16;;uwReserve1557;uwreserve1557;1.000000;0.000000;;0
+637;3;1533;U16;;uwParHigtLock;uwparhigtlock;1.000000;0.000000;;4
+638;3;1534;U16;;uwReserve1559;uwreserve1559;1.000000;0.000000;;0
+639;3;1535;U16;;uwReserve1560;uwreserve1560;1.000000;0.000000;;0
+640;3;1536;U16;;uwReserve1561;uwreserve1561;1.000000;0.000000;;0
+641;3;1537;U16;;uwReserve1562;uwreserve1562;1.000000;0.000000;;0
+642;3;1538;U16;;uwReserve1563;uwreserve1563;1.000000;0.000000;;0
+643;3;1539;U16;;uwReserve1564;uwreserve1564;1.000000;0.000000;;0
+644;3;1540;U16;;uwReserve1565;uwreserve1565;1.000000;0.000000;;0
+645;3;1541;U16;;uwPhaseAlarm;uwphasealarm;1.000000;0.000000;;9
+646;3;1542;U16;;uwReserve1567;uwreserve1567;1.000000;0.000000;;0
+647;3;1624;U16;;Register_1624;register_1624;1.000000;0.000000;;1
+648;3;1625;U16;;uwWaterPumpState;uwwaterpumpstate;1.000000;0.000000;;4
+649;3;1626;U16;;uwCompressorState;uwcompressorstate_1;1.000000;0.000000;;4
+650;3;1627;U16;;Reserve3;reserve3;1.000000;0.000000;;0
+651;3;1628;U16;;uwHeatState;uwheatstate;1.000000;0.000000;;4
+652;3;1629;U16;;uwCondensatState;uwcondensatstate;1.000000;0.000000;;4
+653;3;1630;I16;;wEffluentTemp;weffluenttemp;1.000000;0.000000;℃;4
+654;3;1631;I16;;wBackwaterTemp;wbackwatertemp;1.000000;0.000000;℃;4
+655;3;1632;U16;;uwEffluentPress;uweffluentpress;1.000000;0.000000;bar;4
+656;3;1633;U16;;uwBackwaterPress;uwbackwaterpress;1.000000;0.000000;bar;4
+657;3;1634;I16;;wAmbientTemp;wambienttemp;1.000000;0.000000;℃;4
+658;3;1635;U16;;uwFluidState;uwfluidstate;1.000000;0.000000;;4
+659;3;1636;U16;;uwOnOffState;uwonoffstate;1.000000;0.000000;;4
+660;3;1637;U16;;uwUnitNumber0;uwunitnumber0;1.000000;0.000000;;4
+661;3;1638;U16;;uwUnitNumber1;uwunitnumber1;1.000000;0.000000;;4
+662;3;1639;U16;;uwUnitNumber2;uwunitnumber2;1.000000;0.000000;;4
+663;3;1640;U16;;uwUnitNumber3;uwunitnumber3;1.000000;0.000000;;4
+664;3;1641;U16;;uwUnitNumber4;uwunitnumber4;1.000000;0.000000;;4
+665;3;1642;U16;;uwUnitNumber5;uwunitnumber5;1.000000;0.000000;;4
+666;3;1643;U16;;uwUnitNumber6;uwunitnumber6;1.000000;0.000000;;4
+667;3;1644;U16;;uwUnitNumber7;uwunitnumber7;1.000000;0.000000;;4
+668;3;1645;U16;;uwLocalRemoteStatus;uwlocalremotestatus;1.000000;0.000000;;9
+669;3;1646;U16;;uwCondensatPress;uwcondensatpress;1.000000;0.000000;bar;4
+670;3;1647;U16;;Reserve23;reserve23;1.000000;0.000000;;0
+671;3;1648;U16;;Reserve24;reserve24;1.000000;0.000000;;0
+672;3;1649;U16;;Reserve25;reserve25;1.000000;0.000000;;0
+673;3;1650;U16;;Reserve26;reserve26;1.000000;0.000000;;0
+674;3;1651;U16;;Reserve27;reserve27;1.000000;0.000000;;0
+675;3;1652;U16;;Reserve28;reserve28;1.000000;0.000000;;0
+676;3;1653;U16;;Reserve29;reserve29;1.000000;0.000000;;0
+677;3;1654;U16;;Reserve30;reserve30;1.000000;0.000000;;0
+678;3;1655;U16;;uwAlarmState_1;uwalarmstate_1;1.000000;0.000000;;9
+679;3;1656;U16;;uwAlarmState_2;uwalarmstate_2;1.000000;0.000000;;9
+680;3;1657;U16;;uwAlarmState_3;uwalarmstate_3;1.000000;0.000000;;9
+681;3;1658;U16;;uwAlarmState_4;uwalarmstate_4;1.000000;0.000000;;9
+682;3;1659;U16;;Register_1659;register_1659;1.000000;0.000000;;1
+683;3;1749;U16;;Register_1749;register_1749;1.000000;0.000000;;1
+684;3;1660;U16;;High voltage protection;high_voltage_protection;1.000000;0.000000;;4
+685;3;1661;U16;;Low voltage protection;low_voltage_protection;1.000000;0.000000;;4
+686;3;1662;U16;;Protection against high exhaust temperature;protection_against_high_exhaust_temperature;1.000000;0.000000;;4
+687;3;1663;U16;;Low water outlet temperature protection;low_water_outlet_temperature_protection;1.000000;0.000000;;4
+688;3;1664;U16;;High temperature protection for fins;high_temperature_protection_for_fins;1.000000;0.000000;;4
+689;3;1665;U16;;Protection against high temperature difference between inlet and outlet water;protection_against_high_temperature_difference_between_inlet_and_outlet_water;1.000000;0.000000;;4
+690;3;1666;U16;;External fan 1 malfunction;external_fan_1_malfunction;1.000000;0.000000;;4
+691;3;1667;U16;;Communication failure of external fan 1;communication_failure_of_external_fan_1;1.000000;0.000000;;9
+692;3;1668;U16;;Overload fault of external fan 1;overload_fault_of_external_fan_1;1.000000;0.000000;;9
+693;3;1669;U16;;External fan 2 malfunction;external_fan_2_malfunction;1.000000;0.000000;;4
+694;3;1670;U16;;Communication failure of external fan 2;communication_failure_of_external_fan_2;1.000000;0.000000;;9
+695;3;1671;U16;;Overload fault of external fan 2;overload_fault_of_external_fan_2;1.000000;0.000000;;9
+696;3;1672;U16;;Compressor 1 malfunction;compressor_1_malfunction;1.000000;0.000000;;4
+697;3;1673;U16;;Communication fault of compressor 1;communication_fault_of_compressor_1;1.000000;0.000000;;9
+698;3;1674;U16;;Compressor 2 malfunction;compressor_2_malfunction;1.000000;0.000000;;4
+699;3;1675;U16;;Communication fault of compressor 2;communication_fault_of_compressor_2;1.000000;0.000000;;9
+700;3;1676;U16;;Water pump malfunction;water_pump_malfunction;1.000000;0.000000;;4
+701;3;1677;U16;;Communication failure of water pump;communication_failure_of_water_pump;1.000000;0.000000;;9
+702;3;1678;U16;;Water pump overload fault;water_pump_overload_fault;1.000000;0.000000;;9
+703;3;1679;U16;;Machine status;machine_status;1.000000;0.000000;;9
+704;3;1680;U16;;External fan 1;external_fan_1;1.000000;0.000000;;4
+705;3;1681;U16;;External fan 2;external_fan_2;1.000000;0.000000;;4
+706;3;1682;U16;;Compressor 1;compressor_1;1.000000;0.000000;;4
+707;3;1683;U16;;Compressor 2;compressor_2;1.000000;0.000000;;4
+708;3;1684;U16;;Electric heating;electric_heating;1.000000;0.000000;;4
+709;3;1685;U16;;water pump;water_pump;1.000000;0.000000;;4
+710;3;1686;U16;;Makeup pump;makeup_pump;1.000000;0.000000;;4
+711;3;1687;U16;;Fault alarm;fault_alarm;1.000000;0.000000;;9
+712;3;1750;U16;;uwRunState;uwrunstate;1.000000;0.000000;;4
+713;3;1751;U16;;uwState_1;uwstate_1;1.000000;0.000000;;4
+714;3;1752;U16;;uwState_2;uwstate_2;1.000000;0.000000;;4
+715;3;1753;U16;;uwFault;uwfault;1.000000;0.000000;;9
+716;3;1754;U16;;uwAmbiHum;uwambihum;1.000000;0.000000;%RH;4
+717;3;1755;I16;;uwAmbiTemp;uwambitemp;1.000000;0.000000;℃;4
+718;3;1756;I16;;uwColdTemp;uwcoldtemp;1.000000;0.000000;℃;4
+719;3;1757;U16;;Register_1757;register_1757;1.000000;0.000000;;1
+720;3;1874;U16;;Register_1874;register_1874;1.000000;0.000000;;1
+721;3;1758;U16;;uwDefrostingState;uwdefrostingstate;1.000000;0.000000;;4
+722;3;1759;U16;;uwTHumisw;uwthumisw;1.000000;0.000000;;4
+723;3;1760;U16;;uwTTempsw;uwttempsw;1.000000;0.000000;;4
+724;3;1761;U16;;uwGTempAlarm;uwgtempalarm;1.000000;0.000000;;9
+725;3;1762;I16;;wITempValue;witempvalue;1.000000;0.000000;℃;4
+726;3;1763;I16;;wHTempValue;whtempvalue;1.000000;0.000000;℃;4
+727;3;1764;U16;;uwHHumiValue;uwhhumivalue;1.000000;0.000000;%RH;4
+728;3;1765;U16;;uwreserve_1;uwreserve_1_2;1.000000;0.000000;;0
+729;3;1766;U16;;uwreserve_2;uwreserve_2_1;1.000000;0.000000;;0
+730;3;1767;U16;;uwreserve_3;uwreserve_3_1;1.000000;0.000000;;0
+731;3;1768;U16;;uwreserve_4;uwreserve_4_1;1.000000;0.000000;;0
+732;3;1769;U16;;uwreserve_5;uwreserve_5_1;1.000000;0.000000;;0
+733;3;1770;U16;;uwCTempStartValue;uwctempstartvalue;1.000000;0.000000;℃;4
+734;3;1771;U16;;uwCTempStopValue;uwctempstopvalue;1.000000;0.000000;℃;4
+735;3;1772;U16;;uwCHuimStartValue;uwchuimstartvalue;1.000000;0.000000;%RH;4
+736;3;1773;U16;;uwCHuimStopValue;uwchuimstopvalue;1.000000;0.000000;%RH;4
+737;3;1774;U16;;uwTempAlarmMaxLim;uwtempalarmmaxlim;1.000000;0.000000;℃;9
+738;3;1775;U16;;uwTempAlarmMinLim;uwtempalarmminlim;1.000000;0.000000;℃;9
+739;3;1776;U16;;Register_1776;register_1776;1.000000;0.000000;;1
+740;3;1777;U16;;Register_1777;register_1777;1.000000;0.000000;;1

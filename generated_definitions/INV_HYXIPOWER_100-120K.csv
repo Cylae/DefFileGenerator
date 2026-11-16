@@ -1,9 +1,9 @@
-﻿modbus;Inverter;HYXIPOWER;100-120K;;;;;;;
+modbus;Inverter;HYXIPOWER;100-120K;;;;;;;
 1;4;1;U16;;Lower Bits of Main DSP Program Version Number;;1.000000;0.000000;;4
 2;4;2;U16;;High-order Bits of Main DSP Program Version Number;;1.000000;0.000000;;4
-3;4;12;I16;;Ambient Temperature 1;;0.100000;0.000000;Celsius;4
+3;4;12;I16;;Ambient Temperature 1;TEMP_AMB;0.100000;0.000000;Celsius;4
 4;4;13;I16;;Ambient Temperature 2;;0.100000;0.000000;Celsius;4
-5;4;14;I16;;Inverter Phase A Module Temperature;;0.100000;0.000000;Celsius;4
+5;4;14;I16;;Inverter Phase A Module Temperature;TEMP_CELL;0.100000;0.000000;Celsius;4
 6;4;15;I16;;Inverter Phase B Module Temperature;;0.100000;0.000000;Celsius;4
 7;4;16;I16;;Inverter Phase C Module Temperature;;0.100000;0.000000;Celsius;4
 8;4;17;I16;;Boost Module 1 Temperature;;0.100000;0.000000;Celsius;4
@@ -12,7 +12,7 @@
 11;4;20;I16;;Boost Radiator Temperature;;0.100000;0.000000;Celsius;4
 12;4;21;U16;;System Status Machine;;1.000000;0.000000;;4
 13;4;25;U16;;Inverter Start Stop Status;;1.000000;0.000000;;4
-14;4;26;U16;;Inverter ISO Insulation Resistance Value;;1.000000;0.000000;kOhm;4
+14;4;26;U16;;Inverter ISO Insulation Resistance Value;R_ISO;1.000000;0.000000;kOhm;4
 15;4;27;U16;;Inverter Leakage Current Detection Value;;1.000000;0.000000;mA;4
 16;4;31;U16;;System L3 Fault Status Word 1;;1.000000;0.000000;;4
 17;4;32;U16;;System L3 Fault Status Word 2;;1.000000;0.000000;;4
@@ -27,17 +27,17 @@
 26;4;41;U16;;System L1 Fault Status Word 5;;1.000000;0.000000;;4
 27;4;42;U16;;System L0 Fault Status Word 1;;1.000000;0.000000;;4
 28;4;43;U16;;System L0 Fault Status Word 2;;1.000000;0.000000;;4
-29;4;100;U16;;Phase A Grid Voltage RMS;;0.100000;0.000000;V;4
-30;4;101;U16;;Phase B Grid Voltage RMS Value;;0.100000;0.000000;V;4
-31;4;102;U16;;Phase C Grid Voltage RMS Value;;0.100000;0.000000;V;4
-32;4;103;U16;;Grid Voltage Frequency;;0.010000;0.000000;Hz;4
-33;4;111;U16;;AC Current Phase A RMS;;0.100000;0.000000;A;4
-34;4;112;U16;;AC Current Phase B RMS;;0.100000;0.000000;A;4
-35;4;113;U16;;AC Current Phase C RMS;;0.100000;0.000000;A;4
-36;4;116;I16;;Grid-side Active Power;;0.010000;0.000000;kW;4
-37;4;117;I16;;Grid-side Reactive Power;;0.010000;0.000000;kVar;4
-38;4;118;U16;;Grid-side Apparent Power;;0.010000;0.000000;kVA;4
-39;4;119;I16;;Grid-side Power Factor;;0.010000;0.000000;;4
+29;4;100;U16;;Phase A Grid Voltage RMS;U_AC_1;0.100000;0.000000;V;4
+30;4;101;U16;;Phase B Grid Voltage RMS Value;U_AC_2;0.100000;0.000000;V;4
+31;4;102;U16;;Phase C Grid Voltage RMS Value;U_AC_3;0.100000;0.000000;V;4
+32;4;103;U16;;Grid Voltage Frequency;FREQ;0.010000;0.000000;Hz;4
+33;4;111;U16;;AC Current Phase A RMS;I_AC_1;0.100000;0.000000;A;4
+34;4;112;U16;;AC Current Phase B RMS;I_AC_2;0.100000;0.000000;A;4
+35;4;113;U16;;AC Current Phase C RMS;I_AC_3;0.100000;0.000000;A;4
+36;4;116;I16;;Grid-side Active Power;P_AC;0.010000;0.000000;kW;4
+37;4;117;I16;;Grid-side Reactive Power;Q_AC;0.010000;0.000000;kVar;4
+38;4;118;U16;;Grid-side Apparent Power;S_AC;0.010000;0.000000;kVA;4
+39;4;119;I16;;Grid-side Power Factor;PF;0.010000;0.000000;;4
 40;4;188;U16;;CPLD Fault Word 1;;1.000000;0.000000;;4
 41;4;189;U16;;CPLD Fault Word 2;;1.000000;0.000000;;4
 42;4;401;U16;;DSP Program Version Number Low Bits;;1.000000;0.000000;;4
@@ -57,25 +57,25 @@
 56;4;434;U16;;System L0 Fault Status Word 4 PV Mapping;;1.000000;0.000000;;4
 57;4;435;U16;;Number of PV Channels;;1.000000;0.000000;;4
 58;4;436;U16;;Total PV Power;P_DC;0.010000;0.000000;kW;4
-59;4;440;I16;;PV1 Current;;0.100000;0.000000;A;4
-60;4;441;I16;;PV2 Current;;0.100000;0.000000;A;4
-61;4;442;I16;;PV3 Current;;0.100000;0.000000;A;4
-62;4;443;I16;;PV4 Current;;0.100000;0.000000;A;4
-63;4;444;I16;;PV5 Current;;0.100000;0.000000;A;4
-64;4;445;I16;;PV6 Current;;0.100000;0.000000;A;4
-65;4;446;I16;;PV7 Current;;0.100000;0.000000;A;4
-66;4;447;I16;;PV8 Current;;0.100000;0.000000;A;4
-67;4;448;I16;;PV9 Current;;0.100000;0.000000;A;4
-68;4;449;I16;;PV10 Current;;0.100000;0.000000;A;4
-69;4;450;I16;;PV11 Current;;0.100000;0.000000;A;4
-70;4;451;I16;;PV12 Current;;0.100000;0.000000;A;4
-71;4;452;I16;;PV13 Current;;0.100000;0.000000;A;4
+59;4;440;I16;;PV1 Current;I_DC_STRING_1;0.100000;0.000000;A;4
+60;4;441;I16;;PV2 Current;I_DC_STRING_2;0.100000;0.000000;A;4
+61;4;442;I16;;PV3 Current;I_DC_STRING_3;0.100000;0.000000;A;4
+62;4;443;I16;;PV4 Current;I_DC_STRING_4;0.100000;0.000000;A;4
+63;4;444;I16;;PV5 Current;I_DC_STRING_5;0.100000;0.000000;A;4
+64;4;445;I16;;PV6 Current;I_DC_STRING_6;0.100000;0.000000;A;4
+65;4;446;I16;;PV7 Current;I_DC_STRING_7;0.100000;0.000000;A;4
+66;4;447;I16;;PV8 Current;I_DC_STRING_8;0.100000;0.000000;A;4
+67;4;448;I16;;PV9 Current;I_DC_STRING_9;0.100000;0.000000;A;4
+68;4;449;I16;;PV10 Current;I_DC_STRING_10;0.100000;0.000000;A;4
+69;4;450;I16;;PV11 Current;I_DC_STRING_11;0.100000;0.000000;A;4
+70;4;451;I16;;PV12 Current;I_DC_STRING_12;0.100000;0.000000;A;4
+71;4;452;I16;;PV13 Current;I_DC_MPPT_7;0.100000;0.000000;A;4
 72;4;453;I16;;PV14 Current;;0.100000;0.000000;A;4
-73;4;454;I16;;PV15 Current;;0.100000;0.000000;A;4
+73;4;454;I16;;PV15 Current;I_DC_MPPT_8;0.100000;0.000000;A;4
 74;4;455;I16;;PV16 Current;;0.100000;0.000000;A;4
-75;4;456;I16;;PV17 Current;;0.100000;0.000000;A;4
-76;4;457;I16;;PV18 Current;;0.100000;0.000000;A;4
-77;4;458;I16;;PV19 Current;;0.100000;0.000000;A;4
+75;4;456;I16;;PV17 Current;I_DC_STRING_17;0.100000;0.000000;A;4
+76;4;457;I16;;PV18 Current;I_DC_STRING_18;0.100000;0.000000;A;4
+77;4;458;I16;;PV19 Current;I_DC_MPPT_1;0.100000;0.000000;A;4
 78;4;459;I16;;PV20 Current;;0.100000;0.000000;A;4
 79;4;502;U16;;Boost1 Voltage;;0.100000;0.000000;V;4
 80;4;503;I16;;Boost1 Current;;0.100000;0.000000;A;4
@@ -149,7 +149,7 @@
 148;4;1511;U16;;Uni AC Current Phase A RMS Value;;0.100000;0.000000;A;4
 149;4;1512;U16;;Uni AC Current Phase B RMS;;0.100000;0.000000;A;4
 150;4;1513;U16;;Uni AC Current Phase C RMS;;0.100000;0.000000;A;4
-151;4;1514;F32_W;;Uni Grid-side Active Power;P_AC;1.000000;0.000000;kW;4
+151;4;1514;F32_W;;Uni Grid-side Active Power;;1.000000;0.000000;kW;4
 152;4;1516;F32_W;;Uni Grid-side Reactive Power;;1.000000;0.000000;kVar;4
 153;4;1518;F32_W;;Uni Grid-side Apparent Power;;1.000000;0.000000;kVA;4
 154;4;1520;F32_W;;Uni PV Total Power;;1.000000;0.000000;kW;4
@@ -157,13 +157,13 @@
 156;4;1524;F32_W;;Uni Phase S Active Power;;1.000000;0.000000;kW;4
 157;4;1526;F32_W;;Uni Phase T Active Power;;1.000000;0.000000;kW;4
 158;4;1528;I16;;Uni Grid-side Power Factor;;0.010000;0.000000;;4
-159;4;1529;U16;;Uni DC Bus Voltage;;0.100000;0.000000;V;4
+159;4;1529;U16;;Uni DC Bus Voltage;U_DC;0.100000;0.000000;V;4
 160;4;1530;U16;;Uni System State Machine;;1.000000;0.000000;;4
 161;4;1531;U16;;Uni Daily Generation;;0.100000;0.000000;kWh;4
 162;4;1532;U16;;Uni A Equivalent Daily Electricity Generation;;0.100000;0.000000;kWh;4
 163;4;1533;U16;;Uni B Equivalent Daily Electricity Output;;0.100000;0.000000;kWh;4
 164;4;1534;U16;;Uni C Equivalent Daily Electricity Generation;;0.100000;0.000000;kWh;4
-165;4;1535;U16;;Uni Rated Power;;1.000000;0.000000;kW;4
+165;4;1535;U16;;Uni Rated Power;P_RATED;1.000000;0.000000;kW;4
 166;4;1536;U16;;Uni Rated Frequency;;0.010000;0.000000;Hz;4
 167;4;1537;U16;;Uni Rated Voltage;;1.000000;0.000000;V;4
 168;4;1538;U16;;Uni Maximum Reactive Power Output;;0.100000;0.000000;kVar;4

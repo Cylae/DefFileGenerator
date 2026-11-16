@@ -1,4 +1,4 @@
-﻿Modbus;Meter;Carlo_Gavazzi;EM210;;;;;;;
+Modbus;Meter;Carlo_Gavazzi;EM210;;;;;;;
 1;3;1;I32;;volt1;;0.100000;0.000000;V;4
 2;3;3;I32;;volt2;;0.100000;0.000000;V;4
 3;3;5;I32;;volt3;;0.100000;0.000000;V;4
@@ -11,14 +11,14 @@
 10;3;25;I32;;apparent_power1;;0.100000;0.000000;VA;4
 11;3;27;I32;;apparent_power2;;0.100000;0.000000;VA;4
 12;3;29;I32;;apparent_power3;;0.100000;0.000000;VA;4
-13;3;31;I32;;reactive_power1;;0.100000;0.000000;VAR;4
+13;3;31;I32;;reactive_power1;Q_AC;0.100000;0.000000;VAR;4
 14;3;33;I32;;reactive_power2;;0.100000;0.000000;VAR;4
 15;3;35;I32;;reactive_power3;;0.100000;0.000000;VAR;4
 16;3;37;I32;;volt;;0.100000;0.000000;V;4
 17;3;39;I32;;V l-l;;0.100000;0.000000;V;4
 18;3;41;I32;;power;P_AC;0.100000;0.000000;W;4
 19;3;43;I32;;apparent_power;S_AC;0.100000;0.000000;VA;4
-20;3;45;I32;;reactive_power;Q_AC;0.100000;0.000000;VAR;4
+20;3;45;I32;;reactive_power;;0.100000;0.000000;VAR;4
 21;3;47;I16;;Pf l1;;0.001000;0.000000;;4
 22;3;48;I16;;Pf l2;;0.001000;0.000000;;4
 23;3;49;I16;;Pf l3;;0.001000;0.000000;;4
@@ -90,7 +90,7 @@
 89;3;12;U16;;Carlo Gavazzi Controls identification code;;1.000000;0.000000;;4
 90;3;4099;U16;;Measuring system;;1.000000;0.000000;;4
 91;3;4100;U32;;Primary current;;1.000000;0.000000;;4
-92;3;4102;U32;;Voltage transformer ratio;;1.000000;0.000000;;4
+92;3;4102;U32;;Voltage transformer ratio;SERIAL;1.000000;0.000000;;4
 93;3;4104;U16;;Sensor selection;;1.000000;0.000000;;4
 94;3;4105;U16;;Range Rogowski sensor;;1.000000;0.000000;;4
 95;3;4357;U16;;Wrong connection (Installing help) management enabling;;1.000000;0.000000;;4

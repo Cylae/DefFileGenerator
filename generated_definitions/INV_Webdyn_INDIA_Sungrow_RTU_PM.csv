@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Sungrow;110;;;;;;;
+modbusRTU;Inverter;Sungrow;110;;;;;;;
 1;4;4999;U16;;Inverter type code;;1.000000;0.000000;;4
 2;4;5000;U16;;Rated AC Power;;0.100000;0.000000;kW;4
 3;4;5001;U16;;Output type;;1.000000;0.000000;;4
@@ -46,7 +46,7 @@
 45;4;5071;I32;;Leakage current;;1.000000;0.000000;;4
 46;4;5114;U16;;MPPT 4 voltage;U_DC_MPPT_4;1.000000;0.000000;;4
 47;4;5115;U16;;MPPT 4 current;I_DC_MPPT_4;1.000000;0.000000;;4
-48;4;5038;U16;;Power Limitation adjustment;;0.100000;0.000000;kw;4
+48;4;5038;U16;;Power Limitation adjustment;CMD_P_AC_LIM_ABS;0.100000;0.000000;kw;1
 49;4;5039;U16;;Power Limitation adjustment2;;0.100000;0.000000;kw;4
 50;4;5014;U16;;Ex Power Lim per;;0.100000;0.000000;%;4
 51;4;5015;U16;;Ex Power Lim per2;;1.000000;0.000000;%;4

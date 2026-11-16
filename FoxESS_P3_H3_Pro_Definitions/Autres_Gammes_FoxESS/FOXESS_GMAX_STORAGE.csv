@@ -34,7 +34,7 @@
 33;3;94;U16;;Modbus fault recovery;modbus_fault_recovery;1.000000;0.000000;;1
 34;3;95;U16;;ModbusTCP communication loss strategy enable;modbustcp_communication_loss_strategy_enable;1.000000;0.000000;;1
 35;3;102;U16;;Instruction mode (0 subsystem/1 plan/2 total instructions);instruction_mode_0_subsystem1_plan2_total_instructions;1.000000;0.000000;;1
-36;3;103;U16;;;;1.000000;0.000000;;1
+36;3;103;U16;;Register_103;register_103;1.000000;0.000000;;1
 37;3;104;U16;;Control source (local 0/remote 1/other);control_source_local_0remote_1other;1.000000;0.000000;;1
 38;3;105;U16;;Total active power command;total_active_power_command;10.000000;0.000000;kW;1
 39;3;106;U16;;Total reactive power command;total_reactive_power_command;10.000000;0.000000;kVar;1
@@ -603,8 +603,8 @@
 602;4;216;U16;;Maximum monomer temperature monomer number;maximum_monomer_temperature_monomer_number;1.000000;0.000000;;4
 603;4;217;U16;;Minimum cell temperature cluster number;minimum_cell_temperature_cluster_number;1.000000;0.000000;;4
 604;4;218;U16;;Minimum monomer temperature monomer number;minimum_monomer_temperature_monomer_number;1.000000;0.000000;;4
-605;4;219;U16;;;;10.000000;0.000000;A;4
-606;4;220;U16;;;;10.000000;0.000000;A;4
+605;4;219;U16;;Register_219;register_219;10.000000;0.000000;A;4
+606;4;220;U16;;Register_220;register_220;10.000000;0.000000;A;4
 607;4;223;U16;;Maximum pressure difference of monomer;maximum_pressure_difference_of_monomer;1.000000;0.000000;mV;4
 608;4;224;U16;;Stack power;stack_power;1.000000;0.000000;KW;4
 609;4;227;U16;;Cumulative cluster charging capacity;cumulative_cluster_charging_capacity;1.000000;0.000000;KWh;4
@@ -627,14 +627,14 @@
 626;4;2214;U16;;Minimum cell voltage Cell number;minimum_cell_voltage_cell_number_1;1.000000;0.000000;;4
 627;4;2216;U16;;Maximum monomer temperature monomer number;maximum_monomer_temperature_monomer_number_1;1.000000;0.000000;;4
 628;4;2218;U16;;Minimum monomer temperature monomer number;minimum_monomer_temperature_monomer_number_1;1.000000;0.000000;;4
-629;4;2219;U16;;;;10.000000;0.000000;A;4
-630;4;2220;U16;;;;10.000000;0.000000;A;4
+629;4;2219;U16;;Register_2219;register_2219;10.000000;0.000000;A;4
+630;4;2220;U16;;Register_2220;register_2220;10.000000;0.000000;A;4
 631;4;2221;U16;;Number of cluster batteries;number_of_cluster_batteries;1.000000;0.000000;;4
 632;4;2222;U16;;Number of cluster temperatures;number_of_cluster_temperatures;1.000000;0.000000;;4
-633;4;2223;U16;;;;1.000000;0.000000;mV;4
+633;4;2223;U16;;Register_2223;register_2223;1.000000;0.000000;mV;4
 634;4;2224;U16;;Cluster Power;cluster_power;1.000000;0.000000;KW;4
-635;4;2225;U16;;;;1.000000;0.000000;;4
-636;4;2226;U16;;;;1.000000;0.000000;;4
+635;4;2225;U16;;Register_2225;register_2225;1.000000;0.000000;;4
+636;4;2226;U16;;Register_2226;register_2226;1.000000;0.000000;;4
 637;4;2227;U16;;Cumulative cluster charging capacity;cumulative_cluster_charging_capacity_1;1.000000;0.000000;KWh;4
 638;4;2229;U16;;Cumulative cluster discharge capacity;cumulative_cluster_discharge_capacity_1;1.000000;0.000000;KWh;4
 639;2;201;U16;;Negative bus insulation moderate alarm;negative_bus_insulation_moderate_alarm;1.000000;0.000000;;9

@@ -1,17 +1,17 @@
-﻿Modbus;Inverter;SMA;Generic;;;;;;;
+Modbus;Inverter;SMA;Generic;;;;;;;
 1;3;30001;U32;;Version number of the SMA Modbus profile;;1.000000;0.000000;;4
 2;3;30003;U32;;SUSy-ID;;1.000000;0.000000;;4
 3;3;30005;U32;;Serial number;SERIAL;1.000000;0.000000;;4
 4;3;30007;U32;;Modbus data change;;1.000000;0.000000;;4
 5;3;30051;U32;;Device class;;1.000000;0.000000;;4
 6;3;30053;U32;;Numerical identification of the device type;;1.000000;0.000000;;4
-7;3;30055;U32;;Manufacturer specification;;1.000000;0.000000;;4
+7;3;30055;U32;;Manufacturer specification;MANUFACTURER;1.000000;0.000000;;4
 8;3;30057;U32;;Serial number 2;;1.000000;0.000000;;4
 9;3;30059;U32;;Software package;;1.000000;0.000000;;4
-10;3;30197;U32;;Number of the current event;;1.000000;0.000000;;4
+10;3;30197;U32;;Number of the current event;WIND_SPEED;1.000000;0.000000;;4
 11;3;30199;U32;;Time until grid connection attempt;;1.000000;0.000000;s;4
 12;3;30201;U32;;Status of the device;;1.000000;0.000000;;4
-13;3;30203;U32;;Displays the maximum active power for status OK;;1.000000;0.000000;W;4
+13;3;30203;U32;;Displays the maximum active power for status OK;P_AC;1.000000;0.000000;W;4
 14;3;30205;U32;;Displays the maximum active power for status Warning;;1.000000;0.000000;W;4
 15;3;30207;U32;;Displays the maximum active power for status Error;;1.000000;0.000000;W;4
 16;3;30211;U32;;Recommended action;;1.000000;0.000000;;4
@@ -23,7 +23,7 @@
 22;3;30227;U32;;Status of key switch;;1.000000;0.000000;;4
 23;3;30229;U32;;Local time of device;;1.000000;0.000000;;4
 24;3;30231;U32;;Maximum possible permanent active power;;1.000000;0.000000;w;4
-25;3;30233;U32;;Permanent active power limitation;;1.000000;0.000000;w;4
+25;3;30233;U32;;Permanent active power limitation;CMD_P_AC_SET_ABS;1.000000;0.000000;w;4
 26;3;30235;U32;;Backup mode status;;1.000000;0.000000;;4
 27;3;30237;U32;;Grid type;;1.000000;0.000000;;4
 28;3;30247;U32;;Current_ complete event number;;1.000000;0.000000;;4
@@ -101,7 +101,7 @@
 100;3;30529;U32;;Total AC energy fed in on all line conductors 1;;1.000000;0.000000;Wh;4
 101;3;30531;U32;;Total AC energy fed in on all line conductors 2;;1.000000;0.000000;kWh;4
 102;3;30533;U32;;Total AC energy fed in on all line conductors 3;;1.000000;0.000000;MWh;4
-103;3;30535;U32;;Energy fed in on the current day on all line conductors 1;;1.000000;0.000000;Wh;4
+103;3;30535;U32;;Energy fed in on the current day on all line conductors 1;I_AC_3;1.000000;0.000000;Wh;4
 104;3;30537;U32;;Energy fed in on the current day on all line conductors 2;;1.000000;0.000000;kWh;4
 105;3;30539;U32;;Energy fed in on the current day on all line conductors 3;;1.000000;0.000000;MWh;4
 106;3;30541;U32;;Operating time 3;;1.000000;0.000000;s;4
@@ -113,8 +113,8 @@
 112;3;30561;U32;;Number of events at installer level;;1.000000;0.000000;;4
 113;3;30563;U32;;Number of events at service level;;1.000000;0.000000;;4
 114;3;30565;U32;;Number of generator starts;;1.000000;0.000000;;4
-115;3;30567;U32;;Meter for battery charging ampere-hours;;1.000000;0.000000;(Ah);4
-116;3;30569;U32;;Meter for battery discharging in ampere-hours;;1.000000;0.000000;(Ah);4
+115;3;30567;U32;;Meter for battery charging ampere-hours;;1.000000;0.000000; (Ah);4
+116;3;30569;U32;;Meter for battery discharging in ampere-hours;;1.000000;0.000000; (Ah);4
 117;3;30571;U32;;Meter reading consumption meter;;1.000000;0.000000;Wh);4
 118;3;30573;U32;;Operating time of generator;;1.000000;0.000000;s;4
 119;3;30575;U32;;Released energy from generator;;1.000000;0.000000;Wh;4
@@ -131,39 +131,39 @@
 130;3;30597;U32;;Fed energy;;1.000000;0.000000;Wh;4
 131;3;30599;U32;;Number of grid connections;;1.000000;0.000000;;4
 132;3;30601;U32;;Operating time of interior fan 3;;1.000000;0.000000;s;4
-133;3;30769;I32;;DC current input 1;;0.001000;0.000000;A;4
-134;3;30771;I32;;DC voltage input 1;;0.010000;0.000000;V;4
-135;3;30773;I32;;DC power input 1;;1.000000;0.000000;W;4
-136;3;30775;I32;;Active power on all line conductors;;1.000000;0.000000;W;4
-137;3;30777;I32;;Active power of line conductor L1;;1.000000;0.000000;W;4
-138;3;30779;I32;;Active power of line conductor L2;;1.000000;0.000000;W;4
-139;3;30781;I32;;Active power of line conductor L3;;1.000000;0.000000;W;4
-140;3;30783;U32;;Line voltage_ line conductor L1 to N;;0.010000;0.000000;V;4
-141;3;30785;U32;;Line voltage_ line conductor L2 to N;;0.010000;0.000000;V;4
-142;3;30787;U32;;Line voltage_ line conductor L3 to N;;0.010000;0.000000;V;4
+133;3;30769;I32;;DC current input 1;I_DC;0.001000;0.000000;A;4
+134;3;30771;I32;;DC voltage input 1;U_DC;0.010000;0.000000;V;4
+135;3;30773;I32;;DC power input 1;P_DC;1.000000;0.000000;W;4
+136;3;30775;I32;;Active power on all line conductors;CMD_ON;1.000000;0.000000;W;4
+137;3;30777;I32;;Active power of line conductor L1;P_AC_1;1.000000;0.000000;W;4
+138;3;30779;I32;;Active power of line conductor L2;P_AC_2;1.000000;0.000000;W;4
+139;3;30781;I32;;Active power of line conductor L3;P_AC_3;1.000000;0.000000;W;4
+140;3;30783;U32;;Line voltage_ line conductor L1 to N;U_AC_1;0.010000;0.000000;V;4
+141;3;30785;U32;;Line voltage_ line conductor L2 to N;U_AC_2;0.010000;0.000000;V;4
+142;3;30787;U32;;Line voltage_ line conductor L3 to N;U_AC_3;0.010000;0.000000;V;4
 143;3;30789;U32;;Line voltage_ line conductor L1 to L2;;0.010000;0.000000;V;4
 144;3;30791;U32;;Line voltage_ line conductor L2 to L3;;0.010000;0.000000;V;4
 145;3;30793;U32;;Line voltage_ line conductor L3 to L1;;0.010000;0.000000;V;4
 146;3;30795;U32;;Line current on all line conductors;;0.001000;0.000000;A;4
-147;3;30797;U32;;Line current of line conductor L1-1;;0.001000;0.000000;A;4
-148;3;30799;U32;;Line current of line conductor L2-1;;0.001000;0.000000;A;4
+147;3;30797;U32;;Line current of line conductor L1-1;I_AC_1;0.001000;0.000000;A;4
+148;3;30799;U32;;Line current of line conductor L2-1;I_AC_2;0.001000;0.000000;A;4
 149;3;30801;U32;;Line current of line conductor L3-1;;0.001000;0.000000;A;4
-150;3;30803;U32;;Power frequency;;0.010000;0.000000;Hz;4
+150;3;30803;U32;;Power frequency;FREQ;0.010000;0.000000;Hz;4
 151;3;30805;I32;;Reactive power on all line conductors;;1.000000;0.000000;VAr;4
-152;3;30807;I32;;Reactive power of line conductor L1;;1.000000;0.000000;VAr;4
-153;3;30809;I32;;Reactive power of line conductor L2;;1.000000;0.000000;VAr;4
-154;3;30811;I32;;Reactive power of line conductor L3;;1.000000;0.000000;VAr;4
+152;3;30807;I32;;Reactive power of line conductor L1;Q_AC_1;1.000000;0.000000;VAr;4
+153;3;30809;I32;;Reactive power of line conductor L2;Q_AC_2;1.000000;0.000000;VAr;4
+154;3;30811;I32;;Reactive power of line conductor L3;Q_AC_3;1.000000;0.000000;VAr;4
 155;3;30813;I32;;Apparent power on all line conductors;;1.000000;0.000000;VA;4
-156;3;30815;I32;;Apparent power of line conductor L1;;1.000000;0.000000;VA;4
-157;3;30817;I32;;Apparent power of line conductor L2;;1.000000;0.000000;VA;4
-158;3;30819;I32;;Apparent power of line conductor L3;;1.000000;0.000000;VA;4
-159;3;30821;U32;;Total displacement power factor of all line conductors;;0.010000;0.000000;;4
+156;3;30815;I32;;Apparent power of line conductor L1;S_AC_1;1.000000;0.000000;VA;4
+157;3;30817;I32;;Apparent power of line conductor L2;S_AC_2;1.000000;0.000000;VA;4
+158;3;30819;I32;;Apparent power of line conductor L3;S_AC_3;1.000000;0.000000;VA;4
+159;3;30821;U32;;Total displacement power factor of all line conductors;PF;0.010000;0.000000;;4
 160;3;30823;U32;;Excitation type of cos;;1.000000;0.000000;;4
-161;3;30843;I32;;Battery current;I_DC;0.001000;0.000000;A;4
-162;3;30845;U32;;Current battery state of charge;;1.000000;0.000000;%;4
+161;3;30843;I32;;Battery current;;0.001000;0.000000;A;4
+162;3;30845;U32;;Current battery state of charge;SOC;1.000000;0.000000;%;4
 163;3;30847;U32;;Current battery capacity;;1.000000;0.000000;%;4
 164;3;30849;I32;;Battery temperature;TEMP;1.000000;0.000000;C;4
-165;3;30851;U32;;Battery voltage;U_DC;0.010000;0.000000;V;4
+165;3;30851;U32;;Battery voltage;;0.010000;0.000000;V;4
 166;3;30853;U32;;Active battery charging mode;;1.000000;0.000000;;4
 167;3;30855;U32;;Current battery charging voltage setpoint;;0.010000;0.000000;V;4
 168;3;30857;I32;;Number of battery charge throughputs;;1.000000;0.000000;;4
@@ -184,11 +184,11 @@
 183;3;30887;U32;;Power of external grid connection line conductor L1;;1.000000;0.000000;W;4
 184;3;30889;U32;;Power of external grid connection line conductor L2;;1.000000;0.000000;W;4
 185;3;30891;U32;;Power of external grid connection line conductor L3;;1.000000;0.000000;W;4
-186;3;30893;U32;;Reactive power of external grid connection;;1.000000;0.000000;Var;4
+186;3;30893;U32;;Reactive power of external grid connection;Q_AC;1.000000;0.000000;Var;4
 187;3;30895;U32;;Reactive power of external grid connection line conductor L1;;1.000000;0.000000;Var;4
 188;3;30897;U32;;Reactive power of external grid connection line conductor L2;;1.000000;0.000000;Var;4
 189;3;30899;U32;;Reactive power of external grid connection line conductor L3;;1.000000;0.000000;Var;4
-190;3;30901;U32;;Power frequency of external grid connection;FREQ;0.010000;0.000000;Hz;4
+190;3;30901;U32;;Power frequency of external grid connection;;0.010000;0.000000;Hz;4
 191;3;30903;U32;;Voltage of external grid connection line conductor L1;;0.010000;0.000000;V;4
 192;3;30905;U32;;Voltage of external grid connection line conductor L2;;0.010000;0.000000;V;4
 193;3;30907;U32;;Voltage of external grid connection line conductor L3;;0.010000;0.000000;V;4
@@ -197,7 +197,7 @@
 196;3;30913;I32;;Current external grid connection line conductor L3;;0.001000;0.000000;A;4
 197;3;30915;U32;;Electricity supply status 2;;1.000000;0.000000;;4
 198;3;30917;U32;;Generator status;;1.000000;0.000000;;4
-199;3;30925;U32;;Data transfer rate of network terminal A;;1.000000;0.000000;;4
+199;3;30925;U32;;Data transfer rate of network terminal A;I_AC;1.000000;0.000000;;4
 200;3;30927;U32;;Duplex mode of network terminal A;;1.000000;0.000000;;4
 201;3;30929;U32;;Speedwire connection status of network terminal A;;1.000000;0.000000;;4
 202;3;30931;U32;;Data transfer rate of network terminal B;;1.000000;0.000000;;4
@@ -226,7 +226,7 @@
 225;3;30977;I32;;Line current of line conductor L1-2;;0.001000;0.000000;A;4
 226;3;30979;I32;;Line current of line conductor L2-2;;0.001000;0.000000;A;4
 227;3;30981;I32;;Line current of line conductor L3-2;;0.001000;0.000000;A;4
-228;3;30983;U32;;PV power;P_DC;1.000000;0.000000;W;4
+228;3;30983;U32;;PV power;;1.000000;0.000000;W;4
 229;3;30985;I32;;Total current at the external grid connection;;0.001000;0.000000;A;4
 230;3;30987;U32;;Error battery state of charge;;0.000000;0.000000;%;4
 231;3;30989;U32;;Maximum occurring battery current in charge direction;;0.001000;0.000000;A;4
@@ -263,7 +263,7 @@
 262;3;31079;U32;;PV energy at solar charge controller 2;;1.000000;0.000000;Wh;4
 263;3;31081;U32;;PV energy at solar charge controller 3;;1.000000;0.000000;Wh;4
 264;3;31083;U32;;PV energy at solar charge controller 4;;1.000000;0.000000;Wh;4
-265;3;31085;U32;;Nominal power in OK mode;;1.000000;0.000000;W;4
+265;3;31085;U32;;Nominal power in OK mode;P_RATED;1.000000;0.000000;W;4
 266;3;31091;U32;;PV energy produced (today);;1.000000;0.000000;Wh;4
 267;3;31093;U32;;PV energy produced (yesterday);;1.000000;0.000000;Wh;4
 268;3;31095;U32;;PV energy produced (current month);;1.000000;0.000000;Wh;4
@@ -289,7 +289,7 @@
 288;3;31135;I32;;Reactive power of the load;;1.000000;0.000000;VAr;4
 289;3;31137;I32;;Maximum short-term power reduction;;1.000000;0.000000;W;4
 290;3;31139;I32;;Current PV reactive power fed;;1.000000;0.000000;VAr;4
-291;3;31141;I32;;Current PV apparent power fed;;1.000000;0.000000;VAr;4
+291;3;31141;I32;;Current PV apparent power fed;S_AC;1.000000;0.000000;VAr;4
 292;3;31143;I32;;Monitoring value return;;1.000000;0.000000;;4
 293;3;31159;I32;;Current setpoint Reactive power Q;;1.000000;0.000000;;4
 294;3;31221;I32;;EEI displacement power factor;;0.001000;0.000000;;4
@@ -362,7 +362,7 @@
 361;3;31391;U32;;Current state of the battery part (without inverter part);;1.000000;0.000000;;4
 362;3;31393;U32;;Battery charging current battery state of charge;;1.000000;0.000000;W;4
 363;3;31395;U32;;Battery discharging current battery state of charge;;1.000000;0.000000;W;4
-364;3;31397;U64;;Battery state of charge;SOC;1.000000;0.000000;Wh;4
+364;3;31397;U64;;Battery state of charge;;1.000000;0.000000;Wh;4
 365;3;31401;U64;;Battery state of discharge;;1.000000;0.000000;Wh;4
 366;3;31791;U32;;Number of DC current measurement units;;1.000000;0.000000;;4
 367;3;31793;I32;;String current of strings 1;;0.001000;0.000000;A;4
@@ -569,14 +569,14 @@
 568;3;34121;I32;;Transformer temperature 1;;1.000000;0.000000;C;4
 569;3;34125;I32;;External temperature 1 of supply air;;1.000000;0.000000;C;4
 570;3;34127;I32;;Highest measured external temperature 1;;1.000000;0.000000;C;4
-571;3;34609;I32;;Ambient temperature 1;;1.000000;0.000000;C;4
+571;3;34609;I32;;Ambient temperature 1;TEMP_AMB;1.000000;0.000000;C;4
 572;3;34611;I32;;Highest measured ambient temperature;;1.000000;0.000000;C;4
 573;3;34613;U32;;Total irradiation on the sensor surface;;1.000000;0.000000;W/m2;4
 574;3;34615;U32;;Wind speed 1;;0.100000;0.000000;m/s;4
-575;3;34617;U32;;Humidity;;0.010000;0.000000;%;4
+575;3;34617;U32;;Humidity;HUMIDITY;0.010000;0.000000;%;4
 576;3;34619;U32;;Air pressure;PRESSURE;0.010000;0.000000;Pa;4
-577;3;34621;I32;;PV module temperature;;1.000000;0.000000;C;4
-578;3;34623;U32;;Total irradiation on the external irradiation sensor_pyranometer;;1.000000;0.000000;W/m2;4
+577;3;34621;I32;;PV module temperature;TEMP_CELL;1.000000;0.000000;C;4
+578;3;34623;U32;;Total irradiation on the external irradiation sensor_pyranometer;POA;1.000000;0.000000;W/m2;4
 579;3;34625;I32;;Ambient temperature 2;;1.000000;0.000000;F;4
 580;3;34627;I32;;Ambient temperature 3;;1.000000;0.000000;K;4
 581;3;34629;I32;;PV module temperature 1;;1.000000;0.000000;F;4
@@ -807,7 +807,7 @@
 806;3;40787;U32;;Behavior of the cluster in the event of a device fault;;1.000000;0.000000;;4
 807;3;40789;U32;;Communication version;;1.000000;0.000000;;4
 808;3;40791;U32;;Time-out for communication error message (s);;1.000000;0.000000;s;4
-809;3;40803;U32;;Determine state of health;;1.000000;0.000000;;4
+809;3;40803;U32;;Determine state of health;SOH;1.000000;0.000000;;4
 810;3;40805;U32;;Energy saving mode;;1.000000;0.000000;;4
 811;3;40807;U32;;Hardware version of the logic component;;1.000000;0.000000;;4
 812;3;40809;U32;;Revision status of the logic component;;1.000000;0.000000;;4
@@ -820,7 +820,7 @@
 819;3;40825;U32;;Update version of the protocol converter;;1.000000;0.000000;;4
 820;3;40827;U32;;Serial number of the protocol converter;;1.000000;0.000000;;4
 821;3;40829;U32;;SUSy ID of the protocol converter;;1.000000;0.000000;;4
-822;3;40833;I32;;Reactive power setpoint;;1.000000;0.000000;Var;4
+822;3;40833;I32;;Reactive power setpoint;CMD_Q_AC_SET_PERCENT;1.000000;0.000000;Var;4
 823;3;40835;I32;;Input monitoring value;;1.000000;0.000000;;4
 824;3;40837;I32;;Estimated fuel consumption since the last reset;;0.100000;0.000000;m3;4
 825;3;40839;I32;;Estimated current fuel consumption;;0.100000;0.000000;l/h;4
@@ -845,7 +845,7 @@
 844;3;41171;U32;;Set total yield;;1.000000;0.000000;kWh;4
 845;3;41173;U32;;Set total operating time at the grid-connection point;;1.000000;0.000000;h;4
 846;3;41187;U32;;Source of the reference measurement for the reactive_active power control mode;;1.000000;0.000000;;4
-847;3;41199;U32;;Set active power limit at the grid-connection point_ in _ of the system_s nominal power;;1.000000;0.000000;%;4
+847;3;41199;U32;;Set active power limit at the grid-connection point_ in _ of the system_s nominal power;CMD_P_AC_SET_PERCENT;1.000000;0.000000;%;4
 848;3;41203;U32;;Nominal PV system power;;1.000000;0.000000;W;4
 849;3;41205;U32;;Hardware version of battery management system;;1.000000;0.000000;;4
 850;3;41217;U32;;Set active power limit at the grid-connection point;;1.000000;0.000000;W;4

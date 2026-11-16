@@ -1,4 +1,4 @@
-﻿modbusRTU;Inverter;Kaco;NX1_NX3_ModbusRTU;;;;;;;
+modbusRTU;Inverter;Kaco;NX1_NX3_ModbusRTU;;;;;;;
 1;4;31001_2;STRING;;Device Type: 1=Single phase / 3=Three pahse;;1.000000;0.000000;;4
 2;4;31002;U16;;Modbus address;;1.000000;0.000000;;4
 3;4;31003_32;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
@@ -117,7 +117,7 @@
 116;3;45255;U16;;DCI protect time;;1.000000;0.000000;ms;4
 117;3;45401;U16;;Load rate of first connection to grid;;1.000000;0.000000;'%Pn/min;4
 118;3;45402;U16;;Load rate of re-connection to grid;;1.000000;0.000000;'%Pn/min;4
-119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.010000;0.000000;'%Pn;4
+119;3;45403;U16;;Active Power Set;CMD_P_AC_SET_PERCENT;0.010000;0.000000;'%Pn;1
 120;3;45404;U16;;Increase rate of active power;;0.010000;0.000000;'%Pn/min;4
 121;3;45405;U16;;Decrease rate of active power;;0.010000;0.000000;'%Pn/min;4
 122;3;45408;U16;;Over frequency reduce power mode;;1.000000;0.000000;;4

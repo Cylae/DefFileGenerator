@@ -1,0 +1,19 @@
+{
+  "status": "SUCCESS",
+  "generated_timestamp": "2026-11-16T13:46:05Z",
+  "elapsed_seconds": 85.52,
+  "total_valid_definitions": 1445,
+  "total_registers": 483509,
+  "total_tags": 33413,
+  "categories": {
+    "BAT": 44,
+    "COM": 36,
+    "FOXESS": 15,
+    "INV": 581,
+    "MARSLOCALCONTROLLER": 4,
+    "MARSRENEWABLE": 13,
+    "MET": 248,
+    "OTH": 434,
+    "SEN": 70
+  }
+}

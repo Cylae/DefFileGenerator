@@ -1,0 +1,40 @@
+﻿modbusRTU;Other;Ticmaster;Copie de TicMaster-Mapping - F;;;;;;;
+1;3;1542;U16;;Puissance active moyenne soutirée 1 minute;puissance_active_moyenne_soutire_1_minute;1.000000;0.000000;;4
+2;3;1532;U16;;Puissance active moyenne injectée 1 minute;puissance_active_moyenne_injecte_1_minute;1.000000;0.000000;;4
+3;3;1560;U16;;Puissance réactive moyenne soutirée 1 minute;puissance_ractive_moyenne_soutire_1_minute;1.000000;0.000000;;4
+4;3;1686;U16;;Puissance réactive moyenne injectée 1 minute;puissance_ractive_moyenne_injecte_1_minute;1.000000;0.000000;;4
+5;3;646;U16;;Date courante (JJ/MM/AA);date_courante_jjmmaa;1.000000;0.000000;;4
+6;3;648;U16;;Heure courante (HH:MM:SS);heure_courante_hhmmss;1.000000;0.000000;;4
+7;3;2010;U16;;Tangente Phi (soutirage);tangente_phi_soutirage;1.000000;0.000000;;4
+8;3;2012;U16;;Tangente Phi (injection);tangente_phi_injection;1.000000;0.000000;;4
+9;3;1594;U16;;Tension moyenne Tc mn calculée lors du précédent Tc;tension_moyenne_tc_mn_calcule_lors_du_prcdent_tc;1.000000;0.000000;;4
+10;3;1998;U16;;Puissance active moyenne soutirée sur le dernier Top Td;puissance_active_moyenne_soutire_sur_le_dernier_top_td;1.000000;0.000000;;4
+11;3;2000;U16;;Puissance active moyenne injectée sur le dernier Top Td;puissance_active_moyenne_injecte_sur_le_dernier_top_td;1.000000;0.000000;;4
+12;3;1982;U16;;Poste tarifaire en cours pour la grille Distributeur;poste_tarifaire_en_cours_pour_la_grille_distributeur;1.000000;0.000000;;4
+13;3;2014;U16;;Poste tarifaire en cours pour la grille Fournisseur;poste_tarifaire_en_cours_pour_la_grille_fournisseur;1.000000;0.000000;;4
+14;3;2354;U16;;Puissance souscrite - Périodes 1;puissance_souscrite_priodes_1;1.000000;0.000000;;4
+15;3;2356;U16;;Puissance souscrite - Périodes 2;puissance_souscrite_priodes_2;1.000000;0.000000;;4
+16;3;2358;U16;;Puissance souscrite - Périodes 3;puissance_souscrite_priodes_3;1.000000;0.000000;;4
+17;3;2360;U16;;Puissance souscrite - Périodes 4;puissance_souscrite_priodes_4;1.000000;0.000000;;4
+18;3;2362;U16;;Puissance souscrite - Périodes 5;puissance_souscrite_priodes_5;1.000000;0.000000;;4
+19;3;2364;U16;;Puissance souscrite - Périodes 6;puissance_souscrite_priodes_6;1.000000;0.000000;;4
+20;3;2366;U16;;Puissance souscrite - Périodes 7;puissance_souscrite_priodes_7;1.000000;0.000000;;4
+21;3;2368;U16;;Puissance souscrite - Périodes 8;puissance_souscrite_priodes_8;1.000000;0.000000;;4
+22;3;2066;U16;;Energie réactive négative (soutirage) - Périodes 1;energie_ractive_ngative_soutirage_priodes_1;1.000000;0.000000;;4
+23;3;2068;U16;;Energie réactive négative (soutirage) - Périodes 2;energie_ractive_ngative_soutirage_priodes_2;1.000000;0.000000;;4
+24;3;2070;U16;;Energie réactive négative (soutirage) - Périodes 3;energie_ractive_ngative_soutirage_priodes_3;1.000000;0.000000;;4
+25;3;2072;U16;;Energie réactive négative (soutirage) - Périodes 4;energie_ractive_ngative_soutirage_priodes_4;1.000000;0.000000;;4
+26;3;2074;U16;;Energie réactive négative (soutirage) - Périodes 5;energie_ractive_ngative_soutirage_priodes_5;1.000000;0.000000;;4
+27;3;2076;U16;;Energie réactive négative (soutirage) - Périodes 6;energie_ractive_ngative_soutirage_priodes_6;1.000000;0.000000;;4
+28;3;2078;U16;;Energie réactive négative (soutirage) - Périodes 7;energie_ractive_ngative_soutirage_priodes_7;1.000000;0.000000;;4
+29;3;2080;U16;;Energie réactive négative (soutirage) - Périodes 8;energie_ractive_ngative_soutirage_priodes_8;1.000000;0.000000;;4
+30;3;2084;U16;;Energie active (injection) - Périodes 1;energie_active_injection_priodes_1;1.000000;0.000000;;4
+31;3;2086;U16;;Energie active (injection) - Périodes 2;energie_active_injection_priodes_2;1.000000;0.000000;;4
+32;3;2088;U16;;Energie active (injection) - Périodes 3;energie_active_injection_priodes_3;1.000000;0.000000;;4
+33;3;2090;U16;;Energie active (injection) - Périodes 4;energie_active_injection_priodes_4;1.000000;0.000000;;4
+34;3;2092;U16;;Energie active (injection) - Périodes 5;energie_active_injection_priodes_5;1.000000;0.000000;;4
+35;3;2094;U16;;Energie active (injection) - Périodes 6;energie_active_injection_priodes_6;1.000000;0.000000;;4
+36;3;2096;U16;;Energie active (injection) - Périodes 7;energie_active_injection_priodes_7;1.000000;0.000000;;4
+37;3;2098;U16;;Energie active (injection) - Périodes 8;energie_active_injection_priodes_8;1.000000;0.000000;;4
+38;3;2316;U16;;Index cumulé d'énergie active soutirée;index_cumul_dnergie_active_soutire;1.000000;0.000000;;4
+39;3;2100;U16;;Index cumulé d'énergie active injectée;index_cumul_dnergie_active_injecte;1.000000;0.000000;;4
