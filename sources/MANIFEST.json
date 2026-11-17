@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2026-11-17T14:07:19.540251",
+  "total_documents": 4,
+  "documents": [
+    {
+      "document_id": "SRC-CP-001",
+      "manufacturer": "CyberPower",
+      "title": "CyberPower Grid-Tied PV Inverter Modbus Protocol",
+      "filename": "CyberPower Grid_tied PV Inverter Modbus Protocol(V0104) 1.pdf",
+      "relative_path": "sources/manuals/CyberPower/CyberPower Grid_tied PV Inverter Modbus Protocol(V0104) 1.pdf",
+      "size_bytes": 1602998,
+      "sha256": "53a807570b4bb742d455652dba1dd88337737f1d1a4811ef4bdee82846bed4c9",
+      "version": "V1.04",
+      "release_date": "2024-05-13",
+      "protocol": "Modbus RTU / TCP (FC 03, 04, 06, 16)",
+      "models_covered": [
+        "CPSPV3000ETLA",
+        "CPSPV3600ETLA",
+        "CPSPV6000ETLA",
+        "CPSPV8000ETLA",
+        "CPSPV10000ETLA",
+        "CPSPV12000ETLA",
+        "CPSPV15000ETLA",
+        "CPSPV22000ETLA-WB",
+        "CPSPV30000ETLA-WB",
+        "CPSPV33000ETLA-WB",
+        "CPSPV36000ETLA-WB",
+        "CPSPV50000ETL-WB",
+        "CPSPV55000ETL-WB",
+        "CPSPV66000ETL-WB",
+        "CPSPV120KETL",
+        "CPSPV140KETL"
+      ],
+      "definitions_generated": [
+        "INV_Cyberpower_GENERIC.csv",
+        "INV_Cyberpower_1-Phase.csv",
+        "INV_Cyberpower_3-Phases.csv",
+        "INV_Cyberpower_CPSPV120K-140K.csv"
+      ],
+      "indexed_at": "2026-11-17T14:07:19.530349"
+    },
+    {
+      "document_id": "SRC-FX-001",
+      "manufacturer": "FoxESS",
+      "title": "FoxESS Modbus Protocol Specification",
+      "filename": "FoxESS Modbus Protocol--20260701 (V1.05.05.00).pdf",
+      "relative_path": "sources/manuals/FoxESS/FoxESS Modbus Protocol--20260701 (V1.05.05.00).pdf",
+      "size_bytes": 2212603,
+      "sha256": "2b1642aa345db58c00206237d051cd6a4098ba234c1333088b89c16378bd4b59",
+      "version": "V1.05.05.00",
+      "release_date": "2026-07-01",
+      "protocol": "Modbus RTU (FC 03, 04, 06, 16)",
+      "models_covered": [
+        "H3-Pro",
+        "P3-Pro",
+        "R Series",
+        "G-MAX Storage"
+      ],
+      "definitions_generated": [
+        "INV_FoxESS_H3_Pro.csv",
+        "INV_FoxESS_P3_Pro.csv",
+        "INV_FoxESS_P3_H3_Pro_AllInOne.csv",
+        "INV_FoxESS_RSeries.csv",
+        "BAT_FoxESS_GMax_Storage.csv",
+        "BAT_FoxESS_H3_Pro.csv",
+        "BAT_FoxESS_P3_Pro.csv",
+        "BAT_FoxESS_RSeries.csv"
+      ],
+      "indexed_at": "2026-11-17T14:07:19.533204"
+    },
+    {
+      "document_id": "SRC-MR-001",
+      "manufacturer": "MarsEnergy",
+      "title": "Mars Local Controller IO List Modbus TCP",
+      "filename": "MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+      "relative_path": "sources/manuals/MarsEnergy/MarsLocalController_IO List_ModbusTCP_V7.0.xlsx",
+      "size_bytes": 67198,
+      "sha256": "a7604630355335c47c2f48e9d8b028770e507b1389c604b3cd3c2313a9fcd835",
+      "version": "V7.0",
+      "release_date": "2024-02-15",
+      "protocol": "Modbus TCP",
+      "models_covered": [
+        "Local Controller LC",
+        "PCS-Bank",
+        "Rack-Cell BMS",
+        "PV"
+      ],
+      "definitions_generated": [
+        "OTH_MarsEnergy_LC.csv",
+        "OTH_MarsEnergy_PCS-Bank.csv",
+        "BAT_MarsEnergy_Rack-Cell.csv",
+        "SEN_MarsEnergy_PV.csv"
+      ],
+      "indexed_at": "2026-11-17T14:07:19.533921"
+    },
+    {
+      "document_id": "SRC-SP-001",
+      "manufacturer": "Solplanet",
+      "title": "Solplanet Ai-Logger Modbus TCP User Manual",
+      "filename": "Ailogger modbus TCP user manual V1.2 202404.pdf",
+      "relative_path": "sources/manuals/Solplanet/Ailogger modbus TCP user manual V1.2 202404.pdf",
+      "size_bytes": 5963239,
+      "sha256": "40a9ba06b5198685ea443e4fd4e02a0e49dd3b7c37d2836ae7d671bb7725f2b2",
+      "version": "V1.2",
+      "release_date": "2024-04-24",
+      "protocol": "Modbus TCP (Slave ID 239 & RTU Proxy, FC 04, 06, 16)",
+      "models_covered": [
+        "Ai-Logger",
+        "Ai-Logger 1000"
+      ],
+      "definitions_generated": [
+        "COM_Solplanet_Ai-Logger.csv"
+      ],
+      "indexed_at": "2026-11-17T14:07:19.540232"
+    }
+  ]
+}

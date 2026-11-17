@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1116 fichiers de définition certifiés** couvrant **345,462 registres Modbus** et **29,288 tags SunPM canoniques** à travers **137 constructeurs mondiaux**.
+Comprend **1117 fichiers de définition certifiés** couvrant **345,705 registres Modbus** et **29,656 tags SunPM canoniques** à travers **137 constructeurs mondiaux**.
 
 ---
 
@@ -10,7 +10,7 @@ Comprend **1116 fichiers de définition certifiés** couvrant **345,462 registre
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Tags Actifs | Exemples Constructeurs |
 |---|---|---|---|---|---|
-| Onduleurs & Convertisseurs (Inverter) | `INV_` | 416 | 123,370 | 14,286 | 5, ABB, APsystems, AnswerDrives, Atess (+57) |
+| Onduleurs & Convertisseurs (Inverter) | `INV_` | 417 | 123,613 | 14,654 | 5, ABB, APsystems, AnswerDrives, Atess (+57) |
 | Compteurs & Analyseurs Réseau (Meter) | `MET_` | 194 | 29,194 | 2,490 | ABB, AEberle, Acrel, Algodue, Anexo (+48) |
 | Systèmes BESS & Batteries (Battery) | `BAT_` | 48 | 51,316 | 1,884 | AlroSolar, Atmoce, Dyness, FoxESS, Hoymiles (+6) |
 | Capteurs Météo & Pyranomètres (Sensor) | `SEN_` | 53 | 1,326 | 169 | Atersa, BD, Blet, DeltaOhm, EKO (+17) |
@@ -44,9 +44,9 @@ Comprend **1116 fichiers de définition certifiés** couvrant **345,462 registre
 | **Siel** | 15 | 280 | 7 | Inverter, Other |
 | **Kehua** | 14 | 1,976 | 530 | Inverter, Other |
 | **Lettel** | 14 | 2,722 | 296 | Meter, Other |
+| **Cyberpower** | 13 | 1,425 | 520 | Inverter, Other |
 | **IngenieurBuro** | 13 | 91 | 24 | Other, Sensor |
 | **Janitza** | 13 | 6,582 | 236 | Meter |
-| **Cyberpower** | 12 | 1,182 | 152 | Inverter, Other |
 | **Kostal** | 12 | 1,371 | 245 | Inverter, Other |
 | **SolaX** | 12 | 2,304 | 176 | Battery, Inverter |
 | **KippZonen** | 11 | 361 | 17 | Other, Sensor |
@@ -321,8 +321,9 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Cyberpower_CPSHB6000ETL48-CPSHB6000ETLFR.csv`](./INV_Cyberpower_CPSHB6000ETL48-CPSHB6000ETLFR.csv) | Inverter | Cyberpower | CPSHB6000ETL48-CPSHB6000ETLFR | Modbus | 103 | 4 |
 | [`INV_Cyberpower_CPSHB6000ETL48_CPSHB6000ETLFR.csv`](./INV_Cyberpower_CPSHB6000ETL48_CPSHB6000ETLFR.csv) | Inverter | Cyberpower | CPSHB6000ETL48_CPSHB6000ETLFR | Modbus | 103 | 20 |
 | [`OTH_Cyberpower_CPSHB6000ETL48_CPSHB6000ETLFR.csv`](./OTH_Cyberpower_CPSHB6000ETL48_CPSHB6000ETLFR.csv) | Other | Cyberpower | CPSHB6000ETL48_CPSHB6000ETLFR | Modbus | 103 | 20 |
+| [`INV_Cyberpower_CPSPV120K-140K.csv`](./INV_Cyberpower_CPSPV120K-140K.csv) | Inverter | Cyberpower | CPSPV120K-140K | Modbus | 244 | 186 |
 | [`OTH_Cyberpower_Cyberpower3Ph_50000ETL.csv`](./OTH_Cyberpower_Cyberpower3Ph_50000ETL.csv) | Other | Cyberpower | Cyberpower3Ph_50000ETL | Modbus | 80 | 22 |
-| [`INV_Cyberpower_GENERIC.csv`](./INV_Cyberpower_GENERIC.csv) | Inverter | Cyberpower | GENERIC | Modbus | 245 | 4 |
+| [`INV_Cyberpower_GENERIC.csv`](./INV_Cyberpower_GENERIC.csv) | Inverter | Cyberpower | GENERIC | Modbus | 244 | 186 |
 | [`INV_Cyberpower_Modbus_1Ph.csv`](./INV_Cyberpower_Modbus_1Ph.csv) | Inverter | Cyberpower | Modbus_1Ph | Modbus | 85 | 11 |
 | [`OTH_Cyberpower_Modbus_1Ph.csv`](./OTH_Cyberpower_Modbus_1Ph.csv) | Other | Cyberpower | Modbus_1Ph | Modbus | 85 | 10 |
 | [`INV_Cyberpower_Modbus_3Ph.csv`](./INV_Cyberpower_Modbus_3Ph.csv) | Inverter | Cyberpower | Modbus_3Ph | Modbus | 71 | 13 |
