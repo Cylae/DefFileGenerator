@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **131 fichiers de définition** validés couvrant **23 238 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **132 fichiers de définition** validés couvrant **23 494 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,7 +8,7 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 68 | 15 347 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe (+22) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 69 | 15 603 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe (+22) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 31 | 3 394 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+14) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 4 | 3 700 | Dyness |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
@@ -33,7 +33,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (68 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (69 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -66,6 +66,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Growatt_MOD_TL3-XH_Series.csv`](./INV_Growatt_MOD_TL3-XH_Series.csv) | Growatt | MOD_TL3-XH_Series | Modbus | 409 |
 | [`INV_Growatt_TL-X_TL-XH_Series.csv`](./INV_Growatt_TL-X_TL-XH_Series.csv) | Growatt | TL-X_TL-XH_Series | Modbus | 425 |
 | [`INV_Growatt_TL3-X_Series.csv`](./INV_Growatt_TL3-X_Series.csv) | Growatt | TL3-X_Series | Modbus | 371 |
+| [`INV_Huawei_GENERIC.csv`](./INV_Huawei_GENERIC.csv) | Huawei | GENERIC | Modbus | 256 |
 | [`INV_Huawei_V4.csv`](./INV_Huawei_V4.csv) | Huawei | SUN2000_V4 | modbusRTU | 392 |
 | [`INV_Huawei_V2.csv`](./INV_Huawei_V2.csv) | Huawei | V2 | Modbus | 214 |
 | [`INV_Huawei_V3.csv`](./INV_Huawei_V3.csv) | Huawei | V3 | Modbus | 182 |

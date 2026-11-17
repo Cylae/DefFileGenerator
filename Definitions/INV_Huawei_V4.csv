@@ -83,7 +83,7 @@ modbusRTU;Inverter;Huawei;SUN2000_V4;;;;;;;
 82;3;32069;U16;;Phase A voltage;U_AC_1;0.100000;0.000000;V;4
 83;3;32070;U16;;Phase B voltage;U_AC_2;0.100000;0.000000;V;4
 84;3;32071;U16;;Phase C voltage;U_AC_3;0.100000;0.000000;V;4
-85;3;32072;I32;;Power grid current/Phase A current;;0.001000;0.000000;A;4
+85;3;32072;I32;;Power grid current/Phase A current;I_AC_1;0.001000;0.000000;A;4
 86;3;32074;I32;;Phase B current;I_AC_2;0.001000;0.000000;A;4
 87;3;32076;I32;;Phase C current;I_AC_3;0.001000;0.000000;A;4
 88;3;32078;I32;;Peak active power of current day;;0.001000;0.000000;kW;4

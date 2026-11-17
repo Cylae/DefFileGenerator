@@ -6,9 +6,9 @@ Modbus;Inverter;Huawei;GENERIC;;;;;;;
 5;3;30071;U16;;Number of PV strings;;1.000000;0.000000;;4
 6;3;30072;U16;;Number of MPP trackers;;1.000000;0.000000;;1
 7;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
-8;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001000;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);;0.001000;0.000000;kW;4
 9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001000;0.000000;kVA;4
-10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);Q_AC;0.001000;0.000000;kVar;4
+10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);;0.001000;0.000000;kVar;4
 11;3;30081;I32;;Maximum reactive power (Qmax: absorbed from the power grid);;0.001000;0.000000;kVar;4
 12;3;30561_30;STRING;;Offering name of southbound device 1;;1.000000;0.000000;;1
 13;3;30576_30;STRING;;Offering name of southbound device 2;;1.000000;0.000000;;1
@@ -87,8 +87,8 @@ Modbus;Inverter;Huawei;GENERIC;;;;;;;
 86;3;32074;I32;;Phase B current;I_AC_2;0.001000;0.000000;A;4
 87;3;32076;I32;;Phase C current;I_AC_3;0.001000;0.000000;A;4
 88;3;32078;I32;;Peak active power of current day;;0.001000;0.000000;kW;4
-89;3;32080;I32;;Active power;;0.001000;0.000000;kW;4
-90;3;32082;I32;;Reactive power;;0.001000;0.000000;kVar;4
+89;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+90;3;32082;I32;;Reactive power;Q_AC;0.001000;0.000000;kVar;4
 91;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
 92;3;32085;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
 93;3;32086;U16;;Efficiency;;0.010000;0.000000;%;4

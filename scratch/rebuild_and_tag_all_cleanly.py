@@ -100,7 +100,10 @@ def detect_prefix(category_str: str, filename: str, mfg: str = "") -> str:
     for key, pfx in PREFIX_MAP.items():
         if key in fn_upper:
             return pfx
-    if any(k in fn_upper for k in ("SUN2000", "INVERTER", "SOLAX", "GROWATT", "SMA", "KACO", "GOODWE", "FOX", "SOFAR", "SOLIS", "SUNGROW")):
+    if any(k in fn_upper for k in ("SUN2000", "INVERTER", "SOLAX", "GROWATT", "SMA", "KACO", "GOODWE", "FOX", "SOFAR", "SOLIS", "SUNGROW", "HUAWEI")):
+        return "INV"
+    mfg_upper = mfg.upper()
+    if any(k in mfg_upper for k in ("HUAWEI", "GROWATT", "SMA", "SOLAX", "SOLIS", "SUNGROW", "GOODWE", "KACO", "SOFAR")) and "GENERIC" in fn_upper:
         return "INV"
     if any(k in fn_upper for k in ("COUNTIS", "DIRIS", "EM210", "DTSU", "METER", "ANALYZER", "LETEL", "LETTEL", "JANITZA", "CIRCUTOR")):
         return "MET"
