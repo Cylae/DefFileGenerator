@@ -20,6 +20,7 @@ from DefFileGenerator.def_gen import CSVHeaderConfig, Generator, GeneratorConfig
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 DEFINITION_DIRS = [
+    REPO_ROOT / "production",
     REPO_ROOT / "Definitions",
     REPO_ROOT / "Dyness_DH_Series_Definitions",
     REPO_ROOT / "FoxESS_P3_H3_Pro_Definitions",
