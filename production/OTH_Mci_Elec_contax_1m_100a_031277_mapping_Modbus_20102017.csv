@@ -1,0 +1,33 @@
+Modbus;Other;Mci;Elec_contax_1m_100a_031277_mapping_Modbus_20102017;;;;;;;
+1;4;272;U16;;Communication Address;;1.0;0.0;;1
+2;4;273;U16;;Baudrate;;1.0;0.0;;1
+3;4;274;U16;;Display Setting;;1.0;0.0;;1
+4;4;275;U16;;Display Setting;;1.0;0.0;;1
+5;4;276;U16;;Display Setting;;1.0;0.0;;1
+6;4;284;U16;;CT Rate;;1.0;0.0;;1
+7;4;280;U16;;Constant;;1.0;0.0;;1
+8;4;304;U16;;Frequency  F;FREQ;1.0;0.0;0.01Hz;4
+9;4;305;U16;;Phase Voltage V1;;1.0;0.0;0.01V;4
+10;4;306;U16;;Phase Voltage V2;;1.0;0.0;0.01V;4
+11;4;307;U16;;Phase Voltage V3;;1.0;0.0;0.01V;4
+12;4;313;U16;;Phase(wire) Current  I1;I_AC_3;1.0;0.0;0.001A;4
+13;4;315;U16;;Phase(wire) Current  I2;;1.0;0.0;0.001A;4
+14;4;317;U16;;Phase(wire) Current  I3;;1.0;0.0;0.001A;4
+15;4;320;U16;;Active Power   P1(Phase A);P_AC_1;1.0;0.0;0.001kW;4
+16;4;322;U16;;Active Power   P2(Phase B);P_AC_2;1.0;0.0;0.001kW;4
+17;4;324;U16;;Active Power   P3(Phase C);P_AC_3;1.0;0.0;0.001kW;4
+18;4;326;U16;;System Active Power  Psum;P_AC;1.0;0.0;0.001kW;4
+19;4;328;U16;;Reactive Power   Q1(Phase A);Q_AC_1;1.0;0.0;0.001kvar;4
+20;4;330;U16;;Reactive Power   Q2(Phase B);Q_AC_2;1.0;0.0;0.001kvar;4
+21;4;332;U16;;Reactive Power   Q3(Phase C);Q_AC_3;1.0;0.0;0.001kvar;4
+22;4;334;U16;;System Active Power  Qsum;;1.0;0.0;0.001kvar;4
+23;4;336;U16;;Apparent Power S1(Phase A);S_AC_1;1.0;0.0;0.001kva;4
+24;4;338;U16;;Apparent Power S2(Phase B);S_AC_2;1.0;0.0;0.001kva;4
+25;4;340;U16;;Apparent Power S3(Phase C);S_AC_3;1.0;0.0;0.001kva;4
+26;4;342;U16;;System Apparent Power Ssum;S_AC;1.0;0.0;0.001kva;4
+27;4;344;U16;;Power Factor  PF1(Phase A);PF_1;1.0;0.0;0.001;4
+28;4;345;U16;;Power Factor  PF2(Phase B);PF_2;1.0;0.0;0.001;4
+29;4;346;U16;;Power Factor  PF3(Phase C);PF_3;1.0;0.0;0.001;4
+30;4;347;U16;;System Power Factor   PF;PF;1.0;0.0;0.001;4
+31;4;40960;U16;;Forward Active Energy;;1.0;0.0;0.01kwh;4
+32;4;40990;U16;;Reverse Active Energy;;1.0;0.0;0.01kwh;4

@@ -1,0 +1,77 @@
+Modbus;Other;Ticmaster;Mapping_-_FW41.48;;;;;;;
+1;4;3400;U16;;ICE;;1.0;0.0;;4
+2;4;4;U16;;SAPHIR;;1.0;0.0;;4
+3;4;0;U16;;Puissance active soutiree (calculee);P_AC;1.0;0.0;;4
+4;4;1542;U16;;Puissance active moyenne soutirée 1 minute;;1.0;0.0;;4
+5;4;1532;U16;;Puissance active moyenne injectée 1 minute;;1.0;0.0;;4
+6;4;1560;U16;;Puissance réactive moyenne soutirée 1 minute;Q_AC;1.0;0.0;;4
+7;4;1686;U16;;Puissance réactive moyenne injectée 1 minute;;1.0;0.0;;4
+8;4;646;U16;;Date courante (JJ/MM/AA);;1.0;0.0;;4
+9;4;648;U16;;Heure courante (HH:MM:SS);;1.0;0.0;;4
+10;4;2010;U16;;Tangente Phi (soutirage);;1.0;0.0;;4
+11;4;2012;U16;;Tangente Phi (injection);;1.0;0.0;;4
+12;4;1594;U16;;Tension moyenne Tc mn calculée lors du précédent Tc;;1.0;0.0;;4
+13;4;1998;U16;;Puissance active moyenne soutirée sur le dernier Top Td;;1.0;0.0;;4
+14;4;2000;U16;;Puissance active moyenne injectée sur le dernier Top Td;;1.0;0.0;;4
+15;4;1982;U16;;Poste tarifaire en cours pour la grille Distributeur;;1.0;0.0;;4
+16;4;2014;U16;;Poste tarifaire en cours pour la grille Fournisseur;;1.0;0.0;;4
+17;4;1988;U16;;Date début période tarif D;;1.0;0.0;;4
+18;4;1990;U16;;Heure début période tarif D;;1.0;0.0;;4
+19;4;2354;U16;;Puissance souscrite - Périodes 1;;1.0;0.0;;4
+20;4;2356;U16;;Puissance souscrite - Périodes 2;;1.0;0.0;;4
+21;4;2358;U16;;Puissance souscrite - Périodes 3;;1.0;0.0;;4
+22;4;2360;U16;;Puissance souscrite - Périodes 4;;1.0;0.0;;4
+23;4;2362;U16;;Puissance souscrite - Périodes 5;;1.0;0.0;;4
+24;4;2364;U16;;Puissance souscrite - Périodes 6;;1.0;0.0;;4
+25;4;2366;U16;;Puissance souscrite - Périodes 7;;1.0;0.0;;4
+26;4;2368;U16;;Puissance souscrite - Périodes 8;;1.0;0.0;;4
+27;4;2030;U16;;Energie active (soutirage) (kWh) - Périodes 1;;1.0;0.0;;4
+28;4;2032;U16;;Energie active (soutirage) (kWh) - Périodes 2;;1.0;0.0;;4
+29;4;2034;U16;;Energie active (soutirage) (kWh) - Périodes 3;;1.0;0.0;;4
+30;4;2036;U16;;Energie active (soutirage) (kWh) - Périodes 4;;1.0;0.0;;4
+31;4;2038;U16;;Energie active (soutirage) (kWh) - Périodes 5;;1.0;0.0;;4
+32;4;2040;U16;;Energie active (soutirage) (kWh) - Périodes 6;;1.0;0.0;;4
+33;4;2042;U16;;Energie active (soutirage) (kWh) - Périodes 7;;1.0;0.0;;4
+34;4;2044;U16;;Energie active (soutirage) (kWh) - Périodes 8;;1.0;0.0;;4
+35;4;2048;U16;;Energie réactive positive (soutirage) - Périodes 1;;1.0;0.0;;4
+36;4;2050;U16;;Energie réactive positive (soutirage) - Périodes 2;;1.0;0.0;;4
+37;4;2052;U16;;Energie réactive positive (soutirage) - Périodes 3;;1.0;0.0;;4
+38;4;2054;U16;;Energie réactive positive (soutirage) - Périodes 4;;1.0;0.0;;4
+39;4;2056;U16;;Energie réactive positive (soutirage) - Périodes 5;;1.0;0.0;;4
+40;4;2058;U16;;Energie réactive positive (soutirage) - Périodes 6;;1.0;0.0;;4
+41;4;2060;U16;;Energie réactive positive (soutirage) - Périodes 7;;1.0;0.0;;4
+42;4;2062;U16;;Energie réactive positive (soutirage) - Périodes 8;;1.0;0.0;;4
+43;4;2066;U16;;Energie réactive négative (soutirage) - Périodes 1;;1.0;0.0;;4
+44;4;2068;U16;;Energie réactive négative (soutirage) - Périodes 2;;1.0;0.0;;4
+45;4;2070;U16;;Energie réactive négative (soutirage) - Périodes 3;;1.0;0.0;;4
+46;4;2072;U16;;Energie réactive négative (soutirage) - Périodes 4;;1.0;0.0;;4
+47;4;2074;U16;;Energie réactive négative (soutirage) - Périodes 5;;1.0;0.0;;4
+48;4;2076;U16;;Energie réactive négative (soutirage) - Périodes 6;;1.0;0.0;;4
+49;4;2078;U16;;Energie réactive négative (soutirage) - Périodes 7;;1.0;0.0;;4
+50;4;2080;U16;;Energie réactive négative (soutirage) - Périodes 8;;1.0;0.0;;4
+51;4;2084;U16;;Energie active (injection) - Périodes 1;;1.0;0.0;;4
+52;4;2086;U16;;Energie active (injection) - Périodes 2;;1.0;0.0;;4
+53;4;2088;U16;;Energie active (injection) - Périodes 3;;1.0;0.0;;4
+54;4;2090;U16;;Energie active (injection) - Périodes 4;;1.0;0.0;;4
+55;4;2092;U16;;Energie active (injection) - Périodes 5;;1.0;0.0;;4
+56;4;2094;U16;;Energie active (injection) - Périodes 6;;1.0;0.0;;4
+57;4;2096;U16;;Energie active (injection) - Périodes 7;;1.0;0.0;;4
+58;4;2098;U16;;Energie active (injection) - Périodes 8;;1.0;0.0;;4
+59;4;2102;U16;;Energie réactive positive (injection) - Périodes 1;;1.0;0.0;;4
+60;4;2104;U16;;Energie réactive positive (injection) - Périodes 2;;1.0;0.0;;4
+61;4;2106;U16;;Energie réactive positive (injection) - Périodes 3;;1.0;0.0;;4
+62;4;2108;U16;;Energie réactive positive (injection) - Périodes 4;;1.0;0.0;;4
+63;4;2110;U16;;Energie réactive positive (injection) - Périodes 5;;1.0;0.0;;4
+64;4;2112;U16;;Energie réactive positive (injection) - Périodes 6;;1.0;0.0;;4
+65;4;2114;U16;;Energie réactive positive (injection) - Périodes 7;;1.0;0.0;;4
+66;4;2116;U16;;Energie réactive positive (injection) - Périodes 8;;1.0;0.0;;4
+67;4;2120;U16;;Energie réactive négative (injection) - Périodes 1;;1.0;0.0;;4
+68;4;2122;U16;;Energie réactive négative (injection) - Périodes 2;;1.0;0.0;;4
+69;4;2124;U16;;Energie réactive négative (injection) - Périodes 3;;1.0;0.0;;4
+70;4;2126;U16;;Energie réactive négative (injection) - Périodes 4;;1.0;0.0;;4
+71;4;2128;U16;;Energie réactive négative (injection) - Périodes 5;;1.0;0.0;;4
+72;4;2130;U16;;Energie réactive négative (injection) - Périodes 6;;1.0;0.0;;4
+73;4;2132;U16;;Energie réactive négative (injection) - Périodes 7;;1.0;0.0;;4
+74;4;2134;U16;;Energie réactive négative (injection) - Périodes 8;;1.0;0.0;;4
+75;4;2046;U16;;Index cumulé d'énergie active soutirée;;1.0;0.0;;4
+76;4;2100;U16;;Index cumulé d'énergie active injectée;;1.0;0.0;;4

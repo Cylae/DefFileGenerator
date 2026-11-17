@@ -1,0 +1,50 @@
+Modbus;Inverter;SofarSolar;SOFAR-G3.External.Modbus.Protocol-Engilsh-V211103;;;;;;;
+1;4;2496;U16;;Add Bit3;;1.0;0.0;;4
+2;4;2523;U16;;Add parameters;;1.0;0.0;;4
+3;4;8198;U16;;Update value definition description;;1.0;0.0;;4
+4;4;4141;U16;;Add CT automatic calibration register;;1.0;0.0;;4
+5;4;4166;U16;;Add battery protocol type;;1.0;0.0;;4
+6;4;4152;U16;;Add address;;1.0;0.0;;4
+7;4;41084;U16;;Add address;;1.0;0.0;;4
+8;4;32828;U16;;Add address;;1.0;0.0;;4
+9;4;36864;U16;;Add BMS transparent transmission area;;1.0;0.0;;4
+10;4;1745;U16;;Add address;;1.0;0.0;;4
+11;4;2248;U16;;Add safety parameters;;1.0;0.0;;4
+12;4;2564;U16;;Add safety parameters;;1.0;0.0;;4
+13;4;4176;U16;;Voltage accuracy problem correction;;1.0;0.0;;4
+14;4;1200;U16;;Add address;;1.0;0.0;;4
+15;4;4153;U16;;Add address;;1.0;0.0;;4
+16;4;4178;U16;;Add battery parameter address;;1.0;0.0;;4
+17;4;4180;U16;;Add battery parameter address;;1.0;0.0;;4
+18;4;4131;U16;;Update the value range of the original address;;1.0;0.0;;4
+19;4;4132;U16;;Original address unit update;;1.0;0.0;;4
+20;4;4228;U16;;Add arc configuration address;;1.0;0.0;;4
+21;4;41072;U16;;Add address;;1.0;0.0;;4
+22;4;8199;U16;;Add new safety country name address;;1.0;0.0;;4
+23;4;36869;U16;;Date register type problem fixed;;1.0;0.0;;4
+24;4;36986;U16;;Add address;;1.0;0.0;;4
+25;4;4357;U16;;Add address;;1.0;0.0;;4
+26;4;1210;U16;;Add address;;1.0;0.0;;4
+27;4;4237;U16;;Add address;;1.0;0.0;;4
+28;4;4149;U16;;Update the register value range and value definition;;1.0;0.0;;4
+29;4;2465;U16;;New safety parameter address;;1.0;0.0;;4
+30;4;2560;U16;;Added bit field definition to the original address;;1.0;0.0;;4
+31;4;1476;U16;;Add the total PV power address;;1.0;0.0;;4
+32;4;4192;U16;;Add PCC power acquisition device configuration address;;1.0;0.0;;4
+33;4;4248;U16;;Add PID configuration address;;1.0;0.0;;4
+34;4;4367;U16;;Add PID control address;;1.0;0.0;;4
+35;4;1100;U16;;Change from reserved address to valid serial number address;SERIAL;1.0;0.0;;0
+36;4;4256;U16;;Add PLC enable and configuration address;;1.0;0.0;;4
+37;4;4261;U16;;Added BLE enable and configuration address;;1.0;0.0;;4
+38;4;4272;U16;;Modify PID enable and configuration address;;1.0;0.0;;4
+39;4;32807;U16;;Change from reserved address to valid serial number address;;1.0;0.0;;0
+40;4;32808;U16;;Added 2 factory effective serial number addresses, and 5 reserved addresses;;1.0;0.0;;0
+41;4;32815;U16;;Newly added peripheral configuration address and peripheral configuration BIT correspondence table;;1.0;0.0;;4
+42;4;41066;U16;;Add remote reset command;;1.0;0.0;;4
+43;4;4360;U16;;Change the address data type to signed;;1.0;0.0;;4
+44;4;4148;U16;;Language definition;;1.0;0.0;;4
+45;4;4193;U16;;Add resonance detection sensitivity register;;1.0;0.0;;4
+46;4;4368;U16;;Add mode definition: off-grid mode;;1.0;0.0;;4
+47;4;4420;U16;;Added off-grid mode register;;1.0;0.0;;4
+48;4;8253;U16;;Add target chip definition: PCU (Power Control Unit) and BMS (Battery Management System);;1.0;0.0;;4
+49;4;28672;U16;;Add ODM data customization area;;1.0;0.0;;4

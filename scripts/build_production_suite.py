@@ -10,7 +10,9 @@ Enforces the 5 Apollo-standard pillars on all definition files entering `product
 """
 
 import csv
+import re
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 # Add project root to sys.path
@@ -24,6 +26,7 @@ DEFINITIONS_DIR = WORKSPACE_DIR / "Definitions"
 TAGGED_DIR = WORKSPACE_DIR / "tagged_definitions"
 FOXESS_DIR = WORKSPACE_DIR / "FoxESS_P3_H3_Pro_Definitions"
 MARS_DIR = WORKSPACE_DIR / "MarsRenewable_Definitions"
+DYNESS_DIR = WORKSPACE_DIR / "Dyness_DH_Series_Definitions"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -34,23 +37,162 @@ PREFIX_TO_CATEGORY = {
     "OTH": "Other",
 }
 
+COMPOUND_PREFIXES = [
+    ("Fox_ESS", "FoxESS"),
+    ("SL_Energy", "SLEnergy"),
+    ("Alro_Solar", "AlroSolar"),
+    ("Carlo_Gavazzi", "CarloGavazzi"),
+    ("Chauvin_Arnoux", "ChauvinArnoux"),
+    ("Atess_Power", "Atess"),
+    ("Deye_Inverter", "Deye"),
+    ("INVT_Solar", "INVT"),
+    ("Ginlong_Solis", "Solis"),
+    ("Delta_Ohm", "DeltaOhm"),
+]
+
+MFG_RENAME = {
+    "fox_ess": "FoxESS",
+    "foxess": "FoxESS",
+    "fox": "FoxESS",
+    "ginlong_solis": "Solis",
+    "solis": "Solis",
+    "marsrenewable": "MarsEnergy",
+    "mars": "MarsEnergy",
+    "powerone": "ABB",
+    "power-one": "ABB",
+    "a-eberle": "AEberle",
+    "aeberle": "AEberle",
+    "carlo_gavazzi": "CarloGavazzi",
+    "carlogavazzi": "CarloGavazzi",
+    "chauvin-arnoux": "ChauvinArnoux",
+    "chauvinarnoux": "ChauvinArnoux",
+    "sl_energy": "SLEnergy",
+    "alro_solar": "AlroSolar",
+    "schneider_electric": "Schneider",
+    "schneider": "Schneider",
+    "atess_power": "Atess",
+    "deye_inverter": "Deye",
+    "invt_solar": "INVT",
+    "solax": "SolaX",
+    "hoymiles": "Hoymiles",
+    "goodwe": "Goodwe",
+    "sungrow": "Sungrow",
+    "growatt": "Growatt",
+    "huawei": "Huawei",
+    "sma": "SMA",
+    "abb": "ABB",
+    "socomec": "Socomec",
+    "dyness": "Dyness",
+    "lettel": "Lettel",
+    "fronius": "Fronius",
+    "kaco": "Kaco",
+    "danfoss": "Danfoss",
+    "riello": "Riello",
+    "delta": "Delta",
+    "janitza": "Janitza",
+    "legrand": "Legrand",
+    "siemens": "Siemens",
+    "zélec": "Zelec",
+    "zelec": "Zelec",
+}
+
+NAMING_PATTERN = re.compile(
+    r"^(INV|MET|SEN|BAT|COM|OTH)_([A-Za-z0-9\-]+)_([A-Za-z0-9\.\-_]+)\.csv$"
+)
+BAD_WORDS = [
+    "part",
+    "test",
+    "draft",
+    "wip",
+    "old",
+    "copie",
+    "copy",
+    "faux",
+    "in_progress",
+    "temp",
+    "backup",
+    "wpm",
+    "_2.csv",
+]
+
+
+def parse_raw_filename(fname: str) -> tuple[str, str, str] | None:
+    """Parses a candidate raw filename into (Prefix, CanonicalManufacturer, CleanModel)."""
+    pfx = fname[:3]
+    if pfx not in ("INV", "MET", "SEN", "BAT", "COM", "OTH") or fname[3] != "_":
+        return None
+    rest = fname[4:-4]
+
+    mfg = None
+    model_raw = None
+    for comp, repl in COMPOUND_PREFIXES:
+        if rest.lower().startswith(comp.lower() + "_"):
+            mfg = repl
+            model_raw = rest[len(comp) + 1 :]
+            break
+
+    if not mfg:
+        tokens = rest.split("_", 1)
+        if len(tokens) == 2:
+            raw_mfg, model_raw = tokens[0], tokens[1]
+            low_mfg = raw_mfg.lower()
+            mfg = MFG_RENAME.get(
+                low_mfg,
+                raw_mfg.capitalize() if raw_mfg.isupper() and len(raw_mfg) > 3 else raw_mfg,
+            )
+        else:
+            return None
+
+    m = model_raw.strip().strip("_")
+    if m.upper().startswith(f"{pfx}_"):
+        m = m[len(pfx) + 1 :].strip("_")
+    for cw in ("BATTERY_", "METER_", "INVERTER_", "SENSOR_", "LOGGER_"):
+        if m.upper().startswith(cw):
+            m = m[len(cw) :].strip("_")
+    for mfg_var in (mfg, mfg.upper(), mfg.lower()):
+        if m.upper().startswith(f"{mfg_var.upper()}_"):
+            m = m[len(mfg_var) + 1 :].strip("_")
+        elif m.upper().startswith(f"{mfg_var.upper()}-"):
+            m = m[len(mfg_var) + 1 :].strip("_")
+    for cw in ("BATTERY_", "METER_", "INVERTER_", "SENSOR_", "LOGGER_"):
+        if m.upper().startswith(cw):
+            m = m[len(cw) :].strip("_")
+    for mfg_var in (mfg, mfg.upper(), mfg.lower()):
+        if m.upper().startswith(f"{mfg_var.upper()}_"):
+            m = m[len(mfg_var) + 1 :].strip("_")
+    m = re.sub(r"_+", "_", m).strip("_")
+    if not m:
+        m = "Generic"
+    return pfx, mfg, m
+
+
+def score_source_candidate(fpath: Path) -> tuple[int, int]:
+    """Scores a candidate source file: returns (tag_count, register_count)."""
+    try:
+        with open(fpath, encoding="utf-8", errors="ignore") as fp:
+            r = csv.reader(fp, delimiter=";")
+            rows = list(r)
+            regs = len(rows) - 1
+            tags = sum(1 for row in rows[1:] if len(row) > 6 and row[6].strip())
+            return (tags, regs)
+    except Exception:
+        return (0, 0)
+
 
 def build_manifest() -> dict[str, Path]:
-    """Builds the canonical inventory mapping of target_name -> source_path."""
+    """Builds the comprehensive production inventory mapping of target_name -> source_path."""
     manifest: dict[str, Path] = {}
 
-    # 1. Curated Reference Library (131 distinct models)
+    # 1. Curated Reference Library (Definitions/ folder)
     for f in sorted(DEFINITIONS_DIR.glob("*.csv")):
         bname = f.name
         if bname == "INV_ABB_PVS800-57B_2.csv":
-            # Canonical duplicate to exclude from production
             continue
 
         tgt_name = bname
         if tgt_name == "SEN_DELTA_OHM_LP_PYRA_03_.csv":
             tgt_name = "SEN_DELTA_OHM_LP_PYRA_03.csv"
 
-        # Prioritize tagged_definitions if available for richer tags
         t_path = TAGGED_DIR / bname
         manifest[tgt_name] = t_path if t_path.is_file() else f
 
@@ -83,7 +225,16 @@ def build_manifest() -> dict[str, Path]:
     }
     manifest.update(mars_map)
 
-    # 4. Additional Distinct Equipment Models from Tagged Library
+    # 4. Dyness Certified Definitions
+    dyness_map = {
+        "BAT_Dyness_DH100F.csv": DYNESS_DIR / "BAT_Dyness_DH100F.csv",
+        "BAT_Dyness_DH200F.csv": DYNESS_DIR / "BAT_Dyness_DH200F.csv",
+        "BAT_Dyness_DH200Y.csv": DYNESS_DIR / "BAT_Dyness_DH200Y.csv",
+        "BAT_Dyness_DH_Series_Generic.csv": DYNESS_DIR / "BAT_Dyness_DH_Series_Generic.csv",
+    }
+    manifest.update(dyness_map)
+
+    # 5. Additional Curated Equipment Models
     extra_map = {
         "BAT_Huawei_Luna2000.csv": TAGGED_DIR / "BAT_Huawei_Luna_2000.csv",
         "BAT_Hoymiles_HoyUltra2.csv": TAGGED_DIR / "BAT_Hoymiles_HOYMILES_BATTERY_HOYULTRA2.csv",
@@ -100,6 +251,38 @@ def build_manifest() -> dict[str, Path]:
         "MET_Legrand_CF_Generic.csv": TAGGED_DIR / "MET_Legrand_METER_LEGRAND_CF-GENERIC.csv",
     }
     manifest.update(extra_map)
+
+    # 6. Deduplicated & Clean Ingestion from tagged_definitions/
+    candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
+    for f in sorted(TAGGED_DIR.glob("*.csv")):
+        name = f.name
+        lower = name.lower()
+        if any(bw in lower for bw in BAD_WORDS):
+            continue
+        if any(c in name for c in ["(", ")", ",", " ", "..", ";", "~", "$", "%"]):
+            continue
+        parsed = parse_raw_filename(name)
+        if not parsed:
+            continue
+        pfx, mfg, model = parsed
+        tgt_name = f"{pfx}_{mfg}_{model}.csv"
+        if (
+            not NAMING_PATTERN.match(tgt_name)
+            or "__" in tgt_name
+            or tgt_name.endswith("_.csv")
+            or tgt_name.endswith("_2.csv")
+        ):
+            continue
+        candidates_by_tgt[tgt_name].append(f)
+
+    # Track lowercase keys to guarantee case-insensitive uniqueness on all OSes
+    lower_to_canonical: dict[str, str] = {k.lower(): k for k in manifest}
+
+    for tgt_name, sources in candidates_by_tgt.items():
+        low = tgt_name.lower()
+        if low not in lower_to_canonical:
+            manifest[tgt_name] = max(sources, key=score_source_candidate)
+            lower_to_canonical[low] = tgt_name
 
     return manifest
 
@@ -296,10 +479,28 @@ def main():
         header, rows = sanitize_and_normalize_definition(tgt_filename, src_path)
         out_path = PROD_DIR / tgt_filename
 
-        with open(out_path, "w", encoding="utf-8", newline="") as fp:
-            writer = csv.writer(fp, delimiter=";")
-            writer.writerow(header)
-            writer.writerows(rows)
+        buf = []
+        # Format CSV text
+        header_line = ";".join(header)
+        buf.append(header_line)
+        for r in rows:
+            buf.append(";".join(r))
+        new_content = "\n".join(buf) + "\n"
+
+        need_write = True
+        if out_path.exists():
+            try:
+                with open(out_path, encoding="utf-8") as existing_fp:
+                    if existing_fp.read().replace("\r\n", "\n") == new_content:
+                        need_write = False
+            except Exception:
+                pass
+
+        if need_write:
+            with open(out_path, "w", encoding="utf-8", newline="") as fp:
+                writer = csv.writer(fp, delimiter=";")
+                writer.writerow(header)
+                writer.writerows(rows)
 
         # Validate with def_gen
         val_rep = generator.validate_csv_detailed(str(out_path), strict=True, strict_overlap=False)

@@ -145,7 +145,7 @@ Modbus;Battery;Dyness;DH200Y;;;;;;;
 144;4;557;U16;;DC negative main relay status;;1.000000;0.000000;;9
 145;4;558;U16;;AC relay status;;1.000000;0.000000;;9
 146;4;559;U16;;Grid power loss status;;1.000000;0.000000;;9
-147;4;750;U16;;Total Battery Pack Voltage;;0.100000;0.000000;V;4
+147;4;750;U16;;Total Battery Pack Voltage;V_BAT;0.100000;0.000000;V;4
 148;4;751;U16;;Total Battery Pack Current;I_AC;0.100000;-3200.000000;A;4
 149;4;752;U16;;Battery Pack SOC;;1.000000;0.000000;%;4
 150;4;753;U16;;Battery Pack SOH;SOH;1.000000;0.000000;%;4

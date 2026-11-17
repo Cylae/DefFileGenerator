@@ -1,0 +1,4 @@
+Modbus;Other;Kostal;PIKO_CI_events_code-V1.2-20240516_via_modbus;;;;;;;
+1;4;4126;U16;;High DC component of output current;I_DC;1.0;0.0;;4
+2;4;4127;U16;;Grid over voltage;;1.0;0.0;;4
+3;4;4128;U16;;Reserved;;1.0;0.0;;0

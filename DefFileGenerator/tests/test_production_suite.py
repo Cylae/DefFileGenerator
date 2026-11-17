@@ -37,7 +37,7 @@ def generator() -> Generator:
 def test_production_directory_populated():
     """Verify that the production directory exists and contains all certified definitions."""
     files = get_production_files()
-    assert len(files) >= 160, f"Expected at least 160 production files, got {len(files)}"
+    assert len(files) >= 1000, f"Expected at least 1000 production files, got {len(files)}"
     readme = PROD_DIR / "README.md"
     assert readme.is_file(), "Missing production/README.md catalog"
 

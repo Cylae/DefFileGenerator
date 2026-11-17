@@ -195,7 +195,7 @@ Modbus;Battery;Dyness;DH_Series_Generic;;;;;;;
 194;4;665;U16;;Other Fault Word;;1.000000;0.000000;;9
 195;4;668;U16;;Daily Charging Energy;E_DAY;0.100000;0.000000;kWh;4
 196;4;669;U16;;Daily Discharging Energy;;1.000000;0.000000;kWh;4
-197;4;750;U16;;Total Battery Pack Voltage;;0.100000;0.000000;V;4
+197;4;750;U16;;Total Battery Pack Voltage;V_BAT;0.100000;0.000000;V;4
 198;4;751;U16;;Total Battery Pack Current;I_AC;0.100000;-3200.000000;A;4
 199;4;752;U16;;Battery Pack SOC;;1.000000;0.000000;%;4
 200;4;753;U16;;Battery Pack SOH;SOH;1.000000;0.000000;%;4
