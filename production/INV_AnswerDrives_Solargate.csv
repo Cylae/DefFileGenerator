@@ -51,7 +51,7 @@ Modbus;Inverter;AnswerDrives;Solargate;;;;;;;
 50;3;40316;I16;;ActivePower;activepower;1.000000;0.000000;;4
 51;3;40317;I16;;DailyPeakPower;dailypeakpower;1.000000;0.000000;;4
 52;3;40318;I16;;Maximumabsolutepower;maximumabsolutepower;1.000000;0.000000;;4
-53;3;40319;I16;;Dailyenergy;E_DAY;1.000000;0.000000;;4
+53;3;40319;I16;;Dailyenergy;dailyenergy;1.000000;0.000000;;4
 54;3;40320;I16;;Weeklyenergy(lowword);weeklyenergylowword;1.000000;0.000000;;4
 55;3;40321;I16;;Weeklyenergy(highword);weeklyenergyhighword;1.000000;0.000000;;4
 56;3;40322;I16;;Monthlyenergy(lowword);monthlyenergylowword;1.000000;0.000000;;4

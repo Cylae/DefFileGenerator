@@ -84,7 +84,7 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 83;3;35849;U16;;Current Derating Flag;;1.000000;0.000000;;4
 84;3;35851;U16;;Current Reactive Flag;;1.000000;0.000000;;4
 85;3;40264;U16;;European shutdown switch;;1.000000;0.000000;;1
-86;3;41144;U16;;Modbus address;UNIT_ID;1.000000;0.000000;;4
+86;3;41144;U16;;Modbus address;;1.000000;0.000000;;4
 87;3;41145;U16;;Modbus protocol type;;1.000000;0.000000;;4
 88;3;41146;U32;;RS485 Baud rate;;1.000000;0.000000;;4
 89;3;41150;U16;;External CT Ratio;;1.000000;0.000000;;4
@@ -93,12 +93,12 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 92;3;41324;U16;;HVRT Enable;;1.000000;0.000000;;4
 93;3;41325;U16;;Anti Islanding;;1.000000;0.000000;;4
 94;3;41326;U16;;Shadow mode switch;;1.000000;0.000000;;4
-95;3;41327;U16;;Export Power Limit Switch;CMD_P_ENA;1.000000;0.000000;;1
-96;3;41328;U32;;Export Power Limit Set;CMD_P_AC_LIM_ABS;1.000000;0.000000;;1
+95;3;41327;U16;;Export Power Limit Switch;CMD_P_ENA;1.000000;0.000000;;4
+96;3;41328;U32;;Export Power Limit Set;CMD_P_AC_LIM_ABS;1.000000;0.000000;;4
 97;3;41330;U16;;Power On;CMD_ON;-1.000000;1.000000;;1
 98;3;41331;U16;;Power Off;CMD_OFF;-1.000000;1.000000;;1
 99;3;41335;U16;;Grid Type;;1.000000;0.000000;;4
-100;3;41336;U16;;The power limit percentage for export to the grid;CMD_P_AC_SET_PERCENT;1.000000;0.000000;%Pn;1
+100;3;41336;U16;;The power limit percentage for export to the grid;;1.000000;0.000000;%Pn;4
 101;3;41347;U16;;Shadow Scan Period;;1.000000;0.000000;Min;4
 102;3;41351;U16;;N-PE Fault Limit;;0.100000;0.000000;V;9
 103;3;41373;U16;;History fault clearing;;1.000000;0.000000;;9
@@ -107,13 +107,13 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 106;3;42022;U16;;shadow mppt function 1;;1.000000;0.000000;;4
 107;3;42051;U16;;NPE Overvoltage fault detection switch;;1.000000;0.000000;;9
 108;3;42057;U16;;Lightning protection module detection switch;;1.000000;0.000000;;4
-109;3;42061;U16;;PID prevent function switch;WIND_SPEED;1.000000;0.000000;;4
+109;3;42061;U16;;PID prevent function switch;;1.000000;0.000000;;4
 110;3;42067;U16;;PID repair function switch;;1.000000;0.000000;;4
 111;3;42403;U16;;Active power control method;;1.000000;0.000000;;4
 112;3;42404;I32;;Active power fixed value derating;;1.000000;0.000000;W;4
 113;3;42407;I16;;Active power percentage derating(0.1%);;0.100000;0.000000;%;4
-114;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1.000000;0.000000;;1
-115;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001000;0.000000;;1
+114;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1.000000;0.000000;;4
+115;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001000;0.000000;;4
 116;3;42414;I16;;Reactive power compensation(Q/S);;0.100000;0.000000;%Pn;4
 117;3;42415;I16;;Reactive power compensation(Q/Qn);;0.100000;0.000000;%Qn;4
 118;3;42416;U16;;Reactive power compensation method;;1.000000;0.000000;;4
@@ -121,7 +121,7 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 120;3;42428;U32;;Reactive pow compensation parameter;;1.000000;0.000000;ms;4
 121;3;42430;U16;;Active power compensation response mode;;1.000000;0.000000;;4
 122;3;42431;U32;;Active power compensation parameter LPF time parameter;;1.000000;0.000000;ms;4
-123;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.100000;0.000000;%Pn/min;1
+123;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.100000;0.000000;%Pn/min;4
 124;3;42435;U32;;Reactive power gradient;;0.100000;0.000000;%Pn/min;4
 125;3;42441;U16;;Night reactive power switch;;1.000000;0.000000;;4
 126;3;42442;U16;;Night reactive power parameters enable;;1.000000;0.000000;;4
@@ -129,7 +129,7 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 128;3;42446;I16;;Night reactive power compensation percentage deratin;;0.100000;0.000000;%Pn;4
 129;3;42500;U16;;Safety code;;1.000000;0.000000;;4
 130;3;42531;U16;;Normal condition Grid connection waiting time;;1.000000;0.000000;s;4
-131;3;42532;U16;;Slope of normal condition gridconnected power;I_DC;0.100000;0.000000;%Pn/min;4
+131;3;42532;U16;;Slope of normal condition gridconnected power;;0.100000;0.000000;%Pn/min;4
 132;3;42533;U16;;Normal condition upper limit of connection voltage(0.1%);;0.100000;0.000000;%Vn;4
 133;3;42534;U16;;Normal condition lowerer limit of connection voltage(0.1%);;0.100000;0.000000;%Vn;4
 134;3;42535;U16;;Normal condition upper limit of connection frequency;;0.010000;0.000000;Hz;4

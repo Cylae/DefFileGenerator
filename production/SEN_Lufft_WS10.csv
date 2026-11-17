@@ -1,13 +1,13 @@
 Modbus;Sensor;Lufft;WS10;;;;;;;
 1;4;19;I16;;Temperature de l_air;;10.000000;0.000000;Deg.Celsius;4
 2;4;23;I16;;Temperature du point de rosee;;10.000000;0.000000;Deg.Celsius;4
-3;4;29;U16;;Humidite relative;HUMIDITY;10.000000;0.000000;%;4
+3;4;29;U16;;Humidite relative;;10.000000;0.000000;%;4
 4;4;31;U16;;Humidite absolue;;10.000000;0.000000;g/m3;4
-5;4;37;U16;;Pression atmospherique absolue;PRESSURE;10.000000;0.000000;hPa;4
+5;4;37;U16;;Pression atmospherique absolue;;10.000000;0.000000;hPa;4
 6;4;39;U16;;Pression atmospherique relative;;10.000000;0.000000;hPa;4
-7;4;45;U16;;Vitesse du vent ms;WIND_SPEED;10.000000;0.000000;m/s;4
+7;4;45;U16;;Vitesse du vent ms;;10.000000;0.000000;m/s;4
 8;4;49;U16;;Vitesse du vent kmh;;10.000000;0.000000;km/h;4
-9;4;53;U16;;Direction du vent;WIND_BEARING;10.000000;0.000000;deg;4
+9;4;53;U16;;Direction du vent;;10.000000;0.000000;deg;4
 10;4;54;U16;;Direction du vent  (corrige par la boussole);;10.000000;0.000000;deg;4
 11;4;55;U16;;Direction magnetique;;10.000000;0.000000;deg;4
 12;4;59;U16;;Quantite de precipitations;;100.000000;0.000000;mm;4

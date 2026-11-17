@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Production Suite Builder and Governor.
+Production Suite Builder and Governor — Universal Multi-Manufacturer Engine.
 Enforces the 5 Apollo-standard pillars on all definition files entering `production/`:
   1. Readable & canonical naming (<PREFIX>_<Manufacturer>_<Model>.csv)
   2. Strict Modbus addressing (decimal 0..65535 or string addr_len)
@@ -37,64 +37,241 @@ PREFIX_TO_CATEGORY = {
     "OTH": "Other",
 }
 
-COMPOUND_PREFIXES = [
-    ("Fox_ESS", "FoxESS"),
-    ("SL_Energy", "SLEnergy"),
-    ("Alro_Solar", "AlroSolar"),
-    ("Carlo_Gavazzi", "CarloGavazzi"),
-    ("Chauvin_Arnoux", "ChauvinArnoux"),
-    ("Atess_Power", "Atess"),
-    ("Deye_Inverter", "Deye"),
-    ("INVT_Solar", "INVT"),
-    ("Ginlong_Solis", "Solis"),
-    ("Delta_Ohm", "DeltaOhm"),
-]
-
-MFG_RENAME = {
-    "fox_ess": "FoxESS",
-    "foxess": "FoxESS",
-    "fox": "FoxESS",
-    "ginlong_solis": "Solis",
-    "solis": "Solis",
-    "marsrenewable": "MarsEnergy",
-    "mars": "MarsEnergy",
+# Complete Universal Manufacturer Registry
+MFG_REGISTRY = {
+    # 1. Inverters, Convertors & Power Electronics
+    "abb": "ABB",
     "powerone": "ABB",
     "power-one": "ABB",
-    "a-eberle": "AEberle",
-    "aeberle": "AEberle",
-    "carlo_gavazzi": "CarloGavazzi",
-    "carlogavazzi": "CarloGavazzi",
-    "chauvin-arnoux": "ChauvinArnoux",
-    "chauvinarnoux": "ChauvinArnoux",
-    "sl_energy": "SLEnergy",
-    "alro_solar": "AlroSolar",
-    "schneider_electric": "Schneider",
-    "schneider": "Schneider",
-    "atess_power": "Atess",
-    "deye_inverter": "Deye",
-    "invt_solar": "INVT",
-    "solax": "SolaX",
-    "hoymiles": "Hoymiles",
+    "fimer": "Fimer",
+    "huawei": "Huawei",
+    "huwai": "Huawei",
     "goodwe": "Goodwe",
+    "goodwee": "Goodwe",
     "sungrow": "Sungrow",
     "growatt": "Growatt",
-    "huawei": "Huawei",
+    "solis": "Solis",
+    "ginlong": "Solis",
+    "ginlong_solis": "Solis",
     "sma": "SMA",
-    "abb": "ABB",
-    "socomec": "Socomec",
-    "dyness": "Dyness",
-    "lettel": "Lettel",
+    "core2": "SMA",
     "fronius": "Fronius",
+    "tauro": "Fronius",
     "kaco": "Kaco",
+    "kostal": "Kostal",
+    "solaredge": "SolarEdge",
+    "solax": "SolaX",
+    "solax-x1-x3-generic": "SolaX",
+    "deye": "Deye",
+    "foxess": "FoxESS",
+    "fox_ess": "FoxESS",
+    "fox": "FoxESS",
+    "dyness": "Dyness",
+    "ingeteam": "Ingeteam",
+    "hoymiles": "Hoymiles",
+    "delta": "Delta",
+    "delta-sunspec": "Delta",
+    "cyberpower": "Cyberpower",
+    "cyberpower3ph": "Cyberpower",
+    "solplanet": "Solplanet",
+    "saj": "SAJ",
+    "sofarsolar": "SofarSolar",
+    "siel": "Siel",
+    "kehua": "Kehua",
+    "kstar": "Kstar",
+    "k_star": "Kstar",
+    "cefem": "Cefem",
+    "efacec": "Efacec",
+    "efasolar": "Efacec",
+    "jema": "Jema",
+    "victron": "Victron",
+    "vectron": "Victron",
+    "greenheiss": "Greenheiss",
+    "hyxi": "Hyxi",
+    "hyxipower": "Hyxi",
+    "powerelectronics": "PowerElectronics",
+    "satcon": "Satcon",
+    "hopewind": "Hopewind",
+    "sineng": "Sineng",
     "danfoss": "Danfoss",
     "riello": "Riello",
-    "delta": "Delta",
+    "aros": "Riello",
+    "hitachi": "Hitachi",
+    "waaree": "Waaree",
+    "tata": "Tata",
+    "zeversolar": "ZeverSolar",
+    "zigor": "Zigor",
+    "zucchetti": "Zucchetti",
+    "solarmax": "Solarmax",
+    "salicru": "Salicru",
+    "santerno": "Santerno",
+    "bonfiglioli": "Bonfiglioli",
+    "bluesun": "BlueSun",
+    "gamesa": "Gamesa",
+    "answerdrives": "AnswerDrives",
+    "solargate": "AnswerDrives",
+    "apsystems": "APsystems",
+    "ap": "APsystems",
+    "atess": "Atess",
+    "invt": "INVT",
+    "sigenergy": "Sigenergy",
+    "sigen": "Sigenergy",
+    "robestec": "Robestec",
+    "tmeic": "TMEIC",
+    "autarco": "Autarco",
+    "marsenergy": "MarsEnergy",
+    "marsrenewable": "MarsEnergy",
+    "mars": "MarsEnergy",
+    "slenergy": "SLEnergy",
+    "sl_energy": "SLEnergy",
+    "sl": "SLEnergy",
+    "alrosolar": "AlroSolar",
+    "alro_solar": "AlroSolar",
+    "alro": "AlroSolar",
+    "atmoce": "Atmoce",
+    "nidec": "Nidec",
+
+    # 2. Meters & Electrical Network Equipment
+    "schneider": "Schneider",
+    "sch": "Schneider",
+    "pm5500": "Schneider",
+    "pm5560": "Schneider",
+    "pm5563": "Schneider",
+    "em1200": "Schneider",
+    "em6400": "Schneider",
+    "em6400ng": "Schneider",
+    "relayp5": "Schneider",
+    "socomec": "Socomec",
+    "diris": "Socomec",
+    "countis": "Socomec",
+    "lettel": "Lettel",
     "janitza": "Janitza",
+    "carlogavazzi": "CarloGavazzi",
+    "carlo_gavazzi": "CarloGavazzi",
+    "carlogavazi": "CarloGavazzi",
+    "carlo": "CarloGavazzi",
+    "em21": "CarloGavazzi",
+    "chauvinarnoux": "ChauvinArnoux",
+    "chauvin-arnoux": "ChauvinArnoux",
+    "chauvinarnoud": "ChauvinArnoux",
     "legrand": "Legrand",
+    "eastron": "Eastron",
+    "chint": "Chint",
+    "circutor": "Circutor",
+    "acrel": "Acrel",
+    "algodue": "Algodue",
+    "anexo": "Anexo",
+    "bender": "Bender",
+    "edmi": "EDMI",
+    "elster": "Elster",
+    "emu": "Emu",
+    "hager": "Hager",
+    "ime": "IME",
+    "imesys": "Imesys",
+    "inepro": "Inepro",
+    "lacecal": "Lacecal",
+    "og": "OG",
+    "panasonic": "Panasonic",
+    "polier": "Polier",
+    "saci": "Saci",
     "siemens": "Siemens",
-    "zélec": "Zelec",
+    "socorel": "Socorel",
+    "ticmaster": "Ticmaster",
+    "weidmuller": "Weidmuller",
     "zelec": "Zelec",
+    "zélec": "Zelec",
+    "ecoadapt": "EcoAdapt",
+    "eco-adapt": "EcoAdapt",
+    "eco_adapt": "EcoAdapt",
+    "eco": "EcoAdapt",
+    "a-eberle": "AEberle",
+    "aeberle": "AEberle",
+    "pq": "AEberle",
+    "ecs-optec": "EcsOptec",
+    "enerfox": "Enerfox",
+    "eflex4u": "Eflex4u",
+    "mci": "MCI",
+    "secure": "Secure",
+    "pdl": "Secure",
+
+    # 3. Weather Stations, Pyranometers & Environmental Sensors
+    "hukseflux": "Hukseflux",
+    "kippzonen": "KippZonen",
+    "kipp_zonen": "KippZonen",
+    "deltaohm": "DeltaOhm",
+    "delta_ohm": "DeltaOhm",
+    "seven": "Seven",
+    "seven_solutions": "Seven",
+    "seven_sensor_solutions": "Seven",
+    "thermokon": "Thermokon",
+    "thies": "Thies",
+    "thies_clima": "Thies",
+    "lufft": "Lufft",
+    "eko": "EKO",
+    "maximet": "Maximet",
+    "meiernt": "MeierNT",
+    "meier-nt": "MeierNT",
+    "meier": "MeierNT",
+    "ingenieurburo": "IngenieurBuro",
+    "termasgard": "Termasgard",
+    "trackso": "Trackso",
+    "atersa": "Atersa",
+    "bd": "BD",
+    "blet": "Blet",
+    "sregeltechnik": "SRegeltechnik",
+    "s_regeltechnik": "SRegeltechnik",
+    "s_s_regeltechnik": "SRegeltechnik",
+    "s": "SRegeltechnik",
+    "sesautomation": "SESAutomation",
+    "ses_automation": "SESAutomation",
+    "lsi": "LSI",
+    "lsi_lastem": "LSI",
+
+    # 4. Gateways, Loggers & Industrial Automation IO
+    "advantech": "Advantech",
+    "advantec": "Advantech",
+    "adam": "Advantech",
+    "phoenixcontact": "PhoenixContact",
+    "phenixcontact": "PhoenixContact",
+    "siebert": "Siebert",
+    "solarlog": "SolarLog",
+    "icpdas": "ICPDAS",
+    "inaccess": "Inaccess",
+    "intelec": "Intelec",
+    "snef": "SNEF",
+    "axun": "Axun",
+    "alan": "Alan",
+    "kerneli": "Kerneli",
+    "webdyn": "Webdyn",
+    "monichek": "Monichek",
+    "dcmonitor": "Monichek",
 }
+
+COMPOUND_PREFIXES = [
+    ("fox_ess", "FoxESS"),
+    ("sl_energy", "SLEnergy"),
+    ("alro_solar", "AlroSolar"),
+    ("carlo_gavazzi", "CarloGavazzi"),
+    ("chauvin_arnoux", "ChauvinArnoux"),
+    ("atess_power", "Atess"),
+    ("deye_inverter", "Deye"),
+    ("invt_solar", "INVT"),
+    ("ginlong_solis", "Solis"),
+    ("delta_ohm", "DeltaOhm"),
+    ("ap_system", "APsystems"),
+    ("thies_clima", "Thies"),
+    ("ses_automation", "SESAutomation"),
+    ("lsi_lastem", "LSI"),
+    ("seven_solutions", "Seven"),
+    ("seven_sensor_solutions", "Seven"),
+    ("eco_adapt", "EcoAdapt"),
+    ("a_eberle", "AEberle"),
+    ("a-eberle", "AEberle"),
+    ("mci_elec", "MCI"),
+    ("pq_plus", "AEberle"),
+]
+
+SKIP_INTERMEDIATES = {"india", "modbus", "sunspec", "modbusrtu", "inv", "meter", "sensor", "cpt"}
 
 NAMING_PATTERN = re.compile(
     r"^(INV|MET|SEN|BAT|COM|OTH)_([A-Za-z0-9\-]+)_([A-Za-z0-9\.\-_]+)\.csv$"
@@ -113,57 +290,114 @@ BAD_WORDS = [
     "backup",
     "wpm",
     "_2.csv",
+    "simu",
 ]
+NON_EQUIPMENT_SCRAPS = {
+    "analyseregistres",
+    "decoupetramemodbusexcel",
+    "report",
+    "repport",
+}
 
 
 def parse_raw_filename(fname: str) -> tuple[str, str, str] | None:
     """Parses a candidate raw filename into (Prefix, CanonicalManufacturer, CleanModel)."""
-    pfx = fname[:3]
-    if pfx not in ("INV", "MET", "SEN", "BAT", "COM", "OTH") or fname[3] != "_":
+    p = fname[:-4]
+    tokens = p.split("_")
+    if len(tokens) < 3:
         return None
-    rest = fname[4:-4]
+    pfx = tokens[0]
+    if pfx not in ("INV", "MET", "SEN", "BAT", "COM", "OTH"):
+        return None
 
-    mfg = None
-    model_raw = None
-    for comp, repl in COMPOUND_PREFIXES:
-        if rest.lower().startswith(comp.lower() + "_"):
-            mfg = repl
-            model_raw = rest[len(comp) + 1 :]
-            break
+    rest = p[len(pfx) + 1 :]
 
-    if not mfg:
-        tokens = rest.split("_", 1)
-        if len(tokens) == 2:
-            raw_mfg, model_raw = tokens[0], tokens[1]
-            low_mfg = raw_mfg.lower()
-            mfg = MFG_RENAME.get(
-                low_mfg,
-                raw_mfg.capitalize() if raw_mfg.isupper() and len(raw_mfg) > 3 else raw_mfg,
+    # 1. Check Webdyn wrapper
+    if rest.lower().startswith("webdyn_"):
+        sub = rest[7:]
+        # Check true Webdyn first-party hardware
+        if any(
+            sub.lower().startswith(x)
+            for x in (
+                "webdynbridge",
+                "sens_io",
+                "m200-03",
+                "rk100-01",
+                "anaex_webdyn",
+                "ioex_webdyn",
             )
+        ):
+            mfg = "Webdyn"
+            model = sub
+            if model.lower().startswith("anaex_webdyn_"):
+                model = "Sens_IO_" + model[13:]
+            elif model.lower().startswith("ioex_webdyn_"):
+                model = "Sens_IO_" + model[12:]
         else:
-            return None
+            sub_tokens = sub.split("_")
+            idx = 0
+            while idx < len(sub_tokens) and sub_tokens[idx].lower() in SKIP_INTERMEDIATES:
+                idx += 1
+            if idx >= len(sub_tokens):
+                return None
 
-    m = model_raw.strip().strip("_")
-    if m.upper().startswith(f"{pfx}_"):
-        m = m[len(pfx) + 1 :].strip("_")
+            rem_sub = "_".join(sub_tokens[idx:])
+            comp_found = False
+            for comp, canon in COMPOUND_PREFIXES:
+                if rem_sub.lower().startswith(comp + "_"):
+                    mfg = canon
+                    model = rem_sub[len(comp) + 1 :]
+                    comp_found = True
+                    break
+            if not comp_found:
+                cand = sub_tokens[idx].lower()
+                mfg = MFG_REGISTRY.get(
+                    cand,
+                    sub_tokens[idx].capitalize()
+                    if sub_tokens[idx].isupper() and len(sub_tokens[idx]) > 3
+                    else sub_tokens[idx],
+                )
+                model = "_".join(sub_tokens[idx + 1 :])
+    else:
+        comp_found = False
+        for comp, canon in COMPOUND_PREFIXES:
+            if rest.lower().startswith(comp + "_"):
+                mfg = canon
+                model = rest[len(comp) + 1 :]
+                comp_found = True
+                break
+        if not comp_found:
+            cand = tokens[1].lower()
+            mfg = MFG_REGISTRY.get(
+                cand,
+                tokens[1].capitalize()
+                if tokens[1].isupper() and len(tokens[1]) > 3
+                else tokens[1],
+            )
+            model = "_".join(tokens[2:])
+
+    # Clean model
+    model = model.strip("_")
+    if model.upper().startswith(f"{pfx}_"):
+        model = model[len(pfx) + 1 :].strip("_")
     for cw in ("BATTERY_", "METER_", "INVERTER_", "SENSOR_", "LOGGER_"):
-        if m.upper().startswith(cw):
-            m = m[len(cw) :].strip("_")
-    for mfg_var in (mfg, mfg.upper(), mfg.lower()):
-        if m.upper().startswith(f"{mfg_var.upper()}_"):
-            m = m[len(mfg_var) + 1 :].strip("_")
-        elif m.upper().startswith(f"{mfg_var.upper()}-"):
-            m = m[len(mfg_var) + 1 :].strip("_")
+        if model.upper().startswith(cw):
+            model = model[len(cw) :].strip("_")
+    for mv in (mfg, mfg.upper(), mfg.lower()):
+        if model.upper().startswith(f"{mv.upper()}_"):
+            model = model[len(mv) + 1 :].strip("_")
+        elif model.upper().startswith(f"{mv.upper()}-"):
+            model = model[len(mv) + 1 :].strip("_")
     for cw in ("BATTERY_", "METER_", "INVERTER_", "SENSOR_", "LOGGER_"):
-        if m.upper().startswith(cw):
-            m = m[len(cw) :].strip("_")
-    for mfg_var in (mfg, mfg.upper(), mfg.lower()):
-        if m.upper().startswith(f"{mfg_var.upper()}_"):
-            m = m[len(mfg_var) + 1 :].strip("_")
-    m = re.sub(r"_+", "_", m).strip("_")
-    if not m:
-        m = "Generic"
-    return pfx, mfg, m
+        if model.upper().startswith(cw):
+            model = model[len(cw) :].strip("_")
+    for mv in (mfg, mfg.upper(), mfg.lower()):
+        if model.upper().startswith(f"{mv.upper()}_"):
+            model = model[len(mv) + 1 :].strip("_")
+    model = re.sub(r"_+", "_", model).strip("_")
+    if not model:
+        model = "Generic"
+    return pfx, mfg, model
 
 
 def score_source_candidate(fpath: Path) -> tuple[int, int]:
@@ -185,16 +419,13 @@ def build_manifest() -> dict[str, Path]:
 
     # 1. Curated Reference Library (Definitions/ folder)
     for f in sorted(DEFINITIONS_DIR.glob("*.csv")):
-        bname = f.name
-        if bname == "INV_ABB_PVS800-57B_2.csv":
+        if f.name == "INV_ABB_PVS800-57B_2.csv":
             continue
-
-        tgt_name = bname
-        if tgt_name == "SEN_DELTA_OHM_LP_PYRA_03_.csv":
-            tgt_name = "SEN_DELTA_OHM_LP_PYRA_03.csv"
-
-        t_path = TAGGED_DIR / bname
-        manifest[tgt_name] = t_path if t_path.is_file() else f
+        parsed = parse_raw_filename(f.name)
+        if parsed:
+            pfx, mfg, model = parsed
+            tgt_name = f"{pfx}_{mfg}_{model}.csv"
+            manifest[tgt_name] = f
 
     # 2. FoxESS Certified Definitions
     fox_map = {
@@ -234,10 +465,11 @@ def build_manifest() -> dict[str, Path]:
     }
     manifest.update(dyness_map)
 
-    # 5. Additional Curated Equipment Models
+    # 5. Additional Key Certified Models
     extra_map = {
         "BAT_Huawei_Luna2000.csv": TAGGED_DIR / "BAT_Huawei_Luna_2000.csv",
         "BAT_Hoymiles_HoyUltra2.csv": TAGGED_DIR / "BAT_Hoymiles_HOYMILES_BATTERY_HOYULTRA2.csv",
+        "INV_Huawei_GENERIC.csv": DEFINITIONS_DIR / "INV_Huawei_GENERIC.csv",
         "INV_Atess_Generic.csv": TAGGED_DIR / "INV_Atess_Power_ATESS_GENERIC.csv",
         "INV_Deye_Generic.csv": TAGGED_DIR / "INV_Deye_Inverter_INV_DEYE_GENERIC.csv",
         "INV_INVT_Generic.csv": TAGGED_DIR / "INV_INVT_Solar_ModbusRTU_INVT_Generic.csv",
@@ -252,7 +484,7 @@ def build_manifest() -> dict[str, Path]:
     }
     manifest.update(extra_map)
 
-    # 6. Deduplicated & Clean Ingestion from tagged_definitions/
+    # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(TAGGED_DIR.glob("*.csv")):
         name = f.name
@@ -260,6 +492,8 @@ def build_manifest() -> dict[str, Path]:
         if any(bw in lower for bw in BAD_WORDS):
             continue
         if any(c in name for c in ["(", ")", ",", " ", "..", ";", "~", "$", "%"]):
+            continue
+        if any(sc in lower for sc in NON_EQUIPMENT_SCRAPS):
             continue
         parsed = parse_raw_filename(name)
         if not parsed:
@@ -275,7 +509,7 @@ def build_manifest() -> dict[str, Path]:
             continue
         candidates_by_tgt[tgt_name].append(f)
 
-    # Track lowercase keys to guarantee case-insensitive uniqueness on all OSes
+    # Lowercase mapping to enforce cross-platform case-insensitive uniqueness
     lower_to_canonical: dict[str, str] = {k.lower(): k for k in manifest}
 
     for tgt_name, sources in candidates_by_tgt.items():
@@ -346,7 +580,18 @@ def sanitize_and_normalize_definition(
             action = "4"
 
         # Infer command action
-        if any(kw in name.lower() for kw in ("shutdown", "power on", "power off", "remote control", "startup", "reboot", "cmd_")):
+        if any(
+            kw in name.lower()
+            for kw in (
+                "shutdown",
+                "power on",
+                "power off",
+                "remote control",
+                "startup",
+                "reboot",
+                "cmd_",
+            )
+        ):
             if action in ("4", ""):
                 action = "1"
         elif any(kw in name.lower() for kw in ("alarm", "fault", "warning", "error")):
@@ -354,7 +599,18 @@ def sanitize_and_normalize_definition(
                 action = "9"
 
         # Deduplicate single-instance tags
-        if tag in ("P_AC", "Q_AC", "S_AC", "P_DC", "FREQ", "PF", "E_TOT", "E_DAY", "MODEL", "SERIAL"):
+        if tag in (
+            "P_AC",
+            "Q_AC",
+            "S_AC",
+            "P_DC",
+            "FREQ",
+            "PF",
+            "E_TOT",
+            "E_DAY",
+            "MODEL",
+            "SERIAL",
+        ):
             if tag in seen_unique_tags:
                 tag = ""
             else:
@@ -385,13 +641,14 @@ def generate_production_catalog(manifest_stats: list[dict]):
     total_files = len(manifest_stats)
     total_regs = sum(item["registers"] for item in manifest_stats)
     total_tags = sum(item["tags"] for item in manifest_stats)
+    total_mfgs = len(set(item["mfg"] for item in manifest_stats))
 
     content = [
         "# 🏭 Webdyn Production Definitions Library",
         "",
         "Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).",
         "",
-        f"Comprend **{total_files} fichiers de définition certifiés** couvrant **{total_regs:,} registres Modbus** et **{total_tags:,} tags SunPM canoniques** à travers plus de 65 constructeurs mondiaux.",
+        f"Comprend **{total_files} fichiers de définition certifiés** couvrant **{total_regs:,} registres Modbus** et **{total_tags:,} tags SunPM canoniques** à travers **{total_mfgs} constructeurs mondiaux**.",
         "",
         "---",
         "",
@@ -418,8 +675,32 @@ def generate_production_catalog(manifest_stats: list[dict]):
         c_regs = sum(item["registers"] for item in files_cat)
         c_tags = sum(item["tags"] for item in files_cat)
         mfgs = sorted(list(set(item["mfg"] for item in files_cat)))
-        sample_mfgs = ", ".join(mfgs[:4]) + (f" (+{len(mfgs)-4})" if len(mfgs) > 4 else "")
-        content.append(f"| {desc} ({cat}) | `{pfx}` | {c_count} | {c_regs:,} | {c_tags:,} | {sample_mfgs} |")
+        sample_mfgs = ", ".join(mfgs[:5]) + (f" (+{len(mfgs)-5})" if len(mfgs) > 5 else "")
+        content.append(
+            f"| {desc} ({cat}) | `{pfx}` | {c_count} | {c_regs:,} | {c_tags:,} | {sample_mfgs} |"
+        )
+
+    content.extend([
+        "",
+        "---",
+        "",
+        "## 🏭 Synthèse par Constructeur (Tous les Constructeurs)",
+        "",
+        "| Constructeur | Modèles | Total Registres | Tags SunPM Actifs | Catégories Couvertes |",
+        "|---|:---:|:---:|:---:|---|",
+    ])
+
+    mfgs_dict = defaultdict(list)
+    for item in manifest_stats:
+        mfgs_dict[item["mfg"]].append(item)
+
+    for mfg_name in sorted(mfgs_dict.keys(), key=lambda m: (-len(mfgs_dict[m]), m)):
+        m_items = mfgs_dict[mfg_name]
+        m_count = len(m_items)
+        m_regs = sum(it["registers"] for it in m_items)
+        m_tags = sum(it["tags"] for it in m_items)
+        m_cats = ", ".join(sorted(set(it["category"] for it in m_items)))
+        content.append(f"| **{mfg_name}** | {m_count} | {m_regs:,} | {m_tags:,} | {m_cats} |")
 
     content.extend([
         "",
@@ -446,7 +727,7 @@ def generate_production_catalog(manifest_stats: list[dict]):
         "|---|---|---|---|---|---|---|",
     ])
 
-    for item in sorted(manifest_stats, key=lambda x: (x["prefix"], x["mfg"], x["model"])):
+    for item in sorted(manifest_stats, key=lambda x: (x["mfg"], x["model"], x["prefix"])):
         fname = item["filename"]
         content.append(
             f"| [`{fname}`](./{fname}) | {item['category']} | {item['mfg']} | {item['model']} | {item['protocol']} | {item['registers']:,} | {item['tags']:,} |"
@@ -459,16 +740,30 @@ def generate_production_catalog(manifest_stats: list[dict]):
 
 def main():
     print("=" * 80)
-    print("APOLLO PRODUCTION SUITE GENERATOR & GOVERNOR")
+    print("APOLLO UNIVERSAL PRODUCTION SUITE GENERATOR & GOVERNOR")
     print("=" * 80)
 
     PROD_DIR.mkdir(parents=True, exist_ok=True)
     generator = Generator()
     manifest = build_manifest()
 
-    print(f"\nProcessing {len(manifest)} production definitions...")
+    print(f"\nProcessing {len(manifest)} production definitions across all manufacturers...")
     stats_list = []
     failed_files = []
+
+    # Clean obsolete files from production/ that are not in manifest
+    manifest_filenames = set(manifest.keys())
+    existing_files = list(PROD_DIR.glob("*.csv"))
+    obsolete_count = 0
+    for ef in existing_files:
+        if ef.name not in manifest_filenames:
+            try:
+                ef.unlink()
+                obsolete_count += 1
+            except Exception:
+                pass
+    if obsolete_count > 0:
+        print(f"Cleaned {obsolete_count} obsolete/misnamed files from production/")
 
     for idx, (tgt_filename, src_path) in enumerate(sorted(manifest.items()), 1):
         if not src_path.is_file():
@@ -480,7 +775,6 @@ def main():
         out_path = PROD_DIR / tgt_filename
 
         buf = []
-        # Format CSV text
         header_line = ";".join(header)
         buf.append(header_line)
         for r in rows:
@@ -507,7 +801,9 @@ def main():
         tag_count = sum(1 for r in rows if r[6])
 
         if not val_rep.is_valid:
-            print(f"[{idx:03d}/{len(manifest)}] FAIL: {tgt_filename} -> {len(val_rep.issues)} issues")
+            print(
+                f"[{idx:03d}/{len(manifest)}] FAIL: {tgt_filename} -> {len(val_rep.issues)} issues"
+            )
             failed_files.append((tgt_filename, str(val_rep.issues)))
         else:
             pfx = tgt_filename.split("_")[0]
@@ -521,7 +817,6 @@ def main():
                 "registers": len(rows),
                 "tags": tag_count,
             })
-            print(f"[{idx:03d}/{len(manifest)}] OK: {tgt_filename} ({len(rows)} regs, {tag_count} tags)")
 
     # Generate README.md catalog
     generate_production_catalog(stats_list)
@@ -532,6 +827,7 @@ def main():
     print(f"Total Target Files   : {len(manifest)}")
     print(f"Successfully Created : {len(stats_list)}")
     print(f"Failed Files         : {len(failed_files)}")
+    print(f"Total Manufacturers  : {len(set(s['mfg'] for s in stats_list))}")
     print(f"Total Registers      : {sum(s['registers'] for s in stats_list):,}")
     print(f"Total SunPM Tags     : {sum(s['tags'] for s in stats_list):,}")
     print(f"Output Directory     : {PROD_DIR}")

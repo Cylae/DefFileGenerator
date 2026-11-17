@@ -4,7 +4,7 @@ Modbus;Other;Webdyn;Sens_IO_8AI;;;;;;;
 3;4;1578;I16;;Alarme 2 Status;;1.000000;0.000000;-;9
 4;4;1579;I16;;Alarme 3 Status;;1.000000;0.000000;-;9
 5;4;1580;I16;;Alarme 4 Status;;1.000000;0.000000;-;9
-6;4;82;I16;;Temperature ambiante;TEMP_AMB;1.000000;0.000000;-;4
+6;4;82;I16;;Temperature ambiante;;1.000000;0.000000;-;4
 7;3;83;I16;;Input Type;;1.000000;0.000000;C;4
 8;3;99;I16;;Temperature units;;1.000000;0.000000;-;4
 9;3;115;I16;;DC Resolution;;1.000000;0.000000;C;4

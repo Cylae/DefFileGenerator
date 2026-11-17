@@ -1,4 +1,4 @@
-Modbus;Meter;Solarlog;PRO380_WORK;;;;;;;
+Modbus;Meter;SolarLog;PRO380_WORK;;;;;;;
 1;3;4096;U16;;Serial number;SERIAL;1;0;;4
 2;3;4112;U16;;Meter code;;1;0;;4
 3;3;4120;U16;;Meter ID (Mbus/Modbus);;1;0;;4

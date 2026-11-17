@@ -6,9 +6,9 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 5;3;30071;U16;;Number of PV strings;;1.000000;0.000000;;4
 6;3;30072;U16;;Number of MPP trackers;;1.000000;0.000000;;4
 7;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
-8;3;30075;U32;;Maximum active power (Pmax);P_AC;0.001000;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);;0.001000;0.000000;kW;4
 9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001000;0.000000;kVA;4
-10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);Q_AC;0.001000;0.000000;kVar;4
+10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);;0.001000;0.000000;kVar;4
 11;3;30081;I32;;Maximum reactive power (Qmax: absorbed from the power grid);;0.001000;0.000000;kVar;4
 12;3;30561_30;STRING;;Offering name of southbound device 1;;1.000000;0.000000;N/A;4
 13;3;30576_30;STRING;;Offering name of southbound device 2;;1.000000;0.000000;N/A;4
@@ -24,9 +24,9 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 23;3;32000;U16;;[Remote communication] Single-machine remote communication;;1.000000;0.000000;;9
 24;3;32002;U16;;[Remote communication] Running status (monitoring processing);;1.000000;0.000000;;9
 25;3;32003;U32;;[Remote communication] Running status (power processing);;1.000000;0.000000;;9
-26;3;32008;U16;;Alarm 1;ALARM_1;1.000000;0.000000;;9
-27;3;32009;U16;;Alarm 2;ALARM_2;1.000000;0.000000;;9
-28;3;32010;U16;;Alarm 3;ALARM_3;1.000000;0.000000;;9
+26;3;32008;U16;;Alarm 1;;1.000000;0.000000;;9
+27;3;32009;U16;;Alarm 2;;1.000000;0.000000;;9
+28;3;32010;U16;;Alarm 3;;1.000000;0.000000;;9
 29;3;32015;U16;;ESN;;1.000000;0.000000;N/A;4
 30;3;32016;I16;;PV1 voltage;U_DC_STRING_1;0.100000;0.000000;V;4
 31;3;32017;I16;;PV1 current;I_DC_STRING_1;0.010000;0.000000;A;4
@@ -87,8 +87,8 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 86;3;32074;I32;;Phase B current;I_AC_2;0.001000;0.000000;A;4
 87;3;32076;I32;;Phase C current;I_AC_3;0.001000;0.000000;A;4
 88;3;32078;I32;;Peak active power of current day;;0.001000;0.000000;kW;4
-89;3;32080;I32;;Active power;;0.001000;0.000000;kW;4
-90;3;32082;I32;;Reactive power;;0.001000;0.000000;kVar;4
+89;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+90;3;32082;I32;;Reactive power;Q_AC;0.001000;0.000000;kVar;4
 91;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
 92;3;32085;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
 93;3;32086;U16;;Efficiency;;0.010000;0.000000;%;4
@@ -121,7 +121,7 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 120;3;35307;U16;;[Reactive] Adjustment command;;1.000000;0.000000;;4
 121;3;37000;U16;;[Energy storage unit 1] Running status;;1.000000;0.000000;;1
 122;3;37001;I32;;[Energy storage unit 1] Charge and discharge power;;1.000000;0.000000;W;1
-123;3;37003;U16;;[Energy storage unit 1] Bus voltage;U_DC;1.000000;0.000000;V;1
+123;3;37003;U16;;[Energy storage unit 1] Bus voltage;;1.000000;0.000000;V;1
 124;3;37004;U16;;[Energy storage unit 1] Battery SOC;SOC;1.000000;0.000000;%;1
 125;3;37006;U16;;[Energy storage unit 1] Working mode;;1.000000;0.000000;;1
 126;3;37007;U32;;[Energy storage unit 1] Rated charge power;;1.000000;0.000000;W;1
@@ -129,7 +129,7 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 128;3;37014;U16;;[Energy storage unit 1] Fault ID;;1.000000;0.000000;;1
 129;3;37015;U32;;[Energy storage unit 1] Current day charge capacity;;1.000000;0.000000;kWh;1
 130;3;37017;U32;;[Energy storage unit 1] Current day discharge capacity;;0.100000;0.000000;kWh;1
-131;3;37021;I16;;[Energy storage unit 1] Bus current;I_DC;0.100000;0.000000;A;1
+131;3;37021;I16;;[Energy storage unit 1] Bus current;;0.100000;0.000000;A;1
 132;3;37022;I16;;[Energy storage unit 1] battery temperature;TEMP;0.100000;0.000000;�C;1
 133;3;37025;U16;;[Energy storage unit 1] Remaining charge/ discharge time;;1.000000;0.000000;min/s;1
 134;3;37026_20;STRING;;[Energy storage unit 1] DCDCversion;;1.000000;0.000000;;1
@@ -157,7 +157,7 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 156;3;37126;I32;;A-B line voltage;;0.100000;0.000000;V;4
 157;3;37128;I32;;B-C line voltage;;0.100000;0.000000;V;4
 158;3;37130;I32;;CA line voltage;;0.100000;0.000000;V;4
-159;3;37132;I32;;A phase active power;P_AC_1;1.000000;0.000000;W;4
+159;3;37132;I32;;A phase active power;;1.000000;0.000000;W;4
 160;3;37134;I32;;B phase active power;;1.000000;0.000000;W;4
 161;3;37136;I32;;C phase active power;;1.000000;0.000000;W;4
 162;3;37138;U16;;Meter model detection result;;1.000000;0.000000;N/A;4
@@ -266,10 +266,10 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 265;3;40037;U16;;[Power grid scheduling] Q-U characteristic curve mode;;1.000000;0.000000;;4
 266;3;40038;U16;;[Power grid scheduling] Q-U dispatch trigger power (%);;1.000000;0.000000;%;4
 267;3;40120;U16;;[Power grid scheduling] Fixed active power derated;;0.100000;0.000000;kW;4
-268;3;40122;I16;;power factor;CMD_PF;0.001000;0.000000;;1
+268;3;40122;I16;;power factor;CMD_PF;0.001000;0.000000;;4
 269;3;40123;I16;;[Power grid scheduling] Reactive power compensation(Q/S);;0.001000;0.000000;;4
-270;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;1
-271;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);CMD_P_AC_SET_ABS;1.000000;0.000000;W;1
+270;3;40125;I16;;[Power grid scheduling] Active power percentage derating (0.1%);CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
+271;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);CMD_P_AC_SET_ABS;1.000000;0.000000;W;4
 272;3;40129;I32;;[Power grid scheduling] Reactive power compensation at night (kVar);;0.001000;0.000000;kVar;4
 273;3;40133;U16;;Number of points cosphi-P/Pn;;1.000000;0.000000;;4
 274;3;40134;U16;;P/Pn value at point 1;;0.100000;0.000000;%;4
@@ -334,14 +334,14 @@ Modbus;Inverter;Huawei;V4;;;;;;;
 333;3;40193;I16;;PF value at point 9;;0.001000;0.000000;;4
 334;3;40194;U16;;U/Un value at point 10;;0.100000;0.000000;%;4
 335;3;40195;I16;;PF value at point 10;;0.001000;0.000000;;4
-336;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;CMD_RAMP_TIME_S;1.000000;0.000000;s;1
+336;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;CMD_RAMP_TIME_S;1.000000;0.000000;s;4
 337;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;;1.000000;0.000000;%;4
 338;3;40200;U16;;Startup;CMD_ON;1.000000;0.000000;;1
 339;3;40201;U16;;Shutdown;CMD_OFF;1.000000;0.000000;;1
 340;3;42000;U16;;Grid code;;0.001000;0.000000;;4
 341;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001000;0.000000;%/s;4
 342;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001000;0.000000;;4
-343;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.000000;0.000000;s;1
+343;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.000000;0.000000;s;4
 344;3;42405;I32;;Failsafe Active Power Limit [kW] [High Accuracy];;0.001000;0.000000;kW;1
 345;3;43006;I16;;Time Zone;;1.000000;0.000000;min;4
 346;3;43098;U16;;[Manageme nt system] TLS encryption;;1.000000;0.000000;N/A;1

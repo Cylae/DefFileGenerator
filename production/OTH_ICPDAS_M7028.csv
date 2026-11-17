@@ -23,7 +23,7 @@ Modbus;Other;ICPDAS;M7028;;;;;;;
 22;3;101;U16;;Safe analog output Channel 5;;1.000000;0.000000;;4
 23;3;102;U16;;Safe analog output Channel 6;;1.000000;0.000000;;4
 24;3;103;U16;;Safe analog output Channel 7;;1.000000;0.000000;;4
-25;3;192;U16;;Power on analog output value of channel 0;CMD_ON;1.000000;0.000000;;1
+25;3;192;U16;;Power on analog output value of channel 0;;1.000000;0.000000;;1
 26;3;193;U16;;Power on analog output value of channel 1;;1.000000;0.000000;;1
 27;3;194;U16;;Power on analog output value of channel 2;;1.000000;0.000000;;1
 28;3;195;U16;;Power on analog output value of channel 3;;1.000000;0.000000;;1
@@ -49,7 +49,7 @@ Modbus;Other;ICPDAS;M7028;;;;;;;
 48;3;295;U16;;Analog output slew rate of channel 7;;1.000000;0.000000;;4
 49;3;480;U32;;Firmware version;;1.000000;0.000000;;4
 50;3;482;U32;;Module name;;1.000000;0.000000;;4
-51;3;484;U16;;Module address;UNIT_ID;1.000000;0.000000;;4
+51;3;484;U16;;Module address;DeviceAddr;1.000000;0.000000;;4
 52;3;485;U16;;Bus Config;BusConfig;1.000000;0.000000;;4
 53;3;487;U16;;Modbus response delay time;;1.000000;0.000000;ms;4
 54;3;488;U16;;Host watchdog timeout;;0.100000;0.000000;ms;4

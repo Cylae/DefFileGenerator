@@ -1,0 +1,28 @@
+Modbus;Other;Efacec;Exemplo_de_Mapeamento_PV500_Reflexos;;;;;;;
+1;4;40040;U16;;Estado do Inversor;;1.0;0.0;;4
+2;4;40041;U16;;Tensao de Rede;;1.0;0.0;;4
+3;4;40042;U16;;DSP;;1.0;0.0;;4
+4;4;40043;U16;;Fuga Terra TN;;1.0;0.0;;4
+5;4;40001;U16;;Tensao Condensadores Entrada CC (Vdc);U_DC;1.0;0.0;;4
+6;4;40003;U16;;Corrente Barramento CC (Idc);I_DC;1.0;0.0;;4
+7;4;40005;U16;;Potencia Entrada CC (Pdc);P_DC;1.0;0.0;;4
+8;4;40007;U16;;Tensao Saida (Vrs);;1.0;0.0;;4
+9;4;40009;U16;;Tensao Saida (Vst);;1.0;0.0;;4
+10;4;40011;U16;;Tensao Saida (Vtr);;1.0;0.0;;4
+11;4;40013;U16;;Corrente Saida (Ir);;1.0;0.0;;4
+12;4;40015;U16;;Corrente Saida (Is);;1.0;0.0;;4
+13;4;40017;U16;;Corrente Saida (It);;1.0;0.0;;4
+14;4;40019;U16;;Potencia Saida;;1.0;0.0;;4
+15;4;40021;U16;;Factor de Potencia;;1.0;0.0;;4
+16;4;40023;U16;;Temperatura;;1.0;0.0;;4
+17;4;40025;U16;;Frequencia;;1.0;0.0;;4
+18;4;40027;U16;;Alarme Tensao de Rede;;1.0;0.0;;9
+19;4;40028;U16;;Alarme Frequencia;;1.0;0.0;;9
+20;4;40029;U16;;Alarme Fusiveis;;1.0;0.0;;9
+21;4;40030;U16;;Alarme Fuga de Isolamento;;1.0;0.0;;9
+22;4;40031;U16;;Alarme Proteccao Interna;;1.0;0.0;;9
+23;4;40032;U16;;Alarme Sobretemperatura;;1.0;0.0;;9
+24;4;40033;U16;;Pré-Alarme Sobretemperatura;;1.0;0.0;;9
+25;4;40034;U16;;Alarme Ventilação Inversor;WIND_SPEED;1.0;0.0;;9
+26;4;40035;U16;;Contador de Energia Activa;;1.0;0.0;;4
+27;4;40037;U16;;Contador de Energia Reactiva;;1.0;0.0;;4

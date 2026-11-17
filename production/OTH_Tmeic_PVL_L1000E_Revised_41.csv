@@ -1,4 +1,4 @@
-Modbus;Other;Tmeic;PVL_L1000E_Revised_41;;;;;;;
+Modbus;Other;TMEIC;PVL_L1000E_Revised_41;;;;;;;
 1;4;26;U32;;Active Energy;E_TOT;0.100000;0.000000;kWh;4
 2;4;30;I16;;Active power P;P_AC;0.100000;0.000000;kW;4
 3;4;31;I16;;Reactive power Q;Q_AC;0.100000;0.000000;kVAr;4

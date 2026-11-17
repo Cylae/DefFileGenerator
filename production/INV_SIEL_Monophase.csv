@@ -1,10 +1,10 @@
-Modbus;Inverter;SIEL;Monophase;;;;;;;
+Modbus;Inverter;Siel;Monophase;;;;;;;
 1;3;1;I16;;Statuses of alarms1;;1.000000;0.000000;;8
 2;3;2;I16;;Statuses of alarms2;;1.000000;0.000000;;8
 3;3;3;I16;;Main voltage;;1.000000;0.000000;V;4
 4;3;6;I16;;Mains current (tenths of A);;0.100000;0.000000;A;4
 5;3;9;I16;;Power transmitted to mains;;1.000000;0.000000;;4
-6;3;10;I16;;Internal temperature;TEMP_INT;1.000000;0.000000;C;4
+6;3;10;I16;;Internal temperature;;1.000000;0.000000;C;4
 7;3;12;I16;;Cells Voltage;;1.000000;0.000000;V;4
 8;3;13;I16;;Icell Current of cells;;0.100000;0.000000;A;4
 9;3;16;I16;;Energy;P_AC;1.000000;0.000000;KWh;4
