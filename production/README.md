@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1117 fichiers de définition certifiés** couvrant **345,705 registres Modbus** et **29,656 tags SunPM canoniques** à travers **137 constructeurs mondiaux**.
+Comprend **1118 fichiers de définition certifiés** couvrant **349,025 registres Modbus** et **29,901 tags SunPM canoniques** à travers **137 constructeurs mondiaux**.
 
 ---
 
@@ -50,7 +50,7 @@ Comprend **1117 fichiers de définition certifiés** couvrant **345,705 registre
 | **Kostal** | 12 | 1,371 | 245 | Inverter, Other |
 | **SolaX** | 12 | 2,304 | 176 | Battery, Inverter |
 | **KippZonen** | 11 | 361 | 17 | Other, Sensor |
-| **Solplanet** | 11 | 4,882 | 656 | Inverter, Logger, Other |
+| **Solplanet** | 12 | 4,990 | 763 | Inverter, Logger, Other |
 | **CarloGavazzi** | 9 | 617 | 28 | Meter, Other |
 | **SofarSolar** | 9 | 2,634 | 156 | Inverter |
 | **Solis** | 9 | 3,211 | 235 | Inverter |

@@ -12,28 +12,30 @@ from DefFileGenerator.production_governor import verify_file_pillars
 
 
 def test_solplanet_ailogger_pillars():
-    """Verify that COM_Solplanet_Ai-Logger.csv satisfies all 5 Apollo pillars."""
-    prod_file = Path("production/COM_Solplanet_Ai-Logger.csv")
-    assert prod_file.is_file(), f"Missing production file: {prod_file}"
+    """Verify that COM_Solplanet_Ai-Logger.csv and INV_Solplanet_Ai-Logger.csv satisfy all 5 Apollo pillars."""
+    for filename in ("COM_Solplanet_Ai-Logger.csv", "INV_Solplanet_Ai-Logger.csv"):
+        prod_file = Path("production") / filename
+        assert prod_file.is_file(), f"Missing production file: {prod_file}"
 
-    is_valid, issues = verify_file_pillars(prod_file)
-    assert is_valid, f"Verification failed with issues: {issues}"
-    assert len(issues) == 0
+        is_valid, issues = verify_file_pillars(prod_file)
+        assert is_valid, f"Verification failed for {filename} with issues: {issues}"
+        assert len(issues) == 0
 
 
 def test_solplanet_ailogger_copies():
     """Verify that all definition repositories contain identical certified copies."""
-    prod_file = Path("production/COM_Solplanet_Ai-Logger.csv")
-    content = prod_file.read_bytes()
+    for filename in ("COM_Solplanet_Ai-Logger.csv", "INV_Solplanet_Ai-Logger.csv"):
+        prod_file = Path("production") / filename
+        content = prod_file.read_bytes()
 
-    for folder in ("Definitions", "tagged_definitions", "generated_definitions"):
-        target = Path(folder) / "COM_Solplanet_Ai-Logger.csv"
-        assert target.is_file(), f"Missing copy in {folder}"
-        assert target.read_bytes() == content, f"Mismatch between production and {folder}"
+        for folder in ("Definitions", "tagged_definitions", "generated_definitions"):
+            target = Path(folder) / filename
+            assert target.is_file(), f"Missing copy in {folder}"
+            assert target.read_bytes() == content, f"Mismatch between production and {folder}"
 
 
-def test_solplanet_ailogger_structure():
-    """Verify the internal structure, header, register count, and key telemetry points."""
+def test_solplanet_ailogger_gateway_structure():
+    """Verify the internal structure, header, register count, and key telemetry points of the Gateway."""
     prod_file = Path("production/COM_Solplanet_Ai-Logger.csv")
     with open(prod_file, encoding="utf-8") as f:
         reader = list(csv.reader(f, delimiter=";"))
@@ -46,7 +48,7 @@ def test_solplanet_ailogger_structure():
     assert header[3] == "Ai-Logger"
 
     rows = reader[1:]
-    assert len(rows) == 159, f"Expected 159 registers, got {len(rows)}"
+    assert len(rows) == 161, f"Expected 161 registers, got {len(rows)}"
 
     reg_map = {r[2]: r for r in rows}
 
@@ -60,14 +62,26 @@ def test_solplanet_ailogger_structure():
     assert "987" in reg_map
     assert reg_map["987"][6] == "IRR"
 
+    assert "993" in reg_map
+    assert reg_map["993"][6] == "WIND_SPEED_2"
+    assert "994" in reg_map
+    assert reg_map["994"][6] == "IRR_2"
+
     # 2. Inverter Telemetry (FC 4)
-    assert "1002_16" in reg_map
-    assert reg_map["1002_16"][3] == "STRING"
-    assert reg_map["1002_16"][6] == "INV_SN"
+    assert "1002_32" in reg_map
+    assert reg_map["1002_32"][3] == "STRING"
+    assert reg_map["1002_32"][6] == "SERIAL"
+
+    assert "1018_16" in reg_map
+    assert reg_map["1018_16"][3] == "STRING"
+    assert reg_map["1018_16"][6] == "MODEL"
 
     assert "1027" in reg_map
     assert reg_map["1027"][3] == "U32"
     assert reg_map["1027"][6] == "P_NOM"
+
+    assert "1056_16" in reg_map
+    assert reg_map["1056_16"][6] == "MANUFACTURER"
 
     assert "1308" in reg_map
     assert reg_map["1308"][6] == "STATUS"
@@ -107,6 +121,28 @@ def test_solplanet_ailogger_structure():
     assert reg_map["60002"][6] == "CMD_ON_OFF"
     assert reg_map["60002"][10] == "1"
 
+    # 6. Direct 4X Inverter Commands
+    assert "201" in reg_map
+    assert reg_map["201"][6] == "CMD_REMOTE_SWITCH"
+    assert "2101" in reg_map
+    assert reg_map["2101"][6] == "CMD_MODBUS_ADDR_SET"
+
+
+def test_solplanet_ailogger_inverter_structure():
+    """Verify the internal structure of INV_Solplanet_Ai-Logger.csv."""
+    prod_file = Path("production/INV_Solplanet_Ai-Logger.csv")
+    with open(prod_file, encoding="utf-8") as f:
+        reader = list(csv.reader(f, delimiter=";"))
+
+    header = reader[0]
+    assert header[0] == "Modbus"
+    assert header[1] == "Inverter"
+    assert header[2] == "Solplanet"
+    assert header[3] == "Ai-Logger"
+
+    rows = reader[1:]
+    assert len(rows) == 106, f"Expected 106 registers, got {len(rows)}"
+
 
 def test_knowledge_base_contains_ailogger_variables():
     """Verify that dataset_knowledge.json has learned the Ai-Logger variable mappings."""
@@ -116,6 +152,7 @@ def test_knowledge_base_contains_ailogger_variables():
     # Check key mappings learned from the Ai-Logger
     assert kb.get_learned_tag("Wind Speed Sensor 1") == "WIND_SPEED"
     assert kb.get_learned_tag("Irradiance Sensor 1") == "IRR"
+    assert kb.get_learned_tag("Wind Speed Sensor 2") == "WIND_SPEED_2"
     assert kb.get_learned_tag("Total Inverters Active Power") == "P_AC_TOTAL"
     assert kb.get_learned_tag("Meter Total Active Power") == "P_AC_METER"
     assert kb.get_learned_tag("Active Power Control Command (-100 to 100% Pn)") == "CMD_P_AC_SET_PERCENT"

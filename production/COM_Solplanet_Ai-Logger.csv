@@ -3,35 +3,35 @@ Modbus;Logger;Solplanet;Ai-Logger;;;;;;;
 2;4;987;U16;;Irradiance Sensor 1;IRR;0.100000;0.000000;W/m2;4
 3;4;988;I16;;Cell Temperature Sensor 1;T_MOD;0.100000;0.000000;°C;4
 4;4;989;I16;;External Temperature 1 Sensor 1;T_AMB;0.100000;0.000000;°C;4
-5;4;990;I16;;External Temperature 2 Sensor 1;;0.100000;0.000000;°C;4
+5;4;990;I16;;External Temperature 2 Sensor 1;T_AMB_2;0.100000;0.000000;°C;4
 6;4;991;U16;;Relative Humidity Sensor 1;HUMIDITY;1.000000;0.000000;%;4
 7;4;992;U16;;Wind Direction Sensor 1;WIND_DIR;1.000000;0.000000;°;4
-8;4;993;U16;;Wind Speed Sensor 2;;1.000000;0.000000;m/s;4
-9;4;994;U16;;Irradiance Sensor 2;;0.100000;0.000000;W/m2;4
-10;4;995;I16;;Cell Temperature Sensor 2;;0.100000;0.000000;°C;4
-11;4;996;I16;;External Temperature 1 Sensor 2;;0.100000;0.000000;°C;4
-12;4;997;I16;;External Temperature 2 Sensor 2;;0.100000;0.000000;°C;4
-13;4;998;U16;;Relative Humidity Sensor 2;;1.000000;0.000000;%;4
-14;4;999;U16;;Wind Direction Sensor 2;;1.000000;0.000000;°;4
-15;4;1000;U16;;Inverter Device Type (1=Single-phase, 3=Three-phase);;1.000000;0.000000;;4
-16;4;1001;U16;;Inverter Modbus RTU Address;;1.000000;0.000000;;4
-17;4;1002_16;STRING;;Inverter Serial Number;INV_SN;1.000000;0.000000;;4
-18;4;1018_8;STRING;;Inverter Machine Type;;1.000000;0.000000;;4
-19;4;1026;U16;;Current Grid Code;;1.000000;0.000000;;4
+8;4;993;U16;;Wind Speed Sensor 2;WIND_SPEED_2;1.000000;0.000000;m/s;4
+9;4;994;U16;;Irradiance Sensor 2;IRR_2;0.100000;0.000000;W/m2;4
+10;4;995;I16;;Cell Temperature Sensor 2;T_MOD_2;0.100000;0.000000;°C;4
+11;4;996;I16;;External Temperature 1 Sensor 2;T_AMB_3;0.100000;0.000000;°C;4
+12;4;997;I16;;External Temperature 2 Sensor 2;T_AMB_4;0.100000;0.000000;°C;4
+13;4;998;U16;;Relative Humidity Sensor 2;HUMIDITY_2;1.000000;0.000000;%;4
+14;4;999;U16;;Wind Direction Sensor 2;WIND_DIR_2;1.000000;0.000000;°;4
+15;4;1000_2;STRING;;Inverter Device Type (1=Single-phase, 3=Three-phase);DEV_TYPE;1.000000;0.000000;;4
+16;4;1001;U16;;Inverter Modbus RTU Address;UNIT_ID;1.000000;0.000000;;4
+17;4;1002_32;STRING;;Inverter Serial Number;SERIAL;1.000000;0.000000;;4
+18;4;1018_16;STRING;;Inverter Machine Type;MODEL;1.000000;0.000000;;4
+19;4;1026;U16;;Current Grid Code;GRID_CODE;1.000000;0.000000;;4
 20;4;1027;U32;;Rated Nominal Power;P_NOM;1.000000;0.000000;W;4
-21;4;1029_7;STRING;;Master Software Version;;1.000000;0.000000;;4
-22;4;1036_7;STRING;;Slave Software Version;;1.000000;0.000000;;4
-23;4;1043_7;STRING;;Safety Version;;1.000000;0.000000;;4
-24;4;1050_6;STRING;;Communication Protocol Version;;1.000000;0.000000;;4
-25;4;1056_8;STRING;;Manufacturer Name;;1.000000;0.000000;;4
-26;4;1064_8;STRING;;Brand Name;;1.000000;0.000000;;4
-27;4;1072;U16;;Inverter Model Code;;1.000000;0.000000;;4
-28;4;1073;U16;;MPPT Number;;1.000000;0.000000;;4
-29;4;1074;U16;;String Current Number;;1.000000;0.000000;;4
-30;4;1075_2;STRING;;Hardware Version;;1.000000;0.000000;;4
-31;4;1077_3;STRING;;Master CPU Sub-Version;;1.000000;0.000000;;4
-32;4;1096_7;STRING;;Slave CPU Version;;1.000000;0.000000;;4
-33;4;1103_3;STRING;;Slave CPU Sub-Version;;1.000000;0.000000;;4
+21;4;1029_14;STRING;;Master Software Version;FW_MASTER;1.000000;0.000000;;4
+22;4;1036_14;STRING;;Slave Software Version;FW_SLAVE;1.000000;0.000000;;4
+23;4;1043_14;STRING;;Safety Version;FW_SAFETY;1.000000;0.000000;;4
+24;4;1050_12;STRING;;Communication Protocol Version;COMM_VER;1.000000;0.000000;;4
+25;4;1056_16;STRING;;Manufacturer Name;MANUFACTURER;1.000000;0.000000;;4
+26;4;1064_16;STRING;;Brand Name;BRAND;1.000000;0.000000;;4
+27;4;1072;U16;;Inverter Model Code;MODEL_CODE;1.000000;0.000000;;4
+28;4;1073;U16;;MPPT Number;MPPT_NUM;1.000000;0.000000;;4
+29;4;1074;U16;;String Current Number;STR_NUM;1.000000;0.000000;;4
+30;4;1075_4;STRING;;Hardware Version;HW_VER;1.000000;0.000000;;4
+31;4;1077_6;STRING;;Master CPU Sub-Version;FW_CPU_SUB;1.000000;0.000000;;4
+32;4;1096_14;STRING;;Slave CPU Version;FW_SLAVE_CPU;1.000000;0.000000;;4
+33;4;1103_26;STRING;;Slave CPU Sub-Version;FW_SLAVE_SUB;1.000000;0.000000;;4
 34;4;1116;U16;;PV1-PV4 String Current Number;;1.000000;0.000000;;4
 35;4;1117;U16;;PV5-PV8 String Current Number;;1.000000;0.000000;;4
 36;4;1118;U16;;PV9-PV12 String Current Number;;1.000000;0.000000;;4
@@ -40,20 +40,20 @@ Modbus;Logger;Solplanet;Ai-Logger;;;;;;;
 39;4;1121;U16;;PV21-PV24 String Current Number;;1.000000;0.000000;;4
 40;4;1122;U16;;PV25-PV28 String Current Number;;1.000000;0.000000;;4
 41;4;1123;U16;;PV29-PV32 String Current Number;;1.000000;0.000000;;4
-42;4;1300;U16;;Grid Rated Voltage;;0.100000;0.000000;V;4
-43;4;1301;U16;;Grid Rated Frequency;;0.010000;0.000000;Hz;4
+42;4;1300;U16;;Grid Rated Voltage;U_AC_NOM;0.100000;0.000000;V;4
+43;4;1301;U16;;Grid Rated Frequency;FREQ_NOM;0.010000;0.000000;Hz;4
 44;4;1302;U32;;E-Today of Inverter;E_DAY;0.100000;0.000000;kWh;4
 45;4;1304;U32;;E-Total of Inverter;E_TOT;0.100000;0.000000;kWh;4
 46;4;1306;U32;;Hours Total Operating Time;HOURS_TOT;1.000000;0.000000;h;4
 47;4;1308;U16;;Inverter Operating State;STATUS;1.000000;0.000000;;9
-48;4;1309;U16;;Grid Connect Time;;1.000000;0.000000;s;4
+48;4;1309;U16;;Grid Connect Time;T_CONNECT;1.000000;0.000000;s;4
 49;4;1310;I16;;Internal Inverter Temperature;T_INT;0.100000;0.000000;°C;4
-50;4;1311;I16;;Inverter U-Phase Temperature;;0.100000;0.000000;°C;4
-51;4;1312;I16;;Inverter V-Phase Temperature;;0.100000;0.000000;°C;4
-52;4;1313;I16;;Inverter W-Phase Temperature;;0.100000;0.000000;°C;4
-53;4;1314;I16;;Boost Stage Temperature;;0.100000;0.000000;°C;4
-54;4;1315;I16;;Bidirectional DC-DC Converter Temperature;;0.100000;0.000000;°C;4
-55;4;1316;U16;;DC Bus Voltage;;0.100000;0.000000;V;4
+50;4;1311;I16;;Inverter U-Phase Temperature;T_PH_A;0.100000;0.000000;°C;4
+51;4;1312;I16;;Inverter V-Phase Temperature;T_PH_B;0.100000;0.000000;°C;4
+52;4;1313;I16;;Inverter W-Phase Temperature;T_PH_C;0.100000;0.000000;°C;4
+53;4;1314;I16;;Boost Stage Temperature;T_BOOST;0.100000;0.000000;°C;4
+54;4;1315;I16;;Bidirectional DC-DC Converter Temperature;T_DCDC;0.100000;0.000000;°C;4
+55;4;1316;U16;;DC Bus Voltage;U_DC_BUS;0.100000;0.000000;V;4
 56;4;1318;U16;;PV1 DC Voltage;U_DC_1;0.100000;0.000000;V;4
 57;4;1319;U16;;PV1 DC Current;I_DC_1;0.010000;0.000000;A;4
 58;4;1320;U16;;PV2 DC Voltage;U_DC_2;0.100000;0.000000;V;4
@@ -108,10 +108,10 @@ Modbus;Logger;Solplanet;Ai-Logger;;;;;;;
 107;4;1370;I32;;Inverter Active Power;P_AC;1.000000;0.000000;W;4
 108;4;1372;I32;;Inverter Reactive Power;Q_AC;1.000000;0.000000;Var;4
 109;4;1374;I16;;Inverter Power Factor;PF;0.010000;0.000000;;4
-110;4;1376;U16;;Inverter Internal Fault State;;1.000000;0.000000;;9
-111;4;1377;U16;;Inverter Error Message Code;;1.000000;0.000000;;9
-112;4;1378;U16;;Inverter Warning Message Code;;1.000000;0.000000;;9
-113;4;1388;U16;;IOS Measure Value;;1.000000;0.000000;;4
+110;4;1376;U16;;Inverter Internal Fault State;ALARM_INTERNAL;1.000000;0.000000;;9
+111;4;1377;U16;;Inverter Error Message Code;ERROR_CODE;1.000000;0.000000;;9
+112;4;1378;U16;;Inverter Warning Message Code;WARN_CODE;1.000000;0.000000;;9
+113;4;1388;U16;;IOS Measure Value;IOS_MEAS;1.000000;0.000000;;4
 114;4;36100;I32;;Total Inverters Active Power;P_AC_TOTAL;1.000000;0.000000;W;4
 115;4;36102;I32;;Total Inverters Reactive Power;Q_AC_TOTAL;1.000000;0.000000;Var;4
 116;4;36104;F32;;Meter Phase 1 Line to Neutral Voltage;U_AC_METER_1;1.000000;0.000000;V;4
@@ -132,9 +132,9 @@ Modbus;Logger;Solplanet;Ai-Logger;;;;;;;
 131;4;36134;F32;;Meter Phase 1 Power Factor;PF_METER_1;1.000000;0.000000;;4
 132;4;36136;F32;;Meter Phase 2 Power Factor;PF_METER_2;1.000000;0.000000;;4
 133;4;36138;F32;;Meter Phase 3 Power Factor;PF_METER_3;1.000000;0.000000;;4
-134;4;36140;F32;;Meter Phase 1 Phase Angle;;1.000000;0.000000;°;4
-135;4;36142;F32;;Meter Phase 2 Phase Angle;;1.000000;0.000000;°;4
-136;4;36144;F32;;Meter Phase 3 Phase Angle;;1.000000;0.000000;°;4
+134;4;36140;F32;;Meter Phase 1 Phase Angle;ANGLE_1;1.000000;0.000000;°;4
+135;4;36142;F32;;Meter Phase 2 Phase Angle;ANGLE_2;1.000000;0.000000;°;4
+136;4;36144;F32;;Meter Phase 3 Phase Angle;ANGLE_3;1.000000;0.000000;°;4
 137;4;36146;F32;;Meter Average Line to Neutral Voltage;U_AC_AVG;1.000000;0.000000;V;4
 138;4;36150;F32;;Meter Average Line Current;I_AC_AVG;1.000000;0.000000;A;4
 139;4;36152;F32;;Meter Sum of Line Currents;I_AC_SUM;1.000000;0.000000;A;4
@@ -142,13 +142,13 @@ Modbus;Logger;Solplanet;Ai-Logger;;;;;;;
 141;4;36160;F32;;Meter Total Apparent Power;S_AC_METER;1.000000;0.000000;VA;4
 142;4;36164;F32;;Meter Total Reactive Power;Q_AC_METER;1.000000;0.000000;VAr;4
 143;4;36166;F32;;Meter Total Power Factor;PF_METER;1.000000;0.000000;;4
-144;4;36170;F32;;Meter Total Phase Angle;;1.000000;0.000000;°;4
+144;4;36170;F32;;Meter Total Phase Angle;ANGLE_SYS;1.000000;0.000000;°;4
 145;4;36174;F32;;Meter Frequency of Supply Voltages;FREQ_METER;1.000000;0.000000;Hz;4
 146;4;36176;F32;;Meter Import Active Energy Wh Since Reset;E_IMP;1.000000;0.000000;kWh;4
 147;4;36178;F32;;Meter Export Active Energy Wh Since Reset;E_EXP;1.000000;0.000000;kWh;4
-148;4;36180;F32;;Meter Import Reactive Energy VArh Since Reset;;1.000000;0.000000;kVArh;4
-149;4;36182;F32;;Meter Export Reactive Energy VArh Since Reset;;1.000000;0.000000;kVArh;4
-150;4;36184;F32;;Meter Apparent Energy VAh Since Reset;;1.000000;0.000000;kVAh;4
+148;4;36180;F32;;Meter Import Reactive Energy VArh Since Reset;Q_IMP_METER;1.000000;0.000000;kVArh;4
+149;4;36182;F32;;Meter Export Reactive Energy VArh Since Reset;Q_EXP_METER;1.000000;0.000000;kVArh;4
+150;4;36184;F32;;Meter Apparent Energy VAh Since Reset;S_TOT_METER;1.000000;0.000000;kVAh;4
 151;4;36186;F32;;Meter Line 1 to Line 2 Voltage;U_AC_METER_12;1.000000;0.000000;V;4
 152;4;36188;F32;;Meter Line 2 to Line 3 Voltage;U_AC_METER_23;1.000000;0.000000;V;4
 153;4;36190;F32;;Meter Line 3 to Line 1 Voltage;U_AC_METER_31;1.000000;0.000000;V;4
@@ -158,3 +158,5 @@ Modbus;Logger;Solplanet;Ai-Logger;;;;;;;
 157;3;60002;U16;;Inverter ON/OFF Control Command (1=Turn On, 2=Turn Off);CMD_ON_OFF;1.000000;0.000000;;1
 158;3;60003;U16;;Active Power Limitation Percentage (0 to 110% Pn);CMD_P_LIM_PERCENT;0.010000;0.000000;%Pn;1
 159;3;60004;I16;;Reactive Power Q Value Control Command (-65 to 65% Sn);CMD_Q_SET_PERCENT;0.010000;0.000000;%Sn;1
+160;3;201;U16;;Inverter Remote Switch Control Command (1=Turn On, 2=Turn Off);CMD_REMOTE_SWITCH;1.000000;0.000000;;1
+161;3;2101;U16;;Inverter Modbus RTU Address Setting (1 to 247);CMD_MODBUS_ADDR_SET;1.000000;0.000000;;1
