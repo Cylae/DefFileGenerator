@@ -157,7 +157,7 @@
     "powreactive r": "Q_AC",
     "powreactive s": "Q_AC",
     "powreactive t": "Q_AC",
-    "serial number": "SERIAL",
+    "serial number": "INV_SN",
     "model name": "MODEL",
     "manufacturer": "MANUFACTURER",
     "cmd code reset e total and h total record 50 apply parameters of power reducing": "CMD_P_ENA",
@@ -167,7 +167,7 @@
     "device serial number": "SERIAL",
     "on off": "CMD_ON",
     "pv1 voltage": "U_DC_STRING_1",
-    "pv1 dc current": "I_DC_STRING_1",
+    "pv1 dc current": "I_DC_1",
     "output frequency": "FREQ",
     "bypass apparent power": "S_AC",
     "bypass active power": "P_AC",
@@ -197,7 +197,7 @@
     "output reactive power": "Q_AC",
     "bypass frequency": "FREQ",
     "pv2 voltage": "U_DC_STRING_2",
-    "pv2 dc current": "I_DC_STRING_2",
+    "pv2 dc current": "I_DC_2",
     "pv total power": "E_TOT",
     "pv module temperature": "TEMP_CELL",
     "out module temperature": "TEMP_CELL",
@@ -206,9 +206,9 @@
     "pv3 voltage": "U_DC_STRING_3",
     "pv4 voltage": "U_DC_STRING_4",
     "pv5 voltage": "U_DC_STRING_5",
-    "pv3 dc current": "I_DC_STRING_3",
-    "pv4 dc current": "I_DC_STRING_4",
-    "pv5 dc current": "I_DC_STRING_5",
+    "pv3 dc current": "I_DC_3",
+    "pv4 dc current": "I_DC_4",
+    "pv5 dc current": "I_DC_5",
     "pv3inductance current": "I_DC_STRING_3",
     "pv4inductance current": "I_DC_STRING_4",
     "pv5 inductance current": "I_DC_STRING_5",
@@ -1836,15 +1836,15 @@
     "meter active power a": "P_AC",
     "meter active power b": "P_AC",
     "meter active power c": "P_AC",
-    "meter total active power": "P_AC",
+    "meter total active power": "P_AC_METER",
     "meter reactive power a": "Q_AC",
     "meter reactive power b": "Q_AC",
     "meter reactive power c": "Q_AC",
-    "meter total reactive power": "Q_AC",
+    "meter total reactive power": "Q_AC_METER",
     "meter apparent power a": "S_AC",
     "meter apparent power b": "S_AC",
     "meter apparent power c": "S_AC",
-    "meter total apparent power": "S_AC",
+    "meter total apparent power": "S_AC_METER",
     "meter grid import active energy": "E_IMP",
     "meter grid export active energy": "E_EXP",
     "a phase module ntc temperature": "TEMP_CELL",
@@ -34480,7 +34480,7 @@
     "dc2 voltage mppt zone 2": "U_DC",
     "dc2 current mppt zone 2": "I_DC",
     "power module heatsink temperature": "TEMP_CELL",
-    "internal inverter temperature": "TEMP_INT",
+    "internal inverter temperature": "T_INT",
     "permanent fault alarm register severity high requires site visit to check the cause the inverter will stay off until both dc and ac power are cycled": "P_DC",
     "fault2 alarm register severity medium the inverter has discovered a failure such as grid or pv out of range conditions the inverter will resume power generation when the condition clears exception bits 15 arc fault in models 14kw and 20kw are high severity and stay on permanently like other pfaults": "MODEL",
     "fault3 alarm register severity medium the inverter has discovered a failure such as grid or pv out of range conditions the inverter will resume power generation when the condition clears exception arc fault condition indicated by bit 15 will shut the inverter production down until the arc fault condition and both dc and ac power are recycled": "P_DC",
@@ -36039,11 +36039,100 @@
     "power %": "P_AC",
     "apparent power %": "S_AC",
     "reactive power %": "Q_AC",
-    "daily kwh supplied": "E_DAY"
+    "daily kwh supplied": "E_DAY",
+    "wind speed sensor 1": "WIND_SPEED",
+    "irradiance sensor 1": "IRR",
+    "cell temperature sensor 1": "T_MOD",
+    "external temperature 1 sensor 1": "T_AMB",
+    "relative humidity sensor 1": "HUMIDITY",
+    "wind direction sensor 1": "WIND_DIR",
+    "rated nominal power": "P_NOM",
+    "hours total operating time": "HOURS_TOT",
+    "operating state": "STATUS",
+    "pv1 dc voltage": "U_DC_1",
+    "pv2 dc voltage": "U_DC_2",
+    "pv3 dc voltage": "U_DC_3",
+    "pv4 dc voltage": "U_DC_4",
+    "pv5 dc voltage": "U_DC_5",
+    "pv6 dc voltage": "U_DC_6",
+    "pv6 dc current": "I_DC_6",
+    "pv7 dc voltage": "U_DC_7",
+    "pv7 dc current": "I_DC_7",
+    "pv8 dc voltage": "U_DC_8",
+    "pv8 dc current": "I_DC_8",
+    "pv9 dc voltage": "U_DC_9",
+    "pv9 dc current": "I_DC_9",
+    "pv10 dc voltage": "U_DC_10",
+    "pv10 dc current": "I_DC_10",
+    "pv string 1 current": "I_STR_1",
+    "pv string 2 current": "I_STR_2",
+    "pv string 3 current": "I_STR_3",
+    "pv string 4 current": "I_STR_4",
+    "pv string 5 current": "I_STR_5",
+    "pv string 6 current": "I_STR_6",
+    "pv string 7 current": "I_STR_7",
+    "pv string 8 current": "I_STR_8",
+    "pv string 9 current": "I_STR_9",
+    "pv string 10 current": "I_STR_10",
+    "pv string 11 current": "I_STR_11",
+    "pv string 12 current": "I_STR_12",
+    "pv string 13 current": "I_STR_13",
+    "pv string 14 current": "I_STR_14",
+    "pv string 15 current": "I_STR_15",
+    "pv string 16 current": "I_STR_16",
+    "pv string 17 current": "I_STR_17",
+    "pv string 18 current": "I_STR_18",
+    "pv string 19 current": "I_STR_19",
+    "pv string 20 current": "I_STR_20",
+    "grid l1 phase voltage": "U_AC_1",
+    "grid l1 phase current": "I_AC_1",
+    "grid l2 phase voltage": "U_AC_2",
+    "grid l2 phase current": "I_AC_2",
+    "grid l3 phase voltage": "U_AC_3",
+    "grid l3 phase current": "I_AC_3",
+    "grid line voltage rs": "U_AC_12",
+    "grid line voltage rt": "U_AC_31",
+    "grid line voltage st": "U_AC_23",
+    "total inverters active power": "P_AC_TOTAL",
+    "total inverters reactive power": "Q_AC_TOTAL",
+    "meter phase 1 line to neutral voltage": "U_AC_METER_1",
+    "meter phase 2 line to neutral voltage": "U_AC_METER_2",
+    "meter phase 3 line to neutral voltage": "U_AC_METER_3",
+    "meter phase 1 current": "I_AC_METER_1",
+    "meter phase 2 current": "I_AC_METER_2",
+    "meter phase 3 current": "I_AC_METER_3",
+    "meter phase 1 active power": "P_AC_METER_1",
+    "meter phase 2 active power": "P_AC_METER_2",
+    "meter phase 3 active power": "P_AC_METER_3",
+    "meter phase 1 apparent power": "S_AC_METER_1",
+    "meter phase 2 apparent power": "S_AC_METER_2",
+    "meter phase 3 apparent power": "S_AC_METER_3",
+    "meter phase 1 reactive power": "Q_AC_METER_1",
+    "meter phase 2 reactive power": "Q_AC_METER_2",
+    "meter phase 3 reactive power": "Q_AC_METER_3",
+    "meter phase 1 power factor": "PF_METER_1",
+    "meter phase 2 power factor": "PF_METER_2",
+    "meter phase 3 power factor": "PF_METER_3",
+    "meter average line to neutral voltage": "U_AC_AVG",
+    "meter average line current": "I_AC_AVG",
+    "meter sum of line currents": "I_AC_SUM",
+    "meter total power factor": "PF_METER",
+    "meter frequency of supply voltages": "FREQ_METER",
+    "meter import active energy wh since reset": "E_IMP",
+    "meter export active energy wh since reset": "E_EXP",
+    "meter line 1 to line 2 voltage": "U_AC_METER_12",
+    "meter line 2 to line 3 voltage": "U_AC_METER_23",
+    "meter line 3 to line 1 voltage": "U_AC_METER_31",
+    "meter average line to line voltage": "U_LL_AVG",
+    "active power control command": "CMD_P_AC_SET_PERCENT",
+    "ac power factor control command": "CMD_PF_SET",
+    "on off control command": "CMD_ON_OFF",
+    "active power limitation percentage": "CMD_P_LIM_PERCENT",
+    "reactive power q value control command": "CMD_Q_SET_PERCENT"
   },
   "tag_counts": {
     "P_AC_1": 2219,
-    "FREQ": 20506,
+    "FREQ": 20507,
     "Q_AC_1": 1291,
     "S_AC_1": 1408,
     "P_AC_2": 1826,
@@ -36052,28 +36141,28 @@
     "P_AC_3": 1820,
     "Q_AC_3": 1308,
     "S_AC_3": 1120,
-    "P_AC": 19432,
-    "Q_AC": 15173,
-    "S_AC": 5532,
-    "U_AC_1": 8284,
-    "U_AC_2": 7993,
-    "U_AC_3": 7779,
-    "I_AC_1": 6095,
-    "I_AC_2": 5939,
-    "I_AC_3": 7285,
+    "P_AC": 19433,
+    "Q_AC": 15174,
+    "S_AC": 5533,
+    "U_AC_1": 8285,
+    "U_AC_2": 7994,
+    "U_AC_3": 7780,
+    "I_AC_1": 6096,
+    "I_AC_2": 5940,
+    "I_AC_3": 7286,
     "PF_1": 1325,
     "PF_2": 1325,
     "PF_3": 1314,
-    "PF": 12367,
-    "E_TOT": 15684,
+    "PF": 12368,
+    "E_TOT": 15685,
     "I_AC": 1120,
     "CMD_ON": 1886,
-    "WIND_SPEED": 9554,
-    "E_IMP": 2820,
-    "E_EXP": 1961,
+    "WIND_SPEED": 9555,
+    "E_IMP": 2821,
+    "E_EXP": 1962,
     "MODEL": 2504,
     "SERIAL": 13118,
-    "CMD_P_AC_SET_PERCENT": 1091,
+    "CMD_P_AC_SET_PERCENT": 1092,
     "CMD_P_ENA": 2613,
     "CMD_RAMP_TIME_S": 427,
     "CMD_Q_ENA": 612,
@@ -36088,7 +36177,7 @@
     "R_ISO": 2466,
     "TEMP_AMB": 1828,
     "U_DC": 7256,
-    "E_DAY": 5791,
+    "E_DAY": 5792,
     "TEMP_CELL": 17631,
     "U_DC_STRING_4": 3461,
     "U_DC_STRING_5": 3328,
@@ -36097,7 +36186,7 @@
     "I_DC": 29176,
     "CMD_P_AC_SET_ABS": 1816,
     "WIND_BEARING": 92,
-    "HUMIDITY": 2250,
+    "HUMIDITY": 2251,
     "PRESSURE": 3353,
     "P_DC": 4135,
     "P_RATED": 1402,
@@ -36283,7 +36372,95 @@
     "CMD_P_MODE": 5,
     "CMD_PF_REVERT_TIME_S": 77,
     "CMD_PF_RAMP_TIME_S": 77,
-    "CMD_PF_ENA": 114
+    "CMD_PF_ENA": 114,
+    "IRR": 1,
+    "T_MOD": 1,
+    "T_AMB": 1,
+    "WIND_DIR": 1,
+    "INV_SN": 1,
+    "P_NOM": 1,
+    "HOURS_TOT": 1,
+    "STATUS": 1,
+    "T_INT": 1,
+    "U_DC_1": 1,
+    "I_DC_1": 1,
+    "U_DC_2": 1,
+    "I_DC_2": 1,
+    "U_DC_3": 1,
+    "I_DC_3": 1,
+    "U_DC_4": 1,
+    "I_DC_4": 1,
+    "U_DC_5": 1,
+    "I_DC_5": 1,
+    "U_DC_6": 1,
+    "I_DC_6": 1,
+    "U_DC_7": 1,
+    "I_DC_7": 1,
+    "U_DC_8": 1,
+    "I_DC_8": 1,
+    "U_DC_9": 1,
+    "I_DC_9": 1,
+    "U_DC_10": 1,
+    "I_DC_10": 1,
+    "I_STR_1": 1,
+    "I_STR_2": 1,
+    "I_STR_3": 1,
+    "I_STR_4": 1,
+    "I_STR_5": 1,
+    "I_STR_6": 1,
+    "I_STR_7": 1,
+    "I_STR_8": 1,
+    "I_STR_9": 1,
+    "I_STR_10": 1,
+    "I_STR_11": 1,
+    "I_STR_12": 1,
+    "I_STR_13": 1,
+    "I_STR_14": 1,
+    "I_STR_15": 1,
+    "I_STR_16": 1,
+    "I_STR_17": 1,
+    "I_STR_18": 1,
+    "I_STR_19": 1,
+    "I_STR_20": 1,
+    "U_AC_12": 1,
+    "U_AC_31": 1,
+    "U_AC_23": 1,
+    "P_AC_TOTAL": 1,
+    "Q_AC_TOTAL": 1,
+    "U_AC_METER_1": 1,
+    "U_AC_METER_2": 1,
+    "U_AC_METER_3": 1,
+    "I_AC_METER_1": 1,
+    "I_AC_METER_2": 1,
+    "I_AC_METER_3": 1,
+    "P_AC_METER_1": 1,
+    "P_AC_METER_2": 1,
+    "P_AC_METER_3": 1,
+    "S_AC_METER_1": 1,
+    "S_AC_METER_2": 1,
+    "S_AC_METER_3": 1,
+    "Q_AC_METER_1": 1,
+    "Q_AC_METER_2": 1,
+    "Q_AC_METER_3": 1,
+    "PF_METER_1": 1,
+    "PF_METER_2": 1,
+    "PF_METER_3": 1,
+    "U_AC_AVG": 1,
+    "I_AC_AVG": 1,
+    "I_AC_SUM": 1,
+    "P_AC_METER": 1,
+    "S_AC_METER": 1,
+    "Q_AC_METER": 1,
+    "PF_METER": 1,
+    "FREQ_METER": 1,
+    "U_AC_METER_12": 1,
+    "U_AC_METER_23": 1,
+    "U_AC_METER_31": 1,
+    "U_LL_AVG": 1,
+    "CMD_PF_SET": 1,
+    "CMD_ON_OFF": 1,
+    "CMD_P_LIM_PERCENT": 1,
+    "CMD_Q_SET_PERCENT": 1
   },
   "metric_units": {
     "P_AC_1": {
@@ -36317,7 +36494,7 @@
       "W / 0.1": 2
     },
     "FREQ": {
-      "Hz": 13468,
+      "Hz": 13469,
       "mHz": 37,
       "ms": 1393,
       "s": 899,
@@ -36589,7 +36766,7 @@
     },
     "P_AC": {
       "kW": 5789,
-      "W": 5445,
+      "W": 5446,
       "%": 1113,
       "KW": 97,
       "k": 27,
@@ -36701,7 +36878,7 @@
       "kVarh": 24,
       "%": 1002,
       "VAr": 478,
-      "Var": 892,
+      "Var": 893,
       "Kvar": 45,
       "kva": 3,
       "kVAR": 251,
@@ -36807,7 +36984,7 @@
       "0.1kVAr": 1
     },
     "S_AC": {
-      "VA": 1848,
+      "VA": 1849,
       "kVA": 1697,
       "kW": 401,
       "kVa": 73,
@@ -36847,7 +37024,7 @@
     },
     "U_AC_1": {
       "%": 203,
-      "V": 7210,
+      "V": 7211,
       "Percent": 21,
       "Degree": 32,
       "Sec": 8,
@@ -36886,7 +37063,7 @@
     },
     "U_AC_2": {
       "%": 201,
-      "V": 7018,
+      "V": 7019,
       "Percent": 21,
       "Sec": 6,
       "mV": 29,
@@ -36922,7 +37099,7 @@
     },
     "U_AC_3": {
       "%": 197,
-      "V": 6917,
+      "V": 6918,
       "Percent": 21,
       "Sec": 7,
       "mV": 29,
@@ -36957,7 +37134,7 @@
       "Sint16,0.1V": 1
     },
     "I_AC_1": {
-      "A": 5006,
+      "A": 5007,
       "%": 406,
       "Percent": 30,
       "mA": 81,
@@ -36997,7 +37174,7 @@
       "Arms/X10": 2
     },
     "I_AC_2": {
-      "A": 4967,
+      "A": 4968,
       "%": 347,
       "Percent": 30,
       "mA": 81,
@@ -37033,7 +37210,7 @@
       "Arms/X10": 2
     },
     "I_AC_3": {
-      "A": 5799,
+      "A": 5800,
       "%": 314,
       "Percent": 54,
       "mA": 101,
@@ -37078,7 +37255,7 @@
       "Arms/X10": 2
     },
     "E_TOT": {
-      "kWh": 12318,
+      "kWh": 12319,
       "kvarh": 213,
       "kVAh": 64,
       "kW": 38,
@@ -37204,7 +37381,7 @@
     },
     "E_IMP": {
       "Wh": 989,
-      "kWh": 377,
+      "kWh": 378,
       "kvarh": 408,
       "VAh": 44,
       "varh": 242,
@@ -37223,7 +37400,7 @@
     },
     "E_EXP": {
       "Wh": 369,
-      "kWh": 387,
+      "kWh": 388,
       "kvarh": 410,
       "VAh": 44,
       "varh": 249,
@@ -37285,7 +37462,7 @@
       "0-100% = %Pnom": 3,
       "Pct": 9,
       "%/1000": 4,
-      "%Pn": 29,
+      "%Pn": 30,
       "-": 15,
       "kW": 18,
       "pct": 22,
@@ -37522,7 +37699,7 @@
       "N/A": 1
     },
     "E_DAY": {
-      "kWh": 4231,
+      "kWh": 4232,
       "Wh": 737,
       "Kwh": 73,
       "kwh": 6,
@@ -37710,7 +37887,7 @@
       "Â°": 2
     },
     "WIND_SPEED": {
-      "m/s": 349,
+      "m/s": 350,
       "Bitfield": 412,
       "Code": 3,
       "seconds": 5,
@@ -37768,7 +37945,7 @@
       "Enum": 1
     },
     "HUMIDITY": {
-      "%": 126,
+      "%": 127,
       "RH%": 9,
       "%RH": 148,
       "g/m3": 10,
@@ -38929,6 +39106,246 @@
     "CMD_Q_ENA": {
       "None": 4,
       "Pct": 1
+    },
+    "IRR": {
+      "W/m2": 1
+    },
+    "T_MOD": {
+      "°C": 1
+    },
+    "T_AMB": {
+      "°C": 1
+    },
+    "WIND_DIR": {
+      "°": 1
+    },
+    "P_NOM": {
+      "W": 1
+    },
+    "HOURS_TOT": {
+      "h": 1
+    },
+    "T_INT": {
+      "°C": 1
+    },
+    "U_DC_1": {
+      "V": 1
+    },
+    "I_DC_1": {
+      "A": 1
+    },
+    "U_DC_2": {
+      "V": 1
+    },
+    "I_DC_2": {
+      "A": 1
+    },
+    "U_DC_3": {
+      "V": 1
+    },
+    "I_DC_3": {
+      "A": 1
+    },
+    "U_DC_4": {
+      "V": 1
+    },
+    "I_DC_4": {
+      "A": 1
+    },
+    "U_DC_5": {
+      "V": 1
+    },
+    "I_DC_5": {
+      "A": 1
+    },
+    "U_DC_6": {
+      "V": 1
+    },
+    "I_DC_6": {
+      "A": 1
+    },
+    "U_DC_7": {
+      "V": 1
+    },
+    "I_DC_7": {
+      "A": 1
+    },
+    "U_DC_8": {
+      "V": 1
+    },
+    "I_DC_8": {
+      "A": 1
+    },
+    "U_DC_9": {
+      "V": 1
+    },
+    "I_DC_9": {
+      "A": 1
+    },
+    "U_DC_10": {
+      "V": 1
+    },
+    "I_DC_10": {
+      "A": 1
+    },
+    "I_STR_1": {
+      "A": 1
+    },
+    "I_STR_2": {
+      "A": 1
+    },
+    "I_STR_3": {
+      "A": 1
+    },
+    "I_STR_4": {
+      "A": 1
+    },
+    "I_STR_5": {
+      "A": 1
+    },
+    "I_STR_6": {
+      "A": 1
+    },
+    "I_STR_7": {
+      "A": 1
+    },
+    "I_STR_8": {
+      "A": 1
+    },
+    "I_STR_9": {
+      "A": 1
+    },
+    "I_STR_10": {
+      "A": 1
+    },
+    "I_STR_11": {
+      "A": 1
+    },
+    "I_STR_12": {
+      "A": 1
+    },
+    "I_STR_13": {
+      "A": 1
+    },
+    "I_STR_14": {
+      "A": 1
+    },
+    "I_STR_15": {
+      "A": 1
+    },
+    "I_STR_16": {
+      "A": 1
+    },
+    "I_STR_17": {
+      "A": 1
+    },
+    "I_STR_18": {
+      "A": 1
+    },
+    "I_STR_19": {
+      "A": 1
+    },
+    "I_STR_20": {
+      "A": 1
+    },
+    "U_AC_12": {
+      "V": 1
+    },
+    "U_AC_31": {
+      "V": 1
+    },
+    "U_AC_23": {
+      "V": 1
+    },
+    "P_AC_TOTAL": {
+      "W": 1
+    },
+    "Q_AC_TOTAL": {
+      "Var": 1
+    },
+    "U_AC_METER_1": {
+      "V": 1
+    },
+    "U_AC_METER_2": {
+      "V": 1
+    },
+    "U_AC_METER_3": {
+      "V": 1
+    },
+    "I_AC_METER_1": {
+      "A": 1
+    },
+    "I_AC_METER_2": {
+      "A": 1
+    },
+    "I_AC_METER_3": {
+      "A": 1
+    },
+    "P_AC_METER_1": {
+      "W": 1
+    },
+    "P_AC_METER_2": {
+      "W": 1
+    },
+    "P_AC_METER_3": {
+      "W": 1
+    },
+    "S_AC_METER_1": {
+      "VA": 1
+    },
+    "S_AC_METER_2": {
+      "VA": 1
+    },
+    "S_AC_METER_3": {
+      "VA": 1
+    },
+    "Q_AC_METER_1": {
+      "VAr": 1
+    },
+    "Q_AC_METER_2": {
+      "VAr": 1
+    },
+    "Q_AC_METER_3": {
+      "VAr": 1
+    },
+    "U_AC_AVG": {
+      "V": 1
+    },
+    "I_AC_AVG": {
+      "A": 1
+    },
+    "I_AC_SUM": {
+      "A": 1
+    },
+    "P_AC_METER": {
+      "W": 1
+    },
+    "S_AC_METER": {
+      "VA": 1
+    },
+    "Q_AC_METER": {
+      "VAr": 1
+    },
+    "FREQ_METER": {
+      "Hz": 1
+    },
+    "U_AC_METER_12": {
+      "V": 1
+    },
+    "U_AC_METER_23": {
+      "V": 1
+    },
+    "U_AC_METER_31": {
+      "V": 1
+    },
+    "U_LL_AVG": {
+      "V": 1
+    },
+    "CMD_P_LIM_PERCENT": {
+      "%Pn": 1
+    },
+    "CMD_Q_SET_PERCENT": {
+      "%Sn": 1
     }
   },
   "metric_types": {
@@ -38954,7 +39371,7 @@
     },
     "FREQ": {
       "F32_W": 31,
-      "U16": 11697,
+      "U16": 11698,
       "U32": 2184,
       "I16": 334,
       "F32": 1352,
@@ -39131,7 +39548,7 @@
       "U32": 2342,
       "U16": 8035,
       "I16": 1664,
-      "I32": 2132,
+      "I32": 2133,
       "F32": 3799,
       "U32_W": 58,
       "I64": 3,
@@ -39168,7 +39585,7 @@
       "U16": 5559,
       "U32": 886,
       "I16": 2172,
-      "I32": 2713,
+      "I32": 2714,
       "F32": 2688,
       "U32_W": 5,
       "I8": 26,
@@ -39202,7 +39619,7 @@
     },
     "S_AC": {
       "F32_W": 20,
-      "U32": 680,
+      "U32": 681,
       "U16": 1080,
       "I16": 340,
       "F32": 2596,
@@ -39228,7 +39645,7 @@
       "F32_W": 1,
       "U32": 656,
       "I32": 22,
-      "U16": 5793,
+      "U16": 5794,
       "I16": 104,
       "F32": 932,
       "I64": 6,
@@ -39251,7 +39668,7 @@
     "U_AC_2": {
       "F32_W": 1,
       "I32": 22,
-      "U16": 5689,
+      "U16": 5690,
       "I16": 98,
       "F32": 858,
       "I64": 9,
@@ -39273,7 +39690,7 @@
     "U_AC_3": {
       "F32_W": 1,
       "I32": 22,
-      "U16": 5623,
+      "U16": 5624,
       "I16": 95,
       "F32": 814,
       "I64": 3,
@@ -39298,7 +39715,7 @@
       "I16": 477,
       "F32": 1265,
       "U8": 5,
-      "U16": 3134,
+      "U16": 3135,
       "I32": 167,
       "I64": 12,
       "BITS": 16,
@@ -39318,7 +39735,7 @@
       "I16": 412,
       "F32": 1244,
       "U8": 5,
-      "U16": 3102,
+      "U16": 3103,
       "I32": 167,
       "I64": 12,
       "U32": 461,
@@ -39339,7 +39756,7 @@
       "I16": 557,
       "F32": 1364,
       "U8": 5,
-      "U16": 3617,
+      "U16": 3618,
       "I32": 437,
       "I64": 12,
       "U32": 632,
@@ -39403,7 +39820,7 @@
     "PF": {
       "F32_W": 21,
       "U16": 5122,
-      "I16": 2011,
+      "I16": 2012,
       "F32": 2432,
       "I32": 511,
       "U32": 1628,
@@ -39434,7 +39851,7 @@
     },
     "E_TOT": {
       "F32_W": 19,
-      "U32": 3145,
+      "U32": 3146,
       "I16": 22,
       "U64": 117,
       "F32": 9245,
@@ -39477,7 +39894,7 @@
       "FIX0": 3
     },
     "WIND_SPEED": {
-      "U16": 7105,
+      "U16": 7106,
       "F32": 26,
       "U32_W": 26,
       "U32": 692,
@@ -39504,7 +39921,7 @@
     },
     "E_IMP": {
       "U32": 435,
-      "F32": 1225,
+      "F32": 1226,
       "U64": 84,
       "I64": 413,
       "I32": 205,
@@ -39515,7 +39932,7 @@
     },
     "E_EXP": {
       "U32": 439,
-      "F32": 471,
+      "F32": 472,
       "U64": 83,
       "I64": 381,
       "I32": 224,
@@ -39585,7 +40002,7 @@
     },
     "CMD_P_AC_SET_PERCENT": {
       "U16": 742,
-      "I16": 66,
+      "I16": 67,
       "U32": 133,
       "F32": 12,
       "U8": 3,
@@ -39754,7 +40171,7 @@
     },
     "E_DAY": {
       "U16": 903,
-      "U32": 1333,
+      "U32": 1334,
       "U32_W": 226,
       "F32": 2399,
       "STRING": 3,
@@ -39857,7 +40274,7 @@
     "HUMIDITY": {
       "F32": 1632,
       "I16": 141,
-      "U16": 382,
+      "U16": 383,
       "BITS": 32,
       "U32": 34,
       "R": 2,
@@ -40733,6 +41150,270 @@
     },
     "CMD_PF_ENA": {
       "U16": 114
+    },
+    "IRR": {
+      "U16": 1
+    },
+    "T_MOD": {
+      "I16": 1
+    },
+    "T_AMB": {
+      "I16": 1
+    },
+    "WIND_DIR": {
+      "U16": 1
+    },
+    "INV_SN": {
+      "STRING": 1
+    },
+    "P_NOM": {
+      "U32": 1
+    },
+    "HOURS_TOT": {
+      "U32": 1
+    },
+    "STATUS": {
+      "U16": 1
+    },
+    "T_INT": {
+      "I16": 1
+    },
+    "U_DC_1": {
+      "U16": 1
+    },
+    "I_DC_1": {
+      "U16": 1
+    },
+    "U_DC_2": {
+      "U16": 1
+    },
+    "I_DC_2": {
+      "U16": 1
+    },
+    "U_DC_3": {
+      "U16": 1
+    },
+    "I_DC_3": {
+      "U16": 1
+    },
+    "U_DC_4": {
+      "U16": 1
+    },
+    "I_DC_4": {
+      "U16": 1
+    },
+    "U_DC_5": {
+      "U16": 1
+    },
+    "I_DC_5": {
+      "U16": 1
+    },
+    "U_DC_6": {
+      "U16": 1
+    },
+    "I_DC_6": {
+      "U16": 1
+    },
+    "U_DC_7": {
+      "U16": 1
+    },
+    "I_DC_7": {
+      "U16": 1
+    },
+    "U_DC_8": {
+      "U16": 1
+    },
+    "I_DC_8": {
+      "U16": 1
+    },
+    "U_DC_9": {
+      "U16": 1
+    },
+    "I_DC_9": {
+      "U16": 1
+    },
+    "U_DC_10": {
+      "U16": 1
+    },
+    "I_DC_10": {
+      "U16": 1
+    },
+    "I_STR_1": {
+      "U16": 1
+    },
+    "I_STR_2": {
+      "U16": 1
+    },
+    "I_STR_3": {
+      "U16": 1
+    },
+    "I_STR_4": {
+      "U16": 1
+    },
+    "I_STR_5": {
+      "U16": 1
+    },
+    "I_STR_6": {
+      "U16": 1
+    },
+    "I_STR_7": {
+      "U16": 1
+    },
+    "I_STR_8": {
+      "U16": 1
+    },
+    "I_STR_9": {
+      "U16": 1
+    },
+    "I_STR_10": {
+      "U16": 1
+    },
+    "I_STR_11": {
+      "U16": 1
+    },
+    "I_STR_12": {
+      "U16": 1
+    },
+    "I_STR_13": {
+      "U16": 1
+    },
+    "I_STR_14": {
+      "U16": 1
+    },
+    "I_STR_15": {
+      "U16": 1
+    },
+    "I_STR_16": {
+      "U16": 1
+    },
+    "I_STR_17": {
+      "U16": 1
+    },
+    "I_STR_18": {
+      "U16": 1
+    },
+    "I_STR_19": {
+      "U16": 1
+    },
+    "I_STR_20": {
+      "U16": 1
+    },
+    "U_AC_12": {
+      "U16": 1
+    },
+    "U_AC_31": {
+      "U16": 1
+    },
+    "U_AC_23": {
+      "U16": 1
+    },
+    "P_AC_TOTAL": {
+      "I32": 1
+    },
+    "Q_AC_TOTAL": {
+      "I32": 1
+    },
+    "U_AC_METER_1": {
+      "F32": 1
+    },
+    "U_AC_METER_2": {
+      "F32": 1
+    },
+    "U_AC_METER_3": {
+      "F32": 1
+    },
+    "I_AC_METER_1": {
+      "F32": 1
+    },
+    "I_AC_METER_2": {
+      "F32": 1
+    },
+    "I_AC_METER_3": {
+      "F32": 1
+    },
+    "P_AC_METER_1": {
+      "F32": 1
+    },
+    "P_AC_METER_2": {
+      "F32": 1
+    },
+    "P_AC_METER_3": {
+      "F32": 1
+    },
+    "S_AC_METER_1": {
+      "F32": 1
+    },
+    "S_AC_METER_2": {
+      "F32": 1
+    },
+    "S_AC_METER_3": {
+      "F32": 1
+    },
+    "Q_AC_METER_1": {
+      "F32": 1
+    },
+    "Q_AC_METER_2": {
+      "F32": 1
+    },
+    "Q_AC_METER_3": {
+      "F32": 1
+    },
+    "PF_METER_1": {
+      "F32": 1
+    },
+    "PF_METER_2": {
+      "F32": 1
+    },
+    "PF_METER_3": {
+      "F32": 1
+    },
+    "U_AC_AVG": {
+      "F32": 1
+    },
+    "I_AC_AVG": {
+      "F32": 1
+    },
+    "I_AC_SUM": {
+      "F32": 1
+    },
+    "P_AC_METER": {
+      "F32": 1
+    },
+    "S_AC_METER": {
+      "F32": 1
+    },
+    "Q_AC_METER": {
+      "F32": 1
+    },
+    "PF_METER": {
+      "F32": 1
+    },
+    "FREQ_METER": {
+      "F32": 1
+    },
+    "U_AC_METER_12": {
+      "F32": 1
+    },
+    "U_AC_METER_23": {
+      "F32": 1
+    },
+    "U_AC_METER_31": {
+      "F32": 1
+    },
+    "U_LL_AVG": {
+      "F32": 1
+    },
+    "CMD_PF_SET": {
+      "I16": 1
+    },
+    "CMD_ON_OFF": {
+      "U16": 1
+    },
+    "CMD_P_LIM_PERCENT": {
+      "U16": 1
+    },
+    "CMD_Q_SET_PERCENT": {
+      "I16": 1
     }
   },
   "metric_actions": {
@@ -40748,7 +41429,7 @@
       "RO": 44
     },
     "FREQ": {
-      "4": 14259,
+      "4": 14260,
       "2": 69,
       "1": 1436,
       "8": 51,
@@ -40841,7 +41522,7 @@
       "RO": 45
     },
     "P_AC": {
-      "4": 14945,
+      "4": 14946,
       "1": 2764,
       "0": 253,
       "9": 13,
@@ -40859,7 +41540,7 @@
       "ReadOnly": 1
     },
     "Q_AC": {
-      "4": 13038,
+      "4": 13039,
       "0x03": 1,
       "1": 744,
       "0": 103,
@@ -40882,7 +41563,7 @@
       "RD": 1
     },
     "S_AC": {
-      "4": 4853,
+      "4": 4854,
       "1": 266,
       "2": 42,
       "0": 19,
@@ -40893,7 +41574,7 @@
       "RW": 7
     },
     "U_AC_1": {
-      "4": 7402,
+      "4": 7403,
       "1": 121,
       "0": 15,
       "2": 30,
@@ -40905,7 +41586,7 @@
       "0.1 V": 9
     },
     "U_AC_2": {
-      "4": 7151,
+      "4": 7152,
       "1": 123,
       "0": 15,
       "8": 3,
@@ -40918,7 +41599,7 @@
       "0.1 V": 9
     },
     "U_AC_3": {
-      "4": 6978,
+      "4": 6979,
       "1": 122,
       "0": 15,
       "8": 3,
@@ -40931,7 +41612,7 @@
       "0.1 V": 9
     },
     "I_AC_1": {
-      "4": 5177,
+      "4": 5178,
       "2": 21,
       "1": 413,
       "0": 9,
@@ -40943,7 +41624,7 @@
       "0.1 A": 8
     },
     "I_AC_2": {
-      "4": 5129,
+      "4": 5130,
       "2": 21,
       "1": 326,
       "0": 9,
@@ -40954,7 +41635,7 @@
       "0.1 A": 8
     },
     "I_AC_3": {
-      "4": 6389,
+      "4": 6390,
       "2": 21,
       "1": 280,
       "0": 13,
@@ -40994,7 +41675,7 @@
       "RO": 2
     },
     "PF": {
-      "4": 9914,
+      "4": 9915,
       "1": 1251,
       "0": 100,
       "2": 38,
@@ -41014,7 +41695,7 @@
       "RD": 2
     },
     "E_TOT": {
-      "4": 13473,
+      "4": 13474,
       "1": 626,
       "0": 605,
       "2": 99,
@@ -41053,7 +41734,7 @@
       "WO": 16
     },
     "WIND_SPEED": {
-      "4": 4408,
+      "4": 4409,
       "8": 220,
       "0": 30,
       "9": 63,
@@ -41067,7 +41748,7 @@
       "ReadOnly": 5
     },
     "E_IMP": {
-      "4": 2475,
+      "4": 2476,
       "1": 23,
       "0": 295,
       "kWh": 2,
@@ -41075,7 +41756,7 @@
       "R": 24
     },
     "E_EXP": {
-      "4": 1879,
+      "4": 1880,
       "1": 24,
       "0": 29,
       "kWh": 2,
@@ -41120,7 +41801,7 @@
     },
     "CMD_P_AC_SET_PERCENT": {
       "4": 463,
-      "1": 366,
+      "1": 367,
       "0": 3,
       "17": 2,
       "RO": 121,
@@ -41273,7 +41954,7 @@
       "RD": 5
     },
     "E_DAY": {
-      "4": 4933,
+      "4": 4934,
       "0": 52,
       "2": 12,
       "1": 66,
@@ -41361,7 +42042,7 @@
       "RO": 6
     },
     "HUMIDITY": {
-      "4": 2146,
+      "4": 2147,
       "1": 32,
       "9": 37,
       "R": 11,
@@ -42364,8 +43045,272 @@
     },
     "CMD_PF_ENA": {
       "1": 114
+    },
+    "IRR": {
+      "4": 1
+    },
+    "T_MOD": {
+      "4": 1
+    },
+    "T_AMB": {
+      "4": 1
+    },
+    "WIND_DIR": {
+      "4": 1
+    },
+    "INV_SN": {
+      "4": 1
+    },
+    "P_NOM": {
+      "4": 1
+    },
+    "HOURS_TOT": {
+      "4": 1
+    },
+    "STATUS": {
+      "9": 1
+    },
+    "T_INT": {
+      "4": 1
+    },
+    "U_DC_1": {
+      "4": 1
+    },
+    "I_DC_1": {
+      "4": 1
+    },
+    "U_DC_2": {
+      "4": 1
+    },
+    "I_DC_2": {
+      "4": 1
+    },
+    "U_DC_3": {
+      "4": 1
+    },
+    "I_DC_3": {
+      "4": 1
+    },
+    "U_DC_4": {
+      "4": 1
+    },
+    "I_DC_4": {
+      "4": 1
+    },
+    "U_DC_5": {
+      "4": 1
+    },
+    "I_DC_5": {
+      "4": 1
+    },
+    "U_DC_6": {
+      "4": 1
+    },
+    "I_DC_6": {
+      "4": 1
+    },
+    "U_DC_7": {
+      "4": 1
+    },
+    "I_DC_7": {
+      "4": 1
+    },
+    "U_DC_8": {
+      "4": 1
+    },
+    "I_DC_8": {
+      "4": 1
+    },
+    "U_DC_9": {
+      "4": 1
+    },
+    "I_DC_9": {
+      "4": 1
+    },
+    "U_DC_10": {
+      "4": 1
+    },
+    "I_DC_10": {
+      "4": 1
+    },
+    "I_STR_1": {
+      "4": 1
+    },
+    "I_STR_2": {
+      "4": 1
+    },
+    "I_STR_3": {
+      "4": 1
+    },
+    "I_STR_4": {
+      "4": 1
+    },
+    "I_STR_5": {
+      "4": 1
+    },
+    "I_STR_6": {
+      "4": 1
+    },
+    "I_STR_7": {
+      "4": 1
+    },
+    "I_STR_8": {
+      "4": 1
+    },
+    "I_STR_9": {
+      "4": 1
+    },
+    "I_STR_10": {
+      "4": 1
+    },
+    "I_STR_11": {
+      "4": 1
+    },
+    "I_STR_12": {
+      "4": 1
+    },
+    "I_STR_13": {
+      "4": 1
+    },
+    "I_STR_14": {
+      "4": 1
+    },
+    "I_STR_15": {
+      "4": 1
+    },
+    "I_STR_16": {
+      "4": 1
+    },
+    "I_STR_17": {
+      "4": 1
+    },
+    "I_STR_18": {
+      "4": 1
+    },
+    "I_STR_19": {
+      "4": 1
+    },
+    "I_STR_20": {
+      "4": 1
+    },
+    "U_AC_12": {
+      "4": 1
+    },
+    "U_AC_31": {
+      "4": 1
+    },
+    "U_AC_23": {
+      "4": 1
+    },
+    "P_AC_TOTAL": {
+      "4": 1
+    },
+    "Q_AC_TOTAL": {
+      "4": 1
+    },
+    "U_AC_METER_1": {
+      "4": 1
+    },
+    "U_AC_METER_2": {
+      "4": 1
+    },
+    "U_AC_METER_3": {
+      "4": 1
+    },
+    "I_AC_METER_1": {
+      "4": 1
+    },
+    "I_AC_METER_2": {
+      "4": 1
+    },
+    "I_AC_METER_3": {
+      "4": 1
+    },
+    "P_AC_METER_1": {
+      "4": 1
+    },
+    "P_AC_METER_2": {
+      "4": 1
+    },
+    "P_AC_METER_3": {
+      "4": 1
+    },
+    "S_AC_METER_1": {
+      "4": 1
+    },
+    "S_AC_METER_2": {
+      "4": 1
+    },
+    "S_AC_METER_3": {
+      "4": 1
+    },
+    "Q_AC_METER_1": {
+      "4": 1
+    },
+    "Q_AC_METER_2": {
+      "4": 1
+    },
+    "Q_AC_METER_3": {
+      "4": 1
+    },
+    "PF_METER_1": {
+      "4": 1
+    },
+    "PF_METER_2": {
+      "4": 1
+    },
+    "PF_METER_3": {
+      "4": 1
+    },
+    "U_AC_AVG": {
+      "4": 1
+    },
+    "I_AC_AVG": {
+      "4": 1
+    },
+    "I_AC_SUM": {
+      "4": 1
+    },
+    "P_AC_METER": {
+      "4": 1
+    },
+    "S_AC_METER": {
+      "4": 1
+    },
+    "Q_AC_METER": {
+      "4": 1
+    },
+    "PF_METER": {
+      "4": 1
+    },
+    "FREQ_METER": {
+      "4": 1
+    },
+    "U_AC_METER_12": {
+      "4": 1
+    },
+    "U_AC_METER_23": {
+      "4": 1
+    },
+    "U_AC_METER_31": {
+      "4": 1
+    },
+    "U_LL_AVG": {
+      "4": 1
+    },
+    "CMD_PF_SET": {
+      "1": 1
+    },
+    "CMD_ON_OFF": {
+      "1": 1
+    },
+    "CMD_P_LIM_PERCENT": {
+      "1": 1
+    },
+    "CMD_Q_SET_PERCENT": {
+      "1": 1
     }
   },
-  "total_definitions_mined": 5041,
-  "total_registers_mined": 1282373
+  "total_definitions_mined": 5042,
+  "total_registers_mined": 1282532
 }

@@ -2,7 +2,7 @@
 
 Bibliothèque officielle de définitions d'équipements industriels validées pour déploiement en production sur les concentrateurs et passerelles Webdyn (SunPM, Hub, Flex).
 
-Comprend **1115 fichiers de définition certifiés** couvrant **345,303 registres Modbus** et **29,182 tags SunPM canoniques** à travers **137 constructeurs mondiaux**.
+Comprend **1116 fichiers de définition certifiés** couvrant **345,462 registres Modbus** et **29,288 tags SunPM canoniques** à travers **137 constructeurs mondiaux**.
 
 ---
 
@@ -14,7 +14,7 @@ Comprend **1115 fichiers de définition certifiés** couvrant **345,303 registre
 | Compteurs & Analyseurs Réseau (Meter) | `MET_` | 194 | 29,194 | 2,490 | ABB, AEberle, Acrel, Algodue, Anexo (+48) |
 | Systèmes BESS & Batteries (Battery) | `BAT_` | 48 | 51,316 | 1,884 | AlroSolar, Atmoce, Dyness, FoxESS, Hoymiles (+6) |
 | Capteurs Météo & Pyranomètres (Sensor) | `SEN_` | 53 | 1,326 | 169 | Atersa, BD, Blet, DeltaOhm, EKO (+17) |
-| Passerelles & Loggers (Logger) | `COM_` | 28 | 31,670 | 1,235 | Atmoce, FoxESS, Goodwe, Greenheiss, Hoymiles (+4) |
+| Passerelles & Loggers (Logger) | `COM_` | 29 | 31,829 | 1,341 | Atmoce, FoxESS, Goodwe, Greenheiss, Hoymiles (+5) |
 | Modules IO & Afficheurs (Other) | `OTH_` | 376 | 108,427 | 9,118 | 5, ABB, AEberle, Advantech, Alan (+97) |
 
 ---
@@ -50,7 +50,7 @@ Comprend **1115 fichiers de définition certifiés** couvrant **345,303 registre
 | **Kostal** | 12 | 1,371 | 245 | Inverter, Other |
 | **SolaX** | 12 | 2,304 | 176 | Battery, Inverter |
 | **KippZonen** | 11 | 361 | 17 | Other, Sensor |
-| **Solplanet** | 10 | 4,723 | 550 | Inverter, Other |
+| **Solplanet** | 11 | 4,882 | 656 | Inverter, Logger, Other |
 | **CarloGavazzi** | 9 | 617 | 28 | Meter, Other |
 | **SofarSolar** | 9 | 2,634 | 156 | Inverter |
 | **Solis** | 9 | 3,211 | 235 | Inverter |
@@ -1206,6 +1206,7 @@ Chaque fichier de définition hébergé dans ce dossier respecte strictement les
 | [`INV_Solis_sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.csv`](./INV_Solis_sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15.csv) | Inverter | Solis | sunspec-pics-solis-25-66k-us-001-for-white-labeling_1_2_updated_7-15 | Modbus | 308 | 34 |
 | [`INV_Solis_table2023.csv`](./INV_Solis_table2023.csv) | Inverter | Solis | table2023 | Modbus | 454 | 22 |
 | [`OTH_Solplanet_AISWEIModbusProtocol_-_V2.1.11_external_1.csv`](./OTH_Solplanet_AISWEIModbusProtocol_-_V2.1.11_external_1.csv) | Other | Solplanet | AISWEIModbusProtocol_-_V2.1.11_external_1 | Modbus | 577 | 15 |
+| [`COM_Solplanet_Ai-Logger.csv`](./COM_Solplanet_Ai-Logger.csv) | Logger | Solplanet | Ai-Logger | Modbus | 159 | 106 |
 | [`INV_Solplanet_Generic.csv`](./INV_Solplanet_Generic.csv) | Inverter | Solplanet | Generic | Modbus | 625 | 60 |
 | [`INV_Solplanet_v0.1.csv`](./INV_Solplanet_v0.1.csv) | Inverter | Solplanet | v0.1 | Modbus | 491 | 60 |
 | [`OTH_Solplanet_v0.1.csv`](./OTH_Solplanet_v0.1.csv) | Other | Solplanet | v0.1 | Modbus | 491 | 60 |
