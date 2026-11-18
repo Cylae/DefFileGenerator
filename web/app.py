@@ -44,7 +44,7 @@ MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 UPLOAD_CHUNK_BYTES = 1024 * 1024
 MAX_WEB_REGISTERS = 65536
 MAX_MULTIPART_OVERHEAD_BYTES = 64 * 1024
-UPLOAD_PATHS = frozenset({"/api/convert", "/api/validate", "/api/tag", "/api/audit", "/api/pillars"})
+UPLOAD_PATHS = frozenset({"/api/convert", "/api/validate", "/api/tag", "/api/audit", "/api/pillars", "/api/discovery/upload"})
 
 
 class UploadBodyLimitMiddleware:
@@ -233,6 +233,42 @@ class LibraryItem(BaseModel):
     registers: int = 0
     pillars_valid: bool = True
     source: str = "production"
+
+
+class DiscoveryLookupRequest(BaseModel):
+    query: str
+    target: str = "webdyn_sunpm"
+    target_format: str | None = None
+    enable_ocr: bool = True
+    ocr_fallback: bool | None = None
+
+    def get_target(self) -> str:
+        return self.target_format or self.target
+
+    def get_enable_ocr(self) -> bool:
+        if self.ocr_fallback is not None:
+            return self.ocr_fallback
+        return self.enable_ocr
+
+
+class DiscoveryResponse(BaseModel):
+    success: bool
+    status: str
+    query: str
+    manufacturer: str | None = None
+    model: str | None = None
+    document_title: str | None = None
+    document_url: str | None = None
+    document_sha256: str | None = None
+    register_count: int = 0
+    csv_content: str | None = None
+    evidence_report: str | None = None
+    error_message: str | None = None
+    preview: list[dict[str, Any]] = []
+    identity: dict[str, Any] | None = None
+    document: dict[str, Any] | None = None
+    fetch: dict[str, Any] | None = None
+    validation: dict[str, Any] | None = None
 
 
 async def _save_upload(file: UploadFile, destination: str) -> None:
@@ -878,6 +914,144 @@ def get_knowledge_stats() -> dict[str, Any]:
     except Exception as e:
         logger.warning("Could not read knowledge stats: %s", e)
         return {"total_mappings": 0, "unique_tags": 0}
+
+
+@app.post("/api/discovery/lookup", response_model=DiscoveryResponse)
+async def discovery_lookup(payload: DiscoveryLookupRequest) -> DiscoveryResponse:
+    """
+    Executes autonomous equipment Modbus discovery, document acquisition,
+    table extraction, semantic normalization, and target CSV generation.
+    """
+    clean_query = payload.query.strip()
+    if not clean_query:
+        raise HTTPException(status_code=400, detail="Equipment query cannot be empty.")
+
+    from DefFileGenerator.discovery.models import ExportTarget
+    from DefFileGenerator.discovery.orchestrator import WorkflowOrchestrator
+
+    orchestrator = WorkflowOrchestrator()
+    target_str = payload.get_target()
+    target_enum = ExportTarget.WEBDYN_SUNPM if target_str != "webdyn_classic" else ExportTarget.WEBDYN_CLASSIC
+
+    result = await orchestrator.run(
+        query=clean_query,
+        target=target_enum,
+        enable_ocr=payload.get_enable_ocr(),
+    )
+
+    preview_rows: list[dict[str, Any]] = []
+    if result.model and result.model.registers:
+        for reg in result.model.registers[:100]:
+            preview_rows.append({
+                "Address": reg.address,
+                "Name": reg.name,
+                "Tag": reg.canonical_sunpm_tag or "",
+                "Type": reg.data_type.value,
+                "Factor": reg.factor,
+                "Offset": reg.offset,
+                "Unit": reg.unit,
+                "Action": reg.action_code,
+            })
+
+    return DiscoveryResponse(
+        success=result.success,
+        status=result.status.value,
+        query=result.query,
+        manufacturer=result.identity.manufacturer if result.identity else None,
+        model=result.identity.exact_model if result.identity else None,
+        document_title=result.document.title if result.document else None,
+        document_url=result.document.source_url if result.document else None,
+        document_sha256=result.fetch.sha256 if result.fetch else None,
+        register_count=len(result.model.registers) if result.model else 0,
+        csv_content=result.csv_content,
+        evidence_report=result.evidence_report,
+        error_message=result.error_message,
+        preview=preview_rows,
+        identity=result.identity.model_dump() if result.identity else None,
+        document=result.document.model_dump() if result.document else None,
+        fetch={"sha256": result.fetch.sha256, "outcome": result.fetch.outcome.value} if result.fetch else None,
+        validation={"status": result.validation.status.value, "pillar_statuses": result.validation.pillar_statuses} if result.validation else None,
+    )
+
+
+@app.post("/api/discovery/upload", response_model=DiscoveryResponse)
+async def discovery_upload(
+    file: UploadFile = File(...),
+    query: str = Form(""),
+    target: str = Form("webdyn_sunpm"),
+    target_format: str = Form(""),
+    enable_ocr: bool = Form(True),
+    ocr_fallback: bool = Form(True),
+) -> DiscoveryResponse:
+    """
+    Manual document upload fallback for the autonomous discovery pipeline.
+    """
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="Uploaded file must have a filename.")
+
+    safe_filename = os.path.basename(file.filename.replace("\\", "/").strip())
+    if not safe_filename or safe_filename in (".", ".."):
+        raise HTTPException(status_code=400, detail="Invalid filename provided.")
+    ext = os.path.splitext(safe_filename)[1].lower()
+    allowed_exts = {".pdf", ".xlsx", ".xlsm", ".csv"}
+    if ext not in allowed_exts:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type '{ext}'. Allowed: PDF, Excel, CSV.",
+        )
+
+    file_bytes = await file.read()
+    effective_query = query.strip() or os.path.splitext(safe_filename)[0]
+    effective_target = target_format or target
+    effective_ocr = ocr_fallback if ocr_fallback is not None else enable_ocr
+
+    from DefFileGenerator.discovery.models import ExportTarget
+    from DefFileGenerator.discovery.orchestrator import WorkflowOrchestrator
+
+    orchestrator = WorkflowOrchestrator()
+    target_enum = ExportTarget.WEBDYN_SUNPM if effective_target != "webdyn_classic" else ExportTarget.WEBDYN_CLASSIC
+
+    result = await orchestrator.run(
+        query=effective_query,
+        target=target_enum,
+        enable_ocr=effective_ocr,
+        override_file_bytes=file_bytes,
+        override_filename=safe_filename,
+    )
+
+    preview_rows: list[dict[str, Any]] = []
+    if result.model and result.model.registers:
+        for reg in result.model.registers[:100]:
+            preview_rows.append({
+                "Address": reg.address,
+                "Name": reg.name,
+                "Tag": reg.canonical_sunpm_tag or "",
+                "Type": reg.data_type.value,
+                "Factor": reg.factor,
+                "Offset": reg.offset,
+                "Unit": reg.unit,
+                "Action": reg.action_code,
+            })
+
+    return DiscoveryResponse(
+        success=result.success,
+        status=result.status.value,
+        query=result.query,
+        manufacturer=result.identity.manufacturer if result.identity else None,
+        model=result.identity.exact_model if result.identity else None,
+        document_title=result.document.title if result.document else None,
+        document_url=result.document.source_url if result.document else None,
+        document_sha256=result.fetch.sha256 if result.fetch else None,
+        register_count=len(result.model.registers) if result.model else 0,
+        csv_content=result.csv_content,
+        evidence_report=result.evidence_report,
+        error_message=result.error_message,
+        preview=preview_rows,
+        identity=result.identity.model_dump() if result.identity else None,
+        document=result.document.model_dump() if result.document else None,
+        fetch={"sha256": result.fetch.sha256, "outcome": result.fetch.outcome.value} if result.fetch else None,
+        validation={"status": result.validation.status.value, "pillar_statuses": result.validation.pillar_statuses} if result.validation else None,
+    )
 
 
 # Serve static web frontend assets

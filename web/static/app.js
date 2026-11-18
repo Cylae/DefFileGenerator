@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tabBindings = [
         { btnId: 'tabBtnConvert', paneId: 'tab-convert' },
+        { btnId: 'tabBtnDiscovery', paneId: 'tab-discovery' },
         { btnId: 'tabBtnTag', paneId: 'tab-tag' },
         { btnId: 'tabBtnAudit', paneId: 'tab-audit' },
         {
@@ -382,6 +383,276 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     setupTableFilter(previewFilterInput, previewBody);
+
+    // =========================================================================
+    // TAB: Autonomous Modbus Discovery (Phase B)
+    // =========================================================================
+    const discoveryQueryInput = document.getElementById('discoveryQueryInput');
+    const discoveryTargetSelect = document.getElementById('discoveryTargetSelect');
+    const discoveryRunBtn = document.getElementById('discoveryRunBtn');
+    const discoveryEnableOcr = document.getElementById('discoveryEnableOcr');
+    const discoveryManualFileInput = document.getElementById('discoveryManualFileInput');
+    const discoveryStatusBox = document.getElementById('discoveryStatusBox');
+    const discoveryStatusTitle = document.getElementById('discoveryStatusTitle');
+    const discoveryStatusBadge = document.getElementById('discoveryStatusBadge');
+    const discoveryStatusDetail = document.getElementById('discoveryStatusDetail');
+    const discoveryResultsSection = document.getElementById('discoveryResultsSection');
+    const discoveryRegistersBadge = document.getElementById('discoveryRegistersBadge');
+    const discoveryPillarsBadge = document.getElementById('discoveryPillarsBadge');
+    const discoveryCopyBtn = document.getElementById('discoveryCopyBtn');
+    const discoveryDownloadBtn = document.getElementById('discoveryDownloadBtn');
+    const discoveryEvidenceBtn = document.getElementById('discoveryEvidenceBtn');
+    const discoveryDocMeta = document.getElementById('discoveryDocMeta');
+    const discoveryPreviewBody = document.getElementById('discoveryPreviewBody');
+
+    let currentDiscoveryCsv = '';
+    let currentDiscoveryFilename = 'discovered_modbus_definition.csv';
+    let currentDiscoveryEvidence = '';
+
+    function updateDiscoveryStatus(title, badgeText, badgeClass, detailText) {
+        if (!discoveryStatusBox) return;
+        if (discoveryStatusBox.classList) discoveryStatusBox.classList.remove('hidden');
+        if (discoveryStatusTitle) discoveryStatusTitle.textContent = title;
+        if (discoveryStatusBadge) {
+            discoveryStatusBadge.textContent = badgeText;
+            discoveryStatusBadge.className = `badge ${badgeClass}`;
+        }
+        if (discoveryStatusDetail) discoveryStatusDetail.textContent = detailText;
+    }
+
+    function renderDiscoveryResult(data) {
+        if (!data) return;
+        currentDiscoveryCsv = data.csv_content || '';
+        currentDiscoveryEvidence = data.evidence_report || '';
+
+        const mfg = data.identity?.manufacturer || data.model?.manufacturer || 'Generic';
+        const mdl = data.identity?.exact_model || data.model?.model || 'Equipment';
+        const cleanMfg = mfg.replace(/[^a-zA-Z0-9_-]/g, '_');
+        const cleanMdl = mdl.replace(/[^a-zA-Z0-9_-]/g, '_');
+        const cat = data.model?.category || '';
+        const prefix = (cat === 'Meter') ? 'MET' : (cat === 'Battery') ? 'BAT' : (cat === 'Logger') ? 'COM' : 'INV';
+        currentDiscoveryFilename = `${prefix}_${cleanMfg}_${cleanMdl}.csv`;
+
+        const regCount = data.model?.total_registers || data.model?.registers?.length || 0;
+        if (discoveryRegistersBadge) {
+            discoveryRegistersBadge.textContent = `${regCount} registres`;
+        }
+
+        const isCompliant = data.validation?.status === 'VALIDATED_OFFLINE';
+        if (discoveryPillarsBadge) {
+            if (isCompliant) {
+                discoveryPillarsBadge.textContent = '5 Piliers Conformes';
+                discoveryPillarsBadge.className = 'badge badge-success';
+            } else {
+                discoveryPillarsBadge.textContent = data.validation?.status || 'Validation Partielle';
+                discoveryPillarsBadge.className = 'badge badge-warning';
+            }
+        }
+
+        if (discoveryDocMeta) {
+            const docTitle = data.document?.title || data.fetch?.final_url || 'Fichier Source Local';
+            const sha256 = data.fetch?.sha256 ? data.fetch.sha256.substring(0, 16) + '...' : '-';
+            const confidence = data.identity?.confidence_score ? `${Math.round(data.identity.confidence_score * 100)}%` : '100%';
+            discoveryDocMeta.innerHTML = `
+                <div><strong>Source certifiée :</strong> ${escapeHtml(docTitle)}</div>
+                <div style="display: flex; gap: 16px; margin-top: 4px; color: var(--text-secondary);">
+                    <span><strong>Modèle :</strong> ${escapeHtml(mfg)} ${escapeHtml(mdl)}</span>
+                    <span><strong>Confiance :</strong> ${escapeHtml(confidence)}</span>
+                    <span><strong>SHA-256 :</strong> <code>${escapeHtml(sha256)}</code></span>
+                </div>
+            `;
+        }
+
+        if (discoveryPreviewBody) {
+            discoveryPreviewBody.innerHTML = '';
+            const registers = data.model?.registers || [];
+            const displayLimit = Math.min(registers.length, 300);
+            for (let i = 0; i < displayLimit; i++) {
+                const reg = registers[i];
+                const tr = document.createElement('tr');
+                const tagDisplay = reg.canonical_sunpm_tag ? `<code>${escapeHtml(reg.canonical_sunpm_tag)}</code>` : '<span style="color:var(--text-secondary);">-</span>';
+                tr.innerHTML = `
+                    <td><code>${escapeHtml(reg.address)}</code></td>
+                    <td>${escapeHtml(reg.name)}</td>
+                    <td>${tagDisplay}</td>
+                    <td>${escapeHtml(reg.data_type || 'U16')}</td>
+                    <td>${escapeHtml(reg.factor ?? 1.0)}</td>
+                    <td>${escapeHtml(reg.unit || '-')}</td>
+                    <td>${escapeHtml(reg.action_code || 4)}</td>
+                `;
+                discoveryPreviewBody.appendChild(tr);
+            }
+        }
+
+        if (discoveryResultsSection && discoveryResultsSection.classList) {
+            discoveryResultsSection.classList.remove('hidden');
+        }
+    }
+
+    if (discoveryQueryInput && discoveryQueryInput.addEventListener) {
+        discoveryQueryInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                if (e.preventDefault) e.preventDefault();
+                if (discoveryRunBtn && discoveryRunBtn.click) discoveryRunBtn.click();
+            }
+        });
+    }
+
+    if (discoveryRunBtn && discoveryRunBtn.addEventListener) {
+        discoveryRunBtn.addEventListener('click', async () => {
+            const query = discoveryQueryInput ? discoveryQueryInput.value.trim() : '';
+            if (!query) {
+                showToast('Veuillez saisir une référence équipement.', 'error');
+                if (discoveryQueryInput && discoveryQueryInput.focus) discoveryQueryInput.focus();
+                return;
+            }
+
+            const targetFormat = discoveryTargetSelect ? discoveryTargetSelect.value : 'webdyn_sunpm';
+            const ocrFallback = discoveryEnableOcr ? discoveryEnableOcr.checked : true;
+
+            discoveryRunBtn.disabled = true;
+            if (discoveryResultsSection && discoveryResultsSection.classList) {
+                discoveryResultsSection.classList.add('hidden');
+            }
+            updateDiscoveryStatus('Découverte en cours', 'En cours...', 'badge-info', `Recherche de la documentation constructeur officielle pour "${query}"...`);
+
+            try {
+                const res = await fetch('/api/discovery/lookup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        query: query,
+                        target_format: targetFormat,
+                        ocr_fallback: ocrFallback
+                    })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({ detail: 'Erreur HTTP ' + res.status }));
+                    updateDiscoveryStatus('Échec de la découverte', 'Erreur', 'badge-error', err.detail || 'Erreur lors de la requête de découverte.');
+                    showToast(err.detail || 'Erreur lors de la découverte', 'error');
+                    return;
+                }
+
+                const data = await res.json();
+                if (data.success) {
+                    updateDiscoveryStatus(
+                        'Découverte & Certification terminées',
+                        'Certifié',
+                        'badge-success',
+                        `Définition générée avec succès pour ${data.identity?.manufacturer || ''} ${data.identity?.exact_model || ''} (${data.model?.total_registers || 0} registres certifiés).`
+                    );
+                    renderDiscoveryResult(data);
+                    showToast('Définition Modbus découverte et certifiée avec succès !', 'success');
+                } else {
+                    const errMsg = data.error_message || 'Impossible d\'extraire une table de registres certifiée pour cette référence.';
+                    updateDiscoveryStatus('Attention requise', data.status || 'Non résolu', 'badge-warning', errMsg);
+                    if (data.model && data.model.registers && data.model.registers.length > 0) {
+                        renderDiscoveryResult(data);
+                    }
+                    showToast(errMsg, 'error');
+                }
+            } catch (err) {
+                updateDiscoveryStatus('Erreur de connexion', 'Erreur', 'badge-error', `Erreur réseau : ${err.message}`);
+                showToast(`Erreur réseau: ${err.message}`, 'error');
+            } finally {
+                discoveryRunBtn.disabled = false;
+            }
+        });
+    }
+
+    if (discoveryManualFileInput && discoveryManualFileInput.addEventListener) {
+        discoveryManualFileInput.addEventListener('change', async (e) => {
+            const files = e.target ? e.target.files : null;
+            if (!files || files.length === 0) return;
+            const file = files[0];
+
+            const targetFormat = discoveryTargetSelect ? discoveryTargetSelect.value : 'webdyn_sunpm';
+            const ocrFallback = discoveryEnableOcr ? discoveryEnableOcr.checked : true;
+
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('target_format', targetFormat);
+            formData.append('ocr_fallback', ocrFallback ? 'true' : 'false');
+
+            if (discoveryRunBtn) discoveryRunBtn.disabled = true;
+            if (discoveryResultsSection && discoveryResultsSection.classList) {
+                discoveryResultsSection.classList.add('hidden');
+            }
+            updateDiscoveryStatus('Extraction locale en cours', 'En cours...', 'badge-info', `Analyse et normalisation du fichier secours "${file.name}"...`);
+
+            try {
+                const res = await fetch('/api/discovery/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({ detail: 'Erreur HTTP ' + res.status }));
+                    updateDiscoveryStatus('Échec de l\'extraction', 'Erreur', 'badge-error', err.detail || 'Erreur lors du traitement du fichier.');
+                    showToast(err.detail || 'Erreur lors du traitement', 'error');
+                    return;
+                }
+
+                const data = await res.json();
+                if (data.success) {
+                    updateDiscoveryStatus(
+                        'Extraction & Certification terminées',
+                        'Certifié',
+                        'badge-success',
+                        `Définition extraite avec succès depuis ${file.name} (${data.model?.total_registers || 0} registres).`
+                    );
+                    renderDiscoveryResult(data);
+                    showToast('Définition extraite et certifiée avec succès !', 'success');
+                } else {
+                    const errMsg = data.error_message || 'Validation échouée sur le document fourni.';
+                    updateDiscoveryStatus('Attention requise', data.status || 'Non résolu', 'badge-warning', errMsg);
+                    if (data.model && data.model.registers && data.model.registers.length > 0) {
+                        renderDiscoveryResult(data);
+                    }
+                    showToast(errMsg, 'error');
+                }
+            } catch (err) {
+                updateDiscoveryStatus('Erreur de traitement', 'Erreur', 'badge-error', `Erreur réseau : ${err.message}`);
+                showToast(`Erreur réseau: ${err.message}`, 'error');
+            } finally {
+                if (discoveryRunBtn) discoveryRunBtn.disabled = false;
+                if (discoveryManualFileInput) discoveryManualFileInput.value = '';
+            }
+        });
+    }
+
+    if (discoveryCopyBtn && discoveryCopyBtn.addEventListener) {
+        discoveryCopyBtn.addEventListener('click', () => {
+            if (!currentDiscoveryCsv) return;
+            copyToClipboard(currentDiscoveryCsv, 'Définition CSV copiée dans le presse-papier !');
+        });
+    }
+
+    if (discoveryDownloadBtn && discoveryDownloadBtn.addEventListener) {
+        discoveryDownloadBtn.addEventListener('click', () => {
+            if (!currentDiscoveryCsv) return;
+            triggerDownload(currentDiscoveryCsv, currentDiscoveryFilename);
+        });
+    }
+
+    if (discoveryEvidenceBtn && discoveryEvidenceBtn.addEventListener) {
+        discoveryEvidenceBtn.addEventListener('click', () => {
+            if (!currentDiscoveryEvidence) {
+                showToast('Aucun rapport de preuve disponible.', 'info');
+                return;
+            }
+            const blob = new Blob([currentDiscoveryEvidence], { type: 'text/markdown;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${currentDiscoveryFilename.replace('.csv', '')}_EVIDENCE.md`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('Rapport de traçabilité cryptographique téléchargé !', 'success');
+        });
+    }
 
     // =========================================================================
     // TAB 2: SunPM Tagger

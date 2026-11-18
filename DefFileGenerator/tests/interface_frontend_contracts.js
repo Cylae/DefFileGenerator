@@ -225,6 +225,54 @@ async function main() {
     app.element('librarySearchInput').value = 'ABB';
     app.element('librarySearchInput').fire('input');
     assert.equal(app.element('libraryTableBody').children.length, 1);
+
+    // 6. Autonomous Discovery Flow (Phase B)
+    app.element('tabBtnDiscovery').fire('click');
+    assert.equal(app.element('tabBtnDiscovery').classList.contains('active'), true);
+    assert.equal(app.element('tab-discovery').classList.contains('active'), true);
+
+    const discoveryMock = {
+        success: true,
+        status: 'VALIDATED_OFFLINE',
+        query: 'Huawei SUN2000-100KTL',
+        identity: { manufacturer: 'Huawei', model_family: 'SUN2000', exact_model: 'SUN2000-100KTL', confidence_score: 1.0 },
+        document: { title: 'SUN2000 Modbus Protocol', source_url: 'https://solar.huawei.com/doc.pdf' },
+        fetch: { sha256: 'abcdef1234567890abcdef1234567890' },
+        model: {
+            manufacturer: 'Huawei',
+            model: 'SUN2000-100KTL',
+            category: 'Inverter',
+            total_registers: 45,
+            registers: [
+                { address: 30000, name: 'Model Name', canonical_sunpm_tag: null, data_type: 'STR', factor: 1.0, unit: '', action_code: 4 },
+                { address: 32064, name: 'Input Power', canonical_sunpm_tag: 'P_DC', data_type: 'U32', factor: 0.001, unit: 'kW', action_code: 4 }
+            ]
+        },
+        validation: { status: 'VALIDATED_OFFLINE', pillar_statuses: { pillar_1: true } },
+        csv_content: 'modbusRTU;Inverter;M;X;;;;;;;\n1;3;30000;STR;;N;n;0;0;;4\n2;3;32064;U32;;N;P_DC;0;0;0.001;4\n',
+        evidence_report: '# Evidence Report\nModel: Huawei SUN2000-100KTL\n'
+    };
+
+    app.element('discoveryQueryInput').value = 'Huawei SUN2000-100KTL';
+    app.context.fetch = async () => response(discoveryMock);
+    await app.element('discoveryRunBtn').fire('click');
+
+    assert.equal(app.element('discoveryRegistersBadge').textContent, '45 registres');
+    assert.equal(app.element('discoveryPillarsBadge').textContent, '5 Piliers Conformes');
+    assert.equal(app.element('discoveryResultsSection').classList.contains('hidden'), false);
+    assert.equal(app.element('discoveryPreviewBody').children.length, 2);
+
+    // Discovery Copy & Download
+    await app.element('discoveryCopyBtn').fire('click');
+    await new Promise(r => setImmediate(r));
+    assert.equal(app.copied.some(c => c.includes('32064;U32')), true);
+
+    const prevBlobs = app.blobs.length;
+    app.element('discoveryDownloadBtn').fire('click');
+    assert.equal(app.blobs.length, prevBlobs + 1);
+
+    app.element('discoveryEvidenceBtn').fire('click');
+    assert.equal(app.blobs.length, prevBlobs + 2);
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

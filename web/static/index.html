@@ -30,6 +30,8 @@
         <nav class="nav-tabs" id="navTabs" role="tablist" aria-label="Studio Modules">
             <button class="nav-tab active" id="tabBtnConvert" data-tab="tab-convert" role="tab" aria-selected="true"
                 aria-controls="tab-convert" tabindex="0">📁 Convert Datasheet</button>
+            <button class="nav-tab" id="tabBtnDiscovery" data-tab="tab-discovery" role="tab" aria-selected="false"
+                aria-controls="tab-discovery" tabindex="-1">🌐 Découverte Autonome</button>
             <button class="nav-tab" id="tabBtnTag" data-tab="tab-tag" role="tab" aria-selected="false"
                 aria-controls="tab-tag" tabindex="-1">🏷️ SunPM Tagger</button>
             <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit" role="tab" aria-selected="false"
@@ -156,6 +158,91 @@
                             </tr>
                         </thead>
                         <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- TAB DISCOVERY: AUTONOMOUS MODBUS DISCOVERY (PHASE B)     -->
+        <!-- ======================================================== -->
+        <div id="tab-discovery" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnDiscovery">
+            <section class="card">
+                <h2>🌐 Découverte Autonome de Définitions Modbus</h2>
+                <p class="subtitle">Saisissez une référence équipement industrielle (ex: <code>Huawei SUN2000-100KTL</code>, <code>Sungrow SG110CX</code>, <code>Solplanet Ai-Logger</code>). Le pipeline recherche la documentation constructeur officielle, extrait la table de registres, normalise la sémantique et certifie le fichier de définition.</p>
+
+                <div class="config-grid" style="grid-template-columns: 2fr 1fr 1fr; margin-bottom: 16px;">
+                    <div class="form-group">
+                        <label for="discoveryQueryInput"><strong>Référence Équipement / Modèle :</strong></label>
+                        <input type="text" id="discoveryQueryInput" placeholder="Ex: Huawei SUN2000-100KTL-M1, Sungrow SG110CX...">
+                    </div>
+                    <div class="form-group">
+                        <label for="discoveryTargetSelect"><strong>Cible Export :</strong></label>
+                        <select id="discoveryTargetSelect">
+                            <option value="webdyn_sunpm">WebdynSunPM (Standard)</option>
+                            <option value="webdyn_classic">WebdynSun Classic</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button id="discoveryRunBtn" class="btn btn-primary" style="width: 100%;">
+                            🚀 Découvrir & Générer
+                        </button>
+                    </div>
+                </div>
+
+                <details style="margin-bottom: 16px; background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--text-secondary);">⚙️ Options avancées & Fallback manuel</summary>
+                    <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="discoveryEnableOcr" checked>
+                            <span>Activer la désambiguïsation OCR bornée pour les PDF scannés</span>
+                        </label>
+                        <div style="border-top: 1px dashed var(--border-color); padding-top: 10px;">
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px;">Si le document n'est pas trouvable en ligne, vous pouvez téléverser un fichier local en secours :</p>
+                            <input type="file" id="discoveryManualFileInput" accept=".pdf,.xlsx,.csv">
+                        </div>
+                    </div>
+                </details>
+
+                <div id="discoveryStatusBox" class="hidden" style="margin-top: 16px; padding: 14px; border-radius: 8px; background: var(--bg-surface); border: 1px solid var(--border-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <strong id="discoveryStatusTitle">Statut du pipeline</strong>
+                        <span id="discoveryStatusBadge" class="badge">En attente</span>
+                    </div>
+                    <p id="discoveryStatusDetail" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"></p>
+                </div>
+            </section>
+
+            <section class="card results-card hidden" id="discoveryResultsSection">
+                <div class="results-header">
+                    <div>
+                        <h2>Résultats de la Découverte & Certification</h2>
+                        <span id="discoveryRegistersBadge" class="badge badge-success">0 registres</span>
+                        <span id="discoveryPillarsBadge" class="badge badge-success">5 Piliers Conformes</span>
+                    </div>
+                    <div class="actions">
+                        <button id="discoveryCopyBtn" class="btn btn-secondary">📋 Copier CSV</button>
+                        <button id="discoveryDownloadBtn" class="btn btn-primary">⬇️ Télécharger CSV</button>
+                        <button id="discoveryEvidenceBtn" class="btn btn-secondary">📜 Rapport d'Audit</button>
+                    </div>
+                </div>
+
+                <div id="discoveryDocMeta" style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 0.85rem;"></div>
+
+                <div class="table-wrapper" style="max-height: 400px;">
+                    <table id="discoveryPreviewTable">
+                        <thead>
+                            <tr>
+                                <th>Adresse</th>
+                                <th>Nom</th>
+                                <th>Tag SunPM</th>
+                                <th>Type</th>
+                                <th>Facteur</th>
+                                <th>Unité</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="discoveryPreviewBody"></tbody>
                     </table>
                 </div>
             </section>
