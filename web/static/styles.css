@@ -298,3 +298,77 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 .audit-issue-card.info .issue-level { background: #38bdf8; color: #000; }
 
 .hidden { display: none !important; }
+
+/* Category Filter Pills */
+.category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.pill-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: var(--bg-surface, #1e293b);
+    border: 1px solid var(--border-color, #334155);
+    color: var(--text-secondary, #94a3b8);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pill-btn:hover {
+    border-color: var(--primary-color, #3b82f6);
+    color: #fff;
+}
+.pill-btn.active {
+    background: var(--primary-color, #3b82f6);
+    border-color: var(--primary-color, #3b82f6);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+/* 5 Pillars Status Cards */
+.pillar-card {
+    background: var(--bg-surface, #1e293b);
+    border: 1px solid var(--border-color, #334155);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.15s ease;
+}
+.pillar-card:hover {
+    transform: translateY(-2px);
+}
+.pillar-card.pass {
+    border-left: 4px solid #10b981;
+}
+.pillar-card.fail {
+    border-left: 4px solid #ef4444;
+}
+.pillar-card .pillar-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary, #f8fafc);
+}
+.pillar-card .pillar-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #94a3b8);
+}
+.pillar-card .pillar-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+.pillar-card.pass .pillar-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+.pillar-card.fail .pillar-badge {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+

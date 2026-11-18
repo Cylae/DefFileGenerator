@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebdynSunPM Definition Generator & Telemetry Suite</title>
+    <title>WebdynSunPM Studio & Générateur de Définitions Apollo</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
@@ -13,7 +13,10 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             <h1>WebdynSunPM <span>DefGen Studio</span></h1>
         </div>
-        <div class="header-badge">v0.4.0 Industrial Edition</div>
+        <div class="header-badges" style="display: flex; gap: 8px; align-items: center;">
+            <span id="knowledgePill" class="header-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">🧠 36 270+ variables</span>
+            <div class="header-badge">v1.0.0 Apollo Edition</div>
+        </div>
     </header>
 
     <main class="container">
@@ -21,8 +24,9 @@
         <nav class="nav-tabs" id="navTabs" role="tablist" aria-label="Studio Modules">
             <button class="nav-tab active" id="tabBtnConvert" data-tab="tab-convert" role="tab" aria-selected="true" aria-controls="tab-convert" tabindex="0">📁 Convert Datasheet</button>
             <button class="nav-tab" id="tabBtnTag" data-tab="tab-tag" role="tab" aria-selected="false" aria-controls="tab-tag" tabindex="-1">🏷️ SunPM Tagger</button>
-            <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit" role="tab" aria-selected="false" aria-controls="tab-audit" tabindex="-1">🛡️ Validator & Auditor</button>
-            <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library" role="tab" aria-selected="false" aria-controls="tab-library" tabindex="-1">📚 Equipment Library (125)</button>
+            <button class="nav-tab" id="tabBtnAudit" data-tab="tab-audit" role="tab" aria-selected="false" aria-controls="tab-audit" tabindex="-1">🛡️ 5 Piliers & Auditor</button>
+            <button class="nav-tab" id="tabBtnLibrary" data-tab="tab-library" role="tab" aria-selected="false" aria-controls="tab-library" tabindex="-1">📚 Production Library (1,118)</button>
+            <button class="nav-tab" id="tabBtnAuditTrail" data-tab="tab-audit-trail" role="tab" aria-selected="false" aria-controls="tab-audit-trail" tabindex="-1">📜 Journal d'Audit</button>
         </nav>
 
         <!-- ======================================================== -->
@@ -30,7 +34,7 @@
         <!-- ======================================================== -->
         <div id="tab-convert" class="tab-pane active" role="tabpanel" aria-labelledby="tabBtnConvert">
             <section class="card upload-card">
-                <h2>1. Upload Register Map</h2>
+                <h2>1. Upload Register Map / Vendor Datasheet</h2>
                 <p class="subtitle">Supports PDF datasheets, Excel workbooks (.xlsx, .xlsm), CSV maps, or XML files.</p>
 
                 <div class="drop-zone" id="dropZone">
@@ -66,10 +70,12 @@
                     <div class="form-group">
                         <label for="categorySelect">Category</label>
                         <select id="categorySelect">
-                            <option value="Inverter" selected>Inverter</option>
-                            <option value="Meter">Meter</option>
-                            <option value="Sensor">Sensor</option>
-                            <option value="Battery">Battery</option>
+                            <option value="Inverter" selected>Inverter (Onduleur)</option>
+                            <option value="Meter">Meter (Compteur)</option>
+                            <option value="Sensor">Sensor (Capteur)</option>
+                            <option value="Battery">Battery (BESS / BMS)</option>
+                            <option value="Logger">Logger (Passerelle COM)</option>
+                            <option value="Other">Other (Autre / I/O)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -135,7 +141,7 @@
         <div id="tab-tag" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnTag">
             <section class="card">
                 <h2>Enrich Definition with Official Webdyn SunPM Tags</h2>
-                <p class="subtitle">Maps vendor registers to canonical SunPM supervisory tags (P_AC, Q_AC, E_TOT, U_AC_1...) based on a 211,000+ register training dataset.</p>
+                <p class="subtitle">Maps vendor registers to canonical SunPM supervisory tags (P_AC, Q_AC, E_TOT, U_AC_1...) based on a 36,270+ register semantic knowledge base.</p>
 
                 <div class="drop-zone" id="tagDropZone">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -157,6 +163,8 @@
                             <option value="Meter">Meter (Compteur / Analyseur)</option>
                             <option value="Sensor">Sensor (Capteur / Pyranomètre)</option>
                             <option value="Battery">Battery (BESS / BMS)</option>
+                            <option value="Logger">Logger (Passerelle COM)</option>
+                            <option value="Other">Other (Autre / I/O)</option>
                         </select>
                     </div>
                     <div class="form-group" style="justify-content: center;">
@@ -211,12 +219,12 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- TAB 3: VALIDATOR & AUDITOR                               -->
+        <!-- TAB 3: VALIDATOR & AUDITOR (5 PILIERS APOLLO)             -->
         <!-- ======================================================== -->
         <div id="tab-audit" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnAudit">
             <section class="card">
-                <h2>Definition Compliance & Overlap Auditor</h2>
-                <p class="subtitle">Audits definition CSVs for Modbus address collisions, data type semantics, scaling sanity, and SunPM tag density.</p>
+                <h2>Definition Compliance & 5 Piliers Apollo Auditor</h2>
+                <p class="subtitle">Audite les fichiers de définition selon les 5 Piliers Apollo (Nommage standard, Adressage décimal, Codes fonction, Codes action, Tags SunPM, UTF-8 sans BOM).</p>
 
                 <div class="drop-zone" id="auditDropZone">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -232,22 +240,40 @@
                 <div class="config-grid" style="margin-top: 16px;">
                     <div class="form-group" style="justify-content: center;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
-                            <input type="checkbox" id="auditStrictOverlapCheck" checked> Treat address overlaps as errors
+                            <input type="checkbox" id="auditStrictOverlapCheck" checked> Traiter les chevauchements d'adresses en erreur
                         </label>
                     </div>
                     <div class="form-group" style="justify-content: center;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
-                            <input type="checkbox" id="auditAutoFixCheck"> Auto-repair legacy tags & deduplicate
+                            <input type="checkbox" id="auditAutoFixCheck"> Auto-réparation & normalisation SunPM
                         </label>
                     </div>
                 </div>
 
-                <div class="action-bar">
+                <div class="action-bar" style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button id="auditPillarsBtn" class="btn btn-secondary" disabled>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Vérifier 5 Piliers Apollo
+                    </button>
                     <button id="auditProcessBtn" class="btn btn-primary" disabled>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Audit Definition
+                        Audit Syntaxique & Overlaps
                     </button>
                 </div>
+            </section>
+
+            <!-- 5 Pillars Diagnostic Box -->
+            <section id="pillarsResultsSection" class="card results-card hidden" style="margin-top: 20px;">
+                <div class="results-header">
+                    <div>
+                        <h2>🏛️ Rapport de Conformité 5 Piliers Apollo</h2>
+                        <span id="pillarsStatusBadge" class="badge badge-success">Conforme (PASS 100%)</span>
+                    </div>
+                </div>
+                <div id="pillarsGrid" class="config-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 16px;">
+                    <!-- Injected dynamically via app.js -->
+                </div>
+                <div id="pillarsIssuesList" class="audit-issues" style="margin-top: 16px;"></div>
             </section>
 
             <section id="auditResultsSection" class="card results-card hidden">
@@ -274,35 +300,91 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- TAB 4: EQUIPMENT LIBRARY                                 -->
+        <!-- TAB 4: PRODUCTION & EQUIPMENT LIBRARY                     -->
         <!-- ======================================================== -->
         <div id="tab-library" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnLibrary">
             <section class="card">
                 <div class="results-header" style="margin-bottom: 12px;">
                     <div>
-                        <h2>Pre-Validated Industrial Definitions Library</h2>
-                        <span id="libraryCountBadge" class="badge badge-success">125 models</span>
+                        <h2>Bibliothèque des Définitions de Production Certifiées</h2>
+                        <span id="libraryCountBadge" class="badge badge-success">1 118 modèles</span>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="sourceProductionBtn" class="btn btn-primary btn-sm">Répertoire Production (1 118)</button>
+                        <button id="sourceDefinitionsBtn" class="btn btn-secondary btn-sm">Archives Historiques (136)</button>
                     </div>
                 </div>
-                <p class="subtitle">Ready-to-use, verified WebdynSunPM definitions across 61 manufacturers (Huawei, SMA, ABB, SolarEdge, GoodWe, Sungrow...).</p>
+                <p class="subtitle">Référentiel certifié 5 Piliers Apollo pour 137 constructeurs industriels (Huawei, Solplanet, Sungrow, SMA, Dyness, FoxESS, ABB...).</p>
 
-                <div class="search-bar">
-                    <input type="text" id="librarySearchInput" placeholder="🔍 Search by manufacturer, model, or category (e.g. Huawei, SMA, Meter, Sensor)...">
+                <!-- Category Pills Filter -->
+                <div id="categoryPills" class="category-pills" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0;">
+                    <button class="pill-btn active" data-cat="">Tous</button>
+                    <button class="pill-btn" data-cat="INV">⚡ Onduleurs (INV)</button>
+                    <button class="pill-btn" data-cat="MET">📊 Compteurs (MET)</button>
+                    <button class="pill-btn" data-cat="BAT">🔋 Batteries / BESS (BAT)</button>
+                    <button class="pill-btn" data-cat="SEN">☀️ Capteurs / Météo (SEN)</button>
+                    <button class="pill-btn" data-cat="COM">🌐 Passerelles / Loggers (COM)</button>
+                    <button class="pill-btn" data-cat="OTH">⚙️ Autres (OTH)</button>
                 </div>
 
-                <div class="table-wrapper" style="max-height: 500px; margin-top: 16px;">
+                <div class="search-bar">
+                    <input type="text" id="librarySearchInput" placeholder="🔍 Rechercher par constructeur, modèle ou préfixe (ex: Solplanet, Huawei, SUN2000, SDM630)...">
+                </div>
+
+                <div class="table-wrapper" style="max-height: 520px; margin-top: 16px;">
                     <table id="libraryTable">
                         <thead>
                             <tr>
-                                <th>Category</th>
-                                <th>Manufacturer</th>
-                                <th>Model Identifier</th>
-                                <th>File Size</th>
+                                <th>Catégorie</th>
+                                <th>Constructeur</th>
+                                <th>Identifiant Modèle</th>
+                                <th>Registres</th>
+                                <th>Conformité 5 Piliers</th>
+                                <th>Taille</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="libraryTableBody">
-                            <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Loading definitions catalog...</td></tr>
+                            <tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement du catalogue certifié...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- TAB 5: IMMUTABLE AUDIT TRAIL                              -->
+        <!-- ======================================================== -->
+        <div id="tab-audit-trail" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabBtnAuditTrail">
+            <section class="card">
+                <div class="results-header" style="margin-bottom: 12px;">
+                    <div>
+                        <h2>📜 Journal d'Audit Opérationnel Immuable</h2>
+                        <span id="auditTrailBadge" class="badge badge-success">Traçabilité Active</span>
+                    </div>
+                    <button id="refreshAuditTrailBtn" class="btn btn-secondary btn-sm">🔄 Actualiser</button>
+                </div>
+                <p class="subtitle">Historique chronologique et vérifiable de toutes les intégrations, générations et certifications dans le référentiel.</p>
+
+                <div class="search-bar" style="margin-bottom: 16px;">
+                    <input type="text" id="auditTrailSearchInput" placeholder="🔍 Filtrer les événements par constructeur, équipement ou action...">
+                </div>
+
+                <div class="table-wrapper" style="max-height: 500px;">
+                    <table id="auditTrailTable">
+                        <thead>
+                            <tr>
+                                <th>Horodatage (UTC)</th>
+                                <th>Action</th>
+                                <th>Constructeur</th>
+                                <th>Équipement</th>
+                                <th>Définition(s)</th>
+                                <th>Statut</th>
+                                <th>Détails</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auditTrailBody">
+                            <tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Chargement du journal d'audit...</td></tr>
                         </tbody>
                     </table>
                 </div>

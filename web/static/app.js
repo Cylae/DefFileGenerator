@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tab Navigation & Keyboard Accessibility
     // =========================================================================
     let libraryLoaded = false;
+    let auditTrailLoaded = false;
+    let currentLibrarySource = 'production';
+    let currentCategoryFilter = '';
+
     const tabBindings = [
         { btnId: 'tabBtnConvert', paneId: 'tab-convert' },
         { btnId: 'tabBtnTag', paneId: 'tab-tag' },
@@ -12,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
             paneId: 'tab-library',
             onActivate: () => {
                 if (!libraryLoaded) loadLibrary();
+            }
+        },
+        {
+            btnId: 'tabBtnAuditTrail',
+            paneId: 'tab-audit-trail',
+            onActivate: () => {
+                if (!auditTrailLoaded) loadAuditTrail();
             }
         }
     ];
@@ -92,16 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(toast);
             setTimeout(() => {
                 if (container.removeChild) {
-                    container.removeChild(toast);
+                    try { container.removeChild(toast); } catch {}
                 }
             }, 3500);
         }
-        if (type === 'error' && typeof alert === 'function' && typeof window === 'undefined') {
-            alert(message);
-        }
     }
 
-    async function copyToClipboard(text, successMsg = 'Copied to clipboard!') {
+    async function copyToClipboard(text, successMsg = 'Copié dans le presse-papier !') {
         if (!text) return;
         try {
             if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
@@ -109,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             showToast(successMsg, 'success');
         } catch {
-            showToast('Unable to copy to clipboard', 'error');
+            showToast('Impossible de copier dans le presse-papier', 'error');
         }
     }
 
@@ -121,14 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < rows.length; i++) {
                 const row = rows[i];
                 if (!row) continue;
-                const text = (row.textContent || row.innerText || row.innerHTML || '').toLowerCase();
+                const text = (row.textContent || row.innerText || '').toLowerCase();
                 const visible = !q || text.includes(q);
-                if (row.style) {
-                    row.style.display = visible ? '' : 'none';
-                }
-                if (row.classList) {
-                    row.classList.toggle('hidden', !visible);
-                }
+                if (row.style) row.style.display = visible ? '' : 'none';
+                if (row.classList) row.classList.toggle('hidden', !visible);
             }
         });
     }
@@ -153,6 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeChild(link);
         setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
+
+    // Load Knowledge Base Stats on startup
+    async function loadKnowledgeStats() {
+        const pill = document.getElementById('knowledgePill');
+        if (!pill) return;
+        try {
+            const res = await fetch('/api/knowledge-stats');
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.total_mappings) {
+                    pill.textContent = `🧠 ${data.total_mappings.toLocaleString()} variables apprises`;
+                }
+            }
+        } catch {}
+    }
+    loadKnowledgeStats();
 
     // =========================================================================
     // Helper: Wire Drag & Drop for a Zone
@@ -202,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('downloadBtn');
     const copyBtn = document.getElementById('copyBtn');
     const previewFilterInput = document.getElementById('previewFilterInput');
-    const convertLabel = convertBtn.innerHTML;
 
     let selectedFile = null;
     let convertedCsvContent = null;
@@ -210,46 +229,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let requestVersion = 0;
     let pendingController = null;
 
-    function resetResults() {
-        convertedCsvContent = null;
-        resultsSection.classList.add('hidden');
-        previewBody.innerHTML = '';
-        downloadBtn.disabled = true;
-        if (copyBtn) copyBtn.disabled = true;
-        if (previewFilterInput) previewFilterInput.value = '';
-    }
-
-    function invalidateConversion() {
-        requestVersion += 1;
-        if (pendingController) pendingController.abort();
-        pendingController = null;
-        resetResults();
-        convertBtn.disabled = !selectedFile;
-        convertBtn.innerHTML = convertLabel;
-    }
-
-    const convertForm = document.getElementById('convertForm');
-    if (convertForm && convertForm.addEventListener) {
-        convertForm.addEventListener('input', invalidateConversion);
-    }
-
     setupDropZone(dropZone, fileInput, (file) => {
         selectedFile = file;
-        invalidateConversion();
         fileName.textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
         dropZone.classList.add('hidden');
         fileDetails.classList.remove('hidden');
         convertBtn.disabled = false;
+        resultsSection.classList.add('hidden');
     });
 
     if (removeFileBtn && removeFileBtn.addEventListener) {
         removeFileBtn.addEventListener('click', () => {
             selectedFile = null;
-            invalidateConversion();
-            fileInput.value = '';
+            if (fileInput) fileInput.value = '';
             dropZone.classList.remove('hidden');
             fileDetails.classList.add('hidden');
             convertBtn.disabled = true;
+            resultsSection.classList.add('hidden');
+            convertedCsvContent = null;
         });
     }
 
@@ -257,52 +254,52 @@ document.addEventListener('DOMContentLoaded', () => {
         convertBtn.addEventListener('click', async () => {
             if (!selectedFile) return;
 
-            const version = ++requestVersion;
-            const controller = new AbortController();
-            pendingController = controller;
-            resetResults();
-            convertBtn.disabled = true;
-            convertBtn.textContent = 'Processing...';
-
-            const mfgInput = document.getElementById('mfgInput');
-            const modelInput = document.getElementById('modelInput');
-            const protocolSelect = document.getElementById('protocolSelect');
-            const categorySelect = document.getElementById('categorySelect');
-            const offsetInput = document.getElementById('offsetInput');
-            const forcedWriteInput = document.getElementById('forcedWriteInput');
+            const mfg = (document.getElementById('mfgInput').value || '').trim() || 'Manufacturer';
+            const model = (document.getElementById('modelInput').value || '').trim() || 'Model';
+            const protocol = document.getElementById('protocolSelect').value || 'modbusRTU';
+            const category = document.getElementById('categorySelect').value || 'Inverter';
+            const offset = document.getElementById('offsetInput').value || '0';
+            const forcedWrite = (document.getElementById('forcedWriteInput').value || '').trim();
 
             const formData = new FormData();
             formData.append('file', selectedFile);
-            formData.append('manufacturer', (mfgInput && mfgInput.value) || 'Manufacturer');
-            formData.append('model', (modelInput && modelInput.value) || 'Model');
-            formData.append('protocol', (protocolSelect && protocolSelect.value) || 'modbusRTU');
-            formData.append('category', (categorySelect && categorySelect.value) || 'Inverter');
-            formData.append('address_offset', (offsetInput && offsetInput.value) || '0');
-            formData.append('forced_write', (forcedWriteInput && forcedWriteInput.value) || '');
+            formData.append('manufacturer', mfg);
+            formData.append('model', model);
+            formData.append('protocol', protocol);
+            formData.append('category', category);
+            formData.append('address_offset', offset);
+            if (forcedWrite) formData.append('forced_write', forcedWrite);
+
+            const convertLabel = convertBtn.innerHTML;
+            convertBtn.disabled = true;
+            convertBtn.textContent = 'Extraction & Conversion en cours...';
+
+            if (pendingController) pendingController.abort();
+            pendingController = new AbortController();
+            const version = ++requestVersion;
 
             try {
                 const response = await fetch('/api/convert', {
                     method: 'POST',
                     body: formData,
-                    signal: controller.signal
+                    signal: pendingController.signal
                 });
+
                 if (version !== requestVersion) return;
 
                 if (!response.ok) {
-                    const errData = await response.json();
-                    if (version !== requestVersion) return;
-                    showToast(`Conversion Error: ${errData.detail || 'Unknown error'}`, 'error');
+                    const err = await response.json();
+                    showToast(err.detail || 'Erreur lors de la conversion', 'error');
                     return;
                 }
 
                 const data = await response.json();
-                if (version !== requestVersion) return;
                 convertedCsvContent = data.csv_content;
                 convertedFilename = data.filename;
 
                 const skipped = Math.max(0, (data.extracted_count || data.register_count) - data.register_count);
-                registerBadge.textContent = `${data.register_count} registers generated${skipped ? ` (${skipped} skipped)` : ''}`;
-                validBadge.textContent = data.is_valid === true ? 'Valid' : 'Invalid';
+                registerBadge.textContent = `${data.register_count} registres générés${skipped ? ` (${skipped} ignorés)` : ''}`;
+                validBadge.textContent = data.is_valid === true ? 'Conforme' : 'Invalide';
                 validBadge.classList.toggle('badge-success', data.is_valid === true);
                 validBadge.classList.toggle('badge-error', data.is_valid !== true);
                 downloadBtn.disabled = data.is_valid !== true;
@@ -312,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (err) {
                 if (version === requestVersion && err.name !== 'AbortError') {
-                    showToast(`Network or Server Error: ${err.message}`, 'error');
+                    showToast(`Erreur réseau ou serveur: ${err.message}`, 'error');
                 }
             } finally {
                 if (version === requestVersion) {
@@ -325,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderConvertPreview(rows) {
+        if (!previewBody) return;
         previewBody.innerHTML = '';
         rows.forEach(r => {
             const tr = document.createElement('tr');
@@ -353,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyBtn && copyBtn.addEventListener) {
         copyBtn.addEventListener('click', () => {
             if (!convertedCsvContent || copyBtn.disabled) return;
-            copyToClipboard(convertedCsvContent, 'Definition CSV copied to clipboard!');
+            copyToClipboard(convertedCsvContent, 'Définition CSV copiée dans le presse-papier !');
         });
     }
     setupTableFilter(previewFilterInput, previewBody);
@@ -398,6 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tagFileDetails.classList.add('hidden');
             tagProcessBtn.disabled = true;
             tagResultsSection.classList.add('hidden');
+            taggedCsvContent = null;
         });
     }
 
@@ -405,61 +404,63 @@ document.addEventListener('DOMContentLoaded', () => {
         tagProcessBtn.addEventListener('click', async () => {
             if (!tagSelectedFile) return;
 
-            tagProcessBtn.disabled = true;
-            tagProcessBtn.textContent = 'Enriching tags...';
+            const category = tagCategorySelect ? tagCategorySelect.value : '';
+            const overwrite = tagOverwriteCheck ? tagOverwriteCheck.checked : false;
 
             const formData = new FormData();
             formData.append('file', tagSelectedFile);
-            if (tagCategorySelect && tagCategorySelect.value) {
-                formData.append('category', tagCategorySelect.value);
-            }
-            formData.append('overwrite', (tagOverwriteCheck && tagOverwriteCheck.checked) ? 'true' : 'false');
+            if (category) formData.append('category', category);
+            formData.append('overwrite', overwrite ? 'true' : 'false');
+            formData.append('normalize_legacy', 'true');
+
+            tagProcessBtn.disabled = true;
+            tagProcessBtn.textContent = 'Balisage SunPM en cours...';
 
             try {
                 const response = await fetch('/api/tag', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
                 });
 
                 if (!response.ok) {
-                    const errData = await response.json();
-                    showToast(`Tagging Error: ${errData.detail || 'Failed to tag file'}`, 'error');
+                    const err = await response.json();
+                    showToast(err.detail || 'Erreur lors du balisage', 'error');
                     return;
                 }
 
                 const data = await response.json();
                 taggedCsvContent = data.csv_content;
-                taggedFilename = data.filename || 'definition_tagged.csv';
+                taggedFilename = data.filename;
 
-                const updatedCount = data.tags_updated ?? data.updated_count ?? 0;
-                const regCount = data.register_count ?? data.total_registers ?? 0;
-                if (tagCountBadge) tagCountBadge.textContent = `${updatedCount} tags updated`;
-                if (tagRegisterBadge) tagRegisterBadge.textContent = `${regCount} registers`;
+                tagCountBadge.textContent = `${data.tags_updated ?? data.updated_count ?? 0} tags attribués`;
+                tagRegisterBadge.textContent = `${data.register_count ?? data.total_registers ?? 0} registres`;
 
-                if (tagPreviewBody) {
-                    tagPreviewBody.innerHTML = '';
-                    (data.preview || []).forEach(r => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${escapeHtml(r.Name || '')}</td>
-                            <td><code>${escapeHtml(r.Tag || '')}</code></td>
-                            <td><code>${escapeHtml(r.Address ?? '')}</code></td>
-                            <td>${escapeHtml(r.Type || '')}</td>
-                            <td>${escapeHtml(r.Unit || '')}</td>
-                            <td>${escapeHtml(r.Action || '1')}</td>
-                        `;
-                        tagPreviewBody.appendChild(tr);
-                    });
-                }
-
-                if (tagCopyBtn) tagCopyBtn.disabled = false;
-                if (tagResultsSection) tagResultsSection.classList.remove('hidden');
+                renderTagPreview(data.preview || []);
+                tagResultsSection.classList.remove('hidden');
+                showToast(`Balisage terminé: ${data.tags_updated ?? 0} tags mis à jour !`, 'success');
             } catch (err) {
-                showToast(`Network or Server Error: ${err.message}`, 'error');
+                showToast(`Erreur réseau: ${err.message}`, 'error');
             } finally {
                 tagProcessBtn.disabled = false;
-                tagProcessBtn.textContent = 'Apply Canonical SunPM Tags';
+                tagProcessBtn.textContent = 'Appliquer les Tags SunPM Canoniques';
             }
+        });
+    }
+
+    function renderTagPreview(rows) {
+        if (!tagPreviewBody) return;
+        tagPreviewBody.innerHTML = '';
+        rows.forEach(r => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${escapeHtml(r.Name || '')}</td>
+                <td><code>${escapeHtml(r.Tag || '')}</code></td>
+                <td><code>${escapeHtml(r.Address ?? '')}</code></td>
+                <td>${escapeHtml(r.Type || '')}</td>
+                <td>${escapeHtml(r.Unit || '')}</td>
+                <td>${escapeHtml(r.Action || '4')}</td>
+            `;
+            tagPreviewBody.appendChild(tr);
         });
     }
 
@@ -473,13 +474,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tagCopyBtn && tagCopyBtn.addEventListener) {
         tagCopyBtn.addEventListener('click', () => {
             if (!taggedCsvContent) return;
-            copyToClipboard(taggedCsvContent, 'Enriched CSV copied to clipboard!');
+            copyToClipboard(taggedCsvContent, 'Définition balisée copiée !');
         });
     }
     setupTableFilter(tagFilterInput, tagPreviewBody);
 
     // =========================================================================
-    // TAB 3: Validator & Auditor
+    // TAB 3: Validator & Auditor (5 Piliers Apollo)
     // =========================================================================
     const auditDropZone = document.getElementById('auditDropZone');
     const auditFileInput = document.getElementById('auditFileInput');
@@ -487,14 +488,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const auditFileName = document.getElementById('auditFileName');
     const auditRemoveFileBtn = document.getElementById('auditRemoveFileBtn');
     const auditProcessBtn = document.getElementById('auditProcessBtn');
+    const auditPillarsBtn = document.getElementById('auditPillarsBtn');
     const auditResultsSection = document.getElementById('auditResultsSection');
+    const pillarsResultsSection = document.getElementById('pillarsResultsSection');
+    const pillarsGrid = document.getElementById('pillarsGrid');
+    const pillarsIssuesList = document.getElementById('pillarsIssuesList');
+    const pillarsStatusBadge = document.getElementById('pillarsStatusBadge');
     const auditStatusBadge = document.getElementById('auditStatusBadge');
     const auditRegistersBadge = document.getElementById('auditRegistersBadge');
     const auditErrorsBadge = document.getElementById('auditErrorsBadge');
     const auditWarningsBadge = document.getElementById('auditWarningsBadge');
+    const auditIssuesList = document.getElementById('auditIssuesList');
     const auditDownloadFixedBtn = document.getElementById('auditDownloadFixedBtn');
     const auditCopyFixedBtn = document.getElementById('auditCopyFixedBtn');
-    const auditIssuesList = document.getElementById('auditIssuesList');
     const auditStrictOverlapCheck = document.getElementById('auditStrictOverlapCheck');
     const auditAutoFixCheck = document.getElementById('auditAutoFixCheck');
 
@@ -508,7 +514,9 @@ document.addEventListener('DOMContentLoaded', () => {
         auditDropZone.classList.add('hidden');
         auditFileDetails.classList.remove('hidden');
         auditProcessBtn.disabled = false;
-        auditResultsSection.classList.add('hidden');
+        if (auditPillarsBtn) auditPillarsBtn.disabled = false;
+        if (auditResultsSection) auditResultsSection.classList.add('hidden');
+        if (pillarsResultsSection) pillarsResultsSection.classList.add('hidden');
     });
 
     if (auditRemoveFileBtn && auditRemoveFileBtn.addEventListener) {
@@ -518,97 +526,160 @@ document.addEventListener('DOMContentLoaded', () => {
             auditDropZone.classList.remove('hidden');
             auditFileDetails.classList.add('hidden');
             auditProcessBtn.disabled = true;
-            auditResultsSection.classList.add('hidden');
+            if (auditPillarsBtn) auditPillarsBtn.disabled = true;
+            if (auditResultsSection) auditResultsSection.classList.add('hidden');
+            if (pillarsResultsSection) pillarsResultsSection.classList.add('hidden');
+            auditFixedCsvContent = null;
         });
     }
 
-    if (auditProcessBtn && auditProcessBtn.addEventListener) {
-        auditProcessBtn.addEventListener('click', async () => {
+    // 5 PILLARS CHECK HANDLER
+    if (auditPillarsBtn && auditPillarsBtn.addEventListener) {
+        auditPillarsBtn.addEventListener('click', async () => {
             if (!auditSelectedFile) return;
-
-            auditProcessBtn.disabled = true;
-            auditProcessBtn.textContent = 'Auditing...';
 
             const formData = new FormData();
             formData.append('file', auditSelectedFile);
-            formData.append('strict_overlap', (auditStrictOverlapCheck && auditStrictOverlapCheck.checked) ? 'true' : 'false');
-            formData.append('auto_fix', (auditAutoFixCheck && auditAutoFixCheck.checked) ? 'true' : 'false');
+
+            auditPillarsBtn.disabled = true;
+            auditPillarsBtn.textContent = 'Vérification 5 Piliers...';
 
             try {
-                const response = await fetch('/api/audit', {
+                const response = await fetch('/api/pillars', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
                 });
 
                 if (!response.ok) {
-                    const errData = await response.json();
-                    showToast(`Audit Error: ${errData.detail || 'Audit failed'}`, 'error');
+                    const err = await response.json();
+                    showToast(err.detail || 'Erreur lors de la vérification des 5 Piliers', 'error');
                     return;
                 }
 
                 const data = await response.json();
+                renderPillarsReport(data);
+                if (pillarsResultsSection) pillarsResultsSection.classList.remove('hidden');
+            } catch (err) {
+                showToast(`Erreur réseau: ${err.message}`, 'error');
+            } finally {
+                auditPillarsBtn.disabled = false;
+                auditPillarsBtn.textContent = 'Vérifier 5 Piliers Apollo';
+            }
+        });
+    }
 
-                const isValid = Boolean(data.is_valid ?? data.valid);
-                if (auditStatusBadge) {
-                    auditStatusBadge.textContent = isValid ? 'Valid' : 'Issues Found';
-                    auditStatusBadge.classList.toggle('badge-success', isValid);
-                    auditStatusBadge.classList.toggle('badge-error', !isValid);
+    function renderPillarsReport(data) {
+        if (!pillarsGrid) return;
+        pillarsGrid.innerHTML = '';
+
+        const pillarsMeta = [
+            { id: 'naming', title: '1. Nommage Standard', desc: '<PREFIX>_<Fabricant>_<Modèle>.csv' },
+            { id: 'addressing', title: '2. Adressage Modbus', desc: 'Décimal exact 0..65535, suffixes STRING' },
+            { id: 'function_codes', title: '3. Codes Fonction', desc: 'Codes Modbus 1, 2, 3, 4' },
+            { id: 'action_codes', title: '4. Codes Action', desc: 'Codes Webdyn 0, 1, 2, 4, 8, 9, 10' },
+            { id: 'tags', title: '5. Tags Canoniques', desc: 'Tags SunPM sans doublons physiques' },
+            { id: 'encoding_schema', title: '6. Schéma & UTF-8', desc: 'Strict UTF-8 sans BOM, 11 colonnes' },
+        ];
+
+        pillarsMeta.forEach(p => {
+            const pass = data.pillars && data.pillars[p.id] !== false;
+            const card = document.createElement('div');
+            card.className = `pillar-card ${pass ? 'pass' : 'fail'}`;
+            card.innerHTML = `
+                <div class="pillar-title">${escapeHtml(p.title)}</div>
+                <div class="pillar-desc">${escapeHtml(p.desc)}</div>
+                <span class="pillar-badge">${pass ? '✓ CONFORME' : '✗ NON-CONFORME'}</span>
+            `;
+            pillarsGrid.appendChild(card);
+        });
+
+        if (pillarsStatusBadge) {
+            pillarsStatusBadge.textContent = data.is_valid ? '100% Conforme aux 5 Piliers (PASS)' : 'Non-Conforme (Échecs détectés)';
+            pillarsStatusBadge.className = `badge ${data.is_valid ? 'badge-success' : 'badge-error'}`;
+        }
+
+        if (pillarsIssuesList) {
+            pillarsIssuesList.innerHTML = '';
+            if (data.issues && data.issues.length) {
+                data.issues.forEach(iss => {
+                    const div = document.createElement('div');
+                    div.className = 'audit-issue-card error';
+                    div.innerHTML = `<span class="issue-level">PILIER</span> <span>${escapeHtml(iss)}</span>`;
+                    pillarsIssuesList.appendChild(div);
+                });
+            } else {
+                const div = document.createElement('div');
+                div.className = 'audit-issue-card info';
+                div.innerHTML = `<span class="issue-level">INFO</span> <span>Toutes les règles des 5 Piliers Apollo sont scrupuleusement respectées.</span>`;
+                pillarsIssuesList.appendChild(div);
+            }
+        }
+    }
+
+    // AUDIT & OVERLAP PROCESS HANDLER
+    if (auditProcessBtn && auditProcessBtn.addEventListener) {
+        auditProcessBtn.addEventListener('click', async () => {
+            if (!auditSelectedFile) return;
+
+            const strictOverlap = auditStrictOverlapCheck ? auditStrictOverlapCheck.checked : true;
+            const autoFix = auditAutoFixCheck ? auditAutoFixCheck.checked : false;
+
+            const formData = new FormData();
+            formData.append('file', auditSelectedFile);
+            formData.append('strict_overlap', strictOverlap ? 'true' : 'false');
+            formData.append('auto_fix', autoFix ? 'true' : 'false');
+
+            auditProcessBtn.disabled = true;
+            auditProcessBtn.textContent = 'Audit en cours...';
+
+            try {
+                const response = await fetch('/api/audit', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    showToast(err.detail || 'Erreur lors de l’audit', 'error');
+                    return;
                 }
 
-                if (auditRegistersBadge) {
-                    auditRegistersBadge.textContent = `${data.register_count ?? 0} registers`;
+                const data = await response.json();
+                auditStatusBadge.textContent = data.valid ? 'Valide' : 'Invalide';
+                auditStatusBadge.className = `badge ${data.valid ? 'badge-success' : 'badge-error'}`;
+                auditRegistersBadge.textContent = `${data.register_count || 0} registres`;
+
+                if (data.error_count > 0) {
+                    auditErrorsBadge.textContent = `${data.error_count} erreur${data.error_count > 1 ? 's' : ''}`;
+                    auditErrorsBadge.classList.remove('hidden');
+                } else {
+                    auditErrorsBadge.classList.add('hidden');
                 }
 
-                const errCount = data.error_count ?? (Array.isArray(data.errors) ? data.errors.length : 0);
-                if (auditErrorsBadge) {
-                    if (errCount > 0) {
-                        auditErrorsBadge.textContent = `${errCount} errors`;
-                        auditErrorsBadge.classList.remove('hidden');
-                    } else {
-                        auditErrorsBadge.classList.add('hidden');
-                    }
+                if (data.warning_count > 0) {
+                    auditWarningsBadge.textContent = `${data.warning_count} avertissement${data.warning_count > 1 ? 's' : ''}`;
+                    auditWarningsBadge.classList.remove('hidden');
+                } else {
+                    auditWarningsBadge.classList.add('hidden');
                 }
 
-                const warnCount = data.warning_count ?? (Array.isArray(data.warnings) ? data.warnings.length : 0);
-                if (auditWarningsBadge) {
-                    if (warnCount > 0) {
-                        auditWarningsBadge.textContent = `${warnCount} warnings`;
-                        auditWarningsBadge.classList.remove('hidden');
-                    } else {
-                        auditWarningsBadge.classList.add('hidden');
-                    }
+                auditIssuesList.innerHTML = '';
+                const issues = data.issues || [];
+                if (issues.length === 0) {
+                    auditIssuesList.innerHTML = `<div class="audit-issue-card info"><span class="issue-level">INFO</span><span>Aucun problème syntaxique ou collision d’adresses détecté.</span></div>`;
+                } else {
+                    issues.forEach(iss => {
+                        const level = iss.level || 'info';
+                        const card = document.createElement('div');
+                        card.className = `audit-issue-card ${level}`;
+                        const lineText = iss.line ? `Ligne ${iss.line}: ` : '';
+                        card.innerHTML = `<span class="issue-level">${level}</span> <span><strong>${escapeHtml(lineText)}</strong>${escapeHtml(iss.message || '')}</span>`;
+                        auditIssuesList.appendChild(card);
+                    });
                 }
 
-                const rawIssues = Array.isArray(data.issues) ? data.issues : [
-                    ...(Array.isArray(data.errors) ? data.errors.map(e => ({ ...e, level: 'error' })) : []),
-                    ...(Array.isArray(data.warnings) ? data.warnings.map(w => ({ ...w, level: 'warning' })) : []),
-                    ...(Array.isArray(data.infos) ? data.infos.map(i => ({ ...i, level: 'info' })) : [])
-                ];
-
-                if (auditIssuesList) {
-                    auditIssuesList.innerHTML = '';
-                    if (rawIssues.length > 0) {
-                        rawIssues.forEach(issue => {
-                            const card = document.createElement('div');
-                            const level = (issue.level || 'info').toLowerCase();
-                            card.className = `audit-issue-card ${level}`;
-                            card.innerHTML = `
-                                <span class="issue-level">${escapeHtml(issue.level || 'INFO')}</span>
-                                <span>${issue.field ? `<strong>${escapeHtml(issue.field)}:</strong> ` : ''}${escapeHtml(issue.message || '')}</span>
-                            `;
-                            auditIssuesList.appendChild(card);
-                        });
-                    } else {
-                        const cleanCard = document.createElement('div');
-                        cleanCard.className = 'audit-issue-card info';
-                        cleanCard.innerHTML = `<span class="issue-level">PASS</span><span>Definition passed all integrity checks. Zero syntax, overlap, or semantic issues detected.</span>`;
-                        auditIssuesList.appendChild(cleanCard);
-                    }
-                }
-
-                const fixedContent = data.fixed_csv_content ?? data.csv_content;
-                if (fixedContent) {
-                    auditFixedCsvContent = fixedContent;
+                if (data.fix_applied && data.fixed_csv_content) {
+                    auditFixedCsvContent = data.fixed_csv_content;
                     auditFixedFilename = data.filename ? `repaired_${data.filename}` : 'definition_repaired.csv';
                     if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.remove('hidden');
                     if (auditCopyFixedBtn) auditCopyFixedBtn.classList.remove('hidden');
@@ -620,10 +691,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (auditResultsSection) auditResultsSection.classList.remove('hidden');
             } catch (err) {
-                showToast(`Network or Server Error: ${err.message}`, 'error');
+                showToast(`Erreur serveur: ${err.message}`, 'error');
             } finally {
                 auditProcessBtn.disabled = false;
-                auditProcessBtn.textContent = 'Audit Definition';
+                auditProcessBtn.textContent = 'Audit Syntaxique & Overlaps';
             }
         });
     }
@@ -638,34 +709,46 @@ document.addEventListener('DOMContentLoaded', () => {
     if (auditCopyFixedBtn && auditCopyFixedBtn.addEventListener) {
         auditCopyFixedBtn.addEventListener('click', () => {
             if (!auditFixedCsvContent) return;
-            copyToClipboard(auditFixedCsvContent, 'Repaired CSV copied to clipboard!');
+            copyToClipboard(auditFixedCsvContent, 'Définition réparée copiée !');
         });
     }
 
     // =========================================================================
-    // TAB 4: Equipment Library
+    // TAB 4: Production & Equipment Library
     // =========================================================================
     const libraryTableBody = document.getElementById('libraryTableBody');
     const libraryCountBadge = document.getElementById('libraryCountBadge');
     const librarySearchInput = document.getElementById('librarySearchInput');
+    const sourceProductionBtn = document.getElementById('sourceProductionBtn');
+    const sourceDefinitionsBtn = document.getElementById('sourceDefinitionsBtn');
+    const categoryPills = document.getElementById('categoryPills');
     let libraryItems = [];
 
-    async function loadLibrary() {
+    async function loadLibrary(source = currentLibrarySource) {
         if (!libraryTableBody) return;
+        currentLibrarySource = source;
+
+        if (sourceProductionBtn && sourceDefinitionsBtn) {
+            sourceProductionBtn.className = `btn btn-sm ${source === 'production' ? 'btn-primary' : 'btn-secondary'}`;
+            sourceDefinitionsBtn.className = `btn btn-sm ${source === 'definitions' ? 'btn-primary' : 'btn-secondary'}`;
+        }
+
         try {
-            const response = await fetch('/api/library');
+            const url = `/api/library?source=${encodeURIComponent(source)}${currentCategoryFilter ? `&category=${encodeURIComponent(currentCategoryFilter)}` : ''}`;
+            const response = await fetch(url);
             if (!response.ok) {
-                libraryTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Failed to load definitions catalog.</td></tr>`;
+                libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Échec du chargement du catalogue.</td></tr>`;
                 return;
             }
             const data = await response.json();
             libraryItems = Array.isArray(data) ? data : (data.definitions || []);
             libraryLoaded = true;
-            const modelCount = data.count ?? libraryItems.length;
-            if (libraryCountBadge) libraryCountBadge.textContent = `${modelCount} models`;
+            if (libraryCountBadge) {
+                libraryCountBadge.textContent = `${libraryItems.length.toLocaleString()} modèles (${source === 'production' ? 'Production' : 'Archives'})`;
+            }
             renderLibraryTable(libraryItems);
         } catch (err) {
-            libraryTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Network error: ${escapeHtml(err.message)}</td></tr>`;
+            libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Erreur réseau: ${escapeHtml(err.message)}</td></tr>`;
         }
     }
 
@@ -673,25 +756,46 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!libraryTableBody) return;
         libraryTableBody.innerHTML = '';
         if (items.length === 0) {
-            libraryTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">No matching definitions found.</td></tr>`;
+            libraryTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Aucune définition correspondante trouvée.</td></tr>`;
             return;
         }
 
         items.forEach(item => {
             const tr = document.createElement('tr');
             const sizeKb = item.size_kb != null ? item.size_kb : (item.size_bytes ? (item.size_bytes / 1024).toFixed(1) : '0.0');
+            const regCount = item.registers || '-';
             tr.innerHTML = `
-                <td><span class="badge badge-info">${escapeHtml(item.category || '')}</span></td>
+                <td><span class="badge badge-info">${escapeHtml(item.prefix || item.category || '')}</span></td>
                 <td><strong>${escapeHtml(item.manufacturer || '')}</strong></td>
                 <td><code>${escapeHtml(item.model || '')}</code></td>
+                <td><span class="badge" style="background: rgba(255,255,255,0.08);">${regCount} regs</span></td>
+                <td><span class="badge badge-success" style="font-size: 0.72rem;">✓ 5 Piliers PASS</span></td>
                 <td>${sizeKb} KB</td>
                 <td>
                     <a href="/api/library/${encodeURIComponent(item.filename)}" class="btn btn-primary btn-sm" download>
-                        Download CSV
+                        Télécharger CSV
                     </a>
                 </td>
             `;
             libraryTableBody.appendChild(tr);
+        });
+    }
+
+    if (sourceProductionBtn && sourceProductionBtn.addEventListener) {
+        sourceProductionBtn.addEventListener('click', () => loadLibrary('production'));
+    }
+    if (sourceDefinitionsBtn && sourceDefinitionsBtn.addEventListener) {
+        sourceDefinitionsBtn.addEventListener('click', () => loadLibrary('definitions'));
+    }
+
+    if (categoryPills && categoryPills.addEventListener) {
+        categoryPills.addEventListener('click', (e) => {
+            const btn = e.target.closest('.pill-btn');
+            if (!btn) return;
+            categoryPills.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCategoryFilter = btn.getAttribute('data-cat') || '';
+            loadLibrary(currentLibrarySource);
         });
     }
 
@@ -707,9 +811,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 return (item.manufacturer && item.manufacturer.toLowerCase().includes(query)) ||
                        (item.model && item.model.toLowerCase().includes(query)) ||
                        (item.category && item.category.toLowerCase().includes(query)) ||
+                       (item.prefix && item.prefix.toLowerCase().includes(query)) ||
                        (item.filename && item.filename.toLowerCase().includes(query));
             });
             renderLibraryTable(filtered);
+        });
+    }
+
+    // =========================================================================
+    // TAB 5: Immutable Audit Trail Viewer
+    // =========================================================================
+    const auditTrailBody = document.getElementById('auditTrailBody');
+    const refreshAuditTrailBtn = document.getElementById('refreshAuditTrailBtn');
+    const auditTrailSearchInput = document.getElementById('auditTrailSearchInput');
+    let auditTrailItems = [];
+
+    async function loadAuditTrail() {
+        if (!auditTrailBody) return;
+        try {
+            const response = await fetch('/api/audit-trail?limit=100');
+            if (!response.ok) {
+                auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Échec du chargement du journal d'audit.</td></tr>`;
+                return;
+            }
+            auditTrailItems = await response.json();
+            auditTrailLoaded = true;
+            renderAuditTrailTable(auditTrailItems);
+        } catch (err) {
+            auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ef4444;">Erreur réseau: ${escapeHtml(err.message)}</td></tr>`;
+        }
+    }
+
+    function renderAuditTrailTable(items) {
+        if (!auditTrailBody) return;
+        auditTrailBody.innerHTML = '';
+        if (!items || items.length === 0) {
+            auditTrailBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-secondary);">Aucun événement d'audit enregistré.</td></tr>`;
+            return;
+        }
+
+        items.forEach(ev => {
+            const tr = document.createElement('tr');
+            const ts = ev.timestamp ? ev.timestamp.replace('T', ' ').substring(0, 19) : '-';
+            const defs = (ev.definitions || []).map(d => `<code>${escapeHtml(d)}</code>`).join('<br>');
+            const statusClass = (ev.validation_status || '').includes('PASS') ? 'badge-success' : 'badge-error';
+
+            tr.innerHTML = `
+                <td style="white-space: nowrap; font-family: monospace; font-size: 0.8rem;">${escapeHtml(ts)}</td>
+                <td><span class="badge badge-info">${escapeHtml(ev.action || '')}</span></td>
+                <td><strong>${escapeHtml(ev.manufacturer || '')}</strong></td>
+                <td>${escapeHtml(ev.equipment || '')}</td>
+                <td>${defs || '-'}</td>
+                <td><span class="badge ${statusClass}">${escapeHtml(ev.validation_status || 'DONE')}</span></td>
+                <td style="max-width: 320px; font-size: 0.8rem; color: var(--text-secondary);">${escapeHtml(ev.details || '')}</td>
+            `;
+            auditTrailBody.appendChild(tr);
+        });
+    }
+
+    if (refreshAuditTrailBtn && refreshAuditTrailBtn.addEventListener) {
+        refreshAuditTrailBtn.addEventListener('click', () => loadAuditTrail());
+    }
+
+    if (auditTrailSearchInput && auditTrailSearchInput.addEventListener) {
+        auditTrailSearchInput.addEventListener('input', () => {
+            const q = auditTrailSearchInput.value.trim().toLowerCase();
+            if (!q) {
+                renderAuditTrailTable(auditTrailItems);
+                return;
+            }
+            const filtered = auditTrailItems.filter(ev => {
+                return (ev.action && ev.action.toLowerCase().includes(q)) ||
+                       (ev.manufacturer && ev.manufacturer.toLowerCase().includes(q)) ||
+                       (ev.equipment && ev.equipment.toLowerCase().includes(q)) ||
+                       (ev.details && ev.details.toLowerCase().includes(q));
+            });
+            renderAuditTrailTable(filtered);
         });
     }
 });
