@@ -23,13 +23,20 @@ def test_sources_manifest_integrity():
     assert data["total_documents"] >= 4
 
     for doc in data["documents"]:
-        rel_path = Path(doc["relative_path"])
-        assert rel_path.is_file(), f"Document file missing on disk: {rel_path}"
-        actual_size = rel_path.stat().st_size
-        assert actual_size == doc["size_bytes"], f"Size mismatch for {rel_path}"
+        if "files" in doc:
+            for subfile in doc["files"]:
+                sub_path = Path(doc["relative_path"]) / subfile["filename"]
+                assert sub_path.is_file(), f"Document file missing on disk: {sub_path}"
+                assert sub_path.stat().st_size == subfile["size_bytes"], f"Size mismatch for {sub_path}"
+                assert hashlib.sha256(sub_path.read_bytes()).hexdigest() == subfile["sha256"], f"SHA mismatch for {sub_path}"
+        else:
+            rel_path = Path(doc["relative_path"])
+            assert rel_path.is_file(), f"Document file missing on disk: {rel_path}"
+            actual_size = rel_path.stat().st_size
+            assert actual_size == doc["size_bytes"], f"Size mismatch for {rel_path}"
 
-        actual_sha = hashlib.sha256(rel_path.read_bytes()).hexdigest()
-        assert actual_sha == doc["sha256"], f"SHA-256 hash mismatch for {rel_path}"
+            actual_sha = hashlib.sha256(rel_path.read_bytes()).hexdigest()
+            assert actual_sha == doc["sha256"], f"SHA-256 hash mismatch for {rel_path}"
 
 
 def test_audit_log_trail_persistence():

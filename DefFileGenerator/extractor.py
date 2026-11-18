@@ -1115,6 +1115,17 @@ class Extractor:
                                 if any(k in text_comm for k in PDF_COMM_KEYWORDS):
                                     continue
 
+                            # Skip mapping overview / routing tables (e.g. map_reg_start / map_reg_end)
+                            header_cells = " ".join(str(c) for c in table[0] if c).lower()
+                            if "map_reg_start" in header_cells and "map_reg_end" in header_cells:
+                                continue
+
+                            # Skip informational cross-reference tables (e.g. "Reference SD630 meter register from...")
+                            if len(table) <= 4:
+                                full_table_text = " ".join(str(c) for row in table for c in row if c).lower()
+                                if "reference" in full_table_text and "register from" in full_table_text:
+                                    continue
+
                             def table_generator(
                                 current_table=table,
                             ) -> Iterator[dict[str, Any]]:

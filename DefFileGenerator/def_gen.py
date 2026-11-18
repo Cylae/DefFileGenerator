@@ -236,6 +236,10 @@ _SHORTHAND_TYPE_MAP: dict[str, str] = {
     "long": "I32",
     "slong": "I32",
     "signedlong": "I32",
+    "e16": "U16",
+    "enum16": "U16",
+    "e32": "U32",
+    "enum32": "U32",
 }
 
 _CANONICAL_TYPE_SET: frozenset[str] = frozenset(
