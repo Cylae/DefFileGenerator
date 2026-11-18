@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2026-11-17T14:07:19.540251",
-  "total_documents": 4,
+  "last_updated": "2026-11-17T15:27:58.145655+00:00",
+  "total_documents": 5,
   "documents": [
     {
       "document_id": "SRC-CP-001",
@@ -113,6 +113,68 @@
         "COM_Solplanet_Ai-Logger.csv"
       ],
       "indexed_at": "2026-11-17T14:07:19.540232"
+    },
+    {
+      "document_id": "SRC-SP-002",
+      "manufacturer": "Solplanet",
+      "title": "Solplanet SunPM Real-World Telemetry Definition Profiles (Method 1 Multi-Drop)",
+      "filename": "solplanet_V1_Addr[3-9]_PM.csv",
+      "relative_path": "sources/telemetry/Solplanet/",
+      "files_count": 7,
+      "files": [
+        {
+          "filename": "solplanet_V1_Addr3_PM.csv",
+          "size_bytes": 136,
+          "sha256": "d9fa6d14d9a71a7100474b046cf7550af99ce51e4fd895663d1f0c3036864736"
+        },
+        {
+          "filename": "solplanet_V1_Addr4_PM.csv",
+          "size_bytes": 136,
+          "sha256": "d5c445eba5f864cabaac05ea6dddfbd2865de3cd2910870673a26255210d6d87"
+        },
+        {
+          "filename": "solplanet_V1_Addr5_PM.csv",
+          "size_bytes": 136,
+          "sha256": "fdc5159a3b611dd8d471386c94e911b822cec6f30a5841abb86d750711a33ac9"
+        },
+        {
+          "filename": "solplanet_V1_Addr6_PM.csv",
+          "size_bytes": 136,
+          "sha256": "e6503c4ecc4ee85fe046515674c31afd5a83c6d23917e4d7324854d4eb4ae52e"
+        },
+        {
+          "filename": "solplanet_V1_Addr7_PM.csv",
+          "size_bytes": 136,
+          "sha256": "e50404cca28850ac026de5067095f155f21c2c3de3df3116aa6f3e975d876864"
+        },
+        {
+          "filename": "solplanet_V1_Addr8_PM.csv",
+          "size_bytes": 136,
+          "sha256": "447690bd7e6b699e4a22fd4e9f80498f322d9594d5991bbab8faf4b1b9a7bf7c"
+        },
+        {
+          "filename": "solplanet_V1_Addr9_PM.csv",
+          "size_bytes": 136,
+          "sha256": "59476eca753a49f0b3a7a9919de559572625100f8503e648a655127e89398d7e"
+        }
+      ],
+      "protocol": "Modbus TCP (Ai-Logger Slave ID 239, Function Code 03)",
+      "models_covered": [
+        "Solplanet Inverter Addr3 (COM1 ID 3)",
+        "Solplanet Inverter Addr4 (COM1 ID 4)",
+        "Solplanet Inverter Addr5 (COM1 ID 5)",
+        "Solplanet Inverter Addr6 (COM1 ID 6)",
+        "Solplanet Inverter Addr7 (COM1 ID 7)",
+        "Solplanet Inverter Addr8 (COM1 ID 8)",
+        "Solplanet Inverter Addr9 (COM1 ID 9)"
+      ],
+      "addressing_formula": {
+        "base_start": 1000,
+        "step_per_inverter": 390,
+        "modbus_address_offset": 1,
+        "active_power_offset": 370
+      },
+      "indexed_at": "2026-11-17T15:27:58.145641+00:00"
     }
   ]
 }

@@ -42,7 +42,7 @@ def test_solplanet_ailogger_gateway_structure():
 
     # Header check
     header = reader[0]
-    assert header[0] == "Modbus"
+    assert header[0] in ("Modbus", "modbusTCP")
     assert header[1] == "Logger"
     assert header[2] == "Solplanet"
     assert header[3] == "Ai-Logger"
@@ -135,7 +135,7 @@ def test_solplanet_ailogger_inverter_structure():
         reader = list(csv.reader(f, delimiter=";"))
 
     header = reader[0]
-    assert header[0] == "Modbus"
+    assert header[0] in ("Modbus", "modbusTCP")
     assert header[1] == "Inverter"
     assert header[2] == "Solplanet"
     assert header[3] == "Ai-Logger"
@@ -156,3 +156,53 @@ def test_knowledge_base_contains_ailogger_variables():
     assert kb.get_learned_tag("Total Inverters Active Power") == "P_AC_TOTAL"
     assert kb.get_learned_tag("Meter Total Active Power") == "P_AC_METER"
     assert kb.get_learned_tag("Active Power Control Command (-100 to 100% Pn)") == "CMD_P_AC_SET_PERCENT"
+
+
+def test_solplanet_field_telemetry_profiles():
+    """Verify that real-world SunPM field files for Addr 3..9 match the Method 1 formula."""
+    telemetry_dir = Path("sources/telemetry/Solplanet")
+    assert telemetry_dir.is_dir(), f"Missing telemetry dir: {telemetry_dir}"
+
+    for addr in range(3, 10):
+        field_file = telemetry_dir / f"solplanet_V1_Addr{addr}_PM.csv"
+        assert field_file.is_file(), f"Missing field file: {field_file}"
+
+        with open(field_file, encoding="utf-8") as f:
+            lines = [l.strip() for l in f if l.strip()]
+
+        # Header check
+        header = lines[0].split(";")
+        assert header[0] == "modbusTCP"
+        assert header[1] == "Inverter"
+        assert header[2] == "Solplanet"
+        assert header[3] == f"Addr{addr}"
+
+        # 2 registers expected
+        assert len(lines) == 3, f"Expected 3 lines (1 header + 2 regs) in {field_file.name}"
+
+        r1 = lines[1].split(";")
+        r2 = lines[2].split(";")
+
+        # Method 1 address calculation verification
+        expected_addr_reg = str(1001 + (addr - 3) * 390)
+        expected_pwr_reg = str(1370 + (addr - 3) * 390)
+
+        # Register 1: Modbus address
+        assert r1[0] == "1"
+        assert r1[1] == "3"  # Holding register FC 3
+        assert r1[2] == expected_addr_reg
+        assert r1[3] == "U16"
+        assert r1[5] == "Modbus address"
+        assert float(r1[7]) == 1.0
+        assert r1[10] == "4"  # Action code 4
+
+        # Register 2: Active Power
+        assert r2[0] == "2"
+        assert r2[1] == "3"  # Holding register FC 3
+        assert r2[2] == expected_pwr_reg
+        assert r2[3] == "I32"
+        assert r2[5] == "Active Power"
+        assert float(r2[7]) == 1.0
+        assert r2[9] == "W"
+        assert r2[10] == "2"  # Action code 2 (Instantaneous telemetry)
+

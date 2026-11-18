@@ -71,14 +71,14 @@ def build_logger_rows() -> list[tuple]:
         (4, "1077_6", "STRING", "Master CPU Sub-Version", "FW_CPU_SUB", 1.0, 0.0, "", 4),
         (4, "1096_14", "STRING", "Slave CPU Version", "FW_SLAVE_CPU", 1.0, 0.0, "", 4),
         (4, "1103_26", "STRING", "Slave CPU Sub-Version", "FW_SLAVE_SUB", 1.0, 0.0, "", 4),
-        (4, "1116", "U16", "PV1-PV4 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1117", "U16", "PV5-PV8 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1118", "U16", "PV9-PV12 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1119", "U16", "PV13-PV16 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1120", "U16", "PV17-PV20 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1121", "U16", "PV21-PV24 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1122", "U16", "PV25-PV28 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1123", "U16", "PV29-PV32 String Current Number", "", 1.0, 0.0, "", 4),
+        (4, "1116", "U16", "PV1-PV4 String Current Number", "N_STR_1_4", 1.0, 0.0, "", 4),
+        (4, "1117", "U16", "PV5-PV8 String Current Number", "N_STR_5_8", 1.0, 0.0, "", 4),
+        (4, "1118", "U16", "PV9-PV12 String Current Number", "N_STR_9_12", 1.0, 0.0, "", 4),
+        (4, "1119", "U16", "PV13-PV16 String Current Number", "N_STR_13_16", 1.0, 0.0, "", 4),
+        (4, "1120", "U16", "PV17-PV20 String Current Number", "N_STR_17_20", 1.0, 0.0, "", 4),
+        (4, "1121", "U16", "PV21-PV24 String Current Number", "N_STR_21_24", 1.0, 0.0, "", 4),
+        (4, "1122", "U16", "PV25-PV28 String Current Number", "N_STR_25_28", 1.0, 0.0, "", 4),
+        (4, "1123", "U16", "PV29-PV32 String Current Number", "N_STR_29_32", 1.0, 0.0, "", 4),
         (4, "1300", "U16", "Grid Rated Voltage", "U_AC_NOM", 0.1, 0.0, "V", 4),
         (4, "1301", "U16", "Grid Rated Frequency", "FREQ_NOM", 0.01, 0.0, "Hz", 4),
         (4, "1302", "U32", "E-Today of Inverter", "E_DAY", 0.1, 0.0, "kWh", 4),
@@ -232,14 +232,14 @@ def build_inverter_rows() -> list[tuple]:
         (4, "1077_6", "STRING", "Master CPU Sub-Version", "FW_CPU_SUB", 1.0, 0.0, "", 4),
         (4, "1096_14", "STRING", "Slave CPU Version", "FW_SLAVE_CPU", 1.0, 0.0, "", 4),
         (4, "1103_26", "STRING", "Slave CPU Sub-Version", "FW_SLAVE_SUB", 1.0, 0.0, "", 4),
-        (4, "1116", "U16", "PV1-PV4 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1117", "U16", "PV5-PV8 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1118", "U16", "PV9-PV12 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1119", "U16", "PV13-PV16 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1120", "U16", "PV17-PV20 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1121", "U16", "PV21-PV24 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1122", "U16", "PV25-PV28 String Current Number", "", 1.0, 0.0, "", 4),
-        (4, "1123", "U16", "PV29-PV32 String Current Number", "", 1.0, 0.0, "", 4),
+        (4, "1116", "U16", "PV1-PV4 String Current Number", "N_STR_1_4", 1.0, 0.0, "", 4),
+        (4, "1117", "U16", "PV5-PV8 String Current Number", "N_STR_5_8", 1.0, 0.0, "", 4),
+        (4, "1118", "U16", "PV9-PV12 String Current Number", "N_STR_9_12", 1.0, 0.0, "", 4),
+        (4, "1119", "U16", "PV13-PV16 String Current Number", "N_STR_13_16", 1.0, 0.0, "", 4),
+        (4, "1120", "U16", "PV17-PV20 String Current Number", "N_STR_17_20", 1.0, 0.0, "", 4),
+        (4, "1121", "U16", "PV21-PV24 String Current Number", "N_STR_21_24", 1.0, 0.0, "", 4),
+        (4, "1122", "U16", "PV25-PV28 String Current Number", "N_STR_25_28", 1.0, 0.0, "", 4),
+        (4, "1123", "U16", "PV29-PV32 String Current Number", "N_STR_29_32", 1.0, 0.0, "", 4),
         (4, "1300", "U16", "Grid Rated Voltage", "U_AC_NOM", 0.1, 0.0, "V", 4),
         (4, "1301", "U16", "Grid Rated Frequency", "FREQ_NOM", 0.01, 0.0, "Hz", 4),
         (4, "1302", "U32", "E-Today of Inverter", "E_DAY", 0.1, 0.0, "kWh", 4),
@@ -338,8 +338,11 @@ def deploy_redundant_copies(filename: str, csv_content: str):
     for folder in folders:
         dest = WORKSPACE_DIR / folder / filename
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(csv_content, encoding="utf-8")
-        print(f"Deployed -> {dest}")
+        try:
+            dest.write_text(csv_content, encoding="utf-8")
+            print(f"Deployed -> {dest}")
+        except PermissionError:
+            print(f"Warning: {dest} is locked by an external application (e.g. Excel). Close it to allow overwrite.")
 
 
 def enrich_knowledge_base(rows: list[tuple]):

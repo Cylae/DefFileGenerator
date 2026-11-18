@@ -1,0 +1,3 @@
+modbusTCP;Inverter;Solplanet;Addr9
+1;3;3341;U16;;Modbus address;;1.000000;0.000000;;4
+2;3;3710;I32;;Active Power;;1.000000;0.000000;W;2
