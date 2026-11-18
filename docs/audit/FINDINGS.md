@@ -352,3 +352,23 @@
   4. Converted `test_dyness_definitions.py` to use `tempfile.TemporaryDirectory` for all generated output, ensuring strict test hermeticity.
 - **Status**: RESOLVED
 
+### FIND-029: SMA STP-X Semantic Inference Gaps, Accent Normalization Fragility, and Definition Incompleteness
+- **Severity**: HIGH
+- **Component**: Semantic Tagging, Accent Normalization & Definition Library (`DefFileGenerator/knowledge_miner.py`, `production/INV_SMA_STP_X.csv`, `Definitions/INV_SMA_STP_X.csv`, `DefFileGenerator/dataset_knowledge.json`)
+- **Trigger**: User request to retrain on SMA STP-X definitions (`production/INV_SMA_STP_X.csv`).
+- **Root Cause**:
+  1. `clean_variable_key` did not strip Unicode combining characters/accents (`réseau` vs `reseau`, `température` vs `temperature`, `réactive` vs `reactive`), causing learned vocabulary fragmentation.
+  2. Phase-to-phase AC voltage regexes failed to recognize French conjunctions/prepositions like `entre phase L1 et L2`, `phase L2 contre L3`, and `phase L3 contre L1`, falling back to phase-to-neutral tags (`U_AC_1`, `U_AC_2`).
+  3. Per-phase active power `Puissance L1/L2/L3` only matched `"puissance active"`, ignoring SMA's French `Puissance L1/L2/L3`.
+  4. Grid current `Courant du reseau` and phase currents `Courant du reseau phase L1_0` lacked regex handling for `courant du reseau` and `_0`/`_1` index suffixes.
+  5. Internal temperature `Temperature interieure` lacked recognition for `interieure`/`intérieure`.
+  6. `production/INV_SMA_STP_X.csv` and `Definitions/INV_SMA_STP_X.csv` were incomplete, containing only 7 tags instead of the full set of 37 canonical SunPM telemetry tags.
+- **Remediation**:
+  1. Added `unicodedata.normalize("NFKD", ...)` accent stripping in `clean_variable_key`.
+  2. Enhanced `infer_sunpm_tag` with French phase-to-phase (`l1 et l2`, `l2 contre l3`, `l3 contre l1`), grid current (`courant du reseau`, `l1_0/l1_1`), per-phase active power (`Puissance L1/L2/L3`), internal temperature (`interieure`/`intérieure`), and intermediate circuit voltage (`circuit intermediaire`).
+  3. Synchronized all 37 unique canonical SunPM tags across `production/INV_SMA_STP_X.csv` and `Definitions/INV_SMA_STP_X.csv` with strict UTF-8 without BOM.
+  4. Merged 19 learned SMA STP-X mappings into `dataset_knowledge.json` (now totaling 36,282 mappings).
+  5. Added comprehensive unit test `DefFileGenerator/tests/test_sma_stpx_learning.py` (4 tests, 66 subtests, all passing).
+- **Status**: RESOLVED
+
+

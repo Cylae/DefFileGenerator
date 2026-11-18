@@ -19,6 +19,7 @@ import csv
 import json
 import os
 import re
+import unicodedata
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -399,6 +400,9 @@ def clean_variable_key(name: str) -> str:
     if not name:
         return ""
     n = name.strip().lower()
+    # Normalize accents (e.g., 'réseau' -> 'reseau', 'température' -> 'temperature')
+    n = unicodedata.normalize("NFKD", n)
+    n = "".join(c for c in n if not unicodedata.combining(c))
     # Strip equipment prefixes like '1#PCS - ', 'INV_01 - '
     n = re.sub(r"^[0-9]+#\s*", "", n)
     n = re.sub(r"^[a-z0-9_-]+\s*-\s*", "", n)
@@ -560,6 +564,10 @@ def train_knowledge_from_definitions(
             Path("Definitions"),
             Path(__file__).parent.parent / "Definitions",
             Path(env_share),
+            Path("production"),
+            Path(__file__).parent.parent / "production",
+            Path("tagged_definitions"),
+            Path(__file__).parent.parent / "tagged_definitions",
             Path("generated_definitions"),
             Path(__file__).parent.parent / "generated_definitions",
         ]
@@ -912,6 +920,13 @@ def infer_sunpm_tag(
                         "line-line",
                         "line to line",
                         "entre phases",
+                        "entre phase",
+                        "l1 et l2",
+                        "l2 et l3",
+                        "l3 et l1",
+                        "l2 contre l3",
+                        "l3 contre l1",
+                        "l1 contre l2",
                         "composée",
                         "composee",
                     )
@@ -1108,29 +1123,83 @@ def infer_sunpm_tag(
 
     # 1. AC Voltage (Phase to Phase: U_AC_L1L2, U_AC_L2L3, U_AC_L3L1)
     if any(k in n_lower for k in ("voltage", "tension", "u_", "v_")) and not any(
-        k in n_lower for k in ("dc", "mppt", "string", "bus")
+        k in n_lower for k in ("dc", "mppt", "string", "bus", "intermediaire", "intermédiaire")
     ):
         if any(
             p in n_lower
-            for p in ("l1-l2", "l1l2", "phase a to b", "phase a-b", "phase a to phase b", "uab")
+            for p in (
+                "l1-l2",
+                "l1l2",
+                "phase a to b",
+                "phase a-b",
+                "phase a to phase b",
+                "uab",
+                "l1 et l2",
+                "l1 à l2",
+                "l1 a l2",
+                "l1/l2",
+                "l1 contre l2",
+                "phase l1 et l2",
+            )
+        ) or re.search(
+            r"\b(?:l1\s*(?:et|-|_|/|a|à|contre)\s*l2|phase\s*[1a]\s*(?:et|-|_|/|a|à|contre)\s*(?:phase\s*)?[2b])\b",
+            n_lower,
         ):
             return "U_AC_L1L2"
         if any(
             p in n_lower
-            for p in ("l2-l3", "l2l3", "phase b to c", "phase b-c", "phase b to phase c", "ubc")
+            for p in (
+                "l2-l3",
+                "l2l3",
+                "phase b to c",
+                "phase b-c",
+                "phase b to phase c",
+                "ubc",
+                "l2 et l3",
+                "l2 à l3",
+                "l2 a l3",
+                "l2/l3",
+                "l2 contre l3",
+                "phase l2 et l3",
+            )
+        ) or re.search(
+            r"\b(?:l2\s*(?:et|-|_|/|a|à|contre)\s*l3|phase\s*[2b]\s*(?:et|-|_|/|a|à|contre)\s*(?:phase\s*)?[3c])\b",
+            n_lower,
         ):
             return "U_AC_L2L3"
         if any(
             p in n_lower
-            for p in ("l3-l1", "l3l1", "phase c to a", "phase c-a", "phase c to phase a", "uca")
+            for p in (
+                "l3-l1",
+                "l3l1",
+                "phase c to a",
+                "phase c-a",
+                "phase c to phase a",
+                "uca",
+                "l3 et l1",
+                "l3 à l1",
+                "l3 a l1",
+                "l3/l1",
+                "l3 contre l1",
+                "phase l3 et l1",
+            )
+        ) or re.search(
+            r"\b(?:l3\s*(?:et|-|_|/|a|à|contre)\s*l1|phase\s*[3c]\s*(?:et|-|_|/|a|à|contre)\s*(?:phase\s*)?[1a])\b",
+            n_lower,
         ):
             return "U_AC_L3L1"
         # Phase to Neutral: U_AC_1, U_AC_2, U_AC_3
-        if re.search(r"\b(?:l1-n|l1_n|phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ua)\b", n_lower):
+        if re.search(
+            r"\b(?:l1-n|l1_n|phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ua)\b|\bl1_\d+\b", n_lower
+        ):
             return "U_AC_1"
-        if re.search(r"\b(?:l2-n|l2_n|phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ub)\b", n_lower):
+        if re.search(
+            r"\b(?:l2-n|l2_n|phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ub)\b|\bl2_\d+\b", n_lower
+        ):
             return "U_AC_2"
-        if re.search(r"\b(?:l3-n|l3_n|phase\s*[c3]|line\s*[c3])\b|\b(?:l3|uc)\b", n_lower):
+        if re.search(
+            r"\b(?:l3-n|l3_n|phase\s*[c3]|line\s*[c3])\b|\b(?:l3|uc)\b|\bl3_\d+\b", n_lower
+        ):
             return "U_AC_3"
         # Total / Line-to-Line / Grid AC Voltage
         if re.search(r"\b(?:grid\s+voltage|tension\s+r[eé]seau|ac\s+voltage|vac|uac)\b", n_lower):
@@ -1153,18 +1222,19 @@ def infer_sunpm_tag(
             "bat",
         )
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ia|iac1)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ia|iac1)\b|\bl1_\d+\b", n_lower):
             return "I_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ib|iac2)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ib|iac2)\b|\bl2_\d+\b", n_lower):
             return "I_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|ic|iac3)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|ic|iac3)\b|\bl3_\d+\b", n_lower):
             return "I_AC_3"
         if (
             re.search(
-                r"\b(?:total|sum|ac\s+current|courant\s+ac\s+total|line\s+current|iac|i_ac|rmsac|is)\b",
+                r"\b(?:total|sum|ac\s+current|courant\s+ac\s+total|line\s+current|iac|i_ac|rmsac|is|courant\s+(?:du\s+)?r[eé]seau)\b",
                 n_lower,
             )
             or "linecurrent" in n_lower
+            or n_lower.strip() in ("courant", "courant ac", "current", "grid current")
         ):
             return "I_AC"
 
@@ -1189,17 +1259,24 @@ def infer_sunpm_tag(
 
     # 4. Active Power (P_AC_1, P_AC_2, P_AC_3, P_AC)
     if re.search(
-        r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow|\bp_total\b|\btotal_power\b",
+        r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow|\bp_total\b|\btotal_power\b|\bpuissance\s*(?:l[123]|phase\s*[123abc])\b",
         n_lower,
     ) or (
         equipment_type == "Inverter"
-        and n_lower.strip() in ("power", "power %", "active power", "output power")
+        and n_lower.strip()
+        in ("power", "power %", "active power", "output power", "puissance", "puissance ac")
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|pac1|activepow1)\b", n_lower):
+        if re.search(
+            r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|pac1|activepow1)\b|\bl1_\d+\b", n_lower
+        ):
             return "P_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|pac2|activepow2)\b", n_lower):
+        if re.search(
+            r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|pac2|activepow2)\b|\bl2_\d+\b", n_lower
+        ):
             return "P_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|pac3|activepow3)\b", n_lower):
+        if re.search(
+            r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|pac3|activepow3)\b|\bl3_\d+\b", n_lower
+        ):
             return "P_AC_3"
         return "P_AC"
 
@@ -1302,7 +1379,12 @@ def infer_sunpm_tag(
             return f"U_DC_STRING_{idx}"
 
     # 12. DC Bus Voltage / Current / Power
-    if "dc" in n_lower or "bus" in n_lower:
+    if (
+        "dc" in n_lower
+        or "bus" in n_lower
+        or "circuit intermediaire" in n_lower
+        or "circuit intermédiaire" in n_lower
+    ):
         if any(k in n_lower for k in ("voltage", "tension", "udc", "vdc")):
             return "U_DC"
         if any(k in n_lower for k in ("current", "courant", "idc")):
@@ -1323,6 +1405,8 @@ def infer_sunpm_tag(
             for k in (
                 "internal",
                 "interne",
+                "interieure",
+                "intérieure",
                 "cabinet",
                 "inverter",
                 "heatsink",
