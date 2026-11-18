@@ -489,6 +489,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const discoveryQuickPills = document.getElementById('discoveryQuickPills');
+    if (discoveryQuickPills && discoveryQuickPills.addEventListener) {
+        discoveryQuickPills.addEventListener('click', (e) => {
+            const btn = e.target.closest ? e.target.closest('.pill-btn') : null;
+            if (!btn) return;
+            const q = btn.getAttribute ? btn.getAttribute('data-query') : null;
+            if (q && discoveryQueryInput) {
+                discoveryQueryInput.value = q;
+                if (discoveryQueryInput.focus) discoveryQueryInput.focus();
+            }
+        });
+    }
+
     if (discoveryQueryInput && discoveryQueryInput.addEventListener) {
         discoveryQueryInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {

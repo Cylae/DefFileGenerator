@@ -899,6 +899,90 @@ def batch_command(args: argparse.Namespace) -> None:
         sys.exit(1)
 
 
+def discover_command(args: argparse.Namespace) -> None:
+    """
+    Subcommand handler for 'discover': autonomously discovers manufacturer Modbus docs,
+    extracts registers, normalizes semantics, validates against 5 Pillars, and exports target CSV.
+
+    Args:
+        args: Parsed command line arguments.
+    """
+    import asyncio
+
+    from DefFileGenerator.discovery.models import ExportTarget
+    from DefFileGenerator.discovery.orchestrator import WorkflowOrchestrator
+
+    orchestrator = WorkflowOrchestrator()
+    target_enum = (
+        ExportTarget.WEBDYN_SUNPM
+        if getattr(args, "target", "webdyn_sunpm") != "webdyn_classic"
+        else ExportTarget.WEBDYN_CLASSIC
+    )
+
+    override_bytes: bytes | None = None
+    override_filename = "manual.pdf"
+    doc_arg = getattr(args, "document", None)
+    if doc_arg:
+        doc_path = Path(doc_arg)
+        if not doc_path.is_file():
+            logging.error(f"Specified fallback document does not exist: {doc_arg}")
+            sys.exit(1)
+        override_bytes = doc_path.read_bytes()
+        override_filename = doc_path.name
+
+    logging.info(f"Starting autonomous Modbus discovery for query: '{args.query}'")
+    result = asyncio.run(
+        orchestrator.run(
+            query=args.query,
+            target=target_enum,
+            enable_ocr=getattr(args, "ocr", True),
+            override_file_bytes=override_bytes,
+            override_filename=override_filename,
+        )
+    )
+
+    if not result.success:
+        logging.error(
+            f"Autonomous discovery failed [{result.status.value}]: {result.error_message}"
+        )
+        sys.exit(1)
+
+    # Determine output path
+    output_path = getattr(args, "output", None)
+    if not output_path:
+        mfg = result.identity.manufacturer if result.identity else "Generic"
+        mdl = result.identity.exact_model if result.identity else "Equipment"
+        cat = result.model.category if result.model else "Inverter"
+        prefix = (
+            "MET"
+            if cat == "Meter"
+            else ("BAT" if cat == "Battery" else ("COM" if cat == "Logger" else "INV"))
+        )
+        clean_mfg = re.sub(r"[^a-zA-Z0-9_-]", "_", mfg)
+        clean_mdl = re.sub(r"[^a-zA-Z0-9_-]", "_", mdl)
+        output_path = f"{prefix}_{clean_mfg}_{clean_mdl}.csv"
+
+    if os.path.exists(output_path) and not getattr(args, "force", False):
+        logging.error(
+            f"Output file already exists: '{output_path}'. Use --force to overwrite."
+        )
+        sys.exit(1)
+
+    with staged_text_output(output_path, encoding="utf-8") as f:
+        f.write(result.csv_content or "")
+
+    reg_count = len(result.model.registers) if result.model else 0
+    logging.info(
+        f"Definition successfully discovered and certified [{reg_count} registers] -> {output_path}"
+    )
+
+    report_path = getattr(args, "report", None)
+    if report_path and result.evidence_report:
+        with staged_text_output(report_path, encoding="utf-8") as f:
+            f.write(result.evidence_report)
+        logging.info(f"Cryptographic evidence ledger saved to: {report_path}")
+
+
 def report_command(args: argparse.Namespace) -> None:
     """
     Subcommand handler for 'report': generates comprehensive technical reports in Markdown/JSON.
@@ -991,6 +1075,47 @@ def _run_cli(argv: list[str] | None = None) -> None:
     # GUI
     parser_gui = subparsers.add_parser("gui", help="Launch Windows 11 Desktop Application")
     add_common_flags(parser_gui)
+
+    # Discover Subparser
+    parser_discover = subparsers.add_parser(
+        "discover",
+        help="Autonomously discover Modbus documentation online and generate certified definition",
+    )
+    add_common_flags(parser_discover)
+    parser_discover.add_argument(
+        "query",
+        help="Equipment reference query (e.g. 'Huawei SUN2000-100KTL', 'Sungrow SG110CX')",
+    )
+    parser_discover.add_argument("-o", "--output", help="Output definition CSV path")
+    parser_discover.add_argument(
+        "--document",
+        help="Manual source document fallback (PDF/Excel/CSV) if offline",
+    )
+    parser_discover.add_argument(
+        "--target",
+        choices=["webdyn_sunpm", "webdyn_classic"],
+        default="webdyn_sunpm",
+        help="Target output format (default: webdyn_sunpm)",
+    )
+    parser_discover.add_argument(
+        "--ocr",
+        action="store_true",
+        default=True,
+        help="Enable bounded OCR fallback for scanned PDFs",
+    )
+    parser_discover.add_argument(
+        "--no-ocr",
+        action="store_false",
+        dest="ocr",
+        help="Disable OCR fallback",
+    )
+    parser_discover.add_argument(
+        "--report",
+        help="Path to save cryptographic evidence ledger Markdown",
+    )
+    parser_discover.add_argument(
+        "--force", action="store_true", help="Force overwrite output file"
+    )
 
     # Validate
     parser_validate = subparsers.add_parser(
@@ -1230,7 +1355,9 @@ def _run_cli(argv: list[str] | None = None) -> None:
         ):
             logging.warning("--sheet is only applicable for Excel files. Ignoring.")
 
-    if args.command == "extract":
+    if args.command == "discover":
+        discover_command(args)
+    elif args.command == "extract":
         extract_command(args)
     elif args.command == "validate":
         validate_command(args)

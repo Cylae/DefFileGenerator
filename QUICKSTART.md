@@ -27,6 +27,7 @@
   - [Example 4: Semantic SunPM Tagging & Enrichment](#example-4-semantic-sunpm-tagging--enrichment)
   - [Example 5: Technical Audit & Markdown Reporting](#example-5-technical-audit--markdown-reporting)
   - [Example 6: High-Throughput Batch Processing](#example-6-high-throughput-batch-processing)
+  - [Example 7: Autonomous Online Modbus Discovery (CLI & Studio Web)](#example-7-autonomous-online-modbus-discovery-cli--studio-web)
 - [🔍 How Conversion Works Under the Hood](#-how-conversion-works-under-the-hood)
 - [🛠️ Command-Line Options Reference](#️-command-line-options-reference)
 - [🧪 Testing Immediately with Bundled Sample Files](#-testing-immediately-with-bundled-sample-files)
@@ -187,6 +188,29 @@ This runs parallel extraction, applies SunPM canonical tags, validates every gen
 
 ---
 
+### Example 7: Autonomous Online Modbus Discovery (CLI & Studio Web)
+
+To automatically discover Modbus documentation online from a plain equipment reference, extract register tables, normalize protocol addresses, and generate a certified definition file:
+
+```bash
+# 1. Autonomous lookup, online acquisition, and 5-Pillar certified export:
+deffilegen discover "Huawei SUN2000-100KTL" -o "INV_Huawei_SUN2000-100KTL.csv" --report "huawei_evidence.md"
+
+# 2. Manual local document override fallback with bounded OCR:
+deffilegen discover "Solplanet Ai-Logger" --document "sources/Ailogger_manual.pdf" -o "COM_Solplanet_Ai-Logger.csv"
+
+# 3. Export targeting Webdyn Classic instead of SunPM:
+deffilegen discover "Sungrow SG110CX" --target webdyn_classic -o "INV_Sungrow_SG110CX_classic.csv"
+```
+
+You can also run the **WebdynSunPM Studio** web interface:
+```bash
+uvicorn web.app:app --port 8000
+```
+Then navigate to `http://localhost:8000`, click on **🌐 Découverte Autonome**, type your equipment model (or click one of the quick suggestion pills), and generate verified definitions with full cryptographic evidence in one click!
+
+---
+
 ## 🔍 How Conversion Works Under the Hood
 
 ```text
@@ -231,14 +255,27 @@ deffilegen [SUBCOMMAND] [OPTIONS]
 | Subcommand | Description |
 |---|---|
 | `run` | End-to-end extraction and Webdyn definition generation in one step |
+| `discover` | Autonomously discovers Modbus docs online and generates certified definitions |
 | `extract` | Parses input document into an intermediate tabular register CSV |
 | `generate` | Converts an intermediate register CSV into a validated Webdyn definition CSV |
 | `validate` | Validates a Webdyn definition CSV for compliance and address collisions |
 | `tag` | Enriches and normalizes official SunPM canonical tags |
 | `audit` | Comprehensive semantic audit of definition file(s) with optional `--fix` |
 | `report` | Generates structured Markdown and JSON technical quality reports |
+| `batch` | High-throughput multi-threaded conversion of directories of datasheets |
 | `train` | Trains knowledge base from a directory of definition files |
 | `gui` | Launches the native Windows 11 desktop application |
+
+### Primary Options for `deffilegen discover`:
+| Option | Default | Description |
+|---|---|---|
+| `query` | *(required)* | Equipment reference query (e.g. `"Huawei SUN2000-100KTL"`, `"Sungrow SG110CX"`) |
+| `-o, --output` | Auto-generated | Target output definition CSV path |
+| `--document` | `None` | Optional local file fallback override (PDF/Excel/CSV) if doc is offline |
+| `--target` | `webdyn_sunpm` | Target format (`webdyn_sunpm` standard or `webdyn_classic`) |
+| `--ocr` / `--no-ocr` | `--ocr` | Enable or disable bounded OCR fallback for scanned PDF documents |
+| `--report` | `None` | Path to save cryptographic evidence ledger in Markdown format |
+| `--force` | `false` | Force overwrite output CSV if destination file already exists |
 
 ### Primary Options for `deffilegen run`:
 | Option | Default | Description |
