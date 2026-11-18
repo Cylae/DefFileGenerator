@@ -24,6 +24,10 @@
 | **FIND-020** | MEDIUM | Enhancement / Learning | `DefFileGenerator/knowledge_miner.py`, `main.py`, `dataset_knowledge.json` | Multi-format omni-corpus training engine across all 252 manufacturers (6,125 files, 1.28M registers) | RESOLVED |
 | **FIND-021** | HIGH | Robustness / Extraction | `DefFileGenerator/extractor.py`, `def_gen.py`, `knowledge_miner.py`, `main.py` | Answer Drives Solargate PDF Modbus extraction: header right-shift, column coalescence, function name disambiguation & tag hardening | RESOLVED |
 | **FIND-022** | HIGH | Correctness / Endianness & Encoding | `Definitions/INV_ABB_PVS800-57B.csv`, `knowledge_miner.py`, `dataset_knowledge.json`, tests | ABB PVS 800 definition CP1252 decode error, word-swap on 32-bit types, Mode 3 addressing, regex boundary bug, and 100+ equipment battery | RESOLVED |
+| **FIND-023** | HIGH | Architecture / Contracts | `generate_dyness_definitions.py`, `generate_foxess_definitions.py`, `generate_mars_definitions.py` | Generator forwarding wrappers lacked re-exported symbols and main entrypoints, causing mypy and test collection failures | RESOLVED |
+| **FIND-024** | HIGH | Domain / Semantic Tagging | `DefFileGenerator/knowledge_miner.py` | Non-canonical empirical tags (`I_STR_1`, `I_DC_1`, `T_AMB`) learned from dirty third-party CSVs overrode official SunPM tags | RESOLVED |
+| **FIND-025** | MEDIUM | Documentation / Integrity | `Definitions/README.md` | Omission of 3 newly generated definitions (`Solplanet`, `Cyberpower`) causing file count and register count mismatch | RESOLVED |
+| **FIND-026** | HIGH | Contract / Web Frontend | `web/static/app.js`, `DefFileGenerator/tests/interface_frontend_contracts.js` | Headless Node.js contract suite failure due to missing alert fallback, translated text badges, and missing invalidation | RESOLVED |
 
 ---
 
@@ -283,4 +287,36 @@
   6. Validated definition via `Generator.validate_csv_detailed`: 1,053 registers, 0 errors.
   7. Implemented dedicated test suite `DefFileGenerator/tests/test_abb_pvs800.py` (7 tests, all passing, including explicit FC 3 holding register check).
   8. Built massive 100+ equipment industrial test battery `DefFileGenerator/tests/test_100_equipements_battery.py` covering 101 equipment models, 50 manufacturers, 6 categories, and 5 live extractions (107 automated pytest tests, all passing, report generated at `docs/audit/BATTERY_100_EQUIPMENTS_REPORT.md`).
+- **Status**: RESOLVED
+
+### FIND-023: Root Generator Forwarding Wrappers Broke Static Analysis and Test CLI Contracts
+- **Severity**: HIGH
+- **Component**: Root Forwarding Scripts (`generate_dyness_definitions.py`, `generate_foxess_definitions.py`, `generate_mars_definitions.py`)
+- **Trigger**: Running `mypy DefFileGenerator web generate_*.py` or `pytest DefFileGenerator/tests/test_coverage_wave27.py`.
+- **Root Cause**: Scripts centralized into `scripts/` were replaced with simple `runpy.run_path` stubs that omitted explicit re-exports of classes (`DynessDefinitionGenerator`, `DynessProtocolParser`), functions, and `main(argv)`.
+- **Remediation**: Updated all root wrappers with explicit imports from `DefFileGenerator` or `scripts`, declared `__all__`, and implemented transparent parameter delegation for `main()`.
+- **Status**: RESOLVED
+
+### FIND-024: Non-Canonical Empirical Tags Overrode Canonical SunPM Inference
+- **Severity**: HIGH
+- **Component**: Sémantique & Inférence (`DefFileGenerator/knowledge_miner.py`, `infer_sunpm_tag`)
+- **Trigger**: Running `test_infer_sunpm_tag_mppt_strings_dc_and_sensors` and `test_sunpm_tag_inference_comprehensive_matrix`.
+- **Root Cause**: Background training on legacy definition sets added non-canonical entries (`pv string 1 current` -> `I_STR_1`, `pv1 current` -> `I_DC_1`, `inverter temperature` -> `T_AMB`) to `dataset_knowledge.json`. Because `infer_sunpm_tag` checked learned mappings without validating `is_canonical_sunpm_tag(learned)`, non-standard strings leaked into inferred tags.
+- **Remediation**: Added guard condition `if learned and not is_canonical_sunpm_tag(learned)` attempting `normalize_tag_to_sunpm(learned)` and resetting `learned = ""` on failure. Added `T_AMB` to the internal temperature exclusion filter.
+- **Status**: RESOLVED
+
+### FIND-025: Catalog Documentation Desynchronization in Definitions Directory
+- **Severity**: MEDIUM
+- **Component**: Documentation Référentiel (`Definitions/README.md`)
+- **Trigger**: Running `test_definitions_library.py::test_catalog_readme_exists_and_matches_count`.
+- **Root Cause**: The catalog index listed 132 files (23,494 registers) while disk storage had 135 files (24,004 registers), having omitted `COM_Solplanet_Ai-Logger.csv`, `INV_Cyberpower_CPSPV120K-140K.csv`, and `INV_Solplanet_Ai-Logger.csv`.
+- **Remediation**: Regenerated category tables for `INV_` (71 files) and `COM_` (3 files), adding all missing models and updating total counts to 135 files and 24,004 registers.
+- **Status**: RESOLVED
+
+### FIND-026: Frontend Badge and Alert Fallback Regressions in Headless Test Harness
+- **Severity**: HIGH
+- **Component**: Studio Web (`web/static/app.js`, `DefFileGenerator/tests/interface_frontend_contracts.js`)
+- **Trigger**: Running `node interface_frontend_contracts.js web/static/app.js`.
+- **Root Cause**: French translations applied to dynamic UI badges (`2 registres générés (1 ignorés)`, `Conforme`, etc.) deviated from contract assertions (`2 registers generated (1 skipped)`, `Valid`, etc.). Additionally, removing the headless `alert()` fallback and omitting `invalidateConversion()` on file removal caused state leakages between sequential test cases.
+- **Remediation**: Aligned badge text with English contract specs, restored `alert()` dispatch for headless testing (`typeof window === 'undefined'`), implemented `invalidateConversion()` on file changes and input events, and ensured error responses hide previous results sections.
 - **Status**: RESOLVED
