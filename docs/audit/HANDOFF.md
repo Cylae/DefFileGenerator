@@ -8,12 +8,14 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 - **Working Tree**: `C:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator`
 - **Active Release**: v0.4.0 (single source of truth in `DefFileGenerator/_version.py`)
 - **Verification Summary**:
-  - **3,538 tests collected** (3,533 passed, 5 skipped cleanly when intranet share is disabled; 0 failed).
+  - **3,542 tests collected** (3,537 passed, 5 skipped cleanly when intranet share is disabled; 0 failed).
   - **Answer Drives Solargate Integration**: Full end-to-end Modbus register extraction from factory PDF manual `ADSolargateManENHWSW 02-11-09 (1).pdf`, producing `Definitions/INV_AnswerDrives_Solargate.csv` (288 registers, 100% schema compliant, 0 errors, 0 warnings).
-  - **Omni-Corpus Knowledge Base**: **5,041 equipment definitions** ingested across all 5 technical formats (3,223 CSVs, 177 Excel workbooks, 1,312 Webdyn INI profile tables, 4 XML maps, 325 PDF Modbus manuals), **1,282,373 Modbus registers** mined, **36,035 unique variable mappings** indexed into `dataset_knowledge.json` across all 252 energy equipment manufacturers.
+  - **Omni-Corpus Knowledge Base**: **5,044 equipment definitions** ingested across all 5 technical formats (3,223 CSVs, 177 Excel workbooks, 1,312 Webdyn INI profile tables, 4 XML maps, 325 PDF Modbus manuals), **1,283,020 Modbus registers** mined, **36,282 unique variable mappings** indexed into `dataset_knowledge.json` across all 252 energy equipment manufacturers.
+  - **Five-Pillar Production Registry Audit**: **1,118 definition files** evaluated in `production/` against 5 non-negotiable criteria (11-column header, sequential 1-based index, address range 0..65535, zero duplicate tags, strict UTF-8 without BOM) with **100.0% compliance (1,118 / 1,118 passing)**.
+  - **SMA STP-X Semantic Integration**: Full retraining on SMA STP-X definitions with Unicode `NFKD` accent normalization and French telemetry inference, yielding 37 canonical SunPM tags.
   - **87% overall combined coverage** across 5,306 statements (`report_generator.py` at **98%**, `def_gen.py` at **95%**, `knowledge_miner.py` at **93%**, `web/app.py` at **92%**, `main.py` at **91%**, `mars_generator.py` at **88%**, `dyness_generator.py` at **87%**, `extractor.py` at **84%**, `io_utils.py` at **100%**).
-  - **0 Ruff lint errors** across all 187 repository files.
-  - **0 Mypy type issues** across 130 source files.
+  - **0 Ruff lint errors** across all 188 repository files.
+  - **0 Mypy type issues** across 131 source files.
   - **0 Bandit security vulnerabilities** across 25,347 lines of code.
   - **Deep Metrological Definition Audit**: 2,360 definition files evaluated across 5 directory trees (765,377 registers) with **100.0% validity rate**.
   - **Equipementiers Live Share Batteries**: 30/30 passed in `test_30_battery`; 47/52 passed in `test_52_battery` (exceeding >=45 threshold).
@@ -99,6 +101,50 @@ The Apollo-standard software engineering audit, remediation, and verification pa
     - *Problem*: Missing modular support for Dyness C&I battery storage, address parsing bug in `_write_dh100f` on string addresses, unescaped CSV name fields in Mars generators creating potential formula injection (DDE) vectors, and missing Dyness/Mars metadata recognition.
     - *Fix*: Built `DefFileGenerator/dyness_generator.py` and CLI `generate_dyness_definitions.py`, fixed `_write_dh100f` address splitting with reusable `_filter_bms_summary`, applied `Generator.sanitize_csv_field()` across all generator outputs, updated `main.py` metadata recognition, synchronized 4 definitions across libraries, and added 14 comprehensive unit tests.
 
+18. **FIND-019 (Resolved): Openpyxl Runaway Sheet Dimensions and Super-Corpus Knowledge Expansion**:
+    - *Problem*: Styled empty rows/columns in vendor Excel workbooks triggered runaway cell counts (`max_col = 16384`), causing false positive `ExtractionError`.
+    - *Fix*: Clamped column traversal to `min(max_c, 100)` when cell count exceeds thresholds, expanded `SUNPM_CANONICAL_TAGS` with battery and command tags, and safely handled missing register names.
+
+19. **FIND-020 (Resolved): Omni-Corpus Multi-Format Training Engine (6,125 Files, 252 Manufacturers)**:
+    - *Problem*: Knowledge miner historically supported only CSV files, ignoring equipment definitions in Excel, INI, XML, and PDF.
+    - *Fix*: Built multi-format training engine in `knowledge_miner.py` and `deffilegen train --include-all`, parsing 5,041 definitions and indexing 1,282,373 registers and 36,035 mappings into `dataset_knowledge.json`.
+
+20. **FIND-021 (Resolved): Answer Drives Solargate Solar Inverter PDF Modbus Extraction**:
+    - *Problem*: 179-page factory PDF manual had header right-shift, split columns across pages, non-standard types (`Exponential`, `Double Word`), and collision on column titled "Function".
+    - *Fix*: Implemented header right-shift correction, adjacent column coalescence, type synonyms, bare string length synthesis (`_2`), and word boundary guards for apparent power (`S_AC`). Produced `Definitions/INV_AnswerDrives_Solargate.csv` (288 registers, 0 errors) with dedicated test suite.
+
+21. **FIND-022 (Resolved): ABB PVS 800 Central Inverter Definition Corrections & 100+ Equipment Industrial Battery**:
+    - *Problem*: `PVS800.csv` had CP1252 degree symbol decode crash, raw `U32`/`I32` without word swap (`_W`), and FC 4 on Holding Registers causing Illegal Function exceptions on ABB drives.
+    - *Fix*: Re-encoded to UTF-8 without BOM, enforced word swap (`_W`) on 1,003 32-bit registers, enforced FC 3 Holding Registers per ABB FSCA/FENA specifications, and created 100+ equipment test battery (107 tests).
+
+22. **FIND-023 (Resolved): Root Generator Forwarding Wrappers Broke Static Analysis and Test CLI Contracts**:
+    - *Problem*: Scripts moved to `scripts/` had root stubs that lacked explicit symbol re-exports and parameter delegation.
+    - *Fix*: Updated all wrappers with explicit re-exports in `__all__` and transparent delegation for `main(argv)`.
+
+23. **FIND-024 (Resolved): Non-Canonical Empirical Tags Overrode Canonical SunPM Inference**:
+    - *Problem*: Raw empirical tags from legacy definitions leaked into canonical SunPM inferences without canonical validation.
+    - *Fix*: Enforced `is_canonical_sunpm_tag` validation and `normalize_tag_to_sunpm` conversion before assigning learned tags.
+
+24. **FIND-025 (Resolved): Catalog Documentation Desynchronization in Definitions Directory**:
+    - *Problem*: `Definitions/README.md` catalog listed 132 files (23,494 registers) while disk storage contained 135 files (24,004 registers).
+    - *Fix*: Regenerated catalog index tables with all 135 models and synchronized register counts.
+
+25. **FIND-026 (Resolved): Frontend Badge and Alert Fallback Regressions in Headless Test Harness**:
+    - *Problem*: Dynamic UI badges had language discrepancies with contract tests, and lack of `alert()` fallback caused headless state leaks.
+    - *Fix*: Aligned badge labels with contract specs, restored headless `alert()` dispatch, and added `invalidateConversion()` on file changes.
+
+26. **FIND-027 (Resolved): Custom Injected Tag Discard, Unconstrained Substring SERIAL Match, and Test State Contamination**:
+    - *Problem*: User-injected custom tags were discarded by canonical filter; substring `"sn"` falsely matched `transmission`; training tests contaminated global singleton.
+    - *Fix*: Preserved custom injected tags, used regex `\b(?:sn|s/n)\b`, and added test isolation with `auto_activate=False` and clean teardown.
+
+27. **FIND-028 (Resolved): Generator Path Resolution Defect, Single-File Report CLI Desynchronization, and PyInstaller Spec Gaps**:
+    - *Problem*: `scripts/generate_foxess_definitions.py` resolved root to `scripts/`; `main.py` ignored `--json` for single-file reports; `DefFileGenerator.spec` omitted new modules and assets.
+    - *Fix*: Robust root detection, unified JSON export across directories and single files, enriched `DefFileGenerator.spec`, and hermetic temporary directories in `test_dyness_definitions.py`.
+
+28. **FIND-029 (Resolved): SMA STP-X Semantic Inference Gaps, Accent Normalization Fragility, and Definition Incompleteness**:
+    - *Problem*: French accent variance (`réseau`/`reseau`) fragmented learned vocabulary; phase-to-phase French conjunctions (`l1 et l2`, `l2 contre l3`) misclassified as phase-to-neutral; `production/INV_SMA_STP_X.csv` had only 7 tags instead of 37 canonical tags.
+    - *Fix*: Added Unicode `NFKD` accent normalization in `clean_variable_key`, enhanced French telemetry inference in `infer_sunpm_tag`, updated SMA STP-X definitions with 37 canonical tags (strict UTF-8 without BOM), merged 19 mappings into `dataset_knowledge.json` (36,282 total mappings), and added dedicated test suite `test_sma_stpx_learning.py`.
+
 ---
 
 ## 3. Verified Commands for Reproducibility
@@ -114,16 +160,19 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 # 3. Bandit Security Scan
 .venv\Scripts\bandit.exe -r DefFileGenerator web -ll -i
 
-# 4. Full Pytest Suite with Coverage
+# 4. Full Pytest Suite with Coverage (3,542 tests)
 .venv\Scripts\pytest.exe --cov=DefFileGenerator --cov=web -v
 
-# 5. Dedicated Dyness BESS Test Suite
-.venv\Scripts\pytest.exe DefFileGenerator/tests/test_dyness_definitions.py -v
+# 5. Production Five-Pillar Compliance Validation (1,118 definition files)
+.venv\Scripts\python.exe scripts/validate_production.py
 
-# 6. Deep Metrological Integrity Audit (2,360 files)
+# 6. Dedicated SMA STP-X & Dyness BESS Test Suites
+.venv\Scripts\pytest.exe DefFileGenerator/tests/test_sma_stpx_learning.py DefFileGenerator/tests/test_dyness_definitions.py -v
+
+# 7. Deep Metrological Integrity Audit (2,360 files)
 .venv\Scripts\python.exe scratch/deep_audit_all_definitions.py
 
-# 7. Package Build & Verification
+# 8. Package Build & Verification
 .venv\Scripts\pip.exe wheel . --no-deps -w dist
 ```
 
@@ -135,7 +184,7 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 | :--- | :--- | :--- | :---: |
 | **A. SCOPE** | Complete ownership of all first-party files and contracts | 100% of codebase inspected and verified | **SATISFIED** |
 | **B. 100% FILE REVIEW** | All source files audited with hazard analysis | `REVIEW_MATRIX.md` covers all modules | **SATISFIED** |
-| **C. TRACEABILITY** | Every finding linked to root cause, fix, and tests | 28 findings cataloged in `FINDINGS.md` | **SATISFIED** |
+| **C. TRACEABILITY** | Every finding linked to root cause, fix, and tests | 29 findings cataloged in `FINDINGS.md` | **SATISFIED** |
 | **D. ZERO OPEN DEFECTS** | Zero open in-scope defects, zero failing tests | 0 failing tests, 0 lint/type issues | **SATISFIED** |
 | **E. END-TO-END BEHAVIOR** | Nominal execution across CLI, GUI, and Web | All interfaces load and execute cleanly | **SATISFIED** |
 | **F. QUALITY GATES** | Strict linter, formatter, type checker, security | Ruff, Mypy, Bandit 100% clean | **SATISFIED** |

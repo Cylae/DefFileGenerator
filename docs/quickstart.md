@@ -24,6 +24,15 @@ deffilegen run register_map.xlsx \
 
 Supported input formats: **PDF, Excel (`.xlsx`, `.xlsm`, `.xltx`, `.xltm`), CSV, and XML**.
 
+### 🔄 Multi-File Batch Conversion
+
+Convert an entire directory of mixed manufacturer documents using parallel worker threads:
+
+```bash
+# Convert all files in ./manuals/ into ./definitions/ recursively with 4 threads
+deffilegen batch ./manuals/ -o ./definitions/ --recursive --jobs 4
+```
+
 ---
 
 ## 🛠️ Multi-Step Pipeline Commands
@@ -70,6 +79,9 @@ deffilegen report Definitions/ -o AUDIT_REPORT.md --json metrics.json
 
 # Train the knowledge base from a directory of definition files
 deffilegen train --dir Definitions/ --summary --export-json knowledge.json
+
+# Offline equipment lookup across local definitions and indexed datasets
+deffilegen discover "SMA STP 50.0"
 ```
 
 ---
@@ -124,6 +136,9 @@ uv run bandit -r DefFileGenerator web -ll
 
 # Packaging verification
 uv build --offline
+
+# Validate 1,118 production definition files against 5 non-negotiable pillars
+python scripts/validate_production.py
 ```
 
 ---

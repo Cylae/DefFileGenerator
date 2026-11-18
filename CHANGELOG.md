@@ -14,6 +14,25 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+- **SMA STP-X Semantic Retraining & French Telemetry Harmonization (FIND-029)**:
+  - Unicode `NFKD` combining accent stripping in `clean_variable_key` to seamlessly correlate accented French Modbus documents (`réseau`, `température`, `réactive`) with unaccented vocabulary keys.
+  - Native French Modbus register semantic inference in `infer_sunpm_tag`:
+    - Phase-to-phase voltages: `l1 et l2`, `l2 contre l3`, `l3 contre l1` correctly mapped to `U_AC_L1L2`, `U_AC_L2L3`, `U_AC_L3L1` (preventing misclassification as phase-to-neutral `U_AC_1`).
+    - Grid currents: `courant du reseau`, `phase l1_0` / `l1_1` mapped to `I_AC` and `I_AC_1`.
+    - Per-phase active power: `puissance l1`, `puissance l2`, `puissance l3` mapped to `P_AC_1`, `P_AC_2`, `P_AC_3`.
+    - Internal cabinet temperature: `temperature interieure` / `temperature intérieure` mapped to `TEMP_INT`.
+    - DC intermediate circuit voltage: `tension du circuit intermediaire` mapped to `U_DC`.
+  - Upgraded both `production/INV_SMA_STP_X.csv` and `Definitions/INV_SMA_STP_X.csv` to 37 canonical, unique SunPM tags with 0 duplicates, strict sequential indices, and strict UTF-8 without BOM.
+  - Merged 19 SMA STP-X mappings into `DefFileGenerator/dataset_knowledge.json`, achieving 36,282 total mappings across 5,044 definitions and 1,283,020 registers.
+  - Added dedicated test suite `DefFileGenerator/tests/test_sma_stpx_learning.py` (4 tests, 66 subtests, all passing).
+- **Five-Pillar Production Registry Audit Suite (`scripts/validate_production.py`)**:
+  - Full automated validation of all 1,118 production definition files in `production/` against 5 non-negotiable pillars:
+    1. Header integrity: Exact 11-column header `Index;Info1;...;Info10`.
+    2. Index sequence: Strict 1-based sequential integers `1..N`.
+    3. Register validity: Modbus addresses strictly within 0..65535, valid Webdyn types and actions.
+    4. Tag uniqueness: No duplicate variable tags per definition.
+    5. Encoding hygiene: Strict UTF-8 without prohibited BOM markers.
+  - Achieved 100% compliance: **1,118 / 1,118 files valid**.
 - **100+ Equipment Industrial Multi-Vendor Test Battery (`DefFileGenerator/tests/test_100_equipements_battery.py`)**:
   - Comprehensive battery of 107 test cases covering 101 distinct industrial equipment models across 50 world manufacturers and all 6 functional categories (Batteries, Loggers, IO Modules, Sensors, Meters, Inverters).
   - Multi-vendor live document extractions across heterogeneous vendor media: Mars BESS Excel, Mars EMS LC Excel, Solargate Industrial PDF, FoxESS PDF, and Stress Controller XML (>5,000 registers).

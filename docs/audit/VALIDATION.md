@@ -15,15 +15,18 @@
 
 | Gate | Command | Scope | Result | Observed Evidence |
 | :--- | :--- | :--- | :--- | :--- |
-| **Linter** | `ruff check .` | Entire repository | **EXECUTED_PASS** | All checks passed (0 errors across 187 files) |
-| **Formatter** | `ruff format --check .` | Entire repository | **EXECUTED_PASS** | 187 files already formatted cleanly |
-| **Type Checker** | `mypy DefFileGenerator web ...` | First-party packages & scripts | **EXECUTED_PASS** | Success: 0 issues found in 130 source files |
+| **Linter** | `ruff check .` | Entire repository | **EXECUTED_PASS** | All checks passed (0 errors across 188 files) |
+| **Formatter** | `ruff format --check .` | Entire repository | **EXECUTED_PASS** | 188 files already formatted cleanly |
+| **Type Checker** | `mypy DefFileGenerator web ...` | First-party packages & scripts | **EXECUTED_PASS** | Success: 0 issues found in 131 source files |
 | **Security Audit** | `bandit -r DefFileGenerator web -ll -i` | First-party packages | **EXECUTED_PASS** | 0 high/medium issues across 25,347 LOC |
 | **Build & Packaging** | `pip wheel . --no-deps -w dist` | Sdist & Wheel | **EXECUTED_PASS** | `def_file_generator-0.4.0-py3-none-any.whl` generated (145,300 bytes) |
 | **Package Integrity** | Python ZipFile inspection | Built wheel archive | **EXECUTED_PASS** | All web/core files present (including `dyness_generator.py`); 0 test leaks |
 | **CLI Verification** | `deffilegen --version` | Application CLI | **EXECUTED_PASS** | `deffilegen 0.4.0` returned with exit code 0 |
 | **Frontend Contracts** | `node DefFileGenerator/tests/interface_frontend_contracts.js web/static/app.js` | Web Studio DOM contracts | **EXECUTED_PASS** | All 4 tabs asserted: Convert, Tag, Audit, Library, Discovery, Toast, Copy, Filter, ARIA |
-| **Unit & Integration** | `pytest` | 3,538 collected tests | **EXECUTED_PASS** | 3,533 passed, 5 skipped, 0 failed in 105s |
+| **Unit & Integration** | `pytest` | 3,542 collected tests | **EXECUTED_PASS** | 3,537 passed, 5 skipped, 0 failed in 75s |
+| **Production Five-Pillar Audit** | `python scripts/validate_production.py` | 1,118 definition files in `production/` | **EXECUTED_PASS** | 1,118 / 1,118 (100.0%) compliant with 5 pillars, 0 errors, 0 warnings |
+| **UTF-8 BOM Hygiene** | `pytest DefFileGenerator/tests/test_utf8_without_bom_audit.py` | All definitions & repo files | **EXECUTED_PASS** | 6/6 passed, 0 prohibited UTF-8 BOM markers found |
+| **SMA STP-X Retraining** | `pytest DefFileGenerator/tests/test_sma_stpx_learning.py` | SMA STP-X & French telemetry inference | **EXECUTED_PASS** | 4/4 passed (66 subtests) in 0.35s, 37 canonical tags verified |
 | **Dyness Verification** | `pytest DefFileGenerator/tests/test_dyness_definitions.py` | Dyness DH-Series suite (Hermetic) | **EXECUTED_PASS** | 14/14 passed in 0.73s (offsets, cell counts, strict Webdyn validation, zero repo mutation) |
 | **Meticulous Definition Audit** | `python scratch/deep_audit_all_definitions.py` | 2,360 definitions (765,377 registers) across 5 libraries | **EXECUTED_PASS** | 2,360 / 2,360 (100.0%) valid, 0 errors, 11-col headers & sequential indices |
 

@@ -4,8 +4,8 @@
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
   <img src="https://img.shields.io/badge/Version-0.4.0-blue?style=for-the-badge" alt="Version 0.4.0" />
-  <img src="https://img.shields.io/badge/Tests-1112%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 1112 passed" />
-  <img src="https://img.shields.io/badge/Coverage-90%25-brightgreen?style=for-the-badge" alt="Coverage: 90%" />
+  <img src="https://img.shields.io/badge/Tests-3537%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 3537 passed" />
+  <img src="https://img.shields.io/badge/Coverage-92%25-brightgreen?style=for-the-badge" alt="Coverage: 92%" />
   <img src="https://img.shields.io/badge/Type%20Check-Mypy%20Strict-blue?style=for-the-badge" alt="Mypy Strict" />
   <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
   <img src="https://img.shields.io/badge/Security-Bandit%20Pass-success?style=for-the-badge" alt="Bandit Security" />
@@ -62,7 +62,7 @@ Manually creating this file usually requires hours of tedious, error-prone manua
 1. **Reads your source document** (PDF datasheet, Excel workbook, CSV table, or XML register map).
 2. **Automatically locates register tables** and understands vendor-specific column names in English, French, and German.
 3. **Normalizes data types and addresses** (hex/decimal conversions, standard types like `U16`, `I32`, `F32`, individual bitfield slices).
-4. **Applies Semantic SunPM Canonical Tags** via a 1,100,000+ register training dataset (`P_AC`, `Q_AC`, `E_TOT`, `E_DAY`, `U_AC_1`, etc.).
+4. **Applies Semantic SunPM Canonical Tags** via a 1,280,000+ register training dataset (`P_AC`, `Q_AC`, `E_TOT`, `E_DAY`, `U_AC_1`, etc.).
 5. **Performs strict validation** (unique variable tags, valid Modbus address spaces, interval collision and overlap checks).
 6. **Generates an official WebdynSunPM CSV file**, ready to be imported directly into your data logger gateway!
 
@@ -70,8 +70,17 @@ Manually creating this file usually requires hours of tedious, error-prone manua
 
 ## 🌟 What's New in v0.4.0
 
-The **v0.4.0** release delivers major industrial equipment suites, enhanced security safeguards, deep metrological verification, and developer ergonomics:
+The **v0.4.0** release delivers major industrial equipment suites, enhanced security safeguards, deep metrological verification, autonomous engineering audit remediation, and developer ergonomics:
 
+- 🧠 **SMA STP-X Semantic Retraining & French Telemetry Harmonization (FIND-029)**:
+  - Unicode `NFKD` accent normalization in semantic vocabulary matching (`réseau` -> `reseau`, `température` -> `temperature`, `réactive` -> `reactive`).
+  - Native French Modbus register inference for phase-to-phase voltages (`l1 et l2`, `l2 contre l3` -> `U_AC_L1L2`, `U_AC_L2L3`), grid current (`courant du reseau` -> `I_AC`), per-phase active power (`Puissance L1/L2/L3` -> `P_AC_1/2/3`), internal cabinet temperature (`interieure`/`intérieure` -> `TEMP_INT`), and DC intermediate bus voltage (`circuit intermediaire` -> `U_DC`).
+  - Production definitions synchronized with 37 canonical, unique SunPM tags and strict UTF-8 without BOM.
+- 🏭 **Five-Pillar Production Registry Audit Suite (`scripts/validate_production.py`)**:
+  - Full automated validation of **1,118 production definition files** (100% compliant) across 5 non-negotiable pillars: exact 11-column header, sequential 1-based indexing, valid Modbus address ranges (0..65535), zero duplicate tags, and strict UTF-8 without BOM.
+- 🏛️ **Autonomous Engineering Audit & 29 Remediated Findings (FIND-001 through FIND-029)**:
+  - Zero open in-scope defects across static analysis, typing, security, runtime, and packaging.
+  - Test suite expanded to **3,542 automated tests (3,537 passed, 5 offline skipped, 0 failed)** with **92% statement coverage**.
 - 🔋 **Dyness DH-Series Commercial & Industrial BESS Generator**:
   - Full end-to-end parsing of Dyness DH-Series Modbus protocol (V1.0 - V2.2) and automated WebdynSunPM CSV definition generation.
   - Dedicated models: `DH200Y` (Liquid-Cooled 232 kWh, 260 cells, 80 temperature probes), `DH200F` (Air-Cooled 215 kWh, 240 cells, 60 temps), `DH100F` (Air-Cooled 100 kWh, 240 cells, 60 temps), and `DH_Series_Generic` (Universal superset).
@@ -88,8 +97,6 @@ The **v0.4.0** release delivers major industrial equipment suites, enhanced secu
   - Metadata auto-inference in `DefFileGenerator/main.py` recognizing `Dyness`, `Mars`, and `FoxESS` with automatic classification to `Battery`.
 - 🛠️ **Zero-Friction VS Code Environment Auto-Discovery**:
   - Automatic `.venv` site-packages resolution in generators preventing `ModuleNotFoundError` when debugging or running via system Python.
-- 🧪 **Comprehensive Automated Test Battery**:
-  - Expanded test suite to **1,113 automated tests** (1,108 passing, 0 failures, 5 offline skipped) across unit, integration, adversarial security, web concurrency, and performance suites.
 
 ---
 
@@ -590,7 +597,7 @@ This repository is governed by the **Apollo-Standard Autonomous Constitution** (
 ### Durable Engineering Audit Ledgers (`docs/audit/`):
 - 📋 **[`docs/audit/PLAN.md`](docs/audit/PLAN.md)**: Master engineering mission plan, phases, and milestone verification.
 - 🗺️ **[`docs/audit/REVIEW_MATRIX.md`](docs/audit/REVIEW_MATRIX.md)**: Complete file inventory (97 source modules, 22,500+ LOC), domain hazards, and test coverage.
-- 🔍 **[`docs/audit/FINDINGS.md`](docs/audit/FINDINGS.md)**: Traceable defect ledger (FIND-001 through FIND-003) with root causes and closure evidence.
+- 🔍 **[`docs/audit/FINDINGS.md`](docs/audit/FINDINGS.md)**: Traceable defect ledger (FIND-001 through FIND-029) with root causes and closure evidence.
 - 🛡️ **[`docs/audit/VALIDATION.md`](docs/audit/VALIDATION.md)**: Gate results across linting, strict typing, security, build, and test coverage.
 - ⚡ **[`docs/audit/PERFORMANCE.md`](docs/audit/PERFORMANCE.md)**: Benchmarks documenting an 81.3% test collection acceleration (2.50s) and memory profiling.
 - 🤝 **[`docs/audit/HANDOFF.md`](docs/audit/HANDOFF.md)**: Operational handoff, reproducible commands, and production maintenance instructions.
@@ -619,7 +626,7 @@ This repository is governed by the **Apollo-Standard Autonomous Constitution** (
                             ▼
 ┌────────────────────────────────────────────────────────┐
 │  2. SEMANTIC KNOWLEDGE MINER (knowledge_miner.py)      │
-│  - 1,100,000+ registers training dataset               │
+│  - 1,280,000+ registers training dataset               │
 │  - Canonical SunPM tag attribution (P_AC, E_TOT...)    │
 │  - Action code inference (4=Telemetry, 9=Alarm...)     │
 │  - Phase & scaling factor disambiguation               │
@@ -760,7 +767,7 @@ uv build --offline
 | 📊 **[`docs/RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md`](docs/RAPPORT_AUDIT_DOCUMENTS_TECHNIQUES_WEBDYN.md)** | Detailed audit of technical vendor documentation conversions. |
 | 📋 **[`docs/audit/PLAN.md`](docs/audit/PLAN.md)** | Apollo engineering plan, phases, and milestone tracking. |
 | 🗺️ **[`docs/audit/REVIEW_MATRIX.md`](docs/audit/REVIEW_MATRIX.md)** | Codebase file review matrix and verification mapping. |
-| 🔍 **[`docs/audit/FINDINGS.md`](docs/audit/FINDINGS.md)** | Durable defect and remediation ledger (FIND-001 through FIND-003). |
+| 🔍 **[`docs/audit/FINDINGS.md`](docs/audit/FINDINGS.md)** | Durable defect and remediation ledger (FIND-001 through FIND-029). |
 | 🛡️ **[`docs/audit/VALIDATION.md`](docs/audit/VALIDATION.md)** | Verification gate results, commands, and outputs. |
 | ⚡ **[`docs/audit/PERFORMANCE.md`](docs/audit/PERFORMANCE.md)** | Performance benchmarks and test collection optimization. |
 | 🤝 **[`docs/audit/HANDOFF.md`](docs/audit/HANDOFF.md)** | Operational handoff and maintenance documentation. |
@@ -779,19 +786,20 @@ DefFileGenerator/
 │   ├── extractor.py          # Multi-format parser (PDF, Excel, CSV, XML)
 │   ├── gui.py                # Desktop GUI application (CustomTkinter / Tkinter)
 │   ├── io_utils.py           # Atomic file IO and preview utilities
-│   ├── knowledge_miner.py    # Semantic SunPM tag inference (1,100,000+ registers dataset)
+│   ├── knowledge_miner.py    # Semantic SunPM tag inference (1,280,000+ registers dataset)
 │   ├── dyness_generator.py   # Dyness DH-Series BESS (DH200Y, DH200F, DH100F) generator
 │   ├── mars_generator.py     # Mars Renewable BESS & EMS multi-slave generator
 │   ├── report_generator.py   # Technical audit & quality reporting engine
 │   ├── main.py               # Unified CLI entrypoint (deffilegen)
-│   └── tests/                # Comprehensive test suite (1,113 tests, 90% coverage)
+│   └── tests/                # Comprehensive test suite (3,542 tests, 92% coverage)
 ├── web/                      # FastAPI Web Application & UI
 │   ├── app.py                # REST API endpoints (/api/convert, /api/validate)
 │   └── static/               # Responsive Vanilla JS / CSS frontend
-├── Definitions/              # Validated industrial equipment definitions library (129 models)
+├── production/               # Production Webdyn CSV definitions (1,118 models, 100% 5-pillar compliant)
+├── Definitions/              # Reference industrial equipment definitions library (135 models)
 ├── Dyness_DH_Series_Definitions/ # Dedicated Dyness DH-series definitions
 ├── FoxESS_P3_H3_Pro_Definitions/ # Dedicated FoxESS P3 / H3 Pro definitions
-├── generated_definitions/    # Production Webdyn CSV definitions (34+ models)
+├── generated_definitions/    # Generated Webdyn CSV definitions (34+ models)
 ├── tagged_definitions/       # Canonical SunPM-tagged production definitions
 ├── stress_test_data/         # Real-world vendor datasets for stress testing
 ├── docs/                     # Full technical documentation & audit reports
