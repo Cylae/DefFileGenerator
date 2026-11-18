@@ -42,7 +42,9 @@ def test_pvs800_definition_encoding_and_header(def_path: Path) -> None:
         raw_bytes = f.read()
 
     # Must NOT start with UTF-8 BOM
-    assert not raw_bytes.startswith(b"\xef\xbb\xbf"), f"{def_path.name} must NOT start with UTF-8 BOM"
+    assert not raw_bytes.startswith(b"\xef\xbb\xbf"), (
+        f"{def_path.name} must NOT start with UTF-8 BOM"
+    )
 
     # Must decode cleanly without UnicodeDecodeError in plain UTF-8
     text = raw_bytes.decode("utf-8")

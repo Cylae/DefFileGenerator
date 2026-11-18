@@ -18,15 +18,27 @@ logger = logging.getLogger(__name__)
 # Curated official manufacturer support and download portal whitelists
 MANUFACTURER_PORTALS: dict[str, list[dict[str, Any]]] = {
     "Huawei": [
-        {"url": "https://support.huawei.com/enterprise/en/digital-power/sun2000-pid-21102414", "rank": 1},
-        {"url": "https://solar.huawei.com/download?p=SUN2000_Modbus_Interface_Definitions.pdf", "rank": 1},
+        {
+            "url": "https://support.huawei.com/enterprise/en/digital-power/sun2000-pid-21102414",
+            "rank": 1,
+        },
+        {
+            "url": "https://solar.huawei.com/download?p=SUN2000_Modbus_Interface_Definitions.pdf",
+            "rank": 1,
+        },
     ],
     "Solplanet": [
-        {"url": "https://solplanet.net/wp-content/uploads/2024/04/Ailogger_Modbus_TCP_manual_V1.2.pdf", "rank": 1},
+        {
+            "url": "https://solplanet.net/wp-content/uploads/2024/04/Ailogger_Modbus_TCP_manual_V1.2.pdf",
+            "rank": 1,
+        },
         {"url": "https://solplanet.net/downloads/", "rank": 2},
     ],
     "CyberPower": [
-        {"url": "https://www.cyberpower.com/global/en/File/GetFileByType/MANUAL_FILE?id=Grid_tied_PV_Inverter_Modbus_Protocol.pdf", "rank": 1},
+        {
+            "url": "https://www.cyberpower.com/global/en/File/GetFileByType/MANUAL_FILE?id=Grid_tied_PV_Inverter_Modbus_Protocol.pdf",
+            "rank": 1,
+        },
     ],
     "Dyness": [
         {"url": "https://www.dyness.com/download/DH_Series_Modbus_Protocol_V2.2.pdf", "rank": 1},
@@ -41,10 +53,16 @@ MANUFACTURER_PORTALS: dict[str, list[dict[str, Any]]] = {
         {"url": "https://en.goodwe.com/Ftp/Manual/GoodWe_Modbus_Protocol.pdf", "rank": 1},
     ],
     "Sungrow": [
-        {"url": "https://en.sungrowpower.com/upload/file/20221101/Sungrow_Inverter_Modbus_Protocol.pdf", "rank": 1},
+        {
+            "url": "https://en.sungrowpower.com/upload/file/20221101/Sungrow_Inverter_Modbus_Protocol.pdf",
+            "rank": 1,
+        },
     ],
     "SofarSolar": [
-        {"url": "https://www.sofarsolar.com/upload/down/SOFAR_Modbus_Communication_Protocol.pdf", "rank": 1},
+        {
+            "url": "https://www.sofarsolar.com/upload/down/SOFAR_Modbus_Communication_Protocol.pdf",
+            "rank": 1,
+        },
     ],
 }
 
@@ -91,7 +109,9 @@ class SourceDiscovery:
         # Fallback candidate if no external source discovered yet
         if not candidates:
             # Construct a high-confidence manufacturer domain search URL
-            domain_slug = urllib.parse.quote(f"{mfg} {model} modbus register map manual filetype:pdf")
+            domain_slug = urllib.parse.quote(
+                f"{mfg} {model} modbus register map manual filetype:pdf"
+            )
             candidates.append(
                 DocumentCandidate(
                     source_url=f"https://www.{mfg.lower().replace(' ', '')}.com/downloads/{domain_slug}",

@@ -116,6 +116,7 @@ class WorkflowOrchestrator:
 
         if override_file_bytes:
             import hashlib
+
             sha256_hash = hashlib.sha256(override_file_bytes).hexdigest()
             doc_candidate = DocumentCandidate(
                 source_url=f"local://manual_upload/{override_filename}",
@@ -144,7 +145,12 @@ class WorkflowOrchestrator:
             fetch_result = await self.fetcher.fetch(doc_candidate)
 
             if fetch_result.outcome != FetchOutcome.SUCCESS or not fetch_result.file_bytes:
-                status = ValidationStatus.BLOCKED_ACCESS if fetch_result.outcome in (FetchOutcome.BLOCKED_SSRF, FetchOutcome.ACCESS_RESTRICTED) else ValidationStatus.NOT_FOUND
+                status = (
+                    ValidationStatus.BLOCKED_ACCESS
+                    if fetch_result.outcome
+                    in (FetchOutcome.BLOCKED_SSRF, FetchOutcome.ACCESS_RESTRICTED)
+                    else ValidationStatus.NOT_FOUND
+                )
                 return AutonomousPipelineResult(
                     success=False,
                     status=status,

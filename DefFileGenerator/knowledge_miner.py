@@ -1050,7 +1050,8 @@ def infer_sunpm_tag(
                 norm = normalize_tag_to_sunpm(learned)
                 if norm and is_canonical_sunpm_tag(norm):
                     learned = norm
-                else:
+                elif knowledge is None or knowledge is get_active_knowledge():
+                    # Guard against non-canonical empirical tags from dirty background datasets (FIND-024)
                     learned = ""
             if learned:
                 return learned
@@ -1367,7 +1368,9 @@ def infer_sunpm_tag(
         return "R_ISO"
 
     # 17. Device Metadata & Communication
-    if any(k in n_lower for k in ("serial number", "numéro de série", "sn", "device_sn")):
+    if any(k in n_lower for k in ("serial number", "numéro de série", "device_sn")) or bool(
+        re.search(r"\b(?:sn|s/n)\b", n_lower)
+    ):
         return "SERIAL"
     if any(k in n_lower for k in ("model", "modèle", "product model", "device model")):
         return "MODEL"

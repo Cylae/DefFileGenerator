@@ -78,7 +78,20 @@ def test_cyberpower_telemetry_structure():
         assert any(r[6] == f"I_STR_{s_idx}" for r in rows), f"Missing I_STR_{s_idx}"
 
     # 4. Action Code 9 for Events
-    for ev_addr in ("8640", "8642", "8644", "8646", "8647", "8648", "8649", "8650", "8651", "8652", "8653", "8654"):
+    for ev_addr in (
+        "8640",
+        "8642",
+        "8644",
+        "8646",
+        "8647",
+        "8648",
+        "8649",
+        "8650",
+        "8651",
+        "8652",
+        "8653",
+        "8654",
+    ):
         assert reg_map[ev_addr][10] == "9", f"Event register {ev_addr} should have Action 9"
 
 

@@ -24,7 +24,9 @@ class TestCliDiscoveryCommand(unittest.TestCase):
             main(["discover", "--help"])
         self.assertEqual(cm.exception.code, 0)
 
-    @patch("DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock)
+    @patch(
+        "DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock
+    )
     def test_discover_success_flow(self, mock_run, tmp_path_factory=None):
         out_csv = "test_cli_discovered_output.csv"
         out_report = "test_cli_discovered_report.md"
@@ -72,13 +74,17 @@ class TestCliDiscoveryCommand(unittest.TestCase):
                 evidence_report="# Evidence Ledger for Huawei SUN2000\n",
             )
 
-            main([
-                "discover",
-                "Huawei SUN2000-100KTL",
-                "-o", out_csv,
-                "--report", out_report,
-                "--force",
-            ])
+            main(
+                [
+                    "discover",
+                    "Huawei SUN2000-100KTL",
+                    "-o",
+                    out_csv,
+                    "--report",
+                    out_report,
+                    "--force",
+                ]
+            )
 
             self.assertTrue(os.path.isfile(out_csv))
             with open(out_csv, encoding="utf-8") as f:
@@ -97,7 +103,9 @@ class TestCliDiscoveryCommand(unittest.TestCase):
             if os.path.exists(out_report):
                 os.remove(out_report)
 
-    @patch("DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock)
+    @patch(
+        "DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock
+    )
     def test_discover_auto_naming(self, mock_run):
         expected_auto_name = "INV_GoodWe_GW5000.csv"
         try:
@@ -136,7 +144,9 @@ class TestCliDiscoveryCommand(unittest.TestCase):
             if os.path.exists(expected_auto_name):
                 os.remove(expected_auto_name)
 
-    @patch("DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock)
+    @patch(
+        "DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock
+    )
     def test_discover_failure_exits_with_code_1(self, mock_run):
         mock_run.return_value = AutonomousPipelineResult(
             success=False,
@@ -154,7 +164,9 @@ class TestCliDiscoveryCommand(unittest.TestCase):
             main(["discover", "Huawei SUN2000", "--document", "non_existent_file.pdf"])
         self.assertEqual(cm.exception.code, 1)
 
-    @patch("DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock)
+    @patch(
+        "DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock
+    )
     def test_discover_rejects_overwrite_without_force(self, mock_run):
         existing_file = "test_already_exists.csv"
         Path(existing_file).write_text("existing content", encoding="utf-8")
@@ -163,8 +175,12 @@ class TestCliDiscoveryCommand(unittest.TestCase):
                 success=True,
                 status=ValidationStatus.VALIDATED_OFFLINE,
                 query="Sample Inverter",
-                identity=IdentityCandidate(manufacturer="Sample", model_family="Inv", exact_model="100"),
-                model=CanonicalEquipmentModel(manufacturer="Sample", model="100", category="Inverter"),
+                identity=IdentityCandidate(
+                    manufacturer="Sample", model_family="Inv", exact_model="100"
+                ),
+                model=CanonicalEquipmentModel(
+                    manufacturer="Sample", model="100", category="Inverter"
+                ),
                 csv_content="sample csv content",
             )
 

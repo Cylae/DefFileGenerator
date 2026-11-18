@@ -32,8 +32,12 @@ def test_huawei_generic_files_exist():
     assert gen_file.is_file(), f"Missing {gen_file}"
 
     # Verify misclassified OTH file is absent
-    assert not (TAGGED_DIR / "OTH_Huawei_GENERIC.csv").exists(), "OTH_Huawei_GENERIC.csv should be purged"
-    assert not (GENERATED_DIR / "OTH_Huawei_GENERIC.csv").exists(), "OTH_Huawei_GENERIC.csv should be purged"
+    assert not (TAGGED_DIR / "OTH_Huawei_GENERIC.csv").exists(), (
+        "OTH_Huawei_GENERIC.csv should be purged"
+    )
+    assert not (GENERATED_DIR / "OTH_Huawei_GENERIC.csv").exists(), (
+        "OTH_Huawei_GENERIC.csv should be purged"
+    )
 
 
 @pytest.mark.parametrize("suite_dir", [DEFINITIONS_DIR, TAGGED_DIR, GENERATED_DIR])

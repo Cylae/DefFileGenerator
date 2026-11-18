@@ -35,7 +35,9 @@ class SemanticValidator:
 
         for reg in model.registers:
             if reg.address < 0 or reg.address > 65535:
-                blocking_issues.append(f"Register '{reg.name}' address {reg.address} out of 0-65535 range")
+                blocking_issues.append(
+                    f"Register '{reg.name}' address {reg.address} out of 0-65535 range"
+                )
                 pillar_addressing = False
 
             start_addr = reg.address

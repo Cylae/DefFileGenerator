@@ -963,9 +963,7 @@ def discover_command(args: argparse.Namespace) -> None:
         output_path = f"{prefix}_{clean_mfg}_{clean_mdl}.csv"
 
     if os.path.exists(output_path) and not getattr(args, "force", False):
-        logging.error(
-            f"Output file already exists: '{output_path}'. Use --force to overwrite."
-        )
+        logging.error(f"Output file already exists: '{output_path}'. Use --force to overwrite.")
         sys.exit(1)
 
     with staged_text_output(output_path, encoding="utf-8") as f:
@@ -1009,13 +1007,19 @@ def report_command(args: argparse.Namespace) -> None:
         out_report = output or f"{os.path.splitext(target)[0]}_report.md"
         generate_single_definition_report(target, output_report_path=out_report)
         logging.info(f"Technical report generated: {out_report}")
+        if json_path:
+            from DefFileGenerator.report_generator import analyze_definition_file
+
+            file_stats = analyze_definition_file(target)
+            export_report_json(file_stats, json_path)
+            logging.info(f"Structured metrics exported: {json_path}")
     elif os.path.isdir(target):
         out_report = output or os.path.join(target, "RAPPORT_TECHNIQUE_GENERATION.md")
         generate_directory_technical_report(target, output_report_path=out_report)
         logging.info(f"Directory technical report generated: {out_report}")
         if json_path:
-            stats = analyze_definitions_directory(target)
-            export_report_json(stats, json_path)
+            dir_stats = analyze_definitions_directory(target)
+            export_report_json(dir_stats, json_path)
             logging.info(f"Structured metrics exported: {json_path}")
 
 
@@ -1113,9 +1117,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "--report",
         help="Path to save cryptographic evidence ledger Markdown",
     )
-    parser_discover.add_argument(
-        "--force", action="store_true", help="Force overwrite output file"
-    )
+    parser_discover.add_argument("--force", action="store_true", help="Force overwrite output file")
 
     # Validate
     parser_validate = subparsers.add_parser(
@@ -1155,7 +1157,12 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_generate.add_argument("--category", default="Inverter")
     parser_generate.add_argument("--forced-write", default="")
     parser_generate.add_argument("--address-offset", type=int, default=0, help="Address offset")
-    parser_generate.add_argument("--encoding", default="utf-8", choices=["utf-8", "utf-16", "windows-1252", "ascii"], help="Output character encoding (default: utf-8 without BOM)")
+    parser_generate.add_argument(
+        "--encoding",
+        default="utf-8",
+        choices=["utf-8", "utf-16", "windows-1252", "ascii"],
+        help="Output character encoding (default: utf-8 without BOM)",
+    )
     parser_generate.add_argument("--report", help="Path to generate technical Markdown report")
     parser_generate.add_argument("--force", action="store_true", help="Force overwrite output file")
 
@@ -1175,7 +1182,12 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_run.add_argument("--category", default="Inverter")
     parser_run.add_argument("--forced-write", default="")
     parser_run.add_argument("--address-offset", type=int, default=0, help="Address offset")
-    parser_run.add_argument("--encoding", default="utf-8", choices=["utf-8", "utf-16", "windows-1252", "ascii"], help="Output character encoding (default: utf-8 without BOM)")
+    parser_run.add_argument(
+        "--encoding",
+        default="utf-8",
+        choices=["utf-8", "utf-16", "windows-1252", "ascii"],
+        help="Output character encoding (default: utf-8 without BOM)",
+    )
     parser_run.add_argument("--report", help="Path to generate technical Markdown report")
     parser_run.add_argument("--force", action="store_true", help="Force overwrite output file")
     parser_run.add_argument(
@@ -1194,7 +1206,9 @@ def _run_cli(argv: list[str] | None = None) -> None:
         help="Definition file or directory to generate report for (default: tagged_definitions)",
     )
     parser_report.add_argument("-o", "--output", help="Output Markdown report path")
-    parser_report.add_argument("--json", help="Optional JSON metrics export path")
+    parser_report.add_argument(
+        "--json", "--export-json", dest="json", help="Optional JSON metrics export path"
+    )
 
     # Tag
     parser_tag = subparsers.add_parser(

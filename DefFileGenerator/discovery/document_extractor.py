@@ -25,7 +25,7 @@ class RawCellProvenance(BaseModel):
 
 
 class ExtractedTable(BaseModel):
-    source_format: str                         # "pdf", "xlsx", "csv", "html", "ocr"
+    source_format: str  # "pdf", "xlsx", "csv", "html", "ocr"
     page_number: int = 1
     table_index: int = 1
     sheet_name: str | None = None
@@ -172,14 +172,16 @@ class DocumentExtractor:
                 # Find candidate header row (row with most non-empty string cells)
                 header_idx = 0
                 for idx, row in enumerate(rows[:10]):
-                    str_count = sum(1 for c in row if c is not None and isinstance(c, str) and c.strip())
+                    str_count = sum(
+                        1 for c in row if c is not None and isinstance(c, str) and c.strip()
+                    )
                     if str_count >= 3:
                         header_idx = idx
                         break
 
                 headers = [str(c or "").strip() for c in rows[header_idx]]
                 data_rows: list[list[str]] = []
-                for row in rows[header_idx + 1:]:
+                for row in rows[header_idx + 1 :]:
                     cleaned_row = [str(c) if c is not None else "" for c in row]
                     if any(c.strip() for c in cleaned_row):
                         data_rows.append(cleaned_row)
@@ -265,6 +267,7 @@ class DocumentExtractor:
     def _run_ocr_fallback(self, pdf_bytes: bytes) -> list[ExtractedTable]:
         """Runs local OCR fallback if pytesseract is available."""
         import importlib.util
+
         if importlib.util.find_spec("pytesseract") is not None:
             logger.info("Local OCR engine available on host")
         return []

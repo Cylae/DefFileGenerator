@@ -82,7 +82,10 @@ class TestDocumentFetcherSecurity(unittest.TestCase):
         mock_resp.status_code = 200
         mock_resp.headers = {"content-length": "5000"}
 
-        with patch("DefFileGenerator.discovery.document_fetcher.validate_target_url", return_value=(True, "", ["93.184.216.34"])):
+        with patch(
+            "DefFileGenerator.discovery.document_fetcher.validate_target_url",
+            return_value=(True, "", ["93.184.216.34"]),
+        ):
             with patch("httpx.AsyncClient") as mock_client_cls:
                 mock_client = MagicMock()
                 mock_client.__aenter__ = AsyncMock(return_value=mock_client)

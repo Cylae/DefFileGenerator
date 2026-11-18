@@ -320,3 +320,35 @@
 - **Root Cause**: French translations applied to dynamic UI badges (`2 registres générés (1 ignorés)`, `Conforme`, etc.) deviated from contract assertions (`2 registers generated (1 skipped)`, `Valid`, etc.). Additionally, removing the headless `alert()` fallback and omitting `invalidateConversion()` on file removal caused state leakages between sequential test cases.
 - **Remediation**: Aligned badge text with English contract specs, restored `alert()` dispatch for headless testing (`typeof window === 'undefined'`), implemented `invalidateConversion()` on file changes and input events, and ensured error responses hide previous results sections.
 - **Status**: RESOLVED
+
+### FIND-027: Custom Injected Tag Discard, Unconstrained Substring SERIAL Match, and Test State Contamination
+- **Severity**: HIGH
+- **Component**: Core Semantic Inference & Test Suite (`DefFileGenerator/knowledge_miner.py`, `tests/test_dataset_learning_and_audit.py`)
+- **Trigger**: Running `test_infer_sunpm_tag_with_dataset_knowledge` in `test_dataset_learning_and_audit.py`, followed by Wave 29 tag inference tests.
+- **Root Cause**:
+  1. The canonical SunPM filter added in FIND-024 indiscriminately stripped custom tags passed via user-injected `DatasetKnowledge` instances if they were not in `SUNPM_CANONICAL_TAGS`.
+  2. Device identification checked `"sn"` using an unconstrained substring search (`"sn" in n_lower`), causing variables with the letters 's' and 'n' (e.g. `does not exist`, `snapshot`, `transmission`) to be falsely tagged as `"SERIAL"`.
+  3. `test_train_knowledge_from_definitions` and `test_train_knowledge_multi_format` called `train_knowledge_from_definitions(..., force_retrain=True)` without `auto_activate=False`, overwriting the global in-memory `ACTIVE_KNOWLEDGE` singleton with a partial subset and causing subsequent test suites (such as Wave 29) to fail on global tag inferences.
+- **Remediation**:
+  1. Preserved custom tags when `knowledge` is explicitly injected and distinct from `get_active_knowledge()`.
+  2. Replaced naive substring `"sn"` with regex `\b(?:sn|s/n)\b` to enforce word boundaries for serial numbers.
+  3. Added test isolation in `TestDatasetLearningAndAudit`: passed `auto_activate=False` in training tests and added `setUpClass`/`tearDownClass` state preservation.
+  4. Added regression test `test_infer_sunpm_tag_guards_dirty_background_knowledge`.
+- **Status**: RESOLVED
+
+### FIND-028: Generator Path Resolution Defect, Single-File Report CLI Desynchronization, PyInstaller Spec Gaps, and Test Suite Workspace Pollution
+- **Severity**: HIGH
+- **Component**: CLI & Reporting, Generator Scripts, Packaging & Hermetic Tests (`scripts/generate_foxess_definitions.py`, `DefFileGenerator/main.py`, `DefFileGenerator/report_generator.py`, `DefFileGenerator.spec`, `DefFileGenerator/tests/test_dyness_definitions.py`)
+- **Trigger**: Direct execution of `python scripts/generate_foxess_definitions.py`, calling `deffilegen report <single_file> --json <path>`, running `mypy DefFileGenerator web`, and running `pytest test_dyness_definitions.py`.
+- **Root Cause**:
+  1. `scripts/generate_foxess_definitions.py` computed `WORKSPACE_DIR = Path(__file__).resolve().parent`, resolving to `scripts/` instead of repo root and triggering `FileNotFoundError` when creating markdown documentation in `docs/`.
+  2. `DefFileGenerator/main.py` defined `--json` as a store_true flag while `--export-json` accepted a string filepath, and the single-file branch completely ignored the export argument. Furthermore, `export_report_json` strictly required `DirectoryReportStats`, raising mypy type errors when passed `DefinitionFileStats`.
+  3. `DefFileGenerator.spec` omitted the new modular components (`DefFileGenerator.discovery.*`, `dyness_generator`, `mars_generator`) and runtime asset `dataset_knowledge.json` in `hiddenimports` and `datas`, risking incomplete standalone PyInstaller binaries.
+  4. `test_dyness_definitions.py` generated definition CSVs directly inside `Definitions/`, mutating tracked and untracked workspace state during test suite runs.
+- **Remediation**:
+  1. Updated `scripts/generate_foxess_definitions.py` with robust root detection (`Path(__file__).resolve().parent.parent if parent.name == "scripts" else parent`).
+  2. Aligned `--json` and `--export-json` as path arguments in `main.py`, implemented single-definition JSON export logic, and broadened `export_report_json` to accept `DirectoryReportStats | DefinitionFileStats`.
+  3. Enriched `DefFileGenerator.spec` with all discovery and generator submodules, package datas, and dependencies.
+  4. Converted `test_dyness_definitions.py` to use `tempfile.TemporaryDirectory` for all generated output, ensuring strict test hermeticity.
+- **Status**: RESOLVED
+

@@ -32,13 +32,21 @@ class DefinitionExporter:
         writer = csv.writer(output, delimiter=";", lineterminator="\n")
 
         # 1. Header Row
-        transport_str = model.transport.value if hasattr(model.transport, "value") else str(model.transport)
+        transport_str = (
+            model.transport.value if hasattr(model.transport, "value") else str(model.transport)
+        )
         header = [
             transport_str,
             model.category or "Inverter",
             model.manufacturer or "Unknown",
             model.model or "Generic",
-            "", "", "", "", "", "", ""
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
         ]
         writer.writerow(header)
 

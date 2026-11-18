@@ -35,7 +35,9 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
     filename = file_path.name
     m = NAMING_PATTERN.match(filename)
     if not m:
-        issues.append(f"Filename '{filename}' does not follow readable pattern <PREFIX>_<Manufacturer>_<Model>.csv")
+        issues.append(
+            f"Filename '{filename}' does not follow readable pattern <PREFIX>_<Manufacturer>_<Model>.csv"
+        )
     else:
         pfx, _mfg, model = m.group(1), m.group(2), m.group(3)
         if pfx not in VALID_PREFIXES:
@@ -44,7 +46,14 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
             issues.append(f"Dangling underscore in model '{model}' in filename '{filename}'")
         if "__" in filename:
             issues.append(f"Double underscore in filename '{filename}'")
-        for bad_suffix in ("_2.csv", "_Test.csv", "_draft.csv", "_wip.csv", "_old.csv", "_copy.csv"):
+        for bad_suffix in (
+            "_2.csv",
+            "_Test.csv",
+            "_draft.csv",
+            "_wip.csv",
+            "_old.csv",
+            "_copy.csv",
+        ):
             if filename.lower().endswith(bad_suffix.lower()):
                 issues.append(f"Forbidden artifact suffix '{bad_suffix}' in filename '{filename}'")
 
@@ -78,7 +87,9 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
 
             for idx, row in enumerate(rows, 1):
                 if len(row) != 11:
-                    issues.append(f"Line {idx} in '{filename}': expected 11 columns, got {len(row)}")
+                    issues.append(
+                        f"Line {idx} in '{filename}': expected 11 columns, got {len(row)}"
+                    )
                     continue
 
                 # Index
@@ -88,7 +99,9 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
                 # Function Code
                 fc = row[1].strip()
                 if fc not in VALID_FUNCTION_CODES:
-                    issues.append(f"Line {idx} in '{filename}': invalid Modbus function code '{fc}'")
+                    issues.append(
+                        f"Line {idx} in '{filename}': invalid Modbus function code '{fc}'"
+                    )
 
                 # Address
                 addr = row[2].strip()
@@ -98,27 +111,48 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
                     dtype = row[3].strip()
                     if dtype == "STRING":
                         if "_" not in addr:
-                            issues.append(f"Line {idx} in '{filename}': STRING address '{addr}' missing length suffix")
+                            issues.append(
+                                f"Line {idx} in '{filename}': STRING address '{addr}' missing length suffix"
+                            )
                     else:
                         base_addr = addr.split("_")[0]
                         if not base_addr.isdigit():
-                            issues.append(f"Line {idx} in '{filename}': non-numeric address '{addr}'")
+                            issues.append(
+                                f"Line {idx} in '{filename}': non-numeric address '{addr}'"
+                            )
                         else:
                             iaddr = int(base_addr)
                             if not (0 <= iaddr <= 65535):
-                                issues.append(f"Line {idx} in '{filename}': address '{addr}' out of 16-bit range")
+                                issues.append(
+                                    f"Line {idx} in '{filename}': address '{addr}' out of 16-bit range"
+                                )
 
                 # Action Code
                 action = row[10].strip()
                 if action not in VALID_ACTIONS:
-                    issues.append(f"Line {idx} in '{filename}': invalid Webdyn action code '{action}'")
+                    issues.append(
+                        f"Line {idx} in '{filename}': invalid Webdyn action code '{action}'"
+                    )
 
                 # SunPM Tag
                 tag = row[6].strip()
                 if tag:
-                    if tag in ("P_AC", "Q_AC", "S_AC", "P_DC", "FREQ", "PF", "E_TOT", "E_DAY", "MODEL", "SERIAL"):
+                    if tag in (
+                        "P_AC",
+                        "Q_AC",
+                        "S_AC",
+                        "P_DC",
+                        "FREQ",
+                        "PF",
+                        "E_TOT",
+                        "E_DAY",
+                        "MODEL",
+                        "SERIAL",
+                    ):
                         if tag in seen_single_tags:
-                            issues.append(f"Line {idx} in '{filename}': duplicate unique physical tag '{tag}'")
+                            issues.append(
+                                f"Line {idx} in '{filename}': duplicate unique physical tag '{tag}'"
+                            )
                         seen_single_tags.add(tag)
 
     except Exception as e:

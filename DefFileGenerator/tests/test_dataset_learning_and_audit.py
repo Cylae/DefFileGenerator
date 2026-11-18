@@ -13,6 +13,7 @@ import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
+from typing import Any
 
 from DefFileGenerator.knowledge_miner import (
     DatasetKnowledge,
@@ -28,6 +29,20 @@ from DefFileGenerator.main import _run_cli
 
 class TestDatasetLearningAndAudit(unittest.TestCase):
     """Test suite for dataset learning, definition auditing, and auto-repairing."""
+
+    _saved_knowledge: Any = None
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        import DefFileGenerator.knowledge_miner as km
+
+        cls._saved_knowledge = km.ACTIVE_KNOWLEDGE
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        import DefFileGenerator.knowledge_miner as km
+
+        km.ACTIVE_KNOWLEDGE = cls._saved_knowledge
 
     def test_clean_variable_key(self) -> None:
         """Verifies token normalization strips prefixes and punctuation."""
@@ -96,7 +111,7 @@ class TestDatasetLearningAndAudit(unittest.TestCase):
         self.assertTrue(definitions_dir.is_dir(), "Definitions directory must exist")
 
         knowledge = train_knowledge_from_definitions(
-            directories=definitions_dir, force_retrain=True
+            directories=definitions_dir, force_retrain=True, auto_activate=False
         )
         self.assertGreaterEqual(knowledge.total_definitions_mined, 120)
         self.assertGreaterEqual(knowledge.total_registers_mined, 15000)
@@ -116,6 +131,16 @@ class TestDatasetLearningAndAudit(unittest.TestCase):
             knowledge=custom_knowledge,
         )
         self.assertEqual(inferred, "CUSTOM_TAG_TEST")
+
+    def test_infer_sunpm_tag_guards_dirty_background_knowledge(self) -> None:
+        """Verifies that non-canonical empirical tags from dirty background knowledge are guarded (FIND-024)."""
+        # When knowledge is None (default background), non-canonical empirical tags are discarded
+        # ensuring rule-based canonical SunPM inference (e.g. I_DC_STRING_1 instead of I_STR_1)
+        tag = infer_sunpm_tag("PV String 1 Current")
+        self.assertEqual(tag, "I_DC_STRING_1")
+        # And non-canonical unknown metric with default background returns empty
+        unknown_tag = infer_sunpm_tag("SuperSpecialEmpiricalMetricThatDoesNotExistAnywhereInSunPM")
+        self.assertEqual(unknown_tag, "")
 
     def test_audit_definition_file_valid(self) -> None:
         """Verifies that an audited valid file produces no errors."""
@@ -237,6 +262,7 @@ class TestDatasetLearningAndAudit(unittest.TestCase):
                 directories=tmpdir,
                 force_retrain=True,
                 include_ini=True,
+                auto_activate=False,
             )
             self.assertEqual(knowledge.total_definitions_mined, 2)
             self.assertGreaterEqual(knowledge.total_registers_mined, 3)

@@ -32,7 +32,9 @@ class TestWebDiscoveryEndpoints(unittest.TestCase):
         data = response.json()
         self.assertIn("cannot be empty", data["detail"])
 
-    @patch("DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock)
+    @patch(
+        "DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock
+    )
     def test_lookup_successful_mocked(self, mock_run):
         mock_run.return_value = AutonomousPipelineResult(
             success=True,
@@ -91,7 +93,11 @@ class TestWebDiscoveryEndpoints(unittest.TestCase):
 
         response = self.client.post(
             "/api/discovery/lookup",
-            json={"query": "Huawei SUN2000-100KTL", "target_format": "webdyn_sunpm", "ocr_fallback": True},
+            json={
+                "query": "Huawei SUN2000-100KTL",
+                "target_format": "webdyn_sunpm",
+                "ocr_fallback": True,
+            },
         )
         self.assertEqual(response.status_code, 200)
         data = response.json()
@@ -109,7 +115,9 @@ class TestWebDiscoveryEndpoints(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn("Unsupported file type", response.json()["detail"])
 
-    @patch("DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock)
+    @patch(
+        "DefFileGenerator.discovery.orchestrator.WorkflowOrchestrator.run", new_callable=AsyncMock
+    )
     def test_upload_valid_csv_file(self, mock_run):
         mock_run.return_value = AutonomousPipelineResult(
             success=True,

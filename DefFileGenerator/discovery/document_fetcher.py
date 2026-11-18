@@ -18,7 +18,7 @@ from DefFileGenerator.discovery.models import DocumentCandidate, FetchOutcome, F
 
 logger = logging.getLogger(__name__)
 
-MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024       # 25 MB maximum
+MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024  # 25 MB maximum
 MAX_REDIRECTS = 5
 DEFAULT_TIMEOUT_SEC = 30.0
 ALLOWED_SCHEMES = frozenset({"http", "https"})
@@ -58,7 +58,11 @@ def validate_target_url(url: str) -> tuple[bool, str, list[str]]:
     """
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme.lower() not in ALLOWED_SCHEMES:
-        return False, f"Forbidden URL scheme '{parsed.scheme}'. Only HTTPS and HTTP are allowed.", []
+        return (
+            False,
+            f"Forbidden URL scheme '{parsed.scheme}'. Only HTTPS and HTTP are allowed.",
+            [],
+        )
 
     hostname = parsed.hostname
     if not hostname:
@@ -83,7 +87,11 @@ def validate_target_url(url: str) -> tuple[bool, str, list[str]]:
 
     for ip_str in resolved_ips:
         if not is_ip_allowed(ip_str):
-            return False, f"Forbidden destination IP '{ip_str}' resolved from '{hostname}'.", resolved_ips
+            return (
+                False,
+                f"Forbidden destination IP '{ip_str}' resolved from '{hostname}'.",
+                resolved_ips,
+            )
 
     return True, "", resolved_ips
 
@@ -110,7 +118,9 @@ class DocumentFetcher:
         Retrieves a document safely from a URL or DocumentCandidate.
         Enforces SSRF boundary guards at every redirect hop.
         """
-        current_url = candidate.source_url if isinstance(candidate, DocumentCandidate) else candidate
+        current_url = (
+            candidate.source_url if isinstance(candidate, DocumentCandidate) else candidate
+        )
         headers = {
             "User-Agent": "WebdynModbusDiscovery/1.0 (Industrial Protocol Ingestion Engine; +https://webdyn.com)",
             "Accept": "application/pdf, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, text/csv, text/html, */*",

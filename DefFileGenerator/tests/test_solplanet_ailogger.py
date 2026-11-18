@@ -155,7 +155,10 @@ def test_knowledge_base_contains_ailogger_variables():
     assert kb.get_learned_tag("Wind Speed Sensor 2") == "WIND_SPEED_2"
     assert kb.get_learned_tag("Total Inverters Active Power") == "P_AC_TOTAL"
     assert kb.get_learned_tag("Meter Total Active Power") == "P_AC_METER"
-    assert kb.get_learned_tag("Active Power Control Command (-100 to 100% Pn)") == "CMD_P_AC_SET_PERCENT"
+    assert (
+        kb.get_learned_tag("Active Power Control Command (-100 to 100% Pn)")
+        == "CMD_P_AC_SET_PERCENT"
+    )
 
 
 def test_solplanet_field_telemetry_profiles():
@@ -205,4 +208,3 @@ def test_solplanet_field_telemetry_profiles():
         assert float(r2[7]) == 1.0
         assert r2[9] == "W"
         assert r2[10] == "2"  # Action code 2 (Instantaneous telemetry)
-

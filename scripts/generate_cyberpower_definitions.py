@@ -93,7 +93,9 @@ def build_generic_cyberpower_rows() -> list[tuple]:
     rows.append((4, "8633", "U16", "BUS1_Voltage", "U_BUS_1", 0.1, 0.0, "V", 4))
     rows.append((4, "8634", "U16", "BUS2_Voltage", "U_BUS_2", 0.1, 0.0, "V", 4))
     rows.append((4, "8635", "U16", "PV Rleakage", "R_ISO", 1.0, 0.0, "kOhm", 4))
-    rows.append((4, "8636", "I16", "Temperature (air around power stage)", "T_INT", 0.1, 0.0, "°C", 4))
+    rows.append(
+        (4, "8636", "I16", "Temperature (air around power stage)", "T_INT", 0.1, 0.0, "°C", 4)
+    )
     rows.append((4, "8637", "I16", "Temperature (wiring box)", "T_AMB", 0.1, 0.0, "°C", 4))
     rows.append((4, "8638", "I16", "Highest Inv Temp", "T_MOD", 0.1, 0.0, "°C", 4))
     rows.append((4, "8639", "I16", "Highest DD Temp", "", 0.1, 0.0, "°C", 4))
@@ -136,28 +138,108 @@ def build_generic_cyberpower_rows() -> list[tuple]:
         base_addr = 8208 + (s_idx - 1) * 3
         pv_idx = (s_idx - 1) // 4 + 1
         pv_s_idx = (s_idx - 1) % 4 + 1
-        rows.append((4, str(base_addr), "U16", f"PV{pv_idx} String {pv_s_idx} Voltage", f"U_STR_{s_idx}", 0.1, 0.0, "V", 4))
-        rows.append((4, str(base_addr + 1), "U16", f"PV{pv_idx} String {pv_s_idx} Current", f"I_STR_{s_idx}", 0.01, 0.0, "A", 4))
-        rows.append((4, str(base_addr + 2), "U16", f"PV{pv_idx} String {pv_s_idx} Power", f"P_STR_{s_idx}", 1.0, 0.0, "W", 4))
+        rows.append(
+            (
+                4,
+                str(base_addr),
+                "U16",
+                f"PV{pv_idx} String {pv_s_idx} Voltage",
+                f"U_STR_{s_idx}",
+                0.1,
+                0.0,
+                "V",
+                4,
+            )
+        )
+        rows.append(
+            (
+                4,
+                str(base_addr + 1),
+                "U16",
+                f"PV{pv_idx} String {pv_s_idx} Current",
+                f"I_STR_{s_idx}",
+                0.01,
+                0.0,
+                "A",
+                4,
+            )
+        )
+        rows.append(
+            (
+                4,
+                str(base_addr + 2),
+                "U16",
+                f"PV{pv_idx} String {pv_s_idx} Power",
+                f"P_STR_{s_idx}",
+                1.0,
+                0.0,
+                "W",
+                4,
+            )
+        )
 
     # 9. Strings 1 to 12 Today & Life Energy (FC 4)
     for s_idx in range(1, 13):
         base_addr = 8304 + (s_idx - 1) * 4
-        rows.append((4, str(base_addr), "U32_W", f"String {s_idx} Today energy", "", 1.0, 0.0, "Wh", 4))
-        rows.append((4, str(base_addr + 2), "U32_W", f"String {s_idx} Life energy", "", 1.0, 0.0, "Wh", 4))
+        rows.append(
+            (4, str(base_addr), "U32_W", f"String {s_idx} Today energy", "", 1.0, 0.0, "Wh", 4)
+        )
+        rows.append(
+            (4, str(base_addr + 2), "U32_W", f"String {s_idx} Life energy", "", 1.0, 0.0, "Wh", 4)
+        )
 
     # 10. PV5 to PV12 High-Power Inverters Today & Life Energy (FC 4)
     for pv_idx in range(5, 13):
         base_addr = 17664 + (pv_idx - 5) * 4
-        rows.append((4, str(base_addr), "U32_W", f"PV{pv_idx} Today energy", f"E_DC_DAY_{pv_idx}", 0.1, 0.0, "kWh", 4))
-        rows.append((4, str(base_addr + 2), "U32_W", f"PV{pv_idx} Life energy", f"E_DC_TOT_{pv_idx}", 0.1, 0.0, "kWh", 4))
+        rows.append(
+            (
+                4,
+                str(base_addr),
+                "U32_W",
+                f"PV{pv_idx} Today energy",
+                f"E_DC_DAY_{pv_idx}",
+                0.1,
+                0.0,
+                "kWh",
+                4,
+            )
+        )
+        rows.append(
+            (
+                4,
+                str(base_addr + 2),
+                "U32_W",
+                f"PV{pv_idx} Life energy",
+                f"E_DC_TOT_{pv_idx}",
+                0.1,
+                0.0,
+                "kWh",
+                4,
+            )
+        )
 
     # 11. PV5 to PV12 High-Power Inverters Voltages, Currents, Powers (FC 4)
     for pv_idx in range(5, 13):
         base_addr = 17744 + (pv_idx - 5) * 3
-        rows.append((4, str(base_addr), "U16", f"PV{pv_idx} Voltage", f"U_DC_{pv_idx}", 0.1, 0.0, "V", 4))
-        rows.append((4, str(base_addr + 1), "U16", f"PV{pv_idx} Current", f"I_DC_{pv_idx}", 0.01, 0.0, "A", 4))
-        rows.append((4, str(base_addr + 2), "U16", f"PV{pv_idx} Power", f"P_DC_{pv_idx}", 1.0, 0.0, "W", 4))
+        rows.append(
+            (4, str(base_addr), "U16", f"PV{pv_idx} Voltage", f"U_DC_{pv_idx}", 0.1, 0.0, "V", 4)
+        )
+        rows.append(
+            (
+                4,
+                str(base_addr + 1),
+                "U16",
+                f"PV{pv_idx} Current",
+                f"I_DC_{pv_idx}",
+                0.01,
+                0.0,
+                "A",
+                4,
+            )
+        )
+        rows.append(
+            (4, str(base_addr + 2), "U16", f"PV{pv_idx} Power", f"P_DC_{pv_idx}", 1.0, 0.0, "W", 4)
+        )
 
     return rows
 

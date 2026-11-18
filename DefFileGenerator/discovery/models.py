@@ -19,17 +19,17 @@ class ProtocolTransport(str, Enum):
 
 
 class RegisterSpace(str, Enum):
-    HOLDING_REGISTER = "holding_register"      # FC03 / FC06 / FC16
-    INPUT_REGISTER = "input_register"          # FC04
-    COIL = "coil"                              # FC01 / FC05 / FC15
-    DISCRETE_INPUT = "discrete_input"          # FC02
+    HOLDING_REGISTER = "holding_register"  # FC03 / FC06 / FC16
+    INPUT_REGISTER = "input_register"  # FC04
+    COIL = "coil"  # FC01 / FC05 / FC15
+    DISCRETE_INPUT = "discrete_input"  # FC02
 
 
 class Endianness(str, Enum):
-    BIG_ENDIAN = "BE"                          # Standard Modbus (AB / ABCD)
-    LITTLE_ENDIAN = "LE"                       # Word reversed (BA / CDAB)
-    MID_BIG_ENDIAN = "MBE"                     # Byte swapped within word
-    MID_LITTLE_ENDIAN = "MLE"                  # Word swapped, byte preserved
+    BIG_ENDIAN = "BE"  # Standard Modbus (AB / ABCD)
+    LITTLE_ENDIAN = "LE"  # Word reversed (BA / CDAB)
+    MID_BIG_ENDIAN = "MBE"  # Byte swapped within word
+    MID_LITTLE_ENDIAN = "MLE"  # Word swapped, byte preserved
 
 
 class RegisterDataType(str, Enum):
@@ -58,21 +58,21 @@ class ProvenanceRecord(BaseModel):
 
 
 class CanonicalRegisterRecord(BaseModel):
-    id: str                                    # Unique internal identifier
-    name: str                                  # Manufacturer variable name
-    address: int = Field(ge=0, le=65535)       # Protocol address (0-65535)
+    id: str  # Unique internal identifier
+    name: str  # Manufacturer variable name
+    address: int = Field(ge=0, le=65535)  # Protocol address (0-65535)
     address_base_provenance: str = "documented_0_based"  # "documented_0_based", "inferred_1_based"
     register_space: RegisterSpace = RegisterSpace.HOLDING_REGISTER
-    read_fc: int = 3                           # 3: Holding, 4: Input, 1: Coil, 2: Discrete
-    write_fc: int | None = None                # 6, 16, 5, 15
+    read_fc: int = 3  # 3: Holding, 4: Input, 1: Coil, 2: Discrete
+    write_fc: int | None = None  # 6, 16, 5, 15
     data_type: RegisterDataType = RegisterDataType.U16
     register_count: int = Field(default=1, ge=1, le=4)
     endianness: Endianness = Endianness.BIG_ENDIAN
     factor: float = 1.0
     offset: float = 0.0
     unit: str = ""
-    canonical_sunpm_tag: str | None = None     # Left blank if uncertified by official spec
-    action_code: int = 4                       # 1: Alarm, 2: Event, 3: Param, 4: Measurement
+    canonical_sunpm_tag: str | None = None  # Left blank if uncertified by official spec
+    action_code: int = 4  # 1: Alarm, 2: Event, 3: Param, 4: Measurement
     is_writable: bool = False
     is_optional: bool = False
     sentinels: list[int] = Field(default_factory=list)
@@ -86,7 +86,7 @@ class CanonicalEquipmentModel(BaseModel):
     hardware_revisions: list[str] = Field(default_factory=list)
     supported_firmwares: list[str] = Field(default_factory=list)
     transport: ProtocolTransport = ProtocolTransport.MODBUS_RTU
-    category: str = "Inverter"                  # Inverter, Meter, Battery, Sensor, Logger, Other
+    category: str = "Inverter"  # Inverter, Meter, Battery, Sensor, Logger, Other
     registers: list[CanonicalRegisterRecord] = Field(default_factory=list)
     sunspec_base_address: int | None = None
     total_registers: int = 0
@@ -109,7 +109,7 @@ class DocumentCandidate(BaseModel):
     title: str
     publisher: str
     is_official_manufacturer: bool = True
-    relevance_rank: int = 1                    # 1 to 6 scale
+    relevance_rank: int = 1  # 1 to 6 scale
     firmware_applicability: list[str] = Field(default_factory=list)
     document_date: str | None = None
     sha256_preview: str | None = None

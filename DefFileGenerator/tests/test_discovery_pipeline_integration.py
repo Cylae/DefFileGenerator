@@ -39,7 +39,9 @@ async def test_end_to_end_autonomous_pipeline_with_csv_manual():
     with patch.object(orchestrator.fetcher, "fetch", new_callable=AsyncMock) as mock_fetch_call:
         mock_fetch_call.return_value = mock_fetch
 
-        result = await orchestrator.run("Huawei SUN2000-100KTL-M1", target=ExportTarget.WEBDYN_SUNPM)
+        result = await orchestrator.run(
+            "Huawei SUN2000-100KTL-M1", target=ExportTarget.WEBDYN_SUNPM
+        )
 
         assert result.success
         assert result.status == ValidationStatus.VALIDATED_OFFLINE
@@ -59,13 +61,13 @@ async def test_end_to_end_autonomous_pipeline_with_csv_manual():
 
         # First register check: address 0x1000 -> 4096, U32, CoefA = 0.100000
         row1 = lines[1].split(";")
-        assert row1[0] == "1"       # 1-based index
-        assert row1[1] == "3"       # Read FC 3
-        assert row1[2] == "4096"    # Address 4096
-        assert row1[3] == "U32"     # U32 type
+        assert row1[0] == "1"  # 1-based index
+        assert row1[1] == "3"  # Read FC 3
+        assert row1[2] == "4096"  # Address 4096
+        assert row1[3] == "U32"  # U32 type
         assert row1[5] == "Active Power"
-        assert row1[7] == "0.100000" # CoefA
-        assert row1[8] == "0.000000" # CoefB
+        assert row1[7] == "0.100000"  # CoefA
+        assert row1[8] == "0.000000"  # CoefB
         assert row1[9] == "kW"
 
         # Fourth register (Active Power Setpoint): is_writable -> Action 3
@@ -119,4 +121,3 @@ async def test_ssrf_blocked_in_discovery_pipeline():
         assert not result.success
         assert result.status == ValidationStatus.BLOCKED_ACCESS
         assert "SSRF" in (result.error_message or "")
-

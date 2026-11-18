@@ -80,23 +80,27 @@ from enum import Enum
 from typing import Optional, List, Dict, Any
 from pydantic import BaseModel, Field
 
+
 class ProtocolTransport(str, Enum):
     MODBUS_RTU = "modbusRTU"
     MODBUS_TCP = "modbusTCP"
     SUNSPEC_RTU = "sunspecRTU"
     SUNSPEC_TCP = "sunspecTCP"
 
+
 class RegisterSpace(str, Enum):
-    HOLDING_REGISTER = "holding_register"      # FC03 / FC06 / FC16
-    INPUT_REGISTER = "input_register"          # FC04
-    COIL = "coil"                              # FC01 / FC05 / FC15
-    DISCRETE_INPUT = "discrete_input"          # FC02
+    HOLDING_REGISTER = "holding_register"  # FC03 / FC06 / FC16
+    INPUT_REGISTER = "input_register"  # FC04
+    COIL = "coil"  # FC01 / FC05 / FC15
+    DISCRETE_INPUT = "discrete_input"  # FC02
+
 
 class Endianness(str, Enum):
-    BIG_ENDIAN = "BE"                          # Standard Modbus (AB / ABCD)
-    LITTLE_ENDIAN = "LE"                       # Word reversed (BA / CDAB)
-    MID_BIG_ENDIAN = "MBE"                     # Byte swapped within word
-    MID_LITTLE_ENDIAN = "MLE"                  # Word swapped, byte preserved
+    BIG_ENDIAN = "BE"  # Standard Modbus (AB / ABCD)
+    LITTLE_ENDIAN = "LE"  # Word reversed (BA / CDAB)
+    MID_BIG_ENDIAN = "MBE"  # Byte swapped within word
+    MID_LITTLE_ENDIAN = "MLE"  # Word swapped, byte preserved
+
 
 class RegisterDataType(str, Enum):
     U16 = "U16"
@@ -111,6 +115,7 @@ class RegisterDataType(str, Enum):
     BITFIELD16 = "BITFIELD16"
     BITFIELD32 = "BITFIELD32"
 
+
 class ProvenanceRecord(BaseModel):
     document_sha256: str
     document_title: str
@@ -121,14 +126,15 @@ class ProvenanceRecord(BaseModel):
     raw_text_snippet: str
     extraction_confidence: float = Field(default=1.0, ge=0.0, le=1.0)
 
+
 class CanonicalRegisterRecord(BaseModel):
-    id: str                                    # Unique internal identifier
-    name: str                                  # Manufacturer variable name
-    address: int = Field(ge=0, le=65535)       # Protocol address (0-65535)
-    address_base_provenance: str               # "documented_0_based", "inferred_1_based", etc.
+    id: str  # Unique internal identifier
+    name: str  # Manufacturer variable name
+    address: int = Field(ge=0, le=65535)  # Protocol address (0-65535)
+    address_base_provenance: str  # "documented_0_based", "inferred_1_based", etc.
     register_space: RegisterSpace
-    read_fc: int                               # 3, 4, 1, 2
-    write_fc: Optional[int] = None             # 6, 16, 5, 15
+    read_fc: int  # 3, 4, 1, 2
+    write_fc: Optional[int] = None  # 6, 16, 5, 15
     data_type: RegisterDataType
     register_count: int = Field(ge=1, le=4)
     endianness: Endianness = Endianness.BIG_ENDIAN
@@ -136,12 +142,13 @@ class CanonicalRegisterRecord(BaseModel):
     offset: float = 0.0
     unit: str = ""
     canonical_sunpm_tag: Optional[str] = None
-    action_code: int = 4                       # 1: Alarm, 2: Event, 3: Param, 4: Measurement
+    action_code: int = 4  # 1: Alarm, 2: Event, 3: Param, 4: Measurement
     is_writable: bool = False
     is_optional: bool = False
-    sentinels: List[int] = []                  # e.g., 0xFFFF, 0x8000 for invalid
+    sentinels: List[int] = []  # e.g., 0xFFFF, 0x8000 for invalid
     bit_allocations: Optional[Dict[str, int]] = None
     provenance: ProvenanceRecord
+
 
 class CanonicalEquipmentModel(BaseModel):
     manufacturer: str
@@ -149,7 +156,7 @@ class CanonicalEquipmentModel(BaseModel):
     hardware_revisions: List[str] = []
     supported_firmwares: List[str] = []
     transport: ProtocolTransport
-    category: str                              # Inverter, Meter, Battery, Sensor, Logger, Other
+    category: str  # Inverter, Meter, Battery, Sensor, Logger, Other
     registers: List[CanonicalRegisterRecord]
     sunspec_base_address: Optional[int] = None
     total_registers: int
@@ -172,6 +179,7 @@ class IdentityCandidate(BaseModel):
     is_ambiguous: bool
     distinguishing_factors: List[str]
 
+
 class IdentityResolver:
     async def resolve(self, query: str) -> List[IdentityCandidate]:
         """Tokenizes user reference, scans known manufacturer taxonomy and aliases,
@@ -186,10 +194,11 @@ class DocumentCandidate(BaseModel):
     title: str
     publisher: str
     is_official_manufacturer: bool
-    relevance_rank: int                        # 1 to 6 ranking scale
+    relevance_rank: int  # 1 to 6 ranking scale
     firmware_applicability: List[str]
     document_date: Optional[str]
     sha256_preview: Optional[str]
+
 
 class SourceDiscovery:
     async def discover(self, identity: IdentityCandidate) -> List[DocumentCandidate]:
@@ -208,6 +217,7 @@ class FetchOutcome(str, Enum):
     ACCESS_RESTRICTED = "access_restricted"
     NETWORK_TIMEOUT = "network_timeout"
 
+
 class FetchResult(BaseModel):
     outcome: FetchOutcome
     file_bytes: Optional[bytes]
@@ -216,8 +226,11 @@ class FetchResult(BaseModel):
     final_url: str
     error_message: Optional[str] = None
 
+
 class DocumentFetcher:
-    async def fetch(self, candidate: DocumentCandidate, budget_timeout_sec: float = 30.0) -> FetchResult:
+    async def fetch(
+        self, candidate: DocumentCandidate, budget_timeout_sec: float = 30.0
+    ) -> FetchResult:
         """Retrieves document over HTTPS. Enforces SSRF boundary guards, validates DNS resolution
         against RFC 1918 / loopback / link-local addresses, verifies TLS certs, and caps stream at 25 MB."""
         ...
@@ -233,6 +246,7 @@ class RawExtractedTable(BaseModel):
     confidence: float
     is_ocr: bool
 
+
 class DocumentExtractor:
     async def extract_tables(self, file_bytes: bytes, file_format: str) -> List[RawExtractedTable]:
         """Detects format (PDF, XLSX, CSV, HTML). Prioritizes native vector/text layers.
@@ -243,7 +257,9 @@ class DocumentExtractor:
 ### 5.5 RegisterNormalizer
 ```python
 class RegisterNormalizer:
-    def normalize(self, tables: List[RawExtractedTable], identity: IdentityCandidate) -> CanonicalEquipmentModel:
+    def normalize(
+        self, tables: List[RawExtractedTable], identity: IdentityCandidate
+    ) -> CanonicalEquipmentModel:
         """Converts raw table rows into CanonicalRegisterRecord instances.
         Determines 0-based vs 1-based offset from explicit text or register 40001 conventions.
         Normalizes hex vs decimal radix, data types, and factor/unit pairs."""
@@ -259,12 +275,14 @@ class ValidationStatus(str, Enum):
     SOURCE_CONFLICT = "SOURCE_CONFLICT"
     FAILED_VALIDATION = "FAILED_VALIDATION"
 
+
 class ValidationOutcome(BaseModel):
     status: ValidationStatus
     pillar_statuses: Dict[str, bool]
     blocking_issues: List[str]
     warnings: List[str]
-    reconciliation: Dict[str, int]             # total_extracted, direct_included, excluded_reserved
+    reconciliation: Dict[str, int]  # total_extracted, direct_included, excluded_reserved
+
 
 class SemanticValidator:
     def validate(self, model: CanonicalEquipmentModel) -> ValidationOutcome:
@@ -279,8 +297,11 @@ class ExportTarget(str, Enum):
     WEBDYN_SUNPM = "webdyn_sunpm"
     WEBDYN_CLASSIC = "webdyn_classic"
 
+
 class DefinitionExporter:
-    def export(self, model: CanonicalEquipmentModel, target: ExportTarget = ExportTarget.WEBDYN_SUNPM) -> str:
+    def export(
+        self, model: CanonicalEquipmentModel, target: ExportTarget = ExportTarget.WEBDYN_SUNPM
+    ) -> str:
         """Compiles validated canonical model into standard 11-column semicolon-delimited CSV,
         formatted in UTF-8 without BOM (or with BOM if classic target requires), with 1-based indexing."""
         ...
@@ -375,30 +396,69 @@ When Phase B implementation is authorized, verification must satisfy the followi
 # Test Matrix Specification (docs/AUTONOMOUS_MODBUS_DISCOVERY_SPECIFICATION.md)
 TEST_SUITE_PHASE_B = [
     # 1. Identity Resolution Cases
-    {"id": "TC_ID_01", "query": "Huawei SUN2000-100KTL-M1", "expected": "SUN2000-100KTL-M1", "status": "EXACT"},
-    {"id": "TC_ID_02", "query": "Sofar Solar 60KTL", "expected": ["60KTL", "60KTL-G2"], "status": "AMBIGUOUS_MODEL"},
+    {
+        "id": "TC_ID_01",
+        "query": "Huawei SUN2000-100KTL-M1",
+        "expected": "SUN2000-100KTL-M1",
+        "status": "EXACT",
+    },
+    {
+        "id": "TC_ID_02",
+        "query": "Sofar Solar 60KTL",
+        "expected": ["60KTL", "60KTL-G2"],
+        "status": "AMBIGUOUS_MODEL",
+    },
     {"id": "TC_ID_03", "query": "Solplanet Ai-Logger", "expected": "Ai-Logger", "category": "COM"},
-
     # 2. Retrieval Security (Boundary Guard)
-    {"id": "TC_SEC_01", "url": "http://169.254.169.254/latest/meta-data/", "expected": "BLOCKED_SSRF"},
+    {
+        "id": "TC_SEC_01",
+        "url": "http://169.254.169.254/latest/meta-data/",
+        "expected": "BLOCKED_SSRF",
+    },
     {"id": "TC_SEC_02", "url": "http://127.0.0.1:8000/internal", "expected": "BLOCKED_SSRF"},
-    {"id": "TC_SEC_03", "url": "https://httpbin.org/redirect-to?url=http://192.168.1.1", "expected": "BLOCKED_SSRF"},
+    {
+        "id": "TC_SEC_03",
+        "url": "https://httpbin.org/redirect-to?url=http://192.168.1.1",
+        "expected": "BLOCKED_SSRF",
+    },
     {"id": "TC_SEC_04", "url": "https://example.com/bomb.zip", "expected": "OVERSPEC_BYTES"},
-
     # 3. Document Extraction & OCR
-    {"id": "TC_EXT_01", "fixture": "tests/fixtures/huawei_modbus_native.pdf", "expected_regs": 105, "is_ocr": False},
-    {"id": "TC_EXT_02", "fixture": "tests/fixtures/scanned_abb_meter.pdf", "expected_regs": 45, "is_ocr": True},
-    {"id": "TC_EXT_03", "fixture": "tests/fixtures/mars_io_multisheet.xlsx", "expected_regs": 120, "is_ocr": False},
-
+    {
+        "id": "TC_EXT_01",
+        "fixture": "tests/fixtures/huawei_modbus_native.pdf",
+        "expected_regs": 105,
+        "is_ocr": False,
+    },
+    {
+        "id": "TC_EXT_02",
+        "fixture": "tests/fixtures/scanned_abb_meter.pdf",
+        "expected_regs": 45,
+        "is_ocr": True,
+    },
+    {
+        "id": "TC_EXT_03",
+        "fixture": "tests/fixtures/mars_io_multisheet.xlsx",
+        "expected_regs": 120,
+        "is_ocr": False,
+    },
     # 4. Modbus Normalization & Radix
     {"id": "TC_MOD_01", "input_addr": "0x1000", "expected_addr": 4096, "space": "holding_register"},
     {"id": "TC_MOD_02", "input_addr": "40001", "notation": "PLC_1_based", "expected_addr": 0},
     {"id": "TC_MOD_03", "input_scale": "0.01", "expected_coef_a": 0.01, "expected_coef_b": 0.0},
-
     # 5. Semantic Validation & Export
     {"id": "TC_VAL_01", "fixture": "valid_canonical_inverter", "expected": "VALIDATED_OFFLINE"},
-    {"id": "TC_VAL_02", "fixture": "overlapping_incompatible_types", "expected": "FAILED_VALIDATION"},
-    {"id": "TC_EXP_01", "fixture": "valid_canonical_inverter", "target": "WebdynSunPM", "columns": 11, "bom": False}
+    {
+        "id": "TC_VAL_02",
+        "fixture": "overlapping_incompatible_types",
+        "expected": "FAILED_VALIDATION",
+    },
+    {
+        "id": "TC_EXP_01",
+        "fixture": "valid_canonical_inverter",
+        "target": "WebdynSunPM",
+        "columns": 11,
+        "bom": False,
+    },
 ]
 ```
 

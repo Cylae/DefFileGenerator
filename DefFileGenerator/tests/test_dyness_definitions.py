@@ -17,6 +17,7 @@ Covers:
 """
 
 import csv
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -102,28 +103,44 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
     validator: Generator
     parser: DynessProtocolParser
     generated: dict[str, Path]
+    gen_dir: Path
+    _tmp: tempfile.TemporaryDirectory[str] | None = None
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.validator = Generator()
-        # Ensure fresh generation
+        # Hermetic: regenerate into a temp dir so the test suite never mutates committed fixtures.
         cls.parser = DynessProtocolParser(RAW_CSV)
         cls.parser.parse()
-        gen = DynessDefinitionGenerator(cls.parser, DEFINITIONS_DIR)
-        cls.generated = gen.generate_all()
+        if RAW_CSV.exists():
+            cls._tmp = tempfile.TemporaryDirectory()
+            cls.gen_dir = Path(cls._tmp.name)
+            gen = DynessDefinitionGenerator(cls.parser, cls.gen_dir)
+            cls.generated = gen.generate_all()
+        else:
+            cls.gen_dir = DEFINITIONS_DIR
+            cls.generated = {k: DEFINITIONS_DIR / v for k, v in EXPECTED_FILES.items()}
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        if cls._tmp is not None:
+            cls._tmp.cleanup()
 
     def test_all_expected_files_exist(self) -> None:
         for _model_key, filename in EXPECTED_FILES.items():
-            filepath = DEFINITIONS_DIR / filename
+            filepath = self.gen_dir / filename
             self.assertTrue(filepath.is_file(), f"Missing definition file: {filename}")
             self.assertGreater(
                 filepath.stat().st_size, 20_000, f"Definition file too small: {filename}"
             )
+            # Verify committed definitions also exist
+            committed = DEFINITIONS_DIR / filename
+            self.assertTrue(committed.is_file(), f"Committed definition missing: {filename}")
 
     def test_strict_webdyn_validation(self) -> None:
         """Every generated Dyness definition must pass strict validation with 0 errors and 0 overlaps."""
         for filename in EXPECTED_FILES.values():
-            filepath = DEFINITIONS_DIR / filename
+            filepath = self.gen_dir / filename
             report = self.validator.validate_csv_detailed(
                 str(filepath),
                 strict=True,
@@ -138,7 +155,7 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
     def test_utf8_bom_and_header(self) -> None:
         """Verify UTF-8 without BOM, 11-column header, and metadata."""
         for model_key, filename in EXPECTED_FILES.items():
-            filepath = DEFINITIONS_DIR / filename
+            filepath = self.gen_dir / filename
             with open(filepath, "rb") as f:
                 bom = f.read(3)
                 self.assertNotEqual(bom, b"\xef\xbb\xbf", f"{filename} must not have UTF-8 BOM")
@@ -155,7 +172,7 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
     def test_tag_uniqueness(self) -> None:
         """Verify 0 duplicate SunPM tags within any file."""
         for filename in EXPECTED_FILES.values():
-            filepath = DEFINITIONS_DIR / filename
+            filepath = self.gen_dir / filename
             seen_tags: set[str] = set()
             with open(filepath, encoding="utf-8-sig") as f:
                 reader = csv.reader(f, delimiter=";")
@@ -174,7 +191,7 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
     def test_sequential_indexing(self) -> None:
         """Verify 1-based sequential indexing for all rows."""
         for filename in EXPECTED_FILES.values():
-            filepath = DEFINITIONS_DIR / filename
+            filepath = self.gen_dir / filename
             with open(filepath, encoding="utf-8-sig") as f:
                 reader = csv.reader(f, delimiter=";")
                 next(reader)
@@ -188,7 +205,7 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
     def test_physical_offsets_and_units(self) -> None:
         """Verify temperature (-40.0 °C) and pack current (-3200.0 A) physical offsets."""
         for filename in EXPECTED_FILES.values():
-            filepath = DEFINITIONS_DIR / filename
+            filepath = self.gen_dir / filename
             found_pack_current = False
             found_temp_offset = False
 
@@ -220,7 +237,7 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
     def test_model_cell_counts(self) -> None:
         """Verify DH200Y has 260 cell voltages, DH200F/DH100F have 240 cell voltages."""
         # DH200Y: 260 cells
-        dh200y_path = DEFINITIONS_DIR / EXPECTED_FILES["DH200Y"]
+        dh200y_path = self.gen_dir / EXPECTED_FILES["DH200Y"]
         with open(dh200y_path, encoding="utf-8-sig") as f:
             content = f.read()
             self.assertIn("Cell Voltage 260", content)
@@ -229,7 +246,7 @@ class TestDynessGeneratedDefinitions(unittest.TestCase):
             self.assertNotIn("Cell Temperature 81", content)
 
         # DH200F: 240 cells
-        dh200f_path = DEFINITIONS_DIR / EXPECTED_FILES["DH200F"]
+        dh200f_path = self.gen_dir / EXPECTED_FILES["DH200F"]
         with open(dh200f_path, encoding="utf-8-sig") as f:
             content = f.read()
             self.assertIn("Cell Voltage 240", content)

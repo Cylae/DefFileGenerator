@@ -44,7 +44,16 @@ MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 UPLOAD_CHUNK_BYTES = 1024 * 1024
 MAX_WEB_REGISTERS = 65536
 MAX_MULTIPART_OVERHEAD_BYTES = 64 * 1024
-UPLOAD_PATHS = frozenset({"/api/convert", "/api/validate", "/api/tag", "/api/audit", "/api/pillars", "/api/discovery/upload"})
+UPLOAD_PATHS = frozenset(
+    {
+        "/api/convert",
+        "/api/validate",
+        "/api/tag",
+        "/api/audit",
+        "/api/pillars",
+        "/api/discovery/upload",
+    }
+)
 
 
 class UploadBodyLimitMiddleware:
@@ -730,7 +739,11 @@ def get_library(
     if not os.path.exists(definitions_dir):
         return []
 
-    target_dir = production_dir if (source == "production" and os.path.exists(production_dir)) else definitions_dir
+    target_dir = (
+        production_dir
+        if (source == "production" and os.path.exists(production_dir))
+        else definitions_dir
+    )
     if not os.path.exists(target_dir):
         target_dir = definitions_dir
 
@@ -761,7 +774,11 @@ def get_library(
             continue
         if mfg_filter and mfg_filter not in mfg.lower():
             continue
-        if query_str and (query_str not in entry.lower() and query_str not in mfg.lower() and query_str not in model.lower()):
+        if query_str and (
+            query_str not in entry.lower()
+            and query_str not in mfg.lower()
+            and query_str not in model.lower()
+        ):
             continue
 
         filepath = os.path.join(target_dir, entry)
@@ -841,7 +858,9 @@ async def check_pillars(file: UploadFile = File(...)) -> PillarsResponse:
 
             is_valid, issues = verify_file_pillars(Path(input_path))
             pillars_status = {
-                "naming": not any("Filename" in iss or "prefix" in iss or "underscore" in iss for iss in issues),
+                "naming": not any(
+                    "Filename" in iss or "prefix" in iss or "underscore" in iss for iss in issues
+                ),
                 "addressing": not any("address" in iss.lower() for iss in issues),
                 "function_codes": not any("function code" in iss.lower() for iss in issues),
                 "action_codes": not any("action code" in iss.lower() for iss in issues),
@@ -931,7 +950,9 @@ async def discovery_lookup(payload: DiscoveryLookupRequest) -> DiscoveryResponse
 
     orchestrator = WorkflowOrchestrator()
     target_str = payload.get_target()
-    target_enum = ExportTarget.WEBDYN_SUNPM if target_str != "webdyn_classic" else ExportTarget.WEBDYN_CLASSIC
+    target_enum = (
+        ExportTarget.WEBDYN_SUNPM if target_str != "webdyn_classic" else ExportTarget.WEBDYN_CLASSIC
+    )
 
     result = await orchestrator.run(
         query=clean_query,
@@ -942,16 +963,18 @@ async def discovery_lookup(payload: DiscoveryLookupRequest) -> DiscoveryResponse
     preview_rows: list[dict[str, Any]] = []
     if result.model and result.model.registers:
         for reg in result.model.registers[:100]:
-            preview_rows.append({
-                "Address": reg.address,
-                "Name": reg.name,
-                "Tag": reg.canonical_sunpm_tag or "",
-                "Type": reg.data_type.value,
-                "Factor": reg.factor,
-                "Offset": reg.offset,
-                "Unit": reg.unit,
-                "Action": reg.action_code,
-            })
+            preview_rows.append(
+                {
+                    "Address": reg.address,
+                    "Name": reg.name,
+                    "Tag": reg.canonical_sunpm_tag or "",
+                    "Type": reg.data_type.value,
+                    "Factor": reg.factor,
+                    "Offset": reg.offset,
+                    "Unit": reg.unit,
+                    "Action": reg.action_code,
+                }
+            )
 
     return DiscoveryResponse(
         success=result.success,
@@ -969,8 +992,15 @@ async def discovery_lookup(payload: DiscoveryLookupRequest) -> DiscoveryResponse
         preview=preview_rows,
         identity=result.identity.model_dump() if result.identity else None,
         document=result.document.model_dump() if result.document else None,
-        fetch={"sha256": result.fetch.sha256, "outcome": result.fetch.outcome.value} if result.fetch else None,
-        validation={"status": result.validation.status.value, "pillar_statuses": result.validation.pillar_statuses} if result.validation else None,
+        fetch={"sha256": result.fetch.sha256, "outcome": result.fetch.outcome.value}
+        if result.fetch
+        else None,
+        validation={
+            "status": result.validation.status.value,
+            "pillar_statuses": result.validation.pillar_statuses,
+        }
+        if result.validation
+        else None,
     )
 
 
@@ -1009,7 +1039,11 @@ async def discovery_upload(
     from DefFileGenerator.discovery.orchestrator import WorkflowOrchestrator
 
     orchestrator = WorkflowOrchestrator()
-    target_enum = ExportTarget.WEBDYN_SUNPM if effective_target != "webdyn_classic" else ExportTarget.WEBDYN_CLASSIC
+    target_enum = (
+        ExportTarget.WEBDYN_SUNPM
+        if effective_target != "webdyn_classic"
+        else ExportTarget.WEBDYN_CLASSIC
+    )
 
     result = await orchestrator.run(
         query=effective_query,
@@ -1022,16 +1056,18 @@ async def discovery_upload(
     preview_rows: list[dict[str, Any]] = []
     if result.model and result.model.registers:
         for reg in result.model.registers[:100]:
-            preview_rows.append({
-                "Address": reg.address,
-                "Name": reg.name,
-                "Tag": reg.canonical_sunpm_tag or "",
-                "Type": reg.data_type.value,
-                "Factor": reg.factor,
-                "Offset": reg.offset,
-                "Unit": reg.unit,
-                "Action": reg.action_code,
-            })
+            preview_rows.append(
+                {
+                    "Address": reg.address,
+                    "Name": reg.name,
+                    "Tag": reg.canonical_sunpm_tag or "",
+                    "Type": reg.data_type.value,
+                    "Factor": reg.factor,
+                    "Offset": reg.offset,
+                    "Unit": reg.unit,
+                    "Action": reg.action_code,
+                }
+            )
 
     return DiscoveryResponse(
         success=result.success,
@@ -1049,8 +1085,15 @@ async def discovery_upload(
         preview=preview_rows,
         identity=result.identity.model_dump() if result.identity else None,
         document=result.document.model_dump() if result.document else None,
-        fetch={"sha256": result.fetch.sha256, "outcome": result.fetch.outcome.value} if result.fetch else None,
-        validation={"status": result.validation.status.value, "pillar_statuses": result.validation.pillar_statuses} if result.validation else None,
+        fetch={"sha256": result.fetch.sha256, "outcome": result.fetch.outcome.value}
+        if result.fetch
+        else None,
+        validation={
+            "status": result.validation.status.value,
+            "pillar_statuses": result.validation.pillar_statuses,
+        }
+        if result.validation
+        else None,
     )
 
 

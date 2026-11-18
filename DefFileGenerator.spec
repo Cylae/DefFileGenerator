@@ -38,13 +38,35 @@ packages_to_collect = [
 ]
 
 collected_datas = []
+knowledge_json = os.path.join(REPO_ROOT, "DefFileGenerator", "dataset_knowledge.json")
+if os.path.isfile(knowledge_json):
+    collected_datas.append((knowledge_json, "DefFileGenerator"))
+
 collected_binaries = []
 collected_hiddenimports = [
     "DefFileGenerator",
+    "DefFileGenerator._version",
     "DefFileGenerator.def_gen",
+    "DefFileGenerator.dyness_generator",
     "DefFileGenerator.extractor",
     "DefFileGenerator.gui",
+    "DefFileGenerator.io_utils",
+    "DefFileGenerator.knowledge_miner",
     "DefFileGenerator.main",
+    "DefFileGenerator.mars_generator",
+    "DefFileGenerator.production_governor",
+    "DefFileGenerator.report_generator",
+    "DefFileGenerator.discovery",
+    "DefFileGenerator.discovery.definition_exporter",
+    "DefFileGenerator.discovery.document_extractor",
+    "DefFileGenerator.discovery.document_fetcher",
+    "DefFileGenerator.discovery.evidence_reporter",
+    "DefFileGenerator.discovery.identity_resolver",
+    "DefFileGenerator.discovery.models",
+    "DefFileGenerator.discovery.orchestrator",
+    "DefFileGenerator.discovery.register_normalizer",
+    "DefFileGenerator.discovery.semantic_validator",
+    "DefFileGenerator.discovery.source_discovery",
     "tkinter",
     "tkinter.ttk",
     "tkinter.filedialog",

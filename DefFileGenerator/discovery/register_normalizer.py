@@ -77,16 +77,43 @@ class RegisterNormalizer:
 
         for table in tables:
             headers = [h.lower() for h in table.headers]
-            addr_col = self._find_column(headers, ["address", "adresse", "reg", "register", "modbus address", "offset", "register address"])
-            name_col = self._find_column(headers, ["name", "nom", "parameter", "paramètre", "description", "signal", "point name", "variable"])
+            addr_col = self._find_column(
+                headers,
+                [
+                    "address",
+                    "adresse",
+                    "reg",
+                    "register",
+                    "modbus address",
+                    "offset",
+                    "register address",
+                ],
+            )
+            name_col = self._find_column(
+                headers,
+                [
+                    "name",
+                    "nom",
+                    "parameter",
+                    "paramètre",
+                    "description",
+                    "signal",
+                    "point name",
+                    "variable",
+                ],
+            )
             type_col = self._find_column(headers, ["type", "data type", "datatype", "format"])
-            scale_col = self._find_column(headers, ["scale", "gain", "ratio", "factor", "facteur", "coeff", "multiplier"])
+            scale_col = self._find_column(
+                headers, ["scale", "gain", "ratio", "factor", "facteur", "coeff", "multiplier"]
+            )
             unit_col = self._find_column(headers, ["unit", "unité", "units"])
             action_col = self._find_column(headers, ["action", "r/w", "access", "rw", "read/write"])
 
             if addr_col is None or name_col is None:
                 # If cannot identify address/name columns, record as unresolved table
-                canonical_model.unresolved_rows.append({"table": table.dict(), "reason": "Missing address or name column"})
+                canonical_model.unresolved_rows.append(
+                    {"table": table.dict(), "reason": "Missing address or name column"}
+                )
                 continue
 
             for _row_idx, row in enumerate(table.rows):
@@ -99,27 +126,46 @@ class RegisterNormalizer:
                     continue
 
                 # Ignore section dividers or repeated header rows
-                if raw_addr.lower() in ("address", "adresse", "reg", "register") or raw_name.lower() in ("name", "description", "parameter"):
+                if raw_addr.lower() in (
+                    "address",
+                    "adresse",
+                    "reg",
+                    "register",
+                ) or raw_name.lower() in ("name", "description", "parameter"):
                     continue
 
                 # 1. Address Parsing and Disambiguation
-                cleaned_addr_str = disambiguate_ocr_token(raw_addr, is_address=True) if table.is_ocr else raw_addr
+                cleaned_addr_str = (
+                    disambiguate_ocr_token(raw_addr, is_address=True) if table.is_ocr else raw_addr
+                )
                 parsed_addr, addr_base_prov = self._parse_address(cleaned_addr_str)
                 if parsed_addr is None or parsed_addr < 0 or parsed_addr > 65535:
-                    canonical_model.unresolved_rows.append({"row": row, "reason": f"Invalid address '{raw_addr}'"})
+                    canonical_model.unresolved_rows.append(
+                        {"row": row, "reason": f"Invalid address '{raw_addr}'"}
+                    )
                     continue
 
                 # 2. Type & Endianness Parsing
-                raw_type = row[type_col].strip() if type_col is not None and len(row) > type_col else "U16"
+                raw_type = (
+                    row[type_col].strip() if type_col is not None and len(row) > type_col else "U16"
+                )
                 dtype, endianness, reg_count = self._parse_type(raw_type)
 
                 # 3. Scaling / Factor & Unit Parsing
-                raw_scale = row[scale_col].strip() if scale_col is not None and len(row) > scale_col else "1"
+                raw_scale = (
+                    row[scale_col].strip()
+                    if scale_col is not None and len(row) > scale_col
+                    else "1"
+                )
                 factor, offset = self._parse_scaling(raw_scale)
                 unit = row[unit_col].strip() if unit_col is not None and len(row) > unit_col else ""
 
                 # 4. Action & Function Code
-                raw_action = row[action_col].strip() if action_col is not None and len(row) > action_col else "R"
+                raw_action = (
+                    row[action_col].strip()
+                    if action_col is not None and len(row) > action_col
+                    else "R"
+                )
                 is_writable = any(w in raw_action.lower() for w in ("w", "write", "r/w", "rw"))
                 action_code = self._determine_action_code(raw_name, is_writable)
 
@@ -241,6 +287,8 @@ class RegisterNormalizer:
             return 1
         if any(e in n_low for e in ("status", "state", "event", "statut", "mode")):
             return 2
-        if is_writable or any(p in n_low for p in ("setpoint", "setting", "limit", "param", "consigne")):
+        if is_writable or any(
+            p in n_low for p in ("setpoint", "setting", "limit", "param", "consigne")
+        ):
             return 3
         return 4

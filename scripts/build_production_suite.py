@@ -130,7 +130,6 @@ MFG_REGISTRY = {
     "alro": "AlroSolar",
     "atmoce": "Atmoce",
     "nidec": "Nidec",
-
     # 2. Meters & Electrical Network Equipment
     "schneider": "Schneider",
     "sch": "Schneider",
@@ -193,7 +192,6 @@ MFG_REGISTRY = {
     "mci": "MCI",
     "secure": "Secure",
     "pdl": "Secure",
-
     # 3. Weather Stations, Pyranometers & Environmental Sensors
     "hukseflux": "Hukseflux",
     "kippzonen": "KippZonen",
@@ -226,7 +224,6 @@ MFG_REGISTRY = {
     "ses_automation": "SESAutomation",
     "lsi": "LSI",
     "lsi_lastem": "LSI",
-
     # 4. Gateways, Loggers & Industrial Automation IO
     "advantech": "Advantech",
     "advantec": "Advantech",
@@ -370,9 +367,7 @@ def parse_raw_filename(fname: str) -> tuple[str, str, str] | None:
             cand = tokens[1].lower()
             mfg = MFG_REGISTRY.get(
                 cand,
-                tokens[1].capitalize()
-                if tokens[1].isupper() and len(tokens[1]) > 3
-                else tokens[1],
+                tokens[1].capitalize() if tokens[1].isupper() and len(tokens[1]) > 3 else tokens[1],
             )
             model = "_".join(tokens[2:])
 
@@ -445,8 +440,10 @@ def build_manifest() -> dict[str, Path]:
     # 3. Mars Energy Certified Definitions
     mars_map = {
         "BAT_MarsEnergy_LocalController_V7.0.csv": MARS_DIR / "MarsLocalController_V7.0_webdyn.csv",
-        "BAT_MarsEnergy_LocalController_AllInOne.csv": MARS_DIR / "MarsLocalController_V7.0_AllInOne.csv",
-        "BAT_MarsEnergy_RackCell_SlaveN.csv": MARS_DIR / "MarsLocalController_V7.0_RackCell_SlaveN.csv",
+        "BAT_MarsEnergy_LocalController_AllInOne.csv": MARS_DIR
+        / "MarsLocalController_V7.0_AllInOne.csv",
+        "BAT_MarsEnergy_RackCell_SlaveN.csv": MARS_DIR
+        / "MarsLocalController_V7.0_RackCell_SlaveN.csv",
         "COM_MarsEnergy_EMS_Slave247.csv": MARS_DIR / "MarsLocalController_V7.0_EMS_Slave247.csv",
         "INV_MarsEnergy_AirCooling.csv": MARS_DIR / "MarsRenewable_AC.csv",
         "INV_MarsEnergy_LiquidCooling.csv": MARS_DIR / "MarsRenewable_LC.csv",
@@ -675,20 +672,22 @@ def generate_production_catalog(manifest_stats: list[dict]):
         c_regs = sum(item["registers"] for item in files_cat)
         c_tags = sum(item["tags"] for item in files_cat)
         mfgs = sorted(list(set(item["mfg"] for item in files_cat)))
-        sample_mfgs = ", ".join(mfgs[:5]) + (f" (+{len(mfgs)-5})" if len(mfgs) > 5 else "")
+        sample_mfgs = ", ".join(mfgs[:5]) + (f" (+{len(mfgs) - 5})" if len(mfgs) > 5 else "")
         content.append(
             f"| {desc} ({cat}) | `{pfx}` | {c_count} | {c_regs:,} | {c_tags:,} | {sample_mfgs} |"
         )
 
-    content.extend([
-        "",
-        "---",
-        "",
-        "## 🏭 Synthèse par Constructeur (Tous les Constructeurs)",
-        "",
-        "| Constructeur | Modèles | Total Registres | Tags SunPM Actifs | Catégories Couvertes |",
-        "|---|:---:|:---:|:---:|---|",
-    ])
+    content.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 🏭 Synthèse par Constructeur (Tous les Constructeurs)",
+            "",
+            "| Constructeur | Modèles | Total Registres | Tags SunPM Actifs | Catégories Couvertes |",
+            "|---|:---:|:---:|:---:|---|",
+        ]
+    )
 
     mfgs_dict = defaultdict(list)
     for item in manifest_stats:
@@ -702,30 +701,32 @@ def generate_production_catalog(manifest_stats: list[dict]):
         m_cats = ", ".join(sorted(set(it["category"] for it in m_items)))
         content.append(f"| **{mfg_name}** | {m_count} | {m_regs:,} | {m_tags:,} | {m_cats} |")
 
-    content.extend([
-        "",
-        "---",
-        "",
-        "## 🛡️ Les 5 Piliers Qualité Apollo-Standard",
-        "",
-        "Chaque fichier de définition hébergé dans ce dossier respecte strictement les 5 critères non négociables :",
-        "1. **Nommage Lisible & Canonique** : `<PREFIX>_<Manufacturer>_<Model>.csv` sans scories de génération (`_2`, `_test`, `_part`, `_draft`).",
-        "2. **Adressage Modbus Strict** : Adresses décimales (0 à 65535) ou `address_length` pour les chaînes de caractères (ex. `30000_30`), zéro décalage, zéro chevauchement corrupteur.",
-        "3. **Code Action Webdyn Certifié** :",
-        "   - `Action = 4` : Télémesures régulières (périodique standard 5 min).",
-        "   - `Action = 9` : Événements, états critiques et alarmes.",
-        "   - `Action = 1` : Consignes et registres de pilotage d'écriture (Read/Write).",
-        "   - `Action = 0` : Registres non historisés / internes.",
-        "4. **Code Fonction Modbus Standard** : `1` (Coils), `2` (Discrete Inputs), `3` (Holding Registers), `4` (Input Registers).",
-        "5. **Tags SunPM Canoniques** : Télémesures normalisées (`P_AC`, `Q_AC`, `U_AC`, `I_AC`, `P_DC`, `E_TOT`, `E_DAY`, `FREQ`, `PF`, `TEMP`, `MODEL`, `SERIAL`, etc.) positionnées sur les mesures physiques effectives.",
-        "",
-        "---",
-        "",
-        "## 📑 Catalogue Détaillé de Production",
-        "",
-        "| Fichier | Catégorie | Constructeur | Modèle | Protocole | Registres | Tags SunPM |",
-        "|---|---|---|---|---|---|---|",
-    ])
+    content.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 🛡️ Les 5 Piliers Qualité Apollo-Standard",
+            "",
+            "Chaque fichier de définition hébergé dans ce dossier respecte strictement les 5 critères non négociables :",
+            "1. **Nommage Lisible & Canonique** : `<PREFIX>_<Manufacturer>_<Model>.csv` sans scories de génération (`_2`, `_test`, `_part`, `_draft`).",
+            "2. **Adressage Modbus Strict** : Adresses décimales (0 à 65535) ou `address_length` pour les chaînes de caractères (ex. `30000_30`), zéro décalage, zéro chevauchement corrupteur.",
+            "3. **Code Action Webdyn Certifié** :",
+            "   - `Action = 4` : Télémesures régulières (périodique standard 5 min).",
+            "   - `Action = 9` : Événements, états critiques et alarmes.",
+            "   - `Action = 1` : Consignes et registres de pilotage d'écriture (Read/Write).",
+            "   - `Action = 0` : Registres non historisés / internes.",
+            "4. **Code Fonction Modbus Standard** : `1` (Coils), `2` (Discrete Inputs), `3` (Holding Registers), `4` (Input Registers).",
+            "5. **Tags SunPM Canoniques** : Télémesures normalisées (`P_AC`, `Q_AC`, `U_AC`, `I_AC`, `P_DC`, `E_TOT`, `E_DAY`, `FREQ`, `PF`, `TEMP`, `MODEL`, `SERIAL`, etc.) positionnées sur les mesures physiques effectives.",
+            "",
+            "---",
+            "",
+            "## 📑 Catalogue Détaillé de Production",
+            "",
+            "| Fichier | Catégorie | Constructeur | Modèle | Protocole | Registres | Tags SunPM |",
+            "|---|---|---|---|---|---|---|",
+        ]
+    )
 
     for item in sorted(manifest_stats, key=lambda x: (x["mfg"], x["model"], x["prefix"])):
         fname = item["filename"]
@@ -807,16 +808,18 @@ def main():
             failed_files.append((tgt_filename, str(val_rep.issues)))
         else:
             pfx = tgt_filename.split("_")[0]
-            stats_list.append({
-                "filename": tgt_filename,
-                "prefix": pfx,
-                "category": header[1],
-                "mfg": header[2],
-                "model": header[3],
-                "protocol": header[0],
-                "registers": len(rows),
-                "tags": tag_count,
-            })
+            stats_list.append(
+                {
+                    "filename": tgt_filename,
+                    "prefix": pfx,
+                    "category": header[1],
+                    "mfg": header[2],
+                    "model": header[3],
+                    "protocol": header[0],
+                    "registers": len(rows),
+                    "tags": tag_count,
+                }
+            )
 
     # Generate README.md catalog
     generate_production_catalog(stats_list)

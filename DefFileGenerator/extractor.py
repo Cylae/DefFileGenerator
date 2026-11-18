@@ -1122,8 +1122,13 @@ class Extractor:
 
                             # Skip informational cross-reference tables (e.g. "Reference SD630 meter register from...")
                             if len(table) <= 4:
-                                full_table_text = " ".join(str(c) for row in table for c in row if c).lower()
-                                if "reference" in full_table_text and "register from" in full_table_text:
+                                full_table_text = " ".join(
+                                    str(c) for row in table for c in row if c
+                                ).lower()
+                                if (
+                                    "reference" in full_table_text
+                                    and "register from" in full_table_text
+                                ):
                                     continue
 
                             def table_generator(

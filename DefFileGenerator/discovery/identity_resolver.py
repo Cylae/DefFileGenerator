@@ -84,7 +84,10 @@ class IdentityResolver:
     """Resolves and tokenizes equipment references into validated identity candidates."""
 
     def __init__(self, catalog_path: Path | str | None = None) -> None:
-        self.catalog_path = catalog_path or Path(__file__).resolve().parent.parent.parent / "production" / "CATALOG.json"
+        self.catalog_path = (
+            catalog_path
+            or Path(__file__).resolve().parent.parent.parent / "production" / "CATALOG.json"
+        )
         self._known_models_by_mfg: dict[str, list[str]] = {}
         self._load_catalog()
 
@@ -141,7 +144,11 @@ class IdentityResolver:
 
         # 3. Check for model ambiguities against catalog
         known_models = self._known_models_by_mfg.get(matched_mfg.lower(), [])
-        matching_known = [m for m in known_models if model_clean.lower() in m.lower() or m.lower() in model_clean.lower()]
+        matching_known = [
+            m
+            for m in known_models
+            if model_clean.lower() in m.lower() or m.lower() in model_clean.lower()
+        ]
 
         # Distinguish hardware revisions or variant suffixes (e.g., G2, Pro, Plus, HV)
         is_ambiguous = False

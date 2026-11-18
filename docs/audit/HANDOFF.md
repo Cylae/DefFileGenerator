@@ -8,18 +8,18 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 - **Working Tree**: `C:\Users\alexandre.calais\Documents\GitHub\DefFileGenerator`
 - **Active Release**: v0.4.0 (single source of truth in `DefFileGenerator/_version.py`)
 - **Verification Summary**:
-  - **1,125 tests collected** (1,120 passed, 5 skipped cleanly when intranet share is disabled; 0 failed).
+  - **3,538 tests collected** (3,533 passed, 5 skipped cleanly when intranet share is disabled; 0 failed).
   - **Answer Drives Solargate Integration**: Full end-to-end Modbus register extraction from factory PDF manual `ADSolargateManENHWSW 02-11-09 (1).pdf`, producing `Definitions/INV_AnswerDrives_Solargate.csv` (288 registers, 100% schema compliant, 0 errors, 0 warnings).
   - **Omni-Corpus Knowledge Base**: **5,041 equipment definitions** ingested across all 5 technical formats (3,223 CSVs, 177 Excel workbooks, 1,312 Webdyn INI profile tables, 4 XML maps, 325 PDF Modbus manuals), **1,282,373 Modbus registers** mined, **36,035 unique variable mappings** indexed into `dataset_knowledge.json` across all 252 energy equipment manufacturers.
   - **87% overall combined coverage** across 5,306 statements (`report_generator.py` at **98%**, `def_gen.py` at **95%**, `knowledge_miner.py` at **93%**, `web/app.py` at **92%**, `main.py` at **91%**, `mars_generator.py` at **88%**, `dyness_generator.py` at **87%**, `extractor.py` at **84%**, `io_utils.py` at **100%**).
-  - **0 Ruff lint errors** across all 145 repository files.
-  - **0 Mypy type issues** across 104 source files.
+  - **0 Ruff lint errors** across all 187 repository files.
+  - **0 Mypy type issues** across 130 source files.
   - **0 Bandit security vulnerabilities** across 25,347 lines of code.
   - **Deep Metrological Definition Audit**: 2,360 definition files evaluated across 5 directory trees (765,377 registers) with **100.0% validity rate**.
   - **Equipementiers Live Share Batteries**: 30/30 passed in `test_30_battery`; 47/52 passed in `test_52_battery` (exceeding >=45 threshold).
-  - **Node.js Frontend Contract Suite**: 100% passing contract tests asserting DOM state updates, toasts, copy actions, filters, and keyboard navigation across all 4 Web Studio tabs.
+  - **Node.js Frontend Contract Suite**: 100% passing contract tests asserting DOM state updates, toasts, copy actions, filters, and keyboard navigation across all 5 Web Studio tabs (including Autonomous Discovery).
   - **Torture & Gigantic Stress Batteries**: Executed and passing (5,000-row CSV generation in 0.269s, 12,000 type conversions in 0.0011s, XXE defended).
-  - **Dyness Fuzzer Battery**: 86/86 boundary and corrupt payload test cases passed in 0.42s.
+  - **Dyness Fuzzer Battery**: 86/86 boundary and corrupt payload test cases passed in 0.42s; hermetic temp-generation with zero working tree pollution.
   - **Industrial Equipementiers Battery**: 45 real-world files from 20+ vendors tested (7,949 registers extracted with 0 unhandled exceptions).
   - **Huawei & ABB Battery**: 35 production manufacturer documents tested (33 valid definitions generated, 2 image/empty PDFs safely caught).
   - Clean sdist and wheel generation (`dist/def_file_generator-0.4.0-py3-none-any.whl` and `.tar.gz`) matching all packaging contracts.
@@ -135,7 +135,7 @@ The Apollo-standard software engineering audit, remediation, and verification pa
 | :--- | :--- | :--- | :---: |
 | **A. SCOPE** | Complete ownership of all first-party files and contracts | 100% of codebase inspected and verified | **SATISFIED** |
 | **B. 100% FILE REVIEW** | All source files audited with hazard analysis | `REVIEW_MATRIX.md` covers all modules | **SATISFIED** |
-| **C. TRACEABILITY** | Every finding linked to root cause, fix, and tests | 21 findings cataloged in `FINDINGS.md` | **SATISFIED** |
+| **C. TRACEABILITY** | Every finding linked to root cause, fix, and tests | 28 findings cataloged in `FINDINGS.md` | **SATISFIED** |
 | **D. ZERO OPEN DEFECTS** | Zero open in-scope defects, zero failing tests | 0 failing tests, 0 lint/type issues | **SATISFIED** |
 | **E. END-TO-END BEHAVIOR** | Nominal execution across CLI, GUI, and Web | All interfaces load and execute cleanly | **SATISFIED** |
 | **F. QUALITY GATES** | Strict linter, formatter, type checker, security | Ruff, Mypy, Bandit 100% clean | **SATISFIED** |

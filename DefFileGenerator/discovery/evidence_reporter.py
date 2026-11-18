@@ -55,22 +55,26 @@ class EvidenceReporter:
 
         for pillar_name, passed in validation.pillar_statuses.items():
             badge = "✅ PASS" if passed else "❌ FAIL"
-            md_lines.append(f"| **Pillar: {pillar_name.capitalize()}** | {badge} | Verified against domain invariants |")
+            md_lines.append(
+                f"| **Pillar: {pillar_name.capitalize()}** | {badge} | Verified against domain invariants |"
+            )
 
-        md_lines.extend([
-            "",
-            "---",
-            "",
-            "## 3. Register Reconciliation & Metrics",
-            f"- **Total Extracted & Normalized Registers**: `{total_regs}`",
-            f"- **Unresolved Extraction Regions**: `{len(model.unresolved_rows)}`",
-            f"- **Blocking Issues**: `{len(validation.blocking_issues)}`",
-            f"- **Warnings**: `{len(validation.warnings)}`",
-            "",
-            "### Sample Register Traceability Citations (Top 5)",
-            "| Address | Variable Name | Type | Scaling | Unit | Provenance |",
-            "| :--- | :--- | :--- | :--- | :--- | :--- |",
-        ])
+        md_lines.extend(
+            [
+                "",
+                "---",
+                "",
+                "## 3. Register Reconciliation & Metrics",
+                f"- **Total Extracted & Normalized Registers**: `{total_regs}`",
+                f"- **Unresolved Extraction Regions**: `{len(model.unresolved_rows)}`",
+                f"- **Blocking Issues**: `{len(validation.blocking_issues)}`",
+                f"- **Warnings**: `{len(validation.warnings)}`",
+                "",
+                "### Sample Register Traceability Citations (Top 5)",
+                "| Address | Variable Name | Type | Scaling | Unit | Provenance |",
+                "| :--- | :--- | :--- | :--- | :--- | :--- |",
+            ]
+        )
 
         for reg in model.registers[:5]:
             prov = reg.provenance
@@ -79,10 +83,12 @@ class EvidenceReporter:
                 f"| `{reg.address}` | `{reg.name}` | `{reg.data_type.value}` | `{reg.factor:.6f}` | `{reg.unit}` | {prov_text} |"
             )
 
-        md_lines.extend([
-            "",
-            "---",
-            "*Report certified by Webdyn Autonomous Modbus Discovery Pipeline v1.0.0 Apollo Edition.*",
-        ])
+        md_lines.extend(
+            [
+                "",
+                "---",
+                "*Report certified by Webdyn Autonomous Modbus Discovery Pipeline v1.0.0 Apollo Edition.*",
+            ]
+        )
 
         return "\n".join(md_lines)

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Forwarding wrapper for scripts/generate_mars_definitions.py."""
+
 import sys
 from pathlib import Path
 
@@ -29,4 +30,3 @@ __all__ = [
 
 if __name__ == "__main__":
     main()
-

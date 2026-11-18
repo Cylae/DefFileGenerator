@@ -27,8 +27,12 @@ def test_sources_manifest_integrity():
             for subfile in doc["files"]:
                 sub_path = Path(doc["relative_path"]) / subfile["filename"]
                 assert sub_path.is_file(), f"Document file missing on disk: {sub_path}"
-                assert sub_path.stat().st_size == subfile["size_bytes"], f"Size mismatch for {sub_path}"
-                assert hashlib.sha256(sub_path.read_bytes()).hexdigest() == subfile["sha256"], f"SHA mismatch for {sub_path}"
+                assert sub_path.stat().st_size == subfile["size_bytes"], (
+                    f"Size mismatch for {sub_path}"
+                )
+                assert hashlib.sha256(sub_path.read_bytes()).hexdigest() == subfile["sha256"], (
+                    f"SHA mismatch for {sub_path}"
+                )
         else:
             rel_path = Path(doc["relative_path"])
             assert rel_path.is_file(), f"Document file missing on disk: {rel_path}"

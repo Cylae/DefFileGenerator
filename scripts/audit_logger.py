@@ -125,22 +125,26 @@ def rebuild_audit_ledger():
         tags = ev.get("tags_count", 0)
         status = ev.get("validation_status", "UNKNOWN")
         icon = "✅" if "PASS" in status.upper() or "SUCCES" in status.upper() else "⚠️"
-        lines.append(f"| {ts} | **{act}** | {mfg} | {eq} | {src} | {defs} | {regs:,} | {tags:,} | {icon} {status} |")
+        lines.append(
+            f"| {ts} | **{act}** | {mfg} | {eq} | {src} | {defs} | {regs:,} | {tags:,} | {icon} {status} |"
+        )
 
-    lines.extend([
-        "",
-        "---",
-        "",
-        "## 🔒 Intégrité et Redondance des Empreintes",
-        "",
-        "Les définitions sont stockées de façon redondante et synchronisée sur 4 répertoires miroirs :",
-        "- `production/` (production certifiée)",
-        "- `Definitions/` (référentiel source)",
-        "- `tagged_definitions/` (télémétrie balisée)",
-        "- `generated_definitions/` (générations unifiées)",
-        "",
-        f"*Dernière mise à jour du journal : {datetime.now(timezone.utc).isoformat()}*",
-    ])
+    lines.extend(
+        [
+            "",
+            "---",
+            "",
+            "## 🔒 Intégrité et Redondance des Empreintes",
+            "",
+            "Les définitions sont stockées de façon redondante et synchronisée sur 4 répertoires miroirs :",
+            "- `production/` (production certifiée)",
+            "- `Definitions/` (référentiel source)",
+            "- `tagged_definitions/` (télémétrie balisée)",
+            "- `generated_definitions/` (générations unifiées)",
+            "",
+            f"*Dernière mise à jour du journal : {datetime.now(timezone.utc).isoformat()}*",
+        ]
+    )
 
     AUDIT_LEDGER_MD.parent.mkdir(parents=True, exist_ok=True)
     AUDIT_LEDGER_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")

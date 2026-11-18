@@ -582,7 +582,9 @@ def generate_single_definition_report(
     return content
 
 
-def export_report_json(stats: DirectoryReportStats, json_path: str | Path) -> None:
+def export_report_json(
+    stats: DirectoryReportStats | DefinitionFileStats, json_path: str | Path
+) -> None:
     """Exports structured directory metrics as a JSON document."""
     out_p = Path(json_path)
     out_p.parent.mkdir(parents=True, exist_ok=True)

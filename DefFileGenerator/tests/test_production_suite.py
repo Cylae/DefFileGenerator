@@ -56,9 +56,9 @@ def test_production_naming_convention_is_readable():
         assert not model.endswith("_"), f"Dangling underscore in {f.name}"
         assert not model.startswith("_"), f"Leading underscore in model: {f.name}"
         assert "__" not in f.name, f"Double underscore in {f.name}"
-        assert not any(f.name.endswith(bad) for bad in ("_2.csv", "_Test.csv", "_draft.csv", "_wip.csv")), (
-            f"Artifact suffix in {f.name}"
-        )
+        assert not any(
+            f.name.endswith(bad) for bad in ("_2.csv", "_Test.csv", "_draft.csv", "_wip.csv")
+        ), f"Artifact suffix in {f.name}"
 
 
 def test_production_encoding_zero_bom():
@@ -92,14 +92,18 @@ def test_production_csv_integrity(file_path: Path):
 
             # 2. Function code
             fc = row[1]
-            assert fc in VALID_FUNCTION_CODES, f"{file_path.name} L{idx}: invalid function code {fc}"
+            assert fc in VALID_FUNCTION_CODES, (
+                f"{file_path.name} L{idx}: invalid function code {fc}"
+            )
 
             # 3. Address
             addr = row[2]
             assert addr, f"{file_path.name} L{idx}: empty address"
             dtype = row[3]
             if dtype == "STRING":
-                assert "_" in addr, f"{file_path.name} L{idx}: STRING missing length in address {addr}"
+                assert "_" in addr, (
+                    f"{file_path.name} L{idx}: STRING missing length in address {addr}"
+                )
             else:
                 base_addr = addr.split("_")[0]
                 assert base_addr.isdigit(), f"{file_path.name} L{idx}: non-numeric address {addr}"
@@ -114,7 +118,18 @@ def test_production_csv_integrity(file_path: Path):
             tag = row[6].strip()
             if tag:
                 # Disallow duplicate single-instance measurements on different registers
-                if tag in ("P_AC", "Q_AC", "S_AC", "P_DC", "FREQ", "PF", "E_TOT", "E_DAY", "MODEL", "SERIAL"):
+                if tag in (
+                    "P_AC",
+                    "Q_AC",
+                    "S_AC",
+                    "P_DC",
+                    "FREQ",
+                    "PF",
+                    "E_TOT",
+                    "E_DAY",
+                    "MODEL",
+                    "SERIAL",
+                ):
                     assert tag not in seen_single_tags, (
                         f"{file_path.name} L{idx}: duplicate single-instance tag {tag}"
                     )

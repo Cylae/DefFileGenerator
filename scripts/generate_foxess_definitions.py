@@ -29,7 +29,11 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-WORKSPACE_DIR = Path(__file__).resolve().parent
+WORKSPACE_DIR = (
+    Path(__file__).resolve().parent.parent
+    if Path(__file__).resolve().parent.name == "scripts"
+    else Path(__file__).resolve().parent
+)
 if str(WORKSPACE_DIR) not in sys.path:
     sys.path.insert(0, str(WORKSPACE_DIR))
 
