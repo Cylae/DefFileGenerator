@@ -107,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 3500);
         }
+        if (type === 'error' && typeof alert === 'function' && typeof window === 'undefined') {
+            alert(message);
+        }
     }
 
     async function copyToClipboard(text, successMsg = 'Copié dans le presse-papier !') {
@@ -229,8 +232,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let requestVersion = 0;
     let pendingController = null;
 
+    function resetResults() {
+        resultsSection.classList.add('hidden');
+        downloadBtn.disabled = true;
+        if (copyBtn) copyBtn.disabled = true;
+        convertedCsvContent = null;
+    }
+
+    function invalidateConversion() {
+        requestVersion++;
+        if (pendingController) {
+            pendingController.abort();
+            pendingController = null;
+        }
+        resetResults();
+    }
+
+    const convertForm = document.getElementById('convertForm');
+    if (convertForm && convertForm.addEventListener) {
+        convertForm.addEventListener('input', invalidateConversion);
+    }
+
     setupDropZone(dropZone, fileInput, (file) => {
         selectedFile = file;
+        invalidateConversion();
         fileName.textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
         dropZone.classList.add('hidden');
         fileDetails.classList.remove('hidden');
@@ -241,12 +266,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (removeFileBtn && removeFileBtn.addEventListener) {
         removeFileBtn.addEventListener('click', () => {
             selectedFile = null;
+            invalidateConversion();
             if (fileInput) fileInput.value = '';
             dropZone.classList.remove('hidden');
             fileDetails.classList.add('hidden');
             convertBtn.disabled = true;
-            resultsSection.classList.add('hidden');
-            convertedCsvContent = null;
         });
     }
 
@@ -290,6 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) {
                     const err = await response.json();
                     showToast(err.detail || 'Erreur lors de la conversion', 'error');
+                    resultsSection.classList.add('hidden');
+                    downloadBtn.disabled = true;
+                    if (copyBtn) copyBtn.disabled = true;
                     return;
                 }
 
@@ -298,8 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 convertedFilename = data.filename;
 
                 const skipped = Math.max(0, (data.extracted_count || data.register_count) - data.register_count);
-                registerBadge.textContent = `${data.register_count} registres générés${skipped ? ` (${skipped} ignorés)` : ''}`;
-                validBadge.textContent = data.is_valid === true ? 'Conforme' : 'Invalide';
+                registerBadge.textContent = `${data.register_count} registers generated${skipped ? ` (${skipped} skipped)` : ''}`;
+                validBadge.textContent = data.is_valid === true ? 'Valid' : 'Invalid';
                 validBadge.classList.toggle('badge-success', data.is_valid === true);
                 validBadge.classList.toggle('badge-error', data.is_valid !== true);
                 downloadBtn.disabled = data.is_valid !== true;
@@ -432,8 +459,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 taggedCsvContent = data.csv_content;
                 taggedFilename = data.filename;
 
-                tagCountBadge.textContent = `${data.tags_updated ?? data.updated_count ?? 0} tags attribués`;
-                tagRegisterBadge.textContent = `${data.register_count ?? data.total_registers ?? 0} registres`;
+                tagCountBadge.textContent = `${data.tags_updated ?? data.updated_count ?? 0} tags updated`;
+                tagRegisterBadge.textContent = `${data.register_count ?? data.total_registers ?? 0} registers`;
 
                 renderTagPreview(data.preview || []);
                 tagResultsSection.classList.remove('hidden');
@@ -645,19 +672,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const data = await response.json();
-                auditStatusBadge.textContent = data.valid ? 'Valide' : 'Invalide';
+                auditStatusBadge.textContent = data.valid ? 'Valid' : 'Issues Found';
                 auditStatusBadge.className = `badge ${data.valid ? 'badge-success' : 'badge-error'}`;
-                auditRegistersBadge.textContent = `${data.register_count || 0} registres`;
+                auditRegistersBadge.textContent = `${data.register_count || 0} registers`;
 
                 if (data.error_count > 0) {
-                    auditErrorsBadge.textContent = `${data.error_count} erreur${data.error_count > 1 ? 's' : ''}`;
+                    auditErrorsBadge.textContent = `${data.error_count} errors`;
                     auditErrorsBadge.classList.remove('hidden');
                 } else {
                     auditErrorsBadge.classList.add('hidden');
                 }
 
                 if (data.warning_count > 0) {
-                    auditWarningsBadge.textContent = `${data.warning_count} avertissement${data.warning_count > 1 ? 's' : ''}`;
+                    auditWarningsBadge.textContent = `${data.warning_count} warnings`;
                     auditWarningsBadge.classList.remove('hidden');
                 } else {
                     auditWarningsBadge.classList.add('hidden');
@@ -678,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                if (data.fix_applied && data.fixed_csv_content) {
+                if (data.fixed_csv_content) {
                     auditFixedCsvContent = data.fixed_csv_content;
                     auditFixedFilename = data.filename ? `repaired_${data.filename}` : 'definition_repaired.csv';
                     if (auditDownloadFixedBtn) auditDownloadFixedBtn.classList.remove('hidden');
@@ -743,8 +770,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             libraryItems = Array.isArray(data) ? data : (data.definitions || []);
             libraryLoaded = true;
+            const modelCount = data.count ?? libraryItems.length;
             if (libraryCountBadge) {
-                libraryCountBadge.textContent = `${libraryItems.length.toLocaleString()} modèles (${source === 'production' ? 'Production' : 'Archives'})`;
+                libraryCountBadge.textContent = `${modelCount} models`;
             }
             renderLibraryTable(libraryItems);
         } catch (err) {

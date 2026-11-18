@@ -587,6 +587,7 @@ def _audit_document(
 
     try:
         from pathlib import Path
+
         from DefFileGenerator.production_governor import verify_file_pillars
 
         pillars_valid, pillar_issues = verify_file_pillars(Path(target_path))
@@ -732,7 +733,7 @@ def get_library(
 
         reg_count = 0
         try:
-            with open(filepath, "r", encoding="utf-8", errors="ignore") as fp:
+            with open(filepath, encoding="utf-8", errors="ignore") as fp:
                 reg_count = max(0, sum(1 for line in fp if line.strip()) - 1)
         except Exception:
             pass
@@ -799,6 +800,7 @@ async def check_pillars(file: UploadFile = File(...)) -> PillarsResponse:
 
         def _verify():
             from pathlib import Path
+
             from DefFileGenerator.production_governor import verify_file_pillars
 
             is_valid, issues = verify_file_pillars(Path(input_path))
@@ -811,7 +813,7 @@ async def check_pillars(file: UploadFile = File(...)) -> PillarsResponse:
                 "encoding_schema": not any("BOM" in iss or "columns" in iss for iss in issues),
             }
             reg_count = 0
-            with open(input_path, "r", encoding="utf-8", errors="ignore") as fp:
+            with open(input_path, encoding="utf-8", errors="ignore") as fp:
                 reg_count = max(0, sum(1 for line in fp if line.strip()) - 1)
 
             return {
@@ -843,7 +845,7 @@ def get_audit_trail(limit: int = 50) -> list[dict[str, Any]]:
 
     events: list[dict[str, Any]] = []
     try:
-        with open(log_path, "r", encoding="utf-8") as f:
+        with open(log_path, encoding="utf-8") as f:
             for line in f:
                 if line.strip():
                     events.append(json.loads(line))
@@ -863,7 +865,7 @@ def get_knowledge_stats() -> dict[str, Any]:
         return {"total_mappings": 0, "unique_tags": 0}
 
     try:
-        with open(kb_path, "r", encoding="utf-8") as f:
+        with open(kb_path, encoding="utf-8") as f:
             data = json.load(f)
         mappings = data.get("name_to_tag", {})
         unique_tags = set(mappings.values())

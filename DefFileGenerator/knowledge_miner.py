@@ -1029,7 +1029,7 @@ def infer_sunpm_tag(
                     )
                 ):
                     learned = ""
-            if learned == "TEMP":
+            if learned in ("TEMP", "T_AMB"):
                 low = variable_name.lower()
                 if any(
                     k in low
@@ -1045,6 +1045,12 @@ def infer_sunpm_tag(
                         "module",
                     )
                 ):
+                    learned = ""
+            if learned and not is_canonical_sunpm_tag(learned):
+                norm = normalize_tag_to_sunpm(learned)
+                if norm and is_canonical_sunpm_tag(norm):
+                    learned = norm
+                else:
                     learned = ""
             if learned:
                 return learned

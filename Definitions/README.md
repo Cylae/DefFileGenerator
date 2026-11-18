@@ -1,6 +1,6 @@
 # 📚 Webdyn Definitions Library
 
-Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **132 fichiers de définition** validés couvrant **23 494 registres Modbus** à travers plus de 60 constructeurs mondiaux.
+Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. Comprend **135 fichiers de définition** validés couvrant **24 004 registres Modbus** à travers plus de 60 constructeurs mondiaux.
 
 ---
 
@@ -8,11 +8,11 @@ Bibliothèque de définitions d'équipements industriels au format WebdynSunPM. 
 
 | Catégorie | Préfixe | Fichiers | Total Registres | Constructeurs Notables |
 |-----------|---------|----------|-----------------|------------------------|
-| Onduleurs & Convertisseurs (Inverters) | `INV_` | 69 | 15 603 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe (+22) |
+| Onduleurs & Convertisseurs (Inverters) | `INV_` | 71 | 15 953 | ABB, Answer Drives, CyberPower, EFACEC, GoodWe, Solplanet (+22) |
 | Compteurs & Analyseurs Réseau (Meters) | `MET_` | 31 | 3 394 | ABB, Algodue, CHAUVIN-ARNOUX, CHINT, CIRCUTOR (+14) |
 | Systèmes de Stockage BESS (Batteries) | `BAT_` | 4 | 3 700 | Dyness |
 | Capteurs & Pyranomètres (Sensors) | `SEN_` | 21 | 446 | ATERSA, BD_SENSOR, DELTAOHM, DELTA_OHM, EKO (+11) |
-| Passerelles & Loggers de Communication | `COM_` | 2 | 142 | GoodWe, Huawei |
+| Passerelles & Loggers de Communication | `COM_` | 3 | 303 | GoodWe, Huawei, Solplanet |
 | Autres Équipements (IO Modules & Afficheurs) | `OTH_` | 5 | 209 | ICPDAS, SIEBERT, Webdyn |
 
 ---
@@ -33,7 +33,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 
 ## 📑 Catalogue Détaillé
 
-### Onduleurs & Convertisseurs (Inverters) (69 fichiers)
+### Onduleurs & Convertisseurs (Inverters) (71 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
@@ -46,6 +46,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_CyberPower_1-Phase.csv`](./INV_CyberPower_1-Phase.csv) | CyberPower | 1-Phase | Modbus | 85 |
 | [`INV_CyberPower_3-Phases.csv`](./INV_CyberPower_3-Phases.csv) | CyberPower | 3-Phases | Modbus | 71 |
 | [`INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv`](./INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv) | CyberPower | CPSHB6000ETL48-CPSHB6000ETLFR | Modbus | 103 |
+| [`INV_Cyberpower_CPSPV120K-140K.csv`](./INV_Cyberpower_CPSPV120K-140K.csv) | Cyberpower | CPSPV120K-140K | Modbus | 244 |
 | [`INV_CyberPower_GENERIC.csv`](./INV_CyberPower_GENERIC.csv) | CyberPower | GENERIC | Modbus | 245 |
 | [`INV_EFACEC_Efasolar.csv`](./INV_EFACEC_Efasolar.csv) | EFACEC | Efasolar | Modbus | 58 |
 | [`INV_Goodwe_ES_EM_S-BP_BP_Series.csv`](./INV_Goodwe_ES_EM_S-BP_BP_Series.csv) | Goodwe | ES_EM_S-BP_BP_Series | Modbus | 370 |
@@ -102,6 +103,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Solax_Generic.csv`](./INV_Solax_Generic.csv) | Solax | Generic | Modbus | 214 |
 | [`INV_Solax_X1-X3_Generic.csv`](./INV_Solax_X1-X3_Generic.csv) | Solax | X1-X3_Generic | Modbus | 157 |
 | [`INV_Solis_GENERIC.csv`](./INV_Solis_GENERIC.csv) | Solis | GENERIC | Modbus | 454 |
+| [`INV_Solplanet_Ai-Logger.csv`](./INV_Solplanet_Ai-Logger.csv) | Solplanet | Ai-Logger | Modbus | 106 |
 | [`INV_Sungrow_Generic.csv`](./INV_Sungrow_Generic.csv) | Sungrow | Generic | Modbus | 164 |
 | [`INV_TATA_Generic.csv`](./INV_TATA_Generic.csv) | TATA | Generic | Modbus | 20 |
 | [`INV_VICTRON_Generic.csv`](./INV_VICTRON_Generic.csv) | VICTRON | Generic | Modbus | 12 |
@@ -178,12 +180,13 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`SEN_Webdyn_RK100-01.csv`](./SEN_Webdyn_RK100-01.csv) | Webdyn | RK100-01 | Modbus | 2 |
 | [`SEN_Webdyn_Thermokon_AGS55.csv`](./SEN_Webdyn_Thermokon_AGS55.csv) | Webdyn | Thermokon_AGS55 | Modbus | 66 |
 
-### Passerelles & Loggers de Communication (2 fichiers)
+### Passerelles & Loggers de Communication (3 fichiers)
 
 | Fichier | Constructeur | Modèle | Protocole | Registres |
 |---------|--------------|--------|-----------|-----------|
 | [`COM_GoodWe_Ezlogger3000.csv`](./COM_GoodWe_Ezlogger3000.csv) | GoodWe | Ezlogger3000 | Modbus | 60 |
 | [`COM_Huawei_SL3000.csv`](./COM_Huawei_SL3000.csv) | Huawei | SL3000 | Modbus | 82 |
+| [`COM_Solplanet_Ai-Logger.csv`](./COM_Solplanet_Ai-Logger.csv) | Solplanet | Ai-Logger | Modbus | 161 |
 
 ### Autres Équipements (IO Modules & Afficheurs) (5 fichiers)
 

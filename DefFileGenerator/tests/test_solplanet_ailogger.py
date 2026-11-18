@@ -168,7 +168,7 @@ def test_solplanet_field_telemetry_profiles():
         assert field_file.is_file(), f"Missing field file: {field_file}"
 
         with open(field_file, encoding="utf-8") as f:
-            lines = [l.strip() for l in f if l.strip()]
+            lines = [line.strip() for line in f if line.strip()]
 
         # Header check
         header = lines[0].split(";")
