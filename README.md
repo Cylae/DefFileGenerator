@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/Platform-Windows%2011%20%7C%20Linux%20%7C%20macOS-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platforms" />
   <img src="https://img.shields.io/badge/Version-0.4.0-blue?style=for-the-badge" alt="Version 0.4.0" />
-  <img src="https://img.shields.io/badge/Tests-3537%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 3537 passed" />
+  <img src="https://img.shields.io/badge/Tests-3541%20passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests: 3541 passed" />
   <img src="https://img.shields.io/badge/Coverage-92%25-brightgreen?style=for-the-badge" alt="Coverage: 92%" />
   <img src="https://img.shields.io/badge/Type%20Check-Mypy%20Strict-blue?style=for-the-badge" alt="Mypy Strict" />
   <img src="https://img.shields.io/badge/Code%20Style-Ruff-black?style=for-the-badge" alt="Ruff" />
@@ -15,7 +15,7 @@
 ---
 
 > **Universal and intelligent Modbus register table converter.**  
-> Automatically extracts Modbus register maps from heterogeneous manufacturer documentation (**PDF, Excel XLSX/XLSM, CSV, XML**) and generates validated, production-ready CSV definition files for **WebdynSunPM** telemetry gateways.
+> Automatically extracts Modbus register maps from heterogeneous manufacturer documentation (**PDF, Excel XLSX/XLSM, CSV, XML, JSON**) and generates validated, production-ready CSV definition files for **WebdynSunPM** telemetry gateways.
 
 ---
 
@@ -669,6 +669,7 @@ This repository is governed by the **Apollo-Standard Autonomous Constitution** (
 - **Excel** : Modern `.xlsx`, `.xlsm`, `.xltx`, `.xltm` files handled via `openpyxl`. *(Legacy 1997 `.xls` files must be saved as `.xlsx`).*
 - **CSV** : Automatic delimiter detection (comma, semicolon, tab) and multi-encoding recognition (UTF-8, UTF-8-SIG, CP1252, Latin-1).
 - **XML** : Hardened XML parsing with `defusedxml` to block XXE attacks.
+- **JSON** : Modbus register schemas and device specifications (sectioned with `holding_registers`, `input_registers`, `coils`, `discrete_inputs`, or flat register lists).
 
 ### 2. Recognized Column Headers
 The extractor recognizes headers in English, French, and German:
