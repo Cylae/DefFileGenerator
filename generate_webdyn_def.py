@@ -33,7 +33,7 @@ def generate_webdyn_definition(
     output_file: str | None = None,
     manufacturer: str | None = None,
     model: str | None = None,
-    protocol: str = "modbusRTU",
+    protocol: str = "Modbus",
     category: str = "Inverter",
     address_offset: int = 0,
     strict_validation: bool = True,
@@ -48,7 +48,7 @@ def generate_webdyn_definition(
         output_file: Path to save the generated WebdynSunPM definition CSV
         manufacturer: Manufacturer name (e.g., "Huawei")
         model: Model name (e.g., "SUN2000")
-        protocol: Protocol string (default "modbusRTU")
+        protocol: Protocol string (default "Modbus")
         category: Category string (default "Inverter")
         address_offset: Value to shift all register addresses by (default 0)
         strict_validation: Whether to fail on warnings like address overlaps (default True)
@@ -194,9 +194,7 @@ def main():
     model = sys.argv[4]
 
     # Optional arguments
-    protocol = (
-        sys.argv[5] if len(sys.argv) > 5 and not sys.argv[5].startswith("--") else "modbusRTU"
-    )
+    protocol = sys.argv[5] if len(sys.argv) > 5 and not sys.argv[5].startswith("--") else "Modbus"
     category = sys.argv[6] if len(sys.argv) > 6 and not sys.argv[6].startswith("--") else "Inverter"
 
     report_file = None

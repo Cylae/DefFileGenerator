@@ -893,7 +893,13 @@ async def check_pillars(file: UploadFile = File(...)) -> PillarsResponse:
                 "function_codes": not any("function code" in iss.lower() for iss in issues),
                 "action_codes": not any("action code" in iss.lower() for iss in issues),
                 "tags": not any("tag" in iss.lower() for iss in issues),
-                "encoding_schema": not any("BOM" in iss or "columns" in iss for iss in issues),
+                "encoding_schema": not any(
+                    "BOM" in iss
+                    or "columns" in iss
+                    or "header" in iss.lower()
+                    or "protocol" in iss.lower()
+                    for iss in issues
+                ),
             }
             reg_count = 0
             with open(input_path, encoding="utf-8", errors="ignore") as fp:

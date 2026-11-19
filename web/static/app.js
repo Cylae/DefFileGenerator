@@ -861,6 +861,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const auditCopyFixedBtn = document.getElementById('auditCopyFixedBtn');
     const auditStrictOverlapCheck = document.getElementById('auditStrictOverlapCheck');
     const auditAutoFixCheck = document.getElementById('auditAutoFixCheck');
+    const auditErrorBox = document.getElementById('auditErrorBox');
+    const auditErrorMessage = document.getElementById('auditErrorMessage');
 
     let auditSelectedFile = null;
     let auditFixedCsvContent = null;
@@ -875,6 +877,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (auditPillarsBtn) auditPillarsBtn.disabled = false;
         if (auditResultsSection) auditResultsSection.classList.add('hidden');
         if (pillarsResultsSection) pillarsResultsSection.classList.add('hidden');
+        if (auditErrorBox) auditErrorBox.classList.add('hidden');
     });
 
     if (auditRemoveFileBtn && auditRemoveFileBtn.addEventListener) {
@@ -887,6 +890,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (auditPillarsBtn) auditPillarsBtn.disabled = true;
             if (auditResultsSection) auditResultsSection.classList.add('hidden');
             if (pillarsResultsSection) pillarsResultsSection.classList.add('hidden');
+            if (auditErrorBox) auditErrorBox.classList.add('hidden');
             auditFixedCsvContent = null;
         });
     }
@@ -899,6 +903,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData();
             formData.append('file', auditSelectedFile);
 
+            if (auditErrorBox) auditErrorBox.classList.add('hidden');
             auditPillarsBtn.disabled = true;
             auditPillarsBtn.textContent = 'Vérification 5 Piliers...';
 
@@ -909,8 +914,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    const err = await response.json();
-                    showToast(err.detail || 'Erreur lors de la vérification des 5 Piliers', 'error');
+                    let errDetail = 'Erreur lors de la vérification des 5 Piliers';
+                    try {
+                        const err = await response.json();
+                        errDetail = err.detail || errDetail;
+                    } catch (_) {
+                        errDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                    }
+                    showToast(errDetail, 'error');
+                    if (auditErrorBox && auditErrorMessage) {
+                        auditErrorMessage.textContent = errDetail;
+                        auditErrorBox.classList.remove('hidden');
+                    }
                     return;
                 }
 
@@ -918,7 +933,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderPillarsReport(data);
                 if (pillarsResultsSection) pillarsResultsSection.classList.remove('hidden');
             } catch (err) {
-                showToast(`Erreur réseau: ${err.message}`, 'error');
+                const msg = `Erreur réseau: ${err.message}`;
+                showToast(msg, 'error');
+                if (auditErrorBox && auditErrorMessage) {
+                    auditErrorMessage.textContent = msg;
+                    auditErrorBox.classList.remove('hidden');
+                }
             } finally {
                 auditPillarsBtn.disabled = false;
                 auditPillarsBtn.textContent = 'Vérifier 5 Piliers Apollo';
@@ -987,6 +1007,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('strict_overlap', strictOverlap ? 'true' : 'false');
             formData.append('auto_fix', autoFix ? 'true' : 'false');
 
+            if (auditErrorBox) auditErrorBox.classList.add('hidden');
             auditProcessBtn.disabled = true;
             auditProcessBtn.textContent = 'Audit en cours...';
 
@@ -997,8 +1018,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    const err = await response.json();
-                    showToast(err.detail || 'Erreur lors de l’audit', 'error');
+                    let errDetail = 'Erreur lors de l’audit';
+                    try {
+                        const err = await response.json();
+                        errDetail = err.detail || errDetail;
+                    } catch (_) {
+                        errDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                    }
+                    showToast(errDetail, 'error');
+                    if (auditErrorBox && auditErrorMessage) {
+                        auditErrorMessage.textContent = errDetail;
+                        auditErrorBox.classList.remove('hidden');
+                    }
                     return;
                 }
 
@@ -1049,7 +1080,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (auditResultsSection) auditResultsSection.classList.remove('hidden');
             } catch (err) {
-                showToast(`Erreur serveur: ${err.message}`, 'error');
+                const msg = `Erreur serveur: ${err.message}`;
+                showToast(msg, 'error');
+                if (auditErrorBox && auditErrorMessage) {
+                    auditErrorMessage.textContent = msg;
+                    auditErrorBox.classList.remove('hidden');
+                }
             } finally {
                 auditProcessBtn.disabled = false;
                 auditProcessBtn.textContent = 'Audit Syntaxique & Overlaps';

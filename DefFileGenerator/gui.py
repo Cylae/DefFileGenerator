@@ -605,11 +605,13 @@ def infer_metadata_from_path(file_path: str) -> dict[str, str]:
         "_IO List",
         "_ModbusTCP",
         "_ModbusRTU",
+        "_Modbus",
         "ModbusTCP",
         "ModbusRTU",
-        "IO List",
         "Modbus Interface",
         "Communication Protocol",
+        "Modbus",
+        "IO List",
     ]:
         clean_model = re.sub(kw, "", clean_model, flags=re.IGNORECASE)
     clean_model = clean_model.strip(" _-")

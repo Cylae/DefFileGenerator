@@ -204,3 +204,47 @@ class TestWebCompleteHarmony:
         assert data["success"] is True
         assert data["tags_updated"] >= 1
         assert "FREQ" in data["csv_content"]
+
+    def test_html_ui_contains_all_persistent_error_boxes(self):
+        """Web UI HTML defines persistent, prominent error boxes across all core tabs."""
+        res = client.get("/")
+        assert res.status_code == 200
+        html = res.text
+        assert 'id="convertErrorBox"' in html
+        assert 'id="tagErrorBox"' in html
+        assert 'id="auditErrorBox"' in html
+
+    def test_pillars_encoding_schema_flags_deprecated_protocol(self):
+        """Pillars audit flags encoding_schema pillar as non-compliant for deprecated protocols."""
+        bad_csv = (
+            "modbusRTU;Inverter;Demo;STP;;;;;;;\n1;3;30001;U16;;Grid Voltage;U_AC;0.1;0.0;V;4\n"
+        )
+        res = client.post(
+            "/api/pillars",
+            files={"file": ("INV_Demo_STP.csv", io.BytesIO(bad_csv.encode("utf-8")), "text/csv")},
+        )
+        assert res.status_code == 200
+        data = res.json()
+        assert data["is_valid"] is False
+        assert data["pillars"]["encoding_schema"] is False
+
+    def test_generate_webdyn_def_defaults_to_modbus(self, tmp_path):
+        """Root generate_webdyn_def helper uses Modbus as standard default protocol."""
+        from generate_webdyn_def import generate_webdyn_definition
+
+        sample_in = tmp_path / "sample.csv"
+        sample_in.write_text(
+            "Register,Name,Data Type,Unit,Scale,Access\n40001,Power,uint16,W,1,R\n",
+            encoding="utf-8",
+        )
+        sample_out = tmp_path / "INV_Demo_M1.csv"
+
+        ok = generate_webdyn_definition(
+            input_file=str(sample_in),
+            output_file=str(sample_out),
+            manufacturer="Demo",
+            model="M1",
+        )
+        assert ok is True
+        first_line = sample_out.read_text(encoding="utf-8").splitlines()[0]
+        assert first_line.startswith("Modbus;Inverter;Demo;M1;")
