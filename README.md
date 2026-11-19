@@ -529,16 +529,19 @@ The engine replaces legacy inconsistent tags with official Webdyn SunPM canonica
 | **Status & Alarms** | `STATUS`, `ALARM`, `STATE` | `InverterState`, `DeviceStatus` | Operating status and fault alarm bitfields |
 | **Remote Commands** | `CMD_ON`, `CMD_OFF`, `CMD_P_AC_SET_PERCENT` | `cmdOn`, `cmdPwrPercent` | Remote Curtailment, Setpoint, and Control |
 
-### 2. Intelligent Semantic Disambiguation
+### 2. Intelligent Semantic Disambiguation & Metrological Ground-Truth
 
-The knowledge miner incorporates multi-signal context disambiguation rules:
+The knowledge miner incorporates multi-signal context disambiguation rules prioritizing **absolute metrological and electrical accuracy over speed**:
 - **Phase Detection**: Disambiguates `L1/L2/L3`, `R/S/T`, or `Phase A/B/C` into canonical suffixes `_1`, `_2`, `_3`.
+- **Power Factor Disambiguation**: Strictly reserves `PF` for true power factor / displacement power factor ($\cos\phi$, *facteur de décalage*, *verschiebungsfaktor*). Excitation type enums (*type d'excitation du cos phi*, inductive/capacitive state) are guarded to prevent false PF attribution.
+- **DC Topology Separation**: Accurately distinguishes DC bus intermediate voltage (`U_DC`, *tension du circuit intermédiaire*) from individual MPPT channels (`U_DC_MPPT_X`, `I_DC_MPPT_X`) and string inputs (`I_DC_STRING_X`, `U_DC_STRING_X`).
 - **Absolute vs. Percentage Power**: Distinguishes active power setpoints (`CMD_P_AC_SET_ABS` in kW) from curtailment percentage commands (`CMD_P_AC_SET_PERCENT` in %).
 - **Apparent vs. Reactive Power**: Accurately classifies $S$ (VA/kVA) into `S_AC` versus $Q$ (var/kvar) into `Q_AC`.
+- **Energy vs. Instantaneous Power Units**: Strict metrological boundary guard ensures cumulative energy (`E_TOT`, `E_DAY`) is never assigned to instantaneous active power variables ($P$ in W / kW) or vice versa.
 - **Automated Action Code Attribution**:
   - `4`: Telemetry sensor / read-only measurement (Holding/Input registers).
-  - `9`: Status, fault alarm, or warning indicator bitfield.
-  - `1`: Modbus command / control setpoint (Coils, Holding write registers).
+  - `9`: Status, fault alarm, or warning indicator bitfield (`ALARM_*`, `FAULT_CODE`).
+  - `1`: Modbus command / control setpoint (`CMD_*`, Coils, Holding write registers).
   - `0`: Reserved / unmapped memory slot.
 
 ---
