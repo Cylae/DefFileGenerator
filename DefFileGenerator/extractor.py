@@ -1608,6 +1608,87 @@ class Extractor:
 
         return xml_tables_generator()
 
+    def extract_from_json(self, filepath: str) -> Iterator[Iterator[dict[str, Any]]]:
+        """
+        Extracts register tables from Modbus device JSON specification files.
+
+        Supports standard schemas with 'holding_registers', 'input_registers',
+        'coils', 'discrete_inputs', or flat 'registers' lists.
+
+        Args:
+            filepath: Path to the JSON file.
+
+        Yields:
+            Iterator[dict[str, Any]]: Generator yielding dictionary rows.
+        """
+
+        def json_tables_generator() -> Iterator[Iterator[dict[str, Any]]]:
+            if not os.path.exists(filepath):
+
+                def missing_json_gen():
+                    logging.error(f"JSON file not found: {filepath}")
+                    yield from ()
+
+                yield missing_json_gen()
+                return
+
+            def json_generator() -> Iterator[dict[str, Any]]:
+                try:
+                    with open(filepath, encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    section_map = [
+                        ("holding_registers", "3"),
+                        ("input_registers", "4"),
+                        ("coils", "1"),
+                        ("discrete_inputs", "2"),
+                    ]
+                    found_section = False
+                    if isinstance(data, dict):
+                        for section_key, fc_code in section_map:
+                            regs = data.get(section_key)
+                            if isinstance(regs, list) and regs:
+                                found_section = True
+                                for item in regs:
+                                    if isinstance(item, dict):
+                                        row = dict(item)
+                                        if "RegisterType" not in row and "function_code" not in row:
+                                            row["RegisterType"] = fc_code
+                                        if "scale_factor" in row and "Factor" not in row:
+                                            row["Factor"] = row["scale_factor"]
+                                        if "data_type" in row and "Type" not in row:
+                                            row["Type"] = row["data_type"]
+                                        if "units" in row and "Unit" not in row:
+                                            row["Unit"] = row["units"]
+                                        if "access" in row and "Action" not in row:
+                                            row["Action"] = row["access"]
+                                        yield row
+
+                        if not found_section:
+                            regs_list = (
+                                data.get("registers")
+                                if isinstance(data.get("registers"), list)
+                                else None
+                            )
+                            if regs_list:
+                                for item in regs_list:
+                                    if isinstance(item, dict):
+                                        yield dict(item)
+                    elif isinstance(data, list):
+                        for item in data:
+                            if isinstance(item, dict):
+                                yield dict(item)
+                except OSError as e:
+                    logging.error(f"File IO Error extracting from JSON {filepath}: {e}")
+                    raise ExtractionError(f"JSON reading failed in {filepath}: {e}") from e
+                except json.JSONDecodeError as e:
+                    logging.error(f"JSON Parsing Error in {filepath}: {e}")
+                    raise ExtractionError(f"JSON parsing failed in {filepath}: {e}") from e
+
+            yield json_generator()
+
+        return json_tables_generator()
+
     def map_and_clean(
         self,
         tables: Iterable[Iterable[dict[str, Any]]] | None,

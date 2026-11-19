@@ -94,6 +94,8 @@ def generate_webdyn_definition(
             raw_data = extractor.extract_from_csv(input_file)
         elif ext == ".xml":
             raw_data = extractor.extract_from_xml(input_file)
+        elif ext == ".json":
+            raw_data = extractor.extract_from_json(input_file)
         else:
             logging.error(f"Unsupported file format: {ext}")
             return False

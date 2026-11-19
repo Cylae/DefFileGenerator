@@ -1,0 +1,451 @@
+{
+  "spec_version": 1,
+  "slug": "chint-dtsu666",
+  "manufacturer": "CHINT",
+  "model": "DTSU666 / DSSU666",
+  "category": "Energy meter",
+  "supplier_url": "https://www.chintglobal.com/au/en/products/instruments-meters/electricity-meter/dtsu666.html",
+  "default_configuration": {
+    "protocol": "modbus_tcp",
+    "port": 502,
+    "unit_id": 1,
+    "addressing": "zero_based",
+    "byte_order": "BigEndian",
+    "word_order": "HighFirst",
+    "native_interface": "rs485",
+    "serial": {
+      "parity": "None",
+      "baud_rate": 9600,
+      "data_bits": 8,
+      "stop_bits": 1
+    }
+  },
+  "coils": [],
+  "discrete_inputs": [],
+  "input_registers": [],
+  "holding_registers": [
+    {
+      "address": 0,
+      "count": 1,
+      "name": "Software version",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 3,
+      "count": 1,
+      "name": "Wiring mode",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "0 = three phase four wire, 1 = three phase three wire."
+    },
+    {
+      "address": 6,
+      "count": 1,
+      "name": "Current transformer ratio (IrAt)",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "CT ratio; 1 when the meter is connected directly."
+    },
+    {
+      "address": 7,
+      "count": 1,
+      "name": "Voltage transformer ratio (UrAt)",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "Voltage transformer ratio UrAt; 1.0 when the meter is connected directly. The manual documents the ratio as 0.1 to 1999.9, so the register carries one decimal place."
+    },
+    {
+      "address": 10,
+      "count": 1,
+      "name": "Display scroll time",
+      "data_type": "Int16",
+      "units": "s",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW"
+    },
+    {
+      "address": 11,
+      "count": 1,
+      "name": "Backlight time",
+      "data_type": "Int16",
+      "units": "min",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "0 = backlight always on."
+    },
+    {
+      "address": 44,
+      "count": 1,
+      "name": "Protocol / parity selection",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "1 = DL/T645, 2 = no parity with 2 stop bits, 3 = no parity with 1 stop bit, 4 = even parity with 1 stop bit, 5 = odd parity with 1 stop bit."
+    },
+    {
+      "address": 45,
+      "count": 1,
+      "name": "Baud rate",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "0 = 1200, 1 = 2400, 2 = 4800, 3 = 9600."
+    },
+    {
+      "address": 46,
+      "count": 1,
+      "name": "Modbus address",
+      "data_type": "Int16",
+      "units": "",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "RW",
+      "description": "1 to 247."
+    },
+    {
+      "address": 4126,
+      "count": 2,
+      "name": "Forward active energy, total",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4128,
+      "count": 2,
+      "name": "Forward active energy, phase A",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4130,
+      "count": 2,
+      "name": "Forward active energy, phase B",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4132,
+      "count": 2,
+      "name": "Forward active energy, phase C",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4134,
+      "count": 2,
+      "name": "Forward active energy, net",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4136,
+      "count": 2,
+      "name": "Reverse active energy, total",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4138,
+      "count": 2,
+      "name": "Reverse active energy, phase A",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4140,
+      "count": 2,
+      "name": "Reverse active energy, phase B",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4142,
+      "count": 2,
+      "name": "Reverse active energy, phase C",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 4144,
+      "count": 2,
+      "name": "Reverse active energy, net",
+      "data_type": "Float32",
+      "units": "kWh",
+      "scale_factor": 1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8192,
+      "count": 2,
+      "name": "Line voltage Uab",
+      "data_type": "Float32",
+      "units": "V",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8194,
+      "count": 2,
+      "name": "Line voltage Ubc",
+      "data_type": "Float32",
+      "units": "V",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8196,
+      "count": 2,
+      "name": "Line voltage Uca",
+      "data_type": "Float32",
+      "units": "V",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8198,
+      "count": 2,
+      "name": "Phase voltage Ua",
+      "data_type": "Float32",
+      "units": "V",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R",
+      "description": "Invalid in three phase three wire mode."
+    },
+    {
+      "address": 8200,
+      "count": 2,
+      "name": "Phase voltage Ub",
+      "data_type": "Float32",
+      "units": "V",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R",
+      "description": "Invalid in three phase three wire mode."
+    },
+    {
+      "address": 8202,
+      "count": 2,
+      "name": "Phase voltage Uc",
+      "data_type": "Float32",
+      "units": "V",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8204,
+      "count": 2,
+      "name": "Phase current Ia",
+      "data_type": "Float32",
+      "units": "A",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8206,
+      "count": 2,
+      "name": "Phase current Ib",
+      "data_type": "Float32",
+      "units": "A",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8208,
+      "count": 2,
+      "name": "Phase current Ic",
+      "data_type": "Float32",
+      "units": "A",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8210,
+      "count": 2,
+      "name": "Combined active power",
+      "data_type": "Float32",
+      "units": "W",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8212,
+      "count": 2,
+      "name": "Phase A active power",
+      "data_type": "Float32",
+      "units": "W",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8214,
+      "count": 2,
+      "name": "Phase B active power",
+      "data_type": "Float32",
+      "units": "W",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R",
+      "description": "Invalid in three phase three wire mode."
+    },
+    {
+      "address": 8216,
+      "count": 2,
+      "name": "Phase C active power",
+      "data_type": "Float32",
+      "units": "W",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8218,
+      "count": 2,
+      "name": "Combined reactive power",
+      "data_type": "Float32",
+      "units": "var",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8220,
+      "count": 2,
+      "name": "Phase A reactive power",
+      "data_type": "Float32",
+      "units": "var",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8222,
+      "count": 2,
+      "name": "Phase B reactive power",
+      "data_type": "Float32",
+      "units": "var",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8224,
+      "count": 2,
+      "name": "Phase C reactive power",
+      "data_type": "Float32",
+      "units": "var",
+      "scale_factor": 0.1,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8234,
+      "count": 2,
+      "name": "Combined power factor",
+      "data_type": "Float32",
+      "units": "",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R",
+      "description": "Positive = inductive, negative = capacitive."
+    },
+    {
+      "address": 8236,
+      "count": 2,
+      "name": "Phase A power factor",
+      "data_type": "Float32",
+      "units": "",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8238,
+      "count": 2,
+      "name": "Phase B power factor",
+      "data_type": "Float32",
+      "units": "",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8240,
+      "count": 2,
+      "name": "Phase C power factor",
+      "data_type": "Float32",
+      "units": "",
+      "scale_factor": 0.001,
+      "offset": 0,
+      "access": "R"
+    },
+    {
+      "address": 8260,
+      "count": 2,
+      "name": "Frequency",
+      "data_type": "Float32",
+      "units": "Hz",
+      "scale_factor": 0.01,
+      "offset": 0,
+      "access": "R"
+    }
+  ],
+  "combined_registers": [],
+  "notes": "RS-485 device: reach it through a Modbus RTU-to-TCP gateway using the factory serial settings above (slave address 1, 9600 bps, 8N1). Source: CHINT 'DTSU666/DSSU666 User Manual' ZTW0.464.0104 V1, table 11 (Modbus protocol address table). Measurements and energy counters are IEEE-754 single precision floats with the high word first (ABCD), read with function code 03. The manual gives the value resolution (0.1 V, 0.001 A, 0.1 W, 0.001 PF, 0.01 Hz, 1 kWh), which is applied here as the scale factor. The register numbers in the manual are the wire addresses."
+}

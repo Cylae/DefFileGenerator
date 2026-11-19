@@ -376,6 +376,8 @@ def _convert_document(
             raw_data = extractor.extract_from_csv(input_path)
         elif ext == ".xml":
             raw_data = extractor.extract_from_xml(input_path)
+        elif ext == ".json":
+            raw_data = extractor.extract_from_json(input_path)
         else:
             raise HTTPException(status_code=400, detail="Unsupported file format.")
     except HTTPException:

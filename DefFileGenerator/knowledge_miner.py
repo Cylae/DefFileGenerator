@@ -1086,6 +1086,26 @@ def infer_sunpm_tag(
                     )
                 ):
                     learned = ""
+            if learned in ("MODEL", "SERIAL"):
+                low = variable_name.lower()
+                if any(
+                    w in low
+                    for w in (
+                        "transformer",
+                        "ratio",
+                        "calibration",
+                        "offset",
+                        "fault",
+                        "alarm",
+                        "register",
+                        "phase",
+                        "voltage",
+                        "current",
+                        "power",
+                        "energy",
+                    )
+                ):
+                    learned = ""
             if learned in ("U_DC", "I_DC", "P_DC"):
                 low = variable_name.lower()
                 if bool(
@@ -1408,9 +1428,45 @@ def infer_sunpm_tag(
     if "energy" in n_lower or "énergie" in n_lower or "energie" in n_lower or "yield" in n_lower:
         if any(k in n_lower for k in ("daily", "today", "jour", "energyday")):
             return "E_DAY"
-        if any(k in n_lower for k in ("export", "exportée", "exportee")):
-            return "E_EXP"
-        if any(k in n_lower for k in ("import", "importée", "importee")):
+        if any(
+            k in n_lower
+            for k in (
+                "export",
+                "exportée",
+                "exportee",
+                "reverse",
+                "inverse",
+                "negative",
+                "négative",
+                "inject",
+                "feed-in",
+                "feedin",
+                "surplus",
+            )
+        ):
+            if not any(
+                ph in n_lower
+                for ph in (
+                    "phase a",
+                    "phase b",
+                    "phase c",
+                    "phase 1",
+                    "phase 2",
+                    "phase 3",
+                    "phase_a",
+                    "phase_b",
+                    "phase_c",
+                    "phase_1",
+                    "phase_2",
+                    "phase_3",
+                    "net",
+                )
+            ) and not re.search(r"\b(?:l1|l2|l3)\b", n_lower):
+                return "E_EXP"
+        if any(
+            k in n_lower
+            for k in ("import", "importée", "importee", "prélèvement", "prelevement", "conso")
+        ):
             return "E_IMP"
         if any(k in n_lower for k in ("total", "cumulative", "lifetime", "life", "energytotal")):
             if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):

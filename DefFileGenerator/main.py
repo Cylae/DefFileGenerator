@@ -38,7 +38,9 @@ from DefFileGenerator.def_gen import (
 from DefFileGenerator.extractor import Extractor
 from DefFileGenerator.io_utils import paths_refer_to_same_file, staged_text_output
 
-ALLOWED_EXTENSIONS = frozenset({".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"})
+ALLOWED_EXTENSIONS = frozenset(
+    {".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml", ".json"}
+)
 RE_SLUGIFY = re.compile(r"[^a-zA-Z0-9]")
 
 
@@ -242,7 +244,7 @@ def _perform_extraction(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
     ext = os.path.splitext(input_file)[1].lower()
     if ext not in ALLOWED_EXTENSIONS:
         logging.error(
-            f"Unsupported file type: {ext}. Supported formats are: .pdf, .xlsx, .xlsm, .xltx, .xltm, .csv, .xml"
+            f"Unsupported file type: {ext}. Supported formats are: .pdf, .xlsx, .xlsm, .xltx, .xltm, .csv, .xml, .json"
         )
         sys.exit(1)
 
@@ -269,6 +271,8 @@ def _perform_extraction(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
         raw_data = extractor.extract_from_csv(input_file)
     elif ext == ".xml":
         raw_data = extractor.extract_from_xml(input_file)
+    elif ext == ".json":
+        raw_data = extractor.extract_from_json(input_file)
     else:
         logging.error(f"Unsupported file type: {ext}")
         sys.exit(1)
@@ -733,6 +737,8 @@ def _convert_single_doc(
             raw_data = extractor.extract_from_csv(str(doc))
         elif ext == ".xml":
             raw_data = extractor.extract_from_xml(str(doc))
+        elif ext == ".json":
+            raw_data = extractor.extract_from_json(str(doc))
         else:
             return False, doc.name, None, f"Unsupported file extension: {ext}"
 
