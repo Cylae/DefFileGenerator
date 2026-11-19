@@ -326,11 +326,11 @@ async def convert_file(
         raise HTTPException(status_code=400, detail="Invalid filename provided.")
 
     ext = os.path.splitext(safe_filename)[1].lower()
-    allowed_exts = {".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml"}
+    allowed_exts = {".pdf", ".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".xml", ".json"}
     if ext not in allowed_exts:
         raise HTTPException(
             status_code=400,
-            detail=f"Unsupported file format '{ext}'. Allowed: PDF, Excel, CSV, XML.",
+            detail=f"Unsupported file format '{ext}'. Allowed: PDF, Excel, CSV, XML, JSON.",
         )
 
     with tempfile.TemporaryDirectory() as temp_dir:

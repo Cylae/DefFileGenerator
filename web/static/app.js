@@ -721,6 +721,8 @@ document.addEventListener('DOMContentLoaded', () => {
         tagFileDetails.classList.remove('hidden');
         tagProcessBtn.disabled = false;
         tagResultsSection.classList.add('hidden');
+        const errBox = document.getElementById('tagErrorBox');
+        if (errBox) errBox.classList.add('hidden');
     });
 
     if (tagRemoveFileBtn && tagRemoveFileBtn.addEventListener) {
@@ -731,6 +733,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tagFileDetails.classList.add('hidden');
             tagProcessBtn.disabled = true;
             tagResultsSection.classList.add('hidden');
+            const errBox = document.getElementById('tagErrorBox');
+            if (errBox) errBox.classList.add('hidden');
             taggedCsvContent = null;
         });
     }
@@ -748,6 +752,10 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('overwrite', overwrite ? 'true' : 'false');
             formData.append('normalize_legacy', 'true');
 
+            const tagErrorBox = document.getElementById('tagErrorBox');
+            const tagErrorMessage = document.getElementById('tagErrorMessage');
+            if (tagErrorBox) tagErrorBox.classList.add('hidden');
+
             tagProcessBtn.disabled = true;
             tagProcessBtn.textContent = 'Balisage SunPM en cours...';
 
@@ -758,8 +766,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) {
-                    const err = await response.json();
-                    showToast(err.detail || 'Erreur lors du balisage', 'error');
+                    let errDetail = 'Erreur lors du balisage';
+                    try {
+                        const err = await response.json();
+                        errDetail = err.detail || errDetail;
+                    } catch (_) {
+                        errDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                    }
+                    showToast(errDetail, 'error');
+                    if (tagErrorBox && tagErrorMessage) {
+                        tagErrorMessage.textContent = errDetail;
+                        tagErrorBox.classList.remove('hidden');
+                    }
                     return;
                 }
 
@@ -774,7 +792,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 tagResultsSection.classList.remove('hidden');
                 showToast(`Balisage terminé: ${data.tags_updated ?? 0} tags mis à jour !`, 'success');
             } catch (err) {
-                showToast(`Erreur réseau: ${err.message}`, 'error');
+                const msg = `Erreur réseau: ${err.message}`;
+                showToast(msg, 'error');
+                if (tagErrorBox && tagErrorMessage) {
+                    tagErrorMessage.textContent = msg;
+                    tagErrorBox.classList.remove('hidden');
+                }
             } finally {
                 tagProcessBtn.disabled = false;
                 tagProcessBtn.textContent = 'Appliquer les Tags SunPM Canoniques';
