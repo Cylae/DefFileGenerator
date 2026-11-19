@@ -10,7 +10,7 @@
 
 ---
 
-The extractor pipeline accepts manufacturer Modbus register documentation in **PDF, Excel (XLSX/XLSM/XLTX/XLTM), CSV, or XML** formats. Because column headers and data type names vary across manufacturers, the engine applies staged heuristic matching and pattern dictionaries to normalize heterogeneous inputs into a canonical schema.
+The extractor pipeline accepts manufacturer Modbus register documentation in **PDF, Excel (XLSX/XLSM/XLTX/XLTM), CSV, XML, or JSON** formats. Because column headers and data type names vary across manufacturers, the engine applies staged heuristic matching and pattern dictionaries to normalize heterogeneous inputs into a canonical schema.
 
 ---
 
@@ -177,7 +177,7 @@ The generator computes these coefficients automatically:
 
 ## 📄 Official WebdynSunPM CSV Definition Structure
 
-The generated definition is a semicolon-delimited (`;`) CSV file encoded in **UTF-8 with BOM**.
+The generated definition is a semicolon-delimited (`;`) CSV file encoded in **strict UTF-8 without BOM** (in accordance with the Apollo Production Pillars).
 
 ### Line 1: Equipment Metadata Header
 Contains 5 metadata fields followed by 6 empty separators to match the required 11-column width:

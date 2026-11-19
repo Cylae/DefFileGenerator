@@ -24,6 +24,7 @@ EXPECTED_PREFIX_MAP = {
     "Logger": "COM",
     "Io": "OTH",
     "Display": "OTH",
+    "Other": "OTH",
     "Battery": "BAT",
 }
 

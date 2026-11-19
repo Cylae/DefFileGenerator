@@ -119,6 +119,9 @@ KNOWN_MANUFACTURERS: tuple[str, ...] = (
     "Webdyn",
     "Answer Drives",
     "AnswerDrives",
+    "X7",
+    "X7 Energy",
+    "X7 BESS",
 )
 
 

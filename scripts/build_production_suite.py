@@ -27,6 +27,7 @@ TAGGED_DIR = WORKSPACE_DIR / "tagged_definitions"
 FOXESS_DIR = WORKSPACE_DIR / "FoxESS_P3_H3_Pro_Definitions"
 MARS_DIR = WORKSPACE_DIR / "MarsRenewable_Definitions"
 DYNESS_DIR = WORKSPACE_DIR / "Dyness_DH_Series_Definitions"
+X7_DIR = WORKSPACE_DIR / "X7_Definitions"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -67,6 +68,10 @@ MFG_REGISTRY = {
     "fox_ess": "FoxESS",
     "fox": "FoxESS",
     "dyness": "Dyness",
+    "x7": "X7",
+    "x7_bess": "X7",
+    "x7_energy": "X7",
+    "x7energy": "X7",
     "ingeteam": "Ingeteam",
     "hoymiles": "Hoymiles",
     "delta": "Delta",
@@ -462,7 +467,19 @@ def build_manifest() -> dict[str, Path]:
     }
     manifest.update(dyness_map)
 
-    # 5. Additional Key Certified Models
+    # 5. X7 BESS Certified Definitions
+    x7_map = {
+        "BAT_X7_BESS-AllInOne.csv": X7_DIR / "BAT_X7_BESS-AllInOne.csv",
+        "BAT_X7_EMS.csv": X7_DIR / "BAT_X7_EMS.csv",
+        "BAT_X7_BMS.csv": X7_DIR / "BAT_X7_BMS.csv",
+        "BAT_X7_BMS-Cells.csv": X7_DIR / "BAT_X7_BMS-Cells.csv",
+        "MET_X7_Meters.csv": X7_DIR / "MET_X7_Meters.csv",
+        "INV_X7_PCS.csv": X7_DIR / "INV_X7_PCS.csv",
+        "OTH_X7_Cabinet.csv": X7_DIR / "OTH_X7_Cabinet.csv",
+    }
+    manifest.update(x7_map)
+
+    # 6. Additional Key Certified Models
     extra_map = {
         "BAT_Huawei_Luna2000.csv": TAGGED_DIR / "BAT_Huawei_Luna_2000.csv",
         "BAT_Hoymiles_HoyUltra2.csv": TAGGED_DIR / "BAT_Hoymiles_HOYMILES_BATTERY_HOYULTRA2.csv",

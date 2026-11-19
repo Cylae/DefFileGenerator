@@ -100,15 +100,15 @@ The codebase strictly enforces a layered architecture where the core domain logi
 
 ## 3. WebdynSunPM Specification & Domain Invariants
 
-WebdynSunPM data loggers communicate with Modbus RTU/TCP inverters, meters, and weather stations. The generator writes semicolon-delimited (`;`) UTF-8-with-BOM definition CSV files; the validator also accepts supported legacy encodings.
+WebdynSunPM data loggers communicate with Modbus inverters, meters, batteries, and weather stations. In accordance with the 5 Apollo Production Pillars, the generator writes semicolon-delimited (`;`) definition CSV files in **strict UTF-8 without BOM**.
 
 ### Line 1: Header Row
 | Column Index | Field Name | Description | Example |
 |---|---|---|---|
-| 0 | `Protocol` | Communication protocol | `modbusRTU` or `modbusTCP` |
-| 1 | `Category` | Equipment classification | `Inverter`, `Meter`, `Sensor` |
-| 2 | `Manufacturer` | Equipment brand | `Huawei`, `ABB`, `SMA` |
-| 3 | `Model` | Device model identifier | `SUN2000`, `STP5000` |
+| 0 | `Protocol` | Communication protocol (standardized) | `Modbus` |
+| 1 | `Category` | Equipment classification | `Inverter`, `Meter`, `Sensor`, `Battery` |
+| 2 | `Manufacturer` | Equipment brand | `Huawei`, `ABB`, `SMA`, `Chint` |
+| 3 | `Model` | Device model identifier | `SUN2000`, `STP5000`, `DTSU666` |
 | 4 | `Forced writing code` | Optional forced write command | Empty or command string |
 | 5–10 | Empty | Padding so the header has the same width as register rows | `;;;;;;` |
 

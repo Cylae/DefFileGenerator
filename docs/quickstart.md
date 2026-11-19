@@ -91,7 +91,7 @@ deffilegen discover "SMA STP 50.0"
 | Flag | Description | Example |
 |---|---|---|
 | `-o, --output FILE` | Destination output file path | `-o definition.csv` |
-| `--protocol PROTO` | Modbus protocol (`modbusRTU` or `modbusTCP`) | `--protocol modbusTCP` |
+| `--protocol PROTO` | Modbus protocol (standard: `Modbus`) | `--protocol Modbus` |
 | `--category CAT` | Device classification (`Inverter`, `Meter`, `Sensor`, `Battery`) | `--category Inverter` |
 | `--sheet NAME` | Specific Excel worksheet name | `--sheet "Holding Registers"` |
 | `--pages RANGE` | Selective PDF pages range | `--pages "12,14-18"` |

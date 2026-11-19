@@ -1,0 +1,165 @@
+Modbus;Battery;X7;EMS;;;;;;;
+1;4;101;I16;;EMS - system total active power of PCS;P_AC;0.100000;0.000000;kW;4
+2;4;103;I16;;EMS - total voltage;U_DC;0.100000;0.000000;V;4
+3;4;104;I16;;EMS - total current;I_DC;0.100000;0.000000;A;4
+4;4;105;U16;;EMS - total soc;SOC;1.000000;0.000000;%;4
+5;4;106;U16;;EMS - battery status;STATE_BAT;1.000000;0.000000;;9
+6;4;107;U16;;EMS - Total Number of Battery Cells;NUM_CELLS;1.000000;0.000000;;4
+7;4;108;I16;;EMS - Average Battery Temperature (Summary);T_BAT_AVG;1.000000;0.000000;°C;4
+8;4;109;I16;;EMS - Maximum Battery Temperature Difference (Summary);T_BAT_DIFF_MAX;1.000000;0.000000;°C;4
+9;4;110;U16;;EMS - Maximum Cell Voltage (Summary);U_CELL_MAX;0.001000;0.000000;V;4
+10;4;111;U16;;EMS - Minimum Cell Voltage (Summary);U_CELL_MIN;0.001000;0.000000;V;4
+11;4;114;U16;;EMS - System status;STATE_SYS;1.000000;0.000000;;9
+12;4;115;U16;;EMS - Running State;STATE_RUN;1.000000;0.000000;;9
+13;4;116;U16;;EMS - AcSeriesFlag;FLAG_AC_SERIES;1.000000;0.000000;;4
+14;4;117;U16;;EMS - Rated Active Power;P_RATED;0.100000;0.000000;kW;4
+15;4;138_24;STRING;;EMS - EMS software version;FW_VER_EMS;1.000000;0.000000;;4
+16;4;162_24;STRING;;EMS - EMS device series number;SN_EMS;1.000000;0.000000;;4
+17;4;186_24;STRING;;EMS - Modbus TCP protocol version number;VER_PROTO;1.000000;0.000000;;4
+18;4;32000_24;STRING;;EMS - device series number;SERIAL;1.000000;0.000000;;4
+19;4;32024_24;STRING;;EMS - battery pack series number 1;SN_PACK_1;1.000000;0.000000;;4
+20;4;32048_24;STRING;;EMS - battery pack series number 2;SN_PACK_2;1.000000;0.000000;;4
+21;4;32072_24;STRING;;EMS - battery pack series number 3;SN_PACK_3;1.000000;0.000000;;4
+22;4;32096_24;STRING;;EMS - battery pack series number 4;SN_PACK_4;1.000000;0.000000;;4
+23;4;32120_24;STRING;;EMS - software Version;FW_VER;1.000000;0.000000;;4
+24;4;32144_24;STRING;;EMS - hardware version;HW_VER;1.000000;0.000000;;4
+25;4;40000;U32;;EMS - FaultCode_1;FAULT_CODE_1;1.000000;0.000000;;9
+26;4;40002;U32;;EMS - FaultCode_2;FAULT_CODE_2;1.000000;0.000000;;9
+27;4;40004;U32;;EMS - FaultCode_3;FAULT_CODE_3;1.000000;0.000000;;9
+28;4;40006;U32;;EMS - FaultCode_4;FAULT_CODE_4;1.000000;0.000000;;9
+29;4;40008;U32;;EMS - FaultCode_5;FAULT_CODE_5;1.000000;0.000000;;9
+30;4;40010;U32;;EMS - FaultCode_6;FAULT_CODE_6;1.000000;0.000000;;9
+31;4;40012;U32;;EMS - FaultCode_7;FAULT_CODE_7;1.000000;0.000000;;9
+32;4;40014;U32;;EMS - FaultCode_8;FAULT_CODE_8;1.000000;0.000000;;9
+33;4;40016;U32;;EMS - FaultCode_9;FAULT_CODE_9;1.000000;0.000000;;9
+34;4;40018;U32;;EMS - FaultCode_10;FAULT_CODE_10;1.000000;0.000000;;9
+35;3;4199;U16;;EMS - Master–Slave Working Mode;CMD_MS_WORK_MODE;1.000000;0.000000;;1
+36;3;4200;U16;;EMS - Master–Slave Mode;STATE_MS_MODE;1.000000;0.000000;;4
+37;3;4201;U16;;EMS - Master–Slave Settings;CMD_MS_SETTINGS;1.000000;0.000000;;1
+38;3;4203;U16;;EMS - Number of Master/Slave Devices;NUM_MS_DEVICES;1.000000;0.000000;;4
+39;3;2000;U16;;EMS Control - System Start/Stop Command;CMD_START_STOP;1.000000;0.000000;;1
+40;3;2050;U16;;EMS Control - Offgrid Enable;CMD_OFFGRID_EN;1.000000;0.000000;;1
+41;3;2051;U16;;EMS Control - Charge By Grid Enable;CMD_GRID_CHG_EN;1.000000;0.000000;;1
+42;3;2053;U16;;EMS Control - Feed network power limit Enable;CMD_FEED_LIM_EN;1.000000;0.000000;;1
+43;3;2054;U16;;EMS Control - Feed network power limit value;CMD_FEED_LIM_VAL;0.100000;0.000000;kW;1
+44;3;2999;U16;;EMS Control - time_mode_flag;CMD_SCHED_MODE_FLAG;1.000000;0.000000;;1
+45;3;3000;U16;;EMS Control - time1_enable;SCHED_1_OFF_0;1.000000;0.000000;;1
+46;3;3001;U16;;EMS Control - time1_start_hour_minute;SCHED_1_OFF_1;1.000000;0.000000;;1
+47;3;3002;U16;;EMS Control - time1_end_hour_minute;SCHED_1_OFF_2;1.000000;0.000000;;1
+48;3;3003;U16;;EMS Control - time1_work_mode;SCHED_1_OFF_3;1.000000;0.000000;;1
+49;3;3004;U16;;EMS Control - time1_max_soc_from_grid;SCHED_1_OFF_4;1.000000;0.000000;%;1
+50;3;3005;U16;;EMS Control - time1_min_soc_ongrid;SCHED_1_OFF_5;1.000000;0.000000;%;1
+51;3;3006;U16;;EMS Control - time1_fc_fd_thsoc;SCHED_1_OFF_6;1.000000;0.000000;%;1
+52;3;3007;U16;;EMS Control - time1_fc_fd_power;SCHED_1_OFF_7;0.100000;0.000000;kW;1
+53;3;3008;U16;;EMS Control - time1_parameter_enable;SCHED_1_OFF_8;1.000000;0.000000;;1
+54;3;3011;U32;;EMS Control - time1_import_limited_power;SCHED_1_OFF_11;0.100000;0.000000;kW;1
+55;3;3013;U32;;EMS Control - time1_export_limited_power;SCHED_1_OFF_13;0.100000;0.000000;kW;1
+56;3;3015;U32;;EMS Control - time1_pv_limited_power;SCHED_1_OFF_15;0.100000;0.000000;kW;1
+57;3;3017;I32;;EMS Control - time1_reactive_limited_power;SCHED_1_OFF_17;0.100000;0.000000;kvar;1
+58;3;3060;U16;;EMS Control - time2_enable;SCHED_2_OFF_0;1.000000;0.000000;;1
+59;3;3061;U16;;EMS Control - time2_start_hour_minute;SCHED_2_OFF_1;1.000000;0.000000;;1
+60;3;3062;U16;;EMS Control - time2_end_hour_minute;SCHED_2_OFF_2;1.000000;0.000000;;1
+61;3;3063;U16;;EMS Control - time2_work_mode;SCHED_2_OFF_3;1.000000;0.000000;;1
+62;3;3064;U16;;EMS Control - time2_max_soc_from_grid;SCHED_2_OFF_4;1.000000;0.000000;%;1
+63;3;3065;U16;;EMS Control - time2_min_soc_ongrid;SCHED_2_OFF_5;1.000000;0.000000;%;1
+64;3;3066;U16;;EMS Control - time2_fc_fd_thsoc;SCHED_2_OFF_6;1.000000;0.000000;%;1
+65;3;3067;U16;;EMS Control - time2_fc_fd_power;SCHED_2_OFF_7;0.100000;0.000000;kW;1
+66;3;3068;U16;;EMS Control - time2_parameter_enable;SCHED_2_OFF_8;1.000000;0.000000;;1
+67;3;3071;U32;;EMS Control - time2_import_limited_power;SCHED_2_OFF_11;0.100000;0.000000;kW;1
+68;3;3073;U32;;EMS Control - time2_export_limited_power;SCHED_2_OFF_13;0.100000;0.000000;kW;1
+69;3;3075;U32;;EMS Control - time2_pv_limited_power;SCHED_2_OFF_15;0.100000;0.000000;kW;1
+70;3;3077;I32;;EMS Control - time2_reactive_limited_power;SCHED_2_OFF_17;0.100000;0.000000;kvar;1
+71;3;3120;U16;;EMS Control - time3_enable;SCHED_3_OFF_0;1.000000;0.000000;;1
+72;3;3121;U16;;EMS Control - time3_start_hour_minute;SCHED_3_OFF_1;1.000000;0.000000;;1
+73;3;3122;U16;;EMS Control - time3_end_hour_minute;SCHED_3_OFF_2;1.000000;0.000000;;1
+74;3;3123;U16;;EMS Control - time3_work_mode;SCHED_3_OFF_3;1.000000;0.000000;;1
+75;3;3124;U16;;EMS Control - time3_max_soc_from_grid;SCHED_3_OFF_4;1.000000;0.000000;%;1
+76;3;3125;U16;;EMS Control - time3_min_soc_ongrid;SCHED_3_OFF_5;1.000000;0.000000;%;1
+77;3;3126;U16;;EMS Control - time3_fc_fd_thsoc;SCHED_3_OFF_6;1.000000;0.000000;%;1
+78;3;3127;U16;;EMS Control - time3_fc_fd_power;SCHED_3_OFF_7;0.100000;0.000000;kW;1
+79;3;3128;U16;;EMS Control - time3_parameter_enable;SCHED_3_OFF_8;1.000000;0.000000;;1
+80;3;3131;U32;;EMS Control - time3_import_limited_power;SCHED_3_OFF_11;0.100000;0.000000;kW;1
+81;3;3133;U32;;EMS Control - time3_export_limited_power;SCHED_3_OFF_13;0.100000;0.000000;kW;1
+82;3;3135;U32;;EMS Control - time3_pv_limited_power;SCHED_3_OFF_15;0.100000;0.000000;kW;1
+83;3;3137;I32;;EMS Control - time3_reactive_limited_power;SCHED_3_OFF_17;0.100000;0.000000;kvar;1
+84;3;3180;U16;;EMS Control - time4_enable;SCHED_4_OFF_0;1.000000;0.000000;;1
+85;3;3181;U16;;EMS Control - time4_start_hour_minute;SCHED_4_OFF_1;1.000000;0.000000;;1
+86;3;3182;U16;;EMS Control - time4_end_hour_minute;SCHED_4_OFF_2;1.000000;0.000000;;1
+87;3;3183;U16;;EMS Control - time4_work_mode;SCHED_4_OFF_3;1.000000;0.000000;;1
+88;3;3184;U16;;EMS Control - time4_max_soc_from_grid;SCHED_4_OFF_4;1.000000;0.000000;%;1
+89;3;3185;U16;;EMS Control - time4_min_soc_ongrid;SCHED_4_OFF_5;1.000000;0.000000;%;1
+90;3;3186;U16;;EMS Control - time4_fc_fd_thsoc;SCHED_4_OFF_6;1.000000;0.000000;%;1
+91;3;3187;U16;;EMS Control - time4_fc_fd_power;SCHED_4_OFF_7;0.100000;0.000000;kW;1
+92;3;3188;U16;;EMS Control - time4_parameter_enable;SCHED_4_OFF_8;1.000000;0.000000;;1
+93;3;3191;U32;;EMS Control - time4_import_limited_power;SCHED_4_OFF_11;0.100000;0.000000;kW;1
+94;3;3193;U32;;EMS Control - time4_export_limited_power;SCHED_4_OFF_13;0.100000;0.000000;kW;1
+95;3;3195;U32;;EMS Control - time4_pv_limited_power;SCHED_4_OFF_15;0.100000;0.000000;kW;1
+96;3;3197;I32;;EMS Control - time4_reactive_limited_power;SCHED_4_OFF_17;0.100000;0.000000;kvar;1
+97;3;3240;U16;;EMS Control - time5_enable;SCHED_5_OFF_0;1.000000;0.000000;;1
+98;3;3241;U16;;EMS Control - time5_start_hour_minute;SCHED_5_OFF_1;1.000000;0.000000;;1
+99;3;3242;U16;;EMS Control - time5_end_hour_minute;SCHED_5_OFF_2;1.000000;0.000000;;1
+100;3;3243;U16;;EMS Control - time5_work_mode;SCHED_5_OFF_3;1.000000;0.000000;;1
+101;3;3244;U16;;EMS Control - time5_max_soc_from_grid;SCHED_5_OFF_4;1.000000;0.000000;%;1
+102;3;3245;U16;;EMS Control - time5_min_soc_ongrid;SCHED_5_OFF_5;1.000000;0.000000;%;1
+103;3;3246;U16;;EMS Control - time5_fc_fd_thsoc;SCHED_5_OFF_6;1.000000;0.000000;%;1
+104;3;3247;U16;;EMS Control - time5_fc_fd_power;SCHED_5_OFF_7;0.100000;0.000000;kW;1
+105;3;3248;U16;;EMS Control - time5_parameter_enable;SCHED_5_OFF_8;1.000000;0.000000;;1
+106;3;3251;U32;;EMS Control - time5_import_limited_power;SCHED_5_OFF_11;0.100000;0.000000;kW;1
+107;3;3253;U32;;EMS Control - time5_export_limited_power;SCHED_5_OFF_13;0.100000;0.000000;kW;1
+108;3;3255;U32;;EMS Control - time5_pv_limited_power;SCHED_5_OFF_15;0.100000;0.000000;kW;1
+109;3;3257;I32;;EMS Control - time5_reactive_limited_power;SCHED_5_OFF_17;0.100000;0.000000;kvar;1
+110;3;3300;U16;;EMS Control - time6_enable;SCHED_6_OFF_0;1.000000;0.000000;;1
+111;3;3301;U16;;EMS Control - time6_start_hour_minute;SCHED_6_OFF_1;1.000000;0.000000;;1
+112;3;3302;U16;;EMS Control - time6_end_hour_minute;SCHED_6_OFF_2;1.000000;0.000000;;1
+113;3;3303;U16;;EMS Control - time6_work_mode;SCHED_6_OFF_3;1.000000;0.000000;;1
+114;3;3304;U16;;EMS Control - time6_max_soc_from_grid;SCHED_6_OFF_4;1.000000;0.000000;%;1
+115;3;3305;U16;;EMS Control - time6_min_soc_ongrid;SCHED_6_OFF_5;1.000000;0.000000;%;1
+116;3;3306;U16;;EMS Control - time6_fc_fd_thsoc;SCHED_6_OFF_6;1.000000;0.000000;%;1
+117;3;3307;U16;;EMS Control - time6_fc_fd_power;SCHED_6_OFF_7;0.100000;0.000000;kW;1
+118;3;3308;U16;;EMS Control - time6_parameter_enable;SCHED_6_OFF_8;1.000000;0.000000;;1
+119;3;3311;U32;;EMS Control - time6_import_limited_power;SCHED_6_OFF_11;0.100000;0.000000;kW;1
+120;3;3313;U32;;EMS Control - time6_export_limited_power;SCHED_6_OFF_13;0.100000;0.000000;kW;1
+121;3;3315;U32;;EMS Control - time6_pv_limited_power;SCHED_6_OFF_15;0.100000;0.000000;kW;1
+122;3;3317;I32;;EMS Control - time6_reactive_limited_power;SCHED_6_OFF_17;0.100000;0.000000;kvar;1
+123;3;3360;U16;;EMS Control - time7_enable;SCHED_7_OFF_0;1.000000;0.000000;;1
+124;3;3361;U16;;EMS Control - time7_start_hour_minute;SCHED_7_OFF_1;1.000000;0.000000;;1
+125;3;3362;U16;;EMS Control - time7_end_hour_minute;SCHED_7_OFF_2;1.000000;0.000000;;1
+126;3;3363;U16;;EMS Control - time7_work_mode;SCHED_7_OFF_3;1.000000;0.000000;;1
+127;3;3364;U16;;EMS Control - time7_max_soc_from_grid;SCHED_7_OFF_4;1.000000;0.000000;%;1
+128;3;3365;U16;;EMS Control - time7_min_soc_ongrid;SCHED_7_OFF_5;1.000000;0.000000;%;1
+129;3;3366;U16;;EMS Control - time7_fc_fd_thsoc;SCHED_7_OFF_6;1.000000;0.000000;%;1
+130;3;3367;U16;;EMS Control - time7_fc_fd_power;SCHED_7_OFF_7;0.100000;0.000000;kW;1
+131;3;3368;U16;;EMS Control - time7_parameter_enable;SCHED_7_OFF_8;1.000000;0.000000;;1
+132;3;3371;U32;;EMS Control - time7_import_limited_power;SCHED_7_OFF_11;0.100000;0.000000;kW;1
+133;3;3373;U32;;EMS Control - time7_export_limited_power;SCHED_7_OFF_13;0.100000;0.000000;kW;1
+134;3;3375;U32;;EMS Control - time7_pv_limited_power;SCHED_7_OFF_15;0.100000;0.000000;kW;1
+135;3;3377;I32;;EMS Control - time7_reactive_limited_power;SCHED_7_OFF_17;0.100000;0.000000;kvar;1
+136;3;3420;U16;;EMS Control - time8_enable;SCHED_8_OFF_0;1.000000;0.000000;;1
+137;3;3421;U16;;EMS Control - time8_start_hour_minute;SCHED_8_OFF_1;1.000000;0.000000;;1
+138;3;3422;U16;;EMS Control - time8_end_hour_minute;SCHED_8_OFF_2;1.000000;0.000000;;1
+139;3;3423;U16;;EMS Control - time8_work_mode;SCHED_8_OFF_3;1.000000;0.000000;;1
+140;3;3424;U16;;EMS Control - time8_max_soc_from_grid;SCHED_8_OFF_4;1.000000;0.000000;%;1
+141;3;3425;U16;;EMS Control - time8_min_soc_ongrid;SCHED_8_OFF_5;1.000000;0.000000;%;1
+142;3;3426;U16;;EMS Control - time8_fc_fd_thsoc;SCHED_8_OFF_6;1.000000;0.000000;%;1
+143;3;3427;U16;;EMS Control - time8_fc_fd_power;SCHED_8_OFF_7;0.100000;0.000000;kW;1
+144;3;3428;U16;;EMS Control - time8_parameter_enable;SCHED_8_OFF_8;1.000000;0.000000;;1
+145;3;3431;U32;;EMS Control - time8_import_limited_power;SCHED_8_OFF_11;0.100000;0.000000;kW;1
+146;3;3433;U32;;EMS Control - time8_export_limited_power;SCHED_8_OFF_13;0.100000;0.000000;kW;1
+147;3;3435;U32;;EMS Control - time8_pv_limited_power;SCHED_8_OFF_15;0.100000;0.000000;kW;1
+148;3;3437;I32;;EMS Control - time8_reactive_limited_power;SCHED_8_OFF_17;0.100000;0.000000;kvar;1
+149;3;80;U16;;EMS Adjust - Backup Reverse;CMD_BACKUP_RESERVE_SOC;1.000000;0.000000;%;1
+150;3;81;U16;;EMS Adjust - SOC Upper limit;CMD_SOC_MAX;0.100000;0.000000;%;1
+151;3;82;U16;;EMS Adjust - SOC Lower limit;CMD_SOC_MIN;0.100000;0.000000;%;1
+152;3;83;U16;;EMS Adjust - Charge by grid value;CMD_GRID_CHG_VAL;0.100000;0.000000;kW;1
+153;3;93;U16;;EMS Adjust - Modbus Disconnection Timeout;CMD_MODBUS_TIMEOUT;1.000000;0.000000;s;1
+154;3;94;U16;;EMS Adjust - Modbus Fault Reset;CMD_FAULT_RESET;1.000000;0.000000;;1
+155;3;95;U16;;EMS Adjust - Enable Modbus TCP Communication Loss Strategy;CMD_COMM_LOSS_STRAT_EN;1.000000;0.000000;;1
+156;3;99;U16;;EMS Adjust - PV Active Power Setpoint;CMD_PV_PWR_SETPOINT;0.100000;0.000000;kW;1
+157;3;100;I16;;EMS Adjust - Power Control Mode Selection;CMD_PWR_CTRL_MODE;0.100000;0.000000;kW;1
+158;3;102;U16;;EMS Adjust - Command Mode;CMD_MODE;1.000000;0.000000;;1
+159;3;104;U16;;EMS Adjust - Control Source;CMD_CTRL_SRC;1.000000;0.000000;;1
+160;3;105;I16;;EMS Adjust - Power Control Command;CMD_PWR_SETPOINT;0.100000;0.000000;kW;1
+161;3;106;U16;;EMS Adjust - Set Reactive Power Enable;CMD_Q_EN;1.000000;0.000000;;1
+162;3;107;I32;;EMS Adjust - Reactive Power Setpoint;CMD_Q_SETPOINT;0.100000;0.000000;kvar;1
+163;3;109;U16;;EMS Adjust - Normal Ramp-up Rate;CMD_RAMP_RATE;0.010000;0.000000;%/s;1
+164;3;900_24;STRING;;EMS Adjust - Serial number of the entire machine;SN_MACHINE;1.000000;0.000000;;1

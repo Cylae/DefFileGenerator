@@ -42,7 +42,7 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_ABB_PVS800-57B_2.csv`](./INV_ABB_PVS800-57B_2.csv) | ABB | PVS800-57B | Modbus | 1053 |
 | [`INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv`](./INV_ABB_TRIO_20.0-27.6_TL_OUTD.csv) | ABB | TRIO_20.0-27.6_TL_OUTD | Modbus | 89 |
 | [`INV_ABB_Ultra_Inverter_Module.csv`](./INV_ABB_Ultra_Inverter_Module.csv) | ABB | Ultra_Inverter_Module | Modbus | 57 |
-| [`INV_AnswerDrives_Solargate.csv`](./INV_AnswerDrives_Solargate.csv) | Answer Drives | Solargate | modbusRTU | 288 |
+| [`INV_AnswerDrives_Solargate.csv`](./INV_AnswerDrives_Solargate.csv) | Answer Drives | Solargate | Modbus | 288 |
 | [`INV_CyberPower_1-Phase.csv`](./INV_CyberPower_1-Phase.csv) | CyberPower | 1-Phase | Modbus | 85 |
 | [`INV_CyberPower_3-Phases.csv`](./INV_CyberPower_3-Phases.csv) | CyberPower | 3-Phases | Modbus | 71 |
 | [`INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv`](./INV_CyberPower_CPSHB6000ETL48-CPSHB6000ETLFR.csv) | CyberPower | CPSHB6000ETL48-CPSHB6000ETLFR | Modbus | 103 |
@@ -62,13 +62,13 @@ Tous les fichiers suivent la convention canonique Webdyn :
 | [`INV_Goodwe_SDTG2.csv`](./INV_Goodwe_SDTG2.csv) | Goodwe | SDTG2 | Modbus | 116 |
 | [`INV_Goodwe_SMT.csv`](./INV_Goodwe_SMT.csv) | Goodwe | SMT | Modbus | 115 |
 | [`INV_Goodwe_SMT50K_SMT60K.csv`](./INV_Goodwe_SMT50K_SMT60K.csv) | Goodwe | SMT50K_SMT60K | Modbus | 119 |
-| [`INV_Growatt_Generic.csv`](./INV_Growatt_Generic.csv) | Growatt | Growatt_Generic | modbusRTU | 851 |
+| [`INV_Growatt_Generic.csv`](./INV_Growatt_Generic.csv) | Growatt | Growatt_Generic | Modbus | 851 |
 | [`INV_Growatt_MAX1500V_MAX-XLV_Series.csv`](./INV_Growatt_MAX1500V_MAX-XLV_Series.csv) | Growatt | MAX1500V_MAX-XLV_Series | Modbus | 468 |
 | [`INV_Growatt_MOD_TL3-XH_Series.csv`](./INV_Growatt_MOD_TL3-XH_Series.csv) | Growatt | MOD_TL3-XH_Series | Modbus | 409 |
 | [`INV_Growatt_TL-X_TL-XH_Series.csv`](./INV_Growatt_TL-X_TL-XH_Series.csv) | Growatt | TL-X_TL-XH_Series | Modbus | 425 |
 | [`INV_Growatt_TL3-X_Series.csv`](./INV_Growatt_TL3-X_Series.csv) | Growatt | TL3-X_Series | Modbus | 371 |
 | [`INV_Huawei_GENERIC.csv`](./INV_Huawei_GENERIC.csv) | Huawei | GENERIC | Modbus | 256 |
-| [`INV_Huawei_V4.csv`](./INV_Huawei_V4.csv) | Huawei | SUN2000_V4 | modbusRTU | 392 |
+| [`INV_Huawei_V4.csv`](./INV_Huawei_V4.csv) | Huawei | SUN2000_V4 | Modbus | 392 |
 | [`INV_Huawei_V2.csv`](./INV_Huawei_V2.csv) | Huawei | V2 | Modbus | 214 |
 | [`INV_Huawei_V3.csv`](./INV_Huawei_V3.csv) | Huawei | V3 | Modbus | 182 |
 | [`INV_JEMA_Generic.csv`](./INV_JEMA_Generic.csv) | JEMA | Generic | Modbus | 60 |

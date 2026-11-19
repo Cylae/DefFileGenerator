@@ -62,7 +62,7 @@ Dans le cadre des consignes d'architecture WebdynSunPM et des exigences utilisat
 
 ### 3.1. `MarsRenewable_LocalControler.csv` (ID 247)
 - **Rôle** : Contrôle central et consignes EMS.
-- **En-tête** : `modbusTCP;Inverter;MarsRenewable;LocalControler;;;;;;;`
+- **En-tête** : `Modbus;Inverter;MarsRenewable;LocalControler;;;;;;;`
 - **Nombre de variables** : 12
 - **Détail des registres** :
   - `0` (FC4, U16) : `LC Overview - Measurement point version number`
@@ -80,7 +80,7 @@ Dans le cadre des consignes d'architecture WebdynSunPM et des exigences utilisat
 
 ### 3.2. `MarsRenewable_PCS-Bank-Rack.csv` (Device ID 1)
 - **Rôle** : BESS - PCS & Batterie concentrateur.
-- **En-tête** : `modbusTCP;Battery;MarsRenewable;PCS-Bank;;;;;;;`
+- **En-tête** : `Modbus;Battery;MarsRenewable;PCS-Bank;;;;;;;`
 - **Nombre de variables** : 80
 - **Détail des sections** :
   - **Alarmes générales** (4 variables FC 0x02, Action 9) : `LC Alarm Summary`, `PCS Alarm Summary`, `Bank Alarm Summary`, `Air Conditioning Alarm Summary`.
@@ -90,7 +90,7 @@ Dans le cadre des consignes d'architecture WebdynSunPM et des exigences utilisat
 
 ### 3.3. `MarsRenewable_Rack-Cell.csv` (Device ID 2)
 - **Rôle** : Supervision du Rack et de ses cellules de batterie.
-- **En-tête** : `modbusTCP;Battery;MarsRenewable;Rack-Cell;;;;;;;`
+- **En-tête** : `Modbus;Battery;MarsRenewable;Rack-Cell;;;;;;;`
 - **Nombre de variables** : 35
 - **Détail des sections** :
   - **Rack 1** (30 variables FC 0x04) : Nombre de cellules, tension du rack (`U_DC`), courant (`I_DC`), SOC (`SOC`), SOH (`SOH`), résistance d'isolement (`R_ISO`), courants max autorisés, énergies totales/disponibles, tensions/températures moyennes, min, max avec numéro de cellule associée.
@@ -98,7 +98,7 @@ Dans le cadre des consignes d'architecture WebdynSunPM et des exigences utilisat
 
 ### 3.4. `MarsRenewable_LC-AC.csv` (Device ID 1)
 - **Rôle** : Gestion thermique (Refroidissement liquide et Climatisation).
-- **En-tête** : `modbusTCP;Inverter;MarsRenewable;LC-AC;;;;;;;`
+- **En-tête** : `Modbus;Inverter;MarsRenewable;LC-AC;;;;;;;`
 - **Nombre de variables** : 34
 - **Détail des sections** :
   - **Liquid Cooling 1** (18 variables FC 0x04, adresses 30000 à 30032) : État de fonctionnement, mode, température ambiante (`TEMP_AMB`), températures eau départ/arrivée, pressions eau départ/retour, états ventilateur/pompe/chauffage/fluide, consignes de refroidissement et de chauffage, mode EMS.
@@ -106,7 +106,7 @@ Dans le cadre des consignes d'architecture WebdynSunPM et des exigences utilisat
 
 ### 3.5. `MarsRenewable_Meter.csv` (Device ID 1)
 - **Rôle** : Compteur d'énergie bidirectionnel de site.
-- **En-tête** : `modbusTCP;Meter;MarsRenewable;Meter;;;;;;;`
+- **En-tête** : `Modbus;Meter;MarsRenewable;Meter;;;;;;;`
 - **Nombre de variables** : 11
 - **Détail des registres** :
   - `10000` (F32, Unit: kWh, Tag: `E_IMP`) : `Meter1 Total Forward Active Energy`
@@ -123,7 +123,7 @@ Dans le cadre des consignes d'architecture WebdynSunPM et des exigences utilisat
 
 ### 3.6. `MarsRenewable_PV.csv` (Device ID 1)
 - **Rôle** : Onduleur photovoltaïque centralisé et chaînes MPPT.
-- **En-tête** : `modbusTCP;Inverter;MarsRenewable;PV;;;;;;;`
+- **En-tête** : `Modbus;Inverter;MarsRenewable;PV;;;;;;;`
 - **Nombre de variables** : 49
 - **Détail des sections** :
   - **Télémétrie AC triphasée** (31 variables FC 0x04) : Tensions simples (`U_AC_1..3`), courants de phase (`I_AC_1..3`), fréquence (`FREQ`), puissances active, réactive et apparente totales et par phase (`P_AC`, `Q_AC`, `S_AC`, `PF`, `P_AC_1..3`, `Q_AC_1..3`, `S_AC_1..3`, `PF_1..3`), températures (`TEMP_INT`, `TEMP_AMB`), compteurs d'énergie (`E_TOT`, `E_DAY`).

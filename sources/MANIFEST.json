@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2026-11-17T15:27:58.145655+00:00",
-  "total_documents": 5,
+  "last_updated": "2026-11-19T15:32:22.330071+00:00",
+  "total_documents": 6,
   "documents": [
     {
       "document_id": "SRC-CP-001",
@@ -175,6 +175,36 @@
         "active_power_offset": 370
       },
       "indexed_at": "2026-11-17T15:27:58.145641+00:00"
+    },
+    {
+      "document_id": "SRC-X7-001",
+      "manufacturer": "X7",
+      "title": "X7 Modbus TCP Communication Protocol (EMS, BMS, PCS, Meters, Cabinet)",
+      "filename": "X7-ModbusTcp-PORT502-20261105-V1.0.6-Beta.xlsx",
+      "relative_path": "sources/manuals/X7/X7-ModbusTcp-PORT502-20261105-V1.0.6-Beta.xlsx",
+      "size_bytes": 57075,
+      "sha256": "17630570efc930b43e01e76a7679f653d3b8fc6c32f82cb0887f76341351dae2",
+      "version": "V1.0.6",
+      "release_date": "2026-11-05",
+      "protocol": "Modbus (Port 502, FC 02, 03, 04, 06, 16)",
+      "models_covered": [
+        "X7 C&I BESS All-In-One",
+        "X7 EMS Controller",
+        "X7 BMS Rack",
+        "X7 PCS Inverter",
+        "X7 Power Meters (Grid, PV, Gen)",
+        "X7 Cabinet Peripherals & Auxiliaries"
+      ],
+      "definitions_generated": [
+        "BAT_X7_BESS-AllInOne.csv",
+        "BAT_X7_EMS.csv",
+        "BAT_X7_BMS.csv",
+        "BAT_X7_BMS-Cells.csv",
+        "MET_X7_Meters.csv",
+        "INV_X7_PCS.csv",
+        "OTH_X7_Cabinet.csv"
+      ],
+      "indexed_at": "2026-11-19T15:32:22.330059+00:00"
     }
   ]
 }

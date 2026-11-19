@@ -105,14 +105,15 @@ def write_definition_file(
     registers: list[dict[str, Any]],
     strict_overlap: bool = True,
 ) -> tuple[bool, Any]:
-    """Writes a strictly compliant WebdynSunPM definition file with UTF-8 BOM encoding."""
+    """Writes a strictly compliant WebdynSunPM definition file in UTF-8 without BOM."""
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    norm_proto = Generator.normalize_protocol(protocol)
     with open(output_path, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter=";", lineterminator="\r\n")
         # 11 columns in header (10 semicolons)
-        writer.writerow([protocol, category, manufacturer, model, "", "", "", "", "", "", ""])
+        writer.writerow([norm_proto, category, manufacturer, model, "", "", "", "", "", "", ""])
 
         for idx, reg in enumerate(registers, start=1):
             writer.writerow(

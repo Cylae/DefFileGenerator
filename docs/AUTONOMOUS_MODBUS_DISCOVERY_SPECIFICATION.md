@@ -82,8 +82,9 @@ from pydantic import BaseModel, Field
 
 
 class ProtocolTransport(str, Enum):
-    MODBUS_RTU = "modbusRTU"
-    MODBUS_TCP = "modbusTCP"
+    MODBUS = "Modbus"
+    MODBUS_RTU = "Modbus"
+    MODBUS_TCP = "Modbus"
     SUNSPEC_RTU = "sunspecRTU"
     SUNSPEC_TCP = "sunspecTCP"
 

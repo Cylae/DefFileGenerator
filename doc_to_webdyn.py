@@ -43,14 +43,14 @@ def _run_cli(argv: list[str] | None = None) -> None:
 
     parser = argparse.ArgumentParser(description="WebdynSunPM Documentation Parser")
     parser.add_argument(
-        "input_file", nargs="?", help="Path to documentation (PDF, Excel, CSV, XML)"
+        "input_file", nargs="?", help="Path to documentation (PDF, Excel, CSV, XML, JSON)"
     )
     parser.add_argument("--manufacturer", help="Manufacturer name")
     parser.add_argument("--model", help="Model name")
     parser.add_argument("--template", action="store_true", help="Generate a template definition")
     parser.add_argument("-o", "--output", help="Output filename")
     parser.add_argument("--force", action="store_true", help="Overwrite an existing output file")
-    parser.add_argument("--protocol", default="modbusRTU")
+    parser.add_argument("--protocol", default="Modbus")
     parser.add_argument("--category", default="Inverter")
     parser.add_argument("--sheet", help="Excel sheet name")
     parser.add_argument("--pages", help="PDF pages (comma-separated integers)")
@@ -131,6 +131,8 @@ def _run_cli(argv: list[str] | None = None) -> None:
         raw = extractor.extract_from_csv(args.input_file)
     elif ext == ".xml":
         raw = extractor.extract_from_xml(args.input_file)
+    elif ext == ".json":
+        raw = extractor.extract_from_json(args.input_file)
     else:
         logging.error(f"Unsupported extension: {ext}")
         sys.exit(1)

@@ -11,7 +11,7 @@
 
 ---
 
-The **DefFileGenerator** project is engineered as a high-performance, modular Python engine designed to parse industrial Modbus register documentation in heterogeneous unstructured formats (**PDF, Excel, CSV, XML**) and produce validated, structured WebdynSunPM definition files (`.csv`).
+The **DefFileGenerator** project is engineered as a high-performance, modular Python engine designed to parse industrial Modbus register documentation in heterogeneous unstructured formats (**PDF, Excel, CSV, XML, JSON**) and produce validated, structured WebdynSunPM definition files (`.csv`).
 
 ---
 
@@ -24,6 +24,7 @@ flowchart TD
         A2["📊 Excel (openpyxl read_only)"]
         A3["📑 CSV (Sniffer / Multi-Encoding)"]
         A4["🏷️ XML (defusedxml anti-XXE)"]
+        A5["📦 JSON (Direct register arrays)"]
     end
 
     subgraph Extractor["⚙️ Extraction Module (extractor.py)"]
@@ -57,7 +58,7 @@ flowchart TD
     subgraph Output["💾 Atomic Persistence & Public Surfaces"]
         E1["Staged Sibling File (.tmp)"]
         E2["fsync() + os.replace() Atomic Rename"]
-        E3["Validated WebdynSunPM CSV (UTF-8 BOM)"]
+        E3["Validated WebdynSunPM CSV (Strict UTF-8 without BOM)"]
         E4["Technical Quality Reports (report_generator.py)"]
     end
 
@@ -73,7 +74,7 @@ flowchart TD
 ## 🏗️ Detailed Component Data Flow
 
 ```text
-[ PDF / Excel / CSV / XML ]
+[ PDF / Excel / CSV / XML / JSON ]
             │
             ▼
 ┌────────────────────────────────────────────────────────┐

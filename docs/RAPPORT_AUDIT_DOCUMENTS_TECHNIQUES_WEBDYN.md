@@ -174,7 +174,7 @@ deffilegen-gui
 
 ### 2. En Ligne de Commande (CLI)
 ```cmd
-deffilegen "C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx" -o Mars_Webdyn.csv --manufacturer "Mars Energy" --model "LocalController" --protocol modbusTCP --category Battery
+deffilegen "C:\Users\Cylae\Downloads\MarsLocalController_IO List_ModbusTCP_V7.0.xlsx" -o Mars_Webdyn.csv --manufacturer "Mars Energy" --model "LocalController" --protocol Modbus --category Battery
 ```
 
 ### 3. Exécution de la Suite Complète de Tests

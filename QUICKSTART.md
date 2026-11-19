@@ -106,7 +106,7 @@ deffilegen run "GoodWe_Modbus_Datasheet.pdf" \
 
 The output file `goodwe_definition.csv` contains:
 ```csv
-modbusRTU;Inverter;GoodWe;GW5000-DNS;;;;;;;
+Modbus;Inverter;GoodWe;GW5000-DNS;;;;;;;
 1;3;40001;U16;;AC Power;ac_power;1.000000;0.000000;W;4
 2;3;40002;U16;;DC Voltage;dc_voltage;0.100000;0.000000;V;4
 3;3;40003;I16;;Temperature;temperature;0.100000;0.000000;°C;4
@@ -280,11 +280,11 @@ deffilegen [SUBCOMMAND] [OPTIONS]
 ### Primary Options for `deffilegen run`:
 | Option | Default | Description |
 |---|---|---|
-| `SOURCE_FILE` | *(required)* | Path to manufacturer documentation (PDF, Excel, CSV, or XML) |
+| `SOURCE_FILE` | *(required)* | Path to manufacturer documentation (PDF, Excel, CSV, XML, or JSON) |
 | `--manufacturer` | *(required)* | Equipment brand or manufacturer name (e.g. `"Huawei"`) |
 | `--model` | *(required)* | Equipment model name (e.g. `"SUN2000-50KTL"`) |
 | `-o, --output` | Auto-generated | Path of the generated CSV file |
-| `--protocol` | `modbusRTU` | Modbus protocol (`modbusRTU` or `modbusTCP`) |
+| `--protocol` | `Modbus` | Modbus protocol (standard: `Modbus`) |
 | `--category` | `Inverter` | Equipment classification (`Inverter`, `Meter`, `Sensor`, `Battery`) |
 | `--sheet` | *(all)* | Target specific Excel worksheet |
 | `--pages` | *(all)* | Target specific PDF pages (e.g. `1,3-5` or `12-18`) |
@@ -332,7 +332,7 @@ The resulting CSV file strictly satisfies WebdynSunPM telemetry gateway specific
 
 1. **Header Row (Line 1):**
    ```text
-   modbusRTU;Inverter;GoodWe;GW5000-DNS;;;;;;;
+   Modbus;Inverter;GoodWe;GW5000-DNS;;;;;;;
    ```
 2. **Register Rows (Lines 2+) with exactly 11 semicolon-separated columns:**
    - **Index**: 1-based sequential counter (`1`, `2`, `3`...).
