@@ -1362,58 +1362,64 @@ class Generator:
             coef_a, coef_b = self._calculate_coefficients(factor, offset, scale_factor_str)
 
             # Action normalization with intelligent defaulting:
-            # Inputs and Discrete Inputs default to Read-Only ("4"), Coils/Holding default to Write/RW ("1")
-            act_str = str(action).strip().upper()
-            if not act_str:
-                norm_action = (
-                    ACTION_READ_ONLY
-                    if info1 in (MODBUS_DISCRETE, MODBUS_INPUT)
-                    else ACTION_WRITE_ONLY
-                )
-            elif act_str in ("R", "READ", "RO", "READ-ONLY", "READ ONLY", "4"):
-                if act_str != "4" and any(
-                    k in name.lower()
-                    for k in (
-                        "alarm",
-                        "alarme",
-                        "status",
-                        "fault",
-                        "failure",
-                        "fail",
-                        "error",
-                        "erreur",
-                        "alert",
-                        "alerte",
-                        "trip",
-                        "warning",
-                        "défaut",
-                        "defaut",
-                    )
-                ):
-                    norm_action = "9"
-                else:
-                    norm_action = ACTION_READ_ONLY
-            elif act_str in (
-                "RW",
-                "W",
-                "WRITE",
-                "READ/WRITE",
-                "READ-WRITE",
-                "R/W",
-                "WO",
-                "WRITE-ONLY",
-                "WRITE ONLY",
-                "1",
-            ):
+            # Inputs and Discrete Inputs default to Read-Only ("4"), Coils/Holding default to Write/RW ("1").
+            # Official supervisory control commands (CMD_*) must always have Action 1 (Write/RW).
+            if tag.startswith("CMD_"):
                 norm_action = ACTION_WRITE_ONLY
-            elif act_str in self.allowed_actions:
-                norm_action = act_str
+            elif tag.startswith("ALARM_") or tag in ("FAULT_CODE", "ALARM"):
+                norm_action = "9"
             else:
-                norm_action = (
-                    ACTION_READ_ONLY
-                    if info1 in (MODBUS_DISCRETE, MODBUS_INPUT)
-                    else ACTION_WRITE_ONLY
-                )
+                act_str = str(action).strip().upper()
+                if not act_str:
+                    norm_action = (
+                        ACTION_READ_ONLY
+                        if info1 in (MODBUS_DISCRETE, MODBUS_INPUT)
+                        else ACTION_WRITE_ONLY
+                    )
+                elif act_str in ("R", "READ", "RO", "READ-ONLY", "READ ONLY", "4"):
+                    if act_str != "4" and any(
+                        k in name.lower()
+                        for k in (
+                            "alarm",
+                            "alarme",
+                            "status",
+                            "fault",
+                            "failure",
+                            "fail",
+                            "error",
+                            "erreur",
+                            "alert",
+                            "alerte",
+                            "trip",
+                            "warning",
+                            "défaut",
+                            "defaut",
+                        )
+                    ):
+                        norm_action = "9"
+                    else:
+                        norm_action = ACTION_READ_ONLY
+                elif act_str in (
+                    "RW",
+                    "W",
+                    "WRITE",
+                    "READ/WRITE",
+                    "READ-WRITE",
+                    "R/W",
+                    "WO",
+                    "WRITE-ONLY",
+                    "WRITE ONLY",
+                    "1",
+                ):
+                    norm_action = ACTION_WRITE_ONLY
+                elif act_str in self.allowed_actions:
+                    norm_action = act_str
+                else:
+                    norm_action = (
+                        ACTION_READ_ONLY
+                        if info1 in (MODBUS_DISCRETE, MODBUS_INPUT)
+                        else ACTION_WRITE_ONLY
+                    )
 
             yield {
                 "Info1": info1,

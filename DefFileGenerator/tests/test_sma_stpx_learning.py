@@ -48,9 +48,12 @@ class TestSmaStpxLearning(unittest.TestCase):
             ("Température intérieure", "TEMP_INT"),
             ("Tension du circuit intermediaire", "U_DC"),
             ("Tension du circuit intermédiaire", "U_DC"),
-            ("Entree courant DC_1", "I_DC"),
-            ("Entree tension DC_1", "U_DC"),
-            ("Entree puissance DC_1", "P_DC"),
+            ("Entree courant DC_1", "I_DC_MPPT_1"),
+            ("Entree tension DC_1", "U_DC_MPPT_1"),
+            ("Entree puissance DC_1", "P_DC_MPPT_1"),
+            ("Entree courant DC_2", "I_DC_MPPT_2"),
+            ("Entree tension DC_2", "U_DC_MPPT_2"),
+            ("Entree puissance DC_2", "P_DC_MPPT_2"),
             ("Frequence du reseau", "FREQ"),
             ("Fréquence du réseau", "FREQ"),
             ("Puissance reactive", "Q_AC"),
@@ -62,8 +65,11 @@ class TestSmaStpxLearning(unittest.TestCase):
             ("Puissance apparente L1", "S_AC_1"),
             ("Puissance apparente L2", "S_AC_2"),
             ("Puissance apparente L3", "S_AC_3"),
-            ("Type d excitation du cos phi", "PF"),
-            ("Type d'excitation du cos phi", "PF"),
+            ("Facteur de decalage", "PF"),
+            ("Facteur de décalage", "PF"),
+            ("Etat de charge actuel de la batterie", "SOC"),
+            ("État de charge actuel de la batterie", "SOC"),
+            ("Etat", "STATE"),
             ("Resistance d isolement", "R_ISO"),
             ("Résistance d'isolement", "R_ISO"),
             ("Rendement total_0", "E_TOT"),
@@ -81,6 +87,19 @@ class TestSmaStpxLearning(unittest.TestCase):
                 self.assertTrue(
                     is_canonical_sunpm_tag(tag),
                     f"Inferred tag '{tag}' for '{name}' is not in SUNPM_CANONICAL_TAGS",
+                )
+
+        # Disambiguation safety: Excitation type must NEVER infer Power Factor (PF)
+        for non_pf in (
+            "Type d excitation du cos phi",
+            "Type d'excitation du cos phi",
+            "Consigne cos phi externe_ type d_excitation en cas de puissance active absorbee",
+        ):
+            with self.subTest(non_pf=non_pf):
+                self.assertNotEqual(
+                    infer_sunpm_tag(non_pf),
+                    "PF",
+                    f"Excitation type '{non_pf}' must not infer 'PF'",
                 )
 
     def test_sma_stpx_accent_normalization(self) -> None:
@@ -135,8 +154,8 @@ class TestSmaStpxLearning(unittest.TestCase):
                 )
                 self.assertGreaterEqual(
                     len(tags),
-                    35,
-                    f"Expected at least 35 tagged variables in {p}, found {len(tags)}",
+                    45,
+                    f"Expected at least 45 tagged variables in {p}, found {len(tags)}",
                 )
 
     def test_dataset_knowledge_contains_sma_stpx(self) -> None:
@@ -163,7 +182,13 @@ class TestSmaStpxLearning(unittest.TestCase):
             "puissance reactive l1": "Q_AC_1",
             "puissance apparente": "S_AC",
             "puissance apparente l1": "S_AC_1",
-            "type d excitation du cos phi": "PF",
+            "facteur de decalage": "PF",
+            "etat de charge actuel de la batterie": "SOC",
+            "etat": "STATE",
+            "tension du circuit intermediaire": "U_DC",
+            "entree courant dc 1": "I_DC_MPPT_1",
+            "entree tension dc 1": "U_DC_MPPT_1",
+            "entree puissance dc 1": "P_DC_MPPT_1",
             "resistance d isolement": "R_ISO",
             "rendement total 0": "E_TOT",
             "temps de service 0": "TOT",

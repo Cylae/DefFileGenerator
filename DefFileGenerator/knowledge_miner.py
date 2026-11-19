@@ -226,6 +226,10 @@ SUNPM_CANONICAL_TAGS: set[str] = {
     "TEMP_MIN",
     "U_CELL_MAX",
     "U_CELL_MIN",
+    # Status & Diagnostics
+    "STATE",
+    "STATE_1",
+    "FAULT_CODE",
     # Display
     "AVOIDED_CO2",
     "AVOIDED_CO2_DAY",
@@ -261,6 +265,8 @@ def is_canonical_sunpm_tag(tag: str) -> bool:
     if tag in SUNPM_CANONICAL_TAGS:
         return True
     if tag.startswith("ALARM_") and tag[6:].isdigit():
+        return True
+    if tag.startswith("STATE_") and tag[6:].isdigit():
         return True
     return any(
         tag.startswith(pref)
@@ -951,6 +957,25 @@ def infer_sunpm_tag(
                     )
                 ):
                     learned = ""
+                if learned == "PF" and any(
+                    ex in low
+                    for ex in (
+                        "type",
+                        "excitation",
+                        "mode",
+                        "timeout",
+                        "filtre",
+                        "taux",
+                        "retombee",
+                        "retombée",
+                        "declenchement",
+                        "déclenchement",
+                        "nominal",
+                        "sensibilite",
+                        "sensibilité",
+                    )
+                ):
+                    learned = ""
                 if any(
                     ph in low
                     for ph in (
@@ -1061,6 +1086,26 @@ def infer_sunpm_tag(
                     )
                 ):
                     learned = ""
+            if learned in ("U_DC", "I_DC", "P_DC"):
+                low = variable_name.lower()
+                if bool(
+                    re.search(
+                        r"\b(?:dc_?\d+|mppt\s*\d+|string\s*\d+|pv\s*\d+|entree.*dc|entrée.*dc)\b",
+                        low,
+                    )
+                ):
+                    learned = ""
+            if learned in ("WIND_SPEED", "WIND_BEARING"):
+                low = variable_name.lower()
+                if "vente" in low or not bool(re.search(r"\b(?:wind|vent)\b", low)):
+                    learned = ""
+            if learned == "E_TOT":
+                low = variable_name.lower()
+                if "kwh" not in low and "mwh" not in low and "wh" not in low:
+                    if any(w in low for w in ("puissance", "power")) or bool(
+                        re.search(r"\b(?:kw|mw|w)\b", low)
+                    ):
+                        learned = ""
             if learned and not is_canonical_sunpm_tag(learned):
                 norm = normalize_tag_to_sunpm(learned)
                 if norm and is_canonical_sunpm_tag(norm):
@@ -1324,15 +1369,40 @@ def infer_sunpm_tag(
             "cos phi",
             "cosφ",
             "powerfactor",
+            "facteur de decalage",
+            "facteur de décalage",
+            "facteur de dephasage",
+            "facteur de déphasage",
+            "verschiebungsfaktor",
         )
     ):
-        if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
-            return "PF_1"
-        if re.search(r"\b(?:phase\s*[b2]|l2\b)", n_lower):
-            return "PF_2"
-        if re.search(r"\b(?:phase\s*[c3]|l3\b)", n_lower):
-            return "PF_3"
-        return "PF"
+        if not any(
+            ex in n_lower
+            for ex in (
+                "type",
+                "excitation",
+                "mode",
+                "consigne",
+                "setpoint",
+                "timeout",
+                "filtre",
+                "taux",
+                "retombee",
+                "retombée",
+                "declenchement",
+                "déclenchement",
+                "nominal",
+                "sensibilite",
+                "sensibilité",
+            )
+        ):
+            if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
+                return "PF_1"
+            if re.search(r"\b(?:phase\s*[b2]|l2\b)", n_lower):
+                return "PF_2"
+            if re.search(r"\b(?:phase\s*[c3]|l3\b)", n_lower):
+                return "PF_3"
+            return "PF"
 
     # 8. Energy Generation & Yield
     if "energy" in n_lower or "énergie" in n_lower or "energie" in n_lower or "yield" in n_lower:
@@ -1358,10 +1428,15 @@ def infer_sunpm_tag(
     ):
         return "P_RATED"
 
-    # 10. MPPT Current / Voltage / Power
-    m_mppt = re.search(r"\bmppt\s*(\d+)", n_lower)
-    if m_mppt:
-        idx = m_mppt.group(1)
+    # 10. MPPT / DC Inputs Current / Voltage / Power
+    m_dc_inp = (
+        re.search(r"\bmppt\s*(\d+)", n_lower)
+        or re.search(r"\b(?:entree|entrée)\s*(?:courant|tension|puissance)?\s*dc_?(\d+)", n_lower)
+        or re.search(r"\bdc\s*(?:input|entrée|entree)\s*(\d+)", n_lower)
+        or re.search(r"\bdc_?in_?(\d+)", n_lower)
+    )
+    if m_dc_inp:
+        idx = m_dc_inp.group(1)
         if any(k in n_lower for k in ("current", "courant", "i_")):
             return f"I_DC_MPPT_{idx}"
         if any(k in n_lower for k in ("voltage", "tension", "u_", "v_")):
@@ -1380,10 +1455,16 @@ def infer_sunpm_tag(
 
     # 12. DC Bus Voltage / Current / Power
     if (
-        "dc" in n_lower
+        (
+            "dc" in n_lower
+            and not re.search(
+                r"\b(?:dc_?\d+|mppt\s*\d+|string\s*\d+|pv\s*\d+|entree.*dc|entrée.*dc)\b", n_lower
+            )
+        )
         or "bus" in n_lower
         or "circuit intermediaire" in n_lower
         or "circuit intermédiaire" in n_lower
+        or "zwischenkreis" in n_lower
     ):
         if any(k in n_lower for k in ("voltage", "tension", "udc", "vdc")):
             return "U_DC"
@@ -1425,10 +1506,11 @@ def infer_sunpm_tag(
         for k in ("poa", "plane of array", "irradiance", "pyranometer", "ensoleillement")
     ):
         return "POA"
-    if "wind" in n_lower or "vent" in n_lower:
-        if any(k in n_lower for k in ("direction", "bearing", "angle")):
-            return "WIND_BEARING"
-        return "WIND_SPEED"
+    if bool(re.search(r"\b(?:wind|vent|vitesse du vent|wind\s*speed)\b", n_lower)):
+        if "vente" not in n_lower:
+            if any(k in n_lower for k in ("direction", "bearing", "angle")):
+                return "WIND_BEARING"
+            return "WIND_SPEED"
     if "humidity" in n_lower or "humidité" in n_lower:
         return "HUMIDITY"
     if "pressure" in n_lower or "pression" in n_lower:
@@ -1440,12 +1522,37 @@ def infer_sunpm_tag(
     if (
         eq_lower in ("battery", "bess")
         or "battery" in n_lower
-        or any(k in n_lower for k in ("state of charge", "state of health"))
+        or "batterie" in n_lower
+        or any(
+            k in n_lower
+            for k in (
+                "state of charge",
+                "state of health",
+                "etat de charge",
+                "état de charge",
+                "etat de sante",
+                "état de santé",
+            )
+        )
     ):
-        if any(k in n_lower for k in ("state of charge", "soc", "charge state")):
+        if any(
+            k in n_lower
+            for k in ("state of charge", "soc", "charge state", "etat de charge", "état de charge")
+        ):
             return "SOC"
-        if any(k in n_lower for k in ("state of health", "soh")):
+        if any(k in n_lower for k in ("state of health", "soh", "etat de sante", "état de santé")):
             return "SOH"
+
+    # 15b. Operating State
+    if n_lower.strip() in (
+        "etat",
+        "état",
+        "operating state",
+        "inverter state",
+        "device status",
+        "status",
+    ):
+        return "STATE"
 
     # 16. Electrical Insulation
     if any(k in n_lower for k in ("insulation", "isolement", "r_iso", "isolation")):
