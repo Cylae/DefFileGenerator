@@ -1,30 +1,42 @@
-Modbus;Meter;CHINT;DTSU666;;;;;;;
-1;3;8192;F32;;Uab;U_AC_L1L2;0.100000;0.000000;V;4
-2;3;8194;F32;;Ubc;U_AC_L2L3;0.100000;0.000000;V;4
-3;3;8196;F32;;Uca;U_AC_L3L1;0.100000;0.000000;V;4
-4;3;8198;F32;;Ua;;0.100000;0.000000;V;4
-5;3;8200;F32;;Ub;;0.100000;0.000000;V;4
-6;3;8202;F32;;Uc;;0.100000;0.000000;V;4
-7;3;8204;F32;;Ia;;0.001000;0.000000;A;4
-8;3;8206;F32;;Ib;;0.001000;0.000000;A;4
-9;3;8208;F32;;Ic;;0.001000;0.000000;A;4
-10;3;8210;F32;;Pt;P_AC;0.000100;0.000000;kW;4
-11;3;8212;F32;;Pa;P_AC_1;0.000100;0.000000;kW;4
-12;3;8214;F32;;Pb;P_AC_2;0.000100;0.000000;kW;4
-13;3;8216;F32;;Pc;P_AC_3;0.000100;0.000000;kW;4
-14;3;8218;F32;;Qt;;1.000000;0.000000;Var;4
-15;3;8220;F32;;Qa;;1.000000;0.000000;Var;4
-16;3;8222;F32;;Qb;;1.000000;0.000000;Var;4
-17;3;8224;F32;;Qc;;1.000000;0.000000;Var;4
-18;3;8234;F32;;PFt;;1.000000;0.000000;;4
-19;3;8236;F32;;PFa;;1.000000;0.000000;;4
-20;3;8238;F32;;PFb;;1.000000;0.000000;;4
-21;3;8240;F32;;PFc;;1.000000;0.000000;;4
-22;3;8260;F32;;Freq;FREQ;0.010000;0.000000;Hz;4
-23;3;8272;F32;;DmPt (Total active power demand);;1.000000;0.000000;;4
-24;3;16414;F32;;ImpEp (positive active total energy);E_TOT;1.000000;0.000000;;4
-25;3;16424;F32;;ExpEp (current) negative active total energy;I_AC;1.000000;0.000000;;4
-26;3;16434;F32;;Q1Eq (quadrant I reactive total energy);;1.000000;0.000000;;4
-27;3;16444;F32;;Q2Eq (quadrant II reactive total energy);;1.000000;0.000000;;4
-28;3;16454;F32;;Q3Eq (quadrant III reactive total energy);;1.000000;0.000000;;4
-29;3;16464;F32;;Q4Eq 5(quadrant IV reactive total energy);;1.000000;0.000000;;4
+modbusRTU;Meter;CHINT;DTSU666;;;;;;;
+1;3;0;I16;;Software version;software_version;1.000000;0.000000;;4
+2;3;3;I16;;Wiring mode;wiring_mode;1.000000;0.000000;;1
+3;3;6;I16;;Current transformer ratio (IrAt);current_transformer_ratio_irat;1.000000;0.000000;;1
+4;3;7;I16;;Voltage transformer ratio (UrAt);voltage_transformer_ratio_urat;1.000000;0.000000;;1
+5;3;10;I16;;Display scroll time;display_scroll_time;1.000000;0.000000;s;1
+6;3;11;I16;;Backlight time;backlight_time;1.000000;0.000000;min;1
+7;3;44;I16;;Protocol / parity selection;protocol_parity_selection;1.000000;0.000000;;1
+8;3;45;I16;;Baud rate;baud_rate;1.000000;0.000000;;1
+9;3;46;I16;;Modbus address;UNIT_ID;1.000000;0.000000;;1
+10;3;4126;F32;;Forward active energy, total;E_TOT;1.000000;0.000000;kWh;4
+11;3;4128;F32;;Forward active energy, phase A;forward_active_energy_phase_a;1.000000;0.000000;kWh;4
+12;3;4130;F32;;Forward active energy, phase B;forward_active_energy_phase_b;1.000000;0.000000;kWh;4
+13;3;4132;F32;;Forward active energy, phase C;forward_active_energy_phase_c;1.000000;0.000000;kWh;4
+14;3;4134;F32;;Forward active energy, net;forward_active_energy_net;1.000000;0.000000;kWh;4
+15;3;4136;F32;;Reverse active energy, total;E_EXP;1.000000;0.000000;kWh;4
+16;3;4138;F32;;Reverse active energy, phase A;reverse_active_energy_phase_a;1.000000;0.000000;kWh;4
+17;3;4140;F32;;Reverse active energy, phase B;reverse_active_energy_phase_b;1.000000;0.000000;kWh;4
+18;3;4142;F32;;Reverse active energy, phase C;reverse_active_energy_phase_c;1.000000;0.000000;kWh;4
+19;3;4144;F32;;Reverse active energy, net;reverse_active_energy_net;1.000000;0.000000;kWh;4
+20;3;8192;F32;;Line voltage Uab;U_AC_L1L2;0.100000;0.000000;V;4
+21;3;8194;F32;;Line voltage Ubc;U_AC_L2L3;0.100000;0.000000;V;4
+22;3;8196;F32;;Line voltage Uca;U_AC_L3L1;0.100000;0.000000;V;4
+23;3;8198;F32;;Phase voltage Ua;U_AC_1;0.100000;0.000000;V;4
+24;3;8200;F32;;Phase voltage Ub;U_AC_2;0.100000;0.000000;V;4
+25;3;8202;F32;;Phase voltage Uc;U_AC_3;0.100000;0.000000;V;4
+26;3;8204;F32;;Phase current Ia;I_AC_1;0.001000;0.000000;A;4
+27;3;8206;F32;;Phase current Ib;I_AC_2;0.001000;0.000000;A;4
+28;3;8208;F32;;Phase current Ic;I_AC_3;0.001000;0.000000;A;4
+29;3;8210;F32;;Combined active power;P_AC;0.100000;0.000000;W;4
+30;3;8212;F32;;Phase A active power;P_AC_1;0.100000;0.000000;W;4
+31;3;8214;F32;;Phase B active power;P_AC_2;0.100000;0.000000;W;4
+32;3;8216;F32;;Phase C active power;P_AC_3;0.100000;0.000000;W;4
+33;3;8218;F32;;Combined reactive power;Q_AC;0.100000;0.000000;var;4
+34;3;8220;F32;;Phase A reactive power;Q_AC_1;0.100000;0.000000;var;4
+35;3;8222;F32;;Phase B reactive power;Q_AC_2;0.100000;0.000000;var;4
+36;3;8224;F32;;Phase C reactive power;Q_AC_3;0.100000;0.000000;var;4
+37;3;8234;F32;;Combined power factor;PF;0.001000;0.000000;;4
+38;3;8236;F32;;Phase A power factor;PF_1;0.001000;0.000000;;4
+39;3;8238;F32;;Phase B power factor;PF_2;0.001000;0.000000;;4
+40;3;8240;F32;;Phase C power factor;PF_3;0.001000;0.000000;;4
+41;3;8260;F32;;Frequency;FREQ;0.010000;0.000000;Hz;4
