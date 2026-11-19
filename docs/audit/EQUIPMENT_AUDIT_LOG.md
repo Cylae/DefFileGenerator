@@ -9,6 +9,8 @@ mises à niveau et validations de définitions d'équipements au sein du référ
 
 | Horodatage (UTC) | Action | Constructeur | Équipement | Document Source | Définition(s) Produite(s) | Registres | Tags | Statut |
 |---|---|---|---|---|---|:---:|:---:|:---:|
+| 2026-11-19 16:01:52 | **GENERATE_CLASSIC_DEFINITIONS** | Multi-Manufacturer | Grand Classics Suite (12 Manufacturers) | Standard Manufacturer Specifications & SunSpec Modbus Maps | `MET_Chint_DTSU666.csv`, `MET_Chint_DDSU666.csv`, `MET_Chint_DTSU666-H.csv`, `INV_Huawei_SUN2000-M3.csv`, `INV_Huawei_SUN2000-Utility.csv`, `MET_Huawei_DTSU666-H.csv`, `INV_SMA_SunnyTripower.csv`, `INV_SMA_Core1_Core2.csv`, `INV_Solplanet_ASW_ThreePhase.csv`, `INV_Sungrow_SG_Series.csv`, `INV_Goodwe_SMT_Series.csv`, `INV_Goodwe_ET_Series.csv`, `INV_Growatt_MAX_Series.csv`, `INV_Fronius_Symo_Primo_Gen24.csv`, `INV_SolarEdge_SE_Series.csv`, `MET_Socomec_Diris_A_Countis_E.csv`, `MET_Schneider_PM5000_IEM3000.csv`, `MET_CarloGavazzi_EM24_EM300.csv` | 666 | 666 | ✅ CERTIFIED_PASS |
+| 2026-11-19 15:52:39 | **GENERATE_CLASSIC_DEFINITIONS** | Multi-Manufacturer | Grand Classics Suite (Huawei, CHINT, SMA, Solplanet) | Standard Specifications (CHINT ZTW0.464.0104, Huawei V4/V5, SMA Modbus, AISWEI UM0052) | `MET_Chint_DTSU666.csv`, `MET_Chint_DDSU666.csv`, `MET_Chint_DTSU666-H.csv`, `INV_SMA_SunnyTripower.csv`, `INV_Huawei_SUN2000-M3.csv`, `MET_Huawei_DTSU666-H.csv`, `INV_Solplanet_ASW_ThreePhase.csv` | 249 | 249 | ✅ CERTIFIED_PASS |
 | 2026-11-19 15:31:59 | **GENERATE_X7_DEFINITIONS** | X7 | X7 All-In-One Commercial & Industrial BESS | sources\manuals\X7\X7-ModbusTcp-PORT502-20261105-V1.0.6-Beta.xlsx | `BAT_X7_BESS-AllInOne.csv`, `BAT_X7_EMS.csv`, `BAT_X7_BMS.csv`, `BAT_X7_BMS-Cells.csv`, `MET_X7_Meters.csv`, `INV_X7_PCS.csv`, `OTH_X7_Cabinet.csv` | 1,588 | 1,588 | ✅ CERTIFIED_PASS |
 | 2026-11-18 14:54:47 | **ADD_EQUIPMENT** | Solplanet | Ai-Logger (Inverter Mode / Method 2) | Ailogger modbus TCP user manual V1.2 202404.pdf | `INV_Solplanet_Ai-Logger.csv` | 106 | 106 | ✅ EXECUTED_PASS |
 | 2026-11-18 14:54:47 | **UPGRADE_EQUIPMENT** | Solplanet | Ai-Logger (Gateway) | Ailogger modbus TCP user manual V1.2 202404.pdf | `COM_Solplanet_Ai-Logger.csv` | 161 | 161 | ✅ EXECUTED_PASS |
@@ -33,4 +35,4 @@ Les définitions sont stockées de façon redondante et synchronisée sur 4 rép
 - `tagged_definitions/` (télémétrie balisée)
 - `generated_definitions/` (générations unifiées)
 
-*Dernière mise à jour du journal : 2026-11-19T15:31:59.883592+00:00*
+*Dernière mise à jour du journal : 2026-11-19T16:01:52.567506+00:00*

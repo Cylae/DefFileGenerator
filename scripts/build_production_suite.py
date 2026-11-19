@@ -28,6 +28,7 @@ FOXESS_DIR = WORKSPACE_DIR / "FoxESS_P3_H3_Pro_Definitions"
 MARS_DIR = WORKSPACE_DIR / "MarsRenewable_Definitions"
 DYNESS_DIR = WORKSPACE_DIR / "Dyness_DH_Series_Definitions"
 X7_DIR = WORKSPACE_DIR / "X7_Definitions"
+CLASSIC_DIR = WORKSPACE_DIR / "Definitions" / "Classic"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -497,6 +498,29 @@ def build_manifest() -> dict[str, Path]:
         "MET_Legrand_CF_Generic.csv": TAGGED_DIR / "MET_Legrand_METER_LEGRAND_CF-GENERIC.csv",
     }
     manifest.update(extra_map)
+
+    # 7. Grand Classic Certified Definitions
+    classic_map = {
+        "MET_Chint_DTSU666.csv": CLASSIC_DIR / "MET_Chint_DTSU666.csv",
+        "MET_Chint_DDSU666.csv": CLASSIC_DIR / "MET_Chint_DDSU666.csv",
+        "MET_Chint_DTSU666-H.csv": CLASSIC_DIR / "MET_Chint_DTSU666-H.csv",
+        "INV_Huawei_SUN2000-M3.csv": CLASSIC_DIR / "INV_Huawei_SUN2000-M3.csv",
+        "INV_Huawei_SUN2000-Utility.csv": CLASSIC_DIR / "INV_Huawei_SUN2000-Utility.csv",
+        "MET_Huawei_DTSU666-H.csv": CLASSIC_DIR / "MET_Huawei_DTSU666-H.csv",
+        "INV_SMA_SunnyTripower.csv": CLASSIC_DIR / "INV_SMA_SunnyTripower.csv",
+        "INV_SMA_Core1_Core2.csv": CLASSIC_DIR / "INV_SMA_Core1_Core2.csv",
+        "INV_Solplanet_ASW_ThreePhase.csv": CLASSIC_DIR / "INV_Solplanet_ASW_ThreePhase.csv",
+        "INV_Sungrow_SG_Series.csv": CLASSIC_DIR / "INV_Sungrow_SG_Series.csv",
+        "INV_Goodwe_SMT_Series.csv": CLASSIC_DIR / "INV_Goodwe_SMT_Series.csv",
+        "INV_Goodwe_ET_Series.csv": CLASSIC_DIR / "INV_Goodwe_ET_Series.csv",
+        "INV_Growatt_MAX_Series.csv": CLASSIC_DIR / "INV_Growatt_MAX_Series.csv",
+        "INV_Fronius_Symo_Primo_Gen24.csv": CLASSIC_DIR / "INV_Fronius_Symo_Primo_Gen24.csv",
+        "INV_SolarEdge_SE_Series.csv": CLASSIC_DIR / "INV_SolarEdge_SE_Series.csv",
+        "MET_Socomec_Diris_A_Countis_E.csv": CLASSIC_DIR / "MET_Socomec_Diris_A_Countis_E.csv",
+        "MET_Schneider_PM5000_IEM3000.csv": CLASSIC_DIR / "MET_Schneider_PM5000_IEM3000.csv",
+        "MET_CarloGavazzi_EM24_EM300.csv": CLASSIC_DIR / "MET_CarloGavazzi_EM24_EM300.csv",
+    }
+    manifest.update(classic_map)
 
     # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
