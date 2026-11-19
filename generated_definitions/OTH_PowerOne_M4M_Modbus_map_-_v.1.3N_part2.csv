@@ -1,4 +1,4 @@
-modbusRTU;Other;PowerOne;M4M_Modbus_map_-_v.1_p2;;;;;;;
+Modbus;Other;PowerOne;M4M_Modbus_map_-_v.1_p2;;;;;;;
 1;4;4096;U16;;3-PHASE SYSTEM VOLTAGE;;1.0;0.0;Volt;4
 2;4;4098;U16;;PHASE VOLTAGE L1-N;U_AC_1;1.0;0.0;Volt;4
 3;4;4100;U16;;PHASE VOLTAGE L2-N;U_AC_2;1.0;0.0;Volt;4

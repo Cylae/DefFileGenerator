@@ -1,4 +1,4 @@
-modbusRTU;Meter;Lettel;LETTEL_MAP4-34RJ;;;;;;;
+Modbus;Meter;Lettel;LETTEL_MAP4-34RJ;;;;;;;
 1;4;6;U16;;Ua;;1.0;0.0;V;4
 2;4;8;U16;;Ub;;1.0;0.0;V;4
 3;4;10;U16;;Uc;;1.0;0.0;V;4

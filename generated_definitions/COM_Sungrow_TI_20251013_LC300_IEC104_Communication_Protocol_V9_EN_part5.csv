@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_IE_p5;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_IE_p5;;;;;;;
 1;4;62001;U16;;Working status;;1.0;0.0;/;9
 2;4;62002;U16;;Fault/Alarm code;;1.0;0.0;/;9
 3;4;62003;U16;;Reserved;;1.0;0.0;None;0

@@ -1,4 +1,4 @@
-modbusRTU;Other;Socomec;W_SOCOMEC_E33_E43;;;;;;;
+Modbus;Other;Socomec;W_SOCOMEC_E33_E43;;;;;;;
 1;4;50514;U16;;Phase to Phase Voltage U12 (CT);;1.0;0.0;V;4
 2;4;50516;U16;;Phase to Phase Voltage U23 (CT);;1.0;0.0;V;4
 3;4;50518;U16;;Phase to Phase Voltage U31 (CT);;1.0;0.0;V;4

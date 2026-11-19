@@ -1,4 +1,4 @@
-modbusRTU;Other;SL Energy;SL_Energy_Generic (version 1);;;;;;;
+Modbus;Other;SL Energy;SL_Energy_Generic (version 1);;;;;;;
 1;3;10000;U16;;Comm_Protocol_Ver;;1.000000;0.000000;;4
 2;3;10001;U16;;Main_DSP_Ver;;1.000000;0.000000;;4
 3;3;10002;U16;;Aux_DSP_Ver;;1.000000;0.000000;;4

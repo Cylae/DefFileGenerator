@@ -69,7 +69,7 @@ class TestCliEntryPoints(unittest.TestCase):
         def_file = "valid_def.csv"
         with open(def_file, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter=";")
-            writer.writerow(["modbusRTU", "Inverter", "MFG", "MODEL", "", "", "", "", "", "", ""])
+            writer.writerow(["Modbus", "Inverter", "MFG", "MODEL", "", "", "", "", "", "", ""])
             writer.writerow(["1", "3", "100", "U16", "", "Var1", "tag1", "1.0", "0.0", "V", "4"])
 
         test_args = ["main.py", "validate", def_file]
@@ -87,7 +87,7 @@ class TestCliEntryPoints(unittest.TestCase):
         def_file = "invalid_def.csv"
         with open(def_file, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter=";")
-            writer.writerow(["modbusRTU", "Inverter", "MFG", "MODEL", "", "", "", "", "", "", ""])
+            writer.writerow(["Modbus", "Inverter", "MFG", "MODEL", "", "", "", "", "", "", ""])
             writer.writerow(
                 ["1", "3", "70000", "U16", "", "Var1", "tag1", "1.0", "0.0", "V", "4"]
             )  # Invalid address
@@ -130,7 +130,7 @@ class TestCliEntryPoints(unittest.TestCase):
             self.assertTrue(os.path.exists("test_out.csv"))
             with open("test_out.csv") as f:
                 content = f.read()
-                self.assertIn("modbusRTU;Inverter;SampleManufacturer;SampleModel", content)
+                self.assertIn("Modbus;Inverter;SampleManufacturer;SampleModel", content)
 
     def test_def_file_gen_main_extract(self):
         from DefFileGenerator.main import main

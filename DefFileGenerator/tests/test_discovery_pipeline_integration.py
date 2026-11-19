@@ -55,7 +55,7 @@ async def test_end_to_end_autonomous_pipeline_with_csv_manual():
         # Header check: 11 columns
         header = lines[0].split(";")
         assert len(header) == 11
-        assert header[0] == "modbusRTU"
+        assert header[0] == "Modbus"
         assert header[1] == "Inverter"
         assert header[2] == "Huawei"
 

@@ -1,4 +1,4 @@
-modbusRTU;Other;PDL;Elite_440-_Modbus_Ma_p4;;;;;;;
+Modbus;Other;PDL;Elite_440-_Modbus_Ma_p4;;;;;;;
 1;4;40350;U16;;VmaxR;;1.0;0.0;;4
 2;4;40352;U16;;RTVmaxR;;1.0;0.0;;4
 3;4;40354;U16;;VminR;;1.0;0.0;;4

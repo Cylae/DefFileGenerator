@@ -310,10 +310,11 @@ async def convert_file(
     file: UploadFile = File(...),
     manufacturer: str = Form("Manufacturer"),
     model: str = Form("Model"),
-    protocol: str = Form("modbusRTU"),
+    protocol: str = Form("Modbus"),
     category: str = Form("Inverter"),
     address_offset: int = Form(0),
     forced_write: str = Form(""),
+    tag: bool = Form(True),
 ) -> ConvertResponse:
     """Converts an uploaded documentation file (PDF, Excel, CSV, XML) to a WebdynSunPM definition CSV."""
     if not file.filename:
@@ -349,6 +350,7 @@ async def convert_file(
             category,
             address_offset,
             forced_write,
+            tag,
         )
         return ConvertResponse(**result)
 
@@ -364,8 +366,10 @@ def _convert_document(
     category: str,
     address_offset: int,
     forced_write: str,
+    tag: bool = True,
 ) -> dict[str, Any]:
     """Process the complete document outside the request event loop."""
+    protocol = Generator.normalize_protocol(protocol)
     extractor = Extractor()
     try:
         if ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
@@ -379,27 +383,30 @@ def _convert_document(
         elif ext == ".json":
             raw_data = extractor.extract_from_json(input_path)
         else:
-            raise HTTPException(status_code=400, detail="Unsupported file format.")
+            raise HTTPException(status_code=400, detail=f"Unsupported file format '{ext}'.")
     except HTTPException:
         raise
     except Exception:
         logger.exception("Extraction error for %s", safe_filename)
         raise HTTPException(
-            status_code=400, detail="Failed to extract registers from uploaded file."
+            status_code=400,
+            detail="Failed to extract registers from uploaded file.",
         ) from None
 
     try:
         has_data, raw_data_peeked = peek_generator(raw_data)
         if not has_data:
             raise HTTPException(
-                status_code=400, detail="No readable register tables found in uploaded file."
+                status_code=400,
+                detail="No readable register tables found in uploaded file.",
             )
 
         mapped_gen = extractor.map_and_clean(raw_data_peeked, address_offset)
         has_regs, mapped_peeked = peek_generator(mapped_gen)
         if not has_regs:
             raise HTTPException(
-                status_code=400, detail="No valid registers mapped after field cleaning step."
+                status_code=400,
+                detail="No valid registers mapped after field cleaning step.",
             )
 
         full_mapped = list(islice(mapped_peeked, MAX_WEB_REGISTERS + 1))
@@ -422,24 +429,43 @@ def _convert_document(
         )
         if run_generator(config, input_data=full_mapped) is False:
             raise HTTPException(
-                status_code=400, detail="Core generator processing failed for uploaded file."
+                status_code=400,
+                detail="Core generator processing failed for uploaded file.",
             )
     except HTTPException:
         raise
     except Exception:
         logger.exception("Core engine processing failed for %s", safe_filename)
         raise HTTPException(
-            status_code=400, detail="Core generator processing failed for uploaded file."
+            status_code=400,
+            detail="Core generator processing failed for uploaded file.",
         ) from None
 
     if not os.path.exists(output_path):
         raise HTTPException(status_code=500, detail="Failed to generate output CSV definition.")
 
+    if tag:
+        try:
+            from DefFileGenerator.knowledge_miner import enrich_definition_file
+
+            enrich_definition_file(output_path, output_path, equipment_type=category)
+        except Exception as e:
+            logger.warning("Auto-tagging warning for %s: %s", safe_filename, e)
+
     try:
         report = Generator().validate_csv_detailed(output_path, strict=True)
         if not report.is_valid:
+            error_items = [
+                f"Ligne {iss.line} [{iss.field or 'syntaxe'}]: {iss.message}"
+                for iss in report.issues
+                if iss.severity == "ERROR"
+            ]
+            sample = " | ".join(error_items[:5])
+            if len(error_items) > 5:
+                sample += f" (+{len(error_items) - 5} autres)"
             raise HTTPException(
-                status_code=400, detail="Generated definition failed strict validation."
+                status_code=400,
+                detail=f"Generated definition failed strict validation: {sample}",
             )
         with open(output_path, encoding="utf-8-sig") as generated:
             csv_content = generated.read()

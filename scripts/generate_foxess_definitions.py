@@ -597,7 +597,7 @@ def generate_other_fox_sources() -> dict[str, Path]:
                     output=str(gmax_out),
                     manufacturer="FoxESS",
                     model="G-MAX Series",
-                    protocol="modbusTCP",
+                    protocol="Modbus",
                     category="Storage",
                     address_offset=0,
                     strict_validation=False,

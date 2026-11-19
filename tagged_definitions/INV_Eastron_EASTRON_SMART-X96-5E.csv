@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
+Modbus;Inverter;Eastron;EASTRON_SMART-X96-5E;;;;;;;
 1;4;30001;U16;;Phase 1 line to neutral volts;U_AC_1;1.0;0.0;V;4
 2;4;30003;U16;;Phase 2 line to neutral volts;U_AC_2;1.0;0.0;V;4
 3;4;30005;U16;;Phase 3 line to neutral volts;U_AC_3;1.0;0.0;V;4

@@ -1,4 +1,4 @@
-modbusRTU;Meter;SMA;Smappee_Infinity_Mod_p11;;;;;;;
+Modbus;Meter;SMA;Smappee_Infinity_Mod_p11;;;;;;;
 1;4;1020;U16;;None;;1.0;0.0;None;4
 2;4;1022;U16;;None;;1.0;0.0;None;4
 3;4;1024;U16;;0;;1.0;0.0;µs;4

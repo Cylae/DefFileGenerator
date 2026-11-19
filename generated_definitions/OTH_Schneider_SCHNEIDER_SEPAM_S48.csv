@@ -1,4 +1,4 @@
-modbusRTU;Other;Schneider;SCHNEIDER_SEPAM_S48;;;;;;;
+Modbus;Other;Schneider;SCHNEIDER_SEPAM_S48;;;;;;;
 1;4;275;U16;;Courant phase I1;;1.0;0.0;A;4
 2;4;276;U16;;Courant phase I2;;1.0;0.0;A;4
 3;4;277;U16;;Courant phase I3;;1.0;0.0;A;4

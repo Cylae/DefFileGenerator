@@ -1,4 +1,4 @@
-modbusTCP;Other;Sineng;central_New;;;;;;;
+Modbus;Other;Sineng;central_New;;;;;;;
 1;4;1050;U32;;Active power;P_AC;1.0;0.0;;4
 2;4;1052;U32;;Reactive power;Q_AC;1.0;0.0;;4
 3;4;1054;U16;;PF;PF;1.0;0.0;;4

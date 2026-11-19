@@ -1,4 +1,4 @@
-modbusRTU;Other;Mci Elec;contax_1m_100a_031277_mapping_;;;;;;;
+Modbus;Other;Mci Elec;contax_1m_100a_031277_mapping_;;;;;;;
 1;4;272;U16;;Communication Address;;1.0;0.0;;1
 2;4;273;U16;;Baudrate;;1.0;0.0;;1
 3;4;274;U16;;Display Setting;;1.0;0.0;;1

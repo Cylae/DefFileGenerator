@@ -1,4 +1,4 @@
-modbusRTU;Meter;Lettel;LETTEL_MCT4-45_FLOAT;;;;;;;
+Modbus;Meter;Lettel;LETTEL_MCT4-45_FLOAT;;;;;;;
 1;4;0;U16;;Tension simple phase A;U_AC_1;1.0;0.0;V;4
 2;4;2;U16;;Tension simple phase B;U_AC_2;1.0;0.0;V;4
 3;4;4;U16;;Tension simple phase C;U_AC_3;1.0;0.0;V;4

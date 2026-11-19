@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Solargate;INV_SOLARGATE_Inverter;;;;;;;
+Modbus;Inverter;Solargate;INV_SOLARGATE_Inverter;;;;;;;
 1;3;40001;U16;;PKW1;;1.000000;0.000000;;0
 2;3;40002;U16;;PKW2;;1.000000;0.000000;;0
 3;3;40003;U16;;PKW3;;1.000000;0.000000;;0

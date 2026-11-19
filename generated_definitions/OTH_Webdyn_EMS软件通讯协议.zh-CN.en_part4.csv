@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;EMS软件通讯协议.zh-CN.en_p4;;;;;;;
+Modbus;Other;Webdyn;EMS软件通讯协议.zh-CN.en_p4;;;;;;;
 1;4;30180;U16;;Liquid cooling serial number SN0;SERIAL;1.0;0.0;---;4
 2;4;30181;U16;;Liquid cooling serial number SN1;;1.0;0.0;---;4
 3;4;30182;U16;;Liquid cooling serial number SN2;;1.0;0.0;---;4

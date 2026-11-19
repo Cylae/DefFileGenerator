@@ -58,7 +58,7 @@ def _make_def_csv(rows, header=None):
     hdr = (
         header
         if header is not None
-        else ["modbusRTU", "Inverter", "TestMfr", "TestModel", "", "", "", "", "", "", ""]
+        else ["Modbus", "Inverter", "TestMfr", "TestModel", "", "", "", "", "", "", ""]
     )
     lines.append(";".join(str(x) for x in hdr))
     for row in rows:
@@ -319,14 +319,14 @@ class TestWriteOutputCsv(unittest.TestCase):
         with patch("sys.stdout", captured):
             Generator.write_output_csv(None, iter(rows), "MFR", "MDL")
         output = captured.getvalue()
-        self.assertIn("modbusRTU", output)
+        self.assertIn("Modbus", output)
 
     def test_output_file_object(self):
         rows = list(self.generator.process_rows(self._rows()))
         buf = io.StringIO()
         Generator.write_output_csv(buf, iter(rows), "MFR", "MDL")
         output = buf.getvalue()
-        self.assertIn("modbusRTU", output)
+        self.assertIn("Modbus", output)
 
     def test_output_file_path_creates_file(self):
         with tempfile.NamedTemporaryFile(suffix=".csv", delete=False) as f:
@@ -337,7 +337,7 @@ class TestWriteOutputCsv(unittest.TestCase):
             self.assertTrue(os.path.exists(path))
             with open(path, encoding="utf-8-sig") as f:
                 content = f.read()
-            self.assertIn("modbusRTU", content)
+            self.assertIn("Modbus", content)
         finally:
             if os.path.exists(path):
                 os.unlink(path)
@@ -371,7 +371,7 @@ class TestRunGenerator(unittest.TestCase):
         run_generator(config, input_data=input_data)
         with open(out) as f:
             content = f.read()
-        self.assertIn("modbusRTU;Inverter;SampleManufacturer;SampleModel", content)
+        self.assertIn("Modbus;Inverter;SampleManufacturer;SampleModel", content)
 
     def test_no_input_file_logs_error(self):
         config = GeneratorConfig(

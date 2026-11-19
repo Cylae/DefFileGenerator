@@ -77,7 +77,7 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
         header, rows = self._read_definition(self.lc_file)
         self.assertEqual(len(header), 11)
-        self.assertEqual(header[0], "modbusTCP")
+        self.assertEqual(header[0], "Modbus")
         self.assertEqual(header[1], "Inverter")
         self.assertEqual(header[2], "MarsRenewable")
         self.assertEqual(header[3], "LocalControler")
@@ -112,7 +112,7 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
         header, rows = self._read_definition(self.pcs_bank_file)
         self.assertEqual(len(header), 11)
-        self.assertEqual(header[0], "modbusTCP")
+        self.assertEqual(header[0], "Modbus")
         self.assertEqual(header[1], "Battery")
         self.assertEqual(header[2], "MarsRenewable")
         self.assertEqual(len(rows), 80)
@@ -171,7 +171,7 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
         header, rows = self._read_definition(self.rack_cell_file)
         self.assertEqual(len(header), 11)
-        self.assertEqual(header[0], "modbusTCP")
+        self.assertEqual(header[0], "Modbus")
         self.assertEqual(header[1], "Battery")
         self.assertEqual(header[2], "MarsRenewable")
         self.assertEqual(len(rows), 35)
@@ -200,7 +200,7 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
         header, rows = self._read_definition(self.lc_ac_file)
         self.assertEqual(len(header), 11)
-        self.assertEqual(header[0], "modbusTCP")
+        self.assertEqual(header[0], "Modbus")
         self.assertEqual(header[1], "Inverter")
         self.assertEqual(header[2], "MarsRenewable")
         self.assertEqual(len(rows), 3400)
@@ -274,7 +274,7 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
         header, rows = self._read_definition(self.meter_file)
         self.assertEqual(len(header), 11)
-        self.assertEqual(header[0], "modbusTCP")
+        self.assertEqual(header[0], "Modbus")
         self.assertEqual(header[1], "Meter")
         self.assertEqual(header[2], "MarsRenewable")
         self.assertEqual(len(rows), 11)
@@ -293,7 +293,7 @@ class TestMarsRequestedDefinitions(unittest.TestCase):
 
         header, rows = self._read_definition(self.pv_file)
         self.assertEqual(len(header), 11)
-        self.assertEqual(header[0], "modbusTCP")
+        self.assertEqual(header[0], "Modbus")
         self.assertEqual(header[1], "Inverter")
         self.assertEqual(header[2], "MarsRenewable")
         self.assertEqual(len(rows), 49)

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Ingeteam;INV_Ingeteam_AAA0030IMB02;;;;;;;
+Modbus;Inverter;Ingeteam;INV_Ingeteam_AAA0030IMB02;;;;;;;
 1;4;0;U16;;Actual Date Year;;1.0;0.0;;4
 2;4;1;U16;;Actual Date Month;;1.0;0.0;;4
 3;4;2;U16;;Actual Date Day;;1.0;0.0;;4

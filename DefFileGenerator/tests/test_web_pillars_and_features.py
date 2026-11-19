@@ -12,7 +12,7 @@ class TestWebPillarsAndNewFeatures(unittest.TestCase):
 
     def test_pillars_check_valid_file(self):
         csv_content = (
-            "modbusRTU;Inverter;ValidMfg;ValidModel;;;;;;;\n"
+            "Modbus;Inverter;ValidMfg;ValidModel;;;;;;;\n"
             "1;3;1001;U16;;Active Power;P_AC;1.000000;0.000000;W;4\n"
         )
         file_obj = io.BytesIO(csv_content.encode("utf-8"))
@@ -34,7 +34,7 @@ class TestWebPillarsAndNewFeatures(unittest.TestCase):
 
     def test_pillars_check_invalid_naming(self):
         csv_content = (
-            "modbusRTU;Inverter;ValidMfg;ValidModel;;;;;;;\n"
+            "Modbus;Inverter;ValidMfg;ValidModel;;;;;;;\n"
             "1;3;1001;U16;;Active Power;P_AC;1.000000;0.000000;W;4\n"
         )
         file_obj = io.BytesIO(csv_content.encode("utf-8"))

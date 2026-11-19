@@ -33,7 +33,7 @@ class TestWave9Hardening(unittest.TestCase):
         self.assertEqual(cfg.output_file, "output.csv")
         self.assertEqual(cfg.manufacturer, "VendorA")
         self.assertEqual(cfg.model, "ModelB")
-        self.assertEqual(cfg.protocol, "modbusRTU")
+        self.assertEqual(cfg.protocol, "Modbus")
         self.assertEqual(cfg.category, "Inverter")
         self.assertEqual(cfg.address_offset, 0)
         self.assertTrue(cfg.strict_validation)

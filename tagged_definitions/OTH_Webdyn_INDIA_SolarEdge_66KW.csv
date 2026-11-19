@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn INDIA;SolarEdge_66KW;;;;;;;
+Modbus;Other;Webdyn INDIA;SolarEdge_66KW;;;;;;;
 1;4;69;U16;;C_SunSpec_DID;;1.0;0.0;;4
 2;4;70;U16;;C_SunSpec_Length;;1.0;0.0;;4
 3;4;71;U16;;I_AC_Current;;1.0;0.0;Amps;4

@@ -1,4 +1,4 @@
-modbusRTU;Other;Ticmaster;TicMaster-Mapping_-_FW41.48;;;;;;;
+Modbus;Other;Ticmaster;TicMaster-Mapping_-_FW41.48;;;;;;;
 1;4;3400;U16;;ICE;;1.0;0.0;;4
 2;4;4;U16;;SAPHIR;;1.0;0.0;;4
 3;4;0;U16;;Puissance active soutiree (calculee);P_AC;1.0;0.0;;4

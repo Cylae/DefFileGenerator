@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta Electronics;Copy_of_20220308_ENG_Fichier_d;;;;;;;
+Modbus;Other;Delta Electronics;Copy_of_20220308_ENG_Fichier_d;;;;;;;
 1;4;11088;U16;;ZONE-1 TEMPERATURE;;1.0;0.0;CELCIUS;4
 2;4;11098;U16;;ZONE-2 TEMPERATURE;;1.0;0.0;CELCIUS;4
 3;4;11108;U16;;OUTLET GAS TEMPERATURE;;1.0;0.0;CELCIUS;4

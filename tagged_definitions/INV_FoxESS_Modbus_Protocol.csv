@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Fox ESS;Modbus Protocol;;;;;;;
+Modbus;Inverter;Fox ESS;Modbus Protocol;;;;;;;
 1;3;36001;U16;;Master Version;master_version;1.000000;0.000000;N/A;4
 2;3;36002;U16;;Slave Version;slave_version;1.000000;0.000000;N/A;4
 3;3;36003;U16;;Manager Version;manager_version;1.000000;0.000000;N/A;4

@@ -300,7 +300,7 @@ class WebdynDefConfig:
     output_file: str
     manufacturer: str
     model: str
-    protocol: str = "modbusRTU"
+    protocol: str = "Modbus"
     category: str = "Inverter"
     address_offset: int = 0
     strict_validation: bool = True
@@ -318,7 +318,7 @@ class CSVHeaderConfig:
 
     manufacturer: str = ""
     model: str = ""
-    protocol: str = "modbusRTU"
+    protocol: str = "Modbus"
     category: str = "Inverter"
     forced_write: str = ""
     encoding: str = "utf-8"
@@ -343,7 +343,7 @@ class GeneratorConfig:
     output: str | None = None
     manufacturer: str | None = None
     model: str | None = None
-    protocol: str = "modbusRTU"
+    protocol: str = "Modbus"
     category: str = "Inverter"
     forced_write: str = ""
     template: bool = False
@@ -591,6 +591,31 @@ class Generator:
             return "'" + s
 
         return s
+
+    @staticmethod
+    def normalize_protocol(protocol_str: Any) -> str:
+        """
+        Normalizes protocol string. ModbusRTU and ModbusTCP are deprecated and consolidated
+        into canonical 'Modbus'.
+        """
+        if protocol_str is None:
+            return "Modbus"
+        p = str(protocol_str).strip()
+        if not p:
+            return "Modbus"
+        if p.lower() in (
+            "modbus",
+            "modbusrtu",
+            "modbustcp",
+            "modbus_rtu",
+            "modbus_tcp",
+            "modbus rtu",
+            "modbus tcp",
+            "rtu",
+            "tcp",
+        ):
+            return "Modbus"
+        return p
 
     @staticmethod
     @functools.lru_cache(maxsize=2048)
@@ -1858,15 +1883,15 @@ class Generator:
         if isinstance(config, (CSVHeaderConfig, GeneratorConfig)):
             mfg_val = getattr(config, "manufacturer", "") or ""
             model_val = getattr(config, "model", "") or ""
-            protocol_val = getattr(config, "protocol", "modbusRTU") or "modbusRTU"
+            protocol_val = getattr(config, "protocol", "Modbus") or "Modbus"
             category_val = getattr(config, "category", "Inverter") or "Inverter"
             forced_write_val = getattr(config, "forced_write", "") or ""
         elif isinstance(config, str):
             mfg_val = config
             model_val = str(args[0]) if args else str(kwargs.get("model", ""))
             protocol_val = (
-                str(args[1]) if len(args) > 1 else str(kwargs.get("protocol", "modbusRTU"))
-            ) or "modbusRTU"
+                str(args[1]) if len(args) > 1 else str(kwargs.get("protocol", "Modbus"))
+            ) or "Modbus"
             category_val = (
                 str(args[2]) if len(args) > 2 else str(kwargs.get("category", "Inverter"))
             ) or "Inverter"
@@ -1876,9 +1901,11 @@ class Generator:
         else:
             mfg_val = str(kwargs.get("manufacturer", "")) or ""
             model_val = str(kwargs.get("model", "")) or ""
-            protocol_val = str(kwargs.get("protocol", "modbusRTU")) or "modbusRTU"
+            protocol_val = str(kwargs.get("protocol", "Modbus")) or "Modbus"
             category_val = str(kwargs.get("category", "Inverter")) or "Inverter"
             forced_write_val = str(kwargs.get("forced_write", "")) or ""
+
+        protocol_val = Generator.normalize_protocol(protocol_val)
 
         encoding_val = (
             getattr(config, "encoding", "utf-8")
@@ -2021,7 +2048,7 @@ def generate_template(output_file: str | None, mode: str = "input") -> bool:
     """
     if mode == "definition":
         headers = [
-            "modbusRTU",
+            "Modbus",
             "Inverter",
             "SampleManufacturer",
             "SampleModel",
@@ -2218,7 +2245,7 @@ def main() -> None:
     parser.add_argument("-o", "--output", help="Output CSV.")
     parser.add_argument("--manufacturer", help="Manufacturer name.")
     parser.add_argument("--model", help="Model name.")
-    parser.add_argument("--protocol", default="modbusRTU")
+    parser.add_argument("--protocol", default="Modbus")
     parser.add_argument("--category", default="Inverter")
     parser.add_argument("--forced-write", default="")
     parser.add_argument("--template", action="store_true")

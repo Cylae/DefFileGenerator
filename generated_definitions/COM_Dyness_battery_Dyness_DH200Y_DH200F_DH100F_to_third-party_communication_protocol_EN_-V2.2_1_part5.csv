@@ -1,4 +1,4 @@
-modbusRTU;Other;Dyness battery;Dyness_DH200Y_DH200F_p5;;;;;;;
+Modbus;Other;Dyness battery;Dyness_DH200Y_DH200F_p5;;;;;;;
 1;4;0;U16;;System Status;;1.0;0.0;"DH200Y Description 0. Initialization 1. Self-test 2. Standby 3. Bypass 4. Ready 5. Grid-tied Charging (Auto Operation) 6. Grid-tied Discharging (Auto Operation) 7. Off-grid Charging (Auto Operation) 8. Off-grid Discharging (Auto Operation) 9. Warning 10. Fault 11. Upgrading 12. Debugging 13. Protective Charging""";9
 2;4;1;U16;;Running Mode;;1.0;0.0;DH200Y Description 0: Scheduled Charge/Discharge 1: Peak Shaving/Valley Filling 2: Self-consumption 3: Off-grid Mode (Grid disconnected) 4: Remote Mode;4
 3;4;2;U16;;Module Online Status H;;1.0;0.0;"Bit0 :1; //BIT00 BMS Bit1 :1; //BIT01 Fire Protection Bit2 :1; //BIT02 PCS Bit3 :1; //BIT03 DCDC Bit4 :1; //BIT04 MPPT Bit5 :1; //BIT05 STS Bit6 :1; //BIT06 Meter Bit7 :1; //BIT07 AC Bit8 :1; //BIT08 Liquid Cooling Unit Bit9 :1; //BIT09 HMI Bit10 :1; //BIT10 PC Bit11 :1; //BIT11 GPS Module Bit12 :1; //BIT12 4G Module Bit13 :1; //BIT13 WIFI Module Bit14 :1; //BIT14 Bluetooth Module Bit15 :1; //BIT15 LAN1";9

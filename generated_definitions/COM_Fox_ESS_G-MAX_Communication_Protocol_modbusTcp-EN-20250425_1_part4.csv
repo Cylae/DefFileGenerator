@@ -1,4 +1,4 @@
-modbusRTU;Other;Fox ESS;G-MAX_Communication__p4;;;;;;;
+Modbus;Other;Fox ESS;G-MAX_Communication__p4;;;;;;;
 1;4;90;U16;;Schedule automatic mode switching;;1.0;0.0;None;1
 2;4;91;U16;;Subsystem control mode 1 (when the three functions are activated at the same time, local demand side response > peak-valley arbitrage > local 24-hour plan);;1.0;0.0;None;1
 3;4;92;U16;;Subsystem control mode 0 (when the three functions are activated at the same time, local demand side response > peak-valley arbitrage > local 24-hour plan);;1.0;0.0;None;1

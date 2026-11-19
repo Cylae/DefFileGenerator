@@ -1,4 +1,4 @@
-modbusRTU;Other;Fronius;Argeno_Register_Map_p22;;;;;;;
+Modbus;Other;Fronius;Argeno_Register_Map_p22;;;;;;;
 1;4;41669;U16;;ID;;1.0;0.0;None;4
 2;4;41670;U16;;L;;1.0;0.0;None;4
 3;4;41671;U16;;Ena;;1.0;0.0;None;1

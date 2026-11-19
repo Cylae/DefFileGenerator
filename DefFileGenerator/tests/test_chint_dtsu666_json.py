@@ -255,7 +255,7 @@ class TestChintDtsu666Json(unittest.TestCase):
                 reader = list(csv.reader(f, delimiter=";"))
 
             # Header
-            self.assertEqual(reader[0][0], "modbusRTU")
+            self.assertEqual(reader[0][0], "Modbus")
             self.assertEqual(reader[0][1], "Meter")
             self.assertEqual(reader[0][2], "CHINT")
             self.assertEqual(reader[0][3], "DTSU666")

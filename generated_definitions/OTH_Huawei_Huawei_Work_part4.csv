@@ -1,4 +1,4 @@
-modbusRTU;Other;Huawei;Huawei_Work_p4;;;;;;;
+Modbus;Other;Huawei;Huawei_Work_p4;;;;;;;
 1;4;1;U16;;Req_32001_2;;1.0;0.0;;4
 2;4;2;U16;;Req_32003_10;;1.0;0.0;;4
 3;4;3;U16;;Req_32200_1;;1.0;0.0;;4

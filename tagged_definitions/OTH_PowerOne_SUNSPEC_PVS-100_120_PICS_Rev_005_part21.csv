@@ -1,4 +1,4 @@
-modbusRTU;Other;PowerOne;SUNSPEC_PVS-100_120__p21;;;;;;;
+Modbus;Other;PowerOne;SUNSPEC_PVS-100_120__p21;;;;;;;
 1;4;41234;U16;;ID;;1.0;0.0;None;4
 2;4;41235;U16;;L;;1.0;0.0;None;4
 3;4;41236;U16;;DCA_SF;;1.0;0.0;None;4

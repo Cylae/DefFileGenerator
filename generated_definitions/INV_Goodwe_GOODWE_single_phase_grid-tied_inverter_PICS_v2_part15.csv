@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Goodwe;GOODWE_single_phase__p15;;;;;;;
+Modbus;Inverter;Goodwe;GOODWE_single_phase__p15;;;;;;;
 1;4;40472;U16;;ID;;1.0;0.0;;4
 2;4;40473;U16;;L;;1.0;0.0;;4
 3;4;40474;U16;;ActCrv;;1.0;0.0;;1

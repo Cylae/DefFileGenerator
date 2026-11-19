@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC;;;;;;;
+Modbus;Inverter;Schneider;INV_SCHNEIDER_CONEXT_CORE_XC;;;;;;;
 1;3;1_18;STRING;;Product Model Designation;;1.000000;0.000000;;4
 2;3;10_20;STRING;;Product Finished Goods Assembly Number 1;;1.000000;0.000000;;4
 3;3;20_20;STRING;;Product Serial Number;;1.000000;0.000000;;4

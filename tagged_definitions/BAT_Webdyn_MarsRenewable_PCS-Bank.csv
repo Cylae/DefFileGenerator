@@ -1,4 +1,4 @@
-modbus;Battery;MarsRenewable;PCS-Bank-Rack;;;;;;;
+Modbus;Battery;MarsRenewable;PCS-Bank-Rack;;;;;;;
 1;2;0;U16;;LC Alarm Summary [0=normal, 1=alarm];;1;0;;4
 2;2;1;U16;;PCS Alarm Summary [0=normal, 1=alarm];;1;0;;4
 3;2;2;U16;;Bank Alarm Summary [0=normal, 1=alarm];;1;0;;4

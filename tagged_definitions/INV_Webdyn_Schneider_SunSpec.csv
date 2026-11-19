@@ -1,4 +1,4 @@
-ModbusRTU;Inverter;Schneider;Connext_CL;;;;;;;
+Modbus;Inverter;Schneider;Connext_CL;;;;;;;
 1;3;40000_2;STRING;;SunS;;1.0;0.0;;4
 2;3;40002;U16;;Common_ID;;1.0;0.0;;4
 3;3;40003;U16;;Common_L;;1.0;0.0;;4

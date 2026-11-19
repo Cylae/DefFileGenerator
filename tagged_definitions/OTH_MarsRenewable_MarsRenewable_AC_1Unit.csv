@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_AC_1Unit;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_AC_1Unit;;;;;;;
 1;4;15000;U16;;AC1 Operating Status;;1.0;0.0;;4
 2;4;15004;U16;;AC1 Cooling Low Point;;1.0;0.0;°C;4
 3;4;15006;U16;;AC1 Cooling High Point;;1.0;0.0;°C;4

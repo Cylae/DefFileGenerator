@@ -1,4 +1,4 @@
-modbusRTU;Other;Polier;POLIER_MTR5LMOD;;;;;;;
+Modbus;Other;Polier;POLIER_MTR5LMOD;;;;;;;
 1;4;0;U16;;Com address;;1.0;0.0;;4
 2;4;32784;U16;;Com address_1;;1.0;0.0;;4
 3;4;1;U16;;Baudrate;;1.0;0.0;;4

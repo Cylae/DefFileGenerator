@@ -1,4 +1,4 @@
-modbusRTU;Other;Dyness battery;Dyness_DH200Y_DH200F_p11;;;;;;;
+Modbus;Other;Dyness battery;Dyness_DH200Y_DH200F_p11;;;;;;;
 1;4;1500;U16;;uwDeviceState;;1.0;0.0;None;4
 2;4;1501;U16;;uwIndFanState;WIND_SPEED;1.0;0.0;None;4
 3;4;1502;U16;;uwOutdFanState;;1.0;0.0;None;4

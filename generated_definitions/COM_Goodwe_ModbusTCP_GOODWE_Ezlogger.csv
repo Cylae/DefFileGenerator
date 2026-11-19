@@ -1,4 +1,4 @@
-modbusRTU;Other;Goodwe;ModbusTCP_GOODWE_Ezlogger;;;;;;;
+Modbus;Other;Goodwe;ModbusTCP_GOODWE_Ezlogger;;;;;;;
 1;4;20000;U16;;DayActive PowerWh;;1.0;0.0;;4
 2;4;20002;U16;;DayReactive PowerWh;Q_AC;1.0;0.0;;4
 3;4;20004;U16;;Day Grid Work Time;;1.0;0.0;s;4

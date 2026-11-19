@@ -31,7 +31,7 @@ class TestCliDeep(unittest.TestCase):
         p = os.path.join(self.tmpdir.name, name)
         with open(p, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter=";")
-            writer.writerow(["modbusRTU", "Inverter", "MFG", "MODEL", "", "", "", "", "", "", ""])
+            writer.writerow(["Modbus", "Inverter", "MFG", "MODEL", "", "", "", "", "", "", ""])
             writer.writerow(["1", "3", "100", "U16", "", "Var1", "tag1", "1.0", "0.0", "V", "4"])
         return p
 
@@ -200,7 +200,7 @@ class TestCliDeep(unittest.TestCase):
         main(["generate", "--template", "--template-mode", "definition", "-o", out])
         self.assertTrue(os.path.exists(out))
         with open(out) as f:
-            self.assertIn("modbusRTU", f.read())
+            self.assertIn("Modbus", f.read())
 
     def test_generate_with_protocol_and_category(self):
         from DefFileGenerator.main import main
@@ -225,7 +225,7 @@ class TestCliDeep(unittest.TestCase):
         )
         with open(out, encoding="utf-8-sig") as f:
             content = f.read()
-        self.assertIn("modbustcp", content)
+        self.assertIn("Modbus", content)
         self.assertIn("Battery", content)
 
     def test_generate_guard_output_prevents_overwrite(self):

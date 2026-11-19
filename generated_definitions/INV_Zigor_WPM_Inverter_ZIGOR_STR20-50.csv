@@ -1,4 +1,4 @@
-modbusRTU;Inverter;ZIGOR;STR20-50;;;;;;;
+Modbus;Inverter;ZIGOR;STR20-50;;;;;;;
 1;3;3200_10;STRING;;Machine model;MODEL;1;0;;4
 2;3;3205_0;U8;;DSP version;;1;0;;4
 3;3;3205_1;U8;;ARM version;;1;0;;4

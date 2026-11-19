@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;M30A-flex_COM117_p14;;;;;;;
+Modbus;Other;Delta;M30A-flex_COM117_p14;;;;;;;
 1;4;40410;U16;;ID;;1.0;0.0;;4
 2;4;40411;U16;;L;;1.0;0.0;;4
 3;4;40412;U16;;ActCrv;;1.0;0.0;;1

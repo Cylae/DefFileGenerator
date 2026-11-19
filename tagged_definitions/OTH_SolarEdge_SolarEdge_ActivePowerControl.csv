@@ -1,4 +1,4 @@
-modbusRTU;Other;SolarEdge;SolarEdge_ActivePowerControl;;;;;;;
+Modbus;Other;SolarEdge;SolarEdge_ActivePowerControl;;;;;;;
 1;4;61440;U16;;RRCR State;;1.0;0.0;;4
 2;4;61441;U16;;Active Power Limit;cmdPwrPercent2;1.0;0.0;%;4
 3;4;61442;U16;;CosPhi;PF;1.0;0.0;;4

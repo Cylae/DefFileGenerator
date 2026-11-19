@@ -1,4 +1,4 @@
-modbusRTU;Other;PDL;Elite_440-_Modbus_Ma_p5;;;;;;;
+Modbus;Other;PDL;Elite_440-_Modbus_Ma_p5;;;;;;;
 1;4;40520;U16;;History Available;;1.0;0.0;;4
 2;4;40521;U16;;History Number;;1.0;0.0;;4
 3;4;40522;U16;;History Date;;1.0;0.0;;4

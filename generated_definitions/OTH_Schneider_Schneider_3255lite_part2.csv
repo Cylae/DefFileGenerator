@@ -1,4 +1,4 @@
-modbusRTU;Other;Schneider;Schneider_3255lite_p2;;;;;;;
+Modbus;Other;Schneider;Schneider_3255lite_p2;;;;;;;
 1;4;1;U16;;OperationTimer;;1.0;0.0;;4
 2;4;2;U16;;communication_Adr;;1.0;0.0;;4
 3;4;3;U16;;Digital Input Status;;1.0;0.0;;9

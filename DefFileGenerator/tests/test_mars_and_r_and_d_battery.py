@@ -52,7 +52,7 @@ def test_mars_local_controller_slave1_strict_validation():
     with open(target_csv, encoding="utf-8-sig") as f:
         header_line = f.readline().rstrip("\r\n").split(";")
         assert len(header_line) == 11, f"Expected 11 columns in header, got {len(header_line)}"
-        assert header_line[0] == "modbusTCP"
+        assert header_line[0] == "Modbus"
         assert header_line[1] == "BESS"
         assert header_line[2] == "Mars Energy"
 

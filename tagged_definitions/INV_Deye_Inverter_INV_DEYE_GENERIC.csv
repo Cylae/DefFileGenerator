@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Deye Inverter;INV_DEYE_GENERIC;;;;;;;
+Modbus;Inverter;Deye Inverter;INV_DEYE_GENERIC;;;;;;;
 1;4;16;U16;;Rated power;P_RATED;1.0;0.0;W;4
 2;4;19;U16;;Rated Grid Voltage;U_AC_L1L2;1.0;0.0;;4
 3;4;20;U16;;Remote Lock;;1.0;0.0;;4

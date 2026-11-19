@@ -1,4 +1,4 @@
-modbusRTU;Other;PowerOne;ABB_TRIO_200_276_FR;;;;;;;
+Modbus;Other;PowerOne;ABB_TRIO_200_276_FR;;;;;;;
 1;4;179;U16;;Remote On/Off;CMD_ON;1.0;0.0;;1
 2;4;180;U16;;Alarm manual reset;;1.0;0.0;;4
 3;4;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la montée en puissance (actif);;1.0;0.0;;4

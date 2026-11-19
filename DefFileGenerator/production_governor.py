@@ -77,6 +77,11 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
                 return False, issues
             if len(header) != 11:
                 issues.append(f"Header in '{filename}' has {len(header)} columns instead of 11")
+            proto_val = header[0].strip()
+            if proto_val.lower() in ("modbusrtu", "modbustcp", "modbus_rtu", "modbus_tcp"):
+                issues.append(
+                    f"Header protocol '{proto_val}' in '{filename}' is deprecated; must be 'Modbus'"
+                )
 
             rows = list(reader)
             if not rows:

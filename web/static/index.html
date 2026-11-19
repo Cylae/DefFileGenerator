@@ -81,8 +81,7 @@
                     <div class="form-group">
                         <label for="protocolSelect">Modbus Protocol</label>
                         <select id="protocolSelect">
-                            <option value="modbusRTU" selected>modbusRTU</option>
-                            <option value="modbusTCP">modbusTCP</option>
+                            <option value="Modbus" selected>Modbus</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -104,6 +103,11 @@
                         <label for="forcedWriteInput">Forced Write Type (Optional)</label>
                         <input type="text" id="forcedWriteInput" placeholder="e.g. 3">
                     </div>
+                    <div class="form-group" style="justify-content: center;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
+                            <input type="checkbox" id="autoTagCheck" checked> Enrichir avec tags SunPM
+                        </label>
+                    </div>
                 </form>
                 <div class="action-bar">
                     <button id="convertBtn" class="btn btn-primary" disabled>
@@ -114,6 +118,15 @@
                         </svg>
                         Extract & Generate Definition
                     </button>
+                </div>
+                <div id="convertErrorBox" class="hidden" style="margin-top: 14px; padding: 14px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; font-size: 0.9rem;">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 1.2rem;">⚠️</span>
+                        <div>
+                            <strong style="display: block; margin-bottom: 4px;">Erreur de conversion ou validation :</strong>
+                            <span id="convertErrorMessage"></span>
+                        </div>
+                    </div>
                 </div>
             </section>
 

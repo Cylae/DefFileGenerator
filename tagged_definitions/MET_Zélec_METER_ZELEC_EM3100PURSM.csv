@@ -1,4 +1,4 @@
-ModbusRTU;Meter;ZELEC;EM3100PURSM;;;;;;;
+Modbus;Meter;ZELEC;EM3100PURSM;;;;;;;
 1;4;0;F32;;Tension simple V1;;1;0;V;4
 2;4;2;F32;;Tension simple V2;;1;0;V;4
 3;4;4;F32;;Tension simple V3;;1;0;V;4

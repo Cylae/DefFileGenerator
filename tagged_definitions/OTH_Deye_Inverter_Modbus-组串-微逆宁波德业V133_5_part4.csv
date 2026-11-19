@@ -1,4 +1,4 @@
-modbusRTU;Other;Deye Inverter;Modbus-组串-微逆宁波德业V133_p4;;;;;;;
+Modbus;Other;Deye Inverter;Modbus-组串-微逆宁波德业V133_p4;;;;;;;
 1;4;0;U16;;设备类型;Q_AC;1.0;0.0;None;4
 2;4;1;U16;;ModBus地址;;1.0;0.0;None;4
 3;4;2;U16;;通讯协议版本;;1.0;0.0;None;4

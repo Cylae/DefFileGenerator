@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_LC_V7;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_LC_V7;;;;;;;
 1;4;0;U16;;LC Alarm Summary (0=normal, 1=alarm);alarm_lc;1.0;0.0;;9
 2;4;1;U16;;PCS Alarm Summary (0=normal, 1=alarm);alarm_pcs;1.0;0.0;;9
 3;4;2;U16;;Bank Alarm Summary (0=normal, 1=alarm);alarm_bank;1.0;0.0;;9

@@ -1,4 +1,4 @@
-modbusRTU;Other;CyberPower;Cyberpower_CPSHB6000ETL48_CPSH;;;;;;;
+Modbus;Other;CyberPower;Cyberpower_CPSHB6000ETL48_CPSH;;;;;;;
 1;4;8456_16;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4
 2;4;8464_16;STRING;;Model Name;MODEL;1.000000;0.000000;;4
 3;4;8502;U32;;FeedInGrid Life energy;E_TOT;0.100000;0.000000;kWh;4

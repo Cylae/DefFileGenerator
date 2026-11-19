@@ -1,4 +1,4 @@
-modbusRTU;Battery;SOLAX;EMS1000PRO;;;;;;;
+Modbus;Battery;SOLAX;EMS1000PRO;;;;;;;
 1;4;0_30;STRING;;EMS1000 PRO SN;DeviceSerialNumber;1;0;;4
 2;4;15_10;STRING;;EMS1000 PRO Version Number;FirmwareVersion;1;0;;4
 3;4;20;U16;;Year Month;;1;0;;4

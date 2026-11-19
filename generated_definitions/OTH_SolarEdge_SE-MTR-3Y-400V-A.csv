@@ -1,4 +1,4 @@
-modbusRTU;Other;SolarEdge;SE-MTR-3Y-400V-A;;;;;;;
+Modbus;Other;SolarEdge;SE-MTR-3Y-400V-A;;;;;;;
 1;3;40121;U16;;C_SunSpec_DID;;1.000000;0.000000;;4
 2;3;40122;U16;;C_SunSpec_Length;;1.000000;0.000000;;4
 3;3;40123_32;STRING;;C_Manufacturer;;1.000000;0.000000;;4

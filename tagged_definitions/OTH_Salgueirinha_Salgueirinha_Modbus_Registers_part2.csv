@@ -1,4 +1,4 @@
-modbusRTU;Other;Salgueirinha;Salgueirinha_Modbus__p2;;;;;;;
+Modbus;Other;Salgueirinha;Salgueirinha_Modbus__p2;;;;;;;
 1;4;60;U16;;Instant Availability;;1.0;0.0;None;4
 2;4;62;U16;;Consumption - Active Energy;E_TOT;1.0;0.0;MWh;4
 3;4;64;U16;;Consumption - Active Energy - Off-Peak;;1.0;0.0;MWh;4

@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;M50A_COM139_p20;;;;;;;
+Modbus;Other;Delta;M50A_COM139_p20;;;;;;;
 1;4;40790;U16;;ID;;1.0;0.0;;4
 2;4;40791;U16;;L;;1.0;0.0;;4
 3;4;40792;U16;;ActCrv;;1.0;0.0;;1

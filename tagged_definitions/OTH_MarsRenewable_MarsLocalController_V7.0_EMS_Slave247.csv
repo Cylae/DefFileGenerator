@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsLocalController_V7.0_EMS_S;;;;;;;
+Modbus;Other;MarsRenewable;MarsLocalController_V7.0_EMS_S;;;;;;;
 1;3;0;U16;;Measurement point version number;;1.000000;0.000000;;4
 2;3;1;U16;;PCS Number;;1.000000;0.000000;;4
 3;3;2;U16;;Bank Number;;1.000000;0.000000;;4

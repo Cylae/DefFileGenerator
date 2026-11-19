@@ -1,4 +1,4 @@
-modbusRTU;Inverter;ABB;TRIO 20.0-27.6 TL OUTD;;;;;;;
+Modbus;Inverter;ABB;TRIO 20.0-27.6 TL OUTD;;;;;;;
 1;3;179;U16;;Remote On/Off;CMD_ON;1.000000;0.000000;;1
 2;3;180;U16;;Alarm manual reset;;1.000000;0.000000;;4
 3;3;189;U16;;Mode permanent et dynamique - Intervalle de temps pour la monte en puissance (actif);;1.000000;0.000000;;4

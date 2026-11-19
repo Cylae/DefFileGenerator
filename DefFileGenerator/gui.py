@@ -597,10 +597,7 @@ def infer_metadata_from_path(file_path: str) -> dict[str, str]:
         category = "Inverter"
 
     # 3. Protocol detection
-    if any(k in full_path_lower for k in ["tcp", "modbustcp", "eth", "lan", "ip"]):
-        protocol = "modbusTCP"
-    else:
-        protocol = "modbusRTU"
+    protocol = "Modbus"
 
     # 4. Model detection
     clean_model = base_name
@@ -896,8 +893,8 @@ class DefFileGenApp:
             ctk.CTkLabel(params_frame, text="Protocol").grid(
                 row=2, column=0, sticky="w", padx=14, pady=(4, 2)
             )
-            self.opt_protocol = ctk.CTkOptionMenu(params_frame, values=["modbusRTU", "modbusTCP"])
-            self.opt_protocol.set("modbusRTU")
+            self.opt_protocol = ctk.CTkOptionMenu(params_frame, values=["Modbus"])
+            self.opt_protocol.set("Modbus")
             self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=14, pady=(0, 8))
 
             ctk.CTkLabel(params_frame, text="Category").grid(
@@ -962,10 +959,8 @@ class DefFileGenApp:
             ttk.Label(params_frame, text="Protocol").grid(
                 row=2, column=0, sticky="w", padx=10, pady=(4, 2)
             )
-            self.opt_protocol = ttk.Combobox(
-                params_frame, values=["modbusRTU", "modbusTCP"], state="readonly"
-            )
-            self.opt_protocol.set("modbusRTU")
+            self.opt_protocol = ttk.Combobox(params_frame, values=["Modbus"], state="readonly")
+            self.opt_protocol.set("Modbus")
             self.opt_protocol.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 6))
 
             ttk.Label(params_frame, text="Category").grid(
@@ -1321,7 +1316,7 @@ class DefFileGenApp:
 
         mfg = self.entry_mfg.get().strip() or "Manufacturer"
         model = self.entry_model.get().strip() or "Model"
-        protocol = self.opt_protocol.get() if hasattr(self, "opt_protocol") else "modbusRTU"
+        protocol = self.opt_protocol.get() if hasattr(self, "opt_protocol") else "Modbus"
         category = self.opt_category.get() if hasattr(self, "opt_category") else "Inverter"
 
         # Determine optional sheet
@@ -1615,7 +1610,7 @@ class DefFileGenApp:
         if hasattr(self, "opt_category"):
             self.opt_category.set("Inverter")
         if hasattr(self, "opt_protocol"):
-            self.opt_protocol.set("modbusRTU")
+            self.opt_protocol.set("Modbus")
         if hasattr(self, "opt_sheet"):
             default_opts = ["📄 All Sheets (Merged)"]
             if HAS_CUSTOMTKINTER:
@@ -2054,7 +2049,7 @@ class DefFileGenApp:
         with open(save_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f, delimiter=";", lineterminator="\n")
             # Header row
-            header_row = ["modbusRTU", category, f"Example_{category}", "Model_1", ""] + [""] * 6
+            header_row = ["Modbus", category, f"Example_{category}", "Model_1", ""] + [""] * 6
             writer.writerow(header_row)
             # Register rows
             for r in tmpl_data["registers"]:

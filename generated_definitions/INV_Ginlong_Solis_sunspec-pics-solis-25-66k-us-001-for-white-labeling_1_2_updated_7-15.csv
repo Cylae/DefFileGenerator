@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Ginlong_Solis;sunspec-pics-solis-25-66k-us-0;;;;;;;
+Modbus;Inverter;Ginlong_Solis;sunspec-pics-solis-25-66k-us-0;;;;;;;
 1;4;40002;U16;;ID;;1.0;0.0;;4
 2;4;40003;U16;;L;;1.0;0.0;;4
 3;4;40004;U16;;Manufacturer (Mn);MANUFACTURER;1.0;0.0;;4

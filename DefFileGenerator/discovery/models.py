@@ -12,8 +12,9 @@ from pydantic import BaseModel, Field
 
 
 class ProtocolTransport(str, Enum):
-    MODBUS_RTU = "modbusRTU"
-    MODBUS_TCP = "modbusTCP"
+    MODBUS = "Modbus"
+    MODBUS_RTU = "Modbus"
+    MODBUS_TCP = "Modbus"
     SUNSPEC_RTU = "sunspecRTU"
     SUNSPEC_TCP = "sunspecTCP"
 
@@ -85,7 +86,7 @@ class CanonicalEquipmentModel(BaseModel):
     model: str
     hardware_revisions: list[str] = Field(default_factory=list)
     supported_firmwares: list[str] = Field(default_factory=list)
-    transport: ProtocolTransport = ProtocolTransport.MODBUS_RTU
+    transport: ProtocolTransport = ProtocolTransport.MODBUS
     category: str = "Inverter"  # Inverter, Meter, Battery, Sensor, Logger, Other
     registers: list[CanonicalRegisterRecord] = Field(default_factory=list)
     sunspec_base_address: int | None = None

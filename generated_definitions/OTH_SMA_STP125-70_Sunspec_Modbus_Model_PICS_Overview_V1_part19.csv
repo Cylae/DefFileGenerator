@@ -1,4 +1,4 @@
-modbusRTU;Other;SMA;STP125-70_Sunspec_Mo_p19;;;;;;;
+Modbus;Other;SMA;STP125-70_Sunspec_Mo_p19;;;;;;;
 1;4;41431;U16;;ID;;1.0;0.0;;4
 2;4;41432;U16;;L;;1.0;0.0;;4
 3;4;41433;U16;;Ena;;1.0;0.0;;1

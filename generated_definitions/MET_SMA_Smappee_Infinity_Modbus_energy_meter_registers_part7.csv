@@ -1,4 +1,4 @@
-modbusRTU;Meter;SMA;Smappee_Infinity_Mod_p7;;;;;;;
+Modbus;Meter;SMA;Smappee_Infinity_Mod_p7;;;;;;;
 1;4;512;U16;;Total Active Power, 1 second average;P_AC;1.0;0.0;Watt;4
 2;4;514;U16;;Fundamental Active Power, 1 second average;;1.0;0.0;Watt;4
 3;4;516;U16;;Total Active Power, 1 second average;;1.0;0.0;Watt;4

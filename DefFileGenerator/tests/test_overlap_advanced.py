@@ -192,7 +192,7 @@ class TestWriteOutputCsv(unittest.TestCase):
         Generator.write_output_csv(out, iter(self._rows(1)), cfg)
         with open(out, encoding="utf-8-sig") as f:
             first_line = f.readline()
-        self.assertIn("modbusTCP", first_line)
+        self.assertIn("Modbus", first_line)
         self.assertIn("Battery", first_line)
         self.assertIn("CustomMfg", first_line)
         self.assertIn("CustomModel", first_line)
@@ -227,7 +227,7 @@ class TestWriteOutputCsv(unittest.TestCase):
         Generator.write_output_csv(out, iter(self._rows(3)), "M", "X")
         with open(out, encoding="utf-8-sig") as f:
             content = f.read()
-        self.assertIn("modbusRTU", content)
+        self.assertIn("Modbus", content)
         self.assertIn("Var0", content)
         self.assertIn("Var2", content)
 
@@ -240,13 +240,13 @@ class TestWriteOutputCsv(unittest.TestCase):
         finally:
             sys.stdout = old
         content = buf.getvalue()
-        self.assertIn("modbusRTU", content)
+        self.assertIn("Modbus", content)
 
     def test_writes_to_file_object(self):
         buf = io.StringIO()
         Generator.write_output_csv(buf, iter(self._rows(1)), "P", "Q")
         content = buf.getvalue()
-        self.assertIn("modbusRTU", content)
+        self.assertIn("Modbus", content)
         self.assertIn("Var0", content)
 
     def test_type_counts_logged_per_info1(self):
@@ -287,7 +287,7 @@ class TestWriteOutputCsv(unittest.TestCase):
         )
         with open(out, encoding="utf-8-sig") as f:
             first_line = f.readline()
-        self.assertIn("modbustcp", first_line)
+        self.assertIn("Modbus", first_line)
         self.assertIn("Battery", first_line)
 
     def test_forced_write_field_written(self):

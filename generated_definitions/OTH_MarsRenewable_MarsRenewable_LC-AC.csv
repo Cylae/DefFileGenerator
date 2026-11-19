@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_LC-AC;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_LC-AC;;;;;;;
 1;4;30000;U16;;LiquidCooling1 Operating Status;I_DC;1.0;0.0;;4
 2;4;30004;U16;;LiquidCooling1 Operating Mode;;1.0;0.0;;4
 3;4;30006;U16;;LiquidCooling1 Ambient Temperature;;1.0;0.0;°C;4

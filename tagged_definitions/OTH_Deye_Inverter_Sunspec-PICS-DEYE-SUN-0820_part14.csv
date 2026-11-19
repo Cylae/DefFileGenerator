@@ -1,4 +1,4 @@
-modbusRTU;Other;Deye Inverter;Sunspec-PICS-DEYE-SU_p14;;;;;;;
+Modbus;Other;Deye Inverter;Sunspec-PICS-DEYE-SU_p14;;;;;;;
 1;4;40414;U16;;ID;;1.0;0.0;;4
 2;4;40415;U16;;L;;1.0;0.0;;4
 3;4;40416;U16;;ActCrv;;1.0;0.0;;1

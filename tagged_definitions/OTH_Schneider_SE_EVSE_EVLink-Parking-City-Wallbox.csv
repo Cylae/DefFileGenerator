@@ -1,4 +1,4 @@
-modbusRTU;Other;Schneider;SE_EVSE_EVLink-Parking-City-Wa;;;;;;;
+Modbus;Other;Schneider;SE_EVSE_EVLink-Parking-City-Wa;;;;;;;
 1;3;6;U16;;CPW State;;1.000000;0.000000;;4
 2;3;360;U32;;Stn Meter L1_L2 Voltage;;1.000000;0.000000;V;4
 3;3;932;U16;;Remote controller life bit: operable only on master board;;1.000000;0.000000;;4

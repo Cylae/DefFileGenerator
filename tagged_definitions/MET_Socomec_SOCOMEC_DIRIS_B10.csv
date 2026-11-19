@@ -1,4 +1,4 @@
-modbusRTU;Meter;Socomec;SOCOMEC_DIRIS_B10;;;;;;;
+Modbus;Meter;Socomec;SOCOMEC_DIRIS_B10;;;;;;;
 1;4;18432;U16;;Load_1 - Load status (0: Disabled;;1.0;0.0;;4
 2;4;18433;U16;;Load_1 - Date of last instance;;1.0;0.0;s;4
 3;4;18435;U16;;Load_1 - Integration time;;1.0;0.0;s;4

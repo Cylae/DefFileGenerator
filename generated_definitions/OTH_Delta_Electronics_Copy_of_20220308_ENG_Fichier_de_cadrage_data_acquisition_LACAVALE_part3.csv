@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta Electronics;Copy_of_20220308_ENG_p3;;;;;;;
+Modbus;Other;Delta Electronics;Copy_of_20220308_ENG_p3;;;;;;;
 1;4;1088;U16;;|| HOT GAS BLOWER VFD TRIP/ OFF ||;;1.0;0.0;;9
 2;4;1089;U16;;|| HOT GAS BLOWER NOT RUN ||;;1.0;0.0;;4
 3;4;1090;U16;;|| COMBUSTOR AIR BLOWER MPCB TRIP/OFF ||;;1.0;0.0;;9

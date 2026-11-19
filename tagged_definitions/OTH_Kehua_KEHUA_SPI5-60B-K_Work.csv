@@ -1,4 +1,4 @@
-modbusRTU;Other;Kehua;KEHUA_SPI5-60B-K_Work;;;;;;;
+Modbus;Other;Kehua;KEHUA_SPI5-60B-K_Work;;;;;;;
 1;3;4501;U16;;Device status;;1.000000;0.000000;;9
 2;3;4506;U16;;Daily energy;E_DAY;0.333333;0.000000;kWh;4
 3;3;4507;U32;;Total energy;E_TOT;0.250000;0.000000;kWh;4

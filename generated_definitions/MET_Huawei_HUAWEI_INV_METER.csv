@@ -1,4 +1,4 @@
-modbusRTU;Meter;Huawei;HUAWEI_INV_METER;;;;;;;
+Modbus;Meter;Huawei;HUAWEI_INV_METER;;;;;;;
 1;4;37100;U16;;Meter status;;1.0;0.0;;4
 2;4;37101;U16;;Grid voltage (A phase);U_AC_L1L2;1.0;0.0;V;4
 3;4;37103;U16;;B phase voltage;;1.0;0.0;V;4

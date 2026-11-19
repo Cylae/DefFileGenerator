@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Zucchetti Centro Sistemi S.p.a;INV_ZUCCHETTI_V3-V4;;;;;;;
+Modbus;Inverter;Zucchetti Centro Sistemi S.p.a;INV_ZUCCHETTI_V3-V4;;;;;;;
 1;3;1028;U16;;SysState;;1.000000;0.000000;;4
 2;3;1029;U16;;Fault1;;1.000000;0.000000;;9
 3;3;1030;U16;;Fault2;;1.000000;0.000000;;9

@@ -1,4 +1,4 @@
-modbusRTU;Other;PDL;Elite 440- Modbus Mapping;;;;;;;
+Modbus;Other;PDL;Elite 440- Modbus Mapping;;;;;;;
 1;4;40017;U16;;Ext_M;;1.000000;0.000000;NA;4
 2;4;40018;U16;;MBID;;1.000000;0.000000;NA;4
 3;4;40019;U16;;Pver_rev;;1.000000;0.000000;NA;4

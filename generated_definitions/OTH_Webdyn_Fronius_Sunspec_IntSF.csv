@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;Fronius_Sunspec_IntSF;;;;;;;
+Modbus;Other;Webdyn;Fronius_Sunspec_IntSF;;;;;;;
 1;3;40000_2;STRING;;SunS;;1.000000;0.000000;;4
 2;3;40002;U16;;Common_ID;;1.000000;0.000000;;4
 3;3;40003;U16;;Common_L;;1.000000;0.000000;;4

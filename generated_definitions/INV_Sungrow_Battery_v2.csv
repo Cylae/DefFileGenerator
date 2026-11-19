@@ -1,4 +1,4 @@
-modbus;Inverter;Sungrow;FullMap;0;;;;;;
+Modbus;Inverter;Sungrow;FullMap;0;;;;;;
 1;4;10225;U16;;Working status;;1;0;;4
 2;4;10226;U16;;Fault Alarm code;;1;0;;4
 3;4;10227;U16;;Reserved;;1;0;;4

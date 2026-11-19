@@ -1,4 +1,4 @@
-modbusRTU;Other;Universal Meter;Algodue_UPM209_309;;;;;;;
+Modbus;Other;Universal Meter;Algodue_UPM209_309;;;;;;;
 1;3;4096;F32;;Phase 1-N voltage;;1.000000;0.000000;V;4
 2;3;4098;F32;;Phase 2-N voltage;;1.000000;0.000000;V;4
 3;3;4100;F32;;Phase 3-N voltage;;1.000000;0.000000;V;4

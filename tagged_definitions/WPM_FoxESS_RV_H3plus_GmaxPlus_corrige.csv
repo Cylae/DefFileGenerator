@@ -1,4 +1,4 @@
-modbus;Inverter;FOX ESS;H3Plus;;;;;;;
+Modbus;Inverter;FOX ESS;H3Plus;;;;;;;
 1;3;40000;U32;;SID;;1;0;;1
 2;3;40002;U16;;1_ID;;1;0;;1
 3;3;40003;U16;;1_L;;1;0;;1

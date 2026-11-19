@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_p11;;;;;;;
+Modbus;Other;Sungrow;TI_20241202_EMS300CP_p11;;;;;;;
 1;4;16762;U16;;遥测(Telemetry);;1.0;0.0;/;4
 2;4;16763;U16;;None;;1.0;0.0;/;4
 3;4;16764;U16;;None;;1.0;0.0;kWh;4

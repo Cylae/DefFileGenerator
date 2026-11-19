@@ -1,4 +1,4 @@
-modbusRTU;Other;Maximet;GMX600;;;;;;;
+Modbus;Other;Maximet;GMX600;;;;;;;
 1;4;0;U16;;Pressure;PRESS;1.0;0.0;mbar;4
 2;4;2;U16;;Relative humidity;RH;1.0;0.0;%;4
 3;4;4;U16;;Temperature;TEMP;1.0;0.0;°C;4

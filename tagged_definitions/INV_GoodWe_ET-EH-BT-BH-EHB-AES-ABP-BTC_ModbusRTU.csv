@@ -1,4 +1,4 @@
-ModbusRTU;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
+Modbus;Inverter;GoodWe;ET/EH/BT/BH/EHB/AES/ABP/BTC Series;;;;;;;
 1;3;35001;U16;;RatePower;;1;0;;4
 2;3;35003_16;STRING;;INV SN;SERIAL;1;0;;4
 3;3;35011_10;STRING;;Model Name;MODEL;1;0;;4

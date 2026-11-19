@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_p6;;;;;;;
+Modbus;Other;Sungrow;TI_20241202_EMS300CP_p6;;;;;;;
 1;4;25089;U16;;"有功功率目标值
 Active Power Target Value";P_AC;1.0;0.0;kW;4
 2;4;25090;U16;;"无功功率目标值

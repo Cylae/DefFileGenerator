@@ -1,4 +1,4 @@
-modbusRTU;Other;PowerOne;Modbus_ABB_SunSpec;;;;;;;
+Modbus;Other;PowerOne;Modbus_ABB_SunSpec;;;;;;;
 1;4;40000;U16;;SunS;;1.0;0.0;;4
 2;4;40002;U16;;Common_ID;;1.0;0.0;;4
 3;4;40003;U16;;Common_L;;1.0;0.0;;4

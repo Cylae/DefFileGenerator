@@ -75,11 +75,9 @@ class TestCoreEdgeCoverage(unittest.TestCase):
             }
         ]
         # Calling write_output_csv with positional string parameters: output, rows, manufacturer, model, protocol, category, forced_write
-        Generator.write_output_csv(
-            buf, rows, "SampleMfg", "SampleModel", "modbusRTU", "Inverter", ""
-        )
+        Generator.write_output_csv(buf, rows, "SampleMfg", "SampleModel", "Modbus", "Inverter", "")
         res = buf.getvalue()
-        self.assertIn("modbusRTU;Inverter;SampleMfg;SampleModel", res)
+        self.assertIn("Modbus;Inverter;SampleMfg;SampleModel", res)
         self.assertIn("1;3;40001;U16;;Volts;volts;1.000000;0.000000;V;4", res)
 
     def test_run_generator_non_existent_input_file(self):

@@ -1,4 +1,4 @@
-modbusRTU;Other;Robestec battery;SJ2025B2846SJ2025B2846yubangmo;;;;;;;
+Modbus;Other;Robestec battery;SJ2025B2846SJ2025B2846yubangmo;;;;;;;
 1;4;100;U16;;PCS real total active power (summary);P_AC;1.0;0.0;kW;4
 2;4;101;U16;;PCS real total reactive power (summary);Q_AC;1.0;0.0;kVar;4
 3;4;102;U16;;Total volt. (summary);;1.0;0.0;V;4

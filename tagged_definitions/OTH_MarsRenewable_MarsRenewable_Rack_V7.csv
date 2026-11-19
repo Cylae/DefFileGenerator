@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_Rack_V7;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_Rack_V7;;;;;;;
 1;4;0;U16;;Number of Cells in Rack;;1.000000;0.000000;;1
 2;4;1;F32;;Rack Rack Voltage;U_DC;1.000000;0.000000;V;4
 3;4;3;F32;;Rack Rack Current;I_DC;1.000000;0.000000;A;4

@@ -1,4 +1,4 @@
-modbusRTU;Meter;SMA;Smappee_Infinity_Mod_p12;;;;;;;
+Modbus;Meter;SMA;Smappee_Infinity_Mod_p12;;;;;;;
 1;4;8192;U16;;Harmonic 1;;1.0;0.0;Volt;4
 2;4;8196;U16;;Harmonic 2;;1.0;0.0;Volt;4
 3;4;8200;U16;;Harmonic 3;;1.0;0.0;Volt;4

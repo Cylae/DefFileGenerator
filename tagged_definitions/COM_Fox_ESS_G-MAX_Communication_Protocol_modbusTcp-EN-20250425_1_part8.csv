@@ -1,4 +1,4 @@
-modbusRTU;Other;Fox ESS;G-MAX_Communication__p8;;;;;;;
+Modbus;Other;Fox ESS;G-MAX_Communication__p8;;;;;;;
 1;4;55100;U16;;Ua phase voltage;U_AC_1;1.0;0.0;V;4
 2;4;55101;U16;;Ub phase voltage;U_AC_2;1.0;0.0;V;4
 3;4;55102;U16;;Uc phase voltage;U_AC_3;1.0;0.0;V;4

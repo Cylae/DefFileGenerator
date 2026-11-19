@@ -1,4 +1,4 @@
-modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
+Modbus;Sungrow;Liquid Cooled ESS;PowerStack Full;;;;;;;
 1;3;10049;U16;;System_Time_Year;;1;0;;4
 2;3;10050;U16;;System_Time_Month;;1;0;;4
 3;3;10051;U16;;System_Time_Day;;1;0;;4

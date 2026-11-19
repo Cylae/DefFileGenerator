@@ -349,7 +349,7 @@ class TestGenerateTemplate(unittest.TestCase):
         generate_template(out, mode="definition")
         with open(out, encoding="utf-8-sig") as f:
             content = f.read()
-        self.assertIn("modbusRTU", content)
+        self.assertIn("Modbus", content)
 
     def test_stdout_mode_no_crash(self):
         import io

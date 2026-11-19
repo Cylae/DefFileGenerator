@@ -1,4 +1,4 @@
-modbusRTU;Inverter;PowerOne;ABB_TRIO-50.0-TM-OUT_p11;;;;;;;
+Modbus;Inverter;PowerOne;ABB_TRIO-50.0-TM-OUT_p11;;;;;;;
 1;4;40254;U16;;ID;;1.0;0.0;;4
 2;4;40255;U16;;L;;1.0;0.0;;4
 3;4;40256;U16;;ActCrv;;1.0;0.0;;1

@@ -1,4 +1,4 @@
-modbusTCP;Battery;FoxESS;GMax_Storage;;;;;;;
+Modbus;Battery;FoxESS;GMax_Storage;;;;;;;
 1;4;101;U16;;PCS actual total active power (summary);pcs_actual_total_active_power_summary;10.000000;0.000000;KW;4
 2;4;102;U16;;PCS actual total reactive power (summary);pcs_actual_total_reactive_power_summary;10.000000;0.000000;Kvar;4
 3;4;103;U16;;Total voltage (summary);total_voltage_summary;10.000000;0.000000;V;4

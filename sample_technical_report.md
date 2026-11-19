@@ -1,6 +1,6 @@
 # 📄 RAPPORT TECHNIQUE DE DÉFINITION — sample_output_definition.csv
 **Constructeur** : `DemoMfg` · **Modèle** : `DemoModel` · **Catégorie** : `Inverter`
-**Protocole** : `modbusRTU` · **Statut de validation** : **✅ VALIDE**
+**Protocole** : `Modbus` · **Statut de validation** : **✅ VALIDE**
 
 ---
 

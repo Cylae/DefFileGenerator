@@ -1,4 +1,4 @@
-modbusRTU;Other;CyberPower;Cyberpower_Modbus_1Ph;;;;;;;
+Modbus;Other;CyberPower;Cyberpower_Modbus_1Ph;;;;;;;
 1;4;4096;U32_W;;Product_ID;;1.000000;0.000000;;4
 2;4;4098;U16;;Inverter_Rated_Power;P_RATED;1.000000;0.000000;;4
 3;4;4099;U16;;Peak Panel_Power;;1.000000;0.000000;;4

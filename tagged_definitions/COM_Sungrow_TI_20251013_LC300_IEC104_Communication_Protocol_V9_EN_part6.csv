@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_IE_p6;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_IE_p6;;;;;;;
 1;4;64901;U16;;Reserved;;1.0;0.0;None;0
 2;4;64902;U16;;Reserved;;1.0;0.0;None;0
 3;4;64903;U16;;Fault reset;;1.0;0.0;/;9

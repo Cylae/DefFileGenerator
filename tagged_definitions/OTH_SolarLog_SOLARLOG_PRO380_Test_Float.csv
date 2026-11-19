@@ -1,4 +1,4 @@
-modbusRTU;Other;SolarLog;SOLARLOG_PRO380_Test_Float;;;;;;;
+Modbus;Other;SolarLog;SOLARLOG_PRO380_Test_Float;;;;;;;
 1;4;4096;U16;;Serial number;SERIAL;1.0;0.0;;4
 2;4;4112;U16;;Meter code;;1.0;0.0;;4
 3;4;4120;U16;;Meter ID (Mbus/Modbus);;1.0;0.0;;4

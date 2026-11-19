@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20241202_EMS300CP_p4;;;;;;;
+Modbus;Other;Sungrow;TI_20241202_EMS300CP_p4;;;;;;;
 1;4;16385;U16;;"储能总额定功率
 Total Rated Power of Energy Storage";E_TOT;1.0;0.0;kW;4
 2;4;16386;U16;;"储能有功功率

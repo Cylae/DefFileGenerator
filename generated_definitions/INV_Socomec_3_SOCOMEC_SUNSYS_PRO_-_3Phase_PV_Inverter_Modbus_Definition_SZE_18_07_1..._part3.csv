@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Socomec;3_SOCOMEC_SUNSYS_PRO_p3;;;;;;;
+Modbus;Inverter;Socomec;3_SOCOMEC_SUNSYS_PRO_p3;;;;;;;
 1;4;1024;U16;;DiscreteInputs.word0;;1.0;0.0;;4
 2;4;1025;U16;;DiscreteInputs.word1;;1.0;0.0;;4
 3;4;1026;U16;;DiscreteInputs.word2;;1.0;0.0;;4

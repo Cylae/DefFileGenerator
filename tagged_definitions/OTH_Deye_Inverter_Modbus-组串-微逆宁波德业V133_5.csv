@@ -1,4 +1,4 @@
-modbusRTU;Other;Deye Inverter;Modbus-组串-微逆宁波德业V133_5;;;;;;;
+Modbus;Other;Deye Inverter;Modbus-组串-微逆宁波德业V133_5;;;;;;;
 1;4;2;U16;;通讯协议版本;;1.0;0.0;None;4
 2;4;4;U16;;SN byte 03;SERIAL;1.0;0.0;None;4
 3;4;5;U16;;SN byte 05;;1.0;0.0;None;4

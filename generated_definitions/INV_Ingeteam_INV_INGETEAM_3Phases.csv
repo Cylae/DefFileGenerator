@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Ingeteam;INV_INGETEAM_3Phases;;;;;;;
+Modbus;Inverter;Ingeteam;INV_INGETEAM_3Phases;;;;;;;
 1;4;0;U16;;Total AC Energy;E_TOT;1.0;0.0;kWh;4
 2;4;2;U16;;Hours up and running;;1.0;0.0;hour;4
 3;4;4;U16;;Number of connections to grid;;1.0;0.0;;4

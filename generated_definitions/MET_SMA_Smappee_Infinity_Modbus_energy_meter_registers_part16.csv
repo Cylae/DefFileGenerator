@@ -1,4 +1,4 @@
-modbusRTU;Meter;SMA;Smappee_Infinity_Mod_p16;;;;;;;
+Modbus;Meter;SMA;Smappee_Infinity_Mod_p16;;;;;;;
 1;4;5248;U16;;Device Type, write 1 to remove device;;1.0;0.0;None;1
 2;4;5249;U16;;Number of assigned slots;;1.0;0.0;None;4
 3;4;5250;U16;;Serialnumber;SERIAL;1.0;0.0;None;4

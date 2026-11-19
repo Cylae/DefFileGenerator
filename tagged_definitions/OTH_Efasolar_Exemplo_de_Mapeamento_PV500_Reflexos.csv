@@ -1,4 +1,4 @@
-modbusRTU;Other;Efasolar;Exemplo_de_Mapeamento_PV500_Re;;;;;;;
+Modbus;Other;Efasolar;Exemplo_de_Mapeamento_PV500_Re;;;;;;;
 1;4;40040;U16;;Estado do Inversor;;1.0;0.0;;4
 2;4;40041;U16;;Tensao de Rede;;1.0;0.0;;4
 3;4;40042;U16;;DSP;;1.0;0.0;;4

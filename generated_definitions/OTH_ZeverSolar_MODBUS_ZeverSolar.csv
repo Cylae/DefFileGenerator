@@ -1,4 +1,4 @@
-modbusRTU;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
+Modbus;Other;ZeverSolar;MODBUS_ZeverSolar;;;;;;;
 1;4;0_2;STRING;;Device Type;;1.000000;0.000000;;4
 2;4;1;U32;;E-today;;0.100000;0.000000;kWh;4
 3;4;3;U32;;E-total;;0.100000;0.000000;kWh;4

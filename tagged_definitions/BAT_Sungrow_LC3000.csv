@@ -1,4 +1,4 @@
-modbus;Battery;Sungrow;LC3000;;;;;;;
+Modbus;Battery;Sungrow;LC3000;;;;;;;
 1;3;1;U16;;Initial status;;1;0;;4
 2;3;4;U16;;Starting;;1;0;;4
 3;3;5;U16;;Running;;1;0;;4

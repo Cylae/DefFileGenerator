@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn INDIA;Sunspec_5;;;;;;;
+Modbus;Other;Webdyn INDIA;Sunspec_5;;;;;;;
 1;4;40084;U16;;Watts;P_AC;1.0;0.0;W;4
 2;4;40086;U16;;Line Frequency;FREQ;1.0;0.0;HZ;4
 3;4;40072;U16;;Amps;I_AC;1.0;0.0;;4

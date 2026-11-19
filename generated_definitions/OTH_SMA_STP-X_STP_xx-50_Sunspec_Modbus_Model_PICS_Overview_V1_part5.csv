@@ -1,4 +1,4 @@
-modbusRTU;Other;SMA;STP-X_STP_xx-50_Suns_p5;;;;;;;
+Modbus;Other;SMA;STP-X_STP_xx-50_Suns_p5;;;;;;;
 1;4;40251;U16;;ID;;1.0;0.0;;4
 2;4;40252;U16;;L;;1.0;0.0;;4
 3;4;40253;U16;;WMaxRtg;;1.0;0.0;;4

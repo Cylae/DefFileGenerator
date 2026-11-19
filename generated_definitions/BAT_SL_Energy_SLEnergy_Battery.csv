@@ -1,4 +1,4 @@
-modbus;Battery;SL Energy;Battery;;;;;;;
+Modbus;Battery;SL Energy;Battery;;;;;;;
 1;3;11000;U16;;Grid_Buy_Day;;0.1;0;kWh;4
 2;3;11001;U32;;Grid_Buy_Month;;0.1;0;kWh;4
 3;3;11003;U32;;Grid_Buy_Year;;0.1;0;kWh;4

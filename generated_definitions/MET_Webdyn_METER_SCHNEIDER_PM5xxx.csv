@@ -1,4 +1,4 @@
-modbus;Meter;Schneider Electric;PM5xxx;;;;;;;
+Modbus;Meter;Schneider Electric;PM5xxx;;;;;;;
 1;3;30_40;STRING;;Meter Name;;1;0;;1
 2;3;50_40;STRING;;Meter Model;MODEL;1;0;;1
 3;3;70_40;STRING;;Manufacturer;MANUFACTURER;1;0;;1

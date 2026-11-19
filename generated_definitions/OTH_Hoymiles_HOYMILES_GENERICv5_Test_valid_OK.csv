@@ -1,4 +1,4 @@
-modbusRTU;Other;Hoymiles;HOYMILES_GENERICv5(Test valid_;;;;;;;
+Modbus;Other;Hoymiles;HOYMILES_GENERICv5(Test valid_;;;;;;;
 1;4;12288_6;STRING;;DTU Serial Number;;1.000000;0.000000;;4
 2;4;12291;U16;;Meter Number;;1.000000;0.000000;;4
 3;4;12292;U16;;Microinverter Number;;1.000000;0.000000;;4

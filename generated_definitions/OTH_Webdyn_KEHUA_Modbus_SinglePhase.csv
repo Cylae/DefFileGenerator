@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;KEHUA_Modbus_SinglePhase;;;;;;;
+Modbus;Other;Webdyn;KEHUA_Modbus_SinglePhase;;;;;;;
 1;4;4501;U16;;System Operations Status;;1.0;0.0;;4
 2;4;4502;U16;;Power Voltage;;1.0;0.0;V;4
 3;4;4503;U16;;Grid Current;I_AC;1.0;0.0;A;4

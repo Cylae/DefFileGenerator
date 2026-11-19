@@ -539,10 +539,16 @@ def sanitize_and_normalize_definition(
 
     # Normalize protocol
     protocol = raw_header[0].strip() if raw_header and raw_header[0].strip() else "Modbus"
-    if protocol.lower() in ("modbus", "modbus_rtu", "modbusrtu"):
+    if protocol.lower() in (
+        "modbus",
+        "modbus_rtu",
+        "modbusrtu",
+        "modbustcp",
+        "modbus_tcp",
+        "tcp",
+        "rtu",
+    ):
         protocol = "Modbus"
-    elif protocol.lower() in ("modbustcp", "modbus_tcp", "tcp"):
-        protocol = "modbusTCP"
 
     # Clean Header
     header = [protocol, cat, mfg, model, "", "", "", "", "", "", ""]

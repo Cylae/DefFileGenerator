@@ -1,4 +1,4 @@
-modbusTCP;Inverter;MarsEnergy;Rack-Cell;;;;;;;
+Modbus;Inverter;MarsEnergy;Rack-Cell;;;;;;;
 1;4;0;U16;;Number of cells in Rack;;1;0;;4
 2;4;1;F32;;Rack Voltage;;1;0;V;4
 3;4;3;F32;;Rack Current;;1;0;A;4

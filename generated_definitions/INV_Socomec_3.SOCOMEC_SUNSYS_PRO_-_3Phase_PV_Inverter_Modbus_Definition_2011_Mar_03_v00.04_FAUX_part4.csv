@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Socomec;3.SOCOMEC_SUNSYS_PRO_p4;;;;;;;
+Modbus;Inverter;Socomec;3.SOCOMEC_SUNSYS_PRO_p4;;;;;;;
 1;4;2048;U16;;Day-0 Wh;;1.0;0.0;;4
 2;4;2050;U16;;Day-1 Wh;;1.0;0.0;;4
 3;4;2052;U16;;Day-2 Wh;;1.0;0.0;;4

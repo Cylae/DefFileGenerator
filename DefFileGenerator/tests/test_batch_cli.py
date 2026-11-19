@@ -130,7 +130,7 @@ class TestBatchCommand:
             assert len(output_files) == 1
             csv_path = output_files[0]
             content = csv_path.read_text(encoding="utf-8-sig")
-            assert "modbusRTU;Inverter;SampleBrand;" in content
+            assert "Modbus;Inverter;SampleBrand;" in content
 
             assert os.path.exists(report_file)
             report_content = Path(report_file).read_text(encoding="utf-8")

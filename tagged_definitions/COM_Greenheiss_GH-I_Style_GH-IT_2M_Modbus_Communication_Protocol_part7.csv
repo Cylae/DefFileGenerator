@@ -1,4 +1,4 @@
-modbusRTU;Other;Greenheiss;GH-I_Style_GH-IT_2M__p7;;;;;;;
+Modbus;Other;Greenheiss;GH-I_Style_GH-IT_2M__p7;;;;;;;
 1;4;2816;U16;;hErrorTime1;;1.0;0.0;None;4
 2;4;2820;U16;;hError1;;1.0;0.0;None;4
 3;4;2826;U16;;hErrorTime2;;1.0;0.0;None;4

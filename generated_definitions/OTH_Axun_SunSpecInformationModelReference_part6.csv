@@ -1,4 +1,4 @@
-modbusRTU;Other;Axun;SunSpecInformationMo_p6;;;;;;;
+Modbus;Other;Axun;SunSpecInformationMo_p6;;;;;;;
 1;4;0;U16;;ID;;1.0;0.0;None;4
 2;4;1;U16;;L;;1.0;0.0;None;4
 3;4;2;U16;;X;;1.0;0.0;None;1

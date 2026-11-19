@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Goodwe;GoodWe_HT-customer version;;;;;;;
+Modbus;Inverter;Goodwe;GoodWe_HT-customer version;;;;;;;
 1;3;32002;U16;;Operating status;;1.000000;0.000000;;4
 2;3;32016;I16;;PV1Voltage (str1/mppt1);U_DC_STRING_1;0.100000;0.000000;V;4
 3;3;32017;I16;;PV1 Current (str1/mppt1);I_DC_STRING_1;0.010000;0.000000;A;4

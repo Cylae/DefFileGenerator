@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;MODBUS_CarloGavazi_EM-ET300;;;;;;;
+Modbus;Other;Webdyn;MODBUS_CarloGavazi_EM-ET300;;;;;;;
 1;4;0;U16;;V L1-N;;1.0;0.0;V;4
 2;4;2;U16;;V L2-N;;1.0;0.0;V;4
 3;4;4;U16;;V L3-N;;1.0;0.0;V;4

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;SL_Energy;Generic;0;;;;;;
+Modbus;Inverter;SL_Energy;Generic;0;;;;;;
 1;4;9999;U16;;Comm Protocol Version;CommVer;1;0;;1
 2;4;10000;U16;;Main DSP Version;MainDSPVer;1;0;;1
 3;4;10001;U16;;Aux DSP Version;AuxDSPVer;1;0;;1

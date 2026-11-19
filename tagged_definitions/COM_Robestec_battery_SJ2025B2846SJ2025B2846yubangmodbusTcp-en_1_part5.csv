@@ -1,4 +1,4 @@
-modbusRTU;Other;Robestec battery;SJ2025B2846SJ2025B28_p5;;;;;;;
+Modbus;Other;Robestec battery;SJ2025B2846SJ2025B28_p5;;;;;;;
 1;4;101;U16;;Remote user timeout time(s);;1.0;0.0;s;4
 2;4;102;U16;;Command mode(0-Sub-system, 1-Plan, 2-Main command);;1.0;0.0;;4
 3;4;103;U16;;0: Seasonal timing, 1: Timing, 2: Curve;;1.0;0.0;;4

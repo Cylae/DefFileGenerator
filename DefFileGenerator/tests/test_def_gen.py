@@ -257,7 +257,7 @@ class TestGenerator(unittest.TestCase):
         generate_template(out_def, mode="definition")
         with open(out_def) as f:
             content = f.read()
-            self.assertIn("modbusRTU;Inverter", content)
+            self.assertIn("Modbus;Inverter", content)
         os.remove(out_def)
 
     def test_sanitize_csv_field(self):

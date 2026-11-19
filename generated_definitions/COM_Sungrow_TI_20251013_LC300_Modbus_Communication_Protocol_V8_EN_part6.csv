@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p6;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_Mo_p6;;;;;;;
 1;4;10050;U16;;Only the 0x10 function codes are supported, and multiple register values need to be set at the same time when instructions are issued.;;1;0.0;/;4
 2;4;10051;U16;;None;;1;0.0;/;4
 3;4;10052;U16;;None;;1;0.0;/;4

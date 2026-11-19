@@ -506,7 +506,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     )
     slave1_path = os.path.join(gen_dir, "MarsLocalController_V7.0_webdyn.csv")
     build_definition_file(
-        slave1_path, "modbusTCP", "BESS", "Mars Energy", "MarsLocalController V7.0", slave1_regs
+        slave1_path, "Modbus", "BESS", "Mars Energy", "MarsLocalController V7.0", slave1_regs
     )
 
     # -------------------------------------------------------------------------
@@ -518,7 +518,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     slave247_path = os.path.join(gen_dir, "MarsLocalController_V7.0_EMS_Slave247.csv")
     build_definition_file(
         slave247_path,
-        "modbusTCP",
+        "Modbus",
         "BESS",
         "Mars Energy",
         "MarsLocalController EMS V7.0",
@@ -565,7 +565,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     rack_path = os.path.join(gen_dir, "MarsLocalController_V7.0_RackCell_SlaveN.csv")
     build_definition_file(
         rack_path,
-        "modbusTCP",
+        "Modbus",
         "BatteryRack",
         "Mars Energy",
         "MarsLocalController Rack V7.0",
@@ -582,7 +582,7 @@ def generate_all_mars_files(xlsx_path: str, workspace_dir: str):
     all_path = os.path.join(gen_dir, "MarsLocalController_V7.0_AllInOne.csv")
     build_definition_file(
         all_path,
-        "modbusTCP",
+        "Modbus",
         "BESS",
         "Mars Energy",
         "MarsLocalController All-In-One V7.0",

@@ -1,4 +1,4 @@
-modbusRTU;Other;Lettel;map4-345m_table_modb_p3;;;;;;;
+Modbus;Other;Lettel;map4-345m_table_modb_p3;;;;;;;
 1;4;4096;U16;;Impédance L1;;1.0;0.0;0.01 ohms;4
 2;4;4097;U16;;Impédance L2;;1.0;0.0;0.01 ohms;4
 3;4;4098;U16;;Impédance L3;;1.0;0.0;0.01 ohms;4

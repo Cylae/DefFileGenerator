@@ -1,4 +1,4 @@
-modbusRTU;Other;Kostal;KOSTAL_SunSpecInform_p95;;;;;;;
+Modbus;Other;Kostal;KOSTAL_SunSpecInform_p95;;;;;;;
 1;4;0;U16;;ID;;1.0;0.0;None;4
 2;4;1;U16;;L;;1.0;0.0;None;4
 3;4;2;U16;;Port;;1.0;0.0;None;4

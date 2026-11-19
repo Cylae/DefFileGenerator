@@ -1,4 +1,4 @@
-modbus;Meter;MarsRenewable;AirCooling;;;;;;;
+Modbus;Meter;MarsRenewable;AirCooling;;;;;;;
 1;4;15000;U16;;AC1 Operating Status;;1;0;;4
 2;4;15004;F32;;AC1 Cooling Low Point;;0.1;0;°C;4
 3;4;15006;F32;;AC1 Cooling High Point;;0.1;0;°C;4

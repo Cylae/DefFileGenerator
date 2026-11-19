@@ -1,4 +1,4 @@
-modbusRTU;Meter;Schneider;Sepam 48 series;;;;;;;
+Modbus;Meter;Schneider;Sepam 48 series;;;;;;;
 1;3;275;U16;;Courant phase I1;;0.1;0.000000;A;4
 2;3;276;U16;;Courant phase I2;;0.1;0.000000;A;4
 3;3;277;U16;;Courant phase I3;;0.1;0.000000;A;4

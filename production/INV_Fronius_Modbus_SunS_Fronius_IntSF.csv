@@ -1,4 +1,4 @@
-modbusTCP;Inverter;Fronius;Modbus_SunS_Fronius_IntSF;;;;;;;
+Modbus;Inverter;Fronius;Modbus_SunS_Fronius_IntSF;;;;;;;
 1;3;40000_2;STRING;;SunS;;1.0;0.0;;4
 2;3;40002;U16;;Common_ID;;1.0;0.0;;4
 3;3;40003;U16;;Common_L;;1.0;0.0;;4

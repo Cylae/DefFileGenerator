@@ -1,4 +1,4 @@
-modbusRTU;Other;Aros (Riello);AROS_GENERIC;;;;;;;
+Modbus;Other;Aros (Riello);AROS_GENERIC;;;;;;;
 1;3;11;U16;;Inverter Temperature;TEMP_INT;0.100000;0.000000;Deg. Celsius;4
 2;3;12;U16;;Vpv1 (Voltage PV1);U_DC_STRING_1;0.100000;0.000000;V;4
 3;3;13;U16;;Vpv2 (Voltage PV2);U_DC_STRING_2;0.100000;0.000000;V;4

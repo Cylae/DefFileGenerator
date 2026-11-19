@@ -238,6 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBtn.disabled = true;
         if (copyBtn) copyBtn.disabled = true;
         convertedCsvContent = null;
+        const errBox = document.getElementById('convertErrorBox');
+        if (errBox) errBox.classList.add('hidden');
     }
 
     function invalidateConversion() {
@@ -281,10 +283,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const mfg = (document.getElementById('mfgInput').value || '').trim() || 'Manufacturer';
             const model = (document.getElementById('modelInput').value || '').trim() || 'Model';
-            const protocol = document.getElementById('protocolSelect').value || 'modbusRTU';
+            const protocol = document.getElementById('protocolSelect').value || 'Modbus';
             const category = document.getElementById('categorySelect').value || 'Inverter';
             const offset = document.getElementById('offsetInput').value || '0';
             const forcedWrite = (document.getElementById('forcedWriteInput').value || '').trim();
+            const autoTagCheck = document.getElementById('autoTagCheck');
+            const doTag = autoTagCheck ? autoTagCheck.checked : true;
+
+            const convertErrorBox = document.getElementById('convertErrorBox');
+            const convertErrorMessage = document.getElementById('convertErrorMessage');
+            if (convertErrorBox) convertErrorBox.classList.add('hidden');
 
             const formData = new FormData();
             formData.append('file', selectedFile);
@@ -293,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('protocol', protocol);
             formData.append('category', category);
             formData.append('address_offset', offset);
+            formData.append('tag', doTag);
             if (forcedWrite) formData.append('forced_write', forcedWrite);
 
             const convertLabel = convertBtn.innerHTML;
@@ -313,8 +322,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (version !== requestVersion) return;
 
                 if (!response.ok) {
-                    const err = await response.json();
-                    showToast(err.detail || 'Erreur lors de la conversion', 'error');
+                    let errorDetail = 'Erreur lors de la conversion';
+                    try {
+                        const err = await response.json();
+                        errorDetail = err.detail || errorDetail;
+                    } catch (_) {
+                        errorDetail = `Erreur HTTP ${response.status}: ${response.statusText}`;
+                    }
+                    showToast(errorDetail, 'error');
+                    if (convertErrorBox && convertErrorMessage) {
+                        convertErrorMessage.textContent = errorDetail;
+                        convertErrorBox.classList.remove('hidden');
+                    }
                     resultsSection.classList.add('hidden');
                     downloadBtn.disabled = true;
                     if (copyBtn) copyBtn.disabled = true;
@@ -337,7 +356,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (err) {
                 if (version === requestVersion && err.name !== 'AbortError') {
-                    showToast(`Erreur réseau ou serveur: ${err.message}`, 'error');
+                    const msg = `Erreur réseau ou serveur: ${err.message}`;
+                    showToast(msg, 'error');
+                    if (convertErrorBox && convertErrorMessage) {
+                        convertErrorMessage.textContent = msg;
+                        convertErrorBox.classList.remove('hidden');
+                    }
                 }
             } finally {
                 if (version === requestVersion) {

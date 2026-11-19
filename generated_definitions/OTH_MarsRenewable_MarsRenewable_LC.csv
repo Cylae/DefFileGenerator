@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_LC;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_LC;;;;;;;
 1;4;0;U16;;Measurement point version number;;1.0;0.0;;4
 2;4;1;U16;;PCS Number;;1.0;0.0;;4
 3;4;2;U16;;Bank Number;;1.0;0.0;;4

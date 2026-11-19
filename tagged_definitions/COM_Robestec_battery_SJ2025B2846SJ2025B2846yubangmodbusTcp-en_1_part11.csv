@@ -1,4 +1,4 @@
-modbusRTU;Other;Robestec battery;SJ2025B2846SJ2025B28_p11;;;;;;;
+Modbus;Other;Robestec battery;SJ2025B2846SJ2025B28_p11;;;;;;;
 1;4;55600;U16;;Backup;;1.0;0.0;;4
 2;4;55601;U16;;Backup;;1.0;0.0;;4
 3;4;55602;U16;;Backup;;1.0;0.0;;4

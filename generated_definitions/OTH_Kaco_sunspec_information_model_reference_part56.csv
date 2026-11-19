@@ -1,4 +1,4 @@
-modbusRTU;Other;Kaco;sunspec_information__p56;;;;;;;
+Modbus;Other;Kaco;sunspec_information__p56;;;;;;;
 1;4;0;U16;;ID;;1.0;0.0;None;4
 2;4;1;U16;;L;;1.0;0.0;None;4
 3;4;2;U16;;A;I_AC;1.0;0.0;A;4

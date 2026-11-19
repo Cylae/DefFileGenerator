@@ -1,4 +1,4 @@
-modbusTCP;Inverter;MarsRenewable;LC-AC-1Unit;;;;;;;
+Modbus;Inverter;MarsRenewable;LC-AC-1Unit;;;;;;;
 1;4;15000;U16;;AC1 Operating Status;;1.000000;0.000000;;9
 2;4;15004;F32;;AC1 Cooling Low Point;;0.100000;0.000000;°C;4
 3;4;15006;F32;;AC1 Cooling High Point;;0.100000;0.000000;°C;4

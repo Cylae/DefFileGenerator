@@ -1,4 +1,4 @@
-modbusRTU;Other;Lettel;map4-345m_table_modb_p5;;;;;;;
+Modbus;Other;Lettel;map4-345m_table_modb_p5;;;;;;;
 1;4;4424;U16;;Puissance active L2 max;P_AC_2;1.0;0.0;0.001kW;4
 2;4;4426;U16;;Puissance active L2 min;;1.0;0.0;0.001kW;4
 3;4;4428;U16;;Puissance active L2 moyenne;;1.0;0.0;0.001kW;4

@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;M70AFLEX_COM01.28_p13;;;;;;;
+Modbus;Other;Delta;M70AFLEX_COM01.28_p13;;;;;;;
 1;4;40348;U16;;ID;;1.0;0.0;;4
 2;4;40349;U16;;L;;1.0;0.0;;4
 3;4;40350;U16;;ActCrv;;1.0;0.0;;1

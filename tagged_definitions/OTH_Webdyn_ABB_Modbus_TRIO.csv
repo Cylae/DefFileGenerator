@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;ABB_Modbus_TRIO;;;;;;;
+Modbus;Other;Webdyn;ABB_Modbus_TRIO;;;;;;;
 1;4;104_6;STRING;;SN onduleur;SERIAL;1.000000;0.000000;;4
 2;4;132;F32;;energie journaliere;E_DAY;1.000000;0.000000;Wh;4
 3;4;134;F32;;Energie totale;E_TOT;1.000000;0.000000;kWh;4

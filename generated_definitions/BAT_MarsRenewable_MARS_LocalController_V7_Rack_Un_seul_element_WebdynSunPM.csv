@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MARS_LocalController_V7_Rack_U;;;;;;;
+Modbus;Other;MarsRenewable;MARS_LocalController_V7_Rack_U;;;;;;;
 1;4;0;U16;;Rack - Number of cells in Rack;;1.0;0.0;;4
 2;4;1;U16;;Rack - Rack Voltage;;1.0;0.0;V;4
 3;4;3;U16;;Rack - Rack Current;;1.0;0.0;A;4

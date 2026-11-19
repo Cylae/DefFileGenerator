@@ -1,4 +1,4 @@
-modbusRTU;Other;Huawei;HUAWEI_V2;;;;;;;
+Modbus;Other;Huawei;HUAWEI_V2;;;;;;;
 1;3;32001;U16;;Model ID;MODEL;1.000000;0.000000;;4
 2;3;32002;U16;;Output mode;;1.000000;0.000000;;4
 3;3;32003_20;STRING;;SN;SERIAL;1.000000;0.000000;;4

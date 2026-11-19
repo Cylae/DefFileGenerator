@@ -1,4 +1,4 @@
-ModbusRTU;Inverter;Kehua;SinglePhase;;;;;;;
+Modbus;Inverter;Kehua;SinglePhase;;;;;;;
 1;4;4501;U16;;Device status;;1;0;;8
 2;4;4502;U16;;Grid voltage;U_AC_L1L2;0.1;0;V;4
 3;4;4503;U16;;Grid current;I_AC;0.1;0;A;4

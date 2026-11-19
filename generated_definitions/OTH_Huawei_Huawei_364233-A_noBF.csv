@@ -1,4 +1,4 @@
-modbusRTU;Other;Huawei;Huawei_364233-A(noBF);;;;;;;
+Modbus;Other;Huawei;Huawei_364233-A(noBF);;;;;;;
 1;3;32001;U16;;Rated inverter power;;1.000000;0.000000;'-;0
 2;3;32002;U16;;Output mode;;1.000000;0.000000;'-;0
 3;3;32003_10;STRING;;ESN;;1.000000;0.000000;'-;0

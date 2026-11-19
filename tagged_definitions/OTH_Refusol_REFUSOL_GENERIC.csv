@@ -1,4 +1,4 @@
-modbusRTU;Other;Refusol;REFUSOL_GENERIC;;;;;;;
+Modbus;Other;Refusol;REFUSOL_GENERIC;;;;;;;
 1;4;64;U64;;Mask General;;1.000000;0.000000;;4
 2;4;68;U16;;Protocol Version;;0.010000;0.000000;;4
 3;4;69_2;STRING;;Chip Code;;1.000000;0.000000;;4

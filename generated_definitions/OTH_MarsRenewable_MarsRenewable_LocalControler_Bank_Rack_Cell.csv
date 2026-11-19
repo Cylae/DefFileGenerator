@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_LocalControler_B;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_LocalControler_B;;;;;;;
 1;4;5000;F32;;Bank Voltage;;1.000000;0.000000;V;4
 2;4;5002;F32;;Bank Current;;1.000000;0.000000;A;4
 3;4;5004;F32;;Bank SOC;;1.000000;0.000000;'%;4

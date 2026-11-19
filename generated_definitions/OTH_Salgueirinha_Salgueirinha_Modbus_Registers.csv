@@ -1,4 +1,4 @@
-modbusRTU;Other;Salgueirinha;Salgueirinha_Modbus_Registers;;;;;;;
+Modbus;Other;Salgueirinha;Salgueirinha_Modbus_Registers;;;;;;;
 1;4;0;U16;;Energy Meter COM;;1.0;0.0;;4
 2;4;1;U16;;Circuit Breaker Local / Remote;;1.0;0.0;;4
 3;4;2;U16;;Automatic Rearm;;1.0;0.0;;4

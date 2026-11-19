@@ -1,4 +1,4 @@
-modbusRTU;Other;Mci Elec;RI-D140-C;;;;;;;
+Modbus;Other;Mci Elec;RI-D140-C;;;;;;;
 1;4;0;U16;;Voltage 1st Phase;;1.0;0.0;V;2
 2;4;2;U16;;Voltage 2nd Phase;;1.0;0.0;V;2
 3;4;4;U16;;Voltage 3rd Phase;;1.0;0.0;V;2

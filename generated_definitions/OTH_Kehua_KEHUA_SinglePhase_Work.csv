@@ -1,4 +1,4 @@
-modbusRTU;Other;Kehua;KEHUA_SinglePhase_Work;;;;;;;
+Modbus;Other;Kehua;KEHUA_SinglePhase_Work;;;;;;;
 1;4;4501;U16;;Device status;;1.0;0.0;;9
 2;4;4502;U16;;Grid voltage;U_AC_L1L2;1.0;0.0;;4
 3;4;4503;U16;;Grid current;I_AC;1.0;0.0;;4

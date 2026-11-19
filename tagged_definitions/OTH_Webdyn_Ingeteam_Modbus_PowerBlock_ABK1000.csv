@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;Ingeteam_Modbus_PowerBlock(ABK;;;;;;;
+Modbus;Other;Webdyn;Ingeteam_Modbus_PowerBlock(ABK;;;;;;;
 1;4;0;U16;;Actual Date.Year;;1.000000;0.000000;Year;4
 2;4;1;U16;;Actual Date.Month of the Year;;1.000000;0.000000;Month;4
 3;4;2;U16;;Actual Date.Day of the month;;1.000000;0.000000;Day;4

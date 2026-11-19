@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p5;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_Mo_p5;;;;;;;
 1;4;10050;U16;;"0xAA：On-grid Mode
 0x55：Off-grid Mode
 0xBB：VSG Mode";;1;0.0;/;4

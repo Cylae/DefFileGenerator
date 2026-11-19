@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_IE_p3;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_IE_p3;;;;;;;
 1;4;29001;U16;;On-grid constant current;;1.0;0.0;;4
 2;4;29002;U16;;On-grid constant voltage;;1.0;0.0;;4
 3;4;29003;U16;;On-grid constant power(AC);P_DC;1.0;0.0;;4

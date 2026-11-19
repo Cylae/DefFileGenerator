@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;LC3000;;;;;;;
+Modbus;Other;Sungrow;LC3000;;;;;;;
 1;4;1;U16;;Initial status;;1.0;0.0;;4
 2;4;4;U16;;Starting;;1.0;0.0;;4
 3;4;5;U16;;Running;;1.0;0.0;;4

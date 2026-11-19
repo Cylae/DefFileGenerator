@@ -1,4 +1,4 @@
-modbusRTU;Other;Dyness battery;Dyness_DH200Y_DH200F_p12;;;;;;;
+Modbus;Other;Dyness battery;Dyness_DH200Y_DH200F_p12;;;;;;;
 1;4;1625;U16;;uwWaterPumpState;;1.0;0.0;None;4
 2;4;1626;U16;;uwCompressorState;;1.0;0.0;None;4
 3;4;1627;U16;;Reserve3;;1.0;0.0;None;0

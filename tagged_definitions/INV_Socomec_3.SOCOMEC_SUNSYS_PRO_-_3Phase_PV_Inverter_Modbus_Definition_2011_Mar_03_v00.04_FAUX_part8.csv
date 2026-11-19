@@ -1,4 +1,4 @@
-modbusRTU;Inverter;Socomec;3.SOCOMEC_SUNSYS_PRO_p8;;;;;;;
+Modbus;Inverter;Socomec;3.SOCOMEC_SUNSYS_PRO_p8;;;;;;;
 1;4;24576;U16;;768;;1.0;0.0;;4
 2;4;24577;U16;;768.01;;1.0;0.0;;4
 3;4;24578;U16;;768.02;;1.0;0.0;;4

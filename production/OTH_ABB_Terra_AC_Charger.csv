@@ -1,4 +1,4 @@
-modbusTCP;Other;ABB;Terra_AC_Charger;;;;;;;
+Modbus;Other;ABB;Terra_AC_Charger;;;;;;;
 1;3;16384;U16;;Serial Number;SERIAL;1.000000;0.000000;'-;4
 2;3;16388;U16;;Firmware version;;1.000000;0.000000;'-;4
 3;3;16390;U16;;User Settable Max Current;;0.001000;0.000000;A;4

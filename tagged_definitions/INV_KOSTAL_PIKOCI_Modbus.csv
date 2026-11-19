@@ -1,4 +1,4 @@
-ModbusRTU;Inverter;KOSTAL;PIKO CI;;;;;;;
+Modbus;Inverter;KOSTAL;PIKO CI;;;;;;;
 1;3;4;U16;;Modbus Unit-ID;UNIT_ID;1;0;;4
 2;3;6_16;STRING;;Inverter article number;;1;0;;4
 3;3;14_16;STRING;;Inverter serial number;SERIAL;1;0;;4

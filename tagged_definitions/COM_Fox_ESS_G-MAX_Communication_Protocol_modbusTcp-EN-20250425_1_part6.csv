@@ -1,4 +1,4 @@
-modbusRTU;Other;Fox ESS;G-MAX_Communication__p6;;;;;;;
+Modbus;Other;Fox ESS;G-MAX_Communication__p6;;;;;;;
 1;4;200;U16;;Negative bus insulation slight alarm;R_ISO;1.0;0.0;None;4
 2;4;201;U16;;Negative bus insulation moderate alarm;;1.0;0.0;None;4
 3;4;202;U16;;Negative bus insulation serious alarm;;1.0;0.0;None;4

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;CEFEM;Table_Modbus_Trio-Sun_Trio-Top;;;;;;;
+Modbus;Inverter;CEFEM;Table_Modbus_Trio-Sun_Trio-Top;;;;;;;
 1;4;0;U16;;Numéro de fabrication;;1.0;0.0;;4
 2;4;1;U16;;Numéro d'ordre;;1.0;0.0;;4
 3;4;2;U16;;Modèle;MODEL;1.0;0.0;;4

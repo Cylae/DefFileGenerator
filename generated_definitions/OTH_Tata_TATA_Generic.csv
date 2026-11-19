@@ -1,4 +1,4 @@
-modbusRTU;Other;Tata;TATA_Generic;;;;;;;
+Modbus;Other;Tata;TATA_Generic;;;;;;;
 1;4;30000;U16;;AC_Voltage(V);U_AC_3;1.0;0.0;;4
 2;4;30001;U16;;AC_Current(I);I_AC;1.0;0.0;;4
 3;4;30002;U16;;Frequency(F);FREQ;1.0;0.0;;4

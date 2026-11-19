@@ -1,4 +1,4 @@
-modbusRTU;Inverter;PowerOne;PVS-100_120_PVS1xx_T_p18;;;;;;;
+Modbus;Inverter;PowerOne;PVS-100_120_PVS1xx_T_p18;;;;;;;
 1;4;41032;U16;;ID;;1.0;0.0;;4
 2;4;41033;U16;;L;;1.0;0.0;;4
 3;4;41034;U16;;ActCrv;;1.0;0.0;;1

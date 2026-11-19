@@ -600,7 +600,7 @@ def generate_command(args: argparse.Namespace) -> None:
         output=output,
         manufacturer=m_name or "Manufacturer",
         model=m_model or "Model",
-        protocol=getattr(args, "protocol", "modbusRTU"),
+        protocol=getattr(args, "protocol", "Modbus"),
         category=getattr(args, "category", "Inverter"),
         forced_write=getattr(args, "forced_write", ""),
         address_offset=getattr(args, "address_offset", 0),
@@ -667,7 +667,7 @@ def run_command(args: argparse.Namespace) -> None:
         output=output_file,
         manufacturer=m_name or "Manufacturer",
         model=m_model or "Model",
-        protocol=getattr(args, "protocol", "modbusRTU"),
+        protocol=getattr(args, "protocol", "Modbus"),
         category=getattr(args, "category", "Inverter"),
         forced_write=getattr(args, "forced_write", ""),
         address_offset=0,  # Already applied during extraction
@@ -798,7 +798,7 @@ def batch_command(args: argparse.Namespace) -> None:
     output_dir = getattr(args, "output_dir", None) or "generated_definitions"
     os.makedirs(output_dir, exist_ok=True)
 
-    protocol = getattr(args, "protocol", "modbusRTU")
+    protocol = getattr(args, "protocol", "Modbus")
     category_override = getattr(args, "category", None)
     mfg_override = getattr(args, "manufacturer", None)
     do_tag = getattr(args, "tag", False)
@@ -1159,7 +1159,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_generate.add_argument(
         "--template-mode", choices=["input", "definition"], default="input"
     )
-    parser_generate.add_argument("--protocol", default="modbusRTU")
+    parser_generate.add_argument("--protocol", default="Modbus")
     parser_generate.add_argument("--category", default="Inverter")
     parser_generate.add_argument("--forced-write", default="")
     parser_generate.add_argument("--address-offset", type=int, default=0, help="Address offset")
@@ -1184,7 +1184,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
     parser_run.add_argument("--mapping", help="Mapping JSON")
     parser_run.add_argument("--sheet", help="Excel sheet")
     parser_run.add_argument("--pages", help="PDF pages")
-    parser_run.add_argument("--protocol", default="modbusRTU")
+    parser_run.add_argument("--protocol", default="Modbus")
     parser_run.add_argument("--category", default="Inverter")
     parser_run.add_argument("--forced-write", default="")
     parser_run.add_argument("--address-offset", type=int, default=0, help="Address offset")
@@ -1281,7 +1281,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "--category", help="Category override (Inverter, Meter, Sensor, Battery)"
     )
     parser_batch.add_argument(
-        "--protocol", default="modbusRTU", help="Modbus protocol (modbusRTU or modbusTCP)"
+        "--protocol", default="Modbus", help="Modbus protocol (default: Modbus)"
     )
     parser_batch.add_argument(
         "--tag", action="store_true", help="Auto-enrich definitions with SunPM canonical tags"

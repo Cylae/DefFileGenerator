@@ -1,4 +1,4 @@
-modbusRTU;Other;SMA;STP125-70_Sunspec_Mo_p12;;;;;;;
+Modbus;Other;SMA;STP125-70_Sunspec_Mo_p12;;;;;;;
 1;4;40871;U16;;ID;;1.0;0.0;;4
 2;4;40872;U16;;L;;1.0;0.0;;4
 3;4;40873;U16;;ACType;;1.0;0.0;;4

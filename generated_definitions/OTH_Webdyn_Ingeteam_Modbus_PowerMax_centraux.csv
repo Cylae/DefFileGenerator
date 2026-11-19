@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;Ingeteam_Modbus_PowerMax(centr;;;;;;;
+Modbus;Other;Webdyn;Ingeteam_Modbus_PowerMax(centr;;;;;;;
 1;4;0;U32;;Ah_Total;;1.000000;0.000000;;4
 2;4;2;U32;;Operating Time;;1.000000;0.000000;;4
 3;4;4_0;I8;;Current from Strings 1;;1.000000;0.000000;;4

@@ -1,4 +1,4 @@
-modbusTCP;Battery;Mars Energy;MarsLocalController_RackCell_SlaveN;;;;;;;
+Modbus;Battery;Mars Energy;MarsLocalController_RackCell_SlaveN;;;;;;;
 1;3;0;U16;;Number of cells in Rack;number_of_cells_in_rack;1.000000;0.000000;;4
 2;3;1;F32;;Rack Voltage;rack_voltage;1.000000;0.000000;;4
 3;3;3;F32;;Rack Current;rack_current;1.000000;0.000000;;4

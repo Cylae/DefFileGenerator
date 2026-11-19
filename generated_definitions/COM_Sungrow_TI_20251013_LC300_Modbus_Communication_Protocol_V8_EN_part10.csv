@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p10;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_Mo_p10;;;;;;;
 1;4;9901;U16;;See Reference: Node name;;1;0.0;/;4
 2;4;9902;U16;;None;;1;0.0;/;4
 3;4;9903;U16;;None;;1;0.0;/;4

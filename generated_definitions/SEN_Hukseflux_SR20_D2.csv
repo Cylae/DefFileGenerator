@@ -1,4 +1,4 @@
-modbusRTU;Sensor;Hukseflux;SR20-D2_Doc_FR;;;;;;;
+Modbus;Sensor;Hukseflux;SR20-D2_Doc_FR;;;;;;;
 1;3;0;U16;;Adresse Modbus du capteur;;1.000000;0.000000;;4
 2;3;1;U16;;Paramètres de communication série;;1.000000;0.000000;;4
 3;3;2;I32;;Irradiance (compensée en température) [x 0.01 W/m²];;1.000000;0.000000;;4

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;SMA;INV_SMA_STPX_27_30_50_60;;;;;;;
+Modbus;Inverter;SMA;INV_SMA_STPX_27_30_50_60;;;;;;;
 1;4;30001;U32;;SMA Modbus profile revision;;1.000000;0.000000;;4
 2;4;30003;U32;;Parameter.Nameplate.SusyId;;1.000000;0.000000;;4
 3;4;30005;U32;;Parameter.Nameplate.SerNum;;1.000000;0.000000;;4

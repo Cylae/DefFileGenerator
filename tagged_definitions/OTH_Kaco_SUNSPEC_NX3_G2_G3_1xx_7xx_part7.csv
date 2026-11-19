@@ -1,4 +1,4 @@
-modbusRTU;Other;Kaco;SUNSPEC_NX3_G2_G3_1x_p7;;;;;;;
+Modbus;Other;Kaco;SUNSPEC_NX3_G2_G3_1x_p7;;;;;;;
 1;4;40418;U16;;ID;;1.0;0.0;;4
 2;4;40419;U16;;L;;1.0;0.0;;4
 3;4;40420;U16;;ACType;;1.0;0.0;;4

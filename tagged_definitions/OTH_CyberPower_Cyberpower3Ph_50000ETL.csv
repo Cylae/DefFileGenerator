@@ -1,4 +1,4 @@
-modbusRTU;Other;CyberPower;Cyberpower3Ph_50000ETL;;;;;;;
+Modbus;Other;CyberPower;Cyberpower3Ph_50000ETL;;;;;;;
 1;4;8504;U16;;Today Energy (Wh);E_DAY;1.0;0.0;Wh;4
 2;4;8508;U16;;Total Energy (Wh);E_TOT;1.0;0.0;Wh;4
 3;4;8596;U16;;Udc1;U_DC;1.0;0.0;V;2

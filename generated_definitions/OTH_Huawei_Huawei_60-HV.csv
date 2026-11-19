@@ -1,4 +1,4 @@
-modbusRTU;Other;Huawei;Huawei_60-HV;;;;;;;
+Modbus;Other;Huawei;Huawei_60-HV;;;;;;;
 1;3;32001;U16;;Rated inverter power;;1.000000;0.000000;'-;4
 2;3;32002;U16;;Output mode;;1.000000;0.000000;'-;4
 3;3;32200;U32;;4 System Time;;1.000000;0.000000;'-;4

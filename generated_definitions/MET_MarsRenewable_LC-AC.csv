@@ -1,4 +1,4 @@
-modbus;Meter;MarsRenewable;LC-AC;;;;;;;
+Modbus;Meter;MarsRenewable;LC-AC;;;;;;;
 1;4;30000;U16;;LiquidCooling1 Operating Status;I_DC;1;0;;4
 2;4;30004;U16;;LiquidCooling1 Operating Mode;;1;0;;4
 3;4;30006;F32;;LiquidCooling1 Ambient Temperature;;0.1;0;°C;4

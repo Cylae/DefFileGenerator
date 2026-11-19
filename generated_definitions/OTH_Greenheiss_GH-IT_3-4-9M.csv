@@ -1,4 +1,4 @@
-modbusRTU;Other;Greenheiss;GH-IT 3-4-9M;;;;;;;
+Modbus;Other;Greenheiss;GH-IT 3-4-9M;;;;;;;
 1;4;36608;U16;;Type;;1.000000;0.000000;;4
 2;4;36609;U16;;SubType;;1.000000;0.000000;;4
 3;4;36610;U16;;CommProVersion;;0.001000;0.000000;;4

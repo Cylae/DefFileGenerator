@@ -1,4 +1,4 @@
-modbusRTU;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
+Modbus;Other;Efasolar;ntu-pv500.mbmap-0.2.3;;;;;;;
 1;4;0;U16;;Input Voltage;;1.0;0.0;Vrms;4
 2;4;2;U16;;Input Current;;1.0;0.0;Arms;4
 3;4;4;U16;;Input power;P_DC;1.0;0.0;KW;4

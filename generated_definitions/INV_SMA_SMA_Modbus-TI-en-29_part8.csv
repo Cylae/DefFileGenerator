@@ -1,4 +1,4 @@
-modbusRTU;Inverter;SMA;SMA_Modbus-TI-en-29_p8;;;;;;;
+Modbus;Inverter;SMA;SMA_Modbus-TI-en-29_p8;;;;;;;
 1;4;30051;U16;;"Device class:
 8001 = Solar Inverters";;1.0;0.0;ENUM;4
 2;4;30053;U16;;"Device type:

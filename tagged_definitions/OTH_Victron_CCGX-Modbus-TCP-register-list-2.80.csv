@@ -1,4 +1,4 @@
-modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
+Modbus;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 1;4;800;U16;;Serial (System);;1;0.0;None;4
 2;4;806;U16;;CCGX Relay 1 state;;1;0.0;"0=Open;1=Closed";4
 3;4;807;U16;;CCGX Relay 2 state;;1;0.0;"0=Open;1=Closed";4

@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;KOSTAL_Modbus;;;;;;;
+Modbus;Other;Webdyn;KOSTAL_Modbus;;;;;;;
 1;4;30000;U16;;DC U string 1;U_DC_STRING_1;1.0;0.0;V;4
 2;4;30001;U16;;DC I string 1;I_DC_STRING_1;1.0;0.0;A;4
 3;4;30002;U16;;DC P string 1;;1.0;0.0;W;4

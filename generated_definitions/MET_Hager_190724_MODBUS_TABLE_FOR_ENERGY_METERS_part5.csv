@@ -1,4 +1,4 @@
-modbusRTU;Meter;Hager;190724_MODBUS_TABLE__p5;;;;;;;
+Modbus;Meter;Hager;190724_MODBUS_TABLE__p5;;;;;;;
 1;4;45248;U16;;Ea+ [T1];;1.0;0.0;kWh;4
 2;4;45250;U16;;Ea+ [T2];;1.0;0.0;kWh;4
 3;4;45252;U16;;Ea+ [T3];;1.0;0.0;kWh;4

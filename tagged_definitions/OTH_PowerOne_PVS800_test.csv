@@ -1,4 +1,4 @@
-modbusRTU;Other;PowerOne;PVS800(test);;;;;;;
+Modbus;Other;PowerOne;PVS800(test);;;;;;;
 1;4;40202;U32;;DC voltage;U_DC;0.010000;0.000000;V;4
 2;4;40204;U32;;Line current;I_AC;0.010000;0.000000;A;4
 3;4;40206;U32;;Line current %;;0.100000;0.000000;'%;4

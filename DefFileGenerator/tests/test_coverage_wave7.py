@@ -101,7 +101,7 @@ class TestCoverageWave7DefGen(unittest.TestCase):
         # Test with positional string arguments fallback
         Generator.write_output_csv(s_io, rows, "ACME", "ModelX", "modbusTCP", "Inverter", "1")
         val = s_io.getvalue()
-        self.assertIn("modbusTCP", val)
+        self.assertIn("Modbus", val)
         self.assertIn("ACME", val)
 
     def test_run_generator_non_existent_input(self):

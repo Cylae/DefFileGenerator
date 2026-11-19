@@ -1,4 +1,4 @@
-modbusRTU;Other;ChauvinArnoux;CHAUVINARNOUX_ULYS-TT_M;;;;;;;
+Modbus;Other;ChauvinArnoux;CHAUVINARNOUX_ULYS-TT_M;;;;;;;
 1;4;1336;U16;;RegisterSetType;;1.0;0.0;;4
 2;4;0;U16;;Vphase1;tagVphase1;1.0;0.0;;4
 3;4;2;U16;;Vphase2;;1.0;0.0;;4

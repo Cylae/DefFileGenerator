@@ -1,4 +1,4 @@
-modbusRTU;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
+Modbus;Other;Victron;CCGX-Modbus-TCP-register-list-;;;;;;;
 1;4;3;U16;;Input voltage phase 1;U_AC_1;0;0.0;V AC;4
 2;4;4;U16;;Input voltage phase 2;U_AC_2;0;0.0;V AC;4
 3;4;5;U16;;Input voltage phase 3;U_AC_3;0;0.0;V AC;4

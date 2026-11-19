@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MarsRenewable_PV;;;;;;;
+Modbus;Other;MarsRenewable;MarsRenewable_PV;;;;;;;
 1;4;25000;U16;;PV1 Operating Status [0=stopped, 1=running];;1.0;0.0;;4
 2;4;25002;U16;;PV1 AC Phase A Voltage;U_AC_1;1.0;0.0;V;4
 3;4;25004;U16;;PV1 AC Phase B Voltage;U_AC_2;1.0;0.0;V;4

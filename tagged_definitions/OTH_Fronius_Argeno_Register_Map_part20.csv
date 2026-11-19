@@ -1,4 +1,4 @@
-modbusRTU;Other;Fronius;Argeno_Register_Map_p20;;;;;;;
+Modbus;Other;Fronius;Argeno_Register_Map_p20;;;;;;;
 1;4;41467;U16;;ID;;1.0;0.0;None;4
 2;4;41468;U16;;L;;1.0;0.0;None;4
 3;4;41469;U16;;PFWInjEna;;1.0;0.0;None;1

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;SMA;INV_SMA_STP_X;;;;;;;
+Modbus;Inverter;SMA;INV_SMA_STP_X;;;;;;;
 1;4;30005;U16;;Numero de serie_0;SERIAL;1.0;0.0;;4
 2;4;30051;U16;;Classe d appareil;;1.0;0.0;;4
 3;4;30053;U16;;Type d appareil;MODEL;1.0;0.0;;4

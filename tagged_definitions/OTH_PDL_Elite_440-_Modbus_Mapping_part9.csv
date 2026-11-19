@@ -1,4 +1,4 @@
-modbusRTU;Other;PDL;Elite_440-_Modbus_Ma_p9;;;;;;;
+Modbus;Other;PDL;Elite_440-_Modbus_Ma_p9;;;;;;;
 1;4;40800;U16;;Data Logging Days Available;;1.0;0.0;;4
 2;4;40801;U16;;SIP Config Indices;;1.0;0.0;;4
 3;4;40802;U16;;Day Number;;1.0;0.0;;4

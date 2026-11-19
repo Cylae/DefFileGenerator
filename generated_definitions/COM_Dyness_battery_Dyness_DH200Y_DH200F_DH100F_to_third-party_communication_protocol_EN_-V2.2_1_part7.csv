@@ -1,4 +1,4 @@
-modbusRTU;Other;Dyness battery;Dyness_DH200Y_DH200F_p7;;;;;;;
+Modbus;Other;Dyness battery;Dyness_DH200Y_DH200F_p7;;;;;;;
 1;4;500;U16;;PCS Read Addr;;1.0;0.0;None;4
 2;4;501;U16;;uwDcpFaultState_1_L;;1.0;0.0;None;4
 3;4;502;U16;;uwDcpFaultState_1_H;;1.0;0.0;None;4

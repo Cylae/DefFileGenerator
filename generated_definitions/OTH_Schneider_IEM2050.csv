@@ -1,4 +1,4 @@
-modbusRTU;Other;Schneider;IEM2050;;;;;;;
+Modbus;Other;Schneider;IEM2050;;;;;;;
 1;3;32_40;STRING;;Meter name;;1.000000;0.000000;;4
 2;3;52_40;STRING;;Meter model;;1.000000;0.000000;;4
 3;3;72_40;STRING;;Manufacturer;MANUFACTURER;1.000000;0.000000;;4

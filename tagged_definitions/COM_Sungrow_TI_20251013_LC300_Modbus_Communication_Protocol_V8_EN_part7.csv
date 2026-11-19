@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_Mo_p7;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_Mo_p7;;;;;;;
 1;4;32000;U16;;See Reference;;1;0.0;/;4
 2;4;32001;U16;;None;;0;0.0;V;4
 3;4;32002;U16;;None;;0;0.0;A;4

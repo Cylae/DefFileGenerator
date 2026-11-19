@@ -1,4 +1,4 @@
-modbusRTU;Meter;Socomec;Countis P44;;;;;;;
+Modbus;Meter;Socomec;Countis P44;;;;;;;
 1;3;50000_16;STRING;;SOCO;;1;0;;1
 2;3;50004;U16;;Product order ID (Countis:100, Protection:200, Atys:300, Diris:400);;1;0;;1
 3;3;50005;U16;;Product ID (EX: 1000 ATS3);;1;0;;1

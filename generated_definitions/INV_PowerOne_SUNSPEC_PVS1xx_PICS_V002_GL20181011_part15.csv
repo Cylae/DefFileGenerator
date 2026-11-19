@@ -1,4 +1,4 @@
-modbusRTU;Inverter;PowerOne;SUNSPEC_PVS1xx_PICS__p15;;;;;;;
+Modbus;Inverter;PowerOne;SUNSPEC_PVS1xx_PICS__p15;;;;;;;
 1;4;40618;U16;;ID;;1.0;0.0;;4
 2;4;40619;U16;;L;;1.0;0.0;;4
 3;4;40620;U16;;ActCrv;;1.0;0.0;;1

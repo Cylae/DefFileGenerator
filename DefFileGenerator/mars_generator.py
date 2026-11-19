@@ -377,7 +377,7 @@ def generate_mars_requested_definitions(
 
     p1 = out_dir / "MarsRenewable_LocalControler.csv"
     valid, rep = write_definition_file(
-        p1, "modbusTCP", "Inverter", "MarsRenewable", "LocalControler", lc_regs, strict_overlap=True
+        p1, "Modbus", "Inverter", "MarsRenewable", "LocalControler", lc_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p1.name}: {rep.issues}")
@@ -545,7 +545,7 @@ def generate_mars_requested_definitions(
 
     p2 = out_dir / "MarsRenewable_PCS-Bank-Rack.csv"
     valid, rep = write_definition_file(
-        p2, "modbusTCP", "Battery", "MarsRenewable", "PCS-Bank", pcs_bank_regs, strict_overlap=True
+        p2, "Modbus", "Battery", "MarsRenewable", "PCS-Bank", pcs_bank_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p2.name}: {rep.issues}")
@@ -612,7 +612,7 @@ def generate_mars_requested_definitions(
     p3 = out_dir / "MarsRenewable_Rack-Cell.csv"
     valid, rep = write_definition_file(
         p3,
-        "modbusTCP",
+        "Modbus",
         "Battery",
         "MarsRenewable",
         "Rack-Cell",
@@ -680,7 +680,7 @@ def generate_mars_requested_definitions(
 
     p4 = out_dir / "MarsRenewable_LC-AC.csv"
     valid, rep = write_definition_file(
-        p4, "modbusTCP", "Inverter", "MarsRenewable", "LC-AC", lc_ac_regs, strict_overlap=True
+        p4, "Modbus", "Inverter", "MarsRenewable", "LC-AC", lc_ac_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4.name}: {rep.issues}")
@@ -691,7 +691,7 @@ def generate_mars_requested_definitions(
     lc_ac_1unit = ac_regs[: len(ac_template)] + lc_regs[: len(lc_template)]
     write_definition_file(
         p4_1unit,
-        "modbusTCP",
+        "Modbus",
         "Inverter",
         "MarsRenewable",
         "LC-AC-1Unit",
@@ -706,7 +706,7 @@ def generate_mars_requested_definitions(
     p4_lc = out_dir / "MarsRenewable_LC.csv"
     valid, rep = write_definition_file(
         p4_lc,
-        "modbusTCP",
+        "Modbus",
         "Inverter",
         "MarsRenewable",
         "LiquidCooling",
@@ -721,7 +721,7 @@ def generate_mars_requested_definitions(
     p4_lc_alias = out_dir / "MarsRenewable_LiquidCooling.csv"
     write_definition_file(
         p4_lc_alias,
-        "modbusTCP",
+        "Modbus",
         "Inverter",
         "MarsRenewable",
         "LiquidCooling",
@@ -734,7 +734,7 @@ def generate_mars_requested_definitions(
     p4_lc_1u = out_dir / "MarsRenewable_LC_1Unit.csv"
     write_definition_file(
         p4_lc_1u,
-        "modbusTCP",
+        "Modbus",
         "Inverter",
         "MarsRenewable",
         "LiquidCooling-1Unit",
@@ -748,7 +748,7 @@ def generate_mars_requested_definitions(
     # -------------------------------------------------------------------------
     p4_ac = out_dir / "MarsRenewable_AC.csv"
     valid, rep = write_definition_file(
-        p4_ac, "modbusTCP", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
+        p4_ac, "Modbus", "Inverter", "MarsRenewable", "AirCooling", ac_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p4_ac.name}: {rep.issues}")
@@ -758,7 +758,7 @@ def generate_mars_requested_definitions(
     p4_ac_alias = out_dir / "MarsRenewable_AirCooling.csv"
     write_definition_file(
         p4_ac_alias,
-        "modbusTCP",
+        "Modbus",
         "Inverter",
         "MarsRenewable",
         "AirCooling",
@@ -771,7 +771,7 @@ def generate_mars_requested_definitions(
     p4_ac_1u = out_dir / "MarsRenewable_AC_1Unit.csv"
     write_definition_file(
         p4_ac_1u,
-        "modbusTCP",
+        "Modbus",
         "Inverter",
         "MarsRenewable",
         "AirCooling-1Unit",
@@ -809,7 +809,7 @@ def generate_mars_requested_definitions(
 
     p5 = out_dir / "MarsRenewable_Meter.csv"
     valid, rep = write_definition_file(
-        p5, "modbusTCP", "Meter", "MarsRenewable", "Meter", meter_regs, strict_overlap=True
+        p5, "Modbus", "Meter", "MarsRenewable", "Meter", meter_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p5.name}: {rep.issues}")
@@ -925,7 +925,7 @@ def generate_mars_requested_definitions(
 
     p6 = out_dir / "MarsRenewable_PV.csv"
     valid, rep = write_definition_file(
-        p6, "modbusTCP", "Inverter", "MarsRenewable", "PV", pv_regs, strict_overlap=True
+        p6, "Modbus", "Inverter", "MarsRenewable", "PV", pv_regs, strict_overlap=True
     )
     if not valid:
         raise ValueError(f"Validation failed for {p6.name}: {rep.issues}")

@@ -53,7 +53,7 @@ class TestCoverageWave13(unittest.TestCase):
                 output_csv,
                 "TestMfg",
                 "TestModel",
-                "modbusRTU",
+                "Modbus",
                 "Inverter",
             ]
             with patch.object(sys, "argv", test_argv):
@@ -122,7 +122,7 @@ class TestCoverageWave13(unittest.TestCase):
             self.assertTrue(os.path.exists(output_csv))
             with open(output_csv, encoding="utf-8") as f:
                 content = f.read()
-                self.assertIn("modbusRTU", content)
+                self.assertIn("Modbus", content)
 
 
 if __name__ == "__main__":

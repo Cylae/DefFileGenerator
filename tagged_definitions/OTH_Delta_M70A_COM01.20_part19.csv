@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;M70A_COM01.20_p19;;;;;;;
+Modbus;Other;Delta;M70A_COM01.20_p19;;;;;;;
 1;4;40728;U16;;ID;;1.0;0.0;;4
 2;4;40729;U16;;L;;1.0;0.0;;4
 3;4;40730;U16;;Current Scale Factor (DCA_SF);I_DC;1.0;0.0;;4

@@ -49,7 +49,7 @@ class TestAnswerDrivesSolargate:
             lines = [line.strip().split(";") for line in f if line.strip()]
 
         header_line = lines[0]
-        assert header_line[0] == "modbusRTU"
+        assert header_line[0] == "Modbus"
         assert header_line[1] == "Inverter"
         assert header_line[2] == "Answer Drives"
         assert header_line[3] == "Solargate"

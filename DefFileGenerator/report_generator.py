@@ -109,7 +109,7 @@ def analyze_definition_file(
     path = Path(file_path)
     gen = generator if generator is not None else Generator()
 
-    protocol = "modbusRTU"
+    protocol = "Modbus"
     eq_type = "Inverter"
     mfg = "Generic"
     model = path.stem
@@ -492,7 +492,7 @@ def generate_directory_technical_report(
             "## 6. Audit Qualité & Conformité Webdyn Schema",
             "",
             "Toutes les définitions générées répondent aux exigences d'intégrité industrielle :",
-            "1. **Structure Sémantique** : Entête `modbusRTU;<Type>;<Constructeur>;<Modèle>` suivi de 11 colonnes délimitées par des points-virgules.",
+            "1. **Structure Sémantique** : Entête `Modbus;<Type>;<Constructeur>;<Modèle>` suivi de 11 colonnes délimitées par des points-virgules.",
             "2. **Unicité Dynamique des Tags** : Aucune définition ne comporte de doublon de tag canonique (les tags `P_AC`, `FREQ`, `PF`, etc. sont rigoureusement uniques par fichier).",
             "3. **Désambiguïsation Triphasée** : Les variables de phases (`sac1`, `pac1`, `phase A/B/C`, `L1/L2/L3`) sont protégées et isolées en tags unitaires (`P_AC_1`, `S_AC_1`, etc.) évitant toute écrasement par les grandeurs globales.",
             "4. **Sécurité & Injection CSV** : Tous les champs textuels sont nettoyés contre les injections de formules (`=`, `+`, `-`, `@`) via `Generator.sanitize_csv_field`.",

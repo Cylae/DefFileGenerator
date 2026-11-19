@@ -1,4 +1,4 @@
-modbusRTU;Meter;Socomec;SOCOMEC_DIRIS_DIGIWARE_I35;;;;;;;
+Modbus;Meter;Socomec;SOCOMEC_DIRIS_DIGIWARE_I35;;;;;;;
 1;4;13504;U16;;Loads number;;1.0;0.0;;4
 2;4;18432;U16;;Load status;;1.0;0.0;;4
 3;4;18476;U16;;Total active power;P_AC;1.0;0.0;kW;4

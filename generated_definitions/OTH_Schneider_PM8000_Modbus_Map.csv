@@ -1,4 +1,4 @@
-modbusRTU;Other;Schneider;PM8000_Modbus_Map;;;;;;;
+Modbus;Other;Schneider;PM8000_Modbus_Map;;;;;;;
 1;3;1837;U16;;Year;;1.000000;0.000000;year;4
 2;3;1838;U16;;Month;;1.000000;0.000000;month;4
 3;3;1839;U16;;Day;;1.000000;0.000000;days;4

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;SMA;SMA_Modbus-TI-en-23_p3;;;;;;;
+Modbus;Inverter;SMA;SMA_Modbus-TI-en-23_p3;;;;;;;
 1;4;30051;U16;;Device class;;1.0;0.0;ENUM;4
 2;4;30053;U16;;Device type;MODEL;1.0;0.0;ENUM;4
 3;4;30057;U16;;Serial number;SERIAL;1.0;0.0;RAW;4

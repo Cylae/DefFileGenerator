@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_Modbus Commu;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_Modbus Commu;;;;;;;
 1;4;10000;U16;;0xAA：并网模式（On-grid mode） 0x55 :   离网模式（Off-grid mode） 0xBB ：VSG模式（VSG mode）;v_0xaaongrid_mode0x55_offgrid_mode0xbb_vsgvsg_mode;100.000000;0.000000;/;4
 2;4;10001;U16;;See Reference;see_reference;100.000000;0.000000;/;4
 3;4;10002;U32;;Register_10002;register_10002;10.000000;0.000000;kW;4

@@ -1,4 +1,4 @@
-modbusRTU;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
+Modbus;Other;Refusol;REFU-Modbus_Protocol_English_G;;;;;;;
 1;3;64;U64;;Mask area for the 64 register address words starting at this address. Each bit of this field corresponds to the validity of the 64 addresses in this field (each bit corresponds to a register address, including the address of this field). A corresponding bit of 0 means invalid, a 1 means valid. Example: 0x0000 0x0000 0x0000 0x001F means that the 0x0044 address function is valid, followed by the same meaning of the mask area and a merged treatment of the address interval, not listed separately.;;1.000000;0.000000;;4
 2;3;82;U16;;Version number of the protocol between ARM and DSPM. The high 8 bits correspond to the ARM-DSPM protocol version number. The lower 8 bits correspond to the DSPM-ARM protocol version number.;;1.000000;0.000000;;4
 3;3;83;U16;;Protocol version number between ARM and DSPS. The high 8 bits correspond to the ARM-DSPS protocol version number, the The lower 8 bits correspond to the DSPS-ARM protocol version number.;;1.000000;0.000000;;4

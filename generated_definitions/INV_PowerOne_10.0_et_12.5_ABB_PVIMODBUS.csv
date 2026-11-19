@@ -1,4 +1,4 @@
-ModbusRTU;Inverter;ABB;10.5;;;;;;;
+Modbus;Inverter;ABB;10.5;;;;;;;
 1;4;102;U16;;Modbus-Address;UNIT_ID;1;0;;4
 2;4;123;U16;;Global-State;;1;0;;4
 3;4;124;U16;;Inverter-State;;1;0;;4

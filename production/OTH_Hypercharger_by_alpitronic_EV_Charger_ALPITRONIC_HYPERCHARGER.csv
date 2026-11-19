@@ -1,4 +1,4 @@
-modbusTCP;Other;Hypercharger;by_alpitronic_EV_Charger_ALPITRONIC_HYPERCHARGER;;;;;;;
+Modbus;Other;Hypercharger;by_alpitronic_EV_Charger_ALPITRONIC_HYPERCHARGER;;;;;;;
 1;4;0;U32;;Unix Time;;1;0;seconds;4
 2;4;2;U16;;NumConnectors;;1;0;;4
 3;4;3;U16;;StationState;;1;0;;4

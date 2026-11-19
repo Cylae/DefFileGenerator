@@ -1,4 +1,4 @@
-modbusRTU;Inverter;PowerOne;PVS800_Work;;;;;;;
+Modbus;Inverter;PowerOne;PVS800_Work;;;;;;;
 1;4;25857;U16;;DC voltage;U_DC;1.0;0.0;V;4
 2;4;25859;U16;;Line current;I_AC;1.0;0.0;A;4
 3;4;25861;U16;;Line current %;;1.0;0.0;%;4

@@ -1,4 +1,4 @@
-modbusRTU;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
+Modbus;Inverter;SINENG;HYBRID INVERTERS;;;;;;;
 1;4;29999;U16;;Device type;MODEL;1;0;;4
 2;4;30000_20;STRING;;Serial number;SERIAL;1;0;;4
 3;4;30010_18;STRING;;Inverter model;;1;0;;4

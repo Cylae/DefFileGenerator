@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;M50A-flex_COM114_p20;;;;;;;
+Modbus;Other;Delta;M50A-flex_COM114_p20;;;;;;;
 1;4;40858;U16;;ID;;1.0;0.0;;4
 2;4;40859;U16;;L;;1.0;0.0;;4
 3;4;40860;U16;;DCA_SF;;1.0;0.0;;4

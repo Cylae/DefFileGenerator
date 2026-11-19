@@ -1,4 +1,4 @@
-modbusRTU;Inverter;ABB;PVS800-57B;;;;;;;
+Modbus;Inverter;ABB;PVS800-57B;;;;;;;
 1;4;25857;U32_W;;DC voltage;U_DC;0.01;0;V;0
 2;4;25859;U32_W;;Line current;I_AC;0.01;0;A;0
 3;4;25861;U32_W;;Line current %;;0.1;0;%;0

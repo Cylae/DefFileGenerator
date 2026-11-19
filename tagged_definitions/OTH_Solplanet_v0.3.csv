@@ -1,4 +1,4 @@
-modbusRTU;Other;Solplanet;v0.3;;;;;;;
+Modbus;Other;Solplanet;v0.3;;;;;;;
 1;4;1000_2;STRING;;Device Type;MODEL;1.000000;0.000000;;4
 2;4;1001;U16;;Modbus Address RO;UNIT_ID;1.000000;0.000000;;4
 3;4;1002_32;STRING;;Serial Number;SERIAL;1.000000;0.000000;;4

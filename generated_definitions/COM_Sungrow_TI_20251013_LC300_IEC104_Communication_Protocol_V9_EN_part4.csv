@@ -1,4 +1,4 @@
-modbusRTU;Other;Sungrow;TI_20251013_LC300_IE_p4;;;;;;;
+Modbus;Other;Sungrow;TI_20251013_LC300_IE_p4;;;;;;;
 1;4;33301;U16;;Working mode;;1.0;0.0;/;4
 2;4;33302;U16;;Working status;;1.0;0.0;/;9
 3;4;33303;U16;;System available charge energy;;0;0.0;kWh;4

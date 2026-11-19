@@ -1,4 +1,4 @@
-modbusRTU;Other;PDL;Elite_440-_Modbus_Ma_p3;;;;;;;
+Modbus;Other;PDL;Elite_440-_Modbus_Ma_p3;;;;;;;
 1;4;40200;U16;;kWhT(I);;1.0;0.0;kWh;4
 2;4;40202;U16;;kWhT(E);;1.0;0.0;kWh;4
 3;4;40204;U16;;kWhT(I);;1.0;0.0;kWh;4

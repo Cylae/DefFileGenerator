@@ -1,4 +1,4 @@
-modbusRTU;Other;Greenheiss;GH-I_Style_GH-IT_2M__p6;;;;;;;
+Modbus;Other;Greenheiss;GH-I_Style_GH-IT_2M__p6;;;;;;;
 1;4;2560;U16;;EToday1;;-2;0.0;kwh;4
 2;4;2561;U16;;EToday2;;-2;0.0;kwh;4
 3;4;2562;U16;;EToday3;;-2;0.0;kwh;4

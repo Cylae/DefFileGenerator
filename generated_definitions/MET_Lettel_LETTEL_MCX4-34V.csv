@@ -1,4 +1,4 @@
-modbusRTU;Meter;Lettel;LETTEL_MCX4-34V;;;;;;;
+Modbus;Meter;Lettel;LETTEL_MCX4-34V;;;;;;;
 1;4;0;U16;;Tension simple phase 1;U_AC_1;1.0;0.0;V;4
 2;4;2;U16;;Tension simple phase 2;U_AC_2;1.0;0.0;V;4
 3;4;4;U16;;Tension simple phase 3;U_AC_3;1.0;0.0;V;4

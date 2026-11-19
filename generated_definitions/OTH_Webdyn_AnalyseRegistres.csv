@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;AnalyseRegistres;;;;;;;
+Modbus;Other;Webdyn;AnalyseRegistres;;;;;;;
 1;4;30201;U16;;etat;alarm;1.0;0.0;;4
 2;4;32385;U16;;etat onduleur;None;1.0;0.0;;4
 3;4;30219;U16;;Cause de la reduction de puissance;;1.0;0.0;;4

@@ -32,9 +32,19 @@ class DefinitionExporter:
         writer = csv.writer(output, delimiter=";", lineterminator="\n")
 
         # 1. Header Row
-        transport_str = (
+        raw_transport = (
             model.transport.value if hasattr(model.transport, "value") else str(model.transport)
         )
+        if raw_transport.lower() in (
+            "modbus",
+            "modbusrtu",
+            "modbustcp",
+            "modbus_rtu",
+            "modbus_tcp",
+        ):
+            transport_str = "Modbus"
+        else:
+            transport_str = raw_transport
         header = [
             transport_str,
             model.category or "Inverter",

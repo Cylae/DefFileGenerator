@@ -1,4 +1,4 @@
-modbusRTU;Other;Delta;M30A_COM147_p18;;;;;;;
+Modbus;Other;Delta;M30A_COM147_p18;;;;;;;
 1;4;40666;U16;;ID;;1.0;0.0;;4
 2;4;40667;U16;;L;;1.0;0.0;;4
 3;4;40668;U16;;ActCrv;;1.0;0.0;;1

@@ -82,7 +82,7 @@ class TestCliErgonomics(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0)
         with open(self.target, encoding="utf-8-sig") as f:
-            self.assertIn("modbusRTU", f.read())
+            self.assertIn("Modbus", f.read())
 
     def test_verbosity_flags_accepted_after_subcommand(self):
         """Operators habitually append -v/-q after the sub-command."""
@@ -125,7 +125,7 @@ class TestCliErgonomics(unittest.TestCase):
     def test_validate_lenient_downgrades_overlaps(self):
         # Dynamically create an overlapping CSV file in temp directory for testing lenient mode
         with tempfile.NamedTemporaryFile("w", delete=False, suffix=".csv", encoding="utf-8") as f:
-            f.write("modbusRTU;Inverter;Test;Model;;;;;;;\n")
+            f.write("Modbus;Inverter;Test;Model;;;;;;;\n")
             f.write("1;3;40001;U32;;Name1;tag1;1.0;0.0;W;4\n")
             f.write("2;3;40002;U16;;Name2;tag2;1.0;0.0;W;4\n")
             overlapping = f.name

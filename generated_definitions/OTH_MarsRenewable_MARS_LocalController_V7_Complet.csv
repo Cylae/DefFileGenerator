@@ -1,4 +1,4 @@
-modbusRTU;Other;MarsRenewable;MARS_LocalController_V7_Comple;;;;;;;
+Modbus;Other;MarsRenewable;MARS_LocalController_V7_Comple;;;;;;;
 1;4;0;U16;;Unit1_PCS1_Operating Status;;1.000000;0.000000;;4
 2;4;1;U16;;Unit1_PCS1_Reserve;;1.000000;0.000000;;0
 3;4;2;F32;;Unit1_PCS1_AC Uab Line Voltage;;1.000000;0.000000;V;4

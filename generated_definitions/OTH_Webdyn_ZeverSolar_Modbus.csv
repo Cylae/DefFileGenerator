@@ -1,4 +1,4 @@
-modbusRTU;Other;Webdyn;ZeverSolar_Modbus;;;;;;;
+Modbus;Other;Webdyn;ZeverSolar_Modbus;;;;;;;
 1;4;0_1;STRING;;Device Type;;1.000000;0.000000;;4
 2;4;1;U32;;E-today;;0.000000;0.000000;kW;4
 3;4;3;U32;;E-total;;0.000000;0.000000;kW;4
