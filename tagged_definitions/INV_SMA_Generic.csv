@@ -121,7 +121,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 120;3;30577;U32;;Purchased electricity today;;1.000000;0.000000;Wh;4
 121;3;30579;U32;;Feed-in today;;1.000000;0.000000;Wh;4
 122;3;30581;U32;;Meter reading purchased electricity meter;;1.000000;0.000000;Wh;4
-123;3;30583;U32;;Meter reading of grid feed-in meter;;1.000000;0.000000;Wh;4
+123;3;30583;U32;;Meter reading of grid feed-in meter;E_EXP;1.000000;0.000000;Wh;4
 124;3;30585;U32;;Power outage time;;1.000000;0.000000;s;4
 125;3;30587;U32;;Meter reading PV production meter;;1.000000;0.000000;Wh;4
 126;3;30589;U32;;Total increased self-consumption;;1.000000;0.000000;Wh;4

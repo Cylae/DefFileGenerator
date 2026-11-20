@@ -12,7 +12,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 11;3;30531;U32;;Total yield kWh E-Total;;1.000000;0.000000;kWh;4
 12;3;30533;U32;;Total yield MWh E-Total_1;;1.000000;0.000000;MWh;4
 13;3;30541;U32;;Operating time s h-on_1;;1.000000;0.000000;s;4
-14;3;30543;U32;;Feed-in time s h-Total;;1.000000;0.000000;s;4
+14;3;30543;U32;;Feed-in time s h-Total;E_EXP;1.000000;0.000000;s;4
 15;3;30769;I32;;DC current input A Ipv;I_DC_1;0.001000;0.000000;A;4
 16;3;30771;I32;;DC voltage input V Vpv;P_DC_1;0.010000;0.000000;V;4
 17;3;30773;I32;;DC power input W Ppv;U_DC_1;1.000000;0.000000;W;4
