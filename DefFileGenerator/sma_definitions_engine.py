@@ -34,6 +34,30 @@ from DefFileGenerator.knowledge_miner import infer_sunpm_tag, is_canonical_sunpm
 from DefFileGenerator.production_governor import verify_file_pillars
 
 
+def normalize_sma_unit(unit: str) -> str:
+    """
+    Idempotently normalizes unit strings, correcting legacy degree/encoding corruptions.
+    Enforces invariant #5 / #10: strict multi-run idempotency and character purity.
+    """
+    u = unit.strip()
+    if not u:
+        return ""
+
+    # Specific known corrupted non-temperature units
+    if re.fullmatch(r"MA[°]*C", u):
+        return "MAC"
+    if re.fullmatch(r"PP[°]*C", u):
+        return "PPC"
+    if re.fullmatch(r"\(V/[°]*C\)", u) or u == "(V/C)":
+        return "(V/°C)"
+
+    # Celsius variations and degree symbol corruptions
+    if u in ("-¦C", "degC", "deg. C", "deg C", "C") or re.fullmatch(r"(?:Degree\s+[°]*Celsius|[°]+C)", u):
+        return "°C"
+
+    return u
+
+
 def write_sma_csv(
     output_path: Path,
     category: str,
@@ -535,7 +559,7 @@ def clean_and_enrich_raw_file(
             cb = 0.0
 
         # Units
-        unit = unit.replace("C", "°C").replace("degC", "°C").replace("deg. C", "°C").strip()
+        unit = normalize_sma_unit(unit)
 
         cleaned.append(
             {

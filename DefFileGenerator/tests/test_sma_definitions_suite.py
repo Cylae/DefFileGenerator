@@ -196,6 +196,122 @@ class TestSmaDefinitionsSuite(unittest.TestCase):
                 self.assertIn("U_AC_1", tags, f"Missing U_AC_1 in meter {fname}")
                 self.assertIn("I_AC_1", tags, f"Missing I_AC_1 in meter {fname}")
 
+    def test_sma_register_addressing_conventions(self) -> None:
+        """Verify SMA address space conventions:
+        1. SMA Standard Telemetry: base-30000 offset (30001..39999).
+        2. SMA Controls & SunSpec Models: base-40000 offset (40001..49999).
+        3. Classic Sunny Central: 0-based relative holding offsets (0..500).
+        4. Valid Webdyn data types and integer/length address formatting.
+        """
+        valid_types = {"U16", "I16", "S16", "U32", "I32", "S32", "U64", "I64", "F32", "FLOAT32", "STRING"}
+
+        for fname in EXPECTED_SMA_FILES:
+            fpath = PRODUCTION_DIR / fname
+            with open(fpath, encoding="utf-8", newline="") as fp:
+                rows = list(csv.reader(fp, delimiter=";"))[1:]
+
+            for idx, r in enumerate(rows, start=1):
+                addr = r[2].strip()
+                dtype = r[3].strip()
+                tag = r[6].strip()
+                action = r[10].strip()
+
+                self.assertIn(dtype, valid_types, f"Invalid data type '{dtype}' in {fname} row {idx}")
+                if tag.startswith("CMD_"):
+                    self.assertIn(action, ("0", "1"), f"Command tag '{tag}' must have action 0 or 1 in {fname} row {idx}")
+
+                # Address format check: either integer or integer_length for STRING
+                addr_num = addr.split("_")[0]
+                self.assertTrue(
+                    addr_num.isdigit(),
+                    f"Address '{addr}' in {fname} row {idx} is not numeric",
+                )
+
+                val_addr = int(addr_num)
+                # Verify address belongs to one of the 3 recognized SMA address schemes:
+                # - Classic Sunny Central 0-based: 0 <= addr <= 500
+                # - SMA Native telemetry / parameters: 30000 <= addr < 40000
+                # - SMA Controls / SunSpec Interoperability: 40000 <= addr < 50000
+                is_sc_classic = any(k in fname for k in ("SC2xxx", "SunnyCentral", "SUNNY_CENTRAL"))
+                valid_range = (
+                    (is_sc_classic and 0 <= val_addr <= 500)
+                    or (30000 <= val_addr < 40000)
+                    or (40000 <= val_addr < 50000)
+                )
+                self.assertTrue(
+                    valid_range,
+                    f"Address {addr} in {fname} does not conform to SMA addressing conventions",
+                )
+
+    def test_sma_scale_factors_and_clean_units(self) -> None:
+        """Verify canonical SMA scale factors (temperatures -1, voltages/frequency -2, currents -3) and pure units."""
+        for fname in EXPECTED_SMA_FILES:
+            fpath = PRODUCTION_DIR / fname
+            with open(fpath, encoding="utf-8", newline="") as fp:
+                rows = list(csv.reader(fp, delimiter=";"))[1:]
+
+            for idx, r in enumerate(rows, start=1):
+                addr = r[2].strip()
+                tag = r[6].strip()
+                ca = float(r[7].strip())
+                unit = r[9].strip()
+
+                # Character purity: no duplicate degree signs, no mojibake
+                self.assertNotIn("°°", unit, f"Corrupted unit '{unit}' at row {idx} in {fname}")
+                self.assertNotIn("-¦", unit, f"Corrupted unit '{unit}' at row {idx} in {fname}")
+                self.assertNotIn("MA°", unit, f"Corrupted MAC unit '{unit}' at row {idx} in {fname}")
+                self.assertNotIn("PP°", unit, f"Corrupted PPC unit '{unit}' at row {idx} in {fname}")
+
+                # Scale factor conventions for SMA native registers (30000 series)
+                if addr.isdigit() and 30000 <= int(addr) < 40000:
+                    if tag.startswith("TEMP") and unit == "°C":
+                        self.assertIn(
+                            ca,
+                            (0.1, 1.0),
+                            f"Unexpected temperature scale factor {ca} in {fname} at {addr}",
+                        )
+                    elif tag.startswith("U_AC_") and unit == "V":
+                        self.assertIn(
+                            ca,
+                            (0.01, 0.1, 1.0),
+                            f"Unexpected AC voltage scale factor {ca} in {fname} at {addr}",
+                        )
+                    elif tag == "FREQ" and unit in ("Hz", "HZ"):
+                        self.assertIn(
+                            ca,
+                            (0.01, 1.0),
+                            f"Unexpected frequency scale factor {ca} in {fname} at {addr}",
+                        )
+                    elif tag.startswith("I_AC_") and unit == "A":
+                        self.assertIn(
+                            ca,
+                            (0.001, 0.01, 1.0),
+                            f"Unexpected AC current scale factor {ca} in {fname} at {addr}",
+                        )
+                    elif tag == "PF":
+                        self.assertIn(
+                            ca,
+                            (0.001, 1.0),
+                            f"Unexpected power factor scale factor {ca} in {fname} at {addr}",
+                        )
+
+    def test_sma_generator_strict_multi_run_idempotency(self) -> None:
+        """Verify that DefFileGenerator.sma_definitions_engine.generate_all_sma_definitions is 100% idempotent."""
+        from DefFileGenerator.sma_definitions_engine import generate_all_sma_definitions
+
+        # Initial snapshot
+        first_run = generate_all_sma_definitions(REPO_ROOT)
+        first_bytes = {f: f.read_bytes() for f in first_run.values()}
+
+        # Second run
+        second_run = generate_all_sma_definitions(REPO_ROOT)
+        for fname, fpath in second_run.items():
+            self.assertEqual(
+                first_bytes[fpath],
+                fpath.read_bytes(),
+                f"Multi-run idempotency violated for {fname}",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

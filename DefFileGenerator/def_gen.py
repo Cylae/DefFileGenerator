@@ -539,6 +539,8 @@ class Generator:
         if val is None:
             return ""
         if isinstance(val, (int, float)):
+            if isinstance(val, float) and not math.isfinite(val):
+                return ""
             return str(val)
         s = str(val)
         if not s:
@@ -723,12 +725,19 @@ class Generator:
         Returns:
             bool: True if the type is valid, False otherwise.
         """
-        dtype_upper = str(dtype).upper()
+        if not dtype or not str(dtype).strip():
+            return False
+        dtype_upper = str(dtype).strip().upper()
+        norm_upper = Generator.normalize_type(dtype_upper)
         return (
             dtype_upper in _COMMON_VALID_NUMERIC
             or dtype_upper in _VALID_SPECIAL_TYPES
             or bool(RE_TYPE_NUMERIC.match(dtype_upper))
             or bool(RE_TYPE_STR_CONV.match(dtype_upper))
+            or norm_upper in _COMMON_VALID_NUMERIC
+            or norm_upper in _VALID_SPECIAL_TYPES
+            or bool(RE_TYPE_NUMERIC.match(norm_upper))
+            or bool(RE_TYPE_STR_CONV.match(norm_upper))
         )
 
     @staticmethod
@@ -808,7 +817,12 @@ class Generator:
             parts = addr_str.split("_")
             base_addr_str = Generator.normalize_address_val(parts[0])
             base_addr = int(base_addr_str)
-            if not (MIN_MODBUS_ADDRESS <= base_addr <= MAX_MODBUS_ADDRESS):
+            if base_addr < MIN_MODBUS_ADDRESS:
+                logging.warning(
+                    f"Address {base_addr} cannot be negative (min: {MIN_MODBUS_ADDRESS})"
+                )
+                return False
+            if base_addr > MAX_MODBUS_ADDRESS:
                 logging.warning(
                     f"Address {base_addr} is out of Modbus range ({MIN_MODBUS_ADDRESS}-{MAX_MODBUS_ADDRESS})"
                 )
@@ -872,28 +886,44 @@ class Generator:
         Returns:
             int: Number of 16-bit registers occupied.
         """
-        dtype_upper = dtype.upper()
-        count = _EXACT_REG_COUNTS.get(dtype_upper)
-        if count is not None:
-            return count
-        if RE_COUNT_16_8.match(dtype_upper):
+        if not dtype or not str(dtype).strip():
             return 1
-        elif RE_COUNT_32.match(dtype_upper):
-            return 2
-        elif RE_COUNT_64.match(dtype_upper):
-            return 4
-        elif dtype_upper == "STRING" or dtype_upper == "RAW" or dtype_upper.startswith("STR"):
+        raw_upper = str(dtype).strip().upper()
+        norm_upper = Generator.normalize_type(raw_upper)
+        for check in (raw_upper, norm_upper):
+            count = _EXACT_REG_COUNTS.get(check)
+            if count is not None:
+                return count
+            if RE_COUNT_16_8.match(check):
+                return 1
+            elif RE_COUNT_32.match(check):
+                return 2
+            elif RE_COUNT_64.match(check):
+                return 4
+        if (
+            norm_upper in ("STRING", "RAW")
+            or norm_upper.startswith("STR")
+            or raw_upper in ("STRING", "RAW")
+            or raw_upper.startswith("STR")
+        ):
             try:
                 if "_" in address:
-                    return (int(address.split("_")[1]) + 1) // 2
+                    str_len = int(address.split("_")[1])
+                    if str_len <= 0:
+                        return 0
+                    return (str_len + 1) // 2
             except (IndexError, ValueError):
                 pass
-            match_str = RE_TYPE_STR_CONV.match(dtype_upper)
-            if match_str:
-                try:
-                    return (int(match_str.group(1)) + 1) // 2
-                except ValueError:
-                    pass
+            for check in (norm_upper, raw_upper):
+                match_str = RE_TYPE_STR_CONV.match(check)
+                if match_str:
+                    try:
+                        str_len = int(match_str.group(1))
+                        if str_len <= 0:
+                            return 0
+                        return (str_len + 1) // 2
+                    except ValueError:
+                        pass
             return 0
         return 1
 
@@ -1946,7 +1976,7 @@ class Generator:
             else:
                 outfile = output
 
-            writer = csv.writer(outfile, delimiter=";", lineterminator="\n")
+            writer = csv.writer(outfile, delimiter=";", lineterminator="\r\n")
 
             header_row = [
                 Generator.sanitize_csv_field(protocol_val),
@@ -2138,7 +2168,7 @@ def generate_template(output_file: str | None, mode: str = "input") -> bool:
             else nullcontext(sys.stdout)
         )
         with output_context as outfile:
-            writer = csv.writer(outfile, delimiter=delimiter)
+            writer = csv.writer(outfile, delimiter=delimiter, lineterminator="\r\n")
             writer.writerow(headers)
             writer.writerows(rows)
         return True

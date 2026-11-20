@@ -24,7 +24,7 @@ NAMING_PATTERN = re.compile(
 )
 
 
-def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
+def verify_file_pillars(file_path: Path, strict_crlf: bool = False) -> tuple[bool, list[str]]:
     """
     Rigorously verifies a candidate definition file against the 5 production pillars.
     Returns (is_valid, list_of_issues).
@@ -57,12 +57,22 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
             if filename.lower().endswith(bad_suffix.lower()):
                 issues.append(f"Forbidden artifact suffix '{bad_suffix}' in filename '{filename}'")
 
-    # 2. BOM & Encoding Check
+    # 2. BOM, Encoding & Line Endings Check
     try:
         with open(file_path, "rb") as fp:
-            raw = fp.read(4)
-            if raw.startswith(b"\xef\xbb\xbf"):
+            file_bytes = fp.read()
+            if file_bytes.startswith(b"\xef\xbb\xbf"):
                 issues.append(f"File '{filename}' contains prohibited UTF-8 BOM")
+        try:
+            file_bytes.decode("utf-8")
+        except UnicodeDecodeError as e:
+            issues.append(f"File '{filename}' is not valid UTF-8: {e}")
+
+        if strict_crlf:
+            if b"\n" in file_bytes and b"\r\n" not in file_bytes:
+                issues.append(f"File '{filename}' uses LF line endings instead of CRLF (\\r\\n)")
+            elif b"\r\r\n" in file_bytes:
+                issues.append(f"File '{filename}' contains corrupted double CR (\\r\\r\\n)")
     except Exception as e:
         issues.append(f"Cannot read file '{filename}': {e}")
         return False, issues
@@ -106,6 +116,13 @@ def verify_file_pillars(file_path: Path) -> tuple[bool, list[str]]:
                 if fc not in VALID_FUNCTION_CODES:
                     issues.append(
                         f"Line {idx} in '{filename}': invalid Modbus function code '{fc}'"
+                    )
+
+                # Data Type
+                dtype = row[3].strip()
+                if not Generator.validate_type(dtype):
+                    issues.append(
+                        f"Line {idx} in '{filename}': invalid Webdyn data type '{dtype}'"
                     )
 
                 # Address

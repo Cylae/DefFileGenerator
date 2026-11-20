@@ -2049,7 +2049,7 @@ class DefFileGenApp:
             return
 
         with open(save_path, "w", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f, delimiter=";", lineterminator="\n")
+            writer = csv.writer(f, delimiter=";", lineterminator="\r\n")
             # Header row
             header_row = ["Modbus", category, f"Example_{category}", "Model_1", ""] + [""] * 6
             writer.writerow(header_row)

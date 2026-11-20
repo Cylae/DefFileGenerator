@@ -107,8 +107,8 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 106;3;33039;U32;;cos phi nominal PFMinQ2Rtg;;0.000100;0.000000;;4
 107;3;33041;U32;;cos phi nominal PFMinQ3Rtg;;0.000100;0.000000;;4
 108;3;33043;U32;;cos phi nominal PFMinQ4Rtg;;0.000100;0.000000;;4
-109;3;34113;I32;;Temperature interieure;TEMP_INT;0.100000;0.000000;°°°°°°°°°C;4
-110;3;34611;I32;;Temperature extrerieure mesuree maximale;;0.100000;0.000000;°°°°°°°°°C;4
+109;3;34113;I32;;Temperature interieure;TEMP_INT;0.100000;0.000000;°C;4
+110;3;34611;I32;;Temperature extrerieure mesuree maximale;;0.100000;0.000000;°C;4
 111;3;34695;I32;;Cons. puissance reactive max.;;0.010000;0.000000;pct;4
 112;3;35377;U64;;Nombre evenements pour utilisateur_1;;1.000000;0.000000;;4
 113;3;35381;U64;;Nombre evenements pour installateur_0;;1.000000;0.000000;;4

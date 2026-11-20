@@ -85,6 +85,31 @@ SUNPM_LEGACY_TO_CANONICAL: dict[str, str] = {
     "V_CELL_MAX": "U_CELL_MAX",
     "V_CELL_MIN": "U_CELL_MIN",
     "total_discharge_energy": "E_TOT",
+    # Per-phase L1..L3 alternates
+    "U_AC_L1": "U_AC_1",
+    "U_AC_L2": "U_AC_2",
+    "U_AC_L3": "U_AC_3",
+    "I_AC_L1": "I_AC_1",
+    "I_AC_L2": "I_AC_2",
+    "I_AC_L3": "I_AC_3",
+    "P_AC_L1": "P_AC_1",
+    "P_AC_L2": "P_AC_2",
+    "P_AC_L3": "P_AC_3",
+    "Q_AC_L1": "Q_AC_1",
+    "Q_AC_L2": "Q_AC_2",
+    "Q_AC_L3": "Q_AC_3",
+    "S_AC_L1": "S_AC_1",
+    "S_AC_L2": "S_AC_2",
+    "S_AC_L3": "S_AC_3",
+    "FREQ_L1": "FREQ_1",
+    "FREQ_L2": "FREQ_2",
+    "FREQ_L3": "FREQ_3",
+    "PF_L1": "PF_1",
+    "PF_L2": "PF_2",
+    "PF_L3": "PF_3",
+    "E_TOT_L1": "E_TOT_1",
+    "E_TOT_L2": "E_TOT_2",
+    "E_TOT_L3": "E_TOT_3",
     # Remote Commands & Controls
     "cmdOn": "CMD_ON",
     "cmdOff": "CMD_OFF",
@@ -142,6 +167,7 @@ SUNPM_CANONICAL_TAGS: set[str] = {
     "S_AC_1",
     "S_AC_2",
     "S_AC_3",
+    "U_AC",
     "U_AC_1",
     "U_AC_2",
     "U_AC_3",
@@ -263,6 +289,18 @@ def is_canonical_sunpm_tag(tag: str) -> bool:
     if not tag:
         return False
     if tag in SUNPM_CANONICAL_TAGS:
+        return True
+    if tag in (
+        "U_AC_L1",
+        "U_AC_L2",
+        "U_AC_L3",
+        "I_AC_L1",
+        "I_AC_L2",
+        "I_AC_L3",
+        "P_AC_L1",
+        "P_AC_L2",
+        "P_AC_L3",
+    ):
         return True
     if tag.startswith("ALARM_") and tag[6:].isdigit():
         return True
@@ -412,7 +450,7 @@ def clean_variable_key(name: str) -> str:
     # Strip equipment prefixes like '1#PCS - ', 'INV_01 - '
     n = re.sub(r"^[0-9]+#\s*", "", n)
     n = re.sub(r"^[a-z0-9_-]+\s*-\s*", "", n)
-    n = re.sub(r"^(?:inverter|onduleur|inv)[\s_]+", "", n)
+    n = re.sub(r"^(?:inverter|onduleur|inv|wechselrichter|nibianqi)[\s_]+", "", n)
     # Strip parenthetical or bracketed unit suffixes like (Hz), [A], (kW)
     n = re.sub(r"[\(\[\{][^\)\]\}]*[\)\]\}]", "", n)
     # Replace underscores with spaces, strip punctuation except space
@@ -1141,9 +1179,34 @@ def infer_sunpm_tag(
     eq_lower = equipment_type.lower()
 
     # 0. Remote Commands & Active / Reactive Controls (evaluated before telemetry)
-    if any(k in n_lower for k in ("start inverter", "turn on", "power on", "démarrage onduleur")):
+    if any(
+        k in n_lower
+        for k in (
+            "start inverter",
+            "turn on",
+            "power on",
+            "démarrage onduleur",
+            "demarrage onduleur",
+            "einschalten",
+            "wechselrichter starten",
+            "kaiji",
+        )
+    ):
         return "CMD_ON"
-    if any(k in n_lower for k in ("stop inverter", "turn off", "power off", "arrêt onduleur")):
+    if any(
+        k in n_lower
+        for k in (
+            "stop inverter",
+            "turn off",
+            "power off",
+            "arrêt onduleur",
+            "arret onduleur",
+            "ausschalten",
+            "wechselrichter stoppen",
+            "tingji",
+            "guanji",
+        )
+    ):
         return "CMD_OFF"
     if (
         "power limitation enable" in n_lower
@@ -1187,8 +1250,22 @@ def infer_sunpm_tag(
         return "CMD_COMMIT"
 
     # 1. AC Voltage (Phase to Phase: U_AC_L1L2, U_AC_L2L3, U_AC_L3L1)
-    if any(k in n_lower for k in ("voltage", "tension", "u_", "v_")) and not any(
-        k in n_lower for k in ("dc", "mppt", "string", "bus", "intermediaire", "intermédiaire")
+    if (
+        any(k in n_lower for k in ("voltage", "tension", "u_", "v_", "spannung", "dianya"))
+        or bool(re.search(r"\b(?:vac|uac|uab|ubc|uca|vab|vbc|vca)\b", n_lower))
+    ) and not any(
+        k in n_lower
+        for k in (
+            "dc",
+            "mppt",
+            "string",
+            "bus",
+            "intermediaire",
+            "intermédiaire",
+            "zwischenkreis",
+            "zhiliu",
+            "gleichspannung",
+        )
     ):
         if any(
             p in n_lower
@@ -1199,15 +1276,20 @@ def infer_sunpm_tag(
                 "phase a-b",
                 "phase a to phase b",
                 "uab",
+                "vab",
                 "l1 et l2",
                 "l1 à l2",
                 "l1 a l2",
                 "l1/l2",
                 "l1 contre l2",
                 "phase l1 et l2",
+                "l1 zu l2",
+                "l1 und l2",
+                "ab dianya",
+                "ab xian dianya",
             )
         ) or re.search(
-            r"\b(?:l1\s*(?:et|-|_|/|a|à|contre)\s*l2|phase\s*[1a]\s*(?:et|-|_|/|a|à|contre)\s*(?:phase\s*)?[2b])\b",
+            r"\b(?:l1\s*(?:et|-|_|/|a|à|contre|zu|und|to)\s*l2|(?:phase|line)\s*[1a]\s*(?:et|-|_|/|a|à|contre|to|zu|und)\s*(?:(?:phase|line)\s*)?[2b])\b",
             n_lower,
         ):
             return "U_AC_L1L2"
@@ -1220,15 +1302,20 @@ def infer_sunpm_tag(
                 "phase b-c",
                 "phase b to phase c",
                 "ubc",
+                "vbc",
                 "l2 et l3",
                 "l2 à l3",
                 "l2 a l3",
                 "l2/l3",
                 "l2 contre l3",
                 "phase l2 et l3",
+                "l2 zu l3",
+                "l2 und l3",
+                "bc dianya",
+                "bc xian dianya",
             )
         ) or re.search(
-            r"\b(?:l2\s*(?:et|-|_|/|a|à|contre)\s*l3|phase\s*[2b]\s*(?:et|-|_|/|a|à|contre)\s*(?:phase\s*)?[3c])\b",
+            r"\b(?:l2\s*(?:et|-|_|/|a|à|contre|zu|und|to)\s*l3|(?:phase|line)\s*[2b]\s*(?:et|-|_|/|a|à|contre|to|zu|und)\s*(?:(?:phase|line)\s*)?[3c])\b",
             n_lower,
         ):
             return "U_AC_L2L3"
@@ -1241,37 +1328,45 @@ def infer_sunpm_tag(
                 "phase c-a",
                 "phase c to phase a",
                 "uca",
+                "vca",
                 "l3 et l1",
                 "l3 à l1",
                 "l3 a l1",
                 "l3/l1",
                 "l3 contre l1",
                 "phase l3 et l1",
+                "l3 zu l1",
+                "l3 und l1",
+                "ca dianya",
+                "ca xian dianya",
             )
         ) or re.search(
-            r"\b(?:l3\s*(?:et|-|_|/|a|à|contre)\s*l1|phase\s*[3c]\s*(?:et|-|_|/|a|à|contre)\s*(?:phase\s*)?[1a])\b",
+            r"\b(?:l3\s*(?:et|-|_|/|a|à|contre|zu|und|to)\s*l1|(?:phase|line)\s*[3c]\s*(?:et|-|_|/|a|à|contre|to|zu|und)\s*(?:(?:phase|line)\s*)?[1a])\b",
             n_lower,
         ):
             return "U_AC_L3L1"
         # Phase to Neutral: U_AC_1, U_AC_2, U_AC_3
         if re.search(
-            r"\b(?:l1-n|l1_n|phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ua)\b|\bl1_\d+\b", n_lower
+            r"\b(?:l1-n|l1_n|phase\s*[a1]|line\s*[a1]|a\s*xiang)\b|\b(?:l1|ua)\b|\bl1_\d+\b", n_lower
         ):
             return "U_AC_1"
         if re.search(
-            r"\b(?:l2-n|l2_n|phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ub)\b|\bl2_\d+\b", n_lower
+            r"\b(?:l2-n|l2_n|phase\s*[b2]|line\s*[b2]|b\s*xiang)\b|\b(?:l2|ub)\b|\bl2_\d+\b", n_lower
         ):
             return "U_AC_2"
         if re.search(
-            r"\b(?:l3-n|l3_n|phase\s*[c3]|line\s*[c3])\b|\b(?:l3|uc)\b|\bl3_\d+\b", n_lower
+            r"\b(?:l3-n|l3_n|phase\s*[c3]|line\s*[c3]|c\s*xiang)\b|\b(?:l3|uc)\b|\bl3_\d+\b", n_lower
         ):
             return "U_AC_3"
         # Total / Line-to-Line / Grid AC Voltage
-        if re.search(r"\b(?:grid\s+voltage|tension\s+r[eé]seau|ac\s+voltage|vac|uac)\b", n_lower):
+        if re.search(
+            r"\b(?:grid\s+voltage|tension\s+r[eé]seau|netzspannung|wangce\s*dianya|dianwang\s*dianya|ac\s+voltage|vac|uac)\b",
+            n_lower,
+        ):
             return "U_AC_L1L2"
 
     # 2. AC Current (I_AC_1, I_AC_2, I_AC_3, I_AC)
-    if any(k in n_lower for k in ("current", "courant", "i_ac", "iac")) and not any(
+    if any(k in n_lower for k in ("current", "courant", "i_ac", "iac", "strom", "dianliu")) and not any(
         k in n_lower
         for k in (
             "dc",
@@ -1285,21 +1380,24 @@ def infer_sunpm_tag(
             "solar",
             "battery",
             "bat",
+            "gleichstrom",
+            "zhiliu",
+            "continu",
         )
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|ia|iac1)\b|\bl1_\d+\b", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|a\s*xiang)\b|\b(?:l1|ia|iac1)\b|\bl1_\d+\b", n_lower):
             return "I_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|ib|iac2)\b|\bl2_\d+\b", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2]|b\s*xiang)\b|\b(?:l2|ib|iac2)\b|\bl2_\d+\b", n_lower):
             return "I_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|ic|iac3)\b|\bl3_\d+\b", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3]|c\s*xiang)\b|\b(?:l3|ic|iac3)\b|\bl3_\d+\b", n_lower):
             return "I_AC_3"
         if (
             re.search(
-                r"\b(?:total|sum|ac\s+current|courant\s+ac\s+total|line\s+current|iac|i_ac|rmsac|is|courant\s+(?:du\s+)?r[eé]seau)\b",
+                r"\b(?:total|sum|ac\s+current|courant\s+ac\s+total|line\s+current|iac|i_ac|rmsac|is|courant\s+(?:du\s+)?r[eé]seau|netzstrom|zong\s*dianliu|wangce\s*dianliu)\b",
                 n_lower,
             )
             or "linecurrent" in n_lower
-            or n_lower.strip() in ("courant", "courant ac", "current", "grid current")
+            or n_lower.strip() in ("courant", "courant ac", "current", "grid current", "strom", "netzstrom", "dianliu")
         ):
             return "I_AC"
 
@@ -1312,69 +1410,117 @@ def infer_sunpm_tag(
             "puissance reactive",
             "reactivepower",
             "qac",
+            "blindleistung",
+            "wugong",
         )
     ):
-        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|qac1|reactivepow1)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|line\s*[a1]|a\s*xiang)\b|\b(?:l1|qac1|reactivepow1)\b", n_lower):
             return "Q_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|qac2|reactivepow2)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|line\s*[b2]|b\s*xiang)\b|\b(?:l2|qac2|reactivepow2)\b", n_lower):
             return "Q_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|qac3|reactivepow3)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|line\s*[c3]|c\s*xiang)\b|\b(?:l3|qac3|reactivepow3)\b", n_lower):
             return "Q_AC_3"
         return "Q_AC"
 
     # 4. Active Power (P_AC_1, P_AC_2, P_AC_3, P_AC)
-    if re.search(
-        r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow|\bp_total\b|\btotal_power\b|\bpuissance\s*(?:l[123]|phase\s*[123abc])\b",
-        n_lower,
-    ) or (
-        equipment_type == "Inverter"
-        and n_lower.strip()
-        in ("power", "power %", "active power", "output power", "puissance", "puissance ac")
-    ):
+    is_active_power = (
+        bool(
+            re.search(
+                r"\b(?:(?:ac|output)\s+)?active\s+power\b|\bpuissance\s+active\b|\breal\s*power\b|\bpac\b|\bactivepow|\bp_total\b|\btotal_power\b|\bwirkleistung\b|\b(?<!zhengxiang\s)(?<!fanxiang\s)yougong(?:\s*gonglv|\s*l[123])?\b|\bpuissance\s*(?:l[123]|phase\s*[123abc])\b",
+                n_lower,
+            )
+        )
+        or (
+            any(k in n_lower for k in ("power", "puissance", "leistung", "gonglv"))
+            and any(m in n_lower for m in ("active", "wirk", "import", "export", "yougong"))
+            and not any(r in n_lower for r in ("reactive", "réactive", "reactive", "apparent", "apparente", "blind", "schein", "wugong", "shizai"))
+        )
+        or (
+            equipment_type == "Inverter"
+            and n_lower.strip()
+            in (
+                "power",
+                "power %",
+                "active power",
+                "output power",
+                "puissance",
+                "puissance ac",
+                "wirkleistung",
+                "yougong",
+                "yougong gonglv",
+            )
+        )
+    )
+    if is_active_power:
         if re.search(
-            r"\b(?:phase\s*[a1]|line\s*[a1])\b|\b(?:l1|pac1|activepow1)\b|\bl1_\d+\b", n_lower
+            r"\b(?:phase\s*[a1]|line\s*[a1]|a\s*xiang)\b|\b(?:l1|pac1|activepow1)\b|\bl1_\d+\b", n_lower
         ):
             return "P_AC_1"
         if re.search(
-            r"\b(?:phase\s*[b2]|line\s*[b2])\b|\b(?:l2|pac2|activepow2)\b|\bl2_\d+\b", n_lower
+            r"\b(?:phase\s*[b2]|line\s*[b2]|b\s*xiang)\b|\b(?:l2|pac2|activepow2)\b|\bl2_\d+\b", n_lower
         ):
             return "P_AC_2"
         if re.search(
-            r"\b(?:phase\s*[c3]|line\s*[c3])\b|\b(?:l3|pac3|activepow3)\b|\bl3_\d+\b", n_lower
+            r"\b(?:phase\s*[c3]|line\s*[c3]|c\s*xiang)\b|\b(?:l3|pac3|activepow3)\b|\bl3_\d+\b", n_lower
         ):
             return "P_AC_3"
         return "P_AC"
 
     # 4b. Nominal / Rated Power
-    if re.search(r"\b(?:nominal|rated)\s+(?:active\s+)?power\b", n_lower) or n_lower.strip() in (
-        "nominal power",
-        "rated power",
-        "p_rated",
-        "prated",
+    if (
+        re.search(
+            r"\b(?:nominal|rated|nenn)\s+(?:active\s+)?power\b|\bnennleistung\b|\beding\s*gonglv\b",
+            n_lower,
+        )
+        or n_lower.strip()
+        in (
+            "nominal power",
+            "rated power",
+            "p_rated",
+            "prated",
+            "nennleistung",
+            "eding gonglv",
+        )
     ):
         return "P_RATED"
 
     # 5. Apparent Power (S_AC_1, S_AC_2, S_AC_3, S_AC)
-    if any(k in n_lower for k in ("apparent power", "puissance apparente")) or re.search(
-        r"\b(?:sac|s_ac)\b", n_lower
-    ):
-        if re.search(r"\b(?:phase\s*[a1]|l1\b|sac1\b)", n_lower):
+    if any(
+        k in n_lower
+        for k in (
+            "apparent power",
+            "puissance apparente",
+            "scheinleistung",
+            "shizai gonglv",
+            "shizai",
+        )
+    ) or re.search(r"\b(?:sac|s_ac)\b", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|l1\b|sac1\b|a\s*xiang)", n_lower):
             return "S_AC_1"
-        if re.search(r"\b(?:phase\s*[b2]|l2\b|sac2\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|l2\b|sac2\b|b\s*xiang)", n_lower):
             return "S_AC_2"
-        if re.search(r"\b(?:phase\s*[c3]|l3\b|sac3\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|l3\b|sac3\b|c\s*xiang)", n_lower):
             return "S_AC_3"
         return "S_AC"
 
     # 6. Frequency (FREQ, FREQ_1, FREQ_2, FREQ_3)
     if any(
-        k in n_lower for k in ("frequency", "fréquence", "frequence", "gridfrequency")
+        k in n_lower
+        for k in (
+            "frequency",
+            "fréquence",
+            "frequence",
+            "gridfrequency",
+            "frequenz",
+            "netzfrequenz",
+            "pinlv",
+        )
     ) or re.search(r"\bfac\b", n_lower):
-        if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[a1]|l1\b|a\s*xiang)", n_lower):
             return "FREQ_1"
-        if re.search(r"\b(?:phase\s*[b2]|l2\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[b2]|l2\b|b\s*xiang)", n_lower):
             return "FREQ_2"
-        if re.search(r"\b(?:phase\s*[c3]|l3\b)", n_lower):
+        if re.search(r"\b(?:phase\s*[c3]|l3\b|c\s*xiang)", n_lower):
             return "FREQ_3"
         return "FREQ"
 
@@ -1394,6 +1540,9 @@ def infer_sunpm_tag(
             "facteur de dephasage",
             "facteur de déphasage",
             "verschiebungsfaktor",
+            "leistungsfaktor",
+            "gonglv yinshu",
+            "gonglvyinshu",
         )
     ):
         if not any(
@@ -1416,17 +1565,112 @@ def infer_sunpm_tag(
                 "sensibilité",
             )
         ):
-            if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
+            if re.search(r"\b(?:phase\s*[a1]|l1\b|a\s*xiang)", n_lower):
                 return "PF_1"
-            if re.search(r"\b(?:phase\s*[b2]|l2\b)", n_lower):
+            if re.search(r"\b(?:phase\s*[b2]|l2\b|b\s*xiang)", n_lower):
                 return "PF_2"
-            if re.search(r"\b(?:phase\s*[c3]|l3\b)", n_lower):
+            if re.search(r"\b(?:phase\s*[c3]|l3\b|c\s*xiang)", n_lower):
                 return "PF_3"
             return "PF"
 
     # 8. Energy Generation & Yield
-    if "energy" in n_lower or "énergie" in n_lower or "energie" in n_lower or "yield" in n_lower:
-        if any(k in n_lower for k in ("daily", "today", "jour", "energyday")):
+    is_power_metric = (
+        any(p in n_lower for p in ("power", "puissance", "leistung", "gonglv"))
+        and not any(u in n_lower for u in ("kwh", "mwh", "wh"))
+    )
+    is_energy = not is_power_metric and (
+        any(
+            k in n_lower
+            for k in (
+                "energy",
+                "énergie",
+                "energie",
+                "yield",
+                "ertrag",
+                "fadianliang",
+                "generation",
+            )
+        )
+        or any(
+            k in n_lower
+            for k in (
+                "active import",
+                "active export",
+                "import active",
+                "export active",
+                "forward active",
+                "reverse active",
+            )
+        )
+        or any(
+            k in n_lower
+            for k in (
+                "wirkenergie",
+                "bezugsenergie",
+                "einspeiseenergie",
+                "bezug",
+                "einspeisung",
+            )
+        )
+        or any(
+            k in n_lower
+            for k in (
+                "zhengxiang yougong",
+                "fanxiang yougong",
+                "maidian dianliang",
+                "zong fadianliang",
+                "rifadianliang",
+                "prélèvement",
+                "prelevement",
+            )
+        )
+        or (
+            any(
+                k in n_lower
+                for k in (
+                    "import",
+                    "export",
+                    "feed-in",
+                    "feedin",
+                    "injection",
+                )
+            )
+            and any(
+                u in n_lower
+                for u in (
+                    "kwh",
+                    "mwh",
+                    "wh",
+                    "index",
+                    "compteur",
+                    "meter",
+                    "active",
+                    "actif",
+                    "injectée",
+                    "injectee",
+                    "total",
+                    "day",
+                    "daily",
+                )
+            )
+        )
+    )
+    if is_energy:
+        if any(
+            k in n_lower
+            for k in (
+                "daily",
+                "today",
+                "jour",
+                "energyday",
+                "tagesertrag",
+                "tagesenergie",
+                "heute",
+                "rifadianliang",
+                "dangri fadianliang",
+                "jinri fadianliang",
+            )
+        ):
             return "E_DAY"
         if any(
             k in n_lower
@@ -1442,6 +1686,10 @@ def infer_sunpm_tag(
                 "feed-in",
                 "feedin",
                 "surplus",
+                "einspeisung",
+                "einspeiseenergie",
+                "fanxiang yougong",
+                "fanxiang dianliang",
             )
         ):
             if not any(
@@ -1465,10 +1713,38 @@ def infer_sunpm_tag(
                 return "E_EXP"
         if any(
             k in n_lower
-            for k in ("import", "importée", "importee", "prélèvement", "prelevement", "conso")
-        ):
+            for k in (
+                "import",
+                "importée",
+                "importee",
+                "prélèvement",
+                "prelevement",
+                "soutirage",
+                "bezug",
+                "bezugsenergie",
+                "zhengxiang yougong",
+                "zhengxiang dianliang",
+                "conso",
+            )
+        ) and "autoconso" not in n_lower:
             return "E_IMP"
-        if any(k in n_lower for k in ("total", "cumulative", "lifetime", "life", "energytotal")):
+        if any(
+            k in n_lower
+            for k in (
+                "total",
+                "cumulative",
+                "lifetime",
+                "life",
+                "energytotal",
+                "gesamtertrag",
+                "gesamtenergie",
+                "leiji fadianliang",
+                "zong fadianliang",
+                "fadianliang",
+                "ertrag",
+                "wirkenergie",
+            )
+        ):
             if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
                 return "E_TOT_1"
             if re.search(r"\b(?:phase\s*[b2]|l2\b)", n_lower):
@@ -1514,28 +1790,64 @@ def infer_sunpm_tag(
         (
             "dc" in n_lower
             and not re.search(
-                r"\b(?:dc_?\d+|mppt\s*\d+|string\s*\d+|pv\s*\d+|entree.*dc|entrée.*dc)\b", n_lower
+                r"\b(?:dc_?\d+|mppt\s*\d+|string\s*\d+|pv\s*\d+|entree.*dc|entrée.*dc)\b",
+                n_lower,
             )
         )
         or "bus" in n_lower
         or "circuit intermediaire" in n_lower
         or "circuit intermédiaire" in n_lower
         or "zwischenkreis" in n_lower
+        or "gleichspannung" in n_lower
+        or "gleichstrom" in n_lower
+        or "zhiliu" in n_lower
+        or "continu" in n_lower
+        or "continue" in n_lower
     ):
-        if any(k in n_lower for k in ("voltage", "tension", "udc", "vdc")):
+        if any(
+            k in n_lower
+            for k in ("voltage", "tension", "udc", "vdc", "gleichspannung", "spannung", "dianya")
+        ):
             return "U_DC"
-        if any(k in n_lower for k in ("current", "courant", "idc")):
+        if any(
+            k in n_lower
+            for k in ("current", "courant", "idc", "gleichstrom", "strom", "dianliu")
+        ):
             return "I_DC"
-        if any(k in n_lower for k in ("power", "puissance", "pdc")):
+        if any(
+            k in n_lower
+            for k in ("power", "puissance", "pdc", "leistung", "gonglv")
+        ):
             return "P_DC"
 
     # 13. Temperature
-    if "temperature" in n_lower or "température" in n_lower or "temp" in n_lower:
-        if "ambient" in n_lower or "ambiante" in n_lower:
+    if (
+        "temperature" in n_lower
+        or "température" in n_lower
+        or "temp" in n_lower
+        or "temperatur" in n_lower
+        or "wendu" in n_lower
+    ):
+        if (
+            "ambient" in n_lower
+            or "ambiante" in n_lower
+            or "umgebung" in n_lower
+            or "huanjing" in n_lower
+        ):
             return "TEMP_AMB"
-        if "cell" in n_lower or "module" in n_lower or "panel" in n_lower:
+        if (
+            "cell" in n_lower
+            or "module" in n_lower
+            or "panel" in n_lower
+            or "modul" in n_lower
+        ):
             return "TEMP_CELL"
-        if "battery" in n_lower or eq_lower in ("battery", "bess"):
+        if (
+            "battery" in n_lower
+            or "batterie" in n_lower
+            or "dianchi" in n_lower
+            or eq_lower in ("battery", "bess")
+        ):
             return "TEMP"
         if any(
             k in n_lower
@@ -1544,9 +1856,13 @@ def infer_sunpm_tag(
                 "interne",
                 "interieure",
                 "intérieure",
+                "innen",
+                "neibu",
                 "cabinet",
                 "inverter",
                 "heatsink",
+                "kuehlkoerper",
+                "kühlkörper",
                 "radiateur",
                 "control board",
                 "board",
@@ -1579,24 +1895,27 @@ def infer_sunpm_tag(
         eq_lower in ("battery", "bess")
         or "battery" in n_lower
         or "batterie" in n_lower
-        or any(
-            k in n_lower
-            for k in (
-                "state of charge",
-                "state of health",
-                "etat de charge",
-                "état de charge",
-                "etat de sante",
-                "état de santé",
+        or "dianchi" in n_lower
+        or bool(
+            re.search(
+                r"\b(?:state\s+of\s+(?:charge|health)|[eé]tat\s+de\s+(?:charge|sant[eé])|ladezustand|alterungszustand|gesundheitszustand|shengyu\s*dianliang|jiankang\s*zhuangtai)\b",
+                n_lower,
             )
         )
     ):
-        if any(
-            k in n_lower
-            for k in ("state of charge", "soc", "charge state", "etat de charge", "état de charge")
+        if bool(
+            re.search(
+                r"\b(?:state\s+of\s+charge|soc|charge\s+state|[eé]tat\s+de\s+charge|ladezustand|shengyu\s*dianliang|dianchi\s*dianliang)\b",
+                n_lower,
+            )
         ):
             return "SOC"
-        if any(k in n_lower for k in ("state of health", "soh", "etat de sante", "état de santé")):
+        if bool(
+            re.search(
+                r"\b(?:state\s+of\s+health|soh|[eé]tat\s+de\s+sant[eé]|sant[eé]|alterungszustand|gesundheitszustand|jiankang\s*zhuangtai)\b",
+                n_lower,
+            )
+        ):
             return "SOH"
 
     # 15b. Operating State
@@ -1607,6 +1926,11 @@ def infer_sunpm_tag(
         "inverter state",
         "device status",
         "status",
+        "betriebszustand",
+        "gerätestatus",
+        "geraetestatus",
+        "yunxing zhuangtai",
+        "zhuangtai",
     ):
         return "STATE"
 
@@ -1615,15 +1939,53 @@ def infer_sunpm_tag(
         return "R_ISO"
 
     # 17. Device Metadata & Communication
-    if any(k in n_lower for k in ("serial number", "numéro de série", "device_sn")) or bool(
-        re.search(r"\b(?:sn|s/n)\b", n_lower)
-    ):
+    if any(
+        k in n_lower
+        for k in (
+            "serial number",
+            "numéro de série",
+            "device_sn",
+            "seriennummer",
+            "xuliehao",
+        )
+    ) or bool(re.search(r"\b(?:sn|s/n)\b", n_lower)):
         return "SERIAL"
-    if any(k in n_lower for k in ("model", "modèle", "product model", "device model")):
+    if any(
+        k in n_lower
+        for k in (
+            "model",
+            "modèle",
+            "product model",
+            "device model",
+            "modell",
+            "xinghao",
+        )
+    ):
         return "MODEL"
-    if any(k in n_lower for k in ("manufacturer", "constructeur", "fabricant")):
+    if any(
+        k in n_lower
+        for k in (
+            "manufacturer",
+            "constructeur",
+            "fabricant",
+            "hersteller",
+            "changjia",
+            "zhizaoshang",
+        )
+    ):
         return "MANUFACTURER"
-    if any(k in n_lower for k in ("modbus address", "slave address", "adresse modbus", "slave id")):
+    if any(
+        k in n_lower
+        for k in (
+            "modbus address",
+            "slave address",
+            "adresse modbus",
+            "slave id",
+            "geräteadresse",
+            "geraeteadresse",
+            "shebei dizhi",
+        )
+    ):
         return "UNIT_ID"
 
     # 19. Displays & Public Counters

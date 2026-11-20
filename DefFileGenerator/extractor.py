@@ -83,6 +83,7 @@ try:
     except ImportError:
         PDF_ERRORS = (Exception,)
 except ImportError:
+    pdfplumber = None  # type: ignore[assignment]
     HAS_PDFPLUMBER = False
     PDF_ERRORS = (Exception,)
 
@@ -138,7 +139,7 @@ except ImportError:
 # -----------------------------------------------------------------------------
 
 RE_CLEAN_WHITESPACE = re.compile(r"\s+")
-RE_HEX_OR_DEC = re.compile(r"^(0x[0-9a-fA-F]+|\d{1,5})$")
+RE_HEX_OR_DEC = re.compile(r"^(0x[0-9a-fA-F]+|[0-9a-fA-F]+[hH]|\d{1,5})$")
 RE_ADDR_RANGE = re.compile(
     r"^(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})\s*([-\u2013\u2014~]|--|\.\.|to)\s*(0x[0-9a-fA-F]+|[0-9a-fA-F]+h?|\d{1,5})$",
     re.IGNORECASE,
@@ -633,12 +634,15 @@ class Extractor:
                 v_clean = RE_CLEAN_WHITESPACE.sub("", str(val).strip())
                 if RE_HEX_OR_DEC.match(v_clean):
                     try:
-                        val_int = int(v_clean, 0)
+                        if v_clean.lower().endswith("h"):
+                            val_int = int(v_clean[:-1], 16)
+                        else:
+                            val_int = int(v_clean, 0)
                         if 0 <= val_int <= 65535:
                             col_scores[c]["addr"] += 1
                             # Preserve the preference for register-map addresses
                             # over small row indices/counts when both are present.
-                            if v_clean.startswith("0x") or val_int >= 1000:
+                            if v_clean.startswith("0x") or v_clean.lower().endswith("h") or val_int >= 1000:
                                 col_scores[c]["preferred_addr"] += 1
                     except ValueError:
                         pass
@@ -769,6 +773,43 @@ class Extractor:
         return has_addr and has_other
 
     @staticmethod
+    def _evaluate_formula_cell(val: Any, prev_val: Any = None) -> Any:
+        """
+        Evaluates simple formulas embedded in spreadsheet cells (e.g. from openpyxl without cached values).
+        Supports:
+            - HEX2DEC formulas: =HEX2DEC("7530") -> 30000
+            - Constant arithmetic: =40001+1 -> 40002
+            - Relative row arithmetic: =A2+1 -> prev_val + 1
+            - Quoted strings: ="Voltage" -> "Voltage"
+        """
+        if not isinstance(val, str) or not val.startswith("="):
+            return val
+        expr = val[1:].strip()
+        m_hex = re.match(r"^HEX2DEC\s*\(\s*[\"']?([0-9a-fA-F]+)[\"']?\s*\)$", expr, re.IGNORECASE)
+        if m_hex:
+            try:
+                return int(m_hex.group(1), 16)
+            except ValueError:
+                pass
+        m_rel = re.match(r"^[A-Za-z]+(\d+)\s*([+-])\s*(\d+)$", expr)
+        if m_rel and prev_val is not None:
+            try:
+                base = int(str(prev_val).strip(), 0)
+                delta = int(m_rel.group(3))
+                return base + delta if m_rel.group(2) == "+" else base - delta
+            except (ValueError, TypeError):
+                pass
+        m_arith = re.match(r"^(\d+)\s*([+-])\s*(\d+)$", expr)
+        if m_arith:
+            base = int(m_arith.group(1))
+            delta = int(m_arith.group(3))
+            return base + delta if m_arith.group(2) == "+" else base - delta
+        m_str = re.match(r"^[\"'](.*)[\"']$", expr)
+        if m_str:
+            return m_str.group(1)
+        return expr
+
+    @staticmethod
     def _process_sheet_rows(rows: Sequence[Sequence[Any]]) -> Iterator[dict[str, Any]]:
         """
         Processes raw extracted worksheet rows into dictionary rows with header detection,
@@ -778,7 +819,23 @@ class Extractor:
             return
 
         # Normalize float representations of integers (e.g. 1.0 -> 1) from openpyxl / xlrd
-        rows = [[int(c) if isinstance(c, float) and c.is_integer() else c for c in r] for r in rows]
+        # and evaluate simple formula strings
+        evaluated_rows: list[list[Any]] = []
+        for r_idx, r in enumerate(rows):
+            new_r: list[Any] = []
+            for c_idx, c in enumerate(r):
+                prev_c = (
+                    evaluated_rows[r_idx - 1][c_idx]
+                    if r_idx > 0 and c_idx < len(evaluated_rows[r_idx - 1])
+                    else None
+                )
+                c_eval = Extractor._evaluate_formula_cell(c, prev_c)
+                if isinstance(c_eval, float) and c_eval.is_integer():
+                    new_r.append(int(c_eval))
+                else:
+                    new_r.append(c_eval)
+            evaluated_rows.append(new_r)
+        rows = evaluated_rows
 
         # Smart header detection: check up to first 15 rows for known Modbus columns
         best_idx = 0
@@ -796,7 +853,16 @@ class Extractor:
                 best_idx = idx
 
         if best_score >= 2:
-            header_row = rows[best_idx]
+            header_row = list(rows[best_idx])
+            # If compound header row (e.g. category row above subheaders), fill empty header cells from previous row
+            if best_idx > 0:
+                prev_row = rows[best_idx - 1]
+                prev_text = " ".join(str(c) for c in prev_row if c is not None and str(c).strip()).lower()
+                if not any(k in prev_text for k in ("function code", "code fonction", "registre", "register type")):
+                    for c_idx in range(len(header_row)):
+                        if (header_row[c_idx] is None or str(header_row[c_idx]).strip() == "") and c_idx < len(prev_row):
+                            if prev_row[c_idx] is not None and str(prev_row[c_idx]).strip():
+                                header_row[c_idx] = prev_row[c_idx]
             data_rows = rows[best_idx + 1 :]
         else:
             first_non_empty = 0
@@ -862,7 +928,12 @@ class Extractor:
 
             # Check if this row is a secondary table header row
             if Extractor._is_secondary_header_row(row):
-                headers = [str(h).strip() if h is not None else "" for h in row]
+                new_headers = [str(h).strip() if h is not None else "" for h in row]
+                # Preserve prior non-empty column headers if the secondary row left that cell blank
+                for h_idx in range(min(len(headers), len(new_headers))):
+                    if not new_headers[h_idx] and headers[h_idx]:
+                        new_headers[h_idx] = headers[h_idx]
+                headers = new_headers
                 continue
 
             row_dict = {
@@ -938,6 +1009,15 @@ class Extractor:
                             [ws.cell_value(r, c) for c in range(effective_cols)]
                             for r in range(ws.nrows)
                         ]
+                        if hasattr(ws, "merged_cells") and ws.merged_cells:
+                            for rlow, rhigh, clow, chigh in ws.merged_cells:
+                                if rlow < len(raw_rows) and clow < (len(raw_rows[0]) if raw_rows else 0):
+                                    top_left = raw_rows[rlow][clow]
+                                    if top_left is not None:
+                                        for r in range(rlow, min(rhigh, len(raw_rows))):
+                                            for c in range(clow, min(chigh, len(raw_rows[r]))):
+                                                if raw_rows[r][c] is None or str(raw_rows[r][c]).strip() == "":
+                                                    raw_rows[r][c] = top_left
                         yield from Extractor._process_sheet_rows(raw_rows)
 
                     yield sheet_generator_xls()
@@ -976,6 +1056,15 @@ class Extractor:
                                     [ws.cell_value(r, c) for c in range(ws.ncols)]
                                     for r in range(ws.nrows)
                                 ]
+                                if hasattr(ws, "merged_cells") and ws.merged_cells:
+                                    for rlow, rhigh, clow, chigh in ws.merged_cells:
+                                        if rlow < len(raw_rows) and clow < (len(raw_rows[0]) if raw_rows else 0):
+                                            top_left = raw_rows[rlow][clow]
+                                            if top_left is not None:
+                                                for r in range(rlow, min(rhigh, len(raw_rows))):
+                                                    for c in range(clow, min(chigh, len(raw_rows[r]))):
+                                                        if raw_rows[r][c] is None or str(raw_rows[r][c]).strip() == "":
+                                                            raw_rows[r][c] = top_left
                                 yield from Extractor._process_sheet_rows(raw_rows)
 
                             yield sheet_fallback_xls()
@@ -1008,9 +1097,40 @@ class Extractor:
                                 f"Sheet '{name}' exceeds the maximum expanded worksheet size "
                                 f"of {MAX_EXCEL_SHEET_CELLS} cells."
                             )
-                        rows = list(ws.iter_rows(max_col=effective_cols, values_only=True))
+                        rows = [list(r) for r in ws.iter_rows(max_col=effective_cols, values_only=True)]
                     else:
-                        rows = list(ws.iter_rows(values_only=True))
+                        rows = [list(r) for r in ws.iter_rows(values_only=True)]
+                    if hasattr(ws, "merged_cells") and ws.merged_cells:
+                        for rng in list(ws.merged_cells.ranges):
+                            if rng.min_row <= len(rows) and rng.min_col <= (len(rows[0]) if rows else 0):
+                                top_left = rows[rng.min_row - 1][rng.min_col - 1]
+                                if top_left is not None:
+                                    max_row_bound = min(rng.max_row, len(rows))
+                                    for r_idx in range(rng.min_row - 1, max_row_bound):
+                                        row_len = len(rows[r_idx])
+                                        max_col_bound = min(rng.max_col, row_len)
+                                        for c_idx in range(rng.min_col - 1, max_col_bound):
+                                            if rows[r_idx][c_idx] is None or str(rows[r_idx][c_idx]).strip() == "":
+                                                rows[r_idx][c_idx] = top_left
+                    # If any cells are None, check if raw workbook has unevaluated formulas
+                    if any(any(c is None for c in r) for r in rows):
+                        try:
+                            wb_raw = openpyxl.load_workbook(io.BytesIO(file_data), data_only=False)
+                            if name in wb_raw.sheetnames:
+                                ws_raw = wb_raw[name]
+                                if max_r * max_c > MAX_EXCEL_SHEET_CELLS:
+                                    rows_raw = list(ws_raw.iter_rows(max_col=effective_cols, values_only=True))
+                                else:
+                                    rows_raw = list(ws_raw.iter_rows(values_only=True))
+                                for r_idx in range(min(len(rows), len(rows_raw))):
+                                    for c_idx in range(min(len(rows[r_idx]), len(rows_raw[r_idx]))):
+                                        if rows[r_idx][c_idx] is None:
+                                            raw_val = rows_raw[r_idx][c_idx]
+                                            if isinstance(raw_val, str) and raw_val.startswith("="):
+                                                rows[r_idx][c_idx] = raw_val
+                            wb_raw.close()
+                        except Exception:
+                            pass
                     yield from Extractor._process_sheet_rows(rows)
 
                 yield sheet_generator()

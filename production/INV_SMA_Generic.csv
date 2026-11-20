@@ -162,7 +162,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 161;3;30843;I32;;Battery current;I_BAT;0.001000;0.000000;A;4
 162;3;30845;U32;;Current battery state of charge;SOC;1.000000;0.000000;%;4
 163;3;30847;U32;;Current battery capacity;SOH;1.000000;0.000000;%;4
-164;3;30849;I32;;Battery temperature;TEMP_BAT;1.000000;0.000000;°°°°°°°°C;4
+164;3;30849;I32;;Battery temperature;TEMP_BAT;1.000000;0.000000;°C;4
 165;3;30851;U32;;Battery voltage;U_BAT;0.010000;0.000000;V;4
 166;3;30853;U32;;Active battery charging mode;;1.000000;0.000000;;4
 167;3;30855;U32;;Current battery charging voltage setpoint;;0.010000;0.000000;V;4
@@ -211,7 +211,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 210;3;30947;U32;;Speedwire connection status of network terminal D;;1.000000;0.000000;;4
 211;3;30949;U32;;Displacement power factor;;0.001000;0.000000;;4
 212;3;30951;I32;;DC power without battery;P_DC;1.000000;0.000000;W;4
-213;3;30953;I32;;Internal temperature;TEMP_INT;1.000000;0.000000;°°°°°°°°C;4
+213;3;30953;I32;;Internal temperature;TEMP_INT;1.000000;0.000000;°C;4
 214;3;30955;U32;;Operating status of battery;STATE_BAT;1.000000;0.000000;;4
 215;3;30957;I32;;DC current input 2;T_HEATSINK;0.001000;0.000000;A;4
 216;3;30959;I32;;DC voltage input 2;I_DC_2;0.010000;0.000000;V;4
@@ -233,8 +233,8 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 232;3;30991;U32;;Maximum occurring battery current in discharge direction;;0.001000;0.000000;A;4
 233;3;30993;U32;;Charge factor Ratio battery charging_-discharging;;0.001000;0.000000;;4
 234;3;30995;U32;;Runtime of the battery statistic meter;;1.000000;0.000000;s;4
-235;3;30997;I32;;Lowest measured battery temperature;TEMP;1.000000;0.000000;°°°°°°°°C;4
-236;3;30999;I32;;Highest measured battery temperature;;1.000000;0.000000;°°°°°°°°C;4
+235;3;30997;I32;;Lowest measured battery temperature;TEMP;1.000000;0.000000;°C;4
+236;3;30999;I32;;Highest measured battery temperature;;1.000000;0.000000;°C;4
 237;3;31001;U32;;Maximum occurring battery voltage;;0.010000;0.000000;V;4
 238;3;31003;U32;;Remaining time until full charge;;1.000000;0.000000;s;4
 239;3;31005;U32;;Remaining time until equalization charge;;1.000000;0.000000;s;4
@@ -564,18 +564,18 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 563;3;34097;U64;;Operating time of interior fan 1;;1.000000;0.000000;s;4
 564;3;34101;U64;;Operating time of interior fan 2;;1.000000;0.000000;s;4
 565;3;34105;U64;;Operating time of heat sink fan;;1.000000;0.000000;s;4
-566;3;34109;I32;;Heat sink temperature 1;;1.000000;0.000000;°°°°°°°°C;4
-567;3;34113;I32;;Interior temperature 1;;1.000000;0.000000;°°°°°°°°C;4
-568;3;34121;I32;;Transformer temperature 1;;1.000000;0.000000;°°°°°°°°C;4
-569;3;34125;I32;;External temperature 1 of supply air;;1.000000;0.000000;°°°°°°°°C;4
-570;3;34127;I32;;Highest measured external temperature 1;;1.000000;0.000000;°°°°°°°°C;4
-571;3;34609;I32;;Ambient temperature 1;TEMP_AMB;1.000000;0.000000;°°°°°°°°C;4
-572;3;34611;I32;;Highest measured ambient temperature;;1.000000;0.000000;°°°°°°°°C;4
+566;3;34109;I32;;Heat sink temperature 1;;1.000000;0.000000;°C;4
+567;3;34113;I32;;Interior temperature 1;;1.000000;0.000000;°C;4
+568;3;34121;I32;;Transformer temperature 1;;1.000000;0.000000;°C;4
+569;3;34125;I32;;External temperature 1 of supply air;;1.000000;0.000000;°C;4
+570;3;34127;I32;;Highest measured external temperature 1;;1.000000;0.000000;°C;4
+571;3;34609;I32;;Ambient temperature 1;TEMP_AMB;1.000000;0.000000;°C;4
+572;3;34611;I32;;Highest measured ambient temperature;;1.000000;0.000000;°C;4
 573;3;34613;U32;;Total irradiation on the sensor surface;;1.000000;0.000000;W/m2;4
 574;3;34615;U32;;Wind speed 1;WIND_SPEED;0.100000;0.000000;m/s;4
 575;3;34617;U32;;Humidity;HUMIDITY;0.010000;0.000000;%;4
 576;3;34619;U32;;Air pressure;PRESSURE;0.010000;0.000000;Pa;4
-577;3;34621;I32;;PV module temperature;TEMP_CELL;1.000000;0.000000;°°°°°°°°C;4
+577;3;34621;I32;;PV module temperature;TEMP_CELL;1.000000;0.000000;°C;4
 578;3;34623;U32;;Total irradiation on the external irradiation sensor_pyranometer;POA;1.000000;0.000000;W/m2;4
 579;3;34625;I32;;Ambient temperature 2;;1.000000;0.000000;F;4
 580;3;34627;I32;;Ambient temperature 3;;1.000000;0.000000;K;4
@@ -612,7 +612,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 611;3;40027;U32;;Reaction of the excitation type when changing the direction of power flow;;1.000000;0.000000;;4
 612;3;40029;U32;;Operating status;;1.000000;0.000000;;4
 613;3;40031;U32;;Nominal capacity of the battery 1;;1.000000;0.000000;(Ah);4
-614;3;40033;U32;;Maximum battery temperature;;1.000000;0.000000;°°°°°°°°C;4
+614;3;40033;U32;;Maximum battery temperature;;1.000000;0.000000;°C;4
 615;3;40035;U32;;Battery type;;1.000000;0.000000;;4
 616;3;40037;U32;;Nominal battery voltage;;1.000000;0.000000;V;4
 617;3;40039;U32;;Time for boost charge of battery;;1.000000;0.000000;min;4
@@ -676,7 +676,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 675;3;40480;U32;;Nominal current across all line conductor;;0.001000;0.000000;A;4
 676;3;40486;U32;;Voltage at the zero point 1 of the reactive power characteristic curve;;0.001000;0.000000;%;4
 677;3;40488;U32;;Voltage at the zero point 2 of the reactive power characteristic curve;;0.001000;0.000000;%;4
-678;3;40497_16;STRING;;MAC address;;1.000000;0.000000;MA°°°°°°°°C;4
+678;3;40497_16;STRING;;MAC address;;1.000000;0.000000;MAC;4
 679;3;40513_16;STRING;;Speedwire DNS server address_ in the format XXX.XXX.XXX.XXX;;1.000000;0.000000;IP4;4
 680;3;40521;U32;;Grid request based on power switched on;;1.000000;0.000000;;4
 681;3;40523;U32;;Grid request connection power limit;;1.000000;0.000000;W;4
@@ -768,7 +768,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 767;3;40709;U32;;Start time battery preservation mode level;;1.000000;0.000000;;4
 768;3;40711;U32;;End time battery preservation mode level;;1.000000;0.000000;;4
 769;3;40713;U32;;Battery state of charge for preservation mode;;0.100000;0.000000;%;4
-770;3;40715;I32;;Battery connection limit after overtemperature disconnection;;1.000000;0.000000;°°°°°°°°C;4
+770;3;40715;I32;;Battery connection limit after overtemperature disconnection;;1.000000;0.000000;°C;4
 771;3;40717;U32;;Cable resistance of the battery connection;;0.001000;0.000000;ohm;4
 772;3;40719;U32;;Lower limit of the deep-discharge protection range for disconnection;;1.000000;0.000000;%;4
 773;3;40721;U32;;Minimum width of the deep-discharge protection range;;1.000000;0.000000;%;4
@@ -780,7 +780,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 779;3;40733;U32;;Setpoint of the battery charging voltage with disabled battery management;;0.010000;0.000000;V;4
 780;3;40735;U32;;Full charge cycle time;;1.000000;0.000000;s;4
 781;3;40737;U32;;Equalization charge cycle time;;1.000000;0.000000;s;4
-782;3;40739;I32;;Battery temperature compensation;;0.001000;0.000000;(V/°°°°°°°°C);4
+782;3;40739;I32;;Battery temperature compensation;;0.001000;0.000000;(V/°C);4
 783;3;40741;U32;;Automatic equalization charge;;1.000000;0.000000;;4
 784;3;40743;U32;;Type of additional DC sources;;1.000000;0.000000;;4
 785;3;40745;U32;;Type of generator current limitation;;1.000000;0.000000;;4
@@ -801,7 +801,7 @@ Modbus;Inverter;SMA;Generic;;;;;;;
 800;3;40775;U32;;Time load shedding 2;;1.000000;0.000000;;4
 801;3;40777;U32;;Battery state of charge limit for load shedding 2 start in additional time period (_);;1.000000;0.000000;%;4
 802;3;40779;U32;;Battery state of charge limit for load shedding 2 stop in additional time period (_);;1.000000;0.000000;%;4
-803;3;40781;I32;;Temperature limit for multifunction relay with battery room fan;;1.000000;0.000000;°°°°°°°°C;4
+803;3;40781;I32;;Temperature limit for multifunction relay with battery room fan;;1.000000;0.000000;°C;4
 804;3;40783;U32;;Serial number slave 1 (line conductor L2);;1.000000;0.000000;;4
 805;3;40785;U32;;Serial number slave 2 (line conductor L3);;1.000000;0.000000;;4
 806;3;40787;U32;;Behavior of the cluster in the event of a device fault;;1.000000;0.000000;;4

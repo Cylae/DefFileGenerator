@@ -782,6 +782,46 @@ def _convert_single_doc(
         return False, doc.name, None, f"Exception: {e}"
 
 
+
+
+def batch_process_file(
+    doc: Path | str,
+    output_dir: str | Path,
+    protocol: str = "modbusRTU",
+    category_override: str | None = None,
+    mfg_override: str | None = None,
+    do_tag: bool = True,
+    strict: bool = False,
+    force: bool = False,
+) -> dict[str, Any]:
+    """
+    Process a single document within the batch conversion pipeline, returning a result dict.
+
+    Returns:
+        dict with status ('success' | 'skipped' | 'failed'), name, output, detail, and error.
+    """
+    p_doc = Path(doc)
+    p_out = str(output_dir)
+    success, doc_name, out_file, detail = _convert_single_doc(
+        p_doc,
+        p_out,
+        protocol,
+        category_override,
+        mfg_override,
+        do_tag,
+        strict,
+        force,
+    )
+    status = "success" if success else ("skipped" if "Destination exists" in detail else "failed")
+    return {
+        "status": status,
+        "name": doc_name,
+        "output": out_file,
+        "detail": detail,
+        "error": detail if not success and status != "skipped" else None,
+    }
+
+
 def batch_command(args: argparse.Namespace) -> None:
     """
     Subcommand handler for 'batch': processes a directory of documentation files
@@ -1034,10 +1074,15 @@ def report_command(args: argparse.Namespace) -> None:
 
 def commit_command(args: argparse.Namespace) -> None:
     """Subcommand handler for 'commit': creates a version snapshot of definition files."""
+    import datetime
+
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     path = getattr(args, "path", "production")
-    msg = args.message
+    msg = getattr(args, "message", None) or getattr(args, "pos_message", None)
+    if not msg:
+        now_str = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        msg = f"Snapshot of {path} definitions ({now_str})"
     author = getattr(args, "author", None) or os.environ.get("USERNAME") or os.environ.get("USER") or "System"
     tag_arg = getattr(args, "tag", None)
     tags = [t.strip() for t in tag_arg.split(",") if t.strip()] if tag_arg else None
@@ -1097,7 +1142,11 @@ def diff_command(args: argparse.Namespace) -> None:
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     vc = DefinitionVersionControl(store_dir=getattr(args, "store_dir", None))
-    cid_a = args.commit_a
+    cid_a = getattr(args, "commit_a", None) or vc.get_head()
+    if not cid_a:
+        print("No definition commits found in history repository to diff.")
+        return
+
     cid_b = getattr(args, "commit_b", None)
     file_name = getattr(args, "file", None)
 
@@ -1131,7 +1180,11 @@ def restore_command(args: argparse.Namespace) -> None:
     from DefFileGenerator.version_manager import DefinitionVersionControl
 
     vc = DefinitionVersionControl(store_dir=getattr(args, "store_dir", None))
-    cid = args.commit_id
+    cid = getattr(args, "commit_id", None) or vc.get_head()
+    if not cid:
+        print("No definition commits found in history repository to restore from.")
+        return
+
     dest = getattr(args, "dest", "production")
     fname = getattr(args, "file", None)
     dry_run = getattr(args, "dry_run", False)
@@ -1507,7 +1560,8 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "commit", help="Create a version snapshot of definition files in history store"
     )
     add_common_flags(parser_commit)
-    parser_commit.add_argument("-m", "--message", required=True, help="Commit message describing the changes")
+    parser_commit.add_argument("-m", "--message", default=None, help="Commit message describing the changes")
+    parser_commit.add_argument("pos_message", nargs="?", default=None, help=argparse.SUPPRESS)
     parser_commit.add_argument("--path", default="production", help="Directory containing definitions to snapshot (default: production)")
     parser_commit.add_argument("--author", help="Author of the commit")
     parser_commit.add_argument("-t", "--tag", help="Comma-separated release tags to assign to this commit")
@@ -1528,7 +1582,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "diff", help="Show semantic Modbus differences between definition commits"
     )
     add_common_flags(parser_diff)
-    parser_diff.add_argument("commit_a", help="First commit ID (or target to compare)")
+    parser_diff.add_argument("commit_a", nargs="?", default=None, help="First commit ID (defaults to HEAD)")
     parser_diff.add_argument("commit_b", nargs="?", help="Second commit ID (defaults to parent of commit_a)")
     parser_diff.add_argument("-f", "--file", help="Inspect diff for a single definition filename")
     parser_diff.add_argument("--json", action="store_true", help="Output diff as JSON")
@@ -1539,7 +1593,7 @@ def _run_cli(argv: list[str] | None = None) -> None:
         "restore", help="Restore definitions from a past commit"
     )
     add_common_flags(parser_restore)
-    parser_restore.add_argument("commit_id", help="Commit ID to restore from")
+    parser_restore.add_argument("commit_id", nargs="?", default=None, help="Commit ID to restore from (defaults to HEAD)")
     parser_restore.add_argument("-d", "--dest", default="production", help="Destination directory (default: production)")
     parser_restore.add_argument("-f", "--file", help="Restore only a single specific definition file")
     parser_restore.add_argument("--dry-run", action="store_true", help="Simulate restore without writing files")

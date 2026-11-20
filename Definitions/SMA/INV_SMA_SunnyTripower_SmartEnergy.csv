@@ -107,7 +107,7 @@ Modbus;Inverter;SMA;SunnyTripower-SmartEnergy;;;;;;;
 106;3;32251;U32;;Bat.ChaAmpSptDmd;;0.001000;0.000000;;4
 107;3;32257;U32;;Bat.DschAmpSptDmd;;0.001000;0.000000;;4
 108;3;30847;U32;;Bat.Diag.ActlCapacNom;;1.000000;0.000000;;4
-109;3;30849;I32;;Bat.TmpVal;TEMP_BAT;0.100000;0.000000;°°°°°C;4
+109;3;30849;I32;;Bat.TmpVal;TEMP_BAT;0.100000;0.000000;°C;4
 110;3;40187;U32;;Bat.CapacRtgWh;;1.000000;0.000000;Wh;4
 111;3;41437;U32;;Inverter.CtlComCfg.AdptCrvReq;;1.000000;0.000000;;4
 112;3;41439;U32;;Inverter.CtlComCfg.AdptCrvRsl;;1.000000;0.000000;;4
@@ -172,7 +172,7 @@ Modbus;Inverter;SMA;SunnyTripower-SmartEnergy;;;;;;;
 171;3;40468;U32;;GridGuard.Cntry.VolCtl.MinTmms;;1.000000;0.000000;ms;4
 172;3;44311;U32;;GridGuard.Cntry.VolCtl.ReconMaxPu;;0.001000;0.000000;p.u;4
 173;3;44313;U32;;GridGuard.Cntry.VolCtl.ReconMinPu;;0.001000;0.000000;p.u;4
-174;3;41121;U32;;GridGuard.CntrySet;;1.000000;0.000000;PP°°°°°°°°C;4
+174;3;41121;U32;;GridGuard.CntrySet;;1.000000;0.000000;PPC;4
 175;3;40432;U32;;GridGuard.Cntry.FrqCtl.hLim;;0.010000;0.000000;Hz;4
 176;3;40434;U32;;GridGuard.Cntry.FrqCtl.hLimTmms;;1.000000;0.000000;ms;4
 177;3;40428;U32;;GridGuard.Cntry.FrqCtl.hhLim;;0.010000;0.000000;Hz;4

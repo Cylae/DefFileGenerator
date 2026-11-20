@@ -25,9 +25,9 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 24;3;30805;I32;;Reactive power var Qac;Q_AC;1.000000;0.000000;var;4
 25;3;30813;I32;;Apparent power3 VA Sac;PF;1.000000;0.000000;VA;4
 26;3;30837;U32;;Active power target value W P-WSpt;;1.000000;0.000000;W;4
-27;3;34109;I32;;Heat sink temperature 1 Degree Celsius TmpHs;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
-28;3;34113;I32;;Interior temperature 1 Degree Celsius TmpCab1;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
-29;3;34125;I32;;External temperature 1 Degree Celsius TmpExl1;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
+27;3;34109;I32;;Heat sink temperature 1 Degree Celsius TmpHs;;0.100000;0.000000;°C;4
+28;3;34113;I32;;Interior temperature 1 Degree Celsius TmpCab1;;0.100000;0.000000;°C;4
+29;3;34125;I32;;External temperature 1 Degree Celsius TmpExl1;;0.100000;0.000000;°C;4
 30;3;40001;U32;;Setting of the plant time UTC SerTm;;1.000000;0.000000;s;4
 31;3;30051;U32;;Device class MainModel;MODEL;1.000000;0.000000;;4
 32;3;30213;U32;;Message Error;;1.000000;0.000000;;9
@@ -79,9 +79,9 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 78;3;34097;U64;;Operating time interior fan 1 s_1;;1.000000;0.000000;s;4
 79;3;34101;U64;;Operating time interior fan 2 s_1;;1.000000;0.000000;s;4
 80;3;34105;U64;;Operating time heat sink fan s_1;;1.000000;0.000000;s;4
-81;3;34117;I32;;Interior temperature 3 Degree Celsius TmpCab3;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
+81;3;34117;I32;;Interior temperature 3 Degree Celsius TmpCab3;;0.100000;0.000000;°C;4
 82;3;34141;U64;;Operating time interior heater 2 s_1;;1.000000;0.000000;s;4
-83;3;34145;I32;;Temp sine-wave filter chokes Degree Celsius TmpCol;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
+83;3;34145;I32;;Temp sine-wave filter chokes Degree Celsius TmpCol;;0.100000;0.000000;°C;4
 84;3;34613;U32;;Total irradiation ExtSolIrr;;1.000000;0.000000;W/m2;4
 85;3;34637;I32;;Analogue current input 1 mA;;0.010000;0.000000;mA;4
 86;3;34639;I32;;Analogue current input 2 mA;;0.010000;0.000000;mA;4
@@ -89,8 +89,8 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 88;3;40003;U32;;Selected time zone for the display TmZn;;1.000000;0.000000;;4
 89;3;40009;U32;;Operating state SpntRemEna;;1.000000;0.000000;;4
 90;3;40020;U32;;External measurement insulation resistance;;1.000000;0.000000;;4
-91;3;34115;I32;;Interior temperature 2 Degree Celsius TmpCab2;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
-92;3;34121;I32;;Transformer temperature 1 Degree Celsius TmpTrf;;0.100000;0.000000;Degree °°°°°°°°Celsius;4
+91;3;34115;I32;;Interior temperature 2 Degree Celsius TmpCab2;;0.100000;0.000000;°C;4
+92;3;34121;I32;;Transformer temperature 1 Degree Celsius TmpTrf;;0.100000;0.000000;°C;4
 93;3;31283;I32;;PV string current group 1;U_DC_12;0.001000;0.000000;A;4
 94;3;31289;I32;;PV string current group 2;;0.001000;0.000000;A;4
 95;3;31295;I32;;PV string current group 3;;0.001000;0.000000;A;4
@@ -128,7 +128,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 127;3;30843;I32;;Battery current A TotBatCur;I_BAT;0.001000;0.000000;A;4
 128;3;30845;U32;;Current battery charge status %;SOC;1.000000;0.000000;%;4
 129;3;30847;U32;;Current battery capacity %;SOH;1.000000;0.000000;%;4
-130;3;30849;I32;;Battery temperature Degree Celsius BatTmp;TEMP_BAT;0.100000;0.000000;Degree °°°°°°°°Celsius;4
+130;3;30849;I32;;Battery temperature Degree Celsius BatTmp;TEMP_BAT;0.100000;0.000000;°C;4
 131;3;30851;U32;;Battery voltage V BatVtg;U_BAT;0.010000;0.000000;V;4
 132;3;30853;U32;;Active battery charging mode;;1.000000;0.000000;;4
 133;3;30855;U32;;Current battery charging set voltage V;;0.010000;0.000000;V;4
@@ -164,7 +164,7 @@ Modbus;Inverter;SMA;SC_Webbox;;;;;;;
 163;3;30917;U32;;Generator status GnStt;;1.000000;0.000000;;4
 164;3;40011;U32;;Acknowledge fault ErrAckn;;1.000000;0.000000;;9
 165;3;40031;U32;;Rated battery capacity Ah;;1.000000;0.000000;Ah;4
-166;3;40033;U32;;Max. battery temperature Degree Celsius;TEMP;0.100000;0.000000;Degree °°°°°°°°Celsius;4
+166;3;40033;U32;;Max. battery temperature Degree Celsius;TEMP;0.100000;0.000000;°C;4
 167;3;40035;U32;;Battery type BatTyp;;1.000000;0.000000;;4
 168;3;40037;U32;;Rated battery voltage V;;0.010000;0.000000;V;4
 169;3;40039;U32;;Battery quick charge time min;;1.000000;0.000000;min;4

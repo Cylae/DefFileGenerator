@@ -330,6 +330,22 @@ NON_EQUIPMENT_SCRAPS = {
     "repport",
 }
 
+PRUNED_REDUNDANT_FILES = frozenset(
+    {
+        # Category Conflict Redundancies (OTH_ vs Typed canonical)
+        "oth_slenergy_generator.csv",
+        "oth_cefem_table_modbus_trio-sun_trio-top_2020_07_01.csv",
+        "oth_chauvinarnoux_ulys-tt_m.csv",
+        "oth_hukseflux_generic.csv",
+        "oth_ingenieurburo_si-rs485tc-3t-mb.csv",
+        # Alias Synonyms
+        "inv_goodwe_gt_series.csv",
+        "inv_goodwe_ht_1500v.csv",
+        "inv_kaco_nx1_nx3_modbusrtu.csv",
+        "bat_slenergy_bms5_p1_1_1.csv",
+    }
+)
+
 
 def parse_raw_filename(fname: str) -> tuple[str, str, str] | None:
     """Parses a candidate raw filename into (Prefix, CanonicalManufacturer, CleanModel)."""
@@ -593,6 +609,12 @@ def build_manifest() -> dict[str, Path]:
         if low not in lower_to_canonical:
             manifest[tgt_name] = max(sources, key=score_source_candidate)
             lower_to_canonical[low] = tgt_name
+
+    # Filter out pruned redundant files to preserve catalog curation
+    manifest = {
+        k: v for k, v in manifest.items()
+        if k.lower() not in PRUNED_REDUNDANT_FILES
+    }
 
     return manifest
 
@@ -888,6 +910,11 @@ def main():
         if is_already_certified:
             if not out_path.exists() or out_path.read_bytes() != src_path.read_bytes():
                 shutil.copy2(src_path, out_path)
+            # Enforce 5 Pillars: strict UTF-8 no BOM and CRLF
+            raw_b = out_path.read_bytes()
+            if raw_b.startswith(b"\xef\xbb\xbf") or not raw_b.endswith(b"\r\n") or b"\r\n" not in raw_b or b"\r\r\n" in raw_b:
+                text_norm = raw_b.decode("utf-8-sig", errors="replace")
+                out_path.write_bytes(("\r\n".join(text_norm.splitlines()) + "\r\n").encode("utf-8"))
             with open(out_path, encoding="utf-8-sig", errors="ignore") as fp:
                 rdr = csv.reader(fp, delimiter=";")
                 header = next(rdr, [])
