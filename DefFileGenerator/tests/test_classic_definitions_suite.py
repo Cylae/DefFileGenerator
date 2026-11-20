@@ -173,6 +173,30 @@ class TestClassicDefinitionsSuite(unittest.TestCase):
                 self.assertIn("U_AC_1", tags, f"Missing U_AC_1 in meter definition {fname}")
                 self.assertIn("I_AC_1", tags, f"Missing I_AC_1 in meter definition {fname}")
 
+    def test_float32_meters_direct_scaling(self) -> None:
+        """Verify that F32 voltage, current, frequency, and power factor metrics in meters have CoefA == 1.000000."""
+        target_meters = [
+            "MET_Chint_DTSU666.csv",
+            "MET_Chint_DDSU666.csv",
+            "MET_Schneider_PM5000_IEM3000.csv",
+        ]
+        direct_scale_tags = {"U_AC_1", "U_AC_L1L2", "I_AC_1", "FREQ", "PF"}
+        for fname in target_meters:
+            fpath = PRODUCTION_DIR / fname
+            with open(fpath, encoding="utf-8", newline="") as fp:
+                rows = list(csv.reader(fp, delimiter=";"))[1:]
+
+            for r in rows:
+                dtype = r[3]
+                tag = r[6]
+                coef_a = r[7]
+                if dtype == "F32" and tag in direct_scale_tags:
+                    self.assertEqual(
+                        coef_a,
+                        "1.000000",
+                        f"Register with tag {tag} in {fname} has CoefA={coef_a}, expected 1.000000 for F32",
+                    )
+
 
 if __name__ == "__main__":
     unittest.main()

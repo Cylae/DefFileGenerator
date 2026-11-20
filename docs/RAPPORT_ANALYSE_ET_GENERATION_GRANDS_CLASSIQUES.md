@@ -32,14 +32,15 @@ Dans le cadre des directives Apollo-Standard et des exigences Webdyn, l'ensemble
 - **Architecture Mémoire & Registres** :
   - Pour les modèles **DTSU666 / DDSU666 standard** (Manuel ZTW0.464.0104 V1, table 11) :
     - Toutes les grandeurs électriques sont encodées au format **IEEE-754 Simple Précision (Float F32)** sur 2 registres consécutifs (mot de poids fort en premier / Big-Endian).
-    - Énergies actives directes et inverses : adresses `4126` à `4144` (Total, Phase A, B, C, Net). Unité kWh, $A=1.000000$.
-    - Tensions composées ($U_{12}, U_{23}, U_{31}$) : `8192..8196` ($0.1\text{ V}$).
-    - Tensions simples ($V_1, V_2, V_3$) : `8198..8202` ($0.1\text{ V}$).
-    - Courants de phase ($I_1, I_2, I_3$) : `8204..8208` ($0.001\text{ A}$).
-    - Puissances actives ($P, P_1, P_2, P_3$) : `8210..8216` ($0.1\text{ W}$).
-    - Puissances réactives ($Q, Q_1, Q_2, Q_3$) : `8218..8224` ($0.1\text{ var}$).
-    - Facteurs de puissance ($PF, PF_1, PF_2, PF_3$) : `8234..8240` ($0.001$).
-    - Fréquence ($F$) : `8260` ($0.01\text{ Hz}$).
+    - Énergies actives directes et inverses : adresses `4126` à `4144` (Total, Phase A, B, C, Net). Unité `kWh`, $A=1.000000$.
+    - Tensions composées ($U_{12}, U_{23}, U_{31}$) : `8192..8196` (F32, $A=1.000000$, Unité `V`).
+    - Tensions simples ($V_1, V_2, V_3$) : `8198..8202` (F32, $A=1.000000$, Unité `V`).
+    - Courants de phase ($I_1, I_2, I_3$) : `8204..8208` (F32, $A=1.000000$, Unité `A`).
+    - Puissances actives ($P, P_1, P_2, P_3$) : `8210..8216` (F32, $A=1.000000$, Unité `kW`).
+    - Puissances réactives ($Q, Q_1, Q_2, Q_3$) : `8218..8224` (F32, $A=1.000000$, Unité `kvar`).
+    - Facteurs de puissance ($PF, PF_1, PF_2, PF_3$) : `8234..8240` (F32, $A=1.000000$, sans unité).
+    - Fréquence ($F$) : `8260` (F32, $A=1.000000$, Unité `Hz`).
+    - Correction méticuleuse Apollo : Élimination définitive de l'erreur historique consistant à appliquer les chiffres de la colonne "Résolution" ($0.1$, $0.001$, $0.01$) aux données F32, ce qui écrasait les valeurs mesurées par un facteur 10, 100 ou 1000 !
   - Pour le modèle **DTSU666-H (Spécifique Huawei)** :
     - Ce compteur communique avec les onduleurs Huawei SUN2000 via RS485 et transmet les données sous forme d'**entiers signés 32 bits (I32)** aux adresses `37101..37138`.
     - Correction d'un bug critique historique : l'ancienne définition `MET_Huawei_V4_METER.csv` déclarait ces registres en `U16` avec un coefficient de $1.0$, omettait la moitié des tags de phase, et mappait le courant de phase B sur `I_AC_3` ! La nouvelle version `MET_Chint_DTSU666-H.csv` et `MET_Huawei_DTSU666-H.csv` rétablit le typage `I32` et le mapping exact des phases.
@@ -213,7 +214,92 @@ Dans le cadre des directives Apollo-Standard et des exigences Webdyn, l'ensemble
 
 ---
 
-## 3. Matrice Complète des Définitions Générées et Certifiées
+## 3. Analyse Fondamentale : Origine, Causes et Résolution des « Coefficients à 1000 » et Ratios d'Échelle
+
+La présence récurrente dans les fichiers de définition historiques de coefficients valant `1000.000000` (ou son inverse `0.001000`), ainsi que des valeurs incongrues comme `0.1` ou `0.01` sur des nombres flottants, a constitué l'une des sources majeures d'incohérence métrologique sur le terrain. L'analyse détaillée des causes racines met en lumière trois mécanismes distincts :
+
+### 3.1. Formule de Transfert Linéaire Webdyn
+Toute passerelle Webdyn calcule la grandeur physique stockée et télétransmise via l'équation affine universelle :
+$$\text{Grandeur Mesurée} = \text{CoefA} \times \text{Valeur Brute du Registre} + \text{CoefB}$$
+
+Où :
+- $\text{Valeur Brute}$ est le résultat du décodage binaire des registres Modbus selon le `data_type` (`U16`, `I16`, `U32`, `I32`, `F32`, etc.).
+- $\text{CoefA}$ est le facteur d'échelle multiplicatif (colonne 8 du CSV, formaté à 6 décimales).
+- $\text{CoefB}$ est l'offset additif (colonne 9 du CSV, généralement `0.000000`).
+
+---
+
+### 3.2. Cause Racine N°1 : La Conversion d'Unités d'Ingénierie (kW $\leftrightarrow$ W et Wh $\leftrightarrow$ kWh)
+C'est la cause la plus légitime et fréquente de la présence d'un facteur 1000 :
+1. **Passage de kW en W ($A = 1000.000000$)** :
+   - De nombreux équipements de forte puissance (onduleurs centraux, compteurs industriels haute tension tels que Schneider PM5000, ABB, Socomec) restituent nativement la puissance active en **kilowatts (kW)**.
+   - Si la plateforme de supervision centrale (ou la convention SunPM historique) exige que le tag `P_AC` soit exprimé en **Watts (W)** pour homogénéiser les calculs de bilan de site avec des équipements résidentiels, la formule exige :
+     $$P_{\text{Watts}} = 1000 \times P_{\text{kW}} \implies \mathbf{CoefA = 1000.000000}$$
+   - *Inversement* : Si la définition déclare l'unité cible `kW` (comme dans nos fichiers certifiés `MET_Schneider_PM5000_IEM3000.csv` et `MET_Chint_DTSU666.csv`), alors la grandeur reste en kW et **$\mathbf{CoefA = 1.000000}$**.
+2. **Passage de Wh en kWh ($A = 0.001000 = \frac{1}{1000}$)** :
+   - Chez SMA (ex: registre 30513 `Metering.TotWhOut` sur 4 registres `U64`), l'énergie cumulée est comptabilisée en **Watt-heures (Wh)**.
+   - Pour intégrer cette donnée dans le tag standard `E_TOT` exprimé en **kWh**, il faut diviser par 1000 :
+     $$E_{\text{kWh}} = \frac{E_{\text{Wh}}}{1000} = 0.001 \times E_{\text{Wh}} \implies \mathbf{CoefA = 0.001000}$$
+   - Même logique pour les courants exprimés en milliampères (mA) : $1\text{ mA} = 0.001\text{ A} \implies \mathbf{CoefA = 0.001000}$.
+
+---
+
+### 3.3. Cause Racine N°2 : La Confusion Désastreuse « Multiplicateur vs Diviseur » dans les Notices Constructeurs
+Cette anomalie historique provient d'une erreur d'interprétation humaine des documentations techniques :
+- Dans les notices d'onduleurs ou de compteurs (notamment traduites du chinois ou de l'allemand), la colonne de cadrage est fréquemment libellée de façon ambiguë :
+  - `Scale: 1000`
+  - `Factor: 1000`
+  - `Ratio: 1000`
+  - `Divisor: 1000`
+- **Le piège** : Dans la documentation, « Factor 1000 » signifie généralement que la valeur brute dans le registre est multipliée par 1000 par le microcontrôleur pour stocker 3 décimales sous forme d'un entier, et qu'il faut donc **diviser par 1000** à la lecture pour retrouver la vraie valeur !
+- **L'erreur commise** : L'auteur de la définition saisissait naïvement `1000` dans la colonne `CoefA`.
+- **La conséquence catastrophique** : La passerelle Webdyn multipliait par 1000 au lieu de multiplier par 0.001 ! La valeur résultante était alors faussée d'un facteur **$1\,000\,000$ ($10^6$)** !
+  - Exemple : un courant réel de $5.213\text{ A}$ stocké sous la valeur entière $5213$ était multiplié par $1000$, devenant $5\,213\,000\text{ A}$ sur le portail Webdyn !
+  - Pour masquer cette aberration, certains techniciens modifiaient ensuite le libellé de l'unité ou ajoutait un diviseur en aval, introduisant un désordre ingérable dans la base de données.
+
+---
+
+### 3.4. Cause Racine N°3 : Le Piège de la Colonne « Résolution » sur les Flottants IEEE-754 (`F32`) — Le Cas Emblématique CHINT
+Il s'agit de la découverte la plus pointue mise au jour lors de notre audit :
+1. **La différence fondamentale entre Entier Virgule Fixe et Flottant IEEE-754** :
+   - Sur un registre entier (`I16`, `U16`, `I32`, `U32`), les décimales ne peuvent pas être encodées nativement. Le constructeur impose un pas de discrétisation (ex: $230.4\text{ V}$ est transmis sous la valeur $2304$, imposant $\text{CoefA} = 0.1$).
+   - Sur un registre **IEEE-754 Simple Précision (`F32`)**, la valeur binaire (1 bit de signe, 8 bits d'exposant, 23 bits de mantisse) représente **déjà la valeur réelle avec toutes ses décimales** (ex: `230.4000` V, `5.2130` A, `50.0200` Hz).
+2. **Le Contresens de la Table 11 du Manuel CHINT DTSU666 (ZTW0.464.0104)** :
+   - Le tableau officiel indique :
+     - Tension composée $U_{ab}$ (`8192`) : Type `Float`, Longueur `2`, **Resolution `0.1`**, Unit `V`.
+     - Courant $I_a$ (`8204`) : Type `Float`, Longueur `2`, **Resolution `0.001`**, Unit `A`.
+     - Fréquence $F$ (`8260`) : Type `Float`, Longueur `2`, **Resolution `0.01`**, Unit `Hz`.
+     - Facteur de puissance $PF$ (`8234`) : Type `Float`, Longueur `2`, **Resolution `0.001`**, sans unité.
+   - **L'erreur historique** : L'auteur du fichier `MET_Chint_DTSU666.csv` (et du template JSON) a interprété le mot « *Resolution* » comme un *Scale Factor* Modbus, et a appliqué $\text{CoefA} = 0.1$ à la tension, $0.001$ au courant, $0.01$ à la fréquence !
+   - **L'aberration physique induite** :
+     - La tension réseau $230\text{ V}$ décodée en flottant était multipliée par $0.1$, devenant **$23.0\text{ V}$** !
+     - Le courant $10\text{ A}$ décodé en flottant était multiplié par $0.001$, devenant **$0.01\text{ A}$ ($10\text{ mA}$)** !
+     - La fréquence de $50\text{ Hz}$ était multipliée par $0.01$, devenant **$0.50\text{ Hz}$** (impossible sur le réseau européen interconnecté) !
+     - Le facteur de puissance $0.99$ devenait **$0.00099$** !
+   - **La réalité physique** : Dans les notices d'instruments de mesure chinois et internationaux, le terme « *Resolution* » désigne la **résolution métrologique ou d'affichage de l'écran LCD** (l'écran affiche 1 chiffre après la virgule pour les volts, 3 pour les ampères, 2 pour les hertz). Le nombre flottant transmis sur le bus Modbus est **strictement la grandeur physique réelle** !
+   - **Règle d'or Apollo appliquée** : Tout registre de type `F32` exprimé dans l'unité physique déclarée (`V`, `A`, `Hz`, `kW`, etc.) **DOIT IMPÉRATIVEMENT AVOIR $\mathbf{CoefA = 1.000000}$ et $\mathbf{CoefB = 0.000000}$**.
+
+---
+
+### 3.5. Tableau de Synthèse : Règles d'Or Apollo pour CoefA
+
+| Type de Donnée | Grandeur Physique | Valeur Transmise sur le Bus | Unité Déclarée CSV | CoefA Rigoureux | Justification Métrologique |
+|:---:|:---:|:---:|:---:|:---:|---|
+| **`F32`** | Tension ($U, V$) | Flottant réel (ex: $230.4$) | `V` | **`1.000000`** | Flottant direct sans altération |
+| **`F32`** | Courant ($I$) | Flottant réel (ex: $5.213$) | `A` | **`1.000000`** | Flottant direct sans altération |
+| **`F32`** | Fréquence ($F$) | Flottant réel (ex: $50.02$) | `Hz` | **`1.000000`** | Flottant direct sans altération |
+| **`F32`** | Facteur de puissance ($PF$) | Flottant réel (ex: $0.985$) | (vide) | **`1.000000`** | Flottant direct sans altération |
+| **`F32`** | Puissance ($P$) en kW | Flottant réel (ex: $15.5\text{ kW}$) | `kW` | **`1.000000`** | Flottant direct sans altération |
+| **`F32`** | Puissance ($P$) en kW | Flottant réel (ex: $15.5\text{ kW}$) | `W` | **`1000.000000`** | Conversion métrique ($1\text{ kW} = 1000\text{ W}$) |
+| **`U16` / `I16`** | Tension ($U, V$) | Entier en dixièmes (ex: $2304$) | `V` | **`0.100000`** | Pas de discrétisation $0.1\text{ V}$ |
+| **`U16` / `I16`** | Courant ($I$) | Entier en centièmes (ex: $521$) | `A` | **`0.010000`** | Pas de discrétisation $0.01\text{ A}$ |
+| **`I32` / `U32`** | Courant ($I$) | Entier en milliampères ($5213$) | `A` | **`0.001000`** | Pas de discrétisation $1\text{ mA}$ |
+| **`U64`** | Énergie ($E$) | Entier en Watt-heures ($1\,500\,000$) | `kWh` | **`0.001000`** | Conversion métrique ($1\text{ Wh} = 10^{-3}\text{ kWh}$) |
+| **`U32`** | Énergie ($E$) | Entier en kiloWatt-heures | `kWh` | **`1.000000`** | Comptage direct en kWh |
+
+---
+
+## 4. Matrice Complète des Définitions Générées et Certifiées
 
 | N° | Fichier de Définition | Catégorie | Constructeur | Modèle | Nb Registres | Statut Apollo |
 |:---:|---|---|---|---|:---:|:---:|
@@ -238,7 +324,7 @@ Dans le cadre des directives Apollo-Standard et des exigences Webdyn, l'ensemble
 
 ---
 
-## 4. Architecture de Déploiement & Synchronisation Redondante
+## 5. Architecture de Déploiement & Synchronisation Redondante
 
 Pour garantir la résilience et la disponibilité opérationnelle sur l'ensemble des modules logiciels et passerelles Webdyn, chaque fichier certifié est synchronisé à l'identique (copie byte-par-byte) sur quatre répertoires maîtres du dépôt :
 1. `production/` : Bibliothèque centrale de déploiement en production pour les concentrateurs WebdynSunPM.
@@ -250,22 +336,23 @@ Chaque fichier de définition a été vérifié par test unitaire automatisé (`
 
 ---
 
-## 5. Synthèse des Tests & Résultats de Validation
+## 6. Synthèse des Tests & Résultats de Validation
 
-- **Suite de tests dédiée** : `DefFileGenerator/tests/test_classic_definitions_suite.py` $\implies$ **6/6 PASSED (100%)**
+- **Suite de tests dédiée** : `DefFileGenerator/tests/test_classic_definitions_suite.py` $\implies$ **7/7 PASSED (100%)**
   - Vérification de l'existence des fichiers dans tous les répertoires.
   - Vérification de la synchronisation byte-identique.
   - Vérification des 5 Piliers Apollo.
   - Vérification de l'en-tête `Modbus` et des 11 colonnes.
   - Vérification de l'indexation $1..N$ et des codes actions.
   - Vérification de la présence des tags canoniques métier.
+  - Vérification hostile de l'échelle directe des flottants IEEE-754 F32 ($A = 1.000000$).
 - **Validation Globale Production** : `scripts/validate_production.py` $\implies$ **1,141 / 1,141 fichiers PASSED (100%)**.
 - **Bibliothèque Historique** : `DefFileGenerator/tests/test_definitions_library.py` $\implies$ **4/4 PASSED (100%)**.
 - **Audit Trail Immuable** : Événement consigné avec succès dans `logs/audit_trail/audit_log.jsonl` et `docs/audit/EQUIPMENT_AUDIT_LOG.md`.
 
 ---
 
-## 6. Recommandations pour l'Ingénierie Terrain (Field Engineering)
+## 7. Recommandations pour l'Ingénierie Terrain (Field Engineering)
 
 1. **Raccordement RS485 & Polarité** :
    - Pour les compteurs CHINT et Socomec, vérifier scrupuleusement la polarité du bus différentiel ($A = D+$, $B = D-$). Une inversion bloque la trame sans détruire le port.
