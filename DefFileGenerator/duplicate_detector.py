@@ -15,11 +15,10 @@ Provides structured reports and safe deduplication recommendations.
 from __future__ import annotations
 
 import csv
-from dataclasses import asdict, dataclass, field
 import hashlib
-import json
-from pathlib import Path
 import re
+from dataclasses import asdict, dataclass, field
+from pathlib import Path
 from typing import Any
 
 

@@ -1008,7 +1008,7 @@ def get_version_commit(commit_id: str) -> dict[str, Any]:
         commit = vc.get_commit(commit_id)
         return commit.to_dict()
     except KeyError:
-        raise HTTPException(status_code=404, detail=f"Commit {commit_id} not found")
+        raise HTTPException(status_code=404, detail=f"Commit {commit_id} not found") from None
 
 
 @app.get("/api/versions/{commit_id}/diff")
@@ -1022,7 +1022,7 @@ def get_version_diff(
     try:
         return vc.diff(commit_id_a=commit_id, commit_id_b=target, file_name=file_name)
     except KeyError as e:
-        raise HTTPException(status_code=404, detail=str(e))
+        raise HTTPException(status_code=404, detail=str(e)) from e
 
 
 @app.post("/api/versions/commit")
@@ -1041,7 +1041,7 @@ def create_version_commit(payload: CommitRequest) -> dict[str, Any]:
         )
         return commit.to_dict()
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=400, detail=str(e)) from e
 
 
 @app.post("/api/versions/restore")
@@ -1064,7 +1064,7 @@ def restore_version_commit(payload: RestoreRequest) -> dict[str, Any]:
             "restored_files": [f.name for f in restored[:100]],
         }
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=400, detail=str(e)) from e
 
 
 @app.get("/api/duplicates")

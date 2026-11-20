@@ -1463,8 +1463,11 @@ def infer_sunpm_tag(
                 )
             ) and not re.search(r"\b(?:l1|l2|l3)\b", n_lower):
                 return "E_EXP"
-            if any(k in n_lower for k in ("import", "importée", "importee", "prélèvement", "prelevement", "conso")):
-                return "E_IMP"
+        if any(
+            k in n_lower
+            for k in ("import", "importée", "importee", "prélèvement", "prelevement", "conso")
+        ):
+            return "E_IMP"
         if any(k in n_lower for k in ("total", "cumulative", "lifetime", "life", "energytotal")):
             if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
                 return "E_TOT_1"

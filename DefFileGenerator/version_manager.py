@@ -14,13 +14,12 @@ Features:
 from __future__ import annotations
 
 import csv
-from dataclasses import asdict, dataclass, field
 import datetime
 import hashlib
 import json
 import os
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
-import shutil
 from typing import Any
 
 
@@ -84,7 +83,7 @@ class DefinitionVersionControl:
         self.tags_dir.mkdir(parents=True, exist_ok=True)
 
         if not self.index_file.exists():
-            initial_index = {
+            initial_index: dict[str, Any] = {
                 "head": None,
                 "commits": [],
                 "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
@@ -257,8 +256,8 @@ class DefinitionVersionControl:
         self._write_json_atomic(commit_file, commit_record.to_dict())
 
         # Update index
-        with open(self.index_file, encoding="utf-8") as f:
-            index_data = json.load(f)
+        with open(self.index_file, encoding="utf-8") as index_fp:
+            index_data = json.load(index_fp)
 
         index_data["head"] = commit_id
         index_data["commits"].append({

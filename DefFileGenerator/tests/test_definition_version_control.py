@@ -14,9 +14,9 @@ Tests:
 from __future__ import annotations
 
 import csv
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from DefFileGenerator.main import main as cli_main
 from DefFileGenerator.version_manager import DefinitionVersionControl
@@ -70,8 +70,8 @@ class TestDefinitionVersionControl(unittest.TestCase):
 
     def test_first_commit_and_cas_deduplication(self) -> None:
         """Verify commit creation, manifest integrity, and blob storage."""
-        f1 = self._create_sample_file("INV_Acme_Solar1000.csv", "Acme", "Solar1000")
-        f2 = self._create_sample_file("INV_Acme_Solar2000.csv", "Acme", "Solar2000")
+        self._create_sample_file("INV_Acme_Solar1000.csv", "Acme", "Solar1000")
+        self._create_sample_file("INV_Acme_Solar2000.csv", "Acme", "Solar2000")
 
         c1 = self.vc.commit(
             source_dir=self.work_dir,
@@ -158,12 +158,12 @@ class TestDefinitionVersionControl(unittest.TestCase):
 
     def test_restore_single_file_and_directory(self) -> None:
         """Verify atomic restoration of previous states."""
-        f1 = self._create_sample_file("INV_A.csv", model="V1_Original")
+        self._create_sample_file("INV_A.csv", model="V1_Original")
         c1 = self.vc.commit(self.work_dir, message="c1")
 
         # Overwrite with V2
         self._create_sample_file("INV_A.csv", model="V2_Corrupted")
-        c2 = self.vc.commit(self.work_dir, message="c2")
+        self.vc.commit(self.work_dir, message="c2")
 
         # Restore c1 back into work_dir
         restored = self.vc.restore(commit_id=c1.commit_id, target_dir=self.work_dir)
@@ -202,6 +202,7 @@ class TestDefinitionVersionControl(unittest.TestCase):
 
         head = self.vc.get_head()
         self.assertIsNotNone(head)
+        assert head is not None
 
         # CLI history
         cli_main([

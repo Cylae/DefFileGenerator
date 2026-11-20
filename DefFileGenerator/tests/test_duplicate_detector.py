@@ -13,9 +13,9 @@ Tests:
 from __future__ import annotations
 
 import csv
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from DefFileGenerator.duplicate_detector import DuplicateDetector
 from DefFileGenerator.main import main as cli_main
