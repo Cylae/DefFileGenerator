@@ -1,0 +1,257 @@
+Modbus;Inverter;Huawei;GENERIC;;;;;;;
+1;3;30000_30;STRING;;Model;MODEL;1.000000;0.000000;;1
+2;3;30015_20;STRING;;SN;SERIAL;1.000000;0.000000;;1
+3;3;30025_20;STRING;;PN;;1.000000;0.000000;;1
+4;3;30070;U16;;Model ID;;1.000000;0.000000;;1
+5;3;30071;U16;;Number of PV strings;;1.000000;0.000000;;4
+6;3;30072;U16;;Number of MPP trackers;;1.000000;0.000000;;1
+7;3;30073;U32;;Rated power (Pn);P_RATED;0.001000;0.000000;kW;4
+8;3;30075;U32;;Maximum active power (Pmax);;0.001000;0.000000;kW;4
+9;3;30077;U32;;Maximum apparent power (Smax);S_AC;0.001000;0.000000;kVA;4
+10;3;30079;I32;;Maximum reactive power (Qmax: fed to the power grid);;0.001000;0.000000;kVar;4
+11;3;30081;I32;;Maximum reactive power (Qmax: absorbed from the power grid);;0.001000;0.000000;kVar;4
+12;3;30561_30;STRING;;Offering name of southbound device 1;;1.000000;0.000000;;1
+13;3;30576_30;STRING;;Offering name of southbound device 2;;1.000000;0.000000;;1
+14;3;30591_30;STRING;;Offering name of southbound device 3;;1.000000;0.000000;;1
+15;3;31000_30;STRING;;Hardware version;;1.000000;0.000000;;1
+16;3;31015_20;STRING;;Monitoring board SN;;1.000000;0.000000;;1
+17;3;31025_30;STRING;;Monitoring software version;;1.000000;0.000000;;1
+18;3;31040_30;STRING;;Master DSP version;;1.000000;0.000000;;1
+19;3;31070_30;STRING;;CPLD version;;1.000000;0.000000;;1
+20;3;31085_30;STRING;;AFCI version;;1.000000;0.000000;;1
+21;3;31115_30;STRING;;DC-MBUS version;;1.000000;0.000000;;1
+22;3;31200_20;STRING;;REGKEY;;1.000000;0.000000;;1
+23;3;32000;U16;;[Remote communication] Single-machine remote communication;;1.000000;0.000000;;9
+24;3;32002;U16;;[Remote communication] Running status (monitoring processing);;1.000000;0.000000;;9
+25;3;32003;U32;;[Remote communication] Running status (power processing);;1.000000;0.000000;;9
+26;3;32008;U16;;Alarm 1;ALARM_1;1.000000;0.000000;;9
+27;3;32009;U16;;Alarm 2;ALARM_2;1.000000;0.000000;;9
+28;3;32010;U16;;Alarm 3;ALARM_3;1.000000;0.000000;;9
+29;3;32015;U8;;ESN;;1.000000;0.000000;;1
+30;3;32016;I16;;PV1 voltage;U_DC_STRING_1;0.100000;0.000000;V;4
+31;3;32017;I16;;PV1 current;I_DC_STRING_1;0.010000;0.000000;A;4
+32;3;32018;I16;;PV2 voltage;U_DC_STRING_2;0.100000;0.000000;V;4
+33;3;32019;I16;;PV2 current;I_DC_STRING_2;0.010000;0.000000;A;4
+34;3;32020;I16;;PV3 voltage;U_DC_STRING_3;0.100000;0.000000;V;4
+35;3;32021;I16;;PV3 current;I_DC_STRING_3;0.010000;0.000000;A;4
+36;3;32022;I16;;PV4 voltage;U_DC_STRING_4;0.100000;0.000000;V;4
+37;3;32023;I16;;PV4 current;I_DC_STRING_4;0.010000;0.000000;A;4
+38;3;32024;I16;;PV5 voltage;U_DC_STRING_5;0.100000;0.000000;V;0
+39;3;32025;I16;;PV5 current;I_DC_STRING_5;0.010000;0.000000;A;0
+40;3;32026;I16;;PV6 voltage;U_DC_STRING_6;0.100000;0.000000;V;0
+41;3;32027;I16;;PV6 current;I_DC_STRING_6;0.010000;0.000000;A;0
+42;3;32028;I16;;PV7 voltage;U_DC_STRING_7;0.100000;0.000000;V;0
+43;3;32029;I16;;PV7 current;I_DC_STRING_7;0.010000;0.000000;A;0
+44;3;32030;I16;;PV8 voltage;U_DC_STRING_8;0.100000;0.000000;V;0
+45;3;32031;I16;;PV8 current;I_DC_STRING_8;0.010000;0.000000;A;0
+46;3;32032;I16;;PV9 voltage;U_DC_STRING_9;0.100000;0.000000;V;0
+47;3;32033;I16;;PV9 current;I_DC_STRING_9;0.010000;0.000000;A;0
+48;3;32034;I16;;PV10 voltage;U_DC_STRING_10;0.100000;0.000000;V;0
+49;3;32035;I16;;PV10 current;I_DC_STRING_10;0.010000;0.000000;A;0
+50;3;32036;I16;;PV11 voltage;U_DC_STRING_11;0.100000;0.000000;V;0
+51;3;32037;I16;;PV11 current;I_DC_STRING_11;0.010000;0.000000;A;0
+52;3;32038;I16;;PV12 voltage;U_DC_STRING_12;0.100000;0.000000;V;0
+53;3;32039;I16;;PV12 current;I_DC_STRING_12;0.010000;0.000000;A;0
+54;3;32040;I16;;PV13 voltage;U_DC_STRING_13;0.100000;0.000000;V;0
+55;3;32041;I16;;PV13 current;I_DC_STRING_13;0.010000;0.000000;A;0
+56;3;32042;I16;;PV14 voltage;U_DC_STRING_14;0.100000;0.000000;V;0
+57;3;32043;I16;;PV14 current;I_DC_STRING_14;0.010000;0.000000;A;0
+58;3;32044;I16;;PV15 voltage;U_DC_STRING_15;0.100000;0.000000;V;0
+59;3;32045;I16;;PV15 current;I_DC_STRING_15;0.010000;0.000000;A;0
+60;3;32046;I16;;PV16 voltage;U_DC_STRING_16;0.100000;0.000000;V;0
+61;3;32047;I16;;PV16 current;I_DC_STRING_16;0.010000;0.000000;A;0
+62;3;32048;I16;;PV17 voltage;U_DC_STRING_17;0.100000;0.000000;V;0
+63;3;32049;I16;;PV17 current;I_DC_STRING_17;0.010000;0.000000;A;0
+64;3;32050;I16;;PV18 voltage;U_DC_STRING_18;0.100000;0.000000;V;0
+65;3;32051;I16;;PV18 current;I_DC_STRING_18;0.010000;0.000000;A;0
+66;3;32052;I16;;PV19 voltage;U_DC_STRING_19;0.100000;0.000000;V;0
+67;3;32053;I16;;PV19 current;I_DC_STRING_19;0.010000;0.000000;A;0
+68;3;32054;I16;;PV20 voltage;U_DC_STRING_20;0.100000;0.000000;V;0
+69;3;32055;I16;;PV20 current;I_DC_STRING_20;0.010000;0.000000;A;0
+70;3;32056;I16;;PV21 voltage;U_DC_STRING_21;0.100000;0.000000;V;0
+71;3;32057;I16;;PV21 current;I_DC_STRING_21;0.010000;0.000000;A;0
+72;3;32058;I16;;PV22 voltage;U_DC_STRING_22;0.100000;0.000000;V;0
+73;3;32059;I16;;PV22 current;I_DC_STRING_22;0.010000;0.000000;A;0
+74;3;32060;I16;;PV23 voltage;U_DC_STRING_23;0.100000;0.000000;V;0
+75;3;32061;I16;;PV23 current;I_DC_STRING_23;0.010000;0.000000;A;0
+76;3;32062;I16;;PV24 voltage;U_DC_STRING_24;0.100000;0.000000;V;0
+77;3;32063;I16;;PV24 current;I_DC_STRING_24;0.010000;0.000000;A;0
+78;3;32064;I32;;Input power;P_DC;0.001000;0.000000;kW;4
+79;3;32066;U16;;Power grid voltage/Line voltage between phases A and B;U_AC_L1L2;0.100000;0.000000;V;4
+80;3;32067;U16;;Line voltage between phases B and C;U_AC_L2L3;0.100000;0.000000;V;4
+81;3;32068;U16;;Line voltage between phases C and A;U_AC_L3L1;0.100000;0.000000;V;4
+82;3;32069;U16;;Phase A voltage;U_AC_1;0.100000;0.000000;V;4
+83;3;32070;U16;;Phase B voltage;U_AC_2;0.100000;0.000000;V;4
+84;3;32071;U16;;Phase C voltage;U_AC_3;0.100000;0.000000;V;4
+85;3;32072;I32;;Power grid current/Phase A current;I_AC_1;0.001000;0.000000;A;4
+86;3;32074;I32;;Phase B current;I_AC_2;0.001000;0.000000;A;4
+87;3;32076;I32;;Phase C current;I_AC_3;0.001000;0.000000;A;4
+88;3;32078;I32;;Peak active power of current day;;0.001000;0.000000;kW;4
+89;3;32080;I32;;Active power;P_AC;0.001000;0.000000;kW;4
+90;3;32082;I32;;Reactive power;Q_AC;0.001000;0.000000;kVar;4
+91;3;32084;I16;;Power factor;PF;0.001000;0.000000;;4
+92;3;32085;U16;;Grid frequency;FREQ;0.010000;0.000000;Hz;4
+93;3;32086;U16;;Efficiency;;0.010000;0.000000;%;4
+94;3;32087;I16;;Internal temperature;TEMP_INT;0.100000;0.000000;C;4
+95;3;32088;U16;;Insulation resistance;R_ISO;0.001000;0.000000;M/Ohm;4
+96;3;32089;U16;;Device status;;1.000000;0.000000;;9
+97;3;32090;U16;;Fault code;;1.000000;0.000000;;9
+98;3;32091;U32;;Startup time;;1.000000;0.000000;s;1
+99;3;32093;U32;;Shutdown time;;1.000000;0.000000;s;1
+100;3;32106;U32;;Accumulated energy yield;E_TOT;0.010000;0.000000;kWh;4
+101;3;32114;U32;;Daily energy yield;E_DAY;0.010000;0.000000;kWh;4
+102;3;32116;U32;;Energy yield of the month;;0.010000;0.000000;kWh;0
+103;3;32118;U32;;Energy yield of the year;;0.010000;0.000000;kWh;0
+104;3;35127;U16;;[Management system] Management system status;;1.000000;0.000000;;4
+105;3;35136;U32;;[Smart I-V Curve Diagnosis] Authorization function;;1.000000;0.000000;;0
+106;3;35138;U16;;[Smart I-V Curve Diagnosis] License status;;1.000000;0.000000;;0
+107;3;35139;U32;;[Smart I-V Curve Diagnosis] License expiration time;;1.000000;0.000000;s;0
+108;3;35141;U32;;License loading time;;1.000000;0.000000;s;0
+109;3;35143;U32;;License revocation time;;1.000000;0.000000;s;0
+110;3;35145_20;STRING;;License SN;;1.000000;0.000000;;0
+111;3;35155_128;STRING;;Revocation code;;1.000000;0.000000;;0
+112;3;35249;U16;;[4G] Module status;;1.000000;0.000000;;0
+113;3;35250;U32;;[4G] IP address;;1.000000;0.000000;;0
+114;3;35252;U32;;[4G] Subnet mask;;1.000000;0.000000;;0
+115;3;35254_20;STRING;;[4G] IMEI;;1.000000;0.000000;;0
+116;3;35264;U8;;[4G] Signal strength;;1.000000;0.000000;;0
+117;3;35265;U8;;[4G] Maximum number of PIN attempts;;1.000000;0.000000;;0
+118;3;35266;U8;;[4G] PIN verification status;;1.000000;0.000000;;0
+119;3;35268;U8;;Original model name;;1.000000;0.000000;;1
+120;3;35300;U16;;[Active] Adjusment mode;;1.000000;0.000000;;4
+121;3;35301;U32;;[Active] Adjusment value;;1.000000;0.000000;;4
+122;3;35303;U16;;[Active] Adjusment command;;1.000000;0.000000;;4
+123;3;35304;U16;;[Reactive] Adjustment mode;;1.000000;0.000000;;4
+124;3;35305;U32;;[Reactive] Adjustment value;;1.000000;0.000000;;0
+125;3;35307;U16;;[Reactive] Adjustment command;;1.000000;0.000000;;0
+126;3;37006;U16;;[System level] Charge/Discharge mode;;1.000000;0.000000;;4
+127;3;37113;I32;;[Power meter collection] Active power;;1.000000;0.000000;W;4
+128;3;37200;U16;;[Optimizer] Total number of optimizers;;1.000000;0.000000;;4
+129;3;37201;U16;;[Optimizer] Number of online optimizers;;1.000000;0.000000;;4
+130;3;37202;U16;;[Optimizer] Feature data;;1.000000;0.000000;;4
+131;3;40000;U32;;System Time;;1.000000;0.000000;s;0
+132;3;40037;U16;;[Power grid scheduling] Q-U characteristic curve mode;;1.000000;0.000000;;0
+133;3;40038;U16;;[Power grid scheduling] Q-U dispatch trigger power (%);;1.000000;0.000000;%;0
+134;3;40120;U16;;[Power grid scheduling] Fixed active power derated;;0.100000;0.000000;kW;0
+135;3;40122;I16;;power factor;CMD_PF;0.001000;0.000000;;1
+136;3;40123;I16;;[Power grid scheduling] Reactive power compensation(Q/S);;0.001000;0.000000;;4
+137;3;40125;U16;;[Power grid scheduling] Active power percentage derating (0.1%);CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;1
+138;3;40126;U32;;[Power grid scheduling] Fixed active power derated (W);CMD_P_AC_SET_ABS;1.000000;0.000000;W;1
+139;3;40129;I32;;[Power grid scheduling] Reactive power compensation at night (kVar);;0.001000;0.000000;kVar;4
+140;3;40133;U16;;Number of points cosphi-P/Pn;;1.000000;0.000000;;0
+141;3;40134;U16;;P/Pn value at point 1;;0.100000;0.000000;%;0
+142;3;40135;I16;;cosphi value at point 1;;0.001000;0.000000;;0
+143;3;40136;U16;;P/Pn value at point 2;;0.100000;0.000000;%;0
+144;3;40137;I16;;cosphi value at point 2;;0.001000;0.000000;;0
+145;3;40138;U16;;P/Pn value at point 3;;0.100000;0.000000;%;0
+146;3;40139;I16;;cosphi value at point 3;;0.001000;0.000000;;0
+147;3;40140;U16;;P/Pn value at point 4;;0.100000;0.000000;%;0
+148;3;40141;I16;;cosphi value at point 4;;0.001000;0.000000;;0
+149;3;40142;U16;;P/Pn value at point 5;;0.100000;0.000000;%;0
+150;3;40143;I16;;cosphi value at point 5;;0.001000;0.000000;;0
+151;3;40144;U16;;P/Pn value at point 6;;0.100000;0.000000;%;0
+152;3;40145;I16;;cosphi value at point 6;;0.001000;0.000000;;0
+153;3;40146;U16;;P/Pn value at point 7;;0.100000;0.000000;%;0
+154;3;40147;I16;;cosphi value at point 7;;0.001000;0.000000;;0
+155;3;40148;U16;;P/Pn value at point 8;;0.100000;0.000000;%;0
+156;3;40149;I16;;cosphi value at point 8;;0.001000;0.000000;;0
+157;3;40150;U16;;P/Pn value at point 9;;0.100000;0.000000;%;0
+158;3;40151;I16;;cosphi value at point 9;;0.001000;0.000000;;0
+159;3;40152;U16;;P/Pn value at point 10;;0.100000;0.000000;%;0
+160;3;40153;I16;;cosphi value at point 10;;0.001000;0.000000;;0
+161;3;40154;U16;;Number of points Q-U;;1.000000;0.000000;;0
+162;3;40155;U16;;U/Un value at point 1_1;;0.100000;0.000000;%;0
+163;3;40156;I16;;Q/S value at point 1;;0.001000;0.000000;;0
+164;3;40157;U16;;U/Un value at point 2_1;;0.100000;0.000000;%;0
+165;3;40158;I16;;Q/S value at point 2;;0.001000;0.000000;;0
+166;3;40159;U16;;U/Un value at point 3_1;;0.100000;0.000000;%;0
+167;3;40160;I16;;Q/S value at point 3;;0.001000;0.000000;;0
+168;3;40161;U16;;U/Un value at point 4_1;;0.100000;0.000000;%;0
+169;3;40162;I16;;Q/S value at point 4;;0.001000;0.000000;;0
+170;3;40163;U16;;U/Un value at point 5_1;;0.100000;0.000000;%;0
+171;3;40164;I16;;Q/S value at point 5;;0.001000;0.000000;;0
+172;3;40165;U16;;U/Un value at point 6_1;;0.100000;0.000000;%;0
+173;3;40166;I16;;Q/S value at point 6;;0.001000;0.000000;;0
+174;3;40167;U16;;U/Un value at point 7_1;;0.100000;0.000000;%;0
+175;3;40168;I16;;Q/S value at point 7;;0.001000;0.000000;;0
+176;3;40169;U16;;U/Un value at point 8_1;;0.100000;0.000000;%;0
+177;3;40170;I16;;Q/S value at point 8;;0.001000;0.000000;;0
+178;3;40171;U16;;U/Un value at point 9_1;;0.100000;0.000000;%;0
+179;3;40172;I16;;Q/S value at point 9;;0.001000;0.000000;;0
+180;3;40173;U16;;U/Un value at point 10_1;;0.100000;0.000000;%;0
+181;3;40174;I16;;Q/S value at point 10;;0.001000;0.000000;;0
+182;3;40175;U16;;Number of points PF-U;;1.000000;0.000000;;0
+183;3;40176;U16;;U/Un value at point 1;;0.100000;0.000000;%;0
+184;3;40177;I16;;PF value at point 1;;0.001000;0.000000;;0
+185;3;40178;U16;;U/Un value at point 2;;0.100000;0.000000;%;0
+186;3;40179;I16;;PF value at point 2;;0.001000;0.000000;;0
+187;3;40180;U16;;U/Un value at point 3;;0.100000;0.000000;%;0
+188;3;40181;I16;;PF value at point 3;;0.001000;0.000000;;0
+189;3;40182;U16;;U/Un value at point 4;;0.100000;0.000000;%;0
+190;3;40183;I16;;PF value at point 4;;0.001000;0.000000;;0
+191;3;40184;U16;;U/Un value at point 5;;0.100000;0.000000;%;0
+192;3;40185;I16;;PF value at point 5;;0.001000;0.000000;;0
+193;3;40186;U16;;U/Un value at point 6;;0.100000;0.000000;%;0
+194;3;40187;I16;;PF value at point 6;;0.001000;0.000000;;0
+195;3;40188;U16;;U/Un value at point 7;;0.100000;0.000000;%;0
+196;3;40189;I16;;PF value at point 7;;0.001000;0.000000;;0
+197;3;40190;U16;;U/Un value at point 8;;0.100000;0.000000;%;0
+198;3;40191;I16;;PF value at point 8;;0.001000;0.000000;;0
+199;3;40192;U16;;U/Un value at point 9;;0.100000;0.000000;%;0
+200;3;40193;I16;;PF value at point 9;;0.001000;0.000000;;0
+201;3;40194;U16;;U/Un value at point 10;;0.100000;0.000000;%;0
+202;3;40195;I16;;PF value at point 10;;0.001000;0.000000;;0
+203;3;40196;U16;;[Power grid scheduling] Reactive power adjustment time;CMD_RAMP_TIME_S;1.000000;0.000000;s;1
+204;3;40198;U16;;[Power grid scheduling] Q-U power percentage to exit scheduling;;1.000000;0.000000;%;4
+205;3;40200;U16;;Startup;CMD_ON;1.000000;0.000000;;1
+206;3;40201;U16;;Shutdown;CMD_OFF;1.000000;0.000000;;1
+207;3;42000;U16;;Grid code;;0.001000;0.000000;;1
+208;3;42015;U32;;[Power grid scheduling] Reactive power change gradient;;0.001000;0.000000;%/s;4
+209;3;42017;U32;;[Power grid scheduling] Active power change gradient;;0.001000;0.000000;;4
+210;3;42019;U32;;[Power grid scheduling] Schedule instruction valid duration;CMD_REVERT_TIME_S;1.000000;0.000000;s;1
+211;3;42405;I32;;Failsafe Active Power Limit [kW] [High Accuracy];;1.000000;0.000000;;4
+212;3;43006;I16;;Time Zone;;1.000000;0.000000;min;4
+213;3;43098;U16;;[Management system] TLS encryption;;1.000000;0.000000;;0
+214;3;45052;U16;;WLAN wakeup;;1.000000;0.000000;;0
+215;3;45086;U16;;Fast power scheduling;;1.000000;0.000000;;0
+216;3;47589;U16;;[Inverter level] Remote charge/discharge control mode;;1.000000;0.000000;;0
+217;3;47674;U16;;Scheduled task;;1.000000;0.000000;;0
+218;3;47675;I32;;Default maximum feed-in power;;1.000000;0.000000;;0
+219;3;47677;U32;;Default active power change gradient;;1.000000;0.000000;;0
+220;3;47954;U16;;Peak Shaving;;1.000000;0.000000;;0
+221;3;47955;U16;;Backup power SOC for peak shaving;;1.000000;0.000000;;0
+222;3;47956;U16;;Peak power 1;;1.000000;0.000000;;0
+223;3;47957;U16;;Peak power 2;;1.000000;0.000000;;0
+224;3;47958;U16;;Peak power 3;;1.000000;0.000000;;0
+225;3;47959;U16;;Peak power 4;;1.000000;0.000000;;0
+226;3;47960;U16;;Peak power 5;;1.000000;0.000000;;0
+227;3;47961;U16;;Peak power 6;;1.000000;0.000000;;0
+228;3;47962;U16;;Peak power 7;;1.000000;0.000000;;0
+229;3;47963;U16;;Peak power 8;;1.000000;0.000000;;0
+230;3;47964;U16;;Peak power 9;;1.000000;0.000000;;0
+231;3;47965;U16;;Peak power 10;;1.000000;0.000000;;0
+232;3;47966;U16;;Peak power 11;;1.000000;0.000000;;0
+233;3;47967;U16;;Peak power 12;;1.000000;0.000000;;0
+234;3;47968;U16;;Peak power 13;;1.000000;0.000000;;0
+235;3;47969;U16;;Peak power 14;;1.000000;0.000000;;0
+236;3;47970;U16;;Peak power 15;;1.000000;0.000000;;0
+237;3;47971;U16;;Peak power 16;;1.000000;0.000000;;0
+238;3;47972;U16;;Peak power 17;;1.000000;0.000000;;0
+239;3;47973;U16;;Peak power 18;;1.000000;0.000000;;0
+240;3;47974;U16;;Peak power 19;;1.000000;0.000000;;0
+241;3;47975;U16;;Peak power 20;;1.000000;0.000000;;0
+242;3;47976;U16;;Peak power 21;;1.000000;0.000000;;0
+243;3;47977;U16;;Peak power 22;;1.000000;0.000000;;0
+244;3;47978;U16;;Peak power 23;;1.000000;0.000000;;0
+245;3;47979;U16;;Peak power 24;;1.000000;0.000000;;0
+246;3;47980;U16;;Peak power 25;;1.000000;0.000000;;0
+247;3;47981;U16;;Peak power 26;;1.000000;0.000000;;0
+248;3;47982;U16;;Peak power 27;;1.000000;0.000000;;0
+249;3;47983;U16;;Peak power 28;;1.000000;0.000000;;0
+250;3;47984;U16;;Peak power 29;;1.000000;0.000000;;0
+251;3;47985;U16;;Peak power 30;;1.000000;0.000000;;0
+252;3;47986;U16;;Peak power 31;;1.000000;0.000000;;0
+253;3;47987;U16;;Peak power 32;;1.000000;0.000000;;0
+254;3;48020;U16;;AI optical storage;;1.000000;0.000000;;0
+255;3;48089;U16;;Backup Box model;;1.000000;0.000000;;0
+256;3;48090;U16;;Phase-to-ground short-circuit protection;;1.000000;0.000000;;0

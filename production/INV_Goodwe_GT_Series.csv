@@ -1,4 +1,4 @@
-Modbus;Inverter;Goodwe;GT_Series;;;;;;;
+Modbus;Inverter;GoodWe;GT-Series;;;;;;;
 1;3;32016;I16;;PV1 Voltage;U_DC_STRING_1;0.100000;0.000000;V;4
 2;3;32017;I16;;PV1 Current;I_DC_STRING_1;0.010000;0.000000;A;4
 3;3;32018;I16;;PV2 Voltage;U_DC_STRING_2;0.100000;0.000000;V;4
@@ -75,15 +75,15 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 74;3;32370;I16;;PV-_PE Voltage;U_DC_NE;0.100000;0.000000;V;4
 75;3;35502_16;STRING;;Device serial number DSP;SERIAL;1.000000;0.000000;;4
 76;3;35510_10;STRING;;Device model DSP;MODEL;1.000000;0.000000;;4
-77;3;35710;U32;;DSP fault code;;1.000000;0.000000;;9
-78;3;35718;U32;;Slave DSP fault code;;1.000000;0.000000;;9
+77;3;35710;U32;;DSP fault code;;1.000000;0.000000;;4
+78;3;35718;U32;;Slave DSP fault code;;1.000000;0.000000;;4
 79;3;35749;U32;;Total generation time;TOT;1.000000;0.000000;h;4
 80;3;35751;U16;;Safety Country Code;;1.000000;0.000000;;4
 81;3;35758;U16;;Work Mode;;1.000000;0.000000;;4
 82;3;35768;U16;;leak current Average Value;;1.000000;0.000000;mA;4
 83;3;35849;U16;;Current Derating Flag;;1.000000;0.000000;;4
 84;3;35851;U16;;Current Reactive Flag;;1.000000;0.000000;;4
-85;3;40264;U16;;European shutdown switch;;1.000000;0.000000;;1
+85;3;40264;U16;;European shutdown switch;;1.000000;0.000000;;4
 86;3;41144;U16;;Modbus address;;1.000000;0.000000;;4
 87;3;41145;U16;;Modbus protocol type;;1.000000;0.000000;;4
 88;3;41146;U32;;RS485 Baud rate;;1.000000;0.000000;;4
@@ -93,27 +93,27 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 92;3;41324;U16;;HVRT Enable;;1.000000;0.000000;;4
 93;3;41325;U16;;Anti Islanding;;1.000000;0.000000;;4
 94;3;41326;U16;;Shadow mode switch;;1.000000;0.000000;;4
-95;3;41327;U16;;Export Power Limit Switch;CMD_P_ENA;1.000000;0.000000;;4
-96;3;41328;U32;;Export Power Limit Set;CMD_P_AC_LIM_ABS;1.000000;0.000000;;4
+95;3;41327;U16;;Export Power Limit Switch;CMD_P_ENA;1.000000;0.000000;;1
+96;3;41328;U32;;Export Power Limit Set;CMD_P_AC_LIM_ABS;1.000000;0.000000;;1
 97;3;41330;U16;;Power On;CMD_ON;-1.000000;1.000000;;1
 98;3;41331;U16;;Power Off;CMD_OFF;-1.000000;1.000000;;1
 99;3;41335;U16;;Grid Type;;1.000000;0.000000;;4
 100;3;41336;U16;;The power limit percentage for export to the grid;;1.000000;0.000000;%Pn;4
 101;3;41347;U16;;Shadow Scan Period;;1.000000;0.000000;Min;4
-102;3;41351;U16;;N-PE Fault Limit;;0.100000;0.000000;V;9
-103;3;41373;U16;;History fault clearing;;1.000000;0.000000;;9
+102;3;41351;U16;;N-PE Fault Limit;;0.100000;0.000000;V;4
+103;3;41373;U16;;History fault clearing;;1.000000;0.000000;;4
 104;3;42008;U16;;Anti-backflow function;;1.000000;0.000000;;4
 105;3;42009;U16;;Three-phase antibackflow mode selection;;1.000000;0.000000;;4
 106;3;42022;U16;;shadow mppt function 1;;1.000000;0.000000;;4
-107;3;42051;U16;;NPE Overvoltage fault detection switch;;1.000000;0.000000;;9
+107;3;42051;U16;;NPE Overvoltage fault detection switch;;1.000000;0.000000;;4
 108;3;42057;U16;;Lightning protection module detection switch;;1.000000;0.000000;;4
 109;3;42061;U16;;PID prevent function switch;;1.000000;0.000000;;4
 110;3;42067;U16;;PID repair function switch;;1.000000;0.000000;;4
 111;3;42403;U16;;Active power control method;;1.000000;0.000000;;4
 112;3;42404;I32;;Active power fixed value derating;;1.000000;0.000000;W;4
 113;3;42407;I16;;Active power percentage derating(0.1%);;0.100000;0.000000;%;4
-114;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1.000000;0.000000;;4
-115;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001000;0.000000;;4
+114;3;42411;I32;;Reactive power compensation fixed value;CMD_Q_AC_SET_ABS;1.000000;0.000000;;1
+115;3;42413;I16;;Reactive power compensation(PF);CMD_PF;0.001000;0.000000;;1
 116;3;42414;I16;;Reactive power compensation(Q/S);;0.100000;0.000000;%Pn;4
 117;3;42415;I16;;Reactive power compensation(Q/Qn);;0.100000;0.000000;%Qn;4
 118;3;42416;U16;;Reactive power compensation method;;1.000000;0.000000;;4
@@ -121,7 +121,7 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 120;3;42428;U32;;Reactive pow compensation parameter;;1.000000;0.000000;ms;4
 121;3;42430;U16;;Active power compensation response mode;;1.000000;0.000000;;4
 122;3;42431;U32;;Active power compensation parameter LPF time parameter;;1.000000;0.000000;ms;4
-123;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.100000;0.000000;%Pn/min;4
+123;3;42433;U32;;Active power gradient;CMD_RAMP_TIME_S;0.100000;0.000000;%Pn/min;1
 124;3;42435;U32;;Reactive power gradient;;0.100000;0.000000;%Pn/min;4
 125;3;42441;U16;;Night reactive power switch;;1.000000;0.000000;;4
 126;3;42442;U16;;Night reactive power parameters enable;;1.000000;0.000000;;4
@@ -134,12 +134,12 @@ Modbus;Inverter;Goodwe;GT_Series;;;;;;;
 133;3;42534;U16;;Normal condition lowerer limit of connection voltage(0.1%);;0.100000;0.000000;%Vn;4
 134;3;42535;U16;;Normal condition upper limit of connection frequency;;0.010000;0.000000;Hz;4
 135;3;42536;U16;;Normal condition lowerer limit of connection frequency;;0.010000;0.000000;Hz;4
-136;3;42537;U16;;Fault condition Grid connection waiting time;;1.000000;0.000000;s;9
-137;3;42538;U16;;Slope of Fault condition Gridconnected power slope;;0.100000;0.000000;%Pn/min;9
-138;3;42539;U16;;Fault condition upper limit of connection voltage;;0.100000;0.000000;%Vn;9
-139;3;42540;U16;;Fault condition lowerer limit of connection voltage;;0.100000;0.000000;%Vn;9
-140;3;42541;U16;;Fault condition upper limit of connection frequency;;0.010000;0.000000;Hz;9
-141;3;42542;U16;;Fault condition lowerer limit of connection frequency;;0.010000;0.000000;Hz;9
+136;3;42537;U16;;Fault condition Grid connection waiting time;;1.000000;0.000000;s;4
+137;3;42538;U16;;Slope of Fault condition Gridconnected power slope;;0.100000;0.000000;%Pn/min;4
+138;3;42539;U16;;Fault condition upper limit of connection voltage;;0.100000;0.000000;%Vn;4
+139;3;42540;U16;;Fault condition lowerer limit of connection voltage;;0.100000;0.000000;%Vn;4
+140;3;42541;U16;;Fault condition upper limit of connection frequency;;0.010000;0.000000;Hz;4
+141;3;42542;U16;;Fault condition lowerer limit of connection frequency;;0.010000;0.000000;Hz;4
 142;3;42553;U16;;QU curve enable;;1.000000;0.000000;;4
 143;3;42555;U16;;Power of enter the curve (0.1%);;0.100000;0.000000;%Pn;4
 144;3;42556;U16;;Power of quit the curve (0.1%);;0.100000;0.000000;%Pn;4

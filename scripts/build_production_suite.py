@@ -11,6 +11,7 @@ Enforces the 5 Apollo-standard pillars on all definition files entering `product
 
 import csv
 import re
+import shutil
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -29,6 +30,8 @@ MARS_DIR = WORKSPACE_DIR / "MarsRenewable_Definitions"
 DYNESS_DIR = WORKSPACE_DIR / "Dyness_DH_Series_Definitions"
 X7_DIR = WORKSPACE_DIR / "X7_Definitions"
 CLASSIC_DIR = WORKSPACE_DIR / "Definitions" / "Classic"
+GOODWE_DIR = WORKSPACE_DIR / "Definitions" / "GoodWe"
+SMA_DIR = WORKSPACE_DIR / "Definitions" / "SMA"
 
 PREFIX_TO_CATEGORY = {
     "INV": "Inverter",
@@ -48,8 +51,8 @@ MFG_REGISTRY = {
     "fimer": "Fimer",
     "huawei": "Huawei",
     "huwai": "Huawei",
-    "goodwe": "Goodwe",
-    "goodwee": "Goodwe",
+    "goodwe": "GoodWe",
+    "goodwee": "GoodWe",
     "sungrow": "Sungrow",
     "growatt": "Growatt",
     "solis": "Solis",
@@ -294,6 +297,31 @@ BAD_WORDS = [
     "wpm",
     "_2.csv",
     "simu",
+    "ne_pas_utiliser",
+    "faitalamain",
+    "charp1",
+    "copergreen",
+    "customer_version",
+    "pics_v2",
+    "inverter_pics",
+    "log_goodwe",
+    "new_100kw",
+    # SMA scrap, raw logs and legacy draft tokens
+    "modbus-ti-en",
+    "1.00.11.r",
+    "v02_02_07",
+    "v03_02_07",
+    "work_modbus_sma",
+    "hedl02770",
+    "edl210606",
+    "fonctionnel",
+    "prelim210114",
+    "stp125-70",
+    "25_updated_10",
+    "sma_16kw",
+    "sma_sma",
+    "smappee",
+    "clustercontroler",
 ]
 NON_EQUIPMENT_SCRAPS = {
     "analyseregistres",
@@ -522,6 +550,16 @@ def build_manifest() -> dict[str, Path]:
     }
     manifest.update(classic_map)
 
+    # 8. Complete GoodWe Certified Ecosystem
+    if GOODWE_DIR.exists():
+        for gw_file in sorted(GOODWE_DIR.glob("*.csv")):
+            manifest[gw_file.name] = gw_file
+
+    # 9. Complete SMA Certified Ecosystem
+    if SMA_DIR.exists():
+        for sma_file in sorted(SMA_DIR.glob("*.csv")):
+            manifest[sma_file.name] = sma_file
+
     # 6. Comprehensive Ingestion from tagged_definitions/
     candidates_by_tgt: dict[str, list[Path]] = defaultdict(list)
     for f in sorted(TAGGED_DIR.glob("*.csv")):
@@ -596,7 +634,11 @@ def sanitize_and_normalize_definition(
         if raw_header[2].strip().lower() == mfg.lower():
             mfg = raw_header[2].strip()
     if len(raw_header) > 3 and raw_header[3].strip():
-        if raw_header[3].strip().lower() == model.lower():
+        if (
+            raw_header[3].strip().lower() == model.lower()
+            or raw_header[3].strip().lower().replace("-", "_")
+            == model.lower().replace("-", "_")
+        ):
             model = raw_header[3].strip()
 
     # Clean Header
@@ -827,30 +869,53 @@ def main():
             failed_files.append((tgt_filename, "Source file not found"))
             continue
 
-        header, rows = sanitize_and_normalize_definition(tgt_filename, src_path)
         out_path = PROD_DIR / tgt_filename
 
-        buf = []
-        header_line = ";".join(header)
-        buf.append(header_line)
-        for r in rows:
-            buf.append(";".join(r))
-        new_content = "\n".join(buf) + "\n"
+        is_already_certified = any(
+            src_path.resolve().is_relative_to(d.resolve())
+            for d in (
+                GOODWE_DIR,
+                SMA_DIR,
+                CLASSIC_DIR,
+                X7_DIR,
+                FOXESS_DIR,
+                MARS_DIR,
+                DYNESS_DIR,
+            )
+            if d.exists()
+        )
 
-        need_write = True
-        if out_path.exists():
-            try:
-                with open(out_path, encoding="utf-8") as existing_fp:
-                    if existing_fp.read().replace("\r\n", "\n") == new_content:
-                        need_write = False
-            except Exception:
-                pass
+        if is_already_certified:
+            if not out_path.exists() or out_path.read_bytes() != src_path.read_bytes():
+                shutil.copy2(src_path, out_path)
+            with open(out_path, encoding="utf-8-sig", errors="ignore") as fp:
+                rdr = csv.reader(fp, delimiter=";")
+                header = next(rdr, [])
+                rows = list(rdr)
+        else:
+            header, rows = sanitize_and_normalize_definition(tgt_filename, src_path)
 
-        if need_write:
-            with open(out_path, "w", encoding="utf-8", newline="") as fp:
-                writer = csv.writer(fp, delimiter=";")
-                writer.writerow(header)
-                writer.writerows(rows)
+            buf = []
+            header_line = ";".join(header)
+            buf.append(header_line)
+            for r in rows:
+                buf.append(";".join(r))
+            new_content = "\n".join(buf) + "\n"
+
+            need_write = True
+            if out_path.exists():
+                try:
+                    with open(out_path, encoding="utf-8") as existing_fp:
+                        if existing_fp.read().replace("\r\n", "\n") == new_content:
+                            need_write = False
+                except Exception:
+                    pass
+
+            if need_write:
+                with open(out_path, "w", encoding="utf-8", newline="") as fp:
+                    writer = csv.writer(fp, delimiter=";")
+                    writer.writerow(header)
+                    writer.writerows(rows)
 
         # Validate with def_gen
         val_rep = generator.validate_csv_detailed(str(out_path), strict=True, strict_overlap=False)

@@ -1,4 +1,4 @@
-Modbus;Inverter;Goodwe;MT;1;;;;;;
+Modbus;Inverter;GoodWe;MT;;;;;;;
 1;3;0;U16;;Power on voltage;;0.100000;0.000000;V;4
 2;3;1;U16;;Reconnect time;;1.000000;0.000000;s;4
 3;3;2;U16;;Lower limit of grid voltage;;0.100000;0.000000;V;4
@@ -9,14 +9,14 @@ Modbus;Inverter;Goodwe;MT;1;;;;;;
 8;3;17;U16;;Device RTC time Day/Hour;;1.000000;0.000000;;4
 9;3;18;U16;;Device RTC time Minute/Second;;1.000000;0.000000;;4
 10;3;256;U16;;Active power adjust;;1.000000;0.000000;%;4
-11;3;257;U16;;PF reactive power adjust;CMD_PF;1.000000;0.000000;;4
-12;3;258;I32;;Reactive power adjust_1;CMD_Q_AC_SET_PERCENT;1.000000;0.000000;Var;4
+11;3;257;U16;;PF reactive power adjust;CMD_PF;1.000000;0.000000;;1
+12;3;258;I32;;Reactive power adjust_1;CMD_Q_AC_SET_PERCENT;1.000000;0.000000;Var;1
 13;3;262;I16;;ARP Limit Adjust Range;;1.000000;0.000000;%;4
 14;3;265;I16;;reactive power adjust_2;;1.000000;0.000000;%;4
-15;3;288;U16;;Power On(Allow on grid self-test);CMD_ON;1.000000;-1.000000;;4
-16;3;289;U16;;Power Off(Not allow on grid self-test);CMD_OFF;1.000000;-1.000000;;4
+15;3;288;U16;;Power On(Allow on grid self-test);CMD_ON;1.000000;-1.000000;;1
+16;3;289;U16;;Power Off(Not allow on grid self-test);CMD_OFF;1.000000;-1.000000;;1
 17;3;290;U16;;Restart;;1.000000;0.000000;;4
-18;3;293;U16;;Active Control adjust_1;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;4
+18;3;293;U16;;Active Control adjust_1;CMD_P_AC_SET_PERCENT;0.100000;0.000000;%;1
 19;3;312;U16;;Shadow mode switch;;1.000000;0.000000;;4
 20;3;512_16;STRING;;Device Serial Number;SERIAL;1.000000;0.000000;;4
 21;3;528_10;STRING;;Device Type;MODEL;1.000000;0.000000;;4
@@ -44,13 +44,13 @@ Modbus;Inverter;Goodwe;MT;1;;;;;;
 43;3;796;U16;;BUS Voltage;;0.100000;0.000000;V;4
 44;3;797;U16;;NBUS Voltage;;0.100000;0.000000;V;4
 45;3;799;U16;;Safety Code;;1.000000;0.000000;;4
-46;3;800;U16;;Feed Power to grid in today/ Daily power generation;;0.100000;0.000000;kWh;4
+46;3;800;U16;;Feed Power to grid in today/ Daily power generation;E_DAY;0.100000;0.000000;kWh;4
 47;3;827;U16;;Year :Month;;1.000000;0.000000;;4
 48;3;828;U16;;Date :Hour;;1.000000;0.000000;;4
 49;3;829;U16;;Minute :Second;;1.000000;0.000000;;4
 50;3;830;U16;;Manufacture ID;;1.000000;0.000000;;4
 51;3;831;U16;;Wireless signal strength;;1.000000;0.000000;%;4
-52;3;850;U32;;Feeding power;;1.000000;0.000000;W;4
+52;3;850;U32;;Feeding power;P_AC;1.000000;0.000000;W;4
 53;3;852;U16;;Firmware Version of ARM;;1.000000;0.000000;;4
 54;3;853;U16;;GPRS Burn-in Mode;;1.000000;0.000000;;4
 55;3;855;U16;;Vpv3 /PV3 input voltage;U_DC_MPPT_3;0.100000;0.000000;V;4

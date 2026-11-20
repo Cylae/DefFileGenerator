@@ -5,7 +5,7 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 4;3;30055;U32;;Fabricant;MANUFACTURER;1.000000;0.000000;;4
 5;3;30057;U32;;Numero de serie_1;;1.000000;0.000000;;4
 6;3;30059;U32;;Version du micrologiciel;;1.000000;0.000000;;4
-7;3;30201;U32;;Etat;;1.000000;0.000000;;4
+7;3;30201;U32;;Etat;STATE;1.000000;0.000000;;4
 8;3;30203;U32;;Puissance nominale en etat OK_0;P_RATED;0.001000;0.000000;kW;4
 9;3;30205;U32;;Puissance nominale en etat avertissement;;1.000000;0.000000;W;4
 10;3;30207;U32;;Puissance nominale en etat erreur;;1.000000;0.000000;W;4
@@ -28,69 +28,69 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 27;3;30559;U32;;Nombre evenements pour utilisateur_0;;1.000000;0.000000;;4
 28;3;30561;U32;;Nombre evenements pour installateur_1;;1.000000;0.000000;;4
 29;3;30599;U32;;Nombre de connexions au reseau;;1.000000;0.000000;;4
-30;3;30775;I32;;Puissance;;0.001000;0.000000;kW;4
-31;3;30777;I32;;Puissance L1;;1.000000;0.000000;W;4
-32;3;30779;I32;;Puissance L2;;1.000000;0.000000;W;4
-33;3;30781;I32;;Puissance L3;;1.000000;0.000000;W;4
+30;3;30775;I32;;Puissance;;1.000000;0.000000;W;4
+31;3;30777;I32;;Puissance L1;P_AC_1;1.000000;0.000000;W;4
+32;3;30779;I32;;Puissance L2;P_AC_2;1.000000;0.000000;W;4
+33;3;30781;I32;;Puissance L3;P_AC_3;1.000000;0.000000;W;4
 34;3;30783;U32;;Tension du reseau phase L1;U_AC_1;0.010000;0.000000;V;4
 35;3;30785;U32;;Tension du reseau phase L2;U_AC_2;0.010000;0.000000;V;4
 36;3;30787;U32;;Tension du reseau phase L3;U_AC_3;0.010000;0.000000;V;4
-37;3;30789;U32;;Tension de reseau entre phase L1 et L2;;0.010000;0.000000;V;4
-38;3;30791;U32;;Tension de reseau phase L2 contre L3;;0.010000;0.000000;V;4
-39;3;30793;U32;;Tension de reseau phase L3 contre L1;;0.010000;0.000000;V;4
-40;3;30795;U32;;Courant du reseau;;0.001000;0.000000;A;4
-41;3;30797;U32;;Courant du reseau phase L1_0;;0.001000;0.000000;A;4
-42;3;30799;U32;;Courant du reseau phase L2_0;;0.001000;0.000000;A;4
-43;3;30801;U32;;Courant du reseau phase L3_0;;0.001000;0.000000;A;4
+37;3;30789;U32;;Tension de reseau entre phase L1 et L2;U_AC_L1L2;0.010000;0.000000;V;4
+38;3;30791;U32;;Tension de reseau phase L2 contre L3;U_AC_L2L3;0.010000;0.000000;V;4
+39;3;30793;U32;;Tension de reseau phase L3 contre L1;U_AC_L3L1;0.010000;0.000000;V;4
+40;3;30795;U32;;Courant du reseau;I_AC;0.001000;0.000000;A;4
+41;3;30797;U32;;Courant du reseau phase L1_0;I_AC_1;0.001000;0.000000;A;4
+42;3;30799;U32;;Courant du reseau phase L2_0;I_AC_2;0.001000;0.000000;A;4
+43;3;30801;U32;;Courant du reseau phase L3_0;I_AC_3;0.001000;0.000000;A;4
 44;3;30803;U32;;Frequence du reseau;FREQ;0.010000;0.000000;Hz;4
-45;3;30805;I32;;Puissance reactive;Q_AC;0.010000;0.000000;VAr;4
-46;3;30807;I32;;Puissance reactive L1;Q_AC_1;1.000000;0.000000;VAr;4
+45;3;30805;I32;;Puissance reactive;Q_AC;1.000000;0.000000;VAr;4
+46;3;30807;I32;;Puissance reactive L1;S_AC;1.000000;0.000000;VAr;4
 47;3;30809;I32;;Puissance reactive L2;Q_AC_2;1.000000;0.000000;VAr;4
 48;3;30811;I32;;Puissance reactive L3;Q_AC_3;1.000000;0.000000;VAr;4
-49;3;30813;I32;;Puissance apparente;S_AC;1.000000;0.000000;VA;4
+49;3;30813;I32;;Puissance apparente;PF;1.000000;0.000000;VA;4
 50;3;30815;I32;;Puissance apparente L1;S_AC_1;1.000000;0.000000;VA;4
 51;3;30817;I32;;Puissance apparente L2;S_AC_2;1.000000;0.000000;VA;4
 52;3;30819;I32;;Puissance apparente L3;S_AC_3;1.000000;0.000000;VA;4
-53;3;30823;U32;;Type d excitation du cos phi;PF;1.000000;0.000000;;4
+53;3;30823;U32;;Type d excitation du cos phi;;1.000000;0.000000;;4
 54;3;30827;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_0;;1.000000;0.000000;VAr;4
 55;3;30829;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_1;;0.100000;0.000000;;4
 56;3;30835;U32;;Mode de fonctionnement consigne de puissance active_RO;;1.000000;0.000000;;4
 57;3;30837;U32;;Limitation de la puissance active P_ configuration de la puissance active_RO_0;;1.000000;0.000000;W;4
 58;3;30839;U32;;Limitation de la puissance active P_ configuration de la puissance active_RO_1;;1.000000;0.000000;pct;4
-59;3;30845;U32;;Etat de charge actuel de la batterie;;1.000000;0.000000;%;4
-60;3;30847;U32;;Capacite de la batterie actuelle;;1.000000;0.000000;pct;4
+59;3;30845;U32;;Etat de charge actuel de la batterie;SOC;1.000000;0.000000;%;4
+60;3;30847;U32;;Capacite de la batterie actuelle;SOH;1.000000;0.000000;pct;4
 61;3;30881;U32;;Connexion reseau de l_installation;;1.000000;0.000000;;4
 62;3;30921;I32;;Consigne de puissance reactive manuelle avec puissance active nulle_0;;1.000000;0.000000;VAr;4
 63;3;30923;I32;;Consigne de puissance reactive manuelle avec puissance active nulle_1;;0.100000;0.000000;;4
 64;3;30949;U32;;Facteur de decalage;;0.001000;0.000000;;4
-65;3;30963;I32;;Entree courant DC_1;I_DC;0.001000;0.000000;A;4
-66;3;30965;I32;;Entree tension DC_1;U_DC;0.010000;0.000000;V;4
-67;3;30967;I32;;Entree puissance DC_1;P_DC;1.000000;0.000000;W;4
-68;3;30969;I32;;Entree courant DC_2;;0.001000;0.000000;A;4
-69;3;30971;I32;;Entree tension DC_2;;0.010000;0.000000;V;4
-70;3;30973;I32;;Entree puissance DC_2;;1.000000;0.000000;W;4
-71;3;30975;I32;;Tension du circuit intermediaire;;0.010000;0.000000;V;4
+65;3;30963;I32;;Entree courant DC_1;I_DC_1;0.001000;0.000000;A;4
+66;3;30965;I32;;Entree tension DC_1;U_DC_MPPT_1;0.010000;0.000000;V;4
+67;3;30967;I32;;Entree puissance DC_1;P_DC_MPPT_1;1.000000;0.000000;W;4
+68;3;30969;I32;;Entree courant DC_2;I_DC_MPPT_2;0.001000;0.000000;A;4
+69;3;30971;I32;;Entree tension DC_2;U_DC_MPPT_2;0.010000;0.000000;V;4
+70;3;30973;I32;;Entree puissance DC_2;P_DC_MPPT_2;1.000000;0.000000;W;4
+71;3;30975;I32;;Tension du circuit intermediaire;U_DC;0.010000;0.000000;V;4
 72;3;30977;I32;;Courant du reseau phase L1_1;;0.001000;0.000000;A;4
 73;3;30979;I32;;Courant du reseau phase L2_1;;0.001000;0.000000;A;4
 74;3;30981;I32;;Courant du reseau phase L3_1;;0.001000;0.000000;A;4
 75;3;31085;U32;;Puissance nominale en etat OK_1;;1.000000;0.000000;W;4
-76;3;31209;I32;;Entree courant DC_3;;0.001000;0.000000;A;4
-77;3;31211;I32;;Entree tension DC_3;;0.010000;0.000000;V;4
-78;3;31213;I32;;Entree puissance DC_3;;1.000000;0.000000;W;4
-79;3;31215;I32;;Entree courant DC_4;;0.001000;0.000000;A;4
-80;3;31217;I32;;Entree tension DC_4;;0.010000;0.000000;V;4
-81;3;31219;I32;;Entree puissance DC_4;;1.000000;0.000000;W;4
+76;3;31209;I32;;Entree courant DC_3;I_DC_MPPT_3;0.001000;0.000000;A;4
+77;3;31211;I32;;Entree tension DC_3;U_DC_MPPT_3;0.010000;0.000000;V;4
+78;3;31213;I32;;Entree puissance DC_3;P_DC_MPPT_3;1.000000;0.000000;W;4
+79;3;31215;I32;;Entree courant DC_4;I_DC_MPPT_4;0.001000;0.000000;A;4
+80;3;31217;I32;;Entree tension DC_4;U_DC_MPPT_4;0.010000;0.000000;V;4
+81;3;31219;I32;;Entree puissance DC_4;P_DC_MPPT_4;1.000000;0.000000;W;4
 82;3;31221;I32;;Facteur de dephasage EEI;;0.001000;0.000000;;4
-83;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;WIND_SPEED;0.010000;0.000000;pct;4
+83;3;31241;U32;;Limitation de puissance PV par communication pour vente directe;;0.010000;0.000000;pct;4
 84;3;31245;U32;;Limitation de puissance PV interne;;0.010000;0.000000;pct;4
 85;3;31247;I32;;Courant de defaut;;0.001000;0.000000;A;4
 86;3;31391;U32;;Etat batterie;;1.000000;0.000000;;4
 87;3;31405;U32;;Cons. actuelle lim. puis. act. P;;1.000000;0.000000;W;4
-88;3;31795;I32;;Entree courant DC_5;;0.001000;0.000000;A;4
-89;3;31797;I32;;Entree courant DC_6;;0.001000;0.000000;A;4
-90;3;31799;I32;;Entree courant DC_7;;0.001000;0.000000;A;4
-91;3;31801;I32;;Entree courant DC_8;;0.001000;0.000000;A;4
-92;3;31803;I32;;Entree courant DC_9;;0.001000;0.000000;A;4
+88;3;31795;I32;;Entree courant DC_5;I_DC_MPPT_5;0.001000;0.000000;A;4
+89;3;31797;I32;;Entree courant DC_6;I_DC_6;0.001000;0.000000;A;4
+90;3;31799;I32;;Entree courant DC_7;I_DC_MPPT_7;0.001000;0.000000;A;4
+91;3;31801;I32;;Entree courant DC_8;I_DC_MPPT_8;0.001000;0.000000;A;4
+92;3;31803;I32;;Entree courant DC_9;I_DC_MPPT_9;0.001000;0.000000;A;4
 93;3;33001;U32;;Etat de veille;;1.000000;0.000000;;4
 94;3;33003;U32;;Etat de fonctionnement;;1.000000;0.000000;;4
 95;3;33007;U32;;Domaine de puissance reactive actif;;1.000000;0.000000;;4
@@ -107,8 +107,8 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 106;3;33039;U32;;cos phi nominal PFMinQ2Rtg;;0.000100;0.000000;;4
 107;3;33041;U32;;cos phi nominal PFMinQ3Rtg;;0.000100;0.000000;;4
 108;3;33043;U32;;cos phi nominal PFMinQ4Rtg;;0.000100;0.000000;;4
-109;3;34113;I32;;Temperature interieure;;0.100000;0.000000;C;4
-110;3;34611;I32;;Temperature extrerieure mesuree maximale;;0.100000;0.000000;C;4
+109;3;34113;I32;;Temperature interieure;TEMP_INT;0.100000;0.000000;°°°°°°°°°C;4
+110;3;34611;I32;;Temperature extrerieure mesuree maximale;;0.100000;0.000000;°°°°°°°°°C;4
 111;3;34695;I32;;Cons. puissance reactive max.;;0.010000;0.000000;pct;4
 112;3;35377;U64;;Nombre evenements pour utilisateur_1;;1.000000;0.000000;;4
 113;3;35381;U64;;Nombre evenements pour installateur_0;;1.000000;0.000000;;4
@@ -133,7 +133,7 @@ Modbus;Inverter;SMA;STP_X;;;;;;;
 132;3;40202;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_2;;1.000000;0.000000;VAr;4
 133;3;40204;I32;;Consigne de puissance reactive manuelle en cas de puissance active delivree_3;;0.100000;0.000000;;4
 134;3;40210;U32;;Mode de fonctionnement consigne de puissance active_RW;CMD_P_ENA;1.000000;0.000000;;1
-135;3;40212;U32;;Limitation de la puissance active P_ configuration de la puissance active_W;;1.000000;0.000000;W;4
+135;3;40212;U32;;Limitation de la puissance active P_ configuration de la puissance active_W;CMD_P_AC_SET_ABS;1.000000;0.000000;W;1
 136;3;40214;U32;;Limitation de la puissance active P_ configuration de la puissance active_pct;CMD_P_AC_SET_PERCENT;1.000000;0.000000;pct;1
 137;3;40236;U32;;Mode de service de BMS_0;;1.000000;0.000000;;4
 138;3;40242;U32;;P(f)_ taux de modification de la puissance active apres la fin du defaut;;1.000000;0.000000;pct/min;4

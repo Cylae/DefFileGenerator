@@ -1,4 +1,4 @@
-Modbus;Inverter;FoxESS;G_MAX_ModbusTCP;;;;;;;
+Modbus;Inverter;FoxESS;G-MAX_ModbusTCP;;;;;;;
 1;3;101;U16;;PCS actual total active power (summary);P_AC;10.000000;0.000000;KW;4
 2;3;102;U16;;PCS actual total reactive power (summary);Q_AC;10.000000;0.000000;Kvar;4
 3;3;103;U16;;Total voltage (summary);;10.000000;0.000000;V;4

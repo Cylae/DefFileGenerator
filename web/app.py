@@ -12,6 +12,7 @@ import os
 import sys
 import tempfile
 from itertools import islice
+from pathlib import Path
 from typing import Any
 
 # Inject parent directory to import core modules cleanly
@@ -848,6 +849,11 @@ def download_library_file(filename: str) -> FileResponse:
     file_path = os.path.join(production_dir, safe_filename)
     if not os.path.exists(file_path):
         file_path = os.path.join(definitions_dir, safe_filename)
+
+    if not os.path.exists(file_path):
+        matches = list(Path(definitions_dir).rglob(safe_filename))
+        if matches:
+            file_path = str(matches[0])
 
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail=f"Definition '{safe_filename}' not found.")
