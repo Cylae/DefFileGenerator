@@ -1,0 +1,25 @@
+Modbus;Battery;X7;BMS;;;;;;;
+1;4;200;U16;;BMS - Stack SOC;SOC_RACK;1.000000;0.000000;%;4
+2;4;201;U16;;BMS - Stack SOH;SOH_RACK;1.000000;0.000000;%;4
+3;4;202;U16;;BMS - Stack Status;STATE_RACK;1.000000;0.000000;;9
+4;4;203;I16;;BMS - Stack Voltage;U_DC_RACK;0.100000;0.000000;V;4
+5;4;204;I16;;BMS - Stack Current;I_DC_RACK;0.100000;0.000000;A;4
+6;4;205;I16;;BMS - Maximum Cell Voltage;;0.001000;0.000000;V;4
+7;4;206;I16;;BMS - Minimum Cell Voltage;;0.001000;0.000000;V;4
+8;4;207;I16;;BMS - Maximum Cell Temperature;T_CELL_MAX;1.000000;0.000000;°C;4
+9;4;208;I16;;BMS - Minimum Cell Temperature;NUM_CELL_T_MAX;1.000000;0.000000;°C;4
+10;4;211;U16;;BMS - Cluster Number of Maximum Cell Voltage;U_CELL_MAX_RACK;1.000000;0.000000;;4
+11;4;212;U16;;BMS - Cell Number of Maximum Cell Voltage;NUM_CELL_U_MAX;1.000000;0.000000;;4
+12;4;213;U16;;BMS - Cluster Number of Minimum Cell Voltage;U_CELL_MIN_RACK;1.000000;0.000000;;4
+13;4;214;U16;;BMS - Cell Number of Minimum Cell Voltage;NUM_CELL_U_MIN;1.000000;0.000000;;4
+14;4;215;U16;;BMS - Cluster Number of Maximum Cell Temperature;U_CELL_AVG_RACK;1.000000;0.000000;;4
+15;4;216;U16;;BMS - Cell Number of Maximum Cell Temperature;T_CELL_AVG_RACK;1.000000;0.000000;;4
+16;4;217;U16;;BMS - Cluster Number of Minimum Cell Temperature;T_CELL_DIFF_MAX;1.000000;0.000000;;4
+17;4;218;U16;;BMS - Cell Number of Minimum Cell Temperature;NUM_CELL_T_MIN2;1.000000;0.000000;;4
+18;4;223;U16;;BMS - Maximum Cell Voltage Difference;U_CELL_DIFF_MAX;1.000000;0.000000;mV;4
+19;4;224;I16;;BMS - Stack Power;P_DC_RACK;1.000000;0.000000;kW;4
+20;4;227;U32;;BMS - Cumulative Cluster Charge Energy;E_CHG_RACK_TOT;0.100000;0.000000;kWh;4
+21;4;229;U32;;BMS - Cumulative Cluster Discharge Energy;E_DISCHG_RACK_TOT;0.100000;0.000000;kWh;4
+22;4;2203;I16;;BMS - Maximum Allowed Charge Power;P_CHG_MAX_ALLOWED;1.000000;0.000000;kW;4
+23;4;2204;I16;;BMS - Maximum Allowed Discharge Power;P_DISCHG_MAX_ALLOWED;1.000000;0.000000;kW;4
+24;2;4254;U16;;BMS Alarm - Communication fault between communication board and BMS;ALARM_BMS_COMM_FAULT;1.000000;0.000000;;9

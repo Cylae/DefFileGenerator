@@ -27,9 +27,9 @@ Enforces:
 from __future__ import annotations
 
 import csv
+from pathlib import Path
 import re
 import shutil
-from pathlib import Path
 from typing import Any
 
 from DefFileGenerator.production_governor import verify_file_pillars

@@ -1463,10 +1463,7 @@ def infer_sunpm_tag(
                 )
             ) and not re.search(r"\b(?:l1|l2|l3)\b", n_lower):
                 return "E_EXP"
-        if any(
-            k in n_lower
-            for k in ("import", "importée", "importee", "prélèvement", "prelevement", "conso")
-        ):
+            if any(k in n_lower for k in ("import", "importée", "importee", "prélèvement", "prelevement", "conso")):
             return "E_IMP"
         if any(k in n_lower for k in ("total", "cumulative", "lifetime", "life", "energytotal")):
             if re.search(r"\b(?:phase\s*[a1]|l1\b)", n_lower):
@@ -2186,31 +2183,25 @@ def auto_fix_definition_file(
     if not lines:
         return {"tags_normalized": 0, "tags_inferred": 0, "duplicates_removed": 0}
 
-    header = list(lines[0])
-    if header:
-        header[0] = Generator.normalize_protocol(header[0])
-    while len(header) < 11:
-        header.append("")
-    header = header[:11]
+    header = lines[0]
     detected_type = header[1].strip() if len(header) > 1 else "Inverter"
 
     counts = {"tags_normalized": 0, "tags_inferred": 0, "duplicates_removed": 0}
-    cleaned_rows: list[list[str]] = []
+    new_lines = [header]
     seen_rows: set[tuple[str, str, str, str]] = set()
 
     seen_tags: set[str] = set()
 
     for row in lines[1:]:
-        row_list = list(row)
-        if len(row_list) < 7:
-            cleaned_rows.append(row_list)
+        if len(row) < 7:
+            new_lines.append(row)
             continue
 
-        fc = row_list[1].strip() if len(row_list) > 1 else ""
-        addr = row_list[2].strip() if len(row_list) > 2 else ""
-        dtype = row_list[3].strip().upper() if len(row_list) > 3 else ""
-        var_name = row_list[5].strip() if len(row_list) > 5 else ""
-        existing_tag = row_list[6].strip()
+        fc = row[1].strip() if len(row) > 1 else ""
+        addr = row[2].strip() if len(row) > 2 else ""
+        dtype = row[3].strip().upper() if len(row) > 3 else ""
+        var_name = row[5].strip() if len(row) > 5 else ""
+        existing_tag = row[6].strip()
 
         row_key = (fc, addr, dtype, var_name)
         if deduplicate and row_key in seen_rows:
@@ -2241,20 +2232,12 @@ def auto_fix_definition_file(
                 seen_tags.add(inferred)
                 counts["tags_inferred"] += 1
 
-        row_list[6] = target_tag
-        cleaned_rows.append(row_list)
-
-    # Re-index rows sequentially and ensure exact 11 columns
-    final_rows: list[list[str]] = [header]
-    for idx, r in enumerate(cleaned_rows, start=1):
-        r[0] = str(idx)
-        while len(r) < 11:
-            r.append("")
-        final_rows.append(r[:11])
+        row[6] = target_tag
+        new_lines.append(row)
 
     # Atomically write sanitized definition
     with staged_text_output(str(out_p)) as out_f:
         writer = csv.writer(out_f, delimiter=";")
-        writer.writerows(final_rows)
+        writer.writerows(new_lines)
 
     return counts

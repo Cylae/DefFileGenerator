@@ -1032,6 +1032,160 @@ def report_command(args: argparse.Namespace) -> None:
             logging.info(f"Structured metrics exported: {json_path}")
 
 
+def commit_command(args: argparse.Namespace) -> None:
+    """Subcommand handler for 'commit': creates a version snapshot of definition files."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    path = getattr(args, "path", "production")
+    msg = args.message
+    author = getattr(args, "author", None) or os.environ.get("USERNAME") or os.environ.get("USER") or "System"
+    tag_arg = getattr(args, "tag", None)
+    tags = [t.strip() for t in tag_arg.split(",") if t.strip()] if tag_arg else None
+
+    vc = DefinitionVersionControl(store_dir=getattr(args, "store_dir", None))
+    commit_res = vc.commit(source_dir=path, message=msg, author=author, tags=tags)
+    print(f"[OK] Commit {commit_res.commit_id} created successfully.")
+    print(f"     Author   : {commit_res.author}")
+    print(f"     Timestamp: {commit_res.timestamp}")
+    print(f"     Message  : {commit_res.message}")
+    print(f"     Files    : {commit_res.files_count} files | {commit_res.total_registers} registers")
+    print(
+        f"     Changes  : +{commit_res.changes_summary.get('added', 0)} added, "
+        f"~{commit_res.changes_summary.get('modified', 0)} modified, "
+        f"-{commit_res.changes_summary.get('deleted', 0)} deleted"
+    )
+
+
+def history_command(args: argparse.Namespace) -> None:
+    """Subcommand handler for 'history' (or 'log'): lists version commits."""
+    import json
+
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl(store_dir=getattr(args, "store_dir", None))
+    limit = getattr(args, "limit", 20)
+    file_name = getattr(args, "file", None)
+    commits = vc.log(limit=limit, file_name=file_name)
+
+    if getattr(args, "json", False):
+        print(json.dumps(commits, indent=2, ensure_ascii=False))
+        return
+
+    if not commits:
+        print("No definition commits found in history repository.")
+        return
+
+    print("=" * 80)
+    target_str = f" for {file_name}" if file_name else ""
+    print(f"DEFINITION VERSION HISTORY{target_str}")
+    print("=" * 80)
+    for c in commits:
+        print(f"Commit: {c['commit_id']} | {c['timestamp'][:19]} | {c['author']}")
+        print(f"        {c['message']}")
+        changes = c.get("changes", {})
+        print(
+            f"        Files: {c['files_count']} "
+            f"(+{changes.get('added', 0)} ~{changes.get('modified', 0)} -{changes.get('deleted', 0)})"
+        )
+        print("-" * 80)
+
+
+def diff_command(args: argparse.Namespace) -> None:
+    """Subcommand handler for 'diff': computes semantic differences between definition commits."""
+    import json
+
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl(store_dir=getattr(args, "store_dir", None))
+    cid_a = args.commit_a
+    cid_b = getattr(args, "commit_b", None)
+    file_name = getattr(args, "file", None)
+
+    diff_data = vc.diff(commit_id_a=cid_a, commit_id_b=cid_b, file_name=file_name)
+
+    if getattr(args, "json", False):
+        print(json.dumps(diff_data, indent=2, ensure_ascii=False))
+        return
+
+    print("=" * 80)
+    cmp_str = diff_data['commit_b'] or "Parent"
+    print(f"DEFINITION DIFF: {diff_data['commit_a']} vs {cmp_str}")
+    print("=" * 80)
+    print(f"Files Added   : {len(diff_data['added_files'])}: {diff_data['added_files'][:10]}")
+    print(f"Files Removed : {len(diff_data['removed_files'])}: {diff_data['removed_files'][:10]}")
+    print(f"Files Modified: {len(diff_data['modified_files'])}: {diff_data['modified_files'][:10]}")
+
+    for fname, fdiff in diff_data.get("file_diffs", {}).items():
+        print(f"\n--- {fname} ---")
+        if fdiff.get("header_changed"):
+            print(f"  Header: {fdiff.get('old_header')} -> {fdiff.get('new_header')}")
+        print(f"  Added registers   : {fdiff.get('added_registers_count')}")
+        print(f"  Removed registers : {fdiff.get('removed_registers_count')}")
+        print(f"  Modified registers: {fdiff.get('modified_registers_count')}")
+        for mod in fdiff.get("modified_registers", [])[:5]:
+            print(f"    Register {mod['address']} ({mod['name']}): {mod['changes']}")
+
+
+def restore_command(args: argparse.Namespace) -> None:
+    """Subcommand handler for 'restore': restores files from a past commit."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl(store_dir=getattr(args, "store_dir", None))
+    cid = args.commit_id
+    dest = getattr(args, "dest", "production")
+    fname = getattr(args, "file", None)
+    dry_run = getattr(args, "dry_run", False)
+
+    restored = vc.restore(commit_id=cid, target_dir=dest, file_name=fname, dry_run=dry_run)
+    dry_prefix = "(Dry-run) " if dry_run else ""
+    print(f"[OK] {dry_prefix}Restored {len(restored)} files from commit {cid} to {dest}.")
+    for r in restored[:10]:
+        print(f"     -> {r.name}")
+    if len(restored) > 10:
+        print(f"     ... (+{len(restored) - 10} files)")
+
+
+def duplicates_command(args: argparse.Namespace) -> None:
+    """Subcommand handler for 'duplicates': analyzes and reports duplicate definitions."""
+    import json
+
+    from DefFileGenerator.duplicate_detector import DuplicateDetector
+
+    path = getattr(args, "path", "production")
+    detector = DuplicateDetector(path)
+    report = detector.scan()
+
+    if getattr(args, "json", False):
+        print(json.dumps(report.to_dict(), indent=2, ensure_ascii=False))
+        return
+
+    report_out = getattr(args, "report_out", None)
+    md_content = detector.format_markdown_report(report)
+
+    if report_out:
+        Path(report_out).write_text(md_content, encoding="utf-8")
+        print(f"[OK] Duplicate audit report written to: {report_out}")
+
+    print("=" * 80)
+    print(f"DUPLICATE DEFINITION AUDIT: {report.target_directory}")
+    print("=" * 80)
+    print(f"Total Files Scanned         : {report.total_files_scanned}")
+    print(f"Total Duplicate Files Found : {report.total_duplicate_files}")
+    print(f"Exact SHA-256 Clusters      : {len(report.exact_hash_clusters)}")
+    print(f"Category Conflict Clusters  : {len(report.category_conflict_clusters)}")
+    print(f"Alias Synonym Clusters      : {len(report.alias_clusters)}")
+    print(f"Hardware Family Clusters    : {len(report.exact_body_clusters)}")
+    print("=" * 80)
+    if report.category_conflict_clusters:
+        print("\nCategory Conflicts (OTH_ vs Typed):")
+        for c in report.category_conflict_clusters[:5]:
+            print(f"  Canonical: {c.canonical_file} | Redundant: {c.duplicate_files}")
+    if report.alias_clusters:
+        print("\nAlias Synonyms:")
+        for c in report.alias_clusters[:5]:
+            print(f"  Canonical: {c.canonical_file} | Aliases: {c.duplicate_files}")
+
+
 def _run_cli(argv: list[str] | None = None) -> None:
     """
     Parses CLI arguments and dispatches to the corresponding command handler.
@@ -1348,6 +1502,58 @@ def _run_cli(argv: list[str] | None = None) -> None:
         help="Mine also from XML register table files (.xml)",
     )
 
+    # Commit Subparser
+    parser_commit = subparsers.add_parser(
+        "commit", help="Create a version snapshot of definition files in history store"
+    )
+    add_common_flags(parser_commit)
+    parser_commit.add_argument("-m", "--message", required=True, help="Commit message describing the changes")
+    parser_commit.add_argument("--path", default="production", help="Directory containing definitions to snapshot (default: production)")
+    parser_commit.add_argument("--author", help="Author of the commit")
+    parser_commit.add_argument("-t", "--tag", help="Comma-separated release tags to assign to this commit")
+    parser_commit.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+
+    # History / Log Subparser
+    parser_history = subparsers.add_parser(
+        "history", aliases=["log"], help="Display version commit history log"
+    )
+    add_common_flags(parser_history)
+    parser_history.add_argument("-n", "--limit", type=int, default=20, help="Maximum number of commits to display")
+    parser_history.add_argument("-f", "--file", help="Filter history for a specific definition filename")
+    parser_history.add_argument("--json", action="store_true", help="Output history log as JSON")
+    parser_history.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+
+    # Diff Subparser
+    parser_diff = subparsers.add_parser(
+        "diff", help="Show semantic Modbus differences between definition commits"
+    )
+    add_common_flags(parser_diff)
+    parser_diff.add_argument("commit_a", help="First commit ID (or target to compare)")
+    parser_diff.add_argument("commit_b", nargs="?", help="Second commit ID (defaults to parent of commit_a)")
+    parser_diff.add_argument("-f", "--file", help="Inspect diff for a single definition filename")
+    parser_diff.add_argument("--json", action="store_true", help="Output diff as JSON")
+    parser_diff.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+
+    # Restore Subparser
+    parser_restore = subparsers.add_parser(
+        "restore", help="Restore definitions from a past commit"
+    )
+    add_common_flags(parser_restore)
+    parser_restore.add_argument("commit_id", help="Commit ID to restore from")
+    parser_restore.add_argument("-d", "--dest", default="production", help="Destination directory (default: production)")
+    parser_restore.add_argument("-f", "--file", help="Restore only a single specific definition file")
+    parser_restore.add_argument("--dry-run", action="store_true", help="Simulate restore without writing files")
+    parser_restore.add_argument("--store-dir", help="Custom version store directory (default: definitions_history)")
+
+    # Duplicates Subparser
+    parser_duplicates = subparsers.add_parser(
+        "duplicates", help="Audit and detect duplicate definition files and redundant classifications"
+    )
+    add_common_flags(parser_duplicates)
+    parser_duplicates.add_argument("--path", default="production", help="Directory to analyze (default: production)")
+    parser_duplicates.add_argument("--report-out", help="Path to write detailed Markdown audit report")
+    parser_duplicates.add_argument("--json", action="store_true", help="Output duplicates report as JSON")
+
     args = parser.parse_args(argv)
 
     if getattr(args, "gui", False) or args.command == "gui":
@@ -1398,6 +1604,16 @@ def _run_cli(argv: list[str] | None = None) -> None:
         train_command(args)
     elif args.command == "batch":
         batch_command(args)
+    elif args.command == "commit":
+        commit_command(args)
+    elif args.command in ("history", "log"):
+        history_command(args)
+    elif args.command == "diff":
+        diff_command(args)
+    elif args.command == "restore":
+        restore_command(args)
+    elif args.command == "duplicates":
+        duplicates_command(args)
 
 
 def main(args: list[str] | None = None) -> None:

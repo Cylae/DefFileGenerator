@@ -30,11 +30,7 @@ def test_huawei_v4_reference_conformance():
 
 def _get_target_csv(filename: str) -> str:
     for sub in ("MarsRenewable_Definitions", "generated_definitions", ""):
-        path = (
-            os.path.join(WORKSPACE_DIR, sub, filename)
-            if sub
-            else os.path.join(WORKSPACE_DIR, filename)
-        )
+        path = os.path.join(WORKSPACE_DIR, sub, filename) if sub else os.path.join(WORKSPACE_DIR, filename)
         if os.path.exists(path):
             return path
     return os.path.join(WORKSPACE_DIR, filename)

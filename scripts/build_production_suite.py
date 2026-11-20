@@ -956,6 +956,19 @@ def main():
     print(f"Output Directory     : {PROD_DIR}")
     print("=" * 80)
 
+    # Record automated version commit
+    try:
+        from DefFileGenerator.version_manager import DefinitionVersionControl
+        vc = DefinitionVersionControl(repo_root=WORKSPACE_DIR)
+        commit = vc.commit(
+            source_dir=PROD_DIR,
+            message=f"Automated build: {len(stats_list)} production definitions ({sum(s['registers'] for s in stats_list):,} registers)",
+            author="Production Governor",
+        )
+        print(f"[VERSION CONTROL] Recorded commit {commit.commit_id} (+{commit.changes_summary.get('added', 0)} ~{commit.changes_summary.get('modified', 0)} -{commit.changes_summary.get('deleted', 0)})")
+    except Exception as e:
+        print(f"[WARNING] Version control snapshot could not be recorded: {e}")
+
     if failed_files:
         sys.exit(1)
 
