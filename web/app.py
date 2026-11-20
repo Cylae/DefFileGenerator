@@ -281,6 +281,19 @@ class DiscoveryResponse(BaseModel):
     validation: dict[str, Any] | None = None
 
 
+class CommitRequest(BaseModel):
+    message: str
+    author: str | None = None
+    path: str = "production"
+    tag: str | None = None
+
+
+class RestoreRequest(BaseModel):
+    commit_id: str
+    target_dir: str = "production"
+    file_name: str | None = None
+
+
 async def _save_upload(file: UploadFile, destination: str) -> None:
     """Persist an upload in bounded chunks and reject oversized payloads."""
     total = 0
@@ -959,6 +972,7 @@ def get_knowledge_stats() -> dict[str, Any]:
     if not os.path.exists(kb_path):
         return {"total_mappings": 0, "unique_tags": 0}
 
+
     try:
         with open(kb_path, encoding="utf-8") as f:
             data = json.load(f)
@@ -973,6 +987,94 @@ def get_knowledge_stats() -> dict[str, Any]:
     except Exception as e:
         logger.warning("Could not read knowledge stats: %s", e)
         return {"total_mappings": 0, "unique_tags": 0}
+
+
+@app.get("/api/versions")
+def get_version_history(limit: int = 50, file_name: str | None = None) -> list[dict[str, Any]]:
+    """Returns the version control commit history log."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl()
+    return vc.log(limit=limit, file_name=file_name)
+
+
+@app.get("/api/versions/{commit_id}")
+def get_version_commit(commit_id: str) -> dict[str, Any]:
+    """Returns detailed metadata and file manifest for a specific commit."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl()
+    try:
+        commit = vc.get_commit(commit_id)
+        return commit.to_dict()
+    except KeyError:
+        raise HTTPException(status_code=404, detail=f"Commit {commit_id} not found")
+
+
+@app.get("/api/versions/{commit_id}/diff")
+def get_version_diff(
+    commit_id: str, target: str | None = None, file_name: str | None = None
+) -> dict[str, Any]:
+    """Returns semantic diff of registers between commits."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl()
+    try:
+        return vc.diff(commit_id_a=commit_id, commit_id_b=target, file_name=file_name)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@app.post("/api/versions/commit")
+def create_version_commit(payload: CommitRequest) -> dict[str, Any]:
+    """Creates a new version commit snapshot."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl()
+    tags = [t.strip() for t in payload.tag.split(",") if t.strip()] if payload.tag else None
+    try:
+        commit = vc.commit(
+            source_dir=payload.path,
+            message=payload.message,
+            author=payload.author or "Web API User",
+            tags=tags,
+        )
+        return commit.to_dict()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/api/versions/restore")
+def restore_version_commit(payload: RestoreRequest) -> dict[str, Any]:
+    """Restores definitions from a past commit."""
+    from DefFileGenerator.version_manager import DefinitionVersionControl
+
+    vc = DefinitionVersionControl()
+    try:
+        restored = vc.restore(
+            commit_id=payload.commit_id,
+            target_dir=payload.target_dir,
+            file_name=payload.file_name,
+        )
+        return {
+            "success": True,
+            "commit_id": payload.commit_id,
+            "target_dir": payload.target_dir,
+            "restored_count": len(restored),
+            "restored_files": [f.name for f in restored[:100]],
+        }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.get("/api/duplicates")
+def get_duplicates_report(path: str = "production") -> dict[str, Any]:
+    """Returns comprehensive duplicate detection analysis."""
+    from DefFileGenerator.duplicate_detector import DuplicateDetector
+
+    detector = DuplicateDetector(path)
+    report = detector.scan()
+    return report.to_dict()
 
 
 @app.post("/api/discovery/lookup", response_model=DiscoveryResponse)

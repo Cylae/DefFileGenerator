@@ -232,8 +232,11 @@ class DuplicateDetector:
 
     def _is_alias_pair(self, name_a: str, name_b: str) -> bool:
         """Determines if two names are naming aliases of each other."""
-        clean_a = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", name_a).lower().replace("-", "_")
-        clean_b = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", name_b).lower().replace("-", "_")
+        clean_a = re.sub(r"\.csv$", "", name_a, flags=re.IGNORECASE)
+        clean_b = re.sub(r"\.csv$", "", name_b, flags=re.IGNORECASE)
+
+        clean_a = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", clean_a).lower().replace("-", "_")
+        clean_b = re.sub(r"^(INV|MET|SEN|BAT|COM|OTH)_", "", clean_b).lower().replace("-", "_")
 
         if clean_a == clean_b:
             return True
@@ -243,7 +246,10 @@ class DuplicateDetector:
             clean_a = clean_a.replace(token, "")
             clean_b = clean_b.replace(token, "")
 
-        return clean_a.strip("_") == clean_b.strip("_")
+        clean_a = re.sub(r"_+", "_", clean_a).strip("_")
+        clean_b = re.sub(r"_+", "_", clean_b).strip("_")
+
+        return clean_a == clean_b
 
     def format_markdown_report(self, report: DuplicateReport) -> str:
         """Formats the duplicate report into detailed GitHub-flavored Markdown."""
