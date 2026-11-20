@@ -1,5 +1,5 @@
 {
-  "head": "8fc58ad4e1c61d29",
+  "head": "773298b41ec717fd",
   "commits": [
     {
       "commit_id": "77d829818ebc7abd",
@@ -69,6 +69,20 @@
         "modified": 8,
         "deleted": 0,
         "unchanged": 1101
+      }
+    },
+    {
+      "commit_id": "773298b41ec717fd",
+      "parent_id": "8fc58ad4e1c61d29",
+      "timestamp": "2026-11-20T15:50:33.811755+00:00",
+      "author": "alexandre.calais",
+      "message": "fix(crlf): normalize line endings to strict CRLF across all 1109 production files",
+      "files_count": 1109,
+      "changes": {
+        "added": 0,
+        "modified": 43,
+        "deleted": 0,
+        "unchanged": 1066
       }
     }
   ],
