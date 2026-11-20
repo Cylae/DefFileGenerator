@@ -1,4 +1,4 @@
-Modbus;Inverter;Tata;Generic;;;;;;;
+Modbus;Inverter;TATA;Generic;;;;;;;
 1;4;30000;U16;;AC_Voltage(V);;1.000000;0.000000;;4
 2;4;30001;U16;;AC_Current(I);;1.000000;0.000000;;4
 3;4;30002;U16;;Frequency(F);;1.000000;0.000000;;4

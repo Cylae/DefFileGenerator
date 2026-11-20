@@ -591,6 +591,14 @@ def sanitize_and_normalize_definition(
     ):
         protocol = "Modbus"
 
+    # Preserve raw casing of manufacturer and model if they match case-insensitively
+    if len(raw_header) > 2 and raw_header[2].strip():
+        if raw_header[2].strip().lower() == mfg.lower():
+            mfg = raw_header[2].strip()
+    if len(raw_header) > 3 and raw_header[3].strip():
+        if raw_header[3].strip().lower() == model.lower():
+            model = raw_header[3].strip()
+
     # Clean Header
     header = [protocol, cat, mfg, model, "", "", "", "", "", "", ""]
 

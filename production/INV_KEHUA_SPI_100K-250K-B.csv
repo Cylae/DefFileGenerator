@@ -1,4 +1,4 @@
-Modbus;Inverter;Kehua;SPI_100K-250K-B;;;;;;;
+Modbus;Inverter;KEHUA;SPI_100K-250K-B;;;;;;;
 1;4;4800;F32_W;;Model;;1.000000;0.000000;;4
 2;4;4820;F32_W;;HMI software version;;1.000000;0.000000;;4
 3;4;4825;F32_W;;Serial Number;;1.000000;0.000000;;4

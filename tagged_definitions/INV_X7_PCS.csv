@@ -12,7 +12,7 @@ Modbus;Inverter;X7;PCS;;;;;;;
 11;4;56002;I16;;PCS - Inlet Water Temperature;;0.100000;0.000000;°C;4
 12;4;56003;U16;;PCS - Outlet Water Pressure;;0.100000;0.000000;bar;4
 13;4;56004;U16;;PCS - Return Water Pressure;;0.100000;0.000000;bar;4
-14;4;56007;U16;;PCS - Liquid Cooling Unit Communication Fault;;1.000000;0.000000;;4
+14;4;56007;U16;;PCS - Liquid Cooling Unit Communication Fault;;1.000000;0.000000;;9
 15;4;55754;I16;;PCS - DC Power;;1.000000;0.000000;W;4
 16;4;55755;U16;;PCS - AC Phase A Voltage;U_AC_1;0.100000;0.000000;V;4
 17;4;55756;U16;;PCS - AC Phase B Voltage;U_AC_2;0.100000;0.000000;V;4

@@ -1,4 +1,4 @@
-Modbus;Inverter;Cefem;Modbus_TrioSunTrioTop;;;;;;;
+Modbus;Inverter;CEFEM;Modbus_TrioSunTrioTop;;;;;;;
 1;3;0;U16;;Fabrication number Low;;1;0;;4
 2;3;1;U16;;Order number;;1;0;;4
 3;3;2;U16;;Model;MODEL;1;0;;4

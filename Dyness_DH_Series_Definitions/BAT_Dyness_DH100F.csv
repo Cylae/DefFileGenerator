@@ -638,7 +638,7 @@ Modbus;Battery;Dyness;DH100F;;;;;;;
 637;4;1891;I32;;Forward Active Shoulder Energy;;0.100000;0.000000;kWh;4
 638;4;1893;I32;;Forward Active Off-Peak Energy;;0.100000;0.000000;kWh;4
 639;4;1895;I32;;Reverse Active Total Energy;;0.100000;0.000000;kWh;4
-640;4;1897;I32;;Reverse Active Peak Energy;;0.100000;0.000000;kWh;4
+640;4;1897;I32;;Reverse Active Peak Energy;E_EXP;0.100000;0.000000;kWh;4
 641;4;1899;I32;;Reverse Active On-Peak Energy;;0.100000;0.000000;kWh;4
 642;4;1901;I32;;Reverse Active Shoulder Energy;;0.100000;0.000000;kWh;4
 643;4;1903;I32;;Reverse Active Off-Peak Energy;;0.100000;0.000000;kWh;4

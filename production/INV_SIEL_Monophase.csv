@@ -1,4 +1,4 @@
-Modbus;Inverter;Siel;Monophase;;;;;;;
+Modbus;Inverter;SIEL;Monophase;;;;;;;
 1;3;1;I16;;Statuses of alarms1;;1.000000;0.000000;;8
 2;3;2;I16;;Statuses of alarms2;;1.000000;0.000000;;8
 3;3;3;I16;;Main voltage;;1.000000;0.000000;V;4

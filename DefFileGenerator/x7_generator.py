@@ -853,6 +853,21 @@ def parse_x7_workbook(xlsx_path: Path | str) -> dict[str, list[dict[str, Any]]]:
             elif addr == 31144:
                 tag = "FW_VER_AFCI"
 
+            pcs_action = "4"
+            if any(
+                kw in name.lower()
+                for kw in (
+                    "fault",
+                    "alarm",
+                    "warning",
+                    "error",
+                    "trip",
+                    "protection",
+                    "status_alarm",
+                )
+            ):
+                pcs_action = "9"
+
             parsed["pcs"].append(
                 {
                     "fc": "4",
@@ -863,7 +878,7 @@ def parse_x7_workbook(xlsx_path: Path | str) -> dict[str, list[dict[str, Any]]]:
                     "coef_a": coef_a,
                     "coef_b": coef_b,
                     "unit": raw_unit,
-                    "action": "4",
+                    "action": pcs_action,
                 }
             )
 

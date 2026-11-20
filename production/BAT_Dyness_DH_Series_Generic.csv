@@ -141,7 +141,7 @@ Modbus;Battery;Dyness;DH_Series_Generic;;;;;;;
 140;4;543;I16;;Battery-side voltage;;1.000000;0.000000;V;4
 141;4;544;I16;;Battery-side current;;0.100000;0.000000;A;4
 142;4;545;I16;;Battery-side power;;0.010000;0.000000;kW;4
-143;4;546;I16;;Inverter State;;1.000000;0.000000;;9
+143;4;546;I16;;Inverter State;STATE;1.000000;0.000000;;9
 144;4;547;U16;;Module 1 temperature;;0.010000;0.000000;°C;4
 145;4;548;U16;;Module 2 temperature;;0.010000;0.000000;°C;4
 146;4;549;U16;;Module 3 temperature;;0.010000;0.000000;°C;4
@@ -687,7 +687,7 @@ Modbus;Battery;Dyness;DH_Series_Generic;;;;;;;
 686;4;1891;I32;;Forward Active Shoulder Energy;;0.100000;0.000000;kWh;4
 687;4;1893;I32;;Forward Active Off-Peak Energy;;0.100000;0.000000;kWh;4
 688;4;1895;I32;;Reverse Active Total Energy;;0.100000;0.000000;kWh;4
-689;4;1897;I32;;Reverse Active Peak Energy;;0.100000;0.000000;kWh;4
+689;4;1897;I32;;Reverse Active Peak Energy;E_EXP;0.100000;0.000000;kWh;4
 690;4;1899;I32;;Reverse Active On-Peak Energy;;0.100000;0.000000;kWh;4
 691;4;1901;I32;;Reverse Active Shoulder Energy;;0.100000;0.000000;kWh;4
 692;4;1903;I32;;Reverse Active Off-Peak Energy;;0.100000;0.000000;kWh;4

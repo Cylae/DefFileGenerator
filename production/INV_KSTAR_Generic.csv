@@ -1,4 +1,4 @@
-Modbus;Inverter;Kstar;Generic;;;;;;;
+Modbus;Inverter;KSTAR;Generic;;;;;;;
 1;4;3000;U16;;PV1 input voltage;;0.100000;0.000000;V;4
 2;4;3001;U16;;PV2 input voltage;;0.100000;0.000000;V;4
 3;4;3002;U16;;PV3 input voltage;;0.100000;0.000000;V;4

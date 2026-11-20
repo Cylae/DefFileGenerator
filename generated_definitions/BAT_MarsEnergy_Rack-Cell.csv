@@ -1,0 +1,43 @@
+Modbus;Battery;MarsEnergy;Rack-Cell;;;;;;;
+1;4;0;U16;;Number of cells in Rack;;1.0;0.0;;4
+2;4;1;U16;;Rack Voltage;;1.0;0.0;V;4
+3;4;3;U16;;Rack Current;;1.0;0.0;A;4
+4;4;5;U16;;Rack SOC;;1.0;0.0;%;4
+5;4;7;U16;;Rack SOH;;1.0;0.0;%;4
+6;4;9;U16;;Rack Insulation Resistance;R_ISO;1.0;0.0;?;4
+7;4;11;U16;;Maximum Allowable Charge Current;;1.0;0.0;A;4
+8;4;13;U16;;Maximum Allowable Discharge Current;;1.0;0.0;A;4
+9;4;15;U16;;Total Charge Energy;E_TOT;1.0;0.0;kWh;4
+10;4;17;U16;;Total Discharge Energy;;1.0;0.0;kWh;4
+11;4;19;U16;;Available Charge Energy;;1.0;0.0;kWh;4
+12;4;21;U16;;Available Discharge Energy;;1.0;0.0;kWh;4
+13;4;23;U16;;Average Cell Voltage;;1.0;0.0;V;4
+14;4;25;U16;;Average Cell Temperature;TEMP_CELL;1.0;0.0;?;4
+15;4;27;U16;;Maximum Cell Voltage;;1.0;0.0;V;4
+16;4;29;U16;;Maximum Cell Voltage Cell Number;;1.0;0.0;;4
+17;4;31;U16;;Minimum Cell Voltage;;1.0;0.0;V;4
+18;4;33;U16;;Minimum Cell Voltage Cell Number;;1.0;0.0;;4
+19;4;35;U16;;Maximum Cell Temperature;;1.0;0.0;?;4
+20;4;37;U16;;Maximum Cell Temperature Cell Number;;1.0;0.0;;4
+21;4;39;U16;;Minimum Cell Temperature;;1.0;0.0;?;4
+22;4;41;U16;;Minimum Cell Temperature Cell Number;;1.0;0.0;;4
+23;4;43;U16;;Maximum Cell SOC;;1.0;0.0;%;4
+24;4;45;U16;;Maximum Cell SOC Cell Number;;1.0;0.0;;4
+25;4;47;U16;;Minimum Cell SOC;;1.0;0.0;%;4
+26;4;49;U16;;Minimum Cell SOC Cell Number;;1.0;0.0;;4
+27;4;51;U16;;Maximum Cell SOH;;1.0;0.0;%;4
+28;4;53;U16;;Maximum Cell SOH Cell Number;;1.0;0.0;;4
+29;4;55;U16;;Minimum Cell SOH;;1.0;0.0;%;4
+30;4;57;U16;;Minimum Cell SOH Cell Number;;1.0;0.0;;4
+31;4;100;U16;;Cell1 Voltage;;1.0;0.0;V;4
+32;4;102;U16;;Cell1 Temperature;;1.0;0.0;?;4
+33;4;104;U16;;Cell1 SOC;;1.0;0.0;%;4
+34;4;106;U16;;Cell1 SOH;;1.0;0.0;%;4
+35;4;108;U16;;Cell1 Resistance;;1.0;0.0;?;4
+36;4;110;U16;;Cell2 Voltage;;1.0;0.0;V;4
+37;4;112;U16;;Cell2 Temperature;;1.0;0.0;?;4
+38;4;114;U16;;Cell2 SOC;;1.0;0.0;%;4
+39;4;116;U16;;Cell2 SOH;;1.0;0.0;%;4
+40;4;118;U16;;Cell2 Resistance;;1.0;0.0;?;4
+41;4;120;U16;;Cell3 Voltage;;1.0;0.0;V;4
+42;4;10090;U16;;Cell1000 Voltage;;1.0;0.0;V;4

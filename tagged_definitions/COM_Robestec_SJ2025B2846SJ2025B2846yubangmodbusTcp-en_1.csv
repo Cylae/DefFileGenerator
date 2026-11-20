@@ -1,0 +1,1458 @@
+Modbus;Logger;Robestec;SJ2025B2846SJ2025B2846yubangmodbusTcp-en_1;;;;;;;
+1;4;100;U16;;PCS real total active power (summary);P_AC;1.0;0.0;kW;4
+2;4;101;U16;;PCS real total reactive power (summary);Q_AC;1.0;0.0;kVar;4
+3;4;102;U16;;Total volt. (summary);;1.0;0.0;V;4
+4;4;103;U16;;Total curr. (summary);;1.0;0.0;A;4
+5;4;104;U16;;Total SOC (summary);SOC;1.0;0.0;%;4
+6;4;105;U16;;Battery average temp. (summary);TEMP;1.0;0.0;℃;4
+7;4;106;U16;;Battery max. temp-diff. (summary);;1.0;0.0;℃;4
+8;4;107;U16;;Max. cell volt. (summary);;1.0;0.0;V;4
+9;4;108;U16;;Min. cell volt. (summary);;1.0;0.0;V;4
+10;4;111;U16;;System status;;1.0;0.0;;9
+11;4;2001;U16;;System on-grid/off-grid command;;1.0;0.0;;4
+12;4;2002;U16;;Subsystem 1 start and stop command;;1.0;0.0;;4
+13;4;2003;U16;;Subsystem 2 start and stop command;;1.0;0.0;;4
+14;4;2004;U16;;Subsystem 3 start and stop command;;1.0;0.0;;4
+15;4;2005;U16;;Subsystem 4 start and stop command;;1.0;0.0;;4
+16;4;2006;U16;;Subsystem 5 start and stop command;;1.0;0.0;;4
+17;4;2007;U16;;Subsystem 6 start and stop command;;1.0;0.0;;4
+18;4;2008;U16;;Subsystem 7 start and stop command;;1.0;0.0;;4
+19;4;2009;U16;;Subsystem 8 start and stop command;;1.0;0.0;;4
+20;4;2010;U16;;Subsystem 9 start and stop command;;1.0;0.0;;4
+21;4;2011;U16;;Subsystem 10 start and stop command;;1.0;0.0;;4
+22;4;2012;U16;;Subsystem 11 start and stop command;;1.0;0.0;;4
+23;4;2013;U16;;Subsystem 12 start and stop command;;1.0;0.0;;4
+24;4;2014;U16;;Emergency stop button;;1.0;0.0;;4
+25;4;2015;U16;;Enable-Temp. power limit function;CMD_P_AC_SET_ABS;1.0;0.0;;1
+26;4;2016;U16;;Enable-Anti-reverse curr. function;;1.0;0.0;;4
+27;4;2017;U16;;Enable-Cell volt. power limit function;;1.0;0.0;;4
+28;4;2018;U16;;Enable-Cell volt. power limit flat;;1.0;0.0;;4
+29;4;2019;U16;;Enable-Demand limit function;;1.0;0.0;;4
+30;4;2020;U16;;Enable-BMS max./min. volt. protection;;1.0;0.0;;4
+31;4;2021;U16;;SOC stop CHA/DIS enable;;1.0;0.0;;4
+32;4;2022;U16;;Anti-reverse current discharge to charge enable;;1.0;0.0;;4
+33;4;2023;U16;;LEMS Anti Reverse Discharge To Charge En;;1.0;0.0;;4
+34;4;2024;U16;;AEMS anti-reverse discharge to charge enable;;1.0;0.0;;4
+35;4;2025;U16;;Demand charge to discharge enable;;1.0;0.0;;4
+36;4;2026;U16;;lems demand charge to discharge enable;;1.0;0.0;;4
+37;4;2027;U16;;aems demand charge to discharge enable;;1.0;0.0;;4
+38;4;2028;U16;;lems reverse flow control enable;;1.0;0.0;;4
+39;4;2029;U16;;aems reverse flow control enable;;1.0;0.0;;4
+40;4;2030;U16;;lems static demand enable-demand limit function;;1.0;0.0;;4
+41;4;2031;U16;;aems static demand enable-demand limit function;;1.0;0.0;;4
+42;4;109;U16;;Time division A:0:30~0:45;;1.0;0.0;kW;4
+43;4;110;U16;;Time division A:0:45~1:00;;1.0;0.0;kW;4
+44;4;112;U16;;Time division A:1:15~1:30;;1.0;0.0;kW;4
+45;4;113;U16;;Time division A:1:30~1:45;;1.0;0.0;kW;4
+46;4;114;U16;;Time division A:1:45~2:00;;1.0;0.0;kW;4
+47;4;115;U16;;Time division A:2:00~2:15;;1.0;0.0;kW;4
+48;4;116;U16;;Time division A:2:15~2:30;;1.0;0.0;kW;4
+49;4;117;U16;;Time division A:2:30~2:45;;1.0;0.0;kW;4
+50;4;118;U16;;Time division A:2:45~3:00;;1.0;0.0;kW;4
+51;4;119;U16;;Time division A:3:00~3:15;;1.0;0.0;kW;4
+52;4;120;U16;;Time division A:3:15~3:30;;1.0;0.0;kW;4
+53;4;121;U16;;Time division A:3:30~3:45;;1.0;0.0;kW;4
+54;4;122;U16;;Time division A:3:45~4:0;;1.0;0.0;kW;4
+55;4;123;U16;;Time division A:4:00~4:15;;1.0;0.0;kW;4
+56;4;124;U16;;Time division A:4:15~4:30;;1.0;0.0;kW;4
+57;4;125;U16;;Time division A:4:30~4:45;;1.0;0.0;kW;4
+58;4;126;U16;;Time division A:4:45~4:00;;1.0;0.0;kW;4
+59;4;127;U16;;Time division A:5:00~5:15;;1.0;0.0;kW;4
+60;4;128;U16;;Time division A:5:15~5:30;;1.0;0.0;kW;4
+61;4;129;U16;;Time division A:5:30~5:45;;1.0;0.0;kW;4
+62;4;130;U16;;Time division A:5:45~6:00;;1.0;0.0;kW;4
+63;4;131;U16;;Time division A:6:00~6:15;;1.0;0.0;kW;4
+64;4;132;U16;;Time division A:6:15~6:30;;1.0;0.0;kW;4
+65;4;133;U16;;Time division A:6:30~6:45;;1.0;0.0;kW;4
+66;4;134;U16;;Time division A:6:45~7:00;;1.0;0.0;kW;4
+67;4;135;U16;;Time division A:7:00~7:15;;1.0;0.0;kW;4
+68;4;136;U16;;Time division A:7:15~7:30;;1.0;0.0;kW;4
+69;4;137;U16;;Time division A:7:30~7:45;;1.0;0.0;kW;4
+70;4;138;U16;;Time division A:7:45~8:00;;1.0;0.0;kW;4
+71;4;139;U16;;Time division A:8:00~8:15;;1.0;0.0;kW;4
+72;4;140;U16;;Time division A:8:15~8:30;;1.0;0.0;kW;4
+73;4;141;U16;;Time division A:8:30~8:45;;1.0;0.0;kW;4
+74;4;142;U16;;Time division A:8:45~9:00;;1.0;0.0;kW;4
+75;4;143;U16;;Time division A:9:00~9:15;;1.0;0.0;kW;4
+76;4;144;U16;;Time division A:9:15~9:30;;1.0;0.0;kW;4
+77;4;145;U16;;Time division A:9:30~9:45;;1.0;0.0;kW;4
+78;4;146;U16;;Time division A:9:45~10:00;;1.0;0.0;kW;4
+79;4;147;U16;;Time division A:10:00~10:15;;1.0;0.0;kW;4
+80;4;148;U16;;Time division A:10:15~10:30;;1.0;0.0;kW;4
+81;4;149;U16;;Time division A:10:30~10:45;;1.0;0.0;kW;4
+82;4;150;U16;;Time division A:10:45~11:00;;1.0;0.0;kW;4
+83;4;151;U16;;Time division A:11:00~11:15;;1.0;0.0;kW;4
+84;4;152;U16;;Time division A:11:15~11:30;;1.0;0.0;kW;4
+85;4;153;U16;;Time division A:11:30~11:45;;1.0;0.0;kW;4
+86;4;154;U16;;Time division A:11:45~12:00;;1.0;0.0;kW;4
+87;4;155;U16;;Time division A:12:00~12:15;;1.0;0.0;kW;4
+88;4;156;U16;;Time division A:12:15~12:30;;1.0;0.0;kW;4
+89;4;157;U16;;Time division A:12:30~12:45;;1.0;0.0;kW;4
+90;4;158;U16;;Time division A:12:45~13:00;;1.0;0.0;kW;4
+91;4;159;U16;;Time division A:13:00~13:15;;1.0;0.0;kW;4
+92;4;160;U16;;Time division A:13:15~13:30;;1.0;0.0;kW;4
+93;4;161;U16;;Time division A:13:30~13:45;;1.0;0.0;kW;4
+94;4;162;U16;;Time division A:13:45~14:00;;1.0;0.0;kW;4
+95;4;163;U16;;Time division A:14:00~14:15;;1.0;0.0;kW;4
+96;4;164;U16;;Time division A:14:15~14:30;;1.0;0.0;kW;4
+97;4;165;U16;;Time division A:14:30~14:45;;1.0;0.0;kW;4
+98;4;166;U16;;Time division A:14:45~15:00;;1.0;0.0;kW;4
+99;4;167;U16;;Time division A:15:00~15:15;;1.0;0.0;kW;4
+100;4;168;U16;;Time division A:15:15~15:30;;1.0;0.0;kW;4
+101;4;169;U16;;Time division A:15:30~15:45;;1.0;0.0;kW;4
+102;4;170;U16;;Time division A:15:45~16:00;;1.0;0.0;kW;4
+103;4;171;U16;;Time division A:16:00~16:15;;1.0;0.0;kW;4
+104;4;172;U16;;Time division A:16:15~16:30;;1.0;0.0;kW;4
+105;4;173;U16;;Time division A:16:30~16:45;;1.0;0.0;kW;4
+106;4;174;U16;;Time division A:16:45~17:00;;1.0;0.0;kW;4
+107;4;175;U16;;Time division A:17:00~17:15;;1.0;0.0;kW;4
+108;4;176;U16;;Time division A:17:15~17:30;;1.0;0.0;kW;4
+109;4;177;U16;;Time division A:17:30~17:45;;1.0;0.0;kW;4
+110;4;178;U16;;Time division A:17:45~18:00;;1.0;0.0;kW;4
+111;4;179;U16;;Time division A:18:00~18:15;;1.0;0.0;kW;4
+112;4;180;U16;;Time division A:18:15~18:30;;1.0;0.0;kW;4
+113;4;181;U16;;Time division A:18:30~18:45;;1.0;0.0;kW;4
+114;4;182;U16;;Time division A:18:45~19:00;;1.0;0.0;kW;4
+115;4;183;U16;;Time division A:19:00~19:15;;1.0;0.0;kW;4
+116;4;184;U16;;Time division A:19:15~19:30;;1.0;0.0;kW;4
+117;4;185;U16;;Time division A:19:30~19:45;;1.0;0.0;kW;4
+118;4;186;U16;;Time division A:19:45~20:00;;1.0;0.0;kW;4
+119;4;187;U16;;Time division A:20:00~20:15;;1.0;0.0;kW;4
+120;4;188;U16;;Time division A:20:15~20:30;;1.0;0.0;kW;4
+121;4;189;U16;;Time division A:20:30~20:45;;1.0;0.0;kW;4
+122;4;190;U16;;Time division A:20:45~21:00;;1.0;0.0;kW;4
+123;4;191;U16;;Time division A:21:00~21:15;;1.0;0.0;kW;4
+124;4;192;U16;;Time division A:21:15~21:30;;1.0;0.0;kW;4
+125;4;193;U16;;Time division A:21:30~21:45;;1.0;0.0;kW;4
+126;4;194;U16;;Time division A:21:45~22:00;;1.0;0.0;kW;4
+127;4;195;U16;;Time division A:22:00~22:15;;1.0;0.0;kW;4
+128;4;196;U16;;Time division A:22:15~22:30;;1.0;0.0;kW;4
+129;4;197;U16;;Time division A:22:30~22:45;;1.0;0.0;kW;4
+130;4;198;U16;;Time division A:22:45~23:00;;1.0;0.0;kW;4
+131;4;199;U16;;Time division A:23:00~23:15;;1.0;0.0;kW;4
+132;4;201;U16;;Time division A:23:30~23:45;;1.0;0.0;kW;4
+133;4;202;U16;;Time division A:23:45~00:00;;1.0;0.0;kW;4
+134;4;204;U16;;Time division B:0:00~0:15;;1.0;0.0;kW;4
+135;4;205;U16;;Time division B:0:15~0:30;;1.0;0.0;kW;4
+136;4;206;U16;;Time division B:0:30~0:45;;1.0;0.0;kW;4
+137;4;207;U16;;Time division B:0:45~1:00;;1.0;0.0;kW;4
+138;4;208;U16;;Time division B:1:00~1:15;;1.0;0.0;kW;4
+139;4;209;U16;;Time division B:1:15~1:30;;1.0;0.0;kW;4
+140;4;210;U16;;Time division B:1:30~1:45;;1.0;0.0;kW;4
+141;4;211;U16;;Time division B:1:45~2:00;;1.0;0.0;kW;4
+142;4;212;U16;;Time division B:2:00~2:15;;1.0;0.0;kW;4
+143;4;213;U16;;Time division B:2:15~2:30;;1.0;0.0;kW;4
+144;4;214;U16;;Time division B:2:30~2:45;;1.0;0.0;kW;4
+145;4;215;U16;;Time division B:2:45~3:00;;1.0;0.0;kW;4
+146;4;216;U16;;Time division B:3:00~3:15;;1.0;0.0;kW;4
+147;4;217;U16;;Time division B:3:15~3:30;;1.0;0.0;kW;4
+148;4;218;U16;;Time division B:3:30~3:45;;1.0;0.0;kW;4
+149;4;219;U16;;Time division B:3:45~4:0;;1.0;0.0;kW;4
+150;4;220;U16;;Time division B:4:00~4:15;;1.0;0.0;kW;4
+151;4;221;U16;;Time division B:4:15~4:30;;1.0;0.0;kW;4
+152;4;222;U16;;Time division B:4:30~4:45;;1.0;0.0;kW;4
+153;4;223;U16;;Time division B:4:45~4:00;;1.0;0.0;kW;4
+154;4;224;U16;;Time division B:5:00~5:15;;1.0;0.0;kW;4
+155;4;225;U16;;Time division B:5:15~5:30;;1.0;0.0;kW;4
+156;4;226;U16;;Time division B:5:30~5:45;;1.0;0.0;kW;4
+157;4;227;U16;;Time division B:5:45~6:00;;1.0;0.0;kW;4
+158;4;228;U16;;Time division B:6:00~6:15;;1.0;0.0;kW;4
+159;4;229;U16;;Time division B:6:15~6:30;;1.0;0.0;kW;4
+160;4;230;U16;;Time division B:6:30~6:45;;1.0;0.0;kW;4
+161;4;231;U16;;Time division B:6:45~7:00;;1.0;0.0;kW;4
+162;4;232;U16;;Time division B:7:00~7:15;;1.0;0.0;kW;4
+163;4;233;U16;;Time division B:7:15~7:30;;1.0;0.0;kW;4
+164;4;234;U16;;Time division B:7:30~7:45;;1.0;0.0;kW;4
+165;4;235;U16;;Time division B:7:45~8:00;;1.0;0.0;kW;4
+166;4;236;U16;;Time division B:8:00~8:15;;1.0;0.0;kW;4
+167;4;237;U16;;Time division B:8:15~8:30;;1.0;0.0;kW;4
+168;4;238;U16;;Time division B:8:30~8:45;;1.0;0.0;kW;4
+169;4;239;U16;;Time division B:8:45~9:00;;1.0;0.0;kW;4
+170;4;240;U16;;Time division B:9:00~9:15;;1.0;0.0;kW;4
+171;4;241;U16;;Time division B:9:15~9:30;;1.0;0.0;kW;4
+172;4;242;U16;;Time division B:9:30~9:45;;1.0;0.0;kW;4
+173;4;243;U16;;Time division B:9:45~10:00;;1.0;0.0;kW;4
+174;4;244;U16;;Time division B:10:00~10:15;;1.0;0.0;kW;4
+175;4;245;U16;;Time division B:10:15~10:30;;1.0;0.0;kW;4
+176;4;246;U16;;Time division B:10:30~10:45;;1.0;0.0;kW;4
+177;4;247;U16;;Time division B:10:45~11:00;;1.0;0.0;kW;4
+178;4;248;U16;;Time division B:11:00~11:15;;1.0;0.0;kW;4
+179;4;249;U16;;Time division B:11:15~11:30;;1.0;0.0;kW;4
+180;4;250;U16;;Time division B:11:30~11:45;;1.0;0.0;kW;4
+181;4;251;U16;;Time division B:11:45~12:00;;1.0;0.0;kW;4
+182;4;252;U16;;Time division B:12:00~12:15;;1.0;0.0;kW;4
+183;4;253;U16;;Time division B:12:15~12:30;;1.0;0.0;kW;4
+184;4;254;U16;;Time division B:12:30~12:45;;1.0;0.0;kW;4
+185;4;255;U16;;Time division B:12:45~13:00;;1.0;0.0;kW;4
+186;4;256;U16;;Time division B:13:00~13:15;;1.0;0.0;kW;4
+187;4;257;U16;;Time division B:13:15~13:30;;1.0;0.0;kW;4
+188;4;258;U16;;Time division B:13:30~13:45;;1.0;0.0;kW;4
+189;4;259;U16;;Time division B:13:45~14:00;;1.0;0.0;kW;4
+190;4;260;U16;;Time division B:14:00~14:15;;1.0;0.0;kW;4
+191;4;261;U16;;Time division B:14:15~14:30;;1.0;0.0;kW;4
+192;4;262;U16;;Time division B:14:30~14:45;;1.0;0.0;kW;4
+193;4;263;U16;;Time division B:14:45~15:00;;1.0;0.0;kW;4
+194;4;264;U16;;Time division B:15:00~15:15;;1.0;0.0;kW;4
+195;4;265;U16;;Time division B:15:15~15:30;;1.0;0.0;kW;4
+196;4;266;U16;;Time division B:15:30~15:45;;1.0;0.0;kW;4
+197;4;267;U16;;Time division B:15:45~16:00;;1.0;0.0;kW;4
+198;4;268;U16;;Time division B:16:00~16:15;;1.0;0.0;kW;4
+199;4;269;U16;;Time division B:16:15~16:30;;1.0;0.0;kW;4
+200;4;270;U16;;Time division B:16:30~16:45;;1.0;0.0;kW;4
+201;4;271;U16;;Time division B:16:45~17:00;;1.0;0.0;kW;4
+202;4;272;U16;;Time division B:17:00~17:15;;1.0;0.0;kW;4
+203;4;273;U16;;Time division B:17:15~17:30;;1.0;0.0;kW;4
+204;4;274;U16;;Time division B:17:30~17:45;;1.0;0.0;kW;4
+205;4;275;U16;;Time division B:17:45~18:00;;1.0;0.0;kW;4
+206;4;276;U16;;Time division B:18:00~18:15;;1.0;0.0;kW;4
+207;4;277;U16;;Time division B:18:15~18:30;;1.0;0.0;kW;4
+208;4;278;U16;;Time division B:18:30~18:45;;1.0;0.0;kW;4
+209;4;279;U16;;Time division B:18:45~19:00;;1.0;0.0;kW;4
+210;4;280;U16;;Time division B:19:00~19:15;;1.0;0.0;kW;4
+211;4;281;U16;;Time division B:19:15~19:30;;1.0;0.0;kW;4
+212;4;282;U16;;Time division B:19:30~19:45;;1.0;0.0;kW;4
+213;4;283;U16;;Time division B:19:45~20:00;;1.0;0.0;kW;4
+214;4;284;U16;;Time division B:20:00~20:15;;1.0;0.0;kW;4
+215;4;285;U16;;Time division B:20:15~20:30;;1.0;0.0;kW;4
+216;4;286;U16;;Time division B:20:30~20:45;;1.0;0.0;kW;4
+217;4;287;U16;;Time division B:20:45~21:00;;1.0;0.0;kW;4
+218;4;288;U16;;Time division B:21:00~21:15;;1.0;0.0;kW;4
+219;4;289;U16;;Time division B:21:15~21:30;;1.0;0.0;kW;4
+220;4;290;U16;;Time division B:21:30~21:45;;1.0;0.0;kW;4
+221;4;291;U16;;Time division B:21:45~22:00;;1.0;0.0;kW;4
+222;4;292;U16;;Time division B:22:00~22:15;;1.0;0.0;kW;4
+223;4;293;U16;;Time division B:22:15~22:30;;1.0;0.0;kW;4
+224;4;294;U16;;Time division B:22:30~22:45;;1.0;0.0;kW;4
+225;4;295;U16;;Time division B:22:45~23:00;;1.0;0.0;kW;4
+226;4;296;U16;;Time division B:23:00~23:15;;1.0;0.0;kW;4
+227;4;297;U16;;Time division B:23:15~23:30;;1.0;0.0;kW;4
+228;4;298;U16;;Time division B:23:30~23:45;;1.0;0.0;kW;4
+229;4;299;U16;;Time division B:23:45~00:00;;1.0;0.0;kW;4
+230;4;300;U16;;Season A starting month;;1.0;0.0;;4
+231;4;301;U16;;Seasonal timing B starting month;;1.0;0.0;;4
+232;4;336;U16;;Max. temp. power limitation temp. point [0];;1.0;0.0;℃;4
+233;4;337;U16;;Max. temp. power limitation temp. point [1];;1.0;0.0;℃;4
+234;4;338;U16;;Max. temp. power limitation temp. point [2];;1.0;0.0;℃;4
+235;4;339;U16;;Max. temp. power limitation temp. point [3];;1.0;0.0;℃;4
+236;4;340;U16;;Max. temp. power limitation temp. point [4];;1.0;0.0;℃;4
+237;4;341;U16;;Max. temp. power limitation temp. point [5];;1.0;0.0;℃;4
+238;4;342;U16;;Max. temp. power limitation temp. point [6];;1.0;0.0;℃;4
+239;4;343;U16;;Max. temp. power limitation temp. point [7];;1.0;0.0;℃;4
+240;4;344;U16;;Max. temp. power limitation temp. point [8];;1.0;0.0;℃;4
+241;4;345;U16;;Max Temp Limit Dis Pwr Pt0;;1.0;0.0;kW;4
+242;4;346;U16;;Max Temp Limit Dis Pwr Pt1;;1.0;0.0;kW;4
+243;4;347;U16;;Max Temp Limit Dis Pwr Pt2;;1.0;0.0;kW;4
+244;4;348;U16;;Max Temp Limit Dis Pwr Pt3;;1.0;0.0;kW;4
+245;4;349;U16;;Max Temp Limit Dis Pwr Pt4;;1.0;0.0;kW;4
+246;4;350;U16;;Max Temp Limit Dis Pwr Pt5;;1.0;0.0;kW;4
+247;4;351;U16;;Max Temp Limit Dis Pwr Pt6;;1.0;0.0;kW;4
+248;4;352;U16;;Max Temp Limit Dis Pwr Pt7;;1.0;0.0;kW;4
+249;4;353;U16;;Max Temp Limit Dis Pwr Pt8;;1.0;0.0;kW;4
+250;4;354;U16;;Max Temp Limit Dis Pwr Pt9;;1.0;0.0;kW;4
+251;4;355;U16;;Max Temp Limit Chg Pwr Pt0;;1.0;0.0;kW;4
+252;4;356;U16;;Max Temp Limit Chg Pwr Pt1;;1.0;0.0;kW;4
+253;4;357;U16;;Max Temp Limit Chg Pwr Pt2;;1.0;0.0;kW;4
+254;4;358;U16;;Max Temp Limit Chg Pwr Pt3;;1.0;0.0;kW;4
+255;4;359;U16;;Max Temp Limit Chg Pwr Pt4;;1.0;0.0;kW;4
+256;4;360;U16;;Max Temp Limit Chg Pwr Pt5;;1.0;0.0;kW;4
+257;4;361;U16;;Max Temp Limit Chg Pwr Pt6;;1.0;0.0;kW;4
+258;4;362;U16;;Max Temp Limit Chg Pwr Pt7;;1.0;0.0;kW;4
+259;4;363;U16;;Max Temp Limit Chg Pwr Pt8;;1.0;0.0;kW;4
+260;4;364;U16;;Max Temp Limit Chg Pwr Pt9;;1.0;0.0;kW;4
+261;4;365;U16;;PCS max. DIS power;;1.0;0.0;kW;4
+262;4;366;U16;;PCS max. CHA power;;1.0;0.0;kW;4
+263;4;367;U16;;CHA stop cell volt.;;1.0;0.0;V;4
+264;4;368;U16;;CHA stop cell volt. hysteresis;;1.0;0.0;V;4
+265;4;369;U16;;DIS stop cell volt.;;1.0;0.0;V;4
+266;4;370;U16;;DIS stop cell volt. hysteresis;;1.0;0.0;V;4
+267;4;371;U16;;Reverse curr.-Nominal power(kW);P_RATED;1.0;0.0;kW;4
+268;4;375;U16;;Reverse curr.-Power hysteresis;;1.0;0.0;kW;4
+269;4;376;U16;;Reverse curr.-Frequency regulation(s);FREQ;1.0;0.0;s;4
+270;4;377;U16;;Cell volt. power limitation volt. point [0] (v);;1.0;0.0;V;4
+271;4;378;U16;;Cell volt. power limitation volt. point [1] (v);;1.0;0.0;V;4
+272;4;379;U16;;Cell volt. power limitation volt. point [2] (v);;1.0;0.0;V;4
+273;4;380;U16;;Cell volt. power limitation volt. point [3] (v);;1.0;0.0;V;4
+274;4;381;U16;;Cell volt. power limitation volt. point [4] (v);;1.0;0.0;V;4
+275;4;382;U16;;Cell volt. power limitation volt. point [5] (v);;1.0;0.0;V;4
+276;4;383;U16;;Cell volt. power limitation volt. point [6] (v);;1.0;0.0;V;4
+277;4;384;U16;;Cell volt. power limitation volt. point [7] (v);;1.0;0.0;V;4
+278;4;385;U16;;Cell volt. power limitation volt. point [8] (v);;1.0;0.0;V;4
+279;4;386;U16;;Cell Volt Limit Dis Pwr Pt0;;1.0;0.0;kW;4
+280;4;387;U16;;Cell Volt Limit Dis Pwr Pt1;;1.0;0.0;kW;4
+281;4;388;U16;;Cell Volt Limit Dis Pwr Pt2;;1.0;0.0;kW;4
+282;4;389;U16;;Cell Volt Limit Dis Pwr Pt3;;1.0;0.0;kW;4
+283;4;390;U16;;Cell Volt Limit Dis Pwr Pt4;;1.0;0.0;kW;4
+284;4;391;U16;;Cell Volt Limit Dis Pwr Pt5;;1.0;0.0;kW;4
+285;4;392;U16;;Cell Volt Limit Dis Pwr Pt6;;1.0;0.0;kW;4
+286;4;393;U16;;Cell Volt Limit Dis Pwr Pt7;;1.0;0.0;kW;4
+287;4;394;U16;;Cell Volt Limit Dis Pwr Pt8;;1.0;0.0;kW;4
+288;4;395;U16;;Cell Volt Limit Dis Pwr Pt9;;1.0;0.0;kW;4
+289;4;396;U16;;Cell Volt Limit Chg Pwr Pt0;;1.0;0.0;kW;4
+290;4;397;U16;;Cell Volt Limit Chg Pwr Pt1;;1.0;0.0;kW;4
+291;4;398;U16;;Cell Volt Limit Chg Pwr Pt2;;1.0;0.0;kW;4
+292;4;399;U16;;Cell Volt Limit Chg Pwr Pt3;;1.0;0.0;kW;4
+293;4;400;U16;;Cell Volt Limit Chg Pwr Pt4;;1.0;0.0;kW;4
+294;4;401;U16;;Cell Volt Limit Chg Pwr Pt5;;1.0;0.0;kW;4
+295;4;402;U16;;Cell Volt Limit Chg Pwr Pt6;;1.0;0.0;kW;4
+296;4;403;U16;;Cell Volt Limit Chg Pwr Pt7;;1.0;0.0;kW;4
+297;4;404;U16;;Cell Volt Limit Chg Pwr Pt8;;1.0;0.0;kW;4
+298;4;405;U16;;Cell Volt Limit Chg Pwr Pt9;;1.0;0.0;kW;4
+299;4;406;U16;;Demand-Nominal power(Jan)(kw);;1.0;0.0;kW;4
+300;4;407;U16;;Demand-Nominal power(Feb)(kw);;1.0;0.0;kW;4
+301;4;408;U16;;Demand-Nominal power(Mar)(kw);;1.0;0.0;kW;4
+302;4;409;U16;;Demand-Nominal power(Apr)(kw);;1.0;0.0;kW;4
+303;4;410;U16;;Demand-Nominal power(May)(kw);;1.0;0.0;kW;4
+304;4;411;U16;;Demand-Nominal power(Jun)(kw);;1.0;0.0;kW;4
+305;4;412;U16;;Demand-Nominal power(Jul)(kw);;1.0;0.0;kW;4
+306;4;413;U16;;Demand-Nominal power(Aug)(kw);;1.0;0.0;kW;4
+307;4;414;U16;;Demand-Nominal power(Sep)(kw);;1.0;0.0;kW;4
+308;4;415;U16;;Demand-Nominal power(Oct)(kw);;1.0;0.0;kW;4
+309;4;416;U16;;Demand-Nominal power(Nov)(kw);;1.0;0.0;kW;4
+310;4;417;U16;;Demand-Nominal power(Dec)(kw);;1.0;0.0;kW;4
+311;4;421;U16;;Demand-Power hysteresis (less than hysteresis);;1.0;0.0;kW;4
+312;4;422;U16;;Demand-Frequency regulating;;1.0;0.0;s;4
+313;4;423;U16;;Planned power reverse flow enable switch;;1.0;0.0;;4
+314;4;424;U16;;Planned power 1 start time YMD;;1.0;0.0;;4
+315;4;426;U16;;Planned power 1 end time YMD;;1.0;0.0;;4
+316;4;428;U16;;Planned power 1 start time HMS;;1.0;0.0;;4
+317;4;430;U16;;Planned power 1 end time HMS;;1.0;0.0;;4
+318;4;432;U16;;Planned power 1 active power;;1.0;0.0;kW;4
+319;4;433;U16;;Planned power 1 reactive power;;1.0;0.0;kVar;4
+320;4;434;U16;;Planned power 1 use mark;;1.0;0.0;;4
+321;4;435;U16;;Planned power 2 start time YMD;;1.0;0.0;;4
+322;4;437;U16;;Planned power 2 end time YMD;;1.0;0.0;;4
+323;4;439;U16;;Planned power 2 start time HMS;;1.0;0.0;;4
+324;4;441;U16;;Planned power 2 end time HMS;;1.0;0.0;;4
+325;4;443;U16;;Planned power 2 active power;;1.0;0.0;kW;4
+326;4;444;U16;;Planned power 2 reactive power;;1.0;0.0;kVar;4
+327;4;445;U16;;Planned power 2 use mark;;1.0;0.0;;4
+328;4;446;U16;;Planned power 3 start time YMD;;1.0;0.0;;4
+329;4;448;U16;;Planned power 3 end time YMD;;1.0;0.0;;4
+330;4;450;U16;;Planned power 3 start time HMS;;1.0;0.0;;4
+331;4;452;U16;;Planned power 3 end time HMS;;1.0;0.0;;4
+332;4;454;U16;;Planned power 3 active power;;1.0;0.0;kW;4
+333;4;455;U16;;Planned power 3 reactive power;;1.0;0.0;kVar;4
+334;4;456;U16;;Planned power 3 use mark;;1.0;0.0;;4
+335;4;457;U16;;Planned power 4 start time YMD;;1.0;0.0;;4
+336;4;459;U16;;Planned power 4 end time YMD;;1.0;0.0;;4
+337;4;461;U16;;Planned power 4 start time HMS;;1.0;0.0;;4
+338;4;463;U16;;Planned power 4 end time HMS;;1.0;0.0;;4
+339;4;465;U16;;Planned power 4 active power;;1.0;0.0;kW;4
+340;4;466;U16;;Planned power 4 reactive power;;1.0;0.0;kVar;4
+341;4;467;U16;;Planned power 4 use mark;;1.0;0.0;;4
+342;4;468;U16;;Planned power 5 start time YMD;;1.0;0.0;;4
+343;4;470;U16;;Planned power 5 end time YMD;;1.0;0.0;;4
+344;4;472;U16;;Planned power 5 start time HMS;;1.0;0.0;;4
+345;4;474;U16;;Planned power 5 end time HMS;;1.0;0.0;;4
+346;4;476;U16;;Planned power 5 active power;;1.0;0.0;kW;4
+347;4;477;U16;;Planned power 5 reactive power;;1.0;0.0;kVar;4
+348;4;478;U16;;Planned power 5 use mark;;1.0;0.0;;4
+349;4;479;U16;;Planned power 6 start time YMD;;1.0;0.0;;4
+350;4;481;U16;;Planned power 6 end time YMD;;1.0;0.0;;4
+351;4;483;U16;;Planned power 6 start time HMS;;1.0;0.0;;4
+352;4;485;U16;;Planned power 6 end time HMS;;1.0;0.0;;4
+353;4;487;U16;;Planned power 6 active power;;1.0;0.0;kW;4
+354;4;488;U16;;Planned power 6 reactive power;;1.0;0.0;kVar;4
+355;4;489;U16;;Planned power 6 use mark;;1.0;0.0;;4
+356;4;490;U16;;Planned power 7 start time YMD;;1.0;0.0;;4
+357;4;492;U16;;Planned power 7 end time YMD;;1.0;0.0;;4
+358;4;494;U16;;Planned power 7 start time HMS;;1.0;0.0;;4
+359;4;496;U16;;Planned power 7 end time HMS;;1.0;0.0;;4
+360;4;498;U16;;Planned power 7 active power;;1.0;0.0;kW;4
+361;4;499;U16;;Planned power 7 reactive power;;1.0;0.0;kVar;4
+362;4;500;U16;;Planned power 7 use mark;;1.0;0.0;;4
+363;4;501;U16;;Plan power 8 start time year/month/day;;1.0;0.0;;4
+364;4;503;U16;;Plan power 8 end time year/month/day;;1.0;0.0;;4
+365;4;505;U16;;Plan power 8 start time hour/minute/second;;1.0;0.0;;4
+366;4;507;U16;;Plan power 8 end time hour/minute/second;;1.0;0.0;;4
+367;4;509;U16;;Plan power 8 active power;;1.0;0.0;kW;4
+368;4;510;U16;;Plan power 8 reactive power;;1.0;0.0;kVar;4
+369;4;511;U16;;Plan power 8 use mark;;1.0;0.0;;4
+370;4;512;U16;;Plan power 9 start time year/month/day;;1.0;0.0;;4
+371;4;514;U16;;Plan power 9 end time year/month/day;;1.0;0.0;;4
+372;4;516;U16;;Plan power 9 start time hour/minute/second;;1.0;0.0;;4
+373;4;518;U16;;Plan power 9 end time hour/minute/second;;1.0;0.0;;4
+374;4;520;U16;;Plan power 9 active power;;1.0;0.0;kW;4
+375;4;521;U16;;Plan power 9 reactive power;;1.0;0.0;kVar;4
+376;4;522;U16;;Plan power 9 use mark;;1.0;0.0;;4
+377;4;523;U16;;Plan power 10 start time year/month/day;;1.0;0.0;;4
+378;4;525;U16;;Plan power 10 end time year/month/day;;1.0;0.0;;4
+379;4;527;U16;;Plan power 10 start time hour/minute/second;;1.0;0.0;;4
+380;4;529;U16;;Plan power 10 end time hour/minute/second;;1.0;0.0;;4
+381;4;531;U16;;Plan power 10 active power;;1.0;0.0;kW;4
+382;4;532;U16;;Plan power 10 reactive power;;1.0;0.0;kVar;4
+383;4;533;U16;;Plan power 10 use mark;;1.0;0.0;;4
+384;4;534;U16;;Plan power 11 start time year/month/day;;1.0;0.0;;4
+385;4;536;U16;;Plan power 11 end time year/month/day;;1.0;0.0;;4
+386;4;538;U16;;Plan power 11 start time hour/minute/second;;1.0;0.0;;4
+387;4;540;U16;;Plan power 11 end time hour/minute/second;;1.0;0.0;;4
+388;4;542;U16;;Plan power 11 active power;;1.0;0.0;kW;4
+389;4;543;U16;;Plan power 11 reactive power;;1.0;0.0;kVar;4
+390;4;544;U16;;Plan power 11 use mark;;1.0;0.0;;4
+391;4;545;U16;;Plan power 12 start time year/month/day;;1.0;0.0;;4
+392;4;547;U16;;Plan power 12 end time year/month/day;;1.0;0.0;;4
+393;4;549;U16;;Plan power 12 start time hour/minute/second;;1.0;0.0;;4
+394;4;551;U16;;Plan power 12 end time hour/minute/second;;1.0;0.0;;4
+395;4;553;U16;;Plan power 12 active power;;1.0;0.0;kW;4
+396;4;554;U16;;Plan power 12 reactive power;;1.0;0.0;kVar;4
+397;4;555;U16;;Plan power 12 use mark;;1.0;0.0;;4
+398;4;556;U16;;Plan power 13 start time year/month/day;;1.0;0.0;;4
+399;4;558;U16;;Plan power 13 end time year/month/day;;1.0;0.0;;4
+400;4;560;U16;;Plan power 13 start time hour/minute/second;;1.0;0.0;;4
+401;4;562;U16;;Plan power 13 end time hour/minute/second;;1.0;0.0;;4
+402;4;564;U16;;Plan power 13 active power;;1.0;0.0;kW;4
+403;4;565;U16;;Plan power 13 reactive power;;1.0;0.0;kVar;4
+404;4;566;U16;;Plan power 13 use mark;;1.0;0.0;;4
+405;4;567;U16;;Plan power 14 start time year/month/day;;1.0;0.0;;4
+406;4;569;U16;;Plan power 14 end time year/month/day;;1.0;0.0;;4
+407;4;571;U16;;Plan power 14 start time hour/minute/second;;1.0;0.0;;4
+408;4;573;U16;;Plan power 14 end time hour/minute/second;;1.0;0.0;;4
+409;4;575;U16;;Plan power 14 active power;;1.0;0.0;kW;4
+410;4;576;U16;;Plan power 14 reactive power;;1.0;0.0;kVar;4
+411;4;577;U16;;Plan power 14 use mark;;1.0;0.0;;4
+412;4;578;U16;;Plan power 15 start time year/month/day;;1.0;0.0;;4
+413;4;580;U16;;Plan power 15 end time year/month/day;;1.0;0.0;;4
+414;4;582;U16;;Plan power 15 start time hour/minute/second;;1.0;0.0;;4
+415;4;584;U16;;Plan power 15 end time hour/minute/second;;1.0;0.0;;4
+416;4;586;U16;;Plan power 15 active power;;1.0;0.0;kW;4
+417;4;587;U16;;Plan power 15 reactive power;;1.0;0.0;kVar;4
+418;4;588;U16;;Plan power 15 use mark;;1.0;0.0;;4
+419;4;589;U16;;Plan power 16 start time year/month/day;;1.0;0.0;;4
+420;4;591;U16;;Plan power 16 end time year/month/day;;1.0;0.0;;4
+421;4;593;U16;;Plan power 16 start time hour/minute/second;;1.0;0.0;;4
+422;4;595;U16;;Plan power 16 end time hour/minute/second;;1.0;0.0;;4
+423;4;597;U16;;Plan power 16 active power;;1.0;0.0;kW;4
+424;4;598;U16;;Plan power 16 reactive power;;1.0;0.0;kVar;4
+425;4;599;U16;;Plan power 16 use mark;;1.0;0.0;;4
+426;4;600;U16;;Plan power 17 start time year/month/day;;1.0;0.0;;4
+427;4;602;U16;;Plan power 17 end time year/month/day;;1.0;0.0;;4
+428;4;604;U16;;Plan power 17 start time hour/minute/second;;1.0;0.0;;4
+429;4;606;U16;;Plan power 17 end time hour/minute/second;;1.0;0.0;;4
+430;4;608;U16;;Plan power 17 active power;;1.0;0.0;kW;4
+431;4;609;U16;;Plan power 17 reactive power;;1.0;0.0;kVar;4
+432;4;610;U16;;Plan power 17 use mark;;1.0;0.0;;4
+433;4;611;U16;;Plan power 18 start time year/month/day;;1.0;0.0;;4
+434;4;613;U16;;Plan power 18 end time year/month/day;;1.0;0.0;;4
+435;4;615;U16;;Plan power 18 start time hour/minute/second;;1.0;0.0;;4
+436;4;617;U16;;Plan power 18 end time hour/minute/second;;1.0;0.0;;4
+437;4;619;U16;;Plan power 18 active power;;1.0;0.0;kW;4
+438;4;620;U16;;Plan power 18 reactive power;;1.0;0.0;kVar;4
+439;4;621;U16;;Plan power 18 use mark;;1.0;0.0;;4
+440;4;622;U16;;Plan power 19 start time year/month/day;;1.0;0.0;;4
+441;4;624;U16;;Plan power 19 end time year/month/day;;1.0;0.0;;4
+442;4;626;U16;;Plan power 19 start time hour/minute/second;;1.0;0.0;;4
+443;4;628;U16;;Plan power 19 end time hour/minute/second;;1.0;0.0;;4
+444;4;630;U16;;Plan power 19 active power;;1.0;0.0;kW;4
+445;4;631;U16;;Plan power 19 reactive power;;1.0;0.0;kVar;4
+446;4;632;U16;;Plan power 19 use mark;;1.0;0.0;;4
+447;4;633;U16;;Plan power 20 start time year/month/day;;1.0;0.0;;4
+448;4;635;U16;;Plan power 20 end time year/month/day;;1.0;0.0;;4
+449;4;637;U16;;Plan power 20 start time hour/minute/second;;1.0;0.0;;4
+450;4;639;U16;;Plan power 20 end time hour/minute/second;;1.0;0.0;;4
+451;4;641;U16;;Plan power 20 active power;;1.0;0.0;kW;4
+452;4;642;U16;;Plan power 20 reactive power;;1.0;0.0;kVar;4
+453;4;643;U16;;Plan power 20 use mark;;1.0;0.0;;4
+454;4;644;U16;;Plan power 21 start time year/month/day;;1.0;0.0;;4
+455;4;646;U16;;Plan power 21 end time year/month/day;;1.0;0.0;;4
+456;4;648;U16;;Plan power 21 start time hour/minute/second;;1.0;0.0;;4
+457;4;650;U16;;Plan power 21 end time hour/minute/second;;1.0;0.0;;4
+458;4;652;U16;;Plan power 21 active power;;1.0;0.0;kW;4
+459;4;653;U16;;Plan power 21 reactive power;;1.0;0.0;kVar;4
+460;4;654;U16;;Plan power 21 use mark;;1.0;0.0;;4
+461;4;655;U16;;Plan power 22 start time year/month/day;;1.0;0.0;;4
+462;4;657;U16;;Plan power 22 end time year/month/day;;1.0;0.0;;4
+463;4;659;U16;;Plan power 22 start time hour/minute/second;;1.0;0.0;;4
+464;4;661;U16;;Plan power 22 end time hour/minute/second;;1.0;0.0;;4
+465;4;663;U16;;Plan power 22 active power;;1.0;0.0;kW;4
+466;4;664;U16;;Plan power 22 reactive power;;1.0;0.0;kVar;4
+467;4;665;U16;;Plan power 22 use mark;;1.0;0.0;;4
+468;4;666;U16;;Plan power 23 start time year/month/day;;1.0;0.0;;4
+469;4;668;U16;;Plan power 23 end time year/month/day;;1.0;0.0;;4
+470;4;670;U16;;Plan power 23 start time hour/minute/second;;1.0;0.0;;4
+471;4;672;U16;;Plan power 23 end time hour/minute/second;;1.0;0.0;;4
+472;4;674;U16;;Plan power 23 active power;;1.0;0.0;kW;4
+473;4;675;U16;;Plan power 23 reactive power;;1.0;0.0;kVar;4
+474;4;676;U16;;Plan power 23 use mark;;1.0;0.0;;4
+475;4;677;U16;;Plan power 24 start time year/month/day;;1.0;0.0;;4
+476;4;679;U16;;Plan power 24 end time year/month/day;;1.0;0.0;;4
+477;4;681;U16;;Plan power 24 start time hour/minute/second;;1.0;0.0;;4
+478;4;683;U16;;Plan power 24 end time hour/minute/second;;1.0;0.0;;4
+479;4;685;U16;;Plan power 24 active power;;1.0;0.0;kW;4
+480;4;686;U16;;Plan power 24 reactive power;;1.0;0.0;kVar;4
+481;4;687;U16;;Plan power 24 use mark;;1.0;0.0;;4
+482;4;714;U16;;Min. temp. power limitation temp. point [0];;1.0;0.0;℃;4
+483;4;715;U16;;Min. temp. power limitation temp. point [1];;1.0;0.0;℃;4
+484;4;716;U16;;Min. temp. power limitation temp. point [2];;1.0;0.0;℃;4
+485;4;717;U16;;Min. temp. power limitation temp. point [3];;1.0;0.0;℃;4
+486;4;718;U16;;Min. temp. power limitation temp. point [4];;1.0;0.0;℃;4
+487;4;719;U16;;Min. temp. power limitation temp. point [5];;1.0;0.0;℃;4
+488;4;720;U16;;Min. temp. power limitation temp. point [6];;1.0;0.0;℃;4
+489;4;721;U16;;Min. temp. power limitation temp. point [7];;1.0;0.0;℃;4
+490;4;722;U16;;Min. temp. power limitation temp. point [8];;1.0;0.0;℃;4
+491;4;723;U16;;Min Temp Limit Dis Pwr Pt0;;1.0;0.0;kW;4
+492;4;724;U16;;Min Temp Limit Dis Pwr Pt1;;1.0;0.0;kW;4
+493;4;725;U16;;Min Temp Limit Dis Pwr Pt2;;1.0;0.0;kW;4
+494;4;726;U16;;Min Temp Limit Dis Pwr Pt3;;1.0;0.0;kW;4
+495;4;727;U16;;Min Temp Limit Dis Pwr Pt4;;1.0;0.0;kW;4
+496;4;728;U16;;Min Temp Limit Dis Pwr Pt5;;1.0;0.0;kW;4
+497;4;729;U16;;Min Temp Limit Dis Pwr Pt6;;1.0;0.0;kW;4
+498;4;730;U16;;Min Temp Limit Dis Pwr Pt7;;1.0;0.0;kW;4
+499;4;731;U16;;Min Temp Limit Dis Pwr Pt8;;1.0;0.0;kW;4
+500;4;732;U16;;Min Temp Limit Dis Pwr Pt9;;1.0;0.0;kW;4
+501;4;733;U16;;Min Temp Limit Chg Pwr Pt0;;1.0;0.0;kW;4
+502;4;734;U16;;Min Temp Limit Chg Pwr Pt1;;1.0;0.0;kW;4
+503;4;735;U16;;Min Temp Limit Chg Pwr Pt2;;1.0;0.0;kW;4
+504;4;736;U16;;Min Temp Limit Chg Pwr Pt3;;1.0;0.0;kW;4
+505;4;737;U16;;Min Temp Limit Chg Pwr Pt4;;1.0;0.0;kW;4
+506;4;738;U16;;Min Temp Limit Chg Pwr Pt5;;1.0;0.0;kW;4
+507;4;739;U16;;Min Temp Limit Chg Pwr Pt6;;1.0;0.0;kW;4
+508;4;740;U16;;Min Temp Limit Chg Pwr Pt7;;1.0;0.0;kW;4
+509;4;741;U16;;Min Temp Limit Chg Pwr Pt8;;1.0;0.0;kW;4
+510;4;742;U16;;Min Temp Limit Chg Pwr Pt9;;1.0;0.0;kW;4
+511;4;743;U16;;lems backflow threshold;;1.0;0.0;;4
+512;4;744;U16;;lems reverse power differential value;;1.0;0.0;;4
+513;4;745;U16;;lems backflow adjustment time step;;1.0;0.0;;4
+514;4;746;U16;;lems static demand-rated power (month) (kw);;1.0;0.0;;4
+515;4;747;U16;;lems static demand-rated power (February) (kw);;1.0;0.0;;4
+516;4;748;U16;;lems static demand-rated power (March) (kw);;1.0;0.0;;4
+517;4;749;U16;;lems static demand-rated power (April) (kw);;1.0;0.0;;4
+518;4;750;U16;;lems static demand-rated power (may) (kw);;1.0;0.0;;4
+519;4;751;U16;;lems static demand-rated power (June) (kw);;1.0;0.0;;4
+520;4;752;U16;;lems static demand-rated power (July) (kw);;1.0;0.0;;4
+521;4;753;U16;;lems static demand-rated power (August) (kw);;1.0;0.0;;4
+522;4;754;U16;;lems static demand-rated power (September) (kw);;1.0;0.0;;4
+523;4;755;U16;;lems static demand-rated power (Oct)(kw);;1.0;0.0;;4
+524;4;756;U16;;lems static demand-rated power (November) (kw);;1.0;0.0;;4
+525;4;757;U16;;lems static demand-rated power (December) (kw);;1.0;0.0;;4
+526;4;758;U16;;LEMS Static Demand Power Hysteresis;;1.0;0.0;;4
+527;4;759;U16;;lems static demand-power adjustment step;;1.0;0.0;;4
+528;4;760;U16;;aems reverse power differential value;;1.0;0.0;;4
+529;4;761;U16;;AEMS countercurrent adjustment time step;;1.0;0.0;;4
+530;4;762;U16;;aems backflow threshold;;1.0;0.0;;4
+531;4;763;U16;;aems static demand-rated power (one month) (kw);;1.0;0.0;;4
+532;4;764;U16;;aems static demand-rated power (February) (kw);;1.0;0.0;;4
+533;4;765;U16;;aems static demand-rated power (March) (kw);;1.0;0.0;;4
+534;4;766;U16;;aems static demand-rated power (April) (kw);;1.0;0.0;;4
+535;4;767;U16;;aems static demand-rated power (May) (kw);;1.0;0.0;;4
+536;4;768;U16;;aems static demand-rated power (June) (kw);;1.0;0.0;;4
+537;4;769;U16;;aems static demand-rated power (July) (kw);;1.0;0.0;;4
+538;4;770;U16;;aems static demand-rated power (August) (kw);;1.0;0.0;;4
+539;4;771;U16;;aems static demand-rated power (September) (kw);;1.0;0.0;;4
+540;4;772;U16;;aems static demand-rated power (October) (kw);;1.0;0.0;;4
+541;4;773;U16;;aems static demand-rated power (November) (kw);;1.0;0.0;;4
+542;4;774;U16;;aems static demand-rated power (December) (kw);;1.0;0.0;;4
+543;4;775;U16;;AEMS Static Demand Power Hysteresis;;1.0;0.0;;4
+544;4;776;U16;;aems static demand-power adjustment step;;1.0;0.0;;4
+545;4;777;U16;;Peak-valley arbitrage-discharge enable 1;;1.0;0.0;;4
+546;4;778;U16;;Peak-valley arbitrage-Start time1 (DIS);;1.0;0.0;;4
+547;4;780;U16;;Peak-valley arbitrage-End time1 (DIS);;1.0;0.0;;4
+548;4;782;U16;;Peak-valley arbitrage-Power setting1 (DIS);;1.0;0.0;;4
+549;4;783;U16;;Peak-valley arbitrage-DIS stop SOC1 (DIS);;1.0;0.0;;4
+550;4;784;U16;;Peak-valley arbitrage-discharge enable 2;;1.0;0.0;;4
+551;4;785;U16;;Peak-valley arbitrage-Start time2 (DIS);;1.0;0.0;;4
+552;4;787;U16;;Peak-valley arbitrage-End time2 (DIS);;1.0;0.0;;4
+553;4;789;U16;;Peak-valley arbitrage-Power setting2 (DIS);;1.0;0.0;;4
+554;4;790;U16;;Peak-valley arbitrage-DIS stop SOC2 (DIS);;1.0;0.0;;4
+555;4;791;U16;;Peak-valley arbitrage-discharge enable 3;;1.0;0.0;;4
+556;4;792;U16;;Peak-valley arbitrage-Start time3 (DIS);;1.0;0.0;;4
+557;4;794;U16;;Peak-valley arbitrage-End time3 (DIS);;1.0;0.0;;4
+558;4;796;U16;;Peak-valley arbitrage-Power setting3 (DIS);;1.0;0.0;;4
+559;4;797;U16;;Peak-valley arbitrage-DIS stop SOC3 (DIS);;1.0;0.0;;4
+560;4;798;U16;;Peak-valley arbitrage-discharge enable 4;;1.0;0.0;;4
+561;4;799;U16;;Peak-valley arbitrage-Start time4 (DIS);;1.0;0.0;;4
+562;4;801;U16;;Peak-valley arbitrage-End time4 (DIS);;1.0;0.0;;4
+563;4;803;U16;;Peak-valley arbitrage-Power setting4 (DIS);;1.0;0.0;;4
+564;4;804;U16;;Peak-valley arbitrage-DIS stop SOC4 (DIS);;1.0;0.0;;4
+565;4;805;U16;;Peak-valley arbitrage-charging enablement 1;;1.0;0.0;;4
+566;4;806;U16;;Peak-valley arbitrage-Start time1 (CHA);;1.0;0.0;;4
+567;4;808;U16;;Peak-valley arbitrage-End time1 (CHA);;1.0;0.0;;4
+568;4;810;U16;;Peak-valley arbitrage-Power setting1 (CHA);;1.0;0.0;;4
+569;4;811;U16;;Peak-valley arbitrage-DIS stop SOC1 (CHA);;1.0;0.0;;4
+570;4;812;U16;;Peak-valley arbitrage-charging enablement 2;;1.0;0.0;;4
+571;4;813;U16;;Peak-valley arbitrage-Start time2 (CHA);;1.0;0.0;;4
+572;4;815;U16;;Peak-valley arbitrage-End time2 (CHA);;1.0;0.0;;4
+573;4;817;U16;;Peak-valley arbitrage-Power setting2 (CHA);;1.0;0.0;;4
+574;4;818;U16;;Peak-valley arbitrage-DIS stop SOC2 (CHA);;1.0;0.0;;4
+575;4;819;U16;;Peak-valley arbitrage-charging enablement 3;;1.0;0.0;;4
+576;4;820;U16;;Peak-valley arbitrage-Start time3 (CHA);;1.0;0.0;;4
+577;4;822;U16;;Peak-valley arbitrage-End time3 (CHA);;1.0;0.0;;4
+578;4;824;U16;;Peak-valley arbitrage-Power setting3 (CHA);;1.0;0.0;;4
+579;4;825;U16;;Peak-valley arbitrage-DIS stop SOC3 (CHA);;1.0;0.0;;4
+580;4;826;U16;;Peak-valley arbitrage-charging enablement 4;;1.0;0.0;;4
+581;4;827;U16;;Peak-valley arbitrage-Start time4 (CHA);;1.0;0.0;;4
+582;4;829;U16;;Peak-valley arbitrage-End time4 (CHA);;1.0;0.0;;4
+583;4;831;U16;;Peak-valley arbitrage-Power setting4 (CHA);;1.0;0.0;;4
+584;4;832;U16;;Peak-valley arbitrage-DIS stop SOC4 (CHA);;1.0;0.0;;4
+585;4;203;U16;;Stack volt.;;1.0;0.0;V;4
+586;4;302;U16;;Stack Status;;1.0;0.0;;9
+587;4;303;U16;;Stack volt.;;1.0;0.0;V;4
+588;4;304;U16;;Stack curr.;;1.0;0.0;A;4
+589;4;305;U16;;Max. cell volt.;;1.0;0.0;V;4
+590;4;306;U16;;Min. cell volt.;;1.0;0.0;V;4
+591;4;307;U16;;Max. cell temp.;TEMP_CELL;1.0;0.0;℃;4
+592;4;308;U16;;Min. cell temp.;;1.0;0.0;℃;4
+593;4;309;U16;;Max. cell SOC;;1.0;0.0;%;4
+594;4;310;U16;;Min. cell SOC;;1.0;0.0;%;4
+595;4;311;U16;;Maximum cell voltage cluster number;;1.0;0.0;;4
+596;4;312;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+597;4;313;U16;;Minimum cell voltage cluster number;;1.0;0.0;;4
+598;4;314;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+599;4;315;U16;;Maximum cell temperature cluster number;;1.0;0.0;;4
+600;4;316;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+601;4;317;U16;;Minimum cell temperature cluster number;;1.0;0.0;;4
+602;4;318;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+603;4;319;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+604;4;320;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+605;4;323;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+606;4;324;U16;;Stack power;;1.0;0.0;kW;4
+607;4;325;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+608;4;326;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+609;4;327;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+610;4;329;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+611;4;373;U16;;Max. cell volt-diff.;;1.0;0.0;mA;4
+612;4;374;U16;;Stack power;;1.0;0.0;kW;4
+613;4;418;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+614;4;419;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+615;4;420;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+616;4;425;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+617;4;427;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+618;4;429;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+619;4;6200;U16;;Celltemperature;;1.0;0.0;;4
+620;4;6600;U16;;Cell voltage;;1.0;0.0;;4
+621;4;7000;U16;;Cell SOC;;1.0;0.0;%;4
+622;4;7400;U16;;Celltemperature;;1.0;0.0;;4
+623;4;7800;U16;;Cell voltage;;1.0;0.0;;4
+624;4;8200;U16;;Cell SOC;;1.0;0.0;%;4
+625;4;8600;U16;;Celltemperature;;1.0;0.0;;4
+626;4;9000;U16;;Cell voltage;;1.0;0.0;;4
+627;4;9400;U16;;Cell SOC;;1.0;0.0;%;4
+628;4;9800;U16;;Celltemperature;;1.0;0.0;;4
+629;4;10200;U16;;Cell voltage;;1.0;0.0;;4
+630;4;10600;U16;;Cell SOC;;1.0;0.0;%;4
+631;4;11000;U16;;Celltemperature;;1.0;0.0;;4
+632;4;11400;U16;;Cell voltage;;1.0;0.0;;4
+633;4;11800;U16;;Cell SOC;;1.0;0.0;%;4
+634;4;2201;U16;;Rack SOH;;1.0;0.0;%;4
+635;4;2202;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+636;4;2203;U16;;Rack volt.;;1.0;0.0;V;4
+637;4;2204;U16;;Rack curr.;;1.0;0.0;A;4
+638;4;2205;U16;;Max. cell volt.;;1.0;0.0;V;4
+639;4;2206;U16;;Min. cell volt.;;1.0;0.0;V;4
+640;4;2207;U16;;Max. cell temp.;;1.0;0.0;℃;4
+641;4;2208;U16;;Min. cell temp.;;1.0;0.0;℃;4
+642;4;2209;U16;;Max. cell SOC;;1.0;0.0;%;4
+643;4;2210;U16;;Min. cell SOC;;1.0;0.0;%;4
+644;4;2212;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+645;4;2214;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+646;4;2216;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+647;4;2218;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+648;4;2219;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+649;4;2220;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+650;4;2221;U16;;Number of cell in rack;;1.0;0.0;;4
+651;4;2222;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+652;4;2223;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+653;4;2224;U16;;Rack power;;1.0;0.0;kW;4
+654;4;2225;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+655;4;2226;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+656;4;2227;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+657;4;2229;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+658;4;2250;U16;;Rack SOC;;1.0;0.0;%;4
+659;4;2251;U16;;Rack SOH;;1.0;0.0;%;4
+660;4;2252;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+661;4;2253;U16;;Rack volt.;;1.0;0.0;V;4
+662;4;2254;U16;;Rack curr.;;1.0;0.0;A;4
+663;4;2255;U16;;Max. cell volt.;;1.0;0.0;V;4
+664;4;2256;U16;;Min. cell volt.;;1.0;0.0;V;4
+665;4;2257;U16;;Max. cell temp.;;1.0;0.0;℃;4
+666;4;2258;U16;;Min. cell temp.;;1.0;0.0;℃;4
+667;4;2259;U16;;Max. cell SOC;;1.0;0.0;%;4
+668;4;2260;U16;;Min. cell SOC;;1.0;0.0;%;4
+669;4;2262;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+670;4;2264;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+671;4;2266;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+672;4;2268;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+673;4;2269;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+674;4;2270;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+675;4;2271;U16;;Number of cell in rack;;1.0;0.0;;4
+676;4;2272;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+677;4;2273;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+678;4;2274;U16;;Rack power;;1.0;0.0;kW;4
+679;4;2275;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+680;4;2276;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+681;4;2277;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+682;4;2279;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+683;4;2300;U16;;Rack SOC;;1.0;0.0;%;4
+684;4;2301;U16;;Rack SOH;;1.0;0.0;%;4
+685;4;2302;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+686;4;2303;U16;;Rack volt.;;1.0;0.0;V;4
+687;4;2304;U16;;Rack curr.;;1.0;0.0;A;4
+688;4;2305;U16;;Max. cell volt.;;1.0;0.0;V;4
+689;4;2306;U16;;Min. cell volt.;;1.0;0.0;V;4
+690;4;2307;U16;;Max. cell temp.;;1.0;0.0;℃;4
+691;4;2308;U16;;Min. cell temp.;;1.0;0.0;℃;4
+692;4;2309;U16;;Max. cell SOC;;1.0;0.0;%;4
+693;4;2310;U16;;Min. cell SOC;;1.0;0.0;%;4
+694;4;2312;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+695;4;2314;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+696;4;2316;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+697;4;2318;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+698;4;2319;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+699;4;2320;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+700;4;2321;U16;;Number of cell in rack;;1.0;0.0;;4
+701;4;2322;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+702;4;2323;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+703;4;2324;U16;;Rack power;;1.0;0.0;kW;4
+704;4;2325;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+705;4;2326;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+706;4;2327;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+707;4;2329;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+708;4;2350;U16;;Rack SOC;;1.0;0.0;%;4
+709;4;2351;U16;;Rack SOH;;1.0;0.0;%;4
+710;4;2352;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+711;4;2353;U16;;Rack volt.;;1.0;0.0;V;4
+712;4;2354;U16;;Rack curr.;;1.0;0.0;A;4
+713;4;2355;U16;;Max. cell volt.;;1.0;0.0;V;4
+714;4;2356;U16;;Min. cell volt.;;1.0;0.0;V;4
+715;4;2357;U16;;Max. cell temp.;;1.0;0.0;℃;4
+716;4;2358;U16;;Min. cell temp.;;1.0;0.0;℃;4
+717;4;2359;U16;;Max. cell SOC;;1.0;0.0;%;4
+718;4;2360;U16;;Min. cell SOC;;1.0;0.0;%;4
+719;4;2362;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+720;4;2364;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+721;4;2366;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+722;4;2368;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+723;4;2369;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+724;4;2370;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+725;4;2371;U16;;Number of cell in rack;;1.0;0.0;;4
+726;4;2372;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+727;4;2373;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+728;4;2374;U16;;Rack power;;1.0;0.0;kW;4
+729;4;2375;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+730;4;2376;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+731;4;2377;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+732;4;2379;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+733;4;2400;U16;;Rack SOC;;1.0;0.0;%;4
+734;4;2401;U16;;Rack SOH;;1.0;0.0;%;4
+735;4;2402;U16;;Rack status 0:Stop 1:CHA 2:DIS 3:Standby 4:Fault;;1.0;0.0;;9
+736;4;2403;U16;;Rack volt.;;1.0;0.0;V;4
+737;4;2404;U16;;Rack curr.;;1.0;0.0;A;4
+738;4;2405;U16;;Max. cell volt.;;1.0;0.0;V;4
+739;4;2406;U16;;Min. cell volt.;;1.0;0.0;V;4
+740;4;2407;U16;;Max. cell temp.;;1.0;0.0;℃;4
+741;4;2408;U16;;Min. cell temp.;;1.0;0.0;℃;4
+742;4;2409;U16;;Max. cell SOC;;1.0;0.0;%;4
+743;4;2410;U16;;Min. cell SOC;;1.0;0.0;%;4
+744;4;2412;U16;;Max. cell volt. cell#;;1.0;0.0;;4
+745;4;2414;U16;;Min. cell volt. cell#;;1.0;0.0;;4
+746;4;2416;U16;;Max. cell temp. cell#;;1.0;0.0;;4
+747;4;2418;U16;;Min. cell temp. cell#;;1.0;0.0;;4
+748;4;2419;U16;;Allowable CHA curr. (max.);;1.0;0.0;A;4
+749;4;2420;U16;;Allowable DIS curr. (max.);;1.0;0.0;A;4
+750;4;2421;U16;;Number of cell in rack;;1.0;0.0;;4
+751;4;2422;U16;;Number of temp. DAQ point in rack;;1.0;0.0;;4
+752;4;2423;U16;;Max. cell volt-diff.;;1.0;0.0;;4
+753;4;2424;U16;;Rack power;;1.0;0.0;kW;4
+754;4;2425;U16;;Allowable CHA power (max.);;1.0;0.0;kW;4
+755;4;2426;U16;;Allowable DIS power (max.);;1.0;0.0;kW;4
+756;4;2427;U16;;Accumulated rack CHA energy capa.;;1.0;0.0;kWh;4
+757;4;2429;U16;;Accumulated rack DIS energy capa.;;1.0;0.0;kWh;4
+758;4;321;U16;;Cell UN-volt. alarm minor;;1.0;0.0;;9
+759;4;322;U16;;Cell UN-volt. alarm major;;1.0;0.0;;9
+760;4;328;U16;;Cell UN-temp. alarm major;;1.0;0.0;;9
+761;4;330;U16;;Single cell discharge overtemperature mild alarm;;1.0;0.0;;9
+762;4;331;U16;;Monomer discharge overtemperature moderate alarm;;1.0;0.0;;9
+763;4;332;U16;;Cell Discharge OverTemp Severe Alarm;;1.0;0.0;;9
+764;4;333;U16;;Cell Discharge UnderTemp Light Alarm;;1.0;0.0;;9
+765;4;334;U16;;Monomer discharge undertemperature moderate alarm;;1.0;0.0;;9
+766;4;335;U16;;Cell Discharge UnderTemp Severe Alarm;;1.0;0.0;;9
+767;4;431;U16;;Monomer discharge overtemperature moderate alarm;;1.0;0.0;;9
+768;4;436;U16;;Cell LO-SOC alarm minor;;1.0;0.0;;9
+769;4;438;U16;;Cell LO-SOC alarm critical;;1.0;0.0;;9
+770;4;440;U16;;Cell HI-SOC alarm major;;1.0;0.0;;9
+771;4;442;U16;;Cell SOC-diff. alarm minor;;1.0;0.0;;9
+772;4;447;U16;;Cell temp-diff. alarm critical;;1.0;0.0;;9
+773;4;451;U16;;DIS disallowed (protection);;1.0;0.0;;4
+774;4;453;U16;;BMS system fault summary;;1.0;0.0;;9
+775;4;502;U16;;Negative electrical insulation alarm critical;R_ISO;1.0;0.0;;9
+776;4;506;U16;;Rack OV-volt. alarm minor;;1.0;0.0;;9
+777;4;508;U16;;Rack OV-volt. alarm critical;;1.0;0.0;;9
+778;4;513;U16;;Rack OV-curr. alarm major;;1.0;0.0;;9
+779;4;515;U16;;Cluster end discharge overcurrent slight alarm;;1.0;0.0;;9
+780;4;517;U16;;Cluster end discharge overcurrent severe alarm;;1.0;0.0;;9
+781;4;519;U16;;Cell OV-volt. alarm major;;1.0;0.0;;9
+782;4;524;U16;;Cell OV-temp. alarm minor;;1.0;0.0;;9
+783;4;526;U16;;Cell OV-temp. alarm critical;;1.0;0.0;;9
+784;4;528;U16;;Cell UN-temp. alarm major;;1.0;0.0;;9
+785;4;530;U16;;Single cell discharge overtemperature mild alarm;;1.0;0.0;;9
+786;4;535;U16;;Cell Discharge UnderTemp Severe Alarm;;1.0;0.0;;9
+787;4;537;U16;;Cell LO-SOC alarm major;;1.0;0.0;;9
+788;4;539;U16;;Cell HI-SOC alarm minor;;1.0;0.0;;9
+789;4;541;U16;;Cell HI-SOC alarm critical;;1.0;0.0;;9
+790;4;546;U16;;Cell temp-diff. alarm major;;1.0;0.0;;9
+791;4;548;U16;;In-stack temp. rise rapidly (critical);;1.0;0.0;;4
+792;4;550;U16;;CHA disallowed (protection);;1.0;0.0;;4
+793;4;552;U16;;BMS system alarm summary;;1.0;0.0;;9
+794;4;601;U16;;Negative electrical insulation alarm major;;1.0;0.0;;9
+795;4;607;U16;;Rack OV-volt. alarm major;;1.0;0.0;;9
+796;4;612;U16;;Rack OV-curr. alarm minor;;1.0;0.0;;9
+797;4;614;U16;;Rack OV-curr. alarm critical;;1.0;0.0;;9
+798;4;616;U16;;Cluster end discharge overcurrent moderate alarm;;1.0;0.0;;9
+799;4;618;U16;;Cell OV-volt. alarm minor;;1.0;0.0;;9
+800;4;623;U16;;Cell UN-volt. alarm critical;;1.0;0.0;;9
+801;4;625;U16;;Cell OV-temp. alarm major;;1.0;0.0;;9
+802;4;627;U16;;Cell UN-temp. alarm minor;;1.0;0.0;;9
+803;4;629;U16;;Cell UN-temp. alarm critical;;1.0;0.0;;9
+804;4;634;U16;;Monomer discharge undertemperature moderate alarm;;1.0;0.0;;9
+805;4;636;U16;;Cell LO-SOC alarm minor;;1.0;0.0;;9
+806;4;638;U16;;Cell LO-SOC alarm critical;;1.0;0.0;;9
+807;4;640;U16;;Cell HI-SOC alarm major;;1.0;0.0;;9
+808;4;645;U16;;Cell temp-diff. alarm minor;;1.0;0.0;;9
+809;4;647;U16;;Cell temp-diff. alarm critical;;1.0;0.0;;9
+810;4;651;U16;;DIS disallowed (protection);;1.0;0.0;;4
+811;4;656;U16;;Cell limit OV-temp. reaction alarm;;1.0;0.0;;9
+812;4;4200;U16;;Rack negative electrical insulation alarm (minor);;1.0;0.0;;9
+813;4;4201;U16;;Rack negative electrical insulation alarm (major);;1.0;0.0;;9
+814;4;4202;U16;;Clu End Neg Insul Severe Alarm;;1.0;0.0;;9
+815;4;4203;U16;;Rack LO-SOC (minor);;1.0;0.0;;4
+816;4;4204;U16;;Rack LO-SOC (major);;1.0;0.0;;4
+817;4;4205;U16;;Rack LO-SOC (critical);;1.0;0.0;;4
+818;4;4206;U16;;Rack OV-volt. (minor);;1.0;0.0;;4
+819;4;4207;U16;;Rack OV-volt. (major);;1.0;0.0;;4
+820;4;4208;U16;;Rack OV-volt. (critical);;1.0;0.0;;4
+821;4;4209;U16;;Rack UN-volt. (minor);;1.0;0.0;;4
+822;4;4210;U16;;Rack UN-volt. (major);;1.0;0.0;;4
+823;4;4211;U16;;Rack UN-volt. (critical);;1.0;0.0;;4
+824;4;4212;U16;;Rack CHA OV-curr. alarm (minor);;1.0;0.0;;9
+825;4;4213;U16;;Rack CHA OV-curr. alarm (major);;1.0;0.0;;9
+826;4;4214;U16;;Rack CHA OV-curr. alarm (critical);;1.0;0.0;;9
+827;4;4215;U16;;Rack DIS OV-curr. alarm (minor);;1.0;0.0;;9
+828;4;4216;U16;;Rack DIS OV-curr. alarm (major);;1.0;0.0;;9
+829;4;4217;U16;;Rack DIS OV-curr. alarm (critical);;1.0;0.0;;9
+830;4;4218;U16;;Cell OV-volt. (minor);;1.0;0.0;;4
+831;4;4219;U16;;Cell OV-volt. (major);;1.0;0.0;;4
+832;4;4220;U16;;Cell OV-volt. (critical);;1.0;0.0;;4
+833;4;4221;U16;;Cell UN-volt. (minor);;1.0;0.0;;4
+834;4;4222;U16;;Cell UN-volt. (major);;1.0;0.0;;4
+835;4;4223;U16;;Cell UN-volt. (critical);;1.0;0.0;;4
+836;4;4224;U16;;CHA cell OV-temp. (minor);;1.0;0.0;;4
+837;4;4225;U16;;CHA cell OV-temp. (major);;1.0;0.0;;4
+838;4;4226;U16;;CHA cell OV-temp. (critical);;1.0;0.0;;4
+839;4;4227;U16;;CHA cell UN-temp. (minor);;1.0;0.0;;4
+840;4;4228;U16;;CHA cell UN-temp. (major);;1.0;0.0;;4
+841;4;4229;U16;;CHA cell UN-temp. (critical);;1.0;0.0;;4
+842;4;4230;U16;;DIS cell OV-temp. (minor);;1.0;0.0;;4
+843;4;4231;U16;;DIS cell OV-temp. (major);;1.0;0.0;;4
+844;4;4232;U16;;DIS cell OV-temp. (critical);;1.0;0.0;;4
+845;4;4233;U16;;DIS cell UN-temp. (minor);;1.0;0.0;;4
+846;4;4234;U16;;DIS cell UN-temp. (major);;1.0;0.0;;4
+847;4;4235;U16;;DIS cell UN-temp. (critical);;1.0;0.0;;4
+848;4;4236;U16;;Cell LO-SOC minor;;1.0;0.0;;4
+849;4;4237;U16;;Cell LO-SOC major;;1.0;0.0;;4
+850;4;4238;U16;;Cell LO-SOC critical;;1.0;0.0;;4
+851;4;4239;U16;;Cell HI-SOC minor;;1.0;0.0;;4
+852;4;4240;U16;;Cell HI-SOC major;;1.0;0.0;;4
+853;4;4241;U16;;Cell HI-SOC critical;;1.0;0.0;;4
+854;4;4242;U16;;Cell volt-diff. (minor);;1.0;0.0;;4
+855;4;4243;U16;;Cell volt-diff. (major);;1.0;0.0;;4
+856;4;4244;U16;;Cell volt-diff. (critical);;1.0;0.0;;4
+857;4;4245;U16;;Cell temp-diff. (minor);;1.0;0.0;;4
+858;4;4246;U16;;Cell temp-diff. (major);;1.0;0.0;;4
+859;4;4247;U16;;Cell temp-diff. (critical);;1.0;0.0;;4
+860;4;4249;U16;;Main positive contactor;;1.0;0.0;;4
+861;4;4250;U16;;Rack CHA disallowed;;1.0;0.0;;4
+862;4;4251;U16;;Rack DIS disallowed;;1.0;0.0;;4
+863;4;4252;U16;;Major alarm summary;;1.0;0.0;;9
+864;4;4253;U16;;Critical alarm summary;;1.0;0.0;;9
+865;4;4254;U16;;BCM comm. fault;;1.0;0.0;;9
+866;4;4300;U16;;Rack negative electrical insulation alarm (minor);;1.0;0.0;;9
+867;4;4301;U16;;Rack negative electrical insulation alarm (major);;1.0;0.0;;9
+868;4;4302;U16;;Clu End Neg Insul Severe Alarm;;1.0;0.0;;9
+869;4;4303;U16;;Rack LO-SOC (minor);;1.0;0.0;;4
+870;4;4304;U16;;Rack LO-SOC (major);;1.0;0.0;;4
+871;4;4305;U16;;Rack LO-SOC (critical);;1.0;0.0;;4
+872;4;4306;U16;;Rack OV-volt. (minor);;1.0;0.0;;4
+873;4;4307;U16;;Rack OV-volt. (major);;1.0;0.0;;4
+874;4;4308;U16;;Rack OV-volt. (critical);;1.0;0.0;;4
+875;4;4309;U16;;Rack UN-volt. (minor);;1.0;0.0;;4
+876;4;4310;U16;;Rack UN-volt. (major);;1.0;0.0;;4
+877;4;4311;U16;;Rack UN-volt. (critical);;1.0;0.0;;4
+878;4;4312;U16;;Rack CHA OV-curr. alarm (minor);;1.0;0.0;;9
+879;4;4313;U16;;Rack CHA OV-curr. alarm (major);;1.0;0.0;;9
+880;4;4314;U16;;Rack CHA OV-curr. alarm (critical);;1.0;0.0;;9
+881;4;4315;U16;;Rack DIS OV-curr. alarm (minor);;1.0;0.0;;9
+882;4;4316;U16;;Rack DIS OV-curr. alarm (major);;1.0;0.0;;9
+883;4;4317;U16;;Rack DIS OV-curr. alarm (critical);;1.0;0.0;;9
+884;4;4318;U16;;Cell OV-volt. (minor);;1.0;0.0;;4
+885;4;4319;U16;;Cell OV-volt. (major);;1.0;0.0;;4
+886;4;4320;U16;;Cell OV-volt. (critical);;1.0;0.0;;4
+887;4;4321;U16;;Cell UN-volt. (minor);;1.0;0.0;;4
+888;4;4322;U16;;Cell UN-volt. (major);;1.0;0.0;;4
+889;4;4323;U16;;Cell UN-volt. (critical);;1.0;0.0;;4
+890;4;4324;U16;;CHA cell OV-temp. (minor);;1.0;0.0;;4
+891;4;4325;U16;;CHA cell OV-temp. (major);;1.0;0.0;;4
+892;4;4326;U16;;CHA cell OV-temp. (critical);;1.0;0.0;;4
+893;4;4327;U16;;CHA cell UN-temp. (minor);;1.0;0.0;;4
+894;4;4328;U16;;CHA cell UN-temp. (major);;1.0;0.0;;4
+895;4;4329;U16;;CHA cell UN-temp. (critical);;1.0;0.0;;4
+896;4;4330;U16;;DIS cell OV-temp. (minor);;1.0;0.0;;4
+897;4;4331;U16;;DIS cell OV-temp. (major);;1.0;0.0;;4
+898;4;4332;U16;;DIS cell OV-temp. (critical);;1.0;0.0;;4
+899;4;4333;U16;;DIS cell UN-temp. (minor);;1.0;0.0;;4
+900;4;4334;U16;;DIS cell UN-temp. (major);;1.0;0.0;;4
+901;4;4335;U16;;DIS cell UN-temp. (critical);;1.0;0.0;;4
+902;4;4336;U16;;Cell LO-SOC minor;;1.0;0.0;;4
+903;4;4337;U16;;Cell LO-SOC major;;1.0;0.0;;4
+904;4;4338;U16;;Cell LO-SOC critical;;1.0;0.0;;4
+905;4;4339;U16;;Cell HI-SOC minor;;1.0;0.0;;4
+906;4;4340;U16;;Cell HI-SOC major;;1.0;0.0;;4
+907;4;4341;U16;;Cell HI-SOC critical;;1.0;0.0;;4
+908;4;4342;U16;;Cell volt-diff. (minor);;1.0;0.0;;4
+909;4;4343;U16;;Cell volt-diff. (major);;1.0;0.0;;4
+910;4;4344;U16;;Cell volt-diff. (critical);;1.0;0.0;;4
+911;4;4345;U16;;Cell temp-diff. (minor);;1.0;0.0;;4
+912;4;4346;U16;;Cell temp-diff. (major);;1.0;0.0;;4
+913;4;4347;U16;;Cell temp-diff. (critical);;1.0;0.0;;4
+914;4;4349;U16;;Main positive contactor;;1.0;0.0;;4
+915;4;4350;U16;;Rack CHA disallowed;;1.0;0.0;;4
+916;4;4351;U16;;Rack DIS disallowed;;1.0;0.0;;4
+917;4;4352;U16;;Major alarm summary;;1.0;0.0;;9
+918;4;4353;U16;;Critical alarm summary;;1.0;0.0;;9
+919;4;4354;U16;;BCM comm. fault;;1.0;0.0;;9
+920;4;4400;U16;;Rack negative electrical insulation alarm (minor);;1.0;0.0;;9
+921;4;4401;U16;;Rack negative electrical insulation alarm (major);;1.0;0.0;;9
+922;4;4402;U16;;Clu End Neg Insul Severe Alarm;;1.0;0.0;;9
+923;4;4403;U16;;Rack LO-SOC (minor);;1.0;0.0;;4
+924;4;4404;U16;;Rack LO-SOC (major);;1.0;0.0;;4
+925;4;4405;U16;;Rack LO-SOC (critical);;1.0;0.0;;4
+926;4;4406;U16;;Rack OV-volt. (minor);;1.0;0.0;;4
+927;4;4407;U16;;Rack OV-volt. (major);;1.0;0.0;;4
+928;4;4408;U16;;Rack OV-volt. (critical);;1.0;0.0;;4
+929;4;4409;U16;;Rack UN-volt. (minor);;1.0;0.0;;4
+930;4;4410;U16;;Rack UN-volt. (major);;1.0;0.0;;4
+931;4;4411;U16;;Rack UN-volt. (critical);;1.0;0.0;;4
+932;4;4412;U16;;Rack CHA OV-curr. alarm (minor);;1.0;0.0;;9
+933;4;4413;U16;;Rack CHA OV-curr. alarm (major);;1.0;0.0;;9
+934;4;4414;U16;;Rack CHA OV-curr. alarm (critical);;1.0;0.0;;9
+935;4;4415;U16;;Rack DIS OV-curr. alarm (minor);;1.0;0.0;;9
+936;4;4416;U16;;Rack DIS OV-curr. alarm (major);;1.0;0.0;;9
+937;4;4417;U16;;Rack DIS OV-curr. alarm (critical);;1.0;0.0;;9
+938;4;4418;U16;;Cell OV-volt. (minor);;1.0;0.0;;4
+939;4;4419;U16;;Cell OV-volt. (major);;1.0;0.0;;4
+940;4;4420;U16;;Cell OV-volt. (critical);;1.0;0.0;;4
+941;4;4421;U16;;Cell UN-volt. (minor);;1.0;0.0;;4
+942;4;4422;U16;;Cell UN-volt. (major);;1.0;0.0;;4
+943;4;4423;U16;;Cell UN-volt. (critical);;1.0;0.0;;4
+944;4;4424;U16;;CHA cell OV-temp. (minor);;1.0;0.0;;4
+945;4;4425;U16;;CHA cell OV-temp. (major);;1.0;0.0;;4
+946;4;4426;U16;;CHA cell OV-temp. (critical);;1.0;0.0;;4
+947;4;4427;U16;;CHA cell UN-temp. (minor);;1.0;0.0;;4
+948;4;4428;U16;;CHA cell UN-temp. (major);;1.0;0.0;;4
+949;4;4429;U16;;CHA cell UN-temp. (critical);;1.0;0.0;;4
+950;4;4430;U16;;DIS cell OV-temp. (minor);;1.0;0.0;;4
+951;4;4431;U16;;DIS cell OV-temp. (major);;1.0;0.0;;4
+952;4;4432;U16;;DIS cell OV-temp. (critical);;1.0;0.0;;4
+953;4;4433;U16;;DIS cell UN-temp. (minor);;1.0;0.0;;4
+954;4;4434;U16;;DIS cell UN-temp. (major);;1.0;0.0;;4
+955;4;4435;U16;;DIS cell UN-temp. (critical);;1.0;0.0;;4
+956;4;4436;U16;;Cell LO-SOC minor;;1.0;0.0;;4
+957;4;4437;U16;;Cell LO-SOC major;;1.0;0.0;;4
+958;4;4438;U16;;Cell LO-SOC critical;;1.0;0.0;;4
+959;4;4439;U16;;Cell HI-SOC minor;;1.0;0.0;;4
+960;4;4440;U16;;Cell HI-SOC major;;1.0;0.0;;4
+961;4;4441;U16;;Cell HI-SOC critical;;1.0;0.0;;4
+962;4;4442;U16;;Cell volt-diff. (minor);;1.0;0.0;;4
+963;4;4443;U16;;Cell volt-diff. (major);;1.0;0.0;;4
+964;4;4444;U16;;Cell volt-diff. (critical);;1.0;0.0;;4
+965;4;4445;U16;;Cell temp-diff. (minor);;1.0;0.0;;4
+966;4;4446;U16;;Cell temp-diff. (major);;1.0;0.0;;4
+967;4;4447;U16;;Cell temp-diff. (critical);;1.0;0.0;;4
+968;4;4449;U16;;Main positive contactor;;1.0;0.0;;4
+969;4;4450;U16;;Rack CHA disallowed;;1.0;0.0;;4
+970;4;4451;U16;;Rack DIS disallowed;;1.0;0.0;;4
+971;4;4452;U16;;Major alarm summary;;1.0;0.0;;9
+972;4;4453;U16;;Critical alarm summary;;1.0;0.0;;9
+973;4;4454;U16;;BCM comm. fault;;1.0;0.0;;9
+974;4;4500;U16;;Rack negative electrical insulation alarm (minor);;1.0;0.0;;9
+975;4;4501;U16;;Rack negative electrical insulation alarm (major);;1.0;0.0;;9
+976;4;4502;U16;;Clu End Neg Insul Severe Alarm;;1.0;0.0;;9
+977;4;4503;U16;;Rack LO-SOC (minor);;1.0;0.0;;4
+978;4;4504;U16;;Rack LO-SOC (major);;1.0;0.0;;4
+979;4;4505;U16;;Rack LO-SOC (critical);;1.0;0.0;;4
+980;4;4506;U16;;Rack OV-volt. (minor);;1.0;0.0;;4
+981;4;4507;U16;;Rack OV-volt. (major);;1.0;0.0;;4
+982;4;4508;U16;;Rack OV-volt. (critical);;1.0;0.0;;4
+983;4;4509;U16;;Rack UN-volt. (minor);;1.0;0.0;;4
+984;4;4510;U16;;Rack UN-volt. (major);;1.0;0.0;;4
+985;4;4511;U16;;Rack UN-volt. (critical);;1.0;0.0;;4
+986;4;4512;U16;;Rack CHA OV-curr. alarm (minor);;1.0;0.0;;9
+987;4;4513;U16;;Rack CHA OV-curr. alarm (major);;1.0;0.0;;9
+988;4;4514;U16;;Rack CHA OV-curr. alarm (critical);;1.0;0.0;;9
+989;4;4515;U16;;Rack DIS OV-curr. alarm (minor);;1.0;0.0;;9
+990;4;4516;U16;;Rack DIS OV-curr. alarm (major);;1.0;0.0;;9
+991;4;4517;U16;;Rack DIS OV-curr. alarm (critical);;1.0;0.0;;9
+992;4;4518;U16;;Cell OV-volt. (minor);;1.0;0.0;;4
+993;4;4519;U16;;Cell OV-volt. (major);;1.0;0.0;;4
+994;4;4520;U16;;Cell OV-volt. (critical);;1.0;0.0;;4
+995;4;4521;U16;;Cell UN-volt. (minor);;1.0;0.0;;4
+996;4;4522;U16;;Cell UN-volt. (major);;1.0;0.0;;4
+997;4;4523;U16;;Cell UN-volt. (critical);;1.0;0.0;;4
+998;4;4524;U16;;CHA cell OV-temp. (minor);;1.0;0.0;;4
+999;4;4525;U16;;CHA cell OV-temp. (major);;1.0;0.0;;4
+1000;4;4526;U16;;CHA cell OV-temp. (critical);;1.0;0.0;;4
+1001;4;4527;U16;;CHA cell UN-temp. (minor);;1.0;0.0;;4
+1002;4;4528;U16;;CHA cell UN-temp. (major);;1.0;0.0;;4
+1003;4;4529;U16;;CHA cell UN-temp. (critical);;1.0;0.0;;4
+1004;4;4530;U16;;DIS cell OV-temp. (minor);;1.0;0.0;;4
+1005;4;4531;U16;;DIS cell OV-temp. (major);;1.0;0.0;;4
+1006;4;4532;U16;;DIS cell OV-temp. (critical);;1.0;0.0;;4
+1007;4;4533;U16;;DIS cell UN-temp. (minor);;1.0;0.0;;4
+1008;4;4534;U16;;DIS cell UN-temp. (major);;1.0;0.0;;4
+1009;4;4535;U16;;DIS cell UN-temp. (critical);;1.0;0.0;;4
+1010;4;4536;U16;;Cell LO-SOC minor;;1.0;0.0;;4
+1011;4;4537;U16;;Cell LO-SOC major;;1.0;0.0;;4
+1012;4;4538;U16;;Cell LO-SOC critical;;1.0;0.0;;4
+1013;4;4539;U16;;Cell HI-SOC minor;;1.0;0.0;;4
+1014;4;4540;U16;;Cell HI-SOC major;;1.0;0.0;;4
+1015;4;4541;U16;;Cell HI-SOC critical;;1.0;0.0;;4
+1016;4;4542;U16;;Cell volt-diff. (minor);;1.0;0.0;;4
+1017;4;4543;U16;;Cell volt-diff. (major);;1.0;0.0;;4
+1018;4;4544;U16;;Cell volt-diff. (critical);;1.0;0.0;;4
+1019;4;4545;U16;;Cell temp-diff. (minor);;1.0;0.0;;4
+1020;4;4546;U16;;Cell temp-diff. (major);;1.0;0.0;;4
+1021;4;4547;U16;;Cell temp-diff. (critical);;1.0;0.0;;4
+1022;4;4549;U16;;Main positive contactor;;1.0;0.0;;4
+1023;4;4550;U16;;Rack CHA disallowed;;1.0;0.0;;4
+1024;4;4551;U16;;Rack DIS disallowed;;1.0;0.0;;4
+1025;4;4552;U16;;Major alarm summary;;1.0;0.0;;9
+1026;4;4553;U16;;Critical alarm summary;;1.0;0.0;;9
+1027;4;4554;U16;;BCM comm. fault;;1.0;0.0;;9
+1028;4;4600;U16;;Rack negative electrical insulation alarm (minor);;1.0;0.0;;9
+1029;4;4601;U16;;Rack negative electrical insulation alarm (major);;1.0;0.0;;9
+1030;4;4602;U16;;Clu End Neg Insul Severe Alarm;;1.0;0.0;;9
+1031;4;4603;U16;;Rack LO-SOC (minor);;1.0;0.0;;4
+1032;4;4604;U16;;Rack LO-SOC (major);;1.0;0.0;;4
+1033;4;4605;U16;;Rack LO-SOC (critical);;1.0;0.0;;4
+1034;4;4606;U16;;Rack OV-volt. (minor);;1.0;0.0;;4
+1035;4;4607;U16;;Rack OV-volt. (major);;1.0;0.0;;4
+1036;4;4608;U16;;Rack OV-volt. (critical);;1.0;0.0;;4
+1037;4;4609;U16;;Rack UN-volt. (minor);;1.0;0.0;;4
+1038;4;4610;U16;;Rack UN-volt. (major);;1.0;0.0;;4
+1039;4;4611;U16;;Rack UN-volt. (critical);;1.0;0.0;;4
+1040;4;4612;U16;;Rack CHA OV-curr. alarm (minor);;1.0;0.0;;9
+1041;4;4613;U16;;Rack CHA OV-curr. alarm (major);;1.0;0.0;;9
+1042;4;4614;U16;;Rack CHA OV-curr. alarm (critical);;1.0;0.0;;9
+1043;4;4615;U16;;Rack DIS OV-curr. alarm (minor);;1.0;0.0;;9
+1044;4;4616;U16;;Rack DIS OV-curr. alarm (major);;1.0;0.0;;9
+1045;4;4617;U16;;Rack DIS OV-curr. alarm (critical);;1.0;0.0;;9
+1046;4;4618;U16;;Cell OV-volt. (minor);;1.0;0.0;;4
+1047;4;4619;U16;;Cell OV-volt. (major);;1.0;0.0;;4
+1048;4;4620;U16;;Cell OV-volt. (critical);;1.0;0.0;;4
+1049;4;4621;U16;;Cell UN-volt. (minor);;1.0;0.0;;4
+1050;4;4622;U16;;Cell UN-volt. (major);;1.0;0.0;;4
+1051;4;4623;U16;;Cell UN-volt. (critical);;1.0;0.0;;4
+1052;4;4624;U16;;CHA cell OV-temp. (minor);;1.0;0.0;;4
+1053;4;4625;U16;;CHA cell OV-temp. (major);;1.0;0.0;;4
+1054;4;4626;U16;;CHA cell OV-temp. (critical);;1.0;0.0;;4
+1055;4;4627;U16;;CHA cell UN-temp. (minor);;1.0;0.0;;4
+1056;4;4628;U16;;CHA cell UN-temp. (major);;1.0;0.0;;4
+1057;4;4629;U16;;CHA cell UN-temp. (critical);;1.0;0.0;;4
+1058;4;4630;U16;;DIS cell OV-temp. (minor);;1.0;0.0;;4
+1059;4;4631;U16;;DIS cell OV-temp. (major);;1.0;0.0;;4
+1060;4;4632;U16;;DIS cell OV-temp. (critical);;1.0;0.0;;4
+1061;4;4633;U16;;DIS cell UN-temp. (minor);;1.0;0.0;;4
+1062;4;4634;U16;;DIS cell UN-temp. (major);;1.0;0.0;;4
+1063;4;4635;U16;;DIS cell UN-temp. (critical);;1.0;0.0;;4
+1064;4;4636;U16;;Cell LO-SOC minor;;1.0;0.0;;4
+1065;4;4637;U16;;Cell LO-SOC major;;1.0;0.0;;4
+1066;4;4638;U16;;Cell LO-SOC critical;;1.0;0.0;;4
+1067;4;4639;U16;;Cell HI-SOC minor;;1.0;0.0;;4
+1068;4;4640;U16;;Cell HI-SOC major;;1.0;0.0;;4
+1069;4;4641;U16;;Cell HI-SOC critical;;1.0;0.0;;4
+1070;4;4642;U16;;Cell volt-diff. (minor);;1.0;0.0;;4
+1071;4;4643;U16;;Cell volt-diff. (major);;1.0;0.0;;4
+1072;4;4644;U16;;Cell volt-diff. (critical);;1.0;0.0;;4
+1073;4;4645;U16;;Cell temp-diff. (minor);;1.0;0.0;;4
+1074;4;4646;U16;;Cell temp-diff. (major);;1.0;0.0;;4
+1075;4;4647;U16;;Cell temp-diff. (critical);;1.0;0.0;;4
+1076;4;4649;U16;;Main positive contactor;;1.0;0.0;;4
+1077;4;4650;U16;;Rack CHA disallowed;;1.0;0.0;;4
+1078;4;4651;U16;;Rack DIS disallowed;;1.0;0.0;;4
+1079;4;4652;U16;;Major alarm summary;;1.0;0.0;;9
+1080;4;4653;U16;;Critical alarm summary;;1.0;0.0;;9
+1081;4;4654;U16;;BCM comm. fault;;1.0;0.0;;9
+1082;4;56450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+1083;4;56451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+1084;4;56452;U16;;Humidity control start value;HUMIDITY;1.0;0.0;;4
+1085;4;56453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+1086;4;56454;U16;;Backup;;1.0;0.0;;4
+1087;4;56455;U16;;Temperature control stop value;;1.0;0.0;;4
+1088;4;56456;U16;;Temperature control start value;;1.0;0.0;;4
+1089;4;57450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+1090;4;57451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+1091;4;57452;U16;;Humidity control start value;;1.0;0.0;;4
+1092;4;57453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+1093;4;57454;U16;;Backup;;1.0;0.0;;4
+1094;4;57455;U16;;Temperature control stop value;;1.0;0.0;;4
+1095;4;57456;U16;;Temperature control start value;;1.0;0.0;;4
+1096;4;58450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+1097;4;58451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+1098;4;58452;U16;;Humidity control start value;;1.0;0.0;;4
+1099;4;58453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+1100;4;58454;U16;;Backup;;1.0;0.0;;4
+1101;4;58455;U16;;Temperature control stop value;;1.0;0.0;;4
+1102;4;58456;U16;;Temperature control start value;;1.0;0.0;;4
+1103;4;59450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+1104;4;59451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+1105;4;59452;U16;;Humidity control start value;;1.0;0.0;;4
+1106;4;59453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+1107;4;59454;U16;;Backup;;1.0;0.0;;4
+1108;4;59455;U16;;Temperature control stop value;;1.0;0.0;;4
+1109;4;59456;U16;;Temperature control start value;;1.0;0.0;;4
+1110;4;60450;U16;;Temperature alarm upper limit value;;1.0;0.0;;9
+1111;4;60451;U16;;Temperature alarm lower limit value;;1.0;0.0;;9
+1112;4;60452;U16;;Humidity control start value;;1.0;0.0;;4
+1113;4;60453;U16;;Humidity control stop value;;1.0;0.0;%RH;4
+1114;4;60454;U16;;Backup;;1.0;0.0;;4
+1115;4;60455;U16;;Temperature control stop value;;1.0;0.0;;4
+1116;4;60456;U16;;Temperature control start value;;1.0;0.0;;4
+1117;4;56350;U16;;Curr. mode;;1.0;0.0;;4
+1118;4;56351;U16;;Pump operating status;;1.0;0.0;;9
+1119;4;56352;U16;;1#Compressor status;;1.0;0.0;;9
+1120;4;56353;U16;;Electrical heater operation status;;1.0;0.0;;9
+1121;4;56354;U16;;Backup;;1.0;0.0;;4
+1122;4;56355;U16;;Water outlet temp.;;1.0;0.0;;4
+1123;4;56356;U16;;Water Return Temperature;;1.0;0.0;;4
+1124;4;56357;U16;;Water outlet pressure;PRESSURE;1.0;0.0;;4
+1125;4;56358;U16;;Return water pressure;;1.0;0.0;;4
+1126;4;57350;U16;;Curr. mode;;1.0;0.0;;4
+1127;4;57351;U16;;Pump operating status;;1.0;0.0;;9
+1128;4;57352;U16;;1#Compressor status;;1.0;0.0;;9
+1129;4;57353;U16;;Electrical heater operation status;;1.0;0.0;;9
+1130;4;57354;U16;;Backup;;1.0;0.0;;4
+1131;4;57355;U16;;Water outlet temp.;;1.0;0.0;;4
+1132;4;57356;U16;;Water Return Temperature;;1.0;0.0;;4
+1133;4;57357;U16;;Water outlet pressure;;1.0;0.0;;4
+1134;4;57358;U16;;Return water pressure;;1.0;0.0;;4
+1135;4;58350;U16;;Curr. mode;;1.0;0.0;;4
+1136;4;58351;U16;;Pump operating status;;1.0;0.0;;9
+1137;4;58352;U16;;1#Compressor status;;1.0;0.0;;9
+1138;4;58353;U16;;Electrical heater operation status;;1.0;0.0;;9
+1139;4;58354;U16;;Backup;;1.0;0.0;;4
+1140;4;58355;U16;;Water outlet temp.;;1.0;0.0;;4
+1141;4;58356;U16;;Water Return Temperature;;1.0;0.0;;4
+1142;4;58357;U16;;Water outlet pressure;;1.0;0.0;;4
+1143;4;58358;U16;;Return water pressure;;1.0;0.0;;4
+1144;4;59350;U16;;Curr. mode;;1.0;0.0;;4
+1145;4;59351;U16;;Pump operating status;;1.0;0.0;;9
+1146;4;59352;U16;;1#Compressor status;;1.0;0.0;;9
+1147;4;59353;U16;;Electrical heater operation status;;1.0;0.0;;9
+1148;4;59354;U16;;Backup;;1.0;0.0;;4
+1149;4;59355;U16;;Water outlet temp.;;1.0;0.0;;4
+1150;4;59356;U16;;Water Return Temperature;;1.0;0.0;;4
+1151;4;59357;U16;;Water outlet pressure;;1.0;0.0;;4
+1152;4;59358;U16;;Return water pressure;;1.0;0.0;;4
+1153;4;60350;U16;;Curr. mode;;1.0;0.0;;4
+1154;4;60351;U16;;Pump operating status;;1.0;0.0;;9
+1155;4;60352;U16;;1#Compressor status;;1.0;0.0;;9
+1156;4;60353;U16;;Electrical heater operation status;;1.0;0.0;;9
+1157;4;60354;U16;;Backup;;1.0;0.0;;4
+1158;4;60355;U16;;Water outlet temp.;;1.0;0.0;;4
+1159;4;60356;U16;;Water Return Temperature;;1.0;0.0;;4
+1160;4;60357;U16;;Water outlet pressure;;1.0;0.0;;4
+1161;4;60358;U16;;Return water pressure;;1.0;0.0;;4
+1162;4;55050;U16;;Frequency;;1.0;0.0;Hz;4
+1163;4;55052;U16;;Phase-A volt.;;1.0;0.0;;4
+1164;4;55054;U16;;Phase-B volt.;;1.0;0.0;;4
+1165;4;55056;U16;;Phase-C volt.;;1.0;0.0;;4
+1166;4;55058;U16;;Phase-A curr.;;1.0;0.0;;4
+1167;4;55060;U16;;Phase-B curr.;;1.0;0.0;;4
+1168;4;55062;U16;;Phase-C curr.;;1.0;0.0;;4
+1169;4;55064;U16;;A-B line volt.;;1.0;0.0;;4
+1170;4;55066;U16;;C-B line volt.;;1.0;0.0;;4
+1171;4;55068;U16;;A-C line volt.;;1.0;0.0;;4
+1172;4;55070;U16;;Phase-A active power;;1.0;0.0;kW;4
+1173;4;55072;U16;;Phase-B active power;;1.0;0.0;kW;4
+1174;4;55074;U16;;Phase-C active power;;1.0;0.0;kW;4
+1175;4;55076;U16;;Total active power;;1.0;0.0;kW;4
+1176;4;55078;U16;;Phase-A reactive power;;1.0;0.0;kVar;4
+1177;4;55080;U16;;Phase-B reactive power;;1.0;0.0;kVar;4
+1178;4;55082;U16;;Phase-C reactive power;;1.0;0.0;kVar;4
+1179;4;55084;U16;;Total reactive power;;1.0;0.0;kVar;4
+1180;4;55086;U16;;Phase-A apparent power;S_AC;1.0;0.0;kVA;4
+1181;4;55088;U16;;Phase-B apparent power;;1.0;0.0;kVA;4
+1182;4;55090;U16;;Phase-C apparent power;;1.0;0.0;kVA;4
+1183;4;55092;U16;;Total apparent power;;1.0;0.0;kVA;4
+1184;4;55094;U16;;Phase-A PF;;1.0;0.0;;4
+1185;4;55095;U16;;Phase-B PF;;1.0;0.0;;4
+1186;4;55096;U16;;Phase-C PF;;1.0;0.0;;4
+1187;4;55097;U16;;Total PF;PF;1.0;0.0;;4
+1188;4;55098;U16;;Combined Total Active Energy;E_TOT;1.0;0.0;kWh;4
+1189;4;55100;U16;;Curr. combination total reactive electrical energy;;1.0;0.0;kWh;4
+1190;4;55102;U16;;Import Peak Active Energy;E_IMP;1.0;0.0;kWh;4
+1191;4;55104;U16;;Import Shoulder Active Energy;;1.0;0.0;kWh;4
+1192;4;55106;U16;;Import Flat Active Energy;;1.0;0.0;kWh;4
+1193;4;55108;U16;;Import Valley Active Energy;;1.0;0.0;kWh;4
+1194;4;55110;U16;;Export Peak Active Energy;E_EXP;1.0;0.0;kWh;4
+1195;4;55112;U16;;Export Shoulder Active Energy;;1.0;0.0;kWh;4
+1196;4;55114;U16;;Export Flat Active Energy;;1.0;0.0;kWh;4
+1197;4;55116;U16;;Export Valley Active Energy;;1.0;0.0;kWh;4
+1198;4;55118;U16;;Import Total Active Energy;;1.0;0.0;kWh;4
+1199;4;55120;U16;;Export Total Active Energy;;1.0;0.0;kWh;4
+1200;4;55150;U16;;Frequency;;1.0;0.0;Hz;4
+1201;4;55152;U16;;Phase-A volt.;;1.0;0.0;;4
+1202;4;55154;U16;;Phase-B volt.;;1.0;0.0;;4
+1203;4;55156;U16;;Phase-C volt.;;1.0;0.0;;4
+1204;4;55158;U16;;Phase-A curr.;;1.0;0.0;;4
+1205;4;55160;U16;;Phase-B curr.;;1.0;0.0;;4
+1206;4;55162;U16;;Phase-C curr.;;1.0;0.0;;4
+1207;4;55164;U16;;Line-volt. UAB;;1.0;0.0;;4
+1208;4;55166;U16;;Line-volt. UBC;;1.0;0.0;;4
+1209;4;55168;U16;;Line-volt. UCA;;1.0;0.0;;4
+1210;4;55170;U16;;Phase-A active power;;1.0;0.0;kW;4
+1211;4;55172;U16;;Phase-B active power;;1.0;0.0;kW;4
+1212;4;55174;U16;;Phase-C active power;;1.0;0.0;kW;4
+1213;4;55176;U16;;Total active power;;1.0;0.0;kW;4
+1214;4;55178;U16;;Phase-A reactive power;;1.0;0.0;kVar;4
+1215;4;55180;U16;;Phase-B reactive power;;1.0;0.0;kVar;4
+1216;4;55182;U16;;Phase-C reactive power;;1.0;0.0;kVar;4
+1217;4;55184;U16;;Total reactive power;;1.0;0.0;kVar;4
+1218;4;55186;U16;;Phase-A apparent power;;1.0;0.0;kVA;4
+1219;4;55188;U16;;Phase-B apparent power;;1.0;0.0;kVA;4
+1220;4;55190;U16;;Phase-C apparent power;;1.0;0.0;kVA;4
+1221;4;55192;U16;;Total apparent power;;1.0;0.0;kVA;4
+1222;4;55194;U16;;Phase-A PF;;1.0;0.0;;4
+1223;4;55195;U16;;Phase-B PF;;1.0;0.0;;4
+1224;4;55196;U16;;Phase-C PF;;1.0;0.0;;4
+1225;4;55197;U16;;Total PF;;1.0;0.0;;4
+1226;4;55198;U16;;Combined Total Active Energy;;1.0;0.0;kWh;4
+1227;4;55200;U16;;Curr. combination total reactive electrical energy;;1.0;0.0;kWh;4
+1228;4;55202;U16;;Import Peak Active Energy;;1.0;0.0;kWh;4
+1229;4;55204;U16;;Import Shoulder Active Energy;;1.0;0.0;kWh;4
+1230;4;55206;U16;;Import Flat Active Energy;;1.0;0.0;kWh;4
+1231;4;55208;U16;;Import Valley Active Energy;;1.0;0.0;kWh;4
+1232;4;55210;U16;;Export Peak Active Energy;;1.0;0.0;kWh;4
+1233;4;55212;U16;;Export Shoulder Active Energy;;1.0;0.0;kWh;4
+1234;4;55214;U16;;Export Flat Active Energy;;1.0;0.0;kWh;4
+1235;4;55216;U16;;Export Valley Active Energy;;1.0;0.0;kWh;4
+1236;4;55218;U16;;Import Total Active Energy;;1.0;0.0;kWh;4
+1237;4;55220;U16;;Export Total Active Energy;;1.0;0.0;kWh;4
+1238;4;56000;U16;;Operational state;;1.0;0.0;;4
+1239;4;56001;U16;;Grid-on/off status;;1.0;0.0;;9
+1240;4;56002;U16;;Input curr.;;1.0;0.0;;4
+1241;4;56003;U16;;Input volt.;;1.0;0.0;V;4
+1242;4;56004;U16;;Input power;P_DC;1.0;0.0;;4
+1243;4;56005;U16;;Phase-A volt.;;1.0;0.0;V;4
+1244;4;56006;U16;;Phase-B volt.;;1.0;0.0;V;4
+1245;4;56007;U16;;Phase-C volt.;;1.0;0.0;V;4
+1246;4;56008;U16;;Phase-A curr.;;1.0;0.0;A;4
+1247;4;56009;U16;;Phase-B curr.;;1.0;0.0;A;4
+1248;4;56010;U16;;Phase-C curr.;;1.0;0.0;A;4
+1249;4;56011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+1250;4;56012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+1251;4;56013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+1252;4;56014;U16;;Total output active power;;1.0;0.0;;4
+1253;4;56015;U16;;Backup;;1.0;0.0;kW;4
+1254;4;56016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+1255;4;56017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+1256;4;56018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+1257;4;56019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+1258;4;56020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+1259;4;56021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+1260;4;56022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+1261;4;56023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+1262;4;56024;U16;;Total output PF;;1.0;0.0;;4
+1263;4;56025;U16;;Frequency;;1.0;0.0;Hz;4
+1264;4;57000;U16;;Operational state;;1.0;0.0;;4
+1265;4;57001;U16;;Grid-on/off status;;1.0;0.0;;9
+1266;4;57002;U16;;Input curr.;;1.0;0.0;;4
+1267;4;57003;U16;;Input volt.;;1.0;0.0;V;4
+1268;4;57004;U16;;Input power;;1.0;0.0;;4
+1269;4;57005;U16;;Phase-A volt.;;1.0;0.0;V;4
+1270;4;57006;U16;;Phase-B volt.;;1.0;0.0;V;4
+1271;4;57007;U16;;Phase-C volt.;;1.0;0.0;V;4
+1272;4;57008;U16;;Phase-A curr.;;1.0;0.0;A;4
+1273;4;57009;U16;;Phase-B curr.;;1.0;0.0;A;4
+1274;4;57010;U16;;Phase-C curr.;;1.0;0.0;A;4
+1275;4;57011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+1276;4;57012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+1277;4;57013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+1278;4;57014;U16;;Total output active power;;1.0;0.0;;4
+1279;4;57015;U16;;Backup;;1.0;0.0;kW;4
+1280;4;57016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+1281;4;57017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+1282;4;57018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+1283;4;57019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+1284;4;57020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+1285;4;57021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+1286;4;57022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+1287;4;57023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+1288;4;57024;U16;;Total output PF;;1.0;0.0;;4
+1289;4;57025;U16;;Frequency;;1.0;0.0;Hz;4
+1290;4;58000;U16;;Operational state;;1.0;0.0;;4
+1291;4;58001;U16;;Grid-on/off status;;1.0;0.0;;9
+1292;4;58002;U16;;Input curr.;;1.0;0.0;;4
+1293;4;58003;U16;;Input volt.;;1.0;0.0;V;4
+1294;4;58004;U16;;Input power;;1.0;0.0;;4
+1295;4;58005;U16;;Phase-A volt.;;1.0;0.0;V;4
+1296;4;58006;U16;;Phase-B volt.;;1.0;0.0;V;4
+1297;4;58007;U16;;Phase-C volt.;;1.0;0.0;V;4
+1298;4;58008;U16;;Phase-A curr.;;1.0;0.0;A;4
+1299;4;58009;U16;;Phase-B curr.;;1.0;0.0;A;4
+1300;4;58010;U16;;Phase-C curr.;;1.0;0.0;A;4
+1301;4;58011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+1302;4;58012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+1303;4;58013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+1304;4;58014;U16;;Total output active power;;1.0;0.0;;4
+1305;4;58015;U16;;Backup;;1.0;0.0;kW;4
+1306;4;58016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+1307;4;58017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+1308;4;58018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+1309;4;58019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+1310;4;58020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+1311;4;58021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+1312;4;58022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+1313;4;58023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+1314;4;58024;U16;;Total output PF;;1.0;0.0;;4
+1315;4;58025;U16;;Frequency;;1.0;0.0;Hz;4
+1316;4;59000;U16;;Operational state;;1.0;0.0;;4
+1317;4;59001;U16;;Grid-on/off status;;1.0;0.0;;9
+1318;4;59002;U16;;Input curr.;;1.0;0.0;;4
+1319;4;59003;U16;;Input volt.;;1.0;0.0;V;4
+1320;4;59004;U16;;Input power;;1.0;0.0;;4
+1321;4;59005;U16;;Phase-A volt.;;1.0;0.0;V;4
+1322;4;59006;U16;;Phase-B volt.;;1.0;0.0;V;4
+1323;4;59007;U16;;Phase-C volt.;;1.0;0.0;V;4
+1324;4;59008;U16;;Phase-A curr.;;1.0;0.0;A;4
+1325;4;59009;U16;;Phase-B curr.;;1.0;0.0;A;4
+1326;4;59010;U16;;Phase-C curr.;;1.0;0.0;A;4
+1327;4;59011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+1328;4;59012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+1329;4;59013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+1330;4;59014;U16;;Total output active power;;1.0;0.0;;4
+1331;4;59015;U16;;Backup;;1.0;0.0;kW;4
+1332;4;59016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+1333;4;59017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+1334;4;59018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+1335;4;59019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+1336;4;59020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+1337;4;59021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+1338;4;59022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+1339;4;59023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+1340;4;59024;U16;;Total output PF;;1.0;0.0;;4
+1341;4;59025;U16;;Frequency;;1.0;0.0;Hz;4
+1342;4;60000;U16;;Operational state;;1.0;0.0;;4
+1343;4;60001;U16;;Grid-on/off status;;1.0;0.0;;9
+1344;4;60002;U16;;Input curr.;;1.0;0.0;;4
+1345;4;60003;U16;;Input volt.;;1.0;0.0;V;4
+1346;4;60004;U16;;Input power;;1.0;0.0;;4
+1347;4;60005;U16;;Phase-A volt.;;1.0;0.0;V;4
+1348;4;60006;U16;;Phase-B volt.;;1.0;0.0;V;4
+1349;4;60007;U16;;Phase-C volt.;;1.0;0.0;V;4
+1350;4;60008;U16;;Phase-A curr.;;1.0;0.0;A;4
+1351;4;60009;U16;;Phase-B curr.;;1.0;0.0;A;4
+1352;4;60010;U16;;Phase-C curr.;;1.0;0.0;A;4
+1353;4;60011;U16;;Output active power phase-A;;1.0;0.0;kW;4
+1354;4;60012;U16;;Output active power phase-B;;1.0;0.0;kW;4
+1355;4;60013;U16;;Output active power phase-C;;1.0;0.0;kW;4
+1356;4;60014;U16;;Total output active power;;1.0;0.0;;4
+1357;4;60015;U16;;Backup;;1.0;0.0;kW;4
+1358;4;60016;U16;;Output reactive power phase-A;;1.0;0.0;kVar;4
+1359;4;60017;U16;;Output reactive power phase-B;;1.0;0.0;kVar;4
+1360;4;60018;U16;;Output reactive power phase-C;;1.0;0.0;kVar;4
+1361;4;60019;U16;;Total output reactive power;;1.0;0.0;kVar;4
+1362;4;60020;U16;;Output apparent power phase-A;;1.0;0.0;kVA;4
+1363;4;60021;U16;;Output apparent power phase-B;;1.0;0.0;kVA;4
+1364;4;60022;U16;;Output apparent power phase-C;;1.0;0.0;kVA;4
+1365;4;60023;U16;;Total output apparent power;;1.0;0.0;kVA;4
+1366;4;60024;U16;;Total output PF;;1.0;0.0;;4
+1367;4;60025;U16;;Frequency;;1.0;0.0;Hz;4
+1368;4;55600;U16;;Backup;;1.0;0.0;;4
+1369;4;55601;U16;;Backup;;1.0;0.0;;4
+1370;4;55602;U16;;Backup;;1.0;0.0;;4
+1371;4;55603;U16;;Backup;;1.0;0.0;;4
+1372;4;55604;U16;;Backup;;1.0;0.0;;4
+1373;4;55605;U16;;Backup;;1.0;0.0;;4
+1374;4;55606;U16;;Backup;;1.0;0.0;;4
+1375;4;55607;U16;;Backup;;1.0;0.0;;4
+1376;4;55608;U16;;Backup;;1.0;0.0;;4
+1377;4;56750;U16;;Liquid cooling comm. fault;;1.0;0.0;;9
+1378;4;56751;U16;;Backup;;1.0;0.0;;4
+1379;4;56752;U16;;Backup;;1.0;0.0;;4
+1380;4;56753;U16;;Backup;;1.0;0.0;;4
+1381;4;57500;U16;;Liquid cooling comm. fault;;1.0;0.0;;9
+1382;4;57501;U16;;Backup;;1.0;0.0;;4
+1383;4;57502;U16;;Backup;;1.0;0.0;;4
+1384;4;57503;U16;;Backup;;1.0;0.0;;4
+1385;4;58250;U16;;Liquid cooling comm. fault;;1.0;0.0;;9
+1386;4;58251;U16;;Backup;;1.0;0.0;;4
+1387;4;58252;U16;;Backup;;1.0;0.0;;4
+1388;4;58253;U16;;Backup;;1.0;0.0;;4
+1389;4;55101;U16;;Backup;;1.0;0.0;;4
+1390;4;55103;U16;;Backup;;1.0;0.0;;4
+1391;4;55125;U16;;Meter comm. fault;;1.0;0.0;;9
+1392;4;55126;U16;;Backup;;1.0;0.0;;4
+1393;4;55127;U16;;Backup;;1.0;0.0;;4
+1394;4;55128;U16;;Backup;;1.0;0.0;;4
+1395;4;55750;U16;;PCS comm. fault;;1.0;0.0;;9
+1396;4;55751;U16;;Backup;;1.0;0.0;;4
+1397;4;55752;U16;;Backup;;1.0;0.0;;4
+1398;4;55753;U16;;Backup;;1.0;0.0;;4
+1399;4;56500;U16;;PCS comm. fault;;1.0;0.0;;9
+1400;4;56501;U16;;Backup;;1.0;0.0;;4
+1401;4;56502;U16;;Backup;;1.0;0.0;;4
+1402;4;56503;U16;;Backup;;1.0;0.0;;4
+1403;4;57250;U16;;PCS comm. fault;;1.0;0.0;;9
+1404;4;57251;U16;;Backup;;1.0;0.0;;4
+1405;4;57252;U16;;Backup;;1.0;0.0;;4
+1406;4;57253;U16;;Backup;;1.0;0.0;;4
+1407;4;58750;U16;;PCS comm. fault;;1.0;0.0;;9
+1408;4;58751;U16;;Backup;;1.0;0.0;;4
+1409;4;58752;U16;;Backup;;1.0;0.0;;4
+1410;4;58753;U16;;Backup;;1.0;0.0;;4
+1411;4;55280;U16;;System ON/OFF;;1.0;0.0;;4
+1412;4;55480;U16;;System ON/OFF;;1.0;0.0;;4
+1413;4;55680;U16;;System ON/OFF;;1.0;0.0;;4
+1414;4;55880;U16;;System ON/OFF;;1.0;0.0;;4
+1415;4;56080;U16;;System ON/OFF;;1.0;0.0;;4
+1416;4;55201;U16;;Backup;;1.0;0.0;;4
+1417;4;55400;U16;;Backup;;1.0;0.0;;4
+1418;4;55401;U16;;Backup;;1.0;0.0;;4
+1419;4;55402;U16;;Backup;;1.0;0.0;;4
+1420;4;55800;U16;;Backup;;1.0;0.0;;4
+1421;4;55801;U16;;Backup;;1.0;0.0;;4
+1422;4;55802;U16;;Backup;;1.0;0.0;;4
+1423;4;60280;U16;;BMS Mode Control;;1.0;0.0;;4
+1424;4;60281;U16;;Cooling point;;1.0;0.0;;4
+1425;4;60282;U16;;Heating point;;1.0;0.0;;4
+1426;4;60480;U16;;BMS Mode Control;;1.0;0.0;;4
+1427;4;60481;U16;;Cooling point;;1.0;0.0;;4
+1428;4;60482;U16;;Heating point;;1.0;0.0;;4
+1429;4;60680;U16;;BMS Mode Control;;1.0;0.0;;4
+1430;4;60681;U16;;Cooling point;;1.0;0.0;;4
+1431;4;60682;U16;;Heating point;;1.0;0.0;;4
+1432;4;60880;U16;;BMS mode control;;1.0;0.0;;4
+1433;4;60881;U16;;Cooling point;;1.0;0.0;;4
+1434;4;60882;U16;;Heating point;;1.0;0.0;;4
+1435;4;61080;U16;;BMS mode control;;1.0;0.0;;4
+1436;4;61081;U16;;Cooling point;;1.0;0.0;;4
+1437;4;61082;U16;;Heating point;;1.0;0.0;;4
+1438;4;60200;U16;;real Active power command;;1.0;0.0;;4
+1439;4;60201;U16;;real Reactive power command;;1.0;0.0;;4
+1440;4;60202;U16;;real Power factor command;;1.0;0.0;;4
+1441;4;60203;U16;;Backup;;1.0;0.0;;4
+1442;4;60400;U16;;real Active power command;;1.0;0.0;;4
+1443;4;60401;U16;;real Reactive power command;;1.0;0.0;;4
+1444;4;60402;U16;;real Power factor command;;1.0;0.0;;4
+1445;4;60403;U16;;Backup;;1.0;0.0;;4
+1446;4;60600;U16;;real Active power command;;1.0;0.0;;4
+1447;4;60601;U16;;real Reactive power command;;1.0;0.0;;4
+1448;4;60602;U16;;real Power factor command;;1.0;0.0;;4
+1449;4;60603;U16;;Backup;;1.0;0.0;;4
+1450;4;60800;U16;;real Active power command;;1.0;0.0;;4
+1451;4;60801;U16;;real Reactive power command;;1.0;0.0;;4
+1452;4;60802;U16;;real Power factor command;;1.0;0.0;;4
+1453;4;60803;U16;;Backup;;1.0;0.0;;4
+1454;4;61000;U16;;real Active power command;;1.0;0.0;;4
+1455;4;61001;U16;;real Reactive power command;;1.0;0.0;;4
+1456;4;61002;U16;;real Power factor command;;1.0;0.0;;4
+1457;4;61003;U16;;Backup;;1.0;0.0;;4

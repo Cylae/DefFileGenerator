@@ -1,4 +1,4 @@
-Modbus;Inverter;Victron;Generic;;;;;;;
+Modbus;Inverter;VICTRON;Generic;;;;;;;
 1;4;3;U16;;Input voltage phase 1;;0.100000;0.000000;VAC;4
 2;4;6;I16;;Input current phase 1;;0.100000;0.000000;AAC;4
 3;4;9;I16;;Input frequency 1;;0.010000;0.000000;Hz;0

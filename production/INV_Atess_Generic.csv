@@ -1,4 +1,4 @@
-Modbus;Inverter;Atess;Generic;;;;;;;
+Modbus;Inverter;ATESS;GENERIC;;;;;;;
 1;3;180_12;STRING;;Device Serial Number;SERIAL;1;0;;4
 2;4;270_20;STRING;;Hardware Version;;1;0;;4
 3;4;280_18;STRING;;Software Version;;1;0;;4

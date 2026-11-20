@@ -1,4 +1,4 @@
-Modbus;Inverter;Delta;MODBUS_DELTA_M15A_Flex_Sunspec;;;;;;;
+Modbus;Inverter;DELTA;MODBUS_DELTA_M15A_Flex_Sunspec;;;;;;;
 1;3;40000_2;STRING;;SunS;;1.0;0.0;;0
 2;3;40002;U16;;Common_ID;;1.0;0.0;;4
 3;3;40003;U16;;Common_L;;1.0;0.0;;4
